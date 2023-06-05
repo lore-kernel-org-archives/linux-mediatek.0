@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36FFFC7EE32
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DD3BC7EE24
 	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jun 2023 15:22:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,56 +12,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2/is1QcOB7DUDxr9dMCEWLGgopjOcL59vT6R4xIDfaM=; b=u+gQyjoLNjoa+21LQ1P9pF4tLW
-	Ata8w36dU0jKjvG9u5M6ooPdFrJgmKGMCZgxI2D/nAjYjOQ7hgDd8F2EW51EKwBQsSJNmKZh1zN5S
-	YK9bltuzimNYX1/s2T5lyod0JtSHa4oMp8Rq7qo9I6NZgSfcoJRE9HAcgPHvLbeFPNWE4I7Il0F+n
-	lCdzoIt31aJHPC1P013YY6bXxk7BGGm2oH3GNpw9FscJm70OL24+BmBOD9cdPRSmHsj91iG5OUUvc
-	M1h6DK9AEBnjEV0+YWuDfxk8Qs75d7kxDYaZZxpHqguUqU5cY+yeFxuO0m5bTXFVRUMjdCc2bO8ba
-	WPVnAWzA==;
+	bh=AwYLZ7tlHNPxifdDL1n5p82cDk7aj1sdSezZOMZ9hSw=; b=SUpjG0fhX2gsEwuwiO5oixfkzX
+	GF9oq3wwCcWuJ0As6fWA/Qnu2jsKMlMbOoO4q1zJrBoi7OoiCtf8CBmR6gWyyJ3i9JoTSALKnOzlc
+	wJ3nnmdzc850UVmTg2YFybWFSfg/GQOqkUnp8MMjhxvkAOKlV66Tf2fnjDUtxce4NWyureeEuU+2h
+	1fptP4czSGDQd7QBkq2JW6dz4u2J3FJU3wDDkXoxZgz6q/uffYkyN3UqOWMdoD+tFbp60535dxJzZ
+	/tEWPGS7LTWLQmtEK1lswE31I+G0YMR1s5N8HI5oVUJ2o+GiRtuSX915CDPnHoPo7sWOUwOntSU/X
+	omhOYc8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6C2B-00FwOT-0V;
-	Mon, 05 Jun 2023 15:22:15 +0000
+	id 1q6C2C-00FwP0-03;
+	Mon, 05 Jun 2023 15:22:16 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6C27-00FwKJ-08
+	id 1q6C27-00FwKd-08
 	for linux-mediatek@lists.infradead.org;
 	Mon, 05 Jun 2023 15:22:13 +0000
-X-UUID: b361bac403b411ee912e1518a6540028-20230605
+X-UUID: b38c0d9c03b411ee912e1518a6540028-20230605
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=2/is1QcOB7DUDxr9dMCEWLGgopjOcL59vT6R4xIDfaM=;
-	b=TsUeXzV1Qw1PP94cWugDT4B8vRnXpG/jRzRaXq7hDELkXqGLiSz0xfrNqQ9Ttn9DuN3+llJWfRIWVwUh3KkAgTdjCIs1CbkUbk5ITuRkQI/b79NpqUkglL4yRdmAZ60E0lLDNYk0fJe3HFh69kJUcLHEjzD4SmXTi6DLitLAbgg=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=AwYLZ7tlHNPxifdDL1n5p82cDk7aj1sdSezZOMZ9hSw=;
+	b=N8SnkcQumHZqfpFyswAK35JrX9UeNHlJ2MUh+6bQx+67hxt75O0c8FKc2mlMJDR/XIhgJXZprgcJ9xmikjIvnAg79GCIyvIKf90qffN/kZTN8/chzY/KEVPUpk01Ul6G9Q6SMQbhkf3lrLgKZr9lKlxIWT4VRJbiKx3pKijf0Fo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:e6a2369c-8369-4054-8332-9b15488aaf32,IP:0,U
+X-CID-O-INFO: VERSION:1.1.25,REQID:e10f7c77-8ecb-4de6-99cf-1b31c49421d5,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:e617a23d-7aa7-41f3-a6bd-0433bee822f3,B
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:d95d713d-de1e-4348-bc35-c96f92f1dcbb,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-UUID: b361bac403b411ee912e1518a6540028-20230605
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-UUID: b38c0d9c03b411ee912e1518a6540028-20230605
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 295485799; Mon, 05 Jun 2023 08:21:53 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	with ESMTP id 1294818234; Mon, 05 Jun 2023 08:21:53 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 5 Jun 2023 23:21:50 +0800
+ 15.2.1118.26; Mon, 5 Jun 2023 23:21:51 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 5 Jun 2023 23:21:50 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 5 Jun 2023 23:21:51 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
 	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Peter Chiu
-	<chui-hao.chiu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH v3 05/10] wifi: mt76: mt7996: enable VHT extended NSS BW feature
-Date: Mon, 5 Jun 2023 23:21:36 +0800
-Message-ID: <20230605152141.17434-5-shayne.chen@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, MeiChia Chiu
+	<MeiChia.Chiu@mediatek.com>, MeiChia Chiu <meichia.chiu@mediatek.com>, Shayne
+ Chen <shayne.chen@mediatek.com>
+Subject: [PATCH v3 09/10] wifi: mt76: mt7996: add muru support
+Date: Mon, 5 Jun 2023 23:21:40 +0800
+Message-ID: <20230605152141.17434-9-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230605152141.17434-1-shayne.chen@mediatek.com>
 References: <20230605152141.17434-1-shayne.chen@mediatek.com>
@@ -69,9 +70,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230605_082211_109008_D303807F 
-X-CRM114-Status: UNSURE (   7.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230605_082211_098272_521FD033 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,30 +86,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
+From: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
 
-Set SUPPORTS_VHT_EXT_NSS_BW to let the max BW capability correctly be
-parsed by different devices.
+Add sta_rec_muru() fw command to support MU-MIMO and OFDMA features.
 
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: MeiChia Chiu <meichia.chiu@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/init.c | 2 ++
- 1 file changed, 2 insertions(+)
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  3 +-
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 56 ++++++++++++++++++-
+ 2 files changed, 57 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 004575a0479b..8247153d082d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -217,6 +217,8 @@ mt7996_init_wiphy(struct ieee80211_hw *hw)
- 			IEEE80211_VHT_CAP_SUPP_CHAN_WIDTH_160MHZ;
- 		phy->mt76->sband_5g.sband.ht_cap.ampdu_density =
- 			IEEE80211_HT_MPDU_DENSITY_1;
-+
-+		ieee80211_hw_set(hw, SUPPORTS_VHT_EXT_NSS_BW);
- 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 3790d68525e5..48bced4e2e5d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -519,7 +519,8 @@ struct sta_rec_muru {
+ 		u8 uo_ra;
+ 		u8 he_2x996_tone;
+ 		u8 rx_t_frame_11ac;
+-		u8 rsv[3];
++		u8 rx_ctrl_frame_to_mbss;
++		u8 rsv[2];
+ 	} ofdma_ul;
  
- 	mt76_set_stream_caps(phy->mt76, true);
+ 	struct {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 20519bffce21..611f6450520b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -1101,6 +1101,59 @@ mt7996_mcu_sta_amsdu_tlv(struct mt7996_dev *dev, struct sk_buff *skb,
+ 	}
+ }
+ 
++static void
++mt7996_mcu_sta_muru_tlv(struct mt7996_dev *dev, struct sk_buff *skb,
++			struct ieee80211_vif *vif, struct ieee80211_sta *sta)
++{
++	struct ieee80211_he_cap_elem *elem = &sta->deflink.he_cap.he_cap_elem;
++	struct sta_rec_muru *muru;
++	struct tlv *tlv;
++
++	if (vif->type != NL80211_IFTYPE_STATION &&
++	    vif->type != NL80211_IFTYPE_AP)
++		return;
++
++	tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_MURU, sizeof(*muru));
++
++	muru = (struct sta_rec_muru *)tlv;
++	muru->cfg.mimo_dl_en = vif->bss_conf.eht_mu_beamformer ||
++			       vif->bss_conf.he_mu_beamformer ||
++			       vif->bss_conf.vht_mu_beamformer ||
++			       vif->bss_conf.vht_mu_beamformee;
++	muru->cfg.ofdma_dl_en = true;
++
++	if (sta->deflink.vht_cap.vht_supported)
++		muru->mimo_dl.vht_mu_bfee =
++			!!(sta->deflink.vht_cap.cap & IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE);
++
++	if (!sta->deflink.he_cap.has_he)
++		return;
++
++	muru->mimo_dl.partial_bw_dl_mimo =
++		HE_PHY(CAP6_PARTIAL_BANDWIDTH_DL_MUMIMO, elem->phy_cap_info[6]);
++
++	muru->mimo_ul.full_ul_mimo =
++		HE_PHY(CAP2_UL_MU_FULL_MU_MIMO, elem->phy_cap_info[2]);
++	muru->mimo_ul.partial_ul_mimo =
++		HE_PHY(CAP2_UL_MU_PARTIAL_MU_MIMO, elem->phy_cap_info[2]);
++
++	muru->ofdma_dl.punc_pream_rx =
++		HE_PHY(CAP1_PREAMBLE_PUNC_RX_MASK, elem->phy_cap_info[1]);
++	muru->ofdma_dl.he_20m_in_40m_2g =
++		HE_PHY(CAP8_20MHZ_IN_40MHZ_HE_PPDU_IN_2G, elem->phy_cap_info[8]);
++	muru->ofdma_dl.he_20m_in_160m =
++		HE_PHY(CAP8_20MHZ_IN_160MHZ_HE_PPDU, elem->phy_cap_info[8]);
++	muru->ofdma_dl.he_80m_in_160m =
++		HE_PHY(CAP8_80MHZ_IN_160MHZ_HE_PPDU, elem->phy_cap_info[8]);
++
++	muru->ofdma_ul.t_frame_dur =
++		HE_MAC(CAP1_TF_MAC_PAD_DUR_MASK, elem->mac_cap_info[1]);
++	muru->ofdma_ul.mu_cascading =
++		HE_MAC(CAP2_MU_CASCADING, elem->mac_cap_info[2]);
++	muru->ofdma_ul.uo_ra =
++		HE_MAC(CAP3_OFDMA_RA, elem->mac_cap_info[3]);
++}
++
+ static inline bool
+ mt7996_is_ebf_supported(struct mt7996_phy *phy, struct ieee80211_vif *vif,
+ 			struct ieee80211_sta *sta, bool bfee)
+@@ -1778,7 +1831,8 @@ int mt7996_mcu_add_sta(struct mt7996_dev *dev, struct ieee80211_vif *vif,
+ 		mt7996_mcu_sta_he_6g_tlv(skb, sta);
+ 		/* starec eht */
+ 		mt7996_mcu_sta_eht_tlv(skb, sta);
+-		/* TODO: starec muru */
++		/* starec muru */
++		mt7996_mcu_sta_muru_tlv(dev, skb, vif, sta);
+ 		/* starec bfee */
+ 		mt7996_mcu_sta_bfee_tlv(dev, skb, vif, sta);
+ 		/* starec hdr trans */
 -- 
 2.39.2
 
