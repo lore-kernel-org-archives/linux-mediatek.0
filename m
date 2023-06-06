@@ -4,93 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B558C7EE24
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 09:16:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01F7CC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 09:16:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XBYlIdpTft+IILWfU8QKB41NOLs5b4pNVwgWdOe7tqc=; b=25DerzvFFJRYm8dUckbhyabDhB
-	gCrRCWP/PmIp6yxpyvtrFYWo2EX4DJPVTPqOpHRN0OgwpsfmZXTnoYqdyU726IgD31pbo+CfxAZiD
-	kiiKWemGkEgkc6P32zTE+HnqoLPRF8c3+QvwYqYwgiHKVvdze572+stYRAYrXnDHmTGhZR9ON9w42
-	RGMCFhNjLCqmf6kEbiUnGMUat8Lj3TrqPpOXeK9H3r4aQ1Jv9mkhXrAZwkpHsBWdszNjMjAh5GEw9
-	E3nURfJiA3FEgLYrwbdHCEt3gJgNlIj/eerQDWMWy2eAJelLLon0+ZDk0IN7vatGEFbQh4+W1Xkh7
-	7dIjs/ww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3GXwO+efv0Kz9jCJqUKq+o7y3U0ehUDN4LS139Asp7c=; b=AcORCQ+GL+EDpxLUM9CAEv4+ZJ
+	TN9Szi8cSw8+ld6ft/AuggSFgIIkeSlaRU8vNVUxnEJTnFo7fKARaviPgoLSuq1fZoV4lJaHsg7lY
+	ZADmefhR10wZ2Fsko9b6L9q3rkQHqDbke09nKGDmBTvignxFcHdbUD+1olSTNxe481Z7YyouHx/ag
+	TpRoSU6rKknUcxv6xozG55amRacPY3s0xwLfBH6DfLho9HZcC8ChFL5dvT+U9jFgPd5PmObG5Xn8g
+	TDL+T+iI7M9MAYMvfKTPtTmKjszDUXI4EB1vFJj8hQhuxajdecmY2+ZLRA+DJGQATeGzo7EWThfK3
+	jFjpXrYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6Snb-000y3C-2h;
-	Tue, 06 Jun 2023 09:16:19 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1q6So7-000yCS-2N;
+	Tue, 06 Jun 2023 09:16:51 +0000
+Received: from mail-bn1nam02on20700.outbound.protection.outlook.com ([2a01:111:f400:7eb2::700] helo=NAM02-BN1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6SnY-000y1s-32
-	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Jun 2023 09:16:18 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-9768fd99c0cso741512766b.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jun 2023 02:16:16 -0700 (PDT)
+	id 1q6So5-000yBA-1i;
+	Tue, 06 Jun 2023 09:16:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=AbVbuJGBcEjrRok4vTojbRVKxx0jAOM9Xv7tdo2PJzk3nTzcFAZ06nEldrbrR97Noqbz/GTYPOM7g5YPOmun0DXins7+FJwQ9WNBbTWYQMVcbS3bb0mmKDEWMnwr9zAJiY/VaceJJnwllx3Tr7dseuGB/NOX7PS1rHRNtlsjjae0sWC62shyLPkAjRKM7a2xudOazJQHtkxjJ94yiV7Y9Mvmmrr4MqhG5wwd30E45g4JNn7io/OFZDFFW4KBiAi1I/OHQZsMh3VeID1NfZkdbvNOux5qqGiusrkKCs35KQxWvYWWz5dzTHWgG+jV05C8f5TRtR6UoXxKtNHkzu/img==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3GXwO+efv0Kz9jCJqUKq+o7y3U0ehUDN4LS139Asp7c=;
+ b=QFfeNgbuVQULHAa9FBvC9Yz2774mpW0HDtLoj2JNudRaZRHFnc+0IW3WzFlKt+up1rPy88n2KqlAU8pn/R8SgwDr+tkN7naz6FUtU/4v0nbhrOxHmfjn0HCIo5Wj30wfipHACCeO0WSLz6kyHOdsw1c2BJKhiWljoDWTUltGcwvOcWKTwjCEPFJPrIWYnNd/k+2JP2wNMcXZCxUFF21oIgshF2meFySovmShWfMgtyCiBbv0GFZowplxG3f90iNm6IpPVYm7PxVIexGpk8eFq8WHQmvsmi6S5i88zjgA4mvwXosIBW9VACi8NF3N7glRuUJRX97xF9L8R3f496Xj1g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
+ dkim=pass header.d=corigine.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1686042975; x=1688634975;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=XBYlIdpTft+IILWfU8QKB41NOLs5b4pNVwgWdOe7tqc=;
-        b=vncFQqDlNQD4M5UowqZ7dH5lQ9V03vmSMwGeG54OCxGVIfCL8ROEWg+2m0+709wKLt
-         5WzqpiXlaMYIFX/QL93ikhZg08bbq3bKsm0NaUBQr61w4+MqTKBj1BADt+v3PC+X+V9Q
-         xidNvJRdtIIHT4eEOg9pPWnD2/hX23fZfSiWghBEClSAa5KX31VnDo6U0IkFnMg8/mMQ
-         gDfyxMq/BUJuV6WrO3voT7uDVUpFYdqFlyDJvPgrcpxnTJU495rJsoi789X0U822pN21
-         eba/ZjepKoQ2alj2V0QLqWdFEaDnZXHcX0fAPoDcmaaZOY/WK71/A6B1QgqmA/OJsD7w
-         EDDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686042975; x=1688634975;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=XBYlIdpTft+IILWfU8QKB41NOLs5b4pNVwgWdOe7tqc=;
-        b=JP1lcMb4FTN7TrQ9Px2AfQvbRle3JOalj7gYYalL/VVCn8Z1WQVoaPWfLTxGJ7AB8k
-         Ffz0aGBOkHJKTn842FrB9rfnoUTZUuy2uktcwCWE7rkW/Wv8BZaGcPQD+/1xo/kB4R+7
-         LESxdsva3yGDVUBV430EMn5QDj+qvRQaw3TldTUMT+w5vploleNUhjOsqYGT9Nh+YF+E
-         XT/WkJyof6HkV6Lid/5xdBQSqfGTYBpVzhGVbk87924txb5MF2HJhb/y7TWjvrs6u98w
-         +oFJUWanakCIVpkWjrUZhC59mOUMO3w4YknbcIq6bnXg3oRSBXBb3xyuXYL4LunQlVt2
-         fyzw==
-X-Gm-Message-State: AC+VfDzPdfDXPoog0x2RMIJL27j0wxnv5LGY3RqN8b6GHN1LLJbZAon4
-	HfRm+CHZ9DAuyvMNdd04/LOOIQ==
-X-Google-Smtp-Source: ACHHUZ4PZb7TYXvL7RYHNqfdcJ+lt6xZPJBxKI73CgRYcLmtnpjkmNEq8NjmkFFBYXv2bKypsJ0oAw==
-X-Received: by 2002:a17:907:9405:b0:973:93c3:16a1 with SMTP id dk5-20020a170907940500b0097393c316a1mr7380863ejc.19.1686042975479;
-        Tue, 06 Jun 2023 02:16:15 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.26])
-        by smtp.gmail.com with ESMTPSA id n7-20020a170906700700b00965d4b2bd4csm5415416ejj.141.2023.06.06.02.16.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 Jun 2023 02:16:15 -0700 (PDT)
-Message-ID: <6d476d6d-7100-7674-2e08-661516b75f43@linaro.org>
-Date: Tue, 6 Jun 2023 11:16:12 +0200
+ d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3GXwO+efv0Kz9jCJqUKq+o7y3U0ehUDN4LS139Asp7c=;
+ b=g2uUdFODh2Wnbw/9C7T9F8OGw1Eu5qPbpvc5RWw8T7URp47y4pVYWn1o/21vRJ/34Ub1gaQnfDh2i5xdAG3yjeNdAVicrDcBqAF6hGw9227xcVODTHk0LEceXLJcgt8A2oINFA8T86VOLpjZYEXfuNSBHNDBomobraZCoGNbkX8=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=corigine.com;
+Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
+ by LV8PR13MB6397.namprd13.prod.outlook.com (2603:10b6:408:185::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6477.18; Tue, 6 Jun
+ 2023 09:16:34 +0000
+Received: from PH0PR13MB4842.namprd13.prod.outlook.com
+ ([fe80::eb8f:e482:76e0:fe6e]) by PH0PR13MB4842.namprd13.prod.outlook.com
+ ([fe80::eb8f:e482:76e0:fe6e%4]) with mapi id 15.20.6455.030; Tue, 6 Jun 2023
+ 09:16:34 +0000
+Date: Tue, 6 Jun 2023 11:16:26 +0200
+From: Simon Horman <simon.horman@corigine.com>
+To: Paul Fertser <fercerpav@gmail.com>
+Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, Rani Hod <rani.hod@gmail.com>,
+	stable@vger.kernel.org
+Subject: Re: [PATCH] mt76: mt7615: do not advertise 5 GHz on first phy of
+ MT7615D (DBDC)
+Message-ID: <ZH75apdT19WDrwS2@corigine.com>
+References: <20230605073408.8699-1-fercerpav@gmail.com>
+ <ZH72YwgpywPNxbd2@corigine.com>
+ <ZH74kw4M15qjDbTz@home.paul.comp>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZH74kw4M15qjDbTz@home.paul.comp>
+X-ClientProxiedBy: AM0PR10CA0023.EURPRD10.PROD.OUTLOOK.COM
+ (2603:10a6:208:17c::33) To PH0PR13MB4842.namprd13.prod.outlook.com
+ (2603:10b6:510:78::6)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH 3/6] media: dt-bindings: mediatek,vcodec: Remove VDEC_SYS
- for mt8183
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- kernel@collabora.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20230605162030.274395-1-nfraprado@collabora.com>
- <20230605162030.274395-4-nfraprado@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230605162030.274395-4-nfraprado@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|LV8PR13MB6397:EE_
+X-MS-Office365-Filtering-Correlation-Id: ed23e329-6d84-4001-06c0-08db666eb939
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Bva3dSlb2q0Tv8VQw6zzCjTRV04+T/fkxJcFi/Hvk+CG060ExRzf3q8RJQ/wdCZ0FdxRK0i6Iaijaqu15TXGl0fdEEiSeXA3USWSzdrZeeBcmxb347jR2KOiwDKtXYIEcDGL1Efths/tMj4uVtV2UKRTTAzc5Qr0xzdVaRUQNoivyZUEyGZg7BqHiPBJDfn10pvcUZaqHdJ928x4VXewx2erxATVAkP08A9a2OOLQE1iXncQvpQKIkAuHM36GEf7rCgzqjCKw7oXlr2ln8Asbh1kHrkHELZn6bJ1ApIkfv9FiOAAJCvHJZowLVxqN5qk+NS4SR+VWnTeH6T5m+Lo/HpvU8fXqgYbk/ncrOYqM5D1GcUa7/zPv4YJdNPdteuxqDFBo8ewcioothiz+A4RuO/QWHuUD64zNLqjDeyE5WHCnf2sdpnWPWjzv/pzI9WYOoU27MjoDxwJCj5rD0jJ2xtIlNPrgSkjlKVuvCG515OZSDYD/BxkE/ZeiVV+FCwe1S2SZX0WWBxT+EnZDDd0b7Ws3CpTu7Drf+tDjocCrSo=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(366004)(376002)(396003)(346002)(39840400004)(136003)(451199021)(66476007)(66946007)(2906002)(478600001)(316002)(8936002)(6916009)(4326008)(8676002)(41300700001)(54906003)(44832011)(66556008)(6666004)(7416002)(5660300002)(6486002)(6512007)(6506007)(966005)(38100700002)(186003)(2616005)(83380400001)(36756003)(86362001);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?S3xnnuW5GL0osBAqZNmyod4gQGv8AA9m3V8/MhWK5qPUublK1G9QFEqJ+9Ag?=
+ =?us-ascii?Q?wBtWdTLj3oVBSBSdqoVVDyyZ4775huYMG1o8FLOKxIbXdZ+4JWg2QzYXKyb4?=
+ =?us-ascii?Q?BBhLMtRC+90iC6t2FsDkPlmpHj0F/oM9Y9zwbLt34SFBoIdr6wytoatxYWPY?=
+ =?us-ascii?Q?E9IOllte5ZHWa4V2lGSUQNR9vQkOcJ/I/PxK0w0tfR7EQjIwONpKf4f/sgKZ?=
+ =?us-ascii?Q?Sg3Fn1ppkU3nBg4hAPgWjThwugHsq4rfqjUJlGm9RVaqLlW9GKpn8wmq/f/7?=
+ =?us-ascii?Q?eKPMbDiDNbzQ9DCxXKH23Aknw7F15DrFe9gN6yV6VKNxUGNYvQsVlHDHmvnA?=
+ =?us-ascii?Q?ZTSBtquHWHuS/vA4p1DhFov8SJyHXpO6Q8SsfcQJaoTOqiMY5l3e+6xY2cLQ?=
+ =?us-ascii?Q?aAf0wd5+AlZngUEBYtwTkOamBGeqty6YYJBRFAyvAe2/FJVQjIdE251bU0vl?=
+ =?us-ascii?Q?+u2s6cTo1s4W3fWHG8Jzk6vy1S5oAU7tnkNhWPjQ65W8xoZIP3eXWhSVPhgL?=
+ =?us-ascii?Q?DW4By5IPGP9zc8ZXk1sPDXxcxkbBFbDazOQwVUuenFNrJyzWjVtG2bdKNShM?=
+ =?us-ascii?Q?2vnX+/A9P365dFOCdIGZFCRXvsQJEKgLri0JzmXTBuwX8IyNsVTsRGHNS9Ht?=
+ =?us-ascii?Q?ieffh3eSxW8EuQi3lljPROJuHPMsHzREB7aDFBM5OAqYlWiq0y+Rum9GadZv?=
+ =?us-ascii?Q?mMIFUk0B61u9JrBO6TLxJ6+MHmE5vdOE3VXtD+Kmv6594mxf+AUQaMdkK73V?=
+ =?us-ascii?Q?ykI9JRon0x8Qhh1Pyj3AJ2sibm7tv9cpnya/lbJatMXicazvauI+v4fxOYOv?=
+ =?us-ascii?Q?ZAYjbs0ZwZHdmqMD3XJ1rBSXZ8CZ1cNOHtCK8edYI8goBiKztY84r7qzxUlR?=
+ =?us-ascii?Q?49ekZMwrulcra5BRU0/39aP1xQh5gQLyHvMcCwHk/YL9gakmFVhDDT0rBMGH?=
+ =?us-ascii?Q?PLDu7B8KqkcgVJ1bSOraBmj56w7bX/O9G0GNYI1OCQcxWkRuAiMcmrAdpztH?=
+ =?us-ascii?Q?fEWglg0TeIsZ8l+5no8mG65cQxS/ps/8iWruesLn+JHx6Nf8/bR10nYr3rVY?=
+ =?us-ascii?Q?w16WGLEOBpahbe/rgFWguSsaXT9E+8WiSNvQ3tK9t7tMvmce2ZQOt/7trTRe?=
+ =?us-ascii?Q?mys1hcQfaVtG0wrHMbtI0cAvippyivldCdI9LYFQI/5aeg8lPa1iwm0v9TxA?=
+ =?us-ascii?Q?ZuL1Txvm2FFWMZTc8kT3iV4JDpyAgWk2LSNP6hjJWM49PN5WVPe7V3G65qM9?=
+ =?us-ascii?Q?jTOPhXdOCpueeRBTis8DqNg5pjcrZyGcsRbKt2cHoMTUzpHBtiWejTr9PFW8?=
+ =?us-ascii?Q?OqzT1L2GvhaGV5Gy2M0jY0ndeOMY0tRnva+85af7kZNAGY6WnHoNnwBcknoh?=
+ =?us-ascii?Q?iTaJ5V+lpL4ydTv2vZRZr2aSrAac8Xuxc/j0QCUzoiDk14OdGWv6fdNt8OcP?=
+ =?us-ascii?Q?ENTuxVmedZFd3+QwxD9Uoovxovek5og8orjV8+2TQr2T+jjleivc7g0EZppC?=
+ =?us-ascii?Q?jLR1Kuy9yw+UQhN91SOSFH7hwYZMaZUyw5ykSrUcZVhw1zDNRFHMmdSgHCHE?=
+ =?us-ascii?Q?ilpqkEhp+g6Fncz82wlJEHzPGswgc/RtutPJiV6uDQLxeH+q77vmssEgRpLW?=
+ =?us-ascii?Q?3yBixuj6LDqu8oxZFovpOSf5f+R6LV9MFwy3SxrAABTOwprxN1615k4FVA9v?=
+ =?us-ascii?Q?u5uuiw=3D=3D?=
+X-OriginatorOrg: corigine.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ed23e329-6d84-4001-06c0-08db666eb939
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2023 09:16:34.4050
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 6cAaxU2xVsu2rcQlu9/lx7Wb4ImZWiqd8HiFcMUHD/4Vic2eNir1CoqJYQEWVfzk6gYcJl3U9FPYZx84gjPGDpNED1JJ9HKGQpSxwUNa2PI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR13MB6397
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_021616_986181_D134BF42 
-X-CRM114-Status: GOOD (  24.58  )
+X-CRM114-CacheID: sfid-20230606_021649_571168_A5562B42 
+X-CRM114-Status: GOOD (  16.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,106 +148,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/06/2023 18:20, Nícolas F. R. A. Prado wrote:
-> The binding expects the first register space to be VDEC_SYS. But on
-> mt8183, which uses the stateless decoders, this space is used only for
-> controlling clocks and resets, which are better described as separate
-> clock-controller and reset-controller nodes.
+On Tue, Jun 06, 2023 at 12:12:51PM +0300, Paul Fertser wrote:
+> Hi Simon,
 > 
-> In fact, in mt8173's devicetree there are already such separate
-> clock-controller nodes, which cause duplicate addresses between the
-> vdecsys node and the vcodec node. But for this SoC, since the stateful
-> decoder code makes other uses of the VDEC_SYS register space, it's not
-> straightforward to remove it.
+> On Tue, Jun 06, 2023 at 11:03:31AM +0200, Simon Horman wrote:
+> > On Mon, Jun 05, 2023 at 10:34:07AM +0300, Paul Fertser wrote:
+> > > On DBDC devices the first (internal) phy is only capable of using
+> > > 2.4 GHz band, and the 5 GHz band is exposed via a separate phy object,
+> > > so avoid the false advertising.
+> > 
+> > Can I clarify that the second object won't hit the logic change
+> > below and thus be limited to 2GHz?
 > 
-> In order to avoid the same address conflict to happen on mt8183,
-> since the only current use of the VDEC_SYS register space in
-> the driver is to read the status of a clock that indicates the hardware
-> is active, remove the VDEC_SYS register space from the binding and
-> describe an extra clock that will be used to directly check the hardware
-> status.
+> The second object (external 5 GHz phy) doesn't have an EEPROM of its
+> own, and is created explicitly with just this band enabled:
 > 
-> Also add reg-names to be able to tell that this new register schema is
-> used, so the driver can keep backward compatibility.
+> https://elixir.bootlin.com/linux/latest/source/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c#L104
+> https://elixir.bootlin.com/linux/latest/source/drivers/net/wireless/mediatek/mt76/mt7615/init.c#L573
 > 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
-> 
->  .../media/mediatek,vcodec-decoder.yaml        | 29 +++++++++++++++++--
->  1 file changed, 27 insertions(+), 2 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
-> index 6447e6c86f29..36a53b2484d6 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
-> @@ -21,17 +21,21 @@ properties:
->        - mediatek,mt8183-vcodec-dec
->  
->    reg:
-> +    minItems: 11
->      maxItems: 12
->  
-> +  reg-names:
-> +    minItems: 11
+> So it won't hit the logic change and it will be limited to 5 GHz.
 
-maxItems
+Thanks Paul,
 
-> +
->    interrupts:
->      maxItems: 1
->  
->    clocks:
-> -    minItems: 1
-> +    minItems: 2
+in that case this patch looks good to me.
 
-It does not make any sense. Just two patches ago you made it 1! Don't
-add incorrect values which are immediately changed in the same patchset.
-
->      maxItems: 8
->  
->    clock-names:
-> -    minItems: 1
-> +    minItems: 2
->      maxItems: 8
->  
->    assigned-clocks: true
-> @@ -84,6 +88,24 @@ allOf:
->          clock-names:
->            items:
->              - const: vdec
-> +            - const: active
-> +
-> +        reg:
-> +          maxItems: 11
-> +
-> +        reg-names:
-> +          items:
-> +            - const: misc
-> +            - const: ld
-> +            - const: top
-> +            - const: cm
-> +            - const: ad
-> +            - const: av
-> +            - const: pp
-> +            - const: hwd
-> +            - const: hwq
-> +            - const: hwb
-> +            - const: hwg
->  
->    - if:
->        properties:
-> @@ -108,6 +130,9 @@ allOf:
->              - const: venc_lt_sel
->              - const: vdec_bus_clk_src
->  
-> +        reg:
-> +          minItems: 12
-
-so max can be 1000?
-
-
-
-Best regards,
-Krzysztof
-
+Reviewed-by: Simon Horman <simon.horman@corigine.com>
 
