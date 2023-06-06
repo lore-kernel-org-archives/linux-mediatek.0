@@ -4,75 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A34F0C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 09:00:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF92AC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 09:03:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QjwyJpQVDeFKjZxk3Pi6v1niFo2bjD6QgB8a2gI8X1M=; b=iPlsZjI7Y86BjNPDUdge2JXBmY
-	n+CILrT/6njGTZeo9seHkHGIPEpMBS31wKYxe493B5pXDCocOCtKS9ttfLwRKPZKZxsBEK0w8BpLO
-	CMLs6CGdFKY6b6pGl0Eu0YefgioSOuMibCrmw2rvmNe3oLxt3aksd2Ag6yHrgRSlza9VpaXbOm3I3
-	QrN6fWiv8VH4VsSTIatZZoN+y6KA0geX1nD+1Rt3dXwhUYHxqYrNSJp4zo1cmXqjdxBWcwRSJMAkG
-	wwI8WVJmVfqGB8K/Iy0j5TvaMYHh2G9sp0t0dR3zgaIzMgIIzeKkUDLIdtX/rfLO/oZbo7hGvZ0px
-	9TcLjefw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uiMD/Wi2OORyyqz7AWIVv2bvNz5qMuDJx32kVoEMjMs=; b=nYRQ7hVlCh1ht7L4SE6hgZNU71
+	g/Hj/mDZnzx+WZRfQtPX74qwkE5NrCfL59hFC9x86M13h4egcgrW242ZOmv/083NggKvtM/0m5DGu
+	Yy7gm3YEXh6oTJbwueZkviTFlLK/sbdMHLibTQPA3LacUeO61e26qqrDJwsfsrIJSZN9RuLN5WQTO
+	jxoeDqZD0HjBIVYZHV2Wh6+rczNJ0zgOYidMP0u9t56IyS340DcNFkK5XEan6L1MHXpzBDxx4ja01
+	2w6kyyZWgok/AJNCO+siW7hiv042Y8Ne7BVv7jAQchNvImv2XjSQcaSU/ii+s9RWdmJ3MFvTnLFc7
+	VVDz2y5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6SXp-000vJs-2Q;
-	Tue, 06 Jun 2023 09:00:01 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1q6SbW-000vv2-0w;
+	Tue, 06 Jun 2023 09:03:50 +0000
+Received: from mail-co1nam11on2072e.outbound.protection.outlook.com ([2a01:111:f400:7eab::72e] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6SXm-000vHw-1z;
-	Tue, 06 Jun 2023 09:00:00 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 967B66606EAE;
-	Tue,  6 Jun 2023 09:59:53 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1686041994;
-	bh=9ewOsk6wZ9Jauj2PbHOf5mz8ugJ5ye+vxu0IkujUUGM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=c208n0poJG3aPntXbpwumJ0syi8LNesiiX0Md8aZi24tVcK5IDcUiGxAuEVEVCxsh
-	 4zvzpNT9qNnIjm6Sfr6iehoBOxJ25chXnP87w2c92L3FGWPN+fPMQssQgEzNL8inxw
-	 yqBtF1mXYJLgoOfH5JB0+nJnoBaOIiT7ObZqoFSrm6isErF8c7VhSG1fX022R32the
-	 LMKEd3vTfUwjjy8gdVp7DqG75txUVQsirut/ssvttwAO/xOfwkwroGClJL8AcmGoQj
-	 QX6y1VFRXZy9mLO0EiCszCAb+tHEVXjCZsRfFAsTgJdwCoYLqBC/8roiHugWu9cnNr
-	 pehh7f3UOkU5A==
-Message-ID: <af550c9b-b776-db8a-b2e5-8fbfad7d5a03@collabora.com>
-Date: Tue, 6 Jun 2023 10:59:50 +0200
+	id 1q6SbT-000vu6-2C;
+	Tue, 06 Jun 2023 09:03:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Y5n3o0X/PJ2jlhMrTk5pxxP3ltpIX3TCGhbPmWLpUNMeJhHTWB6gkaCl6SnymUpwfYe00Hmz6lWEtpkaQUGazxhfg4BDJJ1B8GElGCg4rM+fAEet6IrGWj0IoxlMJ88vwFIxewgdjbNs6Kj8UmACLTKyhj+n8jGNNXeDnlV7CKU0kWY1pkiPY+QwXtIYCNDyJZipMrz+YLHWObnyUS21dcNFkWDxGdOXorqA6FxiQK81k6XoK9gFvTxbyPiGeNNqvJhUYxeeGl/wm/6u9rLq/4Jc1FguWUpgMYqv4IR0AdjypyMHx/t79oX8FlblRTHdPuBnGXdp033OuIY95eQ01A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=uiMD/Wi2OORyyqz7AWIVv2bvNz5qMuDJx32kVoEMjMs=;
+ b=Ki2v61LyxR0pIyfiN3XcZ/3B4bvDayynqSFMReDq9GxCdDNQzVKXNFv+4sNYboX7dMo4F4PfeAq2loHMuR3mIN6qLOOCdFQCmRqOLnJJn/19mKr/NLbqABtFdA+Jwvy7UXs0CO3qqjqRJmqVSGNBj0/5kPvHcmjo3kL/gHzBg3mBy0H6dAXuSMe4h3svQxfCrF8qiNGCWu7aSH+TOo7dzfW9oFfg+LGSjAHkjL/2Q2LIeRflwXM9h8vkNRjSXRGle1epPYpNm32tuo3kkDMaAnoDEKfK3gyKex5abH1vVQSqC6s8tq5xMEgKJoTPaI0c+A2lO0K4Sj6N+hw86LVcYQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
+ dkim=pass header.d=corigine.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=uiMD/Wi2OORyyqz7AWIVv2bvNz5qMuDJx32kVoEMjMs=;
+ b=k7SH6W+JZt1GFJdiXKlrNwslkhfHwUG4brf37bZcbYSeO49hcAWP2dAgO2DSBWlW5vIb+2iqz9OPQO6zUX/D+bwAnL5bVgb1dPQ9OVXrc0LUCDpdBcDbn3bkflL4hGETtdzjtKV/2HtkKWaWMwocXdMkYhBb+I233kURwk+FE9U=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=corigine.com;
+Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
+ by CH2PR13MB3895.namprd13.prod.outlook.com (2603:10b6:610:94::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.33; Tue, 6 Jun
+ 2023 09:03:39 +0000
+Received: from PH0PR13MB4842.namprd13.prod.outlook.com
+ ([fe80::eb8f:e482:76e0:fe6e]) by PH0PR13MB4842.namprd13.prod.outlook.com
+ ([fe80::eb8f:e482:76e0:fe6e%4]) with mapi id 15.20.6455.030; Tue, 6 Jun 2023
+ 09:03:39 +0000
+Date: Tue, 6 Jun 2023 11:03:31 +0200
+From: Simon Horman <simon.horman@corigine.com>
+To: Paul Fertser <fercerpav@gmail.com>
+Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, Rani Hod <rani.hod@gmail.com>,
+	stable@vger.kernel.org
+Subject: Re: [PATCH] mt76: mt7615: do not advertise 5 GHz on first phy of
+ MT7615D (DBDC)
+Message-ID: <ZH72YwgpywPNxbd2@corigine.com>
+References: <20230605073408.8699-1-fercerpav@gmail.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230605073408.8699-1-fercerpav@gmail.com>
+X-ClientProxiedBy: AS4P190CA0044.EURP190.PROD.OUTLOOK.COM
+ (2603:10a6:20b:5d1::8) To PH0PR13MB4842.namprd13.prod.outlook.com
+ (2603:10b6:510:78::6)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH v3] mmc: mtk-sd: reduce CIT for better performance
-Content-Language: en-US
-To: =?UTF-8?B?V2VuYmluIE1laSAo5qKF5paH5b2sKQ==?= <Wenbin.Mei@mediatek.com>,
- "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- "riteshh@codeaurora.org" <riteshh@codeaurora.org>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
- <Chaotian.Jing@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "adrian.hunter@intel.com" <adrian.hunter@intel.com>
-References: <20230605060107.22044-1-wenbin.mei@mediatek.com>
- <47ee4c8b-dedf-d69a-dceb-dcaa34ddd0e1@collabora.com>
- <0de574510def6fa736a6dceaf8423ee80561642e.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <0de574510def6fa736a6dceaf8423ee80561642e.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|CH2PR13MB3895:EE_
+X-MS-Office365-Filtering-Correlation-Id: 26cc7868-b010-46fc-6977-08db666ceb25
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 6vLL0v4tyHCgLpyIhOh5And6p9DzQiC8mzNh/XrKZTeSRzFl79rb6IQGJUS6FyEUXDNA92cjb4+9MPABPY8hFhTJ9FAfD1QGOracLVMRG6PbCi8QzMCqxQQ/dJXwX5CYhRgwT591CU/WWE+9JvQfY0p+0qcRYvUjqjASUf3e2KsndC5JcufVApAINOmzt7JCKj0LmueCbuhOrp6xUUxk6DiTEe8CGGIHAvyRQsaYqugRVhBEJrOYqx6oAAYVONrz0H5Gr1p1EGIJrT2OrlCDJC3YGnMLNfFw4xPJOLIEdmnNlO9cHGcw1wQuR/0lbX27VeunTkmHGX+VGnGsd4Fl5N4oPnGRlBoiEEV7etRePovtv8xCmobncHRtBDvE1ZA//FLr5SZwjfzltyBPwLuS0QoZ8k5DquMNxToDHY8w3/mAQThGihNVmvWHFs3p6Pq8cBAOnNMhMp0UhG3w9MAGg3hcr12zVOdfVIEJsTT2tGjPHFJcc4KokYZYGHdSQayu8wV/UPXtA59DFSvTxfMOqRJazKykN/hvWaFYwYm6zYOVwphKIu8JIi7MnHYtUotH3Be2m+TIz3Z4IYZToZlGdksfi7F7EisXvYryl3/8HOU=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(136003)(346002)(366004)(39840400004)(376002)(396003)(451199021)(83380400001)(54906003)(4326008)(66476007)(6916009)(966005)(66946007)(66556008)(38100700002)(6666004)(6486002)(478600001)(2906002)(36756003)(186003)(316002)(8936002)(8676002)(2616005)(41300700001)(5660300002)(86362001)(44832011)(7416002)(6512007)(6506007);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ztEVLp+RRakxsPZNTVbGTgc7OWpXeRPSOI7E5SDIz5khooI2KOOrkIyk/NEm?=
+ =?us-ascii?Q?PePFG3IzttXUjOespF5b2BVmGIwEI5++Lhvl+WPsyS1GrVJF+ZudnbKbC0qR?=
+ =?us-ascii?Q?mr91M/OhtapnoAo17bfakdVzstu+1yFaIjfrA+EOOzThB7HojJuve6J5Y0+k?=
+ =?us-ascii?Q?uWaCVChnTCdAifGQisLPBtoZ8fjDy+1gFiTeseWPPD7A2YbYD5ln14XzcJq0?=
+ =?us-ascii?Q?PR2xMKRJDUdFENrKz+j4/MreN9/cBgPR8ZS/K6U90J7kF3M9WBbBbc9Brx4H?=
+ =?us-ascii?Q?wV09YUr8u1bgAZJhrLEh47RKxccRB0R44iu+IWwwVEHQ6+rJRbRbxBk9wdN4?=
+ =?us-ascii?Q?Z9odqUhqHQEzrxydqthm4G230T7Z/y6SymqJICc+DC+h1d5pGtoQIaLL8mWT?=
+ =?us-ascii?Q?LNXTcitJyi7+RLPtcTedX/zkzF6nceW1/vuYs2slhwG404fHXY2/PbAZq1oj?=
+ =?us-ascii?Q?cr/IaENxeM5dpIp3iC5T2AHjt2pAWMSoF6jvbOsJ1xkvhweiqNza02M+FUDC?=
+ =?us-ascii?Q?+7ZRDFraYOvjkZYEv2UCmYI8z48QGcYqHHe9i0Mb3THA/z6mG+w3RUKSGfBd?=
+ =?us-ascii?Q?n84AMGjLfpZsuCG124+YoeyU6MwQJ8yVKQSzBM1tETzXlYw9zhmG3ofST5xT?=
+ =?us-ascii?Q?BCxkQBIf0D0GHsYy6Ql18LtU8lQUIOQPnR9Ns22YltgNqXDdKvq2utCuNh5S?=
+ =?us-ascii?Q?eOOEbnTTC3PK7KcaKbSYlnc5JQMZvSaTp8KXSmmAAKL0hJrAfhJhYyVRFrkX?=
+ =?us-ascii?Q?ZDOWumtRoy75yv0macrsbRVDdcoTLDkU+9KqDPfNNvk7S3hcFmeLzwklOaaT?=
+ =?us-ascii?Q?vMVpWQlWENz2UJqnzJbFekswc5v7SUoJljrsX3QTjRnHXbRYa2P0xWFmJIkb?=
+ =?us-ascii?Q?5hkYLgWhx4btvzbFVRkUe3mXswzU0M9HYa97wX4DK+0CKog125ZFeANDBmcj?=
+ =?us-ascii?Q?vANL7UFkwd0/vfWyPcSzTnQ5wDlHkOBcdh8h5keSgA68wH8e3NNEFutWnfgS?=
+ =?us-ascii?Q?1AsGoqNxWPkoia8zJzYTIUe6kGXikBoUIbIB+QOCUklmjUF20XnbVng4q/PM?=
+ =?us-ascii?Q?2KfimcBlruQUn7e1wuwYf7n77Qeundof53R7cwd4hRPQRcIMLLUJeQnRr1Gt?=
+ =?us-ascii?Q?+6YCz/Qw5Tdu3GoDbGgf2/+cNt9kgjKQyju+HeGfYz5fvxj/Kp5Ap8K+Q72R?=
+ =?us-ascii?Q?KcBcgwAKqO1rI6iseDnL/gid8EMTw6P9ECLNojwGhcrjSnyB4/bRHNcxqCMT?=
+ =?us-ascii?Q?intWGsLzCHNhsFQuszVoaZVF9E6mVqUxHTfNtM2I8ib/ysV8noLOLIrF3Yr9?=
+ =?us-ascii?Q?5Dx2Rd7qNVdeHPLsHXwId97LUMHT+4JUD3afGqteEKo8IdS/llR1zVblcr1I?=
+ =?us-ascii?Q?ahj4R9ueiXTRXNrV8XKT0Z4Pys8PhD26TxV6MFXNQ0pnVf+EnoLlUVYPQOa3?=
+ =?us-ascii?Q?zHWqsbBlWEOgTB7k5/4e8lP1ZA/xdViQg7gtfQuDgvM94vsoNPZEAziNSrxw?=
+ =?us-ascii?Q?nCNlgP1ghw7P59Dx+3eaNgk2ZrStRKfS32J85EmZ2bxB/psYonyB6DYXsWWi?=
+ =?us-ascii?Q?7j5SH2C/DZ7fBTf+1E9QThu4noS4ZzqUpGPMhlEVR62HoCNeCv+us5KhJ0V3?=
+ =?us-ascii?Q?iY2xPwkTcCb1IEFSl7+yxMiboi9CT7lH1ac2YrwVXVL3KDl6MnVFJUg3hBVr?=
+ =?us-ascii?Q?DeBpuQ=3D=3D?=
+X-OriginatorOrg: corigine.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 26cc7868-b010-46fc-6977-08db666ceb25
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2023 09:03:39.2199
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ivYV1jnjasOgO/+FCQ2pnmw8iV9E6e7iFknJnQUwdRZDB2XwwLDDr4aSWHRccwriP7QXh2j+CtiAh/ePwHECEf+FgoSsIk5cDhHNn/zSWNI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR13MB3895
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_015958_834968_37A7CCC0 
-X-CRM114-Status: GOOD (  21.04  )
+X-CRM114-CacheID: sfid-20230606_020347_746542_B6EB9453 
+X-CRM114-Status: GOOD (  16.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,89 +146,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/06/23 10:17, Wenbin Mei (梅文彬) ha scritto:
-> On Mon, 2023-06-05 at 10:48 +0200, AngeloGioacchino Del Regno wrote:
->>   	
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>   Il 05/06/23 08:01, Wenbin Mei ha scritto:
->>> CQHCI_SSC1 indicates to CQE the polling period to use when using
->> periodic
->>> SEND_QUEUE_STATUS(CMD13) polling.
->>> Since MSDC CQE uses msdc_hclk as ITCFVAL, so driver should use hclk
->>> frequency to get the actual time.
->>> The default value 0x1000 that corresponds to 150us for MediaTek
->> SoCs, let's
->>> decrease it to 0x40 that corresponds to 2.35us, which can improve
->> the
->>> performance of some eMMC devices.
->>>
->>> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
->>
->> OK! That's almost good now. There's only one consideration here: if
->> MediaTek
->> SoCs *require* msdc_hclk to calculate the CIT time, this means that
->> this clock
->> is critical for CQHCI functionality.
->>
->> If msdc_hclk is not present, CQHCI cannot work correctly... so you
->> don't have
->> to cover the case in which there's no msdc_hclk clock: if that's not
->> present,
->> either fail probing, or disable CQHCI.
->>
->>> ---
->>>    drivers/mmc/host/cqhci.h  |  1 +
->>>    drivers/mmc/host/mtk-sd.c | 47
->> +++++++++++++++++++++++++++++++++++++++
->>>    2 files changed, 48 insertions(+)
->>>
->>> diff --git a/drivers/mmc/host/cqhci.h b/drivers/mmc/host/cqhci.h
->>> index ba9387ed90eb..292b89ebd978 100644
->>> --- a/drivers/mmc/host/cqhci.h
->>> +++ b/drivers/mmc/host/cqhci.h
->>> @@ -23,6 +23,7 @@
->>>    /* capabilities */
->>>    #define CQHCI_CAP0x04
->>>    #define CQHCI_CAP_CS0x10000000 /* Crypto Support */
->>> +#define CQHCI_CAP_ITCFMUL(x)(((x) & GENMASK(15, 12)) >> 12)
->>>    
->>>    /* configuration */
->>>    #define CQHCI_CFG0x08
->>> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
->>> index edade0e54a0c..c221ef8a6992 100644
->>> --- a/drivers/mmc/host/mtk-sd.c
->>> +++ b/drivers/mmc/host/mtk-sd.c
->>> @@ -473,6 +473,7 @@ struct msdc_host {
->>>    struct msdc_tune_para def_tune_para; /* default tune setting */
->>>    struct msdc_tune_para saved_tune_para; /* tune result of
->> CMD21/CMD19 */
->>>    struct cqhci_host *cq_host;
->>> +u32 cq_ssc1_time;
->>>    };
->>>    
->>>    static const struct mtk_mmc_compatible mt2701_compat = {
->>> @@ -2450,9 +2451,50 @@ static void
->> msdc_hs400_enhanced_strobe(struct mmc_host *mmc,
->>>    }
->>>    }
->>>    
->>> +static void msdc_cqe_cit_cal(struct msdc_host *host, u64 timer_ns)
->>
->> static int msdc_cqe_cit_cal(....)
->>
-> Sorry, I missed this comment.
-> I think there is no need to return a value.
-> Becuase msdc_hclk is exist, and if not present, it will return earily.
-> Even if it goes to the default case in the switch flow, we will assign
-> a default value.
-> So I think it's better to return null, do you think it is okay?
+On Mon, Jun 05, 2023 at 10:34:07AM +0300, Paul Fertser wrote:
+> On DBDC devices the first (internal) phy is only capable of using
+> 2.4 GHz band, and the 5 GHz band is exposed via a separate phy object,
+> so avoid the false advertising.
+
+Hi Paul,
+
+Can I clarify that the second object won't hit the logic change
+below and thus be limited to 2GHz?
+
+> Reported-by: Rani Hod <rani.hod@gmail.com>
+> Closes: https://github.com/openwrt/openwrt/pull/12361
+> Fixes: 7660a1bd0c22 ("mt76: mt7615: register ext_phy if DBDC is detected")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Paul Fertser <fercerpav@gmail.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-
-Yeah ignore this comment; I've noticed that HCLK is already mandatory, otherwise
-the probe function will fail earlier anyway.
-
-Thanks,
-Angelo
-
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
+> index 68e88224b8b1..ccedea7e8a50 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
+> @@ -128,12 +128,12 @@ mt7615_eeprom_parse_hw_band_cap(struct mt7615_dev *dev)
+>  	case MT_EE_5GHZ:
+>  		dev->mphy.cap.has_5ghz = true;
+>  		break;
+> -	case MT_EE_2GHZ:
+> -		dev->mphy.cap.has_2ghz = true;
+> -		break;
+>  	case MT_EE_DBDC:
+>  		dev->dbdc_support = true;
+>  		fallthrough;
+> +	case MT_EE_2GHZ:
+> +		dev->mphy.cap.has_2ghz = true;
+> +		break;
+>  	default:
+>  		dev->mphy.cap.has_2ghz = true;
+>  		dev->mphy.cap.has_5ghz = true;
+> -- 
+> 2.34.1
+> 
+> 
 
