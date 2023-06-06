@@ -4,97 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CA0EC7EE2C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 09:13:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B558C7EE24
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 09:16:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NJ4Rlr1BwW/VlJIKDrxqTk8ExusP1b+351Bo/DAekLI=; b=SQALkqzrP/lfjh+1otRlV7CgeN
-	36s5rRl11M5ZQP2iYjkTJFWvuFsDIEuayaFYSQX2QGbB3r3A5566/+kKFr1K/xZdaaz8MOWxuzPmf
-	JBWEVd0awSwimRBz9OIt9rgbnjh4yjxxM0KGv/Op5rlPO9DB8V5isS+ddENXTDGke+Rz0xlwK0iJd
-	HrMc0e9Nv2oPVH9AhUpHOZXz6RsSquoXPdSmaRZOh6Va9XbVk7VK/1/ihHm2y/ntlp83qVEz7g/vk
-	CQ8PiAIVu9S5N48E4yA4RiA55kZi+WOZQtsJoSoKq1XQHxxct9J/p+bNwSyVRvJPsXc8jz2NeIrOx
-	5GRjmoDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XBYlIdpTft+IILWfU8QKB41NOLs5b4pNVwgWdOe7tqc=; b=25DerzvFFJRYm8dUckbhyabDhB
+	gCrRCWP/PmIp6yxpyvtrFYWo2EX4DJPVTPqOpHRN0OgwpsfmZXTnoYqdyU726IgD31pbo+CfxAZiD
+	kiiKWemGkEgkc6P32zTE+HnqoLPRF8c3+QvwYqYwgiHKVvdze572+stYRAYrXnDHmTGhZR9ON9w42
+	RGMCFhNjLCqmf6kEbiUnGMUat8Lj3TrqPpOXeK9H3r4aQ1Jv9mkhXrAZwkpHsBWdszNjMjAh5GEw9
+	E3nURfJiA3FEgLYrwbdHCEt3gJgNlIj/eerQDWMWy2eAJelLLon0+ZDk0IN7vatGEFbQh4+W1Xkh7
+	7dIjs/ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6SkU-000xXd-04;
-	Tue, 06 Jun 2023 09:13:06 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1q6Snb-000y3C-2h;
+	Tue, 06 Jun 2023 09:16:19 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6SkQ-000xVo-2j;
-	Tue, 06 Jun 2023 09:13:04 +0000
-Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-4f624daccd1so3089255e87.0;
-        Tue, 06 Jun 2023 02:13:01 -0700 (PDT)
+	id 1q6SnY-000y1s-32
+	for linux-mediatek@lists.infradead.org;
+	Tue, 06 Jun 2023 09:16:18 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-9768fd99c0cso741512766b.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jun 2023 02:16:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1686042779; x=1688634779;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=NJ4Rlr1BwW/VlJIKDrxqTk8ExusP1b+351Bo/DAekLI=;
-        b=rJCxYoqFxhnln+7uwfKhrIfVeudKadx6t+qWSNl/mO36w181J5vx75LfWV5i11vLFs
-         bFP+a/t+PuKp8nlle+2pdSjfXhhXmTzfwi9fMz69Hp/s+kud9IjGZbBWjacaQPRa37sI
-         jhOndXcXfrKpC7FphTyHg0sSzIKfsxC6yuK9J3DTGk96Ec177oUC5xocA138xe1ztiO0
-         zlnuQk8oblN0AN22Kw41Y1ubN4pMbkXzIopu9zIVxoz+fRNQftLLQqEvb45Q5+ytxwFP
-         Uey5DHh5UR7+F1rWtp0oabiNpu9RCA2sUe+Jf7rhD8GvtIHn+smy3Qo8xN03Uoqt4nSr
-         y9iA==
+        d=linaro.org; s=google; t=1686042975; x=1688634975;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=XBYlIdpTft+IILWfU8QKB41NOLs5b4pNVwgWdOe7tqc=;
+        b=vncFQqDlNQD4M5UowqZ7dH5lQ9V03vmSMwGeG54OCxGVIfCL8ROEWg+2m0+709wKLt
+         5WzqpiXlaMYIFX/QL93ikhZg08bbq3bKsm0NaUBQr61w4+MqTKBj1BADt+v3PC+X+V9Q
+         xidNvJRdtIIHT4eEOg9pPWnD2/hX23fZfSiWghBEClSAa5KX31VnDo6U0IkFnMg8/mMQ
+         gDfyxMq/BUJuV6WrO3voT7uDVUpFYdqFlyDJvPgrcpxnTJU495rJsoi789X0U822pN21
+         eba/ZjepKoQ2alj2V0QLqWdFEaDnZXHcX0fAPoDcmaaZOY/WK71/A6B1QgqmA/OJsD7w
+         EDDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686042779; x=1688634779;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=NJ4Rlr1BwW/VlJIKDrxqTk8ExusP1b+351Bo/DAekLI=;
-        b=kmP77GWw99XdJnAe78/jSy+N6cntr0AMZtEz6pSClngdFzCH73hZSFlrKQKm2HK7fu
-         DIqUS/XMxiPwaWKfK4Hzur3zrILrJ1LSdEC/Imrdu+I45xbfAKKUQJ0GZDt9pLQhjsbu
-         KoAahtdXLTuSuR33+cXD8SWF6dlAGhzaxjiEVldlxXZKVIoHuJlRpmQ168RMX8B+Oxkf
-         QAY6nY7R6tzJ63gk73aZKHXTN9+k9Hoh4KojE/O/X+wNgttLg2jht7HaMRwQ0XAe04dD
-         NGSnhSMars/ysdglXS6Sf/LTVQPF4e4OxIiPEoF+gGOdPj8JwPWFM5aAyWdOMftBb+v3
-         Ud6w==
-X-Gm-Message-State: AC+VfDxoC5Su1tY4E4n4vbdxtnWrDYwe2zhAhvECOV5tusONyvFAkzqA
-	roSar27c8kMxZpW9/s9V7k4=
-X-Google-Smtp-Source: ACHHUZ7NOlr9n+v7CD7+fCfytrUJRp+qlf8uQdrt9vuAMOBv8yz+ldjbrWuK96cVSTlsMrHia9ccFg==
-X-Received: by 2002:ac2:5455:0:b0:4eb:18d:91de with SMTP id d21-20020ac25455000000b004eb018d91demr853152lfn.43.1686042779293;
-        Tue, 06 Jun 2023 02:12:59 -0700 (PDT)
-Received: from home.paul.comp (paulfertser.info. [2001:470:26:54b:226:9eff:fe70:80c2])
-        by smtp.gmail.com with ESMTPSA id a24-20020ac25218000000b004f6337508afsm203558lfl.222.2023.06.06.02.12.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Jun 2023 02:12:59 -0700 (PDT)
-Received: from home.paul.comp (home.paul.comp [IPv6:0:0:0:0:0:0:0:1])
-	by home.paul.comp (8.15.2/8.15.2/Debian-22) with ESMTP id 3569CslI011312;
-	Tue, 6 Jun 2023 12:12:55 +0300
-Received: (from paul@localhost)
-	by home.paul.comp (8.15.2/8.15.2/Submit) id 3569CqTk011311;
-	Tue, 6 Jun 2023 12:12:52 +0300
-Date: Tue, 6 Jun 2023 12:12:51 +0300
-From: Paul Fertser <fercerpav@gmail.com>
-To: Simon Horman <simon.horman@corigine.com>
-Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
-        Lorenzo Bianconi <lorenzo@kernel.org>,
-        Ryder Lee <ryder.lee@mediatek.com>,
-        Shayne Chen <shayne.chen@mediatek.com>,
-        Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-        "David S. Miller" <davem@davemloft.net>,
-        Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-        Paolo Abeni <pabeni@redhat.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org, Rani Hod <rani.hod@gmail.com>,
-        stable@vger.kernel.org
-Subject: Re: [PATCH] mt76: mt7615: do not advertise 5 GHz on first phy of
- MT7615D (DBDC)
-Message-ID: <ZH74kw4M15qjDbTz@home.paul.comp>
-References: <20230605073408.8699-1-fercerpav@gmail.com>
- <ZH72YwgpywPNxbd2@corigine.com>
+        d=1e100.net; s=20221208; t=1686042975; x=1688634975;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=XBYlIdpTft+IILWfU8QKB41NOLs5b4pNVwgWdOe7tqc=;
+        b=JP1lcMb4FTN7TrQ9Px2AfQvbRle3JOalj7gYYalL/VVCn8Z1WQVoaPWfLTxGJ7AB8k
+         Ffz0aGBOkHJKTn842FrB9rfnoUTZUuy2uktcwCWE7rkW/Wv8BZaGcPQD+/1xo/kB4R+7
+         LESxdsva3yGDVUBV430EMn5QDj+qvRQaw3TldTUMT+w5vploleNUhjOsqYGT9Nh+YF+E
+         XT/WkJyof6HkV6Lid/5xdBQSqfGTYBpVzhGVbk87924txb5MF2HJhb/y7TWjvrs6u98w
+         +oFJUWanakCIVpkWjrUZhC59mOUMO3w4YknbcIq6bnXg3oRSBXBb3xyuXYL4LunQlVt2
+         fyzw==
+X-Gm-Message-State: AC+VfDzPdfDXPoog0x2RMIJL27j0wxnv5LGY3RqN8b6GHN1LLJbZAon4
+	HfRm+CHZ9DAuyvMNdd04/LOOIQ==
+X-Google-Smtp-Source: ACHHUZ4PZb7TYXvL7RYHNqfdcJ+lt6xZPJBxKI73CgRYcLmtnpjkmNEq8NjmkFFBYXv2bKypsJ0oAw==
+X-Received: by 2002:a17:907:9405:b0:973:93c3:16a1 with SMTP id dk5-20020a170907940500b0097393c316a1mr7380863ejc.19.1686042975479;
+        Tue, 06 Jun 2023 02:16:15 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.219.26])
+        by smtp.gmail.com with ESMTPSA id n7-20020a170906700700b00965d4b2bd4csm5415416ejj.141.2023.06.06.02.16.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 06 Jun 2023 02:16:15 -0700 (PDT)
+Message-ID: <6d476d6d-7100-7674-2e08-661516b75f43@linaro.org>
+Date: Tue, 6 Jun 2023 11:16:12 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZH72YwgpywPNxbd2@corigine.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
+Subject: Re: [PATCH 3/6] media: dt-bindings: mediatek,vcodec: Remove VDEC_SYS
+ for mt8183
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230605162030.274395-1-nfraprado@collabora.com>
+ <20230605162030.274395-4-nfraprado@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230605162030.274395-4-nfraprado@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_021302_882157_A68E444E 
-X-CRM114-Status: GOOD (  14.22  )
+X-CRM114-CacheID: sfid-20230606_021616_986181_D134BF42 
+X-CRM114-Status: GOOD (  24.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,26 +105,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Simon,
-
-On Tue, Jun 06, 2023 at 11:03:31AM +0200, Simon Horman wrote:
-> On Mon, Jun 05, 2023 at 10:34:07AM +0300, Paul Fertser wrote:
-> > On DBDC devices the first (internal) phy is only capable of using
-> > 2.4 GHz band, and the 5 GHz band is exposed via a separate phy object,
-> > so avoid the false advertising.
+On 05/06/2023 18:20, Nícolas F. R. A. Prado wrote:
+> The binding expects the first register space to be VDEC_SYS. But on
+> mt8183, which uses the stateless decoders, this space is used only for
+> controlling clocks and resets, which are better described as separate
+> clock-controller and reset-controller nodes.
 > 
-> Can I clarify that the second object won't hit the logic change
-> below and thus be limited to 2GHz?
+> In fact, in mt8173's devicetree there are already such separate
+> clock-controller nodes, which cause duplicate addresses between the
+> vdecsys node and the vcodec node. But for this SoC, since the stateful
+> decoder code makes other uses of the VDEC_SYS register space, it's not
+> straightforward to remove it.
+> 
+> In order to avoid the same address conflict to happen on mt8183,
+> since the only current use of the VDEC_SYS register space in
+> the driver is to read the status of a clock that indicates the hardware
+> is active, remove the VDEC_SYS register space from the binding and
+> describe an extra clock that will be used to directly check the hardware
+> status.
+> 
+> Also add reg-names to be able to tell that this new register schema is
+> used, so the driver can keep backward compatibility.
+> 
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+> 
+>  .../media/mediatek,vcodec-decoder.yaml        | 29 +++++++++++++++++--
+>  1 file changed, 27 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+> index 6447e6c86f29..36a53b2484d6 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+> @@ -21,17 +21,21 @@ properties:
+>        - mediatek,mt8183-vcodec-dec
+>  
+>    reg:
+> +    minItems: 11
+>      maxItems: 12
+>  
+> +  reg-names:
+> +    minItems: 11
 
-The second object (external 5 GHz phy) doesn't have an EEPROM of its
-own, and is created explicitly with just this band enabled:
+maxItems
 
-https://elixir.bootlin.com/linux/latest/source/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c#L104
-https://elixir.bootlin.com/linux/latest/source/drivers/net/wireless/mediatek/mt76/mt7615/init.c#L573
+> +
+>    interrupts:
+>      maxItems: 1
+>  
+>    clocks:
+> -    minItems: 1
+> +    minItems: 2
 
-So it won't hit the logic change and it will be limited to 5 GHz.
+It does not make any sense. Just two patches ago you made it 1! Don't
+add incorrect values which are immediately changed in the same patchset.
 
--- 
-Be free, use free (http://www.gnu.org/philosophy/free-sw.html) software!
-mailto:fercerpav@gmail.com
+>      maxItems: 8
+>  
+>    clock-names:
+> -    minItems: 1
+> +    minItems: 2
+>      maxItems: 8
+>  
+>    assigned-clocks: true
+> @@ -84,6 +88,24 @@ allOf:
+>          clock-names:
+>            items:
+>              - const: vdec
+> +            - const: active
+> +
+> +        reg:
+> +          maxItems: 11
+> +
+> +        reg-names:
+> +          items:
+> +            - const: misc
+> +            - const: ld
+> +            - const: top
+> +            - const: cm
+> +            - const: ad
+> +            - const: av
+> +            - const: pp
+> +            - const: hwd
+> +            - const: hwq
+> +            - const: hwb
+> +            - const: hwg
+>  
+>    - if:
+>        properties:
+> @@ -108,6 +130,9 @@ allOf:
+>              - const: venc_lt_sel
+>              - const: vdec_bus_clk_src
+>  
+> +        reg:
+> +          minItems: 12
+
+so max can be 1000?
+
+
+
+Best regards,
+Krzysztof
+
 
