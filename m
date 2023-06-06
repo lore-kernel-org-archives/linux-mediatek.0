@@ -4,136 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01F7CC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 09:16:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57A3BC7EE2C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 09:17:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3GXwO+efv0Kz9jCJqUKq+o7y3U0ehUDN4LS139Asp7c=; b=AcORCQ+GL+EDpxLUM9CAEv4+ZJ
-	TN9Szi8cSw8+ld6ft/AuggSFgIIkeSlaRU8vNVUxnEJTnFo7fKARaviPgoLSuq1fZoV4lJaHsg7lY
-	ZADmefhR10wZ2Fsko9b6L9q3rkQHqDbke09nKGDmBTvignxFcHdbUD+1olSTNxe481Z7YyouHx/ag
-	TpRoSU6rKknUcxv6xozG55amRacPY3s0xwLfBH6DfLho9HZcC8ChFL5dvT+U9jFgPd5PmObG5Xn8g
-	TDL+T+iI7M9MAYMvfKTPtTmKjszDUXI4EB1vFJj8hQhuxajdecmY2+ZLRA+DJGQATeGzo7EWThfK3
-	jFjpXrYw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Khb/i5f1eJZ0J6xeiDfa7TucSC94mz6ND/CCe3oa97c=; b=xUiir2dMyQNZYHmD2QrPy4HLB1
+	3MQyEp6Qs2lo/QL4f0f4eIzPwpBO1YaFMS16zk2ON3Uo1lVSUadlcCHw6xkQ4J9ks7YmNwTkZFTmc
+	PvmoSQiQ7etFm1HG6wzkjn9oIhHKKCvq0nFxtPvdeKyf8rgRfvDng+giCJiOulKv7i+F+DbsryZQX
+	Qs8xJOPVsS7zdxNnU8dWUtnUGSsXRxPS0+AJUjxQCUxvPS5ewJp4+0/ltVF55gvSLn8UulOyZFuSu
+	IU4oW1IG4E/bUs3DpkvUFlGj+SA1Fvste+iUhP/RxsYxkvgqbBNlc71FpwUSRArCj6HSEKLJdMmdC
+	+s5e8X+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6So7-000yCS-2N;
-	Tue, 06 Jun 2023 09:16:51 +0000
-Received: from mail-bn1nam02on20700.outbound.protection.outlook.com ([2a01:111:f400:7eb2::700] helo=NAM02-BN1-obe.outbound.protection.outlook.com)
+	id 1q6SoQ-000yKl-1W;
+	Tue, 06 Jun 2023 09:17:10 +0000
+Received: from mail-vs1-xe2f.google.com ([2607:f8b0:4864:20::e2f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6So5-000yBA-1i;
-	Tue, 06 Jun 2023 09:16:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=AbVbuJGBcEjrRok4vTojbRVKxx0jAOM9Xv7tdo2PJzk3nTzcFAZ06nEldrbrR97Noqbz/GTYPOM7g5YPOmun0DXins7+FJwQ9WNBbTWYQMVcbS3bb0mmKDEWMnwr9zAJiY/VaceJJnwllx3Tr7dseuGB/NOX7PS1rHRNtlsjjae0sWC62shyLPkAjRKM7a2xudOazJQHtkxjJ94yiV7Y9Mvmmrr4MqhG5wwd30E45g4JNn7io/OFZDFFW4KBiAi1I/OHQZsMh3VeID1NfZkdbvNOux5qqGiusrkKCs35KQxWvYWWz5dzTHWgG+jV05C8f5TRtR6UoXxKtNHkzu/img==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3GXwO+efv0Kz9jCJqUKq+o7y3U0ehUDN4LS139Asp7c=;
- b=QFfeNgbuVQULHAa9FBvC9Yz2774mpW0HDtLoj2JNudRaZRHFnc+0IW3WzFlKt+up1rPy88n2KqlAU8pn/R8SgwDr+tkN7naz6FUtU/4v0nbhrOxHmfjn0HCIo5Wj30wfipHACCeO0WSLz6kyHOdsw1c2BJKhiWljoDWTUltGcwvOcWKTwjCEPFJPrIWYnNd/k+2JP2wNMcXZCxUFF21oIgshF2meFySovmShWfMgtyCiBbv0GFZowplxG3f90iNm6IpPVYm7PxVIexGpk8eFq8WHQmvsmi6S5i88zjgA4mvwXosIBW9VACi8NF3N7glRuUJRX97xF9L8R3f496Xj1g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
+	id 1q6SoM-000yIA-2u
+	for linux-mediatek@lists.infradead.org;
+	Tue, 06 Jun 2023 09:17:08 +0000
+Received: by mail-vs1-xe2f.google.com with SMTP id ada2fe7eead31-43b45a0ae19so554277137.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jun 2023 02:17:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3GXwO+efv0Kz9jCJqUKq+o7y3U0ehUDN4LS139Asp7c=;
- b=g2uUdFODh2Wnbw/9C7T9F8OGw1Eu5qPbpvc5RWw8T7URp47y4pVYWn1o/21vRJ/34Ub1gaQnfDh2i5xdAG3yjeNdAVicrDcBqAF6hGw9227xcVODTHk0LEceXLJcgt8A2oINFA8T86VOLpjZYEXfuNSBHNDBomobraZCoGNbkX8=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by LV8PR13MB6397.namprd13.prod.outlook.com (2603:10b6:408:185::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6477.18; Tue, 6 Jun
- 2023 09:16:34 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::eb8f:e482:76e0:fe6e]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::eb8f:e482:76e0:fe6e%4]) with mapi id 15.20.6455.030; Tue, 6 Jun 2023
- 09:16:34 +0000
-Date: Tue, 6 Jun 2023 11:16:26 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: Paul Fertser <fercerpav@gmail.com>
-Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, Rani Hod <rani.hod@gmail.com>,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] mt76: mt7615: do not advertise 5 GHz on first phy of
- MT7615D (DBDC)
-Message-ID: <ZH75apdT19WDrwS2@corigine.com>
-References: <20230605073408.8699-1-fercerpav@gmail.com>
- <ZH72YwgpywPNxbd2@corigine.com>
- <ZH74kw4M15qjDbTz@home.paul.comp>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZH74kw4M15qjDbTz@home.paul.comp>
-X-ClientProxiedBy: AM0PR10CA0023.EURPRD10.PROD.OUTLOOK.COM
- (2603:10a6:208:17c::33) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+        d=chromium.org; s=google; t=1686043022; x=1688635022;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Khb/i5f1eJZ0J6xeiDfa7TucSC94mz6ND/CCe3oa97c=;
+        b=MfAG+IuBokCFoq6NH0TfQ3LdRjyZ4XQHnhklH/9QDPZAO+l05Tgr5r4mdDo/GRSe/W
+         tTqsoN/TLZw5KbHQWjvZh4f06ku1WTxTK5RA4jDeJg4iRl3GgI206Ry/4rVkCBQTt1Zy
+         bNTbtrtrKfP6ajPOKPQ2ZFN4Fv/e59vfvCT+Q=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686043022; x=1688635022;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Khb/i5f1eJZ0J6xeiDfa7TucSC94mz6ND/CCe3oa97c=;
+        b=UHmRyff8y6mgXDReETkrefVGIP9iZAAMMztaeNun3sp0wVNre+Nn7g9GRL6Jdw+ELK
+         R7eIqV5BLPUClhjbS0N9St0afyDxE7+Yq8CLr1s+KaWAfknvJ/zbd/kVDlgyNvW0TJl8
+         sFdi/9NmTyDSo1XcKdIDVarJOEKZZd58uWUNtb8RXbDjjzAhXobrBm+VTViI1iGN3cwU
+         rJ3V3wdXWnA9physw4msdyjBc686CLCpEM9S9JvIb/z5m1CBu15KAJcETbBC9AKqR7yZ
+         e4FaYo9HwVFxlEWLYcwuv9CDfNf1mhRH1h4sW2FX1fE4y6DcHxAaqwKjtgqedWcCkw7d
+         DmCg==
+X-Gm-Message-State: AC+VfDyjk3tSIgI9yJA2lA4HgD+3B5DuQDwc1lzi5nOnJRYsCTRr9pJc
+	1hofQR+t03QqOm+YDc0R6GBvE4aN6vhJNvy6chJbIg==
+X-Google-Smtp-Source: ACHHUZ4Q5xZF3lkjNlUB6Gn9V6AQgQZ2sq3mqzhEAjK9Sn0NJJMwCpu52xY+BZ6AAOUkIEC/8Il2gpm8IN/ybT89ztU=
+X-Received: by 2002:a05:6102:2d6:b0:434:7757:f025 with SMTP id
+ h22-20020a05610202d600b004347757f025mr947556vsh.0.1686043022440; Tue, 06 Jun
+ 2023 02:17:02 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|LV8PR13MB6397:EE_
-X-MS-Office365-Filtering-Correlation-Id: ed23e329-6d84-4001-06c0-08db666eb939
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Bva3dSlb2q0Tv8VQw6zzCjTRV04+T/fkxJcFi/Hvk+CG060ExRzf3q8RJQ/wdCZ0FdxRK0i6Iaijaqu15TXGl0fdEEiSeXA3USWSzdrZeeBcmxb347jR2KOiwDKtXYIEcDGL1Efths/tMj4uVtV2UKRTTAzc5Qr0xzdVaRUQNoivyZUEyGZg7BqHiPBJDfn10pvcUZaqHdJ928x4VXewx2erxATVAkP08A9a2OOLQE1iXncQvpQKIkAuHM36GEf7rCgzqjCKw7oXlr2ln8Asbh1kHrkHELZn6bJ1ApIkfv9FiOAAJCvHJZowLVxqN5qk+NS4SR+VWnTeH6T5m+Lo/HpvU8fXqgYbk/ncrOYqM5D1GcUa7/zPv4YJdNPdteuxqDFBo8ewcioothiz+A4RuO/QWHuUD64zNLqjDeyE5WHCnf2sdpnWPWjzv/pzI9WYOoU27MjoDxwJCj5rD0jJ2xtIlNPrgSkjlKVuvCG515OZSDYD/BxkE/ZeiVV+FCwe1S2SZX0WWBxT+EnZDDd0b7Ws3CpTu7Drf+tDjocCrSo=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(366004)(376002)(396003)(346002)(39840400004)(136003)(451199021)(66476007)(66946007)(2906002)(478600001)(316002)(8936002)(6916009)(4326008)(8676002)(41300700001)(54906003)(44832011)(66556008)(6666004)(7416002)(5660300002)(6486002)(6512007)(6506007)(966005)(38100700002)(186003)(2616005)(83380400001)(36756003)(86362001);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?S3xnnuW5GL0osBAqZNmyod4gQGv8AA9m3V8/MhWK5qPUublK1G9QFEqJ+9Ag?=
- =?us-ascii?Q?wBtWdTLj3oVBSBSdqoVVDyyZ4775huYMG1o8FLOKxIbXdZ+4JWg2QzYXKyb4?=
- =?us-ascii?Q?BBhLMtRC+90iC6t2FsDkPlmpHj0F/oM9Y9zwbLt34SFBoIdr6wytoatxYWPY?=
- =?us-ascii?Q?E9IOllte5ZHWa4V2lGSUQNR9vQkOcJ/I/PxK0w0tfR7EQjIwONpKf4f/sgKZ?=
- =?us-ascii?Q?Sg3Fn1ppkU3nBg4hAPgWjThwugHsq4rfqjUJlGm9RVaqLlW9GKpn8wmq/f/7?=
- =?us-ascii?Q?eKPMbDiDNbzQ9DCxXKH23Aknw7F15DrFe9gN6yV6VKNxUGNYvQsVlHDHmvnA?=
- =?us-ascii?Q?ZTSBtquHWHuS/vA4p1DhFov8SJyHXpO6Q8SsfcQJaoTOqiMY5l3e+6xY2cLQ?=
- =?us-ascii?Q?aAf0wd5+AlZngUEBYtwTkOamBGeqty6YYJBRFAyvAe2/FJVQjIdE251bU0vl?=
- =?us-ascii?Q?+u2s6cTo1s4W3fWHG8Jzk6vy1S5oAU7tnkNhWPjQ65W8xoZIP3eXWhSVPhgL?=
- =?us-ascii?Q?DW4By5IPGP9zc8ZXk1sPDXxcxkbBFbDazOQwVUuenFNrJyzWjVtG2bdKNShM?=
- =?us-ascii?Q?2vnX+/A9P365dFOCdIGZFCRXvsQJEKgLri0JzmXTBuwX8IyNsVTsRGHNS9Ht?=
- =?us-ascii?Q?ieffh3eSxW8EuQi3lljPROJuHPMsHzREB7aDFBM5OAqYlWiq0y+Rum9GadZv?=
- =?us-ascii?Q?mMIFUk0B61u9JrBO6TLxJ6+MHmE5vdOE3VXtD+Kmv6594mxf+AUQaMdkK73V?=
- =?us-ascii?Q?ykI9JRon0x8Qhh1Pyj3AJ2sibm7tv9cpnya/lbJatMXicazvauI+v4fxOYOv?=
- =?us-ascii?Q?ZAYjbs0ZwZHdmqMD3XJ1rBSXZ8CZ1cNOHtCK8edYI8goBiKztY84r7qzxUlR?=
- =?us-ascii?Q?49ekZMwrulcra5BRU0/39aP1xQh5gQLyHvMcCwHk/YL9gakmFVhDDT0rBMGH?=
- =?us-ascii?Q?PLDu7B8KqkcgVJ1bSOraBmj56w7bX/O9G0GNYI1OCQcxWkRuAiMcmrAdpztH?=
- =?us-ascii?Q?fEWglg0TeIsZ8l+5no8mG65cQxS/ps/8iWruesLn+JHx6Nf8/bR10nYr3rVY?=
- =?us-ascii?Q?w16WGLEOBpahbe/rgFWguSsaXT9E+8WiSNvQ3tK9t7tMvmce2ZQOt/7trTRe?=
- =?us-ascii?Q?mys1hcQfaVtG0wrHMbtI0cAvippyivldCdI9LYFQI/5aeg8lPa1iwm0v9TxA?=
- =?us-ascii?Q?ZuL1Txvm2FFWMZTc8kT3iV4JDpyAgWk2LSNP6hjJWM49PN5WVPe7V3G65qM9?=
- =?us-ascii?Q?jTOPhXdOCpueeRBTis8DqNg5pjcrZyGcsRbKt2cHoMTUzpHBtiWejTr9PFW8?=
- =?us-ascii?Q?OqzT1L2GvhaGV5Gy2M0jY0ndeOMY0tRnva+85af7kZNAGY6WnHoNnwBcknoh?=
- =?us-ascii?Q?iTaJ5V+lpL4ydTv2vZRZr2aSrAac8Xuxc/j0QCUzoiDk14OdGWv6fdNt8OcP?=
- =?us-ascii?Q?ENTuxVmedZFd3+QwxD9Uoovxovek5og8orjV8+2TQr2T+jjleivc7g0EZppC?=
- =?us-ascii?Q?jLR1Kuy9yw+UQhN91SOSFH7hwYZMaZUyw5ykSrUcZVhw1zDNRFHMmdSgHCHE?=
- =?us-ascii?Q?ilpqkEhp+g6Fncz82wlJEHzPGswgc/RtutPJiV6uDQLxeH+q77vmssEgRpLW?=
- =?us-ascii?Q?3yBixuj6LDqu8oxZFovpOSf5f+R6LV9MFwy3SxrAABTOwprxN1615k4FVA9v?=
- =?us-ascii?Q?u5uuiw=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ed23e329-6d84-4001-06c0-08db666eb939
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2023 09:16:34.4050
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 6cAaxU2xVsu2rcQlu9/lx7Wb4ImZWiqd8HiFcMUHD/4Vic2eNir1CoqJYQEWVfzk6gYcJl3U9FPYZx84gjPGDpNED1JJ9HKGQpSxwUNa2PI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR13MB6397
+References: <20230525113034.46880-1-tony@atomide.com> <20230602083335.GA181647@google.com>
+ <87a5xii33r.fsf@jogness.linutronix.de> <20230603054139.GR14287@atomide.com>
+ <20230603063533.GS14287@atomide.com> <20230605061511.GW14287@atomide.com>
+ <CAGXv+5Fbx7eTxP0ep6DV+jyronAWxYvu2M-g=MjHGRhjSXUc=w@mail.gmail.com>
+ <20230605122447.GY14287@atomide.com> <CAGXv+5HwL+R5QpO3pHGQd9qAxu2pCMDjYvdni1HjiC8eEE38mg@mail.gmail.com>
+ <20230605131803.GA14287@atomide.com>
+In-Reply-To: <20230605131803.GA14287@atomide.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 6 Jun 2023 17:16:50 +0800
+Message-ID: <CAGXv+5GR9TEaNrj4B21H2iukS2kWW=rtoWkoVnWewVsrbcG0Hw@mail.gmail.com>
+Subject: Re: [PATCH v12 1/1] serial: core: Start managing serial controllers
+ to enable runtime PM
+To: Tony Lindgren <tony@atomide.com>
+Cc: John Ogness <john.ogness@linutronix.de>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
+	Andy Shevchenko <andriy.shevchenko@intel.com>, Dhruva Gole <d-gole@ti.com>, 
+	=?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, 
+	Johan Hovold <johan@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, 
+	Vignesh Raghavendra <vigneshr@ti.com>, linux-omap@vger.kernel.org, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, linux-kernel@vger.kernel.org, 
+	linux-serial@vger.kernel.org, 
+	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_021649_571168_A5562B42 
-X-CRM114-Status: GOOD (  16.95  )
+X-CRM114-CacheID: sfid-20230606_021706_963829_87F52CD3 
+X-CRM114-Status: GOOD (  44.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,29 +100,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 06, 2023 at 12:12:51PM +0300, Paul Fertser wrote:
-> Hi Simon,
-> 
-> On Tue, Jun 06, 2023 at 11:03:31AM +0200, Simon Horman wrote:
-> > On Mon, Jun 05, 2023 at 10:34:07AM +0300, Paul Fertser wrote:
-> > > On DBDC devices the first (internal) phy is only capable of using
-> > > 2.4 GHz band, and the 5 GHz band is exposed via a separate phy object,
-> > > so avoid the false advertising.
-> > 
-> > Can I clarify that the second object won't hit the logic change
-> > below and thus be limited to 2GHz?
-> 
-> The second object (external 5 GHz phy) doesn't have an EEPROM of its
-> own, and is created explicitly with just this band enabled:
-> 
-> https://elixir.bootlin.com/linux/latest/source/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c#L104
-> https://elixir.bootlin.com/linux/latest/source/drivers/net/wireless/mediatek/mt76/mt7615/init.c#L573
-> 
-> So it won't hit the logic change and it will be limited to 5 GHz.
+On Mon, Jun 5, 2023 at 9:18=E2=80=AFPM Tony Lindgren <tony@atomide.com> wro=
+te:
+>
+> * Chen-Yu Tsai <wenst@chromium.org> [230605 13:01]:
+> > On Mon, Jun 5, 2023 at 8:24=E2=80=AFPM Tony Lindgren <tony@atomide.com>=
+ wrote:
+> > >
+> > > * Chen-Yu Tsai <wenst@chromium.org> [230605 11:34]:
+> > > > On Mon, Jun 5, 2023 at 2:15=E2=80=AFPM Tony Lindgren <tony@atomide.=
+com> wrote:
+> > > > > diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/ser=
+ial/8250/8250_mtk.c
+> > > > > --- a/drivers/tty/serial/8250/8250_mtk.c
+> > > > > +++ b/drivers/tty/serial/8250/8250_mtk.c
+> > > > > @@ -425,11 +439,10 @@ mtk8250_set_termios(struct uart_port *port,=
+ struct ktermios *termios,
+> > > > >  static int __maybe_unused mtk8250_runtime_suspend(struct device =
+*dev)
+> > > > >  {
+> > > > >         struct mtk8250_data *data =3D dev_get_drvdata(dev);
+> > > > > -       struct uart_8250_port *up =3D serial8250_get_port(data->l=
+ine);
+> > > > >
+> > > > >         /* wait until UART in idle status */
+> > > > >         while
+> > > > > -               (serial_in(up, MTK_UART_DEBUG0));
+> > > > > +               (mtk8250_read(data, MTK_UART_DEBUG0));
+> > > >
+> > > > I believe it still gets stuck here sometimes.
+> > >
+> > > Hmm so maybe you need to mtk8250_write(data, 0, MTK_UART_RATE_FIX) in
+> > > probe before pm_runtime_resume_and_get() that enables the baud clock?
+> > > That's something I changed, so maybe it messes up things.
+> >
+> > I think it has something to do with the do_pm() function calling
+> > the callbacks directly, then also calling runtime PM.
+>
+> Yeah I'm not following really what's going on there.. So then I guess the
+> call for mtk8250_write(data, 0, MTK_UART_RATE_FIX) should be after the
+> pm_runtime_resume_and_get() call.
+>
+> > > Looking at the 8250_mtk git log, it's runtime PM functions seem to on=
+ly
+> > > currently manage the baud clock so register access should be doable
+> > > without runtime PM resume?
+> >
+> > Actually it only manages the bus clock. The baud clock is simply the sy=
+stem
+> > XTAL which is not gateble.
+>
+> OK
+>
+> > > > With your earlier patch, it could get through registering the port,=
+ and
+> > > > the console would show
+> > > >
+> > > >     11002000.serial: ttyS0 at MMIO 0x11002000 (irq =3D 240, base_ba=
+ud =3D
+> > > > 1625000) is a ST16650V2
+> > > >
+> > > > for the console UART.
+> > >
+> > > OK
+> > >
+> > > > Angelo mentioned that we should be using SLEEP_REQ/SLEEP_ACK regist=
+ers
+> > > > in the MTK UART hardware.
+> > > >
+> > > > I tried reworking it into your patch here, but it causes issues wit=
+h the
+> > > > UART-based Bluetooth on one of my devices. After the UART runtime s=
+uspends
+> > > > and resumes, something is off and causes the transfers during Bluet=
+ooth
+> > > > init to become corrupt.
+> > > >
+> > > > I'll try some more stuff, but the existing code seems timing depend=
+ent.
+> > > > If I add too many printk statements to the runtime suspend/resume
+> > > > callbacks, things seem to work. One time I even ended up with broke=
+n
+> > > > UARTs but otherwise booted up the system.
+> > >
+> > > Well another thing that now changes is that we now runtime suspend th=
+e
+> > > port at the end of the probe. What the 8250_mtk probe was doing earli=
+er
+> > > it was leaving the port baud clock enabled, but runtime PM disabled
+> > > until mtk8250_do_pm() I guess.
+> >
+> > I guess that's the biggest difference? Since the *bus* clock gets disab=
+led,
+> > any access will hang. Is it enough to just support runtime PM? Or do I =
+have
+> > to also have UART_CAP_RPM?
+>
+> Maybe try changing pm_runtime_put_sync() at the end of the probe to just
+> pm_runtime_put_noidle()? Then the driver should be back to where it was
+> with clocks enabled but runtime PM suspended.
+>
+> I don't think you need UART_CAP_RPM right now unless 8250_mtk adds suppor=
+t
+> for autosuspend. That stuff will get replaced by the serial_core generic
+> PM patch from Andy. I think in it's current form 8250_mtk just gets enabl=
+ed
+> when the port is opened, and disabled when the port is closed. And gets
+> disabled for system suspend.
 
-Thanks Paul,
+I ended up following 8250_dw's design, which seemed less convoluted.
+The original code was waaay too convoluted.
 
-in that case this patch looks good to me.
+BTW, the Bluetooth breakage seems like a different problem. It works
+on v6.4-rc5, but breaks somewhere between that and next, before the
+runtime PM series. This particular device has a Qualcomm WiFi/BT chip
+with the Bluetooth part going through UART. The btqca reports a bunch
+of frame reassembly errors during and after initialization:
 
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
+Bluetooth: hci0: setting up ROME/QCA6390
+Bluetooth: hci0: Frame reassembly failed (-84)
+Bluetooth: hci0: QCA Product ID   :0x00000008
+Bluetooth: hci0: QCA SOC Version  :0x00000044
+Bluetooth: hci0: QCA ROM Version  :0x00000302
+Bluetooth: hci0: QCA Patch Version:0x00000111
+Bluetooth: hci0: QCA controller version 0x00440302
+Bluetooth: hci0: QCA Downloading qca/rampatch_00440302.bin
+Bluetooth: hci0: Frame reassembly failed (-84)
+Bluetooth: hci0: QCA Downloading qca/nvm_00440302_i2s.bin
+Bluetooth: hci0: QCA setup on UART is completed
+Bluetooth: hci0: Opcode 0x1002 failed: -110
+Bluetooth: hci0: command 0x1002 tx timeout
+Bluetooth: hci0: crash the soc to collect controller dump
+Bluetooth: hci0: QCA collecting dump of size:196608
+Bluetooth: hci0: Frame reassembly failed (-84)
+...
+Bluetooth: hci0: Frame reassembly failed (-84)
+Bluetooth: Received HCI_IBS_WAKE_ACK in tx state 0
+Bluetooth: hci0: Frame reassembly failed (-84)
+...
+Bluetooth: hci0: Frame reassembly failed (-84)
+Bluetooth: hci0: Frame reassembly failed (-90)
+Bluetooth: hci0: Frame reassembly failed (-84)
+...
+Bluetooth: hci0: Frame reassembly failed (-84)
+Bluetooth: hci0: Injecting HCI hardware error event
+
+However on a different device that has a Realtek WiFi/BT chip,
+it doesn't seem to run into errors.
+
+Just putting it out there in case anyone else runs into it.
+
+
+Thank you for your help on this.
+
+ChenYu
 
