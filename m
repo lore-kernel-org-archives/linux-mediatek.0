@@ -4,52 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7D95C7EE24
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 12:13:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FFCCC7EE24
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 12:21:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VNWqghAtXKeYEJDKR3KJv0xEnVAXzsCRqMzuMD8zIsc=; b=iNWa5Ds7ly85pmzYG71GfSxfBB
-	r8FkREnV+kjLicVXHYVlZFAvVq8O0gBuBHCrb2AVPkL3Bw8s2TzjzwLup06sdAFGmCavgBteMoLE6
-	n7g1TyM8mzmUWYa2o10J5oDVEH1Eda5M62s2sIAr7noI0HJuX+gtjvXzrEMmHje74Ep4pI2xYUIP0
-	j6zEybROgb+qp0oaeebB0+00JyAOv/ExYaBTDUshJASvKfbDXBTPD4ICzEOcZhgZ0Mogn9wVKmIFm
-	4Idc9j3k85CNhoJH66LwmMT78kO0ra1sM7C6136pqHm1DLZd/ufejwLJXBUmYzIo2Ry7f265nfgfP
-	JCgw7wTg==;
+	bh=Brv50cdXScO6IBr3ZUETxFzBo3Q4dkTFtkQ5cdeh1t8=; b=euBTFL+Bnvz8kT0nRl9ldxeSQF
+	FBkhQ7Y57qCSo/kfxCY3am6r6ZtX1trfgaCPhRPcYcFnNH5saRTLzCcC9DmJEXfoopFCLaXaaTZEe
+	2gDRjC+/y5ZuQSgm0WlKU0eBYiFUccJqIFfCtVTydgiu/bzObID0i5l3lzsmtAS16E5MfTfiDXAW6
+	mzwv50t/w6fMHe/6XGLmQTM8OtCzYnjFvEmzJCy6eREoSQuNvfZNsEOuBwrPNctpHa0kRRqUmRdlA
+	gguUqa4zavlGITQ47RlA5Om13oUJH8IdNam9v4Wzw3cfBZGa5/hBollA5/zh1aKphYeSAtRdATqH6
+	vGPN/YgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6VZ8-001anm-33;
-	Tue, 06 Jun 2023 12:13:34 +0000
+	id 1q6VgP-001bzI-12;
+	Tue, 06 Jun 2023 12:21:05 +0000
 Received: from muru.com ([72.249.23.125])
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6VZ5-001als-1i;
-	Tue, 06 Jun 2023 12:13:32 +0000
+	id 1q6VgM-001bys-0T
+	for linux-mediatek@lists.infradead.org;
+	Tue, 06 Jun 2023 12:21:03 +0000
 Received: from localhost (localhost [127.0.0.1])
-	by muru.com (Postfix) with ESMTPS id 5D36580AE;
-	Tue,  6 Jun 2023 12:13:26 +0000 (UTC)
-Date: Tue, 6 Jun 2023 15:13:25 +0300
+	by muru.com (Postfix) with ESMTPS id 303FA80AE;
+	Tue,  6 Jun 2023 12:21:01 +0000 (UTC)
+Date: Tue, 6 Jun 2023 15:20:59 +0300
 From: Tony Lindgren <tony@atomide.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+Cc: John Ogness <john.ogness@linutronix.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Jiri Slaby <jirislaby@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	John Ogness <john.ogness@linutronix.de>,
+	Andy Shevchenko <andriy.shevchenko@intel.com>,
+	Dhruva Gole <d-gole@ti.com>,
+	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>,
+	Johan Hovold <johan@kernel.org>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	Vignesh Raghavendra <vigneshr@ti.com>, linux-omap@vger.kernel.org,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
+	=?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] serial: 8250_mtk: Simplify clock sequencing and runtime
- PM
-Message-ID: <20230606121325.GB14287@atomide.com>
-References: <20230606091747.2031168-1-wenst@chromium.org>
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v12 1/1] serial: core: Start managing serial controllers
+ to enable runtime PM
+Message-ID: <20230606122059.GC14287@atomide.com>
+References: <20230602083335.GA181647@google.com>
+ <87a5xii33r.fsf@jogness.linutronix.de>
+ <20230603054139.GR14287@atomide.com>
+ <20230603063533.GS14287@atomide.com>
+ <20230605061511.GW14287@atomide.com>
+ <CAGXv+5Fbx7eTxP0ep6DV+jyronAWxYvu2M-g=MjHGRhjSXUc=w@mail.gmail.com>
+ <20230605122447.GY14287@atomide.com>
+ <CAGXv+5HwL+R5QpO3pHGQd9qAxu2pCMDjYvdni1HjiC8eEE38mg@mail.gmail.com>
+ <20230605131803.GA14287@atomide.com>
+ <CAGXv+5GR9TEaNrj4B21H2iukS2kWW=rtoWkoVnWewVsrbcG0Hw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230606091747.2031168-1-wenst@chromium.org>
+In-Reply-To: <CAGXv+5GR9TEaNrj4B21H2iukS2kWW=rtoWkoVnWewVsrbcG0Hw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_051331_627473_37DB78D5 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20230606_052102_250170_52F8D4FE 
+X-CRM114-Status: UNSURE (   7.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,23 +82,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-* Chen-Yu Tsai <wenst@chromium.org> [230606 09:19]:
-> The 8250_mtk driver's runtime PM support has some issues:
-> 
-> - The bus clock is enabled (through runtime PM callback) later than a
->   register write
-> - runtime PM resume callback directly called in probe, but no
->   pm_runtime_set_active() call is present
-> - UART PM function calls the callbacks directly, _and_ calls runtime
->   PM API
-> - runtime PM callbacks try to do reference counting, adding yet another
->   count between runtime PM and clocks
-> 
-> This fragile setup worked in a way, but broke recently with runtime PM
-> support added to the serial core. The system would hang when the UART
-> console was probed and brought up.
+* Chen-Yu Tsai <wenst@chromium.org> [230606 09:17]:
+> I ended up following 8250_dw's design, which seemed less convoluted.
+> The original code was waaay too convoluted.
 
-Great, looks like a good for Linux next to me:
+OK that looks good to me thanks. Good to hear you got it sorted out.
 
-Reviewed-by: Tony Lindgren <tony@atomide.com>
+The 8250_dw style runtime PM is a good solution for simple cases. Where
+it won't work are SoCs where runtime PM calls need to propagate up the
+bus hierarchy. For example, 8250_omap needs runtime PM calls for the
+interconnect and power domain to get register access working.
+
+> BTW, the Bluetooth breakage seems like a different problem.
+
+OK seems like we're good to go then :)
+
+Regards,
+
+Tony
 
