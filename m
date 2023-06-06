@@ -4,134 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF92AC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 09:03:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1B0CC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 09:12:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uiMD/Wi2OORyyqz7AWIVv2bvNz5qMuDJx32kVoEMjMs=; b=nYRQ7hVlCh1ht7L4SE6hgZNU71
-	g/Hj/mDZnzx+WZRfQtPX74qwkE5NrCfL59hFC9x86M13h4egcgrW242ZOmv/083NggKvtM/0m5DGu
-	Yy7gm3YEXh6oTJbwueZkviTFlLK/sbdMHLibTQPA3LacUeO61e26qqrDJwsfsrIJSZN9RuLN5WQTO
-	jxoeDqZD0HjBIVYZHV2Wh6+rczNJ0zgOYidMP0u9t56IyS340DcNFkK5XEan6L1MHXpzBDxx4ja01
-	2w6kyyZWgok/AJNCO+siW7hiv042Y8Ne7BVv7jAQchNvImv2XjSQcaSU/ii+s9RWdmJ3MFvTnLFc7
-	VVDz2y5g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r4AmdVwg4gjTsAxfk42+ya/xr1mTSRxxbVKQ3XrFUpQ=; b=S8+EUAjZ+qjeSOS2pmrH9a0lSP
+	lw04q9U4ggMQH4r5FeXSviRNw4R5/f+MTeTqJPmTpt6hJRhUWNIipMSeqMMqL+6CkgFxsqvS+ATB9
+	SUXQTdql+vf2ZLJ+qG8emHJ/vRMUHukNNCURCTOv9cReOdh8Nn39hZApnk801QkWUPK7VHX4iN3Tx
+	IiVaEQD7hHhQ+5CXNPskZR9I5hxZnRi6lOklTzWpKowZPSZ4+2vyv7U8+g8J13znejS80bvNKOL+N
+	ZlhVE0Zij1Cft9IE1WFZ6cntK7kUWuAW54GLPdf01Q2qTey1oxCQtd0Yu1p7pVXYTStzhjIk5LnkP
+	YUWfvHmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6SbW-000vv2-0w;
-	Tue, 06 Jun 2023 09:03:50 +0000
-Received: from mail-co1nam11on2072e.outbound.protection.outlook.com ([2a01:111:f400:7eab::72e] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1q6Sjp-000xLF-1d;
+	Tue, 06 Jun 2023 09:12:25 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6SbT-000vu6-2C;
-	Tue, 06 Jun 2023 09:03:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Y5n3o0X/PJ2jlhMrTk5pxxP3ltpIX3TCGhbPmWLpUNMeJhHTWB6gkaCl6SnymUpwfYe00Hmz6lWEtpkaQUGazxhfg4BDJJ1B8GElGCg4rM+fAEet6IrGWj0IoxlMJ88vwFIxewgdjbNs6Kj8UmACLTKyhj+n8jGNNXeDnlV7CKU0kWY1pkiPY+QwXtIYCNDyJZipMrz+YLHWObnyUS21dcNFkWDxGdOXorqA6FxiQK81k6XoK9gFvTxbyPiGeNNqvJhUYxeeGl/wm/6u9rLq/4Jc1FguWUpgMYqv4IR0AdjypyMHx/t79oX8FlblRTHdPuBnGXdp033OuIY95eQ01A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=uiMD/Wi2OORyyqz7AWIVv2bvNz5qMuDJx32kVoEMjMs=;
- b=Ki2v61LyxR0pIyfiN3XcZ/3B4bvDayynqSFMReDq9GxCdDNQzVKXNFv+4sNYboX7dMo4F4PfeAq2loHMuR3mIN6qLOOCdFQCmRqOLnJJn/19mKr/NLbqABtFdA+Jwvy7UXs0CO3qqjqRJmqVSGNBj0/5kPvHcmjo3kL/gHzBg3mBy0H6dAXuSMe4h3svQxfCrF8qiNGCWu7aSH+TOo7dzfW9oFfg+LGSjAHkjL/2Q2LIeRflwXM9h8vkNRjSXRGle1epPYpNm32tuo3kkDMaAnoDEKfK3gyKex5abH1vVQSqC6s8tq5xMEgKJoTPaI0c+A2lO0K4Sj6N+hw86LVcYQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
+	id 1q6Sjn-000xKd-0u
+	for linux-mediatek@lists.infradead.org;
+	Tue, 06 Jun 2023 09:12:24 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-977d02931d1so374799966b.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jun 2023 02:12:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uiMD/Wi2OORyyqz7AWIVv2bvNz5qMuDJx32kVoEMjMs=;
- b=k7SH6W+JZt1GFJdiXKlrNwslkhfHwUG4brf37bZcbYSeO49hcAWP2dAgO2DSBWlW5vIb+2iqz9OPQO6zUX/D+bwAnL5bVgb1dPQ9OVXrc0LUCDpdBcDbn3bkflL4hGETtdzjtKV/2HtkKWaWMwocXdMkYhBb+I233kURwk+FE9U=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by CH2PR13MB3895.namprd13.prod.outlook.com (2603:10b6:610:94::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.33; Tue, 6 Jun
- 2023 09:03:39 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::eb8f:e482:76e0:fe6e]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::eb8f:e482:76e0:fe6e%4]) with mapi id 15.20.6455.030; Tue, 6 Jun 2023
- 09:03:39 +0000
-Date: Tue, 6 Jun 2023 11:03:31 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: Paul Fertser <fercerpav@gmail.com>
-Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, Rani Hod <rani.hod@gmail.com>,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] mt76: mt7615: do not advertise 5 GHz on first phy of
- MT7615D (DBDC)
-Message-ID: <ZH72YwgpywPNxbd2@corigine.com>
-References: <20230605073408.8699-1-fercerpav@gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230605073408.8699-1-fercerpav@gmail.com>
-X-ClientProxiedBy: AS4P190CA0044.EURP190.PROD.OUTLOOK.COM
- (2603:10a6:20b:5d1::8) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+        d=linaro.org; s=google; t=1686042742; x=1688634742;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=r4AmdVwg4gjTsAxfk42+ya/xr1mTSRxxbVKQ3XrFUpQ=;
+        b=PnGKM47mpj3Ddc0oSOEllxLh+oOxYtyvpANv4U3kMcbOr/jE0l0k2q4H0SonOqThMB
+         1bWpcUnZ2cJQns1go/rFdSkU6JyA5wm0uZzXtAS65t/BrkvGuymnrxqB9y7RbQwwzrwB
+         RtGRMJSHvh4A7hK5EjmNlOApop0WmF30BooHT/TlzYGVLJqPYAriWOIiw4OVNtFRGYGf
+         u8qbcP8YNWTx5oSLaswmdNiyc8inJh6ERiE7Oi03fWtjan0YPRaPagyBzA0iyBuTdnDc
+         evOfD8rjLngWo+AlXOWO/2pRrjiBsgfO/IIWdJfQJ68k5qVKOpXGdaeiuhn/7VVlwWZC
+         L2Eg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686042742; x=1688634742;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=r4AmdVwg4gjTsAxfk42+ya/xr1mTSRxxbVKQ3XrFUpQ=;
+        b=au7uypmjr5+af/7CslFsjoxVlYGoxG5Obo97Ciw/6ufL07quWPRa6k8zY6pWtf+bed
+         xOcqBrITtXRSjzUCQbKkSkYlzsaLaqK5okp3cES0kJqZDViuOV4EgYv2SrCTfwhbBi2G
+         AFExwCq+vb4GxJujN8WzNuoseSy/fopYmwxFtOBYj/qZrmnMxFaOjXfnZkWbSSXN+4Je
+         H6mYvM4N5O/7Mu69kkzalZt92DdvrgjVz1iBKfj4L+H9Go6qvddh4Yt4qGxjE+WyJh0C
+         Vo3TsK0qKuOfIkOwVU9mHgjvw8gJAAbrrfvy0KXz1zEJ4rzk1lleTuTOUBibnaOBUmUZ
+         PGVA==
+X-Gm-Message-State: AC+VfDyl9VZuEUxRpjmZWFipzBQsR8LEndtxiWvl78ICV+P+Sc0rWVLy
+	Bahk5Uw7KxCHvpT0O3BM8zre4Q==
+X-Google-Smtp-Source: ACHHUZ4ICG/LiMH48iJ6ITReWMZhhxEFrAzzKgQao53xyViRDfBvZqW8oHYQ9GVk/zBWdm4mgBP5YA==
+X-Received: by 2002:a17:907:94d4:b0:971:2eaf:556 with SMTP id dn20-20020a17090794d400b009712eaf0556mr1942718ejc.18.1686042741710;
+        Tue, 06 Jun 2023 02:12:21 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.219.26])
+        by smtp.gmail.com with ESMTPSA id d12-20020a1709063ecc00b0096f03770be2sm5289135ejj.52.2023.06.06.02.12.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 06 Jun 2023 02:12:21 -0700 (PDT)
+Message-ID: <b9ad3b42-8d56-a9ce-bdde-df4ac65a1b49@linaro.org>
+Date: Tue, 6 Jun 2023 11:12:18 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|CH2PR13MB3895:EE_
-X-MS-Office365-Filtering-Correlation-Id: 26cc7868-b010-46fc-6977-08db666ceb25
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 6vLL0v4tyHCgLpyIhOh5And6p9DzQiC8mzNh/XrKZTeSRzFl79rb6IQGJUS6FyEUXDNA92cjb4+9MPABPY8hFhTJ9FAfD1QGOracLVMRG6PbCi8QzMCqxQQ/dJXwX5CYhRgwT591CU/WWE+9JvQfY0p+0qcRYvUjqjASUf3e2KsndC5JcufVApAINOmzt7JCKj0LmueCbuhOrp6xUUxk6DiTEe8CGGIHAvyRQsaYqugRVhBEJrOYqx6oAAYVONrz0H5Gr1p1EGIJrT2OrlCDJC3YGnMLNfFw4xPJOLIEdmnNlO9cHGcw1wQuR/0lbX27VeunTkmHGX+VGnGsd4Fl5N4oPnGRlBoiEEV7etRePovtv8xCmobncHRtBDvE1ZA//FLr5SZwjfzltyBPwLuS0QoZ8k5DquMNxToDHY8w3/mAQThGihNVmvWHFs3p6Pq8cBAOnNMhMp0UhG3w9MAGg3hcr12zVOdfVIEJsTT2tGjPHFJcc4KokYZYGHdSQayu8wV/UPXtA59DFSvTxfMOqRJazKykN/hvWaFYwYm6zYOVwphKIu8JIi7MnHYtUotH3Be2m+TIz3Z4IYZToZlGdksfi7F7EisXvYryl3/8HOU=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(136003)(346002)(366004)(39840400004)(376002)(396003)(451199021)(83380400001)(54906003)(4326008)(66476007)(6916009)(966005)(66946007)(66556008)(38100700002)(6666004)(6486002)(478600001)(2906002)(36756003)(186003)(316002)(8936002)(8676002)(2616005)(41300700001)(5660300002)(86362001)(44832011)(7416002)(6512007)(6506007);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ztEVLp+RRakxsPZNTVbGTgc7OWpXeRPSOI7E5SDIz5khooI2KOOrkIyk/NEm?=
- =?us-ascii?Q?PePFG3IzttXUjOespF5b2BVmGIwEI5++Lhvl+WPsyS1GrVJF+ZudnbKbC0qR?=
- =?us-ascii?Q?mr91M/OhtapnoAo17bfakdVzstu+1yFaIjfrA+EOOzThB7HojJuve6J5Y0+k?=
- =?us-ascii?Q?uWaCVChnTCdAifGQisLPBtoZ8fjDy+1gFiTeseWPPD7A2YbYD5ln14XzcJq0?=
- =?us-ascii?Q?PR2xMKRJDUdFENrKz+j4/MreN9/cBgPR8ZS/K6U90J7kF3M9WBbBbc9Brx4H?=
- =?us-ascii?Q?wV09YUr8u1bgAZJhrLEh47RKxccRB0R44iu+IWwwVEHQ6+rJRbRbxBk9wdN4?=
- =?us-ascii?Q?Z9odqUhqHQEzrxydqthm4G230T7Z/y6SymqJICc+DC+h1d5pGtoQIaLL8mWT?=
- =?us-ascii?Q?LNXTcitJyi7+RLPtcTedX/zkzF6nceW1/vuYs2slhwG404fHXY2/PbAZq1oj?=
- =?us-ascii?Q?cr/IaENxeM5dpIp3iC5T2AHjt2pAWMSoF6jvbOsJ1xkvhweiqNza02M+FUDC?=
- =?us-ascii?Q?+7ZRDFraYOvjkZYEv2UCmYI8z48QGcYqHHe9i0Mb3THA/z6mG+w3RUKSGfBd?=
- =?us-ascii?Q?n84AMGjLfpZsuCG124+YoeyU6MwQJ8yVKQSzBM1tETzXlYw9zhmG3ofST5xT?=
- =?us-ascii?Q?BCxkQBIf0D0GHsYy6Ql18LtU8lQUIOQPnR9Ns22YltgNqXDdKvq2utCuNh5S?=
- =?us-ascii?Q?eOOEbnTTC3PK7KcaKbSYlnc5JQMZvSaTp8KXSmmAAKL0hJrAfhJhYyVRFrkX?=
- =?us-ascii?Q?ZDOWumtRoy75yv0macrsbRVDdcoTLDkU+9KqDPfNNvk7S3hcFmeLzwklOaaT?=
- =?us-ascii?Q?vMVpWQlWENz2UJqnzJbFekswc5v7SUoJljrsX3QTjRnHXbRYa2P0xWFmJIkb?=
- =?us-ascii?Q?5hkYLgWhx4btvzbFVRkUe3mXswzU0M9HYa97wX4DK+0CKog125ZFeANDBmcj?=
- =?us-ascii?Q?vANL7UFkwd0/vfWyPcSzTnQ5wDlHkOBcdh8h5keSgA68wH8e3NNEFutWnfgS?=
- =?us-ascii?Q?1AsGoqNxWPkoia8zJzYTIUe6kGXikBoUIbIB+QOCUklmjUF20XnbVng4q/PM?=
- =?us-ascii?Q?2KfimcBlruQUn7e1wuwYf7n77Qeundof53R7cwd4hRPQRcIMLLUJeQnRr1Gt?=
- =?us-ascii?Q?+6YCz/Qw5Tdu3GoDbGgf2/+cNt9kgjKQyju+HeGfYz5fvxj/Kp5Ap8K+Q72R?=
- =?us-ascii?Q?KcBcgwAKqO1rI6iseDnL/gid8EMTw6P9ECLNojwGhcrjSnyB4/bRHNcxqCMT?=
- =?us-ascii?Q?intWGsLzCHNhsFQuszVoaZVF9E6mVqUxHTfNtM2I8ib/ysV8noLOLIrF3Yr9?=
- =?us-ascii?Q?5Dx2Rd7qNVdeHPLsHXwId97LUMHT+4JUD3afGqteEKo8IdS/llR1zVblcr1I?=
- =?us-ascii?Q?ahj4R9ueiXTRXNrV8XKT0Z4Pys8PhD26TxV6MFXNQ0pnVf+EnoLlUVYPQOa3?=
- =?us-ascii?Q?zHWqsbBlWEOgTB7k5/4e8lP1ZA/xdViQg7gtfQuDgvM94vsoNPZEAziNSrxw?=
- =?us-ascii?Q?nCNlgP1ghw7P59Dx+3eaNgk2ZrStRKfS32J85EmZ2bxB/psYonyB6DYXsWWi?=
- =?us-ascii?Q?7j5SH2C/DZ7fBTf+1E9QThu4noS4ZzqUpGPMhlEVR62HoCNeCv+us5KhJ0V3?=
- =?us-ascii?Q?iY2xPwkTcCb1IEFSl7+yxMiboi9CT7lH1ac2YrwVXVL3KDl6MnVFJUg3hBVr?=
- =?us-ascii?Q?DeBpuQ=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 26cc7868-b010-46fc-6977-08db666ceb25
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2023 09:03:39.2199
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ivYV1jnjasOgO/+FCQ2pnmw8iV9E6e7iFknJnQUwdRZDB2XwwLDDr4aSWHRccwriP7QXh2j+CtiAh/ePwHECEf+FgoSsIk5cDhHNn/zSWNI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR13MB3895
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
+Subject: Re: [PATCH 1/6] media: dt-bindings: mediatek,vcodec: Allow single
+ clock for mt8183
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230605162030.274395-1-nfraprado@collabora.com>
+ <20230605162030.274395-2-nfraprado@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230605162030.274395-2-nfraprado@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_020347_746542_B6EB9453 
-X-CRM114-Status: GOOD (  16.56  )
+X-CRM114-CacheID: sfid-20230606_021223_328799_975D5161 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,47 +105,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 05, 2023 at 10:34:07AM +0300, Paul Fertser wrote:
-> On DBDC devices the first (internal) phy is only capable of using
-> 2.4 GHz band, and the 5 GHz band is exposed via a separate phy object,
-> so avoid the false advertising.
-
-Hi Paul,
-
-Can I clarify that the second object won't hit the logic change
-below and thus be limited to 2GHz?
-
-> Reported-by: Rani Hod <rani.hod@gmail.com>
-> Closes: https://github.com/openwrt/openwrt/pull/12361
-> Fixes: 7660a1bd0c22 ("mt76: mt7615: register ext_phy if DBDC is detected")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Paul Fertser <fercerpav@gmail.com>
+On 05/06/2023 18:20, Nícolas F. R. A. Prado wrote:
+> MT8173 and MT8183 have different clocks, and consequently clock-names.
+> Relax the number of clocks and set clock-names based on compatible.
+> 
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
 > ---
->  drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
-> index 68e88224b8b1..ccedea7e8a50 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
-> @@ -128,12 +128,12 @@ mt7615_eeprom_parse_hw_band_cap(struct mt7615_dev *dev)
->  	case MT_EE_5GHZ:
->  		dev->mphy.cap.has_5ghz = true;
->  		break;
-> -	case MT_EE_2GHZ:
-> -		dev->mphy.cap.has_2ghz = true;
-> -		break;
->  	case MT_EE_DBDC:
->  		dev->dbdc_support = true;
->  		fallthrough;
-> +	case MT_EE_2GHZ:
-> +		dev->mphy.cap.has_2ghz = true;
-> +		break;
->  	default:
->  		dev->mphy.cap.has_2ghz = true;
->  		dev->mphy.cap.has_5ghz = true;
-> -- 
-> 2.34.1
+>  .../media/mediatek,vcodec-decoder.yaml        | 29 +++++++++++++------
+>  1 file changed, 20 insertions(+), 9 deletions(-)
 > 
-> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+> index fad59b486d5d..57d5ca776df0 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+> @@ -27,18 +27,12 @@ properties:
+>      maxItems: 1
+>  
+>    clocks:
+> +    minItems: 1
+>      maxItems: 8
+>  
+>    clock-names:
+> -    items:
+> -      - const: vcodecpll
+> -      - const: univpll_d2
+> -      - const: clk_cci400_sel
+> -      - const: vdec_sel
+> -      - const: vdecpll
+> -      - const: vencpll
+> -      - const: venc_lt_sel
+> -      - const: vdec_bus_clk_src
+> +    minItems: 1
+> +    maxItems: 8
+>  
+>    assigned-clocks: true
+>  
+> @@ -88,6 +82,11 @@ allOf:
+>        required:
+>          - mediatek,scp
+>  
+> +      properties:
+> +        clock-names:
+> +          items:
+> +            - const: vdec
+
+You should constrain also clocks as they must be in sync with names.
+
+> +
+>    - if:
+>        properties:
+>          compatible:
+> @@ -99,6 +98,18 @@ allOf:
+>        required:
+>          - mediatek,vpu
+>  
+> +      properties:
+> +        clock-names:
+> +          items:
+> +            - const: vcodecpll
+> +            - const: univpll_d2
+> +            - const: clk_cci400_sel
+> +            - const: vdec_sel
+> +            - const: vdecpll
+> +            - const: vencpll
+> +            - const: venc_lt_sel
+> +            - const: vdec_bus_clk_src
+
+Ditto.
+
+
+Best regards,
+Krzysztof
+
 
