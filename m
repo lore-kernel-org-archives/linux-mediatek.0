@@ -4,68 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2773C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 13:01:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23D96C7EE24
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 13:59:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yX4ptdgi7WcIwg7E7dKEJI5FRwfdwSqHkWPJDXodDMc=; b=ljH5hpREtxtr7iStyedqxTAZf1
-	H5ETMKqHDropOE3ll6m0m0Vd+3H2nb2jfX5krx0hQQkRHNeRY4OKCtWFNKM+KhfdAQYBrftTbu9TZ
-	6IhTc84gFaA97pjOhARO1KQOVnB8osN7Tvoo59r8SWIEMXkXGiUMLmsF1uMM+DXAZOLTw0NJElNLf
-	QF/HYcz2yUxJDVJEHqhOVPRlRO9t+whf+iL4eJ7V/OCZoUVgYUeZh3ol+wqGfhrNvHS7eQiU9I1o2
-	150tzOv8Qe8LTX62W8nBy2hFa6WWBopu0TxOpAcW+tRHvkVNmEypcxNx1modIpzxkvBzcrA8SA+e0
-	5cFjswiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tSLIBOkc8AT3ecozvTP01c4tDm7xKenl/SZU7EiNLBM=; b=V9+Nkxp2uY/YMvqWzX8CuabRvF
+	SxeA9cOjnfqgWaTa3Yxd1DLeN+ENJhwahRaUKNWCM2T0iMZkU1TFhPvSPQnLG1dIk/Nx53kImYJST
+	RMowiYyoT8jQh129OXqOTAsMen5HwSUBA5P4fq71QHmU4zVo5Etf/BmIZ48Kr4ES4tssMcXiyUkHD
+	9CErvmQTOkkRCIvexaWStcXT/KrWKP5BlSxA3h4/zyZ9rxqbI+SW68pycvTCXTsc52sIGNCI9equu
+	LtUv6yOFhcEmmTJ0jR9BVNC6YoKov+tSSKUB3AWaDbbjCXWUxn0RcUXz0WOIa2HpNV5IUDKv0PjJR
+	fs7tHLEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6WJC-001lO7-1L;
-	Tue, 06 Jun 2023 13:01:10 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q6XDq-001vq7-1X;
+	Tue, 06 Jun 2023 13:59:42 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6WJ6-001lLZ-01;
-	Tue, 06 Jun 2023 13:01:08 +0000
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 836906606EBB;
-	Tue,  6 Jun 2023 14:00:58 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1686056460;
-	bh=5X1vYezIwDbqeMCS78Q98whyEA5uh7OHIVeHGqM+EtI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Bfbe3+nAwOOs1sT8xUYl78AUiOqTLNLqOgHUc/MMsJpbI2TDRkVIX6ZshuNRESg9i
-	 CdTefngagGRRzKM4hy1+okSH2ATYC5alLYo+nqBMbCr8XQZc/FeMDRo77evveNN2f4
-	 BnDSjSwiV0mwF3IkIGbs6zsl/GjEX0rb/SG6NDtMJwajllD3EQWPXu3P9CNUY6WYb5
-	 +tJAmdnnTF1NlgPxo4erKN7XTd90KoNPywzu47sO77C/9mlBtrAD+e7XMK71xaQtHl
-	 Vs1bC8qAw/u7GPyFqqkgOHqkpWqAtBQ7NDwl8W9btme5JJ+7PWhae+nF4+OHx+w1sQ
-	 e9LrCwjcVgdJg==
-Date: Tue, 6 Jun 2023 09:00:54 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Seiya Wang <seiya.wang@mediatek.com>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8192: Fix CPUs capacity-dmips-mhz
-Message-ID: <0e9667dc-8f91-49a0-903e-6725204e11ad@notapiano>
-References: <20230602183515.3778780-1-nfraprado@collabora.com>
- <01c88a42-274c-f8cf-73a6-29741579d9db@collabora.com>
- <4b2fdd36-0871-ecc7-5d64-e088d7f51987@gmail.com>
+	id 1q6XDm-001vnG-2M
+	for linux-mediatek@lists.infradead.org;
+	Tue, 06 Jun 2023 13:59:40 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-30c5e5226bdso4177045f8f.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jun 2023 06:59:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1686059974; x=1688651974;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tSLIBOkc8AT3ecozvTP01c4tDm7xKenl/SZU7EiNLBM=;
+        b=ZElHMU2eHbQorA8SEksHZGZB6pSzWIHr4CQl1Gv7JRjgnkWuri5p2co1ZR+Gag4h1V
+         aYAQEhIAd/TAJDVHyR7u4S7lX5hfqJlPD5H6455N16jbtTlWkU3Kky8oZ4+CtgeHABnr
+         G+nGLUrLX82SFoyzVX04Jm/RguqzG3PpO/KBW2vw7QiBMvjkEurhW0LGzGo+WRBT9J4L
+         Pzf/Tce1UEU3vP1rQUgeWw33JoDNZebAS7O/mDAcPYD6KOJUOyV6FPciw4Tft/4v/LT0
+         rSFXFlstWyr2Y4TnW7Pd6c2B3TYg/LiB67H3tFzTDx7ymTsgpEzKsxJ1vWzG/w0qxUs6
+         AjHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686059974; x=1688651974;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tSLIBOkc8AT3ecozvTP01c4tDm7xKenl/SZU7EiNLBM=;
+        b=ErrdFPqYMaFWtIIM9s7ovZPaTehIuyq1EhFUFDdS938pg5cD5FqMVpy/4RkY+aKt6T
+         fLtXwUbJOIQ2h/A6hjsKNQhmJ+15V13KSNkwWM5c8c/nB2paQh4KmdUmaUjLtsGE85fU
+         depsN/hROPPiYbQsUqmOv7ENtY2MD1+iv3qDu6++OE07lQi0Yj/N8+efCPVE+4g+ERF2
+         Qme9kVopVDSO+AStPSGFXoZlE9qZNJDcdUaKcRgTTsDb6CODqw+NKfUBMeku2/DFhjnv
+         Vdjh21tdH/EjzWZNYRR2ZQLn7W6zEe8wIr916P5V+zbf/gyZZCj4+RuT462Elycx691j
+         IpUA==
+X-Gm-Message-State: AC+VfDwr6n9uiTrQtlZMmQOmLjNaY/mVAdhAuJsaZPgmHG8NQVPNM2y1
+	A6zmTZTqAZ75OjaZqrD0zr2qLA==
+X-Google-Smtp-Source: ACHHUZ5QcrIk/sG7EBlfot3tzH/HEAB3ctiWzutPWmL77jqVYxFiOWDX1sdw4eI4ZiPy7xpCxRh+1Q==
+X-Received: by 2002:a5d:5088:0:b0:309:4cd5:76f8 with SMTP id a8-20020a5d5088000000b003094cd576f8mr1986798wrt.2.1686059974630;
+        Tue, 06 Jun 2023 06:59:34 -0700 (PDT)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id h14-20020a5d504e000000b00300aee6c9cesm12757402wrt.20.2023.06.06.06.59.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 06 Jun 2023 06:59:34 -0700 (PDT)
+Message-ID: <fa5147f8-26e2-c4e6-ff3e-ba7b22027a81@baylibre.com>
+Date: Tue, 6 Jun 2023 15:59:32 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <4b2fdd36-0871-ecc7-5d64-e088d7f51987@gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v12 2/7] iommu/mediatek: Fix two IOMMU share pagetable
+ issue
+Content-Language: en-US
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Robin Murphy <robin.murphy@arm.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, mingyuan.ma@mediatek.com,
+ yf.wang@mediatek.com, jianjiao.zeng@mediatek.com, chengci.xu@mediatek.com
+References: <20230602090227.7264-1-yong.wu@mediatek.com>
+ <20230602090227.7264-3-yong.wu@mediatek.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230602090227.7264-3-yong.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_060104_190470_AD5FD2AA 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20230606_065938_965726_A675120B 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,45 +103,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 06, 2023 at 08:38:42AM +0200, Matthias Brugger wrote:
+On 02/06/2023 11:02, Yong Wu wrote:
+> Prepare for mt8188 to fix a two IOMMU HWs share pagetable issue.
 > 
+> We have two MM IOMMU HWs in mt8188, one is VPP-IOMMU, the other is
+> VDO-IOMMU. The 2 MM IOMMU HWs share pagetable don't work in this case:
+>   a) VPP-IOMMU probe firstly.
+>   b) VDO-IOMMU probe.
+>   c) The master for VDO-IOMMU probe (means frstdata is vpp-iommu).
+>   d) The master in another domain probe. No matter it is vdo or vpp.
+> Then it still create a new pagetable in step d). The problem is
+> "frstdata->bank[0]->m4u_dom" was not initialized. Then when d) enter, it
+> still create a new one.
 > 
-> On 05/06/2023 10:21, AngeloGioacchino Del Regno wrote:
-> > Il 02/06/23 20:35, Nícolas F. R. A. Prado ha scritto:
-> > > The capacity-dmips-mhz parameter was miscalculated: this SoC runs
-> > > the first (Cortex-A55) cluster at a maximum of 2000MHz and the
-> > > second (Cortex-A76) cluster at a maximum of 2200MHz.
-> > > 
-> > > In order to calculate the right capacity-dmips-mhz, the following
-> > > test was performed:
-> > > 1. CPUFREQ governor was set to 'performance' on both clusters
-> > > 2. Ran dhrystone with 500000000 iterations for 10 times on each cluster
-> > > 3. Calculated the mean result for each cluster
-> > > 4. Calculated DMIPS/MHz: dmips_mhz = dmips_per_second / cpu_mhz
-> > > 5. Scaled results to 1024:
-> > >     result_c0 = dmips_mhz_c0 / dmips_mhz_c1 * 1024
-> > > 
-> > > The mean results for this SoC are:
-> > > Cluster 0 (LITTLE): 12016411 Dhry/s
-> > > Cluster 1 (BIG): 31702034 Dhry/s
-> > > 
-> > > The calculated scaled results are:
-> > > Cluster 0: 426.953226899238 (rounded to 427)
-> > > Cluster 1: 1024
-> > > 
-> > > Fixes: 48489980e27e ("arm64: dts: Add Mediatek SoC MT8192 and
-> > > evaluation board dts and Makefile")
-> > > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > > 
-> > 
+> In this patch, we create a new variable "share_dom" for this share
+> pgtable case, it should be helpful for readable. and put all the share
+> pgtable logic in the mtk_iommu_domain_finalise.
 > 
-> Applied, thanks
+> In mt8195, the master of VPP-IOMMU probes before than VDO-IOMMU
+> from its dtsi node sequence, we don't see this issue in it. Prepare for
+> mt8188.
 
-Hi Matthias,
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-this patch doesn't show in your v6.4-next/dts64 branch, while the other patch
-you just applied does, so I just wanted to double check it was really applied.
+-- 
+Regards,
+Alexandre
 
-Thanks,
-Nícolas
 
