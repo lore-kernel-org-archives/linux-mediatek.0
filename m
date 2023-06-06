@@ -4,91 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B510FC77B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 15:00:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54A18C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 15:43:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wqe+EMfTqwgCzibqmrP4x167w3kg6AGKeWhHsuYgmqo=; b=0DGNKn03MdIs8HXpj716oe50V7
-	zAlJjsPH+5ElaNz2GBmpYUJr0iesqBaMdv3JA0dhW16YeyncRk1+NNalaj5k6iYJJ2U6joRChwRPX
-	XWupBTGDuxnYf+VNizhOl7jNZdbFXADEPC2pTqNqHXHUYi14IxlGEYlnXI7VcwcoEWyzmKEJUWQkt
-	LTTZMb/u23Tpm2Znmpizohie787/IdLyb/b4wUfl6DWE9XbYTR0XelzcieflMCMrrXPzL/r3oBxfl
-	As8iGwTOklAGZjIa1aZYtDNkZo4HamhdB0+kdRTjNc97zDV7vhP3Qip+DZDbS2ehVNHfxPf2StOy4
-	vKjURxkg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vJ5Psndi1HWL+ACKG5dHUOldjenXjNyb8YQUS4AnZfE=; b=JewcK43lsED5k9+qRo4oS4XERa
+	e54MnrOvownbYHFYA2EZ8I6mW7TDPfl6C+uOCzGdB/nJoYdCFGFR8W7c+PWzuuMMXtf83bnH5JmiI
+	PIzvUY28yoVnftfF7TFA7r1u6KS6/YKyS51J8n64d4uBHkj6jOxfqavDB4Y4XEu9W2Wg65RJqICaZ
+	Rdp+xT0428zLkF53niGcs/HgVh+U0b24TmI2QGITD2cQQ8mi4Zesr8UFjltUxT8pmF69GJDdDyxj8
+	TAtYPkQ6w27jQBLtIbHF/mO5Z3EDHzDxoDilMTxA1zjfuCXBkcFffe1BcGGumc0y2zQPDa5+1Bsw3
+	kAdXyDxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6YAA-00291G-1Q;
-	Tue, 06 Jun 2023 14:59:58 +0000
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+	id 1q6YqU-002Hz2-2A;
+	Tue, 06 Jun 2023 15:43:42 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6Y9u-0028lK-1g;
-	Tue, 06 Jun 2023 14:59:45 +0000
-Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-53f70f7c2d2so3337453a12.3;
-        Tue, 06 Jun 2023 07:59:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1686063580; x=1688655580;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Wqe+EMfTqwgCzibqmrP4x167w3kg6AGKeWhHsuYgmqo=;
-        b=c89hhqFN81vIg5IN2rpZKauKAqHYf+KMSB7oh1dAt0i49A3ucUMkyTzxUCrj2WWs+g
-         /LU3Xr/oSOgiCs+CzGUU8pWhEpDacm5mxkJpE/5clGHyANc/lNkJmfLq/aJVfdcjT8UL
-         eBL06dgnIyAp6shIXHNvUuno3W6Sk3jssjkHEmrtsXS0ehGnvMz9fE+mUbSyT7V/DtJ8
-         YEYyGAmkm7jdPB+ETVRV6oGB43zryHGlxwY1MiyEjreIcHwBO4xpm30cOGoi+5sxuVuw
-         QGY0ItDFmMr8lVYp12VI5cDd1e62KrSFDl9FQbjPsohnlfnzU1oGnGODof+74Twn0KQQ
-         vCow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686063580; x=1688655580;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Wqe+EMfTqwgCzibqmrP4x167w3kg6AGKeWhHsuYgmqo=;
-        b=M4hOEcknLxRSL60y1Z+v3ayXj9IMQPfeKkc2/P59A8VMr3topVrDiT3tePU6vz+3Y6
-         0GNAqUP8/PRvRIPUaPAwLy+AoLc1csVRMUJqlmvSN30YLLYZylydcixxVJVnqaCZEWzR
-         UPYkOKLp025ZgqRwir18yTX3mrThH8Zafhsa+3erhExDXFT2wquUMkO9/JeCfXQF1cPg
-         xtx6qcuOBOFLWfxREO+yQUggZxf32mJDsTadElaObOGd7Lb9UWOvEaFgxAZ52/P2pYzQ
-         KkP8BtgfO+ovGqBuhvQYmd8hjRS75R0Wvcuge6ioSO7NMnyHeIGScipo4c8t6Whp2zHR
-         CpSg==
-X-Gm-Message-State: AC+VfDwlSQtSUSAcy5QopSpE58BYPdUvlA+V4tMzqVRaVoSQlTMcY7it
-	FWho6N5GrxfZZeQlcNCygE7reAOmXrR7t0ieFwQ=
-X-Google-Smtp-Source: ACHHUZ7R3wIBiwS3qmIDAIVJhRLmDVW+rENmgn5tSeT1A0bMQm4kGe5M15s7kly86oJcM/F8JJJXG4R4/1qAqmUxppw=
-X-Received: by 2002:a05:6a20:3d83:b0:117:a2f3:3c93 with SMTP id
- s3-20020a056a203d8300b00117a2f33c93mr14207pzi.2.1686063579863; Tue, 06 Jun
- 2023 07:59:39 -0700 (PDT)
+	id 1q6YqS-002Hwx-0X;
+	Tue, 06 Jun 2023 15:43:41 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1q6YqK-0004lq-1R;
+	Tue, 06 Jun 2023 15:43:32 +0000
+Date: Tue, 6 Jun 2023 16:43:20 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Frank Wunderlich <frank-w@public-files.de>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Weijie Gao <weijie.gao@mediatek.com>
+Subject: [PATCH] arm64: dts: mt7986: increase bl2 partition on NAND of
+ Bananapi R3
+Message-ID: <ZH9UGF99RgzrHZ88@makrotopia.org>
 MIME-Version: 1.0
-References: <20230524153311.3625329-1-dhowells@redhat.com> <20230524153311.3625329-5-dhowells@redhat.com>
- <a819dd80-54cc-695f-f142-e3d42ce815a7@huawei.com> <f7919c2c9e1cb6218a0b0f55ddaa9a34f7d2b9a7.camel@gmail.com>
- <1841913.1686039913@warthog.procyon.org.uk>
-In-Reply-To: <1841913.1686039913@warthog.procyon.org.uk>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Tue, 6 Jun 2023 07:59:02 -0700
-Message-ID: <CAKgT0Ud=ZWVnpwqbLqGovjPM2VR_V1-Ak=meveqnG01tGWTTeA@mail.gmail.com>
-Subject: Re: [PATCH net-next 04/12] mm: Make the page_frag_cache allocator use
- multipage folios
-To: David Howells <dhowells@redhat.com>
-Cc: Yunsheng Lin <linyunsheng@huawei.com>, netdev@vger.kernel.org, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Willem de Bruijn <willemdebruijn.kernel@gmail.com>, David Ahern <dsahern@kernel.org>, 
-	Matthew Wilcox <willy@infradead.org>, Jens Axboe <axboe@kernel.dk>, linux-mm@kvack.org, 
-	linux-kernel@vger.kernel.org, Jeroen de Borst <jeroendb@google.com>, 
-	Catherine Sullivan <csully@google.com>, Shailend Chand <shailend@google.com>, Felix Fietkau <nbd@nbd.name>, 
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, 
-	Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith Busch <kbusch@kernel.org>, 
-	Jens Axboe <axboe@fb.com>, Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, 
-	Chaitanya Kulkarni <kch@nvidia.com>, Andrew Morton <akpm@linux-foundation.org>, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-nvme@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_075942_604663_806EE3A4 
-X-CRM114-Status: GOOD (  33.29  )
+X-CRM114-CacheID: sfid-20230606_084340_206777_8AB703CB 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,71 +66,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 6, 2023 at 1:25=E2=80=AFAM David Howells <dhowells@redhat.com> =
-wrote:
->
-> Alexander H Duyck <alexander.duyck@gmail.com> wrote:
->
-> > Also I have some concerns about going from page to folio as it seems
-> > like the folio_alloc setups the transparent hugepage destructor instead
-> > of using the compound page destructor. I would think that would slow
-> > down most users as it looks like there is a spinlock that is taken in
-> > the hugepage destructor that isn't there in the compound page
-> > destructor.
->
-> Note that this code is going to have to move to folios[*] at some point.
-> "Old-style" compound pages are going to go away, I believe.  Matthew Wilc=
-ox
-> and the mm folks are on a drive towards simplifying memory management,
-> formalising chunks larger than a single page - with the ultimate aim of
-> reducing the page struct to a single, typed pointer.
+The bootrom burned into the MT7986 SoC will try multiple locations on
+the SPI-NAND flash to load bl2 in case the bl2 image located at the the
+previously attempted offset is corrupt.
 
-I'm not against making the move, but as others have pointed out this
-is getting into unrelated things. One of those being the fact that to
-transition to using folios we don't need to get rid of the use of the
-virtual address. The idea behind using the virtual address here is
-that we can avoid a bunch of address translation overhead since we
-only need to use the folio if we are going to allocate, retire, or
-recycle a page/folio. If we are using an order 3 page that shouldn't
-be very often.
+Use 0x100000 instead of 0x80000 as partition size for bl2 on SPI-NAND,
+allowing for up to four redundant copies of bl2 (typically sized a
+bit less than 0x40000).
 
-> So, take, for example, a folio: As I understand it, this will no longer
-> overlay struct page, but rather will become a single, dynamically-allocat=
-ed
-> struct that covers a pow-of-2 number of pages.  A contiguous subset of pa=
-ge
-> structs will point at it.
->
-> However, rather than using a folio, we could define a "page fragment" mem=
-ory
-> type.  Rather than having all the flags and fields to be found in struct
-> folio, it could have just the set to be found in page_frag_cache.
+Fixes: 8e01fb15b8157 ("arm64: dts: mt7986: add Bananapi R3")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ .../boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso     | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-I don't think we need a new memory type. For the most part the page
-fragment code is really more a subset of something like a
-__get_free_pages where the requester provides the size, is just given
-a virtual address, and we shouldn't need to be allocating a new page
-as often as ideally the allocations are 2K or less in size.
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso
+index 15ee8c568f3c3..543c13385d6e3 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-nand.dtso
+@@ -29,13 +29,13 @@ partitions {
+ 
+ 					partition@0 {
+ 						label = "bl2";
+-						reg = <0x0 0x80000>;
++						reg = <0x0 0x100000>;
+ 						read-only;
+ 					};
+ 
+-					partition@80000 {
++					partition@100000 {
+ 						label = "reserved";
+-						reg = <0x80000 0x300000>;
++						reg = <0x100000 0x280000>;
+ 					};
+ 
+ 					partition@380000 {
+-- 
+2.41.0
 
-Also one thing I would want to avoid is adding complexity to the
-freeing path. The general idea with page frags is that they are meant
-to be lightweight in terms of freeing as well. So just as they are
-similar to __get_free_pages in terms of allocation the freeing is
-meant to be similar to free_pages.
-
-> David
->
-> [*] It will be possible to have some other type than "folio".  See "struc=
-t
-> slab" in mm/slab.h for example.  struct slab corresponds to a set of page=
-s
-> and, in the future, a number of struct pages will point at it.
-
-I want to avoid getting anywhere near the complexity of a slab
-allocator. The whole point of this was to keep it simple so that
-drivers could use it and get decent performance. When I had
-implemented it in the Intel drivers back in the day this approach was
-essentially just a reference count/page offset hack that allowed us to
-split a page in 2 and use the pages as a sort of mobius strip within
-the ring buffer.
 
