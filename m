@@ -4,76 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5637C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 11:33:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E165C77B73
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 11:40:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M/dOTkbQiSUOpri0Cm5zh1fkVE1pcBwlNDt7wSA0q2Y=; b=0leLpHs3drZmuyRI29pfiD2o8L
-	WG1PcTZtoU0XIh+vCzKqeACkmo4rWIhFZR+Ehg2ZqOIlWeDPC5TA9HK+fXmBrpFHpp3RaHSlJH5gL
-	ZVSuRKmxzU5MfZpqCaHR0PAPmW7CRCF94EXvhzKEgpIl0Ex7VhTunOHTR+YOWP6HOUMgwmiPOGuNE
-	O/qnHOboGGKET9Kmyx2LjUjgG7izOkuGe55UAVjW18B2fxmwFVwJv4uY4ZFEyeJ2S5KGEOJiyd4R5
-	9Fxfb1p+SntW9nxrehFc3S6dvqsgldElRgZYik7qnRqApycRvHEaYaaVJ8IR46riDxt8ElxwQNXGR
-	QdY13xLA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rYKdTLvdoK6mOJJnR/baKZqHSYuw+ENK1lRS+aJMmwQ=; b=U9kDK1n7voP0Cuw+TTGIf5c7wf
+	UZ7czlZGQwtYx/alNqPc4EER3Wq/5TtVIBuj0Bd0Mw5mtEO68o8qnKKCjWt+MFBT+6N745cnlQDBR
+	etuIusRubPw3C4Lc8G2BgvFL3CkKLYU3EOcH//DxDhvhm/jbaBm0DIGf0xDyCXnIqhslr/xuHdcS5
+	Z6SlUSW1DxMp7VM0rUGRBbEOYm/Vnc2ZSFikT7C617q/44IW2iPT4D1RgLqxaGMqRG450cbzSsYyd
+	iQnRG3VpOd3J+mSrmuy8YGMeb2v+yb8bQpIHV21d3GLxXAjBBZnqRRuTd1ubwI5Qmg7zUy47zLPMy
+	HqM9Sw/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6Uvz-001SLX-04;
-	Tue, 06 Jun 2023 11:33:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1q6V2e-001TTQ-37;
+	Tue, 06 Jun 2023 11:40:00 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6Uvv-001SJR-24;
-	Tue, 06 Jun 2023 11:33:05 +0000
-X-UUID: e107d98c045d11ee912e1518a6540028-20230606
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=M/dOTkbQiSUOpri0Cm5zh1fkVE1pcBwlNDt7wSA0q2Y=;
-	b=CuxDTfxzf1j3WduTujRxWbHQvRWvgQ/6xbfYINxz0eyPw/M0nnasyl4ahebeFiG9Om9laey7SMvF6FkDGPWJfe0kzvYG8E9vwNVZ/cZehJwp1i535Iw9R5rfdagK8pu34yT8GCXWyhNuuSlVbP5+q5HCvO8ddZHsr3bbaiYbjEI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:ae118710-910b-4ee0-8284-8f8f233dd30f,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:5f24be3d-7aa7-41f3-a6bd-0433bee822f3,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: e107d98c045d11ee912e1518a6540028-20230606
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <wenbin.mei@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2087080852; Tue, 06 Jun 2023 04:32:54 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 6 Jun 2023 19:32:52 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 6 Jun 2023 19:32:51 +0800
-From: Wenbin Mei <wenbin.mei@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-CC: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Adrian Hunter
-	<adrian.hunter@intel.com>, Ritesh Harjani <riteshh@codeaurora.org>, Asutosh
- Das <asutoshd@codeaurora.org>, <linux-mmc@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Wenbin Mei <wenbin.mei@mediatek.com>,
-	kernel test robot <lkp@intel.com>
-Subject: [PATCH v5 1/1] mmc: mtk-sd: reduce CIT for better performance
-Date: Tue, 6 Jun 2023 19:32:49 +0800
-Message-ID: <20230606113249.28057-2-wenbin.mei@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230606113249.28057-1-wenbin.mei@mediatek.com>
-References: <20230606113249.28057-1-wenbin.mei@mediatek.com>
+	id 1q6V2a-001TRl-1g;
+	Tue, 06 Jun 2023 11:39:58 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 74C236606EB5;
+	Tue,  6 Jun 2023 12:39:50 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1686051591;
+	bh=aTOiB1WUAchQeXSapkz3ePBm+TJmWUkMK13QQnVxEaU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=mTj8Bvle/QR4IRP4nYvzPVOvgc3fpv94wAG5kR4dxKXc7sRqp+KORHfzDBy03mzAb
+	 sxXyR7txUP0XafUsaHmHVyOZJ0qw+xkVGp9gw5EOqXLYKV7nIJFAHn9bNVq4X1HDhA
+	 qoukPuPGRsOTfKWt+NnFa10yQQf5cSVqtSl+SZjkBLnt4NikD7Vgstm+QD7XULNrtI
+	 ZAVlxKMuMFckAcnDDqTbsVKPD/QPTZx+VW+AAVB2Ftv+A0Qyesf0hHWGx2egAJiwib
+	 Ab/qwAMQ0AjhP4KkhQFIg+MCCIIHJ7ezGJMCk3pcZGjnEjkmW1y1pfaHGe3jnz3y99
+	 lOEbjynplSBhQ==
+Message-ID: <b8f43743-9c60-a138-0606-93873719da7c@collabora.com>
+Date: Tue, 6 Jun 2023 13:39:47 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
+Subject: Re: [PATCH] serial: 8250_mtk: Simplify clock sequencing and runtime
+ PM
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: John Ogness <john.ogness@linutronix.de>, linux-serial@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Tony Lindgren <tony@atomide.com>
+References: <20230606091747.2031168-1-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230606091747.2031168-1-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_043303_683756_CEE054A3 
-X-CRM114-Status: GOOD (  15.60  )
+X-CRM114-CacheID: sfid-20230606_043956_869034_A8329623 
+X-CRM114-Status: GOOD (  26.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,123 +79,150 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CQHCI_SSC1 indicates to CQE the polling period to use when using periodic
-SEND_QUEUE_STATUS(CMD13) polling.
-Since MSDC CQE uses msdc_hclk as ITCFVAL, so driver should use hclk
-frequency to get the actual time.
-The default value 0x1000 that corresponds to 150us for MediaTek SoCs, let's
-decrease it to 0x40 that corresponds to 2.35us, which can improve the
-performance of some eMMC devices.
+Il 06/06/23 11:17, Chen-Yu Tsai ha scritto:
+> The 8250_mtk driver's runtime PM support has some issues:
+> 
+> - The bus clock is enabled (through runtime PM callback) later than a
+>    register write
+> - runtime PM resume callback directly called in probe, but no
+>    pm_runtime_set_active() call is present
+> - UART PM function calls the callbacks directly, _and_ calls runtime
+>    PM API
+> - runtime PM callbacks try to do reference counting, adding yet another
+>    count between runtime PM and clocks
+> 
+> This fragile setup worked in a way, but broke recently with runtime PM
+> support added to the serial core. The system would hang when the UART
+> console was probed and brought up.
+> 
+> Tony provided some potential fixes [1][2], though they were still a bit
+> complicated. The 8250_dw driver, which the 8250_mtk driver might have
+> been based on, has a similar structure but simpler runtime PM usage.
+> 
+> Simplify clock sequencing and runtime PM support in the 8250_mtk driver.
+> Specifically, the clock is acquired enabled and assumed to be active,
+> unless toggled through runtime PM suspend/resume. Reference counting is
+> removed and left to the runtime PM core. The serial pm function now
+> only calls the runtime PM API.
+> 
+> [1] https://lore.kernel.org/linux-serial/20230602092701.GP14287@atomide.com/
+> [2] https://lore.kernel.org/linux-serial/20230605061511.GW14287@atomide.com/
+> 
+> Fixes: 84a9582fd203 ("serial: core: Start managing serial controllers to enable runtime PM")
+> Suggested-by: Tony Lindgren <tony@atomide.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Reported-by: kernel test robot <lkp@intel.com>
-Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
----
-the previous patche link:
-v4: https://patchwork.kernel.org/project/linux-mediatek/patch/20230605121442.23622-1-wenbin.mei@mediatek.com/
-v3: https://patchwork.kernel.org/project/linux-mediatek/patch/20230605060107.22044-1-wenbin.mei@mediatek.com/
-v2: https://patchwork.kernel.org/project/linux-mediatek/patch/20230510015851.11830-1-wenbin.mei@mediatek.com/
-v1: https://patchwork.kernel.org/project/linux-mediatek/patch/20230419063048.10516-1-wenbin.mei@mediatek.com/
----
- drivers/mmc/host/cqhci.h  |  2 ++
- drivers/mmc/host/mtk-sd.c | 47 +++++++++++++++++++++++++++++++++++++++
- 2 files changed, 49 insertions(+)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/drivers/mmc/host/cqhci.h b/drivers/mmc/host/cqhci.h
-index ba9387ed90eb..e35c655edefc 100644
---- a/drivers/mmc/host/cqhci.h
-+++ b/drivers/mmc/host/cqhci.h
-@@ -23,6 +23,8 @@
- /* capabilities */
- #define CQHCI_CAP			0x04
- #define CQHCI_CAP_CS			0x10000000 /* Crypto Support */
-+#define CQHCI_CAP_ITCFMUL		GENMASK(15, 12)
-+#define CQHCI_ITCFMUL(x)		FIELD_GET(CQHCI_CAP_ITCFMUL, (x))
- 
- /* configuration */
- #define CQHCI_CFG			0x08
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 8ce864169986..b582f19f82f2 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -473,6 +473,7 @@ struct msdc_host {
- 	struct msdc_tune_para def_tune_para; /* default tune setting */
- 	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
- 	struct cqhci_host *cq_host;
-+	u32 cq_ssc1_time;
- };
- 
- static const struct mtk_mmc_compatible mt2701_compat = {
-@@ -2450,9 +2451,50 @@ static void msdc_hs400_enhanced_strobe(struct mmc_host *mmc,
- 	}
- }
- 
-+static void msdc_cqe_cit_cal(struct msdc_host *host, u64 timer_ns)
-+{
-+	struct mmc_host *mmc = mmc_from_priv(host);
-+	struct cqhci_host *cq_host = mmc->cqe_private;
-+	u8 itcfmul;
-+	unsigned long hclk_freq;
-+	u64 value;
-+
-+	/*
-+	 * On MediaTek SoCs the MSDC controller's CQE uses msdc_hclk as ITCFVAL
-+	 * so we multiply/divide the HCLK frequency by ITCFMUL to calculate the
-+	 * Send Status Command Idle Timer (CIT) value.
-+	 */
-+	hclk_freq = clk_get_rate(host->h_clk);
-+	itcfmul = CQHCI_ITCFMUL(cqhci_readl(cq_host, CQHCI_CAP));
-+	switch (itcfmul) {
-+	case 0x0:
-+		do_div(hclk_freq, 1000);
-+		break;
-+	case 0x1:
-+		do_div(hclk_freq, 100);
-+		break;
-+	case 0x2:
-+		do_div(hclk_freq, 10);
-+		break;
-+	case 0x3:
-+		break;
-+	case 0x4:
-+		hclk_freq = hclk_freq * 10;
-+		break;
-+	default:
-+		host->cq_ssc1_time = 0x40;
-+		return;
-+	}
-+
-+	value = hclk_freq * timer_ns;
-+	do_div(value, 1000000000);
-+	host->cq_ssc1_time = value;
-+}
-+
- static void msdc_cqe_enable(struct mmc_host *mmc)
- {
- 	struct msdc_host *host = mmc_priv(mmc);
-+	struct cqhci_host *cq_host = mmc->cqe_private;
- 
- 	/* enable cmdq irq */
- 	writel(MSDC_INT_CMDQ, host->base + MSDC_INTEN);
-@@ -2462,6 +2504,9 @@ static void msdc_cqe_enable(struct mmc_host *mmc)
- 	msdc_set_busy_timeout(host, 20 * 1000000000ULL, 0);
- 	/* default read data timeout 1s */
- 	msdc_set_timeout(host, 1000000000ULL, 0);
-+
-+	/* Set the send status command idle timer */
-+	cqhci_writel(cq_host, host->cq_ssc1_time, CQHCI_SSC1);
- }
- 
- static void msdc_cqe_disable(struct mmc_host *mmc, bool recovery)
-@@ -2803,6 +2848,8 @@ static int msdc_drv_probe(struct platform_device *pdev)
- 		/* cqhci 16bit length */
- 		/* 0 size, means 65536 so we don't have to -1 here */
- 		mmc->max_seg_size = 64 * 1024;
-+		/* Reduce CIT to 0x40 that corresponds to 2.35us */
-+		msdc_cqe_cit_cal(host, 2350);
- 	}
- 
- 	ret = devm_request_irq(&pdev->dev, host->irq, msdc_irq,
--- 
-2.25.1
+> ---
+>   drivers/tty/serial/8250/8250_mtk.c | 50 ++++++------------------------
+>   1 file changed, 10 insertions(+), 40 deletions(-)
+> 
+> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> index aa8e98164d68..74da5676ce67 100644
+> --- a/drivers/tty/serial/8250/8250_mtk.c
+> +++ b/drivers/tty/serial/8250/8250_mtk.c
+> @@ -431,12 +431,7 @@ static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
+>   	while
+>   		(serial_in(up, MTK_UART_DEBUG0));
+>   
+> -	if (data->clk_count == 0U) {
+> -		dev_dbg(dev, "%s clock count is 0\n", __func__);
+> -	} else {
+> -		clk_disable_unprepare(data->bus_clk);
+> -		data->clk_count--;
+> -	}
+> +	clk_disable_unprepare(data->bus_clk);
+>   
+>   	return 0;
+>   }
+> @@ -444,19 +439,8 @@ static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
+>   static int __maybe_unused mtk8250_runtime_resume(struct device *dev)
+>   {
+>   	struct mtk8250_data *data = dev_get_drvdata(dev);
+> -	int err;
+>   
+> -	if (data->clk_count > 0U) {
+> -		dev_dbg(dev, "%s clock count is %d\n", __func__,
+> -			data->clk_count);
+> -	} else {
+> -		err = clk_prepare_enable(data->bus_clk);
+> -		if (err) {
+> -			dev_warn(dev, "Can't enable bus clock\n");
+> -			return err;
+> -		}
+> -		data->clk_count++;
+> -	}
+> +	clk_prepare_enable(data->bus_clk);
+>   
+>   	return 0;
+>   }
+> @@ -465,14 +449,12 @@ static void
+>   mtk8250_do_pm(struct uart_port *port, unsigned int state, unsigned int old)
+>   {
+>   	if (!state)
+> -		if (!mtk8250_runtime_resume(port->dev))
+> -			pm_runtime_get_sync(port->dev);
+> +		pm_runtime_get_sync(port->dev);
+>   
+>   	serial8250_do_pm(port, state, old);
+>   
+>   	if (state)
+> -		if (!pm_runtime_put_sync_suspend(port->dev))
+> -			mtk8250_runtime_suspend(port->dev);
+> +		pm_runtime_put_sync_suspend(port->dev);
+>   }
+>   
+>   #ifdef CONFIG_SERIAL_8250_DMA
+> @@ -504,7 +486,7 @@ static int mtk8250_probe_of(struct platform_device *pdev, struct uart_port *p,
+>   		return 0;
+>   	}
+>   
+> -	data->bus_clk = devm_clk_get(&pdev->dev, "bus");
+> +	data->bus_clk = devm_clk_get_enabled(&pdev->dev, "bus");
+>   	if (IS_ERR(data->bus_clk))
+>   		return PTR_ERR(data->bus_clk);
+>   
+> @@ -587,25 +569,16 @@ static int mtk8250_probe(struct platform_device *pdev)
+>   
+>   	platform_set_drvdata(pdev, data);
+>   
+> -	pm_runtime_enable(&pdev->dev);
+> -	err = mtk8250_runtime_resume(&pdev->dev);
+> -	if (err)
+> -		goto err_pm_disable;
+> -
+>   	data->line = serial8250_register_8250_port(&uart);
+> -	if (data->line < 0) {
+> -		err = data->line;
+> -		goto err_pm_disable;
+> -	}
+> +	if (data->line < 0)
+> +		return data->line;
+>   
+>   	data->rx_wakeup_irq = platform_get_irq_optional(pdev, 1);
+>   
+> -	return 0;
+> -
+> -err_pm_disable:
+> -	pm_runtime_disable(&pdev->dev);
+> +	pm_runtime_set_active(&pdev->dev);
+> +	pm_runtime_enable(&pdev->dev);
+>   
+> -	return err;
+> +	return 0;
+>   }
+>   
+>   static int mtk8250_remove(struct platform_device *pdev)
+> @@ -619,9 +592,6 @@ static int mtk8250_remove(struct platform_device *pdev)
+>   	pm_runtime_disable(&pdev->dev);
+>   	pm_runtime_put_noidle(&pdev->dev);
+>   
+> -	if (!pm_runtime_status_suspended(&pdev->dev))
+> -		mtk8250_runtime_suspend(&pdev->dev);
+> -
+>   	return 0;
+>   }
+>   
 
 
