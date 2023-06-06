@@ -4,91 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E8B2C77B73
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 14:19:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B510FC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 15:00:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jLJFbQYmxrTDG5LviuU11MzRe1assIVdj7KuflZnNpY=; b=t30htl5r73RP16Cf0u8Pns6q7h
-	rPqQKmVrMOsiGhDax0j9tonhzkJuJcm9Q6APYiACNcSHQVStUFHcS1zurpCFQ8183RzTNPBLDoCL+
-	E45A7trRQBOwSOY7KxFsoKM01OeB84Op1wVUGD+fHEAU23A5cNWfqsV04KVC5k6NsjXzEoZ+TgijD
-	Kaz0fgb8rUTKBt/50g2cL0tPUXy+KFxECPajglo+BTILlfLGDLI9DPLtbLrwPlsTJhdPirzycuZht
-	Vr/+RaxhoP7868uFwNBNr1ihtJfpeJwzzhX/KfyK650o3ch9hXDILnQ628DF0HXk7X1vl6xeYuANj
-	+5BPhF7w==;
+	bh=Wqe+EMfTqwgCzibqmrP4x167w3kg6AGKeWhHsuYgmqo=; b=0DGNKn03MdIs8HXpj716oe50V7
+	zAlJjsPH+5ElaNz2GBmpYUJr0iesqBaMdv3JA0dhW16YeyncRk1+NNalaj5k6iYJJ2U6joRChwRPX
+	XWupBTGDuxnYf+VNizhOl7jNZdbFXADEPC2pTqNqHXHUYi14IxlGEYlnXI7VcwcoEWyzmKEJUWQkt
+	LTTZMb/u23Tpm2Znmpizohie787/IdLyb/b4wUfl6DWE9XbYTR0XelzcieflMCMrrXPzL/r3oBxfl
+	As8iGwTOklAGZjIa1aZYtDNkZo4HamhdB0+kdRTjNc97zDV7vhP3Qip+DZDbS2ehVNHfxPf2StOy4
+	vKjURxkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6XWv-001zHx-1D;
-	Tue, 06 Jun 2023 14:19:25 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1q6YAA-00291G-1Q;
+	Tue, 06 Jun 2023 14:59:58 +0000
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6XWs-001zEk-19
-	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Jun 2023 14:19:23 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-3f6dfc4dffaso53313925e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jun 2023 07:19:19 -0700 (PDT)
+	id 1q6Y9u-0028lK-1g;
+	Tue, 06 Jun 2023 14:59:45 +0000
+Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-53f70f7c2d2so3337453a12.3;
+        Tue, 06 Jun 2023 07:59:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1686061158; x=1688653158;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=jLJFbQYmxrTDG5LviuU11MzRe1assIVdj7KuflZnNpY=;
-        b=d8pNyDvcbPPK3+UQuLCrl1UfrOPi3S135bTZSRUrILBjQTiKVUcA1SiYN+5fnX4gBE
-         qoxxa/gItEoI9UlBr956sauyXrVJ1ILJLjrId6VvZPKpLK/b9sPll9GWY70qjkgtcPr9
-         fZMwzmyClilRGb2X8g4eYarNaODaDsgc/fsfZZ92DlwiwAkzUankwrSrNe9IY2Op6T3v
-         JLVQ95QkqsGVjxF7Pt1DZWsCO/R+OVf415IvCr4Ze78BRObScUjwAhby4HTdycy8VQoH
-         S660ICJva1urzKd4hpb9lBjxahzMw64pWuMFQD7uSQaL7EBXKTA01jvEUyzWHAnupqGp
-         C9Ww==
+        d=gmail.com; s=20221208; t=1686063580; x=1688655580;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Wqe+EMfTqwgCzibqmrP4x167w3kg6AGKeWhHsuYgmqo=;
+        b=c89hhqFN81vIg5IN2rpZKauKAqHYf+KMSB7oh1dAt0i49A3ucUMkyTzxUCrj2WWs+g
+         /LU3Xr/oSOgiCs+CzGUU8pWhEpDacm5mxkJpE/5clGHyANc/lNkJmfLq/aJVfdcjT8UL
+         eBL06dgnIyAp6shIXHNvUuno3W6Sk3jssjkHEmrtsXS0ehGnvMz9fE+mUbSyT7V/DtJ8
+         YEYyGAmkm7jdPB+ETVRV6oGB43zryHGlxwY1MiyEjreIcHwBO4xpm30cOGoi+5sxuVuw
+         QGY0ItDFmMr8lVYp12VI5cDd1e62KrSFDl9FQbjPsohnlfnzU1oGnGODof+74Twn0KQQ
+         vCow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686061158; x=1688653158;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=jLJFbQYmxrTDG5LviuU11MzRe1assIVdj7KuflZnNpY=;
-        b=Zh2zkhA0LeO8liJwVzPcQUI3sQ83HLHKN696Sok+AEaYMfrIPgGYcO8ts8bozxhe0d
-         slgIREBnlQskTdTmLcj3taWkxp4VI8kSRmH3/h+tXO61UBMGU3Zcmf/AhnG7xJ7qpkn5
-         NtUURYp56tR1M8yjpuHLPCDbxcxvYzVy28V4ejIIjaVhTzkOvaLAzX2XRCfS8sLZ009V
-         KDB40TkjBxj2Mg+rZzyUIhZURicBkFAUC+C/XVmXQU6DSOpLrkSwRtG9EOAyKFyrk/mK
-         tQ/luT3uhswHvrkrXqgVrjmEYjt3shaL/bfI35oafcE2GTD77wqeW4KGZ2UQWWpQdTL8
-         VZag==
-X-Gm-Message-State: AC+VfDwtljSPsaqLPXyC2dmo+Pd9QcZSuP3eD7SssLJrlBJ7g55Lvqz8
-	n6k5L3vWVfsRJbIvEYPHAbEO1g==
-X-Google-Smtp-Source: ACHHUZ7tMz1e7peVOgjwE3ohW3F0yZCcAJE40qZ3YvbzRfKex+sTAxn9BgF5iKNHfpSa9OMAMW9GGw==
-X-Received: by 2002:a7b:ce09:0:b0:3f7:b1dd:954b with SMTP id m9-20020a7bce09000000b003f7b1dd954bmr2207090wmc.31.1686061157879;
-        Tue, 06 Jun 2023 07:19:17 -0700 (PDT)
-Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id n2-20020a05600c294200b003f727764b10sm13928677wmd.4.2023.06.06.07.19.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 Jun 2023 07:19:17 -0700 (PDT)
-Message-ID: <c8cde297-d713-cb18-eccc-18d6d486c5a1@baylibre.com>
-Date: Tue, 6 Jun 2023 16:19:16 +0200
+        d=1e100.net; s=20221208; t=1686063580; x=1688655580;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Wqe+EMfTqwgCzibqmrP4x167w3kg6AGKeWhHsuYgmqo=;
+        b=M4hOEcknLxRSL60y1Z+v3ayXj9IMQPfeKkc2/P59A8VMr3topVrDiT3tePU6vz+3Y6
+         0GNAqUP8/PRvRIPUaPAwLy+AoLc1csVRMUJqlmvSN30YLLYZylydcixxVJVnqaCZEWzR
+         UPYkOKLp025ZgqRwir18yTX3mrThH8Zafhsa+3erhExDXFT2wquUMkO9/JeCfXQF1cPg
+         xtx6qcuOBOFLWfxREO+yQUggZxf32mJDsTadElaObOGd7Lb9UWOvEaFgxAZ52/P2pYzQ
+         KkP8BtgfO+ovGqBuhvQYmd8hjRS75R0Wvcuge6ioSO7NMnyHeIGScipo4c8t6Whp2zHR
+         CpSg==
+X-Gm-Message-State: AC+VfDwlSQtSUSAcy5QopSpE58BYPdUvlA+V4tMzqVRaVoSQlTMcY7it
+	FWho6N5GrxfZZeQlcNCygE7reAOmXrR7t0ieFwQ=
+X-Google-Smtp-Source: ACHHUZ7R3wIBiwS3qmIDAIVJhRLmDVW+rENmgn5tSeT1A0bMQm4kGe5M15s7kly86oJcM/F8JJJXG4R4/1qAqmUxppw=
+X-Received: by 2002:a05:6a20:3d83:b0:117:a2f3:3c93 with SMTP id
+ s3-20020a056a203d8300b00117a2f33c93mr14207pzi.2.1686063579863; Tue, 06 Jun
+ 2023 07:59:39 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v12 6/7] iommu/mediatek: mt8188: Add iova_region_larb_msk
-Content-Language: en-US
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Robin Murphy <robin.murphy@arm.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, mingyuan.ma@mediatek.com,
- yf.wang@mediatek.com, jianjiao.zeng@mediatek.com, chengci.xu@mediatek.com
-References: <20230602090227.7264-1-yong.wu@mediatek.com>
- <20230602090227.7264-7-yong.wu@mediatek.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230602090227.7264-7-yong.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20230524153311.3625329-1-dhowells@redhat.com> <20230524153311.3625329-5-dhowells@redhat.com>
+ <a819dd80-54cc-695f-f142-e3d42ce815a7@huawei.com> <f7919c2c9e1cb6218a0b0f55ddaa9a34f7d2b9a7.camel@gmail.com>
+ <1841913.1686039913@warthog.procyon.org.uk>
+In-Reply-To: <1841913.1686039913@warthog.procyon.org.uk>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Tue, 6 Jun 2023 07:59:02 -0700
+Message-ID: <CAKgT0Ud=ZWVnpwqbLqGovjPM2VR_V1-Ak=meveqnG01tGWTTeA@mail.gmail.com>
+Subject: Re: [PATCH net-next 04/12] mm: Make the page_frag_cache allocator use
+ multipage folios
+To: David Howells <dhowells@redhat.com>
+Cc: Yunsheng Lin <linyunsheng@huawei.com>, netdev@vger.kernel.org, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Willem de Bruijn <willemdebruijn.kernel@gmail.com>, David Ahern <dsahern@kernel.org>, 
+	Matthew Wilcox <willy@infradead.org>, Jens Axboe <axboe@kernel.dk>, linux-mm@kvack.org, 
+	linux-kernel@vger.kernel.org, Jeroen de Borst <jeroendb@google.com>, 
+	Catherine Sullivan <csully@google.com>, Shailend Chand <shailend@google.com>, Felix Fietkau <nbd@nbd.name>, 
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, 
+	Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith Busch <kbusch@kernel.org>, 
+	Jens Axboe <axboe@fb.com>, Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, 
+	Chaitanya Kulkarni <kch@nvidia.com>, Andrew Morton <akpm@linux-foundation.org>, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-nvme@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_071922_393265_61E4B59E 
-X-CRM114-Status: UNSURE (   8.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230606_075942_604663_806EE3A4 
+X-CRM114-Status: GOOD (  33.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,18 +103,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/06/2023 11:02, Yong Wu wrote:
-> Add iova_region_larb_msk for mt8188. We separate the 16GB iova regions
-> by each device's larbid/portid.
-> Refer to include/dt-bindings/memory/mediatek,mt8188-memory-port.h
-> 
-> As commented in the code, larb19(21) means it's larb19 while its SW index
-> is 21.
+On Tue, Jun 6, 2023 at 1:25=E2=80=AFAM David Howells <dhowells@redhat.com> =
+wrote:
+>
+> Alexander H Duyck <alexander.duyck@gmail.com> wrote:
+>
+> > Also I have some concerns about going from page to folio as it seems
+> > like the folio_alloc setups the transparent hugepage destructor instead
+> > of using the compound page destructor. I would think that would slow
+> > down most users as it looks like there is a spinlock that is taken in
+> > the hugepage destructor that isn't there in the compound page
+> > destructor.
+>
+> Note that this code is going to have to move to folios[*] at some point.
+> "Old-style" compound pages are going to go away, I believe.  Matthew Wilc=
+ox
+> and the mm folks are on a drive towards simplifying memory management,
+> formalising chunks larger than a single page - with the ultimate aim of
+> reducing the page struct to a single, typed pointer.
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+I'm not against making the move, but as others have pointed out this
+is getting into unrelated things. One of those being the fact that to
+transition to using folios we don't need to get rid of the use of the
+virtual address. The idea behind using the virtual address here is
+that we can avoid a bunch of address translation overhead since we
+only need to use the folio if we are going to allocate, retire, or
+recycle a page/folio. If we are using an order 3 page that shouldn't
+be very often.
 
--- 
-Regards,
-Alexandre
+> So, take, for example, a folio: As I understand it, this will no longer
+> overlay struct page, but rather will become a single, dynamically-allocat=
+ed
+> struct that covers a pow-of-2 number of pages.  A contiguous subset of pa=
+ge
+> structs will point at it.
+>
+> However, rather than using a folio, we could define a "page fragment" mem=
+ory
+> type.  Rather than having all the flags and fields to be found in struct
+> folio, it could have just the set to be found in page_frag_cache.
 
+I don't think we need a new memory type. For the most part the page
+fragment code is really more a subset of something like a
+__get_free_pages where the requester provides the size, is just given
+a virtual address, and we shouldn't need to be allocating a new page
+as often as ideally the allocations are 2K or less in size.
+
+Also one thing I would want to avoid is adding complexity to the
+freeing path. The general idea with page frags is that they are meant
+to be lightweight in terms of freeing as well. So just as they are
+similar to __get_free_pages in terms of allocation the freeing is
+meant to be similar to free_pages.
+
+> David
+>
+> [*] It will be possible to have some other type than "folio".  See "struc=
+t
+> slab" in mm/slab.h for example.  struct slab corresponds to a set of page=
+s
+> and, in the future, a number of struct pages will point at it.
+
+I want to avoid getting anywhere near the complexity of a slab
+allocator. The whole point of this was to keep it simple so that
+drivers could use it and get decent performance. When I had
+implemented it in the Intel drivers back in the day this approach was
+essentially just a reference count/page offset hack that allowed us to
+split a page in 2 and use the pages as a sort of mobius strip within
+the ring buffer.
 
