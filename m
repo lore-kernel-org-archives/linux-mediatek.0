@@ -4,76 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3475C7EE24
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 08:31:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A41A6C7EE2C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jun 2023 08:45:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DT7tX/M0mZeswTcyQ76BJ5csCzwyTHc+x7ptx2ezbp8=; b=oTIGA3QinRCpFKF4B+4ow86zwL
-	ktUqUdZ00GASpxG2fhCBV9ARNvDCcc1yfDrYrcCYPIWYKHxjeWHOnQ+M+l+HTB8IExYmN2DZlT6ld
-	YTh/IoVZNxEh0mKPzYdogN//KDHzXFf8xvGHSoDKxGmA3108Dx54yt6jY8gWEWs/SOaGij1neghvr
-	zjkgiUU8DM3+He+qQ4gGxGtb6uE4LWztYi+nEvNuoD98zikcNlFoXf7Z1PlojJjb4Ve6xqbWVy2Mq
-	bgpDEpMKVnoJvsR8F0+VqVwIIM0cT3w0EjEsAIvacZ4g5yLK0lf0PA4gSmt5IvdzEPDW9AB768a6q
-	HLsq5yvw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mgCpYyezhHVr5BXyPJO0Ha+60w1xPwjoSHXr+Jg7eyw=; b=yb2YtFz7+NAHr6Xu7z3WygjmnI
+	v9v9eUE1hktYSXGjdbxQQF8f/J0KjJEXpKdmvdZMSTeUx9W6pHlu4uKNyVroTx7FYsOQsO+WTrT7q
+	td/o1jNYqEVe5P1gGunfxfbJf7p1cTzForVkCwIDiYwHL3y/ZQaxsmxZeXhani4cJD3TYqx4R+Wtp
+	ErRiv3yAWrXco8qZ4XTM7XKtjypUeacFNoKc3BOnvpu134kWHfu3gav5O60iDz+EwOPK7L1QB9813
+	gzQSioCd+2rUhW61KzGwJGgCeZdvdKeGjvHRFySsfYP1Zn+y3jABtvKCMkLZ9mvP7xFPkugyKgyCY
+	ek8IHMBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6S62-000otH-36;
-	Tue, 06 Jun 2023 08:31:18 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1q6SJs-000r6v-2y;
+	Tue, 06 Jun 2023 08:45:36 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6S5z-000osP-2A
-	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Jun 2023 08:31:17 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-3f7ebb2b82cso2356525e9.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jun 2023 01:31:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1686040272; x=1688632272;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=DT7tX/M0mZeswTcyQ76BJ5csCzwyTHc+x7ptx2ezbp8=;
-        b=ThR3ZPojBZuNa5SebITHHHLz69z2YwEhjlSpMPiJyjgnwmhiz/LN9NLSLvD+S8VLc7
-         6U17YZbtjDP/5W7mKjitp+tOeSWukLPalLABsgCOD0ShWpn7rGZXF3G+FK6a0oixax5V
-         eFiJyxhdzeR2c0Xqtpu4l55WJ89F9FaMwWcCAiK6JEYUaL9BzVnrRObkFywMivztw50E
-         wcnNPvhTPJWBMhQuspJ8fisxITYWKAhter9eyW/mOw9biO3L/Ovyh5TFsNLxx1AYL5u3
-         kSBNL/FBHwu+5nBJkf40wgGZ8POT+J+/2CIXLZ+a7HDLJhOHgD9F/g1Ez5ISKpePhE1D
-         ntfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686040272; x=1688632272;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DT7tX/M0mZeswTcyQ76BJ5csCzwyTHc+x7ptx2ezbp8=;
-        b=lOkLokpotX3le2wddSZxU/SPuZctiUI009J9gtoJPyTMI9aqnu6jsBgYBPquLibNVi
-         RMjCGtzbadS86Zl/3FOIhXoZzAxdxl5W9LcRhxjYPd1ugue4qkXqba6PUNTsDIV/gdk/
-         gtqX+PIenC+hZIeoxVI8LedeE/6xRdbm48yUS8CnbqEUzQpSmnHfaVQmaZsgnXf+wZu6
-         717zNhBC/hfmqGG+tZl6Lv6X00zpiaq1CZ22YuGf3vxWcGN1pGMcqKJCm9NvZcumbroi
-         qIZu7uricwROSsCh6VhLPscl3elup0J+Acx1RWc9XDtYn9aw29yZU3GR20MPvUM148d4
-         Oj4A==
-X-Gm-Message-State: AC+VfDwIqRhdt7dk7qgSMi3hfs5q4pZTOkZJomd6YuQQdGCV4q1hjjef
-	EE5QGQbxCsGiHgV1JmRbmkY5JQ==
-X-Google-Smtp-Source: ACHHUZ7MeedmJigAdJfT4VOF4OxvbjiT8E6orSMe3JbtxiJdnacs5Gei7hfhQRlY8cLz8GUmy51qLw==
-X-Received: by 2002:adf:e40d:0:b0:307:a6a9:9dd0 with SMTP id g13-20020adfe40d000000b00307a6a99dd0mr1197022wrm.20.1686040272102;
-        Tue, 06 Jun 2023 01:31:12 -0700 (PDT)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id n8-20020a5d4c48000000b00301a351a8d6sm11894004wrt.84.2023.06.06.01.31.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Jun 2023 01:31:10 -0700 (PDT)
-Date: Tue, 6 Jun 2023 11:31:07 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: maxime@cerno.tech
-Cc: linux-mediatek@lists.infradead.org
-Subject: [bug report] drm/atomic: Pass the full state to planes async atomic
- check and update
-Message-ID: <ZH7uy1C974HiCqru@moroto>
+	id 1q6RJO-000ZjH-1N;
+	Tue, 06 Jun 2023 07:41:08 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E8BA96606E97;
+	Tue,  6 Jun 2023 08:40:59 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1686037260;
+	bh=T6bPfT4kWKXeLuDb4qVwp6rN6eB3ntz2Arg+fo8McNY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=AVPap7ZRIELTPbnrDMY6r4kM4eo1m72aDqA0OAzzeGCCWy4aG0N+YMyEE4vm/l71s
+	 bGUqJjuyXZTpbg19sQNhTjcVt4/2JlxsMXN99ySVv9PsT2zkNhPyKVCZ0fy4EqTr6J
+	 TUl0/qem9xv5yP6fNK1lnmvqnxdmP6vkjhtOE8m1ZfB8/Fvmy1kHof1iGOa99HP0Gr
+	 IZ1i+xYcSn/9jPtnOdrLVhU79hzqSf8UYxiEbrUN8c964UOSJAr3/SPtWJvt23azhD
+	 zPbf7JeEqDOUAUOzilaj3JT/SmMGjpaQEmR8PyzEJ0/EHB45KgzU44c9tfFKcT6qgY
+	 wJZ4rF0AMsbcA==
+Message-ID: <e1c6d01b-2911-eeda-373c-59dd2bb1ca19@collabora.com>
+Date: Tue, 6 Jun 2023 09:40:57 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
+Subject: Re: [PATCH 6/6] arm64: dts: mediatek: mt8183: Add decoder
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: kernel@collabora.com, Yunfei Dong <yunfei.dong@mediatek.com>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20230605162030.274395-1-nfraprado@collabora.com>
+ <20230605162030.274395-7-nfraprado@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230605162030.274395-7-nfraprado@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_013115_712184_EA2A4F5E 
-X-CRM114-Status: UNSURE (   7.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230606_004102_611956_0857AA6A 
+X-CRM114-Status: GOOD (  14.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,59 +82,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Maxime Ripard,
+Il 05/06/23 18:20, Nícolas F. R. A. Prado ha scritto:
+> From: Yunfei Dong <yunfei.dong@mediatek.com>
+> 
+> Add node for the hardware decoder present on the MT8183 SoC.
+> 
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> Signed-off-by: Qianqian Yan <qianqian.yan@mediatek.com>
+> Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
+> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+> 
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 39 ++++++++++++++++++++++++
+>   1 file changed, 39 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 5169779d01df..8bb10ed67e87 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -2019,6 +2019,45 @@ vdecsys: syscon@16000000 {
+>   			#clock-cells = <1>;
+>   		};
+>   
+> +		vcodec_dec: video-codec@16020000 {
+> +			compatible = "mediatek,mt8183-vcodec-dec";
+> +			reg = <0 0x16020000 0 0x1000>,		/* VDEC_MISC */
+> +			      <0 0x16021000 0 0x800>,		/* VDEC_VLD */
+> +			      <0 0x16021800 0 0x800>,		/* VDEC_TOP */
+> +			      <0 0x16022000 0 0x1000>,		/* VDEC_MC */
+> +			      <0 0x16023000 0 0x1000>,		/* VDEC_AVCVLD */
+> +			      <0 0x16024000 0 0x1000>,		/* VDEC_AVCMV */
+> +			      <0 0x16025000 0 0x1000>,		/* VDEC_PP */
+> +			      <0 0x16026800 0 0x800>,		/* VP8_VD */
+> +			      <0 0x16027000 0 0x800>,		/* VP6_VD */
+> +			      <0 0x16027800 0 0x800>,		/* VP8_VL */
+> +			      <0 0x16028400 0 0x400>;		/* VP9_VD */
+> +			reg-names = "misc",
+> +				    "ld",
+> +				    "top",
+> +				    "cm",
+> +				    "ad",
+> +				    "av",
+> +				    "pp",
+> +				    "hwd",
+> +				    "hwq",
+> +				    "hwb",
+> +				    "hwg";
 
-This is a semi-automatic email about new static checker warnings.
+Do we really need one line for each 2/3 characters reg name? :-P
 
-The patch 5ddb0bd4ddc3: "drm/atomic: Pass the full state to planes
-async atomic check and update" from Feb 19, 2021, leads to the
-following Smatch complaint:
+Regards,
+Angelo
 
-    drivers/gpu/drm/mediatek/mtk_drm_plane.c:125 mtk_plane_atomic_async_check()
-    warn: variable dereferenced before check 'state' (see line 106)
-
-drivers/gpu/drm/mediatek/mtk_drm_plane.c
-   103  static int mtk_plane_atomic_async_check(struct drm_plane *plane,
-   104                                          struct drm_atomic_state *state)
-   105  {
-   106          struct drm_plane_state *new_plane_state = drm_atomic_get_new_plane_state(state,
-                                                                                         ^^^^^
-The patch adds an unchecked dereference
-
-   107                                                                                   plane);
-   108          struct drm_crtc_state *crtc_state;
-   109          int ret;
-   110  
-   111          if (plane != new_plane_state->crtc->cursor)
-   112                  return -EINVAL;
-   113  
-   114          if (!plane->state)
-   115                  return -EINVAL;
-   116  
-   117          if (!plane->state->fb)
-   118                  return -EINVAL;
-   119  
-   120          ret = mtk_drm_crtc_plane_check(new_plane_state->crtc, plane,
-   121                                         to_mtk_plane_state(new_plane_state));
-   122          if (ret)
-   123                  return ret;
-   124  
-   125          if (state)
-                    ^^^^^
-But the existing code has a check for NULL and comments explaining when
-state can be NULL.
-
-   126                  crtc_state = drm_atomic_get_existing_crtc_state(state,
-   127                                                                  new_plane_state->crtc);
-   128          else /* Special case for asynchronous cursor updates. */
-   129                  crtc_state = new_plane_state->crtc->state;
-   130  
-   131          return drm_atomic_helper_check_plane_state(plane->state, crtc_state,
-   132                                                     DRM_PLANE_NO_SCALING,
-   133                                                     DRM_PLANE_NO_SCALING,
-   134                                                     true, true);
-   135  }
-
-regards,
-dan carpenter
 
