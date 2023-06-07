@@ -4,92 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0217C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 04:22:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45058C7EE25
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 04:47:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HuclnzYeNveopGINoAYYFBKbv8upkWfI9n54Jz9FA3Q=; b=DBel0LpjnBk+pGgErip3YVc/j4
-	jMW/XKKVF04Wh2noxmilZX6y8Wkob2ZDhw8qTj6KswqIs4H1bJosvxQxZNylfDXURsuto0OEKDx2j
-	Nva7PEaAJFT4LONvwlxtDgfQR9n2/lPzT24j0ulTdcnPk1RDQQXnB2TarzQh6ZJotSOS/XoSCiJmy
-	8qfPanZQmn1VG1EYPRQtoAB0T3d7KF2kzyI/DMTMY5Pe/uAI+s6XoI+1P9SkYrkJZiuAXbHGwVoOl
-	Leat8xdb+k8s5QRKo8qeLrwoQ0cyaiL+VEWOaruu1HbMF3vQjb8LjWObaUPr3iH+luoJPqtgdMpG2
-	C+UyI/Gg==;
+	bh=fo4PkLfngXYHY6ja+unUd5R8bGmOlUuTUPgWhxoPbLc=; b=oezO6+6JDaoMalkKV9wmWO0sph
+	lt24cHLpld77wz1xQO/SmZGjHHd/gVudKbAuos5DhODquMpfGcKm3+CLLFTxABA88yt/SJSwDdT7D
+	MIKHtOOOaWhJOvn15kzoQK8R92kisjg4JqMadWzN0bTcvyjPT44fXG4LiXf3oZthGiMBp5jR27jhU
+	bNr8dIZVKiVd9SI5um811oMjyCsfCtE5dZGlbNKjVFo9yi4t/zVtMSQnv3yGA715TKKjjleEENPX6
+	SXhK8lbAA5s7l4hwXGjm5Ucuu1hbLxdVPbP6Z398xCX45KU+/yGfs1mSBClUKVGYZTm7xKQ4YN6yD
+	dnfLgVrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6kgn-004HVS-2a;
-	Wed, 07 Jun 2023 04:22:29 +0000
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+	id 1q6l4f-004KEd-0z;
+	Wed, 07 Jun 2023 04:47:09 +0000
+Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6kgl-004HUl-0B
+	id 1q6l4c-004KDh-2N
 	for linux-mediatek@lists.infradead.org;
-	Wed, 07 Jun 2023 04:22:28 +0000
-Received: by mail-pj1-x1031.google.com with SMTP id 98e67ed59e1d1-259ac20bdeaso929940a91.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jun 2023 21:22:25 -0700 (PDT)
+	Wed, 07 Jun 2023 04:47:08 +0000
+Received: by mail-vs1-xe34.google.com with SMTP id ada2fe7eead31-43b1c483c39so2418005137.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jun 2023 21:47:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1686111744; x=1688703744;
+        d=chromium.org; s=google; t=1686113222; x=1688705222;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=HuclnzYeNveopGINoAYYFBKbv8upkWfI9n54Jz9FA3Q=;
-        b=ObC0mWPSddnKk6l+q9yiBW3W+D5r8oDC8aVEO0gnYPusHnFC7Xyb61LSaFBdM9s2qv
-         1dKflqt79dA2/mXyjcQsMp4CC3trIwp18xaFYylZoFeutAXTtbHs/A2k0aIx4gzR+7k5
-         VVZ+cV02m3mqtjM1NtVi7pBdLcpJtkjmU9rCo=
+        bh=fo4PkLfngXYHY6ja+unUd5R8bGmOlUuTUPgWhxoPbLc=;
+        b=kyWP28qN8Jys8ZFdoulObIZ5HN99D2774We5lAq1N4NhWeKJpOyDBaA1fL/QwG5r9T
+         +3HVez47RYtr0CFUkMYtD5KbpilQxz81OXdUv4lHqQp2EvPn4UUcIo4RkpjyIm/AQYst
+         nGZxKi2mYvdsj4X0GO+TasNUe0729O/BU1Ay8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686111744; x=1688703744;
+        d=1e100.net; s=20221208; t=1686113222; x=1688705222;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=HuclnzYeNveopGINoAYYFBKbv8upkWfI9n54Jz9FA3Q=;
-        b=e5oGwmNdM8tsHMi93idyUu0yPRttuSSpu28p1m4qrVmiuV/XJzGkrWq8dQ3vjf88nZ
-         /SCS2p0dyL9n+PuSAFFHY7AfQSMVyxxOG/a01/D+T3ngctuPu/qG87T/+pt37k7Q/FcA
-         is9XJd3G0XfIghbRTKsKLtx98GNBvra6euRH4JZIhiaic5Yp/plpF6jMT9Mv06I8tt//
-         KVzaP875Xf6WJPCSCRPr2kyDBm7PUgIBaXHCkAoTx8UBrRLD0E2vjhbzLL/rQ4Z1UFFP
-         y2DISKeYI8H88dk2mkSeOfIgxl+gYJLc2LcrTyYy1XME0ll13xVEeZC6u/KtzheO1Zjs
-         BXpQ==
-X-Gm-Message-State: AC+VfDwdwYCDXge1vC9tNdGFQBcgXmK3wj09iYv+nIvG3Zg/GSh3B7Dk
-	y7c/1yFgsFmCZYCswuodPxwdhdD2ADf6JY8cE1c=
-X-Google-Smtp-Source: ACHHUZ4xDcXnQ6Me0lH6yLdIRW/B47myMRN/uCo39PqunKEWmqsuON7SbzDHfcMcJRBAGTNYiKFVxQ==
-X-Received: by 2002:a17:90a:199d:b0:259:3e17:7e15 with SMTP id 29-20020a17090a199d00b002593e177e15mr3920817pji.7.1686111744651;
-        Tue, 06 Jun 2023 21:22:24 -0700 (PDT)
-Received: from mail-pf1-f169.google.com (mail-pf1-f169.google.com. [209.85.210.169])
-        by smtp.gmail.com with ESMTPSA id nd11-20020a17090b4ccb00b0024e1172c1d3sm334439pjb.32.2023.06.06.21.22.24
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 Jun 2023 21:22:24 -0700 (PDT)
-Received: by mail-pf1-f169.google.com with SMTP id d2e1a72fcca58-65131e85be4so6945982b3a.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jun 2023 21:22:24 -0700 (PDT)
-X-Received: by 2002:a1f:6d81:0:b0:457:134a:50ef with SMTP id
- i123-20020a1f6d81000000b00457134a50efmr1490189vkc.0.1686111413362; Tue, 06
- Jun 2023 21:16:53 -0700 (PDT)
+        bh=fo4PkLfngXYHY6ja+unUd5R8bGmOlUuTUPgWhxoPbLc=;
+        b=lMXrhMona4Pn+hpaZvOldKPb85vws9Vp6VKfW/35NuUZRjjWXvMxa1Q7r0Blj08hO0
+         Xx5MINLVV/I5OUnEq1vYgu0YmG41+c5vXpFrGdp5m3DZp1GpO7mQzNyeElIuxxu8BUTR
+         ksQaQ0XFHksvcERI0EbtnV0EpJ53buzcXoSoo7/z0maEDkHxXbEKuWtCb1C78Cnbdsi/
+         wNdzEzdKRZ2Jaltd25t0pvSTal0KZIkcAVU/wGVCgR5w8nV9IzIL+yLRBl/bJg+NYJZg
+         HEUIY8qzmqZto+QaxjDcigadQ8FEysjQYZNoM5r4B5BLUaxiDDS3MJNL8ToV2fVJJTcz
+         S9UQ==
+X-Gm-Message-State: AC+VfDwZVLw9b5eO/TLUHn56r01pMHgqexhyU9p5p0fGvUXBuD6vo78I
+	E+Jk4y2TBYHFRhE/KOO06lEa13R0lxAW+mt8FHSH1w==
+X-Google-Smtp-Source: ACHHUZ5G84yzb6PcZC4TA0uvD3i4O/JMOqyu3JqoOcMgDxGkqL//yhdqkr/hCqNBIzESrXBePe5kjXPkufKSEC3CNxA=
+X-Received: by 2002:a05:6102:102:b0:43b:1b47:670 with SMTP id
+ z2-20020a056102010200b0043b1b470670mr688543vsq.20.1686113222153; Tue, 06 Jun
+ 2023 21:47:02 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230525014009.23345-1-yunfei.dong@mediatek.com>
- <20230525014009.23345-2-yunfei.dong@mediatek.com> <b32b82f5-8555-39cf-9311-017a42b24e66@collabora.com>
-In-Reply-To: <b32b82f5-8555-39cf-9311-017a42b24e66@collabora.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Wed, 7 Jun 2023 12:16:17 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nhM26=2FTtVjVvo6d0aWqo+KVa1s9=8xHL1VgYSqkuDvQ@mail.gmail.com>
-Message-ID: <CAC=S1nhM26=2FTtVjVvo6d0aWqo+KVa1s9=8xHL1VgYSqkuDvQ@mail.gmail.com>
-Subject: Re: [PATCH v4,1/4] media: mediatek: vcodec: Avoid unneeded error logging
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Nathan Hebert <nhebert@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>, 
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, 
-	Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230602083335.GA181647@google.com> <87a5xii33r.fsf@jogness.linutronix.de>
+ <20230603054139.GR14287@atomide.com> <20230603063533.GS14287@atomide.com>
+ <20230605061511.GW14287@atomide.com> <CAGXv+5Fbx7eTxP0ep6DV+jyronAWxYvu2M-g=MjHGRhjSXUc=w@mail.gmail.com>
+ <20230605122447.GY14287@atomide.com> <CAGXv+5HwL+R5QpO3pHGQd9qAxu2pCMDjYvdni1HjiC8eEE38mg@mail.gmail.com>
+ <20230605131803.GA14287@atomide.com> <CAGXv+5GR9TEaNrj4B21H2iukS2kWW=rtoWkoVnWewVsrbcG0Hw@mail.gmail.com>
+ <20230606122059.GC14287@atomide.com>
+In-Reply-To: <20230606122059.GC14287@atomide.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 7 Jun 2023 12:46:51 +0800
+Message-ID: <CAGXv+5ERwrFgpWBUBTkoawfyyTHU9w=Owiy-2BbCXHwEpZk1tA@mail.gmail.com>
+Subject: Re: [PATCH v12 1/1] serial: core: Start managing serial controllers
+ to enable runtime PM
+To: Tony Lindgren <tony@atomide.com>
+Cc: John Ogness <john.ogness@linutronix.de>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
+	Andy Shevchenko <andriy.shevchenko@intel.com>, Dhruva Gole <d-gole@ti.com>, 
+	=?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, 
+	Johan Hovold <johan@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, 
+	Vignesh Raghavendra <vigneshr@ti.com>, linux-omap@vger.kernel.org, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, linux-kernel@vger.kernel.org, 
+	linux-serial@vger.kernel.org, 
+	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_212227_118917_28BA98EF 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20230606_214706_815280_EF87BBAB 
+X-CRM114-Status: GOOD (  14.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,22 +100,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 25, 2023 at 4:11=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+On Tue, Jun 6, 2023 at 8:21=E2=80=AFPM Tony Lindgren <tony@atomide.com> wro=
+te:
 >
-> Il 25/05/23 03:40, Yunfei Dong ha scritto:
-> > Since the LAT decoder works faster than its CORE, getting the trans
-> > buffer may be done only after CORE finishes processing: avoid printing
-> > an error if the decode function returns -EAGAIN, as this means that
-> > the buffer from CORE is not yet available, but will be at a later time.
-> >
-> > Also change the log level for calls to vdec_msg_queue_dqbuf() in H264
-> > and VP9 LAT decoder drivers to avoid excessive logging.
-> >
-> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> * Chen-Yu Tsai <wenst@chromium.org> [230606 09:17]:
+> > I ended up following 8250_dw's design, which seemed less convoluted.
+> > The original code was waaay too convoluted.
 >
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
+> OK that looks good to me thanks. Good to hear you got it sorted out.
+>
+> The 8250_dw style runtime PM is a good solution for simple cases. Where
+> it won't work are SoCs where runtime PM calls need to propagate up the
+> bus hierarchy. For example, 8250_omap needs runtime PM calls for the
+> interconnect and power domain to get register access working.
 
-Reviewed-by: Fei Shao <fshao@chromium.org>
+Good to know. On MediaTek platforms I don't think there are any power
+domains covering the basic peripherals. (Or it's hidden from the kernel.)
+
+> > BTW, the Bluetooth breakage seems like a different problem.
+>
+> OK seems like we're good to go then :)
+
+Yup. After a bit more testing, it seems the Bluetooth problem is more like
+an undervolt issue. If I have WiFi and BT probe at the same time, Bluetooth
+fails. If they probe separately, everything works fine.
+
+ChenYu
 
