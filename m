@@ -4,76 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED487C7EE29
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 07:24:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43BFDC7EE29
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 07:26:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PR4J+o7n3cvUuPH/ravIyyLbKKLqOctALeoFsXobH1E=; b=tmLnUZD3J4b4hAFh83NBphWT1U
-	Jj9/Y2KrDUo5O0YWKf9iC1tkCrWWR/Kn/S/AewYZ008SMX9Wxc8P2nW+cgEV5K3iCaF4oH9Jovvi1
-	YQu+PS8eR2N/+aT6QIXuVyP6z1J4GY5IerQUv1Rq4M6ixOHZjhTEMyqPkEinWeYG/4VBOq1K+w8/x
-	Cd9snkLJucXY8ZAyYVhCiLxKV+MP0dk5L9nOqz5jcIJjgdFV1cTztEf6jdRqXw6r3mJGavzPy3MWm
-	n6fgi55fICwuFAh7/Ia/DeaR+mdoLmSTZtj1y9rYV7GdZgVQDcTpTwRCcD/6iGh3aJmlsHSinQVED
-	jj3BwoDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AHNOb3Vak93SE79cjJtlUcImdmBQ6YeOYklhRG0qb4M=; b=Of1Af/XUb711xNP4tX3/YE9nnU
+	siagroYylNmtIMWlOJkLx8QaZYL7FNEtOv0Fs5N5SWnuBWH72eXJmJAd/v83YGEwRZ2STGMuC/bF9
+	/6yecp9LqydOumL/LvA0pKmrlMYKrc9+4iai0oMyiGDfy+ZNcW/uq88b4MntedoHN6sIyNHoyeCjA
+	egu3KC4YRajRgrqMUexbrtRY89CVpzByAy+k49y1yfoqKSaqnX8vB+zVye3KbZUsxG1EiCp1JT+YR
+	dvdYGQ8sChgpI+RWkKIiuILlrMlZIVlJxMFioLs6Q9AsZFQxw811S1CHqMQYgsof32uzLzMVmT+eE
+	6BJpyvUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6nWd-004iiI-1E;
-	Wed, 07 Jun 2023 07:24:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1q6nYm-004jLh-1H;
+	Wed, 07 Jun 2023 07:26:24 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6nWa-004igc-2Z;
-	Wed, 07 Jun 2023 07:24:10 +0000
-X-UUID: 4471ceaa050411ee83ed1395ce914268-20230607
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=PR4J+o7n3cvUuPH/ravIyyLbKKLqOctALeoFsXobH1E=;
-	b=bsiT/20lt5guFF8d50Ib/+rZyrWRIfZJKwLHjr0mzNu5NLM/qV1M/KJTet5YrvsUBc2d0Xw33BwyACac1efAH63ETWISR2Jat2yki74od5j0+Y9joo324VBIqRzVl/8iAIpkC8hdSKclwxyP0tT+Yq2HTbRupsHqcZoIMHCEudw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:120e48fa-ddfe-461e-9f9c-860d0a87cbef,IP:0,U
-	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-30
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:08664a6e-2f20-4998-991c-3b78627e4938,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
-	L:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 4471ceaa050411ee83ed1395ce914268-20230607
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1119070354; Wed, 07 Jun 2023 00:23:58 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 7 Jun 2023 15:22:24 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 7 Jun 2023 15:22:24 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
-	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tinghan
- Shen <tinghan.shen@mediatek.com>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v13 09/11] remoteproc: mediatek: Handle MT8195 SCP core 1 watchdog timeout
-Date: Wed, 7 Jun 2023 15:22:20 +0800
-Message-ID: <20230607072222.8628-10-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230607072222.8628-1-tinghan.shen@mediatek.com>
-References: <20230607072222.8628-1-tinghan.shen@mediatek.com>
+	id 1q6nYj-004jJG-0K
+	for linux-mediatek@lists.infradead.org;
+	Wed, 07 Jun 2023 07:26:22 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-5149c76f4dbso912912a12.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 07 Jun 2023 00:26:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1686122773; x=1688714773;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=AHNOb3Vak93SE79cjJtlUcImdmBQ6YeOYklhRG0qb4M=;
+        b=YNNQbQZQPVdSzi20TxjAyRhsARcaBBpmpqvxoW15cjkG9qq/R+1RdWi++Z4I0q1RW/
+         GuoElk2FOp7isnbZVtUv7gf67LAQQHodGe2aCu8Kb9Q2mAz8Mdl66eX4rNmA/CLg1R5i
+         j2BbfjMBXFC2Ml4Q0crymEKqBcJZ5e/sEkyGBNXJZ8gG4Z08JvTthjsxyvZ6NIpkYlav
+         tJ3ahH3JuWr+wBtmp6ze2+gBFCMFtUHgUSVpYqCClUlLgcxgZoccM7sTKlLeLK6rJy0w
+         6cgHrK1GwuyfNvvHcDYBgGwEAPDzyBfb5a0msjkqQdEavjjho5b8SOI6I3OvXJIO/mV4
+         dW3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686122773; x=1688714773;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=AHNOb3Vak93SE79cjJtlUcImdmBQ6YeOYklhRG0qb4M=;
+        b=IoJZAZYIykJzEC6pQ9mMCE4YgB3n+HkKxVHWdnjYYFFWYA7rGsAnCJEXljaUg9ls00
+         ypxUu1ye9shnShXBTkoV3rmdJcOgEnd1rse7oATghfXlnLTLUNHNh2DeOrzLmkTNQnm1
+         lQ+a9fPukDMbyDgd67upDg+dvd8zhnnGs9pw1GNZSzbkqgUYCfn22RcpRR7GyDyDx2/m
+         yfy3xexCfL+2FPS7tBSrxMZus7fv9s03SkjFIWEgxgIcCTQlTuZbpJVzwvwmyauK3ONl
+         p0J7QX8wsY1vaYLhgbNEwT1+ogcEL7RKnvlA8EnNWZR5NiGxR8Xu1Ll+yYAPDq1l0hiM
+         +sMA==
+X-Gm-Message-State: AC+VfDzdxtUdtKgqnO76JoPCMr1ptw6ggd/CHCYiSPir0GcxjBIp+5Ht
+	uwhMwF4yuqUGu5fMkjSUMvZLxA==
+X-Google-Smtp-Source: ACHHUZ7xto1maHENeeGyjFEyLu5CAnG9dDPtJTkn0FmqIdA0AISmTQj25UoPyUB1ADeQrSC57nno+A==
+X-Received: by 2002:a05:6402:337:b0:514:a5fe:b304 with SMTP id q23-20020a056402033700b00514a5feb304mr4183702edw.38.1686122773327;
+        Wed, 07 Jun 2023 00:26:13 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.219.26])
+        by smtp.gmail.com with ESMTPSA id z15-20020aa7d40f000000b00514b2a9ce60sm5814096edq.81.2023.06.07.00.26.11
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 07 Jun 2023 00:26:12 -0700 (PDT)
+Message-ID: <85713602-dfe1-c90b-174b-3678d91369aa@linaro.org>
+Date: Wed, 7 Jun 2023 09:26:10 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
+Subject: Re: [PATCH v1 1/6] dt-bindings: display/mediatek: mt8188: Add
+ documentations for VDOSYS1
+Content-Language: en-US
+To: Hsiao Chien Sung <shawn.sung@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Jason-JH Lin <jason-jh.lin@mediatek.com>, Fei Shao <fshao@google.com>
+References: <20230607061121.6732-1-shawn.sung@mediatek.com>
+ <20230607061121.6732-2-shawn.sung@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230607061121.6732-2-shawn.sung@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230607_002408_838760_E22E0A7A 
-X-CRM114-Status: GOOD (  15.84  )
+X-CRM114-CacheID: sfid-20230607_002621_148451_D67C9210 
+X-CRM114-Status: GOOD (  16.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,86 +104,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8195 SCP core 1 watchdog timeout needs to be handled in the
-SCP core 0 IRQ handler because the MT8195 SCP core 1 watchdog timeout
-IRQ is wired on the same IRQ entry for core 0 watchdog timeout.
-MT8195 SCP has a watchdog status register to identify the watchdog
-timeout source when IRQ triggered.
+On 07/06/2023 08:11, Hsiao Chien Sung wrote:
+> Add device tree documentations for MT8188 VDOSYS1.
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/remoteproc/mtk_common.h |  5 +++++
- drivers/remoteproc/mtk_scp.c    | 25 ++++++++++++++++++++++++-
- 2 files changed, 29 insertions(+), 1 deletion(-)
+It does not look like you tested the bindings, at least after quick
+look. Please run `make dt_binding_check` (see
+Documentation/devicetree/bindings/writing-schema.rst for instructions).
+Maybe you need to update your dtschema and yamllint.
 
-diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-index 2806bd71ef94..1590175ea688 100644
---- a/drivers/remoteproc/mtk_common.h
-+++ b/drivers/remoteproc/mtk_common.h
-@@ -55,6 +55,10 @@
- #define MT8192_CORE0_WDT_IRQ		0x10030
- #define MT8192_CORE0_WDT_CFG		0x10034
- 
-+#define MT8195_SYS_STATUS		0x4004
-+#define MT8195_CORE0_WDT		BIT(16)
-+#define MT8195_CORE1_WDT		BIT(17)
-+
- #define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		GENMASK(7, 4)
- 
- #define MT8195_CPU1_SRAM_PD			0x1084
-@@ -63,6 +67,7 @@
- #define MT8195_CORE1_SW_RSTN_CLR		0x20000
- #define MT8195_CORE1_SW_RSTN_SET		0x20004
- #define MT8195_CORE1_MEM_ATT_PREDEF		0x20008
-+#define MT8195_CORE1_WDT_IRQ			0x20030
- #define MT8195_CORE1_WDT_CFG			0x20034
- 
- #define MT8195_SEC_CTRL				0x85000
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 82bba6146d23..66105ed2f3db 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -243,6 +243,29 @@ static void mt8192_scp_irq_handler(struct mtk_scp *scp)
- 	}
- }
- 
-+static void mt8195_scp_irq_handler(struct mtk_scp *scp)
-+{
-+	u32 scp_to_host;
-+
-+	scp_to_host = readl(scp->reg_base + MT8192_SCP2APMCU_IPC_SET);
-+
-+	if (scp_to_host & MT8192_SCP_IPC_INT_BIT) {
-+		scp_ipi_handler(scp);
-+	} else {
-+		u32 reason = readl(scp->reg_base + MT8195_SYS_STATUS);
-+
-+		if (reason & MT8195_CORE0_WDT)
-+			writel(1, scp->reg_base + MT8192_CORE0_WDT_IRQ);
-+
-+		if (reason & MT8195_CORE1_WDT)
-+			writel(1, scp->reg_base + MT8195_CORE1_WDT_IRQ);
-+
-+		scp_wdt_handler(scp, reason);
-+	}
-+
-+	writel(scp_to_host, scp->reg_base + MT8192_SCP2APMCU_IPC_CLR);
-+}
-+
- static void mt8195_scp_c1_irq_handler(struct mtk_scp *scp)
- {
- 	u32 scp_to_host;
-@@ -1273,7 +1296,7 @@ static const struct mtk_scp_of_data mt8192_of_data = {
- static const struct mtk_scp_of_data mt8195_of_data = {
- 	.scp_clk_get = mt8195_scp_clk_get,
- 	.scp_before_load = mt8195_scp_before_load,
--	.scp_irq_handler = mt8192_scp_irq_handler,
-+	.scp_irq_handler = mt8195_scp_irq_handler,
- 	.scp_reset_assert = mt8192_scp_reset_assert,
- 	.scp_reset_deassert = mt8192_scp_reset_deassert,
- 	.scp_stop = mt8195_scp_stop,
--- 
-2.18.0
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
+> new file mode 100644
+> index 000000000000..8a9e74cbf6dc
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
+> @@ -0,0 +1,80 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,padding.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek PADDING
+> +
+> +maintainers:
+> +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> +  - Philipp Zabel <p.zabel@pengutronix.de>
+> +
+> +description:
+> +  MediaTek PADDING provides ability to VDOSYS1 to fill pixels to
+> +  width and height of a layer with a specified color.
+> +  Since MIXER in VDOSYS1 requires the width of a layer to be 2-pixel-align, or
+> +  4-pixel-align when ETHDR is enabled, we need PADDING to deal with odd width.
+> +  Please notice that even if the PADDING is in bypass mode,
+> +  settings in the registers must be cleared to 0, otherwise
+> +  undeinfed behaviors could happen.
+
+Typo, undefined
+
+> +
+
+
+
+> +required:
+> +  - compatible
+> +  - reg
+> +  - power-domains
+> +  - clocks
+> +  - mediatek,gce-client-reg
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/clock/mt8188-clk.h>
+> +    #include <dt-bindings/power/mt8188-power.h>
+> +    #include <dt-bindings/gce/mt8188-gce.h>
+> +    #include <dt-bindings/memory/mt8188-memory-port.h>
+> +
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        vdo1_padding0: vdo1_padding0@1c11d000 {
+
+No underscores in node names.
+
+Node names should be generic. See also explanation and list of examples
+in DT specification:
+https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+
+> +            compatible = "mediatek,mt8188-vdo1-padding";
+> +            reg = <0 0x1c11d000 0 0x1000>;
+> +            clocks = <&vdosys1 CLK_VDO1_PADDING0>;
+> +            power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS1>;
+> +            mediatek,gce-client-reg =
+> +                <&gce0 SUBSYS_1c11XXXX 0xd000 0x1000>;
+
+Wrong wrapping. It's one line. Properties should not be wrapped after '='.
+
+
+Best regards,
+Krzysztof
 
 
