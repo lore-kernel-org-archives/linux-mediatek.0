@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90F38C77B7A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A58F9C87FE1
 	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 08:50:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,49 +12,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LxRYl1blqm4XIYa42dvrN0MGZxzxY8WUWnmpBP0cihg=; b=W9XgQD38/Lupps83ivg5u/ewLc
-	VnQoUobhOirQ1ZpcX/+gkxL90d9+Mbktcx8ueDAT1KMofI7qvWLbAiqx/Ymn8wiPjPa+flBIvgtVU
-	yHEw/g91t9SAohZXzX99JzZt4W1Zaikp/RR7k3vfG6OXR0GPL/YNglJ8kNHXpysg2ghpS+fwvai7+
-	Tc34juB96hMmkqHRr2/YBhmc5vI/7b1g5asWZFKJJhEOkExXneRgz+FZ2v8JMia0Tk9au0EIdbFfy
-	pVrBseY/hzQ/tFWnm/ieMsgXisOsYCEDklQwaxJ04eHfI8spwFao4WNTiCIxSr/sAvjgVV3EqAWAn
-	s0a2EHCQ==;
+	bh=iTm3bJPDFhrB3wwW3n3VEfqDIAqBI8ywaS1RQaCqkqo=; b=HcixIz2R/k1PjCocEglxkYDzT8
+	A9LydxKfYyTM/nd/n3B1DlEMTWj1vpagbW20eG/fJRp69DfUVRSUWv3ADOOwSiBGxeYqHiIRocUit
+	bsUqfnwo91GwcT9M3CGkMXakKaar7ybIMNAyw/wAkiiQ1mBbtVhwKzpMJIU56C9g0fSU23I1Vs3pg
+	1alQfjEJ2lJCoyzo7cIU9g/qKjRNpX52DftKeIjm6H8nM6OFanIACX4uXCZY/XWUc3G61YG424XNE
+	gp3wKFbLMHQvkrQ84CC8yCIqbjevxdMJZM4RS2avNsyagNFJdh8AEdvc3bEEtIuTbt8kgzQDUL+Ec
+	W+fxVL4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6orw-0053eg-1Y;
-	Wed, 07 Jun 2023 08:50:16 +0000
+	id 1q6orx-0053fE-05;
+	Wed, 07 Jun 2023 08:50:17 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6ord-0053P2-2c;
-	Wed, 07 Jun 2023 08:50:04 +0000
-X-UUID: 42f4229c051011ee912e1518a6540028-20230607
+	id 1q6ord-0053Pl-2c;
+	Wed, 07 Jun 2023 08:50:05 +0000
+X-UUID: 419a8ae4051011ee912e1518a6540028-20230607
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LxRYl1blqm4XIYa42dvrN0MGZxzxY8WUWnmpBP0cihg=;
-	b=YbzvrRnNfXbpO23nSWMXSNiKJqQD6PbLbve9f1R9rJPLHVBoa9k7qweWod+VBkNzMZN22MP2q+V1cUh7LUJaXnPgl8gaXYz/zBGwlnEmoWKZzBGcKFqnssLfBg/C2ax+gsH1ohfOU4AEnBaqDbc5IE5GuIWC9S0bk8/D1cNxsjg=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=iTm3bJPDFhrB3wwW3n3VEfqDIAqBI8ywaS1RQaCqkqo=;
+	b=T+Kzlr3peBnRwPiP7bM8IQwRFBDYtPdh2AY2LqRpIzJQh0E5X2NEzs1QcwGUtX1JYXrB1wMNXFQCq48Ic/SZQCTtLyBSt5ZnFGEnjq3+dCDmVZnV4h2oj7pimv3GNwFsE1pfrAslhQE0FalSye+H6gtmO5GWEvsU9PUQYqK/Pf4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.25,REQID:a698b522-0ad2-405d-b803-6a280d839560,IP:0,U
+X-CID-O-INFO: VERSION:1.1.25,REQID:ef15bb30-691b-48a8-b373-346aefeb705f,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
 	ON:release,TS:70
-X-CID-INFO: VERSION:1.1.25,REQID:a698b522-0ad2-405d-b803-6a280d839560,IP:0,URL
+X-CID-INFO: VERSION:1.1.25,REQID:ef15bb30-691b-48a8-b373-346aefeb705f,IP:0,URL
 	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
 	ON:quarantine,TS:70
-X-CID-META: VersionHash:d5b0ae3,CLOUDID:d0cba83d-de1e-4348-bc35-c96f92f1dcbb,B
-	ulkID:230607164936NBPKWW0B,BulkQuantity:2,Recheck:0,SF:28|17|19|48|38|29,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-UUID: 42f4229c051011ee912e1518a6540028-20230607
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:158f4d6e-2f20-4998-991c-3b78627e4938,B
+	ulkID:230607164950GQGPI4YI,BulkQuantity:0,Recheck:0,SF:29|28|17|19|48|38,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:1
+	,OSI:0,OSA:0,AV:0
+X-CID-BVR: 2,OSH|NGT
+X-CID-BAS: 2,OSH|NGT,0,_
+X-UUID: 419a8ae4051011ee912e1518a6540028-20230607
 Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 778222574; Wed, 07 Jun 2023 01:49:49 -0700
+	with ESMTP id 1519741933; Wed, 07 Jun 2023 01:49:47 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 7 Jun 2023 16:49:13 +0800
+ 15.2.1118.26; Wed, 7 Jun 2023 16:49:10 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 7 Jun 2023 16:49:12 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 7 Jun 2023 16:49:09 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Chen-Yu Tsai <wenst@chromium.org>, Nicolas Dufresne
 	<nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -69,9 +69,9 @@ CC: Yunfei Dong <yunfei.dong@mediatek.com>, Hsin-Yi Wang
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2,10/10] mediatek: vcodec: separete decoder and encoder
-Date: Wed, 7 Jun 2023 16:49:01 +0800
-Message-ID: <20230607084901.28021-11-yunfei.dong@mediatek.com>
+Subject: [PATCH v2,07/10] mediatek: vcodec: separate struct mtk_vcodec_dev
+Date: Wed, 7 Jun 2023 16:48:58 +0800
+Message-ID: <20230607084901.28021-8-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230607084901.28021-1-yunfei.dong@mediatek.com>
 References: <20230607084901.28021-1-yunfei.dong@mediatek.com>
@@ -80,8 +80,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230607_014957_907127_2DC3CD46 
-X-CRM114-Status: GOOD (  14.48  )
+X-CRM114-CacheID: sfid-20230607_014957_942127_B9B84BF9 
+X-CRM114-Status: GOOD (  23.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,791 +96,1795 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move all decoder files to folder video-decoder.
-Move all encoder files to folder video-encoder.
-Move common files which shared for encoder and decoder to folder video-common.
-
-Change include header files and Makefile to fix build error.
+Adding different dev struct for encoder and decoder, remove
+'struct mtk_vcodec_dev'.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../media/platform/mediatek/vcodec/Makefile   | 55 +------------------
- .../platform/mediatek/vcodec/common/Makefile  | 21 +++++++
- .../vcodec/{ => common}/mtk_vcodec_com_drv.h  |  0
- .../vcodec/{ => common}/mtk_vcodec_dbgfs.c    |  4 +-
- .../vcodec/{ => common}/mtk_vcodec_dbgfs.h    |  0
- .../vcodec/{ => common}/mtk_vcodec_fw.c       |  4 +-
- .../vcodec/{ => common}/mtk_vcodec_fw.h       |  2 +-
- .../vcodec/{ => common}/mtk_vcodec_fw_priv.h  |  0
- .../vcodec/{ => common}/mtk_vcodec_fw_scp.c   |  4 +-
- .../vcodec/{ => common}/mtk_vcodec_fw_vpu.c   |  4 +-
- .../vcodec/{ => common}/mtk_vcodec_intr.c     |  4 +-
- .../vcodec/{ => common}/mtk_vcodec_intr.h     |  0
- .../vcodec/{ => common}/mtk_vcodec_util.c     |  6 +-
- .../vcodec/{ => common}/mtk_vcodec_util.h     |  0
- .../platform/mediatek/vcodec/decoder/Makefile | 25 +++++++++
- .../vcodec/{ => decoder}/mtk_vcodec_dec.c     |  0
- .../vcodec/{ => decoder}/mtk_vcodec_dec.h     |  0
- .../vcodec/{ => decoder}/mtk_vcodec_dec_drv.c |  2 +-
- .../vcodec/{ => decoder}/mtk_vcodec_dec_drv.h |  8 +--
- .../vcodec/{ => decoder}/mtk_vcodec_dec_hw.c  |  2 +-
- .../vcodec/{ => decoder}/mtk_vcodec_dec_hw.h  |  0
- .../vcodec/{ => decoder}/mtk_vcodec_dec_pm.c  |  0
- .../vcodec/{ => decoder}/mtk_vcodec_dec_pm.h  |  0
- .../{ => decoder}/mtk_vcodec_dec_stateful.c   |  0
- .../{ => decoder}/mtk_vcodec_dec_stateless.c  |  0
- .../{ => decoder}/vdec/vdec_av1_req_lat_if.c  |  2 +-
- .../vcodec/{ => decoder}/vdec/vdec_h264_if.c  |  2 +-
- .../{ => decoder}/vdec/vdec_h264_req_common.c |  0
- .../{ => decoder}/vdec/vdec_h264_req_common.h |  0
- .../{ => decoder}/vdec/vdec_h264_req_if.c     |  2 +-
- .../vdec/vdec_h264_req_multi_if.c             |  2 +-
- .../vdec/vdec_hevc_req_multi_if.c             |  2 +-
- .../vcodec/{ => decoder}/vdec/vdec_vp8_if.c   |  2 +-
- .../{ => decoder}/vdec/vdec_vp8_req_if.c      |  2 +-
- .../vcodec/{ => decoder}/vdec/vdec_vp9_if.c   |  2 +-
- .../{ => decoder}/vdec/vdec_vp9_req_lat_if.c  |  2 +-
- .../vcodec/{ => decoder}/vdec_drv_base.h      |  0
- .../vcodec/{ => decoder}/vdec_drv_if.c        |  0
- .../vcodec/{ => decoder}/vdec_drv_if.h        |  0
- .../vcodec/{ => decoder}/vdec_ipi_msg.h       |  0
- .../vcodec/{ => decoder}/vdec_msg_queue.c     |  0
- .../vcodec/{ => decoder}/vdec_msg_queue.h     |  0
- .../vcodec/{ => decoder}/vdec_vpu_if.c        |  0
- .../vcodec/{ => decoder}/vdec_vpu_if.h        |  0
- .../platform/mediatek/vcodec/encoder/Makefile | 11 ++++
- .../vcodec/{ => encoder}/mtk_vcodec_enc.c     |  0
- .../vcodec/{ => encoder}/mtk_vcodec_enc.h     |  0
- .../vcodec/{ => encoder}/mtk_vcodec_enc_drv.c |  2 +-
- .../vcodec/{ => encoder}/mtk_vcodec_enc_drv.h |  8 +--
- .../vcodec/{ => encoder}/mtk_vcodec_enc_pm.c  |  0
- .../vcodec/{ => encoder}/mtk_vcodec_enc_pm.h  |  0
- .../vcodec/{ => encoder}/venc/venc_h264_if.c  |  2 +-
- .../vcodec/{ => encoder}/venc/venc_vp8_if.c   |  2 +-
- .../vcodec/{ => encoder}/venc_drv_base.h      |  0
- .../vcodec/{ => encoder}/venc_drv_if.c        |  0
- .../vcodec/{ => encoder}/venc_drv_if.h        |  0
- .../vcodec/{ => encoder}/venc_ipi_msg.h       |  0
- .../vcodec/{ => encoder}/venc_vpu_if.c        |  0
- .../vcodec/{ => encoder}/venc_vpu_if.h        |  0
- 59 files changed, 96 insertions(+), 88 deletions(-)
- create mode 100644 drivers/media/platform/mediatek/vcodec/common/Makefile
- rename drivers/media/platform/mediatek/vcodec/{ => common}/mtk_vcodec_com_drv.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => common}/mtk_vcodec_dbgfs.c (98%)
- rename drivers/media/platform/mediatek/vcodec/{ => common}/mtk_vcodec_dbgfs.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => common}/mtk_vcodec_fw.c (95%)
- rename drivers/media/platform/mediatek/vcodec/{ => common}/mtk_vcodec_fw.h (97%)
- rename drivers/media/platform/mediatek/vcodec/{ => common}/mtk_vcodec_fw_priv.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => common}/mtk_vcodec_fw_scp.c (96%)
- rename drivers/media/platform/mediatek/vcodec/{ => common}/mtk_vcodec_fw_vpu.c (97%)
- rename drivers/media/platform/mediatek/vcodec/{ => common}/mtk_vcodec_intr.c (95%)
- rename drivers/media/platform/mediatek/vcodec/{ => common}/mtk_vcodec_intr.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => common}/mtk_vcodec_util.c (97%)
- rename drivers/media/platform/mediatek/vcodec/{ => common}/mtk_vcodec_util.h (100%)
- create mode 100644 drivers/media/platform/mediatek/vcodec/decoder/Makefile
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/mtk_vcodec_dec.c (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/mtk_vcodec_dec.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/mtk_vcodec_dec_drv.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/mtk_vcodec_dec_drv.h (98%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/mtk_vcodec_dec_hw.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/mtk_vcodec_dec_hw.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/mtk_vcodec_dec_pm.c (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/mtk_vcodec_dec_pm.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/mtk_vcodec_dec_stateful.c (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/mtk_vcodec_dec_stateless.c (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec/vdec_av1_req_lat_if.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec/vdec_h264_if.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec/vdec_h264_req_common.c (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec/vdec_h264_req_common.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec/vdec_h264_req_if.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec/vdec_h264_req_multi_if.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec/vdec_hevc_req_multi_if.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec/vdec_vp8_if.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec/vdec_vp8_req_if.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec/vdec_vp9_if.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec/vdec_vp9_req_lat_if.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec_drv_base.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec_drv_if.c (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec_drv_if.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec_ipi_msg.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec_msg_queue.c (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec_msg_queue.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec_vpu_if.c (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => decoder}/vdec_vpu_if.h (100%)
- create mode 100644 drivers/media/platform/mediatek/vcodec/encoder/Makefile
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/mtk_vcodec_enc.c (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/mtk_vcodec_enc.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/mtk_vcodec_enc_drv.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/mtk_vcodec_enc_drv.h (97%)
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/mtk_vcodec_enc_pm.c (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/mtk_vcodec_enc_pm.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/venc/venc_h264_if.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/venc/venc_vp8_if.c (99%)
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/venc_drv_base.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/venc_drv_if.c (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/venc_drv_if.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/venc_ipi_msg.h (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/venc_vpu_if.c (100%)
- rename drivers/media/platform/mediatek/vcodec/{ => encoder}/venc_vpu_if.h (100%)
+ .../mediatek/vcodec/mtk_vcodec_com_drv.h      |  71 +++++
+ .../mediatek/vcodec/mtk_vcodec_dbgfs.c        |  51 ++-
+ .../mediatek/vcodec/mtk_vcodec_dbgfs.h        |  14 +-
+ .../platform/mediatek/vcodec/mtk_vcodec_dec.c |   4 +-
+ .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |  19 +-
+ .../mediatek/vcodec/mtk_vcodec_dec_drv.h      | 172 +++++++++-
+ .../mediatek/vcodec/mtk_vcodec_dec_hw.c       |   5 +-
+ .../mediatek/vcodec/mtk_vcodec_dec_hw.h       |   4 +-
+ .../mediatek/vcodec/mtk_vcodec_dec_pm.c       |  10 +-
+ .../mediatek/vcodec/mtk_vcodec_dec_pm.h       |   2 +-
+ .../mediatek/vcodec/mtk_vcodec_dec_stateful.c |   3 +-
+ .../vcodec/mtk_vcodec_dec_stateless.c         |   5 +-
+ .../platform/mediatek/vcodec/mtk_vcodec_drv.h | 295 ------------------
+ .../platform/mediatek/vcodec/mtk_vcodec_enc.c |   5 +-
+ .../mediatek/vcodec/mtk_vcodec_enc_drv.c      |  15 +-
+ .../mediatek/vcodec/mtk_vcodec_enc_drv.h      |  93 +++++-
+ .../mediatek/vcodec/mtk_vcodec_enc_pm.c       |   4 +-
+ .../mediatek/vcodec/mtk_vcodec_enc_pm.h       |   4 +-
+ .../platform/mediatek/vcodec/mtk_vcodec_fw.c  |  13 +-
+ .../platform/mediatek/vcodec/mtk_vcodec_fw.h  |   3 +-
+ .../mediatek/vcodec/mtk_vcodec_fw_priv.h      |   3 +-
+ .../mediatek/vcodec/mtk_vcodec_fw_scp.c       |  19 +-
+ .../mediatek/vcodec/mtk_vcodec_fw_vpu.c       |  31 +-
+ .../mediatek/vcodec/mtk_vcodec_intr.c         |   4 +-
+ .../mediatek/vcodec/mtk_vcodec_util.c         |  10 +-
+ .../mediatek/vcodec/mtk_vcodec_util.h         |   8 +-
+ .../vcodec/vdec/vdec_h264_req_common.h        |   2 +-
+ .../vcodec/vdec/vdec_h264_req_multi_if.c      |   2 +-
+ .../platform/mediatek/vcodec/vdec_drv_if.h    |   1 -
+ .../platform/mediatek/vcodec/vdec_msg_queue.c |   4 +-
+ .../platform/mediatek/vcodec/vdec_msg_queue.h |   2 +-
+ .../platform/mediatek/vcodec/vdec_vpu_if.c    |   3 +-
+ .../mediatek/vcodec/venc/venc_h264_if.c       |   2 +-
+ .../mediatek/vcodec/venc/venc_vp8_if.c        |   2 +-
+ .../platform/mediatek/vcodec/venc_drv_base.h  |   2 +-
+ .../platform/mediatek/vcodec/venc_drv_if.c    |   4 +-
+ .../platform/mediatek/vcodec/venc_drv_if.h    |   3 +-
+ .../platform/mediatek/vcodec/venc_vpu_if.c    |   2 +-
+ 38 files changed, 469 insertions(+), 427 deletions(-)
+ delete mode 100644 drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
 
-diff --git a/drivers/media/platform/mediatek/vcodec/Makefile b/drivers/media/platform/mediatek/vcodec/Makefile
-index 5f4c30fec85a..014abbfbd993 100644
---- a/drivers/media/platform/mediatek/vcodec/Makefile
-+++ b/drivers/media/platform/mediatek/vcodec/Makefile
-@@ -1,54 +1,5 @@
- # SPDX-License-Identifier: GPL-2.0
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_com_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_com_drv.h
+index 3b6e1faf60ce..6087e27bd604 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_com_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_com_drv.h
+@@ -17,6 +17,77 @@
  
--obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += mtk-vcodec-dec.o \
--				       mtk-vcodec-enc.o \
--				       mtk-vcodec-common.o \
--				       mtk-vcodec-dec-hw.o
--
--mtk-vcodec-dec-y := vdec/vdec_h264_if.o \
--		vdec/vdec_vp8_if.o \
--		vdec/vdec_vp8_req_if.o \
--		vdec/vdec_vp9_if.o \
--		vdec/vdec_vp9_req_lat_if.o \
--		vdec/vdec_av1_req_lat_if.o \
--		vdec/vdec_h264_req_if.o \
--		vdec/vdec_h264_req_common.o \
--		vdec/vdec_h264_req_multi_if.o \
--		vdec/vdec_hevc_req_multi_if.o \
--		mtk_vcodec_dec_drv.o \
--		vdec_drv_if.o \
--		vdec_vpu_if.o \
--		vdec_msg_queue.o \
--		mtk_vcodec_dec.o \
--		mtk_vcodec_dec_stateful.o \
--		mtk_vcodec_dec_stateless.o \
--		mtk_vcodec_dec_pm.o \
--
--mtk-vcodec-dec-hw-y := mtk_vcodec_dec_hw.o
--
--mtk-vcodec-enc-y := venc/venc_vp8_if.o \
--		venc/venc_h264_if.o \
--		mtk_vcodec_enc.o \
--		mtk_vcodec_enc_drv.o \
--		mtk_vcodec_enc_pm.o \
--		venc_drv_if.o \
--		venc_vpu_if.o \
--
--
--mtk-vcodec-common-y := mtk_vcodec_intr.o \
--		mtk_vcodec_util.o \
--		mtk_vcodec_fw.o \
--
--ifneq ($(CONFIG_VIDEO_MEDIATEK_VCODEC_VPU),)
--mtk-vcodec-common-y += mtk_vcodec_fw_vpu.o
--endif
--
--ifneq ($(CONFIG_VIDEO_MEDIATEK_VCODEC_SCP),)
--mtk-vcodec-common-y += mtk_vcodec_fw_scp.o
--endif
--
--ifneq ($(CONFIG_DEBUG_FS),)
--obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += mtk-vcodec-dbgfs.o
--
--mtk-vcodec-dbgfs-y := mtk_vcodec_dbgfs.o
--endif
-\ No newline at end of file
-+obj-y += common/
-+obj-y += encoder/
-+obj-y += decoder/
-diff --git a/drivers/media/platform/mediatek/vcodec/common/Makefile b/drivers/media/platform/mediatek/vcodec/common/Makefile
-new file mode 100644
-index 000000000000..d0479914dfb3
---- /dev/null
-+++ b/drivers/media/platform/mediatek/vcodec/common/Makefile
-@@ -0,0 +1,21 @@
-+# SPDX-License-Identifier: GPL-2.0
+ #define MTK_VCODEC_MAX_PLANES	3
+ 
++#define WAIT_INTR_TIMEOUT_MS	1000
 +
-+obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += mtk-vcodec-common.o
++/*
++ * enum mtk_q_type - Type of queue
++ */
++enum mtk_q_type {
++	MTK_Q_DATA_SRC = 0,
++	MTK_Q_DATA_DST = 1,
++};
 +
-+mtk-vcodec-common-y := mtk_vcodec_intr.o \
-+		mtk_vcodec_util.o \
-+		mtk_vcodec_fw.o \
++/*
++ * enum mtk_hw_reg_idx - MTK hw register base index
++ */
++enum mtk_hw_reg_idx {
++	VDEC_SYS,
++	VDEC_MISC,
++	VDEC_LD,
++	VDEC_TOP,
++	VDEC_CM,
++	VDEC_AD,
++	VDEC_AV,
++	VDEC_PP,
++	VDEC_HWD,
++	VDEC_HWQ,
++	VDEC_HWB,
++	VDEC_HWG,
++	NUM_MAX_VDEC_REG_BASE,
++	/* h264 encoder */
++	VENC_SYS = NUM_MAX_VDEC_REG_BASE,
++	/* vp8 encoder */
++	VENC_LT_SYS,
++	NUM_MAX_VCODEC_REG_BASE
++};
 +
-+ifneq ($(CONFIG_VIDEO_MEDIATEK_VCODEC_VPU),)
-+mtk-vcodec-common-y += mtk_vcodec_fw_vpu.o
-+endif
++/*
++ * struct mtk_vcodec_clk_info - Structure used to store clock name
++ */
++struct mtk_vcodec_clk_info {
++	const char	*clk_name;
++	struct clk	*vcodec_clk;
++};
 +
-+ifneq ($(CONFIG_VIDEO_MEDIATEK_VCODEC_SCP),)
-+mtk-vcodec-common-y += mtk_vcodec_fw_scp.o
-+endif
++/*
++ * struct mtk_vcodec_clk - Structure used to store vcodec clock information
++ */
++struct mtk_vcodec_clk {
++	struct mtk_vcodec_clk_info	*clk_info;
++	int	clk_num;
++};
 +
-+ifneq ($(CONFIG_DEBUG_FS),)
-+obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += mtk-vcodec-dbgfs.o
++/*
++ * struct mtk_vcodec_pm - Power management data structure
++ */
++struct mtk_vcodec_pm {
++	struct mtk_vcodec_clk	vdec_clk;
++	struct mtk_vcodec_clk	venc_clk;
++	struct device	*dev;
++};
 +
-+mtk-vcodec-dbgfs-y := mtk_vcodec_dbgfs.o
-+endif
-\ No newline at end of file
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_com_drv.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_com_drv.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_com_drv.h
-rename to drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_com_drv.h
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
-similarity index 98%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-rename to drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
-index 7c25f6e23901..f458ad0bc17d 100644
++/*
++ * enum mtk_vdec_hw_id - Hardware index used to separate
++ *                         different hardware
++ */
++enum mtk_vdec_hw_id {
++	MTK_VDEC_CORE,
++	MTK_VDEC_LAT0,
++	MTK_VDEC_LAT1,
++	MTK_VDEC_LAT_SOC,
++	MTK_VDEC_HW_MAX,
++};
++
+ /**
+  * enum mtk_instance_state - The state of an MTK Vcodec instance.
+  * @MTK_STATE_FREE: default state when instance is created
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
+index b88fc0a0c102..7c25f6e23901 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
-@@ -7,8 +7,8 @@
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
+@@ -7,7 +7,8 @@
  #include <linux/debugfs.h>
  
  #include "mtk_vcodec_dbgfs.h"
--#include "mtk_vcodec_dec_drv.h"
--#include "mtk_vcodec_enc_drv.h"
-+#include "../decoder/mtk_vcodec_dec_drv.h"
-+#include "../encoder/mtk_vcodec_enc_drv.h"
+-#include "mtk_vcodec_drv.h"
++#include "mtk_vcodec_dec_drv.h"
++#include "mtk_vcodec_enc_drv.h"
  #include "mtk_vcodec_util.h"
  
  static void mtk_vdec_dbgfs_get_format_type(struct mtk_vcodec_dec_ctx *ctx, char *buf,
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
-rename to drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.h
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.c
-similarity index 95%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c
-rename to drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.c
-index d87a05000002..06eb4cdc0ed5 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.c
-@@ -1,7 +1,7 @@
- // SPDX-License-Identifier: GPL-2.0
+@@ -72,7 +73,7 @@ static void mtk_vdec_dbgfs_get_help(char *buf, int *used, int total)
+ static ssize_t mtk_vdec_dbgfs_write(struct file *filp, const char __user *ubuf,
+ 				    size_t count, loff_t *ppos)
+ {
+-	struct mtk_vcodec_dev *vcodec_dev = filp->private_data;
++	struct mtk_vcodec_dec_dev *vcodec_dev = filp->private_data;
+ 	struct mtk_vcodec_dbgfs *dbgfs = &vcodec_dev->dbgfs;
  
+ 	mutex_lock(&dbgfs->dbgfs_lock);
+@@ -88,7 +89,7 @@ static ssize_t mtk_vdec_dbgfs_write(struct file *filp, const char __user *ubuf,
+ static ssize_t mtk_vdec_dbgfs_read(struct file *filp, char __user *ubuf,
+ 				   size_t count, loff_t *ppos)
+ {
+-	struct mtk_vcodec_dev *vcodec_dev = filp->private_data;
++	struct mtk_vcodec_dec_dev *vcodec_dev = filp->private_data;
+ 	struct mtk_vcodec_dbgfs *dbgfs = &vcodec_dev->dbgfs;
+ 	struct mtk_vcodec_dbgfs_inst *dbgfs_inst;
+ 	struct mtk_vcodec_dec_ctx *ctx;
+@@ -146,7 +147,7 @@ static const struct file_operations vdec_fops = {
+ void mtk_vcodec_dbgfs_create(struct mtk_vcodec_dec_ctx *ctx)
+ {
+ 	struct mtk_vcodec_dbgfs_inst *dbgfs_inst;
+-	struct mtk_vcodec_dev *vcodec_dev = ctx->dev;
++	struct mtk_vcodec_dec_dev *vcodec_dev = ctx->dev;
+ 
+ 	dbgfs_inst = kzalloc(sizeof(*dbgfs_inst), GFP_KERNEL);
+ 	if (!dbgfs_inst)
+@@ -161,7 +162,7 @@ void mtk_vcodec_dbgfs_create(struct mtk_vcodec_dec_ctx *ctx)
+ }
+ EXPORT_SYMBOL_GPL(mtk_vcodec_dbgfs_create);
+ 
+-void mtk_vcodec_dbgfs_remove(struct mtk_vcodec_dev *vcodec_dev, int ctx_id)
++void mtk_vcodec_dbgfs_remove(struct mtk_vcodec_dec_dev *vcodec_dev, int ctx_id)
+ {
+ 	struct mtk_vcodec_dbgfs_inst *dbgfs_inst;
+ 
+@@ -179,16 +180,13 @@ void mtk_vcodec_dbgfs_remove(struct mtk_vcodec_dev *vcodec_dev, int ctx_id)
+ }
+ EXPORT_SYMBOL_GPL(mtk_vcodec_dbgfs_remove);
+ 
+-void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vcodec_dev, bool is_encode)
++static void mtk_vcodec_dbgfs_vdec_init(struct mtk_vcodec_dec_dev *vcodec_dev)
+ {
+ 	struct dentry *vcodec_root;
+ 
+-	if (is_encode)
+-		vcodec_dev->dbgfs.vcodec_root = debugfs_create_dir("vcodec-enc", NULL);
+-	else
+-		vcodec_dev->dbgfs.vcodec_root = debugfs_create_dir("vcodec-dec", NULL);
++	vcodec_dev->dbgfs.vcodec_root = debugfs_create_dir("vcodec-dec", NULL);
+ 	if (IS_ERR(vcodec_dev->dbgfs.vcodec_root))
+-		dev_err(&vcodec_dev->plat_dev->dev, "create vcodec dir err:%d\n",
++		dev_err(&vcodec_dev->plat_dev->dev, "create vdec dir err:%d\n",
+ 			IS_ERR(vcodec_dev->dbgfs.vcodec_root));
+ 
+ 	vcodec_root = vcodec_dev->dbgfs.vcodec_root;
+@@ -196,18 +194,39 @@ void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vcodec_dev, bool is_encode)
+ 	debugfs_create_x32("mtk_vcodec_dbg", 0644, vcodec_root, &mtk_vcodec_dbg);
+ 
+ 	vcodec_dev->dbgfs.inst_count = 0;
+-	if (is_encode)
+-		return;
+-
+ 	INIT_LIST_HEAD(&vcodec_dev->dbgfs.dbgfs_head);
+ 	debugfs_create_file("vdec", 0200, vcodec_root, vcodec_dev, &vdec_fops);
+ 	mutex_init(&vcodec_dev->dbgfs.dbgfs_lock);
+ }
++
++static void mtk_vcodec_dbgfs_venc_init(struct mtk_vcodec_enc_dev *vcodec_dev)
++{
++	struct dentry *vcodec_root;
++
++	vcodec_dev->dbgfs.vcodec_root = debugfs_create_dir("vcodec-enc", NULL);
++	if (IS_ERR(vcodec_dev->dbgfs.vcodec_root))
++		dev_err(&vcodec_dev->plat_dev->dev, "create venc dir err:%d\n",
++			IS_ERR(vcodec_dev->dbgfs.vcodec_root));
++
++	vcodec_root = vcodec_dev->dbgfs.vcodec_root;
++	debugfs_create_x32("mtk_v4l2_dbg_level", 0644, vcodec_root, &mtk_v4l2_dbg_level);
++	debugfs_create_x32("mtk_vcodec_dbg", 0644, vcodec_root, &mtk_vcodec_dbg);
++
++	vcodec_dev->dbgfs.inst_count = 0;
++}
++
++void mtk_vcodec_dbgfs_init(void *vcodec_dev, bool is_encode)
++{
++	if (is_encode)
++		mtk_vcodec_dbgfs_venc_init(vcodec_dev);
++	else
++		mtk_vcodec_dbgfs_vdec_init(vcodec_dev);
++}
+ EXPORT_SYMBOL_GPL(mtk_vcodec_dbgfs_init);
+ 
+-void mtk_vcodec_dbgfs_deinit(struct mtk_vcodec_dev *vcodec_dev)
++void mtk_vcodec_dbgfs_deinit(struct mtk_vcodec_dbgfs *dbgfs)
+ {
+-	debugfs_remove_recursive(vcodec_dev->dbgfs.vcodec_root);
++	debugfs_remove_recursive(dbgfs->vcodec_root);
+ }
+ EXPORT_SYMBOL_GPL(mtk_vcodec_dbgfs_deinit);
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
+index 372413d590c5..073d2fedb54a 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.h
+@@ -7,7 +7,7 @@
+ #ifndef __MTK_VCODEC_DBGFS_H__
+ #define __MTK_VCODEC_DBGFS_H__
+ 
+-struct mtk_vcodec_dev;
++struct mtk_vcodec_dec_dev;
+ struct mtk_vcodec_dec_ctx;
+ 
+ /*
+@@ -51,23 +51,23 @@ struct mtk_vcodec_dbgfs {
+ 
+ #if defined(CONFIG_DEBUG_FS)
+ void mtk_vcodec_dbgfs_create(struct mtk_vcodec_dec_ctx *ctx);
+-void mtk_vcodec_dbgfs_remove(struct mtk_vcodec_dev *vcodec_dev, int ctx_id);
+-void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vcodec_dev, bool is_encode);
+-void mtk_vcodec_dbgfs_deinit(struct mtk_vcodec_dev *vcodec_dev);
++void mtk_vcodec_dbgfs_remove(struct mtk_vcodec_dec_dev *vcodec_dev, int ctx_id);
++void mtk_vcodec_dbgfs_init(void *vcodec_dev, bool is_encode);
++void mtk_vcodec_dbgfs_deinit(struct mtk_vcodec_dbgfs *dbgfs);
+ #else
+ static inline void mtk_vcodec_dbgfs_create(struct mtk_vcodec_dec_ctx *ctx)
+ {
+ }
+ 
+-static inline void mtk_vcodec_dbgfs_remove(struct mtk_vcodec_dev *vcodec_dev, int ctx_id)
++static inline void mtk_vcodec_dbgfs_remove(struct mtk_vcodec_dec_dev *vcodec_dev, int ctx_id)
+ {
+ }
+ 
+-static inline void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vcodec_dev, bool is_encode)
++static inline void mtk_vcodec_dbgfs_init(void *vcodec_dev, bool is_encode)
+ {
+ }
+ 
+-static inline void mtk_vcodec_dbgfs_deinit(struct mtk_vcodec_dev *vcodec_dev)
++static inline void mtk_vcodec_dbgfs_deinit(struct mtk_vcodec_dbgfs *dbgfs)
+ {
+ }
+ #endif
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+index 1a9887fe1a53..0abdc0a10425 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+@@ -9,7 +9,7 @@
+ #include <media/v4l2-mem2mem.h>
+ #include <media/videobuf2-dma-contig.h>
+ 
+-#include "mtk_vcodec_drv.h"
++#include "mtk_vcodec_dec_drv.h"
+ #include "mtk_vcodec_dec.h"
+ #include "mtk_vcodec_intr.h"
+ #include "mtk_vcodec_util.h"
+@@ -895,7 +895,7 @@ void vb2ops_vdec_stop_streaming(struct vb2_queue *q)
+ static void m2mops_vdec_device_run(void *priv)
+ {
+ 	struct mtk_vcodec_dec_ctx *ctx = priv;
+-	struct mtk_vcodec_dev *dev = ctx->dev;
++	struct mtk_vcodec_dec_dev *dev = ctx->dev;
+ 
+ 	queue_work(dev->decode_workqueue, &ctx->decode_work);
+ }
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+index b809a30f913d..004d5e20dfc3 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+@@ -17,7 +17,6 @@
+ #include <media/videobuf2-dma-contig.h>
+ #include <media/v4l2-device.h>
+ 
+-#include "mtk_vcodec_drv.h"
+ #include "mtk_vcodec_dec.h"
+ #include "mtk_vcodec_dec_hw.h"
+ #include "mtk_vcodec_dec_pm.h"
+@@ -25,7 +24,7 @@
+ #include "mtk_vcodec_util.h"
+ #include "mtk_vcodec_fw.h"
+ 
+-static int mtk_vcodec_get_hw_count(struct mtk_vcodec_dev *dev)
++static int mtk_vcodec_get_hw_count(struct mtk_vcodec_dec_dev *dev)
+ {
+ 	switch (dev->vdec_pdata->hw_arch) {
+ 	case MTK_VDEC_PURE_SINGLE_CORE:
+@@ -41,7 +40,7 @@ static int mtk_vcodec_get_hw_count(struct mtk_vcodec_dev *dev)
+ 
+ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+ {
+-	struct mtk_vcodec_dev *dev = priv;
++	struct mtk_vcodec_dec_dev *dev = priv;
+ 	struct mtk_vcodec_dec_ctx *ctx;
+ 	u32 cg_status = 0;
+ 	unsigned int dec_done_status = 0;
+@@ -78,7 +77,7 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+ 	return IRQ_HANDLED;
+ }
+ 
+-static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
++static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dec_dev *dev)
+ {
+ 	struct platform_device *pdev = dev->plat_dev;
+ 	int reg_num, i;
+@@ -102,7 +101,7 @@ static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
+ 	return 0;
+ }
+ 
+-static int mtk_vcodec_init_dec_resources(struct mtk_vcodec_dev *dev)
++static int mtk_vcodec_init_dec_resources(struct mtk_vcodec_dec_dev *dev)
+ {
+ 	struct platform_device *pdev = dev->plat_dev;
+ 	int ret;
+@@ -139,7 +138,7 @@ static int mtk_vcodec_init_dec_resources(struct mtk_vcodec_dev *dev)
+ 
+ static int fops_vcodec_open(struct file *file)
+ {
+-	struct mtk_vcodec_dev *dev = video_drvdata(file);
++	struct mtk_vcodec_dec_dev *dev = video_drvdata(file);
+ 	struct mtk_vcodec_dec_ctx *ctx = NULL;
+ 	int ret = 0, i, hw_count;
+ 	struct vb2_queue *src_vq;
+@@ -237,7 +236,7 @@ static int fops_vcodec_open(struct file *file)
+ 
+ static int fops_vcodec_release(struct file *file)
+ {
+-	struct mtk_vcodec_dev *dev = video_drvdata(file);
++	struct mtk_vcodec_dec_dev *dev = video_drvdata(file);
+ 	struct mtk_vcodec_dec_ctx *ctx = fh_to_dec_ctx(file->private_data);
+ 
+ 	mtk_v4l2_debug(dev->plat_dev, 0, "[%d] decoder", ctx->id);
+@@ -274,7 +273,7 @@ static const struct v4l2_file_operations mtk_vcodec_fops = {
+ 
+ static int mtk_vcodec_probe(struct platform_device *pdev)
+ {
+-	struct mtk_vcodec_dev *dev;
++	struct mtk_vcodec_dec_dev *dev;
+ 	struct video_device *vfd_dec;
+ 	phandle rproc_phandle;
+ 	enum mtk_vcodec_fw_type fw_type;
+@@ -482,7 +481,7 @@ MODULE_DEVICE_TABLE(of, mtk_vcodec_match);
+ 
+ static void mtk_vcodec_dec_remove(struct platform_device *pdev)
+ {
+-	struct mtk_vcodec_dev *dev = platform_get_drvdata(pdev);
++	struct mtk_vcodec_dec_dev *dev = platform_get_drvdata(pdev);
+ 
+ 	destroy_workqueue(dev->decode_workqueue);
+ 
+@@ -498,7 +497,7 @@ static void mtk_vcodec_dec_remove(struct platform_device *pdev)
+ 	if (dev->vfd_dec)
+ 		video_unregister_device(dev->vfd_dec);
+ 
+-	mtk_vcodec_dbgfs_deinit(dev);
++	mtk_vcodec_dbgfs_deinit(&dev->dbgfs);
+ 	v4l2_device_unregister(&dev->v4l2_dev);
+ 	if (!dev->vdec_pdata->is_subdev_supported)
+ 		pm_runtime_disable(dev->pm.dev);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.h
+index 94870b651919..a18ba8f32d41 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.h
+@@ -8,9 +8,49 @@
+ #define _MTK_VCODEC_DEC_DRV_H_
+ 
+ #include "mtk_vcodec_com_drv.h"
++#include "mtk_vcodec_dbgfs.h"
+ #include "mtk_vcodec_fw_priv.h"
++#include "mtk_vcodec_util.h"
+ #include "vdec_msg_queue.h"
+ 
++#define MTK_VCODEC_DEC_NAME	"mtk-vcodec-dec"
++
++#define IS_VDEC_LAT_ARCH(hw_arch) ((hw_arch) >= MTK_VDEC_LAT_SINGLE_CORE)
++#define IS_VDEC_INNER_RACING(capability) ((capability) & MTK_VCODEC_INNER_RACING)
++
++/*
++ * struct mtk_vdec_format_types - Structure used to get supported
++ *		  format types according to decoder capability
++ */
++enum mtk_vdec_format_types {
++	MTK_VDEC_FORMAT_MM21 = 0x20,
++	MTK_VDEC_FORMAT_MT21C = 0x40,
++	MTK_VDEC_FORMAT_H264_SLICE = 0x100,
++	MTK_VDEC_FORMAT_VP8_FRAME = 0x200,
++	MTK_VDEC_FORMAT_VP9_FRAME = 0x400,
++	MTK_VDEC_FORMAT_AV1_FRAME = 0x800,
++	MTK_VDEC_FORMAT_HEVC_FRAME = 0x1000,
++	MTK_VCODEC_INNER_RACING = 0x20000,
++};
++
++/*
++ * enum mtk_vdec_hw_count - Supported hardware count
++ */
++enum mtk_vdec_hw_count {
++	MTK_VDEC_NO_HW = 0,
++	MTK_VDEC_ONE_CORE,
++	MTK_VDEC_ONE_LAT_ONE_CORE,
++	MTK_VDEC_MAX_HW_COUNT,
++};
++
++/*
++ * enum mtk_vdec_hw_arch - Used to separate different hardware architecture
++ */
++enum mtk_vdec_hw_arch {
++	MTK_VDEC_PURE_SINGLE_CORE,
++	MTK_VDEC_LAT_SINGLE_CORE,
++};
++
+ /**
+  * struct vdec_pic_info  - picture size information
+  * @pic_w: picture width
+@@ -33,24 +73,54 @@ struct vdec_pic_info {
+ 	unsigned int reserved;
+ };
+ 
+-/*
+- * enum mtk_vdec_hw_id - Hardware index used to separate
+- *                         different hardware
++/**
++ * struct mtk_vcodec_dec_pdata - compatible data for each IC
++ * @init_vdec_params: init vdec params
++ * @ctrls_setup: init vcodec dec ctrls
++ * @worker: worker to start a decode job
++ * @flush_decoder: function that flushes the decoder
++ * @get_cap_buffer: get capture buffer from capture queue
++ * @cap_to_disp: put capture buffer to disp list for lat and core arch
++ * @vdec_vb2_ops: struct vb2_ops
++ *
++ * @vdec_formats: supported video decoder formats
++ * @num_formats: count of video decoder formats
++ * @default_out_fmt: default output buffer format
++ * @default_cap_fmt: default capture buffer format
++ *
++ * @hw_arch: hardware arch is used to separate pure_sin_core and lat_sin_core
++ *
++ * @is_subdev_supported: whether support parent-node architecture(subdev)
++ * @uses_stateless_api: whether the decoder uses the stateless API with requests
+  */
+-enum mtk_vdec_hw_id {
+-	MTK_VDEC_CORE,
+-	MTK_VDEC_LAT0,
+-	MTK_VDEC_LAT1,
+-	MTK_VDEC_LAT_SOC,
+-	MTK_VDEC_HW_MAX,
++struct mtk_vcodec_dec_pdata {
++	void (*init_vdec_params)(struct mtk_vcodec_dec_ctx *ctx);
++	int (*ctrls_setup)(struct mtk_vcodec_dec_ctx *ctx);
++	void (*worker)(struct work_struct *work);
++	int (*flush_decoder)(struct mtk_vcodec_dec_ctx *ctx);
++	struct vdec_fb *(*get_cap_buffer)(struct mtk_vcodec_dec_ctx *ctx);
++	void (*cap_to_disp)(struct mtk_vcodec_dec_ctx *ctx, int error,
++			    struct media_request *src_buf_req);
++
++	const struct vb2_ops *vdec_vb2_ops;
++
++	const struct mtk_video_fmt *vdec_formats;
++	const int *num_formats;
++	const struct mtk_video_fmt *default_out_fmt;
++	const struct mtk_video_fmt *default_cap_fmt;
++
++	enum mtk_vdec_hw_arch hw_arch;
++
++	bool is_subdev_supported;
++	bool uses_stateless_api;
+ };
+ 
+ /**
+  * struct mtk_vcodec_dec_ctx - Context (instance) private data.
+  *
+  * @type: type of the instance - decoder or encoder
+- * @dev: pointer to the mtk_vcodec_dev of the device
+- * @list: link to ctx_list of mtk_vcodec_dev
++ * @dev: pointer to the mtk_vcodec_dec_dev of the device
++ * @list: link to ctx_list of mtk_vcodec_dec_dev
+  *
+  * @fh: struct v4l2_fh
+  * @m2m_ctx: pointer to the v4l2_m2m_ctx of the context
+@@ -95,7 +165,7 @@ enum mtk_vdec_hw_id {
+  */
+ struct mtk_vcodec_dec_ctx {
+ 	enum mtk_instance_type type;
+-	struct mtk_vcodec_dev *dev;
++	struct mtk_vcodec_dec_dev *dev;
+ 	struct list_head list;
+ 
+ 	struct v4l2_fh fh;
+@@ -136,6 +206,84 @@ struct mtk_vcodec_dec_ctx {
+ 	struct vdec_msg_queue msg_queue;
+ };
+ 
++/**
++ * struct mtk_vcodec_dec_dev - driver data
++ * @v4l2_dev: V4L2 device to register video devices for.
++ * @vfd_dec: Video device for decoder
++ * @mdev_dec: Media device for decoder
++ *
++ * @m2m_dev_dec: m2m device for decoder
++ * @plat_dev: platform device
++ * @ctx_list: list of struct mtk_vcodec_ctx
++ * @curr_ctx: The context that is waiting for codec hardware
++ *
++ * @reg_base: Mapped address of MTK Vcodec registers.
++ * @vdec_pdata: decoder IC-specific data
++ *
++ * @fw_handler: used to communicate with the firmware.
++ * @id_counter: used to identify current opened instance
++ *
++ * @dec_mutex: decoder hardware lock
++ * @dev_mutex: video_device lock
++ * @decode_workqueue: decode work queue
++ *
++ * @irqlock: protect data access by irq handler and work thread
++ * @dec_irq: decoder irq resource
++ *
++ * @pm: power management control
++ * @dec_capability: used to identify decode capability, ex: 4k
++ *
++ * @core_workqueue: queue used for core hardware decode
++ *
++ * @subdev_dev: subdev hardware device
++ * @subdev_prob_done: check whether all used hw device is prob done
++ * @subdev_bitmap: used to record hardware is ready or not
++ *
++ * @dec_active_cnt: used to mark whether need to record register value
++ * @vdec_racing_info: record register value
++ * @dec_racing_info_mutex: mutex lock used for inner racing mode
++ * @dbgfs: debug log related information
++ */
++struct mtk_vcodec_dec_dev {
++	struct v4l2_device v4l2_dev;
++	struct video_device *vfd_dec;
++	struct media_device mdev_dec;
++
++	struct v4l2_m2m_dev *m2m_dev_dec;
++	struct platform_device *plat_dev;
++	struct list_head ctx_list;
++	struct mtk_vcodec_dec_ctx *curr_ctx;
++
++	void __iomem *reg_base[NUM_MAX_VCODEC_REG_BASE];
++	const struct mtk_vcodec_dec_pdata *vdec_pdata;
++
++	struct mtk_vcodec_fw *fw_handler;
++	unsigned long id_counter;
++
++	/* decoder hardware mutex lock */
++	struct mutex dec_mutex[MTK_VDEC_HW_MAX];
++	struct mutex dev_mutex;
++	struct workqueue_struct *decode_workqueue;
++
++	spinlock_t irqlock;
++	int dec_irq;
++
++	struct mtk_vcodec_pm pm;
++	unsigned int dec_capability;
++
++	struct workqueue_struct *core_workqueue;
++
++	void *subdev_dev[MTK_VDEC_HW_MAX];
++	int (*subdev_prob_done)(struct mtk_vcodec_dec_dev *vdec_dev);
++	DECLARE_BITMAP(subdev_bitmap, MTK_VDEC_HW_MAX);
++
++	atomic_t dec_active_cnt;
++	u32 vdec_racing_info[132];
++	/* Protects access to vdec_racing_info data */
++	struct mutex dec_racing_info_mutex;
++	struct mtk_vcodec_dbgfs dbgfs;
++};
++
+ static inline struct mtk_vcodec_dec_ctx *fh_to_dec_ctx(struct v4l2_fh *fh)
+ {
+ 	return container_of(fh, struct mtk_vcodec_dec_ctx, fh);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+index 3714e3956ead..82e064b0b72f 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+@@ -12,7 +12,6 @@
+ #include <linux/pm_runtime.h>
+ #include <linux/slab.h>
+ 
+-#include "mtk_vcodec_drv.h"
+ #include "mtk_vcodec_dec.h"
+ #include "mtk_vcodec_dec_hw.h"
+ #include "mtk_vcodec_dec_pm.h"
+@@ -36,7 +35,7 @@ static const struct of_device_id mtk_vdec_hw_match[] = {
+ };
+ MODULE_DEVICE_TABLE(of, mtk_vdec_hw_match);
+ 
+-static int mtk_vdec_hw_prob_done(struct mtk_vcodec_dev *vdec_dev)
++static int mtk_vdec_hw_prob_done(struct mtk_vcodec_dec_dev *vdec_dev)
+ {
+ 	struct platform_device *pdev = vdec_dev->plat_dev;
+ 	struct device_node *subdev_node;
+@@ -124,7 +123,7 @@ static int mtk_vdec_hw_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_vdec_hw_dev *subdev_dev;
+-	struct mtk_vcodec_dev *main_dev;
++	struct mtk_vcodec_dec_dev *main_dev;
+ 	const struct of_device_id *of_id;
+ 	int hw_idx;
+ 	int ret;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
+index d62c7f961cfa..2b33f00e931e 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
+@@ -10,7 +10,7 @@
+ #include <linux/io.h>
+ #include <linux/platform_device.h>
+ 
+-#include "mtk_vcodec_drv.h"
++#include "mtk_vcodec_dec_drv.h"
+ 
+ #define VDEC_HW_ACTIVE 0x10
+ #define VDEC_IRQ_CFG 0x11
+@@ -45,7 +45,7 @@ enum mtk_vdec_hw_reg_idx {
+  */
+ struct mtk_vdec_hw_dev {
+ 	struct platform_device *plat_dev;
+-	struct mtk_vcodec_dev *main_dev;
++	struct mtk_vcodec_dec_dev *main_dev;
+ 	void __iomem *reg_base[VDEC_HW_MAX];
+ 
+ 	struct mtk_vcodec_dec_ctx *curr_ctx;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
+index 12ac61b92190..3d7b9729be4a 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
+@@ -110,7 +110,7 @@ static void mtk_vcodec_dec_clock_off(struct mtk_vcodec_pm *pm)
+ 		clk_disable_unprepare(dec_clk->clk_info[i].vcodec_clk);
+ }
+ 
+-static void mtk_vcodec_dec_enable_irq(struct mtk_vcodec_dev *vdec_dev, int hw_idx)
++static void mtk_vcodec_dec_enable_irq(struct mtk_vcodec_dec_dev *vdec_dev, int hw_idx)
+ {
+ 	struct mtk_vdec_hw_dev *subdev_dev;
+ 
+@@ -128,7 +128,7 @@ static void mtk_vcodec_dec_enable_irq(struct mtk_vcodec_dev *vdec_dev, int hw_id
+ 	}
+ }
+ 
+-static void mtk_vcodec_dec_disable_irq(struct mtk_vcodec_dev *vdec_dev, int hw_idx)
++static void mtk_vcodec_dec_disable_irq(struct mtk_vcodec_dec_dev *vdec_dev, int hw_idx)
+ {
+ 	struct mtk_vdec_hw_dev *subdev_dev;
+ 
+@@ -174,7 +174,7 @@ static void mtk_vcodec_record_racing_info(struct mtk_vcodec_dec_ctx *ctx)
+ 	mutex_unlock(&ctx->dev->dec_racing_info_mutex);
+ }
+ 
+-static struct mtk_vcodec_pm *mtk_vcodec_dec_get_pm(struct mtk_vcodec_dev *vdec_dev,
++static struct mtk_vcodec_pm *mtk_vcodec_dec_get_pm(struct mtk_vcodec_dec_dev *vdec_dev,
+ 						   int hw_idx)
+ {
+ 	struct mtk_vdec_hw_dev *subdev_dev;
+@@ -194,7 +194,7 @@ static struct mtk_vcodec_pm *mtk_vcodec_dec_get_pm(struct mtk_vcodec_dev *vdec_d
+ 	return &vdec_dev->pm;
+ }
+ 
+-static void mtk_vcodec_dec_child_dev_on(struct mtk_vcodec_dev *vdec_dev,
++static void mtk_vcodec_dec_child_dev_on(struct mtk_vcodec_dec_dev *vdec_dev,
+ 					int hw_idx)
+ {
+ 	struct mtk_vcodec_pm *pm;
+@@ -214,7 +214,7 @@ static void mtk_vcodec_dec_child_dev_on(struct mtk_vcodec_dev *vdec_dev,
+ 	}
+ }
+ 
+-static void mtk_vcodec_dec_child_dev_off(struct mtk_vcodec_dev *vdec_dev,
++static void mtk_vcodec_dec_child_dev_off(struct mtk_vcodec_dec_dev *vdec_dev,
+ 					 int hw_idx)
+ {
+ 	struct mtk_vcodec_pm *pm;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.h
+index f6c68e57bcc1..87a50d589d42 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.h
+@@ -7,7 +7,7 @@
+ #ifndef _MTK_VCODEC_DEC_PM_H_
+ #define _MTK_VCODEC_DEC_PM_H_
+ 
+-#include "mtk_vcodec_drv.h"
++#include "mtk_vcodec_dec_drv.h"
+ 
+ int mtk_vcodec_init_dec_clk(struct platform_device *pdev, struct mtk_vcodec_pm *pm);
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
+index aba3ac04ed94..72ce22620cc6 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
+@@ -4,7 +4,6 @@
+ #include <media/v4l2-mem2mem.h>
+ #include <media/videobuf2-dma-contig.h>
+ 
+-#include "mtk_vcodec_drv.h"
+ #include "mtk_vcodec_dec.h"
+ #include "mtk_vcodec_intr.h"
+ #include "mtk_vcodec_util.h"
+@@ -280,7 +279,7 @@ static void mtk_vdec_worker(struct work_struct *work)
+ {
+ 	struct mtk_vcodec_dec_ctx *ctx =
+ 		container_of(work, struct mtk_vcodec_dec_ctx, decode_work);
+-	struct mtk_vcodec_dev *dev = ctx->dev;
++	struct mtk_vcodec_dec_dev *dev = ctx->dev;
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+ 	struct mtk_vcodec_mem buf;
+ 	struct vdec_fb *pfb;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
+index d2ab24c96086..8725f6631d5f 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
+@@ -6,7 +6,6 @@
+ #include <media/v4l2-mem2mem.h>
+ #include <linux/module.h>
+ 
+-#include "mtk_vcodec_drv.h"
+ #include "mtk_vcodec_dec.h"
+ #include "mtk_vcodec_intr.h"
+ #include "mtk_vcodec_util.h"
+@@ -288,7 +287,7 @@ static void mtk_vdec_worker(struct work_struct *work)
+ {
+ 	struct mtk_vcodec_dec_ctx *ctx =
+ 		container_of(work, struct mtk_vcodec_dec_ctx, decode_work);
+-	struct mtk_vcodec_dev *dev = ctx->dev;
++	struct mtk_vcodec_dec_dev *dev = ctx->dev;
+ 	struct vb2_v4l2_buffer *vb2_v4l2_src;
+ 	struct vb2_buffer *vb2_src;
+ 	struct mtk_vcodec_mem *bs_src;
+@@ -446,7 +445,7 @@ const struct media_device_ops mtk_vcodec_media_ops = {
+ static void mtk_vcodec_add_formats(unsigned int fourcc,
+ 				   struct mtk_vcodec_dec_ctx *ctx)
+ {
+-	struct mtk_vcodec_dev *dev = ctx->dev;
++	struct mtk_vcodec_dec_dev *dev = ctx->dev;
+ 	const struct mtk_vcodec_dec_pdata *pdata = dev->vdec_pdata;
+ 	int count_formats = *pdata->num_formats;
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+deleted file mode 100644
+index 76db7770d981..000000000000
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
++++ /dev/null
+@@ -1,295 +0,0 @@
+-/* SPDX-License-Identifier: GPL-2.0 */
+-/*
+-* Copyright (c) 2016 MediaTek Inc.
+-* Author: PC Chen <pc.chen@mediatek.com>
+-*         Tiffany Lin <tiffany.lin@mediatek.com>
+-*/
+-
+-#ifndef _MTK_VCODEC_DRV_H_
+-#define _MTK_VCODEC_DRV_H_
+-
+-#include <linux/platform_device.h>
+-#include <linux/videodev2.h>
+-#include <media/v4l2-ctrls.h>
+-#include <media/v4l2-device.h>
+-#include <media/v4l2-ioctl.h>
+-#include <media/v4l2-mem2mem.h>
+-#include <media/videobuf2-core.h>
+-
+-#include "mtk_vcodec_dbgfs.h"
 -#include "mtk_vcodec_dec_drv.h"
 -#include "mtk_vcodec_enc_drv.h"
-+#include "../decoder/mtk_vcodec_dec_drv.h"
-+#include "../encoder/mtk_vcodec_enc_drv.h"
+-#include "mtk_vcodec_util.h"
+-#include "vdec_msg_queue.h"
+-
+-#define MTK_VCODEC_DEC_NAME	"mtk-vcodec-dec"
+-#define MTK_VCODEC_ENC_NAME	"mtk-vcodec-enc"
+-
+-#define MTK_V4L2_BENCHMARK	0
+-#define WAIT_INTR_TIMEOUT_MS	1000
+-#define IS_VDEC_LAT_ARCH(hw_arch) ((hw_arch) >= MTK_VDEC_LAT_SINGLE_CORE)
+-#define IS_VDEC_INNER_RACING(capability) ((capability) & MTK_VCODEC_INNER_RACING)
+-
+-/*
+- * enum mtk_hw_reg_idx - MTK hw register base index
+- */
+-enum mtk_hw_reg_idx {
+-	VDEC_SYS,
+-	VDEC_MISC,
+-	VDEC_LD,
+-	VDEC_TOP,
+-	VDEC_CM,
+-	VDEC_AD,
+-	VDEC_AV,
+-	VDEC_PP,
+-	VDEC_HWD,
+-	VDEC_HWQ,
+-	VDEC_HWB,
+-	VDEC_HWG,
+-	NUM_MAX_VDEC_REG_BASE,
+-	/* h264 encoder */
+-	VENC_SYS = NUM_MAX_VDEC_REG_BASE,
+-	/* vp8 encoder */
+-	VENC_LT_SYS,
+-	NUM_MAX_VCODEC_REG_BASE
+-};
+-
+-
+-
+-/*
+- * enum mtk_vdec_hw_count - Supported hardware count
+- */
+-enum mtk_vdec_hw_count {
+-	MTK_VDEC_NO_HW = 0,
+-	MTK_VDEC_ONE_CORE,
+-	MTK_VDEC_ONE_LAT_ONE_CORE,
+-	MTK_VDEC_MAX_HW_COUNT,
+-};
+-
+-/*
+- * enum mtk_q_type - Type of queue
+- */
+-enum mtk_q_type {
+-	MTK_Q_DATA_SRC = 0,
+-	MTK_Q_DATA_DST = 1,
+-};
+-
+-
+-/*
+- * struct mtk_vcodec_clk_info - Structure used to store clock name
+- */
+-struct mtk_vcodec_clk_info {
+-	const char	*clk_name;
+-	struct clk	*vcodec_clk;
+-};
+-
+-/*
+- * struct mtk_vcodec_clk - Structure used to store vcodec clock information
+- */
+-struct mtk_vcodec_clk {
+-	struct mtk_vcodec_clk_info	*clk_info;
+-	int	clk_num;
+-};
+-
+-/*
+- * struct mtk_vcodec_pm - Power management data structure
+- */
+-struct mtk_vcodec_pm {
+-	struct mtk_vcodec_clk	vdec_clk;
+-	struct mtk_vcodec_clk	venc_clk;
+-	struct device	*dev;
+-};
+-
+-/*
+- * enum mtk_vdec_hw_arch - Used to separate different hardware architecture
+- */
+-enum mtk_vdec_hw_arch {
+-	MTK_VDEC_PURE_SINGLE_CORE,
+-	MTK_VDEC_LAT_SINGLE_CORE,
+-};
+-
+-/*
+- * struct mtk_vdec_format_types - Structure used to get supported
+- *		  format types according to decoder capability
+- */
+-enum mtk_vdec_format_types {
+-	MTK_VDEC_FORMAT_MM21 = 0x20,
+-	MTK_VDEC_FORMAT_MT21C = 0x40,
+-	MTK_VDEC_FORMAT_H264_SLICE = 0x100,
+-	MTK_VDEC_FORMAT_VP8_FRAME = 0x200,
+-	MTK_VDEC_FORMAT_VP9_FRAME = 0x400,
+-	MTK_VDEC_FORMAT_AV1_FRAME = 0x800,
+-	MTK_VDEC_FORMAT_HEVC_FRAME = 0x1000,
+-	MTK_VCODEC_INNER_RACING = 0x20000,
+-};
+-
+-/**
+- * struct mtk_vcodec_dec_pdata - compatible data for each IC
+- * @init_vdec_params: init vdec params
+- * @ctrls_setup: init vcodec dec ctrls
+- * @worker: worker to start a decode job
+- * @flush_decoder: function that flushes the decoder
+- * @get_cap_buffer: get capture buffer from capture queue
+- * @cap_to_disp: put capture buffer to disp list for lat and core arch
+- * @vdec_vb2_ops: struct vb2_ops
+- *
+- * @vdec_formats: supported video decoder formats
+- * @num_formats: count of video decoder formats
+- * @default_out_fmt: default output buffer format
+- * @default_cap_fmt: default capture buffer format
+- *
+- * @hw_arch: hardware arch is used to separate pure_sin_core and lat_sin_core
+- *
+- * @is_subdev_supported: whether support parent-node architecture(subdev)
+- * @uses_stateless_api: whether the decoder uses the stateless API with requests
+- */
+-
+-struct mtk_vcodec_dec_pdata {
+-	void (*init_vdec_params)(struct mtk_vcodec_dec_ctx *ctx);
+-	int (*ctrls_setup)(struct mtk_vcodec_dec_ctx *ctx);
+-	void (*worker)(struct work_struct *work);
+-	int (*flush_decoder)(struct mtk_vcodec_dec_ctx *ctx);
+-	struct vdec_fb *(*get_cap_buffer)(struct mtk_vcodec_dec_ctx *ctx);
+-	void (*cap_to_disp)(struct mtk_vcodec_dec_ctx *ctx, int error,
+-			    struct media_request *src_buf_req);
+-
+-	struct vb2_ops *vdec_vb2_ops;
+-
+-	const struct mtk_video_fmt *vdec_formats;
+-	const int *num_formats;
+-	const struct mtk_video_fmt *default_out_fmt;
+-	const struct mtk_video_fmt *default_cap_fmt;
+-
+-	enum mtk_vdec_hw_arch hw_arch;
+-
+-	bool is_subdev_supported;
+-	bool uses_stateless_api;
+-};
+-
+-/**
+- * struct mtk_vcodec_enc_pdata - compatible data for each IC
+- *
+- * @uses_ext: whether the encoder uses the extended firmware messaging format
+- * @min_bitrate: minimum supported encoding bitrate
+- * @max_bitrate: maximum supported encoding bitrate
+- * @capture_formats: array of supported capture formats
+- * @num_capture_formats: number of entries in capture_formats
+- * @output_formats: array of supported output formats
+- * @num_output_formats: number of entries in output_formats
+- * @core_id: stand for h264 or vp8 encode index
+- * @uses_34bit: whether the encoder uses 34-bit iova
+- */
+-struct mtk_vcodec_enc_pdata {
+-	bool uses_ext;
+-	unsigned long min_bitrate;
+-	unsigned long max_bitrate;
+-	const struct mtk_video_fmt *capture_formats;
+-	size_t num_capture_formats;
+-	const struct mtk_video_fmt *output_formats;
+-	size_t num_output_formats;
+-	int core_id;
+-	bool uses_34bit;
+-};
+-
+-#define MTK_ENC_CTX_IS_EXT(ctx) ((ctx)->dev->venc_pdata->uses_ext)
+-#define MTK_ENC_IOVA_IS_34BIT(ctx) ((ctx)->dev->venc_pdata->uses_34bit)
+-
+-/**
+- * struct mtk_vcodec_dev - driver data
+- * @v4l2_dev: V4L2 device to register video devices for.
+- * @vfd_dec: Video device for decoder
+- * @mdev_dec: Media device for decoder
+- * @vfd_enc: Video device for encoder.
+- *
+- * @m2m_dev_dec: m2m device for decoder
+- * @m2m_dev_enc: m2m device for encoder.
+- * @plat_dev: platform device
+- * @ctx_list: list of struct mtk_vcodec_dec_ctx
+- * @irqlock: protect data access by irq handler and work thread
+- * @curr_ctx: The context that is waiting for codec hardware
+- * @curr_enc_ctx: The encoder context that is waiting for codec hardware
+- *
+- * @reg_base: Mapped address of MTK Vcodec registers.
+- * @vdec_pdata: decoder IC-specific data
+- * @venc_pdata: encoder IC-specific data
+- *
+- * @fw_handler: used to communicate with the firmware.
+- * @id_counter: used to identify current opened instance
+- *
+- * @decode_workqueue: decode work queue
+- * @encode_workqueue: encode work queue
+- *
+- * @dev_mutex: video_device lock
+- *
+- * @dec_irq: decoder irq resource
+- * @enc_irq: h264 encoder irq resource
+- *
+- * @dec_mutex: decoder hardware lock
+- * @enc_mutex: encoder hardware lock.
+- *
+- * @pm: power management control
+- * @dec_capability: used to identify decode capability, ex: 4k
+- * @enc_capability: used to identify encode capability
+- *
+- * @core_workqueue: queue used for core hardware decode
+- *
+- * @subdev_dev: subdev hardware device
+- * @subdev_prob_done: check whether all used hw device is prob done
+- * @subdev_bitmap: used to record hardware is ready or not
+- *
+- * @dec_active_cnt: used to mark whether need to record register value
+- * @vdec_racing_info: record register value
+- * @dec_racing_info_mutex: mutex lock used for inner racing mode
+- * @dbgfs: debug log related information
+- */
+-struct mtk_vcodec_dev {
+-	struct v4l2_device v4l2_dev;
+-	struct video_device *vfd_dec;
+-	struct media_device mdev_dec;
+-	struct video_device *vfd_enc;
+-
+-	struct v4l2_m2m_dev *m2m_dev_dec;
+-	struct v4l2_m2m_dev *m2m_dev_enc;
+-	struct platform_device *plat_dev;
+-	struct list_head ctx_list;
+-	spinlock_t irqlock;
+-	struct mtk_vcodec_dec_ctx *curr_ctx;
+-	struct mtk_vcodec_enc_ctx *curr_enc_ctx;
+-	void __iomem *reg_base[NUM_MAX_VCODEC_REG_BASE];
+-	const struct mtk_vcodec_dec_pdata *vdec_pdata;
+-	const struct mtk_vcodec_enc_pdata *venc_pdata;
+-
+-	struct mtk_vcodec_fw *fw_handler;
+-
+-	unsigned long id_counter;
+-
+-	struct workqueue_struct *decode_workqueue;
+-	struct workqueue_struct *encode_workqueue;
+-	struct mutex dev_mutex;
+-
+-	int dec_irq;
+-	int enc_irq;
+-
+-	/* decoder hardware mutex lock */
+-	struct mutex dec_mutex[MTK_VDEC_HW_MAX];
+-	struct mutex enc_mutex;
+-
+-	struct mtk_vcodec_pm pm;
+-	unsigned int dec_capability;
+-	unsigned int enc_capability;
+-
+-	struct workqueue_struct *core_workqueue;
+-
+-	void *subdev_dev[MTK_VDEC_HW_MAX];
+-	int (*subdev_prob_done)(struct mtk_vcodec_dev *vdec_dev);
+-	DECLARE_BITMAP(subdev_bitmap, MTK_VDEC_HW_MAX);
+-
+-	atomic_t dec_active_cnt;
+-	u32 vdec_racing_info[132];
+-	/* Protects access to vdec_racing_info data */
+-	struct mutex dec_racing_info_mutex;
+-
+-	struct mtk_vcodec_dbgfs dbgfs;
+-};
+-
+-#endif /* _MTK_VCODEC_DRV_H_ */
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+index 38cacb58fa60..8be7565bad57 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+@@ -10,7 +10,6 @@
+ #include <media/videobuf2-dma-contig.h>
+ #include <linux/pm_runtime.h>
+ 
+-#include "mtk_vcodec_drv.h"
+ #include "mtk_vcodec_enc.h"
+ #include "mtk_vcodec_intr.h"
+ #include "mtk_vcodec_util.h"
+@@ -1460,7 +1459,7 @@ int mtk_vcodec_enc_queue_init(void *priv, struct vb2_queue *src_vq,
+ 
+ int mtk_venc_unlock(struct mtk_vcodec_enc_ctx *ctx)
+ {
+-	struct mtk_vcodec_dev *dev = ctx->dev;
++	struct mtk_vcodec_enc_dev *dev = ctx->dev;
+ 
+ 	mutex_unlock(&dev->enc_mutex);
+ 	return 0;
+@@ -1468,7 +1467,7 @@ int mtk_venc_unlock(struct mtk_vcodec_enc_ctx *ctx)
+ 
+ int mtk_venc_lock(struct mtk_vcodec_enc_ctx *ctx)
+ {
+-	struct mtk_vcodec_dev *dev = ctx->dev;
++	struct mtk_vcodec_enc_dev *dev = ctx->dev;
+ 
+ 	mutex_lock(&dev->enc_mutex);
+ 	return 0;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
+index 193262de2d9f..a756eae2e53e 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
+@@ -16,7 +16,6 @@
+ #include <media/v4l2-mem2mem.h>
+ #include <media/videobuf2-dma-contig.h>
+ 
+-#include "mtk_vcodec_drv.h"
+ #include "mtk_vcodec_enc.h"
+ #include "mtk_vcodec_enc_pm.h"
+ #include "mtk_vcodec_intr.h"
+@@ -85,14 +84,14 @@ static void clean_irq_status(unsigned int irq_status, void __iomem *addr)
+ }
+ static irqreturn_t mtk_vcodec_enc_irq_handler(int irq, void *priv)
+ {
+-	struct mtk_vcodec_dev *dev = priv;
++	struct mtk_vcodec_enc_dev *dev = priv;
+ 	struct mtk_vcodec_enc_ctx *ctx;
+ 	unsigned long flags;
+ 	void __iomem *addr;
+ 	int core_id;
+ 
+ 	spin_lock_irqsave(&dev->irqlock, flags);
+-	ctx = dev->curr_enc_ctx;
++	ctx = dev->curr_ctx;
+ 	spin_unlock_irqrestore(&dev->irqlock, flags);
+ 
+ 	core_id = dev->venc_pdata->core_id;
+@@ -116,7 +115,7 @@ static irqreturn_t mtk_vcodec_enc_irq_handler(int irq, void *priv)
+ 
+ static int fops_vcodec_open(struct file *file)
+ {
+-	struct mtk_vcodec_dev *dev = video_drvdata(file);
++	struct mtk_vcodec_enc_dev *dev = video_drvdata(file);
+ 	struct mtk_vcodec_enc_ctx *ctx = NULL;
+ 	int ret = 0;
+ 	struct vb2_queue *src_vq;
+@@ -203,7 +202,7 @@ static int fops_vcodec_open(struct file *file)
+ 
+ static int fops_vcodec_release(struct file *file)
+ {
+-	struct mtk_vcodec_dev *dev = video_drvdata(file);
++	struct mtk_vcodec_enc_dev *dev = video_drvdata(file);
+ 	struct mtk_vcodec_enc_ctx *ctx = fh_to_enc_ctx(file->private_data);
+ 
+ 	mtk_v4l2_debug(dev->plat_dev, 1, "[%d] encoder", ctx->id);
+@@ -232,7 +231,7 @@ static const struct v4l2_file_operations mtk_vcodec_fops = {
+ 
+ static int mtk_vcodec_probe(struct platform_device *pdev)
+ {
+-	struct mtk_vcodec_dev *dev;
++	struct mtk_vcodec_enc_dev *dev;
+ 	struct video_device *vfd_enc;
+ 	phandle rproc_phandle;
+ 	enum mtk_vcodec_fw_type fw_type;
+@@ -454,7 +453,7 @@ MODULE_DEVICE_TABLE(of, mtk_vcodec_enc_match);
+ 
+ static void mtk_vcodec_enc_remove(struct platform_device *pdev)
+ {
+-	struct mtk_vcodec_dev *dev = platform_get_drvdata(pdev);
++	struct mtk_vcodec_enc_dev *dev = platform_get_drvdata(pdev);
+ 
+ 	mtk_v4l2_debug_enter(pdev);
+ 	destroy_workqueue(dev->encode_workqueue);
+@@ -464,7 +463,7 @@ static void mtk_vcodec_enc_remove(struct platform_device *pdev)
+ 	if (dev->vfd_enc)
+ 		video_unregister_device(dev->vfd_enc);
+ 
+-	mtk_vcodec_dbgfs_deinit(dev);
++	mtk_vcodec_dbgfs_deinit(&dev->dbgfs);
+ 	v4l2_device_unregister(&dev->v4l2_dev);
+ 	pm_runtime_disable(dev->pm.dev);
+ 	mtk_vcodec_fw_release(dev->fw_handler);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.h
+index 6aa4afe5b796..a88ef9078848 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.h
+@@ -8,7 +8,39 @@
+ #define _MTK_VCODEC_ENC_DRV_H_
+ 
+ #include "mtk_vcodec_com_drv.h"
++#include "mtk_vcodec_dbgfs.h"
  #include "mtk_vcodec_fw_priv.h"
++#include "mtk_vcodec_util.h"
++
++#define MTK_VCODEC_ENC_NAME	"mtk-vcodec-enc"
++
++#define MTK_ENC_CTX_IS_EXT(ctx) ((ctx)->dev->venc_pdata->uses_ext)
++#define MTK_ENC_IOVA_IS_34BIT(ctx) ((ctx)->dev->venc_pdata->uses_34bit)
++
++/**
++ * struct mtk_vcodec_enc_pdata - compatible data for each IC
++ *
++ * @uses_ext: whether the encoder uses the extended firmware messaging format
++ * @min_bitrate: minimum supported encoding bitrate
++ * @max_bitrate: maximum supported encoding bitrate
++ * @capture_formats: array of supported capture formats
++ * @num_capture_formats: number of entries in capture_formats
++ * @output_formats: array of supported output formats
++ * @num_output_formats: number of entries in output_formats
++ * @core_id: stand for h264 or vp8 encode index
++ * @uses_34bit: whether the encoder uses 34-bit iova
++ */
++struct mtk_vcodec_enc_pdata {
++	bool uses_ext;
++	unsigned long min_bitrate;
++	unsigned long max_bitrate;
++	const struct mtk_video_fmt *capture_formats;
++	size_t num_capture_formats;
++	const struct mtk_video_fmt *output_formats;
++	size_t num_output_formats;
++	int core_id;
++	bool uses_34bit;
++};
+ 
+ /*
+  * enum mtk_encode_param - General encoding parameters type
+@@ -61,8 +93,8 @@ struct mtk_enc_params {
+  * struct mtk_vcodec_enc_ctx - Context (instance) private data.
+  *
+  * @type: type of the instance - decoder or encoder
+- * @dev: pointer to the mtk_vcodec_dev of the device
+- * @list: link to ctx_list of mtk_vcodec_dev
++ * @dev: pointer to the mtk_vcodec_enc_dev of the device
++ * @list: link to ctx_list of mtk_vcodec_enc_dev
+  *
+  * @fh: struct v4l2_fh
+  * @m2m_ctx: pointer to the v4l2_m2m_ctx of the context
+@@ -101,7 +133,7 @@ struct mtk_enc_params {
+  */
+ struct mtk_vcodec_enc_ctx {
+ 	enum mtk_instance_type type;
+-	struct mtk_vcodec_dev *dev;
++	struct mtk_vcodec_enc_dev *dev;
+ 	struct list_head list;
+ 
+ 	struct v4l2_fh fh;
+@@ -136,6 +168,61 @@ struct mtk_vcodec_enc_ctx {
+ 	struct mutex q_mutex;
+ };
+ 
++/**
++ * struct mtk_vcodec_enc_dev - driver data
++ * @v4l2_dev: V4L2 device to register video devices for.
++ * @vfd_enc: Video device for encoder.
++ *
++ * @m2m_dev_enc: m2m device for encoder.
++ * @plat_dev: platform device
++ * @ctx_list: list of struct mtk_vcodec_ctx
++ * @curr_ctx: The context that is waiting for codec hardware
++ *
++ * @reg_base: Mapped address of MTK Vcodec registers.
++ * @venc_pdata: encoder IC-specific data
++ *
++ * @fw_handler: used to communicate with the firmware.
++ * @id_counter: used to identify current opened instance
++ *
++ * @enc_mutex: encoder hardware lock.
++ * @dev_mutex: video_device lock
++ * @encode_workqueue: encode work queue
++ *
++ * @enc_irq: h264 encoder irq resource
++ * @irqlock: protect data access by irq handler and work thread
++ *
++ * @pm: power management control
++ * @enc_capability: used to identify encode capability
++ * @dbgfs: debug log related information
++ */
++struct mtk_vcodec_enc_dev {
++	struct v4l2_device v4l2_dev;
++	struct video_device *vfd_enc;
++
++	struct v4l2_m2m_dev *m2m_dev_enc;
++	struct platform_device *plat_dev;
++	struct list_head ctx_list;
++	struct mtk_vcodec_enc_ctx *curr_ctx;
++
++	void __iomem *reg_base[NUM_MAX_VCODEC_REG_BASE];
++	const struct mtk_vcodec_enc_pdata *venc_pdata;
++
++	struct mtk_vcodec_fw *fw_handler;
++	unsigned long id_counter;
++
++	/* encoder hardware mutex lock */
++	struct mutex enc_mutex;
++	struct mutex dev_mutex;
++	struct workqueue_struct *encode_workqueue;
++
++	int enc_irq;
++	spinlock_t irqlock;
++
++	struct mtk_vcodec_pm pm;
++	unsigned int enc_capability;
++	struct mtk_vcodec_dbgfs dbgfs;
++};
++
+ static inline struct mtk_vcodec_enc_ctx *fh_to_enc_ctx(struct v4l2_fh *fh)
+ {
+ 	return container_of(fh, struct mtk_vcodec_enc_ctx, fh);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c
+index c63e60c5aaf7..851a5239cbeb 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c
+@@ -9,10 +9,10 @@
+ #include <linux/of_platform.h>
+ #include <linux/pm_runtime.h>
+ 
++#include "mtk_vcodec_enc_drv.h"
+ #include "mtk_vcodec_enc_pm.h"
+-#include "mtk_vcodec_util.h"
+ 
+-int mtk_vcodec_init_enc_clk(struct mtk_vcodec_dev *mtkdev)
++int mtk_vcodec_init_enc_clk(struct mtk_vcodec_enc_dev *mtkdev)
+ {
+ 	struct platform_device *pdev;
+ 	struct mtk_vcodec_pm *pm;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h
+index bc455cefc0cd..e50be0575190 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h
+@@ -7,9 +7,9 @@
+ #ifndef _MTK_VCODEC_ENC_PM_H_
+ #define _MTK_VCODEC_ENC_PM_H_
+ 
+-#include "mtk_vcodec_drv.h"
++#include "mtk_vcodec_enc_drv.h"
+ 
+-int mtk_vcodec_init_enc_clk(struct mtk_vcodec_dev *dev);
++int mtk_vcodec_init_enc_clk(struct mtk_vcodec_enc_dev *dev);
+ 
+ void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm);
+ void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c
+index 540e3dd27384..09d865a80bc0 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c
+@@ -1,14 +1,19 @@
+ // SPDX-License-Identifier: GPL-2.0
+ 
++#include "mtk_vcodec_dec_drv.h"
++#include "mtk_vcodec_enc_drv.h"
+ #include "mtk_vcodec_fw.h"
+ #include "mtk_vcodec_fw_priv.h"
+-#include "mtk_vcodec_util.h"
+-#include "mtk_vcodec_drv.h"
  
  struct mtk_vcodec_fw *mtk_vcodec_fw_select(void *priv, enum mtk_vcodec_fw_type type,
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
-similarity index 97%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h
-rename to drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
-index 83479ab70385..300363a40158 100644
+ 					   enum mtk_vcodec_fw_use fw_use)
+ {
+-	struct mtk_vcodec_dev *dev = priv;
++	struct platform_device *plat_dev;
++
++	if (fw_use == ENCODER)
++		plat_dev = ((struct mtk_vcodec_enc_dev *)priv)->plat_dev;
++	else
++		plat_dev = ((struct mtk_vcodec_dec_dev *)priv)->plat_dev;
+ 
+ 	switch (type) {
+ 	case VPU:
+@@ -16,7 +21,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_select(void *priv, enum mtk_vcodec_fw_type t
+ 	case SCP:
+ 		return mtk_vcodec_fw_scp_init(priv, fw_use);
+ 	default:
+-		mtk_v4l2_err(dev->plat_dev, "invalid vcodec fw type");
++		mtk_v4l2_err(plat_dev, "invalid vcodec fw type");
+ 		return ERR_PTR(-EINVAL);
+ 	}
+ }
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h
+index d8cfbec323d5..83479ab70385 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
-@@ -6,7 +6,7 @@
- #include <linux/remoteproc.h>
- #include <linux/remoteproc/mtk_scp.h>
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h
+@@ -8,7 +8,8 @@
  
--#include "../vpu/mtk_vpu.h"
-+#include "../../vpu/mtk_vpu.h"
+ #include "../vpu/mtk_vpu.h"
  
- struct mtk_vcodec_dec_dev;
- struct mtk_vcodec_enc_dev;
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_priv.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h
-rename to drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_priv.h
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-similarity index 96%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
-rename to drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-index 0de8d792f1a6..a608d1a66312 100644
+-struct mtk_vcodec_dev;
++struct mtk_vcodec_dec_dev;
++struct mtk_vcodec_enc_dev;
+ 
+ enum mtk_vcodec_fw_type {
+ 	VPU,
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h
+index 3438a4917344..99603accd82e 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h
+@@ -5,7 +5,8 @@
+ 
+ #include "mtk_vcodec_fw.h"
+ 
+-struct mtk_vcodec_dev;
++struct mtk_vcodec_dec_dev;
++struct mtk_vcodec_enc_dev;
+ 
+ struct mtk_vcodec_fw {
+ 	enum mtk_vcodec_fw_type type;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
+index 39f361da5412..0de8d792f1a6 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-@@ -1,7 +1,7 @@
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
+@@ -1,8 +1,8 @@
  // SPDX-License-Identifier: GPL-2.0
  
--#include "mtk_vcodec_dec_drv.h"
--#include "mtk_vcodec_enc_drv.h"
-+#include "../decoder/mtk_vcodec_dec_drv.h"
-+#include "../encoder/mtk_vcodec_enc_drv.h"
++#include "mtk_vcodec_dec_drv.h"
++#include "mtk_vcodec_enc_drv.h"
  #include "mtk_vcodec_fw_priv.h"
+-#include "mtk_vcodec_util.h"
+-#include "mtk_vcodec_drv.h"
  
  static int mtk_vcodec_scp_load_firmware(struct mtk_vcodec_fw *fw)
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-similarity index 97%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c
-rename to drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-index d26fe00004b9..6c3d562207fd 100644
+ {
+@@ -56,11 +56,22 @@ static const struct mtk_vcodec_fw_ops mtk_vcodec_rproc_msg = {
+ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use fw_use)
+ {
+ 	struct mtk_vcodec_fw *fw;
+-	struct mtk_vcodec_dev *dev = priv;
+ 	struct platform_device *plat_dev;
+ 	struct mtk_scp *scp;
+ 
+-	plat_dev = dev->plat_dev;
++	if (fw_use == ENCODER) {
++		struct mtk_vcodec_enc_dev *enc_dev = priv;
++
++		plat_dev = enc_dev->plat_dev;
++	} else if (fw_use == DECODER) {
++		struct mtk_vcodec_dec_dev *dec_dev = priv;
++
++		plat_dev = dec_dev->plat_dev;
++	} else {
++		pr_err("Invalid fw_use %d (use a resonable fw id here)\n", fw_use);
++		return ERR_PTR(-EINVAL);
++	}
++
+ 	scp = scp_get(plat_dev);
+ 	if (!scp) {
+ 		mtk_v4l2_err(plat_dev, "could not get vdec scp handle");
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c
+index 22096a108166..d26fe00004b9 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-@@ -1,7 +1,7 @@
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c
+@@ -1,8 +1,8 @@
  // SPDX-License-Identifier: GPL-2.0
  
--#include "mtk_vcodec_dec_drv.h"
--#include "mtk_vcodec_enc_drv.h"
-+#include "../decoder/mtk_vcodec_dec_drv.h"
-+#include "../encoder/mtk_vcodec_enc_drv.h"
++#include "mtk_vcodec_dec_drv.h"
++#include "mtk_vcodec_enc_drv.h"
  #include "mtk_vcodec_fw_priv.h"
+-#include "mtk_vcodec_util.h"
+-#include "mtk_vcodec_drv.h"
  
  static int mtk_vcodec_vpu_load_firmware(struct mtk_vcodec_fw *fw)
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_intr.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_intr.c
-similarity index 95%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_intr.c
-rename to drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_intr.c
-index db6020beca39..71faf7ba26f1 100644
+ {
+@@ -53,7 +53,7 @@ static void mtk_vcodec_vpu_release(struct mtk_vcodec_fw *fw)
+ 
+ static void mtk_vcodec_vpu_reset_dec_handler(void *priv)
+ {
+-	struct mtk_vcodec_dev *dev = priv;
++	struct mtk_vcodec_dec_dev *dev = priv;
+ 	struct mtk_vcodec_dec_ctx *ctx;
+ 
+ 	mtk_v4l2_err(dev->plat_dev, "Watchdog timeout!!");
+@@ -69,7 +69,7 @@ static void mtk_vcodec_vpu_reset_dec_handler(void *priv)
+ 
+ static void mtk_vcodec_vpu_reset_enc_handler(void *priv)
+ {
+-	struct mtk_vcodec_dev *dev = priv;
++	struct mtk_vcodec_enc_dev *dev = priv;
+ 	struct mtk_vcodec_enc_ctx *ctx;
+ 
+ 	mtk_v4l2_err(dev->plat_dev, "Watchdog timeout!!");
+@@ -96,22 +96,25 @@ static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg = {
+ struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(void *priv, enum mtk_vcodec_fw_use fw_use)
+ {
+ 	struct platform_device *fw_pdev;
+-	struct mtk_vcodec_dev *dev = priv;
+ 	struct platform_device *plat_dev;
+ 	struct mtk_vcodec_fw *fw;
+ 	enum rst_id rst_id;
+ 
+-	switch (fw_use) {
+-	case ENCODER:
++	if (fw_use == ENCODER) {
++		struct mtk_vcodec_enc_dev *enc_dev = priv;
++
++		plat_dev = enc_dev->plat_dev;
+ 		rst_id = VPU_RST_ENC;
+-		break;
+-	case DECODER:
+-	default:
++	} else if (fw_use == DECODER) {
++		struct mtk_vcodec_dec_dev *dec_dev = priv;
++
++		plat_dev = dec_dev->plat_dev;
+ 		rst_id = VPU_RST_DEC;
+-		break;
++	} else {
++		pr_err("Invalid fw_use %d (use a resonable fw id here)\n", fw_use);
++		return ERR_PTR(-EINVAL);
+ 	}
+ 
+-	plat_dev = dev->plat_dev;
+ 	fw_pdev = vpu_get_plat_device(plat_dev);
+ 	if (!fw_pdev) {
+ 		mtk_v4l2_err(plat_dev, "firmware device is not ready");
+@@ -119,9 +122,9 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(void *priv, enum mtk_vcodec_fw_use
+ 	}
+ 
+ 	if (fw_use == DECODER)
+-		vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_vpu_reset_dec_handler, dev, rst_id);
++		vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_vpu_reset_dec_handler, priv, rst_id);
+ 	else
+-		vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_vpu_reset_enc_handler, dev, rst_id);
++		vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_vpu_reset_enc_handler, priv, rst_id);
+ 
+ 	fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
+ 	if (!fw)
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_intr.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_intr.c
+index f541a7bcbb96..db6020beca39 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_intr.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_intr.c
-@@ -7,8 +7,8 @@
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_intr.c
+@@ -7,9 +7,9 @@
  #include <linux/errno.h>
  #include <linux/wait.h>
  
--#include "mtk_vcodec_dec_drv.h"
--#include "mtk_vcodec_enc_drv.h"
-+#include "../decoder/mtk_vcodec_dec_drv.h"
-+#include "../encoder/mtk_vcodec_enc_drv.h"
+-#include "mtk_vcodec_drv.h"
++#include "mtk_vcodec_dec_drv.h"
++#include "mtk_vcodec_enc_drv.h"
  #include "mtk_vcodec_intr.h"
+-#include "mtk_vcodec_util.h"
  
  int mtk_vcodec_wait_for_done_ctx(void *priv, int command, unsigned int timeout_ms,
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_intr.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_intr.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_intr.h
-rename to drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_intr.h
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
-similarity index 97%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c
-rename to drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
-index 62226b80673d..97d9de82935b 100644
+ 				 unsigned int hw_id)
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c
+index e63285670b47..62226b80673d 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.c
 @@ -9,9 +9,9 @@
  #include <linux/of.h>
  #include <linux/of_device.h>
  
--#include "mtk_vcodec_dec_drv.h"
--#include "mtk_vcodec_enc_drv.h"
--#include "mtk_vcodec_dec_hw.h"
-+#include "../decoder/mtk_vcodec_dec_drv.h"
-+#include "../encoder/mtk_vcodec_enc_drv.h"
-+#include "../decoder/mtk_vcodec_dec_hw.h"
++#include "mtk_vcodec_dec_drv.h"
++#include "mtk_vcodec_enc_drv.h"
+ #include "mtk_vcodec_dec_hw.h"
+-#include "mtk_vcodec_drv.h"
+-#include "mtk_vcodec_util.h"
  
  #if defined(CONFIG_DEBUG_FS)
  int mtk_vcodec_dbg;
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
-rename to drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_util.h
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/Makefile b/drivers/media/platform/mediatek/vcodec/decoder/Makefile
-new file mode 100644
-index 000000000000..904cd22def84
---- /dev/null
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/Makefile
-@@ -0,0 +1,25 @@
-+# SPDX-License-Identifier: GPL-2.0
-+
-+obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += mtk-vcodec-dec.o \
-+				       mtk-vcodec-dec-hw.o
-+
-+mtk-vcodec-dec-y := vdec/vdec_h264_if.o \
-+		vdec/vdec_vp8_if.o \
-+		vdec/vdec_vp8_req_if.o \
-+		vdec/vdec_vp9_if.o \
-+		vdec/vdec_vp9_req_lat_if.o \
-+		vdec/vdec_av1_req_lat_if.o \
-+		vdec/vdec_h264_req_if.o \
-+		vdec/vdec_h264_req_common.o \
-+		vdec/vdec_h264_req_multi_if.o \
-+		vdec/vdec_hevc_req_multi_if.o \
-+		mtk_vcodec_dec_drv.o \
-+		vdec_drv_if.o \
-+		vdec_vpu_if.o \
-+		vdec_msg_queue.o \
-+		mtk_vcodec_dec.o \
-+		mtk_vcodec_dec_stateful.o \
-+		mtk_vcodec_dec_stateless.o \
-+		mtk_vcodec_dec_pm.o \
-+
-+mtk-vcodec-dec-hw-y := mtk_vcodec_dec_hw.o
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.h
-rename to drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.h
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-index d979018dcd20..14621e40376e 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-@@ -20,7 +20,7 @@
- #include "mtk_vcodec_dec.h"
- #include "mtk_vcodec_dec_hw.h"
- #include "mtk_vcodec_dec_pm.h"
--#include "mtk_vcodec_intr.h"
-+#include "../common/mtk_vcodec_intr.h"
+@@ -104,7 +104,7 @@ void mtk_vcodec_mem_free(void *priv, struct mtk_vcodec_mem *mem)
+ }
+ EXPORT_SYMBOL(mtk_vcodec_mem_free);
  
- static int mtk_vcodec_get_hw_count(struct mtk_vcodec_dec_dev *dev)
+-void *mtk_vcodec_get_hw_dev(struct mtk_vcodec_dev *dev, int hw_idx)
++void *mtk_vcodec_get_hw_dev(struct mtk_vcodec_dec_dev *dev, int hw_idx)
  {
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-similarity index 98%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.h
-rename to drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-index 1a0375dd5b6d..dce25edd13e9 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-@@ -7,10 +7,10 @@
- #ifndef _MTK_VCODEC_DEC_DRV_H_
- #define _MTK_VCODEC_DEC_DRV_H_
+ 	if (hw_idx >= MTK_VDEC_HW_MAX || hw_idx < 0 || !dev->subdev_dev[hw_idx]) {
+ 		mtk_v4l2_err(dev->plat_dev, "hw idx is out of range:%d", hw_idx);
+@@ -115,7 +115,7 @@ void *mtk_vcodec_get_hw_dev(struct mtk_vcodec_dev *dev, int hw_idx)
+ }
+ EXPORT_SYMBOL(mtk_vcodec_get_hw_dev);
  
--#include "mtk_vcodec_com_drv.h"
--#include "mtk_vcodec_dbgfs.h"
--#include "mtk_vcodec_fw_priv.h"
--#include "mtk_vcodec_util.h"
-+#include "../common/mtk_vcodec_com_drv.h"
-+#include "../common/mtk_vcodec_dbgfs.h"
-+#include "../common/mtk_vcodec_fw_priv.h"
-+#include "../common/mtk_vcodec_util.h"
+-void mtk_vcodec_set_curr_ctx(struct mtk_vcodec_dev *vdec_dev,
++void mtk_vcodec_set_curr_ctx(struct mtk_vcodec_dec_dev *vdec_dev,
+ 			     struct mtk_vcodec_dec_ctx *ctx, int hw_idx)
+ {
+ 	unsigned long flags;
+@@ -137,7 +137,7 @@ void mtk_vcodec_set_curr_ctx(struct mtk_vcodec_dev *vdec_dev,
+ }
+ EXPORT_SYMBOL(mtk_vcodec_set_curr_ctx);
+ 
+-struct mtk_vcodec_dec_ctx *mtk_vcodec_get_curr_ctx(struct mtk_vcodec_dev *vdec_dev,
++struct mtk_vcodec_dec_ctx *mtk_vcodec_get_curr_ctx(struct mtk_vcodec_dec_dev *vdec_dev,
+ 						   unsigned int hw_idx)
+ {
+ 	unsigned long flags;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
+index fc53dc4fd639..fa6b06752cae 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
+@@ -23,7 +23,7 @@ struct mtk_vcodec_fb {
+ };
+ 
+ struct mtk_vcodec_dec_ctx;
+-struct mtk_vcodec_dev;
++struct mtk_vcodec_dec_dev;
+ 
+ #undef pr_fmt
+ #define pr_fmt(fmt) "%s(),%d: " fmt, __func__, __LINE__
+@@ -68,10 +68,10 @@ void __iomem *mtk_vcodec_get_reg_addr(struct platform_device *pdev, void __iomem
+ 				      unsigned int reg_idx);
+ int mtk_vcodec_mem_alloc(void *priv, struct mtk_vcodec_mem *mem);
+ void mtk_vcodec_mem_free(void *priv, struct mtk_vcodec_mem *mem);
+-void mtk_vcodec_set_curr_ctx(struct mtk_vcodec_dev *vdec_dev,
++void mtk_vcodec_set_curr_ctx(struct mtk_vcodec_dec_dev *vdec_dev,
+ 			     struct mtk_vcodec_dec_ctx *ctx, int hw_idx);
+-struct mtk_vcodec_dec_ctx *mtk_vcodec_get_curr_ctx(struct mtk_vcodec_dev *vdec_dev,
++struct mtk_vcodec_dec_ctx *mtk_vcodec_get_curr_ctx(struct mtk_vcodec_dec_dev *vdec_dev,
+ 						   unsigned int hw_idx);
+-void *mtk_vcodec_get_hw_dev(struct mtk_vcodec_dev *dev, int hw_idx);
++void *mtk_vcodec_get_hw_dev(struct mtk_vcodec_dec_dev *dev, int hw_idx);
+ 
+ #endif /* _MTK_VCODEC_UTIL_H_ */
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.h b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.h
+index 0dda9e2315c0..ac82be336055 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.h
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.h
+@@ -13,7 +13,7 @@
+ #include <media/v4l2-mem2mem.h>
+ #include <media/videobuf2-dma-contig.h>
+ 
+-#include "../mtk_vcodec_drv.h"
++#include "../mtk_vcodec_dec_drv.h"
+ 
+ #define NAL_NON_IDR_SLICE			0x01
+ #define NAL_IDR_SLICE				0x05
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+index 37ed8f5abccb..1bfcc3cc3c3c 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+@@ -548,7 +548,7 @@ static int vdec_h264_slice_core_decode(struct vdec_lat_buf *lat_buf)
+ 	return 0;
+ }
+ 
+-static void vdec_h264_insert_startcode(struct mtk_vcodec_dev *vcodec_dev, unsigned char *buf,
++static void vdec_h264_insert_startcode(struct mtk_vcodec_dec_dev *vcodec_dev, unsigned char *buf,
+ 				       size_t *bs_size, struct mtk_h264_pps_param *pps)
+ {
+ 	struct device *dev = &vcodec_dev->plat_dev->dev;
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_drv_if.h b/drivers/media/platform/mediatek/vcodec/vdec_drv_if.h
+index 816ed6ab1ed0..7b41ce23158b 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_drv_if.h
++++ b/drivers/media/platform/mediatek/vcodec/vdec_drv_if.h
+@@ -8,7 +8,6 @@
+ #ifndef _VDEC_DRV_IF_H_
+ #define _VDEC_DRV_IF_H_
+ 
+-#include "mtk_vcodec_drv.h"
+ #include "mtk_vcodec_dec.h"
+ #include "mtk_vcodec_util.h"
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+index e66d0b75788e..d9d5e9ae0579 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+@@ -8,8 +8,8 @@
+ #include <linux/interrupt.h>
+ #include <linux/kthread.h>
+ 
++#include "mtk_vcodec_dec_drv.h"
+ #include "mtk_vcodec_dec_pm.h"
+-#include "mtk_vcodec_drv.h"
  #include "vdec_msg_queue.h"
  
- #define MTK_VCODEC_DEC_NAME	"mtk-vcodec-dec"
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_hw.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_hw.c
-index 8a10ad28b920..a45804697c02 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_hw.c
-@@ -15,7 +15,7 @@
- #include "mtk_vcodec_dec.h"
- #include "mtk_vcodec_dec_hw.h"
- #include "mtk_vcodec_dec_pm.h"
--#include "mtk_vcodec_intr.h"
-+#include "../common/mtk_vcodec_intr.h"
+ #define VDEC_MSG_QUEUE_TIMEOUT_MS 1500
+@@ -244,7 +244,7 @@ static void vdec_msg_queue_core_work(struct work_struct *work)
+ 		container_of(work, struct vdec_msg_queue, core_work);
+ 	struct mtk_vcodec_dec_ctx *ctx =
+ 		container_of(msg_queue, struct mtk_vcodec_dec_ctx, msg_queue);
+-	struct mtk_vcodec_dev *dev = ctx->dev;
++	struct mtk_vcodec_dec_dev *dev = ctx->dev;
+ 	struct vdec_lat_buf *lat_buf;
  
- static const struct of_device_id mtk_vdec_hw_match[] = {
- 	{
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_hw.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
-rename to drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_hw.h
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.h
-rename to drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.h
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateful.c
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateful.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateful.c
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-index da1ada8a5727..cfed3877bdae 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
-@@ -9,7 +9,7 @@
- #include <media/videobuf2-dma-contig.h>
- 
- #include "../mtk_vcodec_dec.h"
--#include "../mtk_vcodec_intr.h"
-+#include "../../common/mtk_vcodec_intr.h"
- #include "../vdec_drv_base.h"
- #include "../vdec_drv_if.h"
- #include "../vdec_vpu_if.h"
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_if.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_if.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_if.c
-index 3ad7d41f53ba..5baa72ab1188 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_if.c
-@@ -9,7 +9,7 @@
- 
- #include "../vdec_drv_if.h"
- #include "../mtk_vcodec_dec.h"
--#include "../mtk_vcodec_intr.h"
-+#include "../../common/mtk_vcodec_intr.h"
- #include "../vdec_vpu_if.h"
- #include "../vdec_drv_base.h"
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_common.c
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_common.c
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_common.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.h
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_common.h
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c
-index 633dc1b4e8b6..a619ae759b77 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_if.c
-@@ -7,7 +7,7 @@
- #include <media/videobuf2-dma-contig.h>
- 
- #include "../mtk_vcodec_dec.h"
--#include "../mtk_vcodec_intr.h"
-+#include "../../common/mtk_vcodec_intr.h"
- #include "../vdec_drv_base.h"
- #include "../vdec_drv_if.h"
- #include "../vdec_vpu_if.h"
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-index 16cc4e9b451f..420438fe53c0 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-@@ -11,7 +11,7 @@
- #include <media/videobuf2-dma-contig.h>
- 
- #include "../mtk_vcodec_dec.h"
--#include "../mtk_vcodec_intr.h"
-+#include "../../common/mtk_vcodec_intr.h"
- #include "../vdec_drv_base.h"
- #include "../vdec_drv_if.h"
- #include "../vdec_vpu_if.h"
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
-index 3c58fbb6ade3..0085476eabbb 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
-@@ -9,7 +9,7 @@
- #include <media/videobuf2-dma-contig.h>
- 
- #include "../mtk_vcodec_dec.h"
--#include "../mtk_vcodec_intr.h"
-+#include "../../common/mtk_vcodec_intr.h"
- #include "../vdec_drv_base.h"
- #include "../vdec_drv_if.h"
- #include "../vdec_vpu_if.h"
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_if.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_if.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_if.c
-index 54236a74fa13..b2e67992d3e7 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_if.c
-@@ -8,7 +8,7 @@
- #include <linux/slab.h>
- #include "../vdec_drv_if.h"
- #include "../mtk_vcodec_dec.h"
--#include "../mtk_vcodec_intr.h"
-+#include "../../common/mtk_vcodec_intr.h"
- #include "../vdec_vpu_if.h"
- #include "../vdec_drv_base.h"
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
-index 7449691d3b54..730bdb3da637 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
-@@ -10,7 +10,7 @@
- #include <uapi/linux/v4l2-controls.h>
- 
- #include "../mtk_vcodec_dec.h"
--#include "../mtk_vcodec_intr.h"
-+#include "../../common/mtk_vcodec_intr.h"
- #include "../vdec_drv_base.h"
- #include "../vdec_drv_if.h"
- #include "../vdec_vpu_if.h"
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
-index 9d7337c61577..8a9dfebc7b35 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_if.c
-@@ -12,7 +12,7 @@
- #include <linux/delay.h>
- #include <linux/time.h>
- 
--#include "../mtk_vcodec_intr.h"
-+#include "../../common/mtk_vcodec_intr.h"
- #include "../vdec_drv_base.h"
- #include "../vdec_vpu_if.h"
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-index 7a2c5ac7a196..3353e922ad1c 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
-@@ -10,7 +10,7 @@
- #include <media/v4l2-vp9.h>
- 
- #include "../mtk_vcodec_dec.h"
--#include "../mtk_vcodec_intr.h"
-+#include "../../common/mtk_vcodec_intr.h"
- #include "../vdec_drv_base.h"
- #include "../vdec_drv_if.h"
- #include "../vdec_vpu_if.h"
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_drv_base.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_drv_base.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/vdec_drv_base.h
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec_drv_base.h
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_drv_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_drv_if.c
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/vdec_drv_if.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec_drv_if.c
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_drv_if.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_drv_if.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/vdec_drv_if.h
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec_drv_if.h
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_ipi_msg.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_ipi_msg.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/vdec_ipi_msg.h
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec_ipi_msg.h
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.h
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/vdec_vpu_if.h
-rename to drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/Makefile b/drivers/media/platform/mediatek/vcodec/encoder/Makefile
-new file mode 100644
-index 000000000000..e621b5b7e5e6
---- /dev/null
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/Makefile
-@@ -0,0 +1,11 @@
-+# SPDX-License-Identifier: GPL-2.0
-+
-+obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += mtk-vcodec-enc.o
-+
-+mtk-vcodec-enc-y := venc/venc_vp8_if.o \
-+		venc/venc_h264_if.o \
-+		mtk_vcodec_enc.o \
-+		mtk_vcodec_enc_drv.o \
-+		mtk_vcodec_enc_pm.o \
-+		venc_drv_if.o \
-+		venc_vpu_if.o \
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-rename to drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.h
-rename to drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.h
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-rename to drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-index 1f2b56f76931..3ab849654b5c 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
+ 	spin_lock(&msg_queue->core_ctx.ready_lock);
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h
+index eea56f24b60e..af2636244af0 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h
++++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.h
 @@ -18,7 +18,7 @@
  
- #include "mtk_vcodec_enc.h"
- #include "mtk_vcodec_enc_pm.h"
--#include "mtk_vcodec_intr.h"
-+#include "../common/mtk_vcodec_intr.h"
+ struct vdec_lat_buf;
+ struct mtk_vcodec_dec_ctx;
+-struct mtk_vcodec_dev;
++struct mtk_vcodec_dec_dev;
+ typedef int (*core_decode_cb_t)(struct vdec_lat_buf *lat_buf);
  
- static const struct mtk_video_fmt mtk_video_formats_output[] = {
- 	{
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-similarity index 97%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.h
-rename to drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-index 4804d8531a4e..fecfd862025a 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-@@ -7,10 +7,10 @@
- #ifndef _MTK_VCODEC_ENC_DRV_H_
- #define _MTK_VCODEC_ENC_DRV_H_
+ /**
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
+index e971f385723c..29a99dd5d61a 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
+@@ -4,8 +4,7 @@
+  * Author: PC Chen <pc.chen@mediatek.com>
+  */
  
--#include "mtk_vcodec_com_drv.h"
--#include "mtk_vcodec_dbgfs.h"
--#include "mtk_vcodec_fw_priv.h"
+-#include "mtk_vcodec_drv.h"
 -#include "mtk_vcodec_util.h"
-+#include "../common/mtk_vcodec_com_drv.h"
-+#include "../common/mtk_vcodec_dbgfs.h"
-+#include "../common/mtk_vcodec_fw_priv.h"
-+#include "../common/mtk_vcodec_util.h"
- 
- #define MTK_VCODEC_ENC_NAME	"mtk-vcodec-enc"
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c
-rename to drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h
-rename to drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.h
-diff --git a/drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c
-rename to drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
-index 0d1a8c4dc27b..80ae5e883613 100644
++#include "mtk_vcodec_dec_drv.h"
+ #include "vdec_drv_if.h"
+ #include "vdec_ipi_msg.h"
+ #include "vdec_vpu_if.h"
+diff --git a/drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c b/drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c
+index 66bbb892d8e7..3e8f3a9f3088 100644
 --- a/drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
-@@ -11,7 +11,7 @@
- #include <linux/slab.h>
- 
- #include "../mtk_vcodec_enc_drv.h"
--#include "../mtk_vcodec_intr.h"
-+#include "../../common/mtk_vcodec_intr.h"
- #include "../mtk_vcodec_enc.h"
- #include "../mtk_vcodec_enc_pm.h"
- #include "../venc_drv_base.h"
-diff --git a/drivers/media/platform/mediatek/vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_vp8_if.c
-similarity index 99%
-rename from drivers/media/platform/mediatek/vcodec/venc/venc_vp8_if.c
-rename to drivers/media/platform/mediatek/vcodec/encoder/venc/venc_vp8_if.c
-index 0d5c6b0b23c8..651788256162 100644
---- a/drivers/media/platform/mediatek/vcodec/venc/venc_vp8_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_vp8_if.c
++++ b/drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c
 @@ -10,7 +10,7 @@
+ #include <linux/kernel.h>
  #include <linux/slab.h>
  
- #include "../mtk_vcodec_enc_drv.h"
--#include "../mtk_vcodec_intr.h"
-+#include "../../common/mtk_vcodec_intr.h"
+-#include "../mtk_vcodec_drv.h"
++#include "../mtk_vcodec_enc_drv.h"
+ #include "../mtk_vcodec_util.h"
+ #include "../mtk_vcodec_intr.h"
  #include "../mtk_vcodec_enc.h"
- #include "../mtk_vcodec_enc_pm.h"
- #include "../venc_drv_base.h"
-diff --git a/drivers/media/platform/mediatek/vcodec/venc_drv_base.h b/drivers/media/platform/mediatek/vcodec/encoder/venc_drv_base.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/venc_drv_base.h
-rename to drivers/media/platform/mediatek/vcodec/encoder/venc_drv_base.h
-diff --git a/drivers/media/platform/mediatek/vcodec/venc_drv_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_drv_if.c
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/venc_drv_if.c
-rename to drivers/media/platform/mediatek/vcodec/encoder/venc_drv_if.c
-diff --git a/drivers/media/platform/mediatek/vcodec/venc_drv_if.h b/drivers/media/platform/mediatek/vcodec/encoder/venc_drv_if.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/venc_drv_if.h
-rename to drivers/media/platform/mediatek/vcodec/encoder/venc_drv_if.h
-diff --git a/drivers/media/platform/mediatek/vcodec/venc_ipi_msg.h b/drivers/media/platform/mediatek/vcodec/encoder/venc_ipi_msg.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/venc_ipi_msg.h
-rename to drivers/media/platform/mediatek/vcodec/encoder/venc_ipi_msg.h
-diff --git a/drivers/media/platform/mediatek/vcodec/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/venc_vpu_if.c
-rename to drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-diff --git a/drivers/media/platform/mediatek/vcodec/venc_vpu_if.h b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.h
-similarity index 100%
-rename from drivers/media/platform/mediatek/vcodec/venc_vpu_if.h
-rename to drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.h
+diff --git a/drivers/media/platform/mediatek/vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mediatek/vcodec/venc/venc_vp8_if.c
+index dc48bf881aa7..efa33c2f093d 100644
+--- a/drivers/media/platform/mediatek/vcodec/venc/venc_vp8_if.c
++++ b/drivers/media/platform/mediatek/vcodec/venc/venc_vp8_if.c
+@@ -9,7 +9,7 @@
+ #include <linux/kernel.h>
+ #include <linux/slab.h>
+ 
+-#include "../mtk_vcodec_drv.h"
++#include "../mtk_vcodec_enc_drv.h"
+ #include "../mtk_vcodec_util.h"
+ #include "../mtk_vcodec_intr.h"
+ #include "../mtk_vcodec_enc.h"
+diff --git a/drivers/media/platform/mediatek/vcodec/venc_drv_base.h b/drivers/media/platform/mediatek/vcodec/venc_drv_base.h
+index 17f8183461b5..856d50151bf6 100644
+--- a/drivers/media/platform/mediatek/vcodec/venc_drv_base.h
++++ b/drivers/media/platform/mediatek/vcodec/venc_drv_base.h
+@@ -9,7 +9,7 @@
+ #ifndef _VENC_DRV_BASE_
+ #define _VENC_DRV_BASE_
+ 
+-#include "mtk_vcodec_drv.h"
++#include "mtk_vcodec_enc_drv.h"
+ 
+ #include "venc_drv_if.h"
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/venc_drv_if.c b/drivers/media/platform/mediatek/vcodec/venc_drv_if.c
+index 08083030516e..1bdaecdd64a7 100644
+--- a/drivers/media/platform/mediatek/vcodec/venc_drv_if.c
++++ b/drivers/media/platform/mediatek/vcodec/venc_drv_if.c
+@@ -65,7 +65,7 @@ int venc_if_encode(struct mtk_vcodec_enc_ctx *ctx,
+ 	mtk_venc_lock(ctx);
+ 
+ 	spin_lock_irqsave(&ctx->dev->irqlock, flags);
+-	ctx->dev->curr_enc_ctx = ctx;
++	ctx->dev->curr_ctx = ctx;
+ 	spin_unlock_irqrestore(&ctx->dev->irqlock, flags);
+ 
+ 	mtk_vcodec_enc_clock_on(&ctx->dev->pm);
+@@ -74,7 +74,7 @@ int venc_if_encode(struct mtk_vcodec_enc_ctx *ctx,
+ 	mtk_vcodec_enc_clock_off(&ctx->dev->pm);
+ 
+ 	spin_lock_irqsave(&ctx->dev->irqlock, flags);
+-	ctx->dev->curr_enc_ctx = NULL;
++	ctx->dev->curr_ctx = NULL;
+ 	spin_unlock_irqrestore(&ctx->dev->irqlock, flags);
+ 
+ 	mtk_venc_unlock(ctx);
+diff --git a/drivers/media/platform/mediatek/vcodec/venc_drv_if.h b/drivers/media/platform/mediatek/vcodec/venc_drv_if.h
+index 90d714e86ede..d00fb68b8235 100644
+--- a/drivers/media/platform/mediatek/vcodec/venc_drv_if.h
++++ b/drivers/media/platform/mediatek/vcodec/venc_drv_if.h
+@@ -9,8 +9,7 @@
+ #ifndef _VENC_DRV_IF_H_
+ #define _VENC_DRV_IF_H_
+ 
+-#include "mtk_vcodec_drv.h"
+-#include "mtk_vcodec_util.h"
++#include "mtk_vcodec_enc_drv.h"
+ 
+ /*
+  * enum venc_yuv_fmt - The type of input yuv format
+diff --git a/drivers/media/platform/mediatek/vcodec/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/venc_vpu_if.c
+index 629d0bfb4102..fc69698bc526 100644
+--- a/drivers/media/platform/mediatek/vcodec/venc_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/venc_vpu_if.c
+@@ -4,7 +4,7 @@
+  * Author: PoChun Lin <pochun.lin@mediatek.com>
+  */
+ 
+-#include "mtk_vcodec_drv.h"
++#include "mtk_vcodec_enc_drv.h"
+ #include "mtk_vcodec_fw.h"
+ #include "venc_ipi_msg.h"
+ #include "venc_vpu_if.h"
 -- 
 2.18.0
 
