@@ -4,74 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44252C7EE25
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 17:17:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74EE7C7EE25
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 17:23:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DFPGwpCQpZDlbK+2dcezD0d5mxiO5AMq/+/AN27SQOM=; b=e/eUlngT0Yh3lXHTj8s9zpp3Y/
-	TbatqEsBknc03XcFlKHDD+ofiF1lTyR2Z8HuLwk5Kavrnmwc8CJScmXnOtPT6kdzwq5UTFeirC4jo
-	6mTGAjvSs24N/ErUhGIwU1bjMq7FeJS0BDcj9WxFAxSogdYP6v77Jl7qm3USez/HLvVytmk/4whIr
-	6gq9zUlEGi1ZQSCaDiFjMTJ/vJWrRAPiAy6pd7u80LB021ulz8CwIeuB0dPRvxGUtJ8AE88981+th
-	P0gz/85SduS/jkAeHaZDvzgu+XzUS6TcYCkzqS2GVC3l1eCDHDXrJcHB9wU5qUF9qK9s9Cn9oLqwW
-	SO5m/7tA==;
+	bh=fGky2cJwDk2cpjX8uZ6wDRJ0r1MtvSG159h5SpAaGbE=; b=M23whaAzux6xb8MwzBT0EIRV4Q
+	LXOEyTl2CnOH4v+nYKdx5DcRfYL7GxSgpB+dJ0xsQ9WAsBJijrZO3Y6zQI0alT7Am/3zpnyRtZAkV
+	ky9V6UluDpCtV+gQqI+p2rqHvXuqY24v3Ao+H/l/1raiM2KUQRCjekoAEjQjm7PZoGcyxrn0/y0n7
+	kGdHUBViItYzbIV3MqM9NAtRMgAvzQ+0iD/TpUVckOVjLrkkalcvRTTLZqhWFTj6E9dvaWY/wMMpL
+	7dAcmpiYXLpnrlkVhUGFbql24db4y2T5Q7gr2bQmxtvwJvrVyXE5Tn6GuyMV7Par2GqUM2RrCuySv
+	wg2zB+jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6wmm-006gIR-37;
-	Wed, 07 Jun 2023 17:17:28 +0000
-Received: from mail-pf1-f170.google.com ([209.85.210.170])
+	id 1q6wt0-006hAP-2q;
+	Wed, 07 Jun 2023 17:23:54 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6wmi-006gGW-2v;
-	Wed, 07 Jun 2023 17:17:27 +0000
-Received: by mail-pf1-f170.google.com with SMTP id d2e1a72fcca58-652426346bbso3795136b3a.3;
-        Wed, 07 Jun 2023 10:17:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686158244; x=1688750244;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DFPGwpCQpZDlbK+2dcezD0d5mxiO5AMq/+/AN27SQOM=;
-        b=lr9POzfSfSPC7PebaPEmhuy4yme6O0BH5uudLnhleVf8rQcodku2VKmxIVTbmJmJ/a
-         Dy1Yrxegu2RiI4l9rR/M5KunGFIp3G3yO0zTw0EZRl8F+SuooXGnAIy1WsLJLdP8hUMi
-         sXA+UdHQZrLmBzl8Zc9tcWLi14soaWDSBAkGbzIhBF+ANp3kwTJslUqb4OOOl91bonFg
-         zsYZckR4cP7oHxR/Vhzo+PLpMSZTxma7x/zSZcUk8w//wNtZgKafnnpOmS1/pL5XizMl
-         3CdR5oKshEdYrDll6eP+GROL9+3YwQ6Pympz3l1JUkHsL3U6Pl8NG9DcVCF5szHRa90n
-         NWlA==
-X-Gm-Message-State: AC+VfDxLw4Fn7YFEFh7/gtcMyxREBzDWWvYas/zk98r313HV6xo6DrJO
-	vBoVFriSkd///ADTsXgONJ8=
-X-Google-Smtp-Source: ACHHUZ7v8zzX5zKgbuGtCNfhzwZXUtn5YrrNGyBjX3Hfyxj9y8BR90kt2+NZlmgBHihAc8RVnQ2zPg==
-X-Received: by 2002:a05:6a20:7293:b0:10f:13bb:5d4f with SMTP id o19-20020a056a20729300b0010f13bb5d4fmr2039900pzk.2.1686158243558;
-        Wed, 07 Jun 2023 10:17:23 -0700 (PDT)
-Received: from [192.168.3.219] ([98.51.102.78])
-        by smtp.gmail.com with ESMTPSA id d10-20020a631d0a000000b0051b36aee4f6sm9349487pgd.83.2023.06.07.10.17.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Jun 2023 10:17:23 -0700 (PDT)
-Message-ID: <ed3cad40-5634-ffff-aa29-c14f91c7f8a4@acm.org>
-Date: Wed, 7 Jun 2023 10:17:22 -0700
+	id 1q6wsx-006h9p-1R;
+	Wed, 07 Jun 2023 17:23:52 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 38C4A63DEC;
+	Wed,  7 Jun 2023 17:23:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D11B0C4339B;
+	Wed,  7 Jun 2023 17:23:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1686158629;
+	bh=DXFobuRLa5VJEYRkra8Yv2W5Fag/nn80UUPhzCO37/I=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=p9nzJqhdievT3cH7sdFgcIONCpvuxD8owzg6hRkrjZd0OL6tPCLciW64eWZO5mMg0
+	 sSx+jhvZNZ9crQzrNhpmkeUemXISN7HHUv/D/NmIIvJ/LCbimo4iuCOlJOykgeWXuQ
+	 0kckTA81K5cmSPFB6+nKB4/vYFNvcRg9wuULRE+XVjBn51EUZlTHrOsKgmii9ivnlQ
+	 hblqGMos5ZPcOqWHfRL/+DnW2wZpYk11Qw7k3+35NfX5n76tR9V6TAKqgGwV79E1gK
+	 aVgii1F/QLjWZv1ndoz2FzWOVd59MmrXS6lIhACOZ0d/767G1j9a7dlNmTiAtr4iiQ
+	 TCRlb9u2CEb0w==
+From: Mark Brown <broonie@kernel.org>
+To: Arnd Bergmann <arnd@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Trevor Wu <trevor.wu@mediatek.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, 
+ alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20230607120831.3587379-1-arnd@kernel.org>
+References: <20230607120831.3587379-1-arnd@kernel.org>
+Subject: Re: [PATCH] ASoC: mediatek: mt8188-mt6359: add i2c dependency
+Message-Id: <168615862657.61571.8647819742396271999.b4-ty@kernel.org>
+Date: Wed, 07 Jun 2023 18:23:46 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH] scsi: ufs-mediatek: add dependency for RESET_CONTROLLER
-Content-Language: en-US
-To: Randy Dunlap <rdunlap@infradead.org>, linux-kernel@vger.kernel.org
-Cc: kernel test robot <lkp@intel.com>, Stanley Chu
- <stanley.chu@mediatek.com>, Peter Wang <peter.wang@mediatek.com>,
- Paul Gazzillo <paul@pgazz.com>,
- Necip Fazil Yildiran <fazilyildiran@gmail.com>, linux-scsi@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>
-References: <20230602023957.9187-1-rdunlap@infradead.org>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20230602023957.9187-1-rdunlap@infradead.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-bfdf5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230607_101724_945365_A330C2E3 
-X-CRM114-Status: GOOD (  17.31  )
+X-CRM114-CacheID: sfid-20230607_102351_548141_560BA137 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,58 +78,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/1/23 19:39, Randy Dunlap wrote:
-> When RESET_CONTROLLER is not set, kconfig complains about missing
-> dependencies for RESET_TI_SYSCON, so add the missing dependency
-> just as is done above for SCSI_UFS_QCOM.
+On Wed, 07 Jun 2023 14:08:15 +0200, Arnd Bergmann wrote:
+> The newly added driver is missing this dependency, causing a possible
+> build failure:
 > 
-> Silences this kconfig warning:
+> WARNING: unmet direct dependencies detected for SND_SOC_MAX98390
+> WARNING: unmet direct dependencies detected for SND_SOC_NAU8825
+>   Depends on [m]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && I2C [=m]
+>   Selected by [y]:
+>   - SND_SOC_MT8188_MT6359 [=y] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && SND_SOC_MT8188 [=y] && MTK_PMIC_WRAP [=y]
+> aarch64-linux-ld: sound/soc/codecs/max98390.o: in function `max98390_i2c_probe':
+> max98390.c:(.text+0x514): undefined reference to `__devm_regmap_init_i2c'
 > 
-> WARNING: unmet direct dependencies detected for RESET_TI_SYSCON
->    Depends on [n]: RESET_CONTROLLER [=n] && HAS_IOMEM [=y]
->    Selected by [m]:
->    - SCSI_UFS_MEDIATEK [=m] && SCSI_UFSHCD [=y] && SCSI_UFSHCD_PLATFORM [=y] && ARCH_MEDIATEK [=y]
-> 
-> Fixes: de48898d0cb6 ("scsi: ufs-mediatek: Create reset control device_link")
-> Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-> Reported-by: kernel test robot <lkp@intel.com>
-> Link: lore.kernel.org/r/202306020859.1wHg9AaT-lkp@intel.com
-> Cc: Stanley Chu <stanley.chu@mediatek.com>
-> Cc: Peter Wang <peter.wang@mediatek.com>
-> Cc: Paul Gazzillo <paul@pgazz.com>
-> Cc: Necip Fazil Yildiran <fazilyildiran@gmail.com>
-> Cc: linux-scsi@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: "James E.J. Bottomley" <jejb@linux.ibm.com>
-> Cc: "Martin K. Petersen" <martin.petersen@oracle.com>
-> ---
->   drivers/ufs/host/Kconfig |    1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff -- a/drivers/ufs/host/Kconfig b/drivers/ufs/host/Kconfig
-> --- a/drivers/ufs/host/Kconfig
-> +++ b/drivers/ufs/host/Kconfig
-> @@ -72,6 +72,7 @@ config SCSI_UFS_QCOM
->   config SCSI_UFS_MEDIATEK
->   	tristate "Mediatek specific hooks to UFS controller platform driver"
->   	depends on SCSI_UFSHCD_PLATFORM && ARCH_MEDIATEK
-> +	depends on RESET_CONTROLLER
->   	select PHY_MTK_UFS
->   	select RESET_TI_SYSCON
->   	help
+> [...]
 
-Hmm ... is the above patch complete? Shouldn't a similar dependency be
-added to the ufs-hisi and ufs-sprd drivers? See also the following git
-grep output:
+Applied to
 
-$ git grep -nH 'include.*linux/reset.h' */ufs
-drivers/ufs/host/ufs-hisi.c:16:#include <linux/reset.h>
-drivers/ufs/host/ufs-mediatek.c:21:#include <linux/reset.h>
-drivers/ufs/host/ufs-qcom.h:9:#include <linux/reset.h>
-drivers/ufs/host/ufs-sprd.c:14:#include <linux/reset.h>
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: mediatek: mt8188-mt6359: add i2c dependency
+      commit: 484ede9bcb031a98880817480b685cac0ec96f2b
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
 Thanks,
+Mark
 
-Bart.
 
