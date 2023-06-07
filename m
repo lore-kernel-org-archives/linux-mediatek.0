@@ -4,63 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06D95C7EE25
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 14:16:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5632EC77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 14:58:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WWX+386n5McAgnRs/r/leBplaWBdEIBJxuZl/qFK3Jo=; b=kvQ0pt27S+rNp+qzL0MKToDUlF
-	6B+kPLkjKOdF54XS5t2Kbs5N6zgQvEUOrHat51NhKY0I6N/yCaAXGmJI/hEnwlOSMxFxunjcoLlbN
-	u7VhCoPNwatPrZCVgsjjLQohdzh1MWsNZlSC2HkXhg+BXyv9/3cpDCiun3O6yNds0Ps4NLRXKQQqV
-	tVwhNkVEEpBY3o19ohhz+HQhvIpX9uqd50x4ieO3u13JOch8KSRSV9zDTx5w/nrtATztCm9abA5Pp
-	vqyiVXpPteoV6FPo/A5npJYnphz/ymyQHnAiZh2PVCrFm3SHfimf+chKDfHaxAIM4zJxxqSPjxmSa
-	VVSyW1Kg==;
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=15bcPlwJydkin0B+JJAsu+9McxnbVcGQs6T+4KYVyWQ=; b=Lmy/r5TsWOvwGfUMc8DYp72cJv
+	YWhU1v5fJN5KJmebEFpRCAuwVSHXSNDp6Sx6fB3fNA/3Ug5VL02VdhoO+zUBjATNCkqJx3wTp32BE
+	jr3hR1u+BwTW7aO6X3+QBM/xhMA52xYWcjt26fg//e7e3Sp/2NdD0Q30iHRX8W2Rf7+AgjL7QjP4f
+	4ZvN+aBK3tZbwqy+Dq5KiLxiHquh9IeWdHae9Ep9a4CuHLJP7fS9SB8a/EnZnTp745EaQtXqgH0vq
+	YaoeLcUnyfEFFrIM2apwqE/Rl5OuUCa8G9tOO8/hvz9yaKZzyg089g6GZVzVh0WHxW8Dj9lHaJWuo
+	8aigJxUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6txN-006ECH-0w;
-	Wed, 07 Jun 2023 14:16:13 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1q6ubg-006KHA-2f;
+	Wed, 07 Jun 2023 14:57:52 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6txL-006EBh-17
+	id 1q6ubd-006KDm-1p
 	for linux-mediatek@lists.infradead.org;
-	Wed, 07 Jun 2023 14:16:12 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 89F5C63FF8;
-	Wed,  7 Jun 2023 14:16:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81762C433D2;
-	Wed,  7 Jun 2023 14:16:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1686147370;
-	bh=TDiiOgK7sBmAEfQQeEI924x7a7GyjNXOecc1L8fD9z0=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=EGd4uHceFjuebE56IEXuCGODpqk194ImMVlaDURGuVVYbKKkIwj7i4yeaEtDWpfQx
-	 eM//WsrmRJq5ViU1iIEJRKMFLaQEz1Nn1ruZUk/VnKbE9NmfLe+A0vPB3CcmOeuq7W
-	 LK9TukO5EIM/ACfPwF7yDsZXp5pPQcCrhfLDuriQ+HPg+HrLPOxjQ0s9P4/Fp+vsRy
-	 DpWdm40t1XpMBak0trJ+ak5dmdzILBlQGLUAloNJ0ffG+H22WiCRSgoTWDCByrpu7R
-	 EdLa0IEcH/3hnKjmmg3MfXEdDggPcYHeN62Vh5/urCXGZS7Okt3L2fzXza3uClmCGr
-	 f3nAlY3fO010A==
-From: Kalle Valo <kvalo@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Shayne Chen <shayne.chen@mediatek.com>,  Felix Fietkau <nbd@nbd.name>,  linux-wireless <linux-wireless@vger.kernel.org>,  Ryder Lee <ryder.lee@mediatek.com>,  Evelyn Tsai <evelyn.tsai@mediatek.com>,  Bo Jiao <Bo.Jiao@mediatek.com>,  linux-mediatek <linux-mediatek@lists.infradead.org>,  Peter Chiu <chui-hao.chiu@mediatek.com>
-Subject: Re: [PATCH 03/12] wifi: mt76: mt7996: add dsp firmware download
-References: <20230602152108.26860-1-shayne.chen@mediatek.com>
-	<20230602152108.26860-3-shayne.chen@mediatek.com>
-	<ZHotQTUHbWOt/ibt@lore-desk>
-Date: Wed, 07 Jun 2023 17:16:02 +0300
-In-Reply-To: <ZHotQTUHbWOt/ibt@lore-desk> (Lorenzo Bianconi's message of "Fri,
-	2 Jun 2023 19:56:17 +0200")
-Message-ID: <878rcvgxy5.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	Wed, 07 Jun 2023 14:57:51 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-3f6042d605dso60997525e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 07 Jun 2023 07:57:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1686149864; x=1688741864;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=15bcPlwJydkin0B+JJAsu+9McxnbVcGQs6T+4KYVyWQ=;
+        b=qGqDR9tSf/ntbvkpkgaO42huIAJWHmk04412CvhnpxAwQb+CiKuF2lAVZw29BLhpWG
+         wnEIyLfbZ6V/B3sHUTtyet7DHrb3nitMvWBbaZr/H5reMtDydgEwEGviYaeYGS9+xb3u
+         kIXqzZgE/fUMwYd4hwFMmIkC5dye70I+oXc/GMESJ9gC60AhQrvQO9T3suMtQj7N5hBk
+         Al/gAm95BjVudokd3ttDVMayJZuc+XjEdNIJkXQalNv29xxIE7fubija+2srf7PDj/lY
+         +IYE61jg29t+nsXqNc20nwKC7YQziScASypHutUCduar0YEr9hY5dyOeE7tW9C4rKpFm
+         0wgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686149864; x=1688741864;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=15bcPlwJydkin0B+JJAsu+9McxnbVcGQs6T+4KYVyWQ=;
+        b=dU64Xrxc0+C8USfewx6XKUr8oznW2OPHPnbaHhTpH5xIakcnqGlvtmnB+i4KNnA82p
+         bxM127NfKgCoQFjQSoAqjn5pwmZ4DyghDzvPIchpjh0a4ltqW9f0huz4nNzTfwp27+ov
+         eXeVI4cTmmFs93tx36NU07bLMVDEJPLvZe4vlX9YEjCqZ0D605tEIfEVDe0lEuiesUQV
+         DddrTVnKcHM2Tn51CcaoOZoWc6a0tJE/IRXiOhLpSuh3cJiClT0QXb8OemD7D8S7ZL97
+         de2L9JVa7OGqfNPQup1lzNSyq6K1SOEEBBq1jJA/diHEEyXini3OmdfchtcYTUpJ6SZb
+         g9NA==
+X-Gm-Message-State: AC+VfDzzoSoGkJDdPQhqNwoZG2cK5tl7NipwmrBHzLS+m0Mrkjsia8Q1
+	E1lITBHFRAZkbcSEtXFdpij5Yw==
+X-Google-Smtp-Source: ACHHUZ4Om8wIr2+W8c2m5xch/rF8WjO/ue+qyFCuYy0t+JsljkFHxXGRUHuKnJgvRrjikjox6oNy/w==
+X-Received: by 2002:a05:600c:ad6:b0:3f7:e629:9f3 with SMTP id c22-20020a05600c0ad600b003f7e62909f3mr4734068wmr.16.1686149864352;
+        Wed, 07 Jun 2023 07:57:44 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id y6-20020adfd086000000b0030631a599a0sm15633048wrh.24.2023.06.07.07.57.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 Jun 2023 07:57:42 -0700 (PDT)
+Date: Wed, 7 Jun 2023 17:57:38 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Trevor Wu <trevor.wu@mediatek.com>
+Cc: Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH v2] SoC: mediatek: mt8188-mt6359: clean up a return in
+ codec_init
+Message-ID: <42f2a995-3545-40bf-82a0-fd9b8abc16ce@moroto.mountain>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230607_071611_443043_FFDAEB05 
-X-CRM114-Status: GOOD (  15.79  )
+X-CRM114-CacheID: sfid-20230607_075749_606274_66EDCF12 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,64 +94,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-(I moved Lorenzo's comment to better see the macro)
+This code triggers a Smatch static checker warning and does sort of
+look like an error path.
 
-Lorenzo Bianconi <lorenzo@kernel.org> writes:
+sound/soc/mediatek/mt8188/mt8188-mt6359.c:597 mt8188_max98390_codec_init() warn: missing error code? 'ret'
 
->> From: Peter Chiu <chui-hao.chiu@mediatek.com>
->> 
->> Add DSP firmware for phy-related control. The firmware is transparent to
->> driver, but it's necessary for the firmware download process.
->> 
->> Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
->> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
->> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+However, returning 0 is intentional.  Make that explicit.
 
-[...]
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+---
+v2: At first I thought this was an error path but it is a not.
 
->> +#define LOAD_RAM(_type) \
->> +	do {									\
->> +		ret = request_firmware(&fw, MT7996_FIRMWARE_##_type, dev->mt76.dev);\
->> +		if (ret)							\
->> +			return ret;						\
->> +										\
->> +		if (!fw || !fw->data || fw->size < sizeof(*hdr)) {		\
->> +			dev_err(dev->mt76.dev, "Invalid firmware\n");		\
->> +			release_firmware(fw);					\
->> +			return -EINVAL;						\
->> +		}								\
->> +										\
->> +		hdr = (const struct mt7996_fw_trailer *)			\
->> +				(fw->data + fw->size - sizeof(*hdr));		\
->> +										\
->> +		dev_info(dev->mt76.dev,						\
->> +			 "%s Firmware Version: %.10s, Build Time: %.15s\n",	\
->> +			 #_type, hdr->fw_ver, hdr->build_date);			\
->> +										\
->> +		ret = mt7996_mcu_send_ram_firmware(dev, hdr, fw->data,		\
->> +						   MT7996_RAM_TYPE_##_type);    \
->> +		if (ret) {							\
->> +			dev_err(dev->mt76.dev, "Failed to start %s firmware\n", #_type);\
->> +			release_firmware(fw);					\
->> +			return ret;						\
->> +		}								\
->> +										\
->> +		release_firmware(fw);						\
->> +	} while (0)
->> +
->> +	LOAD_RAM(WM);
->> +	LOAD_RAM(DSP);
->> +	LOAD_RAM(WA);
->> +#undef LOAD_RAM
->
-> I think it would be better to used a regular function instead of a macro, the
-> code would be much easier to read.
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Yeah, a function is preferred. I think Andrew Morton says: prefer C over
-CPP
-
+diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+index bc4b74970a46..5ad8d2a5bbc4 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
++++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+@@ -594,7 +594,7 @@ static int mt8188_max98390_codec_init(struct snd_soc_pcm_runtime *rtd)
+ 	}
+ 
+ 	if (rtd->dai_link->num_codecs <= 2)
+-		return ret;
++		return 0;
+ 
+ 	/* add widgets/controls/dapm for rear speakers */
+ 	ret = snd_soc_dapm_new_controls(&card->dapm, mt8188_rear_spk_widgets,
 -- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+2.39.2
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
