@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74EE7C7EE25
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 17:23:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 930C5C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 19:58:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fGky2cJwDk2cpjX8uZ6wDRJ0r1MtvSG159h5SpAaGbE=; b=M23whaAzux6xb8MwzBT0EIRV4Q
-	LXOEyTl2CnOH4v+nYKdx5DcRfYL7GxSgpB+dJ0xsQ9WAsBJijrZO3Y6zQI0alT7Am/3zpnyRtZAkV
-	ky9V6UluDpCtV+gQqI+p2rqHvXuqY24v3Ao+H/l/1raiM2KUQRCjekoAEjQjm7PZoGcyxrn0/y0n7
-	kGdHUBViItYzbIV3MqM9NAtRMgAvzQ+0iD/TpUVckOVjLrkkalcvRTTLZqhWFTj6E9dvaWY/wMMpL
-	7dAcmpiYXLpnrlkVhUGFbql24db4y2T5Q7gr2bQmxtvwJvrVyXE5Tn6GuyMV7Par2GqUM2RrCuySv
-	wg2zB+jw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1lBmhujNhAhblQsCwbKkWljrBxLfrTOAX5lWYRzYv/g=; b=nDAS/7cU77W+wFC3ITMpGfzaf/
+	np7RAu/lvMeGO7VlQKY2eLuFAEkG7DmVIu3latST+Y3i1rP0DP0tdyLXS5YnW1J7GxtzroPx+towz
+	U2lff11Hx2yyo0hww5zUzI+4O/M6ZoVuVQtlpqqlmRd0K8AD3bRo0Jz+04C5yBvyhLBcR8ckuKHaI
+	OphH5bNfhpfHcoJS03CFy7wYDSwF+za9HFCnp+zzHbpJFKGIHJF6OybHMtgv5u1IeLyA7yOsNmlSR
+	9XPQAlCueZWtO9xTn0/vjcIhFQgTFBwXtFiLz0RSGHaqfpEojd/8XCnZLFCVsxcUsHqryfVBpaEuN
+	MgBsFTAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6wt0-006hAP-2q;
-	Wed, 07 Jun 2023 17:23:54 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1q6zIv-0072UA-1Y;
+	Wed, 07 Jun 2023 19:58:49 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6wsx-006h9p-1R;
-	Wed, 07 Jun 2023 17:23:52 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1q6zIs-0072S4-1v;
+	Wed, 07 Jun 2023 19:58:48 +0000
+Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 38C4A63DEC;
-	Wed,  7 Jun 2023 17:23:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D11B0C4339B;
-	Wed,  7 Jun 2023 17:23:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1686158629;
-	bh=DXFobuRLa5VJEYRkra8Yv2W5Fag/nn80UUPhzCO37/I=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=p9nzJqhdievT3cH7sdFgcIONCpvuxD8owzg6hRkrjZd0OL6tPCLciW64eWZO5mMg0
-	 sSx+jhvZNZ9crQzrNhpmkeUemXISN7HHUv/D/NmIIvJ/LCbimo4iuCOlJOykgeWXuQ
-	 0kckTA81K5cmSPFB6+nKB4/vYFNvcRg9wuULRE+XVjBn51EUZlTHrOsKgmii9ivnlQ
-	 hblqGMos5ZPcOqWHfRL/+DnW2wZpYk11Qw7k3+35NfX5n76tR9V6TAKqgGwV79E1gK
-	 aVgii1F/QLjWZv1ndoz2FzWOVd59MmrXS6lIhACOZ0d/767G1j9a7dlNmTiAtr4iiQ
-	 TCRlb9u2CEb0w==
-From: Mark Brown <broonie@kernel.org>
-To: Arnd Bergmann <arnd@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Liam Girdwood <lgirdwood@gmail.com>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Trevor Wu <trevor.wu@mediatek.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, 
- alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20230607120831.3587379-1-arnd@kernel.org>
-References: <20230607120831.3587379-1-arnd@kernel.org>
-Subject: Re: [PATCH] ASoC: mediatek: mt8188-mt6359: add i2c dependency
-Message-Id: <168615862657.61571.8647819742396271999.b4-ty@kernel.org>
-Date: Wed, 07 Jun 2023 18:23:46 +0100
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 73E3E6600014;
+	Wed,  7 Jun 2023 20:58:39 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1686167921;
+	bh=V4aYOfdlmGNGL6oFKj3asBG3FW4Opmc6t8Sp4HBQiyI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JZrn2ezwA9qngagBGLJ1UosmKAQnL+vYAWdNsH5eOHqq0/FEOuo67Rf1Tzu7zZnrs
+	 w0O7sCdDl7KZwkpgVHHvv1PJKb4GU12GLvdKNPzG9eKJHE9wj3hX+W5E8yYpEFQBuf
+	 TZHhPeFnM1ITGi+R7TaGfzcLmCEYvMLB0ETB3u8+ewtPz3QvAs6sNcuJvRY1Jc+GnG
+	 fbtkDDtxSugUvFqyG19BAcByG+Q/KANA0Zlo0ea8fknVDRmnOq4qBXs9MUErpanxdX
+	 ZsvO7/wxa2Qi00y2onNitgvQypYqZ6lt3HSEF6ZqHlbpe2nnzKMkPwGLo94bqOIY9n
+	 kOjdX61pWjjig==
+Date: Wed, 7 Jun 2023 15:58:34 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kernel@collabora.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 3/6] media: dt-bindings: mediatek,vcodec: Remove VDEC_SYS
+ for mt8183
+Message-ID: <d768f124-dcee-40c7-a5e8-f1c41439119e@notapiano>
+References: <20230605162030.274395-1-nfraprado@collabora.com>
+ <20230605162030.274395-4-nfraprado@collabora.com>
+ <6d476d6d-7100-7674-2e08-661516b75f43@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-bfdf5
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <6d476d6d-7100-7674-2e08-661516b75f43@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230607_102351_548141_560BA137 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20230607_125846_958304_20835B04 
+X-CRM114-Status: GOOD (  30.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,46 +86,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 07 Jun 2023 14:08:15 +0200, Arnd Bergmann wrote:
-> The newly added driver is missing this dependency, causing a possible
-> build failure:
+On Tue, Jun 06, 2023 at 11:16:12AM +0200, Krzysztof Kozlowski wrote:
+> On 05/06/2023 18:20, Nícolas F. R. A. Prado wrote:
+> > The binding expects the first register space to be VDEC_SYS. But on
+> > mt8183, which uses the stateless decoders, this space is used only for
+> > controlling clocks and resets, which are better described as separate
+> > clock-controller and reset-controller nodes.
+> > 
+> > In fact, in mt8173's devicetree there are already such separate
+> > clock-controller nodes, which cause duplicate addresses between the
+> > vdecsys node and the vcodec node. But for this SoC, since the stateful
+> > decoder code makes other uses of the VDEC_SYS register space, it's not
+> > straightforward to remove it.
+> > 
+> > In order to avoid the same address conflict to happen on mt8183,
+> > since the only current use of the VDEC_SYS register space in
+> > the driver is to read the status of a clock that indicates the hardware
+> > is active, remove the VDEC_SYS register space from the binding and
+> > describe an extra clock that will be used to directly check the hardware
+> > status.
+> > 
+> > Also add reg-names to be able to tell that this new register schema is
+> > used, so the driver can keep backward compatibility.
+> > 
+> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > ---
+> > 
+> >  .../media/mediatek,vcodec-decoder.yaml        | 29 +++++++++++++++++--
+> >  1 file changed, 27 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+> > index 6447e6c86f29..36a53b2484d6 100644
+> > --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+> > +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+> > @@ -21,17 +21,21 @@ properties:
+> >        - mediatek,mt8183-vcodec-dec
+> >  
+> >    reg:
+> > +    minItems: 11
+> >      maxItems: 12
+> >  
+> > +  reg-names:
+> > +    minItems: 11
 > 
-> WARNING: unmet direct dependencies detected for SND_SOC_MAX98390
-> WARNING: unmet direct dependencies detected for SND_SOC_NAU8825
->   Depends on [m]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && I2C [=m]
->   Selected by [y]:
->   - SND_SOC_MT8188_MT6359 [=y] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && SND_SOC_MT8188 [=y] && MTK_PMIC_WRAP [=y]
-> aarch64-linux-ld: sound/soc/codecs/max98390.o: in function `max98390_i2c_probe':
-> max98390.c:(.text+0x514): undefined reference to `__devm_regmap_init_i2c'
+> maxItems
 > 
-> [...]
+> > +
+> >    interrupts:
+> >      maxItems: 1
+> >  
+> >    clocks:
+> > -    minItems: 1
+> > +    minItems: 2
+> 
+> It does not make any sense. Just two patches ago you made it 1! Don't
+> add incorrect values which are immediately changed in the same patchset.
 
-Applied to
+It's not an incorrect value. At the point that commit was added, the first reg
+was still VDEC_SYS, so an active clock wasn't required. This commit removes the
+VDEC_SYS reg, and so the active clock becomes necessary. Splitting it like this
+made the most sense to me, and I thought it would also simplify review. But
+since it seems to be a problem I'll merge commit 1 with this one in v2 to avoid
+changing the number of clocks twice.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+> 
+> >      maxItems: 8
+> >  
+> >    clock-names:
+> > -    minItems: 1
+> > +    minItems: 2
+> >      maxItems: 8
+> >  
+> >    assigned-clocks: true
+> > @@ -84,6 +88,24 @@ allOf:
+> >          clock-names:
+> >            items:
+> >              - const: vdec
+> > +            - const: active
+> > +
+> > +        reg:
+> > +          maxItems: 11
+> > +
+> > +        reg-names:
+> > +          items:
+> > +            - const: misc
+> > +            - const: ld
+> > +            - const: top
+> > +            - const: cm
+> > +            - const: ad
+> > +            - const: av
+> > +            - const: pp
+> > +            - const: hwd
+> > +            - const: hwq
+> > +            - const: hwb
+> > +            - const: hwg
+> >  
+> >    - if:
+> >        properties:
+> > @@ -108,6 +130,9 @@ allOf:
+> >              - const: venc_lt_sel
+> >              - const: vdec_bus_clk_src
+> >  
+> > +        reg:
+> > +          minItems: 12
+> 
+> so max can be 1000?
 
-Thanks!
-
-[1/1] ASoC: mediatek: mt8188-mt6359: add i2c dependency
-      commit: 484ede9bcb031a98880817480b685cac0ec96f2b
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+No, there's 'maxItems: 12' up above in the general case.
 
 Thanks,
-Mark
-
+Nícolas
 
