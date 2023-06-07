@@ -4,67 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4EF2C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 20:07:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE3B9C7EE25
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 20:20:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iogvmUnJd8dmsaSSNLjme6YVFLdDC5DcESiDlQNvEto=; b=WcQJp7Xndb9fltYTLkNyHxQXAR
-	BvwZBzdGMyPLPHIMqK/TlUU0RiUOhj3pBKDwBtnTy+p4Es4Lr3RQGAYH/zOXdvna3EgtyWzmWnafq
-	jheu5UQEUs0zkkHmxbB/2FeJBwiLFiiyClAeH7ux+lUmehTw8S8sJkYqTaFOyiNIo82AQmQKO6P6t
-	bIpCL5EeOCRbMXOvV9DQe4renkaAPD6ZHxgpbCOpI4zR0Cu3hQ0bWXlx1u+V364i+BTCfVFT+P2S5
-	fPrkfJLCWBkvgPVBRxqqoAlyqBsKZJ7rqavd4paemqqsNJkrZi0WI6GZwBaXzDOEtrt4qKq8HdzYg
-	XvG4z+NA==;
+	bh=EQEraxRFSRg5kw0raPB+fjyl8X6mOUom0ZxEyamfu4A=; b=SL4cxSgKAyORsyTnVPqJzJsNEA
+	YS/iIy9PZ0QRqwBiQn9yJyo1Z5T/0rPwaszQBc1Lz+hfGKD/SNLMbbGlSZQncjmleTJ46hJ9OVPq3
+	FSonThdrXjhKdgPsGHMSA5nslk70EQd9gtBztsAc66Ui27vNYQz7rRd7szwp/rJ0OZLuvtkJpuNCd
+	cnIz/9b009KxmE4oN2TPMD/1daNyPjZ8UhMZlQkFWLXmT3eGsEp424hZbtrwMlfweBd1okVS0pecc
+	AP17OOb8qDlTBPbjGTNjZ9oqoO2qmcKnwsbSgyLq9RO3vbrULT7BbmL+e885AMRgokcjEU+lrvD49
+	Z9mNQ5fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6zR0-0073iS-1B;
-	Wed, 07 Jun 2023 20:07:10 +0000
-Received: from mail-io1-f43.google.com ([209.85.166.43])
+	id 1q6zdg-00763k-0P;
+	Wed, 07 Jun 2023 20:20:16 +0000
+Received: from mga11.intel.com ([192.55.52.93])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6zQx-0073hU-0a;
-	Wed, 07 Jun 2023 20:07:08 +0000
-Received: by mail-io1-f43.google.com with SMTP id ca18e2360f4ac-774867fd6f7so277550739f.1;
-        Wed, 07 Jun 2023 13:07:05 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686168425; x=1688760425;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=iogvmUnJd8dmsaSSNLjme6YVFLdDC5DcESiDlQNvEto=;
-        b=Z+ydpX4f32qPvleggjsffNT7i1iFvEhLb2tUa91Dg1SfvxczGamS5L7W4F0gLdVJ62
-         Uc9vP6fg4TY8AQNREvq9HtG4Vu+dDFAWxjgw6SMz8V7OcxncxqSSUTM+j5/L2jWr0rE9
-         Gn9BXRA7Ur6+nxvSY+VB5QGbOtdAN5KUSzVs9sWMB8dcgLzLiMAGVBONMeia9r+Sqa3M
-         CT0epEAdZyiJh2nFxF6VOsNdGxelOkmiS7bE0HBqZQug15eIx9Xr/Jg0wtsmxED/7kw9
-         cjzFjwg3amVvcJsuh/4bglcH4fA8bbSmDFlYsYXKkTnS+JZ4ytUQAX4Il4NFCk4tJrJY
-         563A==
-X-Gm-Message-State: AC+VfDyrGuIHfUbJARtSA7LE+La34qm8BIjPuvCf44uOpK7dvIFj6vhc
-	veVVimJQ6qhvTh1FWXIIQw==
-X-Google-Smtp-Source: ACHHUZ46JdCGj7zOlcTNqaPq40ycCIzsjr+132rAb0aIBqKMNfw1C0R9C7iRukbcfvmXUK7kyPj+eg==
-X-Received: by 2002:a5e:834d:0:b0:778:82d1:39a3 with SMTP id y13-20020a5e834d000000b0077882d139a3mr7724530iom.13.1686168424958;
-        Wed, 07 Jun 2023 13:07:04 -0700 (PDT)
-Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id y11-20020a6bd80b000000b00777b3bfc406sm2218699iob.49.2023.06.07.13.07.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Jun 2023 13:07:04 -0700 (PDT)
-Received: (nullmailer pid 3936319 invoked by uid 1000);
-	Wed, 07 Jun 2023 20:07:01 -0000
-Date: Wed, 7 Jun 2023 14:07:01 -0600
-From: Rob Herring <robh@kernel.org>
-To: Ayan Kumar Halder <ayan.kumar.halder@amd.com>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, mazziesaccount@gmail.com, linux-kernel@vger.kernel.org, mailingradian@gmail.com, j@jannau.net, geert+renesas@glider.be, conor.dooley@microchip.com, angelogioacchino.delregno@collabora.com, lpieralisi@kernel.org, linux-renesas-soc@vger.kernel.org, devicetree@vger.kernel.org, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, me@iskren.info, matthias.bgg@gmail.com
-Subject: Re: [PATCH] dt-bindings: arm: Add Cortex-R52 to the list of enum
-Message-ID: <168616842047.3936246.5750632673120649061.robh@kernel.org>
-References: <20230518152730.82954-1-ayan.kumar.halder@amd.com>
+	id 1q6zdd-00763D-37
+	for linux-mediatek@lists.infradead.org;
+	Wed, 07 Jun 2023 20:20:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1686169213; x=1717705213;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=wbuPh7uoz71kWZlfYlZFIXDMM491BC7Ay1rgJkxp/uA=;
+  b=UTR1T2JyhAv+s4QDKsnFymWoD8kFKuv0JVFKl6bCCW6fj1TZrIeLG0Tq
+   KCmXJB4pXzvnBgtBozARzk54KoWNQkh3l2YWzl5crI271Qblr3zdypkGD
+   MOHlfImu+RAHRfmTDBR7tO5Pkl7oVcywIV5Kef99V8wYQh9vlwJxpjPZ1
+   jJFVjHDa9ncfA6QlaK0aLakdtqi5JrNDyVNtYtfg9EsHJ+XY+7RfSws1S
+   4c193J2m3dT6EkJHLlKGR/gKjx5tuY//Dsyo2a9niVqJR5S7LPwEYrFxE
+   ylMBzKVpP6hYB2UycLqFsCnGpNjgYWnTdQjS8cpFNdUrppM2jWXhO6W6V
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10734"; a="354586468"
+X-IronPort-AV: E=Sophos;i="6.00,225,1681196400"; 
+   d="scan'208";a="354586468"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Jun 2023 13:20:11 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10734"; a="712817834"
+X-IronPort-AV: E=Sophos;i="6.00,225,1681196400"; 
+   d="scan'208";a="712817834"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by fmsmga007.fm.intel.com with ESMTP; 07 Jun 2023 13:20:07 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.96)
+	(envelope-from <andriy.shevchenko@intel.com>)
+	id 1q6zdV-001zlx-0Y;
+	Wed, 07 Jun 2023 23:20:05 +0300
+Date: Wed, 7 Jun 2023 23:20:04 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Tony Lindgren <tony@atomide.com>,
+	John Ogness <john.ogness@linutronix.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>, Dhruva Gole <d-gole@ti.com>,
+	Ilpo =?iso-8859-1?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+	Johan Hovold <johan@kernel.org>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	Vignesh Raghavendra <vigneshr@ti.com>, linux-omap@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v12 1/1] serial: core: Start managing serial controllers
+ to enable runtime PM
+Message-ID: <ZIDmdLDNitoSJrUO@smile.fi.intel.com>
+References: <20230603054139.GR14287@atomide.com>
+ <20230603063533.GS14287@atomide.com>
+ <20230605061511.GW14287@atomide.com>
+ <CAGXv+5Fbx7eTxP0ep6DV+jyronAWxYvu2M-g=MjHGRhjSXUc=w@mail.gmail.com>
+ <20230605122447.GY14287@atomide.com>
+ <CAGXv+5HwL+R5QpO3pHGQd9qAxu2pCMDjYvdni1HjiC8eEE38mg@mail.gmail.com>
+ <20230605131803.GA14287@atomide.com>
+ <CAGXv+5GR9TEaNrj4B21H2iukS2kWW=rtoWkoVnWewVsrbcG0Hw@mail.gmail.com>
+ <20230606122059.GC14287@atomide.com>
+ <CAGXv+5ERwrFgpWBUBTkoawfyyTHU9w=Owiy-2BbCXHwEpZk1tA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20230518152730.82954-1-ayan.kumar.halder@amd.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGXv+5ERwrFgpWBUBTkoawfyyTHU9w=Owiy-2BbCXHwEpZk1tA@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230607_130707_216628_32F25EBE 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20230607_132014_025894_89ED509C 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,17 +106,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Jun 07, 2023 at 12:46:51PM +0800, Chen-Yu Tsai wrote:
+> On Tue, Jun 6, 2023 at 8:21 PM Tony Lindgren <tony@atomide.com> wrote:
 
-On Thu, 18 May 2023 16:27:30 +0100, Ayan Kumar Halder wrote:
-> As a pre-requisite for porting Xen on a Cortex-R52 based System-on-chip, we
-> need to add "cortex-r52" to the list of enum.
-> 
-> Signed-off-by: Ayan Kumar Halder <ayan.kumar.halder@amd.com>
-> ---
->  Documentation/devicetree/bindings/arm/cpus.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
+...
 
-Applied, thanks!
+> After a bit more testing, it seems the Bluetooth problem is more like
+> an undervolt issue.
+
+Undercurrent I believe.
+Just my pedantic 2 cents and electronics engineer by education :-)
+
+> If I have WiFi and BT probe at the same time, Bluetooth
+> fails. If they probe separately, everything works fine.
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
 
 
