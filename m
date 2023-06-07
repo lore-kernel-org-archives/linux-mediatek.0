@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00F63C7EE23
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 08:01:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2975C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 08:49:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aXlaebkIIuXQ0e+ILa/iloMj3qy1Iz7mdy9cDpaae1Q=; b=DZPgbkFd5fd+JZo8ubq66mgZJg
-	J4WV+tCivY7Gk81ok5fRVXdqUzqhgAvxAOTnggmVlfB8WdscOrYCyyPUmgSMZnvdb9Vd5UnAIx1zo
-	bIWYsJk7Ynq1iMSbSyjp+GeOkfWo5Purrom9LFqmVWMV1RZJlMUEP5GecUVZdNeF/drV3dhb8j/bc
-	xQiBmTxXDe3t2D/AwB7A+DBaSJWOxxgPM7u+K2GKyz5S8vfgITNe9cSpixZlzs3DVy92voILDAZr2
-	awQGzP2vatRJGPPG4s9Dgwvcy0pVNvjVgB5ydzI4FNdh7QriN+/WgrlHjAPuUlPsQLTtb6Mqdu3jl
-	phfqFHMw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qHZ5pK7jB7tXpFRBJY3BYm8jPO6geMxkX0omTpVH8Vc=; b=ZuxiKgzQwMSoX0aVVTuFav6/Fs
+	wBKTFp44F+NtRZemnvc/E6vlEifYP8pwUOy3tF8myKvA5AZZIvyMOBhnsWBBHI5ZB75Dmr5XuhOZg
+	WFgwMheUzUqzlt8FXu7FwwOEeL3pjjASy0eGm8CUew8DCQXGFnHsr2JxXFk+0liOcxdaBzNzTAIft
+	WQtWskYQXkgN1fGW2jPmfLUtOHUmTPDnfIF/Z42CFHwCp7Z14owfv6nKB6UheNXmXnqOFrtuKUD2d
+	PO2dxWwo29h4nXyEmy2jsuBqt5bu//E/ZMblIyvtTsDxjEMZz/aB6Q+w1c+jwmdfOgd9BIZo4mrW2
+	Nkcyo6Dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6o72-004qaN-2l;
-	Wed, 07 Jun 2023 08:01:48 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q6orX-0053Ns-0x;
+	Wed, 07 Jun 2023 08:49:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6o6z-004qYv-2F;
-	Wed, 07 Jun 2023 08:01:47 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 85BE46606EE7;
-	Wed,  7 Jun 2023 09:01:43 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1686124904;
-	bh=7/zTInyb0fTEFIGhobmXUcrdn5DzghzCHPw6C0UuWec=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YjIVS2xVlYnQjrQAiuIY81ZtB6q7gAfyWuV4UcbWh30M0SgFiQqHhftI5121ESmQ4
-	 B/gdRqAV0swiR9QCHPVcu7d84tLdMLid+Idhq5+eqWLpcAPnusbi46f3G+WXif5zGL
-	 odSAkMB0HvUsHSX6beyNhNtpkLMrm3UWk2hTnbn4yLIX28dTXDrWKjl+WcrQjfF9up
-	 E2vIVZOD6HDL0tkVHCtWkyad7EWTS2jpGi8pxK4+H7e0K/z+anHlZfGT1mw6izbHj2
-	 BYrCHNIDrsp64uTw14xn6sLp/YHhrq8SYGRijOFJJm2h0W2UowfLIp4Zf5iQE+tAPI
-	 6uHi4XXLTIYzQ==
-Message-ID: <60809262-26ca-50f1-9ee4-705d46723517@collabora.com>
-Date: Wed, 7 Jun 2023 10:01:40 +0200
+	id 1q6orU-0053ME-0G;
+	Wed, 07 Jun 2023 08:49:50 +0000
+X-UUID: 3e7f15a0051011ee83ed1395ce914268-20230607
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=qHZ5pK7jB7tXpFRBJY3BYm8jPO6geMxkX0omTpVH8Vc=;
+	b=L6uVfp6D/6bqAs8dC5drR4wvcclmP5HHbWED+v4yfOuOb5sXTQE4JR8r6AmVSshfh0Ojg7iunP8+BSh1N1fow5xB5f1vkfhPAsKD1dRuO9vTxPpPVBr4S89pu4zDfd4Hrcmg/S18PYqh5c2DS8oK3dOGhWHECpC7AgTFdY6zeWU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:b83132a0-6287-4466-ae55-6197db3e9a98,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:2acba83d-de1e-4348-bc35-c96f92f1dcbb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: 3e7f15a0051011ee83ed1395ce914268-20230607
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1885142621; Wed, 07 Jun 2023 01:49:42 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 7 Jun 2023 16:49:05 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 7 Jun 2023 16:49:04 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>, Nicolas Dufresne
+	<nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Nathan Hebert <nhebert@chromium.org>
+CC: Yunfei Dong <yunfei.dong@mediatek.com>, Hsin-Yi Wang
+	<hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
+	<daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v2,02/10] media: mediatek: vcodec: align fw interface
+Date: Wed, 7 Jun 2023 16:48:53 +0800
+Message-ID: <20230607084901.28021-3-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230607084901.28021-1-yunfei.dong@mediatek.com>
+References: <20230607084901.28021-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH v13 05/11] remoteproc: mediatek: Introduce cluster on
- single-core SCP
-Content-Language: en-US
-To: =?UTF-8?B?VGluZ0hhbiBTaGVuICjmsojlu7fnv7Ap?= <TingHan.Shen@mediatek.com>,
- "mathieu.poirier@linaro.org" <mathieu.poirier@linaro.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "andersson@kernel.org" <andersson@kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
-Cc: "linux-remoteproc@vger.kernel.org" <linux-remoteproc@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20230607072222.8628-1-tinghan.shen@mediatek.com>
- <20230607072222.8628-6-tinghan.shen@mediatek.com>
- <d8053fc1-cace-b14b-57c6-387c0d664837@collabora.com>
- <9c710fca38ba53da3ba1aaf32a2221676eb584be.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <9c710fca38ba53da3ba1aaf32a2221676eb584be.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230607_010145_986646_0AFF7EA7 
-X-CRM114-Status: GOOD (  21.33  )
+X-CRM114-CacheID: sfid-20230607_014948_121472_A1040814 
+X-CRM114-Status: GOOD (  16.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,140 +92,168 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/06/23 10:00, TingHan Shen (沈廷翰) ha scritto:
-> Hi Angelo,
-> 
-> On Wed, 2023-06-07 at 09:43 +0200, AngeloGioacchino Del Regno wrote:
->> Il 07/06/23 09:22, Tinghan Shen ha scritto:
->>> This is the preliminary step for probing multi-core SCP.
->>> The initialization procedure for remoteproc is similar for both
->>> single-core and multi-core architectures and is reusing to avoid
->>> redundant code.
->>>
->>> Rewrite the probing flow of single-core SCP to adapt with the 'cluster'
->>> concept needed by probing the multi-core SCP. The main differences
->>> are,
->>> - the SCP core object(s) is maintained at the cluster list instead of at
->>>     the platofmr device driver data property.
->>
->> s/platofmr/platform/g
->>
->>> - save the cluster information at the platofmr device driver data property.
->>> - In order to keep the compatibility of exported SCP APIs which getting
->>>     the SCP core object by SCP node phandle, move the SCP core object
->>>     pointers to the platform device platform data property.
->>>
->>> The registers of config and l1tcm are shared for multi-core
->>> SCP. Reuse the mapped addresses for all cores.
->>>
->>> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
->>> ---
->>>    drivers/remoteproc/mtk_common.h |   2 +
->>>    drivers/remoteproc/mtk_scp.c    | 151 +++++++++++++++++++++++---------
->>>    2 files changed, 112 insertions(+), 41 deletions(-)
->>>
->>> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
->>> index c0905aec3b4b..56395e8664cb 100644
->>> --- a/drivers/remoteproc/mtk_common.h
->>> +++ b/drivers/remoteproc/mtk_common.h
->>> @@ -128,6 +128,8 @@ struct mtk_scp {
->>>    	size_t dram_size;
->>>    
->>>    	struct rproc_subdev *rpmsg_subdev;
->>> +
->>> +	struct list_head elem;
->>>    };
->>>    
->>>    /**
->>> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
->>> index d66822dad943..c8fc6b46f82b 100644
->>> --- a/drivers/remoteproc/mtk_scp.c
->>> +++ b/drivers/remoteproc/mtk_scp.c
->>> @@ -23,6 +23,14 @@
->>>    #define MAX_CODE_SIZE 0x500000
->>>    #define SECTION_NAME_IPI_BUFFER ".ipi_buffer"
->>>    
->>> +struct mtk_scp_of_cluster {
->>> +	void __iomem *reg_base;
->>> +	void __iomem *l1tcm_base;
->>> +	size_t l1tcm_size;
->>> +	phys_addr_t l1tcm_phys;
->>> +	struct list_head mtk_scp_list;
->>> +};
->>> +
->>>    /**
->>>     * scp_get() - get a reference to SCP.
->>>     *
->>> @@ -51,7 +59,7 @@ struct mtk_scp *scp_get(struct platform_device *pdev)
->>>    		return NULL;
->>>    	}
->>>    
->>> -	return platform_get_drvdata(scp_pdev);
->>> +	return *(struct mtk_scp **)dev_get_platdata(&scp_pdev->dev);
->>>    }
->>>    EXPORT_SYMBOL_GPL(scp_get);
->>>    
->>> @@ -810,14 +818,14 @@ static void scp_unmap_memory_region(struct mtk_scp *scp)
->>>    static int scp_register_ipi(struct platform_device *pdev, u32 id,
->>>    			    ipi_handler_t handler, void *priv)
->>>    {
->>> -	struct mtk_scp *scp = platform_get_drvdata(pdev);
->>> +	struct mtk_scp *scp = *(struct mtk_scp **)dev_get_platdata(&pdev->dev);
->>>    
->>>    	return scp_ipi_register(scp, id, handler, priv);
->>>    }
->>>    
->>>    static void scp_unregister_ipi(struct platform_device *pdev, u32 id)
->>>    {
->>> -	struct mtk_scp *scp = platform_get_drvdata(pdev);
->>> +	struct mtk_scp *scp = *(struct mtk_scp **)dev_get_platdata(&pdev->dev);
->>>    
->>>    	scp_ipi_unregister(scp, id);
->>>    }
->>> @@ -825,7 +833,7 @@ static void scp_unregister_ipi(struct platform_device *pdev, u32 id)
->>>    static int scp_send_ipi(struct platform_device *pdev, u32 id, void *buf,
->>>    			unsigned int len, unsigned int wait)
->>>    {
->>> -	struct mtk_scp *scp = platform_get_drvdata(pdev);
->>> +	struct mtk_scp *scp = *(struct mtk_scp **)dev_get_platdata(&pdev->dev);
->>>    
->>>    	return scp_ipi_send(scp, id, buf, len, wait);
->>>    }
->>> @@ -855,7 +863,8 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
->>>    	}
->>>    }
->>>    
->>> -static int scp_probe(struct platform_device *pdev)
->>> +static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
->>> +				      struct mtk_scp_of_cluster *scp_cluster)
->>>    {
->>>    	struct device *dev = &pdev->dev;
->>>    	struct device_node *np = dev->of_node;
->>> @@ -867,52 +876,42 @@ static int scp_probe(struct platform_device *pdev)
->>>    
->>>    	ret = rproc_of_parse_firmware(dev, 0, &fw_name);
->>>    	if (ret < 0 && ret != -EINVAL)
->>> -		return ret;
->>> +		return ERR_PTR(ret);
->>>    
->>>    	rproc = devm_rproc_alloc(dev, np->name, &scp_ops, fw_name, sizeof(*scp));
->>> -	if (!rproc)
->>> -		return dev_err_probe(dev, -ENOMEM, "unable to allocate remoteproc\n");
->>> +	if (!rproc) {
->>> +		dev_err(dev, "unable to allocate remoteproc\n");
->>> +		return ERR_PTR(-ENOMEM);
->>
->> Why are you converting those dev_err_probe to dev_err->return?!
->>
->> Regards,
->> Angelo
-> 
-> It's because the return type of this function changed from "int" to "struct mtk_scp *".
-> Maybe I should change them to "ERR_PTR(dev_err_probe(...))" ?
-> 
+Align scp and vpu firmware interface, remove the depedency for
+'struct mtk_vcodec_dev' and 'struct mtk_vcodec_ctx'. It will be
+much easier to separate video encoder and decoder.
 
-Oh, sorry - you're right. No, it's fine as you did it.
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ .../media/platform/mediatek/vcodec/mtk_vcodec_fw.c   |  7 +++----
+ .../media/platform/mediatek/vcodec/mtk_vcodec_fw.h   |  3 +--
+ .../platform/mediatek/vcodec/mtk_vcodec_fw_priv.h    | 11 +++++------
+ .../platform/mediatek/vcodec/mtk_vcodec_fw_scp.c     |  9 ++++++---
+ .../platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c     | 12 ++++++++----
+ 5 files changed, 23 insertions(+), 19 deletions(-)
 
-Cheers
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c
+index 556e54aadac9..be9159acacf8 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c
+@@ -5,15 +5,14 @@
+ #include "mtk_vcodec_util.h"
+ #include "mtk_vcodec_drv.h"
+ 
+-struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+-					   enum mtk_vcodec_fw_type type,
++struct mtk_vcodec_fw *mtk_vcodec_fw_select(void *priv, enum mtk_vcodec_fw_type type,
+ 					   enum mtk_vcodec_fw_use fw_use)
+ {
+ 	switch (type) {
+ 	case VPU:
+-		return mtk_vcodec_fw_vpu_init(dev, fw_use);
++		return mtk_vcodec_fw_vpu_init(priv, fw_use);
+ 	case SCP:
+-		return mtk_vcodec_fw_scp_init(dev);
++		return mtk_vcodec_fw_scp_init(priv, fw_use);
+ 	default:
+ 		mtk_v4l2_err("invalid vcodec fw type");
+ 		return ERR_PTR(-EINVAL);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h
+index 16824114657f..d8cfbec323d5 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h
+@@ -25,8 +25,7 @@ struct mtk_vcodec_fw;
+ typedef void (*mtk_vcodec_ipi_handler) (void *data,
+ 	unsigned int len, void *priv);
+ 
+-struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
+-					   enum mtk_vcodec_fw_type type,
++struct mtk_vcodec_fw *mtk_vcodec_fw_select(void *priv, enum mtk_vcodec_fw_type type,
+ 					   enum mtk_vcodec_fw_use fw_use);
+ void mtk_vcodec_fw_release(struct mtk_vcodec_fw *fw);
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h
+index b41e66185cec..3438a4917344 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h
+@@ -12,6 +12,7 @@ struct mtk_vcodec_fw {
+ 	const struct mtk_vcodec_fw_ops *ops;
+ 	struct platform_device *pdev;
+ 	struct mtk_scp *scp;
++	enum mtk_vcodec_fw_use fw_use;
+ };
+ 
+ struct mtk_vcodec_fw_ops {
+@@ -28,22 +29,20 @@ struct mtk_vcodec_fw_ops {
+ };
+ 
+ #if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VCODEC_VPU)
+-struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
+-					     enum mtk_vcodec_fw_use fw_use);
++struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(void *priv, enum mtk_vcodec_fw_use fw_use);
+ #else
+ static inline struct mtk_vcodec_fw *
+-mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
+-		       enum mtk_vcodec_fw_use fw_use)
++mtk_vcodec_fw_vpu_init(void *priv, enum mtk_vcodec_fw_use fw_use)
+ {
+ 	return ERR_PTR(-ENODEV);
+ }
+ #endif /* CONFIG_VIDEO_MEDIATEK_VCODEC_VPU */
+ 
+ #if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VCODEC_SCP)
+-struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev);
++struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use fw_use);
+ #else
+ static inline struct mtk_vcodec_fw *
+-mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev)
++mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use fw_use)
+ {
+ 	return ERR_PTR(-ENODEV);
+ }
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
+index d8e66b645bd8..9a2472442c6f 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
+@@ -53,18 +53,21 @@ static const struct mtk_vcodec_fw_ops mtk_vcodec_rproc_msg = {
+ 	.release = mtk_vcodec_scp_release,
+ };
+ 
+-struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev)
++struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use fw_use)
+ {
+ 	struct mtk_vcodec_fw *fw;
++	struct mtk_vcodec_dev *dev = priv;
++	struct platform_device *plat_dev;
+ 	struct mtk_scp *scp;
+ 
+-	scp = scp_get(dev->plat_dev);
++	plat_dev = dev->plat_dev;
++	scp = scp_get(plat_dev);
+ 	if (!scp) {
+ 		mtk_v4l2_err("could not get vdec scp handle");
+ 		return ERR_PTR(-EPROBE_DEFER);
+ 	}
+ 
+-	fw = devm_kzalloc(&dev->plat_dev->dev, sizeof(*fw), GFP_KERNEL);
++	fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
+ 	fw->type = SCP;
+ 	fw->ops = &mtk_vcodec_rproc_msg;
+ 	fw->scp = scp;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c
+index cfc7ebed8fb7..46a028031133 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c
+@@ -77,10 +77,11 @@ static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg = {
+ 	.release = mtk_vcodec_vpu_release,
+ };
+ 
+-struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
+-					     enum mtk_vcodec_fw_use fw_use)
++struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(void *priv, enum mtk_vcodec_fw_use fw_use)
+ {
+ 	struct platform_device *fw_pdev;
++	struct mtk_vcodec_dev *dev = priv;
++	struct platform_device *plat_dev;
+ 	struct mtk_vcodec_fw *fw;
+ 	enum rst_id rst_id;
+ 
+@@ -94,19 +95,22 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
+ 		break;
+ 	}
+ 
+-	fw_pdev = vpu_get_plat_device(dev->plat_dev);
++	plat_dev = dev->plat_dev;
++	fw_pdev = vpu_get_plat_device(plat_dev);
+ 	if (!fw_pdev) {
+ 		mtk_v4l2_err("firmware device is not ready");
+ 		return ERR_PTR(-EINVAL);
+ 	}
++
+ 	vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_vpu_reset_handler, dev, rst_id);
+ 
+-	fw = devm_kzalloc(&dev->plat_dev->dev, sizeof(*fw), GFP_KERNEL);
++	fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
+ 	if (!fw)
+ 		return ERR_PTR(-ENOMEM);
+ 	fw->type = VPU;
+ 	fw->ops = &mtk_vcodec_vpu_msg;
+ 	fw->pdev = fw_pdev;
++	fw->fw_use = fw_use;
+ 
+ 	return fw;
+ }
+-- 
+2.18.0
 
 
