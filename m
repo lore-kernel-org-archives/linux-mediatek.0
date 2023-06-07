@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F110C77B7A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 06:06:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28161C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 06:11:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AsnR4EOKKbMuK3ja5FzERxJmdAMBfCRXD04JD3YX/dU=; b=uBcJlzbvsr9p6EzcQ40jh75hoW
-	KE8TrEbYQoc30iM7qsTBO/x8V2bVGSSqJ4Y595RDa65Vj4VdUf1JZpik2QKTGeNsDMZ2+/rfOsh2e
-	QlN59sgKoXHc+lppdYN25AzadvqBIxBSrb5ryi/Eyh/HhY9kLX0qRr9jKK/2wRx7tyNw/C6qsYZtR
-	tU/0abxRKpKRy8/LgFp/jFKlt42iTrjQ6lAkaR2TePxlRoz/hiWqEflBWOEGTpPhIB9lAomacond7
-	fYueEVlHeeiu4Zn9SCwhGXNIKrRWfOGDZrg/F3EBx4wZKdZ9spTlU1ZEX6bb1nVm4rxUfHR6UetCb
-	TdYzqFtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tk3XutL9e2YWZ1gDFC/8kPKTgAad11wdBVRkC6GJm48=; b=lK7K/+kGSikioY4Jdp05wjeKlg
+	3Ofazlrqx8oyeJYu5e8XWLvTNhWZZVpat6gwcYyoTcOAt+4bxGY9i1VF25q5m+sThQBz9YfW6WftS
+	JCbDl0LoQUv8O5j3OmUmVv9ddRzrRQk+bl1vkWcB4PNb5uwDuOsWL588AMPKtl/Rp+++ujIQsQ9AT
+	YQqK4YJ8iL9YO3NCnyJh2ua6RqL2PU6Ja+dieO9UDIAS9ePDJhnw0Ns9Su6sxTXnGklGg+1rKs645
+	R07At7IMdbrzwF4N+PWMv0eE3sFU75JMY9fM/n1oXA5KAJOsV47smlLzMYHM0gviyBU1ePCnUVCh7
+	MeK0UmHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6mJp-004Vb3-31;
-	Wed, 07 Jun 2023 06:06:53 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1q6mOW-004W8H-01;
+	Wed, 07 Jun 2023 06:11:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6mJk-004VaB-1m;
-	Wed, 07 Jun 2023 06:06:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1686118008; x=1717654008;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=F2dblgq0/jqWKrEBIBiR9lrvjHI50eHV+ew7tXhlMBI=;
-  b=By036KkQrOiREf72qCK9GxFYU7A1N4RMSTjctlx2WApdmvpeTaa6mxfa
-   KVO6mwvW4XmZemJzRK0aH/M1ZlriR7YT5HZUUL+sCP5ZUQNTTjGU/oWl9
-   MRo8R0QbuHhzRyAt5rLFBuLO1J4+3zVBGDZ5UsS/RmWH1Kf+K+zg2SZVE
-   zahW3YZBtLM15XiMBleLWGPQKaNodV7d9RNr1uSdvK3gGZYef/Xt9OCwj
-   kq/8cksXTRU4cw26nmQdJS5r8zcNGL1cTLdrsXQdkKcCnX+TwIv3fNC5f
-   d12X10LLce17JIccDu6hnqavDIRwwa6dVmj60N8iZp7Dv4ARgPbKfWoJk
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10733"; a="346506613"
-X-IronPort-AV: E=Sophos;i="6.00,223,1681196400"; 
-   d="scan'208";a="346506613"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Jun 2023 23:06:44 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10733"; a="956073288"
-X-IronPort-AV: E=Sophos;i="6.00,223,1681196400"; 
-   d="scan'208";a="956073288"
-Received: from ahunter6-mobl1.ger.corp.intel.com (HELO [10.0.2.15]) ([10.252.47.234])
-  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Jun 2023 23:06:41 -0700
-Message-ID: <60054ec8-43d4-059c-0128-68815340c631@intel.com>
-Date: Wed, 7 Jun 2023 09:06:36 +0300
+	id 1q6mOT-004W7E-1I;
+	Wed, 07 Jun 2023 06:11:42 +0000
+X-UUID: 26f4503c04fa11ee83ed1395ce914268-20230606
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tk3XutL9e2YWZ1gDFC/8kPKTgAad11wdBVRkC6GJm48=;
+	b=VYpLY0UxH/aEutD/PQXb2rRCLeb6WIxbC/OJlmBnuSCj6lFzZMhp7f/QV3KbsZa6d7sQd299OXi/OJ4WG/K6VOyZLNLDrliZxfzjF4quw7lXzRTxhTUUzGt5+ZOu8fpM7gw/I2u+ozausHhmg2GWhpKG6y1d/ODhP8F0lEm3MZM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:32c58473-3928-4de8-a4a4-ef3b9408e8ed,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:80d4d33d-7aa7-41f3-a6bd-0433bee822f3,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 26f4503c04fa11ee83ed1395ce914268-20230606
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <shawn.sung@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1595345398; Tue, 06 Jun 2023 23:11:33 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 7 Jun 2023 14:11:30 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 7 Jun 2023 14:11:30 +0800
+From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Philipp Zabel
+	<p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Singo Chang <singo.chang@mediatek.com>, Nancy Lin
+	<nancy.lin@mediatek.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>, Hsiao
+ Chein Sung <shawn.sung@mediatek.com>, Fei Shao <fshao@google.com>
+Subject: [PATCH v1 2/6] dt-bindings: reset: mt8188: Add reset control bits for VDOSYS1
+Date: Wed, 7 Jun 2023 14:11:17 +0800
+Message-ID: <20230607061121.6732-3-shawn.sung@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230607061121.6732-1-shawn.sung@mediatek.com>
+References: <20230607061121.6732-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Firefox/102.0 Thunderbird/102.12.0
-Subject: Re: [PATCH v5 1/1] mmc: mtk-sd: reduce CIT for better performance
-Content-Language: en-US
-To: Wenbin Mei <wenbin.mei@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ritesh Harjani <riteshh@codeaurora.org>,
- Asutosh Das <asutoshd@codeaurora.org>, linux-mmc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel test robot <lkp@intel.com>
-References: <20230606113249.28057-1-wenbin.mei@mediatek.com>
- <20230606113249.28057-2-wenbin.mei@mediatek.com>
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
- Business Identity Code: 0357606 - 4, Domiciled in Helsinki
-In-Reply-To: <20230606113249.28057-2-wenbin.mei@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230606_230648_655156_50D8AFCA 
-X-CRM114-Status: GOOD (  25.74  )
+X-CRM114-CacheID: sfid-20230606_231141_454378_3185528E 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,127 +88,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/06/23 14:32, Wenbin Mei wrote:
-> CQHCI_SSC1 indicates to CQE the polling period to use when using periodic
-> SEND_QUEUE_STATUS(CMD13) polling.
-> Since MSDC CQE uses msdc_hclk as ITCFVAL, so driver should use hclk
-> frequency to get the actual time.
-> The default value 0x1000 that corresponds to 150us for MediaTek SoCs, let's
-> decrease it to 0x40 that corresponds to 2.35us, which can improve the
-> performance of some eMMC devices.
-> 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+Add reset control bits for  MT8188 VDOSYS1.
 
-For cqhci:
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+---
+ include/dt-bindings/reset/mt8188-resets.h | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+diff --git a/include/dt-bindings/reset/mt8188-resets.h b/include/dt-bindings/reset/mt8188-resets.h
+index 377cdfda82a9..439a9a25ca19 100644
+--- a/include/dt-bindings/reset/mt8188-resets.h
++++ b/include/dt-bindings/reset/mt8188-resets.h
+@@ -33,4 +33,16 @@
 
-> ---
-> the previous patche link:
-> v4: https://patchwork.kernel.org/project/linux-mediatek/patch/20230605121442.23622-1-wenbin.mei@mediatek.com/
-> v3: https://patchwork.kernel.org/project/linux-mediatek/patch/20230605060107.22044-1-wenbin.mei@mediatek.com/
-> v2: https://patchwork.kernel.org/project/linux-mediatek/patch/20230510015851.11830-1-wenbin.mei@mediatek.com/
-> v1: https://patchwork.kernel.org/project/linux-mediatek/patch/20230419063048.10516-1-wenbin.mei@mediatek.com/
-> ---
->  drivers/mmc/host/cqhci.h  |  2 ++
->  drivers/mmc/host/mtk-sd.c | 47 +++++++++++++++++++++++++++++++++++++++
->  2 files changed, 49 insertions(+)
-> 
-> diff --git a/drivers/mmc/host/cqhci.h b/drivers/mmc/host/cqhci.h
-> index ba9387ed90eb..e35c655edefc 100644
-> --- a/drivers/mmc/host/cqhci.h
-> +++ b/drivers/mmc/host/cqhci.h
-> @@ -23,6 +23,8 @@
->  /* capabilities */
->  #define CQHCI_CAP			0x04
->  #define CQHCI_CAP_CS			0x10000000 /* Crypto Support */
-> +#define CQHCI_CAP_ITCFMUL		GENMASK(15, 12)
-> +#define CQHCI_ITCFMUL(x)		FIELD_GET(CQHCI_CAP_ITCFMUL, (x))
->  
->  /* configuration */
->  #define CQHCI_CFG			0x08
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 8ce864169986..b582f19f82f2 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -473,6 +473,7 @@ struct msdc_host {
->  	struct msdc_tune_para def_tune_para; /* default tune setting */
->  	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
->  	struct cqhci_host *cq_host;
-> +	u32 cq_ssc1_time;
->  };
->  
->  static const struct mtk_mmc_compatible mt2701_compat = {
-> @@ -2450,9 +2451,50 @@ static void msdc_hs400_enhanced_strobe(struct mmc_host *mmc,
->  	}
->  }
->  
-> +static void msdc_cqe_cit_cal(struct msdc_host *host, u64 timer_ns)
-> +{
-> +	struct mmc_host *mmc = mmc_from_priv(host);
-> +	struct cqhci_host *cq_host = mmc->cqe_private;
-> +	u8 itcfmul;
-> +	unsigned long hclk_freq;
-> +	u64 value;
-> +
-> +	/*
-> +	 * On MediaTek SoCs the MSDC controller's CQE uses msdc_hclk as ITCFVAL
-> +	 * so we multiply/divide the HCLK frequency by ITCFMUL to calculate the
-> +	 * Send Status Command Idle Timer (CIT) value.
-> +	 */
-> +	hclk_freq = clk_get_rate(host->h_clk);
-> +	itcfmul = CQHCI_ITCFMUL(cqhci_readl(cq_host, CQHCI_CAP));
-> +	switch (itcfmul) {
-> +	case 0x0:
-> +		do_div(hclk_freq, 1000);
-> +		break;
-> +	case 0x1:
-> +		do_div(hclk_freq, 100);
-> +		break;
-> +	case 0x2:
-> +		do_div(hclk_freq, 10);
-> +		break;
-> +	case 0x3:
-> +		break;
-> +	case 0x4:
-> +		hclk_freq = hclk_freq * 10;
-> +		break;
-> +	default:
-> +		host->cq_ssc1_time = 0x40;
-> +		return;
-> +	}
-> +
-> +	value = hclk_freq * timer_ns;
-> +	do_div(value, 1000000000);
-> +	host->cq_ssc1_time = value;
-> +}
-> +
->  static void msdc_cqe_enable(struct mmc_host *mmc)
->  {
->  	struct msdc_host *host = mmc_priv(mmc);
-> +	struct cqhci_host *cq_host = mmc->cqe_private;
->  
->  	/* enable cmdq irq */
->  	writel(MSDC_INT_CMDQ, host->base + MSDC_INTEN);
-> @@ -2462,6 +2504,9 @@ static void msdc_cqe_enable(struct mmc_host *mmc)
->  	msdc_set_busy_timeout(host, 20 * 1000000000ULL, 0);
->  	/* default read data timeout 1s */
->  	msdc_set_timeout(host, 1000000000ULL, 0);
-> +
-> +	/* Set the send status command idle timer */
-> +	cqhci_writel(cq_host, host->cq_ssc1_time, CQHCI_SSC1);
->  }
->  
->  static void msdc_cqe_disable(struct mmc_host *mmc, bool recovery)
-> @@ -2803,6 +2848,8 @@ static int msdc_drv_probe(struct platform_device *pdev)
->  		/* cqhci 16bit length */
->  		/* 0 size, means 65536 so we don't have to -1 here */
->  		mmc->max_seg_size = 64 * 1024;
-> +		/* Reduce CIT to 0x40 that corresponds to 2.35us */
-> +		msdc_cqe_cit_cal(host, 2350);
->  	}
->  
->  	ret = devm_request_irq(&pdev->dev, host->irq, msdc_irq,
+ #define MT8188_TOPRGU_SW_RST_NUM               24
+
++/* VDOSYS1 */
++#define MT8188_VDO1_RST_MERGE0_DL_ASYNC         9
++#define MT8188_VDO1_RST_MERGE1_DL_ASYNC         10
++#define MT8188_VDO1_RST_MERGE2_DL_ASYNC         11
++#define MT8188_VDO1_RST_MERGE3_DL_ASYNC         32
++#define MT8188_VDO1_RST_MERGE4_DL_ASYNC         33
++#define MT8188_VDO1_RST_HDR_VDO_FE0_DL_ASYNC    64
++#define MT8188_VDO1_RST_HDR_GFX_FE0_DL_ASYNC    65
++#define MT8188_VDO1_RST_HDR_VDO_BE_DL_ASYNC     66
++#define MT8188_VDO1_RST_HDR_VDO_FE1_DL_ASYNC    80
++#define MT8188_VDO1_RST_HDR_GFX_FE1_DL_ASYNC    81
++
+ #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8188 */
+--
+2.18.0
 
 
