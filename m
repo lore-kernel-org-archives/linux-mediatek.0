@@ -4,92 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62DEDC7EE29
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 07:27:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CE41C77B7A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 07:33:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZrbBiasFytk1Nckd/DEhj6S74ay42QVWNjVsOI0QOaU=; b=W32h3H8Xji/ZffIfG885RifS8B
-	Zj14klxkv2u9n7R0FSvUQWyRupe/X5Bktzb3oelzym3GRh15+RwpiFG3KK/VsN4PkDny+QsJ7GxSw
-	WpxgP1NNfs+IKO47QA1OuXyI2CC88Peg4VPnvMiPvQOyA+630tFn4qcp+X8gfoO/4lY+2La/VW9E9
-	0IrOzps4oVXmthXk+9AC4BvH+Er5L1b3BTWv9cCVMrZmfdblOwXO+tsrkbv/npFZBZ1hRRY++GVEQ
-	tx0F4zBLtfuhyPGRKCAQXscxlfoBq7HeNYRk9VGUH61kNbnORe+sUrAAV2aVl6QxhYjSkJlBOSonj
-	P0/RizmQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Hma6p26rQIyIThKNfeXF5jdshZtrw3Y5qqlbj4TWwLU=; b=VFiOVsnB219t9CcoJnmjSUohIh
+	34zUzX3TsQQqntEmGe6QnwGbUlG7TS5NEqef5CpHY0yzkG+2vCrdVCeEY0jcLNpE61yz3CvgPwzXz
+	zX83qv6HHGmUx65BmUWCf298DOoz9Zm9Vlf3vAKm8cAM/0ElhHloqFC6iWG0N7cY8PUX3rh9oR5B+
+	M3NPs0htOqmOH2jqpWTp2ZNC9E3R+lQqjFaNQPy0EDVE7Lc9JjSy5JsLn1EAiyE17kacGZw5VVJ3A
+	sWwbbHuwifBeQUSDFnqyJwBerwtpqfDm3XZ9YQjcWa5UTETQ29jXub411DhNhjRU/ZQ4HYLvAHcAn
+	8RtHfAIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6na8-004jgO-1K;
-	Wed, 07 Jun 2023 07:27:48 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1q6nfH-004kHb-0w;
+	Wed, 07 Jun 2023 07:33:07 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6na6-004jfT-0c
-	for linux-mediatek@lists.infradead.org;
-	Wed, 07 Jun 2023 07:27:47 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-51480d3e161so725288a12.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 07 Jun 2023 00:27:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1686122865; x=1688714865;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ZrbBiasFytk1Nckd/DEhj6S74ay42QVWNjVsOI0QOaU=;
-        b=ga5a6+ukcKvhCnCPtrFzfCApYNa14klTsW9G8sLRCTHvPthZP3P8YCyGxcTksH8lzG
-         53OYquxkw+acOpZHWdq2fcXeAWcMYhPtbGx6X9PcRFYydCAPZ8RfjD8GTPhfqtXY136+
-         PRISb+AEWJEpljPJo9v+j9597drXfOhcuCBtHQPSNL5YuuBMVrKB7Oa+OTodJd8/G7TY
-         YDCpvHD6XruCv4jeMkhp1Hwc+H8RxYRGNZhMwXl+ivy/9fD5DfzvE5Y6VRsNF1M4Vfc+
-         G5vFnA9uObVtDCBhvrTqt57LmtX42e+eO98EGw3Il8U2GqqzkNd/ZuhyvV509Fre0Z8f
-         RivA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686122865; x=1688714865;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZrbBiasFytk1Nckd/DEhj6S74ay42QVWNjVsOI0QOaU=;
-        b=hnpPbk9dH8wWhzn67yYBwbpEE2K+onCbB0ZJ61Dse3g8VzFF5AsM68yGj4HnnAHPyP
-         IrXLo0VwGpTRHRN50s0uqtn2UFICVeBCjWJgqy0X/LAyhIxUK0h43oGAWmrOdRwRFeRc
-         yvZjD2zexf1cB8DIT1/ilrMfMALHEx3bc0CoRZHlxCQgvHp0LY36mJoc/apMWBzoNwHU
-         TlXsBgznczch9lif0DgZxvXT6KWGvKEtUJMPM4BfolFEcQrhriaUfl24gcIJiXOd65D3
-         ezbNIVwIjgBzW+nov1IJ0PpMJmMwdNxzb8HSH8aPP+8+aBAHgkh/ktoIhkevs3Ci7WjF
-         2fsA==
-X-Gm-Message-State: AC+VfDz2fIFjeRHlJs6WIBQyOx5B4x9Z5wHUciNGoRk4SIvUReCx/+Ff
-	cXVsaq2wBNwREnPyMljfHdxi6YaZEhjcJ6qGpPs=
-X-Google-Smtp-Source: ACHHUZ4HJUTQNoMCxDs0ERIn2tW+n96xfANYG3S01OWKfCvbG1Af6Z1YzmJVLqK8u+vpuyUSG8iYTg==
-X-Received: by 2002:aa7:d54e:0:b0:50b:c77e:b071 with SMTP id u14-20020aa7d54e000000b0050bc77eb071mr4135216edr.18.1686122864819;
-        Wed, 07 Jun 2023 00:27:44 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.26])
-        by smtp.gmail.com with ESMTPSA id p20-20020a056402075400b00514c4350243sm5748879edy.56.2023.06.07.00.27.42
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Jun 2023 00:27:44 -0700 (PDT)
-Message-ID: <93eb3e7d-eff5-b040-5290-2de13699ed95@linaro.org>
-Date: Wed, 7 Jun 2023 09:27:42 +0200
+	id 1q6nfC-004kH1-1y;
+	Wed, 07 Jun 2023 07:33:04 +0000
+X-UUID: 862f5d98050511ee83ed1395ce914268-20230607
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Hma6p26rQIyIThKNfeXF5jdshZtrw3Y5qqlbj4TWwLU=;
+	b=e9x1NAaWR7fMLL4h6re0KvohgbTwltIbY12TGCfwQmKCcYUCT4oiWcA0t3JA0PoFJ6FNveMe/mieUFi0kniDRYR0pK344YVEDakA8R7tW83dtuJTpamgTT691Y9ADV/gppmkSXGIxdpyuDgQza6m/bzr60laUXdsIEmElXFBglA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.25,REQID:9848f663-d2e3-4f86-9d71-51b72b0d92aa,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:d5b0ae3,CLOUDID:baf4a53d-de1e-4348-bc35-c96f92f1dcbb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-UUID: 862f5d98050511ee83ed1395ce914268-20230607
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1431049931; Wed, 07 Jun 2023 00:32:57 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 7 Jun 2023 15:22:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 7 Jun 2023 15:22:24 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tinghan
+ Shen <tinghan.shen@mediatek.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v13 06/11] remoteproc: mediatek: Probe multi-core SCP
+Date: Wed, 7 Jun 2023 15:22:17 +0800
+Message-ID: <20230607072222.8628-7-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230607072222.8628-1-tinghan.shen@mediatek.com>
+References: <20230607072222.8628-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH v1 2/6] dt-bindings: reset: mt8188: Add reset control bits
- for VDOSYS1
-Content-Language: en-US
-To: Hsiao Chien Sung <shawn.sung@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
- Jason-JH Lin <jason-jh.lin@mediatek.com>, Fei Shao <fshao@google.com>
-References: <20230607061121.6732-1-shawn.sung@mediatek.com>
- <20230607061121.6732-3-shawn.sung@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230607061121.6732-3-shawn.sung@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230607_002746_230737_7635B94D 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20230607_003302_822317_F5664AFA 
+X-CRM114-Status: GOOD (  21.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,44 +88,194 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07/06/2023 08:11, Hsiao Chien Sung wrote:
-> Add reset control bits for  MT8188 VDOSYS1.
+The difference of single-core SCP and multi-core SCP device tree is
+the presence of child device nodes described SCP cores. The SCP
+driver populates the platform device and checks the child nodes
+to identify whether it's a single-core SCP or a multi-core SCP.
 
-Double space -> one space.
+Add the remoteproc instances of multi-core SCP to the SCP cluster list.
+When the SCP driver is removed, it cleanup resources by walking
+through the cluster list.
 
-> 
-> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
-> ---
->  include/dt-bindings/reset/mt8188-resets.h | 12 ++++++++++++
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+---
+ drivers/remoteproc/mtk_scp.c | 115 +++++++++++++++++++++++++++++++++--
+ 1 file changed, 111 insertions(+), 4 deletions(-)
 
-This should be squashed with patch adding compatible.
-
-
->  1 file changed, 12 insertions(+)
-> 
-> diff --git a/include/dt-bindings/reset/mt8188-resets.h b/include/dt-bindings/reset/mt8188-resets.h
-> index 377cdfda82a9..439a9a25ca19 100644
-> --- a/include/dt-bindings/reset/mt8188-resets.h
-> +++ b/include/dt-bindings/reset/mt8188-resets.h
-> @@ -33,4 +33,16 @@
-> 
->  #define MT8188_TOPRGU_SW_RST_NUM               24
-> 
-> +/* VDOSYS1 */
-> +#define MT8188_VDO1_RST_MERGE0_DL_ASYNC         9
-
-Indices start from 0.
-
-> +#define MT8188_VDO1_RST_MERGE1_DL_ASYNC         10
-> +#define MT8188_VDO1_RST_MERGE2_DL_ASYNC         11
-> +#define MT8188_VDO1_RST_MERGE3_DL_ASYNC         32
-
-... and are continuous.
-
-Commit explains here nothing that it is for existing reset, so you got
-such review.
-
-Best regards,
-Krzysztof
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index c8fc6b46f82b..d644e232dfec 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -864,7 +864,8 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
+ }
+ 
+ static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
+-				      struct mtk_scp_of_cluster *scp_cluster)
++				      struct mtk_scp_of_cluster *scp_cluster,
++				      const struct mtk_scp_of_data *of_data)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev->of_node;
+@@ -887,7 +888,7 @@ static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
+ 	scp = rproc->priv;
+ 	scp->rproc = rproc;
+ 	scp->dev = dev;
+-	scp->data = of_device_get_match_data(dev);
++	scp->data = of_data;
+ 	platform_device_add_data(pdev, &scp, sizeof(scp));
+ 
+ 	scp->reg_base = scp_cluster->reg_base;
+@@ -964,14 +965,15 @@ static void scp_free(struct mtk_scp *scp)
+ 	mutex_destroy(&scp->send_lock);
+ }
+ 
+-static int scp_cluster_init(struct platform_device *pdev)
++static int scp_add_single_core(struct platform_device *pdev)
+ {
++	struct device *dev = &pdev->dev;
+ 	struct mtk_scp_of_cluster *scp_cluster = platform_get_drvdata(pdev);
+ 	struct list_head *cluster = &scp_cluster->mtk_scp_list;
+ 	struct mtk_scp *scp;
+ 	int ret;
+ 
+-	scp = scp_rproc_init(pdev, scp_cluster);
++	scp = scp_rproc_init(pdev, scp_cluster, of_device_get_match_data(dev));
+ 	if (IS_ERR(scp))
+ 		return PTR_ERR(scp);
+ 
+@@ -987,6 +989,100 @@ static int scp_cluster_init(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
++static int scp_add_multi_core(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *np = dev_of_node(dev);
++	struct platform_device *cpdev;
++	struct device_node *child;
++	struct mtk_scp_of_cluster *scp_cluster = platform_get_drvdata(pdev);
++	struct list_head *cluster = &scp_cluster->mtk_scp_list;
++	const struct mtk_scp_of_data **cluster_of_data;
++	struct mtk_scp *scp, *temp;
++	int core_id = 0;
++	int ret;
++
++	cluster_of_data = (const struct mtk_scp_of_data **)of_device_get_match_data(dev);
++
++	for_each_available_child_of_node(np, child) {
++		if (!cluster_of_data[core_id]) {
++			ret = -EINVAL;
++			dev_err(dev, "Not support core %d\n", core_id);
++			of_node_put(child);
++			goto init_fail;
++		}
++
++		cpdev = of_find_device_by_node(child);
++		if (!cpdev) {
++			ret = -ENODEV;
++			dev_err(dev, "Not found platform device for core %d\n", core_id);
++			of_node_put(child);
++			goto init_fail;
++		}
++
++		scp = scp_rproc_init(cpdev, scp_cluster, cluster_of_data[core_id]);
++		put_device(&cpdev->dev);
++		if (IS_ERR(scp)) {
++			ret = PTR_ERR(scp);
++			dev_err(dev, "Failed to initialize core %d rproc\n", core_id);
++			of_node_put(child);
++			goto init_fail;
++		}
++
++		ret = rproc_add(scp->rproc);
++		if (ret) {
++			dev_err(dev, "Failed to add rproc of core %d\n", core_id);
++			of_node_put(child);
++			scp_free(scp);
++			goto init_fail;
++		}
++
++		list_add_tail(&scp->elem, cluster);
++		core_id++;
++	}
++
++	return 0;
++
++init_fail:
++	list_for_each_entry_safe_reverse(scp, temp, cluster, elem) {
++		list_del(&scp->elem);
++		rproc_del(scp->rproc);
++		scp_free(scp);
++	}
++
++	return ret;
++}
++
++static int scp_is_single_core(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *np = dev_of_node(dev);
++	struct device_node *child;
++
++	child = of_get_next_available_child(np, NULL);
++	if (!child)
++		return dev_err_probe(dev, -ENODEV, "No child node\n");
++
++	of_node_put(child);
++	return of_node_name_eq(child, "cros-ec-rpmsg");
++}
++
++static int scp_cluster_init(struct platform_device *pdev)
++{
++	int ret;
++
++	ret = scp_is_single_core(pdev);
++	if (ret < 0)
++		return ret;
++
++	if (ret)
++		ret = scp_add_single_core(pdev);
++	else
++		ret = scp_add_multi_core(pdev);
++
++	return ret;
++}
++
+ static int scp_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -1021,6 +1117,10 @@ static int scp_probe(struct platform_device *pdev)
+ 	INIT_LIST_HEAD(&scp_cluster->mtk_scp_list);
+ 	platform_set_drvdata(pdev, scp_cluster);
+ 
++	ret = devm_of_platform_populate(dev);
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to populate platform devices\n");
++
+ 	ret = scp_cluster_init(pdev);
+ 	if (ret)
+ 		return ret;
+@@ -1114,12 +1214,19 @@ static const struct mtk_scp_of_data mt8195_of_data_c1 = {
+ 	.host_to_scp_int_bit = MT8195_CORE1_HOST_IPC_INT_BIT,
+ };
+ 
++static const struct mtk_scp_of_data *mt8195_of_data_cores[] = {
++	&mt8195_of_data,
++	&mt8195_of_data_c1,
++	NULL
++};
++
+ static const struct of_device_id mtk_scp_of_match[] = {
+ 	{ .compatible = "mediatek,mt8183-scp", .data = &mt8183_of_data },
+ 	{ .compatible = "mediatek,mt8186-scp", .data = &mt8186_of_data },
+ 	{ .compatible = "mediatek,mt8188-scp", .data = &mt8188_of_data },
+ 	{ .compatible = "mediatek,mt8192-scp", .data = &mt8192_of_data },
+ 	{ .compatible = "mediatek,mt8195-scp", .data = &mt8195_of_data },
++	{ .compatible = "mediatek,mt8195-scp-dual", .data = &mt8195_of_data_cores },
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
+-- 
+2.18.0
 
 
