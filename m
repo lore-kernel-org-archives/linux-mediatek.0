@@ -4,90 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 176B6C7EE29
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 11:08:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99F5DC7EE25
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jun 2023 12:09:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BXdQfD8VSWsZR3Vi8Y0WmvbNHXZH6Vk6c/6DrYZtkC8=; b=djbjo62j8tGoe9cXq6L9xsZqRk
-	VZN5MRq3D7JQ5OMEoDyRpOkMzjJimHVMqcEJcg0uAhLOgt49MJ3VIFtL4pN/ySq6W+FIwCDkbGirM
-	+4Q033PaTOHT2JbA6Wly5YfvMPtBEG7ZeN32npRTcGe4hJ28W14Ex7pGzPEpSDY2tabJWeDG3E7O5
-	61um/sFO+WxeBtQebqa3SEiYIdYtJK9Lb0OsuUKX5658LRoPM4rNLWBg+u6vr8w5Kw8wmnjdtjuPm
-	Izpfjxotd4Yv3N8fn+40KDs5w6gQ2iSKBNX25leVbGnhfZh79Y5RV1wZ5WW38sMYMQbDYzoH5ANT6
-	0tq6ccdA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=e0lvAdIDLby6JB6qUu9I24E8X7bnJ8KDE8MTuuQfEq4=; b=qxbBN86gcJbfHyvShwM1u24/WG
+	UT97KvCBC2qV7s4e1oSln4m2SSiUtrAvITeY0HZOoYLNToX9Ybp5ym1XuDlzfufXZkptDMGzg927k
+	cUWcqr8LpDeytHMlRPVhg5139QrFUsq+Wz5cICYGllAIXcurg50QhIspSsESyWfCT26mOouX7Bzlp
+	p+ooUUV8KM0p53EPkmz0dbHR+BWHRDwjAU5DMjTeWaU7gb6qd/JiLhIJ/QdYQNyVRHeSswQMC8nVR
+	emzCWcLAF46yZnkMkglZ8UbvSI5MR2MZIntNA7OlLttyZ2+DSSd3xchOK7+xGYqyxV3ur3DSC+3av
+	xVTN2HBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6r1r-005bZd-0w;
-	Wed, 07 Jun 2023 11:08:39 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1q6ry7-005m4n-1K;
+	Wed, 07 Jun 2023 12:08:51 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q6r1o-005bYR-18
-	for linux-mediatek@lists.infradead.org;
-	Wed, 07 Jun 2023 11:08:38 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3f78a32266bso34659735e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 07 Jun 2023 04:08:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1686136112; x=1688728112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=BXdQfD8VSWsZR3Vi8Y0WmvbNHXZH6Vk6c/6DrYZtkC8=;
-        b=QTGW/Vu9XZf4s5MS2p6ojUMV554GSqknEVOpWK5rGAZhbYaLpwTl8/+tjQONBnIaq+
-         K5z2TQrCWI6tT7yx3jDljuWe41E4Jg5nbdX4Yea9exFxwTVouVkdpV5zdWrHi6l5W2IK
-         yFwXMY//lgwBCYuN5i+RJLudw4GNG9rdqe7DJ4eMM4ygSpbYRfzrx4iIMaWkG2QMw712
-         cHOnQKkKpZ0U5OGRfZBYI+pilulQqDFrBrvzbOqBL5EgKFX/mXVH7f8U/qB/eyxuTtMg
-         GiTCZZLVG8J5A0SPIZ/uZPAJKab2DTYhNxRWEXS3tIwN/p9sSPvWv0gmfxTki0GS1Cld
-         PTOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686136112; x=1688728112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BXdQfD8VSWsZR3Vi8Y0WmvbNHXZH6Vk6c/6DrYZtkC8=;
-        b=F8u6eSgNXDLBjYULGO8RDGwuDhC1tr+aRkwLmfn24E7yN76MBRAGu2vZdf4aHmywrQ
-         V/iwjS1LKYgd14ChbmfUlfe5M6euMbdj+Bz3/UbpikVYDhFX2gMa1bfy5ywoql9GGYtR
-         CsAGqWY2zU4zolkQZDddqC5JyuOwB33RYKc7F7GEHUqtmue5X02NA5Mad315984Z3qcH
-         CRZXn/Tcd1M0cCkzrv+5Fw2kSmYYSTI8WCjWPSKMhaqrS9+c1dVRSaF/iPbmRD2ldoUM
-         i70JSMl++cA9AV+ZYKnNkBXDrO3giSzGJ3yw3Ks2O0cB1N1sxuTZhkPOERIYq7nRz7xI
-         xKhw==
-X-Gm-Message-State: AC+VfDzM5hVlAKdv/qtkY0SFLbcawh+XkgWy7XWcO7tNUb3zCgbFK0BX
-	taPKedeqfsVNZglNSvC/Fke0+A==
-X-Google-Smtp-Source: ACHHUZ5cgp+HJScZGL+i7YPbTv0GsIwRUhE+kDDIAWVzH4PmbSPpPjc3VBa/gfSJIjWg0y/3D8pOUw==
-X-Received: by 2002:a5d:63ca:0:b0:30e:41c5:9715 with SMTP id c10-20020a5d63ca000000b0030e41c59715mr6529879wrw.47.1686136112241;
-        Wed, 07 Jun 2023 04:08:32 -0700 (PDT)
-Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id m4-20020a5d6a04000000b0030aea925fbesm15020875wru.50.2023.06.07.04.08.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Jun 2023 04:08:31 -0700 (PDT)
-Message-ID: <ce2737b7-a2fa-b4f2-16f2-09971d5877fb@baylibre.com>
-Date: Wed, 7 Jun 2023 13:08:30 +0200
+	id 1q6rxw-005ltp-2o;
+	Wed, 07 Jun 2023 12:08:45 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 43E0763410;
+	Wed,  7 Jun 2023 12:08:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DEF3DC433EF;
+	Wed,  7 Jun 2023 12:08:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1686139718;
+	bh=ajWdmE+oEITOfGOM0DiF4YY95IS+tAiw8M8wSeFjfJc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Bi+Wp+C6tbHnzgHh1p+180dQ/zx9IUMtY1VfKbsF+Z6NcjawkF67gfhSgdhHTpAPy
+	 K/+O9EkvHkxjVf8Va3NjQUEkwAfD3NKQkywYkVXXdHO3agZsQJ5ep0O3v82jqjxoMd
+	 DgsOe7DtWJjJes8wCRxqJIZ5l+jLK4GIORNxAUWEv1Qgs/KuyMsy9Jp9PtghSfHphS
+	 31S29SmnQ1uIFM1z4Uco4AzI8ppCeQ4yDaRZOkLlDVrVZBcN18fTfItUrJC82TpIHB
+	 jRAqUAmruppRV96n5IsNE13ScmceWymV5DOSGPtUY/xUXiv/PEFdDANPLFLISbTtqN
+	 Pb8HNcN+6mFjg==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Mark Brown <broonie@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Trevor Wu <trevor.wu@mediatek.com>,
+	Jiaxin Yu <jiaxin.yu@mediatek.com>,
+	alsa-devel@alsa-project.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] ASoC: mediatek: mt8188-mt6359: add i2c dependency
+Date: Wed,  7 Jun 2023 14:08:15 +0200
+Message-Id: <20230607120831.3587379-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v5 1/1] mmc: mtk-sd: reduce CIT for better performance
-Content-Language: en-US
-To: Wenbin Mei <wenbin.mei@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Adrian Hunter <adrian.hunter@intel.com>,
- Ritesh Harjani <riteshh@codeaurora.org>,
- Asutosh Das <asutoshd@codeaurora.org>, linux-mmc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel test robot <lkp@intel.com>
-References: <20230606113249.28057-1-wenbin.mei@mediatek.com>
- <20230606113249.28057-2-wenbin.mei@mediatek.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230606113249.28057-2-wenbin.mei@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230607_040836_652431_1DA77B98 
-X-CRM114-Status: UNSURE (   9.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230607_050840_978061_D612271F 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,19 +80,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/06/2023 13:32, Wenbin Mei wrote:
-> CQHCI_SSC1 indicates to CQE the polling period to use when using periodic
-> SEND_QUEUE_STATUS(CMD13) polling.
-> Since MSDC CQE uses msdc_hclk as ITCFVAL, so driver should use hclk
-> frequency to get the actual time.
-> The default value 0x1000 that corresponds to 150us for MediaTek SoCs, let's
-> decrease it to 0x40 that corresponds to 2.35us, which can improve the
-> performance of some eMMC devices.
+From: Arnd Bergmann <arnd@arndb.de>
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+The newly added driver is missing this dependency, causing a possible
+build failure:
 
+WARNING: unmet direct dependencies detected for SND_SOC_MAX98390
+WARNING: unmet direct dependencies detected for SND_SOC_NAU8825
+  Depends on [m]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && I2C [=m]
+  Selected by [y]:
+  - SND_SOC_MT8188_MT6359 [=y] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && SND_SOC_MT8188 [=y] && MTK_PMIC_WRAP [=y]
+aarch64-linux-ld: sound/soc/codecs/max98390.o: in function `max98390_i2c_probe':
+max98390.c:(.text+0x514): undefined reference to `__devm_regmap_init_i2c'
+
+Fixes: 9f08dcbddeb30 ("ASoC: mediatek: mt8188-mt6359: support new board with nau88255")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ sound/soc/mediatek/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+index 4ea012342b522..90db67e0ce4fb 100644
+--- a/sound/soc/mediatek/Kconfig
++++ b/sound/soc/mediatek/Kconfig
+@@ -223,6 +223,7 @@ config SND_SOC_MT8188
+ config SND_SOC_MT8188_MT6359
+ 	tristate "ASoC Audio driver for MT8188 with MT6359 and I2S codecs"
+ 	depends on SND_SOC_MT8188 && MTK_PMIC_WRAP
++	depends on I2C
+ 	select SND_SOC_MT6359
+ 	select SND_SOC_HDMI_CODEC
+ 	select SND_SOC_DMIC
 -- 
-Regards,
-Alexandre
+2.39.2
 
 
