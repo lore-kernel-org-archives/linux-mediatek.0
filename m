@@ -4,71 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13C5EC7EE23
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 07:35:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6C98C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 07:44:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qjQBEfmXPqWDRFJp4LYlvSd8qRNzWf1l9WmcN5Styh0=; b=pCvwwJOcxBEaz++NyICYKsOPU9
-	7t6Xb/6h0rKo+axuUXV7p6woMmX6NVHKE/1jVsoiHlRRalrwAO45rc0g8Za9kmzbpGV8h0imH+R1Q
-	lMV9e1yD5vuQXeCiMUqpR3bLa8DM1cxCkqZ00sugBhrL0OM/RCwKSfDE1Ut4swAvALUgm05DYVAtS
-	jBDHO6cdwBMvs/H85deqnSZ+A/9W6wR+8yjrfLtac2PB4tN0WShMtQXF8g0fo0vj08umRLCnkoT4l
-	6DUFFi2l+5sC+7TfUyrh+PIV8DKk9wG3ezlEDLR7lLp3QDtt3I3YLvmXfkYmhqIAnhgZKNMfb/NR6
-	Ixfbvt/w==;
+	bh=TJAXrDTd/Nz/J5muH2M5Mg9/zWBy269fM8uuL6rXc60=; b=Rgx8CVeXfovKNQPY7lS9s5aNqU
+	SSkdy3TgbRjYLMbx3K1av5R0ohwte5bz++hqItcJ8YtOeVHH8YKc6f/0xPKR5Y/waqqGH326Ij9ur
+	vTnP5YTV8dqnF/OygZNYVJvY1JdnBPBuxiTWR8qZOY/nXEu7PbYWWpGYM5klWs5dVgzYO4U5TC5op
+	ROYVTnAaTAVmBbyd2MB2ePtLD/eP/t9RpHjubS3n+MWCRD7NBe9ljRN2EgjWiGVGOMZA1HDHJFDQU
+	slnSkTuD2UnamnOA/8eSN1Ts9wbja1QDsQDtGqS2nRCd8KBERWhq5E3TlT7cOG86+PXjltimCrKLr
+	P10Iu/Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7AAu-008Q8S-2i;
-	Thu, 08 Jun 2023 07:35:16 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q7AJF-008QyX-1p;
+	Thu, 08 Jun 2023 07:43:53 +0000
+Received: from mail-vs1-xe33.google.com ([2607:f8b0:4864:20::e33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7AAr-008Q7O-1c;
-	Thu, 08 Jun 2023 07:35:14 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 974AE6606F10;
-	Thu,  8 Jun 2023 08:35:11 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1686209712;
-	bh=IyZaWaR9qhc4mrNBEFt94Tw+lZAMtm2D8C4nhenBrVE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Qcr8LLU9FInLXhPCQsP6sKwvEnNtz71kQHPSgTUMxHNZtCCEDSTEHATm94pqY+P18
-	 f1656ztRP8SoGzahCiGdcnSNCaeGS/lWO7PIVlx+dOUZWfKhgclKUmAjF8rt9428DJ
-	 47uzdjxlnteSD9q+GSSTSrHzuh5gKOAxPvow+3x24wRg7KNtH+JYdZ28YynsgoyePB
-	 YbfVDiMYru+brBs5Ab/s217evhAokViQFbFSacFLDnGiK7D/0X6jjDvQrvJL/5ht54
-	 ygT4qf6nv0TDunChDSFQv6f6CooWot5YWP7VJEBL1YYI0JxshcXv4Glfip0wrYm+rj
-	 C5b0odcUH8JOQ==
-Message-ID: <11640ca2-a49f-49c9-ec94-d85e64c9ee87@collabora.com>
-Date: Thu, 8 Jun 2023 09:35:08 +0200
+	id 1q7AJC-008QxY-0M
+	for linux-mediatek@lists.infradead.org;
+	Thu, 08 Jun 2023 07:43:51 +0000
+Received: by mail-vs1-xe33.google.com with SMTP id ada2fe7eead31-43dc17feb22so60482137.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 08 Jun 2023 00:43:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1686210227; x=1688802227;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=TJAXrDTd/Nz/J5muH2M5Mg9/zWBy269fM8uuL6rXc60=;
+        b=DNPvf1GpogmxzgQvbWz98Sw8cq32qUMrFI5mTw675XCXzXY808txVThkEsqsrADeel
+         F9nHLSSzDUyCasRGlwJSX1tNIXVd+1YibbRWCEnNHcT1edFxru9LzT0SLrcjT0XqJhgq
+         2uuPMP/rkP/DseGIkYrv0+Ucp9yJhSlN8zNb0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686210227; x=1688802227;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=TJAXrDTd/Nz/J5muH2M5Mg9/zWBy269fM8uuL6rXc60=;
+        b=l4M+yOgoNDbWmNCscpoq2/qRWMaDnqvcKZu8+pLo+jxoyC3sWUtK12KMT+JTYMtGOp
+         nWOjWvGnh3nxCuSZw7oayUDq7/BUmhq9faatZnR+jH1rq9VDKQ2wML+L6c9PBoQssFJ5
+         NiQchIJvv5byWqPZMzm2sI1rE5OPFcCF5HWmCOpOABrRwA4Vp2yTCropjF208JEC+dF2
+         oDpWg4NGKxLp4jZqKSuyFEXxzG6ef6SGU+RAKmb0T/hVHZ5YE0nuWlKm+BIL09sGK6zz
+         zV9kfJmkk+UC5JpdMvaEJRUac3TRqez5bVoa2Zi9GcixQ0xvz9WyWuTMPBBLq0KEHmSO
+         REWQ==
+X-Gm-Message-State: AC+VfDz2LRvrGDt7r+Qg1PA63aoqAUPqwDkZU3IJUp2o83xqEJLTcfkH
+	9nr+ZvgS5Buna8t1hZS110Y8/QivzYn7oR8VDmwhXg==
+X-Google-Smtp-Source: ACHHUZ79ixQwfkYC9Zf7mdwRzABuK9h59tn/Zx8kcIDizpuVdiBvKBT6XWtWmV7VyQiZhvuYHK304MUdsNJzyBFAobA=
+X-Received: by 2002:a05:6102:104:b0:43b:2a58:8eb5 with SMTP id
+ z4-20020a056102010400b0043b2a588eb5mr1781203vsq.20.1686210227541; Thu, 08 Jun
+ 2023 00:43:47 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH v2 5/5] arm64: dts: mediatek: mt8183: Add decoder
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: kernel@collabora.com, Yunfei Dong <yunfei.dong@mediatek.com>,
- Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20230607205714.510012-1-nfraprado@collabora.com>
- <20230607205714.510012-6-nfraprado@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230607205714.510012-6-nfraprado@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20230607205714.510012-1-nfraprado@collabora.com> <20230607205714.510012-5-nfraprado@collabora.com>
+In-Reply-To: <20230607205714.510012-5-nfraprado@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 8 Jun 2023 15:43:36 +0800
+Message-ID: <CAGXv+5EgP+0fTDhdpnYDCVQAWtWqwKp=Xxh-pHc1137wHoywRQ@mail.gmail.com>
+Subject: Re: [PATCH v2 4/5] clk: mediatek: mt8183: Add CLK_VDEC_ACTIVE to vdec
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+	kernel@collabora.com, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Conor Dooley <conor+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Michael Turquette <mturquette@baylibre.com>, Miles Chen <miles.chen@mediatek.com>, 
+	Rob Herring <robh+dt@kernel.org>, Stephen Boyd <sboyd@kernel.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230608_003513_664575_B544E93C 
-X-CRM114-Status: UNSURE (   7.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230608_004350_202016_6785A6EF 
+X-CRM114-Status: GOOD (  15.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,18 +92,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/06/23 22:53, Nícolas F. R. A. Prado ha scritto:
-> From: Yunfei Dong <yunfei.dong@mediatek.com>
-> 
-> Add node for the hardware decoder present on the MT8183 SoC.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> Signed-off-by: Qianqian Yan <qianqian.yan@mediatek.com>
-> Signed-off-by: Frederic Chen <frederic.chen@mediatek.com>
-> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+On Thu, Jun 8, 2023 at 4:57=E2=80=AFAM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
+>
+> Add the CLK_VDEC_ACTIVE clock to the vdec clock driver. This clock is
+> enabled by the VPU once it starts decoding.
+>
+> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+>
+> ---
+>
+> Changes in v2:
+> - Added CLK_IGNORE_UNUSED flag
+>
+>  drivers/clk/mediatek/clk-mt8183-vdec.c | 5 +++++
+>  include/dt-bindings/clock/mt8183-clk.h | 3 ++-
+>  2 files changed, 7 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/clk/mediatek/clk-mt8183-vdec.c b/drivers/clk/mediate=
+k/clk-mt8183-vdec.c
+> index 513b7956cbea..03c4f1acfdb8 100644
+> --- a/drivers/clk/mediatek/clk-mt8183-vdec.c
+> +++ b/drivers/clk/mediatek/clk-mt8183-vdec.c
+> @@ -27,6 +27,10 @@ static const struct mtk_gate_regs vdec1_cg_regs =3D {
+>         GATE_MTK(_id, _name, _parent, &vdec0_cg_regs, _shift,   \
+>                 &mtk_clk_gate_ops_setclr_inv)
+>
+> +#define GATE_VDEC0(_id, _name, _parent, _shift)                \
+> +       GATE_MTK_FLAGS(_id, _name, _parent, &vdec0_cg_regs, _shift,     \
+> +               &mtk_clk_gate_ops_setclr, CLK_IGNORE_UNUSED)
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+I think what you want is a read-only gate clock only used for reading back
+the status. The ops would only have .is_enabled.
 
-
+ChenYu
 
