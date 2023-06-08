@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 923E1C7EE29
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 199EEC83003
 	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 08:47:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IU4OS/rASqxm3aWiuK8n0WwALHqMJIuJK3PKZtaa55w=; b=GeB72+7VZyVv0U12XsIWa24HBV
-	MX2CuEU69GkcmfjAEzjBUiF6vbpLp8NwcAR8ESyO9YHPdzCX5RVmqUbX+kyyFhCcHnddxWiSIEL/k
-	5XqK3sYJRm9umcZ+RsLCDxHM6944MZa+ctR8xAwTUo4e8h+xIDd+Ais9G4q16E3iC6IXvkU1OCuFW
-	IZuyuPU1OlFo7crzxki58WLAiyk0ZNaRzoJvi/b4wIdni4H2LqJkvk1bSfsOHP7FvvQNDN8S0qPIH
-	FuhqVdOkX75jUK2AZ7kOVx1W/GTlLcdcdejSm30DAXITKVFZIO+RadTw7qXI2VzSRR+aYzGJ7Ao7b
-	6hJBLnHQ==;
+	bh=AwhICBhS5Sp4vCH4aoWJH2vUy6+vWxt799LocrRRTY8=; b=tX9bPLSy6+8awrIVFlkhTi2Zo4
+	4gEZG62xQBoIiXGb847J8Am0bXeH/qw0R35/BW5w37cNU5WW+7fkCes9mEU6yt3WGrWSxj1C2+xlu
+	b+3EqjBzwcW2+aqaCiEwSQmY9Ae68Rndu43bkloEufIR9Fufiuk8MXXQpX3fOGD6UCua2w2lsvrhn
+	V8h0uDtUw7BXx6wrFLeJvpP/r6uwncw1b9OY1YHmv6JYA6Bw/8kdMS1HzqbAJKtIVbx2ckyUuVO50
+	LbklQkvN/1UtRDwxU8Ln0ziUxHcEd3o8kaWARSXd7nM4wQUf7uPZbJHwFty1AddP0g55h1b3vcmED
+	2VjzeBvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7BJB-008a7a-2O;
+	id 1q7BJB-008a7J-0z;
 	Thu, 08 Jun 2023 08:47:53 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7BIz-008Zwk-0w;
+	id 1q7BIz-008ZvW-0v;
 	Thu, 08 Jun 2023 08:47:43 +0000
 Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 90D486606F18;
-	Thu,  8 Jun 2023 09:47:38 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 721426606F15;
+	Thu,  8 Jun 2023 09:47:36 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1686214059;
-	bh=Kw2e/m/DW7+RkOYVIurLc9HONlxzUhzrCDaVnDSwbXw=;
+	s=mail; t=1686214057;
+	bh=yBFpvdyvUdE5L7ZiJ3JX8I1dNCEtgPqdfEZ9UKzm1JQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TNT6KiJAsUrDi/3k9KcOmGH5ZM5Uhfc30b149HprEzgpAJbGgaRnivt5RZXNd6d4t
-	 5l3r54Hc4AF6CjDDj5sYvWltAHeLBuOtZCO2qtqf/DWyOAxHwCsEuVh3CmyLvXeIi1
-	 T6W3g2fzVTjc0VJbxRng+yKIB08xpOf36Oiv5OSSXluYzD3kQfvV6X0QvkniGtBDgK
-	 mRiCl3wLhVvhSmR9SE9dpo9wt0gKkHqvjw/91v01SyP4zOMFw6vj8rBNGn06ANBB/c
-	 vRVY1jDJQbUUx1HAgBHUqRAqNT7/MpdlWcyf5zOeU6XECXyw1JbO5IAmn64rZzhV8J
-	 JpUaTJ4Idy22Q==
+	b=A4qXIgXsrpU31WLaN06EJ3R+3Ki8sEYa9S8k+I1SUzdew5myZPLJdRoxVXDXhhj/a
+	 zdVaKQurrls3rwKU6T6iSS3ba2OobbSkRLpCimGp0W33yR7pAmHr/WDWa7HWQmYAMS
+	 kRLXc8xmG4gX9QK0SVYx4KNsBT6sgP42c2U0uAxnvisUph+WKoija26PuqsvNBdaSn
+	 Znpb/soYutHbHxYydHmylK2eo70onW/yUDf0JRFt2D7pGjQ+5TojVktq962WH0ry1Y
+	 MEpeIO3fz95zylk0EXsO3XUxWkd2yL2NkldQzTWw4vLXzrSLMf9iHGJ/D7CuINUDDi
+	 kMXp9Cl+Nsf1Q==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: broonie@kernel.org
 Cc: lgirdwood@gmail.com,
@@ -58,17 +58,17 @@ Cc: lgirdwood@gmail.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH 3/5] ASoC: mediatek: mt8188-mt6359: Cleanup return 0 disguised as return ret
-Date: Thu,  8 Jun 2023 10:47:25 +0200
-Message-Id: <20230608084727.74403-4-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 1/5] ASoC: mediatek: mt8188-mt6359: Compress of_device_id entries
+Date: Thu,  8 Jun 2023 10:47:23 +0200
+Message-Id: <20230608084727.74403-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230608084727.74403-1-angelogioacchino.delregno@collabora.com>
 References: <20230608084727.74403-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230608_014741_466685_46BA8541 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20230608_014741_464661_811CFD46 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,88 +83,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change all instances of `return ret` to `return 0` at the end of
-functions where ret is always zero and also change functions
-mt8188_{hdmi,dptx}_codec_init to be consistent with how other
-functions are returning errors
+Those entries fit in one line: compress them to reduce line count.
+While at it, also add the sentinel comment to the last entry.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- sound/soc/mediatek/mt8188/mt8188-mt6359.c | 20 ++++++++++++--------
- 1 file changed, 12 insertions(+), 8 deletions(-)
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
 
 diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-index b2735496d140..260cace408b9 100644
+index bc4b74970a46..643a7a12a96b 100644
 --- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
 +++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-@@ -491,11 +491,13 @@ static int mt8188_hdmi_codec_init(struct snd_soc_pcm_runtime *rtd)
- 	}
- 
- 	ret = snd_soc_component_set_jack(component, &priv->hdmi_jack, NULL);
--	if (ret)
-+	if (ret) {
- 		dev_info(rtd->dev, "%s, set jack failed on %s (ret=%d)\n",
- 			 __func__, component->name, ret);
-+		return ret;
-+	}
- 
--	return ret;
-+	return 0;
- }
- 
- static int mt8188_dptx_codec_init(struct snd_soc_pcm_runtime *rtd)
-@@ -513,11 +515,13 @@ static int mt8188_dptx_codec_init(struct snd_soc_pcm_runtime *rtd)
- 	}
- 
- 	ret = snd_soc_component_set_jack(component, &priv->dp_jack, NULL);
--	if (ret)
-+	if (ret) {
- 		dev_info(rtd->dev, "%s, set jack failed on %s (ret=%d)\n",
- 			 __func__, component->name, ret);
-+		return ret;
-+	}
- 
--	return ret;
-+	return 0;
- }
- 
- static int mt8188_dumb_amp_init(struct snd_soc_pcm_runtime *rtd)
-@@ -539,7 +543,7 @@ static int mt8188_dumb_amp_init(struct snd_soc_pcm_runtime *rtd)
- 		return ret;
- 	}
- 
--	return ret;
-+	return 0;
- }
- 
- static int mt8188_max98390_hw_params(struct snd_pcm_substream *substream,
-@@ -612,7 +616,7 @@ static int mt8188_max98390_codec_init(struct snd_soc_pcm_runtime *rtd)
- 		return ret;
- 	}
- 
--	return ret;
-+	return 0;
- }
- 
- static int mt8188_nau8825_codec_init(struct snd_soc_pcm_runtime *rtd)
-@@ -660,7 +664,7 @@ static int mt8188_nau8825_codec_init(struct snd_soc_pcm_runtime *rtd)
- 		return ret;
- 	}
- 
--	return ret;
-+	return 0;
+@@ -1117,15 +1117,9 @@ static struct mt8188_card_data mt8188_nau8825_card = {
  };
  
- static void mt8188_nau8825_codec_exit(struct snd_soc_pcm_runtime *rtd)
-@@ -697,7 +701,7 @@ static int mt8188_nau8825_hw_params(struct snd_pcm_substream *substream,
- 		return ret;
- 	}
+ static const struct of_device_id mt8188_mt6359_dt_match[] = {
+-	{
+-		.compatible = "mediatek,mt8188-mt6359-evb",
+-		.data = &mt8188_evb_card,
+-	},
+-	{
+-		.compatible = "mediatek,mt8188-nau8825",
+-		.data = &mt8188_nau8825_card,
+-	},
+-	{},
++	{ .compatible = "mediatek,mt8188-mt6359-evb", .data = &mt8188_evb_card, },
++	{ .compatible = "mediatek,mt8188-nau8825", .data = &mt8188_nau8825_card, },
++	{ /* sentinel */ },
+ };
+ MODULE_DEVICE_TABLE(of, mt8188_mt6359_dt_match);
  
--	return ret;
-+	return 0;
- }
- 
- static const struct snd_soc_ops mt8188_nau8825_ops = {
 -- 
 2.40.1
 
