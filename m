@@ -4,91 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C70C1C7EE25
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 08:58:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB632C7EE25
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 09:02:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jtme5s3dRQf7Gtdgff/AfDj88pgSYDNPfGdCGVzp2R0=; b=z6EJjBWK7l52++gpugfVFa8I37
-	uU9K+oM8JoeW48nNiNqGtfUIbDNGPcN5KqUcAt+mrVh3jElhzoBGc8y4sMToV9RQ7MGFyNa6+FGS+
-	MclgqYK9LHPKhsjqXMjkBc88c4KwevGUhb4zR9uyk05lw46BZ1ekbGt3PzQDt2pWKmotT6WKaW8WC
-	PIJHCSWH2d/Z9pdYma5E/SoUAzF6IV5N6Nwo6vTPkZ3fnK1LrcaNeMdZjUYVGesvOgiA9JSEk3YIF
-	wmQM1Aq+5/7qHWjPWK5iUX5sUhzrUjDhPbiiNMA2r/7ZGwFWODs63EA4Y66COtpO87nXqQkLGVgrq
-	qiW9RwmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZhAp+BDSu/Ws5Q8sKxPNdYSkxLQXrJKY4PBO7PcjGgs=; b=Pt055sfjLxsV8fs7SKtHFMNRhT
+	1d12NL1TWs3hzDgbCq9vYcFzUN3g/3h9ZwXgm3AD+/Tr1nbkvO9MSk5d0tkBhc8wBVQI0f4Nyfuah
+	DGTcRi6JEkIqFR1i6S12VyZNu+oJJ5hF2kj+3ucN139M7UZGu5qwg6TxmflMBp3lx6h4123xXK+Ra
+	p7klQHqqpCARpp/918Irqe8QekQ3ayi/kJlaJDOJ0DPD6C6Z4IiuPpzuXilZ39hKubfvX8K/yYYwL
+	BAdTm4FP8gfYrR2GtksPRBh35KUuiQ+oXRkB9WatvBEc/Jix1QI/gXV8lXzZ8k6iKyK9E4O2XwlTI
+	ZJ+Nd2uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7BSx-008cbT-2Q;
-	Thu, 08 Jun 2023 08:57:59 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1q7BWw-008dJM-05;
+	Thu, 08 Jun 2023 09:02:06 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7BSu-008ca7-2N
-	for linux-mediatek@lists.infradead.org;
-	Thu, 08 Jun 2023 08:57:58 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-3f7f543fe2fso2758815e9.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 08 Jun 2023 01:57:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1686214673; x=1688806673;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=jtme5s3dRQf7Gtdgff/AfDj88pgSYDNPfGdCGVzp2R0=;
-        b=gra6jAlodbU30t5m7gbdPhx1pmD3IYs4W5CF5e7hZz0ughSR54Qmhb0FbJWse1Xlm1
-         XdkDYHT+hlIKFWiiLJznQwhuxbGB9YuXZh4ntt22vuiYvDYkACBpWgER6p6r72F/Rh0H
-         vSqJo1zRg9aIqJRGg10zUQSMhHH4lVZmTeok6WF4OWh8Dn0ls4YORpjvQU30QHQp2hL3
-         dfhtKEIW5f3FTrczaxzXv1CvHEPVLZ/97Z/FZ1tgXON9l+d8tAUWIpv758ut5jfiDuvl
-         1lB3D1lkIuQ/yEhN0TUavj6iR5hTRCPAWRUBn/UTtS0tpLfPXvLV0TLHq+nstox4cO/y
-         wszw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686214673; x=1688806673;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=jtme5s3dRQf7Gtdgff/AfDj88pgSYDNPfGdCGVzp2R0=;
-        b=WVSHn1fGnh02SEJmKvH65iijCMxiNz+pb6qd/qK8zLeYqmUfruqw9O1UyjUau93vwO
-         KgzNaP7oyAu1qWBeGUFjXKoAXwKPs0HoJISzV0I7iDJn2fCB2ty8//H+PjAvxXZsLNni
-         6bh5gDb7ciIXRzU3t1Rf9Y5+jB7O9C52wcbvrzwMoeB36UbA0+a67dpOVMInuQtqpf5g
-         CWDc/fxrT76h4ZfoyAVMffx+Ogd4zXPiED2NgEzb7jYHmuAgzo28ydaqkI4Q34KBiSZy
-         Uu7Vo/CvQQUzZQ6rz/Ut6eK4mS6a10DiPEWn8I5eOBCa71omkXqAu4ZElL9qx7Lsou09
-         6ymg==
-X-Gm-Message-State: AC+VfDz2gl1/tuN1oK3A0jqbGQuzQSksz8vS83nifOHEsa/FP4cdLHiC
-	+tvpOLf3kvXL0makAEGlt2+sLQ==
-X-Google-Smtp-Source: ACHHUZ5Oj7KBjt/jU4KYcCWRyKtv4qWOgTZdAtGVt+sxedJk020uqbAfEPNcT/IfNVY3AFUKbwvv7A==
-X-Received: by 2002:a05:600c:364b:b0:3f1:93c2:4df7 with SMTP id y11-20020a05600c364b00b003f193c24df7mr780513wmq.5.1686214672973;
-        Thu, 08 Jun 2023 01:57:52 -0700 (PDT)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id o17-20020a05600c379100b003f4e3ed98ffsm1259957wmr.35.2023.06.08.01.57.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Jun 2023 01:57:50 -0700 (PDT)
-Date: Thu, 8 Jun 2023 11:57:46 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Trevor Wu =?utf-8?B?KOWQs+aWh+iJryk=?= <Trevor.Wu@mediatek.com>
-Cc: "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
-	"kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"broonie@kernel.org" <broonie@kernel.org>,
-	"tiwai@suse.com" <tiwai@suse.com>,
-	"amergnat@baylibre.com" <amergnat@baylibre.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"perex@perex.cz" <perex@perex.cz>,
-	"alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2] SoC: mediatek: mt8188-mt6359: clean up a return in
- codec_init
-Message-ID: <72aee5eb-792e-40c0-83a5-79618fca30a3@kadam.mountain>
-References: <42f2a995-3545-40bf-82a0-fd9b8abc16ce@moroto.mountain>
- <a667139fd91f980eca1936aed7c973b750d30858.camel@mediatek.com>
+	id 1q7BWs-008dIa-2z;
+	Thu, 08 Jun 2023 09:02:04 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 95A3A66058B2;
+	Thu,  8 Jun 2023 10:02:00 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1686214921;
+	bh=LJ+HvhTd3r8A40SMUVKIa+zdl0EATp6N8y8llSkifhg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=BPd1t8XBtn8+kBHTWacnnTywabw5crwx4HWW2ZfQqRkv3FSbaMc4djBmtqXiEdksT
+	 RY6LKQ0b5GUt/6dyETcf+oumayZ6S7ZcZOfevyRiSilJIOhUFYdABftjtGti7lEunk
+	 +aXTwE6wUY4U1NsAdbjDhJYBhs+mY1Kw5x5qrIAhka3/xOCsS4fmkLC8rT3AyndWZq
+	 Kg5O0bB14Evlq7oMBrdLUAw06uBRjWUDl4K43TPbOp2QzJZEwL3zunbcG5kYq51VB+
+	 DCgRzH0fZv4YQEgJBBUMta31sd00p32plSEebCoEjOnUb3dwdix1jSm2Hq0Sledf9M
+	 HjthEQ0dKa55w==
+Message-ID: <f0018817-d47b-d772-ed9f-9126bf71a0d1@collabora.com>
+Date: Thu, 8 Jun 2023 11:01:58 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
+Subject: Re: [PATCH v2 3/5] media: mediatek: vcodec: Read HW active status
+ from clock
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Stephen Boyd <sboyd@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, kernel@collabora.com,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230607205714.510012-1-nfraprado@collabora.com>
+ <20230607205714.510012-4-nfraprado@collabora.com>
+ <CAGXv+5HHARvkCYfjPjRKgyWuzv-Dt215z1=yA+_tw4hyasdGQA@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5HHARvkCYfjPjRKgyWuzv-Dt215z1=yA+_tw4hyasdGQA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <a667139fd91f980eca1936aed7c973b750d30858.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230608_015756_777456_0B864FB9 
-X-CRM114-Status: GOOD (  19.23  )
+X-CRM114-CacheID: sfid-20230608_020203_103137_1BEE9E99 
+X-CRM114-Status: GOOD (  27.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,58 +86,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 08, 2023 at 04:02:07AM +0000, Trevor Wu (吳文良) wrote:
-> On Wed, 2023-06-07 at 17:57 +0300, Dan Carpenter wrote:
-> >  This code triggers a Smatch static checker warning and does sort of
-> > look like an error path.
-> > 
-> > sound/soc/mediatek/mt8188/mt8188-mt6359.c:597
-> > mt8188_max98390_codec_init() warn: missing error code? 'ret'
-> > 
-> > However, returning 0 is intentional.  Make that explicit.
+Il 08/06/23 10:12, Chen-Yu Tsai ha scritto:
+> On Thu, Jun 8, 2023 at 4:57 AM Nícolas F. R. A. Prado
+> <nfraprado@collabora.com> wrote:
+>>
+>> Remove the requirement of a VDEC_SYS reg iospace. To achieve that, rely
+>> on the "active" clock being passed through the DT, and read its status
+>> during IRQ handling to check whether the HW is active.
+>>
+>> The old behavior is still present when reg-names aren't supplied, as to
+>> keep backward compatibility.
+>>
+>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>> ---
+>>
+>> (no changes since v1)
+>>
+>>   .../mediatek/vcodec/mtk_vcodec_dec_drv.c      | 59 +++++++++++++++----
+>>   .../mediatek/vcodec/mtk_vcodec_dec_hw.c       | 20 +++++--
+>>   .../mediatek/vcodec/mtk_vcodec_dec_pm.c       | 12 +++-
+>>   .../platform/mediatek/vcodec/mtk_vcodec_drv.h |  1 +
+>>   4 files changed, 74 insertions(+), 18 deletions(-)
+>>
+>> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+>> index 9c652beb3f19..8038472fb67b 100644
+>> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+>> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+>> @@ -16,6 +16,7 @@
+>>   #include <media/v4l2-mem2mem.h>
+>>   #include <media/videobuf2-dma-contig.h>
+>>   #include <media/v4l2-device.h>
+>> +#include <linux/clk-provider.h>
 > 
-> Hi Dan,
+>                     ^^^^^^^^^^^^^^
 > 
-> There are several similar instances in this file. If using 'return
-> ret;' is not recommended, should we update all of them simultaneously?
+> This seems like a violation of the API separation.
 > 
-> For instance, the value of 'ret' at the end of this function should
-> also be zero.
+>>   #include "mtk_vcodec_drv.h"
+>>   #include "mtk_vcodec_dec.h"
+>> @@ -38,22 +39,29 @@ static int mtk_vcodec_get_hw_count(struct mtk_vcodec_dev *dev)
+>>          }
+>>   }
+>>
+>> +static bool mtk_vcodec_is_hw_active(struct mtk_vcodec_dev *dev)
+>> +{
+>> +       u32 cg_status = 0;
+>> +
+>> +       if (!dev->reg_base[VDEC_SYS])
+>> +               return __clk_is_enabled(dev->pm.vdec_active_clk);
+> 
+> AFAIK this is still around for clk drivers that haven't moved to clk_hw.
+> It shouldn't be used by clock consumers. Would it be better to just pass
+> a syscon?
 > 
 
-I would prefer that, yes.  "return 0;" is always more clear than
-"return ret;"
+This is a legit usage of __clk_is_enabled().... because that's what we're really
+doing here, we're checking if a clock got enabled by the underlying MCU (as that
+clock goes up after the VDEC boots).
 
-I didn't change the "return ret;" at the end of the functions because
-they were obviously intentional.  I'm doing static analysis and I have
-an unpublished check which complains about the return ret at the end
-of the function but I'm not going to publish it because that doesn't
-find bugs and I'm only focused on bugs.
+If this is *not* acceptable as it is, we will have to add a clock API call to
+check if a clock is enabled... but it didn't seem worth doing since we don't
+expect anyone else to have any legit usage of that, or at least, we don't know
+about anyone else needing that...
 
-When we have code like:
+As for the syscon, that's something that we've been discussing as well... the
+thing is: we're really *really* checking if a clock is enabled, so we should
+be using clock related calls... reading from a syscon means that we'd have to
+perform a register read (of.. again.. a clock) outside of the clock framework
+which, in my opinion, wouldn't be clean; I'd expect that to become a bit messy
+in the future too, should more MediaTek SoCs (I think MT8192/95 are already in
+the list, Nicolas please correct me if I'm wrong here) need the same thing, as
+we'd be adding more definitions around.
 
-	ret = frob();
-	if (ret)
-		return ret;
-
-	if (x == 1)
-		return ret;
-
-More often than not, that is a bug.  But if it's code like:
-
-	ret = frob();
-	if (ret)
-		return ret;
-
-	frob();
-	frob();
-	frob();
-
-	return ret;
-
-Then that's probably not a bug.
-
-regards,
-dan carpenter
+Cheers,
+Angelo
 
 
