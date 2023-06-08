@@ -4,92 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E4B7C7EE29
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 09:39:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF089C7EE29
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 09:50:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kis83jMD1oWs6024Wvt+G1gr/3Bk88oMA3d6rNJj5g4=; b=LzsFio2qeW1mr8UAUEe2Uy1HJp
-	amVE7LLGWhhhfUwjhyo7Xw16utb9AooPLh4jeXR6L2Y6paQFWMNJM3apSIGUZUvmmnrzlvgofdsve
-	2QKEtCQFlmzK8uRfmaDo5OBIIctUTSjkhERPUBv9Ovq9AM0wJ2dbwzPrXOu/rDKaZCwn+2DyHcZa0
-	jBHj5ZWQs/g6DERheYO5zSthBX5oJpJhWPczyCSvkaDTkcVvLl7iuaGjuEPhSw5Ar9RrYrNbiP46r
-	vOsUcl/Dd/WykQ/zOOW/a3UHTkgPHVw9APJn8QBisLyKEconIhiNb6BvjCD2TSX4xdF9xfaabpynC
-	T6/K9hmQ==;
+	bh=BwfV7uve9JHvQ7KPIcuTdH5iXAupAcOmFZXka/qb7TE=; b=pJksMesCW5klQ5a1qJqHzbpEyu
+	vyFK5TcBza+rl0zKR4Lcyl8x2VcR7lDu0bBSJgkJ3RSGZLLPWUJxly51Gak+RlyWACIlvegVD88T0
+	aFxKpINT0aqutwtEs2mE3833rcH/ze0sgCG9TJ3qf+Gn3Z6ZBrKbRjytp0rZqBELyEBDmSoduW6Zh
+	lgvyfJKW+ZNqomQEFsec4TdhB588af0JQBLRX+88WCX1stZ8ArLRM3VDG0bAYGfTYdu2Lptb5P6DI
+	8VZBt6MmjrvcAUrW4GESaZ/m1WKacj7nxjwJqXXd8p+i1eeNhc1zDvIWNQOwylcV4rAa9FjYmV9EN
+	yeRBa2dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7C7F-008iXH-1A;
-	Thu, 08 Jun 2023 09:39:37 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1q7CHx-008kFb-3B;
+	Thu, 08 Jun 2023 09:50:41 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7C7B-008iVM-0c
+	id 1q7CHu-008kDy-31
 	for linux-mediatek@lists.infradead.org;
-	Thu, 08 Jun 2023 09:39:35 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-3f7fcdc7f7fso1661225e9.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 08 Jun 2023 02:39:30 -0700 (PDT)
+	Thu, 08 Jun 2023 09:50:40 +0000
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-30e56fc9fd2so432227f8f.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 08 Jun 2023 02:50:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1686217169; x=1688809169;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1686217835; x=1688809835;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=kis83jMD1oWs6024Wvt+G1gr/3Bk88oMA3d6rNJj5g4=;
-        b=dh2IGeZP1UXlw/rxc8tHwYftXW4vIKDKiSgUwwpYDTnQLnUUZ2eKQNpLe1ae+OOkaq
-         ZUOfth6aGXN7TreMG667Tdd0b9nHJipOIZXaw1UP6PJgGrkbGVKv9GmuLrgVrxUYmEtL
-         Jn5nUBOvSxF1p5Yll4gh3dz0l4pJpALQwXgKrtbWLz6N817Sd0MTH8Sbh8LY9iGf6iAv
-         CA9Rl9Ase8AAeu4Y4vACb40mBoVt52+cKQzMjzXTUPPT7gr2SzKoi+ST2qflIt5sBVSX
-         V4/djTioCzHuu7SKvoD/QBgRw4Sn1CPnceGIBVTQmGx0HHJWzWQOb8PCENz9gqNAuTcO
-         o5lw==
+        bh=BwfV7uve9JHvQ7KPIcuTdH5iXAupAcOmFZXka/qb7TE=;
+        b=PpYoQ9yBVRw2vZUWFh2CmtHT2Hf537cbytt50hvfTVoPmF9Gk4gIoqksRA90soEjgT
+         BJJUPYAibqGWlmew06C33ldDMSj9lAhFsIadnFoo4f9ywI2khZtxKVd959gjiVf8d84G
+         /cQfPbgAt3rK+8fYSrJi2T1sM9TFSEkemPr0raVGVnxl39pmXPzInTP70Toq4HrLbXlF
+         s66rtbskCNwdz9Pm8NDo6yRs9R+sqGG+njr5DbsW32pKBcJ6aOpZ9HcWJbXHgguMKqQQ
+         Iom8RjZLir4TsGAMTJ6Yxq9WQxxyLk7XSWLw1aqKJ1G50LYHOSPlnbGIEHZiJRw1Q/Rh
+         31YA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686217169; x=1688809169;
+        d=1e100.net; s=20221208; t=1686217835; x=1688809835;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=kis83jMD1oWs6024Wvt+G1gr/3Bk88oMA3d6rNJj5g4=;
-        b=Qg6Gt6XF7n3gseWhxAR89mLlFFs2t9QJszFjIaKeOjdVR2lAQre3nv/eJd5NFdMKLP
-         A8kTTtEconcjCob1nK986h+oICmgrb0XBmY03Fu2ETBy26ffAtWAxfA49DuKqwnb9+Wk
-         ONONZfARMM0NF1p7pwynzuWAaq6Eb4oyIMjDoeJRLquGWpYbnbwcDHY7rYjb4q2XlTHw
-         0TNp3XSVYwYzv9U5H5wo2ASJ0i18KxjGIVmE5PNqkdYLhMDtJNPYVNWVNtQbFUiRf9L7
-         jmc+mWv3mGnmIJNIStEm1zApYKc63cGCYLhkraJGS4gRMUhxk7UH86kgkK3mycV0U0qt
-         kfZw==
-X-Gm-Message-State: AC+VfDw4LfRJ8vkr2jti7TFVkWGPgt6ZwJ/gHTjXX/ZRVMpvS/qOlawy
-	uZkINXK6ol/WYwad8PJkOL/3GA==
-X-Google-Smtp-Source: ACHHUZ7Ms6WXtKfgT/Z+U3P+H7HunJuUiCLEYOMq2NRw8YGy939Doi5kEfI1/uibHdDRb84aF9r7Mg==
-X-Received: by 2002:a05:6000:108a:b0:30e:56b3:60fe with SMTP id y10-20020a056000108a00b0030e56b360femr1337520wrw.4.1686217168916;
-        Thu, 08 Jun 2023 02:39:28 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:3a59:921c:4758:7db5? ([2a05:6e02:1041:c10:3a59:921c:4758:7db5])
-        by smtp.googlemail.com with ESMTPSA id u13-20020adfeb4d000000b00301a351a8d6sm1046418wrn.84.2023.06.08.02.39.27
+        bh=BwfV7uve9JHvQ7KPIcuTdH5iXAupAcOmFZXka/qb7TE=;
+        b=XAUlTWVFyZJpV11OFEN14XLPVUkHRbUaP2FFNIGpLoHtZpajFV310mbWFXc6q4NT4f
+         22C1BgH/GsjlccNwDho/WnR/8zLz4xJLKE/hPuuTom1rlsxpeH8N2jVzHI63gJ9ttyyV
+         HZDNbMGnPavm6oGE2NjW5OmjxSpvkU9h+aUgQOqhlK7Tn34XiQjdt8/W8RcFI0riHGcO
+         CF8sqaL4WEe7XQhtqUtcNncCXZwNtQmi+26oHzyYqcKzb8tyW/+0uq4wSAyefzpy7fbX
+         axiwvr/SGIlRDFX5o28YVlqAGNRsAjdwfyiMo3OhqiYsJRBjN1brvgsxoD2XwrFLme5g
+         k8zA==
+X-Gm-Message-State: AC+VfDw9/3OzQsD8SZmoEdJpk/iZLTR/RkRV2w7EQVUah/RerLIUTStG
+	MHjP8cYFK78D7nCPWuby87q9Hg==
+X-Google-Smtp-Source: ACHHUZ7vePKIJ7//4HDDmBh8tZbIexRsI4k41AJwSBLsN64OpFI6fQf5Jj3sbWscK45AtGmBnqt/1w==
+X-Received: by 2002:adf:d84e:0:b0:307:82e3:70cd with SMTP id k14-20020adfd84e000000b0030782e370cdmr7002149wrl.14.1686217834930;
+        Thu, 08 Jun 2023 02:50:34 -0700 (PDT)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id x15-20020a5d650f000000b0030adfa48e1esm1071530wru.29.2023.06.08.02.50.33
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 08 Jun 2023 02:39:28 -0700 (PDT)
-Message-ID: <59c7c90c-50f2-5a77-af12-b266c6e6e0b1@linaro.org>
-Date: Thu, 8 Jun 2023 11:39:27 +0200
+        Thu, 08 Jun 2023 02:50:34 -0700 (PDT)
+Message-ID: <8bbbc852-6139-29d4-417c-a2d9c77c192f@baylibre.com>
+Date: Thu, 8 Jun 2023 11:50:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v4 0/5] Add LVTS support for mt8192
+ Thunderbird/102.11.0
+Subject: Re: [PATCH 5/5] ASoC: mediatek: mt8188-mt6359: Use bitfield macros
+ for registers
 Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- angelogioacchino.delregno@collabora.com, rafael@kernel.org,
- amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ broonie@kernel.org
+Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
+ matthias.bgg@gmail.com, trevor.wu@mediatek.com, dan.carpenter@linaro.org,
+ alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, james.lo@mediatek.com, rex-bc.chen@mediatek.com,
- abailon@baylibre.com, amergnat@baylibre.com, khilman@baylibre.com
-References: <20230530195132.2286163-1-bero@baylibre.com>
- <CAGXv+5EVfgEBDm=7MmQ=OsP322KmE23PwycJ-0LjU+3dEZygUQ@mail.gmail.com>
- <572f5a88-8c2e-4324-b477-836a5024ec67@notapiano>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <572f5a88-8c2e-4324-b477-836a5024ec67@notapiano>
+ kernel@collabora.com
+References: <20230608084727.74403-1-angelogioacchino.delregno@collabora.com>
+ <20230608084727.74403-6-angelogioacchino.delregno@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230608084727.74403-6-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230608_023933_229874_23867D7D 
-X-CRM114-Status: GOOD (  25.54  )
+X-CRM114-CacheID: sfid-20230608_025038_979377_8FBDD4F1 
+X-CRM114-Status: GOOD (  22.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,70 +100,134 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01/06/2023 19:09, Nícolas F. R. A. Prado wrote:
-> On Wed, May 31, 2023 at 12:49:43PM +0800, Chen-Yu Tsai wrote:
->> On Wed, May 31, 2023 at 3:51 AM Bernhard Rosenkränzer <bero@baylibre.com> wrote:
->>>
->>> From: Balsam CHIHI <bchihi@baylibre.com>
->>>
->>> Add full LVTS support (MCU thermal domain + AP thermal domain) to MediaTek MT8192 SoC.
->>> Also, add Suspend and Resume support to LVTS Driver (all SoCs),
->>> and update the documentation that describes the Calibration Data Offsets.
->>>
->>> Changelog:
->>>      v4 :
->>>          - Shrink the lvts_ap thermal sensor I/O range to 0xc00 to make
->>>            room for SVS support, pointed out by
->>>            AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>
->>>      v3 :
->>>          - Rebased :
->>>              base-commit: 6a3d37b4d885129561e1cef361216f00472f7d2e
->>>          - Fix issues in v2 pointed out by Nícolas F. R. A. Prado <nfraprado@collabora.com>:
->>>            Use filtered mode to make sure threshold interrupts are triggered,
->>
->> I'm seeing sensor readout (either through sysfs/thermal/<x>/temp or hwmon)
->> fail frequently on MT8192. If I run `sensors` (lm-sensors), at least a couple
->> of the LVTS sensors would be N/A. Not sure if this is related to this change.
+On 08/06/2023 10:47, AngeloGioacchino Del Regno wrote:
+> Replace open coded instances of FIELD_GET() with it, move register
+> definitions at the top of the file and also replace magic numbers
+> with register definitions.
 > 
-> Yes, it is. Filtered mode has some delay associated with reading, meaning most
-> of the time the value isn't ready, while immediate mode is, well, pretty much
-> immediate and the read always succeeds.
+> While at it, also change a regmap_update_bits() call to regmap_write()
+> because the top 29 bits of AUD_TOP_CFG (31:3) are reserved (unused).
 > 
-> For temperature monitoring, filtered mode should be used. It supports triggering
-> interrupts when crossing the thresholds. Immediate mode is meant for one-off
-> readings of the temperature. This is why I suggested using filtered mode.
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   sound/soc/mediatek/mt8188/mt8188-mt6359.c | 32 ++++++++++++++---------
+>   1 file changed, 19 insertions(+), 13 deletions(-)
 > 
-> As far as the thermal framework goes, it's ok that filtered mode doesn't always
-> return a value, as it will keep the old one. But of course, having the
-> temperature readout always work would be a desired improvement.
-> 
-> As for ways to achieve that, I think the intended way would be to enable the
-> interrupts that signal data ready on filtered mode (bits 19, 20, 21, 28), read
-> the temperature and cache it so it is always available when the get_temp()
-> callback is called. The issue with this is that it would cause *a lot* of
-> interrupts, which doesn't seem worth it.
-> 
-> Another option that comes to mind would be to enable immediate mode only during
-> the get_temp() callback, to immediately read a value, and return to filtered
-> mode at the end. That might work, but I haven't tried yet.
+> diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> index 5b2660139421..ac69c23e0da1 100644
+> --- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> +++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> @@ -6,6 +6,7 @@
+>    * Author: Trevor Wu <trevor.wu@mediatek.com>
+>    */
+>   
+> +#include <linux/bitfield.h>
+>   #include <linux/input.h>
+>   #include <linux/module.h>
+>   #include <linux/of_device.h>
+> @@ -19,6 +20,15 @@
+>   #include "../common/mtk-afe-platform-driver.h"
+>   #include "../common/mtk-soundcard-driver.h"
+>   
+> +#define CKSYS_AUD_TOP_CFG	0x032c
+> + #define RG_TEST_ON		BIT(0)
+> + #define RG_TEST_TYPE		BIT(2)
+> +#define CKSYS_AUD_TOP_MON	0x0330
+> + #define TEST_MISO_COUNT_1	GENMASK(3, 0)
+> + #define TEST_MISO_COUNT_2	GENMASK(7, 4)
+> + #define TEST_MISO_DONE_1	BIT(28)
+> + #define TEST_MISO_DONE_2	BIT(29)
+> +
+>   #define NAU8825_HS_PRESENT	BIT(0)
+>   
+>   /*
+> @@ -251,9 +261,6 @@ static const struct snd_kcontrol_new mt8188_nau8825_controls[] = {
+>   	SOC_DAPM_PIN_SWITCH("Headphone Jack"),
+>   };
+>   
+> -#define CKSYS_AUD_TOP_CFG 0x032c
+> -#define CKSYS_AUD_TOP_MON 0x0330
+> -
+>   static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>   {
+>   	struct snd_soc_component *cmpnt_afe =
+> @@ -265,13 +272,13 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>   	struct mtkaif_param *param;
+>   	int chosen_phase_1, chosen_phase_2;
+>   	int prev_cycle_1, prev_cycle_2;
+> -	int test_done_1, test_done_2;
+> +	u8 test_done_1, test_done_2;
+>   	int cycle_1, cycle_2;
 
-Why not understand why the filtered mode is unable to return temperature 
-values most of the time?
+Shouldn't be unsigned too ?
 
-I tried with the filtered mode and I can see 90% of the time it is not 
-possible to read the temperature.
+I'm wondering if it would be better (probably in another patch) to 
+change the data type of the other variables too, to match their 
+use-case. (maybe it's already the case, I'm just wondering)
 
-IIUC there are timings which can be setup, may be understand how to set 
-them up in order to read the temperature correctly?
+>   	int mtkaif_chosen_phase[MT8188_MTKAIF_MISO_NUM];
+>   	int mtkaif_phase_cycle[MT8188_MTKAIF_MISO_NUM];
+>   	int mtkaif_calibration_num_phase;
+>   	bool mtkaif_calibration_ok;
+> -	unsigned int monitor = 0;
+> +	u32 monitor = 0;
+>   	int counter;
+>   	int phase;
+>   	int i;
+> @@ -303,8 +310,7 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>   	mt6359_mtkaif_calibration_enable(cmpnt_codec);
+>   
+>   	/* set test type to synchronizer pulse */
+> -	regmap_update_bits(afe_priv->topckgen,
+> -			   CKSYS_AUD_TOP_CFG, 0xffff, 0x4);
+> +	regmap_write(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, RG_TEST_TYPE);
+>   	mtkaif_calibration_num_phase = 42;	/* mt6359: 0 ~ 42 */
+>   	mtkaif_calibration_ok = true;
+>   
+> @@ -314,7 +320,7 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>   		mt6359_set_mtkaif_calibration_phase(cmpnt_codec,
+>   						    phase, phase, phase);
+>   
+> -		regmap_set_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, 0x1);
+> +		regmap_set_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, RG_TEST_ON);
+>   
+>   		test_done_1 = 0;
+>   		test_done_2 = 0;
+> @@ -326,14 +332,14 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>   		while (!(test_done_1 & test_done_2)) {
+>   			regmap_read(afe_priv->topckgen,
+>   				    CKSYS_AUD_TOP_MON, &monitor);
+> -			test_done_1 = (monitor >> 28) & 0x1;
+> -			test_done_2 = (monitor >> 29) & 0x1;
+> +			test_done_1 = FIELD_GET(TEST_MISO_DONE_1, monitor);
+> +			test_done_2 = FIELD_GET(TEST_MISO_DONE_2, monitor);
+>   
+>   			if (test_done_1 == 1)
+> -				cycle_1 = monitor & 0xf;
+> +				cycle_1 = FIELD_GET(TEST_MISO_COUNT_1, monitor);
+>   
+>   			if (test_done_2 == 1)
+> -				cycle_2 = (monitor >> 4) & 0xf;
+> +				cycle_2 = FIELD_GET(TEST_MISO_COUNT_2, monitor);
+>   
+>   			/* handle if never test done */
+>   			if (++counter > 10000) {
+> @@ -361,7 +367,7 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>   			mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1] = prev_cycle_2;
+>   		}
+>   
+> -		regmap_clear_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, 0x1);
+> +		regmap_clear_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, RG_TEST_ON);
+>   
+>   		if (mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] >= 0 &&
+>   		    mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] >= 0)
 
-Caching values, switching the mode or whatever is hackish :/
+After that:
+
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 -- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+Regards,
+Alexandre
 
 
