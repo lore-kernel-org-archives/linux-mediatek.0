@@ -4,54 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E698C7EE29
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 09:57:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48072C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 10:01:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3d8TophyjpK6iv2SxUt4mmoW/wzhLq83DS5FU05FpC4=; b=DqxeVlMqGzLpjZptUHA/g0mGRp
-	Crwm34aRwWL7p55FeS5IuT42/tmonrZdZtWpInJtQA6OCme/c8D+P6RN/TVpMhLZwRWSpRsKKne9d
-	OJCjWUNjDIcS2SW7OPZrQxvW6Fdi/1H1TPZEEnLTs7Djn7GOdePX64aXwIZu1q3jHPfWBPD2C16lO
-	Nf0/lUERW0DQnikWpwvGrALMq1zbz9jcpNUbvZCS17FpCowwNkwlK5zN5axop/6ZhG6EZZvoRRoAn
-	qf1OSRxd20uetRRPRnskkAr5YTM8vvrYkO9oUfaL2wbsgA0xdXGeCfgGOzjccr3+cTqCe5hEDW9S/
-	yXJBtB4A==;
+	bh=bsOWfs49wC5N4v4NWtXmUnjFbzqZWXOVySuGPn3htMg=; b=r3MhbaZ9kJMl5U0OmHzbRe3gdc
+	uovMvHCpV2k3r5Qz9Q1nhkE8olNNkWzTHD3011bYprcsOKLk+egCIKmkx9qvQPdA+mpeeQ0jgMtI3
+	BYC/HjWOr+o0dVdTJL3swn0lZdzeawY5bZesUeMUNsEajrimePqNeimRK2yoFPPB1h3hgQdH7TSOh
+	e6CnAXf0CzGl27BLdViaIBxQ5wuO3b43cECg6gjVojvC93Y+HlaEf5uXZP0r4yR5eAIKg3elZGPtv
+	1+qKUeSXtURUJtvwFXc9ypJYtRJ7mPAITlWgG0myvQEAnoUuG1o07TGOcAX33pu822gBgw2oa7nnS
+	xsmmAyNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7COi-008lME-1b;
-	Thu, 08 Jun 2023 09:57:40 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q7CRx-008luI-1c;
+	Thu, 08 Jun 2023 10:01:01 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7COf-008lKw-0F;
-	Thu, 08 Jun 2023 09:57:38 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6F4746606F15;
-	Thu,  8 Jun 2023 10:57:32 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1686218253;
-	bh=Abj1gkmLa48yb8iW0WQ8r6Hnx6PfuQ7ea7AnIpcaE50=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Tw3LJYSwlTxxs/4vWOISFnCIKFeE/Aw2I4fbULbv0/vnf0IVskSEmmKoW1SZ5+ABz
-	 J1XD6X903rIQIKUtfr13/IhM1TfEDtKiNrL/sQlSXZTbU8uHPVgTrxDzqmQHDVA4yG
-	 4vvStYukIMo6glYEzjByEjsKrK5erQ8pKP2avcLbMmwLqI5DoTuLx1uovnLz4GFZrc
-	 wfKks3nHT+7y16s1LchIN8wnYAUila+W7zgnFzSt9eBzntD2/jL6+l+D3OaKPFp83v
-	 bwCaQF6wrTRixWcgTVY26mUdj9T6D2GhHzZtA+UegMfFt67JT0rNJimmL3ZOWyocww
-	 gvpFhbo/JL13g==
-Message-ID: <a8b454e3-dded-02d6-b97a-6a7aa3420cf1@collabora.com>
-Date: Thu, 8 Jun 2023 11:57:30 +0200
+	id 1q7CRu-008ltA-0K
+	for linux-mediatek@lists.infradead.org;
+	Thu, 08 Jun 2023 10:00:59 +0000
+Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-4f654d713c0so150837e87.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 08 Jun 2023 03:00:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1686218455; x=1688810455;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=bsOWfs49wC5N4v4NWtXmUnjFbzqZWXOVySuGPn3htMg=;
+        b=4tyzkukruKe8ZPA7RPnB00YrCnc3YfBJt40uG0nLFHL/S2MxEM1ID/0mg1wM6qR0Ap
+         O6/bzxhLWfWakDYYZSaELapb2cid4mN9Qnf2sxD64w4Inu9p5V0q7j0Kb3j5FjK6MiEi
+         9rSVcTKSTVnpx2CbhZ1k9pwKoDK+tf+kjFRRemHmgKPM8VlM5XJXahH2nLusHzlp1cL2
+         lJ+1UPZmC9MQjEgSw97kO1BYmj2wLUR5IIp58Ih7u9fTwzaxTuQ6ZQQfqXUg6UNVatUT
+         AKCn8JIS+6M9f9RI39+UNwbBbt1dKCMmz6jGVlDbdIifcAXhzBsnbyl6U4DkjmiB+V+E
+         C6uQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686218455; x=1688810455;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=bsOWfs49wC5N4v4NWtXmUnjFbzqZWXOVySuGPn3htMg=;
+        b=RZaeTxTdB6JCF/bBtpzCpXVxSWSImf1mHpObrs/O84lM9M0PpL8OB7k3RVAgyPTyy6
+         0BHeQUFRj/vcbdXlyISxP/OF8LTLo6gY1Qj/DQqYVtU6oJx2UyIO+qoe5NLaHRrx13Co
+         p6AS+bBmLkt50JQwv0dwDdMigXihGAfQQZIBYXS2gD/QumkLtiXVJfOHOzdYcZTmbgpQ
+         6JaCDYM+bEp0/IVdnkQWlVKtURC+9inkFc1PaAFtgCB/Zl6dYqKqQTB1RcnDLIFYAZ6E
+         P0lNar7V3CPIdgDCKuJkLG4qOk60IWSDPp0MBy1TW4PQ60AElhCdpp3a3NOWTMRdmztQ
+         tkoQ==
+X-Gm-Message-State: AC+VfDypbMFJ5tp8AqPQ+JvKi/CUo5bhVuGq4BOE23/S8wql/hYw+HYs
+	+sCT6JpkFckCvwb+fPMJpfDJZA==
+X-Google-Smtp-Source: ACHHUZ7LlWK64M5lFh/5PM74dhnqSCP79zYgwvl4PUklZhQtn1sfsWVhk/BVkBSv4bhXZyQ+/Lckrg==
+X-Received: by 2002:a19:a40e:0:b0:4f1:4504:2679 with SMTP id q14-20020a19a40e000000b004f145042679mr2891573lfc.41.1686218455474;
+        Thu, 08 Jun 2023 03:00:55 -0700 (PDT)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id p23-20020a1c7417000000b003f60eb72cf5sm4786261wmc.2.2023.06.08.03.00.54
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 08 Jun 2023 03:00:55 -0700 (PDT)
+Message-ID: <f4547bf6-5e95-331b-5d8e-b6d71209859d@baylibre.com>
+Date: Thu, 8 Jun 2023 12:00:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
+ Thunderbird/102.11.0
 Subject: Re: [PATCH 5/5] ASoC: mediatek: mt8188-mt6359: Use bitfield macros
  for registers
 Content-Language: en-US
-To: Alexandre Mergnat <amergnat@baylibre.com>, broonie@kernel.org
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ broonie@kernel.org
 Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
  matthias.bgg@gmail.com, trevor.wu@mediatek.com, dan.carpenter@linaro.org,
  alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
@@ -60,13 +80,14 @@ Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
 References: <20230608084727.74403-1-angelogioacchino.delregno@collabora.com>
  <20230608084727.74403-6-angelogioacchino.delregno@collabora.com>
  <8bbbc852-6139-29d4-417c-a2d9c77c192f@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <8bbbc852-6139-29d4-417c-a2d9c77c192f@baylibre.com>
+ <a8b454e3-dded-02d6-b97a-6a7aa3420cf1@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <a8b454e3-dded-02d6-b97a-6a7aa3420cf1@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230608_025737_437127_25E90DAA 
-X-CRM114-Status: GOOD (  20.77  )
+X-CRM114-CacheID: sfid-20230608_030058_357115_748E5986 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,132 +102,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/06/23 11:50, Alexandre Mergnat ha scritto:
-> On 08/06/2023 10:47, AngeloGioacchino Del Regno wrote:
->> Replace open coded instances of FIELD_GET() with it, move register
->> definitions at the top of the file and also replace magic numbers
->> with register definitions.
+On 08/06/2023 11:57, AngeloGioacchino Del Regno wrote:
+>>> -    int test_done_1, test_done_2;
+>>> +    u8 test_done_1, test_done_2;
+>>>       int cycle_1, cycle_2;
 >>
->> While at it, also change a regmap_update_bits() call to regmap_write()
->> because the top 29 bits of AUD_TOP_CFG (31:3) are reserved (unused).
+>> Shouldn't be unsigned too ?
 >>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   sound/soc/mediatek/mt8188/mt8188-mt6359.c | 32 ++++++++++++++---------
->>   1 file changed, 19 insertions(+), 13 deletions(-)
+>> I'm wondering if it would be better (probably in another patch) to 
+>> change the data type of the other variables too, to match their 
+>> use-case. (maybe it's already the case, I'm just wondering)
 >>
->> diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c 
->> b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
->> index 5b2660139421..ac69c23e0da1 100644
->> --- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
->> +++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
->> @@ -6,6 +6,7 @@
->>    * Author: Trevor Wu <trevor.wu@mediatek.com>
->>    */
->> +#include <linux/bitfield.h>
->>   #include <linux/input.h>
->>   #include <linux/module.h>
->>   #include <linux/of_device.h>
->> @@ -19,6 +20,15 @@
->>   #include "../common/mtk-afe-platform-driver.h"
->>   #include "../common/mtk-soundcard-driver.h"
->> +#define CKSYS_AUD_TOP_CFG    0x032c
->> + #define RG_TEST_ON        BIT(0)
->> + #define RG_TEST_TYPE        BIT(2)
->> +#define CKSYS_AUD_TOP_MON    0x0330
->> + #define TEST_MISO_COUNT_1    GENMASK(3, 0)
->> + #define TEST_MISO_COUNT_2    GENMASK(7, 4)
->> + #define TEST_MISO_DONE_1    BIT(28)
->> + #define TEST_MISO_DONE_2    BIT(29)
->> +
->>   #define NAU8825_HS_PRESENT    BIT(0)
->>   /*
->> @@ -251,9 +261,6 @@ static const struct snd_kcontrol_new 
->> mt8188_nau8825_controls[] = {
->>       SOC_DAPM_PIN_SWITCH("Headphone Jack"),
->>   };
->> -#define CKSYS_AUD_TOP_CFG 0x032c
->> -#define CKSYS_AUD_TOP_MON 0x0330
->> -
->>   static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
->>   {
->>       struct snd_soc_component *cmpnt_afe =
->> @@ -265,13 +272,13 @@ static int mt8188_mt6359_mtkaif_calibration(struct 
->> snd_soc_pcm_runtime *rtd)
->>       struct mtkaif_param *param;
->>       int chosen_phase_1, chosen_phase_2;
->>       int prev_cycle_1, prev_cycle_2;
->> -    int test_done_1, test_done_2;
->> +    u8 test_done_1, test_done_2;
->>       int cycle_1, cycle_2;
 > 
-> Shouldn't be unsigned too ?
-> 
-> I'm wondering if it would be better (probably in another patch) to change the data 
-> type of the other variables too, to match their use-case. (maybe it's already the 
-> case, I'm just wondering)
-> 
+> In theory, yes, cycle_1 and 2 should be unsigned, but the signedness of 
+> this
+> variable is getting used in the calibration logic later, as in the for loop
+> they are both being reinitialized to -1 ... so I couldn't just switch 
+> 'em to
+> unsigned.
 
-In theory, yes, cycle_1 and 2 should be unsigned, but the signedness of this
-variable is getting used in the calibration logic later, as in the for loop
-they are both being reinitialized to -1 ... so I couldn't just switch 'em to
-unsigned.
+Understood, thanks for your explanation.
 
->>       int mtkaif_chosen_phase[MT8188_MTKAIF_MISO_NUM];
->>       int mtkaif_phase_cycle[MT8188_MTKAIF_MISO_NUM];
->>       int mtkaif_calibration_num_phase;
->>       bool mtkaif_calibration_ok;
->> -    unsigned int monitor = 0;
->> +    u32 monitor = 0;
->>       int counter;
->>       int phase;
->>       int i;
->> @@ -303,8 +310,7 @@ static int mt8188_mt6359_mtkaif_calibration(struct 
->> snd_soc_pcm_runtime *rtd)
->>       mt6359_mtkaif_calibration_enable(cmpnt_codec);
->>       /* set test type to synchronizer pulse */
->> -    regmap_update_bits(afe_priv->topckgen,
->> -               CKSYS_AUD_TOP_CFG, 0xffff, 0x4);
->> +    regmap_write(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, RG_TEST_TYPE);
->>       mtkaif_calibration_num_phase = 42;    /* mt6359: 0 ~ 42 */
->>       mtkaif_calibration_ok = true;
->> @@ -314,7 +320,7 @@ static int mt8188_mt6359_mtkaif_calibration(struct 
->> snd_soc_pcm_runtime *rtd)
->>           mt6359_set_mtkaif_calibration_phase(cmpnt_codec,
->>                               phase, phase, phase);
->> -        regmap_set_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, 0x1);
->> +        regmap_set_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, RG_TEST_ON);
->>           test_done_1 = 0;
->>           test_done_2 = 0;
->> @@ -326,14 +332,14 @@ static int mt8188_mt6359_mtkaif_calibration(struct 
->> snd_soc_pcm_runtime *rtd)
->>           while (!(test_done_1 & test_done_2)) {
->>               regmap_read(afe_priv->topckgen,
->>                       CKSYS_AUD_TOP_MON, &monitor);
->> -            test_done_1 = (monitor >> 28) & 0x1;
->> -            test_done_2 = (monitor >> 29) & 0x1;
->> +            test_done_1 = FIELD_GET(TEST_MISO_DONE_1, monitor);
->> +            test_done_2 = FIELD_GET(TEST_MISO_DONE_2, monitor);
->>               if (test_done_1 == 1)
->> -                cycle_1 = monitor & 0xf;
->> +                cycle_1 = FIELD_GET(TEST_MISO_COUNT_1, monitor);
->>               if (test_done_2 == 1)
->> -                cycle_2 = (monitor >> 4) & 0xf;
->> +                cycle_2 = FIELD_GET(TEST_MISO_COUNT_2, monitor);
->>               /* handle if never test done */
->>               if (++counter > 10000) {
->> @@ -361,7 +367,7 @@ static int mt8188_mt6359_mtkaif_calibration(struct 
->> snd_soc_pcm_runtime *rtd)
->>               mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1] = prev_cycle_2;
->>           }
->> -        regmap_clear_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, 0x1);
->> +        regmap_clear_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, RG_TEST_ON);
->>           if (mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] >= 0 &&
->>               mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] >= 0)
-> 
-> After that:
-> 
-> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-> 
+-- 
+Regards,
+Alexandre
 
 
