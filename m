@@ -4,80 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48EF6C7EE29
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 13:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3327DC7EE37
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 13:49:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EOh0JiXTBiD+XxfR5ReLBEmoCXzQeXQhfGP6JGxjaMc=; b=PLJ1c+hqJ8MH+zz7FtvSgqI1yJ
-	e+ntKTKGek3ZEx59NgJnIpAvVHSg1CZI3zXoYjoDATWunD3G9d3LZrwnNL7WgPq8Or3ibiQpfZXNn
-	mTYbsCeQoU0uwjRtLV8M3dgDtQPlsOsNt8IKlJAp3UEXas1a4HxFhMDx00SMrschaKtYOpG7BCCiZ
-	L8v34YlgC0hUc26CTIUAjCLe+65E6HS5kos11sfqUL+aDog0/SwMuTPpfJG9Rk1rn8eVNAEuwZa85
-	HNlMxMR92gwLZM6DMlg5lPoUjDGjwudKiffbxK4xr0IHEJduaNc3CkPUpH+c2Yc6DG3RpiFZ72Qq4
-	PFXnYLWQ==;
+	bh=V6LipUg92nVI0lWt6WKtzlHRtu9dITcHtKh7R9Otq+U=; b=dn4d8zIAx2+aO2zJHl7qa2EjAw
+	WPK8igx0w5FI64AjxFVcuTARMwYa5a7lZP4n3pVnAWTMeW2UsHTKoBZivMIZgqPyPCkOqhvtWjpzy
+	Z6r5KcaAuiGDTW8AMljrDdDzoZA3WnZe9xJpKTHbP5ahRz0DTI2R5FcCygjAZibuF2+w3KqEvUVUj
+	k6+HRsTnMZZKz5mIX3GUsUwEeH4hcA99g9uR0NyqNY9NZfXwVvJgFfqpOWfD+z9UvPYNap6u4JI58
+	wylORPDZwfJfwbNt1t4vtFKO+h2xJb/fWhqnW5m2xskT9oD/Yzm/jfJADxIQZykRfN1YH5MJk/9Tn
+	tEPpRg9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7FQR-009Qkw-24;
-	Thu, 08 Jun 2023 13:11:39 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1q7G0r-009Vsv-0c;
+	Thu, 08 Jun 2023 13:49:17 +0000
+Received: from mail-io1-f53.google.com ([209.85.166.53])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7FQN-009QjX-1k;
-	Thu, 08 Jun 2023 13:11:37 +0000
-Received: from nicolas-tpx395.localdomain (unknown [IPv6:2606:6d00:11:5f2f::7a9])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5A79A6606F0D;
-	Thu,  8 Jun 2023 14:11:29 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1686229891;
-	bh=zmtOnMlEFWzULIW67hUUhdGF+BS4k1EslsAkPI/DEmc=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=LrWW5pmF8qjTKuc+N8pn+UdbiqPmui3gbYOhq2jdsuVpV2kL3596+bCy1qL5atfxl
-	 iAGyEpJpVLaJYaFr4inYVu0V0eJ8ung5RNWbUQkjPhcWTpSGrOUx9OQ+xMNtOd00Ov
-	 II43H5BDfjQZmWvQKmn/zFCyHa/e512udU2bak5/2abZ6M5xriofFs7AliKiXbhGgu
-	 JbjsItgBCGMBtoY8E1G0UhLFnXLgTNGH9PtBMVK+iWJiP3M1rbhrFf9+SUCx8FdCBE
-	 4LNkWqQc8BhHYGB0iyTeVBhKxDTkmQ2znpcZbkA4Ecl0MVXam4WVxFkJv0paARi/KP
-	 P/KUjEoR0u1WA==
-Message-ID: <ac3f4becf89d909503caeb8a05883fc38afccd41.camel@collabora.com>
-Subject: Re: [PATCH v2,04/10] media: mediatek: vcodec: remove the dependency
- of debug log
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Yunfei Dong =?UTF-8?Q?=28=E8=91=A3=E4=BA=91=E9=A3=9E=29?=
- <Yunfei.Dong@mediatek.com>, "nhebert@chromium.org" <nhebert@chromium.org>, 
- "wenst@chromium.org" <wenst@chromium.org>, "nfraprado@collabora.com"
- <nfraprado@collabora.com>,  "benjamin.gaignard@collabora.com"
- <benjamin.gaignard@collabora.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>, "hverkuil-cisco@xs4all.nl"
- <hverkuil-cisco@xs4all.nl>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "frkoenig@chromium.org" <frkoenig@chromium.org>, "stevecho@chromium.org"
- <stevecho@chromium.org>,  "linux-media@vger.kernel.org"
- <linux-media@vger.kernel.org>, "devicetree@vger.kernel.org"
- <devicetree@vger.kernel.org>, "daniel@ffwll.ch" <daniel@ffwll.ch>, 
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, "hsinyi@chromium.org"
- <hsinyi@chromium.org>,  "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>
-Date: Thu, 08 Jun 2023 09:11:20 -0400
-In-Reply-To: <6bb7e4b283332f1b76c1550347cb245a57eee90b.camel@mediatek.com>
-References: <20230607084901.28021-1-yunfei.dong@mediatek.com>
-	 <20230607084901.28021-5-yunfei.dong@mediatek.com>
-	 <ad28c125d9efca1f7e422fffe42dd56cef66b349.camel@collabora.com>
-	 <6bb7e4b283332f1b76c1550347cb245a57eee90b.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.1 (3.48.1-1.fc38) 
+	id 1q7G0o-009VrM-0E;
+	Thu, 08 Jun 2023 13:49:15 +0000
+Received: by mail-io1-f53.google.com with SMTP id ca18e2360f4ac-77acb944bdfso22387039f.0;
+        Thu, 08 Jun 2023 06:49:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686232151; x=1688824151;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=V6LipUg92nVI0lWt6WKtzlHRtu9dITcHtKh7R9Otq+U=;
+        b=ippHyIn1q49MA9lX+3JfYATnuBf/loW5Vx9+SsNid6MbGd/WI3q8Y6I0i763jfyVNk
+         GW6mMtGqHZ9iF5uF6W0Psd+zE7LhqLjJ5PBjtsBlSuObrqtCDioa7wVjtI2M8uQkDNk3
+         OaPV/n1QU0l+BKIrXZu440FYFWqlrzmhZSYSq9lab61R1VJAbORo8dbwUSib5hnIgoOn
+         yIFecASKQqR+fFxIlqW+g3FcS9TItK3C+IFeK+og1TUz3OgYXCNC3s3hpL4LVYVu83w8
+         J8tVlihpE/q5CL41xpJ/Qgmp0Qf3oYGP3uUbeQNGmSc/gsJnxrR2AFZMDOdDc5JK5Q6j
+         0yDw==
+X-Gm-Message-State: AC+VfDxM7BCnpvk2gMh692SpLdxTa/c6dmqpJ4qmRVBw7Z8eoHpc21dq
+	FVo20/zImB2LO3cLah2TrAFXwNl2wQ==
+X-Google-Smtp-Source: ACHHUZ5nOHAcbMwWIfFekipe5EvJXvai7cR/i6yNTIG5gTlkQTOFwBj2u3/RcAGVuQNZWItYWIHadQ==
+X-Received: by 2002:a5e:c74d:0:b0:776:fc29:d965 with SMTP id g13-20020a5ec74d000000b00776fc29d965mr11721408iop.10.1686232151090;
+        Thu, 08 Jun 2023 06:49:11 -0700 (PDT)
+Received: from robh_at_kernel.org ([64.188.179.250])
+        by smtp.gmail.com with ESMTPSA id k4-20020a02a704000000b004168295d33esm294154jam.47.2023.06.08.06.49.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 Jun 2023 06:49:10 -0700 (PDT)
+Received: (nullmailer pid 2476705 invoked by uid 1000);
+	Thu, 08 Jun 2023 13:49:08 -0000
+Date: Thu, 8 Jun 2023 07:49:08 -0600
+From: Rob Herring <robh@kernel.org>
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Kevin Hilman <khilman@baylibre.com>, chunkuang.hu@kernel.org, linux-mediatek@lists.infradead.org, Florian Sylvestre <fsylvestre@baylibre.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Andy Hsieh <andy.hsieh@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-arm-kernel@lists.infradead.org>, "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: phy: add mediatek mipi csi driver v
+ 0.5
+Message-ID: <20230608134908.GA2463843-robh@kernel.org>
+References: <ab9aa30f-82d7-1d14-5561-e19ff10af0b0@linaro.org>
+ <4yppinkucchwnwtnnpbqdn4bejmntjq3q6mx6es55f2pwyce3c@qdhdks47lpyt>
+ <1853f049-4f00-b7f0-973a-2c4e7b0b2634@linaro.org>
+ <7h353w2oug.fsf@baylibre.com>
+ <fbf1b0a6-f45d-69a0-5de6-8269567e15b3@linaro.org>
+ <7hwn18yndq.fsf@baylibre.com>
+ <c63ebd7e-8658-9cdd-4fc4-ade9c94dfa64@linaro.org>
+ <7hcz2snpnw.fsf@baylibre.com>
+ <10074d67-394b-3ddb-8bd1-fc051bdb7f79@linaro.org>
+ <totyr5bsupdv6y6muvndnhywbw5fl5kezoxie2hyz4g53yi34m@6geccwkjvupc>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <totyr5bsupdv6y6muvndnhywbw5fl5kezoxie2hyz4g53yi34m@6geccwkjvupc>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230608_061135_883862_71F0AE3A 
-X-CRM114-Status: GOOD (  27.37  )
+X-CRM114-CacheID: sfid-20230608_064914_110166_F640B5D6 
+X-CRM114-Status: GOOD (  55.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,128 +89,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le jeudi 08 juin 2023 =C3=A0 07:27 +0000, Yunfei Dong (=E8=91=A3=E4=BA=91=
-=E9=A3=9E) a =C3=A9crit=C2=A0:
-> Hi Nicolas,
->=20
-> Thanks for your review.
-> On Wed, 2023-06-07 at 21:41 -0400, Nicolas Dufresne wrote:
-> >  	=20
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >  Hi Yunfei,
-> >=20
-> > Le mercredi 07 juin 2023 =C3=A0 16:48 +0800, Yunfei Dong a =C3=A9crit :
-> > > 'mtk_vcodec_debug' and 'mtk_vcodec_err' depends on 'mtk_vcodec_ctx'
-> > > to get the index of each instance, using the index directly instead
-> > > of with 'mtk_vcodec_ctx'.
-> > >=20
-> > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> > > ---
-> > >  .../mediatek/vcodec/mtk_vcodec_util.h         |  26 ++-
-> > >  .../vcodec/vdec/vdec_av1_req_lat_if.c         | 105 +++++++-----
-> > >  .../mediatek/vcodec/vdec/vdec_h264_if.c       |  62 ++++---
-> > >  .../mediatek/vcodec/vdec/vdec_h264_req_if.c   |  39 +++--
-> > >  .../vcodec/vdec/vdec_h264_req_multi_if.c      |  80 +++++----
-> > >  .../vcodec/vdec/vdec_hevc_req_multi_if.c      |  67 ++++----
-> > >  .../mediatek/vcodec/vdec/vdec_vp8_if.c        |  54 ++++---
-> > >  .../mediatek/vcodec/vdec/vdec_vp8_req_if.c    |  46 +++---
-> > >  .../mediatek/vcodec/vdec/vdec_vp9_if.c        | 152 ++++++++++--
-> > ------
-> > >  .../vcodec/vdec/vdec_vp9_req_lat_if.c         |  84 ++++++----
-> > >  .../platform/mediatek/vcodec/vdec_vpu_if.c    |  59 ++++---
-> > >  .../mediatek/vcodec/venc/venc_h264_if.c       |  86 +++++-----
-> > >  .../mediatek/vcodec/venc/venc_vp8_if.c        |  48 +++---
-> > >  .../platform/mediatek/vcodec/venc_vpu_if.c    |  64 ++++----
-> > >  14 files changed, 565 insertions(+), 407 deletions(-)
-> > >=20
-> > > diff --git
-> > a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
-> > b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
-> > > index ecb0bdf3a4f4..ddc12c3e2983 100644
-> > > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
-> > > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
-> > > @@ -31,9 +31,8 @@ struct mtk_vcodec_dev;
-> > >  #define mtk_v4l2_err(fmt, args...)                \
-> > >  pr_err("[MTK_V4L2][ERROR] " fmt "\n", ##args)
-> > > =20
-> > > -#define mtk_vcodec_err(h, fmt, args...)\
-> > > -pr_err("[MTK_VCODEC][ERROR][%d]: " fmt "\n",\
-> > > -       ((struct mtk_vcodec_ctx *)(h)->ctx)->id, ##args)
-> > > +#define mtk_vcodec_err(plat_dev, inst_id, fmt,
-> > args...)                                 \
-> > > +dev_err(&(plat_dev)->dev, "[MTK_VCODEC][ERROR][%d]: " fmt "\n",
-> > inst_id, ##args)
-> > > =20
-> > >  #if defined(CONFIG_DEBUG_FS)
-> > >  extern int mtk_v4l2_dbg_level;
-> > > @@ -46,27 +45,24 @@ extern int mtk_vcodec_dbg;
-> > >   __func__, __LINE__, ##args);        \
-> > >  } while (0)
-> > > =20
-> > > -#define mtk_vcodec_debug(h, fmt, args...)                      \
-> > > -do {                      \
-> > > -if (mtk_vcodec_dbg)                      \
-> > > -dev_dbg(&(((struct mtk_vcodec_ctx *)(h)->ctx)->dev->plat_dev-
-> > > dev),   \
-> > > -"[MTK_VCODEC][%d]: %s, %d " fmt "\n",                         \
-> > > -((struct mtk_vcodec_ctx *)(h)->ctx)->id,                      \
-> > > -__func__, __LINE__, ##args);                                  \
-> > > +#define mtk_vcodec_debug(plat_dev, inst_id, fmt,
-> > args...)                               \
-> > > +do
-> > {                                                                   =
-=20
-> >         \
-> > > +if
-> > (mtk_vcodec_dbg)                                                    =
-=20
-> > \
-> > > +dev_dbg(&(plat_dev)->dev, "[MTK_VCODEC][%d]: %s, %d " fmt "\n", \
-> >=20
-> > At least in this patch, you systematically pass plat_dev as
-> > <something>->ctx->dev->plat_dev, which is quite long and verbose, any
-> > reason we
-> > can't just pass that <something> here ? We can follow the same
-> > structure path
-> > for both encoder/decoder ?
-> >=20
->=20
-> In order to separate encode and decoder, need to define two different
-> struct mtk_vcodec_dec_ctx and struct mtk_vcodec_enc_ctx.
->=20
-> struct mtk_vcodec_ctx won't be used again, need to use platform device
-> to print dev_dbg and dev_err.
->=20
-> encoder and decoder using the same interface to print log message.
+On Mon, Jun 05, 2023 at 10:44:22AM +0200, Julien Stephan wrote:
+> On Tue, May 30, 2023 at 10:53:31AM +0200, Krzysztof Kozlowski wrote:
+> > On 22/05/2023 21:15, Kevin Hilman wrote:
+> > > Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> writes:
+> > >
+> > >> On 16/05/2023 23:31, Kevin Hilman wrote:
+> > >>
+> > >>>> Third is to use versioned IP blocks.
+> > >>>>
+> > >>>> The second case also would work, if it is applicable to you (you really
+> > >>>> have fallback matching all devices). Third solution depends on your
+> > >>>> versioning and Rob expressed dislike about it many times.
+> > >>>>
+> > >>>> We had many discussions on mailing lists, thus simplifying the review -
+> > >>>> I recommend the first choice. For a better recommendation you should say
+> > >>>> a bit more about the block in different SoCs.
+> > >>>
+> > >>> I'll try to say a bit more about the PHY block, but in fact, it's not
+> > >>> just about differences between SoCs. On the same SoC, 2 different PHYs
+> > >>> may have different features/capabilities.
+> > >>>
+> > >>> For example, on MT8365, There are 2 PHYs: CSI0 and CSI1.  CSI0 can
+> > >>> function as a C-PHY or a D-PHY, but CSI1 can only function as D-PHY
+> > >>> (used as the example in the binding patch[1].)  On another related SoC,
+> > >>> there are 3 PHYs, where CSI0 is C-D but CSI1 & CSI2 are only D.
+> > >>>
+> > >>> So that's why it seems (at least to me) that while we need SoC
+> > >>> compatible, it's not enough.  We also need properties to describe
+> > >>> PHY-specific features (e.g. C-D PHY)
+> > >>
+> > >> I recall the same or very similar case... It bugs me now, but
+> > >> unfortunately I cannot find it.
+> > >>
+> > >>>
+> > >>> Of course, we could rely only on SoC-specific compatibles describe this.
+> > >>> But then driver will need an SoC-specific table with the number of PHYs
+> > >>> and per-PHY features for each SoC encoded in the driver.  Since the
+> > >>> driver otherwise doesn't (and shouldn't, IMHO) need to know how many
+> > >>> PHYs are on each SoC, I suggested to Julien that perhaps the additional
+> > >>> propery was the better solution.
+> > >>
+> > >> Phys were modeled as separate device instances, so you would need
+> > >> difference in compatible to figure out which phy is it.
+> > >>
+> > >> Other way could be to create device for all phys and use phy-cells=1.
+> > >> Whether it makes sense, depends on the actual datasheet - maybe the
+> > >> split phy per device is artificial? There is one PHY block with two
+> > >> address ranges for each PHY - CSI0 and CSI1 - but it is actually one
+> > >> block? You should carefully check this because once design is chosen,
+> > >> you won't be able to go back to other and it might be a problem (e.g.
+> > >> there is some top-level block for powering on all CSI instances).
+> > >
+> > > We're pretty sure these are multiple instances of the IP block as they
+> > > can operate completely independently.
+> > >
+> > >>>
+> > >>> To me it seems redundant to have the driver encode PHYs-per-SoC info,
+> > >>> when the per-SoC DT is going to have the same info, so my suggestion was
+> > >>> to simplify the driver and have this kind of hardware description in the
+> > >>> DT, and keep the driver simple, but we are definitely open to learning
+> > >>> the "right way" of doing this.
+> > >>
+> > >> The property then is reasonable. It should not be bool, though, because
+> > >> it does not scale. There can be next block which supports only D-PHY on
+> > >> CSI0 and C-PHY on CSI1? Maybe some enum or list, depending on possible
+> > >> configurations.
+> > >
+> > > OK, looks like include/dt-bindings/phy/phy.y already has
+> > >
+> > >   #define PHY_TYPE_DPHY		10
+> > >   #define PHY_TYPE_CPHY		11
+> > >
+> > > we'll add a PHY_TYPE_CDPHY and use that.   Sound reasonable?
 
-Just a reminder, I'm just making suggestions, there is no strict action req=
-uired
-here other then a discussion to try and make the logging a bit more light.
+No, because these defines are the 1 mode used for a specific connection, 
+not the set of supported modes.
 
-My points was that C macros don't care about types, so if you keep the path=
- to
-the platform device the same (ctx->dev->plat_dev), you could just pass the =
-ctx
-as argument. What I don't know though myself, is if this is actually feasib=
-le in
-all code path, but considering you had access to the instance previously, I
-thought it should.
+> >
+> > Yes. Currently it is usually used as phy-cells argument (after the phy
+> > number/lane/ID), but cdns,phy-type and intel,phy-mode use it directly as
+> > property in provider. In both cases they have a bit different meaning
+> > than yours. You want to list all supported modes or narrow/restrict
+> > them. Maybe hisilicon,fixed-mode fits your purpose?
 
-regards,
-Nicolas
+There is also 'phy-type' to set the mode/type in the provider.
 
->=20
-> Best Regards,
-> Yunfei Dong
-> > > +inst_id, __func__, __LINE__, ##args);                   \
-> > >  } while (0)
-> > >  #else
-> > >  #define mtk_v4l2_debug(level, fmt, args...) pr_debug(fmt, ##args)
-> > > =20
-> > > -#define mtk_vcodec_debug(h, fmt, args...)\
-> > > -pr_debug("[MTK_VCODEC][%d]: " fmt "\n",\
-> >=20
-> ...snip...
+If we need to list all possible modes, then you need to justify why 
+that's needed and then define a property which is a mask of the 
+existing type defines.
 
+> >
+> 
+> Hi Krzysztof,
+> 
+> Thanks for the suggestion, using something like hisilicon,fixed-node
+> looks like a good fit.
+> With mediatek,fixed-node, by default CSI node will be considered as
+> CD-PHY capable (unless the fixed-mode property is set.) so I won't need
+> anymore the new define PHY_TYPE_CDPHY introduced in v3.
+> 
+> Also introducing mediatek,fixed-mode suggests that PHYs not declaring
+> the fixed mode property support mode selection, so I suggest to add a
+> phy argument (#phy-cells = <1>) to select the mode (D or C mode).
+> Exactly what is done by the hsilicon driver.
+> 
+> How does that sound to you?
+
+I don't follow the need for fixed-mode, but agree you should use a phy 
+arg. Can't you just assume the D-PHY only instance will only have D-PHY 
+for the arg?
+
+Rob
 
