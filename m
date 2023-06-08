@@ -4,102 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94CAFC7EE29
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 07:56:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DD8EC7EE23
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 08:12:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qbB0xd6Ry0dq/EUwrtpVYTX/9vI3J3IlZ8nKsAKcFys=; b=xvB1U1oPST9c8Vy/nGe+7TQ9+u
-	P7YxrPFH3z4TdLvsDI6iE23TKCO2XQxD123LWuMBv+ZKxOZ1bjY+kmj07R0t+hVYoUNelNUt6cDRZ
-	PlTBBVIo0LYlolBHAGYFYeYmSBL9PyzV9lJhFiyO0UsN66WzfV4oGWvgCLRVSKrBmH5gs0Tvo+SkQ
-	hB26NgJV70qnoXdgl5HKUiS1fAunReGyoii5BguAjvndXe9+sXY23qvrt4kq6pzsYeNOaWC+7kY//
-	bBdh8nGyv9VnC6SVdUmbcWEfSd4s5A+jTjFEnoR3JsrFUO1DbFbyWvDQU4jDjxqvxY7HEBuOeulsU
-	ZbgNuppw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Mn0Gg2V+MSiQuYOdz9Nz8MYQuLW2HVJinMhyHFMoKbA=; b=1ikoaK3S1oqAa8TWaVWxSlcejP
+	jQrO/7RKC5InbQ9gAom9mGPnSSFX55InhvndA4piYpb+KFobgkynhYtkwrNCy5XVgKY1pqgOERw+L
+	YzQpLK0mWbfsOcYczmjyMSbr8LYxmfhEoDELMyxWv6jgvKPvmVZOYphVJ5tSbIVZKbZ5/h2QecMpb
+	6LQNyTAQMoUWImiZbK4+gXzNo3S3aQ4fluENud0xRsNIxvd/pPzjXR/lQMUrYZf6BE0aJzVtrTWkA
+	mS5rLZAkNPPbhgChPAP0//EmbEmLuu8ngm2oeZO5BHLvRDT2cva2xgc3WFjoFbsA+M2KJlQbsLJR6
+	HZa9H9kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7AVZ-008TE2-0J;
-	Thu, 08 Jun 2023 07:56:37 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1q7AkV-008VPm-0k;
+	Thu, 08 Jun 2023 08:12:03 +0000
+Received: from mx1.tq-group.com ([93.104.207.81])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7AVV-008TCb-1y
-	for linux-mediatek@lists.infradead.org;
-	Thu, 08 Jun 2023 07:56:34 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-977c89c47bdso62623966b.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 08 Jun 2023 00:56:32 -0700 (PDT)
+	id 1q7AkR-008VOX-1o;
+	Thu, 08 Jun 2023 08:12:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1686210991; x=1688802991;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=qbB0xd6Ry0dq/EUwrtpVYTX/9vI3J3IlZ8nKsAKcFys=;
-        b=g/wq6BrlRS1cNZYAuGFoeGlt12YYhRA1phpG6vyWII5Cmb7tl+Dv9TrhWYedJMCeOL
-         IYBx+Vfy/CzizH2j4g3ttNvnyz2uJpMYsFrvhfy9y5ffmroM+kfVvGEbCvPJimmNkCyy
-         835jAz47QNG7whyEwF118Q1fMOldwVXs4M/LhdDu72Ncy+p7GS3JV1bsu8CarpCn122Q
-         USLMU1Ml1mrEOlciZWBDk5BgAtvXYwnUGYFdYXzKHQfkWZsPPl6+A0bi00DQdbk4Xr/o
-         E0z0o4My3CnkrC5vzF0nnuusMDfsr08o1iGgM4/OI9Zc+qhyoetuIOugxvg3Aux4Ql2D
-         P9oA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686210991; x=1688802991;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qbB0xd6Ry0dq/EUwrtpVYTX/9vI3J3IlZ8nKsAKcFys=;
-        b=VywUci3AgR5ZGefC6xZLHLruh9eSRORx5tZ//YL+vSPI4d/CbaPf1GAbmIBP8J6QhQ
-         GhHeobHF75LpQ2yZoYb01sBD/r8pm4PqMNkdTPvJZIoFtW4Pi+cJtsaDEuPP0YfNLmCh
-         Gyn6oOQajyVwbVimqSCakI1FlOzlfpR/3MPGJePLdg9H3CZzQ+75X77xsOcUbvjBj69q
-         kXuU6zb7hP+UlfIEWv0jSCy2XjeIhbhlZV/HzI9c1F0iwF0aSJoGNyrwi9QwrJ36yUGG
-         cedj9nQx6WsHvKRKNNUEhHFXNX+0+xz3iA+nJ+BHZRIzoA+8MUqdTRKbc9hGZIUB+f0L
-         9yCw==
-X-Gm-Message-State: AC+VfDwzm8e6shOTB27MzOKZbsoy1a4jKXlEuuzA9ioEDMxrQxCZ1YZx
-	jtt6xjX/GABeT/1zn4YrIe5zTA==
-X-Google-Smtp-Source: ACHHUZ77/ckL41yrT5rLCVmYFC0CptMhtYaSudwn5rglft7nJjnm4nUfaMEkIqEbduj4o8OyC6hKkA==
-X-Received: by 2002:a17:907:961c:b0:96f:f046:9a92 with SMTP id gb28-20020a170907961c00b0096ff0469a92mr8989606ejc.37.1686210991390;
-        Thu, 08 Jun 2023 00:56:31 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.26])
-        by smtp.gmail.com with ESMTPSA id e10-20020a1709062c0a00b0094f23480619sm345792ejh.172.2023.06.08.00.56.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 08 Jun 2023 00:56:31 -0700 (PDT)
-Message-ID: <751e5a36-5313-7d5b-7c2d-55322f2850f4@linaro.org>
-Date: Thu, 8 Jun 2023 09:56:28 +0200
+  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+  t=1686211919; x=1717747919;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=Mn0Gg2V+MSiQuYOdz9Nz8MYQuLW2HVJinMhyHFMoKbA=;
+  b=hqwpofHAzCq/kzun/nt0yg+lelT+w6TUxokUck6RaYY4+640sVeyxyae
+   wN1eSdiBz9Qt0FwYbPWhTok5LFEefxo5je+9ocz/ecdLUUGqpb8cTu3Yf
+   ZXivilKqLA2S6yaQxSlPCf3ZbUlrfpHLbToN+pjLcQJC3MGqVIuzQIvid
+   g5ruJdulRxo0Hqfye8Jy1N2JwwKPOAqRBhdNzaF8s8P05GOJzCCQCDZsH
+   3pBgI0PLsAyrJRdAObr4AtnHzzxpWXRGnmkjekum/3jGkRB5QTTshbuBS
+   dkYnH7HhcUPnZ+iAn6UVDyBbePeP5yzI03PVIJPQeqHtlG7ljLE+96frW
+   g==;
+X-IronPort-AV: E=Sophos;i="6.00,226,1681164000"; 
+   d="scan'208";a="31343604"
+Received: from unknown (HELO tq-pgp-pr1.tq-net.de) ([192.168.6.15])
+  by mx1-pgp.tq-group.com with ESMTP; 08 Jun 2023 10:11:57 +0200
+Received: from mx1.tq-group.com ([192.168.6.7])
+  by tq-pgp-pr1.tq-net.de (PGP Universal service);
+  Thu, 08 Jun 2023 10:11:57 +0200
+X-PGP-Universal: processed;
+	by tq-pgp-pr1.tq-net.de on Thu, 08 Jun 2023 10:11:57 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+  t=1686211917; x=1717747917;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=Mn0Gg2V+MSiQuYOdz9Nz8MYQuLW2HVJinMhyHFMoKbA=;
+  b=n7vo/AbppOz7ij2TM2sdKp8hiGQu/0jwcRZzBfSOVR7e8AVgL1bzYjWZ
+   GCmcJokcrmNxYYxehIVPrbUjxDxRUZWCKHip39qXGpqkaq/AsrifTtt5N
+   xQw+OS23jbWQjD0WA/NzKDBDXHLvktOwRiL0c3FFYCR0S2oA7BIwZfJUN
+   Y24t9rVieGo45IJOL7WF3Akt82hfCUP5NlcbBjissozsICS5panRWfqG3
+   qCDNuu19DRC4jF7kf2TmhA3fNr688V1VmL2GLd2IdgnOdH2QJ8jItCHfF
+   a/DPBC4YKH4euZOGkNEeR9VHocc+jcnUd47G4VApSMUYBuIUGQnu8216y
+   w==;
+X-IronPort-AV: E=Sophos;i="6.00,226,1681164000"; 
+   d="scan'208";a="31343603"
+Received: from vtuxmail01.tq-net.de ([10.115.0.20])
+  by mx1.tq-group.com with ESMTP; 08 Jun 2023 10:11:57 +0200
+Received: from steina-w.tq-net.de (unknown [10.123.53.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id DAA2B280087;
+	Thu,  8 Jun 2023 10:11:56 +0200 (CEST)
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	=?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>,
+	Tony Lindgren <tony@atomide.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Alexander Stein <alexander.stein@ew.tq-group.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	devicetree@vger.kernel.org,
+	linux-omap@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH 1/3] dt-bindings: extcon-usb-gpio: convert to DT schema format
+Date: Thu,  8 Jun 2023 10:11:51 +0200
+Message-Id: <20230608081153.441455-1-alexander.stein@ew.tq-group.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH v1 2/6] dt-bindings: reset: mt8188: Add reset control bits
- for VDOSYS1
-Content-Language: en-US
-To: =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "fshao@google.com" <fshao@google.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-References: <20230607061121.6732-1-shawn.sung@mediatek.com>
- <20230607061121.6732-3-shawn.sung@mediatek.com>
- <72b71e37-f9e7-b182-824c-163d920723b8@collabora.com>
- <a769105743d480c0da846a4c50de43811382626e.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <a769105743d480c0da846a4c50de43811382626e.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230608_005633_652080_2192C12F 
-X-CRM114-Status: UNSURE (   7.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230608_011159_944683_11B6C0A9 
+X-CRM114-Status: GOOD (  17.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,15 +120,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/06/2023 05:01, Shawn Sung (宋孝謙) wrote:
-> Hi AngeloGioacchino,
-> 
-> Should I use enum instead of #define if reset ID must starts from 0?
+Convert the binding to DT schema format. Change the GPIO properties to new
+naming convention using -gpios as well.
 
-Open existing bindings (there are many, many files) which will give you
-the answer. It will be faster than asking us and you will learn something.
+Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+---
+ .../bindings/extcon/extcon-usb-gpio.txt       | 21 --------
+ .../bindings/extcon/extcon-usb-gpio.yaml      | 52 +++++++++++++++++++
+ 2 files changed, 52 insertions(+), 21 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
+ create mode 100644 Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
 
-Best regards,
-Krzysztof
+diff --git a/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt b/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
+deleted file mode 100644
+index dfc14f71e81fb..0000000000000
+--- a/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.txt
++++ /dev/null
+@@ -1,21 +0,0 @@
+-USB GPIO Extcon device
+-
+-This is a virtual device used to generate USB cable states from the USB ID pin
+-connected to a GPIO pin.
+-
+-Required properties:
+-- compatible: Should be "linux,extcon-usb-gpio"
+-
+-Either one of id-gpio or vbus-gpio must be present. Both can be present as well.
+-- id-gpio: gpio for USB ID pin. See gpio binding.
+-- vbus-gpio: gpio for USB VBUS pin.
+-
+-Example: Examples of extcon-usb-gpio node in dra7-evm.dts as listed below:
+-	extcon_usb1 {
+-		compatible = "linux,extcon-usb-gpio";
+-		id-gpio = <&gpio6 1 GPIO_ACTIVE_HIGH>;
+-	}
+-
+-	&omap_dwc3_1 {
+-		extcon = <&extcon_usb1>;
+-	};
+diff --git a/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml b/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
+new file mode 100644
+index 0000000000000..3a71d848dc7a8
+--- /dev/null
++++ b/Documentation/devicetree/bindings/extcon/extcon-usb-gpio.yaml
+@@ -0,0 +1,52 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/extcon/extcon-usb-gpio.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: USB GPIO Extcon device
++
++maintainers:
++  - Alexander Stein <alexander.stein@ew.tq-group.com>
++
++description: |
++  This is a virtual device used to generate USB cable states from the
++  USB ID pin connected to a GPIO pin.
++
++properties:
++  compatible:
++    const: linux,extcon-usb-gpio
++
++  id-gpios:
++    description: An input gpio for USB ID pin.
++    maxItems: 1
++
++  vbus-gpios:
++    description: An input gpio for USB VBus pin, used to detect presence of
++      VBUS 5V.
++    maxItems: 1
++
++required:
++  - compatible
++
++anyOf:
++  - required:
++      - id-gpios
++  - required:
++      - vbus-gpios
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++
++    extcon_usb1 {
++      compatible = "linux,extcon-usb-gpio";
++      id-gpios = <&gpio6 1 GPIO_ACTIVE_HIGH>;
++      vbus-gpios = <&gpio6 2 GPIO_ACTIVE_HIGH>;
++    };
++
++    usb-controller {
++      extcon = <&extcon_usb1>;
++    };
+-- 
+2.34.1
 
 
