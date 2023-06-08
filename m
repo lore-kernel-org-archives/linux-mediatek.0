@@ -4,110 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 207BBC7EE2E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 08:12:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D331C7EE23
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 08:12:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uf2qtNPbr3RHHbYshLJooWCuyGop+uoIgQeLs4H7Vdw=; b=Ugrg8p6Mw7Qew0XebvFIQI1iYd
-	UXdi6r3BEz7YXmFovwk3R996sIF6ZjJlhUKFhQK57f88Bn4szOAiQ5EtTv8oJ2oAIZXpHYXF/59FN
-	PVeye5leROWhhQCuC4c/dechE3IrjiT1niDFnaXTN6mawhTYgFZQ+eYPkLaxtvPMDMUwrctsM7iGk
-	l1SV2wrdIggFJLffV6bYZabdcHoaKCyHQCbi8WN7MYMLEmneFw4kWPlMp+KJ24lDnLTXnJKH+pGAV
-	/gWs95v8dcmd4nauJZgxa7ymKsmpdNb7Hoko2Xai3jqfXTjvy9gAiGleWxdcDL41KCRCYRMNwAtPP
-	0h9851NQ==;
+	bh=cAiwpr4ZhLz8drmLYbFRJeJlB43Bw/gRsi8DXM2zl1Q=; b=d/sZ3z1AEUXhajHdh/6AozR89H
+	ywdBLmZtA37rbYdqI6dn0O6DcxoIbNGjFFrHSLmX9NGuyfC4ldImn4QrzrajLhuE1cBqJjxlqV1Ae
+	lnl3gBEqFXcziA630AA1lH7YoCifXGEgiGwSPV1QeOYIoQp15K3bAUfUqGGaec5m9n+wemNjTqx0A
+	PKG6tQHPidbD6zc8LoE4zwnRa6tgwLeWqQ7+kmvWDrSeN2pqLEWB3JddcYc1wGAx+rMKxrTTeHgLV
+	THovG92HxaVac104G5lv+M4xKmfUiULfK8X6YzGs3ZogxVwTEVHRqPLtOzGrQosXHldsqmUikJnHE
+	MPHwVD3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7Akb-008VSe-0d;
-	Thu, 08 Jun 2023 08:12:09 +0000
-Received: from mx1.tq-group.com ([93.104.207.81])
+	id 1q7Al0-008VhE-1u;
+	Thu, 08 Jun 2023 08:12:34 +0000
+Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7AkV-008VP9-0v;
-	Thu, 08 Jun 2023 08:12:05 +0000
+	id 1q7Akw-008VdA-1E
+	for linux-mediatek@lists.infradead.org;
+	Thu, 08 Jun 2023 08:12:32 +0000
+Received: by mail-ua1-x92b.google.com with SMTP id a1e0cc1a2514c-78775a5a84eso122699241.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 08 Jun 2023 01:12:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
-  t=1686211923; x=1717747923;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=Uf2qtNPbr3RHHbYshLJooWCuyGop+uoIgQeLs4H7Vdw=;
-  b=fpGfOL5V40Jf9u3KZQ7A++XfXj+Mrh17T3tt+HM7BUduLZs+ZYSzl7C4
-   ZR9bN83o/YRkjYa0r4kR2noUd/XhLsBDldMkpQkj+7O3MITrXBRMVQSHI
-   zNw9+Zi5Ru+6u7FZJrUoCt1tRyoyqngIjPZLVv7210rTvDp1uLHQhV/8B
-   gYTqmMH3wjEGMspa0TTuHS0aolErAoCKzl1Iwlazv99R2VsFWLZb1kxoZ
-   egOSJs5C2CSWvG77WiQC1TGmCi4Pi6yP1SqCK7nY3v0Cn611EojAa1N58
-   qp+2pWhiacYoX4NPBt/IK968d3rbaxS5pK5kBIT79E809790QmHBZ0xHa
-   A==;
-X-IronPort-AV: E=Sophos;i="6.00,226,1681164000"; 
-   d="scan'208";a="31343608"
-Received: from unknown (HELO tq-pgp-pr1.tq-net.de) ([192.168.6.15])
-  by mx1-pgp.tq-group.com with ESMTP; 08 Jun 2023 10:11:58 +0200
-Received: from mx1.tq-group.com ([192.168.6.7])
-  by tq-pgp-pr1.tq-net.de (PGP Universal service);
-  Thu, 08 Jun 2023 10:11:58 +0200
-X-PGP-Universal: processed;
-	by tq-pgp-pr1.tq-net.de on Thu, 08 Jun 2023 10:11:58 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
-  t=1686211918; x=1717747918;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=Uf2qtNPbr3RHHbYshLJooWCuyGop+uoIgQeLs4H7Vdw=;
-  b=ofHk+BTlNcSaDGTpPbjBS7YPzCfOKnKJFaolAYwdYaYhwL2KEix1h8gW
-   zQmUal49Vq6ksHMJirmLDCAEOq+GmAxJRQ10prl8g1LnEwHF5mkoE7Wgu
-   6/Fa2PsiHnmzut2+InBRThyL1CgAE747rgjSRrvxvzTkJny8Rn+ptPJb3
-   r9eaOqzlGoY5I63IKprnqGqCoVWM+Em8N+iyTklAzrmyqVptYTLHe5sa2
-   9T+Gust4Re3gYAbjd4+eFWbX26wFOivd7Xnu4MroPCgXcvgq/9YiEY/7e
-   qx6FS8wvNm3n1HAC2UKmHRbwVVuGuGY5yFMor+RY6/yj55EfjMAyfI044
-   A==;
-X-IronPort-AV: E=Sophos;i="6.00,226,1681164000"; 
-   d="scan'208";a="31343607"
-Received: from vtuxmail01.tq-net.de ([10.115.0.20])
-  by mx1.tq-group.com with ESMTP; 08 Jun 2023 10:11:58 +0200
-Received: from steina-w.tq-net.de (unknown [10.123.53.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id A81BA280087;
-	Thu,  8 Jun 2023 10:11:57 +0200 (CEST)
-From: Alexander Stein <alexander.stein@ew.tq-group.com>
-To: MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	=?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>,
-	Tony Lindgren <tony@atomide.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Alexander Stein <alexander.stein@ew.tq-group.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	devicetree@vger.kernel.org,
-	linux-omap@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH 3/3] arm64: dts: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio properties
-Date: Thu,  8 Jun 2023 10:11:53 +0200
-Message-Id: <20230608081153.441455-3-alexander.stein@ew.tq-group.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230608081153.441455-1-alexander.stein@ew.tq-group.com>
-References: <20230608081153.441455-1-alexander.stein@ew.tq-group.com>
+        d=chromium.org; s=google; t=1686211948; x=1688803948;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cAiwpr4ZhLz8drmLYbFRJeJlB43Bw/gRsi8DXM2zl1Q=;
+        b=IEpW9QFjXmCUJ9pMxaLKoDnKjHHCSS3HNrFXVJ6GB6w8VcCMmyyIITHm+Wq6agO0oV
+         hhdPy6bo6ftpC5VEPT5yRIlvkChqHqzbct/Gu0Ciobgb5knyJ4ubr3jM2JsNgPmyKWre
+         crohC1Y0fr8/2j+WplE2CQbon9ggtXVIBX5J4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686211948; x=1688803948;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=cAiwpr4ZhLz8drmLYbFRJeJlB43Bw/gRsi8DXM2zl1Q=;
+        b=HmLe6xHa5DOGUZ9XxuSslLoVY7qhsWXo8Vfdw3/QZzUvYk1S9p5jlzCk18w1akPZlB
+         DZZ/xmb8pj/cNaJvkCyN9k9+PlJjPF22skac/vpfqxt12/56WAICHjbf7TgknNyImfyw
+         ERo+YPjx/VdZ2OKFVsFUTfJnmlvJ1nM0Ob9cdxpuq1C2NOOp5ZOEkpbBa8n6OIPasJtU
+         6xtjMqDKkOgq+3f95D69XpGYmAdAv2wlkOdT47NrAHRINUiOm8X386sz5scHC/aVi3lW
+         yVIqthsvOnuxE8hnWUEEJxOOQiB3VjgzhBSlwMAI1wGEGuEwPhlB/JiYncuEQcBRLX++
+         Czlg==
+X-Gm-Message-State: AC+VfDyYqc8OUvBr8qpWqR0N+TQf5nXfV4DktQwBvQtgzQRsimYhYYcz
+	5ho4XPJJzdXoj9sVSuZxGsfhELlWIbWA4i1GOacRHA==
+X-Google-Smtp-Source: ACHHUZ5e8GVd8y3ZD62t7YDa8qhdFbbtx2TZYiko3UVhh75VOZ/O5sXvSx8DnVAwYChCLw2M/6dhxEaJm5woLCMH9Cc=
+X-Received: by 2002:a1f:41ce:0:b0:456:a3bc:3daf with SMTP id
+ o197-20020a1f41ce000000b00456a3bc3dafmr2820852vka.9.1686211947817; Thu, 08
+ Jun 2023 01:12:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20230607205714.510012-1-nfraprado@collabora.com> <20230607205714.510012-4-nfraprado@collabora.com>
+In-Reply-To: <20230607205714.510012-4-nfraprado@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 8 Jun 2023 16:12:16 +0800
+Message-ID: <CAGXv+5HHARvkCYfjPjRKgyWuzv-Dt215z1=yA+_tw4hyasdGQA@mail.gmail.com>
+Subject: Re: [PATCH v2 3/5] media: mediatek: vcodec: Read HW active status
+ from clock
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	Stephen Boyd <sboyd@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+	kernel@collabora.com, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Tiffany Lin <tiffany.lin@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230608_011203_808849_E67CB43D 
-X-CRM114-Status: GOOD (  13.13  )
+X-CRM114-CacheID: sfid-20230608_011230_441647_180DFE44 
+X-CRM114-Status: GOOD (  28.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,349 +92,265 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use id-gpios and vbus-gpios instead.
+On Thu, Jun 8, 2023 at 4:57=E2=80=AFAM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
+>
+> Remove the requirement of a VDEC_SYS reg iospace. To achieve that, rely
+> on the "active" clock being passed through the DT, and read its status
+> during IRQ handling to check whether the HW is active.
+>
+> The old behavior is still present when reg-names aren't supplied, as to
+> keep backward compatibility.
+>
+> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+>
+> (no changes since v1)
+>
+>  .../mediatek/vcodec/mtk_vcodec_dec_drv.c      | 59 +++++++++++++++----
+>  .../mediatek/vcodec/mtk_vcodec_dec_hw.c       | 20 +++++--
+>  .../mediatek/vcodec/mtk_vcodec_dec_pm.c       | 12 +++-
+>  .../platform/mediatek/vcodec/mtk_vcodec_drv.h |  1 +
+>  4 files changed, 74 insertions(+), 18 deletions(-)
+>
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c =
+b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+> index 9c652beb3f19..8038472fb67b 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+> @@ -16,6 +16,7 @@
+>  #include <media/v4l2-mem2mem.h>
+>  #include <media/videobuf2-dma-contig.h>
+>  #include <media/v4l2-device.h>
+> +#include <linux/clk-provider.h>
 
-Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
----
- arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi            | 2 +-
- arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts       | 2 +-
- arch/arm64/boot/dts/mediatek/mt2712-evb.dts                   | 4 ++--
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts                   | 2 +-
- arch/arm64/boot/dts/qcom/apq8016-sbc.dts                      | 2 +-
- arch/arm64/boot/dts/qcom/apq8096-db820c.dts                   | 4 ++--
- arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts              | 2 +-
- arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts          | 2 +-
- arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts            | 2 +-
- arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts                | 2 +-
- arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts          | 2 +-
- arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts         | 2 +-
- arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts | 2 +-
- arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts    | 2 +-
- arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi        | 2 +-
- arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts               | 2 +-
- arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi     | 4 ++--
- arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts           | 2 +-
- arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi         | 2 +-
- arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts           | 2 +-
- arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts  | 2 +-
- arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts      | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi                 | 2 +-
- 23 files changed, 26 insertions(+), 26 deletions(-)
+                   ^^^^^^^^^^^^^^
 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi b/arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi
-index 5dbec71747c3b..61c2a63efc6db 100644
---- a/arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi
-@@ -109,7 +109,7 @@ extcon_usb0: extcon-usb0 {
- 		compatible = "linux,extcon-usb-gpio";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pinctrl_usb0_extcon>;
--		id-gpio = <&gpio1 3 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts b/arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts
-index d4ae7a3efff87..9e53b214abc85 100644
---- a/arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts
-+++ b/arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts
-@@ -24,7 +24,7 @@ extcon_usbotg: extcon-usbotg0 {
- 		compatible = "linux,extcon-usb-gpio";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pinctrl_usbcon0>;
--		id-gpio = <&gpio1 10 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	pcie0_refclk: pcie0-refclk {
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-index fffdb7bbf889e..0c38f7b517637 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-@@ -43,12 +43,12 @@ cpus_fixed_vproc1: regulator-vproc-buck1 {
- 
- 	extcon_usb: extcon_iddig {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&pio 12 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	extcon_usb1: extcon_iddig1 {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&pio 14 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&pio 14 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	usb_p0_vbus: regulator-usb-p0-vbus {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index 5122963d8743a..607d65ddba9ec 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -41,7 +41,7 @@ hdmi_connector_in: endpoint {
- 
- 	extcon_usb: extcon_iddig {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&pio 16 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&pio 16 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	usb_p1_vbus: regulator@0 {
-diff --git a/arch/arm64/boot/dts/qcom/apq8016-sbc.dts b/arch/arm64/boot/dts/qcom/apq8016-sbc.dts
-index 56dfca61253e6..8b8cb392e851d 100644
---- a/arch/arm64/boot/dts/qcom/apq8016-sbc.dts
-+++ b/arch/arm64/boot/dts/qcom/apq8016-sbc.dts
-@@ -77,7 +77,7 @@ usb2513 {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 121 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 121 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_id_default>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/apq8096-db820c.dts b/arch/arm64/boot/dts/qcom/apq8096-db820c.dts
-index b599909c44639..be657df89e734 100644
---- a/arch/arm64/boot/dts/qcom/apq8096-db820c.dts
-+++ b/arch/arm64/boot/dts/qcom/apq8096-db820c.dts
-@@ -99,14 +99,14 @@ button {
- 
- 	usb2_id: usb2-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&pmi8994_gpios 6 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&pmi8994_gpios 6 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb2_vbus_det_gpio>;
- 	};
- 
- 	usb3_id: usb3-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&pm8994_gpios 22 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&pm8994_gpios 22 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb3_vbus_det_gpio>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts b/arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts
-index 5025c08e48173..9b4270ba0652f 100644
---- a/arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8916-acer-a1-724.dts
-@@ -48,7 +48,7 @@ button-volume-up {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_id_default>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts b/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts
-index 7b629243ef0d7..5e69c32c297eb 100644
---- a/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts
-@@ -52,7 +52,7 @@ led-0 {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 69 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 69 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_id_default>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts b/arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts
-index 56c42b0c97336..ada2eda5dacdb 100644
---- a/arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8916-gplus-fl8005a.dts
-@@ -75,7 +75,7 @@ led-green {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
- 		pinctrl-0 = <&usb_id_default>;
- 		pinctrl-names = "default";
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts b/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts
-index 175ca011998c6..f3eb7367db3e0 100644
---- a/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts
-@@ -80,7 +80,7 @@ led-2 {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 117 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 117 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_id_default>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts b/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts
-index f23cfb2bf7934..4c19738af23ea 100644
---- a/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts
-@@ -68,7 +68,7 @@ led-0 {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_id_default>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts b/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts
-index 733917531218c..27e02021b577a 100644
---- a/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts
-@@ -56,7 +56,7 @@ button-volume-up {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_id_default>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts b/arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts
-index 85a8d8fe212ff..ae522f4c0aaec 100644
---- a/arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8939-sony-xperia-kanuti-tulip.dts
-@@ -32,7 +32,7 @@ chosen {
- 
- 	usb_id: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 110 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 110 GPIO_ACTIVE_HIGH>;
- 		pinctrl-0 = <&usb_id_default>;
- 		pinctrl-names = "default";
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts b/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts
-index 4a0645db0ae14..6374c5f53d9a1 100644
---- a/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone-dora.dts
-@@ -24,5 +24,5 @@ &usb_detect {
- };
- 
- &usb3_id {
--	id-gpio = <&tlmm 24 GPIO_ACTIVE_LOW>;
-+	id-gpios = <&tlmm 24 GPIO_ACTIVE_LOW>;
- };
-diff --git a/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi b/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi
-index b4b770a9277dc..d55e4075040ff 100644
---- a/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi
-+++ b/arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi
-@@ -71,7 +71,7 @@ panel_tvdd: tvdd-regulator {
- 
- 	usb3_id: usb3-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 25 GPIO_ACTIVE_LOW>;
-+		id-gpios = <&tlmm 25 GPIO_ACTIVE_LOW>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb_detect>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts b/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts
-index b35e2d9f428c1..b6a214bea70f5 100644
---- a/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts
-+++ b/arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts
-@@ -31,7 +31,7 @@ aliases {
- 	 */
- 	extcon_usb: extcon-usb {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 38 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 38 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	gpio-hall-sensors {
-diff --git a/arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi b/arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi
-index 687e96068cb2b..876c6921ddf07 100644
---- a/arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi
-+++ b/arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi
-@@ -89,8 +89,8 @@ vph_pwr: vph-pwr-regulator {
- 
- 	extcon_usb: extcon-usb {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 38 GPIO_ACTIVE_HIGH>;
--		vbus-gpio = <&tlmm 128 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 38 GPIO_ACTIVE_HIGH>;
-+		vbus-gpios = <&tlmm 128 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&cc_dir_default &usb_detect_en>;
- 	};
-diff --git a/arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts b/arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts
-index 7459525d99828..0c1352b8f2645 100644
---- a/arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts
-+++ b/arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts
-@@ -43,7 +43,7 @@ key-volup {
- 	 */
- 	extcon_usb: extcon-usb {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 58 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 58 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	hdmi-out {
-diff --git a/arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi b/arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi
-index 3033723fc6ff3..87d0293c728d8 100644
---- a/arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi
-+++ b/arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi
-@@ -150,7 +150,7 @@ cont_splash_mem: splash@9d400000 {
- 	 */
- 	extcon_usb: extcon-usb {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 58 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 58 GPIO_ACTIVE_HIGH>;
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts b/arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts
-index 8fb2d17887424..3c47410ba94c0 100644
---- a/arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts
-+++ b/arch/arm64/boot/dts/qcom/sdm660-xiaomi-lavender.dts
-@@ -85,7 +85,7 @@ framebuffer_mem: memory@9d400000 {
- 	 */
- 	extcon_usb: extcon-usb {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 58 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 58 GPIO_ACTIVE_HIGH>;
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts b/arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts
-index 9f8a9ef398a26..9353b9b622f6e 100644
---- a/arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts
-+++ b/arch/arm64/boot/dts/qcom/sm6125-sony-xperia-seine-pdx201.dts
-@@ -42,7 +42,7 @@ framebuffer0: framebuffer@5c000000 {
- 
- 	extcon_usb: extcon-usb {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 102 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 102 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	gpio-keys {
-diff --git a/arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts b/arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts
-index a7f4aeae9c1a5..1b06617ba34a9 100644
---- a/arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts
-+++ b/arch/arm64/boot/dts/qcom/sm6125-xiaomi-laurel-sprout.dts
-@@ -63,7 +63,7 @@ cmdline_mem: memory@ffd00000 {
- 
- 	extcon_usb: usb-id {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&tlmm 102 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&tlmm 102 GPIO_ACTIVE_HIGH>;
- 	};
- 
- 	gpio-keys {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index aa3e21bd6c8f4..20e3f41efe97f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -27,7 +27,7 @@ module_led: led-0 {
- 
- 	extcon_usb3: extcon-usb3 {
- 		compatible = "linux,extcon-usb-gpio";
--		id-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&usb3_id>;
- 	};
--- 
-2.34.1
+This seems like a violation of the API separation.
 
+>  #include "mtk_vcodec_drv.h"
+>  #include "mtk_vcodec_dec.h"
+> @@ -38,22 +39,29 @@ static int mtk_vcodec_get_hw_count(struct mtk_vcodec_=
+dev *dev)
+>         }
+>  }
+>
+> +static bool mtk_vcodec_is_hw_active(struct mtk_vcodec_dev *dev)
+> +{
+> +       u32 cg_status =3D 0;
+> +
+> +       if (!dev->reg_base[VDEC_SYS])
+> +               return __clk_is_enabled(dev->pm.vdec_active_clk);
+
+AFAIK this is still around for clk drivers that haven't moved to clk_hw.
+It shouldn't be used by clock consumers. Would it be better to just pass
+a syscon?
+
+ChenYu
+
+
+> +
+> +       cg_status =3D readl(dev->reg_base[VDEC_SYS]);
+> +       return (cg_status & VDEC_HW_ACTIVE) =3D=3D 0;
+> +}
+> +
+>  static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+>  {
+>         struct mtk_vcodec_dev *dev =3D priv;
+>         struct mtk_vcodec_ctx *ctx;
+> -       u32 cg_status =3D 0;
+>         unsigned int dec_done_status =3D 0;
+>         void __iomem *vdec_misc_addr =3D dev->reg_base[VDEC_MISC] +
+>                                         VDEC_IRQ_CFG_REG;
+>
+>         ctx =3D mtk_vcodec_get_curr_ctx(dev, MTK_VDEC_CORE);
+>
+> -       /* check if HW active or not */
+> -       cg_status =3D readl(dev->reg_base[0]);
+> -       if ((cg_status & VDEC_HW_ACTIVE) !=3D 0) {
+> -               mtk_v4l2_err("DEC ISR, VDEC active is not 0x0 (0x%08x)",
+> -                            cg_status);
+> +       if (!mtk_vcodec_is_hw_active(dev)) {
+> +               mtk_v4l2_err("DEC ISR, VDEC active is not 0x0");
+>                 return IRQ_HANDLED;
+>         }
+>
+> @@ -82,6 +90,25 @@ static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_=
+dev *dev)
+>  {
+>         struct platform_device *pdev =3D dev->plat_dev;
+>         int reg_num, i;
+> +       struct resource *res;
+> +       bool no_vdecsys_reg =3D false;
+> +       static const char * const mtk_dec_reg_names[] =3D {
+> +               "misc",
+> +               "ld",
+> +               "top",
+> +               "cm",
+> +               "ad",
+> +               "av",
+> +               "pp",
+> +               "hwd",
+> +               "hwq",
+> +               "hwb",
+> +               "hwg"
+> +       };
+> +
+> +       res =3D platform_get_resource_byname(pdev, IORESOURCE_MEM, "misc"=
+);
+> +       if (res)
+> +               no_vdecsys_reg =3D true;
+>
+>         /* Sizeof(u32) * 4 bytes for each register base. */
+>         reg_num =3D of_property_count_elems_of_size(pdev->dev.of_node, "r=
+eg",
+> @@ -91,12 +118,22 @@ static int mtk_vcodec_get_reg_bases(struct mtk_vcode=
+c_dev *dev)
+>                 return -EINVAL;
+>         }
+>
+> -       for (i =3D 0; i < reg_num; i++) {
+> -               dev->reg_base[i] =3D devm_platform_ioremap_resource(pdev,=
+ i);
+> -               if (IS_ERR(dev->reg_base[i]))
+> -                       return PTR_ERR(dev->reg_base[i]);
+> +       if (!no_vdecsys_reg) {
+> +               for (i =3D 0; i < reg_num; i++) {
+> +                       dev->reg_base[i] =3D devm_platform_ioremap_resour=
+ce(pdev, i);
+> +                       if (IS_ERR(dev->reg_base[i]))
+> +                               return PTR_ERR(dev->reg_base[i]);
+>
+> -               mtk_v4l2_debug(2, "reg[%d] base=3D%p", i, dev->reg_base[i=
+]);
+> +                       mtk_v4l2_debug(2, "reg[%d] base=3D%p", i, dev->re=
+g_base[i]);
+> +               }
+> +       } else {
+> +               for (i =3D 0; i < reg_num; i++) {
+> +                       dev->reg_base[i+1] =3D devm_platform_ioremap_reso=
+urce_byname(pdev, mtk_dec_reg_names[i]);
+> +                       if (IS_ERR(dev->reg_base[i+1]))
+> +                               return PTR_ERR(dev->reg_base[i+1]);
+> +
+> +                       mtk_v4l2_debug(2, "reg[%d] base=3D%p", i+1, dev->=
+reg_base[i+1]);
+> +               }
+>         }
+>
+>         return 0;
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b=
+/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+> index b753bf54ebd9..4e786821015d 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+> @@ -11,6 +11,7 @@
+>  #include <linux/of_device.h>
+>  #include <linux/pm_runtime.h>
+>  #include <linux/slab.h>
+> +#include <linux/clk-provider.h>
+>
+>  #include "mtk_vcodec_drv.h"
+>  #include "mtk_vcodec_dec.h"
+> @@ -63,22 +64,29 @@ static int mtk_vdec_hw_prob_done(struct mtk_vcodec_de=
+v *vdec_dev)
+>         return 0;
+>  }
+>
+> +static bool mtk_vcodec_is_hw_active(struct mtk_vdec_hw_dev *dev)
+> +{
+> +       u32 cg_status;
+> +
+> +       if (!dev->reg_base[VDEC_HW_SYS])
+> +               return __clk_is_enabled(dev->pm.vdec_active_clk);
+> +
+> +       cg_status =3D readl(dev->reg_base[VDEC_HW_SYS]);
+> +       return (cg_status & VDEC_HW_ACTIVE) =3D=3D 0;
+> +}
+> +
+>  static irqreturn_t mtk_vdec_hw_irq_handler(int irq, void *priv)
+>  {
+>         struct mtk_vdec_hw_dev *dev =3D priv;
+>         struct mtk_vcodec_ctx *ctx;
+> -       u32 cg_status;
+>         unsigned int dec_done_status;
+>         void __iomem *vdec_misc_addr =3D dev->reg_base[VDEC_HW_MISC] +
+>                                         VDEC_IRQ_CFG_REG;
+>
+>         ctx =3D mtk_vcodec_get_curr_ctx(dev->main_dev, dev->hw_idx);
+>
+> -       /* check if HW active or not */
+> -       cg_status =3D readl(dev->reg_base[VDEC_HW_SYS]);
+> -       if (cg_status & VDEC_HW_ACTIVE) {
+> -               mtk_v4l2_err("vdec active is not 0x0 (0x%08x)",
+> -                            cg_status);
+> +       if (!mtk_vcodec_is_hw_active(dev)) {
+> +               mtk_v4l2_err("vdec active is not 0x0");
+>                 return IRQ_HANDLED;
+>         }
+>
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c b=
+/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
+> index 777d445999e9..53e621965950 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
+> @@ -51,6 +51,9 @@ int mtk_vcodec_init_dec_clk(struct platform_device *pde=
+v, struct mtk_vcodec_pm *
+>                                 clk_info->clk_name);
+>                         return PTR_ERR(clk_info->vcodec_clk);
+>                 }
+> +
+> +               if (strcmp(clk_info->clk_name, "active") =3D=3D 0)
+> +                       pm->vdec_active_clk =3D clk_info->vcodec_clk;
+>         }
+>
+>         return 0;
+> @@ -84,6 +87,9 @@ static void mtk_vcodec_dec_clock_on(struct mtk_vcodec_p=
+m *pm)
+>
+>         dec_clk =3D &pm->vdec_clk;
+>         for (i =3D 0; i < dec_clk->clk_num; i++) {
+> +               if (strcmp(dec_clk->clk_info[i].clk_name, "active") =3D=
+=3D 0)
+> +                       continue;
+> +
+>                 ret =3D clk_prepare_enable(dec_clk->clk_info[i].vcodec_cl=
+k);
+>                 if (ret) {
+>                         mtk_v4l2_err("clk_prepare_enable %d %s fail %d", =
+i,
+> @@ -104,8 +110,12 @@ static void mtk_vcodec_dec_clock_off(struct mtk_vcod=
+ec_pm *pm)
+>         int i;
+>
+>         dec_clk =3D &pm->vdec_clk;
+> -       for (i =3D dec_clk->clk_num - 1; i >=3D 0; i--)
+> +       for (i =3D dec_clk->clk_num - 1; i >=3D 0; i--) {
+> +               if (strcmp(dec_clk->clk_info[i].clk_name, "active") =3D=
+=3D 0)
+> +                       continue;
+> +
+>                 clk_disable_unprepare(dec_clk->clk_info[i].vcodec_clk);
+> +       }
+>  }
+>
+>  static void mtk_vcodec_dec_enable_irq(struct mtk_vcodec_dev *vdec_dev, i=
+nt hw_idx)
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/dr=
+ivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+> index 9acab54fd650..180e74c69042 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+> @@ -208,6 +208,7 @@ struct mtk_vcodec_pm {
+>         struct mtk_vcodec_clk   vdec_clk;
+>         struct mtk_vcodec_clk   venc_clk;
+>         struct device   *dev;
+> +       struct clk *vdec_active_clk;
+>  };
+>
+>  /**
+> --
+> 2.41.0
+>
+>
 
