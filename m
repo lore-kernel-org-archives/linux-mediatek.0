@@ -4,74 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB632C7EE25
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 09:02:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 221A9C7EE2E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 09:32:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZhAp+BDSu/Ws5Q8sKxPNdYSkxLQXrJKY4PBO7PcjGgs=; b=Pt055sfjLxsV8fs7SKtHFMNRhT
-	1d12NL1TWs3hzDgbCq9vYcFzUN3g/3h9ZwXgm3AD+/Tr1nbkvO9MSk5d0tkBhc8wBVQI0f4Nyfuah
-	DGTcRi6JEkIqFR1i6S12VyZNu+oJJ5hF2kj+3ucN139M7UZGu5qwg6TxmflMBp3lx6h4123xXK+Ra
-	p7klQHqqpCARpp/918Irqe8QekQ3ayi/kJlaJDOJ0DPD6C6Z4IiuPpzuXilZ39hKubfvX8K/yYYwL
-	BAdTm4FP8gfYrR2GtksPRBh35KUuiQ+oXRkB9WatvBEc/Jix1QI/gXV8lXzZ8k6iKyK9E4O2XwlTI
-	ZJ+Nd2uw==;
+	bh=K2nCVCrZOkwudtPdu8IfLznRzJa7lQBEe+KUEz9jSjI=; b=Gbnw1CExtcX3jF5GIkMGKuwq/f
+	vnrkWLuJ+fxPRH0M6S8lqbDmEO6ac3TLeUPOutppwM2DUCQ8IlMW7fo8ifIM2x0LaaprnmqttykHU
+	fLDUNpIw3e0T1buzS8lLXkgutUWYQya4rw04kUafd5k+E3INnfyp6hxHXRRRFa5PC5xLk8YTw06K1
+	6lOjUx7Ie14JlLDVdkG5h3AG5+VdU3lcVuVDZ2hZT0IKsCtMiG8wEhx8L3jJ1VuWnXQ9IngNBlyGf
+	xGfm8ueaaadP0947mHrXse9TL6+OacCs20e4KASULTtX7+IE4f7JL5tnLbb9j/Z2ucNOvEHOmZGi4
+	jXOF4Peg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7BWw-008dJM-05;
-	Thu, 08 Jun 2023 09:02:06 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1q7Bzn-008hIk-0v;
+	Thu, 08 Jun 2023 09:31:55 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7BWs-008dIa-2z;
-	Thu, 08 Jun 2023 09:02:04 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 95A3A66058B2;
-	Thu,  8 Jun 2023 10:02:00 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1686214921;
-	bh=LJ+HvhTd3r8A40SMUVKIa+zdl0EATp6N8y8llSkifhg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BPd1t8XBtn8+kBHTWacnnTywabw5crwx4HWW2ZfQqRkv3FSbaMc4djBmtqXiEdksT
-	 RY6LKQ0b5GUt/6dyETcf+oumayZ6S7ZcZOfevyRiSilJIOhUFYdABftjtGti7lEunk
-	 +aXTwE6wUY4U1NsAdbjDhJYBhs+mY1Kw5x5qrIAhka3/xOCsS4fmkLC8rT3AyndWZq
-	 Kg5O0bB14Evlq7oMBrdLUAw06uBRjWUDl4K43TPbOp2QzJZEwL3zunbcG5kYq51VB+
-	 DCgRzH0fZv4YQEgJBBUMta31sd00p32plSEebCoEjOnUb3dwdix1jSm2Hq0Sledf9M
-	 HjthEQ0dKa55w==
-Message-ID: <f0018817-d47b-d772-ed9f-9126bf71a0d1@collabora.com>
-Date: Thu, 8 Jun 2023 11:01:58 +0200
+	id 1q7Bzj-008hHL-16
+	for linux-mediatek@lists.infradead.org;
+	Thu, 08 Jun 2023 09:31:53 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-307d20548adso263208f8f.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 08 Jun 2023 02:31:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1686216709; x=1688808709;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=K2nCVCrZOkwudtPdu8IfLznRzJa7lQBEe+KUEz9jSjI=;
+        b=ZjkbQBZm7Dw969pcsyWCSsJ0MnYKqEAQbXFJU/2sVFXKohiH6CJEfMUuOF4ObEDdQU
+         go/8wjrFCceGpauw8oxTdLhFGSVRBS1tep/cUye9RPDK1KXSaUUnBUZn4eT9x/3E9hqK
+         KUqBHec+rGdQmlhmzLJAH5Bwy15Fx6HWdvU6YcV55HwzcG1Z4lFR5nnZdFQoskea1uoi
+         LgjUYR/eIfkKyCCyHsikPfm9BeZeM/dVdifqlLMFI4N6F89SwU5lVL868pt6Fd6j8qOR
+         ftpRlCewejJ40XYXibu/GvzJZ8j1NvCp5o+5i4gBE205mGaZhCMXMVXpSwrB5fFOEqxW
+         GkuQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686216709; x=1688808709;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=K2nCVCrZOkwudtPdu8IfLznRzJa7lQBEe+KUEz9jSjI=;
+        b=Dht7wBfLLfPgoaLH5+9ozynWEvKZ9n0P0wP8Bc/RDGsXHhEK2gwbHtM3TQkuLFyvKS
+         TJZZbcNgFX0B5Z3+Y6u1Ua4F+KNs28nCtpbZ7ERQW019fEHSgDkdeZLeETvvqkU1XEdE
+         v3Ovuh1zZGORLSQYvppADbvRKEr1ATOIE5Le1eCoau9OUcUDefHsaRY1dkheCZj0OAfR
+         XqmkLTCz+IyYWxNr/chMNCxSA1rCjK04q089ph/EAg7dTO6iHHcMZKD2Ax5QMUNLwx2Z
+         M+qqiDLOJ5eSnKM2pvrQf5EZ+jHrqHgMDBK5IcCP1Fa2OCsE64K4Mev5b+WHnfL5FREt
+         q8xQ==
+X-Gm-Message-State: AC+VfDzlJ2HUzNnQhaRkhZ3lEBwwtpa9WH0K6OlOnZwr2rHysFESvgPu
+	LTwVlL/mJ5rjxr7dOpIXyZMZuQ==
+X-Google-Smtp-Source: ACHHUZ40NzTTDqWA9zTHhxTdub04YOLlEmvfv0QlDvpHjEWVBGENTRh9QrlohidOCVV9ZUBd14W1nQ==
+X-Received: by 2002:a5d:490f:0:b0:30a:ea8b:447d with SMTP id x15-20020a5d490f000000b0030aea8b447dmr6135595wrq.40.1686216709383;
+        Thu, 08 Jun 2023 02:31:49 -0700 (PDT)
+Received: from [192.168.1.172] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id t1-20020adfe101000000b0030e5a63e2dbsm1018641wrz.80.2023.06.08.02.31.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 08 Jun 2023 02:31:48 -0700 (PDT)
+Message-ID: <adb0c4f8-f2f6-c587-9452-2205d0180ad7@baylibre.com>
+Date: Thu, 8 Jun 2023 11:31:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH v2 3/5] media: mediatek: vcodec: Read HW active status
- from clock
+ Thunderbird/102.11.0
+Subject: Re: [PATCH 1/5] ASoC: mediatek: mt8188-mt6359: Compress of_device_id
+ entries
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ broonie@kernel.org
+Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
+ matthias.bgg@gmail.com, trevor.wu@mediatek.com, dan.carpenter@linaro.org,
+ alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20230608084727.74403-1-angelogioacchino.delregno@collabora.com>
+ <20230608084727.74403-2-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Stephen Boyd <sboyd@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, kernel@collabora.com,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20230607205714.510012-1-nfraprado@collabora.com>
- <20230607205714.510012-4-nfraprado@collabora.com>
- <CAGXv+5HHARvkCYfjPjRKgyWuzv-Dt215z1=yA+_tw4hyasdGQA@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5HHARvkCYfjPjRKgyWuzv-Dt215z1=yA+_tw4hyasdGQA@mail.gmail.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230608084727.74403-2-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230608_020203_103137_1BEE9E99 
-X-CRM114-Status: GOOD (  27.40  )
+X-CRM114-CacheID: sfid-20230608_023151_378742_C2529E05 
+X-CRM114-Status: UNSURE (   6.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,79 +101,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/06/23 10:12, Chen-Yu Tsai ha scritto:
-> On Thu, Jun 8, 2023 at 4:57 AM Nícolas F. R. A. Prado
-> <nfraprado@collabora.com> wrote:
->>
->> Remove the requirement of a VDEC_SYS reg iospace. To achieve that, rely
->> on the "active" clock being passed through the DT, and read its status
->> during IRQ handling to check whether the HW is active.
->>
->> The old behavior is still present when reg-names aren't supplied, as to
->> keep backward compatibility.
->>
->> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->> ---
->>
->> (no changes since v1)
->>
->>   .../mediatek/vcodec/mtk_vcodec_dec_drv.c      | 59 +++++++++++++++----
->>   .../mediatek/vcodec/mtk_vcodec_dec_hw.c       | 20 +++++--
->>   .../mediatek/vcodec/mtk_vcodec_dec_pm.c       | 12 +++-
->>   .../platform/mediatek/vcodec/mtk_vcodec_drv.h |  1 +
->>   4 files changed, 74 insertions(+), 18 deletions(-)
->>
->> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
->> index 9c652beb3f19..8038472fb67b 100644
->> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
->> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
->> @@ -16,6 +16,7 @@
->>   #include <media/v4l2-mem2mem.h>
->>   #include <media/videobuf2-dma-contig.h>
->>   #include <media/v4l2-device.h>
->> +#include <linux/clk-provider.h>
-> 
->                     ^^^^^^^^^^^^^^
-> 
-> This seems like a violation of the API separation.
-> 
->>   #include "mtk_vcodec_drv.h"
->>   #include "mtk_vcodec_dec.h"
->> @@ -38,22 +39,29 @@ static int mtk_vcodec_get_hw_count(struct mtk_vcodec_dev *dev)
->>          }
->>   }
->>
->> +static bool mtk_vcodec_is_hw_active(struct mtk_vcodec_dev *dev)
->> +{
->> +       u32 cg_status = 0;
->> +
->> +       if (!dev->reg_base[VDEC_SYS])
->> +               return __clk_is_enabled(dev->pm.vdec_active_clk);
-> 
-> AFAIK this is still around for clk drivers that haven't moved to clk_hw.
-> It shouldn't be used by clock consumers. Would it be better to just pass
-> a syscon?
-> 
+On 08/06/2023 10:47, AngeloGioacchino Del Regno wrote:
+> Those entries fit in one line: compress them to reduce line count.
+> While at it, also add the sentinel comment to the last entry.
 
-This is a legit usage of __clk_is_enabled().... because that's what we're really
-doing here, we're checking if a clock got enabled by the underlying MCU (as that
-clock goes up after the VDEC boots).
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-If this is *not* acceptable as it is, we will have to add a clock API call to
-check if a clock is enabled... but it didn't seem worth doing since we don't
-expect anyone else to have any legit usage of that, or at least, we don't know
-about anyone else needing that...
-
-As for the syscon, that's something that we've been discussing as well... the
-thing is: we're really *really* checking if a clock is enabled, so we should
-be using clock related calls... reading from a syscon means that we'd have to
-perform a register read (of.. again.. a clock) outside of the clock framework
-which, in my opinion, wouldn't be clean; I'd expect that to become a bit messy
-in the future too, should more MediaTek SoCs (I think MT8192/95 are already in
-the list, Nicolas please correct me if I'm wrong here) need the same thing, as
-we'd be adding more definitions around.
-
-Cheers,
-Angelo
+-- 
+Regards,
+Alexandre
 
 
