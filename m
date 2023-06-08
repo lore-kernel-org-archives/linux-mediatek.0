@@ -4,73 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEFB4C7EE43
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 10:42:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 430CDC7EE29
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 11:21:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+1prONvgHVhOVQ9iAvv4xaWOi+O15phGJ2fKJL0M3VI=; b=cSs35l4rmkKEoJHzHpjUNoq0Yq
-	rp+reBloJ+Z1buxvL92WqHrI7rhJlNjn7//OCPV0cvgd3dEbKu+SzN6Zrx8nICrle3vV1fZgz0trW
-	BkPk/asADCGEoHpE3IlGnYVx/RIp5HwslaFu5fn1lKkWd5IYzxVxh+OmGZ187o4ozVNQLwhI9h0HR
-	L3RJONhDtwExqw0lYCYWjbTR7QJ1YRvumhUhhRGGA1m0UV1w7NimoaMZi5QCUUtR+v3dvVlHnOZ01
-	0ZtgOB8f/0Io5otkXczueOugH+8JNTDv9bs3XxIHUlgGRAXUrIwq1U4LGBdl4+RgC1oO2fLGxsfJr
-	z55DNC6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/mAUjGB9CSvhNfmCuH6/a5+Me7nhCfhkgLPfGgwG/ZE=; b=bAxHiYF+ELcs1HdA+1w5pbQ12v
+	+K1B8zzzFBa/E9++UB1iPtkPKhj74MgrhhdBvFTrPp16zZNpRY8avZlBQngoDETFp8BHVJ0p8C4vZ
+	x+Ku5o3pGIJ9t5BGhHYbcP+F1JirdUjvL17R5mUYdFBuk6hGcWdrjvLA2VX9jAjovDYD6xxRyQT7p
+	SkdJfj8CIS08XVDqLNF5cfkxh0bv2QM++0w8bK1wG8mBLbGc/1P3BLQTGHDYUim0AGC61tGmVofne
+	Wss8nb/l/q5Q57hWWeYgTHtY9YaSPkEKlhMH8JZXMLODzbHQuPxJBgBwBoiJxa6SWHulnyCXXrHyf
+	tT1vPeZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7D68-008vH4-3D;
-	Thu, 08 Jun 2023 10:42:33 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1q7DhT-00995l-24;
+	Thu, 08 Jun 2023 11:21:07 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7D65-008vB7-35;
-	Thu, 08 Jun 2023 10:42:31 +0000
-Received: from pendragon.ideasonboard.com (om126033089000.35.openmobile.ne.jp [126.33.89.0])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 18545480;
-	Thu,  8 Jun 2023 12:41:56 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1686220917;
-	bh=HpyajXFq3Bn1xOynZKfJ657CvXa2Mt/KDZmQlXLGLBs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=n4RD0gh/QbIyDCJw62QTaUdUTBgP5VKks+vXeLL9ThBAp+gdlvk3SqC0WnuLYuOFu
-	 kwDxjbDfNJhew0OqUoJ4/hWE5AdtvGP6tOc/K9oqjh0dFOn8FzbSh2pDm98NhXxZIJ
-	 wFjJd1htwDvwt8L0FKM8KSojiUSEugsNb6e0gVMk=
-Date: Thu, 8 Jun 2023 13:42:20 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	m.szyprowski@samsung.com, mchehab@kernel.org, ming.qian@nxp.com,
-	shijie.qin@nxp.com, eagle.zhou@nxp.com, bin.liu@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
-	yunfei.dong@mediatek.com, stanimir.k.varbanov@gmail.com,
-	quic_vgarodia@quicinc.com, agross@kernel.org, andersson@kernel.org,
-	konrad.dybcio@linaro.org, ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de, daniel.almeida@collabora.com,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 3/8] media: videobuf2: Add a module param to limit vb2
- queue buffer storage
-Message-ID: <20230608104220.GP5058@pendragon.ideasonboard.com>
-References: <20230321102855.346732-1-benjamin.gaignard@collabora.com>
- <20230321102855.346732-4-benjamin.gaignard@collabora.com>
- <6c4658fd-3a64-b3f8-67cd-17ed2d7d3567@xs4all.nl>
- <20230531080331.GB6496@pendragon.ideasonboard.com>
- <608ae7d6-3f3b-137d-08d2-d41a240be2c4@xs4all.nl>
- <20230531123945.GF27043@pendragon.ideasonboard.com>
- <CAAFQd5A6sz1BhEjiWyXH6B1TBTLt0ivAc6N0Vd73hebnpc7fKQ@mail.gmail.com>
+	id 1q7DhN-00992g-0F;
+	Thu, 08 Jun 2023 11:21:05 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D75906606F0D;
+	Thu,  8 Jun 2023 12:20:38 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1686223239;
+	bh=2IDE7PUSzt+c1mDWYBXuuzu2nsaexwp18SpnUvz7iO4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=AVkGT4VUEIzjl/oJBsTWtOW5dVV5RU7rxc7CI7Gm3gBNJ7jnf+Xn/iRr8/o5bcltR
+	 XHYza4ivGmAbHIKL4RCwC45Zf9mNGeLE3Ljo6E8KYxR49Xm3Pp9vtxeOEdNzOflakA
+	 ZtIZ5WGbCEKPtH75yFWXV+491+RiPe1B0hD8LAfvQi1eJz0oE445AygclC4q4JNN41
+	 icLHxD1YY0CtA+BOXGpqZ9fLYlGU3j0L+yqXLcA8ubnhRfX16StO3EkKwq2b0lvu3F
+	 gpNBOXLBKbcGeCs+7phUVYpvAyjhbTrjIEhcWzij6CzgeUTDMhxoC79/eNqkLGnoPD
+	 4599kglXS+GFQ==
+Message-ID: <fdf94d7d-fa4a-f21a-2b63-2785389dd9ab@collabora.com>
+Date: Thu, 8 Jun 2023 13:20:36 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
+Subject: Re: [PATCH 5/5] ASoC: mediatek: mt8188-mt6359: Use bitfield macros
+ for registers
+Content-Language: en-US
+To: =?UTF-8?B?VHJldm9yIFd1ICjlkLPmlofoia8p?= <Trevor.Wu@mediatek.com>,
+ "broonie@kernel.org" <broonie@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "tiwai@suse.com" <tiwai@suse.com>,
+ "amergnat@baylibre.com" <amergnat@baylibre.com>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "perex@perex.cz" <perex@perex.cz>,
+ "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
+ "dan.carpenter@linaro.org" <dan.carpenter@linaro.org>
+References: <20230608084727.74403-1-angelogioacchino.delregno@collabora.com>
+ <20230608084727.74403-6-angelogioacchino.delregno@collabora.com>
+ <c05be93415b3a04db2bc0f86010e14a286ecded2.camel@mediatek.com>
+ <169f78a9-179d-deee-df98-d22e82604432@collabora.com>
+ <0493414323dba8d5f59bca8cb7db53f300769dfa.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <0493414323dba8d5f59bca8cb7db53f300769dfa.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAAFQd5A6sz1BhEjiWyXH6B1TBTLt0ivAc6N0Vd73hebnpc7fKQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230608_034230_161879_BA7AFD9D 
-X-CRM114-Status: GOOD (  49.60  )
+X-CRM114-CacheID: sfid-20230608_042101_379725_9B9F6597 
+X-CRM114-Status: GOOD (  23.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,109 +91,212 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tomasz,
-
-On Thu, Jun 08, 2023 at 07:24:29PM +0900, Tomasz Figa wrote:
-> On Wed, May 31, 2023 at 9:39 PM Laurent Pinchart wrote:
-> > On Wed, May 31, 2023 at 10:30:36AM +0200, Hans Verkuil wrote:
-> > > On 5/31/23 10:03, Laurent Pinchart wrote:
-> > > > On Wed, May 31, 2023 at 08:36:59AM +0200, Hans Verkuil wrote:
-> > > >> On 21/03/2023 11:28, Benjamin Gaignard wrote:
-> > > >>> Add module parameter "max_vb_buffer_per_queue" to be able to limit
-> > > >>> the number of vb2 buffers store in queue.
-> > > >>>
-> > > >>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> > > >>> ---
-> > > >>>  drivers/media/common/videobuf2/videobuf2-core.c | 15 +++------------
-> > > >>>  include/media/videobuf2-core.h                  | 11 +++++++++--
-> > > >>>  2 files changed, 12 insertions(+), 14 deletions(-)
-> > > >>>
-> > > >>> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> > > >>> index ae9d72f4d181..f4da917ccf3f 100644
-> > > >>> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> > > >>> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> > > >>> @@ -34,6 +34,8 @@
-> > > >>>  static int debug;
-> > > >>>  module_param(debug, int, 0644);
-> > > >>>
-> > > >>> +module_param(max_vb_buffer_per_queue, ulong, 0644);
-> > > >>
-> > > >> There is no MODULE_PARM_DESC here? Please add. I see it is not there for
-> > > >> the debug param either, it should be added for that as well.
-> > > >
-> > > > Would this be the right time to consider resource accounting in V4L2 for
-> > > > buffers ? Having a module parameter doesn't sound very useful, an
-> > > > application could easily allocate more buffers by using buffer orphaning
-> > > > (allocating buffers, exporting them as dmabuf objects, and freeing them,
-> > > > which leaves the memory allocated). Repeating allocation cycles up to
-> > > > max_vb_buffer_per_queue will allow allocating an unbounded number of
-> > > > buffers, using all the available system memory. I'd rather not add a
-> > > > module argument that only gives the impression of some kind of safety
-> > > > without actually providing any value.
+Il 08/06/23 13:02, Trevor Wu (吳文良) ha scritto:
+> On Thu, 2023-06-08 at 12:07 +0200, AngeloGioacchino Del Regno wrote:
+>>   	
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>   Il 08/06/23 12:03, Trevor Wu (吳文良) ha scritto:
+>>> On Thu, 2023-06-08 at 10:47 +0200, AngeloGioacchino Del Regno
+>> wrote:
+>>>
+>>>>    Replace open coded instances of FIELD_GET() with it, move
+>> register
+>>>> definitions at the top of the file and also replace magic numbers
+>>>> with register definitions.
+>>>>
+>>>> While at it, also change a regmap_update_bits() call to
+>>>> regmap_write()
+>>>> because the top 29 bits of AUD_TOP_CFG (31:3) are reserved
+>> (unused).
+>>>>
+>>>> Signed-off-by: AngeloGioacchino Del Regno <
+>>>> angelogioacchino.delregno@collabora.com>
+>>>> ---
+>>>>    sound/soc/mediatek/mt8188/mt8188-mt6359.c | 32 ++++++++++++++---
+>> ----
+>>>> --
+>>>>    1 file changed, 19 insertions(+), 13 deletions(-)
+>>>>
+>>>> diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+>>>> b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+>>>> index 5b2660139421..ac69c23e0da1 100644
+>>>> --- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+>>>> +++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+>>>> @@ -6,6 +6,7 @@
+>>>>     * Author: Trevor Wu <trevor.wu@mediatek.com>
+>>>>     */
+>>>>    
+>>>> +#include <linux/bitfield.h>
+>>>>    #include <linux/input.h>
+>>>>    #include <linux/module.h>
+>>>>    #include <linux/of_device.h>
+>>>> @@ -19,6 +20,15 @@
+>>>>    #include "../common/mtk-afe-platform-driver.h"
+>>>>    #include "../common/mtk-soundcard-driver.h"
+>>>>    
+>>>> +#define CKSYS_AUD_TOP_CFG0x032c
+>>>> + #define RG_TEST_ONBIT(0)
+>>>> + #define RG_TEST_TYPEBIT(2)
+>>>> +#define CKSYS_AUD_TOP_MON0x0330
+>>>> + #define TEST_MISO_COUNT_1GENMASK(3, 0)
+>>>> + #define TEST_MISO_COUNT_2GENMASK(7, 4)
+>>>> + #define TEST_MISO_DONE_1BIT(28)
+>>>> + #define TEST_MISO_DONE_2BIT(29)
+>>>> +
+>>>>    #define NAU8825_HS_PRESENTBIT(0)
+>>>>    
+>>>>    /*
+>>>> @@ -251,9 +261,6 @@ static const struct snd_kcontrol_new
+>>>> mt8188_nau8825_controls[] = {
+>>>>    SOC_DAPM_PIN_SWITCH("Headphone Jack"),
+>>>>    };
+>>>>    
+>>>> -#define CKSYS_AUD_TOP_CFG 0x032c
+>>>> -#define CKSYS_AUD_TOP_MON 0x0330
+>>>> -
+>>>>    static int mt8188_mt6359_mtkaif_calibration(struct
+>>>> snd_soc_pcm_runtime *rtd)
+>>>>    {
+>>>>    struct snd_soc_component *cmpnt_afe =
+>>>> @@ -265,13 +272,13 @@ static int
+>>>> mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>>>>    struct mtkaif_param *param;
+>>>>    int chosen_phase_1, chosen_phase_2;
+>>>>    int prev_cycle_1, prev_cycle_2;
+>>>> -int test_done_1, test_done_2;
+>>>> +u8 test_done_1, test_done_2;
+>>>>    int cycle_1, cycle_2;
+>>>>    int mtkaif_chosen_phase[MT8188_MTKAIF_MISO_NUM];
+>>>>    int mtkaif_phase_cycle[MT8188_MTKAIF_MISO_NUM];
+>>>>    int mtkaif_calibration_num_phase;
+>>>>    bool mtkaif_calibration_ok;
+>>>> -unsigned int monitor = 0;
+>>>> +u32 monitor = 0;
+>>>>    int counter;
+>>>>    int phase;
+>>>>    int i;
+>>>> @@ -303,8 +310,7 @@ static int
+>>>> mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>>>>    mt6359_mtkaif_calibration_enable(cmpnt_codec);
+>>>>    
+>>>>    /* set test type to synchronizer pulse */
+>>>> -regmap_update_bits(afe_priv->topckgen,
+>>>> -   CKSYS_AUD_TOP_CFG, 0xffff, 0x4);
+>>>> +regmap_write(afe_priv->topckgen, CKSYS_AUD_TOP_CFG,
+>>>> RG_TEST_TYPE);
+>>>
+>>> Hi Angelo,
+>>>
+>>> Because CKSYS_AUD_TOP_CFG is a 32bit register, it should be better
+>> to
+>>> use regmap_set_bits instead.
+>>>
+>>> regmap_set_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG,
+>> RG_TEST_TYPE);
+>>>
+>>
+>> The previous call to regmap_update_bits() was unsetting RG_TEST_ON
+>> and RE_SW_RESET
+>> while setting RG_TEST_TYPE: using regmap_write() ensures that we do
+>> exactly the
+>> same, without the overhead of performing the additional register read
+>> and bit
+>> swapping operations.
+>>
+>> Using the proposed regmap_set_bits() would change the behavior of
+>> this flow, which
+>> may result in unexpected hardware behavior, as we wouldn't be
+>> unsetting the
+>> previously mentioned two bits.
+>>
+>> Regards,
+>> Angelo
 > 
-> Good point. It's even simpler, just keep opening new vim2m instances
-> and requesting max buffers :).
 > 
-> > >
-> > > Does dmabuf itself provide some accounting mechanism? Just wondering.
-> > >
-> > > More specific to V4L2: I'm not so sure about this module parameter either.
-> > > It makes sense to have a check somewhere against ridiculous values (i.e.
-> > > allocating MAXINT buffers), but that can be a define as well. But otherwise
-> > > I am fine with allowing applications to allocate buffers until the memory
-> > > is full.
-> > >
-> > > The question is really: what is this parameter supposed to do? The only
-> > > thing it does is to sanitize unlikely inputs (e.g. allocating MAXINT buffers).
-> > >
-> > > I prefer that as a define, to be honest.
-> > >
-> > > I think it is perfectly fine for users to try to request more buffers than
-> > > memory allows. It will just fail in that case, not a problem.
-> > >
-> > > And if an application is doing silly things like buffer orphaning, then so
-> > > what? Is that any different than allocating memory and not freeing it?
-> > > Eventually it will run out of memory and crash, which is normal.
-> >
-> > Linux provides APIs to account for and limit usage of resources,
-> > including memory. A system administrator can prevent rogue processes
-> > from starving system resources. The memory consumed by vb2 buffer isn't
-> > taken into account, making V4L2 essentially unsafe for untrusted
-> > processes.
+> It's unclear why the original author chose a mask value of 0xffff, but
+> remap_write() also clears the higher 16 bits which differs from the
+> original logic.
 > 
-> I agree that proper accounting would be useful, although I wouldn't
-> really make this patch series depend on it, since it's not introducing
-> the loophole in the first place.
-
-No disagreement here, my concern was about introducing a workaround for
-the lack of proper memory accounting. I'd like to avoid the workaround,
-but it doesn't mean memory accounting has to be implement now.
-
-> We had some discussion about this in ChromeOS long ago and we thought
-> it would be really useful for killing browser tabs with big videos,
-> but otherwise using very little regular memory (e.g. via javascript).
+> The comment for that line states 'set test type to synchronizer pulse',
+> so I suggest updating only BIT2 here. Additionally, I checked datasheet
+> for other two bits, which have default values of 0.
 > 
-> One challenge with accounting V4L2 allocations is how to count shared
-> DMA-bufs. If one process allocates a V4L2 buffer, exports it to
-> DMA-buf and then sends it to another process that keeps it alive, but
-> frees the V4L2 buffer (and even closes the DMA-buf fd), should that
-> memory be still accounted to it even though it doesn't hold a
-> reference to it anymore?
+> However, I came across an internal codebase that used regmap_write(),
+> so it should be a safe implementation. If you think regmap_write() is
+> better, it's ok with me.
+> 
 
-I've thought about that too. It's an annoying problem, it should
-probably be discussed with memory management developers.
+Yes, using regmap_write() here is better.
 
-> > Now, to be fair, there are many reasons why allowing access to v4L2
-> > devices to untrusted applications is a bad idea, and memory consumption
-> > is likely not even the worst one. Still, is this something we want to
-> > fix, or do we want to consider V4L2 to be priviledged API only ? Right
-> > now we can't do so, but with many Linux systems moving towards pipewire,
-> > we could possibly have a system daemon isolating untrusted applications
-> > from the rest of the system. We may thus not need to fix this in the
-> > V4L2 API.
+Thanks,
+Angelo
 
--- 
-Regards,
+> Thanks,
+> Trevor
+> 
+>>
+>>> Thanks,
+>>> Trevor
+>>>
+>>>
+>>>>     mtkaif_calibration_num_phase = 42;/* mt6359: 0 ~ 42 */
+>>>>    mtkaif_calibration_ok = true;
+>>>>    
+>>>> @@ -314,7 +320,7 @@ static int
+>>>> mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>>>>    mt6359_set_mtkaif_calibration_phase(cmpnt_codec,
+>>>>        phase, phase,
+>>>> phase);
+>>>>    
+>>>> -regmap_set_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG,
+>>>> 0x1);
+>>>> +regmap_set_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG,
+>>>> RG_TEST_ON);
+>>>>    
+>>>>    test_done_1 = 0;
+>>>>    test_done_2 = 0;
+>>>> @@ -326,14 +332,14 @@ static int
+>>>> mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>>>>    while (!(test_done_1 & test_done_2)) {
+>>>>    regmap_read(afe_priv->topckgen,
+>>>>        CKSYS_AUD_TOP_MON, &monitor);
+>>>> -test_done_1 = (monitor >> 28) & 0x1;
+>>>> -test_done_2 = (monitor >> 29) & 0x1;
+>>>> +test_done_1 = FIELD_GET(TEST_MISO_DONE_1,
+>>>> monitor);
+>>>> +test_done_2 = FIELD_GET(TEST_MISO_DONE_2,
+>>>> monitor);
+>>>>    
+>>>>    if (test_done_1 == 1)
+>>>> -cycle_1 = monitor & 0xf;
+>>>> +cycle_1 = FIELD_GET(TEST_MISO_COUNT_1,
+>>>> monitor);
+>>>>    
+>>>>    if (test_done_2 == 1)
+>>>> -cycle_2 = (monitor >> 4) & 0xf;
+>>>> +cycle_2 = FIELD_GET(TEST_MISO_COUNT_2,
+>>>> monitor);
+>>>>    
+>>>>    /* handle if never test done */
+>>>>    if (++counter > 10000) {
+>>>> @@ -361,7 +367,7 @@ static int
+>>>> mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>>>>    mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1] =
+>>>> prev_cycle_2;
+>>>>    }
+>>>>    
+>>>> -regmap_clear_bits(afe_priv->topckgen,
+>>>> CKSYS_AUD_TOP_CFG, 0x1);
+>>>> +regmap_clear_bits(afe_priv->topckgen,
+>>>> CKSYS_AUD_TOP_CFG, RG_TEST_ON);
+>>>>    
+>>>>    if (mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] >= 0 &&
+>>>>        mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] >= 0)
+>>>> -- 
+>>>> 2.40.1
+>>
+>>
+>>
 
-Laurent Pinchart
 
