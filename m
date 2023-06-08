@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F6DFC7EE2E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 08:48:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B3EAC7EE29
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jun 2023 08:54:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0RTTGkxQ5/QdLRHaAS7HhdjOkQSPR9nvXd+CeQViNQM=; b=SoITaNlurmdftBWCTFxyWkgORR
-	g8muKUdI7Hv87Tvopc8UMNku5dJS8sfkrDYwSK8DvEa0MdFIA8UzUoN8EPf1UVA7m7zzH45Z5z6F3
-	7nKjQaWNm3KkNbbkDpExKdkm6OBeCvLIAIDP2UEl9g4PqQEbM3TAGPo7MNeGl7WCqiMEajdqZD/40
-	cDsbYtCMPpmoT4S/3F+gMgIti9KYWj/BwmpkFUvzdaAbEZbt4vpedKK4IN/pIByziGow+TVkuDh6t
-	RmfL4VP+DW8f+TYLbs/oUjfBdp1Yr3o3tB/4ZZiti1xTTV07UAne84UziZiIExup/rcmMaXng0lh0
-	+2+fRQdg==;
+	bh=adTcZBz9OWDd0YL3dj8Mz3hmg8bus1P++ghuh8zcc84=; b=IMEj7oE/3CosVeU6Fnxga9ls00
+	9t6hdi6A1bvCcWMuaE0STBl89lYQyEkJ/nzaFZGIJFznaJx5h2m3CjhMENGm7QKABlWXoJPeXXw+p
+	blSoHEYXUA5LasgtdVwPBI2MoSjz1G4d7HK/obOrNHprC12NjDdkpIzd2JNB3uceFtz9ZoQaDIBr2
+	fDu8YCXNM32Du1GOjYYJaaM6suz8AoXRA0YRtKUIQDvkBvTBjzE87N8kuGZdPgKaUlT+87XLZwjqC
+	r5StXl9u9fCF/CE4V/Tc1Hm9zMHc55uSCLDtW57NWrKsNacn7bxhBGf4V3FZGxMPrkO3Jbn9Nrdfl
+	lMwkTnpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7BJD-008a9Z-1U;
-	Thu, 08 Jun 2023 08:47:55 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1q7BP2-008bkx-2U;
+	Thu, 08 Jun 2023 08:53:56 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1q7BJ1-008Zzm-1G;
-	Thu, 08 Jun 2023 08:47:45 +0000
-Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	id 1q7BOz-008bjj-0S;
+	Thu, 08 Jun 2023 08:53:54 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab] (unknown [IPv6:2001:b07:2ed:14ed:a962:cd4d:a84:1eab])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AB23E6606F1E;
-	Thu,  8 Jun 2023 09:47:40 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9C8D66606F17;
+	Thu,  8 Jun 2023 09:53:50 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1686214061;
-	bh=TsKcmK9QZGJOPJ/OK2hMt+7KH5PMIKg71tTT0DRiI50=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ZhmXkxAiHv/iWg19l5VuDoRZKJ7fj7SlVFjyL4uJk69dZQsA8VtnKj2h7ynK4J9+B
-	 nIdkhbMfRkW5s72ZrJa/DSwXw4FNKQcTc+9H6+joIS32fqIi+vlQlqJocpPVWJDUJl
-	 VV8VLfEX/6iAXW3hXzNIozau+dUvkmHdlwM0dGziHnydlx/XTugc4yqZFILjze00v7
-	 IF0W9lW/t15MZiACDXQBC3Ox05us8JuJIKaSFOhfC3w7SfiF4jn5JOvU2sdSMmv3m+
-	 URgUclVMLLd/gj7TSs55IsWeQuHRnmNlUa0MO2Zo8b4irPPnO5/YT/RW2Jien8jBCM
-	 Xf8STY0iCpDAQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: broonie@kernel.org
-Cc: lgirdwood@gmail.com,
-	perex@perex.cz,
-	tiwai@suse.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	trevor.wu@mediatek.com,
-	amergnat@baylibre.com,
-	dan.carpenter@linaro.org,
-	alsa-devel@alsa-project.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH 5/5] ASoC: mediatek: mt8188-mt6359: Use bitfield macros for registers
-Date: Thu,  8 Jun 2023 10:47:27 +0200
-Message-Id: <20230608084727.74403-6-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230608084727.74403-1-angelogioacchino.delregno@collabora.com>
-References: <20230608084727.74403-1-angelogioacchino.delregno@collabora.com>
+	s=mail; t=1686214431;
+	bh=96X6k5oqBvIX1dBppWoB2S5z/C5qU+MMBXm3vBPWtl0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=U3ly+JKpH51mwz8/4HmOI/6l6O91KLGeLtbNFx5lDpKMqv7TQ1mITadLrC40Su0BQ
+	 QeRZtJIOhqTf/qwTJm/cqhT5+Cs1sp0y/uUMpZqu0LsaPGIDH0oVMkYtrTQ0THqqWS
+	 8/31HkQESvhMEK2XMNloIwjBBUbQzCgQa1fvDLhbn32ipbD0dqkUJM6HsEuAteAkib
+	 WYfcG5cleEOcK2/o+RH6gjQqsF0Qjo4AfOZPwUgeWGsX/7LccV0RiClCGDyabE/rd2
+	 VzzDqxDow1OjcBisJ9WaIL7Pvhpi33MgY5E+SdEhBPyilu9EIz8kimWqBEhVTMnaIg
+	 kYcYMRlXm2qDw==
+Message-ID: <38e5ffa2-93bd-ce70-ec00-6d61bad969c7@collabora.com>
+Date: Thu, 8 Jun 2023 10:53:47 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.2
+Subject: Re: [PATCH v2 4/5] clk: mediatek: mt8183: Add CLK_VDEC_ACTIVE to vdec
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, kernel@collabora.com,
+ Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Miles Chen <miles.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230607205714.510012-1-nfraprado@collabora.com>
+ <20230607205714.510012-5-nfraprado@collabora.com>
+ <CAGXv+5EgP+0fTDhdpnYDCVQAWtWqwKp=Xxh-pHc1137wHoywRQ@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5EgP+0fTDhdpnYDCVQAWtWqwKp=Xxh-pHc1137wHoywRQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230608_014743_700961_E7F4A76D 
-X-CRM114-Status: GOOD (  13.96  )
+X-CRM114-CacheID: sfid-20230608_015353_318580_48FB5346 
+X-CRM114-Status: GOOD (  20.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,120 +85,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace open coded instances of FIELD_GET() with it, move register
-definitions at the top of the file and also replace magic numbers
-with register definitions.
+Il 08/06/23 09:43, Chen-Yu Tsai ha scritto:
+> On Thu, Jun 8, 2023 at 4:57 AM Nícolas F. R. A. Prado
+> <nfraprado@collabora.com> wrote:
+>>
+>> Add the CLK_VDEC_ACTIVE clock to the vdec clock driver. This clock is
+>> enabled by the VPU once it starts decoding.
+>>
+>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>>
+>> ---
+>>
+>> Changes in v2:
+>> - Added CLK_IGNORE_UNUSED flag
+>>
+>>   drivers/clk/mediatek/clk-mt8183-vdec.c | 5 +++++
+>>   include/dt-bindings/clock/mt8183-clk.h | 3 ++-
+>>   2 files changed, 7 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/clk/mediatek/clk-mt8183-vdec.c b/drivers/clk/mediatek/clk-mt8183-vdec.c
+>> index 513b7956cbea..03c4f1acfdb8 100644
+>> --- a/drivers/clk/mediatek/clk-mt8183-vdec.c
+>> +++ b/drivers/clk/mediatek/clk-mt8183-vdec.c
+>> @@ -27,6 +27,10 @@ static const struct mtk_gate_regs vdec1_cg_regs = {
+>>          GATE_MTK(_id, _name, _parent, &vdec0_cg_regs, _shift,   \
+>>                  &mtk_clk_gate_ops_setclr_inv)
+>>
+>> +#define GATE_VDEC0(_id, _name, _parent, _shift)                \
+>> +       GATE_MTK_FLAGS(_id, _name, _parent, &vdec0_cg_regs, _shift,     \
+>> +               &mtk_clk_gate_ops_setclr, CLK_IGNORE_UNUSED)
+> 
+> I think what you want is a read-only gate clock only used for reading back
+> the status. The ops would only have .is_enabled.
 
-While at it, also change a regmap_update_bits() call to regmap_write()
-because the top 29 bits of AUD_TOP_CFG (31:3) are reserved (unused).
+Technically, you're right... but I would delay the introduction of a RO GATE_MTK
+clock for later, as it's not worth adding that for just one clock driver usage.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- sound/soc/mediatek/mt8188/mt8188-mt6359.c | 32 ++++++++++++++---------
- 1 file changed, 19 insertions(+), 13 deletions(-)
+We're checking if the same can be applied to other SoCs as well - if it can,
+then it would make sense to do that (small, yes), work... the point here is to
+enable MT8183 decoders ASAP to enable decoder tests in KernelCI, along with
+all of the other MediaTek Chromebooks.
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-index 5b2660139421..ac69c23e0da1 100644
---- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-@@ -6,6 +6,7 @@
-  * Author: Trevor Wu <trevor.wu@mediatek.com>
-  */
- 
-+#include <linux/bitfield.h>
- #include <linux/input.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-@@ -19,6 +20,15 @@
- #include "../common/mtk-afe-platform-driver.h"
- #include "../common/mtk-soundcard-driver.h"
- 
-+#define CKSYS_AUD_TOP_CFG	0x032c
-+ #define RG_TEST_ON		BIT(0)
-+ #define RG_TEST_TYPE		BIT(2)
-+#define CKSYS_AUD_TOP_MON	0x0330
-+ #define TEST_MISO_COUNT_1	GENMASK(3, 0)
-+ #define TEST_MISO_COUNT_2	GENMASK(7, 4)
-+ #define TEST_MISO_DONE_1	BIT(28)
-+ #define TEST_MISO_DONE_2	BIT(29)
-+
- #define NAU8825_HS_PRESENT	BIT(0)
- 
- /*
-@@ -251,9 +261,6 @@ static const struct snd_kcontrol_new mt8188_nau8825_controls[] = {
- 	SOC_DAPM_PIN_SWITCH("Headphone Jack"),
- };
- 
--#define CKSYS_AUD_TOP_CFG 0x032c
--#define CKSYS_AUD_TOP_MON 0x0330
--
- static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
- {
- 	struct snd_soc_component *cmpnt_afe =
-@@ -265,13 +272,13 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
- 	struct mtkaif_param *param;
- 	int chosen_phase_1, chosen_phase_2;
- 	int prev_cycle_1, prev_cycle_2;
--	int test_done_1, test_done_2;
-+	u8 test_done_1, test_done_2;
- 	int cycle_1, cycle_2;
- 	int mtkaif_chosen_phase[MT8188_MTKAIF_MISO_NUM];
- 	int mtkaif_phase_cycle[MT8188_MTKAIF_MISO_NUM];
- 	int mtkaif_calibration_num_phase;
- 	bool mtkaif_calibration_ok;
--	unsigned int monitor = 0;
-+	u32 monitor = 0;
- 	int counter;
- 	int phase;
- 	int i;
-@@ -303,8 +310,7 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
- 	mt6359_mtkaif_calibration_enable(cmpnt_codec);
- 
- 	/* set test type to synchronizer pulse */
--	regmap_update_bits(afe_priv->topckgen,
--			   CKSYS_AUD_TOP_CFG, 0xffff, 0x4);
-+	regmap_write(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, RG_TEST_TYPE);
- 	mtkaif_calibration_num_phase = 42;	/* mt6359: 0 ~ 42 */
- 	mtkaif_calibration_ok = true;
- 
-@@ -314,7 +320,7 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
- 		mt6359_set_mtkaif_calibration_phase(cmpnt_codec,
- 						    phase, phase, phase);
- 
--		regmap_set_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, 0x1);
-+		regmap_set_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, RG_TEST_ON);
- 
- 		test_done_1 = 0;
- 		test_done_2 = 0;
-@@ -326,14 +332,14 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
- 		while (!(test_done_1 & test_done_2)) {
- 			regmap_read(afe_priv->topckgen,
- 				    CKSYS_AUD_TOP_MON, &monitor);
--			test_done_1 = (monitor >> 28) & 0x1;
--			test_done_2 = (monitor >> 29) & 0x1;
-+			test_done_1 = FIELD_GET(TEST_MISO_DONE_1, monitor);
-+			test_done_2 = FIELD_GET(TEST_MISO_DONE_2, monitor);
- 
- 			if (test_done_1 == 1)
--				cycle_1 = monitor & 0xf;
-+				cycle_1 = FIELD_GET(TEST_MISO_COUNT_1, monitor);
- 
- 			if (test_done_2 == 1)
--				cycle_2 = (monitor >> 4) & 0xf;
-+				cycle_2 = FIELD_GET(TEST_MISO_COUNT_2, monitor);
- 
- 			/* handle if never test done */
- 			if (++counter > 10000) {
-@@ -361,7 +367,7 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
- 			mtkaif_phase_cycle[MT8188_MTKAIF_MISO_1] = prev_cycle_2;
- 		}
- 
--		regmap_clear_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, 0x1);
-+		regmap_clear_bits(afe_priv->topckgen, CKSYS_AUD_TOP_CFG, RG_TEST_ON);
- 
- 		if (mtkaif_chosen_phase[MT8188_MTKAIF_MISO_0] >= 0 &&
- 		    mtkaif_chosen_phase[MT8188_MTKAIF_MISO_1] >= 0)
--- 
-2.40.1
+Though, if you think that it is a good idea to add a RO gate right now, I don't
+have any strong opinions against that.
 
+Cheers,
+Angelo
 
