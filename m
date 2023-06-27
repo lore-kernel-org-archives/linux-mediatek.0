@@ -4,81 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41FF7EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jun 2023 21:38:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52374EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jun 2023 21:46:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bj6+etLFPi/QvC/lms44wr//KgQ8uG/UDFX2KN9p1GE=; b=C6CvRX+DRNN/EHYvvySQKV/dca
-	ifsPhB9Xx9BWmtMp0+HXdLtfDAv1awjt/dSmNlJyqL1lurn9TN3EFAxgG9M3+jjzQcqJnZh1GWohW
-	e4CEPgZjFXMmd4X8YwGts2WpyQMh/FXL8btq2dEAtkJQQ2pSEN9U22iXhavpT3dwav+YHUsX5kc41
-	yZ4I3SsKJm8EBArWmFDbJdh/UHf/iMR2eORPf8s6Wr+XbDiR+05vJJ+oq9IJW3iEFnBXvQYzg9EsP
-	23TV2spfscL0Nv4y8Nrlz1BcqVlH9nAwLRiK4lCPt0QsjElo3tgEqaJsXqKACRcWiO+pLnZjBvL2I
-	RMAJ2NYA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5Y4U++2pVLqn5Q1HGH3hQGm5jB6WQHaJ6Bl6H3IcCQQ=; b=X5TMm1DofhSUjNQtWX77CGtln5
+	QVEWcoYnADpE13WJg7c4eCgos3bfpNOh3c8u/78MTyWNQ07mGeEqG+cfsjln/QCWXTuVJ7i9V++kt
+	8ne46+iAXdp0VXNTMKg7qe9oCJm8i8yi+hwe7muDCL//vErNhYpQSYC0c35NLl/zMT3Pidm6r3hgj
+	016wJsjloktVimOYhjAJNtn14y9RpjZrgw70rtN2TX7RKr6SbhinTGs5HPGTfWSn18gvbjRmLVgCX
+	xH/HAoaFq190g/bShvxFbz4cx/COvN8Rf4gTU24BASnW9N5O1dNPMj9TOrZ0mVvGXaJ1XUQWSRqPZ
+	30Xr0BIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEGOg-00EDWJ-14;
-	Tue, 27 Jun 2023 21:38:50 +0000
+	id 1qEGW7-00EEbB-00;
+	Tue, 27 Jun 2023 21:46:31 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEGOa-00EDUs-2l;
-	Tue, 27 Jun 2023 21:38:46 +0000
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	id 1qEGW3-00EEYT-0a;
+	Tue, 27 Jun 2023 21:46:28 +0000
+Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7759D6607165;
-	Tue, 27 Jun 2023 22:38:34 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6AD66660716B;
+	Tue, 27 Jun 2023 22:46:23 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1687901916;
-	bh=cWkXTYDt/bMN7/WXTJkUfgfgP3H+Af/AjtPCKz5D3x4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HSDaRNvc1M2EN3RY1Pq8UC24N8DQTLqgClDJG4ECDz8mb2Hp/onmIpVYPU73ACGZZ
-	 BR/IV+PWVbp4M/+cMsjrsTL6ZoukxBw4Ooyez+T2EGj/iVkfchk38fRlGSkyBsI4iO
-	 nEj8Sypo5BAATF8NGPXynu7qwbPfjr1/TXgpdmw1ftakpGZM45RXEU8JtnNDY6i8UK
-	 2ENTjRp1ltPvIpsMSHXIuD6AYDRfU1hLCaZKVtez/Jnei6h3KfudzohiLfN4DiqMCJ
-	 QO+xLHpwGDiQPjKP9N+CatPE4mR7GdTrNZJcnPIPM6+07Q6uUBB1B0tQLb5tY8Vj02
-	 Iq1FaAY15mrHw==
-Date: Tue, 27 Jun 2023 17:38:30 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	s=mail; t=1687902385;
+	bh=Ud2ruCQMrs0y4/oeVi64N6XaZrL6MD3Lu7ndY/b2YiA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=OX4G7uSaFVf1Rp+S5iCmBZuljKzbtG39+f4Fu4sgj7vuOZ7zbTVP7mIOXjSiMkzkx
+	 KnTEnsqh7eKb7K1um2WAEez1k6/QVYbHo+OMfYILQnycfc5DrPJLt7Nbjx6C0E5fwR
+	 t5ADZ0wYP8AvqGKNNINOQxQPSD4Z4Elyv+MHgyuoqr3FrkgkcqSc8twxoX0cHzwKKz
+	 /crOOTx+3AnC3X2hajK3C8lWRr1o73oTf6aNm7EkGpWn3+MhEJYrvFFZFsdTDPvmXu
+	 NCaH3PGvFIPxu2pqu4Spj9YLyK3Oj/fb/qhZZNhYw6SLFf6bFIiO1mPLIJK9vlB4W/
+	 /656KnuIXCOfQ==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Rob Herring <robh+dt@kernel.org>,
 	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 3/6] media: dt-bindings: mediatek,vcodec: Remove
- VDEC_SYS for mt8183
-Message-ID: <51dfbae5-4250-4b89-adb5-ff0ebf52cc52@notapiano>
-References: <20230620000349.2122191-4-nfraprado@collabora.com>
- <8b5e4a9b-7496-02a1-d3b6-a0be8ea85798@linaro.org>
- <a82b7f2d-04d4-4ac0-9a72-ad1c17118e19@notapiano>
- <cb2dd67a-d3df-f194-6595-789d12b38f3d@linaro.org>
- <6b41c5e4-bae9-4c99-8a28-7272c8a598a3@notapiano>
- <9c36cdbb-7204-f9ca-6191-88e0f0f71915@linaro.org>
- <132ec056-2186-4be5-9770-4d8c4d07bd76@notapiano>
- <6af2faf2-8624-948b-6efa-3bf00695293b@linaro.org>
- <aef120c8-bb25-476f-8976-7f699a851334@notapiano>
- <9bf3f3d0-9655-3549-1d1b-02816f51b666@linaro.org>
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v4 1/7] media: dt-bindings: mediatek,vcodec: Allow single clock for mt8183
+Date: Tue, 27 Jun 2023 17:45:51 -0400
+Message-ID: <20230627214615.1503901-2-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230627214615.1503901-1-nfraprado@collabora.com>
+References: <20230627214615.1503901-1-nfraprado@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <9bf3f3d0-9655-3549-1d1b-02816f51b666@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230627_143845_198943_AD2BFE57 
-X-CRM114-Status: GOOD (  40.04  )
+X-CRM114-CacheID: sfid-20230627_144627_358951_497DDF33 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,108 +87,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 26, 2023 at 05:30:07PM +0200, Krzysztof Kozlowski wrote:
-> On 26/06/2023 15:54, Nícolas F. R. A. Prado wrote:
-> > On Fri, Jun 23, 2023 at 06:21:31PM +0200, Krzysztof Kozlowski wrote:
-> >> On 21/06/2023 20:00, Nícolas F. R. A. Prado wrote:
-> >>>>
-> >>>> But anyway this variant comes with some set of regs and reg-names. Other
-> >>>> variant comes with different set. In all cases they should be defined,
-> >>>> even by "defined" means not allowed.
-> >>>
-> >>> I'm not sure what you mean. Are you suggesting to disable reg-names on mt8173?
-> >>
-> >> That's one of the options if for some reason you don't want to define them.
-> >>
-> >>>
-> >>>>
-> >>>>>
-> >>>>> But in a separate series we could drop vdecsys from mt8173's reg as well,
-> >>>>> passing it as a syscon instead, which would solve the warning on that platform,
-> >>>>> though some more driver changes would be needed to be able to handle it for that
-> >>>>> SoC. The newer SoCs like mt8192, mt8195, etc, should also get vdecsys dropped
-> >>>>> from their regs to have a correct memory description.
-> >>>>>
-> >>>>
-> >>>> Sure, but I don't understand how does it affect defining and making
-> >>>> specific regs/reg-names or keeping them loose.
-> >>>
-> >>> We need some way to tell in the driver whether the first reg is VDEC_SYS or not.
-> >>> Since so far reg-names have not been used for the vcodec, the simplest, and
-> >>> cleanest, way to do it, is to add reg-names when VDEC_SYS is not present. When
-> >>> the other SoCs are updated to no longer have the first reg as VDEC_SYS, they
-> >>> would also have reg-names added to their binding, to clearly indicate that.
-> >>
-> >> Don't use reg-names for that. The order of entries is anyway strict.
-> > 
-> > Since the order of entries is strict, if I remove VDEC_SYS from mt8183, I also
-> > need to remove it from mt8173, is that what you mean?
-> 
-> It's different compatible, so it can have different entries.
-> 
-> 
-> > I would still check for
-> > the presence of reg-names in the driver to differentiate whether the old or new
-> > binding is used, you just don't want different reg-names between compatibles in
-> > the binding?
-> 
-> I wrote already what I want:
-> 
->   In all cases they should be defined, even by "defined" means not allowed.
-> 
-> Now of course the best would be if the reg-names are always the same, at
-> least in respect of order of items. This is what we try to do for all
-> devices.
-> 
-> > 
-> >>
-> >>>
-> >>> For example, for mt8173 we currently have
-> >>>
-> >>> 		vcodec_dec: vcodec@16000000 {
-> >>> 			compatible = "mediatek,mt8173-vcodec-dec";
-> >>> 			reg = <0 0x16000000 0 0x100>,	/* VDEC_SYS */
-> >>> 			      <0 0x16020000 0 0x1000>,	/* VDEC_MISC */
-> >>> 			      <0 0x16021000 0 0x800>,	/* VDEC_LD */
-> >>> 			      <0 0x16021800 0 0x800>,	/* VDEC_TOP */
-> >>> 			      <0 0x16022000 0 0x1000>,	/* VDEC_CM */
-> >>> 			      <0 0x16023000 0 0x1000>,	/* VDEC_AD */
-> >>> 			      <0 0x16024000 0 0x1000>,	/* VDEC_AV */
-> >>> 			      <0 0x16025000 0 0x1000>,	/* VDEC_PP */
-> >>> 			      <0 0x16026800 0 0x800>,	/* VDEC_HWD */
-> >>> 			      <0 0x16027000 0 0x800>,	/* VDEC_HWQ */
-> >>> 			      <0 0x16027800 0 0x800>,	/* VDEC_HWB */
-> >>> 			      <0 0x16028400 0 0x400>;	/* VDEC_HWG */
-> >>>
-> >>> In a future series, when removing VDEC_SYS from it, it would become
-> >>>
-> >>> 		vcodec_dec: vcodec@16020000 {
-> >>> 			compatible = "mediatek,mt8173-vcodec-dec";
-> >>> 			reg = <0 0x16020000 0 0x1000>,	/* VDEC_MISC */
-> >>> 			      <0 0x16021000 0 0x800>,	/* VDEC_LD */
-> >>> 			      <0 0x16021800 0 0x800>,	/* VDEC_TOP */
-> >>> 			      <0 0x16022000 0 0x1000>,	/* VDEC_CM */
-> >>> 			      <0 0x16023000 0 0x1000>,	/* VDEC_AD */
-> >>> 			      <0 0x16024000 0 0x1000>,	/* VDEC_AV */
-> >>> 			      <0 0x16025000 0 0x1000>,	/* VDEC_PP */
-> >>> 			      <0 0x16026800 0 0x800>,	/* VDEC_HWD */
-> >>> 			      <0 0x16027000 0 0x800>,	/* VDEC_HWQ */
-> >>> 			      <0 0x16027800 0 0x800>,	/* VDEC_HWB */
-> >>> 			      <0 0x16028400 0 0x400>;	/* VDEC_HWG */
-> >>> 			reg-names = "misc", "ld", "top", "cm", "ad", "av", "pp",
-> >>>                                     "hwd", "hwq", "hwb", "hwg";
-> >>
-> >> So you want to use reg-names to avoid ABI break. This is not the reason
-> >> not to define reg-names for other case.
-> > 
-> > There will be an ABI break anyway when the first reg is removed (as shown
-> > above), I'm just trying to avoid churn: adding a reg-name that will be removed
-> > later.
-> 
-> So remove the reg-name now and there will be no "later"?
+MT8173 and MT8183 have different clocks, and consequently clock-names.
+Relax the number of clocks and set clock-names based on compatible.
 
-OK, I'll send a v4 with VDEC_SYS also removed from mt8173.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: NÃ­colas F. R. A. Prado <nfraprado@collabora.com>
 
-Thanks,
-Nícolas
+---
+
+(no changes since v3)
+
+Changes in v3:
+- Reintroduced this commit from v1 since the active clock is no longer
+  used.
+- Further constrained clocks as suggested in v1.
+
+ .../media/mediatek,vcodec-decoder.yaml        | 37 ++++++++++++++-----
+ 1 file changed, 28 insertions(+), 9 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+index fad59b486d5d..1506d2693f7d 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+@@ -27,18 +27,12 @@ properties:
+     maxItems: 1
+ 
+   clocks:
++    minItems: 1
+     maxItems: 8
+ 
+   clock-names:
+-    items:
+-      - const: vcodecpll
+-      - const: univpll_d2
+-      - const: clk_cci400_sel
+-      - const: vdec_sel
+-      - const: vdecpll
+-      - const: vencpll
+-      - const: venc_lt_sel
+-      - const: vdec_bus_clk_src
++    minItems: 1
++    maxItems: 8
+ 
+   assigned-clocks: true
+ 
+@@ -88,6 +82,15 @@ allOf:
+       required:
+         - mediatek,scp
+ 
++      properties:
++        clocks:
++          minItems: 1
++          maxItems: 1
++
++        clock-names:
++          items:
++            - const: vdec
++
+   - if:
+       properties:
+         compatible:
+@@ -99,6 +102,22 @@ allOf:
+       required:
+         - mediatek,vpu
+ 
++      properties:
++        clocks:
++          minItems: 8
++          maxItems: 8
++
++        clock-names:
++          items:
++            - const: vcodecpll
++            - const: univpll_d2
++            - const: clk_cci400_sel
++            - const: vdec_sel
++            - const: vdecpll
++            - const: vencpll
++            - const: venc_lt_sel
++            - const: vdec_bus_clk_src
++
+ additionalProperties: false
+ 
+ examples:
+-- 
+2.41.0
+
 
