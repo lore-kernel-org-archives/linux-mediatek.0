@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BEE1EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jun 2023 21:47:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8935CEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jun 2023 21:47:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OKE9BiQP+eOe1UTQpPcrsrjA1s2xHp5VPFiPPtT4pdY=; b=xVVjIzGATrJ8ea2iAc9Wl883Mx
-	ALCH9i9GRLIMCgCbh6vmc3Vpl11EfmZg4sLYZzQ9ctSUGX/q9In6llYUDS4gUyr13hWopMPxuwVhd
-	HlcWLwvOCT9X0GOSOCPGl/6kTRXyXrp+TkHloiolXFOdWH2PPRG5pP9WivRUnk/z58V7SdQKQSncM
-	5OxDTJnWx9QCHB9TYmruEeu74kSUt8PmjkjkEq228q/bF9ufoxJ/UeILNZxspNIMvu+qUgdVTILqz
-	JEYwSsMBgkRkNweAGVpnCPS4DcoNvcT6bEoEFY2LZ2aVxmKt+SDOI69KcDYraJnbH/qoj7wEq9zXi
-	uwx5v46Q==;
+	bh=TERIzU15yeXmu9DzY8Kxd+c6di/BQGALijSOmeevHbI=; b=zFENuwJhn5g77nOF1yC98k+75h
+	O5mr/biOKK9DqBG2GPPUKlYTOwJOaHo+uqdY+dshQWSHhss5Yb5r9XcUtu83ZizkDMZ2azy+Ftw1a
+	igv04aehqI7JUgxlqmeE+vpss7UA3BiEm/rZU8RmGjXzFWX53W33uRVlihWTmPjFgnZBaj8LGGMva
+	cijFNTnHBlVyzhYPm2OGRKmcQ4lXraUBAOzGQWbOGiNGmqlVnD6/wPCFnigzdXf5y4gu0DfG5Afef
+	1eVw6k2mR7VwLgaYeDrn4+RQ4aBzFjITdq1HwcnV5CUQPBo50pDCCDSDmaIDZLcwp5uYf6752AqHP
+	RoOaeQOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEGWa-00EEsw-07;
-	Tue, 27 Jun 2023 21:47:00 +0000
+	id 1qEGWi-00EExD-2a;
+	Tue, 27 Jun 2023 21:47:08 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEGW8-00EEbj-1L;
-	Tue, 27 Jun 2023 21:46:33 +0000
+	id 1qEGWA-00EEdE-25;
+	Tue, 27 Jun 2023 21:46:36 +0000
 Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DDAE8660716D;
-	Tue, 27 Jun 2023 22:46:28 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9E1786607165;
+	Tue, 27 Jun 2023 22:46:31 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1687902391;
-	bh=6/vcaD7vHgxFo563mcGSzADfJpcIhcKqIWXtcXlmyyg=;
+	s=mail; t=1687902393;
+	bh=qe7GxwnSjbAfRY/6FkdfYaxWhyQir3XZsikITphI9wM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=QRX7Y7FJczspzvg1lbr4hdqkL2V2n45ngk1lc9CQScHa7bQQYNO6BXWJjQ4mdUwxJ
-	 /9TsURMA8BOHYMi0/Fu7ThKFO5dXWGl02FiKipJReDlL/oU340MrHwcADXNhUXbN/R
-	 Ar7nAy7hwB1n1fFG9oX9YJpKbYno+7ObS6bmEJ7NFPjGR+Q/RZB5dHbw+Oc4zx4OZf
-	 SRs4akW6zCFzxlDCOOtajVTuPnyjEhgqqkQP13tDy9KBzV7UfY0ncA2U/xN6KHret8
-	 F4QmMtU7qTp035vpOCTPfbJKxor8dFaC9NlV0UgyerJSZhXuNjSgFzwVjB+KshnJ1C
-	 jn/wsh0jiqtcQ==
+	b=bdHidwzklkAhbmUpYjA44CW3qrHkIZZVA7RjXR3Z/QIt8traaERt3QwwvkUyb/Qev
+	 5+rBFDjPiEs2wxzb32LmsViFA7e7zWPYwjfG2eBADE8bo82zAOPEENI+KtscCjgJ+L
+	 NGhFrfHi5IgwvM+ADyCynZARqJZNPYsRVyb9szXItCjrHoNjnTRHf8LZrlgmEkejRu
+	 8SN2h6ryZrVMAoPN2ZK8PireVNbcbJIr+g8E0ARgNd49Xm+n3TlBJKf+56iM5sVmzq
+	 hof9n+5xgFAkeVJl+7JG+DxhCLvbEXi51oN5go1ZVErKVx6wcC76A44ADqcocuIWvR
+	 B8JuhVQMWVSaw==
 From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>
@@ -50,20 +50,16 @@ Cc: kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
 	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
 	Tiffany Lin <tiffany.lin@mediatek.com>,
 	Yunfei Dong <yunfei.dong@mediatek.com>,
-	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-media@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 3/7] media: dt-bindings: mediatek,vcodec: Remove VDEC_SYS register space
-Date: Tue, 27 Jun 2023 17:45:53 -0400
-Message-ID: <20230627214615.1503901-4-nfraprado@collabora.com>
+Subject: [PATCH v4 4/7] media: mediatek: vcodec: Define address for VDEC_HW_ACTIVE
+Date: Tue, 27 Jun 2023 17:45:54 -0400
+Message-ID: <20230627214615.1503901-5-nfraprado@collabora.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230627214615.1503901-1-nfraprado@collabora.com>
 References: <20230627214615.1503901-1-nfraprado@collabora.com>
@@ -71,8 +67,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230627_144632_584179_26BEC0E2 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20230627_144634_815377_B6E46400 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,108 +83,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The binding expects the first register space to be VDEC_SYS. However
-this register space is already assigned to a different node on both
-MT8173 and MT8183: a clock-controller node called 'vdecsys' which is
-also a syscon.
+The VDEC_HW_ACTIVE bit is located at offset 0, bit 4 of the VDECSYS
+iospace. Only the mask was previously defined, with the address being
+implicit. Explicitly define the address, and append a '_MASK' suffix to
+the mask, to make accesses to this bit clearer.
 
-In order to resolve the overlapping address ranges, remove the VDEC_SYS
-register space from the video decoder, and add a new property to hold
-the phandle to the syscon, so that iospace can still be handled.
-
-Also add reg-names to be able to tell that this new register schema is
-used, so the driver can keep backward compatibility.
+This commit brings no functional change.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 ---
 
 Changes in v4:
-- Removed VDEC_SYS reg from mt8173 as well
-- Reworded commit
+- Made use of BIT() macro for mask
 
 Changes in v3:
-- Removed the active clock
-- Added a mediatek,vdecsys syscon property
+- Added this commit
 
-Changes in v2:
-- Merged with patch 1 (media: dt-bindings: mediatek,vcodec: Allow single
-  clock for mt8183) to avoid changing number of clocks twice
-- Added maxItems to reg-names
-- Constrained clocks for each compatible
-- Reordered properties for each compatible
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c | 4 ++--
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c  | 4 ++--
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h  | 3 ++-
+ 3 files changed, 6 insertions(+), 5 deletions(-)
 
- .../media/mediatek,vcodec-decoder.yaml        | 28 ++++++++++++++++---
- 1 file changed, 24 insertions(+), 4 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
-index 1e56ece44aee..b401c67e3ba0 100644
---- a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
-@@ -21,7 +21,22 @@ properties:
-       - mediatek,mt8183-vcodec-dec
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+index d41f2121b94f..83780d29a9cf 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+@@ -50,8 +50,8 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+ 	ctx = mtk_vcodec_get_curr_ctx(dev, MTK_VDEC_CORE);
  
-   reg:
--    maxItems: 12
-+    minItems: 11
-+    maxItems: 11
-+
-+  reg-names:
-+    items:
-+      - const: misc
-+      - const: ld
-+      - const: top
-+      - const: cm
-+      - const: ad
-+      - const: av
-+      - const: pp
-+      - const: hwd
-+      - const: hwq
-+      - const: hwb
-+      - const: hwg
+ 	/* check if HW active or not */
+-	cg_status = readl(dev->reg_base[0]);
+-	if ((cg_status & VDEC_HW_ACTIVE) != 0) {
++	cg_status = readl(dev->reg_base[0] + VDEC_HW_ACTIVE_ADDR);
++	if ((cg_status & VDEC_HW_ACTIVE_MASK) != 0) {
+ 		mtk_v4l2_err("DEC ISR, VDEC active is not 0x0 (0x%08x)",
+ 			     cg_status);
+ 		return IRQ_HANDLED;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+index e1cb2f8dca33..41aa66c7295b 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+@@ -75,8 +75,8 @@ static irqreturn_t mtk_vdec_hw_irq_handler(int irq, void *priv)
+ 	ctx = mtk_vcodec_get_curr_ctx(dev->main_dev, dev->hw_idx);
  
-   interrupts:
-     maxItems: 1
-@@ -60,6 +75,10 @@ properties:
-     description:
-       Describes point to scp.
+ 	/* check if HW active or not */
+-	cg_status = readl(dev->reg_base[VDEC_HW_SYS]);
+-	if (cg_status & VDEC_HW_ACTIVE) {
++	cg_status = readl(dev->reg_base[VDEC_HW_SYS] + VDEC_HW_ACTIVE_ADDR);
++	if (cg_status & VDEC_HW_ACTIVE_MASK) {
+ 		mtk_v4l2_err("vdec active is not 0x0 (0x%08x)",
+ 			     cg_status);
+ 		return IRQ_HANDLED;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
+index 36faa8d9d681..ff250e3be78e 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
+@@ -12,7 +12,8 @@
  
-+  mediatek,vdecsys:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: Phandle to the vdecsys syscon node.
-+
- required:
-   - compatible
-   - reg
-@@ -67,6 +86,7 @@ required:
-   - clocks
-   - clock-names
-   - iommus
-+  - mediatek,vdecsys
+ #include "mtk_vcodec_drv.h"
  
- allOf:
-   - if:
-@@ -126,10 +146,9 @@ examples:
-     #include <dt-bindings/interrupt-controller/irq.h>
-     #include <dt-bindings/power/mt8173-power.h>
- 
--    vcodec_dec: vcodec@16000000 {
-+    vcodec_dec: vcodec@16020000 {
-       compatible = "mediatek,mt8173-vcodec-dec";
--      reg = <0x16000000 0x100>,   /*VDEC_SYS*/
--          <0x16020000 0x1000>,  /*VDEC_MISC*/
-+      reg = <0x16020000 0x1000>,  /*VDEC_MISC*/
-           <0x16021000 0x800>,   /*VDEC_LD*/
-           <0x16021800 0x800>,   /*VDEC_TOP*/
-           <0x16022000 0x1000>,  /*VDEC_CM*/
-@@ -150,6 +169,7 @@ examples:
-              <&iommu M4U_PORT_HW_VDEC_VLD_EXT>,
-              <&iommu M4U_PORT_HW_VDEC_VLD2_EXT>;
-       mediatek,vpu = <&vpu>;
-+      mediatek,vdecsys = <&vdecsys>;
-       power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
-       clocks = <&apmixedsys CLK_APMIXED_VCODECPLL>,
-              <&topckgen CLK_TOP_UNIVPLL_D2>,
+-#define VDEC_HW_ACTIVE 0x10
++#define VDEC_HW_ACTIVE_ADDR 0x0
++#define VDEC_HW_ACTIVE_MASK BIT(4)
+ #define VDEC_IRQ_CFG 0x11
+ #define VDEC_IRQ_CLR 0x10
+ #define VDEC_IRQ_CFG_REG 0xa4
 -- 
 2.41.0
 
