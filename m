@@ -4,82 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35E4CEB64D7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jun 2023 13:17:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B121EB64D7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jun 2023 14:54:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Cc:From:Subject:References:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OfwgvIzY/UOlJSG791BVcZZbDeg1/YAqLY5prNJq+OI=; b=icjbUBPPMBGvOFTMLAuqFZnB2m
-	eBiECcPc91D84YemwpD1ol06SToiFGcNWsr5qWjcqq92UvBU4dukaeNz9cRnKPE8xfSariN3CwzIy
-	gozhJVo+eRwNYFZ6mv4bvZUCScdasb5OX4nZQqb9CzbKI0UeUBjaEvR2emP5OV0iOtnia2FsgWw//
-	ETK3CydG98m6PZuA988sV/omwpZnX3ocZCaEu1snSCUW4NqqkdGX/oxQKYSwcALsxPDLjJCKgpCSG
-	dplRM0l3JOkMqhrV1NBzvt5icfqgGxYqbFlYU6l06NvDLJ1zmUg4bIx38TeJj/Zw97X3T38z85JcK
-	4O1DFEug==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9/0nNN44VNRNUJVhh4K+B/77Q53o4u445deZJq878Zg=; b=MYCt1URmPhGWTJzYuvMc8jau8C
+	OR0bQqs/teQxLl+ITyfCGDpMw3NzxbDVvgkgWSrVlh2EuF3k4oyVaKvJ6XtkrmdA6dbbycw2ylGkt
+	pFe7xoUG28F2/u8S86ILtXi4JeckvFl2MJAxDCbQ5eQEi9apDQ3jALxxOajcr6fosKpwn91RGQgo1
+	l1rR37CYmZDG0ftOaHP8j+tgXoTCvEhIrBKBpR27gWLIbhsBVY3MlUHCyzG6m+Tii2Y8rz3xKToP4
+	ZQwnG+vWGX0hn4n6CVbmCzz+kOr2avhGjR6ClEL2ibuLquHpptwRzP+JpA/wbI2MawfegfLDLy6Il
+	vwh3g+fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEV2l-00FkKO-1l;
-	Wed, 28 Jun 2023 13:17:11 +0000
-Received: from mout.web.de ([212.227.17.12])
+	id 1qEWYq-00Fu0y-02;
+	Wed, 28 Jun 2023 14:54:24 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEV2g-00FkHA-2U;
-	Wed, 28 Jun 2023 13:17:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=s29768273; t=1687958204; x=1688563004; i=markus.elfring@web.de;
- bh=OfwgvIzY/UOlJSG791BVcZZbDeg1/YAqLY5prNJq+OI=;
- h=X-UI-Sender-Class:Date:To:References:Subject:From:Cc:In-Reply-To;
- b=maSx52S25l3OB2viG96eJqLPplSsSxa7L4F5zy2BdM+CYKR4is5g0e6ZCy8m7MUTKPlB8BZ
- t2yTV0QAkiAYy2rwB6n5oVLWuTyqII+7i5Gmil6A1/GRMsrIqHSpSCZpxNFpPDxpydF57QjAR
- F3jYWMGypxBCWiR8I2zlIaDUZcx/9a9ApCM68enjP5v8uOkutM9sZhkppu25cqYp8rcJ1Gf3W
- X0ZOITUTxx+KvyknhMH3uX5gQWnrdyIphcbIlb1tc1K5zOPCjkknKPgNP5+WMhpguLHeQeWMK
- j6tM1DGzAga+QehBmqLSjB5aCYIZzCdvZ+djGNnaax/Ybz9C1zlQ==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.90.83]) by smtp.web.de (mrweb105
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MadzU-1pdnN81HHm-00cExD; Wed, 28
- Jun 2023 15:16:44 +0200
-Message-ID: <36fcebbe-9d27-1ad0-9903-e4e972677f08@web.de>
-Date: Wed, 28 Jun 2023 15:16:43 +0200
+	id 1qEWYm-00Ftzj-1D
+	for linux-mediatek@lists.infradead.org;
+	Wed, 28 Jun 2023 14:54:21 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-4f865f0e16cso8468288e87.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 Jun 2023 07:54:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1687964056; x=1690556056;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=9/0nNN44VNRNUJVhh4K+B/77Q53o4u445deZJq878Zg=;
+        b=3U/AqUXHlkLWMESSviAmOFThRvVcswBGYbBOWKK59lj1GZ2VqgQ1+pSZko0dtzN7UP
+         Ca7Aio6JPmkKxeQi8G4zYUDlNZmWxxWurWQduxodhFykzHp5qF/t5qpxLP4ZyyZBeyhH
+         ZP8RRglbiprZPTTaA4iGl3+yGE9fOZ2dS+Ch4Xm+ysB7yIR8g8dT1BqDqbwjt/9F4BeN
+         NDjVPJlnTXwtg2ATTLDUEMiKxFDkDtSOiAo7HkspOVOTz1cLdgZoULtjtI5AEgY7H2Ew
+         1Mh6lE0Lgr1B4aNyF8rjQYpzYhA8jD9/McHP9A71ucdr594dMUZQFOrI1aIfs14UKod2
+         cxWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1687964056; x=1690556056;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=9/0nNN44VNRNUJVhh4K+B/77Q53o4u445deZJq878Zg=;
+        b=WHyoRnjneaJuktE5CBCuG6cd6msY9uKxXp3wql4ZuZcHSH1sb9YrgGu3S8m9kSGMwo
+         wCHjRFmVVPbIgVSyazXAKMvOPH1w5JH6MZYRA/si3Ey0CmcYkolYoAgd47zugQpnzXNU
+         PMC08fQ7SxWbVEFzgZnSW9musXl8XQ7bOTRyjytN4hUaCN0I7OTCSjpO3Y0Dxe/Nb1nI
+         5q/UboymEWhNop7b+0150QWHed8awEx4Ab9y3ais6JwLwALLaG3td6NcSh6dlz3pIWWX
+         RQ6V9nPDrYm4HmwCtvLJ+9ufJt9tjwoGNQlbnJz1vVA1gtIKoc1xA38V+ocKVmn8WN72
+         lBzQ==
+X-Gm-Message-State: AC+VfDy0gWBPlcYmBRYs1ZwTO9VQWlnnmj0H8qdw8uhsk7kdCDK0cQrx
+	849JU551CGg+CowPcEpLX9Ws7g==
+X-Google-Smtp-Source: ACHHUZ5hKqR6Qa4F5o02E1EftTHMMD7L0/abbxO4ZsmrimeO6vZ7sL5KrmRVU9LTa27Amjnnr3F8Bw==
+X-Received: by 2002:a19:431c:0:b0:4f9:58bd:9e5a with SMTP id q28-20020a19431c000000b004f958bd9e5amr10705065lfa.27.1687964056264;
+        Wed, 28 Jun 2023 07:54:16 -0700 (PDT)
+Received: from localhost.localdomain ([2a01:e0a:55f:21e0:9e19:4376:dea6:dbfa])
+        by smtp.gmail.com with ESMTPSA id k16-20020a05600c0b5000b003fba6709c68sm4846278wmr.47.2023.06.28.07.54.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 28 Jun 2023 07:54:15 -0700 (PDT)
+From: Julien Stephan <jstephan@baylibre.com>
+To: 
+Cc: Julien Stephan <jstephan@baylibre.com>,
+	Andy Hsieh <andy.hsieh@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	daoyuan huang <daoyuan.huang@mediatek.com>,
+	devicetree@vger.kernel.org,
+	Florian Sylvestre <fsylvestre@baylibre.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-media@vger.kernel.org,
+	Louis Kuo <louis.kuo@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Moudy Ho <moudy.ho@mediatek.com>,
+	Phi-bang Nguyen <pnguyen@baylibre.com>,
+	Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Sumanth Korikkar <sumanthk@linux.ibm.com>,
+	Vasily Gorbik <gor@linux.ibm.com>
+Subject: [PATCH 0/4] Add Mediatek ISP3.0
+Date: Wed, 28 Jun 2023 16:52:51 +0200
+Message-ID: <20230628145412.1610260-1-jstephan@baylibre.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-To: yqsun1997@gmail.com, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel-janitors@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- Mauro Carvalho Chehab <mchehab@kernel.org>
-References: <20230627082731.1769620-1-yqsun1997@gmail.com>
-Subject: Re: [PATCH] OOB read and write in mdp_prepare_buffer
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-Cc: LKML <linux-kernel@vger.kernel.org>,
- Alain Volmat <alain.volmat@foss.st.com>,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 499671216@qq.com
-In-Reply-To: <20230627082731.1769620-1-yqsun1997@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:6zJxRtHdhVE15Ujn428t+rub+IenqCR7xk1AGaF5JDaFjvVyZm9
- KkNg3ULi2yJNFGfn8Ef/pzK7FKjlwxrF2x7WGrxraowy/Mp/Fyz/xVxAY8ZfHV9//KkxCVb
- b22fX0NJvo09AIBty9d0Nn+ER8BI8WSrrbVX3XsMGIkCeexljckzw6XwMHTz++EeDIRW7My
- 3lNYJPXQrDIeLq4AEXygA==
-UI-OutboundReport: notjunk:1;M01:P0:Ubp4s8aud68=;Z3iDAHrJc796qhP6Kw55g0IlzQ7
- rPkeL8hUvWWkI5wj6OSnPNLfZZwp/U2bgGNr6rHrhXIv3UiNOx7iRfadnw7x/I5L7Fdun2LDO
- om1dDsVirr/EMq16bu4KbzAmqygbO+YExqs0nprze7MlswOEHBW2qVaWpSGoN5c7ZpxQATZjB
- GeVdYmLy63WvD7W/hlBLkZaVS/TZwtlf0sLYvUpYGhQ9aVre24V8X5ukQH9NFYHLYEvAYgBC6
- DQRLQuH6sg0przY07M6CoXGGQjdR0MpVQZGeVZuKAcY6ZKs0qRDeWi4tFGtNa78r9uibQ9X1i
- JYcL4JXLSYTP6o9ApZJEnhapmd1wRUK7WsQtB1Sr11gA3e6BvJZry4G8p06eSrqM1vFnE21XF
- WfzI3TtTjEihq0nS2iT5xlj0LN1JDxY2QtnWyD3NUzz9Y3o4ugJwRK9ULXEhzPP1c1c1flUoA
- wGUnjGE20xVRVSl3zbCvVRY+uzYKyJJ1sGtWingTWGrHoXv2G0FiLeYsl182Wkko0NM87F+xl
- SM/EwNPVpBrPPIKlLZt1t6vrgWTFa4KZWjK/nB84gP8sWXaxgQiZGvig/7WO23vZe6TGGigUb
- Ms2ZaI6rcuQuG+5pRYODhAxC8uTTxJt8cbNJYploWEszkJ/RUMPWHvFxpRZrXJdcrxqxQX9bj
- PFLiEARarXu65l2G7tR98ODjhaYhQk3aDuA8ILNrM8zWQyy+QQHEHdzV+hG3lHJGZiAYaswvF
- 7dGUEzV9pLBfpthRNdLy3Azed7hPg5tTaFRWJEt65SSBYoCuuej9EffvSVClhAFnvWFJnPSwt
- 7/wjJz6xXS28Mrr8w0wULXlW+/dh1ay+zfzu2bSS4dcrI=
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230628_061707_270782_C1BE3E82 
-X-CRM114-Status: UNSURE (   6.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230628_075420_409751_5105169E 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,28 +109,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Please add a prefix to the subject.
+This series add the support of the Mediatek ISP3.0 found on some
+Mediatek SoCs such as the mt8365. The driver is divided into 2 parts:
 
+* SENINF: the sensor interface
+* CAMSV: this driver provides a path to bypass the SoC ISP so that image
+  data coming from the SENINF can go directly into memory without any
+  image processing. This allows the use of an external ISP or camera
+  sensor directly.
 
-=E2=80=A6
-> The num_planes max index is 8.so will be OOB like in mdp_prepare_buffer.
-=E2=80=A6
+The SENINF has several inputs connected to phys. The PHY module is
+available here: https://lore.kernel.org/all/20230620121928.1231745-1-jstephan@baylibre.com/
 
-Please choose an imperative change suggestion.
+The SENINF driver is based on previous work done by Louis Kuo available
+as an RFC here: https://lore.kernel.org/all/20200708104023.3225-1-louis.kuo@mediatek.com/
 
-See also:
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Do=
-cumentation/process/submitting-patches.rst?h=3Dv6.4#n94
+Louis Kuo (2):
+  dt-bindings: media: add mediatek ISP3.0 sensor interface
+  media: platform: mediatek: isp_30: add mediatek ISP3.0 sensor
+    interface
 
+Phi-bang Nguyen (2):
+  dt-bindings: media: add mediatek ISP3.0 camsv
+  media: platform: mediatek: isp_30: add mediatek ISP3.0 camsv
 
-> Signed-off-by: yqsun1997 <yqsun1997@gmail.com>
+ .../bindings/media/mediatek,mt8365-camsv.yaml |  113 ++
+ .../media/mediatek,mt8365-seninf.yaml         |  301 ++++
+ MAINTAINERS                                   |   10 +
+ drivers/media/platform/mediatek/Kconfig       |    1 +
+ drivers/media/platform/mediatek/Makefile      |    1 +
+ drivers/media/platform/mediatek/isp/Kconfig   |    2 +
+ drivers/media/platform/mediatek/isp/Makefile  |    3 +
+ .../platform/mediatek/isp/isp_30/Kconfig      |   35 +
+ .../platform/mediatek/isp/isp_30/Makefile     |    4 +
+ .../mediatek/isp/isp_30/camsv/Makefile        |    7 +
+ .../mediatek/isp/isp_30/camsv/mtk_camsv.c     |  334 ++++
+ .../mediatek/isp/isp_30/camsv/mtk_camsv.h     |  200 +++
+ .../isp/isp_30/camsv/mtk_camsv30_hw.c         |  474 +++++
+ .../isp/isp_30/camsv/mtk_camsv30_regs.h       |   59 +
+ .../isp/isp_30/camsv/mtk_camsv_video.c        |  781 +++++++++
+ .../mediatek/isp/isp_30/seninf/Makefile       |    5 +
+ .../mediatek/isp/isp_30/seninf/mtk_seninf.c   | 1559 +++++++++++++++++
+ .../isp/isp_30/seninf/mtk_seninf_reg.h        |   99 ++
+ 18 files changed, 3988 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8365-camsv.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8365-seninf.yaml
+ create mode 100644 drivers/media/platform/mediatek/isp/Kconfig
+ create mode 100644 drivers/media/platform/mediatek/isp/Makefile
+ create mode 100644 drivers/media/platform/mediatek/isp/isp_30/Kconfig
+ create mode 100644 drivers/media/platform/mediatek/isp/isp_30/Makefile
+ create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/Makefile
+ create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv.c
+ create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv.h
+ create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv30_hw.c
+ create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv30_regs.h
+ create mode 100644 drivers/media/platform/mediatek/isp/isp_30/camsv/mtk_camsv_video.c
+ create mode 100644 drivers/media/platform/mediatek/isp/isp_30/seninf/Makefile
+ create mode 100644 drivers/media/platform/mediatek/isp/isp_30/seninf/mtk_seninf.c
+ create mode 100644 drivers/media/platform/mediatek/isp/isp_30/seninf/mtk_seninf_reg.h
 
-I imagine that an other real name would be more appropriate here.
-
-See also:
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Do=
-cumentation/process/submitting-patches.rst?h=3Dv6.4#n411
-
-Regards,
-Markus
+--
+2.41.0
 
