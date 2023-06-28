@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52842EB64D7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD2B0EB64DC
 	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jun 2023 07:11:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eT+h0gobxZAxWtZtit0yrYXxG3O0OM/ESXkwv7nAg/U=; b=O9jFLeOBp952SOMSgpBKWPzrJy
-	OyHdMPLFfzCdERE7MoNAbaOZ2Fq1mYUPpQJFLaevvCmJPNQNp5MGviegX7N4c2DdtViiis3pas6ma
-	WUO89OCpzgkSXfVFDzjZK0QQnFnkwH/vY1RcJT/cHcF/SPcyvItafOOnhOe8BWdRu64JnDXpQdheJ
-	e3plju7IJkRnNuPqtE6Cxqr1/egwpVwxsPVklFGKo4QaZ/Ssb7gKX+Irl3bKoGsT29ByjjojGiJyM
-	lqqt2I+xo43BVYLAL9f1F1o1/54T7258P2fmdQBjqHisVzUTSXoVazc3lW5QPXaYDfhJ8g7iSuP7Q
-	+1MujAaQ==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XcTpzYWutNflNwjCLThIvSL7Y9MEaSFxW50yimtDcuw=; b=Lq0eUjPaOmUYuFvLZiBmhbvvPH
+	MLsP7faMeYkFHpiN3B/YcXjWfBRQU+0X79X7P7ZQGuu02eNontvn2FXPhrt3hq0zwYAFWrGqghC2g
+	tWQoy5cblIhvQYoXvcKWDrCT2OqDUgF1m2ZDNjTdjUcxdfVB9rkhDngMpIvMofca5uyiXQuiQRvvN
+	5QjLghrPw3ECCesQV0nT7+SdboQ3/9yzLR1fuucfMM3+2pFhduu5lcWdBE8SI0fDgyUz6QTwND1cz
+	Fi3QWp+MuetHQXP7MlGUqEhPGFl8MEKqDz5SW1NNg9SuQ09++i6Vzn8lz1DPnWTWoRehz8WFeWYF4
+	jlLl+m2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEPKm-00F2S2-2o;
-	Wed, 28 Jun 2023 07:11:24 +0000
+	id 1qEPKn-00F2SJ-0u;
+	Wed, 28 Jun 2023 07:11:25 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEPKi-00F2Pw-0J
+	id 1qEPKi-00F2Pf-1c
 	for linux-mediatek@lists.infradead.org;
 	Wed, 28 Jun 2023 07:11:21 +0000
-X-UUID: a900b73a158211ee912e1518a6540028-20230628
+X-UUID: a8622a66158211ee912e1518a6540028-20230628
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=eT+h0gobxZAxWtZtit0yrYXxG3O0OM/ESXkwv7nAg/U=;
-	b=S7PHhqVhCNyXzvaRcN6U/2QSF9vq6CdII24HwmrBNW8Lu+kXy6EiR2LqFF+vXrW36AVsSohJkelGZuf1No4VcOgPTfKe1HtqekWSdKoYtgeKSb60sfpdZtr/NZBP9kRz4+8SltEXbMzt2+yxVhIWlbzTC2kopgF4trPP6noTB3A=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=XcTpzYWutNflNwjCLThIvSL7Y9MEaSFxW50yimtDcuw=;
+	b=iAghYf1b/aJACKPMVi9pw8/eYRDZk44imQ2mfjvrcjviUsQRq/WUy+DzGfFaIJaO256U5kiQXtaP1dp9+tP8cni+oORrpB1V7mpvnkQU/zTWVQNY1dMVAIIc9dL6rZe2m5stlRRidXMdnk9MOgiOeg2d2GuCSPoe7UkAoit37QU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:646d5f42-1b7c-4df1-81d9-2633782d74fb,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.27,REQID:646d5f42-1b7c-4df1-81d9-2633782d74fb,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:01c9525,CLOUDID:2f899b0d-c22b-45ab-8a43-3004e9216b56,B
-	ulkID:23062815090492M46TZV,BulkQuantity:0,Recheck:0,SF:29|28|17|19|48|38,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_FSD,TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,
-	TF_CID_SPAM_FAS
-X-UUID: a900b73a158211ee912e1518a6540028-20230628
+X-CID-O-INFO: VERSION:1.1.27,REQID:8612049e-4930-40d6-b00a-4d95c260abc5,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:70
+X-CID-INFO: VERSION:1.1.27,REQID:8612049e-4930-40d6-b00a-4d95c260abc5,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:70
+X-CID-META: VersionHash:01c9525,CLOUDID:23774f0d-26a8-467f-b838-f99719a9c083,B
+	ulkID:2306281508597AFSFUDL,BulkQuantity:1,Recheck:0,SF:19|48|38|29|28|17,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,
+	TF_CID_SPAM_SNR
+X-UUID: a8622a66158211ee912e1518a6540028-20230628
 Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <deren.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 90204815; Wed, 28 Jun 2023 00:09:02 -0700
+	with ESMTP id 1334869592; Wed, 28 Jun 2023 00:09:00 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 28 Jun 2023 15:09:00 +0800
+ 15.2.1118.26; Wed, 28 Jun 2023 15:08:57 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 28 Jun 2023 15:09:00 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 28 Jun 2023 15:08:57 +0800
 From: Deren Wu <deren.wu@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
 CC: Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
 	Shayne Chen <shayne.chen@mediatek.com>, linux-wireless
 	<linux-wireless@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH 11/11] wifi: mt76: mt7921: move mt7921u_disconnect mt792x-lib
-Date: Wed, 28 Jun 2023 15:07:24 +0800
-Message-ID: <4c0ef45ef191600edde809f2233d25c6b5dbf15d.1687920269.git.deren.wu@mediatek.com>
+Subject: [PATCH 00/11] mt76: introduce mt792x-usb support
+Date: Wed, 28 Jun 2023 15:07:13 +0800
+Message-ID: <cover.1687920269.git.deren.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <cover.1687920269.git.deren.wu@mediatek.com>
-References: <cover.1687920269.git.deren.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230628_001120_142638_5F415DFB 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20230628_001120_551922_C11C0AD9 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,113 +88,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+This patch set includes the new module mt792x-usb support.
 
-mt7921u_disconnect routine is shared between mt7921 and mt7925 so move
-it in mt792x-usb module.
+Move some common header/functions from mt7921 to mt792x and also rename prefix
+to mt792x. The new module would integrate the common functionalities of mt76
+station driver mt7921 and upcoming WiFi7 solution.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7921/usb.c   | 19 +----------------
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  2 +-
- .../net/wireless/mediatek/mt76/mt792x_usb.c   | 21 +++++++++++++++++--
- 3 files changed, 21 insertions(+), 21 deletions(-)
+(This patch set is based on preceding series "mt76: introduce mt792x-lib support")
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-index c3981bc893ac..59cd3d98bf90 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-@@ -254,23 +254,6 @@ static int mt7921u_probe(struct usb_interface *usb_intf,
- 	return ret;
- }
- 
--static void mt7921u_disconnect(struct usb_interface *usb_intf)
--{
--	struct mt792x_dev *dev = usb_get_intfdata(usb_intf);
--
--	cancel_work_sync(&dev->init_work);
--	if (!test_bit(MT76_STATE_INITIALIZED, &dev->mphy.state))
--		return;
--
--	mt76_unregister_device(&dev->mt76);
--	mt792xu_cleanup(dev);
--
--	usb_set_intfdata(usb_intf, NULL);
--	usb_put_dev(interface_to_usbdev(usb_intf));
--
--	mt76_free_device(&dev->mt76);
--}
--
- #ifdef CONFIG_PM
- static int mt7921u_suspend(struct usb_interface *intf, pm_message_t state)
- {
-@@ -350,7 +333,7 @@ static struct usb_driver mt7921u_driver = {
- 	.name		= KBUILD_MODNAME,
- 	.id_table	= mt7921u_device_table,
- 	.probe		= mt7921u_probe,
--	.disconnect	= mt7921u_disconnect,
-+	.disconnect	= mt792xu_disconnect,
- #ifdef CONFIG_PM
- 	.suspend	= mt7921u_suspend,
- 	.resume		= mt7921u_resume,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index d80f80bc7656..5d5ab8630041 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -336,7 +336,7 @@ u32 mt792xu_rr(struct mt76_dev *dev, u32 addr);
- void mt792xu_wr(struct mt76_dev *dev, u32 addr, u32 val);
- u32 mt792xu_rmw(struct mt76_dev *dev, u32 addr, u32 mask, u32 val);
- void mt792xu_copy(struct mt76_dev *dev, u32 offset, const void *data, int len);
--void mt792xu_cleanup(struct mt792x_dev *dev);
-+void mt792xu_disconnect(struct usb_interface *usb_intf);
- 
- int __mt792xe_mcu_drv_pmctrl(struct mt792x_dev *dev);
- int mt792xe_mcu_drv_pmctrl(struct mt792x_dev *dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-index 97480c9c9974..20e7f9c7c88c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-@@ -91,14 +91,13 @@ int mt792xu_mcu_power_on(struct mt792x_dev *dev)
- }
- EXPORT_SYMBOL_GPL(mt792xu_mcu_power_on);
- 
--void mt792xu_cleanup(struct mt792x_dev *dev)
-+static void mt792xu_cleanup(struct mt792x_dev *dev)
- {
- 	clear_bit(MT76_STATE_INITIALIZED, &dev->mphy.state);
- 	mt792xu_wfsys_reset(dev);
- 	skb_queue_purge(&dev->mt76.mcu.res_q);
- 	mt76u_queues_deinit(&dev->mt76);
- }
--EXPORT_SYMBOL_GPL(mt792xu_cleanup);
- 
- static u32 mt792xu_uhw_rr(struct mt76_dev *dev, u32 addr)
- {
-@@ -288,5 +287,23 @@ int mt792xu_init_reset(struct mt792x_dev *dev)
- }
- EXPORT_SYMBOL_GPL(mt792xu_init_reset);
- 
-+void mt792xu_disconnect(struct usb_interface *usb_intf)
-+{
-+	struct mt792x_dev *dev = usb_get_intfdata(usb_intf);
-+
-+	cancel_work_sync(&dev->init_work);
-+	if (!test_bit(MT76_STATE_INITIALIZED, &dev->mphy.state))
-+		return;
-+
-+	mt76_unregister_device(&dev->mt76);
-+	mt792xu_cleanup(dev);
-+
-+	usb_set_intfdata(usb_intf, NULL);
-+	usb_put_dev(interface_to_usbdev(usb_intf));
-+
-+	mt76_free_device(&dev->mt76);
-+}
-+EXPORT_SYMBOL_GPL(mt792xu_disconnect);
-+
- MODULE_LICENSE("Dual BSD/GPL");
- MODULE_AUTHOR("Lorenzo Bianconi <lorenzo@kernel.org>");
+Lorenzo Bianconi (11):
+  wifi: mt76: mt792x: move more dma shared code in mt792x_dma
+  wifi: mt76: mt7921: move hif_ops macro in mt792x.h
+  wifi: mt76: mt7921: move shared runtime-pm code on mt792x-lib
+  wifi: mt76: mt7921: move runtime-pm pci code in mt792x-lib
+  wifi: mt76: mt7921: move acpi_sar code in mt792x-lib module
+  wifi: mt76: mt792x: introduce mt792x-usb module
+  wifi: mt76: mt792x: move mt7921_load_firmware in mt792x-lib module
+  wifi: mt76: mt76_connac3: move lmac queue enumeration in
+    mt76_connac3_mac.h
+  wifi: mt76: mt792x: move MT7921_PM_TIMEOUT and MT7921_HW_SCAN_TIMEOUT
+    in common code
+  wifi: mt76: mt7921: move mt7921_dma_init in pci.c
+  wifi: mt76: mt7921: move mt7921u_disconnect mt792x-lib
+
+ drivers/net/wireless/mediatek/mt76/Kconfig    |   4 +
+ drivers/net/wireless/mediatek/mt76/Makefile   |   5 +-
+ .../wireless/mediatek/mt76/mt76_connac3_mac.h |  14 +
+ .../net/wireless/mediatek/mt76/mt7921/Kconfig |   2 +-
+ .../wireless/mediatek/mt76/mt7921/Makefile    |   5 +-
+ .../wireless/mediatek/mt76/mt7921/acpi_sar.h  | 105 ------
+ .../net/wireless/mediatek/mt76/mt7921/dma.c   | 223 ------------
+ .../net/wireless/mediatek/mt76/mt7921/init.c  |  16 +-
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   |  72 +---
+ .../net/wireless/mediatek/mt76/mt7921/main.c  |  11 +-
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 111 +-----
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  61 ----
+ .../net/wireless/mediatek/mt76/mt7921/pci.c   | 170 +++++----
+ .../wireless/mediatek/mt76/mt7921/pci_mac.c   |   4 +-
+ .../wireless/mediatek/mt76/mt7921/pci_mcu.c   |  65 ----
+ .../net/wireless/mediatek/mt76/mt7921/sdio.c  |   6 +-
+ .../wireless/mediatek/mt76/mt7921/testmode.c  |   2 +-
+ .../net/wireless/mediatek/mt76/mt7921/usb.c   | 179 ++++-----
+ .../wireless/mediatek/mt76/mt7921/usb_mac.c   | 255 -------------
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  94 ++++-
+ .../{mt7921/acpi_sar.c => mt792x_acpi_sar.c}  | 125 ++++---
+ .../wireless/mediatek/mt76/mt792x_acpi_sar.h  | 105 ++++++
+ .../net/wireless/mediatek/mt76/mt792x_core.c  | 244 ++++++++-----
+ .../net/wireless/mediatek/mt76/mt792x_dma.c   | 344 ++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt792x_mac.c   |  72 ++++
+ .../net/wireless/mediatek/mt76/mt792x_usb.c   | 309 ++++++++++++++++
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    |  14 -
+ 27 files changed, 1334 insertions(+), 1283 deletions(-)
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/dma.c
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
+ rename drivers/net/wireless/mediatek/mt76/{mt7921/acpi_sar.c => mt792x_acpi_sar.c} (64%)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.h
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt792x_dma.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt792x_usb.c
+
 -- 
 2.18.0
 
