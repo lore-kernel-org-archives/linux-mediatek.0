@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD2B0EB64DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jun 2023 07:11:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A2E5EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jun 2023 07:11:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XcTpzYWutNflNwjCLThIvSL7Y9MEaSFxW50yimtDcuw=; b=Lq0eUjPaOmUYuFvLZiBmhbvvPH
-	MLsP7faMeYkFHpiN3B/YcXjWfBRQU+0X79X7P7ZQGuu02eNontvn2FXPhrt3hq0zwYAFWrGqghC2g
-	tWQoy5cblIhvQYoXvcKWDrCT2OqDUgF1m2ZDNjTdjUcxdfVB9rkhDngMpIvMofca5uyiXQuiQRvvN
-	5QjLghrPw3ECCesQV0nT7+SdboQ3/9yzLR1fuucfMM3+2pFhduu5lcWdBE8SI0fDgyUz6QTwND1cz
-	Fi3QWp+MuetHQXP7MlGUqEhPGFl8MEKqDz5SW1NNg9SuQ09++i6Vzn8lz1DPnWTWoRehz8WFeWYF4
-	jlLl+m2g==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UW/YedLA4avXZysnZCkqNdh6eiQAQS++L/nX2mNUtds=; b=nwcORmIIxWV70o5v9smW0EtWJV
+	DLRSSX9gL4UvJWtLiAIzMA2ezmMZea/gWYOzPBpY4wchMNOSx0KDiknw/2nVLyJMviayapVPF6phk
+	fVjkDgwRqfcn93iwvujyxoalVuyS8bxT4Uu+5oo6O4c2CTnNIGRVTVbsTdQAzi3t+MNZdtdLKoyEb
+	mprDzpjDwC59NzzrZzdIeduA48oFfufGAa07ictSGH6Jupw2uiXfl6HufMDVYTML7NBTutK+JqAar
+	kwmMDgkjldsh1i5OkZ/wPvr7lGy4P9N12IevPnivNKEgjG/QBt2iGNDQcbWU9CUK9S4b12qlI5Jgs
+	3AYhO7WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEPKn-00F2SJ-0u;
+	id 1qEPKn-00F2SX-2I;
 	Wed, 28 Jun 2023 07:11:25 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEPKi-00F2Pf-1c
+	id 1qEPKh-00F2QC-2a
 	for linux-mediatek@lists.infradead.org;
 	Wed, 28 Jun 2023 07:11:21 +0000
-X-UUID: a8622a66158211ee912e1518a6540028-20230628
+X-UUID: a7f9b99a158211ee912e1518a6540028-20230628
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=XcTpzYWutNflNwjCLThIvSL7Y9MEaSFxW50yimtDcuw=;
-	b=iAghYf1b/aJACKPMVi9pw8/eYRDZk44imQ2mfjvrcjviUsQRq/WUy+DzGfFaIJaO256U5kiQXtaP1dp9+tP8cni+oORrpB1V7mpvnkQU/zTWVQNY1dMVAIIc9dL6rZe2m5stlRRidXMdnk9MOgiOeg2d2GuCSPoe7UkAoit37QU=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=UW/YedLA4avXZysnZCkqNdh6eiQAQS++L/nX2mNUtds=;
+	b=ZmROks0kMa4AKB7cuAJdpGeLKybyy2o7co93CBlXv8b0AM1H6PZPnY0yAs8z19RBrP2024lfpDnPynPV5TM8lthXBdRYECaheF3SfYxFBiKcVNagLVsPSwFh4qwVnCrKDQGerwBeE1Zb7YVosZepJQSu93M/JsSHMdBYq1Z/ukI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:8612049e-4930-40d6-b00a-4d95c260abc5,IP:0,U
+X-CID-O-INFO: VERSION:1.1.27,REQID:4eb83816-a440-4ad5-8579-82e5a9c12018,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
 	ON:release,TS:70
-X-CID-INFO: VERSION:1.1.27,REQID:8612049e-4930-40d6-b00a-4d95c260abc5,IP:0,URL
+X-CID-INFO: VERSION:1.1.27,REQID:4eb83816-a440-4ad5-8579-82e5a9c12018,IP:0,URL
 	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
 	ON:quarantine,TS:70
-X-CID-META: VersionHash:01c9525,CLOUDID:23774f0d-26a8-467f-b838-f99719a9c083,B
-	ulkID:2306281508597AFSFUDL,BulkQuantity:1,Recheck:0,SF:19|48|38|29|28|17,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO
+X-CID-META: VersionHash:01c9525,CLOUDID:eb764f0d-26a8-467f-b838-f99719a9c083,B
+	ulkID:2306281509010NLNZW0K,BulkQuantity:0,Recheck:0,SF:48|38|29|28|17|19,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,CO
+	L:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,
-	TF_CID_SPAM_SNR
-X-UUID: a8622a66158211ee912e1518a6540028-20230628
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_FSD,TF_CID_SPAM_ULN,TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,
+	TF_CID_SPAM_ASC,TF_CID_SPAM_FAS
+X-UUID: a7f9b99a158211ee912e1518a6540028-20230628
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <deren.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1334869592; Wed, 28 Jun 2023 00:09:00 -0700
+	with ESMTP id 28036021; Wed, 28 Jun 2023 00:09:00 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Wed, 28 Jun 2023 15:08:57 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -64,16 +64,18 @@ CC: Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
 	Shayne Chen <shayne.chen@mediatek.com>, linux-wireless
 	<linux-wireless@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH 00/11] mt76: introduce mt792x-usb support
-Date: Wed, 28 Jun 2023 15:07:13 +0800
-Message-ID: <cover.1687920269.git.deren.wu@mediatek.com>
+Subject: [PATCH 04/11] wifi: mt76: mt7921: move runtime-pm pci code in mt792x-lib
+Date: Wed, 28 Jun 2023 15:07:17 +0800
+Message-ID: <28c5e82ed83ecb239f58cf8e7e9c2286dfd7077b.1687920269.git.deren.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <cover.1687920269.git.deren.wu@mediatek.com>
+References: <cover.1687920269.git.deren.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230628_001120_551922_C11C0AD9 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20230628_001119_842405_40FA66DB 
+X-CRM114-Status: GOOD (  19.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,65 +90,313 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch set includes the new module mt792x-usb support.
+From: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Move some common header/functions from mt7921 to mt792x and also rename prefix
-to mt792x. The new module would integrate the common functionalities of mt76
-station driver mt7921 and upcoming WiFi7 solution.
+Move the following runtime-pm pci routines in mt792x-lib since they are
+shared between mt7921 and mt7925 chipsets:
+- __mt7921e_mcu_drv_pmctrl
+- mt7921e_mcu_drv_pmctrl
+- mt7921e_mcu_fw_pmctrl
 
-(This patch set is based on preceding series "mt76: introduce mt792x-lib support")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7921/init.c  |  4 +-
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  7 --
+ .../net/wireless/mediatek/mt76/mt7921/pci.c   |  8 +--
+ .../wireless/mediatek/mt76/mt7921/pci_mac.c   |  2 +-
+ .../wireless/mediatek/mt76/mt7921/pci_mcu.c   | 65 ------------------
+ .../wireless/mediatek/mt76/mt7921/usb_mac.c   |  4 +-
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  8 +++
+ .../net/wireless/mediatek/mt76/mt792x_core.c  | 68 +++++++++++++++++++
+ 8 files changed, 85 insertions(+), 81 deletions(-)
 
-Lorenzo Bianconi (11):
-  wifi: mt76: mt792x: move more dma shared code in mt792x_dma
-  wifi: mt76: mt7921: move hif_ops macro in mt792x.h
-  wifi: mt76: mt7921: move shared runtime-pm code on mt792x-lib
-  wifi: mt76: mt7921: move runtime-pm pci code in mt792x-lib
-  wifi: mt76: mt7921: move acpi_sar code in mt792x-lib module
-  wifi: mt76: mt792x: introduce mt792x-usb module
-  wifi: mt76: mt792x: move mt7921_load_firmware in mt792x-lib module
-  wifi: mt76: mt76_connac3: move lmac queue enumeration in
-    mt76_connac3_mac.h
-  wifi: mt76: mt792x: move MT7921_PM_TIMEOUT and MT7921_HW_SCAN_TIMEOUT
-    in common code
-  wifi: mt76: mt7921: move mt7921_dma_init in pci.c
-  wifi: mt76: mt7921: move mt7921u_disconnect mt792x-lib
-
- drivers/net/wireless/mediatek/mt76/Kconfig    |   4 +
- drivers/net/wireless/mediatek/mt76/Makefile   |   5 +-
- .../wireless/mediatek/mt76/mt76_connac3_mac.h |  14 +
- .../net/wireless/mediatek/mt76/mt7921/Kconfig |   2 +-
- .../wireless/mediatek/mt76/mt7921/Makefile    |   5 +-
- .../wireless/mediatek/mt76/mt7921/acpi_sar.h  | 105 ------
- .../net/wireless/mediatek/mt76/mt7921/dma.c   | 223 ------------
- .../net/wireless/mediatek/mt76/mt7921/init.c  |  16 +-
- .../net/wireless/mediatek/mt76/mt7921/mac.c   |  72 +---
- .../net/wireless/mediatek/mt76/mt7921/main.c  |  11 +-
- .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 111 +-----
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  61 ----
- .../net/wireless/mediatek/mt76/mt7921/pci.c   | 170 +++++----
- .../wireless/mediatek/mt76/mt7921/pci_mac.c   |   4 +-
- .../wireless/mediatek/mt76/mt7921/pci_mcu.c   |  65 ----
- .../net/wireless/mediatek/mt76/mt7921/sdio.c  |   6 +-
- .../wireless/mediatek/mt76/mt7921/testmode.c  |   2 +-
- .../net/wireless/mediatek/mt76/mt7921/usb.c   | 179 ++++-----
- .../wireless/mediatek/mt76/mt7921/usb_mac.c   | 255 -------------
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  94 ++++-
- .../{mt7921/acpi_sar.c => mt792x_acpi_sar.c}  | 125 ++++---
- .../wireless/mediatek/mt76/mt792x_acpi_sar.h  | 105 ++++++
- .../net/wireless/mediatek/mt76/mt792x_core.c  | 244 ++++++++-----
- .../net/wireless/mediatek/mt76/mt792x_dma.c   | 344 ++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt792x_mac.c   |  72 ++++
- .../net/wireless/mediatek/mt76/mt792x_usb.c   | 309 ++++++++++++++++
- .../wireless/mediatek/mt76/mt7996/mt7996.h    |  14 -
- 27 files changed, 1334 insertions(+), 1283 deletions(-)
- delete mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.h
- delete mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/dma.c
- delete mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
- rename drivers/net/wireless/mediatek/mt76/{mt7921/acpi_sar.c => mt792x_acpi_sar.c} (64%)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.h
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt792x_dma.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index c47fb07fcb2e..3ff0205919c2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -128,7 +128,7 @@ static int mt7921_init_hardware(struct mt792x_dev *dev)
+ 
+ 	set_bit(MT76_STATE_INITIALIZED, &dev->mphy.state);
+ 
+-	for (i = 0; i < MT7921_MCU_INIT_RETRY_COUNT; i++) {
++	for (i = 0; i < MT792x_MCU_INIT_RETRY_COUNT; i++) {
+ 		ret = __mt7921_init_hardware(dev);
+ 		if (!ret)
+ 			break;
+@@ -136,7 +136,7 @@ static int mt7921_init_hardware(struct mt792x_dev *dev)
+ 		mt792x_init_reset(dev);
+ 	}
+ 
+-	if (i == MT7921_MCU_INIT_RETRY_COUNT) {
++	if (i == MT792x_MCU_INIT_RETRY_COUNT) {
+ 		dev_err(dev->mt76.dev, "hardware init failed\n");
+ 		return ret;
+ 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index 4a3416a28711..0c60a1559041 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -18,10 +18,6 @@
+ #define MT7921_RX_RING_SIZE		1536
+ #define MT7921_RX_MCU_RING_SIZE		512
+ 
+-#define MT7921_DRV_OWN_RETRY_COUNT	10
+-#define MT7921_MCU_INIT_RETRY_COUNT	10
+-#define MT7921_WFSYS_INIT_RETRY_COUNT	2
+-
+ #define MT7921_FIRMWARE_WM		"mediatek/WIFI_RAM_CODE_MT7961_1.bin"
+ #define MT7921_ROM_PATCH		"mediatek/WIFI_MT7961_patch_mcu_1_2_hdr.bin"
+ 
+@@ -312,9 +308,6 @@ int mt7921e_mcu_init(struct mt792x_dev *dev);
+ int mt7921s_wfsys_reset(struct mt792x_dev *dev);
+ int mt7921s_mac_reset(struct mt792x_dev *dev);
+ int mt7921s_init_reset(struct mt792x_dev *dev);
+-int __mt7921e_mcu_drv_pmctrl(struct mt792x_dev *dev);
+-int mt7921e_mcu_drv_pmctrl(struct mt792x_dev *dev);
+-int mt7921e_mcu_fw_pmctrl(struct mt792x_dev *dev);
+ 
+ int mt7921s_mcu_init(struct mt792x_dev *dev);
+ int mt7921s_mcu_drv_pmctrl(struct mt792x_dev *dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 7419076b77cb..c3f22ce9f5c4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -181,8 +181,8 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 		.init_reset = mt7921e_init_reset,
+ 		.reset = mt7921e_mac_reset,
+ 		.mcu_init = mt7921e_mcu_init,
+-		.drv_own = mt7921e_mcu_drv_pmctrl,
+-		.fw_own = mt7921e_mcu_fw_pmctrl,
++		.drv_own = mt792xe_mcu_drv_pmctrl,
++		.fw_own = mt792xe_mcu_fw_pmctrl,
+ 	};
+ 	static const struct mt792x_irq_map irq_map = {
+ 		.host_irq_enable = MT_WFDMA0_HOST_INT_ENA,
+@@ -268,11 +268,11 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 	bus_ops->rmw = mt7921_rmw;
+ 	dev->mt76.bus = bus_ops;
+ 
+-	ret = mt7921e_mcu_fw_pmctrl(dev);
++	ret = mt792xe_mcu_fw_pmctrl(dev);
+ 	if (ret)
+ 		goto err_free_dev;
+ 
+-	ret = __mt7921e_mcu_drv_pmctrl(dev);
++	ret = __mt792xe_mcu_drv_pmctrl(dev);
+ 	if (ret)
+ 		goto err_free_dev;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+index bd3f004d1a18..e7a995e7e70a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+@@ -57,7 +57,7 @@ int mt7921e_mac_reset(struct mt792x_dev *dev)
+ {
+ 	int i, err;
+ 
+-	mt7921e_mcu_drv_pmctrl(dev);
++	mt792xe_mcu_drv_pmctrl(dev);
+ 
+ 	mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
+index 57bd02746f5f..4cf1f2f0f968 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
+@@ -61,68 +61,3 @@ int mt7921e_mcu_init(struct mt792x_dev *dev)
+ 
+ 	return err;
+ }
+-
+-int __mt7921e_mcu_drv_pmctrl(struct mt792x_dev *dev)
+-{
+-	int i, err = 0;
+-
+-	for (i = 0; i < MT7921_DRV_OWN_RETRY_COUNT; i++) {
+-		mt76_wr(dev, MT_CONN_ON_LPCTL, PCIE_LPCR_HOST_CLR_OWN);
+-		if (mt76_poll_msec_tick(dev, MT_CONN_ON_LPCTL,
+-					PCIE_LPCR_HOST_OWN_SYNC, 0, 50, 1))
+-			break;
+-	}
+-
+-	if (i == MT7921_DRV_OWN_RETRY_COUNT) {
+-		dev_err(dev->mt76.dev, "driver own failed\n");
+-		err = -EIO;
+-	}
+-
+-	return err;
+-}
+-
+-int mt7921e_mcu_drv_pmctrl(struct mt792x_dev *dev)
+-{
+-	struct mt76_phy *mphy = &dev->mt76.phy;
+-	struct mt76_connac_pm *pm = &dev->pm;
+-	int err;
+-
+-	err = __mt7921e_mcu_drv_pmctrl(dev);
+-	if (err < 0)
+-		goto out;
+-
+-	mt792x_wpdma_reinit_cond(dev);
+-	clear_bit(MT76_STATE_PM, &mphy->state);
+-
+-	pm->stats.last_wake_event = jiffies;
+-	pm->stats.doze_time += pm->stats.last_wake_event -
+-			       pm->stats.last_doze_event;
+-out:
+-	return err;
+-}
+-
+-int mt7921e_mcu_fw_pmctrl(struct mt792x_dev *dev)
+-{
+-	struct mt76_phy *mphy = &dev->mt76.phy;
+-	struct mt76_connac_pm *pm = &dev->pm;
+-	int i;
+-
+-	for (i = 0; i < MT7921_DRV_OWN_RETRY_COUNT; i++) {
+-		mt76_wr(dev, MT_CONN_ON_LPCTL, PCIE_LPCR_HOST_SET_OWN);
+-		if (mt76_poll_msec_tick(dev, MT_CONN_ON_LPCTL,
+-					PCIE_LPCR_HOST_OWN_SYNC, 4, 50, 1))
+-			break;
+-	}
+-
+-	if (i == MT7921_DRV_OWN_RETRY_COUNT) {
+-		dev_err(dev->mt76.dev, "firmware own failed\n");
+-		clear_bit(MT76_STATE_PM, &mphy->state);
+-		return -EIO;
+-	}
+-
+-	pm->stats.last_doze_event = jiffies;
+-	pm->stats.awake_time += pm->stats.last_doze_event -
+-				pm->stats.last_wake_event;
+-
+-	return 0;
+-}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
+index f612873c704b..f7cb6c542af5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb_mac.c
+@@ -166,7 +166,7 @@ int mt7921u_wfsys_reset(struct mt792x_dev *dev)
+ 	mt7921u_uhw_wr(&dev->mt76, MT_CBTOP_RGU_WF_SUBSYS_RST, val);
+ 
+ 	mt7921u_uhw_wr(&dev->mt76, MT_UDMA_CONN_INFRA_STATUS_SEL, 0);
+-	for (i = 0; i < MT7921_WFSYS_INIT_RETRY_COUNT; i++) {
++	for (i = 0; i < MT792x_WFSYS_INIT_RETRY_COUNT; i++) {
+ 		val = mt7921u_uhw_rr(&dev->mt76, MT_UDMA_CONN_INFRA_STATUS);
+ 		if (val & MT_UDMA_CONN_WFSYS_INIT_DONE)
+ 			break;
+@@ -174,7 +174,7 @@ int mt7921u_wfsys_reset(struct mt792x_dev *dev)
+ 		msleep(100);
+ 	}
+ 
+-	if (i == MT7921_WFSYS_INIT_RETRY_COUNT)
++	if (i == MT792x_WFSYS_INIT_RETRY_COUNT)
+ 		return -ETIMEDOUT;
+ 
+ 	return 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 470017f6f982..54ff9627530f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -26,6 +26,10 @@
+ 
+ #define MT792x_WATCHDOG_TIME	(HZ / 4)
+ 
++#define MT792x_DRV_OWN_RETRY_COUNT	10
++#define MT792x_MCU_INIT_RETRY_COUNT	10
++#define MT792x_WFSYS_INIT_RETRY_COUNT	2
++
+ struct mt792x_vif;
+ struct mt792x_sta;
+ 
+@@ -289,4 +293,8 @@ int mt792x_init_wcid(struct mt792x_dev *dev);
+ int mt792x_mcu_drv_pmctrl(struct mt792x_dev *dev);
+ int mt792x_mcu_fw_pmctrl(struct mt792x_dev *dev);
+ 
++int __mt792xe_mcu_drv_pmctrl(struct mt792x_dev *dev);
++int mt792xe_mcu_drv_pmctrl(struct mt792x_dev *dev);
++int mt792xe_mcu_fw_pmctrl(struct mt792x_dev *dev);
++
+ #endif /* __MT7925_H */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+index 234aac4e3742..f7dfc2189cc8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+@@ -736,5 +736,73 @@ int mt792x_mcu_fw_pmctrl(struct mt792x_dev *dev)
+ }
+ EXPORT_SYMBOL_GPL(mt792x_mcu_fw_pmctrl);
+ 
++int __mt792xe_mcu_drv_pmctrl(struct mt792x_dev *dev)
++{
++	int i, err = 0;
++
++	for (i = 0; i < MT792x_DRV_OWN_RETRY_COUNT; i++) {
++		mt76_wr(dev, MT_CONN_ON_LPCTL, PCIE_LPCR_HOST_CLR_OWN);
++		if (mt76_poll_msec_tick(dev, MT_CONN_ON_LPCTL,
++					PCIE_LPCR_HOST_OWN_SYNC, 0, 50, 1))
++			break;
++	}
++
++	if (i == MT792x_DRV_OWN_RETRY_COUNT) {
++		dev_err(dev->mt76.dev, "driver own failed\n");
++		err = -EIO;
++	}
++
++	return err;
++}
++EXPORT_SYMBOL_GPL(__mt792xe_mcu_drv_pmctrl);
++
++int mt792xe_mcu_drv_pmctrl(struct mt792x_dev *dev)
++{
++	struct mt76_phy *mphy = &dev->mt76.phy;
++	struct mt76_connac_pm *pm = &dev->pm;
++	int err;
++
++	err = __mt792xe_mcu_drv_pmctrl(dev);
++	if (err < 0)
++		goto out;
++
++	mt792x_wpdma_reinit_cond(dev);
++	clear_bit(MT76_STATE_PM, &mphy->state);
++
++	pm->stats.last_wake_event = jiffies;
++	pm->stats.doze_time += pm->stats.last_wake_event -
++			       pm->stats.last_doze_event;
++out:
++	return err;
++}
++EXPORT_SYMBOL_GPL(mt792xe_mcu_drv_pmctrl);
++
++int mt792xe_mcu_fw_pmctrl(struct mt792x_dev *dev)
++{
++	struct mt76_phy *mphy = &dev->mt76.phy;
++	struct mt76_connac_pm *pm = &dev->pm;
++	int i;
++
++	for (i = 0; i < MT792x_DRV_OWN_RETRY_COUNT; i++) {
++		mt76_wr(dev, MT_CONN_ON_LPCTL, PCIE_LPCR_HOST_SET_OWN);
++		if (mt76_poll_msec_tick(dev, MT_CONN_ON_LPCTL,
++					PCIE_LPCR_HOST_OWN_SYNC, 4, 50, 1))
++			break;
++	}
++
++	if (i == MT792x_DRV_OWN_RETRY_COUNT) {
++		dev_err(dev->mt76.dev, "firmware own failed\n");
++		clear_bit(MT76_STATE_PM, &mphy->state);
++		return -EIO;
++	}
++
++	pm->stats.last_doze_event = jiffies;
++	pm->stats.awake_time += pm->stats.last_doze_event -
++				pm->stats.last_wake_event;
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(mt792xe_mcu_fw_pmctrl);
++
+ MODULE_LICENSE("Dual BSD/GPL");
+ MODULE_AUTHOR("Lorenzo Bianconi <lorenzo@kernel.org>");
 -- 
 2.18.0
 
