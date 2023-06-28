@@ -4,83 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD28AEB64D7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jun 2023 05:52:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80765EB64D7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jun 2023 06:34:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zfjx6R+EMpgD1vYrYarvFtRq2IEGDT6k/qkqHHuoJnM=; b=Q5a392JKMNj51/7gLr/tbC3EWB
-	s9o0493ZOOxeI5fUPNezvxeincNWGQttSStfEBDwvMtPvx12XfwTrKTFigBKN5jhPu3S09YkJZ3zF
-	/txFbPTHvZSJdW3j+rwP+vgwljMbEZLj4cS7gNA2CJMiZzxenCYSyJQBJJM3jOrmXfJ0MLy+Wi/HP
-	KIvFtjMcfp/00tya26CcPYOL4D9auk8/wn9oJTcGDGtZRE1l8VZr/iXqDB/rZSowMCjrYPwyA7vMC
-	qkI0EaAZYNl6DYxftxPQPalZDNSwJfeLmUi7FAuMig6YyAdTN9vAmCnMzWzoSOLVIvIJKvT3/SGSM
-	iRVfCTgA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PDrjMND7bGroH5j0rrcnleC0OQhYiDIbwQdzo2Jgn1U=; b=yolG5WFgqkeh3oFkN1WWG8GM75
+	8Wv7fZH7oW8hb2AyhcQhAafxNgh0rxRi9gHzzQzvvdHOlSvwTWpJyC+BqoeaDVdRJ65q5F3ouVIjR
+	ma48Uj10aci32BYprHFjYBuIWRifrrbOd09gj96w8ifkmJ6HZdVmCQthbkuxkPmGRkF/lV8mGh3SD
+	nAnFhKVWnkuz8CvD/z3pA1q9g3+Lj9TtS8yt4DK/RXqzo8Ub5tEEgAtuW+jJMH57XJ9UDeuMGSRi+
+	vtZcs6GpsAxw+ubNjzVLpzAAvuPgTTnWkK44KpkR+agTBTAV291yaPHQRhZA719KORwVF+mii0fdS
+	j8u2SdPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEO61-00EtUQ-2K;
-	Wed, 28 Jun 2023 05:52:05 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qEOkq-00ExkV-2V;
+	Wed, 28 Jun 2023 06:34:16 +0000
+Received: from mx08-00178001.pphosted.com ([91.207.212.93] helo=mx07-00178001.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEO5y-00EtTk-2X;
-	Wed, 28 Jun 2023 05:52:04 +0000
-X-UUID: e4242370157711ee912e1518a6540028-20230627
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zfjx6R+EMpgD1vYrYarvFtRq2IEGDT6k/qkqHHuoJnM=;
-	b=dVo9yTNCHeooYKtBZ8b6WYGtHecw4qUKNBg3pMT0i4vdkG8+DH4e7UAobMgI1Apa3NsJqXew+m4lFbEhezRfNH4FMPit6pHcRO7rexFH4y/KdzqXSUE9RFwJs4Lusmf4xaLuU2wzHOunarHQhc/whMMBi2uqzy6ue9Mhk6f8O+M=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:52e72f78-931a-4b1e-97e6-918a14fd49ad,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:01c9525,CLOUDID:25a1990d-c22b-45ab-8a43-3004e9216b56,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: e4242370157711ee912e1518a6540028-20230627
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <xiaoyong.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 15424713; Tue, 27 Jun 2023 22:51:56 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 28 Jun 2023 13:41:23 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 28 Jun 2023 13:41:22 +0800
-From: Xiaoyong Lu <xiaoyong.lu@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
-	<acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, Hans
- Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
-	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
-	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
-	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, Steve
- Cho <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: media: mediatek: vcodec: fix AV1 decode fail for 36bit iova
-Date: Wed, 28 Jun 2023 13:41:11 +0800
-Message-ID: <20230628054111.8967-1-xiaoyong.lu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1qEOkn-00ExjJ-0x;
+	Wed, 28 Jun 2023 06:34:14 +0000
+Received: from pps.filterd (m0046660.ppops.net [127.0.0.1])
+	by mx07-00178001.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 35S5lVX9018612;
+	Wed, 28 Jun 2023 08:34:00 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=date : from : to :
+ cc : subject : message-id : references : mime-version : content-type :
+ content-transfer-encoding : in-reply-to; s=selector1;
+ bh=PDrjMND7bGroH5j0rrcnleC0OQhYiDIbwQdzo2Jgn1U=;
+ b=RtXRKS/WRZx7QSJzfVpCjRCj9ZtuaKSv3IXMctDL/yPKDmEgeo5VLF01mapnfg3LVOlU
+ XtKbfby2bnY9inO/CZ0KbBRWxwmwVwtZeufo5NiNXTaPZUTeRHxOI9lwngy0TRBPVixB
+ 2Sn8KEsghfIKT9KJ8PrqwEMVeIp7k3LPRSCc89jmy8Nm2W0f4SJ1djae7tqZS8ny3YV5
+ 8AMu2qCIFVEqoYidHx70QY7trwnVn4YgezH3lLvN6X+8Y2hUw2uCh9eESZ2KY0ImE2WE
+ i4aocEfzGaL7pPAXOwe2CYsUz+8kRv6z8iQxfGYjnWI3/IglynWMp0w0Z/RLYRZt5h+5 qg== 
+Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
+	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3rgf1ara2p-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 28 Jun 2023 08:34:00 +0200
+Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
+	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id 18C8810005B;
+	Wed, 28 Jun 2023 08:33:59 +0200 (CEST)
+Received: from Webmail-eu.st.com (shfdag1node1.st.com [10.75.129.69])
+	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 0CDDF20B869;
+	Wed, 28 Jun 2023 08:33:59 +0200 (CEST)
+Received: from gnbcxd0016.gnb.st.com (10.129.178.213) by SHFDAG1NODE1.st.com
+ (10.75.129.69) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.21; Wed, 28 Jun
+ 2023 08:33:58 +0200
+Date: Wed, 28 Jun 2023 08:33:53 +0200
+From: Alain Volmat <alain.volmat@foss.st.com>
+To: sun yq <yqsun1997@gmail.com>
+CC: <mchehab@kernel.org>, <matthias.bgg@gmail.com>,
+        <angelogioacchino.delregno@collabora.com>,
+        <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>, <499671216@qq.com>
+Subject: Re: [PATCH] OOB read and write in mdp_prepare_buffer
+Message-ID: <20230628063353.GA3625616@gnbcxd0016.gnb.st.com>
+Mail-Followup-To: sun yq <yqsun1997@gmail.com>, mchehab@kernel.org,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, 499671216@qq.com
+References: <20230627082731.1769620-1-yqsun1997@gmail.com>
+ <20230627140640.GA3605278@gnbcxd0016.gnb.st.com>
+ <CAA0BgY_Lj+hQdevrgK8y=wLztddnh+npP-hWz_XaPbi-5mzwnQ@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+In-Reply-To: <CAA0BgY_Lj+hQdevrgK8y=wLztddnh+npP-hWz_XaPbi-5mzwnQ@mail.gmail.com>
+X-Disclaimer: ce message est personnel / this message is private
+X-Originating-IP: [10.129.178.213]
+X-ClientProxiedBy: SHFCAS1NODE2.st.com (10.75.129.73) To SHFDAG1NODE1.st.com
+ (10.75.129.69)
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
+ definitions=2023-06-28_03,2023-06-27_01,2023-05-22_02
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230627_225202_831667_3F05D66D 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20230627_233413_641422_4871664B 
+X-CRM114-Status: GOOD (  32.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,44 +99,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Decoder hardware will access incorrect iova address when tile buffer is
-36bit, leading to iommu fault when hardware access dram data.
+Hi,
 
-Fixes: 2f5d0aef37c6 ("media: mediatek: vcodec: support stateless AV1 decoder")
-Signed-off-by: Xiaoyong Lu<xiaoyong.lu@mediatek.com>
----
-- Test ok: mt8195 32bit and mt8188 36bit iova.
----
- .../platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c    | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+On Wed, Jun 28, 2023 at 07:28:54AM +0800, sun yq wrote:
+> Hi,
+> Because there are many functions using the plane, increasing the max
+> number of the plane is to maximize the solution to all possible oob
+> places.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-index 404a1a23fd40..420222c8a56d 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-@@ -1658,9 +1658,9 @@ static void vdec_av1_slice_setup_tile_buffer(struct vdec_av1_slice_instance *ins
- 	u32 allow_update_cdf = 0;
- 	u32 sb_boundary_x_m1 = 0, sb_boundary_y_m1 = 0;
- 	int tile_info_base;
--	u32 tile_buf_pa;
-+	u64 tile_buf_pa;
- 	u32 *tile_info_buf = instance->tile.va;
--	u32 pa = (u32)bs->dma_addr;
-+	u64 pa = (u64)bs->dma_addr;
- 
- 	if (uh->disable_cdf_update == 0)
- 		allow_update_cdf = 1;
-@@ -1673,7 +1673,8 @@ static void vdec_av1_slice_setup_tile_buffer(struct vdec_av1_slice_instance *ins
- 		tile_info_buf[tile_info_base + 0] = (tile_group->tile_size[tile_num] << 3);
- 		tile_buf_pa = pa + tile_group->tile_start_offset[tile_num];
- 
--		tile_info_buf[tile_info_base + 1] = (tile_buf_pa >> 4) << 4;
-+		tile_info_buf[tile_info_base + 1] = (unsigned int)(tile_buf_pa >> 4) << 4 +
-+			((unsigned int)(tile_buf_pa >> 32) & 0xf);
- 		tile_info_buf[tile_info_base + 2] = (tile_buf_pa % 16) << 3;
- 
- 		sb_boundary_x_m1 =
--- 
-2.25.1
+I don't think it is the right approach then.  If the HW is only handling
+3 planes, there should be no reason to have to allocate for 8 planes.  I
+suspect that this 8 value is coming from the maximum allowed plane
+number in V4L2 right ?
+INHO driver should simply be fixed to ensure that num_plane won't go
+higher than the real number of plane allocated in the structures.
+It should be possible to get the num_plane value from the format
+selected.
 
+Alain
+
+> 
+> On Tue, Jun 27, 2023 at 10:06 PM Alain Volmat <alain.volmat@foss.st.com> wrote:
+> >
+> > Hi,
+> >
+> > On Tue, Jun 27, 2023 at 04:27:31PM +0800, yqsun1997@gmail.com wrote:
+> > > From: yqsun1997 <yqsun1997@gmail.com>
+> > >
+> > > Because format in struct img_image_buffer max index is IMG_MAX_PLANES ==3,
+> > > The num_planes max index is 8.so will be OOB like in mdp_prepare_buffer.
+> >
+> > Similarly as your other patch, could you describe why you need to
+> > increase the IMG_MAX_PLANES while I suspect your driver only needs to
+> > deal with 3 planes.  While the maximum num_planes value that can be
+> > given by the user is 8, this has to be first compared to the configured
+> > format prior to reaching this function.
+> >
+> > >
+> > > static void mdp_prepare_buffer(struct img_image_buffer *b,
+> > >                                struct mdp_frame *frame, struct vb2_buffer *vb)
+> > > {
+> > >         struct v4l2_pix_format_mplane *pix_mp = &frame->format.fmt.pix_mp;
+> > >         unsigned int i;
+> > >
+> > >         b->format.colorformat = frame->mdp_fmt->mdp_color;
+> > >         b->format.ycbcr_prof = frame->ycbcr_prof;
+> > >         for (i = 0; i < pix_mp->num_planes; ++i) {
+> > >                 u32 stride = mdp_fmt_get_stride(frame->mdp_fmt,
+> > >                         pix_mp->plane_fmt[i].bytesperline, i);
+> > >
+> > >                 b->format.plane_fmt[i].stride = stride;  //oob
+> > >                 ......
+> > >
+> > > Signed-off-by: yqsun1997 <yqsun1997@gmail.com>
+> > > ---
+> > >  drivers/media/platform/mediatek/mdp3/mtk-mdp3-type.h | 2 +-
+> > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > >
+> > > diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-type.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-type.h
+> > > index ae0396806..e2e991a34 100644
+> > > --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-type.h
+> > > +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-type.h
+> > > @@ -11,7 +11,7 @@
+> > >
+> > >  #define IMG_MAX_HW_INPUTS    3
+> > >  #define IMG_MAX_HW_OUTPUTS   4
+> > > -#define IMG_MAX_PLANES               3
+> > > +#define IMG_MAX_PLANES               8
+> > >  #define IMG_MAX_COMPONENTS   20
+> > >
+> > >  struct img_crop {
+> > > --
+> > > 2.39.2
+> > >
+> >
+> > Regards,
+> > Alain
 
