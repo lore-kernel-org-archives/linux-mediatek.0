@@ -4,72 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FB4EEB64D7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jun 2023 08:16:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77CBFEB64D7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jun 2023 09:47:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=K7CG41wbygGBbuyyg/wfs5iTi91KMq+naCPxdzYpFBQ=; b=mH4qbacZsVbbIix1Dw2vCH81AS
-	MQ/LoMS8VxUpbk8hysZ3IGUB4hE50PlC76T6MSKx2kczxzvOD9w5+prvF/p46rxGpDzwL54si9YP4
-	en+z7agS1uBbVvhfv89EaHxWFdPNqs1fDc3OJf/Wsxk/WeBP2lDG/rIknO0Wbi1jIH+IxyCReEAL7
-	QfJB/1gqx1kuz64Wi8Ks324nh5O2ljfD5/dkj0cmXWlJt5bCrbJ72O3F9xnCwOrmbctUCisxuvF8d
-	oVSbw05CqiGvjv/2HIelE7UMHs11Ncvd68sGbbn9rw2iZqVZR9CBYXTVtn/lpbdWWohgfFd5xJuLM
-	yJKQ1rEQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gdIHbNM1Yj3ksyRpU74ZC5bUNtcb2E/U9dR4f6zROzg=; b=ZfqMrLvv/DMppm9VH090oY+gqo
+	6WZlFDiXH+in/QAvGWPvw8qTV0uMYzkhtGlA1zUVKbtD2P1z9mHBWjN+F/2AF33920WmzEKk25Vje
+	/kTQaW+fg92QIFMRNBSabFd0eVUCs7h2rsYCmjNgHxM0xiEB8z5Z3xJVc9IuDXTTcjUoF6wjabTan
+	3tVoucQyBoDsaKZtAZIw868cnT+Vh1sQ/TE7AxdGAtYKFC4lch70BeoIcUZx1uilw5dxhjSWXlSnY
+	lzjCQZE+W+IpAlmaP/BTxf3YomZAo6ew9yoxT6gB6bTAHdfNnho+Mq1/dXvWU21uOKdePuF4UKXOn
+	L2WpEfJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEQLL-00F903-11;
-	Wed, 28 Jun 2023 08:16:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qERlw-00FHBG-2M;
+	Wed, 28 Jun 2023 09:47:36 +0000
+Received: from mga17.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEQLE-00F8xh-36
-	for linux-mediatek@lists.infradead.org;
-	Wed, 28 Jun 2023 08:16:01 +0000
-X-UUID: fb46044c158b11ee912e1518a6540028-20230628
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=K7CG41wbygGBbuyyg/wfs5iTi91KMq+naCPxdzYpFBQ=;
-	b=M7hoRWpgI/8KYaamtgZkhsGhtKfjPSIPF1wQw5tGkj0iyg9RervrbdlVnii5dwuCQh3/yUcXhohXf6F3opoRDcIUPl37qsEKVmAYp/EyMXlGVtSzwV8EWhgsV5c/y2GhEblAsgDWZMwU2megL8V+gmLkIXECKMDLQOMsXZtjsF0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:bfb7ec15-d9be-435b-8ed9-0540885a5405,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:01c9525,CLOUDID:b247510d-26a8-467f-b838-f99719a9c083,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: fb46044c158b11ee912e1518a6540028-20230628
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 834623642; Wed, 28 Jun 2023 01:15:45 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 28 Jun 2023 16:15:12 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 28 Jun 2023 16:15:12 +0800
-From: <chris.lu@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <luiz.dentz@gmail.com>
-CC: <sean.wang@mediatek.com>, <deren.wu@mediatek.com>,
-	<aaron.hou@mediatek.com>, <linux-bluetooth@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	Chris.Lu <chris.lu@mediatek.com>
-Subject: [PATCH] Bluetooth: btusb: Add a new VID/PID 0489/e0f6 for MT7922
-Date: Wed, 28 Jun 2023 16:14:54 +0800
-Message-ID: <20230628081454.4436-1-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1qERlt-00FHAO-0L;
+	Wed, 28 Jun 2023 09:47:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1687945653; x=1719481653;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=0rxMvXN9/9rNCH+4gQCmn1WFc0BxwRhyzO2KvFRuxfY=;
+  b=NUxv3ustaObJnlyXWJH8FcPitD2TQPu8OQSFytHfV1BRVzVHEUyVL2YY
+   AJ+gmxzcVOpfardhZ088K5yU2i79v17zFmTjW1g3FDpFBPu82ieObZhAz
+   JVkb4wYyumFzLFk7To3DePrX/ih9DBkvH88omx4qELdx7b2byPYjbDVPy
+   LIKlQGsbHHW3MgcB00RvbIKlIH9YqtN+QX1d2IcgEE26MkOejHjJS71o/
+   NO8LrZySqaL0DI+Xedt4nWEuM2LYHWv7OfesiEaX37CqU/DhzjtO6bs6l
+   HpgFufuXCaa/UbcojJ2rW2+dEhMZBus0UtNtqqCM19bhSDA4LpacP/5in
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10754"; a="342137876"
+X-IronPort-AV: E=Sophos;i="6.01,165,1684825200"; 
+   d="scan'208";a="342137876"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Jun 2023 02:47:31 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10754"; a="667040646"
+X-IronPort-AV: E=Sophos;i="6.01,165,1684825200"; 
+   d="scan'208";a="667040646"
+Received: from lkp-server01.sh.intel.com (HELO 783282924a45) ([10.239.97.150])
+  by orsmga003.jf.intel.com with ESMTP; 28 Jun 2023 02:47:27 -0700
+Received: from kbuild by 783282924a45 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qERlm-000DAP-0p;
+	Wed, 28 Jun 2023 09:47:26 +0000
+Date: Wed, 28 Jun 2023 17:46:57 +0800
+From: kernel test robot <lkp@intel.com>
+To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>
+Cc: oe-kbuild-all@lists.linux.dev, kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-media@vger.kernel.org, Tiffany Lin <tiffany.lin@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4 5/7] media: mediatek: vcodec: Read HW active status
+ from syscon
+Message-ID: <202306281746.a2zk4ETu-lkp@intel.com>
+References: <20230627214615.1503901-6-nfraprado@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230627214615.1503901-6-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230628_011557_005708_33D090A7 
-X-CRM114-Status: UNSURE (   9.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230628_024733_192879_CF403B94 
+X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,73 +94,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Chris.Lu" <chris.lu@mediatek.com>
+Hi Nícolas,
 
-Add VID/PID 0489/e0f6 for MediaTek MT7922 USB Bluetooth chip.
+kernel test robot noticed the following build errors:
 
-The information in /sys/kernel/debug/usb/devices about the Bluetooth
-device is listed as the below.
+[auto build test ERROR on media-tree/master]
+[also build test ERROR on robh/for-next]
+[cannot apply to mbgg-mediatek/for-next]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-T:  Bus=01 Lev=01 Prnt=01 Port=04 Cnt=03 Dev#=  4 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=0489 ProdID=e0f6 Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+url:    https://github.com/intel-lab-lkp/linux/commits/N-colas-F-R-A-Prado/media-dt-bindings-mediatek-vcodec-Allow-single-clock-for-mt8183/20230628-054734
+base:   git://linuxtv.org/media_tree.git master
+patch link:    https://lore.kernel.org/r/20230627214615.1503901-6-nfraprado%40collabora.com
+patch subject: [PATCH v4 5/7] media: mediatek: vcodec: Read HW active status from syscon
+config: arm-allmodconfig (https://download.01.org/0day-ci/archive/20230628/202306281746.a2zk4ETu-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 12.3.0
+reproduce: (https://download.01.org/0day-ci/archive/20230628/202306281746.a2zk4ETu-lkp@intel.com/reproduce)
 
-Signed-off-by: Chris.Lu <chris.lu@mediatek.com>
----
- drivers/bluetooth/btusb.c | 3 +++
- 1 file changed, 3 insertions(+)
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202306281746.a2zk4ETu-lkp@intel.com/
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index cb58691b63ca..1a8a4efb3ed4 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -628,6 +628,9 @@ static const struct usb_device_id blacklist_table[] = {
- 	{ USB_DEVICE(0x0489, 0xe0f2), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH |
- 						     BTUSB_VALID_LE_STATES },
-+	{ USB_DEVICE(0x0489, 0xe0f6), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH |
-+						     BTUSB_VALID_LE_STATES },
- 
- 	/* Additional Realtek 8723AE Bluetooth devices */
- 	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
+All errors (new ones prefixed by >>):
+
+   drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c: In function 'mtk_vcodec_is_hw_active':
+>> drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c:52:17: error: implicit declaration of function 'FIELD_GET' [-Werror=implicit-function-declaration]
+      52 |         return !FIELD_GET(VDEC_HW_ACTIVE_MASK, cg_status);
+         |                 ^~~~~~~~~
+   cc1: some warnings being treated as errors
+
+
+vim +/FIELD_GET +52 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+
+    42	
+    43	static bool mtk_vcodec_is_hw_active(struct mtk_vcodec_dev *dev)
+    44	{
+    45		u32 cg_status;
+    46	
+    47		if (dev->vdecsys_regmap)
+    48			return !regmap_test_bits(dev->vdecsys_regmap, VDEC_HW_ACTIVE_ADDR,
+    49						 VDEC_HW_ACTIVE_MASK);
+    50	
+    51		cg_status = readl(dev->reg_base[VDEC_SYS] + VDEC_HW_ACTIVE_ADDR);
+  > 52		return !FIELD_GET(VDEC_HW_ACTIVE_MASK, cg_status);
+    53	}
+    54	
+
 -- 
-2.18.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
