@@ -4,74 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC32DEB64D7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jun 2023 11:02:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35E4CEB64D7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jun 2023 13:17:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=89B20YeAg/sOI5tG4Ue+qiZY0x7A1oBUW3Grt3g3ZCU=; b=iXhDypyeLF7iM5G9R0mV973SOG
-	JerQSHVWo3ZtEOgoamMp10cTpFaOUltNOQVClH+vUPaEfL3/1xx4FPEZTLV2yISyNZhgPygLsOwqI
-	qniqZU/ji4WUBCjqbuUS+6GLCu+ONcbh3ufpL3476Db/aPyNCF+IDAhsmKCXyEaNOVEwEa/rtM10N
-	Ts+JPD4sna+pI0aZqDwE/w6Atu5N8DXevgzPoC0ajYaT2EBdLzwhEtHe/pVK1UeLrJ7DECtHovAfB
-	PJCSvkCCAK1ezJntgApnMiGlJsW643I6R89OhLjg/GAlt1fzzsC89zmkm91gfiO3v6Edhn3VMA40U
-	ns6iebLw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:Cc:From:Subject:References:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OfwgvIzY/UOlJSG791BVcZZbDeg1/YAqLY5prNJq+OI=; b=icjbUBPPMBGvOFTMLAuqFZnB2m
+	eBiECcPc91D84YemwpD1ol06SToiFGcNWsr5qWjcqq92UvBU4dukaeNz9cRnKPE8xfSariN3CwzIy
+	gozhJVo+eRwNYFZ6mv4bvZUCScdasb5OX4nZQqb9CzbKI0UeUBjaEvR2emP5OV0iOtnia2FsgWw//
+	ETK3CydG98m6PZuA988sV/omwpZnX3ocZCaEu1snSCUW4NqqkdGX/oxQKYSwcALsxPDLjJCKgpCSG
+	dplRM0l3JOkMqhrV1NBzvt5icfqgGxYqbFlYU6l06NvDLJ1zmUg4bIx38TeJj/Zw97X3T38z85JcK
+	4O1DFEug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qESwZ-00FX5P-1e;
-	Wed, 28 Jun 2023 11:02:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qEV2l-00FkKO-1l;
+	Wed, 28 Jun 2023 13:17:11 +0000
+Received: from mout.web.de ([212.227.17.12])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qESwW-00FX02-2Z;
-	Wed, 28 Jun 2023 11:02:38 +0000
-X-UUID: 43e72f7015a311ee912e1518a6540028-20230628
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=89B20YeAg/sOI5tG4Ue+qiZY0x7A1oBUW3Grt3g3ZCU=;
-	b=n+IxyXmA/vpGQ/x+aT8zShgmrAKvIwjk05Vapqo6Crr0MHy7Ym6vKwHAcEoYQG1jU78GZ6SAUzLSP5XARymogSX53BaKPu8YjQSpbW6ZaZTL7cztqrtKKAPgnSNxVA/JaWfxv5g+XaM0vPNzU1RNiJBDHvXSiJZyVjYczcZoQDQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:143a3103-6a42-45d8-a56b-d551e6558500,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:01c9525,CLOUDID:d1ac7782-5a99-42ae-a2dd-e4afb731b474,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 43e72f7015a311ee912e1518a6540028-20230628
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <haibo.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 925431606; Wed, 28 Jun 2023 04:02:25 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 28 Jun 2023 19:02:23 +0800
-Received: from mszsdtlt102.gcn.mediatek.inc (10.16.4.142) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 28 Jun 2023 19:02:22 +0800
-From: Haibo Li <haibo.li@mediatek.com>
-To: <linux-kernel@vger.kernel.org>
-CC: "Matthew Wilcox (Oracle)" <willy@infradead.org>, Andrew Morton
-	<akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<linux-fsdevel@vger.kernel.org>, <linux-mm@kvack.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<xiaoming.yu@mediatek.com>, Haibo Li <haibo.li@mediatek.com>
-Subject: [PATCH] mm/filemap.c:fix update prev_pos after one read request done
-Date: Wed, 28 Jun 2023 19:02:20 +0800
-Message-ID: <20230628110220.120134-1-haibo.li@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1qEV2g-00FkHA-2U;
+	Wed, 28 Jun 2023 13:17:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
+ s=s29768273; t=1687958204; x=1688563004; i=markus.elfring@web.de;
+ bh=OfwgvIzY/UOlJSG791BVcZZbDeg1/YAqLY5prNJq+OI=;
+ h=X-UI-Sender-Class:Date:To:References:Subject:From:Cc:In-Reply-To;
+ b=maSx52S25l3OB2viG96eJqLPplSsSxa7L4F5zy2BdM+CYKR4is5g0e6ZCy8m7MUTKPlB8BZ
+ t2yTV0QAkiAYy2rwB6n5oVLWuTyqII+7i5Gmil6A1/GRMsrIqHSpSCZpxNFpPDxpydF57QjAR
+ F3jYWMGypxBCWiR8I2zlIaDUZcx/9a9ApCM68enjP5v8uOkutM9sZhkppu25cqYp8rcJ1Gf3W
+ X0ZOITUTxx+KvyknhMH3uX5gQWnrdyIphcbIlb1tc1K5zOPCjkknKPgNP5+WMhpguLHeQeWMK
+ j6tM1DGzAga+QehBmqLSjB5aCYIZzCdvZ+djGNnaax/Ybz9C1zlQ==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.90.83]) by smtp.web.de (mrweb105
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MadzU-1pdnN81HHm-00cExD; Wed, 28
+ Jun 2023 15:16:44 +0200
+Message-ID: <36fcebbe-9d27-1ad0-9903-e4e972677f08@web.de>
+Date: Wed, 28 Jun 2023 15:16:43 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+To: yqsun1997@gmail.com, linux-media@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, kernel-janitors@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+References: <20230627082731.1769620-1-yqsun1997@gmail.com>
+Subject: Re: [PATCH] OOB read and write in mdp_prepare_buffer
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+Cc: LKML <linux-kernel@vger.kernel.org>,
+ Alain Volmat <alain.volmat@foss.st.com>,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 499671216@qq.com
+In-Reply-To: <20230627082731.1769620-1-yqsun1997@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:6zJxRtHdhVE15Ujn428t+rub+IenqCR7xk1AGaF5JDaFjvVyZm9
+ KkNg3ULi2yJNFGfn8Ef/pzK7FKjlwxrF2x7WGrxraowy/Mp/Fyz/xVxAY8ZfHV9//KkxCVb
+ b22fX0NJvo09AIBty9d0Nn+ER8BI8WSrrbVX3XsMGIkCeexljckzw6XwMHTz++EeDIRW7My
+ 3lNYJPXQrDIeLq4AEXygA==
+UI-OutboundReport: notjunk:1;M01:P0:Ubp4s8aud68=;Z3iDAHrJc796qhP6Kw55g0IlzQ7
+ rPkeL8hUvWWkI5wj6OSnPNLfZZwp/U2bgGNr6rHrhXIv3UiNOx7iRfadnw7x/I5L7Fdun2LDO
+ om1dDsVirr/EMq16bu4KbzAmqygbO+YExqs0nprze7MlswOEHBW2qVaWpSGoN5c7ZpxQATZjB
+ GeVdYmLy63WvD7W/hlBLkZaVS/TZwtlf0sLYvUpYGhQ9aVre24V8X5ukQH9NFYHLYEvAYgBC6
+ DQRLQuH6sg0przY07M6CoXGGQjdR0MpVQZGeVZuKAcY6ZKs0qRDeWi4tFGtNa78r9uibQ9X1i
+ JYcL4JXLSYTP6o9ApZJEnhapmd1wRUK7WsQtB1Sr11gA3e6BvJZry4G8p06eSrqM1vFnE21XF
+ WfzI3TtTjEihq0nS2iT5xlj0LN1JDxY2QtnWyD3NUzz9Y3o4ugJwRK9ULXEhzPP1c1c1flUoA
+ wGUnjGE20xVRVSl3zbCvVRY+uzYKyJJ1sGtWingTWGrHoXv2G0FiLeYsl182Wkko0NM87F+xl
+ SM/EwNPVpBrPPIKlLZt1t6vrgWTFa4KZWjK/nB84gP8sWXaxgQiZGvig/7WO23vZe6TGGigUb
+ Ms2ZaI6rcuQuG+5pRYODhAxC8uTTxJt8cbNJYploWEszkJ/RUMPWHvFxpRZrXJdcrxqxQX9bj
+ PFLiEARarXu65l2G7tR98ODjhaYhQk3aDuA8ILNrM8zWQyy+QQHEHdzV+hG3lHJGZiAYaswvF
+ 7dGUEzV9pLBfpthRNdLy3Azed7hPg5tTaFRWJEt65SSBYoCuuej9EffvSVClhAFnvWFJnPSwt
+ 7/wjJz6xXS28Mrr8w0wULXlW+/dh1ay+zfzu2bSS4dcrI=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230628_040236_867505_EDC2ADD8 
-X-CRM114-Status: GOOD (  17.52  )
+X-CRM114-CacheID: sfid-20230628_061707_270782_C1BE3E82 
+X-CRM114-Status: UNSURE (   6.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,116 +94,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ra->prev_pos tracks the last visited byte in the previous read request.
-It is used to check whether it is sequential read in
-ondemand_readahead and thus affects the readahead window.
+Please add a prefix to the subject.
 
-From commit 06c0444290ce ("mm/filemap.c: generic_file_buffered_read()
-now uses find_get_pages_contig"),update logic of prev_pos is changed.
-It updates prev_pos after each returns from filemap_get_pages.
-But the read request from user may be not fully completed
-at this point.
-The updated prev_pos impacts the subsequent readahead window.
 
-The real problem is performance drop of fsck_msdos between linux-5.4
-and linux-5.15(also linux-6.4).
-Comparing to linux-5.4,It spends about 110% time and read 140% pages.
-The read pattern of fsck_msdos is not fully sequential.
+=E2=80=A6
+> The num_planes max index is 8.so will be OOB like in mdp_prepare_buffer.
+=E2=80=A6
 
-Simplified read pattern of fsck_msdos likes below:
-1.read at page offset 0xa,size 0x1000
-2.read at other page offset like 0x20,size 0x1000
-3.read at page offset 0xa,size 0x4000
-4.read at page offset 0xe,size 0x1000
+Please choose an imperative change suggestion.
 
-Here is the read status on linux-6.4:
-1.after read at page offset 0xa,size 0x1000
-    ->page ofs 0xa go into pagecache
-2.after read at page offset 0x20,size 0x1000
-    ->page ofs 0x20 go into pagecache
-3.read at page offset 0xa,size 0x4000
-    ->filemap_get_pages read ofs 0xa from pagecache and returns
-    ->prev_pos is updated to 0xb and goto next loop
-    ->filemap_get_pages tends to read ofs 0xb,size 0x3000
-    ->initial_readahead case in ondemand_readahead since prev_pos is
-      the same as request ofs.
-    ->read 8 pages while async size is 5 pages
-      (PageReadahead flag at page 0xe)
-4.read at page offset 0xe,size 0x1000
-    ->hit page 0xe with PageReadahead flag set,double the ra_size.
-      read 16 pages while async size is 16 pages
-Now it reads 24 pages while actually uses 5 pages
+See also:
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Do=
+cumentation/process/submitting-patches.rst?h=3Dv6.4#n94
 
-on linux-5.4:
-1.the same as 6.4
-2.the same as 6.4
-3.read at page offset 0xa,size 0x4000
-    ->read ofs 0xa from pagecache
-    ->read ofs 0xb,size 0x3000 using page_cache_sync_readahead
-      read 3 pages
-    ->prev_pos is updated to 0xd before generic_file_buffered_read
-      returns
-4.read at page offset 0xe,size 0x1000
-    ->initial_readahead case in ondemand_readahead since
-      request ofs-prev_pos==1
-    ->read 4 pages while async size is 3 pages
 
-Now it reads 7 pages while actually uses 5 pages.
+> Signed-off-by: yqsun1997 <yqsun1997@gmail.com>
 
-In above demo,the initial_readahead case is triggered by offset
-of user request on linux-5.4.
-While it may be triggered by update logic of prev_pos on linux-6.4.
+I imagine that an other real name would be more appropriate here.
 
-To fix the performance drop,update prev_pos after finishing one read
-request.
+See also:
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Do=
+cumentation/process/submitting-patches.rst?h=3Dv6.4#n411
 
-Signed-off-by: Haibo Li <haibo.li@mediatek.com>
----
- mm/filemap.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/mm/filemap.c b/mm/filemap.c
-index 83dda76d1fc3..16b2054eee71 100644
---- a/mm/filemap.c
-+++ b/mm/filemap.c
-@@ -2670,6 +2670,7 @@ ssize_t filemap_read(struct kiocb *iocb, struct iov_iter *iter,
- 	int i, error = 0;
- 	bool writably_mapped;
- 	loff_t isize, end_offset;
-+	loff_t last_pos = ra->prev_pos;
- 
- 	if (unlikely(iocb->ki_pos >= inode->i_sb->s_maxbytes))
- 		return 0;
-@@ -2721,8 +2722,8 @@ ssize_t filemap_read(struct kiocb *iocb, struct iov_iter *iter,
- 		 * When a read accesses the same folio several times, only
- 		 * mark it as accessed the first time.
- 		 */
--		if (!pos_same_folio(iocb->ki_pos, ra->prev_pos - 1,
--							fbatch.folios[0]))
-+		if (!pos_same_folio(iocb->ki_pos, last_pos - 1,
-+				    fbatch.folios[0]))
- 			folio_mark_accessed(fbatch.folios[0]);
- 
- 		for (i = 0; i < folio_batch_count(&fbatch); i++) {
-@@ -2749,7 +2750,7 @@ ssize_t filemap_read(struct kiocb *iocb, struct iov_iter *iter,
- 
- 			already_read += copied;
- 			iocb->ki_pos += copied;
--			ra->prev_pos = iocb->ki_pos;
-+			last_pos = iocb->ki_pos;
- 
- 			if (copied < bytes) {
- 				error = -EFAULT;
-@@ -2763,7 +2764,7 @@ ssize_t filemap_read(struct kiocb *iocb, struct iov_iter *iter,
- 	} while (iov_iter_count(iter) && iocb->ki_pos < isize && !error);
- 
- 	file_accessed(filp);
--
-+	ra->prev_pos = last_pos;
- 	return already_read ? already_read : error;
- }
- EXPORT_SYMBOL_GPL(filemap_read);
--- 
-2.25.1
-
+Regards,
+Markus
 
