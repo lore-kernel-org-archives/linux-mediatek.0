@@ -4,85 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC947EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 07:13:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A2ECEB64D9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 07:19:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l5XW0exCS9z+Hy0fRQZ5/K6ds6wj/L09NJ5d7OC64KA=; b=tWi5Cjxe19XYYP3r5Pf+NNYeh3
-	3HgVe3dzKZfzJwzK1Ovhb0ig9VEwTWJooQfiuzjKdJ44sOXZM5UnpjdSPoRgGwWAvEyL7btkHYiBT
-	dC4nw6sDtW5quYNXFkkbyDOy3LHze2l8GUhphS5ZR43QnNUVROHS2rdL0o6nMw/vkop4uzTIIhJ2j
-	XAtI1Q7wtSFjGp8HSEvFOPwhokX1zF6tK6Ivpf8rfCATshWlmGvd400YJTKGq8sc19eWaH3inj3rs
-	wf21RFgWrnXdZys6sLGah8+zuuKef289qptbgv6V7zv1ZrLe5oFZ4jg4C3XjIpCZ95nIbDgkRXo3c
-	nYLPtlVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lRfHZimcg2TwrTCu70Ut/9j2/CR84p1GM7zeYwry15A=; b=2xoPsYG0fhmD607Ff6fn+xpJ1p
+	/1jcA8AWBQFri9SruiROltiaRMgGsyii1Ozn7Q7Kp4N0RRtmZ9tuYk4+pn9I17DCxLtEwhllPq/Gn
+	jx/xFaS1DreGxHioz8+sk8RazSUSc5U0z5lMZbyRePYzc5nRAp6279a1Fr6yCTariv9sdiSeKFs0g
+	w3I1vbfmM4sDoXYn+orqPCyg3WTmKLl05C57rcmPPwcf94shsX/JvpN1E/cjXRyYVXzsGrSd3ciVZ
+	eIsD2MMhAiqON5iljBEawrne4PsXmpe8rnehJ0P106ocdBZfij7DfaxVnlujJPTnjO0ZKhtjgOCYr
+	gLcpi39g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qElqW-000BS8-1E;
-	Thu, 29 Jun 2023 07:13:40 +0000
-Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
+	id 1qElvm-000Bwa-2j;
+	Thu, 29 Jun 2023 07:19:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qElqT-000BRP-12
-	for linux-mediatek@lists.infradead.org;
-	Thu, 29 Jun 2023 07:13:38 +0000
-Received: by mail-qt1-x835.google.com with SMTP id d75a77b69052e-4008d810c28so3667281cf.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 29 Jun 2023 00:13:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1688022816; x=1690614816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=l5XW0exCS9z+Hy0fRQZ5/K6ds6wj/L09NJ5d7OC64KA=;
-        b=lU7gTej3xVjrNBXTU09iLSzYWoNF/qevLHKMhZxbv/Kj2VOUrkOIag5U5I4UPmFSrZ
-         Y3+p/RAcucZjt8wYaUzbdpsL7ZV6cuJAJL+T72IlQz5+0JnQGpCbRP2/TUxJHok9AwqA
-         Bfc4Y3bGDcTbZ2t34F7AT8sOAi10rC6wekEjg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688022816; x=1690614816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=l5XW0exCS9z+Hy0fRQZ5/K6ds6wj/L09NJ5d7OC64KA=;
-        b=bG7dtYgNld95ucrhHHhZ8gL0/HQpn5VxdgIt46I/xlkS9hJ47NVi9DyAdu7fNhbAni
-         yEoq4VCCjaWrczxCevK/mxlZVcHL3D/okSEidzNxRIAT5BFfpe/UweddHIGRWnXkNXpt
-         4vAgZXaLYEd4BSpOQG+v4ZitaDovpOiW5r3C7EAC7t0VNssJ89YBD3TBUnkmtbhTUY4L
-         CROoS6DAO9Wnv41pOmAgyT/kZvHNIJNYnBth5+Oy3G+dkcGlVHrk9qfrUD076990VTeq
-         3hagSDNz/d31Kt2mu974njcLXK0/0C3oo7lO9ZdW7RCyO423jgN4vRYKhC5JIOOzGqgc
-         4G5A==
-X-Gm-Message-State: AC+VfDzcrLN/LCZf9bSt5iUFr0xYIo02K8iQG8P3D4oOz5RRMgkrRt8H
-	dLpZ553Gi0M7eu7dMuiajz2DkbcDpvw3MgLvoZvbgw==
-X-Google-Smtp-Source: ACHHUZ7VILfICjeL4b6+6H18zR4LPIVn8YFg2lV7vCIOLxKGJOXGG21VPpI/jreHOE6rW9PkwYpQhA==
-X-Received: by 2002:ac8:5c91:0:b0:3f5:19e4:34ce with SMTP id r17-20020ac85c91000000b003f519e434cemr47023786qta.48.1688022815679;
-        Thu, 29 Jun 2023 00:13:35 -0700 (PDT)
-Received: from mail-qv1-f52.google.com (mail-qv1-f52.google.com. [209.85.219.52])
-        by smtp.gmail.com with ESMTPSA id ga9-20020a05622a590900b0040327381dbcsm1503336qtb.19.2023.06.29.00.13.35
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Jun 2023 00:13:35 -0700 (PDT)
-Received: by mail-qv1-f52.google.com with SMTP id 6a1803df08f44-635e5b06aaeso3458426d6.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 29 Jun 2023 00:13:35 -0700 (PDT)
-X-Received: by 2002:ad4:5c47:0:b0:635:f546:83c4 with SMTP id
- a7-20020ad45c47000000b00635f54683c4mr8987873qva.54.1688022814565; Thu, 29 Jun
- 2023 00:13:34 -0700 (PDT)
+	id 1qElvk-000Bv9-0E;
+	Thu, 29 Jun 2023 07:19:05 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B124A614CD;
+	Thu, 29 Jun 2023 07:19:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 595EAC433C8;
+	Thu, 29 Jun 2023 07:19:00 +0000 (UTC)
+Message-ID: <63bd261c-f05c-0530-6271-a4d82ccf7797@xs4all.nl>
+Date: Thu, 29 Jun 2023 09:18:58 +0200
 MIME-Version: 1.0
-References: <20230628-mtk-usb-v1-1-3c5b2ea3d6b9@chromium.org>
- <CANiDSCsAgD33gMk9-CTGHuUv_b4KfRnO02ETEt6jFtQvw+6cag@mail.gmail.com> <ZJystxdl0jVoe5b6@google.com>
-In-Reply-To: <ZJystxdl0jVoe5b6@google.com>
-From: Ricardo Ribalda <ribalda@chromium.org>
-Date: Thu, 29 Jun 2023 09:13:23 +0200
-X-Gmail-Original-Message-ID: <CANiDSCu3WOqK9wdLDXmW+zbckq15gmxKjtFA4Aghv6uoidO_3Q@mail.gmail.com>
-Message-ID: <CANiDSCu3WOqK9wdLDXmW+zbckq15gmxKjtFA4Aghv6uoidO_3Q@mail.gmail.com>
-Subject: Re: [PATCH] usb: xhci-mtk: set the dma max_seg_size
-To: Zubin Mithra <zsm@chromium.org>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-usb@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH] OOB read and write in mdp_prepare_buffer
+Content-Language: en-US
+To: yqsun1997@gmail.com, mchehab@kernel.org
+Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ 499671216@qq.com
+References: <20230627082731.1769620-1-yqsun1997@gmail.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+In-Reply-To: <20230627082731.1769620-1-yqsun1997@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230629_001337_358415_63FAF3F0 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20230629_001904_153281_55077EB3 
+X-CRM114-Status: GOOD (  18.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,26 +68,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Zubin
+Hi!
 
-On Wed, 28 Jun 2023 at 23:57, Zubin Mithra <zsm@chromium.org> wrote:
->
-> On Wed, Jun 28, 2023 at 11:04:20PM +0200, Ricardo Ribalda wrote:
-> > On Wed, 28 Jun 2023 at 23:00, Ricardo Ribalda <ribalda@chromium.org> wrote:
-> > >
-> > > Allow devices to have dma operations beyond 64K, and avoid warnings such
-> > > as:
-> > >
-> > > DMA-API: xhci-mtk 11200000.usb: mapping sg segment longer than device claims to support [len=98304] [max=65536]
-> > >
-> > > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-> > Reported-by: Zubin Mithra <zsm@chromium.org>
->
-> Should this be cc'd to stable@ as well?
+On 6/27/23 10:27, yqsun1997@gmail.com wrote:
+> From: yqsun1997 <yqsun1997@gmail.com>
+> 
+> Because format in struct img_image_buffer max index is IMG_MAX_PLANES ==3,
+> The num_planes max index is 8.so will be OOB like in mdp_prepare_buffer.
+> 
+> static void mdp_prepare_buffer(struct img_image_buffer *b,
+>                                 struct mdp_frame *frame, struct vb2_buffer *vb)
+> {
+>          struct v4l2_pix_format_mplane *pix_mp = &frame->format.fmt.pix_mp;
+>          unsigned int i;
+> 
+>          b->format.colorformat = frame->mdp_fmt->mdp_color;
+>          b->format.ycbcr_prof = frame->ycbcr_prof;
+>          for (i = 0; i < pix_mp->num_planes; ++i) {
 
-Not sure, in most of the cases this is "just" a warning fix. Let the
-maintainer decide:
+Unless there is a bug in the driver, pix_mp->num_planes will never 
+exceed 3. Userspace might certainly pass more than 3 planes, but only 
+the first pix_mp->num_planes should ever be used.
 
-Fixes: 0cbd4b34cda9 ("xhci: mediatek: support MTK xHCI host controller")
-Cc: stable@vger.kernel.org
+If pix_mp->num_planes can ever be more than 3, then that would be the 
+real bug.
+
+Regards,
+
+	Hans
+
+>                  u32 stride = mdp_fmt_get_stride(frame->mdp_fmt,
+>                          pix_mp->plane_fmt[i].bytesperline, i);
+> 
+>                  b->format.plane_fmt[i].stride = stride;  //oob
+>                  ......
+> 
+> Signed-off-by: yqsun1997 <yqsun1997@gmail.com>
+> ---
+>   drivers/media/platform/mediatek/mdp3/mtk-mdp3-type.h | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-type.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-type.h
+> index ae0396806..e2e991a34 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-type.h
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-type.h
+> @@ -11,7 +11,7 @@
+>   
+>   #define IMG_MAX_HW_INPUTS	3
+>   #define IMG_MAX_HW_OUTPUTS	4
+> -#define IMG_MAX_PLANES		3
+> +#define IMG_MAX_PLANES		8
+>   #define IMG_MAX_COMPONENTS	20
+>   
+>   struct img_crop {
 
