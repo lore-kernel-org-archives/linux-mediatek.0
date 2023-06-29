@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 579EEEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 15:06:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE1FEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 16:44:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bIBDEB7MEin735oJHhhb+/cW98LYtVeyAlNM3RBMJo8=; b=iAi3v8o6L6VxSn2+zo5jpAid0w
-	tZ1DvM96W7pKY1Mjo5WNVLGGFldWkiBGJq1BFIN//tU5N2F10EkuRdI0nP7N+8EGKjzbUOCU5YG15
-	FNr1cANJa3SrCSbENRX7oxLb9n063uLDN8ZOGJbUacP9llijqWD/CzcIc6wW8ZIXZ+f4MeI0Ulcyj
-	LyAYYbRLV9tqN1yQ2x2MFESNGAUPWy+bD336P8l1xiGkGSb9ma7i1C/qvXX4BoWL6zEC9gpIz3VjV
-	6SteuoCnnPuSKxQToXM/NTAvW5QyQuLPvrkDOueTLxk7EV+Xchuz+099z9BQULr+1TmWMMMXN7xlP
-	7a0TBo3Q==;
+	bh=xvv8o8lyQDs4Uqc/cTXEEqb+afkYfTSqGgHooIqCpbA=; b=vBKjLQe4Z+Rx2Ry48UdMYvD14S
+	/UjZhiQMu0s7/SBCH6gA00u+ew0v7SziDfCROH3QIcJNVmHsIeU9BjmxGMXBN4ZziNUPa3EIjCNgd
+	6Yk+p94VsIEHLPP4ZrECoeF04P7fE/+gmcFN+HdvMXKKTAC7t9cadCqpy5rJzHykWy8ZMDoP6410y
+	8QGhYeaQdLVA8nC8qMfL+/Bc8eZf9WAjC4467TzoLCRBmJ9UbxaI8an8aETgDs+IqgKJH/5T4zAo2
+	HYZhPnkU6WY39PsupIdgiC1Amk/9MQfbJHbYjluGbkMpVGHawjq/UDNaOzV/S+TlnZHcnAEInT9dV
+	usL+E8/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEtDr-001Nke-1Q;
-	Thu, 29 Jun 2023 15:06:15 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qEul8-001Ym8-1L;
+	Thu, 29 Jun 2023 16:44:42 +0000
+Received: from mail-io1-f51.google.com ([209.85.166.51])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEtDo-001NjQ-1z;
-	Thu, 29 Jun 2023 15:06:13 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id DC8C361534;
-	Thu, 29 Jun 2023 15:06:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 272B9C433C8;
-	Thu, 29 Jun 2023 15:06:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1688051171;
-	bh=474x6sMuA4plncvQ6IrECB4qCG3K40O5a/bmnxALyas=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iyTCu0f5QA4FVNSB65EEfJPxXlmulwlUJtsO2jbv8BLlni96QEeX5EDltLkShm/PJ
-	 Dd/2N6fgVXAy0GHo3lYMFSpbOAOrp3feuxigkYqZAndvycDVeegiz+O9bL9yKN6PBq
-	 i4SIAcnevtO7DClmCfpIyv0v/gp6kXA0vDI9a+f0rJ+QiPaz+k1imVqXjMH5MVag86
-	 LG3r7jEbGyS+U/Ngrdp7QcfR2uzgFIjiJbXDXMkFI7iTPxmdKdJ4j37Fzn8YiBraAP
-	 Krfzykyro4RR5xPjPS0vrl5kqcAdYzXWlCnnuW4p5o+N3rnzzDe/tccoNlbk7xQae5
-	 6OiE6XsELxhkQ==
-Date: Thu, 29 Jun 2023 16:06:04 +0100
-From: Mark Brown <broonie@kernel.org>
+	id 1qEul5-001Yk2-03;
+	Thu, 29 Jun 2023 16:44:40 +0000
+Received: by mail-io1-f51.google.com with SMTP id ca18e2360f4ac-78372b895d6so38036439f.2;
+        Thu, 29 Jun 2023 09:44:36 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688057075; x=1690649075;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xvv8o8lyQDs4Uqc/cTXEEqb+afkYfTSqGgHooIqCpbA=;
+        b=XSc4kCY5GsCGs2SOx5uDNzP/ZuAWcOmdfSiaVlynIdPfMv5vvPxxW0iS+8lQybB0+K
+         6fH0SScaoImJKtKdXSHNUCcBWk02Ey6qX3jc6wnOSnnBiC2PCQhE0F898c4B/FuLhgKF
+         Ks2gz53oyqTrTtW40L0uHNpoRw4FC3tFDU2gt7q/SgKil4hUB4KWB8aN9fv+TNlCR2Fk
+         hy4+oXumuktSoY32jO65xBYxB7WWfmBV4OLRFKeo9UTxMY8Oln25I7q87WFhMOetdTtl
+         RSpgnWr3wc4X4jBptWQ4LsTgQlJp6vFK3+S4U7UyNEkW+nqCout6+Dro+ocooff5xsXM
+         OdOQ==
+X-Gm-Message-State: AC+VfDwvXBj9Ecc37iJRLzlE/j13ILWgi0LhrhPtYBqdwaLff1+2oKlF
+	s115mthLpM4WwCaCd7JCgA==
+X-Google-Smtp-Source: ACHHUZ7Zq2rHGHa35R4f5/6RnXVSjZz6xktb2tp91v9Fy3aAm2hQ7f4Z40Tssnpm9/HIk8qiWdMP/A==
+X-Received: by 2002:a5e:a717:0:b0:784:e618:e6cd with SMTP id b23-20020a5ea717000000b00784e618e6cdmr9008iod.20.1688057075474;
+        Thu, 29 Jun 2023 09:44:35 -0700 (PDT)
+Received: from robh_at_kernel.org ([64.188.179.250])
+        by smtp.gmail.com with ESMTPSA id b8-20020a5ea708000000b0076c7a2f0f41sm1627336iod.46.2023.06.29.09.44.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 29 Jun 2023 09:44:34 -0700 (PDT)
+Received: (nullmailer pid 3171062 invoked by uid 1000);
+	Thu, 29 Jun 2023 16:44:33 -0000
+Date: Thu, 29 Jun 2023 10:44:33 -0600
+From: Rob Herring <robh@kernel.org>
 To: Trevor Wu <trevor.wu@mediatek.com>
-Cc: lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] ASoC: mediatek: mt8188: add constraints for PCM
-Message-ID: <5995e77b-ea8e-4e88-8ca2-f716df9c9579@sirena.org.uk>
-References: <20230629075910.21982-1-trevor.wu@mediatek.com>
+Cc: devicetree@vger.kernel.org, lgirdwood@gmail.com, robh+dt@kernel.org, conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, angelogioacchino.delregno@collabora.com, linux-arm-kernel@lists.infradead.org, perex@perex.cz, linux-mediatek@lists.infradead.org, tiwai@suse.com, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, alsa-devel@alsa-project.org, broonie@kernel.org
+Subject: Re: [PATCH 2/2] ASoC: dt-bindings: mediatek,mt8188-afe: add
+ memory-region
+Message-ID: <168805707144.3170983.17451535547887085687.robh@kernel.org>
+References: <20230629074348.21670-1-trevor.wu@mediatek.com>
+ <20230629074348.21670-3-trevor.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="9vDzboGe8Rh5zM2x"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230629075910.21982-1-trevor.wu@mediatek.com>
-X-Cookie: Surprise due today.  Also the rent.
+In-Reply-To: <20230629074348.21670-3-trevor.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230629_080612_688616_4C43A83D 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20230629_094439_053395_B7487DD9 
+X-CRM114-Status: UNSURE (   8.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,36 +83,15 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---9vDzboGe8Rh5zM2x
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Thu, 29 Jun 2023 15:43:48 +0800, Trevor Wu wrote:
+> Add memory-region property to utilize the reserved memory region.
+> 
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+> ---
+>  .../devicetree/bindings/sound/mediatek,mt8188-afe.yaml     | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
 
-On Thu, Jun 29, 2023 at 03:59:10PM +0800, Trevor Wu wrote:
+Acked-by: Rob Herring <robh@kernel.org>
 
-> For certain projects, only a limited number of parameters are necessary.
-> Therefore, it may be beneficial to add constraints that restrict the
-> capacity of the PCM.
-
-This commit message isn't entirely clear.  The effect of the commit is
-to restrict the configurations supported when using a nau8825 but it's
-not clear what a nau8825 has to do with this or why we're doing this in
-general.  What exactly do you mean when saying that "only a limited
-number of parameters are necessary" and what makes this the case?
-
---9vDzboGe8Rh5zM2x
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmSdndsACgkQJNaLcl1U
-h9Aj1Af9EDUZJPIpv75r4jnUe38kpi7YWD4SjRP7RAdggjnFr3VblTudJeMsxBfP
-Xg9arOq/KEIqU3qGGn0ejdO0SOUF/cCS5ZUyNTcIMr3IWGUlWEn2mSZDP01MbnGg
-DrIv5lNYZ+LXxdZD4UPqIcuEp/umRN7mTp3nQxX3AqIo2BWplzSKE9yIYF4CrZvx
-XU2ZpGqV3RIR2G8avJlLdC16KL3gOQqLzPkPEctHFP2u24hnnkobgwEvBPlR9Xuy
-/TvMv8XRH3FcVqoKf82e23q0hl7W1g6DCy5N7ShqD/lRqlIjGWcUbIiaffP8f+rp
-L/kqu8AfVJw33IGr4CscKIVH29kFcA==
-=i7Ra
------END PGP SIGNATURE-----
-
---9vDzboGe8Rh5zM2x--
 
