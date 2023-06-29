@@ -4,80 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F212EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 21:08:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D22C5EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 21:10:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tYM5SdXApbs5UlDa5x0c5XBikN3h6vAe0XNHAnuaE7A=; b=tN8nuLj3725UZ0pPk1zZ9nQtjl
-	7Ddy9YAtX4KroT2e89kJj6mFCh1z3FzfIg/hb40C5fG+PpV4ck6KmZ683bn10EBHis9X9Ej+J28VE
-	oH8VpLzWnmoN0ht1tvp+EZWV1ng0GTxtmX9HmoBkaD+MLIOSlWPZd5CYh08aAz6le8K2xiF3VGsd+
-	uemXVPhlheSiOeyFjmngOk0u//JqFIe0VAY9dCSYBXi/AZTAfzclbftr8Euqb8HfSJGURBpysv999
-	+VBkbebfkSsHY3iWbow70ZP3e1eru8t5KRekhd+E4QCzuLvMO0Ma5yBGGxu0g9VJFBt8cOX4egxI2
-	IzJZpP0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ciuF2i24mdJZzXK1MpnULzZ5uIH5tKK1goU1NOO22mQ=; b=Ls+4FAdrAHUt1U4EZKGcfsztJj
+	5F1DlOskduBu4bD6MYKJoQ5ZFhMgyhgB+Ia0d7nMHK7Spyd5BJnZ3B8CDdsSpO+QLbupVWp0Hyft6
+	E0KJFuSZd1c7TeHFI2F+ecLxgcUEW3tgJntCldc51TAebCJR8sBHKRNGB8q4um9TSP0wpBRZOOAus
+	f6AEUaKktaSscyDIEjYz2jdrUYWX16SY2+AtbkKkP3kKMS05bPqOC+7NzbtKpkXkmDej/9vL390zM
+	o89Lo3Z+p8hrqb8H0sMzTs6F6qb4Pqr8ho9b2E9px+FG5a8pMzlD6t87EJIawhUqN1Dod0GTDKP9o
+	YLCZbIdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEysA-002BVj-2t;
-	Thu, 29 Jun 2023 21:08:14 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qEyue-002Bub-1c;
+	Thu, 29 Jun 2023 21:10:48 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEys7-002BV7-32
-	for linux-mediatek@lists.infradead.org;
-	Thu, 29 Jun 2023 21:08:13 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	id 1qEyub-002BsD-18;
+	Thu, 29 Jun 2023 21:10:46 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5BE9A61602
-	for <linux-mediatek@lists.infradead.org>; Thu, 29 Jun 2023 21:08:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9CA9C433CB
-	for <linux-mediatek@lists.infradead.org>; Thu, 29 Jun 2023 21:08:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1688072889;
-	bh=QVWWSgeIDy9G1T0y1s1CguF1zCjfXWdS83lM64yH870=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=R0CzxeqamLxMSeOUudK9QLDYHXutU4k1i7YAU/+nbdoHGbbXXiPe7urw9sDNEJLAL
-	 aVDE8AZM6wPuRaqrkBRJQ+Vsp7VabCX8CRCZyCzpLv0sGygnHpMeEzcuGK9nBIb98U
-	 Wj3wtfiP8Or1RUoId9/E1N7KZdRJTK/S+EsW7yEiRpxUebQt52CKB3gnG9nY9/9Fo5
-	 OE9oWn+jsh5oWgUc3BBhvjBbt72tozVDtgMUSHcEabrlow+kZqmeyfQ2/OJFpl9UTk
-	 OeytmAd7bSVCpIXGYlID5yu9Gs8H4hh+ifQbjlMMRuDi4DLp9IO3GdvQOI7Qcl/6xJ
-	 TTi8z1bczuBiw==
-Received: by mail-lj1-f181.google.com with SMTP id 38308e7fff4ca-2b69e11fa0aso3404931fa.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 29 Jun 2023 14:08:09 -0700 (PDT)
-X-Gm-Message-State: ABy/qLaqsl5bq1PyWUjn86jQWj5PR2DlqRH/CWeQRsa1KeT4YIkqPeB8
-	IH+fWcjfGHECeJ9vhxZLGzVipXfLKilOP1xMEaw=
-X-Google-Smtp-Source: APBJJlFiLvq/00pxW1fSfw8POZDWzgKpN6sQ94B0C73Uomase4zWNPqdpHugOi5T3I9U3e3RhH+sUGWixwBHEGJceUE=
-X-Received: by 2002:a05:651c:c97:b0:2b6:b9ee:a7b1 with SMTP id
- bz23-20020a05651c0c9700b002b6b9eea7b1mr708635ljb.5.1688072887642; Thu, 29 Jun
- 2023 14:08:07 -0700 (PDT)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CBDD066070D1;
+	Thu, 29 Jun 2023 22:10:38 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1688073041;
+	bh=JCh8QNgbheBN9vzum2hXOH+Xccw6yemZ2xjeKair+aY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=awtycltug4rEIpIWPHSmCJ0Ar7z77OoWwDGCry2DH+yxVYb/zvGXFn4MY6+0VYWHz
+	 KsjdF6RlG839AVnwTUXG5EhlfY57qurBilxeD4c48tgwS66/uibtEDaER8NzfwVG5S
+	 JHXvf7vP2vcIQKryhP7Nc2aPRt+dbb+oXgMTCIsXDUC66CsEfWU9LrVu+nJyGWIw83
+	 BSZf9ksQr+YcWLUt9cu1rx4wlaf479EvT0yP1Jab0CD+ftjnz/ZU+t4SXMd1MUetTU
+	 H2jTI5x4AB+Dy+grt0C/nvXBZA132sNpsVnx645CtNY3W9M2+wrzL+iw7ra+tbJehg
+	 JGugr9zpCYcOQ==
+Date: Thu, 29 Jun 2023 17:10:34 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: kernel@collabora.com, Alexandre Mergnat <amergnat@baylibre.com>,
+	Balsam CHIHI <bchihi@baylibre.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Alexandre Bailon <abailon@baylibre.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Amit Kucheria <amitk@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH v2 5/6] thermal/drivers/mediatek/lvts_thermal: Don't
+ leave threshold zeroed
+Message-ID: <819b9c10-044c-4a2b-b8f2-6ddd633bbf8d@notapiano>
+References: <20230504004852.627049-1-nfraprado@collabora.com>
+ <20230504004852.627049-6-nfraprado@collabora.com>
+ <5d810151-3a3b-51af-bbc1-0ee45668bcc4@linaro.org>
 MIME-Version: 1.0
-References: <1c40a12b51ccd6ee2ee002276f5b1ba92c377100.1687990098.git.objelf@gmail.com>
- <20b61d77-7397-e3ba-3215-232f49eb8c07@molgen.mpg.de>
-In-Reply-To: <20b61d77-7397-e3ba-3215-232f49eb8c07@molgen.mpg.de>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Thu, 29 Jun 2023 14:07:55 -0700
-X-Gmail-Original-Message-ID: <CAGp9LzqbqAGe0AXN2zH-PViOtu0TcygE265S61QfLxczoHgm3Q@mail.gmail.com>
-Message-ID: <CAGp9LzqbqAGe0AXN2zH-PViOtu0TcygE265S61QfLxczoHgm3Q@mail.gmail.com>
-Subject: Re: [PATCH v3] Bluetooth: btmtk: add printing firmware information
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Cc: Sean Wang <sean.wang@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, marcel@holtmann.org, 
-	johan.hedberg@gmail.com, luiz.dentz@gmail.com, Soul.Huang@mediatek.com, 
-	Leon.Yen@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com, 
-	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, 
-	jenhao.yang@mediatek.com, Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, 
-	steve.lee@mediatek.com, jsiuda@google.com, frankgor@google.com, 
-	abhishekpandit@google.com, michaelfsun@google.com, mmandlik@google.com, 
-	abhishekpandit@chromium.org, mcchou@chromium.org, shawnku@google.com, 
-	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <5d810151-3a3b-51af-bbc1-0ee45668bcc4@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230629_140812_084518_7DACDCE0 
-X-CRM114-Status: GOOD (  21.79  )
+X-CRM114-CacheID: sfid-20230629_141045_606921_0233A5FF 
+X-CRM114-Status: GOOD (  26.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,79 +85,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-HI Paul,
-
-Thanks! I will update the patch with your suggestions.
-
-thanks!
-Sean
-
-On Wed, Jun 28, 2023 at 3:44=E2=80=AFPM Paul Menzel <pmenzel@molgen.mpg.de>=
- wrote:
->
-> Dear Sean, dear Chris,
->
->
-> Thank you for your patch.
->
-> Am 29.06.23 um 00:20 schrieb sean.wang@mediatek.com:
-> > From: Chris Lu <chris.lu@mediatek.com>
-> >
-> > Add printing firmware information part when driver loading firmware tha=
-t
-> > user can get mediatek bluetooth information.
->
-> Maybe use the commit message summary/title below:
->
-> Bluetooth: btmtk: Log hw/sw version and fw build time
->
-> Maybe also paste one log message example to the commit message.
->
-> > Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+On Fri, Jun 02, 2023 at 11:17:27AM +0200, Daniel Lezcano wrote:
+> On 04/05/2023 02:48, Nícolas F. R. A. Prado wrote:
+> > The thermal framework might leave the low threshold unset if there
+> > aren't any lower trip points. This leaves the register zeroed, which
+> > translates to a very high temperature for the low threshold. The
+> > interrupt for this threshold is then immediately triggered, and the
+> > state machine gets stuck, preventing any other temperature monitoring
+> > interrupts to ever trigger.
+> > 
+> > (The same happens by not setting the Cold or Hot to Normal thresholds
+> > when using those)
+> > 
+> > Set the unused threshold to a valid low value. This value was chosen so
+> > that for any valid golden temperature read from the efuse, when the
+> > value is converted to raw and back again to milliCelsius, the result
+> > doesn't underflow.
+> > 
+> > Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
+> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > 
 > > ---
-> > v3: resend again with the latest tree
-> > ---
-> >   drivers/bluetooth/btmtk.c | 5 +++++
-> >   1 file changed, 5 insertions(+)
-> >
-> > diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-> > index 9482401d97fa..8490d59502a5 100644
-> > --- a/drivers/bluetooth/btmtk.c
-> > +++ b/drivers/bluetooth/btmtk.c
-> > @@ -57,6 +57,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, c=
-onst char *fwname,
-> >                             wmt_cmd_sync_func_t wmt_cmd_sync)
-> >   {
-> >       struct btmtk_hci_wmt_params wmt_params;
-> > +     struct btmtk_patch_header *hdr;
-> >       struct btmtk_global_desc *globaldesc =3D NULL;
-> >       struct btmtk_section_map *sectionmap;
-> >       const struct firmware *fw;
-> > @@ -75,9 +76,13 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, =
-const char *fwname,
-> >
-> >       fw_ptr =3D fw->data;
-> >       fw_bin_ptr =3D fw_ptr;
-> > +     hdr =3D (struct btmtk_patch_header *)fw_ptr;
-> >       globaldesc =3D (struct btmtk_global_desc *)(fw_ptr + MTK_FW_ROM_P=
-ATCH_HEADER_SIZE);
-> >       section_num =3D le32_to_cpu(globaldesc->section_num);
-> >
-> > +     bt_dev_info(hdev, "HW/SW Version: 0x%04x%04x, Build Time: %s",
->
-> Why not print 0x%04x/0x%04x, that means with a slash?
->
-> > +                 le16_to_cpu(hdr->hwver), le16_to_cpu(hdr->swver), hdr=
-->datetime);
-> > +
-> >       for (i =3D 0; i < section_num; i++) {
-> >               first_block =3D 1;
-> >               fw_ptr =3D fw_bin_ptr;
->
->
-> Kind regards,
->
-> Paul
+> > 
+> > Changes in v2:
+> > - Added this commit
+> > 
+> >   drivers/thermal/mediatek/lvts_thermal.c | 7 +++++++
+> >   1 file changed, 7 insertions(+)
+> > 
+> > diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+> > index efd1e938e1c2..951a4cb75ef6 100644
+> > --- a/drivers/thermal/mediatek/lvts_thermal.c
+> > +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> > @@ -82,6 +82,8 @@
+> >   #define LVTS_HW_SHUTDOWN_MT8195		105000
+> >   #define LVTS_HW_SHUTDOWN_MT8192		105000
+> > +#define LVTS_MINIUM_THRESHOLD		20000
+> 
+> MINIMUM
+> 
+> So if the thermal zone reaches 20°C, the interrupt fires, the set_trips sets
+> again 20°C but the interrupt won't fire until the temperature goes above
+> 20°C and then crosses the temperature low threshold the way down again?
+
+Well, actually, set_trips won't even be called since from the thermal
+framework's perspective we haven't crossed trip points, ie in
+__thermal_zone_set_trips():
+
+	/* No need to change trip points */
+	if (tz->prev_low_trip == low && tz->prev_high_trip == high)
+		return;
+
+But in any case, yes, the interrupt will fire, the temperature will get updated
+in the framework, and that's it. It will only fire again when a threshold is
+crossed again (either by the temperature rising and falling again below this
+minimum, or rising beyond the high treshold).
+
+So basically at most this will cause a spurious interrupt when the temperature
+gets low enough. I do get 34-36C on all sensors when idling though, so I doubt
+that temperature is even reachable. Besides, we don't really have another option
+here if we want working interrupts, the threshold needs to be set to a valid
+value, and this is the lowest I've found.
+
+And thanks for all the feedback! I'll prepare a v3 based on your comments.
+
+Thanks,
+Nícolas
 
