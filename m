@@ -4,69 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D622C001B1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 12:05:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19921EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 14:27:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aHVhT7Nk1+tR+iygJnyVMoYHq/kZBXGZDf5RzDj+2pA=; b=CpLwIR7jfnDlO0HAfvTgCbNODE
-	6dhlhkDYJ6suNZsfyquakry8hXzk7UWd7YRb+8u4UfHplYz2EJYYgC/ANCm7l47VGyNLIwnocg/dt
-	KG5zA7py6AM6sJuifzm+7jTPXJtzBbFyXD967H0Pnwqa3S++YghddkZMCpzYu/bXHdMltvec1LlhV
-	e0nMrfDkh5FRMDWmJ8H9PjdqBkfVDpkkyxKe4aboG7YtpIPjpbFQ+SIzP6gLeVb+qkJAiQInQieF7
-	dDVwuPjPuIxyOga5Aysz1upql840DngZAEU5VdxavXQVOW+lHwNF9u9hlrEcHrPX1bIRpaNQ3I1vC
-	C5/sDqCw==;
+	bh=thrvH97NWNIf3if5FPnQL6O7xJkSBIjOgpNX86xLP5c=; b=BLyl0qXmO/sG49RYSz84WYPLFe
+	D9CZNSCgAFpV/LbGCVSoH0OofD3F0JI6cjD/m3s0P86gTscNCuBprtWl3+KSJOLEB/XKbyl4CzDwh
+	wvshkg+wXllLkiPfaGUVR7s9vAgCjYLKMevjI6xz612WwReTJCA7NEMojrGVVfR9S7Wuy2ox27hBq
+	7Xw3ZbgkS4vMk7iorO5AV62ekTVrfVbmMlK8w89ebvRrnYnImxaLmVYKyWciju0zHrObV6uJwPouO
+	+n8ToOmZ5171s6HYq1NaOPychTWCSW0rn8xtfIWWz6MT1qItWRW0mQ6BW1gezJUSfNc4l9t5laLkJ
+	vfHinsAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEqOu-0011MI-08;
-	Thu, 29 Jun 2023 12:05:28 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1qEscW-001I2r-2n;
+	Thu, 29 Jun 2023 14:27:40 +0000
+Received: from mga04.intel.com ([192.55.52.120])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEqOp-0011KD-1t;
-	Thu, 29 Jun 2023 12:05:25 +0000
-Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.56])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4QsHB76DW2zqVmZ;
-	Thu, 29 Jun 2023 20:02:07 +0800 (CST)
-Received: from localhost.localdomain (10.69.192.56) by
- dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
+	id 1qEscT-001I1z-1Q;
+	Thu, 29 Jun 2023 14:27:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1688048857; x=1719584857;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=D6ge7cH/JNCMPjpulL8bZnQNGuW08bf1Kvh2z9yy22o=;
+  b=CMD/7ivdbm97GYr15kmVhG3I3+jANb9+43i7+MY3Q0Qao6YRDROkkpZp
+   ZlmfAkp86V4cwzzAlbSS1cfdn/uw3Lu56IaT9MX8MzYiB5ucBLubjCyru
+   s15iXCbOMAC6rdKiabGId3tXMxE1L0cSHeU16hFjgMNftD4BnTxEGxQ6A
+   UHefN0cPEsIKDmJvevSjIPp4G6tjWKl3stVAYqhE2RvHfTjFzxAgjuTAX
+   QfM2Cwuydyvx6IKaM/THI3HMjlE0PxTRQcCuqyh3jBww1AjlJvcnyp3mu
+   Mf6UvHqMKk0j97ok8NH+uaHXmWEZOba4TerpRdolzFvhqpankzDsyjcWT
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10756"; a="360968139"
+X-IronPort-AV: E=Sophos;i="6.01,168,1684825200"; 
+   d="scan'208";a="360968139"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jun 2023 07:27:28 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10756"; a="807331001"
+X-IronPort-AV: E=Sophos;i="6.01,168,1684825200"; 
+   d="scan'208";a="807331001"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+  by FMSMGA003.fm.intel.com with ESMTP; 29 Jun 2023 07:27:24 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Thu, 29 Jun 2023 20:04:53 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
-	<linyunsheng@huawei.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Alexander
- Duyck <alexander.duyck@gmail.com>, Liang Chen <liangchen.linux@gmail.com>,
-	Alexander Lobakin <aleksander.lobakin@intel.com>, Yisen Zhuang
-	<yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, Eric Dumazet
-	<edumazet@google.com>, Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya
-	<gakula@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad
-	<hkelam@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky
-	<leon@kernel.org>, Felix Fietkau <nbd@nbd.name>, Ryder Lee
-	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean Wang
-	<sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Jesper Dangaard Brouer
-	<hawk@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>,
-	<linux-rdma@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
+ 15.1.2507.27; Thu, 29 Jun 2023 07:27:23 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Thu, 29 Jun 2023 07:27:23 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.47) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.27; Thu, 29 Jun 2023 07:27:23 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=E4yZSuJVELcbR2qtAemUtMkrS29Y0ORW5+g8TkMGSFGv2q461Y9i+vfBeGLC8X/5FFcN2FRpNzV+yFVqgr3s8FD26RrisDWbeqtFxlt5GRXvVlPX4mdCxcaNVvShZwhnN05nbHtf697zshR0tG2LmjOqFYADWjhwrowTrN4Xzi1WpaBsDPzHiBjOVdYW7LQb9h4KHY2s725K9T1WCggSQkBckHKTSjDpSv9NGGSNQCyMAAryDrFXNhROxchHGJt8x9LvFRP78oaYYHuOML7pJSmIZQM0fZRlQHhSd+RHgC066fSyeVYMTvego/xhCyFvGDPXmCZ2QvC2+JyDCuQkGw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=thrvH97NWNIf3if5FPnQL6O7xJkSBIjOgpNX86xLP5c=;
+ b=A1fqllFHeahqdT4Bfp/ypqmdZ4UmP91K/a2va7o+8L9Q+2QrrXK4LNoFg7pYK6vUr8cWMUKw6TcGCUNUD82ckGaiKCIzrHQzjmuiPHuIeBFL0BAsKf2BGoC82O1tkf8IXJL84hLPPkklqeAi7zoLw0PABWdmX/qXhymCFURMWNBAvcwJmRmPUteeM6XKNNZkceyngANB1QA7TvjPvp+stEPPQdg1tsO0Pp+dlZKpQTlAx+XcTN68ikhoFrtD7GnCgJNT3g6HFspierItRNw5iEfoJavwsZzQMfpJRIs0cHZd6QVK8t8NCkCAPLpUb6o/R0SCGD8YLkhDxY1wSVdY3Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from DM6PR11MB3625.namprd11.prod.outlook.com (2603:10b6:5:13a::21)
+ by CH0PR11MB5265.namprd11.prod.outlook.com (2603:10b6:610:e0::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6544.19; Thu, 29 Jun
+ 2023 14:27:21 +0000
+Received: from DM6PR11MB3625.namprd11.prod.outlook.com
+ ([fe80::82b6:7b9d:96ce:9325]) by DM6PR11MB3625.namprd11.prod.outlook.com
+ ([fe80::82b6:7b9d:96ce:9325%7]) with mapi id 15.20.6521.024; Thu, 29 Jun 2023
+ 14:27:21 +0000
+Message-ID: <32fa253c-b0ad-c988-5017-ecdcb9e1968c@intel.com>
+Date: Thu, 29 Jun 2023 16:26:53 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v5 RFC 0/6] introduce page_pool_alloc() API
+To: Yunsheng Lin <linyunsheng@huawei.com>
+CC: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
+	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Alexei Starovoitov
+	<ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, "Jesper Dangaard
+ Brouer" <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <bpf@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v5 RFC 4/6] page_pool: remove PP_FLAG_PAGE_FRAG flag
-Date: Thu, 29 Jun 2023 20:02:24 +0800
-Message-ID: <20230629120226.14854-5-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20230629120226.14854-1-linyunsheng@huawei.com>
 References: <20230629120226.14854-1-linyunsheng@huawei.com>
+Content-Language: en-US
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+In-Reply-To: <20230629120226.14854-1-linyunsheng@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: BE0P281CA0013.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:b10:a::23) To DM6PR11MB3625.namprd11.prod.outlook.com
+ (2603:10b6:5:13a::21)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.69.192.56]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- dggpemm500005.china.huawei.com (7.185.36.74)
-X-CFilter-Loop: Reflected
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6PR11MB3625:EE_|CH0PR11MB5265:EE_
+X-MS-Office365-Filtering-Correlation-Id: 726c56c4-6914-4267-37f8-08db78acf35d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: m8AwXWUco40h4FKHw/rWFL6hBs4GIPtBOHBtLdW8Iumv2zSvDxCqfHiCEYaawuAIz58G3Kh6F+vPmRwFFW4qX9hVYBdsb2CckxkE/eBUE+ZWRLJSeHU5WjOe33GOodnARUwErgeu7FizJcgXMOLNA1HtW/C3oBjGmMAYdcnLVZxiLd6H6OWUGPQh96HMo36FN8Efq/MGlWxIqmRMz2ONsjSZDjvrsKca+wr1D7aCSAFR9nVBSOIX9exvs03oO3tdEj0SYne/ruuHqm/nCQgC+78bmZW65HABrDC9xq65WFvNUQ+50gOR5kwDxvcpT/j1pGe8PL20RqUBaLSSojho3ynl87jaK1JdLpBnJRAW09vDKRd7cUx6qTTOQYm0VpjFeLK8vGk0BASqSw+c5BmuCGPyj0de197fILSIGgtPsh4YlDvZAKJ4SddZTSEinyGzkN478v+y3AYDfUNclKfvlkWxwmm5JKPfB1//2XB4UKC2DY0DyYLmLW99Jr5lBVgBms6yOOMwu4YHY6PQLklXa7FVxfv3pcUoLIQ81aSRj5zJj/w6JgWFwoILDHISYVwkJ/gB/ZtNLWwcGX0YtunSa83ls1SRfrvWHTz6XTBAXkt5lcb/sJPsXJFcMfLjqJpickgVbU+N2WpWeNhatBD/CZqXj0WG9uatuBANS3DcsCZSAWuMsgzNt7j4vnhT92GY
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR11MB3625.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(366004)(396003)(376002)(39860400002)(136003)(346002)(451199021)(66476007)(66556008)(66946007)(316002)(31686004)(6916009)(6506007)(6486002)(26005)(7416002)(5660300002)(4326008)(186003)(8676002)(8936002)(2616005)(2906002)(966005)(6512007)(41300700001)(38100700002)(31696002)(86362001)(82960400001)(478600001)(54906003)(36756003)(83380400001)(6666004)(43740500002)(45980500001);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NjJjeGlwZlZadTUrMGN5VGZkV0g3MStFcThIZlBTNktWbDFKY0cxZGtHOEpY?=
+ =?utf-8?B?bkpIdzB1VUJRbEV2V0ZWWGlTRWRXVzd3dWFEV1F6SzBjQUNERkEwb3MzdmRR?=
+ =?utf-8?B?MjZsUThudEtSRXA2TThQUG5VdHNDdzVUKy82eGNsUFVmWGJJb2d4L3VONE9i?=
+ =?utf-8?B?dmFJNFdjZTRXam5RK0w1SG5RM256NVJ0MDRvdEt6bml0TmtidkZsbkIvelZk?=
+ =?utf-8?B?Vm5rZ0k3M2FwQnkrZCtoaE1CZktkQXQrYXNJVDUza0FtRG8xcXdTS3Q0WVBn?=
+ =?utf-8?B?T05wVnVHVWFMWC9XVVJrc01TYzVRc2QvRnN3eFZ3aTY3TWoyclE2Y3pveS9I?=
+ =?utf-8?B?NU9BL2lKMmlQRUU4bTZkaHJFdUhkajd2bG9kaUNCSXJ0V3kybUxRR09jQUxp?=
+ =?utf-8?B?N2hrVGpTTnlocm12bXpJOGJnOVZha2ZPWXpOcVpLVStlSFl5T2pxNmtIVXJ2?=
+ =?utf-8?B?WWZoQ3lQN1ArcUpLQ0t5TFVpem9pQWJDV2s1UWp6Mk1oemRpdDJmbDhhQmwz?=
+ =?utf-8?B?UnRsRVRCQ3NhU0oyVDRhS0pVclpDbitqZ1JNemk2ZStrR3JNTHFWM3puZkkv?=
+ =?utf-8?B?SStxQzRxQzcraUF2QmNYZmFJSmx5NFBHcWhJYm1sWDQ2MklLMFUvOFI2VjRo?=
+ =?utf-8?B?TGFpT0p4RVlmRlBkVVVuQ1ZrK0FOeVVxQ0RYYkY3YlBiWjB1ak1GYUU0VzBs?=
+ =?utf-8?B?VEkxelN2WmUvZGpnRm9xUjVlQmoxNW9ieDNNb2NkckR0YWtLVURiL0tINncy?=
+ =?utf-8?B?QlBxOU5kQjBGTHVoZUlsbHpXT1dlZTQ2NnNhVU5CTmxLZE9CTzhkbXFsbUVr?=
+ =?utf-8?B?dlNtbWtTSmtiTzFoMEZ3ak9QQjU5N1QwSU41L2JvK0xIYUNqalhQM1hlaUs3?=
+ =?utf-8?B?THJ0bG82VVR2VUVWcTh1SXgxUG8yR0pLOVRWT3VDOCtrc3lHdjlzc3hPL3hl?=
+ =?utf-8?B?YWh2Vm5DTkJUaUdVNXVQOFNISy9xMzIyRVZSS3ZUeU1nMDB2ZVNMcDUzSW45?=
+ =?utf-8?B?YjVkbFM1VmU0S0xOeXVWemFGSmhCSFN5eng1aUtya200M01sUGFmbXZiM0R4?=
+ =?utf-8?B?YkZyMjI3UWFyVVN6bHJOTVZOY1dPOU15ODdza3ljZWVLNEJIWDQvQzFlVUpR?=
+ =?utf-8?B?ZUtPSmZWYjlHWGNWMzB4UWhQTkdTRHFRYVBBZzh0RW9sTXdFRFRodGcyOVh2?=
+ =?utf-8?B?aEhMTGNkUHR5eU1iU3ZTVlpWQ1FmKy9JQlJ0NERmdEhPUEZkWXV3amNzY1F5?=
+ =?utf-8?B?ME9BcGVmdEdlelVvbTNYVnd3bmJ6a2hlekpMVE9BcGVXQk9PZlBuck5rcU9Z?=
+ =?utf-8?B?N0hJemZJSjdvdmtFSVNzVDdzeEJsWlRzK1pQR2pzc2VMeThnNko1eUQ1cGJr?=
+ =?utf-8?B?WkloN1JkaFprQzhjYVo0V21BWUxZVHhLZU5rV0Y2eURJQ3JSZkRFa0pRazQ5?=
+ =?utf-8?B?MTVlKyt5dmpiRVMxQVVaZFJjKzMxQ3ZnejZYZUNPQ2J0b2QzV0ZFWHAyTE4z?=
+ =?utf-8?B?VkNrYVNOejRmbjJpMFlQNGhlTFF6NFE3QUxtNWwvajlML2JlUzFNd0J1QndN?=
+ =?utf-8?B?RDN2d1VHc1RxcG1yRzQxekpnZ3hkRjlYeWZlSjVkZHAxbldXZkhlUnhmL3kz?=
+ =?utf-8?B?SU1TL1ZlMXFZMndYMlQ1ZXNQY1k3aXptR2xjSlNyWnQ4MzA2SXlrdEIrVmYx?=
+ =?utf-8?B?TDhFc0RsYkhqb2NybERUQjFMTzJzSVdHb3VlM2QxTTdKdHBHTXFSYmZHTFg4?=
+ =?utf-8?B?VFY0OW05NStnU0NWU2xoam5kVXl0ZGc2S2FPSmltZG9KRE1GbnVaK3Zqb24y?=
+ =?utf-8?B?WGxCU1NNb3dkVE13TjYrTEJxWlM2N1FGbFdPU1A1dzE5NXFwcWVrZzRHZFdG?=
+ =?utf-8?B?eVNQcEhTb0hYWGQyK21zSmYzdFBrbzR3c1BjQVdydDRuRnVCTkwzNGdRV0J5?=
+ =?utf-8?B?cW94TGt6bHVBKy9KcDJNSlhuRkRLMFkzT1FRLzNiYUkzN2FWbVBFOHd5T1d0?=
+ =?utf-8?B?SW1aMnBEVHFNbXhzd0pYaTZBOXFub3JKT3FITm1SOGNoNHZQbFNadUpPYksv?=
+ =?utf-8?B?V05PWGNLUklYOEVDYXJ3TzYwdFB5SG5yOXU1MzNtVE5VakV4ZEVLcDIzRkRn?=
+ =?utf-8?B?Q1R3RGpnOGdNM3pJbWJ1OHpNMExBQWZJK3AzTm85YXloNi9mY0l4TE1PMEhq?=
+ =?utf-8?B?U2c9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 726c56c4-6914-4267-37f8-08db78acf35d
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3625.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Jun 2023 14:27:21.8177
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: h40pY9k7j8xhV/h4OG6+caGTFU4PrrfFvWIB2snIQmmUdWhfP3ifMaEQQmKjiPyCS+U8NYkofDyb/BoUQ5F+21MarN4I0Duof2fE7giOrLI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR11MB5265
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230629_050524_025447_DEACD7F6 
-X-CRM114-Status: GOOD (  16.15  )
+X-CRM114-CacheID: sfid-20230629_072737_519955_E33DEF2F 
+X-CRM114-Status: GOOD (  25.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,117 +180,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PP_FLAG_PAGE_FRAG is not really needed after pp_frag_count
-handling is unified and page_pool_alloc_frag() is supported
-in 32-bit arch with 64-bit DMA, so remove it.
+From: Yunsheng Lin <linyunsheng@huawei.com>
+Date: Thu, 29 Jun 2023 20:02:20 +0800
 
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
-CC: Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Alexander Duyck <alexander.duyck@gmail.com>
-CC: Liang Chen <liangchen.linux@gmail.com>
-CC: Alexander Lobakin <aleksander.lobakin@intel.com>
----
- drivers/net/ethernet/hisilicon/hns3/hns3_enet.c          | 3 +--
- drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c | 2 +-
- drivers/net/ethernet/mellanox/mlx5/core/en_main.c        | 2 +-
- drivers/net/wireless/mediatek/mt76/mac80211.c            | 2 +-
- include/net/page_pool.h                                  | 7 ++-----
- net/core/skbuff.c                                        | 2 +-
- 6 files changed, 7 insertions(+), 11 deletions(-)
+> In [1] & [2] & [3], there are usecases for veth and virtio_net
+> to use frag support in page pool to reduce memory usage, and it
+> may request different frag size depending on the head/tail
+> room space for xdp_frame/shinfo and mtu/packet size. When the
+> requested frag size is large enough that a single page can not
+> be split into more than one frag, using frag support only have
+> performance penalty because of the extra frag count handling
+> for frag support.
+> 
+> So this patchset provides a page pool API for the driver to
+> allocate memory with least memory utilization and performance
+> penalty when it doesn't know the size of memory it need
+> beforehand.
+> 
+> 1. https://patchwork.kernel.org/project/netdevbpf/patch/d3ae6bd3537fbce379382ac6a42f67e22f27ece2.1683896626.git.lorenzo@kernel.org/
+> 2. https://patchwork.kernel.org/project/netdevbpf/patch/20230526054621.18371-3-liangchen.linux@gmail.com/
+> 3. https://github.com/alobakin/linux/tree/iavf-pp-frag
 
-diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c b/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
-index b676496ec6d7..4e613d5bf1fd 100644
---- a/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
-+++ b/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
-@@ -4925,8 +4925,7 @@ static void hns3_put_ring_config(struct hns3_nic_priv *priv)
- static void hns3_alloc_page_pool(struct hns3_enet_ring *ring)
- {
- 	struct page_pool_params pp_params = {
--		.flags = PP_FLAG_DMA_MAP | PP_FLAG_PAGE_FRAG |
--				PP_FLAG_DMA_SYNC_DEV,
-+		.flags = PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV,
- 		.order = hns3_page_order(ring),
- 		.pool_size = ring->desc_num * hns3_buf_size(ring) /
- 				(PAGE_SIZE << hns3_page_order(ring)),
-diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-index a79cb680bb23..404caec467af 100644
---- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-+++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-@@ -1426,7 +1426,7 @@ int otx2_pool_init(struct otx2_nic *pfvf, u16 pool_id,
- 		return 0;
- 	}
- 
--	pp_params.flags = PP_FLAG_PAGE_FRAG | PP_FLAG_DMA_MAP;
-+	pp_params.flags = PP_FLAG_DMA_MAP;
- 	pp_params.pool_size = numptrs;
- 	pp_params.nid = NUMA_NO_NODE;
- 	pp_params.dev = pfvf->dev;
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
-index 42ccb77a1b6c..cdd00848c0cb 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
-@@ -843,7 +843,7 @@ static int mlx5e_alloc_rq(struct mlx5e_params *params,
- 		}
- 
- 		pp_params.order     = 0;
--		pp_params.flags     = PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV | PP_FLAG_PAGE_FRAG;
-+		pp_params.flags     = PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV;
- 		pp_params.pool_size = pool_size;
- 		pp_params.nid       = node;
- 		pp_params.dev       = rq->pdev;
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 467afef98ba2..ee72869e5572 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -566,7 +566,7 @@ int mt76_create_page_pool(struct mt76_dev *dev, struct mt76_queue *q)
- {
- 	struct page_pool_params pp_params = {
- 		.order = 0,
--		.flags = PP_FLAG_PAGE_FRAG,
-+		.flags = 0,
- 		.nid = NUMA_NO_NODE,
- 		.dev = dev->dma_dev,
- 	};
-diff --git a/include/net/page_pool.h b/include/net/page_pool.h
-index 53486ef9074d..e9fb95d62ed5 100644
---- a/include/net/page_pool.h
-+++ b/include/net/page_pool.h
-@@ -45,10 +45,8 @@
- 					* Please note DMA-sync-for-CPU is still
- 					* device driver responsibility
- 					*/
--#define PP_FLAG_PAGE_FRAG	BIT(2) /* for page frag feature */
- #define PP_FLAG_ALL		(PP_FLAG_DMA_MAP |\
--				 PP_FLAG_DMA_SYNC_DEV |\
--				 PP_FLAG_PAGE_FRAG)
-+				 PP_FLAG_DMA_SYNC_DEV)
- 
- #define PAGE_POOL_DMA_USE_PP_FRAG_COUNT	\
- 		(sizeof(dma_addr_t) > sizeof(unsigned long))
-@@ -234,8 +232,7 @@ static inline struct page *page_pool_alloc_frag(struct page_pool *pool,
- 
- 	size = ALIGN(size, dma_get_cache_alignment());
- 
--	if (WARN_ON(!(pool->p.flags & PP_FLAG_PAGE_FRAG) ||
--		    size > max_size))
-+	if (WARN_ON(size > max_size))
- 		return NULL;
- 
- 	/* Don't allow page splitting and allocate one big frag
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index 7c4338221b17..ca2316cc1e7e 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -5652,7 +5652,7 @@ bool skb_try_coalesce(struct sk_buff *to, struct sk_buff *from,
- 	/* In general, avoid mixing page_pool and non-page_pool allocated
- 	 * pages within the same SKB. Additionally avoid dealing with clones
- 	 * with page_pool pages, in case the SKB is using page_pool fragment
--	 * references (PP_FLAG_PAGE_FRAG). Since we only take full page
-+	 * references (page_pool_alloc_frag()). Since we only take full page
- 	 * references for cloned SKBs at the moment that would result in
- 	 * inconsistent reference counts.
- 	 * In theory we could take full references if @from is cloned and
--- 
-2.33.0
+Thanks for sharing the link :D
 
+> 
+> v5 RFC: add a new page_pool_cache_alloc() API, and other minor
+>         change as discussed in v4. As there seems to be three
+>         comsumers that might be made use of the new API, so
+>         repost it as RFC and CC the relevant authors to see
+>         if the new API fits their need.
+
+Tested v5 against my latest tree, no regressions, perf is even a bit
+better than it was. That also might've come from that net-next pulled
+Linus' tree with a good bunch of PRs already merged, or from v4 -> v5
+update.
+
+Re consumers, I'm planning to send the RFC series with IAVF as a
+consumer on Monday (and a couple generic Page Pool improvements today,
+will see).
+
+> 
+> V4. Fix a typo and add a patch to update document about frag
+>     API, PAGE_POOL_DMA_USE_PP_FRAG_COUNT is not renamed yet
+>     as we may need a different thread to discuss that.
+> 
+> V3: Incorporate changes from the disscusion with Alexander,
+>     mostly the inline wraper, PAGE_POOL_DMA_USE_PP_FRAG_COUNT
+>     change split to separate patch and comment change.
+> V2: Add patch to remove PP_FLAG_PAGE_FRAG flags and mention
+>     virtio_net usecase in the cover letter.
+> V1: Drop RFC tag and page_pool_frag patch.
+Thanks,
+Olek
 
