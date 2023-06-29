@@ -4,58 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC1FAEB64D9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 18:44:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43CF4C001B0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 19:02:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I8cdP6cF+nwTWlyfboIiQYyzWM6TGbsre5s255hDw1E=; b=moql1uR1So5K0E
-	YwEU6//z3uUByhJc7tSBuEPUKBE2gBNCb3SSrxTq58hhoUjUVJxqhfLaOMjhI7qvlMB7nGQwUTbWA
-	sB87g7ZjOKg4Ry/OJoWQ4hK3wcYR0zwyINJNnlrKnN6Sbg+yy6mUYZ8SbAKJ5ijPCxOTCyh5Y9Atp
-	1mEgTwUlggC3wuv4lJ59+7fUdEECKkrw50BFhc7S2G0gSN8JJz3MAqgXz4JgH5XkS4A3qtq7F2tD7
-	9GQjt9IsTv5ulKrNiEUGHCGunYiE6E8+0GyRrLWLcE5FN3rO/OYi013a7eb8SLd88Y6VYeR2yCWSK
-	SS+2bNEk5U0tic+IaeJQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vKFlMf4q7+OSI+/Z3h/oCKDpx6NZBtGqhC20B6VZJFQ=; b=wWFBbf4DMhx75at1lEimKX6sKH
+	hMSLRQzhY73STi6ik9wxzbcVuWYYkdHyqxGz3y9F0wYZAOB/mnGI6f8i2gS6ZYXGCbFahOP3QWq/R
+	9LMxecc12JSAlEfzkaE6vSaJ9xhYIYYSKGgNikTKDHh3FVKFF972SBvWuhrdDpTvGw6dja/p0aNxh
+	N6P42+IiAu1NJuV+qXus9uK4+sT2VyzvD3wA4vis9TLcl+HjCewkYIyT+T/vgnPG488X3Cxn2H+UH
+	hKMeC5OghrolmwAV6+XyV62quU2Q4vNY3PM6jpnU+41kTZBDmUEJUnAIjRccOhz8H8lc9Pql9BOgm
+	EXQvorzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEwcb-001nXm-10;
-	Thu, 29 Jun 2023 18:44:01 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1qEwuR-001rlq-0q;
+	Thu, 29 Jun 2023 19:02:27 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEwcD-001nNt-24;
-	Thu, 29 Jun 2023 18:43:45 +0000
-Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout3.routing.net (Postfix) with ESMTP id 92923605D4;
-	Thu, 29 Jun 2023 18:43:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1688064214;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=I8cdP6cF+nwTWlyfboIiQYyzWM6TGbsre5s255hDw1E=;
-	b=OGbX55DGj/xtkG/hWVz4Qo4R1i22zFNmJxp55CTfnwcpyzy+ao4f+YL/q9cUmFsKtmh3WQ
-	SfRGV00+DKFU+AFks3cdLH1xvu04AOhJ1j452P0Cwd2PdgQB6gWydKc7cZXbj/KnAUW/gn
-	Ox6Nxq39V7ltXPJoF8QFFi+sFdSePNc=
-Received: from frank-G5.. (fttx-pool-157.180.227.241.bambit.de [157.180.227.241])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 916DD10009B;
-	Thu, 29 Jun 2023 18:43:33 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 2/2] arm64: dts: mt7986: fix emmc hs400 mode without uboot initialization
-Date: Thu, 29 Jun 2023 20:43:18 +0200
-Message-Id: <20230629184318.551317-3-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230629184318.551317-1-linux@fw-web.de>
-References: <20230629184318.551317-1-linux@fw-web.de>
+	id 1qEwuF-001rdE-0z;
+	Thu, 29 Jun 2023 19:02:18 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C310161616;
+	Thu, 29 Jun 2023 19:02:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4485AC4339A;
+	Thu, 29 Jun 2023 19:02:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1688065334;
+	bh=g2nnAaWXoJjDMmOkoyWfPt9dEf5Fmjq1wR3BX/785SQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Z3+7hNUXgxo8kC3itjbPW3neRHgEPgHWrJ8e2cVYs9Art35MDBTK6yo2FMSSA9J82
+	 4L25QEY+a1ZFT6WqGbbIznX/tz/3dy2IuatSmPJqt/A1J2DVpJgcklJR6dGWribWn9
+	 Xp9hCqpbH8speoLzUaFlt0+hjIr8LdDbnyHWu9La/PhabZ7IrJtR1ApMsqdK8w+Ka8
+	 mnPUUN1wqDNElV2UN9Z1YM98VuGEvUjjM1mPY2/qo2oIDOf50w7ocfeqtu5hyxYrSf
+	 /1IvNQ8E0on8whBZMyan7tkogAmKu55nfiB95dH1yvZvIQXdNw1jSOy+8sU90Pqi8s
+	 NrjF7edjpTWbg==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Ricardo Ribalda <ribalda@chromium.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Sasha Levin <sashal@kernel.org>,
+	sean.wang@kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.4 2/5] pinctrl: meditatek: Startup with the IRQs disabled
+Date: Thu, 29 Jun 2023 15:02:09 -0400
+Message-Id: <20230629190212.908306-2-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230629190212.908306-1-sashal@kernel.org>
+References: <20230629190212.908306-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 5.4.248
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 79a3025b-a2bb-4026-a6d2-40902656f0e4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230629_114337_837372_88F5CBB2 
-X-CRM114-Status: GOOD (  10.22  )
+X-CRM114-CacheID: sfid-20230629_120215_439129_28BE2051 
+X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,46 +81,104 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Wenbin Mei <wenbin.mei@mediatek.com>, Sam Shih <sam.shih@mediatek.com>, linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, stable@vger.kernel.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Eric Woudstra <ericwouds@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Eric Woudstra <ericwouds@gmail.com>
+From: Ricardo Ribalda <ribalda@chromium.org>
 
-Eric reports errors on emmc with hs400 mode when booting linux on bpi-r3
-without uboot [1]. Booting with uboot does not show this because clocks
-seem to be initialized by uboot.
+[ Upstream commit 11780e37565db4dd064d3243ca68f755c13f65b4 ]
 
-Fix this by adding assigned-clocks and assigned-clock-parents like it's
-done in uboot [2].
+If the system is restarted via kexec(), the peripherals do not start
+with a known state.
 
-[1] https://forum.banana-pi.org/t/bpi-r3-kernel-fails-setting-emmc-clock-to-416m-depends-on-u-boot/15170
-[2] https://github.com/u-boot/u-boot/blob/master/arch/arm/dts/mt7986.dtsi#L287
+If the previous system had enabled an IRQs we will receive unexected
+IRQs that can lock the system.
 
-Cc: stable@vger.kernel.org
-Fixes: 513b49d19b34 ("arm64: dts: mt7986: add mmc related device nodes")
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+[   28.109251] watchdog: BUG: soft lockup - CPU#0 stuck for 26s!
+[swapper/0:0]
+[   28.109263] Modules linked in:
+[   28.109273] CPU: 0 PID: 0 Comm: swapper/0 Not tainted
+5.15.79-14458-g4b9edf7b1ac6 #1 9f2e76613148af94acccd64c609a552fb4b4354b
+[   28.109284] Hardware name: Google Elm (DT)
+[   28.109290] pstate: 40400005 (nZcv daif +PAN -UAO -TCO -DIT -SSBS
+		BTYPE=--)
+[   28.109298] pc : __do_softirq+0xa0/0x388
+[   28.109309] lr : __do_softirq+0x70/0x388
+[   28.109316] sp : ffffffc008003ee0
+[   28.109321] x29: ffffffc008003f00 x28: 000000000000000a x27:
+0000000000000080
+[   28.109334] x26: 0000000000000001 x25: ffffffefa7b350c0 x24:
+ffffffefa7b47480
+[   28.109346] x23: ffffffefa7b3d000 x22: 0000000000000000 x21:
+ffffffefa7b0fa40
+[   28.109358] x20: ffffffefa7b005b0 x19: ffffffefa7b47480 x18:
+0000000000065b6b
+[   28.109370] x17: ffffffefa749c8b0 x16: 000000000000018c x15:
+00000000000001b8
+[   28.109382] x14: 00000000000d3b6b x13: 0000000000000006 x12:
+0000000000057e91
+[   28.109394] x11: 0000000000000000 x10: 0000000000000000 x9 :
+ffffffefa7b47480
+[   28.109406] x8 : 00000000000000e0 x7 : 000000000f424000 x6 :
+0000000000000000
+[   28.109418] x5 : ffffffefa7dfaca0 x4 : ffffffefa7dfadf0 x3 :
+000000000000000f
+[   28.109429] x2 : 0000000000000000 x1 : 0000000000000100 x0 :
+0000000001ac65c5
+[   28.109441] Call trace:
+[   28.109447]  __do_softirq+0xa0/0x388
+[   28.109454]  irq_exit+0xc0/0xe0
+[   28.109464]  handle_domain_irq+0x68/0x90
+[   28.109473]  gic_handle_irq+0xac/0xf0
+[   28.109480]  call_on_irq_stack+0x28/0x50
+[   28.109488]  do_interrupt_handler+0x44/0x58
+[   28.109496]  el1_interrupt+0x30/0x58
+[   28.109506]  el1h_64_irq_handler+0x18/0x24
+[   28.109512]  el1h_64_irq+0x7c/0x80
+[   28.109519]  arch_local_irq_enable+0xc/0x18
+[   28.109529]  default_idle_call+0x40/0x140
+[   28.109539]  do_idle+0x108/0x290
+[   28.109547]  cpu_startup_entry+0x2c/0x30
+[   28.109554]  rest_init+0xe8/0xf8
+[   28.109562]  arch_call_rest_init+0x18/0x24
+[   28.109571]  start_kernel+0x338/0x42c
+[   28.109578]  __primary_switched+0xbc/0xc4
+[   28.109588] Kernel panic - not syncing: softlockup: hung tasks
+
+Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+Link: https://lore.kernel.org/r/20221122-mtk-pinctrl-v1-1-bedf5655a3d2@chromium.org
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/pinctrl/mediatek/mtk-eint.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-index 68539ea788df..207510abda89 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-@@ -374,6 +374,10 @@ mmc0: mmc@11230000 {
- 			reg = <0 0x11230000 0 0x1000>,
- 			      <0 0x11c20000 0 0x1000>;
- 			interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_HIGH>;
-+			assigned-clocks = <&topckgen CLK_TOP_EMMC_416M_SEL>,
-+					  <&topckgen CLK_TOP_EMMC_250M_SEL>;
-+			assigned-clock-parents = <&apmixedsys CLK_APMIXED_MPLL>,
-+						 <&topckgen CLK_TOP_NET1PLL_D5_D2>;
- 			clocks = <&topckgen CLK_TOP_EMMC_416M_SEL>,
- 				 <&infracfg CLK_INFRA_MSDC_HCK_CK>,
- 				 <&infracfg CLK_INFRA_MSDC_CK>,
+diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
+index 7e526bcf5e0b5..24502dfeb83fc 100644
+--- a/drivers/pinctrl/mediatek/mtk-eint.c
++++ b/drivers/pinctrl/mediatek/mtk-eint.c
+@@ -277,12 +277,15 @@ static struct irq_chip mtk_eint_irq_chip = {
+ 
+ static unsigned int mtk_eint_hw_init(struct mtk_eint *eint)
+ {
+-	void __iomem *reg = eint->base + eint->regs->dom_en;
++	void __iomem *dom_en = eint->base + eint->regs->dom_en;
++	void __iomem *mask_set = eint->base + eint->regs->mask_set;
+ 	unsigned int i;
+ 
+ 	for (i = 0; i < eint->hw->ap_num; i += 32) {
+-		writel(0xffffffff, reg);
+-		reg += 4;
++		writel(0xffffffff, dom_en);
++		writel(0xffffffff, mask_set);
++		dom_en += 4;
++		mask_set += 4;
+ 	}
+ 
+ 	return 0;
 -- 
-2.34.1
+2.39.2
 
 
