@@ -4,93 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13152EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 05:10:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC947EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 07:13:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=peKVNBP5BkG05iWzI2nVWjD8xpAgJIE8d3jbaRrXHIw=; b=QfjIAX520OM2XhBeYEJbyn3J/x
-	B1ZRL0+X3e+Uk/YTRRNpoWvfn+1k2UKanAIp+Nad0F0/1u7maXQhg2HONbRe8PTYGGmjjKb8sb3r4
-	c9ii/cX78KhScZU3/7D24M6VxY/FQ7VInBvmACI0DOPQ6bNNaDJxwNwboWfMVHZqinVvKFewE9DRp
-	fC5VKJAQe2ayANIumBrwvw9y/nkZ3Yr7tCiZl65dfzCooP8WBDOQgWvGuKg3Eq2JJyVDriTE4U6f6
-	cLW8m9ruqXRsmVsfmuqHkdvT4vfJDFV4jc0r10lUW1qDpWluldw5xxd0tzXOiOFhn/3Ho9hKCVD8z
-	YtN3sf2g==;
+	bh=l5XW0exCS9z+Hy0fRQZ5/K6ds6wj/L09NJ5d7OC64KA=; b=tWi5Cjxe19XYYP3r5Pf+NNYeh3
+	3HgVe3dzKZfzJwzK1Ovhb0ig9VEwTWJooQfiuzjKdJ44sOXZM5UnpjdSPoRgGwWAvEyL7btkHYiBT
+	dC4nw6sDtW5quYNXFkkbyDOy3LHze2l8GUhphS5ZR43QnNUVROHS2rdL0o6nMw/vkop4uzTIIhJ2j
+	XAtI1Q7wtSFjGp8HSEvFOPwhokX1zF6tK6Ivpf8rfCATshWlmGvd400YJTKGq8sc19eWaH3inj3rs
+	wf21RFgWrnXdZys6sLGah8+zuuKef289qptbgv6V7zv1ZrLe5oFZ4jg4C3XjIpCZ95nIbDgkRXo3c
+	nYLPtlVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEjvK-00HZhP-1t;
-	Thu, 29 Jun 2023 05:10:30 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1qElqW-000BS8-1E;
+	Thu, 29 Jun 2023 07:13:40 +0000
+Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEjvH-00HZew-22;
-	Thu, 29 Jun 2023 05:10:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1688015427; x=1719551427;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=6LQAu91eVGZWW31xWhtJ43lX+y8sn/3qZXLOGp6FHk0=;
-  b=mN5LjK0Ck8dKx099R4GHbh1MUPLrERaztto0yifO6dMvBTfzWasMiGVB
-   E25UWXUDNPI+Sp6D90ks6/QJ5Xq+vXmMz6Ay6VZ154qJL2YAltgwHmSd0
-   kI8M6UwskjsWsEVCdAYXACk8tzoLCNtIGYKLohMHHUwUFR5oDlK3xv9nT
-   Dmc2/cl+qQ7fR1dr8NGhjrX5bxekjKbT5N4Uhvwt0JqKT2FqKdKd6Buz9
-   bwroTsdPGtU71mCw1zh4YGXTDvk7NF/iux2R3DuhTgjsA07zzD+KT0NRN
-   q34rvtilgbxPxwoaOk31ILZQK3Zu/BYHa3u0bENLCsTVIzX721B9E/G4S
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10755"; a="342362855"
-X-IronPort-AV: E=Sophos;i="6.01,167,1684825200"; 
-   d="scan'208";a="342362855"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Jun 2023 22:10:18 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10755"; a="694496366"
-X-IronPort-AV: E=Sophos;i="6.01,167,1684825200"; 
-   d="scan'208";a="694496366"
-Received: from lkp-server01.sh.intel.com (HELO 783282924a45) ([10.239.97.150])
-  by orsmga006.jf.intel.com with ESMTP; 28 Jun 2023 22:10:11 -0700
-Received: from kbuild by 783282924a45 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1qEjv0-000DqN-1O;
-	Thu, 29 Jun 2023 05:10:10 +0000
-Date: Thu, 29 Jun 2023 13:09:26 +0800
-From: kernel test robot <lkp@intel.com>
-To: Xiaoyong Lu <xiaoyong.lu@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Alexandre Courbot <acourbot@chromium.org>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Tomasz Figa <tfiga@google.com>
-Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
-	Irui Wang <irui.wang@mediatek.com>,
-	George Sun <george.sun@mediatek.com>,
-	Steve Cho <stevecho@chromium.org>, devicetree@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	linux-kernel@vger.kernel.org,
-	dri-devel <dri-devel@lists.freedesktop.org>,
-	Xiaoyong Lu <xiaoyong.lu@mediatek.com>,
-	linux-mediatek@lists.infradead.org,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: media: mediatek: vcodec: fix AV1 decode fail for 36bit iova
-Message-ID: <202306291250.o5AmGFiC-lkp@intel.com>
-References: <20230628054111.8967-1-xiaoyong.lu@mediatek.com>
+	id 1qElqT-000BRP-12
+	for linux-mediatek@lists.infradead.org;
+	Thu, 29 Jun 2023 07:13:38 +0000
+Received: by mail-qt1-x835.google.com with SMTP id d75a77b69052e-4008d810c28so3667281cf.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 29 Jun 2023 00:13:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1688022816; x=1690614816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=l5XW0exCS9z+Hy0fRQZ5/K6ds6wj/L09NJ5d7OC64KA=;
+        b=lU7gTej3xVjrNBXTU09iLSzYWoNF/qevLHKMhZxbv/Kj2VOUrkOIag5U5I4UPmFSrZ
+         Y3+p/RAcucZjt8wYaUzbdpsL7ZV6cuJAJL+T72IlQz5+0JnQGpCbRP2/TUxJHok9AwqA
+         Bfc4Y3bGDcTbZ2t34F7AT8sOAi10rC6wekEjg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688022816; x=1690614816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=l5XW0exCS9z+Hy0fRQZ5/K6ds6wj/L09NJ5d7OC64KA=;
+        b=bG7dtYgNld95ucrhHHhZ8gL0/HQpn5VxdgIt46I/xlkS9hJ47NVi9DyAdu7fNhbAni
+         yEoq4VCCjaWrczxCevK/mxlZVcHL3D/okSEidzNxRIAT5BFfpe/UweddHIGRWnXkNXpt
+         4vAgZXaLYEd4BSpOQG+v4ZitaDovpOiW5r3C7EAC7t0VNssJ89YBD3TBUnkmtbhTUY4L
+         CROoS6DAO9Wnv41pOmAgyT/kZvHNIJNYnBth5+Oy3G+dkcGlVHrk9qfrUD076990VTeq
+         3hagSDNz/d31Kt2mu974njcLXK0/0C3oo7lO9ZdW7RCyO423jgN4vRYKhC5JIOOzGqgc
+         4G5A==
+X-Gm-Message-State: AC+VfDzcrLN/LCZf9bSt5iUFr0xYIo02K8iQG8P3D4oOz5RRMgkrRt8H
+	dLpZ553Gi0M7eu7dMuiajz2DkbcDpvw3MgLvoZvbgw==
+X-Google-Smtp-Source: ACHHUZ7VILfICjeL4b6+6H18zR4LPIVn8YFg2lV7vCIOLxKGJOXGG21VPpI/jreHOE6rW9PkwYpQhA==
+X-Received: by 2002:ac8:5c91:0:b0:3f5:19e4:34ce with SMTP id r17-20020ac85c91000000b003f519e434cemr47023786qta.48.1688022815679;
+        Thu, 29 Jun 2023 00:13:35 -0700 (PDT)
+Received: from mail-qv1-f52.google.com (mail-qv1-f52.google.com. [209.85.219.52])
+        by smtp.gmail.com with ESMTPSA id ga9-20020a05622a590900b0040327381dbcsm1503336qtb.19.2023.06.29.00.13.35
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 29 Jun 2023 00:13:35 -0700 (PDT)
+Received: by mail-qv1-f52.google.com with SMTP id 6a1803df08f44-635e5b06aaeso3458426d6.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 29 Jun 2023 00:13:35 -0700 (PDT)
+X-Received: by 2002:ad4:5c47:0:b0:635:f546:83c4 with SMTP id
+ a7-20020ad45c47000000b00635f54683c4mr8987873qva.54.1688022814565; Thu, 29 Jun
+ 2023 00:13:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230628054111.8967-1-xiaoyong.lu@mediatek.com>
+References: <20230628-mtk-usb-v1-1-3c5b2ea3d6b9@chromium.org>
+ <CANiDSCsAgD33gMk9-CTGHuUv_b4KfRnO02ETEt6jFtQvw+6cag@mail.gmail.com> <ZJystxdl0jVoe5b6@google.com>
+In-Reply-To: <ZJystxdl0jVoe5b6@google.com>
+From: Ricardo Ribalda <ribalda@chromium.org>
+Date: Thu, 29 Jun 2023 09:13:23 +0200
+X-Gmail-Original-Message-ID: <CANiDSCu3WOqK9wdLDXmW+zbckq15gmxKjtFA4Aghv6uoidO_3Q@mail.gmail.com>
+Message-ID: <CANiDSCu3WOqK9wdLDXmW+zbckq15gmxKjtFA4Aghv6uoidO_3Q@mail.gmail.com>
+Subject: Re: [PATCH] usb: xhci-mtk: set the dma max_seg_size
+To: Zubin Mithra <zsm@chromium.org>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-usb@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230628_221027_677371_86CC1581 
-X-CRM114-Status: GOOD (  15.52  )
+X-CRM114-CacheID: sfid-20230629_001337_358415_63FAF3F0 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,119 +97,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Xiaoyong,
+Hi Zubin
 
-kernel test robot noticed the following build warnings:
+On Wed, 28 Jun 2023 at 23:57, Zubin Mithra <zsm@chromium.org> wrote:
+>
+> On Wed, Jun 28, 2023 at 11:04:20PM +0200, Ricardo Ribalda wrote:
+> > On Wed, 28 Jun 2023 at 23:00, Ricardo Ribalda <ribalda@chromium.org> wrote:
+> > >
+> > > Allow devices to have dma operations beyond 64K, and avoid warnings such
+> > > as:
+> > >
+> > > DMA-API: xhci-mtk 11200000.usb: mapping sg segment longer than device claims to support [len=98304] [max=65536]
+> > >
+> > > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> > Reported-by: Zubin Mithra <zsm@chromium.org>
+>
+> Should this be cc'd to stable@ as well?
 
-[auto build test WARNING on next-20230627]
-[cannot apply to media-tree/master v6.4 v6.4-rc7 v6.4-rc6 linus/master v6.4]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Not sure, in most of the cases this is "just" a warning fix. Let the
+maintainer decide:
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Xiaoyong-Lu/media-mediatek-vcodec-fix-AV1-decode-fail-for-36bit-iova/20230628-134327
-base:   next-20230627
-patch link:    https://lore.kernel.org/r/20230628054111.8967-1-xiaoyong.lu%40mediatek.com
-patch subject: media: mediatek: vcodec: fix AV1 decode fail for 36bit iova
-config: arm-allmodconfig (https://download.01.org/0day-ci/archive/20230629/202306291250.o5AmGFiC-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 12.3.0
-reproduce: (https://download.01.org/0day-ci/archive/20230629/202306291250.o5AmGFiC-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202306291250.o5AmGFiC-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c: In function 'vdec_av1_slice_setup_tile_buffer':
->> drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c:1676:91: warning: suggest parentheses around '+' inside '<<' [-Wparentheses]
-    1676 |                 tile_info_buf[tile_info_base + 1] = (unsigned int)(tile_buf_pa >> 4) << 4 +
-         |                                                                                         ~~^
-    1677 |                         ((unsigned int)(tile_buf_pa >> 32) & 0xf);
-         |                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                          
-
-Kconfig warnings: (for reference only)
-   WARNING: unmet direct dependencies detected for SM_GCC_8350
-   Depends on [n]: COMMON_CLK [=y] && COMMON_CLK_QCOM [=m] && (ARM64 || COMPILE_TEST [=n])
-   Selected by [m]:
-   - SM_VIDEOCC_8350 [=m] && COMMON_CLK [=y] && COMMON_CLK_QCOM [=m]
-   WARNING: unmet direct dependencies detected for SM_GCC_8450
-   Depends on [n]: COMMON_CLK [=y] && COMMON_CLK_QCOM [=m] && (ARM64 || COMPILE_TEST [=n])
-   Selected by [m]:
-   - SM_GPUCC_8450 [=m] && COMMON_CLK [=y] && COMMON_CLK_QCOM [=m]
-   - SM_VIDEOCC_8450 [=m] && COMMON_CLK [=y] && COMMON_CLK_QCOM [=m]
-   WARNING: unmet direct dependencies detected for SM_GCC_8550
-   Depends on [n]: COMMON_CLK [=y] && COMMON_CLK_QCOM [=m] && (ARM64 || COMPILE_TEST [=n])
-   Selected by [m]:
-   - SM_GPUCC_8550 [=m] && COMMON_CLK [=y] && COMMON_CLK_QCOM [=m]
-   - SM_VIDEOCC_8550 [=m] && COMMON_CLK [=y] && COMMON_CLK_QCOM [=m]
-
-
-vim +1676 drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-
-  1649	
-  1650	static void vdec_av1_slice_setup_tile_buffer(struct vdec_av1_slice_instance *instance,
-  1651						     struct vdec_av1_slice_vsi *vsi,
-  1652						     struct mtk_vcodec_mem *bs)
-  1653	{
-  1654		struct vdec_av1_slice_tile_group *tile_group = &instance->tile_group;
-  1655		struct vdec_av1_slice_uncompressed_header *uh = &vsi->frame.uh;
-  1656		struct vdec_av1_slice_tile *tile = &uh->tile;
-  1657		u32 tile_num, tile_row, tile_col;
-  1658		u32 allow_update_cdf = 0;
-  1659		u32 sb_boundary_x_m1 = 0, sb_boundary_y_m1 = 0;
-  1660		int tile_info_base;
-  1661		u64 tile_buf_pa;
-  1662		u32 *tile_info_buf = instance->tile.va;
-  1663		u64 pa = (u64)bs->dma_addr;
-  1664	
-  1665		if (uh->disable_cdf_update == 0)
-  1666			allow_update_cdf = 1;
-  1667	
-  1668		for (tile_num = 0; tile_num < tile_group->num_tiles; tile_num++) {
-  1669			/* each uint32 takes place of 4 bytes */
-  1670			tile_info_base = (AV1_TILE_BUF_SIZE * tile_num) >> 2;
-  1671			tile_row = tile_num / tile->tile_cols;
-  1672			tile_col = tile_num % tile->tile_cols;
-  1673			tile_info_buf[tile_info_base + 0] = (tile_group->tile_size[tile_num] << 3);
-  1674			tile_buf_pa = pa + tile_group->tile_start_offset[tile_num];
-  1675	
-> 1676			tile_info_buf[tile_info_base + 1] = (unsigned int)(tile_buf_pa >> 4) << 4 +
-  1677				((unsigned int)(tile_buf_pa >> 32) & 0xf);
-  1678			tile_info_buf[tile_info_base + 2] = (tile_buf_pa % 16) << 3;
-  1679	
-  1680			sb_boundary_x_m1 =
-  1681				(tile->mi_col_starts[tile_col + 1] - tile->mi_col_starts[tile_col] - 1) &
-  1682				0x3f;
-  1683			sb_boundary_y_m1 =
-  1684				(tile->mi_row_starts[tile_row + 1] - tile->mi_row_starts[tile_row] - 1) &
-  1685				0x1ff;
-  1686	
-  1687			tile_info_buf[tile_info_base + 3] = (sb_boundary_y_m1 << 7) | sb_boundary_x_m1;
-  1688			tile_info_buf[tile_info_base + 4] = ((allow_update_cdf << 18) | (1 << 16));
-  1689	
-  1690			if (tile_num == tile->context_update_tile_id &&
-  1691			    uh->disable_frame_end_update_cdf == 0)
-  1692				tile_info_buf[tile_info_base + 4] |= (1 << 17);
-  1693	
-  1694			mtk_vcodec_debug(instance, "// tile buf %d pos(%dx%d) offset 0x%x\n",
-  1695					 tile_num, tile_row, tile_col, tile_info_base);
-  1696			mtk_vcodec_debug(instance, "// %08x %08x %08x %08x\n",
-  1697					 tile_info_buf[tile_info_base + 0],
-  1698					 tile_info_buf[tile_info_base + 1],
-  1699					 tile_info_buf[tile_info_base + 2],
-  1700					 tile_info_buf[tile_info_base + 3]);
-  1701			mtk_vcodec_debug(instance, "// %08x %08x %08x %08x\n",
-  1702					 tile_info_buf[tile_info_base + 4],
-  1703					 tile_info_buf[tile_info_base + 5],
-  1704					 tile_info_buf[tile_info_base + 6],
-  1705					 tile_info_buf[tile_info_base + 7]);
-  1706		}
-  1707	}
-  1708	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Fixes: 0cbd4b34cda9 ("xhci: mediatek: support MTK xHCI host controller")
+Cc: stable@vger.kernel.org
 
