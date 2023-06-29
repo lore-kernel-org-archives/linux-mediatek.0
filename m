@@ -4,72 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 095AEEB64D9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 19:02:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 845B6EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 19:19:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/nLx90hXhVINwXHlskbGIw4O0kOse1RJ1K9oJ65JJOA=; b=kfHlodFWSQ1wKdPqDfOykeE68T
-	AY1cb2aP6mHCXX5e3M7nhpzeEferR58r5Nquvhmodn/b1a8JtiVYg37rWSlqZfr6+GYMM0N4/4CuL
-	inNhkcaMg7WPYHBlY8h0Z7PWu8TkUJWiiBGRZowEZr7LxG28AvNvR5xzlW6Z7z75wTopuwnzOuzjO
-	0REJ+lsAyURhny90dUHpGZlTAWXUzJvJ1He2FMqN+VvUVz9sXaK4+fz1GFhLOI8TCrKUsFte+5BkO
-	0z2alydfR9xFGEmM6yz7DxwhK8Xq75ojW8LihXuChPOPae85ilCLnyWTMgxDIcM7/2fHqVLruTuHJ
-	UOUeNMQA==;
+	bh=uyv/fHS8LXs9mFLC4e+RmYh284TvZqmRh5+P7kla9r8=; b=iORTD2hgQiIDkgKhzM8vWKRNKU
+	ha6KzhPEfE353ajqWkFq7f12qGfKLI2Jbt1cM7gM5ojMqhXY9qZ/YmQki5Kef4f9McNkUSEjfIITT
+	+o8j7TBLs25nF6n90zdRQfYU7QJmCLl5DQ05qG7jaAqQiJoSxMZIVZNsw7T27/mBcodv0DZ4JWd4k
+	W4TR6r3gA548+Qyc/3f8cp6KUg1dfbo5fRiuR8ReKKG54aSWrZjbIbp6AniYAYfD9H9ngO4kv8AtK
+	LKDt7B+tmEH+VPOYPpe2uGCsQHax2PH2qd79nXhP9gLDTLe6J/le8BqzW6G0LseWhyFvRuyhlf5sW
+	8xZjoKWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEwuS-001rn9-2m;
-	Thu, 29 Jun 2023 19:02:28 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEwuL-001rhu-2i;
-	Thu, 29 Jun 2023 19:02:24 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5119E61631;
-	Thu, 29 Jun 2023 19:02:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA0D0C43391;
-	Thu, 29 Jun 2023 19:02:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1688065341;
-	bh=fMQyK/KxYjKiGaE5UVh6qJR7VkjoaoQwF56y/BibPGc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EImaIpDskFHxsnqfaWquWRJK4EshDWoGovxkK9K227XhSpUPikf3ri64Ly/LjpR9L
-	 dj7qfoZRTbA0+Knay+7wpahR6UwPEWdr8T7rK/PR7IYVMeS+sHL3XK3M4ZGz6NgmaW
-	 SXRQUCmY9blQzT96X94TyPpA0jofm8jB4Sp8zBbEMQiocMj+388MBo9OvfxRHO6K7C
-	 VRVS+vJ2Sd+f/22YXX0gT3rHcPOLocgJbsc8z7XVNg/sljfH0ZX5V0x+kj0ZvkNOIk
-	 dJ9OL+ALgqcYEw85Iy7aTS+zWfq5vJwJYHrZzdQXJOhgt6R5p6QHyYgOjqRsxGOBxq
-	 x12AlFNWeZsQg==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Ricardo Ribalda <ribalda@chromium.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Sasha Levin <sashal@kernel.org>,
-	sean.wang@kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 4.19 2/5] pinctrl: meditatek: Startup with the IRQs disabled
-Date: Thu, 29 Jun 2023 15:02:16 -0400
-Message-Id: <20230629190219.908379-2-sashal@kernel.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230629190219.908379-1-sashal@kernel.org>
-References: <20230629190219.908379-1-sashal@kernel.org>
+	id 1qExAw-001utU-2l;
+	Thu, 29 Jun 2023 19:19:30 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qExAq-001ur7-3C;
+	Thu, 29 Jun 2023 19:19:28 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7087BC14;
+	Thu, 29 Jun 2023 12:20:02 -0700 (PDT)
+Received: from [10.57.33.98] (unknown [10.57.33.98])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B4E5B3F73F;
+	Thu, 29 Jun 2023 12:19:16 -0700 (PDT)
+Message-ID: <c412681d-c845-c8a9-01ed-aafb14a0381a@arm.com>
+Date: Thu, 29 Jun 2023 20:19:07 +0100
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 4.19.287
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH] usb: xhci-mtk: set the dma max_seg_size
+Content-Language: en-GB
+To: Ricardo Ribalda <ribalda@chromium.org>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Mathias Nyman <mathias.nyman@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230628-mtk-usb-v1-1-3c5b2ea3d6b9@chromium.org>
+ <0efd9388-4cbc-d27c-f82f-d14291580150@arm.com>
+ <CANiDSCvvtdtS2E1a5qyOERG=DKzcTX2oLGWSecRz2gCi-Oo1tw@mail.gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <CANiDSCvvtdtS2E1a5qyOERG=DKzcTX2oLGWSecRz2gCi-Oo1tw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230629_120221_967022_3F6A87BE 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20230629_121925_122655_C7278B36 
+X-CRM114-Status: GOOD (  28.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,101 +71,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ricardo Ribalda <ribalda@chromium.org>
+On 2023-06-29 19:29, Ricardo Ribalda wrote:
+> Hi Robin
+> 
+> On Thu, 29 Jun 2023 at 20:11, Robin Murphy <robin.murphy@arm.com> wrote:
+>>
+>> On 2023-06-28 22:00, Ricardo Ribalda wrote:
+>>> Allow devices to have dma operations beyond 64K, and avoid warnings such
+>>> as:
+>>
+>> Hang on, is this actually correct? I just had a vague memory of XHCI
+>> having some restrictions, and sure enough according to the spec it
+>> *does* require buffers to be split at 64KB boundaries, since that's the
+>> maximum length a single TRB can encode - that's exactly the kind of
+>> constraint that the max_seg_size abstraction is intended to represent,
+>> so it seems a bit odd to be explicitly claiming a very different value.
+>>
+>> Thanks,
+>> Robin.
+> 
+> I think we had a similar discussion for  93915a4170e9 ("xhci-pci: set
+> the dma max_seg_size")
+> on
+> https://lore.kernel.org/all/1fe8f8a7-c88f-0c91-e74f-4d3f2f885c89@linux.intel.com/
+> 
+> ```
+> Preferred max segment size of sg list would be 64k as xHC hardware has
+> 64k TRB payload size
+> limit, but xhci driver will take care of larger segments, splitting
+> them into 64k chunks.
+> ```
 
-[ Upstream commit 11780e37565db4dd064d3243ca68f755c13f65b4 ]
+OK, but it still seems off to me to claim to support something that the 
+hardware doesn't support, and the driver has to fake, especially when 
+it's only to paper over a warning which isn't even the driver's fault in 
+the first place.
 
-If the system is restarted via kexec(), the peripherals do not start
-with a known state.
+The aim of the DMA_API_DEBUG_SG warnings wasn't to go round blindly 
+adding dma_set_max_seg_size(UINT_MAX) all over the place, it was always 
+to consider whether the dma_map_sg() call and/or the scatterlist itself 
+are right, just as much as whether the driver may have forgotten to set 
+an appropriate parameter. As I've already raised, in this particular 
+case I think it's actually the debug check that's misplaced, since it's 
+not dma_map_sg() anyway, but as it stands, the implementations of 
+dma_alloc_noncontiguous() are definitely doing the wrong thing with 
+respect to what it is then asking to validate.
 
-If the previous system had enabled an IRQs we will receive unexected
-IRQs that can lock the system.
+Unless there is some known reason to make this change to any USB host 
+controller *other* than that someone sees UVC allocate a >64KB buffer 
+via this path on a system which happens to have that particular HCD, it 
+is not the right change to make.
 
-[   28.109251] watchdog: BUG: soft lockup - CPU#0 stuck for 26s!
-[swapper/0:0]
-[   28.109263] Modules linked in:
-[   28.109273] CPU: 0 PID: 0 Comm: swapper/0 Not tainted
-5.15.79-14458-g4b9edf7b1ac6 #1 9f2e76613148af94acccd64c609a552fb4b4354b
-[   28.109284] Hardware name: Google Elm (DT)
-[   28.109290] pstate: 40400005 (nZcv daif +PAN -UAO -TCO -DIT -SSBS
-		BTYPE=--)
-[   28.109298] pc : __do_softirq+0xa0/0x388
-[   28.109309] lr : __do_softirq+0x70/0x388
-[   28.109316] sp : ffffffc008003ee0
-[   28.109321] x29: ffffffc008003f00 x28: 000000000000000a x27:
-0000000000000080
-[   28.109334] x26: 0000000000000001 x25: ffffffefa7b350c0 x24:
-ffffffefa7b47480
-[   28.109346] x23: ffffffefa7b3d000 x22: 0000000000000000 x21:
-ffffffefa7b0fa40
-[   28.109358] x20: ffffffefa7b005b0 x19: ffffffefa7b47480 x18:
-0000000000065b6b
-[   28.109370] x17: ffffffefa749c8b0 x16: 000000000000018c x15:
-00000000000001b8
-[   28.109382] x14: 00000000000d3b6b x13: 0000000000000006 x12:
-0000000000057e91
-[   28.109394] x11: 0000000000000000 x10: 0000000000000000 x9 :
-ffffffefa7b47480
-[   28.109406] x8 : 00000000000000e0 x7 : 000000000f424000 x6 :
-0000000000000000
-[   28.109418] x5 : ffffffefa7dfaca0 x4 : ffffffefa7dfadf0 x3 :
-000000000000000f
-[   28.109429] x2 : 0000000000000000 x1 : 0000000000000100 x0 :
-0000000001ac65c5
-[   28.109441] Call trace:
-[   28.109447]  __do_softirq+0xa0/0x388
-[   28.109454]  irq_exit+0xc0/0xe0
-[   28.109464]  handle_domain_irq+0x68/0x90
-[   28.109473]  gic_handle_irq+0xac/0xf0
-[   28.109480]  call_on_irq_stack+0x28/0x50
-[   28.109488]  do_interrupt_handler+0x44/0x58
-[   28.109496]  el1_interrupt+0x30/0x58
-[   28.109506]  el1h_64_irq_handler+0x18/0x24
-[   28.109512]  el1h_64_irq+0x7c/0x80
-[   28.109519]  arch_local_irq_enable+0xc/0x18
-[   28.109529]  default_idle_call+0x40/0x140
-[   28.109539]  do_idle+0x108/0x290
-[   28.109547]  cpu_startup_entry+0x2c/0x30
-[   28.109554]  rest_init+0xe8/0xf8
-[   28.109562]  arch_call_rest_init+0x18/0x24
-[   28.109571]  start_kernel+0x338/0x42c
-[   28.109578]  __primary_switched+0xbc/0xc4
-[   28.109588] Kernel panic - not syncing: softlockup: hung tasks
+Thanks,
+Robin.
 
-Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-Link: https://lore.kernel.org/r/20221122-mtk-pinctrl-v1-1-bedf5655a3d2@chromium.org
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/pinctrl/mediatek/mtk-eint.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-index 564cfaee129d2..55e3305ede811 100644
---- a/drivers/pinctrl/mediatek/mtk-eint.c
-+++ b/drivers/pinctrl/mediatek/mtk-eint.c
-@@ -277,12 +277,15 @@ static struct irq_chip mtk_eint_irq_chip = {
- 
- static unsigned int mtk_eint_hw_init(struct mtk_eint *eint)
- {
--	void __iomem *reg = eint->base + eint->regs->dom_en;
-+	void __iomem *dom_en = eint->base + eint->regs->dom_en;
-+	void __iomem *mask_set = eint->base + eint->regs->mask_set;
- 	unsigned int i;
- 
- 	for (i = 0; i < eint->hw->ap_num; i += 32) {
--		writel(0xffffffff, reg);
--		reg += 4;
-+		writel(0xffffffff, dom_en);
-+		writel(0xffffffff, mask_set);
-+		dom_en += 4;
-+		mask_set += 4;
- 	}
- 
- 	return 0;
--- 
-2.39.2
-
+> 
+>>
+>>> DMA-API: xhci-mtk 11200000.usb: mapping sg segment longer than device claims to support [len=98304] [max=65536]
+>>>
+>>> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+>>> ---
+>>> Fix warnings such as:
+>>>
+>>> [  451.089443] ------------[ cut here ]------------
+>>> [  451.089498] DMA-API: xhci-mtk 11200000.usb: mapping sg segment longer than device claims to support [len=98304] [max=65536]
+>>> [  451.089617] WARNING: CPU: 7 PID: 14227 at kernel/dma/debug.c:1163 debug_dma_map_sg+0x5bc/0x950
+>>> [  451.089674] Modules linked in: xfrm_interface tun hci_vhci bridge stp llc veth xt_cgroup xt_MASQUERADE uinput rfcomm ip6table_nat fuse 8021q algif_hash algif_skcipher af_alg r8153_ecm cdc_ether usbnet r8152 mii mtk_vcodec_dec_hw mt7921s mt76_sdio mt7921_common mt76_connac_lib mt76 uvcvideo videobuf2_vmalloc mtk_vcodec_dec v4l2_h264 mtk_vcodec_enc mtk_jpeg v4l2_vp9 videobuf2_dma_contig videobuf2_memops v4l2_mem2mem videobuf2_v4l2 btmtksdio videobuf2_common mtk_vcodec_common btmtk mac80211 snd_sof_mt8186 snd_sof_xtensa_dsp snd_sof_of snd_sof snd_sof_utils mtk_scp mtk_rpmsg rpmsg_core mtk_scp_ipi hid_rmi rmi_core serio bluetooth ecdh_generic ecc cfg80211 lzo_rle lzo_compress zram joydev
+>>> [  451.090285] CPU: 7 PID: 14227 Comm: syz-executor.0 Not tainted 5.15.118-lockdep-19753-g1b0a8b16661d #1 cd3ddfc5e13dbbbea438d3161fcad4d98ec474f4
+>>> [  451.090333] Hardware name: Google Rusty sku196608/196609/196610/196611 board (DT)
+>>> [  451.090356] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+>>> [  451.090401] pc : debug_dma_map_sg+0x5bc/0x950
+>>> [  451.090433] lr : debug_dma_map_sg+0x5bc/0x950
+>>> [  451.090462] sp : ffffffc01fdd75e0
+>>> [  451.090479] x29: ffffffc01fdd7640 x28: ffffff80c1280300 x27: 0000000000010000
+>>> [  451.090531] x26: ffffff80c1ec9600 x25: 1ffffff01a749501 x24: ffffff80d3a4a800
+>>> [  451.090581] x23: dfffffc000000000 x22: ffffff80d3a4a80c x21: ffffffc00aae5740
+>>> [  451.090631] x20: ffffffffffffffff x19: ffffff80d3a4a810 x18: 0000000000000000
+>>> [  451.090680] x17: 64206e6168742072 x16: 65676e6f6c20746e x15: 656d676573206773
+>>> [  451.090731] x14: 20676e697070616d x13: 0000000000000001 x12: 0000000000000001
+>>> [  451.090779] x11: 0000000000000000 x10: 0000000000040000 x9 : 3c6fd66e79e32400
+>>> [  451.090828] x8 : 3c6fd66e79e32400 x7 : 0000000000000001 x6 : 0000000000000001
+>>> [  451.090877] x5 : ffffffc01fdd7158 x4 : ffffffc00b64e2a0 x3 : ffffffc008f92adc
+>>> [  451.090926] x2 : 0000000100000000 x1 : ffffff8057afd940 x0 : 000000000000006f
+>>> [  451.090976] Call trace:
+>>> [  451.090994]  debug_dma_map_sg+0x5bc/0x950
+>>> [  451.091026]  dma_alloc_noncontiguous+0x2f4/0x404
+>>> [  451.091060]  uvc_alloc_urb_buffers+0x1e8/0x600 [uvcvideo 1a151fdc876854366480a9c6b7aaa4b7999fb493]
+>>> [  451.091150]  uvc_video_start_transfer+0xaf4/0x1628 [uvcvideo 1a151fdc876854366480a9c6b7aaa4b7999fb493]
+>>> [  451.091228]  uvc_video_start_streaming+0x154/0x2d8 [uvcvideo 1a151fdc876854366480a9c6b7aaa4b7999fb493]
+>>> [  451.091305]  uvc_start_streaming+0x20c/0x3d4 [uvcvideo 1a151fdc876854366480a9c6b7aaa4b7999fb493]
+>>> [  451.091379]  vb2_start_streaming+0x118/0x400 [videobuf2_common 252dc8c49960dcb8e329e2787100c89e1899c17f]
+>>> [  451.091446]  vb2_core_streamon+0x258/0x360 [videobuf2_common 252dc8c49960dcb8e329e2787100c89e1899c17f]
+>>> [  451.091507]  vb2_streamon+0x88/0xbc [videobuf2_v4l2 f4acca89bfe3410cd8f3ca536255fc3877fe63db]
+>>> [  451.091555]  uvc_queue_streamon+0x44/0x68 [uvcvideo 1a151fdc876854366480a9c6b7aaa4b7999fb493]
+>>> [  451.091631]  uvc_ioctl_streamon+0xd8/0x124 [uvcvideo 1a151fdc876854366480a9c6b7aaa4b7999fb493]
+>>> [  451.091705]  v4l_streamon+0x74/0xa8
+>>> [  451.091738]  __video_do_ioctl+0x90c/0xa40
+>>> [  451.091769]  video_usercopy+0xa44/0x1ef8
+>>> [  451.091799]  video_ioctl2+0x44/0x58
+>>> [  451.091830]  v4l2_ioctl+0x138/0x164
+>>> [  451.091860]  __arm64_sys_ioctl+0x154/0x1d0
+>>> [  451.091892]  invoke_syscall+0x98/0x278
+>>> [  451.091923]  el0_svc_common+0x214/0x274
+>>> [  451.091953]  do_el0_svc+0x9c/0x19c
+>>> [  451.091982]  el0_svc+0x5c/0xc0
+>>> [  451.092013]  el0t_64_sync_handler+0x78/0x108
+>>> [  451.092045]  el0t_64_sync+0x1a4/0x1a8
+>>> [  451.092081] Kernel panic - not syncing: kernel: panic_on_warn set ...
+>>> [  451.092103] CPU: 7 PID: 14227 Comm: syz-executor.0 Not tainted 5.15.118-lockdep-19753-g1b0a8b16661d #1 cd3ddfc5e13dbbbea438d3161fcad4d98ec474f4
+>>> [  451.092148] Hardware name: Google Rusty sku196608/196609/196610/196611 board (DT)
+>>> [  451.092171] Call trace:
+>>> [  451.092186]  dump_backtrace+0x0/0x4e8
+>>> [  451.092219]  show_stack+0x34/0x44
+>>> [  451.092247]  dump_stack_lvl+0xdc/0x11c
+>>> [  451.092278]  dump_stack+0x1c/0x48
+>>> [  451.092307]  panic+0x2a4/0x7b8
+>>> [  451.092335]  check_panic_on_warn+0xb8/0x104
+>>> [  451.092369]  __warn+0x16c/0x230
+>>> [  451.092399]  report_bug+0x160/0x280
+>>> [  451.092432]  bug_handler+0x48/0xb8
+>>> [  451.092466]  call_break_hook+0x180/0x1b4
+>>> [  451.092498]  brk_handler+0x30/0xbc
+>>> [  451.092529]  do_debug_exception+0x16c/0x31c
+>>> [  451.092563]  el1_dbg+0x64/0x80
+>>> [  451.092592]  el1h_64_sync_handler+0x70/0xb4
+>>> [  451.092624]  el1h_64_sync+0x7c/0x80
+>>> [  451.092653]  debug_dma_map_sg+0x5bc/0x950
+>>> [  451.092685]  dma_alloc_noncontiguous+0x2f4/0x404
+>>> [  451.092717]  uvc_alloc_urb_buffers+0x1e8/0x600 [uvcvideo 1a151fdc876854366480a9c6b7aaa4b7999fb493]
+>>> [  451.092794]  uvc_video_start_transfer+0xaf4/0x1628 [uvcvideo 1a151fdc876854366480a9c6b7aaa4b7999fb493]
+>>> [  451.092868]  uvc_video_start_streaming+0x154/0x2d8 [uvcvideo 1a151fdc876854366480a9c6b7aaa4b7999fb493]
+>>> [  451.092942]  uvc_start_streaming+0x20c/0x3d4 [uvcvideo 1a151fdc876854366480a9c6b7aaa4b7999fb493]
+>>> [  451.093015]  vb2_start_streaming+0x118/0x400 [videobuf2_common 252dc8c49960dcb8e329e2787100c89e1899c17f]
+>>> [  451.093079]  vb2_core_streamon+0x258/0x360 [videobuf2_common 252dc8c49960dcb8e329e2787100c89e1899c17f]
+>>> [  451.093139]  vb2_streamon+0x88/0xbc [videobuf2_v4l2 f4acca89bfe3410cd8f3ca536255fc3877fe63db]
+>>> [  451.093187]  uvc_queue_streamon+0x44/0x68 [uvcvideo 1a151fdc876854366480a9c6b7aaa4b7999fb493]
+>>> [  451.093261]  uvc_ioctl_streamon+0xd8/0x124 [uvcvideo 1a151fdc876854366480a9c6b7aaa4b7999fb493]
+>>> [  451.093334]  v4l_streamon+0x74/0xa8
+>>> [  451.093366]  __video_do_ioctl+0x90c/0xa40
+>>> [  451.093398]  video_usercopy+0xa44/0x1ef8
+>>> [  451.093428]  video_ioctl2+0x44/0x58
+>>> [  451.093457]  v4l2_ioctl+0x138/0x164
+>>> [  451.093487]  __arm64_sys_ioctl+0x154/0x1d0
+>>> [  451.093518]  invoke_syscall+0x98/0x278
+>>> [  451.093548]  el0_svc_common+0x214/0x274
+>>> [  451.093578]  do_el0_svc+0x9c/0x19c
+>>> [  451.093607]  el0_svc+0x5c/0xc0
+>>> [  451.093637]  el0t_64_sync_handler+0x78/0x108
+>>> [  451.093669]  el0t_64_sync+0x1a4/0x1a8
+>>> [  451.093701] SMP: stopping secondary CPUs
+>>> [  451.093777] Kernel Offset: disabled
+>>> [  451.093797] CPU features: 0xc00181c1,a3300e42
+>>> [  451.093822] Memory Limit: none
+>>>
+>>> Signed-off-by: Ricardo Ribalda Delgado <ribalda@chromium.org>
+>>> ---
+>>>    drivers/usb/host/xhci-mtk.c | 2 ++
+>>>    1 file changed, 2 insertions(+)
+>>>
+>>> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+>>> index 90cf40d6d0c3..605b1e1a5098 100644
+>>> --- a/drivers/usb/host/xhci-mtk.c
+>>> +++ b/drivers/usb/host/xhci-mtk.c
+>>> @@ -643,6 +643,8 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+>>>        pm_runtime_put_autosuspend(dev);
+>>>        pm_runtime_forbid(dev);
+>>>
+>>> +     dma_set_max_seg_size(dev, UINT_MAX);
+>>> +
+>>>        return 0;
+>>>
+>>>    dealloc_usb3_hcd:
+>>>
+>>> ---
+>>> base-commit: 1b2c92a1cb2469d8c0079dbf496ab86e22e1cb7c
+>>> change-id: 20230628-mtk-usb-bf0059f64bd7
+>>>
+>>> Best regards,
+> 
+> 
+> 
 
