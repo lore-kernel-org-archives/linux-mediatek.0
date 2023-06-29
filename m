@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3B75EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 11:40:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 961AEEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jun 2023 12:05:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EuRgflA7W+GB2OzUJcPWqnf9eFGcWgW+fc96i17TXMs=; b=OxnumkOmV++8IBaxcsAgohDRvI
-	pKGedymGp11e4qgR25OwnUywEW0wnNbNid+tRH555g9Oq0WswckDSa3xQG7eNfSyc2oqPet1ud7H2
-	igkYyUqTD608OutrR12WSoJuS38GUJuxBiEY1Q0u733OEvcsaBOis8b/QCnB35nTOr33MfDS9Xn0r
-	rPRig4x4Xu8bTIhvcB5ZRg9ilxL1n4pTHnRfeyA/hpnngCh0R2smhOU9kZz1veFyHcMIhSN3k1dJD
-	kjfR1Ab9fdxAxEvq+5xIi22kf+jedj/qdzUC5NHwG6NrzMEMpqRPI14pqq4pavwRdySJHeOj47h58
-	sFYNWANQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9HlKNSH4sc3XMWh8fA1Pu/lkvrzlOGr5BPVIYR1xqHQ=; b=LsJfF/9gKCfO8NZElI6RWzeb4l
+	tN93PU5kgB1wxd85OYw72MNjBzS/ouSV000a9zMbwZUJH4qZvhEYpq8DUHZfemy4BBfkPkdjqEiO5
+	5f8OtIhO5XqFbp9E0EpdghK0cBQ+LZReHRTzP9irDSa2TeYgGVvLBbV35iFhVFbZPtiMG1ziGXAkj
+	slaptv60AupvdhoBg8ANjYb7kQ+5wIx4leWtu/glX92LksPtN7FwZ1UosLoUFhbUs9VHq9sr/Hiet
+	5TZcenjr0IPSE85cTDnHpPSwUtH0sjqbPnUEuK6yPBK7v/zQMo/4ezyG/hrzj06k3QDPNQqZBRfdB
+	ulSuMNFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEq0Y-000ynb-0Z;
-	Thu, 29 Jun 2023 11:40:18 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qEq0U-000ymc-0l;
-	Thu, 29 Jun 2023 11:40:15 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2D592C14;
-	Thu, 29 Jun 2023 04:40:56 -0700 (PDT)
-Received: from [10.57.33.98] (unknown [10.57.33.98])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id BD5BB3F64C;
-	Thu, 29 Jun 2023 04:40:10 -0700 (PDT)
-Message-ID: <11d40d12-bb6c-25b3-ef44-43f4ded0e628@arm.com>
-Date: Thu, 29 Jun 2023 12:40:03 +0100
+	id 1qEqOV-0011Fg-2o;
+	Thu, 29 Jun 2023 12:05:03 +0000
+Received: from szxga03-in.huawei.com ([45.249.212.189])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qEqOR-0011DN-35;
+	Thu, 29 Jun 2023 12:05:02 +0000
+Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.55])
+	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4QsHBl2WhDzLmvg;
+	Thu, 29 Jun 2023 20:02:39 +0800 (CST)
+Received: from localhost.localdomain (10.69.192.56) by
+ dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Thu, 29 Jun 2023 20:04:45 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
+	<linyunsheng@huawei.com>, Alexei Starovoitov <ast@kernel.org>, Daniel
+ Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <bpf@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v5 RFC 0/6] introduce page_pool_alloc() API
+Date: Thu, 29 Jun 2023 20:02:20 +0800
+Message-ID: <20230629120226.14854-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH] usb: xhci-mtk: set the dma max_seg_size
-Content-Language: en-GB
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Ricardo Ribalda <ribalda@chromium.org>
-Cc: Zubin Mithra <zsm@chromium.org>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20230628-mtk-usb-v1-1-3c5b2ea3d6b9@chromium.org>
- <CANiDSCsAgD33gMk9-CTGHuUv_b4KfRnO02ETEt6jFtQvw+6cag@mail.gmail.com>
- <ZJystxdl0jVoe5b6@google.com>
- <CANiDSCu3WOqK9wdLDXmW+zbckq15gmxKjtFA4Aghv6uoidO_3Q@mail.gmail.com>
- <2023062942-thumb-giddily-f0e0@gregkh>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <2023062942-thumb-giddily-f0e0@gregkh>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.69.192.56]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230629_044014_325841_8A15F78E 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20230629_050500_361523_41D966C4 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,40 +70,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-06-29 09:40, Greg Kroah-Hartman wrote:
-> On Thu, Jun 29, 2023 at 09:13:23AM +0200, Ricardo Ribalda wrote:
->> Hi Zubin
->>
->> On Wed, 28 Jun 2023 at 23:57, Zubin Mithra <zsm@chromium.org> wrote:
->>>
->>> On Wed, Jun 28, 2023 at 11:04:20PM +0200, Ricardo Ribalda wrote:
->>>> On Wed, 28 Jun 2023 at 23:00, Ricardo Ribalda <ribalda@chromium.org> wrote:
->>>>>
->>>>> Allow devices to have dma operations beyond 64K, and avoid warnings such
->>>>> as:
->>>>>
->>>>> DMA-API: xhci-mtk 11200000.usb: mapping sg segment longer than device claims to support [len=98304] [max=65536]
->>>>>
->>>>> Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
->>>> Reported-by: Zubin Mithra <zsm@chromium.org>
->>>
->>> Should this be cc'd to stable@ as well?
->>
->> Not sure, in most of the cases this is "just" a warning fix. Let the
->> maintainer decide:
-> 
-> Warnings can cause reboots as the majority of the linux systems in the
-> world run panic-on-warn, so yes, it should be backported.
+In [1] & [2] & [3], there are usecases for veth and virtio_net
+to use frag support in page pool to reduce memory usage, and it
+may request different frag size depending on the head/tail
+room space for xdp_frame/shinfo and mtu/packet size. When the
+requested frag size is large enough that a single page can not
+be split into more than one frag, using frag support only have
+performance penalty because of the extra frag count handling
+for frag support.
 
-Although in this particular case, running DMA_API_DEBUG=y on production 
-systems is a pretty inadvisable thing to do anyway ;)
+So this patchset provides a page pool API for the driver to
+allocate memory with least memory utilization and performance
+penalty when it doesn't know the size of memory it need
+beforehand.
 
-However I'm glad I looked, since I think this also points to a bug in 
-dma_alloc_noncontiguous() - it's one thing to blame a driver for trying 
-to map a malformed scatterlist of its own, but if the DMA API is 
-generating one internally without respecting the device's (claimed) 
-parameters, then that's on us. I'll have a look into it...
+1. https://patchwork.kernel.org/project/netdevbpf/patch/d3ae6bd3537fbce379382ac6a42f67e22f27ece2.1683896626.git.lorenzo@kernel.org/
+2. https://patchwork.kernel.org/project/netdevbpf/patch/20230526054621.18371-3-liangchen.linux@gmail.com/
+3. https://github.com/alobakin/linux/tree/iavf-pp-frag
 
-Thanks,
-Robin.
+v5 RFC: add a new page_pool_cache_alloc() API, and other minor
+        change as discussed in v4. As there seems to be three
+        comsumers that might be made use of the new API, so
+        repost it as RFC and CC the relevant authors to see
+        if the new API fits their need.
+
+V4. Fix a typo and add a patch to update document about frag
+    API, PAGE_POOL_DMA_USE_PP_FRAG_COUNT is not renamed yet
+    as we may need a different thread to discuss that.
+
+V3: Incorporate changes from the disscusion with Alexander,
+    mostly the inline wraper, PAGE_POOL_DMA_USE_PP_FRAG_COUNT
+    change split to separate patch and comment change.
+V2: Add patch to remove PP_FLAG_PAGE_FRAG flags and mention
+    virtio_net usecase in the cover letter.
+V1: Drop RFC tag and page_pool_frag patch.
+
+Yunsheng Lin (6):
+  page_pool: frag API support for 32-bit arch with 64-bit DMA
+  page_pool: unify frag_count handling in page_pool_is_last_frag()
+  page_pool: introduce page_pool[_cache]_alloc() API
+  page_pool: remove PP_FLAG_PAGE_FRAG flag
+  page_pool: update document about frag API
+  net: veth: use newly added page pool API for veth with xdp
+
+ Documentation/networking/page_pool.rst        |  34 +++-
+ .../net/ethernet/hisilicon/hns3/hns3_enet.c   |   3 +-
+ .../marvell/octeontx2/nic/otx2_common.c       |   2 +-
+ .../net/ethernet/mellanox/mlx5/core/en_main.c |  12 +-
+ drivers/net/veth.c                            |  24 ++-
+ drivers/net/wireless/mediatek/mt76/mac80211.c |   2 +-
+ include/net/page_pool.h                       | 179 ++++++++++++++----
+ net/core/page_pool.c                          |  30 ++-
+ net/core/skbuff.c                             |   2 +-
+ 9 files changed, 212 insertions(+), 76 deletions(-)
+
+-- 
+2.33.0
+
 
