@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31CB9EB64D7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jun 2023 15:15:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33918EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jun 2023 15:15:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=h7jzcgMRsf5ZFhjV7HP98hpy4aXL5Kyt3dNeUGTVX1A=; b=VyeOkVDRonpTRDJZNtjNuoFDcQ
-	wvvF2wNa9r4qKq1vqA3tBenGEM8y6rNtD5KQ1eojd7mgiY8xQeZwXkiyGYmjTBiv5AhpUvdQLDLUR
-	OLhKE5Vu7DJC0B8WxGGClDg8CWVl24Ipzs/geRz+PEzbIf5m8s5toQnJrlP6LFw6liT+bvmYJ34kE
-	ZMZIvAUQ6lWdtrlVroj5kMLICcFOCy1Q7iJcd9MJ5tA1qBPJMCGiPzRdwrqLogf4UG5b+vWVt4uuL
-	xQ+DKinbKSuVT44aaiIF+Sj/k7Xwl7OsAxam/PzTgY/ZxwFprPhJyLGQWBIkrdUhMUSIZ87Mdbk8a
-	Wlhkfspg==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5Y4U++2pVLqn5Q1HGH3hQGm5jB6WQHaJ6Bl6H3IcCQQ=; b=IIFXdpFrlJlFH2KamPL2Vplrnk
+	oXwacA2m8BG3fnM4r+DK/rTKwIZxtIKhowgwa+tfC4nl4DYkRGzmMkh+1sKfs1sGOVFeW8P4JnPUQ
+	nfmP2tHyZHsshG3P3B3AMECcT6ns3jbrdV4yJ2y9ayjE+h6qUaLzms7KCW7MQgL2X7l85Cfxs3Jcl
+	j/pK28JKKwFmw0ywnoI790ztetLaQ2yhDdtTH/XI1vjlsdbAr7xS4QFe71KVLktqtntnAquON6/uI
+	kw8Jf3kgzOG5dlOqOFP8azMVr4O2mihvUF+wDGLUVe/qEHNkU6sxaTxqZBdnRDlKXeyJOAT/qlUT6
+	IYEj51tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFFpm-003uue-1S;
-	Fri, 30 Jun 2023 15:14:54 +0000
+	id 1qFFpw-003uz4-0i;
+	Fri, 30 Jun 2023 15:15:04 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFFpi-003usm-1b;
-	Fri, 30 Jun 2023 15:14:51 +0000
+	id 1qFFpj-003utW-2M;
+	Fri, 30 Jun 2023 15:14:53 +0000
 Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A96FE6606E8F;
-	Fri, 30 Jun 2023 16:14:42 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F1B9F6606E97;
+	Fri, 30 Jun 2023 16:14:46 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688138086;
-	bh=jVo3WNeds8sK5Pxd5xxnTIN/UCq1LsJU3CgBkczPgyI=;
-	h=From:To:Cc:Subject:Date:From;
-	b=SeNtEsY8eeza03E7UHal4qruDipxfp0f25usWCmK1J1XYtA0yMxSZmr4WFqVwMYs9
-	 b2Mfp0FBtsVgLZd+UkuSp/PykZB8YzJMsD/b5B2YGReRAKxUA/GrBe9KPpfb7SS4Hb
-	 oY2rs719sudhsChMvcLaK/oDa5/urKtoTwNWdO4nK4DFMdKPp0iiScMFJ3UylRI9n8
-	 Pfl5YPUP/BBvEhITf8l4U4Y8B6fvjiAOSXqru+8zG0iwCMPQy1kgE1XkZn9mTpo5k8
-	 okA2UoYMYXtHyq70JX5H0kLA+Uac4SfB3chspgc3iQWAsG2KOyxzhDcd2YPNjD24OM
-	 tpNVlCjLy7mzg==
+	s=mail; t=1688138090;
+	bh=Ud2ruCQMrs0y4/oeVi64N6XaZrL6MD3Lu7ndY/b2YiA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=oV4l9VwNnlA+6P7wTMtXqsaQI6E6s2cCRXZXQO2tf10jEFXNyMUcdWWQjIqnvusRC
+	 Psi77XExouK9jQoH9LCginjP/8rdO8CSiF0e6wxltsNXXbrMEjckKO8wxQQujZ069w
+	 v23BibgGDwPQm2AMpieYhupSFyT3Iy322lfvI1dDJXag2NjcjU4Vdklzi+FQo+BjzY
+	 tOiT236bdjmzoW2OwxSz1N59WO2M5mHlqjwDWwXDHGBw8r1BfOz4uOsCT3CRHpl7bi
+	 Wff51jS2bRnkHbBuYLY6Yfd8utEGF6iXHFRjNjAjYx/bLAOLthWr70K6AIv1yOsXVw
+	 XaHbiDForOolA==
 From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>
@@ -61,16 +61,18 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-kernel@vger.kernel.org,
 	linux-media@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v5 0/7] Enable decoder for mt8183
-Date: Fri, 30 Jun 2023 11:14:06 -0400
-Message-ID: <20230630151436.155586-1-nfraprado@collabora.com>
+Subject: [PATCH v5 1/7] media: dt-bindings: mediatek,vcodec: Allow single clock for mt8183
+Date: Fri, 30 Jun 2023 11:14:07 -0400
+Message-ID: <20230630151436.155586-2-nfraprado@collabora.com>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230630151436.155586-1-nfraprado@collabora.com>
+References: <20230630151436.155586-1-nfraprado@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230630_081450_676192_830B95D9 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20230630_081451_895992_05DFF778 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,61 +87,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+MT8173 and MT8183 have different clocks, and consequently clock-names.
+Relax the number of clocks and set clock-names based on compatible.
 
-This series enables the hardware decoder present on mt8183. At first
-glance, the only missing piece is the devicetree node for it, however,
-simply adding it as is would cause an address collision between the
-first register iospace and the clock-controller node, so a rework of the
-dt-binding and driver, as well as addition of a new syscon phandle
-property, were needed first.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Tested that H264 decoding works with the hardware decoder on
-mt8183-kukui-jacuzzi-juniper-sku16, giving a fluster score of 98/135 on
-the JVT-AVC_V1 test suite. And ensured other SoCs (MT8192 and MT8195)
-still work as usual.
+---
 
-Changes in v5:
-- Added explicit include to patch 5 following 0day report
-
-Changes in v4:
-- Removed VDEC_SYS reg from mt8173 as well
-- Made driver handling cleaner
+(no changes since v3)
 
 Changes in v3:
-- Switched the handling of the VDEC_HW_ACTIVE bit to use a syscon
-  instead of the 'active' clock
+- Reintroduced this commit from v1 since the active clock is no longer
+  used.
+- Further constrained clocks as suggested in v1.
 
-Changes in v2:
-- Merged commit 1 (media: dt-bindings: mediatek,vcodec: Allow single
-  clock for mt8183) into commit 3 (media: dt-bindings: mediatek,vcodec:
-  Remove VDEC_SYS for mt8183)
-- Further constrained properties in dt-binding
-- Added CLK_IGNORE_UNUSED flag to active clock
-- Reformatted reg-names in DT node
+ .../media/mediatek,vcodec-decoder.yaml        | 37 ++++++++++++++-----
+ 1 file changed, 28 insertions(+), 9 deletions(-)
 
-Nícolas F. R. A. Prado (6):
-  media: dt-bindings: mediatek,vcodec: Allow single clock for mt8183
-  media: dt-bindings: mediatek,vcodec: Don't require assigned-clocks
-  media: dt-bindings: mediatek,vcodec: Remove VDEC_SYS register space
-  media: mediatek: vcodec: Define address for VDEC_HW_ACTIVE
-  media: mediatek: vcodec: Read HW active status from syscon
-  arm64: dts: mediatek: mt8173: Drop VDEC_SYS reg from decoder
-
-Yunfei Dong (1):
-  arm64: dts: mediatek: mt8183: Add decoder
-
- .../media/mediatek,vcodec-decoder.yaml        | 67 ++++++++++++----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  8 +-
- arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 30 ++++++++
- .../mediatek/vcodec/mtk_vcodec_dec_drv.c      | 77 ++++++++++++++++---
- .../mediatek/vcodec/mtk_vcodec_dec_hw.c       |  4 +-
- .../mediatek/vcodec/mtk_vcodec_dec_hw.h       |  3 +-
- .../platform/mediatek/vcodec/mtk_vcodec_drv.h |  1 +
- .../mediatek/vcodec/mtk_vcodec_util.c         | 15 ++++
- .../mediatek/vcodec/mtk_vcodec_util.h         |  2 +
- .../mediatek/vcodec/vdec/vdec_vp8_if.c        | 10 +--
- 10 files changed, 178 insertions(+), 39 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+index fad59b486d5d..1506d2693f7d 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+@@ -27,18 +27,12 @@ properties:
+     maxItems: 1
+ 
+   clocks:
++    minItems: 1
+     maxItems: 8
+ 
+   clock-names:
+-    items:
+-      - const: vcodecpll
+-      - const: univpll_d2
+-      - const: clk_cci400_sel
+-      - const: vdec_sel
+-      - const: vdecpll
+-      - const: vencpll
+-      - const: venc_lt_sel
+-      - const: vdec_bus_clk_src
++    minItems: 1
++    maxItems: 8
+ 
+   assigned-clocks: true
+ 
+@@ -88,6 +82,15 @@ allOf:
+       required:
+         - mediatek,scp
+ 
++      properties:
++        clocks:
++          minItems: 1
++          maxItems: 1
++
++        clock-names:
++          items:
++            - const: vdec
++
+   - if:
+       properties:
+         compatible:
+@@ -99,6 +102,22 @@ allOf:
+       required:
+         - mediatek,vpu
+ 
++      properties:
++        clocks:
++          minItems: 8
++          maxItems: 8
++
++        clock-names:
++          items:
++            - const: vcodecpll
++            - const: univpll_d2
++            - const: clk_cci400_sel
++            - const: vdec_sel
++            - const: vdecpll
++            - const: vencpll
++            - const: venc_lt_sel
++            - const: vdec_bus_clk_src
++
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.41.0
 
