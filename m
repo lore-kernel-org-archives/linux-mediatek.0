@@ -4,72 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE4D8EB64D7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jun 2023 11:00:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54274EB64D7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jun 2023 11:12:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i7FSmvSvwJYBWIJXMvoWOrBb59+8q6TkQ1skRfExBxU=; b=rw+C3NtQzQg0XBWrmMs2fAeYYy
-	wX8xAx5LmaFAn+/gG9tGpX3ZcUqxB+lHjGmRpvBOKa8dTsZ8QwJhKTFl5CYyph4/5uBXLFkPWzxdb
-	YXw+4GxQEno3qKyXVrnnm4Einsw21Uj0L+B5aOzPSNwhcQemKo8MD4HkdZU4lyVF+BUmqeHhlqjAA
-	z7cG/StvddcBDNtOlX370XnfzuGjLYYEmruhwVnDc5mbwOneAqRXwQuZWYupLJBdOTyKxVa7cvX4Z
-	0sQm2DOj+hDX9rY6XC/angX5pDGgCw6x8w8efChQKm/0oJkQGyVYeA7epIphMW++8ll0mferKYCVA
-	bqQLoLcg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LBi2xn+NWrUQzLbxhPhUtfNKTaMAus8XdZkjy6jHSNM=; b=4IIn/1xD2WD8xi1ZXp1wy0UB8q
+	HhXeCv8dTAWWxNWeL6spTwgboXH5yadKqqA0b3DvlilRYxDZgxcoknwPnAnNrSkIB0QVdOKZBpHme
+	xbGudo3+7BJSSillR8gx0DBzPbNjWwAyDfqIeUJaiKNHyuZ4NMKcraodI0MRkIJUvFV0dX+JLJ6I0
+	q3mzq41dea0Ok6PnjLry+JvQ4PSpijrFvFAOGkCZQk5iChCmiL6CklRPeDZym3pmaggiLVY4LcGOS
+	jK8vdehUAOFOxYQNq6d5zifmRNg5I8f+30BmjnmuyHdPgLnGdmW/K1KrtPt2P+d1sADRdPlwFmopF
+	D7io11ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFBrV-003TrS-01;
-	Fri, 30 Jun 2023 11:00:25 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qFC2a-003ZLU-0I;
+	Fri, 30 Jun 2023 11:11:52 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFBrS-003Too-12;
-	Fri, 30 Jun 2023 11:00:23 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 712D9616E2;
-	Fri, 30 Jun 2023 11:00:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81FCCC433C0;
-	Fri, 30 Jun 2023 11:00:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1688122820;
-	bh=sgtH9hZqBaNjjeUXFQwQG7JJgk9ed7LANci46Hsnjv8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BpnOTSrYx+DAq9f8wxupbHlc6hHlI5W/9pFyY7K3yYn+4bgqePy5/dCjlhj10PjA6
-	 VfwzZ6WRubSZqZcsDSBkjK5vxksaPm9g26oU7tajQ6QBVI7XOGoj2v7B7Lc1v+Fx6Q
-	 0UJCjjoz56Ktq9o4o1RhkGWcZQz77nnlJi/RhqVoH7oA5x6NhSl8qGZyGzzHUOLyHD
-	 z2J8b8H3sM4l6zvt/6ac/wfu8SB1u50bWzZM55n4D7aculbKRhy+TATdiukI/e6e5t
-	 hCfVz6zPXsMMeFFfZi7DNdxcdh8Un2BXql75/jkImY5tzcUrYrSXDf5hPDZGerD5KA
-	 csJfXMpzXQfRQ==
-Date: Fri, 30 Jun 2023 12:00:13 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Trevor Wu =?utf-8?B?KOWQs+aWh+iJryk=?= <Trevor.Wu@mediatek.com>
-Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"tiwai@suse.com" <tiwai@suse.com>,
-	"lgirdwood@gmail.com" <lgirdwood@gmail.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"perex@perex.cz" <perex@perex.cz>,
-	"alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8188: add constraints for PCM
-Message-ID: <6cda3265-7444-46a1-8b2e-75706a839670@sirena.org.uk>
-References: <20230629075910.21982-1-trevor.wu@mediatek.com>
- <5995e77b-ea8e-4e88-8ca2-f716df9c9579@sirena.org.uk>
- <0e8b5ca298a01b16da0419928a30af6371e923ca.camel@mediatek.com>
+	id 1qFC2X-003ZKg-0M;
+	Fri, 30 Jun 2023 11:11:50 +0000
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1688123506;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=LBi2xn+NWrUQzLbxhPhUtfNKTaMAus8XdZkjy6jHSNM=;
+	b=418LKbfzErO8aWbRiCy6RicHEfWmrfLoIcdhuAdqKEQ/ZbLyV5fOr9TL2jgmxbiB1UJ3bl
+	L7RSNcul7PGGKtMoVG58xOTYMswwl0fvl2x6Gy3oeK78nmBEYbydnR6FVElSSy3QDkkQS4
+	aNdClghzIVSlb1kIYZa+lxNsG6dKqXTENfkuKKK8H3fwdANqYJnMII3qHGkdR7RslbGNzH
+	rMZSPPYA/DaN+m+jbNSRocp1b1dwjRh2NBrN92RDYtVGXNSXIAHcc+RtRHjhZQcR/LI027
+	/C9gb1mFySWZHISgYn13LNhN7Izd0dCqTTysj0/z5qIQHqLoTPKk/6VDB9l9vg==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1688123506;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=LBi2xn+NWrUQzLbxhPhUtfNKTaMAus8XdZkjy6jHSNM=;
+	b=jVPJlwFMcCzb0wYuBYE9xW6cZEwUMtJR24us2ZwmMLiYkh/Ya8FPIpIwdTH1G8h/qMJoP9
+	yy6W7RPJnQ28ZkBA==
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Yangtao Li
+ <frank.li@vivo.com>
+Cc: miquel.raynal@bootlin.com, rafael@kernel.org, daniel.lezcano@linaro.org,
+ amitk@kernel.org, rui.zhang@intel.com, mmayer@broadcom.com,
+ bcm-kernel-feedback-list@broadcom.com, florian.fainelli@broadcom.com,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, agross@kernel.org,
+ andersson@kernel.org, konrad.dybcio@linaro.org, thara.gopinath@gmail.com,
+ heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+ thierry.reding@gmail.com, jonathanh@nvidia.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com,
+ srinivas.pandruvada@linux.intel.com,
+ DLG-Adam.Ward.opensource@dm.renesas.com, shangxiaojing@huawei.com,
+ bchihi@baylibre.com, wenst@chromium.org, hayashi.kunihiko@socionext.com,
+ niklas.soderlund+renesas@ragnatech.se, chi.minghao@zte.com.cn,
+ johan+linaro@kernel.org, jernej.skrabec@gmail.com,
+ linux-pm@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 01/15] genirq/devres: Add error information printing
+ for devm_request_threaded_irq()
+In-Reply-To: <20230627110025.vgtplc6nluiiuvoh@pengutronix.de>
+References: <20230627101215.58798-1-frank.li@vivo.com>
+ <20230627110025.vgtplc6nluiiuvoh@pengutronix.de>
+Date: Fri, 30 Jun 2023 13:11:46 +0200
+Message-ID: <87h6qpyzkd.ffs@tglx>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="pXwnTTZI7oC5iMkQ"
-Content-Disposition: inline
-In-Reply-To: <0e8b5ca298a01b16da0419928a30af6371e923ca.camel@mediatek.com>
-X-Cookie: Old mail has arrived.
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230630_040022_468725_9A01786C 
-X-CRM114-Status: GOOD (  26.74  )
+X-CRM114-CacheID: sfid-20230630_041149_303357_2B300F0A 
+X-CRM114-Status: GOOD (  16.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,63 +97,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jun 27 2023 at 13:00, Uwe Kleine-K=C3=B6nig wrote:
+> On Tue, Jun 27, 2023 at 06:12:01PM +0800, Yangtao Li wrote:
+>
+> While I assume changing to dev_err_probe is a result of my concern that
+> no error should be printed when rc=3D-EPROBEDEFER, my other concern that
+> adding an error message to a generic allocation function is a bad idea
+> still stands.
 
---pXwnTTZI7oC5iMkQ
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I agree in general, but if you actually look at the call sites of
+devm_request_threaded_irq() then the vast majority of them print more or
+less lousy error messages. A quick grep/sed/awk/sort/uniq revealed
 
-On Fri, Jun 30, 2023 at 05:29:23AM +0000, Trevor Wu (=E5=90=B3=E6=96=87=E8=
-=89=AF) wrote:
-> On Thu, 2023-06-29 at 16:06 +0100, Mark Brown wrote:
+     519 messages total (there are probably more)
 
-> > This commit message isn't entirely clear.  The effect of the commit
-> > is
-> > to restrict the configurations supported when using a nau8825 but
-> > it's
-> > not clear what a nau8825 has to do with this or why we're doing this
-> > in
-> > general.  What exactly do you mean when saying that "only a limited
-> > number of parameters are necessary" and what makes this the case?
+     352 unique messages
 
-> For instance, some userspace frameworks only support specific sampling
-> rates such as 48kHz on Chromebook, making other parameters unnecessary.
-> By restricting the configuration, unexpected usage can be prevented and
-> the alsa_conformance_test process which checks all parameters provided
-> by an ALSA driver can be sped up.
+     323 unique messages after lower casing
 
-That's a userspace policy decision, we shouldn't be enforcing this in
-the kernel - even for Chromebooks people can install other OSs on them
-which may make different decisions, and it's always possible that the
-ChromeOS people might change their mind later.  If they're only
-interested in testing 48kHz and it's slowing things down unreasonably
-to test more then they should just only test 48kHz rather than changing
-the driver to work around it.
+         Those 323 are mostly just variants of the same patterns with slight
+         modifications in formatting and information provided.
 
-> Would it be more beneficial to establish the criteria as a general rule
-> for this machine driver, while limiting the use of the machine driver
-> solely to the Chromebook project? Or do you just suggest that I add
-> more details in the commit messages?
+     186 of these messages do not deliver any useful information,
+         e.g. "no irq", "
 
-I think we just shouldn't do this, it's policy for ChromeOS rather than
-something that's actually needed.  If we were doing this it would need a
-much clearer commit message and we should be restricting things to
-Chromebooks only.
+     The most useful one of all is: "could request wakeup irq: %d"
 
---pXwnTTZI7oC5iMkQ
-Content-Type: application/pgp-signature; name="signature.asc"
+So there is certainly an argument to be made that this particular
+function should print a well formatted and informative error message.
 
------BEGIN PGP SIGNATURE-----
+It's not a general allocator like kmalloc(). It's specialized and in the
+vast majority of cases failing to request the interrupt causes the
+device probe to fail. So having proper and consistent information why
+the device cannot be used _is_ useful.
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmSetbwACgkQJNaLcl1U
-h9AkJQf/ahowvDnHs1ls1VrPs0VUmHp+BdUcwvobHhunvly76Nxkzn5NlOL4bhlK
-ZTJYLgJuqYRagPBQWDP1vpBU64KEKPaXaFOZ9f69/Cg8xsEtw+9B0sgJzhfD9eES
-FaMo9A/kdwgIzDEl1Blr/OS34ksno/bQMSJ2PzxDZ4OZUqvCSkVdh5iey/4Gd8EI
-aRRU/b1LyHjhkMC2DrjPKTlYcBtg3t84b3+Q4SGWF7RLi49nkxGl0TC/SAq56pF0
-WU+u0JkSsVxucQJ0pFHSl7OX1KohuaAVDB+c4tPE7dNFnluU8LjeKBJEXPvQlpo/
-OcVDr55IMaZ99d1mty+MfTgJUh6Haw==
-=AxtQ
------END PGP SIGNATURE-----
+Yangtao: The way how this is attempted is not useful at all.
 
---pXwnTTZI7oC5iMkQ--
+    1) The changelog is word salad and provides 0 rationale
+
+       Also such series require a cover letter...
+
+    2) The dev_err() which is added is not informative at all and cannot
+       replace actually useful error messages. It's not that hard to
+       make it useful.
+
+    2) Adding the printks unconditionally first will emit two messages
+       with different content.
+
+       This is not how such changes are done.
+
+       The proper approach is to create a wrapper function which emits
+       the error message:
+
+       wrapper(....., const char *info)
+       {
+            ret =3D devm_request_threaded_irq(....);
+            if (ret < 0) {
+               dev_err(dev, "Failed to request %sinterrupt %u %s %s: %d\n,
+                       thread_fn ? "threaded " : "",
+                       irq, devname, info ? : "", ret);
+            }
+            return ret;
+       }
+
+       Then convert the callsites over one by one with proper
+       changelogs and justification.
+
+       See?
+
+Thanks,
+
+        tglx
 
