@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D84FBEB64D7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jun 2023 15:15:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DEB1EB64D7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jun 2023 15:15:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U/1728/8lz7c18NWge1qSqmZxN9V+tKYzr5/NRHcY1A=; b=yBrZxAsRU27yAv0tXMeRjAsMnQ
-	QEZj0whzCO8yo0/ha/k5rIKm9tqOOwVwi+8KYMONmJBt5vlWNWq2Vm2Kq7HnP9azxuLalw3tC7a62
-	5q523bK5HgLc1cvqg+m/zYSTUVsDmm698d1gKX9J9B0S1gelEBrs0gscSGAmBdX0HxBPTKTA6mE0/
-	YaxcGQeBnRKj7zPONf0kDDWqUWXfHfZM24I7KhuP5gundw7QCrEjVzGECgAKM+sgjQRHGo8frCjHR
-	kJOrjmlEFem3t7mUwTZp2jf4DBfwV3cBpM1XZ92MjXUBeuvTbk/2wHpJg6Th5nb938WBWDe5Rz+VN
-	9GaxEl/Q==;
+	bh=ivk43VId077kSgNP6UD8KM9oUxcB4zK/VsVnvNtB5Gc=; b=1BcodLfiB2sPCQo7MPZdifSwqg
+	3Bo1oyosiggVxi8ofgDs+Ns3FJQEXr9ca3egTal1LtnRFZLn9ZUChkWGkSKGhVFC3DVo27yc+ai+D
+	9SYbA6HZox/S17cotGFicIN2g6QyAQZjLnUPFqyWS1+2DneN1MCTC6TrYWD3pXAmzHaWKSVE2Y3Tq
+	RcRX3BLUXhl991GqW0f9GQpe8+b+PA8+wAbQMc9FFrC4ub7k8qpk/ym1aMafvdF9rFPd9HgKRk5aL
+	r9i9jMYPEzQzhGoL/P/CSUnQ9ViiebYdM2SC1MIIdMvTr88RZyVSJJesFUsZmV0yW4Zggi2QFT6UR
+	CVglw8WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFFq5-003v4F-1a;
-	Fri, 30 Jun 2023 15:15:13 +0000
+	id 1qFFqE-003v7O-1Y;
+	Fri, 30 Jun 2023 15:15:22 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFFpp-003uug-0r;
-	Fri, 30 Jun 2023 15:14:58 +0000
+	id 1qFFpq-003uw3-2u;
+	Fri, 30 Jun 2023 15:15:00 +0000
 Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 14A546606E9D;
-	Fri, 30 Jun 2023 16:14:50 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BB8CA6606E8F;
+	Fri, 30 Jun 2023 16:14:54 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688138094;
-	bh=9a46aNnESj501/E03oYlm9sAjEXaazXllJOV13stIS8=;
+	s=mail; t=1688138097;
+	bh=oehAssFz6HAeQ18vLi/DNl45rJUtL7SfPUb+CugYsgA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mN2fz2HIBrCFzuVGExEGiFCckflxkFPgk47NSQBsW/fp5IjkFDaC8+RoE2UmxFMDR
-	 9kRn6U1onXpfrh0uOQJMQt9HmGj6fApXvbOxc5IjHZFFp9Ia4CTL4Yr2QAxAHbCDKB
-	 1ERtxVQ0TPEiodTdayckWUUyU5kiL+ZaA8QSkZB1R4zHTKyaV96dLHvS+Cx6v85kMM
-	 AkVxQlUA5vtU0KYYxrIne41Iku2OGDLIp0Y5XUqx0ahDeA2hUzvGKXfzWYa7H09SxN
-	 W5i47XkK/F/e8aqZ7F6l1mTcHMZb/Awpf+/U8KwGsgzJN4D+FcsLXdpXmgPbz7SBhO
-	 i7xyXoCQgKZbw==
+	b=LjenjVT8x02X5Wo0J0gQVKMdrn7KPbNZe5TdqpzE8N9uSXVuzSAo7RdtVWKEdodv5
+	 AxBF3Y/aaaOyE3H98BxTwiDOlsgXv87xs11HUGNfF2KQnoz0fiOAJZcbR4IU0uVLal
+	 MYdfmjNfl1QjllztRWsS1GMwuQhR81paUtgQoaE+s+w8GL+OntScy2ejXhLx8ZziT0
+	 q7uhxdBOFsF8g0DHAhfX42r4LSFIHU28AlG+vGMMAHJEi1Nbhu3Md21HGK1/fPSwQz
+	 /WOQKJpalRNTHdOeO1dMbONIwLy6o2cRyNN8I7owOYtSLb9CzQ0mzZ0canXGp59VmS
+	 ofdrcY4X7CnAg==
 From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>
@@ -61,9 +61,9 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-kernel@vger.kernel.org,
 	linux-media@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v5 2/7] media: dt-bindings: mediatek,vcodec: Don't require assigned-clocks
-Date: Fri, 30 Jun 2023 11:14:08 -0400
-Message-ID: <20230630151436.155586-3-nfraprado@collabora.com>
+Subject: [PATCH v5 3/7] media: dt-bindings: mediatek,vcodec: Remove VDEC_SYS register space
+Date: Fri, 30 Jun 2023 11:14:09 -0400
+Message-ID: <20230630151436.155586-4-nfraprado@collabora.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230630151436.155586-1-nfraprado@collabora.com>
 References: <20230630151436.155586-1-nfraprado@collabora.com>
@@ -71,9 +71,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230630_081457_431467_F53B61B7 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230630_081459_069223_900432BF 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,34 +87,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On MT8183 it's not necessary to configure the parent for the clocks.
-Remove the assigned-clocks and assigned-clock-parents from the required
-list.
+The binding expects the first register space to be VDEC_SYS. However
+this register space is already assigned to a different node on both
+MT8173 and MT8183: a clock-controller node called 'vdecsys' which is
+also a syscon.
+
+In order to resolve the overlapping address ranges, remove the VDEC_SYS
+register space from the video decoder, and add a new property to hold
+the phandle to the syscon, so that iospace can still be handled.
+
+Also add reg-names to be able to tell that this new register schema is
+used, so the driver can keep backward compatibility.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
 ---
 
-(no changes since v1)
+(no changes since v4)
 
- .../devicetree/bindings/media/mediatek,vcodec-decoder.yaml      | 2 --
- 1 file changed, 2 deletions(-)
+Changes in v4:
+- Removed VDEC_SYS reg from mt8173 as well
+- Reworded commit
+
+Changes in v3:
+- Removed the active clock
+- Added a mediatek,vdecsys syscon property
+
+Changes in v2:
+- Merged with patch 1 (media: dt-bindings: mediatek,vcodec: Allow single
+  clock for mt8183) to avoid changing number of clocks twice
+- Added maxItems to reg-names
+- Constrained clocks for each compatible
+- Reordered properties for each compatible
+
+ .../media/mediatek,vcodec-decoder.yaml        | 28 ++++++++++++++++---
+ 1 file changed, 24 insertions(+), 4 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
-index 1506d2693f7d..1e56ece44aee 100644
+index 1e56ece44aee..b401c67e3ba0 100644
 --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
 +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
-@@ -67,8 +67,6 @@ required:
+@@ -21,7 +21,22 @@ properties:
+       - mediatek,mt8183-vcodec-dec
+ 
+   reg:
+-    maxItems: 12
++    minItems: 11
++    maxItems: 11
++
++  reg-names:
++    items:
++      - const: misc
++      - const: ld
++      - const: top
++      - const: cm
++      - const: ad
++      - const: av
++      - const: pp
++      - const: hwd
++      - const: hwq
++      - const: hwb
++      - const: hwg
+ 
+   interrupts:
+     maxItems: 1
+@@ -60,6 +75,10 @@ properties:
+     description:
+       Describes point to scp.
+ 
++  mediatek,vdecsys:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: Phandle to the vdecsys syscon node.
++
+ required:
+   - compatible
+   - reg
+@@ -67,6 +86,7 @@ required:
    - clocks
    - clock-names
    - iommus
--  - assigned-clocks
--  - assigned-clock-parents
++  - mediatek,vdecsys
  
  allOf:
    - if:
+@@ -126,10 +146,9 @@ examples:
+     #include <dt-bindings/interrupt-controller/irq.h>
+     #include <dt-bindings/power/mt8173-power.h>
+ 
+-    vcodec_dec: vcodec@16000000 {
++    vcodec_dec: vcodec@16020000 {
+       compatible = "mediatek,mt8173-vcodec-dec";
+-      reg = <0x16000000 0x100>,   /*VDEC_SYS*/
+-          <0x16020000 0x1000>,  /*VDEC_MISC*/
++      reg = <0x16020000 0x1000>,  /*VDEC_MISC*/
+           <0x16021000 0x800>,   /*VDEC_LD*/
+           <0x16021800 0x800>,   /*VDEC_TOP*/
+           <0x16022000 0x1000>,  /*VDEC_CM*/
+@@ -150,6 +169,7 @@ examples:
+              <&iommu M4U_PORT_HW_VDEC_VLD_EXT>,
+              <&iommu M4U_PORT_HW_VDEC_VLD2_EXT>;
+       mediatek,vpu = <&vpu>;
++      mediatek,vdecsys = <&vdecsys>;
+       power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
+       clocks = <&apmixedsys CLK_APMIXED_VCODECPLL>,
+              <&topckgen CLK_TOP_UNIVPLL_D2>,
 -- 
 2.41.0
 
