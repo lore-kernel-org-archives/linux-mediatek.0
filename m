@@ -4,68 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED2AEC001B0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jun 2023 11:24:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C3C6EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jun 2023 11:24:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0xQcHCEfZmuNEbtp3cdeH3UJbr+AqROplj2X1YQLpNg=; b=c+cq0Ke3foONfMelk9VTCwp+3n
-	in6U4FxSdRygRHOXriVr9rGI7nZxZhTCeH71ATGWH5bzRfVGwgY4zQaPMtJod+HPA+S8zAkef8pHz
-	jttRvKx4ujA179j5ClCD9bq4Wd09950SlMlm1+mHAdbxHSYOfONQYUjlP+Nnz2DyP1cp3omiXbR0L
-	tfl9M2+OKSRROIrrgVHBUpmWBtUjJBaiEtJ3FKwnEPF6JCMMvK/XOs75TYfbTqNqc/lFNYgb0zxEC
-	Y4G/DA6Q+rTgZGBjhavwdo7p9lxr4XaG7mefRHq9f97jyzhVXir1QE6AgZh4pIj5us/0+0s2LdzcM
-	3RDl6beg==;
+	bh=JetY4VDcugUvY6S925AnOauCj9WcanjTWm8moK75Kv8=; b=PVp6a+9FRJA1Tex+EPy3VIUPhi
+	e+t6T8rBjw7IRxZmnQXhxZqYtxzS780iWLNPlpqzaHOJ9wXkuGS2+2HHHun7m6nCc/oyf95PfXBYN
+	cw8ZOytAOTOud/sBkegtSHf3rdsCUmEFGD8OuSNo88tl+PmmZQeEmfwCbl+vk/9Rbl7ggQx0YSH2j
+	JB6eXE5DrObuHuhKhauZmPIaXxllDk5CDtW9A473xHN4tllNgHEtw51VIM2EvMco7atgJGMaw98cy
+	mFRv76PmX+KexnGylDHG+KAemuZoRvTGkwt6DBdqpc4iDEUUiDrYA4mURCRMUgzbeXVVL654of+bs
+	S2v4Yu4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFCEP-003aQM-1s;
-	Fri, 30 Jun 2023 11:24:05 +0000
-Received: from mail-io1-f50.google.com ([209.85.166.50])
+	id 1qFCEg-003aVj-2m;
+	Fri, 30 Jun 2023 11:24:22 +0000
+Received: from mga18.intel.com ([134.134.136.126])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFCEN-003aOG-1P;
-	Fri, 30 Jun 2023 11:24:04 +0000
-Received: by mail-io1-f50.google.com with SMTP id ca18e2360f4ac-785d738d3feso42621739f.0;
-        Fri, 30 Jun 2023 04:24:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688124240; x=1690716240;
-        h=date:subject:message-id:references:in-reply-to:cc:to:from
-         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=0xQcHCEfZmuNEbtp3cdeH3UJbr+AqROplj2X1YQLpNg=;
-        b=cloYEL7yWv32iXRycgTT0rVIYL3BUpmMv0FM+0yu8mCFqR1HhTc4fd3uHi+4k+gLhu
-         7dtfsqtTrjNVNhU2TgHJ+l2dgcOqe/QAt+jcj3q4RnZJJcwWi6t3rYyKTkyust+5y1mk
-         44aRQK38YSkf6JfXudk1V0/gzCxgL4zMRUKMxeqj6YpezbfSoxPyw7WYtHXRCgIvdOVk
-         PEX6Ad5qrZJPNO1g8ax9YMhVMZbqXEdnhk51OX7wiYpErsLeEIHwdsPf3dKvL5elJF2b
-         clDGtwpGfCYRSvojdqJxUAhHLrEE4giaJXm0+sFYst45/kWZI+VycsMCpNTCb71DXAdW
-         w22A==
-X-Gm-Message-State: AC+VfDxsuniQfycuuVpV5WKSMRZXD/5azwKNRY61P6TpBBYpX+MgcTHG
-	JVkUJoyHxDOn5BdV8C2pCA==
-X-Google-Smtp-Source: ACHHUZ5xH1J9xSD1ATB7C+2MVvmjFL+cw3O4K/E8UXcBMl92pRkMHx8HlcLX/wo2pE27VaghmDzUrQ==
-X-Received: by 2002:a6b:a1a:0:b0:783:3899:e1d7 with SMTP id z26-20020a6b0a1a000000b007833899e1d7mr1960946ioi.2.1688124240296;
-        Fri, 30 Jun 2023 04:24:00 -0700 (PDT)
-Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id y13-20020a5e920d000000b00786582eb9fbsm29977iop.15.2023.06.30.04.23.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Jun 2023 04:23:59 -0700 (PDT)
-Received: (nullmailer pid 1082768 invoked by uid 1000);
-	Fri, 30 Jun 2023 11:23:54 -0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1qFCEd-003aTr-1V;
+	Fri, 30 Jun 2023 11:24:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1688124259; x=1719660259;
+  h=message-id:date:mime-version:to:cc:references:from:
+   subject:in-reply-to:content-transfer-encoding;
+  bh=52Q2a5Ke+JYzT2oX03f31y1WvSO9qWB2m9pRaooy7VI=;
+  b=TWfhgzIpopRPHMvcvJnZva8dzbB2ANk7YEiOKMn8XwBW5K9/jcFYl2gR
+   2wrkaO8GcjE+MXrhFH9d4M62XMKDA0JSdjItNcYDYVOez25cDlYRloWBt
+   6gv4PY66KQqDsZ60oZg0E9fd2RWIB9DTu+7L3QcpYdY1+94ZnOixom8Vy
+   xerjLcyF3UfPVEZst7gb48elKOvNctWSVQW+SwomMbgusNGxaYd+Qbivn
+   r6eU6ZvBMjaYh8d8Bk5ggZR+lQuiAN0qjYEYVB1pC5JwbBs3NPq1+cyKQ
+   eMGiPYAv009srmOwcaDrGa0Ktqbrc6o85f71JJscXkKcMtuF1AnYM+Tjs
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10756"; a="347154125"
+X-IronPort-AV: E=Sophos;i="6.01,170,1684825200"; 
+   d="scan'208";a="347154125"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Jun 2023 04:24:16 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10756"; a="783050506"
+X-IronPort-AV: E=Sophos;i="6.01,170,1684825200"; 
+   d="scan'208";a="783050506"
+Received: from mattu-haswell.fi.intel.com (HELO [10.237.72.199]) ([10.237.72.199])
+  by fmsmga008.fm.intel.com with ESMTP; 30 Jun 2023 04:24:13 -0700
+Message-ID: <11d23da6-af10-7533-cf6c-98f6b836100f@linux.intel.com>
+Date: Fri, 30 Jun 2023 14:25:40 +0300
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Julien Stephan <jstephan@baylibre.com>
-Cc: linux-mediatek@lists.infradead.org, daoyuan huang <daoyuan.huang@mediatek.com>, Conor Dooley <conor+dt@kernel.org>, Phi-bang Nguyen <pnguyen@baylibre.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, Vasily Gorbik <gor@linux.ibm.com>, Rob Herring <robh+dt@kernel.org>, Louis Kuo <louis.kuo@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Hsieh <andy.hsieh@mediatek.com>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Moudy Ho <moudy.ho@mediatek.com>, Florian Sylvestre <fsylvestre@baylibre.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-In-Reply-To: <20230630100321.1951138-4-jstephan@baylibre.com>
-References: <20230630100321.1951138-1-jstephan@baylibre.com>
- <20230630100321.1951138-4-jstephan@baylibre.com>
-Message-Id: <168812423413.1082731.16618986920467028772.robh@kernel.org>
-Subject: Re: [PATCH v2 3/4] dt-bindings: media: add mediatek ISP3.0 camsv
-Date: Fri, 30 Jun 2023 05:23:54 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Firefox/102.0 Thunderbird/102.10.0
+Content-Language: en-US
+To: Robin Murphy <robin.murphy@arm.com>,
+ Ricardo Ribalda <ribalda@chromium.org>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Mathias Nyman <mathias.nyman@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230628-mtk-usb-v1-1-3c5b2ea3d6b9@chromium.org>
+ <0efd9388-4cbc-d27c-f82f-d14291580150@arm.com>
+ <CANiDSCvvtdtS2E1a5qyOERG=DKzcTX2oLGWSecRz2gCi-Oo1tw@mail.gmail.com>
+ <c412681d-c845-c8a9-01ed-aafb14a0381a@arm.com>
+From: Mathias Nyman <mathias.nyman@linux.intel.com>
+Subject: Re: [PATCH] usb: xhci-mtk: set the dma max_seg_size
+In-Reply-To: <c412681d-c845-c8a9-01ed-aafb14a0381a@arm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230630_042403_471742_9E9FC7D3 
-X-CRM114-Status: GOOD (  15.45  )
+X-CRM114-CacheID: sfid-20230630_042419_545622_570D7535 
+X-CRM114-Status: GOOD (  26.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,51 +91,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 30 Jun 2023 12:01:52 +0200, Julien Stephan wrote:
-> From: Phi-bang Nguyen <pnguyen@baylibre.com>
+On 29.6.2023 22.19, Robin Murphy wrote:
+> On 2023-06-29 19:29, Ricardo Ribalda wrote:
+>> Hi Robin
+>>
+>> On Thu, 29 Jun 2023 at 20:11, Robin Murphy <robin.murphy@arm.com> wrote:
+>>>
+>>> On 2023-06-28 22:00, Ricardo Ribalda wrote:
+>>>> Allow devices to have dma operations beyond 64K, and avoid warnings such
+>>>> as:
+>>>
+>>> Hang on, is this actually correct? I just had a vague memory of XHCI
+>>> having some restrictions, and sure enough according to the spec it
+>>> *does* require buffers to be split at 64KB boundaries, since that's the
+>>> maximum length a single TRB can encode - that's exactly the kind of
+>>> constraint that the max_seg_size abstraction is intended to represent,
+>>> so it seems a bit odd to be explicitly claiming a very different value.
+>>>
+>>> Thanks,
+>>> Robin.
+>>
+>> I think we had a similar discussion for  93915a4170e9 ("xhci-pci: set
+>> the dma max_seg_size")
+>> on
+>> https://lore.kernel.org/all/1fe8f8a7-c88f-0c91-e74f-4d3f2f885c89@linux.intel.com/
+>>
+>> ```
+>> Preferred max segment size of sg list would be 64k as xHC hardware has
+>> 64k TRB payload size
+>> limit, but xhci driver will take care of larger segments, splitting
+>> them into 64k chunks.
+>> ```
 > 
-> This adds the bindings, for the ISP3.0 camsv module embedded in
-> some Mediatek SoC, such as the mt8365
+> OK, but it still seems off to me to claim to support something that the hardware doesn't support, and the driver has to fake, especially when it's only to paper over a warning which isn't even the driver's fault in the first place.
+
+xHC Hardware has odd alignments and size restrictions that the driver anyway need to sort out.
+The 64K is already fake, it's the most common max supported size for TRBs, but not always true.
+Varies depending on TRB location in TRB ring.
+
+xhci driver can handle any size.
+
 > 
-> Signed-off-by: Phi-bang Nguyen <pnguyen@baylibre.com>
-> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
-> ---
->  .../bindings/media/mediatek,mt8365-camsv.yaml | 113 ++++++++++++++++++
->  MAINTAINERS                                   |   1 +
->  2 files changed, 114 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8365-camsv.yaml
+> The aim of the DMA_API_DEBUG_SG warnings wasn't to go round blindly adding dma_set_max_seg_size(UINT_MAX) all over the place, it was always to consider whether the dma_map_sg() call and/or the scatterlist itself are right, just as much as whether the driver may have forgotten to set an appropriate parameter. As I've already raised, in this particular case I think it's actually the debug check that's misplaced, since it's not dma_map_sg() anyway, but as it stands, the implementations of dma_alloc_noncontiguous() are definitely doing the wrong thing with respect to what it is then asking to validate.
+
+Agree that this seems to be an issue in the DMA debugging side.
+Would it need to take into account cases where device driver can support different sizes than the host controller?
+
 > 
+> Unless there is some known reason to make this change to any USB host controller *other* than that someone sees UVC allocate a >64KB buffer via this path on a system which happens to have that particular HCD, it is not the right change to make.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+This would be all USB 3.x hosts, from all vendors.
 
-yamllint warnings/errors:
+keeping the 64K max seg size, and fixing the dma debug side would be optimal, but until that gets done I think
+we can take this oneliner as it resolves a real world issue where USB isn't working.
 
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/media/mediatek,mt8365-camsv.example.dts:28:18: fatal error: dt-bindings/power/mediatek,mt8365-power.h: No such file or directory
-   28 |         #include <dt-bindings/power/mediatek,mt8365-power.h>
-      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[1]: *** [scripts/Makefile.lib:419: Documentation/devicetree/bindings/media/mediatek,mt8365-camsv.example.dtb] Error 1
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:1512: dt_binding_check] Error 2
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20230630100321.1951138-4-jstephan@baylibre.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+Thanks
+-Mathias
 
 
