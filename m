@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2196EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Jul 2023 00:09:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AF40EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Jul 2023 05:24:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=frNBpN5Ah3HHFVhq8vAbyVzkXEJ+bYa1e3oBl0nbpV8=; b=c5GWPGHNYXlWkSLw/g9mbMG8GN
-	FcjHc0BURH9v+XeLLBy9w+aPfmYvV7tDKWjNLVb3yb9QMhakc80k+sGyGhQO0OueaEwbYC8g/xMxs
-	ghk2GqaWGimxcZgRXXPRKkRVdGiIwlz5qRDjAJLjQ+hAT4yZCMXZzr5/W5NL2taJry83dM5UylCeY
-	/hkoKrZvk2/eVWkJtDY2qxAPz+b/Bx5q0RrpPX+chbVYKxoouWCJzsevi4P8XOhiVTpZ9DDiGBLgn
-	AJUDDANbzUkN25EZPeXIEhC7MDP2BTwhrVgfJcFTngy+Ev9KcLUVl6ZzkU3zKiAlTpz8PvQCzdvf2
-	PYfXZJ+w==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1kfkyBbEKK9syFELZldrmIs3ddT+2K6uKGsn6AiWLI8=; b=pBKK+MpBma0ARzsiwpcVDc4e/y
+	3nkcSd0Mt9yaR0oxOENUTrw85BwVv0Xa7AEzYmvPSKtuTX+BLgPqqqkmQ5yFBNJFhG1hN8AZ7WLGJ
+	RlRaJ0kJqqxokOn+gPPH02lBBHpcSuFGKzrzDZqKV/H4AVo+Hx4+W3JAfBQrxz3e1b741yvTQZxe/
+	1B2hD7bJ1aUVZYpvhbAj0QsQjUK6Gaclhj2EkhQt8gWkRoyvUoYHP4sMNP+I6LI0AJ0wWzslwf7Tq
+	Qt2ZXg9QHRTgc+0yuC3TArNI79J+0ZDGfsJsEQwS9S5eKiE4sxHxmUyW7FWbiIxWbZmRifrMBwhB+
+	NBO78F5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFOBK-004oqx-34;
-	Sat, 01 Jul 2023 00:09:42 +0000
-Received: from [2601:1c2:980:9ec0::2764]
+	id 1qFT5Q-005CXG-1W;
+	Sat, 01 Jul 2023 05:23:56 +0000
+Received: from [2601:1c2:980:9ec0::2764] (helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFOBH-004oqX-18;
-	Sat, 01 Jul 2023 00:09:39 +0000
-Message-ID: <2e729756-4468-9e3a-2664-9b1b4b4ca060@infradead.org>
-Date: Fri, 30 Jun 2023 17:09:38 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: linux-next: Tree for Jun 30 (drivers/bluetooth/btmtk.c)
-Content-Language: en-US
-To: Stephen Rothwell <sfr@canb.auug.org.au>,
- Linux Next Mailing List <linux-next@vger.kernel.org>
-Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "linux-bluetooth@vger.kernel.org" <linux-bluetooth@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Jing Cai <jing.cai@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>
-References: <20230630131756.6dee658e@canb.auug.org.au>
+	id 1qFT5J-005CWM-1C;
+	Sat, 01 Jul 2023 05:23:49 +0000
 From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <20230630131756.6dee658e@canb.auug.org.au>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: linux-kernel@vger.kernel.org
+Cc: Randy Dunlap <rdunlap@infradead.org>,
+	kernel test robot <lkp@intel.com>,
+	Stanley Chu <stanley.chu@mediatek.com>,
+	Peter Wang <peter.wang@mediatek.com>,
+	Paul Gazzillo <paul@pgazz.com>,
+	Necip Fazil Yildiran <fazilyildiran@gmail.com>,
+	linux-scsi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	"James E.J. Bottomley" <jejb@linux.ibm.com>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>
+Subject: [PATCH RESEND] scsi: ufs-mediatek: add dependency for RESET_CONTROLLER
+Date: Fri, 30 Jun 2023 22:23:48 -0700
+Message-ID: <20230701052348.28046-1-rdunlap@infradead.org>
+X-Mailer: git-send-email 2.41.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,32 +59,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+When RESET_CONTROLLER is not set, kconfig complains about missing
+dependencies for RESET_TI_SYSCON, so add the missing dependency
+just as is done above for SCSI_UFS_QCOM.
 
+Silences this kconfig warning:
 
-On 6/29/23 20:17, Stephen Rothwell wrote:
-> Hi all,
-> 
-> Please do *not* add any v6.6 related stuff to your linux-next included
-> branches until after v6.5-rc1 has been released.
-> 
-> This release is broken for 32 bit sparc builds.
-> 
-> Changes since 20230629:
-> 
+WARNING: unmet direct dependencies detected for RESET_TI_SYSCON
+  Depends on [n]: RESET_CONTROLLER [=n] && HAS_IOMEM [=y]
+  Selected by [m]:
+  - SCSI_UFS_MEDIATEK [=m] && SCSI_UFSHCD [=y] && SCSI_UFSHCD_PLATFORM [=y] && ARCH_MEDIATEK [=y]
 
-When CONFIG_DEV_COREDUMP is not set,
-gcc 12.2.0 (crosstools from kernel.org) complains:
+Fixes: de48898d0cb6 ("scsi: ufs-mediatek: Create reset control device_link")
+Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
+Reported-by: kernel test robot <lkp@intel.com>
+Link: lore.kernel.org/r/202306020859.1wHg9AaT-lkp@intel.com
+Cc: Stanley Chu <stanley.chu@mediatek.com>
+Cc: Peter Wang <peter.wang@mediatek.com>
+Cc: Paul Gazzillo <paul@pgazz.com>
+Cc: Necip Fazil Yildiran <fazilyildiran@gmail.com>
+Cc: linux-scsi@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: "James E.J. Bottomley" <jejb@linux.ibm.com>
+Cc: "Martin K. Petersen" <martin.petersen@oracle.com>
+---
+ drivers/ufs/host/Kconfig |    1 +
+ 1 file changed, 1 insertion(+)
 
-../drivers/bluetooth/btmtk.c: In function 'btmtk_process_coredump':
-../drivers/bluetooth/btmtk.c:386:44: error: 'struct hci_dev' has no member named 'dump'
-  386 |                 schedule_delayed_work(&hdev->dump.dump_timeout,
-      |                  
-
-I see this on arm64, ppc64, riscv32, i386, x86_64
-
-
-PS: please add a MAINTAINERS entry for btmtk.c.
-
--- 
-~Randy
+diff -- a/drivers/ufs/host/Kconfig b/drivers/ufs/host/Kconfig
+--- a/drivers/ufs/host/Kconfig
++++ b/drivers/ufs/host/Kconfig
+@@ -72,6 +72,7 @@ config SCSI_UFS_QCOM
+ config SCSI_UFS_MEDIATEK
+ 	tristate "Mediatek specific hooks to UFS controller platform driver"
+ 	depends on SCSI_UFSHCD_PLATFORM && ARCH_MEDIATEK
++	depends on RESET_CONTROLLER
+ 	select PHY_MTK_UFS
+ 	select RESET_TI_SYSCON
+ 	help
 
