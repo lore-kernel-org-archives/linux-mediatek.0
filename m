@@ -4,75 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C28E5EB64DC
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Jul 2023 13:05:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D422EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Jul 2023 23:13:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4xGu9VlnslxLeLQzb8tdhvdhSZ/9/Xe77++VYmaP6Vs=; b=AOWgz3MRwlEl9o4CdGS2sanHP/
-	c3LWvX97gI+oshqxlt07qXY9JXEta05I8aGprFA8jw4WWaLe0TYk306ti7L3BCqu9xxrH2h7wHhro
-	01ev57mcEtYQW7aW0fhSl4nlBiUP8Rp5qg03dH5krAp+2NCN1ECAYco0XdwHybwFPzOP2+MX6xdzV
-	EUh6eLosW09ILVyxejXwNyvZWelbpvttsvIasn2wjyIad5+ObKp9hYZetExeoO4h8pkotJzLPYGHT
-	/5evyeMnMibpThL+r3+g6dKiBV7uVeVG3ITAdnKrGoQAvWwxp5MJ33/rDIBKdl9lvL0d4UtMXGBO3
-	4sXztzVg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=j1KsDVEr7/c2nbbUeIZOJL2boV6COVoYPyMdElGZf94=; b=tQl31Kqv9+P60Qusst6dC2OLux
+	ZhfbhpXsbSt23sTNUQ0u5kZKue2HIr6+aVtqXQw7MhJRvJ1omlnckQAsIj1AHOH+z6Phe0O4fz1Kc
+	mE57jLHCuJYkkJoJgBueq4VB7jeTwjtZFGZKwrpXg+1aHvatlHvkWPeCoKCJdGb6dErU7VY4zk8TZ
+	ASfBkC/NozWmEWzB2hVPT4uP3BWg6FMaqjVN4BNYjw3C+44nN0/wcrOLu9jFxWdEMsqGtp62IPdNd
+	USDRc8/lB2jdYnGaV4i+jBAZupSyHpi/loivpdcKkcJzOooyD2fbl/mlQURlJlVpa9Cz7YT9ZCjWf
+	j6ukUksw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFaHe-0061Xr-2g;
-	Sat, 01 Jul 2023 13:05:02 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qFjmc-006miO-1T;
+	Sat, 01 Jul 2023 23:13:38 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFaHc-0061X0-0u;
-	Sat, 01 Jul 2023 13:05:01 +0000
-X-UUID: def80700180f11ee912e1518a6540028-20230701
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4xGu9VlnslxLeLQzb8tdhvdhSZ/9/Xe77++VYmaP6Vs=;
-	b=MQ5oHdZADYfWkvag700wPRGUK7C1Nxuy2xV989ND7Md6ef+Qt7v9JuqWFtGtELjiHUegtzjOgLqNfqZbOfntadiHXTr6ni4L+ge2wqPsVksiGcqQD2DcwCHK3FIzZSvs4fezdovGUo+7AX9FK6ulTuCW4FwlJkDiL4JjmIK/C0Q=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:56c52c8e-8a5b-47e5-a778-4199ef73d217,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:01c9525,CLOUDID:3afc81da-b4fa-43c8-9c3e-0d3fabd03ec0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: def80700180f11ee912e1518a6540028-20230701
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <powen.kao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1189780738; Sat, 01 Jul 2023 06:04:53 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 1 Jul 2023 20:44:50 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 1 Jul 2023 20:44:50 +0800
-From: Po-Wen Kao <powen.kao@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
-	<stanley.chu@mediatek.com>, <powen.kao@mediatek.com>,
-	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>,
-	<chun-hung.wu@mediatek.com>, <cc.chou@mediatek.com>,
-	<eddie.huang@mediatek.com>
-Subject: [PATCH v5 0/2] Add MCQ support for MTK platform
-Date: Sat, 1 Jul 2023 20:44:39 +0800
-Message-ID: <20230701124442.10489-1-powen.kao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1qFjmY-006mgf-2f;
+	Sat, 01 Jul 2023 23:13:36 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 7DFC360B41;
+	Sat,  1 Jul 2023 23:13:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6141C433CA;
+	Sat,  1 Jul 2023 23:13:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1688253212;
+	bh=GICJRTi1UBgWyszLEfObDb7ZtWarNasw276bsUk9Edo=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=ABeUQ/HYxoMx4QNp6spPUkG54BOEVOZZgI49j1meSVbaR/V8ISazd/2jhieBs5FRl
+	 9TXi1qENoQImrN7kgt51WZIu03YBOsL66LlCm7joI7kdAZNjkVBPq+9j2wMQBxzBXb
+	 f7tG/QAlAbLP//QLDdrNzyAYh+SlCKFGYRkgId1LE90c6fqo0wgW+fiLktYD+ewhS0
+	 uvK+rQj+pH1NqFKPNDZcD5iEDE+WvjG6uNT6ok13FfzxG6fGlGQkA4zcrBbO7KQJd9
+	 d2crJt0i7Ln6RJ6uqrMzdgnAvRKGLv9eUwoW9julgFSBvTJedoKmXb2YVyjgOrFaoA
+	 dqhEj4XQN/ZRg==
+Received: by mail-lf1-f50.google.com with SMTP id 2adb3069b0e04-4fb41682472so4921882e87.2;
+        Sat, 01 Jul 2023 16:13:32 -0700 (PDT)
+X-Gm-Message-State: ABy/qLbu04ooom76ioXM/V2Wt1YN/jeuGHcTfNIHaWQO6muCvHO5J37h
+	94IxzA4DdNSlSVkg/QnCvM8BEtwFnXP8Q4QoHQ==
+X-Google-Smtp-Source: APBJJlE9BpPtxXnE/La0Tl+6juXJWlIVshoPEKn3r0kp7hY2oRRITeV9xtlN2CPvQoh+eGMqTfvY3/pJslXS8anUemU=
+X-Received: by 2002:a05:6512:718:b0:4fb:7a4e:b573 with SMTP id
+ b24-20020a056512071800b004fb7a4eb573mr4707448lfs.5.1688253210855; Sat, 01 Jul
+ 2023 16:13:30 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20230630100321.1951138-1-jstephan@baylibre.com> <20230630100321.1951138-3-jstephan@baylibre.com>
+In-Reply-To: <20230630100321.1951138-3-jstephan@baylibre.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sun, 2 Jul 2023 07:13:19 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__ZzR52fQdsC=J_sH60hz7rsRhBnSOL3trzu-KyOvpNqg@mail.gmail.com>
+Message-ID: <CAAOTY__ZzR52fQdsC=J_sH60hz7rsRhBnSOL3trzu-KyOvpNqg@mail.gmail.com>
+Subject: Re: [PATCH v2 2/4] media: platform: mediatek: isp_30: add mediatek
+ ISP3.0 sensor interface
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: Louis Kuo <louis.kuo@mediatek.com>, Phi-bang Nguyen <pnguyen@baylibre.com>, 
+	Florian Sylvestre <fsylvestre@baylibre.com>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Alexander Gordeev <agordeev@linux.ibm.com>, Andy Hsieh <andy.hsieh@mediatek.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Conor Dooley <conor+dt@kernel.org>, daoyuan huang <daoyuan.huang@mediatek.com>, 
+	devicetree@vger.kernel.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-media@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Moudy Ho <moudy.ho@mediatek.com>, 
+	Rob Herring <robh+dt@kernel.org>, Vasily Gorbik <gor@linux.ibm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230701_060500_352967_A432CAC8 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230701_161334_969071_177C9411 
+X-CRM114-Status: GOOD (  15.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,44 +93,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-v4 -> v5
-- Remove unused define in header
-- Let chatty log print only at debug level
-- Correct ufs_mtk_init_mcq_irq() that was wrongly fixed
+Hi, Julien:
 
-v3 -> v4
-Address AngeloGioacchino's comments.
+Julien Stephan <jstephan@baylibre.com> =E6=96=BC 2023=E5=B9=B46=E6=9C=8830=
+=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=886:05=E5=AF=AB=E9=81=93=EF=BC=
+=9A
+>
+> From: Louis Kuo <louis.kuo@mediatek.com>
+>
+> This will add the mediatek ISP3.0 seninf (sensor interface) driver found
+> on several Mediatek SoCs such as the mt8365.
+>
+> Then seninf module has 4 physical CSI-2 inputs. Depending on the soc they
+> may not be all connected.
+>
+> Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
+> Signed-off-by: Phi-bang Nguyen <pnguyen@baylibre.com>
+> Signed-off-by: Florian Sylvestre <fsylvestre@baylibre.com>
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> ---
+>  MAINTAINERS                                   |    1 +
+>  drivers/media/platform/mediatek/Kconfig       |    1 +
+>  drivers/media/platform/mediatek/Makefile      |    1 +
+>  drivers/media/platform/mediatek/isp/Kconfig   |    2 +
+>  drivers/media/platform/mediatek/isp/Makefile  |    3 +
+>  .../platform/mediatek/isp/isp_30/Kconfig      |   16 +
+>  .../platform/mediatek/isp/isp_30/Makefile     |    3 +
+>  .../mediatek/isp/isp_30/seninf/Makefile       |    5 +
+>  .../mediatek/isp/isp_30/seninf/mtk_seninf.c   | 1561 +++++++++++++++++
+>  .../isp/isp_30/seninf/mtk_seninf_reg.h        |   99 ++
 
-v2 -> v3
-- Drop SQ to CQ mapping vops introduced in v2
-- Refactor commit message
-- Update export symbols
+I think it's not necessary to create a folder isp_30 inside isp and
+you could just place all file in isp folder because there are only few
+files. After adding more and more files then we consider to create
+folder to separate them.
 
-v1 -> v2
-- Introduce MCQ SQ to CQ mapping vops and provide MTK implementation.
-- Update export symbol patch
+Regards,
+Chun-Kuang.
 
-v1
-- Separated from topic "[PATCH v4 0/5] Several UFS MCQ Code Changes".
-  Here are some changes since last upload
-  - Store irq in per host array
-  - Symbol rename
-  - Use ufshcd_mcq_poll_cqe_lock() instead of ufshcd_mcq_poll_cqe_nolock()
-  - Handle invalid irq dts property
-  - Remove ufshcd_disable_intr(hba, MCQ_CQ_EVENT_STATUS) in MCQ mode.
-    This will become host quirk later.
-
-Po-Wen Kao (2):
-  scsi: ufs: core: Export symbols for MTK driver module
-  scsi: ufs: ufs-mediatek: Add MCQ support for MTK platform
-
- drivers/ufs/core/ufs-mcq.c      |   3 +
- drivers/ufs/host/ufs-mediatek.c | 174 +++++++++++++++++++++++++++++++-
- drivers/ufs/host/ufs-mediatek.h |  33 ++++++
- include/ufs/ufshcd.h            |   3 +
- 4 files changed, 211 insertions(+), 2 deletions(-)
-
---
-2.18.0
-
+>  10 files changed, 1692 insertions(+)
+>  create mode 100644 drivers/media/platform/mediatek/isp/Kconfig
+>  create mode 100644 drivers/media/platform/mediatek/isp/Makefile
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/Kconfig
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/Makefile
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/seninf/Mak=
+efile
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/seninf/mtk=
+_seninf.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_30/seninf/mtk=
+_seninf_reg.h
+>
+>
 
