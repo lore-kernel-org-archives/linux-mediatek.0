@@ -4,90 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A3CCEB64D9
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Jul 2023 09:33:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54716EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Jul 2023 09:51:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KtM1yynOXKi5MELLt3Cy1zi+RmzUYWERVvdzTVURPJM=; b=U7gKQOgtzG/VnKyEne8Sin/EK1
-	t8oWCDGvNZnz8WRl7WtzSjbo/unvpj9H74DF8bkTHHfk8UoJhRZ7UJPdAkPBQ3iw1QiX+P5jM/HfT
-	NWgeQN+mvwXUrA+QyoGlwxVyW9LDPEpNE/qfQK538Vt/YKuH1kGU2QwCx8AWEc/Hn+se0gm4EfLxU
-	mbV7gwNQBWMWE/0LAbkgDtxk0U5a8+5CNHXlGMwa5Bdxqq+gLd0V0Joq8tQKopHqk9r0Lq9AzT2OO
-	ezcuLdCWf3NPTroNabTfD5OD2yh4vqgfRlkB1q81zprjkB8DQegDnxJ6bkHMZVS6zp9tSEXUe50CD
-	82q2bibA==;
+	bh=I2KcurjAOTTdvjMdZhGqRO5IZlySMOTC6Ku8RN6GDqQ=; b=ITpOT2kvFYFI1Ec/UM7E5cGJrj
+	47XtEo4Aur6JTj+2rll847pkGPxAUa6JJW9SJlmMCxjywldSnpfiLpDb955S4Lp6XAm2ez1R4kZFz
+	3g63mqRFp0LfscTrLqPN3fdWAV1+91BOQLt4e/WQ3JSvr0SI2oWUDfkEarZjlPuuWGqrIjxxOa+bP
+	Fec87IWuCQv5X3D7ZLSTO+STdeZm5YTnn1i9in789CSA3ePDsIaOR6yhKxoC11OhHSiPBCTZXDiFk
+	Lom+F1ec+w9SdoxKYjpqeSg3l0ISNm95hXQwYLDutKVrofDDCAFx/2XKwz1E7A0Gz1o0Mxha5WztJ
+	GJzXJW2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFtSZ-007UYK-1j;
-	Sun, 02 Jul 2023 09:33:35 +0000
-Received: from mout.web.de ([212.227.15.3])
+	id 1qFtjV-007Vwk-2r;
+	Sun, 02 Jul 2023 09:51:05 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFtSS-007UX9-1i;
-	Sun, 02 Jul 2023 09:33:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=s29768273; t=1688290394; x=1688895194; i=markus.elfring@web.de;
- bh=KtM1yynOXKi5MELLt3Cy1zi+RmzUYWERVvdzTVURPJM=;
- h=X-UI-Sender-Class:Date:To:Cc:References:Subject:From:In-Reply-To;
- b=BLpSiV+mg6I36X7mSp1Bm09KdUEKjs+9PAH7WOXfOpNHIjDMpk5WQlqEB3I6JohIGTwMRti
- yhqL/KymxMURgT+iS/Sb7O2KsUCUze4/YQG+z9fPqDUTHYtrPRSkMOXR7aPJWK3Xn0Tw09ZWa
- xGLJPxj9VpzlD1/a6sE3pfQp83/iYCOFlMKlxWxNe9JVr/zpu+2dj/rFAsQoKD7jq2Fk1xQiM
- MFgttEdfGaf+FU6KMEJXlvGGDX0348MWkzDyHaBm86wbPvE+d03nQsi8hDRPOlHq5+EgpXDSC
- DdoIfXhZITzG1FWPhqZYj3MrIc+u5HW2wK82dp4MwCZiotEODN8w==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.90.83]) by smtp.web.de (mrweb006
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1M2ggd-1qJTYU3glT-004Jds; Sun, 02
- Jul 2023 11:33:13 +0200
-Message-ID: <1475d01a-2d34-72ef-56f8-87e04be057c8@web.de>
-Date: Sun, 2 Jul 2023 11:33:10 +0200
+	id 1qFtjS-007Vvw-2t;
+	Sun, 02 Jul 2023 09:51:04 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3355360BF0;
+	Sun,  2 Jul 2023 09:51:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A3B2C433C9;
+	Sun,  2 Jul 2023 09:51:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1688291461;
+	bh=hA6GlV1UqjmkA56DuucUvDkCtcQNNv7bBEGovbx1Fk4=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=EHOgdBeiA3+h8Az3K6UjBVhWp5QTq9FrIE+a86uLPwdLDKMeo9BlS03Z++CoAkg73
+	 nMdHuJi9jrQPFdcXKs/k4/snsnift642l3rSzTt+1kw5EsoGbBjF8eJDgId53K2wSp
+	 NfAU57nQF2LdQsYMLQK2cdcnIZmvLVrHZ7Rsiw2lPxyqPqmR5JaVBdC5WkKhqOgJan
+	 6fM0LQyKLeviTYLlYk7kfzjA9zr1b0w/w1Hya139vMXVFJ9annTp6jd2OoCfMbZv23
+	 YGE8fQzUF0o94LgoqgAKzy2nUnWknACoS1wRvccFgGLkSjWh6idsW9PLQwIZncTWY0
+	 rGJ+hPHt36/Rg==
+Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-4fb7373dd35so4246152e87.1;
+        Sun, 02 Jul 2023 02:51:01 -0700 (PDT)
+X-Gm-Message-State: AC+VfDxGTusDwPKxxg1V+5jMXyv0rawi4lFZwNB5PyJDnt5JMBdjTpmG
+	DGJnYodaRXjj/cq5z8ASXu63BXX5erHNsex08A==
+X-Google-Smtp-Source: ACHHUZ6L2kvXHzm79mMIeDZDgvuDYbbSjie/ZH4uVr+PSQ9kioutb93cROQeonW8J6th9h92WSPRzm6UmI0vRxIH6IE=
+X-Received: by 2002:a05:6512:2828:b0:4f8:75d5:e14f with SMTP id
+ cf40-20020a056512282800b004f875d5e14fmr3736142lfb.28.1688291459662; Sun, 02
+ Jul 2023 02:50:59 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- linux-staging@lists.linux.dev, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel-janitors@vger.kernel.org,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Ming Qian <ming.qian@nxp.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Tomasz Figa <tfiga@chromium.org>
-Cc: LKML <linux-kernel@vger.kernel.org>, kernel@collabora.com
-References: <20230622131349.144160-10-benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH v3 09/11] media: verisilicon: vp9: Allow to change
- resolution while streaming
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20230622131349.144160-10-benjamin.gaignard@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+References: <20230630100321.1951138-1-jstephan@baylibre.com> <20230630100321.1951138-5-jstephan@baylibre.com>
+In-Reply-To: <20230630100321.1951138-5-jstephan@baylibre.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sun, 2 Jul 2023 17:50:47 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8z9YDrC6yJ80TUJQ6FmU6wQOdgGJ0eCN15gu0LYds0ig@mail.gmail.com>
+Message-ID: <CAAOTY_8z9YDrC6yJ80TUJQ6FmU6wQOdgGJ0eCN15gu0LYds0ig@mail.gmail.com>
+Subject: Re: [PATCH v2 4/4] media: platform: mediatek: isp_30: add mediatek
+ ISP3.0 camsv
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: Phi-bang Nguyen <pnguyen@baylibre.com>, Florian Sylvestre <fsylvestre@baylibre.com>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Alexander Gordeev <agordeev@linux.ibm.com>, Andy Hsieh <andy.hsieh@mediatek.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Conor Dooley <conor+dt@kernel.org>, daoyuan huang <daoyuan.huang@mediatek.com>, 
+	devicetree@vger.kernel.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-media@vger.kernel.org, Louis Kuo <louis.kuo@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Moudy Ho <moudy.ho@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, 
+	Rob Herring <robh+dt@kernel.org>, Vasily Gorbik <gor@linux.ibm.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:mzJYK/cOYyX2bS8BVlfXIGvxIEfbahz/ax2yQyUy/F0Yl2qFJme
- 8KUy19HBBAN+3VidonlJw71MRrISQAALUetbemKDDl4+nBbMYPVRg/3R68dsMdnE6wYo06f
- Yz1Byoxt2VqZxpfg6kVneklHVZSSG47qZX21uknUOZWEYDgSPpDgP387NcCFyPYosodbZWe
- mCqAYYJupL31czH1IbZLg==
-UI-OutboundReport: notjunk:1;M01:P0:TL9t02EPglg=;3/umoIV19ynetyIUxoQZ5sIeVAc
- MpRFtXILC12n/FnO+okIWUVLeYvCpOkqsKcXRz2m7ZEMi1ZsD7NzH3AJtHk42LT2Ktyp9LRM0
- 7oBE8NZ4ZCh7Dq+zTw5tfzP1Q6krIKwZJsnPEfglaFFEepZF3VbHsK0S3bl6FEfj1VYgVJpQB
- +tVuyQN2tOM9l/Pig6AnipVy0Pyx6c5oGoTAs7ipJrmZa9qTNVH8vqVmUZejh71yrItYOgBiz
- cHUyQmys27LLQZCWjefbHywlbqfnTOgnCEC9EH+/EEP0+Fw6ju2/9QadioP4m0Rh9CVcvO5kl
- CrI7cxXh3QWw2l2kU3gkbLEy6F0cmxNZ93zcsZHtPIL1KRhytzJVjlfwWO1kjA+AAckH+N8JD
- RyIKLia76111eHiof/TvE/pITUXiMsB5CR7OsJ7ZSVOdGPrtnppK5hw6jVhkpsIQ3hqw9K+/o
- LeiE0ktgdZ9NdQ8T4vvtodyKe9AaOYbX+oRi+8ASFYeKS1zp9+DSpCy0PbTzjS12KTZWSe8B/
- 10vtf/mRTJVDnHiEPM1Ud3Dkyf3Q7QLdjeZb0XR8sp6HYdM3OsRE3As5DmWqOkboDaVO5XAIe
- ZzwyymMRqTbhJItOdST2M+pHef/u9jzpdiKDk/z0cwSFWDo3Wom0E/v3n9sixd2hc1ISUTE1C
- OFwkDzYFSYsLKCvY1Z67tE3VxkY43zRNL2HqHIy6Gm8yK95aLqZ36d/RmIWtM+lNQsm9Mz95P
- UMbhMQyAMXFcK8OIlj9h+ymbYHSH2B2CaWvpNoypzJAUOhojX4RM4sIQIFJS2nUD64sS5QPL4
- fQmUYIbWeKDi8VB5NqKTfDBZaB+zNB6X8r03yQv6TJjOyPrE32RXHQOBvx6xz3FdN06q65odB
- GWCc56NPNTDSS3y9hx8FYZ2mtYYs+oy4KctGYXQB7RX9XtmlPPhoF+/ddZklVrN9IF1CFJ1JU
- TqEiPg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230702_023330_916158_844A90D3 
-X-CRM114-Status: UNSURE (   5.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230702_025103_023820_EC95AA74 
+X-CRM114-Status: GOOD (  17.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,14 +93,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-=E2=80=A6
-> This allow to change dynamically the resolution if the pixel format
-> remains the same.
+Hi, Julien:
 
-Would the wording =E2=80=9CThis adjustment allows =E2=80=A6=E2=80=9D be mo=
-re appropriate
-for a subsequent change description?
+Julien Stephan <jstephan@baylibre.com> =E6=96=BC 2023=E5=B9=B46=E6=9C=8830=
+=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=886:06=E5=AF=AB=E9=81=93=EF=BC=
+=9A
+>
+> From: Phi-bang Nguyen <pnguyen@baylibre.com>
+>
+> This driver provides a path to bypass the SoC ISP so that image data
+> coming from the SENINF can go directly into memory without any image
+> processing. This allows the use of an external ISP.
+>
+> Signed-off-by: Phi-bang Nguyen <pnguyen@baylibre.com>
+> Signed-off-by: Florian Sylvestre <fsylvestre@baylibre.com>
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> ---
+
+[snip]
+
+> +
+> +static irqreturn_t isp_irq_camsv30(int irq, void *data)
+> +{
+> +       struct mtk_cam_dev *cam_dev =3D (struct mtk_cam_dev *)data;
+> +       struct mtk_cam_dev_buffer *buf;
+> +       unsigned long flags =3D 0;
+> +       unsigned int irq_status;
+> +
+> +       spin_lock_irqsave(&cam_dev->irqlock, flags);
+> +
+> +       irq_status =3D mtk_camsv30_read(cam_dev, CAMSV_INT_STATUS);
+> +
+> +       if (irq_status & INT_ST_MASK_CAMSV_ERR) {
+> +               dev_err(cam_dev->dev, "irq error 0x%x\n",
+> +                       (unsigned int)(irq_status & INT_ST_MASK_CAMSV_ERR=
+));
+> +       }
+> +
+> +       /* De-queue frame */
+> +       if (irq_status & CAMSV_IRQ_PASS1_DON) {
+> +               cam_dev->sequence++;
+> +
+> +               if (!cam_dev->is_dummy_used) {
+> +                       buf =3D list_first_entry_or_null(&cam_dev->buf_li=
+st,
+> +                                                      struct mtk_cam_dev=
+_buffer,
+> +                                                      list);
+> +                       if (buf) {
+> +                               buf->v4l2_buf.sequence =3D cam_dev->seque=
+nce;
+> +                               buf->v4l2_buf.vb2_buf.timestamp =3D ktime=
+_get_ns();
+> +                               vb2_buffer_done(&buf->v4l2_buf.vb2_buf,
+> +                                               VB2_BUF_STATE_DONE);
+> +                               list_del(&buf->list);
+> +                       }
+> +               }
+> +
+> +               if (list_empty(&cam_dev->buf_list)) {
+> +                       (*cam_dev->hw_functions->mtk_cam_update_buffers_a=
+dd)
+> +                                               (cam_dev, &cam_dev->dummy=
+);
+
+It's not necessary to use function pointer. Call
+mtk_camsv30_update_buffers_add() directly.
 
 Regards,
-Markus
+Chun-Kuang.
+
+> +                       cam_dev->is_dummy_used =3D true;
+> +               } else {
+> +                       buf =3D list_first_entry_or_null(&cam_dev->buf_li=
+st,
+> +                                                      struct mtk_cam_dev=
+_buffer,
+> +                                                      list);
+> +                       (*cam_dev->hw_functions->mtk_cam_update_buffers_a=
+dd)
+> +                                               (cam_dev, buf);
+> +                       cam_dev->is_dummy_used =3D false;
+> +               }
+> +       }
+> +
+> +       spin_unlock_irqrestore(&cam_dev->irqlock, flags);
+> +
+> +       return IRQ_HANDLED;
+> +}
+> +
 
