@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3376DC0015E
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Jul 2023 19:41:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1161C001DD
+	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Jul 2023 19:41:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lczslW1y2EYKhLnnKlmmLo+YffoGxeKIbKKgKSNj4Hc=; b=S+Rca03Lg/kZC/bkRA1GEV/nbq
-	F8vsQNkvZgHQmtZp3JvMCGaRIoUYMOiHKiYf26R8HyZhw0yTety/Mdk3fgmoqRwgChgtiEpqqVjLK
-	m4AvCr6wyy47p+lFvPzlzZqIfPgnUIsuIQHK7xkwzFPtLd6mC+z0HnCN2I9OraeCb4k348TvLUmED
-	rZ3o1UJbmU3nj38yrFF0gso3Xauc2nNdu9SoMjzVK4hsYzqz3mAzukJ8gyz8bwMt4nvN88rC10fgh
-	kxlT3ji1REGIUKJe6bJIdn0hEf9k6oHXvALX1l4ShmzznLpuSYbObDxZNrAN2E8DNoapJDGlplj3D
-	j4DOvHYg==;
+	bh=XUAS9AlBOvUjXNgpbmvfQJENr71X3TKNCG80KhQaxhI=; b=Dl2PgghWS/v8ovoSZpXWzZCKTC
+	mPfIl6t41lUV606it2O3xv6SaHcziMEOUp9efiaulpdyfqz9DKRbqbQMGNFhmRLD+biOR9JtvwaDc
+	BRcIjtX/vGggo7trkiDAqoMNZOadlW/UPyrsgnO/Kxj3McIYhCTB9rY7eEYXuR3GjSjf6q0+KPYV5
+	s0RG8gvJGSwN82m5KJ2mFPMlWBBmEDp+9WBf92cD3otiTl80ivntc4bk7jN4hFY3Ga0Qrx+yOPjSj
+	KcNFfpHtzRbDRsNUXVtdJYMjJwuj4vVjdDDLdSRRtradx+4MqLDW7CZ9G6MZGrav2Tej+iRZysrrs
+	BESGwU9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qG2wM-008USN-0y;
-	Sun, 02 Jul 2023 19:40:58 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qG2wj-008UYE-2f;
+	Sun, 02 Jul 2023 19:41:21 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qG2wH-008URI-30;
-	Sun, 02 Jul 2023 19:40:55 +0000
+	id 1qG2wg-008UX1-0R;
+	Sun, 02 Jul 2023 19:41:19 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5518760C91;
-	Sun,  2 Jul 2023 19:40:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72755C433C9;
-	Sun,  2 Jul 2023 19:40:51 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9B14F60D2D;
+	Sun,  2 Jul 2023 19:41:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CCDA4C433CA;
+	Sun,  2 Jul 2023 19:41:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1688326852;
-	bh=AibRHF3+wnb0aqVi5rHkyG/9K3JaqbyxVTR4d+bai4E=;
+	s=k20201202; t=1688326877;
+	bh=wiyEzbvdAoEVanuz3dTj+uFJ7dD+RlYWSclkQ4BUav4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=fSKon93UcJ/WhBZZmdg/F9qZJAZ4YUJnIQqsJYrll0c6wHes8yXBgN5MOl7nOqDWE
-	 xalqJo+1myA2dck8A5A3MlhO25JG2jT9ZvUZff8nyd+XfbwpD6UHgnIcNLhIeyEn+P
-	 oK7BttXc35YxLEzu3X6PKas3ZHSO23e0AvqCVvwzyHLfa8iB2sXMS0DXLOuiplGzga
-	 qRggs/kaDFKiWoodSxTD8QOkXAloVZJBczFGhyzytzVhoSsyR+QZN6GcRtzp7VM+RZ
-	 hi7/GNUecUv4/tWw+nIqKMO12qQnFPjouLjaVPqU12L3qg44DaiJsU+HjsciULlVHN
-	 W4qBFA5J+61Cg==
+	b=BV9SeNc6k2D5/0LUsAkQ2w0mXcj6KU820847x3otBHs8c5VKDffVJt560Oh6bHD0m
+	 V2aeKo8HnByh8kkulY2bADAE24Uqe0FJan9Hz5ZVODa4dmIFO3Uimcg+Usy+QVfVA4
+	 kRJdpEU29OpjBx07jatssr77W6kG0mUukFuJB3i6lkJ8QT/yjUP1dW8XPxjFxspWQv
+	 +qZRHZQnT4P1CxuWi/f2hK2tFoJ1j7uYyDXSNOpR7A9YswSsKIwHEwvL4zQlB1VQOs
+	 PXlWv93l1zKPYw9hdCgj6lg9ot1KkQJ/QzO1ZagQvvHphaZAU6ksq/+AV1C1+a8TE8
+	 CJ58yV4Z7fVig==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -58,19 +58,19 @@ Cc: Sandeep Dhavale <dhavale@google.com>,
 	linux-erofs@lists.ozlabs.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.4 15/15] erofs: Fix detection of atomic context
-Date: Sun,  2 Jul 2023 15:40:20 -0400
-Message-Id: <20230702194020.1776895-15-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.3 14/14] erofs: Fix detection of atomic context
+Date: Sun,  2 Jul 2023 15:40:53 -0400
+Message-Id: <20230702194053.1777356-14-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230702194020.1776895-1-sashal@kernel.org>
-References: <20230702194020.1776895-1-sashal@kernel.org>
+In-Reply-To: <20230702194053.1777356-1-sashal@kernel.org>
+References: <20230702194053.1777356-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.4.1
+X-stable-base: Linux 6.3.11
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230702_124054_474851_7BD63836 
+X-CRM114-CacheID: sfid-20230702_124118_253058_C0ED46C5 
 X-CRM114-Status: GOOD (  15.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -166,10 +166,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/fs/erofs/zdata.c b/fs/erofs/zdata.c
-index 160b3da43aecd..e5dddaa1f25d3 100644
+index d7add72a09437..77eb6a0c4853c 100644
 --- a/fs/erofs/zdata.c
 +++ b/fs/erofs/zdata.c
-@@ -1452,7 +1452,7 @@ static void z_erofs_decompress_kickoff(struct z_erofs_decompressqueue *io,
+@@ -1455,7 +1455,7 @@ static void z_erofs_decompress_kickoff(struct z_erofs_decompressqueue *io,
  	if (atomic_add_return(bios, &io->pending_bios))
  		return;
  	/* Use (kthread_)work and sync decompression for atomic contexts only */
