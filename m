@@ -4,89 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBA84EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Jul 2023 10:20:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EADD6EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Jul 2023 10:30:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sBOY/Eb24bsDW2ZXVs3j0qMiJRHu4nR/iKGjjMlrrFo=; b=xCQ2EoQcvTcHQLvyCRkCADP40Q
-	UUys8nWwx2+ulqGVir+irRRfgVQosWHaYzo3UIJecOAZU05hhEkjJgTzBVdie6ODrb5qPkPKlJCI4
-	ccnq74kpnpT7unpE5o0ReP5UxXxjWuFPm4GSl/f++7hHA3SU2NORk7OQjH2DcXUz6cXbyRBg2CxpT
-	60pNg3PD4pP5YsTjpXHd5zHWSxGxlxX0ymm7Gh8y/njaLtjNJki3t6rUUJREKCVd92lyV7v/KTw/Z
-	vykCB3MswBdGQkh9Du4XIwPwec42VoELnGN/Mtoh6sxdAnaZwO1McbkaZvuHcRzx/Ks8K/y+j83gz
-	gfdW+mPw==;
+	bh=E/AKobFXk2c7axAYUWlFRY5XKu7EkRHpm3DTOLsRDMw=; b=hunDvUxAe5bSlKAtma8sJci9a+
+	k/dwM8XF6PbjIbCuzjcQhLWkogxYM5YwJ5p4dydrOh3iBzcO6z0O1d2jHvWRhvx2OfETElF9d5g99
+	O98LNHH3g4QEjtcIznF12fTSlfWgTA+h0HTcwuMRCr/gZJrY2ADgmgYjTxllyKyoug3KwltPd8y4I
+	Db+imsvSbOFB7ahh/7FhHygRmQvfijwkTgme2o9TnQ5CODK4XmcBPaxRnvN8WEulnVq++WyMWiMIC
+	6F2mqHWneFuI7mvrmQZVvWx2xgOJcmrLIaD3lEfvteLyGqvPmbxiczFZZ/sNkzUy2LyKmeEp+K6NG
+	hleWFpQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFuBx-007Xxv-0o;
-	Sun, 02 Jul 2023 10:20:29 +0000
-Received: from mout.web.de ([212.227.15.4])
+	id 1qFuLQ-007YfD-2E;
+	Sun, 02 Jul 2023 10:30:16 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qFuBs-007Xwt-3D;
-	Sun, 02 Jul 2023 10:20:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=s29768273; t=1688293208; x=1688898008; i=markus.elfring@web.de;
- bh=sBOY/Eb24bsDW2ZXVs3j0qMiJRHu4nR/iKGjjMlrrFo=;
- h=X-UI-Sender-Class:Date:To:Cc:References:Subject:From:In-Reply-To;
- b=iMxALdicrPSajXVoESif9pvZ96As3JiHgMjCltTvd4REgUskgafd/PcUGqt6UDkpuyy+VXi
- W7kA415XT+4xybccV7LXIrUOStaEBy9cwd1/z3/JeqqAKQW4fS1dMpmGnT/M4DMAFGFp9MKig
- +a+VT5W9ri+cScNYKAR1WkNaeSMAO5qHxhQtAtReDTQBm0j7ulmcTyAwVfFzatwpWiNfe7r+S
- rzr44yD/yvTB9iRpGAMOFn5AWxaET6XKGJt7PspSUooekFBiu0I/idm+gLdTDeWjFr/pf6PFX
- XUoQKQMkcjiMyeRwry/y7LZxJU1bB8Kb8lVQ7Az+WbRrLG0LgSVQ==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.90.83]) by smtp.web.de (mrweb005
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1N30dV-1psca50Idp-013KX8; Sun, 02
- Jul 2023 12:20:08 +0200
-Message-ID: <221f414c-3caa-53ab-76fb-f4c4f16f19cd@web.de>
-Date: Sun, 2 Jul 2023 12:20:06 +0200
+	id 1qFuLM-007YeB-2L
+	for linux-mediatek@lists.infradead.org;
+	Sun, 02 Jul 2023 10:30:14 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-3141140f51bso4599220f8f.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 02 Jul 2023 03:30:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1688293811; x=1690885811;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=E/AKobFXk2c7axAYUWlFRY5XKu7EkRHpm3DTOLsRDMw=;
+        b=qYeuy69OwZ+bkpFiGmLnLvQV+HdgH8p5lPD1W6N+UirHmEQp/EQYsPcT5BdhVSXLC9
+         AxItyQc+1FnHfifuChU4xhxfm/rXJSzZNe1KRhFTmyfN4i5VqMqZo7m82Zvib45z34Bu
+         HJoNGec4gqBa5X3uvSyRZSyjR5GdzBYRmC4HJl27XkNvl9JATaW5R8srXSWZKJzBCnq1
+         nBNkY0RsiWdUEgXR4T7JlB1riEbuVeeqWAcrn4JMABRXjWUHVz/TYNfaaHf7LUKHD5Vk
+         DoQbA4SLBYpR04RSQxq9buZbfgKmRVdTaF2rkV4xq1XR3Ei78FSMxscPGsnWGayjAQHP
+         +Kcw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688293811; x=1690885811;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=E/AKobFXk2c7axAYUWlFRY5XKu7EkRHpm3DTOLsRDMw=;
+        b=aMWrPwMLiUAy29Tb1c0A8klm8MuSybd0H+469+spLzRtNr90Jgg5QmANqt6LNYc6Ii
+         XzzLs4SVlZpWuy9aYcLzOdAZUIL6kjqghP2LC9T8Ws8vFUX8ustKBNzX512k4Ve5rPph
+         dEe0ky5MrTePdmVa1ilkBCX1pcvB57eLGwn87f1xxd3ovcu0SD8nuIINAOiGyfqW3zQe
+         d4ArGt67RDEbWaGO3Kxzec+d9nIXfSQVx2f3Y1AwDd1Wmcs55KnzmqWtTkmwnAvE83h9
+         zcDHiE8K3klzkBIwSXtIrfoaE24tVytEuCzkq7PaErmqWfNM0W4MmUtsHs2NnWfQeG9D
+         zXEg==
+X-Gm-Message-State: ABy/qLZFGsF4oKavj4VYDDYimVlH37WsZ1+cFK2x/NOq0lfkGKXjNowB
+	KpU3zllFbntXC8F4YxIcKzg+uw==
+X-Google-Smtp-Source: APBJJlGd1Q363NUQ95fT39f6EGsQ1a//7/2PXR2vnTVuYr5WHw1UQOY0P0dU26vA//L8rrC45Cvh2A==
+X-Received: by 2002:a5d:4ac2:0:b0:313:e161:d013 with SMTP id y2-20020a5d4ac2000000b00313e161d013mr6654510wrs.15.1688293810652;
+        Sun, 02 Jul 2023 03:30:10 -0700 (PDT)
+Received: from [192.168.10.214] ([217.169.179.6])
+        by smtp.gmail.com with ESMTPSA id o7-20020aa7dd47000000b0051bf57aa0c6sm8969693edw.87.2023.07.02.03.30.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 02 Jul 2023 03:30:10 -0700 (PDT)
+Message-ID: <3348348a-ee62-c9c4-d9b4-0df6745ff6a0@linaro.org>
+Date: Sun, 2 Jul 2023 12:30:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- linux-staging@lists.linux.dev, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel-janitors@vger.kernel.org,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Ming Qian <ming.qian@nxp.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Tomasz Figa <tfiga@chromium.org>
-Cc: LKML <linux-kernel@vger.kernel.org>, kernel@collabora.com
-References: <20230622131349.144160-11-benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH v3 10/11] media: v4l2: Add DELETE_BUF ioctl
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20230622131349.144160-11-benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v5 3/7] media: dt-bindings: mediatek,vcodec: Remove
+ VDEC_SYS register space
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230630151436.155586-1-nfraprado@collabora.com>
+ <20230630151436.155586-4-nfraprado@collabora.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230630151436.155586-4-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:dzHl1TKsd30ARU+1wU3sPjJdmSMv9wz291O+95bJKtsF+YD1eHC
- b+Q/ty/cUdo/ImlY6/OW88hgs7LqDqnaLtGiWYvrt33PSMf5ZWlRlTyQDaAx4dgPHrBnLA0
- qs8kYbWhRoXVPenCdbWMKx+yFzoMLt3wR3yQeMTmlNYETVGlXfCVbSUDWc7uNttbtT3ghI5
- JhpEUF36ej0rr9asWnBQw==
-UI-OutboundReport: notjunk:1;M01:P0:NAZRIHhF93Q=;0bddDCS8+zQAqaLB73VP7318fMc
- VANXbOo42UC/yy+quepupqSDSg9t7IVFp41mZIF6yt2I8i5Sppaaj576XuQ/0vgz6wJINmf55
- OUSSRnYrVt0wR6E8lhJKlcEKEIuXTz/YcrD4JGarFwOfBw8jHTGmWjd6qz4IG7JnA7m3hAM3T
- HgjbVSfYMI1kEX+tAp0SxWLhmgmxPB/mejfZTPZvEIpNoIJLjTCKuQQTrcbzPuj66e8s0V8Zx
- wTLY2UUWnBROOi6yMc1l/f/qf2dFaUapSLOaYHvEl38UhZeEsCE5C5YrCrfFIP73xn5Gv2MD9
- oh3yZpT4hgg8yVXdM2ozehMQnKtgD5das7ku1Y6M9ICVcWvR7FD3GXwbeq+pXubT49fnDxULr
- LN0PZRiCmE683xp8NVfIKaiBCi4szwwkOscZ1dLXhazMIGj/0VrMHpc1EfsRsDvVQrrnImkuf
- 5JJ2FdjSkXjtRbP6zbN9T0ZZ4lG9eO1roNsdkzm5A9Q3X6a01ChcG/lSr3DWsmKDPly3qctAg
- luK2FU4S4+8mCfvoQw6ZC1AU1eA9CFnA2U/GaTwfQw5iateF4r0+vx3tmBTTxEgggmOthV8/G
- xJCDacggRUC+UgovloigI+nPRSk3vAC6Lmypm18aGKletuOTHOcCSnPVz0tqcPFp6TbT2i3f6
- dSpNG6pJPv9SSu17e4q2ZD3eupdfgXATfZoB64gcfnKvIDrlil7mTLoO0JNj8bmwE+gK/JmLj
- HcicXl+iLxmIhiXyj446CxQPD2uNa1LjxnLkC9tgVW9Gw6nPzO4xsuBnaz1tPMCFHKm/rXTwn
- AVU0pABw3OOieiV6oR8kC0T2qEqsSp3A3ASXwfV1RMVQfv1o//UAJfRrUlLEUoMHj/2F9OUO0
- JPiHRJo0z1GMxMMxcrolaCIEtlvTN+yRwyKY4MJENPcwGYpfNJ0oBiZedDuIiXOz1E09R1HqU
- K0IYQX7b7GlD3/G6MORgtEnIvzk=
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230702_032025_566616_8DA80160 
-X-CRM114-Status: UNSURE (   5.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230702_033012_823071_EFA91AB7 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,13 +105,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> VIDIOC_DELETE_BUF ioctl allows to delete a buffer from a queue.
+On 30/06/2023 17:14, Nícolas F. R. A. Prado wrote:
+> The binding expects the first register space to be VDEC_SYS. However
+> this register space is already assigned to a different node on both
+> MT8173 and MT8183: a clock-controller node called 'vdecsys' which is
+> also a syscon.
+> 
+> In order to resolve the overlapping address ranges, remove the VDEC_SYS
+> register space from the video decoder, and add a new property to hold
+> the phandle to the syscon, so that iospace can still be handled.
+> 
+> Also add reg-names to be able to tell that this new register schema is
+> used, so the driver can keep backward compatibility.
+> 
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Please choose another imperative change suggestion.
 
-See also:
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?h=v6.4#n94
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Regards,
-Markus
+Best regards,
+Krzysztof
+
 
