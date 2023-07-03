@@ -4,72 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39183EB64DC
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jul 2023 12:32:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77F45EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jul 2023 13:21:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=odHihNpFSgixfRGViprTm9KlbFZhrekN7PTU36mYY3g=; b=rl6E+iIhFTWDv2+81Nt/x0dOqr
-	RNL6AGoBsBx9WFyeAvtYinzGb0sPxek7kRQ+LpjQ+wp6uhWyTialp89ynnxka2r96kRBexZr/MVtn
-	OQuqXzozmsZ52wdskqD3Giq5Hxsh1UfTEkRaXdMYxAyNsfu/MxQGyu8PqI8lBWpbpWATlHfFWhLiO
-	HVpShes2S7Ig+hi/Q9i359re/Kh9muF5tX2dT044fzU/lU9iXJtVZsgssLF0wjw7tZv61WSbekxX4
-	FAtiL6qhTMo8h2tYb7w0Tme63NXGJSPJm+6n1Efb5N2CCfX1o1zhzqT3Fcz4b67cfKTWyY9ysD0Z4
-	mXKB+xlw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7l1mEGg7c2wpLtTEIg3URr1mk98TJdhV2O1NAukJvQI=; b=eijNXFwCpZl8GCp/ZSdMSCA/NV
+	OseatA5nmJfPsF7KdrW44fSL1m6sucBKww9YkQGxEpfwq6G9mkr4Ee6/qB9dhi6t0h1dUlTVnzReY
+	tmmRICrFGrzI0tO79gyznoI95htI0wwEj/Oy5U5Ncz09xi7tTCdAqtmuHEvPBV2weN3Hp64PvT+fF
+	KLPK+3RPLcd6RGXxNM4OA+QLAK8RiV9TZ5L5zCF9kpy7+omKWET7IUrtPW3gVDhxcKjM7Qq0sLQ8z
+	qSCPFBNecLjQ9ZyEnK2ilK3wNTOTckMI4Hoo9Ph0GDDy83o6vSJfhSzBsgAXz7FYyguWq+FbzJGAI
+	Kr4Rmbfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGIj1-00AUfu-0C;
-	Mon, 03 Jul 2023 12:32:15 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qGJUs-00AcDC-0Z;
+	Mon, 03 Jul 2023 13:21:42 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGIix-00AUei-0T;
-	Mon, 03 Jul 2023 12:32:12 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 13BA260F06;
-	Mon,  3 Jul 2023 12:32:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B2C0C433C8;
-	Mon,  3 Jul 2023 12:32:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1688387529;
-	bh=2/husCvkcEMDjaWaMzRO/j2CEaYbnp5CmDWbmX1r1QQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dkIdbcljYerHxxzOkD8YGtGbav2domP/skg5GFO/rT9F5JYTNyeWqmCVQAGu/IG8B
-	 DJlFy9VDya8IIdUg7hT50LkzzWjxHw8wL9VVOZyA21mCXQjk0S+gwheicj/WnfySeR
-	 NhRqnKAeQjFp9wRddwfHxvucHvRFsy+wvWxTn7rObIhnSiowZyzc750cgYjyCKWSjF
-	 5vMiuVl1bWSJB15mx4MbLjwRVr0/ewW5KJFKmh9eDfZjaeDGix44iPYZHwisRwLH92
-	 TObYw8fL2C1tt8iHS59/T7JMHRJXnavVYm5L3xpQHNarZ9sPKKrF1YNUOOuzjZbJB6
-	 pcruE309cNNTA==
-Message-ID: <f4873823-fd7e-c6dd-fbc0-eac4a9be52b1@kernel.org>
-Date: Mon, 3 Jul 2023 14:31:59 +0200
+	id 1qGJUq-00AcC3-0V
+	for linux-mediatek@lists.infradead.org;
+	Mon, 03 Jul 2023 13:21:41 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-3141c3a7547so4595806f8f.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 03 Jul 2023 06:21:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1688390498; x=1690982498;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=7l1mEGg7c2wpLtTEIg3URr1mk98TJdhV2O1NAukJvQI=;
+        b=NYqYB036PphhzltcgbtW2Mjuv9ELS8lWeefntrR9E1udJA9gZc/2yZFwfi9n/nnEtx
+         dJ6/p3kpW9uy2fLETLOx6ZdfgalJtgLC7d70TL4kxWUAvkz0gBgEauo9M7VEkuuYSjS+
+         5pElzA5Aaq+BNK23Z2znzh4evK7f5u94wwc9/7fEHpnito1iNIVADF1lD2Y6Oxv3WSIT
+         wxSmOv959JpRFeqPOoOWB29hqaM2j2m4Ofv4Zn6917VOQrwm5Uq8dDG1flHwLazerF1K
+         SgQ6Ihs+c08Vjrsk/Illnv9oyRz8CHE2ftzvPF1SgThL3wYtkXEHj/axg8IFUL/SwkFH
+         EqnQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688390498; x=1690982498;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=7l1mEGg7c2wpLtTEIg3URr1mk98TJdhV2O1NAukJvQI=;
+        b=JSTFVCiOL3TIZyc38fVEYx+cCAn6klUkNQw7Zarkkb/SxUanldNgdrBZ0Sqh/rxYZM
+         JDnchqmttXRrG0fjuh7D6cuQ7jcHAU+u9sPxe0dudJ2/brVI9wnDY2T9/9lrZoNgg1Hq
+         7SF1K1VAcnwH0C2SYiDbo9yQtCzmTH+ikw+Asc4376nxXRcWfgVVrOkTx11P9e14m7di
+         1CpL5M80cHjt1svEgW65blq32UgcdYOYU0/7taDYDn1jxXK5eXJM5bHWUtdnSjaUFkZP
+         RKLT5v0FOacWGyZpmSj+u7t9/TIytEvCfZ7r1BMLaWxsZODTcTo/5vF2Gi/cD7iN3uIF
+         C+8w==
+X-Gm-Message-State: ABy/qLYaPz33X9pST5jEgBvR3koAr45qzXmEA81ujS+LFjjW8V5pgYMI
+	IblTxFSfapOFeQHh+Zka1EF5r50+mJLHdBv0E8k=
+X-Google-Smtp-Source: APBJJlEs9WNGwAI0S53UjVmfae6omN0PjrMuyB8/IHEf1XsB8S+IOk4YEMy6SpzOvpWK9x3PC3a/RQ==
+X-Received: by 2002:a5d:63ca:0:b0:314:2594:7b9f with SMTP id c10-20020a5d63ca000000b0031425947b9fmr7784226wrw.11.1688390498515;
+        Mon, 03 Jul 2023 06:21:38 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id w11-20020adfcd0b000000b003143add4396sm1182289wrm.22.2023.07.03.06.21.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Jul 2023 06:21:36 -0700 (PDT)
+Date: Mon, 3 Jul 2023 16:21:32 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: jing.cai@mediatek.com
+Cc: linux-mediatek@lists.infradead.org
+Subject: [bug report] Bluetooth: btusb: mediatek: add MediaTek devcoredump
+ support
+Message-ID: <b915ddee-25fb-4072-b714-e1c97460cefd@moroto.mountain>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v3 1/5] genirq/devres: Add
- devm_request_threaded_irq_emsg()
-Content-Language: en-US
-To: Yangtao Li <frank.li@vivo.com>, miquel.raynal@bootlin.com,
- rafael@kernel.org, daniel.lezcano@linaro.org, amitk@kernel.org,
- rui.zhang@intel.com, mmayer@broadcom.com,
- bcm-kernel-feedback-list@broadcom.com, florian.fainelli@broadcom.com,
- tglx@linutronix.de, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, bchihi@baylibre.com,
- wenst@chromium.org
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230703090455.62101-1-frank.li@vivo.com>
- <20230703090455.62101-2-frank.li@vivo.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-In-Reply-To: <20230703090455.62101-2-frank.li@vivo.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230703_053211_251311_D38ABF3A 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20230703_062140_197731_B659FC48 
+X-CRM114-Status: UNSURE (   5.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,33 +88,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03/07/2023 11:04, Yangtao Li wrote:
-> There are more than 700 calls to the devm_request_threaded_irq method.
-> Most drivers only request one interrupt resource, and these error
-> messages are basically the same. If error messages are printed
-> everywhere, more than 1000 lines of code can be saved by removing the
-> msg in the driver.
+Hello Jing Cai,
 
+The patch 872f8c253cb9: "Bluetooth: btusb: mediatek: add MediaTek
+devcoredump support" from Jun 29, 2023, leads to the following Smatch
+static checker warning:
 
-...
+	drivers/bluetooth/btmtk.c:409 btmtk_process_coredump()
+	error: double free of 'skb'
 
-> +int devm_request_threaded_irq_emsg(struct device *dev, unsigned int irq,
-> +				   irq_handler_t handler, irq_handler_t thread_fn,
-> +				   unsigned long irqflags, const char *devname,
-> +				   void *dev_id, const char *emsg)
-> +{
-> +	int rc;
-> +
-> +	rc = devm_request_threaded_irq(dev, irq, handler, NULL, irqflags,
-> +				       devname, dev_id);
-> +	if (rc && rc != -EPROBE_DEFER) {
-> +		dev_err(dev, "Failed to request %sinterrupt %u %s %s: %pe\n",
-> +			thread_fn ? "threaded " : "", irq, devname ? : dev_name(dev),
-> +			emsg ? : "", ERR_PTR(rc));
+drivers/bluetooth/btmtk.c
+   381                  if (err < 0)
+   382                          break;
+   383                  data->cd_info.cnt = 0;
+   384  
+   385                  /* It is supposed coredump can be done within 5 seconds */
+   386                  schedule_delayed_work(&hdev->dump.dump_timeout,
+   387                                        msecs_to_jiffies(5000));
+   388                  fallthrough;
+   389          case HCI_DEVCOREDUMP_ACTIVE:
+   390          default:
+   391                  err = hci_devcd_append(hdev, skb);
 
-It is open-coding dev_err_probe(). Just use dev_err_probe instead.
+hci_devcd_append() free skb on error
 
-Best regards,
-Krzysztof
+   392                  if (err < 0)
+   393                          break;
+   394                  data->cd_info.cnt++;
+   395  
+   396                  /* Mediatek coredump data would be more than MTK_COREDUMP_NUM */
+   397                  if (data->cd_info.cnt > MTK_COREDUMP_NUM &&
+   398                      skb->len > sizeof(MTK_COREDUMP_END) &&
+   399                      !memcmp((char *)&skb->data[skb->len - sizeof(MTK_COREDUMP_END)],
+   400                              MTK_COREDUMP_END, sizeof(MTK_COREDUMP_END) - 1)) {
+   401                          bt_dev_info(hdev, "Mediatek coredump end");
+   402                          hci_devcd_complete(hdev);
+   403                  }
+   404  
+   405                  break;
+   406          }
+   407  
+   408          if (err < 0)
+   409                  kfree_skb(skb);
 
+double free
+
+   410  
+   411          return err;
+   412  }
+
+regards,
+dan carpenter
 
