@@ -4,102 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04D51C0015E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jul 2023 11:38:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80700EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jul 2023 11:47:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X5HPd4zFbQ0E8syfNvWoZd2Jd08kmy2oDhqKMHkzCzU=; b=HD3wzEawB1g36tifYf9hscNwv5
-	5I4rrylx9D6RjtmzXl4fm3AN0TuOiyAu6wi2K4SfyWw0tJlQNUl5umcG6+e98VDg85Sr7YDkBxZNv
-	17i5zCPgbzoxpkhyY4ycWxqRIqc7K0kMHd7HXnmypb9ShgWN++t8qbQDfW+6Mcve4/0M6HAAAwdCw
-	8XpNRSn4Sc7l0IS/vKKl1Hdfr1KRmq/ICb3LKebxFrpJtBa9gRIy2JUhrPAC4ZQDfjiR21dmyX3wj
-	zchxfUHZYc6EaOuOokBdXO/qSVo5lH7jQ8LCcNCBbJW/WLIZDAih6CEM5nVASnR9nhJMGeUJlAWES
-	Je2+dO7g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WzDL5rltfDcG6ji798qc7pzM5LlTr54uHF6jx371a1k=; b=hAq/xp2NHBQioSWpbZgA8R7azj
+	SU3vnXUofQYGuOBJD14ceuMw5DQzbrGqc4/9Iip24t64pWb0Kwgal4W8nSrF1cf62Kc94Ko9y4r+w
+	oIsakkCq1LS903GoyEUkj5lRRZeqyPatyVV9AmE7JcGm1Pi+SReYt6Ou8CDSUFFpWEqSAYYwrjL8Z
+	9ddnz4zPlSoB7yuGwQ0KUXrXPmX2wYPBbG/tqqrM8sA/qfPvCTVO+3yH9mBxeOZrkvcquUUNaWsU4
+	VXh4wgMsTiUa2X3SdEXLh8vVUBNX6j0jRjEc9r6OF3cRuj24g8BARRAULhNqsOIcTmeaz2Sdw5mEV
+	o+GTlOEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGHsm-00AOCm-0f;
-	Mon, 03 Jul 2023 11:38:16 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1qGI1Z-00APAq-2g;
+	Mon, 03 Jul 2023 11:47:21 +0000
+Received: from mail-tyzapc01on2070b.outbound.protection.outlook.com ([2a01:111:f403:704b::70b] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGHsi-00AO8v-1A
-	for linux-mediatek@lists.infradead.org;
-	Mon, 03 Jul 2023 11:38:14 +0000
-Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-51d885b0256so5659886a12.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Jul 2023 04:38:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1688384287; x=1690976287;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=X5HPd4zFbQ0E8syfNvWoZd2Jd08kmy2oDhqKMHkzCzU=;
-        b=WTSAIu0maOXQvTMLW5soPiv4CB8m8rJXos+Ot/4WhoAT3QcoySeaG03E3s4qyOsLAE
-         Fti+Zr+2ygJOfVCoGWf6TlPthhRoXpzr9z1/jgRcGtrGllnYf7UxA8w8Bs17b0pQZEW5
-         tvmISmZINVUix2PAApU6Osun8dVCilkx/R5h/GnAeZs1US2IfXem9jb1iEC+UzK7RTkg
-         Fa4TqSjhPZVbAQlznOuPTyNAlqvYzttRsp/lsMgeItRybVTA4RvQ34EpHtHgAxPlSVJh
-         nFb/hPJCev99wQuTGYl4XRx/TOKxJ9WppJPRuUH+ChxHLvd0uAGickcRDP7CWstI7fPj
-         4NWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688384287; x=1690976287;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=X5HPd4zFbQ0E8syfNvWoZd2Jd08kmy2oDhqKMHkzCzU=;
-        b=h9RPL/fJ4kBt+j2YugrkF5mozHi8HfMEMZ034/aufV+KWbwH/X68KdQYwZFp+wWzbV
-         mTPlVpji5xm+5UbKFzIPtk9vnoCCOoWQ6wR5TaJZSo5a/fJS0IxVWA1PzysGLT1fbIy2
-         OaODC/4rvR04IKPjkRUJxhzM9pbfxIX1eOAl3ognj1QRDiZO/w50E8qn7iKV1DIKQOL2
-         H3rzpiHLY+v08K15cun3bfuOKHt4jBuT96R0XD3XRxXOxp4EJwnNMmbQVHXQQqiFovxs
-         wdwZB25/Z46nPRaix1K1cRDX2n1qEH6Jqzu7cBhixOwfSIQL5qYsj2QdrVxewPaPHe5J
-         PBgw==
-X-Gm-Message-State: ABy/qLYjPBdcgzOxUpgfxf2yR8V49uHbOsnMGk4ZLaSEF/rKegIoiKrt
-	OH63rtcCXAIZW7nEjTKqsHkp4Q==
-X-Google-Smtp-Source: APBJJlFffSttED6PPzA0GMbvALnbcSFZlcl8peWg26b+PFdzfiWaPZ5DZ6BTAp/RMGL8Hcmd6Pnyng==
-X-Received: by 2002:a50:ff0d:0:b0:51b:df1d:ebc3 with SMTP id a13-20020a50ff0d000000b0051bdf1debc3mr6968185edu.25.1688384287387;
-        Mon, 03 Jul 2023 04:38:07 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.26])
-        by smtp.gmail.com with ESMTPSA id n22-20020a056402515600b0051e0f100c48sm1412583edd.22.2023.07.03.04.38.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 03 Jul 2023 04:38:06 -0700 (PDT)
-Message-ID: <20873d35-86f6-70e7-ed19-efaffb9eb25b@linaro.org>
-Date: Mon, 3 Jul 2023 13:38:02 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH 01/15] genirq/devres: Add error information printing for
- devm_request_threaded_irq()
-Content-Language: en-US
-To: Yangtao Li <frank.li@vivo.com>, miquel.raynal@bootlin.com,
- rafael@kernel.org, daniel.lezcano@linaro.org, amitk@kernel.org,
- rui.zhang@intel.com, mmayer@broadcom.com,
+	id 1qGI1W-00AP9g-1C;
+	Mon, 03 Jul 2023 11:47:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GhVXOVsGODKphvdHZwRp/Ng2hIIQn6rs7N16kqLl6Rh6mV8cXQQGAeO2pDXVhkPVriJp+hSvKyY7X9Vw20W1VNHx/VyN/PSiTrf13gJ3g29/TpLF2e+uQ+Vf/QKoFUIrCos6i7403Ddlm01KnADxTUBeuCR8mBP56mtFqnytwdBeUCZHQ13bMJfDglNURhGiONgR3VbeKQpeU/gFSo1VJ16Ai8mUtDv2wTi5jCHonoVYzEU5WSww6sdsVhoyPHd7gzsHyx6Cti4FoA13nZ6znpKmGzhFZOyafTi/MTuNTT0uY2wWZKP12tJ2u5RMvO4A529xslu3aJ1sYlOHni6avA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=WzDL5rltfDcG6ji798qc7pzM5LlTr54uHF6jx371a1k=;
+ b=dpPSzF2xEX90aDZN0kmOufe+KX4Z29ZMPJmpIFhxRvQt37aj99qlnJqhDzYbwPwkvralfrDp1tvq/XX26Bnd47kKIJziHDl4oIzjQBfdouv7WKITn+fuH1DZG/Ci02oSOqmRCCNr8hjjDg+tvUes0K29vE4jmuFnieUKZus3LfXjh4Jm/T8za+RzVFYmGNrKrirfY0tWGcWLUotz7kOZE/Mbg4ScLKPX0cjbGIxs3igT4AAlKiceNLQ6vXnUtXflucGWDfQyoJ1DMcOfvpfDHm5jzDPgsU0Ml6Efz8Js1tQmE4dKr+Du84znhjynD7Fo2bM5+IXlrj5cr5V2COnMiw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=WzDL5rltfDcG6ji798qc7pzM5LlTr54uHF6jx371a1k=;
+ b=UbeepGDTSfms0qbCcmgGczdnwzqqCn670rvs6IPiY7NXDgBlNyfRAxIURqYf5c0bEd848stmehC3RXxZHGHpwf9Ec2ljCReDBQxborqe3ajUMN8Za4Jx0+/Krcl7/8Bm7m+B59yfJcnH4tclTYT9VbGBPya3F50sKALIHBi4eWCP+LxHxdZfuOhXDyCvEqDJ7Zj3l5GaME0MNG91LflxZfJY0yiPAOYW8JLEllt5a2Jthzzqn9QJIricMn3gJRGfTkN52cnk7MRXWLtXCowEOuOZY4OjQ49b/2btadaUcjXD+DPx4X/ySp7o+5WNX8szIOHEXge/LNFD0mCusgahww==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com (2603:1096:101:78::6)
+ by SEYPR06MB5014.apcprd06.prod.outlook.com (2603:1096:101:3f::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6544.24; Mon, 3 Jul
+ 2023 11:47:09 +0000
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::fa0e:6c06:7474:285c]) by SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::fa0e:6c06:7474:285c%5]) with mapi id 15.20.6544.024; Mon, 3 Jul 2023
+ 11:47:09 +0000
+Message-ID: <73d268ad-b6cb-37f3-5aab-35e58e3325dc@vivo.com>
+Date: Mon, 3 Jul 2023 19:47:04 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH v3 0/5] introduce devm_request_threaded_irq_emsg()
+To: miquel.raynal@bootlin.com, rafael@kernel.org, daniel.lezcano@linaro.org,
+ amitk@kernel.org, rui.zhang@intel.com, mmayer@broadcom.com,
  bcm-kernel-feedback-list@broadcom.com, florian.fainelli@broadcom.com,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, linux-imx@nxp.com, agross@kernel.org,
- andersson@kernel.org, konrad.dybcio@linaro.org, thara.gopinath@gmail.com,
- heiko@sntech.de, mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
- thierry.reding@gmail.com, jonathanh@nvidia.com, tglx@linutronix.de,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- srinivas.pandruvada@linux.intel.com,
- DLG-Adam.Ward.opensource@dm.renesas.com, shangxiaojing@huawei.com,
- bchihi@baylibre.com, wenst@chromium.org, u.kleine-koenig@pengutronix.de,
- hayashi.kunihiko@socionext.com, niklas.soderlund+renesas@ragnatech.se,
- chi.minghao@zte.com.cn, johan+linaro@kernel.org, jernej.skrabec@gmail.com
+ tglx@linutronix.de, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, bchihi@baylibre.com,
+ wenst@chromium.org, =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?=
+ <u.kleine-koenig@pengutronix.de>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20230627071707.77659-1-frank.li@vivo.com>
- <82dc5efc-35fe-15ff-d0ea-e1a19da71c5c@linaro.org>
- <db14ea3c-c224-e263-e134-70e9acc5008a@vivo.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <db14ea3c-c224-e263-e134-70e9acc5008a@vivo.com>
-Content-Type: text/plain; charset=UTF-8
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230703090455.62101-1-frank.li@vivo.com>
+From: Yangtao Li <frank.li@vivo.com>
+In-Reply-To: <20230703090455.62101-1-frank.li@vivo.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: SI2PR04CA0012.apcprd04.prod.outlook.com
+ (2603:1096:4:197::14) To SEZPR06MB5269.apcprd06.prod.outlook.com
+ (2603:1096:101:78::6)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5269:EE_|SEYPR06MB5014:EE_
+X-MS-Office365-Filtering-Correlation-Id: 923aa6e2-c67f-490a-71d5-08db7bbb3b8c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: bMM6sWKG7ZPD0RivU1runf1StNqjsvThbli//Hg2jEh51uTVT7toKhO5ueUGPcx0R7k5FmhEuhLmroUQOzloQfaUGliJKKCtGadYMnCV0/+U6nhkB+kx2WMg7MvCbRm1LQ55nzyBRDoa/id+fcPY/Rn4U4L51sIzpn0jxQThO6LULo7j/uQIufYTDK5mdnh1vkc+QE/AqB/WsHYPWr5cMexgAnVdAVRjUUlrxck9qKHAVKFlQd/ruOzZQJOfLTWWwwZs/O5GzbenDP9lBUQyGqL3NdXjgon8x7baTheIpv8FQSPlKhoZq4SPW/D2+5GEWQo1lRZi+bvmk/cTCDfbO5bK/u4QCCHa6ulpZwi4xuIYI24TtI+JJakkr0zjFPB92QqzSkJSuiD/Qz/AyZwskA+s1kOVR/LAZsz00wLBDZqGItNj+OAHfSgaGMU436VsrGaY20PXNPWGmmTUFTK9z+DS8q/unXFTpUlwSbOqGuoHICpKq6qyhKIGletFgyQQM2xlcVAMGs6ijMyHvQmM5Tc6hUFz3Z2hfzH1TaCNqJRgmmyXmHo5IQKGYhxOn9M3DPvP2mdMFF2382JwaLKhCrm6E2W4sMviDs7XFPGlii+7XxOhq1LcUSsoX8WleDJYtRlzKkT+z3r0v43vdHmj4w/v8MNBiayeJe5b1sZ1CoaVgOuVjZazIZhTBppoxTGBDRMT6GymRxfkhgt5gAN6Kw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5269.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(39860400002)(346002)(366004)(376002)(136003)(396003)(451199021)(31696002)(41300700001)(6486002)(38100700002)(38350700002)(6666004)(2616005)(921005)(83380400001)(6506007)(26005)(186003)(53546011)(52116002)(6512007)(110136005)(86362001)(478600001)(2906002)(316002)(36756003)(66476007)(4326008)(66556008)(66946007)(8936002)(8676002)(31686004)(7416002)(5660300002)(43740500002)(45980500001);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NXp0c3NBbVZ6R0dvQzQvQ2tpZTdzTUJBbVJXc0xnMjFsZ0RPZGtBaWFNVjlD?=
+ =?utf-8?B?V281b25Kb25DUndwTHlmSVpuY0VXbnFzbTZIbHNqbkJZd1A0KzdUdHo1OWNP?=
+ =?utf-8?B?UjVGdjY4SFcrbXFHaUFvaGF0YVlETURXdkoxdEg2SDlXY21KMDMrbkowYUFj?=
+ =?utf-8?B?YkpvbGhZNDJtU2pJYklVSnNrMW12OUNNbFAwT1BZbXdSNEpHMHhCTGhnTnRL?=
+ =?utf-8?B?cndsdlpMWDRvc2dXUktjQ2N6cXZ0elBrU1BheW11TTlBMG1nc3dtSzYvUHIw?=
+ =?utf-8?B?azhnQTJmNWRYNEhYS1d4elhCRUdjSmlsSEo3OGYyMk01Q1IySWxLUUhiR3Ar?=
+ =?utf-8?B?d1FFVEUyWldCRTNnck9HV2Y3Zm5TSFFmTGdGbHZCenV5cVNzMXM1TndLcDZh?=
+ =?utf-8?B?UnRLbEtpSXdjTGlLa1dhZzhFdEUxcWs5b0dhUDNLQUdLcmhZQ2c5VFpwcWtz?=
+ =?utf-8?B?QktIcVFGNmVJd0dTMmNvM3JiaUM0Zm1tZVQ3UHNTZXNCTlBSbDRDWThoUHV3?=
+ =?utf-8?B?YUVDZGNEZlM0V1pOaDFwNUplT3pHQUtESVVhSXk1YStlTDRPSDNXMk9yVCt1?=
+ =?utf-8?B?VkRYVUVPbSthMTNqUXoycmtDM2tGVjNFOGR0c1VjUDl2cUV0aVZHNm1MRm1V?=
+ =?utf-8?B?MHFXaHlOOHA1NTF6NVRyU2FsN3I2ZHVtYWp3Yi9MRi90eUkyblc1TnZQbGRu?=
+ =?utf-8?B?cFNrRnZtTEVGc1pEME9EUUVLVjg4VW1LaFJFRE9hZ0ZNUEg0cnFiZ0tpNnV6?=
+ =?utf-8?B?dzgrRkgwWjcveWU3c3ZMMWRaTFh4S2hRRFZySHlJTnM3WjVuSklOOVBmVGFn?=
+ =?utf-8?B?Q1FrTFRjK1RNWXNhaXoyMFlGNU1jL0c4N3l6bUJzN0NVRVo2bllSbkpINTNC?=
+ =?utf-8?B?OGJ0RHZrUXVuaU9FenFVanlITTV1b0hPR3YwUGlvY0RoZ01NMVBTejJvRmdC?=
+ =?utf-8?B?VTB5REhlY1lKNGdtT01Eb3NrUTE5TjR6RE9SZU9rVW1UQWRhMlZVL3NXTDZV?=
+ =?utf-8?B?a211VWNEeXdWTGUrcnRZZmJ2aGttcU5IRE5CdVRPaDZaUGJ0MUdVS3lZUEJK?=
+ =?utf-8?B?MDdtMUk0SzZETVBvWEt3dlplODdnNUtRSjhVNGdUNkdJN2NRemhFakg2dU5n?=
+ =?utf-8?B?N1ByNkdBTkx6VGNLNVBrcFFoUkpobTIxekx4SXV6eWU0YkVVL0FZRUZkUUtj?=
+ =?utf-8?B?eklGd2FSd2w0N2R4UGluMFZUTVZDOG5tWWV3R2ZVUHJyQXU3bGJOMWpNMzNV?=
+ =?utf-8?B?TVdxbWF5ellRVkRqcGZaUkJUNzNtQTNsOFRISDZ5QjM4eWduRDJyd3E2WnN6?=
+ =?utf-8?B?VjV3TGlQVkpJRDR1bW9ob1ViZDJDVGhiaTNXMjhOSDZnYng1T3Ixdy81d1Ry?=
+ =?utf-8?B?K082dE1JNjU4aWtCcElsdElFdWZ6bThxNitqNVVIdkpTZDZobHhweFNNelhL?=
+ =?utf-8?B?NHJNcGxGU2FwU3FVck1TTWM4RXlHdXlZSE5FZ3A1TVpGaHZ4YlY5RHhzSUNa?=
+ =?utf-8?B?Ym5OM1lPaUQ2RU8yN3U0YUNxU3ZaMjFWcmIwa3BZZmFLbU9TZXFOUklXaGNm?=
+ =?utf-8?B?dkc5MVhHRXdzZzAxT2dLdVRqRE9hMWg1MXp4d0ZuNG9zeGRFaWZXTEIxWUF2?=
+ =?utf-8?B?ZGVOLzBOTnBJMzVyaWFnWEhzQWlmdzEzRU9Nc28rdEh3YWNsN25yUG5ObHJY?=
+ =?utf-8?B?bHVVN2EzWTFvWkg1SHVBazJRdWxoK1VZRkVseFVyQVlhZ21tb3Q5RklDRTFu?=
+ =?utf-8?B?akJzNWlEdGphQ3RFNXF4R1RoWVJCM2VxV0cyTDdtRm1GZkE3bnB0WDhqdUs1?=
+ =?utf-8?B?LzlSVjNuS3I3N2pQY1V1T1h1dmlxVXNlQXdlS09SbUp2c09PR0RMdlJnaXZh?=
+ =?utf-8?B?bzJVN3ZDV2hjV2V2WGoyOW9ORjd1NjZlZ2RDSGh5RWxOcXprc2NnTzNUWG5z?=
+ =?utf-8?B?allQY3IwL1QzaU5OZGdrckh1YXdQak4rd3NZR0orK1RnVFVETHBZSmxRMkND?=
+ =?utf-8?B?cEZGbHo1UFVQYzRSckl1ZnRzVkkwUUJmNzhDWWxzdHFwb1hvN2M0c2gySUZz?=
+ =?utf-8?B?RUdrRFcyZ2ZGckhqQ3RTbDlyTFNuZFUxeERudldoWjZZVjFxSS90K3QzVnds?=
+ =?utf-8?Q?yHj+Q6y/HgkJaClsnKLsM+7/F?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 923aa6e2-c67f-490a-71d5-08db7bbb3b8c
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5269.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Jul 2023 11:47:09.3000
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: jPTl65Fo0GvXCsIAjntk8eW5dM9JWQkO4C7I0uCKmyP2JGfOfSwlZJ1wTM6nfN7U66xNmjBUt0JxAmTTt9uKrg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB5014
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230703_043812_412780_11E7708E 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20230703_044718_416604_F7F43335 
+X-CRM114-Status: GOOD (  19.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,47 +148,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03/07/2023 11:10, Yangtao Li wrote:
-> On 2023/6/27 15:43, Krzysztof Kozlowski wrote:
-> 
->> On 27/06/2023 09:16, Yangtao Li wrote:
->>> Ensure that all error handling branches print error information. In this
->>> way, when this function fails, the upper-layer functions can directly
->>> return an error code without missing debugging information. Otherwise,
->>> the error message will be printed redundantly or missing.
->>>
->>> There are more than 700 calls to the devm_request_threaded_irq method.
->>> If error messages are printed everywhere, more than 1000 lines of code
->>> can be saved by removing the msg in the driver.
->>>
->>> Signed-off-by: Yangtao Li <frank.li@vivo.com>
->>> ---
->>>   kernel/irq/devres.c | 5 ++++-
->>>   1 file changed, 4 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/kernel/irq/devres.c b/kernel/irq/devres.c
->>> index f6e5515ee077..94039a915218 100644
->>> --- a/kernel/irq/devres.c
->>> +++ b/kernel/irq/devres.c
->>> @@ -58,8 +58,10 @@ int devm_request_threaded_irq(struct device *dev, unsigned int irq,
->>>   
->>>   	dr = devres_alloc(devm_irq_release, sizeof(struct irq_devres),
->>>   			  GFP_KERNEL);
->>> -	if (!dr)
->>> +	if (!dr) {
->>> +		dev_err(dev, "Failed to allocate device resource data\n");
->> Just like any memory allocation, I don't think we print anything for
->> devres failures. Why do you think we should start doing it?
-> 
-> 
++cc u.kleine-koenig@pengutronix.de, krzysztof.kozlowski@linaro.org
+
+On 2023/7/3 17:04, Yangtao Li wrote:
+> There are more than 700 calls to the devm_request_threaded_irq method.
+> Most drivers only request one interrupt resource, and these error
+> messages are basically the same. If error messages are printed
+> everywhere, more than 1000 lines of code can be saved by removing the
+> msg in the driver.
+>
 > And tglx point out that:
-> 
-> Having proper and consistent information why the device cannot be used 
-> _is_ useful.
-
-Where did tglx suggest printing devres allocation ENOMEM errors?
-
-Best regards,
-Krzysztof
-
+>
+>    If we actually look at the call sites of
+>    devm_request_threaded_irq() then the vast majority of them print more or
+>    less lousy error messages. A quick grep/sed/awk/sort/uniq revealed
+>
+>       519 messages total (there are probably more)
+>
+>       352 unique messages
+>
+>       323 unique messages after lower casing
+>
+>           Those 323 are mostly just variants of the same patterns with
+>           slight modifications in formatting and information provided.
+>
+>       186 of these messages do not deliver any useful information,
+>           e.g. "no irq", "
+>
+>       The most useful one of all is: "could request wakeup irq: %d"
+>
+>    So there is certainly an argument to be made that this particular
+>    function should print a well formatted and informative error message.
+>
+>    It's not a general allocator like kmalloc(). It's specialized and in the
+>    vast majority of cases failing to request the interrupt causes the
+>    device probe to fail. So having proper and consistent information why
+>    the device cannot be used _is_ useful.
+>
+> So add devm_request_threaded_irq_emsg(), which ensure that all error
+> handling branches print error information. In this way, when this function
+> fails, the upper-layer functions can directly return an error code without
+> missing debugging information. Otherwise, the error message will be
+> printed redundantly or missing.
+>
+> Yangtao Li (5):
+>    genirq/devres: Add devm_request_threaded_irq_emsg()
+>    thermal/drivers/armada: convert to use
+>      devm_request_threaded_irq_emsg()
+>    thermal/drivers/brcmstb_thermal: convert to use
+>      devm_request_threaded_irq_emsg()
+>    thermal/drivers/db8500: convert to use
+>      devm_request_threaded_irq_emsg()
+>    thermal/drivers/mediatek/lvts_thermal: convert to use
+>      devm_request_threaded_irq_emsg()
+>
+>   drivers/thermal/armada_thermal.c           | 13 +++----
+>   drivers/thermal/broadcom/brcmstb_thermal.c | 12 +++----
+>   drivers/thermal/db8500_thermal.c           | 16 ++++-----
+>   drivers/thermal/mediatek/lvts_thermal.c    |  6 ++--
+>   include/linux/interrupt.h                  |  6 ++++
+>   kernel/irq/devres.c                        | 42 ++++++++++++++++++++++
+>   6 files changed, 67 insertions(+), 28 deletions(-)
+>
 
