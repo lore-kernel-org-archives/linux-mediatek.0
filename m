@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C839C001B0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jul 2023 17:24:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08B9FC3063F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jul 2023 17:26:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cpzlnKn1L6NmzMZyZYYr4yGLPTIxek+FaPRKHtY/cOE=; b=y+w5sZ3U44zo4oF681BoHNyFLD
-	Bf0zurS0A6aW1C7dGwbcZkgp+Z+Js/ytGaD69JKCtOPRkyuxfA9SWplbC+eU/kA6zK9pLmEQgqsfA
-	tKvwl9ZXiZubEgbBcnrdH0g7vJachJZct8j4U/nE7OyW0jgCmGzsToKcR2hf4+fLBwbeJJHC9CiNd
-	IzAbtkwou/BloVHGuQeMJL6w3fp1lRKRGHiEaGqZ9bstpyEfuJ4eA9ldkHLt67Zo0HXmkGs3tuaN1
-	gpW1ib4RJmaN9stlqlBSu9Gnf5preFPs2H5Gb+Llx6O7R1WG0DHn5KJ+pmWTTIifp/zwmvLQV+An/
-	H+tG+VbA==;
+	bh=ClB7gvShhov3U8/aEH59xbQhu3Q5KIIEFTdvqCVHyt8=; b=gfgFIO4rmD5QyopXWXi5E85nUy
+	Fr/2SaNPXYe9JAE2K0xOOPnS9eolpfgi31RxH1Bd82T6eDhnJU51YGwmuAlQT4WmActblHfbGQRhB
+	HQNX+Wz7pZ9pkw+YElszCTMwhfgUZOhUB5BOcK/2IVFJu2X3LqfeTG+m4pJ3Mzt79WOozOO7YgEYT
+	ucIWjexxLYXz3ggj1GDrJLS3uceVgngIC0SRWmpINP8+XBtfwIotpYGZsuizWjtHOg8b6yLggzfij
+	/E1jN8oSDEoGbfeUUirHq02RigRFN+Gd36AeD2is6d0rFg1I0shLsyXv3GJwHiBU5sYxMUcI53Gu7
+	rFsRHQxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGNHL-00B69n-0S;
-	Mon, 03 Jul 2023 17:23:59 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qGNJF-00B6RC-1z;
+	Mon, 03 Jul 2023 17:25:57 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGNHI-00B68d-0U;
-	Mon, 03 Jul 2023 17:23:57 +0000
+	id 1qGNJC-00B6QE-0q;
+	Mon, 03 Jul 2023 17:25:55 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 807A960FD7;
-	Mon,  3 Jul 2023 17:23:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9880BC433C7;
-	Mon,  3 Jul 2023 17:23:52 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E0AA360FFC;
+	Mon,  3 Jul 2023 17:25:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E19CEC433C7;
+	Mon,  3 Jul 2023 17:25:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1688405033;
-	bh=HqoN+ykT6mcx6CD/Ub4vmYOWlAUj2Sw0KQddslJPPDs=;
+	s=k20201202; t=1688405152;
+	bh=rYNHyEKxVBivZJaI/Nsw/8pEmEkG38XoEZOgA3+Gx5E=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dqWzK3zrOi4s/PD7nVSHt10ysL9pI4UiMx8ZhJMul+Wf8QpZZ7azO7KoaO37KGPnQ
-	 35M/lCZY9wt2iu31FiNlO2x52ufOgZBw969Ge6Fr4NymYTs10AfFn64i823I6ZSCzU
-	 ztMgHEeDbyK0BmjQupnqFLgy5+8OAp+k/HM3pFyUEZ0+KmI8c06n2kkSWKQ1VRBlSn
-	 6KYo0ZBSf7Z6+kMT3VPw9GJ+yOwubUywRMHJA+7aXZRfmlFFtSWHk2liHgoiMqQ3FZ
-	 IfBKRbp1pVA+AEW2zOdecKTwPEGqJ8PD+mVLsR8d7DfG3pdZzTW+sE6dwAFXLdpRLp
-	 vKVdtwwgK4mDw==
-Message-ID: <011d3204-5c33-782c-41d1-53bf9bd2e095@kernel.org>
-Date: Mon, 3 Jul 2023 11:23:51 -0600
+	b=HRhH09xDcmyQdwdg+w9B4k0qFdh5qm8B20+2qPbVM/j6cBNpwATBWA29920ipsdqB
+	 F7J6ZGI3CQDbI6idwFIgjtEfSilmVr17LolUgwKXZ4iVZtE/opYl7ICfUIT8st5Hiv
+	 UxbpHaA7dWmEdwwciJmm+4gyUYba6rSUEZSepH3nxzXch2fsPbVSzaYGe0r4rI5wGM
+	 Ym039RUrohqsYMxJCMpB3liziGDbDIggIi4ViVYy8fZk//93aQZ1c2OmH4npo4biPW
+	 Z139jMJ6PzTzBE2Rk/CxIz4mMINsMFtO1wKBzZeV7eNjfUppPND0kRaiNMIHRjo8Sy
+	 N44lUtKIfK3tQ==
+Message-ID: <31db0e5d-4b6d-9b2e-90cc-87a15d500b2e@kernel.org>
+Date: Mon, 3 Jul 2023 11:25:50 -0600
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.12.0
@@ -87,14 +87,14 @@ References: <20230612130256.4572-1-linyunsheng@huawei.com>
  <5e0ac5bb-2cfa-3b58-9503-1e161f3c9bd5@kernel.org>
  <CAHS8izP2fPS56uXKMCnbKnPNn=xhTd0SZ1NRUgnAvyuSeSSjGA@mail.gmail.com>
  <47b79e77-461b-8fe9-41fb-b69a6b205ef2@kernel.org>
- <CANn89iKAvrf92Fy8a_M+V9eya6OHokey2_yxQ3JiCT87fKND_w@mail.gmail.com>
+ <CANn89iJLAnnvFfkmJbQ=ZFMwaqiYDOTD3-P+NpkEMzP9aKV-ig@mail.gmail.com>
 From: David Ahern <dsahern@kernel.org>
-In-Reply-To: <CANn89iKAvrf92Fy8a_M+V9eya6OHokey2_yxQ3JiCT87fKND_w@mail.gmail.com>
+In-Reply-To: <CANn89iJLAnnvFfkmJbQ=ZFMwaqiYDOTD3-P+NpkEMzP9aKV-ig@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230703_102356_282419_B453681B 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20230703_102554_380326_B8474DE2 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,24 +109,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/3/23 11:13 AM, Eric Dumazet wrote:
-> diff --git a/net/packet/af_packet.c b/net/packet/af_packet.c
-> index a2dbeb264f260e5b8923ece9aac99fe19ddfeb62..aa4133d1b1e0676e408499ea4534b51262394432
-> 100644
-> --- a/net/packet/af_packet.c
-> +++ b/net/packet/af_packet.c
-> @@ -2152,7 +2152,7 @@ static int packet_rcv(struct sk_buff *skb,
-> struct net_device *dev,
->                 }
->         }
+On 7/3/23 11:15 AM, Eric Dumazet wrote:
+> On Mon, Jul 3, 2023 at 4:45 PM David Ahern <dsahern@kernel.org> wrote:
 > 
-> -       snaplen = skb->len;
-> +       snaplen = skb->devmem ? skb_headlen(skb) : skb->len;
+>> That is my expectation. The tcpdump is just an easy example of accessing
+>> the skb page frags. skb_copy_and_csum_bits used by icmp is another
+>> example that can walk frags wanting access to device memory. You did not
+>> cause a panic or trip a WARN_ON for example with the tcpdump?
+>>
 > 
+> ICMP packets do not land on the queues having devmem buffers, for
+> obvious reasons.
 
-Ok, so you expect a flag on the skb noting the use of 'untouchable'
-memory. That aligns with my expectations based on POCs.
+I was not referring to ICMP packets coming in to the nic, but rather an
+icmp getting triggered during stack processing.
 
-Based on the above: 1) skb->head is expected to be host memory, and 2)
-the flag is a global for all frags, so no mix and match.
+> 
+> Only chosen TCP flows are steered to these queues.
+
+of course.
 
