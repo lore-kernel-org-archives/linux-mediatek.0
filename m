@@ -4,94 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2500CC00528
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jul 2023 13:25:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70C78EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jul 2023 13:37:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IOndpcYQZRei86HjTSa6sLCOIMedJ10F8ZmbDKThl2M=; b=3tXKaN/gdZ7NDuI668TanfFg7L
-	YiEj67WdvMUovOyi707mM4x4aI72HHdwRBHMDZjq/t5IdmxVd1sMbngYIBwr35o3+0I/tIJXn3DQd
-	7tKfFSz4L/sY/Os7hoNA6BWuNK0NnEABTJsQKu7ADThtiE0Q3Ppxj124e/LWmm/4EPVvtdQ7AWsZd
-	FbNDY3o9UllA/C9s/K0SfQeR2iailrk3ZotkIOcBetIMzjQrqX4v4h0hWdzZl52FpOUqGoDKjjprL
-	CkR8gqCMHhXAKD4ntApUXih0DB/RcO0iCec7HQZivGOgoHxXzs2wE2G6a11Gr6Pz9bE9bmb+gyM8D
-	AJpOk0Qw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OPUZYhyodxcCmLUl0WDrUi+poUxf6QoAmYTlmwL3wxk=; b=BzlAqoWIvLHTIsKec5KKqcGmVQ
+	LEkeYDgv45bvnMZNQM5QrWTMfbTd9Fb0jMAmJFdNW/gS68JyNnzn910K4b7BW4siwU0mZsiGu2m9y
+	6L+5jPpwXn4CuDSl7Y5a1wzC/j/NsxAJJV2Y8um9r1wX2JocBnzA+qfZ27NN6QnY85uUhVlOZA634
+	dbwxTMRU2ijvnjRHlwq99m0a8HW8ZvMuzCxsiWGEl/vVF0+qJ1S4hyR9MKiGJsKov/1hdSo++133U
+	cAk1NfuRLRLb4ZgQHvsenWJ7VThzozm2c8QgrKDic3RTSYAKro+WQoDKXQbtuhs21sTFche7ksfTF
+	+/Rw9PaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGJYi-00AcpI-2m;
-	Mon, 03 Jul 2023 13:25:40 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1qGJkD-00Aehg-25;
+	Mon, 03 Jul 2023 13:37:33 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGJYe-00AclI-2f
-	for linux-mediatek@lists.infradead.org;
-	Mon, 03 Jul 2023 13:25:39 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-3fb4146e8ceso54193235e9.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Jul 2023 06:25:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1688390733; x=1690982733;
-        h=content-transfer-encoding:in-reply-to:organization:from:references
-         :to:content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=IOndpcYQZRei86HjTSa6sLCOIMedJ10F8ZmbDKThl2M=;
-        b=vd7G70PqJmphoqcC5/iGI9byEgifXwK6Rj3mJrKjAIB8uLw1hpzkudZj36bLUzAfkk
-         CjzNWks5k2enqZ83uiheJk1bPKP4uBNGIYPZq9fUuff3p2KtuZ3rqJncJyFJqF58Wk11
-         z3wyE/Lpomy7vrHjrlZWBHS1lrFctL5sXDGQirjHnrOynrP0Lsyxy/RUFfpaiizpZ15D
-         m2niLhmeobmjKoqyeci4H11VdTtxm8S2YpJ4x7pVGDNNw+N9JpOT8TaCH2LRBE6AMkMV
-         2n86A3zQAeyy55sfLbSPXNIM5/Y7R6C5jvxqBMMqtnupqZrKysuVl4uSym0zdS0BCsLV
-         ydtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688390733; x=1690982733;
-        h=content-transfer-encoding:in-reply-to:organization:from:references
-         :to:content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=IOndpcYQZRei86HjTSa6sLCOIMedJ10F8ZmbDKThl2M=;
-        b=R1WtGaVySGbmp2DApv2TFHF+ybDCZ9CzTiCFhSOOXpzy+ifIuO5otUCKlXTBJ/uY3U
-         QxRKQFNyUgZTyRfiGPJcxULkyboHstqWaw9OhC0VTGXr+NmjPr3yqtlIZnjzCr7bImnK
-         jW8bFdP3IA0RVva8M9xwxiTjj1WWSd8eru2bIN3Ap5k2dX2v7ior7VrxMbOS41cI378e
-         1+VOKegbCQ19jQOWf4ZaNsJhu9hkYKp3Fj3sXQVOQcS/a1astkFaCwwHIwI8mhDptBwF
-         bBgTUbHh7FNqqKLGqdd88/mfDZ6z2nqGiVLl3tyPuRQZyPn2XGAabpIkcrdV1oTGFiGS
-         0/WA==
-X-Gm-Message-State: ABy/qLYYqJroRoClTHwSmMOpiUsc5PJnWIdHdfSssmEO9gzz2kEZK4Sy
-	YJiCZx1pGK40gvd+vYfNGOCwlA==
-X-Google-Smtp-Source: APBJJlFRFQcvat3EQxFgB5SI6iSmXIGa31iU1VkZvt3I+z99Hnaof/6yj4+br2u7++97LUjZHWQZuw==
-X-Received: by 2002:a1c:790e:0:b0:3fb:db66:8332 with SMTP id l14-20020a1c790e000000b003fbdb668332mr1599049wme.40.1688390733118;
-        Mon, 03 Jul 2023 06:25:33 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:982:cbb0:cf0b:9dd4:190:b74f? ([2a01:e0a:982:cbb0:cf0b:9dd4:190:b74f])
-        by smtp.gmail.com with ESMTPSA id p19-20020a05600c205300b003fbc2c0addbsm10279849wmg.42.2023.07.03.06.25.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 03 Jul 2023 06:25:32 -0700 (PDT)
-Message-ID: <1ed2eca7-b5bf-8d25-d38e-15022a8c8a39@linaro.org>
-Date: Mon, 3 Jul 2023 15:25:31 +0200
+	id 1qGJkA-00Aegc-1C;
+	Mon, 03 Jul 2023 13:37:31 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 90E6C60F3A;
+	Mon,  3 Jul 2023 13:37:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1778C433C8;
+	Mon,  3 Jul 2023 13:37:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1688391449;
+	bh=mdjfMlB9hWcQuuvCh4C/RYuY26QuKk1rnzzxz5iy9LE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=HWly50qCniJRfYL/8TVUTx0uAx63NuOfafqUc1CDwazaJHgukKtR4vIsogPXIdRt4
+	 MZuxFHzroI5/HtF6nbqBB7WZcaqYKjDKioVxgRly8qj8QOWuZM+6f1CuYt0PG5ver9
+	 Gg1gWu9hPpYIJ4K1ddZ6+62/PiomO8RdxN0Uc/HQlg0sJkVZVnhnIZe/kVhSXYwwlD
+	 xR1IfGq01iU1KwqfEb46gCbvw/pRB/AnlUk723++yPV+0QDbxQ2fbR4s3PvwxNzCan
+	 B7J0qrDhqJppnh5DIbq7UBILkuJcS4VKviT0LCGAvIyr9bH2PUt2cinafyLwLn0vNV
+	 dldZyfRbt6QoQ==
+Message-ID: <cce616da-fb1b-ef0b-69de-11a14d4b3e7b@kernel.org>
+Date: Mon, 3 Jul 2023 15:37:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH] dt-bindings: cleanup DTS example whitespaces
+Subject: Re: [PATCH v3 1/5] genirq/devres: Add
+ devm_request_threaded_irq_emsg()
 Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Leo Yan <leo.yan@linaro.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, coresight@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-iio@vger.kernel.org,
- linux-media@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-mtd@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-remoteproc@vger.kernel.org, linux-usb@vger.kernel.org
-References: <20230702182308.7583-1-krzysztof.kozlowski@linaro.org>
-From: Neil Armstrong <neil.armstrong@linaro.org>
-Organization: Linaro Developer Services
-In-Reply-To: <20230702182308.7583-1-krzysztof.kozlowski@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: Yangtao Li <frank.li@vivo.com>, miquel.raynal@bootlin.com,
+ rafael@kernel.org, daniel.lezcano@linaro.org, amitk@kernel.org,
+ rui.zhang@intel.com, mmayer@broadcom.com,
+ bcm-kernel-feedback-list@broadcom.com, florian.fainelli@broadcom.com,
+ tglx@linutronix.de, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, bchihi@baylibre.com,
+ wenst@chromium.org
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230703090455.62101-1-frank.li@vivo.com>
+ <20230703090455.62101-2-frank.li@vivo.com>
+ <f4873823-fd7e-c6dd-fbc0-eac4a9be52b1@kernel.org>
+ <930003c4-c90d-0008-a6cf-9298240e7d93@vivo.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+In-Reply-To: <930003c4-c90d-0008-a6cf-9298240e7d93@vivo.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230703_062536_866285_28C3FD52 
-X-CRM114-Status: UNSURE (   8.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230703_063730_516504_D29D4598 
+X-CRM114-Status: GOOD (  14.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,46 +83,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: neil.armstrong@linaro.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/07/2023 20:23, Krzysztof Kozlowski wrote:
-> The DTS code coding style expects spaces around '=' sign.
+On 03/07/2023 15:24, Yangtao Li wrote:
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> On 2023/7/3 20:31, Krzysztof Kozlowski wrote:
+>> [你通常不会收到来自 krzk@kernel.org 的电子邮件。请访问 https://aka.ms/LearnAboutSenderIdentification，以了解这一点为什么很重要]
+>>
+>> On 03/07/2023 11:04, Yangtao Li wrote:
+>>> There are more than 700 calls to the devm_request_threaded_irq method.
+>>> Most drivers only request one interrupt resource, and these error
+>>> messages are basically the same. If error messages are printed
+>>> everywhere, more than 1000 lines of code can be saved by removing the
+>>> msg in the driver.
+>>
+>> ...
+>>
+>>> +int devm_request_threaded_irq_emsg(struct device *dev, unsigned int irq,
+>>> +                                irq_handler_t handler, irq_handler_t thread_fn,
+>>> +                                unsigned long irqflags, const char *devname,
+>>> +                                void *dev_id, const char *emsg)
+>>> +{
+>>> +     int rc;
+>>> +
+>>> +     rc = devm_request_threaded_irq(dev, irq, handler, NULL, irqflags,
+>>> +                                    devname, dev_id);
+>>> +     if (rc && rc != -EPROBE_DEFER) {
+>>> +             dev_err(dev, "Failed to request %sinterrupt %u %s %s: %pe\n",
+>>> +                     thread_fn ? "threaded " : "", irq, devname ? : dev_name(dev),
+>>> +                     emsg ? : "", ERR_PTR(rc));
+>> It is open-coding dev_err_probe(). Just use dev_err_probe instead.
 > 
-> ---
 > 
-> Rob,
+> How about the following? If possible, I would like to start modifying 
+> more drivers in the next version.
 > 
-> Maybe this could go via your tree? Rebased on your for-next:
-> v6.4-rc2-45-gf0ac35049606
-> ---
->   .../bindings/arm/arm,coresight-cti.yaml        | 18 +++++++++---------
->   .../bindings/arm/keystone/ti,sci.yaml          |  8 ++++----
->   .../devicetree/bindings/display/msm/gmu.yaml   |  2 +-
->   .../display/panel/samsung,s6e8aa0.yaml         |  2 +-
->   .../display/rockchip/rockchip-vop.yaml         |  4 ++--
->   .../bindings/iio/adc/ti,adc108s102.yaml        |  2 +-
->   .../bindings/media/renesas,rzg2l-cru.yaml      |  4 ++--
->   .../devicetree/bindings/media/renesas,vin.yaml |  4 ++--
->   .../devicetree/bindings/mtd/mtd-physmap.yaml   |  2 +-
->   .../bindings/net/mediatek-dwmac.yaml           |  2 +-
->   .../bindings/perf/amlogic,g12-ddr-pmu.yaml     |  4 ++--
->   .../bindings/phy/mediatek,dsi-phy.yaml         |  2 +-
->   .../remoteproc/amlogic,meson-mx-ao-arc.yaml    |  2 +-
-
-For amlogic ones:
-
-Acked-by: Neil Armstrong <neil.armstrong@linaro.org>
-
-
->   .../devicetree/bindings/usb/mediatek,mtu3.yaml |  2 +-
->   .../devicetree/bindings/usb/ti,am62-usb.yaml   |  2 +-
->   15 files changed, 30 insertions(+), 30 deletions(-)
 > 
+> int devm_request_threaded_irq_emsg(struct device *dev, unsigned int irq,
+>                                     irq_handler_t handler, irq_handler_t 
+> thread_fn,
+>                                     unsigned long irqflags, const char 
+> *devname,
+>                                     void *dev_id, const char *emsg)
+> {
+>          int rc;
+> 
+>          rc = devm_request_threaded_irq(dev, irq, handler, NULL, irqflags,
+>                                         devname, dev_id);
+>          if (rc) {
+>                  dev_err_probe(dev, rc, "Failed to request %sinterrupt 
+> %u %s %s\n",
+>                                thread_fn ? "threaded " : "", irq, 
+> devname ? : dev_name(dev),
+>                                emsg ? : "");
 
-<snip>
+That's not the syntax already used - see existing code with `git grep`.
+Instead - return dev_err_probe().
+
+
+Best regards,
+Krzysztof
 
 
