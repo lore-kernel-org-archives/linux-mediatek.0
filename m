@@ -4,137 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7036EB64DD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jul 2023 13:24:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2500CC00528
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jul 2023 13:25:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=quLszEF9TS4Ida720q9qPl2yVT7JJ7Ab7VoLWQATDIA=; b=nh8JmhTawLDY1+4o0VE5K8nYoM
-	YoNmTCrBG7CH1VIRuJOgm5Bz/6BvnpiPHBV3fKzbph0K6GT1Ww1e4fpX+cJ8pS6fkbZew4rSkPb3Z
-	Z0TEIXoaFaF9DJ73bVq4PmT2xld5tejPx7nUinss0REAOtRSr92tbMEGNdoqKddx0cFVXLzeiO6Xm
-	uuwbWgv1bFccx/FUBUDHB4l6Pk5sTWZo0/ljJABskoyTQMcmdHGzVygQgU+X/cgx32WStTq6jvE3a
-	RvEtJJ6ly8QFaVN8Q5TM0G+uog0UcLLjB1XCXUwv+tiVK+OCj/Oqsr76PavRE6GVa9DuEllmvgYdv
-	ddVDoO8w==;
+	bh=IOndpcYQZRei86HjTSa6sLCOIMedJ10F8ZmbDKThl2M=; b=3tXKaN/gdZ7NDuI668TanfFg7L
+	YiEj67WdvMUovOyi707mM4x4aI72HHdwRBHMDZjq/t5IdmxVd1sMbngYIBwr35o3+0I/tIJXn3DQd
+	7tKfFSz4L/sY/Os7hoNA6BWuNK0NnEABTJsQKu7ADThtiE0Q3Ppxj124e/LWmm/4EPVvtdQ7AWsZd
+	FbNDY3o9UllA/C9s/K0SfQeR2iailrk3ZotkIOcBetIMzjQrqX4v4h0hWdzZl52FpOUqGoDKjjprL
+	CkR8gqCMHhXAKD4ntApUXih0DB/RcO0iCec7HQZivGOgoHxXzs2wE2G6a11Gr6Pz9bE9bmb+gyM8D
+	AJpOk0Qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGJXx-00AcdS-0j;
-	Mon, 03 Jul 2023 13:24:53 +0000
-Received: from mail-sgaapc01on20706.outbound.protection.outlook.com ([2a01:111:f400:feab::706] helo=APC01-SG2-obe.outbound.protection.outlook.com)
+	id 1qGJYi-00AcpI-2m;
+	Mon, 03 Jul 2023 13:25:40 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGJXs-00AccM-0y;
-	Mon, 03 Jul 2023 13:24:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cXvnQZgtUxlupMElr1Vll3Cp9X73W6QInDriWtR/EwQeRzicbfX48kP5coaut/ldtC/UuZ8cAeziUnoIXq/R+EX3i0Jfnk67BD9wGnpDMDydMocIGbI6pdV8hGfw3vmYshqlqcMe3mhYmYfvZiWtSPBUyjdn1+vgwlqooZAmZRskdOPUCO/4+hrVsnphvsG4GEUlVa0Y74h/PEgkTPKEKyl+x3kpTNbPXoO3pjhA/uUiLP7rGyUhfUgMLOyf6SPioqn4F9giyZPZOFlCU3ArElpO/NCG7jTAcfNeBT3X1czBqomLlHqYGtbQ/Tc+rIbEHyxo+SgK6XTlEMlH5b/9kw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=quLszEF9TS4Ida720q9qPl2yVT7JJ7Ab7VoLWQATDIA=;
- b=ECFALEHGLmBw/YU3X+xkaICaovqYYCcpHWxs3UIoTiI4byzsfhNxeM4eFX4rcmDTz2CFgcBP6JUdoyAH2Rb/PcZJiiy9JAn4jjuc/qQV+mkhxn/jld001wtgF7M0sdKbXj2emX2c+FJwgLKMltVUqSWc2hcR6G88dtXTZP7aEjb9kVs6TLlYsRHmo+66jqeQKBIOVYWorYjTDwzH4nv02+OWexSnQgptv+BfnZbgWuksyJuc+NKQaN5OYPZenmwp3B4U6AL+a3wJI4GykVP5J75vVfptFceCJwVMqk62R6wFezA6J8+I7rvzcGRAhBkEA/61m6js/sVGqtaszcmNGQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
- dkim=pass header.d=vivo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=quLszEF9TS4Ida720q9qPl2yVT7JJ7Ab7VoLWQATDIA=;
- b=XR+QxPNjWL7wWHgF7xYnSCFiI++DBr3GPK+PHAjBLmhQD4CquZ2XH1v1gQBvFEUdThKoVFYfhcS/VvjTb2gNaLgCUv3l5I6FpaPpj3v8eVQxF6QX9c9GktcHNGhjvOh69qLYtR19eWCi3yH00+c+0sebA/pCgn3aNj2gXYqEs3biQtzOZEoO3Ddrkz7NPAGXoq+qEA7LJvJtLL7lgxgAKzuT1plvrSvjtcOTEkYDo6l3JkYBmBHsEDzebP8TXmWyQ7JDftUIrCyTw4QyixXl8jUhSYtfxuUZBTQUJFealyJV3jlTK47FBEU7MvHHQg20qWT+gRAF24Y6e1ZLCT5f1w==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=vivo.com;
-Received: from SEZPR06MB5269.apcprd06.prod.outlook.com (2603:1096:101:78::6)
- by TYZPR06MB5049.apcprd06.prod.outlook.com (2603:1096:400:1ca::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6544.24; Mon, 3 Jul
- 2023 13:24:40 +0000
-Received: from SEZPR06MB5269.apcprd06.prod.outlook.com
- ([fe80::fa0e:6c06:7474:285c]) by SEZPR06MB5269.apcprd06.prod.outlook.com
- ([fe80::fa0e:6c06:7474:285c%5]) with mapi id 15.20.6544.024; Mon, 3 Jul 2023
- 13:24:40 +0000
-Message-ID: <930003c4-c90d-0008-a6cf-9298240e7d93@vivo.com>
-Date: Mon, 3 Jul 2023 21:24:34 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH v3 1/5] genirq/devres: Add
- devm_request_threaded_irq_emsg()
-To: Krzysztof Kozlowski <krzk@kernel.org>, miquel.raynal@bootlin.com,
- rafael@kernel.org, daniel.lezcano@linaro.org, amitk@kernel.org,
- rui.zhang@intel.com, mmayer@broadcom.com,
- bcm-kernel-feedback-list@broadcom.com, florian.fainelli@broadcom.com,
- tglx@linutronix.de, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, bchihi@baylibre.com,
- wenst@chromium.org
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230703090455.62101-1-frank.li@vivo.com>
- <20230703090455.62101-2-frank.li@vivo.com>
- <f4873823-fd7e-c6dd-fbc0-eac4a9be52b1@kernel.org>
-From: Yangtao Li <frank.li@vivo.com>
-In-Reply-To: <f4873823-fd7e-c6dd-fbc0-eac4a9be52b1@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: SGXP274CA0020.SGPP274.PROD.OUTLOOK.COM (2603:1096:4:b8::32)
- To SEZPR06MB5269.apcprd06.prod.outlook.com (2603:1096:101:78::6)
+	id 1qGJYe-00AclI-2f
+	for linux-mediatek@lists.infradead.org;
+	Mon, 03 Jul 2023 13:25:39 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-3fb4146e8ceso54193235e9.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 03 Jul 2023 06:25:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1688390733; x=1690982733;
+        h=content-transfer-encoding:in-reply-to:organization:from:references
+         :to:content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=IOndpcYQZRei86HjTSa6sLCOIMedJ10F8ZmbDKThl2M=;
+        b=vd7G70PqJmphoqcC5/iGI9byEgifXwK6Rj3mJrKjAIB8uLw1hpzkudZj36bLUzAfkk
+         CjzNWks5k2enqZ83uiheJk1bPKP4uBNGIYPZq9fUuff3p2KtuZ3rqJncJyFJqF58Wk11
+         z3wyE/Lpomy7vrHjrlZWBHS1lrFctL5sXDGQirjHnrOynrP0Lsyxy/RUFfpaiizpZ15D
+         m2niLhmeobmjKoqyeci4H11VdTtxm8S2YpJ4x7pVGDNNw+N9JpOT8TaCH2LRBE6AMkMV
+         2n86A3zQAeyy55sfLbSPXNIM5/Y7R6C5jvxqBMMqtnupqZrKysuVl4uSym0zdS0BCsLV
+         ydtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688390733; x=1690982733;
+        h=content-transfer-encoding:in-reply-to:organization:from:references
+         :to:content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=IOndpcYQZRei86HjTSa6sLCOIMedJ10F8ZmbDKThl2M=;
+        b=R1WtGaVySGbmp2DApv2TFHF+ybDCZ9CzTiCFhSOOXpzy+ifIuO5otUCKlXTBJ/uY3U
+         QxRKQFNyUgZTyRfiGPJcxULkyboHstqWaw9OhC0VTGXr+NmjPr3yqtlIZnjzCr7bImnK
+         jW8bFdP3IA0RVva8M9xwxiTjj1WWSd8eru2bIN3Ap5k2dX2v7ior7VrxMbOS41cI378e
+         1+VOKegbCQ19jQOWf4ZaNsJhu9hkYKp3Fj3sXQVOQcS/a1astkFaCwwHIwI8mhDptBwF
+         bBgTUbHh7FNqqKLGqdd88/mfDZ6z2nqGiVLl3tyPuRQZyPn2XGAabpIkcrdV1oTGFiGS
+         0/WA==
+X-Gm-Message-State: ABy/qLYYqJroRoClTHwSmMOpiUsc5PJnWIdHdfSssmEO9gzz2kEZK4Sy
+	YJiCZx1pGK40gvd+vYfNGOCwlA==
+X-Google-Smtp-Source: APBJJlFRFQcvat3EQxFgB5SI6iSmXIGa31iU1VkZvt3I+z99Hnaof/6yj4+br2u7++97LUjZHWQZuw==
+X-Received: by 2002:a1c:790e:0:b0:3fb:db66:8332 with SMTP id l14-20020a1c790e000000b003fbdb668332mr1599049wme.40.1688390733118;
+        Mon, 03 Jul 2023 06:25:33 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:982:cbb0:cf0b:9dd4:190:b74f? ([2a01:e0a:982:cbb0:cf0b:9dd4:190:b74f])
+        by smtp.gmail.com with ESMTPSA id p19-20020a05600c205300b003fbc2c0addbsm10279849wmg.42.2023.07.03.06.25.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 03 Jul 2023 06:25:32 -0700 (PDT)
+Message-ID: <1ed2eca7-b5bf-8d25-d38e-15022a8c8a39@linaro.org>
+Date: Mon, 3 Jul 2023 15:25:31 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SEZPR06MB5269:EE_|TYZPR06MB5049:EE_
-X-MS-Office365-Filtering-Correlation-Id: 90993049-0250-442a-855b-08db7bc8dac7
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: q2zFJdIVlXFN1QVK51lEj470zJpjz4w7/kI9zYW02ic2Combjolh8hC5/EIqWXzROfGakXfWXY/ZBcCTsc40vXaGsNkUW9bBim7QBRT6oeZB/R+tA1riaCknDO2+AxxhG/UP5CGYOzOyNpOdQRwL6e2EpTt7wGikwCjbUoeTFcquQaPHHrofdMhRUX+DR1jd6SkXB7b3acIF8ntq4rnxz8qkcKMiWUoeEDcAYy0rYwNXY5AUH2w4Fnl+4M3/J0fB3a2brzhQ7JXT6aahgLpOtVaxk2dM4MP0Y15ieN5bHTkNFSmvWRt/KdmdddzdsK++xxPAR/sXkLGlneAnKdQwzIj4+UeoEB2R1eaComrhxDw0jyI8BqZDLixmaldL0e4zcJgHstjSG33V9vYKolUPY7h3piBvNJafPFpe9afg1ly1cfUTzbPKBuKJ87wZwqSpFdZVO+RMOAds3cTN3zxi/BRZaj43uaMVxuAR6kYvjTOnrDGNqF4RqZ0j0vFRvp4lYmv8VIUTulNtcXg2Gi1a3Lq9JMxMkuEZuzOEFbjgZQxIlqxsHDciEufsMdE8wKimem38Qgu7sllh40/SzBNuBAPb6n+EKgkKjeu1lI68v/S+XQgaYsL9ItNVsLHlUZkjzpPCTky7SLvCBUcbuWTD8vYsWlGWJfobjChwto0tjuCEUpAhXbuQf61zFrX8TdAHJK1Lwu5AceGI6y1AAgGeFw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5269.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(136003)(396003)(39850400004)(366004)(346002)(376002)(451199021)(7416002)(31686004)(4326008)(66476007)(66946007)(66556008)(316002)(2906002)(478600001)(36756003)(8936002)(8676002)(5660300002)(41300700001)(31696002)(966005)(6512007)(86362001)(38350700002)(6666004)(52116002)(6486002)(38100700002)(53546011)(6506007)(26005)(186003)(2616005)(83380400001)(921005)(45980500001)(43740500002);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RVBCNHUzYUNiT0tLT092bVRvUkJBb0RLRm11UkpqanZWSEZYaWFzcUNtUDBu?=
- =?utf-8?B?c3BHQkt0M2lRN3NnVWZYWkxDeHppZUxvUDczOU0zZ1MxMzNOU1V1TTcwSWZK?=
- =?utf-8?B?a2o0MTRBS053NmVpamZhYUN5SC82Tm5iSmtET2lyazFEVktvWERQckVkblow?=
- =?utf-8?B?WWtOdlEySnUwQ0xPd3RrOC9yVnVCVHhyNWd4RHQxem5mWlhFcHJXN3JHeXJr?=
- =?utf-8?B?MmYrd3gvV25ndjEvZnkwcHVxSHY1RHFaaXJhTzFzbTJnWjYxbGdaYjZjZC9R?=
- =?utf-8?B?T0JLT251c0QzM09WV1RCdjRzUUFBVkx0L2pVRzI4eXVtK2V0elJGSTU3eFdY?=
- =?utf-8?B?enEwV00wVEU1V2hIMzAwbXM4NTZFZ2U3aW9xVWo1aGpaMXJqdG92ZzJOTWhx?=
- =?utf-8?B?NTM4U2N3VjcxL0xycXc4OHBzWWJYbktBaVpWNUR4dXE2Nm5zSTJaTnU0YlNX?=
- =?utf-8?B?cDVZSVQ5NEdBUHNoVkdCbHlNS3FIajYwaHl3Z0l4VjIwVGxFdU84UWVHYXNW?=
- =?utf-8?B?RkVVMUlXY2RoSEI4MkdvMlBzaHRBc09IalUyY1Fmb1A1aFh3b1E5ODhPc3R5?=
- =?utf-8?B?U0s2VklTc2pBQjExZmczSUpGVjZndEFKRWZ0d2R0dW5LUmFoUUhRQkNRN21B?=
- =?utf-8?B?a1NsTjk3UnBXZUVPM2YzTWhxbC9iUTRvcTZseHhrdml1VkgyV2R1RHBETkg4?=
- =?utf-8?B?V1lucE1qT1RPbTJRcmZTZWY3MzhSNm5hNGViMlJzOC9FNloyaTc0RmVYQ29Y?=
- =?utf-8?B?Mmh0VDV4bVArdUl2U2xhQS9FemNYZkRKeTAyODFJc2tGQzBoOTV4a2o3VS9P?=
- =?utf-8?B?UW40Sm9oTFpLRytNRUVweFlGZkZqTzZ1M0lmN1VlTk1QenFOUXJFeVVKNzlo?=
- =?utf-8?B?ckVkQjdVRk1CQ2tZVjVvWWgxN3lnRDVDcU1lbFdxQWh4VW02L05TbGQ1WVJB?=
- =?utf-8?B?b0ZBOXBIYW1NL0pUVXgwalR4OVJ5MVdZOUNBd0FaMWhHUzlqRXZJeitGY2Y5?=
- =?utf-8?B?QUxuWThYNlFIVTFiN3JuZzFLQ1Rsd0ZtOGRNVHNhd2h0d3BhbHZ0bjhLT2U0?=
- =?utf-8?B?bFR2K1AvaVFyeGI1KzdSbVRvd1o5SXU2RmJtVEtXOWFCSzFDb0RXSldvMG02?=
- =?utf-8?B?bXVqQ0lNZ0xqcHJKOThoeVk2NG5sYy9DWmRjWmtoVS9YT0xYSkdYZmhORDhz?=
- =?utf-8?B?eEtrRnB0SU9xRVh0aUplaFo5bjJlOTRqZ2pWQTNoY3NaL0kzU2NteUlEUHlo?=
- =?utf-8?B?UnJZUTBaNTgwcnlhTjJWTTBsZmRWUm1DdjkxZWtaeGtGSGRYS3p4cXA0R2dm?=
- =?utf-8?B?d0FrTjJpVnpKeG8xbmkyYWFhYlZOZm0vRGFsZzR6VlhDN0wxVFdiZytYd1Z2?=
- =?utf-8?B?WFN4TzhOYVdndmN4WDRsMzVRZndVLzRvVVB2cldSZFNqay85MzNpWDFoblhO?=
- =?utf-8?B?RVFVYlNWRyt0bXRyT040NXpHV3Uvd1IzYU9BUUduNW9iLzlBYUlGZXc4elFn?=
- =?utf-8?B?RVhSTndSYVkxVDBLMjdsY0xEQXV2em5QdDVlM1AvbEtkeTV5bEkzOE1OVVpE?=
- =?utf-8?B?TGpUSVYwZERqYktXZElMZ3FGQSs4b3lBWWpGbHlRN25mN2RZaEl1MWdFYmJp?=
- =?utf-8?B?b3JBVHV0NmpLakRxWHY3MmlFNnJxTDlmV3pqNEx6Q29uNTYxZDM2eW5WZkd6?=
- =?utf-8?B?ZzNaK1VnS1RSMnEwZUh2WTkwckhvc2FmK3YydkpEYk9aRjJHN2xZMWt3UGw0?=
- =?utf-8?B?aElLblZqTmduT2NSN2czRUtqVXpXSXdoTW5Zby9NWXU5L2tYNGlCRGpLYnVl?=
- =?utf-8?B?UzU5OUFOMmFabVA1eTh3TktXTGpmM1lpQlNGY1FTNkJuODdIWDFiWldNaThG?=
- =?utf-8?B?SUFXWVdaWS9DY211b0swU3RrVno4OGpycjBVbnJ2K3pSYjA4cUVWY1IwNXg4?=
- =?utf-8?B?cTg4SS9CaFp1c2kxZFBPWVVmZWo0dEtUYllndlhvRCtocUgxNEQ0SXV5SktI?=
- =?utf-8?B?WWxBNHZ5OVljR1ZNajRCSENpbitjK3Y1WnNMRHRGSVVXRjVJSVl0eWIyYzcx?=
- =?utf-8?B?eXNZNkErR25lYUNrTGI4UWUxdzkybjZRSGlHRXlia3FVdnRyUW54OXkzVnVw?=
- =?utf-8?Q?HlIj8qTl5qbuTBVEzqZ6X6UPp?=
-X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 90993049-0250-442a-855b-08db7bc8dac7
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5269.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Jul 2023 13:24:39.9623
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: AwxUmhC4uE2W/vVanb2pPp2XUjykbGzgGLzANuVZHmvb5Fjg0INT2+3MyUF6RGMVvZOT2g92ROfmOx0PDvOMVQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB5049
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH] dt-bindings: cleanup DTS example whitespaces
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Leo Yan <leo.yan@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, coresight@lists.linaro.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-iio@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-mtd@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-remoteproc@vger.kernel.org, linux-usb@vger.kernel.org
+References: <20230702182308.7583-1-krzysztof.kozlowski@linaro.org>
+From: Neil Armstrong <neil.armstrong@linaro.org>
+Organization: Linaro Developer Services
+In-Reply-To: <20230702182308.7583-1-krzysztof.kozlowski@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230703_062448_341021_3722D2C9 
-X-CRM114-Status: GOOD (  11.98  )
+X-CRM114-CacheID: sfid-20230703_062536_866285_28C3FD52 
+X-CRM114-Status: UNSURE (   8.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,72 +103,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: neil.armstrong@linaro.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 02/07/2023 20:23, Krzysztof Kozlowski wrote:
+> The DTS code coding style expects spaces around '=' sign.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
+> ---
+> 
+> Rob,
+> 
+> Maybe this could go via your tree? Rebased on your for-next:
+> v6.4-rc2-45-gf0ac35049606
+> ---
+>   .../bindings/arm/arm,coresight-cti.yaml        | 18 +++++++++---------
+>   .../bindings/arm/keystone/ti,sci.yaml          |  8 ++++----
+>   .../devicetree/bindings/display/msm/gmu.yaml   |  2 +-
+>   .../display/panel/samsung,s6e8aa0.yaml         |  2 +-
+>   .../display/rockchip/rockchip-vop.yaml         |  4 ++--
+>   .../bindings/iio/adc/ti,adc108s102.yaml        |  2 +-
+>   .../bindings/media/renesas,rzg2l-cru.yaml      |  4 ++--
+>   .../devicetree/bindings/media/renesas,vin.yaml |  4 ++--
+>   .../devicetree/bindings/mtd/mtd-physmap.yaml   |  2 +-
+>   .../bindings/net/mediatek-dwmac.yaml           |  2 +-
+>   .../bindings/perf/amlogic,g12-ddr-pmu.yaml     |  4 ++--
+>   .../bindings/phy/mediatek,dsi-phy.yaml         |  2 +-
+>   .../remoteproc/amlogic,meson-mx-ao-arc.yaml    |  2 +-
 
-On 2023/7/3 20:31, Krzysztof Kozlowski wrote:
-> [你通常不会收到来自 krzk@kernel.org 的电子邮件。请访问 https://aka.ms/LearnAboutSenderIdentification，以了解这一点为什么很重要]
->
-> On 03/07/2023 11:04, Yangtao Li wrote:
->> There are more than 700 calls to the devm_request_threaded_irq method.
->> Most drivers only request one interrupt resource, and these error
->> messages are basically the same. If error messages are printed
->> everywhere, more than 1000 lines of code can be saved by removing the
->> msg in the driver.
->
-> ...
->
->> +int devm_request_threaded_irq_emsg(struct device *dev, unsigned int irq,
->> +                                irq_handler_t handler, irq_handler_t thread_fn,
->> +                                unsigned long irqflags, const char *devname,
->> +                                void *dev_id, const char *emsg)
->> +{
->> +     int rc;
->> +
->> +     rc = devm_request_threaded_irq(dev, irq, handler, NULL, irqflags,
->> +                                    devname, dev_id);
->> +     if (rc && rc != -EPROBE_DEFER) {
->> +             dev_err(dev, "Failed to request %sinterrupt %u %s %s: %pe\n",
->> +                     thread_fn ? "threaded " : "", irq, devname ? : dev_name(dev),
->> +                     emsg ? : "", ERR_PTR(rc));
-> It is open-coding dev_err_probe(). Just use dev_err_probe instead.
+For amlogic ones:
 
-
-How about the following? If possible, I would like to start modifying 
-more drivers in the next version.
+Acked-by: Neil Armstrong <neil.armstrong@linaro.org>
 
 
-int devm_request_threaded_irq_emsg(struct device *dev, unsigned int irq,
-                                    irq_handler_t handler, irq_handler_t 
-thread_fn,
-                                    unsigned long irqflags, const char 
-*devname,
-                                    void *dev_id, const char *emsg)
-{
-         int rc;
+>   .../devicetree/bindings/usb/mediatek,mtu3.yaml |  2 +-
+>   .../devicetree/bindings/usb/ti,am62-usb.yaml   |  2 +-
+>   15 files changed, 30 insertions(+), 30 deletions(-)
+> 
 
-         rc = devm_request_threaded_irq(dev, irq, handler, NULL, irqflags,
-                                        devname, dev_id);
-         if (rc) {
-                 dev_err_probe(dev, rc, "Failed to request %sinterrupt 
-%u %s %s\n",
-                               thread_fn ? "threaded " : "", irq, 
-devname ? : dev_name(dev),
-                               emsg ? : "");
-         }
-         return rc;
-}
-EXPORT_SYMBOL(devm_request_threaded_irq_emsg);
+<snip>
 
-
-Thx,
-
-Yangtao
-
-
->
-> Best regards,
-> Krzysztof
->
 
