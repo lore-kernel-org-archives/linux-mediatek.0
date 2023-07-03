@@ -4,65 +4,152 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E9DFEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jul 2023 11:33:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC6FFEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jul 2023 11:38:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JheT1Ho9aHeD2vsRDjnOV/i/bOfd2Ohx6r6nofj616w=; b=Nn3iSdE+vbtfjOIJCZyM2z32TW
-	/8eIPKWSzty32j739O9A057eD97kjeDKAhWzR9iTxAXmkFqqOw1+q6MCwoosdq/Pn9rQMP9Z4Q5wf
-	pY3yhv48rahWdEXQZYTgu8Ubs2f4XOQhGVdmV19pK7AexdtCuSfBKXGzaGAVrtXCzrM73PzND+A8k
-	DiQbTCLEpGnaO2bTi64BO4jUcZBY0Ppn3rfcPtRITLuWcW1Ex1S44AMSI0+HCiKTrzWjiGQQRJCp5
-	mim64/sxqm9CNG8qC2mMvbMw6fRah1uR3YZApRc3AZS1IovK6vjA9i4pvojZLg2bQ75EXCZ8qMjum
-	8ksneadw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xEW0yzvbqGnP0wo9EGPV1Cj1KlvBhubKts2BCJ7+8LY=; b=f2X186ZKtH09HwcE4mnrYtVoqa
+	wEqWw43yQRaF9RObh7SCmu0NQ+oLLxQIVn9F80MZ6kYo1UpsyK83QsN8zsjudC4HLASbyEM0jX0aL
+	IX5jjvfWP6rc72MG/3YhC5K/35KgyMUCgNTmMc6zQKw7Mpr9VY+sHpzyXb7eThyLBnFaQZrMtEPax
+	+vvSRH2PMt9Kw6Fsj4ke0atgGzsbssuXn9R1VhSfc9j1D7zkIRm5Yfb3ASmnC/7ygEdkuBrJWXsAD
+	2vE7A3Y7FB4zK9V71YmKfo6EW9nCzo4xebqvyuawZmCtXEmW3pe1qKne40KUbk/CTZ/lT8fiq00Se
+	+ss6qj/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGHnk-00ANN0-2C;
-	Mon, 03 Jul 2023 11:33:04 +0000
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+	id 1qGHsU-00AO63-1I;
+	Mon, 03 Jul 2023 11:37:58 +0000
+Received: from mail-sgaapc01on2072d.outbound.protection.outlook.com ([2a01:111:f400:feab::72d] helo=APC01-SG2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGHnf-00ANL8-1P;
-	Mon, 03 Jul 2023 11:33:02 +0000
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.201])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4QvkJT5H3bz6J6rW;
-	Mon,  3 Jul 2023 19:31:05 +0800 (CST)
-Received: from localhost (10.34.206.101) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Mon, 3 Jul
- 2023 12:32:42 +0100
-Date: Mon, 3 Jul 2023 19:32:38 +0800
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-CC: Leo Yan <leo.yan@linaro.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	<coresight@lists.linaro.org>, <linux-arm-kernel@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-msm@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
-	<freedreno@lists.freedesktop.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-iio@vger.kernel.org>, <linux-media@vger.kernel.org>,
-	<linux-renesas-soc@vger.kernel.org>, <linux-mtd@lists.infradead.org>,
-	<linux-amlogic@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-phy@lists.infradead.org>, <linux-remoteproc@vger.kernel.org>,
-	<linux-usb@vger.kernel.org>
-Subject: Re: [PATCH] dt-bindings: cleanup DTS example whitespaces
-Message-ID: <20230703193238.00006d61@Huawei.com>
-In-Reply-To: <20230702182308.7583-1-krzysztof.kozlowski@linaro.org>
-References: <20230702182308.7583-1-krzysztof.kozlowski@linaro.org>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+	id 1qGHsR-00AO4x-0X;
+	Mon, 03 Jul 2023 11:37:56 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GtrHmJDY/+9c6++d6tSrXd+58duE/V7Mo8qfA9lbP0WUs2bLgQ1aJnVWPzfexfOHSkMlXqXoEzDbwM75cA3NFzgAGGN2fLSGSSLSmUpsclvOgS0hqLLkk+EYkbftwc7dcRWNReXo5jB+cO855pgsqqb7YYA6GMRo0GiyEtmlvuCN3mOpBjK6CVYnnkjwFJZ6zPgKWw0jht5Cw50GiSqCPWSk7xvvOvRuOVB3TrvLT/WnAKgY5XRk1zFOmqKstAd3guM25+CfptC6MVgeTgmqdrGG1SXHlcZ2h4YMeH6wWyChhhrr30fo+NzMEAS6VNAMfAG2B9wAt4k7rWNwRYW/SA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xEW0yzvbqGnP0wo9EGPV1Cj1KlvBhubKts2BCJ7+8LY=;
+ b=K/s6ln1mhEQU6qsP5qrY7Bm41wdd1ZqlNHB1t5vCqnnMdD+2+70hgxm40ji3DuDjd+OOOtvzVVYMHKSF16rVGKmJklEmALa2463PftEe4dqbw0Tg1PF3jV3d5uwyQLX1A5cyiY63WPpS3axWoqxY25vmIdy7PuFIpf+dBxta3ITV6Xn8XmevkQlM6D+JdGkICwaAPFyX6JuCNproJU5a+qVcOMBfQ9Em+wF0lG/t6f3ATc3H30+M556/Occ+lSEw3FB1znFE62F1z+/RJpb69B0ObJKEk3QHRzl3XagjhI7uoDs8a7kIzHdoLBoEtaYUTAwu4eB3C4893dfGzoyE4Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xEW0yzvbqGnP0wo9EGPV1Cj1KlvBhubKts2BCJ7+8LY=;
+ b=pOU2yVZmXOxyvx/LJg2Bn1L1d+7u9QOC5TX8IytombwYhqyLKCbG1TLhvUUi6RYT1/FZdeem4qWBX6Mn6G3+iipo3u7o0RzeiamE6wH88heEauI10UbrivKiREaKBnZcXl/fdQDPW9H4mEb2jZbKhXRgooEzPUXfNJomi7dLcY46aaHWWDtia9F/i6MOChxxXvwpSD1K3JoJ36IRobOMItYVFGzS8p2fMrsM+QZlBLeJ/85jFqAj/mygPRoLhEOAv9+HIXl+prAWtErqN1MSHBlmDbO1bjGKFzW4voOlX2u8wGhZKrOfVKun86r7KhCfciyJMJouApY20ymyA2y0xg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com (2603:1096:101:78::6)
+ by SEZPR06MB6230.apcprd06.prod.outlook.com (2603:1096:101:f1::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6544.24; Mon, 3 Jul
+ 2023 11:37:42 +0000
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::fa0e:6c06:7474:285c]) by SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::fa0e:6c06:7474:285c%5]) with mapi id 15.20.6544.024; Mon, 3 Jul 2023
+ 11:37:42 +0000
+Message-ID: <1d7a3624-8047-1051-41b8-351c5dec672f@vivo.com>
+Date: Mon, 3 Jul 2023 19:37:33 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: [PATCH v2 01/15] genirq/devres: Add error information printing
+ for devm_request_threaded_irq()
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Thomas Gleixner <tglx@linutronix.de>, heiko@sntech.de,
+ hayashi.kunihiko@socionext.com, rafael@kernel.org, amitk@kernel.org,
+ alexandre.torgue@foss.st.com, linux-tegra@vger.kernel.org,
+ thierry.reding@gmail.com, jernej.skrabec@gmail.com,
+ miquel.raynal@bootlin.com, srinivas.pandruvada@linux.intel.com,
+ festevam@gmail.com, linux-stm32@st-md-mailman.stormreply.com,
+ bchihi@baylibre.com, florian.fainelli@broadcom.com,
+ daniel.lezcano@linaro.org, chi.minghao@zte.com.cn, jonathanh@nvidia.com,
+ linux-rockchip@lists.infradead.org, agross@kernel.org,
+ bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com,
+ wenst@chromium.org, rui.zhang@intel.com, thara.gopinath@gmail.com,
+ kernel@pengutronix.de, linux-pm@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, s.hauer@pengutronix.de,
+ linux-mediatek@lists.infradead.org, mmayer@broadcom.com,
+ matthias.bgg@gmail.com, DLG-Adam.Ward.opensource@dm.renesas.com,
+ johan+linaro@kernel.org, angelogioacchino.delregno@collabora.com,
+ linux-arm-kernel@lists.infradead.org, niklas.soderlund+renesas@ragnatech.se,
+ andersson@kernel.org, linux-kernel@vger.kernel.org,
+ shangxiaojing@huawei.com, konrad.dybcio@linaro.org,
+ mcoquelin.stm32@gmail.com, shawnguo@kernel.org
+References: <20230627101215.58798-1-frank.li@vivo.com>
+ <20230627110025.vgtplc6nluiiuvoh@pengutronix.de> <87h6qpyzkd.ffs@tglx>
+ <690b12b7-5586-6ade-de83-99f463bc8397@vivo.com>
+ <20230703095337.27bhco7nkqtxr4me@pengutronix.de>
+From: Yangtao Li <frank.li@vivo.com>
+In-Reply-To: <20230703095337.27bhco7nkqtxr4me@pengutronix.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: SI2PR04CA0016.apcprd04.prod.outlook.com
+ (2603:1096:4:197::7) To SEZPR06MB5269.apcprd06.prod.outlook.com
+ (2603:1096:101:78::6)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.34.206.101]
-X-ClientProxiedBy: lhrpeml100003.china.huawei.com (7.191.160.210) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5269:EE_|SEZPR06MB6230:EE_
+X-MS-Office365-Filtering-Correlation-Id: d9382b72-de61-4fbf-8c41-08db7bb9e97c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Q2fpAyh8rEmaVD9Th9naeN5/iwn2b0ULWMRBkeFvcNKAZMyce6FCIrYGQibYouUG+ZE97qusbOn8zJw9qUSl9Rbj8mpQTXOnEVeiIJq73HCsmVT2lNNiWzv3PyNdPVIf61rRs1HJ/lZU8U8m4W5jeWaI7YHpjiYFs9eqkzZbZXjQZodOU4ST2gNTmIWGarRVcunJhshpf3YYcamA74coYx0dMuIgVXaY3bMtU5gJ0LmBLB5j9FvNlfaMjtEhXcJowcm/ztozV/VDOge5lopz9LYPzxc+/Z9oVVqamhS5k/RdVCqAQRVLuQnLf4S9EP+EK5FNa3pZjsmMz65ui+l/8boP07qwUEbh5C6fw1jX1Py0D3oH4L97xW14Rwgj2v4kcsU5JKrgFQMFsfKtu40S2BaXAeft+7SIk/3F5RGzSpLNeVsietJO4N2aQtVwr+shmYrMnR0kmRFl68bw+ZqFc6UWoSeQnvIKanqiAQ9zB0z+GvLCX+i2gMkUVWcvavCxIRodLgjND0XNNHM521t3/8DotYGlKy3ieiwvchkZa5Th3D9gxIkquwFEYGn2WcMYTU2s9+4O334H6/yZc57Lb+SyusypUKh6eX/ow3WdXCLwu97ws9r40T2gZgH6ZG0l9a3SIuTa9wSIk/C9HN/KlnB56JAV6SkSSQViSMANee4=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5269.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(39860400002)(346002)(366004)(396003)(136003)(376002)(451199021)(41300700001)(6486002)(4744005)(38100700002)(6666004)(52116002)(38350700002)(2616005)(6506007)(26005)(186003)(53546011)(966005)(6512007)(31696002)(86362001)(478600001)(316002)(36756003)(2906002)(66476007)(6916009)(4326008)(66556008)(66946007)(8936002)(8676002)(31686004)(7406005)(7416002)(5660300002)(43740500002)(45980500001);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NXBzRDVvVW9TUjJGdkRZUXhnVDExNHUzV2NwSFJuYjdObGY0cDB2S2ZKenls?=
+ =?utf-8?B?ZHU3NThzRCtzb3JGUE9oZ2hNdlVISGR5c2VUb0FielNkSHJWTHo5OWZGZGFn?=
+ =?utf-8?B?ajhqS3hLdmVXandzWFlXOFY5dHVXK0FNVzV6MWRBbDcwbGl3RUhJVWF2T0hQ?=
+ =?utf-8?B?SW0yY3d3YzBhM0FUTktSSGtwRFFGZ1psa2JlNGkxOVExSDNlYW5pTFFOTkZn?=
+ =?utf-8?B?VUJMaDhGdkdwUFBGc0c5OFRCbmxXOFpVU280TnkxTzFuYi9EaFp5OU5VeG9C?=
+ =?utf-8?B?TFJZci94NXZUZGF1ZXZYT3kwbDd5WW10N3htTnlvbUd0ZU1EY2JYai95RXJL?=
+ =?utf-8?B?UWJOTE1WSmg4R2pEN2FNVFd5OEJsM1JrOFlyQitQWXp1RDdXY0oya1cwLzRE?=
+ =?utf-8?B?cE1EQVNma1k3a21hMGMvZk95NnpTMkNmUlVIVmxuaHhZTlhUMGFNelVTRUlV?=
+ =?utf-8?B?NWxMT2JMQUI4REJlTkt4NDdKS0hESTh1dGllamJnbE1NWnlHTkFZa0h0UjhC?=
+ =?utf-8?B?d0ZSMW1yMjhZdXVBeFU4YzR1ZitHUUVGQzYwKzluaEZlVDR1eWptM3Q5VVd5?=
+ =?utf-8?B?ZVkwdUZPVnJpenJXRnhHZlZ1eERhU3M0OTIwczlhSEl1eExPeHJWS0lyNEE2?=
+ =?utf-8?B?Y3hReEhDUjZiUnJRTE5OWnlVQmhoVklKYURjaldmeEF1azk1RmZJRU4zcVd6?=
+ =?utf-8?B?NVU1YzBHdzNqRlBGR3RlZ0tVMHlRTWhJOWt3L2JVdS9UZ2NxQzcremk4M3JJ?=
+ =?utf-8?B?ODhJaDQwTENGd0lYOFZFMGxWbzYwMzhxL2U1cEhMTXFWbDNzb0Z1bzV3S2cv?=
+ =?utf-8?B?TUxUaVh2cXRHUmF4MHZGLzNuNi9ReStHQVM3OFEzL3JQaGF3eFhoZFVOZy9M?=
+ =?utf-8?B?SnJmZjErYW1HM0MxSXVyRlp6dDBOMGorMWlweFhzS2lST0hGbGxoSXRRQkZq?=
+ =?utf-8?B?aDcxWlJ2YWJZSTYvL0lJRHU1RnY4V0FTV3NmUmxCMCt5SkgzV1NMc1d6Z1RU?=
+ =?utf-8?B?aEI5Y0R1Z2k2ckIvLzJxTnVCeit1WXp0bXdva3A1RHkySDBSL0NuY3Z6OGth?=
+ =?utf-8?B?MjJUM2VyM2JodzdKMTBJbnBjdUV5VDM0MllwTkhUWEdxenpGdXBsQ0piY0Zl?=
+ =?utf-8?B?TnI5Y2I5ZFhPcE9UbTQ4cXRZem5OUFZxRlJRaWdqY0J2UkMxVk1XVlhNSzRa?=
+ =?utf-8?B?OC9PblhTMWtFRTQwNHpXbjNDNU9qZHUxczVYU2ZZZ3c4MnN5WjRrek1aZzd4?=
+ =?utf-8?B?dmtSU2hOSndYam1hemlKMzNBcXNOWUgzQWQxQmgrR0o0NlRHZzRHVWczQkRt?=
+ =?utf-8?B?K2p6RWxXSmhFUU5KZGlPaWRsb0xHOHRZc25BVFhRYjZSTTcwQ2RPL1VPMm1X?=
+ =?utf-8?B?WWswazFVQ0JYTXZ3NFg4NjN3Qk0rNkZuQ0o2amt2V0ZsQ2YwRktRSHEyeXg0?=
+ =?utf-8?B?RlpDdlgrV2hHbUVPNC93RitHalJtOE1JTWc0NVdpWm40cjVHSDBpRTIyWDV3?=
+ =?utf-8?B?ZVNGb3IzdFBleTVOb213YjR6YnRORE0zalZ6STk5bzI2VTdMdmdqYjhxeGdY?=
+ =?utf-8?B?eTA1NkFQVjNNaExXYkdDVy9CY1JrMGkzRFVvMnFoYzBoNEl3V3ZSWnRuWVU1?=
+ =?utf-8?B?dmdyYlBSaFpsU2JkNS9heTY2Zjd5KzhPdVVETmt1L3o4UkFTVE5KaXU0R2FG?=
+ =?utf-8?B?azNkOXpHQWhtamhpcmxyeHR0d1Q5KzNINnltTXdZNGFzZi84bmZhYWxZSG83?=
+ =?utf-8?B?MmJKdGtiMkVPODg5b1dJZkl5RWJ4Q2FsOThueWpJS2xYMDY0TjdsdFFaWjZU?=
+ =?utf-8?B?ckRzNEV2QWJHSCtFQXpxTWN1VmUycXc1QVorek5ZbXZvVHNQUmswcTFlVkwv?=
+ =?utf-8?B?WEtveUV0SlA5ZXk3UXdmYTVhdDd6T1MzOVVTdnorSWpVQ0ptUVdMbXIvWEEr?=
+ =?utf-8?B?VXZPV25CdFo2aVR6Qk4wN0pKY3RnNDgzYWFkem5HUit6VzJMSEI2WGJjemJw?=
+ =?utf-8?B?T05Ndkswa09SKzlsWk1Hemx6TzB5TVBlc0c1N2MwQ3B0VUVCTEpaRGpEajJl?=
+ =?utf-8?B?ZnVrRDlzaVdnM0p6ZnprMzYwcDZ5OVVPRFkzZ3VxdWs3RzVOWXdKRXhhQVlz?=
+ =?utf-8?Q?eRJ1lRSyI2/wk/+aX/4MrjHhD?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d9382b72-de61-4fbf-8c41-08db7bb9e97c
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5269.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Jul 2023 11:37:42.1808
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: WfHzR2MI7f9s1Xukcn5bOnNvyVM05mKA8D8eeEJAiku/M3fMzPPFK97xTgkRA/H2rh0kEGh2/ml5jbPbD7YCFg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB6230
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230703_043259_780639_00155A32 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20230703_043755_205808_2B48C144 
+X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,305 +164,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun,  2 Jul 2023 20:23:08 +0200
-Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> wrote:
+Hi Uwe,
 
-> The DTS code coding style expects spaces around '=' sign.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> 
-For the IIO one.
-Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+On 2023/7/3 17:53, Uwe Kleine-König wrote:
+> Hello,
+>
+> On Mon, Jul 03, 2023 at 05:13:29PM +0800, Yangtao Li wrote:
+>> [...] v3 has been sent.
+> Please make sure that you send a v3 patch series (at least) to the
+> people who gave you feedback for v2. If you skip people who had general
+> concerns about the whole series, this might help you in the short run
+> because they might miss to also criticise v3, but in the long run it
+> might result in a loss of trust in you.
 
-Thanks for tidying these up.
 
-Jonathan
+Sorry, I'm a little busy. I just added you and Krzysztof Kozlowski in v3.
 
-> ---
-> 
-> Rob,
-> 
-> Maybe this could go via your tree? Rebased on your for-next:
-> v6.4-rc2-45-gf0ac35049606
-> ---
->  .../bindings/arm/arm,coresight-cti.yaml        | 18 +++++++++---------
->  .../bindings/arm/keystone/ti,sci.yaml          |  8 ++++----
->  .../devicetree/bindings/display/msm/gmu.yaml   |  2 +-
->  .../display/panel/samsung,s6e8aa0.yaml         |  2 +-
->  .../display/rockchip/rockchip-vop.yaml         |  4 ++--
->  .../bindings/iio/adc/ti,adc108s102.yaml        |  2 +-
->  .../bindings/media/renesas,rzg2l-cru.yaml      |  4 ++--
->  .../devicetree/bindings/media/renesas,vin.yaml |  4 ++--
->  .../devicetree/bindings/mtd/mtd-physmap.yaml   |  2 +-
->  .../bindings/net/mediatek-dwmac.yaml           |  2 +-
->  .../bindings/perf/amlogic,g12-ddr-pmu.yaml     |  4 ++--
->  .../bindings/phy/mediatek,dsi-phy.yaml         |  2 +-
->  .../remoteproc/amlogic,meson-mx-ao-arc.yaml    |  2 +-
->  .../devicetree/bindings/usb/mediatek,mtu3.yaml |  2 +-
->  .../devicetree/bindings/usb/ti,am62-usb.yaml   |  2 +-
->  15 files changed, 30 insertions(+), 30 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/arm,coresight-cti.yaml b/Documentation/devicetree/bindings/arm/arm,coresight-cti.yaml
-> index 0c5b875cb654..d6c84b6e7fe6 100644
-> --- a/Documentation/devicetree/bindings/arm/arm,coresight-cti.yaml
-> +++ b/Documentation/devicetree/bindings/arm/arm,coresight-cti.yaml
-> @@ -287,7 +287,7 @@ examples:
->              arm,trig-in-sigs = <0 1>;
->              arm,trig-in-types = <PE_DBGTRIGGER
->                                   PE_PMUIRQ>;  
-> -            arm,trig-out-sigs=<0 1 2 >;
-> +            arm,trig-out-sigs = <0 1 2 >;
->              arm,trig-out-types = <PE_EDBGREQ
->                                    PE_DBGRESTART
->                                    PE_CTIIRQ>;  
-> @@ -309,24 +309,24 @@ examples:
->  
->        trig-conns@0 {
->          reg = <0>;
-> -        arm,trig-in-sigs=<0>;
-> -        arm,trig-in-types=<GEN_INTREQ>;
-> -        arm,trig-out-sigs=<0>;
-> -        arm,trig-out-types=<GEN_HALTREQ>;
-> +        arm,trig-in-sigs = <0>;
-> +        arm,trig-in-types = <GEN_INTREQ>;
-> +        arm,trig-out-sigs = <0>;
-> +        arm,trig-out-types = <GEN_HALTREQ>;
->          arm,trig-conn-name = "sys_profiler";
->        };
->  
->        trig-conns@1 {
->          reg = <1>;
-> -        arm,trig-out-sigs=<2 3>;
-> -        arm,trig-out-types=<GEN_HALTREQ GEN_RESTARTREQ>;
-> +        arm,trig-out-sigs = <2 3>;
-> +        arm,trig-out-types = <GEN_HALTREQ GEN_RESTARTREQ>;
->          arm,trig-conn-name = "watchdog";
->        };
->  
->        trig-conns@2 {
->          reg = <2>;
-> -        arm,trig-in-sigs=<1 6>;
-> -        arm,trig-in-types=<GEN_HALTREQ GEN_RESTARTREQ>;
-> +        arm,trig-in-sigs = <1 6>;
-> +        arm,trig-in-types = <GEN_HALTREQ GEN_RESTARTREQ>;
->          arm,trig-conn-name = "g_counter";
->        };
->      };
-> diff --git a/Documentation/devicetree/bindings/arm/keystone/ti,sci.yaml b/Documentation/devicetree/bindings/arm/keystone/ti,sci.yaml
-> index 91b96065f7df..86b59de7707e 100644
-> --- a/Documentation/devicetree/bindings/arm/keystone/ti,sci.yaml
-> +++ b/Documentation/devicetree/bindings/arm/keystone/ti,sci.yaml
-> @@ -96,8 +96,8 @@ examples:
->        compatible = "ti,k2g-sci";
->        ti,system-reboot-controller;
->        mbox-names = "rx", "tx";
-> -      mboxes= <&msgmgr 5 2>,
-> -              <&msgmgr 0 0>;
-> +      mboxes = <&msgmgr 5 2>,
-> +               <&msgmgr 0 0>;
->        reg-names = "debug_messages";
->        reg = <0x02921800 0x800>;
->      };
-> @@ -107,8 +107,8 @@ examples:
->        compatible = "ti,k2g-sci";
->        ti,host-id = <12>;
->        mbox-names = "rx", "tx";
-> -      mboxes= <&secure_proxy_main 11>,
-> -              <&secure_proxy_main 13>;
-> +      mboxes = <&secure_proxy_main 11>,
-> +               <&secure_proxy_main 13>;
->        reg-names = "debug_messages";
->        reg = <0x44083000 0x1000>;
->  
-> diff --git a/Documentation/devicetree/bindings/display/msm/gmu.yaml b/Documentation/devicetree/bindings/display/msm/gmu.yaml
-> index 029d72822d8b..65b02c7a1211 100644
-> --- a/Documentation/devicetree/bindings/display/msm/gmu.yaml
-> +++ b/Documentation/devicetree/bindings/display/msm/gmu.yaml
-> @@ -225,7 +225,7 @@ examples:
->      #include <dt-bindings/interrupt-controller/arm-gic.h>
->  
->      gmu: gmu@506a000 {
-> -        compatible="qcom,adreno-gmu-630.2", "qcom,adreno-gmu";
-> +        compatible = "qcom,adreno-gmu-630.2", "qcom,adreno-gmu";
->  
->          reg = <0x506a000 0x30000>,
->                <0xb280000 0x10000>,
-> diff --git a/Documentation/devicetree/bindings/display/panel/samsung,s6e8aa0.yaml b/Documentation/devicetree/bindings/display/panel/samsung,s6e8aa0.yaml
-> index 1cdc91b3439f..200fbf1c74a0 100644
-> --- a/Documentation/devicetree/bindings/display/panel/samsung,s6e8aa0.yaml
-> +++ b/Documentation/devicetree/bindings/display/panel/samsung,s6e8aa0.yaml
-> @@ -74,7 +74,7 @@ examples:
->              vdd3-supply = <&vcclcd_reg>;
->              vci-supply = <&vlcd_reg>;
->              reset-gpios = <&gpy4 5 0>;
-> -            power-on-delay= <50>;
-> +            power-on-delay = <50>;
->              reset-delay = <100>;
->              init-delay = <100>;
->              panel-width-mm = <58>;
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
-> index 6f43d885c9b3..df61cb5f5c54 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
-> @@ -121,11 +121,11 @@ examples:
->          #size-cells = <0>;
->          vopb_out_edp: endpoint@0 {
->            reg = <0>;
-> -          remote-endpoint=<&edp_in_vopb>;
-> +          remote-endpoint = <&edp_in_vopb>;
->          };
->          vopb_out_hdmi: endpoint@1 {
->            reg = <1>;
-> -          remote-endpoint=<&hdmi_in_vopb>;
-> +          remote-endpoint = <&hdmi_in_vopb>;
->          };
->        };
->      };
-> diff --git a/Documentation/devicetree/bindings/iio/adc/ti,adc108s102.yaml b/Documentation/devicetree/bindings/iio/adc/ti,adc108s102.yaml
-> index 9b072b057f16..a60b1e100ee4 100644
-> --- a/Documentation/devicetree/bindings/iio/adc/ti,adc108s102.yaml
-> +++ b/Documentation/devicetree/bindings/iio/adc/ti,adc108s102.yaml
-> @@ -35,7 +35,7 @@ unevaluatedProperties: false
->  examples:
->    - |
->      spi {
-> -        #address-cells= <1>;
-> +        #address-cells = <1>;
->          #size-cells = <0>;
->  
->          adc@0 {
-> diff --git a/Documentation/devicetree/bindings/media/renesas,rzg2l-cru.yaml b/Documentation/devicetree/bindings/media/renesas,rzg2l-cru.yaml
-> index 7dde7967c886..1e72b8808d24 100644
-> --- a/Documentation/devicetree/bindings/media/renesas,rzg2l-cru.yaml
-> +++ b/Documentation/devicetree/bindings/media/renesas,rzg2l-cru.yaml
-> @@ -137,7 +137,7 @@ examples:
->  
->                  cru_parallel_in: endpoint@0 {
->                      reg = <0>;
-> -                    remote-endpoint= <&ov5642>;
-> +                    remote-endpoint = <&ov5642>;
->                      hsync-active = <1>;
->                      vsync-active = <1>;
->                  };
-> @@ -150,7 +150,7 @@ examples:
->  
->                  cru_csi_in: endpoint@0 {
->                      reg = <0>;
-> -                    remote-endpoint= <&csi_cru_in>;
-> +                    remote-endpoint = <&csi_cru_in>;
->                  };
->              };
->          };
-> diff --git a/Documentation/devicetree/bindings/media/renesas,vin.yaml b/Documentation/devicetree/bindings/media/renesas,vin.yaml
-> index 91e8f368fb52..324703bfb1bd 100644
-> --- a/Documentation/devicetree/bindings/media/renesas,vin.yaml
-> +++ b/Documentation/devicetree/bindings/media/renesas,vin.yaml
-> @@ -303,11 +303,11 @@ examples:
->  
->                              vin0csi20: endpoint@0 {
->                                      reg = <0>;
-> -                                    remote-endpoint= <&csi20vin0>;
-> +                                    remote-endpoint = <&csi20vin0>;
->                              };
->                              vin0csi40: endpoint@2 {
->                                      reg = <2>;
-> -                                    remote-endpoint= <&csi40vin0>;
-> +                                    remote-endpoint = <&csi40vin0>;
->                              };
->                      };
->              };
-> diff --git a/Documentation/devicetree/bindings/mtd/mtd-physmap.yaml b/Documentation/devicetree/bindings/mtd/mtd-physmap.yaml
-> index f8c976898a95..18f6733408b4 100644
-> --- a/Documentation/devicetree/bindings/mtd/mtd-physmap.yaml
-> +++ b/Documentation/devicetree/bindings/mtd/mtd-physmap.yaml
-> @@ -164,7 +164,7 @@ examples:
->              reg = <0 0xf80000>;
->          };
->          firmware@f80000 {
-> -            label ="firmware";
-> +            label = "firmware";
->              reg = <0xf80000 0x80000>;
->              read-only;
->          };
-> diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-> index 0fa2132fa4f4..400aedb58205 100644
-> --- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-> +++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-> @@ -156,7 +156,7 @@ examples:
->          reg = <0x1101c000 0x1300>;
->          interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
->          interrupt-names = "macirq";
-> -        phy-mode ="rgmii-rxid";
-> +        phy-mode = "rgmii-rxid";
->          mac-address = [00 55 7b b5 7d f7];
->          clock-names = "axi",
->                        "apb",
-> diff --git a/Documentation/devicetree/bindings/perf/amlogic,g12-ddr-pmu.yaml b/Documentation/devicetree/bindings/perf/amlogic,g12-ddr-pmu.yaml
-> index 50f46a6898b1..4adab0149108 100644
-> --- a/Documentation/devicetree/bindings/perf/amlogic,g12-ddr-pmu.yaml
-> +++ b/Documentation/devicetree/bindings/perf/amlogic,g12-ddr-pmu.yaml
-> @@ -42,8 +42,8 @@ examples:
->    - |
->      #include <dt-bindings/interrupt-controller/arm-gic.h>
->      pmu {
-> -        #address-cells=<2>;
-> -        #size-cells=<2>;
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
->  
->          pmu@ff638000 {
->              compatible = "amlogic,g12a-ddr-pmu";
-> diff --git a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
-> index 26f2b887cfc1..b8d77165c4a1 100644
-> --- a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
-> +++ b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
-> @@ -83,7 +83,7 @@ examples:
->          clocks = <&clk26m>;
->          clock-output-names = "mipi_tx0_pll";
->          drive-strength-microamp = <4000>;
-> -        nvmem-cells= <&mipi_tx_calibration>;
-> +        nvmem-cells = <&mipi_tx_calibration>;
->          nvmem-cell-names = "calibration-data";
->          #clock-cells = <0>;
->          #phy-cells = <0>;
-> diff --git a/Documentation/devicetree/bindings/remoteproc/amlogic,meson-mx-ao-arc.yaml b/Documentation/devicetree/bindings/remoteproc/amlogic,meson-mx-ao-arc.yaml
-> index 3100cb870170..76e8ca44906a 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/amlogic,meson-mx-ao-arc.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/amlogic,meson-mx-ao-arc.yaml
-> @@ -75,7 +75,7 @@ additionalProperties: false
->  examples:
->    - |
->      remoteproc@1c {
-> -      compatible= "amlogic,meson8-ao-arc", "amlogic,meson-mx-ao-arc";
-> +      compatible = "amlogic,meson8-ao-arc", "amlogic,meson-mx-ao-arc";
->        reg = <0x1c 0x8>, <0x38 0x8>;
->        reg-names = "remap", "cpu";
->        resets = <&media_cpu_reset>;
-> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-> index 478214ab045e..a59d91243ac8 100644
-> --- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-> @@ -304,7 +304,7 @@ examples:
->    # Dual role switch with type-c
->    - |
->      usb@11201000 {
-> -        compatible ="mediatek,mt8183-mtu3", "mediatek,mtu3";
-> +        compatible = "mediatek,mt8183-mtu3", "mediatek,mtu3";
->          reg = <0x11201000 0x2e00>, <0x11203e00 0x0100>;
->          reg-names = "mac", "ippc";
->          interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_LOW>;
-> diff --git a/Documentation/devicetree/bindings/usb/ti,am62-usb.yaml b/Documentation/devicetree/bindings/usb/ti,am62-usb.yaml
-> index d25fc708e32c..fec5651f5602 100644
-> --- a/Documentation/devicetree/bindings/usb/ti,am62-usb.yaml
-> +++ b/Documentation/devicetree/bindings/usb/ti,am62-usb.yaml
-> @@ -92,7 +92,7 @@ examples:
->  
->          usb@31100000 {
->            compatible = "snps,dwc3";
-> -          reg =<0x00 0x31100000 0x00 0x50000>;
-> +          reg = <0x00 0x31100000 0x00 0x50000>;
->            interrupts = <GIC_SPI 226 IRQ_TYPE_LEVEL_HIGH>, /* irq.0 */
->                         <GIC_SPI 226 IRQ_TYPE_LEVEL_HIGH>; /* irq.0 */
->            interrupt-names = "host", "peripheral";
+If others are interested in the follow-up series, please refer to the 
+following link:
 
+
+https://lore.kernel.org/lkml/20230703090455.62101-1-frank.li@vivo.com/
+
+
+Thx,
+
+Yangtao
+
+
+>
+> Best regards
+> Uwe
+>
 
