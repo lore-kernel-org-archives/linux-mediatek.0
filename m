@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FFF4EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 12:12:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 657F4EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 12:12:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Aki8YNbvh30Nl8pX9xiOk388ddaYLT9xHkDQwZcUgns=; b=QsEZ8fSdRVO89KxzQ+kBYUMm8j
-	w0MyZAOFWQwCSoyIZdQHJ6ve99WN5hsHm4VUg4Q3zUKUAap7LBVHkwkkjb9b7aNcgtQEJQICKGHjz
-	HXl2GS4YK9nEZDr03FWFVFOYRxLFQ2QlX5RQwl5L+0M55H4p7dUyf0URHHXRySthgOkniepgHWFDD
-	RR4LQ00+/ivIrkH+TT2CytkZ5nvGYoA0aEBDKHzjLBGDkd05hOntFEUyQELrwZn4ZTyIwMlg5GV0D
-	kyPH+77O9KUt7fV8Lf07/gLOn1+vKrw3QLgTsRUx0a0m21b1kby3JGocpdVT2eIEXAfZ+agxdIMpQ
-	DGonnvng==;
+	bh=tmEwpDjQzt8Wrh5LhOwSF1TvqZRLWjIm0y06o6wkYas=; b=FeRYxCXZhJAsn9dW5wiANLgka8
+	SoaO/TurQK6m6s/E7pN3UQ0EULhfbRxkcd2CjUAQrXfuFacan2TcBKqvH3MbYYUIdNJmEFvIJNuoX
+	HR99hbnGZcNFqLM4SXfi0NqZVHwMZOgOUtxWirDdJIzZVAH1b65EVqrfawIMrtmaREmFR5Ix4e7qn
+	uPlx4tw5FhHbVjbY7ZM9guJFzGVPx24XJ51//C3DyfX0INY/77vEbFfQtf/Q3gB+WW/dm77ko6Qmd
+	WR1H6/QcTIxMqGwYdsQ5cZImYBlXekdDPZr02K0p0FiQan9m9fLBBci+WKpWJ3OndZ1WvB8Z5busl
+	r4fuUl6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGetX-00DCz7-1d;
-	Tue, 04 Jul 2023 12:12:35 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qGetc-00DD2Z-2Q;
+	Tue, 04 Jul 2023 12:12:40 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGetU-00DCvk-1A;
-	Tue, 04 Jul 2023 12:12:33 +0000
+	id 1qGetZ-00DCze-12;
+	Tue, 04 Jul 2023 12:12:38 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4E1F96606FA2;
-	Tue,  4 Jul 2023 13:12:30 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 430C86606F8B;
+	Tue,  4 Jul 2023 13:12:35 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688472751;
-	bh=P1P/9q4onpwMjyiQG602hRaoNrRzXoH8b1X945zhtAM=;
+	s=mail; t=1688472756;
+	bh=m81zhMsqwoAGDOSTH6ejhk/fOg6PD4k9wD4iK9/Qq0I=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=C71tfIEusVtlX580C9ELSJo8phI4SpDiLr9nkMgjg4EkdvbYzzBh8klrCoLl5JDpY
-	 svONfH40auZA1XiNp9K+IP+NV0coCIXseuXVSbeOWjKTq4IGVDwr+k65QuuGBDxmvf
-	 CK1+240ofHdU1xgMH5sRoNTjBGjWfhkkxOwwyqfoc+wS7JJVKtf0zCSW1/G24ABcI3
-	 9TLXfMd9tTxIKj0lgLUdbROadDCabJF0GModd/MmmWnzwAFmcDcQvNqCCoWmti75bM
-	 l8Zj1z7hbP5QWM2L3jB3Uag0qx7G4AWyIRy2dt7K7hiM0eR7EW+T1QQ3Y0jB6k/r0B
-	 Z54vFg4q5c3OA==
-Message-ID: <6f5ac0a3-51dd-184b-c116-def6d7d853c4@collabora.com>
-Date: Tue, 4 Jul 2023 14:12:27 +0200
+	b=CaLbceKfuR5ERuq55mB/JMZnRyWKc6ZbK55Kh9YFRDHyGtYGmmTfaru/VTBBgSnzx
+	 5UJL+86+QTh9o0WUJZ9eCij9923UmwmJhZtEV5yADTzcWBkllHAL4OcSBPNIHNNmXD
+	 1bUT7WT/sDqiCj2U+CLvkFwB9A79i8QHo8Y4bcOuWr+wWe98p7GzqKW/aN4orz55B+
+	 lrpGkcW0L7jH6XDSK2ZtZUR6N7NMdfLPJrL81Ujgk7iuuxHqTpeZY+5Ct1yX8Hrj4I
+	 0OGOWLLZgUuLdyNlAERFL1jcDF91HGtg37HtOr2/3O5skLh5xNBMzHE2Tyew32qfaI
+	 UBARDE8QaotPQ==
+Message-ID: <230b19b4-36ab-9bea-2ad9-27c756e0ddfd@collabora.com>
+Date: Tue, 4 Jul 2023 14:12:32 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH v5,02/11] media: mediatek: vcodec: align fw interface
+Subject: Re: [PATCH v5,01/11] media: mediatek: vcodec: remove unused parameter
 Content-Language: en-US
 To: Yunfei Dong <yunfei.dong@mediatek.com>,
  =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
@@ -63,14 +63,14 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20230704111327.7140-1-yunfei.dong@mediatek.com>
- <20230704111327.7140-3-yunfei.dong@mediatek.com>
+ <20230704111327.7140-2-yunfei.dong@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230704111327.7140-3-yunfei.dong@mediatek.com>
+In-Reply-To: <20230704111327.7140-2-yunfei.dong@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230704_051232_546889_9A977E4B 
-X-CRM114-Status: UNSURE (   7.46  )
+X-CRM114-CacheID: sfid-20230704_051237_487922_D1265FF8 
+X-CRM114-Status: UNSURE (   7.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,9 +87,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 04/07/23 13:13, Yunfei Dong ha scritto:
-> Align scp and vpu firmware interface, remove the depedency for
-> 'struct mtk_vcodec_dev' and 'struct mtk_vcodec_ctx'. It will be
-> much easier to separate video encoder and decoder.
+> remove unused parameter in struct mtk_vcodec_dev.
 > 
 > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 > Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
