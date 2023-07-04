@@ -4,77 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F89CEB64D9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 11:57:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1032CEB64D9
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 11:59:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kDmDXnjKdjFDPlrVeD7IKJ7Ywmn7ZI+Wx6K1yIaJQEA=; b=yOGvQEs8fM6ZvQc+BypbhqEM1+
-	IDegvDU3sHGj1p5KUNncGk2MsvDCiCMwYG8LOVpeR2BhFft4i5w9TzrYNcUFg3Q/dhEEDlkjPiB/W
-	YzbLzBVpl/L5yTPNcleTzNy5sq+yHoFLI66khIQnukVt5+J/eII9ZYfIKzDS7l2qRySiKyJPPKGYF
-	jV3UBVXH6GHPxFSzO3Cr9Q7KCbhT3TBoIYKA6YT7/vig7eiPnoodVGIqmrE0uukAD22bBh39pbdWq
-	hKIjGYVgxnxrIx0DCS1WGnLUU5Fv2+zLHEhWJcQGnQIiSs5ACqjrmaNHmQHsWPTgpQFjBpA33Xj4p
-	tQ87CXrw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bMmNrkShGVA71KxKJnxzePNooENal3aOpd971s3sSnY=; b=b3g0xl7OYavjp0RieqrE30M94y
+	RkxBKoj64+flKXoNCdxygK+UNd9tR6sY7uQ/9CxGoWjGoTvPmTOXG6zPmnuBCus2Dxl/Gg0hOBtHg
+	Sog5R4EqqQjwCurOQlORqlOtmOwtOUNi2pKo+mmfZu/Lc5lTGCsCFuYL2ujeEqntvjAYn7NQsVXF3
+	wNXh+j0nmdAbmb1BQ7ZVLGSo2uXC2nxXHIF9ywqJUgI/WiXvWb9pF6msBERLPZzpU+z0YranDopko
+	4w4kDWkbKQA/HMDK5Z/C/8lO8lY0SrZuy7DpQlpjpHqILvb7ECftX9VECkboG9WUGkmvVld0MY2C2
+	wcGEsXDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGeeM-00DB2x-1A;
-	Tue, 04 Jul 2023 11:56:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qGeh4-00DBID-21;
+	Tue, 04 Jul 2023 11:59:42 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGeeJ-00DB2B-10;
-	Tue, 04 Jul 2023 11:56:52 +0000
-X-UUID: d81c1c601a6111ee912e1518a6540028-20230704
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=kDmDXnjKdjFDPlrVeD7IKJ7Ywmn7ZI+Wx6K1yIaJQEA=;
-	b=U0+UN2ctIVNOINxIiOMPfSIuBl9lpsKl3hpCqX2xCsIMfbTzI2JtgIzMmHlH32EW0guaNVhvSxsdT5RSbJvHG1jn7l1ZJJfUu+9sWpYab0HzshDV+rndfjcVLuu5HU4PwxMG17a7dLAManHQTMvKBTZ4Fd69VqImXhPHDAtSP5Q=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:59e5e2cd-eb0f-4b72-9964-45bceebd50af,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:95
-X-CID-INFO: VERSION:1.1.27,REQID:59e5e2cd-eb0f-4b72-9964-45bceebd50af,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:95
-X-CID-META: VersionHash:01c9525,CLOUDID:1f68d90d-c22b-45ab-8a43-3004e9216b56,B
-	ulkID:230704195642DL3I3ZRD,BulkQuantity:2,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
-	TF_CID_SPAM_FSD
-X-UUID: d81c1c601a6111ee912e1518a6540028-20230704
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 744830507; Tue, 04 Jul 2023 04:56:43 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 4 Jul 2023 19:56:40 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 4 Jul 2023 19:56:40 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yong Wu
-	<yong.wu@mediatek.com>, <iommu@lists.linux.dev>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH] iommu/mediatek: Remove a unnecessary checking for larbid
-Date: Tue, 4 Jul 2023 19:56:34 +0800
-Message-ID: <20230704115634.7727-1-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1qGeh0-00DBGV-2B;
+	Tue, 04 Jul 2023 11:59:40 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C0B016606F8B;
+	Tue,  4 Jul 2023 12:59:33 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1688471974;
+	bh=KgU5DuxFUlWjByoqrF+GPfDgTBGAD9hOjf3Ly37cgqs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=fdBWQfwuZBznWUYGHIr/rz/kbQjYSdDK7qDNCIKOMIp1XdclZ69Dcg7GobbIKwz/b
+	 QL64xOyyMioXnY3Qi3jQK9bPlyZ3ZQd2w/MATPgT34stogd0s3p/T5tr0O7Qz83JEt
+	 tY2YkUUmiFKDvkeGeuT3yAPubmOqK5JmcCSFncow8/zKDdaNZ7BN3ynUOONI/oe8r9
+	 AfJEYrtldXbK64l38u+rpduGdafU0sOJObgLxWZDaBqOHGAGH8nb4FY9nuo/+QFglw
+	 UO2vfpORoPUzggZZqA9wmda/38RX+warBCFEysAt52DddiWzCtbUAbDQi/3GCgMujv
+	 QwvmPfFOHlT4A==
+Message-ID: <e3b3a035-508d-1422-30eb-876fd38795e3@collabora.com>
+Date: Tue, 4 Jul 2023 13:59:30 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [v4, PATCH] drm/mediatek: add dma buffer control for drm plane
+ disable
+Content-Language: en-US
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, CK Hu <ck.hu@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Sumit Semwal <sumit.semwal@linaro.org>, Maxime Ripard <maxime@cerno.tech>,
+ Thomas Zimmermann <tzimmermann@suse.de>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org,
+ linaro-mm-sig@lists.linaro.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Hsin-Yi Wang <hsinyi@chromium.org>
+References: <20230704090432.5844-1-yongqiang.niu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230704090432.5844-1-yongqiang.niu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230704_045651_499060_53134D0C 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20230704_045939_039344_B9896799 
+X-CRM114-Status: GOOD (  21.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +85,136 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix a coverity issue:
+Il 04/07/23 11:04, Yongqiang Niu ha scritto:
+> dma buffer release before overlay disable, that will cause
+> m4u translation fault warning.
+> 
+> add dma buffer control flow in mediatek driver:
+> get dma buffer when drm plane disable
+> put dma buffer when overlay really disable
+> 
+> Fixes: 41016fe1028e4 ("drm: Rename plane->state variables in atomic update and disable")
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 
->>assignment: Assigning: larbid = (fwspec->ids[0] >> 5) & 0x1fU.
-	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
->>between: At condition larbid >= 32U, the value of larbid must be between
->>0 and 31.
->>dead_error_condition: The condition larbid >= 32U cannot be true.
-	if (larbid >= MTK_LARB_NR_MAX)
->>CID 11306470 (#1 of 1): Logically dead code (DEADCODE)
->>dead_error_line: Execution cannot reach this statement:
->>return ERR_PTR(-22L);
-        	return ERR_PTR(-EINVAL);
+Hello,
 
-The checking "if (larbid >= MTK_LARB_NR_MAX)" is unnecessary.
+could you please rebase this over [1] for linux-next, while retaining this for
+stable backports?
 
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
----
-Rebase on v6.4-rc1.
----
- drivers/iommu/mtk_iommu.c | 3 ---
- 1 file changed, 3 deletions(-)
+[1]: 
+https://lore.kernel.org/lkml/20230623094931.117918-1-angelogioacchino.delregno@collabora.com/
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index aecc7d154f28..67caa90b481b 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -838,9 +838,6 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
- 	 * All the ports in each a device should be in the same larbs.
- 	 */
- 	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
--	if (larbid >= MTK_LARB_NR_MAX)
--		return ERR_PTR(-EINVAL);
--
- 	for (i = 1; i < fwspec->num_ids; i++) {
- 		larbidx = MTK_M4U_TO_LARB(fwspec->ids[i]);
- 		if (larbid != larbidx) {
--- 
-2.25.1
+Thanks,
+Angelo
+
+> ---
+>   drivers/gpu/drm/mediatek/mtk_drm_crtc.c  | 25 ++++++++++++++++++++++++
+>   drivers/gpu/drm/mediatek/mtk_drm_plane.c | 12 ++++++++++++
+>   drivers/gpu/drm/mediatek/mtk_drm_plane.h |  1 +
+>   3 files changed, 38 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index d40142842f85..49d671100785 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -4,6 +4,7 @@
+>    */
+>   
+>   #include <linux/clk.h>
+> +#include <linux/dma-buf.h>
+>   #include <linux/dma-mapping.h>
+>   #include <linux/mailbox_controller.h>
+>   #include <linux/pm_runtime.h>
+> @@ -283,6 +284,23 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
+>   	return NULL;
+>   }
+>   
+> +static void mtk_drm_dma_buf_put(struct mtk_drm_crtc *mtk_crtc)
+> +{
+> +	unsigned int i;
+> +
+> +	for (i = 0; i < mtk_crtc->layer_nr; i++) {
+> +		struct drm_plane *plane = &mtk_crtc->planes[i];
+> +		struct mtk_plane_state *plane_state;
+> +
+> +		plane_state = to_mtk_plane_state(plane->state);
+> +
+> +		if (plane_state && plane_state->pending.dma_buf) {
+> +			dma_buf_put(plane_state->pending.dma_buf);
+> +			plane_state->pending.dma_buf = NULL;
+> +		}
+> +	}
+> +}
+> +
+>   #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+>   static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
+>   {
+> @@ -323,6 +341,8 @@ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
+>   		mtk_crtc->pending_async_planes = false;
+>   	}
+>   
+> +	mtk_drm_dma_buf_put(mtk_crtc);
+> +
+>   	mtk_crtc->cmdq_vblank_cnt = 0;
+>   	wake_up(&mtk_crtc->cb_blocking_queue);
+>   }
+> @@ -624,9 +644,14 @@ static void mtk_crtc_ddp_irq(void *data)
+>   	else if (mtk_crtc->cmdq_vblank_cnt > 0 && --mtk_crtc->cmdq_vblank_cnt == 0)
+>   		DRM_ERROR("mtk_crtc %d CMDQ execute command timeout!\n",
+>   			  drm_crtc_index(&mtk_crtc->base));
+> +
+> +	if (!mtk_crtc->cmdq_client.chan)
+> +		mtk_drm_dma_buf_put(mtk_crtc);
+>   #else
+>   	if (!priv->data->shadow_register)
+>   		mtk_crtc_ddp_config(crtc, NULL);
+> +
+> +	mtk_drm_dma_buf_put(mtk_crtc);
+>   #endif
+>   	mtk_drm_finish_page_flip(mtk_crtc);
+>   }
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+> index 31f9420aff6f..66e6393e45ee 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+> @@ -12,6 +12,7 @@
+>   #include <drm/drm_framebuffer.h>
+>   #include <drm/drm_gem_atomic_helper.h>
+>   #include <linux/align.h>
+> +#include <linux/dma-buf.h>
+>   
+>   #include "mtk_drm_crtc.h"
+>   #include "mtk_drm_ddp_comp.h"
+> @@ -266,6 +267,17 @@ static void mtk_plane_atomic_disable(struct drm_plane *plane,
+>   	struct drm_plane_state *new_state = drm_atomic_get_new_plane_state(state,
+>   									   plane);
+>   	struct mtk_plane_state *mtk_plane_state = to_mtk_plane_state(new_state);
+> +	struct drm_plane_state *old_state = drm_atomic_get_old_plane_state(state,
+> +									   plane);
+> +
+> +	if (old_state && old_state->fb) {
+> +		struct drm_gem_object *gem = old_state->fb->obj[0];
+> +
+> +		if (gem && gem->dma_buf) {
+> +			get_dma_buf(gem->dma_buf);
+> +			mtk_plane_state->pending.dma_buf = gem->dma_buf;
+> +		}
+> +	}
+>   	mtk_plane_state->pending.enable = false;
+>   	wmb(); /* Make sure the above parameter is set before update */
+>   	mtk_plane_state->pending.dirty = true;
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+> index 99aff7da0831..3aba0b58ef3c 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+> @@ -33,6 +33,7 @@ struct mtk_plane_pending_state {
+>   	bool				async_dirty;
+>   	bool				async_config;
+>   	enum drm_color_encoding		color_encoding;
+> +	struct dma_buf			*dma_buf;
+>   };
+>   
+>   struct mtk_plane_state {
+
 
 
