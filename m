@@ -4,72 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F768EB64DD
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 09:01:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B5F0EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 09:05:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FGaQkTb7NVL71r3VqkfBk/1SCRC9sQdqYnOL9DOZuBk=; b=JSfZ1h3001UWJxTiX+46ltirmq
-	X9GPEuEY5uPP4YvBDq8ICPmgTwtd7mjyapA/U/IG+9+1xVA3/fgeYqPH9pVlgNIaQ8ZLRO/7ueAFl
-	IZ71VmozZSzE/DkcC6+l3Z3JdH/xL4LYFi82KSpEMPIhrHIBWSYjupORDkUofRxwPZiPKBx9Jd0Gx
-	osgdyHi7pF5N8HoxfVhjcCIl+EpEiwhKJMLeTAICMcq4xXmo17dxLm41ct9tA2QAV6KThYmkkIw3T
-	z8Nwg0mW/mRiDJUvDiTGDRNSv7GEIH6xsVjPDle/USA2UWIh1FN4Wj3+cFp2LjtTR3b4nDGncUtdg
-	6Kst/dYQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EeeCzi6ljX+yHjCEA1XGs6HbrLUAR9Zd/iDelBuY6Do=; b=PFbfgpJukHsvT3iq8P7nvZ9+KI
+	qS9/QguvYfckLoXeFZVUwp0j4xZY9FteAesM4kfIedYnbNIcy4W2MpufcH9t2kyD/DpLjGbIdgycg
+	Vm9DulA8GS49TyesC5aiAHMAgRnOVXJ0+33POh7erN8bzNzI0+I6tOK3RVk85dHa2U7b70L+UzhBB
+	3cw8D6PDy5PBPLj54+Ac39BSe2UYWnHv0gbTPks5zGXc01qvOlm3OUQ8pi+55jfsIn/0/u0kWkob9
+	d51oX8RNRJP3aI0NBsF5evL5CV+WOoodvrbTlxU2RZSFn8orNPMCupvB91bV268uNq7DNLp2SMjWO
+	si3i+QqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGbuP-00CeFi-0n;
-	Tue, 04 Jul 2023 09:01:17 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qGbyO-00Ceqz-2t;
+	Tue, 04 Jul 2023 09:05:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGbuM-00CeEg-1L;
-	Tue, 04 Jul 2023 09:01:15 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E5D856606ED1;
-	Tue,  4 Jul 2023 10:01:11 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688461272;
-	bh=Sc7fq+rTOlTB0mP3kaMF9Dy8NIoMJX8FCQ4muEAYp6A=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=O2D7hTO3dCooM7TV2L607b3CAeHCPy9CXrnmemtTqdcNVqW3OaHCRHR7Xei0SA5X1
-	 vR/6dkqKCAqnF1iRFd2yFrNM+f0POcDBln/YzdOD1ymssEJMSXIcUgLELMu/sLZEeY
-	 n4zoBbPJpqXb6euNRgMglQZzpvMxg21TtOct7VM2CnY94lp7H+Vbob7KG1rg1EGRpG
-	 9WfDXiRGDAc56LsxFAjplAI1ZXwOXwvFq38TS1FF5ClTKSIRaiwKJl2ftQ2qvmPGW6
-	 oYmxqDzfh34SUJECqwaNwfc5Bgat0skEr9UrvPg6b38fUwaS3HauJbn4ExwnCMPnkG
-	 l0WxMXD+1tSRg==
-Message-ID: <bb13702f-801d-57f4-64d1-077dd977d43b@collabora.com>
-Date: Tue, 4 Jul 2023 11:01:09 +0200
+	id 1qGbyL-00Ceoz-3D;
+	Tue, 04 Jul 2023 09:05:23 +0000
+X-UUID: e200d1ca1a4911ee83ed1395ce914268-20230704
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=EeeCzi6ljX+yHjCEA1XGs6HbrLUAR9Zd/iDelBuY6Do=;
+	b=qxx8YWwIyVDvcQqj3f1TtEd3KIYIeIob9K8lR6lolMhSy4eGiIqS7hzq1v/S425IcDxNJIKLh60ll3I6H3Alknkr4ReZmetwngzzG7pu0mOGw6qdL+i+R6zfzOxr6sVbMVeLevaNifBGM5R/1jlW9IXmBKtKhqfHSp2dXj9tDNs=;
+X-CID-UNFAMILIAR: 1
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.27,REQID:ea655e82-e7bf-4295-b30e-33b5dbe0f6f1,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-INFO: VERSION:1.1.27,REQID:ea655e82-e7bf-4295-b30e-33b5dbe0f6f1,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:100
+X-CID-META: VersionHash:01c9525,CLOUDID:73e0d70d-c22b-45ab-8a43-3004e9216b56,B
+	ulkID:230704170455S86V99IS,BulkQuantity:3,Recheck:0,SF:19|48|38|29|28|16,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_USA,
+	TF_CID_SPAM_FSD
+X-UUID: e200d1ca1a4911ee83ed1395ce914268-20230704
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <yongqiang.niu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1861335064; Tue, 04 Jul 2023 02:05:12 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 4 Jul 2023 17:04:35 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 4 Jul 2023 17:04:33 +0800
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, CK Hu <ck.hu@mediatek.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+CC: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Sumit Semwal
+	<sumit.semwal@linaro.org>, Maxime Ripard <maxime@cerno.tech>, Thomas
+ Zimmermann <tzimmermann@suse.de>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-media@vger.kernel.org>,
+	<linaro-mm-sig@lists.linaro.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
+	<hsinyi@chromium.org>, Yongqiang Niu <yongqiang.niu@mediatek.com>
+Subject: [v4, PATCH] drm/mediatek: add dma buffer control for drm plane disable
+Date: Tue, 4 Jul 2023 17:04:32 +0800
+Message-ID: <20230704090432.5844-1-yongqiang.niu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v2 1/7] ASoC: mediatek: mt7986: add common header
-Content-Language: en-US
-To: Maso Huang <maso.huang@mediatek.com>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Trevor Wu <trevor.wu@mediatek.com>,
- Jiaxin Yu <jiaxin.yu@mediatek.com>, Ren Zhijie <renzhijie2@huawei.com>,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>, alsa-devel@alsa-project.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230626023501.11120-1-maso.huang@mediatek.com>
- <20230626023501.11120-2-maso.huang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230626023501.11120-2-maso.huang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230704_020114_594744_C0A61DC0 
-X-CRM114-Status: GOOD (  18.75  )
+X-CRM114-CacheID: sfid-20230704_020522_035168_7B5E5D4C 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,112 +96,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/06/23 04:34, Maso Huang ha scritto:
-> Add header files for register definition and structure.
-> 
-> Signed-off-by: Maso Huang <maso.huang@mediatek.com>
-> ---
->   sound/soc/mediatek/mt7986/mt7986-afe-common.h |  51 +++++
->   sound/soc/mediatek/mt7986/mt7986-reg.h        | 206 ++++++++++++++++++
->   2 files changed, 257 insertions(+)
->   create mode 100644 sound/soc/mediatek/mt7986/mt7986-afe-common.h
->   create mode 100644 sound/soc/mediatek/mt7986/mt7986-reg.h
-> 
-> diff --git a/sound/soc/mediatek/mt7986/mt7986-afe-common.h b/sound/soc/mediatek/mt7986/mt7986-afe-common.h
-> new file mode 100644
-> index 000000000000..646e1be4fdce
-> --- /dev/null
-> +++ b/sound/soc/mediatek/mt7986/mt7986-afe-common.h
-> @@ -0,0 +1,51 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * mt7986-afe-common.h  --  MediaTek 7986 audio driver definitions
-> + *
-> + * Copyright (c) 2021 MediaTek Inc.
-> + * Author: Vic Wu <vic.wu@mediatek.com>
-> + *         Maso Huang <maso.huang@mediatek.com>
-> + */
-> +
-> +#ifndef _MT_7986_AFE_COMMON_H_
-> +#define _MT_7986_AFE_COMMON_H_
-> +
-> +#include <sound/soc.h>
-> +#include <linux/clk.h>
-> +#include <linux/list.h>
-> +#include <linux/regmap.h>
-> +#include "../common/mtk-base-afe.h"
-> +
-> +enum {
-> +	MT7986_MEMIF_DL1,
-> +	MT7986_MEMIF_VUL12,
-> +	MT7986_MEMIF_NUM,
-> +	MT7986_DAI_ETDM = MT7986_MEMIF_NUM,
-> +	MT7986_DAI_NUM,
-> +};
-> +
-> +enum {
-> +	MT7986_IRQ_0,
-> +	MT7986_IRQ_1,
-> +	MT7986_IRQ_2,
-> +	MT7986_IRQ_NUM,
-> +};
-> +
-> +struct clk;
-> +
-> +struct mt7986_afe_private {
-> +	struct clk_bulk_data *clks;
-> +	int num_clks;
-> +
-> +	int pm_runtime_bypass_reg_ctl;
-> +
-> +	/* dai */
-> +	void *dai_priv[MT7986_DAI_NUM];
-> +};
-> +
-> +unsigned int mt7986_afe_rate_transform(struct device *dev,
-> +				       unsigned int rate);
-> +
-> +/* dai register */
-> +int mt7986_dai_etdm_register(struct mtk_base_afe *afe);
-> +#endif
-> diff --git a/sound/soc/mediatek/mt7986/mt7986-reg.h b/sound/soc/mediatek/mt7986/mt7986-reg.h
-> new file mode 100644
-> index 000000000000..6433cdf3da92
-> --- /dev/null
-> +++ b/sound/soc/mediatek/mt7986/mt7986-reg.h
-> @@ -0,0 +1,206 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * mt7986-reg.h  --  MediaTek 7986 audio driver reg definition
-> + *
-> + * Copyright (c) 2021 MediaTek Inc.
-> + * Author: Vic Wu <vic.wu@mediatek.com>
-> + *         Maso Huang <maso.huang@mediatek.com>
-> + */
-> +
-> +#ifndef _MT7986_REG_H_
-> +#define _MT7986_REG_H_
+dma buffer release before overlay disable, that will cause
+m4u translation fault warning.
 
-..snip..
+add dma buffer control flow in mediatek driver:
+get dma buffer when drm plane disable
+put dma buffer when overlay really disable
 
-> +/* ETDM_OUT5_CON4 */
-> +#define OUT_RELATCH(x)                  ((x) << 24)
-> +#define OUT_RELATCH_SFT                 24
-> +#define OUT_RELATCH_MASK                GENMASK(28, 24)
-> +#define OUT_CLK_SRC(x)                  ((x) << 6)
-> +#define OUT_CLK_SRC_SFT                 6
-> +#define OUT_CLK_SRC_MASK                GENMASK(8, 6)
-> +#define OUT_SEL_FS(x)                   ((x) << 0)
+Fixes: 41016fe1028e4 ("drm: Rename plane->state variables in atomic update and disable")
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c  | 25 ++++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c | 12 ++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_plane.h |  1 +
+ 3 files changed, 38 insertions(+)
 
-A number shifted by zero bits is equal to itself, so, this statement doesn't
-make sense. I understand why you want a OUT_SEL_FS(x) definition though, so
-you could do it like:
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index d40142842f85..49d671100785 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include <linux/clk.h>
++#include <linux/dma-buf.h>
+ #include <linux/dma-mapping.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/pm_runtime.h>
+@@ -283,6 +284,23 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
+ 	return NULL;
+ }
+ 
++static void mtk_drm_dma_buf_put(struct mtk_drm_crtc *mtk_crtc)
++{
++	unsigned int i;
++
++	for (i = 0; i < mtk_crtc->layer_nr; i++) {
++		struct drm_plane *plane = &mtk_crtc->planes[i];
++		struct mtk_plane_state *plane_state;
++
++		plane_state = to_mtk_plane_state(plane->state);
++
++		if (plane_state && plane_state->pending.dma_buf) {
++			dma_buf_put(plane_state->pending.dma_buf);
++			plane_state->pending.dma_buf = NULL;
++		}
++	}
++}
++
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
+ {
+@@ -323,6 +341,8 @@ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
+ 		mtk_crtc->pending_async_planes = false;
+ 	}
+ 
++	mtk_drm_dma_buf_put(mtk_crtc);
++
+ 	mtk_crtc->cmdq_vblank_cnt = 0;
+ 	wake_up(&mtk_crtc->cb_blocking_queue);
+ }
+@@ -624,9 +644,14 @@ static void mtk_crtc_ddp_irq(void *data)
+ 	else if (mtk_crtc->cmdq_vblank_cnt > 0 && --mtk_crtc->cmdq_vblank_cnt == 0)
+ 		DRM_ERROR("mtk_crtc %d CMDQ execute command timeout!\n",
+ 			  drm_crtc_index(&mtk_crtc->base));
++
++	if (!mtk_crtc->cmdq_client.chan)
++		mtk_drm_dma_buf_put(mtk_crtc);
+ #else
+ 	if (!priv->data->shadow_register)
+ 		mtk_crtc_ddp_config(crtc, NULL);
++
++	mtk_drm_dma_buf_put(mtk_crtc);
+ #endif
+ 	mtk_drm_finish_page_flip(mtk_crtc);
+ }
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+index 31f9420aff6f..66e6393e45ee 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+@@ -12,6 +12,7 @@
+ #include <drm/drm_framebuffer.h>
+ #include <drm/drm_gem_atomic_helper.h>
+ #include <linux/align.h>
++#include <linux/dma-buf.h>
+ 
+ #include "mtk_drm_crtc.h"
+ #include "mtk_drm_ddp_comp.h"
+@@ -266,6 +267,17 @@ static void mtk_plane_atomic_disable(struct drm_plane *plane,
+ 	struct drm_plane_state *new_state = drm_atomic_get_new_plane_state(state,
+ 									   plane);
+ 	struct mtk_plane_state *mtk_plane_state = to_mtk_plane_state(new_state);
++	struct drm_plane_state *old_state = drm_atomic_get_old_plane_state(state,
++									   plane);
++
++	if (old_state && old_state->fb) {
++		struct drm_gem_object *gem = old_state->fb->obj[0];
++
++		if (gem && gem->dma_buf) {
++			get_dma_buf(gem->dma_buf);
++			mtk_plane_state->pending.dma_buf = gem->dma_buf;
++		}
++	}
+ 	mtk_plane_state->pending.enable = false;
+ 	wmb(); /* Make sure the above parameter is set before update */
+ 	mtk_plane_state->pending.dirty = true;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+index 99aff7da0831..3aba0b58ef3c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+@@ -33,6 +33,7 @@ struct mtk_plane_pending_state {
+ 	bool				async_dirty;
+ 	bool				async_config;
+ 	enum drm_color_encoding		color_encoding;
++	struct dma_buf			*dma_buf;
+ };
+ 
+ struct mtk_plane_state {
+-- 
+2.25.1
 
-#define OUT_SEL_FS(x)			(x)
-
-After which,
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Regards,
-Angelo
 
