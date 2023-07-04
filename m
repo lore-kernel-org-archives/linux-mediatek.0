@@ -4,140 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD150EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 09:06:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95A7AEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 09:13:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YB05fvnQ6454a0Ptth7Bjq3CQuGMrioEU9zAHDtZ0AE=; b=4E1jLQuwF6ha73ts/fYSv7rXN6
-	vGvayfrkOC1RzTA2ce7t5xX98GBrZlw4Xa86DTkhgpb1rBNyINc01T1YM6O1MMKfpVNmmtnoKTCs2
-	3KFEdeQjdfWsSh4xY94zhEwYFCKoRdPwD3ArYoAWX2HHAzPTS5ypaZn/+F4zaHNVwtvZoJowdrk/v
-	rCeEg9ILnLXI1m0b/cpuSMjLSZJkdbgU3pyzjJHYw9icEWILlVxmr8K1RYp51Dr5prX9bIAYLV0dq
-	kJ1ewC3L5nhBufQAmayaVp83s3CNfViWpvRlgh77+jMFxXLgMi40sv3PuCXO+8PtVEvisIBbxGHCi
-	d8tBUgAw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=78QCnAMnSQpUXIz2IIrkHGJNHNRWDzh64z8CfaDIJpc=; b=feYY4sOF3nH9pfIskG2UrfgyiZ
+	e4Z2gPotdppweHHBd8DdA2BTkVpSiBAO30+03GNfs3WIdW/ZuARRFOrTOlnTIRtDEPX1hnRsGOA+k
+	DuiMaG1hEaMFK6lp0LmL7bG8brb7A+ydbyM4yOiQD0BlVySyL1f/Pepa1mwcj1qO9MhwrvkU13cv+
+	8TZIwtEx+LZyHH3P1fskB8UOktVIAFx2hxcDvYKp27nmRaKDnXi1IKrzW3r3Z60tHisGCg43ql4F3
+	Wi3+42iYS8Lnw0B7KV06T8lwscHJbGXsstf+sHt0k04Y1BiRw/wryQ71Kf0oPVbcCywAWgQSdKTRF
+	IxVOkwwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGbza-00Cf7f-2t;
-	Tue, 04 Jul 2023 09:06:38 +0000
-Received: from mail-psaapc01on2071b.outbound.protection.outlook.com ([2a01:111:f400:feae::71b] helo=APC01-PSA-obe.outbound.protection.outlook.com)
+	id 1qGc6F-00Cg9v-1p;
+	Tue, 04 Jul 2023 09:13:31 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGbzX-00Cf5y-2N;
-	Tue, 04 Jul 2023 09:06:37 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Y2HxpnVyQ3xhthm+sCxnEGyBFAAyzA3c/2uHXVvBaGXeUBvoeFCCAzmOmVqEnnOl2DdiPqgv+zTciqNWzvNmDK2JlLrrtLeqDCiT9OHzj7tylks6vVQsDfF90noXGbpctuoAxaInw6Lf3DSjpkmAjXm6PJ/r4srYRnnKrEPAyzPgCjizPWRs3Vf9K5onYOGaGxL/ertcJjnrZhVZfq9W84+QXIgvf8udt0fr1g9XAu/XRAakb8hQj8QBy7uU+ic8IdeMOG6a8TOHsoAc62zjqbjHWw4jqf46hfFkiRMQYDS1vi6iBRd+b28PHRZOmzypxaYLvxjquzCJvbiyRM6ogw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=YB05fvnQ6454a0Ptth7Bjq3CQuGMrioEU9zAHDtZ0AE=;
- b=RJc21nEtfO7VZnkVpKxZo5wLyK8uGDdY5+xFb+UEAEmBbBzPGbsyLDLykBRFmaLbgDJ0vll1LM9rwNsRTh6jyazOVoVNWeDBn8dbQOfCToBk3nLkOLMycWu6K25qp4x/cnim7WeLsQhKzVmYSU8Tkdtm66r2PR339/tTkCJaYmtGyBHFPZUr3D+dui/uBPcpkNWSRXdttBNbp6KJ7OGY9avOXdbdwRlcYCRdq0UOmuU5/xDsbdwWhthtmnMs3jJk6R/WRxid7rz9lzEP/iof4CzLCTl+KZsrQ030J2NmieTCxy9M65obo0OmbgKhDA8xteG2vNiAn+1mMsLCqD0otQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
- dkim=pass header.d=vivo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=YB05fvnQ6454a0Ptth7Bjq3CQuGMrioEU9zAHDtZ0AE=;
- b=Xc4XVPIY/SWPfLRCv2uUKC38WEyJiSvFKtJ7lloF88zg6v6FfN7t42RTFfEh4c2LYxxxrgQipYr+lYv5gCFl5JZ8/o5OHjw7tm0Bb9qqO/r/dZTNFzQr37FALkpYACmzo/qkU6U5HTGOsdKw2zRBcIPAj7n1Hz/xkljT2jmYcl+dEjZGWYLH4ONNL+Z65U5Pqsv7nWz/wdrB5jRLvVqipt3mH/Nw7FpJMVijA/VsWOkPgOaChAIdhkKgy/SiHX3/9Lh5uf5Cpbc+posHrO9g+nh2PelrTkpiugJzOFNVH5/xz6jN2+rIyXQUCOt86rpskaZIv+XnNrv8lOfvtwVQPg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=vivo.com;
-Received: from SEZPR06MB5269.apcprd06.prod.outlook.com (2603:1096:101:78::6)
- by SEYPR06MB5062.apcprd06.prod.outlook.com (2603:1096:101:53::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6544.24; Tue, 4 Jul
- 2023 09:06:18 +0000
-Received: from SEZPR06MB5269.apcprd06.prod.outlook.com
- ([fe80::fa0e:6c06:7474:285c]) by SEZPR06MB5269.apcprd06.prod.outlook.com
- ([fe80::fa0e:6c06:7474:285c%5]) with mapi id 15.20.6544.024; Tue, 4 Jul 2023
- 09:06:18 +0000
-Message-ID: <20805fef-d6aa-91d8-999e-04b1d6b7a37a@vivo.com>
-Date: Tue, 4 Jul 2023 17:06:12 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH v3 1/5] genirq/devres: Add
- devm_request_threaded_irq_emsg()
-To: Krzysztof Kozlowski <krzk@kernel.org>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- miquel.raynal@bootlin.com
-Cc: miquel.raynal@bootlin.com, rafael@kernel.org, daniel.lezcano@linaro.org,
- amitk@kernel.org, rui.zhang@intel.com, mmayer@broadcom.com,
- bcm-kernel-feedback-list@broadcom.com, florian.fainelli@broadcom.com,
- tglx@linutronix.de, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, bchihi@baylibre.com,
- wenst@chromium.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230703090455.62101-1-frank.li@vivo.com>
- <20230703090455.62101-2-frank.li@vivo.com>
- <f4873823-fd7e-c6dd-fbc0-eac4a9be52b1@kernel.org>
- <20230703174347.4m6hcmify4jwsozv@pengutronix.de>
- <11052797-b006-11bb-e4eb-987ddd568b24@kernel.org>
-From: Yangtao Li <frank.li@vivo.com>
-In-Reply-To: <11052797-b006-11bb-e4eb-987ddd568b24@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: SGXP274CA0001.SGPP274.PROD.OUTLOOK.COM (2603:1096:4:b8::13)
- To SEZPR06MB5269.apcprd06.prod.outlook.com (2603:1096:101:78::6)
+	id 1qGc6B-00Cg93-1n;
+	Tue, 04 Jul 2023 09:13:29 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 64A046606F97;
+	Tue,  4 Jul 2023 10:13:23 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1688462004;
+	bh=+UQ3wJ7CsnBFYk8FxVMfEoCs8C7XLAIRsUVYc1Mm22w=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=E/AxA8JE41PCtF5GjxclcVxesQ4YexgIMo4X6onAErZ8smkNVVqEbLRUdzinos12M
+	 g/rkKhPWvRoHRA9n5WApg3bBQS7SToRtw2C4o6ZXrk6S6Z32/s9QrvOSwuR4tzvS6J
+	 mz1EPIrlIw3HbGzqL7cAZvYqE7/CiZY586WJE16pvjzfcZM0H+cG3rXYuXaYVX5tUj
+	 yO5xm6bs4QCDW/PmAkM088FI6XLKFX1izK5Vveguzq7X/iPqZpgwF+LLR1VLpSmsoc
+	 jPUYDHoy6SX9ttmfIr4gQqFV92tOZbj6sQvI+q4sNr3jrv7so6qXR9j0UYbINBEUU3
+	 J2lwDPpI9K4RA==
+Message-ID: <d5c0ea7a-e38b-b078-4664-dd451d4e3396@collabora.com>
+Date: Tue, 4 Jul 2023 11:13:20 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SEZPR06MB5269:EE_|SEYPR06MB5062:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2ec8b286-88bf-4ec9-687f-08db7c6ded52
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: g3OCIyWtcIxQvDUojkfVkvRn+twZHvSusHtaLkHpNceNlpDSjaIRi8iyb/BIu/oKCwTtsQTqzo1ITvzUYyL+/kyJrIwvHvwGFhqUHEocScSLFPRt5+SFmogE3crxYzDpbsQsxFaho0+1ZrTP1w1hnslHeu0ebwWKb29OhxghVXkszPxYAiW1W0tw4lbKRy6g4G/qUNeswW6b7gWdAhp0s1P99s7AdF22IpjLPXpk/5NxIfOh5T9mZWFTjrDS+RoUgZzUNBR1cQuCOIvHKw2f+KQPhgaKO2esKxaFdwaHB+oKuVCdeOCc16I8uFOIA3sxHHTNUwevPyhEJtjlr2MjiBPDejHRPpqa2C22mqbeWUR7NqlLhumThggrNrEBVcGEWYZhCt7KFYvaE8LJvdtpzWmT4+JaJP1b5ar0KboTOFikC98Q/u9L6BCF9mohVOkHJ0VrV7yEPJVyjcC+Ym567wBZSdbpm3BeC1317SzokNCiHNZGR2yIeoVJMDXXWdUm9+B+c7eo9TyklLz6YXdIPWr7InDJ/P1eqCU7X8kipYoocnLoy+3HmgZzn0N6pCcZTwVwLOfYURFsWCVYgDP7OOX6HeDRUfpyW2zHc5OklXgsy+X3KK4BY80M8WOLoejEeDOSIZRHynLpnmdx14nxCyJHpjsaZRpP2IjbtuQdeyTP13VSK34EccqLEE/Hy/fe
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5269.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(366004)(396003)(136003)(39860400002)(346002)(376002)(451199021)(2906002)(41300700001)(8936002)(8676002)(7416002)(36756003)(5660300002)(86362001)(31696002)(186003)(2616005)(31686004)(478600001)(26005)(6506007)(6512007)(966005)(6666004)(53546011)(6486002)(52116002)(316002)(66556008)(4326008)(66946007)(38100700002)(38350700002)(66476007)(66574015)(110136005)(83380400001)(43740500002)(45980500001);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UWZHbDJaeERSUHZ6NVh0RkpOdThBOXZndmtBRXZpRS9uRWQwelEzOHBJMWdo?=
- =?utf-8?B?d2FqVnZxdG9jRHhMdFQ0alJ3YU1WUHJSYk0vc29DUm1JYmZGOXE1ZzJXT0Fy?=
- =?utf-8?B?M2pUeEwxY2RBYXFuYkZCZ2pWaFZaWXBjOTBnL0NqMk1oR2lBME9nTFptNkIw?=
- =?utf-8?B?MVVwdm9LVlM5RVVITnhoTE9vaW9pTzlXRWdYLy9wUTczQVFPWTdRUFN4cVpn?=
- =?utf-8?B?Mm5maVVPS0FCYjhnWnlUQVhEWHdobXF5c2txV25vZTBtNDJyQnBqaDNKK2lM?=
- =?utf-8?B?ckw4U3JSZTFseE1wSlk0ZEcxazEwOU1HTlEyVmxnOXptMVZCM0p6T1pGeWlo?=
- =?utf-8?B?TEcwcFN4MUhZTVVReDN3cjRMRzZPVFJQNm9XaithT3FZSkJwNUozTHNpUzRx?=
- =?utf-8?B?QnJQU0pNOE5Mcm9QVkRVbjlKek9UbWtHRHkvclNic0hveEl0d29hcTE0RDJ4?=
- =?utf-8?B?NkpJZ3pnRHI2SVNrc0k3L1lXZ25oODZzakQyZitMNkRuVEJ6UFZKdm5wVTF4?=
- =?utf-8?B?V0ZWSDk2UWdlUFozeGRQRVZZelRBQVNSb2VhT2xoWXkxUXBwT1h3b3BWaFV4?=
- =?utf-8?B?YmRVTGg2cHlzRXUvNDlMRHBzMFZCeFhrSDRLV2h6SGVTUFJSTVIvYm5mZ1hX?=
- =?utf-8?B?QTVralBTak92VER6ZFU2aFJmdnBBWHdpMjVYcEFoWHVLeWsrRTJPNDFYTnoy?=
- =?utf-8?B?V3ZveWM1b3Q3SDdjWmx3OS9iNXJFamppMjczSnlIbDlnZTcyZ0ptVllJQUd0?=
- =?utf-8?B?T0cvWVZrQjNjTmkrcWFoQzhEalJEdWNqbEdBa3Uyb01yN3dZYUkwTUU3SnVW?=
- =?utf-8?B?NkIyaWdmeUVJbjB0NWdGRDdIK1h5b1JXZ0tIbmVNMy9lR2dlaHVLOVkxS21h?=
- =?utf-8?B?L2QwZTFnRDZlWFlISGpiZi8rdk9qSXBoSFlmclRMZTQ4YzZlSkdHWjFLUGZj?=
- =?utf-8?B?aGlkQ1ZLOEtUc29KcVRhT3R1MDVsQlhKUjRYWGR3R2JvQlh4Qy82TVNsbGVL?=
- =?utf-8?B?ZEZOQVhaZFp3d3RteVE3amJUZGJlT0orajhMMTl2RGVmUVE3a2FWOFpYOUE2?=
- =?utf-8?B?RC8rdDJyQmFNdmpHWEtwR0RiNDhORllHNGtRU3ljWkVCYUthcUVrTEJZdEdM?=
- =?utf-8?B?ME1hZ3p0WnJqTUdPY0JBdkg4SituRDN3QVdNbkllTFZVMy9GdXo3VXlydlpk?=
- =?utf-8?B?NC96Zk9LOHdtMS9wOXk3WGRrR0c2bnU4U0hFcmx2QTBZdmRra1JTVGhIS0Fw?=
- =?utf-8?B?NUh6NWFjNmd5bEYzTGM4c2lEcFY2WklFbTE3bkd5ZUJsa3NrNVVUTmhOUWxR?=
- =?utf-8?B?bTBOQzZlcnV5TDZpcGU0Q1ZUbHVNenQzZUt4NElaaUtmTWZyVVZoc0hnaFZF?=
- =?utf-8?B?Zm15c3E1Ukh5Mmw2MzR4NTVFR0xRS25pa3pmRWZudGlsU3pGOFJtZ2Nrb3Zz?=
- =?utf-8?B?SXpLN3I3OTZzN0dqK0Y0UmtZRDJLQUJDM0pXZ296MmJkNlg0eElBRlI4bmpk?=
- =?utf-8?B?c3ZFS28zdzlkbC9adXJNc0owQTExNzNBZnRhZm9RTWQ5M2I5eE0zb1lDK0pZ?=
- =?utf-8?B?eS91SFNkYmdjTVp6bkRtdkpoQVBUNmpRUHYvdyswdjhPT21vNkViTFlqYUJp?=
- =?utf-8?B?UlNUZXlvM0p3UFRlK3JWNGdGZUtoUnlOYmtuSExaeW5DQXBicmI0a3l6UW9V?=
- =?utf-8?B?STEyZXZIY3c4N09yOUg2Z2pCeFV6L1M0VXNCd05aalJma2N0MGFqdnMrZHNs?=
- =?utf-8?B?elNrRFBQa3ZZcy8zSHE5Sm1RZlpJeDVaVkVDdTNmWVg5bTJhcmtKTThVNW1E?=
- =?utf-8?B?cngyNVd3azYraVVDMzZQOHBubFU4YkttQnI3ekIrNTJOOERoUnBBVHJ2Sm5W?=
- =?utf-8?B?VGwrZ2VHOTN6QnNkUVZtZTFoWnkwZEJsdG5iTzJHaEZzOStNck92cEt6dFhE?=
- =?utf-8?B?aGRLR2JpR0RsQzBrMUhmZ2RBVk14QXJ2ZE5uY1hmT1ZoMzJrYjFyWjBENjNM?=
- =?utf-8?B?eDVvdlZKUUdrK05IcmtwejN2ZE5SQVhjVmRhNHBxTGx2ODhZRG5yUUxvNHFZ?=
- =?utf-8?B?VS9obWs0UDR0YXZxbFFnZGtMMVAwR1pNeGp6M21JWGRyU1BoN3RES00vSmtC?=
- =?utf-8?Q?kYRMdJZD8W5VrWBVg423scfnI?=
-X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2ec8b286-88bf-4ec9-687f-08db7c6ded52
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5269.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Jul 2023 09:06:18.0974
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: yRP6Z0l3V+LtL/rgIUS4xA3wbnruAmCH/wHQY2sTkEsqNJy9IqxMtPqvECN0NEOxWToGlzoxwr0VbMqUIFF1dg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB5062
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v2 4/7] ASoC: mediatek: mt7986: add platform driver
+Content-Language: en-US
+To: Maso Huang <maso.huang@mediatek.com>, Liam Girdwood
+ <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Trevor Wu <trevor.wu@mediatek.com>,
+ Jiaxin Yu <jiaxin.yu@mediatek.com>, Ren Zhijie <renzhijie2@huawei.com>,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>, alsa-devel@alsa-project.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230626023501.11120-1-maso.huang@mediatek.com>
+ <20230626023501.11120-5-maso.huang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230626023501.11120-5-maso.huang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230704_020635_797473_B5B693E8 
-X-CRM114-Status: GOOD (  15.09  )
+X-CRM114-CacheID: sfid-20230704_021327_893774_B8EA9B46 
+X-CRM114-Status: GOOD (  31.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,61 +84,333 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023/7/4 16:48, Krzysztof Kozlowski wrote:
+Il 26/06/23 04:34, Maso Huang ha scritto:
+> Add mt7986 platform driver.
+> 
+> Signed-off-by: Maso Huang <maso.huang@mediatek.com>
+> ---
+>   sound/soc/mediatek/Kconfig                 |  10 +
+>   sound/soc/mediatek/Makefile                |   1 +
+>   sound/soc/mediatek/mt7986/Makefile         |   9 +
+>   sound/soc/mediatek/mt7986/mt7986-afe-pcm.c | 598 +++++++++++++++++++++
+>   4 files changed, 618 insertions(+)
+>   create mode 100644 sound/soc/mediatek/mt7986/Makefile
+>   create mode 100644 sound/soc/mediatek/mt7986/mt7986-afe-pcm.c
+> 
 
-> [你通常不会收到来自 krzk@kernel.org 的电子邮件。请访问 https://aka.ms/LearnAboutSenderIdentification，以了解这一点为什么很重要]
->
-> On 03/07/2023 19:43, Uwe Kleine-König wrote:
->> Hello Krzysztof,
->>
->> On Mon, Jul 03, 2023 at 02:31:59PM +0200, Krzysztof Kozlowski wrote:
->>> On 03/07/2023 11:04, Yangtao Li wrote:
->>>> There are more than 700 calls to the devm_request_threaded_irq method.
->>>> Most drivers only request one interrupt resource, and these error
->>>> messages are basically the same. If error messages are printed
->>>> everywhere, more than 1000 lines of code can be saved by removing the
->>>> msg in the driver.
->>>
->>> ...
->>>
->>>> +int devm_request_threaded_irq_emsg(struct device *dev, unsigned int irq,
->>>> +                              irq_handler_t handler, irq_handler_t thread_fn,
->>>> +                              unsigned long irqflags, const char *devname,
->>>> +                              void *dev_id, const char *emsg)
->>>> +{
->>>> +   int rc;
->>>> +
->>>> +   rc = devm_request_threaded_irq(dev, irq, handler, NULL, irqflags,
->>>> +                                  devname, dev_id);
->>>> +   if (rc && rc != -EPROBE_DEFER) {
->>>> +           dev_err(dev, "Failed to request %sinterrupt %u %s %s: %pe\n",
->>>> +                   thread_fn ? "threaded " : "", irq, devname ? : dev_name(dev),
->>>> +                   emsg ? : "", ERR_PTR(rc));
->>> It is open-coding dev_err_probe(). Just use dev_err_probe instead.
->> dev_err_probe is supposed to be only called in probe functions, while
->> devm_request_threaded_irq might be called in other contexts (e.g. when a
->> device is opened). That's why I asked to not use dev_err_probe() in v2
-> True, but then all the callers of this function will forget to set
-> deferred probe reason.
+..snip..
+
+> diff --git a/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c b/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c
+> new file mode 100644
+> index 000000000000..9eef21762e93
+> --- /dev/null
+> +++ b/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c
+> @@ -0,0 +1,598 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * MediaTek ALSA SoC AFE platform driver for MT7986
+> + *
+> + * Copyright (c) 2021 MediaTek Inc.
+> + * Author: Vic Wu <vic.wu@mediatek.com>
+> + *         Maso Huang <maso.huang@mediatek.com>
+> + */
+> +
+> +#include <linux/delay.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_address.h>
+> +#include <linux/pm_runtime.h>
+> +
+> +#include "mt7986-afe-common.h"
+> +#include "mt7986-afe-clk.h"
+> +#include "mt7986-reg.h"
+> +#include "../common/mtk-afe-platform-driver.h"
+> +#include "../common/mtk-afe-fe-dai.h"
+> +
+> +enum {
+> +	MTK_AFE_RATE_8K = 0,
+> +	MTK_AFE_RATE_11K = 1,
+> +	MTK_AFE_RATE_12K = 2,
+> +	MTK_AFE_RATE_16K = 4,
+> +	MTK_AFE_RATE_22K = 5,
+> +	MTK_AFE_RATE_24K = 6,
+> +	MTK_AFE_RATE_32K = 8,
+> +	MTK_AFE_RATE_44K = 9,
+> +	MTK_AFE_RATE_48K = 10,
+> +	MTK_AFE_RATE_88K = 13,
+> +	MTK_AFE_RATE_96K = 14,
+> +	MTK_AFE_RATE_176K = 17,
+> +	MTK_AFE_RATE_192K = 18,
+> +};
+> +
+> +unsigned int mt7986_afe_rate_transform(struct device *dev,
+> +				       unsigned int rate)
+
+Fits in one line.
+
+> +{
+> +	switch (rate) {
+> +	case 8000:
+> +		return MTK_AFE_RATE_8K;
+> +	case 11025:
+> +		return MTK_AFE_RATE_11K;
+> +	case 12000:
+> +		return MTK_AFE_RATE_12K;
+> +	case 16000:
+> +		return MTK_AFE_RATE_16K;
+> +	case 22050:
+> +		return MTK_AFE_RATE_22K;
+> +	case 24000:
+> +		return MTK_AFE_RATE_24K;
+> +	case 32000:
+> +		return MTK_AFE_RATE_32K;
+> +	case 44100:
+> +		return MTK_AFE_RATE_44K;
+> +	case 48000:
+> +		return MTK_AFE_RATE_48K;
+> +	case 88200:
+> +		return MTK_AFE_RATE_88K;
+> +	case 96000:
+> +		return MTK_AFE_RATE_96K;
+> +	case 176400:
+> +		return MTK_AFE_RATE_176K;
+> +	case 192000:
+> +		return MTK_AFE_RATE_192K;
+> +	default:
+> +		dev_warn(dev, "%s(), rate %u invalid, use %d!!!\n",
+
+s/use/using/g
+
+> +			 __func__, rate, MTK_AFE_RATE_48K);
+> +		return MTK_AFE_RATE_48K;
+> +	}
+> +}
+> +
+
+..snip..
+
+> +
+> +static bool mt7986_is_volatile_reg(struct device *dev, unsigned int reg)
+> +{
+> +	/* these auto-gen reg has read-only bit, so put it as volatile */
+> +	/* volatile reg cannot be cached, so cannot be set when power off */
+
+Fix the comment format please; for multi-line comments, you want:
+
+	/*
+	 * Those auto-gen regs are read-only, so put it a volatile because
+	 * volatile registers cannot be cached, which means that they cannot
+	 * be set when power is off
+	 */
 
 
-So let's use dev_err_probe?
+> +	switch (reg) {
+> +	case AFE_DL0_CUR_MSB:
+> +	case AFE_DL0_CUR:
+> +	case AFE_DL0_RCH_MON:
+> +	case AFE_DL0_LCH_MON:
+> +	case AFE_VUL0_CUR_MSB:
+> +	case AFE_VUL0_CUR:
+> +	case AFE_IRQ_MCU_STATUS:
+> +	case AFE_MEMIF_RD_MON:
+> +	case AFE_MEMIF_WR_MON:
+> +		return true;
+> +	default:
+> +		return false;
+> +	};
+> +}
+> +
 
+..snip..
 
-BTW, any suggestions for names here, keep using 
-devm_request_threaded_irq_emsg or change to a new name?
+> +
+> +static int mt7986_afe_pcm_dev_probe(struct platform_device *pdev)
+> +{
+> +	struct mtk_base_afe *afe;
+> +	struct mt7986_afe_private *afe_priv;
+> +	struct device *dev;
+> +	int i, irq_id, ret;
+> +
+> +	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
+> +	if (!afe)
+> +		return -ENOMEM;
+> +	platform_set_drvdata(pdev, afe);
+> +
+> +	afe->platform_priv = devm_kzalloc(&pdev->dev, sizeof(*afe_priv),
+> +					  GFP_KERNEL);
+> +	if (!afe->platform_priv)
+> +		return -ENOMEM;
+> +
+> +	afe_priv = afe->platform_priv;
+> +	afe->dev = &pdev->dev;
+> +	dev = afe->dev;
+> +
+> +	afe->base_addr = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(afe->base_addr))
+> +		return PTR_ERR(afe->base_addr);
+> +
+> +	/* initial audio related clock */
+> +	ret = mt7986_init_clock(afe);
 
-I am afraid that after more drivers are changed in the follow-up series, 
-the name will need to be changed again.
+As said in the review for patch [2/7], function mt7986_init_clock() must be moved
+in this file instead.
 
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Cannot initialize clocks\n");
+> +
+> +	ret = devm_pm_runtime_enable(dev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* enable clock for regcache get default value from hw */
+> +	afe_priv->pm_runtime_bypass_reg_ctl = true;
+> +	pm_runtime_get_sync(&pdev->dev);
+> +
+> +	afe->regmap = devm_regmap_init_mmio(&pdev->dev, afe->base_addr,
+> +		      &mt7986_afe_regmap_config);
 
-Thx,
+	pm_runtime_put_sync(&pdev->dev);
+	if (IS_ERR(afe->regmap))
+		return PTR_ERR(afe->regmap);
 
-Yangtao
+	afe_prov->pm_runtime_bypass_reg_ctl = false;
 
+that's better :-)
 
->
-> Best regards,
-> Krzysztof
->
+> +	if (IS_ERR(afe->regmap)) {
+> +		ret = PTR_ERR(afe->regmap);
+> +		goto err_pm_disable;
+> +	}
+> +
+> +	pm_runtime_put_sync(&pdev->dev);
+> +	afe_priv->pm_runtime_bypass_reg_ctl = false;
+> +
+> +	/* init memif */
+> +	afe->memif_size = MT7986_MEMIF_NUM;
+> +	afe->memif = devm_kcalloc(dev, afe->memif_size, sizeof(*afe->memif),
+> +				  GFP_KERNEL);
+> +	if (!afe->memif)
+> +		goto err_pm_disable;
+> +
+> +	for (i = 0; i < afe->memif_size; i++) {
+> +		afe->memif[i].data = &memif_data[i];
+> +		afe->memif[i].irq_usage = -1;
+> +	}
+> +
+> +	mutex_init(&afe->irq_alloc_lock);
+> +
+> +	/* irq initialize */
+> +	afe->irqs_size = MT7986_IRQ_NUM;
+> +	afe->irqs = devm_kcalloc(dev, afe->irqs_size, sizeof(*afe->irqs),
+> +				 GFP_KERNEL);
+> +	if (!afe->irqs)
+> +		goto err_pm_disable;
+> +
+> +	for (i = 0; i < afe->irqs_size; i++)
+> +		afe->irqs[i].irq_data = &irq_data[i];
+> +
+> +	/* request irq */
+> +	irq_id = platform_get_irq(pdev, 0);
+> +	if (irq_id < 0) {
+> +		dev_err(dev, "%pOFn no irq found\n", dev->of_node);
+> +		ret = irq_id;
+> +		goto err_pm_disable;
+
+You can just return... and please use dev_err_probe().
+
+> +	}
+> +	ret = devm_request_irq(dev, irq_id, mt7986_afe_irq_handler,
+> +			       IRQF_TRIGGER_NONE, "asys-isr", (void *)afe);
+> +	if (ret) {
+> +		dev_err(dev, "could not request_irq for asys-isr\n");
+> +		goto err_pm_disable;
+> +	}
+> +
+> +	/* init sub_dais */
+> +	INIT_LIST_HEAD(&afe->sub_dais);
+> +
+> +	for (i = 0; i < ARRAY_SIZE(dai_register_cbs); i++) {
+> +		ret = dai_register_cbs[i](afe);
+> +		if (ret) {
+> +			dev_err(afe->dev, "dai register i %d fail, ret %d\n",
+> +				 i, ret);
+> +			goto err_pm_disable;
+> +		}
+> +	}
+> +
+> +	/* init dai_driver and component_driver */
+> +	ret = mtk_afe_combine_sub_dai(afe);
+> +	if (ret) {
+> +		dev_err(afe->dev, "mtk_afe_combine_sub_dai fail, ret %d\n",
+> +			 ret);
+> +		goto err_pm_disable;
+> +	}
+> +
+> +	afe->mtk_afe_hardware = &mt7986_afe_hardware;
+> +	afe->memif_fs = mt7986_memif_fs;
+> +	afe->irq_fs = mt7986_irq_fs;
+> +
+> +	afe->runtime_resume = mt7986_afe_runtime_resume;
+> +	afe->runtime_suspend = mt7986_afe_runtime_suspend;
+> +
+> +	/* register component */
+> +	ret = devm_snd_soc_register_component(&pdev->dev,
+> +					      &mt7986_afe_component,
+> +					      NULL, 0);
+> +	if (ret) {
+> +		dev_warn(dev, "err_platform\n");
+
+That shall not be a dev_warn, but a dev_err() instead, but then, being this
+a probe function and not needing that jump, it's dev_err_probe().
+
+> +		goto err_pm_disable;
+> +	}
+> +
+> +	ret = devm_snd_soc_register_component(afe->dev,
+> +					      &mt7986_afe_pcm_dai_component,
+> +					      afe->dai_drivers,
+> +					      afe->num_dai_drivers);
+> +	if (ret) {
+> +		dev_warn(dev, "err_dai_component\n");
+
+Same here.
+
+> +		goto err_pm_disable;
+> +	}
+> +
+> +	return ret;
+> +
+> +err_pm_disable:
+
+You don't need this label because you're now using devm_pm_runtime_enable() and,
+following my advice from some lines up, pm_runtime_put_sync() is called at the
+right time already.
+
+This means that you can simplify this function a lot with directly returning the
+error in error paths (including instances of dev_err_probe() ).
+
+> +	pm_runtime_put_sync(&pdev->dev);
+> +	pm_runtime_disable(&pdev->dev);
+> +	return ret;
+> +}
+> +
+> +static void mt7986_afe_pcm_dev_remove(struct platform_device *pdev)
+> +{
+> +	pm_runtime_disable(&pdev->dev);
+> +	if (!pm_runtime_status_suspended(&pdev->dev))
+> +		mt7986_afe_runtime_suspend(&pdev->dev);
+> +}
+> +
+> +static const struct of_device_id mt7986_afe_pcm_dt_match[] = {
+> +	{ .compatible = "mediatek,mt7986-afe", },
+
+You don't need the comma here               ^^
+so this is just
+
+	{ .compatible = "mediatek,mt7986-afe" },
+
+Everything else looks fine.
+
+Regards,
+Angelo
 
