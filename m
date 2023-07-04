@@ -4,74 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC0EEEB64D9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 12:13:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2F89EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 12:19:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7oOiD4mO8tmgWq8nEdHXF4OMxt99RieLs1o2xIelmVE=; b=aorPamHARtluCosoNKfpgAfEES
-	acwJtk99JUQzO4V90is3s765myKeAZsW7tXGfEzecZTfTXS7NRRlJfiFfvo8E2iO4DdCmrQFTSgp/
-	qHj/3by2k2NUH1GSsPzo/g7Y3ZPW3uQq/ksugW7kKhFR181h/LR2bdWzBtdXBO4koo24RM814dhet
-	zO4cEdS4qzrMiGbbNqPNUTqnJMrojpNl8H6rRnyCgIDkpM/LhtS7laKQC7RAHV0j2s+pO5np3dg7B
-	iLuOnEGAAmxsn+GQYdFVGeYSVz/rfkMUroktHRQcD90GwQ73vLOmXAorFoPz4AqrJpSnJkdYutbyv
-	iQ+XOxAg==;
+	bh=KKCA1EjzLu/f4Y3XqRUvJsqRwPYoUiARF7aJqtiVvvw=; b=vD340ZEYsQbaxHlT6RsLOi5DAm
+	Ysrn7m5BY0Ci/7/vBKBBy7KVmvb+1dRzUMYo8FW+spGLp8pYT79Wa3p8iFnoUOS5cz6OJoZeJhvjt
+	cKDP18y9gQFZvHaSDG4TnCbh2waDpI2jltgawbUQRVoA6ZxiUm0vDc1ca2NXg23y/oY81TSYBSdiL
+	O4WpHqJWLJJtYpahzrADF74uZlM59LAf5d5hw8RCQUpz+2xbtLpLqF6kMrRW2aS/fgxMTM6/4YUFs
+	ZYueTCaTVniDgz9HynCNs+r0FUR7AMfPxClsZNzHr2mJkQVX/6neGWY6xyl0arXZwUQ/Ir+caeZ2Q
+	CvOrwIHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGeu3-00DDQz-1r;
-	Tue, 04 Jul 2023 12:13:07 +0000
+	id 1qGf0V-00DEqz-1v;
+	Tue, 04 Jul 2023 12:19:47 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGety-00DDLF-1Z;
-	Tue, 04 Jul 2023 12:13:03 +0000
+	id 1qGf0R-00DEqC-2l;
+	Tue, 04 Jul 2023 12:19:45 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 740D26606FA2;
-	Tue,  4 Jul 2023 13:13:00 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D60666606F8B;
+	Tue,  4 Jul 2023 13:19:41 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688472781;
-	bh=tOFsOkcAsXmj1UCEfgpXX2h+aSRe7EftJRLlt/+7qCM=;
+	s=mail; t=1688473182;
+	bh=1oWRHgWywTxFreiAWM2GmCCYIbq74sCQZlxzaMR2F5I=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AqsedoFSQYO55RmHLaK9GtLwH9m86sxbuLzsekqXEx0ge9WgPfnMXfvn3zOoHefXy
-	 B92+hXz0eD3Nc5h88FO6XmqWsGEQgkt2ChG62SxbKtH0vcy2Zwcwn4Uv5YS1oNpsQ0
-	 35jnahbhJZ2lBQeYl3NxI75CKGQOcImnkCv+NEoKI0jtXxdoFY8/IylnO1LXmvh4s7
-	 Zi5ZJMbTjPG5hK6+B40SJ0LsuTRWsHLMQZ96XD5g0IsHO0yZJ/++/zsjkCqOIAZtQh
-	 hzSV+ZElglbGPBg8JhAduKjAF55bGZnmhRVeFJcz2jIoqmKxPjbYG7Gm6QpJbDW3Dw
-	 6rzUjawzzDF0w==
-Message-ID: <c3b46f84-9257-0996-9be9-4db78f311395@collabora.com>
-Date: Tue, 4 Jul 2023 14:12:57 +0200
+	b=Pz6J+Pt/H8MEotnjUi90buA0wjG8N0JnRe8nNdu00gtpfh4wQR606INVxJl8k1OG+
+	 kXksYP8/Rglq/gdt1ImqusTeOTGUn7Ax54m9TfiCOJeR3qoIdv1MzX95TTc+WS+QN8
+	 NesEJvaDJAJZI/FmOXTbjlQZw+SS5SkR9gUAWhI2CIJal75IG+YPFrRVE8pf2x8b4E
+	 GMZ5+v4Qoa7gtH5xMIcMMaM1KeuJZ7FUkqDIrCuehvPwUrJAPZKsF53K5VcdynxQwh
+	 vTjONOyUvbqnIPRqcwl4XheGwwtSV1uuNTMe32gpHis5nWVankxqQtC7HkC0aWP1Fj
+	 rI7TqeCnRZ+Pg==
+Message-ID: <633be7a7-0bb8-1575-535e-2f96302198bd@collabora.com>
+Date: Tue, 4 Jul 2023 14:19:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH v5,03/11] media: mediatek: vcodec: Removing struct
- 'mtk_vcodec_ctx/dev' for shared interface
+Subject: Re: [PATCH] iommu/mediatek: Remove a unnecessary checking for larbid
 Content-Language: en-US
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Nathan Hebert <nhebert@chromium.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230704111327.7140-1-yunfei.dong@mediatek.com>
- <20230704111327.7140-4-yunfei.dong@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20230704115634.7727-1-yong.wu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230704111327.7140-4-yunfei.dong@mediatek.com>
+In-Reply-To: <20230704115634.7727-1-yong.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230704_051302_661629_757A019B 
-X-CRM114-Status: GOOD (  16.19  )
+X-CRM114-CacheID: sfid-20230704_051944_042688_793D2776 
+X-CRM114-Status: GOOD (  20.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,50 +77,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/07/23 13:13, Yunfei Dong ha scritto:
-> The shared struct 'mtk_vcodec_ctx/dev' will be changed to 'mtk_vcodec_enc_ctx/dev'
-> and 'mtk_vcodec_dec_ctx/dev' in order to separate encoder and decoder. Removing
-> common struct 'mtk_vcodec_ctx/dev' for shared interface which encoder and decoder
-> used at the same time. Then encoder and decoder can call the same interface
-> independently.
+Il 04/07/23 13:56, Yong Wu ha scritto:
+> Fix a coverity issue:
 > 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+>>> assignment: Assigning: larbid = (fwspec->ids[0] >> 5) & 0x1fU.
+> 	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
+>>> between: At condition larbid >= 32U, the value of larbid must be between
+>>> 0 and 31.
+>>> dead_error_condition: The condition larbid >= 32U cannot be true.
+> 	if (larbid >= MTK_LARB_NR_MAX)
+>>> CID 11306470 (#1 of 1): Logically dead code (DEADCODE)
+>>> dead_error_line: Execution cannot reach this statement:
+>>> return ERR_PTR(-22L);
+>          	return ERR_PTR(-EINVAL);
+> 
+> The checking "if (larbid >= MTK_LARB_NR_MAX)" is unnecessary.
+> 
+
+I agree with the coverity tool in that after the transformation (going through
+the definition of MTK_M4U_TO_LARB) the check is pointless, but I think that the
+right fix here is to check for validity of fwspec->ids[0] instead of simply
+removing validation.
+
+Having no validation after mtk_iommu_probe_device() is fine, but that's
+because we assume that *this* function performs all validation steps.
+
+Regards,
+Angelo
+
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > ---
->   .../mediatek/vcodec/mtk_vcodec_intr.c         | 30 ++++++++++++-------
->   .../mediatek/vcodec/mtk_vcodec_intr.h         |  3 +-
->   .../mediatek/vcodec/mtk_vcodec_util.c         | 19 +++++-------
->   .../mediatek/vcodec/mtk_vcodec_util.h         |  9 ++----
->   .../mediatek/vcodec/vdec/vdec_vp8_if.c        | 16 +++++-----
->   .../mediatek/vcodec/venc/venc_h264_if.c       |  2 +-
->   .../mediatek/vcodec/venc/venc_vp8_if.c        |  2 +-
->   7 files changed, 41 insertions(+), 40 deletions(-)
+> Rebase on v6.4-rc1.
+> ---
+>   drivers/iommu/mtk_iommu.c | 3 ---
+>   1 file changed, 3 deletions(-)
 > 
-> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_intr.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_intr.c
-> index 552b4c93d972..daa44f635727 100644
-> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_intr.c
-> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_intr.c
-> @@ -11,32 +11,40 @@
->   #include "mtk_vcodec_intr.h"
->   #include "mtk_vcodec_util.h"
->   
-> -int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx *ctx,
-> -				 int command, unsigned int timeout_ms,
-> +int mtk_vcodec_wait_for_done_ctx(void *priv, int command, unsigned int timeout_ms,
->   				 unsigned int hw_id)
->   {
-> +	struct mtk_vcodec_ctx *ctx = priv;
->   	long timeout_jiff, ret;
-> -	int status = 0;
-> +	int status = 0, ctx_id, ctx_type;
-
-Only one nitpick here, but nothing critical: please order variables by name.
-
-	int ctx_id, ctx_type, status = 0;
-
-after which
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index aecc7d154f28..67caa90b481b 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -838,9 +838,6 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
+>   	 * All the ports in each a device should be in the same larbs.
+>   	 */
+>   	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
+> -	if (larbid >= MTK_LARB_NR_MAX)
+> -		return ERR_PTR(-EINVAL);
+> -
+>   	for (i = 1; i < fwspec->num_ids; i++) {
+>   		larbidx = MTK_M4U_TO_LARB(fwspec->ids[i]);
+>   		if (larbid != larbidx) {
 
 
 
