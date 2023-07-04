@@ -4,80 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C9C5EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 11:23:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B14EEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 11:27:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IhKUWk3HweVVnCZmH7MiqP20PZkaQtj3SSJwS7C570E=; b=OqIk1h0NL9T6DwApz1VoBqsEMg
-	Qq5A0mBCqH5OzLDXVxONZBHzFByKRrnqJPwjg4jKOl/R0DosJM0ESTUxrOBHpvyCNld2ealGPkGpl
-	+CJjBkxdowA7Z9qUXsyR195FRVf881ipF29c26jwVF51wBQHTd4VfyL++DixcJaBl5Qdi2bG19U+X
-	P3u6vay+/heEBaFcKrP+tV/kakJdyqjZ+PY5De9DyFW0tRt6ZFOVsPYYWiVB5n0aVNShpj3X2c7Ez
-	JYsyAKz8NxjHg8tuxkAq/U2VgBFfgsnVGa2rfPgb1Zr3S98teWSuogtMrPJlVNn5WRm1KCQ6SLFXn
-	/sjODhyA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nnyMdq/zCg6afoxn4K3WFZZVONqCI8++yxt5PZrSnEk=; b=Wkc8Mt8Uk7Cl8SeMOr2T8GOU66
+	M1QZSbSVe/0RRGF2SynWD2VBHtUhiTLzxRKs2Vg5YWQzyDjUN5r7QX/4BWmP6aAqa8KHY3JGYsotN
+	V3fZxFLHUtXbfrnwJne6edyPp3Mtyb/KI9HFFsMi1hdRAUPgr9/jKvTgzpiMjJlIlakgYIT6W7gOd
+	v54eYj25GLKDb9qrO2GN4g9uQWtrl7Tm1LDOeTgn6gPWr0MBlRXqgY5yLLEO+LWeY1jVJPCDfKwx/
+	/CBmOxV4HEUJpTAEpABpFts7xyjkZXusnRnPjHIqTYTjuYNQivFlFXqEvL+5EWzgA4FCmZkqSf2i3
+	7TprHKyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGe8M-00D7N7-0L;
-	Tue, 04 Jul 2023 11:23:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qGeBz-00D81g-0w;
+	Tue, 04 Jul 2023 11:27:35 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGe8J-00D7Lu-1b;
-	Tue, 04 Jul 2023 11:23:48 +0000
-X-UUID: 3b5397541a5d11ee912e1518a6540028-20230704
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=IhKUWk3HweVVnCZmH7MiqP20PZkaQtj3SSJwS7C570E=;
-	b=NbhvcnnTxd6frbojn6Uhy+8BLLq9wulVC5Hsp04MWgZXyskZ5moXeXEFjtwBU8bVXYItq2S4ab/0Q56dKArMuXRXqFKUu6GtUucbxhjyfaTk27OhBrlAEYx0CQvN6yJhOdi9Pqmd25rsqlkxxYGNHzgwmvqhq/sbxVwxicheK3c=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:46c18139-9858-4b26-a486-522af16a6266,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:01c9525,CLOUDID:ff228d0d-26a8-467f-b838-f99719a9c083,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 3b5397541a5d11ee912e1518a6540028-20230704
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 805717257; Tue, 04 Jul 2023 04:23:42 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 4 Jul 2023 19:13:38 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 4 Jul 2023 19:13:38 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-CC: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5,09/11] media: mediatek: vcodec: fix unreasonable parameter definition and style
-Date: Tue, 4 Jul 2023 19:13:25 +0800
-Message-ID: <20230704111327.7140-10-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230704111327.7140-1-yunfei.dong@mediatek.com>
-References: <20230704111327.7140-1-yunfei.dong@mediatek.com>
+	id 1qGeBx-00D80A-0Y
+	for linux-mediatek@lists.infradead.org;
+	Tue, 04 Jul 2023 11:27:34 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-4fb5bcb9a28so8495894e87.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Jul 2023 04:27:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1688470049; x=1691062049;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=nnyMdq/zCg6afoxn4K3WFZZVONqCI8++yxt5PZrSnEk=;
+        b=f30roDxd0/BTdGzbX9TEKt65h4s4jSNpEisuzK9By6lfblCPOYok6aScqg/rDCFD5g
+         HUlA8LYh7Rfi+6EaG9F2UmNOjtyMLAfRHYsaIOaiTn4A2tnv5vVRBAokLjPXCOT+L3Jg
+         iCZTOFMUrSBvYI8Wz63qgfLqYvTG16btmtxyFjbqIZ8Tg0wdqCaIrIL4GZU8eLzrw13v
+         G0VsuVJT4T5gtAAnJrmcS6yRUjXWLVHGAS1xDxXoSwK9quS1Khhc+MOfnvcp1gUtkA+X
+         VCkoOaTLa9/CAbA7NpVVH1WNWSBjS2CKZUeU4GswyKzKa0YHGIeSoudLCxCW9dcoKAjn
+         Kl2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688470049; x=1691062049;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=nnyMdq/zCg6afoxn4K3WFZZVONqCI8++yxt5PZrSnEk=;
+        b=W6/nFncLUv1OtpiYKvXip8HxadIRYHnfRnHZSkWltwA+nX6GEHBvxHXhJkKooe7rPi
+         E7+CPCGUC9yjo8DyfG+fhLAhHEDbczi2LyAjanjGBhWg1EH1fFCyqtKpq6fZsftIachE
+         AuipaNnAw6GAscnvmFoOPpKr0ymU8xUhCEzu4yEz7gisvdE584HfoLuefJ3siKelZBM3
+         IDOuhXBChhzDoMGfowVMG7gCSTBmiAfWJ5jY+mpqonXBnaPsdjgcCTy4VLC7HSPgBH/u
+         1i82Q1W1XYNXRq6KvwqXLfrbLznF/+INZtlcZqWDfkE1503vXUIt2r8e0HBapIez+nMi
+         /jig==
+X-Gm-Message-State: ABy/qLbUNbki87T34iMSIU/BVn8FVM6Sj3nBLkB8COnr/Kxb7AqrE4z7
+	eO2qmeYrI7hhzUqJbiiDI0dBX5pXkdLgVlKlMFo=
+X-Google-Smtp-Source: APBJJlHOIEgsXs6yY3qROZzIj2Mx1Q2TN045Joa2hhomcE5NNXX3JPBvo8wbCt7qNWkxL3sl4WLusQ==
+X-Received: by 2002:a05:6512:3da2:b0:4f8:7781:9870 with SMTP id k34-20020a0565123da200b004f877819870mr11931360lfv.60.1688470048818;
+        Tue, 04 Jul 2023 04:27:28 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id n5-20020adfe345000000b0030e5bd253aasm28106018wrj.39.2023.07.04.04.27.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Jul 2023 04:27:27 -0700 (PDT)
+Date: Tue, 4 Jul 2023 14:27:22 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: nbd@nbd.name
+Cc: linux-mediatek@lists.infradead.org
+Subject: [bug report] mt76: mt7915: add support for passing chip/firmware
+ debug data to user space
+Message-ID: <8ea4bced-068a-493c-9634-09ad9bf76621@moroto.mountain>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230704_042347_536708_634A562C 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20230704_042733_250331_6AAF35FA 
+X-CRM114-Status: UNSURE (   6.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,69 +88,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix unreasonable coding style.
-Fix unreasonable parameter definition.
+Hello Felix Fietkau,
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
- .../media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.h   | 4 ++--
- .../media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.h   | 8 ++++----
- 2 files changed, 6 insertions(+), 6 deletions(-)
+The patch 988845c9361a: "mt76: mt7915: add support for passing
+chip/firmware debug data to user space" from Dec 26, 2021, leads to
+the following Smatch static checker warning:
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.h
-index 983a83f7b640..36a4cfa622f5 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.h
-@@ -19,7 +19,7 @@
- #define IS_VDEC_INNER_RACING(capability) ((capability) & MTK_VCODEC_INNER_RACING)
- 
- /*
-- * struct mtk_vdec_format_types - Structure used to get supported
-+ * enum mtk_vdec_format_types - Structure used to get supported
-  *		  format types according to decoder capability
-  */
- enum mtk_vdec_format_types {
-@@ -256,7 +256,7 @@ struct mtk_vcodec_dec_dev {
- 	const struct mtk_vcodec_dec_pdata *vdec_pdata;
- 
- 	struct mtk_vcodec_fw *fw_handler;
--	unsigned long id_counter;
-+	u64 id_counter;
- 
- 	/* decoder hardware mutex lock */
- 	struct mutex dec_mutex[MTK_VDEC_HW_MAX];
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.h
-index 4662b7871f74..fcd3d9b271ea 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.h
-@@ -32,13 +32,13 @@
-  */
- struct mtk_vcodec_enc_pdata {
- 	bool uses_ext;
--	unsigned long min_bitrate;
--	unsigned long max_bitrate;
-+	u64 min_bitrate;
-+	u64 max_bitrate;
- 	const struct mtk_video_fmt *capture_formats;
- 	size_t num_capture_formats;
- 	const struct mtk_video_fmt *output_formats;
- 	size_t num_output_formats;
--	int core_id;
-+	u8 core_id;
- 	bool uses_34bit;
- };
- 
-@@ -198,7 +198,7 @@ struct mtk_vcodec_enc_dev {
- 	const struct mtk_vcodec_enc_pdata *venc_pdata;
- 
- 	struct mtk_vcodec_fw *fw_handler;
--	unsigned long id_counter;
-+	u64 id_counter;
- 
- 	/* encoder hardware mutex lock */
- 	struct mutex enc_mutex;
--- 
-2.18.0
+	kernel/relay.c:798 relay_flush()
+	warn: sleeping in atomic context
 
+Both the mt7915 and mt7916 drivers have this bug.
+
+drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+  1263  static void
+  1264  mt7915_debugfs_write_fwlog(struct mt7915_dev *dev, const void *hdr, int hdrlen,
+  1265                           const void *data, int len)
+  1266  {
+  1267          static DEFINE_SPINLOCK(lock);
+  1268          unsigned long flags;
+  1269          void *dest;
+  1270  
+  1271          spin_lock_irqsave(&lock, flags);
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Holding a spinlock.
+
+  1272          dest = relay_reserve(dev->relay_fwlog, hdrlen + len + 4);
+  1273          if (dest) {
+  1274                  *(u32 *)dest = hdrlen + len;
+  1275                  dest += 4;
+  1276  
+  1277                  if (hdrlen) {
+  1278                          memcpy(dest, hdr, hdrlen);
+  1279                          dest += hdrlen;
+  1280                  }
+  1281  
+  1282                  memcpy(dest, data, len);
+  1283                  relay_flush(dev->relay_fwlog);
+
+Flushing is a sleeping operation.  It takes a mutex.  It can't be done
+while holding a spinlock.
+
+  1284          }
+  1285          spin_unlock_irqrestore(&lock, flags);
+  1286  }
+
+
+regards,
+dan carpenter
 
