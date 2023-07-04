@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5826EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 11:13:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF695C001B3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 11:13:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MDLpm+deh3FoiE7WvZgKoSPC76z1q3qJIm2/WlmWycE=; b=AoIMmH4awFOoTLTIyNLtYIuXOT
-	f1jjtOELJq5eFgsmnOVX05rCHFGXGInbpjNb3vR5bQ7r6bhBhLmaelOjURN67smApdQvyRkepurCq
-	5Egx+sT+51TO7Er7RM1IoTk0e+Ovu4yOlP095VO4M5WKGgupCccpMn45tGWnDV4x9KmQNbioGw5mA
-	kLmL5vhFEdF31zSjBSFbIGY2heGKmIprXnve5v0T2md7eRwhS4a7ir0hUT/79SOOsdgWOjLis20Xu
-	VIi0XIZ3EfU4yEjkKx0qpXT4IbdpkdyuMpzUXNV31XZoV8Jw1GqMLU2r3uaaYKljprF2yDMs+SrCH
-	yIJU99sQ==;
+	bh=bcEq0yIX3s8aEY5G9yARFW45qL0AKS/UAyXYFEzNI0w=; b=C7d8mPmq3evPKfgFoHx8DK0tix
+	/1qEB6I7gttRqP6uZqUp4qmO5wd3ImSk0ZMDWXgyvpEnpNrX6iIUc4J/p8lYSYos1tIyfi10V5xvD
+	Ttgr+iK/DRFSoFTM3BYckCyR8SCRLqKRcYsh8LExjAjkgBdhHKJFq/GMtXXuikqFM/k/OQsTfmdEt
+	N9vbSTDMo/49YwBFhQ2lTnfwFdAVZzqAu3KlMu9rc7NdO+C6/4yldbytxsjzrZCoROKJb8wZS4X4x
+	YpWPqNpbkDEeO3qWYqkpgvJOhaiHzUoc1d23gFY1vVO0YOua/uN5Ct7wYqcmQgeBOLjCpwwzqm9y8
+	TMJc/aBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGdyc-00D5OO-1R;
-	Tue, 04 Jul 2023 11:13:46 +0000
+	id 1qGdye-00D5PX-21;
+	Tue, 04 Jul 2023 11:13:48 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGdyZ-00D5MM-14;
-	Tue, 04 Jul 2023 11:13:44 +0000
-X-UUID: d0af5f561a5b11ee912e1518a6540028-20230704
+	id 1qGdyZ-00D5MN-14;
+	Tue, 04 Jul 2023 11:13:47 +0000
+X-UUID: d112195c1a5b11ee912e1518a6540028-20230704
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=MDLpm+deh3FoiE7WvZgKoSPC76z1q3qJIm2/WlmWycE=;
-	b=Sj6zwjJHonwT6TNg9a14+bImXl9pAwv1NkDATANdkwVmnSCGMzXsaMA4gW5gz496GKfnSe11Bh6OLq1le1/nVANRo0map/YqdKoHN35jfbz0ZY4YFVjeSSrGU1UmI9z2KOVMSjvisiHieLBjAvfHE5O43NNQbis0zo/GXKGEYx4=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=bcEq0yIX3s8aEY5G9yARFW45qL0AKS/UAyXYFEzNI0w=;
+	b=DRhqDFM9c4BzXS4uYAEr40rKVbbLKxdUMF5hC2EQRbEkKsFqd781xaISptZf/ejVjvFuwgISDOf0ltCHYwAhwDXKeO+qz2mJuKKxkaPHtjMTR+GV7AjeTtzmxvYAApEtJwC+SCXHtMVGO49k/b4IUszYOv0lK+bJ8fqu8dH9xMg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:d00972ce-a57a-486a-8dca-b022d6585ffb,IP:0,U
+X-CID-O-INFO: VERSION:1.1.27,REQID:a47d91db-4497-420e-8ddc-f31cca4a52ec,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
 	ON:release,TS:70
-X-CID-INFO: VERSION:1.1.27,REQID:d00972ce-a57a-486a-8dca-b022d6585ffb,IP:0,URL
+X-CID-INFO: VERSION:1.1.27,REQID:a47d91db-4497-420e-8ddc-f31cca4a52ec,IP:0,URL
 	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
 	ON:quarantine,TS:70
-X-CID-META: VersionHash:01c9525,CLOUDID:96128d0d-26a8-467f-b838-f99719a9c083,B
-	ulkID:23070419133324EEIGR0,BulkQuantity:1,Recheck:0,SF:29|28|17|19|48|38,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO
+X-CID-META: VersionHash:01c9525,CLOUDID:8c88af82-5a99-42ae-a2dd-e4afb731b474,B
+	ulkID:230704191336ZHT1D770,BulkQuantity:0,Recheck:0,SF:19|48|38|29|28|17,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,CO
+	L:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
-	TF_CID_SPAM_FSD
-X-UUID: d0af5f561a5b11ee912e1518a6540028-20230704
+X-CID-FACTOR: TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,
+	TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: d112195c1a5b11ee912e1518a6540028-20230704
 Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 797401504; Tue, 04 Jul 2023 04:13:34 -0700
+	with ESMTP id 1399261952; Tue, 04 Jul 2023 04:13:34 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 4 Jul 2023 19:13:31 +0800
+ 15.2.1118.26; Tue, 4 Jul 2023 19:13:33 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 4 Jul 2023 19:13:30 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 4 Jul 2023 19:13:32 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
@@ -70,9 +70,9 @@ CC: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5,02/11] media: mediatek: vcodec: align fw interface
-Date: Tue, 4 Jul 2023 19:13:18 +0800
-Message-ID: <20230704111327.7140-3-yunfei.dong@mediatek.com>
+Subject: [PATCH v5,04/11] media: mediatek: vcodec: Removing useless debug log
+Date: Tue, 4 Jul 2023 19:13:20 +0800
+Message-ID: <20230704111327.7140-5-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230704111327.7140-1-yunfei.dong@mediatek.com>
 References: <20230704111327.7140-1-yunfei.dong@mediatek.com>
@@ -81,8 +81,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230704_041343_378511_3FCB3ACF 
-X-CRM114-Status: GOOD (  15.56  )
+X-CRM114-CacheID: sfid-20230704_041343_382279_4F990172 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,167 +97,467 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Align scp and vpu firmware interface, remove the depedency for
-'struct mtk_vcodec_dev' and 'struct mtk_vcodec_ctx'. It will be
-much easier to separate video encoder and decoder.
+Removing unresonable and useless debug log enter and leave
+in order to simply the log message.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- .../media/platform/mediatek/vcodec/mtk_vcodec_fw.c   |  7 +++----
- .../media/platform/mediatek/vcodec/mtk_vcodec_fw.h   |  3 +--
- .../platform/mediatek/vcodec/mtk_vcodec_fw_priv.h    | 11 +++++------
- .../platform/mediatek/vcodec/mtk_vcodec_fw_scp.c     |  9 ++++++---
- .../platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c     | 12 ++++++++----
- 5 files changed, 23 insertions(+), 19 deletions(-)
+ .../mediatek/vcodec/mtk_vcodec_enc_drv.c      |  1 -
+ .../mediatek/vcodec/mtk_vcodec_util.h         |  6 -----
+ .../mediatek/vcodec/vdec/vdec_h264_if.c       |  4 ----
+ .../mediatek/vcodec/vdec/vdec_h264_req_if.c   |  4 ----
+ .../vcodec/vdec/vdec_h264_req_multi_if.c      |  2 --
+ .../vcodec/vdec/vdec_hevc_req_multi_if.c      |  2 --
+ .../mediatek/vcodec/vdec/vdec_vp8_if.c        |  2 --
+ .../mediatek/vcodec/vdec/vdec_vp8_req_if.c    |  2 --
+ .../platform/mediatek/vcodec/vdec_vpu_if.c    |  6 -----
+ .../mediatek/vcodec/venc/venc_h264_if.c       | 22 -------------------
+ .../mediatek/vcodec/venc/venc_vp8_if.c        | 22 -------------------
+ .../platform/mediatek/vcodec/venc_vpu_if.c    | 21 ++++--------------
+ 12 files changed, 4 insertions(+), 90 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c
-index 556e54aadac9..be9159acacf8 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.c
-@@ -5,15 +5,14 @@
- #include "mtk_vcodec_util.h"
- #include "mtk_vcodec_drv.h"
- 
--struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
--					   enum mtk_vcodec_fw_type type,
-+struct mtk_vcodec_fw *mtk_vcodec_fw_select(void *priv, enum mtk_vcodec_fw_type type,
- 					   enum mtk_vcodec_fw_use fw_use)
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
+index a56652e476c2..0db81e150b18 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
+@@ -459,7 +459,6 @@ static void mtk_vcodec_enc_remove(struct platform_device *pdev)
  {
- 	switch (type) {
- 	case VPU:
--		return mtk_vcodec_fw_vpu_init(dev, fw_use);
-+		return mtk_vcodec_fw_vpu_init(priv, fw_use);
- 	case SCP:
--		return mtk_vcodec_fw_scp_init(dev);
-+		return mtk_vcodec_fw_scp_init(priv, fw_use);
- 	default:
- 		mtk_v4l2_err("invalid vcodec fw type");
- 		return ERR_PTR(-EINVAL);
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h
-index 16824114657f..d8cfbec323d5 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw.h
-@@ -25,8 +25,7 @@ struct mtk_vcodec_fw;
- typedef void (*mtk_vcodec_ipi_handler) (void *data,
- 	unsigned int len, void *priv);
+ 	struct mtk_vcodec_dev *dev = platform_get_drvdata(pdev);
  
--struct mtk_vcodec_fw *mtk_vcodec_fw_select(struct mtk_vcodec_dev *dev,
--					   enum mtk_vcodec_fw_type type,
-+struct mtk_vcodec_fw *mtk_vcodec_fw_select(void *priv, enum mtk_vcodec_fw_type type,
- 					   enum mtk_vcodec_fw_use fw_use);
- void mtk_vcodec_fw_release(struct mtk_vcodec_fw *fw);
+-	mtk_v4l2_debug_enter();
+ 	destroy_workqueue(dev->encode_workqueue);
+ 	if (dev->m2m_dev_enc)
+ 		v4l2_m2m_release(dev->m2m_dev_enc);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
+index 827937bcb4b4..a356f42362e4 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
+@@ -62,12 +62,6 @@ extern int mtk_vcodec_dbg;
+ 		((struct mtk_vcodec_ctx *)(h)->ctx)->id, ##args)
+ #endif
  
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h
-index b41e66185cec..3438a4917344 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_priv.h
-@@ -12,6 +12,7 @@ struct mtk_vcodec_fw {
- 	const struct mtk_vcodec_fw_ops *ops;
- 	struct platform_device *pdev;
- 	struct mtk_scp *scp;
-+	enum mtk_vcodec_fw_use fw_use;
- };
- 
- struct mtk_vcodec_fw_ops {
-@@ -28,22 +29,20 @@ struct mtk_vcodec_fw_ops {
- };
- 
- #if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VCODEC_VPU)
--struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
--					     enum mtk_vcodec_fw_use fw_use);
-+struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(void *priv, enum mtk_vcodec_fw_use fw_use);
- #else
- static inline struct mtk_vcodec_fw *
--mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
--		       enum mtk_vcodec_fw_use fw_use)
-+mtk_vcodec_fw_vpu_init(void *priv, enum mtk_vcodec_fw_use fw_use)
+-#define mtk_v4l2_debug_enter()  mtk_v4l2_debug(3, "+")
+-#define mtk_v4l2_debug_leave()  mtk_v4l2_debug(3, "-")
+-
+-#define mtk_vcodec_debug_enter(h)  mtk_vcodec_debug(h, "+")
+-#define mtk_vcodec_debug_leave(h)  mtk_vcodec_debug(h, "-")
+-
+ void __iomem *mtk_vcodec_get_reg_addr(void __iomem **reg_base, unsigned int reg_idx);
+ int mtk_vcodec_mem_alloc(void *priv, struct mtk_vcodec_mem *mem);
+ void mtk_vcodec_mem_free(void *priv, struct mtk_vcodec_mem *mem);
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_if.c
+index 481655bb6016..24312a90afbb 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_if.c
+@@ -156,8 +156,6 @@ static void free_predication_buf(struct vdec_h264_inst *inst)
  {
- 	return ERR_PTR(-ENODEV);
- }
- #endif /* CONFIG_VIDEO_MEDIATEK_VCODEC_VPU */
+ 	struct mtk_vcodec_mem *mem = NULL;
  
- #if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VCODEC_SCP)
--struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev);
-+struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use fw_use);
- #else
- static inline struct mtk_vcodec_fw *
--mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev)
-+mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use fw_use)
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	inst->vsi->pred_buf_dma = 0;
+ 	mem = &inst->pred_buf;
+ 	if (mem->va)
+@@ -311,8 +309,6 @@ static void vdec_h264_deinit(void *h_vdec)
  {
- 	return ERR_PTR(-ENODEV);
- }
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
-index d8e66b645bd8..9a2472442c6f 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_scp.c
-@@ -53,18 +53,21 @@ static const struct mtk_vcodec_fw_ops mtk_vcodec_rproc_msg = {
- 	.release = mtk_vcodec_scp_release,
- };
+ 	struct vdec_h264_inst *inst = (struct vdec_h264_inst *)h_vdec;
  
--struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev)
-+struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use fw_use)
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	vpu_dec_deinit(&inst->vpu);
+ 	free_predication_buf(inst);
+ 	free_mv_buf(inst);
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
+index 4bc05ab5afea..dc6ee266f232 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
+@@ -174,8 +174,6 @@ static void free_predication_buf(struct vdec_h264_slice_inst *inst)
  {
- 	struct mtk_vcodec_fw *fw;
-+	struct mtk_vcodec_dev *dev = priv;
-+	struct platform_device *plat_dev;
- 	struct mtk_scp *scp;
+ 	struct mtk_vcodec_mem *mem = &inst->pred_buf;
  
--	scp = scp_get(dev->plat_dev);
-+	plat_dev = dev->plat_dev;
-+	scp = scp_get(plat_dev);
- 	if (!scp) {
- 		mtk_v4l2_err("could not get vdec scp handle");
- 		return ERR_PTR(-EPROBE_DEFER);
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	inst->vsi_ctx.pred_buf_dma = 0;
+ 	if (mem->va)
+ 		mtk_vcodec_mem_free(inst->ctx, mem);
+@@ -322,8 +320,6 @@ static void vdec_h264_slice_deinit(void *h_vdec)
+ {
+ 	struct vdec_h264_slice_inst *inst = h_vdec;
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	vpu_dec_deinit(&inst->vpu);
+ 	free_predication_buf(inst);
+ 	free_mv_buf(inst);
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+index a7e8e3257b7f..3cb5b967f48a 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+@@ -444,8 +444,6 @@ static void vdec_h264_slice_deinit(void *h_vdec)
+ {
+ 	struct vdec_h264_slice_inst *inst = h_vdec;
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	vpu_dec_deinit(&inst->vpu);
+ 	vdec_h264_slice_free_mv_buf(inst);
+ 	vdec_msg_queue_deinit(&inst->ctx->msg_queue, inst->ctx);
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c
+index 1e6ab138b0bb..0bb5b54578e9 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_hevc_req_multi_if.c
+@@ -911,8 +911,6 @@ static void vdec_hevc_slice_deinit(void *h_vdec)
+ 	struct vdec_hevc_slice_inst *inst = h_vdec;
+ 	struct mtk_vcodec_mem *mem;
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	vpu_dec_deinit(&inst->vpu);
+ 	vdec_hevc_slice_free_mv_buf(inst);
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_if.c
+index 71f94ac144bc..f02834a313d9 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_if.c
+@@ -603,8 +603,6 @@ static void vdec_vp8_deinit(void *h_vdec)
+ {
+ 	struct vdec_vp8_inst *inst = (struct vdec_vp8_inst *)h_vdec;
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	vpu_dec_deinit(&inst->vpu);
+ 	free_working_buf(inst);
+ 	kfree(inst);
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c
+index e1fe2603e92e..f7181f4a4d2a 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c
+@@ -421,8 +421,6 @@ static void vdec_vp8_slice_deinit(void *h_vdec)
+ {
+ 	struct vdec_vp8_slice_inst *inst = h_vdec;
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	vpu_dec_deinit(&inst->vpu);
+ 	vdec_vp8_slice_free_working_buf(inst);
+ 	kfree(inst);
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
+index df309e8e9379..60e5b70fa127 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
+@@ -183,8 +183,6 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
+ 	struct vdec_ap_ipi_init msg;
+ 	int err;
+ 
+-	mtk_vcodec_debug_enter(vpu);
+-
+ 	init_waitqueue_head(&vpu->wq);
+ 	vpu->handler = vpu_dec_ipi_handler;
+ 
+@@ -223,8 +221,6 @@ int vpu_dec_start(struct vdec_vpu_inst *vpu, uint32_t *data, unsigned int len)
+ 	int i;
+ 	int err = 0;
+ 
+-	mtk_vcodec_debug_enter(vpu);
+-
+ 	if (len > ARRAY_SIZE(msg.data)) {
+ 		mtk_vcodec_err(vpu, "invalid len = %d\n", len);
+ 		return -EINVAL;
+@@ -252,8 +248,6 @@ int vpu_dec_get_param(struct vdec_vpu_inst *vpu, uint32_t *data,
+ 	struct vdec_ap_ipi_get_param msg;
+ 	int err;
+ 
+-	mtk_vcodec_debug_enter(vpu);
+-
+ 	if (len > ARRAY_SIZE(msg.data)) {
+ 		mtk_vcodec_err(vpu, "invalid len = %d\n", len);
+ 		return -EINVAL;
+diff --git a/drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c b/drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c
+index 10365c95ebbe..c821ed427537 100644
+--- a/drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c
++++ b/drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c
+@@ -298,8 +298,6 @@ static void h264_enc_free_work_buf(struct venc_h264_inst *inst)
+ {
+ 	int i;
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	/* Except the SKIP_FRAME buffers,
+ 	 * other buffers need to be freed by AP.
+ 	 */
+@@ -309,8 +307,6 @@ static void h264_enc_free_work_buf(struct venc_h264_inst *inst)
  	}
  
--	fw = devm_kzalloc(&dev->plat_dev->dev, sizeof(*fw), GFP_KERNEL);
-+	fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
- 	fw->type = SCP;
- 	fw->ops = &mtk_vcodec_rproc_msg;
- 	fw->scp = scp;
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c
-index cfc7ebed8fb7..46a028031133 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_fw_vpu.c
-@@ -77,10 +77,11 @@ static const struct mtk_vcodec_fw_ops mtk_vcodec_vpu_msg = {
- 	.release = mtk_vcodec_vpu_release,
- };
+ 	mtk_vcodec_mem_free(inst->ctx, &inst->pps_buf);
+-
+-	mtk_vcodec_debug_leave(inst);
+ }
  
--struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
--					     enum mtk_vcodec_fw_use fw_use)
-+struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(void *priv, enum mtk_vcodec_fw_use fw_use)
- {
- 	struct platform_device *fw_pdev;
-+	struct mtk_vcodec_dev *dev = priv;
-+	struct platform_device *plat_dev;
- 	struct mtk_vcodec_fw *fw;
- 	enum rst_id rst_id;
+ static int h264_enc_alloc_work_buf(struct venc_h264_inst *inst, bool is_34bit)
+@@ -321,8 +317,6 @@ static int h264_enc_alloc_work_buf(struct venc_h264_inst *inst, bool is_34bit)
+ 	u32 vpua, wb_size;
+ 	int ret = 0;
  
-@@ -94,19 +95,22 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	if (is_34bit)
+ 		wb_34 = inst->vsi_34->work_bufs;
+ 	else
+@@ -406,8 +400,6 @@ static int h264_enc_alloc_work_buf(struct venc_h264_inst *inst, bool is_34bit)
+ 		goto err_alloc;
+ 	}
+ 
+-	mtk_vcodec_debug_leave(inst);
+-
+ 	return ret;
+ 
+ err_alloc:
+@@ -452,8 +444,6 @@ static int h264_encode_sps(struct venc_h264_inst *inst,
+ 	int ret = 0;
+ 	unsigned int irq_status;
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	ret = vpu_enc_encode(&inst->vpu_inst, H264_BS_MODE_SPS, NULL, bs_buf, NULL);
+ 	if (ret)
+ 		return ret;
+@@ -478,8 +468,6 @@ static int h264_encode_pps(struct venc_h264_inst *inst,
+ 	int ret = 0;
+ 	unsigned int irq_status;
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	ret = vpu_enc_encode(&inst->vpu_inst, H264_BS_MODE_PPS, NULL, bs_buf, NULL);
+ 	if (ret)
+ 		return ret;
+@@ -531,7 +519,6 @@ static int h264_encode_frame(struct venc_h264_inst *inst,
+ 	struct venc_frame_info frame_info;
+ 	struct mtk_vcodec_ctx *ctx = inst->ctx;
+ 
+-	mtk_vcodec_debug_enter(inst);
+ 	mtk_vcodec_debug(inst, "frm_cnt = %d\n ", inst->frm_cnt);
+ 
+ 	if (MTK_ENC_IOVA_IS_34BIT(ctx)) {
+@@ -614,8 +601,6 @@ static int h264_enc_init(struct mtk_vcodec_ctx *ctx)
+ 	inst->vpu_inst.id = is_ext ? SCP_IPI_VENC_H264 : IPI_VENC_H264;
+ 	inst->hw_base = mtk_vcodec_get_reg_addr(inst->ctx->dev->reg_base, VENC_SYS);
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	ret = vpu_enc_init(&inst->vpu_inst);
+ 
+ 	if (MTK_ENC_IOVA_IS_34BIT(ctx))
+@@ -623,8 +608,6 @@ static int h264_enc_init(struct mtk_vcodec_ctx *ctx)
+ 	else
+ 		inst->vsi = (struct venc_h264_vsi *)inst->vpu_inst.vsi;
+ 
+-	mtk_vcodec_debug_leave(inst);
+-
+ 	if (ret)
+ 		kfree(inst);
+ 	else
+@@ -811,8 +794,6 @@ static int h264_enc_set_param(void *handle,
  		break;
  	}
  
--	fw_pdev = vpu_get_plat_device(dev->plat_dev);
-+	plat_dev = dev->plat_dev;
-+	fw_pdev = vpu_get_plat_device(plat_dev);
- 	if (!fw_pdev) {
- 		mtk_v4l2_err("firmware device is not ready");
- 		return ERR_PTR(-EINVAL);
+-	mtk_vcodec_debug_leave(inst);
+-
+ 	return ret;
+ }
+ 
+@@ -821,14 +802,11 @@ static int h264_enc_deinit(void *handle)
+ 	int ret = 0;
+ 	struct venc_h264_inst *inst = (struct venc_h264_inst *)handle;
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	ret = vpu_enc_deinit(&inst->vpu_inst);
+ 
+ 	if (inst->work_buf_allocated)
+ 		h264_enc_free_work_buf(inst);
+ 
+-	mtk_vcodec_debug_leave(inst);
+ 	kfree(inst);
+ 
+ 	return ret;
+diff --git a/drivers/media/platform/mediatek/vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mediatek/vcodec/venc/venc_vp8_if.c
+index 73ebc35d7c99..ddcdb565db17 100644
+--- a/drivers/media/platform/mediatek/vcodec/venc/venc_vp8_if.c
++++ b/drivers/media/platform/mediatek/vcodec/venc/venc_vp8_if.c
+@@ -141,16 +141,12 @@ static void vp8_enc_free_work_buf(struct venc_vp8_inst *inst)
+ {
+ 	int i;
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	/* Buffers need to be freed by AP. */
+ 	for (i = 0; i < VENC_VP8_VPU_WORK_BUF_MAX; i++) {
+ 		if (inst->work_bufs[i].size == 0)
+ 			continue;
+ 		mtk_vcodec_mem_free(inst->ctx, &inst->work_bufs[i]);
  	}
-+
- 	vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_vpu_reset_handler, dev, rst_id);
+-
+-	mtk_vcodec_debug_leave(inst);
+ }
  
--	fw = devm_kzalloc(&dev->plat_dev->dev, sizeof(*fw), GFP_KERNEL);
-+	fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
- 	if (!fw)
- 		return ERR_PTR(-ENOMEM);
- 	fw->type = VPU;
- 	fw->ops = &mtk_vcodec_vpu_msg;
- 	fw->pdev = fw_pdev;
-+	fw->fw_use = fw_use;
+ static int vp8_enc_alloc_work_buf(struct venc_vp8_inst *inst)
+@@ -159,8 +155,6 @@ static int vp8_enc_alloc_work_buf(struct venc_vp8_inst *inst)
+ 	int ret = 0;
+ 	struct venc_vp8_vpu_buf *wb = inst->vsi->work_bufs;
  
- 	return fw;
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	for (i = 0; i < VENC_VP8_VPU_WORK_BUF_MAX; i++) {
+ 		if (wb[i].size == 0)
+ 			continue;
+@@ -206,8 +200,6 @@ static int vp8_enc_alloc_work_buf(struct venc_vp8_inst *inst)
+ 				 inst->work_bufs[i].size);
+ 	}
+ 
+-	mtk_vcodec_debug_leave(inst);
+-
+ 	return ret;
+ 
+ err_alloc:
+@@ -338,14 +330,10 @@ static int vp8_enc_init(struct mtk_vcodec_ctx *ctx)
+ 	inst->vpu_inst.id = IPI_VENC_VP8;
+ 	inst->hw_base = mtk_vcodec_get_reg_addr(inst->ctx->dev->reg_base, VENC_LT_SYS);
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	ret = vpu_enc_init(&inst->vpu_inst);
+ 
+ 	inst->vsi = (struct venc_vp8_vsi *)inst->vpu_inst.vsi;
+ 
+-	mtk_vcodec_debug_leave(inst);
+-
+ 	if (ret)
+ 		kfree(inst);
+ 	else
+@@ -364,8 +352,6 @@ static int vp8_enc_encode(void *handle,
+ 	struct venc_vp8_inst *inst = (struct venc_vp8_inst *)handle;
+ 	struct mtk_vcodec_ctx *ctx = inst->ctx;
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	enable_irq(ctx->dev->enc_irq);
+ 
+ 	switch (opt) {
+@@ -386,8 +372,6 @@ static int vp8_enc_encode(void *handle,
+ encode_err:
+ 
+ 	disable_irq(ctx->dev->enc_irq);
+-	mtk_vcodec_debug_leave(inst);
+-
+ 	return ret;
+ }
+ 
+@@ -437,8 +421,6 @@ static int vp8_enc_set_param(void *handle,
+ 		break;
+ 	}
+ 
+-	mtk_vcodec_debug_leave(inst);
+-
+ 	return ret;
+ }
+ 
+@@ -447,16 +429,12 @@ static int vp8_enc_deinit(void *handle)
+ 	int ret = 0;
+ 	struct venc_vp8_inst *inst = (struct venc_vp8_inst *)handle;
+ 
+-	mtk_vcodec_debug_enter(inst);
+-
+ 	ret = vpu_enc_deinit(&inst->vpu_inst);
+ 
+ 	if (inst->work_buf_allocated)
+ 		vp8_enc_free_work_buf(inst);
+ 
+-	mtk_vcodec_debug_leave(inst);
+ 	kfree(inst);
+-
+ 	return ret;
+ }
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/venc_vpu_if.c
+index 09e7eaa25aab..63ebab28242c 100644
+--- a/drivers/media/platform/mediatek/vcodec/venc_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/venc_vpu_if.c
+@@ -55,8 +55,10 @@ static void vpu_enc_ipi_handler(void *data, unsigned int len, void *priv)
+ 
+ 	vpu->signaled = 1;
+ 	vpu->failure = (msg->status != VENC_IPI_MSG_STATUS_OK);
+-	if (vpu->failure)
+-		goto failure;
++	if (vpu->failure) {
++		mtk_vcodec_err(vpu, "vpu enc status failure %d", vpu->failure);
++		return;
++	}
+ 
+ 	switch (msg->msg_id) {
+ 	case VPU_IPIMSG_ENC_INIT_DONE:
+@@ -73,9 +75,6 @@ static void vpu_enc_ipi_handler(void *data, unsigned int len, void *priv)
+ 		mtk_vcodec_err(vpu, "unknown msg id %x", msg->msg_id);
+ 		break;
+ 	}
+-
+-failure:
+-	mtk_vcodec_debug_leave(vpu);
+ }
+ 
+ static int vpu_enc_send_msg(struct venc_vpu_inst *vpu, void *msg,
+@@ -83,8 +82,6 @@ static int vpu_enc_send_msg(struct venc_vpu_inst *vpu, void *msg,
+ {
+ 	int status;
+ 
+-	mtk_vcodec_debug_enter(vpu);
+-
+ 	if (!vpu->ctx->dev->fw_handler) {
+ 		mtk_vcodec_err(vpu, "inst dev is NULL");
+ 		return -EINVAL;
+@@ -100,8 +97,6 @@ static int vpu_enc_send_msg(struct venc_vpu_inst *vpu, void *msg,
+ 	if (vpu->failure)
+ 		return -EINVAL;
+ 
+-	mtk_vcodec_debug_leave(vpu);
+-
+ 	return 0;
+ }
+ 
+@@ -110,8 +105,6 @@ int vpu_enc_init(struct venc_vpu_inst *vpu)
+ 	int status;
+ 	struct venc_ap_ipi_msg_init out;
+ 
+-	mtk_vcodec_debug_enter(vpu);
+-
+ 	init_waitqueue_head(&vpu->wq_hd);
+ 	vpu->signaled = 0;
+ 	vpu->failure = 0;
+@@ -132,8 +125,6 @@ int vpu_enc_init(struct venc_vpu_inst *vpu)
+ 		return -EINVAL;
+ 	}
+ 
+-	mtk_vcodec_debug_leave(vpu);
+-
+ 	return 0;
+ }
+ 
+@@ -345,8 +336,6 @@ int vpu_enc_deinit(struct venc_vpu_inst *vpu)
+ {
+ 	struct venc_ap_ipi_msg_deinit out;
+ 
+-	mtk_vcodec_debug_enter(vpu);
+-
+ 	memset(&out, 0, sizeof(out));
+ 	out.msg_id = AP_IPIMSG_ENC_DEINIT;
+ 	out.vpu_inst_addr = vpu->inst_addr;
+@@ -355,7 +344,5 @@ int vpu_enc_deinit(struct venc_vpu_inst *vpu)
+ 		return -EINVAL;
+ 	}
+ 
+-	mtk_vcodec_debug_leave(vpu);
+-
+ 	return 0;
  }
 -- 
 2.18.0
