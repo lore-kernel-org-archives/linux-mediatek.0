@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 657F4EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 12:12:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E49AEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jul 2023 12:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tmEwpDjQzt8Wrh5LhOwSF1TvqZRLWjIm0y06o6wkYas=; b=FeRYxCXZhJAsn9dW5wiANLgka8
-	SoaO/TurQK6m6s/E7pN3UQ0EULhfbRxkcd2CjUAQrXfuFacan2TcBKqvH3MbYYUIdNJmEFvIJNuoX
-	HR99hbnGZcNFqLM4SXfi0NqZVHwMZOgOUtxWirDdJIzZVAH1b65EVqrfawIMrtmaREmFR5Ix4e7qn
-	uPlx4tw5FhHbVjbY7ZM9guJFzGVPx24XJ51//C3DyfX0INY/77vEbFfQtf/Q3gB+WW/dm77ko6Qmd
-	WR1H6/QcTIxMqGwYdsQ5cZImYBlXekdDPZr02K0p0FiQan9m9fLBBci+WKpWJ3OndZ1WvB8Z5busl
-	r4fuUl6w==;
+	bh=bXloMTQ55p3A8CKBe/GgsKuw6GbaliGICgRoeEM7uWs=; b=RskhZ2Sq2AXajXsK7UBzTXAFb7
+	g3xaBAJX97FeN6GdrWxh88B2lDf89EQ5ZNaEkqjFg2XnoKraxQimuXFU54w4hlExck1hO4tj3bWkB
+	OCTjMXan2re4ZyQ6RaoB7xKtfXWOjOm7Ea6xCDOkB4tvkUWNa+bv6FQXcTWST4ZRVra5C7a2VCORZ
+	k8r95J9MIMUOt49l7/PVrq4WRBpuaG4aD/FLNuvmSQrdxNwcFsVTaWngiy7G1mS7K2mR6K4Bm3wzm
+	nfAdHNKSzT+K8TTtAAJjpAAE7RKwGd5MEo0R5murWWW9/3Om4tXW1mbJijBF3rP0J62nqvdJ78X1g
+	uIAbIcjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGetc-00DD2Z-2Q;
-	Tue, 04 Jul 2023 12:12:40 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qGetj-00DD7o-09;
+	Tue, 04 Jul 2023 12:12:47 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGetZ-00DCze-12;
-	Tue, 04 Jul 2023 12:12:38 +0000
+	id 1qGete-00DD3j-2k;
+	Tue, 04 Jul 2023 12:12:44 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 430C86606F8B;
-	Tue,  4 Jul 2023 13:12:35 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BEFAD6606FA2;
+	Tue,  4 Jul 2023 13:12:40 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688472756;
-	bh=m81zhMsqwoAGDOSTH6ejhk/fOg6PD4k9wD4iK9/Qq0I=;
+	s=mail; t=1688472761;
+	bh=K3r2sBozJg4yYZGmTnIxt/EJB7PG4I/zkHazGH3bQe0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CaLbceKfuR5ERuq55mB/JMZnRyWKc6ZbK55Kh9YFRDHyGtYGmmTfaru/VTBBgSnzx
-	 5UJL+86+QTh9o0WUJZ9eCij9923UmwmJhZtEV5yADTzcWBkllHAL4OcSBPNIHNNmXD
-	 1bUT7WT/sDqiCj2U+CLvkFwB9A79i8QHo8Y4bcOuWr+wWe98p7GzqKW/aN4orz55B+
-	 lrpGkcW0L7jH6XDSK2ZtZUR6N7NMdfLPJrL81Ujgk7iuuxHqTpeZY+5Ct1yX8Hrj4I
-	 0OGOWLLZgUuLdyNlAERFL1jcDF91HGtg37HtOr2/3O5skLh5xNBMzHE2Tyew32qfaI
-	 UBARDE8QaotPQ==
-Message-ID: <230b19b4-36ab-9bea-2ad9-27c756e0ddfd@collabora.com>
-Date: Tue, 4 Jul 2023 14:12:32 +0200
+	b=WhtR1eVJWnyxcAreCrlkE/bhcISTYrGJV0M3VpSAFQy1lNub6lHVwbGtLxK6kMsgF
+	 Tmi3FN7INFqr5mAI5Rl5coFZoram0SGIUUiRoCZqKVm3pCbHrvRRV7g+I0Xfzmg+3j
+	 o55qaAkdWErtVKBy7q2nanquV82O/0WKKedpFCIKOyWEGxOdTDgBPIws2SJ5dGZcvG
+	 hHwoG0zELGerXsDuHE2pGIqBbkapL0pdOHXDRx6Vbbck8bsRVDmWt/oZRDezYesQ2h
+	 LHzdJQPu/R06EqE8fddYF8Yw6Ux8Rlh5sZFlXudsTVn6yYm1FoeJ3z2Om8131fHMxj
+	 OyuHcEBJWp7ag==
+Message-ID: <e223cee5-8f8b-c642-7d38-e59ea4e3ffaa@collabora.com>
+Date: Tue, 4 Jul 2023 14:12:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH v5,01/11] media: mediatek: vcodec: remove unused parameter
+Subject: Re: [PATCH v5,04/11] media: mediatek: vcodec: Removing useless debug
+ log
 Content-Language: en-US
 To: Yunfei Dong <yunfei.dong@mediatek.com>,
  =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
@@ -63,14 +64,14 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20230704111327.7140-1-yunfei.dong@mediatek.com>
- <20230704111327.7140-2-yunfei.dong@mediatek.com>
+ <20230704111327.7140-5-yunfei.dong@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230704111327.7140-2-yunfei.dong@mediatek.com>
+In-Reply-To: <20230704111327.7140-5-yunfei.dong@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230704_051237_487922_D1265FF8 
-X-CRM114-Status: UNSURE (   7.08  )
+X-CRM114-CacheID: sfid-20230704_051243_023173_5216E516 
+X-CRM114-Status: UNSURE (   7.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,7 +88,8 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 04/07/23 13:13, Yunfei Dong ha scritto:
-> remove unused parameter in struct mtk_vcodec_dev.
+> Removing unresonable and useless debug log enter and leave
+> in order to simply the log message.
 > 
 > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 > Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
