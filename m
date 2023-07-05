@@ -4,72 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13D77EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 09:15:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0C12C0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 09:22:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hMjJ0qv1InzbsP5bplLav6fImdfHV6jqYOQ7yDUQksM=; b=xm9xOUHvhVDGzI6LkObP/TllX9
-	NJul8tY95iWMUXhyn7xxAXrbAbHPJW/QHrGFTG28LAjc1dEQbUe2/sfNRFYK/4JfOfEaRROQe7/h3
-	uHWYBnmGqKT4cDzqRDMYTMZomabp9TTgMB79T0wUaw6fnpd0f95RkwzuJIU9Oh5hzv40mwKPI5xq2
-	tCqsJAw41wq4P6byI3NiGUXJ/tQgZS4SrDTsSwDON3Eu5RGsksB+hgW05uZSZBc54eaAaS7lJM/an
-	OHZZ/xYl3I2T81Mws4ob6h/pLtqR9P4/9MPj12BYMPpef+Uq06nznf7bpA1e9sSlU0Tr/fOkkaW9k
-	GXXEqGLw==;
+	bh=eQzsBnUHTe4qzEqDc2DIueFZdtO3v/KXvZIt76sVzoU=; b=0dY1UaPcMe3tr8OEN4G2GM+NLs
+	ljqnxwEYVxK5Lo8yg4pcI+zRdeMGnM1SvxDZf2JpqDx1hG09uKxzntsQwdk2PirM5M0I9eS663Jvk
+	OmZksjmflrd62unhwmbpHfEHIFpVwjFc5xIpwjNprYzDG9Y4YqHLOeErmQen//zddv1PqNndPU7cq
+	oFJo4o1XPFkjsYZCQFV32NebfHEO1ageA02MaSydaqsSQ8bOW0SvutjwWuQErL3QZAa2UuRWa1vBu
+	Il2t7O/KXyfHC+TOS3I9c9E4mkdF1jB+67uWhxaRWtBl9qo1+itrV6+VRmyIQCQQ+kinrxah8kg6k
+	krAGU/Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGybx-00FKER-1k;
-	Wed, 05 Jul 2023 09:15:45 +0000
+	id 1qGyiU-00FLHi-0V;
+	Wed, 05 Jul 2023 09:22:30 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGybt-00FKBP-2z;
-	Wed, 05 Jul 2023 09:15:43 +0000
+	id 1qGyiQ-00FLGQ-21;
+	Wed, 05 Jul 2023 09:22:27 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 46DA16606FAB;
-	Wed,  5 Jul 2023 10:15:37 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A76BF6606FAB;
+	Wed,  5 Jul 2023 10:22:24 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688548538;
-	bh=wu7jA7pmNFrTtnaB97p8N+D6KB8AW8qZJUh/GbTvwLk=;
+	s=mail; t=1688548945;
+	bh=9JHc5dxF9kL0BlFs4YhHrNU5Gaeu5yKjERb1y27tW7k=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mmToGDbXW46XuaCj2y/5+tHF03ejlw0AlydzB7tVJ0UAdfgChAh+i46Qz7PK7YYtk
-	 CWIdzdcI1R+UDGkEEIpwAQuecrnwkoiWz6z0u/Fq5WiZ2BnXhBZ7TG39Z61p/coL8n
-	 GcbIc4/V16mxikzBpOdfvR51UwB3QnUQIsUJkpk7FVfycP7XiR7SXQyWcukXqQokPl
-	 mxeNXt+HqgjAIyWsXwMIwCTdK9E2K6aqIpklWLlF5Try5jRrit7N9OVDERpk9Gf5MR
-	 POb+rHijsdh/ByFpSMJcx2TwiSDotKBNj/qlr8bnPsQGnR1tMI1pCTWz/QpNhyFTO+
-	 I8NCM6qaBDt6g==
-Message-ID: <23e8fbb2-c127-17ef-eaa3-2a6193db7f79@collabora.com>
-Date: Wed, 5 Jul 2023 11:15:34 +0200
+	b=lYRg7E0hTw89N/bxg+8ufv9nqta3h9zrkjkhTlW7yGzVm6qQD3WJFT681azn9O7wk
+	 sowieypkzR2oii0YwBNMNwfTAXVOF8hvu56YVVedKnMYxORQv6LlLiy+ml9oZvmb/x
+	 GjHPSd7JJv6Usc0mDz/Z8BRyCzvSGaKXBn9d04OsKLcFLUAg6dfzmPJgFDkKxQ5prk
+	 0uQeQkNy5dSQQ/maGZ2O+527IjTcc/SuOYsiP88TK7Idpn+dPlxyqHjyegtW1E0BbT
+	 oO5jCvz/D3YcWUH7d+dvxe0PcRVLME4PnVXRGXhhgyTEyxMnondQ/ASbr3S7Wnk6eB
+	 ye0DE/X2xVEsw==
+Message-ID: <ddc05f70-7075-97ab-1c94-cb3d5839ef2b@collabora.com>
+Date: Wed, 5 Jul 2023 11:22:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH v3] media: mediatek: vcodec: Return NULL if no vdec_fb is
- found
+Subject: Re: [PATCH 4/4] phy: mediatek: tphy: Convert to
+ devm_platform_ioremap_resource()
 Content-Language: en-US
-To: Irui Wang <irui.wang@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
+To: Yangtao Li <frank.li@vivo.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230705091441.16926-1-irui.wang@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230705090126.26854-1-frank.li@vivo.com>
+ <20230705090126.26854-4-frank.li@vivo.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230705091441.16926-1-irui.wang@mediatek.com>
+In-Reply-To: <20230705090126.26854-4-frank.li@vivo.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_021542_091567_EE73B18A 
-X-CRM114-Status: UNSURE (   8.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230705_022226_798322_CE23EC2D 
+X-CRM114-Status: GOOD (  17.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,14 +79,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/07/23 11:14, Irui Wang ha scritto:
-> "fb_use_list" is used to store used or referenced frame buffers for
-> vp9 stateful decoder. "NULL" should be returned when getting target
-> frame buffer failed from "fb_use_list", not a random unexpected one.
+Il 05/07/23 11:01, Yangtao Li ha scritto:
+> Use devm_platform_ioremap_resource() to simplify code.
 > 
-> Fixes: f77e89854b3e ("[media] vcodec: mediatek: Add Mediatek VP9 Video Decoder Driver")
-> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+> Signed-off-by: Yangtao Li <frank.li@vivo.com>
+> ---
+>   drivers/phy/mediatek/phy-mtk-tphy.c | 10 +++-------
+>   1 file changed, 3 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+> index 0d110e50bbfd..cb7a4e6ea017 100644
+> --- a/drivers/phy/mediatek/phy-mtk-tphy.c
+> +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+> @@ -1554,7 +1554,6 @@ static int mtk_tphy_probe(struct platform_device *pdev)
+>   	struct device_node *np = dev->of_node;
+>   	struct device_node *child_np;
+>   	struct phy_provider *provider;
+> -	struct resource *sif_res;
+>   	struct mtk_tphy *tphy;
+>   	struct resource res;
+>   	int port, retval;
+> @@ -1576,15 +1575,12 @@ static int mtk_tphy_probe(struct platform_device *pdev)
+>   	tphy->dev = dev;
+>   	platform_set_drvdata(pdev, tphy);
+>   
+> -	sif_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>   	/* SATA phy of V1 needn't it if not shared with PCIe or USB */
+> -	if (sif_res && tphy->pdata->version == MTK_PHY_V1) {
+> +	if (tphy->pdata->version == MTK_PHY_V1) {
+>   		/* get banks shared by multiple phys */
+> -		tphy->sif_base = devm_ioremap_resource(dev, sif_res);
+> -		if (IS_ERR(tphy->sif_base)) {
+> -			dev_err(dev, "failed to remap sif regs\n");
+> +		tphy->sif_base = devm_platform_ioremap_resource(pdev, 0);
+> +		if (IS_ERR(tphy->sif_base) && PTR_ERR(tphy->sif_base) != -EINVAL)
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+That's wrong. You want to return any error unconditionally, as the V1 PHY *needs*
+the sif iospace and there's nothing afterwards retrying this.
+
+Please fix.
+
+Regards,
+Angelo
+
+>   			return PTR_ERR(tphy->sif_base);
+> -		}
+>   	}
+>   
+>   	if (tphy->pdata->version < MTK_PHY_V3) {
+
 
 
