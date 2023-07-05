@@ -4,89 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DDE5EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 12:55:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F3AC0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 13:04:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f//Lu0FPoyrpc7sNpXYp41ursJKYth2AfDJdKhGe3+o=; b=PQ1P9/sEhI77vIcFvi0LkLt0LF
-	OOinyUyRkkzZytDrESCWSJJESU9wLEFpqoiOJ/QgF7YnnMSeGFMBKeRYY9MB+/KK/XuNvn4Qk2ZgZ
-	tQNq1HHXXmYss0T/8mwHYy1SkWuj8WxCX6FHcT3vwLqwcFDgqVim6FDdUH1kWFJ1j8gUpD6dSMqP1
-	HwZydjPTJLK1d9fjTaQ5noRgIFbc+9/2MCyVgzzauaGt8WKEx+xTWZPrS2dZCUxfo+BdnCIbTBvjQ
-	5h0FbDu29Xbb5gHa+g6WsUME7bVKu0lOILYlOU2CPuQv4yMwffJ6cL5ehZbnrvZl4neTVTK8WArvn
-	0J46WBAA==;
+	bh=f/FKROkns/aT3W5EmDyW7I75f5H4AFux2NcHTMqTyeg=; b=z1pX0eae6LhhAotx6SbTiCYffc
+	Z0OX2IH0rC9CNRElm3F/a4x/jxsBQzkM9OY1HOxTB5IjzUYQrVlmqlaAczHP53VbRhDYDVyyPpnxS
+	qao6OH/XkgFJOX50wFaHsjIKKlOnsqG++fmwdp5fPmJmqAmRVwdh3O8afFkPAcELz77cpIcqtwAXg
+	DgFLDdASfmtA7kQzq1JBio5Tr361bmDXYoOgT1H8TXfbyQPlk5n64TErfwUNUDjYz/Ahr9SJF17hJ
+	HfAYlhzEOhHwW/qaODy0Neit0DeYPjHwDPLmtjhBjOpyX8GaodbBZbdxUiQKV5nxTO1DKBxhNP2fm
+	dPeePFPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH22e-00Fvhc-0d;
-	Wed, 05 Jul 2023 12:55:32 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qH2BW-00Fwyw-2f;
+	Wed, 05 Jul 2023 13:04:42 +0000
+Received: from mail-sgaapc01on20711.outbound.protection.outlook.com ([2a01:111:f400:feab::711] helo=APC01-SG2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH22b-00Fvew-2V;
-	Wed, 05 Jul 2023 12:55:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=f//Lu0FPoyrpc7sNpXYp41ursJKYth2AfDJdKhGe3+o=; b=j8yFU5vuZ9MS+pJQA3z+d7YP7E
-	ZSE2o6PpyNCLrIrxHb9p8K0c6xSof3MOMFFKadbOCbceIGTqt/riDpvfkEjsz0rQ0ph8jZkcfvS+z
-	6iv6P8GTB3dWNCHMJaCgEnGxo79pMyvE6oOKsg2W7zVg7HaqrQmFOFrLPMmO8pAObBNzZj1zDn7Rv
-	1cZL+6CoMN8/33DyZ9qCkhbhmEEdu0zecjij0nc9m2IAKC8orFGHz7aNlnzb5u8RdZ0+wWTB0InTw
-	vxCzIhWewtBJ4+sNlowAykISFsm7ZwtV1FdE61qyiGtl58O6NH6i7VL2EN2oUPRcpxMMZTK6Fr7s3
-	gWgXY3ow==;
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH1Ln-00C8if-3B;
-	Wed, 05 Jul 2023 12:11:18 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:cbfb:e358:222c:d8c1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6F0ED6606FB7;
-	Wed,  5 Jul 2023 13:11:08 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688559068;
-	bh=JcQEQsRyFFpDQxqYrZw61Z4R27rfAC7WB2mYLyxvgng=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Od5IoMVHyjnUQu6XuiF3koimeEcsO4HL11T/zxvqv6HMPwJrs0if+0aP0cBiV/b/i
-	 lPb7/coEXu5NFRm9ShC/MOVVqHD0Rt9nTKQ0foPn5EJ7FeZDRphCnhwfCATQFHCTkQ
-	 O7KzkxgmjRGNB8S2fea9GyAq1zdF7tfVhrO2cm+T10b0mJYDf6O3OEGrhrruT+IRgb
-	 Nue8K0e/6VgQwZE7MoIvS0fkj7nrx9jW3OTsz+i6Iwhq+JDV04BPlQ/fJU+DQ6uaTg
-	 0ERSrVylKcxxYlTcL9LYwCfxHSB779SDPSVz4B2Ct93fgq12vaOrTAEeZd2MOcGz8/
-	 6bL9oe1tWTpAA==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	tfiga@chromium.org,
-	m.szyprowski@samsung.com,
-	ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1qH2BT-00FwvO-2R;
+	Wed, 05 Jul 2023 13:04:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jsWqxWcMtZVe6PHyrijfvJjGhv/9akCtqDmFLuHrRc8zuX2ayJIZ3Rj9ermLztnT8GkGqxq5JbgrEMidkNDJ1L+irP5ftzAUHyllg4LhB/hetsGJbZgEaGffeL4DKb0ACRhJ4DCwBICs5f59EECsS7jFD9WKLitSXvsrItbLtsUEg6+syIeLI1xdNMeJlAkNYmA6A7wPpTOUKV5IOBU5FkV48W1qb/ZujTtKtULxFfKqHzuia0kCpSl81Gw1KBEqtdTNsKwg6VE01nAoMSUKYOXUO1Dt39dU0le4OPm1uBGmB3w8mlX2EMU6l6/LYJXcm7wek5J8vkf6ZIa+ZWHEzw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=f/FKROkns/aT3W5EmDyW7I75f5H4AFux2NcHTMqTyeg=;
+ b=Lk3PZUjjTatXwMvInN15dFRo+cxqQE2rzPo7XGbHfu+6gX5IxNGObi2ezUkYKt0t4QlbHFRL1Cvho23boIbGk6x2XvPCveDrvSvyFb2pFoaOkVWpemfd9PSql3s/69CDtuRUdzIYoqRyjWpdt1+aujK7x9Qnlfw+bzyPhIU7khwr2sW5p+sCnN4k/1T3kGnAK/+o7vvf7HDIpOzKQNyAvg0eabhadMNiC217SXyEK2oRKcCRStbRJFlWh3dN9TmFyMQ/tE8+xSaPxxHi/2d5es1SNz75pUGK8DTFxD4uF3Y/FbTfzDIuia64p649JChrQpwUiWOZONrRTYPF/C4fSQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=f/FKROkns/aT3W5EmDyW7I75f5H4AFux2NcHTMqTyeg=;
+ b=mw5fp5zbUfOqbRbJrDrr9j7E5QuI70wJxeuO5cNpqoppGXIXQQyMY6+qa3cw1e6bZJDQMpkBmnM16sj+92UndRzhjzygPtB9JicrT8WaaQfdK0ptmn5ZIUlssbikN2xh18NrX/8fUcGI5iO+TFIfvIwNhEsVobQ5tlYI/fWo09aW0RvUwABtIda+ohnRwqP/bpGpFRNmSwpCwFDttM5GCmgbrRqFa3qs6lsaYfYaVj0OnKGSegmuxbvchgSmMRqydtVBkyImz/oWqK6Mw8kX3c4XBIPchkNAosP9oxplBPJi0J20xdZFMDckrIsIlp2gM7MGHT14UoO63yEnthbkdg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com (2603:1096:101:78::6)
+ by SEYPR06MB5891.apcprd06.prod.outlook.com (2603:1096:101:d4::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6565.17; Wed, 5 Jul
+ 2023 13:04:38 +0000
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::fa0e:6c06:7474:285c]) by SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::fa0e:6c06:7474:285c%5]) with mapi id 15.20.6565.016; Wed, 5 Jul 2023
+ 13:04:38 +0000
+From: Yangtao Li <frank.li@vivo.com>
+To: Yong Wu <yong.wu@mediatek.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Yangtao Li <frank.li@vivo.com>,
+	iommu@lists.linux.dev,
 	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v4 10/10] media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
-Date: Wed,  5 Jul 2023 14:10:56 +0200
-Message-Id: <20230705121056.37017-11-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230705121056.37017-1-benjamin.gaignard@collabora.com>
-References: <20230705121056.37017-1-benjamin.gaignard@collabora.com>
-MIME-Version: 1.0
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH 6/6] iommu/mediatek: Convert to devm_platform_ioremap_resource() and devm_platform_get_and_ioremap_resource()
+Date: Wed,  5 Jul 2023 21:04:16 +0800
+Message-Id: <20230705130416.46710-6-frank.li@vivo.com>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230705130416.46710-1-frank.li@vivo.com>
+References: <20230705130416.46710-1-frank.li@vivo.com>
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: SI1PR02CA0057.apcprd02.prod.outlook.com
+ (2603:1096:4:1f5::10) To SEZPR06MB5269.apcprd06.prod.outlook.com
+ (2603:1096:101:78::6)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5269:EE_|SEYPR06MB5891:EE_
+X-MS-Office365-Filtering-Correlation-Id: 870f86ab-671e-465f-c37b-08db7d58636e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ZR0e7L239CRxNQElPl+JqckKIX6p097PLgV+vXugnQBuJX1bDQqQjpBCozATTrDzwgbi2wK+kEIlbF16yhOGKCO/K8ZZTdRa+3frQkO91M+8CHAHiEsyQtXGj/WK9skicipwu8kQV1xzIbKOeJJw9CkiPzNA2QX1tRfudx9mF86V5l5Qpxg51DMx622a//pvUsTrN91Fr6IejGEO7ss41JrTt1nToXHADbBNYjvyOPwHYyYLND06Dq21qBOOboMWRuJcEvXZLZbsTB0dTbnEPoL211yvQz2c8OtdUIia7tC1GDXP9Q4qDedMawY0OLmUkI4tteKNJT99UAZuhHBdCV1TwupcB7zdNiUd0msMsNIA9MwCt1K0I/rrzaHjLomyN1ZULYmfliBoy2pCVCiLPlJSUxzJpDpbTwi+JxyDWU6JqVI/KuiXtE0R7pdxFHPWZt6sprwCdf0F+1VcPmDLk5fdw/UEi+LIuB078w1IRht7ZqAOWzKpX1xi7irSE1FpPOxQYmk08ATGHMjIvhOkGIUV8/++lm68mUMB4DI9rqcxR2G8oXkZWwi6yiRdE17gwfDsf1zJTAS6SsiC+UEDyt/cNuWL6Ki3nHs5l9tv/SMZCbYM4u7ETcM5JroVt/Ul
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5269.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(396003)(366004)(346002)(136003)(39860400002)(376002)(451199021)(478600001)(52116002)(6486002)(6666004)(110136005)(66946007)(186003)(6506007)(1076003)(26005)(6512007)(66556008)(2906002)(41300700001)(4326008)(66476007)(316002)(7416002)(5660300002)(8936002)(8676002)(38100700002)(38350700002)(86362001)(36756003)(83380400001)(2616005);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?axo3/Hke4orzFWFk8sRczp4LmujEeFQayPyj2gcZpNgBaE3API4mXWWMdC2K?=
+ =?us-ascii?Q?BOhXKrRfwmO1zWf0efCwAc8W/9QBR/6jp2/iCuN3fzsEBKuuPg5RmR0BfOi3?=
+ =?us-ascii?Q?MfM4bg5pSeuQgENT/0GTmyfNXFVsbONCVY4s96dev5sGwFmTvnbxv1pBktJU?=
+ =?us-ascii?Q?C71uHsqOe8kG0wopAmyvabwKz1pVUZdQwUIqZ3yoZUC4P4Ij5WpM4mc1fM2e?=
+ =?us-ascii?Q?RLoO0uGKqKXmJNPvStTeyWhYkdHL0NySldf4UtQt4ryW9huWez/8HtftQhaV?=
+ =?us-ascii?Q?FknduCdeKWru7SaRP9Oq1NW55iZj5k0+NlnuMkTioNVIqukNMpuMNy+GH/bz?=
+ =?us-ascii?Q?Hu5iZFvhxuMiBy/RvAY5xd5RpYRzCcztKUny6XF+B7+1aj3H97YVcGl+QU0A?=
+ =?us-ascii?Q?MZn4oscy8KtosRMzt0WvR5uFIDvubTusHFJa2kHTNpr4w5Iz9W6hnI1hoDoz?=
+ =?us-ascii?Q?Xu34BX3L26JJQBUXl53YY8+Ao5KDPkr4jnSgvf0W+aQrtJx20+Yuciealr3g?=
+ =?us-ascii?Q?8GHRSM1UvZXpxlcDSfAxMgZQqKsi7Gd1F6NMzwBuVKxQZYFmezgjWnA9GMEg?=
+ =?us-ascii?Q?V0uYfKz9Lrt7MHwCXtC2zBxpGJfNesa1JY5cSZ9GJH1QV4eeGof4eGM6qEVT?=
+ =?us-ascii?Q?MVjgGlyCEzDRP1FAeM1XowdOr6uHCmv9mI1738trAXnVuCmrKHlNkDpDm1GS?=
+ =?us-ascii?Q?7pQroP32ZSSvPGJ1smWJ188sBt+r2GZLIQBTBlUomzrmD2daEvQOk7vkUuFe?=
+ =?us-ascii?Q?RLOS2eFV97B9Wd8NhDiphUorx2qiyQujPfhjfTzeDFSyYoz6c2ZBW4l2If1F?=
+ =?us-ascii?Q?fc/+IVFvpW6BTZ+2K4v2/t/puAIgIIAJz15ptEFKEpU3aSkoi68SUS87eXmd?=
+ =?us-ascii?Q?OPwgEFpNdun/e6F0WAlQ8OuUwNXu8DOHrvlP4VaL2DaUTQ5Ru0g1RDbOCfzD?=
+ =?us-ascii?Q?+9amZARMcBDAAkkDIHjCkrEQ0RCf5fNJD2s7uYR6UrrrzfgsZMM/x5e2sWsa?=
+ =?us-ascii?Q?MSzQL6khgMst4dl2eMkEKhSp5wPhgGXSnFt2qv0o7SvDFtLeHwuwxfaQuSKz?=
+ =?us-ascii?Q?HU0zJL7E49co2OErRxqdw3TQy3X9QYfrfzNvDtfMeksOZecA/OIyHy+4a0KI?=
+ =?us-ascii?Q?AmUus40MlTw1WHLr4iT+uURYMzHPweRlTZmq9tDweZhml9vquiSrnAV+qvkn?=
+ =?us-ascii?Q?9BUjIKUmWYxN5NXHwMPEq1v4F+NO8lj/08kGF0FbHW27xZ/lfpgoeBRjfTk8?=
+ =?us-ascii?Q?gbZjqqk99oj7HcNxtP1/DRkGr+ecfvjGy2g15o1KOPEmKoDxof9kX1YM/5ZQ?=
+ =?us-ascii?Q?LduyazuhJVQXnlX+ft07C+tPsRpTOUDQ9UYifVYYBYEtqlSh/+QfJlRMTqMb?=
+ =?us-ascii?Q?3jFE10Or+GR5gAqlTnmbZXLRbN2hw/H8AHsFOFkgx3ui/LTw8FcKrsoa47ww?=
+ =?us-ascii?Q?MPLiJC6D1Yggkapp3QyOqgUMGoV+UYfGaN9OchFazqKs40GMGmSHzhDoQ0Cx?=
+ =?us-ascii?Q?Q3sW9E/Xg/KdrgCGUwRiaNCB68uN5DrbBAOiPqtdCzBz97BJ2RhZSeQnbzv0?=
+ =?us-ascii?Q?AMv38ThRnksb7mimnVCJ2jDyVf47FRKR/4N6iq7j?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 870f86ab-671e-465f-c37b-08db7d58636e
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5269.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jul 2023 13:04:38.3339
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: +GYVDiyTZfgiWfx+6/UQY21V/klpdSu56kE/G8SDsjj9JS6f6j+CRYW7xZsmd6SAhhNKfcQPAsQneRMyKQiG4Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB5891
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_131116_429591_4F26940D 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20230705_060439_793495_9F4D3D0B 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,109 +139,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Create v4l2-mem2mem helpers for VIDIOC_DELETE_BUFS ioctl.
+Use devm_platform_ioremap_resource() and
+devm_platform_get_and_ioremap_resource() to simplify code.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Signed-off-by: Yangtao Li <frank.li@vivo.com>
 ---
- .../media/platform/verisilicon/hantro_v4l2.c  |  1 +
- drivers/media/test-drivers/vim2m.c            |  1 +
- drivers/media/v4l2-core/v4l2-mem2mem.c        | 20 +++++++++++++++++++
- include/media/v4l2-mem2mem.h                  | 12 +++++++++++
- 4 files changed, 34 insertions(+)
+ drivers/iommu/mtk_iommu.c    | 9 +++------
+ drivers/iommu/mtk_iommu_v1.c | 4 +---
+ 2 files changed, 4 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 08ec5e9cc739..6b8d3908a4f7 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -720,6 +720,7 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
- 	.vidioc_dqbuf = v4l2_m2m_ioctl_dqbuf,
- 	.vidioc_prepare_buf = v4l2_m2m_ioctl_prepare_buf,
- 	.vidioc_create_bufs = v4l2_m2m_ioctl_create_bufs,
-+	.vidioc_delete_bufs = v4l2_m2m_ioctl_delete_bufs,
- 	.vidioc_expbuf = v4l2_m2m_ioctl_expbuf,
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index e93906d6e112..6595a25c103d 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -1264,16 +1264,13 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 	}
  
- 	.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
-diff --git a/drivers/media/test-drivers/vim2m.c b/drivers/media/test-drivers/vim2m.c
-index 3e3b424b4860..3014b8ee13d0 100644
---- a/drivers/media/test-drivers/vim2m.c
-+++ b/drivers/media/test-drivers/vim2m.c
-@@ -960,6 +960,7 @@ static const struct v4l2_ioctl_ops vim2m_ioctl_ops = {
- 	.vidioc_dqbuf		= v4l2_m2m_ioctl_dqbuf,
- 	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
- 	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
-+	.vidioc_delete_buf	= v4l2_m2m_ioctl_delete_buf,
- 	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
+ 	banks_num = data->plat_data->banks_num;
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	if (!res)
+-		return -EINVAL;
++	base = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
++	if (IS_ERR(base))
++		return PTR_ERR(base);
+ 	if (resource_size(res) < banks_num * MTK_IOMMU_BANK_SZ) {
+ 		dev_err(dev, "banknr %d. res %pR is not enough.\n", banks_num, res);
+ 		return -EINVAL;
+ 	}
+-	base = devm_ioremap_resource(dev, res);
+-	if (IS_ERR(base))
+-		return PTR_ERR(base);
+ 	ioaddr = res->start;
  
- 	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
-diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
-index 0cc30397fbad..d1d59943680f 100644
---- a/drivers/media/v4l2-core/v4l2-mem2mem.c
-+++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
-@@ -831,6 +831,17 @@ int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- }
- EXPORT_SYMBOL_GPL(v4l2_m2m_prepare_buf);
- 
-+int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
-+			 struct v4l2_delete_buffers *d)
-+{
-+	struct vb2_queue *vq;
-+
-+	vq = v4l2_m2m_get_vq(m2m_ctx, d->type);
-+
-+	return vb2_delete_bufs(vq, d);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_m2m_delete_bufs);
-+
- int v4l2_m2m_create_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- 			 struct v4l2_create_buffers *create)
+ 	data->bank = devm_kmalloc(dev, banks_num * sizeof(*data->bank), GFP_KERNEL);
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index 8a0a5e5d049f..2e116241f80b 100644
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -610,7 +610,6 @@ static int mtk_iommu_v1_probe(struct platform_device *pdev)
  {
-@@ -1377,6 +1388,15 @@ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *priv,
- }
- EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_create_bufs);
+ 	struct device			*dev = &pdev->dev;
+ 	struct mtk_iommu_v1_data	*data;
+-	struct resource			*res;
+ 	struct component_match		*match = NULL;
+ 	void				*protect;
+ 	int				larb_nr, ret, i;
+@@ -628,8 +627,7 @@ static int mtk_iommu_v1_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
  
-+int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
-+			       struct v4l2_delete_buffers *d)
-+{
-+	struct v4l2_fh *fh = file->private_data;
-+
-+	return v4l2_m2m_delete_bufs(file, fh->m2m_ctx, d);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_delete_bufs);
-+
- int v4l2_m2m_ioctl_querybuf(struct file *file, void *priv,
- 				struct v4l2_buffer *buf)
- {
-diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
-index bb9de6a899e0..95b9e1be09f8 100644
---- a/include/media/v4l2-mem2mem.h
-+++ b/include/media/v4l2-mem2mem.h
-@@ -381,6 +381,16 @@ int v4l2_m2m_dqbuf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- 			 struct v4l2_buffer *buf);
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	data->base = devm_ioremap_resource(dev, res);
++	data->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(data->base))
+ 		return PTR_ERR(data->base);
  
-+/**
-+ * v4l2_m2m_delete_bufs() - delete buffers from the queue
-+ *
-+ * @file: pointer to struct &file
-+ * @m2m_ctx: m2m context assigned to the instance given by struct &v4l2_m2m_ctx
-+ * @d: pointer to struct &v4l2_delete_buffers
-+ */
-+int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
-+			 struct v4l2_delete_buffers *d);
-+
- /**
-  * v4l2_m2m_create_bufs() - create a source or destination buffer, depending
-  * on the type
-@@ -846,6 +856,8 @@ int v4l2_m2m_ioctl_reqbufs(struct file *file, void *priv,
- 				struct v4l2_requestbuffers *rb);
- int v4l2_m2m_ioctl_create_bufs(struct file *file, void *fh,
- 				struct v4l2_create_buffers *create);
-+int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
-+			       struct v4l2_delete_buffers *d);
- int v4l2_m2m_ioctl_querybuf(struct file *file, void *fh,
- 				struct v4l2_buffer *buf);
- int v4l2_m2m_ioctl_expbuf(struct file *file, void *fh,
 -- 
-2.39.2
+2.39.0
 
 
