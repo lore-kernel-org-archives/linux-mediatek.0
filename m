@@ -4,127 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F3AC0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 13:04:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95383EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 15:01:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f/FKROkns/aT3W5EmDyW7I75f5H4AFux2NcHTMqTyeg=; b=z1pX0eae6LhhAotx6SbTiCYffc
-	Z0OX2IH0rC9CNRElm3F/a4x/jxsBQzkM9OY1HOxTB5IjzUYQrVlmqlaAczHP53VbRhDYDVyyPpnxS
-	qao6OH/XkgFJOX50wFaHsjIKKlOnsqG++fmwdp5fPmJmqAmRVwdh3O8afFkPAcELz77cpIcqtwAXg
-	DgFLDdASfmtA7kQzq1JBio5Tr361bmDXYoOgT1H8TXfbyQPlk5n64TErfwUNUDjYz/Ahr9SJF17hJ
-	HfAYlhzEOhHwW/qaODy0Neit0DeYPjHwDPLmtjhBjOpyX8GaodbBZbdxUiQKV5nxTO1DKBxhNP2fm
-	dPeePFPQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zoj6PovRbQtOS9C5HOPl6B505HcYhQOk1Hb8p+qbuDo=; b=qljt5jRUfdLJy/6MegnTx/qHts
+	CyxJHfjdJ5AtJXzIDRvLN1koM/RvEEVMqyYbnB5ZA5mwqJ/Dvzh06l8QOMnJ2FaJCWcv6X7ddOTkv
+	FZPhkapfrUTd8J6JWPOmae4LGqihrOOGG0zz3C2vblIlFQ8M1PD4N3FhcX+24i/Kb7+K3wQaev8wm
+	vwntxsXrTQV3KjkYmlkScqXxraWSxbEy97aJ5wRvma8E8w3sQUQ3DmM50QfM2At29IOnpk4HX5sUf
+	1d43dcXPVM4lWd7+dhQq8Rpedyh6aSvO/8fKA/CX6jmfjLODS3F6Btwfo9Szk2T6uNcV+1u6f5gM3
+	Wq4Yr9Lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH2BW-00Fwyw-2f;
-	Wed, 05 Jul 2023 13:04:42 +0000
-Received: from mail-sgaapc01on20711.outbound.protection.outlook.com ([2a01:111:f400:feab::711] helo=APC01-SG2-obe.outbound.protection.outlook.com)
+	id 1qH3zx-00GFDO-0e;
+	Wed, 05 Jul 2023 15:00:53 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH2BT-00FwvO-2R;
-	Wed, 05 Jul 2023 13:04:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jsWqxWcMtZVe6PHyrijfvJjGhv/9akCtqDmFLuHrRc8zuX2ayJIZ3Rj9ermLztnT8GkGqxq5JbgrEMidkNDJ1L+irP5ftzAUHyllg4LhB/hetsGJbZgEaGffeL4DKb0ACRhJ4DCwBICs5f59EECsS7jFD9WKLitSXvsrItbLtsUEg6+syIeLI1xdNMeJlAkNYmA6A7wPpTOUKV5IOBU5FkV48W1qb/ZujTtKtULxFfKqHzuia0kCpSl81Gw1KBEqtdTNsKwg6VE01nAoMSUKYOXUO1Dt39dU0le4OPm1uBGmB3w8mlX2EMU6l6/LYJXcm7wek5J8vkf6ZIa+ZWHEzw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=f/FKROkns/aT3W5EmDyW7I75f5H4AFux2NcHTMqTyeg=;
- b=Lk3PZUjjTatXwMvInN15dFRo+cxqQE2rzPo7XGbHfu+6gX5IxNGObi2ezUkYKt0t4QlbHFRL1Cvho23boIbGk6x2XvPCveDrvSvyFb2pFoaOkVWpemfd9PSql3s/69CDtuRUdzIYoqRyjWpdt1+aujK7x9Qnlfw+bzyPhIU7khwr2sW5p+sCnN4k/1T3kGnAK/+o7vvf7HDIpOzKQNyAvg0eabhadMNiC217SXyEK2oRKcCRStbRJFlWh3dN9TmFyMQ/tE8+xSaPxxHi/2d5es1SNz75pUGK8DTFxD4uF3Y/FbTfzDIuia64p649JChrQpwUiWOZONrRTYPF/C4fSQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
- dkim=pass header.d=vivo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=f/FKROkns/aT3W5EmDyW7I75f5H4AFux2NcHTMqTyeg=;
- b=mw5fp5zbUfOqbRbJrDrr9j7E5QuI70wJxeuO5cNpqoppGXIXQQyMY6+qa3cw1e6bZJDQMpkBmnM16sj+92UndRzhjzygPtB9JicrT8WaaQfdK0ptmn5ZIUlssbikN2xh18NrX/8fUcGI5iO+TFIfvIwNhEsVobQ5tlYI/fWo09aW0RvUwABtIda+ohnRwqP/bpGpFRNmSwpCwFDttM5GCmgbrRqFa3qs6lsaYfYaVj0OnKGSegmuxbvchgSmMRqydtVBkyImz/oWqK6Mw8kX3c4XBIPchkNAosP9oxplBPJi0J20xdZFMDckrIsIlp2gM7MGHT14UoO63yEnthbkdg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=vivo.com;
-Received: from SEZPR06MB5269.apcprd06.prod.outlook.com (2603:1096:101:78::6)
- by SEYPR06MB5891.apcprd06.prod.outlook.com (2603:1096:101:d4::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6565.17; Wed, 5 Jul
- 2023 13:04:38 +0000
-Received: from SEZPR06MB5269.apcprd06.prod.outlook.com
- ([fe80::fa0e:6c06:7474:285c]) by SEZPR06MB5269.apcprd06.prod.outlook.com
- ([fe80::fa0e:6c06:7474:285c%5]) with mapi id 15.20.6565.016; Wed, 5 Jul 2023
- 13:04:38 +0000
-From: Yangtao Li <frank.li@vivo.com>
-To: Yong Wu <yong.wu@mediatek.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
+	id 1qH3zK-00GEuM-2s
+	for linux-mediatek@lists.infradead.org;
+	Wed, 05 Jul 2023 15:00:16 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-9923833737eso612419566b.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 05 Jul 2023 08:00:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1688569211; x=1691161211;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=zoj6PovRbQtOS9C5HOPl6B505HcYhQOk1Hb8p+qbuDo=;
+        b=wERFDEO1li69fIU+KUHWAEHjn5+bMAooEiWlHlYDnVIdlK61szQC42sOaqaQuGZIUm
+         UjnmbaTahZNA+QNdIM6/H/oO4EeDWcGNIqSnomfPTc2WTLCtxI+RJknsLFPfNd25nNA0
+         tnk8vZC/wMzqIz0r8tzICRVLBShcB1aCssW0QlWWyYAxUwBTn7eUchBCd/FMfWDcukd7
+         4ApwEGLy3HBIeYl8iuHtnsYPSkwXkPtVAzC2TSr+M6I/4lN4nAAuSib4dJ1rR43kvMBU
+         rCFmON1Fac8Wyo0v8gyCzmxevqMPmiPa74ZQWK+7zUxPDcAffRloEOizwBX7KQpvrPas
+         iL0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688569211; x=1691161211;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=zoj6PovRbQtOS9C5HOPl6B505HcYhQOk1Hb8p+qbuDo=;
+        b=cYauODpLb9sdow3q/g4t45LBy2tpP5DfNZhkZ3SgTJRoEmfx861Ewkt5Gy2UFFAJfh
+         3tZnl9hoSbip5p6fd8MUzLAotv/OE694S18Ns1Wan57Ay3hYA98S7IeO5RXznqiCf2sN
+         o2eDP0P2jpnBeWmb9DYOQGlFsBCucNxBpaK8d3a3fxLTj95fiwUy0DREFzogph4vvfze
+         C8Bm2UIH6OO8z9/s3pPnSfTekb5VlqAcDSXd226sa66/sAzpNznZkc56fiDo4wYaf6by
+         Z0kaLXMovJN1VV5zmsJYNRy87zhYicEKtdHRPtlJdWSJLSCZM3ZuOmgWMcdUW+wEjuDt
+         nZWg==
+X-Gm-Message-State: ABy/qLbCmQMoGAYNJxmm1TJjiZePwxLfwrODHUZ+tMK6J4lxeolzo6jV
+	oQ1VtoQzQF5Ce8UVHjmtdRshxw==
+X-Google-Smtp-Source: APBJJlHDuJ57DJRbSpm3ZfMkLb71JQyDqyG9Z9b+EwOVBs6eGnhnuvhmGOHJSm6o09XJiYLYJsZSyQ==
+X-Received: by 2002:a17:906:5904:b0:98e:18ea:442c with SMTP id h4-20020a170906590400b0098e18ea442cmr12854691ejq.45.1688569211231;
+        Wed, 05 Jul 2023 08:00:11 -0700 (PDT)
+Received: from krzk-bin.. ([178.197.219.26])
+        by smtp.gmail.com with ESMTPSA id bu5-20020a170906a14500b0096f6a131b9fsm14704838ejb.23.2023.07.05.08.00.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 05 Jul 2023 08:00:10 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Yangtao Li <frank.li@vivo.com>,
-	iommu@lists.linux.dev,
-	linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 6/6] iommu/mediatek: Convert to devm_platform_ioremap_resource() and devm_platform_get_and_ioremap_resource()
-Date: Wed,  5 Jul 2023 21:04:16 +0800
-Message-Id: <20230705130416.46710-6-frank.li@vivo.com>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230705130416.46710-1-frank.li@vivo.com>
-References: <20230705130416.46710-1-frank.li@vivo.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SI1PR02CA0057.apcprd02.prod.outlook.com
- (2603:1096:4:1f5::10) To SEZPR06MB5269.apcprd06.prod.outlook.com
- (2603:1096:101:78::6)
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 1/2] ARM: dts: mediatek: add missing space before {
+Date: Wed,  5 Jul 2023 17:00:05 +0200
+Message-Id: <20230705150006.293690-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SEZPR06MB5269:EE_|SEYPR06MB5891:EE_
-X-MS-Office365-Filtering-Correlation-Id: 870f86ab-671e-465f-c37b-08db7d58636e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: ZR0e7L239CRxNQElPl+JqckKIX6p097PLgV+vXugnQBuJX1bDQqQjpBCozATTrDzwgbi2wK+kEIlbF16yhOGKCO/K8ZZTdRa+3frQkO91M+8CHAHiEsyQtXGj/WK9skicipwu8kQV1xzIbKOeJJw9CkiPzNA2QX1tRfudx9mF86V5l5Qpxg51DMx622a//pvUsTrN91Fr6IejGEO7ss41JrTt1nToXHADbBNYjvyOPwHYyYLND06Dq21qBOOboMWRuJcEvXZLZbsTB0dTbnEPoL211yvQz2c8OtdUIia7tC1GDXP9Q4qDedMawY0OLmUkI4tteKNJT99UAZuhHBdCV1TwupcB7zdNiUd0msMsNIA9MwCt1K0I/rrzaHjLomyN1ZULYmfliBoy2pCVCiLPlJSUxzJpDpbTwi+JxyDWU6JqVI/KuiXtE0R7pdxFHPWZt6sprwCdf0F+1VcPmDLk5fdw/UEi+LIuB078w1IRht7ZqAOWzKpX1xi7irSE1FpPOxQYmk08ATGHMjIvhOkGIUV8/++lm68mUMB4DI9rqcxR2G8oXkZWwi6yiRdE17gwfDsf1zJTAS6SsiC+UEDyt/cNuWL6Ki3nHs5l9tv/SMZCbYM4u7ETcM5JroVt/Ul
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5269.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(396003)(366004)(346002)(136003)(39860400002)(376002)(451199021)(478600001)(52116002)(6486002)(6666004)(110136005)(66946007)(186003)(6506007)(1076003)(26005)(6512007)(66556008)(2906002)(41300700001)(4326008)(66476007)(316002)(7416002)(5660300002)(8936002)(8676002)(38100700002)(38350700002)(86362001)(36756003)(83380400001)(2616005);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?axo3/Hke4orzFWFk8sRczp4LmujEeFQayPyj2gcZpNgBaE3API4mXWWMdC2K?=
- =?us-ascii?Q?BOhXKrRfwmO1zWf0efCwAc8W/9QBR/6jp2/iCuN3fzsEBKuuPg5RmR0BfOi3?=
- =?us-ascii?Q?MfM4bg5pSeuQgENT/0GTmyfNXFVsbONCVY4s96dev5sGwFmTvnbxv1pBktJU?=
- =?us-ascii?Q?C71uHsqOe8kG0wopAmyvabwKz1pVUZdQwUIqZ3yoZUC4P4Ij5WpM4mc1fM2e?=
- =?us-ascii?Q?RLoO0uGKqKXmJNPvStTeyWhYkdHL0NySldf4UtQt4ryW9huWez/8HtftQhaV?=
- =?us-ascii?Q?FknduCdeKWru7SaRP9Oq1NW55iZj5k0+NlnuMkTioNVIqukNMpuMNy+GH/bz?=
- =?us-ascii?Q?Hu5iZFvhxuMiBy/RvAY5xd5RpYRzCcztKUny6XF+B7+1aj3H97YVcGl+QU0A?=
- =?us-ascii?Q?MZn4oscy8KtosRMzt0WvR5uFIDvubTusHFJa2kHTNpr4w5Iz9W6hnI1hoDoz?=
- =?us-ascii?Q?Xu34BX3L26JJQBUXl53YY8+Ao5KDPkr4jnSgvf0W+aQrtJx20+Yuciealr3g?=
- =?us-ascii?Q?8GHRSM1UvZXpxlcDSfAxMgZQqKsi7Gd1F6NMzwBuVKxQZYFmezgjWnA9GMEg?=
- =?us-ascii?Q?V0uYfKz9Lrt7MHwCXtC2zBxpGJfNesa1JY5cSZ9GJH1QV4eeGof4eGM6qEVT?=
- =?us-ascii?Q?MVjgGlyCEzDRP1FAeM1XowdOr6uHCmv9mI1738trAXnVuCmrKHlNkDpDm1GS?=
- =?us-ascii?Q?7pQroP32ZSSvPGJ1smWJ188sBt+r2GZLIQBTBlUomzrmD2daEvQOk7vkUuFe?=
- =?us-ascii?Q?RLOS2eFV97B9Wd8NhDiphUorx2qiyQujPfhjfTzeDFSyYoz6c2ZBW4l2If1F?=
- =?us-ascii?Q?fc/+IVFvpW6BTZ+2K4v2/t/puAIgIIAJz15ptEFKEpU3aSkoi68SUS87eXmd?=
- =?us-ascii?Q?OPwgEFpNdun/e6F0WAlQ8OuUwNXu8DOHrvlP4VaL2DaUTQ5Ru0g1RDbOCfzD?=
- =?us-ascii?Q?+9amZARMcBDAAkkDIHjCkrEQ0RCf5fNJD2s7uYR6UrrrzfgsZMM/x5e2sWsa?=
- =?us-ascii?Q?MSzQL6khgMst4dl2eMkEKhSp5wPhgGXSnFt2qv0o7SvDFtLeHwuwxfaQuSKz?=
- =?us-ascii?Q?HU0zJL7E49co2OErRxqdw3TQy3X9QYfrfzNvDtfMeksOZecA/OIyHy+4a0KI?=
- =?us-ascii?Q?AmUus40MlTw1WHLr4iT+uURYMzHPweRlTZmq9tDweZhml9vquiSrnAV+qvkn?=
- =?us-ascii?Q?9BUjIKUmWYxN5NXHwMPEq1v4F+NO8lj/08kGF0FbHW27xZ/lfpgoeBRjfTk8?=
- =?us-ascii?Q?gbZjqqk99oj7HcNxtP1/DRkGr+ecfvjGy2g15o1KOPEmKoDxof9kX1YM/5ZQ?=
- =?us-ascii?Q?LduyazuhJVQXnlX+ft07C+tPsRpTOUDQ9UYifVYYBYEtqlSh/+QfJlRMTqMb?=
- =?us-ascii?Q?3jFE10Or+GR5gAqlTnmbZXLRbN2hw/H8AHsFOFkgx3ui/LTw8FcKrsoa47ww?=
- =?us-ascii?Q?MPLiJC6D1Yggkapp3QyOqgUMGoV+UYfGaN9OchFazqKs40GMGmSHzhDoQ0Cx?=
- =?us-ascii?Q?Q3sW9E/Xg/KdrgCGUwRiaNCB68uN5DrbBAOiPqtdCzBz97BJ2RhZSeQnbzv0?=
- =?us-ascii?Q?AMv38ThRnksb7mimnVCJ2jDyVf47FRKR/4N6iq7j?=
-X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 870f86ab-671e-465f-c37b-08db7d58636e
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5269.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jul 2023 13:04:38.3339
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +GYVDiyTZfgiWfx+6/UQY21V/klpdSu56kE/G8SDsjj9JS6f6j+CRYW7xZsmd6SAhhNKfcQPAsQneRMyKQiG4Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB5891
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_060439_793495_9F4D3D0B 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20230705_080014_942904_41927999 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,62 +95,272 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use devm_platform_ioremap_resource() and
-devm_platform_get_and_ioremap_resource() to simplify code.
+Add missing whitespace between node name/label and opening {.
 
-Signed-off-by: Yangtao Li <frank.li@vivo.com>
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/iommu/mtk_iommu.c    | 9 +++------
- drivers/iommu/mtk_iommu_v1.c | 4 +---
- 2 files changed, 4 insertions(+), 9 deletions(-)
+ arch/arm/boot/dts/mediatek/mt2701-evb.dts |  2 +-
+ arch/arm/boot/dts/mediatek/mt6323.dtsi    | 58 +++++++++++------------
+ 2 files changed, 30 insertions(+), 30 deletions(-)
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index e93906d6e112..6595a25c103d 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -1264,16 +1264,13 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 	}
+diff --git a/arch/arm/boot/dts/mediatek/mt2701-evb.dts b/arch/arm/boot/dts/mediatek/mt2701-evb.dts
+index d1535f385f36..9c7325f18933 100644
+--- a/arch/arm/boot/dts/mediatek/mt2701-evb.dts
++++ b/arch/arm/boot/dts/mediatek/mt2701-evb.dts
+@@ -244,7 +244,7 @@ &uart0 {
+ &usb2 {
+ 	status = "okay";
+ 	usb-role-switch;
+-	connector{
++	connector {
+ 		compatible = "gpio-usb-b-connector", "usb-b-connector";
+ 		type = "micro";
+ 		id-gpios = <&pio 44 GPIO_ACTIVE_HIGH>;
+diff --git a/arch/arm/boot/dts/mediatek/mt6323.dtsi b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+index 7fda40ab5fe8..c230c865116d 100644
+--- a/arch/arm/boot/dts/mediatek/mt6323.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+@@ -21,10 +21,10 @@ mt6323_leds: leds {
+ 			status = "disabled";
+ 		};
  
- 	banks_num = data->plat_data->banks_num;
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	if (!res)
--		return -EINVAL;
-+	base = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
-+	if (IS_ERR(base))
-+		return PTR_ERR(base);
- 	if (resource_size(res) < banks_num * MTK_IOMMU_BANK_SZ) {
- 		dev_err(dev, "banknr %d. res %pR is not enough.\n", banks_num, res);
- 		return -EINVAL;
- 	}
--	base = devm_ioremap_resource(dev, res);
--	if (IS_ERR(base))
--		return PTR_ERR(base);
- 	ioaddr = res->start;
+-		mt6323regulator: mt6323regulator{
++		mt6323regulator: mt6323regulator {
+ 			compatible = "mediatek,mt6323-regulator";
  
- 	data->bank = devm_kmalloc(dev, banks_num * sizeof(*data->bank), GFP_KERNEL);
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 8a0a5e5d049f..2e116241f80b 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -610,7 +610,6 @@ static int mtk_iommu_v1_probe(struct platform_device *pdev)
- {
- 	struct device			*dev = &pdev->dev;
- 	struct mtk_iommu_v1_data	*data;
--	struct resource			*res;
- 	struct component_match		*match = NULL;
- 	void				*protect;
- 	int				larb_nr, ret, i;
-@@ -628,8 +627,7 @@ static int mtk_iommu_v1_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
+-			mt6323_vproc_reg: buck_vproc{
++			mt6323_vproc_reg: buck_vproc {
+ 				regulator-name = "vproc";
+ 				regulator-min-microvolt = < 700000>;
+ 				regulator-max-microvolt = <1350000>;
+@@ -33,7 +33,7 @@ mt6323_vproc_reg: buck_vproc{
+ 				regulator-boot-on;
+ 			};
  
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	data->base = devm_ioremap_resource(dev, res);
-+	data->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(data->base))
- 		return PTR_ERR(data->base);
+-			mt6323_vsys_reg: buck_vsys{
++			mt6323_vsys_reg: buck_vsys {
+ 				regulator-name = "vsys";
+ 				regulator-min-microvolt = <1400000>;
+ 				regulator-max-microvolt = <2987500>;
+@@ -42,13 +42,13 @@ mt6323_vsys_reg: buck_vsys{
+ 				regulator-boot-on;
+ 			};
  
+-			mt6323_vpa_reg: buck_vpa{
++			mt6323_vpa_reg: buck_vpa {
+ 				regulator-name = "vpa";
+ 				regulator-min-microvolt = < 500000>;
+ 				regulator-max-microvolt = <3650000>;
+ 			};
+ 
+-			mt6323_vtcxo_reg: ldo_vtcxo{
++			mt6323_vtcxo_reg: ldo_vtcxo {
+ 				regulator-name = "vtcxo";
+ 				regulator-min-microvolt = <2800000>;
+ 				regulator-max-microvolt = <2800000>;
+@@ -57,28 +57,28 @@ mt6323_vtcxo_reg: ldo_vtcxo{
+ 				regulator-boot-on;
+ 			};
+ 
+-			mt6323_vcn28_reg: ldo_vcn28{
++			mt6323_vcn28_reg: ldo_vcn28 {
+ 				regulator-name = "vcn28";
+ 				regulator-min-microvolt = <2800000>;
+ 				regulator-max-microvolt = <2800000>;
+ 				regulator-enable-ramp-delay = <185>;
+ 			};
+ 
+-			mt6323_vcn33_bt_reg: ldo_vcn33_bt{
++			mt6323_vcn33_bt_reg: ldo_vcn33_bt {
+ 				regulator-name = "vcn33_bt";
+ 				regulator-min-microvolt = <3300000>;
+ 				regulator-max-microvolt = <3600000>;
+ 				regulator-enable-ramp-delay = <185>;
+ 			};
+ 
+-			mt6323_vcn33_wifi_reg: ldo_vcn33_wifi{
++			mt6323_vcn33_wifi_reg: ldo_vcn33_wifi {
+ 				regulator-name = "vcn33_wifi";
+ 				regulator-min-microvolt = <3300000>;
+ 				regulator-max-microvolt = <3600000>;
+ 				regulator-enable-ramp-delay = <185>;
+ 			};
+ 
+-			mt6323_va_reg: ldo_va{
++			mt6323_va_reg: ldo_va {
+ 				regulator-name = "va";
+ 				regulator-min-microvolt = <2800000>;
+ 				regulator-max-microvolt = <2800000>;
+@@ -87,14 +87,14 @@ mt6323_va_reg: ldo_va{
+ 				regulator-boot-on;
+ 			};
+ 
+-			mt6323_vcama_reg: ldo_vcama{
++			mt6323_vcama_reg: ldo_vcama {
+ 				regulator-name = "vcama";
+ 				regulator-min-microvolt = <1500000>;
+ 				regulator-max-microvolt = <2800000>;
+ 				regulator-enable-ramp-delay = <216>;
+ 			};
+ 
+-			mt6323_vio28_reg: ldo_vio28{
++			mt6323_vio28_reg: ldo_vio28 {
+ 				regulator-name = "vio28";
+ 				regulator-min-microvolt = <2800000>;
+ 				regulator-max-microvolt = <2800000>;
+@@ -103,7 +103,7 @@ mt6323_vio28_reg: ldo_vio28{
+ 				regulator-boot-on;
+ 			};
+ 
+-			mt6323_vusb_reg: ldo_vusb{
++			mt6323_vusb_reg: ldo_vusb {
+ 				regulator-name = "vusb";
+ 				regulator-min-microvolt = <3300000>;
+ 				regulator-max-microvolt = <3300000>;
+@@ -111,7 +111,7 @@ mt6323_vusb_reg: ldo_vusb{
+ 				regulator-boot-on;
+ 			};
+ 
+-			mt6323_vmc_reg: ldo_vmc{
++			mt6323_vmc_reg: ldo_vmc {
+ 				regulator-name = "vmc";
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <3300000>;
+@@ -119,7 +119,7 @@ mt6323_vmc_reg: ldo_vmc{
+ 				regulator-boot-on;
+ 			};
+ 
+-			mt6323_vmch_reg: ldo_vmch{
++			mt6323_vmch_reg: ldo_vmch {
+ 				regulator-name = "vmch";
+ 				regulator-min-microvolt = <3000000>;
+ 				regulator-max-microvolt = <3300000>;
+@@ -127,7 +127,7 @@ mt6323_vmch_reg: ldo_vmch{
+ 				regulator-boot-on;
+ 			};
+ 
+-			mt6323_vemc3v3_reg: ldo_vemc3v3{
++			mt6323_vemc3v3_reg: ldo_vemc3v3 {
+ 				regulator-name = "vemc3v3";
+ 				regulator-min-microvolt = <3000000>;
+ 				regulator-max-microvolt = <3300000>;
+@@ -135,49 +135,49 @@ mt6323_vemc3v3_reg: ldo_vemc3v3{
+ 				regulator-boot-on;
+ 			};
+ 
+-			mt6323_vgp1_reg: ldo_vgp1{
++			mt6323_vgp1_reg: ldo_vgp1 {
+ 				regulator-name = "vgp1";
+ 				regulator-min-microvolt = <1200000>;
+ 				regulator-max-microvolt = <3300000>;
+ 				regulator-enable-ramp-delay = <216>;
+ 			};
+ 
+-			mt6323_vgp2_reg: ldo_vgp2{
++			mt6323_vgp2_reg: ldo_vgp2 {
+ 				regulator-name = "vgp2";
+ 				regulator-min-microvolt = <1200000>;
+ 				regulator-max-microvolt = <3000000>;
+ 				regulator-enable-ramp-delay = <216>;
+ 			};
+ 
+-			mt6323_vgp3_reg: ldo_vgp3{
++			mt6323_vgp3_reg: ldo_vgp3 {
+ 				regulator-name = "vgp3";
+ 				regulator-min-microvolt = <1200000>;
+ 				regulator-max-microvolt = <1800000>;
+ 				regulator-enable-ramp-delay = <216>;
+ 			};
+ 
+-			mt6323_vcn18_reg: ldo_vcn18{
++			mt6323_vcn18_reg: ldo_vcn18 {
+ 				regulator-name = "vcn18";
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
+ 				regulator-enable-ramp-delay = <216>;
+ 			};
+ 
+-			mt6323_vsim1_reg: ldo_vsim1{
++			mt6323_vsim1_reg: ldo_vsim1 {
+ 				regulator-name = "vsim1";
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <3000000>;
+ 				regulator-enable-ramp-delay = <216>;
+ 			};
+ 
+-			mt6323_vsim2_reg: ldo_vsim2{
++			mt6323_vsim2_reg: ldo_vsim2 {
+ 				regulator-name = "vsim2";
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <3000000>;
+ 				regulator-enable-ramp-delay = <216>;
+ 			};
+ 
+-			mt6323_vrtc_reg: ldo_vrtc{
++			mt6323_vrtc_reg: ldo_vrtc {
+ 				regulator-name = "vrtc";
+ 				regulator-min-microvolt = <2800000>;
+ 				regulator-max-microvolt = <2800000>;
+@@ -185,28 +185,28 @@ mt6323_vrtc_reg: ldo_vrtc{
+ 				regulator-boot-on;
+ 			};
+ 
+-			mt6323_vcamaf_reg: ldo_vcamaf{
++			mt6323_vcamaf_reg: ldo_vcamaf {
+ 				regulator-name = "vcamaf";
+ 				regulator-min-microvolt = <1200000>;
+ 				regulator-max-microvolt = <3300000>;
+ 				regulator-enable-ramp-delay = <216>;
+ 			};
+ 
+-			mt6323_vibr_reg: ldo_vibr{
++			mt6323_vibr_reg: ldo_vibr {
+ 				regulator-name = "vibr";
+ 				regulator-min-microvolt = <1200000>;
+ 				regulator-max-microvolt = <3300000>;
+ 				regulator-enable-ramp-delay = <36>;
+ 			};
+ 
+-			mt6323_vrf18_reg: ldo_vrf18{
++			mt6323_vrf18_reg: ldo_vrf18 {
+ 				regulator-name = "vrf18";
+ 				regulator-min-microvolt = <1825000>;
+ 				regulator-max-microvolt = <1825000>;
+ 				regulator-enable-ramp-delay = <187>;
+ 			};
+ 
+-			mt6323_vm_reg: ldo_vm{
++			mt6323_vm_reg: ldo_vm {
+ 				regulator-name = "vm";
+ 				regulator-min-microvolt = <1200000>;
+ 				regulator-max-microvolt = <1800000>;
+@@ -215,7 +215,7 @@ mt6323_vm_reg: ldo_vm{
+ 				regulator-boot-on;
+ 			};
+ 
+-			mt6323_vio18_reg: ldo_vio18{
++			mt6323_vio18_reg: ldo_vio18 {
+ 				regulator-name = "vio18";
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
+@@ -224,14 +224,14 @@ mt6323_vio18_reg: ldo_vio18{
+ 				regulator-boot-on;
+ 			};
+ 
+-			mt6323_vcamd_reg: ldo_vcamd{
++			mt6323_vcamd_reg: ldo_vcamd {
+ 				regulator-name = "vcamd";
+ 				regulator-min-microvolt = <1200000>;
+ 				regulator-max-microvolt = <1800000>;
+ 				regulator-enable-ramp-delay = <216>;
+ 			};
+ 
+-			mt6323_vcamio_reg: ldo_vcamio{
++			mt6323_vcamio_reg: ldo_vcamio {
+ 				regulator-name = "vcamio";
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
 -- 
-2.39.0
+2.34.1
 
 
