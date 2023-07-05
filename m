@@ -4,70 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 645FDEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 19:30:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 895CBEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 20:43:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k3mlRz7gktaWpRdrv06g72Yt1MD5uxYRKr++3Evm7ZM=; b=ssHv+sGDdD9Ltv8tD/NbbMpFE6
-	7iFmoNSK2s6qftjH1todwN6Z2WxFkyuBvYpjHyN629Dmhby+T3g/qjKzTEIJKggAbcByMnDq7Mn9g
-	l7ah5992F0teifVE8XmyiyyMdP/AaUlaEQ5+qYSnUe2U/+iu/XJXdgWTSu3y0jDMaH/kLeMXOYmtt
-	nJp2ml4AyPdaEVoBmEMV7ceCQYeb7L6qmj2zu+kN+t6AVVLn+BO3+iFj0mwqVEmbMlmKjkFEAc6Sm
-	J66LVcqEZPiOI8H+op9oDtlSpvwQun+uudOscZIVhLPzR2qq/fYmA28vwnfyoFFtOarntgNhOSO9T
-	5iDjYx5A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wyXkGZNGA5ysK2ltkve4RVlCutN+wjP1W2giIyjMZxk=; b=gk0g/pc9d9cGNTafKF2LbWZozf
+	h37SphTZ9+nwitNjkSF0zWjcuX0CChgmX3xZC/iOireshmXpm/3y6mr4XqiRkpnyJWS0iUgfiEbO5
+	rPcBlqac7PV5oB/NLY36JiJgjyadMbuhRPN07Fjbf28nluTScgBiX7ZQGE1KrgbUSK4NxpEN1wwuj
+	FGX7rdEr7mSkbZsV+iJ0CQk7mt8u3BDGTOAvt1A4UVeGWVLOCB8wXg2IqOH3Sjk6+/sjzpKMrd6PS
+	AYb3/az51ZdauJZihFo+GFwIEik52fpfewstMycwiB9GC4JnQAQNftOFyUUfGiBT4e37aMKWvSJuP
+	18hkj7Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH8DC-00Gu9h-2c;
-	Wed, 05 Jul 2023 19:30:50 +0000
-Received: from mail-io1-f45.google.com ([209.85.166.45])
+	id 1qH9Ld-00H2sa-2b;
+	Wed, 05 Jul 2023 20:43:37 +0000
+Received: from aposti.net ([89.234.176.197])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH8D9-00Gu8F-21;
-	Wed, 05 Jul 2023 19:30:48 +0000
-Received: by mail-io1-f45.google.com with SMTP id ca18e2360f4ac-785cbc5bfd2so334380939f.2;
-        Wed, 05 Jul 2023 12:30:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688585447; x=1691177447;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=k3mlRz7gktaWpRdrv06g72Yt1MD5uxYRKr++3Evm7ZM=;
-        b=UZg+yi5eAT/awc4TgFuqxJmBUC3AmkjjpFcqRM3wSodSm6hF19cEUazBxtQRmDErLQ
-         WizWq9nBHaJqHeVrdpgByPX1pUbwBF0JOey0guywcp570S5DWTjOzVjqkunVYFa7qx82
-         y10GQ7quG4ZAry3dHtNr9atqQ/IGTPF9gAFt6nlM24xTOiEsXt1LJeWQkqt1bnKi4EVE
-         GceDpEg1HJDHpXu7faalwgwWUIjqvlW2QAwGfbuTdHega4m11oo867PPT6rkUcoMr5bD
-         4siTJgVMOsWwZWpoxupkBalWCo/i2AAC1mS7fSUOXg2j63bR/GAiyaOS+T+kvRIZ3nY5
-         5XJA==
-X-Gm-Message-State: ABy/qLZrKdig7iA+jrzHzpYnR5LlBeGsN/+/5CtcncIbu/wJlRkD+EpU
-	KB0ndSROyIY5wBFUxlQcdg==
-X-Google-Smtp-Source: APBJJlEzFhLmGb+irBzIwS0P0x8xQEA1wCS7orNzq6bNP8zuCZeppl8Ds3njMNRfclsij6AuH8FhOQ==
-X-Received: by 2002:a5e:c916:0:b0:783:6526:a1a0 with SMTP id z22-20020a5ec916000000b007836526a1a0mr41501iol.15.1688585446834;
-        Wed, 05 Jul 2023 12:30:46 -0700 (PDT)
-Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id t4-20020a02c904000000b004266b4a05afsm7981950jao.39.2023.07.05.12.30.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Jul 2023 12:30:46 -0700 (PDT)
-Received: (nullmailer pid 1702773 invoked by uid 1000);
-	Wed, 05 Jul 2023 19:30:43 -0000
-Date: Wed, 5 Jul 2023 13:30:43 -0600
-From: Rob Herring <robh@kernel.org>
-To: Jason-ch Chen <jason-ch.chen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, jason-ch chen <Jason-ch.Chen@mediatek.com>, linux-mediatek@lists.infradead.org, =?iso-8859-1?Q?N=EDcolas_F_=2E_R_=2E_A_=2E?= Prado <nfraprado@collabora.com>, Rob Herring <robh+dt@kernel.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH 2/3] dt-bindings: arm: mediatek: Add mt8188 pericfg
- compatible
-Message-ID: <168858544290.1702735.16154973553045477437.robh@kernel.org>
-References: <20230705065744.25848-1-jason-ch.chen@mediatek.com>
- <20230705065744.25848-3-jason-ch.chen@mediatek.com>
+	id 1qH9La-00H2qU-03;
+	Wed, 05 Jul 2023 20:43:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
+	s=mail; t=1688589809;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=wyXkGZNGA5ysK2ltkve4RVlCutN+wjP1W2giIyjMZxk=;
+	b=nScC7Am7eHbPkqLsb+E2gznpiUpMVyfzuF8FL3UiEEkgxgDebdCyG0lG4/LsIyuatJlX4p
+	bLgSjmITOHNmgrkD8zSZN2pAMtILouf7m0vVi2R75j9CXCT1jpDBwzoRZP8oDzs/SSuMLd
+	FF8hRZbcRQMFlzMf9jstb8q8Hg0pEdM=
+From: Paul Cercueil <paul@crapouillou.net>
+To: Wolfram Sang <wsa@kernel.org>
+Cc: linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Paul Cercueil <paul@crapouillou.net>,
+	Elie Morisse <syniurge@gmail.com>,
+	Shyam Sundar S K <shyam-sundar.s-k@amd.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Kamal Dasu <kdasu.kdev@gmail.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Jarkko Nikula <jarkko.nikula@linux.intel.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Mika Westerberg <mika.westerberg@linux.intel.com>,
+	Jan Dabros <jsd@semihalf.com>,
+	Jean Delvare <jdelvare@suse.com>,
+	Qii Wang <qii.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Peter Korsgaard <peter@korsgaard.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Conghui Chen <conghui.chen@intel.com>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	Peter Rosin <peda@axentia.se>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	virtualization@lists.linux-foundation.org
+Subject: [PATCH 00/23] i2c: Use new PM macros
+Date: Wed,  5 Jul 2023 22:42:51 +0200
+Message-Id: <20230705204314.89800-1-paul@crapouillou.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230705065744.25848-3-jason-ch.chen@mediatek.com>
+Content-Transfer-Encoding: 8bit
+X-Spam: Yes
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_123047_663397_C67F20BB 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230705_134334_211637_E768B025 
+X-CRM114-Status: GOOD (  15.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,18 +98,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Wolfram,
 
-On Wed, 05 Jul 2023 14:57:43 +0800, Jason-ch Chen wrote:
-> From: jason-ch chen <Jason-ch.Chen@mediatek.com>
-> 
-> Add mt8188 pericfg compatible to binding document.
-> 
-> Signed-off-by: jason-ch chen <Jason-ch.Chen@mediatek.com>
-> ---
->  .../devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml       | 1 +
->  1 file changed, 1 insertion(+)
-> 
+This patchset converts the I2C subsystem to use the PM macros that were
+introduced in v5.17, which allow the dev_pm_ops and related callbacks to
+be automatically dropped by the compiler when CONFIG_PM or
+CONFIG_PM_SLEEP are disabled, without having to use #ifdef guards.
 
-Acked-by: Rob Herring <robh@kernel.org>
+The point of this, is that all this code is now compiled independently
+of any Kconfig option, which makes bugs and regressions easier to catch.
+
+This continues the work that has been started in other subsystems (DRM,
+IIO, watchdog).
+
+As an added bonus, the diff is 71+/192-, that means less code you will
+have to maintain ;)
+
+The patches generally don't change the behaviour, with a few exceptions,
+that are documented in the corresponding patches.
+
+I would like to draw the attention to a few patches in particular:
+
+- [01/23] the driver most likely does something that it shouldn't do
+  (use the same callbacks for runtime PM and system PM). The patch does
+  not change this behaviour but I have questions.
+
+- [11/23] uses platform_driver.{suspend,resume} instead of the regular
+  .driver.pm. I have no idea why it does that and I believe it doesn't
+  really have to.
+
+- [18/23] I feel like the qup_i2c_suspend / qup_i2c_resume don't really
+  need to exist, and the pm_runtime_force_suspend() /
+  pm_runtime_force_resume() helpers should be used instead, using the
+  DEFINE_RUNTIME_DEV_PM_OPS() macro.
+
+Cheers,
+-Paul
+
+Paul Cercueil (23):
+  i2c: amd-mp2: Remove #ifdef guards for PM related functions
+  i2c: au1550: Remove #ifdef guards for PM related functions
+  i2c: iproc: Remove #ifdef guards for PM related functions
+  i2c: brcmstb: Remove #ifdef guards for PM related functions
+  i2c: davinci: Remove #ifdef guards for PM related functions
+  i2c: designware: Remove #ifdef guards for PM related functions
+  i2c: exynos5: Remove #ifdef guards for PM related functions
+  i2c: hix5hd2: Remove #ifdef guards for PM related functions
+  i2c: i801: Remove #ifdef guards for PM related functions
+  i2c: img-scb: Remove #ifdef guards for PM related functions
+  i2c: kempld: Remove #ifdef guards for PM related functions
+  i2c: lpc2k: Remove #ifdef guards for PM related functions
+  i2c: mt65xx: Remove #ifdef guards for PM related functions
+  i2c: nomadik: Remove #ifdef guards for PM related functions
+  i2c: ocores: Remove #ifdef guards for PM related functions
+  i2c: pnx: Remove #ifdef guards for PM related functions
+  i2c: pxa: Remove #ifdef guards for PM related functions
+  i2c: qup: Remove #ifdef guards for PM related functions
+  i2c: rcar: Remove #ifdef guards for PM related functions
+  i2c: s3c2410: Remove #ifdef guards for PM related functions
+  i2c: sh-mobile: Remove #ifdef guards for PM related functions
+  i2c: virtio: Remove #ifdef guards for PM related functions
+  i2c: mux: pca954x: Remove #ifdef guards for PM related functions
+
+ drivers/i2c/busses/i2c-amd-mp2-pci.c        | 14 +++++--------
+ drivers/i2c/busses/i2c-amd-mp2-plat.c       |  8 ++------
+ drivers/i2c/busses/i2c-amd-mp2.h            |  2 --
+ drivers/i2c/busses/i2c-au1550.c             | 15 +++-----------
+ drivers/i2c/busses/i2c-bcm-iproc.c          | 10 +---------
+ drivers/i2c/busses/i2c-brcmstb.c            |  8 +++-----
+ drivers/i2c/busses/i2c-davinci.c            | 12 +++--------
+ drivers/i2c/busses/i2c-designware-platdrv.c | 22 ++++++---------------
+ drivers/i2c/busses/i2c-exynos5.c            |  8 +++-----
+ drivers/i2c/busses/i2c-hix5hd2.c            | 10 ++++------
+ drivers/i2c/busses/i2c-i801.c               |  6 ++----
+ drivers/i2c/busses/i2c-img-scb.c            | 13 ++++--------
+ drivers/i2c/busses/i2c-kempld.c             |  9 ++-------
+ drivers/i2c/busses/i2c-lpc2k.c              |  8 +-------
+ drivers/i2c/busses/i2c-mt65xx.c             |  8 +++-----
+ drivers/i2c/busses/i2c-nomadik.c            | 14 +++++--------
+ drivers/i2c/busses/i2c-ocores.c             | 10 +++-------
+ drivers/i2c/busses/i2c-pnx.c                | 12 ++++-------
+ drivers/i2c/busses/i2c-pxa.c                |  8 +-------
+ drivers/i2c/busses/i2c-qup.c                | 16 ++++-----------
+ drivers/i2c/busses/i2c-rcar.c               | 10 ++--------
+ drivers/i2c/busses/i2c-s3c2410.c            | 14 +++----------
+ drivers/i2c/busses/i2c-sh_mobile.c          | 12 +++--------
+ drivers/i2c/busses/i2c-virtio.c             |  8 ++------
+ drivers/i2c/muxes/i2c-mux-pca954x.c         |  6 ++----
+ 25 files changed, 71 insertions(+), 192 deletions(-)
+
+-- 
+2.40.1
 
 
