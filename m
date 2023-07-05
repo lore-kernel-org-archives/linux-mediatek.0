@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4404CEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 15:54:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 889B4C0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 19:30:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3RLbkYBSMtZSZWsdqOipQPRF1AXaIm7IXw5H9F31xDg=; b=YiZrHkqDurrUmhtJjfs88OQ5FB
-	WGOkKA+HBaQuiM5xJ7UQ8liTAm17tmh/pffGHBl+VzhVd9ALbBw0pijy9W6IMFIkPOAmw8PNgIdtm
-	v6Zz9rvVNkwP+kR2adTg6gKXZqJHMfIw1UFUzncn0Nvw9W14jejPEXm+/euXF4RLhNjI8Abm8kcrM
-	dwq9qwZYKF9o6tB4eXu4HwhHukHUU2Gz30kGu1Ex5rF05ezgHlRRGgqFRFRLp/zW802311HB2JAm9
-	WK2IP2sZhT6TCOskhyYWNFuMnQc7vIGMRE9qAmW9rNSOaGW7dt+1rkXuM2bx7YNB5tYmK0r5e7hQo
-	iIXU23vg==;
+	bh=IQz3EobltSe+EmcdsuJx0KrcD7z5hVnsG8B8WJoHqG8=; b=ICqvGr+jgx3emHdjCs1pim9n/0
+	2NC+y7y3ebkyZN2h4gI68oOWTVMSPqJW2qFYIsldx7Nv/zrrGx5n246kGv1L8T2AEbmIXWIynApck
+	jTSTU8wHvREHAvZljDpwzGCy1hrkyA2wnPIsLxg+kuPFX9rho4pOmt6m4ftjU3omUn4IOCcRr6bpj
+	Xwu5VD/qJ7dQE5O7bqVsVejb1mGMxDHnbml+8ykyFIlQGNHyUH7jfluxSiCerzuEnj5cOyHHLCVpN
+	CW8bKvtQzj4dVxjCjPF/yeClUangANxRjcTkZSHWlbnAROeCXe2R+7zfD6CIcFXn2cUXr+BN15tYb
+	fLd4dqvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH4pP-00GOwz-2w;
-	Wed, 05 Jul 2023 15:54:03 +0000
-Received: from mail-io1-f45.google.com ([209.85.166.45])
+	id 1qH8Cy-00Gu50-37;
+	Wed, 05 Jul 2023 19:30:36 +0000
+Received: from mail-io1-f43.google.com ([209.85.166.43])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH4pM-00GOue-2U;
-	Wed, 05 Jul 2023 15:54:01 +0000
-Received: by mail-io1-f45.google.com with SMTP id ca18e2360f4ac-78362f57500so333921839f.3;
-        Wed, 05 Jul 2023 08:53:59 -0700 (PDT)
+	id 1qH8Cx-00Gu3l-0X;
+	Wed, 05 Jul 2023 19:30:36 +0000
+Received: by mail-io1-f43.google.com with SMTP id ca18e2360f4ac-785ccf19489so333970839f.3;
+        Wed, 05 Jul 2023 12:30:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688572438; x=1691164438;
+        d=1e100.net; s=20221208; t=1688585433; x=1691177433;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=3RLbkYBSMtZSZWsdqOipQPRF1AXaIm7IXw5H9F31xDg=;
-        b=eQ/QSvp+6VorQRfrrC8cYP+wh2GHofAQUp0FMl8JBryzMJ6ka3837eohpe3fpQ9OGT
-         vUSoeKOug3eIaUHm0FCiEIzJtbAwLo+NWjpKCtWP5qRwi2Ym/7EUOm4vijm3cR8iF1Fx
-         uMOPjrFPAhCVu0vEV7CXL4UMHd66GRK4NXsRKfR2XopXiF6mDXoSqHugtN+Zq+cQjqiE
-         uxtw5g+p4wqPea8HtO9nmX1n9rFw9WoJIblOZEVmvvgzbCxtKuGEZXQDCrKXuqWS5Yuo
-         fnb5xcjeEq+gtIjWEefeDfuB9TKboxX5kS6S7CywIeqAuPv5m4FoX+4tIu5wiOT5D/k/
-         xY2A==
-X-Gm-Message-State: AC+VfDyrvfllhJ3P6zt5q7Aj58N4M3f0TQHlw8YT5r3eUmWytqU3ZctY
-	Q+G4qXc0aL+dSfsT2gyfCZhTnr0mWw==
-X-Google-Smtp-Source: ACHHUZ73QtYKyynoI9ylI1XEWC2lq+A/sJ6q02lzFpAinNpUOyDvzNhBset5FBiQu0bFE/MLWXDyOg==
-X-Received: by 2002:a5e:8811:0:b0:785:ca70:46a2 with SMTP id l17-20020a5e8811000000b00785ca7046a2mr18137083ioj.4.1688572438444;
-        Wed, 05 Jul 2023 08:53:58 -0700 (PDT)
+        bh=IQz3EobltSe+EmcdsuJx0KrcD7z5hVnsG8B8WJoHqG8=;
+        b=jMfROEYxTqdwXdw9AEYARAtxq3414acben5MkK5Q6OBFUKPM1NvBtoZOBACa51cYrD
+         rWVTvRHnH9jscNZcq37JiPX/aIFf4P7ZjRqK1ins4Ife5SJRrU7ARBk0sT+Dfa1k2nEY
+         Pwm/ahnZRSIbpNgf0lx579yegC9kH11lfpfsFW62X+HEDNTPF+0bWy4q24CE3YQgghZt
+         WmKkPSfvjlQC3QujBpsB5Ie7VkrwoeJ67n/WoC5ZsemeKGc6TivuUej/WjsLJSCVCa67
+         emXgilTFaKRCdlIeIrmGeBR6TSRBVqCE3JSPFp7pTUTQ/BbxTWapuOTqP/3TFdBsp4/i
+         S8vA==
+X-Gm-Message-State: ABy/qLbY+zEaiPwEZjVc7YkyKCJNUqHYpoNyIn5JOjp9sLLcN8nytj4x
+	s0lXmaB+hiCgCC+a6r9kUPzeXqxB5g==
+X-Google-Smtp-Source: APBJJlHXL7CimwQLZrke3i7PIbJu/7Yp22eaIidFcKDP1kX78c3HPd0izvSuIzZNvMpJxliLg+IlUA==
+X-Received: by 2002:a5e:a903:0:b0:783:7307:faea with SMTP id c3-20020a5ea903000000b007837307faeamr97528iod.2.1688585433085;
+        Wed, 05 Jul 2023 12:30:33 -0700 (PDT)
 Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id q15-20020a02c8cf000000b0042ad6abe0bbsm6425382jao.20.2023.07.05.08.53.56
+        by smtp.gmail.com with ESMTPSA id ei21-20020a05663829b500b0042b6cb44429sm476699jab.46.2023.07.05.12.30.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Jul 2023 08:53:57 -0700 (PDT)
-Received: (nullmailer pid 691642 invoked by uid 1000);
-	Wed, 05 Jul 2023 15:53:55 -0000
-Date: Wed, 5 Jul 2023 09:53:55 -0600
+        Wed, 05 Jul 2023 12:30:32 -0700 (PDT)
+Received: (nullmailer pid 1702388 invoked by uid 1000);
+	Wed, 05 Jul 2023 19:30:29 -0000
+Date: Wed, 5 Jul 2023 13:30:29 -0600
 From: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Leo Yan <leo.yan@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, freedreno@lists.freedesktop.org, linux-usb@vger.kernel.org, linux-media@vger.kernel.org, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, linux-remoteproc@vger.kernel.org, coresight@lists.linaro.org, dri-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-amlogic@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: cleanup DTS example whitespaces
-Message-ID: <168857243311.691536.13322875472425620659.robh@kernel.org>
-References: <20230702182308.7583-1-krzysztof.kozlowski@linaro.org>
+To: Jason-ch Chen <jason-ch.chen@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, =?iso-8859-1?Q?N=EDcolas_F_=2E_R_=2E_A_=2E?= Prado <nfraprado@collabora.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, linux-arm-kernel@lists.infradead.org, jason-ch chen <Jason-ch.Chen@mediatek.com>, devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH 1/3] dt-bindings: arm: Add compatible for MediaTek MT8188
+Message-ID: <168858542895.1702303.9157130705256283256.robh@kernel.org>
+References: <20230705065744.25848-1-jason-ch.chen@mediatek.com>
+ <20230705065744.25848-2-jason-ch.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230702182308.7583-1-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230705065744.25848-2-jason-ch.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_085400_811470_E07F151C 
-X-CRM114-Status: UNSURE (   9.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230705_123035_210389_ECC18FEA 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,36 +81,18 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Sun, 02 Jul 2023 20:23:08 +0200, Krzysztof Kozlowski wrote:
-> The DTS code coding style expects spaces around '=' sign.
+On Wed, 05 Jul 2023 14:57:42 +0800, Jason-ch Chen wrote:
+> From: jason-ch chen <Jason-ch.Chen@mediatek.com>
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> This commit adds dt-binding documentation for the MediaTek MT8188
+> reference board.
 > 
+> Signed-off-by: jason-ch chen <Jason-ch.Chen@mediatek.com>
 > ---
-> 
-> Rob,
-> 
-> Maybe this could go via your tree? Rebased on your for-next:
-> v6.4-rc2-45-gf0ac35049606
-> ---
->  .../bindings/arm/arm,coresight-cti.yaml        | 18 +++++++++---------
->  .../bindings/arm/keystone/ti,sci.yaml          |  8 ++++----
->  .../devicetree/bindings/display/msm/gmu.yaml   |  2 +-
->  .../display/panel/samsung,s6e8aa0.yaml         |  2 +-
->  .../display/rockchip/rockchip-vop.yaml         |  4 ++--
->  .../bindings/iio/adc/ti,adc108s102.yaml        |  2 +-
->  .../bindings/media/renesas,rzg2l-cru.yaml      |  4 ++--
->  .../devicetree/bindings/media/renesas,vin.yaml |  4 ++--
->  .../devicetree/bindings/mtd/mtd-physmap.yaml   |  2 +-
->  .../bindings/net/mediatek-dwmac.yaml           |  2 +-
->  .../bindings/perf/amlogic,g12-ddr-pmu.yaml     |  4 ++--
->  .../bindings/phy/mediatek,dsi-phy.yaml         |  2 +-
->  .../remoteproc/amlogic,meson-mx-ao-arc.yaml    |  2 +-
->  .../devicetree/bindings/usb/mediatek,mtu3.yaml |  2 +-
->  .../devicetree/bindings/usb/ti,am62-usb.yaml   |  2 +-
->  15 files changed, 30 insertions(+), 30 deletions(-)
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
 
-Applied, thanks!
+Acked-by: Rob Herring <robh@kernel.org>
 
 
