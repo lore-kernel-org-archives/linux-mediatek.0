@@ -4,69 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4960DEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 11:00:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4555FC3DA40
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 12:11:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eKDF4qgNN4R898beQcJ64wYUsNRZY1JVRwiUnFtqmlM=; b=pNb51lCKJWatMEIPrJvv4pwBDv
-	p3MFsxm7IZ7KY9wVZx+EmoQQMHfEJw+AFxN4MIZNK4sjqXQNsEC1Y5Qlng1BqTG5Z+nNpsOSNi815
-	bTcYUPgMTqqjHb/qzNAl4iGHX5+rvCCKtKbt4L6GZqEqpDjbYmnl137uvUEPFnGsiuO240bHyjNES
-	BWJrWFNQYCxSv9i+KsqH31w8bNSFkVcih22HQY6MZuECXV/xFzpjUObNy41AT66I+4mZwYaKnWRPl
-	Hv1LgCAjkBr7TrTTHT0agZqRSJUrrN9mOg1is/kNytNHRUxZf2aTWSjzxOSRZtXF8n8agw1dkkPHl
-	oV0/DAgQ==;
+	bh=mgwEy5lbthAozdgPIhNrXbphzCeGWZhjt4alVNZTI2E=; b=DnJasb9gALeezOW2JwzJ5y/1xm
+	C5PJfojSb1iQKoiNt/9sS3qJXAW+oErlXIDaMk4/nM3mdm34smNQ+EesX/AmOaupYfNKn6TqJnBjT
+	LYQopxMhnIZmd8UvQ7Hxnv9f3kBLdFVhhvXqKreUuf+++1cMuRcnuAfKDBc/OV42dnRUzCFR73QNj
+	xcrA1spCBzybjYLChgEsDLF1b6QwxwvkaZcKzZfFenxr3tpTEwcd+SQXqvySuUlWnNwMMugE4nyM9
+	RQ4F3Tz25tixPM6VuRQgiIrEg/oo/0M7OmBAtKBKInAY2o2MGZKnVvIvvR9cH/CoC+PUwFIvl7JHu
+	nEP7QrjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qH0Fb-00FftH-33;
-	Wed, 05 Jul 2023 11:00:47 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qH1Lo-00FpYx-0I;
+	Wed, 05 Jul 2023 12:11:16 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGzJ4-00FQuO-1u;
-	Wed, 05 Jul 2023 10:00:20 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1qH1Lj-00FpSU-0b;
+	Wed, 05 Jul 2023 12:11:13 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:cbfb:e358:222c:d8c1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9873C66018CF;
-	Wed,  5 Jul 2023 11:00:16 +0100 (BST)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C70E46606FB9;
+	Wed,  5 Jul 2023 13:11:04 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688551217;
-	bh=LWBUM2eAeMbEAdWCxLKa7EIHcDRWR8YL8nCssD1CCe4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=djcXx8aPIDfdDlqSgm5afDE69qEwnOwDiGHiwcfdXow+r4J+SCeO8vfhHEpRmy++N
-	 wUtFswCrDP3DK9E5rbh2B4dk1cQuWMDKRYXzlCTnQlE5SBYfuyRmrevTK9m2zwSrKA
-	 PH5TxX47sCVBkIE8wXVkb2UMQcZF2j2nluOGAQ2bohdW2xOC7r7Mg9WjA28M0dq+1F
-	 hl9TZT1pyuRRud/QCMpF4Lcj4PA9l2GwjRh69yhVNE4rT4xGsxh8Vt4d6cgf7Da2rA
-	 9bZpqViGH0w/nlQI+eE+fOWUTCjEYyKoi/1nrDA+kbDpGtCD9lw7sHPboA4nk05rTg
-	 5qTqBR6pszZew==
-Message-ID: <be88f6db-8b07-1767-f48c-24a215006a4f@collabora.com>
-Date: Wed, 5 Jul 2023 12:00:14 +0200
+	s=mail; t=1688559065;
+	bh=4t2lobqp8kQ9itIXbwNWZqHC/Q0azCKlo/t/UJDorIM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=LEmEAehcgOitfNWcWRYVJdfGx0pc0f9BhQazshQG/W/yVdfKm8mY07DYOmxDvHn5g
+	 M/o/fM5CvcYF7g2eQcXnM6XeEc1Y/sQ6xlqJMT3zQqwo1aBznc8naFV1RncX9rksll
+	 I0BtfV0GXwdeWJFtN+yqzBu5TA5v/ujd+ZELX2QZpF8o2fksvWBPJD9Zo9BT/kg9/E
+	 WplfMLY2z3eJ+jvrIr4YhOZfJdBT/MkhcqXedsMpsVS5cfkq6F+OnzB1O0ufQUYBkA
+	 Q8JEMF2MtqJhJRqE38Ie5DBPFN/vW0QdgFLW4I+B7BQ89F1n+LSvT94gqN7Y9iZWMu
+	 o/aphTAaI+fxQ==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v4 03/10] media: videobuf2: Rework offset 'cookie' encoding pattern
+Date: Wed,  5 Jul 2023 14:10:49 +0200
+Message-Id: <20230705121056.37017-4-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230705121056.37017-1-benjamin.gaignard@collabora.com>
+References: <20230705121056.37017-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH 4/4] phy: mediatek: tphy: Convert to
- devm_platform_ioremap_resource()
-Content-Language: en-US
-To: Yangtao Li <frank.li@vivo.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20230705090126.26854-1-frank.li@vivo.com>
- <20230705090126.26854-4-frank.li@vivo.com>
- <ddc05f70-7075-97ab-1c94-cb3d5839ef2b@collabora.com>
- <6a1bde36-fbf9-9ddd-e47f-f3c21a3528f7@vivo.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <6a1bde36-fbf9-9ddd-e47f-f3c21a3528f7@vivo.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_030018_778897_1E1FF38A 
-X-CRM114-Status: GOOD (  20.05  )
+X-CRM114-CacheID: sfid-20230705_051111_360028_66B4DBF9 
+X-CRM114-Status: GOOD (  18.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,86 +87,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/07/23 11:30, Yangtao Li ha scritto:
-> HI AngeloGioacchino,
-> 
-> On 2023/7/5 17:22, AngeloGioacchino Del Regno wrote:
->> Il 05/07/23 11:01, Yangtao Li ha scritto:
->>> Use devm_platform_ioremap_resource() to simplify code.
->>>
->>> Signed-off-by: Yangtao Li <frank.li@vivo.com>
->>> ---
->>>   drivers/phy/mediatek/phy-mtk-tphy.c | 10 +++-------
->>>   1 file changed, 3 insertions(+), 7 deletions(-)
->>>
->>> diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c 
->>> b/drivers/phy/mediatek/phy-mtk-tphy.c
->>> index 0d110e50bbfd..cb7a4e6ea017 100644
->>> --- a/drivers/phy/mediatek/phy-mtk-tphy.c
->>> +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
->>> @@ -1554,7 +1554,6 @@ static int mtk_tphy_probe(struct platform_device *pdev)
->>>       struct device_node *np = dev->of_node;
->>>       struct device_node *child_np;
->>>       struct phy_provider *provider;
->>> -    struct resource *sif_res;
->>>       struct mtk_tphy *tphy;
->>>       struct resource res;
->>>       int port, retval;
->>> @@ -1576,15 +1575,12 @@ static int mtk_tphy_probe(struct platform_device *pdev)
->>>       tphy->dev = dev;
->>>       platform_set_drvdata(pdev, tphy);
->>>   -    sif_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->>>       /* SATA phy of V1 needn't it if not shared with PCIe or USB */
->>> -    if (sif_res && tphy->pdata->version == MTK_PHY_V1) {
->>> +    if (tphy->pdata->version == MTK_PHY_V1) {
->>>           /* get banks shared by multiple phys */
->>> -        tphy->sif_base = devm_ioremap_resource(dev, sif_res);
->>> -        if (IS_ERR(tphy->sif_base)) {
->>> -            dev_err(dev, "failed to remap sif regs\n");
->>> +        tphy->sif_base = devm_platform_ioremap_resource(pdev, 0);
->>> +        if (IS_ERR(tphy->sif_base) && PTR_ERR(tphy->sif_base) != -EINVAL)
->>
->> That's wrong. You want to return any error unconditionally, as the V1 PHY *needs*
->> the sif iospace and there's nothing afterwards retrying this.
-> 
-> 
-> When sif_res is not configured, an IOMEM_ERR_PTR(-EINVAL) error will be returned in 
-> __devm_ioremap_resource.
-> 
-> This kind of error is ignored in the newly added code, and the driving probe 
-> process will not be interrupted at this time.
-> 
-> What did I miss?
-> 
+Change how offset 'cookie' field value is computed to make possible
+to use more buffers.
+With this encoding pattern we know the maximum number that a queue
+could store so we can check ing at queue init time.
+It also make easier and faster to find buffer and plane from using
+the offset field.
 
-As I said, MTK_PHY_V1 *needs* sif; devm_platform_ioremap_resource() returns a
-handle to that iospace, or error.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../media/common/videobuf2/videobuf2-core.c   | 63 +++++++++----------
+ 1 file changed, 29 insertions(+), 34 deletions(-)
 
-tphy->sif_base = devm_platform_ioremap_resource(pdev, 0);
-if (IS_ERR(tphy->sif_base))
-	return PTR_ERR(tphy->sif_base);
-
-Regards,
-Angelo
-
-> Thx,
-> 
-> Yangtao
-> 
-> 
->>
->> Please fix.
->>
->> Regards,
->> Angelo
->>
->>>               return PTR_ERR(tphy->sif_base);
->>> -        }
->>>       }
->>>         if (tphy->pdata->version < MTK_PHY_V3) {
->>
->>
-
-
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index 77e69b01d88d..70e36389b704 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -31,6 +31,10 @@
+ 
+ #include <trace/events/vb2.h>
+ 
++#define PLANE_INDEX_SHIFT	3
++#define PLANE_INDEX_MASK	0x7
++#define MAX_BUFFERS		0xffff
++
+ static int debug;
+ module_param(debug, int, 0644);
+ 
+@@ -358,29 +362,23 @@ static void __setup_offsets(struct vb2_buffer *vb)
+ 	unsigned int plane;
+ 	unsigned long off = 0;
+ 
+-	if (vb->index) {
+-		struct vb2_buffer *prev;
+-		struct vb2_plane *p;
+-
+-		prev = vb2_get_buffer(q, vb->index - 1);
+-		if (!prev) {
+-			dprintk(q, 1, "can't find the requested buffer\n");
+-			return;
+-		}
+-
+-		p = &prev->planes[prev->num_planes - 1];
+-
+-		off = PAGE_ALIGN(p->m.offset + p->length);
+-	}
++	/*
++	 * Offsets cookies value have the following constraints:
++	 * - a buffer could have up to 8 planes.
++	 * - v4l2 mem2mem use bit 30 to distinguish between source and destination buffers.
++	 * - must be page aligned
++	 * That led to this bit mapping:
++	 * |30                |29        15|14       12|11 0|
++	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
++	 * where there is 16 bits to store buffer index.
++	 */
++	off = vb->index << (PLANE_INDEX_SHIFT + PAGE_SHIFT);
+ 
+ 	for (plane = 0; plane < vb->num_planes; ++plane) {
+-		vb->planes[plane].m.offset = off;
++		vb->planes[plane].m.offset = off + (plane << PAGE_SHIFT);
+ 
+ 		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
+ 				vb->index, plane, off);
+-
+-		off += vb->planes[plane].length;
+-		off = PAGE_ALIGN(off);
+ 	}
+ }
+ 
+@@ -2294,24 +2292,18 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
+ 		return -EBUSY;
+ 	}
+ 
+-	/*
+-	 * Go over all buffers and their planes, comparing the given offset
+-	 * with an offset assigned to each plane. If a match is found,
+-	 * return its buffer and plane numbers.
+-	 */
+-	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+-		vb = vb2_get_buffer(q, buffer);
++	/* Get buffer and plane from the offset */
++	buffer = (off >> (PLANE_INDEX_SHIFT + PAGE_SHIFT)) & MAX_BUFFERS;
++	plane = (off >> PAGE_SHIFT) & PLANE_INDEX_MASK;
+ 
+-		if (!vb)
+-			continue;
++	vb = vb2_get_buffer(q, buffer);
++	if (!vb)
++		return -EINVAL;
+ 
+-		for (plane = 0; plane < vb->num_planes; ++plane) {
+-			if (vb->planes[plane].m.offset == off) {
+-				*_buffer = buffer;
+-				*_plane = plane;
+-				return 0;
+-			}
+-		}
++	if (vb->planes[plane].m.offset == off) {
++		*_buffer = buffer;
++		*_plane = plane;
++		return 0;
+ 	}
+ 
+ 	return -EINVAL;
+@@ -2552,6 +2544,9 @@ int vb2_core_queue_init(struct vb2_queue *q)
+ 	if (!q->max_allowed_buffers)
+ 		q->max_allowed_buffers = VB2_MAX_FRAME;
+ 
++	/* The maximum is limited by offset cookie encoding pattern */
++	q->max_allowed_buffers = min_t(unsigned int, q->max_allowed_buffers, MAX_BUFFERS);
++
+ 	q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
+ 
+ 	if (q->buf_struct_size == 0)
+-- 
+2.39.2
 
 
