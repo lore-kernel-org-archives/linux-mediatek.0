@@ -4,68 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8FA9C001DD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 09:42:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B57DEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 10:14:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vq0b6OP8cesAK75ig3YiVUVphRXapkUqOEQu8dTbw/0=; b=h/eddBhq02IcJJEC1wHSON7awR
-	ljWDSjWeGb90sBvyzvVX8B1joj5m8jw62YQZz4WrWoAmQDnZI0TI0H4MG/8GKFotXw4HKgt5WB3q8
-	2pKMbVFeqOCEPAXhvWCwrDoN88Oi4V24CrVbf6sWNmg2/akN04DADhUachWezvNFjaQgi8Fb5kuci
-	3KI6dVInnDg0RKIDpKEY+ut0t/f/qivuNcdOlapzrijdMz3ZpL1RLgtEEqxke3SsM7KZ6su2BtPsL
-	sYxobyBo551SWMQp7U7N586Q871MFBf/diyFrWrWamlGtlLsYsPbXeS1Nj8GWg7qBMwUo9iee6+kt
-	A1lXEV1Q==;
+	bh=CXPQymja6WNRq3yXymUawSS5NzIm4dGIe24QZ3g7b9I=; b=cw19QQmBZcsKDAMK5i9afnPKQd
+	v3ucdrqIDSDhseH77wGPcegwLYDKjMDSMoJ4siXI9j2nHGhDwlUKVHEiFm/by/BbItZfBOdQP0cAd
+	RTcd2SIgoXl8DIjaF9ea66lRas1bQg/i/ZZQ94Yz4j+z9tuaQKCYnQ/+CjWVQvqFNYOZdUC8dufxb
+	7XMiguI7UBEGUGeAjP+BLPSocsKv+LW7Zi6w8vT8MOjqwNduLrYa1FzD9ajqr8Sg6saEnwYg7QTrR
+	6kePDayho60uRJe3LkyJYn3S0BX7ClhJCxvW+n0ZGbyd0HtIKC7/MTufIqKVeOLV2bI51WAYXQOQf
+	1hyc5DNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGz2C-00FOFM-1Q;
-	Wed, 05 Jul 2023 09:42:52 +0000
+	id 1qGzWo-00FSee-2S;
+	Wed, 05 Jul 2023 10:14:30 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGz27-00FO8k-1z;
-	Wed, 05 Jul 2023 09:42:50 +0000
-Received: from IcarusMOD.eternityproject.eu (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	id 1qGzWl-00FSdE-10;
+	Wed, 05 Jul 2023 10:14:29 +0000
+Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CDC7C6606FAB;
-	Wed,  5 Jul 2023 10:42:39 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C619766018CF;
+	Wed,  5 Jul 2023 11:14:23 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688550160;
-	bh=ZopR5/5CLUfvAhpPxuKmPKApbf1MTb19aawmhBiLFHY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ZH5n++9W3j3zpR8sfHX/MjVEdcJh4+Pb1nBoYxm9U4Bq8wg9uG8cddBAheoylCEMm
-	 u2ndu0bRBjEj+8gtW4HOjnKuuT5QSHiLhyw5A6i2gXQjjp1mje0cs5nZrHAwr8B0A6
-	 1nIGz2N41dwuFslCtfLClFtUYS7Hl8qwQMoDpqt1uuR+NDBh4XdNvUgesYH1myHAB4
-	 wlVgu5U/DReKzlIqHgEuF8+SD7e1kpi8HIVqlo6XJzxJ0nAqag1SBHWTk71yF5i5ML
-	 nQUhg+KpmeDPHwvOssRz10UuBubhS71Gl8+vhjM5mE7KCxLruNCGvi0swwbN6HQykb
-	 Ex5f/NfINHiYg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH v2 1/3] drm/mediatek: Use devm_platform_ioremap_resource()
-Date: Wed,  5 Jul 2023 11:42:30 +0200
-Message-Id: <20230705094232.75904-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230705094232.75904-1-angelogioacchino.delregno@collabora.com>
-References: <20230705094232.75904-1-angelogioacchino.delregno@collabora.com>
+	s=mail; t=1688552064;
+	bh=2abyu5VJmEt3tb1PbtQ8yXrWLSAXhrHf+oXfvn2ghmo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=f3iQDUhuHulywT0n0IOD0av3igx8ZWuBUmB4cPKu+bRKBfbgUEfI+UxwqdPHlGIsK
+	 y3lnpqYAm1IxJMNS27Z6RIPGLzcIW5LPQiKV/KGo3JX9YTdXVsI68G8IO1pYE8iRBx
+	 iphGWqpo8+c/JTX5azF65fZtmAeVOHq//b2ueZsxtG8zskHKbFD91Hn1mD3CbKSDNJ
+	 zoXWMO05yjfR20N+40dAgKxxrPQ5hSnGRvb6ACtlqb7oU5zEPoAr/jrs8loFwjqQi/
+	 /O8FEOzccvZ2L0bRO/VR4UrUpWhJALAQebtD2WKMcO+KtLnzxW7VPMpNn+1Js9/uTN
+	 7HpZrpAJEGShg==
+Message-ID: <548f2a41-1f37-fe3a-6665-ae786e4c8f77@collabora.com>
+Date: Wed, 5 Jul 2023 12:14:21 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v3 1/5] genirq/devres: Add
+ devm_request_threaded_irq_emsg()
+Content-Language: en-US
+To: Yangtao Li <frank.li@vivo.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, miquel.raynal@bootlin.com,
+ rafael@kernel.org, daniel.lezcano@linaro.org, amitk@kernel.org,
+ rui.zhang@intel.com, mmayer@broadcom.com,
+ bcm-kernel-feedback-list@broadcom.com, florian.fainelli@broadcom.com,
+ tglx@linutronix.de, matthias.bgg@gmail.com, bchihi@baylibre.com,
+ wenst@chromium.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230703090455.62101-1-frank.li@vivo.com>
+ <20230703090455.62101-2-frank.li@vivo.com>
+ <f4873823-fd7e-c6dd-fbc0-eac4a9be52b1@kernel.org>
+ <20230703174347.4m6hcmify4jwsozv@pengutronix.de>
+ <11052797-b006-11bb-e4eb-987ddd568b24@kernel.org>
+ <20805fef-d6aa-91d8-999e-04b1d6b7a37a@vivo.com>
+ <20230704141954.fcmol2yswkpbnpaw@pengutronix.de>
+ <20230705101537.000059d2@Huawei.com>
+ <20230705073000.oxlb7e7sdkdxurps@pengutronix.de>
+ <c092b860-33d5-77c0-456c-367d545e8b7f@vivo.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <c092b860-33d5-77c0-456c-367d545e8b7f@vivo.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_024247_928690_85AAB68C 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20230705_031427_658082_E5E1773D 
+X-CRM114-Status: GOOD (  22.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,320 +92,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Instead of open coding calls to platform_get_resource() followed by
-devm_ioremap_resource(), perform a single call to the helper
-devm_platform_ioremap_resource().
+Il 05/07/23 09:43, Yangtao Li ha scritto:
+> On 2023/7/5 15:30, Uwe Kleine-König wrote:
+> 
+>> Hello,
+>>
+>> On Wed, Jul 05, 2023 at 10:15:37AM +0800, Jonathan Cameron wrote:
+>>> On Tue, 4 Jul 2023 16:19:54 +0200
+>>> Uwe Kleine-König <u.kleine-koenig@pengutronix.de> wrote:
+>>>
+>>>> Hello,
+>>>>
+>>>> On Tue, Jul 04, 2023 at 05:06:12PM +0800, Yangtao Li wrote:
+>>>>> On 2023/7/4 16:48, Krzysztof Kozlowski wrote:
+>>>>>> [你通常不会收到来自 krzk@kernel.org 的电子邮件。请访问 https://aka.ms 
+>>>>>> /LearnAboutSenderIdentification，以了解这一点为什么很重要]
+>>>>>>
+>>>>>> On 03/07/2023 19:43, Uwe Kleine-König wrote:
+>>>>>>> Hello Krzysztof,
+>>>>>>>
+>>>>>>> On Mon, Jul 03, 2023 at 02:31:59PM +0200, Krzysztof Kozlowski wrote:
+>>>>>>>> On 03/07/2023 11:04, Yangtao Li wrote:
+>>>>>>>>> There are more than 700 calls to the devm_request_threaded_irq method.
+>>>>>>>>> Most drivers only request one interrupt resource, and these error
+>>>>>>>>> messages are basically the same. If error messages are printed
+>>>>>>>>> everywhere, more than 1000 lines of code can be saved by removing the
+>>>>>>>>> msg in the driver.
+>>>>>>>> ...
+>>>>>>>>> +int devm_request_threaded_irq_emsg(struct device *dev, unsigned int irq,
+>>>>>>>>> +                              irq_handler_t handler, irq_handler_t 
+>>>>>>>>> thread_fn,
+>>>>>>>>> +                              unsigned long irqflags, const char *devname,
+>>>>>>>>> +                              void *dev_id, const char *emsg)
+>>>>>>>>> +{
+>>>>>>>>> +   int rc;
+>>>>>>>>> +
+>>>>>>>>> +   rc = devm_request_threaded_irq(dev, irq, handler, NULL, irqflags,
+>>>>>>>>> +                                  devname, dev_id);
+>>>>>>>>> +   if (rc && rc != -EPROBE_DEFER) {
+>>>>>>>>> +           dev_err(dev, "Failed to request %sinterrupt %u %s %s: %pe\n",
+>>>>>>>>> +                   thread_fn ? "threaded " : "", irq, devname ? : 
+>>>>>>>>> dev_name(dev),
+>>>>>>>>> +                   emsg ? : "", ERR_PTR(rc));
+>>>>>>>> It is open-coding dev_err_probe(). Just use dev_err_probe instead.
+>>>>>>> dev_err_probe is supposed to be only called in probe functions, while
+>>>>>>> devm_request_threaded_irq might be called in other contexts (e.g. when a
+>>>>>>> device is opened). That's why I asked to not use dev_err_probe() in v2
+>>>>>> True, but then all the callers of this function will forget to set
+>>>>>> deferred probe reason.
+>>>> That's another reason for letting the driver issue the error message and
+>>>> not the request_irq function.
+>>>>> So let's use dev_err_probe?
+>>>>>
+>>>>> BTW, any suggestions for names here, keep using
+>>>>> devm_request_threaded_irq_emsg or change to a new name?
+>>>> I would have called it devm_request_threaded_irq_verbose() which I
+>>>> consider easier to understand. But maybe  is just my (green)
+>>>> bikeshed.
+>>> If going to use dev_err_probe() internally maybe can just use
+>>> devm_request_threaded_irq_probe() thus reflecting that and making
+>>> it different to the devm_request_threaded_irq()?
+>> I like devm_request_threaded_irq_probe(), thanks for that suggestion
+>> (even though it's red :-)
+> 
+> 
+> devm_request_threaded_irq_probe() also sounds good to me, :-) If there is no 
+> objection, I think it's time to start working on switching the api.
+> 
 
-Also, in order to drop the now useless struct resource pointer in
-all of the probe functions, it was also necessary to remove a
-dev_dbg() in mtk_hdmi_ddc.c that was printing the iospace start/end.
++1 on devm_request_threaded_irq_probe() name, makes sense to me, as it'd be
+using the same error logic as dev_err_probe() (no prints if -EPROBE_DEFER),
+and also.. this is a function that's anyway used in .probe() callbacks at
+least in the *vast* majority of the cases.
 
-This commit brings no functional changes.
+Cheers,
+Angelo
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_cec.c        | 3 +--
- drivers/gpu/drm/mediatek/mtk_disp_aal.c   | 4 +---
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 4 +---
- drivers/gpu/drm/mediatek/mtk_disp_color.c | 4 +---
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 4 +---
- drivers/gpu/drm/mediatek/mtk_disp_merge.c | 4 +---
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c   | 4 +---
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c  | 4 +---
- drivers/gpu/drm/mediatek/mtk_dpi.c        | 3 +--
- drivers/gpu/drm/mediatek/mtk_dsi.c        | 4 +---
- drivers/gpu/drm/mediatek/mtk_hdmi.c       | 4 +---
- drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c   | 6 +-----
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.c   | 4 +---
- 13 files changed, 13 insertions(+), 39 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_cec.c b/drivers/gpu/drm/mediatek/mtk_cec.c
-index b640bc0559e7..c3b89a5c138a 100644
---- a/drivers/gpu/drm/mediatek/mtk_cec.c
-+++ b/drivers/gpu/drm/mediatek/mtk_cec.c
-@@ -195,8 +195,7 @@ static int mtk_cec_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, cec);
- 	spin_lock_init(&cec->lock);
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	cec->regs = devm_ioremap_resource(dev, res);
-+	cec->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(cec->regs)) {
- 		ret = PTR_ERR(cec->regs);
- 		dev_err(dev, "Failed to ioremap cec: %d\n", ret);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-index 8ddf7a97e583..bd1d67a5baff 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-@@ -104,7 +104,6 @@ static int mtk_disp_aal_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_disp_aal *priv;
--	struct resource *res;
- 	int ret;
- 
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-@@ -117,8 +116,7 @@ static int mtk_disp_aal_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 	}
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap aal\n");
- 		return PTR_ERR(priv->regs);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-index 1773379b2439..5cee84cce0be 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-@@ -159,7 +159,6 @@ static int mtk_disp_ccorr_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_disp_ccorr *priv;
--	struct resource *res;
- 	int ret;
- 
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-@@ -172,8 +171,7 @@ static int mtk_disp_ccorr_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 	}
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap ccorr\n");
- 		return PTR_ERR(priv->regs);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-index cac9206079e7..e3816730ab51 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-@@ -97,7 +97,6 @@ static int mtk_disp_color_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_disp_color *priv;
--	struct resource *res;
- 	int ret;
- 
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-@@ -110,8 +109,7 @@ static int mtk_disp_color_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 	}
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap color\n");
- 		return PTR_ERR(priv->regs);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-index bd530e603264..6ab67e6392c7 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-@@ -263,7 +263,6 @@ static int mtk_disp_gamma_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_disp_gamma *priv;
--	struct resource *res;
- 	int ret;
- 
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-@@ -276,8 +275,7 @@ static int mtk_disp_gamma_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 	}
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap gamma\n");
- 		return PTR_ERR(priv->regs);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-index 6428b6203ffe..ec4673448ad2 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-@@ -242,7 +242,6 @@ static const struct component_ops mtk_disp_merge_component_ops = {
- static int mtk_disp_merge_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
--	struct resource *res;
- 	struct mtk_disp_merge *priv;
- 	int ret;
- 
-@@ -250,8 +249,7 @@ static int mtk_disp_merge_probe(struct platform_device *pdev)
- 	if (!priv)
- 		return -ENOMEM;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap merge\n");
- 		return PTR_ERR(priv->regs);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 8f52cc1f3fba..b61ddfcd880c 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -511,7 +511,6 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_disp_ovl *priv;
--	struct resource *res;
- 	int irq;
- 	int ret;
- 
-@@ -529,8 +528,7 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 	}
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap ovl\n");
- 		return PTR_ERR(priv->regs);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index d4df17ad600a..dc8194734512 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -314,7 +314,6 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_disp_rdma *priv;
--	struct resource *res;
- 	int irq;
- 	int ret;
- 
-@@ -332,8 +331,7 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 	}
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap rdma\n");
- 		return PTR_ERR(priv->regs);
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 45535dc7970f..07d8a9d4b008 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -1007,7 +1007,6 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_dpi *dpi;
--	struct resource *mem;
- 	int ret;
- 
- 	dpi = devm_kzalloc(dev, sizeof(*dpi), GFP_KERNEL);
-@@ -1038,7 +1037,7 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 			dev_dbg(&pdev->dev, "Cannot find pinctrl active!\n");
- 		}
- 	}
--	dpi->regs = devm_platform_get_and_ioremap_resource(pdev, 0, &mem);
-+	dpi->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(dpi->regs))
- 		return dev_err_probe(dev, PTR_ERR(dpi->regs),
- 				     "Failed to ioremap mem resource\n");
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 19e2b042c9d5..50a816a092bd 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -1070,7 +1070,6 @@ static int mtk_dsi_probe(struct platform_device *pdev)
- {
- 	struct mtk_dsi *dsi;
- 	struct device *dev = &pdev->dev;
--	struct resource *regs;
- 	int irq_num;
- 	int ret;
- 
-@@ -1113,8 +1112,7 @@ static int mtk_dsi_probe(struct platform_device *pdev)
- 		goto err_unregister_host;
- 	}
- 
--	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	dsi->regs = devm_ioremap_resource(dev, regs);
-+	dsi->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(dsi->regs)) {
- 		ret = PTR_ERR(dsi->regs);
- 		dev_err(dev, "Failed to ioremap memory: %d\n", ret);
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 0a8e0a13f516..77f55d2b5dd1 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1428,7 +1428,6 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
- 	struct device_node *cec_np, *remote, *i2c_np;
- 	struct platform_device *cec_pdev;
- 	struct regmap *regmap;
--	struct resource *mem;
- 	int ret;
- 
- 	ret = mtk_hdmi_get_all_clk(hdmi, np);
-@@ -1474,8 +1473,7 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
- 	}
- 	hdmi->sys_regmap = regmap;
- 
--	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	hdmi->regs = devm_ioremap_resource(dev, mem);
-+	hdmi->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(hdmi->regs)) {
- 		ret = PTR_ERR(hdmi->regs);
- 		goto put_device;
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
-index 4d39ea0a05ca..e24154255960 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
-@@ -271,7 +271,6 @@ static int mtk_hdmi_ddc_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_hdmi_ddc *ddc;
--	struct resource *mem;
- 	int ret;
- 
- 	ddc = devm_kzalloc(dev, sizeof(struct mtk_hdmi_ddc), GFP_KERNEL);
-@@ -284,8 +283,7 @@ static int mtk_hdmi_ddc_probe(struct platform_device *pdev)
- 		return PTR_ERR(ddc->clk);
- 	}
- 
--	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	ddc->regs = devm_ioremap_resource(&pdev->dev, mem);
-+	ddc->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(ddc->regs))
- 		return PTR_ERR(ddc->regs);
- 
-@@ -314,8 +312,6 @@ static int mtk_hdmi_ddc_probe(struct platform_device *pdev)
- 
- 	dev_dbg(dev, "ddc->adap: %p\n", &ddc->adap);
- 	dev_dbg(dev, "ddc->clk: %p\n", ddc->clk);
--	dev_dbg(dev, "physical adr: %pa, end: %pa\n", &mem->start,
--		&mem->end);
- 
- 	return 0;
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-index e06db6e56b5f..0ededf7194b2 100644
---- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-@@ -277,7 +277,6 @@ static const struct component_ops mtk_mdp_rdma_component_ops = {
- static int mtk_mdp_rdma_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
--	struct resource *res;
- 	struct mtk_mdp_rdma *priv;
- 	int ret = 0;
- 
-@@ -285,8 +284,7 @@ static int mtk_mdp_rdma_probe(struct platform_device *pdev)
- 	if (!priv)
- 		return -ENOMEM;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap rdma\n");
- 		return PTR_ERR(priv->regs);
--- 
-2.40.1
+> int devm_request_threaded_irq_probe(struct device *dev, unsigned int irq, 
+> irq_handler_t handler, irq_handler_t thread_fn, unsigned long irqflags, const char 
+> *devname, void *dev_id, const char *info) { int rc; rc = 
+> devm_request_threaded_irq(dev, irq, handler, NULL, irqflags, devname, dev_id); if 
+> (rc) return dev_err_probe(dev, rc, "Failed to request %sinterrupt %u %s %s\n", 
+> thread_fn ? "threaded " : "", irq, devname ? : dev_name(dev), info ? : ""); return 
+> 0; } EXPORT_SYMBOL(devm_request_threaded_irq_probe); MBR, Yangtao
+> 
+> 
+>>
+>> Best regards
+>> Uwe
+>>
 
 
