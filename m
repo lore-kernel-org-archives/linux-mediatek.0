@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A009BEB64D9
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 02:16:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7FDDEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 06:06:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oKyzqxdxON6GbdIRujb4Jw2iZivIGRKOrTQODIMi3ho=; b=KBFpT6hiUxxigjs5HU6uvU4aL4
-	uu8yughJqQDa3cP0jSioyCfWZTPHwy8b9U6bIQtaRs84FPmtQ7Z3z2m9w+TOmtTKpO1VeO1UDwAU/
-	rnGwvMgSCPFVQ9RLg1wVctRSpk27FwvvB5RRM09Qd5HZsfNM2wPdUBNemGupVUQ1KVQKS9WLCsCZo
-	3o29wePL8SjPf2XjFnpyPfuyC6Sbc2iEtSo2FAUe9DUQZxIXk1mO4r/f6bRuh2Z3upo3aaWuPBLWP
-	OEZZOBFSEEqKChkK2fWIsNdoJfIAhzcP3qO1zLa3kzFz8HIgzT9RFOszRzTD6bx6pZ1nXg+FwugsN
-	9OlRx8nQ==;
+	bh=O0C66mVI1nkOIpn+KxsHOUvDqjbprbMxbnSqsj7WItk=; b=BhvbuOzAdGSX80tevBo+8SFCo9
+	Wk4z79vHnCcUpN+Avd7xAPDmO1wgo6rA9cawVmon47kI2nn1+5mZguCYthlSMRU9tCiGnPasKjvat
+	5yVsG901FJZoDKKKsfnDCA4v5N59e+VHc30tbxhf0pcqYntzpjn1wpVB8OPL6H41BLznbTHR4mbQC
+	qs7Kh/sMlxBceNtCg0K6ZX+tBMKuMt5t6rJsVXeC20eBc0SukLbEHfT/KFEkapWom7fwNFqSNZUND
+	0+AZZUPcJEpz/1volJTwmCzyswLWQFDA9apO9Lp3Y/w8xCpbbFGmQYKPG4llFm2GgSr3otwf9gH81
+	f1j0xt6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGs3j-00EbV2-2F;
-	Wed, 05 Jul 2023 02:15:59 +0000
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+	id 1qGvet-00Ere6-1i;
+	Wed, 05 Jul 2023 06:06:35 +0000
+Received: from relay1-d.mail.gandi.net ([217.70.183.193])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGs3e-00EbTu-38;
-	Wed, 05 Jul 2023 02:15:58 +0000
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.206])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Qwjrl3xPlz6J7Ml;
-	Wed,  5 Jul 2023 10:13:59 +0800 (CST)
-Received: from localhost (10.34.206.101) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Wed, 5 Jul
- 2023 03:15:41 +0100
-Date: Wed, 5 Jul 2023 10:15:37 +0800
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-CC: Yangtao Li <frank.li@vivo.com>, Krzysztof Kozlowski <krzk@kernel.org>,
-	<miquel.raynal@bootlin.com>, <rafael@kernel.org>,
-	<daniel.lezcano@linaro.org>, <amitk@kernel.org>, <rui.zhang@intel.com>,
-	<mmayer@broadcom.com>, <bcm-kernel-feedback-list@broadcom.com>,
-	<florian.fainelli@broadcom.com>, <tglx@linutronix.de>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<bchihi@baylibre.com>, <wenst@chromium.org>, <linux-pm@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v3 1/5] genirq/devres: Add
- devm_request_threaded_irq_emsg()
-Message-ID: <20230705101537.000059d2@Huawei.com>
-In-Reply-To: <20230704141954.fcmol2yswkpbnpaw@pengutronix.de>
-References: <20230703090455.62101-1-frank.li@vivo.com>
-	<20230703090455.62101-2-frank.li@vivo.com>
-	<f4873823-fd7e-c6dd-fbc0-eac4a9be52b1@kernel.org>
-	<20230703174347.4m6hcmify4jwsozv@pengutronix.de>
-	<11052797-b006-11bb-e4eb-987ddd568b24@kernel.org>
-	<20805fef-d6aa-91d8-999e-04b1d6b7a37a@vivo.com>
-	<20230704141954.fcmol2yswkpbnpaw@pengutronix.de>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+	id 1qGvep-00Erd4-2L;
+	Wed, 05 Jul 2023 06:06:33 +0000
+X-GND-Sasl: herve.codina@bootlin.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1688537186;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=O0C66mVI1nkOIpn+KxsHOUvDqjbprbMxbnSqsj7WItk=;
+	b=HMzIJ0wIJQCx++SRoTVQ8bottUooWGrkC8U7ZbdBDWg4B+tUqyPdud6JH9otkTYx2SY5fR
+	t1NQSyOEzJPRQQZvqLzSHQMzV+R/uoM4OOVbiiKYOkZ/nGpqrrmZVCcj4fbt4TjJ1AnkvT
+	IrqpE/3YkiwUoF1JTiKaeXmwNTXWWbT0bIbEihf02ULF0r0KLhbj264ppLD/bndnr2ZLTR
+	M4k/4p2K+3qLySn9vZ8R2zqGUElPkVybtLGVxq6YpF1ppekDo8CePFROKUoz5/SgrN3VnL
+	pCnV4fnpHLFG4+CF5XYs+C8FMJdP4mepqUQJL1K5TwJf8dW+aTf7pPrk9vPIyw==
+X-GND-Sasl: herve.codina@bootlin.com
+X-GND-Sasl: herve.codina@bootlin.com
+X-GND-Sasl: herve.codina@bootlin.com
+X-GND-Sasl: herve.codina@bootlin.com
+X-GND-Sasl: herve.codina@bootlin.com
+X-GND-Sasl: herve.codina@bootlin.com
+Received: by mail.gandi.net (Postfix) with ESMTPSA id C88C824000A;
+	Wed,  5 Jul 2023 06:06:25 +0000 (UTC)
+Date: Wed, 5 Jul 2023 08:06:25 +0200
+From: Herve Codina <herve.codina@bootlin.com>
+To: Yu Hao <yhao016@ucr.edu>
+Cc: chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org,
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel
+ <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH] usb: mtu3: Fix possible use-before-initialization bug
+Message-ID: <20230705080625.02b2bac5@bootlin.com>
+In-Reply-To: <CA+UBctDxfb6+70+hzuXJ-gwb65E0uoNzXYEhpJT92sXr2CE7OA@mail.gmail.com>
+References: <CA+UBctDxfb6+70+hzuXJ-gwb65E0uoNzXYEhpJT92sXr2CE7OA@mail.gmail.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.34.206.101]
-X-ClientProxiedBy: lhrpeml100002.china.huawei.com (7.191.160.241) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230704_191555_320922_108BB494 
-X-CRM114-Status: GOOD (  27.59  )
+X-CRM114-CacheID: sfid-20230704_230632_062908_F90370ED 
+X-CRM114-Status: GOOD (  19.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,94 +80,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 4 Jul 2023 16:19:54 +0200
-Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de> wrote:
+Hi Yu,
 
-> Hello,
->=20
-> On Tue, Jul 04, 2023 at 05:06:12PM +0800, Yangtao Li wrote:
-> > On 2023/7/4 16:48, Krzysztof Kozlowski wrote:
-> >  =20
-> > > [=E4=BD=A0=E9=80=9A=E5=B8=B8=E4=B8=8D=E4=BC=9A=E6=94=B6=E5=88=B0=E6=
-=9D=A5=E8=87=AA krzk@kernel.org =E7=9A=84=E7=94=B5=E5=AD=90=E9=82=AE=E4=BB=
-=B6=E3=80=82=E8=AF=B7=E8=AE=BF=E9=97=AE https://aka.ms/LearnAboutSenderIden=
-tification=EF=BC=8C=E4=BB=A5=E4=BA=86=E8=A7=A3=E8=BF=99=E4=B8=80=E7=82=B9=
-=E4=B8=BA=E4=BB=80=E4=B9=88=E5=BE=88=E9=87=8D=E8=A6=81]
-> > >=20
-> > > On 03/07/2023 19:43, Uwe Kleine-K=C3=B6nig wrote: =20
-> > > > Hello Krzysztof,
-> > > >=20
-> > > > On Mon, Jul 03, 2023 at 02:31:59PM +0200, Krzysztof Kozlowski wrote=
-: =20
-> > > > > On 03/07/2023 11:04, Yangtao Li wrote: =20
-> > > > > > There are more than 700 calls to the devm_request_threaded_irq =
-method.
-> > > > > > Most drivers only request one interrupt resource, and these err=
-or
-> > > > > > messages are basically the same. If error messages are printed
-> > > > > > everywhere, more than 1000 lines of code can be saved by removi=
-ng the
-> > > > > > msg in the driver. =20
-> > > > >=20
-> > > > > ...
-> > > > >  =20
-> > > > > > +int devm_request_threaded_irq_emsg(struct device *dev, unsigne=
-d int irq,
-> > > > > > +                              irq_handler_t handler, irq_handl=
-er_t thread_fn,
-> > > > > > +                              unsigned long irqflags, const ch=
-ar *devname,
-> > > > > > +                              void *dev_id, const char *emsg)
-> > > > > > +{
-> > > > > > +   int rc;
-> > > > > > +
-> > > > > > +   rc =3D devm_request_threaded_irq(dev, irq, handler, NULL, i=
-rqflags,
-> > > > > > +                                  devname, dev_id);
-> > > > > > +   if (rc && rc !=3D -EPROBE_DEFER) {
-> > > > > > +           dev_err(dev, "Failed to request %sinterrupt %u %s %=
-s: %pe\n",
-> > > > > > +                   thread_fn ? "threaded " : "", irq, devname =
-? : dev_name(dev),
-> > > > > > +                   emsg ? : "", ERR_PTR(rc)); =20
-> > > > > It is open-coding dev_err_probe(). Just use dev_err_probe instead=
-. =20
-> > > > dev_err_probe is supposed to be only called in probe functions, whi=
-le
-> > > > devm_request_threaded_irq might be called in other contexts (e.g. w=
-hen a
-> > > > device is opened). That's why I asked to not use dev_err_probe() in=
- v2 =20
-> > > True, but then all the callers of this function will forget to set
-> > > deferred probe reason. =20
->=20
-> That's another reason for letting the driver issue the error message and
-> not the request_irq function.
-> =20
-> > So let's use dev_err_probe?
-> >=20
-> > BTW, any suggestions for names here, keep using
-> > devm_request_threaded_irq_emsg or change to a new name? =20
->=20
-> I would have called it devm_request_threaded_irq_verbose() which I
-> consider easier to understand. But maybe  is just my (green)
-> bikeshed.
+On Tue, 4 Jul 2023 16:25:50 -0700
+Yu Hao <yhao016@ucr.edu> wrote:
 
-If going to use dev_err_probe() internally maybe can just use
-devm_request_threaded_irq_probe() thus reflecting that and making
-it different to the devm_request_threaded_irq()?
+> The struct usb_ctrlrequest setup should be initialized in the function
+> ep0_read_setup(mtu, &setup). However, inside that function,
+> the variable count could be 0 and the struct usb_ctrlrequest setup
+> is not initialized. But there is a read for setup.bRequestType.
+> 
+> Signed-off-by: Yu Hao <yhao016@ucr.edu>
+> ---
+>  drivers/usb/mtu3/mtu3_gadget_ep0.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/usb/mtu3/mtu3_gadget_ep0.c
+> b/drivers/usb/mtu3/mtu3_gadget_ep0.c
+> index e4fd1bb14a55..67034fa515d0 100644
+> --- a/drivers/usb/mtu3/mtu3_gadget_ep0.c
+> +++ b/drivers/usb/mtu3/mtu3_gadget_ep0.c
+> @@ -638,7 +638,7 @@ static int ep0_handle_setup(struct mtu3 *mtu)
+>  __releases(mtu->lock)
+>  __acquires(mtu->lock)
+>  {
+> -   struct usb_ctrlrequest setup;
+> +   struct usb_ctrlrequest setup = {};
+>     struct mtu3_request *mreq;
+>     int handled = 0;
+> 
 
-I'm not sure we need to call out the fact it prints an error message in
-the naming.  Maybe the fact it should probably only be used in probe()
-is the more relevant information?
+Looks strange to me because, if ep0_read_setup() cannot read the setup data
+why don't we simply abort the operation ?
 
-Bikesheds should all be red!
+With setup = {}, the following test is true:
+  if ((setup.bRequestType & USB_TYPE_MASK) == USB_TYPE_STANDARD)
+	handled = handle_standard_request(mtu, &setup);
 
-Jonathan
+handle_standard_request() is called and supposes an USB_REQ_GET_STATUS
+(0x00) request:
+   case USB_REQ_GET_STATUS:
+	handled = ep0_get_status(mtu, setup);
+	break;
 
->=20
-> Best regards
-> Uwe
->=20
+Then ep0_get_status() supposes USB_RECIP_DEVICE (0x00) and performs some
+operation sending the data related to the GET_STATUS.
 
+All of these are not correct as the setup data that triggered this sequence
+was never received.
+Aborting the operation if ep0_read_setup() cannot read the setup data seems
+better to me.
+
+Best regards,
+Hervé
+
+-- 
+Hervé Codina, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
