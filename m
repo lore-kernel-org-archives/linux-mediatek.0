@@ -4,80 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B57DEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 10:14:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4960DEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 11:00:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CXPQymja6WNRq3yXymUawSS5NzIm4dGIe24QZ3g7b9I=; b=cw19QQmBZcsKDAMK5i9afnPKQd
-	v3ucdrqIDSDhseH77wGPcegwLYDKjMDSMoJ4siXI9j2nHGhDwlUKVHEiFm/by/BbItZfBOdQP0cAd
-	RTcd2SIgoXl8DIjaF9ea66lRas1bQg/i/ZZQ94Yz4j+z9tuaQKCYnQ/+CjWVQvqFNYOZdUC8dufxb
-	7XMiguI7UBEGUGeAjP+BLPSocsKv+LW7Zi6w8vT8MOjqwNduLrYa1FzD9ajqr8Sg6saEnwYg7QTrR
-	6kePDayho60uRJe3LkyJYn3S0BX7ClhJCxvW+n0ZGbyd0HtIKC7/MTufIqKVeOLV2bI51WAYXQOQf
-	1hyc5DNQ==;
+	bh=eKDF4qgNN4R898beQcJ64wYUsNRZY1JVRwiUnFtqmlM=; b=pNb51lCKJWatMEIPrJvv4pwBDv
+	p3MFsxm7IZ7KY9wVZx+EmoQQMHfEJw+AFxN4MIZNK4sjqXQNsEC1Y5Qlng1BqTG5Z+nNpsOSNi815
+	bTcYUPgMTqqjHb/qzNAl4iGHX5+rvCCKtKbt4L6GZqEqpDjbYmnl137uvUEPFnGsiuO240bHyjNES
+	BWJrWFNQYCxSv9i+KsqH31w8bNSFkVcih22HQY6MZuECXV/xFzpjUObNy41AT66I+4mZwYaKnWRPl
+	Hv1LgCAjkBr7TrTTHT0agZqRSJUrrN9mOg1is/kNytNHRUxZf2aTWSjzxOSRZtXF8n8agw1dkkPHl
+	oV0/DAgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGzWo-00FSee-2S;
-	Wed, 05 Jul 2023 10:14:30 +0000
+	id 1qH0Fb-00FftH-33;
+	Wed, 05 Jul 2023 11:00:47 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGzWl-00FSdE-10;
-	Wed, 05 Jul 2023 10:14:29 +0000
+	id 1qGzJ4-00FQuO-1u;
+	Wed, 05 Jul 2023 10:00:20 +0000
 Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C619766018CF;
-	Wed,  5 Jul 2023 11:14:23 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9873C66018CF;
+	Wed,  5 Jul 2023 11:00:16 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688552064;
-	bh=2abyu5VJmEt3tb1PbtQ8yXrWLSAXhrHf+oXfvn2ghmo=;
+	s=mail; t=1688551217;
+	bh=LWBUM2eAeMbEAdWCxLKa7EIHcDRWR8YL8nCssD1CCe4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=f3iQDUhuHulywT0n0IOD0av3igx8ZWuBUmB4cPKu+bRKBfbgUEfI+UxwqdPHlGIsK
-	 y3lnpqYAm1IxJMNS27Z6RIPGLzcIW5LPQiKV/KGo3JX9YTdXVsI68G8IO1pYE8iRBx
-	 iphGWqpo8+c/JTX5azF65fZtmAeVOHq//b2ueZsxtG8zskHKbFD91Hn1mD3CbKSDNJ
-	 zoXWMO05yjfR20N+40dAgKxxrPQ5hSnGRvb6ACtlqb7oU5zEPoAr/jrs8loFwjqQi/
-	 /O8FEOzccvZ2L0bRO/VR4UrUpWhJALAQebtD2WKMcO+KtLnzxW7VPMpNn+1Js9/uTN
-	 7HpZrpAJEGShg==
-Message-ID: <548f2a41-1f37-fe3a-6665-ae786e4c8f77@collabora.com>
-Date: Wed, 5 Jul 2023 12:14:21 +0200
+	b=djcXx8aPIDfdDlqSgm5afDE69qEwnOwDiGHiwcfdXow+r4J+SCeO8vfhHEpRmy++N
+	 wUtFswCrDP3DK9E5rbh2B4dk1cQuWMDKRYXzlCTnQlE5SBYfuyRmrevTK9m2zwSrKA
+	 PH5TxX47sCVBkIE8wXVkb2UMQcZF2j2nluOGAQ2bohdW2xOC7r7Mg9WjA28M0dq+1F
+	 hl9TZT1pyuRRud/QCMpF4Lcj4PA9l2GwjRh69yhVNE4rT4xGsxh8Vt4d6cgf7Da2rA
+	 9bZpqViGH0w/nlQI+eE+fOWUTCjEYyKoi/1nrDA+kbDpGtCD9lw7sHPboA4nk05rTg
+	 5qTqBR6pszZew==
+Message-ID: <be88f6db-8b07-1767-f48c-24a215006a4f@collabora.com>
+Date: Wed, 5 Jul 2023 12:00:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH v3 1/5] genirq/devres: Add
- devm_request_threaded_irq_emsg()
+Subject: Re: [PATCH 4/4] phy: mediatek: tphy: Convert to
+ devm_platform_ioremap_resource()
 Content-Language: en-US
-To: Yangtao Li <frank.li@vivo.com>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, miquel.raynal@bootlin.com,
- rafael@kernel.org, daniel.lezcano@linaro.org, amitk@kernel.org,
- rui.zhang@intel.com, mmayer@broadcom.com,
- bcm-kernel-feedback-list@broadcom.com, florian.fainelli@broadcom.com,
- tglx@linutronix.de, matthias.bgg@gmail.com, bchihi@baylibre.com,
- wenst@chromium.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230703090455.62101-1-frank.li@vivo.com>
- <20230703090455.62101-2-frank.li@vivo.com>
- <f4873823-fd7e-c6dd-fbc0-eac4a9be52b1@kernel.org>
- <20230703174347.4m6hcmify4jwsozv@pengutronix.de>
- <11052797-b006-11bb-e4eb-987ddd568b24@kernel.org>
- <20805fef-d6aa-91d8-999e-04b1d6b7a37a@vivo.com>
- <20230704141954.fcmol2yswkpbnpaw@pengutronix.de>
- <20230705101537.000059d2@Huawei.com>
- <20230705073000.oxlb7e7sdkdxurps@pengutronix.de>
- <c092b860-33d5-77c0-456c-367d545e8b7f@vivo.com>
+To: Yangtao Li <frank.li@vivo.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230705090126.26854-1-frank.li@vivo.com>
+ <20230705090126.26854-4-frank.li@vivo.com>
+ <ddc05f70-7075-97ab-1c94-cb3d5839ef2b@collabora.com>
+ <6a1bde36-fbf9-9ddd-e47f-f3c21a3528f7@vivo.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <c092b860-33d5-77c0-456c-367d545e8b7f@vivo.com>
+In-Reply-To: <6a1bde36-fbf9-9ddd-e47f-f3c21a3528f7@vivo.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_031427_658082_E5E1773D 
-X-CRM114-Status: GOOD (  22.42  )
+X-CRM114-CacheID: sfid-20230705_030018_778897_1E1FF38A 
+X-CRM114-Status: GOOD (  20.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,94 +81,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/07/23 09:43, Yangtao Li ha scritto:
-> On 2023/7/5 15:30, Uwe Kleine-König wrote:
+Il 05/07/23 11:30, Yangtao Li ha scritto:
+> HI AngeloGioacchino,
 > 
->> Hello,
->>
->> On Wed, Jul 05, 2023 at 10:15:37AM +0800, Jonathan Cameron wrote:
->>> On Tue, 4 Jul 2023 16:19:54 +0200
->>> Uwe Kleine-König <u.kleine-koenig@pengutronix.de> wrote:
+> On 2023/7/5 17:22, AngeloGioacchino Del Regno wrote:
+>> Il 05/07/23 11:01, Yangtao Li ha scritto:
+>>> Use devm_platform_ioremap_resource() to simplify code.
 >>>
->>>> Hello,
->>>>
->>>> On Tue, Jul 04, 2023 at 05:06:12PM +0800, Yangtao Li wrote:
->>>>> On 2023/7/4 16:48, Krzysztof Kozlowski wrote:
->>>>>> [你通常不会收到来自 krzk@kernel.org 的电子邮件。请访问 https://aka.ms 
->>>>>> /LearnAboutSenderIdentification，以了解这一点为什么很重要]
->>>>>>
->>>>>> On 03/07/2023 19:43, Uwe Kleine-König wrote:
->>>>>>> Hello Krzysztof,
->>>>>>>
->>>>>>> On Mon, Jul 03, 2023 at 02:31:59PM +0200, Krzysztof Kozlowski wrote:
->>>>>>>> On 03/07/2023 11:04, Yangtao Li wrote:
->>>>>>>>> There are more than 700 calls to the devm_request_threaded_irq method.
->>>>>>>>> Most drivers only request one interrupt resource, and these error
->>>>>>>>> messages are basically the same. If error messages are printed
->>>>>>>>> everywhere, more than 1000 lines of code can be saved by removing the
->>>>>>>>> msg in the driver.
->>>>>>>> ...
->>>>>>>>> +int devm_request_threaded_irq_emsg(struct device *dev, unsigned int irq,
->>>>>>>>> +                              irq_handler_t handler, irq_handler_t 
->>>>>>>>> thread_fn,
->>>>>>>>> +                              unsigned long irqflags, const char *devname,
->>>>>>>>> +                              void *dev_id, const char *emsg)
->>>>>>>>> +{
->>>>>>>>> +   int rc;
->>>>>>>>> +
->>>>>>>>> +   rc = devm_request_threaded_irq(dev, irq, handler, NULL, irqflags,
->>>>>>>>> +                                  devname, dev_id);
->>>>>>>>> +   if (rc && rc != -EPROBE_DEFER) {
->>>>>>>>> +           dev_err(dev, "Failed to request %sinterrupt %u %s %s: %pe\n",
->>>>>>>>> +                   thread_fn ? "threaded " : "", irq, devname ? : 
->>>>>>>>> dev_name(dev),
->>>>>>>>> +                   emsg ? : "", ERR_PTR(rc));
->>>>>>>> It is open-coding dev_err_probe(). Just use dev_err_probe instead.
->>>>>>> dev_err_probe is supposed to be only called in probe functions, while
->>>>>>> devm_request_threaded_irq might be called in other contexts (e.g. when a
->>>>>>> device is opened). That's why I asked to not use dev_err_probe() in v2
->>>>>> True, but then all the callers of this function will forget to set
->>>>>> deferred probe reason.
->>>> That's another reason for letting the driver issue the error message and
->>>> not the request_irq function.
->>>>> So let's use dev_err_probe?
->>>>>
->>>>> BTW, any suggestions for names here, keep using
->>>>> devm_request_threaded_irq_emsg or change to a new name?
->>>> I would have called it devm_request_threaded_irq_verbose() which I
->>>> consider easier to understand. But maybe  is just my (green)
->>>> bikeshed.
->>> If going to use dev_err_probe() internally maybe can just use
->>> devm_request_threaded_irq_probe() thus reflecting that and making
->>> it different to the devm_request_threaded_irq()?
->> I like devm_request_threaded_irq_probe(), thanks for that suggestion
->> (even though it's red :-)
+>>> Signed-off-by: Yangtao Li <frank.li@vivo.com>
+>>> ---
+>>>   drivers/phy/mediatek/phy-mtk-tphy.c | 10 +++-------
+>>>   1 file changed, 3 insertions(+), 7 deletions(-)
+>>>
+>>> diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c 
+>>> b/drivers/phy/mediatek/phy-mtk-tphy.c
+>>> index 0d110e50bbfd..cb7a4e6ea017 100644
+>>> --- a/drivers/phy/mediatek/phy-mtk-tphy.c
+>>> +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+>>> @@ -1554,7 +1554,6 @@ static int mtk_tphy_probe(struct platform_device *pdev)
+>>>       struct device_node *np = dev->of_node;
+>>>       struct device_node *child_np;
+>>>       struct phy_provider *provider;
+>>> -    struct resource *sif_res;
+>>>       struct mtk_tphy *tphy;
+>>>       struct resource res;
+>>>       int port, retval;
+>>> @@ -1576,15 +1575,12 @@ static int mtk_tphy_probe(struct platform_device *pdev)
+>>>       tphy->dev = dev;
+>>>       platform_set_drvdata(pdev, tphy);
+>>>   -    sif_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>>>       /* SATA phy of V1 needn't it if not shared with PCIe or USB */
+>>> -    if (sif_res && tphy->pdata->version == MTK_PHY_V1) {
+>>> +    if (tphy->pdata->version == MTK_PHY_V1) {
+>>>           /* get banks shared by multiple phys */
+>>> -        tphy->sif_base = devm_ioremap_resource(dev, sif_res);
+>>> -        if (IS_ERR(tphy->sif_base)) {
+>>> -            dev_err(dev, "failed to remap sif regs\n");
+>>> +        tphy->sif_base = devm_platform_ioremap_resource(pdev, 0);
+>>> +        if (IS_ERR(tphy->sif_base) && PTR_ERR(tphy->sif_base) != -EINVAL)
+>>
+>> That's wrong. You want to return any error unconditionally, as the V1 PHY *needs*
+>> the sif iospace and there's nothing afterwards retrying this.
 > 
 > 
-> devm_request_threaded_irq_probe() also sounds good to me, :-) If there is no 
-> objection, I think it's time to start working on switching the api.
+> When sif_res is not configured, an IOMEM_ERR_PTR(-EINVAL) error will be returned in 
+> __devm_ioremap_resource.
+> 
+> This kind of error is ignored in the newly added code, and the driving probe 
+> process will not be interrupted at this time.
+> 
+> What did I miss?
 > 
 
-+1 on devm_request_threaded_irq_probe() name, makes sense to me, as it'd be
-using the same error logic as dev_err_probe() (no prints if -EPROBE_DEFER),
-and also.. this is a function that's anyway used in .probe() callbacks at
-least in the *vast* majority of the cases.
+As I said, MTK_PHY_V1 *needs* sif; devm_platform_ioremap_resource() returns a
+handle to that iospace, or error.
 
-Cheers,
+tphy->sif_base = devm_platform_ioremap_resource(pdev, 0);
+if (IS_ERR(tphy->sif_base))
+	return PTR_ERR(tphy->sif_base);
+
+Regards,
 Angelo
 
-> int devm_request_threaded_irq_probe(struct device *dev, unsigned int irq, 
-> irq_handler_t handler, irq_handler_t thread_fn, unsigned long irqflags, const char 
-> *devname, void *dev_id, const char *info) { int rc; rc = 
-> devm_request_threaded_irq(dev, irq, handler, NULL, irqflags, devname, dev_id); if 
-> (rc) return dev_err_probe(dev, rc, "Failed to request %sinterrupt %u %s %s\n", 
-> thread_fn ? "threaded " : "", irq, devname ? : dev_name(dev), info ? : ""); return 
-> 0; } EXPORT_SYMBOL(devm_request_threaded_irq_probe); MBR, Yangtao
+> Thx,
+> 
+> Yangtao
 > 
 > 
 >>
->> Best regards
->> Uwe
+>> Please fix.
 >>
+>> Regards,
+>> Angelo
+>>
+>>>               return PTR_ERR(tphy->sif_base);
+>>> -        }
+>>>       }
+>>>         if (tphy->pdata->version < MTK_PHY_V3) {
+>>
+>>
+
+
 
 
