@@ -4,72 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40587EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 08:32:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 066B3EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jul 2023 09:02:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1Dj8wa59SSAo4NuWkMTD/CYcgpR+qe8mkyJdY9Jhnrg=; b=Dlo7D71XEK3Oy3P8pEJmapvYYh
-	RJ6JCGP8KEOkV0LMY4Ak5DCq5GpQzE2uIXEPuRkMHkrj1L9iH7yNhaGhylb1vmA8PpLwrl84NMQyq
-	CopX4DYw4f6JGw7ZcGaQFjAPqqQkcAcpNpzcwFn4XPRBKVGWre0SK9RLDBhcCkr+PoKvBDjiqfNfX
-	2aI1Y2lhDaoeXCr17fF8141GgEbqL6piEtzeR1ed0/YcDZHTvsv1dQ391yAgMEkVUBokK/zsfxyAw
-	vf70Ccg1s0/CqMFCrhXmVRG4f7WxR3KR08zCZK/ri7hWpwG2C1oAONRWYDu1qg/9TV9f8DLhi9DdM
-	KRBBeBVw==;
+	bh=ceERcHS3vIFMT+gdi/X160XFJqjBBw4HMM1zYRm1AnM=; b=2aGj40qfIDo84xy4CaOG/Owwl8
+	FgFgywTK7ooQ63fyyuDACMHfQ8tWqKc2CMUrI1dm9pCqB7wH6oMpVtxfgMCLslE4P+hBaCMM3jljP
+	nbxWbZ4ON6DUhZ9lV4Sx+LQ05lUyYTUXeATnjvAGY8fKtcaj2MPHDNULe6/y8inEdnmy0ZLdH08YN
+	gcECSOfAmv+whi6uDbhEnmq4Ge/Nw/ljLW3WNMZGNTYRh17LY79uFLagxVuW3ukY/9pcQApVh3mzx
+	5oHuLyM0L7/QR2R6ul37oRPGAzYyNWqATUlkOLfezlCuC0iaQeBRhHdf1RuhxMN+kMmktq1VqjOsy
+	rHPRqDeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGxvg-00FDxb-22;
-	Wed, 05 Jul 2023 08:32:04 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qGyOa-00FIIx-1m;
+	Wed, 05 Jul 2023 09:01:56 +0000
+Received: from mail-sgaapc01on20718.outbound.protection.outlook.com ([2a01:111:f400:feab::718] helo=APC01-SG2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qGxvd-00FDwB-1T;
-	Wed, 05 Jul 2023 08:32:02 +0000
-Received: from [IPV6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2] (unknown [IPv6:2001:b07:2ed:14ed:c5f8:7372:f042:90a2])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 61E766606FAC;
-	Wed,  5 Jul 2023 09:31:59 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688545919;
-	bh=RY1+2O3a4lrFNtkQsQzdpFcDs/i0JeGvyFoZvUcjc1M=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=itoTkkPdREMCipfEFqcJsH3s8zVE0sLcdnT0qlXhiwv2DMHep6ZCAZsZuGhvWxCtx
-	 OFqyIkN6JEVNY5atx66OT5I/DBKtRJMzLJQ/a5+9qD1isEB65ov8XTNm/2VUvgmX9Q
-	 tCvx8yjDTF26TTkSFHMyU3fYkGhijJxBvikf6hsKVwvLXXc0Apf5JpT4pdcl2qNKnf
-	 TbqwIjcndt+9X0T1vPI+b3np3r3KlPulTVjBjrpgFi5K6KZJREHt5KTbgXvwIEtmvj
-	 AlWnMtTe5Tnjv0Jv1yvUBqecYhxu53ZBXeiaf4Jft67V5zmSYxs3pNFXnTA5VeZ09T
-	 BsTNR1UJhAm4w==
-Message-ID: <3f2ef2d9-67a6-762f-c045-40c71e54d89b@collabora.com>
-Date: Wed, 5 Jul 2023 10:31:57 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH] iommu/mediatek: Remove a unnecessary checking for larbid
-Content-Language: en-US
-To: Robin Murphy <robin.murphy@arm.com>, =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?=
- <Yong.Wu@mediatek.com>, "joro@8bytes.org" <joro@8bytes.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Cc: "will@kernel.org" <will@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "iommu@lists.linux.dev" <iommu@lists.linux.dev>
-References: <20230704115634.7727-1-yong.wu@mediatek.com>
- <633be7a7-0bb8-1575-535e-2f96302198bd@collabora.com>
- <ca4a06b89442e56df652c4aeba3ad83473f4db58.camel@mediatek.com>
- <4c78c516-8cb6-d865-c64c-0b2443006690@arm.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <4c78c516-8cb6-d865-c64c-0b2443006690@arm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+	id 1qGyOU-00FIFc-2y;
+	Wed, 05 Jul 2023 09:01:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=RreXiUEDWRsFlXFH4rteZgQJCiQabu5BrN2k5xzqN+pw1I7VUzvyjL9IPJAR9vkXbulVJonEzKgRpSPcLGH47JCq/tJ8r4yaBJNdIXVHSBZIl8E1+dPnlbOUwgoJPqJAq8v7xfrzflll6QXTYaiIFQTKreDQSlB1GBGywlDif3jLChbme8mFGJcRzKKfdwI7573804eQX8TE1xnwGzPpHBj8kR/fQJ3AhqA3TnZlcZHdIuvTii6JGxZyADrWMLy2hupAc8nIhGEDL+uSSifg1+/LkUtCED6TmvSR3RtLrd+ivJv/4QUFi0L5aF7xe3JV5NdeFmQqpZn1Mb3ExlE+cQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ceERcHS3vIFMT+gdi/X160XFJqjBBw4HMM1zYRm1AnM=;
+ b=AeBFlhjSteoHryiyMWPIPGJ0jJXyA+MCgjovIjZ3hACTaqBChl43gJAKDdr/papZmcwBF6WQ/l8d1phhXr+yPLLPefL9j3MQpd8gbTGHOnMpEb2Yxb2PelFjZ/GXq68IHkScE2Cnp+ryOdWz0BPC+mPkZQpZ5z18AQ/e8KPhDIXH6cyGtsfuJMpGUDFs8+vw3oR+Xo2QrWD5/RckpErnGw4emfQvxMxj3FPWL7qYCM4ERBHWDSRvMFbjrickhRw9LapYuuhvrOknymoCWFPYbDMFZ2g35ppaqGaMPG7uxeYn/t+S33n2yUk6ORHpzaqncnKyEbQmn5gfRswhsGRTeA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ceERcHS3vIFMT+gdi/X160XFJqjBBw4HMM1zYRm1AnM=;
+ b=SM3uo7c4RTqfsUIWiqroqPMmR9INNhtgWcVYpEkpp6sa/ZslwlgColAzm7hTU4f/hnEWDUVq2/Cb8LFGj5BZ0LAb8BylvUZWrAcUqFN3GzWO3OHvAjNE8OCSvBUHkhzMKVtd2BHQg0cTuBzrqM7VGBxfbpbQuOLgSx9mTqMq67CP1hH8FYkk5AEy5y5LAReUiC9atTvv5/5Dm3cAOP8hC11cDkrodadnVroAnz2pa2gHM+dAC/ZZjdUKYPosT0oqmdHen9G+5z0+GF01XvxTf+rHLtZZLmLGdoNwbeblrLUdFNe3L0loKRfmsgNmpu5KLwz5jzENiVJQXYa5KLpWdg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com (2603:1096:101:78::6)
+ by TY0PR06MB5804.apcprd06.prod.outlook.com (2603:1096:400:265::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6544.24; Wed, 5 Jul
+ 2023 09:01:42 +0000
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::fa0e:6c06:7474:285c]) by SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::fa0e:6c06:7474:285c%5]) with mapi id 15.20.6565.016; Wed, 5 Jul 2023
+ 09:01:42 +0000
+From: Yangtao Li <frank.li@vivo.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Yangtao Li <frank.li@vivo.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 4/4] phy: mediatek: tphy: Convert to devm_platform_ioremap_resource()
+Date: Wed,  5 Jul 2023 17:01:26 +0800
+Message-Id: <20230705090126.26854-4-frank.li@vivo.com>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230705090126.26854-1-frank.li@vivo.com>
+References: <20230705090126.26854-1-frank.li@vivo.com>
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: SG2PR02CA0031.apcprd02.prod.outlook.com
+ (2603:1096:3:18::19) To SEZPR06MB5269.apcprd06.prod.outlook.com
+ (2603:1096:101:78::6)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5269:EE_|TY0PR06MB5804:EE_
+X-MS-Office365-Filtering-Correlation-Id: a2f6f803-67b2-4106-fdbd-08db7d3673a6
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Vx3RSBL/wOF2z9ZCcWKGfxSz9y5lpaHW5XUSZRvrV3PXOVqsLNu+C0Kn00K9lfrx1w/6mioZIOpA61AKADtIvLTAJxDAuBbkVLoz+8yvyYHW+wSL3zb0eEeTzQnWwY5tGkY+rtgzZcu3LCgYhgvJghZejOINfthuxEApjvVSOXY/9n4Ezz78NXO/6ZImiv/RbC9zy9JtUnVNq6TPgxtKm4AQgkmMwXm8WEd4rYpEmZD70VKVA8/AsI8n4DTdoN/zzGOWlHzfAR67nTjQ1FcG/jSQFaBbekUjFRwSdd5i6kMsQqK5l8WphCP3KYBDmmTw7GF1dkct36SxukLMT/Urlalm71FkybV1ShHN0gnI8IdF+EfRv+DIVvXdTjSBSeicItLlLoSoqv01XkUIe13xnz+Hv9iY46osVJUErNs4IvFtHYeq/qHxL9yjErgiqgw2zk/AcBhU2ZKhNmBzwJnTAm6PFKTo8VHOx2FC/BYZB2YjBAImGtsw5dboGbVoM419fRKZMelZYKA8CJkrBZsUFGSV5Z9nl4zDcrBiUb8NGG8r2o8IwB/pk1fcieXEaqVRant4FraM8v8FpdqdfHX79qLkf2by+Dr0J7wGPSwV3bgoHFGMd/HVTiK119M6eMSD7RK3gWOmBSyG9+bTwbw/2urnAAgRhX1RixAYJdjeoGg=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5269.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(346002)(39860400002)(396003)(376002)(366004)(136003)(451199021)(26005)(478600001)(6506007)(1076003)(6666004)(6512007)(86362001)(2616005)(186003)(38350700002)(66556008)(38100700002)(66476007)(4326008)(66946007)(110136005)(83380400001)(52116002)(6486002)(316002)(8676002)(8936002)(41300700001)(2906002)(5660300002)(36756003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?0KUbe0Vj1FiIg0lToaP9vN0/L6Nt7oOCqzeVbT7sTSbcdzaZkMrb29kgf6F0?=
+ =?us-ascii?Q?IT13OlpkPQHstjK32pLCxrrR98diZI2bhQgEz/bOtArr7evr7bDabNrOkvo2?=
+ =?us-ascii?Q?65vlpjUaBK13Or8fnU0f50iPnWBSewZGCXza4fu220kEZ6WeZNjULD1vx259?=
+ =?us-ascii?Q?/OGnm3tVNNw+3c43rvs7fbtN0o9b8ZLVvDUv7xWxvb2rxRgRDCivGIZO/eci?=
+ =?us-ascii?Q?u2ktBLvgAjG5LCq9mjhq5M3V5OTItK+UcUKQegGvSAvDNv+0U967dvffla31?=
+ =?us-ascii?Q?g5nZCpde6qcbvn3nSNqtjhQl58RdE0TcngFjo67VBq+udiRQQ0tUnIwOUugp?=
+ =?us-ascii?Q?dL5AacVtjwCE59Bh5FcyxZI9UjznKdBYH3N8PrfgZxgm+Cq3QZRynj370kIl?=
+ =?us-ascii?Q?n/LkqyLOXTBDdddzor/YJW1RoKG7WKKSjHr8Wq8Crz7T52zGyPJCpXh2h/Dn?=
+ =?us-ascii?Q?dQLljqCezde2DKfv6/97B2XQ/nyDo2jSc/GuxudPLkW/sUOPrujxxO/6JrkV?=
+ =?us-ascii?Q?HSdVcThBCr6d39WFvlurLYSv/2jRLux51nmfgRVH3I28hoPJCNcQM9+5ykV/?=
+ =?us-ascii?Q?pqL3leHUF5eBIMtYbaeJYaUL1+FahiRRwF8us7fRA77Lxu/FW7UBZMPVhPrN?=
+ =?us-ascii?Q?DDmbL5kdK/ojzbs1O90pvlG7HJ8EHDG+QumXY6z2rktRTtnUjmYAbtRqMKDn?=
+ =?us-ascii?Q?fNxVECsgaPah4ioHmxZVsKZ3achTl+sL6HKfa/BSmJ/iyvttYkcKc92ocoi8?=
+ =?us-ascii?Q?MTqNDypLjOJW6GL5Gb69+XKxvgyENBFk0lA/8/+uUSdrlCJMsOLNftU1NNJO?=
+ =?us-ascii?Q?ypE0E681m2BNynSFwaozyHdICXG+jxLUfHGy1DSD00VqpjcnakxXNtx3eHGb?=
+ =?us-ascii?Q?UQYrLTY+8Yzo4siiLoanEJf7t2KHxtWJAxiTOT/WacltY9+vbX6+YpW8dI7s?=
+ =?us-ascii?Q?zVaFSxNwnb/0YuF/Dh76ySWYQA+NlJWQj3OznbyxpH73j2F8BrOeJRT+8Fha?=
+ =?us-ascii?Q?c3wJTCy5B/q0r4lYQeVTvetTt2a6vT++OW0WbFo4n/OX8CO42CJ6TqeU+ysn?=
+ =?us-ascii?Q?aPdHFU3bv6abXWzaMtnC2+8PZ6AX6PNWYbnM64CLNiCKhYMsoCawclJYNQuN?=
+ =?us-ascii?Q?Yn2VXAdMrcrForn7JQqca9weKysCN59ErbluJeLtqlntgOHKnw4OiM9HWWAn?=
+ =?us-ascii?Q?bBEQ1y5PM69AJih/H9aQzgKixt1EL/WmEsh3p43NG+fKrp6eTtFtjbvmFli5?=
+ =?us-ascii?Q?OU1IH7UfyyFZLS5Wd9JAwgHRoakUVZzWJ46EUJzPO+oq9a+mzenHe4lg6/lv?=
+ =?us-ascii?Q?Vf41N31uH7A3nrw/gQsAVcMqm2Lv3uM1i1ccliDtma3ioIgNbcBMPK/xqzfM?=
+ =?us-ascii?Q?eUdZ6WBzirnAhIq6CPju9QMCJv8WD6yLC/8wP+CFr9HDVKn0QKWir4efYZGy?=
+ =?us-ascii?Q?3zx6Ez/1uNOY6tXSfC1IQLcbHP6flFl07bHTTpzci3Q9RH95Y/+UF0fURe8I?=
+ =?us-ascii?Q?PxwzU7vEeSBObSMqrYtrjLygeAvy9FqooWE+MAWwby+GllMG3oEGfGA47WBl?=
+ =?us-ascii?Q?M8ZEpeHo9OgmtoHJ7h5FO+sCUtMD9XM0Af69j2Xf?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a2f6f803-67b2-4106-fdbd-08db7d3673a6
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5269.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jul 2023 09:01:42.6609
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: WNJ3vMXy7Un9yMJ5K25ueEIPhNDMfNjWS6y7jDbiycHG1bt+RhhFDpF3kj1HasclO/ElHyHmColtXlMH1aNWAA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR06MB5804
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_013201_628302_BCB0B4F7 
-X-CRM114-Status: GOOD (  22.37  )
+X-CRM114-CacheID: sfid-20230705_020150_964237_FEE56B1C 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,97 +138,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/07/23 10:26, Robin Murphy ha scritto:
-> On 2023-07-05 07:49, Yong Wu (吴勇) wrote:
->> On Tue, 2023-07-04 at 14:19 +0200, AngeloGioacchino Del Regno wrote:
->>>
->>> External email : Please do not click links or open attachments until
->>> you have verified the sender or the content.
->>>   Il 04/07/23 13:56, Yong Wu ha scritto:
->>>> Fix a coverity issue:
->>>>
->>>>>> assignment: Assigning: larbid = (fwspec->ids[0] >> 5) & 0x1fU.
->>>> larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
->>>>>> between: At condition larbid >= 32U, the value of larbid must be
->>> between
->>>>>> 0 and 31.
->>>>>> dead_error_condition: The condition larbid >= 32U cannot be true.
->>>> if (larbid >= MTK_LARB_NR_MAX)
->>>>>> CID 11306470 (#1 of 1): Logically dead code (DEADCODE)
->>>>>> dead_error_line: Execution cannot reach this statement:
->>>>>> return ERR_PTR(-22L);
->>>>           return ERR_PTR(-EINVAL);
->>>>
->>>> The checking "if (larbid >= MTK_LARB_NR_MAX)" is unnecessary.
->>>>
->>>
->>> I agree with the coverity tool in that after the transformation
->>> (going through
->>> the definition of MTK_M4U_TO_LARB) the check is pointless, but I
->>> think that the
->>> right fix here is to check for validity of fwspec->ids[0] instead of
->>> simply
->>> removing validation.
->>>
->>> Having no validation after mtk_iommu_probe_device() is fine, but
->>> that's
->>> because we assume that *this* function performs all validation steps.
->>
->> There already is validation code at the point later in this function.
->>
->> "if (!larbdev) return ERR_PTR(-EINVAL);" //if the larbid is invalid.
->>
->> This patch just removes a deadcode.
-> 
-> Right, if the fwspec value was out of range then the truncated value might happen 
-> to map to a valid LARB, but then the fwspec could equally have an in-range value 
-> for a valid (but incorrect) LARB; in general a driver can't validate the overall 
-> correctness of data from the DT (and if it could, that data wouldn't need to be in 
-> the DT anyway).
-> 
->  From the history, the intent of this check doesn't appear to have been anything 
-> other than protecting the dereference of the data->larb_imu array, and it's never 
-> had any functional effect, so we don't lose anything by removing it. FWIW,
-> 
-> Reviewed-by: Robin Murphy <robin.murphy@arm.com>
-> 
+Use devm_platform_ioremap_resource() to simplify code.
 
-Yong, you're right. My bad for not noticing the later validation code.
+Signed-off-by: Yangtao Li <frank.li@vivo.com>
+---
+ drivers/phy/mediatek/phy-mtk-tphy.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> Cheers,
-> Robin.
-> 
->>
->>>
->>> Regards,
->>> Angelo
->>>
->>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->>>> ---
->>>> Rebase on v6.4-rc1.
->>>> ---
->>>>    drivers/iommu/mtk_iommu.c | 3 ---
->>>>    1 file changed, 3 deletions(-)
->>>>
->>>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
->>>> index aecc7d154f28..67caa90b481b 100644
->>>> --- a/drivers/iommu/mtk_iommu.c
->>>> +++ b/drivers/iommu/mtk_iommu.c
->>>> @@ -838,9 +838,6 @@ static struct iommu_device
->>> *mtk_iommu_probe_device(struct device *dev)
->>>>     * All the ports in each a device should be in the same larbs.
->>>>     */
->>>>    larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
->>>> -if (larbid >= MTK_LARB_NR_MAX)
->>>> -return ERR_PTR(-EINVAL);
->>>> -
->>>>    for (i = 1; i < fwspec->num_ids; i++) {
->>>>    larbidx = MTK_M4U_TO_LARB(fwspec->ids[i]);
->>>>    if (larbid != larbidx) {
->>>
->>>
-
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index 0d110e50bbfd..cb7a4e6ea017 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -1554,7 +1554,6 @@ static int mtk_tphy_probe(struct platform_device *pdev)
+ 	struct device_node *np = dev->of_node;
+ 	struct device_node *child_np;
+ 	struct phy_provider *provider;
+-	struct resource *sif_res;
+ 	struct mtk_tphy *tphy;
+ 	struct resource res;
+ 	int port, retval;
+@@ -1576,15 +1575,12 @@ static int mtk_tphy_probe(struct platform_device *pdev)
+ 	tphy->dev = dev;
+ 	platform_set_drvdata(pdev, tphy);
+ 
+-	sif_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	/* SATA phy of V1 needn't it if not shared with PCIe or USB */
+-	if (sif_res && tphy->pdata->version == MTK_PHY_V1) {
++	if (tphy->pdata->version == MTK_PHY_V1) {
+ 		/* get banks shared by multiple phys */
+-		tphy->sif_base = devm_ioremap_resource(dev, sif_res);
+-		if (IS_ERR(tphy->sif_base)) {
+-			dev_err(dev, "failed to remap sif regs\n");
++		tphy->sif_base = devm_platform_ioremap_resource(pdev, 0);
++		if (IS_ERR(tphy->sif_base) && PTR_ERR(tphy->sif_base) != -EINVAL)
+ 			return PTR_ERR(tphy->sif_base);
+-		}
+ 	}
+ 
+ 	if (tphy->pdata->version < MTK_PHY_V3) {
+-- 
+2.39.0
 
 
