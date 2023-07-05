@@ -4,100 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17695EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 01:19:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A85E0EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 01:29:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gG5qEwxagC4+ySUQRGnCqzQVgx8YJDmgKYEwBwBbHi8=; b=VQGQ827dHqJRiqXqzlvesqzPYt
-	gGO8lU8GTMDC0m2qIEI92ABoyxwTc+ktrF0/v0KJhIv20cnXJXvHZzD4jt0ME5lnq3nTIplpn5CT5
-	JX3uldEXHCxxtJgY0bCE9b+P0Jom4xLXLlYYR2n8h5fHjV6kKqpvMKbDAAFTQbZDHqJtzc+yKVCjp
-	SJUVptuGsGhfZ3+7IXU8pt2QdLHwpK0Rm1hLcyEq5lPFOM1T439XFlT/5BIkTStB9PvX97M0ND75A
-	PNoqTqQSElaDjXGs8CLyu04DPmtNf+MA7VluBx4sAIKbEYETh3I/cCYW4lGSM1rHSVW0P6LOR6kNb
-	OiMQnQAA==;
+	bh=+qD7qd++uan0DQoZQoST8a+uMik4rTFW5uMRGk03rJ0=; b=b9ya/DuE4AHiPhBqraEElVFqqM
+	PWrfrYd5sqIU64gf/o3FDhc3Q6MT6DtTLTo3MN/iSkZ0TviM9+4OJhk6Bi7/81AkreycLCyYtlnIP
+	PCPPKj9QVw/mgFErV2YsRTbwpgyc7b5zyGLTnob2iiuua9mfHWfJTy2QkJn0XdMJxFbcvSomkvHPa
+	joi62uhzDhI/8FF9TW3w7CT85da21OUOay8Xe7xXNGAO4DSyXP8z3gbv/hBGb5OeMcjrhSk8djZzX
+	VCvWhMXSeCKmXTFl7/VbgiyWUCO+uiLs/yWNyTOvLKUnd58ArRW59eIta56GIag0j2wKhyg1HV/zo
+	ZHMKt4MA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHDeP-00HYO1-0Q;
-	Thu, 06 Jul 2023 01:19:17 +0000
-Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHDeL-00HYMx-1C
-	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Jul 2023 01:19:15 +0000
-Received: by mail-vs1-xe2e.google.com with SMTP id ada2fe7eead31-440c368b4e2so55267137.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 05 Jul 2023 18:19:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20221208; t=1688606351; x=1691198351;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gG5qEwxagC4+ySUQRGnCqzQVgx8YJDmgKYEwBwBbHi8=;
-        b=WMb9JUkj68NIqA151cJeWq+K4uPDzjvVMzwUNQ7V4uLik7F/mwPqb/9E7uaaVRzJL0
-         0M3W+l5Wpg0NYKNut4knANvMOjAKPnUYPjvDyDIHQFnFHedjDJQwlvzVdCtfTKIXcA0G
-         cFwY++6voTGFWrrbQDYteX0eT/EnnSZjfyyd3g6fjfrkkXoYRonL+Da3UeqGgWhFXHYg
-         oW1v42NaF0AE5lnAh7MhvFF9ChNcLvl9h2zEoae33BSI4GvprdIhWxlQzumISRkjVFJ3
-         kugXVSyaSsJBiJzwPFA2NFjjIoo85T3VCqcRJB1qMAYJ6Py2B6ZA5ytZTNSXX4WAKvsA
-         +KhA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688606351; x=1691198351;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=gG5qEwxagC4+ySUQRGnCqzQVgx8YJDmgKYEwBwBbHi8=;
-        b=a9ULtsIu/tJdIGyPBYrS39OOpWcWU4uu1hNHQt1EXernLsdJTMSz2fubo+W+PgZvEW
-         egmWN9rJDTV81FBYnaIBR2EfAqpDxgJ+ioAdO1lz5T1O9cydGB6lZHMsabtG9mcVhUbQ
-         KKYYjMFENFWA46yO+ggHgE2BZsSR+NVtxOHXngKjVOy5xsqaEG8G/Cjs4lSWXmr/V0cq
-         IFqCcxRd5Ek3PbcAf6njJ3TqRxO4Z1kHWTFHLMaUTLFxPJjAaCrmIXuAlfL0wVtHJoi2
-         gYp8cyyaCUHt0Fiv1dbuJbhHHI4mV+eV0oeFbOnjoPSW7whPblmViGKCQmJ6kKZnhSdS
-         FytQ==
-X-Gm-Message-State: ABy/qLYZ2mqIKPD9aBiQYiHo6PWXjmSjzHWLD+1+u/HnIsIf3J22E6hl
-	9987ihumv5UzkyOkZ5Z3CRP1689tvR7lX/qPEFybdw==
-X-Google-Smtp-Source: APBJJlHTpxzJQ8qMkls8/kIG3QOBs1ceFkXZ5NSrihcQZjqbTz7tGm96dN/xChDtfBDJkv3zbfLFcn2Iuq8tSQKFcC4=
-X-Received: by 2002:a67:e989:0:b0:443:90ff:c691 with SMTP id
- b9-20020a67e989000000b0044390ffc691mr600930vso.13.1688606351586; Wed, 05 Jul
- 2023 18:19:11 -0700 (PDT)
+	id 1qHDoV-00HZRw-1P;
+	Thu, 06 Jul 2023 01:29:43 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qHDoQ-00HZOr-1Y;
+	Thu, 06 Jul 2023 01:29:40 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 39C7B1682;
+	Wed,  5 Jul 2023 01:26:52 -0700 (PDT)
+Received: from [10.57.28.141] (unknown [10.57.28.141])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 70D7D3F73F;
+	Wed,  5 Jul 2023 01:26:08 -0700 (PDT)
+Message-ID: <4c78c516-8cb6-d865-c64c-0b2443006690@arm.com>
+Date: Wed, 5 Jul 2023 09:26:02 +0100
 MIME-Version: 1.0
-References: <20230612130256.4572-1-linyunsheng@huawei.com> <20230612130256.4572-5-linyunsheng@huawei.com>
- <20230614101954.30112d6e@kernel.org> <8c544cd9-00a3-2f17-bd04-13ca99136750@huawei.com>
- <20230615095100.35c5eb10@kernel.org> <CAKgT0Uc6Xoyh3Edgt+83b+HTM5j4JDr3fuxcyL9qDk+Wwt9APg@mail.gmail.com>
- <908b8b17-f942-f909-61e6-276df52a5ad5@huawei.com> <CAKgT0UeZfbxDYaeUntrQpxHmwCh6zy0dEpjxghiCNxPxv=kdoQ@mail.gmail.com>
- <72ccf224-7b45-76c5-5ca9-83e25112c9c6@redhat.com> <20230616122140.6e889357@kernel.org>
- <eadebd58-d79a-30b6-87aa-1c77acb2ec17@redhat.com> <20230619110705.106ec599@kernel.org>
- <CAHS8izOySGEcXmMg3Gbb5DS-D9-B165gNpwf5a+ObJ7WigLmHg@mail.gmail.com>
- <5e0ac5bb-2cfa-3b58-9503-1e161f3c9bd5@kernel.org> <CAHS8izP2fPS56uXKMCnbKnPNn=xhTd0SZ1NRUgnAvyuSeSSjGA@mail.gmail.com>
- <47b79e77-461b-8fe9-41fb-b69a6b205ef2@kernel.org> <CANn89iKAvrf92Fy8a_M+V9eya6OHokey2_yxQ3JiCT87fKND_w@mail.gmail.com>
- <011d3204-5c33-782c-41d1-53bf9bd2e095@kernel.org>
-In-Reply-To: <011d3204-5c33-782c-41d1-53bf9bd2e095@kernel.org>
-From: Mina Almasry <almasrymina@google.com>
-Date: Wed, 5 Jul 2023 18:19:00 -0700
-Message-ID: <CAHS8izPF7WjMKLA82fy5LjE9XzUWNVMgs9tD7JM5UY3xfw93Yw@mail.gmail.com>
-Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
- page_pool: remove PP_FLAG_PAGE_FRAG flag)
-To: David Ahern <dsahern@kernel.org>
-Cc: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
-	Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com, 
-	Alexander Duyck <alexander.duyck@gmail.com>, Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, 
-	pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
-	Salil Mehta <salil.mehta@huawei.com>, Sunil Goutham <sgoutham@marvell.com>, 
-	Geetha sowjanya <gakula@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>, 
-	hariprasad <hkelam@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>, 
-	Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jesper Dangaard Brouer <hawk@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Jonathan Lemon <jonathan.lemon@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH] iommu/mediatek: Remove a unnecessary checking for larbid
+To: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
+ "joro@8bytes.org" <joro@8bytes.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>
+Cc: "will@kernel.org" <will@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "iommu@lists.linux.dev" <iommu@lists.linux.dev>
+References: <20230704115634.7727-1-yong.wu@mediatek.com>
+ <633be7a7-0bb8-1575-535e-2f96302198bd@collabora.com>
+ <ca4a06b89442e56df652c4aeba3ad83473f4db58.camel@mediatek.com>
+Content-Language: en-GB
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <ca4a06b89442e56df652c4aeba3ad83473f4db58.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_181913_417382_9426EAF5 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20230705_182938_636916_DA359352 
+X-CRM114-Status: GOOD (  20.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,34 +74,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 3, 2023 at 10:23=E2=80=AFAM David Ahern <dsahern@kernel.org> wr=
-ote:
->
-> On 7/3/23 11:13 AM, Eric Dumazet wrote:
-> > diff --git a/net/packet/af_packet.c b/net/packet/af_packet.c
-> > index a2dbeb264f260e5b8923ece9aac99fe19ddfeb62..aa4133d1b1e0676e408499e=
-a4534b51262394432
-> > 100644
-> > --- a/net/packet/af_packet.c
-> > +++ b/net/packet/af_packet.c
-> > @@ -2152,7 +2152,7 @@ static int packet_rcv(struct sk_buff *skb,
-> > struct net_device *dev,
-> >                 }
-> >         }
-> >
-> > -       snaplen =3D skb->len;
-> > +       snaplen =3D skb->devmem ? skb_headlen(skb) : skb->len;
-> >
->
-> Ok, so you expect a flag on the skb noting the use of 'untouchable'
-> memory. That aligns with my expectations based on POCs.
->
-> Based on the above: 1) skb->head is expected to be host memory, and 2)
-> the flag is a global for all frags, so no mix and match.
+On 2023-07-05 07:49, Yong Wu (吴勇) wrote:
+> On Tue, 2023-07-04 at 14:19 +0200, AngeloGioacchino Del Regno wrote:
+>>   	
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>   Il 04/07/23 13:56, Yong Wu ha scritto:
+>>> Fix a coverity issue:
+>>>
+>>>>> assignment: Assigning: larbid = (fwspec->ids[0] >> 5) & 0x1fU.
+>>> larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
+>>>>> between: At condition larbid >= 32U, the value of larbid must be
+>> between
+>>>>> 0 and 31.
+>>>>> dead_error_condition: The condition larbid >= 32U cannot be true.
+>>> if (larbid >= MTK_LARB_NR_MAX)
+>>>>> CID 11306470 (#1 of 1): Logically dead code (DEADCODE)
+>>>>> dead_error_line: Execution cannot reach this statement:
+>>>>> return ERR_PTR(-22L);
+>>>           return ERR_PTR(-EINVAL);
+>>>
+>>> The checking "if (larbid >= MTK_LARB_NR_MAX)" is unnecessary.
+>>>
+>>
+>> I agree with the coverity tool in that after the transformation
+>> (going through
+>> the definition of MTK_M4U_TO_LARB) the check is pointless, but I
+>> think that the
+>> right fix here is to check for validity of fwspec->ids[0] instead of
+>> simply
+>> removing validation.
+>>
+>> Having no validation after mtk_iommu_probe_device() is fine, but
+>> that's
+>> because we assume that *this* function performs all validation steps.
+> 
+> There already is validation code at the point later in this function.
+> 
+> "if (!larbdev) return ERR_PTR(-EINVAL);" //if the larbid is invalid.
+> 
+> This patch just removes a deadcode.
 
-Yes, both are correct (i.e. what I plan to propose).
+Right, if the fwspec value was out of range then the truncated value 
+might happen to map to a valid LARB, but then the fwspec could equally 
+have an in-range value for a valid (but incorrect) LARB; in general a 
+driver can't validate the overall correctness of data from the DT (and 
+if it could, that data wouldn't need to be in the DT anyway).
 
---=20
-Thanks,
-Mina
+ From the history, the intent of this check doesn't appear to have been 
+anything other than protecting the dereference of the data->larb_imu 
+array, and it's never had any functional effect, so we don't lose 
+anything by removing it. FWIW,
+
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+
+Cheers,
+Robin.
+
+> 
+>>
+>> Regards,
+>> Angelo
+>>
+>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>>> ---
+>>> Rebase on v6.4-rc1.
+>>> ---
+>>>    drivers/iommu/mtk_iommu.c | 3 ---
+>>>    1 file changed, 3 deletions(-)
+>>>
+>>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+>>> index aecc7d154f28..67caa90b481b 100644
+>>> --- a/drivers/iommu/mtk_iommu.c
+>>> +++ b/drivers/iommu/mtk_iommu.c
+>>> @@ -838,9 +838,6 @@ static struct iommu_device
+>> *mtk_iommu_probe_device(struct device *dev)
+>>>     * All the ports in each a device should be in the same larbs.
+>>>     */
+>>>    larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
+>>> -if (larbid >= MTK_LARB_NR_MAX)
+>>> -return ERR_PTR(-EINVAL);
+>>> -
+>>>    for (i = 1; i < fwspec->num_ids; i++) {
+>>>    larbidx = MTK_M4U_TO_LARB(fwspec->ids[i]);
+>>>    if (larbid != larbidx) {
+>>
+>>
 
