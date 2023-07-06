@@ -4,89 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DEFBEB64D9
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 13:40:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0328FEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 13:44:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wPpBDlYaIuD+VMsca1EiUkZwQdb3LgKSP8mKv4+2NUM=; b=Yt3RV7TOZFmxOaDsDsa/SalaGd
-	MWDpPQvRMphdDd915YQGlyZhLAOgc2uzsKnKi9BZyILpvpYTEdA/pcEdkO+E8UJFbiHZEodTLnWVL
-	PB+mowRI3WNQw4bfkC6Q7ZkYJ8dzdP9M1xBzXMJIqDkL5ycNCe7Sp8fTTpbHxqg2netimRlfVWOAB
-	pBSO0izslQakKHWUPv67WHr4s9Q6uWNoHnOsHB/YL5m0MiVu6Wr9cJzTqAmTF4N/VlNQ52tO416qR
-	hVmEbrPWV8H8UZJVG9nepiPjMxud3+04jDetieHPQZN+nHCr6n73VKda4+y8CtwH3jtyU8xmpZ9uw
-	B/Npexvg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NmdxVyEV5lggCCeYaBLl2W3eSLPMCAciQd6+9Y/5iaE=; b=fidv+GJK6nKCLlAeVLhzWnWFDG
+	rjThP7CPPklrar1gvvZbj8B8HphweCN8OPprGgw4Bljp1IzuONbyIFhNOtP+WAsP1Y4Tr1clNWIou
+	vO3qU/aTWlM+M7RksMPBlEOMObdI0/OfxTfJXENypxUsbsFBO6xwu576aVh1tJx2Axm2UZw1FTYHW
+	vA8r92fa+OTa/5s9MJdrGoO/Bdi8hbdWPyxdRAMRNFOhdaCdbbfDM5SZK2GqmamEnISPytPj39Hq8
+	zlZxmdXO9j0ghOp09NisaVwUkDCBWRUYakBEOdjb4Q//bGNRVQCQPr/Dheijr3BiPCLVXvVfcpahv
+	/UgAbbwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHPDV-001n4p-2N;
-	Thu, 06 Jul 2023 13:40:17 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1qHPH8-001na9-0E;
+	Thu, 06 Jul 2023 13:44:02 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHPDU-001n3t-2Y;
-	Thu, 06 Jul 2023 13:40:16 +0000
+	id 1qHPH7-001nZa-11;
+	Thu, 06 Jul 2023 13:44:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=wPpBDlYaIuD+VMsca1EiUkZwQdb3LgKSP8mKv4+2NUM=; b=XB9B7vWxSw5UeVrTr9RAuGPfJU
-	KT3pMdgUaSAriUFB0Y/l4rxN15LfV1BkVK2tuhreLeILNtDDdHSZdHhT2w8iQ8lhcPMNWd7xMTAy3
-	f9Hag/4e+td5mWwwVmRdCdbhe7HSEiTx4m8OwMfXJBahBDJxFk8Yo5HdOKmJCEIavPfJtOmUotAsh
-	T8s/Z+Zm0xKLF05c8O36xyZrgc7X3S9vZwxuXJ0A8D48PK54cNwenTeqmYyNHUcZAof86P6Te8xtE
-	MZEXkyHhHgucuQkvngKpuEIS/m2OHRBOtl8cjlPDGFfZQuW5qHkekA8FdqUFfQzL74WEwRBVKQVYK
-	yoDi19DQ==;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=NmdxVyEV5lggCCeYaBLl2W3eSLPMCAciQd6+9Y/5iaE=; b=V9Za9n0WmHGp9pWTdcCMwVmAcs
+	MjGfvocZOlDMy6jM8gNvrdOWxyRMCASWvTLiRSL671WIFgMCzS8kPXzp8ah0LjeYziFolBmNgtik+
+	fBXJr3pNg4k/kGVhqzqliyzlKPiSE9LJiIMlJ5AFekNhTFERnukeR2OX9rgTbzcsF98TCc8+ybXDk
+	djBmsiRH6CY4WCdYG6wWeeMFVm17conLpMidwtG1fLKWcJsIw6lkF08Rxq0UQnuCtxJdvzn1W3KFv
+	mD7pXT3mtPw6Afxu2gE6tDjk6QkL3xplD+sMz5NzXQqFycePS9sAn6o4M30QE9qFeVpwL5ehrlB9S
+	duVOJ+YQ==;
 Received: from mail.loongson.cn ([114.242.206.163])
-	by casper.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1qHPDO-00B6N2-KK; Thu, 06 Jul 2023 13:40:13 +0000
+	by desiato.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qHPH2-00Dalc-0t;
+	Thu, 06 Jul 2023 13:43:59 +0000
 Received: from loongson.cn (unknown [10.20.42.43])
-	by gateway (Coremail) with SMTP id _____8CxtPA0xKZkFvgAAA--.3875S3;
-	Thu, 06 Jul 2023 21:40:04 +0800 (CST)
-Received: from openarena.loongson.cn (unknown [10.20.42.43])
-	by localhost.localdomain (Coremail) with SMTP id AQAAf8Dx5swyxKZkoPYeAA--.5921S2;
-	Thu, 06 Jul 2023 21:40:02 +0800 (CST)
-From: Sui Jingfeng <suijingfeng@loongson.cn>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	CK Hu <ck.hu@mediatek.com>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Alexandre Mergnat <amergnat@baylibre.com>
-Subject: [PATCH v2] drm/mediatek: Fix potential memory leak if vmap() fail
-Date: Thu,  6 Jul 2023 21:40:00 +0800
-Message-Id: <20230706134000.130098-1-suijingfeng@loongson.cn>
-X-Mailer: git-send-email 2.34.1
+	by gateway (Coremail) with SMTP id _____8DxRvEPxaZkR_gAAA--.3941S3;
+	Thu, 06 Jul 2023 21:43:43 +0800 (CST)
+Received: from [10.20.42.43] (unknown [10.20.42.43])
+	by localhost.localdomain (Coremail) with SMTP id AQAAf8Ax3c4OxaZkq_ceAA--.27112S3;
+	Thu, 06 Jul 2023 21:43:42 +0800 (CST)
+Message-ID: <7869d9d7-1763-58d8-119f-08befff9615e@loongson.cn>
+Date: Thu, 6 Jul 2023 21:43:42 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH] drm/mediatek: Fix potential memory leak if vmap() fail
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ loongson-kernel@lists.loongnix.cn
+References: <20230626185801.684451-1-suijingfeng@loongson.cn>
+ <be63fd1b-7659-75b8-e037-38528e8a8276@collabora.com>
+From: suijingfeng <suijingfeng@loongson.cn>
+In-Reply-To: <be63fd1b-7659-75b8-e037-38528e8a8276@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8Dx5swyxKZkoPYeAA--.5921S2
+X-CM-TRANSID: AQAAf8Ax3c4OxaZkq_ceAA--.27112S3
 X-CM-SenderInfo: xvxlyxpqjiv03j6o00pqjv00gofq/
-X-Coremail-Antispam: 1Uk129KBj9xXoWruryruF4ktw18JFWUKr1fKrX_yoWkWwcEka
-	n2vr17Wrs7Gr98Aa12kw1avFWSyFWruF48Ja95K34ft3yUGr1UXry29rn8WFnxJ3Z29FyD
-	twn8XF95ZFnrZosvyTuYvTs0mTUanT9S1TB71UUUUUJqnTZGkaVYY2UrUUUUj1kv1TuYvT
-	s0mT0YCTnIWjqI5I8CrVACY4xI64kE6c02F40Ex7xfYxn0WfASr-VFAUDa7-sFnT9fnUUI
-	cSsGvfJTRUUUb3AYFVCjjxCrM7AC8VAFwI0_Jr0_Gr1l1xkIjI8I6I8E6xAIw20EY4v20x
-	vaj40_Wr0E3s1l1IIY67AEw4v_JrI_Jryl8cAvFVAK0II2c7xJM28CjxkF64kEwVA0rcxS
-	w2x7M28EF7xvwVC0I7IYx2IY67AKxVWUJVWUCwA2z4x0Y4vE2Ix0cI8IcVCY1x0267AKxV
-	WUJVW8JwA2z4x0Y4vEx4A2jsIE14v26r4UJVWxJr1l84ACjcxK6I8E87Iv6xkF7I0E14v2
-	6r4UJVWxJr1ln4kS14v26r1Y6r17M2AIxVAIcxkEcVAq07x20xvEncxIr21l57IF6xkI12
-	xvs2x26I8E6xACxx1l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1Y
-	6r17McIj6I8E87Iv67AKxVW8JVWxJwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IYc2Ij64
-	vIr41l42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1l4IxYO2xFxVAFwI0_
-	Jrv_JF1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1V
-	AY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAI
-	cVC0I7IYx2IY6xkF7I0E14v26r1j6r4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42
-	IY6I8E87Iv67AKxVW8JVWxJwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIev
-	Ja73UjIFyTuYvjxU4oGQDUUUU
+X-Coremail-Antispam: 1Uk129KBj93XoW7Ww1rCFWxZF1kWrykWFWDWrX_yoW8Xr4fpF
+	4ktay5ArWjkr4FqF1Iy3WqvFy5A3WFga1DGr1Iqa1qvr1DAF10qFyUZ34jgrW2vr4Ikw47
+	tw1DXr9xur1qyFgCm3ZEXasCq-sJn29KB7ZKAUJUUUU7529EdanIXcx71UUUUU7KY7ZEXa
+	sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
+	0xBIdaVrnRJUUUB2b4IE77IF4wAFF20E14v26r1j6r4UM7CY07I20VC2zVCF04k26cxKx2
+	IYs7xG6rWj6s0DM7CIcVAFz4kK6r1Y6r17M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
+	e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
+	0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW8Jr0_Cr1UM28EF7xvwVC2z280aVCY1x0267AK
+	xVW8Jr0_Cr1UM2kKe7AKxVWUXVWUAwAS0I0E0xvYzxvE52x082IY62kv0487Mc804VCY07
+	AIYIkI8VC2zVCFFI0UMc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWU
+	tVWrXwAv7VC2z280aVAFwI0_Gr0_Cr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcVAKI4
+	8JMxk0xIA0c2IEe2xFo4CEbIxvr21l42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_
+	Jr0_Gr1l4IxYO2xFxVAFwI0_GFv_Wrylx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8Gjc
+	xK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0
+	cI8IcVAFwI0_Gr0_Xr1lIxAIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8V
+	AvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVW8JVWxJwCI42IY6I8E87Iv6xkF7I0E
+	14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjxU4AhLUUUUU
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230706_144011_326169_FC2C5F30 
-X-CRM114-Status: UNSURE (   8.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230706_144357_059876_FF6E837B 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,35 +102,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Also return -ENOMEM if such a failure happens, the implement should take
-responsibility for the error handling.
+Hi,
 
-Fixes: 3df64d7b0a4f ("drm/mediatek: Implement gem prime vmap/vunmap function")
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-Signed-off-by: Sui Jingfeng <suijingfeng@loongson.cn>
----
- drivers/gpu/drm/mediatek/mtk_drm_gem.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+On 2023/7/6 20:47, AngeloGioacchino Del Regno wrote:
+> Il 26/06/23 20:58, Sui Jingfeng ha scritto:
+>> Also return -ENOMEM if such a failure happens, the implement should take
+>> responsibility for the error handling.
+>>
+>> Signed-off-by: Sui Jingfeng <suijingfeng@loongson.cn>
+>
+> This commit needs a Fixes tag. Please add the relevant one and resend.
+>
+Done at [1],
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-index a25b28d3ee90..9f364df52478 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-@@ -247,7 +247,11 @@ int mtk_drm_gem_prime_vmap(struct drm_gem_object *obj, struct iosys_map *map)
- 
- 	mtk_gem->kvaddr = vmap(mtk_gem->pages, npages, VM_MAP,
- 			       pgprot_writecombine(PAGE_KERNEL));
--
-+	if (!mtk_gem->kvaddr) {
-+		kfree(sgt);
-+		kfree(mtk_gem->pages);
-+		return -ENOMEM;
-+	}
- out:
- 	kfree(sgt);
- 	iosys_map_set_vaddr(map, mtk_gem->kvaddr);
--- 
-2.34.1
+
+Thanks for point this out, I got it.
+
+[1] https://patchwork.freedesktop.org/patch/545843/?series=119885&rev=2
+
+
+> Thanks,
+> Angelo
+>
+>> ---
+>>   drivers/gpu/drm/mediatek/mtk_drm_gem.c | 6 +++++-
+>>   1 file changed, 5 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c 
+>> b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+>> index a25b28d3ee90..9f364df52478 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+>> @@ -247,7 +247,11 @@ int mtk_drm_gem_prime_vmap(struct drm_gem_object 
+>> *obj, struct iosys_map *map)
+>>         mtk_gem->kvaddr = vmap(mtk_gem->pages, npages, VM_MAP,
+>>                      pgprot_writecombine(PAGE_KERNEL));
+>> -
+>> +    if (!mtk_gem->kvaddr) {
+>> +        kfree(sgt);
+>> +        kfree(mtk_gem->pages);
+>> +        return -ENOMEM;
+>> +    }
+>>   out:
+>>       kfree(sgt);
+>>       iosys_map_set_vaddr(map, mtk_gem->kvaddr);
+>
+>
 
 
