@@ -4,172 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D881EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 01:17:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1E5CEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 01:18:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U+VIK/pAmA9DpI5cbSfUEhvT+BDKPoxninqp7wECauc=; b=RECwt8MxcCFSVx2ike5nHIdfOC
-	XTfDQGInVbERkyAJTfr3BA2uxm1Off+pXabEnH6Y9jAnValH7PT7fRkug4mj5Uq7xLQ35UYQLgd8q
-	KQm7JWXTJSzmrHLXwY9CAQeTlED7YkiZqkGCpDPD6gBK0wmr+NJ94DG8AjqsS/5STbRRP0moXp42t
-	hUqZ6I0CstTShA0+72JnB07dtiQ8H1GZVC8nQuP+oMlYQReVrbyQ+6ab8khvs7dHTYerCjkjJulEp
-	GreLfezJenpBBWQSHtPB/pa+dXz3qWnsj0WwC/GliA3O3xDoNzyKUGurGRGeSBZmWTmq6bx581sMx
-	ifqenB7A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jLpBEWm0pyR5LDArWKNLZgik34a5WAbJKk4VIu4a3mM=; b=z+YLhSdC/vFSGPg7Z9eIwoUzUs
+	Bf4gvnwRwWPkeyQ39rNohLofgcLqV4CQEzdwcA4CzLluMNtyn921pTKdzmUIpGCDVG7Q6On0AGd+s
+	OeWk+bC6XmXARlcSVVFjjNCyc4qR5XwPaqKG5/Em/YjKCG0uhrVlgne5txniCScQNv7Ttzs6cG6Wq
+	xA71lOkbS6YjO1/W9zRf67ms76uMZPNQt6jrcsJoyTJLxUjlhowSTUto6qaIwS/V3W0PvDW71Nkuk
+	Whn904SmZaLQPuMI6tEG8Ck9xc+BAh1fUkCHudv494S/JdzdLHPPkdo4pmb3O1OZNawHJWFBADt/M
+	JBRSF2PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHDck-00HY5v-1G;
-	Thu, 06 Jul 2023 01:17:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qHDd7-00HYAm-2P;
+	Thu, 06 Jul 2023 01:17:57 +0000
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHDcg-00HY4f-11
+	id 1qHDd5-00HY8j-1C
 	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Jul 2023 01:17:33 +0000
-X-UUID: db7cc9381b9a11ee83ed1395ce914268-20230705
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=U+VIK/pAmA9DpI5cbSfUEhvT+BDKPoxninqp7wECauc=;
-	b=gZOlGqnfKrFKPBEF88vBMjJ+GU0OtCBgL0yZRZxDIAaQUsL/PjLTDrqQbQhY61/LQJUeSGaCNgJT59U9yANheUObO/3zHUxN/D5PYk01vxGEwT9gDoyqq/JS4pE67Ki18SfllQwwDrles96Hh/BS8PiRVYITzyymSKXwZ5gWiIw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:4896a82f-476b-4429-8f0c-b84ec4cac725,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:01c9525,CLOUDID:8615bf82-5a99-42ae-a2dd-e4afb731b474,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: db7cc9381b9a11ee83ed1395ce914268-20230705
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <walter.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1378736437; Wed, 05 Jul 2023 18:17:21 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 6 Jul 2023 09:07:18 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 6 Jul 2023 09:07:18 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=SVpxpwoyp4nRoW/cqk+5xY3pksnyIJnfrQmDsLyOKk5omp6agijJWiTfpVb4Arg9Kb7DR7SSqXxFQgl+iBIjMYBjptw4n7AiTuT77Xr3cnEdnnCfRF/zfghMpP3iDPKYq8mvZMkoicBzL9l2FvzWaK25tUH8OeixWP38a0+teOFCdTgM6V+7/KTqg6F3ydn4gS43vSpcfF/Ngb4UwdJpEfNMh7C5o9qzVzrWljxPZeR06DBESmFiV9WdCZMKLLWoTOKRAxBt8wjt3luZNap2uYh2DWOgAcrlTNfLvbWHdWQM96/lCfhPooKyo+eayx3trWaIkEStBuWYB7YR7hSRXQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=U+VIK/pAmA9DpI5cbSfUEhvT+BDKPoxninqp7wECauc=;
- b=hd3dXxdWX+KZIHSoYDw3dWyTJrHkVT33Lf7lr0De4cWmqX3QBAcwASNxWTPN0RExEtEdLIXBDpddW3irTpyLWLtaU764oSPbmSTCJzhkpc8NzBXRbaCTr9sEEXTqZBU6TTIJefmY2cxqgnsYAZS7HOVkNVljZZTPx6uOlIK5mpMQE8Fbu8e0fNXmfdIxLIArnxZcJ0bV8UtK0mjkCSSFn/bHSW6fVQojJgGJMztagQ80cD+GAHNlAnqFyeFWm38sTI+AqbCCQo9cGsgcLU+Qtvx8Cjsrdpm/hoijAVHO5PR5ULKaPp0mCNX5IcJahtriRHHhKQV5GKKQ4sH6DGtlJA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	Thu, 06 Jul 2023 01:17:57 +0000
+Received: by mail-yb1-xb35.google.com with SMTP id 3f1490d57ef6-c2cf4e61bc6so130572276.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 05 Jul 2023 18:17:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=U+VIK/pAmA9DpI5cbSfUEhvT+BDKPoxninqp7wECauc=;
- b=bWIWg80MrffxW1nWBMkz9G+ngzQ9Enr5XGW/q7msr2txXBgIlzo3GRB3yoiV73AmAQkOTDu+Tqilcm4LsJmaa9KhsnQoRBHS//o063emWBZ4hOMh5aCmN8FWbzGDAOF9p86usas0Mo4MgMjq6uTb9KqkhAKu9UqIIKPRSb65JBg=
-Received: from KL1PR03MB5777.apcprd03.prod.outlook.com (2603:1096:820:64::14)
- by SEYPR03MB6996.apcprd03.prod.outlook.com (2603:1096:101:bc::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6565.17; Thu, 6 Jul
- 2023 01:07:13 +0000
-Received: from KL1PR03MB5777.apcprd03.prod.outlook.com
- ([fe80::f5d3:d81c:730:2909]) by KL1PR03MB5777.apcprd03.prod.outlook.com
- ([fe80::f5d3:d81c:730:2909%6]) with mapi id 15.20.6565.016; Thu, 6 Jul 2023
- 01:07:12 +0000
-From: =?utf-8?B?V2FsdGVyIENoYW5nICjlvLXntq3lk7Ip?= <Walter.Chang@mediatek.com>
-To: "tglx@linutronix.de" <tglx@linutronix.de>, "daniel.lezcano@linaro.org"
-	<daniel.lezcano@linaro.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "jstultz@google.com" <jstultz@google.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "macro@orcam.me.uk"
-	<macro@orcam.me.uk>
-CC: "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, wsd_upstream
-	<wsd_upstream@mediatek.com>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, =?utf-8?B?U3RhbmxleSBDaHUgKOacseWOn+mZnik=?=
-	<stanley.chu@mediatek.com>, =?utf-8?B?RnJlZGR5IEhzaW4gKOi+m+aBkuixkCk=?=
-	<Freddy.Hsin@mediatek.com>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>
-Subject: Re: [PATCH v5 0/4] Support timer drivers as loadable modules
-Thread-Topic: [PATCH v5 0/4] Support timer drivers as loadable modules
-Thread-Index: AQHZiGcAlWtFKUKClEylT3CLdkSqYK+SicEAgBmx04A=
-Date: Thu, 6 Jul 2023 01:07:12 +0000
-Message-ID: <e80e467b22f7c19445e0b2e86fca7173f7e43701.camel@mediatek.com>
-References: <20230517022557.24388-1-walter.chang@mediatek.com>
-	 <4c2f66f1-2623-306f-f1d3-83a32a0c2885@linaro.org>
-In-Reply-To: <4c2f66f1-2623-306f-f1d3-83a32a0c2885@linaro.org>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: KL1PR03MB5777:EE_|SEYPR03MB6996:EE_
-x-ms-office365-filtering-correlation-id: f6e48495-4721-4227-9181-08db7dbd54c1
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: xzS5rp1VbBnD1dWCwXRfLTFeaVYHiVzctEFKQeCtBSzNL0nvu/0N6L8T3gj4CRQd2cuLoVI8o77qpukhb82/eqiQ2ZQg1OJCn+78HD8DrNcqVFwnhdA2SQWHI1++fSqnGi0WHJ9h2v6QjFP+4pRI46PI5UPr3x629Q3sQHntxQgrOB+9w1Gp/I846NYWK4rEbHEBgUhL2SFYN40d82iOHSFRT/ggkC2HFwwJlwUaGMhD1E9MOQQV7vAbrjmSmeH/4LEIdHiWf+cgH9BTR2Lwa1B1ejwR3RZzskWzUhRBOAhnJEutFQBv38TRrAGtXuWHuIcMM0QjNUdYdb4rbMPpXiL+i81o200UxstHElQMneA/nKyJdS83HIm5qVZci8iFcKKd8n9lJd+LkArbmew6t4YOUnF7ewsrd91HVSrtRlWwLHWSvhS4VtLemjCX4i4+VfgqFfglP1DtfLdhriAmG+ih+f8aLbIyBGuh2W93MsVmIX3chv9ZX+Todk6BTvTBMPK7dWfmfCS2FO/JcwSbFbe6Ya+QcOx3on8sSMAbbi+1bMPiq+bDpwZ0pNKcmdnS281Lmc0EfTeDiILbErdD9RNdBop/TbmqzIefwnAWr6E4sgCqSqlFt4K08ijTCH1/juoMo1pef0GCXfPaqfpgGDFyD8XS7TSkSbDFpyVYREg=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KL1PR03MB5777.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(376002)(136003)(346002)(39860400002)(396003)(366004)(451199021)(2906002)(5660300002)(2616005)(86362001)(66556008)(8676002)(66946007)(36756003)(8936002)(6506007)(54906003)(478600001)(110136005)(71200400001)(6486002)(186003)(107886003)(4744005)(6512007)(26005)(122000001)(38070700005)(38100700002)(83380400001)(85182001)(316002)(4326008)(91956017)(66446008)(66476007)(76116006)(64756008)(41300700001);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Z1RUZzNpK0NBb0JXTWRrK0RDc0JBV2ZXNndqbjdDaGw1YkZ0SjNDcU53cnFh?=
- =?utf-8?B?RjJ4THJNOXFNZ3ZtYVhaakd6bWRkazRZNmhoL2s1TlR1eDhZN2E2NHhyQ0xL?=
- =?utf-8?B?a21iT1dJVTc1NTBDMFkwZ04rKzlaQ2hLQ1dqclhNZFNsQ3NnVlg1QnJMZ3pU?=
- =?utf-8?B?T3Y0RnVLbW02bnVaTkFsazlJalJuR3Q4Q0NUa0hoVVVQUmEvMHJJRTh0RWNs?=
- =?utf-8?B?UndMY2ZtUkxCMHE3a1BTelFQSmdEdzlNM2c5ck5HamhObFlqSW9pM1N3OEVp?=
- =?utf-8?B?MGp6M0dVV21pY2ZsU2xTaERyVWltekxQN0oxcElRbjI3VTFuQ2JMSGJsMXlD?=
- =?utf-8?B?cWJLMUc5Wm1vU0xFUGVvWG0ybjhiVkxTKzZTdFdOcUlLalRjcVovbmhNYjll?=
- =?utf-8?B?Rm01OHQwcXBzcTZObWJGU0JDUGhWNmRsMnVxaFJJd3h1OXhGQ2JEalhQSWdT?=
- =?utf-8?B?dGZONEVtTFlFcTNwUGlkWXNGYllLaHZDSEQ4ckdYUHBmYzhQSTRKTzkyaC8x?=
- =?utf-8?B?M2V0NS81OVRGaS9VclZLSk5mRzJyS1Vpcm1XRkVnOFA1MWlPWm9Ed2ZVU1pT?=
- =?utf-8?B?MmwrQzFYZDFlemtoRThzdXpXMnQyMERrajdnR2pyU3FjQS91V3BDZ05NOFlY?=
- =?utf-8?B?WkcxZyt2ZWRURXJXUk5mdXNOa1hYdWpzQnU2akk3VFJFdk5YMDNVN3VSbkkw?=
- =?utf-8?B?UjJXQlN6YTY5RERhNWorRjhPbWNqQyt1cDZmMUxzN3MrLzlxYUhkZTdycnR6?=
- =?utf-8?B?TndMUHhDbDBtOWdMSnVraktCVE9OR21WeXNPdHlmbUJDcnZRTlhlYXYvRnY3?=
- =?utf-8?B?Wmw5ZTREcXRubDVHb1BNeEZ3anJ6bkxUWjkxRzNvYlBTcm96VlBjeHg0Mit4?=
- =?utf-8?B?dDV2bnV3RVIwL1lQdGdTVWovOFRmcVdTT1FNRGRrUndmZmJwVmY0aE1OZ0tH?=
- =?utf-8?B?WGZBZEQ3bGJoM0I0OHh2bGRkMHlFWmNORyt4aEJMenF0bWxRNGFyL3dpK2ZU?=
- =?utf-8?B?emRDRmlmSUhUajdoTTk4U2ttWmU4b0E5WUlQa3d1aDJPWEluam9QWWZRK0U0?=
- =?utf-8?B?cEJzcktFeXJVZGF4dFJEUEpnNUtucy9SWGJvTWJvRnNOZHFvYm5SbittNTdz?=
- =?utf-8?B?VVhYQ1ZLNlgzb1FCWUYxWWJHeVJWcUZLTnpiWWhKUWFQaVV0bGsveFRKdjdy?=
- =?utf-8?B?SzRpYkhhSVBSMTdOczdYTzI0UE4wRnkxZk90Z3NtSjdIKzRicTMva2VGbDNZ?=
- =?utf-8?B?M3pqdGdxaEhoTGxYRFZQN2hoeDZoWjQ3b3IyeVhlbC95TFhQUkhWTGNJK1Qz?=
- =?utf-8?B?b1BTdG5jcHBITTBld21FT0NDQ2p3cC9Ma2JQc3JHaERlY3lGQjdBc083bklM?=
- =?utf-8?B?YiszamZMTkVZaktwTXgrejRaeU55WXdFeTUwaDVQaWc2cGFmZjV1d2hXUEJJ?=
- =?utf-8?B?b1RtOG9wVjg0a1c0N0RCZXVPWW5kRGlUYVFVaEZPRGV6eHgrSGxINzdSUFhE?=
- =?utf-8?B?ekNRY0I1SzJVRDFLOURnWGlkRnk2cWhnZFdIUHp5RkdMaURmRDlSc0JaMmdL?=
- =?utf-8?B?NXJTU0lkREkxOU90TVpNRWZveVpDbW91QklTOTdBcnE0S2R4aiszenR2K2NH?=
- =?utf-8?B?QUVpY2JHdXpOTHdrZnJ4OFBBdzZPcUVIbDUyNlMzdDNhNkZ5Zi8yMytmVk81?=
- =?utf-8?B?eVFobnVtWVFoM0t2YXZraUczUTVJc2hnYkZ1Y1NzNEg0Z3ZWaHJkQS9GckFh?=
- =?utf-8?B?ZENFY3JRSXhURDZ1VG4wMTdWV0RFN0wzMUQ1YzJKMW5hbHQ0c2lNeGExVUhn?=
- =?utf-8?B?UXJXLy94TS9SY2JWTGpKdHpBdUNCZWd5ODdiQ0dHMVNEc3BDSGlmMzF5VEJX?=
- =?utf-8?B?aDVJVUx5WUlhZUQ4ejJZcnZudWphU2V3aFhML0JoOHJrOVZYamNBTzdyUlFL?=
- =?utf-8?B?NlhuWmZKSTdtN3hpcStyei9Pb2VLOFVGazBaRzNLU2s0bDFzTHBIU3FLTlpR?=
- =?utf-8?B?bkk5VThPRW5zTzNjOWNjaGVib2xDZUU4REZ2c2Z4T1dlU1ZVVVdLbjBJcjB4?=
- =?utf-8?B?eVAzYk1aS1RMQ0pZb0tzVytmK3hNWTNyb1YyTW1yY2R3RUtBTDNwZnpuajNX?=
- =?utf-8?B?cjBhSmZTVU93c0M0STVYUmhsdEgzeE5saXlnN21mQTIwbUg1RGJvN3RXSGZT?=
- =?utf-8?B?bkE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <FF1EF2AFF1C5C444A5A2E94B4C347ED3@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=google.com; s=20221208; t=1688606271; x=1691198271;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=jLpBEWm0pyR5LDArWKNLZgik34a5WAbJKk4VIu4a3mM=;
+        b=4//uKxlvWkGMHPzbfDP452dSEOLEXmN1iaJ//zX0rqP/mbDzvCG5TyTIw0DWPUERnF
+         bFuiirw8RrlS3ZXoiPx8V5m2pC0/DQmoyQq6pRMgeyiiosUaxxiNJEhNVlxNVkTtjfcD
+         O0HbxSwU8xJBqKqU7og1+KqIEUJ3mGr5lsE9XcRDCuzBQbMLXb7X8fhCRp1PtUEgSPxa
+         98p815bY0xDraVhFBsnQipGUjeeVYLIte4Tj4mb2UHdtPIGrc/AubtmyLjTwpJ+LFftM
+         WS73MxucrQDbAc0IIf+hHxzZ3cp7tBFtvv6B/uj+lOSXbnepsln4ABkuwudKSVOcQbK0
+         QYnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688606271; x=1691198271;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=jLpBEWm0pyR5LDArWKNLZgik34a5WAbJKk4VIu4a3mM=;
+        b=dOGrpWKdvozN6TqZCMqAKYN6LeVXFKzNa5zaDgD4cHzZrqMqDhtzAXtjydXdeFrh3g
+         PomTXGHkcIcRhh3GIoAHXe/17CVjnRXRYOM5OHU6LrCQHbkUH+ZXs8hDk5W4IRqH9Yun
+         Gr8t9PRdfOM7zStnm1KztewT4ws/vCI3qT0k1Pb4xeGma/7WV5pCtw6SmTfZb/zYd9fp
+         x+lXAwD/mQlQxpePSTWSg5j1+bmMkFNnUilP0pygW1booKOOHbyCyba3fu6rYnJLtA18
+         VqwMJNWm5MiMIP2OJwY2Vy44DTOpBpIZuVibX90HD/ZjRV1UNVp95s6C2uzP3I88xhVI
+         mM/A==
+X-Gm-Message-State: ABy/qLY1XTxYhEjdOsbuAiwkwM1xoZtoCqNpt211GN6dAeG9TCrtEa47
+	OwZWxY7nzzx5S61tMjJYmZKmFESkVuCKvBA/qDmzwQ==
+X-Google-Smtp-Source: APBJJlGkjwSPjge9ilAY8GDDe5IrMG3BEPPOLWt15ljhiPhs9+iYTg+xk7Xou7RlUIzPoz00OzNcF0vADrayLGJqrP8=
+X-Received: by 2002:a05:6902:110:b0:c62:bdfa:57f4 with SMTP id
+ o16-20020a056902011000b00c62bdfa57f4mr924315ybh.15.1688606271064; Wed, 05 Jul
+ 2023 18:17:51 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR03MB5777.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f6e48495-4721-4227-9181-08db7dbd54c1
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jul 2023 01:07:12.6742
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: fdIYYdhlMwMp2hkgGw5JJUmbeZuXgy0otSSud9vpOp8SolXWc6WzqGvyFDaaZZ+Z8Tf3GepO/crVLedItct1tYD6YKaD8CHY25sPRCAlKwU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB6996
+References: <CAKgT0Uc6Xoyh3Edgt+83b+HTM5j4JDr3fuxcyL9qDk+Wwt9APg@mail.gmail.com>
+ <908b8b17-f942-f909-61e6-276df52a5ad5@huawei.com> <CAKgT0UeZfbxDYaeUntrQpxHmwCh6zy0dEpjxghiCNxPxv=kdoQ@mail.gmail.com>
+ <72ccf224-7b45-76c5-5ca9-83e25112c9c6@redhat.com> <20230616122140.6e889357@kernel.org>
+ <eadebd58-d79a-30b6-87aa-1c77acb2ec17@redhat.com> <20230619110705.106ec599@kernel.org>
+ <CAHS8izOySGEcXmMg3Gbb5DS-D9-B165gNpwf5a+ObJ7WigLmHg@mail.gmail.com>
+ <5e0ac5bb-2cfa-3b58-9503-1e161f3c9bd5@kernel.org> <CAHS8izP2fPS56uXKMCnbKnPNn=xhTd0SZ1NRUgnAvyuSeSSjGA@mail.gmail.com>
+ <ZKNA9Pkg2vMJjHds@ziepe.ca>
+In-Reply-To: <ZKNA9Pkg2vMJjHds@ziepe.ca>
+From: Mina Almasry <almasrymina@google.com>
+Date: Wed, 5 Jul 2023 18:17:39 -0700
+Message-ID: <CAHS8izNB0qNaU8OTcwDYmeVPtCrEjTTOhwCHtVsLiyhXmPLsXQ@mail.gmail.com>
+Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
+ page_pool: remove PP_FLAG_PAGE_FRAG flag)
+To: Jason Gunthorpe <jgg@ziepe.ca>
+Cc: David Ahern <dsahern@kernel.org>, Jakub Kicinski <kuba@kernel.org>, 
+	Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com, 
+	Alexander Duyck <alexander.duyck@gmail.com>, Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, 
+	pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
+	Salil Mehta <salil.mehta@huawei.com>, Eric Dumazet <edumazet@google.com>, 
+	Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, 
+	Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, 
+	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
+	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Jesper Dangaard Brouer <hawk@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
+	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Jonathan Lemon <jonathan.lemon@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_181730_663069_B701115A 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20230705_181755_417823_20B76411 
+X-CRM114-Status: GOOD (  44.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -184,13 +110,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIzLTA2LTE5IGF0IDE4OjQ0ICswMjAwLCBEYW5pZWwgTGV6Y2FubyB3cm90ZToN
-Cj4gIAkgDQo+IEV4dGVybmFsIGVtYWlsIDogUGxlYXNlIGRvIG5vdCBjbGljayBsaW5rcyBvciBv
-cGVuIGF0dGFjaG1lbnRzIHVudGlsDQo+IHlvdSBoYXZlIHZlcmlmaWVkIHRoZSBzZW5kZXIgb3Ig
-dGhlIGNvbnRlbnQuDQo+ICANCj4gQXMgSSBhbHJlYWR5IHNhaWQsIEknbSBub3QgdmVyeSBjb21m
-b3J0YWJsZSB3aXRoIHRoZXNlIGNoYW5nZXMgYW5kDQo+IHRoZSANCj4gcG90ZW50aWFsIGltcGFj
-dCBpdCBjYW4gaGF2ZSBvbiB0aGUgb3ZlcmFsbCB0aW1lIGZyYW1ld29yay4NCj4gDQo+IEkgd2ls
-bCBwaWNrIHRoZSBzZXJpZXMgaWYgVGhvbWFzIGdpdmVzIGl0cyBBY2tlZC1ieQ0KPiANCj4gVGhh
-bmtzDQo+IA0KPiANCg0KVGhhbmtzIGZvciBsZXR0aW5nIG1lIGtub3cuIEkgd2lsbCB3YWl0IGZv
-ciBUaG9tYXMncyByZXNwb25zZS4NCg0KVGhhbmtzLA0KV2FsdGVyIENoYW5nDQo=
+On Mon, Jul 3, 2023 at 2:43=E2=80=AFPM Jason Gunthorpe <jgg@ziepe.ca> wrote=
+:
+>
+> On Sun, Jul 02, 2023 at 11:22:33PM -0700, Mina Almasry wrote:
+> > On Sun, Jul 2, 2023 at 9:20=E2=80=AFPM David Ahern <dsahern@kernel.org>=
+ wrote:
+> > >
+> > > On 6/29/23 8:27 PM, Mina Almasry wrote:
+> > > >
+> > > > Hello Jakub, I'm looking into device memory (peer-to-peer) networki=
+ng
+> > > > actually, and I plan to pursue using the page pool as a front end.
+> > > >
+> > > > Quick description of what I have so far:
+> > > > current implementation uses device memory with struct pages; I am
+> > > > putting all those pages in a gen_pool, and we have written an
+> > > > allocator that allocates pages from the gen_pool. In the driver, we
+> > > > use this allocator instead of alloc_page() (the driver in question =
+is
+> > > > gve which currently doesn't use the page pool). When the driver is
+> > > > done with the p2p page, it simply decrements the refcount on it and
+> > > > the page is freed back to the gen_pool.
+> >
+> > Quick update here, I was able to get my implementation working with
+> > the page pool as a front end with the memory provider API Jakub wrote
+> > here:
+> > https://github.com/kuba-moo/linux/tree/pp-providers
+> >
+> > The main complication indeed was the fact that my device memory pages
+> > are ZONE_DEVICE pages, which are incompatible with the page_pool due
+> > to the union in struct page. I thought of a couple of approaches to
+> > resolve that.
+> >
+> > 1. Make my device memory pages non-ZONE_DEVICE pages.
+>
+> Hard no on this from a mm perspective.. We need P2P memory to be
+> properly tagged and have the expected struct pages to be DMA mappable
+> and otherwise, you totally break everything if you try to do this..
+>
+> > 2. Convert the pages from ZONE_DEVICE pages to page_pool pages and
+> > vice versa as they're being inserted and removed from the page pool.
+>
+> This is kind of scary, it is very, very, fragile to rework the pages
+> like this. Eg what happens when the owning device unplugs and needs to
+> revoke these pages? I think it would likely crash..
+>
+> I think it also technically breaks the DMA API as we may need to look
+> into the pgmap to do cache ops on some architectures.
+>
+> I suggest you try to work with 8k folios and then the tail page's
+> struct page is empty enough to store the information you need..
+
+Hi Jason, sorry for the late reply,
+
+I think this could work, and the page pool already supports > order 0
+allocations. It may end up being a big change to the GVE driver which
+as I understand currently deals with order 0 allocations exclusively.
+
+Another issue is that in networks with low MTU, we could be DMAing
+1400/1500 bytes into each allocation, which is problematic if the
+allocation is 8K+. I would need to investigate a bit to see if/how to
+solve that, and we may end up having to split the page and again run
+into the 'not enough room in struct page' problem.
+
+> Or allocate per page memory and do a memdesc like thing..
+>
+
+I need to review memdesc more closely. Do you imagine I add a pointer
+in struct page that points to the memdesc? Or implement a page to
+memdesc mapping in the page_pool? Either approach could work. I think
+the concern would be accessing the memdesc entries may be a cache miss
+unacceptable in fast paths, but I think I already dereference
+page->pgmap in a few places and it doesn't seem to be an issue.
+
+> Though overall, you won't find devices creating struct pages for their
+> P2P memory today, so I'm not sure what the purpose is. Jonathan
+> already got highly slammed for proposing code to the kernel that was
+> unusable. Please don't repeat that. Other than a special NVMe use case
+> the interface for P2P is DMABUF right now and it is not struct page
+> backed.
+>
+
+Our approach is actually to extend DMABUF to provide struct page
+backed attachment mappings, which as far as I understand sidesteps the
+issues Jonathan ran into. Our code is fully functional with any device
+that supports dmabuf and in fact a lot of my tests use udmabuf to
+minimize the dependencies. The RFC may come with a udmabuf selftest to
+showcase that any dmabuf, even a mocked one, would be supported.
+
+> Even if we did get to struct pages for device memory, it is highly
+> likely cases you are interested in will be using larger than 4k
+> folios, so page pool would need to cope with this nicely as well.
+>
+
+--
+Thanks,
+Mina
 
