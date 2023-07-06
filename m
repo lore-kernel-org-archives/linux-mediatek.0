@@ -4,62 +4,180 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A85E0EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 01:29:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41DB9C001DE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 01:42:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+qD7qd++uan0DQoZQoST8a+uMik4rTFW5uMRGk03rJ0=; b=b9ya/DuE4AHiPhBqraEElVFqqM
-	PWrfrYd5sqIU64gf/o3FDhc3Q6MT6DtTLTo3MN/iSkZ0TviM9+4OJhk6Bi7/81AkreycLCyYtlnIP
-	PCPPKj9QVw/mgFErV2YsRTbwpgyc7b5zyGLTnob2iiuua9mfHWfJTy2QkJn0XdMJxFbcvSomkvHPa
-	joi62uhzDhI/8FF9TW3w7CT85da21OUOay8Xe7xXNGAO4DSyXP8z3gbv/hBGb5OeMcjrhSk8djZzX
-	VCvWhMXSeCKmXTFl7/VbgiyWUCO+uiLs/yWNyTOvLKUnd58ArRW59eIta56GIag0j2wKhyg1HV/zo
-	ZHMKt4MA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	In-Reply-To:Date:References:Message-ID:From:Subject:Cc:To:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=A/UiHb+XJRCCar59xa74ryynnTovMNMASZLNtObYJuk=; b=UAIxzAyqfJ8cncxIIGH48TANeZ
+	004dNuQVsero4vV8DC390Sfo2KnImb5iBp+TeayVw48Bk1MmCQrVixAxx+Kuebst6vJCewPXBXZAL
+	08H8Uf8DhtHtLhTBltHQJJZY1V3UTktR3ctsbpQ0byqSjdhPtihDH4BgvOU/ncgZirC0UqEoOdxUg
+	XkwgNZt60vI3Hyf8SkE0Tjtd8/haa4adB5549i8nPQqZhnF7+oqRcBFHymna0cLRJ5Aj1Jzsm5WTu
+	ktbqfFnXBEIsna3TsC68draxRLJRI3NohjaE96thxRXmo9VogULhEkZ1H2dEHUUVXUGDhrTs1Ynvd
+	/YupaDQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHDoV-00HZRw-1P;
-	Thu, 06 Jul 2023 01:29:43 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHDoQ-00HZOr-1Y;
-	Thu, 06 Jul 2023 01:29:40 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 39C7B1682;
-	Wed,  5 Jul 2023 01:26:52 -0700 (PDT)
-Received: from [10.57.28.141] (unknown [10.57.28.141])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 70D7D3F73F;
-	Wed,  5 Jul 2023 01:26:08 -0700 (PDT)
-Message-ID: <4c78c516-8cb6-d865-c64c-0b2443006690@arm.com>
-Date: Wed, 5 Jul 2023 09:26:02 +0100
+	id 1qHE0J-0000Jm-02;
+	Thu, 06 Jul 2023 01:41:55 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qHE0F-0000In-2G;
+	Thu, 06 Jul 2023 01:41:52 +0000
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 365N3qjE009596;
+	Thu, 6 Jul 2023 01:41:12 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=to : cc : subject :
+ from : message-id : references : date : in-reply-to : content-type :
+ mime-version; s=corp-2023-03-30;
+ bh=A/UiHb+XJRCCar59xa74ryynnTovMNMASZLNtObYJuk=;
+ b=efF/qSl450rzIOdiSJh70PbLT1nvednixZJHl+QtOJF2wPzz9fCA1+WrT8GbKSf5Fc2o
+ AGvao7aHHaZPzOQcVwzKGKtiACjg8Umb0mnTZguA6k/Q0SEo8fSBkgJ4ges+X8/urs8f
+ y0HS8uWU15is7LjXJkwyI9qBXNuKSQoRljeivekTv2qDYMgu4kpg5xD/LCGq28Kw1bNq
+ Ntrxs1OvN8TO5uWidhRR3u+M/gOSd1goP4v5umpo6S2JQJg4puSvmjsziUCKVTJL6tUG
+ 4cbMzLR3ifZ0QB4xLycg7seuFQkx8LLFYE3EjiXEx7pnrY/yjZ3hMVnOOpRvdXLke1fX Wg== 
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3rnd8q8n3g-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 06 Jul 2023 01:41:11 +0000
+Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 365NSaEg001805;
+	Thu, 6 Jul 2023 01:41:11 GMT
+Received: from nam10-mw2-obe.outbound.protection.outlook.com (mail-mw2nam10lp2102.outbound.protection.outlook.com [104.47.55.102])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 3rjakcbqaj-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 06 Jul 2023 01:41:11 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=UHwPd9cVEZLP1ZUOhezXQKYtFRwze9uJkz6qqW8zxoJE/AdjzKEW1Dbzjp6JD/Eyc++BFInisda5+g3b3QhqfZIMNN/1q5JmEQH+V4mjq6SH3j491fei5MGDSAYahTRZNZhuoEJK6vtEF+/iEgDC/Q6EnSb1WedFiZ2p06urHg98ucSe4BwESYftsWtykaDp8uPCdzMJ+6I8EWKCThEXSHmSx219Bg7QnT1RMwh1FLhvN+gRhq8YYkbtjX+3+1IOXKOTkDOI9qqCl/ktYcgeDGI37TYZS1FBp5daOPOZ+3ByO6p9g22ZhMTNY8+blwPTs2foBnXU8CgNOfrnWZf7dw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=A/UiHb+XJRCCar59xa74ryynnTovMNMASZLNtObYJuk=;
+ b=iWoTtxUTdO0Pn6a+f0fNpsJaL3hxPp0ooJpqdZ+oBwXHnPtch1xby44VbiT/jJOw0z2llBzSGC8IAx6zr1Lyv2MQVgOpI0n7CWhmMxX+6siZEtnbZJC3a0H/KI1FDLuU8qh0gAQ8Obpj/bKOSI5A1pvdnAUdOQ/Th1CIYmCilTlrP/Ald3rAarHkcKSt/GIro9E4uBL2oZwsNwQJkb1dK2qAb6iFP0KHiY/Yrj4BorD2xdbT9yYGMD8FgEJamjRjwGOd5iLhRjQhsAos7ZUj/jxvG+F7RSObf5Rn9yBYMRT8EavxRqW0ANlbA6SHjwuFK7RtLvKWE8O/AZ5Upy2ZCQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=A/UiHb+XJRCCar59xa74ryynnTovMNMASZLNtObYJuk=;
+ b=sRtl3R0s8EOSWCsxpbM5cVM9okpb93abRi6ryP4C7MEgRuS4tzq5TDPON2sQzisz5ufMs3/LFudQY7HIE/NnatSn5vlhipTERJacH7wBRqsddysZF6K0oH3/s+6o03lJ/skb8HObVv/tMaowj5KoCKYlpXLjP3VztOs1fi7qp1g=
+Received: from CO1PR10MB4754.namprd10.prod.outlook.com (2603:10b6:303:91::24)
+ by DS0PR10MB6271.namprd10.prod.outlook.com (2603:10b6:8:d1::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6565.17; Thu, 6 Jul
+ 2023 01:41:08 +0000
+Received: from CO1PR10MB4754.namprd10.prod.outlook.com
+ ([fe80::9f29:328c:1592:d5bb]) by CO1PR10MB4754.namprd10.prod.outlook.com
+ ([fe80::9f29:328c:1592:d5bb%7]) with mapi id 15.20.6544.024; Thu, 6 Jul 2023
+ 01:41:08 +0000
+To: Randy Dunlap <rdunlap@infradead.org>
+Cc: linux-kernel@vger.kernel.org, kernel test robot <lkp@intel.com>,
+        Stanley Chu <stanley.chu@mediatek.com>,
+        Peter Wang
+ <peter.wang@mediatek.com>, Paul Gazzillo <paul@pgazz.com>,
+        Necip Fazil
+ Yildiran <fazilyildiran@gmail.com>,
+        linux-scsi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org,
+        "James E.J. Bottomley"
+ <jejb@linux.ibm.com>,
+        "Martin K. Petersen" <martin.petersen@oracle.com>
+Subject: Re: [PATCH RESEND] scsi: ufs-mediatek: add dependency for
+ RESET_CONTROLLER
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Organization: Oracle Corporation
+Message-ID: <yq1edlllsus.fsf@ca-mkp.ca.oracle.com>
+References: <20230701052348.28046-1-rdunlap@infradead.org>
+Date: Wed, 05 Jul 2023 21:41:05 -0400
+In-Reply-To: <20230701052348.28046-1-rdunlap@infradead.org> (Randy Dunlap's
+	message of "Fri, 30 Jun 2023 22:23:48 -0700")
+Content-Type: text/plain
+X-ClientProxiedBy: SN7PR04CA0057.namprd04.prod.outlook.com
+ (2603:10b6:806:120::32) To CO1PR10MB4754.namprd10.prod.outlook.com
+ (2603:10b6:303:91::24)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH] iommu/mediatek: Remove a unnecessary checking for larbid
-To: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
- "joro@8bytes.org" <joro@8bytes.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>
-Cc: "will@kernel.org" <will@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "iommu@lists.linux.dev" <iommu@lists.linux.dev>
-References: <20230704115634.7727-1-yong.wu@mediatek.com>
- <633be7a7-0bb8-1575-535e-2f96302198bd@collabora.com>
- <ca4a06b89442e56df652c4aeba3ad83473f4db58.camel@mediatek.com>
-Content-Language: en-GB
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <ca4a06b89442e56df652c4aeba3ad83473f4db58.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PR10MB4754:EE_|DS0PR10MB6271:EE_
+X-MS-Office365-Filtering-Correlation-Id: c06fe6a3-7bbf-4042-d4c3-08db7dc21211
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: n0qvZE9kv5loiqxyok2K0V4NBcOtI72eQmUYyEuRYP/HCFmQX91D1lKZrAr4KKZUOLeIwAUuDGELhF9b/OHAhUqcGqNs/lB1hOZpEk73JBkmJ2JxyoWoB3wRhlrKQtMezU09vs6t4aseakIHByPoAio7NcQW4HcUOgB/dlpB5ONYZmK1SpjxSwD4HVt1k/nSNGZBemRz/EXHBvX1kbRqo/1YnHDwPTd5Hyx7Z+xx5iqQbLIO1PsoG9VYHmkhcDW+ojvt1UdFLNHmZDaWNTpItYw5H7o6JalV23jBJlbWaf5N7pO3VHhnRH7Vg0qUo4ObELe78C8QuCw+DPfrJ8CcMb2fsx8X7TAUG8l3TJzGAGYtJDvtNP/GJH+QeX7jONfVbW0MJDtcOxF3cYMJ+8HFb2yEbDVLyRzl9geFk/Eivs8jPT9DIJrQnNw6jJkiB0ols09Z4fVEGCzl4AWr8VpYIJS71FlhhXedqxgvk4MwBuy8UCz0hMumYx35Qw4QWLr8N7CTTNCdBvXEtKUOoBaFVwMyOJEvt93LslW1sJFGIPRv8lZVN61A4DxqlODg8faF
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CO1PR10MB4754.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(366004)(396003)(346002)(376002)(136003)(39860400002)(451199021)(66946007)(26005)(36916002)(478600001)(6666004)(6486002)(54906003)(6506007)(107886003)(6512007)(66556008)(186003)(2906002)(6916009)(41300700001)(66476007)(8936002)(8676002)(5660300002)(7416002)(4326008)(38100700002)(316002)(558084003)(86362001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?rVQG9AncjSTK9C7lvn5YKkWPwhJEGvPRno0MA7ollXy1bG5R9s2sw2CuUwHm?=
+ =?us-ascii?Q?DqMKDHxNcF2lyJt45FSdi74I3vKaSbhIMZisMvA8skrhJHFJxPBX+YZPZukL?=
+ =?us-ascii?Q?T43YQ1TEPZ6z8dXfWxJe8BCEKwsotKfcKMxx3u0kZfx+0xDpNwvo5PTsXUs8?=
+ =?us-ascii?Q?4RaXzV83jLuzplK4K+vpxwPS0Q+olU9KQE8syhJ/uj1Vw0kgK4i/6UBGD/hC?=
+ =?us-ascii?Q?VLyj94F8ESR1qcUlK/gbEH15vLc6Nt24Jib21BavN2PFbZvQqXNQzN8xFo41?=
+ =?us-ascii?Q?xKrySnTKujdX0jmTbjSgiZ3rBKuZW1MveootfHxnLJL25WJ1TC5m8ZCjj/dU?=
+ =?us-ascii?Q?A/A6XwdQR/ComeJFjc+ZR7fx0oTQ2MwErV9YwmdAhbFXejfbX84hMF9e76Fn?=
+ =?us-ascii?Q?V7j6/VfHwhlby1wglzZIqmrAg4yifCuR129J5+HhePXoVTyQkqUHJJRif2B3?=
+ =?us-ascii?Q?h5WD+Jj6AaFwa9jz1F2nkHZXVGzk2zgNCZShp8GeU23LGCMtstlqpc9Cna24?=
+ =?us-ascii?Q?0/cxNa2B99vSbzmjPNewFuFnFRqs2nv+Fwn22PeqUcytN9yP39/hvNYbXbCM?=
+ =?us-ascii?Q?E6dRcrnOGdL18C/crSYoqIRpQ6TLaHLWry5EXKbDIb1TMPTCPk7+UBVW7j5N?=
+ =?us-ascii?Q?bft7NpFpAD1vvDUFPasl8CSRzhvG6tFjiLGPzORIf4TlIgH5kfgUJpUc/5J7?=
+ =?us-ascii?Q?/TE1NyG7asZAB/jd/Sd3WnvIjf6b9jZ8lgEXect7s+wdieAuNR4Pu+I6cqNZ?=
+ =?us-ascii?Q?UuLLahESRhEcEU7HQYFlOHIwSsv3UW1yqTVy+bQ0QN8T8Xo5GCQHfnz5JpzG?=
+ =?us-ascii?Q?IYSelTrogDdXiGeEPcef4AOciG0TfR9XPCYshCyCJN3pOTs69HAeOFZSkeRs?=
+ =?us-ascii?Q?dWojKIVZc8Jy8JXvuHeagm6abC0FnpNKwGN7eZHR1z3ViHQJw/bpRxNm9ALJ?=
+ =?us-ascii?Q?YU5ifEFH+qM6elWaVD3zN/XHAMsQ9HolaZ8ETTShl7y+rgI7eAD3XqQ7IhpW?=
+ =?us-ascii?Q?fADK1D25jUw61rpNtUotxWkXmGIWLExnJVPJgnvbG9frk7t3WcohzLlPC4lX?=
+ =?us-ascii?Q?6bPbeRifvPgPE/X4zpBPyZ9VE08yKmO70LDsg+Kwa9sW9IZ5j/GQWm5cErof?=
+ =?us-ascii?Q?ZOutJqO7fgTi8OkJyDS1DvcUiCgwyd2lAPyuObZKBniD0Bmeq/8tfLkLxf+3?=
+ =?us-ascii?Q?yCr8L1aN+UH0b1C87h7P+OuTihsnbKI5TP/syc2A6QViXnH3d94ZlRign+ds?=
+ =?us-ascii?Q?pdpJ/75CQ+dPDtYpTc+VPUX+5oLQ/f7SUUSLTw6nHRzuITNRdDbjMiVebfTB?=
+ =?us-ascii?Q?5vsOQznB9a/m8oOKfT1Hqq2Uw+YTv/BKvPSQ9VdGMo5ix7kN7mwkO0pWVed7?=
+ =?us-ascii?Q?fNKs61Uemr5UNvtGEnJXSNgLo3e8yay1jc2siCYkgM3Sqg1cOGZSO44xbhl+?=
+ =?us-ascii?Q?NyM1K80qo0OrVTHtsf9z7e96/9M/gxN4QpQTO+CMaYMlx+7Lhbc/V0TBgwoK?=
+ =?us-ascii?Q?C2UuhovQ6/rxjYaMtt368RwPZLUTbFF2dmJkBhy1gAydahCLy37kq8SBd85C?=
+ =?us-ascii?Q?uC75zYuwPhy2IQHmuX1736dJjUwATemwKQYoYJ9OyZd9tZ6mzNzrh6oBD4nu?=
+ =?us-ascii?Q?Ww=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: =?us-ascii?Q?MHXaqyY/E4Wvzeg7R6BNjhhH10kkautb2k/AtUl/29wkLWrKzGvmVCqOebU+?=
+ =?us-ascii?Q?yK/jKI0TX1R7E9DPU8F2CqOfQgDrTUL1JXRPAi5eiPup9sXnJ7zQE1dTwlZI?=
+ =?us-ascii?Q?lZwDD4lihyS0wZ5SsRZ1jWGjSnpLSfO130hHIgioahxYTXQsxY/qu+fr+P+f?=
+ =?us-ascii?Q?R8uXkp2AmsWpzu7RgkE2FQGV1nMawLNufg/a7OoLBKqz/5QmpBBctPrgug82?=
+ =?us-ascii?Q?bMJ4b3d1LF3Z+rSzWVYrOTkyQ1xrEkj77vjdUw9dyU4MEPb7aVk67/avJjjZ?=
+ =?us-ascii?Q?RUHVGwwR75N5YgKmK6n7PWaix9O5uah/eaf1w/jffE3sz6Mryo1a0KF7KJA2?=
+ =?us-ascii?Q?yPUQmYHpo4dpbacPvbHCoConmNxjJE2TMj3F429ZsDS8Pu1oxT7/cfPc+Ay6?=
+ =?us-ascii?Q?bGODGRA2RZYWhbTGH0P5i9azmbPTAxaZt7AOnT3W0yg2w9QgA1xHJSf48lu6?=
+ =?us-ascii?Q?uIrSIvjzwZz4N0Uokcf2aAOek2RWpbp2WSgL8/9yyLgdxabqrgPpfk5nB2t7?=
+ =?us-ascii?Q?ulYWvXx4WO8B+fqXOVlA868uDFTdQvxvE+hETq9HgzPIm81p1kIZlWaPZ7b4?=
+ =?us-ascii?Q?SaG1Rra89pkyKsxTpJ4GzEpSwLL7ftsIzM+xz5Y8A4EaTr1PrJjymZeaNOol?=
+ =?us-ascii?Q?R4Z+GUxmR17ubjXCf5dATkoUwLHSsQtTO5Se64mq25FwGZ/H5BUvVRha7Q1i?=
+ =?us-ascii?Q?KscirYJx0CJYQvuHCmzZTv91T8MPmUKwu1Vth8FKcNgTGmDO6XccjToybxCy?=
+ =?us-ascii?Q?YLWcQ2wRb/hjlyCsoc3bkS0MtqO+7kI5K6wZw2whtUXjU1sNfD63IcuiXWKn?=
+ =?us-ascii?Q?Z/yB7HPPIIFxHw8C6lRWog6gnLkS2wsA2pN/F290XwYpBA70/YMOa8dQqDyh?=
+ =?us-ascii?Q?lZ1JhNL+7VoJLnplEKrtvPsdA+6s0qnuuI43pkAwwgIGChu/PeFZ2alYQ6y/?=
+ =?us-ascii?Q?DgGKeeS9t0S6b/xMWOjS3a7ud9f9ykAyw+SWOMfOD0KX9fozZcVwatKTvWuT?=
+ =?us-ascii?Q?2xX8?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c06fe6a3-7bbf-4042-d4c3-08db7dc21211
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR10MB4754.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jul 2023 01:41:08.4327
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 0bfgghAkfu1jg0xoVMW85DoY2erL2Uj/f4aRNeBZIhzcx0r0Lr2rTODCnjWTZOFaHRNXjIiWjsRJek8q8eoz5yga1UFEOvtH51AgHlEJmAo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR10MB6271
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
+ definitions=2023-07-05_11,2023-07-05_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 malwarescore=0
+ mlxlogscore=787 adultscore=0 bulkscore=0 suspectscore=0 spamscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2305260000 definitions=main-2307060013
+X-Proofpoint-ORIG-GUID: cx14pfcTugJA6qE4oSeYbrDsIq08JRpV
+X-Proofpoint-GUID: cx14pfcTugJA6qE4oSeYbrDsIq08JRpV
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_182938_636916_DA359352 
-X-CRM114-Status: GOOD (  20.37  )
+X-CRM114-CacheID: sfid-20230705_184151_861570_D3FAFEA0 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,90 +192,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-07-05 07:49, Yong Wu (吴勇) wrote:
-> On Tue, 2023-07-04 at 14:19 +0200, AngeloGioacchino Del Regno wrote:
->>   	
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>   Il 04/07/23 13:56, Yong Wu ha scritto:
->>> Fix a coverity issue:
->>>
->>>>> assignment: Assigning: larbid = (fwspec->ids[0] >> 5) & 0x1fU.
->>> larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
->>>>> between: At condition larbid >= 32U, the value of larbid must be
->> between
->>>>> 0 and 31.
->>>>> dead_error_condition: The condition larbid >= 32U cannot be true.
->>> if (larbid >= MTK_LARB_NR_MAX)
->>>>> CID 11306470 (#1 of 1): Logically dead code (DEADCODE)
->>>>> dead_error_line: Execution cannot reach this statement:
->>>>> return ERR_PTR(-22L);
->>>           return ERR_PTR(-EINVAL);
->>>
->>> The checking "if (larbid >= MTK_LARB_NR_MAX)" is unnecessary.
->>>
->>
->> I agree with the coverity tool in that after the transformation
->> (going through
->> the definition of MTK_M4U_TO_LARB) the check is pointless, but I
->> think that the
->> right fix here is to check for validity of fwspec->ids[0] instead of
->> simply
->> removing validation.
->>
->> Having no validation after mtk_iommu_probe_device() is fine, but
->> that's
->> because we assume that *this* function performs all validation steps.
-> 
-> There already is validation code at the point later in this function.
-> 
-> "if (!larbdev) return ERR_PTR(-EINVAL);" //if the larbid is invalid.
-> 
-> This patch just removes a deadcode.
 
-Right, if the fwspec value was out of range then the truncated value 
-might happen to map to a valid LARB, but then the fwspec could equally 
-have an in-range value for a valid (but incorrect) LARB; in general a 
-driver can't validate the overall correctness of data from the DT (and 
-if it could, that data wouldn't need to be in the DT anyway).
+Randy,
 
- From the history, the intent of this check doesn't appear to have been 
-anything other than protecting the dereference of the data->larb_imu 
-array, and it's never had any functional effect, so we don't lose 
-anything by removing it. FWIW,
+> When RESET_CONTROLLER is not set, kconfig complains about missing
+> dependencies for RESET_TI_SYSCON, so add the missing dependency just
+> as is done above for SCSI_UFS_QCOM.
 
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+Applied to 6.5/scsi-staging, thanks!
 
-Cheers,
-Robin.
-
-> 
->>
->> Regards,
->> Angelo
->>
->>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->>> ---
->>> Rebase on v6.4-rc1.
->>> ---
->>>    drivers/iommu/mtk_iommu.c | 3 ---
->>>    1 file changed, 3 deletions(-)
->>>
->>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
->>> index aecc7d154f28..67caa90b481b 100644
->>> --- a/drivers/iommu/mtk_iommu.c
->>> +++ b/drivers/iommu/mtk_iommu.c
->>> @@ -838,9 +838,6 @@ static struct iommu_device
->> *mtk_iommu_probe_device(struct device *dev)
->>>     * All the ports in each a device should be in the same larbs.
->>>     */
->>>    larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
->>> -if (larbid >= MTK_LARB_NR_MAX)
->>> -return ERR_PTR(-EINVAL);
->>> -
->>>    for (i = 1; i < fwspec->num_ids; i++) {
->>>    larbidx = MTK_M4U_TO_LARB(fwspec->ids[i]);
->>>    if (larbid != larbidx) {
->>
->>
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
