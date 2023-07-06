@@ -4,91 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05747EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 08:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28F76EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 09:59:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fayqxLh/vco+SYInwt83ea7CX6FUWQU2usKrCQ013+k=; b=qfaEFO4gjDKrn6Cg/JeakfRMiy
-	0j+rhMdwo60KgAtcmpxLU+DnwAcJC8DBxe7IOyMhUS6sn0QuCwR5mpQoNkRnsk4iLm6WMQyGt9JeM
-	wEMHPiz2x+7KuMRnIhvjUTjvRlxzeabetfnD1uyPfHSQOmimyTJ5J+ZywYckqvOdHa4iH9sXxhfd3
-	cESYGOWl7GLdvxvYvofeJBHXI28Z2rY8ugEli8vxsuVoJZ1ZiNhGLDVsG9Ytqlehy9e3t/q4pp9YO
-	TUyIy6CckBlaGG83C633z41HjKgzpOzM96G3ePGkz34QF9qea4MRvh25OKRrqhUiKMwkxrnYv90cx
-	/Ea2js4g==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pANNy/xJGcJmlXFLWNRphaV51QxiaFoMbh8h4kymSDA=; b=qo07ciS1zEwfYRP9EWkENUqs4R
+	VqszYn+BlBV4MFgj+e/Cef4SXnP5oaIz+veYbbaLlHH2xWglzMQPpDCkn2hfmrx84EOkIcKuPRFPK
+	2JIheJfjz+JVXLzkSmaqaOvClUVbTxHBoUmpjhbGML5766Xil/crA5WQN0fc83WBR2Mtz1TbyD6Rb
+	ad6w54geRGcd2OcLUjbxNGPTcOvIx8byPbB2AM/evmzliwnlAE3KdDuv3j8j2Jo+PQpYvjyZKpgzS
+	4jquFTg6L5IvPKkrWNNxK5w6lY5nPYxxj3bpmVOakWSK2YcqLuj64kEbjYi50BdwJLgO3XDH+wS3T
+	75Lji/5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHKoh-0011Fk-0B;
-	Thu, 06 Jul 2023 08:58:23 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1qHLlH-00195H-2n;
+	Thu, 06 Jul 2023 09:58:55 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHKob-0011Do-28
-	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Jul 2023 08:58:20 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-992ace062f3so54527366b.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 06 Jul 2023 01:58:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1688633894; x=1691225894;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=fayqxLh/vco+SYInwt83ea7CX6FUWQU2usKrCQ013+k=;
-        b=SUHGYVGhzR4ydLLC3EczqM7/h6WyxuOP9FR5zKpzrxTsJrLh66qKsFCYMxex/QcrLA
-         NL1nUlWdl/RfC8wWgtBQ8KNBsAo260fgTZiWgFlMcI87P2w/8QIco1+PtLz/axGfoTm+
-         eBfGmx37NrrgCwr5DHiABlwgUon4P+36PgEuG0ZrDSjrWRh1XmZsU76R9A0bQKCd6jPK
-         46+5Y2uagL6AOS32r/MpE47o2Yfr0kJF+UPbjFWGtQs9apRKiwsjRvRP8AoCuJirPihn
-         5/FRjQH7uPix9qG760X2c+BNfCqk8NyGfgotPYQ3W++7bMUU3RnKKPHZzMHDkioQhZj4
-         YL3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688633894; x=1691225894;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fayqxLh/vco+SYInwt83ea7CX6FUWQU2usKrCQ013+k=;
-        b=Ojjiuc9lzU7iK0U55Pugg2M6LS+A6mGPN20271vyvAGqHmP/5AJ49da+WAmMbrm2Yk
-         RdTtargyTdTGIRzBeHWeCeL664GuTDCCzmyqhRTdHJeZxD2W9EG+DEtvCqhsaoWIv2mX
-         iVIPXD8+gwopd1jnQXdjKzYB91886YeH6rd1eqltxObnCKlbYE7KHx8J43X2qd/A0+QA
-         PMNt9cfzokK1ZNAl+8Qc5est2mO9gewxzW0NcMcQvtXptNstgxby9/vWa2dHZTNFxXl5
-         QzHsmQZzcLub4Zsz/3IDCM7BQ3GM3gOGMv/UEM7Cl7mPHEYgN5ejAAIL5Q9VhRM8RN49
-         VMfA==
-X-Gm-Message-State: ABy/qLZnJqNLTFZNEJLj9d8pCPHW5bI6rO5EKjWo259FRGfPIe4ezDpS
-	yoFhLx3HmFDNPBg+n5xejSnusQ==
-X-Google-Smtp-Source: APBJJlFNHTYQWRHtROnOOty5+ELFvyo8/ZudrjTKHz8SF9FuZHky+aDb2X3o5VvOCjMOU5wiKluKFg==
-X-Received: by 2002:a17:906:7a5e:b0:992:b8b6:6bcd with SMTP id i30-20020a1709067a5e00b00992b8b66bcdmr979075ejo.16.1688633894307;
-        Thu, 06 Jul 2023 01:58:14 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.219.26])
-        by smtp.gmail.com with ESMTPSA id e9-20020a1709067e0900b0099236e3f270sm542442ejr.58.2023.07.06.01.58.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 06 Jul 2023 01:58:13 -0700 (PDT)
-Message-ID: <464fdef5-f43c-a7b2-66d2-bf558a6ee2c7@linaro.org>
-Date: Thu, 6 Jul 2023 10:58:11 +0200
+	id 1qHLlD-00194P-0A;
+	Thu, 06 Jul 2023 09:58:52 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4D6B1660585C;
+	Thu,  6 Jul 2023 10:58:47 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1688637528;
+	bh=kSDkPuyPb2t/JH+C79C1IUs7iSlEMd5QU2QZxBnRzjg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=VrxAzq+T6v6gG1CSsHla+ctqoqAOgTx+nHsxbn/BLDMVwG7eC/KC9SJCSyNrgjB2B
+	 W+IZJOwKW1xyggoG3Wq6WqwMzwF083PAVWJqgiAsRTlJ3Zhv3N02Jr0qBhyaxpprYy
+	 uEqMxZhlfsr/7rkAmOTeK8rusLo17P9hZLmiXtIbQ8+ntt62CS4GU8CbK+uiIT7QcU
+	 +Id9PIfe9Egl5JugoipJ/55dfncmt2osxQMtUet281ZSLzxisQ0FwJ0VhpkcBfyO3u
+	 JRmt++euLLmnmJopWNxOgMaI6FHe1KCwkyQh2cyS/Xhcl5RJd20q9GMYkIZyYAAuTC
+	 48m6kplJGwZmw==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	yong.wu@mediatek.com,
+	tinghan.shen@mediatek.com,
+	weiyi.lu@mediatek.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] arm64: dts: mediatek: mt8195: Fix PM suspend/resume with venc clocks
+Date: Thu,  6 Jul 2023 11:58:41 +0200
+Message-Id: <20230706095841.109315-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v2,1/2] dt-bindings: display: mediatek: dp: Add compatible
- for MediaTek MT8188
-Content-Language: en-US
-To: Shuijing Li <shuijing.li@mediatek.com>, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- jitao.shi@mediatek.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230706021425.31735-1-shuijing.li@mediatek.com>
- <20230706021425.31735-2-shuijing.li@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230706021425.31735-2-shuijing.li@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230706_015817_723463_BA65970B 
-X-CRM114-Status: UNSURE (   7.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230706_025851_292209_0311C32C 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,20 +80,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/07/2023 04:14, Shuijing Li wrote:
-> Add dt-binding documentation of dp-tx for MediaTek MT8188 SoC.
-> 
-> Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> ---
-> Changes in v2:
-> add a mediatek,mt8188-edp-tx compatible per suggestion from the previous thread:
-> https://lore.kernel.org/lkml/c4a4a900-c80d-b110-f10e-7fa2dae8b7b5@collabora.com/
-> ---
+Before suspending the LARBs we're making sure that any operation is
+done: this never happens because we are unexpectedly unclocking the
+LARB20 before executing the suspend handler for the MediaTek Smart
+Multimedia Interface (SMI) and the cause of this is incorrect clocks
+on this LARB.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Fix this issue by changing the Local Arbiter 20 (used by the video
+encoder secondary core) apb clock to CLK_VENC_CORE1_VENC;
+furthermore, in order to make sure that both the PM resume and video
+encoder operation is stable, add the CLK_VENC(_CORE1)_LARB clock to
+the VENC (main core) and VENC_CORE1 power domains, as this IP cannot
+communicate with the rest of the system (the AP) without local
+arbiter clocks being operational.
 
-Best regards,
-Krzysztof
+Fixes: 3b5838d1d82e ("arm64: dts: mt8195: Add iommu and smi nodes")
+Fixes: 2b515194bf0c ("arm64: dts: mt8195: Add power domains controller")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 95bd058d6083..5c670fce1e47 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -626,6 +626,8 @@ power-domain@MT8195_POWER_DOMAIN_VDEC1 {
+ 
+ 					power-domain@MT8195_POWER_DOMAIN_VENC_CORE1 {
+ 						reg = <MT8195_POWER_DOMAIN_VENC_CORE1>;
++						clocks = <&vencsys_core1 CLK_VENC_CORE1_LARB>;
++						clock-names = "venc1-larb";
+ 						mediatek,infracfg = <&infracfg_ao>;
+ 						#power-domain-cells = <0>;
+ 					};
+@@ -688,6 +690,8 @@ power-domain@MT8195_POWER_DOMAIN_VDEC2 {
+ 
+ 						power-domain@MT8195_POWER_DOMAIN_VENC {
+ 							reg = <MT8195_POWER_DOMAIN_VENC>;
++							clocks = <&vencsys CLK_VENC_LARB>;
++							clock-names = "venc0-larb";
+ 							mediatek,infracfg = <&infracfg_ao>;
+ 							#power-domain-cells = <0>;
+ 						};
+@@ -3094,7 +3098,7 @@ larb20: larb@1b010000 {
+ 			reg = <0 0x1b010000 0 0x1000>;
+ 			mediatek,larb-id = <20>;
+ 			mediatek,smi = <&smi_common_vpp>;
+-			clocks = <&vencsys_core1 CLK_VENC_CORE1_LARB>,
++			clocks = <&vencsys_core1 CLK_VENC_CORE1_VENC>,
+ 				 <&vencsys_core1 CLK_VENC_CORE1_GALS>,
+ 				 <&vppsys0 CLK_VPP0_GALS_VDO0_VDO1_VENCSYS_CORE1>;
+ 			clock-names = "apb", "smi", "gals";
+-- 
+2.40.1
 
 
