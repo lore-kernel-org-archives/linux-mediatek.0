@@ -4,59 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE39DEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 02:14:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9F6FEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 02:14:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RcEXvC7k8v+FtyiNFVhgIai9o9QCH++uM/Ak3Gb4eIQ=; b=HzKhqpjgbPiiLv1bwXizkbJW/z
-	Y94isLzynCLpPRSxu4BnnPhbYW4AICRo702swo/LoltTZfG91ImkTihA8H+8zs24gysN5eSKoIyL3
-	gGcvEQ7/jt9OKlgcOKO9N8UX0gAtuxbp9IXi59ehpae6m0lgrjCTFDPiKiH45Jw2IIATeIDAIjZ2b
-	Mz2ZddRYfEubl4ijvnLqe/TnNkntuKFO+8HO4SGxDI/gZWg+1Y6yY9Z+kefSI89zyCY3G/qvlhKfY
-	WJFIWdHXuRJ5Mjm+fZd6C/Siaz1uI+yjfZL226dHmPUs9Lm3RLv9dyV5f2iJALEhUrNbnL+ZtwY0u
-	OtmUp2aQ==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hlo3Ei/JjTN59JgLREbq5CT1Efs+sQtYpvHgUFM6xhA=; b=VEwLAscH4tHrGQhH0swPE+V/U8
+	zGyGxJH0x4+rOL/Oe3vGJPfXUv7th/b7BBR0Fx0s63eAVrraNoVZ3hJrf27nKYGwbxHoB6ySKWAOj
+	9hA7Z4CT4NZpQsLkcbsHQpazva1EyMdvaiTJxSESngLNXvEwzKp+iQNzgEZKjrfc0FB8izrejil4n
+	KmZBjAOD2svxQGj97CUB+ezDxeSbUHe3cuXLM94B3NYve3uNMJcD1tIbhtp3tKxOZBix3bE/mA/84
+	KhHAMG16xPRFA3G9dexLKQMTjzOLSO/di8EsNIt/YJ5zx45fjLQToijqd64vztcZWNBUCDwqXDatZ
+	V2tCUTGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHEVe-0005k4-1w;
-	Thu, 06 Jul 2023 02:14:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qHEWD-0005xW-0K;
+	Thu, 06 Jul 2023 02:14:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHEVb-0005jW-0h;
-	Thu, 06 Jul 2023 02:14:16 +0000
-X-UUID: cbe030161ba211ee83ed1395ce914268-20230705
+	id 1qHEWA-0005um-0T;
+	Thu, 06 Jul 2023 02:14:51 +0000
+X-UUID: de94282a1ba211ee912e1518a6540028-20230705
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RcEXvC7k8v+FtyiNFVhgIai9o9QCH++uM/Ak3Gb4eIQ=;
-	b=gZu0wgd6k5VPwqC0AK+yXAWkT6rNwk/i/ytJNOJqil2B5srH385AZyk0CIn3G4yRJYrFtsDw3FIfnaAKpzoJBZnCEZJhepk4W49Gp4CcXIWk0gQBL5IQ65WhAWYxvM+N8uBLnRKM84R+AL/ifpFaQXIRKD2gYV3z9LToKGYvPfs=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hlo3Ei/JjTN59JgLREbq5CT1Efs+sQtYpvHgUFM6xhA=;
+	b=tNWJC8r4OJZJBp7sxRVtktYHMFhBMG1BPm9EHHk7MeTzrzAEm+3GQqawAFNXUltfYhiZg6lxIumnal+5igHlg44ATH34HaDgN8o90qq/L882wyGZoIlhxh/7TAYgPGgczRQXpc+bIW5K6vg4dLtrZVmHewHpCeHE1qz6HxM//RE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:8ce86946-1d3a-4cee-9e6c-9191c3d2cdce,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:100
-X-CID-INFO: VERSION:1.1.27,REQID:8ce86946-1d3a-4cee-9e6c-9191c3d2cdce,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:100
-X-CID-META: VersionHash:01c9525,CLOUDID:c9cbbf82-5a99-42ae-a2dd-e4afb731b474,B
-	ulkID:2307061014113D6J5BTD,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,CO
-	L:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO
+X-CID-O-INFO: VERSION:1.1.27,REQID:290d82f9-4bd6-4c06-b507-0be46d0cc53b,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:01c9525,CLOUDID:f4e7acda-b4fa-43c8-9c3e-0d3fabd03ec0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
-	TF_CID_SPAM_FSD,TF_CID_SPAM_ULN
-X-UUID: cbe030161ba211ee83ed1395ce914268-20230705
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: de94282a1ba211ee912e1518a6540028-20230705
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <shuijing.li@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 619440169; Wed, 05 Jul 2023 19:14:11 -0700
+	with ESMTP id 2056984487; Wed, 05 Jul 2023 19:14:42 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Thu, 6 Jul 2023 10:14:08 +0800
 Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 6 Jul 2023 10:14:08 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 6 Jul 2023 10:14:07 +0800
 From: Shuijing Li <shuijing.li@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
 	<daniel@ffwll.ch>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
@@ -67,19 +62,17 @@ CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Shuijing Li
 	<shuijing.li@mediatek.com>
-Subject: [PATCH v2,1/2] dt-bindings: display: mediatek: dp: Add compatible for MediaTek MT8188
-Date: Thu, 6 Jul 2023 10:14:24 +0800
-Message-ID: <20230706021425.31735-2-shuijing.li@mediatek.com>
+Subject: [PATCH v2,0/2] Add compatible to increase MT8188 audio control
+Date: Thu, 6 Jul 2023 10:14:23 +0800
+Message-ID: <20230706021425.31735-1-shuijing.li@mediatek.com>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230706021425.31735-1-shuijing.li@mediatek.com>
-References: <20230706021425.31735-1-shuijing.li@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230705_191415_262122_67D831E2 
-X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-CacheID: sfid-20230705_191450_189964_89AAFDD0 
+X-CRM114-Status: UNSURE (   7.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,30 +89,25 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Add dt-binding documentation of dp-tx for MediaTek MT8188 SoC.
+Mainly add the following two flag:
 
-Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
----
-Changes in v2:
-add a mediatek,mt8188-edp-tx compatible per suggestion from the previous thread:
-https://lore.kernel.org/lkml/c4a4a900-c80d-b110-f10e-7fa2dae8b7b5@collabora.com/
----
- .../devicetree/bindings/display/mediatek/mediatek,dp.yaml       | 2 ++
- 1 file changed, 2 insertions(+)
+1.The audio packet arrangement function is to only arrange audio
+packets into the Hblanking area. In order to align with the HW
+default setting of g1200, this function needs to be turned off.
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-index ff781f2174a0..2aef1eb32e11 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-@@ -21,6 +21,8 @@ description: |
- properties:
-   compatible:
-     enum:
-+      - mediatek,mt8188-dp-tx
-+      - mediatek,mt8188-edp-tx
-       - mediatek,mt8195-dp-tx
-       - mediatek,mt8195-edp-tx
- 
+2.Due to the difference of HW, different dividers need to be set.
+
+Base on the branch of linus/master v6.4.
+
+Shuijing Li (2):
+  dt-bindings: display: mediatek: dp: Add compatible for MediaTek MT8188
+  drm/mediatek: dp: Add the audio control to mtk_dp_data struct
+
+ .../display/mediatek/mediatek,dp.yaml         |  2 +
+ drivers/gpu/drm/mediatek/mtk_dp.c             | 47 ++++++++++++++++++-
+ drivers/gpu/drm/mediatek/mtk_dp_reg.h         |  6 +++
+ 3 files changed, 54 insertions(+), 1 deletion(-)
+
 -- 
 2.40.1
 
