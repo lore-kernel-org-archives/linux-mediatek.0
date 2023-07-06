@@ -4,87 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B968BEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 12:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F24E1EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 12:29:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0/5wxHDy6mL4FcPapG0NJLXj6++vEZT2MS33NrQ/lTQ=; b=L8jfvy1SjZtOFvtVa+CFvg8b/t
-	6kWn7cS4iLnJa+NaK7BQHnqI/IfIavkxk6xGKceN8E1yYBvBs6452PUZ+Pq+tPYqDQ952ghpa2im/
-	w7Z+YisuoBfyOJMWjhMZsm5Wi/WhNkdZ8aG59DPHdTo4YAXf7fzZ58JO4FxB5oYkvv9D6W6bDA6y5
-	0pwfgbFsOa98y6pi3qJ0d+M8nyZ/Zt3e5uUPHtKwftKEK9deY19dADtYE03l9P1dzHAVXrKxeXALF
-	V3vHUJfoy8iypm49Po6fVCrvSUN+rAhsJvKlKxKq99rXZuhBOeHswQlxhxROC2AHOUj58esFjQ1Iw
-	CCVIrjPg==;
+	bh=QrwyGG22yUz0pXaaxwTuGI5EuvBFjwW6o/zgDSSwkOQ=; b=dgcam+NILzf8rgU+ViI1sprccq
+	E5Gf2oI+lArOs4R2GJIZmIEG0tlsFA81etQsceYSF/COPvTWu/X56tKXmm4fQ/5kv12guuDlKWNvk
+	ZIDd977a4QNj+oiirpW/yg4ImnLJkloOoDYk6qt3k53+BMdSYkTsVfIRAzdRmT7oI6ZtRX3F6vjjs
+	8cM7c9ESJydbgXU9gB5aYOXIivbdJWxcXoL3F7yK2pmQSAFG+9w0tBvoix2xtSH3Wvu7PNXgtI802
+	M/iMvQ7/Go2p6cWMVLElrdX7cFG/c2RzvU4t7ww/XvYthvVjYQX3L4t5YMkb9e7YAzthbg/g5x33j
+	kZtJPkZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHNrh-001aCf-1R;
-	Thu, 06 Jul 2023 12:13:41 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1qHO6o-001cRW-1z;
+	Thu, 06 Jul 2023 12:29:18 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHNrd-001aAh-15
+	id 1qHO6l-001cPj-1o
 	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Jul 2023 12:13:39 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-3fbc656873eso7836865e9.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 06 Jul 2023 05:13:34 -0700 (PDT)
+	Thu, 06 Jul 2023 12:29:17 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-3fbc63c2e84so6803335e9.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 06 Jul 2023 05:29:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1688645613; x=1691237613;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1688646553; x=1691238553;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=0/5wxHDy6mL4FcPapG0NJLXj6++vEZT2MS33NrQ/lTQ=;
-        b=IbzlafQusCaKto71OXk4bPoXEo7+FCrn+i1Hk7cATXwj6jD0FU8RZdq5IA1kP7kLfv
-         3wa2qn53DE926m9gNw+SaXT8iilPDkuOnkdWh3rudUNg4TkmKbsep4bvf6f4ina/mf0n
-         DRzQ5WErugGScBJuVhHq5WnqfJ+sbM8TC8wciV21yFhQIkvdpuXBfsE0yBYDKWNEyEzu
-         lpnbDPWvcKk1agZbeYhhPixhkIwdNkyTBaE4WrvBvWEH7byJOAeR7mDKtmdQTgGRv1FI
-         o1xazO6BOLl8JRFEvxnms30i4deFFBhipFbK+xh41OKOpj6wb+fGF1re4lHoK4boQTQD
-         xVYA==
+        bh=QrwyGG22yUz0pXaaxwTuGI5EuvBFjwW6o/zgDSSwkOQ=;
+        b=Lgf1cOi+4+QGjJ6vTEGvJWc7DzjQzfv4w5BKVmRE40HSst27WRxPaOwU150CLSXJ4j
+         BO+HNRiJ1qXMampj7+/nE6mFbHRSRf0vi+7jG1/JddtB6urUwJiinZj33ugaWTSzNx3q
+         A4c2ryH1s9an3latetN75IwkfRPlx+fk842mO63qnWoz5ADaoP1OmvMep52wcA+K3mcU
+         HOZGbBB1RR9daw2jLO6jKBkgYgxjCY0S8W/Pgwgrnybzzyh1Dvqv6138oMRL+ikpYh9g
+         /NWnaO7yQrhKl1UcQTelDCmA6+H7SEthcRmzLsGS4kvwV+ZJ2Foy2cLZYpr3ZSiUsKyT
+         5TUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688645613; x=1691237613;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20221208; t=1688646553; x=1691238553;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0/5wxHDy6mL4FcPapG0NJLXj6++vEZT2MS33NrQ/lTQ=;
-        b=EwIfCCVZVWg2tnXElEYhAmfYCJUj31dzQGxE0PfoVgejCUAyBUqkRFjZwEnw95U3lC
-         Q/8Me3aIhFyN3g6/Sqg0hD8PKMlov4VC8Xv46TFyo/V9ZqPL1QsQLBBgX5wGoN4tKks4
-         GphXIxZ+l7CdT3Tsjb5n+EtAmW7JVvMLCXfxGlcqj6t6HRPEdbo8UN++/FmYRIVqqqB8
-         QieQ17NxxQBRWaMSm6Ps3XW4T/WvIGxJv157+N8alBV6oPY93E0STQZIMlpn9X/4JeEg
-         HhOPY77LlfnA73QGWXTCOBJlqvIJ5Nallm8KbZzq/5U2AL81xJ5WgWwl/sDMWWu+edjS
-         sq1g==
-X-Gm-Message-State: ABy/qLY3LKgtzbhJ0WRb9pYVyVw8MDqIg995eVepUbJOOYYNj3WXXSsL
-	rJk2+olwHRq47pKvWqxloDfHfg==
-X-Google-Smtp-Source: APBJJlHrBYvDJNnzrZAW/qWNal0XP+4b2h86axDo0FU4omajc4qpoygiGFAh45R45C+UW4rrqkg3cQ==
-X-Received: by 2002:a1c:f709:0:b0:3f5:fff8:d4f3 with SMTP id v9-20020a1cf709000000b003f5fff8d4f3mr1994310wmh.7.1688645613660;
-        Thu, 06 Jul 2023 05:13:33 -0700 (PDT)
+        bh=QrwyGG22yUz0pXaaxwTuGI5EuvBFjwW6o/zgDSSwkOQ=;
+        b=Y8i3is9JcHYaofAzKP7x6cX5QkEf17VosZuAMflqZ3Lin2FZ1kbyMxlC1a7M3Bbb8v
+         DFIZXworWw6eYdjiJgvaJHPtyGZXd3LGQr8mziBST0YFPiCawYPs7gwxZFRnHneuzP+7
+         osYRUDoS4v8TWTgXG4nihlEb0l4DlqPNxqb7V3FFDgyyvdFt4qOzolY82SyTVtuE3RwK
+         ocXJt7B9TugSg19A19wvSiq4YeyuTUe6JQEX4aertm6cnQNcMS6LTGgFuOr1M97OZYS8
+         NiIUPWxND1Ka8hNZrmwV/+fJdkJqzEavPDU7SN9/F6eBp3tuq93p0jqdGgMLo5Aa6Atv
+         vIgg==
+X-Gm-Message-State: ABy/qLbYWdKtqneqqNN6JrPXW4CtqLw3tS6vlQLzPP/mf1o08sqvrQPA
+	H4GPElQoRg9pgJwPMqXtFnRrtg==
+X-Google-Smtp-Source: APBJJlENtsBPpzfe/86erIipmcvmcmpI0mPj2K7COvY/9J7rNN04Fa6U7vYjLisS/xtXgMELnlW8qQ==
+X-Received: by 2002:a7b:c5d4:0:b0:3fa:9e61:19ed with SMTP id n20-20020a7bc5d4000000b003fa9e6119edmr1221201wmk.23.1688646553292;
+        Thu, 06 Jul 2023 05:29:13 -0700 (PDT)
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id z10-20020a05600c220a00b003fbb2c0fce5sm4911847wml.25.2023.07.06.05.13.32
+        by smtp.gmail.com with ESMTPSA id f14-20020adff44e000000b003142ea7a661sm1799342wrp.21.2023.07.06.05.29.12
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 06 Jul 2023 05:13:33 -0700 (PDT)
-Message-ID: <4f493bc2-45b3-13b8-f1b1-1729a803c74c@baylibre.com>
-Date: Thu, 6 Jul 2023 14:13:32 +0200
+        Thu, 06 Jul 2023 05:29:12 -0700 (PDT)
+Message-ID: <55c3a448-e6c6-5e04-2cee-b2a18f0033e3@baylibre.com>
+Date: Thu, 6 Jul 2023 14:29:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH] drm/mediatek: Fix potential memory leak if vmap() fail
-To: Sui Jingfeng <suijingfeng@loongson.cn>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20230626185801.684451-1-suijingfeng@loongson.cn>
+Subject: Re: [PATCH] pwm: mtk_disp: fix disp_pwm coverity issue
 Content-Language: en-US
+To: Shuijing Li <shuijing.li@mediatek.com>, thierry.reding@gmail.com,
+ u.kleine-koenig@pengutronix.de, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com
+Cc: devicetree@vger.kernel.org, linux-pwm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, jitao.shi@mediatek.com
+References: <20230706100454.28998-1-shuijing.li@mediatek.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230626185801.684451-1-suijingfeng@loongson.cn>
+In-Reply-To: <20230706100454.28998-1-shuijing.li@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230706_051337_372514_6B99E511 
-X-CRM114-Status: UNSURE (   7.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230706_052915_599740_B6807803 
+X-CRM114-Status: GOOD (  17.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,11 +100,47 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 26/06/2023 20:58, Sui Jingfeng wrote:
-> Also return -ENOMEM if such a failure happens, the implement should take
-> responsibility for the error handling.
+On 06/07/2023 12:04, Shuijing Li wrote:
+> There is a coverity issue in the original mtk_disp_pwm_get_state()
+> function. In function call DIV64_U64_ROUND_UP, division by expression
+> Which may be zero has undefined behavior.
+> Fix this accordingly.
+> 
+> Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
+> ---
+>   drivers/pwm/pwm-mtk-disp.c | 9 ++++++++-
+>   1 file changed, 8 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
+> index 79e321e96f56..ca00058a6ef4 100644
+> --- a/drivers/pwm/pwm-mtk-disp.c
+> +++ b/drivers/pwm/pwm-mtk-disp.c
+> @@ -196,6 +196,14 @@ static int mtk_disp_pwm_get_state(struct pwm_chip *chip,
+>   		return err;
+>   	}
+>   
+> +	rate = clk_get_rate(mdp->clk_main);
+> +	if (rate <= 0) {
+> +		dev_err(chip->dev, "Can't get rate: %pe\n", ERR_PTR(rate));
+> +		clk_disable_unprepare(mdp->clk_mm);
+> +		clk_disable_unprepare(mdp->clk_main);
+> +		return err;
+> +	}
+> +
+>   	/*
+>   	 * Apply DISP_PWM_DEBUG settings to choose whether to enable or disable
+>   	 * registers double buffer and manual commit to working register before
+> @@ -206,7 +214,6 @@ static int mtk_disp_pwm_get_state(struct pwm_chip *chip,
+>   					 mdp->data->bls_debug_mask,
+>   					 mdp->data->bls_debug_mask);
+>   
+> -	rate = clk_get_rate(mdp->clk_main);
+>   	con0 = readl(mdp->base + mdp->data->con0);
+>   	con1 = readl(mdp->base + mdp->data->con1);
+>   	pwm_en = readl(mdp->base + DISP_PWM_EN);
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+IMHO, it should be done int the function `mtk_disp_pwm_apply` too.
+Do you agree ?
 
 -- 
 Regards,
