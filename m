@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84156EB64DD
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B88C001E0
 	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jul 2023 15:38:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d+qExpnrTRGuEbIJUgDN+ZcGb0QDRZ8RglubgpMI9PQ=; b=ifkYFwok7AxoU9suPwdy3D/fSu
-	UOqI2nGL13We6cMgPIZHS+5rB4piqLo6XgnhRCONusvBD4LqKaALLsfrHDMnQKSZJoR/2lEyFwDq+
-	UXLnc8WYkZ6rYarp5A/1JBqSCoTIm5Jd1fOOwJtiP8mlKPED6V6OCUCzQyeb8M6Ad+LRHsR+30fH9
-	us9OsYgIg+456G7UhTI6nZmT6DWWKTDvj5WQxKbsVH7tzK/MPhF35zfbNxLz62E3q4GJXwv9uQHdJ
-	+BWmCy+VQORjyZCQH2anxxx3nf9X5l1gnGJZIRrW48l6dWEosD+wN7hzq+URrPsj9OiS1htKSNrL8
-	iMxUvK+w==;
+	bh=w0wAZOjq5+4ta/xAPVLPEbGlXDtF5onxDpdwcQF9K5U=; b=Le3ugi9tCd05/zzGWOwp1rF72S
+	3DkLLQ3Ki7mToCHUhEjTSrLtK8zLUWc9dVurhuqCH9qZt+6crl/jthOOAV0vlw7d03iQ2T1IejJFv
+	46Cb0nYUypdPNwjlClWwKyZpccgm5QtF7qc3pWQrhHafSU3VY+oq83cwgTgYrf9ZU3+nSZoSbN3TP
+	b170p7yfy4n5+JHHNiWQHoZSok4ag9nzhWE++mvGEAgObyEMynmpzDBW6jDiFtoz1FpyBizgWmtxa
+	LEg59w6NWSTC0eoY86Rp3/MSVrh3JqnH//MSUPXf3rF8A0T3HLL2hjaYJT5mHsGBGvLVW2kZmykTu
+	6TB8TITQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHR4A-0021z6-2I;
-	Thu, 06 Jul 2023 15:38:46 +0000
+	id 1qHR4E-00222g-2u;
+	Thu, 06 Jul 2023 15:38:50 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHR44-0021vN-0t;
-	Thu, 06 Jul 2023 15:38:41 +0000
+	id 1qHR4B-0021z5-1J;
+	Thu, 06 Jul 2023 15:38:48 +0000
 Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2F37D6606FDA;
-	Thu,  6 Jul 2023 16:38:34 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BC1106606FD9;
+	Thu,  6 Jul 2023 16:38:42 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688657918;
-	bh=HO4nDuWbgJLp3N3SyhPaXs/hZj7uYhYlvxsZ7dSo314=;
+	s=mail; t=1688657926;
+	bh=aPgoUi/+QUCf96kwnPphxcT4zrPIaJAdJ/Os47P4liE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hJsTH/a/arRPGkkgAo8mvSy/ygWuAwMYYF5AXrojN9/7jZ5ZS8WCtW7LnNpJNXn9/
-	 qTPtU/K2hdX4e9NWlp/Irm+Rn0JiHnh7bgRUeZPjAhkOSrE3EfTUHhYy/Ncr5ofEFA
-	 rHobrTrkQYVQ1aD6um1C68uTS6a5EQTFQlH6qy+20QVqudwgBvDnKH+VMaZVFScImS
-	 beKNfpbQAHa6ukA1zFVF9KUuZKUeLWOl6t1NGvf+2VXDpncoOsntGLNo3jGlIDLVZt
-	 IDcnGVvYs6ZXGPjU5+Xoo7/eAHIuFQYIaAVmHgFMqWXVC2vQeQVXbsekQ/anUbKwfx
-	 Ev8+AgwIsiQbg==
+	b=fs5thJ4JWoekCvvCkvl5zqxEhPHJfQbXAXZmLiVmQ6u8sCtHzWLqE+j/Sj34a2hZ0
+	 G+2Xs1vXGQfoOuTzZZcXKendJ+Alg86ubKoWGvQt3Aul7xcBO4wJIlQqzijCDF9uHb
+	 b1/scgVxVcu9qzV/EK8oKPmXh5qRn2B+KZuSuZnZj9EeCxRrS4vX5NKWWn4OVAeIWn
+	 K9V5ABdd3b9wFvBsguXgN0vgXms7FsVEbDt9bbyWHC0Cc8lwebPezlyx+UE5silFDi
+	 wRfoRffK14OOXaQ1dLOpioedu9XhtT2cJocpw0cYEBtU9CLjwo85lQsZ/ML/cEp1pq
+	 UOjqmYrrlPtBQ==
 From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
 To: Daniel Lezcano <daniel.lezcano@linaro.org>
 Cc: Alexandre Bailon <abailon@baylibre.com>,
@@ -60,9 +60,9 @@ Cc: Alexandre Bailon <abailon@baylibre.com>,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-pm@vger.kernel.org
-Subject: [PATCH v3 1/6] thermal/drivers/mediatek/lvts_thermal: Handle IRQ on all controllers
-Date: Thu,  6 Jul 2023 11:37:32 -0400
-Message-ID: <20230706153823.201943-2-nfraprado@collabora.com>
+Subject: [PATCH v3 3/6] thermal/drivers/mediatek/lvts_thermal: Use offset threshold for IRQ
+Date: Thu,  6 Jul 2023 11:37:34 -0400
+Message-ID: <20230706153823.201943-4-nfraprado@collabora.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230706153823.201943-1-nfraprado@collabora.com>
 References: <20230706153823.201943-1-nfraprado@collabora.com>
@@ -70,8 +70,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230706_083840_448121_F9A971BD 
-X-CRM114-Status: GOOD (  14.15  )
+X-CRM114-CacheID: sfid-20230706_083847_577436_BF877E18 
+X-CRM114-Status: GOOD (  14.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,39 +86,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is a single IRQ handler for each LVTS thermal domain, and it is
-supposed to check each of its underlying controllers for the origin of
-the interrupt and clear its status. However due to a typo, only the
-first controller was ever being handled, which resulted in the interrupt
-never being cleared when it happened on the other controllers. Add the
-missing index so interrupts are handled for all controllers.
+There are two kinds of temperature monitoring interrupts available:
+* High Offset, Low Offset
+* Hot, Hot to normal, Cold
+
+The code currently uses the hot/h2n/cold interrupts, however in a way
+that doesn't work: the cold threshold is left uninitialized, which
+prevents the other thresholds from ever triggering, and the h2n
+interrupt is used as the lower threshold, which prevents the hot
+interrupt from triggering again after the thresholds are updated by the
+thermal framework, since a hot interrupt can only trigger again after
+the hot to normal interrupt has been triggered.
+
+But better yet than addressing those issues, is to use the high/low
+offset interrupts instead. This way only two thresholds need to be
+managed, which have a simpler state machine, making them a better match
+to the thermal framework's high and low thresholds.
 
 Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 ---
 
-(no changes since v1)
+(no changes since v2)
 
- drivers/thermal/mediatek/lvts_thermal.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+- Added this commit
+
+ drivers/thermal/mediatek/lvts_thermal.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index 1e11defe4f35..ba8f86ee12b6 100644
+index 8082195f53ae..e7cbfe0426b5 100644
 --- a/drivers/thermal/mediatek/lvts_thermal.c
 +++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -451,7 +451,7 @@ static irqreturn_t lvts_irq_handler(int irq, void *data)
+@@ -298,9 +298,9 @@ static int lvts_set_trips(struct thermal_zone_device *tz, int low, int high)
+ 	u32 raw_high = lvts_temp_to_raw(high);
  
- 	for (i = 0; i < lvts_td->num_lvts_ctrl; i++) {
+ 	/*
+-	 * Hot to normal temperature threshold
++	 * Low offset temperature threshold
+ 	 *
+-	 * LVTS_H2NTHRE
++	 * LVTS_OFFSETL
+ 	 *
+ 	 * Bits:
+ 	 *
+@@ -309,13 +309,13 @@ static int lvts_set_trips(struct thermal_zone_device *tz, int low, int high)
+ 	if (low != -INT_MAX) {
+ 		pr_debug("%s: Setting low limit temperature interrupt: %d\n",
+ 			 thermal_zone_device_type(tz), low);
+-		writel(raw_low, LVTS_H2NTHRE(base));
++		writel(raw_low, LVTS_OFFSETL(base));
+ 	}
  
--		aux = lvts_ctrl_irq_handler(lvts_td->lvts_ctrl);
-+		aux = lvts_ctrl_irq_handler(&lvts_td->lvts_ctrl[i]);
- 		if (aux != IRQ_HANDLED)
- 			continue;
+ 	/*
+-	 * Hot temperature threshold
++	 * High offset temperature threshold
+ 	 *
+-	 * LVTS_HTHRE
++	 * LVTS_OFFSETH
+ 	 *
+ 	 * Bits:
+ 	 *
+@@ -323,7 +323,7 @@ static int lvts_set_trips(struct thermal_zone_device *tz, int low, int high)
+ 	 */
+ 	pr_debug("%s: Setting high limit temperature interrupt: %d\n",
+ 		 thermal_zone_device_type(tz), high);
+-	writel(raw_high, LVTS_HTHRE(base));
++	writel(raw_high, LVTS_OFFSETH(base));
  
+ 	return 0;
+ }
 -- 
 2.41.0
 
