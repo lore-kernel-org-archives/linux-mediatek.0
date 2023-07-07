@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCED8EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 08:22:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DB44EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 08:22:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BxdQubIUeWfH6Nizi8N9SaSpFsy+/ceYV/So6je/wkM=; b=FYARAEKXmY+FjFnias3yPd9Vy6
-	9QvYyuqr7S4tFtnlQHMnt+4i6UVcCnhB3GEuxrwvPghi1pqxFn09KfOqo8aYsogx9COlt7/Zi6jYW
-	OSfN6FOJVu994YG1v1YmSsddX2BlvmlXceelbCL3sqAgPQu0wI+qfI/vt+y1N+q1Ybw1YYCQjcWxQ
-	tu2XDHnd96ICE8VUmAKMZVxfQF5qPsqN8/1l2UdDfoYO72AdJG9ze2rMW7Tq03jW6LU/7aSKw6R2X
-	SAZvmoSpcAQ5wtKNV7IVffF2Vb+FTMPRD6tjoehOZ5g6R31Ru5QTx33GZIAd3eT0wwbGSPj+GO5N4
-	hS9iVddw==;
+	bh=S7F017eNqHhU4s1TUlbkReV4KYen++Nr5RjRSomxY6w=; b=jHxoIIWw0TjrLGrekIyzxIAFY+
+	+mDfRWAMrq1fhGb7lV9UWTvx0ZctslQoo9xtjrEHvszUFwgsyDxOzeCBL0cTZpZMuTrnyuL61vL0n
+	fCjcWOC/TXgPj9J7tLLXs+kYo/T+Cd72wo42fjt5eq+Cs7T9nMK0lAdreg1DLBuv2LVowp2i3r4D6
+	HITEEASrfvETMO77i4JSXWIdUcYwGnGfr0E3OMndfKf5JjTDGA0lyemLjKspkDHz671/ZrA7fWv1i
+	KsNkICgVlVSatNg7i4siVJEpuJl25ZQ7drtitDjo3OGzYPLwWdXcJEeDCTQ54gccfnX4GIgjZpYhC
+	FD6B+qFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHgix-003yef-1r;
-	Fri, 07 Jul 2023 08:21:55 +0000
+	id 1qHgjD-003yk7-3A;
+	Fri, 07 Jul 2023 08:22:11 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHgit-003ycx-2s;
-	Fri, 07 Jul 2023 08:21:53 +0000
+	id 1qHgjB-003yiH-0m;
+	Fri, 07 Jul 2023 08:22:10 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BF36F6606FD3;
-	Fri,  7 Jul 2023 09:21:49 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4AB9C6606FCA;
+	Fri,  7 Jul 2023 09:22:07 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688718110;
-	bh=E41kLsUu9KWKlC5LC4u8U6BQ7Fu/d8kPchT+f2mdTcg=;
+	s=mail; t=1688718128;
+	bh=KlqmsemJjqgs8TN2Gg23NtEfSBp5PE0Ob4EPcUQRJuw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FphWqH25Mc2WAJGfSzoYhws3XtSXrrcmI2pHqjVdOciw9Q1lrmq7BtzX/okmNbqV/
-	 RRvvEkttjgWIosiuI8KMP3s+8SSqAJy0CcNJSCda9+3DfnZEnqf8cCnC4opRbTIqT4
-	 14Nd0cvEJrL7nSRHk/xNSqQfSM3PupT5YI5Wb9iyX13fTWPZ29MYH5VCdHoB0GEzzT
-	 33/rT1ctI83dpr9WNOaWhhOS+LwOSAEZx5X60GacxGRrkl9kWulWAgF0ctVkpQ0SMz
-	 SFLdzQZd5pmsFxXsKQcd2odFmbQTZdwuw108WHskDzsHIhwIzjwFPi7ljALspfyGEb
-	 TAmgsUiyR0DQQ==
-Message-ID: <98580052-492e-5360-fcae-f5a5f8a3da73@collabora.com>
-Date: Fri, 7 Jul 2023 10:21:47 +0200
+	b=dTdK+JOhlS1RgWLnLTo3YBkJSNT581LvyIa23ZL6eicmvkcLaVeZ2g9u18dMNXOtW
+	 Tkg1Aq4nQlff4bBZ1dqbJGm9dWMsjhuQwVWbcWHECFBoh1cTZuPbwzJEvY78QPckSL
+	 7eka9gMKpUNEg71Ki37FrhwC9A4KGP43lfwQmmpa0tuqv+po5EARjMa5kUpl4EFDgk
+	 k0MsmvVaVgxDATr5bRtjL2v37taVHc/z/Qkc00kmGPoqxe4mnx1WiKXKqOVjZGG1yv
+	 nFLJEiPw9v261ho8uS3+/h33OHfo7A+TllTaehD8q7Qw7HQrWOYWx/0uJIS5sM8nZ3
+	 bKyqCZpet8aPQ==
+Message-ID: <7d7db84b-e6be-2d45-fbc6-e891718b757a@collabora.com>
+Date: Fri, 7 Jul 2023 10:22:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH v3 4/6] thermal/drivers/mediatek/lvts_thermal: Disable
- undesired interrupts
+Subject: Re: [PATCH v3 5/6] thermal/drivers/mediatek/lvts_thermal: Don't leave
+ threshold zeroed
 Content-Language: en-US
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  Daniel Lezcano <daniel.lezcano@linaro.org>
@@ -61,14 +61,14 @@ Cc: Alexandre Bailon <abailon@baylibre.com>,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
 References: <20230706153823.201943-1-nfraprado@collabora.com>
- <20230706153823.201943-5-nfraprado@collabora.com>
+ <20230706153823.201943-6-nfraprado@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230706153823.201943-5-nfraprado@collabora.com>
+In-Reply-To: <20230706153823.201943-6-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230707_012152_062058_667C69A8 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20230707_012209_410780_26AE6102 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,25 +84,20 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 06/07/23 17:37, Nícolas F. R. A. Prado ha scritto:
-> Out of the many interrupts supported by the hardware, the only ones of
-> interest to the driver currently are:
-> * The temperature went over the high offset threshold, for any of the
->    sensors
-> * The temperature went below the low offset threshold, for any of the
->    sensors
-> * The temperature went over the stage3 threshold
+> The thermal framework might leave the low threshold unset if there
+> aren't any lower trip points. This leaves the register zeroed, which
+> translates to a very high temperature for the low threshold. The
+> interrupt for this threshold is then immediately triggered, and the
+> state machine gets stuck, preventing any other temperature monitoring
+> interrupts to ever trigger.
 > 
-> These are the only thresholds configured by the driver through the
-> OFFSETH, OFFSETL, and PROTTC registers, respectively.
+> (The same happens by not setting the Cold or Hot to Normal thresholds
+> when using those)
 > 
-> The current interrupt mask in LVTS_MONINT_CONF, enables many more
-> interrupts, including data ready on sensors for both filtered and
-> immediate mode. These are not only not handled by the driver, but they
-> are also triggered too often, causing unneeded overhead. Disable these
-> unnecessary interrupts.
-> 
-> The meaning of each bit can be seen in the comment describing
-> LVTS_MONINTST in the IRQ handler.
+> Set the unused threshold to a valid low value. This value was chosen so
+> that for any valid golden temperature read from the efuse, when the
+> value is converted to raw and back again to milliCelsius, the result
+> doesn't underflow.
 > 
 > Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
 > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
