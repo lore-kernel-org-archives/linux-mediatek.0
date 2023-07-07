@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE610EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 06:31:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD8D5EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 06:50:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UAziGWEIBjQI0wuqlkRiC4ex2AoxNSXCmO21CSvsE4E=; b=sCo/CiId6hNoYrL1lwjAwe1JJg
-	D1cEfTMEIU+u+kRQ+BU9xHtl7WmOuLScPeprwdz52YebHu1H+ZzKs+LjcDYFRH11YrlGHPjucSuM+
-	o8ldat4q2jwir1TbFEbhUrGJEai8adR05PARsHYk2r/H49QwC6rMq0QoVqZ71M3QqoaHb0+HRgsuP
-	3Ujp7LPBZX0Njx7XBYNA7Gi1kK8H7kGfW7jDx+1d7OoNGhFoPu+UUQ39wVZL/D1k57txOnp6VPKRE
-	ZwQjg7B+sToP0aa8pWYGZu8JDnKv+WbN2n0oosvHSg57e360ad5CXdcnkMnUJPDgJW49WSmX3a0VP
-	8cAReXKg==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=l28sDxinpaTRBuqjryJbEu6X3XUwg8LbQMAZhjUf1MI=; b=x7B/Ovxr3ftipOuW/P0eAJI7hQ
+	oeKRPyKXZ6naktiXPjk9qj42iI8YYup0ylfRG249m9wNpVCH+0TaNxUzL8ees31du3kuP3gRpNV6K
+	P8dgEEAVEm3UtEjijTB3ArZNUBM8mN0g1pcLw3f+mn8GRPoVbEQZCW/FWZAm9ILhsDE28+tyjMzPE
+	sHCLPTO/uYTX8GWJDOtRLe2D3aiZ85zGf+P9dFRgMiU7uYOlOVAlvEh0CqlSBupSc3XnV89Q6Qcds
+	lHT8m3TdvTVraUNZhDlp0pVkpnu+TClfJs+781PRHvZ5XhbQGEhEVMSgDDb8Mm7xoubF9c6fjNt0w
+	F1wES2Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHezx-003kur-1U;
-	Fri, 07 Jul 2023 06:31:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qHfIp-003nOA-2s;
+	Fri, 07 Jul 2023 06:50:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHezt-003ksb-1L
+	id 1qHfIm-003nNB-2t
 	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Jul 2023 06:31:20 +0000
-X-UUID: da4fabf21c8f11ee83ed1395ce914268-20230706
+	Fri, 07 Jul 2023 06:50:50 +0000
+X-UUID: 948ed8561c9211ee912e1518a6540028-20230706
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=UAziGWEIBjQI0wuqlkRiC4ex2AoxNSXCmO21CSvsE4E=;
-	b=XGlbXCueM09dKinvQhK629iKAwF5q3eDwKHjJvmc6dH5xDlHs9JwDknkRWUw1kznO8oL5kqjJ7rwQMnXz86dee7FqD4sfLQabC2INWJxXwzB6Ok2AAS85ijjRP/Sgx8cSoYyFViPeeRHxqVMj65DDP/6DlbRHp5bXtTwhL4VVac=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=l28sDxinpaTRBuqjryJbEu6X3XUwg8LbQMAZhjUf1MI=;
+	b=SNPQ51VT9BWswPgc6teLr4bAKonRx9We6feCM0KPsIR3fR7TVOB1bJp/cpBqOQjEWVmPWPsAfFZ6N2dam4yXDKx+ji4hnOdgIspnzQx3BuJO1BcojjoA5wFsPUTUJLQ9DovV0IlMMAxSyXWMB+hukySjJmgpD6om1sBnfDKoY1A=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:8af3fd14-705e-4bde-88e4-0f9dd837edbf,IP:0,U
+X-CID-O-INFO: VERSION:1.1.27,REQID:72987318-2216-483f-b05a-a7542f9f1670,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:01c9525,CLOUDID:ff1cab0d-26a8-467f-b838-f99719a9c083,B
+X-CID-META: VersionHash:01c9525,CLOUDID:eabfcd82-5a99-42ae-a2dd-e4afb731b474,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: da4fabf21c8f11ee83ed1395ce914268-20230706
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-UUID: 948ed8561c9211ee912e1518a6540028-20230706
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <chris.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 982608447; Thu, 06 Jul 2023 23:31:06 -0700
+	with ESMTP id 322243526; Thu, 06 Jul 2023 23:50:37 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 7 Jul 2023 14:30:02 +0800
+ 15.2.1118.26; Fri, 7 Jul 2023 14:30:01 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 7 Jul 2023 14:30:02 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 7 Jul 2023 14:30:01 +0800
 From: Chris Lu <chris.lu@mediatek.com>
 To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
 	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
@@ -62,17 +62,15 @@ CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
 	<linux-bluetooth@vger.kernel.org>, linux-kernel
 	<linux-kernel@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v3 2/2] Bluetooth: btusb: Add new VID/PID 04ca/3804 for MT7922
-Date: Fri, 7 Jul 2023 14:29:59 +0800
-Message-ID: <20230707062959.30371-2-chris.lu@mediatek.com>
+Subject: [PATCH v3 1/2] Bluetooth: btusb: Add new VID/PID 0489/e102 for MT7922
+Date: Fri, 7 Jul 2023 14:29:58 +0800
+Message-ID: <20230707062959.30371-1-chris.lu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230707062959.30371-1-chris.lu@mediatek.com>
-References: <20230707062959.30371-1-chris.lu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230706_233117_466414_EDC8F3DD 
-X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-CacheID: sfid-20230706_235048_965953_08E89D3D 
+X-CRM114-Status: UNSURE (   9.38  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,14 +86,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add VID 04ca & PID 3804 for MediaTek MT7922 USB Bluetooth chip.
+Add VID 0489 & PID e102 for MediaTek MT7922 USB Bluetooth chip.
 
 The information in /sys/kernel/debug/usb/devices about the Bluetooth
 device is listed as the below.
 
 T:  Bus=05 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
 D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=04ca ProdID=3804 Rev= 1.00
+P:  Vendor=0489 ProdID=e102 Rev= 1.00
 S:  Manufacturer=MediaTek Inc.
 S:  Product=Wireless_Device
 S:  SerialNumber=000000000
@@ -142,14 +140,14 @@ v3: fix bot checking error, change title
  1 file changed, 3 insertions(+)
 
 diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 9c886c9cce64..323ca92539eb 100644
+index c7411557e491..9c886c9cce64 100644
 --- a/drivers/bluetooth/btusb.c
 +++ b/drivers/bluetooth/btusb.c
-@@ -638,6 +638,9 @@ static const struct usb_device_id blacklist_table[] = {
- 	{ USB_DEVICE(0x0489, 0xe102), .driver_info = BTUSB_MEDIATEK |
+@@ -635,6 +635,9 @@ static const struct usb_device_id blacklist_table[] = {
+ 	{ USB_DEVICE(0x0489, 0xe0f6), .driver_info = BTUSB_MEDIATEK |
  						     BTUSB_WIDEBAND_SPEECH |
  						     BTUSB_VALID_LE_STATES },
-+	{ USB_DEVICE(0x04ca, 0x3804), .driver_info = BTUSB_MEDIATEK |
++	{ USB_DEVICE(0x0489, 0xe102), .driver_info = BTUSB_MEDIATEK |
 +						     BTUSB_WIDEBAND_SPEECH |
 +						     BTUSB_VALID_LE_STATES },
  
