@@ -4,87 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 744D6EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 14:11:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC9FAC001DF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 14:12:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0Psajd6OVU6HONVcYwAF4k7kzKO1bSsPA0lwnR4yTjw=; b=zM0clB2IehJ1Ob09BsWBr0PO8B
-	N477zTdam8VXs+nqYIVcwbUynKE4g9Re/DkB1umeBivyMNR1T5MPfBS+bWilbj48WYQBzCRjLKQmd
-	/R14dWec9Yq7LihKLYYaCM18JecR7ypWtMsXGZZjUnCVLpL6sa8zfZqcQvIXCrZBVwnmj5RF8EBPo
-	5EKCZ+4/LJTSQTEbJW98uxhJtHYPIp3AOhfj2xt9w9wxbK6/CU8TFy5dEXKCHcargOz5NZJfvQ0P1
-	eSKwsS7FogGYpbGA8cmE1qaIuVaK83yskEFni97YpjMaZRh599I+f5flAeQB/qd0i3YIVbpIuXTSh
-	Mr3WKGMQ==;
+	bh=ycpGNLsgt/ES0G1zwIWkJIdAtFjomLDl2xkjlXWSTo4=; b=JsEM/7TIXsM+SvCM5yyrS/kXUq
+	kVqviV1aMHcz46/4+J+yywAYLTiECrfDiQOePF6n1z//lDfzTGtz7Ify4zdx+tdDwjvGGR2TntiVF
+	ki1s7dSLQnGqTocsbk8kqD4W64PgyUEUZ62CQkwX6zax3LvMWKHn9U7loE3SJsreJMCPoSK9nvGQh
+	VZLE5Mqojre9dOKTmWfPR4itQsFbeSxkV5sXhSDVBU7CW4aOImmr1P3v6wCRwiUjY677u6K7/qC21
+	/faBhA3LY/6JGFKkV/Fm3K20QgsCwwyY26I8p76HMg9ZG1pQ06XfdWwWGl2rvBpXs9wJxbbThqM8u
+	pMLnC4Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHmBS-004qU8-2x;
-	Fri, 07 Jul 2023 14:11:42 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1qHmBr-004qay-1d;
+	Fri, 07 Jul 2023 14:12:07 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHmBP-004qSg-39
+	id 1qHmBn-004qZF-2M
 	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Jul 2023 14:11:41 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-4fba86f069bso3138449e87.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Jul 2023 07:11:36 -0700 (PDT)
+	Fri, 07 Jul 2023 14:12:04 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-3fbc5d5742bso21151925e9.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Jul 2023 07:12:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1688739095; x=1691331095;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1688739120; x=1691331120;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=0Psajd6OVU6HONVcYwAF4k7kzKO1bSsPA0lwnR4yTjw=;
-        b=k0jYnuzcSLleSs3obf+lLaCtWROeHyPhn8EWW6WP6AGps9GYnwmtxLqnWzko3Y7PZ8
-         MGdMD7Lo5VgU6tDGINs34PTZC/AlLTPiP4yN3qypZ897dyhroZoNVbfW3PS51XY6EpeU
-         Xzv2ErGjwfl9TtO6WYUHjBLOo2OLwswW86WIdgzvZmGpvaP4nyOC8TcKIGKeWLEgqA0i
-         aSCnNlnqho0nUXKhKNTr64NdiMNmAPhbzW0q6jCamtjYfo0jACY8m3YfEM5cMAEC8nAP
-         HmzSyD6zZBMsYmqIW6ZKqmHCzwp5AgoV62trz1lwlG2SeHg1NTc+olyPUN3iJnseb4qp
-         S5nQ==
+        bh=ycpGNLsgt/ES0G1zwIWkJIdAtFjomLDl2xkjlXWSTo4=;
+        b=DVbjMVlxHE9pu3YlBytLFnpsxwPBMrs4rpCRfT0334ztrG4dfj5UIdU8xKhSyHlI9y
+         dGLp86nBHpb1Wu+ID9UCtE6PciybqIGVT99TKQf3pGyXZk5VATe4xCQLgdm8jDwy0J4t
+         aw4jAa8+T0nz9r55f4c6Evev2l5Gqc6l5K0eSgnO3ZeyyNdDyYHbDCh7SnwkUciF2r0L
+         eXqCFb4R0FaCMGVkNY6mryVPdOytgJr4TglhKevcsFBxYZJJLojSXS2c8UtF6mjIpuh9
+         p22MJ0bzcWpPT1A5c6tcjU7D7C5B63Z/0/R/xV6iet0dSYSSVVFX1IOId8dTN6lYtbb3
+         thUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688739095; x=1691331095;
+        d=1e100.net; s=20221208; t=1688739120; x=1691331120;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0Psajd6OVU6HONVcYwAF4k7kzKO1bSsPA0lwnR4yTjw=;
-        b=ZdwsDaAlMeSSjiixk257SYWxfN7OSpOMiwW5QS1VI7/gvKE2sLKKyAm5EDKChNaavu
-         WXfULI4Hv61eFsNJutgI7DpLu3UsNy9N+IwjGQMsKEfDyA8d3+TFUQzAGX30QgxFhkfk
-         ArAWD5zys/kLMR5GQwFvXA4p+kkfVKsGMfYuxVCTUNkk71i5b5pAryRQvsNVsKRzOa0N
-         HP8yO6ZBhLsu8gY0ErYf3s8nLN2pAVwfWnmMOhuo2/9GwlTQrFLH8MCOi0C5r9RYyHfl
-         NFzTOWXOQMYa6L/+aDf8SouKSFuCWdpt3eQveNRk4idMkJVZcPqeOdPihioiu6HwzKmv
-         WDdQ==
-X-Gm-Message-State: ABy/qLZb6RkTX+zXqzKkbYZfEY++HFPm/Rc9ppm/ls5/Bjm9miTTkAJz
-	wEKhtlzjSIwTCGZYVW2cVNNqNw==
-X-Google-Smtp-Source: APBJJlGOrHsd3wpz2+GZmZI1MI3v3biMwXG7vAhqELyS89IGLyJw+nKLVuZO69fJqliUZgxCRzWo9g==
-X-Received: by 2002:a05:6512:3e9:b0:4f8:6d53:a68f with SMTP id n9-20020a05651203e900b004f86d53a68fmr3527714lfq.64.1688739095027;
-        Fri, 07 Jul 2023 07:11:35 -0700 (PDT)
+        bh=ycpGNLsgt/ES0G1zwIWkJIdAtFjomLDl2xkjlXWSTo4=;
+        b=IC4IG0EO86P+2ng8ywrFktyzRxKu+xVx6ScunQ2IsV/O02HveZ5j6hWAO2rK9ha+v8
+         l0KX6roZMst3df6Yp73/KdcrSM19yKndSbXBsYYgfHM3hJNMXCxvx/qr9ng9ozNPc/PQ
+         gKmpAeEjV4p271pT136Fk8rD+zEID9MmuU4juu91zk+UQKafTRTWJFmti0RUTJAn8NMu
+         Knt7cmWZr0dP5lSbypR8p3zo8W71d47+268milhC46e1AX7csrYxOqLgiGH3Ou7f9yhn
+         a8Qmo9BQZoLHOCdKkFJ/3xFiWHJah/JMY7iJP4HkAO+0XzcT9bxd4o0SfnlZw+ESRFEl
+         WgZw==
+X-Gm-Message-State: ABy/qLYqBGZNwoDJvqttkU3cptH5T5ajv7GpRabUTL2vWDXyFLLLJbJj
+	PIwY0E6KdM6ZpdRadGaFeP5l2Q==
+X-Google-Smtp-Source: APBJJlFfVX3E+RmKYUQNq3SgciMbgNUkXY9Sjj/5oyQe0BzJbpLNP6WT1j91P4EKn7/5h62zHXUB0g==
+X-Received: by 2002:a1c:4b0a:0:b0:3fb:d1db:545b with SMTP id y10-20020a1c4b0a000000b003fbd1db545bmr4005976wma.20.1688739120033;
+        Fri, 07 Jul 2023 07:12:00 -0700 (PDT)
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id f11-20020a7bc8cb000000b003fbb618f7adsm2577638wml.15.2023.07.07.07.11.32
+        by smtp.gmail.com with ESMTPSA id l22-20020a7bc456000000b003fbb5142c4bsm2579548wmi.18.2023.07.07.07.11.58
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 07 Jul 2023 07:11:34 -0700 (PDT)
-Message-ID: <538096d2-7b24-e1c7-706d-4d4f952d35eb@baylibre.com>
-Date: Fri, 7 Jul 2023 16:11:32 +0200
+        Fri, 07 Jul 2023 07:11:59 -0700 (PDT)
+Message-ID: <6fb74321-2f85-1a08-e16e-97346bd7e82a@baylibre.com>
+Date: Fri, 7 Jul 2023 16:11:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [RESEND PATCH v2] media: mtk-jpeg: Fix use after free bug due to
- uncanceled work
+Subject: Re: [PATCH v3 6/6] thermal/drivers/mediatek/lvts_thermal: Manage
+ threshold between sensors
 Content-Language: en-US
-To: Zheng Wang <zyytlz.wz@163.com>, Kyrie.Wu@mediatek.com
-Cc: bin.liu@mediatek.com, mchehab@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Irui.Wang@mediatek.com,
- security@kernel.org, hackerzheng666@gmail.com, 1395428693sheep@gmail.com,
- alex000young@gmail.com
-References: <20230707092414.866760-1-zyytlz.wz@163.com>
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Alexandre Bailon <abailon@baylibre.com>,
+ Balsam CHIHI <bchihi@baylibre.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com,
+ Amit Kucheria <amitk@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+References: <20230706153823.201943-1-nfraprado@collabora.com>
+ <20230706153823.201943-7-nfraprado@collabora.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230707092414.866760-1-zyytlz.wz@163.com>
+In-Reply-To: <20230706153823.201943-7-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230707_071140_014860_764AAB6A 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20230707_071203_773912_2CCF4FA1 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,27 +105,23 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 07/07/2023 11:24, Zheng Wang wrote:
-> In mtk_jpeg_probe, &jpeg->job_timeout_work is bound with
-> mtk_jpeg_job_timeout_work. Then mtk_jpeg_dec_device_run
-> and mtk_jpeg_enc_device_run may be called to start the
-> work.
-> If we remove the module which will call mtk_jpeg_remove
-> to make cleanup, there may be a unfinished work. The
-> possible sequence is as follows, which will cause a
-> typical UAF bug.
+On 06/07/2023 17:37, Nícolas F. R. A. Prado wrote:
+> Each LVTS thermal controller can have up to four sensors, each capable
+> of triggering its own interrupt when its measured temperature crosses
+> the configured threshold. The threshold for each sensor is handled
+> separately by the thermal framework, since each one is registered with
+> its own thermal zone and trips. However, the temperature thresholds are
+> configured on the controller, and therefore are shared between all
+> sensors on that controller.
 > 
-> Fix it by canceling the work before cleanup in the mtk_jpeg_remove
+> When the temperature measured by the sensors is different enough to
+> cause the thermal framework to configure different thresholds for each
+> one, interrupts start triggering on sensors outside the last threshold
+> configured.
 > 
-> CPU0                  CPU1
-> 
->                      |mtk_jpeg_job_timeout_work
-> mtk_jpeg_remove     |
->    v4l2_m2m_release  |
->      kfree(m2m_dev); |
->                      |
->                      | v4l2_m2m_get_curr_priv
->                      |   m2m_dev->curr_ctx //use
+> To address the issue, track the thresholds required by each sensor and
+> only actually set the highest one in the hardware, and disable
+> interrupts for all sensors outside the current configured range.
 
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
