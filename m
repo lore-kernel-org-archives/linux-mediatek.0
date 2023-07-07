@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8716C0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 13:54:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C11E1EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 13:58:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jJTnI5bOFiXZjxSo5gJqvfLEvH8akrdBST5kBTlYRFc=; b=x4rsyoUObWHiqCdYUopoEfsB7a
-	DxyPSh39t9kbcVTUttWwGwWsO2Jf7QKOtxifEAuq+dI9GKuVsMBXlQo9UcBLOzPt/oPwPpEDsNrV3
-	4zRLxqiq7j1igOdGms/xwsM7k1Ems1R2ulUF2Q/QVUCe5LestvWZ2f18AnZPAo0+4ZS5luvkAEwwv
-	ngc9JfaSVuZYG4XCmljslPsKTwmzI7Q/v3aYdJ+Uxg2tKbvcDCoplGyjrAxgXnxSkzuZStQs9cyJt
-	zPx66FqelGktnfS/Ff+vs8AB2RKE8+TkcOLrv/3pbcITLM9gyGDZfonyIY6GK6vaY/iodz5O9p0ng
-	wx6PjTag==;
+	bh=YRYKWLcICY/w12lNxMoJVR5s2kK0wW/mWDa5IrHhho0=; b=OMkGFkM7HFBEZQ6pZ4BPOVtoZe
+	snV0GHgnYHH13BbM1YN5bfSGZwY69zPL+O8ZAb7CEC52O+1iTh9JXTCpL+nRiFGMXvOyeB67V/Uu9
+	XGsgMC615LH5kQ69IQ3oexMxMtnShtOL08q42t0aHBjTXrRvXB0Fj5sm+75+KsKcUj6p2T3IJ/MII
+	/nppZzjcZn6kUwImZTxiDn/PMBvK1p2lBnxXDC14TcYeonjDiqpaT2znqJNGOnEIBdneoJPtukLI0
+	NKfr7X8Lh+zJ+F/254uM+EEcuIowCFikdcsFN294olgYs41MnH7mjyTZuE57ttOCNbyCsRfberlEK
+	q9MiKecg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHlv5-004mra-0M;
-	Fri, 07 Jul 2023 13:54:47 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1qHlyZ-004nNg-3B;
+	Fri, 07 Jul 2023 13:58:23 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHlv2-004mqU-0B
+	id 1qHlyW-004nLx-0t
 	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Jul 2023 13:54:45 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-3142970df44so1886093f8f.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Jul 2023 06:54:43 -0700 (PDT)
+	Fri, 07 Jul 2023 13:58:21 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-3141c3a7547so1957599f8f.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Jul 2023 06:58:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1688738082; x=1691330082;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1688738296; x=1691330296;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=jJTnI5bOFiXZjxSo5gJqvfLEvH8akrdBST5kBTlYRFc=;
-        b=sJI9rAeW8PnR8hPPhBs1hw92d5MffHd6A8tD9J3bnyTqmrwlpJRem5yoxcmcZKdtQb
-         fhginQmqQtbHo0VT/F2Bs3cv2U9Ik8GlIiRJKdAfqQoOy/12dsTt8yBcKw5wv7bodx2e
-         uK6jOiozjTi4BniZM+JPjbUrmEN4pLCEMf+CWdGbKuK9qQB53tyT2uJsvSqQhbwE+Jmv
-         vHiXGxxhUhSMwLTPs09/dQT1oXtPvikUVAE5uVh9gGGYrbVJWhIp46Q49b7Qq33wJGUa
-         5Htztozuv8Wg9QzEIHvx+B90napody1iuDt/GS+63Wum00RdAmUdR5zIiCmq73S3Egbs
-         O4ZQ==
+        bh=YRYKWLcICY/w12lNxMoJVR5s2kK0wW/mWDa5IrHhho0=;
+        b=D8DASQjM8uOnq/Et1EL0DKBNOL395SX4Pd99z5tcVN2SjA4RkVZAjGu1Q+5rD7n3RT
+         1zSbc0cQfgXHjkzXIhBWwpaysopWq6WFJZWseTprmcFChioMdkcVs+GXWjFeBndn8BWv
+         7g+0qtRSOl2QKrQJqBB11GEx4jkTiORHX/kpWkOfeEZJ8w4MWIhlx5Fz8nNjRHbBFf8A
+         fTkd06UJg4JkK/tOaeKgd6oik7Z7R/kXeX+EFe8N6LpG1aE7saTmdFlMnGE7m5ob7OcU
+         W9L1tZYvSDs+UAOXk+CIxXOW+eUOeG0auIrUMx8inqhz8XETF6jYv2t/6Bpu0CzFtDyt
+         /NhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688738082; x=1691330082;
+        d=1e100.net; s=20221208; t=1688738296; x=1691330296;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=jJTnI5bOFiXZjxSo5gJqvfLEvH8akrdBST5kBTlYRFc=;
-        b=BHphN6d57e8FbM6G/tKBwjxHE1+x5YZDB5O/6uemS6qFGKdYeapIMBelnhE4rI1lok
-         KJmAz/6hAaEmygF5l8dp7jO/z1zvJN2jWLUuDXnfPjs0GdfZCraP0TVE17jaj74RVFmj
-         LJQuZHXpZ7xiirp5qxsrbgUn52x+FR3H0hh4hbBdZ5zWWFGjG0V4wr7HKt5DbgID3WDI
-         3gDILnpgJQN/RpPF1GsTRKLz5TWSSMY0GkFEunIg5Q+3zJl36cxyTAMhHVE6/ICAUXFd
-         GeNgb8RKvfNmqOPBZLhPpZ1fOnxy/MDGWkSlUnkzg+pKmi1D/bdPculsPxq5olRUrWW0
-         aGiQ==
-X-Gm-Message-State: ABy/qLbCQl1PV5f+8GPVbMVdik05yVX07lKnI1/qAtzKLbf2LuKTuQlN
-	aNZpyt80Y3Aza7JzJvQsEdwUZg==
-X-Google-Smtp-Source: APBJJlG1MkdrB0Xj9FT9FqWVWR4LUOzvfLqDindJnHI+5SJr2VEpgOpqSvIWpTwJAITINDE/EiJxRQ==
-X-Received: by 2002:adf:dd05:0:b0:314:3939:fa1c with SMTP id a5-20020adfdd05000000b003143939fa1cmr4529614wrm.8.1688738082129;
-        Fri, 07 Jul 2023 06:54:42 -0700 (PDT)
+        bh=YRYKWLcICY/w12lNxMoJVR5s2kK0wW/mWDa5IrHhho0=;
+        b=APIsMislALfFHthkg8vHiPLgqUX0rYhl1kkVbrbFPVNd5bvjAUmjFGSjcf1IWYCSxo
+         MOlgFFf7HdJYrzm0ArCag+rEDUOxE3XZWKdcmhkh3sXKn4hi5gd7c3j+iPDNTZapJrq2
+         NffFb+Etg/2ia+c2t1DCCHPtR8GWhNfcQ+ToMIdf/6b0xYkKoKNXkQvD9isuEry4f2Of
+         LyEH0xUfgdnvBwkHG6jiPNeF8ALCPttDIHt+oD859FqjTyzIB2HF1RoZCKtbuY/jSRTM
+         X6yWn/n7lsywyYU1nBIZfMiGaFX5fPmvX+OaE+5N+jIQKBbAIpnyujLSSmhkyY5rXAvG
+         TEug==
+X-Gm-Message-State: ABy/qLZ0REO/Q0lc18mnjSFfHSXzx0fvev+1kNOyZKXpspGFnAqoFwW9
+	D5wZpoXXfaOi8dI7gVcZmHJ8Sw==
+X-Google-Smtp-Source: APBJJlF/IJPwi2hekpbwYkjsQKScIRJcy/Nj82kQId+zt+KJoEcW2RTRZob/tUsy1Qycfvbvjj4riA==
+X-Received: by 2002:adf:ee4a:0:b0:30f:af19:81f3 with SMTP id w10-20020adfee4a000000b0030faf1981f3mr4239441wro.41.1688738296585;
+        Fri, 07 Jul 2023 06:58:16 -0700 (PDT)
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id e17-20020a5d4e91000000b0031433760a92sm4477755wru.115.2023.07.07.06.54.40
+        by smtp.gmail.com with ESMTPSA id f3-20020a5d5683000000b0030ae499da59sm4520881wrv.111.2023.07.07.06.58.14
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 07 Jul 2023 06:54:41 -0700 (PDT)
-Message-ID: <a993d0a7-e7e7-d30a-0848-6a3612b72345@baylibre.com>
-Date: Fri, 7 Jul 2023 15:54:40 +0200
+        Fri, 07 Jul 2023 06:58:15 -0700 (PDT)
+Message-ID: <c0441cfc-82cd-f398-6a11-8b4644953332@baylibre.com>
+Date: Fri, 7 Jul 2023 15:58:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH v3 3/6] thermal/drivers/mediatek/lvts_thermal: Use offset
- threshold for IRQ
+Subject: Re: [PATCH v3 4/6] thermal/drivers/mediatek/lvts_thermal: Disable
+ undesired interrupts
 Content-Language: en-US
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  Daniel Lezcano <daniel.lezcano@linaro.org>
@@ -81,14 +81,14 @@ Cc: Alexandre Bailon <abailon@baylibre.com>,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
 References: <20230706153823.201943-1-nfraprado@collabora.com>
- <20230706153823.201943-4-nfraprado@collabora.com>
+ <20230706153823.201943-5-nfraprado@collabora.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230706153823.201943-4-nfraprado@collabora.com>
+In-Reply-To: <20230706153823.201943-5-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230707_065444_088994_DFCDDA12 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20230707_065820_322760_2E2EF234 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,22 +106,25 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 06/07/2023 17:37, Nícolas F. R. A. Prado wrote:
-> There are two kinds of temperature monitoring interrupts available:
-> * High Offset, Low Offset
-> * Hot, Hot to normal, Cold
+> Out of the many interrupts supported by the hardware, the only ones of
+> interest to the driver currently are:
+> * The temperature went over the high offset threshold, for any of the
+>    sensors
+> * The temperature went below the low offset threshold, for any of the
+>    sensors
+> * The temperature went over the stage3 threshold
 > 
-> The code currently uses the hot/h2n/cold interrupts, however in a way
-> that doesn't work: the cold threshold is left uninitialized, which
-> prevents the other thresholds from ever triggering, and the h2n
-> interrupt is used as the lower threshold, which prevents the hot
-> interrupt from triggering again after the thresholds are updated by the
-> thermal framework, since a hot interrupt can only trigger again after
-> the hot to normal interrupt has been triggered.
+> These are the only thresholds configured by the driver through the
+> OFFSETH, OFFSETL, and PROTTC registers, respectively.
 > 
-> But better yet than addressing those issues, is to use the high/low
-> offset interrupts instead. This way only two thresholds need to be
-> managed, which have a simpler state machine, making them a better match
-> to the thermal framework's high and low thresholds.
+> The current interrupt mask in LVTS_MONINT_CONF, enables many more
+> interrupts, including data ready on sensors for both filtered and
+> immediate mode. These are not only not handled by the driver, but they
+> are also triggered too often, causing unneeded overhead. Disable these
+> unnecessary interrupts.
+> 
+> The meaning of each bit can be seen in the comment describing
+> LVTS_MONINTST in the IRQ handler.
 
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
