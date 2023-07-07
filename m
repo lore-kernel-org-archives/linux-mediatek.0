@@ -4,85 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F14EEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 14:05:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E498EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 14:06:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0C9FKQaL/DjhwSAwt3ArSmfw7wijMULRc04IKf+RB6c=; b=ND87YTE5Fq3btcEguytVdP9Bex
-	Yf5pCx8LMFViAhPwCOQPBJc0o2Ub7gpINXeKLmLLMZaxWjYM4TAwqBDgmcsZGJFUE0N4HGztvEp9g
-	DQdKfc0h8CLGS0HKF0PyZS06fw6Qa5sw1RLbQY5vmAj7MIu2oQ5RZ+pZSkJryQ3+iccBkHiAdxDep
-	eE5y4sFKQTl2ZceW4ZEaH1hEMwxnbzw4OWLTlTjZVQPm+8I+kd/Pv63QVXn+mwOaRK+jOylCY4XPJ
-	oA2Xd5YPgXNc37t9n1MkTZswA1ec/+AjKF3sBKTAPK073u+RhYk2HX8NKGH6NKUfMo46/ef3PqLif
-	p0hoOWJQ==;
+	bh=ypN5vITkkhGfPkJuwEgCilvTnXaVJG+QXbGwWF3FDlA=; b=KShnvwb+Dmq831uAotL7HW9Mf8
+	WGistKZ9v/wirv9ecHdpUmbd4CGaKDa0LwaDhBfuXV5sImNNX3RkcFxzWfNmDZEmkMWhB2SlOII9Z
+	Zmlfj2FcegslmVD+28os0txlrdJEbcJeAiwN3ttXSs1Q7MzB4j2MBaQJ2etM6U2seFd4LmlkOnxYw
+	D0RloHN8CjA6Z6a+cWXqx42/t6FsOPPuAvekN0iB0kBF+q64TUw4DeRu4mru73+RC8ESycfErpCn6
+	vGppBUez3ROkv4jQlpt7dYCcel3fkCTL7L+TUpgge7Tdv9AISQF1hY+0rAqx8+UU0BdyJC2fd97pe
+	wr9nNZxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHm53-004oR5-0I;
-	Fri, 07 Jul 2023 14:05:05 +0000
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+	id 1qHm64-004pNx-25;
+	Fri, 07 Jul 2023 14:06:08 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHm4q-004oHd-0O
+	id 1qHm5z-004pHP-23
 	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Jul 2023 14:04:53 +0000
-Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-2b6ff1a637bso30905761fa.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Jul 2023 07:04:52 -0700 (PDT)
+	Fri, 07 Jul 2023 14:06:06 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-3fbc0609cd6so19870015e9.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Jul 2023 07:06:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1688738691; x=1691330691;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0C9FKQaL/DjhwSAwt3ArSmfw7wijMULRc04IKf+RB6c=;
-        b=JhXWmV+T447FKYsYy6dzhvKCW6juQUSijMSScTTi/Vg7iA6f59CwmTplfO221r6YH1
-         Ru43D7CE7iM4eTo+xO0B6q3tnI5fQtzTwWCdmG9X6Ud2CMD1lPUyxc7LZEeQndf8oW3j
-         TgWzcg3sttamRQvHTWcIIuC6Nj0a73F+Jb68Tz0u5Q4ETeom+/6C3osqTB0SkRIPhO14
-         AuVwUFy5FsIw8lGcZuQ6+CppiH2Spp3aMRTyo+z3fY0l2CPBwwdHSyk0wX8+GMLDkPCc
-         3UsYSKMXfe3p9LT9EOf6PF3Ji6YARY+SQ2367x6aKW9agMKORnZ/w8FgBTPMK+TKwf4y
-         aM8w==
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1688738760; x=1691330760;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ypN5vITkkhGfPkJuwEgCilvTnXaVJG+QXbGwWF3FDlA=;
+        b=U8gTuONmR0RGUohWTlcfQ9UAZEkZtIioCQKg4mgY0r/MJ/TM+Zpill9AVXG4dL+n1J
+         75f8QB231z1Fd0ceajdas6iwgBBsoo74bl11HgBPwzbZZl7J5SBqmNGvUJ+KY4i/tVpc
+         PJMGs+aWolF1d+2lmRul8XsaV1oIefZNmBndfcDd9IgbEc15nODg/tE1iBH/VeMcpr1Z
+         BHNKem+bIBCi34voVW5WDXlUyu5XKHYsOL7tr0SsqpqT0j1caJDD0v1r5AJ9NlsUXcp8
+         tPx796BR+LndDrv2zLi2l+eu7RYcsyjyS29slTh59y7tA030Ofl1tqvV5FSxZCB1/szd
+         iRQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688738691; x=1691330691;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0C9FKQaL/DjhwSAwt3ArSmfw7wijMULRc04IKf+RB6c=;
-        b=OaGT94F5cijFAIUGzfMoEIRBWVs5bgSmvfOj//5LcSqXYO0MkGcDHIw14ORFLi8uB3
-         ujzyMaMj3Fyny3lHT0T8kjlvVpn5Fu6OE9lf/2k3lZirczd/VMGgVywslzDo6UspRZDE
-         2PiCTZ0V93d15PPysjcf3EKjZPF5U4S2FJ48hoQD1JA5DsIJyFi3isGNOOYwJaJ7fVoP
-         bCpddvWjCUGLT6c8E9uKyD5/7zr9e1+1n95JHiFuXwCZoXSxdPT6A5s5OSgobrRk3k0h
-         fdat9VnVgJ+cwEZzTTs9XFuGVwywUvbvjmtr8HQbusZv7vaeuMx+Nx46u6Zsf0f33ZDV
-         AkCA==
-X-Gm-Message-State: ABy/qLaK1ZWOmu9oqM1BZWztBFuvGdhla3yLffJf6rSJJaoiQhTZvO0J
-	NLeTFoU8INVujN2PXzuS6MJu8Q==
-X-Google-Smtp-Source: APBJJlHBmMeXjugK8v9YuEhL1V3jLnXeidwnEj3l3uiEN5XJ77pwCTcdYgDDx1GbKdO/iL6N2yp8wA==
-X-Received: by 2002:a2e:a40f:0:b0:2b6:efcf:1463 with SMTP id p15-20020a2ea40f000000b002b6efcf1463mr3811395ljn.6.1688738690802;
-        Fri, 07 Jul 2023 07:04:50 -0700 (PDT)
-Received: from uffe-tuxpro14.. (h-94-254-63-18.NA.cust.bahnhof.se. [94.254.63.18])
-        by smtp.gmail.com with ESMTPSA id u21-20020a2e8555000000b002b6cb25e3f1sm760341ljj.108.2023.07.07.07.04.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Jul 2023 07:04:50 -0700 (PDT)
-From: Ulf Hansson <ulf.hansson@linaro.org>
-To: Arnd Bergmann <arnd@arndb.de>,
-	Olof Johansson <olof@lixom.net>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>,
-	linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 07/18] soc: mediatek: Move power-domain drivers to the genpd dir
-Date: Fri,  7 Jul 2023 16:04:23 +0200
-Message-Id: <20230707140434.723349-8-ulf.hansson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230707140434.723349-1-ulf.hansson@linaro.org>
-References: <20230707140434.723349-1-ulf.hansson@linaro.org>
+        d=1e100.net; s=20221208; t=1688738760; x=1691330760;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ypN5vITkkhGfPkJuwEgCilvTnXaVJG+QXbGwWF3FDlA=;
+        b=a0wcRtzTKAZh3lQ3S+w7etz8KSYZ9pdNQGBM46oH8Mad0t5xE1duvlVY8ASJtLN9ue
+         gNjbZ4ra9akYlMpJ7loGhvsSJ+TNxeZYgCkykxorA/1/vwraw/0zhvMB2UgsVT/P8xHO
+         gPQ2W5TRbZsnC/xDvgiEJvLyaZ0sz7LevPOtEHohAWMGhfht7QPbtfMet77T8KgHY07L
+         w7nxZEmsW10wzYTevvwbuqRCGLwOH7diQwSpSuNCHGt4wEy7SkeuRiK5zMuOZgEDVzJ9
+         N5RiGtQDZjwNBk/KwMz974WKB91NT67iynoMof7gPXGQucULW+zOfYeYWfyH6lJeWbiR
+         eSAg==
+X-Gm-Message-State: ABy/qLZBSchyocoEUp76LVTGOmXu46v9jMhJLx0lNFqRUKyoEdNz17PZ
+	RBb4T3ehyUR4HncadoCXPyBjbg==
+X-Google-Smtp-Source: APBJJlE4nXzGIyRM7DxqinqjrJdnm+zgxihOIhoG+vQl/r1Bz95EDhhnhhzYxyE7FPttJhhJ/yJ+1A==
+X-Received: by 2002:a5d:6045:0:b0:314:35ba:d02a with SMTP id j5-20020a5d6045000000b0031435bad02amr4720202wrt.13.1688738759840;
+        Fri, 07 Jul 2023 07:05:59 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id q24-20020a056000137800b00314172ba213sm4525758wrz.108.2023.07.07.07.05.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 07 Jul 2023 07:05:58 -0700 (PDT)
+Message-ID: <8557e0a2-6ab8-f056-6796-770b3675b474@baylibre.com>
+Date: Fri, 7 Jul 2023 16:05:57 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v3 5/6] thermal/drivers/mediatek/lvts_thermal: Don't leave
+ threshold zeroed
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Alexandre Bailon <abailon@baylibre.com>,
+ Balsam CHIHI <bchihi@baylibre.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com,
+ Amit Kucheria <amitk@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+References: <20230706153823.201943-1-nfraprado@collabora.com>
+ <20230706153823.201943-6-nfraprado@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230706153823.201943-6-nfraprado@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230707_070452_177575_853AE337 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20230707_070603_688438_28A425B0 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,115 +103,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: <linux-mediatek@lists.infradead.org>
-Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
----
- drivers/genpd/Makefile                              | 1 +
- drivers/genpd/mediatek/Makefile                     | 3 +++
- drivers/{soc => genpd}/mediatek/mt6795-pm-domains.h | 0
- drivers/{soc => genpd}/mediatek/mt8167-pm-domains.h | 0
- drivers/{soc => genpd}/mediatek/mt8173-pm-domains.h | 0
- drivers/{soc => genpd}/mediatek/mt8183-pm-domains.h | 0
- drivers/{soc => genpd}/mediatek/mt8186-pm-domains.h | 0
- drivers/{soc => genpd}/mediatek/mt8188-pm-domains.h | 0
- drivers/{soc => genpd}/mediatek/mt8192-pm-domains.h | 0
- drivers/{soc => genpd}/mediatek/mt8195-pm-domains.h | 0
- drivers/{soc => genpd}/mediatek/mtk-pm-domains.c    | 0
- drivers/{soc => genpd}/mediatek/mtk-pm-domains.h    | 0
- drivers/{soc => genpd}/mediatek/mtk-scpsys.c        | 0
- drivers/soc/mediatek/Makefile                       | 2 --
- 14 files changed, 4 insertions(+), 2 deletions(-)
- create mode 100644 drivers/genpd/mediatek/Makefile
- rename drivers/{soc => genpd}/mediatek/mt6795-pm-domains.h (100%)
- rename drivers/{soc => genpd}/mediatek/mt8167-pm-domains.h (100%)
- rename drivers/{soc => genpd}/mediatek/mt8173-pm-domains.h (100%)
- rename drivers/{soc => genpd}/mediatek/mt8183-pm-domains.h (100%)
- rename drivers/{soc => genpd}/mediatek/mt8186-pm-domains.h (100%)
- rename drivers/{soc => genpd}/mediatek/mt8188-pm-domains.h (100%)
- rename drivers/{soc => genpd}/mediatek/mt8192-pm-domains.h (100%)
- rename drivers/{soc => genpd}/mediatek/mt8195-pm-domains.h (100%)
- rename drivers/{soc => genpd}/mediatek/mtk-pm-domains.c (100%)
- rename drivers/{soc => genpd}/mediatek/mtk-pm-domains.h (100%)
- rename drivers/{soc => genpd}/mediatek/mtk-scpsys.c (100%)
 
-diff --git a/drivers/genpd/Makefile b/drivers/genpd/Makefile
-index 6b9e9fe907f3..1a0a56925756 100644
---- a/drivers/genpd/Makefile
-+++ b/drivers/genpd/Makefile
-@@ -3,3 +3,4 @@ obj-y					+= actions/
- obj-y					+= amlogic/
- obj-y					+= apple/
- obj-y					+= bcm/
-+obj-y					+= mediatek/
-diff --git a/drivers/genpd/mediatek/Makefile b/drivers/genpd/mediatek/Makefile
-new file mode 100644
-index 000000000000..8cde09e654b3
---- /dev/null
-+++ b/drivers/genpd/mediatek/Makefile
-@@ -0,0 +1,3 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+obj-$(CONFIG_MTK_SCPSYS)		+= mtk-scpsys.o
-+obj-$(CONFIG_MTK_SCPSYS_PM_DOMAINS) 	+= mtk-pm-domains.o
-diff --git a/drivers/soc/mediatek/mt6795-pm-domains.h b/drivers/genpd/mediatek/mt6795-pm-domains.h
-similarity index 100%
-rename from drivers/soc/mediatek/mt6795-pm-domains.h
-rename to drivers/genpd/mediatek/mt6795-pm-domains.h
-diff --git a/drivers/soc/mediatek/mt8167-pm-domains.h b/drivers/genpd/mediatek/mt8167-pm-domains.h
-similarity index 100%
-rename from drivers/soc/mediatek/mt8167-pm-domains.h
-rename to drivers/genpd/mediatek/mt8167-pm-domains.h
-diff --git a/drivers/soc/mediatek/mt8173-pm-domains.h b/drivers/genpd/mediatek/mt8173-pm-domains.h
-similarity index 100%
-rename from drivers/soc/mediatek/mt8173-pm-domains.h
-rename to drivers/genpd/mediatek/mt8173-pm-domains.h
-diff --git a/drivers/soc/mediatek/mt8183-pm-domains.h b/drivers/genpd/mediatek/mt8183-pm-domains.h
-similarity index 100%
-rename from drivers/soc/mediatek/mt8183-pm-domains.h
-rename to drivers/genpd/mediatek/mt8183-pm-domains.h
-diff --git a/drivers/soc/mediatek/mt8186-pm-domains.h b/drivers/genpd/mediatek/mt8186-pm-domains.h
-similarity index 100%
-rename from drivers/soc/mediatek/mt8186-pm-domains.h
-rename to drivers/genpd/mediatek/mt8186-pm-domains.h
-diff --git a/drivers/soc/mediatek/mt8188-pm-domains.h b/drivers/genpd/mediatek/mt8188-pm-domains.h
-similarity index 100%
-rename from drivers/soc/mediatek/mt8188-pm-domains.h
-rename to drivers/genpd/mediatek/mt8188-pm-domains.h
-diff --git a/drivers/soc/mediatek/mt8192-pm-domains.h b/drivers/genpd/mediatek/mt8192-pm-domains.h
-similarity index 100%
-rename from drivers/soc/mediatek/mt8192-pm-domains.h
-rename to drivers/genpd/mediatek/mt8192-pm-domains.h
-diff --git a/drivers/soc/mediatek/mt8195-pm-domains.h b/drivers/genpd/mediatek/mt8195-pm-domains.h
-similarity index 100%
-rename from drivers/soc/mediatek/mt8195-pm-domains.h
-rename to drivers/genpd/mediatek/mt8195-pm-domains.h
-diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/genpd/mediatek/mtk-pm-domains.c
-similarity index 100%
-rename from drivers/soc/mediatek/mtk-pm-domains.c
-rename to drivers/genpd/mediatek/mtk-pm-domains.c
-diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/genpd/mediatek/mtk-pm-domains.h
-similarity index 100%
-rename from drivers/soc/mediatek/mtk-pm-domains.h
-rename to drivers/genpd/mediatek/mtk-pm-domains.h
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/genpd/mediatek/mtk-scpsys.c
-similarity index 100%
-rename from drivers/soc/mediatek/mtk-scpsys.c
-rename to drivers/genpd/mediatek/mtk-scpsys.c
-diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-index 8c0ddacbcde8..9d3ce7878c5c 100644
---- a/drivers/soc/mediatek/Makefile
-+++ b/drivers/soc/mediatek/Makefile
-@@ -4,8 +4,6 @@ obj-$(CONFIG_MTK_DEVAPC) += mtk-devapc.o
- obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
- obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
- obj-$(CONFIG_MTK_REGULATOR_COUPLER) += mtk-regulator-coupler.o
--obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
--obj-$(CONFIG_MTK_SCPSYS_PM_DOMAINS) += mtk-pm-domains.o
- obj-$(CONFIG_MTK_MMSYS) += mtk-mmsys.o
- obj-$(CONFIG_MTK_MMSYS) += mtk-mutex.o
- obj-$(CONFIG_MTK_SVS) += mtk-svs.o
+
+On 06/07/2023 17:37, Nícolas F. R. A. Prado wrote:
+> The thermal framework might leave the low threshold unset if there
+> aren't any lower trip points. This leaves the register zeroed, which
+> translates to a very high temperature for the low threshold. The
+> interrupt for this threshold is then immediately triggered, and the
+> state machine gets stuck, preventing any other temperature monitoring
+> interrupts to ever trigger.
+> 
+> (The same happens by not setting the Cold or Hot to Normal thresholds
+> when using those)
+> 
+> Set the unused threshold to a valid low value. This value was chosen so
+> that for any valid golden temperature read from the efuse, when the
+> value is converted to raw and back again to milliCelsius, the result
+> doesn't underflow.
+
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+
 -- 
-2.34.1
-
+Regards,
+Alexandre
 
