@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 425FDEB64D9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 05:27:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E5AEEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 05:27:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EgTVB8/wFgscxLDYs3qg9WMPyo6Fp8L2xH8FV1ZxS8Y=; b=bLEVrr+WezOzSqI4eOwYzNs0AL
-	2ZtnWjN9Ggv8KxseRqav0aBZkwNTpwtKDyagNcvJCK1G5TgJD7i6ZKJo48lkwv72fkoU8hOktu0NG
-	hxhA5V79f0xTUtG6SVA+AVdG4HWKfy+IgxJ3V1smgWIqn4FGLjym6XiG6mRMrPCv7G/+R7QaOitw4
-	/d8+73PIz3Ds41BfHcFu2rBfXs37kTf8EIsHpjPc4jnc3rXqmWzHF7PsA3GXvKYzEIMFBQLvS6OAf
-	dptDX5c7gTPhbpMCGVp8PAqh7dn1hSaQ+lY+AH4uxKkilHpVN+PBzJ/EiTJf9RCiPq+b4D6WxfaS6
-	heQnPhig==;
+	bh=j+QYraQbzb9ohLMzNn/JclhKPYuqSnCdv9f3/SYy3Jw=; b=boHr/FK3mUPYUQmthEORFDCnl9
+	xpWGCt+CFKa5bkZ6PxJ7kB9g9gUMxGfYd06cXavkAfc535ht+HhijQOrfR2ouNqkvxoEZE+DczfV4
+	tcQ1LkXgdHlpj89HOXru+H9nkAXfLU4obbikz69Z2L1Dwaii5ldLFxjY8/IieW45o7yUeFov+ZSZs
+	OBHoHvLlKz+VHPS65CbKUp4LL250HjIDZBHgK9CzU3Ybh30+AqVKLSVbnOYQOPolu73r6ZIuWFJBW
+	KtGxNAo/0FphljOoCkEa1frN0VgPdSZMKD6u8rFUr8+wJMevqDeHsVDA2XANEYVDaM8hH8PmeRJW5
+	PpC/Pc1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHdze-003bjl-2w;
-	Fri, 07 Jul 2023 05:26:58 +0000
+	id 1qHdzj-003bo3-1d;
+	Fri, 07 Jul 2023 05:27:03 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHdza-003bfl-1f;
-	Fri, 07 Jul 2023 05:26:55 +0000
-X-UUID: df53f9361c8611ee83ed1395ce914268-20230706
+	id 1qHdzd-003bib-1e;
+	Fri, 07 Jul 2023 05:26:58 +0000
+X-UUID: e10d03da1c8611ee83ed1395ce914268-20230706
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=EgTVB8/wFgscxLDYs3qg9WMPyo6Fp8L2xH8FV1ZxS8Y=;
-	b=u10n2+cZ99Q7+RD9JI6aMXSMAxcLVhxZ1+pE+/9xttqkE3qBDpmhx1Yxcx3Gzl0KcOL2v1vOtymC01jV/kpUxdQ6Nl7/nJIW2l1/C/kBiXp7/FWp29Outs3KwoGYidSpAlCXrp16rcVl4jUHWmHBIzUrqakG8vd7Fyrigi2k+FE=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=j+QYraQbzb9ohLMzNn/JclhKPYuqSnCdv9f3/SYy3Jw=;
+	b=Zlo5xWMmyFssEPOw7EaHrPfajo5MZzZ95f3fYnUxoXgQwJi0Upwm2p7cgAQKfI/sgpnB5tkI14ScZms7rdPtDBBQbXVxfXFCGC0t1IVPm7r5UoKoQYsiY1uFo7771zJnAooX15rNjVRbJfnXyu1jJoBz2uUSdSgl5D7XMptuLdw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:9be67c3b-aebc-47a4-9386-c4003af5ffae,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:01c9525,CLOUDID:416eaa0d-26a8-467f-b838-f99719a9c083,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO
+X-CID-O-INFO: VERSION:1.1.27,REQID:45de0c81-b2ca-4157-8f26-3fc08782e250,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:95
+X-CID-INFO: VERSION:1.1.27,REQID:45de0c81-b2ca-4157-8f26-3fc08782e250,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
+	:quarantine,TS:95
+X-CID-META: VersionHash:01c9525,CLOUDID:6af4b9da-b4fa-43c8-9c3e-0d3fabd03ec0,B
+	ulkID:230707132617S629QR2Y,BulkQuantity:2,Recheck:0,SF:19|48|38|29|28|17,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: df53f9361c8611ee83ed1395ce914268-20230706
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
+	TF_CID_SPAM_FSD
+X-UUID: e10d03da1c8611ee83ed1395ce914268-20230706
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 707539663; Thu, 06 Jul 2023 22:26:49 -0700
+	with ESMTP id 2114930491; Thu, 06 Jul 2023 22:26:52 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 7 Jul 2023 13:26:16 +0800
+ 15.2.1118.26; Fri, 7 Jul 2023 13:26:14 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 7 Jul 2023 13:26:16 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 7 Jul 2023 13:26:14 +0800
 From: Tinghan Shen <tinghan.shen@mediatek.com>
 To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
 	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Tinghan Shen" <tinghan.shen@mediatek.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tinghan
+ Shen <tinghan.shen@mediatek.com>
 CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v14 12/12] arm64: dts: mediatek: mt8195: Add SCP 2nd core
-Date: Fri, 7 Jul 2023 13:26:12 +0800
-Message-ID: <20230707052612.27521-13-tinghan.shen@mediatek.com>
+Subject: [PATCH v14 04/12] remoteproc: mediatek: Add MT8195 SCP core 1 operations
+Date: Fri, 7 Jul 2023 13:26:04 +0800
+Message-ID: <20230707052612.27521-5-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230707052612.27521-1-tinghan.shen@mediatek.com>
 References: <20230707052612.27521-1-tinghan.shen@mediatek.com>
@@ -73,8 +78,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230706_222654_575262_572E7B73 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20230706_222657_552664_072F5916 
+X-CRM114-Status: GOOD (  15.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,96 +94,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rewrite the MT8195 SCP device node as a cluster and
-add the SCP 2nd core in it.
-
-Since the SCP device node is changed to multi-core structure,
-enable SCP cluster to enable probing SCP core 0.
+The SCP rproc driver has a set of chip dependent callbacks for
+boot sequence and IRQ handling. Implement these callbacks for MT8195
+SCP core 1.
 
 Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
- .../boot/dts/mediatek/mt8195-cherry.dtsi      |  6 +++-
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 34 ++++++++++++++-----
- 2 files changed, 30 insertions(+), 10 deletions(-)
+ drivers/remoteproc/mtk_common.h |  9 ++++++
+ drivers/remoteproc/mtk_scp.c    | 55 +++++++++++++++++++++++++++++++++
+ 2 files changed, 64 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index 37a3e9de90ff..4584077d3a4c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -991,7 +991,11 @@
- 	interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
+diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+index ea6fa1100a00..c0905aec3b4b 100644
+--- a/drivers/remoteproc/mtk_common.h
++++ b/drivers/remoteproc/mtk_common.h
+@@ -47,6 +47,7 @@
+ #define MT8192_SCP2SPM_IPC_CLR		0x4094
+ #define MT8192_GIPC_IN_SET		0x4098
+ #define MT8192_HOST_IPC_INT_BIT		BIT(0)
++#define MT8195_CORE1_HOST_IPC_INT_BIT	BIT(4)
+ 
+ #define MT8192_CORE0_SW_RSTN_CLR	0x10000
+ #define MT8192_CORE0_SW_RSTN_SET	0x10004
+@@ -56,6 +57,14 @@
+ 
+ #define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		GENMASK(7, 4)
+ 
++#define MT8195_CPU1_SRAM_PD			0x1084
++#define MT8195_SSHUB2APMCU_IPC_SET		0x4088
++#define MT8195_SSHUB2APMCU_IPC_CLR		0x408C
++#define MT8195_CORE1_SW_RSTN_CLR		0x20000
++#define MT8195_CORE1_SW_RSTN_SET		0x20004
++#define MT8195_CORE1_MEM_ATT_PREDEF		0x20008
++#define MT8195_CORE1_WDT_CFG			0x20034
++
+ #define SCP_FW_VER_LEN			32
+ #define SCP_SHARE_BUFFER_SIZE		288
+ 
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index dcc94ee2458d..48e759c2d486 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -176,6 +176,16 @@ static void mt8192_scp_reset_deassert(struct mtk_scp *scp)
+ 	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_CLR);
+ }
+ 
++static void mt8195_scp_c1_reset_assert(struct mtk_scp *scp)
++{
++	writel(1, scp->reg_base + MT8195_CORE1_SW_RSTN_SET);
++}
++
++static void mt8195_scp_c1_reset_deassert(struct mtk_scp *scp)
++{
++	writel(1, scp->reg_base + MT8195_CORE1_SW_RSTN_CLR);
++}
++
+ static void mt8183_scp_irq_handler(struct mtk_scp *scp)
+ {
+ 	u32 scp_to_host;
+@@ -212,6 +222,18 @@ static void mt8192_scp_irq_handler(struct mtk_scp *scp)
+ 	}
+ }
+ 
++static void mt8195_scp_c1_irq_handler(struct mtk_scp *scp)
++{
++	u32 scp_to_host;
++
++	scp_to_host = readl(scp->reg_base + MT8195_SSHUB2APMCU_IPC_SET);
++
++	if (scp_to_host & MT8192_SCP_IPC_INT_BIT)
++		scp_ipi_handler(scp);
++
++	writel(scp_to_host, scp->reg_base + MT8195_SSHUB2APMCU_IPC_CLR);
++}
++
+ static irqreturn_t scp_irq_handler(int irq, void *priv)
+ {
+ 	struct mtk_scp *scp = priv;
+@@ -453,6 +475,18 @@ static int mt8195_scp_before_load(struct mtk_scp *scp)
+ 	return 0;
+ }
+ 
++static int mt8195_scp_c1_before_load(struct mtk_scp *scp)
++{
++	scp->data->scp_reset_assert(scp);
++
++	scp_sram_power_on(scp->reg_base + MT8195_CPU1_SRAM_PD, 0);
++
++	/* enable MPU for all memory regions */
++	writel(0xff, scp->reg_base + MT8195_CORE1_MEM_ATT_PREDEF);
++
++	return 0;
++}
++
+ static int scp_load(struct rproc *rproc, const struct firmware *fw)
+ {
+ 	struct mtk_scp *scp = rproc->priv;
+@@ -625,6 +659,15 @@ static void mt8195_scp_stop(struct mtk_scp *scp)
+ 	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
+ }
+ 
++static void mt8195_scp_c1_stop(struct mtk_scp *scp)
++{
++	/* Power off CPU SRAM */
++	scp_sram_power_off(scp->reg_base + MT8195_CPU1_SRAM_PD, 0);
++
++	/* Disable SCP watchdog */
++	writel(0, scp->reg_base + MT8195_CORE1_WDT_CFG);
++}
++
+ static int scp_stop(struct rproc *rproc)
+ {
+ 	struct mtk_scp *scp = rproc->priv;
+@@ -989,6 +1032,18 @@ static const struct mtk_scp_of_data mt8195_of_data = {
+ 	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
  };
  
--&scp {
-+&scp_cluster {
-+	status = "okay";
++static const struct mtk_scp_of_data mt8195_of_data_c1 = {
++	.scp_clk_get = mt8195_scp_clk_get,
++	.scp_before_load = mt8195_scp_c1_before_load,
++	.scp_irq_handler = mt8195_scp_c1_irq_handler,
++	.scp_reset_assert = mt8195_scp_c1_reset_assert,
++	.scp_reset_deassert = mt8195_scp_c1_reset_deassert,
++	.scp_stop = mt8195_scp_c1_stop,
++	.scp_da_to_va = mt8192_scp_da_to_va,
++	.host_to_scp_reg = MT8192_GIPC_IN_SET,
++	.host_to_scp_int_bit = MT8195_CORE1_HOST_IPC_INT_BIT,
 +};
 +
-+&scp_c0 {
- 	status = "okay";
- 
- 	firmware-name = "mediatek/mt8195/scp.img";
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 48b72b3645e1..7809118f74fb 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -922,14 +922,30 @@
- 			clocks = <&infracfg_ao CLK_INFRA_AO_GCE2>;
- 		};
- 
--		scp: scp@10500000 {
--			compatible = "mediatek,mt8195-scp";
--			reg = <0 0x10500000 0 0x100000>,
--			      <0 0x10720000 0 0xe0000>,
--			      <0 0x10700000 0 0x8000>;
--			reg-names = "sram", "cfg", "l1tcm";
--			interrupts = <GIC_SPI 462 IRQ_TYPE_LEVEL_HIGH 0>;
-+		scp_cluster: scp@10500000 {
-+			compatible = "mediatek,mt8195-scp-dual";
-+			reg = <0 0x10720000 0 0xe0000>, <0 0x10700000 0 0x8000>;
-+			reg-names = "cfg", "l1tcm";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+			ranges = <0 0 0x10500000 0x100000>;
- 			status = "disabled";
-+
-+			scp_c0: scp@0 {
-+				compatible = "mediatek,scp-core";
-+				reg = <0x0 0xa0000>;
-+				reg-names = "sram";
-+				interrupts = <GIC_SPI 462 IRQ_TYPE_LEVEL_HIGH 0>;
-+				status = "disabled";
-+			};
-+
-+			scp_c1: scp@a0000 {
-+				compatible = "mediatek,scp-core";
-+				reg = <0xa0000 0x20000>;
-+				reg-names = "sram";
-+				interrupts = <GIC_SPI 463 IRQ_TYPE_LEVEL_HIGH 0>;
-+				status = "disabled";
-+			};
- 		};
- 
- 		scp_adsp: clock-controller@10720000 {
-@@ -2374,7 +2390,7 @@
- 
- 		video-codec@18000000 {
- 			compatible = "mediatek,mt8195-vcodec-dec";
--			mediatek,scp = <&scp>;
-+			mediatek,scp = <&scp_c0>;
- 			iommus = <&iommu_vdo M4U_PORT_L21_VDEC_MC_EXT>;
- 			#address-cells = <2>;
- 			#size-cells = <2>;
-@@ -2540,7 +2556,7 @@
- 				 <&iommu_vdo M4U_PORT_L19_VENC_REF_LUMA>,
- 				 <&iommu_vdo M4U_PORT_L19_VENC_REF_CHROMA>;
- 			interrupts = <GIC_SPI 341 IRQ_TYPE_LEVEL_HIGH 0>;
--			mediatek,scp = <&scp>;
-+			mediatek,scp = <&scp_c0>;
- 			clocks = <&vencsys CLK_VENC_VENC>;
- 			clock-names = "venc_sel";
- 			assigned-clocks = <&topckgen CLK_TOP_VENC>;
+ static const struct of_device_id mtk_scp_of_match[] = {
+ 	{ .compatible = "mediatek,mt8183-scp", .data = &mt8183_of_data },
+ 	{ .compatible = "mediatek,mt8186-scp", .data = &mt8186_of_data },
 -- 
 2.18.0
 
