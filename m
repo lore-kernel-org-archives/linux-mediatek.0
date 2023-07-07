@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8B9AEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 08:19:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBC0CEB64D9
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 08:21:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0RonwMVaBvWQmSi3r+Kkntsh5m0Ec56tiZ8ERWy6JfI=; b=uvvo+fYPxJKbzbVpYfcai6R9bL
-	vZxlGPd3fleWSc+pjGLU3d3Gz4/RWkmXvHXfBDpj5+GKmwLPMnpd6EzxXPlFFr+I5dZBCOOkqq5zp
-	q63h6fQZ7LW9aTo7MgNnVD4nlwZx135cXiy8v4vJcivzPlqUBEI0YYkw3mkzyJRZIVNCrpmVQifL4
-	h6uHOmDvvNgwRXKNKN43VRoy9dUAeyDXNdiSVW1kKN9hCo5d4yqxYi9cL/R17W1UPogOUVHRWFvWI
-	d0eCWE4ohJztvXPOIw33aaaSORQs6/j04MKbHL+UwB094y+NYIPvelwwnaUmcNlJatl8toilWbKSQ
-	69Ysj35g==;
+	bh=w/mcGyhROgMv3S/DPJIHJS7h8zOl7lVEH1O97EBJtKI=; b=J1jVKz8JsysHykw/xlYru7dDfa
+	si3SbdvIh7ioztFPZeE/s+hQjmYqUTQOBjT/ivdyMJOqutIIhU2H9/U+ENwoBq3+ao4jW/jlyrWBS
+	PmOs//3sBwHoFzC4rEC3DcQyKN+tMtaM3FWoujMj3lpRwc1nODsVW5Xq6ANuzEkMkgDhL7ldRrlrN
+	XKMFBOQRXIV2sm4oEXxSHmw2tnrRD8ozag+rOlnuZPUU+ZAkplOzgKNcz2sjzjbp9iSywAnyfGU5e
+	HZk8HZeyxT/ub+4K0CA2iEYlWnp08LXpigJ6reYH4/pUb4mZc49n/Rx8CKfwXBqbQzHABTpmg2I0d
+	MEr5vPXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHggT-003xpf-20;
-	Fri, 07 Jul 2023 08:19:21 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qHgii-003yYw-0e;
+	Fri, 07 Jul 2023 08:21:40 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHggP-003xnf-2d;
-	Fri, 07 Jul 2023 08:19:19 +0000
+	id 1qHgie-003yWp-2X;
+	Fri, 07 Jul 2023 08:21:38 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id ADCD36606FCA;
-	Fri,  7 Jul 2023 09:19:13 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 560766606FCA;
+	Fri,  7 Jul 2023 09:21:31 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688717954;
-	bh=V2zCa6YQcn89QUk+30ncJYOiCspZ2CW7lvzYLcoBYmw=;
+	s=mail; t=1688718092;
+	bh=37R8WytlElX/g9LasuDma5fEgNGMk0IZTGnuoKn6N4Q=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=EKago4s9/yPqzmRoj0O5g0MNg5s9C9Xge7/MwV8FE8TRU2SGLJxDeIdahrJXMvmwj
-	 Z3w/3sIgqHZV8eK3VVGFX7Cfyc7mYfTmfiv65T6vsZsbZftmU/Y42RStc0XhkWyN1E
-	 IZUA+jJRMx2Mpc1+t+0qAIkj0Rx2L8z6ZsPAUU2vHU9iAcUrPonmC/MNMcqwUHiBR1
-	 1yRpFuvEBuuaWDgrZZquwRyGapgqeKZUz6rCRN4VAwv0f86ErE9Lkdy8wFtZ80tab5
-	 YygvdisRuod+sWxfylNiarkLIdTTAP+dOXQGJzh/SClusExi6ev+6mIk9yWobhhEq3
-	 ZS7LhUVVs3Jkg==
-Message-ID: <63457512-1cf4-d2a6-7afc-daa579de99e8@collabora.com>
-Date: Fri, 7 Jul 2023 10:19:10 +0200
+	b=h2kDENk50rWu1SysrlTafzH1+VuYVHOvKAlvGaTaf4J3/TURNCv6Nh4/5oMsW/bwT
+	 7D4klldr1l+6QRtXlAH3L3vpKMo0cs/crDBPwbGFAXsx2lHHOIBh8aQF36MRAHfy6N
+	 M6otPz7A06N/tprFPJtXvw3oa302/9B5GVLc/aMrrQ5rnAvHDXRWwsIf3QI0/bjSaX
+	 mvTi8wMX8tWu3iN86twZupPWrZBF4noD+d376cHaI5eTC9HYnMZzsDjYhKtaRiZ2yy
+	 O2MXc9ugiub0CmVw6AYy/X78kmgi7Ji28umZXg+A9VJ6RRofP9ibetQH4Zb9PelTbE
+	 wMsugYwL7E80Q==
+Message-ID: <0361bfac-95b4-3acc-583a-e8665800fe4d@collabora.com>
+Date: Fri, 7 Jul 2023 10:21:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Fix PM suspend/resume with
- venc clocks
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- yong.wu@mediatek.com, tinghan.shen@mediatek.com, weiyi.lu@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20230706095841.109315-1-angelogioacchino.delregno@collabora.com>
- <CAGXv+5HsScBVMOY4JcSNS_ZZdpLnNAYWUKohwmfQr6gJJv26CA@mail.gmail.com>
+Subject: Re: [PATCH v3 3/6] thermal/drivers/mediatek/lvts_thermal: Use offset
+ threshold for IRQ
 Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Alexandre Bailon <abailon@baylibre.com>,
+ Balsam CHIHI <bchihi@baylibre.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ Alexandre Mergnat <amergnat@baylibre.com>, kernel@collabora.com,
+ Amit Kucheria <amitk@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+References: <20230706153823.201943-1-nfraprado@collabora.com>
+ <20230706153823.201943-4-nfraprado@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5HsScBVMOY4JcSNS_ZZdpLnNAYWUKohwmfQr6gJJv26CA@mail.gmail.com>
+In-Reply-To: <20230706153823.201943-4-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230707_011918_173443_9DB55F44 
-X-CRM114-Status: GOOD (  22.18  )
+X-CRM114-CacheID: sfid-20230707_012136_958380_47D6A830 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,95 +83,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/07/23 07:06, Chen-Yu Tsai ha scritto:
-> On Thu, Jul 6, 2023 at 5:59 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Before suspending the LARBs we're making sure that any operation is
->> done: this never happens because we are unexpectedly unclocking the
->> LARB20 before executing the suspend handler for the MediaTek Smart
->> Multimedia Interface (SMI) and the cause of this is incorrect clocks
->> on this LARB.
->>
->> Fix this issue by changing the Local Arbiter 20 (used by the video
->> encoder secondary core) apb clock to CLK_VENC_CORE1_VENC;
->> furthermore, in order to make sure that both the PM resume and video
->> encoder operation is stable, add the CLK_VENC(_CORE1)_LARB clock to
->> the VENC (main core) and VENC_CORE1 power domains, as this IP cannot
->> communicate with the rest of the system (the AP) without local
->> arbiter clocks being operational.
+Il 06/07/23 17:37, Nícolas F. R. A. Prado ha scritto:
+> There are two kinds of temperature monitoring interrupts available:
+> * High Offset, Low Offset
+> * Hot, Hot to normal, Cold
 > 
-> Somehow I feel like this is papering over some dependency issue in Linux.
+> The code currently uses the hot/h2n/cold interrupts, however in a way
+> that doesn't work: the cold threshold is left uninitialized, which
+> prevents the other thresholds from ever triggering, and the h2n
+> interrupt is used as the lower threshold, which prevents the hot
+> interrupt from triggering again after the thresholds are updated by the
+> thermal framework, since a hot interrupt can only trigger again after
+> the hot to normal interrupt has been triggered.
 > 
-
-It felt the same here, but then, if you disable the video encoder driver entirely
-(or even both enc/dec drivers), you'll still get issues with the LARB20 timing out
-on the SLP_PROT_RDY check, as there's something in queue going through that larb,
-probably from something done by the bootloader before booting Linux.
-
-Note that I'm pointing my finger to the bootloader because - again - even disabling
-the venc entirely produces the same issue, and if you disable probing the LARB20
-you will anyway get sleep issues (wakes up immediately after going to sleep).
-
-That said, there is another possible solution to that (but even then, I think that
-we still need those clock assignments that I've done here), which is to implement
-the SMI power domains (mtcmos...): we'd be saving *all smi registers*, resetting an
-entire SMI ctx with a poweroff, powering back on and restoring all registers *but*
-larb20... at least that's the only solution that I've seen downstream (android
-kernels).
-
-...and that's why I believe that this commit is correct.
-
-Of course, if there's something that I'm underestimating here, I'd be glad to
-understand.
-
-Cheers,
-Angelo
-
->> Fixes: 3b5838d1d82e ("arm64: dts: mt8195: Add iommu and smi nodes")
->> Fixes: 2b515194bf0c ("arm64: dts: mt8195: Add power domains controller")
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 6 +++++-
->>   1 file changed, 5 insertions(+), 1 deletion(-)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
->> index 95bd058d6083..5c670fce1e47 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
->> @@ -626,6 +626,8 @@ power-domain@MT8195_POWER_DOMAIN_VDEC1 {
->>
->>                                          power-domain@MT8195_POWER_DOMAIN_VENC_CORE1 {
->>                                                  reg = <MT8195_POWER_DOMAIN_VENC_CORE1>;
->> +                                               clocks = <&vencsys_core1 CLK_VENC_CORE1_LARB>;
->> +                                               clock-names = "venc1-larb";
->>                                                  mediatek,infracfg = <&infracfg_ao>;
->>                                                  #power-domain-cells = <0>;
->>                                          };
->> @@ -688,6 +690,8 @@ power-domain@MT8195_POWER_DOMAIN_VDEC2 {
->>
->>                                                  power-domain@MT8195_POWER_DOMAIN_VENC {
->>                                                          reg = <MT8195_POWER_DOMAIN_VENC>;
->> +                                                       clocks = <&vencsys CLK_VENC_LARB>;
->> +                                                       clock-names = "venc0-larb";
->>                                                          mediatek,infracfg = <&infracfg_ao>;
->>                                                          #power-domain-cells = <0>;
->>                                                  };
->> @@ -3094,7 +3098,7 @@ larb20: larb@1b010000 {
->>                          reg = <0 0x1b010000 0 0x1000>;
->>                          mediatek,larb-id = <20>;
->>                          mediatek,smi = <&smi_common_vpp>;
->> -                       clocks = <&vencsys_core1 CLK_VENC_CORE1_LARB>,
->> +                       clocks = <&vencsys_core1 CLK_VENC_CORE1_VENC>,
->>                                   <&vencsys_core1 CLK_VENC_CORE1_GALS>,
->>                                   <&vppsys0 CLK_VPP0_GALS_VDO0_VDO1_VENCSYS_CORE1>;
->>                          clock-names = "apb", "smi", "gals";
->> --
->> 2.40.1
->>
->>
+> But better yet than addressing those issues, is to use the high/low
+> offset interrupts instead. This way only two thresholds need to be
+> managed, which have a simpler state machine, making them a better match
+> to the thermal framework's high and low thresholds.
+> 
+> Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 > 
 
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
