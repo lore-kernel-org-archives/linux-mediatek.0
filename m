@@ -4,74 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD8D5EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 06:50:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 389FAEB64D9
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 07:54:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=l28sDxinpaTRBuqjryJbEu6X3XUwg8LbQMAZhjUf1MI=; b=x7B/Ovxr3ftipOuW/P0eAJI7hQ
-	oeKRPyKXZ6naktiXPjk9qj42iI8YYup0ylfRG249m9wNpVCH+0TaNxUzL8ees31du3kuP3gRpNV6K
-	P8dgEEAVEm3UtEjijTB3ArZNUBM8mN0g1pcLw3f+mn8GRPoVbEQZCW/FWZAm9ILhsDE28+tyjMzPE
-	sHCLPTO/uYTX8GWJDOtRLe2D3aiZ85zGf+P9dFRgMiU7uYOlOVAlvEh0CqlSBupSc3XnV89Q6Qcds
-	lHT8m3TdvTVraUNZhDlp0pVkpnu+TClfJs+781PRHvZ5XhbQGEhEVMSgDDb8Mm7xoubF9c6fjNt0w
-	F1wES2Ng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HQgfVl/i/AVcUS5ggc70MxFgfsFBmBSGVm2GhzJXRGM=; b=uYgW9wE14ITFuFyni0EKM3Nvec
+	bETxZYGS/lcw/SvzHnrIH/QH/isMvD3zu86vmWae8QjTcrZOj/9e3FQSjbclEar6I3I/VUL14GwDV
+	/JezcVag6XhTwheHQTcxPt5lmeChgzvWXUhTnaMHDJXDQ98LrFM7/lSKkSWU3CH0khBqEepRDpbdw
+	jB8yOQxUvDW039nY5cmQSJrq9UC6684i1M2nClXoEtf1au1y6JD/BWoedaKxN91ss6LjcMRBsAOX8
+	9bxizQ1lqKLg2qf3tIx9v6TDAoF4XplyE4bVmHOaFaCcGjj74utUAAJxnBtMHahOuqKcM0Fuuv+bU
+	AaCHLh8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHfIp-003nOA-2s;
-	Fri, 07 Jul 2023 06:50:51 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qHgI2-003vA8-2T;
+	Fri, 07 Jul 2023 07:54:06 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHfIm-003nNB-2t
+	id 1qHgHz-003v7f-2y
 	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Jul 2023 06:50:50 +0000
-X-UUID: 948ed8561c9211ee912e1518a6540028-20230706
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=l28sDxinpaTRBuqjryJbEu6X3XUwg8LbQMAZhjUf1MI=;
-	b=SNPQ51VT9BWswPgc6teLr4bAKonRx9We6feCM0KPsIR3fR7TVOB1bJp/cpBqOQjEWVmPWPsAfFZ6N2dam4yXDKx+ji4hnOdgIspnzQx3BuJO1BcojjoA5wFsPUTUJLQ9DovV0IlMMAxSyXWMB+hukySjJmgpD6om1sBnfDKoY1A=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:72987318-2216-483f-b05a-a7542f9f1670,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:01c9525,CLOUDID:eabfcd82-5a99-42ae-a2dd-e4afb731b474,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 948ed8561c9211ee912e1518a6540028-20230706
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 322243526; Thu, 06 Jul 2023 23:50:37 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 7 Jul 2023 14:30:01 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 7 Jul 2023 14:30:01 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
-	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth
-	<linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v3 1/2] Bluetooth: btusb: Add new VID/PID 0489/e102 for MT7922
-Date: Fri, 7 Jul 2023 14:29:58 +0800
-Message-ID: <20230707062959.30371-1-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Fri, 07 Jul 2023 07:54:05 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1b8b318c5cfso10642295ad.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Jul 2023 00:53:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1688716438; x=1691308438;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=HQgfVl/i/AVcUS5ggc70MxFgfsFBmBSGVm2GhzJXRGM=;
+        b=EY+mwitihR1BY0wiVH06ZwvPZB0vcDEEn4HC1LNgbbGW0oKYFmY/xs24morMGXUsr3
+         jV/bx4/CxOmJaCIiln1tlZ+gG4y3QixOpNEEnx+9RihDs7Dkeh2hu9R+WjcULUPemcIj
+         PBni27YtiE7DOpbwTUoRCcqMt1BLkGrrrVyTs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688716438; x=1691308438;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=HQgfVl/i/AVcUS5ggc70MxFgfsFBmBSGVm2GhzJXRGM=;
+        b=WSN8uW+N1hGdEghSCb5mOp1ezk1xBqmp7v1yNFcaJGAxuPmb0kFXelbvZRVbkW39ds
+         8pXtiijk7e36C9Dgccpwx+5+4jIN4ASJY91IGx196bU/lmZf155zI2UmBELSPXnjsdw2
+         1rs5fWmX+Hk7/voh1Egiqrw8t6ixU+2kEsSS5OICn7u421aehBe//gYdhsI6sv77pLR+
+         6D/eR0eIKF2f7tt4WNsUmeytSEJhRmWvhI8bAOWqthxkMbUGo/liIkMAzLvb5yILpQXA
+         1TqQP+iZTO8ybhN3oDTlm2nalMqZp4uLigBD77pb2LaBlw9uVFhY5V461UPU/TeMO6aE
+         V6FQ==
+X-Gm-Message-State: ABy/qLZEO950tnU5c4RlviJa8s+HanPUchizXlSTVDfCfe7iW11yjybT
+	PkmOGhUtQkQLeiKf55/6/agL5Q==
+X-Google-Smtp-Source: APBJJlF6RcNC5y+ljau2+G5q7B3VhzXd0PfFiNLMgLRX96g3mUA+FT12+Re08qem3DIVvI9ZeTddlw==
+X-Received: by 2002:a17:903:120f:b0:1b3:cac7:19cd with SMTP id l15-20020a170903120f00b001b3cac719cdmr4804993plh.18.1688716438426;
+        Fri, 07 Jul 2023 00:53:58 -0700 (PDT)
+Received: from google.com ([2401:fa00:1:10:7493:8870:1e91:754])
+        by smtp.gmail.com with ESMTPSA id u15-20020a170902e5cf00b001b1c3542f57sm2611449plf.103.2023.07.07.00.53.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Jul 2023 00:53:58 -0700 (PDT)
+Date: Fri, 7 Jul 2023 15:53:54 +0800
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Bernhard =?iso-8859-1?Q?Rosenkr=E4nzer?= <bero@baylibre.com>,
+	Amit Kucheria <amitk@kernel.org>,
+	Balsam CHIHI <bchihi@baylibre.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Make readings
+ valid in filtered mode
+Message-ID: <20230707075354.GA1333497@google.com>
+References: <20230706161509.204546-1-nfraprado@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230706161509.204546-1-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230706_235048_965953_08E89D3D 
-X-CRM114-Status: UNSURE (   9.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230707_005403_958720_25633B73 
+X-CRM114-Status: GOOD (  24.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,74 +98,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add VID 0489 & PID e102 for MediaTek MT7922 USB Bluetooth chip.
+On Thu, Jul 06, 2023 at 12:14:33PM -0400, Nícolas F. R. A. Prado wrote:
+> Currently, when a controller is configured to use filtered mode, thermal
+> readings are valid only about 30% of the time.
+> 
+> Upon testing, it was noticed that lowering any of the interval settings
+> resulted in an improved rate of valid data. The same was observed when
+> decreasing the number of samples for each sensor (which also results in
+> quicker measurements).
+> 
+> Retrying the read with a timeout longer than the time it takes to
+> resample (about 344us with these settings and 4 sensors) also improves
+> the rate.
+> 
+> Lower all timing settings to the minimum, configure the filtering to
+> single sample, and poll the measurement register for at least one period
+> to improve the data validity on filtered mode.  With these changes in
+> place, out of 100000 reads, a single one failed, ie 99.999% of the data
+> was valid.
+> 
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-The information in /sys/kernel/debug/usb/devices about the Bluetooth
-device is listed as the below.
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 
-T:  Bus=05 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=0489 ProdID=e102 Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+on Hayato. Reading out the temperature is now quite reliable.
 
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
----
-v2: update commit message
-v3: fix bot checking error, change title
----
- drivers/bluetooth/btusb.c | 3 +++
- 1 file changed, 3 insertions(+)
+> 
+> ---
+> 
+>  drivers/thermal/mediatek/lvts_thermal.c | 15 ++++++++-------
+>  1 file changed, 8 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+> index 1e11defe4f35..b5fb1d8bc3d8 100644
+> --- a/drivers/thermal/mediatek/lvts_thermal.c
+> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> @@ -58,11 +58,11 @@
+>  #define LVTS_PROTTC(__base)		(__base + 0x00CC)
+>  #define LVTS_CLKEN(__base)		(__base + 0x00E4)
+>  
+> -#define LVTS_PERIOD_UNIT			((118 * 1000) / (256 * 38))
+> -#define LVTS_GROUP_INTERVAL			1
+> -#define LVTS_FILTER_INTERVAL		1
+> -#define LVTS_SENSOR_INTERVAL		1
+> -#define LVTS_HW_FILTER				0x2
+> +#define LVTS_PERIOD_UNIT			0
+> +#define LVTS_GROUP_INTERVAL			0
+> +#define LVTS_FILTER_INTERVAL		0
+> +#define LVTS_SENSOR_INTERVAL		0
+> +#define LVTS_HW_FILTER				0x0
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index c7411557e491..9c886c9cce64 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -635,6 +635,9 @@ static const struct usb_device_id blacklist_table[] = {
- 	{ USB_DEVICE(0x0489, 0xe0f6), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH |
- 						     BTUSB_VALID_LE_STATES },
-+	{ USB_DEVICE(0x0489, 0xe102), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH |
-+						     BTUSB_VALID_LE_STATES },
- 
- 	/* Additional Realtek 8723AE Bluetooth devices */
- 	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
--- 
-2.18.0
+This hunk conflicts with
 
+    thermal/drivers/mediatek/lvts_thermal: Disable undesired interrupts
+
+from your other series
+
+>  #define LVTS_TSSEL_CONF				0x13121110
+>  #define LVTS_CALSCALE_CONF			0x300
+>  #define LVTS_MONINT_CONF			0x9FBF7BDE
+
+on this line.
+
+> @@ -257,6 +257,7 @@ static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+>  	struct lvts_sensor *lvts_sensor = thermal_zone_device_priv(tz);
+>  	void __iomem *msr = lvts_sensor->msr;
+>  	u32 value;
+> +	int rc;
+>  
+>  	/*
+>  	 * Measurement registers:
+> @@ -269,7 +270,7 @@ static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+>  	 * 16	: Valid temperature
+>  	 * 15-0	: Raw temperature
+>  	 */
+> -	value = readl(msr);
+> +	rc = readl_poll_timeout(msr, value, value & BIT(16), 240, 400);
+>  
+>  	/*
+>  	 * As the thermal zone temperature will read before the
+> @@ -282,7 +283,7 @@ static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+>  	 * functionning temperature and directly jump to a system
+>  	 * shutdown.
+>  	 */
+> -	if (!(value & BIT(16)))
+> +	if (rc)
+>  		return -EAGAIN;
+>  
+>  	*temp = lvts_raw_to_temp(value & 0xFFFF);
+> -- 
+> 2.41.0
+> 
 
