@@ -4,71 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CDE1C001B0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 12:05:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECD13EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jul 2023 13:46:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PVzoMMNi2XMFOXeb+6E0MD48AbYSDgI4GP4t3Ccq3Nk=; b=As4+ZV1AEWA6W8VHKxpH7b/JN/
-	21+mhftuueKsDQNqMibU1JpTfGuNGL30Rdggm2/rDcYE3tkl+e/luMIXdtxWb7iYacYyjRCbBvDes
-	o0EbgU8ZEfTNsdFBcpsFkoBpyBWdbgBp/7ozr6zoqVMhGsGrbVbt+A2dXg5pHXfhncwNaA0NKX+jt
-	uA28H/Sx/RMEP3ynmRWzupyrmbxA1UyP0P175jlS/XNwNdc0aw9hNAdmUERtGJwn5263bpoFii2BZ
-	pZ25HMcvSpS2UOedkKiY8RG3fP4WMl/cY1UCXgzQAcvCiUfKLKzKxw1PECBvPwv3TMCgsaCnsMmiD
-	ERLFLMNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RLquJa6vX3cAREt2G8PV33YRnBnR13Onc50DdWvUBjI=; b=QTvrUcwL053AEaBYRQhkhrRpKI
+	0OlhijfZS8BQT1FwXHaE+RezoH82R1kLbaGQ1K6gq163r2P6wy2adc1OcTDxu7aKH8+4hYHVCX2re
+	iskpakwadZqegoIPUT/n8J0GIi9Jp16n1HFrfCJmYIl6v1M89nDsI7OZ5ob1zgGC4ibcWPFBtCMFS
+	vHUgHa+/yMuFpoQiS1IRNv3sIm7EKirb9MHkxPrZLdxjO5Y/Ho1FeoUnGzCzpNuiL7Xwxeuvz6gi/
+	+nezGvO3qIED/eszvt8QduJLL8hY8T64TyTUy4WedmBqfTRIJUfc/LohJMM513vbQJkIWlkiLdQhW
+	EqGkTssQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHkD4-004aCC-2R;
-	Fri, 07 Jul 2023 12:05:14 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qHln0-004lau-01;
+	Fri, 07 Jul 2023 13:46:26 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHkD2-004aC1-1r
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 07 Jul 2023 12:05:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=PVzoMMNi2XMFOXeb+6E0MD48AbYSDgI4GP4t3Ccq3Nk=; b=UxxJDh8dPW4HaUIDblLVYhRUd4
-	XZkDHuWuHCFGtcPSyKSupRcWU60FByXkl0t66TmDL5MVqqO6XSa+j9R4uYE4tqn7K4AP1giZk3Ynl
-	ydv6mnOvzOmCE7ELebWRoEh98pwML4mLu56nIHCJ33oTgcEhkPAT8gDzFq03slCYMj0f4zAfIZsH8
-	U6aDvs1p3Rkq4HblOCZRP582bIALggV9xgUzoap95v2Mvdnpdw0dkMovYrPOTqM1mRSVRix5GtNPu
-	5wTrXiBcyXI/8mqHDNgeWIhKXrmbBZ325xGd+XKH3Q2bYQzUaNryrz2hjaOt+L2+E17WNLMC72uUY
-	LJ8gpOSQ==;
-Received: from mail.computer-surgery.co.uk ([82.69.253.61] helo=nicole.computer-surgery.co.uk)
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qHkCt-00F5KC-22
+	id 1qHlmv-004lZx-2x
 	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Jul 2023 12:05:07 +0000
-Received: from roger by nicole.computer-surgery.co.uk with local (Exim 4.92)
-	(envelope-from <roger@computer-surgery.co.uk>)
-	id 1qHkCb-0008QO-BX; Fri, 07 Jul 2023 13:04:45 +0100
-Date: Fri, 7 Jul 2023 13:04:45 +0100
-From: Roger Gammans <rgammans@gammascience.co.uk>
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
-	Johan Hedberg <johan.hedberg@gmail.com>,
-	Luiz Von Dentz <luiz.dentz@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Aaron Hou <aaron.hou@mediatek.com>,
-	Steve Lee <steve.lee@mediatek.com>,
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>,
-	linux-kernel <linux-kernel@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v3 1/2] Bluetooth: btusb: Add new VID/PID 0489/e102 for
- MT7922
-Message-ID: <20230707120444.GA32181@computer-surgery.co.uk>
-References: <20230707062959.30371-1-chris.lu@mediatek.com>
+	Fri, 07 Jul 2023 13:46:24 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-31427ddd3fbso1959371f8f.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Jul 2023 06:46:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1688737580; x=1691329580;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=RLquJa6vX3cAREt2G8PV33YRnBnR13Onc50DdWvUBjI=;
+        b=JukIsPb//XimtGRT49yHPUHgpppuoDXUTu+fAvL8jy7/foZHz0PX+0PzonWP0PqKoo
+         89HKFrhwgclR0ZGSMHeplvb7XtpA2U+Cl+T41DNJFMZWNKD1gKpnUxuwhWRzwncHdK5d
+         Nghj/8rmLvI4Fgy6dIzBr37VpDSIKICDxKuO/SKomwxL1qNlBooxwzvvMgc6oVTKCWSB
+         ZWAQMZpCz0s2ghMSE3Yf2SFIapPDURM5SasNTVuNMGYeOvNzqu68RBJS0R+uNqlMqSkz
+         Co+v9tHp+gIH2hcEdfYWYitaISsJb+Cx/IRQgDYEoWF1RScEhcN4w+jructAyya5nZs/
+         b1tg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1688737580; x=1691329580;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=RLquJa6vX3cAREt2G8PV33YRnBnR13Onc50DdWvUBjI=;
+        b=h4Ht15oGF+8EX1iA1MidCjG2+p3O4Md3eCcga6SvSRaitVnvlNjso+PNlwDD48UjKf
+         stgNnv0+gQF5RH73Vni2rKAuNtXh62gqwcpARa2WwHRQAWlD5Anw+z/+XfLfzP1ih2jY
+         5sY2mOgh8wYDXMKGnKGSq3M3IgitcWvNIDDlYYMBkt2pKr0QgV0fWSGhLy1zBPHHZPi+
+         PmjmWf4lkmwaavJFutINc8LOHYsdaBWRazmjf2AAEcWuh8JwTJ836YMTVr8HWwsHbo6v
+         AtML/QlJGgVEZFRLhC2dOYiJEnA8PX1R+6DF6khrEXCvtXZSK/3m67k2zSCaKRv9v6ZS
+         cTYw==
+X-Gm-Message-State: ABy/qLadAP4mcbMzieuhgeZkf9bjfp5IhR02AxkaxuCqobbfYiFKS9oS
+	O3PJqII5bmF5glylVtbSWiQMpw==
+X-Google-Smtp-Source: APBJJlEsux6Oo02kwH3/IRVRH3BiGhQYX8+9sbO0AtWvUSWIsDDiKlL12o7SlmgJvLhe5I1F/TWvzg==
+X-Received: by 2002:adf:fd47:0:b0:314:268b:21f1 with SMTP id h7-20020adffd47000000b00314268b21f1mr4248772wrs.18.1688737579718;
+        Fri, 07 Jul 2023 06:46:19 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id k15-20020a056000004f00b003140fff4f75sm4542205wrx.17.2023.07.07.06.46.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 07 Jul 2023 06:46:18 -0700 (PDT)
+Message-ID: <6bf8d06a-8c65-4d7a-14a1-13597cd9a2de@baylibre.com>
+Date: Fri, 7 Jul 2023 15:46:17 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230707062959.30371-1-chris.lu@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v3 1/6] thermal/drivers/mediatek/lvts_thermal: Handle IRQ
+ on all controllers
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Alexandre Bailon <abailon@baylibre.com>,
+ Balsam CHIHI <bchihi@baylibre.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com,
+ Amit Kucheria <amitk@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+References: <20230706153823.201943-1-nfraprado@collabora.com>
+ <20230706153823.201943-2-nfraprado@collabora.com>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230706153823.201943-2-nfraprado@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230707_130503_962636_1AE3D91C 
-X-CRM114-Status: UNSURE (   8.62  )
+X-CRM114-CacheID: sfid-20230707_064622_169553_E5626029 
+X-CRM114-Status: UNSURE (   9.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,60 +104,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 07, 2023 at 02:29:58PM +0800, Chris Lu wrote:
-> Add VID 0489 & PID e102 for MediaTek MT7922 USB Bluetooth chip.
->
 
-I've been testing a similar patch here for 0489/e0f1, which is the
-vid/pid I see on m my Dell Inspiron laptop.
 
-Dev info is:
-T:  Bus=03 Lev=01 Prnt=01 Port=02 Cnt=02 Dev#=  3 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=0489 ProdID=e0f1 Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+On 06/07/2023 17:37, Nícolas F. R. A. Prado wrote:
+> There is a single IRQ handler for each LVTS thermal domain, and it is
+> supposed to check each of its underlying controllers for the origin of
+> the interrupt and clear its status. However due to a typo, only the
+> first controller was ever being handled, which resulted in the interrupt
+> never being cleared when it happened on the other controllers. Add the
+> missing index so interrupts are handled for all controllers.
 
-I've only tested with keyboard/mice HID devices so far, is that 
-good enough?
-
-Also, do you want me to send a patch or is this enough info ?
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 -- 
-Roger Gammans
-
+Regards,
+Alexandre
 
