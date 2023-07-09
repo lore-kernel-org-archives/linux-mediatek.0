@@ -4,83 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E427C001B0
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Jul 2023 16:27:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EEF0EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Jul 2023 16:34:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y6zbGvaQuZ99enhnUYYjFFLwH7tik1/gT0DNG2wltyM=; b=wLKXCR3ywD+UBvU57bWiUtfps3
-	F3sowhLjQgAryXGX6MiXqZrPQXRGF6icLdaFZZGCwZtw1AdvjKVf/zJXsFKRsVITM3gWzc7ioOwBq
-	iA6gmq0s5lr/IisAyZHnZMDM7G0ptJ0hFI88oA/WYaqpIk6Bc0erkspQOcKkQ7TQhRpI6cZfEAMvZ
-	Br/LUcOmhGrBpn5KaN0Az/BpZUonWAGyxFPT6NopPMzD6PO87ckyErE4/rhxTl6iXcXLyqh2J4+/Z
-	ZpnE4meVcOrE03+ZKU7EvZhli8w5oozksicq79Un+0f4k0ZPnF0GAjbLuz5Q7g2aa6wB/pa7jjeFT
-	+3OePHJg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yJxysCM+PEIMor7Pqqw3+zPyTSTJY0UeWNGMZOe18zw=; b=izO3CC7LSPPt6lCtEQ8+BD6xmx
+	cuppUKFkN7Bo90+8RqAfYWJQDL10Op9Jsr6fCSwjubq0P9s7U2XpleZfjwSkqaofZHMkfryFYHCFE
+	KugtBr5Bm0NWPiaiumk6k39zcPAISNjz8qctBNeqoPS9dPKbNO55+n/x21aMn+iuIUU4E0iMS4wRa
+	ZRPUyGcnxqNl2Mmbg95OWU9quQaLjDGprtE4bbGw4jp3OW8C7/BEhM1V4S+E5Khaf0DxiX8FMc/Ls
+	8S9tr/b2AuxdzjCVvUdspx5GnUAEYJBlW82jbof3JfjMPOE4dk+bpK1MBxZ67GGqHVbmIj0O4dQjr
+	mhvqhVIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIXFN-009Q82-0j;
-	Sun, 09 Jul 2023 16:26:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qIXMJ-009Qpi-2v;
+	Sun, 09 Jul 2023 16:34:03 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIXFJ-009Q7H-2t;
-	Sun, 09 Jul 2023 16:26:51 +0000
-X-UUID: 652057c21e7511ee912e1518a6540028-20230709
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Y6zbGvaQuZ99enhnUYYjFFLwH7tik1/gT0DNG2wltyM=;
-	b=qt0jJ9/8YrR0Qcel0vA4od8U2WgqiC+Cd2Q8KfWCpXB5d83b5FLWAQoWrmNcynq8Ozj/mBlwFIWT0YdAsBQ8ROurTvaIP7tuR1bXAV158h9qeTh6OtfUeA0pjcSqwrAy0TBsb0fVBFy06S1yvVjo0FYBmLXZX8tUl/XKQ0lq/Rc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:b7209d06-3ff7-4d1c-b64e-58a592415a89,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.27,REQID:b7209d06-3ff7-4d1c-b64e-58a592415a89,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:01c9525,CLOUDID:7fbccada-b4fa-43c8-9c3e-0d3fabd03ec0,B
-	ulkID:2307100026453RD35GG8,BulkQuantity:0,Recheck:0,SF:19|48|38|29|28|17,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
-	TF_CID_SPAM_FSD
-X-UUID: 652057c21e7511ee912e1518a6540028-20230709
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 545721354; Sun, 09 Jul 2023 09:26:45 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 10 Jul 2023 00:26:42 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 10 Jul 2023 00:26:42 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Alexandre Mergnat
-	<amergnat@baylibre.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Jason-ch Chen
-	<jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>,
-	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
-	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
-	<shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2 1/2] drm/mediatek: Fix iommu fault by swapping FBs after updating plane state
-Date: Mon, 10 Jul 2023 00:26:40 +0800
-Message-ID: <20230709162641.6405-2-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230709162641.6405-1-jason-jh.lin@mediatek.com>
-References: <20230709162641.6405-1-jason-jh.lin@mediatek.com>
+	id 1qIXMG-009Qp8-0T
+	for linux-mediatek@lists.infradead.org;
+	Sun, 09 Jul 2023 16:34:02 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qIXM7-0001sl-4H; Sun, 09 Jul 2023 18:33:51 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qIXM4-00DE3K-KZ; Sun, 09 Jul 2023 18:33:48 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qIXM3-003ZSr-J6; Sun, 09 Jul 2023 18:33:47 +0200
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-usb@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@pengutronix.de
+Subject: [PATCH] usb: mtu3: Convert to platform remove callback returning void
+Date: Sun,  9 Jul 2023 18:33:35 +0200
+Message-Id: <20230709163335.3458886-1-u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2295; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=/T81r6WMwxUmMRasfxa3EFZ+33Itiuk1lnEmTTIiUEE=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBkquFeaWYzHB0WPRXpdx3gj8S2IYC/Tb6hepJB1 5si0hE78zyJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZKrhXgAKCRCPgPtYfRL+ TtB3CACqUHCt0leatj03pGWzZcvTc7K7duu3YsJl9lvMXFRPBFSuX/URjSb0jT7nr0FfXYKh3/g seOqPRKvDqfdgDZUAZqKBG/O4G/3wwvl0+drPI8zXz9aNs7jF8Wqk0jbB+koZsUyq9rQqA1bE5j ILN/9NZW58jpKMvwRervrT1nttwDo0DIJyBCu92iMLwrovFFF0uQk3kMulHihpY0Ob9K11fpR3V IsdWmfQjOdBSDczX+GdspxQzpy5KViD7JcbIDtKA2yDsgoJPALhuTqIT91UmDHqqcEyevyCTOp5 W6tXo5XsL1Tp8COTPAccBbscIH/oefZlDOube+CCXlr/7lkd
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230709_092649_969630_0032FEF4 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20230709_093400_209680_611AFE84 
+X-CRM114-Status: GOOD (  17.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,35 +75,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-According to the comment in drm_atomic_helper_async_commit(),
-we should make sure FBs have been swapped, so that cleanups in the
-new_state performs a cleanup in the old FB.
+The .remove() callback for a platform driver returns an int which makes
+many driver authors wrongly assume it's possible to do error handling by
+returning an error code. However the value returned is (mostly) ignored
+and this typically results in resource leaks. To improve here there is a
+quest to make the remove callback return void. In the first step of this
+quest all drivers are converted to .remove_new() which already returns
+void.
 
-So we should move swapping FBs after calling mtk_plane_update_new_state(),
-to avoid using the old FB which could be freed.
+The function mtu3_remove() can only return a non-zero value if
+ssusb->dr_mode is neiter USB_DR_MODE_PERIPHERAL nor USB_DR_MODE_HOST nor
+USB_DR_MODE_OTG. In this case however the probe callback doesn't succeed
+and so the remove callback isn't called at all. So the code branch
+resulting in this error path can just be dropped and then mtu3_remove()
+be converted to return void trivially.
 
-Fixes: 1a64a7aff8da ("drm/mediatek: Fix cursor plane no update")
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_plane.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/usb/mtu3/mtu3_plat.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index 31f9420aff6f..b1a918ffe457 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -210,9 +210,9 @@ static void mtk_plane_atomic_async_update(struct drm_plane *plane,
- 	plane->state->src_y = new_state->src_y;
- 	plane->state->src_h = new_state->src_h;
- 	plane->state->src_w = new_state->src_w;
--	swap(plane->state->fb, new_state->fb);
+diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+index 6f264b129243..cc53bfa25b23 100644
+--- a/drivers/usb/mtu3/mtu3_plat.c
++++ b/drivers/usb/mtu3/mtu3_plat.c
+@@ -451,7 +451,7 @@ static int mtu3_probe(struct platform_device *pdev)
+ 	return ret;
+ }
  
- 	mtk_plane_update_new_state(new_state, new_plane_state);
-+	swap(plane->state->fb, new_state->fb);
- 	wmb(); /* Make sure the above parameters are set before update */
- 	new_plane_state->pending.async_dirty = true;
- 	mtk_drm_crtc_async_update(new_state->crtc, plane, state);
+-static int mtu3_remove(struct platform_device *pdev)
++static void mtu3_remove(struct platform_device *pdev)
+ {
+ 	struct ssusb_mtk *ssusb = platform_get_drvdata(pdev);
+ 
+@@ -469,8 +469,6 @@ static int mtu3_remove(struct platform_device *pdev)
+ 		ssusb_gadget_exit(ssusb);
+ 		ssusb_host_exit(ssusb);
+ 		break;
+-	default:
+-		return -EINVAL;
+ 	}
+ 
+ 	ssusb_rscs_exit(ssusb);
+@@ -478,8 +476,6 @@ static int mtu3_remove(struct platform_device *pdev)
+ 	pm_runtime_disable(&pdev->dev);
+ 	pm_runtime_put_noidle(&pdev->dev);
+ 	pm_runtime_set_suspended(&pdev->dev);
+-
+-	return 0;
+ }
+ 
+ static int resume_ip_and_ports(struct ssusb_mtk *ssusb, pm_message_t msg)
+@@ -615,7 +611,7 @@ MODULE_DEVICE_TABLE(of, mtu3_of_match);
+ 
+ static struct platform_driver mtu3_driver = {
+ 	.probe = mtu3_probe,
+-	.remove = mtu3_remove,
++	.remove_new = mtu3_remove,
+ 	.driver = {
+ 		.name = MTU3_DRIVER_NAME,
+ 		.pm = DEV_PM_OPS,
+
+base-commit: 1c7873e3364570ec89343ff4877e0f27a7b21a61
 -- 
-2.18.0
+2.39.2
 
 
