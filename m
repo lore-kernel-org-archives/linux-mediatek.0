@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FBC2EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Jul 2023 18:30:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CE48EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Jul 2023 15:18:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2nWPM4jwPafYGbRkd318KIxOMWqBhLm3R65ukPzT5Hw=; b=dfDtpkc85Tx6IryTPQljgxhpc4
-	bV3XgJ1fYT3eY3HFXwNL4w2FlhC/lxAxVMZKu0VwM+9bH0N4VuyZLrSGMTdZPLHBfYKku3L56XfG0
-	H4I4tw3Tv2mod/9xDuwX32p0ht9hK5p0XOyaGaEWAWRQnQC4v25fR+UO2mG/90+GQkaMZyGX7B9A8
-	ucT5scHJheWUPJwGI7as/vmfDqkTLtg+H/t/4a6V82wt5g01fyMY+G53qV0MdoIgXYkOA8Ntc1uny
-	1V9SVUTVnvid3bTFAZdu65K01wWVgbqW1iOcdabYdEtDH01p3k2t/4moHWNHLar02nveB2EDmD/vW
-	w30knt/Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CKye36yV3ppEkuVPbFdhCjjp99C+kXPP8eAjgMY1ZFk=; b=L/MGZz5IQ25s6EiviuqFHAzL+V
+	pdilD/xheX+LF+uEVTw+UAT44s3G1+fdfMG7HhApsis0kXBipwOxs6MIesdM8Cb1yY+yRY3t0wc6B
+	IX4pYDLsZfSvIB4XE5jU0wgNtEyLT7adtpseLpMBDAHuJcpJVGteIzlmY639KtsXa49xTTgUci9At
+	Zj4V1WcQonNVusfDiyQ+iO3qDxrFtQJ/eTRqW8kwmUilgc1UVBnhRE7ggLqh5x2zygJsnPxjpCep3
+	OeFy8tUOj3awdnPlDhAbP35H/3tS8uhTlPHQUVu3YoZFR8hH52yXj65tBIkg2n2Ovuqxodx0dTqaO
+	gi+YHGkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qICgp-007gYG-0S;
-	Sat, 08 Jul 2023 18:29:51 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1qIWAd-009K9U-18;
+	Sun, 09 Jul 2023 15:17:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qICgj-007gX1-2C;
-	Sat, 08 Jul 2023 18:29:47 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-3fbfa811667so16495105e9.1;
-        Sat, 08 Jul 2023 11:29:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1688840983; x=1691432983;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=2nWPM4jwPafYGbRkd318KIxOMWqBhLm3R65ukPzT5Hw=;
-        b=Eo+Ve0tiHadMyHDD4YevTQOQH7jWzOxi9XRPXgvke/Z4nauF7ijUaEBi86hGQl1XeI
-         v/DReW2ssHDGOaL78gYoJwUkr+JrfAyCGMEIyZ9iV2OOaGFTxcsiHR2/n2LUpIyVU70h
-         oEm2qI6A+t1pfxzOJBQx0x0JBQjis34S6KFKialnq17k8ZAoX4/xCIPJfd/V6uNtcUr2
-         SwqD9LqMph/nDcn1lYu7Ksw46/xs55Sz+KcUILIIh4SawmW/BxIVfxfpTpR5z2gI4bPL
-         6W3Fxz8xe3RtAXl/X/rW3fmFFswhtmiYF2GRediYYo3FA98sh/GGx5oB0CGJmayEPwte
-         Pvkw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688840983; x=1691432983;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=2nWPM4jwPafYGbRkd318KIxOMWqBhLm3R65ukPzT5Hw=;
-        b=W+K5PHGSQROtdpndOTD2F3XDNiOBIiMSkTHn8G8MtJ5Q7yf3Usjnyvvj0aIlUTe9rs
-         yieb8nndeCfuVbZFj5FTDi6L6bCh23v+7NxzRav1J4gisxz3NVpzBm9sWiDL4xay4Xs5
-         jlDDTXwmL6fGttlG3/xbaIC4DhUJu76Nv5xYIYO8+pGYkN/tSxLLtZdCzY/GO6aIKfKU
-         l3b+hDXo1OBJlsPt3GbXuMPbJBs+RbQi3DX5Av9nPQeT9S4d777mBgGgb6aklxrXy7LQ
-         wRJNZKtymhppLaViZ9KTTt6pkI1IkEMI/e4chKAtxfsXdaRvV0poIbqMURM59k4dNkmm
-         4Khg==
-X-Gm-Message-State: ABy/qLZRK/7pqAAQeiwLxU001j33slkkwvHCPZQW/oShxVTFfLsgy8y9
-	sLKpQxYkoXL4o7zBEbS6Ncw=
-X-Google-Smtp-Source: APBJJlHEs+Abh2p4LsTa9DS8Xo9WLU3gZZVMEj49tQExaGWJKA40ooL/IXqMn0LcwfERBDMYoUmscw==
-X-Received: by 2002:a5d:420d:0:b0:314:3f1:cebf with SMTP id n13-20020a5d420d000000b0031403f1cebfmr11449963wrq.28.1688840982706;
-        Sat, 08 Jul 2023 11:29:42 -0700 (PDT)
-Received: from localhost.localdomain (93-34-93-173.ip49.fastwebnet.it. [93.34.93.173])
-        by smtp.googlemail.com with ESMTPSA id h9-20020adfe989000000b0030647449730sm7492067wrm.74.2023.07.08.11.29.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 08 Jul 2023 11:29:42 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Kalle Valo <kvalo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Christian Marangi <ansuelsmth@gmail.com>
-Subject: [PATCH 1/2] wifi: mt76: split get_of_eeprom in subfunction
-Date: Sat,  8 Jul 2023 20:29:35 +0200
-Message-Id: <20230708182936.24469-1-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.40.1
+	id 1qIWAa-009K8M-02;
+	Sun, 09 Jul 2023 15:17:53 +0000
+X-UUID: bfde52681e6b11ee83ed1395ce914268-20230709
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=CKye36yV3ppEkuVPbFdhCjjp99C+kXPP8eAjgMY1ZFk=;
+	b=kBco1xlkv8g7Vg/dbdirkHk3hxPqnwx0E3TqbZv8npts7knKD8NJobkyqTOlgQJrPCETrvyAw2tHqb8a+YAWX1ejGlZ1+9tnnvwbhERTNYHsTOyL7LPz+wrl0+q2e3BG2Ro1ymsmMEdbBO2HiUj8Nr8ARVH+RcrESn4Krer6hjE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.27,REQID:a9a0eccf-0624-4fb2-a83d-3601851715e1,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:75
+X-CID-INFO: VERSION:1.1.27,REQID:a9a0eccf-0624-4fb2-a83d-3601851715e1,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACT
+	ION:quarantine,TS:75
+X-CID-META: VersionHash:01c9525,CLOUDID:eb2f0668-314d-4083-81b6-6a74159151eb,B
+	ulkID:2307092317434L7J2UHP,BulkQuantity:1,Recheck:0,SF:17|19|48|38|29|28,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:40,QS:nil,BEC:nil,COL
+	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
+	TF_CID_SPAM_FSD,TF_CID_SPAM_ULN
+X-UUID: bfde52681e6b11ee83ed1395ce914268-20230709
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2047713958; Sun, 09 Jul 2023 08:17:42 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sun, 9 Jul 2023 23:17:39 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Sun, 9 Jul 2023 23:17:39 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Alexandre Mergnat
+	<amergnat@baylibre.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Jason-ch Chen
+	<jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
+	<shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Nathan Lu
+	<nathan.lu@mediatek.com>
+Subject: [PATCH v5 2/2] drm/mediatek: Add DSI support for mt8188 vdosys0
+Date: Sun, 9 Jul 2023 23:17:38 +0800
+Message-ID: <20230709151738.5116-3-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230709151738.5116-1-jason-jh.lin@mediatek.com>
+References: <20230709151738.5116-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230708_112945_743955_81672C27 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20230709_081752_049973_0C5F0728 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,97 +96,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for NVMEM support, split get_of_eeprom() in subfunction
-to tidy the code and facilitate the addition of alternative method to
-get eeprom data. No behaviour change intended.
+Add DSI as main display output for mt8188 vdosys0.
 
-While at it also drop OF ifdef checks as OF have stubs and calling
-of_get_property would result in the same error returned.
-
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/eeprom.c | 51 ++++++++++++++-------
- 1 file changed, 35 insertions(+), 16 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     | 1 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 1 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 1 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c          | 9 +++++++++
+ 4 files changed, 12 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
-index dce851d42e08..c3a762074be8 100644
---- a/drivers/net/wireless/mediatek/mt76/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
-@@ -9,31 +9,35 @@
- #include <linux/etherdevice.h>
- #include "mt76.h"
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index 5f07037670e9..fdaa21b6a9da 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -48,6 +48,7 @@ unsigned int mtk_dpi_encoder_index(struct device *dev);
  
--int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int offset, int len)
-+static int mt76_get_of_eeprom_data(struct mt76_dev *dev, void *eep, int len)
- {
--#if defined(CONFIG_OF) && defined(CONFIG_MTD)
- 	struct device_node *np = dev->dev->of_node;
--	struct mtd_info *mtd;
--	const __be32 *list;
- 	const void *data;
--	const char *part;
--	phandle phandle;
- 	int size;
--	size_t retlen;
--	int ret;
+ void mtk_dsi_ddp_start(struct device *dev);
+ void mtk_dsi_ddp_stop(struct device *dev);
++unsigned int mtk_dsi_encoder_index(struct device *dev);
  
--	if (!np)
-+	data = of_get_property(np, "mediatek,eeprom-data", &size);
-+	if (!data)
- 		return -ENOENT;
+ int mtk_gamma_clk_enable(struct device *dev);
+ void mtk_gamma_clk_disable(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index bc7b0a0c20db..e6a7a0b9de6c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -318,6 +318,7 @@ static const struct mtk_ddp_comp_funcs ddp_dsc = {
+ static const struct mtk_ddp_comp_funcs ddp_dsi = {
+ 	.start = mtk_dsi_ddp_start,
+ 	.stop = mtk_dsi_ddp_stop,
++	.encoder_index = mtk_dsi_encoder_index,
+ };
  
--	data = of_get_property(np, "mediatek,eeprom-data", &size);
--	if (data) {
--		if (size > len)
--			return -EINVAL;
-+	if (size > len)
-+		return -EINVAL;
+ static const struct mtk_ddp_comp_funcs ddp_gamma = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index ecd113f9908c..9b7ca8d35f71 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -189,6 +189,7 @@ static const unsigned int mt8188_mtk_ddp_main[] = {
  
--		memcpy(eep, data, size);
-+	memcpy(eep, data, size);
+ static const struct mtk_drm_route mt8188_mtk_ddp_main_routes[] = {
+ 	{0, DDP_COMPONENT_DP_INTF0},
++	{0, DDP_COMPONENT_DSI0},
+ };
  
--		return 0;
--	}
-+	return 0;
-+}
-+
-+static int mt76_get_of_epprom_from_mtd(struct mt76_dev *dev, void *eep, int offset, int len)
-+{
-+#ifdef CONFIG_MTD
-+	struct device_node *np = dev->dev->of_node;
-+	struct mtd_info *mtd;
-+	const __be32 *list;
-+	const char *part;
-+	phandle phandle;
-+	size_t retlen;
-+	int size;
-+	int ret;
- 
- 	list = of_get_property(np, "mediatek,mtd-eeprom", &size);
- 	if (!list)
-@@ -100,6 +104,21 @@ int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int offset, int len)
- 	return -ENOENT;
- #endif
+ static const unsigned int mt8192_mtk_ddp_main[] = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 7d5250351193..62d5362916a5 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -865,6 +865,15 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+ 	return ret;
  }
-+
-+int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int offset, int len)
-+{
-+	struct device_node *np = dev->dev->of_node;
-+	int ret;
-+
-+	if (!np)
-+		return -ENOENT;
-+
-+	ret = mt76_get_of_eeprom_data(dev, eep, len);
-+	if (!ret)
-+		return 0;
-+
-+	return mt76_get_of_epprom_from_mtd(dev, eep, offset, len);
-+}
- EXPORT_SYMBOL_GPL(mt76_get_of_eeprom);
  
- void
++unsigned int mtk_dsi_encoder_index(struct device *dev)
++{
++	struct mtk_dsi *dsi = dev_get_drvdata(dev);
++	unsigned int encoder_index = drm_encoder_index(&dsi->encoder);
++
++	dev_dbg(dev, "encoder index:%d", encoder_index);
++	return encoder_index;
++}
++
+ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
+ {
+ 	int ret;
 -- 
-2.40.1
+2.18.0
 
 
