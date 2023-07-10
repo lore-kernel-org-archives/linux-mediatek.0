@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C2ECEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 15:50:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9359EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 15:50:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TDiXHoYTJnRZnqhsnfThuK4h1+zWj+oTDicnc+AEmQE=; b=3MP5QcfijxWSdpCW1SZ+7lI0gO
-	OoJ8l0DCyXbsOmNcavqFBGP1VlbhU+86XJl+x0eWSCbgHCcqoer8DYD8F2RK9lxIKigT7+c34XZ83
-	53xZiLYj+4LaiShXI9UCEP6wXLLNg041QxduFJrSDXvgsStRgzEHkgCqBHQHGGbRL4e52NO0rTrz6
-	BSXznwhNArFkdT+dnUUKNnBn8wFrn2xVnqxYzZBd9xRT5XQI9ZbSNPbHQi57mVX03jIijCzPYakEx
-	7iOjCQyfhIWdxBDfP5/k2zl4oOI59xHmCRIDj3E8AJnsTdHqYb5ey0QHnvbCSjd9iUBy6lwKly99J
-	/660vFvw==;
+	bh=7+E5h/3KfyYlvQoSV523/vEMiTBzry7vfI4d7ZX9BSg=; b=Cl+3jCPAC2cQl03d/AdkXhapyM
+	YD+AE4CV7ybJbMNtU2PJFLEoFZZN7Qy/dR0XW6zMSiTep1n+SwfUY/91dSf1lnKMskjWdEL2XpjuJ
+	+NVCW1gwnapey8hCWBWHNckpI5GGc8LUHjA/4/ydvjg2uAPjafVkblVLZsskUge6LX4OsCizxQ2vv
+	3UfiKsSNkq/ms/QoR15fY6YH5M4ZgvPFK16ELl6tn0+zQIv2b27Eq6VKuwbFVLj6tX3wzmpPr7ru9
+	dCUkobEU2theQjn/+s64YoC/Nz+ahMi260ig/0fZr9WilZ6i2kQYAG3WP+fdCQu/kpZtSmMcJPVzb
+	FHXw4ang==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIt9n-00C4Tn-05;
-	Mon, 10 Jul 2023 15:50:35 +0000
+	id 1qIt9o-00C4V5-1F;
+	Mon, 10 Jul 2023 15:50:36 +0000
 Received: from mga11.intel.com ([192.55.52.93])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIt93-00C3cH-1P;
-	Mon, 10 Jul 2023 15:49:50 +0000
+	id 1qIt93-00C3hz-2G;
+	Mon, 10 Jul 2023 15:49:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
   t=1689004189; x=1720540189;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=2ECimbLN3Odgvy6H4NztBc0veTLSWVtVr1a7U9ECQf8=;
-  b=EVjOppnU7a5dlvJvqS3dje8fQGfbLZRD0ckEl1RuA/6vig4Q5D8x5OPG
-   iNMHq70xQOQVs/EizKV0MSeSd2387kGSjc8Gg3qM1nUtj9i4CCvzSxx2j
-   xDiZJ43l2XO35B9towE7HRIAdWhdwUV2I/A04MX7761a/lJIQ0P08UKW0
-   OgsQvmhvZdU+Q0XO4tcEGGTNj8KOISz4zHrJeftPaOp1xmeFX73tgIVUt
-   RcZ/lou8FU6w26zuYZ8O6LfZ1lsjMvx8jr0LPX7SUQlzuVCTNxxPsTqdE
-   WV56X5gI2y15/fSMTQ6EUJduSY/9diVJrd4/15RzjHE/0FcMILubZWXEz
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="361842522"
+  bh=eCA4jmpHdK4tCQy+WYVaMHkZ61alyGNaPi2evxW0e9A=;
+  b=AnLn0a3aGR0xmiL4YnwCjx245jz1nFYKQNmgVmL59HdENmzWZ02i/tt5
+   4ZZj8jbp5423vDL+2v7MyDwPGH3qd0O/j86/cX6W4nkGOzmcff9Ex6qsb
+   xISCMX2JsbMHfGET08sk8ocl/zqVkQ4W9tn/JG4D8IL6amYVsG8g7rzV4
+   rnTsLRV79bjtjYPaKLFOZR1DQF67/zBPbF1U6R4VVVzddLXvPFLyFHq7P
+   KDNg8exTL7QYObzUktagJmUVbBTKxe+r2QWFoIXn8r7JXPvC+VgYnW+gO
+   c2ovBVOvzxr9zNTck9/TzazVoPavEjX+KuQIQClVHC8REW2we8aZG2wXs
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="361842496"
 X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="361842522"
+   d="scan'208";a="361842496"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
   by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jul 2023 08:49:48 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="720743960"
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="720743959"
 X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="720743960"
+   d="scan'208";a="720743959"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga002.jf.intel.com with ESMTP; 10 Jul 2023 08:49:36 -0700
+  by orsmga002.jf.intel.com with ESMTP; 10 Jul 2023 08:49:35 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id AC4E86B9; Mon, 10 Jul 2023 18:49:34 +0300 (EEST)
+	id 9C17069F; Mon, 10 Jul 2023 18:49:34 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Mark Brown <broonie@kernel.org>,
 	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
@@ -106,17 +106,17 @@ Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
 	Steven Rostedt <rostedt@goodmis.org>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
 	Richard Cochran <richardcochran@gmail.com>
-Subject: [PATCH v2 09/15] spi: Use struct_size() helper
-Date: Mon, 10 Jul 2023 18:49:26 +0300
-Message-Id: <20230710154932.68377-10-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 08/15] spi: Clean up headers
+Date: Mon, 10 Jul 2023 18:49:25 +0300
+Message-Id: <20230710154932.68377-9-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.40.0.1.gaa8946217a0b
 In-Reply-To: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
 References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_084949_502588_6BEBD45A 
-X-CRM114-Status: GOOD (  19.82  )
+X-CRM114-CacheID: sfid-20230710_084949_778886_A8F7DEC3 
+X-CRM114-Status: GOOD (  14.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,64 +131,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prefer struct_size() over open-coded versions.
+There is a few things done:
+- include only the headers we are direct user of
+- when pointer is in use, provide a forward declaration
+- add missing headers
+- group generic headers and subsystem headers
+- sort each group alphabetically
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- include/linux/spi/spi.h | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
+ include/linux/spi/spi.h | 22 ++++++++++++++++++----
+ 1 file changed, 18 insertions(+), 4 deletions(-)
 
 diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
-index c9479badf38c..9fb8efb068c6 100644
+index 2026eae97329..c9479badf38c 100644
 --- a/include/linux/spi/spi.h
 +++ b/include/linux/spi/spi.h
-@@ -17,6 +17,7 @@
- #include <linux/minmax.h>
+@@ -6,27 +6,41 @@
+ #ifndef __LINUX_SPI_H
+ #define __LINUX_SPI_H
+ 
+-#include <linux/acpi.h>
+ #include <linux/bits.h>
+ #include <linux/completion.h>
++#include <linux/container_of.h>
+ #include <linux/device.h>
+-#include <linux/gpio/consumer.h>
++#include <linux/export.h>
+ #include <linux/kthread.h>
++#include <linux/limits.h>
++#include <linux/list.h>
++#include <linux/minmax.h>
  #include <linux/mod_devicetable.h>
- #include <linux/mutex.h>
-+#include <linux/overflow.h>
++#include <linux/mutex.h>
  #include <linux/scatterlist.h>
  #include <linux/slab.h>
- #include <linux/smp.h>
-@@ -1095,6 +1096,8 @@ struct spi_transfer {
-  * @state: for use by whichever driver currently owns the message
-  * @resources: for resource management when the spi message is processed
-  * @prepared: spi_prepare_message was called for the this message
-+ * @t: for use with spi_message_alloc() when message and transfers have
-+ *	been allocated together
-  *
-  * A @spi_message is used to execute an atomic sequence of data transfers,
-  * each represented by a struct spi_transfer.  The sequence is "atomic"
-@@ -1147,6 +1150,9 @@ struct spi_message {
++#include <linux/smp.h>
++#include <linux/spinlock_types.h>
++#include <linux/string.h>
++#include <linux/types.h>
+ #include <linux/u64_stats_sync.h>
  
- 	/* List of spi_res reources when the spi message is processed */
- 	struct list_head        resources;
++#include <asm/byteorder.h>
 +
-+	/* For embedding transfers into the memory of the message */
-+	struct spi_transfer	t[];
- };
+ #include <uapi/linux/spi/spi.h>
  
- static inline void spi_message_init_no_memset(struct spi_message *m)
-@@ -1207,16 +1213,13 @@ static inline struct spi_message *spi_message_alloc(unsigned ntrans, gfp_t flags
- {
- 	struct spi_message *m;
++struct acpi_device;
+ struct dma_chan;
+-struct software_node;
++struct gpio_desc;
+ struct ptp_system_timestamp;
++struct software_node;
++
+ struct spi_controller;
+-struct spi_transfer;
+ struct spi_controller_mem_ops;
+ struct spi_controller_mem_caps;
++struct spi_device_id;
+ struct spi_message;
++struct spi_transfer;
  
--	m = kzalloc(sizeof(struct spi_message)
--			+ ntrans * sizeof(struct spi_transfer),
--			flags);
-+	m = kzalloc(struct_size(m, t, ntrans), flags);
- 	if (m) {
- 		unsigned i;
--		struct spi_transfer *t = (struct spi_transfer *)(m + 1);
- 
- 		spi_message_init_no_memset(m);
--		for (i = 0; i < ntrans; i++, t++)
--			spi_message_add_tail(t, m);
-+		for (i = 0; i < ntrans; i++)
-+			spi_message_add_tail(&m->t[i], m);
- 	}
- 	return m;
- }
+ /*
+  * INTERFACES between SPI master-side drivers and SPI slave protocol handlers,
 -- 
 2.40.0.1.gaa8946217a0b
 
