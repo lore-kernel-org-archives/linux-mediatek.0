@@ -4,59 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DCE8EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 11:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DC6AC001DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 11:23:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HSbJ1RKhPN277ZESzIkWw9jNOwizEcA2OTkm5X7Z7r4=; b=UDu66I0StrXqyoodotAksirimn
-	3Ihe4Q6S0/lTp/DTAB1cwHm6+GKGnx7+wA7byk7s5PgquFsob1Sl+vwWSB7AlCh6PJgwStEX9xBzw
-	NflKazYi2nQJ3I5IqisJoyJjnYpw9UCf2Iob3fs0fG8/AHQxEviMihRYPcu3GFmUPtAGsoDvIe2wW
-	9QbuXfuRIe/i+kpB3RL9zAikWFqpRPC41COWlzg/daaFt6xj102+QKWjYHHwfm9W+/v5CYcpQCoL/
-	13sciyuKVyzGFdrFy2vqcnmYvTB6xfczpRO4KJ4OBHmvElTemw08qvuShAfkOBIhHD3Qnpsw3PPHZ
-	yliOBfTg==;
+	bh=OMhb7h24oxYo9QjONlhrW0ATMjbS1POEUQMHHlU8YiI=; b=WzvTzO93dBGAiDIRBJ68sNO0eu
+	REs7Ay9gqw7TR1QsktDVfHGRxERCPhr45qCB/rwV5xVo1XRIEUamU5hXnKt5D4ucK6H9TyXPRt65u
+	xhGH0WEnTx/O/hYTLmeyrxhWUfly5M9fdPJjlAUBbOtlsGdeWkFGDjobN2eoNLwKSpxiyQwHMdA+l
+	JneqPQAJWKNXzWxulMFgendWb5iXwKBBoQu5nX0jUdzO75y0m/TyKwf2I02C0P+FVrP/X1EXqVvQZ
+	XAUUeD6w12uQjjFxcEnq12xpGFa+Zyd7paR67M6hC0isV/Ky4qxQoqYqRaYLz17VlN1DItTlqUZZ+
+	kphvfdJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIovu-00BSgt-12;
-	Mon, 10 Jul 2023 11:19:58 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1qIoz2-00BT8i-1u;
+	Mon, 10 Jul 2023 11:23:12 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIovq-00BSg3-2P;
-	Mon, 10 Jul 2023 11:19:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1688987994; x=1720523994;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=h3akaffE4c4ikxI/bpe287xBwIcWxxQpigcUNq0Wefs=;
-  b=kKjkc0pJadGT2DdPvJepMciV4XE5Y577eb9LvTp//t2BSQVIPf0TKsm4
-   jypJWvKoJDRpvvL/LODxi+HQJBnSx2pKRpBlWW0NKTsDEw1KlCaVyfnuG
-   Ac8bmzbOrzNdOZP7hzbs3SrGTMysqfQaQ4HIQp9sSX0tNd9HH+pW0P+qa
-   fDWlh4yqXiTT7NVc3nPGGKmqchXNxbgW+v2G7TDD2wsBa6pj93swR2rGl
-   kcv6Y+l296CMGM0HS3u/2cyeuxRm34eJzodOe55g/MwwWKMSMrlIKgUT/
-   dpRzn+RPAe8koIA2BaOO9qj1D8HePBRRIQWsk1cTzzf1637V725GEdi1O
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10766"; a="343910848"
-X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="343910848"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jul 2023 04:19:53 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10766"; a="720666509"
-X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="720666509"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga002.jf.intel.com with ESMTP; 10 Jul 2023 04:19:46 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1qIovf-001XRG-1b;
-	Mon, 10 Jul 2023 14:19:43 +0300
-Date: Mon, 10 Jul 2023 14:19:43 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Mark Brown <broonie@kernel.org>
+	id 1qIoyz-00BT79-26;
+	Mon, 10 Jul 2023 11:23:10 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 1FE3060D3E;
+	Mon, 10 Jul 2023 11:23:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9F29C433C7;
+	Mon, 10 Jul 2023 11:23:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1688988188;
+	bh=rVbOiKgyxND9mKZk3rAKjAS4exnyG60MuJg/qoml1Vw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=NmQJc/tPCMy3i5v1VlHdRroye/CciPC/ZvFOKcppf3TZf0qRJ3dgdRYwmDVOMOmqP
+	 VHTHnUz3SjT2CkGo2po+jFLM51kzErpdYTDzbIh1ssyixtC39WoS5AEx1AHhOh2rUT
+	 oGH0Cj/eImkEiRwQY+a6G/4uTBojRaP1c3PpTvWdlPa8OmIjqYJiqIt27qBeoOyByD
+	 uIezS9sRdsa2l0+EXR9NmvWwdDucaVOT+HG9neus16SKNTI7aq5f6UxW++970eT5gb
+	 zfoX4LNe9GA9UuIFwotHUiqYP63tgZEO9J8trRSJc2+FmmGG2Hl/AKVEk1ykYfoY0k
+	 6E9c0qXH0JqVA==
+Date: Mon, 10 Jul 2023 12:22:59 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Yang Yingliang <yangyingliang@huawei.com>,
 	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
 	Kris Bahnsen <kris@embeddedts.com>,
@@ -84,20 +74,21 @@ Cc: Yang Yingliang <yangyingliang@huawei.com>,
 	Richard Cochran <richardcochran@gmail.com>
 Subject: Re: [PATCH v1 4/8] spi: Get rid of old SPI_MASTER_NO_.X and
  SPI_MASTER_MUST_.X
-Message-ID: <ZKvpT9M5B8QmyGo+@smile.fi.intel.com>
+Message-ID: <353027bf-6d2a-40de-9e18-8553864b343c@sirena.org.uk>
 References: <20230710102751.83314-1-andriy.shevchenko@linux.intel.com>
  <20230710102751.83314-5-andriy.shevchenko@linux.intel.com>
  <1ffd5603-4140-4bf6-bfed-af70a6759bda@sirena.org.uk>
  <ZKvmkAP5ZuT6lGLN@smile.fi.intel.com>
- <bb3b9ef2-0a32-4f8a-8d92-06d47875b562@sirena.org.uk>
+ <ZKvnPXl9H+cQR8Ok@smile.fi.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="SoPr26CyLWhD+5za"
 Content-Disposition: inline
-In-Reply-To: <bb3b9ef2-0a32-4f8a-8d92-06d47875b562@sirena.org.uk>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <ZKvnPXl9H+cQR8Ok@smile.fi.intel.com>
+X-Cookie: Do you have lysdexia?
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_041954_795583_BDCB137E 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20230710_042309_773736_00C2CF56 
+X-CRM114-Status: GOOD (  17.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,30 +103,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 10, 2023 at 12:10:03PM +0100, Mark Brown wrote:
+
+--SoPr26CyLWhD+5za
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Mon, Jul 10, 2023 at 02:10:53PM +0300, Andy Shevchenko wrote:
 > On Mon, Jul 10, 2023 at 02:08:00PM +0300, Andy Shevchenko wrote:
 > > On Mon, Jul 10, 2023 at 12:04:35PM +0100, Mark Brown wrote:
 > > > On Mon, Jul 10, 2023 at 01:27:47PM +0300, Andy Shevchenko wrote:
-> > > 
+
 > > > > Convert the users to SPI_CONTROLLER_NO_?X and SPI_CONTROLLER_MUST_.X
 > > > > and kill the not used anymore definitions.
-> 
+
 > > > The above is not what this change does:
-> 
+
 > > How to improve it? I was sure that the form of "converting to something and
 > > something" is clear...
-> 
+
+> A wild guess, maybe you meant to split to two changes, one per each macro group?
+
+No, doing TX and RX in one commit is fine.
+
 > > > > -	controller->flags = SPI_MASTER_MUST_RX | SPI_MASTER_MUST_TX;
 > > > > +	controller->flags = SPI_CONTROLLER_MUST_RX | SPI_CONTROLLER_MUST_TX;
-> 
-> The change here is not the change that is described above.
 
-Okay, than you for elaboration and review. With the assumed split it should be
-addressed. Besides that, should I resend the entire series or only this one?
+What part of the above change is replacing _NO_ with _MUST_?
 
--- 
-With Best Regards,
-Andy Shevchenko
+--SoPr26CyLWhD+5za
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmSr6hIACgkQJNaLcl1U
+h9AMOgf+KMPcMsJntwEWI8UJ7/re0uGZ3D9fX1qeb76OfxTqQ5bt1PsIzRULHkqL
+pEOuOVnEu3HTSuNnMgEyy0ms1PA7+yFFiMWSdYlZy02GpNeD8FY/VFwOM9dR4pte
+UWnlYD6vJK8wffaEnxtKF5F2gOah96lH3Yws15T1IN8/YbK5wzCnJ2R5XWgm5Ka6
+zIFhD0cZ077/Z1hO9SJrqAKPpTLLr1KtyC7ZHsvN2YE5+bzvELKFqPSyt3HPy61r
+v+QdG7vRj8/tNW2Hn4lpLR8g9tz5JSMFLhxcyg9TRz67jSiOxM/utfw2IY+Q8DB8
+YvmjuYpF+tbhIo7G3bYNULQS39HNSQ==
+=ZD6G
+-----END PGP SIGNATURE-----
+
+--SoPr26CyLWhD+5za--
 
