@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EAA2EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 13:32:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EDD7EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 13:37:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rti924grr2qhV3F8xJTpAPcyMxwEFIjMr3HbDXVlN0E=; b=YftLndW3GCfjbKGhl5gfTVwNZN
-	jUPSKPy9upP+S27CSHx+LobqXS9bhHl67zqAv/+zZn3Xocc5iTpqmgzdSyACYTCJVwxrYe6RUoVaX
-	JR87F36fmcZZGHJICQkWC0yuX1UZ41ZjsvZtumnXsJEwuRNbPzmtWcHgWBTdCkEAHmJ+Z8Y8ycp5N
-	MtEvIyTs+/4VU89V3TJZTo1aA2Hwg0ctwGf2QFtIWV0OP2JUBxkIVF+w4OR8QuoskWLdjI2/dyC2M
-	kf1jGua9rrhX0kuRbKWb9wMcRwkZpSnx3Hw24dGmvlOOssTh278M8HSDiazZ1lJcA0itqVwD76qJ4
-	BnN/bdqg==;
+	bh=HLUg/vilPItNeSWWIKHfVqqGX6dfEJWBbAJWIfT2Rmk=; b=CXM/5Fx79MkhpXnZZFilD5IkQl
+	AcbL+LidKUQ8Cqxo4HSSTbpQq0Ags6+BTDkVxLVR97TBv6hce0XPrXFqgqRMSISWz5ihbKI9JxF9C
+	5Zhf8VoEQbd3zAc7+g9gesqNXpB4TgYIJRr3sqW/6tsJlFGlymw1+5bJ67mfpeR/2/Vbz4i4cOW+v
+	5LyydXr1zfn1FyvekjGq4LK+HDde917EGmSNi2mtJxPVoPkv2djE70a/+h+yN18fB0+wpO0Gm/E/S
+	qNkTVRA4upFkVBNwVyqlIIRFQRQ+rircFPKotF05Hz5X7K/hNfudwWq/WuYRw/pvCihIPK0ojGHvJ
+	uXxWu5IQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIr07-00Bld1-2g;
-	Mon, 10 Jul 2023 13:32:27 +0000
-Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
+	id 1qIr4f-00BmHN-1R;
+	Mon, 10 Jul 2023 13:37:09 +0000
+Received: from mga05.intel.com ([192.55.52.43])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIr04-00Blag-1R;
-	Mon, 10 Jul 2023 13:32:25 +0000
+	id 1qIr4c-00BmG5-19;
+	Mon, 10 Jul 2023 13:37:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1688995944; x=1720531944;
+  t=1688996226; x=1720532226;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=PcgdfCqBIbPTu4JqQZu5q+HYQGpr7DWOm49hDVjk5i0=;
-  b=M+b6XZw/OXehX/c3Cmi09IN8iTHYBE7Cb5JC+4vQXidDgFRQzLLvHMwV
-   eaZj7KcHS3qPMrHWmj/0XNeqJKp0OBwHwoTijRvw062MlU505sNmT6vzH
-   gY6b9gJLvBZVvkbLmwuUNpm4Qcvp+PGpWcSctvYUtgHxf9Ops/cL+JAHe
-   aK2qYW8ZBzFpjLokUrqE0LQfqUfSPbcqM2O7vcxqkBT++GFx3ypUIBXXN
-   mlKtEtXxNfjL4P0fGo1aGqRuFblZIgnFNzYRRtM3ZgaIENJzg+MO0KHds
-   qIiviU+tXXqwheLNEPcaw3eh+mOy8TFxZMofkKrvXSMDOWzm6TCZbEIGy
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="428037969"
+  bh=HA2So+NjBTWAY2fjVnTJJii4ARFTRIerq07ZS5EB7BI=;
+  b=N6JM1YG6Fgh9vpVMKWk6DsrHMReXy3dPIukx5Rky5mb+z3aeyjitIZrp
+   dWZ4cTyDQM4R1MVqv8GlXsX4tfiFVvwHh84ZvJugrwjonGTcRp4jmz9PN
+   rYc/clu5nSxcvUNic4CDgPG0DR9hrAMjYYnpPMjAyRgLYX/A9CBi17w7w
+   t+YaeieHkgMQsCZUD2CLMvxRPPO+NZk+lGFQElppGA6vz6ppGXpDtAOm6
+   5TNcN4Sdee9u4XzRBnFl/bLGiNeI+5szPwHLWhdym3NV8kLO9O25AHvK3
+   Ik1GgyTEtlJBAO5/QbrMp2TwQ91cFMfgfJSDjrBC7uqhsf8RpHDe2kIN/
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="450701149"
 X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="428037969"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jul 2023 06:32:19 -0700
+   d="scan'208";a="450701149"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jul 2023 06:37:02 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="790802176"
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="894774244"
 X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="790802176"
+   d="scan'208";a="894774244"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmsmga004.fm.intel.com with ESMTP; 10 Jul 2023 06:32:12 -0700
+  by orsmga005.jf.intel.com with ESMTP; 10 Jul 2023 06:36:56 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.96)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1qIqzq-001Z8L-0E;
-	Mon, 10 Jul 2023 16:32:10 +0300
-Date: Mon, 10 Jul 2023 16:32:09 +0300
+	id 1qIr4P-001ZC8-1X;
+	Mon, 10 Jul 2023 16:36:53 +0300
+Date: Mon, 10 Jul 2023 16:36:53 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: Yang Yingliang <yangyingliang@huawei.com>,
+To: Mark Brown <broonie@kernel.org>,
+	Yang Yingliang <yangyingliang@huawei.com>,
 	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
 	Kris Bahnsen <kris@embeddedts.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -66,8 +66,8 @@ Cc: Yang Yingliang <yangyingliang@huawei.com>,
 	linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
-	Radu Pirea <radu_nicolae.pirea@upb.ro>,
+	linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org
+Cc: Radu Pirea <radu_nicolae.pirea@upb.ro>,
 	Nicolas Ferre <nicolas.ferre@microchip.com>,
 	Alexandre Belloni <alexandre.belloni@bootlin.com>,
 	Claudiu Beznea <claudiu.beznea@microchip.com>,
@@ -82,25 +82,18 @@ Cc: Yang Yingliang <yangyingliang@huawei.com>,
 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [PATCH v1 4/8] spi: Get rid of old SPI_MASTER_NO_.X and
- SPI_MASTER_MUST_.X
-Message-ID: <ZKwIWUeqD/otnSFM@smile.fi.intel.com>
+Subject: Re: [PATCH v1 0/8] spi: Header and core clean up and refactoring
+Message-ID: <ZKwJdb0rJCmH5cBA@smile.fi.intel.com>
 References: <20230710102751.83314-1-andriy.shevchenko@linux.intel.com>
- <20230710102751.83314-5-andriy.shevchenko@linux.intel.com>
- <1ffd5603-4140-4bf6-bfed-af70a6759bda@sirena.org.uk>
- <ZKvmkAP5ZuT6lGLN@smile.fi.intel.com>
- <ZKvnPXl9H+cQR8Ok@smile.fi.intel.com>
- <353027bf-6d2a-40de-9e18-8553864b343c@sirena.org.uk>
- <ZKv7p96D2B9vYd0J@smile.fi.intel.com>
- <7aff8759-cfca-47b5-b995-5260e5082c45@sirena.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <7aff8759-cfca-47b5-b995-5260e5082c45@sirena.org.uk>
+In-Reply-To: <20230710102751.83314-1-andriy.shevchenko@linux.intel.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_063224_529420_9E6DD8A0 
-X-CRM114-Status: GOOD (  17.16  )
+X-CRM114-CacheID: sfid-20230710_063706_405422_617B5B25 
+X-CRM114-Status: UNSURE (   8.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,32 +108,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 10, 2023 at 02:21:05PM +0100, Mark Brown wrote:
-> On Mon, Jul 10, 2023 at 03:37:59PM +0300, Andy Shevchenko wrote:
-> > On Mon, Jul 10, 2023 at 12:22:59PM +0100, Mark Brown wrote:
-> > > On Mon, Jul 10, 2023 at 02:10:53PM +0300, Andy Shevchenko wrote:
-
-...
-
-> > > > > > > Convert the users to SPI_CONTROLLER_NO_?X and SPI_CONTROLLER_MUST_.X
-> > > > > > > and kill the not used anymore definitions.
-
-...
-
-> > > > > > > -	controller->flags = SPI_MASTER_MUST_RX | SPI_MASTER_MUST_TX;
-> > > > > > > +	controller->flags = SPI_CONTROLLER_MUST_RX | SPI_CONTROLLER_MUST_TX;
+On Mon, Jul 10, 2023 at 01:27:43PM +0300, Andy Shevchenko wrote:
+> Various cleanups and refactorings of the SPI header and core parts
+> united in a single series.
 > 
-> > > What part of the above change is replacing _NO_ with _MUST_?
+> Patches 1 & 2, 5 & 6 & 8 are dependent inside each group.
 > 
-> > None, that's why assuming the split by name should be fine.
-> 
-> That's what the above changelog sounds like it's trying to do (I'm not
-> sure the change itself makes sense but the first thing I ran into when
-> reviewing the patch), AFIACT you're missing a "from" in the changelog?
+> No functional change intended.
 
-I see, I will elaborate better in v2.
-But still, I will split on per macro and add one for GPIO_SS.
-Seems to me better that way.
+I will resend the entire series.
 
 -- 
 With Best Regards,
