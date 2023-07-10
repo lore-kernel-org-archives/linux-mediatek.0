@@ -4,91 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC976EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 15:55:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9892EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 16:01:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=15HUrMFa8dxK9KzsEl+ouTmZ6kntZ48dbRmvixbyrEU=; b=ngT96Z2LYXfADSOh0b3MiJ+mDL
-	3Lx++6zUDHm1jXq3Zzaxgkr504LjNIGuW6GF5FAevp+/iO7PwCMoH2NVIQmuYO5TwoNk9qzcWpCV8
-	EpKrV8wnFcYGWmS3ZprbxtWwqdon4zirFxIV/rWYmS4oFENDAVhQrw56qOl085XO+wD6fCxnw3lZL
-	scpXoitJcpg3iKkkSFNTS9Sd8HdNJGn3V9AJ6CiNaRJGP979bIv0z093f9SW07rFSGatxbQMYBTPJ
-	6fXPNKci3wxy/jIeQUFUM9uh098AlqUn5xEW15ekmUaG01S8LwIr4dR/UeEmccUDXlFDYxr6TtD1k
-	eniLTp1w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FOIVXaz8vwXP2x82ioyjbasmdcVHUNeu4oggrDsrpt0=; b=uXAzgf0kzpOMpSRIptVOPBlv59
+	OutoWThp161NsaXW4XHCJq00ljR598pDM5+X+D58vPTENLpWQPT2b7CwzDlooIsVo/rJSHkwC+G3Q
+	7Em8mXKVXtf0S2iZMaE0SD5fhN6Rq+vCQniTcjlQKm905re6h1LguYWfyGi/0BElYs2T1WrB2/shg
+	YFZglLFAwkskXtEb9oJ6jWXTW+w59V8qPgy5jLEu2cgrVuUt3enhtIYDLT1WRyw0WF900uof2oBOP
+	5nnIrc0XQT4AjJfhzGYp/Vq0PXx8Uy8YDTWnYu+Z+qiLrkCv/EqRqlUuB2e3jhj8m26FlgumsA4L6
+	ksYqJlcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qItEC-00C7TC-37;
-	Mon, 10 Jul 2023 15:55:09 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1qItJy-00C8MJ-1R;
+	Mon, 10 Jul 2023 16:01:06 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qItE9-00C7R5-35
+	id 1qItJr-00C8Jb-0c
 	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Jul 2023 15:55:07 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-3fc03aa6e04so26257705e9.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jul 2023 08:55:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689004503; x=1691596503;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=15HUrMFa8dxK9KzsEl+ouTmZ6kntZ48dbRmvixbyrEU=;
-        b=wseh35Z1Q6EHHEe07eefYQBGAh1eZEVS8sPkPIE9J9sqGi57aDJ1TL6/NWCNMPP9gP
-         kTXmYoo2sF8rbGDYrrrAlU7V3Icqsm6Lpoihl0uUQyLojhpV4fCrEY+LXiVi5L+eB1Se
-         9DPsdow6ivYFjDsAxn9f+T23kxvNQ4rz5AKhjtMVL/+iNcPCMzAB/8Vyz7KxubWpJzSt
-         gteSeu2EPM32aFYASPHunpwsNPOAt/08Ljb3PavtDwr/CcJnqxgaEgvszUG/5sB9fpsl
-         cbMurE+y6MrKQoZ6Ge4K8TsSfmePoXM3TuuCgnkLx5zrm/CT8aMPSRzpursHQoR3bbGs
-         V+kQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689004503; x=1691596503;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=15HUrMFa8dxK9KzsEl+ouTmZ6kntZ48dbRmvixbyrEU=;
-        b=AOYrqafK7yO/anQ5vaN8Usxje3s+RdmAiNyxaL4VU+zZNjGzuiQgu6ZPVTs5xMSxYr
-         V0KyZZz9bRwCcPaEe7uCljUB8DzeVHJWnufMEBfF0iH54OW5GH25jYlXF6IKYxmvGfPD
-         cCKqNG4Y1qONyTS20rT9tDfGILMn+Nuz5Ke9wv8TVP2Gf7oiMhqPB4SSEXmOXxRYSw9u
-         cOu4CHaW6tRTl514+wJ8Y71ndERx3OLE0/td8uzjpBarGhbTmFGPR/lwDdi/aEdGAl1a
-         RkNoD1yXZIhpKRKdY0wx+Qjt1YzucUgJXpW64lclhEW80ZpL6YsmMj7hnXysYzg3Hikz
-         204w==
-X-Gm-Message-State: ABy/qLZ1KuVnuTT6IGjnjbYKo/YHEOGnDBj5+erNw0z1SPGjWmbyNh81
-	3lxch6QFBKr9F7bBIBbaWvfNrg==
-X-Google-Smtp-Source: APBJJlGvD9YcC5ks5NN2WUHCCnE3qkj0yYJdyQ6e0vVfi8aEtkEJCZSnAjeYyXeimrIx/UhfTkXLdg==
-X-Received: by 2002:a05:600c:2247:b0:3fc:8a:7c08 with SMTP id a7-20020a05600c224700b003fc008a7c08mr10089897wmm.35.1689004502979;
-        Mon, 10 Jul 2023 08:55:02 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id w16-20020a5d6810000000b00315a1c160casm893090wru.99.2023.07.10.08.55.01
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 10 Jul 2023 08:55:02 -0700 (PDT)
-Message-ID: <2248d0e0-7e8d-e8cb-8e69-918da75b952d@baylibre.com>
-Date: Mon, 10 Jul 2023 17:55:01 +0200
+	Mon, 10 Jul 2023 16:01:00 +0000
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1qItIz-0006h7-IH; Mon, 10 Jul 2023 18:00:05 +0200
+Received: from pengutronix.de (unknown [172.20.34.65])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 0B1351ED16C;
+	Mon, 10 Jul 2023 15:59:56 +0000 (UTC)
+Date: Mon, 10 Jul 2023 17:59:55 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Mark Brown <broonie@kernel.org>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Yang Yingliang <yangyingliang@huawei.com>,
+	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
+	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
+	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	Richard Cochran <richardcochran@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Fabio Estevam <festevam@gmail.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Andy Gross <agross@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Radu Pirea <radu_nicolae.pirea@upb.ro>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Sanjay R Mehta <sanju.mehta@amd.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>
+Subject: Re: [PATCH v2 09/15] spi: Use struct_size() helper
+Message-ID: <20230710-doze-scared-9f0a2e1a9125-mkl@pengutronix.de>
+References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
+ <20230710154932.68377-10-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v6 8/8] soc: mediatek: pm-domains: Add support for MT8365
-Content-Language: en-US
-To: Markus Schneider-Pargmann <msp@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>, Fabien Parent
- <parent.f@gmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>
-References: <20230627131040.3418538-1-msp@baylibre.com>
- <20230627131040.3418538-9-msp@baylibre.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230627131040.3418538-9-msp@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="fkfcsps3yw5kjzrk"
+Content-Disposition: inline
+In-Reply-To: <20230710154932.68377-10-andriy.shevchenko@linux.intel.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:b01:1d::7b
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_085505_993091_50A623B3 
-X-CRM114-Status: UNSURE (   7.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230710_090059_230953_C5B5B6A4 
+X-CRM114-Status: GOOD (  24.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,14 +119,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
 
+--fkfcsps3yw5kjzrk
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 27/06/2023 15:10, Markus Schneider-Pargmann wrote:
-> Add the needed board data to support MT8365 SoC.
+On 10.07.2023 18:49:26, Andy Shevchenko wrote:
+> Prefer struct_size() over open-coded versions.
+>=20
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> ---
+>  include/linux/spi/spi.h | 15 +++++++++------
+>  1 file changed, 9 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
+> index c9479badf38c..9fb8efb068c6 100644
+> --- a/include/linux/spi/spi.h
+> +++ b/include/linux/spi/spi.h
+> @@ -17,6 +17,7 @@
+>  #include <linux/minmax.h>
+>  #include <linux/mod_devicetable.h>
+>  #include <linux/mutex.h>
+> +#include <linux/overflow.h>
+>  #include <linux/scatterlist.h>
+>  #include <linux/slab.h>
+>  #include <linux/smp.h>
+> @@ -1095,6 +1096,8 @@ struct spi_transfer {
+>   * @state: for use by whichever driver currently owns the message
+>   * @resources: for resource management when the spi message is processed
+>   * @prepared: spi_prepare_message was called for the this message
+> + * @t: for use with spi_message_alloc() when message and transfers have
+> + *	been allocated together
+>   *
+>   * A @spi_message is used to execute an atomic sequence of data transfer=
+s,
+>   * each represented by a struct spi_transfer.  The sequence is "atomic"
+> @@ -1147,6 +1150,9 @@ struct spi_message {
+> =20
+>  	/* List of spi_res reources when the spi message is processed */
+>  	struct list_head        resources;
+> +
+> +	/* For embedding transfers into the memory of the message */
+> +	struct spi_transfer	t[];
 
--- 
-Regards,
-Alexandre
+You might want to use the DECLARE_FLEX_ARRAY helper here.
+
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--fkfcsps3yw5kjzrk
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEDs2BvajyNKlf9TJQvlAcSiqKBOgFAmSsKvgACgkQvlAcSiqK
+BOgtxwf/Yz15ymm8GOJJtFmUerpE4jpOZcNfOw1mDTpDDgDH+8CXkQfj2uE13kRU
+xmZmpKSAMlsxxmOIGsv8VL18I9YKzWY9wk4vu5oovzx44NHON+6ivyODkaJdH2w9
+kOVb4XiHGF0bhFsC3TJ4HZSUlG3EbFNnc0nuj/IvF6VEoldwbjSR6R5ZR6+EX47u
+h77RsJnmXXbOKbOseq0nlPxZYkFSR03Hzey7BMzmHYQ93COdGDhQqI0kNbwrkD5F
+qpdpYHa26+CLsV+iBftiTk/C49nxRM0cvs4xqUDaZU1rzd2tlbhN28dsuGJ8zQL1
+T+7Bl7/j5IRqJUJiKB8YUQNVj2KrOg==
+=a9WN
+-----END PGP SIGNATURE-----
+
+--fkfcsps3yw5kjzrk--
 
