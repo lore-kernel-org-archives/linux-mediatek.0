@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4BFBEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 10:28:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A602EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 10:28:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pI+OshjYxLbCe519rggP/vfdR19gw37339H64e6mQYU=; b=h6lcB0ScP5FKIwC9toy0QTQtFN
-	czX1hjTYZHJFGL4Rj9ep9JtRB72KRd4ucUVQSYarrSnDA5cWt3sP/UahUK6AoUckoomivrz4MsqEk
-	dYtpuHIpmnph1HRdSws1WXvwdHUNJAtYOPJbtQJ2IE7hImNl9z/AD0prfEl9SEuu7YPvUZORT+cko
-	QJ11n+YKBP6FHUCxCIuObHKJDLFExIAmm4VJYnfguITtugYs1xrVxSvxzyXM74V918QpntVv4hjCK
-	TIDSUPvsUJNz6LnV3f6eK6OMlClFGCujyqwIrKmx6QLN8gUBQQ8TMNM0Co8p+yDT+erIhkh8aM3mI
-	8SL9sGVw==;
+	bh=ZPOhlzcIM8+aMjjXEu5NulDNgl83nyd64JsBIaqN0i0=; b=U6c4zXTFRtCh1UorUtdHha2Bi7
+	ZZlInW6z/1UVB5JdwT/zb+88sJEETuxRq7WWo7dG+waOe/CgSUt1048fjVx+F+gkU4m6zgO929EzE
+	D4n2nsH+UDpEjMbnJoWvdG0i/PflvDOKDmpU3wmk4I0AZgMayaanKwAhhUkwGfbk3zZH9J0e5XjLO
+	z2HhPz4a3itWE/dKTDZk/X3Ke63sjQOiSB091/A1+Sl0HwoUGrU5RNWdRNPa/5PMYy6XhPoWFXCBj
+	UpBGuHvjvmKfch2V2GGDYbww9tAa5nDLsXtI/6JPop8UfdHRPmDzdqyPch5AbrNhtJAOPn14Pb1rf
+	HgdAZJ+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIo7u-00BECL-39;
-	Mon, 10 Jul 2023 10:28:18 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1qIo7x-00BEGH-33;
+	Mon, 10 Jul 2023 10:28:21 +0000
+Received: from mga14.intel.com ([192.55.52.115])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIo7g-00BDtw-0X;
-	Mon, 10 Jul 2023 10:28:06 +0000
+	id 1qIo7g-00BDta-1w;
+	Mon, 10 Jul 2023 10:28:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
   t=1688984884; x=1720520884;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=jbdWpKboCMbso+FWqCvKaCjCq9kBrlJIijjzr3vXKiY=;
-  b=PWd78tYzXH1TtOEluD5t/gekV2h+lac89sBdojkrlzfPoDErCG00DOAO
-   MuQ/6IewzQlkgDTe0breO4HS0Ngk0sfFZLGBT78JU63Ns/JsJ2ecFv8ba
-   Nk6OFrOxCGpEJuyfirW85bCiCebYzpvZisVzi+H9RC+GHlAdTrfyf//82
-   8pbwx+GPbcFBXLSpsia/vtO+ilVQEH01GGADqv22xAHayCD1RDdJm8iP1
-   71PjpK2nhYP5j1PoRzu9o8kIoKsGJk8+wwp+RsyPGMi0XCKTawPpZjJbN
-   ppcO0f9iHX3gqh+nh8nh98XgHeIWn83Vl4PL4W3Fi08mhDhrpxua3RMLj
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10766"; a="367803822"
+  bh=IvTGun5BNpAUAhdxyhVIqnBaI5rXxgfJtArQMk9AwVY=;
+  b=L4OTtDURIu54c63KpkteVDYZGf6odJXDXOyTRfw6ryKIyqgqceBA2WHT
+   iaxVPhgm0DxtfX1SvT/M8i7HivVxQ2od6bUx91Fqh9StV2YgDSrhpbSGj
+   YHWJj+/A7ZyBImWw1xaVlkR42tUCbOFb53XxVhFvLkroIi08LS+k8OVLG
+   9brPuAT0FgjwXkM1Z+EXZjA1T3jVpNHRYL7SMTgb2Ow/ojStP5aj+9sss
+   O0ftTVJcyjE1OJLajKklDTga8az3sxoOvyOZEGP4QCClR2GBvGjE9sgO1
+   3I28QPPHAU/taPWv906vtEjQtZd3CJyIXrPx36bUjWprGBAHZ3sb8v9MD
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10766"; a="364345494"
 X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="367803822"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jul 2023 03:28:03 -0700
+   d="scan'208";a="364345494"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jul 2023 03:28:02 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10766"; a="755956018"
+X-IronPort-AV: E=McAfee;i="6600,9927,10766"; a="865297557"
 X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="755956018"
+   d="scan'208";a="865297557"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga001.jf.intel.com with ESMTP; 10 Jul 2023 03:27:55 -0700
+  by fmsmga001.fm.intel.com with ESMTP; 10 Jul 2023 03:27:55 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 3E9315FC; Mon, 10 Jul 2023 13:27:53 +0300 (EEST)
+	id 5B2EE69A; Mon, 10 Jul 2023 13:27:53 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Mark Brown <broonie@kernel.org>,
 	Yang Yingliang <yangyingliang@huawei.com>,
@@ -83,17 +83,17 @@ Cc: Radu Pirea <radu_nicolae.pirea@upb.ro>,
 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Richard Cochran <richardcochran@gmail.com>
-Subject: [PATCH v1 5/8] spi: Sort headers alphabetically
-Date: Mon, 10 Jul 2023 13:27:48 +0300
-Message-Id: <20230710102751.83314-6-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 7/8] spi: Fix spelling typos and acronyms capitalization
+Date: Mon, 10 Jul 2023 13:27:50 +0300
+Message-Id: <20230710102751.83314-8-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.40.0.1.gaa8946217a0b
 In-Reply-To: <20230710102751.83314-1-andriy.shevchenko@linux.intel.com>
 References: <20230710102751.83314-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_032804_312765_3BA4C38D 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20230710_032804_685591_799C00BB 
+X-CRM114-Status: GOOD (  38.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,108 +108,468 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Sorting headers alphabetically helps locating duplicates, and
-make it easier to figure out where to insert new headers.
+Fix
+  - spelling typos
+  - capitalization of acronyms
+in the comments.
+
+While at it, fix the multi-line comment style.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/spi/spi.c       | 42 ++++++++++++++++++++---------------------
- include/linux/spi/spi.h | 14 +++++++-------
- 2 files changed, 28 insertions(+), 28 deletions(-)
+ include/linux/spi/spi.h | 137 ++++++++++++++++++++++------------------
+ 1 file changed, 75 insertions(+), 62 deletions(-)
 
-diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index 0f05773c277c..695c72ccf93c 100644
---- a/drivers/spi/spi.c
-+++ b/drivers/spi/spi.c
-@@ -4,36 +4,36 @@
- // Copyright (C) 2005 David Brownell
- // Copyright (C) 2008 Secret Lab Technologies Ltd.
- 
--#include <linux/kernel.h>
--#include <linux/device.h>
--#include <linux/init.h>
-+#include <linux/acpi.h>
- #include <linux/cache.h>
--#include <linux/dma-mapping.h>
-+#include <linux/clk/clk-conf.h>
-+#include <linux/delay.h>
-+#include <linux/device.h>
- #include <linux/dmaengine.h>
-+#include <linux/dma-mapping.h>
-+#include <linux/export.h>
-+#include <linux/gpio/consumer.h>
-+#include <linux/highmem.h>
-+#include <linux/idr.h>
-+#include <linux/init.h>
-+#include <linux/ioport.h>
-+#include <linux/kernel.h>
-+#include <linux/kthread.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/mutex.h>
- #include <linux/of_device.h>
- #include <linux/of_irq.h>
--#include <linux/clk/clk-conf.h>
--#include <linux/slab.h>
--#include <linux/mod_devicetable.h>
--#include <linux/spi/spi.h>
--#include <linux/spi/spi-mem.h>
--#include <linux/gpio/consumer.h>
--#include <linux/pm_runtime.h>
-+#include <linux/percpu.h>
-+#include <linux/platform_data/x86/apple.h>
- #include <linux/pm_domain.h>
-+#include <linux/pm_runtime.h>
- #include <linux/property.h>
--#include <linux/export.h>
-+#include <linux/ptp_clock_kernel.h>
- #include <linux/sched/rt.h>
-+#include <linux/slab.h>
-+#include <linux/spi/spi.h>
-+#include <linux/spi/spi-mem.h>
- #include <uapi/linux/sched/types.h>
--#include <linux/delay.h>
--#include <linux/kthread.h>
--#include <linux/ioport.h>
--#include <linux/acpi.h>
--#include <linux/highmem.h>
--#include <linux/idr.h>
--#include <linux/platform_data/x86/apple.h>
--#include <linux/ptp_clock_kernel.h>
--#include <linux/percpu.h>
- 
- #define CREATE_TRACE_POINTS
- #include <trace/events/spi.h>
 diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
-index 44ba6798046c..becad31aeea2 100644
+index 8e7fc0f21714..e9fb96016dc1 100644
 --- a/include/linux/spi/spi.h
 +++ b/include/linux/spi/spi.h
-@@ -6,19 +6,19 @@
- #ifndef __LINUX_SPI_H
- #define __LINUX_SPI_H
+@@ -50,7 +50,7 @@ extern struct bus_type spi_bus_type;
  
-+#include <linux/acpi.h>
- #include <linux/bits.h>
-+#include <linux/completion.h>
- #include <linux/device.h>
--#include <linux/mod_devicetable.h>
--#include <linux/slab.h>
-+#include <linux/gpio/consumer.h>
- #include <linux/kthread.h>
--#include <linux/completion.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/scatterlist.h>
--#include <linux/gpio/consumer.h>
+ /**
+  * struct spi_statistics - statistics for spi transfers
+- * @syncp:         seqcount to protect members in this struct for per-cpu udate
++ * @syncp:         seqcount to protect members in this struct for per-cpu update
+  *                 on 32-bit systems
+  *
+  * @messages:      number of spi-messages handled
+@@ -69,7 +69,7 @@ extern struct bus_type spi_bus_type;
+  * @bytes_rx:      number of bytes received from device
+  *
+  * @transfer_bytes_histo:
+- *                 transfer bytes histogramm
++ *                 transfer bytes histogram
+  *
+  * @transfers_split_maxsize:
+  *                 number of transfers that have been split because of
+@@ -170,7 +170,7 @@ extern void spi_transfer_cs_change_delay_exec(struct spi_message *msg,
+  *	the device will bind to the named driver and only the named driver.
+  *	Do not set directly, because core frees it; use driver_set_override() to
+  *	set or clear it.
+- * @cs_gpiod: gpio descriptor of the chipselect line (optional, NULL when
++ * @cs_gpiod: GPIO descriptor of the chipselect line (optional, NULL when
+  *	not using a GPIO line)
+  * @word_delay: delay to be inserted between consecutive
+  *	words of a transfer
+@@ -226,7 +226,7 @@ struct spi_device {
+ 	void			*controller_data;
+ 	char			modalias[SPI_NAME_SIZE];
+ 	const char		*driver_override;
+-	struct gpio_desc	*cs_gpiod;	/* Chip select gpio desc */
++	struct gpio_desc	*cs_gpiod;	/* Chip select GPIO descriptor */
+ 	struct spi_delay	word_delay; /* Inter-word delay */
+ 	/* CS delays */
+ 	struct spi_delay	cs_setup;
+@@ -237,7 +237,7 @@ struct spi_device {
+ 	struct spi_statistics __percpu	*pcpu_statistics;
+ 
+ 	/*
+-	 * likely need more hooks for more protocol options affecting how
++	 * Likely need more hooks for more protocol options affecting how
+ 	 * the controller talks to each chip, like:
+ 	 *  - memory packing (12 bit samples into low bits, others zeroed)
+ 	 *  - priority
+@@ -313,11 +313,11 @@ static inline void spi_set_csgpiod(struct spi_device *spi, u8 idx, struct gpio_d
+ /**
+  * struct spi_driver - Host side "protocol" driver
+  * @id_table: List of SPI devices supported by this driver
+- * @probe: Binds this driver to the spi device.  Drivers can verify
++ * @probe: Binds this driver to the SPI device.  Drivers can verify
+  *	that the device is actually present, and may need to configure
+  *	characteristics (such as bits_per_word) which weren't needed for
+  *	the initial configuration done during system setup.
+- * @remove: Unbinds this driver from the spi device
++ * @remove: Unbinds this driver from the SPI device
+  * @shutdown: Standard shutdown callback used during system state
+  *	transitions such as powerdown/halt and kexec
+  * @driver: SPI device drivers should initialize the name and owner
+@@ -429,7 +429,7 @@ extern struct spi_device *spi_new_ancillary_device(struct spi_device *spi, u8 ch
+  * @queued: whether this controller is providing an internal message queue
+  * @kworker: pointer to thread struct for message pump
+  * @pump_messages: work struct for scheduling work to the message pump
+- * @queue_lock: spinlock to syncronise access to message queue
++ * @queue_lock: spinlock to synchronise access to message queue
+  * @queue: message queue
+  * @cur_msg: the currently in-flight message
+  * @cur_msg_completion: a completion for the current in-flight message
+@@ -487,7 +487,7 @@ extern struct spi_device *spi_new_ancillary_device(struct spi_device *spi, u8 ch
+  * @unprepare_message: undo any work done by prepare_message().
+  * @slave_abort: abort the ongoing transfer request on an SPI slave controller
+  * @target_abort: abort the ongoing transfer request on an SPI target controller
+- * @cs_gpiods: Array of GPIO descs to use as chip select lines; one per CS
++ * @cs_gpiods: Array of GPIO descriptors to use as chip select lines; one per CS
+  *	number. Any individual value may be NULL for CS lines that
+  *	are not GPIOs (driven by the SPI controller itself).
+  * @use_gpio_descriptors: Turns on the code in the SPI core to parse and grab
+@@ -514,7 +514,7 @@ extern struct spi_device *spi_new_ancillary_device(struct spi_device *spi, u8 ch
+  *	If the driver does not set this, the SPI core takes the snapshot as
+  *	close to the driver hand-over as possible.
+  * @irq_flags: Interrupt enable state during PTP system timestamping
+- * @fallback: fallback to pio if dma transfer return failure with
++ * @fallback: fallback to PIO if DMA transfer return failure with
+  *	SPI_TRANS_FAIL_NO_START.
+  * @queue_empty: signal green light for opportunistically skipping the queue
+  *	for spi_sync transfers.
+@@ -536,15 +536,17 @@ struct spi_controller {
+ 
+ 	struct list_head list;
+ 
+-	/* Other than negative (== assign one dynamically), bus_num is fully
+-	 * board-specific.  usually that simplifies to being SOC-specific.
+-	 * example:  one SOC has three SPI controllers, numbered 0..2,
+-	 * and one board's schematics might show it using SPI-2.  software
++	/*
++	 * Other than negative (== assign one dynamically), bus_num is fully
++	 * board-specific. Usually that simplifies to being SoC-specific.
++	 * example: one SoC has three SPI controllers, numbered 0..2,
++	 * and one board's schematics might show it using SPI-2. Software
+ 	 * would normally use bus_num=2 for that controller.
+ 	 */
+ 	s16			bus_num;
+ 
+-	/* chipselects will be integral to many controllers; some others
++	/*
++	 * Chipselects will be integral to many controllers; some others
+ 	 * might use board-specific GPIOs.
+ 	 */
+ 	u16			num_chipselect;
+@@ -590,8 +592,8 @@ struct spi_controller {
+ 	};
+ 
+ 	/*
+-	 * on some hardware transfer / message size may be constrained
+-	 * the limit may depend on device transfer settings
++	 * On some hardware transfer / message size may be constrained
++	 * the limit may depend on device transfer settings.
+ 	 */
+ 	size_t (*max_transfer_size)(struct spi_device *spi);
+ 	size_t (*max_message_size)(struct spi_device *spi);
+@@ -609,7 +611,8 @@ struct spi_controller {
+ 	/* Flag indicating that the SPI bus is locked for exclusive use */
+ 	bool			bus_lock_flag;
+ 
+-	/* Setup mode and clock, etc (spi driver may call many times).
++	/*
++	 * Setup mode and clock, etc (SPI driver may call many times).
+ 	 *
+ 	 * IMPORTANT:  this may be called when transfers to another
+ 	 * device are active.  DO NOT UPDATE SHARED REGISTERS in ways
+@@ -627,18 +630,19 @@ struct spi_controller {
+ 	 */
+ 	int (*set_cs_timing)(struct spi_device *spi);
+ 
+-	/* Bidirectional bulk transfers
++	/*
++	 * Bidirectional bulk transfers
+ 	 *
+ 	 * + The transfer() method may not sleep; its main role is
+ 	 *   just to add the message to the queue.
+ 	 * + For now there's no remove-from-queue operation, or
+ 	 *   any other request management
+-	 * + To a given spi_device, message queueing is pure fifo
++	 * + To a given spi_device, message queueing is pure FIFO
+ 	 *
+ 	 * + The controller's main job is to process its message queue,
+ 	 *   selecting a chip (for masters), then transferring data
+ 	 * + If there are multiple spi_device children, the i/o queue
+-	 *   arbitration algorithm is unspecified (round robin, fifo,
++	 *   arbitration algorithm is unspecified (round robin, FIFO,
+ 	 *   priority, reservations, preemption, etc)
+ 	 *
+ 	 * + Chipselect stays active during the entire message
+@@ -719,7 +723,7 @@ struct spi_controller {
+ 	const struct spi_controller_mem_ops *mem_ops;
+ 	const struct spi_controller_mem_caps *mem_caps;
+ 
+-	/* gpio chip select */
++	/* GPIO chip select */
+ 	struct gpio_desc	**cs_gpiods;
+ 	bool			use_gpio_descriptors;
+ 	s8			unused_native_cs;
+@@ -803,7 +807,7 @@ void spi_take_timestamp_post(struct spi_controller *ctlr,
+ 			     struct spi_transfer *xfer,
+ 			     size_t progress, bool irqs_off);
+ 
+-/* The spi driver core manages memory for the spi_controller classdev */
++/* The SPI driver core manages memory for the spi_controller classdev */
+ extern struct spi_controller *__spi_alloc_controller(struct device *host,
+ 						unsigned int size, bool slave);
+ 
+@@ -892,13 +896,13 @@ typedef void (*spi_res_release_t)(struct spi_controller *ctlr,
+ 				  void *res);
+ 
+ /**
+- * struct spi_res - spi resource management structure
++ * struct spi_res - SPI resource management structure
+  * @entry:   list entry
+  * @release: release code called prior to freeing this resource
+  * @data:    extra data allocated for the specific use-case
+  *
+- * this is based on ideas from devres, but focused on life-cycle
+- * management during spi_message processing
++ * This is based on ideas from devres, but focused on life-cycle
++ * management during spi_message processing.
+  */
+ struct spi_res {
+ 	struct list_head        entry;
+@@ -916,7 +920,7 @@ struct spi_res {
+  *
+  * The spi_messages themselves consist of a series of read+write transfer
+  * segments.  Those segments always read the same number of bits as they
+- * write; but one or the other is easily ignored by passing a null buffer
++ * write; but one or the other is easily ignored by passing a NULL buffer
+  * pointer.  (This is unlike most types of I/O API, because SPI hardware
+  * is full duplex.)
+  *
+@@ -927,8 +931,8 @@ struct spi_res {
+ 
+ /**
+  * struct spi_transfer - a read/write buffer pair
+- * @tx_buf: data to be written (dma-safe memory), or NULL
+- * @rx_buf: data to be read (dma-safe memory), or NULL
++ * @tx_buf: data to be written (DMA-safe memory), or NULL
++ * @rx_buf: data to be read (DMA-safe memory), or NULL
+  * @tx_dma: DMA address of tx_buf, if @spi_message.is_dma_mapped
+  * @rx_dma: DMA address of rx_buf, if @spi_message.is_dma_mapped
+  * @tx_nbits: number of bits used for writing. If 0 the default
+@@ -951,7 +955,7 @@ struct spi_res {
+  * @word_delay: inter word delay to be introduced after each word size
+  *	(set by bits_per_word) transmission.
+  * @effective_speed_hz: the effective SCK-speed that was used to
+- *      transfer this transfer. Set to 0 if the spi bus driver does
++ *      transfer this transfer. Set to 0 if the SPI bus driver does
+  *      not support it.
+  * @transfer_list: transfers are sequenced through @spi_message.transfers
+  * @tx_sg: Scatterlist for transmit, currently not for client use
+@@ -980,16 +984,16 @@ struct spi_res {
+  *	transmitting the "pre" word, and the "post" timestamp after receiving
+  *	transmit confirmation from the controller for the "post" word.
+  * @timestamped: true if the transfer has been timestamped
+- * @error: Error status logged by spi controller driver.
++ * @error: Error status logged by SPI controller driver.
+  *
+  * SPI transfers always write the same number of bytes as they read.
+  * Protocol drivers should always provide @rx_buf and/or @tx_buf.
+  * In some cases, they may also want to provide DMA addresses for
+  * the data being transferred; that may reduce overhead, when the
+- * underlying driver uses dma.
++ * underlying driver uses DMA.
+  *
+- * If the transmit buffer is null, zeroes will be shifted out
+- * while filling @rx_buf.  If the receive buffer is null, the data
++ * If the transmit buffer is NULL, zeroes will be shifted out
++ * while filling @rx_buf.  If the receive buffer is NULL, the data
+  * shifted in will be discarded.  Only "len" bytes shift out (or in).
+  * It's an error to try to shift out a partial word.  (For example, by
+  * shifting out three bytes with word size of sixteen or twenty bits;
+@@ -1023,7 +1027,7 @@ struct spi_res {
+  * Some devices need protocol transactions to be built from a series of
+  * spi_message submissions, where the content of one message is determined
+  * by the results of previous messages and where the whole transaction
+- * ends when the chipselect goes intactive.
++ * ends when the chipselect goes inactive.
+  *
+  * When SPI can transfer in 1x,2x or 4x. It can get this transfer information
+  * from device through @tx_nbits and @rx_nbits. In Bi-direction, these
+@@ -1037,10 +1041,11 @@ struct spi_res {
+  * and its transfers, ignore them until its completion callback.
+  */
+ struct spi_transfer {
+-	/* It's ok if tx_buf == rx_buf (right?)
+-	 * for MicroWire, one buffer must be null
+-	 * buffers must work with dma_*map_single() calls, unless
+-	 *   spi_message.is_dma_mapped reports a pre-existing mapping
++	/*
++	 * It's okay if tx_buf == rx_buf (right?).
++	 * For MicroWire, one buffer must be NULL.
++	 * Buffers must work with dma_*map_single() calls, unless
++	 * spi_message.is_dma_mapped reports a pre-existing mapping.
+ 	 */
+ 	const void	*tx_buf;
+ 	void		*rx_buf;
+@@ -1060,9 +1065,9 @@ struct spi_transfer {
+ 	unsigned	tx_nbits:3;
+ 	unsigned	rx_nbits:3;
+ 	unsigned	timestamped:1;
+-#define	SPI_NBITS_SINGLE	0x01 /* 1bit transfer */
+-#define	SPI_NBITS_DUAL		0x02 /* 2bits transfer */
+-#define	SPI_NBITS_QUAD		0x04 /* 4bits transfer */
++#define	SPI_NBITS_SINGLE	0x01 /* 1-bit transfer */
++#define	SPI_NBITS_DUAL		0x02 /* 2-bit transfer */
++#define	SPI_NBITS_QUAD		0x04 /* 4-bit transfer */
+ 	u8		bits_per_word;
+ 	struct spi_delay	delay;
+ 	struct spi_delay	cs_change_delay;
+@@ -1083,7 +1088,7 @@ struct spi_transfer {
+  * struct spi_message - one multi-segment SPI transaction
+  * @transfers: list of transfer segments in this transaction
+  * @spi: SPI device to which the transaction is queued
+- * @is_dma_mapped: if true, the caller provided both dma and cpu virtual
++ * @is_dma_mapped: if true, the caller provided both DMA and CPU virtual
+  *	addresses for each transfer buffer
+  * @complete: called to report transaction completions
+  * @context: the argument to complete() when it's called
+@@ -1093,7 +1098,7 @@ struct spi_transfer {
+  * @status: zero for success, else negative errno
+  * @queue: for use by whichever driver currently owns the message
+  * @state: for use by whichever driver currently owns the message
+- * @resources: for resource management when the spi message is processed
++ * @resources: for resource management when the SPI message is processed
+  * @prepared: spi_prepare_message was called for the this message
+  *
+  * A @spi_message is used to execute an atomic sequence of data transfers,
+@@ -1120,7 +1125,8 @@ struct spi_message {
+ 	/* spi_prepare_message() was called for this message */
+ 	bool			prepared;
+ 
+-	/* REVISIT:  we might want a flag affecting the behavior of the
++	/*
++	 * REVISIT: we might want a flag affecting the behavior of the
+ 	 * last transfer ... allowing things like "read 16 bit length L"
+ 	 * immediately followed by "read L bytes".  Basically imposing
+ 	 * a specific message scheduling algorithm.
+@@ -1138,14 +1144,15 @@ struct spi_message {
+ 	unsigned		frame_length;
+ 	unsigned		actual_length;
+ 
+-	/* For optional use by whatever driver currently owns the
++	/*
++	 * For optional use by whatever driver currently owns the
+ 	 * spi_message ...  between calls to spi_async and then later
+ 	 * complete(), that's the spi_controller controller driver.
+ 	 */
+ 	struct list_head	queue;
+ 	void			*state;
+ 
+-	/* List of spi_res reources when the spi message is processed */
++	/* List of spi_res resources when the SPI message is processed */
+ 	struct list_head        resources;
+ };
+ 
+@@ -1182,7 +1189,7 @@ spi_transfer_delay_exec(struct spi_transfer *t)
+ /**
+  * spi_message_init_with_transfers - Initialize spi_message and append transfers
+  * @m: spi_message to be initialized
+- * @xfers: An array of spi transfers
++ * @xfers: An array of SPI transfers
+  * @num_xfers: Number of items in the xfer array
+  *
+  * This function initializes the given spi_message and adds each spi_transfer in
+@@ -1199,10 +1206,10 @@ struct spi_transfer *xfers, unsigned int num_xfers)
+ 		spi_message_add_tail(&xfers[i], m);
+ }
+ 
+-/* It's fine to embed message and transaction structures in other data
++/*
++ * It's fine to embed message and transaction structures in other data
+  * structures so long as you don't free them while they're in use.
+  */
 -
--#include <uapi/linux/spi/spi.h>
--#include <linux/acpi.h>
-+#include <linux/slab.h>
- #include <linux/u64_stats_sync.h>
+ static inline struct spi_message *spi_message_alloc(unsigned ntrans, gfp_t flags)
+ {
+ 	struct spi_message *m;
+@@ -1305,7 +1312,7 @@ typedef void (*spi_replaced_release_t)(struct spi_controller *ctlr,
+  *                                 replacements that have occurred
+  *                                 so that they can get reverted
+  * @release:            some extra release code to get executed prior to
+- *                      relasing this structure
++ *                      releasing this structure
+  * @extradata:          pointer to some extra data if requested or NULL
+  * @replaced_transfers: transfers that have been replaced and which need
+  *                      to get restored
+@@ -1315,9 +1322,9 @@ typedef void (*spi_replaced_release_t)(struct spi_controller *ctlr,
+  * @inserted_transfers: array of spi_transfers of array-size @inserted,
+  *                      that have been replacing replaced_transfers
+  *
+- * note: that @extradata will point to @inserted_transfers[@inserted]
++ * Note: that @extradata will point to @inserted_transfers[@inserted]
+  * if some extra allocation is requested, so alignment will be the same
+- * as for spi_transfers
++ * as for spi_transfers.
+  */
+ struct spi_replaced_transfers {
+ 	spi_replaced_release_t release;
+@@ -1343,7 +1350,8 @@ extern int spi_split_transfers_maxwords(struct spi_controller *ctlr,
  
-+#include <uapi/linux/spi/spi.h>
-+
- struct dma_chan;
- struct software_node;
- struct ptp_system_timestamp;
+ /*---------------------------------------------------------------------------*/
+ 
+-/* All these synchronous SPI transfer routines are utilities layered
++/*
++ * All these synchronous SPI transfer routines are utilities layered
+  * over the core async transfer primitive.  Here, "synchronous" means
+  * they will sleep uninterruptibly until the async transfer completes.
+  */
+@@ -1486,7 +1494,7 @@ static inline ssize_t spi_w8r16(struct spi_device *spi, u8 cmd)
+  *
+  * Callable only from contexts that can sleep.
+  *
+- * Return: the (unsigned) sixteen bit number returned by the device in cpu
++ * Return: the (unsigned) sixteen bit number returned by the device in CPU
+  * endianness, or else a negative error code.
+  */
+ static inline ssize_t spi_w8r16be(struct spi_device *spi, u8 cmd)
+@@ -1514,7 +1522,7 @@ static inline ssize_t spi_w8r16be(struct spi_device *spi, u8 cmd)
+  * As a rule, SPI devices can't be probed.  Instead, board init code
+  * provides a table listing the devices which are present, with enough
+  * information to bind and set up the device's driver.  There's basic
+- * support for nonstatic configurations too; enough to handle adding
++ * support for non-static configurations too; enough to handle adding
+  * parport adapters, or microcontrollers acting as USB-to-SPI bridges.
+  */
+ 
+@@ -1551,12 +1559,13 @@ static inline ssize_t spi_w8r16be(struct spi_device *spi, u8 cmd)
+  * are active in some dynamic board configuration models.
+  */
+ struct spi_board_info {
+-	/* The device name and module name are coupled, like platform_bus;
++	/*
++	 * The device name and module name are coupled, like platform_bus;
+ 	 * "modalias" is normally the driver name.
+ 	 *
+ 	 * platform_data goes to spi_device.dev.platform_data,
+ 	 * controller_data goes to spi_device.controller_data,
+-	 * irq is copied too
++	 * IRQ is copied too.
+ 	 */
+ 	char		modalias[SPI_NAME_SIZE];
+ 	const void	*platform_data;
+@@ -1568,7 +1577,8 @@ struct spi_board_info {
+ 	u32		max_speed_hz;
+ 
+ 
+-	/* bus_num is board specific and matches the bus_num of some
++	/*
++	 * bus_num is board specific and matches the bus_num of some
+ 	 * spi_controller that will probably be registered later.
+ 	 *
+ 	 * chip_select reflects how this chip is wired to that master;
+@@ -1577,12 +1587,14 @@ struct spi_board_info {
+ 	u16		bus_num;
+ 	u16		chip_select;
+ 
+-	/* mode becomes spi_device.mode, and is essential for chips
++	/*
++	 * mode becomes spi_device.mode, and is essential for chips
+ 	 * where the default of SPI_CS_HIGH = 0 is wrong.
+ 	 */
+ 	u32		mode;
+ 
+-	/* ... may need additional spi_device chip config data here.
++	/*
++	 * ... may need additional spi_device chip config data here.
+ 	 * avoid stuff protocol drivers can set; but include stuff
+ 	 * needed to behave without being bound to a driver:
+ 	 *  - quirks like clock rate mattering when not selected
+@@ -1599,7 +1611,8 @@ spi_register_board_info(struct spi_board_info const *info, unsigned n)
+ 	{ return 0; }
+ #endif
+ 
+-/* If you're hotplugging an adapter with devices (parport, usb, etc)
++/*
++ * If you're hotplugging an adapter with devices (parport, USB, etc)
+  * use spi_new_device() to describe each device.  You can also call
+  * spi_unregister_device() to start making that device vanish, but
+  * normally that would be handled by spi_unregister_controller().
 -- 
 2.40.0.1.gaa8946217a0b
 
