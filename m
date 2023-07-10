@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CFA8EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 16:57:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B5FBC001DC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 17:09:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vf+hINBxnQmKHxnN5HSIKugguSQ4LsFli3CGiHsqCYw=; b=exPYcjsXXrSuwSzZP1hcxTSiRb
-	TrbA7KLVysn4wsfgNaRE2J0qMDCyBlI8pfTCsbaYx4oQEJu25f2iOlfN7IovmqA5gfAECdYaFKXyA
-	ZVqY2FL1mO99NhNy9jTKCbchzBaGpV0+KOdyCvUxktQBVl0k5zKdGgukBPZRe2kmHXFHjOMYFbpEx
-	V1sKiDtUT65ptOExo/N2vDdNbI6cwQvE3p99ohP2V+VZRh63FvjfZiSgaT4uzU5RslRbGx8H+iroF
-	l+OF5NhDVkg10ugElYmuZT6oulE8iLiwiRwHXq2YVxB323Ay3IxatnkuSg9Et9CmSjuDkj56nQK4V
-	BX+XoCTA==;
+	bh=FYbWqyzGQEO+WdN3CM73ojIgVjKro3KEZf/aupBU4qk=; b=DQJOHycXzEtgEtQFzfODSGjkcw
+	LPCeZv3Zc0SRkHw8/a97aBdiiZnYxCTm4A/HwqGcKHozbp1WdHoCW3SlghdwBAmpr5+EFNnk4HWTh
+	fywA509aBA8rsBXQs6tz8XcbhT6h7b8Wa4BeBFJUoyghKFlYmZjGRZexikp+9JuZypSA4ycocaYF5
+	Ug4E5L3OgGQr9AWnZpl4JF5cVKnjHm3nYQSyE9mPGJ+9J9MiWWFThRF4RW2NZibNaaF+vOZUmHvnJ
+	Mi2267bWKvQQ6aM/hKZ4ZQsBdCo0OzzFY4j3iSg2zKbCEotK7BIFf6ZrNuk17HGTpfj2tZepa3UT2
+	CZJAjg7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIuCN-00CGrq-07;
-	Mon, 10 Jul 2023 16:57:19 +0000
+	id 1qIuO1-00CIXK-19;
+	Mon, 10 Jul 2023 17:09:21 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIuCJ-00CGqy-2t;
-	Mon, 10 Jul 2023 16:57:17 +0000
+	id 1qIuNx-00CIWG-0w;
+	Mon, 10 Jul 2023 17:09:18 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4835D6102A;
-	Mon, 10 Jul 2023 16:57:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 013E7C433C8;
-	Mon, 10 Jul 2023 16:57:02 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id BC4FC61133;
+	Mon, 10 Jul 2023 17:09:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 822D8C433C9;
+	Mon, 10 Jul 2023 17:09:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689008234;
-	bh=IIro+PYudoCpsNeH2Llkq/gmEiqeLq8TswCPO5UnD6k=;
+	s=k20201202; t=1689008956;
+	bh=nKZycr1bbDIhX+7r/umilV/wuLHcsLLg8WWLjNqfVGw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=p7yUWoNb8JNe5qIMp13em9m8Rzsc1ghhta/kWFSe5/qi4pD5l1Kdd3nTIbhSAnB41
-	 W8C1J2axQqESm/vo5JFAn+FCzJ9O92y9klVgFoPPFBocvgHANqPMFGPKWSy1cah2AJ
-	 6B66a+6OSbM4vJnoAPeTpJQU1ZveA0PYXoTV6fut7sflD58+Jtel0GfBpq6p2nXiCt
-	 M0xsvZQxCC0EolQkXizKejaZaayP6VSNsobrYWwUH758W9Nr9zRBh1oYMDG5FsShL0
-	 zQI22BV9Iz/Ww1LFbCTyWKHKLILGMYlknCcvjk0BqOW9V/aTLFc+59pabBeheGKNwr
-	 5euI/OtpKjArA==
-Date: Mon, 10 Jul 2023 17:56:59 +0100
+	b=Ks7RL3h40J9Gsg6+T5tGMhXUPebOkMtv2HYbINZYkE0HBcDFe3InO0uHvSLO6Ywfd
+	 z9dbScYbXDyBfN0KKzvhwsevIOZI2Wa4nTPSPcqSdIk9dVy3t4CwrMIhESNVB8EcTq
+	 DHcqHiLwexT4fjkOSD7WRFfWxwr4oLox+CN38zoYAqwcwq7DLt0YYhvaSCGjOeZdC6
+	 /OMp7mPT/0W9iS9bRuPwjhjEgn3ZN4a3GPUVex+MO83a5hpzqpvTmLwha1tCaAJG7B
+	 IOQDzu3lMvKgzC08AKXIF8wSz30WvJ3WDseHtgBrUd0ZFYjZe2rdpVVbiRnkMjF1jV
+	 sbYhTW/HyF8mg==
+Date: Mon, 10 Jul 2023 18:09:00 +0100
 From: Mark Brown <broonie@kernel.org>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
@@ -94,20 +94,20 @@ Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
 	Steven Rostedt <rostedt@goodmis.org>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
 	Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [PATCH v2 03/15] spi: Replace if-else-if by bitops and
- multiplications
-Message-ID: <24e71654-bc79-42ac-86d1-4e6100f6893a@sirena.org.uk>
+Subject: Re: [PATCH v2 02/15] spi: Drop duplicate IDR allocation code in
+ spi_register_controller()
+Message-ID: <97f3436a-78ca-4a94-a409-ef04bd3b593f@sirena.org.uk>
 References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
- <20230710154932.68377-4-andriy.shevchenko@linux.intel.com>
+ <20230710154932.68377-3-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="fI+fdz2D5/EEE42m"
+	protocol="application/pgp-signature"; boundary="ugTz/0iIbXaMesMQ"
 Content-Disposition: inline
-In-Reply-To: <20230710154932.68377-4-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20230710154932.68377-3-andriy.shevchenko@linux.intel.com>
 X-Cookie: Do you have lysdexia?
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_095716_017984_F78ADD92 
-X-CRM114-Status: GOOD (  13.77  )
+X-CRM114-CacheID: sfid-20230710_100917_411680_23807A92 
+X-CRM114-Status: GOOD (  15.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,41 +123,48 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---fI+fdz2D5/EEE42m
+--ugTz/0iIbXaMesMQ
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-On Mon, Jul 10, 2023 at 06:49:20PM +0300, Andy Shevchenko wrote:
+On Mon, Jul 10, 2023 at 06:49:19PM +0300, Andy Shevchenko wrote:
 
-> -		if (xfer->bits_per_word <= 8)
-> -			maxsize = maxwords;
-> -		else if (xfer->bits_per_word <= 16)
-> -			maxsize = 2 * maxwords;
-> -		else
-> -			maxsize = 4 * maxwords;
-> -
-> +		maxsize = maxwords * roundup_pow_of_two(BITS_TO_BYTES(xfer->bits_per_word));
+> Refactor spi_register_controller() to drop duplicate IDR allocation.
+> Instead of if-else-if branching use two sequential if:s, which allows
+> to re-use the logic of IDR allocation in all cases.
 
-This will change the behaviour if bits_per_word is more than 32.  That
-is validated out elsewhere but I shouldn't have had to go around
-checking the code to confirm that this is the case.  This is the sort of
-thing that should be highlighted when doing this sort of edge case
-stylistic change.
+For legibility this should have been split into a separate factoring out
+of the shared code and rewriting of the logic, that'd make it trivial to
+review.
 
---fI+fdz2D5/EEE42m
+> -		mutex_lock(&board_lock);
+> -		id = idr_alloc(&spi_master_idr, ctlr, first_dynamic,
+> -			       0, GFP_KERNEL);
+> -		mutex_unlock(&board_lock);
+> -		if (WARN(id < 0, "couldn't get idr"))
+> -			return id;
+> -		ctlr->bus_num = id;
+> +		status = spi_controller_id_alloc(ctlr, first_dynamic, 0);
+> +		if (status)
+> +			return status;
+
+The original does not do the remapping of return codes that the previous
+two copies do...
+
+--ugTz/0iIbXaMesMQ
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmSsOFsACgkQJNaLcl1U
-h9A2Ywf+KXUPki4n4OHbYfUF8KSXIYSkZGLAugrUbcI1dW/wY8+0fLYP8+4w9V+j
-f81LA7/NDs1aRdnIEAvy6JRWhsUGKyHHKw42xpXD6MqtamipzOaVSYaL2Hr3ZuqC
-22p4KuNl0BAuHc+iyOWLpX7/btG8mweyZNWYjDbaB3duv4usx8Pis5kQu9HrTvfw
-e1repiQ4pqd5PGfhReO1fGbR6QIhoswiEm/9yfkZTQs1HAIOpRAePL2XPZD3sBuj
-pehvlOvP2yRq1fOxYVWGxXH8dhavS5t/mUlzyTYI7VxMD2HUZD1EiZ2uYcmntUEl
-y8tiLDQIFQRb++F+IFf0SjU+vXe0UQ==
-=tuUl
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmSsOysACgkQJNaLcl1U
+h9Bj2wf/eujSGQes7B4PBTQ3n1oBhkcL7Y24XQnkT5q6FXhb+PNy2gOUL7X4u8/s
+jewRdgc+ViUGaokkDON2TN26dLdi/+KEGq7rPGhgLMeyGSqKJx5uRaCQSSdKa2Y2
+w1zSdEXhWd9SZsgsLa18k9bVMBbmyuylLjQYrLlHktiuD4/baW1HQ5SqKICkb1Bg
+/ZdcRGqcKDfgJWnVfK4loF7rFNMRBY0rXsSdOVE3yOKeZE2uS46s2BPPN+xc7UaA
+KTSUu8JjCacwP+V70yrm4VGRb5/c0NJ++iO44yiykKNRvcJWCDemwAYhj9zV1ja/
+5l/fUqxd3+5Kv3hbc1rSnyAywM7/4g==
+=1GBL
 -----END PGP SIGNATURE-----
 
---fI+fdz2D5/EEE42m--
+--ugTz/0iIbXaMesMQ--
 
