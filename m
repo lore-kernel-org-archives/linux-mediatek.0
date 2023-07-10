@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59A1DEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 15:54:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA275C001B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 15:54:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2wfIkRCUrMKdf07sqvIIvDJRNz8tUinPQv3be3vrXHU=; b=rrFZp7RBX4nOi5ijaKe6nyRmI9
-	vmKZe9xAwuxbvyPxu6uCko6aep+bOa/vsIx50U3sbdnDHG4KFCPFIUq73dKFNGQOn5xR8m7GdGZC5
-	V0Bk15b/AiZNNarb5YDnP/qNZphuE7BqqPiOLIfgH3ZrdYNoE0uyczIe/6rCdpd17Z7SBcpAZhiRQ
-	cfE7ANllKYkMeTHlRerR+07wREsXj7qF5T7ZIY2OvOiw+8KrXqvYTubhDsNSP3dJrPFM0a/OX2KWO
-	vdruo2PTQeAjmHgG9Ai96ceTpp3gsj5ddHBO0I4fpiF6VNlN8FP+tq9dNQQMsskmUdxFl3+i/SwRj
-	gjC9BAyQ==;
+	bh=V+TLvPFhBy0VZnH7T1qJxJl1HxW6ZD/qq/fnzKOm3lg=; b=vbk6EGwY8X2Hn9Y6NWLqw78ZLe
+	m2lVK90ZjDzSofgr25gxxfaRNniFliF7cTfqxl7Nyq6m4xViMuMyA3wrl/JYzBMy8EmvoDk7R1Pkv
+	VmwYsW4sc1qC3MbrEskSgfZf1IEKYOyLr6qGRRNRxPvIlr0M781hRx3BC6Xr5XHlmo+oKQ+P88LzX
+	A8ZFypGzLnAhK87qw9CvO5fvuOFDGyIatlV8ejgUaBPSIq4d3qzBYwc4hJLJaYIY8oeHUWgd/0/fO
+	JZEEq0v9E3vobHp/biupgVfkHKuQdBgvXO+JBUNqfcnALVLaL/c6ULWKsJOtcl3VY4g60bqIkT6ut
+	rCFmIK8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qItDg-00C7C8-0U;
-	Mon, 10 Jul 2023 15:54:36 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1qItDw-00C7Kt-1e;
+	Mon, 10 Jul 2023 15:54:52 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qItDe-00C7AI-0S
+	id 1qItDs-00C7HQ-35
 	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Jul 2023 15:54:35 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-3143798f542so5102333f8f.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jul 2023 08:54:34 -0700 (PDT)
+	Mon, 10 Jul 2023 15:54:50 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-3fbc12181b6so52209395e9.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jul 2023 08:54:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689004473; x=1691596473;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689004486; x=1691596486;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=2wfIkRCUrMKdf07sqvIIvDJRNz8tUinPQv3be3vrXHU=;
-        b=ebGQtlRaVJQV2foAwyNUdohAeeUOZLm9EdlJMwuqey5BAYZgIrLM+d8eGE84ZOKPLl
-         ozeDEgBtlRgcnH6QlT67S8qGrnmG4yYTzxuzkDL1qmyGNJP0k4A3hdStwMpmNeesEe7I
-         B4O3nIgRTdtGnxp7sipzlhwM11x+8xwIMIqNe3c01o/ar3dZzUnTUIPOITqNjMgkDLkW
-         XHxDraRYIjYudVmeMXTWZSt+8OEoN8GxWwt/Jc3QA+YQVane91gDqIZoZWqm/lv1/3C3
-         ELZNJz9B1pI99Q8g77wYciQSoyPaF3BV5Jwcv2IAHGuCdxNlkhK8RNt+FTkkM1Lew5Xt
-         y9qw==
+        bh=V+TLvPFhBy0VZnH7T1qJxJl1HxW6ZD/qq/fnzKOm3lg=;
+        b=EKLidUAYuZqZn3qp1dUjWlm2DxvKzKwB7D7K6DaZP+xN+3JCwWc7oEHv4jldB3k3rr
+         weY4MbI5L2NIAirxPFueNE7Yz7PYbWJD+/dMZC/owxPXra8uc41ZpzZTge9PBUciEtO9
+         gxcJT/DLFwSf3AM6hzhK4MXqtPwuXsle6sMO45gOTVn/W3YBZIeMzmCsRK0NRKui+T2L
+         rW8lxeXhrPBKAPSYpqubOGQvzgx0WEWh7JnSeZpEhIonRge1GiYWvYB6EW/A05Rs9a97
+         X8M5WRiBBZEB8eaHNhzqwSGmXNLg9VlPkRLshqRP1ayIk84j9npdEbj8AS/J4yn8yAxi
+         sFAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689004473; x=1691596473;
+        d=1e100.net; s=20221208; t=1689004486; x=1691596486;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2wfIkRCUrMKdf07sqvIIvDJRNz8tUinPQv3be3vrXHU=;
-        b=IW3LEq1ZfvUKVOzYIdkcFZLQpon4/iTywHkGC/vN6eob28C5MIR5CGoWrSrN9Auhqr
-         Mc07yDMhP7MNitifPqA4HIhS4BUR2eIbG7zDGnBTA0UXcrXjG0VoNizwx/DN3T2ieNxg
-         tCxVRV/CaiHn4jhlnsVBpY3N8xrswLudTWW0UjsOCYeWlkw+YYSkf5KuQ00a1T5caiXy
-         9j44mWpGDemX74PxS3ETWb344lb22K8QjELDpnCFez0+PJQu5rjdhnVuHQ0CvS3BOkID
-         gZiJcK2lKNTNUl2p/lNi/UMrbZNQi8rcXCZIKVihUiunrlyOYVu3C/N7mJxzevcPIG68
-         jx8w==
-X-Gm-Message-State: ABy/qLbwFlhWK5Cy69nA2kl47UcBjHE4iZAD2yW800Hqe0g0OJhVSEV6
-	xmLD3c1qiOPpgRRQ0UlOvly+cA==
-X-Google-Smtp-Source: APBJJlHBZxxgHi7w9AMsNsW/SXZZBvbSaE3V+7jxZPXV+5ePCOXeIZwHtEHIRg47IkRL2mdfvzZqNw==
-X-Received: by 2002:a5d:6148:0:b0:314:3ca0:c8c2 with SMTP id y8-20020a5d6148000000b003143ca0c8c2mr12396031wrt.11.1689004472875;
-        Mon, 10 Jul 2023 08:54:32 -0700 (PDT)
+        bh=V+TLvPFhBy0VZnH7T1qJxJl1HxW6ZD/qq/fnzKOm3lg=;
+        b=YcfIBcP/wpIkiyh0sr74i3MrIjLdLuxA3msN65gEeFYCThTq/uPtSxTzWBctnlgCX+
+         YTRX01gKtzXeyPfYoZ9VWVx8t3DPDa5sRS0mZ5KxqkZFdA/dZCvbGtsYCknPPGtP5fdI
+         cI5iCd2zSxKDmKKbVwWg9NWlGqQncV97WZPy30rGvfAPrvZg3AXDfyhTYJCF/H6Md/rQ
+         h3DhBaW5r/xm678N158iA2XP4pNVGdDUXUCk/esXSEAMGam6z0jFNVYC7wso+JGj1Sj3
+         70YynrZ8pGVOjHBGjr4vKnpSupfIg6LO4Q0YgJlk9NpwAXgKqDU+vZxG6LWFfrvZ8Cq4
+         euRw==
+X-Gm-Message-State: ABy/qLZhcIRcwBxuv+K+Mjn3YONXbw2W6nq+cY+v0lEZui2jDKQN07W1
+	S5Em4U9g80JwEdd3xaOL6BcEOQ==
+X-Google-Smtp-Source: APBJJlHKZAYdKNWF7zxUjdZaYyNJ/9cmV19/PYxoCgu9UK9zQy7GLmvhMxO7al1IZEypAiDtH1//bA==
+X-Received: by 2002:a7b:c019:0:b0:3fb:b3f8:506b with SMTP id c25-20020a7bc019000000b003fbb3f8506bmr11600743wmb.24.1689004485634;
+        Mon, 10 Jul 2023 08:54:45 -0700 (PDT)
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id r18-20020a5d4e52000000b0031417b0d338sm12065650wrt.87.2023.07.10.08.54.31
+        by smtp.gmail.com with ESMTPSA id p19-20020a1c7413000000b003fba137857esm231670wmc.14.2023.07.10.08.54.44
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 10 Jul 2023 08:54:32 -0700 (PDT)
-Message-ID: <a0cfb1d7-2bf8-02c0-054c-181114ebcfbc@baylibre.com>
-Date: Mon, 10 Jul 2023 17:54:31 +0200
+        Mon, 10 Jul 2023 08:54:45 -0700 (PDT)
+Message-ID: <00522cf2-c90a-659e-00e2-722c4ac0244e@baylibre.com>
+Date: Mon, 10 Jul 2023 17:54:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH v6 6/8] soc: mediatek: Add support for WAY_EN operations
+Subject: Re: [PATCH v6 7/8] soc: mediatek: Add support for
+ MTK_SCPD_STRICT_BUS_PROTECTION cap
 Content-Language: en-US
 To: Markus Schneider-Pargmann <msp@baylibre.com>,
  Rob Herring <robh+dt@kernel.org>,
@@ -81,14 +82,15 @@ Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
  linux-mediatek@lists.infradead.org, Alexandre Bailon <abailon@baylibre.com>,
  Fabien Parent <fparent@baylibre.com>
 References: <20230627131040.3418538-1-msp@baylibre.com>
- <20230627131040.3418538-7-msp@baylibre.com>
+ <20230627131040.3418538-8-msp@baylibre.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230627131040.3418538-7-msp@baylibre.com>
+In-Reply-To: <20230627131040.3418538-8-msp@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_085434_178722_683B4827 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20230710_085449_021960_68211E45 
+X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,15 +110,10 @@ Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 
 On 27/06/2023 15:10, Markus Schneider-Pargmann wrote:
-> This updates the power domain to support WAY_EN operations. WAY_EN
-> operations on mt8365 are using a different component to check for the
-> acknowledgment, namely the infracfg-nao component. Also to enable a way
-> it the bit needs to be cleared while disabling a way needs a bit to be
-> set. To support these two operations two flags are added,
-> BUS_PROT_INVERTED and BUS_PROT_STA_COMPONENT_INFRA_NAO. Additionally
-> another regmap is created if the INFRA_NAO capability is set.
-> 
-> This operation is required by the mt8365 for the MM power domain.
+> This adds support for MTK_SCPD_STRICT_BUS_PROTECTION capability. It is a
+> strict bus protection policy that requires the bus protection to be
+> disabled before accessing the bus.
+> This is required by the mt8365, for the MM power domain.
 
 -- 
 Regards,
