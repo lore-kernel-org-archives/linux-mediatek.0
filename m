@@ -4,90 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7DFEEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 03:14:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75088EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 03:39:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N0f/movtZorEjzM+r+LRTHIo16m8aSFE9mANkKWC//k=; b=JXCrJpVHVqRndPPJeCybAF9IWT
-	cCM0t/tYto7isdaiRk0CUZ4PSaR8nMZnnxTBHJulQCmmxX7jRq8dX19waqySEXjLH8eRQfb8I9JXw
-	YAvv5vq5f0pQqTxc49wbbOyRlYauExMz+Ue8Vs+Pf0RJzUjp3wJsL0Z0P8DYMMipkl2l3Kgpxmpl4
-	Hr3yhbJoTGCOV9JCUDtm1mk0VnVv6IGPIW0s4osrGFL0ySMCeRgv+RBMUXpTaiUS2nWNuhlPshDRJ
-	OsRSzq4GxDsrVUGOFswG55IhCKwe6obA32TK8MzfIIIGS53mXnuvwKxAiJaql/lm/zgZ6ZUhrEL0e
-	UziJY1ZA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jU/10Nkq0x+7qlTIxX5UvWSGsecwoSJlB8tqDooA93U=; b=VK6Ch4bK2tIyMc378qKEBL9KJS
+	Uq59XKOlETA2B7TgJ5AS8frnb5N1W+0FoL7YVv2+BHJURqi5J/PLEMWlgrhzWSaNUk8uQP7yIpOx+
+	18nsZa7W0V2YnW1gVQe4iCWPNAF//DPrjJB7SIig9v+K+8X64WXw2OrDCJsMpp+XL3cniCkUZg7nf
+	+UT4T2FTAgBoGAFltjZL1baJ8bpTr81uFoWyAd3NOj/7oIHBbINPN8ai6FakuikHIno/tLUT19LPM
+	lrNBIVJe5VboTe1q0BguYTSlRZgRyv8GKuhFybvi88e5rOpumYpVjEtrdccF4ngJPfFia830SZymt
+	2VRGcosA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIhLa-00AFuf-1z;
-	Mon, 10 Jul 2023 03:13:58 +0000
-Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f])
+	id 1qIhk6-00AIjs-15;
+	Mon, 10 Jul 2023 03:39:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIhLY-00AFu2-1j
-	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Jul 2023 03:13:57 +0000
-Received: by mail-il1-x12f.google.com with SMTP id e9e14a558f8ab-345f4a3ff76so15072005ab.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 09 Jul 2023 20:13:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1688958834; x=1691550834;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=N0f/movtZorEjzM+r+LRTHIo16m8aSFE9mANkKWC//k=;
-        b=DCu8m6Lgc3fN0s/umvG5QaoJejb15A7VhtGNn26yIUaP9CbiHAO6VhMIjCjM/NAbYt
-         soZzFtvp/tERAWjE2/CROXgSbcmahjxIWXdH59dgHCGBawCTgANsfqHUTlOnssHQgMxI
-         1F0rLYp/xA4XFeD1Pu1bpB69S1z7GYvNG/XR8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688958834; x=1691550834;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=N0f/movtZorEjzM+r+LRTHIo16m8aSFE9mANkKWC//k=;
-        b=jBBtCkEDEJ2ZzIb3mvLDmXWcQbhWHHIaWuC5diO4zaeHEiwH1a0uVbYO3vT2s/t0bb
-         05D9OPFSgx3jhnxf6hrvz/EmC0kAgzhfrlQSTv4MqKkaBa98WXOsFP+9wuA8GmsjIWuc
-         s9FLKHEuecCIQAw72bcAyYQUPkIu7Z6T8hkwhJzhf2XIyExnTYJtvRf1THwRSdrdi6bT
-         xuk4JAEnOW6/26qhcv3Jv/emjzVF7Lhbu1lLI7VfmeoW6lRudYD2UN6UyyRt5tGOG6EQ
-         Y9BSlT47BNnQ6kMPaPnNaJkH2KdD2htHhgjHlNsuZ6Ko2OjgNML6iNzCkfg7I4BV8G6V
-         9ZDw==
-X-Gm-Message-State: ABy/qLaV8QcX7x+BHNKvMKfcy3FORnYrvfOwK9jGwi2lcAO0UW1CXe8y
-	pjbkgCmpUArVcs1jB1bmXRnt3Q4DFl2u7Q7ufEA=
-X-Google-Smtp-Source: APBJJlGrRGdZfBxwDYL1+0LL1Z3U/yvCIP6GuSgZzVXbBmXRsrCcX+wyOfadMeAwDJmcOqsXQ1Yq8w==
-X-Received: by 2002:a92:c806:0:b0:340:54f1:35dc with SMTP id v6-20020a92c806000000b0034054f135dcmr10689688iln.18.1688958833809;
-        Sun, 09 Jul 2023 20:13:53 -0700 (PDT)
-Received: from mail-io1-f42.google.com (mail-io1-f42.google.com. [209.85.166.42])
-        by smtp.gmail.com with ESMTPSA id n13-20020a02a90d000000b0041fb2506011sm2927580jam.172.2023.07.09.20.13.52
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 09 Jul 2023 20:13:52 -0700 (PDT)
-Received: by mail-io1-f42.google.com with SMTP id ca18e2360f4ac-78358268d1bso121531239f.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 09 Jul 2023 20:13:52 -0700 (PDT)
-X-Received: by 2002:a5d:8f89:0:b0:783:63d6:4c5 with SMTP id
- l9-20020a5d8f89000000b0078363d604c5mr436352iol.12.1688958832360; Sun, 09 Jul
- 2023 20:13:52 -0700 (PDT)
+	id 1qIhk2-00AIif-29;
+	Mon, 10 Jul 2023 03:39:16 +0000
+X-UUID: 547120921ed311ee912e1518a6540028-20230709
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=jU/10Nkq0x+7qlTIxX5UvWSGsecwoSJlB8tqDooA93U=;
+	b=ADwFYUKTB2ZiwbxWC7OvLSc6o3DbxAVNHhdM7grlqPqT4csfvFO4XqDidxl8APqGrLRINDZ3VtH4xfyk5sipPnOkyqy2JGqA1ueTPmlWnexo2ez5LsEvPijARdENSdCla3Q8fAmbznAk2MHzsSxa0bS9Sbttdvb1BS043SR4AWM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.27,REQID:6ab25a19-51a2-4057-a1ab-2f237a92de88,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:70
+X-CID-INFO: VERSION:1.1.27,REQID:6ab25a19-51a2-4057-a1ab-2f237a92de88,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:70
+X-CID-META: VersionHash:01c9525,CLOUDID:db8dbf0d-26a8-467f-b838-f99719a9c083,B
+	ulkID:230710113911WF3FTQGA,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,CO
+	L:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
+	TF_CID_SPAM_FSD,TF_CID_SPAM_ULN
+X-UUID: 547120921ed311ee912e1518a6540028-20230709
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1536833770; Sun, 09 Jul 2023 20:39:09 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 10 Jul 2023 11:39:07 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 10 Jul 2023 11:39:07 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Alexandre Mergnat
+	<amergnat@baylibre.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Jason-ch Chen
+	<jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
+	<shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Nathan Lu
+	<nathan.lu@mediatek.com>
+Subject: [PATCH v6 2/2] drm/mediatek: Add DSI support for mt8188 vdosys0
+Date: Mon, 10 Jul 2023 10:52:47 +0800
+Message-ID: <20230710025247.20365-3-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230710025247.20365-1-jason-jh.lin@mediatek.com>
+References: <20230710025247.20365-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-References: <20230709162641.6405-1-jason-jh.lin@mediatek.com> <20230709162641.6405-3-jason-jh.lin@mediatek.com>
-In-Reply-To: <20230709162641.6405-3-jason-jh.lin@mediatek.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Mon, 10 Jul 2023 11:13:16 +0800
-X-Gmail-Original-Message-ID: <CAC=S1njmD1+12dS5x20XLR650nkRpkyM-dKjaierSLknuTPRuw@mail.gmail.com>
-Message-ID: <CAC=S1njmD1+12dS5x20XLR650nkRpkyM-dKjaierSLknuTPRuw@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] drm/mediatek: Fix iommu fault during crtc enabling
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Alexandre Mergnat <amergnat@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Jason-ch Chen <jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, 
-	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, 
-	Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230709_201356_591606_7B55B884 
-X-CRM114-Status: GOOD (  16.34  )
+X-CRM114-CacheID: sfid-20230709_203914_757249_ECCB550C 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,44 +96,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jason,
+Add DSI as main display output for mt8188 vdosys0.
 
-On Mon, Jul 10, 2023 at 12:27=E2=80=AFAM Jason-JH.Lin <jason-jh.lin@mediate=
-k.com> wrote:
->
-> OVL layer should not be enabled before crtc is enabled.
-> The plane_state of drm_atomic_state is not sync to
-> the plane_state stored in mtk_crtc during crtc enabling,
-> so just set all planes to disabled.
->
-Please add the "Fixes" tag before your S-o-b.
+Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     | 1 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 1 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 1 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c          | 9 +++++++++
+ 4 files changed, 12 insertions(+)
 
-Regards,
-Fei
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 3 +++
->  1 file changed, 3 insertions(+)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/me=
-diatek/mtk_drm_crtc.c
-> index d40142842f85..51d10e65004e 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -410,6 +410,9 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *=
-mtk_crtc)
->                 unsigned int local_layer;
->
->                 plane_state =3D to_mtk_plane_state(plane->state);
-> +
-> +               /* should not enable layer before crtc enabled */
-> +               plane_state->pending.enable =3D false;
->                 comp =3D mtk_drm_ddp_comp_for_plane(crtc, plane, &local_l=
-ayer);
->                 if (comp)
->                         mtk_ddp_comp_layer_config(comp, local_layer,
-> --
-> 2.18.0
->
->
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index 5f07037670e9..fdaa21b6a9da 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -48,6 +48,7 @@ unsigned int mtk_dpi_encoder_index(struct device *dev);
+ 
+ void mtk_dsi_ddp_start(struct device *dev);
+ void mtk_dsi_ddp_stop(struct device *dev);
++unsigned int mtk_dsi_encoder_index(struct device *dev);
+ 
+ int mtk_gamma_clk_enable(struct device *dev);
+ void mtk_gamma_clk_disable(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index bc7b0a0c20db..e6a7a0b9de6c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -318,6 +318,7 @@ static const struct mtk_ddp_comp_funcs ddp_dsc = {
+ static const struct mtk_ddp_comp_funcs ddp_dsi = {
+ 	.start = mtk_dsi_ddp_start,
+ 	.stop = mtk_dsi_ddp_stop,
++	.encoder_index = mtk_dsi_encoder_index,
+ };
+ 
+ static const struct mtk_ddp_comp_funcs ddp_gamma = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index ecd113f9908c..9b7ca8d35f71 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -189,6 +189,7 @@ static const unsigned int mt8188_mtk_ddp_main[] = {
+ 
+ static const struct mtk_drm_route mt8188_mtk_ddp_main_routes[] = {
+ 	{0, DDP_COMPONENT_DP_INTF0},
++	{0, DDP_COMPONENT_DSI0},
+ };
+ 
+ static const unsigned int mt8192_mtk_ddp_main[] = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 7d5250351193..62d5362916a5 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -865,6 +865,15 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+ 	return ret;
+ }
+ 
++unsigned int mtk_dsi_encoder_index(struct device *dev)
++{
++	struct mtk_dsi *dsi = dev_get_drvdata(dev);
++	unsigned int encoder_index = drm_encoder_index(&dsi->encoder);
++
++	dev_dbg(dev, "encoder index:%d", encoder_index);
++	return encoder_index;
++}
++
+ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
+ {
+ 	int ret;
+-- 
+2.18.0
+
 
