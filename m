@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51206C0015E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 07:38:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DAC9EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 08:05:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UIUOFC5eBd01nCTfd5qzJdq3GGEozMIpAxNAmMfE9Kk=; b=NLhpezBwBI3Eml0O1C3NJ8im1q
-	NiWPeiL4HYdnEQDDPhU70dWgv7PDJ2QfvF1QZSEyQNfDLUXZlNtC3cPhB7G6gfGS1LsnQi1VxU+zt
-	Hl6q0sA+TIx7VsGujRir2XBHCWDNcEJ5Kjkqdm+yUOfpY7bWnEXhwKjtw0av4EOvYyjV5WMIaY+RQ
-	HttLPxavqUI99NFCmfPZgh86PGUjphzuCM9Ed3M2RxFpVG3oTS2q0jEFZbRebEf0504V8HN//CciF
-	LisA9wuQ24EbVboTnt5ZD1XJmhIB18rtVOndtWxQsgEeh2/nbZPjxft7LpIWjApYDW6XqzgBVGAvZ
-	UWmpucuA==;
+	bh=YpcUtySvN2VD3013ub5OgvblejlpHih9vULbDcHGNcU=; b=uW7zptiMwzDlvSvNuEGBxKOgqX
+	uuK+7v9k7fkjvK/HK/wIKdLpiCiKXsJF8VKnEnDpqbJrhDE96PUFrzvFbei3d9qlDWsdVhpMz54vR
+	TfeIfwa0SVQ6avv/N+D2EXlcsComIkPGJrc1MO5etAS1tv1ndYXjL2hTeEW3XgZ24Cov3LHBNYFPq
+	2T5ScKos7saUZKftwjHzNsDCDezxPQM5BWY44JoaGBDPg1iJ8JFW9fNi+PcsMcjWW2C0xjXSOroJX
+	qUuDOMGeYwOc0TAdQnBrpq+DF94hyW/D+YKV3x1K7drBKWU2bC8RmXoCaylch2mE0MLmFPxkPKi1y
+	R8wCSjfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIlTp-00Aild-15;
-	Mon, 10 Jul 2023 07:38:45 +0000
+	id 1qIltZ-00Amw3-1F;
+	Mon, 10 Jul 2023 08:05:21 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIlTk-00Aiiu-2M;
-	Mon, 10 Jul 2023 07:38:42 +0000
+	id 1qIltW-00AmvA-0t;
+	Mon, 10 Jul 2023 08:05:19 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B81236606FF3;
-	Mon, 10 Jul 2023 08:38:34 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 36B9866028F5;
+	Mon, 10 Jul 2023 09:05:16 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688974715;
-	bh=LOXc+6Sqq2SjuM4ZCBO1k8rnrrk3ScMPXrSUxS0CCuE=;
+	s=mail; t=1688976316;
+	bh=2DjoZdLJ0+hIuE/CqtvGGTHozeIlajnCG/PuxnMbmNU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iNE1sJ53UJG7JThYzk3vZyGbX3LodamTt5AcFLXPDLZtowxiXEgaeH4JdralBhJPp
-	 XugpSEzAqLSOrwg3ORcljgb8vJIk90v8Pc7pny3Z0E6w55h+DHac3pDQbTh70+JZ5f
-	 si2VcCK0bzBONTIAsWq2tN3LQPXdQ+6bRbxfjIZIpMHBhMTYE9XoTwqJ5utxJsw0v2
-	 7E8FwkkufVJatjHiJnJ7F8dILMLB8aw4NA7N70ryufi4hprpNePY9XT3k1Kzc8ynmr
-	 7aI38MKT9IwbuZnla3AwTW5IIK1+OboP8oUG6XXSSX8NvjFdlCzSm3413bLNWRwo7x
-	 zuJ6z1l/ljQEQ==
-Message-ID: <da4847bb-d4b1-7810-3b5f-1200596b19fd@collabora.com>
-Date: Mon, 10 Jul 2023 09:38:31 +0200
+	b=TCgvXq9kyG4/pED3IXY6vz1IQTqIZI0thMB2tD1r9pOVzC9/WTcA6xIRSJwtmK6VC
+	 gGBn5Zj0xq+oI93rx97Ler0VvQVSDxbBZiEatgLfyYFulBrWnRE3HsYxWuc+kL07d+
+	 D5VS8DCPuRxTd1/c+VcukF3iV4cYFLtVdOF/DueDGvRSZiu3a4K70oGtBcPhU7RhOd
+	 OprkZVWVbu55EgBJrgpko3iaFHakrKkCOU2orQNs1BNozfqVSH+nkb3O6aaTu1LfSx
+	 LZqDWKtTOvJrNSj7+wauKLavRaqNhJbVETKTljXyCH3x7nT0vGzG5Ku2IUeLHiiY+Y
+	 cTMasXvOcHmLw==
+Message-ID: <c41f96be-b728-4c06-76c5-7f7febc50e3e@collabora.com>
+Date: Mon, 10 Jul 2023 10:05:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH v4 0/9] MediaTek DisplayPort: support eDP and aux-bus
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
- daniel@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
- nfraprado@collabora.com
-References: <20230706123025.208408-1-angelogioacchino.delregno@collabora.com>
- <CAGXv+5HzQhoz0OUhifQC0vr44O5VwvuYnsHSA2jK0FjwJT3OBA@mail.gmail.com>
+Subject: Re: [PATCH] media: mtk-jpeg: Set platform driver data earlier
 Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>, Bin Liu <bin.liu@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil
+ <hverkuil@xs4all.nl>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kyrie.wu@mediatek.com, irui.wang@mediatek.com
+References: <20230710065139.1763695-1-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5HzQhoz0OUhifQC0vr44O5VwvuYnsHSA2jK0FjwJT3OBA@mail.gmail.com>
+In-Reply-To: <20230710065139.1763695-1-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_003841_107509_EF441199 
-X-CRM114-Status: GOOD (  31.91  )
+X-CRM114-CacheID: sfid-20230710_010518_453614_85C4D470 
+X-CRM114-Status: GOOD (  22.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,157 +78,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/07/23 10:23, Chen-Yu Tsai ha scritto:
-> On Thu, Jul 6, 2023 at 8:30 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Changes in v4:
->>   - Set data lanes to idle to prevent stalls if bootloader didn't
->>     properly close the eDP port
->>   - Now using the .done_probing() callback for AUX bus to prevent
->>     probe deferral loops in case the panel-edp driver is a module
->>     as previously seen with another bridge driver (ANX7625) on
->>     some other SoCs (MT8192 and others)
->>   - Rebased over next-20230706
->>   - Dropped Chen-Yu's T-b tag on last patch as some logic changed
->>     (before, I wasn't using the .done_probing() callback).
->>
->> Changes in v3:
->>   - Added DPTX AUX block initialization before trying to communicate
->>     to stop relying on the bootloader keeping it initialized before
->>     booting Linux.
->>   - Fixed commit description for patch [09/09] and removed commented
->>     out code (that slipped from dev phase.. sorry!).
->>
->> This series adds "real" support for eDP in the mtk-dp DisplayPort driver.
->>
->> Explaining the "real":
->> Before this change, the DisplayPort driver did support eDP to some
->> extent, but it was treating it entirely like a regular DP interface
->> which is partially fine, after all, embedded DisplayPort *is* actually
->> DisplayPort, but there might be some differences to account for... and
->> this is for both small performance improvements and, more importantly,
->> for correct functionality in some systems.
->>
->> Functionality first:
->>
->> One of the common differences found in various boards implementing eDP
->> and machines using an eDP panel is that many times the HPD line is not
->> connected. This *must* be accounted for: at startup, this specific IP
->> will raise a HPD interrupt (which should maybe be ignored... as it does
->> not appear to be a "real" event...) that will make the eDP panel to be
->> detected and to actually work but, after a suspend-resume cycle, there
->> will be no HPD interrupt (as there's no HPD line in my case!) producing
->> a functionality issue - specifically, the DP Link Training fails because
->> the panel doesn't get powered up, then it stays black and won't work
->> until rebooting the machine (or removing and reinserting the module I
->> think, but I haven't tried that).
->>
->> Now for.. both:
->> eDP panels are *e*DP because they are *not* removable (in the sense that
->> you can't unplug the cable without disassembling the machine, in which
->> case, the machine shall be powered down..!): this (correct) assumption
->> makes us able to solve some issues and to also gain a little performance
->> during PM operations.
->>
->> What was done here is:
->>   - Caching the EDID if the panel is eDP: we're always going to read the
->>     same data everytime, so we can just cache that (as it's small enough)
->>     shortening PM resume times for the eDP driver instance;
->>   - Always return connector_status_connected if it's eDP: non-removable
->>     means connector_status_disconnected can't happen during runtime...
->>     this also saves us some time and even power, as we won't have to
->>     perform yet another power cycle of the HW;
->>   - Added aux-bus support!
->>     This makes us able to rely on panel autodetection from the EDID,
->>     avoiding to add more and more panel timings to panel-edp and, even
->>     better, allowing to use one panel node in devicetrees for multiple
->>     variants of the same machine since, at that point, it's not important
->>     to "preventively know" what panel we have (eh, it's autodetected...!).
->>
->> This was tested on a MT8195 Cherry Tomato Chromebook (panel-edp on aux-bus)
+Il 10/07/23 08:51, Chen-Yu Tsai ha scritto:
+> In the multi-core JPEG encoder/decoder setup, the driver for the
+> individual cores references the parent device's platform driver data.
+> However, in the parent driver, this is only set at the end of the probe
+> function, way later than devm_of_platform_populate(), which triggers
+> the probe of the cores. This causes a kernel splat in the sub-device
+> probe function.
 > 
-> Do you have panel-edp built as a module? If I have it built in, the panel
-> can correctly display stuff. If I have it built as a module, the panel is
-> correctly detected, but the panel stays black even if DRM thinks it is
-> displaying stuff.
+> Move platform_set_drvdata() to before devm_of_platform_populate() to
+> fix this.
 > 
+> Fixes: 934e8bccac95 ("mtk-jpegenc: support jpegenc multi-hardware")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-I tested both. I'll recheck on a clean tree just to be sure...
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> And it looks like EDID reading and panel power sequencing is still not
-> working correctly, i.e. needs regulator-always-on?
-
-Yeah that's still needed with this version, I'm still trying to get *at least*
-some support upstreamed before refining it.
-
-Cheers,
-Angelo
-
+> ---
+> Not sure what caused this to surface just now, given that the driver
+> changes were merged in v6.2-rc1, and the corresponding dts entries
+> in v6.3-rc1.
 > 
-> ChenYu
+> This fixes boot failures on MT8195. Please apply and send to Linus ASAP.
 > 
->> P.S.: For your own testing commodity, here's a reference devicetree:
->> &edp_tx {
->>          status = "okay";
->>
->>          pinctrl-names = "default";
->>          pinctrl-0 = <&edptx_pins_default>;
->>
->>          ports {
->>                  #address-cells = <1>;
->>                  #size-cells = <0>;
->>
->>                  port@0 {
->>                          reg = <0>;
->>                          edp_in: endpoint {
->>                                  remote-endpoint = <&dp_intf0_out>;
->>                          };
->>                  };
->>
->>                  port@1 {
->>                          reg = <1>;
->>                          edp_out: endpoint {
->>                                  data-lanes = <0 1 2 3>;
->>                                  remote-endpoint = <&panel_in>;
->>                          };
->>                  };
->>          };
->>
->>          aux-bus {
->>                  panel: panel {
->>                          compatible = "edp-panel";
->>                          power-supply = <&pp3300_disp_x>;
->>                          backlight = <&backlight_lcd0>;
->>                          port {
->>                                  panel_in: endpoint {
->>                                          remote-endpoint = <&edp_out>;
->>                                  };
->>                          };
->>                  };
->>          };
->> };
->>
->>
->> AngeloGioacchino Del Regno (9):
->>    drm/mediatek: dp: Cache EDID for eDP panel
->>    drm/mediatek: dp: Move AUX and panel poweron/off sequence to function
->>    drm/mediatek: dp: Always return connected status for eDP in .detect()
->>    drm/mediatek: dp: Always set cable_plugged_in at resume for eDP panel
->>    drm/mediatek: dp: Change logging to dev for mtk_dp_aux_transfer()
->>    drm/mediatek: dp: Enable event interrupt only when bridge attached
->>    drm/mediatek: dp: Use devm variant of drm_bridge_add()
->>    drm/mediatek: dp: Move AUX_P0 setting to
->>      mtk_dp_initialize_aux_settings()
->>    drm/mediatek: dp: Add support for embedded DisplayPort aux-bus
->>
->>   drivers/gpu/drm/mediatek/mtk_dp.c | 197 +++++++++++++++++++-----------
->>   1 file changed, 127 insertions(+), 70 deletions(-)
->>
->> --
->> 2.40.1
->>
-
-
+>   drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 4768156181c9..6a8eea9dde67 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1312,6 +1312,8 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+>   	jpeg->dev = &pdev->dev;
+>   	jpeg->variant = of_device_get_match_data(jpeg->dev);
+>   
+> +	platform_set_drvdata(pdev, jpeg);
+> +
+>   	ret = devm_of_platform_populate(&pdev->dev);
+>   	if (ret) {
+>   		v4l2_err(&jpeg->v4l2_dev, "Master of platform populate failed.");
+> @@ -1383,8 +1385,6 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+>   		  jpeg->variant->dev_name, jpeg->vdev->num,
+>   		  VIDEO_MAJOR, jpeg->vdev->minor);
+>   
+> -	platform_set_drvdata(pdev, jpeg);
+> -
+>   	pm_runtime_enable(&pdev->dev);
+>   
+>   	return 0;
 
 
