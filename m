@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5028EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 17:16:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEFC8C001DC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 17:22:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DsyCWt7X3BMRJhese9D7yJN3mHTJy50an5BgaFynRXw=; b=Ts8xrUSE/cSBXGrISnILdey+vW
-	hUyK85+8BckaI3721geK89juf3QfSR4hRhCbe+UiZ0fcHbDLUexEZFT0ej5sjmQrdCZwPdHP/idFi
-	TXoODbhgJD++H0oG0ImIe55hGoCC9PEWkhAwJKmTPeE9l4HqZwfOaxWf6A5XR70qoD49I4UGxkRda
-	dWDC5xCuY2NnPyvwBLStPMEom0ZkXA7zPbaC1z8LYXfouyi2d35iU7sL+ZQGM51rdzNSvIsS/Diol
-	WcJNFQVyj/XTENFzx+DQBBnePqyKFNLwjcOLuHs2Yj23nLKWIxFa+3EeSiIDnr18EKMSY87bdrxXP
-	hBkYc0ig==;
+	bh=CpTuLljbdaBkyoyitx9Zt2kT2mpNPwthrmEzA4FZh0k=; b=RgGmFgSkNhFX0KXczeNadSxt0g
+	zx/s/3YnLbFQBZoHHlrjnBY9nK7dTTMp4V8W3tDOSDMolUGuRcdAxSrrGiFX5p4vZVZz/o3j7RW4h
+	4wAkG2b3OOxcWpfSH3c6UAhevIVCPFbPwz+VStSbDJwe44sL3S3ErAqNONbjGjklZCPcS8bj36QrE
+	5pFbASaFh3pLW/iimhQfPblyF/XIqiItZwIwNv2XQPRQ1HTCgOWSiJ0Gcux1P8JHKtkMazDUSFdFC
+	M2eUFZnvsm06N+aag/i9W2neEc780xGXhYNK35cgDZ5LhPadAcPkA4cZXhl8vKNbIth2CZeQH5f2Q
+	AfzYO8DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIuV5-00CJNa-2q;
-	Mon, 10 Jul 2023 17:16:39 +0000
+	id 1qIuaI-00CKSx-0p;
+	Mon, 10 Jul 2023 17:22:02 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIuV2-00CJMb-1A;
-	Mon, 10 Jul 2023 17:16:37 +0000
+	id 1qIuaE-00CKRp-0f;
+	Mon, 10 Jul 2023 17:21:59 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C4A4F61136;
-	Mon, 10 Jul 2023 17:16:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 607EFC433C8;
-	Mon, 10 Jul 2023 17:16:25 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id AE93460FE6;
+	Mon, 10 Jul 2023 17:21:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D7CBC433C7;
+	Mon, 10 Jul 2023 17:21:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689009395;
-	bh=CgnlYd6F8QNT9n++b/k47msx5swkm6/AbNv02cH7FqM=;
+	s=k20201202; t=1689009717;
+	bh=CpTuLljbdaBkyoyitx9Zt2kT2mpNPwthrmEzA4FZh0k=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nCNLRwD0ouHI8pJTPN00LKshCADBsrezjsyCWSHlUtPA86QMcTtmuANY2THapc+ya
-	 rkH5tcQmXa5WkKmxP1SPoeLDBnKChb3smPLszGKE/fOJpIoKZHw2XHyVjIgwHTZ/1z
-	 MufgsvMGmS7UeltSFfqOX5aakYX6Oi9D+fdx6r4xTwDjZDukvdOJHqT+HXAuPx0WPm
-	 TWMpwYu5OvJq0RnyxMb5KHCGmQeKSlmlgHlItZHKy5JjIjq74cV332HHX8EX4US9YN
-	 7LvxZOQBp61R6AEZ7cokvT4lucM8T0YliBj7nuBwioqSX1VDucIF209VQysfZBVMCk
-	 jUIpbFJ9ng45w==
-Date: Mon, 10 Jul 2023 18:16:22 +0100
+	b=jH9O9AHymoIzZncRhS0boDcQENihuPJ9tiOMacCBW9S1HyXoS4fmk05l3yiGNAo2K
+	 KI1hyt+ZX+7NEHBvWCqXjT4yNe/LtAsjRDwPWtbPDyinDXBlqwNxiz4igGDEvFujjT
+	 HvuvVf7zfJpIqBT2DHBv4rYYp+mzBEGWoHelZgtBRzC5a9ODbB3jbYPRYOu+MpK8DF
+	 3DKPCT3xy2bGoPblEhEFYavUFRlVpmVElN1x+riHF3GGBKfZ16h5m4CDQWCrPt/Kv/
+	 vK54neWN9FR7qTjWY6hgaJiuvxPLSkqkKUC983rTnSx7XHJONotnyRARakAtXoacgn
+	 BzkLNw5lEztpw==
+Date: Mon, 10 Jul 2023 18:21:44 +0100
 From: Mark Brown <broonie@kernel.org>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
@@ -94,20 +94,19 @@ Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
 	Steven Rostedt <rostedt@goodmis.org>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
 	Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [PATCH v2 05/15] spi: Remove code duplication in
- spi_add_device_locked()
-Message-ID: <7557bada-3076-4d6e-a5c5-d368433706e2@sirena.org.uk>
+Subject: Re: [PATCH v2 08/15] spi: Clean up headers
+Message-ID: <54bb9fe7-fb62-4c2e-ae36-d2c10648ee27@sirena.org.uk>
 References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
- <20230710154932.68377-6-andriy.shevchenko@linux.intel.com>
+ <20230710154932.68377-9-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="smwEq19A8LfCcchg"
+	protocol="application/pgp-signature"; boundary="w5h1T0k99Bnkn5Gc"
 Content-Disposition: inline
-In-Reply-To: <20230710154932.68377-6-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20230710154932.68377-9-andriy.shevchenko@linux.intel.com>
 X-Cookie: Do you have lysdexia?
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_101636_484121_F8CE507D 
-X-CRM114-Status: GOOD (  21.13  )
+X-CRM114-CacheID: sfid-20230710_102158_331098_4A12FB2F 
+X-CRM114-Status: GOOD (  14.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,62 +122,40 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---smwEq19A8LfCcchg
+--w5h1T0k99Bnkn5Gc
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Mon, Jul 10, 2023 at 06:49:22PM +0300, Andy Shevchenko wrote:
-> Seems by unknown reason, probably some kind of mis-rebase,
-> the commit 0c79378c0199 ("spi: add ancillary device support")
-> adds a dozen of duplicating lines of code. Drop them.
->=20
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
->  drivers/spi/spi.c | 11 -----------
->  1 file changed, 11 deletions(-)
->=20
-> diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-> index c99ee4164f11..46cbda383228 100644
-> --- a/drivers/spi/spi.c
-> +++ b/drivers/spi/spi.c
-> @@ -712,17 +712,6 @@ EXPORT_SYMBOL_GPL(spi_add_device);
->  static int spi_add_device_locked(struct spi_device *spi)
->  {
->  	struct spi_controller *ctlr =3D spi->controller;
-> -	struct device *dev =3D ctlr->dev.parent;
-> -
-> -	/* Chipselects are numbered 0..max; validate. */
-> -	if (spi_get_chipselect(spi, 0) >=3D ctlr->num_chipselect) {
-> -		dev_err(dev, "cs%d >=3D max %d\n", spi_get_chipselect(spi, 0),
-> -			ctlr->num_chipselect);
-> -		return -EINVAL;
-> -	}
-> -
-> -	/* Set the bus ID string */
-> -	spi_dev_set_name(spi);
+On Mon, Jul 10, 2023 at 06:49:25PM +0300, Andy Shevchenko wrote:
+> There is a few things done:
+> - include only the headers we are direct user of
+> - when pointer is in use, provide a forward declaration
+> - add missing headers
+> - group generic headers and subsystem headers
+> - sort each group alphabetically
 
-I see that this is duplicating spi_add_device() (and we really could do
-better with code sharing there I think) but I can't immediately see
-where the duplication that's intended to be elimiated is here - where
-else in the one call path that spi_add_device_locked() has would we do
-the above?  Based on the changelog I was expecting to see some
-duplicated code in the function itself.
+The previous commit was supposed to be sorting things and AFAICT did
+so...
 
---smwEq19A8LfCcchg
+> +struct spi_device_id;
+
+Why are we adding this given that there's also an inclusion of
+mod_devicetable that you didn't remove?
+
+--w5h1T0k99Bnkn5Gc
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmSsPOUACgkQJNaLcl1U
-h9DBUwf9Euy3I6rYQCugpUDlBhWVoSMMz7t1ATFjPAfJAReJsl7tNz8zO3ZIBKvo
-DT0wuXofoowlS3XkS80I3NNL7wRjCktrPJnRHSBr/n15W3VCvz7cA+vkKlJdt60d
-vqLIOGnEqqPBftrOwUjsobHicO0YhL47AxOStev3fjlhFEbS0RrIpvCsVsRI1HDs
-5MalNotHe8wd+ujY4p9wUX9c2EZvSWQAE4XUBml+faspwunMGqKbjE+srfTbz+eB
-bkym8H1s/H5a/SQn5ya4y6dkDZ0jR9hz4H3HxMm4C/KgUJRnZXiIgNRtghmsQNys
-LGdv8LQz0S452H4iaGYZlWdB4IEu1w==
-=KWBr
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmSsPicACgkQJNaLcl1U
+h9CPUAf/RRQIrb0PfZnRSA7kc94fTv5rQbNfPboY9/94tcd2SIZjbZezvGfMuSZp
+6KHTd2Kkiwzya3J0dExwrNiIzmVrIGl+uWJWbvppEpglEeE0BNrEl1a9mRgzaQUk
+Ys7HqCSSbbtJqGSlgQAODJPS7eaPIw1ChR5Wv5B+4AlUGavA+iCrwDK+TD0dFZpQ
+ovdLIOvU+8RA2XrWSPmDSi4ywOFt9I70VxOWbR9rbfQcvXLRaJA1FOJa2ZArMhHy
+CULubdIfA4BO7mOmyLX63DXgjZqu703oW4W5RFmjc+sa9xmoSdlCYflpgXX/xSqG
+VmDSPECCeUQc9NZwlOM4i7+iPwCymQ==
+=E/m2
 -----END PGP SIGNATURE-----
 
---smwEq19A8LfCcchg--
+--w5h1T0k99Bnkn5Gc--
 
