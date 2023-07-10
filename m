@@ -4,98 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8D01EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 23:03:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28AF7EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 23:49:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kYDiR4A6sQZndl0XT9fcGxrXdj+op4ndy7BoHFL4s70=; b=NvG7sGuc3uIVPU6JuRgqyfD1XB
-	NfCMmTsjBPprmBWV7sQ2WrrfoKVgZVEbwVlp0ExyQAPI2rhL01Aemi7DmeAOuX+1atE0udw0E6t5K
-	ZEvUHuqJdczaUN/R0wM9E/HpKAspSWpRKH5J4h8xL9pt8OA0nYwo/KH35DzUKQ5s1TNqKhjC9bK1z
-	jm48n4rFnXssN9iq70b2boDPC28/92alROost3EiOQul7v08MHIJc+Emn9ckRQUQ3cmcE2BqZUJrm
-	7assm3m1zRrEH8n7oV8WhbUNSa7K49HaCpHHfL3L2N8iqUL0THnfxFsmVvtyoFQ+cYz6iqdibCvvO
-	93KvqPzA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C1+7UfAMLI/Nu08LQwOr0R45kQ38N0MvpsViC9OWNis=; b=L91U7pHkjiEny7daWtEV4iT5YR
+	y4uJnzFjmsEhLYjKil8Wb/8Wh4OaYGn+xNRv+XaYmdzqYAsYz8nwmB4JEzBw/4Y7i/Y3nXNcVuow6
+	Zj6FttO1X3cxoqbNNPJEYhM9fiVF/kU/U8HvD9KoHamjVXwkKuyaAhLMv+vn+iXGTFwn9rhcGukSL
+	j/Gzy6+RzckPUtdBXCeOHiJ6NBAuKNErhRRST2hljECNndkZCDau6imzpNGsQFZu6BHaaHHlKyjmR
+	EZKfuWSrknic/VY3j8wMNhG0WVAnOpyIwF15fWjoSGHoDjlTiaQLpPjNzR4kNPSIO0dcU34gBhfhq
+	hFC9g+ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIzuY-00CuQU-2s;
-	Mon, 10 Jul 2023 23:03:18 +0000
-Received: from mail-vs1-xe36.google.com ([2607:f8b0:4864:20::e36])
+	id 1qJ0dJ-00Cz9Q-0b;
+	Mon, 10 Jul 2023 23:49:33 +0000
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIzuV-00CuNv-1s
+	id 1qJ0dF-00Cz7Y-19
 	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Jul 2023 23:03:17 +0000
-Received: by mail-vs1-xe36.google.com with SMTP id ada2fe7eead31-440c5960b58so1432612137.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jul 2023 16:03:11 -0700 (PDT)
+	Mon, 10 Jul 2023 23:49:31 +0000
+Received: by mail-qk1-x730.google.com with SMTP id af79cd13be357-7654e1d83e8so394601785a.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jul 2023 16:49:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20221208; t=1689030191; x=1691622191;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kYDiR4A6sQZndl0XT9fcGxrXdj+op4ndy7BoHFL4s70=;
-        b=FVxq5TQOlzhUeYgxXSn6ArdwnVF2hbExv8ZbNJDmV9BNzKz3GBQj6+AD6uZMvrgdjA
-         xH2s5MBcoPw8P9HZMTzQhVMKFl7KLPJ/0aYueLJBRDrbwr7gSzHyFM2YiWW1icDJju+E
-         vvdGR1RgvoEhOEE7I/nKR+NRqYhT3L43ky2dAfF+c8Z90UTc/eqloAdFhr/7E+KCVHK9
-         hmmNiC+ql5Bd32aUQnuNmcp+0Qy7zkHQvVJSNgsTENiN4USow1G7e7mPbk+cREQGS465
-         1Oh+BTqTZLre92S8DtOsIdsUe/09sJwqAJZZGaMzR0YFR5OxuiKhWVVSnovORxiSqyLX
-         xwyA==
+        d=ziepe.ca; s=google; t=1689032967; x=1691624967;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=C1+7UfAMLI/Nu08LQwOr0R45kQ38N0MvpsViC9OWNis=;
+        b=lOjm4Lx/2UPcQ0vl1fIalkQvnZK8D4gJI18w5QRFNsP45noSZ/Hlwqq9fLf6qno8S0
+         GvM986sAXOOWD+3KlsW4spYFl1h5PPJyrFeDcdlNkEDclq35TvtosJh62CTCTkoRD9GK
+         MqGXs6RSufFFgYmbGJAlQr1lrEr/1f2OYUXg5i3nLAJvb7ECX/2/AfZpA3lyMOZeND1n
+         lFl8txf7CyG92a7kngcJ7Vq6bV3YMDykveds9sCnMS+V3OZ/EyLY8FCZCXVFPUP4B0LH
+         qdqAHT53dGIFQ6ev9mJkB5oMnZhst31KWNYei6EFEyMLWMXAOhxl5/HniRY/5EQC+kez
+         oVfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689030191; x=1691622191;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kYDiR4A6sQZndl0XT9fcGxrXdj+op4ndy7BoHFL4s70=;
-        b=ETdS+Wi2yO0JXuU+UQTUCwprh44fO8UzAfAHPWqrkic35BpQGAfkg4u+rjjyE/tO1W
-         MrJTFGj8sf6FbRv8t1FdbDrg8f9VUE8/cb3nR3cwxvUFTjwE7gv9CTSx69H34EeJINYf
-         c81OmPvfhzBPfbtMhT4QMmfgXG4w7j6NuAEMSwAMbdLx9FqkvaeyBEw9Ff0wmLCVoZzF
-         uhU6VDeMg4SQ36XOsC4qmtDtfLwn8RPeeIxlsZ8sfqwlUqvLGuhkIv9SJOM+tIJfSle5
-         Fn7i8CyorKTp7il9z75gSOlfCrZmFqd5IFgpDLNQwgyb2M2jSntlf3B00roF7htXb5Bk
-         wC2Q==
-X-Gm-Message-State: ABy/qLbMfjpSBydAJX9DBRd7u7MmkR7J5pDWWaArHz4JGRSpkdIMtUj2
-	QGv9hnnH1uncGypN4FAXpI8TmnVaCYCYLfOfD5Sy5A==
-X-Google-Smtp-Source: APBJJlHd8B3bLHM0BGlcUeLB7BK4Rn2fyXUPRVAiBYrDcyC69ohOF9Etzy1j0dKI2yZcDqXki7DFnPYYFtgRKmlffZ0=
-X-Received: by 2002:a67:ff91:0:b0:443:8eab:c664 with SMTP id
- v17-20020a67ff91000000b004438eabc664mr5887615vsq.13.1689030190853; Mon, 10
- Jul 2023 16:03:10 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAKgT0UeZfbxDYaeUntrQpxHmwCh6zy0dEpjxghiCNxPxv=kdoQ@mail.gmail.com>
- <72ccf224-7b45-76c5-5ca9-83e25112c9c6@redhat.com> <20230616122140.6e889357@kernel.org>
- <eadebd58-d79a-30b6-87aa-1c77acb2ec17@redhat.com> <20230619110705.106ec599@kernel.org>
- <CAHS8izOySGEcXmMg3Gbb5DS-D9-B165gNpwf5a+ObJ7WigLmHg@mail.gmail.com>
- <5e0ac5bb-2cfa-3b58-9503-1e161f3c9bd5@kernel.org> <CAHS8izP2fPS56uXKMCnbKnPNn=xhTd0SZ1NRUgnAvyuSeSSjGA@mail.gmail.com>
- <ZKNA9Pkg2vMJjHds@ziepe.ca> <CAHS8izNB0qNaU8OTcwDYmeVPtCrEjTTOhwCHtVsLiyhXmPLsXQ@mail.gmail.com>
- <ZKxDZfVAbVHgNgIM@ziepe.ca>
-In-Reply-To: <ZKxDZfVAbVHgNgIM@ziepe.ca>
-From: Mina Almasry <almasrymina@google.com>
-Date: Mon, 10 Jul 2023 16:02:59 -0700
-Message-ID: <CAHS8izO3h3yh=CLJgzhLwCVM4SLgf64nnmBtGrXs=vxuJQHnMQ@mail.gmail.com>
+        d=1e100.net; s=20221208; t=1689032967; x=1691624967;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=C1+7UfAMLI/Nu08LQwOr0R45kQ38N0MvpsViC9OWNis=;
+        b=WNTFRF6NJlwVbQ8Z0XOQDmTFPv2C8LkM58Fft3olU4ymNiovjQzC0ZUCf2QLCIXkm0
+         4BOTc10RY4xSAn1Vuc3Jjkr/tfN9QGzPfMwbKgZPlhaubXj9PMNkwa02+Iclhxk82lah
+         kyzIoyOtRH59Q+nI7695C0N9JExQDuL0Nya1zljF3avHCdCdFd/pqTxtTv0zPPyiCnXK
+         HKXfSKxr/WIRwEXkTYCoQes/dfiKuZErQmNJYaaeKTsuDWPOOnBdFPaoinWlUV7IhJCU
+         uWb5nfbpZd+xAlzd7VBbXa5B/eit7h4HYtwjvImOTJTM+fctyOo6gcPlZhkTfPL2AYB1
+         igXQ==
+X-Gm-Message-State: ABy/qLY7Ffi6J0e/np3r8NyMAFUWmXWhLaC6XVWeKv5y7jZpzO+Mss5p
+	TC6m1daFDTkq3fCgqxJxL6e7/g==
+X-Google-Smtp-Source: APBJJlEaSNhVB0rSanYyr8pEV+vVSyEFUXx0WrPVnHkD5VoRVa+WNmm9a90Aeu3n/gnPT2vgrqrtcw==
+X-Received: by 2002:a0c:b3ce:0:b0:636:fda0:a23 with SMTP id b14-20020a0cb3ce000000b00636fda00a23mr10701191qvf.27.1689032967061;
+        Mon, 10 Jul 2023 16:49:27 -0700 (PDT)
+Received: from ziepe.ca (hlfxns017vw-142-68-25-194.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.25.194])
+        by smtp.gmail.com with ESMTPSA id u14-20020a0c8dce000000b00632191a70a2sm370778qvb.103.2023.07.10.16.49.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 10 Jul 2023 16:49:26 -0700 (PDT)
+Received: from jgg by wakko with local (Exim 4.95)
+	(envelope-from <jgg@ziepe.ca>)
+	id 1qJ0dB-00063Y-Eu;
+	Mon, 10 Jul 2023 20:49:25 -0300
+Date: Mon, 10 Jul 2023 20:49:25 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Mina Almasry <almasrymina@google.com>, Christoph Hellwig <hch@lst.de>,
+	John Hubbard <jhubbard@nvidia.com>,
+	Dan Williams <dan.j.williams@intel.com>
+Cc: David Ahern <dsahern@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+	Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com,
+	Alexander Duyck <alexander.duyck@gmail.com>,
+	Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
+	pabeni@redhat.com, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>,
+	Yisen Zhuang <yisen.zhuang@huawei.com>,
+	Salil Mehta <salil.mehta@huawei.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Sunil Goutham <sgoutham@marvell.com>,
+	Geetha sowjanya <gakula@marvell.com>,
+	Subbaraya Sundeep <sbhatta@marvell.com>,
+	hariprasad <hkelam@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>,
+	Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jesper Dangaard Brouer <hawk@kernel.org>,
+	Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Jonathan Lemon <jonathan.lemon@gmail.com>
 Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
  page_pool: remove PP_FLAG_PAGE_FRAG flag)
-To: Jason Gunthorpe <jgg@ziepe.ca>
-Cc: David Ahern <dsahern@kernel.org>, Jakub Kicinski <kuba@kernel.org>, 
-	Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com, 
-	Alexander Duyck <alexander.duyck@gmail.com>, Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, 
-	pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
-	Salil Mehta <salil.mehta@huawei.com>, Eric Dumazet <edumazet@google.com>, 
-	Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, 
-	Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, 
-	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jesper Dangaard Brouer <hawk@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Jonathan Lemon <jonathan.lemon@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Message-ID: <ZKyZBbKEpmkFkpWV@ziepe.ca>
+References: <20230616122140.6e889357@kernel.org>
+ <eadebd58-d79a-30b6-87aa-1c77acb2ec17@redhat.com>
+ <20230619110705.106ec599@kernel.org>
+ <CAHS8izOySGEcXmMg3Gbb5DS-D9-B165gNpwf5a+ObJ7WigLmHg@mail.gmail.com>
+ <5e0ac5bb-2cfa-3b58-9503-1e161f3c9bd5@kernel.org>
+ <CAHS8izP2fPS56uXKMCnbKnPNn=xhTd0SZ1NRUgnAvyuSeSSjGA@mail.gmail.com>
+ <ZKNA9Pkg2vMJjHds@ziepe.ca>
+ <CAHS8izNB0qNaU8OTcwDYmeVPtCrEjTTOhwCHtVsLiyhXmPLsXQ@mail.gmail.com>
+ <ZKxDZfVAbVHgNgIM@ziepe.ca>
+ <CAHS8izO3h3yh=CLJgzhLwCVM4SLgf64nnmBtGrXs=vxuJQHnMQ@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAHS8izO3h3yh=CLJgzhLwCVM4SLgf64nnmBtGrXs=vxuJQHnMQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_160315_620685_A9962951 
-X-CRM114-Status: GOOD (  38.55  )
+X-CRM114-CacheID: sfid-20230710_164929_789142_88748CB2 
+X-CRM114-Status: GOOD (  34.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,94 +131,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 10, 2023 at 10:44=E2=80=AFAM Jason Gunthorpe <jgg@ziepe.ca> wro=
-te:
->
-> On Wed, Jul 05, 2023 at 06:17:39PM -0700, Mina Almasry wrote:
->
-> > Another issue is that in networks with low MTU, we could be DMAing
-> > 1400/1500 bytes into each allocation, which is problematic if the
-> > allocation is 8K+. I would need to investigate a bit to see if/how to
-> > solve that, and we may end up having to split the page and again run
-> > into the 'not enough room in struct page' problem.
->
-> You don't have an intree driver to use this with, so who knows, but
-> the out of tree GPU drivers tend to use a 64k memory management page
-> size, and I don't expect you'd make progress with a design where a 64K
-> naturaly sized allocator is producing 4k/8k non-compound pages just
-> for netdev. We are still struggling with pagemap support for variable
-> page size folios, so there is a bunch of technical blockers before
-> drivers could do this.
->
-> This is why it is so important to come with a complete in-tree
-> solution, as we cannot review this design if your work is done with
-> hacked up out of tree drivers.
->
-
-I think you're assuming the proposal requires dma-buf exporter driver
-changes, and I have a 'hacked up out of tree driver' not visible to
-you. Both are not quite right. The proposal requires no changes to the
-dma-buf exporter, and works with udmabuf _as is_, proving that. Please
-do review the proposal:
-https://lore.kernel.org/netdev/20230710223304.1174642-1-almasrymina@google.=
-com/
-
-If you still don't like the approach, we can try something else.
-
-> Fully and properly adding P2P ZONE_DEVICE to a real world driver is a
-> pretty big ask still.
->
-
-There is no such ask.
-
-> > > Or allocate per page memory and do a memdesc like thing..
+On Mon, Jul 10, 2023 at 04:02:59PM -0700, Mina Almasry wrote:
+> On Mon, Jul 10, 2023 at 10:44 AM Jason Gunthorpe <jgg@ziepe.ca> wrote:
 > >
-> > I need to review memdesc more closely. Do you imagine I add a pointer
-> > in struct page that points to the memdesc?
->
-> Pointer to extra memory from the PFN has been the usual meaning of
-> memdesc, so doing an interm where the pointer is in the struct page is
-> a reasonable starting point.
->
-> > > Though overall, you won't find devices creating struct pages for thei=
-r
-> > > P2P memory today, so I'm not sure what the purpose is. Jonathan
-> > > already got highly slammed for proposing code to the kernel that was
-> > > unusable. Please don't repeat that. Other than a special NVMe use cas=
-e
-> > > the interface for P2P is DMABUF right now and it is not struct page
-> > > backed.
-> > >
+> > On Wed, Jul 05, 2023 at 06:17:39PM -0700, Mina Almasry wrote:
 > >
-> > Our approach is actually to extend DMABUF to provide struct page
-> > backed attachment mappings, which as far as I understand sidesteps the
-> > issues Jonathan ran into.
->
-> No DMABUF exporters do this today, so your patch series is just as
-> incomplete as the prior ones. Please don't post it as non-RFC,
-> unusable code like this must not be merged.
->
-> > that supports dmabuf and in fact a lot of my tests use udmabuf to
-> > minimize the dependencies. The RFC may come with a udmabuf selftest to
-> > showcase that any dmabuf, even a mocked one, would be supported.
->
-> That is not good enough to get merged. You need to get agreement and
-> coded merged from actual driver owners of dmabuf exporters that they
-> want to support this direction. As above it has surprising road
-> blocks outside netdev :\
->
+> > > Another issue is that in networks with low MTU, we could be DMAing
+> > > 1400/1500 bytes into each allocation, which is problematic if the
+> > > allocation is 8K+. I would need to investigate a bit to see if/how to
+> > > solve that, and we may end up having to split the page and again run
+> > > into the 'not enough room in struct page' problem.
+> >
+> > You don't have an intree driver to use this with, so who knows, but
+> > the out of tree GPU drivers tend to use a 64k memory management page
+> > size, and I don't expect you'd make progress with a design where a 64K
+> > naturaly sized allocator is producing 4k/8k non-compound pages just
+> > for netdev. We are still struggling with pagemap support for variable
+> > page size folios, so there is a bunch of technical blockers before
+> > drivers could do this.
+> >
+> > This is why it is so important to come with a complete in-tree
+> > solution, as we cannot review this design if your work is done with
+> > hacked up out of tree drivers.
+> >
+> 
+> I think you're assuming the proposal requires dma-buf exporter driver
+> changes, and I have a 'hacked up out of tree driver' not visible to
+> you.
 
-The current proposal requires no changes to the dma-buf exporters:
-https://lore.kernel.org/netdev/20230710223304.1174642-1-almasrymina@google.=
-com/
+Oh, I thought it was obvious what you did in patch 1 was a total
+non-starter when I said you can't abuse the ZONE_DEVICE pages like
+this.
 
-On dma-buf changes required. I do need approval from the dma-buf
-maintainers, but AFAICT, no approval from the dma-buf exporters (all I
-need is already supported). If we need to change direction to a
-proposal that needs additional support from the driver owners, yes,
-we'd need their approval, but this is not the case at the moment.
+You must create ZONE_DEVICE P2P pages, not MEMORY_DEVICE_PRIVATE to
+represent P2P memory, and you can't do that automatically from the
+dmabuf core code.
 
---=20
-Thanks,
-Mina
+Without doing this the DMA API doesn't actually work properly because
+it doesn't have enough information to know about what the underlying
+exporter is.
+
+The entire point of DEVICE_PRIVATE is that the page content, and
+access to the page's physical location, is *explicitly* unavailable to
+anyone but the pgmap owner.
+
+> > Fully and properly adding P2P ZONE_DEVICE to a real world driver is a
+> > pretty big ask still.
+> 
+> There is no such ask.
+
+Well, there is from me if you want to use stuct pages as handles for
+P2P memory. That is what we have defined in the pgmap area.
+
+Also I should warn you that your 'option 2' is being NAK'd by
+Christoph for now, we are not adding any new code around DMABUF's
+hacky use of NULL sg_page scatterlist for P2P memory either. I've been
+working on solutions here but it is slow going.
+
+> On dma-buf changes required. I do need approval from the dma-buf
+> maintainers,
+
+It is a neat hack, of sorts, to abuse DEVICE_PRIVATE to create struct
+pages for the exclusive use of pagepool - but you need more approval
+than just dmabuf maintainers to abuse the pgmap framework like
+this.
+
+At least from my position I want to see MEMORY_DEVICE_PCI_P2PDMA used
+to represent P2P memory. You haven't CC'd anyone from the mm community
+so I've added some people here to see if there are other opinions.
+
+To be clear, you need an explicit ack from mm people on the abusive
+use of pgmap in patch 1.
+
+I know it is not what you want to hear, but there are actual reasons
+why the P2P DMA problem has been festering for so long, and hacky
+quick fixes like this are not going to be enough..
+
+Jason
 
