@@ -4,175 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46B62EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 06:56:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51206C0015E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 07:38:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n9no/i7Z+GMtXV7PT2kHIHl3r//QeKykhMwM4CUY/Bc=; b=Yo8y4XZi+iWnChDlmOx7EcUVoO
-	16p6poPbimfNZnEXW9T4+WAeVVoaM+7c6k9W8fKqspaE51I10xfh9Add0V3DReANRSaZCV1mg5b5O
-	WvEabqtCqkHnSUDyGIQ/5I0Mf9A8gUbzIGv/GhqYnz3OpZ5sgYO/ZHWjyDHgQaK9XJGKAMKZjT1YN
-	a+EssQ72sEDiWlBk1zW8itLS0ZFZMwjUEG3paXxCJYhk4DDQNpDVheYMq6z+27My6YLBA6OFLJ6jH
-	+NefVoxKpEoB2p4r7QCAzWPGezC750ILUwdrbX0UVplOxdPi7sYguFvUBvaGUxm9g5sDhJTMDELXG
-	xQAre83g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UIUOFC5eBd01nCTfd5qzJdq3GGEozMIpAxNAmMfE9Kk=; b=NLhpezBwBI3Eml0O1C3NJ8im1q
+	NiWPeiL4HYdnEQDDPhU70dWgv7PDJ2QfvF1QZSEyQNfDLUXZlNtC3cPhB7G6gfGS1LsnQi1VxU+zt
+	Hl6q0sA+TIx7VsGujRir2XBHCWDNcEJ5Kjkqdm+yUOfpY7bWnEXhwKjtw0av4EOvYyjV5WMIaY+RQ
+	HttLPxavqUI99NFCmfPZgh86PGUjphzuCM9Ed3M2RxFpVG3oTS2q0jEFZbRebEf0504V8HN//CciF
+	LisA9wuQ24EbVboTnt5ZD1XJmhIB18rtVOndtWxQsgEeh2/nbZPjxft7LpIWjApYDW6XqzgBVGAvZ
+	UWmpucuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIkoT-00Adpf-17;
-	Mon, 10 Jul 2023 06:56:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qIlTp-00Aild-15;
+	Mon, 10 Jul 2023 07:38:45 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIkoP-00Adoj-2P;
-	Mon, 10 Jul 2023 06:55:59 +0000
-X-UUID: cef8fd4c1eee11ee912e1518a6540028-20230709
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=n9no/i7Z+GMtXV7PT2kHIHl3r//QeKykhMwM4CUY/Bc=;
-	b=MwCg9kqglTRV504YvtQHBmXxhJMEKfVbHcDe9Djm6pGmiDYxAcTLzflSeiPDRII66aLp5/51uR4+UUTYFpl6Y6YYieEbsageONg3CxOFABsSNQ6yQEnQDw9GOC+KXJLfydDd+NPUNUHHrI3JpZNJh50IwH25g2HbAYv9zjuF27c=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.27,REQID:83c49dd9-13a0-4d35-b828-01a51ff90bab,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:01c9525,CLOUDID:e2a0c10d-26a8-467f-b838-f99719a9c083,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: cef8fd4c1eee11ee912e1518a6540028-20230709
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1754820241; Sun, 09 Jul 2023 23:55:51 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 10 Jul 2023 14:45:49 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 10 Jul 2023 14:45:48 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kZrnAgICkeZHX9Iw/nt+aC1t29bkjG6Pi7H4u4K9y/0gE3G7K/ttvWrI5jUYofbErOMR1yb4OLq8trEGwzbk/6fvfbIzdnOhCrDEzn74AkbisEjRfaGgtKMoiHQRa5luEjQI4KsrI0PI3a3grOvBbOvBRtjQSMkpuakZogRADvZ6HLhGFAhC1EMvhYQFneiaqj/M3RnGD8FNw3x1rTCXN/Pf3/fwArPNoswqVRsoEVT6KnZtsdB+QB99fprJXwyevMyrwvtFsE5lk1/HrxMZDzBwIwp4/3a96W4NdqZTlZeUauoLr3K6SZpR/8Juen9Q0+6waEaDGjiGQay0JS4+zg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=n9no/i7Z+GMtXV7PT2kHIHl3r//QeKykhMwM4CUY/Bc=;
- b=CDYANjARokV6MSsceFlBVMHjKSwZodWmgr3P9mxa6G6iGw5dtLF847jEOMZfhuREPYVoAMMyn0+3UdoB+j7LOEC3AxaFYcy+owT+VwK1jmI5lyzO5N60mC73Rux/PvkGsCGdbNer8yNcUxFYOwHUnwPWKeXEp43bYnH1MZc0CpbzHQ2imHd5aUv7cV1aaV4Uw0NzWfhpMJE3rTIS2PV3jJDzsbJhmjPnXfFaQezOuuQNSvyDTY4gZIat4t3GOWnLmTkWMdgN1qLFUoVivOZRsqvsFpREBc36CfdWOMrmzansqAs/mVgZQlgrMGJ/iK1W7NLpjWebEq4C/IP9dq0NhQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=n9no/i7Z+GMtXV7PT2kHIHl3r//QeKykhMwM4CUY/Bc=;
- b=YOsKVGV2h7gGYCYoKoHCSLt7KuLuaMqOAky6TAzBPzr0ndBOSD0ymMyRoUTg83x1wdUYf59ZAAneAhox0KW/fH2b2uWTMsfyDD4aaviLzmIKWsCgUh4zG9vNAJjwhtNZb5FCHSyI/4TZctUfkTYfSCCo2AMPsRC6tFumCvyoy9g=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by TYZPR03MB7668.apcprd03.prod.outlook.com (2603:1096:400:41a::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6565.26; Mon, 10 Jul
- 2023 06:45:46 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::6fdb:ba2c:bcfc:d5ed]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::6fdb:ba2c:bcfc:d5ed%7]) with mapi id 15.20.6565.026; Mon, 10 Jul 2023
- 06:45:46 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: "amergnat@baylibre.com" <amergnat@baylibre.com>,
-	=?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	=?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
-	=?utf-8?B?Sm9obnNvbiBXYW5nICjnjovogZbpkasp?= <Johnson.Wang@mediatek.com>,
-	=?utf-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?=
-	<Jason-ch.Chen@mediatek.com>, =?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?=
-	<Shawn.Sung@mediatek.com>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3 2/4] drm/mediatek: Add cnt checking for coverity issue
-Thread-Topic: [PATCH v3 2/4] drm/mediatek: Add cnt checking for coverity issue
-Thread-Index: AQHZpCprBe8Tt23dtEuhVR6mTlSRaa+yq/mA
-Date: Mon, 10 Jul 2023 06:45:46 +0000
-Message-ID: <5579fba13bf27c79f0945571c5febf464d6ef98c.camel@mediatek.com>
-References: <20230621102247.10116-1-jason-jh.lin@mediatek.com>
-	 <20230621102247.10116-3-jason-jh.lin@mediatek.com>
-In-Reply-To: <20230621102247.10116-3-jason-jh.lin@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|TYZPR03MB7668:EE_
-x-ms-office365-filtering-correlation-id: b289b836-0fd7-4e19-070d-08db81114a52
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: slpESGUqUQcCz2UwiXLLvP7ctoF5H4PciFaUAe74nfdeMwUr5ggVbG8iy5uNoitSFQwlQa50loUGuZrYHLQGWM+kEe2H8/7r7Gf6QH0QWCYq/h0qyYQqv4TINYAmpJyRg6eEmLjHGCEMS2GTl6gtYzrGqb817J56+Cagzyg02EwyZVBo6T4trCiz4QSm+rqs57xaEd8ItTVY8fhs/DTNEmeDUpLrsr7YbwTMYehJ6FCOc/F2PotLK6BLnjtMxqpeK8SPQecCM0tiVIefRqqtSQuf/BsZufu7ytzv2i3CiPIejT9M0KJ+0P+XB1qik7vRN+HRV3taUc3cBHDZvEw6VAPV88fBAkCWg4Q3lJu69hkzZa5V+g/Mc6qv3VpitD1mItfueHi1Kt/a9YIiBJqeLy/OWmOHVUjRNr5Zjppx3+JnLAVzmfQxuNLlfaAuuL7ymkQ1pf+aSIn6vkIK6Ts9Pciy8A0yLYjZLzghoL1uEgU64G3zGojFuJSO9oBeqy0sv1x1utdBYLDCLVjzUBgHVovEO7QJPn/kE/BjFb7jo6L32RZ9pzYGJxrrZJBe3SiWvJg6prIkfF1ET6LkmZ4P9pZ8iCm3nhlE0QfAjUeW7C67CZe7IWQqzWFr2scWjIe0IhwNNDOfapgJIxu8zcP0fFynC2rSIzyjqos2cUrpFfY=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(396003)(366004)(136003)(376002)(346002)(39860400002)(451199021)(6506007)(2906002)(6486002)(71200400001)(110136005)(54906003)(478600001)(36756003)(85182001)(8676002)(8936002)(122000001)(41300700001)(76116006)(64756008)(316002)(66946007)(66556008)(66446008)(66476007)(4326008)(6512007)(83380400001)(38100700002)(5660300002)(38070700005)(86362001)(2616005)(26005)(186003);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RjBWdHJDa1BmV3ZBVXhhZitKeUJINEtBNEwvMFlxd0NhY1YwbmswdXJPMmI4?=
- =?utf-8?B?bFBERldEL1g0WWFPRnhwTnQvYW9SWmp0RTJZbm41cjNMZXcrM0VBelZwc3BH?=
- =?utf-8?B?dXFyb3M5WGFzZTkvUTBDMFdpOWdPRnVsY3lvRmUzbHZvQ2hjbnI0bm9pY3ha?=
- =?utf-8?B?V3ZDdHI5bFRlVWwydXRzeVVZMklkL1J6WE5paWVFc3RwSEpWMzUybG1OZXF1?=
- =?utf-8?B?ZlhLYXhxRU5LdGQxR21FSDZyZGtjRm1QQVNLZzZHU0htQzlBMnhvTm1MTzVo?=
- =?utf-8?B?TktaU1pQYlNwQ2h1MzZ4eVhqVTVjaEtiOGw1OFowaEpYOE9PQXZ1S1JHdmZk?=
- =?utf-8?B?emVtdXlkZzVwbXZlYTZJWWV6ajJ3akhSVHlaZlptSUZmT1JRalpackhZVW1i?=
- =?utf-8?B?aTZDVXpRV1E5K3pVK0dJdHBIVkhMcDJ3SVpPTnJqZzkvRnd0RWErKzZobHJR?=
- =?utf-8?B?WTRBejFEb05Rd0dTcm9BSGxSUUl0VEhFNHI4SnZ5U0tyQWtLOUQxbm84aVlI?=
- =?utf-8?B?UGdEYzFaRTIwUmhlN0tybDBwY0s5RUdmT2RNZHVVeTdFQUIyRjd6QmtnZC9v?=
- =?utf-8?B?VnNwYzZ4SnVDSGtrQUxHb2VCVW1DSjdwU1Y1dlRZYTRvOTdVU0V2U0RqRnZz?=
- =?utf-8?B?WWRyNUdhZ3k4eE5ZNDVCQ01LcklRaWZsZ3grQmdNajNTTFJKTUpXRTgwWHBK?=
- =?utf-8?B?YStLWXB1VEU0b3FnbE5xZ0czVk5FRHA4TEFmZzVDYTd1aGt3QXVLenNjeDJv?=
- =?utf-8?B?RDltbmtCRU1kcFlaMm5tbVVWckVjZDUvUFU5WUFwUzJ0eFlaVXIzMmQ3OVBo?=
- =?utf-8?B?aUdzNU9hNjQwUDJXSGk2cTQrL1JIQ2c1eUtCSExKQlFsWnJxSXRKMzhMY0dL?=
- =?utf-8?B?ZC9vMnpRTTIrOXkzZG5zRkY4dE9HanEzRk54d1FSQTkwQjl2aG52NUJPSEpl?=
- =?utf-8?B?dTdOcEV4R3FkdktpSFluZ1VpR0EvT2lLdUV2THdYZ2ZGcURKUEhWd3gyMUJS?=
- =?utf-8?B?akdRMEdKRFhMZVVQNFFMK2VRM1Uva2dONWRSY1Q2WDlMdnNwRFdLQ0R2bEI0?=
- =?utf-8?B?bi9lMHB5ZDg3dy96dGxtTCtVRnJDRXhtZnBWVzI5RWRuOGN2UTNVSm81SXo1?=
- =?utf-8?B?SjJocUhRUFNmVFY0Zyt2RnRjdUZISVorMWMvLzZna1htRjd2TkNFNDFkZHpD?=
- =?utf-8?B?ZU1FWThrUWJibXo0eSsvbzVodWdUUWV3bUltT0VhRThweld2YWlFLzZiNGRr?=
- =?utf-8?B?UEo5RWJrVFlINmtjT2lrNGRneHhDYjdSS0NoOXBtZkRyWlFHV1F5UzRSVmdF?=
- =?utf-8?B?clZUMGFXRklpNlA4NUxrWEc2NThDNUsyNkdCS3lNcnB4YlEyQjdMallqak1n?=
- =?utf-8?B?MHl2SmZkdDlOY3RPRWtESnh4bmNNb2Q0SUl5K21QckNQc1lCdFpxVEZQM2xB?=
- =?utf-8?B?QStQdGFUMFI2Q0x5Q0RSeUFLNGEzREw4bEZDZlIyWEo2amZRcDZKYzZFQzRP?=
- =?utf-8?B?MVB3cGdMYzRucWgyazBxYlpVOTdiVTErYjBoZisxNURKRXc2S0VmT054S0lF?=
- =?utf-8?B?U1hHY3NJMUFudTFBbHZ6SmZyNjdQcUsxWHU0bE84T3ZNcTA3Zjl1T0ZqM2ZV?=
- =?utf-8?B?MkU2YlUvVG9xZmhFditTVmdzYXE1czJLR0JxYmUzSUJ2dGozVmxmUVYrOGVw?=
- =?utf-8?B?ZWp6eVM5WUxuMitZNFRUOE8weHZGK3ZNNmdENkREekFBSGZ1blBGWllXdVFY?=
- =?utf-8?B?ODlRSTBkU0FQL0RWc2JET1FTTi90U0doZUFEYk9ZMmJFb2Z4S0JUeE9KZ25p?=
- =?utf-8?B?NTd6ank0VXQ0NDZCUXRYd2w2cGVoNmJHVVlTV2IxL2lMd0RpTlJEVngvdlk0?=
- =?utf-8?B?a1VIWUovTkM3SGFLM1czVDRBNEpoUWVkTGVPdDRnS3kyb3g5dVo4OUdJV1lZ?=
- =?utf-8?B?L1pmQ2x1TiswM1Y2OU5Kb0hBS09FOUg5NDBZOVRQTVplQWFGTm8xUS82b3VL?=
- =?utf-8?B?MzA2bDdkS0U3ZVAzQkgrd3gzVHA2REZkT3NJY3NZMlJwbnVQdEpkUnUvWjFQ?=
- =?utf-8?B?S3NNNnNTRXRvS2RMZjhzNDlEQXRBSnpVYjZMeDNOeUJtK0VJZHZudFZwRXhP?=
- =?utf-8?Q?82NZibGIbpWQKxi0Tjr3gAuJG?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <E3A98D3FA5CD114EA5A45BBFDEF3A8DA@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1qIlTk-00Aiiu-2M;
+	Mon, 10 Jul 2023 07:38:42 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B81236606FF3;
+	Mon, 10 Jul 2023 08:38:34 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1688974715;
+	bh=LOXc+6Sqq2SjuM4ZCBO1k8rnrrk3ScMPXrSUxS0CCuE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=iNE1sJ53UJG7JThYzk3vZyGbX3LodamTt5AcFLXPDLZtowxiXEgaeH4JdralBhJPp
+	 XugpSEzAqLSOrwg3ORcljgb8vJIk90v8Pc7pny3Z0E6w55h+DHac3pDQbTh70+JZ5f
+	 si2VcCK0bzBONTIAsWq2tN3LQPXdQ+6bRbxfjIZIpMHBhMTYE9XoTwqJ5utxJsw0v2
+	 7E8FwkkufVJatjHiJnJ7F8dILMLB8aw4NA7N70ryufi4hprpNePY9XT3k1Kzc8ynmr
+	 7aI38MKT9IwbuZnla3AwTW5IIK1+OboP8oUG6XXSSX8NvjFdlCzSm3413bLNWRwo7x
+	 zuJ6z1l/ljQEQ==
+Message-ID: <da4847bb-d4b1-7810-3b5f-1200596b19fd@collabora.com>
+Date: Mon, 10 Jul 2023 09:38:31 +0200
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b289b836-0fd7-4e19-070d-08db81114a52
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Jul 2023 06:45:46.3938
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: iWQ6l0M8WIW26GGSati5ZYQ7mcx58SDBMjQ0wyd8tS8wEdigDeaZVK3WCPbTFMzl9U5XgVQxF6kX3HiMWfnVOA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB7668
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v4 0/9] MediaTek DisplayPort: support eDP and aux-bus
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
+ daniel@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+ nfraprado@collabora.com
+References: <20230706123025.208408-1-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5HzQhoz0OUhifQC0vr44O5VwvuYnsHSA2jK0FjwJT3OBA@mail.gmail.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5HzQhoz0OUhifQC0vr44O5VwvuYnsHSA2jK0FjwJT3OBA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230709_235557_802876_994984E8 
-X-CRM114-Status: GOOD (  18.99  )
+X-CRM114-CacheID: sfid-20230710_003841_107509_EF441199 
+X-CRM114-Status: GOOD (  31.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -187,34 +79,157 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEphc29uOg0KDQpPbiBXZWQsIDIwMjMtMDYtMjEgYXQgMTg6MjIgKzA4MDAsIEphc29uLUpI
-LkxpbiB3cm90ZToNCj4gQ0VSVC1DIENoYXJhY3RlcnMgYW5kIFN0cmluZ3MgKENFUlQgU1RSMzEt
-QykNCj4gYWxsX2RybV9wcml2W2NudF0gZXZhbHVhdGVzIHRvIGFuIGFkZHJlc3MgdGhhdCBjb3Vs
-ZCBiZSBhdCBuZWdhdGl2ZQ0KPiBvZmZzZXQgb2YgYW4gYXJyYXkuDQo+IA0KPiBJbiBtdGtfZHJt
-X2dldF9hbGxfZHJtX3ByaXYoKToNCj4gR3VhcmFudGVlIHRoYXQgc3RvcmFnZSBmb3Igc3RyaW5n
-cyBoYXMgc3VmZmljaWVudCBzcGFjZSBmb3IgY2hhcmFjdGVyDQo+IGRhdGEgYW5kIHRoZSBudWxs
-IHRlcm1pbmF0b3IuDQo+IA0KPiBTbyBjaGFuZ2UgY250IHRvIHVuc2lnbmVkIGludCBhbmQgY2hl
-Y2sgaXRzIG1heCB2YWx1ZS4NCg0KUmV2aWV3ZWQtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5j
-b20+DQoNCj4gDQo+IEZpeGVzOiAxZWY3ZWQ0ODM1NmMgKCJkcm0vbWVkaWF0ZWs6IE1vZGlmeSBt
-ZWRpYXRlay1kcm0gZm9yIG10ODE5NQ0KPiBtdWx0aSBtbXN5cyBzdXBwb3J0IikNCj4gU2lnbmVk
-LW9mZi1ieTogSmFzb24tSkguTGluIDxqYXNvbi1qaC5saW5AbWVkaWF0ZWsuY29tPg0KPiBSZXZp
-ZXdlZC1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPA0KPiBhbmdlbG9naW9hY2NoaW5v
-LmRlbHJlZ25vQGNvbGxhYm9yYS5jb20+DQo+IC0tLQ0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kcm1fZHJ2LmMgfCA1ICsrKystDQo+ICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRp
-b25zKCspLCAxIGRlbGV0aW9uKC0pDQo+IA0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kcm1fZHJ2LmMNCj4gYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kcnYuYw0KPiBpbmRleCA2ZGNiNGJhMjQ2NmMuLmZjMjE3ZTBhY2Q0NSAxMDA2NDQNCj4g
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMNCj4gKysrIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMNCj4gQEAgLTM1NCw3ICszNTQsNyBA
-QCBzdGF0aWMgYm9vbCBtdGtfZHJtX2dldF9hbGxfZHJtX3ByaXYoc3RydWN0DQo+IGRldmljZSAq
-ZGV2KQ0KPiAgCWNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgKm9mX2lkOw0KPiAgCXN0cnVjdCBk
-ZXZpY2Vfbm9kZSAqbm9kZTsNCj4gIAlzdHJ1Y3QgZGV2aWNlICpkcm1fZGV2Ow0KPiAtCWludCBj
-bnQgPSAwOw0KPiArCXVuc2lnbmVkIGludCBjbnQgPSAwOw0KPiAgCWludCBpLCBqOw0KPiAgDQo+
-ICAJZm9yX2VhY2hfY2hpbGRfb2Zfbm9kZShwaGFuZGxlLT5wYXJlbnQsIG5vZGUpIHsNCj4gQEAg
-LTM3NSw2ICszNzUsOSBAQCBzdGF0aWMgYm9vbCBtdGtfZHJtX2dldF9hbGxfZHJtX3ByaXYoc3Ry
-dWN0DQo+IGRldmljZSAqZGV2KQ0KPiAgCQlhbGxfZHJtX3ByaXZbY250XSA9IGRldl9nZXRfZHJ2
-ZGF0YShkcm1fZGV2KTsNCj4gIAkJaWYgKGFsbF9kcm1fcHJpdltjbnRdICYmIGFsbF9kcm1fcHJp
-dltjbnRdLQ0KPiA+bXRrX2RybV9ib3VuZCkNCj4gIAkJCWNudCsrOw0KPiArDQo+ICsJCWlmIChj
-bnQgPT0gTUFYX0NSVEMpDQo+ICsJCQlicmVhazsNCj4gIAl9DQo+ICANCj4gIAlpZiAoZHJtX3By
-aXYtPmRhdGEtPm1tc3lzX2Rldl9udW0gPT0gY250KSB7DQo=
+Il 07/07/23 10:23, Chen-Yu Tsai ha scritto:
+> On Thu, Jul 6, 2023 at 8:30 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Changes in v4:
+>>   - Set data lanes to idle to prevent stalls if bootloader didn't
+>>     properly close the eDP port
+>>   - Now using the .done_probing() callback for AUX bus to prevent
+>>     probe deferral loops in case the panel-edp driver is a module
+>>     as previously seen with another bridge driver (ANX7625) on
+>>     some other SoCs (MT8192 and others)
+>>   - Rebased over next-20230706
+>>   - Dropped Chen-Yu's T-b tag on last patch as some logic changed
+>>     (before, I wasn't using the .done_probing() callback).
+>>
+>> Changes in v3:
+>>   - Added DPTX AUX block initialization before trying to communicate
+>>     to stop relying on the bootloader keeping it initialized before
+>>     booting Linux.
+>>   - Fixed commit description for patch [09/09] and removed commented
+>>     out code (that slipped from dev phase.. sorry!).
+>>
+>> This series adds "real" support for eDP in the mtk-dp DisplayPort driver.
+>>
+>> Explaining the "real":
+>> Before this change, the DisplayPort driver did support eDP to some
+>> extent, but it was treating it entirely like a regular DP interface
+>> which is partially fine, after all, embedded DisplayPort *is* actually
+>> DisplayPort, but there might be some differences to account for... and
+>> this is for both small performance improvements and, more importantly,
+>> for correct functionality in some systems.
+>>
+>> Functionality first:
+>>
+>> One of the common differences found in various boards implementing eDP
+>> and machines using an eDP panel is that many times the HPD line is not
+>> connected. This *must* be accounted for: at startup, this specific IP
+>> will raise a HPD interrupt (which should maybe be ignored... as it does
+>> not appear to be a "real" event...) that will make the eDP panel to be
+>> detected and to actually work but, after a suspend-resume cycle, there
+>> will be no HPD interrupt (as there's no HPD line in my case!) producing
+>> a functionality issue - specifically, the DP Link Training fails because
+>> the panel doesn't get powered up, then it stays black and won't work
+>> until rebooting the machine (or removing and reinserting the module I
+>> think, but I haven't tried that).
+>>
+>> Now for.. both:
+>> eDP panels are *e*DP because they are *not* removable (in the sense that
+>> you can't unplug the cable without disassembling the machine, in which
+>> case, the machine shall be powered down..!): this (correct) assumption
+>> makes us able to solve some issues and to also gain a little performance
+>> during PM operations.
+>>
+>> What was done here is:
+>>   - Caching the EDID if the panel is eDP: we're always going to read the
+>>     same data everytime, so we can just cache that (as it's small enough)
+>>     shortening PM resume times for the eDP driver instance;
+>>   - Always return connector_status_connected if it's eDP: non-removable
+>>     means connector_status_disconnected can't happen during runtime...
+>>     this also saves us some time and even power, as we won't have to
+>>     perform yet another power cycle of the HW;
+>>   - Added aux-bus support!
+>>     This makes us able to rely on panel autodetection from the EDID,
+>>     avoiding to add more and more panel timings to panel-edp and, even
+>>     better, allowing to use one panel node in devicetrees for multiple
+>>     variants of the same machine since, at that point, it's not important
+>>     to "preventively know" what panel we have (eh, it's autodetected...!).
+>>
+>> This was tested on a MT8195 Cherry Tomato Chromebook (panel-edp on aux-bus)
+> 
+> Do you have panel-edp built as a module? If I have it built in, the panel
+> can correctly display stuff. If I have it built as a module, the panel is
+> correctly detected, but the panel stays black even if DRM thinks it is
+> displaying stuff.
+> 
+
+I tested both. I'll recheck on a clean tree just to be sure...
+
+> And it looks like EDID reading and panel power sequencing is still not
+> working correctly, i.e. needs regulator-always-on?
+
+Yeah that's still needed with this version, I'm still trying to get *at least*
+some support upstreamed before refining it.
+
+Cheers,
+Angelo
+
+> 
+> ChenYu
+> 
+>> P.S.: For your own testing commodity, here's a reference devicetree:
+>> &edp_tx {
+>>          status = "okay";
+>>
+>>          pinctrl-names = "default";
+>>          pinctrl-0 = <&edptx_pins_default>;
+>>
+>>          ports {
+>>                  #address-cells = <1>;
+>>                  #size-cells = <0>;
+>>
+>>                  port@0 {
+>>                          reg = <0>;
+>>                          edp_in: endpoint {
+>>                                  remote-endpoint = <&dp_intf0_out>;
+>>                          };
+>>                  };
+>>
+>>                  port@1 {
+>>                          reg = <1>;
+>>                          edp_out: endpoint {
+>>                                  data-lanes = <0 1 2 3>;
+>>                                  remote-endpoint = <&panel_in>;
+>>                          };
+>>                  };
+>>          };
+>>
+>>          aux-bus {
+>>                  panel: panel {
+>>                          compatible = "edp-panel";
+>>                          power-supply = <&pp3300_disp_x>;
+>>                          backlight = <&backlight_lcd0>;
+>>                          port {
+>>                                  panel_in: endpoint {
+>>                                          remote-endpoint = <&edp_out>;
+>>                                  };
+>>                          };
+>>                  };
+>>          };
+>> };
+>>
+>>
+>> AngeloGioacchino Del Regno (9):
+>>    drm/mediatek: dp: Cache EDID for eDP panel
+>>    drm/mediatek: dp: Move AUX and panel poweron/off sequence to function
+>>    drm/mediatek: dp: Always return connected status for eDP in .detect()
+>>    drm/mediatek: dp: Always set cable_plugged_in at resume for eDP panel
+>>    drm/mediatek: dp: Change logging to dev for mtk_dp_aux_transfer()
+>>    drm/mediatek: dp: Enable event interrupt only when bridge attached
+>>    drm/mediatek: dp: Use devm variant of drm_bridge_add()
+>>    drm/mediatek: dp: Move AUX_P0 setting to
+>>      mtk_dp_initialize_aux_settings()
+>>    drm/mediatek: dp: Add support for embedded DisplayPort aux-bus
+>>
+>>   drivers/gpu/drm/mediatek/mtk_dp.c | 197 +++++++++++++++++++-----------
+>>   1 file changed, 127 insertions(+), 70 deletions(-)
+>>
+>> --
+>> 2.40.1
+>>
+
+
+
 
