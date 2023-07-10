@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1408AEB64D9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 09:00:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EF47EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 09:00:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vlS2w38hffS8t4N6lUNAXq/+lMan+tZQyWGhu3FkWxA=; b=OsUKD56ujDFxVyfHcH7tHGpK66
-	qfAWhedWzex1zRu2JZbxmY1hY7R9LCM1WAnUcHhzRLXTv8jgfxNLfO9eOHcHS1vdn8st7DaiCPwrC
-	cIKugwcMrS26f9RLoh6269Sj5b2WBv1B4+u8z2/630q2p2gCqVboR+gBVD44YLiAUvHNyEcA1SpRE
-	ALVbKMBDUcoN7DAhkGRWdOYWE90jb4kLa5HWFiuxhRQYQDp/rmWTCw4X4t9lHWCBxyZNTs5qzH9GG
-	bUjGbox/swGl/f8fPN8sjVzQzr6e7BmHKtftKBWB7M2mI4YnC6chWRuJ/fCZZfpdAkVlZC2YJagAk
-	PtFnIFFw==;
+	bh=fyyBvpSV8LxDog0ek0zaEgbX3az6xRdpMaG/0FwAEzQ=; b=JBOvlSxKQuxBBk5MHbnxhxPwNt
+	bGT0ze/FhOTiNWPQ9MyuJAvLpYhebWQk7X4TClAQ6hlYrjuRuZ6NyxIppg75juzvavhSi6TS+BVUG
+	UkGNxaTtJ9hgLcidG6fLe0xqT+PM+2C1hMG3eIPmoTnyuzsNFBphVopqJrf0bdiLOrZlo/LShWq7b
+	SKBjQMuUS2dkW8fUB47RnYtr2z6KLO0BqZOkd63bWOVu5PbwMgea8k6ItQIGtBJKEbBYz3SyNRFVl
+	8sbrIkzDr4Bd8IIU9hsDFZVF01FlfIHjPXTMYm+axLuZqi8vXm5Wd/NfFMCtNU6H70MqDq6EiKWVz
+	9uevTVnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qImkm-00Avdp-0M;
-	Mon, 10 Jul 2023 09:00:20 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1qImkz-00AvrQ-2j;
+	Mon, 10 Jul 2023 09:00:33 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qImkj-00Avbu-2O
+	id 1qImkr-00Avap-0x
 	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Jul 2023 09:00:18 +0000
-Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2b69f958ef3so65844511fa.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jul 2023 02:00:17 -0700 (PDT)
+	Mon, 10 Jul 2023 09:00:27 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-3fbd33a57ddso43061425e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jul 2023 02:00:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20221208.gappssmtp.com; s=20221208; t=1688979616; x=1691571616;
+        d=bgdev-pl.20221208.gappssmtp.com; s=20221208; t=1688979613; x=1691571613;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=vlS2w38hffS8t4N6lUNAXq/+lMan+tZQyWGhu3FkWxA=;
-        b=0yJeyY12y2yMBYTKnaWk2D4D45ts2C7hpFy2VklnAx7gax/7Er05BJfkDhAxyNh+wr
-         pcMaEoft3w+ZM197/AX7iA7lRncxslHNX5hzYSlf9xJ4bADIRmV1TmTUKnJ+rzLsScqr
-         NI8hChAuw1W2DALoI8XZw8mlwVCIc2IrgYI/ygruQglANToUr4tZ+YIBlH0XKPvQvOJp
-         xDl+Z5G0Z8kfkQSOAsLYwdXhS/fawjXgkIShEbiQbCHLsxPIBERF7gg6W8larfQkrb0W
-         TjrPc9bttebVYlIhbAT/a82z9Bd7geef2qkkTR1CFwk51iQgwRjig7IsRu1yjflhYWVX
-         BMpA==
+        bh=fyyBvpSV8LxDog0ek0zaEgbX3az6xRdpMaG/0FwAEzQ=;
+        b=3x1HBwDRhKRpNZtS59+egzHon09AC6viqlxvkgig2u73jYmx2KoeiJv1WiGL7psptP
+         oMeODFZTw3hjHXmYBX3QeVeNKw79pLtGo6r+NUK4N7fgNxD5BWuk2ZA8IRrXTOF3GNvY
+         fy3dAOOguHIKIbIra8lHLXaDJ2jRzs4s3csIvTScXvBfxT2bCY0/yXUoHOeVYZyUI9AC
+         Mr7vbwGBMJuGhmekxfISybKSynGEb/+sV5B81QyA/7tCGowtlyzQPum6C8WZmps/VrLm
+         wx5ymFtihSkmQ9FjnCaVtJMJzrwb7VXinhrIMOtWXm5HiUsVkNJedZyIZk2jOb33wNds
+         tO1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688979616; x=1691571616;
+        d=1e100.net; s=20221208; t=1688979613; x=1691571613;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=vlS2w38hffS8t4N6lUNAXq/+lMan+tZQyWGhu3FkWxA=;
-        b=NlxIfoZ/wlu8jVxP9jBWfV8jbJaV86covYy9w4VOZiIG7d4iu8ih6XExwUk0J0S/3T
-         mjktQiSju5ri8801nvXFOhn0p9ojPrjiV9ICqvNOA4e7WhLbmkielvS15RnJ97cFiJ3x
-         +BdeA+e3KtaKLmu6Bpkq+Xgmmbe2K8iYJY0DhJXcSCenFIfc4DO3dUsbdmPB5AHhb5W+
-         kFg+otbQ5oyqrSYsAePN05o5uMyKe/d/hiAovQ+q8s6CwmGhFMKTlYBIKEMuTBOpjGi3
-         sG69Hr3j9kdFPfkFkhE/qRCJk3Al2GDa+ziBBiikTM4VwAN9Qo0txqirg/MTASm8MEyr
-         yn7A==
-X-Gm-Message-State: ABy/qLZAzW0aPyQIpLCcCCr+wi7F4HTH9R+YPBJmm98zAhyESYiwVHcD
-	hApxWHv7h7VEHmBtJb4fTd6kFw==
-X-Google-Smtp-Source: APBJJlHNASJzAedMGym24eWQIWNlYk7Nuh0RZzw0WLGWmWCrcXMuL0a9kaTNNidQnkYaIL3HruML+g==
-X-Received: by 2002:a2e:98c7:0:b0:2b7:7c:d5a1 with SMTP id s7-20020a2e98c7000000b002b7007cd5a1mr9541393ljj.23.1688979616273;
-        Mon, 10 Jul 2023 02:00:16 -0700 (PDT)
+        bh=fyyBvpSV8LxDog0ek0zaEgbX3az6xRdpMaG/0FwAEzQ=;
+        b=KkbaZqcJjQ+Q5ipV5CsvmDPUfTUyrYHBMhgWjP5qKx4P01nWHMvrSNpmJ0ASaqrEMn
+         qDzGotnU+7AMG2JhZd2+y1bZrFk3dVE8fp50fhF/CaCJQhY+IAMLv06oYPWfhDXh5jDx
+         q0HswazBOUjQYNlNakZu0Cl0zZcv5+e3Q7h0DFDY1h1dzsHz09P0OltURQejaZxu+ME8
+         z3wSaBdvVz6ojsLl08JMTavhGU/013xev/Qt28YVVCZGqlntpMo+4P1kyhBJX8f2Psm3
+         WkQbdoe28nftj5vcVvg+uI7suJxbhtsXSBEGt3FLVxtPk6T0+hK0/0hys27/F0qnr3MJ
+         seyA==
+X-Gm-Message-State: ABy/qLaXscQrMBKmVkIMzligJNc9RWi/Dq2JCX/IcBrJtjcIIA/jP1Sx
+	ZbdPg4usm6hejQVeP3Lizw3n6A==
+X-Google-Smtp-Source: APBJJlE0CWZzeJZ8TiwIWmaXT0WdMJVW73xR7UitbR/EEdZvdmMI1C9Osy594l6Z5i7AebtR9dEpZA==
+X-Received: by 2002:a05:600c:378b:b0:3fb:ffa8:6d78 with SMTP id o11-20020a05600c378b00b003fbffa86d78mr7014533wmr.36.1688979613585;
+        Mon, 10 Jul 2023 02:00:13 -0700 (PDT)
 Received: from brgl-uxlite.home ([2a01:cb1d:334:ac00:6002:540:6954:abdd])
-        by smtp.gmail.com with ESMTPSA id k6-20020a05600c0b4600b003fc00702f65sm8581045wmr.46.2023.07.10.02.00.15
+        by smtp.gmail.com with ESMTPSA id k6-20020a05600c0b4600b003fc00702f65sm8581045wmr.46.2023.07.10.02.00.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Jul 2023 02:00:15 -0700 (PDT)
+        Mon, 10 Jul 2023 02:00:13 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
 To: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
@@ -90,17 +90,17 @@ Cc: netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
 	Andrew Halaney <ahalaney@redhat.com>
-Subject: [PATCH net-next v3 04/12] net: stmmac: replace the has_sun8i field with a flag
-Date: Mon, 10 Jul 2023 10:59:53 +0200
-Message-Id: <20230710090001.303225-5-brgl@bgdev.pl>
+Subject: [PATCH net-next v3 02/12] net: stmmac: replace the sph_disable field with a flag
+Date: Mon, 10 Jul 2023 10:59:51 +0200
+Message-Id: <20230710090001.303225-3-brgl@bgdev.pl>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230710090001.303225-1-brgl@bgdev.pl>
 References: <20230710090001.303225-1-brgl@bgdev.pl>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_020017_781018_B8D700DF 
-X-CRM114-Status: GOOD (  15.73  )
+X-CRM114-CacheID: sfid-20230710_020025_379782_52FA9F97 
+X-CRM114-Status: GOOD (  14.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,66 +123,72 @@ simple bitfield flag.
 Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 Reviewed-by: Andrew Halaney <ahalaney@redhat.com>
 ---
- drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c | 2 +-
- drivers/net/ethernet/stmicro/stmmac/stmmac_main.c | 4 ++--
- include/linux/stmmac.h                            | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/stmicro/stmmac/dwmac-dwc-qos-eth.c | 2 +-
+ drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c       | 2 +-
+ drivers/net/ethernet/stmicro/stmmac/stmmac_main.c       | 3 ++-
+ include/linux/stmmac.h                                  | 2 +-
+ 4 files changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
-index 1e714380d125..2b5ebb15bfda 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
-@@ -1227,7 +1227,7 @@ static int sun8i_dwmac_probe(struct platform_device *pdev)
- 	plat_dat->interface = interface;
- 	plat_dat->rx_coe = STMMAC_RX_COE_TYPE2;
- 	plat_dat->tx_coe = 1;
--	plat_dat->has_sun8i = true;
-+	plat_dat->flags |= STMMAC_FLAG_HAS_SUN8I;
- 	plat_dat->bsp_priv = gmac;
- 	plat_dat->init = sun8i_dwmac_init;
- 	plat_dat->exit = sun8i_dwmac_exit;
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-dwc-qos-eth.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-dwc-qos-eth.c
+index 9f88530c5e8c..0c12ab67c27b 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-dwc-qos-eth.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-dwc-qos-eth.c
+@@ -359,7 +359,7 @@ static int tegra_eqos_probe(struct platform_device *pdev,
+ 	data->fix_mac_speed = tegra_eqos_fix_speed;
+ 	data->init = tegra_eqos_init;
+ 	data->bsp_priv = eqos;
+-	data->sph_disable = 1;
++	data->flags |= STMMAC_FLAG_SPH_DISABLE;
+ 
+ 	err = tegra_eqos_init(pdev, eqos);
+ 	if (err < 0)
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c
+index ab9f876b6df7..ae5db39a3f1b 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c
+@@ -459,7 +459,7 @@ static int intel_mgbe_common_data(struct pci_dev *pdev,
+ 	plat->has_gmac4 = 1;
+ 	plat->force_sf_dma_mode = 0;
+ 	plat->tso_en = 1;
+-	plat->sph_disable = 1;
++	plat->flags |= STMMAC_FLAG_SPH_DISABLE;
+ 
+ 	/* Multiplying factor to the clk_eee_i clock time
+ 	 * period to make it closer to 100 ns. This value
 diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-index a1a59af3961d..3df32658b5bb 100644
+index 38b6cbd8a133..18e56299363d 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-@@ -325,7 +325,7 @@ static void stmmac_clk_csr_set(struct stmmac_priv *priv)
- 			priv->clk_csr = STMMAC_CSR_250_300M;
+@@ -7258,7 +7258,8 @@ int stmmac_dvr_probe(struct device *device,
+ 		dev_info(priv->device, "TSO feature enabled\n");
  	}
  
--	if (priv->plat->has_sun8i) {
-+	if (priv->plat->flags & STMMAC_FLAG_HAS_SUN8I) {
- 		if (clk_rate > 160000000)
- 			priv->clk_csr = 0x03;
- 		else if (clk_rate > 80000000)
-@@ -6856,7 +6856,7 @@ static int stmmac_hw_init(struct stmmac_priv *priv)
- 	int ret;
- 
- 	/* dwmac-sun8i only work in chain mode */
--	if (priv->plat->has_sun8i)
-+	if (priv->plat->flags & STMMAC_FLAG_HAS_SUN8I)
- 		chain_mode = 1;
- 	priv->chain_mode = chain_mode;
- 
+-	if (priv->dma_cap.sphen && !priv->plat->sph_disable) {
++	if (priv->dma_cap.sphen &&
++	    !(priv->plat->flags & STMMAC_FLAG_SPH_DISABLE)) {
+ 		ndev->hw_features |= NETIF_F_GRO;
+ 		priv->sph_cap = true;
+ 		priv->sph = priv->sph_cap;
 diff --git a/include/linux/stmmac.h b/include/linux/stmmac.h
-index 15fb07cc89c8..66dcf84d024a 100644
+index 8e7511071ef1..1b02f866316c 100644
 --- a/include/linux/stmmac.h
 +++ b/include/linux/stmmac.h
-@@ -207,6 +207,7 @@ struct dwmac4_addrs {
+@@ -205,6 +205,7 @@ struct dwmac4_addrs {
+ };
+ 
  #define STMMAC_FLAG_HAS_INTEGRATED_PCS		BIT(0)
- #define STMMAC_FLAG_SPH_DISABLE			BIT(1)
- #define STMMAC_FLAG_USE_PHY_WOL			BIT(2)
-+#define STMMAC_FLAG_HAS_SUN8I			BIT(3)
++#define STMMAC_FLAG_SPH_DISABLE			BIT(1)
  
  struct plat_stmmacenet_data {
  	int bus_id;
-@@ -270,7 +271,6 @@ struct plat_stmmacenet_data {
- 	struct reset_control *stmmac_ahb_rst;
- 	struct stmmac_axi *axi;
- 	int has_gmac4;
--	bool has_sun8i;
- 	bool tso_en;
- 	int rss_en;
- 	int mac_port_sel_speed;
+@@ -292,7 +293,6 @@ struct plat_stmmacenet_data {
+ 	int msi_rx_base_vec;
+ 	int msi_tx_base_vec;
+ 	bool use_phy_wol;
+-	bool sph_disable;
+ 	bool serdes_up_after_phy_linkup;
+ 	const struct dwmac4_addrs *dwmac4_addrs;
+ 	unsigned int flags;
 -- 
 2.39.2
 
