@@ -4,93 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D829EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 12:54:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3891EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 13:21:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=abv8RbjDLsB7qEHaf8MGMChzo7Az5wZJp4aotAIPofw=; b=ELqPILVvfXN5O61fNA6nNNaJW0
-	W8NK5PHFbnWkWjer6vTxoQy2B8vLN47sjKPZFNAQIiN6ttjKXImDAKMlB2sqmpiI9oFtm6j3SA67R
-	8QP1KDlO7ptP5ZYcBJtlny2C6IXLy+IZIg2bm2/UFBXYbpuha1s44aSRiodIAhWDedA8mWeMPrGBq
-	NRTsQyIWq/js4t10lAbFN2aWdQBThd+8oM13CrDklB1jC2dcaFfeSLNDpNF5+gPI+TgpFZ9+NmWGd
-	L4hP0HfxB/EeOdelWiGtkovqfP3y25sUv2S9d8rXQSBypAjtzVXPAaY9Ozs1d+AakV9y4TH1fjgLs
-	ERPlM5eg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RJ4lvP8JVJhiuP5mnFYex80ThwuAY/7j60INcuxA0Xw=; b=dPzNrkLkhNSATZvHRVCq1aNMsw
+	04LMG3kz3hB+uLvW5OsrybtNDr9stPhJ3truBHpHycn9CSN2EHhPc/TopgXEJYx/b04jqncD+iVcj
+	ZMZ7+cYz0tifKiQ+gZ0TejY8yxVK9Kg45CuUhgWlxS0fOWeIG42IAwcwDiEomf/BkXVl/cr6qtVH2
+	zpkJUES0tp/zYpJeJIt2BbOSxRFfMhMVrf8SHuXCpbxIPY3gOn8wgkSK6XfcX9STnceAUAnf+Jiko
+	+iDUlnXpv+EQPHP1EDibWyL/oFoOFXqwenlP/20zbPcOChLIH+N4wRgWI9/+PgZuFoLP/BFGZAML+
+	FHEASUCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIqPi-00BfGL-2Q;
-	Mon, 10 Jul 2023 12:54:50 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1qIqpK-00BjzF-0k;
+	Mon, 10 Jul 2023 13:21:18 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIqPf-00BfEh-2J
-	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Jul 2023 12:54:49 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-3142970df44so4218100f8f.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jul 2023 05:54:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1688993685; x=1691585685;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=abv8RbjDLsB7qEHaf8MGMChzo7Az5wZJp4aotAIPofw=;
-        b=b2IwCjppmUDIKW7ZIaF0KTVBe2UZDvxxN/b3hBOykv4/OjDBsrpSaTVMty/DwdZd2g
-         d3IiIqQUVBoiIw5iq2qhak5rlUTZKp60BPw7nfrdTWzkeQndrdVBPqyje40q8Aty2vU5
-         hHO1PV5Aui/ycRm4xA/lBcY5kJCvWU5VOwcEA1XjvzJhGvnJE5o7JxtA+JzppYUfBb5S
-         5JnyngwQbPD0GF4/WltI+XBcw+55akHyWsyxPYuxVncUx15DQXHMJR7QGYEXDvv/aKIx
-         jS2e01lA/HONXz+/9XytOyRNrPd8c+wa41F1g5TM37u+XOQLLksG/dfsyIkCA148DLNP
-         NfuQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688993685; x=1691585685;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=abv8RbjDLsB7qEHaf8MGMChzo7Az5wZJp4aotAIPofw=;
-        b=geOfDxCAqywVTYe3/pzVBHO2FHQp/p6PbXuHAYz3gnaX+wplRau9yQq29QsG5zw5ty
-         diXhZKixxxsF8nyeAmbTxEHJzSA6fvt5JljdzeV/t3QHpjV+A/h5veWlkyvFwIqeQqSg
-         z0O1kmelc2r220WWfSSl9VrCANKcq3K5+5XjwHNG/KVEV/ci9wQzvu1ey+6j4b2hKhQd
-         LjXjJ+FmCVbOVffgXNmieLyXOLNQedao3EnOB0gxKK2/De/HOoybCWe4oXfF6dvzpP2r
-         KyJfpx4YoeZne5vxMNWWAQO1S3elogf3TFOa0BT2pbmnEDQzhMXImbNwcWYckv6tE9G+
-         aJhg==
-X-Gm-Message-State: ABy/qLZ9QKW9KocmnuR9UsP1SsSEOW5V8R5yT3DniOX30F79T63ju1Lj
-	CCiKkOThT+oe1bC1BonqFg2t7w==
-X-Google-Smtp-Source: APBJJlHCI4auE2IEOjXBCxZiOjauKMJU0L917s49nJJx2e4LjmSAQnLYSQYOsSTxBjhnt4Aw1NVolw==
-X-Received: by 2002:adf:e34c:0:b0:314:3b17:d7c5 with SMTP id n12-20020adfe34c000000b003143b17d7c5mr12183853wrj.43.1688993684720;
-        Mon, 10 Jul 2023 05:54:44 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id q17-20020a05600000d100b003142eb75724sm11636974wrx.24.2023.07.10.05.54.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 10 Jul 2023 05:54:44 -0700 (PDT)
-Message-ID: <fd1c1034-c54e-2e9d-0c9e-f62b0bcdc3cf@baylibre.com>
-Date: Mon, 10 Jul 2023 14:54:42 +0200
+	id 1qIqpH-00BjxR-0v;
+	Mon, 10 Jul 2023 13:21:16 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C621F60DED;
+	Mon, 10 Jul 2023 13:21:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94191C433C7;
+	Mon, 10 Jul 2023 13:21:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1688995274;
+	bh=ruJlO0wimIrsDY1JgPUqCqS7prBe1pSopi+dM4yYAWM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=tCUvqCttiPcwuUH6oQaeDTVlt/jVMTKddukpB3Rq2NTAjbzgaXhOs+IbQKiqA2zFS
+	 A9RwOziobHTKo8xtAoLCbw9/G5XP7z93lwwcMiVxafq8PiTNYdyOWz2ZmNVbJqaRu3
+	 p+o7GErUG6dN3D+2vdmSUok/vpvLEP/d4e2/6uVM8lFbtbK1g1KhHRcJ+YzSNSc8aV
+	 vzC9RTasZiyt6DNQvmgXjaDeqvMTkrDbkZFHHHz5OJ3MwZifaBQsXsj96SFX7XFS5/
+	 2yl7VTCIzPWHRNx1uEfr8lQDSlw+D72llgC2cC8KCiu81fGygjzL2Umg2d4uKSVdv1
+	 5QaNEib99pP6w==
+Date: Mon, 10 Jul 2023 14:21:05 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Yang Yingliang <yangyingliang@huawei.com>,
+	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
+	Kris Bahnsen <kris@embeddedts.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
+	Radu Pirea <radu_nicolae.pirea@upb.ro>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Richard Cochran <richardcochran@gmail.com>
+Subject: Re: [PATCH v1 4/8] spi: Get rid of old SPI_MASTER_NO_.X and
+ SPI_MASTER_MUST_.X
+Message-ID: <7aff8759-cfca-47b5-b995-5260e5082c45@sirena.org.uk>
+References: <20230710102751.83314-1-andriy.shevchenko@linux.intel.com>
+ <20230710102751.83314-5-andriy.shevchenko@linux.intel.com>
+ <1ffd5603-4140-4bf6-bfed-af70a6759bda@sirena.org.uk>
+ <ZKvmkAP5ZuT6lGLN@smile.fi.intel.com>
+ <ZKvnPXl9H+cQR8Ok@smile.fi.intel.com>
+ <353027bf-6d2a-40de-9e18-8553864b343c@sirena.org.uk>
+ <ZKv7p96D2B9vYd0J@smile.fi.intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v6 1/8] dt-bindings: power: Add MT8365 power domains
-To: Markus Schneider-Pargmann <msp@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>, Fabien Parent
- <parent.f@gmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Rob Herring <robh@kernel.org>
-References: <20230627131040.3418538-1-msp@baylibre.com>
- <20230627131040.3418538-2-msp@baylibre.com>
-Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230627131040.3418538-2-msp@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Bc8mzeK4BJwaYeTa"
+Content-Disposition: inline
+In-Reply-To: <ZKv7p96D2B9vYd0J@smile.fi.intel.com>
+X-Cookie: Do you have lysdexia?
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_055447_762609_8A701C9C 
-X-CRM114-Status: UNSURE (   6.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230710_062115_404397_E6C4074A 
+X-CRM114-Status: GOOD (  16.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,14 +106,44 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
+--Bc8mzeK4BJwaYeTa
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On 27/06/2023 15:10, Markus Schneider-Pargmann wrote:
-> Add power domains dt-bindings for MT8365.
+On Mon, Jul 10, 2023 at 03:37:59PM +0300, Andy Shevchenko wrote:
+> On Mon, Jul 10, 2023 at 12:22:59PM +0100, Mark Brown wrote:
+> > On Mon, Jul 10, 2023 at 02:10:53PM +0300, Andy Shevchenko wrote:
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
+> > > > > > Convert the users to SPI_CONTROLLER_NO_?X and SPI_CONTROLLER_MUST_.X
+> > > > > > and kill the not used anymore definitions.
 
--- 
-Regards,
-Alexandre
+...
+
+> > > > > > -	controller->flags = SPI_MASTER_MUST_RX | SPI_MASTER_MUST_TX;
+> > > > > > +	controller->flags = SPI_CONTROLLER_MUST_RX | SPI_CONTROLLER_MUST_TX;
+
+> > What part of the above change is replacing _NO_ with _MUST_?
+
+> None, that's why assuming the split by name should be fine.
+
+That's what the above changelog sounds like it's trying to do (I'm not
+sure the change itself makes sense but the first thing I ran into when
+reviewing the patch), AFIACT you're missing a "from" in the changelog?
+
+--Bc8mzeK4BJwaYeTa
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmSsBcAACgkQJNaLcl1U
+h9BDYgf/Sarsl9t6SagewIDl2ctlFPl7f++zP6SLId0C0LErq2lPLxZKf8tzzV5x
+7mUMpK3rPcygDeYAqOKLncxnrZp/i7yix/98fZtls9IesvOQa29aRYKVSvhKnB6y
+dHoZoMBdYj1Rbo/olUcS1xjzzZ0o1VUHkLsp9rjoMW4lcz6Hu3o8GSOq1pbc9lRd
+qlCYAjMqjR9K3te5I6FICKKGnIrXm2uxuzSPZl1G7LaN0THUZGZJvcBHjhR2PcJs
+K9i9m0gJ9xsQXDOQgLTcXrm8hdSF7yQoRI3TBZ7RXzdWeO3mjNjeHGbVDRr3DMZy
+Oici+Ga3mBLzIlFlF51Tg71+BGqcoQ==
+=NWL6
+-----END PGP SIGNATURE-----
+
+--Bc8mzeK4BJwaYeTa--
 
