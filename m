@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2484C00528
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 15:49:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31B0EEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 15:49:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PWA7GIOFewi2OU47McNhmbZ1Ir0zrg7xiPluBsL/qi8=; b=X5ZznBAU6Bs6UPGF5KRejObg4r
-	gV8NN1fPYRDmSMbbgsd4qauJA4H4j9KQ1wRZCQL51Hil5VYkywDPXlMu67873wzm8Sjm/XSioGEHe
-	M5abfV/16lNTzNuOJoa9zZFJl91SGPvhmAPGCWBsTO8PK5r0PiG8FzXbFBxfHNOQALUFDZtI0Td8h
-	+/OtSWvXBzCsda60FcyRdqECQSLp7N/zgE0iUEDMIzUlFrTNQ4z+JjeM6fEvxkdDV55jD+m11DyKB
-	oogRI8q7xcFUUw4Au79HvQTRirvoh1XkW+bp7l5wWXMnpVXWlH9nbTblM6Z/a6kXQ2FtPdqrka5oB
-	mp1+AJaw==;
+	bh=05Eo8yAcewTO+WPsEETnF/DlVCQ3v4XdrP+vRxVBOe8=; b=aTv7Puh8ND5glkGzqm7BbIpQbM
+	pZwBHvdElQuCpAWgA+OiulMruLDoczLrtxpG/lej9G4TDuB5qoQ2nawo0mQ9H5xMe/KRPLNRQH7NB
+	QIKG3ecDtkkAbuKxhLTHHNGqYC4NX0zF2wdvEN/+8nltv486VNJ2L/+4QOYBNo7YHM5pHd0VJIl9g
+	/9mx+mChN4b0K1EjdoqbN+laK0ggiFToIU003idrtlCkEjEiFQDrK6noRI+Tr1/Ct7PZvSbPosiYy
+	Evstkuk8LNQ9jndHfCTo8aP//OG+fRwiZUwKT/4RevGBF1qmVbDa/MQ+oHqk2W13+f3PjwMxxHkF8
+	yp/DuHXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIt92-00C3hL-2s;
-	Mon, 10 Jul 2023 15:49:48 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1qIt96-00C3kr-16;
+	Mon, 10 Jul 2023 15:49:52 +0000
+Received: from mga11.intel.com ([192.55.52.93])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIt8x-00C3ck-28;
+	id 1qIt8y-00C3cH-16;
 	Mon, 10 Jul 2023 15:49:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689004183; x=1720540183;
+  t=1689004184; x=1720540184;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=wJa3Jmu6iVXPZMGevJvu2fkKY/Gm2mVbHm4RgDFco0c=;
-  b=XFKCbzYpDZvlVcWG6i9Zr6Ielx1NCQREwLbasplwQtv/7XXfwEGVYBFi
-   m/A7VKhP1mhEgfksm3K8wDFOWVNSYPpS87ZDfT2rLxVQhZPYBBJ9Fiu9c
-   gXRIsBPlNYOF1hfdVlyHtca8U/fJvL8n7MPYjWZhVDZa0IRLueSNzuvki
-   X8GBP9eIQWW8ts+9OA428eb2TJa7P/fCw3y4AVMal1x03D14UZokamsii
-   Ojnjd1Q/LuBrAn8jboBTJRK5Z9KWF77a6rE/UrXi2Dc4WT2W5DdWu9kYO
-   VnE1MO8PEuWr/XofT/dz/7gdrw19fq3bCk99HGcHTsrI71ISJUlYFT18n
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="349185343"
+  bh=REWyC/nAC6Z96ggpA1NLsyDE3cGETw1DuCTFixDA/T8=;
+  b=DOlDU8TU3zCkyRntM+AQFRtZQBDarOaiyLbE/lo1qpnW9jfNN93rM6Jp
+   J9GjMgp3eOWYf2gP8zNWqoAUnZKwzXFBPJmmfGnmuzf+AEreizPjGqnTU
+   uDKzrw90M1BPrDD0Mqvwrh+xHEVypxaRX3RJhU49qakcFbzqpz0VxFUD6
+   ARoaITkMXFshVDTStnGgxDMoJ8BKP7zJmheAfjrBgaKFePGg16DQ9h9+F
+   ZpCBxSQic0tg4yUQkNhp4m7IAKW0VjFh0uABxUyg2sP4zRBgd2Yc+sMxD
+   khubodGipQwf4tseORUJikt5CGEs6Fs+Ei8Gx6TDOJl1W4aFnmJidYsFP
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="361842420"
 X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="349185343"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jul 2023 08:49:42 -0700
+   d="scan'208";a="361842420"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Jul 2023 08:49:41 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="844921834"
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="720743949"
 X-IronPort-AV: E=Sophos;i="6.01,194,1684825200"; 
-   d="scan'208";a="844921834"
+   d="scan'208";a="720743949"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga004.jf.intel.com with ESMTP; 10 Jul 2023 08:49:31 -0700
+  by orsmga002.jf.intel.com with ESMTP; 10 Jul 2023 08:49:29 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 5A18C4BD; Mon, 10 Jul 2023 18:49:34 +0300 (EEST)
+	id 36E48385; Mon, 10 Jul 2023 18:49:34 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Mark Brown <broonie@kernel.org>,
 	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
@@ -106,16 +106,16 @@ Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
 	Steven Rostedt <rostedt@goodmis.org>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
 	Richard Cochran <richardcochran@gmail.com>
-Subject: [PATCH v2 04/15] spi: Replace open coded spi_controller_xfer_timeout()
-Date: Mon, 10 Jul 2023 18:49:21 +0300
-Message-Id: <20230710154932.68377-5-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 02/15] spi: Drop duplicate IDR allocation code in spi_register_controller()
+Date: Mon, 10 Jul 2023 18:49:19 +0300
+Message-Id: <20230710154932.68377-3-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.40.0.1.gaa8946217a0b
 In-Reply-To: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
 References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_084943_801003_3609C880 
+X-CRM114-CacheID: sfid-20230710_084944_392151_19CD048C 
 X-CRM114-Status: GOOD (  18.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -131,82 +131,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since the new spi_controller_xfer_timeout() helper appeared,
-we may replace open coded variant in spi_transfer_wait().
+Refactor spi_register_controller() to drop duplicate IDR allocation.
+Instead of if-else-if branching use two sequential if:s, which allows
+to re-use the logic of IDR allocation in all cases.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/spi/spi.c       | 25 ++-----------------------
- include/linux/spi/spi.h |  6 +++++-
- 2 files changed, 7 insertions(+), 24 deletions(-)
+ drivers/spi/spi.c | 50 ++++++++++++++++++++++-------------------------
+ 1 file changed, 23 insertions(+), 27 deletions(-)
 
 diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index 125dea8fae00..c99ee4164f11 100644
+index 8f3282a71c63..6d74218cf38e 100644
 --- a/drivers/spi/spi.c
 +++ b/drivers/spi/spi.c
-@@ -1342,8 +1342,7 @@ static int spi_transfer_wait(struct spi_controller *ctlr,
- {
- 	struct spi_statistics __percpu *statm = ctlr->pcpu_statistics;
- 	struct spi_statistics __percpu *stats = msg->spi->pcpu_statistics;
--	u32 speed_hz = xfer->speed_hz;
--	unsigned long long ms;
-+	unsigned long ms;
- 
- 	if (spi_controller_is_slave(ctlr)) {
- 		if (wait_for_completion_interruptible(&ctlr->xfer_completion)) {
-@@ -1351,29 +1350,9 @@ static int spi_transfer_wait(struct spi_controller *ctlr,
- 			return -EINTR;
- 		}
- 	} else {
--		if (!speed_hz)
--			speed_hz = 100000;
--
--		/*
--		 * For each byte we wait for 8 cycles of the SPI clock.
--		 * Since speed is defined in Hz and we want milliseconds,
--		 * use respective multiplier, but before the division,
--		 * otherwise we may get 0 for short transfers.
--		 */
--		ms = 8LL * MSEC_PER_SEC * xfer->len;
--		do_div(ms, speed_hz);
--
--		/*
--		 * Increase it twice and add 200 ms tolerance, use
--		 * predefined maximum in case of overflow.
--		 */
--		ms += ms + 200;
--		if (ms > UINT_MAX)
--			ms = UINT_MAX;
--
-+		ms = spi_controller_xfer_timeout(ctlr, xfer);
- 		ms = wait_for_completion_timeout(&ctlr->xfer_completion,
- 						 msecs_to_jiffies(ms));
--
- 		if (ms == 0) {
- 			SPI_STATISTICS_INCREMENT_FIELD(statm, timedout);
- 			SPI_STATISTICS_INCREMENT_FIELD(stats, timedout);
-diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
-index 32c94eae8926..0ce1cb18a076 100644
---- a/include/linux/spi/spi.h
-+++ b/include/linux/spi/spi.h
-@@ -1270,12 +1270,16 @@ static inline bool spi_is_bpw_supported(struct spi_device *spi, u32 bpw)
-  * that it would take on a single data line and take twice this amount of time
-  * with a minimum of 500ms to avoid false positives on loaded systems.
-  *
-+ * Assume speed to be 100 kHz if it's not defined at the time of invocation.
-+ *
-  * Returns: Transfer timeout value in milliseconds.
-  */
- static inline unsigned int spi_controller_xfer_timeout(struct spi_controller *ctlr,
- 						       struct spi_transfer *xfer)
- {
--	return max(xfer->len * 8 * 2 / (xfer->speed_hz / 1000), 500U);
-+	u32 speed_hz = xfer->speed_hz ?: 100000;
-+
-+	return max(xfer->len * 8 * 2 / (speed_hz / 1000), 500U);
+@@ -3081,6 +3081,20 @@ static int spi_controller_check_ops(struct spi_controller *ctlr)
+ 	return 0;
  }
  
- /*---------------------------------------------------------------------------*/
++/* Allocate dynamic bus number using Linux idr */
++static int spi_controller_id_alloc(struct spi_controller *ctlr, int start, int end)
++{
++	int id;
++
++	mutex_lock(&board_lock);
++	id = idr_alloc(&spi_master_idr, ctlr, start, end, GFP_KERNEL);
++	mutex_unlock(&board_lock);
++	if (WARN(id < 0, "couldn't get idr"))
++		return id == -ENOSPC ? -EBUSY : id;
++	ctlr->bus_num = id;
++	return 0;
++}
++
+ /**
+  * spi_register_controller - register SPI master or slave controller
+  * @ctlr: initialized master, originally from spi_alloc_master() or
+@@ -3108,8 +3122,8 @@ int spi_register_controller(struct spi_controller *ctlr)
+ {
+ 	struct device		*dev = ctlr->dev.parent;
+ 	struct boardinfo	*bi;
++	int			first_dynamic;
+ 	int			status;
+-	int			id, first_dynamic;
+ 
+ 	if (!dev)
+ 		return -ENODEV;
+@@ -3122,27 +3136,13 @@ int spi_register_controller(struct spi_controller *ctlr)
+ 	if (status)
+ 		return status;
+ 
++	if (ctlr->bus_num < 0)
++		ctlr->bus_num = of_alias_get_id(ctlr->dev.of_node, "spi");
+ 	if (ctlr->bus_num >= 0) {
+ 		/* Devices with a fixed bus num must check-in with the num */
+-		mutex_lock(&board_lock);
+-		id = idr_alloc(&spi_master_idr, ctlr, ctlr->bus_num,
+-			ctlr->bus_num + 1, GFP_KERNEL);
+-		mutex_unlock(&board_lock);
+-		if (WARN(id < 0, "couldn't get idr"))
+-			return id == -ENOSPC ? -EBUSY : id;
+-		ctlr->bus_num = id;
+-	} else {
+-		/* Allocate dynamic bus number using Linux idr */
+-		id = of_alias_get_id(ctlr->dev.of_node, "spi");
+-		if (id >= 0) {
+-			ctlr->bus_num = id;
+-			mutex_lock(&board_lock);
+-			id = idr_alloc(&spi_master_idr, ctlr, ctlr->bus_num,
+-				       ctlr->bus_num + 1, GFP_KERNEL);
+-			mutex_unlock(&board_lock);
+-			if (WARN(id < 0, "couldn't get idr"))
+-				return id == -ENOSPC ? -EBUSY : id;
+-		}
++		status = spi_controller_id_alloc(ctlr, ctlr->bus_num, ctlr->bus_num + 1);
++		if (status)
++			return status;
+ 	}
+ 	if (ctlr->bus_num < 0) {
+ 		first_dynamic = of_alias_get_highest_id("spi");
+@@ -3151,13 +3151,9 @@ int spi_register_controller(struct spi_controller *ctlr)
+ 		else
+ 			first_dynamic++;
+ 
+-		mutex_lock(&board_lock);
+-		id = idr_alloc(&spi_master_idr, ctlr, first_dynamic,
+-			       0, GFP_KERNEL);
+-		mutex_unlock(&board_lock);
+-		if (WARN(id < 0, "couldn't get idr"))
+-			return id;
+-		ctlr->bus_num = id;
++		status = spi_controller_id_alloc(ctlr, first_dynamic, 0);
++		if (status)
++			return status;
+ 	}
+ 	ctlr->bus_lock_flag = 0;
+ 	init_completion(&ctlr->xfer_completion);
 -- 
 2.40.0.1.gaa8946217a0b
 
