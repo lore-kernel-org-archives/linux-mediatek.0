@@ -4,66 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DAC9EB64DC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 08:05:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F143FEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jul 2023 08:07:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YpcUtySvN2VD3013ub5OgvblejlpHih9vULbDcHGNcU=; b=uW7zptiMwzDlvSvNuEGBxKOgqX
-	uuK+7v9k7fkjvK/HK/wIKdLpiCiKXsJF8VKnEnDpqbJrhDE96PUFrzvFbei3d9qlDWsdVhpMz54vR
-	TfeIfwa0SVQ6avv/N+D2EXlcsComIkPGJrc1MO5etAS1tv1ndYXjL2hTeEW3XgZ24Cov3LHBNYFPq
-	2T5ScKos7saUZKftwjHzNsDCDezxPQM5BWY44JoaGBDPg1iJ8JFW9fNi+PcsMcjWW2C0xjXSOroJX
-	qUuDOMGeYwOc0TAdQnBrpq+DF94hyW/D+YKV3x1K7drBKWU2bC8RmXoCaylch2mE0MLmFPxkPKi1y
-	R8wCSjfg==;
+	bh=pJiJcaNct+VPTu1XfLIM0qdNVn/+gXynyHI7jB0kHYM=; b=pGv7imGEvqntvDNt4ix6VfNWm3
+	xSZhdurG7kXt0Ikb/HDj9STe+1yyqE64NMYIW4BvfXvZ6HID9oRX6Th+MIUb8BCFsDO++kC6TD7Yv
+	E33TCvFMIp6vJpUc9V2bbSi646APp7FNmfxlZijZZbyOg3IlzhW5q1+IS4pA8QFIM+7zu+WIulzlb
+	GoxCXLTSd9/wcAH7k9Zog163tQ6Dy2g+LMGfJfYNMfNlBgdCbsqER+1H60WPmHAQ7zt+UaCbhDvs5
+	a/p3jn7GfEeRWGMS2a4f5aq1D2chwXh3wU1KXLuZQB9DNiR22+ZdOBg74CqJvwL9a5n/SeGeTXgM1
+	FRM1+sHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIltZ-00Amw3-1F;
-	Mon, 10 Jul 2023 08:05:21 +0000
+	id 1qIlvG-00AnEz-1G;
+	Mon, 10 Jul 2023 08:07:06 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qIltW-00AmvA-0t;
-	Mon, 10 Jul 2023 08:05:19 +0000
+	id 1qIlvC-00AnDV-2x;
+	Mon, 10 Jul 2023 08:07:04 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 36B9866028F5;
-	Mon, 10 Jul 2023 09:05:16 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0327A66057B8;
+	Mon, 10 Jul 2023 09:07:00 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1688976316;
-	bh=2DjoZdLJ0+hIuE/CqtvGGTHozeIlajnCG/PuxnMbmNU=;
+	s=mail; t=1688976421;
+	bh=4MaltMVO+iQy6EpByYoeAcXeuF+ABj89+MZxBYJFHKg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TCgvXq9kyG4/pED3IXY6vz1IQTqIZI0thMB2tD1r9pOVzC9/WTcA6xIRSJwtmK6VC
-	 gGBn5Zj0xq+oI93rx97Ler0VvQVSDxbBZiEatgLfyYFulBrWnRE3HsYxWuc+kL07d+
-	 D5VS8DCPuRxTd1/c+VcukF3iV4cYFLtVdOF/DueDGvRSZiu3a4K70oGtBcPhU7RhOd
-	 OprkZVWVbu55EgBJrgpko3iaFHakrKkCOU2orQNs1BNozfqVSH+nkb3O6aaTu1LfSx
-	 LZqDWKtTOvJrNSj7+wauKLavRaqNhJbVETKTljXyCH3x7nT0vGzG5Ku2IUeLHiiY+Y
-	 cTMasXvOcHmLw==
-Message-ID: <c41f96be-b728-4c06-76c5-7f7febc50e3e@collabora.com>
-Date: Mon, 10 Jul 2023 10:05:13 +0200
+	b=addcJBtOMke09j+T2MFJ5b5YVqiJA8dBuzMlpUWHxRWbF7exr5O9ywRw4xwFxyZdv
+	 22k+KVecQZIG0Rmt9tBcCPHqUyxIZaPHySPgJC8fjqckey56wrJYQ+LIwBfFZWtwWI
+	 Q3Ek46u64q8lnquI2kj8o0u1gcCMo394umGWpHrYKt0OU2lAk3PN3H5EHx/dKqYLIg
+	 dH5Fu86DCBBs/qHx/iYA3x9Alj8/NubIPQPwBfaZcehKN/K95ffQwvEJWj9db7vD+W
+	 Hx9brc0DBNm+uZLfWFKBdlIWb37uqpSZKYr3jaSWRAffcj7LnqL8daiyvDGQQ81lhb
+	 M1txsLeyxlN1Q==
+Message-ID: <44a4270b-72d5-10ca-c706-c3a1fc7bd4dc@collabora.com>
+Date: Mon, 10 Jul 2023 10:06:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH] media: mtk-jpeg: Set platform driver data earlier
+Subject: Re: [PATCH v2 1/2] drm/mediatek: Fix iommu fault by swapping FBs
+ after updating plane state
 Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>, Bin Liu <bin.liu@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil
- <hverkuil@xs4all.nl>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kyrie.wu@mediatek.com, irui.wang@mediatek.com
-References: <20230710065139.1763695-1-wenst@chromium.org>
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Jason-ch Chen <jason-ch.chen@mediatek.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230709162641.6405-1-jason-jh.lin@mediatek.com>
+ <20230709162641.6405-2-jason-jh.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230710065139.1763695-1-wenst@chromium.org>
+In-Reply-To: <20230709162641.6405-2-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_010518_453614_85C4D470 
-X-CRM114-Status: GOOD (  22.08  )
+X-CRM114-CacheID: sfid-20230710_010703_090933_08E948A2 
+X-CRM114-Status: GOOD (  10.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,53 +85,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/07/23 08:51, Chen-Yu Tsai ha scritto:
-> In the multi-core JPEG encoder/decoder setup, the driver for the
-> individual cores references the parent device's platform driver data.
-> However, in the parent driver, this is only set at the end of the probe
-> function, way later than devm_of_platform_populate(), which triggers
-> the probe of the cores. This causes a kernel splat in the sub-device
-> probe function.
+Il 09/07/23 18:26, Jason-JH.Lin ha scritto:
+> According to the comment in drm_atomic_helper_async_commit(),
+> we should make sure FBs have been swapped, so that cleanups in the
+> new_state performs a cleanup in the old FB.
 > 
-> Move platform_set_drvdata() to before devm_of_platform_populate() to
-> fix this.
+> So we should move swapping FBs after calling mtk_plane_update_new_state(),
+> to avoid using the old FB which could be freed.
 > 
-> Fixes: 934e8bccac95 ("mtk-jpegenc: support jpegenc multi-hardware")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Fixes: 1a64a7aff8da ("drm/mediatek: Fix cursor plane no update")
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> ---
-> Not sure what caused this to surface just now, given that the driver
-> changes were merged in v6.2-rc1, and the corresponding dts entries
-> in v6.3-rc1.
-> 
-> This fixes boot failures on MT8195. Please apply and send to Linus ASAP.
-> 
->   drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> index 4768156181c9..6a8eea9dde67 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> @@ -1312,6 +1312,8 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
->   	jpeg->dev = &pdev->dev;
->   	jpeg->variant = of_device_get_match_data(jpeg->dev);
->   
-> +	platform_set_drvdata(pdev, jpeg);
-> +
->   	ret = devm_of_platform_populate(&pdev->dev);
->   	if (ret) {
->   		v4l2_err(&jpeg->v4l2_dev, "Master of platform populate failed.");
-> @@ -1383,8 +1385,6 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
->   		  jpeg->variant->dev_name, jpeg->vdev->num,
->   		  VIDEO_MAJOR, jpeg->vdev->minor);
->   
-> -	platform_set_drvdata(pdev, jpeg);
-> -
->   	pm_runtime_enable(&pdev->dev);
->   
->   	return 0;
 
 
