@@ -4,71 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59391EB64DD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 16:53:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8733EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 17:06:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TbBehu9cSFKvcyvtwjkxssAatitQSMZVPUEc9OdCOLk=; b=DEbIICTMxeZ+m+sYoKvY2GpNGB
-	zS5scmeVqqKRqVIyGBfns/4hPFn7s7MX2hbie7YVjAAfEfZnB1IEeYcptmNV9gJT2lTDeaRm04GRL
-	jYbGqYWfyfGTIWe2fuhMwaVbZ+0ESvE92Tj6MBoxPoVtj/koCbm13iaVJDxaGNI90x865rb3IdUIK
-	JqkaSCAFjJnMFy/qBjuVm+Rxo5K0ROtTuy3VZi8qZVfK4FFR6+p2brLlL0VrB9buAwjxMIpNYZytq
-	zaZEPXGnmy8nmT8mZnhIjstKx8wL7RB6STj/ynotBwTA/+z//tD/eodBVN+QwPEmDzld2HHQqB/2E
-	dmNo+syA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ezi2//AdJHNecaBFtqa7xQ4acOquAawt53XOhPlpaSE=; b=DsaBmVwoSioBVyyxJqEkA8tv2m
+	61S57YJ9IRapXVHOxWSY2FXf2GrCEWViZxaj1r7+K+VfwhbnuZD5AjaXUzKS0zVaNCAir4/U9YCAk
+	qiqHnJZEV2EgIS8IdBAu13sCqAt2YPF4f2PDWoEObkhGyccm+QnRWjXsPlSAI/rUI/GPX6m2ZnNsq
+	8x11CKPxH5AdYrw+QlAU8jUYhdBB74f6C8ngxkipmfTA42s09UcqXI5T9NDXzZIc/ZTH1Hbwj0QFc
+	O36MA7j5JCrou/zLGWcPFUmeRiS+lhRlN03ftZxsifi2ZftB8/ySwbL1rZvaQvhMATnusgHA8Owlr
+	9BYHDofQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJGcO-00FSA2-2q;
-	Tue, 11 Jul 2023 16:53:40 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qJGp0-00FTcW-2b;
+	Tue, 11 Jul 2023 17:06:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJGcK-00FS8E-2S;
-	Tue, 11 Jul 2023 16:53:38 +0000
-Received: from nicolas-tpx395.localdomain (unknown [IPv6:2606:6d00:10:88d9::7a9])
+	id 1qJGox-00FTbU-2R;
+	Tue, 11 Jul 2023 17:06:41 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 969366606FD7;
-	Tue, 11 Jul 2023 17:53:31 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689094413;
-	bh=yy4ifvZ2F/oJLKFYZ6kp2QaX3MbJ59DKrQ3DnoaEWgE=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=ksurskaiz2vuAVX4S9KaBtcMjC5Ln6NxknFPesth65terJoMzvvKmPnjsgKh+zJ8p
-	 62u9A4jqAL+yUNL+KOmK6B4Qc4QYDEcYluTfzDXtWydUf2fxKLOggSCK3717ScDQ9c
-	 MVF+4EdYnlf4QERCSA/0cwG3P8mfqd2Xr06KYfyLE243CtQUKKBqiNTiaxMXcohyOE
-	 adiPEeLhoCgrIlVZgTQ0OKIK6tQdPZGvAl9PCk+J7s/LeUWu1y79chUx2ux+faT10z
-	 gDGx2e+MtNV4KB1ompQdQMcVsFmsEnGTJhbZt5TAtdjMYc4IId0ne+BsH6P0oL76Iw
-	 cIcF3+qsoLFYw==
-Message-ID: <27d3d68398be482906155dbfa245a23a7d652210.camel@collabora.com>
-Subject: Re: [PATCH 3/3] media: mediatek: vcodec: Add driver to support 10bit
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, =?ISO-8859-1?Q?N=EDcolas?= "F .
- R . A . Prado" <nfraprado@collabora.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>, 
- Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- Steve Cho <stevecho@chromium.org>,  Mingjia Zhang
- <mingjia.zhang@mediatek.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org,  linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Date: Tue, 11 Jul 2023 12:53:22 -0400
-In-Reply-To: <20230711125749.15555-4-yunfei.dong@mediatek.com>
-References: <20230711125749.15555-1-yunfei.dong@mediatek.com>
-	 <20230711125749.15555-4-yunfei.dong@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 471F861592;
+	Tue, 11 Jul 2023 17:06:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A700C433C7;
+	Tue, 11 Jul 2023 17:06:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689095198;
+	bh=x4TLQS4vHmFGtwuzHytb/YnHM4SbO2CsfkdmfEb5LRw=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=TZTRXs5CNgJBsdF0s59GJgF3vJAmjVuNTz2QpieQPDj2amKzVe10jY32ftd7nYH9p
+	 aCZeoM8Qs6QCNfMyeeJIfPzb8u69wkXtvBSVqVxImP1KBxAXuNYFqBkB+1226IbNFV
+	 8DWG0oqOh+HV8S3T9mCHfuleq0WD/9nRcAHtDC3tszrsHmxbl2VgBcoqCGRaZ0uY0N
+	 njl4PYHSaTV/7L2F28zrmJdlnnYRnqRc+Ovv9KjoiAcGnTrL9gZam6YdK1BUloG1WX
+	 oqnB7QylqPvySVtQc1DenqeISWZkVEDGRRQ5SZ3CMXfQHofuCrpd6TNwDHc1SsQKGD
+	 xBAys7dtYVXDQ==
+Date: Tue, 11 Jul 2023 10:06:36 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Jason Gunthorpe <jgg@ziepe.ca>
+Cc: Christoph Hellwig <hch@lst.de>, Mina Almasry <almasrymina@google.com>,
+ John Hubbard <jhubbard@nvidia.com>, Dan Williams
+ <dan.j.williams@intel.com>, David Ahern <dsahern@kernel.org>, Jesper
+ Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com, Alexander Duyck
+ <alexander.duyck@gmail.com>, Yunsheng Lin <linyunsheng@huawei.com>,
+ davem@davemloft.net, pabeni@redhat.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>, Yisen
+ Zhuang <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>,
+ Eric Dumazet <edumazet@google.com>, Sunil Goutham <sgoutham@marvell.com>,
+ Geetha sowjanya <gakula@marvell.com>, Subbaraya Sundeep
+ <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, Saeed Mahameed
+ <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Felix Fietkau
+ <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
+ <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, Ilias Apalodimas
+ <ilias.apalodimas@linaro.org>, linux-rdma@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Jonathan Lemon
+ <jonathan.lemon@gmail.com>
+Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
+ page_pool: remove PP_FLAG_PAGE_FRAG flag)
+Message-ID: <20230711100636.63b0a88a@kernel.org>
+In-Reply-To: <ZK2Gh2qGxlpZexCM@ziepe.ca>
+References: <ZKNA9Pkg2vMJjHds@ziepe.ca>
+	<CAHS8izNB0qNaU8OTcwDYmeVPtCrEjTTOhwCHtVsLiyhXmPLsXQ@mail.gmail.com>
+	<ZKxDZfVAbVHgNgIM@ziepe.ca>
+	<CAHS8izO3h3yh=CLJgzhLwCVM4SLgf64nnmBtGrXs=vxuJQHnMQ@mail.gmail.com>
+	<ZKyZBbKEpmkFkpWV@ziepe.ca>
+	<20230711042708.GA18658@lst.de>
+	<20230710215906.49514550@kernel.org>
+	<20230711050445.GA19323@lst.de>
+	<ZK1FbjG+VP/zxfO1@ziepe.ca>
+	<20230711090047.37d7fe06@kernel.org>
+	<ZK2Gh2qGxlpZexCM@ziepe.ca>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_095337_086509_09E34E85 
-X-CRM114-Status: GOOD (  31.09  )
+X-CRM114-CacheID: sfid-20230711_100639_875190_3B615567 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,324 +103,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yunfei,
+On Tue, 11 Jul 2023 13:42:47 -0300 Jason Gunthorpe wrote:
+> On Tue, Jul 11, 2023 at 09:00:47AM -0700, Jakub Kicinski wrote:
+> > > So is Infiniband, Jakub has a unique definition of "proprietary".  
+> > 
+> > For IB AFAIU there's only one practically usable vendor, such an
+> > impressive ecosystem!!  
+> 
+> IB has roce (RDMA Over Converged Ethernet, better thought of as IB
+> over Ethernet) under it's standization umbrella and every major
+> commodity NIC vendor (mellanox, broadcom, intel) now implements
+> roce.
 
-this is a partial drive by review, I'll do more testing and more review soo=
-n.
+Now we're getting into our favorite argument and completely
+sidetracking the conversation, aren't we? :) And as usual 
+our ability to present facts is limited by various NDAs..
 
-Le mardi 11 juillet 2023 =C3=A0 20:57 +0800, Yunfei Dong a =C3=A9crit=C2=A0=
-:
-> From: Mingjia Zhang <mingjia.zhang@mediatek.com>
->=20
-> Adding to support capture formats V4L2_PIX_FMT_MT2110T and
-> V4L2_PIX_FMT_MT2110R for 10bit playback. Need to get the size
-> of each plane again when user space setting syntax to get 10bit
-> information.
->=20
-> V4L2_PIX_FMT_MT2110T for AV1/VP9/HEVC.
-> V4L2_PIX_FMT_MT2110R for H264.
->=20
-> Signed-off-by: Mingjia Zhang <mingjia.zhang@mediatek.com>
-> Co-developed-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
->  .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  |  22 ++-
->  .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   5 +
->  .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 140 +++++++++++++++++-
->  3 files changed, 163 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_de=
-c.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-> index 5acb7dff18f2..91ed576d6821 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-> @@ -37,7 +37,9 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_dec_=
-ctx *ctx, int format_inde
->  {
->  	const struct mtk_vcodec_dec_pdata *dec_pdata =3D ctx->dev->vdec_pdata;
->  	const struct mtk_video_fmt *fmt;
-> +	struct mtk_q_data *q_data;
->  	int num_frame_count =3D 0, i;
-> +	bool ret =3D false;
-> =20
->  	fmt =3D &dec_pdata->vdec_formats[format_index];
->  	for (i =3D 0; i < *dec_pdata->num_formats; i++) {
-> @@ -47,10 +49,26 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_de=
-c_ctx *ctx, int format_inde
->  		num_frame_count++;
->  	}
-> =20
-> -	if (num_frame_count =3D=3D 1 || fmt->fourcc =3D=3D V4L2_PIX_FMT_MM21)
-> +	if (num_frame_count =3D=3D 1 || (!ctx->is_10bit_bitstream && fmt->fourc=
-c =3D=3D V4L2_PIX_FMT_MM21))
->  		return true;
-> =20
-> -	return false;
-> +	q_data =3D &ctx->q_data[MTK_Q_DATA_SRC];
-> +	switch (q_data->fmt->fourcc) {
-> +	case V4L2_PIX_FMT_H264_SLICE:
-> +		if (ctx->is_10bit_bitstream && fmt->fourcc =3D=3D V4L2_PIX_FMT_MT2110R=
-)
-> +			ret =3D true;
-> +		break;
-> +	case V4L2_PIX_FMT_VP9_FRAME:
-> +	case V4L2_PIX_FMT_AV1_FRAME:
-> +	case V4L2_PIX_FMT_HEVC_SLICE:
-> +		if (ctx->is_10bit_bitstream && fmt->fourcc =3D=3D V4L2_PIX_FMT_MT2110T=
-)
-> +			ret =3D true;
-> +		break;
-> +	default:
-> +		break;
-> +	}
-> +
-> +	return ret;
->  }
-> =20
->  static struct mtk_q_data *mtk_vdec_get_q_data(struct mtk_vcodec_dec_ctx =
-*ctx,
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_de=
-c_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv=
-.h
-> index c8b4374c5e6c..cd607e90fe9c 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-> @@ -31,6 +31,7 @@ enum mtk_vdec_format_types {
->  	MTK_VDEC_FORMAT_AV1_FRAME =3D 0x800,
->  	MTK_VDEC_FORMAT_HEVC_FRAME =3D 0x1000,
->  	MTK_VCODEC_INNER_RACING =3D 0x20000,
-> +	MTK_VDEC_IS_SUPPORT_10BIT =3D 0x40000,
->  };
-> =20
->  /*
-> @@ -160,6 +161,8 @@ struct mtk_vcodec_dec_pdata {
->   * @hw_id: hardware index used to identify different hardware.
->   *
->   * @msg_queue: msg queue used to store lat buffer information.
-> + *
-> + * @is_10bit_bitstream: set to true if it's 10bit bitstream
->   */
->  struct mtk_vcodec_dec_ctx {
->  	enum mtk_instance_type type;
-> @@ -202,6 +205,8 @@ struct mtk_vcodec_dec_ctx {
->  	int hw_id;
-> =20
->  	struct vdec_msg_queue msg_queue;
-> +
-> +	bool is_10bit_bitstream;
->  };
-> =20
->  /**
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_de=
-c_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_d=
-ec_stateless.c
-> index 99a84c7e1901..cef937fdf462 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_state=
-less.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_state=
-less.c
-> @@ -200,7 +200,7 @@ static const struct mtk_stateless_control mtk_statele=
-ss_controls[] =3D {
-> =20
->  #define NUM_CTRLS ARRAY_SIZE(mtk_stateless_controls)
-> =20
-> -static struct mtk_video_fmt mtk_video_formats[7];
-> +static struct mtk_video_fmt mtk_video_formats[9];
-> =20
->  static struct mtk_video_fmt default_out_format;
->  static struct mtk_video_fmt default_cap_format;
-> @@ -387,6 +387,134 @@ static int mtk_vdec_flush_decoder(struct mtk_vcodec=
-_dec_ctx *ctx)
->  	return vdec_if_decode(ctx, NULL, NULL, &res_chg);
->  }
-> =20
-> +static int mtk_vcodec_get_pic_info(struct mtk_vcodec_dec_ctx *ctx)
-> +{
-> +	struct mtk_q_data *q_data;
-> +	int ret =3D 0;
-> +
-> +	q_data =3D &ctx->q_data[MTK_Q_DATA_DST];
-> +	if (q_data->fmt->num_planes =3D=3D 1) {
-> +		mtk_v4l2_vdec_err(ctx, "[%d]Error!! 10bit mode not support one plane",=
- ctx->id);
-> +		return -EINVAL;
-> +	}
-> +
-> +	ctx->capture_fourcc =3D q_data->fmt->fourcc;
-> +	ret =3D vdec_if_get_param(ctx, GET_PARAM_PIC_INFO, &ctx->picinfo);
-> +	if (ret) {
-> +		mtk_v4l2_vdec_err(ctx, "[%d]Error!! Get GET_PARAM_PICTURE_INFO Fail", =
-ctx->id);
-> +		return ret;
-> +	}
-> +
-> +	ctx->last_decoded_picinfo =3D ctx->picinfo;
-> +
-> +	q_data->sizeimage[0] =3D ctx->picinfo.fb_sz[0];
-> +	q_data->bytesperline[0] =3D ctx->picinfo.buf_w * 5 / 4;
-> +
-> +	q_data->sizeimage[1] =3D ctx->picinfo.fb_sz[1];
-> +	q_data->bytesperline[1] =3D ctx->picinfo.buf_w * 5 / 4;
-> +
-> +	q_data->coded_width =3D ctx->picinfo.buf_w;
-> +	q_data->coded_height =3D ctx->picinfo.buf_h;
-> +	mtk_v4l2_vdec_dbg(1, ctx, "[%d] wxh=3D%dx%d pic wxh=3D%dx%d sz[0]=3D0x%=
-x sz[1]=3D0x%x",
-> +			  ctx->id, ctx->picinfo.buf_w, ctx->picinfo.buf_h,
-> +			  ctx->picinfo.pic_w, ctx->picinfo.pic_h,
-> +			  q_data->sizeimage[0], q_data->sizeimage[1]);
-> +
-> +	return ret;
-> +}
-> +
-> +static int mtk_vdec_s_ctrl(struct v4l2_ctrl *ctrl)
-> +{
-> +	struct mtk_vcodec_dec_ctx *ctx =3D ctrl_to_dec_ctx(ctrl);
-> +	struct v4l2_ctrl_h264_sps *h264;
-> +	struct v4l2_ctrl_hevc_sps *h265;
-> +	struct v4l2_ctrl_vp9_frame *frame;
-> +	struct v4l2_ctrl_av1_sequence *seq;
-> +	struct v4l2_ctrl *hdr_ctrl;
-> +	const struct mtk_vcodec_dec_pdata *dec_pdata =3D ctx->dev->vdec_pdata;
-> +	const struct mtk_video_fmt *fmt;
-> +	int i =3D 0, ret =3D 0;
-> +
-> +	hdr_ctrl =3D ctrl;
-> +	if (!hdr_ctrl || !hdr_ctrl->p_cur.p)
-> +		return -EINVAL;
+> We also have the roce support in the switch from all major
+> switch vendors.
 
-There is a null check for hdr_ctrl->p_cur.p ...
+By which you mean all major switch vendors should support basic RoCE
+requirements. But most vendors will try to put special features into
+their switches trying to make the full NIC + switch solution as sticky
+as possible.
 
-> +
-> +	switch (hdr_ctrl->id) {
-> +	case V4L2_CID_STATELESS_H264_SPS:
-> +		h264 =3D (struct v4l2_ctrl_h264_sps *)hdr_ctrl->p_new.p;
+> IB as a link layer "failed" with most implementors leaving the
 
-But you are using hdr_ctrl->p_new.p. I don't know if the checks are absolut=
-ly
-required, I'll have a look.
+Interesting.
 
-> +		if (h264->bit_depth_chroma_minus8 =3D=3D 2 && h264->bit_depth_luma_min=
-us8 =3D=3D 2) {
-
-In the conformance streams, there is a 9bit luma file, which on all decoder=
-s
-I've tried decodes fine inside a 10bit image.
-
-> +			ctx->is_10bit_bitstream =3D true;
-> +		} else if (h264->bit_depth_chroma_minus8 !=3D 0 &&
-> +			   h264->bit_depth_luma_minus8 !=3D 0) {
-> +			mtk_v4l2_vdec_err(ctx, "H264: chroma_minus8:%d, luma_minus8:%d",
-> +					  h264->bit_depth_chroma_minus8,
-> +					  h264->bit_depth_luma_minus8);
-> +			return -EINVAL;
-> +		}
-> +		break;
-> +	case V4L2_CID_STATELESS_HEVC_SPS:
-> +		h265 =3D (struct v4l2_ctrl_hevc_sps *)hdr_ctrl->p_new.p;
-> +		if (h265->bit_depth_chroma_minus8 =3D=3D 2 && h265->bit_depth_luma_min=
-us8 =3D=3D 2) {
-> +			ctx->is_10bit_bitstream =3D true;
-> +		} else if (h265->bit_depth_chroma_minus8 !=3D 0 &&
-> +			   h265->bit_depth_luma_minus8 !=3D 0) {
-> +			mtk_v4l2_vdec_err(ctx, "HEVC: chroma_minus8:%d, luma_minus8:%d",
-> +					  h265->bit_depth_chroma_minus8,
-> +					  h265->bit_depth_luma_minus8);
-> +			return -EINVAL;
-> +		}
-> +		break;
-> +	case V4L2_CID_STATELESS_VP9_FRAME:
-> +		frame =3D (struct v4l2_ctrl_vp9_frame *)hdr_ctrl->p_new.p;
-> +		if (frame->bit_depth =3D=3D 10) {
-> +			ctx->is_10bit_bitstream =3D true;
-> +		} else if (frame->bit_depth !=3D 8) {
-> +			mtk_v4l2_vdec_err(ctx, "VP9: bit_depth:%d", frame->bit_depth);
-> +			return -EINVAL;
-> +		}
-> +		break;
-> +	case V4L2_CID_STATELESS_AV1_SEQUENCE:
-> +		seq =3D (struct v4l2_ctrl_av1_sequence *)hdr_ctrl->p_new.p;
-> +		if (seq->bit_depth =3D=3D 10) {
-> +			ctx->is_10bit_bitstream =3D true;
-> +		} else if (seq->bit_depth !=3D 8) {
-> +			mtk_v4l2_vdec_err(ctx, "AV1: bit_depth:%d", seq->bit_depth);
-> +			return -EINVAL;
-> +		}
-> +		break;
-> +	default:
-> +		mtk_v4l2_vdec_err(ctx, "Not supported ctrl id: 0x%x\n", hdr_ctrl->id);
-> +		return -EINVAL;
-
-Haven't tested, but it feels like this will prevent setting the PPS among m=
-any
-other controls. This should likely not be an error, and should return 0.
-
-> +	}
-> +
-> +	if (!ctx->is_10bit_bitstream)
-> +		return ret;
-> +
-> +	for (i =3D 0; i < *dec_pdata->num_formats; i++) {
-> +		fmt =3D &dec_pdata->vdec_formats[i];
-> +		if (fmt->fourcc =3D=3D V4L2_PIX_FMT_MT2110R &&
-> +		    hdr_ctrl->id =3D=3D V4L2_CID_STATELESS_H264_SPS) {
-> +			ctx->q_data[MTK_Q_DATA_DST].fmt =3D fmt;
-> +			break;
-> +		}
-> +
-> +		if (fmt->fourcc =3D=3D V4L2_PIX_FMT_MT2110T &&
-> +		    (hdr_ctrl->id =3D=3D V4L2_CID_STATELESS_HEVC_SPS ||
-> +		    hdr_ctrl->id =3D=3D V4L2_CID_STATELESS_VP9_FRAME ||
-> +		    hdr_ctrl->id =3D=3D V4L2_CID_STATELESS_AV1_SEQUENCE)) {
-> +			ctx->q_data[MTK_Q_DATA_DST].fmt =3D fmt;
-> +			break;
-> +		}
-> +	}
-> +	ret =3D mtk_vcodec_get_pic_info(ctx);
-> +
-> +	return ret;
-> +}
-> +
-> +static const struct v4l2_ctrl_ops mtk_vcodec_dec_ctrl_ops =3D {
-> +	.s_ctrl =3D mtk_vdec_s_ctrl,
-> +};
-> +
->  static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx *ctx)
->  {
->  	unsigned int i;
-> @@ -399,7 +527,7 @@ static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcod=
-ec_dec_ctx *ctx)
-> =20
->  	for (i =3D 0; i < NUM_CTRLS; i++) {
->  		struct v4l2_ctrl_config cfg =3D mtk_stateless_controls[i].cfg;
-> -
-> +		cfg.ops =3D &mtk_vcodec_dec_ctrl_ops;
->  		v4l2_ctrl_new_custom(&ctx->ctrl_hdl, &cfg, NULL);
->  		if (ctx->ctrl_hdl.error) {
->  			mtk_v4l2_vdec_err(ctx, "Adding control %d failed %d", i,
-> @@ -466,6 +594,8 @@ static void mtk_vcodec_add_formats(unsigned int fourc=
-c,
->  		break;
->  	case V4L2_PIX_FMT_MM21:
->  	case V4L2_PIX_FMT_MT21C:
-> +	case V4L2_PIX_FMT_MT2110T:
-> +	case V4L2_PIX_FMT_MT2110R:
->  		mtk_video_formats[count_formats].fourcc =3D fourcc;
->  		mtk_video_formats[count_formats].type =3D MTK_FMT_FRAME;
->  		mtk_video_formats[count_formats].num_planes =3D 2;
-> @@ -491,6 +621,12 @@ static void mtk_vcodec_get_supported_formats(struct =
-mtk_vcodec_dec_ctx *ctx)
->  		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT21C, ctx);
->  		cap_format_count++;
->  	}
-> +	if (ctx->dev->dec_capability & MTK_VDEC_IS_SUPPORT_10BIT) {
-> +		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT2110T, ctx);
-> +		cap_format_count++;
-> +		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT2110R, ctx);
-> +		cap_format_count++;
-> +	}
->  	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MM21) {
->  		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
->  		cap_format_count++;
-
+> ecosystem broadly because Ethernet link layer always wins in
+> networking - this is more of an economic outcome than a
+> standardization outcome in my mind.
+> 
+> Due to roce, IB as a transport and software protocol has a solid
+> multi-vendor ecosystem.
+ 
+Last I checked every generation of HW from even a single vendor came out
+with a new congestion control algorithm and add-ons. All closed source
+and usually patented. That is the core of a transport protocol, the
+intelligence, not the frame format (which may or may not itself deviate
+thru various encaps and stolen bits).
 
