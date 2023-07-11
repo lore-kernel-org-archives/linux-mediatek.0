@@ -4,98 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2A6DEB64D9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 00:45:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ED55EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 02:40:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/vDAChdCtpEMWX7FZp6dXco/84l2XQjYx3GS9hbCrEs=; b=EbQAvv44CvFpZaDgry1MVhGSnh
-	Pm4aWAwoi44HURvKjoYycA6Ui5ruT4nDTd2rW7BvOdziqfVTxq/tj7MtFlSMrS3VFKGwRPqFmCgHn
-	JymiuY4/8esq4snIOhexuEUQnBMlWPql68SJEpCotyGJLyv8UAn0MyKnYcWpEg2tLqTI8qcZDak7s
-	NZbAy5+Sm3a4QPP/a2TnG/A14LSti+yvBp5ZYCmqm+XSzgQ6jJkX9jlTdHDqCYhntggD/jAfm8w7M
-	FmR5EnSDsSS3OhCqrV2rG24F+iIfgzXVSLM7DvAd9EMWCRAlfRpFaMkaefTVXOfA7E+Q9WKcx/Tfs
-	2kzPxWkw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=iFU8GM7UmHkseP0YnSqrwJOKkYGQGt/l14WLsEZwQgs=; b=uwFvdTB7NimN97ZE1XhK2ClDAG
+	UDZmVZKF7PDUzQsI6QT+woNt/hFd7YfPMnXLwAoWlEM8v7ZCqKw3s3aCXWju1DVlbEBzltLpoqck3
+	EUEivgLJPcWYjm6I+PcGZPBWqnR4uCb2P5uDOGAeeec+rQ+Ahrvgbzbjn6ZUquw33+NwoqZuwaohL
+	0JvtX5Y8VMqnuRMoQFN896G+IjfuRfgLeqQTHuMLaxdJoriDZV+tMWa0+ngGsQtEFgLghdVdriea7
+	a4wCjjtCUA9kE8jtwIyiI9bo1YQcOWPo9a629LwbVtY9bPkLkhb1c7GeeMkuoNDgDsXzXma0dlBPx
+	glepfwMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJ1VL-00D5mL-10;
-	Tue, 11 Jul 2023 00:45:23 +0000
-Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
+	id 1qJ3I8-00DLad-0x;
+	Tue, 11 Jul 2023 02:39:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJ1VH-00D5kx-08
-	for linux-mediatek@lists.infradead.org;
-	Tue, 11 Jul 2023 00:45:21 +0000
-Received: by mail-qk1-x72e.google.com with SMTP id af79cd13be357-7679d444210so396720885a.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jul 2023 17:45:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20221208; t=1689036317; x=1691628317;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/vDAChdCtpEMWX7FZp6dXco/84l2XQjYx3GS9hbCrEs=;
-        b=QU2Ce+Q/ZLzGFSnA9bFQqtmexLsOQFptVRza5ba0p/yMIJRe853P6Oc1Xy0T/wfFuV
-         TE7dFaHuDFn4rrGoClHA+PAw846CTYpq9xggmi4twNpCm4cKooJWzwzl/zlUX9lYodp2
-         /mja+hg+XEfXqQkQ0ogC1AAFmEL103NKW4AGfSTSd1XNUrenllWXdMDgV7Jn2S494y7d
-         J2PgBmj9qbp71tZlsBOl4fn1/AqVSJy+v2rIfLLZGDqc8XFJ3pmz5LtobHFXyUMgaQqR
-         UwuZCwObiF0uviEdvoWP7cgk6GNDmqj0wOPr58FXp/fHMnZjX82xgFEgSg5fwVdhZlo9
-         4j3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689036317; x=1691628317;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/vDAChdCtpEMWX7FZp6dXco/84l2XQjYx3GS9hbCrEs=;
-        b=Kt+T5kevps0BPUnY/he/JvYp5S8+WJHQUdN/fOjO+qq3X7FjdrCl6QFFEpYe09XudE
-         v8aLl03sZoUGyiwZZaUc1KnoeMmTPoIYCP+hZJHTV6ivNe453ahIRA5U3OWn/fy9IDiq
-         eWoIxso36ZIiFkntAI32B8GHgh12kRMPDh0yRKiPToqh3KacrZkRFGXAQYboExJPWCxf
-         jyM22AYwcXYJZypedAUbIVGizSBca/vI7mjuKC2rsOf1bQBX9Tq4u7N8+9K2DKvOmoga
-         TtuctyWQE20nMHx78nOJdV1vnyhypmmyRVJYT/59hUznEcdeYT8CfNcsARI/poLqqy4i
-         2/YQ==
-X-Gm-Message-State: ABy/qLaqpmGvuWCJmWLKoPj6L+NiMPBQN0twm8gsLuxPy2ffTtjLmPao
-	EosjuuJDROUlwNnn/qtHHsRnJXg7E8DqvGVnjsPJyA==
-X-Google-Smtp-Source: APBJJlGmMfPz0wI92CuityRQyRUT7Kh0+wLgEI4lVG/0GSswhkihLDqBBo+i2OAo23yAEXn+5c2cnEOyo2p340ynQzo=
-X-Received: by 2002:a05:620a:468e:b0:767:405b:650f with SMTP id
- bq14-20020a05620a468e00b00767405b650fmr15044320qkb.45.1689036316710; Mon, 10
- Jul 2023 17:45:16 -0700 (PDT)
+	id 1qJ3I4-00DLZT-15;
+	Tue, 11 Jul 2023 02:39:49 +0000
+X-UUID: 2e3943981f9411ee83ed1395ce914268-20230710
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=iFU8GM7UmHkseP0YnSqrwJOKkYGQGt/l14WLsEZwQgs=;
+	b=hIggVm2TA+I5qW27OAQhOLMXPsUhW3SiD6cNZmynNR2X91xaT0srMujdzOnVqMiJd85TVfSfohiXdNJWhgWiUKRzQCtB9qrXgOVKOX+f7I3hzSamUiFimco+taX/a9Pk/0Iecudlw+TxT6YifL1axysQNNKItBdRQGHqmBawcsE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.28,REQID:519293cb-2882-411f-9115-b1e02d65b0a2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-INFO: VERSION:1.1.28,REQID:519293cb-2882-411f-9115-b1e02d65b0a2,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:100
+X-CID-META: VersionHash:176cd25,CLOUDID:e4bed9da-b4fa-43c8-9c3e-0d3fabd03ec0,B
+	ulkID:230711103941GLHWZ3U8,BulkQuantity:0,Recheck:0,SF:19|48|38|29|28|17,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,TF_CID_SPAM_SNR,
+	TF_CID_SPAM_SDM
+X-UUID: 2e3943981f9411ee83ed1395ce914268-20230710
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <jason-ch.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 479092119; Mon, 10 Jul 2023 19:39:38 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 11 Jul 2023 10:39:36 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 11 Jul 2023 10:39:36 +0800
+From: Jason-ch Chen <jason-ch.chen@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	jason-ch chen <Jason-ch.Chen@mediatek.com>
+Subject: [PATCH v2 0/4] Add basic node support for MediaTek MT8188 SoC
+Date: Tue, 11 Jul 2023 10:39:25 +0800
+Message-ID: <20230711023929.14381-1-jason-ch.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20230616122140.6e889357@kernel.org> <eadebd58-d79a-30b6-87aa-1c77acb2ec17@redhat.com>
- <20230619110705.106ec599@kernel.org> <CAHS8izOySGEcXmMg3Gbb5DS-D9-B165gNpwf5a+ObJ7WigLmHg@mail.gmail.com>
- <5e0ac5bb-2cfa-3b58-9503-1e161f3c9bd5@kernel.org> <CAHS8izP2fPS56uXKMCnbKnPNn=xhTd0SZ1NRUgnAvyuSeSSjGA@mail.gmail.com>
- <ZKNA9Pkg2vMJjHds@ziepe.ca> <CAHS8izNB0qNaU8OTcwDYmeVPtCrEjTTOhwCHtVsLiyhXmPLsXQ@mail.gmail.com>
- <ZKxDZfVAbVHgNgIM@ziepe.ca> <CAHS8izO3h3yh=CLJgzhLwCVM4SLgf64nnmBtGrXs=vxuJQHnMQ@mail.gmail.com>
- <ZKyZBbKEpmkFkpWV@ziepe.ca>
-In-Reply-To: <ZKyZBbKEpmkFkpWV@ziepe.ca>
-From: Mina Almasry <almasrymina@google.com>
-Date: Mon, 10 Jul 2023 17:45:05 -0700
-Message-ID: <CAHS8izOTiSO5PkM+x-CASjwew=U2j=JRNpbz_6NC6AsDTQ17Ug@mail.gmail.com>
-Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
- page_pool: remove PP_FLAG_PAGE_FRAG flag)
-To: Jason Gunthorpe <jgg@ziepe.ca>
-Cc: Christoph Hellwig <hch@lst.de>, John Hubbard <jhubbard@nvidia.com>, 
-	Dan Williams <dan.j.williams@intel.com>, David Ahern <dsahern@kernel.org>, 
-	Jakub Kicinski <kuba@kernel.org>, Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com, 
-	Alexander Duyck <alexander.duyck@gmail.com>, Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, 
-	pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
-	Salil Mehta <salil.mehta@huawei.com>, Eric Dumazet <edumazet@google.com>, 
-	Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, 
-	Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, 
-	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jesper Dangaard Brouer <hawk@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Jonathan Lemon <jonathan.lemon@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_174519_077690_30F298C9 
-X-CRM114-Status: GOOD (  54.01  )
+X-CRM114-CacheID: sfid-20230710_193948_515122_3D767B2C 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,144 +92,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 10, 2023 at 4:49=E2=80=AFPM Jason Gunthorpe <jgg@ziepe.ca> wrot=
-e:
->
-> On Mon, Jul 10, 2023 at 04:02:59PM -0700, Mina Almasry wrote:
-> > On Mon, Jul 10, 2023 at 10:44=E2=80=AFAM Jason Gunthorpe <jgg@ziepe.ca>=
- wrote:
-> > >
-> > > On Wed, Jul 05, 2023 at 06:17:39PM -0700, Mina Almasry wrote:
-> > >
-> > > > Another issue is that in networks with low MTU, we could be DMAing
-> > > > 1400/1500 bytes into each allocation, which is problematic if the
-> > > > allocation is 8K+. I would need to investigate a bit to see if/how =
-to
-> > > > solve that, and we may end up having to split the page and again ru=
-n
-> > > > into the 'not enough room in struct page' problem.
-> > >
-> > > You don't have an intree driver to use this with, so who knows, but
-> > > the out of tree GPU drivers tend to use a 64k memory management page
-> > > size, and I don't expect you'd make progress with a design where a 64=
-K
-> > > naturaly sized allocator is producing 4k/8k non-compound pages just
-> > > for netdev. We are still struggling with pagemap support for variable
-> > > page size folios, so there is a bunch of technical blockers before
-> > > drivers could do this.
-> > >
-> > > This is why it is so important to come with a complete in-tree
-> > > solution, as we cannot review this design if your work is done with
-> > > hacked up out of tree drivers.
-> > >
-> >
-> > I think you're assuming the proposal requires dma-buf exporter driver
-> > changes, and I have a 'hacked up out of tree driver' not visible to
-> > you.
->
-> Oh, I thought it was obvious what you did in patch 1 was a total
-> non-starter when I said you can't abuse the ZONE_DEVICE pages like
-> this.
->
-> You must create ZONE_DEVICE P2P pages, not MEMORY_DEVICE_PRIVATE to
-> represent P2P memory,
+From: jason-ch chen <Jason-ch.Chen@mediatek.com>
 
-We can extend the memory_type enum, with something like MEMORY_DEVICE_DMABU=
-F?
+MT8188 is a SoC based on 64bit ARMv8 architecture.
+It contains 6 CA55 and 2 CA78 cores.
+MT8188 share many HW IP with MT65xx series.
 
-> and you can't do that automatically from the
-> dmabuf core code.
->
+This patchset was tested on MT8188 evaluation board to shell.
 
-Sorry, why not?
+Based on tag: next-20230710, linux-next/master
 
-> Without doing this the DMA API doesn't actually work properly because
-> it doesn't have enough information to know about what the underlying
-> exporter is.
->
+Changes in v2:
+- Add MT8188 PMIC Wrapper compatible to binding document
+- Fix reviewer's comments
 
-I didn't think it would matter that the DMA API doesn't work with
-these pages, because the mapping already exists courtesy of
-dma_buf_map_attachment(), and these dma-buf pages don't need to be
-mapped (the dma_addr is already available). I'm providing
-dma_buf_map_sg() in that patch to use instead of the DMA API. Would be
-nice to help me understand why we would care why the DMA API doesn't
-work with these pages when we're asking code using these pages to use
-the provided API instead?
+jason-ch chen (4):
+  dt-bindings: arm: Add compatible for MediaTek MT8188
+  dt-bindings: arm: mediatek: Add mt8188 pericfg compatible
+  dt-bindings: soc: mediatek: pwrap: Add compatible for MT8188
+  arm64: dts: Add MediaTek MT8188 dts and evaluation board and Makefile
 
-> The entire point of DEVICE_PRIVATE is that the page content, and
-> access to the page's physical location, is *explicitly* unavailable to
-> anyone but the pgmap owner.
->
+ .../devicetree/bindings/arm/mediatek.yaml     |   4 +
+ .../arm/mediatek/mediatek,pericfg.yaml        |   1 +
+ .../bindings/soc/mediatek/mediatek,pwrap.yaml |   5 +
+ arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+ arch/arm64/boot/dts/mediatek/mt8188-evb.dts   | 401 ++++++++
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi      | 951 ++++++++++++++++++
+ 6 files changed, 1363 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8188.dtsi
 
-This seems to be a semantics issue. Would setting the pages as
-MEMORY_DEVICE_DMABUF address this?
+-- 
+2.18.0
 
-> > > Fully and properly adding P2P ZONE_DEVICE to a real world driver is a
-> > > pretty big ask still.
-> >
-> > There is no such ask.
->
-> Well, there is from me if you want to use stuct pages as handles for
-> P2P memory. That is what we have defined in the pgmap area.
->
-> Also I should warn you that your 'option 2' is being NAK'd by
-> Christoph for now, we are not adding any new code around DMABUF's
-> hacky use of NULL sg_page scatterlist for P2P memory either. I've been
-> working on solutions here but it is slow going.
->
-
-Option 2, I think, doesn't care about the sg_page NULL. But it may be
-pointless to discuss, I don't see how we could modify the page pool,
-networking stack, and all the networking drivers to do anything other
-than struct page (someone feel free to correct).
-
-> > On dma-buf changes required. I do need approval from the dma-buf
-> > maintainers,
->
-> It is a neat hack, of sorts, to abuse DEVICE_PRIVATE to create struct
-> pages for the exclusive use of pagepool - but you need more approval
-> than just dmabuf maintainers to abuse the pgmap framework like
-> this.
->
-
-Who? I'd love to add them on subsequent proposals.
-
-> At least from my position I want to see MEMORY_DEVICE_PCI_P2PDMA used
-> to represent P2P memory.
-
-Would using p2pdma API instead of dmabuf be an acceptable direction?
-
-The nice thing about what I'm doing is that any existing dmabuf
-exported would be supported, AFAICT. To use p2pdma I think I would
-need to modify the drivers providing the device memory to do a
-pci_p2pdma_add_resource(), and use the pci_p2pdma_map_sg() on the
-importer driver (NIC), but that may work, with driver changes.
-
-Would that be an acceptable direction to you? Or are you against the
-approach in the RFC and don't have any alternative path forward for
-this? Is this not a use case we want to support in some way in the
-kernel?
-
-> You haven't CC'd anyone from the mm community
-> so I've added some people here to see if there are other opinions.
->
-
-I CC'd get_maintainers.pl output and you because you showed interest
-and get_maintainers did not add you automatically.
-
-> To be clear, you need an explicit ack from mm people on the abusive
-> use of pgmap in patch 1.
->
-
-Who? I would love to add them on subsequent proposals.
-
-> I know it is not what you want to hear, but there are actual reasons
-> why the P2P DMA problem has been festering for so long, and hacky
-> quick fixes like this are not going to be enough..
->
-
---
-Thanks,
-Mina
 
