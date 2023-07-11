@@ -4,113 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2266C001DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 12:01:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FE6DEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 12:05:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+ZCO6wtHz7lsr48NyYTKZYvqTCPydbOE7jy8mT+bmmA=; b=f1GijO8KKmi36OKEODLa7LYIth
-	sewA0Xo0F/c68xN0uqKgbootc9IIJnl9VtrkDKtWxQTJM1T41RNbeLqyIAOVMLocYDec2f5y5xond
-	pOzqNNV8qkCmE8q/yZC9T8nA9Ar12hRctW22ACOstTRtO2KGAd2bfUa+DqbOyrnP1ivDBFDOMyyZ2
-	TMGN0ir49Rws83MC7Q0dIujz9ugLtkNnyaeF+kE55YyTImtMod1nxcELZyU40MFWpwkT9/PXsqgGr
-	c34OOQ474t8TaQyHyM7235dkJSsixmQvhuifv1ep3nHrZWK4zYShabzjz7/QVw8/cd+eMtL92gAtz
-	nV+gE/TA==;
+	bh=sDj/nUPhv/hb6kVZTAGV+ec/xse6Mtcau18exq4wFfg=; b=N7W3NzbUJI6TTQTOIgsbzeTxOZ
+	HkJmTBCXHtKJq/20D3ZIxs9xtbAmgj8jbuE0wRthUchu9m2qKJXeYK9ZiuY+tJWP3dhHvnKSeu3e7
+	SNiWGDm64avLDxP5TSW37uQ+8bYrTYnkjieLs5pFXN8EgKPwa9n306Xajohw8xBGQLP4IH9Xg0Ngb
+	3hAqN0Jg+Zbn5LX7+WMX+ONepPjBg18riH7p5hTw0/QaTNc4kjtgVWTqPX69Gx8wSw7t23AbSSvdr
+	KeHg/+Iu0Pk6PuZWDSiJgDR3tlGaRvXgXPYhLCT669ZxKdcnecGuHtwORhzTTJkPdE5FWqlAswA4q
+	YJ+rSCXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJC3r-00EoiG-3C;
-	Tue, 11 Jul 2023 12:01:43 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qJC7J-00EpCy-1M;
+	Tue, 11 Jul 2023 12:05:17 +0000
+Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJC3n-00EohC-1f;
-	Tue, 11 Jul 2023 12:01:41 +0000
-Received: from mercury (dyndsl-091-248-213-212.ewe-ip-backbone.de [91.248.213.212])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3BE4E6607007;
-	Tue, 11 Jul 2023 13:01:35 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689076895;
-	bh=VpEG3ri1MmPk1vvBqKyVzFd1wmdbrZrML5Y0FqY4wUg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HQDJgxlTR8vo1RaEsB3D+nH2+IRG9QN4tbrCrAaA85UTPwMmgGSzMeLBmp8bq8Ej6
-	 pgwZP23sqCYBHYEmhmfwkK6ZwddZDGY5nvAyjCHRxCLhh+PU1kHLVi4qEYii04KpmG
-	 cZIBzK40pXQjgo62B5RaZ5YhAs3eAX9lyz/b27cO1rLw+fmbUEzB/bIkdWz6tNdnsD
-	 l37m5GS8joB/wsoJ81rU7USdQhqBwTSytws8Gf8fo6kkpx4AITWu33A+o3yUYXuRI2
-	 WpJS6erpP2P9LRQMv/o3BmpdZLgyRs0csbkK1sM9hkgaBX9fGW0SBkbzX/Ag+Cs0tn
-	 nvbJMMzvoOh0A==
-Received: by mercury (Postfix, from userid 1000)
-	id 34BCD106765E; Tue, 11 Jul 2023 14:01:33 +0200 (CEST)
-Date: Tue, 11 Jul 2023 14:01:33 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Mark Brown <broonie@kernel.org>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Yang Yingliang <yangyingliang@huawei.com>,
-	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
-	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
-	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	Sanjay R Mehta <sanju.mehta@amd.com>,
-	Radu Pirea <radu_nicolae.pirea@upb.ro>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	id 1qJC7G-00EpB2-1W
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Jul 2023 12:05:15 +0000
+Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-634ddd17647so38408596d6.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Jul 2023 05:05:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ziepe.ca; s=google; t=1689077104; x=1691669104;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=sDj/nUPhv/hb6kVZTAGV+ec/xse6Mtcau18exq4wFfg=;
+        b=mJnWqKwDMLasfvZIgnnLjeZubYFEXhgQUriyniboKusYls6+C/mL95Tb4P3ahgb2ly
+         UfehINYtKiyzWMJO7IBeL7aNkUVN35SC7VJSVhsw9KFV+q6daoC6BFGPiFkn9FxJajzq
+         DGaYAQI13Yu06T7GpFqdzzv2PTbbTGLptVEHwLsBhHqorONeJqwlaEcsfs34Zcq3U9NW
+         XheotZD5oo/pIyPuubqGr9ReOeVNnM5310WYJjx2KhOphWoCWgsJm7SEkfyGIZEM39en
+         /F4Qgy6k5T17Cq8QWsHYSMwY4649dC6Iii0F1d1VtBiEHgup1B7AOz6IJUhmKOxeJZFa
+         AZsA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689077104; x=1691669104;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=sDj/nUPhv/hb6kVZTAGV+ec/xse6Mtcau18exq4wFfg=;
+        b=Ke7MAism2RWf8FDeSLtPkB6IkaY6dr3yBdxQS5Ty7Xnnz/JVL4i0xOZVTzYtQ5E+hP
+         Blc3NPcCEXqmShzDcgQtPkC1mszzD4+CPwLpcYS/ugd5IpbnIKLkytg5t8dp7EOxmkXC
+         IYqZaJ5rUftNwdJWwDuGsxORdmb0qsj60q28I55fgYDE6gw7SRZA26CzH+cMUCOG7e4Z
+         k/8/iMLh8LLJP0N6Er3kExJSs1rujvVMJ850gDBhi67bFvFkfT8z48xC3VU9lWDX8QaC
+         SYQp4Q+OZfTkukVugODbIoNk8KlOynsyI/P14YjNCvmTZOkut5D71PTQgvRdzSTUULsK
+         0zvg==
+X-Gm-Message-State: ABy/qLY3RgECupHrFNs5gyOFnb5/0S/tQhWbER7x97R8/Wmls3oBo0gN
+	qgjimXLm6+weOL/xf92UtdlNwQ==
+X-Google-Smtp-Source: APBJJlHlMSiZUq+WY356by/kwiQKIEq734XHbryNHy9OPRb10YQGqsssS7qFeOD/eSjn/EPBX8tRnQ==
+X-Received: by 2002:a0c:a98d:0:b0:635:e209:178c with SMTP id a13-20020a0ca98d000000b00635e209178cmr12615604qvb.10.1689077104237;
+        Tue, 11 Jul 2023 05:05:04 -0700 (PDT)
+Received: from ziepe.ca (hlfxns017vw-142-68-25-194.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.25.194])
+        by smtp.gmail.com with ESMTPSA id q17-20020a0ce211000000b006362d4eeb6esm956869qvl.144.2023.07.11.05.05.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Jul 2023 05:05:03 -0700 (PDT)
+Received: from jgg by wakko with local (Exim 4.95)
+	(envelope-from <jgg@ziepe.ca>)
+	id 1qJC74-0008zp-Q7;
+	Tue, 11 Jul 2023 09:05:02 -0300
+Date: Tue, 11 Jul 2023 09:05:02 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Christoph Hellwig <hch@lst.de>
+Cc: Jakub Kicinski <kuba@kernel.org>, Mina Almasry <almasrymina@google.com>,
+	John Hubbard <jhubbard@nvidia.com>,
+	Dan Williams <dan.j.williams@intel.com>,
+	David Ahern <dsahern@kernel.org>,
+	Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com,
+	Alexander Duyck <alexander.duyck@gmail.com>,
+	Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
+	pabeni@redhat.com, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>,
+	Yisen Zhuang <yisen.zhuang@huawei.com>,
+	Salil Mehta <salil.mehta@huawei.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Sunil Goutham <sgoutham@marvell.com>,
+	Geetha sowjanya <gakula@marvell.com>,
+	Subbaraya Sundeep <sbhatta@marvell.com>,
+	hariprasad <hkelam@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>,
+	Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [PATCH v2 05/15] spi: Remove code duplication in
- spi_add_device_locked()
-Message-ID: <20230711120133.45drgk46y4cz7aut@mercury.elektranox.org>
-References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
- <20230710154932.68377-6-andriy.shevchenko@linux.intel.com>
- <7557bada-3076-4d6e-a5c5-d368433706e2@sirena.org.uk>
- <ZK03rBqoQ0IZz617@smile.fi.intel.com>
+	Jesper Dangaard Brouer <hawk@kernel.org>,
+	Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Jonathan Lemon <jonathan.lemon@gmail.com>
+Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
+ page_pool: remove PP_FLAG_PAGE_FRAG flag)
+Message-ID: <ZK1FbjG+VP/zxfO1@ziepe.ca>
+References: <5e0ac5bb-2cfa-3b58-9503-1e161f3c9bd5@kernel.org>
+ <CAHS8izP2fPS56uXKMCnbKnPNn=xhTd0SZ1NRUgnAvyuSeSSjGA@mail.gmail.com>
+ <ZKNA9Pkg2vMJjHds@ziepe.ca>
+ <CAHS8izNB0qNaU8OTcwDYmeVPtCrEjTTOhwCHtVsLiyhXmPLsXQ@mail.gmail.com>
+ <ZKxDZfVAbVHgNgIM@ziepe.ca>
+ <CAHS8izO3h3yh=CLJgzhLwCVM4SLgf64nnmBtGrXs=vxuJQHnMQ@mail.gmail.com>
+ <ZKyZBbKEpmkFkpWV@ziepe.ca>
+ <20230711042708.GA18658@lst.de>
+ <20230710215906.49514550@kernel.org>
+ <20230711050445.GA19323@lst.de>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="fcthwhge3iyvg2gl"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZK03rBqoQ0IZz617@smile.fi.intel.com>
+In-Reply-To: <20230711050445.GA19323@lst.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_050139_827047_8E83ED8C 
-X-CRM114-Status: GOOD (  33.35  )
+X-CRM114-CacheID: sfid-20230711_050514_514718_964F39F4 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,95 +130,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jul 11, 2023 at 07:04:45AM +0200, Christoph Hellwig wrote:
+> On Mon, Jul 10, 2023 at 09:59:06PM -0700, Jakub Kicinski wrote:
+> > On Tue, 11 Jul 2023 06:27:08 +0200 Christoph Hellwig wrote:
+> > > Not going to comment on the rest of this as it seems bat shit crazy
+> > > hacks for out of tree junk.  Why is anyone even wasting time on this?
+> > 
+> > Noob question - how does RDMA integrate with the out of tree junk?
+> > AFAIU it's possible to run the "in-tree" RDMA stack and get "GPU
+> > direct".
+> 
+> I don't care and it has absolutel no business being discussed here.
+> 
+> FYI at leat iWarp is a totally open standard.
 
---fcthwhge3iyvg2gl
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+So is Infiniband, Jakub has a unique definition of "proprietary".
 
-Hi,
+RDMA works with the AMD and Intel intree drivers using DMABUF without
+requiring struct pages using the DRM hacky scatterlist approach.
 
-On Tue, Jul 11, 2023 at 02:06:20PM +0300, Andy Shevchenko wrote:
-> On Mon, Jul 10, 2023 at 06:16:22PM +0100, Mark Brown wrote:
-> > On Mon, Jul 10, 2023 at 06:49:22PM +0300, Andy Shevchenko wrote:
-> > > Seems by unknown reason, probably some kind of mis-rebase,
-> > > the commit 0c79378c0199 ("spi: add ancillary device support")
-> > > adds a dozen of duplicating lines of code. Drop them.
-> > >=20
-> > > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> > > ---
-> > >  drivers/spi/spi.c | 11 -----------
-> > >  1 file changed, 11 deletions(-)
-> > >=20
-> > > diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-> > > index c99ee4164f11..46cbda383228 100644
-> > > --- a/drivers/spi/spi.c
-> > > +++ b/drivers/spi/spi.c
-> > > @@ -712,17 +712,6 @@ EXPORT_SYMBOL_GPL(spi_add_device);
-> > >  static int spi_add_device_locked(struct spi_device *spi)
-> > >  {
-> > >  	struct spi_controller *ctlr =3D spi->controller;
-> > > -	struct device *dev =3D ctlr->dev.parent;
-> > > -
-> > > -	/* Chipselects are numbered 0..max; validate. */
-> > > -	if (spi_get_chipselect(spi, 0) >=3D ctlr->num_chipselect) {
-> > > -		dev_err(dev, "cs%d >=3D max %d\n", spi_get_chipselect(spi, 0),
-> > > -			ctlr->num_chipselect);
-> > > -		return -EINVAL;
-> > > -	}
-> > > -
-> > > -	/* Set the bus ID string */
-> > > -	spi_dev_set_name(spi);
-> >=20
-> > I see that this is duplicating spi_add_device() (and we really could do
-> > better with code sharing there I think) but I can't immediately see
-> > where the duplication that's intended to be elimiated is here - where
-> > else in the one call path that spi_add_device_locked() has would we do
-> > the above?  Based on the changelog I was expecting to see some
-> > duplicated code in the function itself.
->=20
-> Oh, by some reason Sebastian wasn't in this rather long Cc list.
-> Added him.
->=20
-> Reading again I don't see any useful explanation why that piece of code h=
-as to
-> be duplicated among these two functions. It's 100% a copy.
->=20
-> Sebastian, can you shed some light here?
-
-The patch in this thread is obviously wrong. It results in the
-checks never beeing called for spi_add_device_locked(). The copy is
-in spi_add_device() and those two are not calling into each other.
-
-But it should be fine to move the code to the start of
-__spi_add_device(), which allows removing the duplication. In that
-case the code will be run with the add_lock held, which is probably
-what I was worried about two years ago. Looking at it again, the
-lock is held anyways in case of spi_add_device_locked().
-
-Greetings,
-
--- Sebastian
-
---fcthwhge3iyvg2gl
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmStRJIACgkQ2O7X88g7
-+pp6dQ//QWqSMddfA8JIA4/cd4pYKRoojbIso2JQaAhIWBB48KjH/GX7xoNCH4Ig
-MRloAncuXxqH1quGGpphBRJL2bAKVRcinKKtYdwCyM6P422hjD5GqVDKOr2H1u2f
-4+wWcKeKNk5ect4iYj/kRZYYpdlJzxK1hsd7bCwBCz3I0k7rlxqIg5td7e/7Q7CC
-4bvNEtL0Ub1iB+vzDNoqNKN48Bp87xr+kM1wSDsDhPqf1TrTmxgOFIYNmy2x+XuV
-20ZRE4olEfUMFlPNNCaAurOPVZmclVstzBUwRhU7uVBH4/ZnbY02wsklP0D8SbV8
-inFOurRiLtWaRSQfkwMEF2DAp4l5a6eWVyuy5Rf0mdVmgq9bgeXFycbiYkOM6Gsz
-aQ0g5SV64PYZSwPljucB28GrWfLdDNlp693elljAeDElhbF1bqhbVozqhkyfH5Ih
-J4wpwr/DgZaW31B0V/sQVlJTIRtjAmIRgydid81aaSOzXmW0B+Pu74EU/cMNcy0f
-iSGRdSPX+eA5OPNHQWPz1RQvJOHMVrMBXTdSCeVzZdV4VSTZSv9/LL922e9qK2DB
-yGQTeUox+5d2hdcQlSmo+LQGhiZiiJ9qoVWPsWjhNwbb3fh3HCSP9X/BJHNNGzqr
-WU6SN8gRjCaL3/i5pT08DOL6WdKhn/qo8EzCnOBxloSjD2uF1Ic=
-=v6T3
------END PGP SIGNATURE-----
-
---fcthwhge3iyvg2gl--
+Jason
 
