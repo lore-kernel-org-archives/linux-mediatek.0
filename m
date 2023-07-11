@@ -4,112 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7B6BEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 14:15:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EF5AC001DD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 14:21:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oh7rBgcmwD5i2+sHz/C8x/B6Q/NH9QR35BxmMwAAMa4=; b=TRURB6ICGgjVu3RLZDdc2dPOb/
-	kxVwYeL0SFmYJNavb7cL0FgkEh/JQ7TtCpiB4owXOAZraoT7lZI3aihj/ipMgnFwI8oHyZs+JiYMN
-	nQB6219nwJ0e1VF/8vX51bZcteZe6AQHgnsRKSL0owwBeiSHXw3PoI3wF9E1x632atXcspDE+ZzYk
-	+q7AyRvTjOE+1RzuDZ+sOCsExmuJqT4Z/Kma56Kqs7XIsNYZ7Ia1G33eOQcJiJtW4AqeWoIKkIR6z
-	7DNjo/SPSqg5pBsLPfA2wCc+ImXnGC4j4kKiV2CKqObYiF8L/aGFioDwO76Xi3HzVqFhyNsZp4PZG
-	ejQ0neUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vHN7ug9Ao7x7+1HgDfpamR8MTCtlAVz1z00Xw4truvc=; b=zsHSr9hCTzjz3VXqhat51/EF7l
+	9qsKP8x6vDMpJGlRRo5hyPeJJJ0DxGEkZOhLLYDo3HrDFqFauy0bRuGH5b2BD6pK8gA6hOD+BV6WJ
+	1L08ytcIJFEymfsy4QE+dE1GlJQ0/VhXOLvQ9FGp3fqCJWQmqvf8J83/J8UcJpa/G4yvEo/mLm0Qq
+	EPNVdG1lhoAM/kGtGxq4yDh+CE2T56d518TzD7ZxLcRKF0n4UJRemK5DZxTfWhx94VgTInE0xHq1I
+	Y/4V0zfizCo1WDGHz0e49vCi5NGjTH+hSJ+MQ8bCwKnpD+2jk/xonfvkEc1WB+xWtYEG2B9CCkJlE
+	/3DcYYww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJE93-00F5aa-1A;
-	Tue, 11 Jul 2023 14:15:13 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qJEF2-00F6fP-0r;
+	Tue, 11 Jul 2023 14:21:24 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJE8z-00F5ZO-0c;
-	Tue, 11 Jul 2023 14:15:10 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 77C8D61360;
-	Tue, 11 Jul 2023 14:15:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 209CBC433C9;
-	Tue, 11 Jul 2023 14:14:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689084907;
-	bh=A+lgFSqWg8vRgir1XqFzY9nIE1Cw0dwqFBu8P2BdZBc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KwXQpO0JwJwS2tync5AfGpO9HXb9u4mgZfpWRxyxjmWV7o23oHa66oSgLBUqWen2D
-	 ZlOHsSEyXpzrsEeWWEmLhLLitAzI15911I18ub63ARZldiwGDK6EeLi3B34Qy+IEG4
-	 waxyA6VmnpE80hBohYtayTpWfyRhiz5yBCu2xfPCie7wDB1OJGO5pfFeIe7TmhLaf6
-	 2F7TtEpspxDmIAOKWfQt4n5/QaTo60Dymh5zBKNq1hnkXPOMFNsHXFu721qfrAekf9
-	 KAql0ORVXuf2YxOmwhPq6tE1iNaCTZM61qgKsPoZvWs0hppRNFtMcBrTT4RcCr66z6
-	 VpMXSzxRgleHw==
-Date: Tue, 11 Jul 2023 15:14:54 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Yang Yingliang <yangyingliang@huawei.com>,
-	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
-	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	id 1qJEEz-00F6cJ-0L
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Jul 2023 14:21:23 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-4fb7373dd35so8575988e87.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Jul 2023 07:21:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1689085277; x=1691677277;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=vHN7ug9Ao7x7+1HgDfpamR8MTCtlAVz1z00Xw4truvc=;
+        b=pmG3kvdq6Vc57gAiyWxPiStsAnk15BmtQpGuSGEnwf1AkEyZ6KeBp/K+dL/LqkqGBh
+         L+DrzByAjWN1mLEfOza54IoOjJKFhLXIjWvt9FQWZjN46h20TTqWucA3PVOFbd+/BWnn
+         yonPUqEOAR9AaYQpQdTB12cIDBDDyCUfu3YhNhUXODYgXZpt0dTlMQbjli95/6ukVSnN
+         u7JCgEU5QEl3vrtyFhVkSBAHVpv1PomuIrODfxE92EqINacO6AqzwGsUlyJxyeewOHdL
+         GuA7DTweK0NJagkFB8/bPT9+LjiqSD7wZ1083zRBMczAzyhUziAZQ5Qug7zqtDYdvsHE
+         QfPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689085277; x=1691677277;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=vHN7ug9Ao7x7+1HgDfpamR8MTCtlAVz1z00Xw4truvc=;
+        b=iv1A8CGJGnQPCKWYSBlsNZXm22+8dQ3Z3BO4jpPkhofg2m0M+rtC+Cr+rMrFgqOj/H
+         e1Id9NsCeSplDt8gKt6FjNnbtGNEZfmBf5yx3MaoCjgR3Tc47nl+hgw+ycWJ+6RTx7k3
+         8zg/n4eMCwpUt6FBZRjMthFzQnmMm99QKO69Ho5/dNasq24gknPQ/fHl4u8PcnMd7HPY
+         +QYavSv/2CPtvDuVvKGYqt+ulzfRvvCf08k+MK78gGCdpOnMYafAq5fKPZCn8LtCXAwm
+         nxjxpFa/EoRnIJtTp6tu4Csu1RRWFx+fDN88mltaYkBPy9y6ISmgZ5HGT+jmrDhkJjmo
+         OKvA==
+X-Gm-Message-State: ABy/qLbw6UrzJg4v+WtVV/DG6XlWg9qHSxCR0wmFaFzyE9CK11uPmQmJ
+	pGzXlZEnximao5GiBOcTZaNUyA==
+X-Google-Smtp-Source: APBJJlGYSBKKsdG06w+GRMIvM7rSjoOIl+KaJPWq8gRKjWkorAUqN+nzTUm99cSoxgUhcYatXqLidw==
+X-Received: by 2002:a05:6512:3c92:b0:4fb:7d09:ec75 with SMTP id h18-20020a0565123c9200b004fb7d09ec75mr7362048lfv.4.1689085277269;
+        Tue, 11 Jul 2023 07:21:17 -0700 (PDT)
+Received: from uffe-tuxpro14.. (h-94-254-63-18.NA.cust.bahnhof.se. [94.254.63.18])
+        by smtp.gmail.com with ESMTPSA id b17-20020a056512025100b004f8592a5180sm339779lfo.17.2023.07.11.07.21.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Jul 2023 07:21:16 -0700 (PDT)
+From: Ulf Hansson <ulf.hansson@linaro.org>
+To: Arnd Bergmann <arnd@arndb.de>,
+	Olof Johansson <olof@lixom.net>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	Sanjay R Mehta <sanju.mehta@amd.com>,
-	Radu Pirea <radu_nicolae.pirea@upb.ro>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	linux-kernel@vger.kernel.org,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [PATCH v2 04/15] spi: Replace open coded
- spi_controller_xfer_timeout()
-Message-ID: <5959b123-09e3-474b-9ab0-68d71cfdd9a2@sirena.org.uk>
-References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
- <20230710154932.68377-5-andriy.shevchenko@linux.intel.com>
- <cfaffa00-4b61-4d81-8675-70295844513b@sirena.org.uk>
- <ZK02efTYxV3czigr@smile.fi.intel.com>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 07/18] soc: mediatek: Move power-domain drivers to the genpd dir
+Date: Tue, 11 Jul 2023 16:21:14 +0200
+Message-Id: <20230711142114.751632-1-ulf.hansson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="MZrPSMfLUzZVYlnE"
-Content-Disposition: inline
-In-Reply-To: <ZK02efTYxV3czigr@smile.fi.intel.com>
-X-Cookie: marriage, n.:
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_071509_312756_2EC12027 
-X-CRM114-Status: GOOD (  22.65  )
+X-CRM114-CacheID: sfid-20230711_072121_141087_8A268E17 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,55 +94,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+To simplify with maintenance let's move the mediatek power-domain drivers
+to the new genpd directory. Going forward, patches are intended to be
+managed through a separate git tree, according to MAINTAINERS.
 
---MZrPSMfLUzZVYlnE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: <linux-mediatek@lists.infradead.org>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/genpd/Makefile                              | 1 +
+ drivers/genpd/mediatek/Makefile                     | 3 +++
+ drivers/{soc => genpd}/mediatek/mt6795-pm-domains.h | 0
+ drivers/{soc => genpd}/mediatek/mt8167-pm-domains.h | 0
+ drivers/{soc => genpd}/mediatek/mt8173-pm-domains.h | 0
+ drivers/{soc => genpd}/mediatek/mt8183-pm-domains.h | 0
+ drivers/{soc => genpd}/mediatek/mt8186-pm-domains.h | 0
+ drivers/{soc => genpd}/mediatek/mt8188-pm-domains.h | 0
+ drivers/{soc => genpd}/mediatek/mt8192-pm-domains.h | 0
+ drivers/{soc => genpd}/mediatek/mt8195-pm-domains.h | 0
+ drivers/{soc => genpd}/mediatek/mtk-pm-domains.c    | 0
+ drivers/{soc => genpd}/mediatek/mtk-pm-domains.h    | 0
+ drivers/{soc => genpd}/mediatek/mtk-scpsys.c        | 0
+ drivers/soc/mediatek/Makefile                       | 2 --
+ 14 files changed, 4 insertions(+), 2 deletions(-)
+ create mode 100644 drivers/genpd/mediatek/Makefile
+ rename drivers/{soc => genpd}/mediatek/mt6795-pm-domains.h (100%)
+ rename drivers/{soc => genpd}/mediatek/mt8167-pm-domains.h (100%)
+ rename drivers/{soc => genpd}/mediatek/mt8173-pm-domains.h (100%)
+ rename drivers/{soc => genpd}/mediatek/mt8183-pm-domains.h (100%)
+ rename drivers/{soc => genpd}/mediatek/mt8186-pm-domains.h (100%)
+ rename drivers/{soc => genpd}/mediatek/mt8188-pm-domains.h (100%)
+ rename drivers/{soc => genpd}/mediatek/mt8192-pm-domains.h (100%)
+ rename drivers/{soc => genpd}/mediatek/mt8195-pm-domains.h (100%)
+ rename drivers/{soc => genpd}/mediatek/mtk-pm-domains.c (100%)
+ rename drivers/{soc => genpd}/mediatek/mtk-pm-domains.h (100%)
+ rename drivers/{soc => genpd}/mediatek/mtk-scpsys.c (100%)
 
-On Tue, Jul 11, 2023 at 02:01:13PM +0300, Andy Shevchenko wrote:
-> On Mon, Jul 10, 2023 at 06:30:32PM +0100, Mark Brown wrote:
-> > On Mon, Jul 10, 2023 at 06:49:21PM +0300, Andy Shevchenko wrote:
+diff --git a/drivers/genpd/Makefile b/drivers/genpd/Makefile
+index 6b9e9fe907f3..1a0a56925756 100644
+--- a/drivers/genpd/Makefile
++++ b/drivers/genpd/Makefile
+@@ -3,3 +3,4 @@ obj-y					+= actions/
+ obj-y					+= amlogic/
+ obj-y					+= apple/
+ obj-y					+= bcm/
++obj-y					+= mediatek/
+diff --git a/drivers/genpd/mediatek/Makefile b/drivers/genpd/mediatek/Makefile
+new file mode 100644
+index 000000000000..8cde09e654b3
+--- /dev/null
++++ b/drivers/genpd/mediatek/Makefile
+@@ -0,0 +1,3 @@
++# SPDX-License-Identifier: GPL-2.0-only
++obj-$(CONFIG_MTK_SCPSYS)		+= mtk-scpsys.o
++obj-$(CONFIG_MTK_SCPSYS_PM_DOMAINS) 	+= mtk-pm-domains.o
+diff --git a/drivers/soc/mediatek/mt6795-pm-domains.h b/drivers/genpd/mediatek/mt6795-pm-domains.h
+similarity index 100%
+rename from drivers/soc/mediatek/mt6795-pm-domains.h
+rename to drivers/genpd/mediatek/mt6795-pm-domains.h
+diff --git a/drivers/soc/mediatek/mt8167-pm-domains.h b/drivers/genpd/mediatek/mt8167-pm-domains.h
+similarity index 100%
+rename from drivers/soc/mediatek/mt8167-pm-domains.h
+rename to drivers/genpd/mediatek/mt8167-pm-domains.h
+diff --git a/drivers/soc/mediatek/mt8173-pm-domains.h b/drivers/genpd/mediatek/mt8173-pm-domains.h
+similarity index 100%
+rename from drivers/soc/mediatek/mt8173-pm-domains.h
+rename to drivers/genpd/mediatek/mt8173-pm-domains.h
+diff --git a/drivers/soc/mediatek/mt8183-pm-domains.h b/drivers/genpd/mediatek/mt8183-pm-domains.h
+similarity index 100%
+rename from drivers/soc/mediatek/mt8183-pm-domains.h
+rename to drivers/genpd/mediatek/mt8183-pm-domains.h
+diff --git a/drivers/soc/mediatek/mt8186-pm-domains.h b/drivers/genpd/mediatek/mt8186-pm-domains.h
+similarity index 100%
+rename from drivers/soc/mediatek/mt8186-pm-domains.h
+rename to drivers/genpd/mediatek/mt8186-pm-domains.h
+diff --git a/drivers/soc/mediatek/mt8188-pm-domains.h b/drivers/genpd/mediatek/mt8188-pm-domains.h
+similarity index 100%
+rename from drivers/soc/mediatek/mt8188-pm-domains.h
+rename to drivers/genpd/mediatek/mt8188-pm-domains.h
+diff --git a/drivers/soc/mediatek/mt8192-pm-domains.h b/drivers/genpd/mediatek/mt8192-pm-domains.h
+similarity index 100%
+rename from drivers/soc/mediatek/mt8192-pm-domains.h
+rename to drivers/genpd/mediatek/mt8192-pm-domains.h
+diff --git a/drivers/soc/mediatek/mt8195-pm-domains.h b/drivers/genpd/mediatek/mt8195-pm-domains.h
+similarity index 100%
+rename from drivers/soc/mediatek/mt8195-pm-domains.h
+rename to drivers/genpd/mediatek/mt8195-pm-domains.h
+diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/genpd/mediatek/mtk-pm-domains.c
+similarity index 100%
+rename from drivers/soc/mediatek/mtk-pm-domains.c
+rename to drivers/genpd/mediatek/mtk-pm-domains.c
+diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/genpd/mediatek/mtk-pm-domains.h
+similarity index 100%
+rename from drivers/soc/mediatek/mtk-pm-domains.h
+rename to drivers/genpd/mediatek/mtk-pm-domains.h
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/genpd/mediatek/mtk-scpsys.c
+similarity index 100%
+rename from drivers/soc/mediatek/mtk-scpsys.c
+rename to drivers/genpd/mediatek/mtk-scpsys.c
+diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
+index 8c0ddacbcde8..9d3ce7878c5c 100644
+--- a/drivers/soc/mediatek/Makefile
++++ b/drivers/soc/mediatek/Makefile
+@@ -4,8 +4,6 @@ obj-$(CONFIG_MTK_DEVAPC) += mtk-devapc.o
+ obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
+ obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
+ obj-$(CONFIG_MTK_REGULATOR_COUPLER) += mtk-regulator-coupler.o
+-obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
+-obj-$(CONFIG_MTK_SCPSYS_PM_DOMAINS) += mtk-pm-domains.o
+ obj-$(CONFIG_MTK_MMSYS) += mtk-mmsys.o
+ obj-$(CONFIG_MTK_MMSYS) += mtk-mutex.o
+ obj-$(CONFIG_MTK_SVS) += mtk-svs.o
+-- 
+2.34.1
 
-> > > + * Assume speed to be 100 kHz if it's not defined at the time of invocation.
-
-> > You didn't mention this bit in the changelog, and I'm not 100% convinced
-> > it was the best idea in the first place.  It's going to result in some
-> > very big timeouts if it goes off, and we really should be doing
-> > validation much earlier in the process.
-
-> Okay, let's drop this change.
-
-Like I say we *should* be fine with the refactoring without this, or at
-least if it's an issue we should improve the validation.
-
-> > > +	u32 speed_hz = xfer->speed_hz ?: 100000;
-
-> > Not only the ternery operator, but the version without the second
-> > argument for extra clarity!
-
-> Elvis can be interpreted as "A _or_ B (if A is false/0)".
-> Some pieces related to SPI use Elvis already IIRC.
-
-I understand what it means, I just don't find it's adding clarity most
-of the times it's used (there's a few places where it is useful like
-pasting in strings in formats).  There are some examples that I'd
-complain about in the code, most of them predating me working on SPI too
-much, but I'm not a fan.
-
---MZrPSMfLUzZVYlnE
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmStY90ACgkQJNaLcl1U
-h9DeQQf+MxpgOv6egcsQtreuAtaq7Ev7HPCaH6MbusHDNH2hElvH+GmEYjovkV6m
-h3LadU5OvktJBaXfjDQRjU71Cbf70/Nlo8I3WN5V4iRKzqWtfMV16ZStvy2+1Rx/
-jHek+Aib8L8SiwlzvD6WB163yHCsSn5KBv2Pqp95DjGWamTl918onxXzSS6g2j5A
-ib1Mz8aOXWBsiIdaFTQ3NoK7Uvnykzp1X2uGcfrRZuPWQNVvpJs/wt5iOuTpuEws
-6O2PEgJext+6CeKBCv8pCvpex2QsVtDKLnDVvmDX4Oa2impxsxSIjLyVbZfbJ480
-4XviYIQ2LNlTFidlbAAqqEafOQrvRg==
-=WM20
------END PGP SIGNATURE-----
-
---MZrPSMfLUzZVYlnE--
 
