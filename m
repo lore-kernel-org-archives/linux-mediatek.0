@@ -4,98 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ED5BEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 17:24:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04B9BEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 17:34:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vxEt0Z2eexi8Ljxbl6AxsjACGcp0PhbeI1Zbkig5Ea8=; b=rmGhcAqGlv6dJdx1ePjjP3C0ms
-	W9fahDzThXQFkhkbVxZkimtAy0q90F5e0nWLU6Hp3y2NmrLAvtKj3RNmiylu30nY6eZNnpRY1yQdu
-	XM7ZMcyxYw5ZkHBsw6DRiqUq7pD6zZQWo4gs1X7FTqyoZL+I3lD30Zy0FuUdpbbmKIZMXepHaMKhR
-	ZdAO8E/ZLjwNFoWCnlsZQS/0EW7AnFF0WnUU+3ynnt/sEUCCSoJSKNseISl3u2RjPFSEKXw36DyVU
-	s7p1pN0llBHNzYAMgxDEpqnY1j1OtO0lyuh1X2MjBjgk39KrgShhBbcbmoLIXAdcfzc+ZEUxZ47sN
-	GGfO5sbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8Zxfld4oBOnJYsbNPikEmFrK4iIbk691JPODmSFy2og=; b=bkxSNINA9w4jcJfB9C3NX1kYo6
+	ElITyXUQE9pRIFGJPZug38vi0JpF3Jc54S3zuJM1qmXmxZaTMP+WXgOGe55l84rPF9bqEiNWTpoQr
+	QtGI5ZShgMUlcopBITTHgNYJQ0QqzxCFGNuATqBSgzTKawa+V3V8w8T+mEfn3HoPLa2i9fD6xV0LG
+	XzTWGpZD35t/HKXhnY803yLK5ngv9SZo6voo6ojdVnr6785NbnuGxz4VmRodDaT3EtZq7u4TBqaly
+	H+bX+pJArMvCLca914Ut5FlngeadlhxzOu2mhoN32refagoM0zSbIQddmLf2J7EhuY9kyyMyvadHj
+	CO7xZ8iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJH6B-00FXwl-18;
-	Tue, 11 Jul 2023 17:24:27 +0000
-Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
+	id 1qJHFb-00FYmn-0y;
+	Tue, 11 Jul 2023 17:34:11 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJH68-00FXvp-1v
-	for linux-mediatek@lists.infradead.org;
-	Tue, 11 Jul 2023 17:24:26 +0000
-Received: by mail-ua1-x92b.google.com with SMTP id a1e0cc1a2514c-78f32e233a0so2021916241.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 11 Jul 2023 10:24:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20221208; t=1689096263; x=1691688263;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vxEt0Z2eexi8Ljxbl6AxsjACGcp0PhbeI1Zbkig5Ea8=;
-        b=2MNo9qcQE70ijvOMfhfeCr5b57NMCaHmxyfLaple5c0ON72I6Fl6KkCpEF2ZUAP6Ja
-         V0z2dG+x+IsgZmudM/8wwO3HeFqajJZZHGPKbEt6SALfCu+Pjnxdii+e3bsqiFj2E3my
-         Y/ErVdBmKyVEkX5L9MQap9ZPz0HWB43sGOmSZ/vOEk0haEGCaJ4BXm0i68AOESbjIK//
-         yHeVhjhPwmEJgs7OzM7NHltcgWysktGwYwz4yjqmTJOBKT8q9CDeeMZvsmkc/oZsH0tp
-         3B2iJT8PUjxWK3Udzzlf3cKSa9yNqS4nY+xFqcPU5ISJors0n4DWQZ0X9dxbx9KCcKzN
-         SXWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689096263; x=1691688263;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vxEt0Z2eexi8Ljxbl6AxsjACGcp0PhbeI1Zbkig5Ea8=;
-        b=Hjg8y+tE1+7jUxw07n9o0gBNNeZk17laUntn5d3zcopmWPKEndN3SChWLr6L03Snoh
-         LnkpmEi/lYu35orfKyYFY+dje15F4LiJ6/5XtboHZPqYY7a+N3MYsEKbGkk6E8G5ZEQg
-         Ba1lixh+wAt2ovuYnWerbLBcs5Q0i5Z5HT4ezecwbjp1hOhwu+amzpFT90xSVC8TU5+N
-         kA5ppedPcywJDfhDIFo/V1i7xSHcOH3Cpl13GisPd8pNRzpPRUBZ+bW8xu75eeeDUPC8
-         ANoMDj0XHRixHbg4iCcxgSRIpv8uIm/NClu/57QBpDO7Gq42wd+4XuHLbOBFkp+foEVm
-         z18g==
-X-Gm-Message-State: ABy/qLaLeoPg9qDIOAFo7pyZnBezahBN4iXjMOP7EuRKVhbinBdNDNtF
-	BRvbetyXLRO/V9QGYz73RY6Wdfhot4lOnkatW3kfhw==
-X-Google-Smtp-Source: APBJJlEbNbeKglx24tA12e4BmXAPi9rr0ZNOak9iV8KnYQWaC46zN/l1EJsSvydC+DrZ4BU4kBJ0Te5mDCNhUBfgEcw=
-X-Received: by 2002:a67:fd59:0:b0:440:cfc5:f91a with SMTP id
- g25-20020a67fd59000000b00440cfc5f91amr8676055vsr.29.1689096263370; Tue, 11
- Jul 2023 10:24:23 -0700 (PDT)
+	id 1qJHFV-00FYlK-2j;
+	Tue, 11 Jul 2023 17:34:07 +0000
+Received: from mercury (dyndsl-091-248-213-212.ewe-ip-backbone.de [91.248.213.212])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 033A86606FD5;
+	Tue, 11 Jul 2023 18:34:04 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1689096844;
+	bh=xTQ0mmZSKT6xaRW2cSSnwsyXZRn21W+fLOIKOFiv5HU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=H4apaSnHRDvSkpSCkk+wyU65Ngqr9P5JyDBeie6RLPAeIF/a84cxGH59ddGSbX5qw
+	 63kfAbpaiUnhKnAjL7v46VWmzE4FkX9fEEyauEpMkG3DYbKmfvZvGjPGtA+xeI6swf
+	 kjXbLmO76/FOA8FnaeGqaVHoSCSKZ347Op8QNSbAV1AHFtd/woPULZ7cp0Xe7t6lvK
+	 j+oEiKCypr4OaNiLGZi4zRujwMiEhT9wkldDGMRFDyKdZJ0dEmjL8X+4AzL1KA1Sn6
+	 6BSpra8CwZ37kLECStDWmCD4Br675HzuR2KsJ6ZFQzDp7r6efy1uSO15+pqJdv0f+r
+	 Or4DZYoJuC/iQ==
+Received: by mercury (Postfix, from userid 1000)
+	id B8CBE106765E; Tue, 11 Jul 2023 19:34:01 +0200 (CEST)
+Date: Tue, 11 Jul 2023 19:34:01 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Mark Brown <broonie@kernel.org>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Yang Yingliang <yangyingliang@huawei.com>,
+	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
+	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
+	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	Sanjay R Mehta <sanju.mehta@amd.com>,
+	Radu Pirea <radu_nicolae.pirea@upb.ro>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Richard Cochran <richardcochran@gmail.com>
+Subject: Re: [PATCH v3 04/14] spi: Remove code duplication in
+ spi_add_device*()
+Message-ID: <20230711173401.kz7or6ucurhoe4er@mercury.elektranox.org>
+References: <20230711171756.86736-1-andriy.shevchenko@linux.intel.com>
+ <20230711171756.86736-5-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-References: <20230619110705.106ec599@kernel.org> <CAHS8izOySGEcXmMg3Gbb5DS-D9-B165gNpwf5a+ObJ7WigLmHg@mail.gmail.com>
- <5e0ac5bb-2cfa-3b58-9503-1e161f3c9bd5@kernel.org> <CAHS8izP2fPS56uXKMCnbKnPNn=xhTd0SZ1NRUgnAvyuSeSSjGA@mail.gmail.com>
- <ZKNA9Pkg2vMJjHds@ziepe.ca> <CAHS8izNB0qNaU8OTcwDYmeVPtCrEjTTOhwCHtVsLiyhXmPLsXQ@mail.gmail.com>
- <ZKxDZfVAbVHgNgIM@ziepe.ca> <CAHS8izO3h3yh=CLJgzhLwCVM4SLgf64nnmBtGrXs=vxuJQHnMQ@mail.gmail.com>
- <ZKyZBbKEpmkFkpWV@ziepe.ca> <CAHS8izOTiSO5PkM+x-CASjwew=U2j=JRNpbz_6NC6AsDTQ17Ug@mail.gmail.com>
- <ZK1U/Vo0NvhNm9pq@ziepe.ca>
-In-Reply-To: <ZK1U/Vo0NvhNm9pq@ziepe.ca>
-From: Mina Almasry <almasrymina@google.com>
-Date: Tue, 11 Jul 2023 10:24:11 -0700
-Message-ID: <CAHS8izOnw8KEu_Sm7Vf3UfqD88XheTBDHkoTmBx7r=i9g0pJRw@mail.gmail.com>
-Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
- page_pool: remove PP_FLAG_PAGE_FRAG flag)
-To: Jason Gunthorpe <jgg@ziepe.ca>, Bjorn Helgaas <bhelgaas@google.com>, logang@deltatee.com
-Cc: Christoph Hellwig <hch@lst.de>, John Hubbard <jhubbard@nvidia.com>, 
-	Dan Williams <dan.j.williams@intel.com>, David Ahern <dsahern@kernel.org>, 
-	Jakub Kicinski <kuba@kernel.org>, Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com, 
-	Alexander Duyck <alexander.duyck@gmail.com>, Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, 
-	pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
-	Salil Mehta <salil.mehta@huawei.com>, Eric Dumazet <edumazet@google.com>, 
-	Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, 
-	Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, 
-	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jesper Dangaard Brouer <hawk@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Jonathan Lemon <jonathan.lemon@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nr4764lrwkknwz4l"
+Content-Disposition: inline
+In-Reply-To: <20230711171756.86736-5-andriy.shevchenko@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_102424_640006_DBDA5BC8 
-X-CRM114-Status: GOOD (  23.09  )
+X-CRM114-CacheID: sfid-20230711_103406_166247_578D01A3 
+X-CRM114-Status: GOOD (  22.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,58 +123,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 11, 2023 at 6:11=E2=80=AFAM Jason Gunthorpe <jgg@ziepe.ca> wrot=
-e:
->
-> On Mon, Jul 10, 2023 at 05:45:05PM -0700, Mina Almasry wrote:
->
-> > > At least from my position I want to see MEMORY_DEVICE_PCI_P2PDMA used
-> > > to represent P2P memory.
-> >
-> > Would using p2pdma API instead of dmabuf be an acceptable direction?
->
-> "p2pdma API" is really just using MEMORY_DEVICE_PCI_P2PDMA and
-> teaching the pagepool how to work with ZONE_DEVICE pages.
->
 
-Yes, that's what I have in mind. Roughly something along the lines
-where the device memory provider (GPU or what not) does something like
-a pci_p2pdma_add_resource(), and the NIC client driver allocates the
-pages from the resource, and if is_pci_p2pdma_page() use
-pci_p2pdma_map_sg() instead of dma_map_sg() and whatnot.
+--nr4764lrwkknwz4l
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> I suspect this will clash badly with Matthew's work here:
->
-> https://lore.kernel.org/all/20230111042214.907030-1-willy@infradead.org/
->
-> As from a mm side we haven't ever considered that ZONE_DEVICE and
-> "netmem" can be composed together. The entire point of netmem like
-> stuff is that the allocator hands over the majority of struct page to
-> the allocatee, and ZONE_DEVICE can't work like that.
->
-> However, assuming that can be solved in some agreeable way then it
-> would be OK to go down this path.
->
+Hi,
 
-I think there is potential to solve this in an agreeable way. We may
-be able to get netmem ZONE_DEVICE pages using the memdesc idea you
-proposed, or something like the xarray meta data you mention below. If
-not that, I think Jakub already said that he is considering coming up
-with a 'page pool like' API that drivers can use, with an
-implementation that is compatible with ZONE_DEVICE pages.
+On Tue, Jul 11, 2023 at 08:17:46PM +0300, Andy Shevchenko wrote:
+> The commit 0c79378c0199 ("spi: add ancillary device support")
+> added a dozen of duplicating lines of code. We may move them
+> to the __spi_add_device(). Note, that the code may be called
+> under the mutex.
+>=20
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-> But, I feel like this is just overall too hard a direction from the mm
-> perspective.
->
-> I don't know anything about page pool, but the main sticking point is
-> its reliance on struct page. If it can find another way to locate its
-> meta data (eg an xarray), at least for some cases, it would make
-> things alot easier.
->
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
+-- Sebastian
 
+> ---
+>  drivers/spi/spi.c | 32 ++++++++++----------------------
+>  1 file changed, 10 insertions(+), 22 deletions(-)
+>=20
+> diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
+> index 6d74218cf38e..876d40d2c708 100644
+> --- a/drivers/spi/spi.c
+> +++ b/drivers/spi/spi.c
+> @@ -631,6 +631,16 @@ static int __spi_add_device(struct spi_device *spi)
+>  	struct device *dev =3D ctlr->dev.parent;
+>  	int status;
+> =20
+> +	/* Chipselects are numbered 0..max; validate. */
+> +	if (spi_get_chipselect(spi, 0) >=3D ctlr->num_chipselect) {
+> +		dev_err(dev, "cs%d >=3D max %d\n", spi_get_chipselect(spi, 0),
+> +			ctlr->num_chipselect);
+> +		return -EINVAL;
+> +	}
+> +
+> +	/* Set the bus ID string */
+> +	spi_dev_set_name(spi);
+> +
+>  	/*
+>  	 * We need to make sure there's no other device with this
+>  	 * chipselect **BEFORE** we call setup(), else we'll trash
+> @@ -689,19 +699,8 @@ static int __spi_add_device(struct spi_device *spi)
+>  int spi_add_device(struct spi_device *spi)
+>  {
+>  	struct spi_controller *ctlr =3D spi->controller;
+> -	struct device *dev =3D ctlr->dev.parent;
+>  	int status;
+> =20
+> -	/* Chipselects are numbered 0..max; validate. */
+> -	if (spi_get_chipselect(spi, 0) >=3D ctlr->num_chipselect) {
+> -		dev_err(dev, "cs%d >=3D max %d\n", spi_get_chipselect(spi, 0),
+> -			ctlr->num_chipselect);
+> -		return -EINVAL;
+> -	}
+> -
+> -	/* Set the bus ID string */
+> -	spi_dev_set_name(spi);
+> -
+>  	mutex_lock(&ctlr->add_lock);
+>  	status =3D __spi_add_device(spi);
+>  	mutex_unlock(&ctlr->add_lock);
+> @@ -712,17 +711,6 @@ EXPORT_SYMBOL_GPL(spi_add_device);
+>  static int spi_add_device_locked(struct spi_device *spi)
+>  {
+>  	struct spi_controller *ctlr =3D spi->controller;
+> -	struct device *dev =3D ctlr->dev.parent;
+> -
+> -	/* Chipselects are numbered 0..max; validate. */
+> -	if (spi_get_chipselect(spi, 0) >=3D ctlr->num_chipselect) {
+> -		dev_err(dev, "cs%d >=3D max %d\n", spi_get_chipselect(spi, 0),
+> -			ctlr->num_chipselect);
+> -		return -EINVAL;
+> -	}
+> -
+> -	/* Set the bus ID string */
+> -	spi_dev_set_name(spi);
+> =20
+>  	WARN_ON(!mutex_is_locked(&ctlr->add_lock));
+>  	return __spi_add_device(spi);
+> --=20
+> 2.40.0.1.gaa8946217a0b
+>=20
 
---=20
-Thanks,
-Mina
+--nr4764lrwkknwz4l
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmStkn4ACgkQ2O7X88g7
++pormhAAnK4ipkeSKHu0xl8agX+r1Ks97iOFEMGG8+gzX4xY/hXNKVPfgpoWdNZa
+rN+CMPEFa2M5kKdm7v6s7wv2A/R0bRMIwUrHhMxAVBKQSNlp47s2N/PBkCgghK7x
+dOCmH/DDN17c1ODn8FJUD/WO5p1/grLRg1mUoNQvVqLVz7jQBx+oOZxG1Fm2e5pb
+suAySbAqDtYVper0iqZhu1BwDjFxj7l/+kXhJWt+mtgFq1shfCwdfK+gm9Z1hJ4B
+kDa1PZSzlIbs8znfYFu8n7gPJIN/nplWGmWgFAbwex3GxdZbSrO58X4m2B0fooFg
+xQ3w3b710ONolovhZktxkx7nibXjJiVFQwgS7BPRquCjCEok5jNmuyVJmu9Pud0s
+nRDWYic0TKErHny9NYCTwdJQX5ZkDIV9QpjVyp5FR7e/ylT8chmX1LwnsKZSd91j
+TN9+lh3yU6BjbjopIAFAhP5BvYeYMI2tvbXpCC3iiqGno53AZUyP5dXBupB/zri7
+bwN6fXNXsuVX0JJH3CHCm13ZK9IFY8GHGqLJBUulYVyaXSLOimXhi/l6bkkhvzxN
+IKpuSWUPTxAVu9q5LxsOWS45GXR0oWiiKL7tOcaX1yJypn+5lKy+4yStvF0cER9d
+NdLreesrYaGS2zSH4qIA7m8dd2oaqPtYCa1VHzxRfLcNsnyCoXY=
+=zPs/
+-----END PGP SIGNATURE-----
+
+--nr4764lrwkknwz4l--
 
