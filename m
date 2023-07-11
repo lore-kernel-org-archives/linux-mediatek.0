@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF77DEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 17:19:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 286A1EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 17:19:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R/R9dFogMHo/C7mF4NW25QJZX6gAnxQJ8bkYiYCjgVU=; b=MU4WggwzWQ6RsCeIXqV7PQteqi
-	whvyE36WZwnMlfeHHSBfI2YiNdFiuZ4vOIsKOSsdyagYup8NRfB+1qkgEGsxd/sylccP4hpe6Z2zI
-	xI67pEKABhfaZjvCTSOVODIJoLTQM1DV6cQZJl3r799Zkb8/p7IcFBHB5pI5DTvkR6DfCJKkWnD1n
-	0QfAxCV+xWhB6ImlTN03ASr/4yYtvVnawgBuc2a6rZW8oS2uW+iCIu46af4OrAmL+0DVukx74H1Qn
-	qdrQjqyyO3AsZQG/S3FTA4meeMPluLaa1VwAnVX917K4a93qNV8z9zCQIGZHBXSwIpVl193Lb2Gdy
-	JqwjPg0g==;
+	bh=HpuXEIwl+MLumyUNqPICISQp+Z4rTCC9QFaJZRgkqaA=; b=vA3aRPcudv4t2jfWYi2YU0WqqQ
+	tqKmr55fQ/i9p97X7JBf0ax9gSrYfyXTBc/13zUhSeLalm9te+Ne12T+mGPyTw1TvzqsuoT9OPGRN
+	lfm55QGaHFcvzqUSd5Rp7TbEvYlVxIG/nTkrzA3QQS75ED4TV7zeSp48SwzBfy4N8ewOsfk7NNn/5
+	ZcCtTLZdaie0490OGTiQZBiPgdvIMS5hlDVy+qzl9Y/Aq2aMCxdvjUBobodZcygR0F1jIgAuP+LAf
+	M9FjBwAiBz4ucjsXQLOnMUP0Iq/wq80IOugOzD6jvVzDqErujBId89fkPcUdR75GUefuJcOBY2bBR
+	FR+LVEBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJH1c-00FVgK-1o;
-	Tue, 11 Jul 2023 17:19:44 +0000
+	id 1qJH1e-00FVj1-2q;
+	Tue, 11 Jul 2023 17:19:46 +0000
 Received: from mga11.intel.com ([192.55.52.93])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJH1J-00FVLC-3B;
-	Tue, 11 Jul 2023 17:19:27 +0000
+	id 1qJH1K-00FVM4-1t;
+	Tue, 11 Jul 2023 17:19:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689095965; x=1720631965;
+  t=1689095966; x=1720631966;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=AaJS6i6oBeO9EHp15z+Qk/kBsYr58o4Zqaz8k2QQyPM=;
-  b=icAXIVLinHaBj4uqDimIkp29e3EN70kvVy/z9uHT8oax+BrtEl/MHu62
-   EcXP8pFqh0g+JSxevpGssozjcirNY6qOJwQXzcSFcuhhzr5GfeK633i76
-   E1i5qTSG4uAeVP4mtf62BAYfU+cMg5ZGO0A43cEYLh5f3DT6m7oBCPNdW
-   j6tkUnTtglpleC6PekCBKJR1jJ/aj2CGdNsWBgVgH9x5oXWKElnKf8FDh
-   HA4Z7Iiqcg8bI0HbWZ/hNANDV9OQ61B91NU5fQVT/x+Hb0A9tp71NcEre
-   Gxt5Izy+FxHHAbFcLD2/VPK2U2lBoE1eMN0iYiL9nL8O3AOs4Gd9IuqP/
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="362148856"
+  bh=i6xTQM/M83VGl5L40MPme6/MD9lIrLsXxW1pfo9MYv4=;
+  b=e98vUJaVQbTbBVtNW0bqme2FFpaS2Fb8bVu4DkK8qVcVEuR+5Dph51zE
+   1dEMLyvrR+ZcnkYqbmozL90YVeeK3vAtjVwyRQ0D/BUnpWhzWEhG3jFjk
+   cY1Rb5A7aBo1yD7ugtxEakqHWIX1lmI6d/Y1fRPF2U7aQk7ax920nvwXd
+   YIKft6W48RV3k+qaIElbysMeWPiJ3frVKa+2SgF/0dmjE4uzeWQ9Sp/Cj
+   iwhzsltuBzj4pF2MX5ABFkx0QVPKOJpGbmFU9qppEmJxA/VWDCwrFHxJG
+   noCg607v159B/Y581ELZnObLwMDHI7Jix+KaAsn4weVMd2Jhq837AWsPs
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="362148886"
 X-IronPort-AV: E=Sophos;i="6.01,197,1684825200"; 
-   d="scan'208";a="362148856"
+   d="scan'208";a="362148886"
 Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 10:19:19 -0700
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 10:19:21 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="715240843"
+X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="715240862"
 X-IronPort-AV: E=Sophos;i="6.01,197,1684825200"; 
-   d="scan'208";a="715240843"
+   d="scan'208";a="715240862"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga007.jf.intel.com with ESMTP; 11 Jul 2023 10:17:56 -0700
+  by orsmga007.jf.intel.com with ESMTP; 11 Jul 2023 10:17:58 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 4C9884BD; Tue, 11 Jul 2023 20:17:59 +0300 (EEST)
+	id 5C3475FC; Tue, 11 Jul 2023 20:17:59 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Mark Brown <broonie@kernel.org>,
 	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
@@ -107,17 +107,17 @@ Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
 	Richard Cochran <richardcochran@gmail.com>,
 	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v3 04/14] spi: Remove code duplication in spi_add_device*()
-Date: Tue, 11 Jul 2023 20:17:46 +0300
-Message-Id: <20230711171756.86736-5-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v3 05/14] spi: Kill spi_add_device_locked()
+Date: Tue, 11 Jul 2023 20:17:47 +0300
+Message-Id: <20230711171756.86736-6-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.40.0.1.gaa8946217a0b
 In-Reply-To: <20230711171756.86736-1-andriy.shevchenko@linux.intel.com>
 References: <20230711171756.86736-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_101926_093717_E470593F 
-X-CRM114-Status: GOOD (  15.90  )
+X-CRM114-CacheID: sfid-20230711_101926_696552_BF7186E2 
+X-CRM114-Status: GOOD (  15.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,75 +132,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The commit 0c79378c0199 ("spi: add ancillary device support")
-added a dozen of duplicating lines of code. We may move them
-to the __spi_add_device(). Note, that the code may be called
-under the mutex.
+Now, spi_add_device_locked() has just a line on top of __spi_add_device().
+Besides that, it has a single caller. So, just kill it and embed its parts
+into the caller.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/spi/spi.c | 32 ++++++++++----------------------
- 1 file changed, 10 insertions(+), 22 deletions(-)
+ drivers/spi/spi.c | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index 6d74218cf38e..876d40d2c708 100644
+index 876d40d2c708..57b5e4488416 100644
 --- a/drivers/spi/spi.c
 +++ b/drivers/spi/spi.c
-@@ -631,6 +631,16 @@ static int __spi_add_device(struct spi_device *spi)
- 	struct device *dev = ctlr->dev.parent;
- 	int status;
+@@ -708,14 +708,6 @@ int spi_add_device(struct spi_device *spi)
+ }
+ EXPORT_SYMBOL_GPL(spi_add_device);
  
-+	/* Chipselects are numbered 0..max; validate. */
-+	if (spi_get_chipselect(spi, 0) >= ctlr->num_chipselect) {
-+		dev_err(dev, "cs%d >= max %d\n", spi_get_chipselect(spi, 0),
-+			ctlr->num_chipselect);
-+		return -EINVAL;
-+	}
-+
-+	/* Set the bus ID string */
-+	spi_dev_set_name(spi);
-+
- 	/*
- 	 * We need to make sure there's no other device with this
- 	 * chipselect **BEFORE** we call setup(), else we'll trash
-@@ -689,19 +699,8 @@ static int __spi_add_device(struct spi_device *spi)
- int spi_add_device(struct spi_device *spi)
+-static int spi_add_device_locked(struct spi_device *spi)
+-{
+-	struct spi_controller *ctlr = spi->controller;
+-
+-	WARN_ON(!mutex_is_locked(&ctlr->add_lock));
+-	return __spi_add_device(spi);
+-}
+-
+ /**
+  * spi_new_device - instantiate one new SPI device
+  * @ctlr: Controller to which device is connected
+@@ -2417,11 +2409,12 @@ static void of_register_spi_devices(struct spi_controller *ctlr) { }
+ struct spi_device *spi_new_ancillary_device(struct spi_device *spi,
+ 					     u8 chip_select)
  {
- 	struct spi_controller *ctlr = spi->controller;
--	struct device *dev = ctlr->dev.parent;
- 	int status;
++	struct spi_controller *ctlr = spi->controller;
+ 	struct spi_device *ancillary;
+ 	int rc = 0;
  
--	/* Chipselects are numbered 0..max; validate. */
--	if (spi_get_chipselect(spi, 0) >= ctlr->num_chipselect) {
--		dev_err(dev, "cs%d >= max %d\n", spi_get_chipselect(spi, 0),
--			ctlr->num_chipselect);
--		return -EINVAL;
--	}
--
--	/* Set the bus ID string */
--	spi_dev_set_name(spi);
--
- 	mutex_lock(&ctlr->add_lock);
- 	status = __spi_add_device(spi);
- 	mutex_unlock(&ctlr->add_lock);
-@@ -712,17 +711,6 @@ EXPORT_SYMBOL_GPL(spi_add_device);
- static int spi_add_device_locked(struct spi_device *spi)
- {
- 	struct spi_controller *ctlr = spi->controller;
--	struct device *dev = ctlr->dev.parent;
--
--	/* Chipselects are numbered 0..max; validate. */
--	if (spi_get_chipselect(spi, 0) >= ctlr->num_chipselect) {
--		dev_err(dev, "cs%d >= max %d\n", spi_get_chipselect(spi, 0),
--			ctlr->num_chipselect);
--		return -EINVAL;
--	}
--
--	/* Set the bus ID string */
--	spi_dev_set_name(spi);
+ 	/* Alloc an spi_device */
+-	ancillary = spi_alloc_device(spi->controller);
++	ancillary = spi_alloc_device(ctlr);
+ 	if (!ancillary) {
+ 		rc = -ENOMEM;
+ 		goto err_out;
+@@ -2436,8 +2429,10 @@ struct spi_device *spi_new_ancillary_device(struct spi_device *spi,
+ 	ancillary->max_speed_hz = spi->max_speed_hz;
+ 	ancillary->mode = spi->mode;
  
- 	WARN_ON(!mutex_is_locked(&ctlr->add_lock));
- 	return __spi_add_device(spi);
++	WARN_ON(!mutex_is_locked(&ctlr->add_lock));
++
+ 	/* Register the new device */
+-	rc = spi_add_device_locked(ancillary);
++	rc = __spi_add_device(ancillary);
+ 	if (rc) {
+ 		dev_err(&spi->dev, "failed to register ancillary device\n");
+ 		goto err_out;
 -- 
 2.40.0.1.gaa8946217a0b
 
