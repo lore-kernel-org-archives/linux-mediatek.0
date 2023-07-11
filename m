@@ -4,60 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99A53C0015E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 11:06:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF1BCEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 11:10:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iM7ohj/uxht+J8BsFBilm17CQG7Pe20OIBKUPjiQep8=; b=n/UcaVxs2sGiTvWcn7fMXWsxA6
-	Z1nQ0NgEeJgDpjb+ThGmyH9zblrOM2DzTqkyqwvHR6MV+1YKVizfWOJXjPVXOom3y5nX/7EAIUyiI
-	NGTFf3PublvIZnNWmgSTnCQStR4zxt2j1R1FgGTo7BvGsF0Hdc1q+pfu2aEfGPU2AdzGMT8UAxeNi
-	Gx4XKaxRw/QcDLenwSWO+dkN/GIDpFxesIMxXmQiZJ4R20Um9cZ9Y2dx60Q5z4DmU2adxoFfvwrlF
-	KtaeKyezptAXUAVxyxxiKK6S6/DfgJXwnC+VHQcQ7fc45P69nkAnIpg8ucKBEaXFeaK3q2HLE+226
-	S44L0Ofw==;
+	bh=+5gAxBfmWy/24Nm4mnuj8TrobGYDiOaIg52CAOvJqhE=; b=V2d0WQDgLiCUpmnQtimIQ78yO+
+	7KDWcM7NrkmnvzCKNl5Y1BbLlJ1Bc92/l/yr6GEVYHVdHBg75poHzdG3Z0U705CzevJBWPxY+o3/e
+	/rm+MCESCcmHOfuuaGwg6Dcv/w71lJ+gyVhYQwQQ2zkpNwE7Qfi8l5wlx7qXJQnrPd6AohgfVXlgZ
+	yzco9bPAGP7Yx32efvTGJOG51BK+QeQ77HHXsMOv0Fd1CHEJktq7ELp1vlDW5l7IIw+urugF8h5Wh
+	CeXpv62G+BgEvGX9VtHsv5WxLATh11lNp/6Ckk11W5vKGBH2XgcQbxpnc/W/V912JT1ySZ8ao+6yW
+	EW08eCyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJBCd-00Eird-0e;
-	Tue, 11 Jul 2023 11:06:43 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1qJBGD-00EjOk-2J;
+	Tue, 11 Jul 2023 11:10:25 +0000
+Received: from mga17.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJBCY-00Eipv-38;
-	Tue, 11 Jul 2023 11:06:40 +0000
+	id 1qJBGA-00EjN2-0G;
+	Tue, 11 Jul 2023 11:10:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689073598; x=1720609598;
+  t=1689073822; x=1720609822;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=RVFLgj8cxsWZyvySjgaprTvsCfpSOgqQ4kC3+s/s1Fk=;
-  b=Fgb/nzHdhACg9g5her1kIIHPWeJMCqDylq1nS+bRcMWjiKxpA76/iRcO
-   sTaAJTdEfkONty+4pL+OBY1upct2eZJaa4dveqrXbk3kmo5ZJOI1SR7RY
-   0j2QKeopsLJL046lR2p7P5OwtCgGchysPywz5Pn5OutUssKFMvY8YFclT
-   n0hIv9eG7KDpQx3c8NmnCtn0Jb2aXBQQkjgMQ5RrDtFwWeKmlp8DCUnyI
-   hRoX/Qni1jMapu+3UrmVLm17GxCFKi5L9dQLNfHca7upEJ/XelTOsOMvw
-   Ah8UDbx6EyH4MprfWwiu8ZjGKMq5NdlSF/dewGDPmVUaN+1dmwFmU0erh
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="450950692"
+  bh=pnPOejrtBmciSuneX2GIuca/d8m7aJiJ68yCzAIAa8Y=;
+  b=gMtULlYDQ/8JQdF/ugvQ+/BlFvp5z0LodXzZjLBXT2kBcRB4gbjB4uiM
+   S063P0C86ji3NsVU7hwRvyijMC/0xK6FPc9JQkmPGmdANxPwI++/OQJwV
+   UCsxDaw3du5LD1SPYTdpu8mZzLZRZA8B4juJfcpyEV7/gTdozboSsjk2r
+   JKwq31l2NSkfGVs5PlpxK1Enk/6Bpx8wQqacY0EpiReDrAJK3wXanoNvJ
+   a0VpjU12uy0PhohPqCkxbBFvLFYMWT9s7YsTZnzAJKAq6f/WSTIfXX/10
+   jEkbBzvYCU3bkLdOP1OlJp/vVbKPj/RlOSthSvoddqRSCxdCusIwBNDaM
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="344909469"
 X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
-   d="scan'208";a="450950692"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 04:06:37 -0700
+   d="scan'208";a="344909469"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 04:10:19 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="721057401"
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="834644461"
 X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
-   d="scan'208";a="721057401"
+   d="scan'208";a="834644461"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga002.jf.intel.com with ESMTP; 11 Jul 2023 04:06:24 -0700
+  by fmsmga002.fm.intel.com with ESMTP; 11 Jul 2023 04:10:08 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.96)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1qJBCG-001pDs-2n;
-	Tue, 11 Jul 2023 14:06:20 +0300
-Date: Tue, 11 Jul 2023 14:06:20 +0300
+	id 1qJBFs-001pGf-16;
+	Tue, 11 Jul 2023 14:10:04 +0300
+Date: Tue, 11 Jul 2023 14:10:04 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Mark Brown <broonie@kernel.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Mark Brown <broonie@kernel.org>
 Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
 	Yang Yingliang <yangyingliang@huawei.com>,
 	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
@@ -105,20 +104,19 @@ Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
 	Steven Rostedt <rostedt@goodmis.org>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
 	Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [PATCH v2 05/15] spi: Remove code duplication in
- spi_add_device_locked()
-Message-ID: <ZK03rBqoQ0IZz617@smile.fi.intel.com>
+Subject: Re: [PATCH v2 08/15] spi: Clean up headers
+Message-ID: <ZK04jEIo9ovLzF0e@smile.fi.intel.com>
 References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
- <20230710154932.68377-6-andriy.shevchenko@linux.intel.com>
- <7557bada-3076-4d6e-a5c5-d368433706e2@sirena.org.uk>
+ <20230710154932.68377-9-andriy.shevchenko@linux.intel.com>
+ <da48f031-d93b-4a30-bad6-f80f58b35853@sirena.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <7557bada-3076-4d6e-a5c5-d368433706e2@sirena.org.uk>
+In-Reply-To: <da48f031-d93b-4a30-bad6-f80f58b35853@sirena.org.uk>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_040639_021886_DD1B10C7 
-X-CRM114-Status: GOOD (  24.95  )
+X-CRM114-CacheID: sfid-20230711_041022_131444_7589EABC 
+X-CRM114-Status: GOOD (  16.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,51 +131,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 10, 2023 at 06:16:22PM +0100, Mark Brown wrote:
-> On Mon, Jul 10, 2023 at 06:49:22PM +0300, Andy Shevchenko wrote:
-> > Seems by unknown reason, probably some kind of mis-rebase,
-> > the commit 0c79378c0199 ("spi: add ancillary device support")
-> > adds a dozen of duplicating lines of code. Drop them.
-> > 
-> > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> > ---
-> >  drivers/spi/spi.c | 11 -----------
-> >  1 file changed, 11 deletions(-)
-> > 
-> > diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-> > index c99ee4164f11..46cbda383228 100644
-> > --- a/drivers/spi/spi.c
-> > +++ b/drivers/spi/spi.c
-> > @@ -712,17 +712,6 @@ EXPORT_SYMBOL_GPL(spi_add_device);
-> >  static int spi_add_device_locked(struct spi_device *spi)
-> >  {
-> >  	struct spi_controller *ctlr = spi->controller;
-> > -	struct device *dev = ctlr->dev.parent;
-> > -
-> > -	/* Chipselects are numbered 0..max; validate. */
-> > -	if (spi_get_chipselect(spi, 0) >= ctlr->num_chipselect) {
-> > -		dev_err(dev, "cs%d >= max %d\n", spi_get_chipselect(spi, 0),
-> > -			ctlr->num_chipselect);
-> > -		return -EINVAL;
-> > -	}
-> > -
-> > -	/* Set the bus ID string */
-> > -	spi_dev_set_name(spi);
+On Tue, Jul 11, 2023 at 09:26:46AM +0100, Mark Brown wrote:
+> On Mon, Jul 10, 2023 at 06:49:25PM +0300, Andy Shevchenko wrote:
+> > There is a few things done:
+> > - include only the headers we are direct user of
+> > - when pointer is in use, provide a forward declaration
+> > - add missing headers
+> > - group generic headers and subsystem headers
+> > - sort each group alphabetically
 > 
-> I see that this is duplicating spi_add_device() (and we really could do
-> better with code sharing there I think) but I can't immediately see
-> where the duplication that's intended to be elimiated is here - where
-> else in the one call path that spi_add_device_locked() has would we do
-> the above?  Based on the changelog I was expecting to see some
-> duplicated code in the function itself.
+> This breaks an x86 allmodconfig build:
 
-Oh, by some reason Sebastian wasn't in this rather long Cc list.
-Added him.
+Yeah, it was too brave to go. That's actually the answer why I left
+mod_devicetable.h included. (However the mod_devicetable.h probably should
+stay to be similar to i2c.h.
 
-Reading again I don't see any useful explanation why that piece of code has to
-be duplicated among these two functions. It's 100% a copy.
-
-Sebastian, can you shed some light here?
+Let's postpone this one, but it's good to have the build report so we know
+which drivers are missing GPIO header to be included.
 
 -- 
 With Best Regards,
