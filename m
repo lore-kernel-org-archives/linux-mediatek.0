@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56B68C0015E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 12:49:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C9A9EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 12:52:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BonMTE4G0Fzi/dhQw+vSnPhFtmGhv8bK9dMjJ44uF1Y=; b=UHOVh1irMZP4YmUuavBunHV7T4
-	5jYHuDNwP5QBmBILRVlfwpjY6bgmRBFlk/MVndmEmt4J5OoMfkpLyvTWad+mywtm3+/kgLW2KkeNF
-	0N6QndIEWCcZaA7URwV7ipe/9g9a6igII5XbWRYKuy0yZvkwVrTL2IN2nWVQR50uWg66zqYqdJKET
-	fkMKsA+p/u1jrkkQtmtwavTElJRHDwMERrQWraGxjvaZ+5b8Ae8w8MEEMSxn4Ff2d8+/Sy2w/XGD1
-	vzQpA+dqV+Y48xmbXcHua9sJDBbbEfOrXXeWWFZU5+T+0qkPeXMkekhqnDEiI6ndRCCK6eQ2MJDBw
-	gn2/BNYQ==;
+	bh=bf/8dybG8/JiZOvg5jqTw/EYAEpXhEJ+ous/NLbzm0c=; b=eftAgkPnVITlkaUXms7MhADuCr
+	PbA5wPWPMB5o0oLd9pHLStN0pw0EomfdpzuMsUF8aai935ZqrTP7p75Z94G030XOv4IxBXapIDcFI
+	iZe+cRM7A/OaxPJKwXxeOqwiK7oXGI91vq5OvpzsG1uJufYL0trV1gheSO+BiHv/jU3vctcbGIy84
+	4tp058YsinchN4N+JQE7Ayofih8bOGKlpgtqWP3MM4yrTg85LqV1tQxXsvWL6WHUfW/Eu5Lt06obc
+	T2R4Iiml5F7gDBqGRbA6f2ElyY4vJfAibeRGgKnxz/Iz28LmDH7zk2b4Puxjxd4p4LZ/1c/kgzteh
+	DQJLXciQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJCo1-00EuSd-0N;
-	Tue, 11 Jul 2023 12:49:25 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1qJCqi-00Euya-30;
+	Tue, 11 Jul 2023 12:52:12 +0000
+Received: from mga12.intel.com ([192.55.52.136])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJCnx-00EuRt-0e;
-	Tue, 11 Jul 2023 12:49:22 +0000
+	id 1qJCqf-00EuwJ-1K;
+	Tue, 11 Jul 2023 12:52:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689079761; x=1720615761;
+  t=1689079929; x=1720615929;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=OYszt38IqNikveaxxJtUvxsFTPNnv5LlXD+DX90BkWs=;
-  b=h6LD2uoeBepZ/ia2hLQyLMO1plgbpHOmm/4YGJYKWstai0T3NM3wCNpc
-   PwHL1I8A0zR2yxJo8OJZ7OM+tv7sOIePOkW95vd9it9Yr83ZX0McQ23C7
-   7uvRan3jA4UzqBfHbSXNBRPEgu2Xziqv9IeM0f/zm+dMVCjEwjztlTI/b
-   a7l5Ck0eodtIh18C63Oo1z/NqLfusmJOCatgsruU5NZdpbqerdtsV5L4i
-   zKautqKKuIt+i2/LbDIxQ1L1CrrAd8UygphxF6MJk6MZE1EbuqRRRfRHK
-   uuRJih4ayw8jSP/G7ck3TeWuL5MimvgPQ0zgmO29SPxcXp+Ss0oyZ2B6R
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="354470007"
+  bh=fixFH5Llqroff/AhZ015VZ+OpUUgSBQ7xNlXodB8idQ=;
+  b=h4nvQE9OhT45mT1wnF9vjD+wI7eMNeYnxagy+uumNEMhH0I5dpTI2MVn
+   GHN9Ffu2umJt0trEQM6k4q2SbCwiSeuA6EJXTw3+8N6WykaMQHYSVlQAI
+   HEq2XOo/D1K7/dGqBvN+WYRHgYh6m3xWPjwr8vo5nRO+8jHChNNMBAEuf
+   rNo6JqbgsAdqI4RqQM9SqrtqRpj1EhZKf2k6Ti3qlhUvfGr/Jc/syyNd9
+   0GhMTDBWRNH2jeL7Zbu/41dkHbNUOsW0K1tGVo/3UFAnn5AUr4sxiCxnO
+   wmTzeNaPdSxII8/z4CuSHqGrrZWTj+xiQUQJHGmVJisW1jML+sl7/eGpt
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="344205671"
 X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
-   d="scan'208";a="354470007"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 05:49:20 -0700
+   d="scan'208";a="344205671"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 05:52:07 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="721078284"
+X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="786613329"
 X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
-   d="scan'208";a="721078284"
+   d="scan'208";a="786613329"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga002.jf.intel.com with ESMTP; 11 Jul 2023 05:49:08 -0700
+  by fmsmga008.fm.intel.com with ESMTP; 11 Jul 2023 05:51:56 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.96)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1qJCng-001qlR-32;
-	Tue, 11 Jul 2023 15:49:04 +0300
-Date: Tue, 11 Jul 2023 15:49:04 +0300
+	id 1qJCqO-001qnp-39;
+	Tue, 11 Jul 2023 15:51:52 +0300
+Date: Tue, 11 Jul 2023 15:51:52 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Serge Semin <fancer.lancer@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: Mark Brown <broonie@kernel.org>,
 	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
 	Yang Yingliang <yangyingliang@huawei.com>,
@@ -78,6 +78,7 @@ Cc: Mark Brown <broonie@kernel.org>,
 	Alexandre Belloni <alexandre.belloni@bootlin.com>,
 	Claudiu Beznea <claudiu.beznea@microchip.com>,
 	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Serge Semin <fancer.lancer@gmail.com>,
 	Shawn Guo <shawnguo@kernel.org>,
 	Sascha Hauer <s.hauer@pengutronix.de>,
 	Pengutronix Kernel Team <kernel@pengutronix.de>,
@@ -87,7 +88,6 @@ Cc: Mark Brown <broonie@kernel.org>,
 	Jerome Brunet <jbrunet@baylibre.com>,
 	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Andy Gross <agross@kernel.org>,
 	Bjorn Andersson <andersson@kernel.org>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>,
@@ -104,20 +104,19 @@ Cc: Mark Brown <broonie@kernel.org>,
 	Steven Rostedt <rostedt@goodmis.org>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
 	Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [PATCH v2 13/15] spi: Rename SPI_MASTER_GPIO_SS to
- SPI_CONTROLLER_GPIO_SS
-Message-ID: <ZK1PwMAz8OjsHgsE@smile.fi.intel.com>
+Subject: Re: [PATCH v2 01/15] spi: Remove unneeded OF node NULL checks
+Message-ID: <ZK1QaK3Qy/mDauae@smile.fi.intel.com>
 References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
- <20230710154932.68377-14-andriy.shevchenko@linux.intel.com>
- <tvm772o6uqndgyjvycv27qouqq76crpre5tyqcnanaautqjjwn@pydiwhjzhbgd>
+ <20230710154932.68377-2-andriy.shevchenko@linux.intel.com>
+ <f0b9e2e4-b2c0-4336-0ec4-5afd9f1b6c72@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <tvm772o6uqndgyjvycv27qouqq76crpre5tyqcnanaautqjjwn@pydiwhjzhbgd>
+In-Reply-To: <f0b9e2e4-b2c0-4336-0ec4-5afd9f1b6c72@collabora.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_054921_281556_BA4A6102 
-X-CRM114-Status: GOOD (  16.10  )
+X-CRM114-CacheID: sfid-20230711_055209_461109_884D333D 
+X-CRM114-Status: GOOD (  11.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,26 +131,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 11, 2023 at 03:30:19PM +0300, Serge Semin wrote:
-> On Mon, Jul 10, 2023 at 06:49:30PM +0300, Andy Shevchenko wrote:
-> > Rename SPI_MASTER_GPIO_SS to SPI_CONTROLLER_GPIO_SS and
-> > convert the users to SPI_CONTROLLER_GPIO_SS to follow
+On Tue, Jul 11, 2023 at 10:12:55AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 10/07/23 17:49, Andy Shevchenko ha scritto:
+> > In the couple of places the NULL check of OF node is implied by the call
+> > that takes it as a parameter. Drop the respective duplicate checks.
+> > 
+> > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 > 
-> * I'm not an expert in English, but imo the next would look a
-> * bit more readable:
-> * convert s/the users to SPI_CONTROLLER_GPIO_SS/the code to using SPI_CONTROLLER_GPIO_SS
-
-> > the new naming shema.
+> Validated against spi-mt65xx, spi-mt7621, spi-mtk-nor, spi-mtk-snfi;
 > 
-> s/shema/schema
+> Reviewed-by: AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> # MediaTek
 
-Right, thank you!
-
-...
-
-> Reviewed-by: Serge Semin <fancer.lancer@gmail.com>
-
-Thank you for the review!
+By some reason the tag is split and I'm not sure `b4` can cope with that.
+In any case, added manually. Thank you for the review!
 
 -- 
 With Best Regards,
