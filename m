@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5DE0EB64DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 10:59:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 643F4C0015E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 11:01:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zkuM88eUpd4lwwF3xUixcqfuJbBS47crOoLESP2lR7s=; b=UHyjVuUPcccop/3don2RNYT2To
-	tPrJtz5DwoavdEafLSDFiXMaJAdQzU8WYwieAZg0v0tvfx6Xnez1pfsLL5PILMHjX4SLInl+d+riT
-	KIP+/GKIj5wUCVvf4Zye9VPDGs2E9Ucrez0bbRLVFxEc8dS4Bpg+q/b8PZZ7GGAmdpoPyDdMoKCEo
-	Qn8u0z7SBcVM49vqr5uF3/CIzCySNu8xj7K/+K1hVC4ZJNPpPngHEhd+w1i4UeU94xDw4nUDeD0e3
-	YyHrM9YaO9Gjr7Ds0+FAREASILLHv5cCMRSVEqeQc6XsGu7a0shHmeYd6SWGyVwTbmFyD1WkTOWH0
-	ll8wFkIQ==;
+	bh=zSwpf6BIANOM40IZH5A99t060WoeRwXcMpZfwrTn5Mk=; b=EtrTK10rS9uB4QLm+Yd6v1tiyB
+	RHOXo2/4mrwvryDMLwQMZSOS03RwNkW5CJbOCl7Kww0PYosy+f0Hppqni1g7/VgY/3EoVcHi2mGqG
+	4+q2ZhHY4vYFUfcF5JTNqbOZofjlfU+4iqSCet17P9uRfhMuqzvMiEuHOM3gBlunWG9mfZn+21TqO
+	sXD2YlgGqlF849ZBNL+DFx3CFG9A46n20uEHFe1XmR4xD9YrL9vaLDodp0UvhJeF5qd7BMlWnVICy
+	uQ4W0147+uRJSPS+a0GaI8nGX94WLPqo1OyL6VeiNSWQ78WTZ2NTjUOnnsbsB2YGnzJAaySCz1/ww
+	KZhzVO4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJB5K-00Ehqy-08;
-	Tue, 11 Jul 2023 10:59:10 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1qJB7i-00EiJf-1g;
+	Tue, 11 Jul 2023 11:01:38 +0000
+Received: from mga03.intel.com ([134.134.136.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJB5F-00EhoZ-0n;
-	Tue, 11 Jul 2023 10:59:06 +0000
+	id 1qJB7f-00EiIq-0z;
+	Tue, 11 Jul 2023 11:01:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689073145; x=1720609145;
+  t=1689073295; x=1720609295;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=+zeFSMPLY2Z95wTb4g4rf/2HnStio6yWOtQ5rXla3Pk=;
-  b=lf1kCD9qvUJqTp/GVBcYioFX3kfYyyAkcrUg2dGXmji/lcjMsSnmmSKw
-   mk9VsHWQat26bj56hBFch45IoUGE9z0k/8u7HRa9/eZoihL1keGAsA279
-   LSS2dZ7tjPMAxijKEEciTRMoKgk5SX3AAbpZQBD6QjkKRP3Ov8+/2zBhW
-   sMZxCmEqKLWvM5OjYKCCvw3rJnB6tGNtTukW5Lkaoa2i0m2Mu2HD4JKib
-   6DML8DAdRXVEJbBro/zsNu5B2Xe/7HRddruJs3/o5Us9jp+eI3diD0kqG
-   4TCc3WHYf/5OEtR/+SKvYaRGiavVWFeOz5FdBtBdWmj+/dNUiQj/ckuHf
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="450948901"
+  bh=g5docwgn1sedQFCIUNy5vO+RB2jnG5735hob/X5gUzk=;
+  b=S4JD8JGVdhC7U4fxxI10woMBXFGSFmc6RztWeLvNRXdrHzaU/4Cg62N7
+   uWDY9/ZF/m2RxTvNiS259QMUJ3ypVBU30YG2Zdn5Fl7zg3ZhIQfQbNwsq
+   CywVaPHzueARlBtxdS/xBeuhOVlgsn+TXpkWf+RoMxMdl4lyEULbMrAeu
+   nebf35PKswtOx+QUFdMJfNJrGQ5fb3aUcBp1mm4BQzOp/Y8PRSDnQVOT1
+   XDSJGYGmQrRQAfKtB8A4Y2dXHa4QA50VvEI8B4w1gHYQ3GNzXYlUxtEWY
+   OejQ7efcw33jyIgkVVOBF8J43ZCcYtVHxtP6OAgmZOYK4pevSpkipk7NJ
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="368087971"
 X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
-   d="scan'208";a="450948901"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 03:59:01 -0700
+   d="scan'208";a="368087971"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 04:01:30 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="721055869"
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="715143826"
 X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
-   d="scan'208";a="721055869"
+   d="scan'208";a="715143826"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga002.jf.intel.com with ESMTP; 11 Jul 2023 03:58:49 -0700
+  by orsmga007.jf.intel.com with ESMTP; 11 Jul 2023 04:01:17 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.96)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1qJB4v-001p5g-2V;
-	Tue, 11 Jul 2023 13:58:45 +0300
-Date: Tue, 11 Jul 2023 13:58:45 +0300
+	id 1qJB7J-001p8E-30;
+	Tue, 11 Jul 2023 14:01:13 +0300
+Date: Tue, 11 Jul 2023 14:01:13 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Mark Brown <broonie@kernel.org>
 Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
@@ -104,20 +104,20 @@ Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
 	Steven Rostedt <rostedt@goodmis.org>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
 	Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [PATCH v2 03/15] spi: Replace if-else-if by bitops and
- multiplications
-Message-ID: <ZK015fKTOK5wjck+@smile.fi.intel.com>
+Subject: Re: [PATCH v2 04/15] spi: Replace open coded
+ spi_controller_xfer_timeout()
+Message-ID: <ZK02efTYxV3czigr@smile.fi.intel.com>
 References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
- <20230710154932.68377-4-andriy.shevchenko@linux.intel.com>
- <24e71654-bc79-42ac-86d1-4e6100f6893a@sirena.org.uk>
+ <20230710154932.68377-5-andriy.shevchenko@linux.intel.com>
+ <cfaffa00-4b61-4d81-8675-70295844513b@sirena.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <24e71654-bc79-42ac-86d1-4e6100f6893a@sirena.org.uk>
+In-Reply-To: <cfaffa00-4b61-4d81-8675-70295844513b@sirena.org.uk>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_035905_294803_B01F797C 
-X-CRM114-Status: GOOD (  16.33  )
+X-CRM114-CacheID: sfid-20230711_040135_422284_6EF9E290 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,25 +132,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 10, 2023 at 05:56:59PM +0100, Mark Brown wrote:
-> On Mon, Jul 10, 2023 at 06:49:20PM +0300, Andy Shevchenko wrote:
+On Mon, Jul 10, 2023 at 06:30:32PM +0100, Mark Brown wrote:
+> On Mon, Jul 10, 2023 at 06:49:21PM +0300, Andy Shevchenko wrote:
 > 
-> > -		if (xfer->bits_per_word <= 8)
-> > -			maxsize = maxwords;
-> > -		else if (xfer->bits_per_word <= 16)
-> > -			maxsize = 2 * maxwords;
-> > -		else
-> > -			maxsize = 4 * maxwords;
-> > -
-> > +		maxsize = maxwords * roundup_pow_of_two(BITS_TO_BYTES(xfer->bits_per_word));
+> > Since the new spi_controller_xfer_timeout() helper appeared,
+> > we may replace open coded variant in spi_transfer_wait().
 > 
-> This will change the behaviour if bits_per_word is more than 32.  That
-> is validated out elsewhere but I shouldn't have had to go around
-> checking the code to confirm that this is the case.  This is the sort of
-> thing that should be highlighted when doing this sort of edge case
-> stylistic change.
+> > + * Assume speed to be 100 kHz if it's not defined at the time of invocation.
+> > + *
+> 
+> You didn't mention this bit in the changelog, and I'm not 100% convinced
+> it was the best idea in the first place.  It's going to result in some
+> very big timeouts if it goes off, and we really should be doing
+> validation much earlier in the process.
 
-Right, I have to add this into commit message of v3.
+Okay, let's drop this change.
+
+> > +	u32 speed_hz = xfer->speed_hz ?: 100000;
+> 
+> Not only the ternery operator, but the version without the second
+> argument for extra clarity!
+
+Elvis can be interpreted as "A _or_ B (if A is false/0)".
+Some pieces related to SPI use Elvis already IIRC.
 
 -- 
 With Best Regards,
