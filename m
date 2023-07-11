@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83572C001B0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 07:37:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20028EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 07:37:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sCdjB20b3vef89KWgqkpwNubXSkEHNE7t48wVBa++0A=; b=nKPjBNO2kAEUa7MNa5ykrseCi7
-	GpzfH3vE03QavpacSd7+4rgyRnMXNmy6ROMlxzA8VWJNa52Zy36Gpc1N8xU08acaOkOBu4SSKwA/p
-	lV8L+WXdZ421nQ8cD1dzm4tC0HfQfA7mjIO3Q6Hrfxom3qbtwzCQBeWV1VlpAShMgC5baYRJFD+Og
-	2k5BXzKn1pe4dRDw2FHAt7ckuezXEI6MPWt+44s6jYO+tLHrNEVQhcIWQ/4ky2JWfIJTz4lfLoI4q
-	LGH54UWDPGg6qyn344rGLMhE/U9dxx94piKER0fWnD5rMek3Apnx9IXeL4XMmjf6wKFErzuwo7s+L
-	svryy9KQ==;
+	bh=Ap4ZBNc1JcyrfJuwzziwFEw3FcVn4mNxWLq5XgG+4LE=; b=mjutBR+PSA9CcPwNgBxJwcCVj4
+	V8yrxmypOCh8FrEqBmsD5rXssEQOPC7uZZcUiJ4rWo8SzorAZn+mMQZR/D07kZ/45WyPeiep1vP7h
+	HtrnEQ4cuSZb66j1n01kTah3jOZwubXI+1HUyYgdtzbmECkdhp88Dfuf/u7wM8foFTGO6e127Kc2g
+	od2KT059qb5PRjZHeoWEpUAMSWuny1BubVny8PZRqBN66hART88YS6n8Vd4/qhUmF97+uKtvOi/3e
+	e32bry3uFAVR9HTTIBGMBY2IxV4HDK49csbi4Lz4QrQss1JtZogsvGA0/gTLMKyZYUAjEhHzIS3Mn
+	/92fF8Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJ7vh-00DzvS-0W;
-	Tue, 11 Jul 2023 07:37:01 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qJ7vm-00Dzxh-1x;
+	Tue, 11 Jul 2023 07:37:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJ7ve-00Dzud-1v;
-	Tue, 11 Jul 2023 07:36:59 +0000
+	id 1qJ7vj-00Dzvs-0e;
+	Tue, 11 Jul 2023 07:37:04 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id EA32E61354;
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 81F9F61356;
+	Tue, 11 Jul 2023 07:37:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A4AFC433CB;
 	Tue, 11 Jul 2023 07:36:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D294CC433C7;
-	Tue, 11 Jul 2023 07:36:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689061017;
-	bh=sp9FUz7vFWMOXim7BOi9FhfXePdR8iwcHRlNLjmbrE0=;
+	s=k20201202; t=1689061021;
+	bh=sEqwyC3FyD2dOA4vxfiDWqxyPw9GpNWDE8xdL9GWS8k=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=o+KWj9bXmQa6HfWyip5V0qnUuXxShVLYk5hJdPLFMtnIUrLDrJNGA3OoPRiDgXTo3
-	 8FLQU5yRGDau/XKm0ZH75oQzVIYnmb3fo19Gl5s3xGoxgEXTHVDYPrzPLuUSt/q+9Q
-	 e/iSLt9vgfmnvBblKjaVQWM3iSHxXvTYglKEHMwglEsiW0ZdNudN+fAts5ARukzu2E
-	 RYWhdZxjxt5mGhE00CK34425ADah9caNJ1RVpLS3DC08xZz9lARxQ629iUtCs7LuE5
-	 2mjaY0lCjRz2MqsjDCdwolr2zwa/evxOVdRKjdU1X/cC/LKG/NN4Q7yVsTPtc27QHI
-	 SjiMhH5BwXtFQ==
+	b=lzWAGfwJ3WXJRoJqVVRC2LoK90eGLluOqf9+gyAmFoLR3DayjC5FLLMNlkmHja7uM
+	 9ZWJOelSTbJ0ZKnwYTdNkmbkTLLjhX0dI5jitBr+OSxLtXmSaP2K/qmbBqpa3y2wOL
+	 E9mhSfXV5f6KBMr7h2H84hxLwTh1DiQ/WGJnMy4W+tmUGedpwSegYHWT40zNVlEuat
+	 j80R0N3i6MZHoe4xxgFAy/MOh0PWwg8D1ayd3F78ksjtKXKRgdWromIW+gsro99ms3
+	 aMcCDOGhjwRaCRcZnQorRHcgMDjYsvBm+tqOYy3phQUoHjTl2H9TmWUNP5d4TNcnzi
+	 xsA5R313fOuZQ==
 From: Vinod Koul <vkoul@kernel.org>
-To: Markus Schneider-Pargmann <msp@baylibre.com>, 
- Dan Carpenter <dan.carpenter@linaro.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
  Philipp Zabel <p.zabel@pengutronix.de>, 
  Chunfeng Yun <chunfeng.yun@mediatek.com>, 
  Kishon Vijay Abraham I <kishon@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Bo-Chen Chen <rex-bc.chen@mediatek.com>, 
- Guillaume Ranquet <granquet@baylibre.com>, dri-devel@lists.freedesktop.org, 
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
- kernel-janitors@vger.kernel.org
-In-Reply-To: <3c699e00-2883-40d9-92c3-0da1dc38fdd4@moroto.mountain>
-References: <3c699e00-2883-40d9-92c3-0da1dc38fdd4@moroto.mountain>
-Subject: Re: [PATCH] phy: phy-mtk-dp: Fix an error code in probe()
-Message-Id: <168906101241.188690.9773925204562641483.b4-ty@kernel.org>
-Date: Tue, 11 Jul 2023 13:06:52 +0530
+ Guillaume Ranquet <granquet@baylibre.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20230529-hdmi_phy_fix-v1-1-bf65f53af533@baylibre.com>
+References: <20230529-hdmi_phy_fix-v1-1-bf65f53af533@baylibre.com>
+Subject: Re: [PATCH] phy: mediatek: hdmi: mt8195: fix prediv bad upper
+ limit test
+Message-Id: <168906101764.188690.7974991611736783323.b4-ty@kernel.org>
+Date: Tue, 11 Jul 2023 13:06:57 +0530
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.12.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_003658_668770_0D787174 
-X-CRM114-Status: UNSURE (   5.75  )
+X-CRM114-CacheID: sfid-20230711_003703_281658_C4D2F4D7 
+X-CRM114-Status: UNSURE (   6.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,15 +84,18 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 11 Jul 2023 09:13:25 +0300, Dan Carpenter wrote:
-> Negative -EINVAL was intended instead of positive EINVAL.
+On Tue, 30 May 2023 10:43:07 +0200, Guillaume Ranquet wrote:
+> The pll prediv calculus searchs for the smallest prediv that gets
+> the ns_hdmipll_ck in the range of 5 GHz to 12 GHz.
+> 
+> A typo in the upper bound test was testing for 5Ghz to 1Ghz
 > 
 > 
 
 Applied, thanks!
 
-[1/1] phy: phy-mtk-dp: Fix an error code in probe()
-      commit: 03966c3950d36d6b671158be3794eb7211434faa
+[1/1] phy: mediatek: hdmi: mt8195: fix prediv bad upper limit test
+      commit: 059c78ebf1e94a825e27cc3ef8a9d77cef06827e
 
 Best regards,
 -- 
