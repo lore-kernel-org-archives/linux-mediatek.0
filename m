@@ -4,111 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04B9BEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 17:34:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7274CEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 17:50:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8Zxfld4oBOnJYsbNPikEmFrK4iIbk691JPODmSFy2og=; b=bkxSNINA9w4jcJfB9C3NX1kYo6
-	ElITyXUQE9pRIFGJPZug38vi0JpF3Jc54S3zuJM1qmXmxZaTMP+WXgOGe55l84rPF9bqEiNWTpoQr
-	QtGI5ZShgMUlcopBITTHgNYJQ0QqzxCFGNuATqBSgzTKawa+V3V8w8T+mEfn3HoPLa2i9fD6xV0LG
-	XzTWGpZD35t/HKXhnY803yLK5ngv9SZo6voo6ojdVnr6785NbnuGxz4VmRodDaT3EtZq7u4TBqaly
-	H+bX+pJArMvCLca914Ut5FlngeadlhxzOu2mhoN32refagoM0zSbIQddmLf2J7EhuY9kyyMyvadHj
-	CO7xZ8iA==;
+	bh=xCOkP5CDdhGizUYOgGdZHkLCur4OBITVBmD5gPvHVWc=; b=B/VW7mOyDk3uw+2iwKhPpzyFZD
+	0vr5PFhLQUbyhfAIdB7Fi06t1ncpFzWCb5kX4oT1HNn49BegDdj/vnkoOMohFLrrqxL4dl1zY6rhO
+	+1CiHe81oavfw7Xw9pxkNIKkO7XQDtwNSZaa/nToYmgLbuPQAovp72rS4cMKQAjRov+5TTYud78Sp
+	ZuOo5drVTNG62C3xcYwR+g8yObCOZY3PMWhdI3bjZnK/5Ug+ZOI+8IoFkyc8jmgUCYg2AQ0z/wVeU
+	RPzN/XxPfhbOdthOUaS9Du0YH4jZgRkGZ+URhcGoOpwJDXsMjuSGc1+k0qfaa48AOwHbU9ZnVOQ/r
+	ZyApOVUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJHFb-00FYmn-0y;
-	Tue, 11 Jul 2023 17:34:11 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qJHV6-00FaGx-0G;
+	Tue, 11 Jul 2023 17:50:12 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJHFV-00FYlK-2j;
-	Tue, 11 Jul 2023 17:34:07 +0000
-Received: from mercury (dyndsl-091-248-213-212.ewe-ip-backbone.de [91.248.213.212])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 033A86606FD5;
-	Tue, 11 Jul 2023 18:34:04 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689096844;
-	bh=xTQ0mmZSKT6xaRW2cSSnwsyXZRn21W+fLOIKOFiv5HU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=H4apaSnHRDvSkpSCkk+wyU65Ngqr9P5JyDBeie6RLPAeIF/a84cxGH59ddGSbX5qw
-	 63kfAbpaiUnhKnAjL7v46VWmzE4FkX9fEEyauEpMkG3DYbKmfvZvGjPGtA+xeI6swf
-	 kjXbLmO76/FOA8FnaeGqaVHoSCSKZ347Op8QNSbAV1AHFtd/woPULZ7cp0Xe7t6lvK
-	 j+oEiKCypr4OaNiLGZi4zRujwMiEhT9wkldDGMRFDyKdZJ0dEmjL8X+4AzL1KA1Sn6
-	 6BSpra8CwZ37kLECStDWmCD4Br675HzuR2KsJ6ZFQzDp7r6efy1uSO15+pqJdv0f+r
-	 Or4DZYoJuC/iQ==
-Received: by mercury (Postfix, from userid 1000)
-	id B8CBE106765E; Tue, 11 Jul 2023 19:34:01 +0200 (CEST)
-Date: Tue, 11 Jul 2023 19:34:01 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Mark Brown <broonie@kernel.org>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Yang Yingliang <yangyingliang@huawei.com>,
-	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
-	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
-	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	Sanjay R Mehta <sanju.mehta@amd.com>,
-	Radu Pirea <radu_nicolae.pirea@upb.ro>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	id 1qJHV3-00FaFj-0Q
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Jul 2023 17:50:10 +0000
+Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-6687096c6ddso3482943b3a.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Jul 2023 10:50:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1689097806; x=1691689806;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=xCOkP5CDdhGizUYOgGdZHkLCur4OBITVBmD5gPvHVWc=;
+        b=NCgHZUD2RZASGsxd1ZfpCcPz7oJJsSZaGM98LHpY9wSUi8y/xzFhJGEhNmJHKdwuMZ
+         F4RTyJsX7mJM0NsbL3kCm9cEfcLJUMRwEZyBLRcMyr9C1411K9EnmYqG1upok8/dtHHf
+         KVOG0Ca2JGUF0CH2iLyPUQA2LcjZhyZT8esWRZPc4v1awv1Wj6Z2y+d2v+V0rkNPhD6h
+         NOmYD/PJ5HcyIZTr3nwITUwEbNAU84h+nVyz7JhXKgn1n8fpfuYiU8+vz/za3DuAYVDh
+         fLOKDAsTpKbkrHEWU2g2HxuLEOl8k1GeL1MzmIIfcZQ3U0XYBYspBKYqtc0AF66xjLhV
+         warg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689097806; x=1691689806;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xCOkP5CDdhGizUYOgGdZHkLCur4OBITVBmD5gPvHVWc=;
+        b=Z06koYLgMoXjZYCVWhjcRwV99Agt4RV4fA2ArNPcMT9DFdBjVaKTSk+2pOpR3O8u3P
+         DdsE31F8bhApNigecZt+BsyoVa6KKfcmU5251RHEV9q0TDqJH5Xr0G+3SevNU0E/Lfxf
+         WZ7GhViKKPT3SbAN5kcYfMTr55zaIHIXyJehiA9KBS4XP4Cns2/aYkhtJK7h3NcAIIqx
+         shDwSxhCBYuN2oa3wxrT/+4udOvGTD+OD/IxRZo83An/77oCsePm8e7DOFSzTczCOPoD
+         bCOjIulIchusLUvVxf/hyvfxE11aCFJw96idcFGjINN1gu2ZCGNJKTBU4bzVfInMARfq
+         DWrA==
+X-Gm-Message-State: ABy/qLYZ7v0vl/0EOzkhNP0vdkn5DfMf98pipypSdojjSqCon98xxBt5
+	o2suqkmQhdvYIzvg/1vfl71dNA==
+X-Google-Smtp-Source: APBJJlGHgdMWYyEXVwg+gW4btUFN31cDzzu6vMOtLlJ7QM1fNSgVYfXs9vQeN4RUv43NlnBDdkhgEg==
+X-Received: by 2002:a05:6a20:2444:b0:132:7ca6:54ca with SMTP id t4-20020a056a20244400b001327ca654camr1679651pzc.24.1689097806079;
+        Tue, 11 Jul 2023 10:50:06 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:9b4d:d526:6948:59a2])
+        by smtp.gmail.com with ESMTPSA id jd10-20020a170903260a00b001acae9734c0sm2191168plb.266.2023.07.11.10.50.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Jul 2023 10:50:05 -0700 (PDT)
+Date: Tue, 11 Jul 2023 11:50:03 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [PATCH v3 04/14] spi: Remove code duplication in
- spi_add_device*()
-Message-ID: <20230711173401.kz7or6ucurhoe4er@mercury.elektranox.org>
-References: <20230711171756.86736-1-andriy.shevchenko@linux.intel.com>
- <20230711171756.86736-5-andriy.shevchenko@linux.intel.com>
+	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v14 07/12] remoteproc: mediatek: Remove dependency of
+ MT8195 SCP L2TCM power control on dual-core SCP
+Message-ID: <ZK2WS+cldx/8+VGA@p14s>
+References: <20230707052612.27521-1-tinghan.shen@mediatek.com>
+ <20230707052612.27521-8-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="nr4764lrwkknwz4l"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230711171756.86736-5-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20230707052612.27521-8-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_103406_166247_578D01A3 
-X-CRM114-Status: GOOD (  22.81  )
+X-CRM114-CacheID: sfid-20230711_105009_227202_64D1984C 
+X-CRM114-Status: GOOD (  30.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,112 +100,214 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Jul 07, 2023 at 01:26:07PM +0800, Tinghan Shen wrote:
+> Previously, SCP core 0 controlled the power of L2TCM and dictated that
+> SCP core 1 could only boot after SCP core 0. To address this constraint,
+> extracted the power control flow of L2TCM and made it shared
+> between both cores, enabling support of arbitrary boot order.
 
---nr4764lrwkknwz4l
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Definitely an improvement.
 
-Hi,
+> 
+> The flow for controlling L2TCM power has been incorporated into the
+> mt8195_scp_before_load() and mt8195_scp_stop() APIs, which are
+> respectively invoked during the rproc->ops->start() and
+> rproc->ops->stop() operations. These APIs effectively serve the same
+> purpose as the rproc prepare()/unprepare() APIs."
 
-On Tue, Jul 11, 2023 at 08:17:46PM +0300, Andy Shevchenko wrote:
-> The commit 0c79378c0199 ("spi: add ancillary device support")
-> added a dozen of duplicating lines of code. We may move them
-> to the __spi_add_device(). Note, that the code may be called
-> under the mutex.
->=20
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+I'm not fond of that custom API but it is so widespread in this driver that I
+will go with it.
 
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
--- Sebastian
-
+> 
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 > ---
->  drivers/spi/spi.c | 32 ++++++++++----------------------
->  1 file changed, 10 insertions(+), 22 deletions(-)
->=20
-> diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-> index 6d74218cf38e..876d40d2c708 100644
-> --- a/drivers/spi/spi.c
-> +++ b/drivers/spi/spi.c
-> @@ -631,6 +631,16 @@ static int __spi_add_device(struct spi_device *spi)
->  	struct device *dev =3D ctlr->dev.parent;
->  	int status;
-> =20
-> +	/* Chipselects are numbered 0..max; validate. */
-> +	if (spi_get_chipselect(spi, 0) >=3D ctlr->num_chipselect) {
-> +		dev_err(dev, "cs%d >=3D max %d\n", spi_get_chipselect(spi, 0),
-> +			ctlr->num_chipselect);
-> +		return -EINVAL;
+>  drivers/remoteproc/mtk_common.h |  1 +
+>  drivers/remoteproc/mtk_scp.c    | 80 ++++++++++++++++++++++++++-------
+>  2 files changed, 66 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+> index 56395e8664cb..41e1b4732b75 100644
+> --- a/drivers/remoteproc/mtk_common.h
+> +++ b/drivers/remoteproc/mtk_common.h
+> @@ -130,6 +130,7 @@ struct mtk_scp {
+>  	struct rproc_subdev *rpmsg_subdev;
+>  
+>  	struct list_head elem;
+> +	struct platform_device *cluster_pdev;
+
+This isn't needed.  rproc->dev.parent is pdev->dev.  Use container_of() to
+get to the platform device. 
+
+
+>  };
+>  
+>  /**
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index 3349488e5f21..94602272c05f 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -29,6 +29,10 @@ struct mtk_scp_of_cluster {
+>  	size_t l1tcm_size;
+>  	phys_addr_t l1tcm_phys;
+>  	struct list_head mtk_scp_list;
+> +
+> +	/* Prevent concurrent operations of L2TCM power control. */
+> +	struct mutex l2tcm_lock;
+> +	u32 l2tcm_refcnt;
+>  };
+>  
+>  /**
+> @@ -449,7 +453,7 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
+>  
+>  	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
+>  
+> -	/* enable SRAM clock */
+> +	/* enable SRAM power */
+>  	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+>  	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+>  	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+> @@ -462,19 +466,38 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
+>  	return 0;
+>  }
+>  
+> -static int mt8195_scp_before_load(struct mtk_scp *scp)
+> +static int mt8195_scp_l2tcm_on(struct mtk_scp *scp)
+>  {
+> -	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
+> -	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
+> +	struct mtk_scp_of_cluster *scp_cluster = platform_get_drvdata(scp->cluster_pdev);
+> +
+> +	mutex_lock(&scp_cluster->l2tcm_lock);
+> +
+> +	if (scp_cluster->l2tcm_refcnt == 0) {
+> +		/* clear SPM interrupt, SCP2SPM_IPC_CLR */
+> +		writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
+> +
+> +		/* Power on L2TCM */
+> +		scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+> +		scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+> +		scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+> +		scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
+> +				  MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
 > +	}
 > +
-> +	/* Set the bus ID string */
-> +	spi_dev_set_name(spi);
+> +	scp_cluster->l2tcm_refcnt += 1;
+>  
+> +	mutex_unlock(&scp_cluster->l2tcm_lock);
 > +
->  	/*
->  	 * We need to make sure there's no other device with this
->  	 * chipselect **BEFORE** we call setup(), else we'll trash
-> @@ -689,19 +699,8 @@ static int __spi_add_device(struct spi_device *spi)
->  int spi_add_device(struct spi_device *spi)
+> +	return 0;
+> +}
+> +
+> +static int mt8195_scp_before_load(struct mtk_scp *scp)
+> +{
+>  	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
+>  
+> +	mt8195_scp_l2tcm_on(scp);
+> +
+>  	/* enable SRAM clock */
+> -	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+> -	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+> -	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+> -	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
+> -			  MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
+>  	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+>  
+>  	/* enable MPU for all memory regions */
+> @@ -487,6 +510,8 @@ static int mt8195_scp_c1_before_load(struct mtk_scp *scp)
 >  {
->  	struct spi_controller *ctlr =3D spi->controller;
-> -	struct device *dev =3D ctlr->dev.parent;
->  	int status;
-> =20
-> -	/* Chipselects are numbered 0..max; validate. */
-> -	if (spi_get_chipselect(spi, 0) >=3D ctlr->num_chipselect) {
-> -		dev_err(dev, "cs%d >=3D max %d\n", spi_get_chipselect(spi, 0),
-> -			ctlr->num_chipselect);
-> -		return -EINVAL;
-> -	}
-> -
-> -	/* Set the bus ID string */
-> -	spi_dev_set_name(spi);
-> -
->  	mutex_lock(&ctlr->add_lock);
->  	status =3D __spi_add_device(spi);
->  	mutex_unlock(&ctlr->add_lock);
-> @@ -712,17 +711,6 @@ EXPORT_SYMBOL_GPL(spi_add_device);
->  static int spi_add_device_locked(struct spi_device *spi)
+>  	scp->data->scp_reset_assert(scp);
+>  
+> +	mt8195_scp_l2tcm_on(scp);
+> +
+>  	scp_sram_power_on(scp->reg_base + MT8195_CPU1_SRAM_PD, 0);
+>  
+>  	/* enable MPU for all memory regions */
+> @@ -653,14 +678,30 @@ static void mt8192_scp_stop(struct mtk_scp *scp)
+>  	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
+>  }
+>  
+> +static void mt8195_scp_l2tcm_off(struct mtk_scp *scp)
+> +{
+> +	struct mtk_scp_of_cluster *scp_cluster = platform_get_drvdata(scp->cluster_pdev);
+> +
+> +	mutex_lock(&scp_cluster->l2tcm_lock);
+> +
+
+What happens if ->l2tcm_refcnt is 0 and this function is called?
+
+
+> +	scp_cluster->l2tcm_refcnt -= 1;
+> +
+> +	if (scp_cluster->l2tcm_refcnt == 0) {
+> +		/* Power off L2TCM */
+> +		scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+> +		scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+> +		scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+> +		scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
+> +		scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+> +	}
+> +
+> +	mutex_unlock(&scp_cluster->l2tcm_lock);
+> +}
+> +
+>  static void mt8195_scp_stop(struct mtk_scp *scp)
 >  {
->  	struct spi_controller *ctlr =3D spi->controller;
-> -	struct device *dev =3D ctlr->dev.parent;
-> -
-> -	/* Chipselects are numbered 0..max; validate. */
-> -	if (spi_get_chipselect(spi, 0) >=3D ctlr->num_chipselect) {
-> -		dev_err(dev, "cs%d >=3D max %d\n", spi_get_chipselect(spi, 0),
-> -			ctlr->num_chipselect);
-> -		return -EINVAL;
-> -	}
-> -
-> -	/* Set the bus ID string */
-> -	spi_dev_set_name(spi);
-> =20
->  	WARN_ON(!mutex_is_locked(&ctlr->add_lock));
->  	return __spi_add_device(spi);
-> --=20
-> 2.40.0.1.gaa8946217a0b
->=20
-
---nr4764lrwkknwz4l
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmStkn4ACgkQ2O7X88g7
-+pormhAAnK4ipkeSKHu0xl8agX+r1Ks97iOFEMGG8+gzX4xY/hXNKVPfgpoWdNZa
-rN+CMPEFa2M5kKdm7v6s7wv2A/R0bRMIwUrHhMxAVBKQSNlp47s2N/PBkCgghK7x
-dOCmH/DDN17c1ODn8FJUD/WO5p1/grLRg1mUoNQvVqLVz7jQBx+oOZxG1Fm2e5pb
-suAySbAqDtYVper0iqZhu1BwDjFxj7l/+kXhJWt+mtgFq1shfCwdfK+gm9Z1hJ4B
-kDa1PZSzlIbs8znfYFu8n7gPJIN/nplWGmWgFAbwex3GxdZbSrO58X4m2B0fooFg
-xQ3w3b710ONolovhZktxkx7nibXjJiVFQwgS7BPRquCjCEok5jNmuyVJmu9Pud0s
-nRDWYic0TKErHny9NYCTwdJQX5ZkDIV9QpjVyp5FR7e/ylT8chmX1LwnsKZSd91j
-TN9+lh3yU6BjbjopIAFAhP5BvYeYMI2tvbXpCC3iiqGno53AZUyP5dXBupB/zri7
-bwN6fXNXsuVX0JJH3CHCm13ZK9IFY8GHGqLJBUulYVyaXSLOimXhi/l6bkkhvzxN
-IKpuSWUPTxAVu9q5LxsOWS45GXR0oWiiKL7tOcaX1yJypn+5lKy+4yStvF0cER9d
-NdLreesrYaGS2zSH4qIA7m8dd2oaqPtYCa1VHzxRfLcNsnyCoXY=
-=zPs/
------END PGP SIGNATURE-----
-
---nr4764lrwkknwz4l--
+> -	/* Disable SRAM clock */
+> -	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+> -	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+> -	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+> -	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
+> -			   MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
+> +	mt8195_scp_l2tcm_off(scp);
+> +
+>  	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+>  
+>  	/* Disable SCP watchdog */
+> @@ -669,6 +710,8 @@ static void mt8195_scp_stop(struct mtk_scp *scp)
+>  
+>  static void mt8195_scp_c1_stop(struct mtk_scp *scp)
+>  {
+> +	mt8195_scp_l2tcm_off(scp);
+> +
+>  	/* Power off CPU SRAM */
+>  	scp_sram_power_off(scp->reg_base + MT8195_CPU1_SRAM_PD, 0);
+>  
+> @@ -976,6 +1019,8 @@ static int scp_add_single_core(struct platform_device *pdev)
+>  	if (IS_ERR(scp))
+>  		return PTR_ERR(scp);
+>  
+> +	scp->cluster_pdev = pdev;
+> +
+>  	ret = rproc_add(scp->rproc);
+>  	if (ret) {
+>  		dev_err(dev, "Failed to add rproc\n");
+> @@ -1028,6 +1073,8 @@ static int scp_add_multi_core(struct platform_device *pdev)
+>  			goto init_fail;
+>  		}
+>  
+> +		scp->cluster_pdev = pdev;
+> +
+>  		ret = rproc_add(scp->rproc);
+>  		if (ret) {
+>  			dev_err(dev, "Failed to add rproc of core %d\n", core_id);
+> @@ -1114,6 +1161,7 @@ static int scp_probe(struct platform_device *pdev)
+>  	}
+>  
+>  	INIT_LIST_HEAD(&scp_cluster->mtk_scp_list);
+> +	mutex_init(&scp_cluster->l2tcm_lock);
+>  	platform_set_drvdata(pdev, scp_cluster);
+>  
+>  	ret = devm_of_platform_populate(dev);
+> @@ -1137,6 +1185,8 @@ static void scp_remove(struct platform_device *pdev)
+>  		rproc_del(scp->rproc);
+>  		scp_free(scp);
+>  	}
+> +
+> +	mutex_destroy(&scp_cluster->l2tcm_lock);
+>  }
+>  
+>  static const struct mtk_scp_of_data mt8183_of_data = {
+> -- 
+> 2.18.0
+> 
 
