@@ -4,120 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42886C001DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 17:20:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ED5BEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 17:24:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DOfMs9cbWPXD/svaPipEUPqAEXyFHuk5K2qp3P8jxrg=; b=wHNASlvezlbLfm4xavLTrclnzc
-	jRfHVNi6KXwxW5zrogK+udlGvN/dDm5UxBz+qAp9APsQn6FNWi3eLdzLglcioFFCMBi+0tVSjucuD
-	bCA3uC8Du5KP9fo9LKm+nNX1oTFuu2j0ljS247fMfM06C5egL591TNnYhJUZAf5T0m+e6BOWtlSOa
-	2J4zFHQDzzWkvyhpKnQc4ywrm0CxQCZ00p5XCz0ravnsQb3KzOgL0bn01foeOYFC45x65GtjqlWiK
-	+f/dY+uNwvaoep6MiIF2OxrCwDe1xCXfAT8lLyC/v0O1lbRg4noOVo3bFYd42Rjtc0FFCbbRoHeSE
-	f4JxX+1Q==;
+	bh=vxEt0Z2eexi8Ljxbl6AxsjACGcp0PhbeI1Zbkig5Ea8=; b=rmGhcAqGlv6dJdx1ePjjP3C0ms
+	W9fahDzThXQFkhkbVxZkimtAy0q90F5e0nWLU6Hp3y2NmrLAvtKj3RNmiylu30nY6eZNnpRY1yQdu
+	XM7ZMcyxYw5ZkHBsw6DRiqUq7pD6zZQWo4gs1X7FTqyoZL+I3lD30Zy0FuUdpbbmKIZMXepHaMKhR
+	ZdAO8E/ZLjwNFoWCnlsZQS/0EW7AnFF0WnUU+3ynnt/sEUCCSoJSKNseISl3u2RjPFSEKXw36DyVU
+	s7p1pN0llBHNzYAMgxDEpqnY1j1OtO0lyuh1X2MjBjgk39KrgShhBbcbmoLIXAdcfzc+ZEUxZ47sN
+	GGfO5sbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJH27-00FWFA-1D;
-	Tue, 11 Jul 2023 17:20:15 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1qJH6B-00FXwl-18;
+	Tue, 11 Jul 2023 17:24:27 +0000
+Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJH1N-00FVLC-2M;
-	Tue, 11 Jul 2023 17:19:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689095969; x=1720631969;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=8Fi7Z+SejqB8FmLnWihYsJBZfmhjua3hB69p3/WVjRY=;
-  b=HSXQOYx6V/N/LR+mkyui7Rr80ZXmGq3qS8pkg+7LjmJ1xSWEPex0sUG7
-   faPutf8jNETBPUBPCaapgler2eRd98fqCFc0WaZE7D2XK7n1vAtkdc+7S
-   sco9kuS9nk37rs1k0MsV+HPRV1E/FRrY8NlNv+SbvQgNxdKfTXWogiuqO
-   y6DpxazzuLqrPy2L1fsx5iuJWswZ7MFDTaNObkhm/rqzY1hawvXzaad7p
-   BQoUfy2CwnnovfjLNLrhS/PC8lBJZHbt+OPQxy+sJXpKyYg58n7Qr1uNi
-   GtZ3cxauZxc6Y7O4/B8KjlYHVXwANcRhyd9dMDsZua5JJP/DnWekuleSe
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="362148997"
-X-IronPort-AV: E=Sophos;i="6.01,197,1684825200"; 
-   d="scan'208";a="362148997"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 10:19:25 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="715240987"
-X-IronPort-AV: E=Sophos;i="6.01,197,1684825200"; 
-   d="scan'208";a="715240987"
-Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga007.jf.intel.com with ESMTP; 11 Jul 2023 10:18:06 -0700
-Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id DE1AC7AB; Tue, 11 Jul 2023 20:17:59 +0300 (EEST)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Mark Brown <broonie@kernel.org>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Yang Yingliang <yangyingliang@huawei.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
-	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	linux-spi@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-trace-kernel@vger.kernel.org,
-	netdev@vger.kernel.org
-Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
-	Radu Pirea <radu_nicolae.pirea@upb.ro>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v3 13/14] spi: Convert to SPI_CONTROLLER_HALF_DUPLEX
-Date: Tue, 11 Jul 2023 20:17:55 +0300
-Message-Id: <20230711171756.86736-14-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.40.0.1.gaa8946217a0b
-In-Reply-To: <20230711171756.86736-1-andriy.shevchenko@linux.intel.com>
-References: <20230711171756.86736-1-andriy.shevchenko@linux.intel.com>
+	id 1qJH68-00FXvp-1v
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Jul 2023 17:24:26 +0000
+Received: by mail-ua1-x92b.google.com with SMTP id a1e0cc1a2514c-78f32e233a0so2021916241.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Jul 2023 10:24:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20221208; t=1689096263; x=1691688263;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=vxEt0Z2eexi8Ljxbl6AxsjACGcp0PhbeI1Zbkig5Ea8=;
+        b=2MNo9qcQE70ijvOMfhfeCr5b57NMCaHmxyfLaple5c0ON72I6Fl6KkCpEF2ZUAP6Ja
+         V0z2dG+x+IsgZmudM/8wwO3HeFqajJZZHGPKbEt6SALfCu+Pjnxdii+e3bsqiFj2E3my
+         Y/ErVdBmKyVEkX5L9MQap9ZPz0HWB43sGOmSZ/vOEk0haEGCaJ4BXm0i68AOESbjIK//
+         yHeVhjhPwmEJgs7OzM7NHltcgWysktGwYwz4yjqmTJOBKT8q9CDeeMZvsmkc/oZsH0tp
+         3B2iJT8PUjxWK3Udzzlf3cKSa9yNqS4nY+xFqcPU5ISJors0n4DWQZ0X9dxbx9KCcKzN
+         SXWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689096263; x=1691688263;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=vxEt0Z2eexi8Ljxbl6AxsjACGcp0PhbeI1Zbkig5Ea8=;
+        b=Hjg8y+tE1+7jUxw07n9o0gBNNeZk17laUntn5d3zcopmWPKEndN3SChWLr6L03Snoh
+         LnkpmEi/lYu35orfKyYFY+dje15F4LiJ6/5XtboHZPqYY7a+N3MYsEKbGkk6E8G5ZEQg
+         Ba1lixh+wAt2ovuYnWerbLBcs5Q0i5Z5HT4ezecwbjp1hOhwu+amzpFT90xSVC8TU5+N
+         kA5ppedPcywJDfhDIFo/V1i7xSHcOH3Cpl13GisPd8pNRzpPRUBZ+bW8xu75eeeDUPC8
+         ANoMDj0XHRixHbg4iCcxgSRIpv8uIm/NClu/57QBpDO7Gq42wd+4XuHLbOBFkp+foEVm
+         z18g==
+X-Gm-Message-State: ABy/qLaLeoPg9qDIOAFo7pyZnBezahBN4iXjMOP7EuRKVhbinBdNDNtF
+	BRvbetyXLRO/V9QGYz73RY6Wdfhot4lOnkatW3kfhw==
+X-Google-Smtp-Source: APBJJlEbNbeKglx24tA12e4BmXAPi9rr0ZNOak9iV8KnYQWaC46zN/l1EJsSvydC+DrZ4BU4kBJ0Te5mDCNhUBfgEcw=
+X-Received: by 2002:a67:fd59:0:b0:440:cfc5:f91a with SMTP id
+ g25-20020a67fd59000000b00440cfc5f91amr8676055vsr.29.1689096263370; Tue, 11
+ Jul 2023 10:24:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20230619110705.106ec599@kernel.org> <CAHS8izOySGEcXmMg3Gbb5DS-D9-B165gNpwf5a+ObJ7WigLmHg@mail.gmail.com>
+ <5e0ac5bb-2cfa-3b58-9503-1e161f3c9bd5@kernel.org> <CAHS8izP2fPS56uXKMCnbKnPNn=xhTd0SZ1NRUgnAvyuSeSSjGA@mail.gmail.com>
+ <ZKNA9Pkg2vMJjHds@ziepe.ca> <CAHS8izNB0qNaU8OTcwDYmeVPtCrEjTTOhwCHtVsLiyhXmPLsXQ@mail.gmail.com>
+ <ZKxDZfVAbVHgNgIM@ziepe.ca> <CAHS8izO3h3yh=CLJgzhLwCVM4SLgf64nnmBtGrXs=vxuJQHnMQ@mail.gmail.com>
+ <ZKyZBbKEpmkFkpWV@ziepe.ca> <CAHS8izOTiSO5PkM+x-CASjwew=U2j=JRNpbz_6NC6AsDTQ17Ug@mail.gmail.com>
+ <ZK1U/Vo0NvhNm9pq@ziepe.ca>
+In-Reply-To: <ZK1U/Vo0NvhNm9pq@ziepe.ca>
+From: Mina Almasry <almasrymina@google.com>
+Date: Tue, 11 Jul 2023 10:24:11 -0700
+Message-ID: <CAHS8izOnw8KEu_Sm7Vf3UfqD88XheTBDHkoTmBx7r=i9g0pJRw@mail.gmail.com>
+Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
+ page_pool: remove PP_FLAG_PAGE_FRAG flag)
+To: Jason Gunthorpe <jgg@ziepe.ca>, Bjorn Helgaas <bhelgaas@google.com>, logang@deltatee.com
+Cc: Christoph Hellwig <hch@lst.de>, John Hubbard <jhubbard@nvidia.com>, 
+	Dan Williams <dan.j.williams@intel.com>, David Ahern <dsahern@kernel.org>, 
+	Jakub Kicinski <kuba@kernel.org>, Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com, 
+	Alexander Duyck <alexander.duyck@gmail.com>, Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, 
+	pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
+	Salil Mehta <salil.mehta@huawei.com>, Eric Dumazet <edumazet@google.com>, 
+	Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, 
+	Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, 
+	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
+	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Jesper Dangaard Brouer <hawk@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
+	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Jonathan Lemon <jonathan.lemon@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_101929_820405_F6D057BC 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20230711_102424_640006_DBDA5BC8 
+X-CRM114-Status: GOOD (  23.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,181 +110,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the users under SPI subsystem to SPI_CONTROLLER_HALF_DUPLEX.
+On Tue, Jul 11, 2023 at 6:11=E2=80=AFAM Jason Gunthorpe <jgg@ziepe.ca> wrot=
+e:
+>
+> On Mon, Jul 10, 2023 at 05:45:05PM -0700, Mina Almasry wrote:
+>
+> > > At least from my position I want to see MEMORY_DEVICE_PCI_P2PDMA used
+> > > to represent P2P memory.
+> >
+> > Would using p2pdma API instead of dmabuf be an acceptable direction?
+>
+> "p2pdma API" is really just using MEMORY_DEVICE_PCI_P2PDMA and
+> teaching the pagepool how to work with ZONE_DEVICE pages.
+>
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- drivers/spi/spi-amd.c             | 2 +-
- drivers/spi/spi-cavium-thunderx.c | 2 +-
- drivers/spi/spi-falcon.c          | 2 +-
- drivers/spi/spi-lp8841-rtc.c      | 2 +-
- drivers/spi/spi-mxs.c             | 2 +-
- drivers/spi/spi-omap-uwire.c      | 2 +-
- drivers/spi/spi-pic32-sqi.c       | 2 +-
- drivers/spi/spi-qcom-qspi.c       | 2 +-
- drivers/spi/spi-rockchip-sfc.c    | 2 +-
- drivers/spi/spi-sprd-adi.c        | 2 +-
- drivers/spi/spi-ti-qspi.c         | 2 +-
- drivers/spi/spi-xcomm.c           | 2 +-
- 12 files changed, 12 insertions(+), 12 deletions(-)
+Yes, that's what I have in mind. Roughly something along the lines
+where the device memory provider (GPU or what not) does something like
+a pci_p2pdma_add_resource(), and the NIC client driver allocates the
+pages from the resource, and if is_pci_p2pdma_page() use
+pci_p2pdma_map_sg() instead of dma_map_sg() and whatnot.
 
-diff --git a/drivers/spi/spi-amd.c b/drivers/spi/spi-amd.c
-index fecead757a3c..b19766571f28 100644
---- a/drivers/spi/spi-amd.c
-+++ b/drivers/spi/spi-amd.c
-@@ -404,7 +404,7 @@ static int amd_spi_probe(struct platform_device *pdev)
- 	master->bus_num = 0;
- 	master->num_chipselect = 4;
- 	master->mode_bits = 0;
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->max_speed_hz = AMD_SPI_MAX_HZ;
- 	master->min_speed_hz = AMD_SPI_MIN_HZ;
- 	master->setup = amd_spi_master_setup;
-diff --git a/drivers/spi/spi-cavium-thunderx.c b/drivers/spi/spi-cavium-thunderx.c
-index 60c0d6934654..535f7eb9fa69 100644
---- a/drivers/spi/spi-cavium-thunderx.c
-+++ b/drivers/spi/spi-cavium-thunderx.c
-@@ -64,7 +64,7 @@ static int thunderx_spi_probe(struct pci_dev *pdev,
- 		p->sys_freq = SYS_FREQ_DEFAULT;
- 	dev_info(dev, "Set system clock to %u\n", p->sys_freq);
- 
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->num_chipselect = 4;
- 	master->mode_bits = SPI_CPHA | SPI_CPOL | SPI_CS_HIGH |
- 			    SPI_LSB_FIRST | SPI_3WIRE;
-diff --git a/drivers/spi/spi-falcon.c b/drivers/spi/spi-falcon.c
-index 4c103dff0d44..8a8414cbb400 100644
---- a/drivers/spi/spi-falcon.c
-+++ b/drivers/spi/spi-falcon.c
-@@ -401,7 +401,7 @@ static int falcon_sflash_probe(struct platform_device *pdev)
- 	priv->master = master;
- 
- 	master->mode_bits = SPI_MODE_3;
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->setup = falcon_sflash_setup;
- 	master->transfer_one_message = falcon_sflash_xfer_one;
- 	master->dev.of_node = pdev->dev.of_node;
-diff --git a/drivers/spi/spi-lp8841-rtc.c b/drivers/spi/spi-lp8841-rtc.c
-index ccaa7a946359..c6810720b3b5 100644
---- a/drivers/spi/spi-lp8841-rtc.c
-+++ b/drivers/spi/spi-lp8841-rtc.c
-@@ -191,7 +191,7 @@ spi_lp8841_rtc_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 	platform_set_drvdata(pdev, master);
- 
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->mode_bits = SPI_CS_HIGH | SPI_3WIRE | SPI_LSB_FIRST;
- 
- 	master->bus_num = pdev->id;
-diff --git a/drivers/spi/spi-mxs.c b/drivers/spi/spi-mxs.c
-index 963a53dd680b..cd0e7ae07162 100644
---- a/drivers/spi/spi-mxs.c
-+++ b/drivers/spi/spi-mxs.c
-@@ -572,7 +572,7 @@ static int mxs_spi_probe(struct platform_device *pdev)
- 	master->mode_bits = SPI_CPOL | SPI_CPHA;
- 	master->num_chipselect = 3;
- 	master->dev.of_node = np;
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->auto_runtime_pm = true;
- 
- 	spi = spi_master_get_devdata(master);
-diff --git a/drivers/spi/spi-omap-uwire.c b/drivers/spi/spi-omap-uwire.c
-index 902d2e0c1f2f..f89aa9e52c23 100644
---- a/drivers/spi/spi-omap-uwire.c
-+++ b/drivers/spi/spi-omap-uwire.c
-@@ -486,7 +486,7 @@ static int uwire_probe(struct platform_device *pdev)
- 	/* the spi->mode bits understood by this driver: */
- 	master->mode_bits = SPI_CPOL | SPI_CPHA | SPI_CS_HIGH;
- 	master->bits_per_word_mask = SPI_BPW_RANGE_MASK(1, 16);
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 
- 	master->bus_num = 2;	/* "official" */
- 	master->num_chipselect = 4;
-diff --git a/drivers/spi/spi-pic32-sqi.c b/drivers/spi/spi-pic32-sqi.c
-index 51dfb49523f3..5cbebcf26a2a 100644
---- a/drivers/spi/spi-pic32-sqi.c
-+++ b/drivers/spi/spi-pic32-sqi.c
-@@ -648,7 +648,7 @@ static int pic32_sqi_probe(struct platform_device *pdev)
- 	master->dev.of_node	= pdev->dev.of_node;
- 	master->mode_bits	= SPI_MODE_3 | SPI_MODE_0 | SPI_TX_DUAL |
- 				  SPI_RX_DUAL | SPI_TX_QUAD | SPI_RX_QUAD;
--	master->flags		= SPI_MASTER_HALF_DUPLEX;
-+	master->flags		= SPI_CONTROLLER_HALF_DUPLEX;
- 	master->can_dma		= pic32_sqi_can_dma;
- 	master->bits_per_word_mask	= SPI_BPW_RANGE_MASK(8, 32);
- 	master->transfer_one_message	= pic32_sqi_one_message;
-diff --git a/drivers/spi/spi-qcom-qspi.c b/drivers/spi/spi-qcom-qspi.c
-index a8a683d6145c..5a98c52bad32 100644
---- a/drivers/spi/spi-qcom-qspi.c
-+++ b/drivers/spi/spi-qcom-qspi.c
-@@ -724,7 +724,7 @@ static int qcom_qspi_probe(struct platform_device *pdev)
- 	master->mode_bits = SPI_MODE_0 |
- 			    SPI_TX_DUAL | SPI_RX_DUAL |
- 			    SPI_TX_QUAD | SPI_RX_QUAD;
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->prepare_message = qcom_qspi_prepare_message;
- 	master->transfer_one = qcom_qspi_transfer_one;
- 	master->handle_err = qcom_qspi_handle_err;
-diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
-index 583f4187f030..bd550e76ab3d 100644
---- a/drivers/spi/spi-rockchip-sfc.c
-+++ b/drivers/spi/spi-rockchip-sfc.c
-@@ -565,7 +565,7 @@ static int rockchip_sfc_probe(struct platform_device *pdev)
- 	if (!master)
- 		return -ENOMEM;
- 
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->mem_ops = &rockchip_sfc_mem_ops;
- 	master->dev.of_node = pdev->dev.of_node;
- 	master->mode_bits = SPI_TX_QUAD | SPI_TX_DUAL | SPI_RX_QUAD | SPI_RX_DUAL;
-diff --git a/drivers/spi/spi-sprd-adi.c b/drivers/spi/spi-sprd-adi.c
-index 22e39c4c12c4..94d16aadfa44 100644
---- a/drivers/spi/spi-sprd-adi.c
-+++ b/drivers/spi/spi-sprd-adi.c
-@@ -580,7 +580,7 @@ static int sprd_adi_probe(struct platform_device *pdev)
- 	ctlr->dev.of_node = pdev->dev.of_node;
- 	ctlr->bus_num = pdev->id;
- 	ctlr->num_chipselect = num_chipselect;
--	ctlr->flags = SPI_MASTER_HALF_DUPLEX;
-+	ctlr->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	ctlr->bits_per_word_mask = 0;
- 	ctlr->transfer_one = sprd_adi_transfer_one;
- 
-diff --git a/drivers/spi/spi-ti-qspi.c b/drivers/spi/spi-ti-qspi.c
-index 5914335ff63d..bf4b40289bee 100644
---- a/drivers/spi/spi-ti-qspi.c
-+++ b/drivers/spi/spi-ti-qspi.c
-@@ -770,7 +770,7 @@ static int ti_qspi_probe(struct platform_device *pdev)
- 
- 	master->mode_bits = SPI_CPOL | SPI_CPHA | SPI_RX_DUAL | SPI_RX_QUAD;
- 
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->setup = ti_qspi_setup;
- 	master->auto_runtime_pm = true;
- 	master->transfer_one_message = ti_qspi_start_transfer_one;
-diff --git a/drivers/spi/spi-xcomm.c b/drivers/spi/spi-xcomm.c
-index ae6218bcd02a..a3d57554f5ba 100644
---- a/drivers/spi/spi-xcomm.c
-+++ b/drivers/spi/spi-xcomm.c
-@@ -218,7 +218,7 @@ static int spi_xcomm_probe(struct i2c_client *i2c)
- 	master->num_chipselect = 16;
- 	master->mode_bits = SPI_CPHA | SPI_CPOL | SPI_3WIRE;
- 	master->bits_per_word_mask = SPI_BPW_MASK(8);
--	master->flags = SPI_MASTER_HALF_DUPLEX;
-+	master->flags = SPI_CONTROLLER_HALF_DUPLEX;
- 	master->transfer_one_message = spi_xcomm_transfer_one;
- 	master->dev.of_node = i2c->dev.of_node;
- 	i2c_set_clientdata(i2c, master);
--- 
-2.40.0.1.gaa8946217a0b
+> I suspect this will clash badly with Matthew's work here:
+>
+> https://lore.kernel.org/all/20230111042214.907030-1-willy@infradead.org/
+>
+> As from a mm side we haven't ever considered that ZONE_DEVICE and
+> "netmem" can be composed together. The entire point of netmem like
+> stuff is that the allocator hands over the majority of struct page to
+> the allocatee, and ZONE_DEVICE can't work like that.
+>
+> However, assuming that can be solved in some agreeable way then it
+> would be OK to go down this path.
+>
 
+I think there is potential to solve this in an agreeable way. We may
+be able to get netmem ZONE_DEVICE pages using the memdesc idea you
+proposed, or something like the xarray meta data you mention below. If
+not that, I think Jakub already said that he is considering coming up
+with a 'page pool like' API that drivers can use, with an
+implementation that is compatible with ZONE_DEVICE pages.
+
+> But, I feel like this is just overall too hard a direction from the mm
+> perspective.
+>
+> I don't know anything about page pool, but the main sticking point is
+> its reliance on struct page. If it can find another way to locate its
+> meta data (eg an xarray), at least for some cases, it would make
+> things alot easier.
+>
+
+
+
+--=20
+Thanks,
+Mina
 
