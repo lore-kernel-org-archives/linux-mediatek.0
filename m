@@ -4,72 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EC4AC0015E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 05:08:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D3C2EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 06:08:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qfk54DMlNvTowlAzrrhl1ii93fn2Jh7ndQVWGDlwUgw=; b=zVvIefFd8D9B5bUZafS856MKvi
-	C9R/UyMdKrirt2892Q8nDoCshXlMpmThl15o5cKbbkDuyo95PVYhs6Bt4xtePl37CVMvnSkQ8Gr8Y
-	8r4IuWR6GzySnQ9qdWUe7qW5Y6CvZvrtSR2LnRYpaAOLGV+Cr4pNdaW206dEgZffNSRO/n3+sHcep
-	gxsciuz3rnHmsdh5zQTeWbQoowSJmKD8vfUH/VTzLrQYIa8+LZhXCf9wzjw9jTDU585laHpcTqYBs
-	COpdgMp9GIKtIYQX/fJ2yPQfwLfWq5d1BwvONs6jUS2i/j32Ymf4EjNvUwdxl2YA7CIftD/cSEMdD
-	7jKKbDJQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=87JKbcUVRlq+DNPw4nB+PH/NAlnJ1RS5NBqs41gMEOU=; b=lB1Yx4eFsALzGT8Rsq35GTlUoP
+	AouusnAvOMI75j5N6vz9sqUZ0fJbEMPP8g+mX2su8N5jWxFX/bwMWbWRRvWbVuYlNkcRGhmCW5aHB
+	Ca+DMGCC66ghU0+7GMehraJPlGbsg1fxVrFxgpF/KQtBENywMxjewbQJefRpMUllqMzg31EtD8rTY
+	jdd8NW2o4g8DdCl8Qhpf8wmqZe94a3i3XhTNKDwczOrpT8JM4ZaGYh/ZEmQivlR9avVJSSZYKcI6t
+	fOS3lTgxJpvLn5GlAJqdEp3MEAlu7GD0fwy6JUy3I2H2mWjtvWBgT2MfhG11lsPINq57kZglbEhqT
+	CP47EO5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJ5bR-00DiR6-2b;
-	Tue, 11 Jul 2023 05:07:57 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qJ6XQ-00DpSZ-1p;
+	Tue, 11 Jul 2023 06:07:52 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJ5bP-00DiQI-06;
-	Tue, 11 Jul 2023 05:07:56 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4D03C61140;
-	Tue, 11 Jul 2023 05:07:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CDABC433C7;
-	Tue, 11 Jul 2023 05:07:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689052073;
-	bh=wjkMoyAhJGd6T02GJdgC2lALppVBAQc+npo6LEKPwXo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aoIrIlsiTv94suh1qMxzAazKBYXheLGtW+XdRvV07wGkjYJV67Asp7y6AHPR7Wqff
-	 gPounYHIHTpsA16DkGo6pwtnX1v6JbMYO3Af9Wbm0qSwF5rX94chE6hkGEt2k76eCn
-	 PWM5WYRcBZLOmmCgdZ2M6fO+qTDMc8jyDPlk1UnTekVkHcQI3zwmAMEUkL24X4KI8i
-	 CJoI4hkYguxZBa7gcnXV2Z3GJ4F4A2nlOrp6v1tGDQhMH9wp3GDGTpFF0O9qHFQVjY
-	 Hii5lDUt8sel6W/e7TqaVHgJfu51dBSRwZtzAopSkmoCVG1IlC7Ggh0wd6sWKK2822
-	 Cz1Z4upEVXvRQ==
-Date: Tue, 11 Jul 2023 10:37:49 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Yangtao Li <frank.li@vivo.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 4/4] phy: mediatek: tphy: Convert to
- devm_platform_ioremap_resource()
-Message-ID: <ZKzjpebqy+J2b1hH@matsya>
-References: <20230705090126.26854-1-frank.li@vivo.com>
- <20230705090126.26854-4-frank.li@vivo.com>
- <ddc05f70-7075-97ab-1c94-cb3d5839ef2b@collabora.com>
- <6a1bde36-fbf9-9ddd-e47f-f3c21a3528f7@vivo.com>
- <be88f6db-8b07-1767-f48c-24a215006a4f@collabora.com>
+	id 1qJ6XN-00DpR7-1z
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Jul 2023 06:07:51 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id 38308e7fff4ca-2b703cbfaf5so83336661fa.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Jul 2023 23:07:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1689055667; x=1691647667;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=87JKbcUVRlq+DNPw4nB+PH/NAlnJ1RS5NBqs41gMEOU=;
+        b=hDyquc9TF089XR4hezU48avSlN536ZzYIGYagcXMkHzFtDub0l9RyYcfFRHc+NxyM6
+         5D+j5tlFni5gn4Y2MJZkY3PoSwMtih+IATUuQkWmkzTdFP0BfrlZtSpXA24jaKNQLmXB
+         szWHNBNGW28L4XwWj5Ir0guBDFc8kKQIWQhN8QTb7jE1drN3czpXDk7GVovoa+TRj5VB
+         0NZbQXIdq8SOTHl+8h+0ZAZijSAaqQGtDLUGdgFtTqitWuqAM2I8z4wqWiTKCEvNLQZI
+         Xi095NLulQqjZ76wW/lUKDFDmaiZCEYwISsZQQjTEUbUeKBjrbCTLfgC6uQ6pB/TvogJ
+         7Jsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689055667; x=1691647667;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=87JKbcUVRlq+DNPw4nB+PH/NAlnJ1RS5NBqs41gMEOU=;
+        b=BoO4KHJEnjaFTxXRPRJlrPKfJldab8x8YdECPDW7ODR+KGshzJZJGbTPu/9e84p/WD
+         XhxYK7F19+EkhIr5oZkSOqxYbXHhB8d+aWPx6tv4po6jcogu4iRABVndB0UZ/ZLiffHa
+         VROQwWJG+kqvliCFFlDd6A8k0IF8qNCuCBrpDxz/UTo3cMzY5lNGjvYCAnrbhjul5ody
+         D0IVLmYgmKhZkxVmbNgCKBRK8H3BeOMdwlnfMMpVoXX8xrfTEpg6KvUwpPemkcg+VFqE
+         j2Fr233GXc39NUVijXGnVDF4HlDyzEsUtzJGKip+NbNirZfnQ7Y+PkhXaBzSPKLi8m78
+         Ci2g==
+X-Gm-Message-State: ABy/qLYAkw6RwYcK80QHMf3AnHpsrwY6nIoURHjlgF7a5C6VSJdqqN8O
+	XG5MOi2h6HeDEUijsGWhDXzkhg==
+X-Google-Smtp-Source: APBJJlGxS08q6S0u3P36CbSj4k2nCgfEdYovOwC7kb/zhvIVVpsqy8GgSc/0CcDKHxo8YOxQLLirMg==
+X-Received: by 2002:a2e:7a16:0:b0:2b6:ee6d:b647 with SMTP id v22-20020a2e7a16000000b002b6ee6db647mr12391356ljc.28.1689055666942;
+        Mon, 10 Jul 2023 23:07:46 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.223.104])
+        by smtp.gmail.com with ESMTPSA id h26-20020a170906261a00b00992f8110a2bsm668980ejc.150.2023.07.10.23.07.45
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 10 Jul 2023 23:07:46 -0700 (PDT)
+Message-ID: <84847777-bad0-0aff-5279-9b80fd95c2d5@linaro.org>
+Date: Tue, 11 Jul 2023 08:07:44 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <be88f6db-8b07-1767-f48c-24a215006a4f@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v2 3/4] dt-bindings: soc: mediatek: pwrap: Add compatible
+ for MT8188
+Content-Language: en-US
+To: Jason-ch Chen <jason-ch.chen@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?=
+ <nfraprado@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230711023929.14381-1-jason-ch.chen@mediatek.com>
+ <20230711023929.14381-4-jason-ch.chen@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230711023929.14381-4-jason-ch.chen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230710_220755_169139_B0CEB3D4 
-X-CRM114-Status: GOOD (  27.13  )
+X-CRM114-CacheID: sfid-20230710_230749_650379_9CD64015 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,68 +104,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05-07-23, 12:00, AngeloGioacchino Del Regno wrote:
-> Il 05/07/23 11:30, Yangtao Li ha scritto:
-> > HI AngeloGioacchino,
-> > 
-> > On 2023/7/5 17:22, AngeloGioacchino Del Regno wrote:
-> > > Il 05/07/23 11:01, Yangtao Li ha scritto:
-> > > > Use devm_platform_ioremap_resource() to simplify code.
-> > > > 
-> > > > Signed-off-by: Yangtao Li <frank.li@vivo.com>
-> > > > ---
-> > > >   drivers/phy/mediatek/phy-mtk-tphy.c | 10 +++-------
-> > > >   1 file changed, 3 insertions(+), 7 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c
-> > > > b/drivers/phy/mediatek/phy-mtk-tphy.c
-> > > > index 0d110e50bbfd..cb7a4e6ea017 100644
-> > > > --- a/drivers/phy/mediatek/phy-mtk-tphy.c
-> > > > +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-> > > > @@ -1554,7 +1554,6 @@ static int mtk_tphy_probe(struct platform_device *pdev)
-> > > >       struct device_node *np = dev->of_node;
-> > > >       struct device_node *child_np;
-> > > >       struct phy_provider *provider;
-> > > > -    struct resource *sif_res;
-> > > >       struct mtk_tphy *tphy;
-> > > >       struct resource res;
-> > > >       int port, retval;
-> > > > @@ -1576,15 +1575,12 @@ static int mtk_tphy_probe(struct platform_device *pdev)
-> > > >       tphy->dev = dev;
-> > > >       platform_set_drvdata(pdev, tphy);
-> > > >   -    sif_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > > >       /* SATA phy of V1 needn't it if not shared with PCIe or USB */
-> > > > -    if (sif_res && tphy->pdata->version == MTK_PHY_V1) {
-> > > > +    if (tphy->pdata->version == MTK_PHY_V1) {
-> > > >           /* get banks shared by multiple phys */
-> > > > -        tphy->sif_base = devm_ioremap_resource(dev, sif_res);
-> > > > -        if (IS_ERR(tphy->sif_base)) {
-> > > > -            dev_err(dev, "failed to remap sif regs\n");
-> > > > +        tphy->sif_base = devm_platform_ioremap_resource(pdev, 0);
-> > > > +        if (IS_ERR(tphy->sif_base) && PTR_ERR(tphy->sif_base) != -EINVAL)
-> > > 
-> > > That's wrong. You want to return any error unconditionally, as the V1 PHY *needs*
-> > > the sif iospace and there's nothing afterwards retrying this.
-> > 
-> > 
-> > When sif_res is not configured, an IOMEM_ERR_PTR(-EINVAL) error will be
-> > returned in __devm_ioremap_resource.
-> > 
-> > This kind of error is ignored in the newly added code, and the driving
-> > probe process will not be interrupted at this time.
-> > 
-> > What did I miss?
-> > 
+On 11/07/2023 04:39, Jason-ch Chen wrote:
+> From: jason-ch chen <Jason-ch.Chen@mediatek.com>
 > 
-> As I said, MTK_PHY_V1 *needs* sif; devm_platform_ioremap_resource() returns a
-> handle to that iospace, or error.
+> Add MT8188 PMIC Wrapper compatible to binding document.
 > 
-> tphy->sif_base = devm_platform_ioremap_resource(pdev, 0);
-> if (IS_ERR(tphy->sif_base))
-> 	return PTR_ERR(tphy->sif_base);
+> Signed-off-by: jason-ch chen <Jason-ch.Chen@mediatek.com>
+> ---
+>  .../devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml     | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+> index a06ac2177444..c2f22e7dbcfb 100644
+> --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+> @@ -50,6 +50,11 @@ properties:
+>                - mediatek,mt8186-pwrap
+>                - mediatek,mt8195-pwrap
+>            - const: syscon
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8188-pwrap
 
-That does sound right to me
+Why do you add duplicated entries? Test your DTS before sending patches.
 
--- 
-~Vinod
+
+Best regards,
+Krzysztof
+
 
