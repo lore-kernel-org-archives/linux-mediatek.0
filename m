@@ -4,95 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 045DBEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 21:40:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AE00C001DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 23:38:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7SapvGtbAG+0bVit+0Tm+MsVJ60sIt9Oa1ltS1DpfUI=; b=e4CL2ZOcCGXRMa6N/w/zOJJZYC
-	jbMA1Teh1/NrZxgrTq5a64LeW9U6iFkQTa1D3QJn0AGmJ8CwuwbROuy0ZY1nHzBK6asWKGYmINsAQ
-	S6jI67R5rooaeHI2Vjw84XoO5SuzyQ4BfunAqA/FNYn6CrY58P6ZOzgzdt9IOfoNMY/Fr8JDiX6Qc
-	e91o9ooBF+JX60YeoRRMSIyGM+5A5faM8nkfkk6VEAD7YB5u6662R40GfDq2xmHMK6dJqe2o+JVSL
-	kVhqsYrMaOo164mdy1LiG6QoeEhPLxCP9q7KWiqmOw0S4pTc9RCqeXWdjTb8CEbN+caMG1/aF3FTO
-	7JZi9WUQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
+	Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VlZMY7B4OQtHfVwCl2fGa87UX0dm/HNDQvgsMerbs4E=; b=WFVMPrxyFPl2J68GVtiCIZawk0
+	HC6HZgkUTTKH3rX0EWGohHq/llGV9AwlauSx0dJ7cn00DoECSO/Wu3o21dM4Xed+POZP9AsqVQmPG
+	2UBNRO3lFgmbYL28EYnGUuz5wAFOoKTBS1G4OebCPEQnuJt7tKaxd7T306Tyf7Iq2NodE2PYN62LO
+	zxMuI0UBLDwkFd0fmiEqnLWgKGtqgtYS1+VxdolVYS0sk9xC5tf96KEw3gOKLCbAy6WY/xkj1kSKF
+	7FMN8BVTlSuBryzXgIZwJnemRTpP2xZP+AIj4PCGELfc8DaL2WnhyPQRQhiYu0GrLANAaGjRbM20X
+	Jy5FXkyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJL5M-00Fvee-1F;
-	Tue, 11 Jul 2023 21:39:52 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qJMwH-00G4QR-2E;
+	Tue, 11 Jul 2023 23:38:37 +0000
+Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJL5J-00Fve3-0w;
-	Tue, 11 Jul 2023 21:39:50 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id BE04A61625;
-	Tue, 11 Jul 2023 21:39:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF44BC433CD;
-	Tue, 11 Jul 2023 21:39:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689111588;
-	bh=JeYMKVTHpX+mkS2wyDV046rxCvoZrycBAR6v9F7dqzQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BIxi+xqxXbSAAHSDt3HW5sc8s+Bze60OcJfIesLMLzc3ubmdKI+LkzhTB6R385BCP
-	 ZhuOVwrSSGqlRFzuRdfUliB9xXFKZGpWJHG15yymsWXnC28OMSwPdlipwDoPyC8WaV
-	 qahwRAi9RNg8YBfqDKMYKzV9b0pgM/uxXj6JTR5iBr+Ev1d7+XD/0PRdNrLF2uuoCB
-	 AH9nKR1XnLkK2FVLC6O8IE9/rZA7whb6wtYFFvPEGTwU68azvz2XzarsLz99lntKFG
-	 LFYDygWxhUZbte80d+3b6lTReiohgRpfR+oaqjY/lBz9Jho4pWgrC65B6XcKEjtKng
-	 vXGneiM3kO1GQ==
-Message-ID: <2263ae79-690e-8a4d-fca2-31aacc5c9bc6@kernel.org>
-Date: Tue, 11 Jul 2023 15:39:45 -0600
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.12.0
-Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
- page_pool: remove PP_FLAG_PAGE_FRAG flag)
-Content-Language: en-US
-To: Jakub Kicinski <kuba@kernel.org>, Mina Almasry <almasrymina@google.com>
-Cc: Jason Gunthorpe <jgg@ziepe.ca>, Christoph Hellwig <hch@lst.de>,
- John Hubbard <jhubbard@nvidia.com>, Dan Williams <dan.j.williams@intel.com>,
- Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com,
- Alexander Duyck <alexander.duyck@gmail.com>,
- Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
- pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang
- <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>,
- Eric Dumazet <edumazet@google.com>, Sunil Goutham <sgoutham@marvell.com>,
- Geetha sowjanya <gakula@marvell.com>, Subbaraya Sundeep
- <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>,
- Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
- Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-rdma@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Jonathan Lemon <jonathan.lemon@gmail.com>
-References: <5e0ac5bb-2cfa-3b58-9503-1e161f3c9bd5@kernel.org>
- <CAHS8izP2fPS56uXKMCnbKnPNn=xhTd0SZ1NRUgnAvyuSeSSjGA@mail.gmail.com>
- <ZKNA9Pkg2vMJjHds@ziepe.ca>
- <CAHS8izNB0qNaU8OTcwDYmeVPtCrEjTTOhwCHtVsLiyhXmPLsXQ@mail.gmail.com>
- <ZKxDZfVAbVHgNgIM@ziepe.ca>
- <CAHS8izO3h3yh=CLJgzhLwCVM4SLgf64nnmBtGrXs=vxuJQHnMQ@mail.gmail.com>
- <ZKyZBbKEpmkFkpWV@ziepe.ca> <20230711042708.GA18658@lst.de>
- <20230710215906.49514550@kernel.org> <20230711050445.GA19323@lst.de>
- <ZK1FbjG+VP/zxfO1@ziepe.ca> <20230711090047.37d7fe06@kernel.org>
- <04187826-8dad-d17b-2469-2837bafd3cd5@kernel.org>
- <20230711093224.1bf30ed5@kernel.org>
- <CAHS8izNHkLF0OowU=p=mSNZss700HKAzv1Oxqu2bvvfX_HxttA@mail.gmail.com>
- <20230711133915.03482fdc@kernel.org>
-From: David Ahern <dsahern@kernel.org>
-In-Reply-To: <20230711133915.03482fdc@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+	id 1qJMwD-00G4PN-2r
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Jul 2023 23:38:35 +0000
+Received: by mail-pg1-x549.google.com with SMTP id 41be03b00d2f7-55bf5cd4e75so8385598a12.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Jul 2023 16:38:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20221208; t=1689118711; x=1691710711;
+        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=VlZMY7B4OQtHfVwCl2fGa87UX0dm/HNDQvgsMerbs4E=;
+        b=6Ki0rULefzkrV0uqZTDhEme49t7KY8Ddvh964y9JGpH0d7zaaMcI88h9tK+e2Ab0fT
+         veY/0elFR+0TnQbsPGLKw4Jmp/EnYeFI/PSjM63/7WezRDGYWEvCUsGnyE0hYonrxZCh
+         hKVd2xrVwmNoXCz5hL6oiCirMv1oj6iXffQR50NxR8dIj89owViyD6Cq1q+dG0hECTvQ
+         Gn9H85LU56bBM8WIwaFDgjeirp8M6EJB2ZueqDx7tDCWYbtZHHg6+WL/fE6cziK/CLIM
+         9MHIOD6Pg4vMMojX+pEwY1B5ucjdNhQVR3rlKMYkiAAdKcNXGpYWjVQ1oLZ+HiqDtv/m
+         dEsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689118711; x=1691710711;
+        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=VlZMY7B4OQtHfVwCl2fGa87UX0dm/HNDQvgsMerbs4E=;
+        b=ONKJtbUvFk7wbwlJKoTZSCq4bETrixCPjrw2abdfx4spwH8U87cH1V76SOs6/YXafN
+         W9ssuMmNYL3rQWNjeDwAqx5p3bZjka4JLl4ZvFPUtahpPsHDrO/mLTnGtU5vNzOaCPOz
+         ab45vLmZYbvHUbgMeaaYBgadg/WMfedWr8+RumDcKday2aWVh2ARGyrCi2sW9EBg/SO+
+         z0Vp/mEpRBcg65MCBk114jjLgZo79tYBQ3i3ga9tUx3NNuCCw8epFqybWplQZYsKKKzV
+         xDjWQa5KPkdqSMuL/jVbe9LCvr3f1uSqT46OW6Bq3n01k+qiY8zuRLQ6KhoEJxxDlqx2
+         S3tA==
+X-Gm-Message-State: ABy/qLa608bkQFdSdjautkAy1FNduYheebE+nG/jQspnp3EpNuub5v82
+	AY7M30yx+Ul0PZr/CoMasqrKb2tXkLcH
+X-Google-Smtp-Source: APBJJlEh1KFYgX73qa7oSh36gSCXi/QGqv/5l19pZiBs2u+PQkzFrZtGOa0EdwtmAe2WF+om3uaJkkHyZ7t9
+X-Received: from dhavale-ctop.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:5e39])
+ (user=dhavale job=sendgmr) by 2002:a63:9511:0:b0:55c:2f9f:e427 with SMTP id
+ p17-20020a639511000000b0055c2f9fe427mr4581555pgd.5.1689118711049; Tue, 11 Jul
+ 2023 16:38:31 -0700 (PDT)
+Date: Tue, 11 Jul 2023 16:38:15 -0700
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.41.0.255.g8b1d071c50-goog
+Message-ID: <20230711233816.2187577-1-dhavale@google.com>
+Subject: [PATCH v1] rcu: Fix and improve RCU read lock checks when !CONFIG_DEBUG_LOCK_ALLOC
+From: Sandeep Dhavale <dhavale@google.com>
+To: "Paul E. McKenney" <paulmck@kernel.org>, Frederic Weisbecker <frederic@kernel.org>, 
+	Neeraj Upadhyay <quic_neeraju@quicinc.com>, Joel Fernandes <joel@joelfernandes.org>, 
+	Josh Triplett <josh@joshtriplett.org>, Boqun Feng <boqun.feng@gmail.com>, 
+	Steven Rostedt <rostedt@goodmis.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, 
+	Lai Jiangshan <jiangshanlai@gmail.com>, Zqiang <qiang.zhang1211@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-erofs@lists.ozlabs.org, xiang@kernel.org, 
+	Sandeep Dhavale <dhavale@google.com>, Will Shiu <Will.Shiu@mediatek.com>, kernel-team@android.com, 
+	rcu@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_143949_409468_C781AC10 
-X-CRM114-Status: GOOD (  25.29  )
+X-CRM114-CacheID: sfid-20230711_163833_923282_5F34B457 
+X-CRM114-Status: GOOD (  17.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,68 +93,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/11/23 2:39 PM, Jakub Kicinski wrote:
-> On Tue, 11 Jul 2023 10:06:28 -0700 Mina Almasry wrote:
->>>> Any reason not to allow an alternative representation for skb frags than
->>>> struct page?  
->>>
->>> I don't think there's a hard technical reason. We can make it work.  
->>
->> I also think we can switch the representation for skb frags to
->> something else. However - please do correct me if I'm wrong - I don't
->> think that is sufficient for device memory TCP. My understanding is
->> that we also need to modify any NIC drivers that want to use device
->> memory TCP to understand a new memory type, and the page pool as well
->> if that's involved. I think in particular modifying the memory type in
->> all the NIC drivers that want to do device memory TCP is difficult. Do
->> you think this is feasible?
-> 
-> That's why I was thinking about adding an abstraction between 
-> the page pool and the driver. Instead of feeding driver pages
-> a new abstraction could feed the driver just an identifier and a PA.
+Currently if CONFIG_DEBUG_LOCK_ALLOC is not set
 
-skb frag is currently a bio_vec. Overloading the 'struct page' address
-in that struct with another address is easy to do. Requiring a certain
-alignment on the address gives you a few low bits to use a flags / magic
-/ etc.
+- rcu_read_lock_held() always returns 1
+- rcu_read_lock_any_held() may return 0 with CONFIG_PREEMPT_RCU
 
-Overloading len and offset is not really possible - way too much code is
-affected (e.g., iov walking and MSS / TSO segmenting).
+This is inconsistent and it was discovered when trying a fix
+for problem reported [1] with CONFIG_DEBUG_LOCK_ALLOC is not
+set and CONFIG_PREEMPT_RCU is enabled. Gist of the problem is
+that EROFS wants to detect atomic context so it can do inline
+decompression whenever possible, this is important performance
+optimization. It turns out that z_erofs_decompressqueue_endio()
+can be called from blk_mq_flush_plug_list() with rcu lock held
+and hence fix uses rcu_read_lock_any_held() to decide to use
+sync/inline decompression vs async decompression.
 
-ie., you could overload page address with a pointer to an object in your
-new abstraction layer and the struct has the other meta data.
+As per documentation, we should return lock is held if we aren't
+certain. But it seems we can improve the checks for if the lock
+is held even if CONFIG_DEBUG_LOCK_ALLOC is not set instead of
+hardcoding to always return true.
 
-typedef struct skb_frag {
-	union {
-		struct bio_vec bvec;
-		struct new_abstraction abs;
-	};
-} skb_frag_t;
+* rcu_read_lock_held()
+- For CONFIG_PREEMPT_RCU using rcu_preempt_depth()
+- using preemptible() (indirectly preempt_count())
 
-where
+* rcu_read_lock_bh_held()
+- For CONFIG_PREEMPT_RT Using in_softirq() (indirectly softirq_cont())
+- using preemptible() (indirectly preempt_count())
 
-struct new_abstraction {
-	void *addr,
-	unsigned int len;
-	unsigned int offset;
-};
+Lastly to fix the inconsistency, rcu_read_lock_any_held() is updated
+to use other rcu_read_lock_*_held() checks.
 
-I have been playing with a similar and it co-exists with the existing
-code quite well with the constraint on location of len and offset.
+Two of the improved checks are moved to kernel/rcu/update.c because
+rcupdate.h is included from the very low level headers which do not know
+what current (task_struct) is so the macro rcu_preempt_depth() cannot be
+expanded in the rcupdate.h. See the original comment for
+rcu_preempt_depth() in patch at [2] for more information.
 
-> 
-> Whether we want to support fragmentation in that model or not would 
-> have to be decided.
-> 
-> We can take pages from the page pool and feed them to drivers via
-> such an API, but drivers need to stop expecting pages.
+[1]
+https://lore.kernel.org/all/20230621220848.3379029-1-dhavale@google.com/
+[2]
+https://lore.kernel.org/all/1281392111-25060-8-git-send-email-paulmck@linux.vnet.ibm.com/
 
-yes, drivers would have to be updated to understand the new format. A
-downside, but again relatively easy to manage.
+Reported-by: Will Shiu <Will.Shiu@mediatek.com>
+Signed-off-by: Sandeep Dhavale <dhavale@google.com>
+---
+ include/linux/rcupdate.h | 12 +++---------
+ kernel/rcu/update.c      | 21 ++++++++++++++++++++-
+ 2 files changed, 23 insertions(+), 10 deletions(-)
 
-> 
-> That's for data buffers only, obviously. We can keep using pages 
-> and raw page pool for headers.
+diff --git a/include/linux/rcupdate.h b/include/linux/rcupdate.h
+index 5e5f920ade90..0d1d1d8c2360 100644
+--- a/include/linux/rcupdate.h
++++ b/include/linux/rcupdate.h
+@@ -319,14 +319,11 @@ int rcu_read_lock_any_held(void);
+ # define rcu_lock_acquire(a)		do { } while (0)
+ # define rcu_lock_release(a)		do { } while (0)
+ 
+-static inline int rcu_read_lock_held(void)
+-{
+-	return 1;
+-}
++int rcu_read_lock_held(void);
+ 
+ static inline int rcu_read_lock_bh_held(void)
+ {
+-	return 1;
++	return !preemptible() || in_softirq();
+ }
+ 
+ static inline int rcu_read_lock_sched_held(void)
+@@ -334,10 +331,7 @@ static inline int rcu_read_lock_sched_held(void)
+ 	return !preemptible();
+ }
+ 
+-static inline int rcu_read_lock_any_held(void)
+-{
+-	return !preemptible();
+-}
++int rcu_read_lock_any_held(void);
+ 
+ static inline int debug_lockdep_rcu_enabled(void)
+ {
+diff --git a/kernel/rcu/update.c b/kernel/rcu/update.c
+index 19bf6fa3ee6a..b34fc5bb96cf 100644
+--- a/kernel/rcu/update.c
++++ b/kernel/rcu/update.c
+@@ -390,8 +390,27 @@ int rcu_read_lock_any_held(void)
+ }
+ EXPORT_SYMBOL_GPL(rcu_read_lock_any_held);
+ 
+-#endif /* #ifdef CONFIG_DEBUG_LOCK_ALLOC */
++#else /* #ifdef CONFIG_DEBUG_LOCK_ALLOC */
+ 
++int rcu_read_lock_held(void)
++{
++	if (IS_ENABLED(CONFIG_PREEMPT_RCU))
++		return rcu_preempt_depth();
++	return !preemptible();
++}
++EXPORT_SYMBOL_GPL(rcu_read_lock_held);
++
++int rcu_read_lock_any_held(void)
++{
++	if (rcu_read_lock_held() ||
++	    rcu_read_lock_bh_held() ||
++	    rcu_read_lock_sched_held())
++		return 1;
++	return !preemptible();
++}
++EXPORT_SYMBOL_GPL(rcu_read_lock_any_held);
++
++#endif /* #else #ifdef CONFIG_DEBUG_LOCK_ALLOC */
+ /**
+  * wakeme_after_rcu() - Callback function to awaken a task after grace period
+  * @head: Pointer to rcu_head member within rcu_synchronize structure
+-- 
+2.41.0.255.g8b1d071c50-goog
 
-yes.
 
