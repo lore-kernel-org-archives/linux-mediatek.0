@@ -4,81 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AE00C001DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 23:38:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E3B8EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 23:57:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
-	Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VlZMY7B4OQtHfVwCl2fGa87UX0dm/HNDQvgsMerbs4E=; b=WFVMPrxyFPl2J68GVtiCIZawk0
-	HC6HZgkUTTKH3rX0EWGohHq/llGV9AwlauSx0dJ7cn00DoECSO/Wu3o21dM4Xed+POZP9AsqVQmPG
-	2UBNRO3lFgmbYL28EYnGUuz5wAFOoKTBS1G4OebCPEQnuJt7tKaxd7T306Tyf7Iq2NodE2PYN62LO
-	zxMuI0UBLDwkFd0fmiEqnLWgKGtqgtYS1+VxdolVYS0sk9xC5tf96KEw3gOKLCbAy6WY/xkj1kSKF
-	7FMN8BVTlSuBryzXgIZwJnemRTpP2xZP+AIj4PCGELfc8DaL2WnhyPQRQhiYu0GrLANAaGjRbM20X
-	Jy5FXkyg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=leJKi4u06YRTzo0lBrUW1GjV6mczJ561dFwtREQL+Dg=; b=jBIF55awVNGbaLCC8yB0IHRuqB
+	Tm8px7qkmgWJ3Khy3qu8FU2X48yf7G6U2/4jCO2rmJ4xMJtm4D9w/DmujSY1+auuYZXnJQ227Ugfi
+	+WBZBot8rTy3hp4DzQ7uVCyQjs+lFFIV4zg3KkguAxXfSTs5pcm/CiB02O1H5SZ01YCEodERYyRiA
+	+Q7Mh/Sy3ELjeUhkvDYzEfOX+aR180XNQwHnGOOTqPNY3WZau0BI0UsKAJuYZbeTP3CBM+QUqaTKX
+	k6sj1sevO9UhQStC5WmzkglVkkEtjX0GeGUJZSauNNGUeLjhodcOJ+UbIVI6jCd49ijP0fIhrhln0
+	A8xDwCow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJMwH-00G4QR-2E;
-	Tue, 11 Jul 2023 23:38:37 +0000
-Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
+	id 1qJNE8-00G68a-2E;
+	Tue, 11 Jul 2023 23:57:04 +0000
+Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJMwD-00G4PN-2r
+	id 1qJNE5-00G66k-0b
 	for linux-mediatek@lists.infradead.org;
-	Tue, 11 Jul 2023 23:38:35 +0000
-Received: by mail-pg1-x549.google.com with SMTP id 41be03b00d2f7-55bf5cd4e75so8385598a12.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 11 Jul 2023 16:38:31 -0700 (PDT)
+	Tue, 11 Jul 2023 23:57:02 +0000
+Received: by mail-oi1-x236.google.com with SMTP id 5614622812f47-3a337ddff16so4844758b6e.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Jul 2023 16:57:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20221208; t=1689118711; x=1691710711;
-        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=VlZMY7B4OQtHfVwCl2fGa87UX0dm/HNDQvgsMerbs4E=;
-        b=6Ki0rULefzkrV0uqZTDhEme49t7KY8Ddvh964y9JGpH0d7zaaMcI88h9tK+e2Ab0fT
-         veY/0elFR+0TnQbsPGLKw4Jmp/EnYeFI/PSjM63/7WezRDGYWEvCUsGnyE0hYonrxZCh
-         hKVd2xrVwmNoXCz5hL6oiCirMv1oj6iXffQR50NxR8dIj89owViyD6Cq1q+dG0hECTvQ
-         Gn9H85LU56bBM8WIwaFDgjeirp8M6EJB2ZueqDx7tDCWYbtZHHg6+WL/fE6cziK/CLIM
-         9MHIOD6Pg4vMMojX+pEwY1B5ucjdNhQVR3rlKMYkiAAdKcNXGpYWjVQ1oLZ+HiqDtv/m
-         dEsg==
+        d=ziepe.ca; s=google; t=1689119819; x=1691711819;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=leJKi4u06YRTzo0lBrUW1GjV6mczJ561dFwtREQL+Dg=;
+        b=DXK8WidcvmvzjeVYH/6WijviZ73toBOmyVp9mIOd03ZD+R3rHWdoxQSvE5e9wD1KCJ
+         9mK/DDwssbLXSnouE8MAwnVDe+VkRcpQSrinJNmyu0FnYmd+CKVNA1F34dvSGu5lfZwy
+         cyr25JKjczwfRObdI7oARPE9gHghtmOAegQpocDq/APkFl+1PNSXGJo1xP2SNdGpJGtv
+         /nEQL7vqxVxYsTwIY7luylFSj8xoTEsYM9t5cm2HxYfPwTnzx8rs4qClhieKHRjwL54Q
+         8sya8gM8UB4rmOcx/i0v01+HlH4cbtNGlO2x9kzZaZUcFmUL9dtfGxX7fDRkv+FMzf1u
+         InjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689118711; x=1691710711;
-        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=VlZMY7B4OQtHfVwCl2fGa87UX0dm/HNDQvgsMerbs4E=;
-        b=ONKJtbUvFk7wbwlJKoTZSCq4bETrixCPjrw2abdfx4spwH8U87cH1V76SOs6/YXafN
-         W9ssuMmNYL3rQWNjeDwAqx5p3bZjka4JLl4ZvFPUtahpPsHDrO/mLTnGtU5vNzOaCPOz
-         ab45vLmZYbvHUbgMeaaYBgadg/WMfedWr8+RumDcKday2aWVh2ARGyrCi2sW9EBg/SO+
-         z0Vp/mEpRBcg65MCBk114jjLgZo79tYBQ3i3ga9tUx3NNuCCw8epFqybWplQZYsKKKzV
-         xDjWQa5KPkdqSMuL/jVbe9LCvr3f1uSqT46OW6Bq3n01k+qiY8zuRLQ6KhoEJxxDlqx2
-         S3tA==
-X-Gm-Message-State: ABy/qLa608bkQFdSdjautkAy1FNduYheebE+nG/jQspnp3EpNuub5v82
-	AY7M30yx+Ul0PZr/CoMasqrKb2tXkLcH
-X-Google-Smtp-Source: APBJJlEh1KFYgX73qa7oSh36gSCXi/QGqv/5l19pZiBs2u+PQkzFrZtGOa0EdwtmAe2WF+om3uaJkkHyZ7t9
-X-Received: from dhavale-ctop.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:5e39])
- (user=dhavale job=sendgmr) by 2002:a63:9511:0:b0:55c:2f9f:e427 with SMTP id
- p17-20020a639511000000b0055c2f9fe427mr4581555pgd.5.1689118711049; Tue, 11 Jul
- 2023 16:38:31 -0700 (PDT)
-Date: Tue, 11 Jul 2023 16:38:15 -0700
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.41.0.255.g8b1d071c50-goog
-Message-ID: <20230711233816.2187577-1-dhavale@google.com>
-Subject: [PATCH v1] rcu: Fix and improve RCU read lock checks when !CONFIG_DEBUG_LOCK_ALLOC
-From: Sandeep Dhavale <dhavale@google.com>
-To: "Paul E. McKenney" <paulmck@kernel.org>, Frederic Weisbecker <frederic@kernel.org>, 
-	Neeraj Upadhyay <quic_neeraju@quicinc.com>, Joel Fernandes <joel@joelfernandes.org>, 
-	Josh Triplett <josh@joshtriplett.org>, Boqun Feng <boqun.feng@gmail.com>, 
-	Steven Rostedt <rostedt@goodmis.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, 
-	Lai Jiangshan <jiangshanlai@gmail.com>, Zqiang <qiang.zhang1211@gmail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-erofs@lists.ozlabs.org, xiang@kernel.org, 
-	Sandeep Dhavale <dhavale@google.com>, Will Shiu <Will.Shiu@mediatek.com>, kernel-team@android.com, 
-	rcu@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+        d=1e100.net; s=20221208; t=1689119819; x=1691711819;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=leJKi4u06YRTzo0lBrUW1GjV6mczJ561dFwtREQL+Dg=;
+        b=kfaQ0QFsgXqJhfLUGB7XQMP4UIDH14CIk1OuLnzaJZ92CJaHSIijIZTvP0WsUHvlPM
+         /k7dhgLJb4SPNFu4055GynZffdnuPGZSYm1jvR0LJoTppPCGbVAfiPV1PWsCM14EC3dq
+         TyZmTuFMq6+xBB/4oWL5CTMctNhLg6Yjzme8g+ALMsMNyhtaa0CLGtTzY8ufSUGTb9IP
+         Bl7ZjtH45s1Na+dDBOVVkIXIZ6RBPucgc44B/cJ9HPz93b8tIbz7qgF9wMFRAUD2U9OW
+         rZ1uIkHOgBNSSqFf+EqXLgF+IWHGZ2YTrfYgtsNEkc6NxvlLERbqXXLAfDbp3oYLkD8U
+         KsaQ==
+X-Gm-Message-State: ABy/qLa7Bvds43Fsgtc5sp8Jr0a883TeeuEjOo5G8CtyporysH+EZLPX
+	Gsx7FVPds620UMZwuaW7FqBTOA==
+X-Google-Smtp-Source: APBJJlHPVDwycmPbbNO1kwHaGDMrzsNQAmVLFppzVomF/d82yUMQJxrek5vJqs3gAPlID0cxcW6lxg==
+X-Received: by 2002:a05:6808:11cf:b0:3a3:fa64:b543 with SMTP id p15-20020a05680811cf00b003a3fa64b543mr9841890oiv.12.1689119819344;
+        Tue, 11 Jul 2023 16:56:59 -0700 (PDT)
+Received: from ziepe.ca (hlfxns017vw-142-68-25-194.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.25.194])
+        by smtp.gmail.com with ESMTPSA id x11-20020a63b34b000000b005533c53f550sm1952223pgt.45.2023.07.11.16.56.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Jul 2023 16:56:58 -0700 (PDT)
+Received: from jgg by wakko with local (Exim 4.95)
+	(envelope-from <jgg@ziepe.ca>)
+	id 1qJNE0-000KOY-Hj;
+	Tue, 11 Jul 2023 20:56:56 -0300
+Date: Tue, 11 Jul 2023 20:56:56 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Christoph Hellwig <hch@lst.de>, Mina Almasry <almasrymina@google.com>,
+	John Hubbard <jhubbard@nvidia.com>,
+	Dan Williams <dan.j.williams@intel.com>,
+	David Ahern <dsahern@kernel.org>,
+	Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com,
+	Alexander Duyck <alexander.duyck@gmail.com>,
+	Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
+	pabeni@redhat.com, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>,
+	Yisen Zhuang <yisen.zhuang@huawei.com>,
+	Salil Mehta <salil.mehta@huawei.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Sunil Goutham <sgoutham@marvell.com>,
+	Geetha sowjanya <gakula@marvell.com>,
+	Subbaraya Sundeep <sbhatta@marvell.com>,
+	hariprasad <hkelam@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>,
+	Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jesper Dangaard Brouer <hawk@kernel.org>,
+	Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Jonathan Lemon <jonathan.lemon@gmail.com>
+Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
+ page_pool: remove PP_FLAG_PAGE_FRAG flag)
+Message-ID: <ZK3sSMSVWM5EbHLG@ziepe.ca>
+References: <ZKyZBbKEpmkFkpWV@ziepe.ca>
+ <20230711042708.GA18658@lst.de>
+ <20230710215906.49514550@kernel.org>
+ <20230711050445.GA19323@lst.de>
+ <ZK1FbjG+VP/zxfO1@ziepe.ca>
+ <20230711090047.37d7fe06@kernel.org>
+ <ZK2Gh2qGxlpZexCM@ziepe.ca>
+ <20230711100636.63b0a88a@kernel.org>
+ <ZK2k9YQiXTtcGhp0@ziepe.ca>
+ <20230711133420.5df88f02@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230711133420.5df88f02@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_163833_923282_5F34B457 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20230711_165701_225871_CF12C77E 
+X-CRM114-Status: GOOD (  16.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,122 +130,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently if CONFIG_DEBUG_LOCK_ALLOC is not set
+On Tue, Jul 11, 2023 at 01:34:20PM -0700, Jakub Kicinski wrote:
 
-- rcu_read_lock_held() always returns 1
-- rcu_read_lock_any_held() may return 0 with CONFIG_PREEMPT_RCU
+> > Yep. At the high end open standards based ethernet has also notably
+> > "failed" as well. Every switch vendor now offers their own proprietary
+> > ecosystem on a whole bunch of different axis. They all present
+> > "ethernet" toward the host but the host often needs to work in a
+> > special way to really take full advantage of the proprietary fabric
+> > behaviors.
+> 
+> I'm not familiar with "high end open standards based on ethernet", would
+> those be some RDMA / storage things? For TCP/IP networks pretty much
+> the only things that matter in a switch are bandwidth, size of buffers,
+> power... Implementation stuff.
 
-This is inconsistent and it was discovered when trying a fix
-for problem reported [1] with CONFIG_DEBUG_LOCK_ALLOC is not
-set and CONFIG_PREEMPT_RCU is enabled. Gist of the problem is
-that EROFS wants to detect atomic context so it can do inline
-decompression whenever possible, this is important performance
-optimization. It turns out that z_erofs_decompressqueue_endio()
-can be called from blk_mq_flush_plug_list() with rcu lock held
-and hence fix uses rcu_read_lock_any_held() to decide to use
-sync/inline decompression vs async decompression.
+I would say when you are getting into ethernet deployments with 25 or
+51 Tbps switches directly connected to hosts running at >100G you are
+getting into the high end side of things.
 
-As per documentation, we should return lock is held if we aren't
-certain. But it seems we can improve the checks for if the lock
-is held even if CONFIG_DEBUG_LOCK_ALLOC is not set instead of
-hardcoding to always return true.
+These are very expensive networks. They run complex congestion
+provoking workloads. They have sophisticated multi-pathing. They often
+use use a non-blocking topology. Congestion management is important.
 
-* rcu_read_lock_held()
-- For CONFIG_PREEMPT_RCU using rcu_preempt_depth()
-- using preemptible() (indirectly preempt_count())
+Making this work with good utilization, and low tail latency is a
+really hard problem. Many of the solutions come with switch features
+supporting it.
 
-* rcu_read_lock_bh_held()
-- For CONFIG_PREEMPT_RT Using in_softirq() (indirectly softirq_cont())
-- using preemptible() (indirectly preempt_count())
+You'd proably say these are not TCP focused networks, even though they
+are based on ethernet and IP.
 
-Lastly to fix the inconsistency, rcu_read_lock_any_held() is updated
-to use other rcu_read_lock_*_held() checks.
+So I think of them as high end "standards based" ethernet and IP
+looking networks that have proprietary elements mixed in throughout.
 
-Two of the improved checks are moved to kernel/rcu/update.c because
-rcupdate.h is included from the very low level headers which do not know
-what current (task_struct) is so the macro rcu_preempt_depth() cannot be
-expanded in the rcupdate.h. See the original comment for
-rcu_preempt_depth() in patch at [2] for more information.
+Right now there is a bit of a press war between vendors on 'ethernet
+for AI'. Both Broadcom and NVIDIA are taking techonlogies that were
+originally built for TCP ethernet networks and remixing/speeding them
+up to run roce workloads effectively. There is alot more information
+available now without NDA that shows some detail on this space.
 
-[1]
-https://lore.kernel.org/all/20230621220848.3379029-1-dhavale@google.com/
-[2]
-https://lore.kernel.org/all/1281392111-25060-8-git-send-email-paulmck@linux.vnet.ibm.com/
+AWS's SRD multipathing, Broadcom "AI Ethernet" and NVIDIA's Spectrum-X
+spring to mind as topical to what these sorts of ethernet networks
+are.
 
-Reported-by: Will Shiu <Will.Shiu@mediatek.com>
-Signed-off-by: Sandeep Dhavale <dhavale@google.com>
----
- include/linux/rcupdate.h | 12 +++---------
- kernel/rcu/update.c      | 21 ++++++++++++++++++++-
- 2 files changed, 23 insertions(+), 10 deletions(-)
+> A lot of "standardization" efforts are just attempts to prove to 
+> a buyers that an ecosystem exists.
 
-diff --git a/include/linux/rcupdate.h b/include/linux/rcupdate.h
-index 5e5f920ade90..0d1d1d8c2360 100644
---- a/include/linux/rcupdate.h
-+++ b/include/linux/rcupdate.h
-@@ -319,14 +319,11 @@ int rcu_read_lock_any_held(void);
- # define rcu_lock_acquire(a)		do { } while (0)
- # define rcu_lock_release(a)		do { } while (0)
- 
--static inline int rcu_read_lock_held(void)
--{
--	return 1;
--}
-+int rcu_read_lock_held(void);
- 
- static inline int rcu_read_lock_bh_held(void)
- {
--	return 1;
-+	return !preemptible() || in_softirq();
- }
- 
- static inline int rcu_read_lock_sched_held(void)
-@@ -334,10 +331,7 @@ static inline int rcu_read_lock_sched_held(void)
- 	return !preemptible();
- }
- 
--static inline int rcu_read_lock_any_held(void)
--{
--	return !preemptible();
--}
-+int rcu_read_lock_any_held(void);
- 
- static inline int debug_lockdep_rcu_enabled(void)
- {
-diff --git a/kernel/rcu/update.c b/kernel/rcu/update.c
-index 19bf6fa3ee6a..b34fc5bb96cf 100644
---- a/kernel/rcu/update.c
-+++ b/kernel/rcu/update.c
-@@ -390,8 +390,27 @@ int rcu_read_lock_any_held(void)
- }
- EXPORT_SYMBOL_GPL(rcu_read_lock_any_held);
- 
--#endif /* #ifdef CONFIG_DEBUG_LOCK_ALLOC */
-+#else /* #ifdef CONFIG_DEBUG_LOCK_ALLOC */
- 
-+int rcu_read_lock_held(void)
-+{
-+	if (IS_ENABLED(CONFIG_PREEMPT_RCU))
-+		return rcu_preempt_depth();
-+	return !preemptible();
-+}
-+EXPORT_SYMBOL_GPL(rcu_read_lock_held);
-+
-+int rcu_read_lock_any_held(void)
-+{
-+	if (rcu_read_lock_held() ||
-+	    rcu_read_lock_bh_held() ||
-+	    rcu_read_lock_sched_held())
-+		return 1;
-+	return !preemptible();
-+}
-+EXPORT_SYMBOL_GPL(rcu_read_lock_any_held);
-+
-+#endif /* #else #ifdef CONFIG_DEBUG_LOCK_ALLOC */
- /**
-  * wakeme_after_rcu() - Callback function to awaken a task after grace period
-  * @head: Pointer to rcu_head member within rcu_synchronize structure
--- 
-2.41.0.255.g8b1d071c50-goog
+Heh, that was probably more true years ago. These days it seems like
+some standardization is also being done so the large hyperscalers can
+improve their Approved Vendors List.
 
+I suppose as long as the result is something we can implement openly
+in Linux the motivation for standardization is less important.
+
+Jason
 
