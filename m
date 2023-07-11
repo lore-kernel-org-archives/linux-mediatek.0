@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 175BFEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 12:58:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A372C001DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 12:58:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eIY64OJ16PWkOviKweK04HJ+AS1S+mU7TE5PV56TFpk=; b=aP5FzHzfhUE8vjbOj0Jf26igA5
-	D/3lFZ5zyhBVJWvHaGCEcbWS0NZdrn2wo/AiPvTtlotEaI9SStTcxDVE8QYl6Ln5/JFotXm70EQj/
-	A2OAUOxHp1ljzA0gilC0OMWUAuLjRPp+JeenW9EObZLqfg8O1+aVmO9ssBgMOnrloqbcxGm1DG0Dt
-	7OF8GEQLwEywDxqRehX3SUO4LaVIPHi0lTcpOc4Iq/d7AxDKeCGTWSMxVxIiOqiG8BPAnUCFMSmwT
-	bQi4yd1PUhTYvz0q5+u/P7vPVMBRE6LxE0rTOl0H7g9Ul5Sb/lisfUch7UMloMk5ZUN3kx3VMCtPp
-	2xNxzfrg==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MaO4Pp49q26ZvXTVzU2ZtIU90FsXfRWQRbJkJwwgleA=; b=WyOH2YKv8beD4DmIDqCLUAyK4H
+	jzua/q2eVn8ykxiWOrnXaxla62sS6KPODvAQi5mh5gBCtZRxRNhOkIYtPzsrlI4EJK8Q56FXDetCs
+	do4xMAYTb7YEGc8wq9YJCZK+7JecnWwrDULt4oOmu6owIdRcdGOYxMlDNKOHOPL0wSw0itjPnIzSY
+	3JXa/I4aUUjAyGUKAC7awgiJjVNkcEs99kr0sCVB15Xl6/li3Blp1EaizNHzSGlJWKLb4BBQOKjGT
+	FImUNh/5iX6DMbd8sOCsyfEq2V/HCKsNc6h7FfhS4fvpSi1VZX6lvN/8WYzrAY9MuiZ7puTMZkAde
+	OngePzAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJCwO-00EvrK-12;
-	Tue, 11 Jul 2023 12:58:04 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qJCwu-00Evyl-2F;
+	Tue, 11 Jul 2023 12:58:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJCwK-00Evqi-2x;
-	Tue, 11 Jul 2023 12:58:02 +0000
-X-UUID: 8dc698961fea11ee83ed1395ce914268-20230711
+	id 1qJCws-00EvxE-31;
+	Tue, 11 Jul 2023 12:58:36 +0000
+X-UUID: a1644d8a1fea11ee912e1518a6540028-20230711
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=eIY64OJ16PWkOviKweK04HJ+AS1S+mU7TE5PV56TFpk=;
-	b=SCgJWLxk/+fDaEBwLbaWdplYFT7GGhm8KevyFhvqQILcyDpVc50aLBeztFCJF0lOz0EpK8rC5pVCCPNXWwVu0exBKQxGARYbqB3jwNQ6/l57UkgTNC7tSs4SfEh4cZIFNoDDTNn8agE+WBNce+lUavlBAS8bfK/z+x9rT6mSSQo=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=MaO4Pp49q26ZvXTVzU2ZtIU90FsXfRWQRbJkJwwgleA=;
+	b=H1YchBBdxt90zTliS+PHEBDBSB/ydxtkqMgk40f2U5ulZ/EDwJAeviSxWCFh2zOR6UPPVnLu27ihusXLgS0joNngMNPgbzP1q2wNEr7SzXlkI4FXVAnMJfIznwN+idLvoSRriTjFbjfBICxIpoECNZmTWKYaxFinbnIcKuwcLdc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.28,REQID:4864b761-2605-46c7-91fb-d0b0ce77766e,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:176cd25,CLOUDID:0cb71b68-314d-4083-81b6-6a74159151eb,B
+X-CID-O-INFO: VERSION:1.1.28,REQID:e54e9a65-334b-47f0-ad80-686b8900995f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:176cd25,CLOUDID:beb71b68-314d-4083-81b6-6a74159151eb,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 8dc698961fea11ee83ed1395ce914268-20230711
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+X-UUID: a1644d8a1fea11ee912e1518a6540028-20230711
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2037572988; Tue, 11 Jul 2023 05:57:55 -0700
+	with ESMTP id 360208205; Tue, 11 Jul 2023 05:58:28 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 11 Jul 2023 20:57:53 +0800
+ 15.2.1118.26; Tue, 11 Jul 2023 20:57:50 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 11 Jul 2023 20:57:52 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 11 Jul 2023 20:57:50 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
@@ -66,19 +66,17 @@ CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 2/3] media: mediatek: vcodec: Add capture format to support 10bit raster mode
-Date: Tue, 11 Jul 2023 20:57:48 +0800
-Message-ID: <20230711125749.15555-3-yunfei.dong@mediatek.com>
+Subject: [PATCH 0/3] media: mediatek: vcodec: Add driver to support 10bit
+Date: Tue, 11 Jul 2023 20:57:46 +0800
+Message-ID: <20230711125749.15555-1-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230711125749.15555-1-yunfei.dong@mediatek.com>
-References: <20230711125749.15555-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_055800_962768_C6490575 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20230711_055835_001779_F0602519 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,76 +91,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mingjia Zhang <mingjia.zhang@mediatek.com>
+Define two capture formats V4L2_PIX_FMT_MT2110R and
+V4L2_PIX_FMT_MT2110T to support 10bit in mt8195, mt8199 and more.
+Getting the size of each plane again when userspace set 10bit
+syntax to driver.
 
-Define one uncompressed capture format V4L2_PIX_FMT_MT2110R in order to
-support 10bit for H264 in mt8195.
+V4L2_PIX_FMT_MT2110R is used for H264, and V4L2_PIX_FMT_MT2110T
+is used for AV1/VP9/HEVC.
 
-Signed-off-by: Mingjia Zhang <mingjia.zhang@mediatek.com>
-Co-developed-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+patch 1 Add driver to support 10bit
+patch 2 Add capture format V4L2_PIX_FMT_MT2110T to support 10bit tile mode
+patch 3 Add capture format V4L2_PIX_FMT_MT2110R to support 10bit raster mode
 ---
- Documentation/userspace-api/media/v4l/pixfmt-reserved.rst | 7 +++++++
- drivers/media/v4l2-core/v4l2-common.c                     | 2 ++
- drivers/media/v4l2-core/v4l2-ioctl.c                      | 1 +
- include/uapi/linux/videodev2.h                            | 1 +
- 4 files changed, 11 insertions(+)
+- send the first version v1:
+- Run 10bit VP9/AV1 fluster test pass.
+- Will return error when the 10bit parameter no correctly in function mtk_vdec_s_ctrl.
+---
 
-diff --git a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-index b16a7257580c..175dc790ae17 100644
---- a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-+++ b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-@@ -283,6 +283,13 @@ please make a proposal on the linux-media mailing list.
-         and more. This format have similitude with ``V4L2_PIX_FMT_MM21``.
-         It remains an opaque intermediate format and it is used for VP9, AV1
-         and HEVC.
-+    * .. _V4L2-PIX-FMT-MT2110R:
-+
-+      - ``V4L2_PIX_FMT_MT2110R``
-+      - 'MT2110R'
-+      - Two-planar 10-Bit raster mode YVU420 format used by Mediatek MT8195, MT8188
-+        and more. This format have similitude with ``V4L2_PIX_FMT_MM21``.
-+        It remains an opaque intermediate format and it is used for AVC.
- .. raw:: latex
- 
-     \normalsize
-diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index 869fc09a210b..3a4b15a98e02 100644
---- a/drivers/media/v4l2-core/v4l2-common.c
-+++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -264,6 +264,8 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
- 		{ .format = V4L2_PIX_FMT_YUV48_12, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 6, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
- 		{ .format = V4L2_PIX_FMT_MT2110T, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 2, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 2,
- 		  .block_w = { 16, 8, 0, 0 }, .block_h = { 32, 16, 0, 0 }},
-+		{ .format = V4L2_PIX_FMT_MT2110R, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 2, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 2,
-+		  .block_w = { 16, 8, 0, 0 }, .block_h = { 32, 16, 0, 0 }},
- 
- 		/* YUV planar formats */
- 		{ .format = V4L2_PIX_FMT_NV12,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index f465c0e3d6e3..f4d9d6279094 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1509,6 +1509,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 		case V4L2_PIX_FMT_AJPG:		descr = "Aspeed JPEG"; break;
- 		case V4L2_PIX_FMT_AV1_FRAME:	descr = "AV1 Frame"; break;
- 		case V4L2_PIX_FMT_MT2110T:	descr = "Mediatek 10bit Tile Mode"; break;
-+		case V4L2_PIX_FMT_MT2110R:	descr = "Mediatek 10bit Raster Mode"; break;
- 		default:
- 			if (fmt->description[0])
- 				return;
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 8c7d71afbdc7..78260e5d9985 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -797,6 +797,7 @@ struct v4l2_pix_format {
- #define V4L2_PIX_FMT_MT21C    v4l2_fourcc('M', 'T', '2', '1') /* Mediatek compressed block mode  */
- #define V4L2_PIX_FMT_MM21     v4l2_fourcc('M', 'M', '2', '1') /* Mediatek 8-bit block mode, two non-contiguous planes */
- #define V4L2_PIX_FMT_MT2110T  v4l2_fourcc('M', 'T', '2', 'T') /* Mediatek 10-bit block tile mode */
-+#define V4L2_PIX_FMT_MT2110R  v4l2_fourcc('M', 'T', '2', 'R') /* Mediatek 10-bit block raster mode */
- #define V4L2_PIX_FMT_INZI     v4l2_fourcc('I', 'N', 'Z', 'I') /* Intel Planar Greyscale 10-bit and Depth 16-bit */
- #define V4L2_PIX_FMT_CNF4     v4l2_fourcc('C', 'N', 'F', '4') /* Intel 4-bit packed depth confidence information */
- #define V4L2_PIX_FMT_HI240    v4l2_fourcc('H', 'I', '2', '4') /* BTTV 8-bit dithered RGB */
+Reference series:
+[1]: this series depends on v6 which is send by Yunfei Dong.
+     message-id: 20230704131349.8354-1-yunfei.dong@mediatek.com
+
+Mingjia Zhang (3):
+  media: mediatek: vcodec: Add capture format to support 10bit tile mode
+  media: mediatek: vcodec: Add capture format to support 10bit raster
+    mode
+  media: mediatek: vcodec: Add driver to support 10bit
+
+ .../media/v4l/pixfmt-reserved.rst             |  15 ++
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  |  22 ++-
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   5 +
+ .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 140 +++++++++++++++++-
+ drivers/media/v4l2-core/v4l2-common.c         |   4 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |   2 +
+ include/uapi/linux/videodev2.h                |   2 +
+ 7 files changed, 186 insertions(+), 4 deletions(-)
+
 -- 
 2.18.0
 
