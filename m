@@ -4,81 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE3E0EB64DD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 12:58:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CFE8EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 13:05:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rC1bu/LW0Pn7GDL1W3uRUjZN89ZOf3CmMGTbWJQ+zwM=; b=oAWO+Ghwepgp6Wn46q3zIKrugF
-	lLnKCUitLhV0XBiJxEoie+FWMsybhc/W0cSUWP/L6AhYsgrxNvjKsrEdz2Kb8ayk/rTrzWW+nNg+p
-	rKQ2Aea9uapRh7F+F66mUrvAGqVqefO7Zf+FzkPgXQNaF/yeIsypFClssOeZbrwwouJTXCaVspk8V
-	5UPT29KuO/A3+j9Ix+BuvOCY/ujJ5nepER8ye39ZpXucKbyOszPmVgg/Y4LHSQhpsiwrjRfbVQ2qh
-	qsVx0x2XZoCJASlk/HtpL8FUy4Z+GFoHomdmVN2h/QSZvYLPSGZ+JNg3/LfvaejXkt/FGY5Udx6MH
-	LEHtFW+Q==;
+	bh=WH1J3lxbYmwK4HX/vwQvN/bDM9AadSAUZU8trUClhmQ=; b=k1v79ZBJcR4RRLjiqyQigh0sZq
+	SwShd3u0kSECsFyMQGOSZmnpXIhJlJUYzaUHkYKIDONTZ38247hVFTyQ+Wzmg65HWKJHQQXwvC+9Y
+	75EHTMh603yB7O6GizRaUTQX6FZccrnYJtrhlSZxEvbtj4cZYpBgmWP26jLcGb4sqU/QuzN5wH/KJ
+	abWSczLUtr7raNp6kWb/lvTCiFdwZkEY6uYVjGOtzMja6ZyJ/AagMkgoLALkBPQ1kqVdeB3+vdnG7
+	3GJ0S7TkalxGUQOQ6aySD1KcbwXbIxe11s3MnZa7WbBsgGnZAZwaovs7ru/k8kbgZKRL4uHUCIWyB
+	Py93UeSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJCx0-00Ew1b-0W;
-	Tue, 11 Jul 2023 12:58:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qJD3h-00EwuL-1O;
+	Tue, 11 Jul 2023 13:05:37 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJCwt-00Evxs-1F;
-	Tue, 11 Jul 2023 12:58:37 +0000
-X-UUID: a1c6dd881fea11ee912e1518a6540028-20230711
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=rC1bu/LW0Pn7GDL1W3uRUjZN89ZOf3CmMGTbWJQ+zwM=;
-	b=r8D6Ry+yXniHki8fmqDC7mfSCc4IicaI1UuBI/EL5BYOBtPe9M1Ru9FRGLO8R9MRe/OO8bJKM8jcj6sy4vrA9S/d1lq9+VDp475pEgvGjuQdjYGMC0jg+qcZl5Cwu1czfxXUh/xtiJWu7fCfM+cDC1BC3WwgfRjmJIGpXtWWjfw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.28,REQID:6675af1f-6c8f-4730-a14c-b378aa769e57,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:176cd25,CLOUDID:bfb71b68-314d-4083-81b6-6a74159151eb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: a1c6dd881fea11ee912e1518a6540028-20230711
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1213187238; Tue, 11 Jul 2023 05:58:29 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 11 Jul 2023 20:57:54 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 11 Jul 2023 20:57:53 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
- Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>, Mingjia
- Zhang <mingjia.zhang@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 3/3] media: mediatek: vcodec: Add driver to support 10bit
-Date: Tue, 11 Jul 2023 20:57:49 +0800
-Message-ID: <20230711125749.15555-4-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230711125749.15555-1-yunfei.dong@mediatek.com>
-References: <20230711125749.15555-1-yunfei.dong@mediatek.com>
+	id 1qJD3d-00Ewtd-35;
+	Tue, 11 Jul 2023 13:05:35 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D5788614A9;
+	Tue, 11 Jul 2023 13:05:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE23AC433C8;
+	Tue, 11 Jul 2023 13:05:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689080732;
+	bh=HnVEva2jdOLXu3EN/cKYarAoyETVmcXrgG0CY9KCvZQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BO5Sf+xL4FaASSNsNdM5EGXByrv4WeTUxRBoPW2QNejIwlELvXTu5gKKqv4hkKhGg
+	 oi3ZfR9Shzo5QwnSHTFndf8ZIVkqpTClpssosTOBH6/4HIjVrlXO3KdynsW5+Pg7kp
+	 pbkKvKQx6ir3yg7CLJDoLHQzo0ewO66SzIeDifz9SCJzdBAZAn9RpEQzQEGNZHOmt+
+	 6tOI/PPlmxZBFom+gGGjOjy+qrSc5cI26iueLs1Gv6DR2sYD26rubxcFZS48+8Dw/G
+	 5SSyFU8wEM4MuZLWsQU4tXLcKI+0ehoZc3/OitBA10N/7/7vB38b2KMdMwG1AhcrlN
+	 +CUurb7ZrrwoQ==
+Date: Tue, 11 Jul 2023 14:05:18 +0100
+From: Mark Brown <broonie@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Yang Yingliang <yangyingliang@huawei.com>,
+	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
+	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	Sanjay R Mehta <sanju.mehta@amd.com>,
+	Radu Pirea <radu_nicolae.pirea@upb.ro>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Richard Cochran <richardcochran@gmail.com>
+Subject: Re: [PATCH v2 04/15] spi: Replace open coded
+ spi_controller_xfer_timeout()
+Message-ID: <e3688ce5-616a-4399-a4e3-c410a09f6a45@sirena.org.uk>
+References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
+ <20230710154932.68377-5-andriy.shevchenko@linux.intel.com>
+ <83c4b75a-06d7-9fca-ffa0-f2e6a6ae7aed@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="925w7TTgRoHZtFsT"
+Content-Disposition: inline
+In-Reply-To: <83c4b75a-06d7-9fca-ffa0-f2e6a6ae7aed@collabora.com>
+X-Cookie: marriage, n.:
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_055835_428926_8D65341B 
-X-CRM114-Status: GOOD (  20.87  )
+X-CRM114-CacheID: sfid-20230711_060534_078845_E656CB8C 
+X-CRM114-Status: GOOD (  14.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,278 +123,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mingjia Zhang <mingjia.zhang@mediatek.com>
 
-Adding to support capture formats V4L2_PIX_FMT_MT2110T and
-V4L2_PIX_FMT_MT2110R for 10bit playback. Need to get the size
-of each plane again when user space setting syntax to get 10bit
-information.
+--925w7TTgRoHZtFsT
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-V4L2_PIX_FMT_MT2110T for AV1/VP9/HEVC.
-V4L2_PIX_FMT_MT2110R for H264.
+On Tue, Jul 11, 2023 at 10:28:13AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 10/07/23 17:49, Andy Shevchenko ha scritto:
 
-Signed-off-by: Mingjia Zhang <mingjia.zhang@mediatek.com>
-Co-developed-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  |  22 ++-
- .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   5 +
- .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 140 +++++++++++++++++-
- 3 files changed, 163 insertions(+), 4 deletions(-)
+> > +		ms = spi_controller_xfer_timeout(ctlr, xfer);
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-index 5acb7dff18f2..91ed576d6821 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-@@ -37,7 +37,9 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_dec_ctx *ctx, int format_inde
- {
- 	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
- 	const struct mtk_video_fmt *fmt;
-+	struct mtk_q_data *q_data;
- 	int num_frame_count = 0, i;
-+	bool ret = false;
- 
- 	fmt = &dec_pdata->vdec_formats[format_index];
- 	for (i = 0; i < *dec_pdata->num_formats; i++) {
-@@ -47,10 +49,26 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_dec_ctx *ctx, int format_inde
- 		num_frame_count++;
- 	}
- 
--	if (num_frame_count == 1 || fmt->fourcc == V4L2_PIX_FMT_MM21)
-+	if (num_frame_count == 1 || (!ctx->is_10bit_bitstream && fmt->fourcc == V4L2_PIX_FMT_MM21))
- 		return true;
- 
--	return false;
-+	q_data = &ctx->q_data[MTK_Q_DATA_SRC];
-+	switch (q_data->fmt->fourcc) {
-+	case V4L2_PIX_FMT_H264_SLICE:
-+		if (ctx->is_10bit_bitstream && fmt->fourcc == V4L2_PIX_FMT_MT2110R)
-+			ret = true;
-+		break;
-+	case V4L2_PIX_FMT_VP9_FRAME:
-+	case V4L2_PIX_FMT_AV1_FRAME:
-+	case V4L2_PIX_FMT_HEVC_SLICE:
-+		if (ctx->is_10bit_bitstream && fmt->fourcc == V4L2_PIX_FMT_MT2110T)
-+			ret = true;
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return ret;
- }
- 
- static struct mtk_q_data *mtk_vdec_get_q_data(struct mtk_vcodec_dec_ctx *ctx,
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-index c8b4374c5e6c..cd607e90fe9c 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-@@ -31,6 +31,7 @@ enum mtk_vdec_format_types {
- 	MTK_VDEC_FORMAT_AV1_FRAME = 0x800,
- 	MTK_VDEC_FORMAT_HEVC_FRAME = 0x1000,
- 	MTK_VCODEC_INNER_RACING = 0x20000,
-+	MTK_VDEC_IS_SUPPORT_10BIT = 0x40000,
- };
- 
- /*
-@@ -160,6 +161,8 @@ struct mtk_vcodec_dec_pdata {
-  * @hw_id: hardware index used to identify different hardware.
-  *
-  * @msg_queue: msg queue used to store lat buffer information.
-+ *
-+ * @is_10bit_bitstream: set to true if it's 10bit bitstream
-  */
- struct mtk_vcodec_dec_ctx {
- 	enum mtk_instance_type type;
-@@ -202,6 +205,8 @@ struct mtk_vcodec_dec_ctx {
- 	int hw_id;
- 
- 	struct vdec_msg_queue msg_queue;
-+
-+	bool is_10bit_bitstream;
- };
- 
- /**
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-index 99a84c7e1901..cef937fdf462 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-@@ -200,7 +200,7 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
- 
- #define NUM_CTRLS ARRAY_SIZE(mtk_stateless_controls)
- 
--static struct mtk_video_fmt mtk_video_formats[7];
-+static struct mtk_video_fmt mtk_video_formats[9];
- 
- static struct mtk_video_fmt default_out_format;
- static struct mtk_video_fmt default_cap_format;
-@@ -387,6 +387,134 @@ static int mtk_vdec_flush_decoder(struct mtk_vcodec_dec_ctx *ctx)
- 	return vdec_if_decode(ctx, NULL, NULL, &res_chg);
- }
- 
-+static int mtk_vcodec_get_pic_info(struct mtk_vcodec_dec_ctx *ctx)
-+{
-+	struct mtk_q_data *q_data;
-+	int ret = 0;
-+
-+	q_data = &ctx->q_data[MTK_Q_DATA_DST];
-+	if (q_data->fmt->num_planes == 1) {
-+		mtk_v4l2_vdec_err(ctx, "[%d]Error!! 10bit mode not support one plane", ctx->id);
-+		return -EINVAL;
-+	}
-+
-+	ctx->capture_fourcc = q_data->fmt->fourcc;
-+	ret = vdec_if_get_param(ctx, GET_PARAM_PIC_INFO, &ctx->picinfo);
-+	if (ret) {
-+		mtk_v4l2_vdec_err(ctx, "[%d]Error!! Get GET_PARAM_PICTURE_INFO Fail", ctx->id);
-+		return ret;
-+	}
-+
-+	ctx->last_decoded_picinfo = ctx->picinfo;
-+
-+	q_data->sizeimage[0] = ctx->picinfo.fb_sz[0];
-+	q_data->bytesperline[0] = ctx->picinfo.buf_w * 5 / 4;
-+
-+	q_data->sizeimage[1] = ctx->picinfo.fb_sz[1];
-+	q_data->bytesperline[1] = ctx->picinfo.buf_w * 5 / 4;
-+
-+	q_data->coded_width = ctx->picinfo.buf_w;
-+	q_data->coded_height = ctx->picinfo.buf_h;
-+	mtk_v4l2_vdec_dbg(1, ctx, "[%d] wxh=%dx%d pic wxh=%dx%d sz[0]=0x%x sz[1]=0x%x",
-+			  ctx->id, ctx->picinfo.buf_w, ctx->picinfo.buf_h,
-+			  ctx->picinfo.pic_w, ctx->picinfo.pic_h,
-+			  q_data->sizeimage[0], q_data->sizeimage[1]);
-+
-+	return ret;
-+}
-+
-+static int mtk_vdec_s_ctrl(struct v4l2_ctrl *ctrl)
-+{
-+	struct mtk_vcodec_dec_ctx *ctx = ctrl_to_dec_ctx(ctrl);
-+	struct v4l2_ctrl_h264_sps *h264;
-+	struct v4l2_ctrl_hevc_sps *h265;
-+	struct v4l2_ctrl_vp9_frame *frame;
-+	struct v4l2_ctrl_av1_sequence *seq;
-+	struct v4l2_ctrl *hdr_ctrl;
-+	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
-+	const struct mtk_video_fmt *fmt;
-+	int i = 0, ret = 0;
-+
-+	hdr_ctrl = ctrl;
-+	if (!hdr_ctrl || !hdr_ctrl->p_cur.p)
-+		return -EINVAL;
-+
-+	switch (hdr_ctrl->id) {
-+	case V4L2_CID_STATELESS_H264_SPS:
-+		h264 = (struct v4l2_ctrl_h264_sps *)hdr_ctrl->p_new.p;
-+		if (h264->bit_depth_chroma_minus8 == 2 && h264->bit_depth_luma_minus8 == 2) {
-+			ctx->is_10bit_bitstream = true;
-+		} else if (h264->bit_depth_chroma_minus8 != 0 &&
-+			   h264->bit_depth_luma_minus8 != 0) {
-+			mtk_v4l2_vdec_err(ctx, "H264: chroma_minus8:%d, luma_minus8:%d",
-+					  h264->bit_depth_chroma_minus8,
-+					  h264->bit_depth_luma_minus8);
-+			return -EINVAL;
-+		}
-+		break;
-+	case V4L2_CID_STATELESS_HEVC_SPS:
-+		h265 = (struct v4l2_ctrl_hevc_sps *)hdr_ctrl->p_new.p;
-+		if (h265->bit_depth_chroma_minus8 == 2 && h265->bit_depth_luma_minus8 == 2) {
-+			ctx->is_10bit_bitstream = true;
-+		} else if (h265->bit_depth_chroma_minus8 != 0 &&
-+			   h265->bit_depth_luma_minus8 != 0) {
-+			mtk_v4l2_vdec_err(ctx, "HEVC: chroma_minus8:%d, luma_minus8:%d",
-+					  h265->bit_depth_chroma_minus8,
-+					  h265->bit_depth_luma_minus8);
-+			return -EINVAL;
-+		}
-+		break;
-+	case V4L2_CID_STATELESS_VP9_FRAME:
-+		frame = (struct v4l2_ctrl_vp9_frame *)hdr_ctrl->p_new.p;
-+		if (frame->bit_depth == 10) {
-+			ctx->is_10bit_bitstream = true;
-+		} else if (frame->bit_depth != 8) {
-+			mtk_v4l2_vdec_err(ctx, "VP9: bit_depth:%d", frame->bit_depth);
-+			return -EINVAL;
-+		}
-+		break;
-+	case V4L2_CID_STATELESS_AV1_SEQUENCE:
-+		seq = (struct v4l2_ctrl_av1_sequence *)hdr_ctrl->p_new.p;
-+		if (seq->bit_depth == 10) {
-+			ctx->is_10bit_bitstream = true;
-+		} else if (seq->bit_depth != 8) {
-+			mtk_v4l2_vdec_err(ctx, "AV1: bit_depth:%d", seq->bit_depth);
-+			return -EINVAL;
-+		}
-+		break;
-+	default:
-+		mtk_v4l2_vdec_err(ctx, "Not supported ctrl id: 0x%x\n", hdr_ctrl->id);
-+		return -EINVAL;
-+	}
-+
-+	if (!ctx->is_10bit_bitstream)
-+		return ret;
-+
-+	for (i = 0; i < *dec_pdata->num_formats; i++) {
-+		fmt = &dec_pdata->vdec_formats[i];
-+		if (fmt->fourcc == V4L2_PIX_FMT_MT2110R &&
-+		    hdr_ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
-+			ctx->q_data[MTK_Q_DATA_DST].fmt = fmt;
-+			break;
-+		}
-+
-+		if (fmt->fourcc == V4L2_PIX_FMT_MT2110T &&
-+		    (hdr_ctrl->id == V4L2_CID_STATELESS_HEVC_SPS ||
-+		    hdr_ctrl->id == V4L2_CID_STATELESS_VP9_FRAME ||
-+		    hdr_ctrl->id == V4L2_CID_STATELESS_AV1_SEQUENCE)) {
-+			ctx->q_data[MTK_Q_DATA_DST].fmt = fmt;
-+			break;
-+		}
-+	}
-+	ret = mtk_vcodec_get_pic_info(ctx);
-+
-+	return ret;
-+}
-+
-+static const struct v4l2_ctrl_ops mtk_vcodec_dec_ctrl_ops = {
-+	.s_ctrl = mtk_vdec_s_ctrl,
-+};
-+
- static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx *ctx)
- {
- 	unsigned int i;
-@@ -399,7 +527,7 @@ static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx *ctx)
- 
- 	for (i = 0; i < NUM_CTRLS; i++) {
- 		struct v4l2_ctrl_config cfg = mtk_stateless_controls[i].cfg;
--
-+		cfg.ops = &mtk_vcodec_dec_ctrl_ops;
- 		v4l2_ctrl_new_custom(&ctx->ctrl_hdl, &cfg, NULL);
- 		if (ctx->ctrl_hdl.error) {
- 			mtk_v4l2_vdec_err(ctx, "Adding control %d failed %d", i,
-@@ -466,6 +594,8 @@ static void mtk_vcodec_add_formats(unsigned int fourcc,
- 		break;
- 	case V4L2_PIX_FMT_MM21:
- 	case V4L2_PIX_FMT_MT21C:
-+	case V4L2_PIX_FMT_MT2110T:
-+	case V4L2_PIX_FMT_MT2110R:
- 		mtk_video_formats[count_formats].fourcc = fourcc;
- 		mtk_video_formats[count_formats].type = MTK_FMT_FRAME;
- 		mtk_video_formats[count_formats].num_planes = 2;
-@@ -491,6 +621,12 @@ static void mtk_vcodec_get_supported_formats(struct mtk_vcodec_dec_ctx *ctx)
- 		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT21C, ctx);
- 		cap_format_count++;
- 	}
-+	if (ctx->dev->dec_capability & MTK_VDEC_IS_SUPPORT_10BIT) {
-+		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT2110T, ctx);
-+		cap_format_count++;
-+		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT2110R, ctx);
-+		cap_format_count++;
-+	}
- 	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MM21) {
- 		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
- 		cap_format_count++;
--- 
-2.18.0
+> I agree on using helpers, but the logic is slightly changing here: yes it is
+> unlikely (and also probably useless) to get ms == UINT_MAX, but the helper is
+> limiting the maximum timeout value to 500mS, which may not work for some slow
+> controllers/devices.
 
+The helper is limiting the *minimum* timeout value to 500ms - it's using
+max() not min().  The idea is the other way around, that for a very fast
+transfer we don't want to end up with such a short timeout that it false
+triggers due to scheduling issues.
+
+--925w7TTgRoHZtFsT
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmStU40ACgkQJNaLcl1U
+h9B+yQf+KBYXJ7506wC0Am0zY2LnPrpwi7/uhVWQsN9GzhBVU0RGwam2xuqmpCeo
+A3o92lqKSQPkQGllTlnuM3r4jp2qDy1/U/QJJxak+i/i8NjuVxIQQIKtnM/nRQxh
+yRpIp6WbVt+HJsdFgPS6j6r/3m1qS4eTbso7/ciwLzdRc2Yxk9SLXFteOErlAEoq
+hhR7VxhID4BE72a+1NbyuALEVGjSMYBdpddD//Qa1UsJVw1yK5HuM51CaQd9bTlo
+EtrmXMgaG9FB+lQeu2zedT6HTQQH/hOB77luYq4zGm849tw2sfBPIhqVgQtkkutv
+4hpXSMiuD+iL32PThXfathhu4xvFiQ==
+=l6sR
+-----END PGP SIGNATURE-----
+
+--925w7TTgRoHZtFsT--
 
