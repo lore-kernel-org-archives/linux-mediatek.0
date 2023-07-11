@@ -4,119 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C9A9EB64DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 12:52:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 175BFEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 12:58:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bf/8dybG8/JiZOvg5jqTw/EYAEpXhEJ+ous/NLbzm0c=; b=eftAgkPnVITlkaUXms7MhADuCr
-	PbA5wPWPMB5o0oLd9pHLStN0pw0EomfdpzuMsUF8aai935ZqrTP7p75Z94G030XOv4IxBXapIDcFI
-	iZe+cRM7A/OaxPJKwXxeOqwiK7oXGI91vq5OvpzsG1uJufYL0trV1gheSO+BiHv/jU3vctcbGIy84
-	4tp058YsinchN4N+JQE7Ayofih8bOGKlpgtqWP3MM4yrTg85LqV1tQxXsvWL6WHUfW/Eu5Lt06obc
-	T2R4Iiml5F7gDBqGRbA6f2ElyY4vJfAibeRGgKnxz/Iz28LmDH7zk2b4Puxjxd4p4LZ/1c/kgzteh
-	DQJLXciQ==;
+	bh=eIY64OJ16PWkOviKweK04HJ+AS1S+mU7TE5PV56TFpk=; b=aP5FzHzfhUE8vjbOj0Jf26igA5
+	D/3lFZ5zyhBVJWvHaGCEcbWS0NZdrn2wo/AiPvTtlotEaI9SStTcxDVE8QYl6Ln5/JFotXm70EQj/
+	A2OAUOxHp1ljzA0gilC0OMWUAuLjRPp+JeenW9EObZLqfg8O1+aVmO9ssBgMOnrloqbcxGm1DG0Dt
+	7OF8GEQLwEywDxqRehX3SUO4LaVIPHi0lTcpOc4Iq/d7AxDKeCGTWSMxVxIiOqiG8BPAnUCFMSmwT
+	bQi4yd1PUhTYvz0q5+u/P7vPVMBRE6LxE0rTOl0H7g9Ul5Sb/lisfUch7UMloMk5ZUN3kx3VMCtPp
+	2xNxzfrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJCqi-00Euya-30;
-	Tue, 11 Jul 2023 12:52:12 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1qJCwO-00EvrK-12;
+	Tue, 11 Jul 2023 12:58:04 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJCqf-00EuwJ-1K;
-	Tue, 11 Jul 2023 12:52:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689079929; x=1720615929;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=fixFH5Llqroff/AhZ015VZ+OpUUgSBQ7xNlXodB8idQ=;
-  b=h4nvQE9OhT45mT1wnF9vjD+wI7eMNeYnxagy+uumNEMhH0I5dpTI2MVn
-   GHN9Ffu2umJt0trEQM6k4q2SbCwiSeuA6EJXTw3+8N6WykaMQHYSVlQAI
-   HEq2XOo/D1K7/dGqBvN+WYRHgYh6m3xWPjwr8vo5nRO+8jHChNNMBAEuf
-   rNo6JqbgsAdqI4RqQM9SqrtqRpj1EhZKf2k6Ti3qlhUvfGr/Jc/syyNd9
-   0GhMTDBWRNH2jeL7Zbu/41dkHbNUOsW0K1tGVo/3UFAnn5AUr4sxiCxnO
-   wmTzeNaPdSxII8/z4CuSHqGrrZWTj+xiQUQJHGmVJisW1jML+sl7/eGpt
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="344205671"
-X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
-   d="scan'208";a="344205671"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 05:52:07 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="786613329"
-X-IronPort-AV: E=Sophos;i="6.01,196,1684825200"; 
-   d="scan'208";a="786613329"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmsmga008.fm.intel.com with ESMTP; 11 Jul 2023 05:51:56 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1qJCqO-001qnp-39;
-	Tue, 11 Jul 2023 15:51:52 +0300
-Date: Tue, 11 Jul 2023 15:51:52 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Mark Brown <broonie@kernel.org>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Yang Yingliang <yangyingliang@huawei.com>,
-	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
-	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
-	linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	Sanjay R Mehta <sanju.mehta@amd.com>,
-	Radu Pirea <radu_nicolae.pirea@upb.ro>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Serge Semin <fancer.lancer@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>
-Subject: Re: [PATCH v2 01/15] spi: Remove unneeded OF node NULL checks
-Message-ID: <ZK1QaK3Qy/mDauae@smile.fi.intel.com>
-References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
- <20230710154932.68377-2-andriy.shevchenko@linux.intel.com>
- <f0b9e2e4-b2c0-4336-0ec4-5afd9f1b6c72@collabora.com>
+	id 1qJCwK-00Evqi-2x;
+	Tue, 11 Jul 2023 12:58:02 +0000
+X-UUID: 8dc698961fea11ee83ed1395ce914268-20230711
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=eIY64OJ16PWkOviKweK04HJ+AS1S+mU7TE5PV56TFpk=;
+	b=SCgJWLxk/+fDaEBwLbaWdplYFT7GGhm8KevyFhvqQILcyDpVc50aLBeztFCJF0lOz0EpK8rC5pVCCPNXWwVu0exBKQxGARYbqB3jwNQ6/l57UkgTNC7tSs4SfEh4cZIFNoDDTNn8agE+WBNce+lUavlBAS8bfK/z+x9rT6mSSQo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.28,REQID:4864b761-2605-46c7-91fb-d0b0ce77766e,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:176cd25,CLOUDID:0cb71b68-314d-4083-81b6-6a74159151eb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 8dc698961fea11ee83ed1395ce914268-20230711
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2037572988; Tue, 11 Jul 2023 05:57:55 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 11 Jul 2023 20:57:53 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 11 Jul 2023 20:57:52 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
+CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
+ Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>, Mingjia
+ Zhang <mingjia.zhang@mediatek.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH 2/3] media: mediatek: vcodec: Add capture format to support 10bit raster mode
+Date: Tue, 11 Jul 2023 20:57:48 +0800
+Message-ID: <20230711125749.15555-3-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230711125749.15555-1-yunfei.dong@mediatek.com>
+References: <20230711125749.15555-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <f0b9e2e4-b2c0-4336-0ec4-5afd9f1b6c72@collabora.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_055209_461109_884D333D 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20230711_055800_962768_C6490575 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,24 +93,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 11, 2023 at 10:12:55AM +0200, AngeloGioacchino Del Regno wrote:
-> Il 10/07/23 17:49, Andy Shevchenko ha scritto:
-> > In the couple of places the NULL check of OF node is implied by the call
-> > that takes it as a parameter. Drop the respective duplicate checks.
-> > 
-> > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> 
-> Validated against spi-mt65xx, spi-mt7621, spi-mtk-nor, spi-mtk-snfi;
-> 
-> Reviewed-by: AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> # MediaTek
+From: Mingjia Zhang <mingjia.zhang@mediatek.com>
 
-By some reason the tag is split and I'm not sure `b4` can cope with that.
-In any case, added manually. Thank you for the review!
+Define one uncompressed capture format V4L2_PIX_FMT_MT2110R in order to
+support 10bit for H264 in mt8195.
 
+Signed-off-by: Mingjia Zhang <mingjia.zhang@mediatek.com>
+Co-developed-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ Documentation/userspace-api/media/v4l/pixfmt-reserved.rst | 7 +++++++
+ drivers/media/v4l2-core/v4l2-common.c                     | 2 ++
+ drivers/media/v4l2-core/v4l2-ioctl.c                      | 1 +
+ include/uapi/linux/videodev2.h                            | 1 +
+ 4 files changed, 11 insertions(+)
+
+diff --git a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
+index b16a7257580c..175dc790ae17 100644
+--- a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
++++ b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
+@@ -283,6 +283,13 @@ please make a proposal on the linux-media mailing list.
+         and more. This format have similitude with ``V4L2_PIX_FMT_MM21``.
+         It remains an opaque intermediate format and it is used for VP9, AV1
+         and HEVC.
++    * .. _V4L2-PIX-FMT-MT2110R:
++
++      - ``V4L2_PIX_FMT_MT2110R``
++      - 'MT2110R'
++      - Two-planar 10-Bit raster mode YVU420 format used by Mediatek MT8195, MT8188
++        and more. This format have similitude with ``V4L2_PIX_FMT_MM21``.
++        It remains an opaque intermediate format and it is used for AVC.
+ .. raw:: latex
+ 
+     \normalsize
+diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+index 869fc09a210b..3a4b15a98e02 100644
+--- a/drivers/media/v4l2-core/v4l2-common.c
++++ b/drivers/media/v4l2-core/v4l2-common.c
+@@ -264,6 +264,8 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
+ 		{ .format = V4L2_PIX_FMT_YUV48_12, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 6, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
+ 		{ .format = V4L2_PIX_FMT_MT2110T, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 2, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 2,
+ 		  .block_w = { 16, 8, 0, 0 }, .block_h = { 32, 16, 0, 0 }},
++		{ .format = V4L2_PIX_FMT_MT2110R, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 2, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 2,
++		  .block_w = { 16, 8, 0, 0 }, .block_h = { 32, 16, 0, 0 }},
+ 
+ 		/* YUV planar formats */
+ 		{ .format = V4L2_PIX_FMT_NV12,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
+diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+index f465c0e3d6e3..f4d9d6279094 100644
+--- a/drivers/media/v4l2-core/v4l2-ioctl.c
++++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+@@ -1509,6 +1509,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+ 		case V4L2_PIX_FMT_AJPG:		descr = "Aspeed JPEG"; break;
+ 		case V4L2_PIX_FMT_AV1_FRAME:	descr = "AV1 Frame"; break;
+ 		case V4L2_PIX_FMT_MT2110T:	descr = "Mediatek 10bit Tile Mode"; break;
++		case V4L2_PIX_FMT_MT2110R:	descr = "Mediatek 10bit Raster Mode"; break;
+ 		default:
+ 			if (fmt->description[0])
+ 				return;
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 8c7d71afbdc7..78260e5d9985 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -797,6 +797,7 @@ struct v4l2_pix_format {
+ #define V4L2_PIX_FMT_MT21C    v4l2_fourcc('M', 'T', '2', '1') /* Mediatek compressed block mode  */
+ #define V4L2_PIX_FMT_MM21     v4l2_fourcc('M', 'M', '2', '1') /* Mediatek 8-bit block mode, two non-contiguous planes */
+ #define V4L2_PIX_FMT_MT2110T  v4l2_fourcc('M', 'T', '2', 'T') /* Mediatek 10-bit block tile mode */
++#define V4L2_PIX_FMT_MT2110R  v4l2_fourcc('M', 'T', '2', 'R') /* Mediatek 10-bit block raster mode */
+ #define V4L2_PIX_FMT_INZI     v4l2_fourcc('I', 'N', 'Z', 'I') /* Intel Planar Greyscale 10-bit and Depth 16-bit */
+ #define V4L2_PIX_FMT_CNF4     v4l2_fourcc('C', 'N', 'F', '4') /* Intel 4-bit packed depth confidence information */
+ #define V4L2_PIX_FMT_HI240    v4l2_fourcc('H', 'I', '2', '4') /* BTTV 8-bit dithered RGB */
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.18.0
 
 
