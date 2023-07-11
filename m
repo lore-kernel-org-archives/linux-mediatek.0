@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 283CCC001DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 17:20:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D95FDC001DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 17:20:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mg7JK9k9yF356Cc9qBdJzwPPVsloO553DZoFK23gOoY=; b=y5neviEEeYQKjEPANht3xZEeN3
-	TlxIbFKoE5XabxkAmZGr6nKFTEh9Qz+MCPsTcRRklBbXf9i/oWTDm2S0Kl2gjYHVDRSUbomddWW+d
-	PRAk2E2PQr746dt8ctZG0q+8AZ659L0Aya5YZbL6ml3jtvcQuw1ffGFs49KppKI5HL7mMWhFBe9nL
-	doWSNM1fiqJvX0YhvRrrcDAROB3ggmRLemJII5N6tL6+J6Crk3iLCDGalc6wQSf8cSJVw+2Wf8iNc
-	SsDAP2VfLMP4HqVbDxtMLhW8TyTO3/1wvWLdHGM4rraRY1TQHa7CALzojkkCfj4alqBoYD6EVtwjF
-	7R3H7yCA==;
+	bh=5NOKPcL1ljPULLvSnzRRjtTA9vto5DTpPuQ9RsQ5MWo=; b=1phCqvyVp1LroEQkwf1bp8u4fO
+	DNLpNhZzjOIGAU4lUbG2Dpwa6aGt5YG7CMNsMdYP39SMwNx7hQhncm1V16foMf5Rz1JbJ87gEImfx
+	Pqr9twRI6LtCGwbYOLS6/M4XvU9Ha4FuD7irajLg8My1kzH6bGoQCiJ4Kpq2w9oP9U6ULoggooy0Y
+	+uhBz3JQ3U+tJWC4YU8vOc/Deam9nQt8y65SSAbzc1gmKMB2mHwJ8ou2VCrjjQ1U20RPnlkcaLWNd
+	2yM3ojAPAJjfmQHDR3llxDFPLKMwg9DCcDxl4iHXh+2+ePS3idneyDdia66ekQesZ4EzhDtjMBMay
+	QJhhYLcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJH1v-00FVyl-05;
-	Tue, 11 Jul 2023 17:20:03 +0000
+	id 1qJH20-00FW4o-03;
+	Tue, 11 Jul 2023 17:20:08 +0000
 Received: from mga11.intel.com ([192.55.52.93])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJH1L-00FVLX-2P;
+	id 1qJH1L-00FVLC-2t;
 	Tue, 11 Jul 2023 17:19:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
   t=1689095967; x=1720631967;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=o/4VXNjwZTK0uzfbC0etPekf1RU0/kTIzMnJkGS3e1w=;
-  b=MFn3P5T5vnTdgImRm7JD1eJXySdoEixZSzNpusfJhbB0+a/Eefg8+N6N
-   kmxZk2V0K8h7aq3mObfvRyYC6hXEisuaxN2UEFLbOoqEZdSI1ageHd11h
-   oBk4w0Xep8smKa3lAPmm2T57BqkElzk3Ai17Me/wmCabIsIM791BIIMtc
-   aajqA7K6ao0DLCgWZeQSDu0FEbN3/BbQU3NocYllljiuApT3jUAOAARvE
-   erlk6OUQH2DoA5f/K7z08M7f6x5XL794OoISwQ7/r6X2k3g/eeFBqL55H
-   wqbuwGGDzlFMOkHY60KIF1s6RiWLvp4KIlfGxorgou6XeUtIO1k/iaeg4
+  bh=u9L8bC8uc7avplPhBiWwS/Uu0Hqr1Wth57luzKoKJGU=;
+  b=lJ5G2u7Ezhe1mn50yW5PUnTO7QWb/hAiWa51EWI6UUsqNL/eKk//JhGw
+   jZYnPs8qrMtpC1hToPW2Am1BpbhAARAzRFXMx/mlzRQKPQij4yde1iPKw
+   RR07Rk5ySeMYbrCQCJq1KsJtICpmAX+rX7zQvex0ldoBPadbXoO/kfIRT
+   vl5O1w9HNFdB09QA528Z0wJ5BnRPPsrwdFzEj2F60RMgAGJuNPOQZxPqm
+   0mNx4IkHpvusc49jjlmh3VFhoOlRnynRaoa+A42jhofdMXFls3At62gvf
+   zfTfB2C6fZ5Y+SQ8CDVs8tHFJd+iqe63bQ5jZkwWL6jj2u8084u01XLu1
    g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="362148909"
+X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="362148930"
 X-IronPort-AV: E=Sophos;i="6.01,197,1684825200"; 
-   d="scan'208";a="362148909"
+   d="scan'208";a="362148930"
 Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 10:19:21 -0700
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 10:19:23 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="715240868"
+X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="715240913"
 X-IronPort-AV: E=Sophos;i="6.01,197,1684825200"; 
-   d="scan'208";a="715240868"
+   d="scan'208";a="715240913"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga007.jf.intel.com with ESMTP; 11 Jul 2023 10:17:58 -0700
+  by orsmga007.jf.intel.com with ESMTP; 11 Jul 2023 10:18:02 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 6B702604; Tue, 11 Jul 2023 20:17:59 +0300 (EEST)
+	id 896E669F; Tue, 11 Jul 2023 20:17:59 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Mark Brown <broonie@kernel.org>,
 	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
@@ -107,17 +107,17 @@ Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
 	Masami Hiramatsu <mhiramat@kernel.org>,
 	Richard Cochran <richardcochran@gmail.com>,
 	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v3 06/14] spi: Use sysfs_emit() to instead of s*printf()
-Date: Tue, 11 Jul 2023 20:17:48 +0300
-Message-Id: <20230711171756.86736-7-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v3 08/14] spi: Sort headers alphabetically
+Date: Tue, 11 Jul 2023 20:17:50 +0300
+Message-Id: <20230711171756.86736-9-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.40.0.1.gaa8946217a0b
 In-Reply-To: <20230711171756.86736-1-andriy.shevchenko@linux.intel.com>
 References: <20230711171756.86736-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_101927_860267_7E27E597 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20230711_101927_973893_FE9C0C22 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,47 +132,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Follow the advice of the Documentation/filesystems/sysfs.rst and show()
-should only use sysfs_emit() or sysfs_emit_at() when formatting the
-value to be returned to user space.
+Sorting headers alphabetically helps locating duplicates, and
+make it easier to figure out where to insert new headers.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/spi/spi.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/spi/spi.c       | 42 ++++++++++++++++++++---------------------
+ include/linux/spi/spi.h | 14 +++++++-------
+ 2 files changed, 28 insertions(+), 28 deletions(-)
 
 diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index 57b5e4488416..19846fe4c4d5 100644
+index 0259516a6943..9b096cbc9926 100644
 --- a/drivers/spi/spi.c
 +++ b/drivers/spi/spi.c
-@@ -64,7 +64,7 @@ modalias_show(struct device *dev, struct device_attribute *a, char *buf)
- 	if (len != -ENODEV)
- 		return len;
+@@ -4,36 +4,36 @@
+ // Copyright (C) 2005 David Brownell
+ // Copyright (C) 2008 Secret Lab Technologies Ltd.
  
--	return sprintf(buf, "%s%s\n", SPI_MODULE_PREFIX, spi->modalias);
-+	return sysfs_emit(buf, "%s%s\n", SPI_MODULE_PREFIX, spi->modalias);
- }
- static DEVICE_ATTR_RO(modalias);
+-#include <linux/kernel.h>
+-#include <linux/device.h>
+-#include <linux/init.h>
++#include <linux/acpi.h>
+ #include <linux/cache.h>
+-#include <linux/dma-mapping.h>
++#include <linux/clk/clk-conf.h>
++#include <linux/delay.h>
++#include <linux/device.h>
+ #include <linux/dmaengine.h>
++#include <linux/dma-mapping.h>
++#include <linux/export.h>
++#include <linux/gpio/consumer.h>
++#include <linux/highmem.h>
++#include <linux/idr.h>
++#include <linux/init.h>
++#include <linux/ioport.h>
++#include <linux/kernel.h>
++#include <linux/kthread.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/mutex.h>
+ #include <linux/of_device.h>
+ #include <linux/of_irq.h>
+-#include <linux/clk/clk-conf.h>
+-#include <linux/slab.h>
+-#include <linux/mod_devicetable.h>
+-#include <linux/spi/spi.h>
+-#include <linux/spi/spi-mem.h>
+-#include <linux/gpio/consumer.h>
+-#include <linux/pm_runtime.h>
++#include <linux/percpu.h>
++#include <linux/platform_data/x86/apple.h>
+ #include <linux/pm_domain.h>
++#include <linux/pm_runtime.h>
+ #include <linux/property.h>
+-#include <linux/export.h>
++#include <linux/ptp_clock_kernel.h>
+ #include <linux/sched/rt.h>
++#include <linux/slab.h>
++#include <linux/spi/spi.h>
++#include <linux/spi/spi-mem.h>
+ #include <uapi/linux/sched/types.h>
+-#include <linux/delay.h>
+-#include <linux/kthread.h>
+-#include <linux/ioport.h>
+-#include <linux/acpi.h>
+-#include <linux/highmem.h>
+-#include <linux/idr.h>
+-#include <linux/platform_data/x86/apple.h>
+-#include <linux/ptp_clock_kernel.h>
+-#include <linux/percpu.h>
  
-@@ -89,7 +89,7 @@ static ssize_t driver_override_show(struct device *dev,
- 	ssize_t len;
+ #define CREATE_TRACE_POINTS
+ #include <trace/events/spi.h>
+diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
+index 32c94eae8926..21b77bdfac29 100644
+--- a/include/linux/spi/spi.h
++++ b/include/linux/spi/spi.h
+@@ -6,19 +6,19 @@
+ #ifndef __LINUX_SPI_H
+ #define __LINUX_SPI_H
  
- 	device_lock(dev);
--	len = snprintf(buf, PAGE_SIZE, "%s\n", spi->driver_override ? : "");
-+	len = sysfs_emit(buf, "%s\n", spi->driver_override ? : "");
- 	device_unlock(dev);
- 	return len;
- }
-@@ -2797,8 +2797,7 @@ static ssize_t slave_show(struct device *dev, struct device_attribute *attr,
- 	struct device *child;
++#include <linux/acpi.h>
+ #include <linux/bits.h>
++#include <linux/completion.h>
+ #include <linux/device.h>
+-#include <linux/mod_devicetable.h>
+-#include <linux/slab.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/kthread.h>
+-#include <linux/completion.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/scatterlist.h>
+-#include <linux/gpio/consumer.h>
+-
+-#include <uapi/linux/spi/spi.h>
+-#include <linux/acpi.h>
++#include <linux/slab.h>
+ #include <linux/u64_stats_sync.h>
  
- 	child = device_find_any_child(&ctlr->dev);
--	return sprintf(buf, "%s\n",
--		       child ? to_spi_device(child)->modalias : NULL);
-+	return sysfs_emit(buf, "%s\n", child ? to_spi_device(child)->modalias : NULL);
- }
- 
- static ssize_t slave_store(struct device *dev, struct device_attribute *attr,
++#include <uapi/linux/spi/spi.h>
++
+ struct dma_chan;
+ struct software_node;
+ struct ptp_system_timestamp;
 -- 
 2.40.0.1.gaa8946217a0b
 
