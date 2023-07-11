@@ -4,100 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF689C001DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 17:06:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93F13EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jul 2023 17:18:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=shCkNkuISpAjo0wvso+e9CaqC7Tu4suQbB4adf5Gg28=; b=IqxQKarCe6d1RBBCE4X71waWQb
-	2yxQmnrM+gGilnQ734dixV0vE5HVFfWCtbg1LoBbRN2cfFLZYNJBX3wivHaEwoSRkhlDvF8OsGunB
-	sqf5+zCx+GbS7s2v7S3KEAioodsZWIIEyF3GRjz5163ZziJhNE26x2MdhLWlFPxmg78/CAn8fuKFC
-	Yebd2ZWIyVY3Qi1VS7BT/RAfGZNz3ojkTe+l8iuGLk0mXrvoAbxiqfxSqndu+B4Y47LjIECgcSuLP
-	ri+XEJE89cPsduGN+fbw5aZCeyEh1FjXAlE6tS1d9RRH+qNcYM3/XHfCKeafQBD1uAp8XaEjlZut+
-	wg0ONR3w==;
+	bh=lC8Ew4bdSy+Luhd+fJj0Tp0OmBMDo/CLCbE/BsxvOLk=; b=44vXUiQeRCpQP335u2QS0GK09h
+	8VN1ZWNKyTN0Pr3cYOU/PHg8ykpS2XaRLoBjDz5GcpKmJWPD6WoRhDDExOb9RHk2lnk19o3Cngdra
+	mP3Dg1hl+lPNBQGLY8x3EVQAiikYrIpVvLWIHDFH96iO+s/fXrCPAT2NZXVH6b3Ww2D/6nNmeydlt
+	lFfoJDaag8dKMnsAfoizHl8HU6nzVTHsmhz+dIL0wQ7FRr5HYZdFS/CoS75/frRAA6Xcv94QvlNh2
+	jSkBHFayw+qDcvTFlf6BT2Qs2ZUa6HVgphpZJRF3o3LbiZMz1c6Jn3EMjorm2L0Fvx8HQk7kQgoKA
+	P2J/oM4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJGp2-00FTdK-0y;
-	Tue, 11 Jul 2023 17:06:44 +0000
-Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
+	id 1qJH0O-00FUnl-0R;
+	Tue, 11 Jul 2023 17:18:28 +0000
+Received: from mga04.intel.com ([192.55.52.120])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJGoz-00FTbo-2g
-	for linux-mediatek@lists.infradead.org;
-	Tue, 11 Jul 2023 17:06:43 +0000
-Received: by mail-ua1-x92b.google.com with SMTP id a1e0cc1a2514c-79492b8f4bbso1984261241.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 11 Jul 2023 10:06:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20221208; t=1689095200; x=1691687200;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=shCkNkuISpAjo0wvso+e9CaqC7Tu4suQbB4adf5Gg28=;
-        b=YbbA06X7m0lTKmRD/qrCSPe46OZZXtyoWwxn94R62ChwLlyI4NVTjYPGfo3UBlMajj
-         k6fH+Dkqu85y17natO+NnHXFOP3k1pkffPwP4MSk9drst1XGd/0ospwiBvP1V2Cjsp4w
-         kqT2TO4HE+d7uUCguJ2ovnNME5Ya6Nu2B2evKvl7BcEp1EWaRJzM466r1a7+Ac3BeOwj
-         E0omfNfD0agGLMLbLYeHEb+3aukvUGiEi+9dtdNeOxvp9oOSGBCChkpDj4aW9pT8bT/k
-         Sw2KCbmOc1yGOSVjG88PEgzwwiXTrz+H1cyxyuHyDsyfTWNm1JTQjWbMvuxQVExeMj+M
-         gipQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689095200; x=1691687200;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=shCkNkuISpAjo0wvso+e9CaqC7Tu4suQbB4adf5Gg28=;
-        b=GflF6gpTK1/BOlaRVAhOdLOIyCu12kb/TuCzIcEItmra50pOame0kwImjpfqm/aqsx
-         ghmiAkr02zferxqZeAfnbgERyGSr/YEhaSLrUSZsFEZszH10TLfZ3vb7qtmSx6hi/APV
-         hM4Rh9FutV3j3WYsTil1JCxzf80kRmXSEwu9Jt+42eLxXdIbAbtxTUueeAesBY49wMZK
-         3YqIP2yLtI7ygUqGBIo7IHiNwaqWxQQ7/TNhsy8WBHpSF8ULm/PKfD+IxjCz5ps68te3
-         Ac4YHOrK/xD8EFrWvgro5WtPMFRC4U6iCqysulmPusmb9SCAKkv/qdru+LwjZlWRo49o
-         /QmA==
-X-Gm-Message-State: ABy/qLZENLGAYB4PXfYsW5dFqVlZPpWfRjZp70P0HM2wFSDAbPP2d9xq
-	WMGAkVDLXKGL9IfEMDeyu6SRV+yrkovennCEZdpDPA==
-X-Google-Smtp-Source: APBJJlHXFNHBs4KDviEzXlES6rfgeVe8nKhN83Gxg+u3ccdWyDygmItRYbBA45O5bC+ajfLgRYLuiJDC4r1zWGlkDaw=
-X-Received: by 2002:a67:e34b:0:b0:444:c49c:a95d with SMTP id
- s11-20020a67e34b000000b00444c49ca95dmr7222548vsm.7.1689095200160; Tue, 11 Jul
- 2023 10:06:40 -0700 (PDT)
+	id 1qJH0J-00FUlw-2o;
+	Tue, 11 Jul 2023 17:18:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1689095903; x=1720631903;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=RLWyOf9cyhaU0D1jsbC/OzTSXA7cpjUrGSZFXoDODls=;
+  b=YdCPukQclSdZpVbFprtKi2oDSPWqCR1oVPYrKEk13RVUb4aFZ5kwTVuR
+   T2b8Q/W8kISChE3im9XgJSZNEn1d3tUvBmcjbZa2sqoPQhueDPTqKexx5
+   jKBRQ4lyVAP+UQaWxnp+phRoTVvwqqnf+9IOsfxQvggaPtG3tJ6eCrsxo
+   cl0+LemmPf8jv02VNGX/NxOyJnBQ8wSCHG80B+LsKiHeVF1/IUHyRGfmc
+   fBN07IWzhJXXYWbfoYYtT+yXJornVAE1ku4g/IrTcgNkPS800jUIPmmRy
+   gRLAvzUlOMLVnPTjeE5E0vjpKC+6tOJvcOHq6jpH2QxeA8ZrAxLkXWDjR
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="363545679"
+X-IronPort-AV: E=Sophos;i="6.01,197,1684825200"; 
+   d="scan'208";a="363545679"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jul 2023 10:18:19 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10768"; a="756427035"
+X-IronPort-AV: E=Sophos;i="6.01,197,1684825200"; 
+   d="scan'208";a="756427035"
+Received: from black.fi.intel.com ([10.237.72.28])
+  by orsmga001.jf.intel.com with ESMTP; 11 Jul 2023 10:18:07 -0700
+Received: by black.fi.intel.com (Postfix, from userid 1003)
+	id CE41177B; Tue, 11 Jul 2023 20:17:59 +0300 (EEST)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Mark Brown <broonie@kernel.org>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Yang Yingliang <yangyingliang@huawei.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>,
+	Serge Semin <fancer.lancer@gmail.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>,
+	Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-trace-kernel@vger.kernel.org,
+	netdev@vger.kernel.org
+Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
+	Radu Pirea <radu_nicolae.pirea@upb.ro>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Richard Cochran <richardcochran@gmail.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCH v3 12/14] spi: Rename SPI_MASTER_GPIO_SS to SPI_CONTROLLER_GPIO_SS
+Date: Tue, 11 Jul 2023 20:17:54 +0300
+Message-Id: <20230711171756.86736-13-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.40.0.1.gaa8946217a0b
+In-Reply-To: <20230711171756.86736-1-andriy.shevchenko@linux.intel.com>
+References: <20230711171756.86736-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-References: <5e0ac5bb-2cfa-3b58-9503-1e161f3c9bd5@kernel.org>
- <CAHS8izP2fPS56uXKMCnbKnPNn=xhTd0SZ1NRUgnAvyuSeSSjGA@mail.gmail.com>
- <ZKNA9Pkg2vMJjHds@ziepe.ca> <CAHS8izNB0qNaU8OTcwDYmeVPtCrEjTTOhwCHtVsLiyhXmPLsXQ@mail.gmail.com>
- <ZKxDZfVAbVHgNgIM@ziepe.ca> <CAHS8izO3h3yh=CLJgzhLwCVM4SLgf64nnmBtGrXs=vxuJQHnMQ@mail.gmail.com>
- <ZKyZBbKEpmkFkpWV@ziepe.ca> <20230711042708.GA18658@lst.de>
- <20230710215906.49514550@kernel.org> <20230711050445.GA19323@lst.de>
- <ZK1FbjG+VP/zxfO1@ziepe.ca> <20230711090047.37d7fe06@kernel.org>
- <04187826-8dad-d17b-2469-2837bafd3cd5@kernel.org> <20230711093224.1bf30ed5@kernel.org>
-In-Reply-To: <20230711093224.1bf30ed5@kernel.org>
-From: Mina Almasry <almasrymina@google.com>
-Date: Tue, 11 Jul 2023 10:06:28 -0700
-Message-ID: <CAHS8izNHkLF0OowU=p=mSNZss700HKAzv1Oxqu2bvvfX_HxttA@mail.gmail.com>
-Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
- page_pool: remove PP_FLAG_PAGE_FRAG flag)
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: David Ahern <dsahern@kernel.org>, Jason Gunthorpe <jgg@ziepe.ca>, Christoph Hellwig <hch@lst.de>, 
-	John Hubbard <jhubbard@nvidia.com>, Dan Williams <dan.j.williams@intel.com>, 
-	Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com, 
-	Alexander Duyck <alexander.duyck@gmail.com>, Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, 
-	pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
-	Salil Mehta <salil.mehta@huawei.com>, Eric Dumazet <edumazet@google.com>, 
-	Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, 
-	Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, 
-	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jesper Dangaard Brouer <hawk@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Jonathan Lemon <jonathan.lemon@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_100641_871581_E7431451 
-X-CRM114-Status: GOOD (  17.75  )
+X-CRM114-CacheID: sfid-20230711_101823_921116_1B16F951 
+X-CRM114-Status: GOOD (  23.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,39 +132,208 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 11, 2023 at 9:32=E2=80=AFAM Jakub Kicinski <kuba@kernel.org> wr=
-ote:
->
-> On Tue, 11 Jul 2023 10:20:58 -0600 David Ahern wrote:
-> > On 7/11/23 10:00 AM, Jakub Kicinski wrote:
-> > >> RDMA works with the AMD and Intel intree drivers using DMABUF withou=
-t
-> > >> requiring struct pages using the DRM hacky scatterlist approach.
-> > > I see, thanks. We need pages primarily for refcounting. Avoiding all
-> > > the infamous problems with memory pins. Oh well.
-> >
-> > io_uring for example already manages the page pinning. An skb flag was
-> > added for ZC Tx API to avoid refcounting in the core networking layer.
->
-> Right, we can refcount in similar fashion. Still tracking explicitly
-> when buffers are handed over to the NIC.
->
-> > Any reason not to allow an alternative representation for skb frags tha=
-n
-> > struct page?
->
-> I don't think there's a hard technical reason. We can make it work.
+Rename SPI_MASTER_GPIO_SS to SPI_CONTROLLER_GPIO_SS and
+convert the code to using SPI_CONTROLLER_GPIO_SS to follow
+the new naming schema.
 
-I also think we can switch the representation for skb frags to
-something else. However - please do correct me if I'm wrong - I don't
-think that is sufficient for device memory TCP. My understanding is
-that we also need to modify any NIC drivers that want to use device
-memory TCP to understand a new memory type, and the page pool as well
-if that's involved. I think in particular modifying the memory type in
-all the NIC drivers that want to do device memory TCP is difficult. Do
-you think this is feasible?
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Reviewed-by: Serge Semin <fancer.lancer@gmail.com> # DW APB/AHB SSI
+---
+ drivers/spi/spi-ath79.c    | 2 +-
+ drivers/spi/spi-atmel.c    | 2 +-
+ drivers/spi/spi-bitbang.c  | 6 +++---
+ drivers/spi/spi-davinci.c  | 2 +-
+ drivers/spi/spi-dw-core.c  | 2 +-
+ drivers/spi/spi-gpio.c     | 2 +-
+ drivers/spi/spi-imx.c      | 2 +-
+ drivers/spi/spi-orion.c    | 2 +-
+ drivers/spi/spi-rockchip.c | 2 +-
+ drivers/spi/spi-sifive.c   | 2 +-
+ drivers/spi/spi.c          | 4 ++--
+ include/linux/spi/spi.h    | 3 +--
+ 12 files changed, 15 insertions(+), 16 deletions(-)
 
---
-Thanks,
-Mina
+diff --git a/drivers/spi/spi-ath79.c b/drivers/spi/spi-ath79.c
+index d3dd21386f12..1b6d977d111c 100644
+--- a/drivers/spi/spi-ath79.c
++++ b/drivers/spi/spi-ath79.c
+@@ -185,7 +185,7 @@ static int ath79_spi_probe(struct platform_device *pdev)
+ 
+ 	host->use_gpio_descriptors = true;
+ 	host->bits_per_word_mask = SPI_BPW_RANGE_MASK(1, 32);
+-	host->flags = SPI_MASTER_GPIO_SS;
++	host->flags = SPI_CONTROLLER_GPIO_SS;
+ 	host->num_chipselect = 3;
+ 	host->mem_ops = &ath79_mem_ops;
+ 
+diff --git a/drivers/spi/spi-atmel.c b/drivers/spi/spi-atmel.c
+index 0865993005b2..9674499ed0a6 100644
+--- a/drivers/spi/spi-atmel.c
++++ b/drivers/spi/spi-atmel.c
+@@ -1476,7 +1476,7 @@ static int atmel_spi_probe(struct platform_device *pdev)
+ 	host->num_chipselect = 4;
+ 	host->setup = atmel_spi_setup;
+ 	host->flags = (SPI_CONTROLLER_MUST_RX | SPI_CONTROLLER_MUST_TX |
+-			SPI_MASTER_GPIO_SS);
++			SPI_CONTROLLER_GPIO_SS);
+ 	host->transfer_one = atmel_spi_one_transfer;
+ 	host->set_cs = atmel_spi_set_cs;
+ 	host->cleanup = atmel_spi_cleanup;
+diff --git a/drivers/spi/spi-bitbang.c b/drivers/spi/spi-bitbang.c
+index 862f209cada1..ecd44016c197 100644
+--- a/drivers/spi/spi-bitbang.c
++++ b/drivers/spi/spi-bitbang.c
+@@ -349,11 +349,11 @@ int spi_bitbang_init(struct spi_bitbang *bitbang)
+ 	/*
+ 	 * We only need the chipselect callback if we are actually using it.
+ 	 * If we just use GPIO descriptors, it is surplus. If the
+-	 * SPI_MASTER_GPIO_SS flag is set, we always need to call the
++	 * SPI_CONTROLLER_GPIO_SS flag is set, we always need to call the
+ 	 * driver-specific chipselect routine.
+ 	 */
+ 	custom_cs = (!master->use_gpio_descriptors ||
+-		     (master->flags & SPI_MASTER_GPIO_SS));
++		     (master->flags & SPI_CONTROLLER_GPIO_SS));
+ 
+ 	if (custom_cs && !bitbang->chipselect)
+ 		return -EINVAL;
+@@ -371,7 +371,7 @@ int spi_bitbang_init(struct spi_bitbang *bitbang)
+ 	master->transfer_one = spi_bitbang_transfer_one;
+ 	/*
+ 	 * When using GPIO descriptors, the ->set_cs() callback doesn't even
+-	 * get called unless SPI_MASTER_GPIO_SS is set.
++	 * get called unless SPI_CONTROLLER_GPIO_SS is set.
+ 	 */
+ 	if (custom_cs)
+ 		master->set_cs = spi_bitbang_set_cs;
+diff --git a/drivers/spi/spi-davinci.c b/drivers/spi/spi-davinci.c
+index 014392459d5e..7ea2ac053052 100644
+--- a/drivers/spi/spi-davinci.c
++++ b/drivers/spi/spi-davinci.c
+@@ -939,7 +939,7 @@ static int davinci_spi_probe(struct platform_device *pdev)
+ 	master->bus_num = pdev->id;
+ 	master->num_chipselect = pdata->num_chipselect;
+ 	master->bits_per_word_mask = SPI_BPW_RANGE_MASK(2, 16);
+-	master->flags = SPI_CONTROLLER_MUST_RX | SPI_MASTER_GPIO_SS;
++	master->flags = SPI_CONTROLLER_MUST_RX | SPI_CONTROLLER_GPIO_SS;
+ 	master->setup = davinci_spi_setup;
+ 	master->cleanup = davinci_spi_cleanup;
+ 	master->can_dma = davinci_spi_can_dma;
+diff --git a/drivers/spi/spi-dw-core.c b/drivers/spi/spi-dw-core.c
+index a8ba41ad4541..45f5acc26b1d 100644
+--- a/drivers/spi/spi-dw-core.c
++++ b/drivers/spi/spi-dw-core.c
+@@ -932,7 +932,7 @@ int dw_spi_add_host(struct device *dev, struct dw_spi *dws)
+ 	if (dws->mem_ops.exec_op)
+ 		master->mem_ops = &dws->mem_ops;
+ 	master->max_speed_hz = dws->max_freq;
+-	master->flags = SPI_MASTER_GPIO_SS;
++	master->flags = SPI_CONTROLLER_GPIO_SS;
+ 	master->auto_runtime_pm = true;
+ 
+ 	/* Get default rx sample delay */
+diff --git a/drivers/spi/spi-gpio.c b/drivers/spi/spi-gpio.c
+index 85e149ec2910..612db477ad12 100644
+--- a/drivers/spi/spi-gpio.c
++++ b/drivers/spi/spi-gpio.c
+@@ -434,7 +434,7 @@ static int spi_gpio_probe(struct platform_device *pdev)
+ 	 * line, that we need to do on selection. This makes the local
+ 	 * callback for chipselect always get called.
+ 	 */
+-	master->flags |= SPI_MASTER_GPIO_SS;
++	master->flags |= SPI_CONTROLLER_GPIO_SS;
+ 	bb->chipselect = spi_gpio_chipselect;
+ 	bb->set_line_direction = spi_gpio_set_direction;
+ 
+diff --git a/drivers/spi/spi-imx.c b/drivers/spi/spi-imx.c
+index 528ae46c087f..8d97f2b32c2b 100644
+--- a/drivers/spi/spi-imx.c
++++ b/drivers/spi/spi-imx.c
+@@ -1779,7 +1779,7 @@ static int spi_imx_probe(struct platform_device *pdev)
+ 
+ 	if (is_imx51_ecspi(spi_imx) || is_imx53_ecspi(spi_imx)) {
+ 		controller->max_native_cs = 4;
+-		controller->flags |= SPI_MASTER_GPIO_SS;
++		controller->flags |= SPI_CONTROLLER_GPIO_SS;
+ 	}
+ 
+ 	spi_imx->spi_drctl = spi_drctl;
+diff --git a/drivers/spi/spi-orion.c b/drivers/spi/spi-orion.c
+index ad9e83e34297..4882aafd0505 100644
+--- a/drivers/spi/spi-orion.c
++++ b/drivers/spi/spi-orion.c
+@@ -677,7 +677,7 @@ static int orion_spi_probe(struct platform_device *pdev)
+ 	master->bits_per_word_mask = SPI_BPW_MASK(8) | SPI_BPW_MASK(16);
+ 	master->auto_runtime_pm = true;
+ 	master->use_gpio_descriptors = true;
+-	master->flags = SPI_MASTER_GPIO_SS;
++	master->flags = SPI_CONTROLLER_GPIO_SS;
+ 
+ 	platform_set_drvdata(pdev, master);
+ 
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 143ede958ac1..a37943847e81 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -858,7 +858,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 		ctlr->mode_bits |= SPI_NO_CS;
+ 		ctlr->slave_abort = rockchip_spi_slave_abort;
+ 	} else {
+-		ctlr->flags = SPI_MASTER_GPIO_SS;
++		ctlr->flags = SPI_CONTROLLER_GPIO_SS;
+ 		ctlr->max_native_cs = ROCKCHIP_SPI_MAX_CS_NUM;
+ 		/*
+ 		 * rk spi0 has two native cs, spi1..5 one cs only
+diff --git a/drivers/spi/spi-sifive.c b/drivers/spi/spi-sifive.c
+index dae9e097c333..2f77dae85386 100644
+--- a/drivers/spi/spi-sifive.c
++++ b/drivers/spi/spi-sifive.c
+@@ -379,7 +379,7 @@ static int sifive_spi_probe(struct platform_device *pdev)
+ 	 * we need to "left-align" the bits (unless SPI_LSB_FIRST)
+ 	 */
+ 	master->bits_per_word_mask = SPI_BPW_MASK(8);
+-	master->flags = SPI_CONTROLLER_MUST_TX | SPI_MASTER_GPIO_SS;
++	master->flags = SPI_CONTROLLER_MUST_TX | SPI_CONTROLLER_GPIO_SS;
+ 	master->prepare_message = sifive_spi_prepare_message;
+ 	master->set_cs = sifive_spi_set_cs;
+ 	master->transfer_one = sifive_spi_transfer_one;
+diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
+index 9b096cbc9926..0612610a091a 100644
+--- a/drivers/spi/spi.c
++++ b/drivers/spi/spi.c
+@@ -986,7 +986,7 @@ static void spi_set_cs(struct spi_device *spi, bool enable, bool force)
+ 				gpiod_set_value_cansleep(spi_get_csgpiod(spi, 0), activate);
+ 		}
+ 		/* Some SPI masters need both GPIO CS & slave_select */
+-		if ((spi->controller->flags & SPI_MASTER_GPIO_SS) &&
++		if ((spi->controller->flags & SPI_CONTROLLER_GPIO_SS) &&
+ 		    spi->controller->set_cs)
+ 			spi->controller->set_cs(spi, !enable);
+ 	} else if (spi->controller->set_cs) {
+@@ -3035,7 +3035,7 @@ static int spi_get_gpio_descs(struct spi_controller *ctlr)
+ 
+ 	ctlr->unused_native_cs = ffs(~native_cs_mask) - 1;
+ 
+-	if ((ctlr->flags & SPI_MASTER_GPIO_SS) && num_cs_gpios &&
++	if ((ctlr->flags & SPI_CONTROLLER_GPIO_SS) && num_cs_gpios &&
+ 	    ctlr->max_native_cs && ctlr->unused_native_cs >= ctlr->max_native_cs) {
+ 		dev_err(dev, "No unused native chip select available\n");
+ 		return -EINVAL;
+diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
+index b90c53332909..458369939fa5 100644
+--- a/include/linux/spi/spi.h
++++ b/include/linux/spi/spi.h
+@@ -563,8 +563,7 @@ struct spi_controller {
+ #define SPI_CONTROLLER_NO_TX		BIT(2)	/* Can't do buffer write */
+ #define SPI_CONTROLLER_MUST_RX		BIT(3)	/* Requires rx */
+ #define SPI_CONTROLLER_MUST_TX		BIT(4)	/* Requires tx */
+-
+-#define SPI_MASTER_GPIO_SS		BIT(5)	/* GPIO CS must select slave */
++#define SPI_CONTROLLER_GPIO_SS		BIT(5)	/* GPIO CS must select slave */
+ 
+ 	/* Flag indicating if the allocation of this struct is devres-managed */
+ 	bool			devm_allocated;
+-- 
+2.40.0.1.gaa8946217a0b
+
 
