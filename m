@@ -4,100 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0937CEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 20:16:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 563E0EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 20:30:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/ZSa4NetAP62hVIVyvAbNH/+emK9xW+vVSDSphd0g5Y=; b=23wtOfgX7BWJRacboSX7oJdA++
-	VbOmD0HdJqLC3R6GlkLrzqw4fJMbTP9ysHYbcg0cnRYDuEt5krLV5YNDhlbO2urjqCWRP0sxeK7l6
-	kjcp/qBA1LvNpkYbilUuAr/VVfYOdUppOFXFX3G4985jp1dphOvLjCEEPpF1hSNwFMU/R81FxzYyb
-	6AuCClMrqC+r+4NUZSIvJpP1h/1uouTZM6not0ByOiBxR8+4zu5dwQWqhyT48B7vpuWgzfvA21ePe
-	aeSqBjzzRiu987Yy5jncVwSQiUawTnuYXJLFk1hvCLh5etl9o7Tpv5I+9x2d1cdGuGkiIBjORINB3
-	3naRkIog==;
+	bh=s70gQ0p4s2qzcV/Ayy30mLAMppe9wZRLcW8gZS36XQ4=; b=TbWlCsZ6IxM+0qAhch65Wj0PUr
+	SvgePbLP6oNoGLvamNuNnrx0cOu8FVeEkMnFg8ZMQhlG5mXuE1fNjfKUhhgExVb0pK0Mwju6lQI7/
+	4Hi0cwwKJC/742Q6uOGRnTiL19QfhRyd18lWNi633+cyRV9JX+xVEUDv9Jhn9GaksXf4gYqJEvKK9
+	xClfnSXru/Z1fVe3Azbw/HoJrByyt3PkG4mdylmLJU8uvCAAtRinfDXHVIiVP9gDimlc5iZO0ieO0
+	tfdK8shpuWOWyUDqHOIKuy0FydExrUWS9TNvxjEPNJ3X0rCjA/1zjbBshFmJPNW16zGtf0di/AG60
+	g6wfxNdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJgG4-00198N-2r;
-	Wed, 12 Jul 2023 20:16:20 +0000
-Received: from mail-vs1-xe31.google.com ([2607:f8b0:4864:20::e31])
+	id 1qJgTO-001B6B-0n;
+	Wed, 12 Jul 2023 20:30:06 +0000
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJgG1-001967-18
+	id 1qJgTK-001B5F-2Z
 	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Jul 2023 20:16:18 +0000
-Received: by mail-vs1-xe31.google.com with SMTP id ada2fe7eead31-44691ebb0e1so33308137.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jul 2023 13:16:14 -0700 (PDT)
+	Wed, 12 Jul 2023 20:30:04 +0000
+Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2b74fa5e7d7so2190021fa.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jul 2023 13:30:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20221208; t=1689192973; x=1691784973;
+        d=gmail.com; s=20221208; t=1689193800; x=1691785800;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=/ZSa4NetAP62hVIVyvAbNH/+emK9xW+vVSDSphd0g5Y=;
-        b=f3Ii093FW9+oc2F8zRSaiEu5EyBxsVuk08e/GPtsqsSeShWLCXC1bZxIOmmMmcmq1X
-         oK6yGMz/yKUAxH6edgErEdCMXXNog2fkqOIotGgFfIVUj0iCgmVT+v8LC5kpCquThfT7
-         s7k5uUiWkhgOwmaUx18/OOTEOwqIkO3nmFoBTk4Dexu9TnDZDg74BS662UfijW794wbe
-         4mv5gp2rm0Aw88kz4kO6NM+04OR7peKtJVIioaYBTxh1ruVx+TUQsaXoyF64QJDSCbCU
-         fJTbKpPR0YESffxmDzel4+2Y9WS8i4XOsqrufpBhzDjq1QWzp4YaNmCPgw4rBSNvB9NK
-         5lvw==
+        bh=s70gQ0p4s2qzcV/Ayy30mLAMppe9wZRLcW8gZS36XQ4=;
+        b=VGyrHSG2b6tsuaeeeX3cEkZDJjwhWJ79ynnf7/uO9xh85WreVk2ZLFUbn61p2Esnaj
+         GwWXQHA7TBJcJ3VZK7WXnMJKgFiL9gxAnLxFAlPyuCkDORGoBETsRHrPsSgNq9BxVMHZ
+         kfO5zYVlbC+BsQRmPTwkMnUup5iSGgm5ic8agWPBozbzg4deB4GlZ0+rRlp+0wyb7D/y
+         Vm1zckpAHA8Nxz50P9//W5BAY0IWE4RqR6Xdplywxy7uIaZx0v7Fok6wGm0Jb+AEOkdS
+         IKB7+BjXAzYk4G0o2nhTX43SZD7ZdFgbPtB8Xurbz//bTNE/HYDD9eSJY3ovxD0kkGBQ
+         dFPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689192973; x=1691784973;
+        d=1e100.net; s=20221208; t=1689193800; x=1691785800;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=/ZSa4NetAP62hVIVyvAbNH/+emK9xW+vVSDSphd0g5Y=;
-        b=H9SC3b0P7gi1tn/jhmvkT2+CAG7GLVbxdbG/hvRkubZ2gkI5XZphIQQCHvtFe6mLBV
-         w781BkamFingMfP1ju92YxDAjls1xAb1w5BlyLQips0zMA/lpZJ67diWi/1saC56QgoB
-         tk/brX14HjDR9fILVYVmb9IPwZaGET+jiUUSl4sE8qaKHiR98Y+l4me4yc7wdEA876MT
-         DzM2xWrvhRtzPeRA1FDoVdzGYIXS3atV89FTUf5ksqWGUWsNyfXRLBX0whzZcl5MMd0i
-         sErtPWbn87lfX0tOZhblblGL2Bp+p3YiXnLDQ2YMYkziOKgqUBK3YvTfPKYQzrwJIRkP
-         +t0g==
-X-Gm-Message-State: ABy/qLbd4ETkhUsxcaF40hdoR5bsLXKPd6cJgfpF/g0+KESjoSZKoNwg
-	yL1/vidCEtcxIMA0DTJ4+ImBLsBXi8Q5pAOu0TQ6wg==
-X-Google-Smtp-Source: APBJJlEZodLxymYp6zmTXbF705s1wpVAmKh0FiHChRMpwA1Y+RhEAUbnIuR5QMDX6deaSzma4SHNwgy0sovv8EPmhPw=
-X-Received: by 2002:a67:af0b:0:b0:445:208:2d62 with SMTP id
- v11-20020a67af0b000000b0044502082d62mr12673636vsl.23.1689192973170; Wed, 12
- Jul 2023 13:16:13 -0700 (PDT)
+        bh=s70gQ0p4s2qzcV/Ayy30mLAMppe9wZRLcW8gZS36XQ4=;
+        b=XlBd7DurvLdi+HsAxe7gaoCF4oBPgq75H+8GWY3TuU8WXh5hmgoqvoEIK9s1pbpjdP
+         53xwbUMyqp9o4IuV6Yex4dM/LeUVNTKF6zW84v97nMnDJM5YS9D0lc5NlDoyJxVKQh3r
+         WNyRt5XxdbgnPkqwXpUnvqtxc2YIGv4xShuza3hGm51Lw753RewYDJs5qwesFUDRPJxP
+         z/9XUMTGamn9rrBcOztINXhgzCfdxnPoO3fvja7yFcF2ScVte0bMB6iJs1aeFMUcCeEb
+         YeopsiMWSKtSLIyF20hsnZqLIcy6gn8bNtuwXDT6y9sLfuk78E6VICn41ZlBlqVoh+4e
+         6SLg==
+X-Gm-Message-State: ABy/qLbnkx8v/lAGsAjB6278jcbGuOJRMfFCmk1riVTnEcs+4sZ9ouKX
+	hycC+CtHnc3iiBytt2kjnhmA1cq7NFTlFCLeXbk=
+X-Google-Smtp-Source: APBJJlFYkpPdO34bvP5tNhj7U8Ffuy0IpHxP0w2CAJJ8BbRYn1IKHjOg+YHDbZpWvTYoJumFrusISnmM8jxqNNSqGtA=
+X-Received: by 2002:a2e:7a0e:0:b0:2b6:d631:a1a0 with SMTP id
+ v14-20020a2e7a0e000000b002b6d631a1a0mr17564926ljc.12.1689193799496; Wed, 12
+ Jul 2023 13:29:59 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230710215906.49514550@kernel.org> <20230711050445.GA19323@lst.de>
- <ZK1FbjG+VP/zxfO1@ziepe.ca> <20230711090047.37d7fe06@kernel.org>
- <04187826-8dad-d17b-2469-2837bafd3cd5@kernel.org> <20230711093224.1bf30ed5@kernel.org>
- <CAHS8izNHkLF0OowU=p=mSNZss700HKAzv1Oxqu2bvvfX_HxttA@mail.gmail.com>
- <20230711133915.03482fdc@kernel.org> <2263ae79-690e-8a4d-fca2-31aacc5c9bc6@kernel.org>
- <CAHS8izP=k8CqUZk7bGUx4ctm4m2kRC2MyEJv+N4+b0cHVkTQmA@mail.gmail.com> <ZK6kOBl4EgyYPtaD@ziepe.ca>
-In-Reply-To: <ZK6kOBl4EgyYPtaD@ziepe.ca>
-From: Mina Almasry <almasrymina@google.com>
-Date: Wed, 12 Jul 2023 13:16:00 -0700
-Message-ID: <CAHS8izNuda2DXKTFAov64F7J2_BbMPaqJg1NuMpWpqGA20+S_Q@mail.gmail.com>
-Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
- page_pool: remove PP_FLAG_PAGE_FRAG flag)
-To: Jason Gunthorpe <jgg@ziepe.ca>
-Cc: David Ahern <dsahern@kernel.org>, Samiullah Khawaja <skhawaja@google.com>, 
-	Willem de Bruijn <willemb@google.com>, Jakub Kicinski <kuba@kernel.org>, Christoph Hellwig <hch@lst.de>, 
-	John Hubbard <jhubbard@nvidia.com>, Dan Williams <dan.j.williams@intel.com>, 
-	Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com, 
-	Alexander Duyck <alexander.duyck@gmail.com>, Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, 
-	pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
-	Salil Mehta <salil.mehta@huawei.com>, Eric Dumazet <edumazet@google.com>, 
-	Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, 
-	Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, 
-	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jesper Dangaard Brouer <hawk@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Jonathan Lemon <jonathan.lemon@gmail.com>, =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
-	logang@deltatee.com, Bjorn Helgaas <bhelgaas@google.com>
+References: <20230712130218.376-1-chris.lu@mediatek.com>
+In-Reply-To: <20230712130218.376-1-chris.lu@mediatek.com>
+From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Date: Wed, 12 Jul 2023 13:29:47 -0700
+Message-ID: <CABBYNZLoJtUpAR-yKpq9a1NCTjhdgWMNSdwGd7f9jtFR0LuEAA@mail.gmail.com>
+Subject: Re: [PATCH v4] Bluetooth: btmtk: Fix null pointer when processing coredump
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, 
+	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230712_131617_397038_557F59C2 
-X-CRM114-Status: GOOD (  42.67  )
+X-CRM114-CacheID: sfid-20230712_133002_854879_90C6BACA 
+X-CRM114-Status: GOOD (  18.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,132 +91,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 12, 2023 at 6:01=E2=80=AFAM Jason Gunthorpe <jgg@ziepe.ca> wrot=
-e:
+Hi Chris,
+
+On Wed, Jul 12, 2023 at 6:03=E2=80=AFAM Chris Lu <chris.lu@mediatek.com> wr=
+ote:
 >
-> On Tue, Jul 11, 2023 at 08:42:24PM -0700, Mina Almasry wrote:
+> There may be a potential null pointer risk if offset value is
+> less than 0 when doing memcmp in btmtk_process_coredump().
+> Check offset is valid before doing memcmp.
 >
-> > 1. The device memory driver would be the p2pdma provider. It would
-> > expose a user API which allocates a device memory region, calls
-> > pci_p2pdma_add_resource() and pci_p2pmem_publish() on it, and returns
-> > a reference to it to the userspace.
+> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+
+You should probably include the Fixes tag of the patch that introduced
+the problem.
+
+> ---
+> v2: fix typo
+> v3: fix bot checking error
+> v4: reduce variable 'offset' declaration in v3
+> ---
+>  drivers/bluetooth/btmtk.c | 12 ++++++------
+>  drivers/bluetooth/btmtk.h |  1 +
+>  2 files changed, 7 insertions(+), 6 deletions(-)
 >
-> This is not quite right, if you convert any of the GPU drivers to use
-> P2PDMA you are going to need to restructure the p2pmem stuff to
-> seperate the genalloc. The GPU driver must continue to be the owner
-> and allocator of the MMIO memory it already controls, we can't have
-> two allocators working in parallel.
+> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> index 786f775196ae..9cc789272ab7 100644
+> --- a/drivers/bluetooth/btmtk.c
+> +++ b/drivers/bluetooth/btmtk.c
+> @@ -395,12 +395,12 @@ int btmtk_process_coredump(struct hci_dev *hdev, st=
+ruct sk_buff *skb)
 >
-> The genalloc stuff supports the special NVMe use case, I don't know of
-> anything else that would like to work that way.
+>                 /* Mediatek coredump data would be more than MTK_COREDUMP=
+_NUM */
+>                 if (data->cd_info.cnt > MTK_COREDUMP_NUM &&
+> -                   skb->len > sizeof(MTK_COREDUMP_END) &&
+> -                   !memcmp((char *)&skb->data[skb->len - sizeof(MTK_CORE=
+DUMP_END)],
+> -                           MTK_COREDUMP_END, sizeof(MTK_COREDUMP_END) - =
+1)) {
+> -                       bt_dev_info(hdev, "Mediatek coredump end");
+> -                       hci_devcd_complete(hdev);
+> -               }
+> +                   skb->len > MTK_COREDUMP_END_LEN)
+> +                       if (!memcmp((char *)&skb->data[skb->len - MTK_COR=
+EDUMP_END_LEN],
+> +                           MTK_COREDUMP_END, MTK_COREDUMP_END_LEN - 1)) =
+{
+> +                               bt_dev_info(hdev, "Mediatek coredump end"=
+);
+> +                               hci_devcd_complete(hdev);
+> +                       }
+>
+>                 break;
+>         }
+> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+> index 68309dfe076a..56f5502baadf 100644
+> --- a/drivers/bluetooth/btmtk.h
+> +++ b/drivers/bluetooth/btmtk.h
+> @@ -24,6 +24,7 @@
+>
+>  #define MTK_COREDUMP_SIZE              (1024 * 1000)
+>  #define MTK_COREDUMP_END               "coredump end"
+> +#define MTK_COREDUMP_END_LEN           (sizeof(MTK_COREDUMP_END))
+>  #define MTK_COREDUMP_NUM               255
+>
+>  enum {
+> --
+> 2.18.0
 >
 
-I think maybe you misunderstood the proposal. AFAICT the genalloc
-stuff works for us, although there are other issues with p2pdma that I
-need to solve.
-
-The proposal was that the uapi in step #1 allocates a region of GPU
-memory, and sets up a p2pdma provider for this region of memory. From
-the perspective of the GPU, the memory is allocated, and in use by the
-user. The p2pdma provider uses genalloc to give out 4K regions with
-struct pages to in-kernel allocators from this memory region. Why
-would that not work? Looking at the code, that seems to be how p2pdma
-works today. The p2pdma provider does p2pdma_add_resource() on a chunk
-of its memory, and the genalloc allocates memory from that chunk?
-
-The actual issues I see with this approach are:
-
-1. There is no way for the p2pdma provider to relinquish back the
-memory it has provided via pci_p2pdma_add_resource(), in the case that
-the user crashed or would like to free the GPU buffer. I would need to
-add a pci_p2pdma_remove_resource(). Would that be  acceptable?
-
-2. The p2pdma semantics seem to be global to the pci device. I.e., 1
-GPU can export 1 p2pdma resource at a time (the way I'm reading the
-API). This is not usable for my use case. I would need multiple users
-to be able to use the uapi in step #1 simultaneously. I would need the
-same pci device to export different p2pdma resources simultaneously
-and the p2pdma clients would need to be able to import some of the
-resources. I would likely need to add an api like this:
-
-diff --git a/include/linux/pci-p2pdma.h b/include/linux/pci-p2pdma.h
-index 8318a97c9c61..c9d754713fdc 100644
---- a/include/linux/pci-p2pdma.h
-+++ b/include/linux/pci-p2pdma.h
-@@ -19,6 +19,33 @@ struct scatterlist;
- #ifdef CONFIG_PCI_P2PDMA
- int pci_p2pdma_add_resource(struct pci_dev *pdev, int bar, size_t size,
-                u64 offset);
-+
-+/* Adds a resource similar to pci_p2pdma_add_resource, and returns a file
-+ * handle referring to this resource. Multiple such resources can be expor=
-ted
-+ * by the same pci device.
-+ */
-+struct file *pci_p2pdma_add_resource_with_handle(struct pci_dev *pdev,
-+               int bar,
-+               size_t size,
-+               u64 offset);
-+
-+/* Remove a resource added via pci_p2pdma_add_resource_with_handle() */
-+struct file *pci_p2pdma_remove_resource_with_handle(
-+               struct file *p2pdma_resource_file);
-+
-+/* Allocates memory from a resource created using
-+ * pci_p2pdma_add_resource_with_handle()
-+ */
-+void *pci_alloc_p2pmem_from_handle(struct file *p2pdma_resource_file,
-+               size_t size);
-+
-+/* Frees p2pmem to a resource created using
-+ * pci_p2pdma_add_resource_with_handle()
-+ */
-+void pci_free_p2pmem_to_handle(struct pci_dev *p2pdma_resource_file,
-+               void *addr,
-+               size_t size);
-+
-
-Looking for feedback from anyone knowledgeable, but the p2pdma
-maintainers as well if possibl.
-
-> > 2. The NIC driver would be the p2pdma client and orchestrator. It
-> > would expose a user API which binds an rxq to a pci device. Prior to
-> > the bind the user API would check that the pci device has published
-> > p2p memory (pci_has_p2pmem()), and check the the p2p mem is accessible
-> > to the driver (pci_p2pdma_distance() I think), etc.
->
-> This doesn't fit the programming model for GPUs at all. You don't want
-> to get packets landing in random GPU memory that a kernel side
-> allocator selects, you want packets landing in GPU memory owned by a
-> specific process that owns the TCP connection.
->
-
-I think this comment is maybe a side effect of the misunderstanding.
-In the proposal, the user allocates a GPU buffer using the API in step
-#1, and then binds the memory to the NIC rx queue using the API
-specified in step #2. We use flow steering & RSS to steer this user's
-TCP traffic to the buffer owned by them.
-
-> This is why DMABUF is used here as it gives a handle to the GPU
-> memory. What you want is to get the P2P pages either directly from the
-> DMABUF or via pin_user_pages() on the DMABUF's mmap.
->
-> > AFAICT, all the concerns brought up in this thread are sidestepped by
-> > using p2pdma. I need not allocate struct pages in the core dma-buf
-> > code anymore (or anywhere), and I need not allocate pgmaps. I would
-> > just re-use the p2pdma support.
->
-> Well, as I said it is going to be a big ask to P2P enable any of the
-> DRM drivers.
->
-> And you still have the netmem vs zone_device struct page conflict to
-> figure out
->
-> But it is alot closer to reasonable than this RFC.
->
-> Jason
 
 --=20
-Thanks,
-Mina
+Luiz Augusto von Dentz
 
