@@ -4,122 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 201ABEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 13:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31AE8EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 13:03:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YWpuSX94flQxvT/7GFNnyt8FcFburvzifDepq9lHVso=; b=kc+No+z2rXBN5c7pR2yKCmHmMn
-	Fxs480wqkhtxNQFXCG8fBKpGEbW39DqAi8ykq6HUf/o2MXT/8ME7Ebg0Jlb+u/ctxGLRNlAEEckpf
-	Ef/U/V1j7dxyQ5kpO+1RPvutLnSzlZM7QQ/4sJI78NN86Mp5ezg/u23sgUzuy5BynUz5sDPA4SjdQ
-	+hBlyH+Et2wiRhXTJiUi8PgwH7QKfyTbXNOPNIo7QB7XbIs20Gcs+Q5WNhQ3wt30WSobZB6k2j1KX
-	Nrb5fpT+2vT40zjxh8gGz3B1JL2KhspVliDLLwC+iM8lNbQ0Fp/zvxQOfyUYYvw8/8SJ+ewwkJWdV
-	2iyblcTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bSRULxvfLJxd6xzB1HBFWn8lQ9a6bu29n+o7ble+0oM=; b=pV9tSNmCYV28KwYmuS9WsPrKQj
+	lwD9uvSmQ5+5t5GgJTZEnbEvdPUpXP2gNbD4IW/4QRjacBV0xAUOiN8Z3C7rvRgMYwUnm/VRCICUw
+	augNXElJYf7CZXJ1L6UIraWivEe1FwjZx4LS3DiJOh6+cmk37Ngk26jjYpBaAy9HEBY8+HF3/w8pF
+	8tq/hCDYXuKWddEkOH/B6IXR6kyO3EWc63RjrTq17RGyR7v0RLv5QEFJ8ZgudxZlU0m7mme1BFSJY
+	f3hQjLlfmkas01Pux9eULhFF5G2+U+DoqFEi/oMsTkdO9oCAVlR5gr6CSfALTCUcnMoNJg8tJ25EO
+	9A2Re9fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJZTp-000134-1G;
-	Wed, 12 Jul 2023 13:02:05 +0000
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+	id 1qJZUs-0001UP-3C;
+	Wed, 12 Jul 2023 13:03:10 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJZTm-0000yb-0O
+	id 1qJZUp-0001R6-0S
 	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Jul 2023 13:02:03 +0000
-Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-765ae938b1bso652007985a.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jul 2023 06:01:55 -0700 (PDT)
+	Wed, 12 Jul 2023 13:03:08 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-3fbc5d5742eso74557585e9.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jul 2023 06:03:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ziepe.ca; s=google; t=1689166911; x=1691758911;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=YWpuSX94flQxvT/7GFNnyt8FcFburvzifDepq9lHVso=;
-        b=iYD+caT5C5DZuj4SVL8bXKmm54Fife2Oz9uLMzl6trcTZ3BhImO/CJ2diP8cel4MIq
-         XvWzM2pXRBQEjLiVo3Hgt06eJWjI2g2knQDKpA2bpSVnKpPcB5kCx3F2DSBXcUoh1RcW
-         evRk6qNJjMFTRHZraP9CHksMsuP51beQli1rjtg5cRvCFZIiXfjjqzmq7912pS2ynyNH
-         /SqCiWdXv8u7bRbNQhIjI9Y4D6U/0F8mt1bkXpyu60M2tzC25xcrXZUnG7XOxux/chyn
-         iUj28ba/siqynf7x2SgrK9XpRda5v7gelAg/mnDloWN4XKIrIZHL0ttb9xLfMYOzQPpS
-         n/hQ==
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689166983; x=1691758983;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=bSRULxvfLJxd6xzB1HBFWn8lQ9a6bu29n+o7ble+0oM=;
+        b=2Z6WUbg1BWfF9ziHsWsCLY+MUOoAcNFaklTXzSkZTQAlSdmVciQlqSxCkebunsw77u
+         LsGvxOMKtNSVgfYjLdg5YVqbnOhiP8Kx0cNvc/UFKgVNXQRKEjCW76Hlm0N+iOv5ItJD
+         Mc7CXlmor8Owt0aQp+syL2YDWzajC1YpA9b52xkVguI+01mIMcL0kgOHMvuj8vFS4h0y
+         AUYeP1rYDTEW6z0s8cHCdBxrYYD0YRZ85jXAstxebOFMV6J7tD+TQECeCWUdxYJnL7WR
+         sotm903lEjclBbYdIgSygvPzQk/sm2XkskduBMCxydqTWvnd/9EX5Xkhn25oYf6hjHxM
+         0Frw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689166911; x=1691758911;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YWpuSX94flQxvT/7GFNnyt8FcFburvzifDepq9lHVso=;
-        b=b3EwUY36CKuuWOKScnh+4Jard+QZ+hwqlvr0sgYyqIPSpVir81f3deaRGABk6PRLQL
-         BhOLJkvVGhQssatzmH/lHi1xOR3ncZlp08DmNMbBGpH2WVmHKUN/wUTcDzin23KMwJ/D
-         wPRsswfP9Iyr+pL/KO9lcxLxoWgv8ZuQr4MXimBivTSpInh/XWDwldFtG/EpJZ0Ob/ON
-         u0cUgw4cgAMQ32jbe2Bk2Cv7yuxKGel3y6j60pFVH/BWyCzTy3CKhU+fx/q/HVgvOoEv
-         Ug8iMcpmJSCO/kxlmR4w2tVvrY/sOe/AuAdLReL+pfdbCvqhqpYuXknFmKs/4SWf02Pk
-         6I2g==
-X-Gm-Message-State: ABy/qLY1BttSLPWSEznYk6x60U2ITamhjxk5GlD+rpAzM5X8Shkvrs1e
-	RNFFG9JsNda+T1CPHJqn0rcAdg==
-X-Google-Smtp-Source: APBJJlFY1e3i66W1OtOcIX3n2XlytjAfsqmXfgyyy6DjtCl2reodlKdOdi1miiqTfvLyhJirNei5sQ==
-X-Received: by 2002:ae9:dfc5:0:b0:767:d847:278a with SMTP id t188-20020ae9dfc5000000b00767d847278amr6940605qkf.74.1689166911567;
-        Wed, 12 Jul 2023 06:01:51 -0700 (PDT)
-Received: from ziepe.ca (hlfxns017vw-142-68-25-194.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.25.194])
-        by smtp.gmail.com with ESMTPSA id u17-20020a05620a121100b007673f8803c3sm2105604qkj.96.2023.07.12.06.01.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Jul 2023 06:01:47 -0700 (PDT)
-Received: from jgg by wakko with local (Exim 4.95)
-	(envelope-from <jgg@ziepe.ca>)
-	id 1qJZTU-000OJR-6S;
-	Wed, 12 Jul 2023 10:01:44 -0300
-Date: Wed, 12 Jul 2023 10:01:44 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Mina Almasry <almasrymina@google.com>
-Cc: David Ahern <dsahern@kernel.org>,
-	Samiullah Khawaja <skhawaja@google.com>,
-	Willem de Bruijn <willemb@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Christoph Hellwig <hch@lst.de>,
-	John Hubbard <jhubbard@nvidia.com>,
-	Dan Williams <dan.j.williams@intel.com>,
-	Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com,
-	Alexander Duyck <alexander.duyck@gmail.com>,
-	Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
-	pabeni@redhat.com, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Yisen Zhuang <yisen.zhuang@huawei.com>,
-	Salil Mehta <salil.mehta@huawei.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Sunil Goutham <sgoutham@marvell.com>,
-	Geetha sowjanya <gakula@marvell.com>,
-	Subbaraya Sundeep <sbhatta@marvell.com>,
-	hariprasad <hkelam@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>,
-	Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jesper Dangaard Brouer <hawk@kernel.org>,
-	Ilias Apalodimas <ilias.apalodimas@linaro.org>,
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Jonathan Lemon <jonathan.lemon@gmail.com>,
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
-	logang@deltatee.com, Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
- page_pool: remove PP_FLAG_PAGE_FRAG flag)
-Message-ID: <ZK6kOBl4EgyYPtaD@ziepe.ca>
-References: <20230710215906.49514550@kernel.org>
- <20230711050445.GA19323@lst.de>
- <ZK1FbjG+VP/zxfO1@ziepe.ca>
- <20230711090047.37d7fe06@kernel.org>
- <04187826-8dad-d17b-2469-2837bafd3cd5@kernel.org>
- <20230711093224.1bf30ed5@kernel.org>
- <CAHS8izNHkLF0OowU=p=mSNZss700HKAzv1Oxqu2bvvfX_HxttA@mail.gmail.com>
- <20230711133915.03482fdc@kernel.org>
- <2263ae79-690e-8a4d-fca2-31aacc5c9bc6@kernel.org>
- <CAHS8izP=k8CqUZk7bGUx4ctm4m2kRC2MyEJv+N4+b0cHVkTQmA@mail.gmail.com>
+        d=1e100.net; s=20221208; t=1689166983; x=1691758983;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=bSRULxvfLJxd6xzB1HBFWn8lQ9a6bu29n+o7ble+0oM=;
+        b=BXocLOnw5LwYX4kFgFcvmeCjL1TDgoLvMC+0vwgQm9jBUS/9tAxXYTNYwOcrEkffmi
+         PQb5m9nLGne4k3HBhWTJvp6k5p4Gdy4+QrZT5FEaXsEBGLzcqISp2tvA0B/ByWLG9OkH
+         1Pe3cM/LH9Yr1YiObJnkx9D5ll1f/tvxeUVW0IxwOP0J+JrjZdaZWTalJGKKh0X3H/sM
+         s+UH456/+UzQcXLHTsxvbnS4b2/PIJEsnxJ8wEqWT1eJ00NNsoo1de0cSAybDnJJLjUe
+         aC4YJlBaSijK89LXtIDgMRK21cQ0aqo8hAfuQVwnlfFWhH3bf9ByuMjXzxL3mkwc0nJD
+         1rlQ==
+X-Gm-Message-State: ABy/qLbJP40tLM2vfXd0fSn1ayn/RCHGmwSs6nbLmWWXwcPZ2jJ27954
+	V5VCPAvT++jspbRbWdJ0k7lCIQ==
+X-Google-Smtp-Source: APBJJlGSQc4f/DWJNPIm30X0RCk8ibYVWS/PzA68G9YIu/iC0V9OZ7UmT4v3sNNuC5ijsDPsj3unFQ==
+X-Received: by 2002:a7b:cd8e:0:b0:3f9:b9e7:2f8d with SMTP id y14-20020a7bcd8e000000b003f9b9e72f8dmr17191551wmj.2.1689166982085;
+        Wed, 12 Jul 2023 06:03:02 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id l3-20020a1ced03000000b003fc0062f0f8sm5101025wmh.9.2023.07.12.06.03.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 12 Jul 2023 06:03:01 -0700 (PDT)
+Message-ID: <c331bfa3-443d-0976-fb14-e6e97fbd7d58@baylibre.com>
+Date: Wed, 12 Jul 2023 15:03:00 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAHS8izP=k8CqUZk7bGUx4ctm4m2kRC2MyEJv+N4+b0cHVkTQmA@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v3 1/2] drm/mediatek: Fix iommu fault by swapping FBs
+ after updating plane state
+Content-Language: en-US
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Jason-ch Chen <jason-ch.chen@mediatek.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230710093253.32224-1-jason-jh.lin@mediatek.com>
+ <20230710093253.32224-2-jason-jh.lin@mediatek.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230710093253.32224-2-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230712_060202_170124_D1F027BD 
-X-CRM114-Status: GOOD (  20.69  )
+X-CRM114-CacheID: sfid-20230712_060307_197332_124D08E9 
+X-CRM114-Status: UNSURE (   9.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,49 +105,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 11, 2023 at 08:42:24PM -0700, Mina Almasry wrote:
 
-> 1. The device memory driver would be the p2pdma provider. It would
-> expose a user API which allocates a device memory region, calls
-> pci_p2pdma_add_resource() and pci_p2pmem_publish() on it, and returns
-> a reference to it to the userspace.
 
-This is not quite right, if you convert any of the GPU drivers to use
-P2PDMA you are going to need to restructure the p2pmem stuff to
-seperate the genalloc. The GPU driver must continue to be the owner
-and allocator of the MMIO memory it already controls, we can't have
-two allocators working in parallel. 
+On 10/07/2023 11:32, Jason-JH.Lin wrote:
+> According to the comment in drm_atomic_helper_async_commit(),
+> we should make sure FBs have been swapped, so that cleanups in the
+> new_state performs a cleanup in the old FB.
+> 
+> So we should move swapping FBs after calling mtk_plane_update_new_state(),
+> to avoid using the old FB which could be freed.
 
-The genalloc stuff supports the special NVMe use case, I don't know of
-anything else that would like to work that way.
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-> 2. The NIC driver would be the p2pdma client and orchestrator. It
-> would expose a user API which binds an rxq to a pci device. Prior to
-> the bind the user API would check that the pci device has published
-> p2p memory (pci_has_p2pmem()), and check the the p2p mem is accessible
-> to the driver (pci_p2pdma_distance() I think), etc.
-
-This doesn't fit the programming model for GPUs at all. You don't want
-to get packets landing in random GPU memory that a kernel side
-allocator selects, you want packets landing in GPU memory owned by a
-specific process that owns the TCP connection.
-
-This is why DMABUF is used here as it gives a handle to the GPU
-memory. What you want is to get the P2P pages either directly from the
-DMABUF or via pin_user_pages() on the DMABUF's mmap.
-
-> AFAICT, all the concerns brought up in this thread are sidestepped by
-> using p2pdma. I need not allocate struct pages in the core dma-buf
-> code anymore (or anywhere), and I need not allocate pgmaps. I would
-> just re-use the p2pdma support.
-
-Well, as I said it is going to be a big ask to P2P enable any of the
-DRM drivers.
-
-And you still have the netmem vs zone_device struct page conflict to
-figure out
-
-But it is alot closer to reasonable than this RFC.
-
-Jason
+-- 
+Regards,
+Alexandre
 
