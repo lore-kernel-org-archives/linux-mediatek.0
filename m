@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 461BEEB64D9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 12:40:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 385AFEB64D9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 12:50:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SkNQv7geS5CR2LiJ7vpq5fz0PNWmI57+KWeY+aP5fjo=; b=V1hux2iGbPKBwJ2QjF8Rr+IFVJ
-	UlCXE086ICUJTny/vuWw8fcPLXDIFEGWBJNgqnLQ71Av6vtc/iM9o0Ov7uAXgjZ8j3jdx7R8wtsvQ
-	I5jhdYZTzRkVb0QyiW6YvK5b5q/DgNXRyFhy2eGMuf70lF1SYp5+GJaYcDv3SSdMVq29wLT8hRoUn
-	jEixTjw2Dl1Ei564j6XFQsrnEAbuaYgBXfw+KFN3FIfOw9L5KJi6YX54EmftQh7VcFjx4GAJ4ZNj7
-	dDxsPY+vSRBf1Wflmsk4chWowul/mbCmIHQ9YWTAjkAukIDjwbtiKl8FaUSTfX2YlFLxczXtQ49o+
-	VAjV6HbA==;
+	bh=XYsJ63thWaEnF2bdwDOY9GkDlg8P9/us46x/m6A1eFI=; b=yEZ3SEnDQmwVrDe7jck9xlqVz0
+	QvmmNqlIFbshxKy8veXqs3j7mc/RPSF6WIkUvd8mPmwS7mwM8d9LAAaQj05CqIVxht+fZcjoLy4hN
+	fM3sEBN6xtnUfoIJsdaRTimzud9XIuMff4knemM9jlYs493CHUz2yxNk549zp80/SFew93sOGrsD3
+	5BJEjPOvvsN11Kmc2UuZtVOPib7CRDY8Meode5Rd0VRh8fPuphArTZuTDKdG6vefL+G4uHsCpmqMi
+	M4YkidDI+9+Xs7d1jJa2nlZ5cgVCzImvlgRPSkdJ4dYbWb59qinIzhwycwctRnT397a0IpeXhyoes
+	DqGOaGQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJZ8n-00HYRP-0K;
-	Wed, 12 Jul 2023 12:40:21 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1qJZIw-00HZYh-1O;
+	Wed, 12 Jul 2023 12:50:50 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJZ8j-00HYQF-1n
+	id 1qJZIo-00HZWM-26
 	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Jul 2023 12:40:19 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-307d58b3efbso6843437f8f.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jul 2023 05:40:14 -0700 (PDT)
+	Wed, 12 Jul 2023 12:50:44 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-3fb4146e8ceso71536155e9.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jul 2023 05:50:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689165613; x=1691757613;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689166241; x=1691758241;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=SkNQv7geS5CR2LiJ7vpq5fz0PNWmI57+KWeY+aP5fjo=;
-        b=w9wh4Pkr8rOHj8Cbmzkuimk9nKuqBy9JUTg8kjwlj8n8OPSxsfutY+Kk8wexoYVZX+
-         5xTPaDLVpb0WZ1xVXeOGb5YPK0rqIiTmWXMM+XytwPPKhxGylqcDYQxJnXSyIpgqBgDZ
-         ZlC7q6y7wxiej8SzCDfSNI2BXCYXpQaTQ3lTCUT9hSlWjyY5RbocTNvWbnF8GZT3eY0U
-         /eyMserg5zIMY1c+JA19IF6abF6bzOYSBc/fPK/AeOojgY/sKEhdFQ6jL+l7TkJgJCIh
-         2xG/fV/JRFf6gwsisfocp8jKlghZoi7JjGzlH/dRcdCo8U9wvoJOnlsujx7JfLc4BxN6
-         YDiw==
+        bh=XYsJ63thWaEnF2bdwDOY9GkDlg8P9/us46x/m6A1eFI=;
+        b=hn8H70Zyxu8TQrRfZIDwdYKutfQz+JQgByvxMUo15F+OMIywfFp+Qe1KHa4SIyr4wo
+         bqkkofWAawRDiaIa5iVwlqDsQ3Qq0VR8tdn/waIy4t/Nb5At258o9quiRvf8x/6b4qAJ
+         zWcyLaHmENBOVZpWUM/XrYn4XXcgKwXqi87Xr/6ntu7TiQ+DjPCKfHzB4X3/04rzZ3hQ
+         Rwr4z+XHlzVAPJ0AJC/Pr8NOpE0M8HahqrV9k6qGPN1q52NhccZEW4X5jWZBmrELwYlX
+         Ast0Hj2NW8cGb8NnubWNxSSxBuwJCNUFkTo6xtIkeVB1+Ejj/jh5XGpsSw4lmPfFgiK8
+         HpLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689165613; x=1691757613;
+        d=1e100.net; s=20221208; t=1689166241; x=1691758241;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=SkNQv7geS5CR2LiJ7vpq5fz0PNWmI57+KWeY+aP5fjo=;
-        b=dPHTl+G2qDR+4DGhvCVakrv6cpSeTOa4Iy3HhAGZfgAhpTTu19ArCSF13T1VgRoRyx
-         nbNbNs+7ExRaEsQKBGGYXIFa8dLjdxPNGz63GHAE9yiVpDpY8FRcpMHdZGLFCKufN14j
-         VGMPCIikMhP1vAW9acVDcPadKyFQWD+/31dM2N7wAf596LEawM5f6ifAcYdsosyivBq5
-         zbdkfGru1t/lBbiThCf1OYEQ1fBNZoAX1qo5v8j+byfspj1RWOmclScYnr8dHzJ9gPo5
-         MdsqB7ZWU04ictSUf6148ne0tXS6NjQmp+T4v69lSHTnmOTMIXItCDKynADF7J7ui9+q
-         yr1g==
-X-Gm-Message-State: ABy/qLYfOFgybqDmPLioJwdgjehOV00pCzz/YDKhqUrd2Wr7LE96MM9m
-	xhdkO7wvI2j5SNU66fpl9k+qyQ==
-X-Google-Smtp-Source: APBJJlF5yLpkbdjZuR9UBaY6jqLSbZs8oxILlpMjHaH5n0w7cV1ebVwGScR6HD9FlErXpx3JbkAshg==
-X-Received: by 2002:adf:d0c9:0:b0:314:1ce9:3c86 with SMTP id z9-20020adfd0c9000000b003141ce93c86mr16299116wrh.0.1689165613366;
-        Wed, 12 Jul 2023 05:40:13 -0700 (PDT)
+        bh=XYsJ63thWaEnF2bdwDOY9GkDlg8P9/us46x/m6A1eFI=;
+        b=ImrL5JDWlUZOwrO/RVlG4jylCXGErkAYF5z61Up4YJIrkvmYKR40Z/Pwg1hhWDxnsG
+         Mfg2o9vF6nlqdQqUyZkCvicJ2PuwAfhn234K/y1914oWwg3swJHUua9jIYq99bz6ea9D
+         knFDjX2R7rjpRW+e+SIZcK4EqRFjZZPTrHdXsvU3LK21fti3itmelTKFJF1ics50m5Xq
+         cPjd/HZljWyBUivQm6wD/oXdiPkHeJc98R9KDucOafb1tJxk2s7kahHNDkev5tMCdSSL
+         fCBm65ZXFTREMMJ8z8AsRrzH2lXXOQzHQc0ZH/kDzUK4NHiJOAnQ/SOK8Ky1MG98VVYG
+         BYgg==
+X-Gm-Message-State: ABy/qLY918HuXSOh7KpgOioh4AgDO5ssbE5xA/hENk1XpjZ98gR6UvaC
+	YL2AM/lNR0yDmePw5tWxNio4CQ==
+X-Google-Smtp-Source: APBJJlHyphLNHtPrSUBpgCjJ2oqeaRUQji6SkdMtP6DiMk3xvuG5d//Mi73F/YxpSOuHVBAbBidBYw==
+X-Received: by 2002:adf:ed4c:0:b0:314:212f:360b with SMTP id u12-20020adfed4c000000b00314212f360bmr16925439wro.17.1689166240964;
+        Wed, 12 Jul 2023 05:50:40 -0700 (PDT)
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id l16-20020a1c7910000000b003fb40ec9475sm4978175wme.11.2023.07.12.05.40.12
+        by smtp.gmail.com with ESMTPSA id y17-20020adfee11000000b0031274a184d5sm5023825wrn.109.2023.07.12.05.50.39
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 12 Jul 2023 05:40:12 -0700 (PDT)
-Message-ID: <fab21c8b-13d7-1046-6b13-51a3d6684a2f@baylibre.com>
-Date: Wed, 12 Jul 2023 14:40:11 +0200
+        Wed, 12 Jul 2023 05:50:40 -0700 (PDT)
+Message-ID: <5c24ae39-5114-1b79-a952-e7a364a1f2de@baylibre.com>
+Date: Wed, 12 Jul 2023 14:50:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [RESEND 1/2] ASoC: mediatek: mt8188: add memory-region support
+Subject: Re: [RESEND 2/2] ASoC: dt-bindings: mediatek,mt8188-afe: add
+ memory-region
 Content-Language: en-US
 To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
  lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org,
@@ -77,14 +78,15 @@ Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org
 References: <20230712070821.23971-1-trevor.wu@mediatek.com>
- <20230712070821.23971-2-trevor.wu@mediatek.com>
+ <20230712070821.23971-3-trevor.wu@mediatek.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230712070821.23971-2-trevor.wu@mediatek.com>
+In-Reply-To: <20230712070821.23971-3-trevor.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230712_054017_601056_643B9222 
-X-CRM114-Status: GOOD (  20.14  )
+X-CRM114-CacheID: sfid-20230712_055042_689603_0055F919 
+X-CRM114-Status: UNSURE (   6.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,60 +104,9 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 12/07/2023 09:08, Trevor Wu wrote:
-> In certain projects, it is necessary to utilize the reserved memory
-> region for audio dma. The patch takes into account the dts property
-> 'memory-region', allowing for the specification of memory for afe memif
-> through device tree.
-> 
-> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-> ---
->   sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 8 ++++++--
->   1 file changed, 6 insertions(+), 2 deletions(-)
-> 
-> diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
-> index 6a24b339444b..5e14655c5617 100644
-> --- a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
-> +++ b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
-> @@ -16,6 +16,7 @@
->   #include <linux/of.h>
->   #include <linux/of_address.h>
->   #include <linux/of_platform.h>
-> +#include <linux/of_reserved_mem.h>
->   #include <linux/pm_runtime.h>
->   #include <linux/soc/mediatek/infracfg.h>
->   #include <linux/reset.h>
-> @@ -3193,11 +3194,15 @@ static int mt8188_afe_pcm_dev_probe(struct platform_device *pdev)
->   {
->   	struct mtk_base_afe *afe;
->   	struct mt8188_afe_private *afe_priv;
-> -	struct device *dev;
-> +	struct device *dev = &pdev->dev;
+> Add memory-region property to utilize the reserved memory region.
 
-I think that make sense to replace all "&pdev->dev" by "dev" in the next 
-called functions:
-- dma_set_mask_and_coherent
-- devm_kzalloc
-- devm_kzalloc
-
->   	struct reset_control *rstc;
->   	struct regmap *infra_ao;
->   	int i, irq_id, ret;
->   
-> +	ret = of_reserved_mem_device_init(dev);
-> +	if (ret)
-> +		dev_dbg(dev, "failed to assign memory region: %d\n", ret);
-> +
->   	ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(33));
->   	if (ret)
->   		return ret;
-> @@ -3213,7 +3218,6 @@ static int mt8188_afe_pcm_dev_probe(struct platform_device *pdev)
->   
->   	afe_priv = afe->platform_priv;
->   	afe->dev = &pdev->dev;
-> -	dev = afe->dev;
->   
->   	afe->base_addr = devm_platform_ioremap_resource(pdev, 0);
->   	if (IS_ERR(afe->base_addr))
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 -- 
 Regards,
