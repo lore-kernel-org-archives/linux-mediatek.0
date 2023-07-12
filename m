@@ -4,169 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88435EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 07:56:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F5D3EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 08:14:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-Id:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zxu1LjXWjU/21kD7tQ8ruVeJPHyCbbPIaVK5zNep/wk=; b=h9qj3XRiGj1QW1xBWAPuDYRX4M
-	hTSW1rcQyyRifop1bQf/Y01EjMliF6hxCwewxfj+VmH4aW5uzRJGlf2gr0BoHBsRz5fqImurNqz/J
-	IHzhqjfNF7AU0s1Sl0VYj0izygqhxBGniZdhoEH6/26haYrpV6GTrMYGKn6QeMt5N9NyTjW2t0v/A
-	cz7q5Dptb9xaWPr2L2CGtv5M460tyLHQXtiaAzOjsGderjDiWi42WPuIqc70hFuXkfLb34/1dRATU
-	Gc7pAyRnFzwyavsfnfA+qAF14hTA05kUv2Xm/04IWYkOEl8cmQ88sBqL1QDMg+STdD1leIUYX5gjh
-	+veTvRow==;
+	bh=xOBtxgJupmI+362Ug4gZvaILE8rmdn+aJOFY+2JC5mI=; b=V9sRzgXWHPZiVmVlegmRKPOjt6
+	3nR8W3FJInoAVowHNz7VPZx1e58aeVnOxI6XnO9desjd9o+PHk0/Cd2zTf06VFpjGbY84+BvE9O3d
+	kqKStOBoriwBz0HOnQy/qslttGrTK/gshO5KHUgQ+ythgVR/nC5TOrtvF5du47K4yNBd2Sn2Lj+Ej
+	Sr2uytG3rDqqMrRygTpjvrI9nLwXB8YOXzFb5FLwslT/LX9A0fugXZErHphdL79HOI27VbRKtrlwY
+	KSksaPoUZhVgXyc5m06iDq2HKv6E8q1hvXEAFfUZscRTBGF5lxbIgBMdeyShaI0odpMWjIGJAk20H
+	U4mKbjpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJUhp-00GqH5-2n;
-	Wed, 12 Jul 2023 07:56:13 +0000
-Received: from mail-dm6nam04on20629.outbound.protection.outlook.com ([2a01:111:f400:7e8b::629] helo=NAM04-DM6-obe.outbound.protection.outlook.com)
+	id 1qJUz9-00GsQD-1H;
+	Wed, 12 Jul 2023 08:14:07 +0000
+Received: from mail-tyzapc01on20722.outbound.protection.outlook.com ([2a01:111:f403:704b::722] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJUhl-00GqG1-1J;
-	Wed, 12 Jul 2023 07:56:11 +0000
+	id 1qJUz4-00GsLy-2g;
+	Wed, 12 Jul 2023 08:14:04 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mLIy4AFzTaFIKvJ4k5uaT1wEof7Ku/l9vQGK86mqNfv+eGbULCKPcQNIJ/gHp0/LQGEQbkq8gzkExtQweRF/0gzfCrfSdv/XuTxRrfwfAdU1WY4MDLtxtuQYxKJLjaXjRPvatMUsHvsHoW1RufKDQcCm3C1qhqmJ6Dyvf3zIMmBrLz+6ndsqi2R5WiZ0oiHNwebcI0f/M8yaSYLkveEvfZTRFNFJp//HP0aEl2Z7/QkkoX+hTChrW6Ngz8NLA3S8URxfNBkwNgSlkIwsAadZW/IBxAE8FbCBsutFcl/if5s3V/EoHT6I2iWjZnFkmceGs2CZZN9Cw5CtmqcrhL7Ajg==
+ b=YEXeiBF8g+5q3VWCoEyrudMVeFWD6qrkLs4E/enFJtp/j240NeA2u4qkBmXze+4cd2N9hNLh4GIQ6JVjHns/MhU32K3OZUaezI2cf2tYc8lkgUemDLmtyNMPu68+CUqtOiDcv0yuEJkjTGtKWwNuoY05DoZvh6lgQsHnPqAL6KSlEF5DbsC7TXCKLg892yBNXfa4YURCWRwIYLP+k245VfFEFDImxbvqxu3hIXMDBaDHoYPVcPo56Cq+XAxKyizTsHL53Hx+qGZAOiArtQMF1QeBGOr6jFsl90Eu6HPPz7zCDHvxVsN9la9RS8zobF6PZV/co41iZtG5e7eEhj6mbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zxu1LjXWjU/21kD7tQ8ruVeJPHyCbbPIaVK5zNep/wk=;
- b=F2Z7vKsZbYhfJ54T/V2YCz602iVyXnYKJC/0vmZCPTRIttfyDCyD21E7E/JtB185lSLUxqI3DLM6FqIFjfk9nQtpjsaDno41S8qcFTyY5AHeh1ZgnoFWY0h7BWZKccHKrC4RtYH6egx6QdFmcDugYqGK25/QcR659r2kD5LamJAsrB+c+KgkVHn+DbQvd5cqeDUW6I4T2S5NJwfrHfWYBiTXm3n/ZR6Sb7+rfcftikklTFcxAiFzN2JnFHjl3gTiyI266B2cuRZ+3ayg07/OLzTGrSQYWQH8+KhdnDnGui9B4PpDxNAledBoCm48fbCQ4ODDzLDuEDzuYydBXfj3iA==
+ bh=xOBtxgJupmI+362Ug4gZvaILE8rmdn+aJOFY+2JC5mI=;
+ b=E0b+wsK1IoUTC+MjiNoO0JnSmyZ9ATe0mCo+hlLGIVNQwUOwN55JNW8d2inrNJ9MpBML3aV9yu6qLUs4aXdKFUIX9HYwv0rD4rRc4JGu71K1CclU84iYdQ5u2jDIJjJ0TWS7pgWy2yRArFL4YqzruISMpA1/8vk+JzqYy2s2glYE8JGnp5vZpnEsAaQPZYjur4XCS/E+TPOY/N2U/Lwxty0SpK8NsjfN970VXB+9iWO7HM8DhpmcTcI+O9KU0QLqVMmxfc/BcNcPOpyQWvHFZzfCI+TBbHM82nKlZxJEtQ9KOvqi/pWd4nPaySTKiLlDt70jtR4wF+GMvKzaSEMIaA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zxu1LjXWjU/21kD7tQ8ruVeJPHyCbbPIaVK5zNep/wk=;
- b=UlxCZvoBJDaxt4JoNws6bA4DyWDe4IomkM/e26a7shbBjJDZXnsjGiTms9lJtngk7WaCwLOwWywYS2liITVRQvNjxJgGlHMCEqKF9GbDGoqrvwwu6smnJQXSGnkqt55+u+vMQP0930dDQfgcgNIAhQO6y/DD3f/V1EQX2agLExg=
+ bh=xOBtxgJupmI+362Ug4gZvaILE8rmdn+aJOFY+2JC5mI=;
+ b=FhLlm4c8og83IFHt7JS4xcbJI2AZIex8sSjXhEO12kzIcn8D4WpTC9cEr/H/LPYfB6Z/jKBGRTId6XJZoGJsoeFmituArUZ7nVpc8fsrR19jv5VXNwfnfE4Qd1K6ZW5E34wPcfJUydKLZgwFYYKq62WllwZVvwvYfh01nu9NOTMKrig0WpR4iwf0/4LXDWLjJ/Fi+aQI9ln7FZRSlwRv10YZM70czpAKdXR+C7RQRKNwfveoA6kXamEGVkGm/e3fnGo3/nIRLH0LW65bq9flPlPHPQFquJwqoN60/B7hDbcl5CL8xffH0cI+A6/l+kuh/W4l/mzwR3ZY28oyK+vVqA==
 Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from BN8PR12MB3587.namprd12.prod.outlook.com (2603:10b6:408:43::13)
- by DM8PR12MB5461.namprd12.prod.outlook.com (2603:10b6:8:3a::19) with
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com (2603:1096:101:78::6)
+ by SG2PR06MB5382.apcprd06.prod.outlook.com (2603:1096:4:1d5::14) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6565.34; Wed, 12 Jul
- 2023 07:56:01 +0000
-Received: from BN8PR12MB3587.namprd12.prod.outlook.com
- ([fe80::669f:5dca:d38a:9921]) by BN8PR12MB3587.namprd12.prod.outlook.com
- ([fe80::669f:5dca:d38a:9921%4]) with mapi id 15.20.6588.017; Wed, 12 Jul 2023
- 07:56:00 +0000
-Message-ID: <20f6cbda-e361-9a81-de51-b395ec13841a@amd.com>
-Date: Wed, 12 Jul 2023 09:55:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
- page_pool: remove PP_FLAG_PAGE_FRAG flag)
-Content-Language: en-US
-To: Mina Almasry <almasrymina@google.com>, David Ahern <dsahern@kernel.org>,
- Samiullah Khawaja <skhawaja@google.com>,
- Willem de Bruijn <willemb@google.com>
-Cc: Jakub Kicinski <kuba@kernel.org>, Jason Gunthorpe <jgg@ziepe.ca>,
- Christoph Hellwig <hch@lst.de>, John Hubbard <jhubbard@nvidia.com>,
- Dan Williams <dan.j.williams@intel.com>,
- Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com,
- Alexander Duyck <alexander.duyck@gmail.com>,
- Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
- pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang
- <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>,
- Eric Dumazet <edumazet@google.com>, Sunil Goutham <sgoutham@marvell.com>,
- Geetha sowjanya <gakula@marvell.com>, Subbaraya Sundeep
- <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>,
- Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
- Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-rdma@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Jonathan Lemon
- <jonathan.lemon@gmail.com>, logang@deltatee.com,
- Bjorn Helgaas <bhelgaas@google.com>
-References: <5e0ac5bb-2cfa-3b58-9503-1e161f3c9bd5@kernel.org>
- <CAHS8izP2fPS56uXKMCnbKnPNn=xhTd0SZ1NRUgnAvyuSeSSjGA@mail.gmail.com>
- <ZKNA9Pkg2vMJjHds@ziepe.ca>
- <CAHS8izNB0qNaU8OTcwDYmeVPtCrEjTTOhwCHtVsLiyhXmPLsXQ@mail.gmail.com>
- <ZKxDZfVAbVHgNgIM@ziepe.ca>
- <CAHS8izO3h3yh=CLJgzhLwCVM4SLgf64nnmBtGrXs=vxuJQHnMQ@mail.gmail.com>
- <ZKyZBbKEpmkFkpWV@ziepe.ca> <20230711042708.GA18658@lst.de>
- <20230710215906.49514550@kernel.org> <20230711050445.GA19323@lst.de>
- <ZK1FbjG+VP/zxfO1@ziepe.ca> <20230711090047.37d7fe06@kernel.org>
- <04187826-8dad-d17b-2469-2837bafd3cd5@kernel.org>
- <20230711093224.1bf30ed5@kernel.org>
- <CAHS8izNHkLF0OowU=p=mSNZss700HKAzv1Oxqu2bvvfX_HxttA@mail.gmail.com>
- <20230711133915.03482fdc@kernel.org>
- <2263ae79-690e-8a4d-fca2-31aacc5c9bc6@kernel.org>
- <CAHS8izP=k8CqUZk7bGUx4ctm4m2kRC2MyEJv+N4+b0cHVkTQmA@mail.gmail.com>
-From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-In-Reply-To: <CAHS8izP=k8CqUZk7bGUx4ctm4m2kRC2MyEJv+N4+b0cHVkTQmA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6588.20; Wed, 12 Jul
+ 2023 08:14:01 +0000
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::fa0e:6c06:7474:285c]) by SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::fa0e:6c06:7474:285c%5]) with mapi id 15.20.6565.028; Wed, 12 Jul 2023
+ 08:14:01 +0000
+From: Yangtao Li <frank.li@vivo.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Amit Kucheria <amitk@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Yangtao Li <frank.li@vivo.com>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 06/27] thermal/drivers/mediatek/lvts_thermal: Convert to platform remove callback returning void
+Date: Wed, 12 Jul 2023 16:12:37 +0800
+Message-Id: <20230712081258.29254-6-frank.li@vivo.com>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230712081258.29254-1-frank.li@vivo.com>
+References: <20230712081258.29254-1-frank.li@vivo.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: FR2P281CA0153.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:98::20) To BN8PR12MB3587.namprd12.prod.outlook.com
- (2603:10b6:408:43::13)
+X-ClientProxiedBy: SG2PR04CA0208.apcprd04.prod.outlook.com
+ (2603:1096:4:187::10) To SEZPR06MB5269.apcprd06.prod.outlook.com
+ (2603:1096:101:78::6)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN8PR12MB3587:EE_|DM8PR12MB5461:EE_
-X-MS-Office365-Filtering-Correlation-Id: 13dad3d9-3bb1-4fb2-ad3b-08db82ad6e5a
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5269:EE_|SG2PR06MB5382:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5cd2d12c-89f6-43cc-69d6-08db82aff2dc
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: iWYfIRVRNN/OLGWh4qir717GkJmZvQxIjHLTXvMraOxjygkXAyscm6E2Ic0O3flz6iDtLVWTlPEYxbxp2N1FbX3E3gmShLPpA9M0BMG3rwqvKBAGr6kcV9LEULwDHrjprO0tpzk7UrXvzkvjC/W75qDJ049HLSoKl3xwohd4OOAiQ64l6mT1uNFaMu4EsdjBZsHDkuzEyQ68QbWFrtFEO4EuiSKmxrgaoPJ6WAj+RnluHSK9G14zwuG3DJIL3D9R0IOhyvnKT1Gzi8Cc7txVzYAF167gBCG8pH8VvCBYRg8tDe5cbGTbhv5D5NgEokoJqDrE/PIQZ1DcEuWlt6oAi8kzM4q7iIk6osrljov/kqGFEDd9DyPggu9fS9WbV1KZqV06KUi3532yWkpU6DzgxKT4soOgyKB5V473Sg732Z3VmctYf/Eq3utly0uzH/58SjLCIxfIUxBUqJodAfzpUiqdbVg0P+LdNNrygqWT9YnzboqoXbV7J0ZQcz4lDWobSR52ZQ6/408BZlxpQZqn2hachYQ5+gQH/2Gsav7H3a0hcVodhwqKvd+Owgv5StX4nKOrXpF8Wg30VJ4DfNf59cPfXAul9aFCqMZHhIgpTQxaoQdRh0JMCZbgxN4coVPagfX/xXGPbmiXXva5nxt4ew==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN8PR12MB3587.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(366004)(376002)(346002)(39860400002)(396003)(136003)(451199021)(6486002)(6512007)(6666004)(186003)(6506007)(53546011)(83380400001)(36756003)(2616005)(86362001)(31696002)(38100700002)(4326008)(66946007)(66556008)(66476007)(41300700001)(2906002)(316002)(7406005)(7416002)(31686004)(5660300002)(8676002)(8936002)(54906003)(110136005)(478600001)(45980500001)(43740500002);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam-Message-Info: dhQmjyNqXxtidFLb+8UMAra06iIoiC6NgkEVHQ9Fh+AJEih5SeCRpJuEmm7VtcJzYrXGKShFwi/uKd3T2XemhW8eMMp4azCq/vf9TxzOV6UKg0PrR71PGdanbHnFr4BuslscVfaLRgc6kn2mexa8n/dIgB9Fgfr1p+ISzd8kMyi6xuWGsPh2vBLhYnYG/ZYf7Vpjz7QZjQcNKYtd3mbccmzRxNnLIfbyM0rc3hz/7TwM1cpXyEdbLVAA0Jwbk8qpJO4P9C6jmUSZXTdyD4u1sPJEX9pHHtlx57Tpw/Wc2jRc9PO65+yjr2Ut/KVN4R6Fr/1N+gmRvIRhvuJ+p2My0CinzP9Apqbi8m3RS1KU07dYzAkj2Es8W5daQpbwA/XkH6sD3id2t/eb09GtOpjhcefAF/E2pzvUtk/DshVwCquTP3d9NmJW7WrbudgGBI5WcsMSs6v8ddnHKwHb4zZSFdykkoq9ea7N1sgYlwcwA6XQlmdb/1tNHjYeP9ZATjZsS6jVDXsBjW2KPxLlVMUDcshFou0b2DwLcfgLYV4p4G3zv+IEH9+PDDkazSMPdkp0UzEKSOKwj5dy+K2BAk3h6h0dMCF+jqE3RLEhjTi6vkhXCLlzTxl2gXXUVcNCSSYR
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5269.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(396003)(366004)(136003)(376002)(346002)(39860400002)(451199021)(6666004)(52116002)(6486002)(478600001)(54906003)(110136005)(6506007)(1076003)(26005)(186003)(6512007)(2906002)(66946007)(41300700001)(66476007)(316002)(8936002)(66556008)(7416002)(4326008)(5660300002)(38100700002)(38350700002)(8676002)(86362001)(36756003)(2616005)(83380400001);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ejQrai9ydTVjcmZqekJ5SnQ4ZmJyZzlTcGFnVG9wZ2p1dHlLc094b09yT1dF?=
- =?utf-8?B?a3FxcHUzZkppMXEvV1pwb0xEcTE2SFIvRTdRMXhBbERMbmFUU0daM2JWakhG?=
- =?utf-8?B?Q0VqYys4MS96cWoxdHh3b0FqRENndFNXSTY3MjBZMFI0bkliM3FzczdHZVFx?=
- =?utf-8?B?ZnhGaisySTVMdDNyYUtQWVRUekd6c3FzTGxwRnRyOHpuT1haaCtLbHAvWVZM?=
- =?utf-8?B?ei9FaDZLK2dXK0JNemJ2bFB3SzdYaUh6QzI2K3p0NG1CRmVETlVFVEE4RW53?=
- =?utf-8?B?SUZYcVY2OEpSSEY4SG5WdzNHRUp0d1FkZGdNSWRGdFY3bjdRS09kQXRMemVs?=
- =?utf-8?B?OHlhZDR0eGVoOHRWQVFkMXE5cjNxRzk5bFJOL2h2NEk1OVlHNlFUczMrYnBP?=
- =?utf-8?B?aDRYY0J0SngyTFY2L3RxT1M4OENIQmZXSU1lMjlaVHhmMjM3M2ZnZEVHNklB?=
- =?utf-8?B?RnlFTTdXTFBEaGJneVFNOVF6T1JtT2ZBODJROHhmYVNhKy9xKy84ay80Q0x6?=
- =?utf-8?B?VUIrUEFYSDdtU0RkVmFpR3Q4ZEE0Y0lUNExCdXZna0d5TmtNa1VXM2Jlc2Fp?=
- =?utf-8?B?bTZGN3RyM0xqcDVuNUNkUkt0RUZ5akJBQXN2Q0d0Slk3azJ6VkNOMytRY2pK?=
- =?utf-8?B?N0JCMEhiWFgwaUxjNWhCaHF3d2FvdENVL2hONXlNclBML0pDMEYzSHJaa3Nh?=
- =?utf-8?B?ZjROanRDY0c4cXR3UDcwbnpkOGY2V2FxYlpLRmFKSzlQbmZsaWJhOFFrMndO?=
- =?utf-8?B?b3NHdkFtbm5MOTExWTV3Y1NaeGhQbnltOTJhMUVDZVN0VHp4ZitnTkdxaUhT?=
- =?utf-8?B?QzZLbGNORTVtUGVRNmc4U1EvK21yK1l5bVc2MlNhN1g0bDZhRW5nTkhxaUxi?=
- =?utf-8?B?cFJjUVpPRDFYK0lXL1JiSGNGWStYeHFwazRmZkNPKzhrNFdCUmh0dnNLZ0oz?=
- =?utf-8?B?eDM0Znk3ak1EREg2TGdrL0h6VlNBVk9oNm14RFpXNFJpM0VUbFlFTEY4Vkc1?=
- =?utf-8?B?K1JMZnlJYXRmc3dUdXk2SWRsTlJXbW8zbERVK3c2ZjUycnFuK09rVG9LcUtN?=
- =?utf-8?B?d1NrSVFkNVY3M2lOWnpCUTc2eklwNzU2WStBK1JuSHJsOVlTcG1TUnhWWm9J?=
- =?utf-8?B?NG91L3JIOVh3QU52Y3lKV0h0Y1VCOXRid1dzSjkwblh2Y3NWdEJWSUk5cUF5?=
- =?utf-8?B?eUE2MGhvTG5LbFZCdXlEVmJGRXBDMjgydkx3ZVB0cnJFS0FqUkhlckoxNGJx?=
- =?utf-8?B?N3dkVWJleFFpS2toUE5GNFVkc2VTNDVnV2Z2eHNFTWxyZEZpQlFSSlNRNy9L?=
- =?utf-8?B?ZWVRVzNGR3RsUmNzMGpNckJNTDVyeGhqYW9CSURIb2dZTGxjUklCdGxtRUZR?=
- =?utf-8?B?VzZtSWJ1OVJyRWRTUWk1eUU3L3k3NzM3bVdnZG1RYWhDbFBSemY2R2JSek1K?=
- =?utf-8?B?bzJSS0crUHN4UUE3bktGTGhnTXo0WmI5TVlUSjY4ZERjaTY1NWZYSFNOZlZJ?=
- =?utf-8?B?VndPVlo3UEFkTURHYjM5S1hjb3N2TlhWckVpVEJiNzh4MFZTZXBCa3hETCtp?=
- =?utf-8?B?SUt4UkJKR1FsbThudG1VdXdBZXBXU0VMNU14VGhreTBYKzFUV3RWNWlNRm50?=
- =?utf-8?B?VDFkNTRUdkR5NmN1eHEzaWltR1BMN0NwU2dhY3E4MW1ueGFTeng5d3ZualFN?=
- =?utf-8?B?cXVtTzFvSDBEUHJqRVp4TEVrWkg1LzFLL3lmalU1Y2JweUN0MEwxZ2I5OXYw?=
- =?utf-8?B?aUxhTlhETzJvMEZ4UWxZQmhHOUM4ZnY1UVZFWFgzb2tkM0o4dVY3ZjNCYVJO?=
- =?utf-8?B?Mmt3OHduMHp2OWY5VEdTOURuVlJBYTZJUnVBWUVXcWxMcVhnU2VNb3ZocTZB?=
- =?utf-8?B?S0lGdmdycWtHY2ZPZmc0VDVIdjJYaXV0Z3JVdlhyVFROTnV2am10Z3orQlBy?=
- =?utf-8?B?cENtb3MxbWJFZVp1Mk5mZ3VyQlRKNzU4VUFXYng5L09xK1VnYnRUb2JReVhl?=
- =?utf-8?B?ajBCUk96UWpWS0I3UmZZZjNoNm5CWUQxQzdldDFrZTBWbHE0VVF3bkxXRjBZ?=
- =?utf-8?B?NTk3bUdKNWlST01iL1IyeEdZM1ZXWEYyTVhNc09STFZPRWhvV1p2WExtSnJ5?=
- =?utf-8?B?cWxHVFVWWGJXb2w2eTdUQU5hMUlXa1dIU2NMakRiVG15TGFxeXV5Nk0rM1Qv?=
- =?utf-8?Q?AzrtZ6K8+axPfE51FqXwp3SElMiLeWjkiJktR/OpYQY4?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 13dad3d9-3bb1-4fb2-ad3b-08db82ad6e5a
-X-MS-Exchange-CrossTenant-AuthSource: BN8PR12MB3587.namprd12.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SjJQdXZMOEM4MEZXbUI3enVzSzFDYXFKQ1E0VFQwNXo1dVpCenFJbmhVVnly?=
+ =?utf-8?B?TFdicER6dUhrdGpaQ29iVkpSWFd0L3dydGJJRFM1OUF3bTRWdlR0QmlxVndh?=
+ =?utf-8?B?cUQ1SG5PWDJXQXRIQ1JSUG1xNXFXeXllemNrd2k4Ym11VmRIcjlGQXY1V00w?=
+ =?utf-8?B?bm9DU3FNVHZWN2I3dGhZRzdkSHpNNWtsTmxQS2wxdEhoalFPSnV5YVA4T1pO?=
+ =?utf-8?B?WDVlV21SRmY4a1ZFRDVOaSsvMUhPZGoyVWJXUlBGMnF3ZFFjVEQxNlRWQkZD?=
+ =?utf-8?B?WSt3Vyt5eFpQeXo2eE5xNTNpaG8wVVJObVVIVDJPNUdxM2VTYWhSRWRTQVMx?=
+ =?utf-8?B?OHNBQVFSTGd3a01RM0xUUkZ1b2doK3BUdGlPR2thckhQUExoV0JxTUtJdHF4?=
+ =?utf-8?B?MDQrZ0VMQW9xM1l6bUl3TDBrQVU3ekJkT1BpdFdtUWoyUXprNW5Va0pRcERp?=
+ =?utf-8?B?MjliZWllaGlKM0FBOTQrOEhLazgzZUZJZ01XTTN3ZVpSMUt3dEJOT1RyeEh3?=
+ =?utf-8?B?TUZVR3F0alZYOVhMalBwbWlZalo5NTRQTzROVnArOU1PRHJmR3dIaEpyVWhC?=
+ =?utf-8?B?ekJHOFhJZDY3S0kwOEZCZ0x2MElnMm1LbHBXQStCK1VuZU9CT21mZHBseWQy?=
+ =?utf-8?B?OUozSDN5ZFFlMWFVbHIzeW9PeEErNGN1ZmNNWjdWUFlHeFdHQkVEdWdHdTBr?=
+ =?utf-8?B?cTVUV2t5VytCblVOYWY4eTlJelg2RFc2aXNQNzJ0c2ZldTFWRUtrcEFFTkJq?=
+ =?utf-8?B?ZVRIQkg3WmUwSFJsTW9TSmgwb1JlWWk3bGlrNjFiS2RWN2g5cFZKZmNFN0dW?=
+ =?utf-8?B?L1RyaG43R3dxWktxZGNVbjNiTWYyTjUzdFVKUHFmSm1QY1RWOHNDN0wvZ1Zl?=
+ =?utf-8?B?L0RUNU1JWlpGMUZMdWxFZXVhV1dmVG1saExUVTdzTEVpZlRwblB2RDdlL2hr?=
+ =?utf-8?B?bnkydFNGWUNZRkYwR2RBZ3l5MW56ZzZXQWRHUmsyUENNQW1OektFTC9HZVhm?=
+ =?utf-8?B?RWhtMFR4WHlkMnlOWlhycUtvOE1wS1Y2RjlFUDN0ZVBHWUNNZ1cwUlJtVnhw?=
+ =?utf-8?B?bVpnQVl3OFcyeGdrWXFvKzlIbzk2NmorZCtRdDJGUm42aEtkeHNiODhzdm8x?=
+ =?utf-8?B?S0ZXQ21SQ2xYZFYwZ2Fad2J6emgrN0xOY1JmWVNnUDJHQjUyRkVMeFBiMDRC?=
+ =?utf-8?B?Z21JYTZiRW5CdER5MURqZ08xVjNXUW5oZ0lxMndwem05NmF4c0NOMWd2VFh3?=
+ =?utf-8?B?eXB1RXdHYkxSd2dQNi8vRTdoSmhlS3RicUZXWWREN2hneFUvVVhpKytrVjJH?=
+ =?utf-8?B?bGlUbHQvdVlwckpkR2ZCSHRVZVJJN3BZUFE4NG9ienJnUWUycHNrSzRDeWd5?=
+ =?utf-8?B?TzVlMVZjRVRiNXJtTm1sU283SXk2QkxvRDE5ay9wM0hlUFdaWCtWVkMyN3NQ?=
+ =?utf-8?B?Z0dBaXZJdEdyVC9FQWdWMjJWc1gxellyeXY5a21qT0dnWWJNanJyNFg3SGZ5?=
+ =?utf-8?B?Y0hYK1hUcUpOaUQvK3ZQZmczVnZLdjNLQjBzbEhaSExmdmhCcC94Zm8wVUUv?=
+ =?utf-8?B?YUFCd2p0Q0trckpaZG9BRG02OVEvU0lDVU9WUGhRdjZsT3BjQzlPL0l5ZUtp?=
+ =?utf-8?B?aG1qSkVzdkRIKzNGUk9WQ2RBSGVCTmxkOHdwN3NwZyt1d2drSlpiTTZFQWtT?=
+ =?utf-8?B?dHZ5TFdEYXBvSnVKZDgrV25pd0RuaXEwc2RMSVJvc1dFb1VrUSt1WkdPTnJV?=
+ =?utf-8?B?OExOdEdRczIyTStWTjJ2MXE3K1Z4bzJFSlJuQVN6d0NwM2hSRkI0SThlUThm?=
+ =?utf-8?B?QmRQNWRnTldGMVlFU0xHVzl0OHg4c0xIVlRWQVA3RTNNS2Q0OU1BQUh0YXFD?=
+ =?utf-8?B?d0Q3MG5RV0xLK0NmcUppd3Vzc3g0WXNHeDlpZWtmVlZiYlpIR1VwS1pkcmpk?=
+ =?utf-8?B?ZGdkZGZ4UzliZFlXdm9Lc0VQVFF5RlRUVzl2UW9NbExrUVJJaFdYWjlGYjVo?=
+ =?utf-8?B?WTcrRTBmaUNVdmxtVWUyNEl4Ty9VOVN6UnA4ZFh2ZjNvcUJuYThEV3BYYW16?=
+ =?utf-8?B?RWt4NzZDbEorci84REMzeWNXZTdaODE5aXhqUmdDVW5GYWJqL0VRdGwyNDJV?=
+ =?utf-8?Q?1HnlT5nHbfFjt5j2W3T4VUVoz?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5cd2d12c-89f6-43cc-69d6-08db82aff2dc
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5269.apcprd06.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jul 2023 07:55:59.8406
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jul 2023 08:14:00.9960
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Z5ysuSHHzlL1RdE+ciXn6UTbwI0cbg03s8D795ZDjzQm5TMOgCSebA4gmrjTn++a
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM8PR12MB5461
+X-MS-Exchange-CrossTenant-UserPrincipalName: pbfUjtH1dTQte/hiR3U8S2HF/JF+P+Hj+W1Znub5OnkT0aZDJisTV1fuMF7qAU0SgKuC9qbBjwU9ZGwOgKQVhQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR06MB5382
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230712_005610_375828_D949BAAA 
-X-CRM114-Status: GOOD (  43.44  )
+X-CRM114-CacheID: sfid-20230712_011402_883380_6966FC43 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -181,132 +149,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 12.07.23 um 05:42 schrieb Mina Almasry:
-> On Tue, Jul 11, 2023 at 2:39 PM David Ahern <dsahern@kernel.org> wrote:
->> On 7/11/23 2:39 PM, Jakub Kicinski wrote:
->>> On Tue, 11 Jul 2023 10:06:28 -0700 Mina Almasry wrote:
->>>>>> Any reason not to allow an alternative representation for skb frags than
->>>>>> struct page?
->>>>> I don't think there's a hard technical reason. We can make it work.
->>>> I also think we can switch the representation for skb frags to
->>>> something else. However - please do correct me if I'm wrong - I don't
->>>> think that is sufficient for device memory TCP. My understanding is
->>>> that we also need to modify any NIC drivers that want to use device
->>>> memory TCP to understand a new memory type, and the page pool as well
->>>> if that's involved. I think in particular modifying the memory type in
->>>> all the NIC drivers that want to do device memory TCP is difficult. Do
->>>> you think this is feasible?
->>> That's why I was thinking about adding an abstraction between
->>> the page pool and the driver. Instead of feeding driver pages
->>> a new abstraction could feed the driver just an identifier and a PA.
->> skb frag is currently a bio_vec. Overloading the 'struct page' address
->> in that struct with another address is easy to do. Requiring a certain
->> alignment on the address gives you a few low bits to use a flags / magic
->> / etc.
->>
->> Overloading len and offset is not really possible - way too much code is
->> affected (e.g., iov walking and MSS / TSO segmenting).
->>
->> ie., you could overload page address with a pointer to an object in your
->> new abstraction layer and the struct has the other meta data.
->>
->> typedef struct skb_frag {
->>          union {
->>                  struct bio_vec bvec;
->>                  struct new_abstraction abs;
->>          };
->> } skb_frag_t;
->>
->> where
->>
->> struct new_abstraction {
->>          void *addr,
->>          unsigned int len;
->>          unsigned int offset;
->> };
->>
->> I have been playing with a similar and it co-exists with the existing
->> code quite well with the constraint on location of len and offset.
->>
->>> Whether we want to support fragmentation in that model or not would
->>> have to be decided.
->>>
->>> We can take pages from the page pool and feed them to drivers via
->>> such an API, but drivers need to stop expecting pages.
->> yes, drivers would have to be updated to understand the new format. A
->> downside, but again relatively easy to manage.
->>
-> I'm glad to see that you're open to this approach. As far as I
-> understand, getting device memory in a struct page form would still be
-> preferred, no? And the approach you point to would be a backup plan I
-> presume?
+The .remove() callback for a platform driver returns an int which makes
+many driver authors wrongly assume it's possible to do error handling by
+returning an error code. However the value returned is (mostly) ignored
+and this typically results in resource leaks. To improve here there is a
+quest to make the remove callback return void. In the first step of this
+quest all drivers are converted to .remove_new() which already returns
+void.
 
-Well yes and no, if you need struct pages depends on what you want to do.
+Trivially convert this driver from always returning zero in the remove
+callback to the void returning variant.
 
-struct pages are an approach to manage memory regions, but P2PDMA is 
-essentially about pumping data between devices.
+Cc: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+Signed-off-by: Yangtao Li <frank.li@vivo.com>
+---
+ drivers/thermal/mediatek/lvts_thermal.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-If your data is for example organized in files on a filesystem then 
-having struct pages is a must have because you need to be able to manage 
-references, address spaces and so one.
-
-If a pages was acquired with alloc_pages() in a driver then you have 
-struct pages, but you can't necessary use them the way you want to use 
-them because the first few dwords have different meaning depending on 
-the use case.
-
-And then you have the use case where you have for example micro 
-controllers using P2PDMA to talk with each other. In this case your DMA 
-address might not be memory at all, but rather MMIO. E.g. doorbells on 
-graphics hw is such a case as well as cameras and encoders which 
-communicate directly with each other.
-
-> Since the good folks on this thread have pointed me to p2pdma to
-> address my use case, I've been doing some homework to see if it can
-> apply. AFACT so far, it applies, and Willem actually had a prototype
-> of it working a while back. The rough approach Willem and I are
-> thinking of would be something like:
->
-> 1. The device memory driver would be the p2pdma provider. It would
-> expose a user API which allocates a device memory region, calls
-> pci_p2pdma_add_resource() and pci_p2pmem_publish() on it, and returns
-> a reference to it to the userspace.
->
-> 2. The NIC driver would be the p2pdma client and orchestrator. It
-> would expose a user API which binds an rxq to a pci device. Prior to
-> the bind the user API would check that the pci device has published
-> p2p memory (pci_has_p2pmem()), and check the the p2p mem is accessible
-> to the driver (pci_p2pdma_distance() I think), etc.
->
-> 3. The NIC would allocate pages from the p2pdma provider for incoming
-> packets, and create devmem skbs, and deliver the devmem skbs to the
-> user using the support in my RFC. AFACT all that code need not be
-> changed.
->
-> AFAICT, all the concerns brought up in this thread are sidestepped by
-> using p2pdma. I need not allocate struct pages in the core dma-buf
-> code anymore (or anywhere), and I need not allocate pgmaps. I would
-> just re-use the p2pdma support.
->
-> Anyone see any glaring issues with this approach? I plan on trying to
-> implement a PoC and sending an RFC v2.
-
-Well we already have DMA-buf as user API for this use case, which is 
-perfectly supported by RDMA if I'm not completely mistaken.
-
-So what problem do you try to solve here actually?
-
-Regards,
-Christian.
-
->
-> The only pending concern is integration with the page pool, but we
-> already have some ideas on how to solve that.
->
->>> That's for data buffers only, obviously. We can keep using pages
->>> and raw page pool for headers.
->> yes.
->
->
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index b693fac2d677..5dfa69c7669e 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -1158,7 +1158,7 @@ static int lvts_probe(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static int lvts_remove(struct platform_device *pdev)
++static void lvts_remove(struct platform_device *pdev)
+ {
+ 	struct lvts_domain *lvts_td;
+ 	int i;
+@@ -1169,8 +1169,6 @@ static int lvts_remove(struct platform_device *pdev)
+ 		lvts_ctrl_set_enable(&lvts_td->lvts_ctrl[i], false);
+ 
+ 	lvts_debugfs_exit(lvts_td);
+-
+-	return 0;
+ }
+ 
+ static const struct lvts_ctrl_data mt8195_lvts_mcu_data_ctrl[] = {
+@@ -1271,7 +1269,7 @@ MODULE_DEVICE_TABLE(of, lvts_of_match);
+ 
+ static struct platform_driver lvts_driver = {
+ 	.probe = lvts_probe,
+-	.remove = lvts_remove,
++	.remove_new = lvts_remove,
+ 	.driver = {
+ 		.name = "mtk-lvts-thermal",
+ 		.of_match_table = lvts_of_match,
+-- 
+2.39.0
 
 
