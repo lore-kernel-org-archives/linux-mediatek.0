@@ -4,100 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05C64EB64DD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 22:42:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB3B7EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 23:54:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mz/xfQs228JkD+EmKHVt4aMZuBD4Ky+nWhlpQiowkyI=; b=roPZEHaqhMCMVwrpzVVLEl1MsZ
-	PbbOj0hpizRvMRrfoSE83diHJh4DTCVbqkuPMtP/hNbvZtwi7lq1fdgEk4nu2ao8OjlnC4/TfYwTL
-	6Fcswp37wRpwtwPR+Q5VWQgPJluIh4SljAcEGkjg7zf4YStQhWyVfSaA7Og1lL53utuyCCRS8N608
-	/p4Koj97ikPBWau13y5gEE+RohFLX8Eop8BCt+9sEZFfoD9v9HsdLpxL7gSjMF5bqEsDocTOmNe/9
-	jvUmvYv7b48gR9rDhGp5bZL5co/8HUBwEESqDguTlPoMPOr5FJtMc/2s/cVi6bvfDGfRndOGtnj6N
-	1WZffIBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WvkFiyqULDxpTvgtRj4icSA9iUWkpiYfk5PF0EtUrTI=; b=B5+u5CB3JdBXEoiTAri1wrJDJ6
+	eu1kk0DS+FCoSBQcwa4BgPXKuD6cGm0ykUzyLSXE7zVjJhYwvG1cSuJLeIOgpicudBrTMHL7UsPT3
+	jBGj6rjQprrGkAYU4FTyKQhenJC1RXdwW8noEfVPadYMTJRjsyAS7G/nnk07njLnZ2r+yc+wcV7c1
+	JauljyqbT4HWG2JR4khlUNE6gUxTc/bzhqG/cMDMJ1O2453o/XAmMH3lO1N4S3jZDYvpMldLruBFT
+	M/q0CB/YTCQGpEHkEMMARK52LPCMa2Iq4wrRYOt3uqm8Sz8FBboVa042BRuXHd8A7Np1zc6CpwVCV
+	ZYQWxllQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJiX6-001Pys-2f;
-	Wed, 12 Jul 2023 22:42:04 +0000
-Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e])
+	id 1qJjfE-001Wm9-1e;
+	Wed, 12 Jul 2023 23:54:32 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJiX3-001PyB-34
+	id 1qJjfA-001Wl6-1z
 	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Jul 2023 22:42:03 +0000
-Received: by mail-vs1-xe2e.google.com with SMTP id ada2fe7eead31-440c14d6a5eso78034137.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jul 2023 15:42:00 -0700 (PDT)
+	Wed, 12 Jul 2023 23:54:30 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-1b8bd586086so1292725ad.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jul 2023 16:54:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20221208; t=1689201720; x=1691793720;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mz/xfQs228JkD+EmKHVt4aMZuBD4Ky+nWhlpQiowkyI=;
-        b=3JuEXg+yPSc6oD9k/gVHY9JmrXpcmYz2DdmUKfAenXycWth8Ys52+0sfJNBJqhx+JA
-         POfjtfGzT4R2YWrxkgajUcAHuZwh0tHTbms8ZnyvNuUeIHHVBkyqjnNmi7pVjn+1p2XO
-         FT+BJijgfx1i+WKA7jlT7PyuiJDtM4V2bSpZ2ORkcz5BPrprzhZVrwTkYbGJtevpuwWu
-         +4s8IYxiO+jzUiXLxbNo6SvC/rtIpPMvBFlxMxrSFT5yrglpO/RRHqDNwsQ7XIWt3Mrm
-         6q7/TIQmwLLzR3bbJ6UgAadSF6ClWCYMawulX/tcO2I2umBPB5clyz54VDHR+jYWjASk
-         +o/w==
+        d=chromium.org; s=google; t=1689206067; x=1691798067;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=WvkFiyqULDxpTvgtRj4icSA9iUWkpiYfk5PF0EtUrTI=;
+        b=bmOM344cC3FsZrp85zCEuMvefaKXvyZ29nJcNSM2VxsVpaPyDIQO7SUmFD0FD1faQs
+         avgbhXIemaecM59GyeF5bWuv1hkRIGlIkVgycsHrD+BKt4lifLjLBZl9hnhXrkL/Fvhc
+         izik/yu9ygd36Ra8QwopPBqHdRTovzG3L8yrc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689201720; x=1691793720;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mz/xfQs228JkD+EmKHVt4aMZuBD4Ky+nWhlpQiowkyI=;
-        b=Fwhwmalexhjo9G4NYsTnBlp6GB0Kup6Q2lGOYRFiRw6W+oC5W9RK5GZsfEy65B575U
-         JBYn/TFTOpBVK8nWmWhSdWDf+j69sct9abNWToryWns6G80oxpbYphWCbSG6Gf8H9xUC
-         WdwQBIYmRGAI0lXQY+lC2dzOFhEIJsKtL9XqhYltDhxuIZfuvc4gHT92fRHItPkEU/gt
-         +MVJtUoyODtaPTJj5cu0I+qO8vxhXTMK92JExSEAr4ww3Zt1aW8goyfzd+qJugTUzwBb
-         Czop7hJY3yYfliddQUqwidSb5LfOTyCjCRxDNDrIcgqYOc6ZjIBMKYsTNHzmtkNC6GNS
-         2bHw==
-X-Gm-Message-State: ABy/qLYQeo0gYgw5lG3qaVFIEAoYhH02AgZf+hX/gvtxnJvX2TDMRfSK
-	TlQQBkzMYyOqQRnQ4z9YSvTft+xvVkzdmeXcleK7ag==
-X-Google-Smtp-Source: APBJJlHG9tuCdU7vOjJOYos5RKoNNv0/pCxlxo2gIMlFQovsMtvJLWra+WgillnY1AK2C/ycTstYjvsR47Bt+BOekOU=
-X-Received: by 2002:a67:b407:0:b0:443:4eca:f7f0 with SMTP id
- x7-20020a67b407000000b004434ecaf7f0mr99255vsl.11.1689201719631; Wed, 12 Jul
- 2023 15:41:59 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1689206067; x=1691798067;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WvkFiyqULDxpTvgtRj4icSA9iUWkpiYfk5PF0EtUrTI=;
+        b=Dzde+efAyQX5TbuPUMW1UJMMllLLaTPc+Ipgi7XwtqjJHpA8NPYE4aw8Ibkn6jWzHY
+         df5Si+nHRML0iB7k1OIRiPKPi3zHJlifxdFAcoR+NKKBcfZ1ePgyfnm0ogISE9Lc8P5W
+         49A3zUOYzekHnzy/x0FQw7JIIDbnUA5CFp7sr6EBhHrK07AFEhQOdGrvky/elWoo3pjQ
+         gugkGqgXzFkGU9JwolqfClZD/X2bAtiBzHJtecElYDAepZf2SMK7YEJgO+VIkVLeD226
+         /hGwpWlV1dl5iC+2CKBZDuU85JYR3MF2V1v8j5g8NoGqs6Pv5IMR59qOpIf8MBUmRJAx
+         hm8A==
+X-Gm-Message-State: ABy/qLbIcoXeKY3OMtYCyGGkpZwBl3Fg4EWWxdK1C5+1ByW5mvsyHWdm
+	OXhdP93SNUs1JYzhxvUOTypsOA==
+X-Google-Smtp-Source: APBJJlEQsAuK2FjOXsLLwedVTL2+xDqUAFVigL9HsD7VrSvCaYnqXJH1eTzZvJK9JyPR+/lZAQjrlw==
+X-Received: by 2002:a17:903:246:b0:1b7:f73d:524 with SMTP id j6-20020a170903024600b001b7f73d0524mr98592plh.43.1689206066921;
+        Wed, 12 Jul 2023 16:54:26 -0700 (PDT)
+Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net. [198.0.35.241])
+        by smtp.gmail.com with ESMTPSA id c11-20020a170902724b00b001b53d3d8f3dsm4493451pll.299.2023.07.12.16.54.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Jul 2023 16:54:26 -0700 (PDT)
+Date: Wed, 12 Jul 2023 16:54:26 -0700
+From: Kees Cook <keescook@chromium.org>
+To: Azeem Shaikh <azeemshaikh38@gmail.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>, linux-hardening@vger.kernel.org,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org, Kalle Valo <kvalo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] wifi: mt76: Replace strlcpy with strscpy
+Message-ID: <202307121653.4A9C69C655@keescook>
+References: <20230703181256.3712079-1-azeemshaikh38@gmail.com>
 MIME-Version: 1.0
-References: <20230711050445.GA19323@lst.de> <ZK1FbjG+VP/zxfO1@ziepe.ca>
- <20230711090047.37d7fe06@kernel.org> <04187826-8dad-d17b-2469-2837bafd3cd5@kernel.org>
- <20230711093224.1bf30ed5@kernel.org> <CAHS8izNHkLF0OowU=p=mSNZss700HKAzv1Oxqu2bvvfX_HxttA@mail.gmail.com>
- <20230711133915.03482fdc@kernel.org> <2263ae79-690e-8a4d-fca2-31aacc5c9bc6@kernel.org>
- <CAHS8izP=k8CqUZk7bGUx4ctm4m2kRC2MyEJv+N4+b0cHVkTQmA@mail.gmail.com>
- <20f6cbda-e361-9a81-de51-b395ec13841a@amd.com> <ZK6ktnwIjXIobFIM@ziepe.ca> <4f6e62e0-b4c2-9fca-6964-28cfea902de0@amd.com>
-In-Reply-To: <4f6e62e0-b4c2-9fca-6964-28cfea902de0@amd.com>
-From: Mina Almasry <almasrymina@google.com>
-Date: Wed, 12 Jul 2023 15:41:47 -0700
-Message-ID: <CAHS8izPK4DZ-7JKuxh712tjuh1zpB+Stu6aSdC6vbN3YWHLfMg@mail.gmail.com>
-Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
- page_pool: remove PP_FLAG_PAGE_FRAG flag)
-To: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
-Cc: Jason Gunthorpe <jgg@ziepe.ca>, David Ahern <dsahern@kernel.org>, 
-	Samiullah Khawaja <skhawaja@google.com>, Willem de Bruijn <willemb@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Christoph Hellwig <hch@lst.de>, John Hubbard <jhubbard@nvidia.com>, 
-	Dan Williams <dan.j.williams@intel.com>, Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com, 
-	Alexander Duyck <alexander.duyck@gmail.com>, Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, 
-	pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
-	Salil Mehta <salil.mehta@huawei.com>, Eric Dumazet <edumazet@google.com>, 
-	Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, 
-	Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, 
-	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jesper Dangaard Brouer <hawk@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Jonathan Lemon <jonathan.lemon@gmail.com>, logang@deltatee.com, 
-	Bjorn Helgaas <bhelgaas@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230703181256.3712079-1-azeemshaikh38@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230712_154201_988834_2206A3FF 
-X-CRM114-Status: GOOD (  24.95  )
+X-CRM114-CacheID: sfid-20230712_165428_679448_6C7094A1 
+X-CRM114-Status: GOOD (  12.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,55 +94,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 12, 2023 at 6:35=E2=80=AFAM Christian K=C3=B6nig
-<christian.koenig@amd.com> wrote:
->
-> Am 12.07.23 um 15:03 schrieb Jason Gunthorpe:
-> > On Wed, Jul 12, 2023 at 09:55:51AM +0200, Christian K=C3=B6nig wrote:
-> >
-> >>> Anyone see any glaring issues with this approach? I plan on trying to
-> >>> implement a PoC and sending an RFC v2.
-> >> Well we already have DMA-buf as user API for this use case, which is
-> >> perfectly supported by RDMA if I'm not completely mistaken.
-> >>
-> >> So what problem do you try to solve here actually?
-> > In a nutshell, netdev's design currently needs struct pages to do DMA
-> > to it's packet buffers.
-> >
-> > So it cannot consume the scatterlist that dmabuf puts out
-> >
-> > RDMA doesn't need struct pages at all, so it is fine.
-> >
-> > If Mina can go down the path of changing netdev to avoid needing
-> > struct pages then no changes to DRM side things.
-> >
-> > Otherwise a P2P struct page and a co-existance with netmem on a
-> > ZONE_DEVICE page would be required. :\
->
-> Uff, depending on why netdev needs struct page (I think I have a good
-> idea why) this isn't really going to work generically either way.
->
-> What we maybe able to do is to allow copy_file_range() between DMA-buf
-> file descriptor and a TCP socket.
->
-> If I'm not completely mistaken that should then end up in DMA-bufs
-> file_operations->copy_file_range callback (maybe with some minor change
-> to allows this).
->
-> The DMA-buf framework could then forward this to the exporter of the
-> memory which owns the backing memory could then do the necessary steps.
->
+On Mon, Jul 03, 2023 at 06:12:56PM +0000, Azeem Shaikh wrote:
+> strlcpy() reads the entire source buffer first.
+> This read may exceed the destination size limit.
+> This is both inefficient and can lead to linear read
+> overflows if a source string is not NUL-terminated [1].
+> In an effort to remove strlcpy() completely [2], replace
+> strlcpy() here with strscpy().
+> 
+> Direct replacement is safe here since DEV_ASSIGN is only used by
+> TRACE macros and the return values are ignored.
+> 
+> [1] https://www.kernel.org/doc/html/latest/process/deprecated.html#strlcpy
+> [2] https://github.com/KSPP/linux/issues/89
+> 
+> Signed-off-by: Azeem Shaikh <azeemshaikh38@gmail.com>
 
-I may be missing something, but the way it works on our end for
-receive is that we give a list of buffers (dma_addr + length + other
-metadata) to the network card, and the network card writes incoming
-packets to these dma_addrs and gives us an rx completion pointing to
-the data it DMA'd. Usually the network card does something like an
-alloc_page() + dma_map_page() and provides the to the network card.
-Transmit path works similarly. Not sure that adding copy_file_range()
-support to dma-buf enables this in some way.
+Looks good -- thing is using return values from the macros.
 
---=20
-Thanks,
-Mina
+Reviewed-by: Kees Cook <keescook@chromium.org>
+
+-- 
+Kees Cook
 
