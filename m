@@ -4,59 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A1B5EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 06:12:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95C4BEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 06:48:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pptjXiv7maz5HEAYPq8AC/Si9K8SuKRDxkIjerh2sWo=; b=vqU06VRaTDkX0soeKYHJLaEkUV
-	b1JWXpQGUIKvKTF1t150GoI/9oYF++CIhsar3SUlSawmVXDNgjJ5be+4WHYY7egrXLq+S3njTInbY
-	9a2TRW/+9FbM7SNoSvdKHFkdk9wUQ2woyxM7ZN3vipSp7qA5RrW1pxjDYHb+haS6VUhb/EsBdPYQZ
-	mhbT2EXsaDAOkHkrO8seeM0FoDu17CBl3SK8wLcLp8RwtmwUExmO6jqzlS3BadXzgB/JyD1mwL9s1
-	acB0WsbDXlWJnkESGrofZV+5PN4VHE35ZvTJRTjatpSMNYd6jxyYQ8/uBP1PcP9E7hCShYZqSbSit
-	TgxSPWRg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OGJxkkGMv4pyxE5+FAh4L8+srFQJmXNAKijRBOh2Uho=; b=SMbCeAqDdKSOCrlsVLaHZ0ht4q
+	ATSdm7HthM8C3Irv36QQqNfCMhWFlrrlYYa8yX4tr9q9nzgYRpC3LJ/rDzHe1ATdh7kFohSDhqT3d
+	u0hwuMF+3Z6VOWNICR5Hv/tlES7FvliXcSU/fwWBTSNH/EXyViIIeWQGWRCs+oeYiipACAJem+RvJ
+	ukfzjwo7foEYeWroBOwYmtqeEqbG0tBo0qCpHGwa3Mff7ejlFKty/shCmm/6xeB/XPI3qBmebJIsr
+	rcIiVtS1R9iksMI2uEYtXEyyEye3J9Qy+UWmEK3hPxrLLFQQJxzjb8vazXwrerCLz3KISFaWR/DNJ
+	YlhmG4vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJT5M-00Ge9r-2N;
-	Wed, 12 Jul 2023 06:12:24 +0000
-Received: from mx3.molgen.mpg.de ([141.14.17.11])
+	id 1qJTeX-00GiaV-2a;
+	Wed, 12 Jul 2023 06:48:45 +0000
+Received: from out30-99.freemail.mail.aliyun.com ([115.124.30.99])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJT5J-00Ge7j-14
-	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Jul 2023 06:12:23 +0000
-Received: from [192.168.0.2] (ip5f5aed4f.dynamic.kabel-deutschland.de [95.90.237.79])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	(Authenticated sender: pmenzel)
-	by mx.molgen.mpg.de (Postfix) with ESMTPSA id 147F861E5FE01;
-	Wed, 12 Jul 2023 08:11:42 +0200 (CEST)
-Message-ID: <0cb29d27-a76f-47f2-86c3-f39ba25e8bc2@molgen.mpg.de>
-Date: Wed, 12 Jul 2023 08:11:41 +0200
+	id 1qJTeT-00GiZH-2R;
+	Wed, 12 Jul 2023 06:48:44 +0000
+X-Alimail-AntiSpam: AC=PASS;BC=-1|-1;BR=01201311R181e4;CH=green;DM=||false|;DS=||;FP=0|-1|-1|-1|0|-1|-1|-1;HT=ay29a033018046056;MF=yang.lee@linux.alibaba.com;NM=1;PH=DS;RN=11;SR=0;TI=SMTPD_---0VnBnpAi_1689144512;
+Received: from localhost(mailfrom:yang.lee@linux.alibaba.com fp:SMTPD_---0VnBnpAi_1689144512)
+          by smtp.aliyun-inc.com;
+          Wed, 12 Jul 2023 14:48:33 +0800
+From: Yang Li <yang.lee@linux.alibaba.com>
+To: stanley.chu@mediatek.com
+Cc: jejb@linux.ibm.com,
+	martin.petersen@oracle.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-scsi@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Yang Li <yang.lee@linux.alibaba.com>,
+	Abaci Robot <abaci@linux.alibaba.com>
+Subject: [PATCH -next] scsi: ufs: ufs-mediatek: Remove surplus dev_err()
+Date: Wed, 12 Jul 2023 14:48:32 +0800
+Message-Id: <20230712064832.44188-1-yang.lee@linux.alibaba.com>
+X-Mailer: git-send-email 2.20.1.7.g153144c
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v3] Bluetooth: btmtk: Fix null pointer when processing
- coredump
-Content-Language: en-US
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
- Johan Hedberg <johan.hedberg@gmail.com>,
- Luiz Von Dentz <luiz.dentz@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Aaron Hou <aaron.hou@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20230712051857.13812-1-chris.lu@mediatek.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20230712051857.13812-1-chris.lu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_231221_527924_31983CD0 
-X-CRM114-Status: GOOD (  17.41  )
+X-CRM114-CacheID: sfid-20230711_234842_047754_5E8127AF 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,75 +66,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Chris,
+There is no need to call the dev_err() function directly to print a
+custom message when handling an error from either the platform_get_irq()
+or platform_get_irq_byname() functions as both are going to display an
+appropriate error message in case of a failure.
 
+./drivers/ufs/host/ufs-mediatek.c:864:3-10: line 864 is redundant because platform_get_irq() already prints an error
 
-Am 12.07.23 um 07:18 schrieb Chris Lu:
-> There may be a potential null pointer risk if offset value is
-> less than 0 when doing memcmp in btmtk_process_coredump().
-> Checking offset is valid before doing memcmp.
+Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+Closes: https://bugzilla.openanolis.cn/show_bug.cgi?id=5846
+Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
+---
+ drivers/ufs/host/ufs-mediatek.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Use imperative mood: Check offset …
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 786b1469eb52..b499eade957e 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -861,7 +861,6 @@ static void ufs_mtk_init_mcq_irq(struct ufs_hba *hba)
+ 		irq = platform_get_irq(pdev, i + 1);
+ 		if (irq < 0) {
+ 			host->mcq_intr_info[i].irq = MTK_MCQ_INVALID_IRQ;
+-			dev_err(hba->dev, "get platform mcq irq fail: %d\n", i);
+ 			goto failed;
+ 		}
+ 		host->mcq_intr_info[i].hba = hba;
+-- 
+2.20.1.7.g153144c
 
-> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
-> v2: fix typo
-> v3: fix bot checking error
-> ---
->   drivers/bluetooth/btmtk.c | 16 ++++++++--------
->   1 file changed, 8 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-> index 786f775196ae..0f290430ae0e 100644
-> --- a/drivers/bluetooth/btmtk.c
-> +++ b/drivers/bluetooth/btmtk.c
-> @@ -370,7 +370,7 @@ EXPORT_SYMBOL_GPL(btmtk_register_coredump);
->   int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
->   {
->   	struct btmediatek_data *data = hci_get_priv(hdev);
-> -	int err;
-> +	int err, offset;
->   
->   	if (!IS_ENABLED(CONFIG_DEV_COREDUMP))
->   		return 0;
-> @@ -392,15 +392,15 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
->   		if (err < 0)
->   			break;
->   		data->cd_info.cnt++;
-> +		offset = skb->len - sizeof(MTK_COREDUMP_END);
-
-For `sizeof()` shouldn’t you use `size_t`? But that is unsigned of 
-course. Maybe ssize_t then?
-
->   
->   		/* Mediatek coredump data would be more than MTK_COREDUMP_NUM */
-> -		if (data->cd_info.cnt > MTK_COREDUMP_NUM &&
-> -		    skb->len > sizeof(MTK_COREDUMP_END) &&
-> -		    !memcmp((char *)&skb->data[skb->len - sizeof(MTK_COREDUMP_END)],
-> -			    MTK_COREDUMP_END, sizeof(MTK_COREDUMP_END) - 1)) {
-> -			bt_dev_info(hdev, "Mediatek coredump end");
-> -			hci_devcd_complete(hdev);
-> -		}
-> +		if (data->cd_info.cnt > MTK_COREDUMP_NUM && offset > 0)
-
-Why not keep it like before, and just add the condition `skb->len < 
-sizeof(MTK_COREDUMP_END)`? The compiler is probably going to optimize so 
-the value is not calculated twice.
-
-
-Kind regards,
-
-Paul
-
-
-> +			if (!memcmp((char *)&skb->data[offset], MTK_COREDUMP_END,
-> +				    sizeof(MTK_COREDUMP_END) - 1)) {
-> +				bt_dev_info(hdev, "Mediatek coredump end");
-> +				hci_devcd_complete(hdev);
-> +			}
->   
->   		break;
->   	}
 
