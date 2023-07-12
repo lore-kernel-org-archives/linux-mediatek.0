@@ -4,66 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B15C4EB64D9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 11:47:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAF7DEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 11:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w76cjyQKC0WvGwrpjAWHP/OiV6/xLcYakqAvmyJejzA=; b=UL+PecL8NhiqYm0QfL1gmhBc2F
-	UbcGe3wou5IFPWAkCs6Hzw4EeDrYMNQmBaasFv3U84TzpKgqRr8cC50R1GE2JzFc4GjJ9r4JUVNTM
-	OUmQtQSxSa7y2MByRkO80OiGGwQY2QuJvPf6S+I519O4p6ah4wfY/wMzTy2e8MOfY/i+QypHq3myU
-	4+Vg2zRt37XkrKS4cC/Gp81MaSxIkewAT+qnjdqK81dN7zkQH6JsM6CIzUJNhKtzzGgBWnKXHhs7a
-	CDVBMzxzhjPLr1OCX5AS9gdvKlCGJZjbWfvyv76eaKh1Gst8atU6qIQo/pgso8BbT0Yf+KIRO5A/Z
-	QFTGKsaA==;
+	bh=R3ffpI/kCNzZkFUS1G6JGoEVjvNVm7VO2GOxi97kBbA=; b=xv3Hb6bF82ZK/4y4nv6ELBnjJC
+	HSBppnNtQmGVaDMnU8VL9MJ5RVySgMeVMts2opYhzOtEj+CcNlJmD3IslmHW4u0PweIl04P6TV1/2
+	rDlFt8XA81WqGW4kwmU7N6VpFUQzYHYKR2My8PSVF9HYKYZJllTYkiL4QNpIKA7b9iQRpVrOqd4Xt
+	1aLDe4tEKr9u5s2AW8zc0fCQqO97jS8Izs8ltg58vzmG+qnwwpPh1T2R446kzwEmaljE4W03bcZmd
+	+9ZL0aPFZ1X2Re9J6NoMb5CRwSfr22znoPyQ6Ae7XTZ+ejVv08NqjTbN3Uc5X8X1p5wsbVr9mh2sc
+	Rxy73VGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJYJL-00HQnX-2a;
-	Wed, 12 Jul 2023 11:47:11 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qJYK8-00HR4e-0J;
+	Wed, 12 Jul 2023 11:48:00 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJYJH-00HQlx-1Y;
-	Wed, 12 Jul 2023 11:47:08 +0000
+	id 1qJYK4-00HR2A-0Z;
+	Wed, 12 Jul 2023 11:47:57 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id AA6DD617A2;
-	Wed, 12 Jul 2023 11:47:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BF00C433CA;
-	Wed, 12 Jul 2023 11:47:03 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A2B01617A4;
+	Wed, 12 Jul 2023 11:47:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6827AC433C9;
+	Wed, 12 Jul 2023 11:47:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689162426;
-	bh=TGhw0BOQLfLCUfvKyBi3wy+x2YHrjsCaDwvjVbjEVZw=;
+	s=k20201202; t=1689162475;
+	bh=BL+8Fo9QG0zNtj0y7Lgb/m7HMTTimtNx9krlJ8PROKk=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=m+a21ZBwBD0dLXB9dUo3vmJ1K4Ko4ztyANwi9/iMKKtwbXia2rmAGh9lzTvFfquBH
-	 bb6U6QwxZ8wz5c8QcOT52DKSEhGNA80SaZPpO1Cy3Rey2D0GydCcV3Io1jHm0wofH4
-	 LDMYsllnFWxuLIFlPTNfOA2pvow6mzET8nKCuPljaLd5i/rxCwdbF446poiMzF1jIt
-	 seC+a9Phb7jS92O2SlmY1cMWcicKAi1S7BXxs/8ylnfL0p7VRN8uBYJ7Q5acnQCluk
-	 HPvXdIfUlRYx4pJ8YCre+jpIqPhLiygd3TvUK6kRTcbZWaCtGTExNgw35IYUSG/LqY
-	 S5S5A1IJVXifQ==
+	b=MBDgsatfZpWqdAMwV6qveeIfLQ6N7jrowK9LjuavtymGZJ2RZ2Oc1MpqiENhz3quE
+	 3C52w4yN+XHh2R9JtS9d5C82wdCYmJLOyIegf8gaLO9fnbUYfmxOmBAQgyocJctiAI
+	 6E59ipQJyxOm+qSbYi3HkSZBX2tCKWY1iP+GjHTkOSnvKhvbhkax3ZarfbH5wu0wKK
+	 qx68/+nBANjiNw+aQoV6C1vLW4EDygmSD4fpo+BTkFwtXsm5w2b39Kd49evlvRZIW7
+	 KcdjwPLLtdt+TqxuNclA8arYxR3eJ8wd/C5/2IO8CCIn4CiFbVXi916UJQXvZWbBYq
+	 HcHdiJ1RRWg+A==
 From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org, 
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- Trevor Wu <trevor.wu@mediatek.com>
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org
-In-Reply-To: <20230629074348.21670-1-trevor.wu@mediatek.com>
-References: <20230629074348.21670-1-trevor.wu@mediatek.com>
-Subject: Re: [PATCH 0/2] ASoC: mt8188: add memory-region support
-Message-Id: <168916242315.46574.12917006493052835977.b4-ty@kernel.org>
-Date: Wed, 12 Jul 2023 12:47:03 +0100
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
+ Yang Yingliang <yangyingliang@huawei.com>, 
+ Amit Kumar Mahapatra via Alsa-devel <alsa-devel@alsa-project.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>, 
+ Vijaya Krishna Nivarthi <quic_vnivarth@quicinc.com>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+ linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, 
+ linux-trace-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Sanjay R Mehta <sanju.mehta@amd.com>, 
+ Radu Pirea <radu_nicolae.pirea@upb.ro>, 
+ Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Claudiu Beznea <claudiu.beznea@microchip.com>, 
+ Tudor Ambarus <tudor.ambarus@linaro.org>, 
+ Serge Semin <fancer.lancer@gmail.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Palmer Dabbelt <palmer@dabbelt.com>, 
+ Paul Walmsley <paul.walmsley@sifive.com>, Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, 
+ Alain Volmat <alain.volmat@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Max Filippov <jcmvbkbc@gmail.com>, Steven Rostedt <rostedt@goodmis.org>, 
+ Masami Hiramatsu <mhiramat@kernel.org>, 
+ Richard Cochran <richardcochran@gmail.com>
+In-Reply-To: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
+References: <20230710154932.68377-1-andriy.shevchenko@linux.intel.com>
+Subject: Re: (subset) [PATCH v2 00/15] spi: Header and core clean up and
+ refactoring
+Message-Id: <168916246513.47003.10097115249886306259.b4-ty@kernel.org>
+Date: Wed, 12 Jul 2023 12:47:45 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.13-dev-099c9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230712_044707_559784_54FA22CA 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20230712_044756_298161_9F1AB3B9 
+X-CRM114-Status: GOOD (  16.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,26 +112,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Jun 2023 15:43:46 +0800, Trevor Wu wrote:
-> This series introduces support for memory-region, allowing afe memif to
-> utilize the region specified in dts.
+On Mon, 10 Jul 2023 18:49:17 +0300, Andy Shevchenko wrote:
+> Various cleanups and refactorings of the SPI header and core parts
+> united in a single series. It also touches drivers under SPI subsystem
+> folder on the pure renaming purposes of some constants.
 > 
-> Trevor Wu (2):
->   ASoC: mediatek: mt8188: add memory-region support
->   ASoC: dt-bindings: mediatek,mt8188-afe: add memory-region
+> No functional change intended.
+> 
+> Changelog v2:
+> - added new patches 3,4,5,10,13,14
+> - massaged comment and kernel doc in patch 9
+> - split used to be patch 4 to patches 11,12
+> - covered a few things in SPI core in patch 15
+> - amended commit message for above (Mark)
+> - reshuffled patches in the series for better logical grouping
 > 
 > [...]
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
 Thanks!
 
-[1/2] ASoC: mediatek: mt8188: add memory-region support
-      commit: fd9965235099fc4cccd94f82a371192bf7645a3e
-[2/2] ASoC: dt-bindings: mediatek,mt8188-afe: add memory-region
-      commit: e3326e3bc4937622b4dc6e9721262483109b0f0c
+[01/15] spi: Remove unneeded OF node NULL checks
+        commit: fbab5b2c09060e8034fee6ec2df69a62594fb7db
+[02/15] spi: Drop duplicate IDR allocation code in spi_register_controller()
+        commit: 440c47331bdb889e24128c75387c695ca81d9b9b
+[03/15] spi: Replace if-else-if by bitops and multiplications
+        commit: 2b308e7176e366a52a07a49868e3b1a295e56785
+[06/15] spi: Use sysfs_emit() to instead of s*printf()
+        commit: f2daa4667fda1aa951b91da0ae9675a5da9d7716
+[07/15] spi: Sort headers alphabetically
+        commit: edf6a864c996f9a9f5299a3b3e574a37e64000c5
+[08/15] spi: Clean up headers
+        (no commit info)
+[11/15] spi: Get rid of old SPI_MASTER_NO_TX & SPI_MASTER_NO_RX
+        commit: c397f09e5498994790503a64486213ef85e58db9
+[12/15] spi: Get rid of old SPI_MASTER_MUST_TX & SPI_MASTER_MUST_RX
+        commit: 90366cd60133a9f5b6a2f31360367c658585e125
+[13/15] spi: Rename SPI_MASTER_GPIO_SS to SPI_CONTROLLER_GPIO_SS
+        commit: 82238d2cbd99ebd09dda48fb7c1c8802097da6a2
+[14/15] spi: Convert to SPI_CONTROLLER_HALF_DUPLEX
+        commit: 7a2b552c8e0e5bb280558f6c120140f5f06323bc
+[15/15] spi: Fix spelling typos and acronyms capitalization
+        commit: 702ca0269ed56e2d8dae7874a4d8af268e2a382e
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
