@@ -4,65 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00593EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 06:51:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E15BEB64D9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 07:09:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tUJlXfHGfo3x5z+xERqWOPEPG3lN8FOJE4GJzec3oY8=; b=Kiaitim5SNWS71o6N/x2Jwd3zR
-	xAROpKxRmSwfYEbJyjwZFjeYezQSTP7BgwtR3ndRsOQA2YphAWWRJIYhT7nYz2mj2wLLVDBbVd5dv
-	cRj6YWELiJxhrNvSzVlpVZdp3HNwBvALtZZ1yMM/vwuFaOT6lf8tost6AWUEjsFpsrETAOh8D9ipT
-	RfzxG1/DNfouOzm1eUH7gRmBvCpnHJ/gRx08CgOXskPkLax63uXtLzz+M4Y+XMwiUkE3rXB0l5037
-	hCwHM2v4XVoi+Hsq1Ad1kP3kpe5VtijjtDRnKimGFH30CCR6ILJswD5p9HiSXfAxxg2kW05Gt9a/v
-	NohsbP3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hvDstqe1uRa0w8Sz9h60Vtxybvd4PMZIKFhZ8k0ibOA=; b=wmt2j6sXZz13iXytpEDjvDkERZ
+	tuWq+IpKOqyhVBaSCMtNRQFGyI2QrPvXMM+ot9R/s1K/m4OQnRa68AErjDJ7Jlchmhal+hvIyMhDJ
+	f0+M25BuvJxjYUSNj+K3Xs0Q4QoFH3h9savIinJcfoghPzOFs0EtnEfJ3wpRTij4vLwKbmeDDQy2Y
+	XjINbcv8r8OSIvJkpsBamLtOX6jk6RqnU5VpDKvit8cGKC/C4b7SbLgU5w+PJMiL0o7trkqLPKfoe
+	mHXEwbDssfdEt0O/NNq9WTMJiYQFK7igK3cNjdmigzPOFwSNiNSjlp52Hu2Bx8cWQydMNQRFt2grH
+	kDa/hKtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJTh9-00Gitl-29;
-	Wed, 12 Jul 2023 06:51:27 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qJTyL-00Gkdb-1Q;
+	Wed, 12 Jul 2023 07:09:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJTh6-00Gisx-1s;
-	Wed, 12 Jul 2023 06:51:26 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C05B06607014;
-	Wed, 12 Jul 2023 07:51:21 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689144682;
-	bh=ZNA3nvg6eJG/Hc6v4LETHxYo8klNpKbEqdasNgN40TM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Hz6WfZq/B8W0c8j7bRzhi/YwO458dsPEPQcPLnPptua6XcAvGvof5HL2dCZpCNb/z
-	 TyFW3UHMcrrXyHj973nADh3nAilMZB0L2GeBWKu9bH8W/PqozAmSgNRgI3xIrgbo0K
-	 JyzPTzteAlphuBJ4ev+XPXjYmC7E77A8gDNHgUbf/5voO3xx/d/2CWsmkc9lZQDR8T
-	 kBoyC6Dq7XvkIxA/vBjh/bzThdghSKZOVBqTzBHbPGB/VfyIjRhEFKYamFVAknFjO4
-	 VMlog89isIKrVpZ/4r40ceTosKKsvFqJ1FRcY5DXS6roseM0+yzBARj8aY2UQSLolG
-	 A1h8L/Pn0jinw==
-Message-ID: <212a4999-eacf-12d9-004c-e47f52022176@collabora.com>
-Date: Wed, 12 Jul 2023 08:51:19 +0200
+	id 1qJTyI-00GkcK-0u;
+	Wed, 12 Jul 2023 07:09:11 +0000
+X-UUID: f9c7ae34208211ee912e1518a6540028-20230712
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=hvDstqe1uRa0w8Sz9h60Vtxybvd4PMZIKFhZ8k0ibOA=;
+	b=haLZc2AxasHcL7wOXcwVwNubuwBW9oP74tOo1QSos4hKJ0HoRP7yq9DBjSYPLC+pvmyy0vgvkhOgF+F/h+47qUtJ5zC1Sa03Gx7r8Wsoxzqjos4Qangdoz2S2pLByd1PDKJTCLmdgGxLZ0GJTacdHBziFc8eBj61PjF4hHLzUgg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.28,REQID:4b4a9421-4b67-40b3-a7e0-2dfa38b6b8b6,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:176cd25,CLOUDID:1026d80d-26a8-467f-b838-f99719a9c083,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: f9c7ae34208211ee912e1518a6540028-20230712
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <trevor.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1291124995; Wed, 12 Jul 2023 00:09:00 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 12 Jul 2023 15:08:23 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 12 Jul 2023 15:08:23 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
+	<perex@perex.cz>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>
+Subject: [RESEND 2/2] ASoC: dt-bindings: mediatek,mt8188-afe: add memory-region
+Date: Wed, 12 Jul 2023 15:08:21 +0800
+Message-ID: <20230712070821.23971-3-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230712070821.23971-1-trevor.wu@mediatek.com>
+References: <20230712070821.23971-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH -next] scsi: ufs: ufs-mediatek: Remove surplus dev_err()
-Content-Language: en-US
-To: Yang Li <yang.lee@linux.alibaba.com>, stanley.chu@mediatek.com
-Cc: jejb@linux.ibm.com, martin.petersen@oracle.com, matthias.bgg@gmail.com,
- linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Abaci Robot <abaci@linux.alibaba.com>
-References: <20230712064832.44188-1-yang.lee@linux.alibaba.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230712064832.44188-1-yang.lee@linux.alibaba.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230711_235124_749104_0C2D3B95 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20230712_000910_323979_FCD740A5 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,19 +88,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/07/23 08:48, Yang Li ha scritto:
-> There is no need to call the dev_err() function directly to print a
-> custom message when handling an error from either the platform_get_irq()
-> or platform_get_irq_byname() functions as both are going to display an
-> appropriate error message in case of a failure.
-> 
-> ./drivers/ufs/host/ufs-mediatek.c:864:3-10: line 864 is redundant because platform_get_irq() already prints an error
-> 
-> Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-> Closes: https://bugzilla.openanolis.cn/show_bug.cgi?id=5846
-> Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
+Add memory-region property to utilize the reserved memory region.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/sound/mediatek,mt8188-afe.yaml     | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+index e6cb711ece77..0b92c71d8779 100644
+--- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
++++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-afe.yaml
+@@ -25,6 +25,12 @@ properties:
+   reset-names:
+     const: audiosys
+ 
++  memory-region:
++    maxItems: 1
++    description: |
++      Shared memory region for AFE memif.  A "shared-dma-pool".
++      See ../reserved-memory/reserved-memory.yaml for details.
++
+   mediatek,topckgen:
+     $ref: /schemas/types.yaml#/definitions/phandle
+     description: The phandle of the mediatek topckgen controller
+@@ -176,6 +182,7 @@ examples:
+         interrupts = <GIC_SPI 822 IRQ_TYPE_LEVEL_HIGH 0>;
+         resets = <&watchdog 14>;
+         reset-names = "audiosys";
++        memory-region = <&snd_dma_mem_reserved>;
+         mediatek,topckgen = <&topckgen>;
+         mediatek,infracfg = <&infracfg_ao>;
+         power-domains = <&spm 13>; //MT8188_POWER_DOMAIN_AUDIO
+-- 
+2.18.0
 
 
