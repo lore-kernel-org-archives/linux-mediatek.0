@@ -4,108 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1031AC0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 11:18:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B15C4EB64D9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jul 2023 11:47:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sqF46ZIeTTxnF0x2v0q2HtXa3ZhclBx145UBtd0H60M=; b=bMDw3FlJYAhln9eqy2hmYXswH9
-	NoASKN26P6Eg+nRKYJqOdV1O3ZNHW05OFvB+2th3LQ7xJTwapJD94xeMBNH9Sforh8KmWOScRqMS8
-	/TgMlsD2FwoMqhRfuXSI1UAHhzOwr7L5Y+fKlm5Ig3LsPMGUt1/YSVZoAqnUbk7JUmc+cdShOnYaB
-	QwPDLK7mACIMsZ5zJ+Swf7g9LFGRz34xIlle6mlLJ6rdroeVhwnIAi8o+QdD5Ek3Z7UJyUbUr1NUP
-	fKlDhU4pamTomnJFbLR3rM5Hgqhyv9i4Zj2L4X1e9icTDyrXO6SqNN8g5+7tzc0hMZNmOjYyj16w9
-	qvhxQyvg==;
+	bh=w76cjyQKC0WvGwrpjAWHP/OiV6/xLcYakqAvmyJejzA=; b=UL+PecL8NhiqYm0QfL1gmhBc2F
+	UbcGe3wou5IFPWAkCs6Hzw4EeDrYMNQmBaasFv3U84TzpKgqRr8cC50R1GE2JzFc4GjJ9r4JUVNTM
+	OUmQtQSxSa7y2MByRkO80OiGGwQY2QuJvPf6S+I519O4p6ah4wfY/wMzTy2e8MOfY/i+QypHq3myU
+	4+Vg2zRt37XkrKS4cC/Gp81MaSxIkewAT+qnjdqK81dN7zkQH6JsM6CIzUJNhKtzzGgBWnKXHhs7a
+	CDVBMzxzhjPLr1OCX5AS9gdvKlCGJZjbWfvyv76eaKh1Gst8atU6qIQo/pgso8BbT0Yf+KIRO5A/Z
+	QFTGKsaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJXrZ-00HNpV-2Q;
-	Wed, 12 Jul 2023 11:18:29 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1qJYJL-00HQnX-2a;
+	Wed, 12 Jul 2023 11:47:11 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJXrX-00HNm6-0v
-	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Jul 2023 11:18:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1689160698;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=sqF46ZIeTTxnF0x2v0q2HtXa3ZhclBx145UBtd0H60M=;
-	b=JxFM7DLx2MYoQZCczMjBskftkfA1LJHcKtpnLuc6wNHq4zYUdo2IXKrHwbcp3ykwgTmUqA
-	OckkZVElV8PTHNOM9oKnEFdYVdviOp+zr/y+tlSfk5dP2IQNcfTA2MfoA83bSaPs+dPw8j
-	tdQ3A9FK9zcHE8/22HOWbsPADNM2F5g=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-581-gslW6zz6PwalQYxpmqhTVw-1; Wed, 12 Jul 2023 07:18:16 -0400
-X-MC-Unique: gslW6zz6PwalQYxpmqhTVw-1
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-3f41a04a297so39635935e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jul 2023 04:18:16 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689160696; x=1691752696;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mGmoSdcAtbAnvFmDIfmKNE01xrI5yfsr2LA1G6eD+Js=;
-        b=mCjRYH2xOn+P0/12uFrO4JmG96kQ4UtkafiVDv/FAWrelp4F6jXDDN5h/50UKyjUnm
-         9pGXAORzoP5f6GytsXiFoYNT3G5CGemQajJuRzmzOgQ7dmCVbmMVyNDYw8bBVEh8Efl+
-         PaJF+tC/U5vd9XWNC1eOe7YA8S4Q0i2YRyICI86jsOILFbQHTuHpejGBANhvNd/4lnE1
-         F1tLyoq76s8bRKxvAlZWPBAzOyBLp0ZIOaWs4xpRzxjeqHU3r4UHnqYy+6kq+B720jbr
-         UXQQYBWlY43lgHEaVGW1yO9eg6UwUr2TYlhGmPdEKaKHI66Hfh+7hYUvInzMbfNCJulP
-         XHiQ==
-X-Gm-Message-State: ABy/qLbT6yG64HAHB9gm6H2YcjkriykLqHusEkdDDGI1Gq89Sg9pG08N
-	/BbmJ19HVYtDFumgWMobacH/QLhxZopfZzrHiYS/BnrVRaa4iJCZr6zdU1Zc9OWmVRs+YsOacgG
-	GFh1GIYX6vkVDRZrJ2tU7ImlDf5LYWqpI
-X-Received: by 2002:a05:600c:3644:b0:3fc:627:ea31 with SMTP id y4-20020a05600c364400b003fc0627ea31mr12056776wmq.38.1689160695902;
-        Wed, 12 Jul 2023 04:18:15 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHe6rz0BytbzD5//h/wnxrk0jp/oOEOt3AbTKSXStRClYkvIUVNGHa0orOjttguAlZUCgSKTg==
-X-Received: by 2002:a05:600c:3644:b0:3fc:627:ea31 with SMTP id y4-20020a05600c364400b003fc0627ea31mr12056740wmq.38.1689160695625;
-        Wed, 12 Jul 2023 04:18:15 -0700 (PDT)
-Received: from localhost (205.pool92-176-231.dynamic.orange.es. [92.176.231.205])
-        by smtp.gmail.com with ESMTPSA id k6-20020a05600c0b4600b003fc00702f65sm14151776wmr.46.2023.07.12.04.18.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Jul 2023 04:18:15 -0700 (PDT)
-From: Javier Martinez Canillas <javierm@redhat.com>
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- Thomas Zimmermann
- <tzimmermann@suse.de>
-Cc: linux-samsung-soc@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-rockchip@lists.infradead.org, Xinwei Kong
- <kong.kongxinwei@hisilicon.com>, VMware Graphics Reviewers
- <linux-graphics-maintainer@vmware.com>, NXP Linux Team
- <linux-imx@nxp.com>, spice-devel@lists.freedesktop.org,
- linux-sunxi@lists.linux.dev, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- xen-devel@lists.xenproject.org, linux-tegra@vger.kernel.org,
- linux-amlogic@lists.infradead.org, Gurchetan Singh
- <gurchetansingh@chromium.org>, Sean Paul <sean@poorly.run>,
- linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Andrew Jeffery
- <andrew@aj.id.au>, linux-mips@vger.kernel.org, Chia-I Wu
- <olvaffe@gmail.com>, linux-renesas-soc@vger.kernel.org,
- kernel@pengutronix.de, John Stultz <jstultz@google.com>,
- freedreno@lists.freedesktop.org, Lucas Stach <l.stach@pengutronix.de>
-Subject: Re: [PATCH RFC v1 00/52] drm/crtc: Rename struct drm_crtc::dev to
- drm_dev
-In-Reply-To: <20230712105432.urgwb4zzwgsyfbwq@pengutronix.de>
-References: <20230712094702.1770121-1-u.kleine-koenig@pengutronix.de>
- <abf26a82-4f17-51f2-5753-785f8516a81a@suse.de>
- <20230712105432.urgwb4zzwgsyfbwq@pengutronix.de>
-Date: Wed, 12 Jul 2023 13:18:14 +0200
-Message-ID: <87r0pdgyyx.fsf@minerva.mail-host-address-is-not-set>
+	id 1qJYJH-00HQlx-1Y;
+	Wed, 12 Jul 2023 11:47:08 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id AA6DD617A2;
+	Wed, 12 Jul 2023 11:47:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BF00C433CA;
+	Wed, 12 Jul 2023 11:47:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689162426;
+	bh=TGhw0BOQLfLCUfvKyBi3wy+x2YHrjsCaDwvjVbjEVZw=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=m+a21ZBwBD0dLXB9dUo3vmJ1K4Ko4ztyANwi9/iMKKtwbXia2rmAGh9lzTvFfquBH
+	 bb6U6QwxZ8wz5c8QcOT52DKSEhGNA80SaZPpO1Cy3Rey2D0GydCcV3Io1jHm0wofH4
+	 LDMYsllnFWxuLIFlPTNfOA2pvow6mzET8nKCuPljaLd5i/rxCwdbF446poiMzF1jIt
+	 seC+a9Phb7jS92O2SlmY1cMWcicKAi1S7BXxs/8ylnfL0p7VRN8uBYJ7Q5acnQCluk
+	 HPvXdIfUlRYx4pJ8YCre+jpIqPhLiygd3TvUK6kRTcbZWaCtGTExNgw35IYUSG/LqY
+	 S5S5A1IJVXifQ==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, robh+dt@kernel.org, 
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ Trevor Wu <trevor.wu@mediatek.com>
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org
+In-Reply-To: <20230629074348.21670-1-trevor.wu@mediatek.com>
+References: <20230629074348.21670-1-trevor.wu@mediatek.com>
+Subject: Re: [PATCH 0/2] ASoC: mt8188: add memory-region support
+Message-Id: <168916242315.46574.12917006493052835977.b4-ty@kernel.org>
+Date: Wed, 12 Jul 2023 12:47:03 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-099c9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230712_041827_402679_34E7784F 
-X-CRM114-Status: GOOD (  17.42  )
+X-CRM114-CacheID: sfid-20230712_044707_559784_54FA22CA 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,80 +78,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de> writes:
+On Thu, 29 Jun 2023 15:43:46 +0800, Trevor Wu wrote:
+> This series introduces support for memory-region, allowing afe memif to
+> utilize the region specified in dts.
+> 
+> Trevor Wu (2):
+>   ASoC: mediatek: mt8188: add memory-region support
+>   ASoC: dt-bindings: mediatek,mt8188-afe: add memory-region
+> 
+> [...]
 
-[dropping some recipients since my SMTP server was complaining about the si=
-ze]
+Applied to
 
-> Hello Thomas,
->
-> On Wed, Jul 12, 2023 at 12:19:37PM +0200, Thomas Zimmermann wrote:
->> Am 12.07.23 um 11:46 schrieb Uwe Kleine-K=C3=B6nig:
->> > Hello,
->> >=20
->> > while I debugged an issue in the imx-lcdc driver I was constantly
->> > irritated about struct drm_device pointer variables being named "dev"
->> > because with that name I usually expect a struct device pointer.
->> >=20
->> > I think there is a big benefit when these are all renamed to "drm_dev"=
-.
->>=20
->> If you rename drm_crtc.dev, you should also address *all* other data
->> structures.
->
-> Yes. Changing drm_crtc::dev was some effort, so I thought to send that
-> one out before doing the same to
->
-> =09drm_dp_mst_topology_mgr
-> =09drm_atomic_state
-> =09drm_master
-> =09drm_bridge
-> =09drm_client_dev
-> =09drm_connector
-> =09drm_debugfs_entry
-> =09drm_encoder
-> =09drm_fb_helper
-> =09drm_minor
-> =09drm_framebuffer
-> =09drm_gem_object
-> =09drm_plane
-> =09drm_property
-> =09drm_property_blob
-> =09drm_vblank_crtc
->
-> when in the end the intention isn't welcome.
->
->> > I have no strong preference here though, so "drmdev" or "drm" are fine
->> > for me, too. Let the bikesheding begin!
->>=20
->> We've discussed this to death. IIRC 'drm' would be the prefered choice.
->
-> "drm" at least has the advantage to be the 2nd most common name. With
-> Paul Kocialkowski prefering "drm_dev" there is no clear favourite yet.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-I think that either "drm" or "drm_dev" would be more clear than "dev",
-which I also found it confusing and thinking about a "struct device".
+Thanks!
 
-Probably leaning to "drm", since as you said is the second most used name
-in drivers that assign crtc->dev to a local variable.
+[1/2] ASoC: mediatek: mt8188: add memory-region support
+      commit: fd9965235099fc4cccd94f82a371192bf7645a3e
+[2/2] ASoC: dt-bindings: mediatek,mt8188-afe: add memory-region
+      commit: e3326e3bc4937622b4dc6e9721262483109b0f0c
 
-> Maybe all the other people with strong opinions are dead if this was
-> "discussed to death" before? :-)
->
-> Best regards
-> Uwe
->
-> --=20
-> Pengutronix e.K.                           | Uwe Kleine-K=C3=B6nig       =
-     |
-> Industrial Linux Solutions                 | https://www.pengutronix.de/ =
-|
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
---=20
-Best regards,
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-Javier Martinez Canillas
-Core Platforms
-Red Hat
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
