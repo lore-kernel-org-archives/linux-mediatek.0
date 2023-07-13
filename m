@@ -4,73 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D8F3EB64DD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 06:12:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 782B1EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 06:47:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HSDOINx/Sn+NIa1MmmE5ByGnQg5Uyj5+1bhbNXL8Rno=; b=oy0IprxgZJ8CQLZVeKLSaSgQOM
-	gvFl3ZmKyZ2rir7mINOhtRoc8fBRgIXiDpetzi2ldb6yweMjrs58Jl0Sxvgyw4F01qAsJSZLkCb8T
-	pHdXBxMJLXMzbLYEjiURURJHsVyP7Zim0LVz0VXT97qo3vkHmp62gWyM2By1+x+MX0F1kuWr0DJW1
-	tcH5x4pcUj7K4V3yE6uwL8eWvlvJsKY+4R0AHHhhpOBSwLyXrDzlOt1FVlPd7mR85DGvACEbQy0B0
-	6936YgnK3LpjDiCwBmfCMC3BCx7NaaGaoM9xjEhiZHaX5NGE8ztUJN2oTUAtxQ4Z3d6rJA2thPrdE
-	tQ/DSNmg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZDXRZ/E9io/51ukbLFISpRHZSMAt3CAsusimpt3aOJ0=; b=pt0QudxWMbLWqbKpMRSDBDKGsw
+	JRYiOWzFTB3Q+vRYDEJmK8Tc+3JL0pvkH7ULxDWmekZI/sic74GE71wz1vLnEHhfuiYa6txMJZsD2
+	sfVVHemqXfJsCAyEHgv0E3YuscCANrrblSKENa+jeM5QOBkLgPezEVXkYJEBYKVJEmm3JoUBleQSA
+	5S4FmI6o4nc0NZkotfHcnXKiXEBq+lucu25jTGWV99ttFewCjQT2Zm+ZOamkXQAUpc0hc9u8/nUkv
+	zFk6trBn/deaaSmDyF/wY0PGVPeTDliUV+y9lp9WhSb0s0Z3O84R0YbGtb3BxO9t/634p7vv7VaSd
+	gIbV9xDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJpYb-0024ys-0q;
-	Thu, 13 Jul 2023 06:12:05 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qJq6V-0028YQ-1N;
+	Thu, 13 Jul 2023 06:47:07 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJpYY-0024xx-2q
+	id 1qJq6S-0028X7-2P
 	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Jul 2023 06:12:04 +0000
-X-UUID: 2a0b139e214411ee912e1518a6540028-20230712
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HSDOINx/Sn+NIa1MmmE5ByGnQg5Uyj5+1bhbNXL8Rno=;
-	b=rlME+XFhRmMrPW/wLQ0oZj+uhrpMB4r8RJdDLOGpZxo1b2qyOco4tnRYqEXjtVLj8GM8ZHmj5zT+VwoVDghhKXZ5uWUYaI1OPOzNpUPBAZnMiannj6SOUveI8ZFYsVQ8zSQtyed3tyuHI+cJCV3evKjpIPG50gxBe6QfLwWQ3tE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.28,REQID:36a4816f-d505-4d9a-af78-ea01b3be420b,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:176cd25,CLOUDID:851ef2da-b4fa-43c8-9c3e-0d3fabd03ec0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 2a0b139e214411ee912e1518a6540028-20230712
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 642610217; Wed, 12 Jul 2023 23:11:54 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 13 Jul 2023 14:11:51 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 13 Jul 2023 14:11:51 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
-	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth
-	<linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v5] Bluetooth: btmtk: Fix kernel crash when processing coredump
-Date: Thu, 13 Jul 2023 14:11:12 +0800
-Message-ID: <20230713061111.25232-1-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Thu, 13 Jul 2023 06:47:06 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-3fbea14706eso2581385e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jul 2023 23:47:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1689230822; x=1691822822;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ZDXRZ/E9io/51ukbLFISpRHZSMAt3CAsusimpt3aOJ0=;
+        b=Y2TgwIcpW0GqU2VbKjQAsG2KFmUQpWcwvXEXNuJ6lsWeayFiZTSrj4IfIO8+EYOCnK
+         Gs4WcbzE1N9+9N+NWfSBBg6lXMqgPqM/ozQXThnRdqmJxeeSYBRR9ZOhCfXjK1/ghD/C
+         2jIVuUHEKaFCH/bOzsQ6UPnvI9+ulKSXqSts/H0HyXZVcw6Jp03vv3oryA2uheQmnjee
+         4Wc9UkRZRCyyu3j41EcLtEtdMBtli0zmlF3xeIm1GV+mOLW1zNQGSeayCsr74Zkckh1N
+         h1FueLXrFBmE0SxjRIR8ZeG2h86TnAHvk3hwcA+ZUSaULVRORUuPbVWTClnVbgHMxsnt
+         OOGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689230822; x=1691822822;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZDXRZ/E9io/51ukbLFISpRHZSMAt3CAsusimpt3aOJ0=;
+        b=Zho+JyDwchyxeUwS/crLNp7vy1L+MGdF79QAsNd8iECdBvntFmTdvw0sxQlaxaAQWc
+         PCw5SG3gjogSdenP9uCuHy8kIhTrSQ/8xYFpISm+XU0cGd/1pLX2y78IRq9QT1lqYXtn
+         ow8t1EoJOp0GI7iSb0UefwbZu+249HgxQWHO2+LjWVQlNJteFTUox/7+jOHB/JvkJL6C
+         TvqLSnb/Hs5GodrcQkU/LVV2GXdfoMti1AfK0ktFVKHXoxoqEQs0AH5GIN4hZR4LUjJb
+         VJhdwcSQY/yCNyYXk6DKDKyomIPIuifOZ5WJBAkXDCgT0qTWg92V6Pypxofx+0eLWxUA
+         K1dw==
+X-Gm-Message-State: ABy/qLaGTHskGIdLoV+4BarIIxuObyi8SSM5teDX/tS10IAyPQxg1rQp
+	rTDpbZYpokOLobozmSZEu/n/5g==
+X-Google-Smtp-Source: APBJJlH81v8zuibmeCPcWRJ4UoBAP0+rpVBJJvKoujWGteihPBYQ8w1aAtLN/pbTLVkcmOj/G6M4mA==
+X-Received: by 2002:a5d:42cb:0:b0:311:142d:5d97 with SMTP id t11-20020a5d42cb000000b00311142d5d97mr604664wrr.31.1689230822204;
+        Wed, 12 Jul 2023 23:47:02 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.223.104])
+        by smtp.gmail.com with ESMTPSA id i16-20020adffdd0000000b0030fb4b55c13sm7005237wrs.96.2023.07.12.23.46.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 12 Jul 2023 23:47:01 -0700 (PDT)
+Message-ID: <ce217ae6-6dd5-26ea-2ce7-95d97ef791c4@linaro.org>
+Date: Thu, 13 Jul 2023 08:46:58 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 01/28] media: cec: ch7322: drop of_match_ptr for ID table
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Sakari Ailus <sakari.ailus@iki.fi>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: Joe Tessler <jrt@google.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Michael Tretter <m.tretter@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Jacopo Mondi <jacopo+renesas@jmondi.org>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+ Rui Miguel Silva <rmfrfs@gmail.com>, Wenyou Yang
+ <wenyou.yang@microchip.com>, Bin Liu <bin.liu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Houlong Wei <houlong.wei@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Yong Deng <yong.deng@magewell.com>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ "Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Sean Young <sean@mess.org>,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
+References: <20230312131318.351173-1-krzysztof.kozlowski@linaro.org>
+ <98a77653-ec58-56c4-9893-3b424f67c87e@linaro.org>
+ <5afcec8b-b8f6-35b0-278a-5de185e4a7a2@xs4all.nl>
+ <ZG9XJCD98VWjGjTN@valkosipuli.retiisi.eu>
+ <ZG9ger4WE2VWoVEF@valkosipuli.retiisi.eu>
+ <158425ec-86e8-ca3e-eed8-e14b37c42730@linaro.org>
+In-Reply-To: <158425ec-86e8-ca3e-eed8-e14b37c42730@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230712_231202_926954_34982C9E 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20230712_234704_816752_28DCC852 
+X-CRM114-Status: GOOD (  19.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,113 +133,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There may be a potential kernel crash risk if 'skb->len - MTK_COREDUMP_END_LEN'
-value is less than 0 when doing memcmp in btmtk_process_coredump().
-Check the value is valid before doing memcmp.
+On 19/06/2023 16:13, Krzysztof Kozlowski wrote:
+> On 25/05/2023 15:19, Sakari Ailus wrote:
+>> Hi folks,
+>>
+>> On Thu, May 25, 2023 at 03:40:04PM +0300, Sakari Ailus wrote:
+>>> Hi Hans,
+>>>
+>>> On Sat, May 13, 2023 at 11:57:33AM +0200, Hans Verkuil wrote:
+>>>> On 12/05/2023 18:35, Krzysztof Kozlowski wrote:
+>>>>> On 12/03/2023 14:12, Krzysztof Kozlowski wrote:
+>>>>>> The driver can match only via the DT table so the table should be always
+>>>>>> used and the of_match_ptr does not have any sense (this also allows ACPI
+>>>>>> matching via PRP0001, even though it might not be relevant here).
+>>>>>>
+>>>>>>   drivers/media/cec/i2c/ch7322.c:583:34: error: ‘ch7322_of_match’ defined but not used [-Werror=unused-const-variable=]
+>>>>>>
+>>>>>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>>>>>> ---
+>>>>>
+>>>>> Hans, Sakari,
+>>>>>
+>>>>> Can you pick up the patchset? There was positive feedback:
+>>>>> https://patchwork.linuxtv.org/project/linux-media/patch/20230312131318.351173-1-krzysztof.kozlowski@linaro.org/
+>>>>>
+>>>>> but it seems it was not applied.
+>>>>
+>>>> I see it is delegated to Sakari in patchwork and marked Under Review, but I don't
+>>>> see a corresponding pull request for this series.
+>>>>
+>>>> Sakari, did something go wrong?
+>>>
+>>> I spotted this as Hans notified me in IRC, I wasn't cc'd. Apologies for
+>>> this --- I intended to take these but I think I must have missed something
+>>> important in the process. I'll take them now.
+>>>
+>>> Thanks.
+>>
+>> This no longer applied cleanly. Mostly there was fuzz near .of_match_table
+>> changes as probe_new (and remove_new?) changes have been recently merged.
+>> There were other issues as well, I marked a few patches in the set "not
+>> applicable" as other patches had already done equivalent changes earlier.
+>>
+>> There were substance-changing changes in the 20th patch, replied to the
+>> disuccsion there.
+>>
+>> I've pushed the result here and intend to send PR to Mauro soon if there
+>> are no issues:
+>>
+>> <URL:https://git.linuxtv.org/sailus/media_tree.git/log/?h=of-match-ptr>
+> 
+> One month later, I still don't see this set in the linux-next.  What's
+> happening here?
+> 
 
-[  215.021695] Unable to handle kernel paging request at virtual address ffffff939fffd3c5
-[  215.021781] Mem abort info:
-[  215.021805]   ESR = 0x96000005
-[  215.021833]   EC = 0x25: DABT (current EL), IL = 32 bits
-[  215.021861]   SET = 0, FnV = 0
-[  215.021875]   EA = 0, S1PTW = 0
-[  215.021886] Data abort info:
-[  215.021899]   ISV = 0, ISS = 0x00000005
-[  215.021912]   CM = 0, WnR = 0
-[  215.021929] swapper pgtable: 4k pages, 39-bit VAs, pgdp=00000000410de000
-[  215.021943] [ffffff939fffd3c5] pgd=0000000000000000, p4d=0000000000000000, pud=0000000000000000
-[  215.021979] Internal error: Oops: 96000005 [#1] PREEMPT SMP
-[  215.022496] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.10.186 #3 (HASH:ad23 4)
-[  215.022511] Hardware name: MediaTek Tomato board (DT)
-[  215.022530] pstate: 80400009 (Nzcv daif +PAN -UAO -TCO BTYPE=--)
-[  215.022556] pc : __pi_memcmp+0xd0/0x1b8
-[  215.022579] lr : btmtk_process_coredump+0xb0/0x5f8 [btmtk]
-[  215.022593] sp : ffffffc010003d40
-[  215.022607] x29: ffffffc010003d40 x28: 0000000000000006
-[  215.022633] x27: ffffffda696350c0 x26: 0000000000000002
-[  215.022659] x25: 00000000000003ff x24: ffffff9360cca804
-[  215.022685] x23: 0000000000000000 x22: ffffff9365638500
-[  215.022710] x21: ffffff9365638700 x20: 0000000000000000
-[  215.022736] x19: ffffff936002e000 x18: 0000000000000000
-[  215.022761] x17: 0000000000000180 x16: ffffffda6881b8b4
-[  215.022787] x15: 0000000000000001 x14: 0000000000002d00
-[  215.022812] x13: 0000000000060000 x12: 0000000000000181
-[  215.022837] x11: 0000000000000006 x10: fffffffffffffffd
-[  215.022862] x9 : 0000000000000006 x8 : 0000000000000003
-[  215.022887] x7 : 0000000000000000 x6 : 0000000000000000
-[  215.022913] x5 : ffffff93656387b8 x4 : 0000000000000000
-[  215.022938] x3 : ffffffc010003c18 x2 : 0000000000000006
-[  215.022963] x1 : ffffffda09d4124a x0 : ffffff939fffd3c5
-[  215.022989] Call trace:
-[  215.023012]  __pi_memcmp+0xd0/0x1b8
-[  215.023053]  btusb_recv_acl_mtk+0x64/0x90 [btusb (HASH:dc6b 5)]
-[  215.023087]  btusb_recv_bulk+0x118/0x170 [btusb (HASH:dc6b 5)]
-[  215.023121]  btusb_bulk_complete+0x8c/0x148 [btusb (HASH:dc6b 5)]
-[  215.023144]  __usb_hcd_giveback_urb+0xbc/0x148
-[  215.023164]  usb_giveback_urb_bh+0xb4/0x190
-[  215.023184]  tasklet_action_common+0x98/0x1a0
-[  215.023201]  tasklet_action+0x2c/0x38
-[  215.023220]  __do_softirq+0xe0/0x38c
-[  215.023241]  invoke_softirq+0x34/0x6c
-[  215.023258]  irq_exit+0x6c/0xb0
-[  215.023279]  __handle_domain_irq+0x98/0xd4
-[  215.023296]  gic_handle_irq+0x5c/0x11c
-[  215.023313]  el1_irq+0xd0/0x180
-[  215.023332]  cpuidle_enter_state+0xac/0x338
-[  215.023349]  cpuidle_enter+0x40/0x70
-[  215.023366]  do_idle+0x150/0x278
-[  215.023384]  cpu_startup_entry+0x2c/0x58
-[  215.023401]  rest_init+0xdc/0xec
-[  215.023419]  arch_call_rest_init+0x18/0x24
-[  215.023435]  start_kernel+0x334/0x400
-[  215.023460] Code: 91002129 eb09010a 9a89810b cb0b0042 (38401403)
-[  215.023478] ---[ end trace 28668fd20c7a90cd ]
+I don't think this was merged in v6.5-rc1. It's not in linux-next,
+either. Another month passed...
 
-Fixes: 2822cd0173ad ("Bluetooth: btusb: mediatek: add MediaTek devcoredump support")
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/bluetooth/btmtk.c | 12 ++++++------
- drivers/bluetooth/btmtk.h |  1 +
- 2 files changed, 7 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 786f775196ae..aaabb732082c 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -395,12 +395,12 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
- 
- 		/* Mediatek coredump data would be more than MTK_COREDUMP_NUM */
- 		if (data->cd_info.cnt > MTK_COREDUMP_NUM &&
--		    skb->len > sizeof(MTK_COREDUMP_END) &&
--		    !memcmp((char *)&skb->data[skb->len - sizeof(MTK_COREDUMP_END)],
--			    MTK_COREDUMP_END, sizeof(MTK_COREDUMP_END) - 1)) {
--			bt_dev_info(hdev, "Mediatek coredump end");
--			hci_devcd_complete(hdev);
--		}
-+		    skb->len > MTK_COREDUMP_END_LEN)
-+			if (!memcmp((char *)&skb->data[skb->len - MTK_COREDUMP_END_LEN],
-+				    MTK_COREDUMP_END, MTK_COREDUMP_END_LEN - 1)) {
-+				bt_dev_info(hdev, "Mediatek coredump end");
-+				hci_devcd_complete(hdev);
-+			}
- 
- 		break;
- 	}
-diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-index 68309dfe076a..56f5502baadf 100644
---- a/drivers/bluetooth/btmtk.h
-+++ b/drivers/bluetooth/btmtk.h
-@@ -24,6 +24,7 @@
- 
- #define MTK_COREDUMP_SIZE		(1024 * 1000)
- #define MTK_COREDUMP_END		"coredump end"
-+#define MTK_COREDUMP_END_LEN		(sizeof(MTK_COREDUMP_END))
- #define MTK_COREDUMP_NUM		255
- 
- enum {
--- 
-2.18.0
+Best regards,
+Krzysztof
 
 
