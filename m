@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C953C001B0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 15:04:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A195C001E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 15:04:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TwNGulIA2ho0EBWPPONOOw90suBzDLAU+ZErTuI+Vzc=; b=f3q4Vr0Q9ku7tSbtInzM3f1fhP
-	SWcjHWSVm3WjQ6mo0SNSL6udZn1Ky9KFNiVjK7hiFa8mkSmZ2ztcn0EnQa0AxDMi0tyzXyw72Eu2X
-	TtEiaQuVK2Ha7UBp/KEObqg6Fp2Wx1Q2xNmx7troWQmwlvVgU76EjALWpg6u+kpA8rJsy5ckLoepD
-	iLPzNql1xiHZVpYOqEi5aGmpeS8QniDd68+tl80KXNkeiWe1wvcPdgf0wtnoVKSF08XQxV2jUa93P
-	1KBZvY/MVq89sTNl5yBepj8XO884AK4bXXXA4fgUcGr7oq0DHPvtiZtGpXaAwxft9XiUMjLesn2T9
-	NOxf0VXA==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8Ng63cZGntPuN0j1n9XuJdxXGmv1YE1KlQ3j2MXnap4=; b=ZM6/+mNLF0g/DKqm7SvZZCKHRG
+	5ogb9b2U+3bVdTay8CcKDr+Fo0naepZK+gMtav5LOiLveB+eBAXK/NSnDsOfq/k77SiFe3rUBDVcU
+	EanEukedNSHy3TG0fcNUu3n7wHzYQlJIvuGB4q9ropse/VUFW3k50pvz+bQwUfpfMtO0Dp5QWdLxO
+	BuEMOxWPWtlpM5p4Ad7MqPY3VD5A17F/URP7K035n6ZWfmVQ9ucUr28G4vK2wdnBlXyzUi/YuMaeO
+	RFxkVB2QS4QZyvXbYYriPCss5XcabIxJ6hI4raevYcpxuHED8OB1VtI+GZ+Tf1Z0xOmaxJdPQfVRw
+	E2erE81w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJxrt-003euD-2H;
-	Thu, 13 Jul 2023 15:04:34 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1qJxrz-003ez9-2l;
+	Thu, 13 Jul 2023 15:04:39 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJxrp-003eqZ-0a
+	id 1qJxrq-003eqy-1r
 	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Jul 2023 15:04:31 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-98de21518fbso119765066b.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jul 2023 08:04:27 -0700 (PDT)
+	Thu, 13 Jul 2023 15:04:33 +0000
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-51e57870becso962790a12.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jul 2023 08:04:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689260666; x=1691852666;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=TwNGulIA2ho0EBWPPONOOw90suBzDLAU+ZErTuI+Vzc=;
-        b=hRZggRhob6aVHF8C/YtZ1wNcx/+AtkQw4WxbNzb/Y0jrRutfiQDp6DsjI+SCBxq7AA
-         6lRPJWVDWYzgXHmOLgZ3ASS9HoDyxaToeUAcKivABM8Bfo0G+zxLFbT+hwu05zZy2jJp
-         7kFfqBAiKA8whjWz4HoafKKQiK6IGSIxxoZNxCYrhLp9MeNcbLacGj3kIm+V+0uzct0V
-         kQvIOX/AH1+kaypzuHob1K0/+1roW0Op8OlPwHC0FrcQdlitNtK072ap5mKo+KeHto2u
-         H8S9rG/Xd5Qqny/FDkLCSi5in5nA4c6nO8mglpoVkE7SoGkaEnhu9yQLwnf1hJ63GRU1
-         GbzQ==
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689260668; x=1691852668;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8Ng63cZGntPuN0j1n9XuJdxXGmv1YE1KlQ3j2MXnap4=;
+        b=lQe41vnEFdqLyJ1o9YHM2ytU8kUBmglnP9jpOoPejOiPsl4O/66oeQyD/DkzKwLmJa
+         S2fpJo54olIwFolsKPT6QwoP8x0xWeBuW0mrc4ILvOzRLp2INGvzHpgoS1ZEJveqA955
+         xNaB+5f87gTytEA8UeSGAOsmWvO5RzsL6ExzcPrQae7/4IqsGv/NBrtJuUCQ/2z3lIIm
+         9LhRcNJtIaIN4hPmTenqvmE2xvCzGtj/bl23j4bqv8jFblc8sqYDWPJwzDtA7FtwsKZI
+         Rj3eFoXo+xNJKsoJeof4No6gV53sILXPLJrzj1aDeXk1G7NvfRWux9rlSVfJVcfRmhTx
+         SKQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689260666; x=1691852666;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=TwNGulIA2ho0EBWPPONOOw90suBzDLAU+ZErTuI+Vzc=;
-        b=IYUKR09f6St9J7eGJCw0bdck8EAC/rkPuaJ3DRpAEJxUi9JMxXq+KieUVlq/GczScf
-         tT1X8g0BmUBYUYhseJUCkvMEM/+xHaot21S+iql2MmxVVdEu0F2UGD/zhP9ucewe2Cty
-         rZ0VF4q46WZM+jPmAVIflFJ95K4nPHymTo+gg1ih6YO86RNDv0MUHwjpS8Vk30YVzchk
-         RBz8MBZ5opLEu+syFFVjPU0ui3e0syXJ9B+8OMzbTaNwG6YfAYdxVgmgztSDIPyc2d/j
-         YtaFiVyl33n3vdLzzp3J/zBYNPf9LN2Q5FUeXO/E8JYZwr2elhkwKqFICem13B70MJ5e
-         TxMQ==
-X-Gm-Message-State: ABy/qLZ94WBteN1WM071uPcmI8+dvv+fohcLEC7AiXH8xjt+h2apOnn/
-	UcTPDFN2ACouA/FfoMMTkKVeTQ==
-X-Google-Smtp-Source: APBJJlG70SgkGGn23vEi3FSKwCEUIJMon8LV4qYHTuV1LyiLcqxeGAwf1wxRGXZOoEsp5bCsKbtmeA==
-X-Received: by 2002:a17:906:7786:b0:993:d8be:53f5 with SMTP id s6-20020a170906778600b00993d8be53f5mr1818669ejm.14.1689260666585;
-        Thu, 13 Jul 2023 08:04:26 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1689260668; x=1691852668;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=8Ng63cZGntPuN0j1n9XuJdxXGmv1YE1KlQ3j2MXnap4=;
+        b=jair7QXX6hGgk72AWMZnjwTibEoFCav4IPB2qK5Goo3HdlC6eUsTlboSwYMctZWKxo
+         DAaJCznjTxW6j8GpPiL1UyfLrnl7Uhs2OpRl+ABg8Pgty5SC5scHaNSCecc0dgt9a5yD
+         NDDgaf45kYNjeP8sQjbcjIzf5OB4pKU9EEViMhjNCdswdyxAtQQSazsBZgSwS4UKE2bX
+         UWeHxbCnIS7oEVJA+VEw6iUJeW+KV8HAaKdj+aXI6EX5WIGcimjY7iql+k9LYF8p5A1K
+         Tq2csZrepVze/rbiSyBG+7RGh60zv/i6KFbjF0BJplIxLY2MwRRbaelJaVRmQY7pvt+N
+         ueoA==
+X-Gm-Message-State: ABy/qLaPJu1dnWQyIQwr5P/IQ0MnKgEaciJWwBq3TWxVq2mXWMJs3fuV
+	ldV+IDCiY4glc9K0a19a/f6O9w==
+X-Google-Smtp-Source: APBJJlFS1yOXkJiGcsubz6fbxOwOREGZZ4cJYCXM2GYnkUxFZlHMLbXnpHunATsi046sOFIlMRziuQ==
+X-Received: by 2002:a17:907:30cc:b0:994:577:f9dd with SMTP id vl12-20020a17090730cc00b009940577f9ddmr1614554ejb.9.1689260668546;
+        Thu, 13 Jul 2023 08:04:28 -0700 (PDT)
 Received: from blmsp.fritz.box ([2001:4091:a247:82fa:1d6d:d215:e7c4:dd5e])
-        by smtp.gmail.com with ESMTPSA id cd26-20020a170906b35a00b009929c39d5c4sm4102939ejb.36.2023.07.13.08.04.25
+        by smtp.gmail.com with ESMTPSA id cd26-20020a170906b35a00b009929c39d5c4sm4102939ejb.36.2023.07.13.08.04.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 13 Jul 2023 08:04:26 -0700 (PDT)
+        Thu, 13 Jul 2023 08:04:28 -0700 (PDT)
 From: Markus Schneider-Pargmann <msp@baylibre.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -74,16 +75,19 @@ Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Markus Schneider-Pargmann <msp@baylibre.com>
-Subject: [PATCH v7 0/8] soc: mediatek: MT8365 power support
-Date: Thu, 13 Jul 2023 17:04:06 +0200
-Message-Id: <20230713150414.891893-1-msp@baylibre.com>
+	Markus Schneider-Pargmann <msp@baylibre.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>
+Subject: [PATCH v7 2/8] soc: mediatek: pm-domains: Move bools to a flags field
+Date: Thu, 13 Jul 2023 17:04:08 +0200
+Message-Id: <20230713150414.891893-3-msp@baylibre.com>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230713150414.891893-1-msp@baylibre.com>
+References: <20230713150414.891893-1-msp@baylibre.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230713_080429_400743_D242B0D5 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20230713_080430_619265_D2EC7B53 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,95 +102,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+To simplify the macros, use a flags field for simple bools. This is in
+preparation for more flags.
 
-this version just fixes some small style issues and rebases to v6.5-rc1.
+Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+ drivers/soc/mediatek/mtk-pm-domains.c |  6 +++---
+ drivers/soc/mediatek/mtk-pm-domains.h | 19 +++++++++++--------
+ 2 files changed, 14 insertions(+), 11 deletions(-)
 
-Thanks for any feedback!
-
-Best,
-Markus
-
-Based on v6.5-rc1
-
-Changes in v7:
-- Rebased to v6.5-rc1
-- Fixed a couple of small style issues pointed out by Angelo
-
-Changes in v6:
-- Change flags field to be u8 instead of u32
-- Use macro concatenation to simplify BUS_PROT macros:
-  BUS_PROT_WR(_hwip, ...) etc.
-- Use the final bit values for scpsys_bus_prot_flags from the beginning
-  of the series.
-- Changed scpsys_domain_data->caps to be u16 to accommodate the new flag
-  MTK_SCPD_STRICT_BUS_PROTECTION.
-
-Changes in v5:
-- Create defines for all registers and bits in mt8365 power domain patch
-- Redesign scpsys_bus_prot_data to use flags to store reg_update,
-  clr_ack as well as the difference between SMI and INFRACFG. The code
-  uses the appropriate regmap depending on the flags.
-- The WAY_EN patch now uses two flags, one for inverted operations
-  'BUS_PROT_INVERTED' and one to use infracfg-nao for the status flags
-  'BUS_PROT_STA_COMPONENT_INFRA_NAO'.
-
-Changes in v4:
-- Redesigned WAY_EN patch and split it up in smaller patches.
-- Added two documentation patches.
-- Added mediatek,infracfg-nao field to the binding.
-
-Changes in v3:
-- Mainly redesigned WAY_EN patch to be easier to understand
-- Rebased onto v6.0-rc1
-- Several other stuff that is described in the individual patches
-
-Changes in v2:
-- Updated error handling path for scpsys_power_on()
-- Minor updates described in each patch
-
-Previous versions:
-v1 - https://lore.kernel.org/linux-mediatek/20220530204214.913251-1-fparent@baylibre.com/
-v2 - https://lore.kernel.org/linux-mediatek/20220725081853.1636444-1-msp@baylibre.com/
-v3 - https://lore.kernel.org/linux-mediatek/20220822144303.3438467-1-msp@baylibre.com/
-v4 - https://lore.kernel.org/linux-arm-kernel/20230105170735.1637416-1-msp@baylibre.com/
-v5 - https://lore.kernel.org/linux-arm-kernel/20230619085344.2885311-1-msp@baylibre.com/
-v6 - https://lore.kernel.org/linux-arm-kernel/20230627131040.3418538-1-msp@baylibre.com/
-
-Alexandre Bailon (2):
-  soc: mediatek: Add support for WAY_EN operations
-  soc: mediatek: Add support for MTK_SCPD_STRICT_BUS_PROTECTION cap
-
-Fabien Parent (2):
-  dt-bindings: power: Add MT8365 power domains
-  soc: mediatek: pm-domains: Add support for MT8365
-
-Markus Schneider-Pargmann (4):
-  soc: mediatek: pm-domains: Move bools to a flags field
-  soc: mediatek: pm-domains: Split bus_prot_mask
-  soc: mediatek: pm-domains: Create bus protection operation functions
-  soc: mediatek: pm-domains: Unify configuration for infracfg and smi
-
- .../power/mediatek,power-controller.yaml      |   6 +
- drivers/soc/mediatek/mt6795-pm-domains.h      |  16 +-
- drivers/soc/mediatek/mt8167-pm-domains.h      |  20 +-
- drivers/soc/mediatek/mt8173-pm-domains.h      |  16 +-
- drivers/soc/mediatek/mt8183-pm-domains.h      | 125 ++++++----
- drivers/soc/mediatek/mt8186-pm-domains.h      | 236 ++++++++++--------
- drivers/soc/mediatek/mt8188-pm-domains.h      | 223 +++++++++++------
- drivers/soc/mediatek/mt8192-pm-domains.h      | 112 ++++++---
- drivers/soc/mediatek/mt8195-pm-domains.h      | 199 +++++++++------
- drivers/soc/mediatek/mt8365-pm-domains.h      | 197 +++++++++++++++
- drivers/soc/mediatek/mtk-pm-domains.c         | 157 ++++++++----
- drivers/soc/mediatek/mtk-pm-domains.h         |  51 ++--
- .../dt-bindings/power/mediatek,mt8365-power.h |  19 ++
- include/linux/soc/mediatek/infracfg.h         |  41 +++
- 14 files changed, 972 insertions(+), 446 deletions(-)
- create mode 100644 drivers/soc/mediatek/mt8365-pm-domains.h
- create mode 100644 include/dt-bindings/power/mediatek,mt8365-power.h
-
-
-base-commit: 06c2afb862f9da8dc5efa4b6076a0e48c3fbaaa5
+diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+index 354249cc1b12..aa9ab413479e 100644
+--- a/drivers/soc/mediatek/mtk-pm-domains.c
++++ b/drivers/soc/mediatek/mtk-pm-domains.c
+@@ -128,7 +128,7 @@ static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, st
+ 		if (!mask)
+ 			break;
+ 
+-		if (bpd[i].bus_prot_reg_update)
++		if (bpd[i].flags & BUS_PROT_REG_UPDATE)
+ 			regmap_set_bits(regmap, bpd[i].bus_prot_set, mask);
+ 		else
+ 			regmap_write(regmap, bpd[i].bus_prot_set, mask);
+@@ -165,12 +165,12 @@ static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
+ 		if (!mask)
+ 			continue;
+ 
+-		if (bpd[i].bus_prot_reg_update)
++		if (bpd[i].flags & BUS_PROT_REG_UPDATE)
+ 			regmap_clear_bits(regmap, bpd[i].bus_prot_clr, mask);
+ 		else
+ 			regmap_write(regmap, bpd[i].bus_prot_clr, mask);
+ 
+-		if (bpd[i].ignore_clr_ack)
++		if (bpd[i].flags & BUS_PROT_IGNORE_CLR_ACK)
+ 			continue;
+ 
+ 		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
+index 5ec53ee073c4..d8c0c299dd45 100644
+--- a/drivers/soc/mediatek/mtk-pm-domains.h
++++ b/drivers/soc/mediatek/mtk-pm-domains.h
+@@ -42,23 +42,27 @@
+ 
+ #define SPM_MAX_BUS_PROT_DATA		6
+ 
+-#define _BUS_PROT(_mask, _set, _clr, _sta, _update, _ignore) {	\
++enum scpsys_bus_prot_flags {
++	BUS_PROT_REG_UPDATE = BIT(1),
++	BUS_PROT_IGNORE_CLR_ACK = BIT(2),
++};
++
++#define _BUS_PROT(_mask, _set, _clr, _sta, _flags) {		\
+ 		.bus_prot_mask = (_mask),			\
+ 		.bus_prot_set = _set,				\
+ 		.bus_prot_clr = _clr,				\
+ 		.bus_prot_sta = _sta,				\
+-		.bus_prot_reg_update = _update,			\
+-		.ignore_clr_ack = _ignore,			\
++		.flags = _flags					\
+ 	}
+ 
+ #define BUS_PROT_WR(_mask, _set, _clr, _sta)			\
+-		_BUS_PROT(_mask, _set, _clr, _sta, false, false)
++		_BUS_PROT(_mask, _set, _clr, _sta, 0)
+ 
+ #define BUS_PROT_WR_IGN(_mask, _set, _clr, _sta)		\
+-		_BUS_PROT(_mask, _set, _clr, _sta, false, true)
++		_BUS_PROT(_mask, _set, _clr, _sta, BUS_PROT_IGNORE_CLR_ACK)
+ 
+ #define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)		\
+-		_BUS_PROT(_mask, _set, _clr, _sta, true, false)
++		_BUS_PROT(_mask, _set, _clr, _sta, BUS_PROT_REG_UPDATE)
+ 
+ #define BUS_PROT_UPDATE_TOPAXI(_mask)				\
+ 		BUS_PROT_UPDATE(_mask,				\
+@@ -71,8 +75,7 @@ struct scpsys_bus_prot_data {
+ 	u32 bus_prot_set;
+ 	u32 bus_prot_clr;
+ 	u32 bus_prot_sta;
+-	bool bus_prot_reg_update;
+-	bool ignore_clr_ack;
++	u8 flags;
+ };
+ 
+ /**
 -- 
 2.40.1
 
