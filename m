@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFFBAEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 02:43:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C929EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 02:47:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HyaZmSJtYEYMtLnTezaZD6PnC9Rr2bseCmWCH6AeN/s=; b=R1iEx5uZOOQm+m+IN687T26aL6
-	sC7nylu3VhSjIaMmTp3qqiM9ilRPjgsSE/jjgwd+lPBXggXgPO7L9yhkDYz7Byd4AKt80MnT6OAlJ
-	joMVFFoIQ39XGSz2iahrys64aKK4+XLF25Sf79U1dNjgy/xVSiJNalHu64WAASh5fyZRNL404Cib+
-	66n24qemPFllcEMEKf3S9fMX0sa6k8eROqcqOKe+u97PUr56PmEISqnNdYLY30fxRk+INbgaMlewT
-	PP8XC6iOD2L628u1RSrd4zdX40vx3bpBkp/YS8XW4XZlhwPps4PiNyfCQzfIvM/l+u/7DZUVVBo0n
-	i0YgwMUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=akC502RQvaU6TEnXcX47OeDUpZp3H+/CA9TM8Kz77aI=; b=skvHiUr3Yu3MQsGr2O5Arl58K0
+	ocz9gLtb+8J4dxWYteleHyYMdttkwtq4wEImdDLqWyyTBoHUnRm9p9kbAB34EmiqlTOZ2qjY5hNxL
+	drWgGHJ+BV2Vsi/kLxhu/l1KMVzH+H+lHcRlUMqa8OD3s8p3BnNj+AVbGMQB8pYrmLKX+8Cq1deN7
+	1Cp+jrdy0VfhVXekr9x75i6Xcjy4m6H568R7Ts3kubwrKp2uHqC3qQsyO5K2f+U3xuptDdIJ1Q6P3
+	Zm2VaTvG7EruS6+uJLmbkOx3EO/9Wn2Bm/VM6Ij+jmZ9rwjUxKZx1gx8M4SP9YwU+m6/i5Q6018sL
+	rWuYEoNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJmIH-001kl2-1w;
-	Thu, 13 Jul 2023 02:43:01 +0000
+	id 1qJmM4-001l9a-1U;
+	Thu, 13 Jul 2023 02:46:56 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJmIE-001kkZ-1A;
-	Thu, 13 Jul 2023 02:42:59 +0000
+	id 1qJmM1-001l8Q-2H;
+	Thu, 13 Jul 2023 02:46:54 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1qJmI7-0005fA-2h;
-	Thu, 13 Jul 2023 02:42:53 +0000
-Date: Thu, 13 Jul 2023 03:42:29 +0100
+	id 1qJmLp-0005gV-2Y;
+	Thu, 13 Jul 2023 02:46:42 +0000
+Date: Thu, 13 Jul 2023 03:46:30 +0100
 From: Daniel Golle <daniel@makrotopia.org>
-To: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Michael Lee <igvtee@gmail.com>
-Subject: [PATCH] net: ethernet: mtk_eth_soc: handle probe deferral
-Message-ID: <ZK9klTi7XoZZDMeE@makrotopia.org>
+	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] wifi: mt76: split get_of_eeprom in subfunction
+Message-ID: <ZK9lhgH_sNmX3hWb@makrotopia.org>
+References: <20230708182936.24469-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20230708182936.24469-1-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230712_194258_398845_32862DDD 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20230712_194653_756533_B6F0A4AF 
+X-CRM114-Status: GOOD (  20.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,78 +68,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move the call to of_get_ethdev_address to mtk_add_mac which is part of
-the probe function and can hence itself return -EPROBE_DEFER should
-of_get_ethdev_address return -EPROBE_DEFER. This allows us to entirely
-get rid of the mtk_init function.
+On Sat, Jul 08, 2023 at 08:29:35PM +0200, Christian Marangi wrote:
+> In preparation for NVMEM support, split get_of_eeprom() in subfunction
+> to tidy the code and facilitate the addition of alternative method to
+> get eeprom data. No behaviour change intended.
+> 
+> While at it also drop OF ifdef checks as OF have stubs and calling
+> of_get_property would result in the same error returned.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 
-The problem of of_get_ethdev_address returning -EPROBE_DEFER surfaced
-in situations in which the NVMEM provider holding the MAC address has
-not yet be loaded at the time mtk_eth_soc is initially probed. In this
-case probing of mtk_eth_soc should be deferred instead of falling back
-to use a random MAC address, so once the NVMEM provider becomes
-available probing can be repeated.
+Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+Tested-by: Daniel Golle <daniel@makrotopia.org>
 
-Fixes: 656e705243fd ("net-next: mediatek: add support for MT7623 ethernet")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 29 ++++++++-------------
- 1 file changed, 11 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 834c644b67db5..2d15342c260ae 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3846,23 +3846,6 @@ static int mtk_hw_deinit(struct mtk_eth *eth)
- 	return 0;
- }
- 
--static int __init mtk_init(struct net_device *dev)
--{
--	struct mtk_mac *mac = netdev_priv(dev);
--	struct mtk_eth *eth = mac->hw;
--	int ret;
--
--	ret = of_get_ethdev_address(mac->of_node, dev);
--	if (ret) {
--		/* If the mac address is invalid, use random mac address */
--		eth_hw_addr_random(dev);
--		dev_err(eth->dev, "generated random MAC address %pM\n",
--			dev->dev_addr);
--	}
--
--	return 0;
--}
--
- static void mtk_uninit(struct net_device *dev)
- {
- 	struct mtk_mac *mac = netdev_priv(dev);
-@@ -4278,7 +4261,6 @@ static const struct ethtool_ops mtk_ethtool_ops = {
- };
- 
- static const struct net_device_ops mtk_netdev_ops = {
--	.ndo_init		= mtk_init,
- 	.ndo_uninit		= mtk_uninit,
- 	.ndo_open		= mtk_open,
- 	.ndo_stop		= mtk_stop,
-@@ -4340,6 +4322,17 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
- 	mac->hw = eth;
- 	mac->of_node = np;
- 
-+	err = of_get_ethdev_address(mac->of_node, eth->netdev[id]);
-+	if (err == -EPROBE_DEFER)
-+		return err;
-+
-+	if (err) {
-+		/* If the mac address is invalid, use random mac address */
-+		eth_hw_addr_random(eth->netdev[id]);
-+		dev_err(eth->dev, "generated random MAC address %pM\n",
-+			eth->netdev[id]->dev_addr);
-+	}
-+
- 	memset(mac->hwlro_ip, 0, sizeof(mac->hwlro_ip));
- 	mac->hwlro_ip_cnt = 0;
- 
--- 
-2.41.0
+> ---
+>  drivers/net/wireless/mediatek/mt76/eeprom.c | 51 ++++++++++++++-------
+>  1 file changed, 35 insertions(+), 16 deletions(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+> index dce851d42e08..c3a762074be8 100644
+> --- a/drivers/net/wireless/mediatek/mt76/eeprom.c
+> +++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+> @@ -9,31 +9,35 @@
+>  #include <linux/etherdevice.h>
+>  #include "mt76.h"
+>  
+> -int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int offset, int len)
+> +static int mt76_get_of_eeprom_data(struct mt76_dev *dev, void *eep, int len)
+>  {
+> -#if defined(CONFIG_OF) && defined(CONFIG_MTD)
+>  	struct device_node *np = dev->dev->of_node;
+> -	struct mtd_info *mtd;
+> -	const __be32 *list;
+>  	const void *data;
+> -	const char *part;
+> -	phandle phandle;
+>  	int size;
+> -	size_t retlen;
+> -	int ret;
+>  
+> -	if (!np)
+> +	data = of_get_property(np, "mediatek,eeprom-data", &size);
+> +	if (!data)
+>  		return -ENOENT;
+>  
+> -	data = of_get_property(np, "mediatek,eeprom-data", &size);
+> -	if (data) {
+> -		if (size > len)
+> -			return -EINVAL;
+> +	if (size > len)
+> +		return -EINVAL;
+>  
+> -		memcpy(eep, data, size);
+> +	memcpy(eep, data, size);
+>  
+> -		return 0;
+> -	}
+> +	return 0;
+> +}
+> +
+> +static int mt76_get_of_epprom_from_mtd(struct mt76_dev *dev, void *eep, int offset, int len)
+> +{
+> +#ifdef CONFIG_MTD
+> +	struct device_node *np = dev->dev->of_node;
+> +	struct mtd_info *mtd;
+> +	const __be32 *list;
+> +	const char *part;
+> +	phandle phandle;
+> +	size_t retlen;
+> +	int size;
+> +	int ret;
+>  
+>  	list = of_get_property(np, "mediatek,mtd-eeprom", &size);
+>  	if (!list)
+> @@ -100,6 +104,21 @@ int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int offset, int len)
+>  	return -ENOENT;
+>  #endif
+>  }
+> +
+> +int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int offset, int len)
+> +{
+> +	struct device_node *np = dev->dev->of_node;
+> +	int ret;
+> +
+> +	if (!np)
+> +		return -ENOENT;
+> +
+> +	ret = mt76_get_of_eeprom_data(dev, eep, len);
+> +	if (!ret)
+> +		return 0;
+> +
+> +	return mt76_get_of_epprom_from_mtd(dev, eep, offset, len);
+> +}
+>  EXPORT_SYMBOL_GPL(mt76_get_of_eeprom);
+>  
+>  void
+> -- 
+> 2.40.1
+> 
+> 
 
