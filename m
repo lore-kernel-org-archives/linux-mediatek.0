@@ -4,69 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10477EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 03:18:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E44E5C001DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 03:35:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qawsrB2QjObGFKdtBJBr24bS4klgjaH5RnlsFvFaqdA=; b=LFsF9v7Fs7N0N+XvXGdW6PWsZL
-	H1WCkNypDtVZ5T3dZaiwmhR2J2jLM0icuf1ITuwaoDKDEYcWjwe4vAbm/AzStb89krYvcxdcr0yjl
-	OdtdNUMn3xwimjQriqvOq31J9hNVcxQTeScTUVdGRO23CYKQrO9QYc2WpdVCA0NOwcdJkgUY4pmkt
-	IdFHL9vQmDVeKMKtb+QvnIcIvYiH1LFYwQcl7ac0xRtnQ6J+E+zduHGTsfRiC0mbEyVfKokAUWp4d
-	6SLT4LkidkmwtiQXt2JIRqz1itHT/HNwNNNOHe18jwEoJOoZx6cAdJDLjzWpULP1t//vKas2M6xuF
-	agzLk6tQ==;
+	bh=2QV7vh1ogKfJf1Qa4ERBfjeAWDEN5HhFP3tvUsoJaZI=; b=t+5FyH3vOJw8TEhghBMrxe609E
+	so7wY/3MifI5VbZudod1yxmPR/oZyKAXRJqf5q+muRzkhqWFDZlaJMRg4p7V3fBgck9u9IT+yr5lI
+	C3QQIqSYdByOav6FFoBytW7TBCXiJ0IyDsy0m5mJtGyZXsEvA6O7usxa0ki4QVAZA3JG1wOJIwMa/
+	ZHITVsZEDb3I64m9I85E6fJctmD22aWNL2aojFUxcMDy9rB2NpSPBsTuGAjmcOQ7tzJy+iTDll/Ow
+	xGK/8fyLzuAsMKOfqDPo9VJ9BivZdMTOU4h2n1Ndr2fH8rxTMnYQIpzsCslqg6aTuN+KIGi/RguBH
+	ScmJJaow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJmqZ-001nxa-1k;
-	Thu, 13 Jul 2023 03:18:27 +0000
-Received: from mail-il1-f178.google.com ([209.85.166.178])
+	id 1qJn70-001pPC-2p;
+	Thu, 13 Jul 2023 03:35:26 +0000
+Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJmqU-001nwt-2H;
-	Thu, 13 Jul 2023 03:18:24 +0000
-Received: by mail-il1-f178.google.com with SMTP id e9e14a558f8ab-3460aee1d57so928305ab.0;
-        Wed, 12 Jul 2023 20:18:21 -0700 (PDT)
+	id 1qJn6y-001pOE-0i
+	for linux-mediatek@lists.infradead.org;
+	Thu, 13 Jul 2023 03:35:25 +0000
+Received: by mail-il1-x12b.google.com with SMTP id e9e14a558f8ab-3457157a164so900145ab.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jul 2023 20:35:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1689219323; x=1691811323;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2QV7vh1ogKfJf1Qa4ERBfjeAWDEN5HhFP3tvUsoJaZI=;
+        b=SPC64ahuJ4yc+hbCsW4t2IZyJ/mnAPf7F8sU5lO3hkgK9WjzAvGdrXeRL5djAR9Wvo
+         TaqbEoHKn8etgEgMO0wMsslRmi+hxYjSRegsd+pCTSMsUZZVem40XEqMjW8PFWgJsb12
+         uOR0H6Da8rJKRepz8X+4MUD2vaeLYNQSJEwFo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689218301; x=1691810301;
-        h=date:subject:message-id:references:in-reply-to:cc:to:from
-         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=qawsrB2QjObGFKdtBJBr24bS4klgjaH5RnlsFvFaqdA=;
-        b=IQPhHKnIGsWbOnNd10/3/TdCPAH9no2Y7Pqb+Xra/2EcZxOsKnB/zGObS0x95orfSR
-         WpDJtHgg9HtURlsQvez7iNE0loAmqN4gZfGhjkHu82QduvFTYoex5sbJf6qzS3Htc7BW
-         MNOMgPWiGwl6/kwK148G7H25vNh+ZLM0MTRFfuKb87HadVTXHF688kCHMBQVtOgxKVZn
-         HQDJ+lqiTVhJKC1c5PLG2aklo3XfXNId82MbfXqxbaKCdzqE5peHpH52CQ6Re427GqJW
-         y+d+8PGZ/x6X8KnAb5dYKGgNTjE/o6CDZTw9qHPI52OVcwwZKhfyNSu+xbx33/vUd+FC
-         +Idw==
-X-Gm-Message-State: ABy/qLakmBlxyWuxfNyjF8HpsPJRI1BrSZsW+tMQVqn51W+2bJsoQIZT
-	yuMb1UHAXR0uQJwF+dOs0A==
-X-Google-Smtp-Source: APBJJlHY6uobXkZ7Ot/PXNS2zXB03TK8FxoMtNQm5K2O57QB9S+kej4dH9EdpogJCIV4sH4ZYuGddw==
-X-Received: by 2002:a92:cf4a:0:b0:345:aba5:3780 with SMTP id c10-20020a92cf4a000000b00345aba53780mr405972ilr.22.1689218301057;
-        Wed, 12 Jul 2023 20:18:21 -0700 (PDT)
-Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id g2-20020a92d7c2000000b0034579ffe2b1sm1745730ilq.29.2023.07.12.20.18.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Jul 2023 20:18:20 -0700 (PDT)
-Received: (nullmailer pid 2687664 invoked by uid 1000);
-	Thu, 13 Jul 2023 03:18:17 -0000
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 8bit
+        d=1e100.net; s=20221208; t=1689219323; x=1691811323;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=2QV7vh1ogKfJf1Qa4ERBfjeAWDEN5HhFP3tvUsoJaZI=;
+        b=bS3QzbGIDVGWPGCapWmHtqZTehuSnJvyCJ/KMqs3bvmaz3PoY6llTa/8kIK9QVcUtb
+         jeN3g2wijXT2TTcTs13ScM4JNx+Owk2ansPap+146sH321LhY/Qd1RKL6un8N46rQNqA
+         giIeNge/aH/7LCitOzGAiVUWB+9qZe87EoHDGHfe+zTHGOLVT+7GM7qV47h3QfHth98W
+         Nfb0oULmFMSR+pYW3FEhRHP044bp9TrYg3RqXx2+GIDlDfMOaVa4u1tlRR6kpqzVeG6C
+         X7ZEbx/KcwgfexK77aP9U48KNCS2p2kYlhEj7Wd8QRwx76sAM/ULR2ahthqbX8iGYEi8
+         nLAg==
+X-Gm-Message-State: ABy/qLYh/9GVvE9XtLWL7MFi1bOPKoQxkiBiCwp/TJrueRtcIgY2Wf19
+	a/bhsf6xHo5tD/1ioLqVSS8pPGQAF4kVvfOb+yE=
+X-Google-Smtp-Source: APBJJlFlA90nN5VwAkFjIlveRMvEPjgrhtMEJ5HwJ/GmFcg8hWekdQi1iROVEj4BTvX2wMwcPjZSgg==
+X-Received: by 2002:a05:6e02:109:b0:345:ad48:d160 with SMTP id t9-20020a056e02010900b00345ad48d160mr383881ilm.17.1689219322893;
+        Wed, 12 Jul 2023 20:35:22 -0700 (PDT)
+Received: from mail-io1-f47.google.com (mail-io1-f47.google.com. [209.85.166.47])
+        by smtp.gmail.com with ESMTPSA id f18-20020a92cb52000000b00345dd778ab8sm1797584ilq.27.2023.07.12.20.35.21
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 12 Jul 2023 20:35:21 -0700 (PDT)
+Received: by mail-io1-f47.google.com with SMTP id ca18e2360f4ac-77a62a84855so6410039f.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jul 2023 20:35:21 -0700 (PDT)
+X-Received: by 2002:a05:6602:18c:b0:786:2125:a034 with SMTP id
+ m12-20020a056602018c00b007862125a034mr572395ioo.18.1689219320748; Wed, 12 Jul
+ 2023 20:35:20 -0700 (PDT)
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Eric Dumazet <edumazet@google.com>, Greg Ungerer <gerg@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Russell King <linux@armlinux.org.uk>, devicetree@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, =?utf-8?q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>, Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <6c2e9caddfb9427444307d8443f1b231e500787b.1689012506.git.daniel@makrotopia.org>
-References: <cover.1689012506.git.daniel@makrotopia.org>
- <6c2e9caddfb9427444307d8443f1b231e500787b.1689012506.git.daniel@makrotopia.org>
-Message-Id: <168921829748.2687635.17297461907605978671.robh@kernel.org>
-Subject: Re: [PATCH v2 net-next 2/9] dt-bindings: net: mediatek,net: add
- mt7988-eth binding
-Date: Wed, 12 Jul 2023 21:18:17 -0600
+References: <20230421021609.7730-1-nancy.lin@mediatek.com>
+In-Reply-To: <20230421021609.7730-1-nancy.lin@mediatek.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Thu, 13 Jul 2023 11:34:44 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nj2Mwfbs_fgzcMsauhjaWdj0_0=t2F708i4F=u0oGgo-w@mail.gmail.com>
+Message-ID: <CAC=S1nj2Mwfbs_fgzcMsauhjaWdj0_0=t2F708i4F=u0oGgo-w@mail.gmail.com>
+Subject: Re: [PATCH v2] drm/mediatek: fix uninitialized symbol
+To: "Nancy.Lin" <nancy.lin@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, David Airlie <airlied@gmail.com>, 
+	Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, clang-built-linux@googlegroups.com, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, singo.chang@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230712_201822_743748_89252A7E 
-X-CRM114-Status: GOOD (  18.35  )
+X-CRM114-CacheID: sfid-20230712_203524_260228_B92D6A7A 
+X-CRM114-Status: GOOD (  18.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,57 +100,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Apr 21, 2023 at 10:16=E2=80=AFAM Nancy.Lin <nancy.lin@mediatek.com>=
+ wrote:
+>
+> fix Smatch static checker warning
+>   - uninitialized symbol comp_pdev in mtk_ddp_comp_init.
+>
+> Fixes: 0d9eee9118b7 ("drm/mediatek: Add drm ovl_adaptor sub driver for MT=
+8195")
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
 
-On Thu, 13 Jul 2023 03:17:55 +0100, Daniel Golle wrote:
-> Introduce DT bindings for the MT7988 SoC to mediatek,net.yaml.
-> The MT7988 SoC got 3 Ethernet MACs operating at a maximum of
-> 10 Gigabit/sec supported by 2 packet processor engines for
-> offloading tasks.
-> The first MAC is hard-wired to a built-in switch which exposes
-> four 1000Base-T PHYs as user ports.
-> It also comes with built-in 2500Base-T PHY which can be used
-> with the 2nd GMAC.
-> The 2nd and 3rd GMAC can be connected to external PHYs or provide
-> SFP(+) cages attached via SGMII, 1000Base-X, 2500Base-X, USXGMII,
-> 5GBase-R or 10GBase-KR.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Reviewed-by: Fei Shao <fshao@chromium.org>
+
+This seems to be unnoticed and I just want to get some attention for
+it. Any action items here?
+
+Regards,
+Fei
+
 > ---
->  .../devicetree/bindings/net/mediatek,net.yaml | 111 ++++++++++++++++++
->  1 file changed, 111 insertions(+)
-> 
-
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
-
-yamllint warnings/errors:
-./Documentation/devicetree/bindings/net/mediatek,net.yaml:76:9: [error] syntax error: could not find expected ':' (syntax)
-
-dtschema/dtc warnings/errors:
-make[2]: *** Deleting file 'Documentation/devicetree/bindings/net/mediatek,net.example.dts'
-Documentation/devicetree/bindings/net/mediatek,net.yaml:76:9: could not find expected ':'
-make[2]: *** [Documentation/devicetree/bindings/Makefile:26: Documentation/devicetree/bindings/net/mediatek,net.example.dts] Error 1
-make[2]: *** Waiting for unfinished jobs....
-./Documentation/devicetree/bindings/net/mediatek,net.yaml:76:9: could not find expected ':'
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/net/mediatek,net.yaml: ignoring, error parsing file
-make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1500: dt_binding_check] Error 2
-make: *** [Makefile:234: __sub-make] Error 2
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/6c2e9caddfb9427444307d8443f1b231e500787b.1689012506.git.daniel@makrotopia.org
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+> v2: add Fixes tag
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/dr=
+m/mediatek/mtk_drm_ddp_comp.c
+> index f114da4d36a9..e987ac4481bc 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> @@ -546,7 +546,7 @@ unsigned int mtk_drm_find_possible_crtc_by_comp(struc=
+t drm_device *drm,
+>  int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *com=
+p,
+>                       unsigned int comp_id)
+>  {
+> -       struct platform_device *comp_pdev;
+> +       struct platform_device *comp_pdev =3D NULL;
+>         enum mtk_ddp_comp_type type;
+>         struct mtk_ddp_comp_dev *priv;
+>  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> @@ -588,6 +588,9 @@ int mtk_ddp_comp_init(struct device_node *node, struc=
+t mtk_ddp_comp *comp,
+>             type =3D=3D MTK_DSI)
+>                 return 0;
+>
+> +       if (!comp_pdev)
+> +               return -EPROBE_DEFER;
+> +
+>         priv =3D devm_kzalloc(comp->dev, sizeof(*priv), GFP_KERNEL);
+>         if (!priv)
+>                 return -ENOMEM;
+> --
+> 2.18.0
+>
+>
 
