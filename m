@@ -4,80 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BE29C001DE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 07:08:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65934EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 07:16:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hdGx1K3RjF5TT01b8U4Kk8AYjp2IPrWjWa8zM6ieITE=; b=XDSkthcysd7POYB6yS9WW7EAon
-	sFrfw00WIXaquzFD9MkM4B1KvkCpTKinc7Os02iFWxf+YYtdR2hOkWs4HdH0C7/LVMoso31D4k7qA
-	tnJPbxQumaKDmRrrr8OogZV1fRdYj18tBYyaS4pbbze5PgNpZVONtBkMyTKP1AekVbB2Cle785Cli
-	pEXHvTX7WoaMock0VBI/u7k4i14bLjl8UTF2P47kjPZTpurngO4YZj7BmBKf31Mu6lbUuTR0Na3io
-	A65aSt5k4d8107Z0zNZh4oBV5AYz4whkTK71LU2U69HNMrd9kW0D1A+p0IAu/Vv9oxLqMmMvoCSDw
-	oF3DDxSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Ac6vrCPUiIy9uc512AmFbjbxWAxDhgg98wOqkjmcHRc=; b=o7pFfPS7zaZ3jDaH4VmKI95qHw
+	U4VWVXHin3UGZV4TePGpBrFHz3/gCz9EPg7zou4bJ6aYaKFjwv62wnJ87F8OMCOxgQ0Fz/P4D0nsH
+	fLmDwEG1xZiSNNsM2mH5OwYPhP8jy+qBmloTYSnoTPZ51bRlkUBSBEuivFUAR+E2sm4Kcj+T7UJmh
+	CGKonIVsUNCMWX6NXM6vkcYMjIJWOR5NO1uF/cODu6ti2xiKSVfPseEzA0enqAgnKLyJPiLJjeG0Z
+	2wJlgTILuJfLWmM+EGZgYlPJKkFOd20WB8m7Qj5UbQETKUFPJU71BGPh9V4/rgM05bZdXq6qqL9wY
+	ZW0I8KDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJqQm-002Bdl-20;
-	Thu, 13 Jul 2023 07:08:04 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1qJqYm-002Crw-21;
+	Thu, 13 Jul 2023 07:16:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJqQi-002Bb6-15;
-	Thu, 13 Jul 2023 07:08:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=hdGx1K3RjF5TT01b8U4Kk8AYjp2IPrWjWa8zM6ieITE=; b=JugqstoBFWytUNEtdyZjbsNqKN
-	kg6eSi0xlUBPQzyzpt/3EGI2RiTg6w98eeegWwfxItBXDFEkcV/CBfNG4Goh0Q7jPe9icSD7oStGn
-	+Q7ZfTbcHLCuxSAKJhy/IqJVClovAg+DoEsjXB/pcaJ7wKYmaLpHZCKvw8oQfCq/WRkJWWnKF1Rmp
-	ll2W0Vcwantvht6diGhv2s0QO+n0RvNrOYsFFgBa3+YWIHDDId6xWmHqdioWQbA2lsfivpoY1lD3B
-	5pTjBgwFZIRaoCx6Yqegqa9CDx6CHJ0GSWxo0OttJ9WAz330MqclE6MzFbMVOGc9QWjXww81bDlDb
-	5uqB3Www==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33956)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1qJqQg-0005py-0o;
-	Thu, 13 Jul 2023 08:07:58 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1qJqQf-0005uz-Dm; Thu, 13 Jul 2023 08:07:57 +0100
-Date: Thu, 13 Jul 2023 08:07:57 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Greg Ungerer <gerg@kernel.org>
-Subject: Re: [PATCH v2 net-next 4/9] net: ethernet: mtk_eth_soc: increase
- MAX_DEVS to 3
-Message-ID: <ZK+izTulIcse2aG5@shell.armlinux.org.uk>
-References: <cover.1689012506.git.daniel@makrotopia.org>
- <2cc8012ec538106c6bcf22a40b647ec342e687a8.1689012506.git.daniel@makrotopia.org>
+	id 1qJqYk-002CrD-0V
+	for linux-mediatek@lists.infradead.org;
+	Thu, 13 Jul 2023 07:16:19 +0000
+X-UUID: 2629f962214d11ee83ed1395ce914268-20230713
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Ac6vrCPUiIy9uc512AmFbjbxWAxDhgg98wOqkjmcHRc=;
+	b=sxghFqH8fYdZ8oU3jyugtzmjuwCW5slRK4wSUGTUc3/QrQkSb6mshlsZrI+yESnQYIJHg/utKkiLVh6MxU6c7SF82iwOs1TtPCPzerixuXHGCy/xF1v5M9SkH5/1fE8KALVdIGUUO/q8J8wcWuEobj19xL4/eBGXZ9chV8NGgP4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.28,REQID:c2bfa3b7-a9a6-4197-9fb8-c471c0b48c56,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:176cd25,CLOUDID:c15be30d-26a8-467f-b838-f99719a9c083,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 2629f962214d11ee83ed1395ce914268-20230713
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1409147565; Thu, 13 Jul 2023 00:16:13 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 13 Jul 2023 15:16:10 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 13 Jul 2023 15:16:10 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
+	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v6] Bluetooth: btmtk: Fix kernel crash when processing coredump
+Date: Thu, 13 Jul 2023 15:11:06 +0800
+Message-ID: <20230713071105.26248-1-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2cc8012ec538106c6bcf22a40b647ec342e687a8.1689012506.git.daniel@makrotopia.org>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230713_000800_377749_B1D09211 
-X-CRM114-Status: GOOD (  20.51  )
+X-CRM114-CacheID: sfid-20230713_001618_205645_3EEBC6E5 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,44 +85,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 13, 2023 at 03:18:52AM +0100, Daniel Golle wrote:
-> From: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> This is a preliminary patch to add MT7988 SoC support since it runs 3
-> macs instead of 2.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 6 +++++-
->  drivers/net/ethernet/mediatek/mtk_eth_soc.h | 4 ++--
->  2 files changed, 7 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 7014e0d108b27..7f191e4337dd8 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -4030,8 +4030,12 @@ static void mtk_sgmii_destroy(struct mtk_eth *eth)
->  {
->  	int i;
->  
-> -	for (i = 0; i < MTK_MAX_DEVS; i++)
-> +	for (i = 0; i < MTK_MAX_DEVS; i++) {
-> +		if (!eth->sgmii_pcs[i])
-> +			continue;
-> +
->  		mtk_pcs_lynxi_destroy(eth->sgmii_pcs[i]);
-> +	}
+There may be a potential kernel crash risk if 'skb->len
+- MTK_COREDUMP_END_LEN' value is less than 0 when doing
+memcmp in btmtk_process_coredump().
+Check the value is valid before doing memcmp.
 
-Please instead arrange for mtk_pcs_lynxi_destroy() to be a no-op if it's
-passed a NULL pointer, which makes it easier to use in error paths (it
-means mtk_pcs_lynxi_destroy() can be called without checks - like
-kfree() etc.)
+[215.021695] Unable to handle kernel paging request at
+             virtual address ffffff939fffd3c5
+[215.021781] Mem abort info:
+[215.021805]   ESR = 0x96000005
+[215.021833]   EC = 0x25: DABT (current EL), IL = 32 bits
+[215.021861]   SET = 0, FnV = 0
+[215.021875]   EA = 0, S1PTW = 0
+[215.021886] Data abort info:
+[215.021899]   ISV = 0, ISS = 0x00000005
+[215.021912]   CM = 0, WnR = 0
+[215.021929] swapper pgtable: 4k pages, 39-bit VAs,
+             pgdp=00000000410de000
+[215.021943] [ffffff939fffd3c5] pgd=0000000000000000,
+             p4d=0000000000000000, pud=0000000000000000
+[215.021979] Internal error: Oops: 96000005 [#1] PREEMPT SMP
+[215.022496] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.10.186#3
+             (HASH:ad23 4)
+[215.022511] Hardware name: MediaTek Tomato board (DT)
+[215.022530] pstate: 80400009 (Nzcv daif +PAN -UAO -TCO BTYPE=--)
+[215.022556] pc : __pi_memcmp+0xd0/0x1b8
+[215.022579] lr : btmtk_process_coredump+0xb0/0x5f8 [btmtk]
+[215.022593] sp : ffffffc010003d40
+[215.022607] x29: ffffffc010003d40 x28: 0000000000000006
+[215.022633] x27: ffffffda696350c0 x26: 0000000000000002
+[215.022659] x25: 00000000000003ff x24: ffffff9360cca804
+[215.022685] x23: 0000000000000000 x22: ffffff9365638500
+[215.022710] x21: ffffff9365638700 x20: 0000000000000000
+[215.022736] x19: ffffff936002e000 x18: 0000000000000000
+[215.022761] x17: 0000000000000180 x16: ffffffda6881b8b4
+[215.022787] x15: 0000000000000001 x14: 0000000000002d00
+[215.022812] x13: 0000000000060000 x12: 0000000000000181
+[215.022837] x11: 0000000000000006 x10: fffffffffffffffd
+[215.022862] x9 : 0000000000000006 x8 : 0000000000000003
+[215.022887] x7 : 0000000000000000 x6 : 0000000000000000
+[215.022913] x5 : ffffff93656387b8 x4 : 0000000000000000
+[215.022938] x3 : ffffffc010003c18 x2 : 0000000000000006
+[215.022963] x1 : ffffffda09d4124a x0 : ffffff939fffd3c5
+[215.022989] Call trace:
+[215.023012]  __pi_memcmp+0xd0/0x1b8
+[215.023053]  btusb_recv_acl_mtk+0x64/0x90 [btusb (HASH:dc6b 5)]
+[215.023087]  btusb_recv_bulk+0x118/0x170 [btusb (HASH:dc6b 5)]
+[215.023121]  btusb_bulk_complete+0x8c/0x148 [btusb (HASH:dc6b 5)]
+[215.023144]  __usb_hcd_giveback_urb+0xbc/0x148
+[215.023164]  usb_giveback_urb_bh+0xb4/0x190
+[215.023184]  tasklet_action_common+0x98/0x1a0
+[215.023201]  tasklet_action+0x2c/0x38
+[215.023220]  __do_softirq+0xe0/0x38c
+[215.023241]  invoke_softirq+0x34/0x6c
+[215.023258]  irq_exit+0x6c/0xb0
+[215.023279]  __handle_domain_irq+0x98/0xd4
+[215.023296]  gic_handle_irq+0x5c/0x11c
+[215.023313]  el1_irq+0xd0/0x180
+[215.023332]  cpuidle_enter_state+0xac/0x338
+[215.023349]  cpuidle_enter+0x40/0x70
+[215.023366]  do_idle+0x150/0x278
+[215.023384]  cpu_startup_entry+0x2c/0x58
+[215.023401]  rest_init+0xdc/0xec
+[215.023419]  arch_call_rest_init+0x18/0x24
+[215.023435]  start_kernel+0x334/0x400
+[215.023460] Code: 91002129 eb09010a 9a89810b cb0b0042 (38401403)
+[215.023478] ---[ end trace 28668fd20c7a90cd ]
 
-Since error paths don't get often tested, we need to do as much as
-possible to make error paths trivial.
+Fixes: 2822cd0173ad ("Bluetooth: btusb: mediatek: add MediaTek devcoredump support")
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+v1 -> v2: fix typo
+v2 -> v3: fix bot checking error
+v3 -> v4: reduce variable 'offset' declaration
+v4 -> v5: update bug info in commit message
+v5 -> v6: fix bot checking error
+          commit message exceeds max length
 
+ drivers/bluetooth/btmtk.c | 12 ++++++------
+ drivers/bluetooth/btmtk.h |  1 +
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 786f775196ae..aaabb732082c 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -395,12 +395,12 @@ int btmtk_process_coredump(struct hci_dev *hdev, struct sk_buff *skb)
+ 
+ 		/* Mediatek coredump data would be more than MTK_COREDUMP_NUM */
+ 		if (data->cd_info.cnt > MTK_COREDUMP_NUM &&
+-		    skb->len > sizeof(MTK_COREDUMP_END) &&
+-		    !memcmp((char *)&skb->data[skb->len - sizeof(MTK_COREDUMP_END)],
+-			    MTK_COREDUMP_END, sizeof(MTK_COREDUMP_END) - 1)) {
+-			bt_dev_info(hdev, "Mediatek coredump end");
+-			hci_devcd_complete(hdev);
+-		}
++		    skb->len > MTK_COREDUMP_END_LEN)
++			if (!memcmp((char *)&skb->data[skb->len - MTK_COREDUMP_END_LEN],
++				    MTK_COREDUMP_END, MTK_COREDUMP_END_LEN - 1)) {
++				bt_dev_info(hdev, "Mediatek coredump end");
++				hci_devcd_complete(hdev);
++			}
+ 
+ 		break;
+ 	}
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index 68309dfe076a..56f5502baadf 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -24,6 +24,7 @@
+ 
+ #define MTK_COREDUMP_SIZE		(1024 * 1000)
+ #define MTK_COREDUMP_END		"coredump end"
++#define MTK_COREDUMP_END_LEN		(sizeof(MTK_COREDUMP_END))
+ #define MTK_COREDUMP_NUM		255
+ 
+ enum {
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+2.18.0
+
 
