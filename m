@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7312DC0015E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 16:33:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F728C001B0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 17:06:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nDRZcYkWoLwmw7bzCZyYDzK1ujN3OZpHceh61TVB8pI=; b=c6gUSQ4BYIqVgkBxSoUNOK2tbz
-	f2P+GHPhUabgSoAiiVQ1kQDECuMtFZLDPnKGJfGWuGsl2qyEGkyKA06doazAMwJ1PSDl4V7l6ufJy
-	niFtTXyZLIzQAVDZETPaynVtANd002n4noIm2bOZlMVKlbWU/TPEdRUT27/kuC7OKUoFY+5xYhhgK
-	QPGnOxCOvMlskJXT1wffloTPZTswgeXIxPhL8RwLVShEXuDkdzXqfTJ6lh/nMF+VSTvd2w9tQPqc6
-	P2gk3Btk5v/FHyctUleLjRZW7B60mswmJnY7We8RhfK0p+92dz0IQ592ww3Q1nGTkwJqOmPaCnlFI
-	V4J33Z/Q==;
+	bh=ZyYOdDl3xwqmWSMjOherr+Wl4DKR7ur8sLJjiZ8B/A8=; b=STMbkIHCeBmI9vDPqx3SxyW0z5
+	/NqmvjONsgcyrZ+w4qyExcyuZfs1Jf1gLzgWB5ImBR/T+V26JoutImLOvcORFpreUelFD1BLF0wBX
+	ttRE5/kCKYZ2+FsfFEiYrOU3w7ruuffSTiUTeGDUJ3Edh/j+iqnv/8LA9WDF6aPzPcuXMozNa80j3
+	nOzAzrNDN2Oi/1KXzGTK9dWa7MmgJeyjSN6Y61/fFlDKVnlHprMFE1+IgAqbKgzfL/cOZ/ispC3Lx
+	4a1ao6W7+fF8Eu6wybmZ734yizj1THC+1vHRknzedUml5aU8op1l8wLKGeU69JVNaA/3TAZsjFa9r
+	fV1qHkzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJzGA-003uEa-0K;
-	Thu, 13 Jul 2023 16:33:42 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qJzlU-0040oV-21;
+	Thu, 13 Jul 2023 17:06:04 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJzG5-003uDp-35;
-	Thu, 13 Jul 2023 16:33:39 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 6121F61AF8;
-	Thu, 13 Jul 2023 16:33:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F979C433B7;
-	Thu, 13 Jul 2023 16:33:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689266016;
-	bh=uhsVmzJ8WaZFeuYmEIBKJxAUY3vj6kSqoRYxSMWJi0I=;
-	h=Date:From:To:Cc:Subject:Reply-To:References:In-Reply-To:From;
-	b=uCMTNTPSG1OYrO6FMZaMLROByerhlORvyPS/Wkrw5tdxY84k896W9urr+OWbUqWnX
-	 RFChbxILbMb3wPdh8c1R+YpDWXZZBHZzfdJsgM9rGUQFNZe4aB2akOzD1RTRWCh2V+
-	 oZMyEgMCP0HnuigbhmVdsujB56NjMHFoDQxMt+Sc5MHdvra4hIihLLoXHvMZHDvc7u
-	 aFMJviASDeeuNNReIz/gX9vb1Zh0prc1oqjEpXpWeltzp4kl8v+SJ03+b7xqzX81bP
-	 rEgM8s8wNUXhGKBeD1ZR6l96AOQ4AkRaKx434czeY3Vi9ziu45DzHjxEPkUtzpI7vq
-	 9j+5+u3kd3zCQ==
-Received: by paulmck-ThinkPad-P17-Gen-1.home (Postfix, from userid 1000)
-	id ADBA8CE009F; Thu, 13 Jul 2023 09:33:35 -0700 (PDT)
-Date: Thu, 13 Jul 2023 09:33:35 -0700
-From: "Paul E. McKenney" <paulmck@kernel.org>
-To: Joel Fernandes <joel@joelfernandes.org>
-Cc: Gao Xiang <hsiangkao@linux.alibaba.com>,
-	Sandeep Dhavale <dhavale@google.com>,
-	Frederic Weisbecker <frederic@kernel.org>,
-	Neeraj Upadhyay <quic_neeraju@quicinc.com>,
-	Josh Triplett <josh@joshtriplett.org>,
-	Boqun Feng <boqun.feng@gmail.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
-	Lai Jiangshan <jiangshanlai@gmail.com>,
-	Zqiang <qiang.zhang1211@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-erofs@lists.ozlabs.org, xiang@kernel.org,
-	Will Shiu <Will.Shiu@mediatek.com>, kernel-team@android.com,
-	rcu@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v1] rcu: Fix and improve RCU read lock checks when
- !CONFIG_DEBUG_LOCK_ALLOC
-Message-ID: <58b661d0-0ebb-4b45-a10d-c5927fb791cd@paulmck-laptop>
-References: <CAB=BE-Rm0ycTZXj=wHW_FBCCKbswG+dh3L+o1+CUW=Pg_oWnyw@mail.gmail.com>
- <20230713003201.GA469376@google.com>
- <161f1615-3d85-cf47-d2d5-695adf1ca7d4@linux.alibaba.com>
- <0d9e7b4d-6477-47a6-b3d2-2c9d9b64903d@paulmck-laptop>
- <f124e041-6a82-2069-975c-4f393e5c4137@linux.alibaba.com>
- <87292a44-cc02-4d95-940e-e4e31d0bc6f2@paulmck-laptop>
- <f1c60dcb-e32f-7b7e-bf0d-5dec999e9299@linux.alibaba.com>
- <CAEXW_YSODXRfgkR0D2G-x=0uZdsqvF3kZL+LL3DcRX-5CULJ1Q@mail.gmail.com>
- <894a3b64-a369-7bc6-c8a8-0910843cc587@linux.alibaba.com>
- <CAEXW_YSM1yik4yWTgZoxCS9RM6TbsL26VCVCH=41+uMA8chfAQ@mail.gmail.com>
+	id 1qJzlR-0040nM-2i
+	for linux-mediatek@lists.infradead.org;
+	Thu, 13 Jul 2023 17:06:03 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-3142a9ff6d8so955921f8f.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jul 2023 10:05:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20221208; t=1689267958; x=1691859958;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZyYOdDl3xwqmWSMjOherr+Wl4DKR7ur8sLJjiZ8B/A8=;
+        b=ISi2RxOz/XjuM66n48IOkikI7XXE3OyE7hhKTNn3HNphrdUsa/GUYf7O0uVCwt2y09
+         cScuT25FQi38FZxchBN8b+rO7TgnmRjMctjxhIaN16lH+0IQDPrQJYuElO9MaBlRyI/C
+         LM1uyL4ArgrKIXBlMbWqwKSOs1NbxSR2jZPB6EsD+0FTfPYMqIhd9mUY+edk0P1w2mCV
+         Tmk1k8M0leGUgjnLgmtseCHLOeKuQIzj5scCqI+wYZNHKisNmRefRs1yR+5HqppiSv55
+         xIoPd8d3lYDqkd2X/HwHnhbtzDVXZu6T+YX/J8EXugnOAcBLI6b2ApHR96P+NDIJivLy
+         sUgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689267958; x=1691859958;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZyYOdDl3xwqmWSMjOherr+Wl4DKR7ur8sLJjiZ8B/A8=;
+        b=VNdipjOsm4YB9cB3QI8szdbads5uTQWx4N/Q2a9sFcQmvOZK3vqQqkFsR114zF0luP
+         NsqW/e6+7iD4AtQvi1vvHV6VQ0/Ah+5S9frgjXT/z1wuRk1Jr+R8Z236CVWatagRGTsR
+         /27AycEokdAEQVgK3eVhFBDK7eGwCk8bqRh9Nwe0tUCooQlx98cXoj4f04NOtVnddRI4
+         h0ZIlxZOaaU1n5pGSmhDTP+9hC8nN1mMttRcDCJXEyIO/ROXRwO/Cias5L5Oez3mHyBT
+         afWV4fqs5HQEUJAQYvEkKqs6mfZkLsKEf57vFo5AMTBx3Sw8MZpsGMcU1wrKd8udQ0zU
+         7hug==
+X-Gm-Message-State: ABy/qLbY90GkN9yPvSUIvs2pp4efZnAII8leQSSqtidJI+KGHFTIpN5I
+	jtCBQWLxj+FrANuPemexqSZHGEDMV1CbO4MSjDttlQ==
+X-Google-Smtp-Source: APBJJlFyLvmhQCX5nI+rcMbwxp+/tcnDtwevbdff0qrkn1BHI5o5JXj5DeDKLsClwiabVGsQxskCQa+dsFm1gWGhye4=
+X-Received: by 2002:adf:e483:0:b0:314:db7:d132 with SMTP id
+ i3-20020adfe483000000b003140db7d132mr2106439wrm.61.1689267957936; Thu, 13 Jul
+ 2023 10:05:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAEXW_YSM1yik4yWTgZoxCS9RM6TbsL26VCVCH=41+uMA8chfAQ@mail.gmail.com>
+References: <CAB=BE-Rm0ycTZXj=wHW_FBCCKbswG+dh3L+o1+CUW=Pg_oWnyw@mail.gmail.com>
+ <20230713003201.GA469376@google.com> <161f1615-3d85-cf47-d2d5-695adf1ca7d4@linux.alibaba.com>
+ <0d9e7b4d-6477-47a6-b3d2-2c9d9b64903d@paulmck-laptop> <f124e041-6a82-2069-975c-4f393e5c4137@linux.alibaba.com>
+ <87292a44-cc02-4d95-940e-e4e31d0bc6f2@paulmck-laptop> <f1c60dcb-e32f-7b7e-bf0d-5dec999e9299@linux.alibaba.com>
+ <CAEXW_YSODXRfgkR0D2G-x=0uZdsqvF3kZL+LL3DcRX-5CULJ1Q@mail.gmail.com>
+ <894a3b64-a369-7bc6-c8a8-0910843cc587@linux.alibaba.com> <CAEXW_YSM1yik4yWTgZoxCS9RM6TbsL26VCVCH=41+uMA8chfAQ@mail.gmail.com>
+ <58b661d0-0ebb-4b45-a10d-c5927fb791cd@paulmck-laptop>
+In-Reply-To: <58b661d0-0ebb-4b45-a10d-c5927fb791cd@paulmck-laptop>
+From: Sandeep Dhavale <dhavale@google.com>
+Date: Thu, 13 Jul 2023 10:05:46 -0700
+Message-ID: <CAB=BE-QSaRKvVQg28wu6zVoO9RwiHZgXJzUaEMdbtpieVLmT8A@mail.gmail.com>
+Subject: Re: [PATCH v1] rcu: Fix and improve RCU read lock checks when !CONFIG_DEBUG_LOCK_ALLOC
+To: paulmck@kernel.org
+Cc: Joel Fernandes <joel@joelfernandes.org>, Gao Xiang <hsiangkao@linux.alibaba.com>, 
+	Frederic Weisbecker <frederic@kernel.org>, Neeraj Upadhyay <quic_neeraju@quicinc.com>, 
+	Josh Triplett <josh@joshtriplett.org>, Boqun Feng <boqun.feng@gmail.com>, 
+	Steven Rostedt <rostedt@goodmis.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, 
+	Lai Jiangshan <jiangshanlai@gmail.com>, Zqiang <qiang.zhang1211@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-erofs@lists.ozlabs.org, 
+	xiang@kernel.org, Will Shiu <Will.Shiu@mediatek.com>, kernel-team@android.com, 
+	rcu@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230713_093338_075667_F84E7EE1 
-X-CRM114-Status: GOOD (  44.99  )
+X-CRM114-CacheID: sfid-20230713_100601_899065_0E449C83 
+X-CRM114-Status: GOOD (  16.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,144 +97,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: paulmck@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 13, 2023 at 11:33:24AM -0400, Joel Fernandes wrote:
-> On Thu, Jul 13, 2023 at 10:34 AM Gao Xiang <hsiangkao@linux.alibaba.com> wrote:
-> > On 2023/7/13 22:07, Joel Fernandes wrote:
-> > > On Thu, Jul 13, 2023 at 12:59 AM Gao Xiang <hsiangkao@linux.alibaba.com> wrote:
-> > >> On 2023/7/13 12:52, Paul E. McKenney wrote:
-> > >>> On Thu, Jul 13, 2023 at 12:41:09PM +0800, Gao Xiang wrote:
-> > >>
-> > >> ...
-> > >>
-> > >>>>
-> > >>>> There are lots of performance issues here and even a plumber
-> > >>>> topic last year to show that, see:
-> > >>>>
-> > >>>> [1] https://lore.kernel.org/r/20230519001709.2563-1-tj@kernel.org
-> > >>>> [2] https://lore.kernel.org/r/CAHk-=wgE9kORADrDJ4nEsHHLirqPCZ1tGaEPAZejHdZ03qCOGg@mail.gmail.com
-> > >>>> [3] https://lore.kernel.org/r/CAB=BE-SBtO6vcoyLNA9F-9VaN5R0t3o_Zn+FW8GbO6wyUqFneQ@mail.gmail.com
-> > >>>> [4] https://lpc.events/event/16/contributions/1338/
-> > >>>> and more.
-> > >>>>
-> > >>>> I'm not sure if it's necessary to look info all of that,
-> > >>>> andSandeep knows more than I am (the scheduling issue
-> > >>>> becomes vital on some aarch64 platform.)
-> > >>>
-> > >>> Hmmm...  Please let me try again.
-> > >>>
-> > >>> Assuming that this approach turns out to make sense, the resulting
-> > >>> patch will need to clearly state the performance benefits directly in
-> > >>> the commit log.
-> > >>>
-> > >>> And of course, for the approach to make sense, it must avoid breaking
-> > >>> the existing lockdep-RCU debugging code.
-> > >>>
-> > >>> Is that more clear?
-> > >>
-> > >> Personally I'm not working on Android platform any more so I don't
-> > >> have a way to reproduce, hopefully Sandeep could give actually
-> > >> number _again_ if dm-verity is enabled and trigger another
-> > >> workqueue here and make a comparsion why the scheduling latency of
-> > >> the extra work becomes unacceptable.
-> > >>
-> > >
-> > > Question from my side, are we talking about only performance issues or
-> > > also a crash? It appears z_erofs_decompress_pcluster() takes
-> > > mutex_lock(&pcl->lock);
-> > >
-> > > So if it is either in an RCU read-side critical section or in an
-> > > atomic section, like the softirq path, then it may
-> > > schedule-while-atomic or trigger RCU warnings.
-> > >
-> > > z_erofs_decompressqueue_endio
-> > > -> z_erofs_decompress_kickoff
-> > >   ->z_erofs_decompressqueue_work
-> > >    ->z_erofs_decompress_queue
-> > >     -> z_erofs_decompress_pcluster
-> > >      -> mutex_lock
-> > >
-> >
-> > Why does the softirq path not trigger a workqueue instead?
-> 
-> I said "if it is". I was giving a scenario. mutex_lock() is not
-> allowed in softirq context or in an RCU-reader.
-> 
-> > > Per Sandeep in [1], this stack happens under RCU read-lock in:
-> > >
-> > > #define __blk_mq_run_dispatch_ops(q, check_sleep, dispatch_ops) \
-> > > [...]
-> > >                  rcu_read_lock();
-> > >                  (dispatch_ops);
-> > >                  rcu_read_unlock();
-> > > [...]
-> > >
-> > > Coming from:
-> > > blk_mq_flush_plug_list ->
-> > >                             blk_mq_run_dispatch_ops(q,
-> > >                                  __blk_mq_flush_plug_list(q, plug));
-> > >
-> > > and __blk_mq_flush_plug_list does this:
-> > >            q->mq_ops->queue_rqs(&plug->mq_list);
-> > >
-> > > This somehow ends up calling the bio_endio and the
-> > > z_erofs_decompressqueue_endio which grabs the mutex.
-> > >
-> > > So... I have a question, it looks like one of the paths in
-> > > __blk_mq_run_dispatch_ops() uses SRCU.  Where are as the alternate
-> > > path uses RCU. Why does this alternate want to block even if it is not
-> > > supposed to? Is the real issue here that the BLK_MQ_F_BLOCKING should
-> > > be set? It sounds like you want to block in the "else" path even
-> > > though BLK_MQ_F_BLOCKING is not set:
-> >
-> > BLK_MQ_F_BLOCKING is not a flag that a filesystem can do anything with.
-> > That is block layer and mq device driver stuffs. filesystems cannot set
-> > this value.
-> >
-> > As I said, as far as I understand, previously,
-> > .end_io() can only be called without RCU context, so it will be fine,
-> > but I don't know when .end_io() can be called under some RCU context
-> > now.
-> 
-> >From what Sandeep described, the code path is in an RCU reader. My
-> question is more, why doesn't it use SRCU instead since it clearly
-> does so if BLK_MQ_F_BLOCKING. What are the tradeoffs? IMHO, a deeper
-> dive needs to be made into that before concluding that the fix is to
-> use rcu_read_lock_any_held().
+Hello All,
 
-How can this be solved?
+Let me answer some of the questions raised here.
 
-1.	Always use a workqueue.  Simple, but is said to have performance
-	issues.
+* Performance aspect
+EROFS is one of the popular filesystem of choice in Android for read
+only partitions
+as it provides 30%+ storage space savings with compression.
+In addition to microbenchmarks, boot times and cold app launch
+benchmarks are very
+important to the Android ecosystem as they directly translate to
+responsiveness from user point of view. We saw some
+performance penalty in cold app launch benchmarks in a few scenarios.
+Analysis showed that the significant variance was coming from the
+scheduling cost while decompression cost was more or less the same.
+Please see the [1] which shows scheduling costs for kthread vs kworker.
 
-2.	Pass a flag in that indicates whether or not the caller is in an
-	RCU read-side critical section.  Conceptually simple, but might
-	or might not be reasonable to actually implement in the code as
-	it exists now.	(You tell me!)
+> Just out of curiosity, exactly how much is it costing to trigger the
+workqueue?
+I think the cost to trigger is not much, it's the actual scheduling latency for
+the thread is the one which we want to cut down. And if we are already in
+thread context then there is no point in incurring any extra cost if
+we can detect
+it reliably. That is what erofs check is trying to do.
 
-3.	Create a function in z_erofs that gives you a decent
-	approximation, maybe something like the following.
+>One additional question...  What is your plan for kernels built with
+CONFIG_PREEMPT_COUNT=n?
+If there is no reliable way to detect if we can block or not then in that
+case erofs has no option but to schedule the kworker.
 
-4.	Other ideas here.
+* Regarding BLK_MQ_F_BLOCKING
+As mentioned by Gao in the thread this is a property of blk-mq device
+underneath,
+so erofs cannot control it has it has to work with different types of
+block devices.
 
-The following is untested, and is probably quite buggy, but it should
+* Regarding rcu_is_watching()
+
+>I am assuming you mean you would grab the mutex accidentally when in an RCU
+reader, and might_sleep() presumably in the mutex internal code will scream?
+
+Thank you Paul for explaining in detail why it is important. I can get
+the V2 going.
+From the looking at the code at kernel/sched/core.c which only looks
+at rcu_preempt_depth(),
+I am thinking it may still get triggered IIUC.
+
+> The following is untested, and is probably quite buggy, but it should
 provide you with a starting point.
+..
 
-static bool z_erofs_wq_needed(void)
-{
-	if (IS_ENABLED(CONFIG_PREEMPTION) && rcu_preempt_depth())
-		return true;  // RCU reader
-	if (IS_ENABLED(CONFIG_PREEMPT_COUNT) && !preemptible())
-		return true;  // non-preemptible
-	if (!IS_ENABLED(CONFIG_PREEMPT_COUNT))
-		return true;  // non-preeemptible kernel, so play it safe
-	return false;
-}
+Yes, that can fix the problem at hand as the erofs check also looks
+for rcu_preempt_depth().
+A similar approach was discarded as rcu_preempt_depth() was though to
+be low level
+and we used rcu_read_lock_any_held() which is the superset until we
+figured out inconsistency
+when ! CONFIG_DEBUG_LOCK_ALLOC.
 
-You break it, you buy it!  ;-)
+Paul, Joel,
+Shall we fix the rcu_read_lock_*held() regardless of how erofs
+improves the check?
 
-							Thanx, Paul
+Thanks,
+Sandeep.
+
+[1] https://lore.kernel.org/linux-erofs/20230208093322.75816-1-hsiangkao@linux.alibaba.com/
 
