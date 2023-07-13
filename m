@@ -4,85 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C508C0015E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 08:35:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16021C001DC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 09:02:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SyEkQpgIXNpGAjYikyKRrMbeGwRnjSnhMc5RNVKg7IY=; b=TdYHcrcGuPYyJrnLzjSMNhsNZn
-	oLkYE4ygLsX73gPu0q9gKpEugO4t89AxbIpmP8w1lPrrnvttQXRWDweotZoFMP9Tr7i/CKNRL+yE0
-	OhFOXZS/9TWRyEuviXDAteAdPHLd5BKL67feqenin8Gw/gt9jGPQwnsNdsBJ+vgBvFVkgC1r/A+uI
-	g6V8xEewwXgOfhw7bFUSRaXx6RiDyS9PEy19s717myA14r8zbQyKH5l+9MxvoyXw/N9XfG0umRh+D
-	sdXXYwNRrBURgcKline7oZgwjKXgRYRIdCtcg8n1jj7i8x6sU6eW4N++A1VSEKYZOtiVYJeTyCF68
-	WXzUsPmQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Jm+4bA7L5qQARGCuBviR0yCve9XmJx/kjr6/J1RXj6c=; b=DjSez8CnnGm9gc2+sFq1QNytff
+	9gE36TfgfIbJHPTlcN8OnozAqlVjOEcwoNWLY8KolAKU0u0JSJ4W287RExE70SC7erQMUcu8WLJTp
+	5nasirDMjjsduylnT3pPpNjmtC3Pp4Y0ZBCk1GOwnnvQFtuin4Yud5CeJKYhlpw8EnsLlDmHUktZX
+	aE02IQtAXw9HCZ4tOJdbo9BPIo0NQvYy9m3qYWQyYl6cUANJxL/Wsjgaf/0ks56DqhdSqfIdIUl/N
+	Ne1pNn7SJBoLvmaTVlIDTVlf55Mx81CL1/CZFSoNlLLWkItn4AJE93en64CYconGZRPvCp5b/MefN
+	8BjrM3Mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJrmr-002S3x-04;
-	Thu, 13 Jul 2023 08:34:57 +0000
-Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f])
+	id 1qJsD9-002X5B-0i;
+	Thu, 13 Jul 2023 09:02:07 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJrmn-002S2C-2k
-	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Jul 2023 08:34:55 +0000
-Received: by mail-il1-x12f.google.com with SMTP id e9e14a558f8ab-3465ec72cc8so1776225ab.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jul 2023 01:34:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1689237292; x=1691829292;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SyEkQpgIXNpGAjYikyKRrMbeGwRnjSnhMc5RNVKg7IY=;
-        b=SuN0gI3WYHAX8shoQNwqeFprlVQ8IlcjG4+vVg3/k+WlhXvoKWl8Oyqp7BzSja8Ovm
-         rflXUmOOO+A+Cbj3R1HjaMCxbrjQP8ZDFsfHR2jV5q3MQTS/n1V0JUV4KbPwR7GEzZZE
-         mzHZd9R7IuWNDglILxglP65SjFO31Vrc0dfrU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689237292; x=1691829292;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=SyEkQpgIXNpGAjYikyKRrMbeGwRnjSnhMc5RNVKg7IY=;
-        b=bUr7xp/gY8XIJoCjUTajwbypnTxd8jgLBzEQ2y1stbmg8vLBoFVMEvpsHMMNcAGKT1
-         9NVPm+mxE+uRHvgq8z5LIXKz2PPlIzIDFDoOa6aJcfnTxDZ8ZtbV3WLepQgHGdhY6jR3
-         XvAdhmTgpTF3T66jBbonsTAcZLah8seJimCV4aLAF0oW9LfHzsjXrdg0/i4yRedQdC5K
-         K/y1DPJZavmsdqO+9v8v6mTdOYRrZN9vxySUcF1Pam6IG3swHm+0BLD6Nu1ze9J95I6K
-         3LTNjBYNBt99U1kqQsFE/I1+N0FuLQHJ7wTF33mf+LOKsCeRfawzDPmuL4nIE2Hnau7y
-         ntAw==
-X-Gm-Message-State: ABy/qLad2dAVTLFKTgFkdDv+Jiecnoz4OMm5QeVjwDSLjBFnf/MuZAtZ
-	SzQl25uQkhn5EKe33bkx95g298KQNU8Yo26IpCk=
-X-Google-Smtp-Source: APBJJlFXpTGOzQMxs/lTyjduxaugTasj2zn6PzWi9o2MEEh4acta8VMMUsb7pLp9eb5zJqQTxAjFHg==
-X-Received: by 2002:a92:d28c:0:b0:345:acab:98dc with SMTP id p12-20020a92d28c000000b00345acab98dcmr1064947ilp.11.1689237292722;
-        Thu, 13 Jul 2023 01:34:52 -0700 (PDT)
-Received: from mail-io1-f42.google.com (mail-io1-f42.google.com. [209.85.166.42])
-        by smtp.gmail.com with ESMTPSA id z25-20020a02ceb9000000b0042b39f1c3d2sm1784423jaq.144.2023.07.13.01.34.51
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 13 Jul 2023 01:34:51 -0700 (PDT)
-Received: by mail-io1-f42.google.com with SMTP id ca18e2360f4ac-7872d448c5aso13858639f.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jul 2023 01:34:51 -0700 (PDT)
-X-Received: by 2002:a5e:c918:0:b0:786:f10e:a473 with SMTP id
- z24-20020a5ec918000000b00786f10ea473mr1591076iol.16.1689237291411; Thu, 13
- Jul 2023 01:34:51 -0700 (PDT)
+	id 1qJsD3-002WzM-1X;
+	Thu, 13 Jul 2023 09:02:03 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AE9EF6607044;
+	Thu, 13 Jul 2023 10:01:57 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1689238918;
+	bh=WhbAVEXdX9GjpwripqW58AET2QNGyCRlQO6iZTf/vYg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=W1CQgZsa8/plt03OKILwzeBjXUJyqQZiC0tVJFNz30jh9WM6erb9MArAxdFS9uSPC
+	 tSqi2VBODVNMqrIGPxEJ7JmXEaliUw2ILJgepHaGJ+fRQR5RViv6dUHUJnP2YYy9yo
+	 Vy3wHEWZas9hLYpDsc23e++0h0jQW37ZTKT0xuUU/NO/w3ysc+GwYLoS0330dNJwHw
+	 k4S3jA5KLZSZkCeNSRoPl3FVCAV/fe5/7+YSHx2t9btwg9ePvWEsfhDisqUhdHXwUv
+	 9zNVFljiMnG/kqmNHDr5PSO0lm8SOHcLEpHbDP/bGcpTYT8XA7TPuAcy56swlFVeLa
+	 BtA2g66LTbX2A==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	wenst@chromium.org,
+	nfraprado@collabora.com
+Subject: [PATCH v5 00/10] MediaTek DisplayPort: support eDP and aux-bus
+Date: Thu, 13 Jul 2023 11:01:42 +0200
+Message-Id: <20230713090152.140060-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-References: <20230412115250.164899-1-angelogioacchino.delregno@collabora.com> <20230412115250.164899-5-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230412115250.164899-5-angelogioacchino.delregno@collabora.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Thu, 13 Jul 2023 16:34:15 +0800
-X-Gmail-Original-Message-ID: <CAC=S1ngkoQJKi6AozAOQY1WKvMhMrgKfA8S7MdbqmzSD5rRmdw@mail.gmail.com>
-Message-ID: <CAC=S1ngkoQJKi6AozAOQY1WKvMhMrgKfA8S7MdbqmzSD5rRmdw@mail.gmail.com>
-Subject: Re: [PATCH 4/4] drm/mediatek: mtk_dpi: Use devm_platform_get_and_ioremap_resource()
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	daniel@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230713_013453_889172_EFB578FF 
-X-CRM114-Status: GOOD (  14.65  )
+X-CRM114-CacheID: sfid-20230713_020201_833256_5C3E7E56 
+X-CRM114-Status: GOOD (  20.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,48 +80,151 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+Changes in v5:
+ - Added .wait_hpd_asserted() callback for aux-bus
+ - Avoid enabling and registering HPD interrupt + handlers for
+   eDP case only (keeps HPD interrupts enabled for full DP case)
+ - Support not always-on eDP panels (boot with regulator off,
+   suspend with regulator off) for power saving in PM suspend.
 
-On Wed, Apr 12, 2023 at 7:53=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Instead of the open-coded platform_get_resource, devm_ioremap_resource
-> switch to devm_platform_get_and_ioremap_resource(), doing exactly the
-> same.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dpi.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediate=
-k/mtk_dpi.c
-> index 9025111013d3..45535dc7970f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -1038,8 +1038,7 @@ static int mtk_dpi_probe(struct platform_device *pd=
-ev)
->                         dev_dbg(&pdev->dev, "Cannot find pinctrl active!\=
-n");
->                 }
->         }
-> -       mem =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -       dpi->regs =3D devm_ioremap_resource(dev, mem);
-> +       dpi->regs =3D devm_platform_get_and_ioremap_resource(pdev, 0, &me=
-m);
+Changes in v4:
+ - Set data lanes to idle to prevent stalls if bootloader didn't
+   properly close the eDP port
+ - Now using the .done_probing() callback for AUX bus to prevent
+   probe deferral loops in case the panel-edp driver is a module
+   as previously seen with another bridge driver (ANX7625) on
+   some other SoCs (MT8192 and others)
+ - Rebased over next-20230706
+ - Dropped Chen-Yu's T-b tag on last patch as some logic changed
+   (before, I wasn't using the .done_probing() callback).
 
-"mem" appears to be unused elsewhere, so I assume
-devm_platform_ioremap_resource() would be a better fit.
+Changes in v3:
+ - Added DPTX AUX block initialization before trying to communicate
+   to stop relying on the bootloader keeping it initialized before
+   booting Linux.
+ - Fixed commit description for patch [09/09] and removed commented
+   out code (that slipped from dev phase.. sorry!).
 
-Regards,
-Fei
+This series adds "real" support for eDP in the mtk-dp DisplayPort driver.
 
->         if (IS_ERR(dpi->regs))
->                 return dev_err_probe(dev, PTR_ERR(dpi->regs),
->                                      "Failed to ioremap mem resource\n");
-> --
-> 2.40.0
->
->
+Explaining the "real":
+Before this change, the DisplayPort driver did support eDP to some
+extent, but it was treating it entirely like a regular DP interface
+which is partially fine, after all, embedded DisplayPort *is* actually
+DisplayPort, but there might be some differences to account for... and
+this is for both small performance improvements and, more importantly,
+for correct functionality in some systems.
+
+Functionality first:
+
+One of the common differences found in various boards implementing eDP
+and machines using an eDP panel is that many times the HPD line is not
+connected. This *must* be accounted for: at startup, this specific IP
+will raise a HPD interrupt (which should maybe be ignored... as it does
+not appear to be a "real" event...) that will make the eDP panel to be
+detected and to actually work but, after a suspend-resume cycle, there
+will be no HPD interrupt (as there's no HPD line in my case!) producing
+a functionality issue - specifically, the DP Link Training fails because
+the panel doesn't get powered up, then it stays black and won't work
+until rebooting the machine (or removing and reinserting the module I
+think, but I haven't tried that).
+
+Now for.. both:
+eDP panels are *e*DP because they are *not* removable (in the sense that
+you can't unplug the cable without disassembling the machine, in which
+case, the machine shall be powered down..!): this (correct) assumption
+makes us able to solve some issues and to also gain a little performance
+during PM operations.
+
+What was done here is:
+ - Caching the EDID if the panel is eDP: we're always going to read the
+   same data everytime, so we can just cache that (as it's small enough)
+   shortening PM resume times for the eDP driver instance;
+ - Always return connector_status_connected if it's eDP: non-removable
+   means connector_status_disconnected can't happen during runtime...
+   this also saves us some time and even power, as we won't have to
+   perform yet another power cycle of the HW;
+ - Added aux-bus support!
+   This makes us able to rely on panel autodetection from the EDID,
+   avoiding to add more and more panel timings to panel-edp and, even
+   better, allowing to use one panel node in devicetrees for multiple
+   variants of the same machine since, at that point, it's not important
+   to "preventively know" what panel we have (eh, it's autodetected...!).
+
+This was tested on a MT8195 Cherry Tomato Chromebook (panel-edp on aux-bus)
+
+
+P.S.: For your own testing commodity, here's a reference devicetree:
+
+pp3300_disp_x: regulator-pp3300-disp-x {
+	compatible = "regulator-fixed";
+	regulator-name = "pp3300_disp_x";
+	regulator-min-microvolt = <3300000>;
+	regulator-max-microvolt = <3300000>;
+	enable-active-high;
+	gpio = <&pio 55 GPIO_ACTIVE_HIGH>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&panel_fixed_pins>;
+};
+
+&edp_tx {
+	status = "okay";
+
+	pinctrl-names = "default";
+	pinctrl-0 = <&edptx_pins_default>;
+
+	ports {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		port@0 {
+			reg = <0>;
+			edp_in: endpoint {
+				remote-endpoint = <&dp_intf0_out>;
+			};
+		};
+
+		port@1 {
+			reg = <1>;
+			edp_out: endpoint {
+				data-lanes = <0 1 2 3>;
+				remote-endpoint = <&panel_in>;
+			};
+		};
+	};
+
+	aux-bus {
+		panel: panel {
+			compatible = "edp-panel";
+			power-supply = <&pp3300_disp_x>;
+			backlight = <&backlight_lcd0>;
+			port {
+				panel_in: endpoint {
+					remote-endpoint = <&edp_out>;
+				};
+			};
+		};
+	};
+};
+
+AngeloGioacchino Del Regno (10):
+  drm/mediatek: dp: Move AUX and panel poweron/off sequence to function
+  drm/mediatek: dp: Change logging to dev for mtk_dp_aux_transfer()
+  drm/mediatek: dp: Use devm variant of drm_bridge_add()
+  drm/mediatek: dp: Move AUX_P0 setting to
+    mtk_dp_initialize_aux_settings()
+  drm/mediatek: dp: Enable event interrupt only when bridge attached
+  drm/mediatek: dp: Avoid mutex locks if audio is not supported/enabled
+  drm/mediatek: dp: Move PHY registration to new function
+  drm/mediatek: dp: Add support for embedded DisplayPort aux-bus
+  drm/mediatek: dp: Add .wait_hpd_asserted() for AUX bus
+  drm/mediatek: dp: Don't register HPD interrupt handler for eDP case
+
+ drivers/gpu/drm/mediatek/Kconfig  |   1 +
+ drivers/gpu/drm/mediatek/mtk_dp.c | 335 ++++++++++++++++++++----------
+ 2 files changed, 224 insertions(+), 112 deletions(-)
+
+-- 
+2.40.1
+
 
