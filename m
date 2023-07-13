@@ -4,43 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE91EEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 02:10:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7A67C001B0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 02:16:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:Cc:References
+	:Message-Id:Date:Subject:Mime-Version:From:Content-Transfer-Encoding:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bpC37IkmMFFJooXWXquPuLV1hybEqzWFZR7H9gfq6uI=; b=W/HzwJwFGstNPalFsHFhpKrRH+
-	j9AsrlMfE+XW3XZetK3jvL/+WRjdczxw0UvD1dsvITeEX+Gx3Ka3C23VjZcxOMaCfDWZlhliQPzsB
-	YgQ552UKoO14fu8HtHVGVILRsMhv4STl/250y/U0IQIqPdFEwHJKVO++Ek6aYbQVzNt7wJn9DqTOo
-	z6TJP7cY9+aUlsj5i9Z/rQoyNxbt1bJIcrMI8Sc8vS3cC6Xk+ENwTcJ9s78Qks0ryi1dvZ8oP+7p2
-	mM9kFxBCNs0IarhEqln6rMIrUVX/IKE1wAVX4vyVMXMQK1XmskLsSxTBH4GRd8fy6/gBJrihzGaed
-	2AXnZPUA==;
+	bh=iLRUl5AEz4xfBRj0i8SQThC0f/OuUsY40TC9Xg4abaA=; b=BoR/49sIyhOo5c8ut7FQai9yYq
+	6YoL5ONNING8jI3sqEYwTaJ9NrvAZXMpJQOA2ZfYnohP8kAfFIyGS0fbFC8hCP6G5iya7UlQYZ+Nr
+	TdTU+CeDD9VIlJ9c3jylzyKnFDWe66pMIgTwmIa0bcl24zoO8W6CfvDa5HsHR3HUvu52S5yBGAj2x
+	/9OF04d+b4ZdhjSScv23Pz5JFzf2NjtbiyKVQMn0QKIhPbjF4/gcZgDhAOhfVre50ycD2fDzBpYHY
+	Vv2fyRHf6Bmx0IesniVEPeNqh5f7SXjH0j9yiZ6WTOgqjXIy4Gc91GMQZBTeeWf3FcWNNCvPdgd0E
+	a84vGBtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJln0-001h5J-1E;
-	Thu, 13 Jul 2023 02:10:42 +0000
-Received: from out30-112.freemail.mail.aliyun.com ([115.124.30.112])
+	id 1qJlsy-001hY8-00;
+	Thu, 13 Jul 2023 02:16:52 +0000
+Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJlmw-001h43-2c;
-	Thu, 13 Jul 2023 02:10:40 +0000
-X-Alimail-AntiSpam: AC=PASS;BC=-1|-1;BR=01201311R941e4;CH=green;DM=||false|;DS=||;FP=0|-1|-1|-1|0|-1|-1|-1;HT=ay29a033018046049;MF=hsiangkao@linux.alibaba.com;NM=1;PH=DS;RN=21;SR=0;TI=SMTPD_---0VnEugHV_1689214232;
-Received: from 30.97.48.217(mailfrom:hsiangkao@linux.alibaba.com fp:SMTPD_---0VnEugHV_1689214232)
-          by smtp.aliyun-inc.com;
-          Thu, 13 Jul 2023 10:10:33 +0800
-Message-ID: <a6d65874-1280-bf16-06ce-2062d913dbca@linux.alibaba.com>
-Date: Thu, 13 Jul 2023 10:10:31 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: [PATCH v1] rcu: Fix and improve RCU read lock checks when
- !CONFIG_DEBUG_LOCK_ALLOC
-From: Gao Xiang <hsiangkao@linux.alibaba.com>
-To: Joel Fernandes <joel@joelfernandes.org>,
- Sandeep Dhavale <dhavale@google.com>
-Cc: "Paul E. McKenney" <paulmck@kernel.org>,
+	id 1qJlsv-001hXK-0F
+	for linux-mediatek@lists.infradead.org;
+	Thu, 13 Jul 2023 02:16:50 +0000
+Received: by mail-qt1-x82a.google.com with SMTP id d75a77b69052e-403c653d934so2046421cf.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Jul 2023 19:16:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=joelfernandes.org; s=google; t=1689214607; x=1691806607;
+        h=to:in-reply-to:cc:references:message-id:date:subject:mime-version
+         :from:content-transfer-encoding:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=iLRUl5AEz4xfBRj0i8SQThC0f/OuUsY40TC9Xg4abaA=;
+        b=hkYYZxV/H6WPwxqD8d9vTMIlQVEbUwmHDwP456khtAclR9f++sJEJVcmMm6doJpAaQ
+         ogqF5NtL1hNnF/kt+Sxly7CdccRu+h9u+yM79dJXBa0/Judo/EX7b42d6IVleLt5scnY
+         FhIej7EBkK0LF8qZ58Pz9eSUj8zfP82glH7zo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689214607; x=1691806607;
+        h=to:in-reply-to:cc:references:message-id:date:subject:mime-version
+         :from:content-transfer-encoding:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=iLRUl5AEz4xfBRj0i8SQThC0f/OuUsY40TC9Xg4abaA=;
+        b=IQx8UyOuqgaSyXn2ZAW2ye6icy3XUflWsf8npuYdkaXrUezu7jtBDXshkADOCLMBnL
+         CTPkwVAAd7wYS1gIRuaX1J5s1T1n8ek4Z7fV2EQ8qI3y++K5sG8ejR/jNEwLE+OHwMgl
+         sevc+ej1zURMjoOltAxSIHqw7mZ29+fj7x7cbCaBOCXjLmmjrjPqa0WfBuXIYD2y/4Tb
+         tpyAWPncdJh1vM5T2KC3vmEhb3v3OnPtWmmadZZBx1wQ551y+woxrpxGdBnfGy9T09dc
+         qsy63dMNZGs2mu34dOJqZyzfBIXwCU0oJrmVAT3QKDpgYH5YxxNt8Hosw+uTrBxyGyLZ
+         V22Q==
+X-Gm-Message-State: ABy/qLYh5v9zgXfgxaNHaU2afCEyYRzktv14xbuWUD/Sx5KrqqqhE5BJ
+	fYByERZjd3c8UxJASQTiE7bMAA==
+X-Google-Smtp-Source: APBJJlEHYFXDl9ioZHBQvN/8vyjr4+5VOyHSJ2h1343YSyKCNTY2VRSulWSAIsk6+5Jj5IBsNS3DvA==
+X-Received: by 2002:ac8:7d4c:0:b0:401:e1e7:a2a4 with SMTP id h12-20020ac87d4c000000b00401e1e7a2a4mr404180qtb.35.1689214607496;
+        Wed, 12 Jul 2023 19:16:47 -0700 (PDT)
+Received: from smtpclient.apple ([192.145.116.85])
+        by smtp.gmail.com with ESMTPSA id t4-20020ac85304000000b00401f7f23ab6sm2713019qtn.85.2023.07.12.19.16.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 12 Jul 2023 19:16:46 -0700 (PDT)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+From: Joel Fernandes <joel@joelfernandes.org>
+Mime-Version: 1.0 (1.0)
+Subject: Re: [PATCH v1] rcu: Fix and improve RCU read lock checks when !CONFIG_DEBUG_LOCK_ALLOC
+Date: Wed, 12 Jul 2023 22:16:34 -0400
+Message-Id: <5DA6D217-8847-4760-9C23-CB1B26B5CC2B@joelfernandes.org>
+References: <161f1615-3d85-cf47-d2d5-695adf1ca7d4@linux.alibaba.com>
+Cc: Sandeep Dhavale <dhavale@google.com>,
+ "Paul E. McKenney" <paulmck@kernel.org>,
  Frederic Weisbecker <frederic@kernel.org>,
  Neeraj Upadhyay <quic_neeraju@quicinc.com>,
  Josh Triplett <josh@joshtriplett.org>, Boqun Feng <boqun.feng@gmail.com>,
@@ -53,17 +81,12 @@ Cc: "Paul E. McKenney" <paulmck@kernel.org>,
  Will Shiu <Will.Shiu@mediatek.com>, kernel-team@android.com,
  rcu@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230711233816.2187577-1-dhavale@google.com>
- <CAEXW_YQvpiFEaaNoS=Msgi17mU3kZD+q8bNBaHYasMArG9aPig@mail.gmail.com>
- <CAB=BE-Rm0ycTZXj=wHW_FBCCKbswG+dh3L+o1+CUW=Pg_oWnyw@mail.gmail.com>
- <20230713003201.GA469376@google.com>
- <161f1615-3d85-cf47-d2d5-695adf1ca7d4@linux.alibaba.com>
 In-Reply-To: <161f1615-3d85-cf47-d2d5-695adf1ca7d4@linux.alibaba.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+To: Gao Xiang <hsiangkao@linux.alibaba.com>
+X-Mailer: iPhone Mail (20B101)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230712_191039_035015_498DEF72 
-X-CRM114-Status: GOOD (  21.65  )
+X-CRM114-CacheID: sfid-20230712_191649_121505_8A3F0543 
+X-CRM114-Status: GOOD (  20.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,10 +103,12 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 2023/7/13 10:02, Gao Xiang wrote:
-> 
-> 
-> On 2023/7/13 08:32, Joel Fernandes wrote:
+> On Jul 12, 2023, at 10:02 PM, Gao Xiang <hsiangkao@linux.alibaba.com> wrot=
+e:
+>=20
+> =EF=BB=BF
+>=20
+>> On 2023/7/13 08:32, Joel Fernandes wrote:
 >> On Wed, Jul 12, 2023 at 02:20:56PM -0700, Sandeep Dhavale wrote:
 >> [..]
 >>>> As such this patch looks correct to me, one thing I noticed is that
@@ -91,54 +116,60 @@ On 2023/7/13 10:02, Gao Xiang wrote:
 >>>> That will tell you also if a reader-section is possible because in
 >>>> extended-quiescent-states, RCU readers should be non-existent or
 >>>> that's a bug.
->>>>
+>>>>=20
 >>> Please correct me if I am wrong, reading from the comment in
 >>> kernel/rcu/update.c rcu_read_lock_held_common()
 >>> ..
->>>    * The reason for this is that RCU ignores CPUs that are
->>>   * in such a section, considering these as in extended quiescent state,
->>>   * so such a CPU is effectively never in an RCU read-side critical section
->>>   * regardless of what RCU primitives it invokes.
->>>
+>>>   * The reason for this is that RCU ignores CPUs that are
+>>>  * in such a section, considering these as in extended quiescent state,
+>>>  * so such a CPU is effectively never in an RCU read-side critical secti=
+on
+>>>  * regardless of what RCU primitives it invokes.
+>>>=20
 >>> It seems rcu will treat this as lock not held rather than a fact that
 >>> lock is not held. Is my understanding correct?
->>
->> If RCU treats it as a lock not held, that is a fact for RCU ;-). Maybe you
+>> If RCU treats it as a lock not held, that is a fact for RCU ;-). Maybe yo=
+u
 >> mean it is not a fact for erofs?
-> 
+>=20
 > I'm not sure if I get what you mean, EROFS doesn't take any RCU read lock
+
+We are discussing the case 3 you mentioned below.
+
 > here:
-> 
-> z_erofs_decompressqueue_endio() is actually a "bio->bi_end_io", previously
+>=20
+> z_erofs_decompressqueue_endio() is actually a "bio->bi_end_io", previously=
+
 > which can be called under two scenarios:
-> 
->   1) under softirq context, which is actually part of device I/O compleltion;
-> 
->   2) under threaded context, like what dm-verity or likewise calls.
-> 
+>=20
+> 1) under softirq context, which is actually part of device I/O compleltion=
+;
+>=20
+> 2) under threaded context, like what dm-verity or likewise calls.
+>=20
 > But EROFS needs to decompress in a threaded context anyway, so we trigger
 > a workqueue to resolve the case 1).
-> 
-> 
+>=20
+>=20
 > Recently, someone reported there could be some case 3) [I think it was
 > introduced recently but I have no time to dig into it]:
-> 
->   case 3: under RCU read lock context, which is shown by this:
-> https://lore.kernel.org/r/4a8254eb-ac39-1e19-3d82-417d3a7b9f94@linux.alibaba.com/T/#u
-
-Sorry about the incorrect link (I really don't know who initally reported
-this and on which device):
-
-https://lore.kernel.org/linux-erofs/161f1615-3d85-cf47-d2d5-695adf1ca7d4@linux.alibaba.com/T/#t
-
-> 
->   and such RCU read lock is taken in __blk_mq_run_dispatch_ops().
-> 
+>=20
+> case 3: under RCU read lock context, which is shown by this:
+> https://lore.kernel.org/r/4a8254eb-ac39-1e19-3d82-417d3a7b9f94@linux.aliba=
+ba.com/T/#u
+>=20
+> and such RCU read lock is taken in __blk_mq_run_dispatch_ops().
+>=20
 > But as the commit shown, we only need to trigger a workqueue for case 1)
 > and 3) due to performance reasons.
-> 
+>=20
 > Hopefully I show it more clear.
-> 
+
+Makes sense. Thanks,
+
+ - Joel
+
+>=20
 > Thanks,
 > Gao Xiang
 
