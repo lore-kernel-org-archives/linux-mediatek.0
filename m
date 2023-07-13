@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C929EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 02:47:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 733BEEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 02:47:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=akC502RQvaU6TEnXcX47OeDUpZp3H+/CA9TM8Kz77aI=; b=skvHiUr3Yu3MQsGr2O5Arl58K0
-	ocz9gLtb+8J4dxWYteleHyYMdttkwtq4wEImdDLqWyyTBoHUnRm9p9kbAB34EmiqlTOZ2qjY5hNxL
-	drWgGHJ+BV2Vsi/kLxhu/l1KMVzH+H+lHcRlUMqa8OD3s8p3BnNj+AVbGMQB8pYrmLKX+8Cq1deN7
-	1Cp+jrdy0VfhVXekr9x75i6Xcjy4m6H568R7Ts3kubwrKp2uHqC3qQsyO5K2f+U3xuptDdIJ1Q6P3
-	Zm2VaTvG7EruS6+uJLmbkOx3EO/9Wn2Bm/VM6Ij+jmZ9rwjUxKZx1gx8M4SP9YwU+m6/i5Q6018sL
-	rWuYEoNA==;
+	bh=9rWU+ZPrm2OiRoZjnOo945fPKQuhUzt9X8yVzh/WTrg=; b=1oqtd7+Dimj6HC+9lsqKzwTZni
+	AqNqg5046pH7G9QJbnu677+LqetQDEVfkBb8NT6lVTWW0F72ugMrkRzK2pJhLj4yE+lq92++iSvTH
+	QZnjAytw5godjVJqDW86ay1h2xSNS29Q3tJy8VNoY8T/5Mll3TYFqhi6PoEgfs0y272mcoYu/l52Y
+	0yo3U/rEIsGzgail1BiGYcsegoSD4LhwkTY4ugeTP6BjKvRMgrwxp/Kum7EUSC/+gHHa30/SS5g1V
+	eTrba63i7OhCmFoQkTUS6oHbCoqBAJblRdr+ugnV/7+jeXsNxk57FADYtBSVvXjxOBJkIEHWmgmCf
+	g4VpE7fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJmM4-001l9a-1U;
-	Thu, 13 Jul 2023 02:46:56 +0000
+	id 1qJmMg-001lFf-1J;
+	Thu, 13 Jul 2023 02:47:34 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJmM1-001l8Q-2H;
-	Thu, 13 Jul 2023 02:46:54 +0000
+	id 1qJmMd-001lEH-2D;
+	Thu, 13 Jul 2023 02:47:32 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1qJmLp-0005gV-2Y;
-	Thu, 13 Jul 2023 02:46:42 +0000
-Date: Thu, 13 Jul 2023 03:46:30 +0100
+	id 1qJmMS-0005h4-3D;
+	Thu, 13 Jul 2023 02:47:22 +0000
+Date: Thu, 13 Jul 2023 03:47:08 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -44,16 +44,18 @@ Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
 	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] wifi: mt76: split get_of_eeprom in subfunction
-Message-ID: <ZK9lhgH_sNmX3hWb@makrotopia.org>
+Subject: Re: [PATCH 2/2] wifi: mt76: add support for providing eeprom in
+ nvmem cells
+Message-ID: <ZK9lrJMD8mqHdWrH@makrotopia.org>
 References: <20230708182936.24469-1-ansuelsmth@gmail.com>
+ <20230708182936.24469-2-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230708182936.24469-1-ansuelsmth@gmail.com>
+In-Reply-To: <20230708182936.24469-2-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230712_194653_756533_B6F0A4AF 
-X-CRM114-Status: GOOD (  20.05  )
+X-CRM114-CacheID: sfid-20230712_194731_723680_3DB192F3 
+X-CRM114-Status: GOOD (  20.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,13 +70,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 08, 2023 at 08:29:35PM +0200, Christian Marangi wrote:
-> In preparation for NVMEM support, split get_of_eeprom() in subfunction
-> to tidy the code and facilitate the addition of alternative method to
-> get eeprom data. No behaviour change intended.
+On Sat, Jul 08, 2023 at 08:29:36PM +0200, Christian Marangi wrote:
+> Add support for providing eeprom in nvmem cells by adding nvmem cell as
+> an alternative source for mt76_get_of_eeprom().
 > 
-> While at it also drop OF ifdef checks as OF have stubs and calling
-> of_get_property would result in the same error returned.
+> Nvmem cells will follow standard nvmem cell definition and needs to be
+> called 'eeprom' to be correctly identified.
 > 
 > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 
@@ -82,87 +83,72 @@ Reviewed-by: Daniel Golle <daniel@makrotopia.org>
 Tested-by: Daniel Golle <daniel@makrotopia.org>
 
 > ---
->  drivers/net/wireless/mediatek/mt76/eeprom.c | 51 ++++++++++++++-------
->  1 file changed, 35 insertions(+), 16 deletions(-)
+>  drivers/net/wireless/mediatek/mt76/eeprom.c | 38 ++++++++++++++++++++-
+>  1 file changed, 37 insertions(+), 1 deletion(-)
 > 
 > diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
-> index dce851d42e08..c3a762074be8 100644
+> index c3a762074be8..36564930aef1 100644
 > --- a/drivers/net/wireless/mediatek/mt76/eeprom.c
 > +++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
-> @@ -9,31 +9,35 @@
+> @@ -6,6 +6,7 @@
+>  #include <linux/of_net.h>
+>  #include <linux/mtd/mtd.h>
+>  #include <linux/mtd/partitions.h>
+> +#include <linux/nvmem-consumer.h>
 >  #include <linux/etherdevice.h>
 >  #include "mt76.h"
 >  
-> -int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int offset, int len)
-> +static int mt76_get_of_eeprom_data(struct mt76_dev *dev, void *eep, int len)
->  {
-> -#if defined(CONFIG_OF) && defined(CONFIG_MTD)
->  	struct device_node *np = dev->dev->of_node;
-> -	struct mtd_info *mtd;
-> -	const __be32 *list;
->  	const void *data;
-> -	const char *part;
-> -	phandle phandle;
->  	int size;
-> -	size_t retlen;
-> -	int ret;
->  
-> -	if (!np)
-> +	data = of_get_property(np, "mediatek,eeprom-data", &size);
-> +	if (!data)
->  		return -ENOENT;
->  
-> -	data = of_get_property(np, "mediatek,eeprom-data", &size);
-> -	if (data) {
-> -		if (size > len)
-> -			return -EINVAL;
-> +	if (size > len)
-> +		return -EINVAL;
->  
-> -		memcpy(eep, data, size);
-> +	memcpy(eep, data, size);
->  
-> -		return 0;
-> -	}
-> +	return 0;
-> +}
-> +
-> +static int mt76_get_of_epprom_from_mtd(struct mt76_dev *dev, void *eep, int offset, int len)
-> +{
-> +#ifdef CONFIG_MTD
-> +	struct device_node *np = dev->dev->of_node;
-> +	struct mtd_info *mtd;
-> +	const __be32 *list;
-> +	const char *part;
-> +	phandle phandle;
-> +	size_t retlen;
-> +	int size;
-> +	int ret;
->  
->  	list = of_get_property(np, "mediatek,mtd-eeprom", &size);
->  	if (!list)
-> @@ -100,6 +104,21 @@ int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int offset, int len)
->  	return -ENOENT;
+> @@ -105,6 +106,37 @@ static int mt76_get_of_epprom_from_mtd(struct mt76_dev *dev, void *eep, int offs
 >  #endif
 >  }
-> +
-> +int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int offset, int len)
+>  
+> +static int mt76_get_of_epprom_from_nvmem(struct mt76_dev *dev, void *eep, int len)
 > +{
 > +	struct device_node *np = dev->dev->of_node;
-> +	int ret;
+> +	struct nvmem_cell *cell;
+> +	const void *data;
+> +	size_t retlen;
+> +	int ret = 0;
 > +
-> +	if (!np)
-> +		return -ENOENT;
+> +	cell = of_nvmem_cell_get(np, "eeprom");
+> +	if (IS_ERR(cell))
+> +		return PTR_ERR(cell);
 > +
-> +	ret = mt76_get_of_eeprom_data(dev, eep, len);
+> +	data = nvmem_cell_read(cell, &retlen);
+> +	nvmem_cell_put(cell);
+> +
+> +	if (IS_ERR(data))
+> +		return PTR_ERR(data);
+> +
+> +	if (retlen < len) {
+> +		ret = -EINVAL;
+> +		goto exit;
+> +	}
+> +
+> +	memcpy(eep, data, len);
+> +
+> +exit:
+> +	kfree(data);
+> +
+> +	return ret;
+> +}
+> +
+>  int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int offset, int len)
+>  {
+>  	struct device_node *np = dev->dev->of_node;
+> @@ -117,7 +149,11 @@ int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int offset, int len)
+>  	if (!ret)
+>  		return 0;
+>  
+> -	return mt76_get_of_epprom_from_mtd(dev, eep, offset, len);
+> +	ret = mt76_get_of_epprom_from_mtd(dev, eep, offset, len);
 > +	if (!ret)
 > +		return 0;
 > +
-> +	return mt76_get_of_epprom_from_mtd(dev, eep, offset, len);
-> +}
+> +	return mt76_get_of_epprom_from_nvmem(dev, eep, len);
+>  }
 >  EXPORT_SYMBOL_GPL(mt76_get_of_eeprom);
 >  
->  void
 > -- 
 > 2.40.1
 > 
