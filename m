@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC2ACC0015E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 11:16:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0929FC001DC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 11:17:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/t01C0EN/QpTHgEBz222IZKPLFehmewtEJJGjauLMaI=; b=Ioy/DNKeDqICnOakipRFGsav+8
-	kntR5EJbcBMMPZH6QwE/wyAsf7Na+g9ffPdv1y/izkfdJcFTYopeU0PWjZtZRYce54+m+f8Xw7Taj
-	cp/r+OP4FioWhTbBndIXZ7rET3VDUHqBZNqHezehxNRMUyb0pI0ZpKIbAW0mQ3IRz31LE3WPg6kvw
-	EMIN7a20y4NsKcaG32lP2peMi4sNdu/iogBg4bwgJxxlJU8vg6sN2uszF7x3UcPC/FqGZIcqKIYYw
-	2GfkB0ZtiC1TLtycweX3+vRBEGGdAOBhce/MAjnaDjar9ZF2SjiLRm5M2u9Qf8FSF0BexGioTowO3
-	1XJmdNkQ==;
+	bh=jQg97wBXe3P0z07YZIHkWsGOthPp2ylFeuaEh8lcL5g=; b=mEvuTiXhgiXqeYlPOsv6JHhQfy
+	IAMlB54XyUumreLiJaVHOI9bho59Lg+Xso3RWXLJ6MgMowh0Oi0Hhr04Ve8PIddPTmJ9dWK3T1J7j
+	2DFzrWtGYjEDMlYZ+E25SR6ZdlQndQXPEoARVCF0AYgXAou8aGqtucvlndro39fE10BGGzakDNFw9
+	HUYXdK+oCvl2CGyfbL32x3JQNhy7PnNB/Ex+iYbYVdJY6UXp/k/6SNLavS219tu9Dw87Z09TpFcSo
+	Oj7RHGxdzJLiuWFrLXH7TT/ytxX0nQdi6i53BkMoIdnm8Ys08jkLV/LAvUbT2ZdRShWBuD9Vn6i64
+	b5ggoBaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJuJB-0033Ys-2a;
-	Thu, 13 Jul 2023 11:16:29 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1qJuKY-0033p4-1d;
+	Thu, 13 Jul 2023 11:17:54 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJuJ8-0033X7-0M
+	id 1qJuKV-0033o7-0g
 	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Jul 2023 11:16:27 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-3fbd33a57ddso5087365e9.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jul 2023 04:16:23 -0700 (PDT)
+	Thu, 13 Jul 2023 11:17:52 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-3159d75606dso689721f8f.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jul 2023 04:17:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1689246982; x=1691838982;
+        d=linaro.org; s=google; t=1689247068; x=1691839068;
         h=content-transfer-encoding:in-reply-to:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=/t01C0EN/QpTHgEBz222IZKPLFehmewtEJJGjauLMaI=;
-        b=eRP3N/6ImevwUzf9czr7Mdt+g6cvqkQ7wpsBpGJHV8fbjaClh7al/4pY9OBafDFXYA
-         D5TdzfwwF2JW1E/2TjAQmgik9OXcJalB1dLjaOeaO2ITcgq3u2mxIoqJlZ1B/PdvVULq
-         jbEAGF9XLNZZpgq9dS/BlGBYpEVagd0o9mskBHewBAV95kCHgUzR3XylysPYiz+frBXz
-         glgLnxxraooy6deqE2iRPcirfNU3mtSea43nn7beyTfS5aD1PbQ51yh64ceH8hJtJWZo
-         La54GOgtvu8KVi7v78PRVbsRls5NHtkdWRIOZVeyWopj/iIw0gT8dFXTeOAhnieXx7oJ
-         MgLQ==
+        bh=jQg97wBXe3P0z07YZIHkWsGOthPp2ylFeuaEh8lcL5g=;
+        b=fnT0JxbBGGoisk9+3XNkZZcv2SkvY8ojpQLL8pva71+onsqpaGXHZCsn7i2GLweYFl
+         9hWiYrw/Ewjk7pN7/Q5hwbkTvrXVeCgpEx8J3oXbWljZqUkCGAKsyFQqygMikg04m1fF
+         HgUD604I2qNi05XgZKtkc/j9dx+9YrXjRgGFlIay3w2t8ZeZghgJY4U6hMpzQvRy9aEU
+         pFd6SdERn3qrw+qEe0NjSzxnPDGKR3nzV9EP8axpOz0aQio+chMOpTFEkvU36KgwV37o
+         uqPYVo9RqPup0SGnN5xa4BZhhMvEhfjyispMYjYaPdLOG8gjoGPM5E1tCeNUjd/wd6Sp
+         nEBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689246982; x=1691838982;
+        d=1e100.net; s=20221208; t=1689247068; x=1691839068;
         h=content-transfer-encoding:in-reply-to:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/t01C0EN/QpTHgEBz222IZKPLFehmewtEJJGjauLMaI=;
-        b=iEcayRXAqzchnjuk2d10X3ObZnfIgk4AcPu10RUZ6FQM9x+n6B6cSIi+t+y+Z3mQP5
-         Y0fXiNbcx0dFls5JsipeVxANz6+Y20rKbQo+x8gyvqsLoIUKxWzg/FLAjRQBUpLMJJft
-         aOPE3fxl7E+H8Y0ErTA6bBye7dXfx3osJYCjWRKqwIIPUivYfidhQdgeunEw5QOw6QeM
-         nRx+iAH2ShuFdyWzJnDMYTc3rebKYvTeIjw9GLG480lzW4bPT/8KZGJsgTjItxpOwJgn
-         r3D2WUUOKGFRvNY4q/ITTbYBfYdShGA9jJfq7j+7oQEYVl0dtQvQIJCQk3MOP1y+L39X
-         xjIw==
-X-Gm-Message-State: ABy/qLYErJLf939WC/RgPcc246kyGkLjJy7Q2Uh9iyXBehGl2BkWQTuG
-	I2T7BCvGOh5/udhLXKXP/v59iQ==
-X-Google-Smtp-Source: APBJJlGmlptlgLgKMVcHCZdHYBHYEoZEjp0eeJuOJ8LpxrUplb1P3+Uoj54fMqYDX19vmUDfuXT51w==
-X-Received: by 2002:a05:6000:181b:b0:313:f86f:2851 with SMTP id m27-20020a056000181b00b00313f86f2851mr1336211wrh.3.1689246982433;
-        Thu, 13 Jul 2023 04:16:22 -0700 (PDT)
+        bh=jQg97wBXe3P0z07YZIHkWsGOthPp2ylFeuaEh8lcL5g=;
+        b=XAxW6zgML7xrDCEQHVvPCbuYAKNdDgsenbzrzeVnIo9gReB3auMb5fQx/7146qcYLN
+         G8Yu44pzsYobLSOCRR6KB9D9eOQZ85aIcdKZZip0unsPb647wvXQnETMp8v8VoBlb/fu
+         Dc5nr2zj04Rb+m1UjfpS0ciIzyQnr3YJ8Cx93OXSXPykvr9/2q8kSZB75MHqaIFWpaFy
+         qYIB98zJzDPCfJugr/f/pSaBbKruy3sW2L1gyFDhtqdq5nIYv+bVZrMWGqGNAUdUORdk
+         iY7IhJNUjPbGS2mn4bAHzDNJqDTxBvwi/EEKXz4/Vs14gcJ/sW3gBqn+kM0Dun2JR82w
+         sNnA==
+X-Gm-Message-State: ABy/qLYXOwFDG1xAvuzxQ7P6KL+olyr5KlnsSv2L4QLsg3+AKqF2BKZq
+	xWbzlsgbjxkKCNwsWtxYfcshpw==
+X-Google-Smtp-Source: APBJJlH87+cyagSht4LdOPuIJ+1dwMis7Qky9NEDILlxQd4l8J85GnFiCzPwZ/cdZ2oAsxEtwt50HA==
+X-Received: by 2002:a5d:5966:0:b0:313:ebbf:3696 with SMTP id e38-20020a5d5966000000b00313ebbf3696mr1098202wri.46.1689247068442;
+        Thu, 13 Jul 2023 04:17:48 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.223.104])
-        by smtp.gmail.com with ESMTPSA id k4-20020a056000004400b00314326c91e2sm7702997wrx.28.2023.07.13.04.16.19
+        by smtp.gmail.com with ESMTPSA id n2-20020a05600c294200b003fc17e8a1efsm7832235wmd.45.2023.07.13.04.17.46
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 13 Jul 2023 04:16:21 -0700 (PDT)
-Message-ID: <f2cf63ac-9bf4-157a-b24e-58dc31336d63@linaro.org>
-Date: Thu, 13 Jul 2023 13:16:18 +0200
+        Thu, 13 Jul 2023 04:17:48 -0700 (PDT)
+Message-ID: <61ca392d-fbfb-2c1d-16ce-771193252e67@linaro.org>
+Date: Thu, 13 Jul 2023 13:17:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH v2 net-next 1/9] dt-bindings: net: mediatek,net: add
- missing mediatek,mt7621-eth
+Subject: Re: [PATCH v2 net-next 2/9] dt-bindings: net: mediatek,net: add
+ mt7988-eth binding
 Content-Language: en-US
 To: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
@@ -86,15 +86,14 @@ To: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
  <bjorn@mork.no>, Florian Fainelli <f.fainelli@gmail.com>,
  Greg Ungerer <gerg@kernel.org>
 References: <cover.1689012506.git.daniel@makrotopia.org>
- <c472c5611c9c7133978b312a766295a975a0e91a.1689012506.git.daniel@makrotopia.org>
+ <6c2e9caddfb9427444307d8443f1b231e500787b.1689012506.git.daniel@makrotopia.org>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <c472c5611c9c7133978b312a766295a975a0e91a.1689012506.git.daniel@makrotopia.org>
+In-Reply-To: <6c2e9caddfb9427444307d8443f1b231e500787b.1689012506.git.daniel@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230713_041626_198570_216565AF 
-X-CRM114-Status: UNSURE (   9.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230713_041751_276289_BE68B328 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,15 +109,28 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 13/07/2023 04:17, Daniel Golle wrote:
-> Document the Ethernet controller found in the MediaTek MT7621 MIPS SoC
-> family which is supported by the mtk_eth_soc driver.
+> Introduce DT bindings for the MT7988 SoC to mediatek,net.yaml.
+> The MT7988 SoC got 3 Ethernet MACs operating at a maximum of
+> 10 Gigabit/sec supported by 2 packet processor engines for
+> offloading tasks.
+> The first MAC is hard-wired to a built-in switch which exposes
+> four 1000Base-T PHYs as user ports.
+> It also comes with built-in 2500Base-T PHY which can be used
+> with the 2nd GMAC.
+> The 2nd and 3rd GMAC can be connected to external PHYs or provide
+> SFP(+) cages attached via SGMII, 1000Base-X, 2500Base-X, USXGMII,
+> 5GBase-R or 10GBase-KR.
 > 
-> Fixes: 889bcbdeee57 ("net: ethernet: mediatek: support MT7621 SoC ethernet hardware")
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
 
+It does not look like you tested the bindings, at least after quick
+look. Please run `make dt_binding_check` (see
+Documentation/devicetree/bindings/writing-schema.rst for instructions).
+Maybe you need to update your dtschema and yamllint.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Beside that:
+1. no underscores in property names.
+2. Don't use syscon as an excuse for laziness. PLL is a clock, not syscon.
 
 Best regards,
 Krzysztof
