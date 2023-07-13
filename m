@@ -4,90 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB34C001B0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 09:10:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE32EC001E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 09:10:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x8UOfbxvNdamXtzpCp3XMuBEd5XeIGuCTHCPnoAiyHo=; b=XfGU8D7rnZl/tNY/rlF/GdqFXI
-	1oK5IGjWfveWD4qGPSLQdobbZaPvprYMcFZERQbe84aQ88k4FjcDg87NboCIgYV2S1iFH9MnjbA3n
-	XVANcGo1egIPBD/2y7yuh7gWkcBq8Ih7qcjBzjwvjLjdlbjow8sWv9sbq9/47F03HONoUGKUCWIqz
-	CxrKh83sR0nM8+Jt8NVMS0NbCe2n8HYOJqIIp6EeHj6GN7qxKeeNNugfDCnPn0Bj/YZK9j06RgOUm
-	3puoC872T1KKMj/+jHj+lhxVht1rKOZBw9agnWTZpaHAi3tzb7xAZ9p9QWz1uR1caQUQBz+1CFsU4
-	LgJ1bxWg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XznQUuiJb54uwYssnpziXtdB1g0ycFoSN01wYyxF/c0=; b=sp/kxS3fzIlH62czN3QvjDTtbq
+	5WDzcgraPRKpcCxch2qsc0uqRmEIFi41piRFAz711g49e3pPzFTqlV+e9Y+xUPZ6z+o/ptjuY7Y1V
+	YLS4d9huYi5DW8dBCk3QsOjM6cWbpoo5XpAbAPDxo0F4nTFA77Gt9qv9e+nJgNjZGwgXayN61Pwdc
+	T+8iIkVCiaYHoxHbbcT1MKrs6gt/hcoGYr8bOwCTa1zJxNAiTcUhgnx0dbBYlqJkfm2Tgw3sK5g/5
+	J1E3BoIE4vk1W0IAUEp6pRrcvcqUgbmUu+0wlwcsmr6PN4kz6J/G6PFdkx1SCH40XnJSDajdlb0XI
+	9fuWI7dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJsKi-002ZdI-2K;
-	Thu, 13 Jul 2023 09:09:56 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1qJsLR-002ZtQ-1j;
+	Thu, 13 Jul 2023 09:10:41 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJsKe-002Zb5-1Q
+	id 1qJsLL-002ZqP-0A
 	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Jul 2023 09:09:54 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-1b852785a65so3013395ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jul 2023 02:09:49 -0700 (PDT)
+	Thu, 13 Jul 2023 09:10:39 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-3090d3e9c92so651269f8f.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jul 2023 02:10:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1689239389; x=1691831389;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=x8UOfbxvNdamXtzpCp3XMuBEd5XeIGuCTHCPnoAiyHo=;
-        b=fmmlYQBdBMXpbpbndHBdFMGZy4H7HDWpUBDoJEOWmdqnUe2eUAjGxsFbx+nmvKIz4k
-         +iw2MOCd5cFXZo5wTa4ivccpV2JxCKlGJUgGxMXIsz11bGt9Un1ZWT0wQOvWYMzpPe5O
-         Pa+T3JEycm1WATU2gWDNIn9bXoyvSWq1sL41I=
+        d=linaro.org; s=google; t=1689239432; x=1691831432;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=XznQUuiJb54uwYssnpziXtdB1g0ycFoSN01wYyxF/c0=;
+        b=FHeBakREsG4Z6rum1jL3V/EaDxVsP+vazLfvdtBwMKVlQ5rsBg2X8Es6ckTs4R1DOc
+         sS5A1ZZZz/4S3XRRFhkoZDGGO7bg1jvPazO5bo13XXJvoWdCtZczsDhI4V87qrB/EXK+
+         x+KOZuE66xkOoP8C/vJjqWPL//edg8WsgU9PXmKu7wjkBTe8qOLlqfRqVpvzCH8C3P08
+         xU92KmLZ6owDVyComAGhfeHDHd+VQtXFYE4TzSkIL4iT2g7GNIIgNN8yUIvSeXl2hF46
+         du+AeDp//Mi/i7Q81ZA98FOx00pKdhnwalFNnDBUt6LSIpSD6bgJsIZIb3WpBA7BhckA
+         qD+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689239389; x=1691831389;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        d=1e100.net; s=20221208; t=1689239432; x=1691831432;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=x8UOfbxvNdamXtzpCp3XMuBEd5XeIGuCTHCPnoAiyHo=;
-        b=HnGT4/dMHZnU08xMCi4ZYzeJUiny67heQaq+YpizXrQnrbQHtcIg1+KyH+DRdQnVFY
-         kzD7J3u9JHSqiT8fMktKsG6payH4QASIOU/MfUteaQigIAk00FhQ30OsamJBfoD4Gh7X
-         V7CBvYoyyY5wdiVOktS0cIKrb27KUTxjK60UroenjjNpePdEXMyCP/yJfqWi8rzdv+9i
-         dCeokMS8jkeg2u+NKH0fkvhdOV/+0xg36FHubf/eU4UsrlAjTLieiDxtWp/U289kw6T+
-         2xWpXgpxNJ3kZAvPuXr6ibnx4dCEMYuyvAKRpoIQ3mcn9SnvbTwZwZ2y1qvgxjGDuWGI
-         zuNQ==
-X-Gm-Message-State: ABy/qLb2q8l72PuBwuGfRbQz9RXncBi86TD6voxsWAW/Gz//peNRa4mc
-	StwdkJTFQhQ9QNTs5GP2q+1wZA==
-X-Google-Smtp-Source: APBJJlFU2bgaQ2CREOQIz5EJRphX87BFDB2j4eugHHQTD3MFC9OasKiPG81qT/B8w7BnYj8Yd+WEgA==
-X-Received: by 2002:a17:903:32c8:b0:1b8:a67f:1c15 with SMTP id i8-20020a17090332c800b001b8a67f1c15mr6317098plr.25.1689239389333;
-        Thu, 13 Jul 2023 02:09:49 -0700 (PDT)
-Received: from chromium.org (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
-        by smtp.gmail.com with ESMTPSA id z8-20020a63b048000000b0053031f7a367sm722558pgo.85.2023.07.13.02.09.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 13 Jul 2023 02:09:48 -0700 (PDT)
-Date: Thu, 13 Jul 2023 09:09:44 +0000
-From: Tomasz Figa <tfiga@chromium.org>
-To: Hsia-Jun Li <Randy.Li@synaptics.com>
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	p.zabel@pengutronix.de, ming.qian@nxp.com, hverkuil-cisco@xs4all.nl,
-	gregkh@linuxfoundation.org, ezequiel@vanguardiasur.com.ar,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, nicolas.dufresne@collabora.com,
-	linux-staging@lists.linux.dev, kernel@collabora.com,
-	mchehab@kernel.org, m.szyprowski@samsung.com,
-	ayaka <ayaka@soulik.info>
-Subject: Re: [PATCH v3 10/11] media: v4l2: Add DELETE_BUF ioctl
-Message-ID: <20230713090944.3gxrxt7lqnozhu7r@chromium.org>
-References: <20230622131349.144160-1-benjamin.gaignard@collabora.com>
- <20230622131349.144160-11-benjamin.gaignard@collabora.com>
- <80a03c29-6f3d-43f1-755c-10f3ae2c2756@synaptics.com>
- <42a45bad-09c7-ffb6-49cb-29ec0826599d@collabora.com>
- <3b22fda9-4a0e-2c03-2f12-19e5e3239235@synaptics.com>
- <54833256-7d88-9316-4f0f-b8c57552cd7b@synaptics.com>
+        bh=XznQUuiJb54uwYssnpziXtdB1g0ycFoSN01wYyxF/c0=;
+        b=k/MfD3jWgTQiOkljvVWaLjEr1VVXjTbQ6MAmiQhdI78BQD3LLlR1tcbP/JM0IsUTI0
+         JxA/Jr6Kw4z4u5oD/UQAgiljHp2eTeCsQ84nReJ/2OyCz4msdp79ZwwMsqe9tREl0gEm
+         AwKRb6qTGBUKXgt6Rx0sYx+Mvxo8BrD4KWtf10lG2anrUxNKSSQFcvFfmFMJbpScbCLE
+         rDKf+lYD5Q7jUzjRGn/BeHlr37ivTVDJ/qOXiMGEkU0Fy//7zf/wxPHvW8z22uuJjdYl
+         Bg4yCwyxO1bgzZa70lsstXUy6WjiCdw1pv5mCrG8UHatgFku/5aUaqp8qx4lxq8Z7Epn
+         YGIg==
+X-Gm-Message-State: ABy/qLYwpRTEFDHvz1be3raFiNz6eug9FADZU62ba3PPDHPZst6oWzdd
+	7LzYG46Kwox3XrdnSj1G4iUT7g==
+X-Google-Smtp-Source: APBJJlHhw9AYxg1hAv2II73+0rasYKMnkDxHEkSNwa5YORkhO8HmoSJ3UF4LYWWLNCqBqfFXl1cdyg==
+X-Received: by 2002:a05:6000:1c4:b0:314:7fb:92c2 with SMTP id t4-20020a05600001c400b0031407fb92c2mr1172184wrx.30.1689239431891;
+        Thu, 13 Jul 2023 02:10:31 -0700 (PDT)
+Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.googlemail.com with ESMTPSA id y17-20020adfee11000000b0031274a184d5sm7350195wrn.109.2023.07.13.02.10.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 13 Jul 2023 02:10:31 -0700 (PDT)
+Message-ID: <b2a5f64f-3861-6345-3c2c-acba6ed40ee2@linaro.org>
+Date: Thu, 13 Jul 2023 11:10:30 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v1] drivers: mediatek: fix parameter check in
+ lvts_debugfs_init()
+Content-Language: en-US
+To: Minjie Du <duminjie@vivo.com>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Stephen Rothwell <sfr@canb.auug.org.au>,
+ "open list:THERMAL" <linux-pm@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+Cc: opensource.kernel@vivo.com
+References: <20230713042413.2519-1-duminjie@vivo.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20230713042413.2519-1-duminjie@vivo.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <54833256-7d88-9316-4f0f-b8c57552cd7b@synaptics.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230713_020952_539164_156A525F 
-X-CRM114-Status: GOOD (  44.36  )
+X-CRM114-CacheID: sfid-20230713_021035_103050_79953A26 
+X-CRM114-Status: GOOD (  16.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,384 +105,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 30, 2023 at 05:43:51PM +0800, Hsia-Jun Li wrote:
+On 13/07/2023 06:24, Minjie Du wrote:
+> Make IS_ERR() judge the debugfs_create_dir() function return
+> in lvts_debugfs_init().
 > 
-> On 6/27/23 16:47, Hsia-Jun Li wrote:
-> > CAUTION: Email originated externally, do not click links or open
-> > attachments unless you recognize the sender and know the content is
-> > safe.
-> > 
-> > 
-> > On 6/27/23 16:43, Benjamin Gaignard wrote:
-> > > CAUTION: Email originated externally, do not click links or open
-> > > attachments unless you recognize the sender and know the content is
-> > > safe.
-> > > 
-> > > 
-> > > Le 27/06/2023 à 09:30, Hsia-Jun Li a écrit :
-> > > > 
-> > > > On 6/22/23 21:13, Benjamin Gaignard wrote:
-> > > > > CAUTION: Email originated externally, do not click links or open
-> > > > > attachments unless you recognize the sender and know the content is
-> > > > > safe.
-> > > > > 
-> > > > > 
-> > > > > VIDIOC_DELETE_BUF ioctl allows to delete a buffer from a queue.
-> > > > > 
-> > > > > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> > > > > ---
-> > > > >   .../userspace-api/media/v4l/user-func.rst     |  1 +
-> > > > >   .../media/v4l/vidioc-delete-buf.rst           | 51
-> > > > > +++++++++++++++++++
-> > > > >   .../media/common/videobuf2/videobuf2-core.c   | 33 ++++++++++++
-> > > > >   .../media/common/videobuf2/videobuf2-v4l2.c   |  6 +++
-> > > > >   drivers/media/v4l2-core/v4l2-dev.c            |  1 +
-> > > > >   drivers/media/v4l2-core/v4l2-ioctl.c          | 10 ++++
-> > > > >   include/media/v4l2-ioctl.h                    |  4 ++
-> > > > >   include/media/videobuf2-core.h                |  9 ++++
-> > > > >   include/media/videobuf2-v4l2.h                | 11 ++++
-> > > > >   include/uapi/linux/videodev2.h                |  2 +
-> > > > >   10 files changed, 128 insertions(+)
-> > > > >   create mode 100644
-> > > > > Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst
-> > > > > 
-> > > > > diff --git a/Documentation/userspace-api/media/v4l/user-func.rst
-> > > > > b/Documentation/userspace-api/media/v4l/user-func.rst
-> > > > > index 15ff0bf7bbe6..8c74016e12fd 100644
-> > > > > --- a/Documentation/userspace-api/media/v4l/user-func.rst
-> > > > > +++ b/Documentation/userspace-api/media/v4l/user-func.rst
-> > > > > @@ -17,6 +17,7 @@ Function Reference
-> > > > >       vidioc-dbg-g-chip-info
-> > > > >       vidioc-dbg-g-register
-> > > > >       vidioc-decoder-cmd
-> > > > > +    vidioc-delete-buf
-> > > > >       vidioc-dqevent
-> > > > >       vidioc-dv-timings-cap
-> > > > >       vidioc-encoder-cmd
-> > > > > diff --git
-> > > > > a/Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst
-> > > > > b/Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst
-> > > > > new file mode 100644
-> > > > > index 000000000000..0e7ce58f91bc
-> > > > > --- /dev/null
-> > > > > +++ b/Documentation/userspace-api/media/v4l/vidioc-delete-buf.rst
-> > > > > @@ -0,0 +1,51 @@
-> > > > > +.. SPDX-License-Identifier: GFDL-1.1-no-invariants-or-later
-> > > > > +.. c:namespace:: V4L
-> > > > > +
-> > > > > +.. _VIDIOC_DELETE_BUF:
-> > > > > +
-> > > > > +************************
-> > > > > +ioctl VIDIOC_DELETE_BUF
-> > > > > +************************
-> > > > > +
-> > > > > +Name
-> > > > > +====
-> > > > > +
-> > > > > +VIDIOC_DELETE_BUF - Delete a buffer from a queue
-> > > > > +
-> > > > > +Synopsis
-> > > > > +========
-> > > > > +
-> > > > > +.. c:macro:: VIDIOC_DELETE_BUF
-> > > > > +
-> > > > > +``int ioctl(int fd, VIDIOC_DELETE_BUF, struct v4l2_buffer *argp)``
-> > > > > +
-> > > > > +Arguments
-> > > > > +=========
-> > > > > +
-> > > > > +``fd``
-> > > > > +    File descriptor returned by :c:func:`open()`.
-> > > > > +
-> > > > > +``argp``
-> > > > > +    Pointer to struct :c:type:`v4l2_buffer`.
-> > > > > +
-> > > > > +Description
-> > > > > +===========
-> > > > > +
-> > > > > +Applications can optionally call the
-> > > > > :ref:`VIDIOC_DELETE_BUF` ioctl to
-> > > > > +delete a buffer from a queue.
-> > > > > +
-> > > > > +The struct :c:type:`v4l2_buffer` structure is specified in
-> > > > > +:ref:`buffer`.
-> > > > > +
-> > > > > +Return Value
-> > > > > +============
-> > > > > +
-> > > > > +On success 0 is returned, on error -1 and the ``errno`` variable is
-> > > > > set
-> > > > > +appropriately. The generic error codes are described at the
-> > > > > +:ref:`Generic Error Codes <gen-errors>` chapter.
-> > > > > +
-> > > > > +EBUSY
-> > > > > +    File I/O is in progress.
-> > > > > +
-> > > > > +EINVAL
-> > > > > +    The buffer ``index`` doesn't exist in the queue.
-> > > > > diff --git a/drivers/media/common/videobuf2/videobuf2-core.c
-> > > > > b/drivers/media/common/videobuf2/videobuf2-core.c
-> > > > > index 899783f67580..aa546c972c3d 100644
-> > > > > --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> > > > > +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> > > > > @@ -1637,6 +1637,39 @@ int vb2_core_prepare_buf(struct vb2_queue *q,
-> > > > > unsigned int index, void *pb)
-> > > > >   }
-> > > > >   EXPORT_SYMBOL_GPL(vb2_core_prepare_buf);
-> > > > > 
-> > > > > +int vb2_core_delete_buf(struct vb2_queue *q, unsigned int index)
-> > > > > +{
-> > > > > +       struct vb2_buffer *vb;
-> > > > > +
-> > > > > +       vb = vb2_get_buffer(q, index);
-> > > > > +       if (!vb) {
-> > > > > +               dprintk(q, 1, "invalid buffer index %d\n", index);
-> > > > > +               return -EINVAL;
-> > > > > +       }
-> > > > > +
-> > > > > +       if (vb->state != VB2_BUF_STATE_DEQUEUED) {
-> > > > > +               dprintk(q, 1, "can't delete non dequeued buffer index
-> > > > > %d\n", index);
-> > > > > +               return -EINVAL;
-> > > > > +       }
-> > > > > +
-> > > > I know the driver could implement its own
-> > > > v4l2_ioctl_ops->vidioc_delete_buf() that check whether a buffer is
-> > > > used by the hardware as a future reference frame.
-> > > > But I think we need a flag to let the user know which buffer is still
-> > > > used by the hardware.
-> > > > Alternative ref case is safe, we only know it's existing when it is
-> > > > dequeued in current V4L2 buffer mechanism.
-> > > > While the Golden reference frame, such long term reference frame could
-> > > > last much longer.
-> > > 
-> > > It is up to userland stack to know frames life time, it got the
-> > > information for that.
-> > 
-> > That is true for the stateless codec driver.
-> > 
-> > While application for stateful decoder could never do that. It also
-> > breaks what the document said:
-> > 
-> > "The backing memory of |CAPTURE| buffers that are used as reference
-> > frames by the stream may be read by the hardware even after they are
-> > dequeued. Consequently, the client should avoid writing into this memory
-> > while the |CAPTURE| queue is streaming. Failure to observe this may
-> > result in corruption of decoded frames."
-> > 
-> > > 
-> > > > > +       if (vb->planes[0].mem_priv)
-> > > > > +               call_void_vb_qop(vb, buf_cleanup, vb);
-> > > > > +
-> > > > > +       /* Free MMAP buffers or release USERPTR buffers */
-> > > > > +       if (q->memory == VB2_MEMORY_MMAP)
-> > > > > +               __vb2_buf_mem_free(vb);
-> 
-> Here is another problem for the existing application, the mmap() from the
-> mmap offset or exportbuffer fd would not create a reference to buffer in
-> this step(while the exportbuffer would create one itself).
-> 
-> When you delete a buffer, you may not release it from its virtual memory
-> space, leaving a corrupted virtual memory space.
+> Signed-off-by: Minjie Du <duminjie@vivo.com>
 
-What do you mean? __vb2_buf_mem_free() doesn't unconditionally free the
-memory, it just decrements a reference counter. The VMA holds its own,
-so the buffer is only fully released when the application calls
-munmap().
+Applied (but massaged the changelog)
 
-Best regards,
-Tomasz
+Thanks for the fix
 
-> Also this behavior is
-> right, because mmap(2) says:
+> ---
+>   drivers/thermal/mediatek/lvts_thermal.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> "After  the  mmap()  call has returned, the file descriptor, fd, can be
-> closed immediately without invalidating the map‐ping."
-> 
-> > > > > +       else if (q->memory == VB2_MEMORY_DMABUF)
-> > > > > +               __vb2_buf_dmabuf_put(vb);
-> > > > > +       else
-> > > > > +               __vb2_buf_userptr_put(vb);
-> > > > > +
-> > > > > +       vb2_queue_remove_buffer(q, vb);
-> > > > > +       kfree(vb);
-> > > > > +
-> > > > > +       dprintk(q, 2, "buffer %d deleted\n", index);
-> > > > > +       return 0;
-> > > > > +}
-> > > > > +
-> > > > >   /*
-> > > > >    * vb2_start_streaming() - Attempt to start streaming.
-> > > > >    * @q:         videobuf2 queue
-> > > > > diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-> > > > > b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-> > > > > index 724135d41f7f..cea666c17b41 100644
-> > > > > --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
-> > > > > +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-> > > > > @@ -751,6 +751,12 @@ int vb2_prepare_buf(struct vb2_queue *q, struct
-> > > > > media_device *mdev,
-> > > > >   }
-> > > > >   EXPORT_SYMBOL_GPL(vb2_prepare_buf);
-> > > > > 
-> > > > > +int vb2_delete_buf(struct vb2_queue *q, struct v4l2_buffer *b)
-> > > > > +{
-> > > > > +       return vb2_core_delete_buf(q, b->index);
-> > > > > +}
-> > > > > +EXPORT_SYMBOL_GPL(vb2_delete_buf);
-> > > > > +
-> > > > >   int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers
-> > > > > *create)
-> > > > >   {
-> > > > >          unsigned requested_planes = 1;
-> > > > > diff --git a/drivers/media/v4l2-core/v4l2-dev.c
-> > > > > b/drivers/media/v4l2-core/v4l2-dev.c
-> > > > > index f81279492682..80ace2e1e932 100644
-> > > > > --- a/drivers/media/v4l2-core/v4l2-dev.c
-> > > > > +++ b/drivers/media/v4l2-core/v4l2-dev.c
-> > > > > @@ -720,6 +720,7 @@ static void determine_valid_ioctls(struct
-> > > > > video_device *vdev)
-> > > > >                  SET_VALID_IOCTL(ops, VIDIOC_PREPARE_BUF,
-> > > > > vidioc_prepare_buf);
-> > > > >                  SET_VALID_IOCTL(ops, VIDIOC_STREAMON,
-> > > > > vidioc_streamon);
-> > > > >                  SET_VALID_IOCTL(ops, VIDIOC_STREAMOFF,
-> > > > > vidioc_streamoff);
-> > > > > +               SET_VALID_IOCTL(ops, VIDIOC_DELETE_BUF,
-> > > > > vidioc_delete_buf);
-> > > > >          }
-> > > > > 
-> > > > >          if (is_vid || is_vbi || is_meta) {
-> > > > > diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c
-> > > > > b/drivers/media/v4l2-core/v4l2-ioctl.c
-> > > > > index a858acea6547..1c737279d3ef 100644
-> > > > > --- a/drivers/media/v4l2-core/v4l2-ioctl.c
-> > > > > +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-> > > > > @@ -2156,6 +2156,15 @@ static int v4l_prepare_buf(const struct
-> > > > > v4l2_ioctl_ops *ops,
-> > > > >          return ret ? ret : ops->vidioc_prepare_buf(file, fh, b);
-> > > > >   }
-> > > > > 
-> > > > > +static int v4l_delete_buf(const struct v4l2_ioctl_ops *ops,
-> > > > > +                         struct file *file, void *fh, void *arg)
-> > > > > +{
-> > > > > +       struct v4l2_buffer *b = arg;
-> > > > > +       int ret = check_fmt(file, b->type);
-> > > > > +
-> > > > > +       return ret ? ret : ops->vidioc_delete_buf(file, fh, b);
-> > > > > +}
-> > > > > +
-> > > > >   static int v4l_g_parm(const struct v4l2_ioctl_ops *ops,
-> > > > >                                  struct file *file, void *fh, void
-> > > > > *arg)
-> > > > >   {
-> > > > > @@ -2905,6 +2914,7 @@ static const struct v4l2_ioctl_info
-> > > > > v4l2_ioctls[] = {
-> > > > >          IOCTL_INFO(VIDIOC_ENUM_FREQ_BANDS, v4l_enum_freq_bands,
-> > > > > v4l_print_freq_band, 0),
-> > > > >          IOCTL_INFO(VIDIOC_DBG_G_CHIP_INFO, v4l_dbg_g_chip_info,
-> > > > > v4l_print_dbg_chip_info, INFO_FL_CLEAR(v4l2_dbg_chip_info, match)),
-> > > > >          IOCTL_INFO(VIDIOC_QUERY_EXT_CTRL, v4l_query_ext_ctrl,
-> > > > > v4l_print_query_ext_ctrl, INFO_FL_CTRL |
-> > > > > INFO_FL_CLEAR(v4l2_query_ext_ctrl, id)),
-> > > > > +       IOCTL_INFO(VIDIOC_DELETE_BUF, v4l_delete_buf,
-> > > > > v4l_print_buffer, INFO_FL_QUEUE),
-> > > > >   };
-> > > > >   #define V4L2_IOCTLS ARRAY_SIZE(v4l2_ioctls)
-> > > > > 
-> > > > > diff --git a/include/media/v4l2-ioctl.h b/include/media/v4l2-ioctl.h
-> > > > > index edb733f21604..2f232ed884c7 100644
-> > > > > --- a/include/media/v4l2-ioctl.h
-> > > > > +++ b/include/media/v4l2-ioctl.h
-> > > > > @@ -163,6 +163,8 @@ struct v4l2_fh;
-> > > > >    *     :ref:`VIDIOC_CREATE_BUFS <vidioc_create_bufs>` ioctl
-> > > > >    * @vidioc_prepare_buf: pointer to the function that implements
-> > > > >    *     :ref:`VIDIOC_PREPARE_BUF <vidioc_prepare_buf>` ioctl
-> > > > > + * @vidioc_delete_buf: pointer to the function that implements
-> > > > > + *     :ref:`VIDIOC_DELETE_BUF <vidioc_delete_buf>` ioctl
-> > > > >    * @vidioc_overlay: pointer to the function that implements
-> > > > >    *     :ref:`VIDIOC_OVERLAY <vidioc_overlay>` ioctl
-> > > > >    * @vidioc_g_fbuf: pointer to the function that implements
-> > > > > @@ -422,6 +424,8 @@ struct v4l2_ioctl_ops {
-> > > > >                                    struct v4l2_create_buffers *b);
-> > > > >          int (*vidioc_prepare_buf)(struct file *file, void *fh,
-> > > > >                                    struct v4l2_buffer *b);
-> > > > > +       int (*vidioc_delete_buf)(struct file *file, void *fh,
-> > > > > +                                struct v4l2_buffer *b);
-> > > > > 
-> > > > >          int (*vidioc_overlay)(struct file *file, void *fh, unsigned
-> > > > > int i);
-> > > > >          int (*vidioc_g_fbuf)(struct file *file, void *fh,
-> > > > > diff --git a/include/media/videobuf2-core.h
-> > > > > b/include/media/videobuf2-core.h
-> > > > > index 080b783d608d..0f9e68f76b77 100644
-> > > > > --- a/include/media/videobuf2-core.h
-> > > > > +++ b/include/media/videobuf2-core.h
-> > > > > @@ -840,6 +840,15 @@ int vb2_core_create_bufs(struct vb2_queue *q,
-> > > > > enum vb2_memory memory,
-> > > > >    */
-> > > > >   int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index,
-> > > > > void *pb);
-> > > > > 
-> > > > > +/**
-> > > > > + * vb2_core_delete_buf() -
-> > > > > + * @q: pointer to &struct vb2_queue with videobuf2 queue.
-> > > > > + * @index:     id number of the buffer.
-> > > > > + *
-> > > > > + *  Return: returns zero on success; an error code otherwise.
-> > > > > + */
-> > > > > +int vb2_core_delete_buf(struct vb2_queue *q, unsigned int index);
-> > > > > +
-> > > > >   /**
-> > > > >    * vb2_core_qbuf() - Queue a buffer from userspace
-> > > > >    *
-> > > > > diff --git a/include/media/videobuf2-v4l2.h
-> > > > > b/include/media/videobuf2-v4l2.h
-> > > > > index 88a7a565170e..3beeb4c735f0 100644
-> > > > > --- a/include/media/videobuf2-v4l2.h
-> > > > > +++ b/include/media/videobuf2-v4l2.h
-> > > > > @@ -114,6 +114,17 @@ int vb2_create_bufs(struct vb2_queue *q, struct
-> > > > > v4l2_create_buffers *create);
-> > > > >    */
-> > > > >   int vb2_prepare_buf(struct vb2_queue *q, struct media_device *mdev,
-> > > > >                      struct v4l2_buffer *b);
-> > > > > +/**
-> > > > > + * vb2_delete_buf() - Delete the buffer from the queue
-> > > > > + *
-> > > > > + * @q:         pointer to &struct vb2_queue with videobuf2 queue.
-> > > > > + * @b:         buffer structure passed from userspace to
-> > > > > + *             &v4l2_ioctl_ops->vidioc_delete_buf handler in driver
-> > > > > + *
-> > > > > + * The return values from this function are intended to be directly
-> > > > > returned
-> > > > > + * from &v4l2_ioctl_ops->vidioc_delete_buf handler in driver.
-> > > > > + */
-> > > > > +int vb2_delete_buf(struct vb2_queue *q, struct v4l2_buffer *b);
-> > > > > 
-> > > > >   /**
-> > > > >    * vb2_qbuf() - Queue a buffer from userspace
-> > > > > diff --git a/include/uapi/linux/videodev2.h
-> > > > > b/include/uapi/linux/videodev2.h
-> > > > > index aee75eb9e686..31bba1915642 100644
-> > > > > --- a/include/uapi/linux/videodev2.h
-> > > > > +++ b/include/uapi/linux/videodev2.h
-> > > > > @@ -2702,6 +2702,8 @@ struct v4l2_create_buffers {
-> > > > >   #define VIDIOC_DBG_G_CHIP_INFO  _IOWR('V', 102, struct
-> > > > > v4l2_dbg_chip_info)
-> > > > > 
-> > > > >   #define VIDIOC_QUERY_EXT_CTRL  _IOWR('V', 103, struct
-> > > > > v4l2_query_ext_ctrl)
-> > > > > +#define VIDIOC_DELETE_BUF      _IOWR('V', 104, struct v4l2_buffer)
-> > > > > +
-> > > > > 
-> > > > >   /* Reminder: when adding new ioctls please add support for them to
-> > > > >      drivers/media/v4l2-core/v4l2-compat-ioctl32.c as well! */
-> > > > > -- 
-> > > > > 2.39.2
-> > > > > 
-> > -- 
-> > Hsia-Jun(Randy) Li
-> > 
-> -- 
-> Hsia-Jun(Randy) Li
-> 
+> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+> index b693fac2d..b46f351d1 100644
+> --- a/drivers/thermal/mediatek/lvts_thermal.c
+> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> @@ -190,7 +190,7 @@ static int lvts_debugfs_init(struct device *dev, struct lvts_domain *lvts_td)
+>   	int i;
+>   
+>   	lvts_td->dom_dentry = debugfs_create_dir(dev_name(dev), NULL);
+> -	if (!lvts_td->dom_dentry)
+> +	if (IS_ERR(lvts_td->dom_dentry))
+>   		return 0;
+>   
+>   	for (i = 0; i < lvts_td->num_lvts_ctrl; i++) {
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
+
 
