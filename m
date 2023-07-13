@@ -4,86 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0F9BC0015E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 15:33:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0684AC001B0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 15:48:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a0ym5xH/1YGuvDjsQ/zPTyHw/VcGdmnjHCR3gjE6Czs=; b=h2hnfje6FxiLL0Uq4Ax1iffidt
-	Dsr+DPfT6McPg3P0qGapb9zOwPj437PtB/EiSvUVE+XCuwD1LK8JI09TQYYFaKEz6AJX5IfnWVV7p
-	ACTKDu4YJgMEQcwr/AxSyJMzsfN/LxbYOILg8PDaTwcumuIPKkVtBRJseCmqIVXU/V3XuTnpQssYq
-	8/jORxjUCJ+Q3CFvyxEcnmNGI8edbLd8abGn5eDeJoY/1FJjagtGvy5P5gQtMaSjpl8vJqFzbPKY/
-	GfEF7zpYiRWZjUykdOn9PsvgWKbA2AOHZO0b6Vg+i1iuZLJgR9givZkVlO/PhQytEk46CHCqWOx6G
-	8dwQALdQ==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aLi96+fb9uCq1E43GmcixMJ0rY27HeV+DdfRSNCmo1M=; b=esUsX9fzhOisv6hYrR9MWixvqR
+	tLi4yKsrphfP1fcDUYLC/AK9ypH+eLblDuVtoavTQ5RjAtk7aN3kYV+FIuQ2tS6alpVSwDZsYIOEj
+	Pby8AuMCNF6NMeZ+mwFyYbppMsqngohjK+me1Y7CHr0Y59xFm3Rdgxt0QyNxQYPxD37/9o6ZklqG0
+	/ysh/8kygapvcoMrzfzE7VXNPd/ffbO9sK3KhSycOwve2M/sGAhQJ/0vUi+4wAe8UgppEp3FtSW+o
+	pjBvPMUkEYGIuEwTpsv0GA8OrIc/aSNtutIkj0lTyZkogFJgS0584Ik/9CFPnPQfLgXX36DpIDVvU
+	zYv9lKZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJyK7-003mX7-2W;
-	Thu, 13 Jul 2023 15:33:43 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1qJyXv-003ohs-36;
+	Thu, 13 Jul 2023 15:47:59 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJyK4-003mVa-2K
-	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Jul 2023 15:33:42 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-4f954d7309fso1051747e87.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jul 2023 08:33:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=joelfernandes.org; s=google; t=1689262417; x=1691854417;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=a0ym5xH/1YGuvDjsQ/zPTyHw/VcGdmnjHCR3gjE6Czs=;
-        b=K4aglIY7Cjx6mxk6XXEEsWyNR84LENYDBY9kBPae4ZMDFOyBVnuSalrbABemFMPFem
-         54TG8CNgqNdnNOkDQMhuIjArSJwUo+1lbxO8g3EQas0cl4Vkto0bDIYEFm7OFUPkUZmz
-         j3otXi0h/k3C8lVxm/cH/Cs8P+xbH1BJwPy6U=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689262417; x=1691854417;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=a0ym5xH/1YGuvDjsQ/zPTyHw/VcGdmnjHCR3gjE6Czs=;
-        b=MtgJQT4vLI3T6d+sYOgwBRhZwRHNTuisH59ufyT5ecIuDiFvzJjDRJu/0wwur8H3sD
-         j5KZEyMLNMQvr/JYneQszZZc1VCjALe7bSKC/3PGO0O73Lv0M6/Up16Akb4vWgUZL2q4
-         f8JNGPhjx7zitxq9bWTS/xx/uIjSGp3mPmdNRa5kmjjNYfe6IIIMo34YU8I2npOqgB2T
-         6gHqumCSm+72j0F9tt9IFQjvv9wDJRqMy4wsCBLAibUwm6Amb/s5kZClHCGTGp3C/1Ms
-         9lyckPtlXSr+dVHUNexOsfOVYNq+Uj+id50SFQdnxtiGaOa1moxCyOViu7zzKE8elQic
-         1adQ==
-X-Gm-Message-State: ABy/qLYTYugWFNHaoe62uoE5on6vGWjsXkv/RXiGOJkCxM30CJX/hOZK
-	mFdmYKabJiW8NmqHAwSS6osUANyxiq3fQRXwFg+aTQ==
-X-Google-Smtp-Source: APBJJlFjxyl5GM43S+9qdoHmVwtBI7iZnIAK+sumIQe1t1DkeZOQsRM6mJkgtaH6cAWZ+mnQo6+7BMx99zLMj2HQCQI=
-X-Received: by 2002:a05:6512:3192:b0:4fb:7f45:bcb6 with SMTP id
- i18-20020a056512319200b004fb7f45bcb6mr16799lfe.16.1689262416351; Thu, 13 Jul
- 2023 08:33:36 -0700 (PDT)
+	id 1qJyXs-003ogZ-1E;
+	Thu, 13 Jul 2023 15:47:57 +0000
+Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 990CB6607048;
+	Thu, 13 Jul 2023 16:47:48 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1689263270;
+	bh=NmZWSJBtJogmZ1XmFkqp7N/SRJ1aRoSmIrbWDGiL4Yo=;
+	h=From:To:Cc:Subject:Date:From;
+	b=TZMD09Y3AycsOcBdEma+Wp2v2dnejJbZ/jERjnsTI/rEa0iyRmq4hPzm4atzRgWxd
+	 4HQWF+/xlBagQDvhN5/5cWQxxuoYvSmZwG5YAh4fEHmA8xdB7Zbx+uEi8AanCl0QhT
+	 z4WOQ3o0UCE/l0weymA1twrCVYiDzDkST3X7HXNBV6yBxJP9ILH41reEcLC0gZ7UJs
+	 r4szl5NTX/NAOBTuld9nrf0onxW5NsxvjZlybR9O1/p8c4ue1SgjIcwN22fUZrqT6l
+	 GoURnubugZo2c62BYcniSpmDY/+m+LK5t0CerzDnDYd1tmbxegBch9dJtvcLwj0B42
+	 SoZo5oDDxcFkQ==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	=?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Amit Kucheria <amitk@kernel.org>,
+	Balsam CHIHI <bchihi@baylibre.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Yangtao Li <frank.li@vivo.com>,
+	Zhang Rui <rui.zhang@intel.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-pm@vger.kernel.org
+Subject: [PATCH v2] thermal/drivers/mediatek/lvts_thermal: Make readings valid in filtered mode
+Date: Thu, 13 Jul 2023 11:42:37 -0400
+Message-ID: <20230713154743.611870-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-References: <20230711233816.2187577-1-dhavale@google.com> <CAEXW_YQvpiFEaaNoS=Msgi17mU3kZD+q8bNBaHYasMArG9aPig@mail.gmail.com>
- <CAB=BE-Rm0ycTZXj=wHW_FBCCKbswG+dh3L+o1+CUW=Pg_oWnyw@mail.gmail.com>
- <20230713003201.GA469376@google.com> <161f1615-3d85-cf47-d2d5-695adf1ca7d4@linux.alibaba.com>
- <0d9e7b4d-6477-47a6-b3d2-2c9d9b64903d@paulmck-laptop> <f124e041-6a82-2069-975c-4f393e5c4137@linux.alibaba.com>
- <87292a44-cc02-4d95-940e-e4e31d0bc6f2@paulmck-laptop> <f1c60dcb-e32f-7b7e-bf0d-5dec999e9299@linux.alibaba.com>
- <CAEXW_YSODXRfgkR0D2G-x=0uZdsqvF3kZL+LL3DcRX-5CULJ1Q@mail.gmail.com> <894a3b64-a369-7bc6-c8a8-0910843cc587@linux.alibaba.com>
-In-Reply-To: <894a3b64-a369-7bc6-c8a8-0910843cc587@linux.alibaba.com>
-From: Joel Fernandes <joel@joelfernandes.org>
-Date: Thu, 13 Jul 2023 11:33:24 -0400
-Message-ID: <CAEXW_YSM1yik4yWTgZoxCS9RM6TbsL26VCVCH=41+uMA8chfAQ@mail.gmail.com>
-Subject: Re: [PATCH v1] rcu: Fix and improve RCU read lock checks when !CONFIG_DEBUG_LOCK_ALLOC
-To: Gao Xiang <hsiangkao@linux.alibaba.com>
-Cc: paulmck@kernel.org, Sandeep Dhavale <dhavale@google.com>, 
-	Frederic Weisbecker <frederic@kernel.org>, Neeraj Upadhyay <quic_neeraju@quicinc.com>, 
-	Josh Triplett <josh@joshtriplett.org>, Boqun Feng <boqun.feng@gmail.com>, 
-	Steven Rostedt <rostedt@goodmis.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, 
-	Lai Jiangshan <jiangshanlai@gmail.com>, Zqiang <qiang.zhang1211@gmail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-erofs@lists.ozlabs.org, 
-	xiang@kernel.org, Will Shiu <Will.Shiu@mediatek.com>, kernel-team@android.com, 
-	rcu@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230713_083340_761103_D7F6FADE 
-X-CRM114-Status: GOOD (  34.13  )
+X-CRM114-CacheID: sfid-20230713_084756_597001_3B1BDA36 
+X-CRM114-Status: GOOD (  15.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,117 +85,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 13, 2023 at 10:34=E2=80=AFAM Gao Xiang <hsiangkao@linux.alibaba=
-.com> wrote:
->
->
->
-> On 2023/7/13 22:07, Joel Fernandes wrote:
-> > On Thu, Jul 13, 2023 at 12:59=E2=80=AFAM Gao Xiang <hsiangkao@linux.ali=
-baba.com> wrote:
-> >> On 2023/7/13 12:52, Paul E. McKenney wrote:
-> >>> On Thu, Jul 13, 2023 at 12:41:09PM +0800, Gao Xiang wrote:
-> >>>>
-> >>>>
-> >>
-> >> ...
-> >>
-> >>>>
-> >>>> There are lots of performance issues here and even a plumber
-> >>>> topic last year to show that, see:
-> >>>>
-> >>>> [1] https://lore.kernel.org/r/20230519001709.2563-1-tj@kernel.org
-> >>>> [2] https://lore.kernel.org/r/CAHk-=3DwgE9kORADrDJ4nEsHHLirqPCZ1tGaE=
-PAZejHdZ03qCOGg@mail.gmail.com
-> >>>> [3] https://lore.kernel.org/r/CAB=3DBE-SBtO6vcoyLNA9F-9VaN5R0t3o_Zn+=
-FW8GbO6wyUqFneQ@mail.gmail.com
-> >>>> [4] https://lpc.events/event/16/contributions/1338/
-> >>>> and more.
-> >>>>
-> >>>> I'm not sure if it's necessary to look info all of that,
-> >>>> andSandeep knows more than I am (the scheduling issue
-> >>>> becomes vital on some aarch64 platform.)
-> >>>
-> >>> Hmmm...  Please let me try again.
-> >>>
-> >>> Assuming that this approach turns out to make sense, the resulting
-> >>> patch will need to clearly state the performance benefits directly in
-> >>> the commit log.
-> >>>
-> >>> And of course, for the approach to make sense, it must avoid breaking
-> >>> the existing lockdep-RCU debugging code.
-> >>>
-> >>> Is that more clear?
-> >>
-> >> Personally I'm not working on Android platform any more so I don't
-> >> have a way to reproduce, hopefully Sandeep could give actually
-> >> number _again_ if dm-verity is enabled and trigger another
-> >> workqueue here and make a comparsion why the scheduling latency of
-> >> the extra work becomes unacceptable.
-> >>
-> >
-> > Question from my side, are we talking about only performance issues or
-> > also a crash? It appears z_erofs_decompress_pcluster() takes
-> > mutex_lock(&pcl->lock);
-> >
-> > So if it is either in an RCU read-side critical section or in an
-> > atomic section, like the softirq path, then it may
-> > schedule-while-atomic or trigger RCU warnings.
-> >
-> > z_erofs_decompressqueue_endio
-> > -> z_erofs_decompress_kickoff
-> >   ->z_erofs_decompressqueue_work
-> >    ->z_erofs_decompress_queue
-> >     -> z_erofs_decompress_pcluster
-> >      -> mutex_lock
-> >
->
-> Why does the softirq path not trigger a workqueue instead?
+Currently, when a controller is configured to use filtered mode, thermal
+readings are valid only about 30% of the time.
 
-I said "if it is". I was giving a scenario. mutex_lock() is not
-allowed in softirq context or in an RCU-reader.
+Upon testing, it was noticed that lowering any of the interval settings
+resulted in an improved rate of valid data. The same was observed when
+decreasing the number of samples for each sensor (which also results in
+quicker measurements).
 
-> > Per Sandeep in [1], this stack happens under RCU read-lock in:
-> >
-> > #define __blk_mq_run_dispatch_ops(q, check_sleep, dispatch_ops) \
-> > [...]
-> >                  rcu_read_lock();
-> >                  (dispatch_ops);
-> >                  rcu_read_unlock();
-> > [...]
-> >
-> > Coming from:
-> > blk_mq_flush_plug_list ->
-> >                             blk_mq_run_dispatch_ops(q,
-> >                                  __blk_mq_flush_plug_list(q, plug));
-> >
-> > and __blk_mq_flush_plug_list does this:
-> >            q->mq_ops->queue_rqs(&plug->mq_list);
-> >
-> > This somehow ends up calling the bio_endio and the
-> > z_erofs_decompressqueue_endio which grabs the mutex.
-> >
-> > So... I have a question, it looks like one of the paths in
-> > __blk_mq_run_dispatch_ops() uses SRCU.  Where are as the alternate
-> > path uses RCU. Why does this alternate want to block even if it is not
-> > supposed to? Is the real issue here that the BLK_MQ_F_BLOCKING should
-> > be set? It sounds like you want to block in the "else" path even
-> > though BLK_MQ_F_BLOCKING is not set:
->
-> BLK_MQ_F_BLOCKING is not a flag that a filesystem can do anything with.
-> That is block layer and mq device driver stuffs. filesystems cannot set
-> this value.
->
-> As I said, as far as I understand, previously,
-> .end_io() can only be called without RCU context, so it will be fine,
-> but I don't know when .end_io() can be called under some RCU context
-> now.
+Retrying the read with a timeout longer than the time it takes to
+resample (about 344us with these settings and 4 sensors) also improves
+the rate.
 
-From what Sandeep described, the code path is in an RCU reader. My
-question is more, why doesn't it use SRCU instead since it clearly
-does so if BLK_MQ_F_BLOCKING. What are the tradeoffs? IMHO, a deeper
-dive needs to be made into that before concluding that the fix is to
-use rcu_read_lock_any_held().
+Lower all timing settings to the minimum, configure the filtering to
+single sample, and poll the measurement register for at least one period
+to improve the data validity on filtered mode.  With these changes in
+place, out of 100000 reads, a single one failed, ie 99.999% of the data
+was valid.
 
- - Joel
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+---
+
+Changes in v2:
+- Added macros for the wait and timeout times (and in the process made the wait
+  200us instead of 240us, just to simplify, gives the same result)
+- Rebased on thermal/bleeding-edge (since the
+  "thermal/drivers/mediatek/lvts_thermal: Fixes to the interrupt handling"
+  series was merged)
+
+ drivers/thermal/mediatek/lvts_thermal.c | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index ea89b29ffe5f..1a3cb118ff32 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -58,11 +58,11 @@
+ #define LVTS_PROTTC(__base)		(__base + 0x00CC)
+ #define LVTS_CLKEN(__base)		(__base + 0x00E4)
+ 
+-#define LVTS_PERIOD_UNIT			((118 * 1000) / (256 * 38))
+-#define LVTS_GROUP_INTERVAL			1
+-#define LVTS_FILTER_INTERVAL		1
+-#define LVTS_SENSOR_INTERVAL		1
+-#define LVTS_HW_FILTER				0x2
++#define LVTS_PERIOD_UNIT			0
++#define LVTS_GROUP_INTERVAL			0
++#define LVTS_FILTER_INTERVAL		0
++#define LVTS_SENSOR_INTERVAL		0
++#define LVTS_HW_FILTER				0x0
+ #define LVTS_TSSEL_CONF				0x13121110
+ #define LVTS_CALSCALE_CONF			0x300
+ #define LVTS_MONINT_CONF			0x8300318C
+@@ -86,6 +86,9 @@
+ #define LVTS_MSR_IMMEDIATE_MODE		0
+ #define LVTS_MSR_FILTERED_MODE		1
+ 
++#define LVTS_MSR_READ_TIMEOUT_US	400
++#define LVTS_MSR_READ_WAIT_US		(LVTS_MSR_READ_TIMEOUT_US / 2)
++
+ #define LVTS_HW_SHUTDOWN_MT8195		105000
+ 
+ #define LVTS_MINIMUM_THRESHOLD		20000
+@@ -268,6 +271,7 @@ static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+ 	struct lvts_sensor *lvts_sensor = thermal_zone_device_priv(tz);
+ 	void __iomem *msr = lvts_sensor->msr;
+ 	u32 value;
++	int rc;
+ 
+ 	/*
+ 	 * Measurement registers:
+@@ -280,7 +284,8 @@ static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+ 	 * 16	: Valid temperature
+ 	 * 15-0	: Raw temperature
+ 	 */
+-	value = readl(msr);
++	rc = readl_poll_timeout(msr, value, value & BIT(16),
++				LVTS_MSR_READ_WAIT_US, LVTS_MSR_READ_TIMEOUT_US);
+ 
+ 	/*
+ 	 * As the thermal zone temperature will read before the
+@@ -293,7 +298,7 @@ static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+ 	 * functionning temperature and directly jump to a system
+ 	 * shutdown.
+ 	 */
+-	if (!(value & BIT(16)))
++	if (rc)
+ 		return -EAGAIN;
+ 
+ 	*temp = lvts_raw_to_temp(value & 0xFFFF);
+-- 
+2.41.0
+
 
