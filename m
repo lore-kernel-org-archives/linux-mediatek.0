@@ -4,54 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C522BC001DD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 13:22:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBDBFC001DD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jul 2023 13:22:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DQv5+yIZVakzuHno7wUJ8e8AF9x2EyNJ9PHEkvSUu7Q=; b=fqF8Bfx5I+Uf279I1CYZs/ok3O
-	4QkydY1qWV8ckrFgi48Vz1qLBo5TRn4mcb6XVc5uz8Ry6pDhNs4LjMkuogodJpoSy7w5vmV8W1uRW
-	9GVffEWRP48iiO8q/1hRpzKbTL4dcYu/Y1w8/MWHkfmtUATqo89WpsgKf8to00jEdduVEAB9DFCMq
-	zlYW3P3Pq6wE1U7YE0fkEXqGpBHq/OQcbLojpJ69zbZ/Er+LpI+IdRMTHFcdKnftBy3vhHVHq0aqF
-	lQl1MJNtEoirg6RUiTOHk87q/kzMD6yCslGo1GGMjNRjLGOHuBYRqeHDEftkB8hEhpUgEu+3f/y7f
-	fnkzrBJw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dXWviMRLD7YocUFq1hAwJTX8QyWW8iQWGTv5QqtyLjk=; b=VjuH4OA/9kU8ysohOmO1sqSQau
+	ZRNe5p+HsP1utv8AI+saEnET1yT9eNsFzYH2jFN9u7hFnWfSZ2qCW8rLhU00W3Dy1n2qxWxhMuqWm
+	vBAobCvEeFe2ou4Es2RecfwCEd7vlcy8tq39uibQ0dwSw9Sj7InaYlTVQm6wUuySVg9y3wc7JVFbP
+	BP1zZtkt2lhN7041RFdydcx18wJP+ANf3hUx8us9/tU5IaMxzEw9/0hEmJurrPWZiWV1aAmqe96Ny
+	kbv8Qdx6wnVqVa674eKKpg6w8/eWK7zAuM7B4bQprWhYTNL8IlqZhpzhirgKt3aL1SPfIDZrhWtG+
+	fEWh6Ktg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJwGY-003Oox-2y;
-	Thu, 13 Jul 2023 13:21:54 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qJwGR-003Okp-1M;
-	Thu, 13 Jul 2023 13:21:48 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 943C01570;
-	Thu, 13 Jul 2023 06:22:26 -0700 (PDT)
-Received: from bogus (e103737-lin.cambridge.arm.com [10.1.197.49])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A3EDF3F73F;
-	Thu, 13 Jul 2023 06:21:42 -0700 (PDT)
-Date: Thu, 13 Jul 2023 14:21:40 +0100
-From: Sudeep Holla <sudeep.holla@arm.com>
-To: Yang Li <yang.lee@linux.alibaba.com>
-Cc: stanley.chu@mediatek.com, jejb@linux.ibm.com,
-	martin.petersen@oracle.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, linux-scsi@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Abaci Robot <abaci@linux.alibaba.com>
-Subject: Re: [PATCH -next] scsi: ufs: ufs-mediatek: Remove surplus dev_err()
-Message-ID: <20230713132140.azamscgceh6yyy6j@bogus>
-References: <20230712064832.44188-1-yang.lee@linux.alibaba.com>
- <20230713131123.uo5ofltbhvktkevd@bogus>
+	id 1qJwHT-003P7o-0K;
+	Thu, 13 Jul 2023 13:22:51 +0000
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qJwHP-003P5O-0K
+	for linux-mediatek@lists.infradead.org;
+	Thu, 13 Jul 2023 13:22:49 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2b6ff1ada5dso10497101fa.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jul 2023 06:22:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689254563; x=1691846563;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dXWviMRLD7YocUFq1hAwJTX8QyWW8iQWGTv5QqtyLjk=;
+        b=McxC7at3hk1pweV1zh33Jfqa/21F0tDnkTwZMMTwXWTU1ixyOxDbDD2wOcvvyq7q2d
+         rX/1t2VLAdaVSy4GzHUcK9YnqgraYwtY+DWa857WOxv8UOC88QZ31m0fuxbUc8/eWE22
+         jxez+//fWGwCCLrHHQ6WSHtgZTUFmgmDPtbDWcgmEkJPoE03zrt1CneXzSWMXoux6PIB
+         jkdtzhTZaTrqVYYeiqJgbU7SZVq8IzFIH6XNh4GmLyqVTT8WMZ6pOkG9HfVwVwSVOHRS
+         0hU6GCD9vtwOymJdp3/PgHZaSeRS9DCP+M+y46dT+/dwxRyVa15fBq7BLTrr3YvlEstf
+         Zvqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689254563; x=1691846563;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=dXWviMRLD7YocUFq1hAwJTX8QyWW8iQWGTv5QqtyLjk=;
+        b=Oo/vY8nvI+yqmftkA4zNqkt9PImYkX3p38djwMLpobfzkdsuRkCGIEMIfxoL6PsQlA
+         Gk9Pg2oRtIwg6+ytTMflGAyz26F1glg4iraScibCOtbgJY6fWE3bpIbOjAv80bIol0kd
+         nomdHX9C8WQ2774prG5c3LbVu/KnnQ3H/sRvJHg5vQUKBQMivA3TLAAOlOb5Faggvl2K
+         Y3+SrvUR0uX7Hdz6sdboRq+G1Sg0f0Y3eBatAP8Y98Up3VJgwMMVrBb7mxWYKjBk+Ql3
+         Bn/2Y4S1tdsDukIuRIrM8seKdHxuU2gBdWwOMPTVZwzPX/UFe8ku3p97iNykOYBl+4ds
+         NPJA==
+X-Gm-Message-State: ABy/qLaEMlC+OcqFS117on3Msz+aQOpURu/eAbZJ7Y4S+brQ9hQ9XnMv
+	Bod3IMZjFuJ01TW43/HQWgwKfA==
+X-Google-Smtp-Source: APBJJlFenJyAGZmX8lEaZL7qfj96wtFrIKUun/k3YYqQR79WUOoM+Tr06gqwq0Dkn2qCu7f7U7uISA==
+X-Received: by 2002:a2e:95ca:0:b0:2b6:ed80:15d1 with SMTP id y10-20020a2e95ca000000b002b6ed8015d1mr1287788ljh.24.1689254562815;
+        Thu, 13 Jul 2023 06:22:42 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id qo11-20020a170907212b00b00992b0745548sm3943114ejb.152.2023.07.13.06.22.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 13 Jul 2023 06:22:42 -0700 (PDT)
+Message-ID: <9a0817c2-4101-5c21-977d-77ac0d83a067@baylibre.com>
+Date: Thu, 13 Jul 2023 15:22:41 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230713131123.uo5ofltbhvktkevd@bogus>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 2/2] clk: mediatek: mt8195-topckgen: Refactor parents for
+ top_dp/edp muxes
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ sboyd@kernel.org
+Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, wenst@chromium.org,
+ msp@baylibre.com, yangyingliang@huawei.com, u.kleine-koenig@pengutronix.de,
+ miles.chen@mediatek.com, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com
+References: <20230713072138.84117-1-angelogioacchino.delregno@collabora.com>
+ <20230713072138.84117-3-angelogioacchino.delregno@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230713072138.84117-3-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230713_062147_503568_E2D511CA 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20230713_062247_353898_8DC9E109 
+X-CRM114-Status: GOOD (  22.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,28 +100,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 13, 2023 at 02:11:23PM +0100, Sudeep Holla wrote:
-> On Wed, Jul 12, 2023 at 02:48:32PM +0800, Yang Li wrote:
-> > There is no need to call the dev_err() function directly to print a
-> > custom message when handling an error from either the platform_get_irq()
-> > or platform_get_irq_byname() functions as both are going to display an
-> > appropriate error message in case of a failure.
-> > 
-> > ./drivers/ufs/host/ufs-mediatek.c:864:3-10: line 864 is redundant because platform_get_irq() already prints an error
-> > 
-> > Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-> > Closes: https://bugzilla.openanolis.cn/show_bug.cgi?id=5846
-> 
-> Acked-by: Sudeep Holla <sudeep.holla@arm.com>
-> 
 
-Sorry for this, I didn't mean to ack this patch, no idea how on earth I
-managed to do that (must be some wrong key combination in my email client)
-but I wanted and meant to ack only this [1]. Sorry for the noise.
+
+On 13/07/2023 09:21, AngeloGioacchino Del Regno wrote:
+> The top_dp and top_edp muxes can be both parented to either TVDPLL1
+> or TVDPLL2, two identically specced PLLs for the specific purpose of
+> giving out pixel clock: this becomes a problem when the MediaTek
+> DisplayPort Interface (DPI) driver tries to set the pixel clock rate.
+> 
+> In the usecase of two simultaneous outputs (using two controllers),
+> it was seen that one of the displays would sometimes display garbled
+> output (if any at all) and this was because:
+>   - top_edp was set to TVDPLL1, outputting X GHz
+>   - top_dp was set to TVDPLL2, outputting Y GHz
+>     - mtk_dpi calls clk_set_rate(top_edp, Z GHz)
+>       - top_dp is switched to TVDPLL1
+>       - TVDPLL1 changes its rate, top_edp outputs the wrong rate.
+>       - eDP display is garbled
+> 
+> To solve this issue, remove all TVDPLL1 parents from `top_dp` and
+> all TVDPLL2 parents from `top_edp`, plus, necessarily switch both
+> clocks to use the new MUX_GATE_CLR_SET_UPD_INDEXED() macro to be
+> able to use the right bit index for the new parents list.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   drivers/clk/mediatek/clk-mt8195-topckgen.c | 22 ++++++++++++++--------
+>   1 file changed, 14 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/clk/mediatek/clk-mt8195-topckgen.c b/drivers/clk/mediatek/clk-mt8195-topckgen.c
+> index 81daa24cadde..abb3721f6e1b 100644
+> --- a/drivers/clk/mediatek/clk-mt8195-topckgen.c
+> +++ b/drivers/clk/mediatek/clk-mt8195-topckgen.c
+> @@ -417,15 +417,21 @@ static const char * const pwrmcu_parents[] = {
+>   
+>   static const char * const dp_parents[] = {
+>   	"clk26m",
+> -	"tvdpll1_d2",
+>   	"tvdpll2_d2",
+> -	"tvdpll1_d4",
+>   	"tvdpll2_d4",
+> -	"tvdpll1_d8",
+>   	"tvdpll2_d8",
+> -	"tvdpll1_d16",
+>   	"tvdpll2_d16"
+>   };
+> +static const u8 dp_parents_idx[] = { 0, 2, 4, 6, 8 };
+> +
+> +static const char * const edp_parents[] = {
+> +	"clk26m",
+> +	"tvdpll1_d2",
+> +	"tvdpll1_d4",
+> +	"tvdpll1_d8",
+> +	"tvdpll1_d16"
+> +};
+> +static const u8 edp_parents_idx[] = { 0, 1, 3, 5, 7 };
+
+AFAII your solution is to force a specific TVDPLLX for each display, and 
+it isn't dynamic.
+
+Do you think it's possible to do that using the DTS ? I'm asking 
+because, IMHO, this kind of setup is more friendly/readable/flexible in 
+the DTS than hardcoded into the driver.
+
+>   
+>   static const char * const disp_pwm_parents[] = {
+>   	"clk26m",
+> @@ -957,11 +963,11 @@ static const struct mtk_mux top_mtk_muxes[] = {
+>   	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_PWRMCU, "top_pwrmcu",
+>   		pwrmcu_parents, 0x08C, 0x090, 0x094, 16, 3, 23, 0x08, 6,
+>   		CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+> -	MUX_GATE_CLR_SET_UPD(CLK_TOP_DP, "top_dp",
+> -		dp_parents, 0x08C, 0x090, 0x094, 24, 4, 31, 0x08, 7),
+> +	MUX_GATE_CLR_SET_UPD_INDEXED(CLK_TOP_DP, "top_dp",
+> +		dp_parents, dp_parents_idx, 0x08C, 0x090, 0x094, 24, 4, 31, 0x08, 7),
+>   	/* CLK_CFG_10 */
+> -	MUX_GATE_CLR_SET_UPD(CLK_TOP_EDP, "top_edp",
+> -		dp_parents, 0x098, 0x09C, 0x0A0, 0, 4, 7, 0x08, 8),
+> +	MUX_GATE_CLR_SET_UPD_INDEXED(CLK_TOP_EDP, "top_edp",
+> +		edp_parents, edp_parents_idx, 0x098, 0x09C, 0x0A0, 0, 4, 7, 0x08, 8),
+>   	MUX_GATE_CLR_SET_UPD(CLK_TOP_DPI, "top_dpi",
+>   		dp_parents, 0x098, 0x09C, 0x0A0, 8, 4, 15, 0x08, 9),
+>   	MUX_GATE_CLR_SET_UPD(CLK_TOP_DISP_PWM0, "top_disp_pwm0",
 
 -- 
 Regards,
-Sudeep
-
-[1] https://lore.kernel.org/r/20230712062853.11007-9-frank.li@vivo.com
+Alexandre
 
