@@ -4,78 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4C6CC0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 17:48:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0225C001DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 17:48:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=R7MnX9EU5DUHE5XRnhL3IlecGwH7oD185TOyFZlX8UQ=; b=hwyrUJSO0fY2pFFf7OdvDnsrqt
-	PtyP8yUZbPMkRR4CIs5uW20zG7AJGtGr47cuwablahA99KCNr/qdqoncvR02OI83A++pNZLCI/cUA
-	098t/hqjiCoCMPrO0I/0BESsmuUdoSMxTrwgFZsO6b7x4p0hpZf1AUkTEKaoSBXXCp8ftAWqBVNON
-	Vky2Zl+UJMfLFchFb0xtxgAsPpnLWm0dT4sliBHZyYF6nEsC4YGofqrQjMMymHrevzXJekKkXn+Nj
-	ujvgggcKuWTYBqJbnJHJjGtesGw4BkGu2mWIq7mF330ZCZdP1rxRqXLPY4LzrhgZsfAyRiKyjaiQT
-	cFt+mP3Q==;
+	bh=yEiwehMBCAZF25WQAidvI6nJEofNL4h++Xy3RvOZetY=; b=jkPNOR7X5i0agZxepLrMTkUPm6
+	J1vIvxhwt4PV77SOhnsFMhHXqOjVd0Oo/LtRfdHlP30Sa8IZEu0fUaarJyLejBkxeTSWIvohKuf9S
+	IiCeDIDJ/MfmBIDnzQVdUSPbAUcRRC1zurBaCQiXaXgzqmaRKXZBo+EnesKJpbpqTIcJAHhYtoZuQ
+	ozeteMfQ0JqfaGMaJSc3/cacBqRdcfUh1e0UbMT3oxAfEd2jbNXeX6gb5OcCCFIaUVancAhWiJ/EV
+	LnrazvSJ48qMRrjuQN7OBPHCwM/l4FxC2tUDKDrCK8qmCDqJBvqzgfdfYD8/KcBhXE6Ao87KFtnIw
+	LZnEIVAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMtt-006pBT-2n;
-	Fri, 14 Jul 2023 17:48:17 +0000
-Received: from mail-il1-f181.google.com ([209.85.166.181])
+	id 1qKMu1-006pJ1-0I;
+	Fri, 14 Jul 2023 17:48:25 +0000
+Received: from mail-io1-f48.google.com ([209.85.166.48])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMtj-006p1y-18;
-	Fri, 14 Jul 2023 17:48:10 +0000
-Received: by mail-il1-f181.google.com with SMTP id e9e14a558f8ab-345ff33d286so9640765ab.3;
-        Fri, 14 Jul 2023 10:48:06 -0700 (PDT)
+	id 1qKMtn-006p66-0p;
+	Fri, 14 Jul 2023 17:48:13 +0000
+Received: by mail-io1-f48.google.com with SMTP id ca18e2360f4ac-7835e5fa459so86253839f.2;
+        Fri, 14 Jul 2023 10:48:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689356885; x=1691948885;
+        d=1e100.net; s=20221208; t=1689356890; x=1691948890;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=R7MnX9EU5DUHE5XRnhL3IlecGwH7oD185TOyFZlX8UQ=;
-        b=KqiNObid3E856wReOp1c4qaoNUw0lkumApycPhVIB7iTsm7eAaB/UV4Z6Hotlcj24n
-         NCaYRDH5pdk1e7WDHT35OzDum51EnhXYR+iwU4/SO3vqsfO+5DSQDLlq11PAkBDe2OkC
-         nPRyshB5+/UvIt+q9i12dDpDXD+sneI82MdY+Upc/coes8cRQa8em6+fZg5YyBxpl7Mk
-         nZK2H4D46ePf6WcQgMgDAjG+NiQXb/AFY8vqUek3bpUvIDE+VVhA/U4RbF+jRgVtG7NQ
-         CS/bMUhTRRmD49CrzGWaN1dvCD+eaEz98dWiFO4TSJrOy2eSSsRFqHCEqwsL7rDkSUYt
-         M6nQ==
-X-Gm-Message-State: ABy/qLZI2e8ciD0rJHdEhD/GXP17J1N74LqjyPBDdag4Se6ZiZwJPBHR
-	Bv/ELITzS1fqknFGU70IYg==
-X-Google-Smtp-Source: APBJJlF4o1MgPuSLnn/Qb5HrydHiexRpoGJKh/EJm02M6MDOXHTh9K4jdGuB1CSsRAAQSRbmMkUHaA==
-X-Received: by 2002:a92:c506:0:b0:347:733c:a55a with SMTP id r6-20020a92c506000000b00347733ca55amr4527148ilg.18.1689356885560;
-        Fri, 14 Jul 2023 10:48:05 -0700 (PDT)
+        bh=yEiwehMBCAZF25WQAidvI6nJEofNL4h++Xy3RvOZetY=;
+        b=cjem01owAaqP+eWoLxmCaKG/cB5vRIEI0kF3Z/fWStS/OjwzOcle/N+yamo7NUV1AQ
+         1zPTUfRBZJR3lVIwoDaist1XzVMADCOu2nh7xbaC6xDz3wzeFIUSSo6YwVCYd3RxeGzv
+         JmwmsjTPwRde0/D8anoR4hP54YA0tcTE64f/+31MrSJYM+3bCW4xvhqnCudJ25NYJLeM
+         2YlFnd5sTLukvIRJHglJaoPP+YlyaNHL08XTTVl2mLufLwpbmSV75ry1Il3+A420BfJQ
+         IebA+m1QbikWRotk7Ox/UrOb36TIHtPRkfSaXJf+FvsLMVs1NqafGYki0kyq7uw5Ml4u
+         LtAQ==
+X-Gm-Message-State: ABy/qLb1C4rtLh+svKkQBgDJDZvnu7hQ4t6wff8NRTjU+cslEqa928sB
+	J5c+3FQmgrn1YbyQHh9zGQ==
+X-Google-Smtp-Source: APBJJlFx5HZwcm9CuImhW98f/K+POh6l7VAn2OsStBIlwr2eSGLHagf0/h4F9QeokVeRWADp+1GOgA==
+X-Received: by 2002:a05:6602:2186:b0:780:d338:5373 with SMTP id b6-20020a056602218600b00780d3385373mr5440097iob.15.1689356890382;
+        Fri, 14 Jul 2023 10:48:10 -0700 (PDT)
 Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id b25-20020a05663801b900b0042b3a328ee0sm2683036jaq.166.2023.07.14.10.48.02
+        by smtp.gmail.com with ESMTPSA id dm26-20020a0566023b9a00b0077a1d1029fcsm2848606iob.28.2023.07.14.10.48.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jul 2023 10:48:04 -0700 (PDT)
-Received: (nullmailer pid 4060565 invoked by uid 1000);
-	Fri, 14 Jul 2023 17:47:54 -0000
+        Fri, 14 Jul 2023 10:48:09 -0700 (PDT)
+Received: (nullmailer pid 4060378 invoked by uid 1000);
+	Fri, 14 Jul 2023 17:47:48 -0000
 From: Rob Herring <robh@kernel.org>
-To: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, 
-	Vignesh Raghavendra <vigneshr@ti.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Han Xu <han.xu@nxp.com>, 
-	Harvey Hunt <harveyhuntnexus@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Liang Yang <liang.yang@amlogic.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+To: Ludovic Desroches <ludovic.desroches@microchip.com>, Ulf Hansson <ulf.hansson@linaro.org>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Claudiu Beznea <claudiu.beznea@microchip.com>, Robert Richter <rric@kernel.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, 
 	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Michal Simek <michal.simek@amd.com>, Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Vladimir Zapolskiy <vz@mleia.com>, 
-	Tudor Ambarus <tudor.ambarus@linaro.org>, Pratyush Yadav <pratyush@kernel.org>, 
-	Michael Walle <michael@walle.cc>
-Cc: devicetree@vger.kernel.org, linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: [PATCH] mtd: Explicitly include correct DT includes
-Date: Fri, 14 Jul 2023 11:47:49 -0600
-Message-Id: <20230714174751.4060439-1-robh@kernel.org>
+	Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
+	Adrian Hunter <adrian.hunter@intel.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Haibo Chen <haibo.chen@nxp.com>, 
+	Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>, Michal Simek <michal.simek@amd.com>, 
+	Eugen Hristev <eugen.hristev@collabora.com>, Lars Povlsen <lars.povlsen@microchip.com>, 
+	Steen Hegelund <Steen.Hegelund@microchip.com>, Daniel Machon <daniel.machon@microchip.com>, 
+	UNGLinuxDriver@microchip.com, Vignesh Raghavendra <vigneshr@ti.com>, 
+	Ben Dooks <ben-linux@fluff.org>, Jaehoon Chung <jh80.chung@samsung.com>, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-actions@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org
+Subject: [PATCH] mmc: Explicitly include correct DT includes
+Date: Fri, 14 Jul 2023 11:47:43 -0600
+Message-Id: <20230714174745.4060260-1-robh@kernel.org>
 X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_104807_430936_C2E2289F 
-X-CRM114-Status: GOOD (  14.18  )
+X-CRM114-CacheID: sfid-20230714_104811_303012_0D5E7796 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,524 +113,416 @@ explicitly include the correct includes.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/mtd/devices/mchp23k256.c                | 2 +-
- drivers/mtd/devices/mchp48l640.c                | 2 +-
- drivers/mtd/devices/mtd_dataflash.c             | 1 -
- drivers/mtd/maps/physmap-bt1-rom.c              | 1 -
- drivers/mtd/maps/physmap-gemini.c               | 2 +-
- drivers/mtd/maps/physmap-ixp4xx.c               | 2 +-
- drivers/mtd/maps/physmap-ixp4xx.h               | 1 +
- drivers/mtd/maps/physmap-versatile.c            | 2 +-
- drivers/mtd/maps/sun_uflash.c                   | 2 +-
- drivers/mtd/nand/ecc-mxic.c                     | 2 +-
- drivers/mtd/nand/ecc.c                          | 2 +-
- drivers/mtd/nand/onenand/onenand_omap2.c        | 2 +-
- drivers/mtd/nand/raw/ams-delta.c                | 2 +-
- drivers/mtd/nand/raw/davinci_nand.c             | 1 -
- drivers/mtd/nand/raw/denali_dt.c                | 1 -
- drivers/mtd/nand/raw/fsl_ifc_nand.c             | 1 +
- drivers/mtd/nand/raw/fsl_upm.c                  | 3 ++-
- drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c      | 2 +-
- drivers/mtd/nand/raw/ingenic/ingenic_ecc.c      | 1 +
- drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c | 1 -
- drivers/mtd/nand/raw/marvell_nand.c             | 3 ++-
- drivers/mtd/nand/raw/meson_nand.c               | 1 -
- drivers/mtd/nand/raw/mpc5121_nfc.c              | 4 ++--
- drivers/mtd/nand/raw/mtk_nand.c                 | 1 -
- drivers/mtd/nand/raw/mxc_nand.c                 | 1 -
- drivers/mtd/nand/raw/ndfc.c                     | 3 ++-
- drivers/mtd/nand/raw/omap2.c                    | 2 +-
- drivers/mtd/nand/raw/pl35x-nand-controller.c    | 4 +---
- drivers/mtd/nand/raw/qcom_nandc.c               | 2 +-
- drivers/mtd/nand/raw/rockchip-nand-controller.c | 1 -
- drivers/mtd/nand/raw/s3c2410.c                  | 1 -
- drivers/mtd/nand/raw/sh_flctl.c                 | 1 -
- drivers/mtd/nand/raw/socrates_nand.c            | 3 ++-
- drivers/mtd/nand/raw/sunxi_nand.c               | 1 -
- drivers/mtd/nand/raw/xway_nand.c                | 3 ++-
- drivers/mtd/spi-nor/controllers/nxp-spifi.c     | 1 -
- 36 files changed, 29 insertions(+), 36 deletions(-)
+ drivers/mmc/host/atmel-mci.c                  | 1 -
+ drivers/mmc/host/cavium-octeon.c              | 2 ++
+ drivers/mmc/host/cavium-thunderx.c            | 1 +
+ drivers/mmc/host/davinci_mmc.c                | 1 -
+ drivers/mmc/host/meson-gx-mmc.c               | 2 +-
+ drivers/mmc/host/mtk-sd.c                     | 4 +---
+ drivers/mmc/host/mxcmmc.c                     | 1 -
+ drivers/mmc/host/mxs-mmc.c                    | 1 -
+ drivers/mmc/host/owl-mmc.c                    | 3 ++-
+ drivers/mmc/host/pxamci.c                     | 1 -
+ drivers/mmc/host/renesas_sdhi_internal_dmac.c | 3 ++-
+ drivers/mmc/host/renesas_sdhi_sys_dmac.c      | 3 ++-
+ drivers/mmc/host/sdhci-bcm-kona.c             | 1 -
+ drivers/mmc/host/sdhci-cadence.c              | 2 +-
+ drivers/mmc/host/sdhci-esdhc-imx.c            | 2 +-
+ drivers/mmc/host/sdhci-iproc.c                | 2 +-
+ drivers/mmc/host/sdhci-msm.c                  | 2 +-
+ drivers/mmc/host/sdhci-of-arasan.c            | 3 ++-
+ drivers/mmc/host/sdhci-of-at91.c              | 2 +-
+ drivers/mmc/host/sdhci-of-dwcmshc.c           | 2 +-
+ drivers/mmc/host/sdhci-of-sparx5.c            | 2 +-
+ drivers/mmc/host/sdhci-omap.c                 | 1 -
+ drivers/mmc/host/sdhci-pxav2.c                | 1 -
+ drivers/mmc/host/sdhci-s3c.c                  | 1 -
+ drivers/mmc/host/sdhci-sprd.c                 | 1 -
+ drivers/mmc/host/sdhci-tegra.c                | 1 -
+ drivers/mmc/host/sh_mmcif.c                   | 1 -
+ drivers/mmc/host/uniphier-sd.c                | 1 -
+ drivers/mmc/host/wmt-sdmmc.c                  | 1 -
+ 29 files changed, 20 insertions(+), 29 deletions(-)
 
-diff --git a/drivers/mtd/devices/mchp23k256.c b/drivers/mtd/devices/mchp23k256.c
-index 3a6ea7a6a30c..d533475fda15 100644
---- a/drivers/mtd/devices/mchp23k256.c
-+++ b/drivers/mtd/devices/mchp23k256.c
-@@ -15,7 +15,7 @@
- #include <linux/sizes.h>
- #include <linux/spi/flash.h>
- #include <linux/spi/spi.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- 
- #define MAX_CMD_SIZE		4
- 
-diff --git a/drivers/mtd/devices/mchp48l640.c b/drivers/mtd/devices/mchp48l640.c
-index 40cd5041174c..f576e6a890e8 100644
---- a/drivers/mtd/devices/mchp48l640.c
-+++ b/drivers/mtd/devices/mchp48l640.c
-@@ -22,7 +22,7 @@
- #include <linux/sizes.h>
- #include <linux/spi/flash.h>
- #include <linux/spi/spi.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- 
- struct mchp48_caps {
- 	unsigned int size;
-diff --git a/drivers/mtd/devices/mtd_dataflash.c b/drivers/mtd/devices/mtd_dataflash.c
-index 1d3b2a94581f..0c1b93303618 100644
---- a/drivers/mtd/devices/mtd_dataflash.c
-+++ b/drivers/mtd/devices/mtd_dataflash.c
-@@ -13,7 +13,6 @@
- #include <linux/err.h>
- #include <linux/math64.h>
+diff --git a/drivers/mmc/host/atmel-mci.c b/drivers/mmc/host/atmel-mci.c
+index dd18440a90c5..2fdf352b3d86 100644
+--- a/drivers/mmc/host/atmel-mci.c
++++ b/drivers/mmc/host/atmel-mci.c
+@@ -18,7 +18,6 @@
+ #include <linux/ioport.h>
+ #include <linux/module.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
- 
- #include <linux/spi/spi.h>
- #include <linux/spi/flash.h>
-diff --git a/drivers/mtd/maps/physmap-bt1-rom.c b/drivers/mtd/maps/physmap-bt1-rom.c
-index 58782cfaf71c..60dccc48f99e 100644
---- a/drivers/mtd/maps/physmap-bt1-rom.c
-+++ b/drivers/mtd/maps/physmap-bt1-rom.c
-@@ -14,7 +14,6 @@
- #include <linux/mtd/xip.h>
- #include <linux/mux/consumer.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
+ #include <linux/of_gpio.h>
  #include <linux/platform_device.h>
- #include <linux/string.h>
- #include <linux/types.h>
-diff --git a/drivers/mtd/maps/physmap-gemini.c b/drivers/mtd/maps/physmap-gemini.c
-index d4a46e159d38..9d3b4bf84a1a 100644
---- a/drivers/mtd/maps/physmap-gemini.c
-+++ b/drivers/mtd/maps/physmap-gemini.c
-@@ -8,10 +8,10 @@
-  */
- #include <linux/export.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/mtd/map.h>
- #include <linux/mtd/xip.h>
- #include <linux/mfd/syscon.h>
+ #include <linux/scatterlist.h>
+diff --git a/drivers/mmc/host/cavium-octeon.c b/drivers/mmc/host/cavium-octeon.c
+index 12dca91a8ef6..02429f7afb42 100644
+--- a/drivers/mmc/host/cavium-octeon.c
++++ b/drivers/mmc/host/cavium-octeon.c
+@@ -13,7 +13,9 @@
+ #include <linux/mmc/mmc.h>
+ #include <linux/mmc/slot-gpio.h>
+ #include <linux/module.h>
++#include <linux/of.h>
+ #include <linux/of_platform.h>
 +#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/bitops.h>
- #include <linux/pinctrl/consumer.h>
-diff --git a/drivers/mtd/maps/physmap-ixp4xx.c b/drivers/mtd/maps/physmap-ixp4xx.c
-index 6a054229a8a0..c561468f95f6 100644
---- a/drivers/mtd/maps/physmap-ixp4xx.c
-+++ b/drivers/mtd/maps/physmap-ixp4xx.c
-@@ -11,7 +11,7 @@
-  */
- #include <linux/export.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/mtd/map.h>
- #include <linux/mtd/xip.h>
- #include "physmap-ixp4xx.h"
-diff --git a/drivers/mtd/maps/physmap-ixp4xx.h b/drivers/mtd/maps/physmap-ixp4xx.h
-index b0fc49b7f3ed..46824c57e58a 100644
---- a/drivers/mtd/maps/physmap-ixp4xx.h
-+++ b/drivers/mtd/maps/physmap-ixp4xx.h
-@@ -1,5 +1,6 @@
- /* SPDX-License-Identifier: GPL-2.0 */
- #include <linux/of.h>
-+#include <linux/platform_device.h>
- #include <linux/mtd/map.h>
+ #include <asm/octeon/octeon.h>
+ #include "cavium.h"
  
- #ifdef CONFIG_MTD_PHYSMAP_IXP4XX
-diff --git a/drivers/mtd/maps/physmap-versatile.c b/drivers/mtd/maps/physmap-versatile.c
-index a1b8b7b25f88..8e15d514c82d 100644
---- a/drivers/mtd/maps/physmap-versatile.c
-+++ b/drivers/mtd/maps/physmap-versatile.c
-@@ -9,9 +9,9 @@
- #include <linux/io.h>
+diff --git a/drivers/mmc/host/cavium-thunderx.c b/drivers/mmc/host/cavium-thunderx.c
+index 202b1d6da678..2e2ff984f0b3 100644
+--- a/drivers/mmc/host/cavium-thunderx.c
++++ b/drivers/mmc/host/cavium-thunderx.c
+@@ -14,6 +14,7 @@
+ #include <linux/module.h>
  #include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/mtd/map.h>
- #include <linux/mfd/syscon.h>
+ #include <linux/of_platform.h>
 +#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/bitops.h>
- #include "physmap-versatile.h"
-diff --git a/drivers/mtd/maps/sun_uflash.c b/drivers/mtd/maps/sun_uflash.c
-index 860b19f77090..2bfdf1b7e18a 100644
---- a/drivers/mtd/maps/sun_uflash.c
-+++ b/drivers/mtd/maps/sun_uflash.c
-@@ -14,7 +14,7 @@
- #include <linux/errno.h>
+ #include <linux/pci.h>
+ #include "cavium.h"
+ 
+diff --git a/drivers/mmc/host/davinci_mmc.c b/drivers/mmc/host/davinci_mmc.c
+index 7138dfa065bf..17a137f85cbe 100644
+--- a/drivers/mmc/host/davinci_mmc.c
++++ b/drivers/mmc/host/davinci_mmc.c
+@@ -21,7 +21,6 @@
+ #include <linux/dma-mapping.h>
+ #include <linux/mmc/mmc.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/mmc/slot-gpio.h>
+ #include <linux/interrupt.h>
+ 
+diff --git a/drivers/mmc/host/meson-gx-mmc.c b/drivers/mmc/host/meson-gx-mmc.c
+index ee9a25b900ae..0669993108ec 100644
+--- a/drivers/mmc/host/meson-gx-mmc.c
++++ b/drivers/mmc/host/meson-gx-mmc.c
+@@ -11,7 +11,7 @@
+ #include <linux/delay.h>
+ #include <linux/device.h>
+ #include <linux/iopoll.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/ioport.h>
+ #include <linux/dma-mapping.h>
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 02403ff99e0d..6c68c642ef61 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -12,9 +12,7 @@
+ #include <linux/iopoll.h>
+ #include <linux/ioport.h>
+ #include <linux/irq.h>
+-#include <linux/of_address.h>
+-#include <linux/of_device.h>
+-#include <linux/of_irq.h>
++#include <linux/of.h>
+ #include <linux/of_gpio.h>
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/mmc/host/mxcmmc.c b/drivers/mmc/host/mxcmmc.c
+index 668f865f3efb..226a10202d25 100644
+--- a/drivers/mmc/host/mxcmmc.c
++++ b/drivers/mmc/host/mxcmmc.c
+@@ -31,7 +31,6 @@
+ #include <linux/dmaengine.h>
+ #include <linux/types.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/of_dma.h>
+ #include <linux/mmc/slot-gpio.h>
+ 
+diff --git a/drivers/mmc/host/mxs-mmc.c b/drivers/mmc/host/mxs-mmc.c
+index 8c3655d3be96..951c6c48b4f7 100644
+--- a/drivers/mmc/host/mxs-mmc.c
++++ b/drivers/mmc/host/mxs-mmc.c
+@@ -11,7 +11,6 @@
+ #include <linux/init.h>
  #include <linux/ioport.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <asm/prom.h>
- #include <linux/uaccess.h>
-diff --git a/drivers/mtd/nand/ecc-mxic.c b/drivers/mtd/nand/ecc-mxic.c
-index 22a760e6024e..47e10945b8d2 100644
---- a/drivers/mtd/nand/ecc-mxic.c
-+++ b/drivers/mtd/nand/ecc-mxic.c
-@@ -18,7 +18,7 @@
- #include <linux/mtd/nand.h>
- #include <linux/mtd/nand-ecc-mxic.h>
- #include <linux/mutex.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/of_platform.h>
  #include <linux/platform_device.h>
- #include <linux/slab.h>
-diff --git a/drivers/mtd/nand/ecc.c b/drivers/mtd/nand/ecc.c
-index 5250764cedee..8f996e8d61b8 100644
---- a/drivers/mtd/nand/ecc.c
-+++ b/drivers/mtd/nand/ecc.c
-@@ -95,9 +95,9 @@
- 
- #include <linux/module.h>
- #include <linux/mtd/nand.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_platform.h>
- 
- static LIST_HEAD(on_host_hw_engines);
-diff --git a/drivers/mtd/nand/onenand/onenand_omap2.c b/drivers/mtd/nand/onenand/onenand_omap2.c
-index ff7af98604df..7db53b59605d 100644
---- a/drivers/mtd/nand/onenand/onenand_omap2.c
-+++ b/drivers/mtd/nand/onenand/onenand_omap2.c
-@@ -13,7 +13,7 @@
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/onenand.h>
- #include <linux/mtd/partitions.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/omap-gpmc.h>
- #include <linux/platform_device.h>
+ #include <linux/delay.h>
  #include <linux/interrupt.h>
-diff --git a/drivers/mtd/nand/raw/ams-delta.c b/drivers/mtd/nand/raw/ams-delta.c
-index fa621ffa6490..919816a7aca7 100644
---- a/drivers/mtd/nand/raw/ams-delta.c
-+++ b/drivers/mtd/nand/raw/ams-delta.c
-@@ -22,7 +22,7 @@
- #include <linux/mtd/nand-gpio.h>
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
+diff --git a/drivers/mmc/host/owl-mmc.c b/drivers/mmc/host/owl-mmc.c
+index 1bf22b08b373..62d2993573d0 100644
+--- a/drivers/mmc/host/owl-mmc.c
++++ b/drivers/mmc/host/owl-mmc.c
+@@ -16,8 +16,9 @@
+ #include <linux/interrupt.h>
+ #include <linux/mmc/host.h>
+ #include <linux/mmc/slot-gpio.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/module.h>
+-#include <linux/of_platform.h>
++#include <linux/platform_device.h>
+ #include <linux/reset.h>
+ #include <linux/spinlock.h>
+ 
+diff --git a/drivers/mmc/host/pxamci.c b/drivers/mmc/host/pxamci.c
+index 2a988f942b6c..d274e4433fc1 100644
+--- a/drivers/mmc/host/pxamci.c
++++ b/drivers/mmc/host/pxamci.c
+@@ -30,7 +30,6 @@
+ #include <linux/gpio/consumer.h>
+ #include <linux/gfp.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/soc/pxa/cpu.h>
+ 
+ #include <linux/sizes.h>
+diff --git a/drivers/mmc/host/renesas_sdhi_internal_dmac.c b/drivers/mmc/host/renesas_sdhi_internal_dmac.c
+index 9ab813903b2c..4cc5bcb3213a 100644
+--- a/drivers/mmc/host/renesas_sdhi_internal_dmac.c
++++ b/drivers/mmc/host/renesas_sdhi_internal_dmac.c
+@@ -15,7 +15,8 @@
+ #include <linux/mmc/host.h>
+ #include <linux/mod_devicetable.h>
+ #include <linux/module.h>
 -#include <linux/of_device.h>
 +#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/sizes.h>
- 
-diff --git a/drivers/mtd/nand/raw/davinci_nand.c b/drivers/mtd/nand/raw/davinci_nand.c
-index 415d6aaa8255..e75d81cf8c21 100644
---- a/drivers/mtd/nand/raw/davinci_nand.c
-+++ b/drivers/mtd/nand/raw/davinci_nand.c
-@@ -18,7 +18,6 @@
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
- #include <linux/slab.h>
--#include <linux/of_device.h>
- #include <linux/of.h>
- 
- #include <linux/platform_data/mtd-davinci.h>
-diff --git a/drivers/mtd/nand/raw/denali_dt.c b/drivers/mtd/nand/raw/denali_dt.c
-index 915047e3fbc2..edac8749bb93 100644
---- a/drivers/mtd/nand/raw/denali_dt.c
-+++ b/drivers/mtd/nand/raw/denali_dt.c
-@@ -13,7 +13,6 @@
- #include <linux/kernel.h>
++#include <linux/platform_device.h>
+ #include <linux/pagemap.h>
+ #include <linux/scatterlist.h>
+ #include <linux/sys_soc.h>
+diff --git a/drivers/mmc/host/renesas_sdhi_sys_dmac.c b/drivers/mmc/host/renesas_sdhi_sys_dmac.c
+index b559ad38b667..452982e670d2 100644
+--- a/drivers/mmc/host/renesas_sdhi_sys_dmac.c
++++ b/drivers/mmc/host/renesas_sdhi_sys_dmac.c
+@@ -15,7 +15,8 @@
+ #include <linux/mmc/host.h>
+ #include <linux/mod_devicetable.h>
  #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
+ #include <linux/pagemap.h>
+ #include <linux/scatterlist.h>
+ #include <linux/sys_soc.h>
+diff --git a/drivers/mmc/host/sdhci-bcm-kona.c b/drivers/mmc/host/sdhci-bcm-kona.c
+index 6a93a54fe067..ef1fb383e1e7 100644
+--- a/drivers/mmc/host/sdhci-bcm-kona.c
++++ b/drivers/mmc/host/sdhci-bcm-kona.c
+@@ -11,7 +11,6 @@
+ #include <linux/clk.h>
+ #include <linux/regulator/consumer.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
- #include <linux/platform_device.h>
+ #include <linux/mmc/slot-gpio.h>
+ 
+ #include "sdhci-pltfm.h"
+diff --git a/drivers/mmc/host/sdhci-cadence.c b/drivers/mmc/host/sdhci-cadence.c
+index d2f625054689..25d9849ef0d1 100644
+--- a/drivers/mmc/host/sdhci-cadence.c
++++ b/drivers/mmc/host/sdhci-cadence.c
+@@ -11,7 +11,7 @@
+ #include <linux/mmc/host.h>
+ #include <linux/mmc/mmc.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
++#include <linux/platform_device.h>
  #include <linux/reset.h>
  
-diff --git a/drivers/mtd/nand/raw/fsl_ifc_nand.c b/drivers/mtd/nand/raw/fsl_ifc_nand.c
-index fa537fee6701..20bb1e0cb5eb 100644
---- a/drivers/mtd/nand/raw/fsl_ifc_nand.c
-+++ b/drivers/mtd/nand/raw/fsl_ifc_nand.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include <linux/module.h>
-+#include <linux/platform_device.h>
- #include <linux/types.h>
- #include <linux/kernel.h>
- #include <linux/of_address.h>
-diff --git a/drivers/mtd/nand/raw/fsl_upm.c b/drivers/mtd/nand/raw/fsl_upm.c
-index 086426139173..5bf73efe42e7 100644
---- a/drivers/mtd/nand/raw/fsl_upm.c
-+++ b/drivers/mtd/nand/raw/fsl_upm.c
-@@ -13,7 +13,8 @@
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
- #include <linux/mtd/mtd.h>
--#include <linux/of_platform.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
- #include <linux/io.h>
- #include <linux/slab.h>
- #include <asm/fsl_lbc.h>
-diff --git a/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c b/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-index 500e7a28d2e4..e71ad2fcec23 100644
---- a/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-+++ b/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-@@ -13,7 +13,7 @@
- #include <linux/module.h>
- #include <linux/mtd/partitions.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/dma/mxs-dma.h>
- #include "gpmi-nand.h"
-diff --git a/drivers/mtd/nand/raw/ingenic/ingenic_ecc.c b/drivers/mtd/nand/raw/ingenic/ingenic_ecc.c
-index 9054559e52dd..525c34c281b6 100644
---- a/drivers/mtd/nand/raw/ingenic/ingenic_ecc.c
-+++ b/drivers/mtd/nand/raw/ingenic/ingenic_ecc.c
-@@ -9,6 +9,7 @@
- #include <linux/clk.h>
- #include <linux/init.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
- 
-diff --git a/drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c b/drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c
-index b9f135297aa0..6748226b8bd1 100644
---- a/drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c
-+++ b/drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c
-@@ -13,7 +13,6 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/gpio/consumer.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
-diff --git a/drivers/mtd/nand/raw/marvell_nand.c b/drivers/mtd/nand/raw/marvell_nand.c
-index 30c15e4e1cc0..7d0204ea305b 100644
---- a/drivers/mtd/nand/raw/marvell_nand.c
-+++ b/drivers/mtd/nand/raw/marvell_nand.c
-@@ -77,9 +77,10 @@
- #include <linux/module.h>
- #include <linux/clk.h>
- #include <linux/mtd/rawnand.h>
--#include <linux/of_platform.h>
-+#include <linux/of.h>
- #include <linux/iopoll.h>
- #include <linux/interrupt.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/mfd/syscon.h>
- #include <linux/regmap.h>
-diff --git a/drivers/mtd/nand/raw/meson_nand.c b/drivers/mtd/nand/raw/meson_nand.c
-index d3faf8086631..ef821b43b3d4 100644
---- a/drivers/mtd/nand/raw/meson_nand.c
-+++ b/drivers/mtd/nand/raw/meson_nand.c
-@@ -19,7 +19,6 @@
- #include <linux/module.h>
- #include <linux/iopoll.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/sched/task_stack.h>
- 
- #define NFC_REG_CMD		0x00
-diff --git a/drivers/mtd/nand/raw/mpc5121_nfc.c b/drivers/mtd/nand/raw/mpc5121_nfc.c
-index ab05ee65702c..6e8e790f84e7 100644
---- a/drivers/mtd/nand/raw/mpc5121_nfc.c
-+++ b/drivers/mtd/nand/raw/mpc5121_nfc.c
-@@ -21,10 +21,10 @@
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/of_irq.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- 
- #include <asm/mpc5121.h>
- 
-diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index b2fa6b2074ab..b6eb8cb6b5e9 100644
---- a/drivers/mtd/nand/raw/mtk_nand.c
-+++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -16,7 +16,6 @@
- #include <linux/module.h>
- #include <linux/iopoll.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/mtd/nand-ecc-mtk.h>
- 
- /* NAND controller register definition */
-diff --git a/drivers/mtd/nand/raw/mxc_nand.c b/drivers/mtd/nand/raw/mxc_nand.c
-index 3d4b2e8294ea..0cd98d5714fc 100644
---- a/drivers/mtd/nand/raw/mxc_nand.c
-+++ b/drivers/mtd/nand/raw/mxc_nand.c
-@@ -20,7 +20,6 @@
- #include <linux/irq.h>
- #include <linux/completion.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- 
- #define DRIVER_NAME "mxc_nand"
- 
-diff --git a/drivers/mtd/nand/raw/ndfc.c b/drivers/mtd/nand/raw/ndfc.c
-index 57f3db32122d..3bb32a7c6d67 100644
---- a/drivers/mtd/nand/raw/ndfc.c
-+++ b/drivers/mtd/nand/raw/ndfc.c
-@@ -22,8 +22,9 @@
- #include <linux/mtd/ndfc.h>
- #include <linux/slab.h>
- #include <linux/mtd/mtd.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <asm/io.h>
- 
- #define NDFC_MAX_CS    4
-diff --git a/drivers/mtd/nand/raw/omap2.c b/drivers/mtd/nand/raw/omap2.c
-index db22b3af16d8..e057c03a197d 100644
---- a/drivers/mtd/nand/raw/omap2.c
-+++ b/drivers/mtd/nand/raw/omap2.c
+ #include "sdhci-pltfm.h"
+diff --git a/drivers/mmc/host/sdhci-esdhc-imx.c b/drivers/mmc/host/sdhci-esdhc-imx.c
+index eebf94604a7f..e767fe058023 100644
+--- a/drivers/mmc/host/sdhci-esdhc-imx.c
++++ b/drivers/mmc/host/sdhci-esdhc-imx.c
 @@ -22,7 +22,7 @@
- #include <linux/iopoll.h>
- #include <linux/slab.h>
+ #include <linux/mmc/sdio.h>
+ #include <linux/mmc/slot-gpio.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
-+#include <linux/of_platform.h>
- 
- #include <linux/platform_data/elm.h>
- 
-diff --git a/drivers/mtd/nand/raw/pl35x-nand-controller.c b/drivers/mtd/nand/raw/pl35x-nand-controller.c
-index 28b7bd7e22eb..8da5fee321b5 100644
---- a/drivers/mtd/nand/raw/pl35x-nand-controller.c
-+++ b/drivers/mtd/nand/raw/pl35x-nand-controller.c
-@@ -23,9 +23,7 @@
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
--#include <linux/of_platform.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/clk.h>
-diff --git a/drivers/mtd/nand/raw/qcom_nandc.c b/drivers/mtd/nand/raw/qcom_nandc.c
-index 72d6168d8a1b..df245353b12b 100644
---- a/drivers/mtd/nand/raw/qcom_nandc.c
-+++ b/drivers/mtd/nand/raw/qcom_nandc.c
-@@ -3,6 +3,7 @@
-  * Copyright (c) 2016, The Linux Foundation. All rights reserved.
-  */
- #include <linux/clk.h>
 +#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/bitops.h>
- #include <linux/dma/qcom_adm.h>
-@@ -12,7 +13,6 @@
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/pm_runtime.h>
+ #include "sdhci-cqhci.h"
+diff --git a/drivers/mmc/host/sdhci-iproc.c b/drivers/mmc/host/sdhci-iproc.c
+index 86eb0045515e..6a93b1ee0b30 100644
+--- a/drivers/mmc/host/sdhci-iproc.c
++++ b/drivers/mmc/host/sdhci-iproc.c
+@@ -10,7 +10,7 @@
+ #include <linux/module.h>
+ #include <linux/mmc/host.h>
  #include <linux/of.h>
+-#include <linux/of_device.h>
++#include <linux/platform_device.h>
+ #include "sdhci-pltfm.h"
+ 
+ struct sdhci_iproc_data {
+diff --git a/drivers/mmc/host/sdhci-msm.c b/drivers/mmc/host/sdhci-msm.c
+index 1c935b5bafe1..c0ce187e740a 100644
+--- a/drivers/mmc/host/sdhci-msm.c
++++ b/drivers/mmc/host/sdhci-msm.c
+@@ -6,7 +6,6 @@
+  */
+ 
+ #include <linux/module.h>
 -#include <linux/of_device.h>
  #include <linux/delay.h>
- #include <linux/dma/qcom_bam_dma.h>
+ #include <linux/mmc/mmc.h>
+ #include <linux/pm_runtime.h>
+@@ -15,6 +14,7 @@
+ #include <linux/iopoll.h>
+ #include <linux/regulator/consumer.h>
+ #include <linux/interconnect.h>
++#include <linux/of.h>
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/reset.h>
  
-diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-index 2312e27362cb..0ec03ffb4846 100644
---- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
-+++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-@@ -15,7 +15,6 @@
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/rawnand.h>
+diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
+index 294dd605fd2b..abc3e49fbda5 100644
+--- a/drivers/mmc/host/sdhci-of-arasan.c
++++ b/drivers/mmc/host/sdhci-of-arasan.c
+@@ -18,7 +18,8 @@
+ #include <linux/clk-provider.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
+ #include <linux/phy/phy.h>
+ #include <linux/regmap.h>
+ #include <linux/reset.h>
+diff --git a/drivers/mmc/host/sdhci-of-at91.c b/drivers/mmc/host/sdhci-of-at91.c
+index cd0134580a90..808307a211f2 100644
+--- a/drivers/mmc/host/sdhci-of-at91.c
++++ b/drivers/mmc/host/sdhci-of-at91.c
+@@ -17,7 +17,7 @@
+ #include <linux/mmc/slot-gpio.h>
+ #include <linux/module.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
++#include <linux/platform_device.h>
+ #include <linux/pm.h>
+ #include <linux/pm_runtime.h>
  
-diff --git a/drivers/mtd/nand/raw/s3c2410.c b/drivers/mtd/nand/raw/s3c2410.c
-index ac80aaf5b4e3..3d3d5c9814ff 100644
---- a/drivers/mtd/nand/raw/s3c2410.c
-+++ b/drivers/mtd/nand/raw/s3c2410.c
-@@ -26,7 +26,6 @@
- #include <linux/clk.h>
- #include <linux/cpufreq.h>
+diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
+index e68cd87998c8..55e1e2d0494d 100644
+--- a/drivers/mmc/host/sdhci-of-dwcmshc.c
++++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
+@@ -14,7 +14,7 @@
+ #include <linux/kernel.h>
+ #include <linux/module.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
++#include <linux/platform_device.h>
+ #include <linux/reset.h>
+ #include <linux/sizes.h>
  
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/rawnand.h>
-diff --git a/drivers/mtd/nand/raw/sh_flctl.c b/drivers/mtd/nand/raw/sh_flctl.c
-index 63bf20c41719..08211e96ce64 100644
---- a/drivers/mtd/nand/raw/sh_flctl.c
-+++ b/drivers/mtd/nand/raw/sh_flctl.c
-@@ -17,7 +17,6 @@
- #include <linux/interrupt.h>
- #include <linux/io.h>
+diff --git a/drivers/mmc/host/sdhci-of-sparx5.c b/drivers/mmc/host/sdhci-of-sparx5.c
+index 28e4ee69e100..2e983cf49bc6 100644
+--- a/drivers/mmc/host/sdhci-of-sparx5.c
++++ b/drivers/mmc/host/sdhci-of-sparx5.c
+@@ -13,9 +13,9 @@
+ #include <linux/delay.h>
+ #include <linux/module.h>
+ #include <linux/regmap.h>
+-#include <linux/of_device.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/dma-mapping.h>
++#include <linux/of.h>
+ 
+ #include "sdhci-pltfm.h"
+ 
+diff --git a/drivers/mmc/host/sdhci-omap.c b/drivers/mmc/host/sdhci-omap.c
+index 8ed9256b83da..2593e3fbd0d9 100644
+--- a/drivers/mmc/host/sdhci-omap.c
++++ b/drivers/mmc/host/sdhci-omap.c
+@@ -11,7 +11,6 @@
+ #include <linux/mmc/slot-gpio.h>
+ #include <linux/module.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
+ #include <linux/of_irq.h>
  #include <linux/platform_device.h>
  #include <linux/pm_runtime.h>
- #include <linux/sh_dma.h>
-diff --git a/drivers/mtd/nand/raw/socrates_nand.c b/drivers/mtd/nand/raw/socrates_nand.c
-index a8b720ffe9e8..76d50eb9f1db 100644
---- a/drivers/mtd/nand/raw/socrates_nand.c
-+++ b/drivers/mtd/nand/raw/socrates_nand.c
-@@ -8,8 +8,9 @@
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <linux/io.h>
- 
- #define FPGA_NAND_CMD_MASK		(0x7 << 28)
-diff --git a/drivers/mtd/nand/raw/sunxi_nand.c b/drivers/mtd/nand/raw/sunxi_nand.c
-index 9884304634f6..c6cd7713bee7 100644
---- a/drivers/mtd/nand/raw/sunxi_nand.c
-+++ b/drivers/mtd/nand/raw/sunxi_nand.c
+diff --git a/drivers/mmc/host/sdhci-pxav2.c b/drivers/mmc/host/sdhci-pxav2.c
+index 91aca8f8d6ef..86b60b0447b3 100644
+--- a/drivers/mmc/host/sdhci-pxav2.c
++++ b/drivers/mmc/host/sdhci-pxav2.c
 @@ -19,7 +19,6 @@
- #include <linux/moduleparam.h>
- #include <linux/platform_device.h>
+ #include <linux/platform_data/pxa_sdhci.h>
+ #include <linux/slab.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
- #include <linux/mtd/mtd.h>
- #include <linux/mtd/rawnand.h>
- #include <linux/mtd/partitions.h>
-diff --git a/drivers/mtd/nand/raw/xway_nand.c b/drivers/mtd/nand/raw/xway_nand.c
-index 6b1e2a2bba15..51d802a165ed 100644
---- a/drivers/mtd/nand/raw/xway_nand.c
-+++ b/drivers/mtd/nand/raw/xway_nand.c
-@@ -7,7 +7,8 @@
- 
- #include <linux/mtd/rawnand.h>
+ #include <linux/mmc/sdio.h>
+ #include <linux/mmc/mmc.h>
+ #include <linux/pinctrl/consumer.h>
+diff --git a/drivers/mmc/host/sdhci-s3c.c b/drivers/mmc/host/sdhci-s3c.c
+index 504015e84308..6245fb4584fe 100644
+--- a/drivers/mmc/host/sdhci-s3c.c
++++ b/drivers/mmc/host/sdhci-s3c.c
+@@ -20,7 +20,6 @@
+ #include <linux/gpio.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
  #include <linux/of_gpio.h>
--#include <linux/of_platform.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
- 
- #include <lantiq_soc.h>
- 
-diff --git a/drivers/mtd/spi-nor/controllers/nxp-spifi.c b/drivers/mtd/spi-nor/controllers/nxp-spifi.c
-index 794c7b7d5c92..337e83bf3362 100644
---- a/drivers/mtd/spi-nor/controllers/nxp-spifi.c
-+++ b/drivers/mtd/spi-nor/controllers/nxp-spifi.c
-@@ -17,7 +17,6 @@
- #include <linux/mtd/partitions.h>
- #include <linux/mtd/spi-nor.h>
+ #include <linux/pm.h>
+ #include <linux/pm_runtime.h>
+diff --git a/drivers/mmc/host/sdhci-sprd.c b/drivers/mmc/host/sdhci-sprd.c
+index 7f4ee2e12735..a21d6524d7ca 100644
+--- a/drivers/mmc/host/sdhci-sprd.c
++++ b/drivers/mmc/host/sdhci-sprd.c
+@@ -11,7 +11,6 @@
+ #include <linux/iopoll.h>
+ #include <linux/module.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
+ #include <linux/of_gpio.h>
+ #include <linux/pinctrl/consumer.h>
  #include <linux/platform_device.h>
- #include <linux/spi/spi.h>
+diff --git a/drivers/mmc/host/sdhci-tegra.c b/drivers/mmc/host/sdhci-tegra.c
+index bff084f178c9..1e1eac953691 100644
+--- a/drivers/mmc/host/sdhci-tegra.c
++++ b/drivers/mmc/host/sdhci-tegra.c
+@@ -19,7 +19,6 @@
+ #include <linux/mmc/mmc.h>
+ #include <linux/mmc/slot-gpio.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
+ #include <linux/of.h>
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/mmc/host/sh_mmcif.c b/drivers/mmc/host/sh_mmcif.c
+index 5cf53348372a..838dab179724 100644
+--- a/drivers/mmc/host/sh_mmcif.c
++++ b/drivers/mmc/host/sh_mmcif.c
+@@ -46,7 +46,6 @@
+ #include <linux/mmc/slot-gpio.h>
+ #include <linux/mod_devicetable.h>
+ #include <linux/mutex.h>
+-#include <linux/of_device.h>
+ #include <linux/pagemap.h>
+ #include <linux/platform_data/sh_mmcif.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/mmc/host/uniphier-sd.c b/drivers/mmc/host/uniphier-sd.c
+index 61acd69fac0e..c1400d616fff 100644
+--- a/drivers/mmc/host/uniphier-sd.c
++++ b/drivers/mmc/host/uniphier-sd.c
+@@ -13,7 +13,6 @@
+ #include <linux/mmc/host.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+diff --git a/drivers/mmc/host/wmt-sdmmc.c b/drivers/mmc/host/wmt-sdmmc.c
+index 68525d900046..f860f363be56 100644
+--- a/drivers/mmc/host/wmt-sdmmc.c
++++ b/drivers/mmc/host/wmt-sdmmc.c
+@@ -21,7 +21,6 @@
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/of_irq.h>
+-#include <linux/of_device.h>
  
+ #include <linux/mmc/host.h>
+ #include <linux/mmc/mmc.h>
 -- 
 2.40.1
 
