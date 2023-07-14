@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A790C04A6A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 17:50:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3777BC001DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 17:50:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+f9hPpq/FXIH2pHQG9BDcclVOF3HlSLvSdnqDrW8SI0=; b=zC+Bts2oqi4H/N3obtb8RUmYqZ
-	fkluetFZikDcAIRcaNabuNih26+Q7IGuwcnqeGOCZM+FSElayP5spGbuh95KEDGpceXBXphYISL5f
-	d+Z2nxEjYHLs5sW7kWgygjMiapKjCZT0lCKp+H3264WLolduzCP+Fx3OB2QBL+U/0jm0rflbTXhww
-	FcyHNPJMP1FxuaI6cVNLsobQcmF8vhPhbC54/fDPwu0oMTGKZXqjfoXPmp402rpwpl5Kj5AS6TbSf
-	mWaH+IixjzSuTnlwetVi4TCpXaLyzc1M4mOw9RHJuxtOVZU006Yhs8a9h63zoSozlemSIWSLDfsQL
-	96gJ5lkQ==;
+	bh=vLy+fmmmHBD7kQUYFoOu4IPxG3CVYUe0AJr9SRUEQvM=; b=iXr02Kws6QRS6i0aZyWIO/yuR7
+	OBvP0tDUw4MSJzlhbK1UtN8ALVL764AYg1cUw0nBzukeBuHAvvmPFJbIutwFyUoOHJfEFSP7/4EjA
+	dBqqjEdAKpQDfkjGIDP8Bv+GwwhS4/XzOErNXhP4JZxO3ZNW6UQsmlHFAh3flLZjhmBfMILqBPSpe
+	9O7BkA6tXcebSI22YgUjKhE4IJBjpY6zDKQ/geT1TKMszh4AxH06mJRbPOH9x3tViw1iBJKHknGmL
+	QiC40rOxT9ACHRu4cB7pg82/E3zGrcjbxdgF3gQQ3t2bAXy6oCdxHgYSmDSpFWIv2e88FLw00nj+r
+	Egd/vtiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMvi-006qXT-24;
-	Fri, 14 Jul 2023 17:50:10 +0000
-Received: from mail-io1-f51.google.com ([209.85.166.51])
+	id 1qKMw7-006qpP-0L;
+	Fri, 14 Jul 2023 17:50:35 +0000
+Received: from mail-io1-f53.google.com ([209.85.166.53])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMva-006qR4-2p;
-	Fri, 14 Jul 2023 17:50:07 +0000
-Received: by mail-io1-f51.google.com with SMTP id ca18e2360f4ac-78360f61ba0so88356339f.1;
-        Fri, 14 Jul 2023 10:50:02 -0700 (PDT)
+	id 1qKMvy-006qiw-0f;
+	Fri, 14 Jul 2023 17:50:31 +0000
+Received: by mail-io1-f53.google.com with SMTP id ca18e2360f4ac-78360f61ba0so88376339f.1;
+        Fri, 14 Jul 2023 10:50:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689357002; x=1691949002;
+        d=1e100.net; s=20221208; t=1689357025; x=1691949025;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=+f9hPpq/FXIH2pHQG9BDcclVOF3HlSLvSdnqDrW8SI0=;
-        b=CvhD6b4kg6ISTytE+3eW8/ub9tP5nXNExYRfEuUcIM34DaB+UaMUqBVr+rePi3HWk7
-         HZ7yYtXbeo/T6CA+qMqfgMIHQk++SG7MaRfyjwY69U+N8n/cD4GWNXlvG3iwDshnsYkF
-         E8fWwYXtM6MyjWy0udWxY6Nw/rtNsp503XuWBj6HCXvRJ+mjIBARsA/9DYkb5/thZqUo
-         cggpxijAS5EJLZvB4IXWubMni1XDNL0c2zQ/0I/KnGHFThLumuOpq+kEy32Aod54OZzG
-         /1852i30rZL4HxewvZPKLGP/Fq+o5TKvAwZsI6/omoTfYVzgkLabNhO3y62v07Ztnj/T
-         o0Tg==
-X-Gm-Message-State: ABy/qLb05Rk4CA0uDpVR80OlP4PIqlQw5V6LtAECFykrlJKY15YVqXZJ
-	/Gup7Vo+WhCnXfoCVDndnw==
-X-Google-Smtp-Source: APBJJlEmRadOVoGt8KXkozByqFztIzgh8zxRONlCM8tFyXmfW6xPPXdHjET1RPuYiepJ5yWUm0smmA==
-X-Received: by 2002:a92:d08c:0:b0:347:693a:a52b with SMTP id h12-20020a92d08c000000b00347693aa52bmr4722888ilh.6.1689357001812;
-        Fri, 14 Jul 2023 10:50:01 -0700 (PDT)
+        bh=vLy+fmmmHBD7kQUYFoOu4IPxG3CVYUe0AJr9SRUEQvM=;
+        b=Fx+k9zaef5RXUj39Z6l2nNKcbM/sjaPxUhlWeF8fnmtA4m1BvTT/SiRHybd0A3FTXs
+         HRbV39e9vnMGIJaqIiznYj1Um2hpZ60jdjJrLskJ+vKtc18Hi61KRbq6/IXJCppPt74e
+         EGuzj3M0Pesej+JYLAOaHe+dUwqMuSuul7F/xgSuSoxLfvey5QxXVgyS9azjkHoDT2hG
+         9sRycNcalbtNMbsL5IOHX/Iilit44Ve+i5p9y2aazqleP4FH4jr3u5yDJum7SmhUYhad
+         WhiA9vp4DF82ApzTvB8cAhJnAfHdP8lSGJdIHZaJZ5WCUphVcU5Iy3K/US86mPbay+Tl
+         xC0Q==
+X-Gm-Message-State: ABy/qLaj6QY/E4TmeLmaZ1Y20KFgAsEBjrmk6mc6L+LrnXIRc+/ERgWD
+	R0pYQFRSKIUWsCgDSJ/Rjg==
+X-Google-Smtp-Source: APBJJlH6F8DGTAgoPkKNBfHvMuRjeGIOUDsgDFYTU7xAIgttRpRW5jDVDzZiIxVt/yHiIy5rKVsXXg==
+X-Received: by 2002:a92:c807:0:b0:346:4766:9f76 with SMTP id v7-20020a92c807000000b0034647669f76mr4859281iln.13.1689357025190;
+        Fri, 14 Jul 2023 10:50:25 -0700 (PDT)
 Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id c13-20020a92dc8d000000b00345da2c4776sm2856766iln.81.2023.07.14.10.49.59
+        by smtp.gmail.com with ESMTPSA id l18-20020a922912000000b00345d6297aa7sm2888185ilg.16.2023.07.14.10.50.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jul 2023 10:50:01 -0700 (PDT)
-Received: (nullmailer pid 4063470 invoked by uid 1000);
-	Fri, 14 Jul 2023 17:49:33 -0000
+        Fri, 14 Jul 2023 10:50:24 -0700 (PDT)
+Received: (nullmailer pid 4063952 invoked by uid 1000);
+	Fri, 14 Jul 2023 17:49:46 -0000
 From: Rob Herring <robh@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, Cristian Ciocaltea <cristian.ciocaltea@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Saravanan Sekar <sravanhome@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tony Lindgren <tony@atomide.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-omap@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com
-Subject: [PATCH] regulator: Explicitly include correct DT includes
-Date: Fri, 14 Jul 2023 11:49:28 -0600
-Message-Id: <20230714174930.4063320-1-robh@kernel.org>
+To: Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, Paul Cercueil <paul@crapouillou.net>, Vladimir Zapolskiy <vz@mleia.com>, Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>
+Cc: devicetree@vger.kernel.org, linux-rtc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev
+Subject: [PATCH] rtc: Explicitly include correct DT includes
+Date: Fri, 14 Jul 2023 11:49:42 -0600
+Message-Id: <20230714174944.4063829-1-robh@kernel.org>
 X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_105002_951150_A97D0F9C 
-X-CRM114-Status: GOOD (  13.99  )
+X-CRM114-CacheID: sfid-20230714_105026_295939_2706BA50 
+X-CRM114-Status: GOOD (  16.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,524 +88,428 @@ explicitly include the correct includes.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/regulator/act8945a-regulator.c      | 2 +-
- drivers/regulator/atc260x-regulator.c       | 3 ++-
- drivers/regulator/axp20x-regulator.c        | 1 -
- drivers/regulator/cpcap-regulator.c         | 2 +-
- drivers/regulator/fan53555.c                | 2 +-
- drivers/regulator/fixed.c                   | 1 -
- drivers/regulator/ltc3589.c                 | 1 -
- drivers/regulator/max77826-regulator.c      | 1 -
- drivers/regulator/mp5416.c                  | 2 +-
- drivers/regulator/mp886x.c                  | 2 +-
- drivers/regulator/mpq7920.c                 | 1 -
- drivers/regulator/mt6315-regulator.c        | 2 +-
- drivers/regulator/mt6359-regulator.c        | 3 ++-
- drivers/regulator/mtk-dvfsrc-regulator.c    | 3 +--
- drivers/regulator/pbias-regulator.c         | 1 -
- drivers/regulator/pca9450-regulator.c       | 1 -
- drivers/regulator/pwm-regulator.c           | 2 +-
- drivers/regulator/qcom-rpmh-regulator.c     | 1 -
- drivers/regulator/qcom_smd-regulator.c      | 1 -
- drivers/regulator/qcom_usb_vbus-regulator.c | 1 -
- drivers/regulator/rk808-regulator.c         | 3 ++-
- drivers/regulator/rt5759-regulator.c        | 2 +-
- drivers/regulator/stm32-pwr.c               | 3 +--
- drivers/regulator/stm32-vrefbuf.c           | 2 +-
- drivers/regulator/sy8824x.c                 | 2 +-
- drivers/regulator/sy8827n.c                 | 2 +-
- drivers/regulator/tps6286x-regulator.c      | 2 +-
- drivers/regulator/tps6287x-regulator.c      | 2 +-
- drivers/regulator/tps65218-regulator.c      | 2 +-
- drivers/regulator/tps65219-regulator.c      | 2 +-
- drivers/regulator/tps6594-regulator.c       | 2 +-
- drivers/regulator/twl-regulator.c           | 1 -
- drivers/regulator/twl6030-regulator.c       | 1 -
- drivers/regulator/uniphier-regulator.c      | 2 +-
- drivers/regulator/vctrl-regulator.c         | 2 +-
- drivers/regulator/vexpress-regulator.c      | 3 ++-
- 36 files changed, 28 insertions(+), 38 deletions(-)
+ drivers/rtc/rtc-abx80x.c        | 2 +-
+ drivers/rtc/rtc-armada38x.c     | 1 -
+ drivers/rtc/rtc-at91rm9200.c    | 1 -
+ drivers/rtc/rtc-ds1742.c        | 1 -
+ drivers/rtc/rtc-fsl-ftm-alarm.c | 5 +----
+ drivers/rtc/rtc-isl12026.c      | 1 -
+ drivers/rtc/rtc-isl1208.c       | 2 +-
+ drivers/rtc/rtc-jz4740.c        | 2 +-
+ drivers/rtc/rtc-lpc24xx.c       | 3 +--
+ drivers/rtc/rtc-m41t80.c        | 2 +-
+ drivers/rtc/rtc-mpc5121.c       | 3 ---
+ drivers/rtc/rtc-mt6397.c        | 2 +-
+ drivers/rtc/rtc-mt7622.c        | 4 ++--
+ drivers/rtc/rtc-mxc.c           | 1 -
+ drivers/rtc/rtc-pcf85063.c      | 2 +-
+ drivers/rtc/rtc-pcf85363.c      | 1 -
+ drivers/rtc/rtc-pxa.c           | 1 -
+ drivers/rtc/rtc-rs5c372.c       | 2 +-
+ drivers/rtc/rtc-rv3028.c        | 2 +-
+ drivers/rtc/rtc-rv3032.c        | 2 +-
+ drivers/rtc/rtc-rv8803.c        | 2 +-
+ drivers/rtc/rtc-rx6110.c        | 1 -
+ drivers/rtc/rtc-rx8581.c        | 1 -
+ drivers/rtc/rtc-rzn1.c          | 2 +-
+ drivers/rtc/rtc-s3c.c           | 1 -
+ drivers/rtc/rtc-stm32.c         | 3 ++-
+ drivers/rtc/rtc-stmp3xxx.c      | 1 -
+ drivers/rtc/rtc-sun6i.c         | 1 -
+ drivers/rtc/rtc-sunxi.c         | 2 --
+ drivers/rtc/rtc-ti-k3.c         | 2 +-
+ 30 files changed, 18 insertions(+), 38 deletions(-)
 
-diff --git a/drivers/regulator/act8945a-regulator.c b/drivers/regulator/act8945a-regulator.c
-index e26264529b74..24cbdd833863 100644
---- a/drivers/regulator/act8945a-regulator.c
-+++ b/drivers/regulator/act8945a-regulator.c
-@@ -8,7 +8,7 @@
-  */
- 
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
-diff --git a/drivers/regulator/atc260x-regulator.c b/drivers/regulator/atc260x-regulator.c
-index 87e237d740bc..09fe51464090 100644
---- a/drivers/regulator/atc260x-regulator.c
-+++ b/drivers/regulator/atc260x-regulator.c
-@@ -7,7 +7,8 @@
- 
- #include <linux/mfd/atc260x/core.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
- 
-diff --git a/drivers/regulator/axp20x-regulator.c b/drivers/regulator/axp20x-regulator.c
-index 810f90f3e2a1..c657820b0bbb 100644
---- a/drivers/regulator/axp20x-regulator.c
-+++ b/drivers/regulator/axp20x-regulator.c
-@@ -20,7 +20,6 @@
- #include <linux/mfd/axp20x.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
-diff --git a/drivers/regulator/cpcap-regulator.c b/drivers/regulator/cpcap-regulator.c
-index 1fd79fb17303..6958d154442b 100644
---- a/drivers/regulator/cpcap-regulator.c
-+++ b/drivers/regulator/cpcap-regulator.c
-@@ -12,7 +12,7 @@
- #include <linux/err.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/machine.h>
-diff --git a/drivers/regulator/fan53555.c b/drivers/regulator/fan53555.c
-index 289c06e09f47..48f312167e53 100644
---- a/drivers/regulator/fan53555.c
-+++ b/drivers/regulator/fan53555.c
-@@ -12,7 +12,7 @@
- #include <linux/err.h>
+diff --git a/drivers/rtc/rtc-abx80x.c b/drivers/rtc/rtc-abx80x.c
+index e08d3181bd2a..fde2b8054c2e 100644
+--- a/drivers/rtc/rtc-abx80x.c
++++ b/drivers/rtc/rtc-abx80x.c
+@@ -15,7 +15,7 @@
  #include <linux/i2c.h>
+ #include <linux/kstrtox.h>
  #include <linux/module.h>
 -#include <linux/of_device.h>
 +#include <linux/of.h>
- #include <linux/param.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-diff --git a/drivers/regulator/fixed.c b/drivers/regulator/fixed.c
-index 364d1a2683b7..55130efae9b8 100644
---- a/drivers/regulator/fixed.c
-+++ b/drivers/regulator/fixed.c
-@@ -25,7 +25,6 @@
- #include <linux/gpio/consumer.h>
- #include <linux/slab.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/regulator/of_regulator.h>
- #include <linux/regulator/machine.h>
- #include <linux/clk.h>
-diff --git a/drivers/regulator/ltc3589.c b/drivers/regulator/ltc3589.c
-index e9751c206d95..cf931b8c36dc 100644
---- a/drivers/regulator/ltc3589.c
-+++ b/drivers/regulator/ltc3589.c
-@@ -10,7 +10,6 @@
- #include <linux/module.h>
- #include <linux/kernel.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/max77826-regulator.c b/drivers/regulator/max77826-regulator.c
-index 3855f5e686d8..5590cdf615b7 100644
---- a/drivers/regulator/max77826-regulator.c
-+++ b/drivers/regulator/max77826-regulator.c
-@@ -9,7 +9,6 @@
- #include <linux/init.h>
- #include <linux/err.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/mp5416.c b/drivers/regulator/mp5416.c
-index 3886b252fbe7..d068ac93d373 100644
---- a/drivers/regulator/mp5416.c
-+++ b/drivers/regulator/mp5416.c
-@@ -10,7 +10,7 @@
- #include <linux/i2c.h>
- #include <linux/init.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
-diff --git a/drivers/regulator/mp886x.c b/drivers/regulator/mp886x.c
-index ede1b1e58002..9911be2e6bac 100644
---- a/drivers/regulator/mp886x.c
-+++ b/drivers/regulator/mp886x.c
-@@ -9,7 +9,7 @@
- #include <linux/gpio/consumer.h>
- #include <linux/i2c.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/mpq7920.c b/drivers/regulator/mpq7920.c
-index bf677c535edc..4926c229109b 100644
---- a/drivers/regulator/mpq7920.c
-+++ b/drivers/regulator/mpq7920.c
+ #include <linux/rtc.h>
+ #include <linux/watchdog.h>
+ 
+diff --git a/drivers/rtc/rtc-armada38x.c b/drivers/rtc/rtc-armada38x.c
+index b4139c200676..8abcad38b10c 100644
+--- a/drivers/rtc/rtc-armada38x.c
++++ b/drivers/rtc/rtc-armada38x.c
 @@ -11,7 +11,6 @@
- #include <linux/init.h>
- #include <linux/err.h>
+ #include <linux/io.h>
+ #include <linux/module.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
  #include <linux/platform_device.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/mt6315-regulator.c b/drivers/regulator/mt6315-regulator.c
-index 8047081ea2f7..2608a6652d77 100644
---- a/drivers/regulator/mt6315-regulator.c
-+++ b/drivers/regulator/mt6315-regulator.c
-@@ -3,7 +3,7 @@
- // Copyright (c) 2021 MediaTek Inc.
+ #include <linux/rtc.h>
  
+diff --git a/drivers/rtc/rtc-at91rm9200.c b/drivers/rtc/rtc-at91rm9200.c
+index e9d17232d0a8..245588a7b417 100644
+--- a/drivers/rtc/rtc-at91rm9200.c
++++ b/drivers/rtc/rtc-at91rm9200.c
+@@ -22,7 +22,6 @@
+ #include <linux/io.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/rtc.h>
+diff --git a/drivers/rtc/rtc-ds1742.c b/drivers/rtc/rtc-ds1742.c
+index a5026b0514e7..6ae8b9a294fe 100644
+--- a/drivers/rtc/rtc-ds1742.c
++++ b/drivers/rtc/rtc-ds1742.c
+@@ -16,7 +16,6 @@
+ #include <linux/jiffies.h>
+ #include <linux/rtc.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/io.h>
+ #include <linux/module.h>
+diff --git a/drivers/rtc/rtc-fsl-ftm-alarm.c b/drivers/rtc/rtc-fsl-ftm-alarm.c
+index 3d7c4077fe1c..a72c4ad0cec6 100644
+--- a/drivers/rtc/rtc-fsl-ftm-alarm.c
++++ b/drivers/rtc/rtc-fsl-ftm-alarm.c
+@@ -11,11 +11,8 @@
+ #include <linux/err.h>
+ #include <linux/interrupt.h>
+ #include <linux/io.h>
+-#include <linux/of_address.h>
+-#include <linux/of_irq.h>
+ #include <linux/platform_device.h>
+-#include <linux/of.h>
+-#include <linux/of_device.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/module.h>
+ #include <linux/fsl/ftm.h>
+ #include <linux/rtc.h>
+diff --git a/drivers/rtc/rtc-isl12026.c b/drivers/rtc/rtc-isl12026.c
+index 5abff5d348ac..8b00659fc955 100644
+--- a/drivers/rtc/rtc-isl12026.c
++++ b/drivers/rtc/rtc-isl12026.c
+@@ -11,7 +11,6 @@
+ #include <linux/mutex.h>
+ #include <linux/nvmem-provider.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/rtc.h>
+ #include <linux/slab.h>
+ 
+diff --git a/drivers/rtc/rtc-isl1208.c b/drivers/rtc/rtc-isl1208.c
+index b0712b4e3648..57e65e1b11f0 100644
+--- a/drivers/rtc/rtc-isl1208.c
++++ b/drivers/rtc/rtc-isl1208.c
+@@ -9,7 +9,7 @@
+ #include <linux/clk.h>
+ #include <linux/i2c.h>
  #include <linux/module.h>
 -#include <linux/of_device.h>
 +#include <linux/of.h>
- #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/machine.h>
-diff --git a/drivers/regulator/mt6359-regulator.c b/drivers/regulator/mt6359-regulator.c
-index 3eb86ec21d08..5cf6448fb05f 100644
---- a/drivers/regulator/mt6359-regulator.c
-+++ b/drivers/regulator/mt6359-regulator.c
-@@ -2,12 +2,13 @@
- //
- // Copyright (c) 2021 MediaTek Inc.
+ #include <linux/of_irq.h>
+ #include <linux/rtc.h>
  
-+#include <linux/platform_device.h>
+diff --git a/drivers/rtc/rtc-jz4740.c b/drivers/rtc/rtc-jz4740.c
+index 36453b008139..6ba889d7d4c4 100644
+--- a/drivers/rtc/rtc-jz4740.c
++++ b/drivers/rtc/rtc-jz4740.c
+@@ -11,7 +11,7 @@
+ #include <linux/iopoll.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
  #include <linux/platform_device.h>
- #include <linux/mfd/mt6359/registers.h>
- #include <linux/mfd/mt6359p/registers.h>
+ #include <linux/pm_wakeirq.h>
+ #include <linux/property.h>
+diff --git a/drivers/rtc/rtc-lpc24xx.c b/drivers/rtc/rtc-lpc24xx.c
+index a4612e543f35..df17c48ff086 100644
+--- a/drivers/rtc/rtc-lpc24xx.c
++++ b/drivers/rtc/rtc-lpc24xx.c
+@@ -9,9 +9,8 @@
+ #include <linux/clk.h>
+ #include <linux/io.h>
+ #include <linux/kernel.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/module.h>
+-#include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/rtc.h>
+ 
+diff --git a/drivers/rtc/rtc-m41t80.c b/drivers/rtc/rtc-m41t80.c
+index 3cc5151e0986..866489ad56d6 100644
+--- a/drivers/rtc/rtc-m41t80.c
++++ b/drivers/rtc/rtc-m41t80.c
+@@ -17,7 +17,7 @@
+ #include <linux/init.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/rtc.h>
+ #include <linux/slab.h>
+ #include <linux/mutex.h>
+diff --git a/drivers/rtc/rtc-mpc5121.c b/drivers/rtc/rtc-mpc5121.c
+index 07df43e4c4d0..69a6ab69c5f8 100644
+--- a/drivers/rtc/rtc-mpc5121.c
++++ b/drivers/rtc/rtc-mpc5121.c
+@@ -11,10 +11,7 @@
+ #include <linux/module.h>
+ #include <linux/rtc.h>
+ #include <linux/of.h>
+-#include <linux/of_address.h>
+-#include <linux/of_device.h>
+ #include <linux/of_irq.h>
+-#include <linux/of_platform.h>
+ #include <linux/io.h>
+ #include <linux/slab.h>
+ 
+diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+index 1d297af80f87..1617063669cc 100644
+--- a/drivers/rtc/rtc-mt6397.c
++++ b/drivers/rtc/rtc-mt6397.c
+@@ -9,7 +9,7 @@
  #include <linux/mfd/mt6397/core.h>
  #include <linux/module.h>
+ #include <linux/mutex.h>
 -#include <linux/of_device.h>
 +#include <linux/of.h>
+ #include <linux/platform_device.h>
  #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/machine.h>
-diff --git a/drivers/regulator/mtk-dvfsrc-regulator.c b/drivers/regulator/mtk-dvfsrc-regulator.c
-index efca67207a5a..f1280d45265d 100644
---- a/drivers/regulator/mtk-dvfsrc-regulator.c
-+++ b/drivers/regulator/mtk-dvfsrc-regulator.c
-@@ -6,8 +6,7 @@
- #include <linux/init.h>
- #include <linux/module.h>
- #include <linux/platform_device.h>
--#include <linux/of_device.h>
--#include <linux/of_platform.h>
-+#include <linux/of_.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
- #include <linux/soc/mediatek/mtk_dvfsrc.h>
-diff --git a/drivers/regulator/pbias-regulator.c b/drivers/regulator/pbias-regulator.c
-index 0c9873e9abdc..cd5a0d7e4455 100644
---- a/drivers/regulator/pbias-regulator.c
-+++ b/drivers/regulator/pbias-regulator.c
-@@ -25,7 +25,6 @@
- #include <linux/regmap.h>
- #include <linux/slab.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
+ #include <linux/rtc.h>
+diff --git a/drivers/rtc/rtc-mt7622.c b/drivers/rtc/rtc-mt7622.c
+index 81857a457c32..094c649fc137 100644
+--- a/drivers/rtc/rtc-mt7622.c
++++ b/drivers/rtc/rtc-mt7622.c
+@@ -7,9 +7,9 @@
  
- struct pbias_reg_info {
- 	u32 enable;
-diff --git a/drivers/regulator/pca9450-regulator.c b/drivers/regulator/pca9450-regulator.c
-index 91bfb7e026c9..2ab365d2749f 100644
---- a/drivers/regulator/pca9450-regulator.c
-+++ b/drivers/regulator/pca9450-regulator.c
-@@ -11,7 +11,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/machine.h>
-diff --git a/drivers/regulator/pwm-regulator.c b/drivers/regulator/pwm-regulator.c
-index b64d99695b84..2aff6db748e2 100644
---- a/drivers/regulator/pwm-regulator.c
-+++ b/drivers/regulator/pwm-regulator.c
-@@ -10,11 +10,11 @@
- #include <linux/module.h>
- #include <linux/init.h>
- #include <linux/err.h>
-+#include <linux/platform_device.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/machine.h>
- #include <linux/regulator/of_regulator.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/pwm.h>
- #include <linux/gpio/consumer.h>
- 
-diff --git a/drivers/regulator/qcom-rpmh-regulator.c b/drivers/regulator/qcom-rpmh-regulator.c
-index f3b280af0773..ec1b50721ec6 100644
---- a/drivers/regulator/qcom-rpmh-regulator.c
-+++ b/drivers/regulator/qcom-rpmh-regulator.c
-@@ -7,7 +7,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/string.h>
-diff --git a/drivers/regulator/qcom_smd-regulator.c b/drivers/regulator/qcom_smd-regulator.c
-index 18189f35db68..f53ada076252 100644
---- a/drivers/regulator/qcom_smd-regulator.c
-+++ b/drivers/regulator/qcom_smd-regulator.c
-@@ -6,7 +6,6 @@
- 
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/qcom_usb_vbus-regulator.c b/drivers/regulator/qcom_usb_vbus-regulator.c
-index 57ec613f4a0a..cd94ed67621f 100644
---- a/drivers/regulator/qcom_usb_vbus-regulator.c
-+++ b/drivers/regulator/qcom_usb_vbus-regulator.c
-@@ -8,7 +8,6 @@
- #include <linux/err.h>
- #include <linux/kernel.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
-index 460525ed006c..867a2cf243f6 100644
---- a/drivers/regulator/rk808-regulator.c
-+++ b/drivers/regulator/rk808-regulator.c
-@@ -17,9 +17,10 @@
- #include <linux/delay.h>
- #include <linux/gpio.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/of_gpio.h>
- #include <linux/mfd/rk808.h>
-+#include <linux/platform_device.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
- #include <linux/gpio/consumer.h>
-diff --git a/drivers/regulator/rt5759-regulator.c b/drivers/regulator/rt5759-regulator.c
-index 90555a9ef1b0..c2553dcee050 100644
---- a/drivers/regulator/rt5759-regulator.c
-+++ b/drivers/regulator/rt5759-regulator.c
-@@ -4,7 +4,7 @@
- #include <linux/i2c.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/stm32-pwr.c b/drivers/regulator/stm32-pwr.c
-index 4c60eddad60d..85b0102fb9b1 100644
---- a/drivers/regulator/stm32-pwr.c
-+++ b/drivers/regulator/stm32-pwr.c
-@@ -6,8 +6,7 @@
- #include <linux/io.h>
- #include <linux/iopoll.h>
+ #include <linux/clk.h>
+ #include <linux/interrupt.h>
++#include <linux/io.h>
++#include <linux/mod_devicetable.h>
  #include <linux/module.h>
 -#include <linux/of_address.h>
 -#include <linux/of_device.h>
-+#include <linux/of.h>
  #include <linux/platform_device.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/stm32-vrefbuf.c b/drivers/regulator/stm32-vrefbuf.c
-index f5ccc7dd309a..717144cbe0f9 100644
---- a/drivers/regulator/stm32-vrefbuf.c
-+++ b/drivers/regulator/stm32-vrefbuf.c
-@@ -10,7 +10,7 @@
+ #include <linux/rtc.h>
+ 
+diff --git a/drivers/rtc/rtc-mxc.c b/drivers/rtc/rtc-mxc.c
+index 762cf03345f1..dbb935dbbd8a 100644
+--- a/drivers/rtc/rtc-mxc.c
++++ b/drivers/rtc/rtc-mxc.c
+@@ -11,7 +11,6 @@
+ #include <linux/pm_wakeirq.h>
+ #include <linux/clk.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ 
+ #define RTC_INPUT_CLK_32768HZ	(0x00 << 5)
+ #define RTC_INPUT_CLK_32000HZ	(0x01 << 5)
+diff --git a/drivers/rtc/rtc-pcf85063.c b/drivers/rtc/rtc-pcf85063.c
+index e517abfaee2a..073977d71b18 100644
+--- a/drivers/rtc/rtc-pcf85063.c
++++ b/drivers/rtc/rtc-pcf85063.c
+@@ -14,7 +14,7 @@
+ #include <linux/bcd.h>
+ #include <linux/rtc.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/pm_wakeirq.h>
+ #include <linux/regmap.h>
+ 
+diff --git a/drivers/rtc/rtc-pcf85363.c b/drivers/rtc/rtc-pcf85363.c
+index 65b8b1338dbb..569c79bac0ee 100644
+--- a/drivers/rtc/rtc-pcf85363.c
++++ b/drivers/rtc/rtc-pcf85363.c
+@@ -15,7 +15,6 @@
+ #include <linux/errno.h>
+ #include <linux/bcd.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/regmap.h>
+ 
+ /*
+diff --git a/drivers/rtc/rtc-pxa.c b/drivers/rtc/rtc-pxa.c
+index eeacf480cf36..e400c78252e8 100644
+--- a/drivers/rtc/rtc-pxa.c
++++ b/drivers/rtc/rtc-pxa.c
+@@ -14,7 +14,6 @@
  #include <linux/io.h>
+ #include <linux/slab.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ 
+ #include "rtc-sa1100.h"
+ 
+diff --git a/drivers/rtc/rtc-rs5c372.c b/drivers/rtc/rtc-rs5c372.c
+index a5a6c8772ecd..ecabeef09196 100644
+--- a/drivers/rtc/rtc-rs5c372.c
++++ b/drivers/rtc/rtc-rs5c372.c
+@@ -12,7 +12,7 @@
+ #include <linux/bcd.h>
+ #include <linux/slab.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ 
+ /*
+  * Ricoh has a family of I2C based RTCs, which differ only slightly from
+diff --git a/drivers/rtc/rtc-rv3028.c b/drivers/rtc/rtc-rv3028.c
+index 076e56f4e01a..68d86d06c3c3 100644
+--- a/drivers/rtc/rtc-rv3028.c
++++ b/drivers/rtc/rtc-rv3028.c
+@@ -17,7 +17,7 @@
+ #include <linux/kernel.h>
+ #include <linux/log2.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/regmap.h>
+ #include <linux/rtc.h>
+ 
+diff --git a/drivers/rtc/rtc-rv3032.c b/drivers/rtc/rtc-rv3032.c
+index 6b8eb2039a33..35b2e36b426a 100644
+--- a/drivers/rtc/rtc-rv3032.c
++++ b/drivers/rtc/rtc-rv3032.c
+@@ -19,7 +19,7 @@
+ #include <linux/kernel.h>
+ #include <linux/log2.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/regmap.h>
+ #include <linux/rtc.h>
+ 
+diff --git a/drivers/rtc/rtc-rv8803.c b/drivers/rtc/rtc-rv8803.c
+index 98679cae13e8..fd8ab0b2f731 100644
+--- a/drivers/rtc/rtc-rv8803.c
++++ b/drivers/rtc/rtc-rv8803.c
+@@ -15,7 +15,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/rtc.h>
+ 
+ #define RV8803_I2C_TRY_COUNT		4
+diff --git a/drivers/rtc/rtc-rx6110.c b/drivers/rtc/rtc-rx6110.c
+index 8702db6096ba..834274db8c3f 100644
+--- a/drivers/rtc/rtc-rx6110.c
++++ b/drivers/rtc/rtc-rx6110.c
+@@ -13,7 +13,6 @@
+ #include <linux/regmap.h>
+ #include <linux/rtc.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/spi/spi.h>
+ #include <linux/i2c.h>
+ 
+diff --git a/drivers/rtc/rtc-rx8581.c b/drivers/rtc/rtc-rx8581.c
+index 82881fd2e14a..48efd61a114d 100644
+--- a/drivers/rtc/rtc-rx8581.c
++++ b/drivers/rtc/rtc-rx8581.c
+@@ -13,7 +13,6 @@
+ #include <linux/i2c.h>
+ #include <linux/bcd.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/regmap.h>
+ #include <linux/rtc.h>
+ #include <linux/log2.h>
+diff --git a/drivers/rtc/rtc-rzn1.c b/drivers/rtc/rtc-rzn1.c
+index dca736caba85..6f98969eedca 100644
+--- a/drivers/rtc/rtc-rzn1.c
++++ b/drivers/rtc/rtc-rzn1.c
+@@ -15,7 +15,7 @@
+ #include <linux/init.h>
  #include <linux/iopoll.h>
  #include <linux/module.h>
 -#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/sy8824x.c b/drivers/regulator/sy8824x.c
-index d0703105c439..d49c0cba09fb 100644
---- a/drivers/regulator/sy8824x.c
-+++ b/drivers/regulator/sy8824x.c
-@@ -8,7 +8,7 @@
- 
- #include <linux/module.h>
- #include <linux/i2c.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/sy8827n.c b/drivers/regulator/sy8827n.c
-index 433959b43549..f11ff38b36c9 100644
---- a/drivers/regulator/sy8827n.c
-+++ b/drivers/regulator/sy8827n.c
-@@ -9,7 +9,7 @@
- #include <linux/gpio/consumer.h>
- #include <linux/module.h>
- #include <linux/i2c.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/tps6286x-regulator.c b/drivers/regulator/tps6286x-regulator.c
-index b1c4b5120745..c06f6d1dc737 100644
---- a/drivers/regulator/tps6286x-regulator.c
-+++ b/drivers/regulator/tps6286x-regulator.c
-@@ -4,7 +4,7 @@
- #include <linux/err.h>
- #include <linux/i2c.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/regmap.h>
- #include <linux/regulator/of_regulator.h>
- #include <linux/regulator/machine.h>
-diff --git a/drivers/regulator/tps6287x-regulator.c b/drivers/regulator/tps6287x-regulator.c
-index b1c0963586ac..19a4a300a963 100644
---- a/drivers/regulator/tps6287x-regulator.c
-+++ b/drivers/regulator/tps6287x-regulator.c
-@@ -8,8 +8,8 @@
- 
- #include <linux/err.h>
- #include <linux/i2c.h>
 +#include <linux/mod_devicetable.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
- #include <linux/regmap.h>
- #include <linux/regulator/of_regulator.h>
- #include <linux/regulator/machine.h>
-diff --git a/drivers/regulator/tps65218-regulator.c b/drivers/regulator/tps65218-regulator.c
-index 13985883e5f0..f44b5767099c 100644
---- a/drivers/regulator/tps65218-regulator.c
-+++ b/drivers/regulator/tps65218-regulator.c
-@@ -8,12 +8,12 @@
-  */
- 
- #include <linux/kernel.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
- #include <linux/device.h>
- #include <linux/init.h>
- #include <linux/err.h>
  #include <linux/platform_device.h>
--#include <linux/of_device.h>
- #include <linux/regmap.h>
- #include <linux/regulator/of_regulator.h>
- #include <linux/regulator/driver.h>
-diff --git a/drivers/regulator/tps65219-regulator.c b/drivers/regulator/tps65219-regulator.c
-index 8971b507a79a..b4065356392f 100644
---- a/drivers/regulator/tps65219-regulator.c
-+++ b/drivers/regulator/tps65219-regulator.c
-@@ -15,8 +15,8 @@
- #include <linux/device.h>
- #include <linux/init.h>
- #include <linux/err.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
--#include <linux/of_device.h>
- #include <linux/regmap.h>
- #include <linux/regulator/of_regulator.h>
- #include <linux/regulator/driver.h>
-diff --git a/drivers/regulator/tps6594-regulator.c b/drivers/regulator/tps6594-regulator.c
-index d5a574ec6d12..25ef102c8270 100644
---- a/drivers/regulator/tps6594-regulator.c
-+++ b/drivers/regulator/tps6594-regulator.c
-@@ -9,7 +9,7 @@
- #include <linux/init.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
-diff --git a/drivers/regulator/twl-regulator.c b/drivers/regulator/twl-regulator.c
-index 3e724f5345de..5bacfcebf59a 100644
---- a/drivers/regulator/twl-regulator.c
-+++ b/drivers/regulator/twl-regulator.c
-@@ -12,7 +12,6 @@
- #include <linux/err.h>
- #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/rtc.h>
+diff --git a/drivers/rtc/rtc-s3c.c b/drivers/rtc/rtc-s3c.c
+index 70e1a18e5efd..282238818f63 100644
+--- a/drivers/rtc/rtc-s3c.c
++++ b/drivers/rtc/rtc-s3c.c
+@@ -23,7 +23,6 @@
+ #include <linux/log2.h>
+ #include <linux/slab.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/machine.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/twl6030-regulator.c b/drivers/regulator/twl6030-regulator.c
-index f9c695f9bde8..6eed0f6e0adb 100644
---- a/drivers/regulator/twl6030-regulator.c
-+++ b/drivers/regulator/twl6030-regulator.c
-@@ -13,7 +13,6 @@
- #include <linux/err.h>
- #include <linux/platform_device.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/machine.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/uniphier-regulator.c b/drivers/regulator/uniphier-regulator.c
-index 7e2785e10dc6..1d8304b88bd6 100644
---- a/drivers/regulator/uniphier-regulator.c
-+++ b/drivers/regulator/uniphier-regulator.c
-@@ -7,7 +7,7 @@
- #include <linux/clk.h>
+ #include <linux/uaccess.h>
  #include <linux/io.h>
+ 
+diff --git a/drivers/rtc/rtc-stm32.c b/drivers/rtc/rtc-stm32.c
+index 3d36e11cff80..2c114e3b0f66 100644
+--- a/drivers/rtc/rtc-stm32.c
++++ b/drivers/rtc/rtc-stm32.c
+@@ -10,7 +10,8 @@
+ #include <linux/ioport.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
+ #include <linux/pm_wakeirq.h>
+ #include <linux/regmap.h>
+ #include <linux/rtc.h>
+diff --git a/drivers/rtc/rtc-stmp3xxx.c b/drivers/rtc/rtc-stmp3xxx.c
+index 6f11b745f34d..7566d0a44af8 100644
+--- a/drivers/rtc/rtc-stmp3xxx.c
++++ b/drivers/rtc/rtc-stmp3xxx.c
+@@ -18,7 +18,6 @@
+ #include <linux/delay.h>
+ #include <linux/rtc.h>
+ #include <linux/slab.h>
+-#include <linux/of_device.h>
+ #include <linux/of.h>
+ #include <linux/stmp_device.h>
+ #include <linux/stmp3xxx_rtc_wdt.h>
+diff --git a/drivers/rtc/rtc-sun6i.c b/drivers/rtc/rtc-sun6i.c
+index 71548dd59a3a..753a2d9c8a17 100644
+--- a/drivers/rtc/rtc-sun6i.c
++++ b/drivers/rtc/rtc-sun6i.c
+@@ -24,7 +24,6 @@
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/rtc.h>
+ #include <linux/slab.h>
+diff --git a/drivers/rtc/rtc-sunxi.c b/drivers/rtc/rtc-sunxi.c
+index 5d019e3a835a..5cab9953c44f 100644
+--- a/drivers/rtc/rtc-sunxi.c
++++ b/drivers/rtc/rtc-sunxi.c
+@@ -14,8 +14,6 @@
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_address.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/rtc.h>
+ #include <linux/types.h>
+diff --git a/drivers/rtc/rtc-ti-k3.c b/drivers/rtc/rtc-ti-k3.c
+index 0d90fe923355..ec759d8f7023 100644
+--- a/drivers/rtc/rtc-ti-k3.c
++++ b/drivers/rtc/rtc-ti-k3.c
+@@ -9,7 +9,7 @@
+ #include <linux/delay.h>
+ #include <linux/mod_devicetable.h>
  #include <linux/module.h>
 -#include <linux/of_device.h>
 +#include <linux/of.h>
  #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/regulator/driver.h>
-diff --git a/drivers/regulator/vctrl-regulator.c b/drivers/regulator/vctrl-regulator.c
-index 85dca90233f6..2796580a3a3c 100644
---- a/drivers/regulator/vctrl-regulator.c
-+++ b/drivers/regulator/vctrl-regulator.c
-@@ -10,7 +10,7 @@
- #include <linux/init.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/regulator/coupler.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
-diff --git a/drivers/regulator/vexpress-regulator.c b/drivers/regulator/vexpress-regulator.c
-index b545dbc70a4d..6687077e9a97 100644
---- a/drivers/regulator/vexpress-regulator.c
-+++ b/drivers/regulator/vexpress-regulator.c
-@@ -8,7 +8,8 @@
- #include <linux/device.h>
- #include <linux/err.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/platform_device.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/machine.h>
- #include <linux/regulator/of_regulator.h>
+ #include <linux/sys_soc.h>
+ #include <linux/property.h>
 -- 
 2.40.1
 
