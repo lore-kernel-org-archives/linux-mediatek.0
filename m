@@ -4,94 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEE1DEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 17:46:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52AC0EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 17:47:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NW8RCfS2FdNQ9T01dPL1pDbAvBuG/vOLjSfPqNh3mzE=; b=pm/TXyH3ETcNRI7bfOB55zzESC
-	jqHwQLu8rp1CZgmqAIu1c6LSvo27/u1qemJMNYOAG7vnlZP7elO3EAgK1vMbYiR4FV/ngJBgWV4nE
-	fVFDhLMTOdkBVzzOgdzMyJkWdJl1FojnqUWJy+Qhz8y1Deeqpb8jl7mbO/RYEJ1kLS6sQvLZgIF0Z
-	gbG9MHdb53lBlQrgEw4PS+hBlNNI14dp7o+hwkkfo0si6+IbYZw3IBsa4Bae65kWzExp9ww8/naX+
-	oveOHKw6ALvG7dP3kG88qVloomyZz6+OuLHg0pyfjW0HPz1t1jHc7CcJ/9cgW5VNPhmZKTselhP07
-	MMvCV4Bg==;
+	bh=QPqdUUqkc4rI75UMAc4Xs8y3YEcjzz1RiNA4x7IYBHU=; b=c5JS0ubmklXnDPcq/g9O6vHb0K
+	9ZBbplzsa/0BdkUi9f45vF/ldKBNq0G05jwtOwenSkTC9tasj1eyYWeotEhS0NYLB7hbW8c4N8P1b
+	iNrtUuMDfMB8W0Zh+bpGTDk5/pNfPuFwKILQmOgXQfk7wFL7Mi7ennoHaORcPu5AxNITFutM2HOiZ
+	6pb8lZPsmvdSgMEbxVA3ZAcuMqtK+kCaVG7eC0cxYA3QzcezgFkAmu/ViHynyT8EPGhRiA3h4yBQp
+	wr4ogjc5pBg9PFHwVfFZQ9fVYESMJ/Apf8symFT4BKet+BbeHTcckhviRwfjuTXFPNZ01J6REVzMr
+	2FGtkHAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMsS-006oFi-2G;
-	Fri, 14 Jul 2023 17:46:48 +0000
-Received: from mail-io1-f48.google.com ([209.85.166.48])
+	id 1qKMt7-006ocT-1z;
+	Fri, 14 Jul 2023 17:47:29 +0000
+Received: from mail-il1-f176.google.com ([209.85.166.176])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMsM-006oDF-2d;
-	Fri, 14 Jul 2023 17:46:45 +0000
-Received: by mail-io1-f48.google.com with SMTP id ca18e2360f4ac-77ac14ff51bso85994639f.3;
-        Fri, 14 Jul 2023 10:46:42 -0700 (PDT)
+	id 1qKMt2-006oZ8-0Z;
+	Fri, 14 Jul 2023 17:47:25 +0000
+Received: by mail-il1-f176.google.com with SMTP id e9e14a558f8ab-3456fda4ed1so10446845ab.0;
+        Fri, 14 Jul 2023 10:47:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689356801; x=1691948801;
+        d=1e100.net; s=20221208; t=1689356843; x=1691948843;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=NW8RCfS2FdNQ9T01dPL1pDbAvBuG/vOLjSfPqNh3mzE=;
-        b=NzUiTYOS1e31zmFEf+wol8m8xx74FdO74WE0FB6NSNhw3j24pG8e1Oc4DhKHrm+V7C
-         IZ7dK/OBYIw8MKB7plD1Erz8NNaoCm9y5xJTDpVzUXeWLiHShuzaYNoCKnnhk26bzGTx
-         lXd5mRgKpr5INynJeTBgtYwOBhhrsjZcpZa55cin3xSlNynZ9WUtC8yrrwqK8jI5rrWl
-         nCGZIYsIwGy61sGvuHFGvTW0Bo0rwtyAuuP9rtKWiZIr34MT+JOcegJ72PTJ/p0ACbtd
-         IqZnh7dmMPY8A81x7NYNsYcMSSaZbNYIEHdS84zqrxfH32FmjcE5fMatHM8pPmo1sBF/
-         ECKA==
-X-Gm-Message-State: ABy/qLZWlqufrIWTpMclFzx8cpzw1ATc3DtMzvc+3GGR2XWwBo9jFsYh
-	kP1Izb6Zy4FSVrKb5i23wQ==
-X-Google-Smtp-Source: APBJJlEaaodbI1t+koER5XOikQU05WVwywgK9M2Pzdf6J3oNSw6epHEbfDncttOdYgtpq2jbYsslhw==
-X-Received: by 2002:a5e:d614:0:b0:76c:5513:8b00 with SMTP id w20-20020a5ed614000000b0076c55138b00mr5225749iom.21.1689356801276;
-        Fri, 14 Jul 2023 10:46:41 -0700 (PDT)
+        bh=QPqdUUqkc4rI75UMAc4Xs8y3YEcjzz1RiNA4x7IYBHU=;
+        b=brtyrLOsescNNlBZF9FzOxzilTXCQ5643aeq/iRNTi4OH/n8PrNrpN0hP8HmO8fQHK
+         kgEpDbnk0XyMDeJvChXp4qrQlDPJgOf/xnmFVMkYtN3tmTpB9xtyBJEZa7A7sWUATNiW
+         ulvhH6inTn+fR4EHQqkOfUfTYUOlc1rpZJZBiyQwDgd+nsiCIhEuwsyJJpZq/cFXRfC4
+         m3SuXeucGZ972HbchOuJtCisAwezJEDvY4W4UcOeHIpB1OLLUGMKR7RNp6V/8wp4S10g
+         2soOgbXv6MX3sHVzzsAqpuvXLj1pJKUPtHiDt4/rZ+91zrfcGs5GI7aPRj0JQI0oUkFR
+         M0ng==
+X-Gm-Message-State: ABy/qLZjNTnL1a5LV16qH8RNcq1kJy2FqWYeFOefWxzJ4vf2GNBZgoxe
+	qupnOfy1T1dhvykPo7mrOA==
+X-Google-Smtp-Source: APBJJlE9mCouhYM8S5pU14gRiUMFnROknyjtSCY83LyzowqhqRu2tyhgLmXsFN5YRo8A9ohFE0CbNg==
+X-Received: by 2002:a92:c6ce:0:b0:346:46e:2099 with SMTP id v14-20020a92c6ce000000b00346046e2099mr5032285ilm.1.1689356843369;
+        Fri, 14 Jul 2023 10:47:23 -0700 (PDT)
 Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id g10-20020a02cd0a000000b0042b28813816sm2747603jaq.14.2023.07.14.10.46.36
+        by smtp.gmail.com with ESMTPSA id gu16-20020a0566382e1000b0042b534e9f52sm2642967jab.59.2023.07.14.10.47.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jul 2023 10:46:40 -0700 (PDT)
-Received: (nullmailer pid 4057741 invoked by uid 1000);
-	Fri, 14 Jul 2023 17:46:23 -0000
+        Fri, 14 Jul 2023 10:47:22 -0700 (PDT)
+Received: (nullmailer pid 4059270 invoked by uid 1000);
+	Fri, 14 Jul 2023 17:47:07 -0000
 From: Rob Herring <robh@kernel.org>
-To: Codrin Ciubotariu <codrin.ciubotariu@microchip.com>, Andi Shyti <andi.shyti@kernel.org>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, Jochen Friedrich <jochen@scram.de>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Jean-Marie Verdun <verdun@hpe.com>, Nick Hawkins <nick.hawkins@hpe.com>, 
-	Dong Aisheng <aisheng.dong@nxp.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Oleksij Rempel <linux@rempel-privat.de>, Paul Cercueil <paul@crapouillou.net>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Khalil Blaiech <kblaiech@nvidia.com>, 
-	Asmaa Mnebhi <asmaa@nvidia.com>, Chris Packham <chris.packham@alliedtelesis.co.nz>, 
-	Qii Wang <qii.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Stefan Roese <sr@denx.de>, 
-	Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
-	Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, 
-	Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, 
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Chris Brandt <chris.brandt@renesas.com>, 
-	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Laxman Dewangan <ldewangan@nvidia.com>, 
-	Dmitry Osipenko <digetx@gmail.com>, Peter Rosin <peda@axentia.se>, 
-	Michael Hennerich <michael.hennerich@analog.com>
-Cc: devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linuxppc-dev@lists.ozlabs.org, linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-mips@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, linux-actions@lists.infradead.org, linux-tegra@vger.kernel.org
-Subject: [PATCH] I2C: Explicitly include correct DT includes
-Date: Fri, 14 Jul 2023 11:46:16 -0600
-Message-Id: <20230714174619.4057577-1-robh@kernel.org>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Conor Dooley <conor.dooley@microchip.com>, Daire McNamara <daire.mcnamara@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Michal Simek <michal.simek@amd.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
+Subject: [PATCH] mailbox: Explicitly include correct DT includes
+Date: Fri, 14 Jul 2023 11:47:01 -0600
+Message-Id: <20230714174702.4059100-1-robh@kernel.org>
 X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_104642_865040_8EAD9202 
-X-CRM114-Status: GOOD (  13.50  )
+X-CRM114-CacheID: sfid-20230714_104724_230643_58DF7A95 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,474 +88,226 @@ explicitly include the correct includes.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/i2c/busses/i2c-at91-core.c    | 1 -
- drivers/i2c/busses/i2c-at91-master.c  | 1 -
- drivers/i2c/busses/i2c-bcm-iproc.c    | 2 +-
- drivers/i2c/busses/i2c-bcm2835.c      | 2 +-
- drivers/i2c/busses/i2c-cpm.c          | 4 ++--
- drivers/i2c/busses/i2c-davinci.c      | 2 +-
- drivers/i2c/busses/i2c-emev2.c        | 2 +-
- drivers/i2c/busses/i2c-exynos5.c      | 4 +---
- drivers/i2c/busses/i2c-gxp.c          | 3 ++-
- drivers/i2c/busses/i2c-ibm_iic.c      | 3 ++-
- drivers/i2c/busses/i2c-imx-lpi2c.c    | 1 -
- drivers/i2c/busses/i2c-imx.c          | 1 -
- drivers/i2c/busses/i2c-jz4780.c       | 2 +-
- drivers/i2c/busses/i2c-lpc2k.c        | 1 -
- drivers/i2c/busses/i2c-meson.c        | 1 -
- drivers/i2c/busses/i2c-mlxbf.c        | 2 +-
- drivers/i2c/busses/i2c-mpc.c          | 3 ++-
- drivers/i2c/busses/i2c-mt65xx.c       | 4 +---
- drivers/i2c/busses/i2c-mt7621.c       | 3 ++-
- drivers/i2c/busses/i2c-mxs.c          | 1 -
- drivers/i2c/busses/i2c-npcm7xx.c      | 1 -
- drivers/i2c/busses/i2c-owl.c          | 3 ++-
- drivers/i2c/busses/i2c-pca-platform.c | 1 -
- drivers/i2c/busses/i2c-pxa-pci.c      | 1 -
- drivers/i2c/busses/i2c-rcar.c         | 2 +-
- drivers/i2c/busses/i2c-riic.c         | 1 -
- drivers/i2c/busses/i2c-s3c2410.c      | 1 -
- drivers/i2c/busses/i2c-sh_mobile.c    | 2 +-
- drivers/i2c/busses/i2c-sprd.c         | 1 -
- drivers/i2c/busses/i2c-tegra-bpmp.c   | 2 +-
- drivers/i2c/busses/i2c-tegra.c        | 2 +-
- drivers/i2c/muxes/i2c-mux-gpmux.c     | 2 +-
- drivers/i2c/muxes/i2c-mux-ltc4306.c   | 1 -
- 33 files changed, 25 insertions(+), 38 deletions(-)
+ drivers/mailbox/arm_mhu.c            | 1 +
+ drivers/mailbox/arm_mhu_db.c         | 1 -
+ drivers/mailbox/hi3660-mailbox.c     | 1 +
+ drivers/mailbox/hi6220-mailbox.c     | 1 +
+ drivers/mailbox/imx-mailbox.c        | 3 ++-
+ drivers/mailbox/mailbox-mpfs.c       | 1 +
+ drivers/mailbox/mailbox.c            | 1 +
+ drivers/mailbox/mtk-adsp-mailbox.c   | 3 ++-
+ drivers/mailbox/mtk-cmdq-mailbox.c   | 2 +-
+ drivers/mailbox/omap-mailbox.c       | 2 +-
+ drivers/mailbox/platform_mhu.c       | 1 +
+ drivers/mailbox/rockchip-mailbox.c   | 2 +-
+ drivers/mailbox/sprd-mailbox.c       | 2 +-
+ drivers/mailbox/stm32-ipcc.c         | 1 +
+ drivers/mailbox/tegra-hsp.c          | 1 -
+ drivers/mailbox/zynqmp-ipi-mailbox.c | 2 --
+ 16 files changed, 15 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/i2c/busses/i2c-at91-core.c b/drivers/i2c/busses/i2c-at91-core.c
-index 05ad3bc3578a..3563a7fd75db 100644
---- a/drivers/i2c/busses/i2c-at91-core.c
-+++ b/drivers/i2c/busses/i2c-at91-core.c
-@@ -19,7 +19,6 @@
+diff --git a/drivers/mailbox/arm_mhu.c b/drivers/mailbox/arm_mhu.c
+index 22243cabe056..537f7bfb7b06 100644
+--- a/drivers/mailbox/arm_mhu.c
++++ b/drivers/mailbox/arm_mhu.c
+@@ -12,6 +12,7 @@
  #include <linux/io.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/module.h>
++#include <linux/of.h>
+ 
+ #define INTR_STAT_OFS	0x0
+ #define INTR_SET_OFS	0x8
+diff --git a/drivers/mailbox/arm_mhu_db.c b/drivers/mailbox/arm_mhu_db.c
+index aa0a4d83880f..27a510d46908 100644
+--- a/drivers/mailbox/arm_mhu_db.c
++++ b/drivers/mailbox/arm_mhu_db.c
+@@ -15,7 +15,6 @@
+ #include <linux/mailbox_controller.h>
  #include <linux/module.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
+ 
+ #define INTR_STAT_OFS	0x0
+ #define INTR_SET_OFS	0x8
+diff --git a/drivers/mailbox/hi3660-mailbox.c b/drivers/mailbox/hi3660-mailbox.c
+index ab24e731a782..17c29e960fbf 100644
+--- a/drivers/mailbox/hi3660-mailbox.c
++++ b/drivers/mailbox/hi3660-mailbox.c
+@@ -11,6 +11,7 @@
+ #include <linux/iopoll.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/module.h>
++#include <linux/of.h>
  #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/pinctrl/consumer.h>
-diff --git a/drivers/i2c/busses/i2c-at91-master.c b/drivers/i2c/busses/i2c-at91-master.c
-index c0c35785a0dc..94cff1cd527e 100644
---- a/drivers/i2c/busses/i2c-at91-master.c
-+++ b/drivers/i2c/busses/i2c-at91-master.c
-@@ -23,7 +23,6 @@
- #include <linux/interrupt.h>
- #include <linux/io.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/pinctrl/consumer.h>
+ #include <linux/slab.h>
+ 
+diff --git a/drivers/mailbox/hi6220-mailbox.c b/drivers/mailbox/hi6220-mailbox.c
+index 1c73c63598f5..f77741ce42e7 100644
+--- a/drivers/mailbox/hi6220-mailbox.c
++++ b/drivers/mailbox/hi6220-mailbox.c
+@@ -15,6 +15,7 @@
+ #include <linux/kfifo.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/module.h>
++#include <linux/of.h>
  #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-diff --git a/drivers/i2c/busses/i2c-bcm-iproc.c b/drivers/i2c/busses/i2c-bcm-iproc.c
-index 2d8342fdc25d..37d559bc51c4 100644
---- a/drivers/i2c/busses/i2c-bcm-iproc.c
-+++ b/drivers/i2c/busses/i2c-bcm-iproc.c
-@@ -7,7 +7,7 @@
- #include <linux/io.h>
+ #include <linux/slab.h>
+ 
+diff --git a/drivers/mailbox/imx-mailbox.c b/drivers/mailbox/imx-mailbox.c
+index 20f2ec880ad6..3ef4dd8adf5d 100644
+--- a/drivers/mailbox/imx-mailbox.c
++++ b/drivers/mailbox/imx-mailbox.c
+@@ -14,7 +14,8 @@
  #include <linux/kernel.h>
+ #include <linux/mailbox_controller.h>
  #include <linux/module.h>
 -#include <linux/of_device.h>
 +#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- 
-diff --git a/drivers/i2c/busses/i2c-bcm2835.c b/drivers/i2c/busses/i2c-bcm2835.c
-index 8ce6d3f49551..2743e59184b3 100644
---- a/drivers/i2c/busses/i2c-bcm2835.c
-+++ b/drivers/i2c/busses/i2c-bcm2835.c
-@@ -12,7 +12,7 @@
- #include <linux/interrupt.h>
- #include <linux/io.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- 
-diff --git a/drivers/i2c/busses/i2c-cpm.c b/drivers/i2c/busses/i2c-cpm.c
-index 732daf6a932b..9a664abf734d 100644
---- a/drivers/i2c/busses/i2c-cpm.c
-+++ b/drivers/i2c/busses/i2c-cpm.c
-@@ -26,10 +26,10 @@
- #include <linux/i2c.h>
- #include <linux/io.h>
- #include <linux/dma-mapping.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/of_irq.h>
--#include <linux/of_platform.h>
 +#include <linux/platform_device.h>
- #include <sysdev/fsl_soc.h>
- #include <asm/cpm.h>
- 
-diff --git a/drivers/i2c/busses/i2c-davinci.c b/drivers/i2c/busses/i2c-davinci.c
-index 71b60778c643..927ea9ba74ab 100644
---- a/drivers/i2c/busses/i2c-davinci.c
-+++ b/drivers/i2c/busses/i2c-davinci.c
-@@ -25,7 +25,7 @@
+ #include <linux/pm_runtime.h>
+ #include <linux/suspend.h>
  #include <linux/slab.h>
- #include <linux/cpufreq.h>
- #include <linux/gpio/consumer.h>
+diff --git a/drivers/mailbox/mailbox-mpfs.c b/drivers/mailbox/mailbox-mpfs.c
+index 162df49654fb..20ee283a04cc 100644
+--- a/drivers/mailbox/mailbox-mpfs.c
++++ b/drivers/mailbox/mailbox-mpfs.c
+@@ -14,6 +14,7 @@
+ #include <linux/module.h>
+ #include <linux/kernel.h>
+ #include <linux/interrupt.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/platform_device.h>
+ #include <linux/mailbox_controller.h>
+ #include <soc/microchip/mpfs.h>
+diff --git a/drivers/mailbox/mailbox.c b/drivers/mailbox/mailbox.c
+index adf36c05fa43..ebff3baf3045 100644
+--- a/drivers/mailbox/mailbox.c
++++ b/drivers/mailbox/mailbox.c
+@@ -17,6 +17,7 @@
+ #include <linux/bitops.h>
+ #include <linux/mailbox_client.h>
+ #include <linux/mailbox_controller.h>
++#include <linux/of.h>
+ 
+ #include "mailbox.h"
+ 
+diff --git a/drivers/mailbox/mtk-adsp-mailbox.c b/drivers/mailbox/mtk-adsp-mailbox.c
+index 14bc0057de81..91487aa4d7da 100644
+--- a/drivers/mailbox/mtk-adsp-mailbox.c
++++ b/drivers/mailbox/mtk-adsp-mailbox.c
+@@ -10,7 +10,8 @@
+ #include <linux/kernel.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/module.h>
 -#include <linux/of_device.h>
 +#include <linux/of.h>
- #include <linux/platform_data/i2c-davinci.h>
- #include <linux/pm_runtime.h>
++#include <linux/platform_device.h>
+ #include <linux/slab.h>
  
-diff --git a/drivers/i2c/busses/i2c-emev2.c b/drivers/i2c/busses/i2c-emev2.c
-index 4ba93cd91c0f..557409410445 100644
---- a/drivers/i2c/busses/i2c-emev2.c
-+++ b/drivers/i2c/busses/i2c-emev2.c
+ struct mtk_adsp_mbox_priv {
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index b18d47ea13a0..4d62b07c1411 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -15,7 +15,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/mailbox/mtk-cmdq-mailbox.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ 
+ #define CMDQ_OP_CODE_MASK		(0xff << CMDQ_OP_CODE_SHIFT)
+ #define CMDQ_NUM_CMD(t)			(t->cmd_buf_size / CMDQ_INST_SIZE)
+diff --git a/drivers/mailbox/omap-mailbox.c b/drivers/mailbox/omap-mailbox.c
+index fa2ce3246b70..792bcaebbc9b 100644
+--- a/drivers/mailbox/omap-mailbox.c
++++ b/drivers/mailbox/omap-mailbox.c
 @@ -16,7 +16,7 @@
- #include <linux/io.h>
- #include <linux/kernel.h>
+ #include <linux/kfifo.h>
+ #include <linux/err.h>
  #include <linux/module.h>
 -#include <linux/of_device.h>
 +#include <linux/of.h>
  #include <linux/platform_device.h>
- #include <linux/sched.h>
- 
-diff --git a/drivers/i2c/busses/i2c-exynos5.c b/drivers/i2c/busses/i2c-exynos5.c
-index f378cd479e55..7668210a59d5 100644
---- a/drivers/i2c/busses/i2c-exynos5.c
-+++ b/drivers/i2c/busses/i2c-exynos5.c
-@@ -18,9 +18,7 @@
- #include <linux/clk.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/omap-mailbox.h>
+diff --git a/drivers/mailbox/platform_mhu.c b/drivers/mailbox/platform_mhu.c
+index a5922ac0b0bf..54161303a36b 100644
+--- a/drivers/mailbox/platform_mhu.c
++++ b/drivers/mailbox/platform_mhu.c
+@@ -15,6 +15,7 @@
  #include <linux/slab.h>
- #include <linux/io.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
--#include <linux/of_irq.h>
-+#include <linux/of.h>
- #include <linux/spinlock.h>
- 
- /*
-diff --git a/drivers/i2c/busses/i2c-gxp.c b/drivers/i2c/busses/i2c-gxp.c
-index 70b0de07ed99..efafc0528c44 100644
---- a/drivers/i2c/busses/i2c-gxp.c
-+++ b/drivers/i2c/busses/i2c-gxp.c
-@@ -4,8 +4,9 @@
  #include <linux/err.h>
  #include <linux/io.h>
- #include <linux/i2c.h>
 +#include <linux/mod_devicetable.h>
  #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/mfd/syscon.h>
- 
-diff --git a/drivers/i2c/busses/i2c-ibm_iic.c b/drivers/i2c/busses/i2c-ibm_iic.c
-index 1ad9d3b26dd3..408820319ec4 100644
---- a/drivers/i2c/busses/i2c-ibm_iic.c
-+++ b/drivers/i2c/busses/i2c-ibm_iic.c
-@@ -37,9 +37,10 @@
- #include <asm/irq.h>
- #include <linux/io.h>
- #include <linux/i2c.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/of_irq.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- 
- #include "i2c-ibm_iic.h"
- 
-diff --git a/drivers/i2c/busses/i2c-imx-lpi2c.c b/drivers/i2c/busses/i2c-imx-lpi2c.c
-index c3287c887c6f..41a98c73fd83 100644
---- a/drivers/i2c/busses/i2c-imx-lpi2c.c
-+++ b/drivers/i2c/busses/i2c-imx-lpi2c.c
-@@ -17,7 +17,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/pinctrl/consumer.h>
  #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-diff --git a/drivers/i2c/busses/i2c-imx.c b/drivers/i2c/busses/i2c-imx.c
-index 65128a73e8a3..e88bf865fb38 100644
---- a/drivers/i2c/busses/i2c-imx.c
-+++ b/drivers/i2c/busses/i2c-imx.c
-@@ -41,7 +41,6 @@
- #include <linux/hrtimer.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_dma.h>
- #include <linux/pinctrl/consumer.h>
- #include <linux/platform_data/i2c-imx.h>
-diff --git a/drivers/i2c/busses/i2c-jz4780.c b/drivers/i2c/busses/i2c-jz4780.c
-index 0dfe60399521..55035cca0ae5 100644
---- a/drivers/i2c/busses/i2c-jz4780.c
-+++ b/drivers/i2c/busses/i2c-jz4780.c
-@@ -18,7 +18,7 @@
+ #include <linux/mailbox_controller.h>
+diff --git a/drivers/mailbox/rockchip-mailbox.c b/drivers/mailbox/rockchip-mailbox.c
+index 116286ecc5a0..10c7bee2a915 100644
+--- a/drivers/mailbox/rockchip-mailbox.c
++++ b/drivers/mailbox/rockchip-mailbox.c
+@@ -8,8 +8,8 @@
  #include <linux/io.h>
  #include <linux/kernel.h>
+ #include <linux/mailbox_controller.h>
++#include <linux/of.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ 
+ #define MAILBOX_A2B_INTEN		0x00
+diff --git a/drivers/mailbox/sprd-mailbox.c b/drivers/mailbox/sprd-mailbox.c
+index e3c899abeed8..9ae57de77d4d 100644
+--- a/drivers/mailbox/sprd-mailbox.c
++++ b/drivers/mailbox/sprd-mailbox.c
+@@ -11,7 +11,7 @@
+ #include <linux/io.h>
+ #include <linux/mailbox_controller.h>
  #include <linux/module.h>
 -#include <linux/of_device.h>
 +#include <linux/of.h>
  #include <linux/platform_device.h>
- #include <linux/sched.h>
+ #include <linux/clk.h>
+ 
+diff --git a/drivers/mailbox/stm32-ipcc.c b/drivers/mailbox/stm32-ipcc.c
+index 15d538fe2113..4ad3653f3866 100644
+--- a/drivers/mailbox/stm32-ipcc.c
++++ b/drivers/mailbox/stm32-ipcc.c
+@@ -11,6 +11,7 @@
+ #include <linux/io.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/module.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_wakeirq.h>
+ 
+diff --git a/drivers/mailbox/tegra-hsp.c b/drivers/mailbox/tegra-hsp.c
+index 7f98e7436d94..c87c2b900b64 100644
+--- a/drivers/mailbox/tegra-hsp.c
++++ b/drivers/mailbox/tegra-hsp.c
+@@ -8,7 +8,6 @@
+ #include <linux/io.h>
+ #include <linux/mailbox_controller.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm.h>
  #include <linux/slab.h>
-diff --git a/drivers/i2c/busses/i2c-lpc2k.c b/drivers/i2c/busses/i2c-lpc2k.c
-index 5c6d96554753..ac1fa83fddfb 100644
---- a/drivers/i2c/busses/i2c-lpc2k.c
-+++ b/drivers/i2c/busses/i2c-lpc2k.c
-@@ -20,7 +20,6 @@
- #include <linux/kernel.h>
+diff --git a/drivers/mailbox/zynqmp-ipi-mailbox.c b/drivers/mailbox/zynqmp-ipi-mailbox.c
+index d097f45b0e5f..e4fcac97dbfa 100644
+--- a/drivers/mailbox/zynqmp-ipi-mailbox.c
++++ b/drivers/mailbox/zynqmp-ipi-mailbox.c
+@@ -16,8 +16,6 @@
  #include <linux/module.h>
  #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/sched.h>
- #include <linux/time.h>
-diff --git a/drivers/i2c/busses/i2c-meson.c b/drivers/i2c/busses/i2c-meson.c
-index 16026c895bb6..c7b203cc4434 100644
---- a/drivers/i2c/busses/i2c-meson.c
-+++ b/drivers/i2c/busses/i2c-meson.c
-@@ -15,7 +15,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/types.h>
- 
-diff --git a/drivers/i2c/busses/i2c-mlxbf.c b/drivers/i2c/busses/i2c-mlxbf.c
-index ae66bdd1b737..2315c4883d05 100644
---- a/drivers/i2c/busses/i2c-mlxbf.c
-+++ b/drivers/i2c/busses/i2c-mlxbf.c
-@@ -15,7 +15,7 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/mutex.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/string.h>
- 
-diff --git a/drivers/i2c/busses/i2c-mpc.c b/drivers/i2c/busses/i2c-mpc.c
-index f460a7fb4eae..e4e4995ab224 100644
---- a/drivers/i2c/busses/i2c-mpc.c
-+++ b/drivers/i2c/busses/i2c-mpc.c
-@@ -11,9 +11,10 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/sched/signal.h>
-+#include <linux/of.h>
  #include <linux/of_address.h>
- #include <linux/of_irq.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <linux/property.h>
- #include <linux/slab.h>
- 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 7ca3f2221ba6..910a1943c4a0 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -19,9 +19,7 @@
- #include <linux/kernel.h>
- #include <linux/mm.h>
- #include <linux/module.h>
--#include <linux/of_address.h>
 -#include <linux/of_device.h>
 -#include <linux/of_irq.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/scatterlist.h>
- #include <linux/sched.h>
-diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-mt7621.c
-index 104bb194e990..81d46169bc1f 100644
---- a/drivers/i2c/busses/i2c-mt7621.c
-+++ b/drivers/i2c/busses/i2c-mt7621.c
-@@ -16,7 +16,8 @@
- #include <linux/io.h>
- #include <linux/iopoll.h>
- #include <linux/module.h>
--#include <linux/of_platform.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
- #include <linux/reset.h>
- 
- #define REG_SM0CFG2_REG		0x28
-diff --git a/drivers/i2c/busses/i2c-mxs.c b/drivers/i2c/busses/i2c-mxs.c
-index 1d76f1c4dc06..36def0a9c95c 100644
---- a/drivers/i2c/busses/i2c-mxs.c
-+++ b/drivers/i2c/busses/i2c-mxs.c
-@@ -22,7 +22,6 @@
- #include <linux/io.h>
- #include <linux/stmp_device.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/dma-mapping.h>
- #include <linux/dmaengine.h>
- #include <linux/dma/mxs-dma.h>
-diff --git a/drivers/i2c/busses/i2c-npcm7xx.c b/drivers/i2c/busses/i2c-npcm7xx.c
-index 53b65ffb6a64..495a8b5f6a2b 100644
---- a/drivers/i2c/busses/i2c-npcm7xx.c
-+++ b/drivers/i2c/busses/i2c-npcm7xx.c
-@@ -17,7 +17,6 @@
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- 
-diff --git a/drivers/i2c/busses/i2c-owl.c b/drivers/i2c/busses/i2c-owl.c
-index 5f0ef8c35141..777f1a0278c7 100644
---- a/drivers/i2c/busses/i2c-owl.c
-+++ b/drivers/i2c/busses/i2c-owl.c
-@@ -16,7 +16,8 @@
- #include <linux/io.h>
- #include <linux/iopoll.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
- 
- /* I2C registers */
- #define OWL_I2C_REG_CTL		0x0000
-diff --git a/drivers/i2c/busses/i2c-pca-platform.c b/drivers/i2c/busses/i2c-pca-platform.c
-index d2a9e7b61c1a..b8d5480c54f6 100644
---- a/drivers/i2c/busses/i2c-pca-platform.c
-+++ b/drivers/i2c/busses/i2c-pca-platform.c
-@@ -22,7 +22,6 @@
- #include <linux/gpio/consumer.h>
- #include <linux/io.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- 
- #include <asm/irq.h>
- 
-diff --git a/drivers/i2c/busses/i2c-pxa-pci.c b/drivers/i2c/busses/i2c-pxa-pci.c
-index 30e38bc8b6db..08b3229c443d 100644
---- a/drivers/i2c/busses/i2c-pxa-pci.c
-+++ b/drivers/i2c/busses/i2c-pxa-pci.c
-@@ -12,7 +12,6 @@
- #include <linux/platform_device.h>
- #include <linux/platform_data/i2c-pxa.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_address.h>
- 
- #define CE4100_PCI_I2C_DEVS	3
-diff --git a/drivers/i2c/busses/i2c-rcar.c b/drivers/i2c/busses/i2c-rcar.c
-index 2d9c37410ebd..d0bca8575860 100644
---- a/drivers/i2c/busses/i2c-rcar.c
-+++ b/drivers/i2c/busses/i2c-rcar.c
-@@ -24,7 +24,7 @@
- #include <linux/i2c-smbus.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
-diff --git a/drivers/i2c/busses/i2c-riic.c b/drivers/i2c/busses/i2c-riic.c
-index 5f8c0bd508d2..f0ee8871d5ae 100644
---- a/drivers/i2c/busses/i2c-riic.c
-+++ b/drivers/i2c/busses/i2c-riic.c
-@@ -42,7 +42,6 @@
- #include <linux/io.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
-diff --git a/drivers/i2c/busses/i2c-s3c2410.c b/drivers/i2c/busses/i2c-s3c2410.c
-index 28f0e5c64f32..c5ccbc7cb9ff 100644
---- a/drivers/i2c/busses/i2c-s3c2410.c
-+++ b/drivers/i2c/busses/i2c-s3c2410.c
-@@ -24,7 +24,6 @@
- #include <linux/slab.h>
- #include <linux/io.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/gpio/consumer.h>
- #include <linux/pinctrl/consumer.h>
- #include <linux/mfd/syscon.h>
-diff --git a/drivers/i2c/busses/i2c-sh_mobile.c b/drivers/i2c/busses/i2c-sh_mobile.c
-index 21717b943a9e..4666df0c2937 100644
---- a/drivers/i2c/busses/i2c-sh_mobile.c
-+++ b/drivers/i2c/busses/i2c-sh_mobile.c
-@@ -20,7 +20,7 @@
- #include <linux/io.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/slab.h>
-diff --git a/drivers/i2c/busses/i2c-sprd.c b/drivers/i2c/busses/i2c-sprd.c
-index ffc54fbf814d..c52d1bec60b4 100644
---- a/drivers/i2c/busses/i2c-sprd.c
-+++ b/drivers/i2c/busses/i2c-sprd.c
-@@ -14,7 +14,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- 
-diff --git a/drivers/i2c/busses/i2c-tegra-bpmp.c b/drivers/i2c/busses/i2c-tegra-bpmp.c
-index bc3f94561746..b0840fa0f53e 100644
---- a/drivers/i2c/busses/i2c-tegra-bpmp.c
-+++ b/drivers/i2c/busses/i2c-tegra-bpmp.c
-@@ -12,7 +12,7 @@
- #include <linux/init.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- 
-diff --git a/drivers/i2c/busses/i2c-tegra.c b/drivers/i2c/busses/i2c-tegra.c
-index bcbbf23aa530..6851347f3b9f 100644
---- a/drivers/i2c/busses/i2c-tegra.c
-+++ b/drivers/i2c/busses/i2c-tegra.c
-@@ -22,7 +22,7 @@
- #include <linux/kernel.h>
- #include <linux/ktime.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/pinctrl/consumer.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-diff --git a/drivers/i2c/muxes/i2c-mux-gpmux.c b/drivers/i2c/muxes/i2c-mux-gpmux.c
-index 0405af0e1510..baccf4bfaf02 100644
---- a/drivers/i2c/muxes/i2c-mux-gpmux.c
-+++ b/drivers/i2c/muxes/i2c-mux-gpmux.c
-@@ -11,7 +11,7 @@
- #include <linux/i2c-mux.h>
- #include <linux/module.h>
- #include <linux/mux/consumer.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
  #include <linux/platform_device.h>
  
- struct mux {
-diff --git a/drivers/i2c/muxes/i2c-mux-ltc4306.c b/drivers/i2c/muxes/i2c-mux-ltc4306.c
-index 5a03031519be..28c5aa6b7c24 100644
---- a/drivers/i2c/muxes/i2c-mux-ltc4306.c
-+++ b/drivers/i2c/muxes/i2c-mux-ltc4306.c
-@@ -15,7 +15,6 @@
- #include <linux/i2c.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/property.h>
- #include <linux/regmap.h>
- #include <linux/slab.h>
+ /* IPI agent ID any */
 -- 
 2.40.1
 
