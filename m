@@ -4,76 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04236C0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 19:35:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B58F7C001DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 19:36:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f/E3MDN+s8txY9G/AmYo3fqfcfs5GGZ1rjxi0pj7FQ0=; b=doYQ/xCqFL11lxtNoZusB05fzf
-	0EH/3pEaIrnyhI7gQJGElYKqkAs9Vz6xeNoFoXljx0EO3Byrwy3JIZZP901gtsFajAcY3Lwk0yupD
-	YAOASe8Q1M4NjpdjkmVZ8g00iGXXRYoZs60oNAJG8huHCXiOH3LVfgaVbJXKOzthyJ9BiVFsA6Axt
-	xaeyv+1MEOy6fwxgc1pek/d0cbZnRBzuRfLO0dTA3dTU+Loeejxx0V3AXQ/t0HzUIK4o/iVZTuBck
-	xm10GZ0pO0YptuFShHJutNkvz8/v1ohI3/Ouuh3o7sZNKH8v2EeIUbC0hZCY+J2xC/MBEuYdFU4V7
-	RF2bNJ9g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ui/hYqp1kWYkMnWgauwkUhdMp+tW3fV5QNxGKFBzBho=; b=bpU3CehG/saG0sjSFuABPh8Dj4
+	WVtekEzWy9V87ur70EPYL+UO3cVyt+/hMb7s+n4Ne1PtWoZqi/4yd7Agccx6DFFqAhz1sebzobQRA
+	vTt8OmHc0b2yDpATkG/AmK/OdBDS5Ow9JOPyAZuTiczF+TfRDOG28a2ob1GN6z+u+AHBtAp0arOTB
+	nsmrNgdq2Z9usAH1YGRzmWtYUvg4zgqclK3//klQpwImoPYKh2S0Hk2hkoHYCfyCFSeEfSIVA6mHo
+	UuWIp5WntFLk1c6nFg7+rnPJA7L+XVvJWgidBzQKvQ2ESLmOG20ny69/CjDynBJ1rwQwlcI8X8jgA
+	lk/cYVLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKOZG-0076DF-0Y;
-	Fri, 14 Jul 2023 19:35:06 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qKOaM-0076OZ-1w;
+	Fri, 14 Jul 2023 19:36:14 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKOZA-0076BM-1f;
-	Fri, 14 Jul 2023 19:35:01 +0000
+	id 1qKOaK-0076NG-07;
+	Fri, 14 Jul 2023 19:36:13 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5D0F361DAF;
-	Fri, 14 Jul 2023 19:34:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A64C0C433C7;
-	Fri, 14 Jul 2023 19:34:56 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3881A61DE2;
+	Fri, 14 Jul 2023 19:36:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F33BC433C7;
+	Fri, 14 Jul 2023 19:36:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689363298;
-	bh=coJii5owjJT4psrykdkd2QZrVS8+72vCzDQtZKFwADs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Qs69AsxFTwxe7qQ9dAN1lLk532XZRcYbAlVYzjJD+j6L1k2cgP+nY21n8aKZ/xTqS
-	 yIrUprT1gUdZd5+myyllx4fx2LY801n9XsQj9jB0Xv4vn8U95LkUyBsE6DQWUrtcaE
-	 cfWcbUB5eykdGbpqw4cHUdzJkS423d39ApYdkQM2geD7Cl1DiHsuJmQNe5wuUVJIHF
-	 ch+4A8vSG8vDxjMHCWdQ6oUXXQU5MBV0YIJS2gmEazA5YA3Y9sECSsM9D/DQ9+UYVp
-	 V2VJbU8B0GRWLR4kA9/sBvV9Vu1sSV0YAreNqw0cWVX2eephIXifBN2sFYL8qEMnfH
-	 sV5wF6scpfxDA==
-Message-ID: <dce45b56-2b2b-850b-e5b6-fdc98cfa04ee@kernel.org>
-Date: Fri, 14 Jul 2023 14:34:55 -0500
+	s=k20201202; t=1689363370;
+	bh=Cysarz/hhMo/bK+dPUbL3TWMzv7sx9BTXTOdSSRZeOw=;
+	h=Date:From:To:Cc:Subject:Reply-To:References:In-Reply-To:From;
+	b=ega7w8KgFJ16HD1GYoX1h4GiocZpQVQFvGcEGonZbz750+cvVJnS222Rs1NkYmeur
+	 FBlGhqgX+LkX6K1+6UT6Ynqb4157JHvh8IdnFy05pscRhGgf+h0vDoheEQjAPG6xGL
+	 1DeTwrWjuxaWJKnSrSX9v70q6KjMdeenBZxKanBPFnjuNk8u973+Z6IrexuiSj5N3H
+	 GsuJIC2hlA5j8tRu5QZSp/PxlVMMBIN0B28okP9XI4NnfjEzDsM5Lmhanpfr4kMCvR
+	 2nJkQvIk4LCEpZsjDK8H3AQAXnq7vygyZC3ndShkjhwx/uKDAtTObQSXew1oI61EF7
+	 EcQ/INrDH3TGA==
+Received: by paulmck-ThinkPad-P17-Gen-1.home (Postfix, from userid 1000)
+	id 2DFB8CE009F; Fri, 14 Jul 2023 12:36:10 -0700 (PDT)
+Date: Fri, 14 Jul 2023 12:36:10 -0700
+From: "Paul E. McKenney" <paulmck@kernel.org>
+To: Sandeep Dhavale <dhavale@google.com>
+Cc: Alan Huang <mmpgouride@gmail.com>,
+	Joel Fernandes <joel@joelfernandes.org>,
+	Gao Xiang <hsiangkao@linux.alibaba.com>,
+	Frederic Weisbecker <frederic@kernel.org>,
+	Neeraj Upadhyay <quic_neeraju@quicinc.com>,
+	Josh Triplett <josh@joshtriplett.org>,
+	Boqun Feng <boqun.feng@gmail.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+	Lai Jiangshan <jiangshanlai@gmail.com>,
+	Zqiang <qiang.zhang1211@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-erofs@lists.ozlabs.org, xiang@kernel.org,
+	Will Shiu <Will.Shiu@mediatek.com>, kernel-team@android.com,
+	rcu@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v1] rcu: Fix and improve RCU read lock checks when
+ !CONFIG_DEBUG_LOCK_ALLOC
+Message-ID: <e8e1b75f-e631-4793-9130-472909264406@paulmck-laptop>
+References: <894a3b64-a369-7bc6-c8a8-0910843cc587@linux.alibaba.com>
+ <CAEXW_YSM1yik4yWTgZoxCS9RM6TbsL26VCVCH=41+uMA8chfAQ@mail.gmail.com>
+ <58b661d0-0ebb-4b45-a10d-c5927fb791cd@paulmck-laptop>
+ <7d433fac-a62d-4e81-b8e5-57cf5f2d1d55@paulmck-laptop>
+ <F160D7F8-57DC-4986-90A9-EB50F7C89891@gmail.com>
+ <6E5326AD-9A5D-4570-906A-BDE8257B6F0C@gmail.com>
+ <e8ee7006-c1d0-4c04-bd25-0f518fb6534b@paulmck-laptop>
+ <D042B1CB-2ED4-4DF9-8CF5-5E455E7EAB73@gmail.com>
+ <453bcbbd-94f4-46da-98f6-c9fa5f931231@paulmck-laptop>
+ <CAB=BE-TC0s++t_5H6NjVVcpNvvvubtUpJhRxPsqq2p3ZgaFo9A@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH] firmware: Explicitly include correct DT includes
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
- Cristian Marussi <cristian.marussi@arm.com>, Shawn Guo
- <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Michal Simek <michal.simek@amd.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org
-References: <20230714174438.4054854-1-robh@kernel.org>
-From: Dinh Nguyen <dinguyen@kernel.org>
-In-Reply-To: <20230714174438.4054854-1-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAB=BE-TC0s++t_5H6NjVVcpNvvvubtUpJhRxPsqq2p3ZgaFo9A@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_123500_622089_52D3D04A 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20230714_123612_141947_A07AFD4B 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,31 +98,25 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: paulmck@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 7/14/23 12:44, Rob Herring wrote:
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
+On Fri, Jul 14, 2023 at 12:15:23PM -0700, Sandeep Dhavale wrote:
+> >
+> > Sandeep, thoughts?
+> >
+> I prefer to modify erofs check and contain the fix there as erofs
+> cares about it and it's
+> least invasive. For contexts where erofs cannot tell for sure, it will
+> always schedule kworker
+> (like CONFIG_PREEMPT_COUNT=n).
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->   drivers/firmware/arm_scmi/driver.c | 4 ++--
->   drivers/firmware/imx/imx-dsp.c     | 1 -
->   drivers/firmware/imx/imx-scu-irq.c | 1 +
->   drivers/firmware/imx/imx-scu.c     | 1 +
->   drivers/firmware/mtk-adsp-ipc.c    | 1 -
->   drivers/firmware/raspberrypi.c     | 1 +
->   drivers/firmware/scpi_pm_domain.c  | 3 ++-
->   drivers/firmware/stratix10-rsu.c   | 1 -
+> I will also do measurements to see if erofs should continue to check
+> for context and
+> what are the benefits.
 
-For stratix10-rsu.c, Acked-by: Dinh Nguyen <dinguyen@kernel.org>
+At the end of the day, I guess it is Gao Xiang's and Chao Yu's decision.
+
+							Thanx, Paul
 
