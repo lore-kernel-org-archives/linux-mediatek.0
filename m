@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10251EB64DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 09:12:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13AF8EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 09:12:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
 	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eZRavDpoR/oM9p9VsXBgHmxsS4/tc0SOYu5cR266RZU=; b=DEFcsAhtKeBvUJl58sSpZYuivO
-	RmKSKX6+kOx1sswadicyFJgb/U2GbYovDNxi4tZcktaEBGr7xcZGmK7jNYsH7zT2c1d1FqxpZjB+F
-	Qb8ZD1yyNcWNL8+4bq62OdrBr7Ir0OExb4okvOpwBb8xVvcw5M3VWR9YDqnBmkMYdsjulzzwkhSrj
-	tkWG4wfMvss57w79O8AI0kxUD7psa2Ua40IWu5zfYgVcYcs0Q3WF4j93eaBBtzlEN0MirPmRnsO1C
-	lA/pBiQ7F9QTrLWf/ps2E9QUCYb2mI/kIdeFWmWNVZMUtz0nI/qfTb/F6Esak1P4oIO4tcTmAw6MF
-	ph2kC47w==;
+	bh=Q3stLgcr7QsIYyVtL85+ZPaeP8VcD2MUC2oVyEj57SI=; b=ruJKk/oRcuoIKelqfPDpB41ix1
+	618sjhB1aaQTmwJRE+l8U4gKnUQXWNi4W2V2bFN0RWXT5y8nArwXT+ySYKrX1yHup+W5ey2m3hsOk
+	S/SdqXNP34e5ZBxeM+Zo1O8k5sDY816GbW1GCMw+8QTsiPiylok3Aiuz1dPhsAnkuyCc9og6n0gkO
+	kS901fiAhHDquegn24AcZ7cU+4cjHlncH+9VqtmEyEldzcb7XOtSD0AoU2lHHhdwVv0sTz2VmIkA+
+	Ie+TtV+Rwq5IDKLfxHxtpUCgGfFj1DwUY6ITcMSJAOez2qjutXdwuqoILDpA0IKKynEwaRX+6bMrH
+	HdE2ZipA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKEqc-005drZ-2m;
-	Fri, 14 Jul 2023 09:12:22 +0000
+	id 1qKEqg-005dtA-37;
+	Fri, 14 Jul 2023 09:12:26 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKEqY-005dpS-0W;
-	Fri, 14 Jul 2023 09:12:19 +0000
+	id 1qKEqc-005dqw-1D;
+	Fri, 14 Jul 2023 09:12:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
 	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=eZRavDpoR/oM9p9VsXBgHmxsS4/tc0SOYu5cR266RZU=; b=Jo1S0yIPPyXZ1kdhe3vrz6OTSR
-	VW6Rc4rTjM/a1PnOjYh8JdnR/mL91ZoC5jQZgXh7ThN04lKtorpMl+eZBf4lqCQ4hgiZsrjGyT7EJ
-	MGuEqwmKo6CLr7JjLHA9vz+7H20w+RatQNm8M8OxaW1F5rtSqgQFydLSOEtlmNuAQBuIG545qS49x
-	1USWMsFUBSDroT7jdMtlgfmzDiDmQVIfOmLk1wef0NkLwgCiKid43/cuZJm0BF3MXDQ8ub2sJsIOA
-	DlbgXx4cJfVTb71XFNG3GFieRz7KPfzJqIyTnKFQBRarVMvrlqSEGZ6NY3SnMwSKxsAZVgwx+bafI
-	kxSXkjwQ==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:43778 helo=rmk-PC.armlinux.org.uk)
+	bh=Q3stLgcr7QsIYyVtL85+ZPaeP8VcD2MUC2oVyEj57SI=; b=AtXv4LwapPrEY3GpDXKUSyyYs2
+	flL2SvW1FtnIW6meAk1KoAjCjWcyKC0cwPsTB4OhLgNWwg3RWvSdJaKr0lZzAjE1jT6egyksA1woF
+	O9VJmVBvODm7LMFUX5l3E26wjQ7sGWS+OxlPykBefUIHNEpQcEAUQEZoFDcl0jOXYNFiL/eMhYs5S
+	/bkhEVHaU4bA2cHSBafewt5HXdzrZnI2l7uIHdtKotRr99q0VbTsRfC/Opt9q7ksEl0AApZX2OUBL
+	OwhgR8O+5hYmmaIzX81DtswZY2xprwSdgwsvFYbIrAj0tU5WMKPc5yIbIynNtslbfzkrIfLREwxvo
+	uHKcxPrA==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:33260 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <rmk@armlinux.org.uk>)
-	id 1qKEqS-0000O7-2O;
-	Fri, 14 Jul 2023 10:12:12 +0100
+	id 1qKEqX-0000OT-2p;
+	Fri, 14 Jul 2023 10:12:17 +0100
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1qKEqS-00H0xb-G1; Fri, 14 Jul 2023 10:12:12 +0100
+	id 1qKEqX-00H0xi-M5; Fri, 14 Jul 2023 10:12:17 +0100
 In-Reply-To: <ZLERQ2OBrv44Ppyc@shell.armlinux.org.uk>
 References: <ZLERQ2OBrv44Ppyc@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -73,17 +73,17 @@ Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
 	UNGLinuxDriver@microchip.com,
 	Vladimir Oltean <olteanv@gmail.com>,
 	Woojung Huh <woojung.huh@microchip.com>
-Subject: [PATCH net-next 2/3] net: dsa: remove legacy_pre_march2020 from
- drivers
+Subject: [PATCH net-next 3/3] net: phylink: remove legacy mac_an_restart()
+ method
 MIME-Version: 1.0
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1qKEqS-00H0xb-G1@rmk-PC.armlinux.org.uk>
-Date: Fri, 14 Jul 2023 10:12:12 +0100
+Message-Id: <E1qKEqX-00H0xi-M5@rmk-PC.armlinux.org.uk>
+Date: Fri, 14 Jul 2023 10:12:17 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_021218_349784_63032C6B 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20230714_021222_416535_9DC34E7B 
+X-CRM114-Status: GOOD (  17.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,148 +98,118 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since DSA no longer marks anything as phylink-legacy, there is now no
-need for DSA drivers to set this member to false. Remove all instances
-of this.
+The mac_an_restart() method is now completely unused, and has been
+superseded by phylink_pcs support. Remove this method.
+
+Since phylink_pcs_mac_an_restart() now only deals with the PCS, rename
+the function to remove the _mac infix.
 
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- drivers/net/dsa/b53/b53_common.c       | 6 ------
- drivers/net/dsa/lan9303-core.c         | 6 ------
- drivers/net/dsa/microchip/ksz_common.c | 2 --
- drivers/net/dsa/mt7530.c               | 6 ------
- drivers/net/dsa/mv88e6xxx/chip.c       | 4 ----
- drivers/net/dsa/ocelot/felix.c         | 6 ------
- drivers/net/dsa/qca/qca8k-8xxx.c       | 2 --
- drivers/net/dsa/sja1105/sja1105_main.c | 6 ------
- 8 files changed, 38 deletions(-)
+ drivers/net/phy/phylink.c | 22 +++++++++-------------
+ include/linux/phylink.h   | 12 ------------
+ 2 files changed, 9 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/net/dsa/b53/b53_common.c b/drivers/net/dsa/b53/b53_common.c
-index 3464ce5e7470..4e27dc913cf7 100644
---- a/drivers/net/dsa/b53/b53_common.c
-+++ b/drivers/net/dsa/b53/b53_common.c
-@@ -1393,12 +1393,6 @@ static void b53_phylink_get_caps(struct dsa_switch *ds, int port,
- 	/* Get the implementation specific capabilities */
- 	if (dev->ops->phylink_get_caps)
- 		dev->ops->phylink_get_caps(dev, port, config);
--
--	/* This driver does not make use of the speed, duplex, pause or the
--	 * advertisement in its mac_config, so it is safe to mark this driver
--	 * as non-legacy.
--	 */
--	config->legacy_pre_march2020 = false;
+diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+index 71b1012ef3be..f07e496319b4 100644
+--- a/drivers/net/phy/phylink.c
++++ b/drivers/net/phy/phylink.c
+@@ -1079,17 +1079,13 @@ static void phylink_mac_config(struct phylink *pl,
+ 	pl->mac_ops->mac_config(pl->config, pl->cur_link_an_mode, state);
  }
  
- static struct phylink_pcs *b53_phylink_mac_select_pcs(struct dsa_switch *ds,
-diff --git a/drivers/net/dsa/lan9303-core.c b/drivers/net/dsa/lan9303-core.c
-index ff76444057d2..b0da1e4de63c 100644
---- a/drivers/net/dsa/lan9303-core.c
-+++ b/drivers/net/dsa/lan9303-core.c
-@@ -1290,12 +1290,6 @@ static void lan9303_phylink_get_caps(struct dsa_switch *ds, int port,
- 		__set_bit(PHY_INTERFACE_MODE_GMII,
- 			  config->supported_interfaces);
- 	}
--
--	/* This driver does not make use of the speed, duplex, pause or the
--	 * advertisement in its mac_config, so it is safe to mark this driver
--	 * as non-legacy.
--	 */
--	config->legacy_pre_march2020 = false;
- }
- 
- static void lan9303_phylink_mac_link_up(struct dsa_switch *ds, int port,
-diff --git a/drivers/net/dsa/microchip/ksz_common.c b/drivers/net/dsa/microchip/ksz_common.c
-index 813b91a816bb..07ba2b54ab99 100644
---- a/drivers/net/dsa/microchip/ksz_common.c
-+++ b/drivers/net/dsa/microchip/ksz_common.c
-@@ -1624,8 +1624,6 @@ static void ksz_phylink_get_caps(struct dsa_switch *ds, int port,
+-static void phylink_mac_pcs_an_restart(struct phylink *pl)
++static void phylink_pcs_an_restart(struct phylink *pl)
  {
- 	struct ksz_device *dev = ds->priv;
- 
--	config->legacy_pre_march2020 = false;
--
- 	if (dev->info->supports_mii[port])
- 		__set_bit(PHY_INTERFACE_MODE_MII, config->supported_interfaces);
- 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 38b3c6dda386..8fbda739c1b3 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2949,12 +2949,6 @@ static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
- 	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
- 				   MAC_10 | MAC_100 | MAC_1000FD;
- 
--	/* This driver does not make use of the speed, duplex, pause or the
--	 * advertisement in its mac_config, so it is safe to mark this driver
--	 * as non-legacy.
--	 */
--	config->legacy_pre_march2020 = false;
--
- 	priv->info->mac_port_get_caps(ds, port, config);
+-	if (linkmode_test_bit(ETHTOOL_LINK_MODE_Autoneg_BIT,
+-			      pl->link_config.advertising) &&
++	if (pl->pcs && linkmode_test_bit(ETHTOOL_LINK_MODE_Autoneg_BIT,
++					 pl->link_config.advertising) &&
+ 	    phy_interface_mode_is_8023z(pl->link_config.interface) &&
+-	    phylink_autoneg_inband(pl->cur_link_an_mode)) {
+-		if (pl->pcs)
+-			pl->pcs->ops->pcs_an_restart(pl->pcs);
+-		else if (pl->config->legacy_pre_march2020)
+-			pl->mac_ops->mac_an_restart(pl->config);
+-	}
++	    phylink_autoneg_inband(pl->cur_link_an_mode))
++		pl->pcs->ops->pcs_an_restart(pl->pcs);
  }
  
-diff --git a/drivers/net/dsa/mv88e6xxx/chip.c b/drivers/net/dsa/mv88e6xxx/chip.c
-index 6174855188d9..8dd82fd87fc6 100644
---- a/drivers/net/dsa/mv88e6xxx/chip.c
-+++ b/drivers/net/dsa/mv88e6xxx/chip.c
-@@ -769,10 +769,6 @@ static void mv88e6xxx_get_caps(struct dsa_switch *ds, int port,
- 		__set_bit(PHY_INTERFACE_MODE_GMII,
- 			  config->supported_interfaces);
+ static void phylink_major_config(struct phylink *pl, bool restart,
+@@ -1169,7 +1165,7 @@ static void phylink_major_config(struct phylink *pl, bool restart,
+ 		restart = true;
+ 
+ 	if (restart)
+-		phylink_mac_pcs_an_restart(pl);
++		phylink_pcs_an_restart(pl);
+ 
+ 	if (pl->mac_ops->mac_finish) {
+ 		err = pl->mac_ops->mac_finish(pl->config, pl->cur_link_an_mode,
+@@ -1205,7 +1201,7 @@ static int phylink_change_inband_advert(struct phylink *pl)
+ 	if (!pl->pcs && pl->config->legacy_pre_march2020) {
+ 		/* Legacy method */
+ 		phylink_mac_config(pl, &pl->link_config);
+-		phylink_mac_pcs_an_restart(pl);
++		phylink_pcs_an_restart(pl);
+ 		return 0;
  	}
--
--	/* If we have a .pcs_init, we are not legacy. */
--	if (chip->info->ops->pcs_ops)
--		config->legacy_pre_march2020 = false;
+ 
+@@ -1234,7 +1230,7 @@ static int phylink_change_inband_advert(struct phylink *pl)
+ 		return ret;
+ 
+ 	if (ret > 0)
+-		phylink_mac_pcs_an_restart(pl);
++		phylink_pcs_an_restart(pl);
+ 
+ 	return 0;
  }
+@@ -2533,7 +2529,7 @@ int phylink_ethtool_nway_reset(struct phylink *pl)
  
- static struct phylink_pcs *mv88e6xxx_mac_select_pcs(struct dsa_switch *ds,
-diff --git a/drivers/net/dsa/ocelot/felix.c b/drivers/net/dsa/ocelot/felix.c
-index 8da46d284e35..fd7eb4a52918 100644
---- a/drivers/net/dsa/ocelot/felix.c
-+++ b/drivers/net/dsa/ocelot/felix.c
-@@ -1042,12 +1042,6 @@ static void felix_phylink_get_caps(struct dsa_switch *ds, int port,
- {
- 	struct ocelot *ocelot = ds->priv;
+ 	if (pl->phydev)
+ 		ret = phy_restart_aneg(pl->phydev);
+-	phylink_mac_pcs_an_restart(pl);
++	phylink_pcs_an_restart(pl);
  
--	/* This driver does not make use of the speed, duplex, pause or the
--	 * advertisement in its mac_config, so it is safe to mark this driver
--	 * as non-legacy.
--	 */
--	config->legacy_pre_march2020 = false;
--
- 	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
- 				   MAC_10 | MAC_100 | MAC_1000FD |
- 				   MAC_2500FD;
-diff --git a/drivers/net/dsa/qca/qca8k-8xxx.c b/drivers/net/dsa/qca/qca8k-8xxx.c
-index 09b80644c11b..27bf58e40be6 100644
---- a/drivers/net/dsa/qca/qca8k-8xxx.c
-+++ b/drivers/net/dsa/qca/qca8k-8xxx.c
-@@ -1397,8 +1397,6 @@ static void qca8k_phylink_get_caps(struct dsa_switch *ds, int port,
- 
- 	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
- 		MAC_10 | MAC_100 | MAC_1000FD;
--
--	config->legacy_pre_march2020 = false;
+ 	return ret;
  }
+diff --git a/include/linux/phylink.h b/include/linux/phylink.h
+index b28aa3eef7d5..9e861c8316d0 100644
+--- a/include/linux/phylink.h
++++ b/include/linux/phylink.h
+@@ -234,7 +234,6 @@ struct phylink_config {
+  * @mac_prepare: prepare for a major reconfiguration of the interface.
+  * @mac_config: configure the MAC for the selected mode and state.
+  * @mac_finish: finish a major reconfiguration of the interface.
+- * @mac_an_restart: restart 802.3z BaseX autonegotiation.
+  * @mac_link_down: take the link down.
+  * @mac_link_up: allow the link to come up.
+  *
+@@ -254,7 +253,6 @@ struct phylink_mac_ops {
+ 			   const struct phylink_link_state *state);
+ 	int (*mac_finish)(struct phylink_config *config, unsigned int mode,
+ 			  phy_interface_t iface);
+-	void (*mac_an_restart)(struct phylink_config *config);
+ 	void (*mac_link_down)(struct phylink_config *config, unsigned int mode,
+ 			      phy_interface_t interface);
+ 	void (*mac_link_up)(struct phylink_config *config,
+@@ -459,16 +457,6 @@ void mac_config(struct phylink_config *config, unsigned int mode,
+ int mac_finish(struct phylink_config *config, unsigned int mode,
+ 		phy_interface_t iface);
  
- static void
-diff --git a/drivers/net/dsa/sja1105/sja1105_main.c b/drivers/net/dsa/sja1105/sja1105_main.c
-index 3529a565b4aa..52dd52d6c43d 100644
---- a/drivers/net/dsa/sja1105/sja1105_main.c
-+++ b/drivers/net/dsa/sja1105/sja1105_main.c
-@@ -1396,12 +1396,6 @@ static void sja1105_phylink_get_caps(struct dsa_switch *ds, int port,
- 	struct sja1105_xmii_params_entry *mii;
- 	phy_interface_t phy_mode;
- 
--	/* This driver does not make use of the speed, duplex, pause or the
--	 * advertisement in its mac_config, so it is safe to mark this driver
--	 * as non-legacy.
--	 */
--	config->legacy_pre_march2020 = false;
+-/**
+- * mac_an_restart() - restart 802.3z BaseX autonegotiation
+- * @config: a pointer to a &struct phylink_config.
+- *
+- * Note: This is a legacy method. This function will not be called unless
+- * legacy_pre_march2020 is set in &struct phylink_config and there is no
+- * PCS attached.
+- */
+-void mac_an_restart(struct phylink_config *config);
 -
- 	phy_mode = priv->phy_mode[port];
- 	if (phy_mode == PHY_INTERFACE_MODE_SGMII ||
- 	    phy_mode == PHY_INTERFACE_MODE_2500BASEX) {
+ /**
+  * mac_link_down() - take the link down
+  * @config: a pointer to a &struct phylink_config.
 -- 
 2.30.2
 
