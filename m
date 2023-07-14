@@ -4,89 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B58F7C001DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 19:36:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A12B7EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 19:38:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ui/hYqp1kWYkMnWgauwkUhdMp+tW3fV5QNxGKFBzBho=; b=bpU3CehG/saG0sjSFuABPh8Dj4
-	WVtekEzWy9V87ur70EPYL+UO3cVyt+/hMb7s+n4Ne1PtWoZqi/4yd7Agccx6DFFqAhz1sebzobQRA
-	vTt8OmHc0b2yDpATkG/AmK/OdBDS5Ow9JOPyAZuTiczF+TfRDOG28a2ob1GN6z+u+AHBtAp0arOTB
-	nsmrNgdq2Z9usAH1YGRzmWtYUvg4zgqclK3//klQpwImoPYKh2S0Hk2hkoHYCfyCFSeEfSIVA6mHo
-	UuWIp5WntFLk1c6nFg7+rnPJA7L+XVvJWgidBzQKvQ2ESLmOG20ny69/CjDynBJ1rwQwlcI8X8jgA
-	lk/cYVLA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L9SWkpnSN35koKOx8Hk+jXlyJjgAa+96Jhb8hQdYanQ=; b=h4IveHtERC1ltjDp8kYRp7gWh+
+	yWqYfqRY/Te6gtbhD8gL06AVd+3NzSSqsH3EkrLf/co1WwfhBUQsGKvGydUBHs72nNKdSjqPtugsm
+	jQENl9PCQp1lzMIqbt+khlbuxJZumhBnC0igw7Ii7HdyL1GK1+5FxSLib9IoOMqiLvWBxCLOLuf88
+	h3a7it5R2Hp5hrPzmWPzWVXzSwGwocFBy+sDZBNrcZzE4QXTAcvbDdGWQAvyLC9pr7XZDjahINE5j
+	kbVrwL9Ad2jANttEaf7+mTRSZobHzJMCf02j0qdSEto94HDnnaqJInh4DI/kmtlcEZec1F6TBnnZ0
+	LW0rAudw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKOaM-0076OZ-1w;
-	Fri, 14 Jul 2023 19:36:14 +0000
+	id 1qKOcB-0076gO-2s;
+	Fri, 14 Jul 2023 19:38:07 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKOaK-0076NG-07;
-	Fri, 14 Jul 2023 19:36:13 +0000
+	id 1qKOc7-0076f7-1V;
+	Fri, 14 Jul 2023 19:38:04 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 3881A61DE2;
-	Fri, 14 Jul 2023 19:36:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F33BC433C7;
-	Fri, 14 Jul 2023 19:36:10 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id F02D761D9C;
+	Fri, 14 Jul 2023 19:38:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A62D9C433C8;
+	Fri, 14 Jul 2023 19:37:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689363370;
-	bh=Cysarz/hhMo/bK+dPUbL3TWMzv7sx9BTXTOdSSRZeOw=;
-	h=Date:From:To:Cc:Subject:Reply-To:References:In-Reply-To:From;
-	b=ega7w8KgFJ16HD1GYoX1h4GiocZpQVQFvGcEGonZbz750+cvVJnS222Rs1NkYmeur
-	 FBlGhqgX+LkX6K1+6UT6Ynqb4157JHvh8IdnFy05pscRhGgf+h0vDoheEQjAPG6xGL
-	 1DeTwrWjuxaWJKnSrSX9v70q6KjMdeenBZxKanBPFnjuNk8u973+Z6IrexuiSj5N3H
-	 GsuJIC2hlA5j8tRu5QZSp/PxlVMMBIN0B28okP9XI4NnfjEzDsM5Lmhanpfr4kMCvR
-	 2nJkQvIk4LCEpZsjDK8H3AQAXnq7vygyZC3ndShkjhwx/uKDAtTObQSXew1oI61EF7
-	 EcQ/INrDH3TGA==
-Received: by paulmck-ThinkPad-P17-Gen-1.home (Postfix, from userid 1000)
-	id 2DFB8CE009F; Fri, 14 Jul 2023 12:36:10 -0700 (PDT)
-Date: Fri, 14 Jul 2023 12:36:10 -0700
-From: "Paul E. McKenney" <paulmck@kernel.org>
-To: Sandeep Dhavale <dhavale@google.com>
-Cc: Alan Huang <mmpgouride@gmail.com>,
-	Joel Fernandes <joel@joelfernandes.org>,
-	Gao Xiang <hsiangkao@linux.alibaba.com>,
-	Frederic Weisbecker <frederic@kernel.org>,
-	Neeraj Upadhyay <quic_neeraju@quicinc.com>,
-	Josh Triplett <josh@joshtriplett.org>,
-	Boqun Feng <boqun.feng@gmail.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
-	Lai Jiangshan <jiangshanlai@gmail.com>,
-	Zqiang <qiang.zhang1211@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-erofs@lists.ozlabs.org, xiang@kernel.org,
-	Will Shiu <Will.Shiu@mediatek.com>, kernel-team@android.com,
-	rcu@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v1] rcu: Fix and improve RCU read lock checks when
- !CONFIG_DEBUG_LOCK_ALLOC
-Message-ID: <e8e1b75f-e631-4793-9130-472909264406@paulmck-laptop>
-References: <894a3b64-a369-7bc6-c8a8-0910843cc587@linux.alibaba.com>
- <CAEXW_YSM1yik4yWTgZoxCS9RM6TbsL26VCVCH=41+uMA8chfAQ@mail.gmail.com>
- <58b661d0-0ebb-4b45-a10d-c5927fb791cd@paulmck-laptop>
- <7d433fac-a62d-4e81-b8e5-57cf5f2d1d55@paulmck-laptop>
- <F160D7F8-57DC-4986-90A9-EB50F7C89891@gmail.com>
- <6E5326AD-9A5D-4570-906A-BDE8257B6F0C@gmail.com>
- <e8ee7006-c1d0-4c04-bd25-0f518fb6534b@paulmck-laptop>
- <D042B1CB-2ED4-4DF9-8CF5-5E455E7EAB73@gmail.com>
- <453bcbbd-94f4-46da-98f6-c9fa5f931231@paulmck-laptop>
- <CAB=BE-TC0s++t_5H6NjVVcpNvvvubtUpJhRxPsqq2p3ZgaFo9A@mail.gmail.com>
+	s=k20201202; t=1689363482;
+	bh=fGJ6F5Ae/YFoT2UWCrLli9PCtviQD9Op8m1EXI3LXXU=;
+	h=Date:Subject:List-Id:To:Cc:References:From:In-Reply-To:From;
+	b=jYE5HJQE/PMLG3EMjSGfoDEwwkgTHcoohATsRj1fUayKeLvR07xfOCkIHjOGvykxm
+	 aip3QDRPq8Tte2DkfUmSHZYsHmLZJYvw4RHnWKjN7H2k5XufcmIyNXAFFJMVZrttGD
+	 RwkO5eJzf2pXSQ2UeEaJGCNH9HxiH5dE3rgoNoRCk/bpzPFDEAUAN4F2aWvXFzP6uF
+	 tvaRkjiJZkfD3yK3nyeb0QlgICDJAPAZxEupkfWlQU8Kq+ab2l8pDvgNxcFZ047/q1
+	 vlJYGOonIcEBT5Vbwjoja/4Hd8/U5hzQGy29Oq3Jn4cYJW1LHKlpFNKSD0YpAjZmSP
+	 Vh/AAsrUwaumg==
+Message-ID: <2d001d37-90f8-4a44-5573-ea1667f44108@kernel.org>
+Date: Fri, 14 Jul 2023 14:37:52 -0500
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAB=BE-TC0s++t_5H6NjVVcpNvvvubtUpJhRxPsqq2p3ZgaFo9A@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH] clk: Explicitly include correct DT includes
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>, Michael Turquette
+ <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@aj.id.au>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Sudeep Holla <sudeep.holla@arm.com>,
+ Cristian Marussi <cristian.marussi@arm.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Alex Helms <alexander.helms.jy@renesas.com>, Abel Vesa
+ <abelvesa@kernel.org>, Peng Fan <peng.fan@nxp.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Nishanth Menon <nm@ti.com>, Tero Kristo <kristo@kernel.org>,
+ Santosh Shilimkar <ssantosh@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jerome Brunet <jbrunet@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Tomasz Figa <tomasz.figa@gmail.com>, Chanwoo Choi <cw00.choi@samsung.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Viresh Kumar <vireshk@kernel.org>,
+ Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Emil Renner Berthing <kernel@esmil.dk>, Hal Feng
+ <hal.feng@starfivetech.com>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, =?UTF-8?Q?Emilio_L=c3=b3pez?=
+ <emilio@elopez.com.ar>, Peter De Schrijver <pdeschrijver@nvidia.com>,
+ Prashant Gaikwad <pgaikwad@nvidia.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>, Michal Simek <michal.simek@amd.com>
+Cc: devicetree@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org,
+ linux-aspeed@lists.ozlabs.org, linux-oxnas@groups.io,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-riscv@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org
+References: <20230714174342.4052882-1-robh@kernel.org>
+From: Dinh Nguyen <dinguyen@kernel.org>
+In-Reply-To: <20230714174342.4052882-1-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_123612_141947_A07AFD4B 
-X-CRM114-Status: GOOD (  13.42  )
+X-CRM114-CacheID: sfid-20230714_123803_607042_E1E679C3 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,25 +127,29 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: paulmck@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 14, 2023 at 12:15:23PM -0700, Sandeep Dhavale wrote:
-> >
-> > Sandeep, thoughts?
-> >
-> I prefer to modify erofs check and contain the fix there as erofs
-> cares about it and it's
-> least invasive. For contexts where erofs cannot tell for sure, it will
-> always schedule kworker
-> (like CONFIG_PREEMPT_COUNT=n).
+
+
+On 7/14/23 12:43, Rob Herring wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
 > 
-> I will also do measurements to see if erofs should continue to check
-> for context and
-> what are the benefits.
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+...
+>   drivers/clk/sifive/sifive-prci.c                 | 2 +-
+>   drivers/clk/socfpga/clk-agilex.c                 | 3 +--
+>   drivers/clk/socfpga/clk-s10.c                    | 3 +--
 
-At the end of the day, I guess it is Gao Xiang's and Chao Yu's decision.
+For SoCFPGA
 
-							Thanx, Paul
+Acked-by: Dinh Nguyen <dinguyen@kernel.org>
 
