@@ -4,123 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA7E9EB64DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 15:55:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C53D2C0015E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 15:55:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=23iFgtcXrSM/wqHFC50gmHfN2DfdTspVrWVZMTWF67M=; b=tGELyVwDzYsAyvHT4D4/FmfUP5
-	EpgpmTqIN5/a2Zj60Fq6XjOlvSWx5KmgNgWTsas2Jby+kSTBJy0P3nvM86wNa0qWs1o60hhP5tBit
-	LNTfHfnJzO0iEy52QwYHiLECim3PkKgC1f0WPQbcnpme268VFkwWP1Ptr3maIRzxDnfwZGCo5ZYnE
-	8+xXwVTM92qVhLKM3dce8D6jwhS+A1JG2ae7E/AQ8Dr8o3gAp8TYgk9XahJ6xHErSAoOrbXJ2QqCf
-	EzvgzQqNBnsc8zDmUJimbyyNsVapQmzsS5/1hQY9ZtCB423uNkztphp0ISGmqwkk5TgBMz9wlXSlY
-	E+6uYraQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:
+	Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NqpmYVnbbHnWcNUmmhC8NRk/JXLwLEr9LrHoxThT/cY=; b=f77rYPtP+FX3tZYPaXGepmLXpJ
+	qTjFW1cz2LbNbcUDpRV8cqfeDH2mQpRfwb31Z7OMvZQKLq4HELwT18Dv1xMf0Hvmx8+Pq0lLUplhM
+	pGmFWSmFOdSAaXlz14d8JAsgGUHKg0pCfwvxXwuN4XIKcfxPIWP5CIeR0iSOgw7SjVOBk8G2WDyLp
+	AcUoqlcqgOw95GdxyOKZaYf+/3KT8+zmN+Zp7yOHV7bxlEct3Pd81O5xseSzE4B+VsjLijib8N4ub
+	gXMuC3vEy/DYsMRGzdNFhPC8UpsxZ3vdMDngJHJFflAs/to3gEvzds92jbJ1HHSJt7WnrwyvWCYJN
+	J/Hg+F7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKL8R-006ZuR-2J;
-	Fri, 14 Jul 2023 15:55:11 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+	id 1qKL8m-006a1U-2G;
+	Fri, 14 Jul 2023 15:55:32 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKL8P-006Zsp-0r
-	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Jul 2023 15:55:10 +0000
-Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-668704a5b5bso2013845b3a.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Jul 2023 08:55:06 -0700 (PDT)
+	id 1qKL8i-006Zyb-0i;
+	Fri, 14 Jul 2023 15:55:30 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-6689430d803so1440985b3a.0;
+        Fri, 14 Jul 2023 08:55:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ziepe.ca; s=google; t=1689350106; x=1691942106;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=23iFgtcXrSM/wqHFC50gmHfN2DfdTspVrWVZMTWF67M=;
-        b=jVVndNxSJywFc3NlTe7W4yP3yU7NCgigpzMr+FQbbEvXGao5yncV705uEsUHe+SsoH
-         99ahIHBc808HZFPmudJtgOEMfoALXOrhBGEH/5iOoJP0M0QQaAurUJwVbwvDh8rCWyFm
-         0mOdTbt8hmBwtxDeUh5QRPqHwXPIqgVZNGldoXiTm0eDhVqBfh+70yBcJwuiProAPmNP
-         q/bsMSOuP5fGR6gpmHPhHBCAGFMboGnKQPaY5xYLCGUxj9eKBY7inLb+03hQDErrcHpw
-         o1qif2uGPWsACD+WU5iH4kmBUQe/D+z7BmCSmmyvl9y8UNGUZZpD2xWPHtSqInNnfuFp
-         5rXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689350106; x=1691942106;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20221208; t=1689350124; x=1691942124;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=23iFgtcXrSM/wqHFC50gmHfN2DfdTspVrWVZMTWF67M=;
-        b=kong0jM+eIjfDtCKXybChv9N8n9khWM92RrpV4MY28WqU/AMMd1pCqL4vvz5cZ9yek
-         Sp/WxLEt9P+7UzOlC/Q7cGoCAmXMp34+MXksijgSV7NVnh+oMlVdi+rVXF4CJZYGUp7i
-         fu9M+HfiARr37GfusPAEmUzp6e5KiY4oDQeyZ+ZWRfvx1EKTTToa/uVP1oe/9AtSFh6N
-         7ty4a39vGNd639lybq2UJsalkN/3HkyPmwVfcNifGhKB2zTcSiRWofayAwhJYi30OTvU
-         7rr8EDk+fovMH421xH/dldymVZ8gGV3FGDb1g+iya+nFQUFVXn5kOiU1zuWWCOajeVLO
-         0jJw==
-X-Gm-Message-State: ABy/qLYnr08ieicAub6UHPvi/ex+L9HnN6CQBe8gsbPjx5cQPSz1urw9
-	zS7fvimHKDfiuW2wwHwX2Ksyyw==
-X-Google-Smtp-Source: APBJJlE1OjvT/TWbZXaXcXtxRNjTULARYcXX/dBfz79zC72vXKyKqx8JeuoEXOUCn7f0w2b2Le5zeg==
-X-Received: by 2002:a05:6a00:1951:b0:668:731b:517e with SMTP id s17-20020a056a00195100b00668731b517emr5873790pfk.24.1689350106259;
-        Fri, 14 Jul 2023 08:55:06 -0700 (PDT)
-Received: from ziepe.ca (hlfxns017vw-142-68-25-194.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.25.194])
-        by smtp.gmail.com with ESMTPSA id t9-20020a63b709000000b0055be951145csm7037672pgf.36.2023.07.14.08.55.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jul 2023 08:55:05 -0700 (PDT)
-Received: from jgg by wakko with local (Exim 4.95)
-	(envelope-from <jgg@ziepe.ca>)
-	id 1qKL8K-0017jv-8O;
-	Fri, 14 Jul 2023 12:55:04 -0300
-Date: Fri, 14 Jul 2023 12:55:04 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Mina Almasry <almasrymina@google.com>
-Cc: Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
-	Hari Ramakrishnan <rharix@google.com>,
-	David Ahern <dsahern@kernel.org>,
-	Samiullah Khawaja <skhawaja@google.com>,
-	Willem de Bruijn <willemb@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Christoph Hellwig <hch@lst.de>,
-	John Hubbard <jhubbard@nvidia.com>,
-	Dan Williams <dan.j.williams@intel.com>,
-	Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com,
-	Alexander Duyck <alexander.duyck@gmail.com>,
-	Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
-	pabeni@redhat.com, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Yisen Zhuang <yisen.zhuang@huawei.com>,
-	Salil Mehta <salil.mehta@huawei.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Sunil Goutham <sgoutham@marvell.com>,
-	Geetha sowjanya <gakula@marvell.com>,
-	Subbaraya Sundeep <sbhatta@marvell.com>,
-	hariprasad <hkelam@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>,
-	Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jesper Dangaard Brouer <hawk@kernel.org>,
-	Ilias Apalodimas <ilias.apalodimas@linaro.org>,
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Jonathan Lemon <jonathan.lemon@gmail.com>, logang@deltatee.com,
-	Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
- page_pool: remove PP_FLAG_PAGE_FRAG flag)
-Message-ID: <ZLFv2PIgdeH8gKmh@ziepe.ca>
-References: <04187826-8dad-d17b-2469-2837bafd3cd5@kernel.org>
- <20230711093224.1bf30ed5@kernel.org>
- <CAHS8izNHkLF0OowU=p=mSNZss700HKAzv1Oxqu2bvvfX_HxttA@mail.gmail.com>
- <20230711133915.03482fdc@kernel.org>
- <2263ae79-690e-8a4d-fca2-31aacc5c9bc6@kernel.org>
- <CAHS8izP=k8CqUZk7bGUx4ctm4m2kRC2MyEJv+N4+b0cHVkTQmA@mail.gmail.com>
- <ZK6kOBl4EgyYPtaD@ziepe.ca>
- <CAHS8izNuda2DXKTFAov64F7J2_BbMPaqJg1NuMpWpqGA20+S_Q@mail.gmail.com>
- <143a7ca4-e695-db98-9488-84cf8b78cf86@amd.com>
- <CAHS8izPm6XRS54LdCDZVd0C75tA1zHSu6jLVO8nzTLXCc=H7Nw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAHS8izPm6XRS54LdCDZVd0C75tA1zHSu6jLVO8nzTLXCc=H7Nw@mail.gmail.com>
+        bh=NqpmYVnbbHnWcNUmmhC8NRk/JXLwLEr9LrHoxThT/cY=;
+        b=d13J78Hae+iUwr3wrXVIbKZGmYbkfAut0VdeD0DMDSWYuc5Ae+8BKpnTACIzYGzUSr
+         xgaceyN8+odllP4SgLtjA1yGOuhSjlEklNahp9nGFh9khSJfarg4RfEGlpMjngPfDV3t
+         uLMW+Z6G0NxBau/8Dw8UlB1Oeyq5BMqoWK2/sOjRU1m3vFWSshRKP+QpACOdTldQplni
+         FmucbEuWy0I1djDWT32XMtsXST1X1izEqeqTKslbASkaIPNb5nnWlqkht/jdX+ZhA1xr
+         m2aJniiHAH7WfQdM/JrTjGr9plc+V3BaE96BJ09aZjPfhFKSfdYNvE25DUNFatCwgG44
+         4+RA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689350124; x=1691942124;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=NqpmYVnbbHnWcNUmmhC8NRk/JXLwLEr9LrHoxThT/cY=;
+        b=Pxv2KkjYTqX8xxMFA8YSNyRmtoeiqBd5yTvB2A3e6GArmpH0SPRyWu+2w5XlR2M96r
+         AUfvGe1IDbCgkLss4bEq+l8n6J7i1RNniuf2haZjxY8dAnqbKqYT4LDzvingTyujn6gJ
+         tncvtAviB6cgCOyFGPmb23w5NO7a4qsHv4K9pwkTawbVt+T3KmX4tape497RY0P9/Kq/
+         hWuXntvNy9a/k9gqYkQ1xy1uk4dvqfgRNAKaiWH/mcMhGze4stxEzuVknB6DDf/nPFDZ
+         N7fvkN9nloJ0PQHmKh6nqqdcaNMZkc1mBfbjxjUHc6DCRq0oFste3nIJ/+agI4t2ulML
+         Rh1A==
+X-Gm-Message-State: ABy/qLYKjVeYX/FAst9mukUx/+et4rXK+XtMioQYpjBuecugrI7mnwQz
+	lHi/dWSFMMXVW38mVZdfnhs=
+X-Google-Smtp-Source: APBJJlFLtHyaTBNofj23qOOxXXlk4tAx2QA0XgqPxV6RE2bcgC1mkUTiSZRm/PZ3ZVGkQtzOGNrZSw==
+X-Received: by 2002:a05:6a20:101a:b0:12d:8d4d:27e9 with SMTP id gs26-20020a056a20101a00b0012d8d4d27e9mr3678882pzc.15.1689350124359;
+        Fri, 14 Jul 2023 08:55:24 -0700 (PDT)
+Received: from smtpclient.apple ([2402:d0c0:2:a2a::1])
+        by smtp.gmail.com with ESMTPSA id s4-20020a63b404000000b0055adced9e13sm7098528pgf.0.2023.07.14.08.55.01
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 14 Jul 2023 08:55:23 -0700 (PDT)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3731.400.51.1.1\))
+Subject: Re: [PATCH v1] rcu: Fix and improve RCU read lock checks when
+ !CONFIG_DEBUG_LOCK_ALLOC
+From: Alan Huang <mmpgouride@gmail.com>
+In-Reply-To: <F160D7F8-57DC-4986-90A9-EB50F7C89891@gmail.com>
+Date: Fri, 14 Jul 2023 23:54:47 +0800
+Cc: Joel Fernandes <joel@joelfernandes.org>,
+ Gao Xiang <hsiangkao@linux.alibaba.com>,
+ Sandeep Dhavale <dhavale@google.com>,
+ Frederic Weisbecker <frederic@kernel.org>,
+ Neeraj Upadhyay <quic_neeraju@quicinc.com>,
+ Josh Triplett <josh@joshtriplett.org>,
+ Boqun Feng <boqun.feng@gmail.com>,
+ Steven Rostedt <rostedt@goodmis.org>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+ Lai Jiangshan <jiangshanlai@gmail.com>,
+ Zqiang <qiang.zhang1211@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-erofs@lists.ozlabs.org,
+ xiang@kernel.org,
+ Will Shiu <Will.Shiu@mediatek.com>,
+ kernel-team@android.com,
+ rcu@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <6E5326AD-9A5D-4570-906A-BDE8257B6F0C@gmail.com>
+References: <20230713003201.GA469376@google.com>
+ <161f1615-3d85-cf47-d2d5-695adf1ca7d4@linux.alibaba.com>
+ <0d9e7b4d-6477-47a6-b3d2-2c9d9b64903d@paulmck-laptop>
+ <f124e041-6a82-2069-975c-4f393e5c4137@linux.alibaba.com>
+ <87292a44-cc02-4d95-940e-e4e31d0bc6f2@paulmck-laptop>
+ <f1c60dcb-e32f-7b7e-bf0d-5dec999e9299@linux.alibaba.com>
+ <CAEXW_YSODXRfgkR0D2G-x=0uZdsqvF3kZL+LL3DcRX-5CULJ1Q@mail.gmail.com>
+ <894a3b64-a369-7bc6-c8a8-0910843cc587@linux.alibaba.com>
+ <CAEXW_YSM1yik4yWTgZoxCS9RM6TbsL26VCVCH=41+uMA8chfAQ@mail.gmail.com>
+ <58b661d0-0ebb-4b45-a10d-c5927fb791cd@paulmck-laptop>
+ <7d433fac-a62d-4e81-b8e5-57cf5f2d1d55@paulmck-laptop>
+ <F160D7F8-57DC-4986-90A9-EB50F7C89891@gmail.com>
+To: paulmck@kernel.org
+X-Mailer: Apple Mail (2.3731.400.51.1.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_085509_309430_4954ABF6 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20230714_085528_280021_EA0D224F 
+X-CRM114-Status: GOOD (  25.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,31 +123,194 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 14, 2023 at 07:55:15AM -0700, Mina Almasry wrote:
 
-> Once the skb frags with struct new_abstraction are in the TCP stack,
-> they will need some special handling in code accessing the frags. But
-> my RFC already addressed that somewhat because the frags were
-> inaccessible in that case. In this case the frags will be both
-> inaccessible and will not be struct pages at all (things like
-> get_page() will not work), so more special handling will be required,
-> maybe.
+> 2023=E5=B9=B47=E6=9C=8814=E6=97=A5 23:35=EF=BC=8CAlan Huang =
+<mmpgouride@gmail.com> =E5=86=99=E9=81=93=EF=BC=9A
+>=20
+>>=20
+>> 2023=E5=B9=B47=E6=9C=8814=E6=97=A5 10:16=EF=BC=8CPaul E. McKenney =
+<paulmck@kernel.org> =E5=86=99=E9=81=93=EF=BC=9A
+>>=20
+>> On Thu, Jul 13, 2023 at 09:33:35AM -0700, Paul E. McKenney wrote:
+>>> On Thu, Jul 13, 2023 at 11:33:24AM -0400, Joel Fernandes wrote:
+>>>> On Thu, Jul 13, 2023 at 10:34=E2=80=AFAM Gao Xiang =
+<hsiangkao@linux.alibaba.com> wrote:
+>>>>> On 2023/7/13 22:07, Joel Fernandes wrote:
+>>>>>> On Thu, Jul 13, 2023 at 12:59=E2=80=AFAM Gao Xiang =
+<hsiangkao@linux.alibaba.com> wrote:
+>>>>>>> On 2023/7/13 12:52, Paul E. McKenney wrote:
+>>>>>>>> On Thu, Jul 13, 2023 at 12:41:09PM +0800, Gao Xiang wrote:
+>>>>>>>=20
+>>>>>>> ...
+>>>>>>>=20
+>>>>>>>>>=20
+>>>>>>>>> There are lots of performance issues here and even a plumber
+>>>>>>>>> topic last year to show that, see:
+>>>>>>>>>=20
+>>>>>>>>> [1] =
+https://lore.kernel.org/r/20230519001709.2563-1-tj@kernel.org
+>>>>>>>>> [2] =
+https://lore.kernel.org/r/CAHk-=3DwgE9kORADrDJ4nEsHHLirqPCZ1tGaEPAZejHdZ03=
+qCOGg@mail.gmail.com
+>>>>>>>>> [3] =
+https://lore.kernel.org/r/CAB=3DBE-SBtO6vcoyLNA9F-9VaN5R0t3o_Zn+FW8GbO6wyU=
+qFneQ@mail.gmail.com
+>>>>>>>>> [4] https://lpc.events/event/16/contributions/1338/
+>>>>>>>>> and more.
+>>>>>>>>>=20
+>>>>>>>>> I'm not sure if it's necessary to look info all of that,
+>>>>>>>>> andSandeep knows more than I am (the scheduling issue
+>>>>>>>>> becomes vital on some aarch64 platform.)
+>>>>>>>>=20
+>>>>>>>> Hmmm...  Please let me try again.
+>>>>>>>>=20
+>>>>>>>> Assuming that this approach turns out to make sense, the =
+resulting
+>>>>>>>> patch will need to clearly state the performance benefits =
+directly in
+>>>>>>>> the commit log.
+>>>>>>>>=20
+>>>>>>>> And of course, for the approach to make sense, it must avoid =
+breaking
+>>>>>>>> the existing lockdep-RCU debugging code.
+>>>>>>>>=20
+>>>>>>>> Is that more clear?
+>>>>>>>=20
+>>>>>>> Personally I'm not working on Android platform any more so I =
+don't
+>>>>>>> have a way to reproduce, hopefully Sandeep could give actually
+>>>>>>> number _again_ if dm-verity is enabled and trigger another
+>>>>>>> workqueue here and make a comparsion why the scheduling latency =
+of
+>>>>>>> the extra work becomes unacceptable.
+>>>>>>>=20
+>>>>>>=20
+>>>>>> Question from my side, are we talking about only performance =
+issues or
+>>>>>> also a crash? It appears z_erofs_decompress_pcluster() takes
+>>>>>> mutex_lock(&pcl->lock);
+>>>>>>=20
+>>>>>> So if it is either in an RCU read-side critical section or in an
+>>>>>> atomic section, like the softirq path, then it may
+>>>>>> schedule-while-atomic or trigger RCU warnings.
+>>>>>>=20
+>>>>>> z_erofs_decompressqueue_endio
+>>>>>> -> z_erofs_decompress_kickoff
+>>>>>> ->z_erofs_decompressqueue_work
+>>>>>>  ->z_erofs_decompress_queue
+>>>>>>   -> z_erofs_decompress_pcluster
+>>>>>>    -> mutex_lock
+>>>>>>=20
+>>>>>=20
+>>>>> Why does the softirq path not trigger a workqueue instead?
+>>>>=20
+>>>> I said "if it is". I was giving a scenario. mutex_lock() is not
+>>>> allowed in softirq context or in an RCU-reader.
+>>>>=20
+>>>>>> Per Sandeep in [1], this stack happens under RCU read-lock in:
+>>>>>>=20
+>>>>>> #define __blk_mq_run_dispatch_ops(q, check_sleep, dispatch_ops) \
+>>>>>> [...]
+>>>>>>                rcu_read_lock();
+>>>>>>                (dispatch_ops);
+>>>>>>                rcu_read_unlock();
+>>>>>> [...]
+>>>>>>=20
+>>>>>> Coming from:
+>>>>>> blk_mq_flush_plug_list ->
+>>>>>>                           blk_mq_run_dispatch_ops(q,
+>>>>>>                                __blk_mq_flush_plug_list(q, =
+plug));
+>>>>>>=20
+>>>>>> and __blk_mq_flush_plug_list does this:
+>>>>>>          q->mq_ops->queue_rqs(&plug->mq_list);
+>>>>>>=20
+>>>>>> This somehow ends up calling the bio_endio and the
+>>>>>> z_erofs_decompressqueue_endio which grabs the mutex.
+>>>>>>=20
+>>>>>> So... I have a question, it looks like one of the paths in
+>>>>>> __blk_mq_run_dispatch_ops() uses SRCU.  Where are as the =
+alternate
+>>>>>> path uses RCU. Why does this alternate want to block even if it =
+is not
+>>>>>> supposed to? Is the real issue here that the BLK_MQ_F_BLOCKING =
+should
+>>>>>> be set? It sounds like you want to block in the "else" path even
+>>>>>> though BLK_MQ_F_BLOCKING is not set:
+>>>>>=20
+>>>>> BLK_MQ_F_BLOCKING is not a flag that a filesystem can do anything =
+with.
+>>>>> That is block layer and mq device driver stuffs. filesystems =
+cannot set
+>>>>> this value.
+>>>>>=20
+>>>>> As I said, as far as I understand, previously,
+>>>>> .end_io() can only be called without RCU context, so it will be =
+fine,
+>>>>> but I don't know when .end_io() can be called under some RCU =
+context
+>>>>> now.
+>>>>=20
+>>>>> =46rom what Sandeep described, the code path is in an RCU reader. =
+My
+>>>> question is more, why doesn't it use SRCU instead since it clearly
+>>>> does so if BLK_MQ_F_BLOCKING. What are the tradeoffs? IMHO, a =
+deeper
+>>>> dive needs to be made into that before concluding that the fix is =
+to
+>>>> use rcu_read_lock_any_held().
+>>>=20
+>>> How can this be solved?
+>>>=20
+>>> 1. Always use a workqueue.  Simple, but is said to have performance
+>>> issues.
+>>>=20
+>>> 2. Pass a flag in that indicates whether or not the caller is in an
+>>> RCU read-side critical section.  Conceptually simple, but might
+>>> or might not be reasonable to actually implement in the code as
+>>> it exists now. (You tell me!)
+>>>=20
+>>> 3. Create a function in z_erofs that gives you a decent
+>>> approximation, maybe something like the following.
+>>>=20
+>>> 4. Other ideas here.
+>>=20
+>> 5. #3 plus make the corresponding Kconfig option select
+>> PREEMPT_COUNT, assuming that any users needing compression in
+>> non-preemptible kernels are OK with PREEMPT_COUNT being set.
+>> (Some users of non-preemptible kernels object strenuously
+>> to the added overhead from CONFIG_PREEMPT_COUNT=3Dy.)
+>=20
+> 6. Set one bit in bio->bi_private, check the bit and flip it in =
+rcu_read_lock() path,
+> then in z_erofs_decompressqueue_endio, check if the bit has changed.
 
-It seems sort of reasonable, though there will be interesting concerns
-about coherence and synchronization with generial purpose DMABUFs that
-will need tackling.
+Seems bad, read and modify bi_private is a bad idea.
 
-Still it is such a lot of churn and weridness in the netdev side, I
-think you'd do well to present an actual full application as
-justification.
+>=20
+> Not sure if this is feasible or acceptable. :)
+>=20
+>>=20
+>> Thanx, Paul
+>>=20
+>>> The following is untested, and is probably quite buggy, but it =
+should
+>>> provide you with a starting point.
+>>>=20
+>>> static bool z_erofs_wq_needed(void)
+>>> {
+>>> if (IS_ENABLED(CONFIG_PREEMPTION) && rcu_preempt_depth())
+>>> return true;  // RCU reader
+>>> if (IS_ENABLED(CONFIG_PREEMPT_COUNT) && !preemptible())
+>>> return true;  // non-preemptible
+>>> if (!IS_ENABLED(CONFIG_PREEMPT_COUNT))
+>>> return true;  // non-preeemptible kernel, so play it safe
+>>> return false;
+>>> }
+>>>=20
+>>> You break it, you buy it!  ;-)
+>>>=20
+>>> Thanx, Paul
 
-Yes, you showed you can stick unordered TCP data frags into GPU memory
-sort of quickly, but have you gone further with this to actually show
-it is useful for a real world GPU centric application?
 
-BTW your cover letter said 96% utilization, the usual server
-configuation is one NIC per GPU, so you were able to hit 1500Gb/sec of
-TCP BW with this?
-
-Jason
 
