@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00145C001B0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 03:17:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3CFBEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 04:00:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zwd59nP/ASw/HFlV4EhBtFBCnyrWO7K1fZtY0DydADo=; b=ghMJVSqiNf16MX3ZDGAbEEGt6r
-	S0mS+IhJvuZSgQScIsThRV3z6tB2BDBMzAGziv5Re/6xBag+xU1LgNtt/GS0XS5bjqPP2o6ipqG87
-	58BNc86n5BhvS31G1p54x4jkMbVaXwMo8zXclD4axI1Rp7c6mIlMCS/CrirOEA9A8M0L3LHQDdOXG
-	jAztLDzom+/e+bgRRbemOKgD4JvS4hY3CY3HpO7V0e4EzXZtMuHjFds/GQQkRYI77UYBhJSE9gsx4
-	NZFE+e+9P1e1oXRcAEPiDRKeykTddfDYkURrXET3PeMycSsJ9U2z3VhKzSOwyiKZ7KDX+q6yjR0Ua
-	psxXgFyA==;
+	bh=Wmue1SH2/R9qW0mwYc0mTOxeW3dt1WkcK+uDaD9lAjM=; b=ip3pa+Mj1h2x1r1D1DePVTM9JE
+	PjqqwGz/WnusSsPDyc/XlfYjm0oxiDzlXFbv9XfGDSnYgFnG6R1Gv4niocDTCXj4fvTeLsB5Dgn0U
+	UnI5n5Yqpe7Uba7nKQ1NTD/nsJgg3pzTM2lkix3MBQTdirIfw9I9K4DJdDkPRKahY730K4IUuqAR8
+	GhpkVAqZDF4yri9avuPUG5AtWUbYqWgR1I8o7yH04wGfqa1SUpcE5e0S8Ge02mFyqnZbOUjBwlKaT
+	7XZvDB4t+/eVZpFRR0QbAHbrDBl0xrI8qqnNANuZTpSEgRAqXZ9WqkPCFOOKY8m68Oprl2DVJ7f2t
+	61BYwvWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qK9It-004sp2-1Y;
-	Fri, 14 Jul 2023 03:17:11 +0000
-Received: from out30-98.freemail.mail.aliyun.com ([115.124.30.98])
+	id 1qK9ys-004wNW-1Q;
+	Fri, 14 Jul 2023 04:00:34 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qK9Ip-004snK-03;
-	Fri, 14 Jul 2023 03:17:09 +0000
-X-Alimail-AntiSpam: AC=PASS;BC=-1|-1;BR=01201311R391e4;CH=green;DM=||false|;DS=||;FP=0|-1|-1|-1|0|-1|-1|-1;HT=ay29a033018046051;MF=hsiangkao@linux.alibaba.com;NM=1;PH=DS;RN=21;SR=0;TI=SMTPD_---0VnK7oAI_1689304613;
-Received: from 172.20.10.3(mailfrom:hsiangkao@linux.alibaba.com fp:SMTPD_---0VnK7oAI_1689304613)
-          by smtp.aliyun-inc.com;
-          Fri, 14 Jul 2023 11:16:56 +0800
-Message-ID: <058e7ee9-0380-eb1b-d9a8-b184cba6ed53@linux.alibaba.com>
-Date: Fri, 14 Jul 2023 11:16:52 +0800
+	id 1qK9yn-004wLt-26;
+	Fri, 14 Jul 2023 04:00:31 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4709861BE9;
+	Fri, 14 Jul 2023 04:00:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 988B2C433D9;
+	Fri, 14 Jul 2023 04:00:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689307223;
+	bh=6bPJwDcuSz1rKBjG/24ejrCn4JBeXx8kMtEpTwCEv2U=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=AAU+8ZLPWahRElzfzmALzyJASlYHee9u0PGrejGSQIwx5fo25CRbvg4uxgfJ6rEqf
+	 RXL16BSxfG7kART5wIhq3dxChc2wTsmVl1yAfGiMPHb3codCrZYAX0ElN6vp+qwTlM
+	 O/vWd7nokniqxUVN2Ve9HbEZl610bfjNAMMvnbqt2xq+i5O76kpNZjvj4blQKgYT4z
+	 xiCmnj/LiVwqBddhhniXy5srW7jbbEpN2AvTNNC3bXILfPUCFP+EJAqvSCiergccsW
+	 YS5ywkC9aI11si9SNweKTYwHKYWoz4FVlUcu8tkTNN1QQy1gCJ2Y42r2IpQiHzb2Wk
+	 Bu54B8qkv5xRg==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 7FF81E29F45;
+	Fri, 14 Jul 2023 04:00:23 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: [PATCH v1] rcu: Fix and improve RCU read lock checks when
- !CONFIG_DEBUG_LOCK_ALLOC
-To: paulmck@kernel.org, Sandeep Dhavale <dhavale@google.com>
-Cc: Frederic Weisbecker <frederic@kernel.org>,
- Neeraj Upadhyay <quic_neeraju@quicinc.com>,
- Josh Triplett <josh@joshtriplett.org>, Boqun Feng <boqun.feng@gmail.com>,
- Steven Rostedt <rostedt@goodmis.org>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
- Lai Jiangshan <jiangshanlai@gmail.com>, Zqiang <qiang.zhang1211@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-erofs@lists.ozlabs.org, xiang@kernel.org,
- Will Shiu <Will.Shiu@mediatek.com>, kernel-team@android.com,
- rcu@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Joel Fernandes <joel@joelfernandes.org>
-References: <20230713003201.GA469376@google.com>
- <161f1615-3d85-cf47-d2d5-695adf1ca7d4@linux.alibaba.com>
- <0d9e7b4d-6477-47a6-b3d2-2c9d9b64903d@paulmck-laptop>
- <f124e041-6a82-2069-975c-4f393e5c4137@linux.alibaba.com>
- <87292a44-cc02-4d95-940e-e4e31d0bc6f2@paulmck-laptop>
- <f1c60dcb-e32f-7b7e-bf0d-5dec999e9299@linux.alibaba.com>
- <CAEXW_YSODXRfgkR0D2G-x=0uZdsqvF3kZL+LL3DcRX-5CULJ1Q@mail.gmail.com>
- <894a3b64-a369-7bc6-c8a8-0910843cc587@linux.alibaba.com>
- <CAEXW_YSM1yik4yWTgZoxCS9RM6TbsL26VCVCH=41+uMA8chfAQ@mail.gmail.com>
- <58b661d0-0ebb-4b45-a10d-c5927fb791cd@paulmck-laptop>
- <7d433fac-a62d-4e81-b8e5-57cf5f2d1d55@paulmck-laptop>
-From: Gao Xiang <hsiangkao@linux.alibaba.com>
-In-Reply-To: <7d433fac-a62d-4e81-b8e5-57cf5f2d1d55@paulmck-laptop>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v3 00/12] net: stmmac: replace boolean fields in
+ plat_stmmacenet_data with flags
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <168930722351.11211.15860000420900768155.git-patchwork-notify@kernel.org>
+Date: Fri, 14 Jul 2023 04:00:23 +0000
+References: <20230710090001.303225-1-brgl@bgdev.pl>
+In-Reply-To: <20230710090001.303225-1-brgl@bgdev.pl>
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: peppe.cavallaro@st.com, alexandre.torgue@foss.st.com,
+ joabreu@synopsys.com, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, mcoquelin.stm32@gmail.com,
+ vkoul@kernel.org, bhupesh.sharma@linaro.org, wens@csie.org,
+ jernej.skrabec@gmail.com, samuel@sholland.org, thierry.reding@gmail.com,
+ jonathanh@nvidia.com, richardcochran@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, bartosz.golaszewski@linaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230713_201707_256854_14FDD92E 
-X-CRM114-Status: GOOD (  17.05  )
+X-CRM114-CacheID: sfid-20230713_210029_780392_B2D79CB5 
+X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,51 +87,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-On 2023/7/14 10:16, Paul E. McKenney wrote:
-> On Thu, Jul 13, 2023 at 09:33:35AM -0700, Paul E. McKenney wrote:
->> On Thu, Jul 13, 2023 at 11:33:24AM -0400, Joel Fernandes wrote:
-
-...
-
->>>
->>> >From what Sandeep described, the code path is in an RCU reader. My
->>> question is more, why doesn't it use SRCU instead since it clearly
->>> does so if BLK_MQ_F_BLOCKING. What are the tradeoffs? IMHO, a deeper
->>> dive needs to be made into that before concluding that the fix is to
->>> use rcu_read_lock_any_held().
->>
->> How can this be solved?
->>
->> 1.	Always use a workqueue.  Simple, but is said to have performance
->> 	issues.
->>
->> 2.	Pass a flag in that indicates whether or not the caller is in an
->> 	RCU read-side critical section.  Conceptually simple, but might
->> 	or might not be reasonable to actually implement in the code as
->> 	it exists now.	(You tell me!)
->>
->> 3.	Create a function in z_erofs that gives you a decent
->> 	approximation, maybe something like the following.
->>
->> 4.	Other ideas here.
+On Mon, 10 Jul 2023 10:59:49 +0200 you wrote:
+> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 > 
-> 5.	#3 plus make the corresponding Kconfig option select
-> 	PREEMPT_COUNT, assuming that any users needing compression in
-> 	non-preemptible kernels are OK with PREEMPT_COUNT being set.
-> 	(Some users of non-preemptible kernels object strenuously
-> 	to the added overhead from CONFIG_PREEMPT_COUNT=y.)
+> As suggested by Jose Abreu: let's drop all 12 boolean fields in
+> plat_stmmacenet_data and replace them with a common bitfield.
+> 
+> v2 -> v3:
+> - fix build on intel platforms even more
+> - collect review tags from Andrew
+> 
+> [...]
 
-I'm not sure if it's a good idea, we need to work on
-CONFIG_PREEMPT_COUNT=n (why not?), we could just always trigger a
-workqueue for this.
+Here is the summary with links:
+  - [net-next,v3,01/12] net: stmmac: replace the has_integrated_pcs field with a flag
+    https://git.kernel.org/netdev/net-next/c/d26979f1cef7
+  - [net-next,v3,02/12] net: stmmac: replace the sph_disable field with a flag
+    https://git.kernel.org/netdev/net-next/c/309efe6eb499
+  - [net-next,v3,03/12] net: stmmac: replace the use_phy_wol field with a flag
+    https://git.kernel.org/netdev/net-next/c/fd1d62d80ebc
+  - [net-next,v3,04/12] net: stmmac: replace the has_sun8i field with a flag
+    https://git.kernel.org/netdev/net-next/c/d8daff284e30
+  - [net-next,v3,05/12] net: stmmac: replace the tso_en field with a flag
+    https://git.kernel.org/netdev/net-next/c/68861a3bcc1c
+  - [net-next,v3,06/12] net: stmmac: replace the serdes_up_after_phy_linkup field with a flag
+    https://git.kernel.org/netdev/net-next/c/efe92571bfc3
+  - [net-next,v3,07/12] net: stmmac: replace the vlan_fail_q_en field with a flag
+    https://git.kernel.org/netdev/net-next/c/fc02152bdbb2
+  - [net-next,v3,08/12] net: stmmac: replace the multi_msi_en field with a flag
+    https://git.kernel.org/netdev/net-next/c/956c3f09b9c4
+  - [net-next,v3,09/12] net: stmmac: replace the ext_snapshot_en field with a flag
+    https://git.kernel.org/netdev/net-next/c/aa5513f5d95f
+  - [net-next,v3,10/12] net: stmmac: replace the int_snapshot_en field with a flag
+    https://git.kernel.org/netdev/net-next/c/621ba7ad7891
+  - [net-next,v3,11/12] net: stmmac: replace the rx_clk_runs_in_lpi field with a flag
+    https://git.kernel.org/netdev/net-next/c/743dd1db85f4
+  - [net-next,v3,12/12] net: stmmac: replace the en_tx_lpi_clockgating field with a flag
+    https://git.kernel.org/netdev/net-next/c/9d0c0d5ebd63
 
-Anyway, before we proceed, I also think it'd be better to get some
-performance numbers first for this (e.g. with dm-verity) and record
-the numbers in the commit message to justify this.  Otherwise, I guess
-the same question will be raised again and again.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-Thanks,
-Gao Xiang
+
 
