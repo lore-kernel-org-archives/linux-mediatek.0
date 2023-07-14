@@ -4,75 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3CFBEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 04:00:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2978FEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 04:19:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wmue1SH2/R9qW0mwYc0mTOxeW3dt1WkcK+uDaD9lAjM=; b=ip3pa+Mj1h2x1r1D1DePVTM9JE
-	PjqqwGz/WnusSsPDyc/XlfYjm0oxiDzlXFbv9XfGDSnYgFnG6R1Gv4niocDTCXj4fvTeLsB5Dgn0U
-	UnI5n5Yqpe7Uba7nKQ1NTD/nsJgg3pzTM2lkix3MBQTdirIfw9I9K4DJdDkPRKahY730K4IUuqAR8
-	GhpkVAqZDF4yri9avuPUG5AtWUbYqWgR1I8o7yH04wGfqa1SUpcE5e0S8Ge02mFyqnZbOUjBwlKaT
-	7XZvDB4t+/eVZpFRR0QbAHbrDBl0xrI8qqnNANuZTpSEgRAqXZ9WqkPCFOOKY8m68Oprl2DVJ7f2t
-	61BYwvWg==;
+	bh=tJ25wMfM7kSzvTpXtpsgLxWUjdQihI5rOBPsjaMGVAo=; b=Sw5ixb+VvABCwjEGnKbFo2R5VX
+	mhkHzizhR9MS0q7nRsoDBjmSvGZ17CVdD4dkHyhjGkGQCF1E/9OIxH5/P1jKWheodI9pSj8B2fKB0
+	6BvU9JjzUi3u9ODARruXdFk/NmOkZ94k2RfKoNven7s4EZi3n4zI/A/WeP00i2f/ZHbYGK+0D7/Z/
+	9lEAjb4mgvCuF9Z9an1Zgrhmi8sSgqyiawk8iGWVwLAm+v5tiG10vd4XXdbqjIPzXCR2A8A9qmaOm
+	cfN+movGHmfFdIaM22jVvHTgdg8elbSt8nC05pURtE1OdG59AsrSInyZgc8oJf/nJbjTqG7VQ6f4F
+	duF1B88w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qK9ys-004wNW-1Q;
-	Fri, 14 Jul 2023 04:00:34 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qKAH0-004y9h-1U;
+	Fri, 14 Jul 2023 04:19:18 +0000
+Received: from mail-vk1-xa36.google.com ([2607:f8b0:4864:20::a36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qK9yn-004wLt-26;
-	Fri, 14 Jul 2023 04:00:31 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4709861BE9;
-	Fri, 14 Jul 2023 04:00:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 988B2C433D9;
-	Fri, 14 Jul 2023 04:00:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689307223;
-	bh=6bPJwDcuSz1rKBjG/24ejrCn4JBeXx8kMtEpTwCEv2U=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=AAU+8ZLPWahRElzfzmALzyJASlYHee9u0PGrejGSQIwx5fo25CRbvg4uxgfJ6rEqf
-	 RXL16BSxfG7kART5wIhq3dxChc2wTsmVl1yAfGiMPHb3codCrZYAX0ElN6vp+qwTlM
-	 O/vWd7nokniqxUVN2Ve9HbEZl610bfjNAMMvnbqt2xq+i5O76kpNZjvj4blQKgYT4z
-	 xiCmnj/LiVwqBddhhniXy5srW7jbbEpN2AvTNNC3bXILfPUCFP+EJAqvSCiergccsW
-	 YS5ywkC9aI11si9SNweKTYwHKYWoz4FVlUcu8tkTNN1QQy1gCJ2Y42r2IpQiHzb2Wk
-	 Bu54B8qkv5xRg==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 7FF81E29F45;
-	Fri, 14 Jul 2023 04:00:23 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1qKAGw-004y8H-2I
+	for linux-mediatek@lists.infradead.org;
+	Fri, 14 Jul 2023 04:19:16 +0000
+Received: by mail-vk1-xa36.google.com with SMTP id 71dfb90a1353d-45739737afcso416469e0c.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 13 Jul 2023 21:19:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1689308352; x=1691900352;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tJ25wMfM7kSzvTpXtpsgLxWUjdQihI5rOBPsjaMGVAo=;
+        b=VWDDDPziqbsgTDMNy7zZmb86l38MhITudT4cM4e/pk1R5tTaVbJ7SRftIJBTiTKnLE
+         hAJr+PC2+Cgo9c9NFnBydJLfeEDX3tIo/F8OHlWUnYrdH0hB4A5e4/IlSMIsOM2cy1h8
+         6UqNOkaZG3cUSiU7I6riqPP49XUbPxoejek2E=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689308352; x=1691900352;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=tJ25wMfM7kSzvTpXtpsgLxWUjdQihI5rOBPsjaMGVAo=;
+        b=UOggYIzUXJVDclIVdGtytyXZHA05Pj01FGcBrRdgQGNInmetH6nUsbE2YrMfHohOHJ
+         XW7kE5ZD0gV9R4Zp0FA+VejOxbc1ldgBZroZv2FoW+clom4/SUTWMjYtILlL9V7Lolfv
+         HoaE/b8k3ZPzTNOpqsdVARWLlknMZpRlOB12pbbcSGdQp7Rvw1qVPRn5gdj5RqX04X5a
+         1zZHPRTboMDpGgN83oRZfrytGN3xr3CDBpDmSoVVKsuBYuK7JkPAYJhQsWv6fehI8JE9
+         kztiUqdTBNSVE2DZg3O973sekZ7inDBmD8hSI+MdJWVQRbtLlovKZqk7yuzXdCurBfJ1
+         +Jrw==
+X-Gm-Message-State: ABy/qLZz0WD4yFC0vIlMlmrTb1q7LaXHulwVIv9kOIWyAeiBEQewD2ZK
+	jhNZlXotk8JcBvEq8ZeH607yes0wDNujSGVa+Nhdaw==
+X-Google-Smtp-Source: APBJJlEzmNK7jvt1ONHasiafzxX7B304oncYEYsEDIFGu363Kn4Q4BRNgW0aGtp4K7TFa8nhJnTX03CsOGRtGuS3/8w=
+X-Received: by 2002:a67:fe17:0:b0:443:5b1f:12e4 with SMTP id
+ l23-20020a67fe17000000b004435b1f12e4mr1511250vsr.9.1689308352063; Thu, 13 Jul
+ 2023 21:19:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v3 00/12] net: stmmac: replace boolean fields in
- plat_stmmacenet_data with flags
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <168930722351.11211.15860000420900768155.git-patchwork-notify@kernel.org>
-Date: Fri, 14 Jul 2023 04:00:23 +0000
-References: <20230710090001.303225-1-brgl@bgdev.pl>
-In-Reply-To: <20230710090001.303225-1-brgl@bgdev.pl>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: peppe.cavallaro@st.com, alexandre.torgue@foss.st.com,
- joabreu@synopsys.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, mcoquelin.stm32@gmail.com,
- vkoul@kernel.org, bhupesh.sharma@linaro.org, wens@csie.org,
- jernej.skrabec@gmail.com, samuel@sholland.org, thierry.reding@gmail.com,
- jonathanh@nvidia.com, richardcochran@gmail.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org, bartosz.golaszewski@linaro.org
+References: <20230713072138.84117-1-angelogioacchino.delregno@collabora.com>
+ <20230713072138.84117-3-angelogioacchino.delregno@collabora.com> <9a0817c2-4101-5c21-977d-77ac0d83a067@baylibre.com>
+In-Reply-To: <9a0817c2-4101-5c21-977d-77ac0d83a067@baylibre.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 14 Jul 2023 12:19:00 +0800
+Message-ID: <CAGXv+5E7YYdkG7GtxG90KzdAG8Kke+74Amtbw4mmyVNZgDZHRA@mail.gmail.com>
+Subject: Re: [PATCH 2/2] clk: mediatek: mt8195-topckgen: Refactor parents for
+ top_dp/edp muxes
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, sboyd@kernel.org, 
+	mturquette@baylibre.com, matthias.bgg@gmail.com, msp@baylibre.com, 
+	yangyingliang@huawei.com, u.kleine-koenig@pengutronix.de, 
+	miles.chen@mediatek.com, linux-clk@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, kernel@collabora.com, mripard@kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230713_210029_780392_B2D79CB5 
-X-CRM114-Status: UNSURE (   9.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230713_211914_791117_D92FE839 
+X-CRM114-Status: GOOD (  28.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,53 +91,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Thu, Jul 13, 2023 at 9:22=E2=80=AFPM Alexandre Mergnat <amergnat@baylibr=
+e.com> wrote:
+> On 13/07/2023 09:21, AngeloGioacchino Del Regno wrote:
+> > The top_dp and top_edp muxes can be both parented to either TVDPLL1
+> > or TVDPLL2, two identically specced PLLs for the specific purpose of
+> > giving out pixel clock: this becomes a problem when the MediaTek
+> > DisplayPort Interface (DPI) driver tries to set the pixel clock rate.
+> >
+> > In the usecase of two simultaneous outputs (using two controllers),
+> > it was seen that one of the displays would sometimes display garbled
+> > output (if any at all) and this was because:
+> >   - top_edp was set to TVDPLL1, outputting X GHz
+> >   - top_dp was set to TVDPLL2, outputting Y GHz
+> >     - mtk_dpi calls clk_set_rate(top_edp, Z GHz)
+> >       - top_dp is switched to TVDPLL1
+> >       - TVDPLL1 changes its rate, top_edp outputs the wrong rate.
+> >       - eDP display is garbled
+> >
+> > To solve this issue, remove all TVDPLL1 parents from `top_dp` and
+> > all TVDPLL2 parents from `top_edp`, plus, necessarily switch both
+> > clocks to use the new MUX_GATE_CLR_SET_UPD_INDEXED() macro to be
+> > able to use the right bit index for the new parents list.
+> >
+> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
+llabora.com>
+> > ---
+> >   drivers/clk/mediatek/clk-mt8195-topckgen.c | 22 ++++++++++++++-------=
+-
+> >   1 file changed, 14 insertions(+), 8 deletions(-)
+> >
+> > diff --git a/drivers/clk/mediatek/clk-mt8195-topckgen.c b/drivers/clk/m=
+ediatek/clk-mt8195-topckgen.c
+> > index 81daa24cadde..abb3721f6e1b 100644
+> > --- a/drivers/clk/mediatek/clk-mt8195-topckgen.c
+> > +++ b/drivers/clk/mediatek/clk-mt8195-topckgen.c
+> > @@ -417,15 +417,21 @@ static const char * const pwrmcu_parents[] =3D {
+> >
+> >   static const char * const dp_parents[] =3D {
+> >       "clk26m",
+> > -     "tvdpll1_d2",
+> >       "tvdpll2_d2",
+> > -     "tvdpll1_d4",
+> >       "tvdpll2_d4",
+> > -     "tvdpll1_d8",
+> >       "tvdpll2_d8",
+> > -     "tvdpll1_d16",
+> >       "tvdpll2_d16"
+> >   };
+> > +static const u8 dp_parents_idx[] =3D { 0, 2, 4, 6, 8 };
+> > +
+> > +static const char * const edp_parents[] =3D {
+> > +     "clk26m",
+> > +     "tvdpll1_d2",
+> > +     "tvdpll1_d4",
+> > +     "tvdpll1_d8",
+> > +     "tvdpll1_d16"
+> > +};
+> > +static const u8 edp_parents_idx[] =3D { 0, 1, 3, 5, 7 };
+>
+> AFAII your solution is to force a specific TVDPLLX for each display, and
+> it isn't dynamic.
+>
+> Do you think it's possible to do that using the DTS ? I'm asking
+> because, IMHO, this kind of setup is more friendly/readable/flexible in
+> the DTS than hardcoded into the driver.
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+(CC-ing Maxime, who has some experience in the matter.)
 
-On Mon, 10 Jul 2023 10:59:49 +0200 you wrote:
-> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-> 
-> As suggested by Jose Abreu: let's drop all 12 boolean fields in
-> plat_stmmacenet_data and replace them with a common bitfield.
-> 
-> v2 -> v3:
-> - fix build on intel platforms even more
-> - collect review tags from Andrew
-> 
-> [...]
+assigned-parents doesn't prevent your system from reparenting the clocks
+back to a conflicting configuration.
 
-Here is the summary with links:
-  - [net-next,v3,01/12] net: stmmac: replace the has_integrated_pcs field with a flag
-    https://git.kernel.org/netdev/net-next/c/d26979f1cef7
-  - [net-next,v3,02/12] net: stmmac: replace the sph_disable field with a flag
-    https://git.kernel.org/netdev/net-next/c/309efe6eb499
-  - [net-next,v3,03/12] net: stmmac: replace the use_phy_wol field with a flag
-    https://git.kernel.org/netdev/net-next/c/fd1d62d80ebc
-  - [net-next,v3,04/12] net: stmmac: replace the has_sun8i field with a flag
-    https://git.kernel.org/netdev/net-next/c/d8daff284e30
-  - [net-next,v3,05/12] net: stmmac: replace the tso_en field with a flag
-    https://git.kernel.org/netdev/net-next/c/68861a3bcc1c
-  - [net-next,v3,06/12] net: stmmac: replace the serdes_up_after_phy_linkup field with a flag
-    https://git.kernel.org/netdev/net-next/c/efe92571bfc3
-  - [net-next,v3,07/12] net: stmmac: replace the vlan_fail_q_en field with a flag
-    https://git.kernel.org/netdev/net-next/c/fc02152bdbb2
-  - [net-next,v3,08/12] net: stmmac: replace the multi_msi_en field with a flag
-    https://git.kernel.org/netdev/net-next/c/956c3f09b9c4
-  - [net-next,v3,09/12] net: stmmac: replace the ext_snapshot_en field with a flag
-    https://git.kernel.org/netdev/net-next/c/aa5513f5d95f
-  - [net-next,v3,10/12] net: stmmac: replace the int_snapshot_en field with a flag
-    https://git.kernel.org/netdev/net-next/c/621ba7ad7891
-  - [net-next,v3,11/12] net: stmmac: replace the rx_clk_runs_in_lpi field with a flag
-    https://git.kernel.org/netdev/net-next/c/743dd1db85f4
-  - [net-next,v3,12/12] net: stmmac: replace the en_tx_lpi_clockgating field with a flag
-    https://git.kernel.org/netdev/net-next/c/9d0c0d5ebd63
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+AFAIK the recommended way to deal with this is to use
+clk_set_rate_exclusive() and co. in whatever consumer driver that needs
+exclusive control on the clock rate. However I'm not sure if that works
+for parents. It should, given the original use case was for the sunxi
+platforms, which like the MediaTek platform here has 2 PLLs for video
+related consumers, but I couldn't find code verifying it.
 
 
+ChenYu
+
+> >
+> >   static const char * const disp_pwm_parents[] =3D {
+> >       "clk26m",
+> > @@ -957,11 +963,11 @@ static const struct mtk_mux top_mtk_muxes[] =3D {
+> >       MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_PWRMCU, "top_pwrmcu",
+> >               pwrmcu_parents, 0x08C, 0x090, 0x094, 16, 3, 23, 0x08, 6,
+> >               CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
+> > -     MUX_GATE_CLR_SET_UPD(CLK_TOP_DP, "top_dp",
+> > -             dp_parents, 0x08C, 0x090, 0x094, 24, 4, 31, 0x08, 7),
+> > +     MUX_GATE_CLR_SET_UPD_INDEXED(CLK_TOP_DP, "top_dp",
+> > +             dp_parents, dp_parents_idx, 0x08C, 0x090, 0x094, 24, 4, 3=
+1, 0x08, 7),
+> >       /* CLK_CFG_10 */
+> > -     MUX_GATE_CLR_SET_UPD(CLK_TOP_EDP, "top_edp",
+> > -             dp_parents, 0x098, 0x09C, 0x0A0, 0, 4, 7, 0x08, 8),
+> > +     MUX_GATE_CLR_SET_UPD_INDEXED(CLK_TOP_EDP, "top_edp",
+> > +             edp_parents, edp_parents_idx, 0x098, 0x09C, 0x0A0, 0, 4, =
+7, 0x08, 8),
+> >       MUX_GATE_CLR_SET_UPD(CLK_TOP_DPI, "top_dpi",
+> >               dp_parents, 0x098, 0x09C, 0x0A0, 8, 4, 15, 0x08, 9),
+> >       MUX_GATE_CLR_SET_UPD(CLK_TOP_DISP_PWM0, "top_disp_pwm0",
+>
+> --
+> Regards,
+> Alexandre
 
