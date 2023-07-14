@@ -4,84 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 825A3C04E69
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 17:51:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52AD1EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 17:52:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dF4n+vEE17Qq7IimdaDehhBcYp03QjXAht/0wjN/cV4=; b=BWWOE1L4xh/LjghnDFovusAA3+
-	6HDTYkt53o9sU0Dugz20JF+Mj8/ZwnlZzmRarXVdub9zmyWC/3/9dUv3XJCQcNRas/+r8owWErr3B
-	g3wiSc1Z0+Y5ouD007clqJlm8hFvMGHIE4fvNhaeu9m7BqSuy3ZVO1rh42aC8sEy3w0d7edVncN+O
-	qFAh62lfEbewHDODRea4/oujA8vs5RiM+OMnmoSI4n73UBt6FSCZT+1cYMT0X1h3otNHggiwml7fB
-	N1K3Z7IBY8vnSPBqJqCqKkpaEgXksZffgEMPTZlEc9X11JAa1jvC/udgQh49spG4BAj/1f+0wspYN
-	/iiaGX7g==;
+	bh=m91Fe28mbDN6J06I/qqMHBHYZy2UCCGYOh2MW5zdC+Q=; b=HZnRjcQw4+NOUPP1hZDy3RolSR
+	6lCp4J+SG+q8TGMHfm0slBnx+m2Zw4cO86TTP/X3PWoWrv06lKPpHjRlzJPXalLnoDqewuYO4WZtE
+	60RCKRNKA9cAJb2vg1s0J5Tii7vp6juHJrLDcFkPcV0FROn2QKTxSyIoZDdGKbNcMqjnIuMaXMKSr
+	KJiT0w+NvT08z+X7rQamxToy9wARDQzFd6tXtCLtQoCB0CaL4JpowFFYCT0yP7FDRTWKaW6K0yfV/
+	jfHLnYAx1KGZhgrG+dQ0lxEIGQwNajW2jS+fzi/abkggEXIs3aY4QYbLVKQd/yLulhwYRzmgU6JJL
+	HCAYY9XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMx3-006rbp-0B;
-	Fri, 14 Jul 2023 17:51:33 +0000
-Received: from mail-io1-f52.google.com ([209.85.166.52])
+	id 1qKMxg-006sIX-0V;
+	Fri, 14 Jul 2023 17:52:12 +0000
+Received: from mail-io1-f49.google.com ([209.85.166.49])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKMwt-006rTX-1B;
-	Fri, 14 Jul 2023 17:51:29 +0000
-Received: by mail-io1-f52.google.com with SMTP id ca18e2360f4ac-78372b895d6so89622739f.2;
-        Fri, 14 Jul 2023 10:51:23 -0700 (PDT)
+	id 1qKMxT-006rzs-1i;
+	Fri, 14 Jul 2023 17:52:04 +0000
+Received: by mail-io1-f49.google.com with SMTP id ca18e2360f4ac-78374596182so89053639f.0;
+        Fri, 14 Jul 2023 10:51:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689357082; x=1691949082;
+        d=1e100.net; s=20221208; t=1689357116; x=1691949116;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=dF4n+vEE17Qq7IimdaDehhBcYp03QjXAht/0wjN/cV4=;
-        b=cExjymEd2RSsU3nJNuziqNtTqfwTBmXwML1V+eV99vDBJewRJzEMPM7Ikkwe6ey3mK
-         hjayUPRyvDmSVZYoOHlz/1wxeGqRjPaw61XHgiWfRTBj9wb5N1+dstNMVkm9vF+GJ+X9
-         dyvozTnmkzspHhAPz/fVRgqrn7CWQR73JuVXENSPkhrrFhAtHX8exiGab9ntiqOTbKA9
-         0Zr/d5hd697KHZzMtrjoSMcG6nmSjhW6zEutHbdDXdtROqf2SLVqn+2joArC3BRrR0u/
-         j0QJb4jLjZIgj9UAN8WjC4VlSCjG5H2yHtHhZclR/RZOylI0B1h3jPB92Ui8fcRZRx6w
-         NEEQ==
-X-Gm-Message-State: ABy/qLaM0M3gO8Fe2gn8lzvZvZM8yGABKjS4rHl6iCw01CplHcByA35t
-	Kd989TnVwqQBY+O7IbC/0g==
-X-Google-Smtp-Source: APBJJlFLGGnoSpdHLXPQqOC5AFwgGsTwxYgrStVtkh9c/1mRFbH+mCv+ucvO9R8FXklrZzo9AEm9Iw==
-X-Received: by 2002:a6b:fb03:0:b0:783:572c:9caa with SMTP id h3-20020a6bfb03000000b00783572c9caamr5742918iog.0.1689357082545;
-        Fri, 14 Jul 2023 10:51:22 -0700 (PDT)
+        bh=m91Fe28mbDN6J06I/qqMHBHYZy2UCCGYOh2MW5zdC+Q=;
+        b=TYOViCdlud09LWgg1JMTG/mqdlJ8V42AKaI0v29HhJFrMl6qcPS2/lQ3SiIfZw5Ycn
+         3p/p1GlkNtkYgJjxFPGA85nMh5UbAOzAEKVuDeVhYZzhfr/aoxaZ0QU0lKO5qu1cUmXA
+         82bDLbtafVaPoUTpj2aDYo1jWJm3NVGolEaBmfeqBkdlqtnvzD9fpDlboCM858IG/8ea
+         QLtwGYEd8N/XTd/n3g8L4gpqF/XNs9gyKQ9qiY4/goe91tsKkBhNh/SnkXYqHIrEHLuY
+         1p1Ts+kYNpGRLJ8Fikz5F9a6fpFvL0JNHkND08cFIUMnPDn+f5yb9mU59hmw8Zg++fm4
+         qrOA==
+X-Gm-Message-State: ABy/qLZllETdps9hjK1j4djnDsT6YZF4QIeTuucbcEtD0ZEAh/uE1RY7
+	qfW73XXEwMYRCLDnoJ9I8XsxpKZaNizG
+X-Google-Smtp-Source: APBJJlFxyacMEQ+zYcQJoIRVORvhjrZEoUI6Phmqd6hkSdWntbiciQEOL75GGQ5pnb5KOIWFxqGRbg==
+X-Received: by 2002:a05:6602:2114:b0:783:65ba:8614 with SMTP id x20-20020a056602211400b0078365ba8614mr5483685iox.10.1689357116538;
+        Fri, 14 Jul 2023 10:51:56 -0700 (PDT)
 Received: from robh_at_kernel.org ([64.188.179.250])
-        by smtp.gmail.com with ESMTPSA id h2-20020a6bfb02000000b0078680780694sm2789173iog.34.2023.07.14.10.51.19
+        by smtp.gmail.com with ESMTPSA id ep9-20020a0566384e0900b0042b326ed1ebsm2758360jab.48.2023.07.14.10.51.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jul 2023 10:51:21 -0700 (PDT)
-Received: (nullmailer pid 4065772 invoked by uid 1000);
-	Fri, 14 Jul 2023 17:50:42 -0000
+        Fri, 14 Jul 2023 10:51:55 -0700 (PDT)
+Received: (nullmailer pid 4067642 invoked by uid 1000);
+	Fri, 14 Jul 2023 17:51:38 -0000
 From: Rob Herring <robh@kernel.org>
-To: =?UTF-8?B?TWFyZWsgQmVow7pu?= <kabel@kernel.org>, 
-	Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Srinivas Neeli <srinivas.neeli@amd.com>, Shubhrajyoti Datta <shubhrajyoti.datta@amd.com>, 
-	Michal Simek <michal.simek@amd.com>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Xingyu Wu <xingyu.wu@starfivetech.com>, Samin Guo <samin.guo@starfivetech.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>
-Cc: devicetree@vger.kernel.org, linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev
-Subject: [PATCH] watchdog: Explicitly include correct DT includes
-Date: Fri, 14 Jul 2023 11:50:38 -0600
-Message-Id: <20230714175040.4065660-1-robh@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH] soc: mediatek: Explicitly include correct DT includes
+Date: Fri, 14 Jul 2023 11:51:35 -0600
+Message-Id: <20230714175136.4067557-1-robh@kernel.org>
 X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_105123_416188_6BB3C144 
-X-CRM114-Status: GOOD (  16.68  )
+X-CRM114-CacheID: sfid-20230714_105159_573430_327A0E75 
+X-CRM114-Status: GOOD (  12.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,394 +88,108 @@ explicitly include the correct includes.
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/watchdog/armada_37xx_wdt.c | 1 -
- drivers/watchdog/at91rm9200_wdt.c  | 3 +--
- drivers/watchdog/cpwd.c            | 2 +-
- drivers/watchdog/ftwdt010_wdt.c    | 6 ++----
- drivers/watchdog/imx2_wdt.c        | 3 +--
- drivers/watchdog/imx7ulp_wdt.c     | 1 -
- drivers/watchdog/meson_wdt.c       | 4 ++--
- drivers/watchdog/mtk_wdt.c         | 1 -
- drivers/watchdog/of_xilinx_wdt.c   | 3 +--
- drivers/watchdog/pic32-dmt.c       | 3 +--
- drivers/watchdog/pic32-wdt.c       | 3 +--
- drivers/watchdog/pika_wdt.c        | 2 +-
- drivers/watchdog/qcom-wdt.c        | 1 -
- drivers/watchdog/rave-sp-wdt.c     | 2 +-
- drivers/watchdog/riowd.c           | 2 +-
- drivers/watchdog/rza_wdt.c         | 4 ++--
- drivers/watchdog/rzg2l_wdt.c       | 2 +-
- drivers/watchdog/s3c2410_wdt.c     | 1 -
- drivers/watchdog/sama5d4_wdt.c     | 1 -
- drivers/watchdog/sbsa_gwdt.c       | 3 +--
- drivers/watchdog/starfive-wdt.c    | 3 ++-
- drivers/watchdog/stm32_iwdg.c      | 1 -
- drivers/watchdog/sunxi_wdt.c       | 1 -
- drivers/watchdog/xilinx_wwdt.c     | 4 ++--
- 24 files changed, 21 insertions(+), 36 deletions(-)
+ drivers/soc/mediatek/mtk-cmdq-helper.c | 1 +
+ drivers/soc/mediatek/mtk-devapc.c      | 2 +-
+ drivers/soc/mediatek/mtk-mmsys.c       | 2 +-
+ drivers/soc/mediatek/mtk-mutex.c       | 3 +--
+ drivers/soc/mediatek/mtk-pm-domains.c  | 2 +-
+ drivers/soc/mediatek/mtk-pmic-wrap.c   | 3 ++-
+ drivers/soc/mediatek/mtk-scpsys.c      | 2 +-
+ 7 files changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/watchdog/armada_37xx_wdt.c b/drivers/watchdog/armada_37xx_wdt.c
-index e58652939f8a..8133a5d05647 100644
---- a/drivers/watchdog/armada_37xx_wdt.c
-+++ b/drivers/watchdog/armada_37xx_wdt.c
-@@ -14,7 +14,6 @@
+diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+index c1837a468267..b0cd071c4719 100644
+--- a/drivers/soc/mediatek/mtk-cmdq-helper.c
++++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+@@ -7,6 +7,7 @@
+ #include <linux/dma-mapping.h>
  #include <linux/module.h>
- #include <linux/moduleparam.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
+ #include <linux/mailbox_controller.h>
++#include <linux/of.h>
+ #include <linux/soc/mediatek/mtk-cmdq.h>
+ 
+ #define CMDQ_WRITE_ENABLE_MASK	BIT(0)
+diff --git a/drivers/soc/mediatek/mtk-devapc.c b/drivers/soc/mediatek/mtk-devapc.c
+index bad139cb117e..b28feb967540 100644
+--- a/drivers/soc/mediatek/mtk-devapc.c
++++ b/drivers/soc/mediatek/mtk-devapc.c
+@@ -8,7 +8,7 @@
+ #include <linux/iopoll.h>
+ #include <linux/module.h>
  #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/types.h>
-diff --git a/drivers/watchdog/at91rm9200_wdt.c b/drivers/watchdog/at91rm9200_wdt.c
-index d20ec27ba354..558015f08c7a 100644
---- a/drivers/watchdog/at91rm9200_wdt.c
-+++ b/drivers/watchdog/at91rm9200_wdt.c
-@@ -18,6 +18,7 @@
- #include <linux/mfd/syscon.h>
- #include <linux/mfd/syscon/atmel-st.h>
- #include <linux/miscdevice.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
- #include <linux/moduleparam.h>
- #include <linux/platform_device.h>
-@@ -26,8 +27,6 @@
- #include <linux/types.h>
- #include <linux/watchdog.h>
- #include <linux/uaccess.h>
--#include <linux/of.h>
--#include <linux/of_device.h>
- 
- #define WDT_DEFAULT_TIME	5	/* seconds */
- #define WDT_MAX_TIME		256	/* seconds */
-diff --git a/drivers/watchdog/cpwd.c b/drivers/watchdog/cpwd.c
-index 47250f9b68c7..901b94d456db 100644
---- a/drivers/watchdog/cpwd.c
-+++ b/drivers/watchdog/cpwd.c
-@@ -31,7 +31,7 @@
- #include <linux/mutex.h>
- #include <linux/io.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/uaccess.h>
- 
- #include <asm/irq.h>
-diff --git a/drivers/watchdog/ftwdt010_wdt.c b/drivers/watchdog/ftwdt010_wdt.c
-index 442c5bf63ff4..28f5af752c10 100644
---- a/drivers/watchdog/ftwdt010_wdt.c
-+++ b/drivers/watchdog/ftwdt010_wdt.c
-@@ -14,7 +14,7 @@
- #include <linux/io.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/watchdog.h>
-@@ -221,20 +221,18 @@ static const struct dev_pm_ops ftwdt010_wdt_dev_pm_ops = {
- 				ftwdt010_wdt_resume)
- };
- 
--#ifdef CONFIG_OF
- static const struct of_device_id ftwdt010_wdt_match[] = {
- 	{ .compatible = "faraday,ftwdt010" },
- 	{ .compatible = "cortina,gemini-watchdog" },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, ftwdt010_wdt_match);
--#endif
- 
- static struct platform_driver ftwdt010_wdt_driver = {
- 	.probe		= ftwdt010_wdt_probe,
- 	.driver		= {
- 		.name	= "ftwdt010-wdt",
--		.of_match_table = of_match_ptr(ftwdt010_wdt_match),
-+		.of_match_table = ftwdt010_wdt_match,
- 		.pm = &ftwdt010_wdt_dev_pm_ops,
- 	},
- };
-diff --git a/drivers/watchdog/imx2_wdt.c b/drivers/watchdog/imx2_wdt.c
-index 6fcc3596103c..1a27665a2f53 100644
---- a/drivers/watchdog/imx2_wdt.c
-+++ b/drivers/watchdog/imx2_wdt.c
-@@ -26,8 +26,7 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/moduleparam.h>
--#include <linux/of_address.h>
 -#include <linux/of_device.h>
 +#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/watchdog.h>
-diff --git a/drivers/watchdog/imx7ulp_wdt.c b/drivers/watchdog/imx7ulp_wdt.c
-index 7ca486794ba7..c703586c6e5f 100644
---- a/drivers/watchdog/imx7ulp_wdt.c
-+++ b/drivers/watchdog/imx7ulp_wdt.c
-@@ -9,7 +9,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/reboot.h>
- #include <linux/watchdog.h>
-diff --git a/drivers/watchdog/meson_wdt.c b/drivers/watchdog/meson_wdt.c
-index 539feaa1f904..497496f64f55 100644
---- a/drivers/watchdog/meson_wdt.c
-+++ b/drivers/watchdog/meson_wdt.c
-@@ -11,11 +11,11 @@
- #include <linux/init.h>
- #include <linux/io.h>
- #include <linux/kernel.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
- #include <linux/moduleparam.h>
--#include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
-+#include <linux/property.h>
- #include <linux/types.h>
- #include <linux/watchdog.h>
+ #include <linux/of_irq.h>
+ #include <linux/of_address.h>
  
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index a9c437598e7e..b2330b16b497 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -25,7 +25,6 @@
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index 9619faa796e8..ffb75711a1da 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -8,7 +8,7 @@
+ #include <linux/device.h>
+ #include <linux/io.h>
  #include <linux/module.h>
- #include <linux/moduleparam.h>
- #include <linux/of.h>
 -#include <linux/of_device.h>
++#include <linux/of.h>
  #include <linux/platform_device.h>
  #include <linux/reset-controller.h>
- #include <linux/types.h>
-diff --git a/drivers/watchdog/of_xilinx_wdt.c b/drivers/watchdog/of_xilinx_wdt.c
-index 2a079ca04aa3..05657dc1d36a 100644
---- a/drivers/watchdog/of_xilinx_wdt.c
-+++ b/drivers/watchdog/of_xilinx_wdt.c
-@@ -10,14 +10,13 @@
+ #include <linux/soc/mediatek/mtk-mmsys.h>
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index 4aa0913817ae..9d9f5ae578ac 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -6,8 +6,7 @@
  #include <linux/clk.h>
- #include <linux/err.h>
- #include <linux/module.h>
-+#include <linux/platform_device.h>
- #include <linux/types.h>
- #include <linux/kernel.h>
- #include <linux/ioport.h>
- #include <linux/watchdog.h>
- #include <linux/io.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
--#include <linux/of_address.h>
- 
- /* Register offsets for the Wdt device */
- #define XWT_TWCSR0_OFFSET   0x0 /* Control/Status Register0 */
-diff --git a/drivers/watchdog/pic32-dmt.c b/drivers/watchdog/pic32-dmt.c
-index bc4ccddc75a3..466b4a41411f 100644
---- a/drivers/watchdog/pic32-dmt.c
-+++ b/drivers/watchdog/pic32-dmt.c
-@@ -10,9 +10,8 @@
- #include <linux/err.h>
- #include <linux/io.h>
- #include <linux/kernel.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
--#include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pm.h>
- #include <linux/watchdog.h>
-diff --git a/drivers/watchdog/pic32-wdt.c b/drivers/watchdog/pic32-wdt.c
-index 6d1a00222991..4d7eaf290e1c 100644
---- a/drivers/watchdog/pic32-wdt.c
-+++ b/drivers/watchdog/pic32-wdt.c
-@@ -10,9 +10,8 @@
- #include <linux/err.h>
- #include <linux/io.h>
- #include <linux/kernel.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
--#include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pm.h>
- #include <linux/watchdog.h>
-diff --git a/drivers/watchdog/pika_wdt.c b/drivers/watchdog/pika_wdt.c
-index a98abd0d3146..782b8c23d99c 100644
---- a/drivers/watchdog/pika_wdt.c
-+++ b/drivers/watchdog/pika_wdt.c
-@@ -23,8 +23,8 @@
- #include <linux/bitops.h>
- #include <linux/uaccess.h>
- #include <linux/io.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_platform.h>
- 
- #define DRV_NAME "PIKA-WDT"
- 
-diff --git a/drivers/watchdog/qcom-wdt.c b/drivers/watchdog/qcom-wdt.c
-index d776474dcdf3..9e790f0c2096 100644
---- a/drivers/watchdog/qcom-wdt.c
-+++ b/drivers/watchdog/qcom-wdt.c
-@@ -11,7 +11,6 @@
- #include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/watchdog.h>
--#include <linux/of_device.h>
- 
- enum wdt_reg {
- 	WDT_RST,
-diff --git a/drivers/watchdog/rave-sp-wdt.c b/drivers/watchdog/rave-sp-wdt.c
-index 2c95615b6354..5d1c2176d445 100644
---- a/drivers/watchdog/rave-sp-wdt.c
-+++ b/drivers/watchdog/rave-sp-wdt.c
-@@ -13,7 +13,7 @@
- #include <linux/mfd/rave-sp.h>
- #include <linux/module.h>
- #include <linux/nvmem-consumer.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/reboot.h>
- #include <linux/slab.h>
-diff --git a/drivers/watchdog/riowd.c b/drivers/watchdog/riowd.c
-index c04b383e1712..b293792a292a 100644
---- a/drivers/watchdog/riowd.c
-+++ b/drivers/watchdog/riowd.c
-@@ -14,7 +14,7 @@
- #include <linux/miscdevice.h>
- #include <linux/watchdog.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/io.h>
- #include <linux/uaccess.h>
- #include <linux/slab.h>
-diff --git a/drivers/watchdog/rza_wdt.c b/drivers/watchdog/rza_wdt.c
-index fe6c2ed35e04..cb4901b3f777 100644
---- a/drivers/watchdog/rza_wdt.c
-+++ b/drivers/watchdog/rza_wdt.c
-@@ -9,9 +9,9 @@
- #include <linux/bitops.h>
- #include <linux/clk.h>
- #include <linux/delay.h>
-+#include <linux/io.h>
- #include <linux/module.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/watchdog.h>
- 
-diff --git a/drivers/watchdog/rzg2l_wdt.c b/drivers/watchdog/rzg2l_wdt.c
-index d404953d0e0f..1741f98ca67c 100644
---- a/drivers/watchdog/rzg2l_wdt.c
-+++ b/drivers/watchdog/rzg2l_wdt.c
-@@ -11,7 +11,7 @@
  #include <linux/iopoll.h>
- #include <linux/kernel.h>
  #include <linux/module.h>
 -#include <linux/of_device.h>
+-#include <linux/of_address.h>
 +#include <linux/of.h>
  #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
-diff --git a/drivers/watchdog/s3c2410_wdt.c b/drivers/watchdog/s3c2410_wdt.c
-index 95416a9bdd4b..2bcc8faa7fa5 100644
---- a/drivers/watchdog/s3c2410_wdt.c
-+++ b/drivers/watchdog/s3c2410_wdt.c
-@@ -23,7 +23,6 @@
- #include <linux/slab.h>
- #include <linux/err.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/mfd/syscon.h>
  #include <linux/regmap.h>
- #include <linux/delay.h>
-diff --git a/drivers/watchdog/sama5d4_wdt.c b/drivers/watchdog/sama5d4_wdt.c
-index aeee934ca51b..71e8b5fbf51f 100644
---- a/drivers/watchdog/sama5d4_wdt.c
-+++ b/drivers/watchdog/sama5d4_wdt.c
-@@ -11,7 +11,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
- #include <linux/reboot.h>
-diff --git a/drivers/watchdog/sbsa_gwdt.c b/drivers/watchdog/sbsa_gwdt.c
-index fd3cfdda4949..421ebcda62e6 100644
---- a/drivers/watchdog/sbsa_gwdt.c
-+++ b/drivers/watchdog/sbsa_gwdt.c
-@@ -43,10 +43,9 @@
+ #include <linux/soc/mediatek/mtk-mmsys.h>
+diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+index 354249cc1b12..ee962804b830 100644
+--- a/drivers/soc/mediatek/mtk-pm-domains.c
++++ b/drivers/soc/mediatek/mtk-pm-domains.c
+@@ -8,8 +8,8 @@
  #include <linux/io.h>
- #include <linux/io-64-nonatomic-lo-hi.h>
- #include <linux/interrupt.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
- #include <linux/moduleparam.h>
--#include <linux/of.h>
+ #include <linux/iopoll.h>
+ #include <linux/mfd/syscon.h>
++#include <linux/of.h>
+ #include <linux/of_clk.h>
 -#include <linux/of_device.h>
  #include <linux/platform_device.h>
- #include <linux/uaccess.h>
- #include <linux/watchdog.h>
-diff --git a/drivers/watchdog/starfive-wdt.c b/drivers/watchdog/starfive-wdt.c
-index 8058fca4d05d..9e6db8e0164f 100644
---- a/drivers/watchdog/starfive-wdt.c
-+++ b/drivers/watchdog/starfive-wdt.c
+ #include <linux/pm_domain.h>
+ #include <linux/regmap.h>
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index 11095b8de71a..efd9cae212dc 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
 @@ -8,7 +8,8 @@
- #include <linux/clk.h>
- #include <linux/iopoll.h>
+ #include <linux/io.h>
+ #include <linux/kernel.h>
  #include <linux/module.h>
 -#include <linux/of_device.h>
 +#include <linux/of.h>
-+#include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
++#include <linux/of_platform.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
  #include <linux/reset.h>
- #include <linux/watchdog.h>
-diff --git a/drivers/watchdog/stm32_iwdg.c b/drivers/watchdog/stm32_iwdg.c
-index 570a71509d2a..fa5e70c4b93a 100644
---- a/drivers/watchdog/stm32_iwdg.c
-+++ b/drivers/watchdog/stm32_iwdg.c
-@@ -17,7 +17,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/watchdog.h>
- 
-diff --git a/drivers/watchdog/sunxi_wdt.c b/drivers/watchdog/sunxi_wdt.c
-index 6cf82922d3fb..b85354a99582 100644
---- a/drivers/watchdog/sunxi_wdt.c
-+++ b/drivers/watchdog/sunxi_wdt.c
-@@ -18,7 +18,6 @@
- #include <linux/module.h>
- #include <linux/moduleparam.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/types.h>
- #include <linux/watchdog.h>
-diff --git a/drivers/watchdog/xilinx_wwdt.c b/drivers/watchdog/xilinx_wwdt.c
-index 2585038d5575..1d998db41533 100644
---- a/drivers/watchdog/xilinx_wwdt.c
-+++ b/drivers/watchdog/xilinx_wwdt.c
-@@ -9,9 +9,9 @@
- #include <linux/interrupt.h>
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 7a668888111c..b374d01fdac7 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -7,7 +7,7 @@
  #include <linux/io.h>
- #include <linux/ioport.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
+ #include <linux/iopoll.h>
+ #include <linux/mfd/syscon.h>
 -#include <linux/of_device.h>
--#include <linux/of_address.h>
-+#include <linux/platform_device.h>
- #include <linux/watchdog.h>
- 
- /* Max timeout is calculated at 100MHz source clock */
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_domain.h>
+ #include <linux/regulator/consumer.h>
 -- 
 2.40.1
 
