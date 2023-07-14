@@ -4,94 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F4117C0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 19:53:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE2ABC001B0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 21:18:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DnEjVGiuXfP3swFolvK4a+TN59hjw2gEVcLZQUXBvDY=; b=gbhbAoMik19jO4nkkTT2ZvYvbE
-	yomgq8AdbExQDC17vrBUbCmSPCfomRBEgbA36IezZGcUWSduYEQf1e6fl9os6v1j1oyjoXwjzKS0W
-	KLiMQuPB48qt4HE6IBGV7EOWdGtFzBOn3BgUpC0uGRcuiqAoYPLjYWcVoDV8d1nq7SEEEob4PYdn4
-	ZPQXkWIX2ruOkn5IYX2S49UuJwHnrRDfkmXl2hR+hQE3P/j2lRl8mhPS5Er4x+jDCrSZrZpHTsJS+
-	uRvjdZInqcxITS9UUHw0sNa+SmSdgM8RFqRz0NFoR1czFqcrzZjNDgv8EUn1u0NmNUYOOVsnyncC0
-	rw+eLWgw==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=f9vd/UBc1SwqgKl3wWxYWn0N3AMiNAnsf5IgxuUq+0U=; b=OIEc86fIpPjSkrp73KhJ4KtIFr
+	uMKn44lc5ZILvBCxHg/WYyyqebqSzAk7ehbWtRfzHkcFiWvEhVvtw7X+69p9ITorTfp/l/QJZfk1w
+	aUnNkaU7ksNjW/yqJLjE8APl0oO7A4WkWIAfTkiKEqrcfDHvaejzBvu+VCtgiVsAbOQkTnREYnYDr
+	YNaDYqB/8GCRFtxcqXEermB76yI0NAKcODhg6X7rlxIc71KnHeSUa+uPRKVlY9whXpEVwQTBnO+YD
+	QSFxLQRkNA8tXb9QJgJIuscTZ31fmgEvMsg/wcVK9+7XyOvD0vo2DWH3B8lhtTVul26wVB/vOVDyQ
+	WxP4FLnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKOqr-0078pl-0f;
-	Fri, 14 Jul 2023 19:53:17 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qKQAj-007GOo-2X;
+	Fri, 14 Jul 2023 21:17:53 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKOqn-0078om-1X;
-	Fri, 14 Jul 2023 19:53:14 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	id 1qKQAf-007GNn-2S;
+	Fri, 14 Jul 2023 21:17:51 +0000
+Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id EBD8B61DE2;
-	Fri, 14 Jul 2023 19:53:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4BB2C433CA;
-	Fri, 14 Jul 2023 19:53:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689364391;
-	bh=DnEjVGiuXfP3swFolvK4a+TN59hjw2gEVcLZQUXBvDY=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=mn87tiPgZ6ilmAUhV977eN8ghu423vnPb3bEQXiueuJFlG6WzckKVMBYgx1XXxNaX
-	 uZLBgaozxXIxTjMwwZNV48AJ6IMuBYZoVyzOzjRfheSwy+adVIZ73Ma7GMH/LYoiS8
-	 hcOEgR57LDhoIb4QTvPCf/wCVxc3h7Kvt4VD/k4D0c/wK97+sjzu6mr25aZQsYNWl3
-	 098AiK51OpiCy2cNMNRiacvZN6BEPN3mg7PfGgRH9OxiHBDW8JTYfTM1FqidsDFTCm
-	 d1GulW7sULPhNG45eCQXrmcwpCNJF/mD+Y+rb0JwswPdlZCblEQ5fjs6Gv1LtynJYb
-	 iJzdclHBcYkvA==
-Received: by mail-lj1-f177.google.com with SMTP id 38308e7fff4ca-2b701dee4bfso36715231fa.0;
-        Fri, 14 Jul 2023 12:53:11 -0700 (PDT)
-X-Gm-Message-State: ABy/qLZDZTT+g+8XEohGTQ+aARfHqqvwjXkl6pxXAYRhm3PFpL2DlHwg
-	k75DLAGNaMwmiIoIBuD0Edd1NE0KwHSjkwpUIA==
-X-Google-Smtp-Source: APBJJlFIVq6SSfDGp/7zlzMmel1HUM1zDWT3EoUpkE1rCFI61SUoU0+rrNxJc3PIb6p4Jh4x1E4RyP9tWO4eKUbbP0E=
-X-Received: by 2002:a2e:9a8a:0:b0:2b4:765b:f6ee with SMTP id
- p10-20020a2e9a8a000000b002b4765bf6eemr4915096lji.41.1689364389871; Fri, 14
- Jul 2023 12:53:09 -0700 (PDT)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6AC5D6607061;
+	Fri, 14 Jul 2023 22:17:44 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1689369466;
+	bh=XnDJ8qbJU/PYiUdNGYMysu5RX/VThqsRxmhyWnGafds=;
+	h=From:To:Cc:Subject:Date:From;
+	b=jZRn7K12Ns+WqeS++HfR8mExp7Lsn3OxEK67DFBBgAU/8urfa5rPaiCXQgAX/DYFq
+	 ebqxYECWUitP5vuJTx1N9Id5lzngzet/pCwkF0pNfakzsfbL5IsLvFhp70RIcMTYkL
+	 7e5kYJ/+f5khcACX/Uv/82igcOV/Zx+06fGkG6N0ZKLfisLSjaJeq2wEVPbrFxVqa/
+	 4WJ7pJCZ+xQmvVW63BOLR0MMMw+1nz4c0Az68yu3QfhDMR5s9bEOXKBC2aIy1fDZ3s
+	 OmSxY2fQEhGDiUvU3LG+Z+Ij3Oxs+tiV+S8XQcXlu5qUhyptNoL9c1L5T9dpOsONH3
+	 olYTtoKPudFaw==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+	James Lo <james.lo@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] spmi: mtk-pmif: Serialize PMIF status check and command submission
+Date: Fri, 14 Jul 2023 17:17:10 -0400
+Message-ID: <20230714211739.42928-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-References: <20230714175008.4064592-1-robh@kernel.org> <CAJZ5v0i-OByOSjpxrj5d9S9QHRySK-MEUo+bK_J_4ihsCBmnSg@mail.gmail.com>
-In-Reply-To: <CAJZ5v0i-OByOSjpxrj5d9S9QHRySK-MEUo+bK_J_4ihsCBmnSg@mail.gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Fri, 14 Jul 2023 13:52:57 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqLy22S5bTFu-ZKXhSMtMPPq9z1Gdb5kJMVmhui55miDsQ@mail.gmail.com>
-Message-ID: <CAL_JsqLy22S5bTFu-ZKXhSMtMPPq9z1Gdb5kJMVmhui55miDsQ@mail.gmail.com>
-Subject: Re: [PATCH] thermal: Explicitly include correct DT includes
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-Cc: Guillaume La Roque <glaroque@baylibre.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
-	Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Markus Mayer <mmayer@broadcom.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	NXP Linux Team <linux-imx@nxp.com>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Thara Gopinath <thara.gopinath@gmail.com>, 
-	=?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
-	Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Vasily Khoruzhick <anarsoul@gmail.com>, Yangtao Li <tiny.windzz@gmail.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-amlogic@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
-	linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_125313_603796_64E57531 
-X-CRM114-Status: GOOD (  13.75  )
+X-CRM114-CacheID: sfid-20230714_141750_139643_1C0DF4D0 
+X-CRM114-Status: GOOD (  19.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,29 +79,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 14, 2023 at 12:54=E2=80=AFPM Rafael J. Wysocki <rafael@kernel.o=
-rg> wrote:
->
-> On Fri, Jul 14, 2023 at 7:51=E2=80=AFPM Rob Herring <robh@kernel.org> wro=
-te:
-> >
-> > The DT of_device.h and of_platform.h date back to the separate
-> > of_platform_bus_type before it as merged into the regular platform bus.
-> > As part of that merge prepping Arm DT support 13 years ago, they
-> > "temporarily" include each other. They also include platform_device.h
-> > and of.h. As a result, there's a pretty much random mix of those includ=
-e
-> > files used throughout the tree. In order to detangle these headers and
-> > replace the implicit includes with struct declarations, users need to
-> > explicitly include the correct includes.
-> >
-> > Signed-off-by: Rob Herring <robh@kernel.org>
->
-> Acked-by: Rafael J. Wysocki <rafael@kernel.org>
->
-> or please let me know if you want me to pick this up.
+Before writing the read or write command to the SPMI arbiter through the
+PMIF interface, the current status of the channel is checked to ensure
+it is idle. However, since the status only changes from idle when the
+command is written, it is possible for two concurrent calls to determine
+that the channel is idle and simultaneously send their commands. At this
+point the PMIF interface hangs, with the status register no longer being
+updated, and thus causing all subsequent operations to time out.
 
-Single patch in your subsystem with no dependencies. Please pick it up.
+This was observed on the mt8195-cherry-tomato-r2 machine, particularly
+after commit 46600ab142f8 ("regulator: Set PROBE_PREFER_ASYNCHRONOUS for
+drivers between 5.10 and 5.15") was applied, since then the two MT6315
+devices present on the SPMI bus would probe assynchronously and
+sometimes read the bus simultaneously, breaking the PMIF interface and
+consequently slowing down the whole system.
 
-Rob
+To fix the issue, introduce locking around the channel status check and
+the command write, so that both become an atomic operation. A spinlock
+is used since this is a fast bus, as indicated by the usage of the
+atomic variant of readl_poll, and '.fast_io = true' being used in the
+mt6315 driver, so spinlocks are already used for the regmap access.
+
+Fixes: b45b3ccef8c0 ("spmi: mediatek: Add support for MT6873/8192")
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+---
+
+ drivers/spmi/spmi-mtk-pmif.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
+index b3c991e1ea40..208ba0adfb98 100644
+--- a/drivers/spmi/spmi-mtk-pmif.c
++++ b/drivers/spmi/spmi-mtk-pmif.c
+@@ -50,6 +50,7 @@ struct pmif {
+ 	struct clk_bulk_data clks[PMIF_MAX_CLKS];
+ 	size_t nclks;
+ 	const struct pmif_data *data;
++	spinlock_t lock;
+ };
+ 
+ static const char * const pmif_clock_names[] = {
+@@ -314,6 +315,7 @@ static int pmif_spmi_read_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+ 	struct ch_reg *inf_reg;
+ 	int ret;
+ 	u32 data, cmd;
++	unsigned long flags;
+ 
+ 	/* Check for argument validation. */
+ 	if (sid & ~0xf) {
+@@ -334,6 +336,7 @@ static int pmif_spmi_read_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+ 	else
+ 		return -EINVAL;
+ 
++	spin_lock_irqsave(&arb->lock, flags);
+ 	/* Wait for Software Interface FSM state to be IDLE. */
+ 	inf_reg = &arb->chan;
+ 	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+@@ -350,6 +353,7 @@ static int pmif_spmi_read_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+ 	/* Send the command. */
+ 	cmd = (opc << 30) | (sid << 24) | ((len - 1) << 16) | addr;
+ 	pmif_writel(arb, cmd, inf_reg->ch_send);
++	spin_unlock_irqrestore(&arb->lock, flags);
+ 
+ 	/*
+ 	 * Wait for Software Interface FSM state to be WFVLDCLR,
+@@ -377,6 +381,7 @@ static int pmif_spmi_write_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+ 	struct ch_reg *inf_reg;
+ 	int ret;
+ 	u32 data, cmd;
++	unsigned long flags;
+ 
+ 	if (len > 4) {
+ 		dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
+@@ -394,6 +399,7 @@ static int pmif_spmi_write_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+ 	else
+ 		return -EINVAL;
+ 
++	spin_lock_irqsave(&arb->lock, flags);
+ 	/* Wait for Software Interface FSM state to be IDLE. */
+ 	inf_reg = &arb->chan;
+ 	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+@@ -414,6 +420,7 @@ static int pmif_spmi_write_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+ 	/* Send the command. */
+ 	cmd = (opc << 30) | BIT(29) | (sid << 24) | ((len - 1) << 16) | addr;
+ 	pmif_writel(arb, cmd, inf_reg->ch_send);
++	spin_unlock_irqrestore(&arb->lock, flags);
+ 
+ 	return 0;
+ }
+@@ -488,6 +495,8 @@ static int mtk_spmi_probe(struct platform_device *pdev)
+ 	arb->chan.ch_send = PMIF_SWINF_0_ACC + chan_offset;
+ 	arb->chan.ch_rdy = PMIF_SWINF_0_VLD_CLR + chan_offset;
+ 
++	spin_lock_init(&arb->lock);
++
+ 	platform_set_drvdata(pdev, ctrl);
+ 
+ 	err = spmi_controller_add(ctrl);
+-- 
+2.41.0
+
 
