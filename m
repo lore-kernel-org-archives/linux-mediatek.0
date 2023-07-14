@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E357DEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 10:15:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83235EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 10:15:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
 	From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UPlRzROIHywLAEsPVNenYYwuX7VtW7Gwr2v8m2WSZBQ=; b=XASM2QGx//13qhtZBKq80+/ZT3
-	REUY8+gWCsLcHoc3T/p6pwr7nOLQXRc88rS00Eh8sJwFzKGDsM1CaDCMi1YbHasWzwRyufRV56G64
-	1ESrQfCbpPdVVcyUQPCKqymMFTPZuB7F7RQSjeHZKil5en/U0TJws5UMBV9bbAb+4ysdrXK4f2pqJ
-	D5m086MBKR5bziIsVamGcZ0QYoGAw97QzncuhWNQL1hIgVEc1hAjFr84puIjnmV7vLdTTcEx8V6LC
-	JSHmf+zok2KCEnB2W1ub0BxnRWl23tk0XwoHoGSd1fvuHZROpFP6wk6ouuptP+RT7E3ujZB9FBhAW
-	t5y6IChA==;
+	bh=fhjehWz7agbRGef67U1Mmluna9GAKDVBaaPtxWT32Nk=; b=V0RYH0TN2qXFI/eZr69VbQDkyD
+	xkuJjrEGFJ8PKeBajRZdqtoRMXEMUtuc8N70yz+vrXagY3qmripK3hDzknzXnG+2k/Dyp8U3U6Zcx
+	79U8ZKRwBFq1c9U9JdMaw/GgNUyuKasR0gTNuuF3q61mExaO9nssyVqfvLo1FgRhFBKqxyA+9xmFp
+	PhXEDi7gucLweML9jbaeaSGhkUC6RYMXXu/zgHcMsElxJxyH/Xw/nKP6Ahp+2j58Mb4J90GiJij6X
+	LG5f/+fQgkItbhdBe+kWukYgd4cYlXjXOWnrJa9lFLy9G+64jN0zhZClqPtYGI4lfpm+b5yWrRmBI
+	mbh5gsfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKFpB-005mXz-2Z;
-	Fri, 14 Jul 2023 10:14:57 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1qKFpz-005mvf-28;
+	Fri, 14 Jul 2023 10:15:47 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKFp5-005mTM-39
+	id 1qKFpw-005muA-29
 	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Jul 2023 10:14:54 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-3fbc63c2e84so14652935e9.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Jul 2023 03:14:50 -0700 (PDT)
+	Fri, 14 Jul 2023 10:15:45 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-3fbc12181b6so16868715e9.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 14 Jul 2023 03:15:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1689329689; x=1691921689;
+        d=broadcom.com; s=google; t=1689329742; x=1691921742;
         h=in-reply-to:from:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=UPlRzROIHywLAEsPVNenYYwuX7VtW7Gwr2v8m2WSZBQ=;
-        b=KuvcIT8dO2lMeHpM99rzD+umXOKGVQorc39UJBB9UUwjVY+yBArn2dEU2EXFoUVhEJ
-         PKuNgL8UG0ZI4kSJRMFD1xKxrBmkvYYAgWMq/rjN9aGSYfaucYWtU0ycOmliHghG8dpq
-         KoyuH66maYUBcOZ1r2uiOPSQSnyZmEz/tGAVA=
+        bh=fhjehWz7agbRGef67U1Mmluna9GAKDVBaaPtxWT32Nk=;
+        b=P3oQ0U4NRG6pY8JmIUVWi5OohYKSaPEjeMv4MdyPt40p1JSt8A6tUvWHkJ4+f4/r+9
+         cV8nbg+OdJDmA34xTTEGumuh0P+HEHIKvLvJTmbcMz1Z+q3xt/IaxZYpzTeEQjIhrggL
+         uKeF/QQOROfjbweXSaAY6CgjszuYcQ/BF+hz4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689329689; x=1691921689;
+        d=1e100.net; s=20221208; t=1689329742; x=1691921742;
         h=in-reply-to:from:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=UPlRzROIHywLAEsPVNenYYwuX7VtW7Gwr2v8m2WSZBQ=;
-        b=exAoQcC5FkpQKuVxBscii+cAJRfEqhUoE4ZjLmc5AGKmoHcOyEYjsd1aahKl5zUlR5
-         ADz+RJjCHYNjYwVEKGvcZsraZ40vPUXDjhwMvQl92FFK9CwlfMDkmDPqnfu7EriRp++b
-         +Vxd19uoWYtn2TZv7aO6yvodMgsgxEveYwXCgQ5uy2+I1ppC6djVlU+LETatee33i3io
-         D3Wl7NCd22O+hHqmRghok/v874mTNWvZ2bqZ70P8jlEuyfIWzlsk9lhlE5Aok1vs44V5
-         TOB1cc2J3wt/sABljub++Df0x3gq8940c1NOsFpN4M3KCrBx4lZ0yHNNfHg75NJC+WVz
-         gFTw==
-X-Gm-Message-State: ABy/qLbe3UQm82H+6daNNOvbLGTBsKUFY1BxKzrJY+3EV+5Ku/3TK9Us
-	2kom7FUy0jgKecDv6CF2JzreGg==
-X-Google-Smtp-Source: APBJJlFN+39F1cJXmvGN/Oe1BZH77b7+plQTav64CjKnRrZsBIqy4b87R/q5DNUmMk1AOU7uTOypTg==
-X-Received: by 2002:a5d:440d:0:b0:314:13e2:2f6c with SMTP id z13-20020a5d440d000000b0031413e22f6cmr3825138wrq.58.1689329688950;
-        Fri, 14 Jul 2023 03:14:48 -0700 (PDT)
+        bh=fhjehWz7agbRGef67U1Mmluna9GAKDVBaaPtxWT32Nk=;
+        b=Q3ZG5t7VJ+IUpsn82qnESaKH0nsDZPdtsyVVOwwQnaXo5sGqQOJUcapRxwHSAQYG8g
+         cDqV0Sua67J/tr4IN4kbtaFYwKiYs3N0hfJlTZ2q9Trm7PMnaYiOxNYw6EMRrEGKTggG
+         siD0nGgwBqNJKKxFkh/Yzzn7iDoAm6UINe8pS9A8JsDIqZoDfycgFKWBVlGBq4zxRLLx
+         j2WHNaVqH7i/oiYpH+gOe184XNtc6HZgyJjbimgtfQfzDnRQdK9QzRMML6mV+u3IZsAe
+         sM5/CFvsR6JQAYMY2ZwJHKEd6C9GxfliZJgKQzGqfu64lNJ129M2+FpDn75f2sswI40F
+         KbpQ==
+X-Gm-Message-State: ABy/qLYXDahooLfLBZ7jiaWs5UV9REYVXOpZTX5F3PC6A0PLk0wPBQ5L
+	jSNPddl7/4mJZ/TAkG1uvq0i3Q==
+X-Google-Smtp-Source: APBJJlEFLz9gxH1M1WdAzs/TtPxEpXKtJ9fwUnrC3G8T5eXwxvUWNZgnQwZhPY4wq2AHyCYt32kpPg==
+X-Received: by 2002:a1c:7905:0:b0:3fb:bc6d:41f1 with SMTP id l5-20020a1c7905000000b003fbbc6d41f1mr3590373wme.17.1689329742365;
+        Fri, 14 Jul 2023 03:15:42 -0700 (PDT)
 Received: from [192.168.47.133] ([37.175.120.199])
-        by smtp.gmail.com with ESMTPSA id c3-20020a5d4f03000000b00311d8c2561bsm10337078wru.60.2023.07.14.03.14.46
+        by smtp.gmail.com with ESMTPSA id m14-20020a7bcb8e000000b003fbd2a9e94asm1065597wmi.31.2023.07.14.03.15.37
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 14 Jul 2023 03:14:48 -0700 (PDT)
-Message-ID: <132d3ad7-fc05-742d-e8f3-6c77a849b538@broadcom.com>
-Date: Fri, 14 Jul 2023 12:14:45 +0200
+        Fri, 14 Jul 2023 03:15:41 -0700 (PDT)
+Message-ID: <60e5c4b6-3f00-d85f-a3cf-492b67a07c1d@broadcom.com>
+Date: Fri, 14 Jul 2023 12:15:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH net-next 2/3] net: dsa: remove legacy_pre_march2020 from
- drivers
+Subject: Re: [PATCH net-next 3/3] net: phylink: remove legacy mac_an_restart()
+ method
 To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
  Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
 Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
@@ -81,14 +81,14 @@ Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
  UNGLinuxDriver@microchip.com, Vladimir Oltean <olteanv@gmail.com>,
  Woojung Huh <woojung.huh@microchip.com>
 References: <ZLERQ2OBrv44Ppyc@shell.armlinux.org.uk>
- <E1qKEqS-00H0xb-G1@rmk-PC.armlinux.org.uk>
+ <E1qKEqX-00H0xi-M5@rmk-PC.armlinux.org.uk>
 From: Florian Fainelli <florian.fainelli@broadcom.com>
-In-Reply-To: <E1qKEqS-00H0xb-G1@rmk-PC.armlinux.org.uk>
+In-Reply-To: <E1qKEqX-00H0xi-M5@rmk-PC.armlinux.org.uk>
 Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256;
-	boundary="000000000000088cb406006fb8a0"
+	boundary="00000000000039322506006fbb82"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_031452_011932_D671CAC5 
-X-CRM114-Status: UNSURE (   7.84  )
+X-CRM114-CacheID: sfid-20230714_031544_705082_D7EC43BE 
+X-CRM114-Status: UNSURE (   8.49  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,7 +104,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---000000000000088cb406006fb8a0
+--00000000000039322506006fbb82
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
@@ -112,9 +112,11 @@ Content-Transfer-Encoding: 7bit
 
 
 On 7/14/2023 11:12 AM, Russell King (Oracle) wrote:
-> Since DSA no longer marks anything as phylink-legacy, there is now no
-> need for DSA drivers to set this member to false. Remove all instances
-> of this.
+> The mac_an_restart() method is now completely unused, and has been
+> superseded by phylink_pcs support. Remove this method.
+> 
+> Since phylink_pcs_mac_an_restart() now only deals with the PCS, rename
+> the function to remove the _mac infix.
 > 
 > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 
@@ -122,7 +124,7 @@ Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
 -- 
 Florian
 
---000000000000088cb406006fb8a0
+--00000000000039322506006fbb82
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -193,15 +195,15 @@ kNGap1mHJ+JngGzZCz+dDiHRQKGpXLxkHX0BvEDZLW6LGOJ83ImrW38YMOo3ZYnCYNHA9qDOakiw
 NxADYvcRBA0ySL6sZpj8BIIhWiXiuusuBmt2Mak2eEv0xDbovE6Z6hYyl/ZnRadbgK/ClgbY3w+O
 AfUXEZ0xggJtMIICaQIBATBrMFsxCzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52
 LXNhMTEwLwYDVQQDEyhHbG9iYWxTaWduIEdDQyBSMyBQZXJzb25hbFNpZ24gMiBDQSAyMDIwAgwT
-/D/YSkVckoN0L+QwDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcNAQkEMSIEINKBbBn+27KkfeRS
-spDA9CZZXG2Nuqs46H4sNLmDFXpgMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcN
-AQkFMQ8XDTIzMDcxNDEwMTQ0OVowaQYJKoZIhvcNAQkPMVwwWjALBglghkgBZQMEASowCwYJYIZI
+/D/YSkVckoN0L+QwDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcNAQkEMSIEICrj8bIodgVru+qy
+A2V5U//G9aLrbVGbX1yg8DQ/luDsMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcN
+AQkFMQ8XDTIzMDcxNDEwMTU0MlowaQYJKoZIhvcNAQkPMVwwWjALBglghkgBZQMEASowCwYJYIZI
 AWUDBAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG9w0BAQowCwYJKoZIhvcNAQEH
-MAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQDTRFbgl8gLFjDxXEOBjNhs61LCfcSdi70C
-dTcVz4oL4UVh4vKVgb2Cy3VN0hOZEwq5xWEDy3zg0oXjm/fjnIc/6qhxxzPS5CTibKFWWoPhEULU
-+ncWBAGZHbDJO55/dUH8ri1w4KsZtErSjx5g4oErRHh6KAGbjRnOHuTB2j15fwdvbVssWU4pRJF3
-SudicgVJyXf+/Z7Iw5KXpnxVzMZ0evJiroIY/jPYvq1t31qwPmgdWi0nkj5AJvQ+Xu2SVgcCABdG
-IvWL1C4XCgNRFbkp00GNua5np4VQ4b6gNo8EuXX/sOMzMRU5W5N3sSiGs7q6GIH80utwofKHf6im
-rEbo
---000000000000088cb406006fb8a0--
+MAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQCA98CkSl3MoADKEKe7BhdRkBV0Jx6WK/I5
+2Y9BWCMLMIYx9P8e22SynFC9zr/N2JrdehEPFD+z9cSCz05ONNem+RYS+aR9orqmRTdcZEtFLC5u
+mpmawZTjSmibrTIPSPwtZk/Oze2qpmhiPyZDDO/8gYXpoN3qrQ9KD29jlR/7ah2Lg+uFlgcaB9oN
+x0LADBLLmcSFUEM0UdJFsSFzp8P0aSA/we4fKTljYEQJJy12yAKFcEuhK7JucyhU3GUUHESvzsmB
+ZnXy4+7OMpkpsRH21PkrgAb16N1jY8ST8Z0xGlqx6VpvCJlpF85+qDPGFNX9FKUCjsdNMaVxkghW
+py38
+--00000000000039322506006fbb82--
 
