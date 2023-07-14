@@ -4,97 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD663C0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 18:41:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F9FCEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jul 2023 18:44:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:
-	Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xaj9+8bPsLOlF6cZ7IxpC9i332ISYKV4tQnH1g2SIjg=; b=eU75J0Wgm6+l3aTk8TSFVDuqEU
-	9U0MBRlQIqcDA0LPfX7Fkk/AHMdAtaplUG5yOBUL5bPSGxinOD6DEp8qVMyTmM1DW+lseoz9qri9Y
-	0Mbr5e2vFG2Nv9rV0drltcpUONANFA+D8oN2lSxlS+Af7ngnSMJ7WsCjMd3eMGOvMm5Zzr5wSqWrO
-	Y+jtWkErcLrOobN8xIEnr/iL+YmBB90gOw5y+7esfbjbZuci8iup0JMsf+it8+ityGVm9k9kNepMc
-	fsHkqhmsuTko5EpA6rewkdCPwGNyeq/E11F9SCBiQ6h+smCJUrooM1cIpGcu70IsNHYI+sva1zDC4
-	p8S3YUZQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ofizx6xWGFFIm8/eD5qiUA5FPYKINXGEMTBCRthkA+Y=; b=432cCXP+JxNu5o1LJhvyhwzQpB
+	KIA68GFZjuQiCLwfICIhe/o6D3rgXxDlevd7JWdP6PtFqaxo/wyhouSGzXU5Gv7wfyetFAYx2za7c
+	DT6laYtT582qfA0MxeJu83cQdQe2zv/35Wb/dyiwFc8aZ64EZLHtLuVyKClg5qH3v/5/Yugc2Qn1H
+	jtqGzkinvqZ4pqfACS/6UM2HTltfpeo7gm0+SBnKtWoUDjABA0tRtxtcUaV+qDE49tHGKrvdClFfb
+	UYVBPRe79gt5eS93hO9k4X8dzOrolPz+e2ZUjkO1oJQDsvHJEku84o3XCH9qbAUa6FGVnpi78VZ4d
+	H7tlAsmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKNiv-0070EV-1e;
-	Fri, 14 Jul 2023 18:41:01 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1qKNm4-0070Y6-1X;
+	Fri, 14 Jul 2023 18:44:16 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKNiq-0070DZ-38;
-	Fri, 14 Jul 2023 18:40:58 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-6687446eaccso2160308b3a.3;
-        Fri, 14 Jul 2023 11:40:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1689360052; x=1691952052;
-        h=to:references:message-id:content-transfer-encoding:cc:date
-         :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xaj9+8bPsLOlF6cZ7IxpC9i332ISYKV4tQnH1g2SIjg=;
-        b=YirKGceAT6z8ET47AGt8osx9wUnEZwVRRCBQZHQSamFop77w665Ha9AxUvrF3adJNl
-         xQDrI2u82R6zWttobX+tbyAdXsHdMLX6eNJ4KTduJ+wevcQIaKOv4AqOGQNZMvuTQJux
-         /6BjrBZCVm1uoiFRKksuEyjWFoaBXNJ2xi/PMl6K36Gw8PnHSfVWeldzIE1FPyMAYd5x
-         jB3vv3a7OCj/9U44WR8/sooNl71zazoxW4MafdLgPDwoCkoVGXeUg0FIlfvMj3ac8VPT
-         ySq0CVxnDFoTS47wkOQlMmvZNnUmlMdvLoHv8/P3vg8VHbtrgFlCpXreed+usx5GL6JA
-         C9iw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689360052; x=1691952052;
-        h=to:references:message-id:content-transfer-encoding:cc:date
-         :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xaj9+8bPsLOlF6cZ7IxpC9i332ISYKV4tQnH1g2SIjg=;
-        b=baJxSukLEepP6aFAE0la2y17ph3P/cET9LbISrDObWHjT8jcNSPxPDETSYfjAg52W9
-         YM15SuvU9qY9MvXfDMyPqZpmFth12Joqhss21GAtNzMqo9pvpDkhE0CK8BSgeCIHIYPJ
-         GeViCSqYTFuM/KOdwRVdfJJX1zSy1ONDL7i0xKFtDlzOfCkGJt/y4NSL5Ko1AiE1Qv28
-         71Iq3XEsrDrVj8o+wIRCXK7GP2iiLOyhh4vt2iVAB9xE7C6Vq6ZhyVTfGYGgq2QwyRQg
-         X3zY7t/5f/NaGMR3PZk757ZJ2CKKgsVkpFjK5Om80/kyENkkQXr+OdMDz1clKJ6zeRU7
-         stcA==
-X-Gm-Message-State: ABy/qLYxf9avOMKLDE6IusunaZwoVmXOs0wuzXem0ojMev2gcXxJgtuK
-	2+/vfFB0ydX71tavWPXczmM=
-X-Google-Smtp-Source: APBJJlEFEoxnqbfk0Z7qSbw4sOXIFQIuh8c1Vjjrexw29TFUt/+RNDWEBlkXAmd14E+5d9isBY4EAQ==
-X-Received: by 2002:a05:6a21:6da5:b0:133:1a76:6bab with SMTP id wl37-20020a056a216da500b001331a766babmr6838645pzb.47.1689360052379;
-        Fri, 14 Jul 2023 11:40:52 -0700 (PDT)
-Received: from smtpclient.apple ([2402:d0c0:2:a2a::1])
-        by smtp.gmail.com with ESMTPSA id ey4-20020a056a0038c400b00672401787c6sm7455354pfb.109.2023.07.14.11.40.31
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 14 Jul 2023 11:40:52 -0700 (PDT)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3731.400.51.1.1\))
+	id 1qKNlx-0070Wz-1v;
+	Fri, 14 Jul 2023 18:44:13 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 59E6761DCD;
+	Fri, 14 Jul 2023 18:44:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0E94C433C8;
+	Fri, 14 Jul 2023 18:44:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689360246;
+	bh=asCo0dd5mxRE4px5f2OcxTb7m6Zaxpvf3NvcR8uu61U=;
+	h=Date:From:To:Cc:Subject:Reply-To:References:In-Reply-To:From;
+	b=gn+DOEFcqLlkcY/4WoNax0oKj6ls87rLsFfTTD8WPgySn3vvfMtKPn+ZX3JgPGNCd
+	 FDm5Ru12kqKyEtQrpw8eWhZHEiMzjezQtAxWJqdrLSOw7DZaip8ChsOhcVh4XLlwlX
+	 /Lv4JvjO4R3Xf7fM/4Ex3qeIsneiy75F6Eu5G3XK4ggLCx6b28BobahgmwhU0Tl4Gy
+	 s0pz5u2QfVrnJOeioAXRIFecdDNn/usfOcjlOLvra00R6w4n4ADI0cITSLwW5ovXLO
+	 5q5AKGMNfILldBZ3L64L3VQzTGpYJSUIfoJ6wKutfTSPPLSRnsLlsvurNEkfVPwzQ0
+	 3I4CQNucM7vBw==
+Received: by paulmck-ThinkPad-P17-Gen-1.home (Postfix, from userid 1000)
+	id 45F3ACE03B3; Fri, 14 Jul 2023 11:44:06 -0700 (PDT)
+Date: Fri, 14 Jul 2023 11:44:06 -0700
+From: "Paul E. McKenney" <paulmck@kernel.org>
+To: Alan Huang <mmpgouride@gmail.com>
+Cc: Joel Fernandes <joel@joelfernandes.org>,
+	Gao Xiang <hsiangkao@linux.alibaba.com>,
+	Sandeep Dhavale <dhavale@google.com>,
+	Frederic Weisbecker <frederic@kernel.org>,
+	Neeraj Upadhyay <quic_neeraju@quicinc.com>,
+	Josh Triplett <josh@joshtriplett.org>,
+	Boqun Feng <boqun.feng@gmail.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+	Lai Jiangshan <jiangshanlai@gmail.com>,
+	Zqiang <qiang.zhang1211@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-erofs@lists.ozlabs.org, xiang@kernel.org,
+	Will Shiu <Will.Shiu@mediatek.com>, kernel-team@android.com,
+	rcu@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH v1] rcu: Fix and improve RCU read lock checks when
  !CONFIG_DEBUG_LOCK_ALLOC
-From: Alan Huang <mmpgouride@gmail.com>
-In-Reply-To: <e8ee7006-c1d0-4c04-bd25-0f518fb6534b@paulmck-laptop>
-Date: Sat, 15 Jul 2023 02:40:08 +0800
-Cc: Joel Fernandes <joel@joelfernandes.org>,
- Gao Xiang <hsiangkao@linux.alibaba.com>,
- Sandeep Dhavale <dhavale@google.com>,
- Frederic Weisbecker <frederic@kernel.org>,
- Neeraj Upadhyay <quic_neeraju@quicinc.com>,
- Josh Triplett <josh@joshtriplett.org>,
- Boqun Feng <boqun.feng@gmail.com>,
- Steven Rostedt <rostedt@goodmis.org>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
- Lai Jiangshan <jiangshanlai@gmail.com>,
- Zqiang <qiang.zhang1211@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-erofs@lists.ozlabs.org,
- xiang@kernel.org,
- Will Shiu <Will.Shiu@mediatek.com>,
- kernel-team@android.com,
- rcu@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <D042B1CB-2ED4-4DF9-8CF5-5E455E7EAB73@gmail.com>
-References: <f124e041-6a82-2069-975c-4f393e5c4137@linux.alibaba.com>
- <87292a44-cc02-4d95-940e-e4e31d0bc6f2@paulmck-laptop>
- <f1c60dcb-e32f-7b7e-bf0d-5dec999e9299@linux.alibaba.com>
+Message-ID: <453bcbbd-94f4-46da-98f6-c9fa5f931231@paulmck-laptop>
+References: <f1c60dcb-e32f-7b7e-bf0d-5dec999e9299@linux.alibaba.com>
  <CAEXW_YSODXRfgkR0D2G-x=0uZdsqvF3kZL+LL3DcRX-5CULJ1Q@mail.gmail.com>
  <894a3b64-a369-7bc6-c8a8-0910843cc587@linux.alibaba.com>
  <CAEXW_YSM1yik4yWTgZoxCS9RM6TbsL26VCVCH=41+uMA8chfAQ@mail.gmail.com>
@@ -103,11 +79,15 @@ References: <f124e041-6a82-2069-975c-4f393e5c4137@linux.alibaba.com>
  <F160D7F8-57DC-4986-90A9-EB50F7C89891@gmail.com>
  <6E5326AD-9A5D-4570-906A-BDE8257B6F0C@gmail.com>
  <e8ee7006-c1d0-4c04-bd25-0f518fb6534b@paulmck-laptop>
-To: paulmck@kernel.org
-X-Mailer: Apple Mail (2.3731.400.51.1.1)
+ <D042B1CB-2ED4-4DF9-8CF5-5E455E7EAB73@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <D042B1CB-2ED4-4DF9-8CF5-5E455E7EAB73@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230714_114057_017513_2744EBA2 
-X-CRM114-Status: GOOD (  26.37  )
+X-CRM114-CacheID: sfid-20230714_114409_722168_AB23E6C6 
+X-CRM114-Status: GOOD (  24.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,214 +99,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: paulmck@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Sat, Jul 15, 2023 at 02:40:08AM +0800, Alan Huang wrote:
+> > 2023年7月15日 01:02，Paul E. McKenney <paulmck@kernel.org> 写道：
+> > On Fri, Jul 14, 2023 at 11:54:47PM +0800, Alan Huang wrote:
+> >>> 2023年7月14日 23:35，Alan Huang <mmpgouride@gmail.com> 写道：
+> >>>> 2023年7月14日 10:16，Paul E. McKenney <paulmck@kernel.org> 写道：
 
-> 2023=E5=B9=B47=E6=9C=8815=E6=97=A5 01:02=EF=BC=8CPaul E. McKenney =
-<paulmck@kernel.org> =E5=86=99=E9=81=93=EF=BC=9A
->=20
-> On Fri, Jul 14, 2023 at 11:54:47PM +0800, Alan Huang wrote:
->>=20
->>> 2023=E5=B9=B47=E6=9C=8814=E6=97=A5 23:35=EF=BC=8CAlan Huang =
-<mmpgouride@gmail.com> =E5=86=99=E9=81=93=EF=BC=9A
->>>=20
->>>>=20
->>>> 2023=E5=B9=B47=E6=9C=8814=E6=97=A5 10:16=EF=BC=8CPaul E. McKenney =
-<paulmck@kernel.org> =E5=86=99=E9=81=93=EF=BC=9A
->>>>=20
->>>> On Thu, Jul 13, 2023 at 09:33:35AM -0700, Paul E. McKenney wrote:
->>>>> On Thu, Jul 13, 2023 at 11:33:24AM -0400, Joel Fernandes wrote:
->>>>>> On Thu, Jul 13, 2023 at 10:34=E2=80=AFAM Gao Xiang =
-<hsiangkao@linux.alibaba.com> wrote:
->>>>>>> On 2023/7/13 22:07, Joel Fernandes wrote:
->>>>>>>> On Thu, Jul 13, 2023 at 12:59=E2=80=AFAM Gao Xiang =
-<hsiangkao@linux.alibaba.com> wrote:
->>>>>>>>> On 2023/7/13 12:52, Paul E. McKenney wrote:
->>>>>>>>>> On Thu, Jul 13, 2023 at 12:41:09PM +0800, Gao Xiang wrote:
->>>>>>>>>=20
->>>>>>>>> ...
->>>>>>>>>=20
->>>>>>>>>>>=20
->>>>>>>>>>> There are lots of performance issues here and even a plumber
->>>>>>>>>>> topic last year to show that, see:
->>>>>>>>>>>=20
->>>>>>>>>>> [1] =
-https://lore.kernel.org/r/20230519001709.2563-1-tj@kernel.org
->>>>>>>>>>> [2] =
-https://lore.kernel.org/r/CAHk-=3DwgE9kORADrDJ4nEsHHLirqPCZ1tGaEPAZejHdZ03=
-qCOGg@mail.gmail.com
->>>>>>>>>>> [3] =
-https://lore.kernel.org/r/CAB=3DBE-SBtO6vcoyLNA9F-9VaN5R0t3o_Zn+FW8GbO6wyU=
-qFneQ@mail.gmail.com
->>>>>>>>>>> [4] https://lpc.events/event/16/contributions/1338/
->>>>>>>>>>> and more.
->>>>>>>>>>>=20
->>>>>>>>>>> I'm not sure if it's necessary to look info all of that,
->>>>>>>>>>> andSandeep knows more than I am (the scheduling issue
->>>>>>>>>>> becomes vital on some aarch64 platform.)
->>>>>>>>>>=20
->>>>>>>>>> Hmmm...  Please let me try again.
->>>>>>>>>>=20
->>>>>>>>>> Assuming that this approach turns out to make sense, the =
-resulting
->>>>>>>>>> patch will need to clearly state the performance benefits =
-directly in
->>>>>>>>>> the commit log.
->>>>>>>>>>=20
->>>>>>>>>> And of course, for the approach to make sense, it must avoid =
-breaking
->>>>>>>>>> the existing lockdep-RCU debugging code.
->>>>>>>>>>=20
->>>>>>>>>> Is that more clear?
->>>>>>>>>=20
->>>>>>>>> Personally I'm not working on Android platform any more so I =
-don't
->>>>>>>>> have a way to reproduce, hopefully Sandeep could give actually
->>>>>>>>> number _again_ if dm-verity is enabled and trigger another
->>>>>>>>> workqueue here and make a comparsion why the scheduling =
-latency of
->>>>>>>>> the extra work becomes unacceptable.
->>>>>>>>>=20
->>>>>>>>=20
->>>>>>>> Question from my side, are we talking about only performance =
-issues or
->>>>>>>> also a crash? It appears z_erofs_decompress_pcluster() takes
->>>>>>>> mutex_lock(&pcl->lock);
->>>>>>>>=20
->>>>>>>> So if it is either in an RCU read-side critical section or in =
-an
->>>>>>>> atomic section, like the softirq path, then it may
->>>>>>>> schedule-while-atomic or trigger RCU warnings.
->>>>>>>>=20
->>>>>>>> z_erofs_decompressqueue_endio
->>>>>>>> -> z_erofs_decompress_kickoff
->>>>>>>> ->z_erofs_decompressqueue_work
->>>>>>>> ->z_erofs_decompress_queue
->>>>>>>>  -> z_erofs_decompress_pcluster
->>>>>>>>   -> mutex_lock
->>>>>>>>=20
->>>>>>>=20
->>>>>>> Why does the softirq path not trigger a workqueue instead?
->>>>>>=20
->>>>>> I said "if it is". I was giving a scenario. mutex_lock() is not
->>>>>> allowed in softirq context or in an RCU-reader.
->>>>>>=20
->>>>>>>> Per Sandeep in [1], this stack happens under RCU read-lock in:
->>>>>>>>=20
->>>>>>>> #define __blk_mq_run_dispatch_ops(q, check_sleep, dispatch_ops) =
-\
->>>>>>>> [...]
->>>>>>>>               rcu_read_lock();
->>>>>>>>               (dispatch_ops);
->>>>>>>>               rcu_read_unlock();
->>>>>>>> [...]
->>>>>>>>=20
->>>>>>>> Coming from:
->>>>>>>> blk_mq_flush_plug_list ->
->>>>>>>>                          blk_mq_run_dispatch_ops(q,
->>>>>>>>                               __blk_mq_flush_plug_list(q, =
-plug));
->>>>>>>>=20
->>>>>>>> and __blk_mq_flush_plug_list does this:
->>>>>>>>         q->mq_ops->queue_rqs(&plug->mq_list);
->>>>>>>>=20
->>>>>>>> This somehow ends up calling the bio_endio and the
->>>>>>>> z_erofs_decompressqueue_endio which grabs the mutex.
->>>>>>>>=20
->>>>>>>> So... I have a question, it looks like one of the paths in
->>>>>>>> __blk_mq_run_dispatch_ops() uses SRCU.  Where are as the =
-alternate
->>>>>>>> path uses RCU. Why does this alternate want to block even if it =
-is not
->>>>>>>> supposed to? Is the real issue here that the BLK_MQ_F_BLOCKING =
-should
->>>>>>>> be set? It sounds like you want to block in the "else" path =
-even
->>>>>>>> though BLK_MQ_F_BLOCKING is not set:
->>>>>>>=20
->>>>>>> BLK_MQ_F_BLOCKING is not a flag that a filesystem can do =
-anything with.
->>>>>>> That is block layer and mq device driver stuffs. filesystems =
-cannot set
->>>>>>> this value.
->>>>>>>=20
->>>>>>> As I said, as far as I understand, previously,
->>>>>>> .end_io() can only be called without RCU context, so it will be =
-fine,
->>>>>>> but I don't know when .end_io() can be called under some RCU =
-context
->>>>>>> now.
->>>>>>=20
->>>>>>> =46rom what Sandeep described, the code path is in an RCU =
-reader. My
->>>>>> question is more, why doesn't it use SRCU instead since it =
-clearly
->>>>>> does so if BLK_MQ_F_BLOCKING. What are the tradeoffs? IMHO, a =
-deeper
->>>>>> dive needs to be made into that before concluding that the fix is =
-to
->>>>>> use rcu_read_lock_any_held().
->>>>>=20
->>>>> How can this be solved?
->>>>>=20
->>>>> 1. Always use a workqueue.  Simple, but is said to have =
-performance
->>>>> issues.
->>>>>=20
->>>>> 2. Pass a flag in that indicates whether or not the caller is in =
-an
->>>>> RCU read-side critical section.  Conceptually simple, but might
->>>>> or might not be reasonable to actually implement in the code as
->>>>> it exists now. (You tell me!)
->>>>>=20
->>>>> 3. Create a function in z_erofs that gives you a decent
->>>>> approximation, maybe something like the following.
->>>>>=20
->>>>> 4. Other ideas here.
->>>>=20
->>>> 5. #3 plus make the corresponding Kconfig option select
->>>> PREEMPT_COUNT, assuming that any users needing compression in
->>>> non-preemptible kernels are OK with PREEMPT_COUNT being set.
->>>> (Some users of non-preemptible kernels object strenuously
->>>> to the added overhead from CONFIG_PREEMPT_COUNT=3Dy.)
->>>=20
->>> 6. Set one bit in bio->bi_private, check the bit and flip it in =
-rcu_read_lock() path,
->>> then in z_erofs_decompressqueue_endio, check if the bit has changed.
->>=20
->> Seems bad, read and modify bi_private is a bad idea.
->=20
-> Is there some other field that would work?
+[ . . . ]
 
-Maybe bio->bi_opf, btrfs uses some bits of it.
+> >>>>> How can this be solved?
+> >>>>> 
+> >>>>> 1. Always use a workqueue.  Simple, but is said to have performance
+> >>>>> issues.
+> >>>>> 
+> >>>>> 2. Pass a flag in that indicates whether or not the caller is in an
+> >>>>> RCU read-side critical section.  Conceptually simple, but might
+> >>>>> or might not be reasonable to actually implement in the code as
+> >>>>> it exists now. (You tell me!)
+> >>>>> 
+> >>>>> 3. Create a function in z_erofs that gives you a decent
+> >>>>> approximation, maybe something like the following.
+> >>>>> 
+> >>>>> 4. Other ideas here.
+> >>>> 
+> >>>> 5. #3 plus make the corresponding Kconfig option select
+> >>>> PREEMPT_COUNT, assuming that any users needing compression in
+> >>>> non-preemptible kernels are OK with PREEMPT_COUNT being set.
+> >>>> (Some users of non-preemptible kernels object strenuously
+> >>>> to the added overhead from CONFIG_PREEMPT_COUNT=y.)
+> >>> 
+> >>> 6. Set one bit in bio->bi_private, check the bit and flip it in rcu_read_lock() path,
+> >>> then in z_erofs_decompressqueue_endio, check if the bit has changed.
+> >> 
+> >> Seems bad, read and modify bi_private is a bad idea.
+> > 
+> > Is there some other field that would work?
+> 
+> Maybe bio->bi_opf, btrfs uses some bits of it.
 
->=20
-> Thanx, Paul
->=20
->>> Not sure if this is feasible or acceptable. :)
->>>=20
->>>>=20
->>>> Thanx, Paul
->>>>=20
->>>>> The following is untested, and is probably quite buggy, but it =
-should
->>>>> provide you with a starting point.
->>>>>=20
->>>>> static bool z_erofs_wq_needed(void)
->>>>> {
->>>>> if (IS_ENABLED(CONFIG_PREEMPTION) && rcu_preempt_depth())
->>>>> return true;  // RCU reader
->>>>> if (IS_ENABLED(CONFIG_PREEMPT_COUNT) && !preemptible())
->>>>> return true;  // non-preemptible
->>>>> if (!IS_ENABLED(CONFIG_PREEMPT_COUNT))
->>>>> return true;  // non-preeemptible kernel, so play it safe
->>>>> return false;
->>>>> }
->>>>>=20
->>>>> You break it, you buy it!  ;-)
->>>>>=20
->>>>> Thanx, Paul
+Sandeep, thoughts?
 
 
+							Thanx, Paul
+
+> >>> Not sure if this is feasible or acceptable. :)
+> >>> 
+> >>>> 
+> >>>> Thanx, Paul
+> >>>> 
+> >>>>> The following is untested, and is probably quite buggy, but it should
+> >>>>> provide you with a starting point.
+> >>>>> 
+> >>>>> static bool z_erofs_wq_needed(void)
+> >>>>> {
+> >>>>> if (IS_ENABLED(CONFIG_PREEMPTION) && rcu_preempt_depth())
+> >>>>> return true;  // RCU reader
+> >>>>> if (IS_ENABLED(CONFIG_PREEMPT_COUNT) && !preemptible())
+> >>>>> return true;  // non-preemptible
+> >>>>> if (!IS_ENABLED(CONFIG_PREEMPT_COUNT))
+> >>>>> return true;  // non-preeemptible kernel, so play it safe
+> >>>>> return false;
+> >>>>> }
+> >>>>> 
+> >>>>> You break it, you buy it!  ;-)
+> >>>>> 
+> >>>>> Thanx, Paul
+> 
+> 
 
