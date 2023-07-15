@@ -4,77 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CB9CC001DC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jul 2023 15:49:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDDFBC001DC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jul 2023 16:08:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Un+ufkhrXfZqLrVbDU6HeKyr3kcyHpaOW08JuHJOTAQ=; b=zVfZ1U6HdemT3jL6ToA8/OdghR
-	N1j/sEi/YM2F31vRmj6eub9WWzvkdpwqmwTnKZFHyv6mUAMXVwlHw7ffVKurSIwNnjOImEZbup8aU
-	YpJ0MQWoRmNXoXYSe1usAiosn4pmZE6YCuVU9T+b72f9GmNojmXrksEvksWI6hsqPlrnwQvHFQPKS
-	54Dhf7BVHeA0JG/8q0m3OBUqunjpsI7SGw588X99gyIEovFjqYsLoSNS1nYbx5jGiJHa99KzOFuvZ
-	kERDZKJgXq5jL3eiQGIt5Ip+Qnzp3pMYmPFIqJLxxL4ptR1bzBw7UbuEvvL2GcuzVYzdRRPK1dEVv
-	tgnHW1Xw==;
+	bh=Wj4Cy8RQ6W/zc3QPSV8hmPb4p0rBodU5v6Z12U3dgao=; b=QUfmtJyP6ZsYHBmDCv+w/eF/O0
+	tvqnrpk727wKjatFVNoO1p+mx698W3ATQRJFRz4tzBJAWUuL/Ny3pIrVrPhxMtgo9w8q8h2t79rZA
+	ebWuhdPZVzhcyvrdvmQifpRBrZ3auZfi7MW6b717IbpfDOpmX8mu2+jZk+3cPDKQsGxFG7jZrCmNc
+	DBVon1BS5D/fVHr9bH0U/FTGbSyxbu2OrdlojX3/xgflqxeNju2Y141zrURoBAyZ9jssdvTfqV33W
+	DhE0cxk39+oxEhZ19t9ChhRMXFqYBMNKSkak/8gmLimdv/Z8MnYl2xuUbdZFnjPAA6/VFxudpKWBe
+	F5F7Rszw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKhW0-0093Yh-1b;
-	Sat, 15 Jul 2023 15:49:00 +0000
-Received: from relay9-d.mail.gandi.net ([217.70.183.199])
+	id 1qKhpC-0095aE-1m;
+	Sat, 15 Jul 2023 16:08:50 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKhVw-0093WU-0V;
-	Sat, 15 Jul 2023 15:48:57 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 713BCFF802;
-	Sat, 15 Jul 2023 15:48:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1689436130;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Un+ufkhrXfZqLrVbDU6HeKyr3kcyHpaOW08JuHJOTAQ=;
-	b=FqWexEyC5/ncjoaJwBj4G53wiu8VDHhDUUmjeiui8D15gl2UK0/z1/JhojGPaXb7myBHt0
-	+m0+8luEUYwOnP8t5sbvBF01u6wPPDP8ekc+E+xiI5dXBEOsZg27UBqN6/Cx2Ykd/d38zY
-	Uxi4xN1DsWH3172+Q9prP3vN3AfuAUnTk0v/cqkvsBuezHKkylG8hSiaysYLY7BLSvc/OK
-	X/4nONxCNA9EoFF0A6ADkUMqN/54fCJrQYuzSAtxsbm00dNaTjHSMLlKGNk9Pa5uVm4JDa
-	KtHa+BsMQbwWPxRZR03AmaWLttL4j4jDIfE8mWV10b4zCsVL6+eAIvNGObilXQ==
-Date: Sat, 15 Jul 2023 17:48:42 +0200
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Rob Herring <robh@kernel.org>
-Cc: Richard Weinberger <richard@nod.at>, Vignesh Raghavendra
- <vigneshr@ti.com>, Linus Walleij <linus.walleij@linaro.org>, Kyungmin Park
- <kyungmin.park@samsung.com>, Han Xu <han.xu@nxp.com>, Harvey Hunt
- <harveyhuntnexus@gmail.com>, Paul Cercueil <paul@crapouillou.net>, Liang
- Yang <liang.yang@amlogic.com>, Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Michal Simek
- <michal.simek@amd.com>, Manivannan Sadhasivam <mani@kernel.org>, Heiko
- Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec
- <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, Vladimir
- Zapolskiy <vz@mleia.com>, Tudor Ambarus <tudor.ambarus@linaro.org>,
- Pratyush Yadav <pratyush@kernel.org>, Michael Walle <michael@walle.cc>,
- devicetree@vger.kernel.org, linux-mtd@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mips@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH] mtd: Explicitly include correct DT includes
-Message-ID: <20230715174804.6fc2a4c1@xps-13>
-In-Reply-To: <20230714174751.4060439-1-robh@kernel.org>
-References: <20230714174751.4060439-1-robh@kernel.org>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
+	id 1qKhp9-0095Z2-04;
+	Sat, 15 Jul 2023 16:08:48 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-1b852785a65so18795285ad.0;
+        Sat, 15 Jul 2023 09:08:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1689437325; x=1692029325;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Wj4Cy8RQ6W/zc3QPSV8hmPb4p0rBodU5v6Z12U3dgao=;
+        b=f1Yoji6Lk7hLFrGWvVHMB99I94iqNPLf53nN99C+Euf1eko0lDj6+rwlqw+Dgk8UQQ
+         SRpsuRlsVNHD4H3CtBAY6OqSPEqSJZUwFP+cS9hB5oGMHDh1EVrIAUWdGU5BH6VhjFBW
+         /z1yHF+21yYGgNq9TAwrNx1v4HfpVczxiW79BGFcmf51YVbRm8YkB2rC0PG8Wz14mMZc
+         0CZz2ejtvs3mc6jFez6MjOZAENbTvA1WktKizZDkR7JMqJrAQbPdsIohUFetUtXw+PaF
+         KQoa95Jtgb3QO1zhPcZxPZtw2Jc8U8JccvLv74fIUQ1k70FctgFVnPIiuRT5Ui6YXY5w
+         ivhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689437325; x=1692029325;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Wj4Cy8RQ6W/zc3QPSV8hmPb4p0rBodU5v6Z12U3dgao=;
+        b=BSNAUEo7t2ebdiwTx1zPqwD5Y7duKr4hI/6cDHqtu7fahP4KkTF0XrL0mMX3bqeUsa
+         P11reK6A1r4CMo6ZCQ59zsM0CHU2SNax6DeQHtQoQXjLT6hhGbl1RFonQpgiazOz9xrc
+         pP8lnP7hy02JaYHdeACQW1zY++4jsIU0YHqbc2aGugLvG/ERpxioWp9tgefa50UXixTC
+         emqJNmUSvPnqY7punAWWTK+kjMnSK6t/CTXIOWz0SQEM2jlTr+lMksQvGU0HOTKMNXUz
+         UGi+TaXrmsAzGfC7aB7Uy8WCeDfhjO9oaAKtvNx8nFrkTNBiFWfiMdXaZC3gwzvmLKOp
+         0PFA==
+X-Gm-Message-State: ABy/qLYt9fbw+wm91BnHjqYSHP0E7HM0b+D17KwxR9H44zv0wgtWfQTM
+	Bdv0JM6Yw76rDVmM2jZPG2ETuWrfA+P/NBI8NCc=
+X-Google-Smtp-Source: APBJJlG9cTRO0B/J58Dk72R+ek7gW9xZzMEOglyV1YUlimrJNp3sZdyPb2I4AXwzW/e0UeBY9xyjV4b1/NXsL7lhrN0=
+X-Received: by 2002:a17:902:dac7:b0:1b6:b703:36f8 with SMTP id
+ q7-20020a170902dac700b001b6b70336f8mr8179654plx.25.1689437325128; Sat, 15 Jul
+ 2023 09:08:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+References: <20230707092414.866760-1-zyytlz.wz@163.com> <538096d2-7b24-e1c7-706d-4d4f952d35eb@baylibre.com>
+In-Reply-To: <538096d2-7b24-e1c7-706d-4d4f952d35eb@baylibre.com>
+From: Zheng Hacker <hackerzheng666@gmail.com>
+Date: Sun, 16 Jul 2023 00:08:33 +0800
+Message-ID: <CAJedcCzR6DzX_aG1KBgrMHDJ1xh=RTA-FrZ+TJ_4KawWpHyYuA@mail.gmail.com>
+Subject: Re: [RESEND PATCH v2] media: mtk-jpeg: Fix use after free bug due to
+ uncanceled work
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Zheng Wang <zyytlz.wz@163.com>, Kyrie.Wu@mediatek.com, bin.liu@mediatek.com, 
+	mchehab@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Irui.Wang@mediatek.com, 
+	security@kernel.org, 1395428693sheep@gmail.com, alex000young@gmail.com
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230715_084856_328534_BDFBE1EB 
-X-CRM114-Status: GOOD (  11.18  )
+X-CRM114-CacheID: sfid-20230715_090847_058608_023FEE13 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,26 +92,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+Hi,
 
-robh@kernel.org wrote on Fri, 14 Jul 2023 11:47:49 -0600:
+This issue has not been resolved for a long time. Is there anyone who can h=
+elp?
 
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
+Best regards,
+Zheng
 
-				 was?
-
-Otherwise LGTM, I will fix it when applying.
-
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
->=20
-> Signed-off-by: Rob Herring <robh@kernel.org>
-
-Thanks,
-Miqu=C3=A8l
+Alexandre Mergnat <amergnat@baylibre.com> =E4=BA=8E2023=E5=B9=B47=E6=9C=887=
+=E6=97=A5=E5=91=A8=E4=BA=94 22:11=E5=86=99=E9=81=93=EF=BC=9A
+>
+>
+>
+> On 07/07/2023 11:24, Zheng Wang wrote:
+> > In mtk_jpeg_probe, &jpeg->job_timeout_work is bound with
+> > mtk_jpeg_job_timeout_work. Then mtk_jpeg_dec_device_run
+> > and mtk_jpeg_enc_device_run may be called to start the
+> > work.
+> > If we remove the module which will call mtk_jpeg_remove
+> > to make cleanup, there may be a unfinished work. The
+> > possible sequence is as follows, which will cause a
+> > typical UAF bug.
+> >
+> > Fix it by canceling the work before cleanup in the mtk_jpeg_remove
+> >
+> > CPU0                  CPU1
+> >
+> >                      |mtk_jpeg_job_timeout_work
+> > mtk_jpeg_remove     |
+> >    v4l2_m2m_release  |
+> >      kfree(m2m_dev); |
+> >                      |
+> >                      | v4l2_m2m_get_curr_priv
+> >                      |   m2m_dev->curr_ctx //use
+>
+> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+>
+> --
+> Regards,
+> Alexandre
 
