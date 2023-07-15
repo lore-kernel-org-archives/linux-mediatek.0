@@ -4,94 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5900C001B0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jul 2023 16:12:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8935AC001DF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jul 2023 16:12:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Js70kE6M4tQuHcgETIy8XYzF63AeuA3GvQidoiOZKq8=; b=vfj6ld+o2WJll9VIadBWYWR4KV
-	pue/8yi1osutIXUjq+UlWAmdgqgnknY1vCKFzZaEXRQ62e05VS7Lv10cxnxgHMmAL4/rtoFHY2Ee1
-	87Wdsvqhi6VSiD1wr0cgDigcTJ/HWyubJ3Z9Q2KUODVm/zJR4i5DM0/Ah9Y8aOL9EhfjoU3THMS3R
-	cu3NpNriesp8azHniE04eSrO+75uXmCUZGngIpW00wIfe4h+k4nWDL9mPPiHrJpZE0btERkMMCgfr
-	h393JxH/d/iFKSTNIXxpVxnochXap5SRqi0DQ/CIROgabRSPOJ5HYA3EF8q6W4D5ubUDrEQO0dBgE
-	A5LqkI1Q==;
+	bh=dF7OtGXMRje1f7jke9Bs430OqzMpDW752u+Jth/n5k0=; b=LL16KW+HFelllWHVDd/0EVmxj3
+	F7m1UXT7KZZnFmNs4h8SnfISNQ5CxVWfZ+Yn66MR409i33SzD76Nis6eXmPK1cCqk347FbHYTnx0Q
+	IIFK/Mpi7nmm0pWkz/vlV7HsRhCAbRg3rCPq15hG1jJPxy9wehvACSgEuv6IWmUOlIvA6cF8F2RW2
+	NrTBLk7en0LoBbOadrEWtJVzMdr54uGQmnDZb+FrCpSesQvG2UTw8gfVJe8HxmEDo3X5E3qCh5Zck
+	BFe1s5qF+9n87W/q9sI7mrMUVeFebZ1X9iQECbLOdoI53zm4AO6CLzpfehgM2E/JNixolo7IHfDlq
+	8GwEqFEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKhsM-0095uE-0l;
-	Sat, 15 Jul 2023 16:12:06 +0000
+	id 1qKhsk-0095yy-1O;
+	Sat, 15 Jul 2023 16:12:30 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKhsL-0095tz-0n
+	id 1qKhsj-0095yQ-1D
 	for linux-mediatek@bombadil.infradead.org;
-	Sat, 15 Jul 2023 16:12:05 +0000
+	Sat, 15 Jul 2023 16:12:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=Js70kE6M4tQuHcgETIy8XYzF63AeuA3GvQidoiOZKq8=; b=BrEAQZlGJkznW9C1bw59uPvgYQ
-	GPu3pQN7bivCXo0NNQI+/U5qCloXaPNi7UAoASWC2wKMWhsv/IuRiKzEwTT8TEQP7p/tSudy1dSxI
-	MsfGvYE0cwBy8p4Q7n1CCqdhvjm3EPjnDaNcqHC9ztmXIGhU1gmTi+jY3cxHQ43+nrrHvG70GSobz
-	ulMLmHr1zEntrDMJHsXFyyiVI1T6dSXoNCdxRWTHG18X3u013lUOdESNRQh0+sPwN23VNrFq66UvM
-	9Fzx+Ky/OnTcq48pI8Kok4XUiw6dp286Y6uXW2C5D4zz8jnlz86vSWsIS4CK0L8x/FRmN3axpryde
-	NfBN0MTg==;
+	bh=dF7OtGXMRje1f7jke9Bs430OqzMpDW752u+Jth/n5k0=; b=JItsXpCsfG42+anUc3pNdKIpRl
+	+cGYXR3AeIf7giC5sJvFYWxelhNSbV8dzTfu5ijezeZOorVoeHNXoeRg6O8E2KifcTBTznNZUAqoO
+	WcPiAZL1dj3fz/ROkle50TTNAwLzh+pKqvAQK8/aaTCWZAtlmjR7EMJ8f0Mpl85gNXivZmjNG0oli
+	2RnzvmBzh8BmoLffkYA2lQILScbR0TY6DhzoPGOU7U4SAuRDmEENx93AXdcmFjxP7WlDTTnBVXdC4
+	AKUW4e/7+HFXzfHnvsZMiX323E/T1uVSPNkjvHhRowgHwhJdhh9j6Ti8J+F7/MboILJEx1gGuBnCh
+	uQO0AD0A==;
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qKhsH-006yPq-0t
+	id 1qKhsf-006yQx-0h
 	for linux-mediatek@lists.infradead.org;
-	Sat, 15 Jul 2023 16:12:03 +0000
+	Sat, 15 Jul 2023 16:12:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1689437510;
+	s=mimecast20190719; t=1689437537;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Js70kE6M4tQuHcgETIy8XYzF63AeuA3GvQidoiOZKq8=;
-	b=DdRurhm/yiydoX4ioYtZBcbkIg9ebeX3qhnCaWP74Ze/RpgyUIHq1AFxUR8c+4+eq28oY9
-	uDuNDwIIpJeBo+FEHGNsslWCs69zqKz0R2HSyr8OJuqtVTK1HYAFEnDWpgEULGc2+lt33a
-	Igvzf1RvPpbqWmAu4YQqwq1UlphqPPA=
+	bh=dF7OtGXMRje1f7jke9Bs430OqzMpDW752u+Jth/n5k0=;
+	b=Ff2hFNfBeB9d3mdbB1FwC/CZ/bceqnlLGmuiTOjZIbG37ZvjxYzTI4gsxTo+Ib9F8yilyx
+	w0BUWtsKmbyMO1IFiKp117jc7QySbmubpTy0PT25bE/T2LL5Dzb/dhk8Lv9Y98ybTd/hmB
+	8z7UnIPBfOn3+OnFsXmHCijmdXuM5fM=
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1689437518;
+	s=mimecast20190719; t=1689437543;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Js70kE6M4tQuHcgETIy8XYzF63AeuA3GvQidoiOZKq8=;
-	b=DHYUZDzsceDigijAXuyzkHaAHIjYGsN/6I9zOaSbu/oOE3oj9/8yTmSxMdRzbzwFjrMe8/
-	FZ+lEQ5Babxkp8S3x1hAhMHwO4V3kWWYQSnbFp1goWZy4cVwf2hKN71tntt/NqjjdzGMyN
-	9grKzLO44ieVeDI/CldvH69iUqyNUwY=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=dF7OtGXMRje1f7jke9Bs430OqzMpDW752u+Jth/n5k0=;
+	b=ANcEG9RxazYJVtIsY9+2slZaSPwGQJ7AmdoSgcFOm/aWaH/Si/TpeUFgkwY0mlOKKBDxPc
+	R7urhZ50PD1hfDewMKzon25rvlr56d9YMM+7lQrrGjvaL3Ch90wI0DWYKB009PR/r6AdBR
+	1N7kqoUY9yaJ3bIgFQmgLii2lmAGJxk=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-436-KtTgEqcvOlqqQkTBhx4TXA-1; Sat, 15 Jul 2023 12:11:49 -0400
-X-MC-Unique: KtTgEqcvOlqqQkTBhx4TXA-1
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-3fa8db49267so14994555e9.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 15 Jul 2023 09:11:48 -0700 (PDT)
+ us-mta-318-MAMQduhYOPu2BUURomyybA-1; Sat, 15 Jul 2023 12:12:15 -0400
+X-MC-Unique: MAMQduhYOPu2BUURomyybA-1
+Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-3fbdde92299so15532865e9.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 15 Jul 2023 09:12:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689437508; x=1692029508;
+        d=1e100.net; s=20221208; t=1689437534; x=1692029534;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Js70kE6M4tQuHcgETIy8XYzF63AeuA3GvQidoiOZKq8=;
-        b=dryalWHLc/TrMv3dKPN5+E7l18n5rF+4XdkHn9b3T8G5D168ndgCW+H1o2bFhbQVYk
-         QcNqNrW4JyVVUg152c5sLZtU62iTW4g38ygtT/PZTk8IVbsner0bC1Fo992hzLCCOVtj
-         Wc2iWRw122Ac4apMplXgbydDgsdOLadRxjqLm+WfQlDF2IqOe6995yQfPVtxroxYwdQB
-         iDDXs8D1xC3yvqoIgy1N4IFVl35zkZDUthjfZn1/T499LdvLTEuJX6fYpwwJlMJA+4qo
-         6bjx6jAfp8dkbj29xftainVgHLGKUHKma6Ddv1CLHgrOTtP347yPi4UN2zaZTknmdWeM
-         K/Qg==
-X-Gm-Message-State: ABy/qLbKBiNK5QcS+Kh33MnNVPoa/VCmvtQXC/HP/SK4BFX/O56I9Qv5
-	JCENyWXHmIUcderrnQtgOInMebuTwRUyDXQVYlyAmWc8b+ffFP743ibx14mfPihdABrKwCouloO
-	l+cL1+dEhL8cXMLaChyo9v9RA8e6F7DqH
-X-Received: by 2002:a7b:c40d:0:b0:3fc:1a6:7764 with SMTP id k13-20020a7bc40d000000b003fc01a67764mr6353263wmi.16.1689437507834;
-        Sat, 15 Jul 2023 09:11:47 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlG69QqpP0KlK6PdSqxWvSyyuu5NRgXyRxSUWxITz0TGdie9WxsU5U+VqP/uxSgCoNT0EjL9WQ==
-X-Received: by 2002:a7b:c40d:0:b0:3fc:1a6:7764 with SMTP id k13-20020a7bc40d000000b003fc01a67764mr6353234wmi.16.1689437507258;
-        Sat, 15 Jul 2023 09:11:47 -0700 (PDT)
+        bh=dF7OtGXMRje1f7jke9Bs430OqzMpDW752u+Jth/n5k0=;
+        b=KKltSpJTA1NQmby8cC/tpafhoOtWRuwjR5InZHg2Mh5xvUKkQWREfdb9AlbJul+J43
+         dC7OZjSkvtabQnxOxOpLSKjGBJgu1EsQJ8DR4F/zKjmz4MxHEEQDUxEbY1rZDFA6rd+w
+         OApmuCk7J2G2cxxzz/KgLNjGYXe5o7JR9bR3WAVvCFRSinY+LItqCGXkG6fMtF3mH/cg
+         ZdiHqK14oYvc777IKBva3UlDNC9gB8LreDm+GaU0mBFTgWwzjBCp4yLXJPt+/01zlKDY
+         Bc8CTa+8w4MlzKUVKQvnkVzLDjAQ+u+32XlW1iXvU7PAU1GKkm3P+3a2rJhsTvhAKZNI
+         cfxw==
+X-Gm-Message-State: ABy/qLYo1SUApFlM7qpByHiplL7UpicVObFcbFFvAwZgzADXB3tWj9Py
+	UFbg50ba4oDkR4U8sro7yxHJvdSZ4ODgCKn8LiA9TcPmOC+qEViyG71BkYPZlHGRLp3zKvvftB5
+	sovsTqMsHNVKb40xwpcgLxzaAT6/Mxgws
+X-Received: by 2002:a7b:cd96:0:b0:3fc:10:b25b with SMTP id y22-20020a7bcd96000000b003fc0010b25bmr6623414wmj.21.1689437534440;
+        Sat, 15 Jul 2023 09:12:14 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFpxpfSQFWVxs5xId56kuqovmHBkCRVcENJq+und24xVDDj0feG9wpZsKiSMo/jJvMcazXpMg==
+X-Received: by 2002:a7b:cd96:0:b0:3fc:10:b25b with SMTP id y22-20020a7bcd96000000b003fc0010b25bmr6623408wmj.21.1689437534192;
+        Sat, 15 Jul 2023 09:12:14 -0700 (PDT)
 Received: from localhost (net-130-25-106-149.cust.vodafonedsl.it. [130.25.106.149])
-        by smtp.gmail.com with ESMTPSA id y6-20020a1c4b06000000b003fc3b03e631sm3602905wma.1.2023.07.15.09.11.46
+        by smtp.gmail.com with ESMTPSA id y17-20020a1c4b11000000b003fb739d27aesm3922717wma.35.2023.07.15.09.12.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 15 Jul 2023 09:11:46 -0700 (PDT)
-Date: Sat, 15 Jul 2023 18:11:44 +0200
+        Sat, 15 Jul 2023 09:12:13 -0700 (PDT)
+Date: Sat, 15 Jul 2023 18:12:11 +0200
 From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
 To: "Russell King (Oracle)" <linux@armlinux.org.uk>
 Cc: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
@@ -111,20 +111,20 @@ Cc: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
 	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
 	Florian Fainelli <f.fainelli@gmail.com>,
 	Greg Ungerer <gerg@kernel.org>
-Subject: Re: [PATCH v2 net-next 6/9] net: ethernet: mtk_eth_soc: add
- MTK_NETSYS_V3 capability bit
-Message-ID: <ZLLFQJ/CMvqQqRgN@lore-desk>
+Subject: Re: [PATCH v2 net-next 3/9] net: ethernet: mtk_eth_soc: add
+ MTK_NETSYS_V1 capability bit
+Message-ID: <ZLLFWyr5LbeB/Px1@lore-desk>
 References: <cover.1689012506.git.daniel@makrotopia.org>
- <6dc1e0ad7e8138835c959fc83a6c1564e8488c59.1689012506.git.daniel@makrotopia.org>
- <ZK+m+ayRW/uaxl6u@shell.armlinux.org.uk>
+ <a2022fd2db0f7ed54ab07bb93b04aa9fc59033b5.1689012506.git.daniel@makrotopia.org>
+ <ZK+ibBKWFRniQ8rK@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Eh7tZsXyDFZVqJbt"
+	protocol="application/pgp-signature"; boundary="yB+7pERcjQZkUudn"
 Content-Disposition: inline
-In-Reply-To: <ZK+m+ayRW/uaxl6u@shell.armlinux.org.uk>
+In-Reply-To: <ZK+ibBKWFRniQ8rK@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230715_171201_519626_467DB67A 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20230715_171226_263796_95627EE9 
+X-CRM114-Status: GOOD (  19.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,24 +140,32 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---Eh7tZsXyDFZVqJbt
+--yB+7pERcjQZkUudn
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> on thu, jul 13, 2023 at 03:19:49am +0100, daniel golle wrote:
-> > +
-> > +		if (mtk_has_caps(eth->soc->caps, mtk_netsys_v3)) {
+> On Thu, Jul 13, 2023 at 03:18:23AM +0100, Daniel Golle wrote:
+> > From: Lorenzo Bianconi <lorenzo@kernel.org>
+> >=20
+> > Introduce MTK_NETSYS_V1 bit in the device capabilities for
+> > MT7621/MT7622/MT7623/MT7628/MT7629 SoCs.
+> > Use !MTK_NETSYS_V1 instead of MTK_NETSYS_V2 in the driver codebase.
+> > This is a preliminary patch to introduce support for MT7988 SoC.
 >=20
-> this is a case in point for one of my previous comments...
+> Rather than using capability bits for versions, would it make more
+> sense to use an integer for this, so you can do:
 >=20
-> this code started out believing that testing for mtk_netsys_v2 for v2
-> features would be sufficient. your first patch ended up having to
-> change that to !v1. how long until this becomes !v1 && !v2 because
-> it gets used on v3 and v4 etc?
+> 	if (eth->soc->netsys_version >=3D 2) {
+> 		version 2 and later stuff
+> 	} else {
+> 		previous version stuff
+> 	}
 >=20
-> this is why i think an integer version field would be a much saner
-> approach.
+> ?
+>=20
+> I'm just thinking ahead to when we end up with stuff that v1 and v2
+> need but v3 and later don't.
 
 ack, I will fix it.
 
@@ -170,17 +178,17 @@ Lorenzo
 > FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 >=20
 
---Eh7tZsXyDFZVqJbt
+--yB+7pERcjQZkUudn
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZLLFQAAKCRA6cBh0uS2t
-rGs9AP49MdY//QxPjTry+O5HMEDUJz0xScmT7VFDAbt7wb7HwwEAn0Yz8q6MfSkC
-djHk8lPoM7OXLyH5gZ4UFWEqt305dgI=
-=nLva
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZLLFWwAKCRA6cBh0uS2t
+rBvlAQDy03bEQ4loaAkQrbJsOLuS7fpBgSkRYBHq+v1STiH+dwEAhaatBwH6Dv5n
+6nKwAO3GR06rfY1eFCm7uJkttIs/XwM=
+=TLpK
 -----END PGP SIGNATURE-----
 
---Eh7tZsXyDFZVqJbt--
+--yB+7pERcjQZkUudn--
 
 
