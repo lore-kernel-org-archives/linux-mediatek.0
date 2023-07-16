@@ -4,70 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FF63EB64DD
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Jul 2023 15:43:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CE55EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Jul 2023 17:09:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E8YK+g6bbaiBzRtsdDfNlqPPIdMif4KpRQIjjMRTwGk=; b=PeSn3LuN1AY7FhX8OOORTIlo3K
-	ou/nQtC5fa3GnnU73fDz/KqNV+HUar+/3nUNwhBANOZTBAQg6CM8hMtM5EM25KI9RyBtYC8cmFdiX
-	sxv6GI/XOzXO7VrPAs7HqeA2FC7p6udQQJH5ndK+FaeFdNN2m7q8JT7CUd1gMDz7Tumh45/NqTy3h
-	9bVPi77q9ajg4CYtVf+P6V11lw18Ac+ffJOa5wpdY6up/wUwQdKs9/8s6emaA6sZf9aQVMRlMV7iL
-	m7EgI1ssdvwJCETks/G1/oSBktTc+SNQTuxyrpUQ1B9xO1OsFTs4m5pLt49FqD5wHSr5evzppAXVl
-	oOVS0pPw==;
+	bh=D361W/nxtZ9C9OgpRhcC+TofxzM6NVpnjsWwoOKkVjU=; b=ZHOMb6ufVOvM2DJdpdy3S7Be+4
+	s0ZSyPZO9AccZanNtzZviQklL6h8WjicQrlW14dDkf4bDWjhB++clUl43XBKT5uIOwguEIDPNRX2J
+	BfDWcnGNU5/8QV4tUADq9wPqIo9UY4x4GBvnScQKOZNUy4nVN8QPn4/ElmohkNqmks0poOfQekgdo
+	9VEPyJ7NqZvoE5rMhujdXv/mvpkkohAC/9pJ4IyuSvOS65fKqrNjNBqJwqOZEM2bTZ382KWpccRSF
+	eKN37PTKY7rWu4HH69afZfunrhAmNBeUFmOU7T85LrNXCgJJSMjAyIo7Hqj1zCsMf+jS669XSfBf+
+	n35UjHnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qL3uL-00CUQB-0m;
-	Sun, 16 Jul 2023 15:43:37 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qL5F5-00DGcQ-1O;
+	Sun, 16 Jul 2023 17:09:07 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qL3uH-00CUMo-1E;
-	Sun, 16 Jul 2023 15:43:35 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	id 1qL5F1-00DGYa-1H
+	for linux-mediatek@lists.infradead.org;
+	Sun, 16 Jul 2023 17:09:05 +0000
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1qL5EK-0006nj-5v; Sun, 16 Jul 2023 19:08:20 +0200
+Received: from pengutronix.de (unknown [172.20.34.65])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 3836A60D57;
-	Sun, 16 Jul 2023 15:43:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15F5FC433C8;
-	Sun, 16 Jul 2023 15:43:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1689522211;
-	bh=jaqa0HCS19s0PDvOrcJ3LKInhBxF2KV171eQMHttwyo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DQARaTQayEv+DfaM2Gz058pqDQpaTD9G0lzO7bgWOpLc2MuguNh4fzrA5+1uzT+g8
-	 PvsLDuduUSxPdblx0IFoyiF5tN4W4E9uDIxRcur4W4Ua4Of9NCZQ18qXMBj3TU6VC/
-	 5q5k6KyJAdq2YB8dcgZBAaHjUo01dA3SM6NP4U28=
-Date: Sun, 16 Jul 2023 17:43:28 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Mike Snitzer <snitzer@redhat.com>
-Cc: Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
-	Alasdair Kergon <agk@redhat.com>,
-	"development, device-mapper" <dm-devel@redhat.com>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Matthias Brugger <matthias.bgg@gmail.com>, yj.chiang@mediatek.com,
-	Peter Korsgaard <peter@korsgaard.com>,
-	Mike Snitzer <snitzer@kernel.org>, stable@vger.kernel.org,
-	linux-doc@vger.kernel.org,
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 5.15] dm init: add dm-mod.waitfor to wait for
- asynchronously probed block devices
-Message-ID: <2023071657-marry-usual-882f@gregkh>
-References: <20230713055841.24815-1-mark-pk.tsai@mediatek.com>
- <2023071603-lustily-defraud-2149@gregkh>
- <CAH6w=aztzhm3Sa-afN2Xk-7mp1BVtTKNXJ=JyXqJvm3wtEnd3Q@mail.gmail.com>
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id D858F1F1E4D;
+	Sun, 16 Jul 2023 17:08:14 +0000 (UTC)
+Date: Sun, 16 Jul 2023 19:08:13 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Rob Herring <robh@kernel.org>
+Cc: Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Justin Chen <justin.chen@broadcom.com>,
+	Al Cooper <alcooperx@gmail.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Yu Chen <chenyu56@huawei.com>,
+	Binghui Wang <wangbinghui@hisilicon.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Lubomir Rintel <lkundrak@v3.sk>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wolfgang Grandegger <wg@grandegger.com>,
+	Alban Bedel <albeu@free.fr>, Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Robert Marko <robert.marko@sartura.hr>,
+	Luka Perkov <luka.perkov@sartura.hr>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Vincent Shih <vincent.sunplus@gmail.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>, JC Kuo <jckuo@nvidia.com>,
+	devicetree@vger.kernel.org, linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
+	netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-can@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-tegra@vger.kernel.org
+Subject: Re: [PATCH] phy: Explicitly include correct DT includes
+Message-ID: <20230716-rippling-wafer-1c986e593fc5-mkl@pengutronix.de>
+References: <20230714174841.4061919-1-robh@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nbfpe5avx7koqgt4"
 Content-Disposition: inline
-In-Reply-To: <CAH6w=aztzhm3Sa-afN2Xk-7mp1BVtTKNXJ=JyXqJvm3wtEnd3Q@mail.gmail.com>
+In-Reply-To: <20230714174841.4061919-1-robh@kernel.org>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:b01:1d::7b
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230716_084333_509131_08999F73 
-X-CRM114-Status: GOOD (  26.48  )
+X-CRM114-CacheID: sfid-20230716_100903_565957_7EEAE0CD 
+X-CRM114-Status: GOOD (  15.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,77 +129,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 16, 2023 at 11:36:36AM -0400, Mike Snitzer wrote:
-> On Sun, Jul 16, 2023, 11:16 AM Greg KH <gregkh@linuxfoundation.org> wrote:
-> 
-> > On Thu, Jul 13, 2023 at 01:58:37PM +0800, Mark-PK Tsai wrote:
-> > > From: Peter Korsgaard <peter@korsgaard.com>
-> > > 
-> > > Just calling wait_for_device_probe() is not enough to ensure that
-> > > asynchronously probed block devices are available (E.G. mmc, usb), so
-> > > add a "dm-mod.waitfor=<device1>[,..,<deviceN>]" parameter to get
-> > > dm-init to explicitly wait for specific block devices before
-> > > initializing the tables with logic similar to the rootwait logic that
-> > > was introduced with commit  cc1ed7542c8c ("init: wait for
-> > > asynchronously scanned block devices").
-> > > 
-> > > E.G. with dm-verity on mmc using:
-> > > dm-mod.waitfor="PARTLABEL=hash-a,PARTLABEL=root-a"
-> > > 
-> > > [    0.671671] device-mapper: init: waiting for all devices to be 
-> > available before creating mapped devices
-> > > [    0.671679] device-mapper: init: waiting for device PARTLABEL=hash-a 
-> > ...
-> > > [    0.710695] mmc0: new HS200 MMC card at address 0001
-> > > [    0.711158] mmcblk0: mmc0:0001 004GA0 3.69 GiB
-> > > [    0.715954] mmcblk0boot0: mmc0:0001 004GA0 partition 1 2.00 MiB
-> > > [    0.722085] mmcblk0boot1: mmc0:0001 004GA0 partition 2 2.00 MiB
-> > > [    0.728093] mmcblk0rpmb: mmc0:0001 004GA0 partition 3 512 KiB, 
-> > chardev (249:0)
-> > > [    0.738274]  mmcblk0: p1 p2 p3 p4 p5 p6 p7
-> > > [    0.751282] device-mapper: init: waiting for device PARTLABEL=root-a 
-> > ...
-> > > [    0.751306] device-mapper: init: all devices available
-> > > [    0.751683] device-mapper: verity: sha256 using implementation 
-> > "sha256-generic"
-> > > [    0.759344] device-mapper: ioctl: dm-0 (vroot) is ready
-> > > [    0.766540] VFS: Mounted root (squashfs filesystem) readonly on 
-> > device 254:0.
-> > > 
-> > > Signed-off-by: Peter Korsgaard <peter@korsgaard.com>
-> > > Signed-off-by: Mike Snitzer <snitzer@kernel.org>
-> > > Cc: stable@vger.kernel.org
-> > > Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-> > > ---
-> > >  .../admin-guide/device-mapper/dm-init.rst     |  8 +++++++
-> > >  drivers/md/dm-init.c                          | 22 ++++++++++++++++++-
-> > >  2 files changed, 29 insertions(+), 1 deletion(-)
-> >
-> > What is the git commit id of this change in Linus's tree?
-> >
-> > thanks,
-> >
-> > greg k-h
-> >
-> >
-> 
-> Hey Greg,
-> 
-> This change shouldn't be backported to stable@. It is a feature, if
-> Mark-PK feels they need it older kernels they need to carry the change
-> in their own tree. Or at a minimum they need to explain why this
-> change is warranted in stable@.
 
-Ok, I'll drop it from my queue.
+--nbfpe5avx7koqgt4
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> But to answer your original question the upstream commit is:
-> 
-> 035641b01e72 dm init: add dm-mod.waitfor to wait for asynchronously probed block devices
+On 14.07.2023 11:48:35, Rob Herring wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
+>=20
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  drivers/phy/phy-can-transceiver.c                     | 1 +
 
-Ah, showed up in 6.2, so we have to have a 6.1.y backport as well, I
-can't take patches for only older kernels, sorry.
+Acked-by: Marc Kleine-Budde <mkl@pengutronix.de> # for drivers/phy/phy-can-=
+transceiver.c
 
-thanks,
+regards,
+Marc
 
-greg k-h
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--nbfpe5avx7koqgt4
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEDs2BvajyNKlf9TJQvlAcSiqKBOgFAmS0I/oACgkQvlAcSiqK
+BOjjrwgArExbry3lxXJ0IU/QstoPtXDWo1kq+VrGdKo90TUKc6zRFxqvnUNRrjBk
+9aVhw60wUadmaqmq+5XBpVPES7N6/lzVGQxqKvMo90pMkksfG+isH43EGgJKSCGW
+50aecO37i/0V2xhrIoHdcChv/8G2ND7TCQRoREFPHZZAZCY8ounBXRoNZD0XmC8y
+SxL3qs9NG4rSdKSzQuXZ9tNqThZ5R+dU+jXGeBYK2/yhaiBr9bLokg9qS4ZA2Keh
+OIbgZeiYE8RrbwcPL1CrMYM/mY1MEyVqOTrWb6xzJZYYzJENZi11xoPi5nB+x2zP
+F5frwLP70qIiMDMihQLMvpd/SRkwEA==
+=Qdmr
+-----END PGP SIGNATURE-----
+
+--nbfpe5avx7koqgt4--
 
