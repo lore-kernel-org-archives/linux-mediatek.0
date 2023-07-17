@@ -4,105 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 824C1C001DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:10:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 221CAC001DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:11:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bgwkT6/ww+wGY+KnhW+AnmHhERDPUw3m+qyEsiw+eiM=; b=ZkZCPudV+uoC72/UCsz8sHQHHn
-	Ra9xw9D1b0VRjBk5aqksmtNoXfBGAufFDQ5LoGQdVvmVbI2tiolM2aCy3h6JB45b/KM0R2DPpmo1A
-	cYWbfwoTd7BV7MPXZtL8AlnyhYaytwLMXNYCiaLwIqhl1MKLIT5+gO4xUzjUQyat2Azr0jqoeucRM
-	3pg6T8RZYgOdhku73Mi0/1jf9j8Qt+9pL2eNVjf9SMB3yREU5nTgym5soXt+HE0jE3B3zg2MKQmzF
-	WoMCpqzJ9+MrVUzYaoVYqDT1JL9Q9jhRO8pT0T86u0P7PCRpEzvbsiZpjX3XRoCFx8QxlC7TLFcr9
-	Aa/wFwMQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UEj0AXAxlyKrDR2T9dRAsXWpemXdwncxY2h++Qk+qQw=; b=NsELP69ojAR20jUA8uZZO6EGUf
+	Lb3Q9XD2KdZKL18ZbMKmKUI6x4Dt/PcSN+6dtkVZWBZ8/4j8dfrwT//uUkPV2BQrqolsCxXYNPjyh
+	vvg6IzbZvmjTZkjPSbBhkVDS38pfT2ip7K8hgHewD6wJ2ZNNiMp/ptiaYVu+KCzr7fL/eb+aFtacz
+	6JdsOALHALmr70kW1q72kP4RH6PjTiCzhCfAdKKDf4h3rx29hwSOvVC5G+HIY6U0U9g7hSy1F0+Ye
+	ISQRh7vTo6qdPAWJk4+b3qWzhihAvSJsCUqDSc9N8OLrsSMbFKmWN3avZguu04GBLny1W5raiDUHJ
+	y03uYECg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0Nu-005ZiB-0W;
-	Wed, 19 Jul 2023 06:10:02 +0000
+	id 1qM0PW-005aft-2T;
+	Wed, 19 Jul 2023 06:11:42 +0000
 Received: from desiato.infradead.org ([90.155.92.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0Nt-005ZhA-0X
+	id 1qM0PQ-005ac4-2G
 	for linux-mediatek@bombadil.infradead.org;
-	Wed, 19 Jul 2023 06:10:01 +0000
+	Wed, 19 Jul 2023 06:11:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=bgwkT6/ww+wGY+KnhW+AnmHhERDPUw3m+qyEsiw+eiM=; b=IS+rjdt6M4qEbDj8GMqNTYN/lw
-	P20DAERfH9p/xrT23+JqO6aMwQoGIcQwboBxF+g0u40B6v6eF+5uqZnlzN8Fb47wP8NlvWfXk+mw1
-	gq2P9BYrD3cQpLeVfDOitGKaSciEQBTsIsZw3XVALdCkrLmfJAnxaLJK4NNmTKhSVFswBRwDVeXRW
-	ZpP2HRZGdXNY65U16iIND6RDEti+D0myuBb1vM9iuEHD+1x/xOCOaZIu3DDdYVsDCs9jgLH5OJNoA
-	oLEKp+h7XJ9M8HUbEftFn65o1R93061k0pJZRWnE3HKk3CkiiSp3CPhtqPh2vfdB8jArCTdK7BKpI
-	CNiVolgQ==;
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=UEj0AXAxlyKrDR2T9dRAsXWpemXdwncxY2h++Qk+qQw=; b=RtEkF/oPmknbPZeDnC7B9l05Et
+	+1YXjFznDcVfZcq9GKMZ6Hn3JGPu01uk9oa1kgUj0GlAdMBLbTaduA7JWNXl4/cmoyiO7S0hR4mWH
+	KgXfx0m6MsU2I0VTAczHEE9HZJ2m83JutjbnUY1rRo/+mzYuDlpL5sYUpXjDFwBxqaD8eneIVmv2X
+	hxXAsmq3aXpNF/OZCH5EGzvF3Rm5NIqW5sXelLWptlI2lrbddOGlr7NKlUhcQG6qhTYObiEe6V/NZ
+	D6IR7yqzJBqthI9hoC4bDMuEC/5wPwN6rLUS5FeNZqMigGEY+eZZEpBIqLlZvRf0J6FN3sMvNJGBc
+	7E7gVcPQ==;
+Received: from smtp-29.smtpout.orange.fr ([80.12.242.29] helo=smtp.smtpout.orange.fr)
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLjC7-00BTZg-1i
+	id 1qLUed-009Jj3-36
 	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Jul 2023 11:48:45 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-52166c7f77cso6464461a12.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 18 Jul 2023 04:48:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1689680828; x=1692272828;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=bgwkT6/ww+wGY+KnhW+AnmHhERDPUw3m+qyEsiw+eiM=;
-        b=gm8AZISMYgDWrcpqlNV7XSWGhwCuU99E8AmVjG8gJL/c/QLOS3v+Z5XgqrxYMkYtXK
-         KGZbvTNg3o379y4SY8349W/RXwRdO3sn/NWR/YQ9cI0zp7cqmIxphvbzgCuhdDUm/BHT
-         cBgWwKha6D48+pCsUHf+RD0fgUb4HKnCzU1KfZUcDKUX+kNmMtmrkGdT1WI23IFJSNeK
-         CZxQV/fNNhBRWOyB6F6bQmAoNks8QJofiZiO3E9+npH5qsUk+w8QZkEQPNBVsgZYPMnJ
-         J+CMYmTBgTzwhi717Zo7QClWWJ2u9dvXkfG7EgHWDHlWsFC7VpoFze65MZQ+I7TTuvGn
-         KPRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689680828; x=1692272828;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bgwkT6/ww+wGY+KnhW+AnmHhERDPUw3m+qyEsiw+eiM=;
-        b=b9B+nn+omrARO9OohGDzQ8qqclSC54N5ybTkgIKBiuHoY3dich1689SbjDGYUoo9De
-         c8Wrb77oBR/uQ+tgQh1ZgJ5XkbAM2iLEMqI8O9C8JuJ0h9HEwC8pWaSIZxY1zJml7GPl
-         nHMMIP+qsFXRGdBnHa3ldKCc1K31fwOVQ4c1+RFrr42Sh5hje3hhNPoQOywwHDUCL/Ob
-         n6Ffa0LdV0AdgOpg1wubN0ZJCS+gn0GBidKVRp0jxzC4orIOp8CEfjn+Ff2o7n8npshm
-         CZp6/iPk/nWeDtSfr8vQDceo8aj5xu2YMMnsDbrOWLl0Kjg+aYc9EmJwg7U51UL1pOlK
-         CN6w==
-X-Gm-Message-State: ABy/qLblwWZLqi2ZMHTwP+pQRcnPYsWtZ3od2zf/bKFpvjJ7avkfoiZ1
-	rVibve6y9IrnIkEqMsOWhYPJlg==
-X-Google-Smtp-Source: APBJJlFT/DybxzSCIUirucC7X3IgslcqDkoxyI/x5YpoNguRTUf6H2jOVZIRryHeAvuImMBdxHBMdg==
-X-Received: by 2002:aa7:c643:0:b0:51e:3bb0:aa4e with SMTP id z3-20020aa7c643000000b0051e3bb0aa4emr2018660edr.15.1689680828445;
-        Tue, 18 Jul 2023 04:47:08 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.223.104])
-        by smtp.gmail.com with ESMTPSA id l25-20020aa7d959000000b0051a4c1dc813sm1088621eds.82.2023.07.18.04.47.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 18 Jul 2023 04:47:08 -0700 (PDT)
-Message-ID: <b3813aeb-8650-e406-eee6-05658ba568ff@linaro.org>
-Date: Tue, 18 Jul 2023 13:47:06 +0200
+	Mon, 17 Jul 2023 20:17:14 +0000
+Received: from pop-os.home ([86.243.2.178])
+	by smtp.orange.fr with ESMTPA
+	id LUX2q5vfabkI3LUX3qnKyX; Mon, 17 Jul 2023 22:09:26 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1689624566;
+	bh=UEj0AXAxlyKrDR2T9dRAsXWpemXdwncxY2h++Qk+qQw=;
+	h=From:To:Cc:Subject:Date;
+	b=d5cNBpyckTzPUqzqnhq0Y8pnMXCGVib/3GQbOzMQQsYxZ3ZYKt+G4E2/m0JKWFX+e
+	 qqDGQBU3SKWwxg6+fc7iAiwf/ujP3ncKaZh5EqZ0NlrQbWfy0k6ZMAHR2alnc/RV0O
+	 BRWLayHoFfKe22+BCe+9ZH74Rp3Yb4VGTr//1QNai0xaOnpWocQub4BxIKf/4/XYQQ
+	 aC6q05JzSPNLdSdhUaYi7DjgHHxT1Idu1MjlUL6CW1hWdXd95uygiX+S50KeqRHdcM
+	 t5KbEAcOD6WglubNCuVqoWfi+MZ7NLw0gvaibiq0kYwspynZkdd5yCqTNi6bIdnZRC
+	 sbthVNZOAmuLA==
+X-ME-Helo: pop-os.home
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Mon, 17 Jul 2023 22:09:26 +0200
+X-ME-IP: 86.243.2.178
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Xiaoyong Lu <xiaoyong.lu@mediatek.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	linux-media@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] media: mediatek: vcodec: Fix an error handling path in vdec_msg_queue_init()
+Date: Mon, 17 Jul 2023 22:09:19 +0200
+Message-Id: <efa0d4910998931a2ec9d933117fa71482d7b33a.1689624542.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 3/3] arm64: dts: Add node for chip info driver
-Content-Language: en-US
-To: William-tw Lin <william-tw.lin@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Kevin Hilman <khilman@kernel.org>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20230718112143.14036-1-william-tw.lin@mediatek.com>
- <20230718112143.14036-4-william-tw.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230718112143.14036-4-william-tw.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_124843_700552_227B0220 
-X-CRM114-Status: GOOD (  15.58  )
+X-CRM114-CacheID: sfid-20230717_211712_357088_94EC77C4 
+X-CRM114-Status: UNSURE (   8.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,60 +99,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18/07/2023 13:21, William-tw Lin wrote:
-> Add dts node for socinfo retrieval. This includes the following projects:
-> MT8173
-> MT8183
-> MT8186
-> MT8192
-> MT8195
-> 
-> Signed-off-by: William-tw Lin <william-tw.lin@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 15 +++++++++++++++
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 15 +++++++++++++++
->  arch/arm64/boot/dts/mediatek/mt8186.dtsi | 10 ++++++++++
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 14 ++++++++++++++
->  arch/arm64/boot/dts/mediatek/mt8195.dtsi |  9 +++++++++
->  5 files changed, 63 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index c47d7d900f28..115f907751c1 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -590,11 +590,26 @@
->  			reg = <0 0x10206000 0 0x1000>;
->  			#address-cells = <1>;
->  			#size-cells = <1>;
-> +
-> +			socinfo_data1: socinfo-data1 {
-> +				reg = <0x040 0x4>;
-> +			};
-> +
-> +			socinfo_data2: socinfo-data2 {
-> +				reg = <0x044 0x4>;
-> +			};
-> +
->  			thermal_calibration: calib@528 {
->  				reg = <0x528 0xc>;
->  			};
->  		};
->  
-> +		mtk_socinfo: mtk-socinfo {
+All errors go to the error handling path, except this one. Be consistent
+and also branch to it.
 
-Why do you put non-MMIO nodes in MMIO bus?
+Fixes: 2f5d0aef37c6 ("media: mediatek: vcodec: support stateless AV1 decoder")
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+ drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-It does not look like you tested the DTS against bindings. Please run
-`make dtbs_check` (see
-Documentation/devicetree/bindings/writing-schema.rst or
-https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
-for instructions).
-
-Node names should be generic. See also an explanation and list of
-examples (not exhaustive) in DT specification:
-https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
-
-Best regards,
-Krzysztof
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+index 04e6dc6cfa1d..c6cc2785e0e8 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
+@@ -338,14 +338,16 @@ int vdec_msg_queue_init(struct vdec_msg_queue *msg_queue,
+ 			err = mtk_vcodec_mem_alloc(ctx, &lat_buf->rd_mv_addr);
+ 			if (err) {
+ 				mtk_v4l2_err("failed to allocate rd_mv_addr buf[%d]", i);
+-				return -ENOMEM;
++				err = -ENOMEM;
++				goto mem_alloc_err;
+ 			}
+ 
+ 			lat_buf->tile_addr.size = VDEC_LAT_TILE_SZ;
+ 			err = mtk_vcodec_mem_alloc(ctx, &lat_buf->tile_addr);
+ 			if (err) {
+ 				mtk_v4l2_err("failed to allocate tile_addr buf[%d]", i);
+-				return -ENOMEM;
++				err = -ENOMEM;
++				goto mem_alloc_err;
+ 			}
+ 		}
+ 
+-- 
+2.34.1
 
 
