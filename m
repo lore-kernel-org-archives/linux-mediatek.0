@@ -4,103 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D0ECEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jul 2023 03:08:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29580C0015E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jul 2023 04:00:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8Lw6eobPeHR4pDgyj3Vo1gV8F8zKteJ+YQMuR4/qvOU=; b=BP0JUqqBqFg3BGVYhVGlSaHbET
-	1MN1/iPE/NmiGvS0WNg2VCMv5tdXzw2zITtulcE+v9Cf/scn1MtsFBvA77m7NsSmCypV9yv/baB5D
-	Up/ouLdLklQ0rSpxX9DRt86y4cO4x3q5WrWnfBEyoa86OIcCONj8qugntjiaGxbkxAfTsPp0LmiXq
-	1E1AKCIpPFa8LCaQP6SGm/SkFAVu4lqr7JXOhXfPueIXAtudd0DnbYpjAnIPPnEDxZpHJBTgdjkRi
-	5/crSeVFn0R2p7N+yWge9DzwYxxBD2ZlNXtaBDF+tnUTiGF+Gv/GrezTMvFOOs/fyM+0I1p09f5BW
-	I4kyx5wA==;
+	bh=rane9LymWOzuf5nVdxKmicrrVi/5Plm4e1af1OJmuGo=; b=3YUimAw8RY0dvyOz8htCLK6oZO
+	G01oqZdCPM78jc62Hf6uaB0xDtiOK7Trk8ITaKkzmMcsBjXjug1eR/CRT+fDP094Mwg0SqczIIhJF
+	4nq3bKD6y4xyolDI7ilhoAElPFHZaIxSd8gaKWv9pTLWIPB1kQE6mtcEwixnAMIcmXu30+s4FMtd1
+	kMxT8BT2v798i8TMY7OcXrvFR9fewUjHA+5dBo9xXBZDLKlNorUX55nn2bNEQql4O6VoYql3bTbyq
+	YCzTfonFDmRSo6j3sRxHWcKoch7jSXDovuWjFXDxYHpVIwawFAJtRKMGsGOhTFNAUQwiQvk0Y5AkW
+	YbjaTOQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLEbC-001E2X-17;
-	Mon, 17 Jul 2023 03:08:34 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qLFPN-001iGK-35;
+	Mon, 17 Jul 2023 04:00:26 +0000
+Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLEb4-001DtQ-2y;
-	Mon, 17 Jul 2023 03:08:29 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7D20660F02;
-	Mon, 17 Jul 2023 03:08:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E49F7C433C7;
-	Mon, 17 Jul 2023 03:08:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689563298;
-	bh=DSxcgd+h1hGjsDVfLvnriZE2CKrET78BMSu4MXjeR7M=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YTijYacIaCLpeCIu4hFMEWWLRsZeU8gUwVXMB8UgLTTK3K17+3iipTywexQpUR9Rf
-	 mSDpXwyCUxhaIqhc/oduUcFTSQQFbcBIW/MYnZ26RwP2997OCHeT5mu7AKXsO8ZZyJ
-	 FFBEDJFA38Gv5aZdq7T21ljBzICWz3BJbje8hndefWaDVVUTtqRR6zgFYbSOd7qbcj
-	 ne7HNlTnPpCH6jgV8g90LL+dOM4ctEikTxj8SWixcIIEHfHphoJ6JiOm3tN5aRyJPA
-	 pYQ2F1nGLNmxSeNGyDOH+xhkrH/BDP4j/aog++4OlifwqDe9PvAGS+QFKhXDLqwD2U
-	 xBtctmPa6qW/w==
-Message-ID: <765b02a5-2f09-e744-f441-c082fa3987ff@kernel.org>
-Date: Sun, 16 Jul 2023 21:08:16 -0600
+	id 1qLFPG-001i9u-2u
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Jul 2023 04:00:23 +0000
+Received: by mail-il1-x130.google.com with SMTP id e9e14a558f8ab-3457157a164so16743965ab.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 16 Jul 2023 21:00:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1689566416; x=1692158416;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rane9LymWOzuf5nVdxKmicrrVi/5Plm4e1af1OJmuGo=;
+        b=DeAi7UPa7J5RPMLgaBGKipqwjcPkkqSSXuEc9ftX8/pT3LdEynyXPvvXHsoBuoweVK
+         K+W20Bcm8gviQ+3+cgoCbuF6wacfW34Xhqm1f6UBpwkNqVso9STiOkM+PAE+xBh3g41G
+         CWCN3iqWakKicn8hjXfGA88G1V9z0WWvgkFxo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689566416; x=1692158416;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rane9LymWOzuf5nVdxKmicrrVi/5Plm4e1af1OJmuGo=;
+        b=IycW88ISlTAQJq1HN1pL6jDC42GEcGDOsDNLzCyduRBpbQcKG6WTJ66tIChrf7pN2l
+         K8tGKGFs5O1d7+gOiukfgVpBWK0PMTfITbizucfLr26vU9i1sH3awY1qkeBkBrA26Eb0
+         DMB0eRU7fOAJymqDWN669G9MXSxSFyt8LTGA0q/Uj+g+5ujyR0Znp44++CW2II1er4ms
+         qzlBHdBk1st/9v8ulJZvBXpHl5APTk0Ftyr/Af2+4c/22ByLNYu969SDYYSHW6ZExutF
+         IndwcMRW6b/p1gXKuY1ZcK30aBL2Z51oc7xSfEsFbnHDbjPALn0y3XouhPnGeYLOk+5T
+         VwyQ==
+X-Gm-Message-State: ABy/qLbX2C10zWhb5YaR14AzRHnDZPM+6PTg4fgyaTFhroWcKnWREo6J
+	H9vhf8m54uVGVQ2izHcIP/LqKNOlTiKv+oP7csE=
+X-Google-Smtp-Source: APBJJlEGcbqjZemv6tUZihe79vx29cZSfp92+UXs0zJXOzVyWGyURaW4AhTc3o72SHQcHJHPW5rMzA==
+X-Received: by 2002:a92:c70a:0:b0:347:7399:e9c1 with SMTP id a10-20020a92c70a000000b003477399e9c1mr8928045ilp.14.1689566415923;
+        Sun, 16 Jul 2023 21:00:15 -0700 (PDT)
+Received: from mail-io1-f46.google.com (mail-io1-f46.google.com. [209.85.166.46])
+        by smtp.gmail.com with ESMTPSA id f1-20020a056638118100b0042b2e90ed06sm4388417jas.23.2023.07.16.21.00.15
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 16 Jul 2023 21:00:15 -0700 (PDT)
+Received: by mail-io1-f46.google.com with SMTP id ca18e2360f4ac-78666f06691so161850139f.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 16 Jul 2023 21:00:15 -0700 (PDT)
+X-Received: by 2002:a5e:890a:0:b0:77e:288d:f3c1 with SMTP id
+ k10-20020a5e890a000000b0077e288df3c1mr9803357ioj.6.1689566414860; Sun, 16 Jul
+ 2023 21:00:14 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
- page_pool: remove PP_FLAG_PAGE_FRAG flag)
-Content-Language: en-US
-To: Mina Almasry <almasrymina@google.com>
-Cc: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- Hari Ramakrishnan <rharix@google.com>, Jason Gunthorpe <jgg@ziepe.ca>,
- Samiullah Khawaja <skhawaja@google.com>,
- Willem de Bruijn <willemb@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Christoph Hellwig <hch@lst.de>, John Hubbard <jhubbard@nvidia.com>,
- Dan Williams <dan.j.williams@intel.com>,
- Jesper Dangaard Brouer <jbrouer@redhat.com>, brouer@redhat.com,
- Alexander Duyck <alexander.duyck@gmail.com>,
- Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
- pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang
- <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>,
- Eric Dumazet <edumazet@google.com>, Sunil Goutham <sgoutham@marvell.com>,
- Geetha sowjanya <gakula@marvell.com>, Subbaraya Sundeep
- <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>,
- Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
- Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-rdma@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Jonathan Lemon
- <jonathan.lemon@gmail.com>, logang@deltatee.com,
- Bjorn Helgaas <bhelgaas@google.com>
-References: <20230710215906.49514550@kernel.org>
- <20230711050445.GA19323@lst.de> <ZK1FbjG+VP/zxfO1@ziepe.ca>
- <20230711090047.37d7fe06@kernel.org>
- <04187826-8dad-d17b-2469-2837bafd3cd5@kernel.org>
- <20230711093224.1bf30ed5@kernel.org>
- <CAHS8izNHkLF0OowU=p=mSNZss700HKAzv1Oxqu2bvvfX_HxttA@mail.gmail.com>
- <20230711133915.03482fdc@kernel.org>
- <2263ae79-690e-8a4d-fca2-31aacc5c9bc6@kernel.org>
- <CAHS8izP=k8CqUZk7bGUx4ctm4m2kRC2MyEJv+N4+b0cHVkTQmA@mail.gmail.com>
- <ZK6kOBl4EgyYPtaD@ziepe.ca>
- <CAHS8izNuda2DXKTFAov64F7J2_BbMPaqJg1NuMpWpqGA20+S_Q@mail.gmail.com>
- <143a7ca4-e695-db98-9488-84cf8b78cf86@amd.com>
- <CAHS8izPm6XRS54LdCDZVd0C75tA1zHSu6jLVO8nzTLXCc=H7Nw@mail.gmail.com>
- <9cf3ce79-2d5e-090d-c83e-0c359ace1cb9@kernel.org>
- <CAHS8izOL593X7=9pGaeC1JJ_5hYookZDn7O=fike=e48+myvxA@mail.gmail.com>
-From: David Ahern <dsahern@kernel.org>
-In-Reply-To: <CAHS8izOL593X7=9pGaeC1JJ_5hYookZDn7O=fike=e48+myvxA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20230421021609.7730-1-nancy.lin@mediatek.com> <ae96299cffaacdbf51beae96e3a257c95a04ac95.camel@mediatek.com>
+In-Reply-To: <ae96299cffaacdbf51beae96e3a257c95a04ac95.camel@mediatek.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Mon, 17 Jul 2023 11:59:38 +0800
+X-Gmail-Original-Message-ID: <CAC=S1njEG2sV28XAWDw8FoQ0p5w=-sU4i+D-ESfapHMQC1ZW3Q@mail.gmail.com>
+Message-ID: <CAC=S1njEG2sV28XAWDw8FoQ0p5w=-sU4i+D-ESfapHMQC1ZW3Q@mail.gmail.com>
+Subject: Re: [PATCH v2] drm/mediatek: fix uninitialized symbol
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+Cc: "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, 
+	=?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"clang-built-linux@googlegroups.com" <clang-built-linux@googlegroups.com>, 
+	=?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, 
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230716_200827_067156_0D4C3672 
-X-CRM114-Status: GOOD (  31.06  )
+X-CRM114-CacheID: sfid-20230716_210018_967802_19DA743C 
+X-CRM114-Status: GOOD (  15.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,67 +105,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/16/23 8:05 PM, Mina Almasry wrote:
->>
->> For the driver and hardware queue: don't you need a dedicated queue for
->> the flow(s) in question?
-> 
-> In the RFC and the implementation I'm thinking of, the queue is
-> 'dedicated' in that each queue will be a devmem TCP queue or a regular
-> queue. devmem queues generate devmem skbs and non-devmem queues
-> generate non-devmem skbs. We support switching queues between devmem
-> mode and non-devmem mode via a uapi.
+Hi CK,
 
-ethtool APIs or something else?
+On Fri, Jul 14, 2023 at 5:27=E2=80=AFPM CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89)=
+ <ck.hu@mediatek.com> wrote:
+>
+> Hi, Nancy:
+>
+> On Fri, 2023-04-21 at 10:16 +0800, Nancy.Lin wrote:
+snip
+>
+> In line 566, the statement is
+>
+> if (nodo) {
+>         comp_pdev =3D ...
+> }
+>
+> The comment says that only ovl_adaptoer has no device node, so the
+> checking should be
+>
+> if (type !=3D MTK_DISP_OVL_ADAPTOR) {
+>         comp_pdev =3D ...
+> }
+>
+> and later it would return when type =3D MTK_DISP_OVL_ADAPTOR,
+> so there would be no problem of uninitialized symbol.
 
-> 
->> If not, how can you properly handle the
->> teardown case (e.g., app crashes and you need to ensure all references
->> to GPU memory are removed from NIC descriptors)?
-> 
-> Jason and Christian will correct me if I'm wrong, but AFAICT the
-> dma-buf API requires the dma-buf provider to keep the attachment
-> mapping alive as long as the importer requires it. The dma-buf API
-> gives the importer dma_buf_map_attachment() and
-> dma_buf_unmap_attachment() APIs, but there is no callback for the
-> exporter to inform the importer that it has to take the mapping away.
+That sounds fair, but IIUC what Nancy tries to resolve here is the
+false-positive Smatch warning.
+How about this: given the `if (node)` block was exclusively added for
+ovl_adaptor in [1], plus the init function will immediately return
+after that in this case, it should be safe to do the following
 
-Isn't the importer that application that terminated (cleanly or other)?
-That was my thinking but I guess there are other designs that can cross
-a single application.
+```
+/* Not all drm components have a DTS device node... */
+if (node =3D=3D NULL)
+    return 0;
 
-> The closest thing I saw was the move_notify() callback, but that is
-> optional.
-> 
-> In my mind the way it works is that there will be some uapi that binds
-> a dma-buf to an RX queue, that will create the attachment and the
-> mapping. If the user crashes or closes the dma-buf handle then that
-> will unbind the dma-buf from the RX queue, but the mapping will remain
-> alive (via some refcounting) until all the NIC descriptors are freed
-> and the mapping is not under use anymore. Usually this will happen
-> next driver reset which destroys and recreates rx queues thereby
-> freeing all the NIC descriptors (but could be a new API so that we
-> don't rely on a driver reset).
-> 
->> If you agree on this
->> point, then you can require the dedicated queue management in the driver
->> to use and expect only the alternative frag addressing scheme. ie., it
->> knows the address is not struct page (validates by checking skb flag or
->> frag flag or address magic), but a reference to say a page_pool entry
->> (if you are using page_pool for management of the dmabuf slices) which
->> contains the metadata needed for the use case.
-> 
-> Honestly if my understanding above doesn't match what you want, I
-> could implement 'dedicated queues' instead, just let me know what you
-> want at some future iteration. Now, I'm more worried about this memory
-> format issue and I'm working on an RX prototype without struct pages.
-> So far purely technically speaking it seems possible.
-> 
-> 
+comp_pdev =3D of_find_device_by_node(node);
+...
 
-My comment was only a suggestion on how to simplify driver changes. ie.,
-a queue is either pages (based on standard page_pool or alloc_pages) or
-some "special" page_pool (ie., new abstraction) but not mixed. In that
-case it knows how to handle the overloaded 'address' in skb_frag in a
-clean manner.
+if (type =3D=3D MTK_DISP_AAL ||
+...
+```
+
+which is equivalent to adding a `node =3D=3D NULL` check before [1].
+This should suppress the Smatch warning because `comp_pdev` will be
+(again) unconditionally assigned to something, and the `type =3D=3D
+MTK_DISP_OVL_ADAPTOR` line can be dropped also (optional?).
+
+[1]: commit 0d9eee9118b7 ("drm/mediatek: Add drm ovl_adaptor sub
+driver for MT8195")
+
+Regards,
+Fei
 
