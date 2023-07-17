@@ -4,110 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C3B8C0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:08:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDACCEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:09:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K6bRLOVfSwW0qn3SMzPfFP/67dSzOtG9jDmNa7DKFhQ=; b=QhxiYzZ/EA1J4Qmvyh4kB3WaP0
-	BkuCmGv7I1LvHTjpPKTMpG6NgYBnUnRZNvB4KcNdjaZA5hmZ3xQ/hcbkVGhEVQfBpwHcWLNu+FoqB
-	arMtf6nyCl3TVBJUq5DVJ2HvfFqQWNI70P31u2qLp7dBXRtpyYGwASP37CVIoqLjsSd9BeWKfbbCv
-	jQbCrbG71t8OzrzOLVASALyZBL7g5/NaXelZFTCY+iehdSyHlUpZYTKdat4TCx3ucaSXX7H+6msbs
-	jUFdJuzS0b12TlFyFhPxQpKjpBWJwux9gbssdZA5h9vbKWrz1ix8IlewmLW4nqsEivcoSYNr/F09p
-	0908mBBg==;
+	bh=SOp2ZZ3wc36w9kvHwXp3awpd0wFGnA+hVpdKbz6GNXU=; b=lgKyXMwlXdNsMX5y4bTcA9oxDN
+	A4YYkdap4dFgbPWwsWgNVyH0e0hNPB0zXVNMbukhDKeu19TCIvgb/MgSknQNa4X8GKveIh97yLPf5
+	T/fH2CqiaJXCV3zy604EF66KCKLQ9XuysiNthZRXt+koJ1V+k1OqJcqe8jHeF16uW0L0FFFDC8XoJ
+	hrmAO4pln055A+5IQF9KYwKA1C35hUPGaIZINCmmz+Po6e4mMeclNtewxXm3dm5H6X6fNI8q2HgE5
+	Lp4iMdoJkbJ27Gm58ZjaZBi3mXrS4J2RHvoln4FOQfGhLtQ5b21YBF/+pwcDJtRAdwORmTR5USzye
+	Tw7rhQ8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2Ev-006EX6-1L;
-	Wed, 19 Jul 2023 08:08:53 +0000
+	id 1qM2Fi-006EsT-2Q;
+	Wed, 19 Jul 2023 08:09:42 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2Eu-006EWc-0t
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 19 Jul 2023 08:08:52 +0000
+	id 1qM2Fh-006ErA-2B;
+	Wed, 19 Jul 2023 08:09:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=K6bRLOVfSwW0qn3SMzPfFP/67dSzOtG9jDmNa7DKFhQ=; b=Xy5Icx3stisaj9BHh3fLO6O/QT
-	EVKZgVDC+i0kyUFohhRLBpXHeUHlW32IbmY09ek6O3KoZUu3y/oibT+izJLwxSXISnU2rh0b6hOxQ
-	XnwE0xVFlzYBObjnilz/SJmGZ5z5ankl0h46uR+oRrmKI20f5JMFpezeRmlZoV/DzvTwyZkc9XHU4
-	hkj+5Oi4gZP8Um+70YjBUMW8gBDyUZqG+zCoONAinVdIhFAZcFGpfgXfY6/lrIs5K3OnT6QJ6RM9j
-	8KRz2PBTZDznIPfc/T4tV1yMq/2s7ijPACx4+fVH28Oak96S+YxbjUnTiCxWyfJKGboa9g363+h14
-	/IK+pqlQ==;
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	bh=SOp2ZZ3wc36w9kvHwXp3awpd0wFGnA+hVpdKbz6GNXU=; b=UGuD/M5chL1X6wGDM3e/7Pnr4E
+	7jAyTGJzgKpgFBJoV/NKobqZtG35sqC0P2SDJYeSna+XoJ2aWrDnkySTVxAezsUfNp8PpsOUKs1M5
+	T7HB+VlVrUDV3LsMtW7Z3x1Kbm1BqSgRPzyJbplpADqqTI3Rivuxa0LgU37zlzOQTzOkK3lE2E88l
+	kMJTubDEM2JR4/QYMXPsDOg9j1dW4jgdVaHJKTr6eYB1XjfIUWn6uGTFSmojqmDm48J4htChzfXk8
+	+ZyynMZTpXv9YXtXBYBxzcQw6a0BUPZr3b0qtjljTnRHmhtEPxHAFmbuCTmvpfSOmnh5OB+MOQMGM
+	ZUfoP9aw==;
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLgDv-00BJOo-2f
-	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Jul 2023 08:38:25 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-3fbef8ad9bbso53958455e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 18 Jul 2023 01:38:21 -0700 (PDT)
+	id 1qLU6v-009FU9-2u;
+	Mon, 17 Jul 2023 19:42:23 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-992f6d7c7fbso699998166b.3;
+        Mon, 17 Jul 2023 12:41:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689669438; x=1692261438;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=K6bRLOVfSwW0qn3SMzPfFP/67dSzOtG9jDmNa7DKFhQ=;
-        b=sSX6dRkYE95JM6tA4E+4JXuPwzYm/8iu/2yxvLVU+PoHPAhUq36r+qNyoqcryZUF6s
-         9QI2OR2B2GTBPE9LPS6ISOc+UnvJHIqWKepy4sB7QUHYfUIbRSqtAy6crsi0r1PLrrSQ
-         zxU9CqmorIZX6iVyoMKwrv/YRa+rA596+MeaLCtsMX+qB1BPAKA4fni4E1XBo5Mkv5Ri
-         IS2A81ThAQwHFbmppOgki2wF7933Oa6eXp/3eZ9GW1t7CNANosZinxJg9rh6XtdUXDwa
-         CqK/V2IoknmmVBp52EUbuC8kp6TgrlOIS7mW/A+g27VtDnfeMH8CX29545o3Z+exdRYn
-         oCng==
+        d=gmail.com; s=20221208; t=1689622791; x=1692214791;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=SOp2ZZ3wc36w9kvHwXp3awpd0wFGnA+hVpdKbz6GNXU=;
+        b=DheUe9jqHtnMNx6N40uCc5AiolO11iz7WAmfwD5rCkeOqGj09Sx8tR6PZERo3jKe1m
+         yaSa6GpCqRVUSf4+acnPacv2dNnsDZqeVxuPDfHw4Td6k3oLcEekxIHVL5DM7lUydvFZ
+         1yH4MXeuVnqFJR6JiFjmP4gXyjIUorYoxdLot1ekrL0gkrY6mjCO0iNwacJwU8c9fBaD
+         emJeHw+wYJaUYZTUsjKIXvMc6zD8+c9HU+BwD/q0gBAYdVVCZBwJXCBRrVJJgz75L9I3
+         qltW9FwH9S69mpWDlwv4/kUfAUFPPoUC25iZ/kMewrK0Gq+l2iI7fBTRnFlkzWzGH6za
+         OPZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689669438; x=1692261438;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=K6bRLOVfSwW0qn3SMzPfFP/67dSzOtG9jDmNa7DKFhQ=;
-        b=IH151nzZ++gDuNi4wrWYr9DOsnLlDhfXYYFRS1pwaJ1e8mI8XOKzzkvS2VFm+rIy+q
-         JSfhjRzDXc9sDNYM7ykhk0SFn2a7iBp5I02emz5+uX49f/s3rOX70ABVSdpm9QCzWbqi
-         b5ULzNfk2eC0GX7l1R3lW1UjkSIZKxtiyidThd+sc65i1jIEE+gDfV7RmdQn70wnfjyp
-         NjiZAueITtFf9dd/aI/TszedDH6vtprI1zZysfGB4m5y2HiWOPIdOgcNGx/8EP/G8i26
-         D10gijFQBDkT21oyPNm/SY3o780FZfjD+FZAkrh5hIGrlzd5iJEtiCx7UaSpMePFWbVS
-         tmWw==
-X-Gm-Message-State: ABy/qLad3QQBTahOpirSkca8qnCpK8yZzWoG94vwv043wzBW7P/YHCmh
-	16yHixZpuKNYyvLrQDxYhW+cXA==
-X-Google-Smtp-Source: APBJJlEooqOWwehp95jYwVjhyi4es64yaNnAecI+7w58zjvmoB3sjpzHREGowtUoSx5lAf04Ecvhdg==
-X-Received: by 2002:a7b:cd0a:0:b0:3fb:a1d9:ede8 with SMTP id f10-20020a7bcd0a000000b003fba1d9ede8mr1172225wmj.10.1689669437674;
-        Tue, 18 Jul 2023 01:37:17 -0700 (PDT)
-Received: from [10.101.1.6] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id p1-20020adff201000000b003141f3843e6sm1677348wro.90.2023.07.18.01.37.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 18 Jul 2023 01:37:17 -0700 (PDT)
-Message-ID: <59a88e00-0758-32b8-7ce4-8dea84a9b0f7@baylibre.com>
-Date: Tue, 18 Jul 2023 10:37:13 +0200
+        d=1e100.net; s=20221208; t=1689622791; x=1692214791;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=SOp2ZZ3wc36w9kvHwXp3awpd0wFGnA+hVpdKbz6GNXU=;
+        b=h1YB0H53Ab/a8IfaVGiramdvsgR8qbHaaciJlQgJQD3e3kqBh9svcP91aDomicfBrR
+         WKvLVyvNiRY9tftAWp81XvXW/saR5gLR+CcoqVclG87lL/E+MjgBMT3IE3KydZ/1vBF6
+         +L6Lu49+uqpE9YZMzKDyElPmhWtr2mvLylvj97a9QZ+n87NQQInX7uSuv4LA/9e6Pd6Z
+         7CjtAWN/uDRZJ2txvXLLdfFxpNLR9UrCUUd10cLP7LL8cQgxhde0MM/UykF3GasSP0wT
+         QJApnNqqCis/7AJRctLScAf2jDq13naLd9HYUUlMZnV2Aq/QccE1OukMbFjsFYTjx6pZ
+         RvFg==
+X-Gm-Message-State: ABy/qLalD3X9jCF3j0HMxfaMsH0dUegXsQK1PfIK6cyKvX2k7hw/UDqw
+	2BKN8zcd8vyPjpuWHDOaVz2v5CxTiEQSZYxckOc=
+X-Google-Smtp-Source: APBJJlG66q2eVrKtgpAASjhMjhczg4W5QDeuTaoOb4zn9mrNG3umEbjvgyH7X6msZHAYfZ9gd95bh+fbUtFHCcQUtj8=
+X-Received: by 2002:a17:907:1c1a:b0:992:ef60:ab0d with SMTP id
+ nc26-20020a1709071c1a00b00992ef60ab0dmr12390276ejc.69.1689622790750; Mon, 17
+ Jul 2023 12:39:50 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 2/2] clk: mediatek: mt8195-topckgen: Refactor parents for
- top_dp/edp muxes
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Maxime Ripard <mripard@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, sboyd@kernel.org,
- mturquette@baylibre.com, matthias.bgg@gmail.com, msp@baylibre.com,
- yangyingliang@huawei.com, u.kleine-koenig@pengutronix.de,
- miles.chen@mediatek.com, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-References: <20230713072138.84117-1-angelogioacchino.delregno@collabora.com>
- <20230713072138.84117-3-angelogioacchino.delregno@collabora.com>
- <9a0817c2-4101-5c21-977d-77ac0d83a067@baylibre.com>
- <CAGXv+5E7YYdkG7GtxG90KzdAG8Kke+74Amtbw4mmyVNZgDZHRA@mail.gmail.com>
- <jv6daj2w3pwjtde3m3m26yg4wyxbbio4zqra5yqc4gb32ri5ub@noinbbkjovwm>
- <25724ee3-858a-01eb-352b-3edbfad31c8e@collabora.com>
- <jxgy2pvns4ri2aj5nmdhb4zbluseuzdejbplh2avwz63df2cfx@grrrdm6ujzi4>
- <24d17b07-1e8d-05f6-46b7-9da1ff1bed7a@collabora.com>
-Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <24d17b07-1e8d-05f6-46b7-9da1ff1bed7a@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
+ <20230717172821.62827-11-andriy.shevchenko@linux.intel.com> <13f7153786cfcdc3c6185a3a674686f7fbf480dc.camel@crapouillou.net>
+In-Reply-To: <13f7153786cfcdc3c6185a3a674686f7fbf480dc.camel@crapouillou.net>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Mon, 17 Jul 2023 22:39:14 +0300
+Message-ID: <CAHp75VdVM87gbFX9sPKo-+eVRUsK8pmC_fyCQ-_6oMMm1aAQ9Q@mail.gmail.com>
+Subject: Re: [PATCH v2 10/10] pinctrl: tegra: Switch to use
+ DEFINE_NOIRQ_DEV_PM_OPS() helper
+To: Paul Cercueil <paul@crapouillou.net>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Mika Westerberg <mika.westerberg@linux.intel.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Balsam CHIHI <bchihi@baylibre.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+	linux-tegra@vger.kernel.org, linux-pm@vger.kernel.org, 
+	Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Gregory Clement <gregory.clement@bootlin.com>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
+	Ludovic Desroches <ludovic.desroches@microchip.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	"Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_093824_103402_EB9F2AC4 
-X-CRM114-Status: GOOD (  19.42  )
+X-CRM114-CacheID: sfid-20230717_204222_330115_AE1839F4 
+X-CRM114-Status: UNSURE (   7.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,60 +119,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Jul 17, 2023 at 10:14=E2=80=AFPM Paul Cercueil <paul@crapouillou.ne=
+t> wrote:
+> Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=A9crit=
+ :
 
+...
 
-On 17/07/2023 16:30, AngeloGioacchino Del Regno wrote:
->>>>> However I'm not sure if that works for parents. It should, given the
->>>>> original use case was for the sunxi platforms, which like the MediaTek
->>>>> platform here has 2 PLLs for video related consumers, but I couldn't
->>>>> find code verifying it.
->>>>
->>>> If you want to prevent clocks from ever being reparented, you can use
->>>> the new clk_hw_determine_rate_no_reparent() determine_rate
->>>> implementation.
->>>>
->>>
->>> We want the clocks to be reparented, as we need them to switch 
->>> parents as
->>> explained before... that's more or less how the tree looks:
->>>
->>> TVDPLL(x) -> PLL Divider (fixed) -> MUX -> Gate -> Controller
->>>
->>> Besides, I think that forcing *one* parent to the dp/edp mux would 
->>> produce a
->>> loss of the flexibility that the clock framework provides.
->>>
->>> I again want to emphasize on the fact that TVDPLL1 and TVDPLL2 are 
->>> *identical*
->>> in specs, and on that there will never be a MT8195 SoC that has only 
->>> one of
->>> the two PLLs, for obvious reasons...
->>>
->>> P.S.: If you need more context, I'll be glad to answer to any other 
->>> question!
->>
->> Then I have no idea what the question is :)
->>
->> What are you trying to achieve / fix, and how can I help you ? :)
->>
-> 
-> Chen-Yu, Alexandre had/have questions about if there was any other 
-> solution instead
-> of using the solution of *this* commit, so, if there's any other better 
-> solution
-> than the one that I've sent as this commit.
-> 
-> I'm the one saying that this commit is the best solution :-P
+> Another driver where using EXPORT_GPL_DEV_PM_OPS() would make more
+> sense.
 
-Hi Angelo,
+OK.
 
-My solution is based on PLL static allocation, because I missed it could 
-be reparented actually. I think I've a better understanding of this 
-commit now, thanks to your explanations. Looks fine for me.
+...
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Thank you for the review of the series!
 
--- 
-Regards,
-Alexandre
+--=20
+With Best Regards,
+Andy Shevchenko
 
