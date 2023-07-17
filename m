@@ -4,92 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63EC6C001DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:17:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5669C0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:18:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KihHBXzQ5YscflwfpTqH3zKYKGvYlYBWepP0Q5n+rtU=; b=CZV1e1gE0QwiUPhRX2yKFx8Z3C
-	DOSAnJvl11Z3XWxAfmFCkHVqT6VqzYpZ4A5Sw2AYmLxZXboOeKp3x0ADyVv0sMjGowshz3I9mj9Y5
-	Xlxe/fkc0sNaB6HAFHAVxGkRiiLLSAhGptjcO/2Q5aWbaQ3OQCxeTqEU11MDsbGpBHj/ozArk8ALv
-	/uX8lgD+UOiEEclAc6C1t4Cy2gZWW735XozMbwnmsAI0MO5zFXdv1+10bqNNkwVyfLWgwSxH+g2NV
-	0mgLxImJ9ISVsJux2tDOFXF1mke6KQu2JQNRTvl4rut3jtQTYOyrJ8VNpPT/BlDM2JKXuutiecVQw
-	1V/Fep6w==;
+	bh=EUbYZ8pSTKDyookB+Z63SW+UrzvlNrmn7Cc06biQ1RY=; b=3u5ZGLL/8zxXHLR6nyBrRM7NEu
+	47CktxBOvSm4auUkLfs9p17zu84iCOYpaouV16NoiXxRNQxftJuvA5O6QtDFqpULkD0O+Ce3I4XW4
+	SmaCgaP7hI5VcINubDwhZLDefthahpVzJRt/Sypln2CESBpB+u9loztp7H3w5bpGoeC0rwYaKGu8l
+	p+hMdkmTJbRcErbQGJE5ndk7OZb/WKM1N/IgDAs8x52dStooAeIsfdfGwQ4cvXVHpy/Be9wmco93G
+	nUYOfEbgnbUT9pidiaRLSRobYFN1tUTopTNfBD6k6AtjO1rp19MCEyyR56ChYlXcQY09XX+IJebxw
+	vxk8gZww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0VK-005eCS-0W;
-	Wed, 19 Jul 2023 06:17:42 +0000
+	id 1qM0Vk-005eSG-1v;
+	Wed, 19 Jul 2023 06:18:08 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0VC-005e4w-0H;
-	Wed, 19 Jul 2023 06:17:34 +0000
+	id 1qM0Vi-005eQ2-0m;
+	Wed, 19 Jul 2023 06:18:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
 	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=KihHBXzQ5YscflwfpTqH3zKYKGvYlYBWepP0Q5n+rtU=; b=QWfQ9L3g5CeXjchPsxYVih4c8H
-	JPuq68ZRN4I9UAmBl1KZNiyQLB+U7mmD6lhK0wgs1i7sZA2LdR6pAa7zEKqbAaWO7fEWhqjhRZuD0
-	H1CrvTSOHlVjOyuZkQR0p+N+wc73SMVsDORUr4mf5ZjCdQ3O1IWtzMSyemGESXh6i8xZQiaNnxoHI
-	wk9kD5+yoWWX0EQT47kWSQahQOzJEHP80PAy3pKMxu5DHVdOfl0//zUluPbJUXzuTtFKsQ0Bqe5KG
-	UfyJxhg7xYEK042VeB1qCW0mtUyRfj9XiO1TPdtuWTI5zTBpKdrwaXDEREj462E7t8MfBcQgRI/pD
-	QlvS97Yw==;
+	bh=EUbYZ8pSTKDyookB+Z63SW+UrzvlNrmn7Cc06biQ1RY=; b=dWnL1tqFFNxQo/b1RlJdvNsolQ
+	6mX9ZUOipbK8sNEUby+JSUm3XIFJZiI5NFFb5qTr6uLrPPmna+F6mS59tXACz0yaCVbsFoaOD/M44
+	VMd0MMNyrYLzhuLfaK2Dpa1YBueawRffZs2CZPHJQyRncvyzo2tYJvMwvB/F2SE84EWsuYP9PkrCy
+	/ObMqblYTc7FBty1p0xNmoO9xedi6HhZXrH5jZZRcOr/ve0Ztbgi2bMy2bmDc63y1FlsxnEgDYaz3
+	vcujqHgLfH497KHDZAmOODviWYL/EUfrLRcrmA8mysSCXJNsAXIxOw6kDt9lgkOinBCh/liq/YhA1
+	/tgozpEw==;
 Received: from aposti.net ([89.234.176.197])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLl4A-00BaVE-2f;
-	Tue, 18 Jul 2023 13:48:40 +0000
+	id 1qLTZA-009EDs-0C;
+	Mon, 17 Jul 2023 19:07:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1689688111;
+	s=mail; t=1689620817;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=KihHBXzQ5YscflwfpTqH3zKYKGvYlYBWepP0Q5n+rtU=;
-	b=UNdTDGqa0OtoBQaI2l3ghDjFxpMFaBpM9l/Ykjhq7diTw50XCdiPIhpvvlr1SxESWzw6G6
-	eKk/Z+BPbTVo1rMmomxkPZJtkaxvHfHzhBb4ZpemqpEKMHvEKSuxYE4JJxjQW1a4PGMsWH
-	QtcsjXWqbehZKL69FjxVnejBKvKxNTE=
-Message-ID: <ae93b34812c04e499fae93dde833422c78d86b63.camel@crapouillou.net>
-Subject: Re: [PATCH v2 10/10] pinctrl: tegra: Switch to use
+	bh=EUbYZ8pSTKDyookB+Z63SW+UrzvlNrmn7Cc06biQ1RY=;
+	b=Vy1ZpdaCi5k3cwLDqwOtFWg7A3zS5kYwD68mlYCpmulFhmikPGznp1UU+O/FzmpYurkTQU
+	dE1B9mWihM5B463eQv1jcypFaAEP/zRd2Wqcerui3nFeqrtlJnmHBxpmHHYUQq6LE2xUnR
+	df3C1TFbJNELgy4uN2FVXJBkJfK6YxA=
+Message-ID: <f48a35d596694839665bc5883260cbae3ae01d9c.camel@crapouillou.net>
+Subject: Re: [PATCH v2 07/10] pinctrl: mediatek: Switch to use
  DEFINE_NOIRQ_DEV_PM_OPS() helper
 From: Paul Cercueil <paul@crapouillou.net>
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg
  <mika.westerberg@linux.intel.com>, Linus Walleij
  <linus.walleij@linaro.org>,  Balsam CHIHI <bchihi@baylibre.com>, Claudiu
  Beznea <claudiu.beznea@microchip.com>, Geert Uytterhoeven
  <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
-  linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-renesas-soc@vger.kernel.org, linux-tegra@vger.kernel.org, 
- linux-pm@vger.kernel.org, Andy Shevchenko <andy@kernel.org>, Sean Wang
- <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andrew Lunn <andrew@lunn.ch>, Gregory Clement
- <gregory.clement@bootlin.com>, Sebastian Hesselbarth
+  Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org,  linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,  linux-renesas-soc@vger.kernel.org,
+ linux-tegra@vger.kernel.org,  linux-pm@vger.kernel.org
+Cc: Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  Andrew Lunn <andrew@lunn.ch>,
+ Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth
  <sebastian.hesselbarth@gmail.com>, Ludovic Desroches
  <ludovic.desroches@microchip.com>, Nicolas Ferre
  <nicolas.ferre@microchip.com>,  Alexandre Belloni
  <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>,
  "Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>,
  Pavel Machek <pavel@ucw.cz>
-Date: Tue, 18 Jul 2023 15:48:27 +0200
-In-Reply-To: <ZLaRlyzkqRLSqjQc@orome>
+Date: Mon, 17 Jul 2023 21:06:54 +0200
+In-Reply-To: <20230717172821.62827-8-andriy.shevchenko@linux.intel.com>
 References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
-	 <20230717172821.62827-11-andriy.shevchenko@linux.intel.com>
-	 <13f7153786cfcdc3c6185a3a674686f7fbf480dc.camel@crapouillou.net>
-	 <ZLZDL27zzDpY4q8E@orome>
-	 <5e4b5bc23f3edb3ed30cb465420a51ffceceb53d.camel@crapouillou.net>
-	 <ZLZ6amp5HKUbm5w3@orome>
-	 <8f32cb8377808a073b043e0adf3ccf5ae5a84c92.camel@crapouillou.net>
-	 <ZLaRlyzkqRLSqjQc@orome>
+	 <20230717172821.62827-8-andriy.shevchenko@linux.intel.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_144839_017701_58DB87C7 
-X-CRM114-Status: GOOD (  46.65  )
+X-CRM114-CacheID: sfid-20230717_200730_716886_4B791239 
+X-CRM114-Status: GOOD (  15.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,147 +97,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Thierry,
+Hi Andy,
 
-Le mardi 18 juillet 2023 =C3=A0 15:20 +0200, Thierry Reding a =C3=A9crit=C2=
-=A0:
-> On Tue, Jul 18, 2023 at 01:55:05PM +0200, Paul Cercueil wrote:
-> > Le mardi 18 juillet 2023 =C3=A0 13:41 +0200, Thierry Reding a =C3=A9cri=
-t=C2=A0:
-> > > On Tue, Jul 18, 2023 at 10:42:47AM +0200, Paul Cercueil wrote:
-> > > > Hi Thierry,
-> > > >=20
-> > > > Le mardi 18 juillet 2023 =C3=A0 09:45 +0200, Thierry Reding a
-> > > > =C3=A9crit=C2=A0:
-> > > > > On Mon, Jul 17, 2023 at 09:14:12PM +0200, Paul Cercueil
-> > > > > wrote:
-> > > > > > Hi Andy,
-> > > > > >=20
-> > > > > > Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a
-> > > > > > =C3=A9crit=C2=A0:
-> > > > > > > Since pm.h provides a helper for system no-IRQ PM
-> > > > > > > callbacks,
-> > > > > > > switch the driver to use it instead of open coded
-> > > > > > > variant.
-> > > > > > >=20
-> > > > > > > Signed-off-by: Andy Shevchenko
-> > > > > > > <andriy.shevchenko@linux.intel.com>
-> > > > > > > ---
-> > > > > > > =C2=A0drivers/pinctrl/tegra/pinctrl-tegra.c | 5 +----
-> > > > > > > =C2=A01 file changed, 1 insertion(+), 4 deletions(-)
-> > > > > > >=20
-> > > > > > > diff --git a/drivers/pinctrl/tegra/pinctrl-tegra.c
-> > > > > > > b/drivers/pinctrl/tegra/pinctrl-tegra.c
-> > > > > > > index 4547cf66d03b..734c71ef005b 100644
-> > > > > > > --- a/drivers/pinctrl/tegra/pinctrl-tegra.c
-> > > > > > > +++ b/drivers/pinctrl/tegra/pinctrl-tegra.c
-> > > > > > > @@ -747,10 +747,7 @@ static int
-> > > > > > > tegra_pinctrl_resume(struct
-> > > > > > > device
-> > > > > > > *dev)
-> > > > > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return 0;
-> > > > > > > =C2=A0}
-> > > > > > > =C2=A0
-> > > > > > > -const struct dev_pm_ops tegra_pinctrl_pm =3D {
-> > > > > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.suspend_noirq =3D=
- &tegra_pinctrl_suspend,
-> > > > > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.resume_noirq =3D =
-&tegra_pinctrl_resume
-> > > > > > > -};
-> > > > > > > +DEFINE_NOIRQ_DEV_PM_OPS(tegra_pinctrl_pm,
-> > > > > > > tegra_pinctrl_suspend,
-> > > > > > > tegra_pinctrl_resume);
-> > > > > > > =C2=A0
-> > > > > > > =C2=A0static bool tegra_pinctrl_gpio_node_has_range(struct
-> > > > > > > tegra_pmx
-> > > > > > > *pmx)
-> > > > > > > =C2=A0{
-> > > > > >=20
-> > > > > > Another driver where using EXPORT_GPL_DEV_PM_OPS() would
-> > > > > > make
-> > > > > > more
-> > > > > > sense.
-> > > > >=20
-> > > > > We don't currently export these PM ops because none of the
-> > > > > Tegra
-> > > > > pinctrl
-> > > > > drivers can be built as a module.
-> > > >=20
-> > > > This doesn't change anything. You'd want to use
-> > > > EXPORT_GPL_DEV_PM_OPS
-> > > > (or better, the namespaced version) so that the PM ops can be
-> > > > defined
-> > > > in one file and referenced in another, while still having them
-> > > > garbage-
-> > > > collected when CONFIG_PM is disabled.
-> > >=20
-> > > Looking at the definition of EXPORT_GPL_DEV_PM_OPS(), it will
-> > > cause
-> > > an
-> > > EXPORT_SYMBOL_GPL() to be added. So there very well is a change.
-> > > And
-> > > it's a completely bogus change because no module is ever going to
-> > > use
-> > > that symbol. If we were to ever support building the pinctrl
-> > > driver
-> > > as
-> > > a module, then this would perhaps make sense, but we don't.
-> >=20
-> > In this particular case the EXPORT_SYMBOL_GPL() isn't really
-> > important,
-> > the rest of EXPORT_GPL_DEV_PM_OPS() is.
-> >=20
-> > I don't think having a symbol exported it is a big deal, TBH, if
-> > you
-> > use the namespaced version. If you really don't want that, we need
-> > a
-> > version of EXPORT_GPL_DEV_PM_OPS() that doesn't export the symbol.
+
+Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=A9crit=
+=C2=A0:
+> Since pm.h provides a helper for system no-IRQ PM callbacks,
+> switch the driver to use it instead of open coded variant.
 >=20
-> I do think it's a big deal to export a symbol if there's no reason to
-> do
-> so.
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> ---
+> =C2=A0drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 5 +----
+> =C2=A0drivers/pinctrl/mediatek/pinctrl-paris.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 | 9 +++------
+> =C2=A02 files changed, 4 insertions(+), 10 deletions(-)
 >=20
-> And please, can we stop adding these macros for every possible
-> scenario?
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> index 665dec419e7c..2bf5082d3aa9 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> @@ -922,10 +922,7 @@ static int mtk_eint_resume(struct device
+> *device)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return mtk_eint_do_resume=
+(pctl->eint);
+> =C2=A0}
+> =C2=A0
+> -const struct dev_pm_ops mtk_eint_pm_ops =3D {
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.suspend_noirq =3D mtk_eint_su=
+spend,
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.resume_noirq =3D mtk_eint_res=
+ume,
+> -};
+> +DEFINE_NOIRQ_DEV_PM_OPS(mtk_eint_pm_ops, mtk_eint_suspend,
+> mtk_eint_resume);
+> =C2=A0
+> =C2=A0static int mtk_pctrl_build_state(struct platform_device *pdev)
+> =C2=A0{
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> index 33d6c3fb7908..b1cbd5bafa2e 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> @@ -1119,24 +1119,21 @@ int mtk_paris_pinctrl_probe(struct
+> platform_device *pdev)
+> =C2=A0}
+> =C2=A0EXPORT_SYMBOL_GPL(mtk_paris_pinctrl_probe);
+> =C2=A0
+> -static int mtk_paris_pinctrl_suspend(struct device *device)
+> +static int mtk_paris_suspend(struct device *device)
+> =C2=A0{
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct mtk_pinctrl *pctl =
+=3D dev_get_drvdata(device);
+> =C2=A0
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return mtk_eint_do_suspen=
+d(pctl->eint);
+> =C2=A0}
+> =C2=A0
+> -static int mtk_paris_pinctrl_resume(struct device *device)
+> +static int mtk_paris_resume(struct device *device)
+> =C2=A0{
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct mtk_pinctrl *pctl =
+=3D dev_get_drvdata(device);
+> =C2=A0
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return mtk_eint_do_resume=
+(pctl->eint);
+> =C2=A0}
+> =C2=A0
+> -const struct dev_pm_ops mtk_paris_pinctrl_pm_ops =3D {
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.suspend_noirq =3D mtk_paris_p=
+inctrl_suspend,
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.resume_noirq =3D mtk_paris_pi=
+nctrl_resume,
+> -};
+> +DEFINE_NOIRQ_DEV_PM_OPS(mtk_paris_pinctrl_pm_ops, mtk_paris_suspend,
+> mtk_paris_resume);
 
-Yes, as you can read from my other responses, I am not really keen on
-having a multiplication of these macros.
-
-> Maybe I'm just getting old, but I find it increasingly difficult to
-> understand what all of these are supposed to be. I get that people
-> want
-> to get rid of boilerplate, but I think we need to more carefully
-> balance
-> boilerplate vs. simplicity.
-
-The EXPORT_GPL_DEV_PM_OPS() macro does more than get rid of
-boilerplate, it gets rid of dead code.
-
-If we take this driver as an example, before the patch the
-"tegra_pinctrl_pm" struct, as well as the "tegra_pinctrl_suspend" and
-"tegra_pinctrl_resume" functions were always compiled in, even if
-CONFIG_PM_SLEEP is disabled in the config.
-
-The status-quo before the introduction of the new PM macros was to just
-wrap the dev_pm_ops struct + callbacks with a #ifdef CONFIG_PM_SLEEP.
-This was pretty bad as the code was then conditionally compiled. With
-the new PM macros this code is always compiled, independently of any
-Kconfig option; and thanks to that, bugs and regressions are
-subsequently easier to catch.
+It's a bit more work, but I think you should use EXPORT_GPL_DEV_PM_OPS
+(or even better, EXPORT_NS_GPL_DEV_PM_OPS) so that the dev_pm_ops is
+conditionally exported. All callers would have to be updated to use
+pm_ptr().
 
 Cheers,
 -Paul
 
-> I'm seeing the same thing with stuff like those mass conversions to
-> atrocities like devm_platform_ioremap_resource() and
-> devm_platform_get_and_ioremap_resource(). There's so much churn
-> involved
-> in getting those merged for usually saving a single line of code. And
-> it's not even mass conversions, but people tend to send these as one
-> patch per driver, which doesn't exactly help (except perhaps for
-> patch
-> statistics).
->=20
-> Thierry
+> =C2=A0
+> =C2=A0MODULE_LICENSE("GPL v2");
+> =C2=A0MODULE_DESCRIPTION("MediaTek Pinctrl Common Driver V2 Paris");
 
 
