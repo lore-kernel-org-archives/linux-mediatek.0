@@ -4,107 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6793EC001DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jul 2023 07:44:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F46DEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jul 2023 07:44:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5LWJf53shp0viE9TAbmwOxmgVvdOZl/M9mic33WO7Jo=; b=eIygfy9eeI1ZW7IOsHovYfdjID
-	ZRvv/RRcTUKbPIvVbDUjYNQtljG3ilZcS8NyWKDmQyVIILpN8BimePteJvq/Oe5CYDjZXnBg9/JWw
-	gYCor2uopHzW0RlQjKzSOuqNqhTbuKoix9vuhvOPWCDPoh9QLzZwoz6qckhKAkK9Lh/O9LtQMWlwk
-	xivZwCydGvaR37mkxdKrGIreCY24A7bgvlOceg5FHlM8H6eHPF1iU0rVQGVhjP9s5Z32khFH9SqZ7
-	ZA74ZSQUjmKTFekMUeCfurG2ulVwL0ooIcjLuSoVat9qhsp1dBHj5m5RYKTMC/qAMu4FaOEUKkFJM
-	LXL1aK+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6/afaGT8QIX1t2AYEHl+FLQKoyzhLbVbAh/CtmJIwSU=; b=ngyJlCWn1YJEBmGQ/uuS6xviu/
+	Hkb6aR+14ip9/KUbKEGxu3lWNs1WR5k5JhC49OIiJEghuWEQsakHK5waqlTr7PqxNCFCwxqYZrlrM
+	6U81stGL961PZFMcc2VLPT0+ZIvLrhXYbQlrUa9z5F1GjrQRs0xKUj1IRr/UoF63LzcMU3i6wXJDo
+	nQ2nwJqFaIJ3KflmY3v4b5qPzZP7fw5Wm/coOqIxDQcHuKFoKIXb1uletlw1avRgfkRHebJ5Tn6EP
+	9E9vBmhThjlDB8QjW9ThCc0cG31agF7IRaVNkQhaX1VnFegnpKgrpgOYMOF8GaNjrL4AtZ9EHPGXT
+	Y5Qh3ZPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLItc-003LAR-39;
-	Mon, 17 Jul 2023 07:43:53 +0000
-Received: from mail-yb1-f173.google.com ([209.85.219.173])
+	id 1qLIuQ-003LM6-1y;
+	Mon, 17 Jul 2023 07:44:42 +0000
+Received: from mail-bn8nam11on20601.outbound.protection.outlook.com ([2a01:111:f400:7eae::601] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLItX-003L96-32;
-	Mon, 17 Jul 2023 07:43:49 +0000
-Received: by mail-yb1-f173.google.com with SMTP id 3f1490d57ef6-cb19b1b9a36so4319678276.0;
-        Mon, 17 Jul 2023 00:43:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689579825; x=1692171825;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=5LWJf53shp0viE9TAbmwOxmgVvdOZl/M9mic33WO7Jo=;
-        b=N3TkAlyMO/Nqb5WoDx1PHMr9z3OTKLKTdJyF8zHq9yPSIPhjmefZht2vekYCinYKBI
-         UJoxeNN66jYGklYqrEV9MmvdCFH/P9V6tRvxj8CesSltw30gKrjSxb9DFpylAadqDHgW
-         ve+3k391NgVl+n7SUjlO6UxI/zfq1rGZT4iOrJWPWIf6doN5DqESDrNa16oFocPkLXdt
-         DCuL8PvCX9ucZwYONx0AwR25fkvoYgtFzS5D7VNRsCnKn6Yo55vvnWADAxiXbwm87Q5t
-         gLcOjXm5dw1E9cNPiofYu9zPJ6jHcu8QTSLkAdCuQDa5GLymVUGbFuqe8Xa42jqd5Q2U
-         aXnQ==
-X-Gm-Message-State: ABy/qLb1pQ5Q/3y30Bkf/QRteHp/KtHNp2duyMTy19lQTYzlUuZVwLup
-	aW0HrBhGoCZglQVV8CXGXrX6e0o048tzVQ==
-X-Google-Smtp-Source: APBJJlHJLv6fFOS0rM/fPCNnXG3KhjyqmP9rwa2hLA/itFlXROtgv8BapfZXS3lhtFRIkY6pJYucww==
-X-Received: by 2002:a5b:b46:0:b0:cae:d40f:5934 with SMTP id b6-20020a5b0b46000000b00caed40f5934mr10054405ybr.27.1689579825582;
-        Mon, 17 Jul 2023 00:43:45 -0700 (PDT)
-Received: from mail-yw1-f178.google.com (mail-yw1-f178.google.com. [209.85.128.178])
-        by smtp.gmail.com with ESMTPSA id m189-20020a2571c6000000b00c5f4d06fb1asm2923525ybc.59.2023.07.17.00.43.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Jul 2023 00:43:45 -0700 (PDT)
-Received: by mail-yw1-f178.google.com with SMTP id 00721157ae682-57012b2973eso42132627b3.2;
-        Mon, 17 Jul 2023 00:43:45 -0700 (PDT)
-X-Received: by 2002:a25:2945:0:b0:c21:caaf:bd47 with SMTP id
- p66-20020a252945000000b00c21caafbd47mr10530962ybp.2.1689579804817; Mon, 17
- Jul 2023 00:43:24 -0700 (PDT)
+	id 1qLIuL-003LKB-1v;
+	Mon, 17 Jul 2023 07:44:39 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CCM83N0OdRME3S0PH4DiAvVSAE+F4NRCVpGoZOatAUdEXDNjrwFY4OdFnQsYcwhpOwyG2OxyfvFKGa2F3vgIH9Vhew1nGqZeU3GMkovB9evHaMgnQKkziMVT46VyLPPx3MjXvXJdAfUJMYFhGZbCj8Rb2idjHglGFhWyqccvHh8xJCtw50K/JVsjRi3AnHA3iRpMrREfWCL0t+RVgICeRc4vKo+Qb7MIRRfBjiQnig0zi5+qd459bg5aRraGyqJfvUdH8MiJajgPpHAuZ52kCoE5D2fv9+uWwA81GCB1ULErBe8yri02xFKenk3iz6OUeoGqGfMz8kqVLIQDA5+tdg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=6/afaGT8QIX1t2AYEHl+FLQKoyzhLbVbAh/CtmJIwSU=;
+ b=f8kh7/fsJo0rezv84NH5reQdTayckY8uoN02WgOJtR0SdyWW8k+2zlsLX3G4bNRKYvLHm7i4dDo83KmNlN7zYrqd+v3E1De7WPWe3JXO68mo5n+gaGTu150Qvead3XnJh/LJ8J0gdroWay8iNJJey6XhI0o22Qs0siH4uYdmevLCi/TdSrJ8RU1D8KtiU9D/TLEShtNiB4mOr94fXsGz0U1MZMyqs1l4AnOhHxXIzzZ8RyVRHAc4ACSTjBvrJgE491dHv7DNpYdqv/fT9fhMBC1OhuljNqxeKRm2UElkWIrLhUQ3GQs1nFmYEpuBNzfIZgbQgrbUanYd/ncBeWjb5g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=synaptics.com; dmarc=pass action=none
+ header.from=synaptics.com; dkim=pass header.d=synaptics.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Synaptics.onmicrosoft.com; s=selector2-Synaptics-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=6/afaGT8QIX1t2AYEHl+FLQKoyzhLbVbAh/CtmJIwSU=;
+ b=jLfuZYztg14WrkS3SW13k4A23p6c7T+XFMOruIoURp0JcxKTmV4ROD/Et/F5JTY7sSaUaWWfB7jQnTbI3nEOvu9GUPn708iNceE1xepwEG3AiYDwwNxJHFr8lmszWWlPbCXlB7IA9JUyCv4/jkM+OZaZbdG/FUSFArGYfHdXcLo=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=synaptics.com;
+Received: from DM6PR03MB5196.namprd03.prod.outlook.com (2603:10b6:5:24a::19)
+ by CH0PR03MB6114.namprd03.prod.outlook.com (2603:10b6:610:b9::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6588.31; Mon, 17 Jul
+ 2023 07:44:30 +0000
+Received: from DM6PR03MB5196.namprd03.prod.outlook.com
+ ([fe80::6882:b9c1:2b2d:998d]) by DM6PR03MB5196.namprd03.prod.outlook.com
+ ([fe80::6882:b9c1:2b2d:998d%5]) with mapi id 15.20.6588.031; Mon, 17 Jul 2023
+ 07:44:30 +0000
+Message-ID: <2d239d33-b05d-1b51-2268-43b2839b64ea@synaptics.com>
+Date: Mon, 17 Jul 2023 15:44:21 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v3 04/11] media: videobuf2: Stop define VB2_MAX_FRAME as
+ global
+Content-Language: en-GB
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ hverkuil-cisco@xs4all.nl, ezequiel@vanguardiasur.com.ar,
+ p.zabel@pengutronix.de, linux-rockchip@lists.infradead.org,
+ mchehab@kernel.org, linux-staging@lists.linux.dev, ming.qian@nxp.com,
+ kernel@collabora.com, gregkh@linuxfoundation.org,
+ nicolas.dufresne@collabora.com
+References: <20230622131349.144160-1-benjamin.gaignard@collabora.com>
+ <20230622131349.144160-5-benjamin.gaignard@collabora.com>
+ <e7444263-0ce5-1575-8cca-1e51b1cfbe9a@synaptics.com>
+ <5cb3f216-5041-a155-5d2c-059dc1f15024@collabora.com>
+ <25b21252-0d3a-3e50-0012-57055f386fee@synaptics.com>
+ <20230712104801.tgawhexpm53ocgd6@chromium.org>
+From: Hsia-Jun Li <Randy.Li@synaptics.com>
+In-Reply-To: <20230712104801.tgawhexpm53ocgd6@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: SJ0PR03CA0088.namprd03.prod.outlook.com
+ (2603:10b6:a03:331::33) To DM6PR03MB5196.namprd03.prod.outlook.com
+ (2603:10b6:5:24a::19)
 MIME-Version: 1.0
-References: <20230714174901.4062397-1-robh@kernel.org>
-In-Reply-To: <20230714174901.4062397-1-robh@kernel.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 17 Jul 2023 09:43:13 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdUOUAPoBcSqHLTCKh8_PqyAiuGFEXedEPS48X=oc8SqDA@mail.gmail.com>
-Message-ID: <CAMuHMdUOUAPoBcSqHLTCKh8_PqyAiuGFEXedEPS48X=oc8SqDA@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: Explicitly include correct DT includes
-To: Rob Herring <robh@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Chester Lin <clin@suse.com>, 
-	NXP S32 Linux Team <s32@nxp.com>, Chen-Yu Tsai <wens@csie.org>, Damien Le Moal <dlemoal@kernel.org>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Heiko Stuebner <heiko@sntech.de>, Tony Lindgren <tony@atomide.com>, 
-	Haojian Zhuang <haojian.zhuang@linaro.org>, Daniel Mack <daniel@zonque.org>, 
-	Robert Jarzmik <robert.jarzmik@free.fr>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Tomasz Figa <tomasz.figa@gmail.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	Sylwester Nawrocki <s.nawrocki@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org, 
-	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, 
-	Jianlong Huang <jianlong.huang@starfivetech.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-riscv@lists.infradead.org, linux-oxnas@groups.io, 
-	linux-rockchip@lists.infradead.org, linux-omap@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6PR03MB5196:EE_|CH0PR03MB6114:EE_
+X-MS-Office365-Filtering-Correlation-Id: 21b58903-52c4-47dc-6644-08db8699a764
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: jE/g+HZxRTg6xcRNGrRZKdS+9OgRGquFxSfyyBSuQOYFk42uIEZCTNnAzcfODvvMFrLhIovlcOvtW1RG8b9zqyM5yUn4mxctCVEowodJfk8ryUYoVEAkBD3BWzWEy0R01KkVgqUjTgYh72ny1Fm9PFhm3qy1aCUOcywEEdS7/Q8bUBfSoIjai4NxuwLUTLDwd3GdJoD7THXCjQYPkvIsQRA8Hlct/JrOHcgrbbBRTQx6BoGRLFqQUIqFOF4pIrg2UxC7uamB5ToqMcMew6n5ezDdpIkMs+uGlc9eQm/DcMPjzthoUuqWZW+WPltMA9zhGYS32wC5BovXWmZdvFVD9tgc30YOZe7TLxoPwB+XZp+nTXI6RrDebmADVUbphcrwF06s6bSoQODGr42u2qognqEMOHZhvqKpshWpn1DAbLSbCFSOb9i5gOQwYUaijWiGfhbQtLNy4DR6G6WxzIzHSCyl6GNVSFIb5Jj4AW5kE/GSXFvW9dsfwDVTZ4i+mqd8UiMOdu17qmV9BXSB9PACl42NJC+dtK36HS3n2aqABW9lWZpnXcVZUyykGh2HPFR1de6MswKd1OXDiZZNkj5KnVFSSh+2fbvjI7VilXhQGIcnfcOnIIpvaUR61s5+DVYjuzs+KNNF0kFhsOHMJleAeBcpV1ztYDf3EYnuqlcD9gAlgXD6BHSp8VXYKcgPrpez
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR03MB5196.namprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(396003)(366004)(136003)(346002)(376002)(39860400002)(451199021)(478600001)(6666004)(6486002)(52116002)(186003)(53546011)(6506007)(36756003)(26005)(6512007)(316002)(2906002)(41300700001)(4326008)(66556008)(66946007)(66476007)(6916009)(5660300002)(7416002)(8676002)(8936002)(38350700002)(38100700002)(86362001)(31696002)(66574015)(2616005)(83380400001)(66899021)(31686004)(43740500002)(45980500001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UCt2ODNuS0xsdFRHV3A4MTl2aTJtZVd0RzcyMWtqayt5dmwyc0txTnVQSTJj?=
+ =?utf-8?B?Q0NhZ3p1SCtYcCtGZjVnR1dqYy83VTRoN2NVQ2ZVTk9CTlBuMndISjFBZ0hH?=
+ =?utf-8?B?Nmk5YXRLVEZxTnFJanQ0cmsrTkh6Q0NqSnZJVzJSdC9taDZDekFMQ2lLMk81?=
+ =?utf-8?B?SWlYaG84OGNlVUpMR05pRGJVK0RubGJWa1JOTXZMUTZVMG5NdGtnc1dDdHNW?=
+ =?utf-8?B?MWtnSGJ3bkcrLzZEcngzU0VkV3p3YkJkZC9vUzNBMlAwUlV5VGtCWjlGRGxY?=
+ =?utf-8?B?cnF2SjJ5bnFacGtHRjRHc3NaaVVBSGJQSmtaZ1JjY3pkMk5YUUU1YVo4UGhm?=
+ =?utf-8?B?MzdLWXJvTC9SU0svUU9kakpOcE1CZElRV29HcFdCNzdJNklNOGxlV3p5ZlUx?=
+ =?utf-8?B?ajZlVFhyYlpKRU1CUlQ3UzJMYWVhak1Wd0pQYkdDWER1MUFIeGd1SVR2elZL?=
+ =?utf-8?B?YjBMRUpGUUJ1WDJLeFM3S0xYNkVQUEJLTXpvQmQrT0lUbHd2OXpLSFN6Rmtj?=
+ =?utf-8?B?MlhuM0hrTXI5V1BxV2dDVFZHelNXbEsvYlA1cXoraUM5end4TlljWXBqZitM?=
+ =?utf-8?B?ZDgyeW9PNUNNU3ROcHYyR2xUbm00dUNhQlkyNUk0MUZjZ1dRQmhNaFhCcENh?=
+ =?utf-8?B?THk0UWN2U05rcUpMMTJNc2IrbTdjSjZ4bmlhcG5BQTlNVHUySGxOeE1yNUNE?=
+ =?utf-8?B?SEFMZXZkOGtqTk5xbTBQWjhmaU9xMmY0Nmp0WC9TclRFM2VXeGpVZi9ldENX?=
+ =?utf-8?B?RTBLb1Urem9YZmc1TmhDV28vVlZEZGlBWER2aDU5Rmthc3NIeDNXakJFanUw?=
+ =?utf-8?B?dXBRNUNyUk5Pd0h5QmdWc3ZURm9OUm1ZSE44OFJJd0ZTUkZ4YUIzZ1k2VTdN?=
+ =?utf-8?B?VTN3SEhVTEd4d2NzRUhyL09xb2ZJU2t4dGpWalZucFVXL3Y5emNqempmQ0g5?=
+ =?utf-8?B?UU5MNC9pNnR0R0tOU2NKUmtac3Z6eTNiMGhFcUcyblZhOGpTSUJYZXE2amlk?=
+ =?utf-8?B?N0xJYndBSkd5R0NERjh0SVhZbnFDdDZFRVdOUUVPTFFxT2JobG5uMFQ2Q3N2?=
+ =?utf-8?B?bFp5QXlxZlIzVWMwWUNERnJDaUhEa0l5Z2drSTNHeUNFSVVVZXJ5UDNpUWM3?=
+ =?utf-8?B?djd4NWRHekJHSW5GOXY3K0JqRGkvcVFNV1RHSFdPVkRZLzdULytiTmZTSXFI?=
+ =?utf-8?B?anJUdDNWa1NhZVcvQ0FzK3lLMkhqdGdFNSt4eXBDVFNCeENCWE9BZXV1MXZ1?=
+ =?utf-8?B?bW1NZ1BMNUJzRzNqOEFPWHY0aXdNZzIzaHlncXNqWjhrMWI2WUhGUEhCSFpw?=
+ =?utf-8?B?TExsdjdobml5QmpGRG1hTHdRNTl0Z1ZDTmc1dFB1S2hRUHN6Qy83SUN6VUNu?=
+ =?utf-8?B?RzR0aXBRcXJ4a24weEozcmxwSmNUb3l1Q3kwbVA3S1BhVzVGY25wczUwOENQ?=
+ =?utf-8?B?VStEWk1zaWVRdjNqVVFBNE1Cc1c5UzFMeDI2amlJVWJtS2pTZUFsTXk1alZo?=
+ =?utf-8?B?WDVVdWhjYzNpcVQyTGlJVWhoRDRDVzcxSE9Uc0xVVVFoYTltOHoyZ3gyNFhX?=
+ =?utf-8?B?N0tYWmZ2Nll3bE1sQktPRzkzLzVuZGx2RndpSVh6UWJ3OGpvUk42RnpuZE9F?=
+ =?utf-8?B?U1prYVRValU3Y2dZYi9IOWdtZTV4aXJhYmVUSjZGWFlJand0WHl5VzJQTE5J?=
+ =?utf-8?B?emhiRWhnSVJCREhHaXlOUnpEZ1hXYXdmRno5dXRueUlCQzVCV29RVjRiT0U5?=
+ =?utf-8?B?aUQySjNRWjFFY1hva1lyeGFFMC9kaytSNnRsa3FKUmZWSlYvZ25sZFpCbUl5?=
+ =?utf-8?B?STJhRGV0V0N5RzN5L2tYcTZuVFR3dTBCS2xjNjZEVTJyYU0vNzJPa0hwemVS?=
+ =?utf-8?B?UUtVWXdGODNNSmFld1NITW5COGNOY1pUQ0FWY1ZtQlBUMDBGNk91bjBMb3ZT?=
+ =?utf-8?B?TmFBa1JsN3N0aitGR1VxZndHYjUxTTk1R29mRFRqM1NhL3R3ZjVJVHpSZWtF?=
+ =?utf-8?B?cFQvdlBlV3hHY2tWZVhNRkh0bjFDMU81Rm5HWTdCMjNmZVlxZG1UUU40TEVI?=
+ =?utf-8?B?NUNGWGs2Kyt0QzI5Y1c1MXVENUtwLzFTc0pSWnpPdW9YYkprSWdwQjduYldC?=
+ =?utf-8?Q?PmgFcwWHYXlDGqqL+kV9zb/te?=
+X-OriginatorOrg: synaptics.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 21b58903-52c4-47dc-6644-08db8699a764
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR03MB5196.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jul 2023 07:44:30.1331
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 335d1fbc-2124-4173-9863-17e7051a2a0e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 00srzRhDr3sKHfVs+62dkYeI3ltBg28gL9AUx/xeSqB0n7uuKlBgoeWvXEcDGIyt6eqx9xaRj0r55A3mDcI9/g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR03MB6114
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_004347_977936_7BB2AECB 
-X-CRM114-Status: GOOD (  18.56  )
+X-CRM114-CacheID: sfid-20230717_004437_721325_E1D1A31F 
+X-CRM114-Status: GOOD (  30.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,38 +156,225 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 14, 2023 at 7:52=E2=80=AFPM Rob Herring <robh@kernel.org> wrote=
-:
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
+
+On 7/12/23 18:48, Tomasz Figa wrote:
+> CAUTION: Email originated externally, do not click links or open attachments unless you recognize the sender and know the content is safe.
 >
-> Signed-off-by: Rob Herring <robh@kernel.org>
+>
+> On Mon, Jul 03, 2023 at 04:35:30PM +0800, Hsia-Jun Li wrote:
+>> On 7/3/23 16:09, Benjamin Gaignard wrote:
+>>> CAUTION: Email originated externally, do not click links or open
+>>> attachments unless you recognize the sender and know the content is
+>>> safe.
+>>>
+>>>
+>>> Le 30/06/2023 à 11:51, Hsia-Jun Li a écrit :
+>>>> On 6/22/23 21:13, Benjamin Gaignard wrote:
+>>>>> CAUTION: Email originated externally, do not click links or open
+>>>>> attachments unless you recognize the sender and know the content is
+>>>>> safe.
+>>>>>
+>>>>>
+>>>>> After changing bufs arrays to a dynamic allocated array
+>>>>> VB2_MAX_FRAME doesn't mean anything for videobuf2 core.
+>>>> I think make it 64 which is the VB2_MAX_FRAME in Android GKI kernel is
+>>>> more reasonable.
+>>>>
+>>>> It would be hard to iterate the whole array, it would go worse with a
+>>>> filter. Such iterate may need to go twice because you mix
+>>>> post-processing buffer and decoding buffer(with MV) in the same array.
+>>> Here I don't want to change drivers behavior so I keep the same value.
+>>> If it happens that they need more buffers, like for dynamic resolution
+>>> change
+>>> feature for Verisilicon VP9 decoder, case by case patches will be needed.
+>>>
+>> I just don't like the idea that using a variant length array here.
+>>
+> "I don't like" is not an argument. We had a number of arguments for
+> using a generic helper (originally idr, but later decided to go with
+> XArray, because the former is now deprecated) that we pointed out in
+> our review comments for previous revisions. It wasn't really about the
+> size being variable, but rather avoiding open coding things in vb2 and
+> duplicating what's already implemented in generic code.
 
->  drivers/pinctrl/renesas/core.c                         | 1 -
->  drivers/pinctrl/renesas/pinctrl-rza1.c                 | 3 +--
->  drivers/pinctrl/renesas/pinctrl-rza2.c                 | 3 ++-
->  drivers/pinctrl/renesas/pinctrl-rzg2l.c                | 3 ++-
->  drivers/pinctrl/renesas/pinctrl-rzv2m.c                | 3 ++-
+I just want to say I don't think we need a variable length array to 
+store the buffer here.
 
-Acked-by: Geert Uytterhoeven <geert+renesas@glider.be>
+And the below is the reason that such a case could be avoided in the 
+first place.
 
-Gr{oetje,eeting}s,
+>
+>> And I could explain why you won't need so many buffers for the performance
+>> of decoding.
+>>
+>> VP9 could support 10 reference frames in dpb.
+>>
+>> Even for those frequent resolution changing test set, it would only happen
+>> to two resolutions,
+>>
+>> 32 would be enough for 20 buffers of two resolution plus golden frames. It
+>> also leaves enough slots for re-order latency.
+>>
+>> If your case had more two resolutions, likes low->medium->high.
+>>
+>> I would suggest just skip the medium resolutions, just allocate the lower
+>> one first for fast playback then the highest for all the possible
+>>
+>> medium cases. Reallocation happens frequently would only cause memory
+>> fragment, nothing benefits your performance.
+>>
+> We have mechanisms in the kernel to deal with memory fragmentation
+> (migration/compaction) and it would still only matters for the
+> pathologic cases of hardware that require physically contiguous memory.
+> Modern hardware with proper DMA capabilities can either scatter-gather
+> or are equipped with an IOMMU, so the allocation always happens in page
+> granularity and fragmentation is avoided.
 
-                        Geert
+Unfortunately, there are more devices that didn't have a IOMMU attached 
+to it, supporting scatter gather is more odd.
 
---=20
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
-.org
+It would be more likely that IOMMU would be disabled for the performance 
+reason.
 
-In personal conversations with technical people, I call myself a hacker. Bu=
-t
-when I'm talking to journalists I just say "programmer" or something like t=
-hat.
-                                -- Linus Torvalds
+>
+> Best regards,
+> Tomasz
+>
+>>>>> Remove it from the core definitions but keep it for drivers internal
+>>>>> needs.
+>>>>>
+>>>>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>>>>> ---
+>>>>>    drivers/media/common/videobuf2/videobuf2-core.c | 2 ++
+>>>>>    drivers/media/platform/amphion/vdec.c | 1 +
+>>>>> .../media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c | 2 ++
+>>>>>    drivers/media/platform/qcom/venus/hfi.h | 2 ++
+>>>>>    drivers/media/platform/verisilicon/hantro_hw.h | 2 ++
+>>>>>    drivers/staging/media/ipu3/ipu3-v4l2.c | 2 ++
+>>>>>    include/media/videobuf2-core.h | 1 -
+>>>>>    include/media/videobuf2-v4l2.h | 4 ----
+>>>>>    8 files changed, 11 insertions(+), 5 deletions(-)
+>>>>>
+>>>>> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c
+>>>>> b/drivers/media/common/videobuf2/videobuf2-core.c
+>>>>> index 86e1e926fa45..899783f67580 100644
+>>>>> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+>>>>> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+>>>>> @@ -31,6 +31,8 @@
+>>>>>
+>>>>>    #include <trace/events/vb2.h>
+>>>>>
+>>>>> +#define VB2_MAX_FRAME  32
+>>>>> +
+>>>>>    static int debug;
+>>>>>    module_param(debug, int, 0644);
+>>>>>
+>>>>> diff --git a/drivers/media/platform/amphion/vdec.c
+>>>>> b/drivers/media/platform/amphion/vdec.c
+>>>>> index 3fa1a74a2e20..b3219f6d17fa 100644
+>>>>> --- a/drivers/media/platform/amphion/vdec.c
+>>>>> +++ b/drivers/media/platform/amphion/vdec.c
+>>>>> @@ -28,6 +28,7 @@
+>>>>>
+>>>>>    #define VDEC_MIN_BUFFER_CAP            8
+>>>>>    #define VDEC_MIN_BUFFER_OUT            8
+>>>>> +#define VB2_MAX_FRAME                  32
+>>>>>
+>>>>>    struct vdec_fs_info {
+>>>>>           char name[8];
+>>>>> diff --git
+>>>>> a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+>>>>> b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+>>>>> index 6532a69f1fa8..a1e0f24bb91c 100644
+>>>>> --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+>>>>> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+>>>>> @@ -16,6 +16,8 @@
+>>>>>    #include "../vdec_drv_if.h"
+>>>>>    #include "../vdec_vpu_if.h"
+>>>>>
+>>>>> +#define VB2_MAX_FRAME  32
+>>>>> +
+>>>>>    /* reset_frame_context defined in VP9 spec */
+>>>>>    #define VP9_RESET_FRAME_CONTEXT_NONE0 0
+>>>>>    #define VP9_RESET_FRAME_CONTEXT_NONE1 1
+>>>>> diff --git a/drivers/media/platform/qcom/venus/hfi.h
+>>>>> b/drivers/media/platform/qcom/venus/hfi.h
+>>>>> index f25d412d6553..bd5ca5a8b945 100644
+>>>>> --- a/drivers/media/platform/qcom/venus/hfi.h
+>>>>> +++ b/drivers/media/platform/qcom/venus/hfi.h
+>>>>> @@ -10,6 +10,8 @@
+>>>>>
+>>>>>    #include "hfi_helper.h"
+>>>>>
+>>>>> +#define VB2_MAX_FRAME                          32
+>>>>> +
+>>>>>    #define VIDC_SESSION_TYPE_VPE                  0
+>>>>>    #define VIDC_SESSION_TYPE_ENC                  1
+>>>>>    #define VIDC_SESSION_TYPE_DEC                  2
+>>>>> diff --git a/drivers/media/platform/verisilicon/hantro_hw.h
+>>>>> b/drivers/media/platform/verisilicon/hantro_hw.h
+>>>>> index e83f0c523a30..9e8faf7ba6fb 100644
+>>>>> --- a/drivers/media/platform/verisilicon/hantro_hw.h
+>>>>> +++ b/drivers/media/platform/verisilicon/hantro_hw.h
+>>>>> @@ -15,6 +15,8 @@
+>>>>>    #include <media/v4l2-vp9.h>
+>>>>>    #include <media/videobuf2-core.h>
+>>>>>
+>>>>> +#define VB2_MAX_FRAME  32
+>>>>> +
+>>>>>    #define DEC_8190_ALIGN_MASK    0x07U
+>>>>>
+>>>>>    #define MB_DIM                 16
+>>>>> diff --git a/drivers/staging/media/ipu3/ipu3-v4l2.c
+>>>>> b/drivers/staging/media/ipu3/ipu3-v4l2.c
+>>>>> index e530767e80a5..6627b5c2d4d6 100644
+>>>>> --- a/drivers/staging/media/ipu3/ipu3-v4l2.c
+>>>>> +++ b/drivers/staging/media/ipu3/ipu3-v4l2.c
+>>>>> @@ -10,6 +10,8 @@
+>>>>>    #include "ipu3.h"
+>>>>>    #include "ipu3-dmamap.h"
+>>>>>
+>>>>> +#define VB2_MAX_FRAME  32
+>>>>> +
+>>>>>    /******************** v4l2_subdev_ops ********************/
+>>>>>
+>>>>>    #define IPU3_RUNNING_MODE_VIDEO                0
+>>>>> diff --git a/include/media/videobuf2-core.h
+>>>>> b/include/media/videobuf2-core.h
+>>>>> index 77921cf894ef..080b783d608d 100644
+>>>>> --- a/include/media/videobuf2-core.h
+>>>>> +++ b/include/media/videobuf2-core.h
+>>>>> @@ -20,7 +20,6 @@
+>>>>>    #include <media/media-request.h>
+>>>>>    #include <media/frame_vector.h>
+>>>>>
+>>>>> -#define VB2_MAX_FRAME  (32)
+>>>>>    #define VB2_MAX_PLANES (8)
+>>>>>
+>>>>>    /**
+>>>>> diff --git a/include/media/videobuf2-v4l2.h
+>>>>> b/include/media/videobuf2-v4l2.h
+>>>>> index 5a845887850b..88a7a565170e 100644
+>>>>> --- a/include/media/videobuf2-v4l2.h
+>>>>> +++ b/include/media/videobuf2-v4l2.h
+>>>>> @@ -15,10 +15,6 @@
+>>>>>    #include <linux/videodev2.h>
+>>>>>    #include <media/videobuf2-core.h>
+>>>>>
+>>>>> -#if VB2_MAX_FRAME != VIDEO_MAX_FRAME
+>>>>> -#error VB2_MAX_FRAME != VIDEO_MAX_FRAME
+>>>>> -#endif
+>>>>> -
+>>>>>    #if VB2_MAX_PLANES != VIDEO_MAX_PLANES
+>>>>>    #error VB2_MAX_PLANES != VIDEO_MAX_PLANES
+>>>>>    #endif
+>>>>> --
+>>>>> 2.39.2
+>>>>>
+>> --
+>> Hsia-Jun(Randy) Li
+>>
+-- 
+Hsia-Jun(Randy) Li
+
 
