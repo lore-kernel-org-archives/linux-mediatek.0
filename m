@@ -4,108 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E72E9C0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:19:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C2F9C0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:20:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r3eRjU9qlc/HtWCZOEqE82aSE5kNybf7RR8ZGMXqc60=; b=QjH75iqjJ4XeFJHoQIF07mKlp0
-	bNWOEurcbHAEWdRUHzPcBnGOWWltd42ooKK+S3siu6xE2Dqy3Rt2kLseWc/avWzkCSP1Mvc7aBtKC
-	LxCju4xsPshRkHjtjWQV7HSfnGMC5ekGjEKPYp0PFyaXWM7HT6dw0jd8pL5rTXQ2R9s1qDZ7nUHiE
-	s5RXJWrq9SnlmnjHOeh65lgVdkLo9QKI2CaF+yQyatwVVFw5wUFEo3kiYERNSdpQ4Bsj666DkCIj8
-	CeYRMQnAqlww7O8JzrzmVVGbLFa+j3eW7t4jRiOlE2+uFz8rUqSCclymQ4pVORPfrwEgWQRcY/9qc
-	HqMrsXZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f2FsRW/iD1SQYNbltu5CgyPfz65E+yDxeasl/fxtjIM=; b=vS2ZLk2fpQ/iZj+WWF8mLNiET3
+	dABNWbmSwagyNmHgNgFq4kqa9p/JhgWfGnZ77vppXU7Qg/v4FR20SKrbvrvsLC+CCbtwZg2oNS9Mm
+	MQ4JOzrvMVigpvVPhjA4VfQ+du+pF/zs287dgvB5ukKJGX9DSUVmnjoElbL1CjDtNvLtcA4inBXbg
+	lQe6Tj/gFeDmQgdkHr9W5g9fX9msxXvjHYA748gxuzoY1aUJlXNYNW2SyeKpXRvSP0jHdeIn+Af5Z
+	8eB6drBf/rqkg/PxvTw/8qKTIacymzM5PsJLRiQH2s1XS+dBMwj8mt1BTZPVEAXQF+ZWFjFIT++nv
+	HxLztLsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2PZ-006IN5-08;
-	Wed, 19 Jul 2023 08:19:53 +0000
+	id 1qM2Pp-006IWY-1P;
+	Wed, 19 Jul 2023 08:20:09 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2PY-006IML-1X;
-	Wed, 19 Jul 2023 08:19:52 +0000
+	id 1qM2Pl-006IUQ-0I;
+	Wed, 19 Jul 2023 08:20:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
+	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=r3eRjU9qlc/HtWCZOEqE82aSE5kNybf7RR8ZGMXqc60=; b=FHpjyYMEpgHg6xrZNLFxU+VC7P
-	4TlS+RWTjvOKDwMRqhYZcMq3bDoCMqn3sstiwfMl4xBOPNYF0y9EPmoAN197jI2fTDGtrQa8lm48E
-	XY8IsrMWP41fzpcKNcZ6NBy+W32MRNrJjjdaEkAaxTsun7kfiWPh/UYyC7V5tZFrYdkE8bBr9Z325
-	CVfoQMZHVBVa3jsAz4FAOFPj8s2C0SmnbWfZEJeMHbsmufY/Rmp+dhGTbcX4hltn0JekpIpj01byu
-	srYw90e8SQco5CvrKOeOpU9dNCUnh7tHU6/K/9U2nEcmC046HD7q0VYTR72ZGQvByfVyQc17o9CIR
-	TxKa3oqg==;
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	bh=f2FsRW/iD1SQYNbltu5CgyPfz65E+yDxeasl/fxtjIM=; b=k9wRMQOIRd/UL5KMk8mzirQr4Q
+	0KVbH7ph8Vvq9z3QwQBpq89Ck2EjdjVrRHCctkQAZpb/K/wAOePZOLsHbxFTB7t3f9S0XKpDlilzf
+	xGFevW3Ix+hJLxi1os65vNoM4dkzw7nktwvm6a9rzKlHzRr9ozbD8nzcFnrhL9dzRwv8x96+0/dDQ
+	D2DGdL+E7G3eMecADmDphxZs8FLYyvyjqzTQyjQ8pZsOQS3Z8nLeCvfVo8q8e9EW5AHZmMQ0uZZg8
+	b8TdJHa/EmE0CK1STJ9ZFryjNcYPUdabzNS6R/RUTcVFe2mNhogVHWHFEriCeSd3i7KKBp9DFWfgl
+	n9lTKRPg==;
+Received: from aposti.net ([89.234.176.197])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLkIj-00BYK1-1P;
-	Tue, 18 Jul 2023 12:59:39 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-991f956fb5aso703378266b.0;
-        Tue, 18 Jul 2023 05:59:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1689685056; x=1692277056;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=r3eRjU9qlc/HtWCZOEqE82aSE5kNybf7RR8ZGMXqc60=;
-        b=g6z0JwGiNFW3lz4PmozRF+XBezdo2jwekkRhUykp1ZwKGIqp1lXzBnDwppLhroX43w
-         +h7R9WRr3XU6YoSKJtYC7dlhGyEi+wEwY0JiHZTH4QElAx6UnaINFkeHyA5F3zwFobtW
-         ozQi7ooh991iba2ndW2C1CW5pi/+b2dNrIR5X6l4AtF24MCyTSeKcxnrJqEF/cGt3o40
-         gEXfN+NQqDibali2B5IkDOKvyC9F5DtUxeXkIqLZVvOVu9R8PiJfnwQVvPYVERVyVPpa
-         uQFLj4rOWqAI+QISNqfVmoJIZLzoFqOZxN8vOESmohzgWtJMPk5Tp4NyDYqe2E4XUZC6
-         S4yQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689685056; x=1692277056;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=r3eRjU9qlc/HtWCZOEqE82aSE5kNybf7RR8ZGMXqc60=;
-        b=XSxsucVGoDWEbSyf+5bTZ04iaHCqNJweC4RRkYW55mJIq7Rbd9RPoPiooKAQFJeOBD
-         bv3oFBneg7Vpgl+d71ZSZipFpMqbcAqlYUYsdHM5OKeIlEtxkiHhH53oJ/Wo7TXBN0qN
-         2o9/k3nUgY4FBrdztlT6Hu+cCKgdVcRqevQ1YqaksavLpY7aS48BFuhiFI28WZ/tEAxc
-         mTm6U+7IwXPDXFZ/+awh7ofH+jLNJCqheLgeSapHoydgqIQpoU90wE8BUaIXyz0dz05H
-         SPA9+TzZAGoJVDkQi1fkq3DU9/sp8aqwI+LYBBtuo2ZylAxp7WDeHTpGxum33cj6gnC/
-         8AEg==
-X-Gm-Message-State: ABy/qLaPN9H/8W5ipsZmVOdcFW1OaeXNPV/V+D949I/DWd4P0rCfAJci
-	PkyRf57X3E3q//ca+addn0bd2OevkayrI0Cs9cM=
-X-Google-Smtp-Source: APBJJlElrlsnM8Wh1LOSDVOQPK6Ij0zGU/u15EPxUjBld0Dc/Kvg0px3zFSARhUXJU3vRjipS2x9YKFDV7eHqZ+urTU=
-X-Received: by 2002:a17:907:3a49:b0:988:f1ec:7400 with SMTP id
- fc9-20020a1709073a4900b00988f1ec7400mr11363213ejc.36.1689685056299; Tue, 18
- Jul 2023 05:57:36 -0700 (PDT)
-MIME-Version: 1.0
+	id 1qLToj-009EkU-2g;
+	Mon, 17 Jul 2023 19:23:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
+	s=mail; t=1689621782;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=f2FsRW/iD1SQYNbltu5CgyPfz65E+yDxeasl/fxtjIM=;
+	b=QUSTalgEXSQDjPMLrB5o7QMCahRiCifDFiugm9rnJcn71JCyT7aOLymUOW/gQZyyCiY6hr
+	lbE3nKSj+Z4PhaVzbZbruA3x7Vy7tFZknM9Ts+Ht4ZWqsyw8XWam2OvmFRb7OQ5mbs1LP6
+	Ru1DyJG3Rjmuhfv6vH5laLD4/TLKACc=
+Message-ID: <108dbf8d020d7a4335743aa196ec7be9c8a777a3.camel@crapouillou.net>
+Subject: Re: [PATCH v2 05/10] pinctrl: lynxpoint: Make use of pm_ptr()
+From: Paul Cercueil <paul@crapouillou.net>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg
+ <mika.westerberg@linux.intel.com>, Linus Walleij
+ <linus.walleij@linaro.org>,  Balsam CHIHI <bchihi@baylibre.com>, Claudiu
+ Beznea <claudiu.beznea@microchip.com>, Geert Uytterhoeven
+ <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
+  Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org,  linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,  linux-renesas-soc@vger.kernel.org,
+ linux-tegra@vger.kernel.org,  linux-pm@vger.kernel.org
+Cc: Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  Andrew Lunn <andrew@lunn.ch>,
+ Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth
+ <sebastian.hesselbarth@gmail.com>, Ludovic Desroches
+ <ludovic.desroches@microchip.com>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>,  Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>,
+ Pavel Machek <pavel@ucw.cz>
+Date: Mon, 17 Jul 2023 21:23:00 +0200
+In-Reply-To: <20230717172821.62827-6-andriy.shevchenko@linux.intel.com>
 References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
- <20230717172821.62827-5-andriy.shevchenko@linux.intel.com>
- <c47c26ba7ea5bcbdcbe1d001b6cc527cee6c7d03.camel@crapouillou.net>
- <CAHp75Vcjq9=Q2_fsGJ9oCw=WYR3p3ot_cNLiDJV93psNcXXHLw@mail.gmail.com> <8c66f79025ddd8388eeb9bdb3f0e789fe9f362d9.camel@crapouillou.net>
-In-Reply-To: <8c66f79025ddd8388eeb9bdb3f0e789fe9f362d9.camel@crapouillou.net>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Tue, 18 Jul 2023 15:57:00 +0300
-Message-ID: <CAHp75VdPNCvhVSeKESbd7VNVPa8GVXVnw04jaE4HMUjK_b8+dA@mail.gmail.com>
-Subject: Re: [PATCH v2 04/10] pinctrl: intel: Switch to use
- DEFINE_NOIRQ_DEV_PM_OPS() helper
-To: Paul Cercueil <paul@crapouillou.net>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	Mika Westerberg <mika.westerberg@linux.intel.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Balsam CHIHI <bchihi@baylibre.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
-	linux-tegra@vger.kernel.org, linux-pm@vger.kernel.org, 
-	Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
-	Ludovic Desroches <ludovic.desroches@microchip.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>
+	 <20230717172821.62827-6-andriy.shevchenko@linux.intel.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_135937_697863_C5B0C5F0 
-X-CRM114-Status: GOOD (  31.38  )
+X-CRM114-CacheID: sfid-20230717_202334_413159_97A0DC88 
+X-CRM114-Status: GOOD (  17.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,79 +96,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 17, 2023 at 10:56=E2=80=AFPM Paul Cercueil <paul@crapouillou.ne=
-t> wrote:
-> Le lundi 17 juillet 2023 =C3=A0 22:33 +0300, Andy Shevchenko a =C3=A9crit=
- :
-> > On Mon, Jul 17, 2023 at 10:02=E2=80=AFPM Paul Cercueil <paul@crapouillo=
-u.net>
-> > wrote:
-> > > Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=A9=
-crit :
+SGkgQW5keSwKCkxlIGx1bmRpIDE3IGp1aWxsZXQgMjAyMyDDoCAyMDoyOCArMDMwMCwgQW5keSBT
+aGV2Y2hlbmtvIGEgw6ljcml0wqA6Cj4gQ2xlYW5pbmcgdXAgdGhlIGRyaXZlciB0byB1c2UgcG1f
+cHRyKCkgYW5kICpfUE1fT1BTKCkgbWFjcm9zIHRoYXQKPiBtYWtlIGl0IHNpbXBsZXIgYW5kIGFs
+bG93cyB0aGUgY29tcGlsZXIgdG8gcmVtb3ZlIHRob3NlIGZ1bmN0aW9ucwo+IGlmIGJ1aWx0IHdp
+dGhvdXQgQ09ORklHX1BNIGFuZCBDT05GSUdfUE1fU0xFRVAgc3VwcG9ydC4KPiAKPiBTaWduZWQt
+b2ZmLWJ5OiBBbmR5IFNoZXZjaGVua28gPGFuZHJpeS5zaGV2Y2hlbmtvQGxpbnV4LmludGVsLmNv
+bT4KClJldmlld2VkLWJ5OiBQYXVsIENlcmN1ZWlsIDxwYXVsQGNyYXBvdWlsbG91Lm5ldD4KCkNo
+ZWVycywKLVBhdWwKCj4gLS0tCj4gwqBkcml2ZXJzL3BpbmN0cmwvaW50ZWwvcGluY3RybC1seW54
+cG9pbnQuYyB8IDcgKysrLS0tLQo+IMKgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwg
+NCBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9waW5jdHJsL2ludGVsL3Bp
+bmN0cmwtbHlueHBvaW50LmMKPiBiL2RyaXZlcnMvcGluY3RybC9pbnRlbC9waW5jdHJsLWx5bnhw
+b2ludC5jCj4gaW5kZXggY2RhY2U1NWFhZWFjLi41MGQ5MmJmODBlMjAgMTAwNjQ0Cj4gLS0tIGEv
+ZHJpdmVycy9waW5jdHJsL2ludGVsL3BpbmN0cmwtbHlueHBvaW50LmMKPiArKysgYi9kcml2ZXJz
+L3BpbmN0cmwvaW50ZWwvcGluY3RybC1seW54cG9pbnQuYwo+IEBAIC05NDgsOSArOTQ4LDggQEAg
+c3RhdGljIGludCBscF9ncGlvX3Jlc3VtZShzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gwqB9Cj4gwqAK
+PiDCoHN0YXRpYyBjb25zdCBzdHJ1Y3QgZGV2X3BtX29wcyBscF9ncGlvX3BtX29wcyA9IHsKPiAt
+wqDCoMKgwqDCoMKgwqAucnVudGltZV9zdXNwZW5kID0gbHBfZ3Bpb19ydW50aW1lX3N1c3BlbmQs
+Cj4gLcKgwqDCoMKgwqDCoMKgLnJ1bnRpbWVfcmVzdW1lID0gbHBfZ3Bpb19ydW50aW1lX3Jlc3Vt
+ZSwKPiAtwqDCoMKgwqDCoMKgwqAucmVzdW1lID0gbHBfZ3Bpb19yZXN1bWUsCj4gK8KgwqDCoMKg
+wqDCoMKgU1lTVEVNX1NMRUVQX1BNX09QUyhOVUxMLCBscF9ncGlvX3Jlc3VtZSkKPiArwqDCoMKg
+wqDCoMKgwqBSVU5USU1FX1BNX09QUyhscF9ncGlvX3J1bnRpbWVfc3VzcGVuZCwKPiBscF9ncGlv
+X3J1bnRpbWVfcmVzdW1lLCBOVUxMKQo+IMKgfTsKPiDCoAo+IMKgc3RhdGljIGNvbnN0IHN0cnVj
+dCBhY3BpX2RldmljZV9pZCBseW54cG9pbnRfZ3Bpb19hY3BpX21hdGNoW10gPSB7Cj4gQEAgLTk2
+NSw3ICs5NjQsNyBAQCBzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciBscF9ncGlvX2RyaXZl
+ciA9IHsKPiDCoMKgwqDCoMKgwqDCoMKgLnJlbW92ZcKgwqDCoMKgwqDCoMKgwqAgPSBscF9ncGlv
+X3JlbW92ZSwKPiDCoMKgwqDCoMKgwqDCoMKgLmRyaXZlcsKgwqDCoMKgwqDCoMKgwqAgPSB7Cj4g
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAubmFtZcKgwqAgPSAibHBfZ3BpbyIsCj4g
+LcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC5wbcKgwqDCoMKgwqA9ICZscF9ncGlvX3Bt
+X29wcywKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLnBtwqDCoMKgwqDCoD0gcG1f
+cHRyKCZscF9ncGlvX3BtX29wcyksCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAu
+YWNwaV9tYXRjaF90YWJsZSA9IGx5bnhwb2ludF9ncGlvX2FjcGlfbWF0Y2gsCj4gwqDCoMKgwqDC
+oMKgwqDCoH0sCj4gwqB9OwoK
 
-...
-
-> > > So the correct way to update this driver would be to have a
-> > > conditionally-exported dev_pm_ops structure:
-> > >
-> > > EXPORT_GPL_DEV_PM_OPS(intel_pinctrl_pm_ops) =3D {
-> > >     NOIRQ_SYSTEM_SLEEP_PM_OPS(intel_pinctrl_suspend_noirq,
-> > > intel_pinctrl_resume_noirq),
-> > > };
-> >
-> > This looks ugly. I didn't know that EXPORT*PM_OPS designed that way,
-> > but it seems pm.h in such case needs EXPORT for NOIRQ case as well.
->
-> It's designed so that when CONFIG_PM is disabled, the dev_pm_ops is
-> garbage-collected along with all its callbacks.
->
-> I know it looks ugly, but we already have 4 variants (regular,
-> namespace, GPL, namespace + GPL), if we start to add macros for
-> specific use-cases then it will become bloated really quick.
-
-Maybe macros can be replaced / changed to make it scale?
-
-> And the "bloat" I'm trying to avoid here is the extreme expansion of
-> the API which makes it hard for people not familiar to the code to
-> understand what should be used and how.
-
-So far, based on the rest of the messages in the thread the
-EXPORT*PM_OPS() have the following issues:
-1) do not scale (for variants with different scope we need new set of macro=
-s);
-2) do not cover cases with pm_sleep_ptr();
-3) export symbols in case when it's not needed.
-
-Am I right?
-
-> > > Then your two callbacks can be "static" and without #ifdef guards.
-> > >
-> > > The resulting "intel_pinctrl_pm_ops" can be marked as "extern" in
-> > > the
-> > > pinctrl-intel.h without any guards, as long as it is only
-> > > referenced
-> > > with the pm_ptr() macro.
-> >
-> > I'm not sure I got this. Currently drivers do not have any guards.
-> > Moreover, the correct one for noirq is pm_sleep_ptr(), isn't it?
->
-> The EXPORT_*_DEV_PM_OPS() macros do export the "dev_pm_ops"
-> conditionally depending on CONFIG_PM. We could add variants that export
-> it conditionally depending on CONFIG_PM_SLEEP, but we're back at the
-> problem of adding bloat.
-
-Exactly.
-
-> You could use pm_sleep_ptr() indeed, with the existing macros, with the
-> drawback that in the case where CONFIG_PM && !CONFIG_PM_SLEEP, the
-> dev_pm_ops + callbacks are compiled in but never referenced.
-
-And exactly.
-
-I don't think they are ready to use (in the current form). But let's
-see what we may do better here...
-
---
-With Best Regards,
-Andy Shevchenko
 
