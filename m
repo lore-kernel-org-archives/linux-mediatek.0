@@ -4,107 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD4DC001B0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:29:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30900EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:32:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GCWvgKUXfcW1CPS5sL1xeCdhcIZJ7olcj1eoB35DPKY=; b=o77aJxJqU2LpSrwWEuuS8FQlsZ
-	V0FUY5oyOivPfAiKLZ9X3BT2SC/EerMwCfjzY0Vwn9KWmFUj2nhBH7gXNQ6Q6Ea42EDVmRh0+VIGH
-	EYkjEOGYcnlEEXW0cC4XWVk/Nrr+6/o1QBof14nUJsQUuZ0MKzx+8iRVB/F3Pmv2XGAkH0F/GipIa
-	P00xv2qO/ZV2rNZEXrCF04wp6VR01da7lCcREoZTXX4jn0FvbI0XZwwxrWyO2CYIP8eq0l85eMyLJ
-	7t/oHr7X6i3m59i0OH2LHt51h6T+//99xB0idWSyOSBnSDVLOFnndMlSD4pC1gfUr1oTAxBgyVIit
-	aOVZUgVg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YLbtiM3Mg2ozARpSTeCbg9ZzYZDLdqZM0J85vmoD7SM=; b=A5o8ECDYk8BPgt1wtQA6b+hYn7
+	u4HzH6qWwaA/DDmS26lClNZKkqZzQCDo/k0GeCTUF3aLitbEI9oRy+a3Yb+8CmxMMG7oOmGURgoV6
+	f3DjqFo58rraMHMvQFhwBaNFMlnUnzD4r+rbOtUbidUrrt5Khrr4XQEumVwPiSoYlEmJ6yeCQNjhw
+	D2r41HqOxdB3JkF/Y8/cwqnpwb2Zknt59EZbY/s3uyNbU6fOkVmuNLHOJ03lv8BRCEnl9n5i3+fQR
+	E6Nqq6mBBmHBgDkXB5ByFWaNiuQmd9j4rrSk0gHRI0RNHhI/ACVwXwMaAHQ6aziWlhLd5U4eX5t0y
+	jfu+d+7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzkc-005Jbs-2S;
-	Wed, 19 Jul 2023 05:29:26 +0000
+	id 1qLznc-005KWI-2e;
+	Wed, 19 Jul 2023 05:32:32 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzkb-005JbJ-07
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 19 Jul 2023 05:29:25 +0000
+	id 1qLzna-005KUT-1I;
+	Wed, 19 Jul 2023 05:32:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
+	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=GCWvgKUXfcW1CPS5sL1xeCdhcIZJ7olcj1eoB35DPKY=; b=CR0cEZZh73JBiZ+tsnQAR/2g2P
-	xxpgeNrmkplL7pdKo77KoWtatuwTuO8+SNPaXFeg48DCqVKhlt/Kgg8YexqdJ13efWQOMHA1dALzH
-	Rz3XCGWEyZHznw+yuJL4L8MmhhRRJdmAerHHS7QNQd2AJ68pM7eln2yyhNQTJZIQWN4M4Dre+FZwg
-	QqXZfQTUy1cgO03l2xfJMaDzRtPFVnCeGIfa0d+dvFaqu3Zr6aQ3i8y4/UKgRPJMglLJlEjd/UTYy
-	5FUeLoR9oJblWhoLKtEUYEmed+8n5W5fNT+3pGBcjb5VA+nAJh6lhLbzKnzBCDXqnxYJIHYMGsIKP
-	Mfa5G5LA==;
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	bh=YLbtiM3Mg2ozARpSTeCbg9ZzYZDLdqZM0J85vmoD7SM=; b=lSBO/Sy2EPB6B6sbQX3BCKOON2
+	9AtbEniUf6ZQEMXrdipyqBfmzE8gGFtETBstMUpEzawaG9t1wOE/0JrSeyjDXLZYNdHbIv4bOMHjS
+	JSSYNAJngoSWlEpCx9/a6qDN/lF+QOawPiDB4HQ6HTjq06qTe/3tX1UiTrGi+TWNSQPz9GFzaD04t
+	SDxRC6UrDRDhOkQBfqFJyl2/Q3jswXk5DNjfzHKz8QsI33iLt+RqsN6wqQM4qH5w+B7OZe5lj6sXZ
+	Qq2ZpQKEidtC0kGA9JNqLwliaFDC3I90IAaa5ShZCSolcoBBvgCLeWD124DP2EVDbDKm1b2k3jNzL
+	QFg66ktg==;
+Received: from aposti.net ([89.234.176.197])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLUO9-009HiW-2u
-	for linux-mediatek@lists.infradead.org;
-	Mon, 17 Jul 2023 20:00:12 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-992b2249d82so699145366b.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 17 Jul 2023 13:00:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1689623888; x=1692215888;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=GCWvgKUXfcW1CPS5sL1xeCdhcIZJ7olcj1eoB35DPKY=;
-        b=FYiL78JQFAZQkZuMCP3Kkz2pXDfnIy2mkoW84p24YFfPCUYfyCa1OBXQXkps4rvxc0
-         VVG8IbaU0LhSDVy7/6+1MaAWpftz2fjvsomf+J0PsaBBMXm6wXC2bphsw6ScSzh++TAq
-         udgfArxo5zxNGgenWAZ9xms56ILBGMh25jhzYeaFYzuIEU62KlRSzh4xi3EfNGunnbCc
-         6wcJ2g6LLLlJLc9gZMZlKrlxhuVOsPJ5rLjCH7UPRObW1FZKFcg1ilBr/2lIpxNIypcM
-         wIsQuuPd8I+MHkU9nVqhjM1sayMZ8VHR93pQ46XXVYN81n33+o7FNZarAgcgxRzSGl+g
-         mFoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689623888; x=1692215888;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=GCWvgKUXfcW1CPS5sL1xeCdhcIZJ7olcj1eoB35DPKY=;
-        b=Aq2daPp7ICo9Cux+auRta8sqQVSC+pTo+g8UxlpDPcee+YP6xZs7o4KQsEijH0sICV
-         JcpmM/R/N9QozERh/JAj+NzzUnBgvnyjU3G0dq9LiWZkV7PWm6762clJjzBf+9HlKGVL
-         1QnXgcQe47D+Fvy0oQV5Y5gzhpnQHPR3j/wW/xYr4hFFDlfLvwcDBmXGsfHFGoeF2F8g
-         u8D94zYgoCbzzEdkn/9ZQYVKk36i/vH2+5pDpJ+9c0NzjgQZxLNge+Wq3t+Bx9Gdb1b6
-         pn7eSGQpT5QlQY6cvIdbFgPcxfu5hF81Z7OdlrfhH1o5i31Qb3vNrkOVJNPK7DWGjleD
-         ae2w==
-X-Gm-Message-State: ABy/qLbeyL9dEIoKuHDv3Ebv4s0igGGTilY133MKiyllzyRo/cYQhhZ5
-	tpPoZt6QCpwQLUQo1sq3NVVWLg==
-X-Google-Smtp-Source: APBJJlGPH/4WX3gvMsX76UHYK0bLVpi5LnmMFLDa/91Ewd2MMtPkpY4SnQrrAXgEujst5NHSR/yweg==
-X-Received: by 2002:a17:907:7709:b0:94f:3521:394 with SMTP id kw9-20020a170907770900b0094f35210394mr10161706ejc.51.1689623888534;
-        Mon, 17 Jul 2023 12:58:08 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.223.104])
-        by smtp.gmail.com with ESMTPSA id h10-20020a170906828a00b0094e7d196aa4sm82784ejx.160.2023.07.17.12.58.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Jul 2023 12:58:08 -0700 (PDT)
-Message-ID: <43ecf0b0-4b55-ab11-3b80-b9243b971c2c@linaro.org>
-Date: Mon, 17 Jul 2023 21:58:06 +0200
+	id 1qLULc-009HOl-1v;
+	Mon, 17 Jul 2023 19:57:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
+	s=mail; t=1689623821;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=YLbtiM3Mg2ozARpSTeCbg9ZzYZDLdqZM0J85vmoD7SM=;
+	b=wmzyKuhBLBCQrGjJqR3U+7snGQXMWADygmSKRYXKPpLXpiIILjUaJXc/cQwu3akJM/sgMi
+	G5fwAxKthEkfhTtNEYo0NUzyvKSLXQUjEHg6jPYQU5bjP9hMkUDEgzSgJcSMgcCe1h1Gsv
+	B9WmHBgwcHLSP6I2XCpK/+VG0owAMf8=
+Message-ID: <7dc59ec83ceb6b7c101039570652fb9c8122d15a.camel@crapouillou.net>
+Subject: Re: [PATCH v2 07/10] pinctrl: mediatek: Switch to use
+ DEFINE_NOIRQ_DEV_PM_OPS() helper
+From: Paul Cercueil <paul@crapouillou.net>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg
+ <mika.westerberg@linux.intel.com>, Linus Walleij
+ <linus.walleij@linaro.org>,  Balsam CHIHI <bchihi@baylibre.com>, Claudiu
+ Beznea <claudiu.beznea@microchip.com>, Geert Uytterhoeven
+ <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
+  Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org,  linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,  linux-renesas-soc@vger.kernel.org,
+ linux-tegra@vger.kernel.org,  linux-pm@vger.kernel.org, Andy Shevchenko
+ <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Andrew Lunn <andrew@lunn.ch>,
+ Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth
+ <sebastian.hesselbarth@gmail.com>, Ludovic Desroches
+ <ludovic.desroches@microchip.com>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>,  Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>,
+ Pavel Machek <pavel@ucw.cz>
+Date: Mon, 17 Jul 2023 21:56:59 +0200
+In-Reply-To: <CAHp75VfSd6giH0Hvt4m_cai5+qhhBfMa6R0fDhzpN4U7WxYzSw@mail.gmail.com>
+References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
+	 <20230717172821.62827-8-andriy.shevchenko@linux.intel.com>
+	 <f48a35d596694839665bc5883260cbae3ae01d9c.camel@crapouillou.net>
+	 <CAHp75VfSd6giH0Hvt4m_cai5+qhhBfMa6R0fDhzpN4U7WxYzSw@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v3 4/4] arm64: dts: Add MediaTek MT8188 dts and evaluation
- board and Makefile
-Content-Language: en-US
-To: Jason-ch Chen <jason-ch.chen@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?=
- <nfraprado@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20230717120300.21388-1-jason-ch.chen@mediatek.com>
- <20230717120300.21388-5-jason-ch.chen@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230717120300.21388-5-jason-ch.chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_210010_454982_9552F222 
-X-CRM114-Status: GOOD (  18.65  )
+X-CRM114-CacheID: sfid-20230717_205733_158592_A3CD3296 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,100 +100,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/07/2023 14:03, Jason-ch Chen wrote:
-> From: jason-ch chen <Jason-ch.Chen@mediatek.com>
-> 
-> MT8188 is a SoC based on 64bit ARMv8 architecture. It contains 6 CA55
-> and 2 CA78 cores. MT8188 share many HW IP with MT65xx series.
-> 
-> We add basic chip support for MediaTek MT8188 on evaluation board.
-> 
-> Signed-off-by: jason-ch chen <Jason-ch.Chen@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  arch/arm64/boot/dts/mediatek/Makefile       |   1 +
->  arch/arm64/boot/dts/mediatek/mt8188-evb.dts | 401 +++++++++
->  arch/arm64/boot/dts/mediatek/mt8188.dtsi    | 951 ++++++++++++++++++++
->  3 files changed, 1353 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-evb.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index c99c3372a4b5..9bd2324259a3 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -44,6 +44,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-evb.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r1.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-spherion-r0.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8188-evb.dts b/arch/arm64/boot/dts/mediatek/mt8188-evb.dts
-> new file mode 100644
-> index 000000000000..d8906172390e
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8188-evb.dts
-> @@ -0,0 +1,401 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (C) 2023 MediaTek Inc.
-> + */
-> +/dts-v1/;
-> +#include "mt8188.dtsi"
-> +#include "mt6359.dtsi"
-> +
-> +/ {
-> +	model = "MediaTek MT8188 evaluation board";
-> +	compatible = "mediatek,mt8188-evb", "mediatek,mt8188";
-> +
-> +	aliases {
-> +		serial0 = &uart0;
-> +		i2c0 = &i2c0;
-> +		i2c1 = &i2c1;
-> +		i2c2 = &i2c2;
-> +		i2c3 = &i2c3;
-> +		i2c4 = &i2c4;
-> +		i2c5 = &i2c5;
-> +		i2c6 = &i2c6;
-> +		mmc0 = &mmc0;
-> +	};
-> +
-> +	chosen: chosen {
-> +		stdout-path = "serial0:115200n8";
-> +		kaslr-seed = <0 0>;
+Le lundi 17 juillet 2023 =C3=A0 22:36 +0300, Andy Shevchenko a =C3=A9crit=
+=C2=A0:
+> On Mon, Jul 17, 2023 at 10:07=E2=80=AFPM Paul Cercueil <paul@crapouillou.=
+net>
+> wrote:
+> > Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=A9cr=
+it :
+>=20
+> ...
+>=20
+> > > +DEFINE_NOIRQ_DEV_PM_OPS(mtk_paris_pinctrl_pm_ops,
+> > > mtk_paris_suspend,
+> > > mtk_paris_resume);
+> >=20
+> > It's a bit more work, but I think you should use
+> > EXPORT_GPL_DEV_PM_OPS
+> > (or even better, EXPORT_NS_GPL_DEV_PM_OPS) so that the dev_pm_ops
+> > is
+> > conditionally exported. All callers would have to be updated to use
+> > pm_ptr().
+>=20
+> Why pm_ptr()? What did I miss?
+> The rest is OK.
+>=20
 
-It does not look like you tested the DTS against bindings. Please run
-`make dtbs_check` (see
-Documentation/devicetree/bindings/writing-schema.rst or
-https://www.linaro.org/blog/tips-and-tricks-for-validating-devicetree-sources-with-the-devicetree-schema/
-for instructions).
+Or pm_sleep_ptr(). As I said in my answer to the other patch,
+EXPORT_*_DEV_PM_OPS() currently only exports on CONFIG_PM, so it
+doesn't really matter which one you use.
 
-> +	};
-> +
-> +	memory@40000000 {
-> +		device_type = "memory";
-> +		reg = <0 0x40000000 0 0x80000000>;
-> +	};
-> +
-> +	reserved_memory: reserved-memory {
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		ranges;
-> +
-> +		scp_mem_reserved: scp_mem_region {
-
-No underscores in node names.
-
-> +			compatible = "shared-dma-pool";
-> +			reg = <0 0x50000000 0 0x2900000>;
-> +			no-map;
-> +		};
-> +	};
-
-
-Best regards,
-Krzysztof
-
+Cheers,
+-Paul
 
