@@ -4,93 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 128C8C001DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:10:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C27EAEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:13:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B0NjEhu86N4J+fkW2NC3ZP+O5bGE7CvhT29CjHH1Mlg=; b=41qylTiYvj0PChzjxlGPKKOvWC
-	9liYwLfrWHJsONGGtyG9q4vpRscEfmBkWtJJN/rMaqS/PtYue3gqIjbhuo1nUKxlMM3o3+oX9Bg5i
-	AAAx+zhvD8OIsyaMeXDmtYbtfEqrVR6vcCqJvSLYydALligMyn5KycMYetkCxbaICCBxSTXGENjRN
-	/L8YPK9f/YhOGs5w5Rc3awjzXTak898URtbuEal41O5reMLWkFvnK5JET1cRjRnKp/pmQPYUzFF2+
-	B2EjkCaQJd99bRwCgcBNuVeFnYkNslyQXqx8TxKPV3m6LMFEG+coZ4AZ/obGQERGig3Uc7oqF80vk
-	fENBLEmg==;
+	bh=xjvSgydsLBAt+kJ9U/k9BFTw7JpoLGf2fEESmtZCfmw=; b=fVDoOgcu+gYZQb9dIF4LpSdhXo
+	z3I2JHHPTgdzb8wKcvr6ZAwSlszHaFQnRUyN12FxxLO18KQAAeAtzRimIYW2yEtd7T0xyRhV5q5Dg
+	suQ8FxEEkMvB7ce4xMteXmJRKJMR6EjHOWVmQPrWgts91rToR6+YSzFQfx3nyrZTHkA6QnD9VrAw0
+	ntnOusrp5pRELCnJFDnv0o0Y+vZWFppkddIZ7faAVuIkZMtneLajUDOra0hHjoLmiYGwpaCdV/4ne
+	gMdllfuObJtMIIwpMhJHRYCZrcVY0vcgJPvZAGgCS9x6fKjLbPlUHlT7MXbQpYJjaw7dJ69eH4DwY
+	MOnHjURw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2Gg-006FQy-02;
-	Wed, 19 Jul 2023 08:10:42 +0000
+	id 1qM2JT-006GFM-29;
+	Wed, 19 Jul 2023 08:13:35 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2GU-006FLc-2w;
-	Wed, 19 Jul 2023 08:10:30 +0000
+	id 1qM2JR-006GEX-3A;
+	Wed, 19 Jul 2023 08:13:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=B0NjEhu86N4J+fkW2NC3ZP+O5bGE7CvhT29CjHH1Mlg=; b=qZUpW+AiGZYAmK2ndNJNcqb7Yt
-	SiFhH/l85VWT1J3LWn10jYamAu01EMlW6gxDaulOs8hXZzpAARFxkORIhtBy/gswK8OEf9egJJHwi
-	hh2T/YHZM3RCx/NQa6AcMKjs4aOYw8VZsgLOvYysBUpN8+mVcoPsLoOfObJO9zplyfAhvRtTzT/Fu
-	2xoybRLR4dlHYyDCsJdv/2G3UDFrUOJjwsRqGy3bX2u9J5DkePKojkTMMMULoCj9Ay92f8Vk/Tny7
-	fOFv3AX3lQQPgpvc9t0C5ybLGBN/Je9DpfFlBRHt8iY07TpzzxDATa46zYamOvdEyRlHK77qE6xDj
-	erbAMkoQ==;
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
+	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=xjvSgydsLBAt+kJ9U/k9BFTw7JpoLGf2fEESmtZCfmw=; b=e3qfXnrYB2iTa3Kx21oU8CkC1s
+	Io9zs0VAovZZSscuVuo+xxKTUBkktxFwGn6zqLb7XL3ETuCcQzIcld2m7af1ruqxqZMl9lV1knUux
+	fe7fU4OrJ+9ja0CEy48O4qpO8ojpGrkMEGiEyqnVOakiIQpvISZrq+uT9V8EgCd8HtZQWE5mmQHkS
+	a79zYveUg3Yb5XX33NOr7qQDDeMQkUGfe6VRcsbO/qfS6eufGckJ6bF0JmHE7sYxEpS0w2rUXIzMF
+	UdaI6Pd5maO/iy2CISCNz9OsAMb47qxI1p91VC4HTzT21Uhy+F1rbubOftnCSlxSyXKT5B/jfSAju
+	q8FTIjpw==;
+Received: from aposti.net ([89.234.176.197])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLkrv-00Ba2U-0m;
-	Tue, 18 Jul 2023 13:36:01 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8526461595;
-	Tue, 18 Jul 2023 13:35:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77068C433B9;
-	Tue, 18 Jul 2023 13:35:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1689687349;
-	bh=B0NjEhu86N4J+fkW2NC3ZP+O5bGE7CvhT29CjHH1Mlg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dOHlZSGFJEYqcQFBqTE6cavvulJfUotaf3OEnRe7xZ8rQvpsKexeiEpLeoUFUz3WK
-	 WwCXx8kcoFZpsGnZZ/bin2CgC35AQqq0szBzq2o7xp4aG/lBft/pOS93LoMYH48+BI
-	 zA5U7riVI+aSNX/c4q3y0LvVOZZ/Y88zadWH0DD4=
-Date: Tue, 18 Jul 2023 15:35:42 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Mukesh Ojha <quic_mojha@quicinc.com>
-Cc: linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	corbet@lwn.net, agross@kernel.org, andersson@kernel.org,
-	konrad.dybcio@linaro.org, krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org, keescook@chromium.org, tony.luck@intel.com,
-	gpiccoli@igalia.com, catalin.marinas@arm.com, will@kernel.org,
-	andy.shevchenko@gmail.com, linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-hardening@vger.kernel.org,
-	linux-remoteproc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
-	Trilok Soni <quic_tsoni@quicinc.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Alexander Shishkin <alexander.shishkin@linux.intel.com>
-Subject: Re: [PATCH v4 00/21] Add Qualcomm Minidump kernel driver related
- support
-Message-ID: <2023071833-clamshell-drinking-188c@gregkh>
-References: <1687955688-20809-1-git-send-email-quic_mojha@quicinc.com>
- <2023062814-chance-flounder-f002@gregkh>
- <CAL_JsqLO9yey2-4FcWsaGxijiS6hGL0SH9VoMuiyei-u9=Cv=w@mail.gmail.com>
- <CACRpkda3CJ7G4-wDPkWmzg6nyCoEfG+u2cQH6KXWNjbftd90ow@mail.gmail.com>
- <355de4c7-180d-4edd-b6fd-9c8e29e40e42@quicinc.com>
- <52650970-de78-764f-28e2-ee0115b7d5c6@quicinc.com>
- <e4784d1c-73da-9cda-6aef-d02625e8efd2@quicinc.com>
+	id 1qLTew-009ES7-2I;
+	Mon, 17 Jul 2023 19:13:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
+	s=mail; t=1689621174;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xjvSgydsLBAt+kJ9U/k9BFTw7JpoLGf2fEESmtZCfmw=;
+	b=qeVCdSL1DB214zwLBzzpgW1NMPnfeFgV+Ul4yuE7BcFhqMCwo87py2QaHCdb3WJ1HVLVPR
+	fkfBzWXAz4T9KH9iSCSzVhdwtSMTP+x2px4mS2rNi5fUY3UGIX3SJgUCiozeUlLvemRAVo
+	SrkwqmTGB3bGFYaRrjrRbuvZxeZ7nGc=
+Message-ID: <03592cf5d6854dd5e534e0416de946fd38e4380c.camel@crapouillou.net>
+Subject: Re: [PATCH v2 09/10] pinctrl: renesas: Switch to use
+ DEFINE_NOIRQ_DEV_PM_OPS() helper
+From: Paul Cercueil <paul@crapouillou.net>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg
+ <mika.westerberg@linux.intel.com>, Linus Walleij
+ <linus.walleij@linaro.org>,  Balsam CHIHI <bchihi@baylibre.com>, Claudiu
+ Beznea <claudiu.beznea@microchip.com>, Geert Uytterhoeven
+ <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
+  Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org,  linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,  linux-renesas-soc@vger.kernel.org,
+ linux-tegra@vger.kernel.org,  linux-pm@vger.kernel.org
+Cc: Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  Andrew Lunn <andrew@lunn.ch>,
+ Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth
+ <sebastian.hesselbarth@gmail.com>, Ludovic Desroches
+ <ludovic.desroches@microchip.com>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>,  Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>,
+ Pavel Machek <pavel@ucw.cz>
+Date: Mon, 17 Jul 2023 21:12:51 +0200
+In-Reply-To: <20230717172821.62827-10-andriy.shevchenko@linux.intel.com>
+References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
+	 <20230717172821.62827-10-andriy.shevchenko@linux.intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <e4784d1c-73da-9cda-6aef-d02625e8efd2@quicinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_143559_817181_528FA46B 
-X-CRM114-Status: UNSURE (   8.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230717_201327_302134_901A30DC 
+X-CRM114-Status: GOOD (  15.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,13 +97,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 18, 2023 at 11:17:12AM +0530, Mukesh Ojha wrote:
-> + linux-samsung-soc@vger.kernel.org
-> + linux-mediatek@lists.infradead.org
+Hi Andy,
 
-What does that do?
 
-confused,
+Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=A9crit=
+=C2=A0:
+> Since pm.h provides a helper for system no-IRQ PM callbacks,
+> switch the driver to use it instead of open coded variant.
+>=20
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> ---
+> =C2=A0drivers/pinctrl/renesas/core.c | 16 +++++++---------
+> =C2=A01 file changed, 7 insertions(+), 9 deletions(-)
+>=20
+> diff --git a/drivers/pinctrl/renesas/core.c
+> b/drivers/pinctrl/renesas/core.c
+> index 0c8d081da6a8..34232b016960 100644
+> --- a/drivers/pinctrl/renesas/core.c
+> +++ b/drivers/pinctrl/renesas/core.c
+> @@ -649,7 +649,7 @@ static const struct of_device_id
+> sh_pfc_of_table[] =3D {
+> =C2=A0};
+> =C2=A0#endif
+> =C2=A0
+> -#if defined(CONFIG_PM_SLEEP) && defined(CONFIG_ARM_PSCI_FW)
+> +#if defined(CONFIG_ARM_PSCI_FW)
+> =C2=A0static void sh_pfc_nop_reg(struct sh_pfc *pfc, u32 reg, unsigned in=
+t
+> idx)
+> =C2=A0{
+> =C2=A0}
+> @@ -732,15 +732,13 @@ static int sh_pfc_resume_noirq(struct device
+> *dev)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0sh_pfc_walk_regs(pfc, sh_pfc_restore_reg);
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return 0;
+> =C2=A0}
+> -
+> -static const struct dev_pm_ops sh_pfc_pm=C2=A0 =3D {
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(=
+sh_pfc_suspend_noirq,
+> sh_pfc_resume_noirq)
+> -};
+> -#define DEV_PM_OPS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0&sh_pfc_pm
+> =C2=A0#else
+> =C2=A0static int sh_pfc_suspend_init(struct sh_pfc *pfc) { return 0; }
+> -#define DEV_PM_OPS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0NULL
+> -#endif /* CONFIG_PM_SLEEP && CONFIG_ARM_PSCI_FW */
+> +static int sh_pfc_suspend_noirq(struct device *dev) { return 0; }
+> +static int sh_pfc_resume_noirq(struct device *dev) { return 0; }
+> +#endif=C2=A0/* CONFIG_ARM_PSCI_FW */
+> +
+> +static DEFINE_NOIRQ_DEV_PM_OPS(sh_pfc_pm, sh_pfc_suspend_noirq,
+> sh_pfc_resume_noirq);
+> =C2=A0
+> =C2=A0#ifdef DEBUG
+> =C2=A0#define SH_PFC_MAX_REGS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0300
+> @@ -1418,7 +1416,7 @@ static struct platform_driver sh_pfc_driver =3D {
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.driver=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=3D {
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0.name=C2=A0=C2=A0=C2=A0=3D DRV_NAME,
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0.of_match_table =3D of_match_ptr(sh_pfc_of_table),
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0.pm=C2=A0=C2=A0=C2=A0=C2=A0 =3D DEV_PM_OPS,
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0.pm=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=3D pm_sleep_ptr(&sh_pfc=
+_pm),
 
-greg k-h
+I think you could do:
+
+.pm =3D IF_PTR(IS_ENABLED(CONFIG_ARM_PSCI_FW), pm_sleep_ptr(&sh_pfc_pm)),
+
+Then you wouldn't need the #if defined(CONFIG_ARM_PSCI_FW) guard either
+(as long as the code still compiles fine when that config option is
+disabled), and you wouldn't need those dummy callbacks.
+
+Cheers,
+-Paul
+
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0},
+> =C2=A0};
+> =C2=A0
+
 
