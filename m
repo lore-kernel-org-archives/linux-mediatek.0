@@ -4,117 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B8CAC001DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jul 2023 07:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13533C001B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jul 2023 08:14:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ek9Q9czNW5/ia8Yav1CbEsGBsG32zu0XY9TbNLHleOA=; b=hj/rUZwHC/B6iF+2aTQ5d1Vmna
-	XRcNFwzw6DQrpEM0I1q+nn4Ppr/7e4wMuRJSxWMeAQ4qnpH2agA8NouWU4jOiG5qnurgaO1EZ9aRp
-	//0PoRKC/dOoxFEd25v0ehRrGhE8fJI79kTR8bQZuVDrisv+piRw5rJhqZ4cQUMAgPWchZXguO6Rr
-	j0M15IJT/4WYgHXiTHnaJZeGSAN41Q+/Lm1fvv+/pCaVy1EsrroL2z1avlEkcVRpMNQ6kMfXHz9Kx
-	h9/tQGdORkB5srpoLUnTttviUkFyZ/5HH2SBvuFsBK2mdnBUOGDAk/U8JtNKPZ/AsuSB4TKEeoDsP
-	80qcUjvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qrbYFQFTULswIVhKXIXxxBSaDew7tCRdcz9YCkBbjFU=; b=mJY0ltJxLgv7/DYZltI4mD6uy2
+	bNpn/+dzsScsFK0bAs8WA3jYR76E3nuRIIgoYvC+X7UdshyFq3a/qo2vreLlpsda0l2mOa9/mgirK
+	lhe/DahmtT96iIT35OXeMc0BdH21VxEwWxhNg4UOhV12ffHKZQ5yz6cXAD5DIfptCauBbYuicOBIR
+	ajvGt4RmIY1WFf2vNVOf5c2MIgPF1N93Sjq0W3Q0mdJCeDSwYxQDa7ewwctBRJzu/PJoXpSqZ6orJ
+	1dugnWFZfjqAMCeSHF5P03yiORxYfNLOTFhbpg4ffsIsWaq2CcK8xdl17tWJZiNBEDiokMZt8TD1O
+	K6UqWJFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLJ1b-003Mqd-37;
-	Mon, 17 Jul 2023 07:52:08 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qLJMa-003Qj7-1I;
+	Mon, 17 Jul 2023 08:13:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLJ1G-003Mhg-1t;
-	Mon, 17 Jul 2023 07:51:48 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7C3486607008;
-	Mon, 17 Jul 2023 08:51:41 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689580305;
-	bh=RUiiRCfy3iVrquDdB1nCxa7+nhTsVZi2TwPLLRWk7+k=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Xkh/XfVOuPmhakdB5TixNssNK07j1XQnplGs/FJW5j5/zYKBx4oS7N5YsmbfftJJq
-	 5t85PTycD+cAMaLv4m0zExzB237qkYooGrp6it7EOjrgx1hGoXuJBZLHFQJSsbr2um
-	 HfP7PnDPSbB7LcUxYt7ckbG29biHfO2YJ38FjGU9p0g3QW6igojF6w+oz0/zExKbqD
-	 6eShHnawsHU5eH523alqjBNH+UewhtrkghtxR7SjACeQsg05gnet0AWCcDfx3WbIGa
-	 J2bCuIYnMk5n+OxcAEW8UsDTk9JUhba/ItvrqtOg2iqazy9jbECmXn39Jk5+HUz1Qo
-	 3qS9Lo4HR6IZw==
-Message-ID: <4aaef7c6-7b1d-d707-d38a-71f36f7d4aec@collabora.com>
-Date: Mon, 17 Jul 2023 09:51:39 +0200
+	id 1qLJMT-003QgX-2O;
+	Mon, 17 Jul 2023 08:13:45 +0000
+X-UUID: d3dfe632247911ee83ed1395ce914268-20230717
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=qrbYFQFTULswIVhKXIXxxBSaDew7tCRdcz9YCkBbjFU=;
+	b=DrYPNBzljaB4+MEv+Fw1DjxXv4eOD6290fxfNwMcQbwIQx4R3i1xE06dIg5b2r8SRZOUEh9GzsfHQVFui516xyScSui/45Oiw1rxSp5xqgm4YmNEUMZRAz1QE6ADxgItx+/EODT9oMcgYuMzu6CDRUlqp8bScD/FXEqz5eNAMw4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.28,REQID:03fab6a1-5a58-4db4-8ce5-0b380e573ce7,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:176cd25,CLOUDID:9f74ca4c-06c1-468b-847d-5b62d44dbb9b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: d3dfe632247911ee83ed1395ce914268-20230717
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2144330251; Mon, 17 Jul 2023 01:13:35 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 17 Jul 2023 16:13:21 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 17 Jul 2023 16:13:20 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
+CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
+ Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH 1/2] media: mediatek: vcodec: checking decoder ack message parameter
+Date: Mon, 17 Jul 2023 16:13:18 +0800
+Message-ID: <20230717081319.12542-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH] clk: Explicitly include correct DT includes
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
- =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@aj.id.au>, Neil Armstrong
- <neil.armstrong@linaro.org>, Sudeep Holla <sudeep.holla@arm.com>,
- Cristian Marussi <cristian.marussi@arm.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Alex Helms <alexander.helms.jy@renesas.com>, Abel Vesa
- <abelvesa@kernel.org>, Peng Fan <peng.fan@nxp.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Nishanth Menon <nm@ti.com>, Tero Kristo <kristo@kernel.org>,
- Santosh Shilimkar <ssantosh@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Jerome Brunet <jbrunet@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Heiko Stuebner <heiko@sntech.de>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Tomasz Figa <tomasz.figa@gmail.com>, Chanwoo Choi <cw00.choi@samsung.com>,
- Alim Akhtar <alim.akhtar@samsung.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Dinh Nguyen <dinguyen@kernel.org>,
- Viresh Kumar <vireshk@kernel.org>,
- Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Emil Renner Berthing <kernel@esmil.dk>, Hal Feng
- <hal.feng@starfivetech.com>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, =?UTF-8?Q?Emilio_L=c3=b3pez?=
- <emilio@elopez.com.ar>, Peter De Schrijver <pdeschrijver@nvidia.com>,
- Prashant Gaikwad <pgaikwad@nvidia.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>, Michal Simek <michal.simek@amd.com>
-Cc: devicetree@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org,
- linux-aspeed@lists.ozlabs.org, linux-oxnas@groups.io,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-riscv@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org
-References: <20230714174342.4052882-1-robh@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230714174342.4052882-1-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_005146_848559_96E619ED 
-X-CRM114-Status: GOOD (  10.71  )
+X-CRM114-CacheID: sfid-20230717_011341_809842_C40066F7 
+X-CRM114-Status: GOOD (  16.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,21 +91,161 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/07/23 19:43, Rob Herring ha scritto:
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+Need to checking all parameters of msg data are valid or not,
+in case of access null pointer or unreasonable value leading
+to kernel reboot.
 
-For MediaTek clocks
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  2 +
+ .../mediatek/vcodec/decoder/vdec_vpu_if.c     | 77 ++++++++++++-------
+ 2 files changed, 52 insertions(+), 27 deletions(-)
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+index c8b4374c5e6c..1ea5dbb475dd 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+@@ -160,6 +160,7 @@ struct mtk_vcodec_dec_pdata {
+  * @hw_id: hardware index used to identify different hardware.
+  *
+  * @msg_queue: msg queue used to store lat buffer information.
++ * @vpu_inst: vpu instance pointer.
+  */
+ struct mtk_vcodec_dec_ctx {
+ 	enum mtk_instance_type type;
+@@ -202,6 +203,7 @@ struct mtk_vcodec_dec_ctx {
+ 	int hw_id;
+ 
+ 	struct vdec_msg_queue msg_queue;
++	void *vpu_inst;
+ };
+ 
+ /**
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+index 82c3dc8c4127..23cfe5c6c90b 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+@@ -72,6 +72,21 @@ static void handle_get_param_msg_ack(const struct vdec_vpu_ipi_get_param_ack *ms
+ 	}
+ }
+ 
++static bool vpu_dec_check_ap_inst(struct mtk_vcodec_dec_dev *dec_dev, struct vdec_vpu_inst *vpu)
++{
++	struct mtk_vcodec_dec_ctx *ctx;
++	int ret = false;
++
++	list_for_each_entry(ctx, &dec_dev->ctx_list, list) {
++		if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst == vpu) {
++			ret = true;
++			break;
++		}
++	}
++
++	return ret;
++}
++
+ /*
+  * vpu_dec_ipi_handler - Handler for VPU ipi message.
+  *
+@@ -84,44 +99,51 @@ static void handle_get_param_msg_ack(const struct vdec_vpu_ipi_get_param_ack *ms
+  */
+ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+ {
++	struct mtk_vcodec_dec_dev *dec_dev;
+ 	const struct vdec_vpu_ipi_ack *msg = data;
+-	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
+-					(unsigned long)msg->ap_inst_addr;
++	struct vdec_vpu_inst *vpu;
+ 
+-	if (!vpu) {
++	dec_dev = (struct mtk_vcodec_dec_dev *)priv;
++	vpu = (struct vdec_vpu_inst *)(unsigned long)msg->ap_inst_addr;
++	if (!priv || !vpu) {
+ 		mtk_v4l2_vdec_err(vpu->ctx, "ap_inst_addr is NULL, did the SCP hang or crash?");
+ 		return;
+ 	}
+ 
+-	mtk_vdec_debug(vpu->ctx, "+ id=%X", msg->msg_id);
++	if (!vpu_dec_check_ap_inst(dec_dev, vpu) || msg->msg_id < VPU_IPIMSG_DEC_INIT_ACK ||
++	    msg->msg_id > VPU_IPIMSG_DEC_GET_PARAM_ACK) {
++		mtk_v4l2_vdec_err(vpu->ctx, "vdec msg id not correctly => 0x%x", msg->msg_id);
++		vpu->failure = -EINVAL;
++		goto error;
++	}
+ 
+ 	vpu->failure = msg->status;
+-	vpu->signaled = 1;
++	if (msg->status != 0)
++		goto error;
+ 
+-	if (msg->status == 0) {
+-		switch (msg->msg_id) {
+-		case VPU_IPIMSG_DEC_INIT_ACK:
+-			handle_init_ack_msg(data);
+-			break;
++	switch (msg->msg_id) {
++	case VPU_IPIMSG_DEC_INIT_ACK:
++		handle_init_ack_msg(data);
++		break;
+ 
+-		case VPU_IPIMSG_DEC_START_ACK:
+-		case VPU_IPIMSG_DEC_END_ACK:
+-		case VPU_IPIMSG_DEC_DEINIT_ACK:
+-		case VPU_IPIMSG_DEC_RESET_ACK:
+-		case VPU_IPIMSG_DEC_CORE_ACK:
+-		case VPU_IPIMSG_DEC_CORE_END_ACK:
+-			break;
++	case VPU_IPIMSG_DEC_START_ACK:
++	case VPU_IPIMSG_DEC_END_ACK:
++	case VPU_IPIMSG_DEC_DEINIT_ACK:
++	case VPU_IPIMSG_DEC_RESET_ACK:
++	case VPU_IPIMSG_DEC_CORE_ACK:
++	case VPU_IPIMSG_DEC_CORE_END_ACK:
++		break;
+ 
+-		case VPU_IPIMSG_DEC_GET_PARAM_ACK:
+-			handle_get_param_msg_ack(data);
+-			break;
+-		default:
+-			mtk_vdec_err(vpu->ctx, "invalid msg=%X", msg->msg_id);
+-			break;
+-		}
++	case VPU_IPIMSG_DEC_GET_PARAM_ACK:
++		handle_get_param_msg_ack(data);
++		break;
++	default:
++		mtk_vdec_err(vpu->ctx, "invalid msg=%X", msg->msg_id);
++		break;
+ 	}
+ 
+-	mtk_vdec_debug(vpu->ctx, "- id=%X", msg->msg_id);
++error:
++	vpu->signaled = 1;
+ }
+ 
+ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
+@@ -182,9 +204,10 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
+ 
+ 	init_waitqueue_head(&vpu->wq);
+ 	vpu->handler = vpu_dec_ipi_handler;
++	vpu->ctx->vpu_inst = vpu;
+ 
+ 	err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler, vpu->id,
+-					 vpu->handler, "vdec", NULL);
++					 vpu->handler, "vdec", vpu->ctx->dev);
+ 	if (err) {
+ 		mtk_vdec_err(vpu->ctx, "vpu_ipi_register fail status=%d", err);
+ 		return err;
+@@ -193,7 +216,7 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
+ 	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
+ 		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
+ 						 vpu->core_id, vpu->handler,
+-						 "vdec", NULL);
++						 "vdec", vpu->ctx->dev);
+ 		if (err) {
+ 			mtk_vdec_err(vpu->ctx, "vpu_ipi_register core fail status=%d", err);
+ 			return err;
+-- 
+2.18.0
 
 
