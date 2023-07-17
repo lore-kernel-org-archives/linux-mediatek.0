@@ -4,144 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F46DEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jul 2023 07:44:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7903AEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jul 2023 07:46:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6/afaGT8QIX1t2AYEHl+FLQKoyzhLbVbAh/CtmJIwSU=; b=ngyJlCWn1YJEBmGQ/uuS6xviu/
-	Hkb6aR+14ip9/KUbKEGxu3lWNs1WR5k5JhC49OIiJEghuWEQsakHK5waqlTr7PqxNCFCwxqYZrlrM
-	6U81stGL961PZFMcc2VLPT0+ZIvLrhXYbQlrUa9z5F1GjrQRs0xKUj1IRr/UoF63LzcMU3i6wXJDo
-	nQ2nwJqFaIJ3KflmY3v4b5qPzZP7fw5Wm/coOqIxDQcHuKFoKIXb1uletlw1avRgfkRHebJ5Tn6EP
-	9E9vBmhThjlDB8QjW9ThCc0cG31agF7IRaVNkQhaX1VnFegnpKgrpgOYMOF8GaNjrL4AtZ9EHPGXT
-	Y5Qh3ZPQ==;
+	bh=TUpV0i69cnfkz2nelxENlLbeUDKFc0MGa24POWERkHA=; b=ZtR8hGiY8fkSqDdLs8XudEtl2t
+	8PRH6UQP3TXFwjEKdQ8dleUYUBRY7bYgw+gcjCV3kATiFbD4/FCBTEorGHE1uUJ/YF/jVCbLRp1lJ
+	1yMoyznyoUKxHq+s0Tx7NwtiflbjsIFX2kCuviOAKX2K4GrKAC8GOdm6hwT2Y50PH/d/EJgVFSElc
+	aH3qJMlgzsPcTFzRXwWPXNi6P6Lap6Ze74O7hnC/zJ/vYvaw9FPXLdVI1EB2jGvUv1Yo7YGI+iwWs
+	QvtOtDn0y9l7EddSRoLxUJJ/ugqxBmec5J8grMLZp9QfXeTxlU1BVLz7rfkMGm3ksAF6Cxy9M09l5
+	Be9p9bnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLIuQ-003LM6-1y;
-	Mon, 17 Jul 2023 07:44:42 +0000
-Received: from mail-bn8nam11on20601.outbound.protection.outlook.com ([2a01:111:f400:7eae::601] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
+	id 1qLIwI-003LhC-0h;
+	Mon, 17 Jul 2023 07:46:38 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLIuL-003LKB-1v;
-	Mon, 17 Jul 2023 07:44:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=CCM83N0OdRME3S0PH4DiAvVSAE+F4NRCVpGoZOatAUdEXDNjrwFY4OdFnQsYcwhpOwyG2OxyfvFKGa2F3vgIH9Vhew1nGqZeU3GMkovB9evHaMgnQKkziMVT46VyLPPx3MjXvXJdAfUJMYFhGZbCj8Rb2idjHglGFhWyqccvHh8xJCtw50K/JVsjRi3AnHA3iRpMrREfWCL0t+RVgICeRc4vKo+Qb7MIRRfBjiQnig0zi5+qd459bg5aRraGyqJfvUdH8MiJajgPpHAuZ52kCoE5D2fv9+uWwA81GCB1ULErBe8yri02xFKenk3iz6OUeoGqGfMz8kqVLIQDA5+tdg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6/afaGT8QIX1t2AYEHl+FLQKoyzhLbVbAh/CtmJIwSU=;
- b=f8kh7/fsJo0rezv84NH5reQdTayckY8uoN02WgOJtR0SdyWW8k+2zlsLX3G4bNRKYvLHm7i4dDo83KmNlN7zYrqd+v3E1De7WPWe3JXO68mo5n+gaGTu150Qvead3XnJh/LJ8J0gdroWay8iNJJey6XhI0o22Qs0siH4uYdmevLCi/TdSrJ8RU1D8KtiU9D/TLEShtNiB4mOr94fXsGz0U1MZMyqs1l4AnOhHxXIzzZ8RyVRHAc4ACSTjBvrJgE491dHv7DNpYdqv/fT9fhMBC1OhuljNqxeKRm2UElkWIrLhUQ3GQs1nFmYEpuBNzfIZgbQgrbUanYd/ncBeWjb5g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=synaptics.com; dmarc=pass action=none
- header.from=synaptics.com; dkim=pass header.d=synaptics.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Synaptics.onmicrosoft.com; s=selector2-Synaptics-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6/afaGT8QIX1t2AYEHl+FLQKoyzhLbVbAh/CtmJIwSU=;
- b=jLfuZYztg14WrkS3SW13k4A23p6c7T+XFMOruIoURp0JcxKTmV4ROD/Et/F5JTY7sSaUaWWfB7jQnTbI3nEOvu9GUPn708iNceE1xepwEG3AiYDwwNxJHFr8lmszWWlPbCXlB7IA9JUyCv4/jkM+OZaZbdG/FUSFArGYfHdXcLo=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=synaptics.com;
-Received: from DM6PR03MB5196.namprd03.prod.outlook.com (2603:10b6:5:24a::19)
- by CH0PR03MB6114.namprd03.prod.outlook.com (2603:10b6:610:b9::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6588.31; Mon, 17 Jul
- 2023 07:44:30 +0000
-Received: from DM6PR03MB5196.namprd03.prod.outlook.com
- ([fe80::6882:b9c1:2b2d:998d]) by DM6PR03MB5196.namprd03.prod.outlook.com
- ([fe80::6882:b9c1:2b2d:998d%5]) with mapi id 15.20.6588.031; Mon, 17 Jul 2023
- 07:44:30 +0000
-Message-ID: <2d239d33-b05d-1b51-2268-43b2839b64ea@synaptics.com>
-Date: Mon, 17 Jul 2023 15:44:21 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v3 04/11] media: videobuf2: Stop define VB2_MAX_FRAME as
- global
-Content-Language: en-GB
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- hverkuil-cisco@xs4all.nl, ezequiel@vanguardiasur.com.ar,
- p.zabel@pengutronix.de, linux-rockchip@lists.infradead.org,
- mchehab@kernel.org, linux-staging@lists.linux.dev, ming.qian@nxp.com,
- kernel@collabora.com, gregkh@linuxfoundation.org,
- nicolas.dufresne@collabora.com
-References: <20230622131349.144160-1-benjamin.gaignard@collabora.com>
- <20230622131349.144160-5-benjamin.gaignard@collabora.com>
- <e7444263-0ce5-1575-8cca-1e51b1cfbe9a@synaptics.com>
- <5cb3f216-5041-a155-5d2c-059dc1f15024@collabora.com>
- <25b21252-0d3a-3e50-0012-57055f386fee@synaptics.com>
- <20230712104801.tgawhexpm53ocgd6@chromium.org>
-From: Hsia-Jun Li <Randy.Li@synaptics.com>
-In-Reply-To: <20230712104801.tgawhexpm53ocgd6@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: SJ0PR03CA0088.namprd03.prod.outlook.com
- (2603:10b6:a03:331::33) To DM6PR03MB5196.namprd03.prod.outlook.com
- (2603:10b6:5:24a::19)
+	id 1qLIwE-003Lgf-1t
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Jul 2023 07:46:36 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qLItl-0005e3-Cd; Mon, 17 Jul 2023 09:44:01 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qLIte-0004Us-4z; Mon, 17 Jul 2023 09:43:54 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qLItd-005WwB-3s; Mon, 17 Jul 2023 09:43:53 +0200
+Date: Mon, 17 Jul 2023 09:43:52 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Rob Herring <robh@kernel.org>
+Cc: Thierry Reding <thierry.reding@gmail.com>,
+	Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Michael Walle <michael@walle.cc>, Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Hammer Hsieh <hammerh0314@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org,
+	linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	asahi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-amlogic@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] pwm: Explicitly include correct DT includes
+Message-ID: <20230717074352.dz3ex7fwi77loayc@pengutronix.de>
+References: <20230714174852.4062251-1-robh@kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM6PR03MB5196:EE_|CH0PR03MB6114:EE_
-X-MS-Office365-Filtering-Correlation-Id: 21b58903-52c4-47dc-6644-08db8699a764
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: jE/g+HZxRTg6xcRNGrRZKdS+9OgRGquFxSfyyBSuQOYFk42uIEZCTNnAzcfODvvMFrLhIovlcOvtW1RG8b9zqyM5yUn4mxctCVEowodJfk8ryUYoVEAkBD3BWzWEy0R01KkVgqUjTgYh72ny1Fm9PFhm3qy1aCUOcywEEdS7/Q8bUBfSoIjai4NxuwLUTLDwd3GdJoD7THXCjQYPkvIsQRA8Hlct/JrOHcgrbbBRTQx6BoGRLFqQUIqFOF4pIrg2UxC7uamB5ToqMcMew6n5ezDdpIkMs+uGlc9eQm/DcMPjzthoUuqWZW+WPltMA9zhGYS32wC5BovXWmZdvFVD9tgc30YOZe7TLxoPwB+XZp+nTXI6RrDebmADVUbphcrwF06s6bSoQODGr42u2qognqEMOHZhvqKpshWpn1DAbLSbCFSOb9i5gOQwYUaijWiGfhbQtLNy4DR6G6WxzIzHSCyl6GNVSFIb5Jj4AW5kE/GSXFvW9dsfwDVTZ4i+mqd8UiMOdu17qmV9BXSB9PACl42NJC+dtK36HS3n2aqABW9lWZpnXcVZUyykGh2HPFR1de6MswKd1OXDiZZNkj5KnVFSSh+2fbvjI7VilXhQGIcnfcOnIIpvaUR61s5+DVYjuzs+KNNF0kFhsOHMJleAeBcpV1ztYDf3EYnuqlcD9gAlgXD6BHSp8VXYKcgPrpez
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR03MB5196.namprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(396003)(366004)(136003)(346002)(376002)(39860400002)(451199021)(478600001)(6666004)(6486002)(52116002)(186003)(53546011)(6506007)(36756003)(26005)(6512007)(316002)(2906002)(41300700001)(4326008)(66556008)(66946007)(66476007)(6916009)(5660300002)(7416002)(8676002)(8936002)(38350700002)(38100700002)(86362001)(31696002)(66574015)(2616005)(83380400001)(66899021)(31686004)(43740500002)(45980500001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UCt2ODNuS0xsdFRHV3A4MTl2aTJtZVd0RzcyMWtqayt5dmwyc0txTnVQSTJj?=
- =?utf-8?B?Q0NhZ3p1SCtYcCtGZjVnR1dqYy83VTRoN2NVQ2ZVTk9CTlBuMndISjFBZ0hH?=
- =?utf-8?B?Nmk5YXRLVEZxTnFJanQ0cmsrTkh6Q0NqSnZJVzJSdC9taDZDekFMQ2lLMk81?=
- =?utf-8?B?SWlYaG84OGNlVUpMR05pRGJVK0RubGJWa1JOTXZMUTZVMG5NdGtnc1dDdHNW?=
- =?utf-8?B?MWtnSGJ3bkcrLzZEcngzU0VkV3p3YkJkZC9vUzNBMlAwUlV5VGtCWjlGRGxY?=
- =?utf-8?B?cnF2SjJ5bnFacGtHRjRHc3NaaVVBSGJQSmtaZ1JjY3pkMk5YUUU1YVo4UGhm?=
- =?utf-8?B?MzdLWXJvTC9SU0svUU9kakpOcE1CZElRV29HcFdCNzdJNklNOGxlV3p5ZlUx?=
- =?utf-8?B?ajZlVFhyYlpKRU1CUlQ3UzJMYWVhak1Wd0pQYkdDWER1MUFIeGd1SVR2elZL?=
- =?utf-8?B?YjBMRUpGUUJ1WDJLeFM3S0xYNkVQUEJLTXpvQmQrT0lUbHd2OXpLSFN6Rmtj?=
- =?utf-8?B?MlhuM0hrTXI5V1BxV2dDVFZHelNXbEsvYlA1cXoraUM5end4TlljWXBqZitM?=
- =?utf-8?B?ZDgyeW9PNUNNU3ROcHYyR2xUbm00dUNhQlkyNUk0MUZjZ1dRQmhNaFhCcENh?=
- =?utf-8?B?THk0UWN2U05rcUpMMTJNc2IrbTdjSjZ4bmlhcG5BQTlNVHUySGxOeE1yNUNE?=
- =?utf-8?B?SEFMZXZkOGtqTk5xbTBQWjhmaU9xMmY0Nmp0WC9TclRFM2VXeGpVZi9ldENX?=
- =?utf-8?B?RTBLb1Urem9YZmc1TmhDV28vVlZEZGlBWER2aDU5Rmthc3NIeDNXakJFanUw?=
- =?utf-8?B?dXBRNUNyUk5Pd0h5QmdWc3ZURm9OUm1ZSE44OFJJd0ZTUkZ4YUIzZ1k2VTdN?=
- =?utf-8?B?VTN3SEhVTEd4d2NzRUhyL09xb2ZJU2t4dGpWalZucFVXL3Y5emNqempmQ0g5?=
- =?utf-8?B?UU5MNC9pNnR0R0tOU2NKUmtac3Z6eTNiMGhFcUcyblZhOGpTSUJYZXE2amlk?=
- =?utf-8?B?N0xJYndBSkd5R0NERjh0SVhZbnFDdDZFRVdOUUVPTFFxT2JobG5uMFQ2Q3N2?=
- =?utf-8?B?bFp5QXlxZlIzVWMwWUNERnJDaUhEa0l5Z2drSTNHeUNFSVVVZXJ5UDNpUWM3?=
- =?utf-8?B?djd4NWRHekJHSW5GOXY3K0JqRGkvcVFNV1RHSFdPVkRZLzdULytiTmZTSXFI?=
- =?utf-8?B?anJUdDNWa1NhZVcvQ0FzK3lLMkhqdGdFNSt4eXBDVFNCeENCWE9BZXV1MXZ1?=
- =?utf-8?B?bW1NZ1BMNUJzRzNqOEFPWHY0aXdNZzIzaHlncXNqWjhrMWI2WUhGUEhCSFpw?=
- =?utf-8?B?TExsdjdobml5QmpGRG1hTHdRNTl0Z1ZDTmc1dFB1S2hRUHN6Qy83SUN6VUNu?=
- =?utf-8?B?RzR0aXBRcXJ4a24weEozcmxwSmNUb3l1Q3kwbVA3S1BhVzVGY25wczUwOENQ?=
- =?utf-8?B?VStEWk1zaWVRdjNqVVFBNE1Cc1c5UzFMeDI2amlJVWJtS2pTZUFsTXk1alZo?=
- =?utf-8?B?WDVVdWhjYzNpcVQyTGlJVWhoRDRDVzcxSE9Uc0xVVVFoYTltOHoyZ3gyNFhX?=
- =?utf-8?B?N0tYWmZ2Nll3bE1sQktPRzkzLzVuZGx2RndpSVh6UWJ3OGpvUk42RnpuZE9F?=
- =?utf-8?B?U1prYVRValU3Y2dZYi9IOWdtZTV4aXJhYmVUSjZGWFlJand0WHl5VzJQTE5J?=
- =?utf-8?B?emhiRWhnSVJCREhHaXlOUnpEZ1hXYXdmRno5dXRueUlCQzVCV29RVjRiT0U5?=
- =?utf-8?B?aUQySjNRWjFFY1hva1lyeGFFMC9kaytSNnRsa3FKUmZWSlYvZ25sZFpCbUl5?=
- =?utf-8?B?STJhRGV0V0N5RzN5L2tYcTZuVFR3dTBCS2xjNjZEVTJyYU0vNzJPa0hwemVS?=
- =?utf-8?B?UUtVWXdGODNNSmFld1NITW5COGNOY1pUQ0FWY1ZtQlBUMDBGNk91bjBMb3ZT?=
- =?utf-8?B?TmFBa1JsN3N0aitGR1VxZndHYjUxTTk1R29mRFRqM1NhL3R3ZjVJVHpSZWtF?=
- =?utf-8?B?cFQvdlBlV3hHY2tWZVhNRkh0bjFDMU81Rm5HWTdCMjNmZVlxZG1UUU40TEVI?=
- =?utf-8?B?NUNGWGs2Kyt0QzI5Y1c1MXVENUtwLzFTc0pSWnpPdW9YYkprSWdwQjduYldC?=
- =?utf-8?Q?PmgFcwWHYXlDGqqL+kV9zb/te?=
-X-OriginatorOrg: synaptics.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 21b58903-52c4-47dc-6644-08db8699a764
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR03MB5196.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jul 2023 07:44:30.1331
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 335d1fbc-2124-4173-9863-17e7051a2a0e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 00srzRhDr3sKHfVs+62dkYeI3ltBg28gL9AUx/xeSqB0n7uuKlBgoeWvXEcDGIyt6eqx9xaRj0r55A3mDcI9/g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR03MB6114
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="3pw4fff6xzsrv6pf"
+Content-Disposition: inline
+In-Reply-To: <20230714174852.4062251-1-robh@kernel.org>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_004437_721325_E1D1A31F 
-X-CRM114-Status: GOOD (  30.56  )
+X-CRM114-CacheID: sfid-20230717_004634_882939_0CC0117A 
+X-CRM114-Status: GOOD (  26.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,224 +111,125 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On 7/12/23 18:48, Tomasz Figa wrote:
-> CAUTION: Email originated externally, do not click links or open attachments unless you recognize the sender and know the content is safe.
->
->
-> On Mon, Jul 03, 2023 at 04:35:30PM +0800, Hsia-Jun Li wrote:
->> On 7/3/23 16:09, Benjamin Gaignard wrote:
->>> CAUTION: Email originated externally, do not click links or open
->>> attachments unless you recognize the sender and know the content is
->>> safe.
->>>
->>>
->>> Le 30/06/2023 à 11:51, Hsia-Jun Li a écrit :
->>>> On 6/22/23 21:13, Benjamin Gaignard wrote:
->>>>> CAUTION: Email originated externally, do not click links or open
->>>>> attachments unless you recognize the sender and know the content is
->>>>> safe.
->>>>>
->>>>>
->>>>> After changing bufs arrays to a dynamic allocated array
->>>>> VB2_MAX_FRAME doesn't mean anything for videobuf2 core.
->>>> I think make it 64 which is the VB2_MAX_FRAME in Android GKI kernel is
->>>> more reasonable.
->>>>
->>>> It would be hard to iterate the whole array, it would go worse with a
->>>> filter. Such iterate may need to go twice because you mix
->>>> post-processing buffer and decoding buffer(with MV) in the same array.
->>> Here I don't want to change drivers behavior so I keep the same value.
->>> If it happens that they need more buffers, like for dynamic resolution
->>> change
->>> feature for Verisilicon VP9 decoder, case by case patches will be needed.
->>>
->> I just don't like the idea that using a variant length array here.
->>
-> "I don't like" is not an argument. We had a number of arguments for
-> using a generic helper (originally idr, but later decided to go with
-> XArray, because the former is now deprecated) that we pointed out in
-> our review comments for previous revisions. It wasn't really about the
-> size being variable, but rather avoiding open coding things in vb2 and
-> duplicating what's already implemented in generic code.
+--3pw4fff6xzsrv6pf
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I just want to say I don't think we need a variable length array to 
-store the buffer here.
+On Fri, Jul 14, 2023 at 11:48:50AM -0600, Rob Herring wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
 
-And the below is the reason that such a case could be avoided in the 
-first place.
+so the eventual goal here is to prepare for:
 
->
->> And I could explain why you won't need so many buffers for the performance
->> of decoding.
->>
->> VP9 could support 10 reference frames in dpb.
->>
->> Even for those frequent resolution changing test set, it would only happen
->> to two resolutions,
->>
->> 32 would be enough for 20 buffers of two resolution plus golden frames. It
->> also leaves enough slots for re-order latency.
->>
->> If your case had more two resolutions, likes low->medium->high.
->>
->> I would suggest just skip the medium resolutions, just allocate the lower
->> one first for fast playback then the highest for all the possible
->>
->> medium cases. Reallocation happens frequently would only cause memory
->> fragment, nothing benefits your performance.
->>
-> We have mechanisms in the kernel to deal with memory fragmentation
-> (migration/compaction) and it would still only matters for the
-> pathologic cases of hardware that require physically contiguous memory.
-> Modern hardware with proper DMA capabilities can either scatter-gather
-> or are equipped with an IOMMU, so the allocation always happens in page
-> granularity and fragmentation is avoided.
+ - drop #include <linux/of_device.h> from include/linux/of_platform.h
+ - drop #include <linux/of.h> from include/linux/of_device.h
+ - drop #include <linux/of_platform.h> from include/linux/of_device.h
+ - drop #include <linux/platform_device.h> from include/linux/of_device.h
+ - drop #include <linux/platform_device.h> from include/linux/of_platform.h
 
-Unfortunately, there are more devices that didn't have a IOMMU attached 
-to it, supporting scatter gather is more odd.
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  drivers/pwm/core.c               | 1 +
+>  drivers/pwm/pwm-apple.c          | 1 +
+>  drivers/pwm/pwm-atmel-hlcdc.c    | 1 +
+>  drivers/pwm/pwm-atmel-tcb.c      | 3 +--
+>  drivers/pwm/pwm-atmel.c          | 1 -
+>  drivers/pwm/pwm-berlin.c         | 1 +
+>  drivers/pwm/pwm-cros-ec.c        | 1 +
+>  drivers/pwm/pwm-fsl-ftm.c        | 3 +--
+>  drivers/pwm/pwm-hibvt.c          | 2 +-
+>  drivers/pwm/pwm-imx1.c           | 1 -
+>  drivers/pwm/pwm-jz4740.c         | 2 +-
+>  drivers/pwm/pwm-lp3943.c         | 1 +
+>  drivers/pwm/pwm-lpc18xx-sct.c    | 1 +
+>  drivers/pwm/pwm-mediatek.c       | 1 -
+>  drivers/pwm/pwm-meson.c          | 1 -
+>  drivers/pwm/pwm-microchip-core.c | 2 +-
+>  drivers/pwm/pwm-mtk-disp.c       | 1 -
+>  drivers/pwm/pwm-pxa.c            | 1 +
+>  drivers/pwm/pwm-sifive.c         | 1 +
+>  drivers/pwm/pwm-sl28cpld.c       | 1 +
+>  drivers/pwm/pwm-sprd.c           | 1 +
+>  drivers/pwm/pwm-sun4i.c          | 1 -
+>  drivers/pwm/pwm-sunplus.c        | 1 +
+>  drivers/pwm/pwm-tegra.c          | 1 -
+>  drivers/pwm/pwm-tiecap.c         | 2 +-
+>  drivers/pwm/pwm-tiehrpwm.c       | 2 +-
+>  drivers/pwm/pwm-visconti.c       | 2 +-
+>  drivers/pwm/pwm-vt8500.c         | 5 +----
+>  28 files changed, 21 insertions(+), 21 deletions(-)
+>=20
+> diff --git a/drivers/pwm/core.c b/drivers/pwm/core.c
+> index 3dacceaef4a9..d37617c60eae 100644
+> --- a/drivers/pwm/core.c
+> +++ b/drivers/pwm/core.c
+> @@ -8,6 +8,7 @@
+> =20
+>  #include <linux/acpi.h>
+>  #include <linux/module.h>
+> +#include <linux/of.h>
+>  #include <linux/pwm.h>
+>  #include <linux/radix-tree.h>
+>  #include <linux/list.h>
 
-It would be more likely that IOMMU would be disabled for the performance 
-reason.
+This file includes neither of_device.h nor of_platform.h and up to now
+gets of.h via <linux/pwm.h>.
 
->
-> Best regards,
-> Tomasz
->
->>>>> Remove it from the core definitions but keep it for drivers internal
->>>>> needs.
->>>>>
->>>>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->>>>> ---
->>>>>    drivers/media/common/videobuf2/videobuf2-core.c | 2 ++
->>>>>    drivers/media/platform/amphion/vdec.c | 1 +
->>>>> .../media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c | 2 ++
->>>>>    drivers/media/platform/qcom/venus/hfi.h | 2 ++
->>>>>    drivers/media/platform/verisilicon/hantro_hw.h | 2 ++
->>>>>    drivers/staging/media/ipu3/ipu3-v4l2.c | 2 ++
->>>>>    include/media/videobuf2-core.h | 1 -
->>>>>    include/media/videobuf2-v4l2.h | 4 ----
->>>>>    8 files changed, 11 insertions(+), 5 deletions(-)
->>>>>
->>>>> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c
->>>>> b/drivers/media/common/videobuf2/videobuf2-core.c
->>>>> index 86e1e926fa45..899783f67580 100644
->>>>> --- a/drivers/media/common/videobuf2/videobuf2-core.c
->>>>> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
->>>>> @@ -31,6 +31,8 @@
->>>>>
->>>>>    #include <trace/events/vb2.h>
->>>>>
->>>>> +#define VB2_MAX_FRAME  32
->>>>> +
->>>>>    static int debug;
->>>>>    module_param(debug, int, 0644);
->>>>>
->>>>> diff --git a/drivers/media/platform/amphion/vdec.c
->>>>> b/drivers/media/platform/amphion/vdec.c
->>>>> index 3fa1a74a2e20..b3219f6d17fa 100644
->>>>> --- a/drivers/media/platform/amphion/vdec.c
->>>>> +++ b/drivers/media/platform/amphion/vdec.c
->>>>> @@ -28,6 +28,7 @@
->>>>>
->>>>>    #define VDEC_MIN_BUFFER_CAP            8
->>>>>    #define VDEC_MIN_BUFFER_OUT            8
->>>>> +#define VB2_MAX_FRAME                  32
->>>>>
->>>>>    struct vdec_fs_info {
->>>>>           char name[8];
->>>>> diff --git
->>>>> a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
->>>>> b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
->>>>> index 6532a69f1fa8..a1e0f24bb91c 100644
->>>>> --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
->>>>> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
->>>>> @@ -16,6 +16,8 @@
->>>>>    #include "../vdec_drv_if.h"
->>>>>    #include "../vdec_vpu_if.h"
->>>>>
->>>>> +#define VB2_MAX_FRAME  32
->>>>> +
->>>>>    /* reset_frame_context defined in VP9 spec */
->>>>>    #define VP9_RESET_FRAME_CONTEXT_NONE0 0
->>>>>    #define VP9_RESET_FRAME_CONTEXT_NONE1 1
->>>>> diff --git a/drivers/media/platform/qcom/venus/hfi.h
->>>>> b/drivers/media/platform/qcom/venus/hfi.h
->>>>> index f25d412d6553..bd5ca5a8b945 100644
->>>>> --- a/drivers/media/platform/qcom/venus/hfi.h
->>>>> +++ b/drivers/media/platform/qcom/venus/hfi.h
->>>>> @@ -10,6 +10,8 @@
->>>>>
->>>>>    #include "hfi_helper.h"
->>>>>
->>>>> +#define VB2_MAX_FRAME                          32
->>>>> +
->>>>>    #define VIDC_SESSION_TYPE_VPE                  0
->>>>>    #define VIDC_SESSION_TYPE_ENC                  1
->>>>>    #define VIDC_SESSION_TYPE_DEC                  2
->>>>> diff --git a/drivers/media/platform/verisilicon/hantro_hw.h
->>>>> b/drivers/media/platform/verisilicon/hantro_hw.h
->>>>> index e83f0c523a30..9e8faf7ba6fb 100644
->>>>> --- a/drivers/media/platform/verisilicon/hantro_hw.h
->>>>> +++ b/drivers/media/platform/verisilicon/hantro_hw.h
->>>>> @@ -15,6 +15,8 @@
->>>>>    #include <media/v4l2-vp9.h>
->>>>>    #include <media/videobuf2-core.h>
->>>>>
->>>>> +#define VB2_MAX_FRAME  32
->>>>> +
->>>>>    #define DEC_8190_ALIGN_MASK    0x07U
->>>>>
->>>>>    #define MB_DIM                 16
->>>>> diff --git a/drivers/staging/media/ipu3/ipu3-v4l2.c
->>>>> b/drivers/staging/media/ipu3/ipu3-v4l2.c
->>>>> index e530767e80a5..6627b5c2d4d6 100644
->>>>> --- a/drivers/staging/media/ipu3/ipu3-v4l2.c
->>>>> +++ b/drivers/staging/media/ipu3/ipu3-v4l2.c
->>>>> @@ -10,6 +10,8 @@
->>>>>    #include "ipu3.h"
->>>>>    #include "ipu3-dmamap.h"
->>>>>
->>>>> +#define VB2_MAX_FRAME  32
->>>>> +
->>>>>    /******************** v4l2_subdev_ops ********************/
->>>>>
->>>>>    #define IPU3_RUNNING_MODE_VIDEO                0
->>>>> diff --git a/include/media/videobuf2-core.h
->>>>> b/include/media/videobuf2-core.h
->>>>> index 77921cf894ef..080b783d608d 100644
->>>>> --- a/include/media/videobuf2-core.h
->>>>> +++ b/include/media/videobuf2-core.h
->>>>> @@ -20,7 +20,6 @@
->>>>>    #include <media/media-request.h>
->>>>>    #include <media/frame_vector.h>
->>>>>
->>>>> -#define VB2_MAX_FRAME  (32)
->>>>>    #define VB2_MAX_PLANES (8)
->>>>>
->>>>>    /**
->>>>> diff --git a/include/media/videobuf2-v4l2.h
->>>>> b/include/media/videobuf2-v4l2.h
->>>>> index 5a845887850b..88a7a565170e 100644
->>>>> --- a/include/media/videobuf2-v4l2.h
->>>>> +++ b/include/media/videobuf2-v4l2.h
->>>>> @@ -15,10 +15,6 @@
->>>>>    #include <linux/videodev2.h>
->>>>>    #include <media/videobuf2-core.h>
->>>>>
->>>>> -#if VB2_MAX_FRAME != VIDEO_MAX_FRAME
->>>>> -#error VB2_MAX_FRAME != VIDEO_MAX_FRAME
->>>>> -#endif
->>>>> -
->>>>>    #if VB2_MAX_PLANES != VIDEO_MAX_PLANES
->>>>>    #error VB2_MAX_PLANES != VIDEO_MAX_PLANES
->>>>>    #endif
->>>>> --
->>>>> 2.39.2
->>>>>
->> --
->> Hsia-Jun(Randy) Li
->>
--- 
-Hsia-Jun(Randy) Li
+What is your plan for <linux/pwm.h>'s include? I think it would only need
 
+	struct of_phandle_args;
+
+to replace that. (But that would need another patch like this one, as
+then e.g. drivers/pwm/pwm-sl28cpld.c fails to compile because
+device_property_read_u32() is undeclared. It would need to #include
+<linux/property.h> which now it gets transitively via <linux/of.h>.)
+
+If <linux/pwm.h> is planed to continue #including <linux/of.h>, the
+explicit include here isn't necessary (and probably elsewhere).
+
+I don't care much either way, but maybe your quest would be a bit
+simpler if you only touch files that include the two files you want to
+modify?
+
+*shrug*, this patch is still an improvement so:
+
+Acked-by: Uwe Kleine-K=F6ng <u.kleine-koenig@pengutronix.de>
+
+Another thing I wonder is: How did you identify the files that need
+these includes. I guess you have a list of types for each header and
+search for files that use any of the types but doesn't include the
+respecitve header? I wonder if tracking this type -> header mapping in
+machine readable form somewhere would be nice, to e.g. make checkpatch
+warn if a file uses struct of_node but only gets it by chance?
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--3pw4fff6xzsrv6pf
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmS08TgACgkQj4D7WH0S
+/k6d7QgAjn09jbMtpLkxkAPiHCL/fUXRMWWMV76Fu8uZjs4221J2gsMK6PDWTeiP
+ybzv24/V+5/OyOeBVsFqZPw0gxNhTh8zmtyIdEvZO8eMBcZOX6JPcm/DI4YG3WU+
+6nYSRGc7D+AV+eD7s5CxHboHtOwY7RC2RGyPCNPA0yIYNTLYpdIVHYyn+8BpfeXj
+wnBKUiJAcJH7+JGUSFhRV7Xpd4RenRBnT3l8KEm9HUjJlEvqmNpueg64ho1bSXAH
++fbd5TtrHh001xp2BdyJ57uhh+KQggrhgLPhOSiiBQ7+oaro/jiO4IxUODUDCTia
+LGNDfrMHQ1gjS2ZQQPQwRr0vdmwd2w==
+=DUiw
+-----END PGP SIGNATURE-----
+
+--3pw4fff6xzsrv6pf--
 
