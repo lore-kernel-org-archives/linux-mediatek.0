@@ -4,87 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40453C001DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:53:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDE5AEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:54:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WeKj/GTIhW3XqcMjKYKgq233JDGzlX9fdLoBptj5fFI=; b=r58SV3MI4ZEBjk2kXfNNKghvwT
-	C2dBUo7isDL4mElOKcyLznYi3oBfauBI4twmTKiMDzTnddXIifGcPt0+tAsLiaQr29rqOUieBdInz
-	xnDqqepwOYPMUgua7m0g3999MkVJpCuMfy6azv+lB7uCN3WETrmRpdMPVow6X1s+BGN7coIcxKeSP
-	NLC6BJWVmWTWv1mP9X3QsKwpEmWOGR3vhSebO1EdqAIBNZvWZEIhTWnv94tNbpbxOOX8I01/3WEWj
-	jqIJt44yU7BOKTA2EffOsuwzj8uYxLJjhSBDwGkN7RBPnI4G6XoSLLCb960Y1KQeocqEd3K9j9V0I
-	A6l/1hrw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qpZsq4D8uq/3uYMY1vMcJf1V4nXRD5UgB0BDtYTU+WU=; b=IjPfVqnsvx15NoJnfqmFZzxhK+
+	2GgiA2XcG/HGdTSlZnLZI7VKv8SQi01Vg9C7rqTARi6qhOsYjCg1spF623/gfRPnpQLKvAGqfGpFt
+	ljtdgb6WS2/G6nLBi7s/7gg92T3Rdbr/n95jfc2/CW/8eC20j2PFuCRLmJ/YB95zXN5WVU8aSOXxO
+	w1oIoMbhrf+z4peG3MxDmYqSNLkf1/ol3MrjaSow7mcSNK0HKdvErqguxKIOaCiy/iFSH30G+hjLD
+	67pGGXr+1OZV5ssJ889fwfRKWO8xj9Jd7ny7l4sFtycY66F/72eGLnXq/42ZPeq1RWeuXhNtWSUhb
+	wX7uGROw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM13x-005x1T-0m;
-	Wed, 19 Jul 2023 06:53:29 +0000
+	id 1qM14l-005xWS-2t;
+	Wed, 19 Jul 2023 06:54:19 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM13r-005wyf-3C;
-	Wed, 19 Jul 2023 06:53:24 +0000
+	id 1qM14Z-005xOx-1m;
+	Wed, 19 Jul 2023 06:54:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=WeKj/GTIhW3XqcMjKYKgq233JDGzlX9fdLoBptj5fFI=; b=VhHy3HL9CqoEsgVp8ooUDQdN2i
-	VDTNlhbk9AaiIFfRcnVpejqRGy5gGAQPG4q/cttvKu7N+atyINarsW3l4IRToxjt7jwd+1JTEV1zf
-	rSGDY59HyD5bSvbEyKj4SdoPepLACRBa88FFd96c5lh5j2xcBrntItZcgNciOrwO28BogeLGACCpG
-	RgfWcjUgWj3pkIx7VfyccR8aO/TdxT5zVjQsjkTh0RQkKlbP0HTcVEmuXCemV+jeFVn4bwdWQ9DJO
-	qgE3jNnt0qMm1KOjnHnuKmLcdXAx1n/ZTaFmVMVqZ1cSP6tw6TfBI85Yc98SbSk3Aa+izUPvTkkZj
-	AKOmQalg==;
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=qpZsq4D8uq/3uYMY1vMcJf1V4nXRD5UgB0BDtYTU+WU=; b=mxm0cBTsmwxd4owXxkbCaDFb+R
+	m13tFO9ghyHafHV4gDhg42tNyjIvY3WQvUrDuBdA97ShuKfjg8KBbIkMR5VO83NoSaZ+O7v9+d5z7
+	8VxcbslknfMqMxqnQ1bf3sH7Ezqrh0nJCOvbk83ayQSnRHUVv65P5fs+M/Hd+GrYZy5dmKjD/D3Y9
+	IvYYxM1T5Yi5maFlqXJZN49nrXzv8puQBi/UbfpuxMKASepx+BQ+MxgapN3DKE0G9AvEYL77URIFr
+	G97tirGfhNdozHm7x9FaqGcRpWQUD35jFZZDwwTX4y8L6wL8IHdrpOcEStDIzEvdiGnd6zfH+Io7A
+	IRPKE8qw==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLhca-00BOn6-0e;
-	Tue, 18 Jul 2023 10:07:58 +0000
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4R4vft5t8Fz6D8X6;
-	Tue, 18 Jul 2023 18:03:50 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Tue, 18 Jul
- 2023 11:07:48 +0100
-Date: Tue, 18 Jul 2023 11:07:46 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-CC: Mika Westerberg <mika.westerberg@linux.intel.com>, Linus Walleij
-	<linus.walleij@linaro.org>, Balsam CHIHI <bchihi@baylibre.com>, "Claudiu
- Beznea" <claudiu.beznea@microchip.com>, Geert Uytterhoeven
-	<geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Thierry Reding <thierry.reding@gmail.com>, Paul Cercueil
-	<paul@crapouillou.net>, <linux-gpio@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-renesas-soc@vger.kernel.org>,
-	<linux-tegra@vger.kernel.org>, <linux-pm@vger.kernel.org>, Andy Shevchenko
-	<andy@kernel.org>, Andrew Lunn <andrew@lunn.ch>, Alexandre Belloni
-	<alexandre.belloni@bootlin.com>, Len Brown <len.brown@intel.com>, "Rafael J.
- Wysocki" <rafael@kernel.org>, Gregory Clement <gregory.clement@bootlin.com>,
-	Sean Wang <sean.wang@kernel.org>, "Jonathan Hunter" <jonathanh@nvidia.com>,
-	Ludovic Desroches <ludovic.desroches@microchip.com>, Pavel Machek
-	<pavel@ucw.cz>, "Matthias Brugger" <matthias.bgg@gmail.com>, Sebastian
- Hesselbarth <sebastian.hesselbarth@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 07/10] pinctrl: mediatek: Switch to use
- DEFINE_NOIRQ_DEV_PM_OPS() helper
-Message-ID: <20230718110746.00001bdb@Huawei.com>
-In-Reply-To: <20230717172821.62827-8-andriy.shevchenko@linux.intel.com>
-References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
-	<20230717172821.62827-8-andriy.shevchenko@linux.intel.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+	id 1qLZOe-009VqU-2k;
+	Tue, 18 Jul 2023 01:21:41 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4EF2A612A1;
+	Tue, 18 Jul 2023 01:19:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C194C433C7;
+	Tue, 18 Jul 2023 01:19:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689643197;
+	bh=sYoyjrCdqnfVe37hT1J702BYuzzCTd2Ci/rrKV27qAA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=eyHhuCAmVfOTgZNTYuPvST8Bws6XubJbHhqIq5hpG7rbrMQmiyRNF7eAkP5+adYpq
+	 Q3Ds5pXDtGuqwAb1Dt4MOgkvAFA5zFdvP9C+mfTSUxupFIcQdjqftN+gpLHeLqPz8D
+	 9XiBua8nNfLbfEDTljM19v3s9fF7OEfurK5xMArximWKqmER/uUH2ksGVzTzCepQt7
+	 3KnIWEXRE2Q23OrFJEyaljhgIuZSHn+gFMwFArfSqnWUAj0nTuXoS5W5LAnIkut2pa
+	 PgncX5CSMg9/fuqpH8SDX/bmsLgI+y0OdpvVYQaLhYsLW1R2tbOqFFJzg5IP0whzZ7
+	 u8pR9qdF6P2xw==
+Date: Tue, 18 Jul 2023 09:19:42 +0800
+From: Shawn Guo <shawnguo@kernel.org>
+To: Alexander Stein <alexander.stein@ew.tq-group.com>
+Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	=?iso-8859-1?Q?Beno=EEt?= Cousson <bcousson@baylibre.com>,
+	Tony Lindgren <tony@atomide.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
+	linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 3/3] arm64: dts: Replace deprecated extcon-usb-gpio
+ id-gpio/vbus-gpio properties
+Message-ID: <20230718011942.GQ9559@dragon>
+References: <20230615145838.1526919-1-alexander.stein@ew.tq-group.com>
+ <20230615145838.1526919-3-alexander.stein@ew.tq-group.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100003.china.huawei.com (7.191.160.210) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230615145838.1526919-3-alexander.stein@ew.tq-group.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_110756_766367_BFFF1D48 
-X-CRM114-Status: GOOD (  13.89  )
+X-CRM114-CacheID: sfid-20230718_022130_655622_86D36394 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,71 +107,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 17 Jul 2023 20:28:18 +0300
-Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
-
-> Since pm.h provides a helper for system no-IRQ PM callbacks,
-> switch the driver to use it instead of open coded variant.
-
-Good to mention the renames as well.
-
+On Thu, Jun 15, 2023 at 04:58:38PM +0200, Alexander Stein wrote:
+> Use id-gpios and vbus-gpios instead.
 > 
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
+> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+> Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> #mediatek
 > ---
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 5 +----
->  drivers/pinctrl/mediatek/pinctrl-paris.c      | 9 +++------
->  2 files changed, 4 insertions(+), 10 deletions(-)
+> Changes in v2:
+> * Added Heiko's A-b for rockchip
+> * Added Matthias' R-b for mediatek
 > 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> index 665dec419e7c..2bf5082d3aa9 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> @@ -922,10 +922,7 @@ static int mtk_eint_resume(struct device *device)
->  	return mtk_eint_do_resume(pctl->eint);
->  }
->  
-> -const struct dev_pm_ops mtk_eint_pm_ops = {
-> -	.suspend_noirq = mtk_eint_suspend,
-> -	.resume_noirq = mtk_eint_resume,
-> -};
-> +DEFINE_NOIRQ_DEV_PM_OPS(mtk_eint_pm_ops, mtk_eint_suspend, mtk_eint_resume);
->  
->  static int mtk_pctrl_build_state(struct platform_device *pdev)
->  {
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> index 33d6c3fb7908..b1cbd5bafa2e 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> @@ -1119,24 +1119,21 @@ int mtk_paris_pinctrl_probe(struct platform_device *pdev)
->  }
->  EXPORT_SYMBOL_GPL(mtk_paris_pinctrl_probe);
->  
-> -static int mtk_paris_pinctrl_suspend(struct device *device)
-> +static int mtk_paris_suspend(struct device *device)
->  {
->  	struct mtk_pinctrl *pctl = dev_get_drvdata(device);
->  
->  	return mtk_eint_do_suspend(pctl->eint);
->  }
->  
-> -static int mtk_paris_pinctrl_resume(struct device *device)
-> +static int mtk_paris_resume(struct device *device)
->  {
->  	struct mtk_pinctrl *pctl = dev_get_drvdata(device);
->  
->  	return mtk_eint_do_resume(pctl->eint);
->  }
->  
-> -const struct dev_pm_ops mtk_paris_pinctrl_pm_ops = {
-> -	.suspend_noirq = mtk_paris_pinctrl_suspend,
-> -	.resume_noirq = mtk_paris_pinctrl_resume,
-> -};
-> +DEFINE_NOIRQ_DEV_PM_OPS(mtk_paris_pinctrl_pm_ops, mtk_paris_suspend, mtk_paris_resume);
->  
->  MODULE_LICENSE("GPL v2");
->  MODULE_DESCRIPTION("MediaTek Pinctrl Common Driver V2 Paris");
+>  arch/arm64/boot/dts/freescale/imx8mp-msc-sm2s.dtsi            | 2 +-
+>  arch/arm64/boot/dts/freescale/imx8mq-tqma8mq-mba8mx.dts       | 2 +-
 
+Acked-by: Shawn Guo <shawnguo@kernel.org>
 
