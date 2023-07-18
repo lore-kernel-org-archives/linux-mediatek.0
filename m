@@ -4,140 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AC39C0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:07:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 295CCC001DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:07:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VF8ofKUT5qHRXr7yC8PL3EkIaPv+GP8WoCIG3n2qTI0=; b=SAKMftG08TCGV3s5eFwgGgOPXY
-	VhJ62/hcE4neu/Enq4vTpqyrb60edDMM51c8q3ZrhFuPJqffCgvpghZFKQHfs5kFn7TCbwh1YTZix
-	BjBqpqhVhI0ldrz/Raf3zUHgZ97jxwKQoBsJX79w5wyuD+NnFADYv9qoT+w7T2HAljbhcwT2WQuvj
-	QukFLZMLGyuW1u8dGWCozWz/h49dF3bqY3Xt5ikxohwUwCsrWHc+yXUJrW2IEBYh3bCry6er/LsNA
-	dLdhM4pbXfbDXzasAiE8BWHDhDHoCyhyKPmYdSOkKA5z5VT11MbyCELl4y4XBtQ+0z6dx4u8wiMyO
-	ADx/nptQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/6/T7Rx9XkXI/OQ+PALxwqi90pDZgczqC9OMeg5WiCE=; b=iaPGqq0N2sE8xJSss2+O6RyvtJ
+	t1rNwzLsWgvHhOP1TJcvVJJKJyRCo7p7LNeQKj7z7Fp78xbhDULBonZV4PAZjpfPy+h33aqSGVoEq
+	pvRZ25FOtgzP4JILIZmLGyN/rDmMy+LOF+/lmTA8y/FhxeMtfjGCeXF/AFO05FXId57B1e5cxBGHp
+	i075dsa4DQnAHti8mASH/+UyIPA2ijvO1MXd+DR5RUZCL8CqL/MPXcq4HCpQZ0hv+k7DbGl2oNaR3
+	7TzpKzxrYpipZq16zVTjwCKCNkNos2m+6fEpDwiIpsf7OpA/mBYO35xPMjt0PPp47bB2boyHt89sL
+	xB09MT9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2D5-006DsL-2p;
-	Wed, 19 Jul 2023 08:06:59 +0000
-Received: from mail-tyzapc01on2070c.outbound.protection.outlook.com ([2a01:111:f403:704b::70c] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
+	id 1qM2Du-006E5x-06;
+	Wed, 19 Jul 2023 08:07:50 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2D1-006Dox-2q;
-	Wed, 19 Jul 2023 08:06:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=AW4gD5AzPe3LwDDmRzKcuO3ic9oyU+gj5xF5Oivyr/JRvtAeKD4EfDR0qQu8W/1bJjW34PT00ALqdyVIDtN3jcIR6PkrvClL6aB8wyRXxNYbwP5ytm+LvZSdIZkNOUCp7+6qwSOxbtfAy4FbtqRRsg4qqn/pAGBKwy+ZAegMfgHrnVQjnNHbUOgHbtRGh89hK9hbnQYZvBh+zd5+T+y9Fs8vnxAnK1EF0NUnpfGNPg3yh8ila8yb3DPKUf80DI/3XDSCHCNg005LgeST41cF/FyUoyS8p+QqVvsx1yJ75CsfTwj28a9ofKgvkLLZDkNikxd2brqyEc2IKGQX88AKuA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VF8ofKUT5qHRXr7yC8PL3EkIaPv+GP8WoCIG3n2qTI0=;
- b=MOSLGRlc4+zmdcgHzQkbcl1yVnLYmSKNmuJJR9rHaQb0bf53qrpqGKnfXat+fe9JXYHK3AeY1TRJM9PbRREWOhArqn7mzdtL0jRbc9KH2WlGaSgMcqlA+3GinGdfA0Fmq+Nwo92aToyHXDYb4lt/Fut1jrd9QdJns5cq6svbyGpe0lKYkBeb/dDUyig5GNVsyBQhYpvLIlSmHjRv7/WpDuKFo6XO3Ue2mWH3zCxGjGSMtUSlcFhlzT/xQSRORqNRixuJ+sjiTjOG58oEfFnmPxvhds9g20/APxPUJwbqOgFK49smrx+mNLMeV+H29ks/4f0apkO4KZ+CpraYRXMSiQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
- dkim=pass header.d=vivo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VF8ofKUT5qHRXr7yC8PL3EkIaPv+GP8WoCIG3n2qTI0=;
- b=XE2yPY+mZypC18J7n2BAJdxtlsT1K5Mqv3XYUBquIa2mekrHrNuk/dtxIaJdjwcfoDReVOASBix8zS4kSQPbK+hDw2PuTYP5IY9994k2kfii9UqVMbwjxhOg3TgCpfRRUCq2cSBkAjBWJY/gtOTid/xvzV4dpXauBeA+FKFkj/zgbJovREMA6h8c0qgN7+uQra9D4tv4tvKBeC3MAhgOqeyFW6taaQlXXsxfU/+y0azWmkHPRdAgzimrRLz5OcC0T7GTS0rcQEONfKhbtfukC7RrzKnTnnDSWUbWxpQq5OSGX70M4EWospsgB4otcgK8MRhU25J/TEHNTnrRwxx8kg==
-Received: from TYZPR06MB6697.apcprd06.prod.outlook.com (2603:1096:400:451::6)
- by SI2PR06MB4011.apcprd06.prod.outlook.com (2603:1096:4:ea::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6609.23; Wed, 19 Jul
- 2023 08:06:43 +0000
-Received: from TYZPR06MB6697.apcprd06.prod.outlook.com
- ([fe80::30f7:d30:53e3:ce86]) by TYZPR06MB6697.apcprd06.prod.outlook.com
- ([fe80::30f7:d30:53e3:ce86%4]) with mapi id 15.20.6609.022; Wed, 19 Jul 2023
- 08:06:43 +0000
-From: =?gb2312?B?wre67LfJ?= <luhongfei@vivo.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, Moudy Ho <moudy.ho@mediatek.com>,
-	=?gb2312?B?wre67LfJ?= <luhongfei@vivo.com>, Sun Ke <sunke32@huawei.com>,
-	Deepak R Varma <drv@mailo.com>, "linux-media@vger.kernel.org"
-	<linux-media@vger.kernel.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>
-CC: opensource.kernel <opensource.kernel@vivo.com>
-Subject: [PATCH v2] media: mdp3: Fix resource leak in for_each_child_of_node()
- loop
-Thread-Topic: [PATCH v2] media: mdp3: Fix resource leak in
- for_each_child_of_node() loop
-Thread-Index: Adm6F/SE4RTkuQkWhUizu/QRDyLU6g==
-Date: Wed, 19 Jul 2023 08:06:43 +0000
-Message-ID: <20230719080632.13357-1-luhongfei@vivo.com>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: TYCPR01CA0003.jpnprd01.prod.outlook.com (2603:1096:405::15)
- To TYZPR06MB6697.apcprd06.prod.outlook.com (2603:1096:400:451::6)
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=vivo.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB6697:EE_|SI2PR06MB4011:EE_
-x-ms-office365-filtering-correlation-id: 3b7e22ee-0c12-4b59-1ab6-08db882f1702
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: tnZPsdZuAO57gZWSRS+sGP97YWlfYkbCVClL7hACBq5XVjd1ESOJ7CWqaeDjQdSKnGWUn8vSzD38pseWpA48SNc91CD4iB2nhZK2XyRp387a8s2OdMTmQ9PFNHkE2ZUcgUzTncotjlMcVAg+0uEDkWCAwYYBE0mMH53kMbo9RJQHLWmr8ugbbUzb5noE5pUUszfzyvmqunegul2GR1s5DGr3ye2rbX5+Zw5fQ7/+/iesl4no/LU3a1DYE0gnOxNhx9I3ePCUrw3lk/upGTtmPGCXsxSt57CsQOkN/SZ4uo/lQzNiDWHHW6abZbAENE9KPJIuNGgT+8BG8jSNd25MTVzgrxM3nTnzeIUkaXH+FbPTpQjVyKaugoABoW4Onf91xe/7jXJ+UqysaTY6nbOUGLQARG2ynnQpU+i2YtuT4xChPBfTeq8diTGFhEPYvmFil8OtLbtze/Nf+r+du9GUWsBmNCd5sw97K8qS+VCoy5PhjU4t+oyWzxmCVsU9tht9YigMB+yBUgn4pY0VrYisifbPtYnzPP06zTAQfyjPVMJz5o6w/YX35YkhB+rt2iCA1PU3uuIvNUrk72H4uaaGHN+wMv0DNqQWscEbaHoNehVds7qv+VYNcXQJ1C73+nff
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR06MB6697.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(39860400002)(136003)(346002)(396003)(366004)(376002)(451199021)(52116002)(6506007)(26005)(1076003)(6512007)(107886003)(110136005)(85182001)(38350700002)(36756003)(38100700002)(122000001)(7416002)(5660300002)(2906002)(86362001)(4326008)(4744005)(316002)(41300700001)(64756008)(66446008)(66476007)(66556008)(66946007)(8936002)(8676002)(6486002)(71200400001)(478600001)(921005)(2616005)(186003);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?gb2312?B?eE5GcWxiWXEzSTFMb01Pb3V6MGtKd3N1RTZwSTJndEV4SEZFY0VvemkrUWgr?=
- =?gb2312?B?eEthTEl0blJ6ZHhuaWhIUnFvaDhWdndmUUd4RnB5K3dDaUpERmlGOXk4cHYy?=
- =?gb2312?B?REg3UzZDZ3dvUjI5SjM5eWVOTFlxNGdDSDdkZXliRjNobmw3NHRlS0FoVkVR?=
- =?gb2312?B?QS83ZHZ3TVJaTFNta0RwdTBYRkg2L2RBZVFkKzlZeWRNNy9reTNCRm1UNFBl?=
- =?gb2312?B?czIyQVVMRUx6a1l3My8xS080WkxJbnlCaTU3a0NrSlNIbGpYUnZCVjJHMWVY?=
- =?gb2312?B?dGFvRVlqZnZrM2Jwa0VoYy9KQURjRjRqTEFHMHZWTXhDeUV2V2piR09EVzRy?=
- =?gb2312?B?SmFHRjN4aHljcGVJcGRxNm1wZHNsbjdvamJrUXplOTg4M3oreWRkbzVycFQv?=
- =?gb2312?B?UXBwY2RsOWl2YWY2ay8vbEJ2L2dDWDM0UjdxY0ZUcUk4dm0vaHRRQkJYQnRD?=
- =?gb2312?B?dGpONWNtQ0xvTnFMd0k2Zk44VittaEttcUtEMDR5OG5iN2ZOQzUrUkJqelhi?=
- =?gb2312?B?V2JDdkRBYWhHa0dIL3hyQ3ZkS0d3eGxFaFZzcGt3MExZWE5LZ0ovY0hkWmhM?=
- =?gb2312?B?MkNyaHY4Q1d1b2IxbnZzZGQwMk5nRGZ3RkJhTjBEMFpnQURCTlVFdEZwY2lT?=
- =?gb2312?B?TU5BaFNZSXczVnVYU0RnaWNST3FZSFhNV3NsUjdKakdYdW9DSDJ6TDJUYjVK?=
- =?gb2312?B?b1hIem9LamxQbkMydU1EUTQyQW9EcEMyZ2NJdUR2dE9QakRpK2NpNlk0Zlhp?=
- =?gb2312?B?YmJ5bDM3YXhGNlZVMlF6aG8wZ0I5dUsybmJhaGJFa3RvU0N5blVFRzVmVE1R?=
- =?gb2312?B?MUJzc1MzdlZ4TzRXbzR4U0dNNnlJaEVhazEwWUhvK0RHRzVGeU9nSEw3KytC?=
- =?gb2312?B?WFdYWlZiS3JwWXo3aHhGSDRMR1c5cWEwNThCR2trT204TU5wbGpGRjBNYjhj?=
- =?gb2312?B?MnROWW10bE1MRmRjb05jM1VmMjgrYmZHS0liTjdPc0NPUm9YSTRBVkhvWGwr?=
- =?gb2312?B?ZStZcXRFSW1UODBsVnd4R01aS1REdHBSOG5DdHZTYjZGNkdETkRPWDVFbHpP?=
- =?gb2312?B?MDBvd2ttTHh5Ry9wZTlzem1yZi9JQ2hGdWdPeURaclBERVpjUWtYRmJiZXI5?=
- =?gb2312?B?U0ZvbDZhcERINW1JRHRaMVdBS21CWlVEWkJ3eEEyYnZmU3dDRmRyOEhXdFRI?=
- =?gb2312?B?VEI1cmtiVHhXVkxGSGluRndKcXI0cHFoRnNhWXJFQnR5dDgxL3lma0VtbGdV?=
- =?gb2312?B?TWFLS0tPN1hsNlM3RFVDUWJlcjZ6MGVEWG5HMnh4V0JIRk9scjAwbEJQckgx?=
- =?gb2312?B?R2x4UWpVK3lLMXJIRk4rd0xsV2NJVEpRQ1JES1dwa29lTnYveEt2bmZhUmZi?=
- =?gb2312?B?UHdhVU1SUjRPK2VXc0RTcWJCZFp6ajUzMVREL3RicXhDdkM5WnhNbFNJbENj?=
- =?gb2312?B?NmNabzhmQVVHSmg2OHRIODRheFNXQW85WmlKV3JZaFFEVEp6dzNlSmJJS3hq?=
- =?gb2312?B?NHI4anVkVDJJazdQTHNzczB2RTJld09oZW1GNkt6a1dycXBBaWxtZUUzOWpN?=
- =?gb2312?B?dEllY3VSYjRiS2tRaWhxUTV6VkNuem9zMVN4eEhaZFBqb05vYThWQm9ZNHU4?=
- =?gb2312?B?MDFyQjNOK05SWkhIQkZvVUN6WHlpbnozY0VvM2VETGZyNitoMDdhaTJCdVFJ?=
- =?gb2312?B?eUpEeW9OTFBSdzZHZXdoTG42SDBtcVd2ZVB0WnRZejNFbTJYNUppZGdJOU02?=
- =?gb2312?B?WjFMd1lWSTN2TnZ4ckhYMjRZQjlhY3o0V2JqbmFOQzBsMXQ0RDlOTURHanpU?=
- =?gb2312?B?ZW4waU9vK0QvL1lzWG85VXVkZ1R0Mjl0OVdnUUpwMFNUT2NreEJNWDE5WUty?=
- =?gb2312?B?aXZQREFPNXl3NmYrejBiZXpCd29IcUdCTGhwaHVaaHIxc2dBVTNqbGw3T2Rv?=
- =?gb2312?B?NGV1REpkcHhhbzZZZlJ6RHVaZURHMDd1Y0JjVERNRXJ6VmtZNE1jMURrQy9C?=
- =?gb2312?B?Q2haTmZ4M0hYc0F5bkFDaVg2TlFpWEpyeFBiek5LTHJ0c0VYb2lnbGpuaHRV?=
- =?gb2312?B?OThpR0UrR21tSjB2aWRZcW9YaHAyZXBDeU9sUm5acFRVODVnVlhUS0w5clJF?=
- =?gb2312?Q?5PJZnWc4eeDl3wbeLZRVKPC38?=
-Content-Type: text/plain; charset="gb2312"
-Content-Transfer-Encoding: base64
+	id 1qM2Ds-006E4e-0t;
+	Wed, 19 Jul 2023 08:07:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:To:From:Date:Sender:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=/6/T7Rx9XkXI/OQ+PALxwqi90pDZgczqC9OMeg5WiCE=; b=VerkgzgghYgAGf8Zy8nROWB9yP
+	X82jOPApdhN4O34D4hgZRDD5v6L3TAaiF/7Oj+MOilGBZceL9MxOUG73RpXOpro4vcnBuWNZeTkN5
+	edB2dJG5Egz9PUeROH1okOAz2qaMzJNrErNAlJGWfsspxQMoBuPd5cwXlRpvPakwmocrby/JixTZy
+	6lSDNSXIQgXFis4HTK3rKFsop7+MIjNoJbmIOHBAH1TzLvfIXllkTe5Q3ZGkSFyl0JwO/rLr+PAb9
+	hytPIMzlW5ktzu5LfE6zRRXTagzsH4tU2s+4vYDPbnKUqrGlQ+ct6kMIWJJOJVNje3Ty8yJg1sLwk
+	NzAs2Lug==;
+Received: from pidgin.makrotopia.org ([185.142.180.65])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qLsIv-00C4Md-0B;
+	Tue, 18 Jul 2023 21:32:47 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1qLsIb-0001MD-29;
+	Tue, 18 Jul 2023 21:32:01 +0000
+Date: Tue, 18 Jul 2023 22:31:53 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Greg Ungerer <gerg@kernel.org>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next v3 6/9] net: ethernet: mtk_eth_soc: add NETSYS_V3
+ version support
+Message-ID: <121a8ac65c685a896c2b046e00cf490cd61e61b0.1689714291.git.daniel@makrotopia.org>
+References: <cover.1689714290.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB6697.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3b7e22ee-0c12-4b59-1ab6-08db882f1702
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Jul 2023 08:06:43.3501
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 4yPAFGQW/IEVBYCqB1NP2ZDG8jDkeDa4Z2JlQCpbReWvxToTet8huPb14/3W2JRHRfgSPfRcuAMqYvUvj5n0EQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR06MB4011
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1689714290.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230719_010655_924527_56BC06F5 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20230718_223224_283940_F1BE73CB 
+X-CRM114-Status: GOOD (  24.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,20 +91,311 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Zm9yX2VhY2hfY2hpbGRfb2Zfbm9kZSBzaG91bGQgaGF2ZSBvZl9ub2RlX3B1dCgpDQppbiBlcnJv
-ciBwYXRoIGF2b2lkIHJlc291cmNlIGxlYWtzLg0KDQpTaWduZWQtb2ZmLWJ5OiBMdSBIb25nZmVp
-IDxsdWhvbmdmZWlAdml2by5jb20+DQotLS0NCkNoYW5nZWxvZzoNCnYxLT52MjoNCjEuIENoYW5n
-ZSB0aGUgc3ViamVjdCBsaW5lIG9mIHRoaXMgcGF0Y2ggdG8gaW5jbHVkZSBkcml2ZXIgbmFtZS4N
-CjIuIFJlbW92ZSB0aGUgdW5uZWVkZWQgb2Zfbm9kZV9wdXQuDQoNCiBkcml2ZXJzL21lZGlhL3Bs
-YXRmb3JtL21lZGlhdGVrL21kcDMvbXRrLW1kcDMtY29tcC5jIHwgMSArDQogMSBmaWxlIGNoYW5n
-ZWQsIDEgaW5zZXJ0aW9uKCspDQoNCmRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3Jt
-L21lZGlhdGVrL21kcDMvbXRrLW1kcDMtY29tcC5jIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9t
-ZWRpYXRlay9tZHAzL210ay1tZHAzLWNvbXAuYw0KaW5kZXggYTYwNWU4MGM3ZGMzLi40MGM0Yjc5
-YTUwOTAgMTAwNjQ0DQotLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL21kcDMv
-bXRrLW1kcDMtY29tcC5jDQorKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL21k
-cDMvbXRrLW1kcDMtY29tcC5jDQpAQCAtMTEzNSw2ICsxMTM1LDcgQEAgaW50IG1kcF9jb21wX2Nv
-bmZpZyhzdHJ1Y3QgbWRwX2RldiAqbWRwKQ0KIAkJY29tcCA9IG1kcF9jb21wX2NyZWF0ZShtZHAs
-IG5vZGUsIGlkKTsNCiAJCWlmIChJU19FUlIoY29tcCkpIHsNCiAJCQlyZXQgPSBQVFJfRVJSKGNv
-bXApOw0KKwkJCW9mX25vZGVfcHV0KG5vZGUpOw0KIAkJCWdvdG8gZXJyX2luaXRfY29tcHM7DQog
-CQl9DQogDQotLSANCjIuMzkuMA0KDQo=
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+
+Introduce NETSYS_V3 chipset version support.
+This is a preliminary patch to introduce support for MT7988 SoC.
+
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 105 ++++++++++++++------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  48 +++++++--
+ 2 files changed, 116 insertions(+), 37 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index ad8381be005f2..dd5a08c7ed41a 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -943,17 +943,32 @@ void mtk_stats_update_mac(struct mtk_mac *mac)
+ 			mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x20 + offs);
+ 		hw_stats->rx_flow_control_packets +=
+ 			mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x24 + offs);
+-		hw_stats->tx_skip +=
+-			mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x28 + offs);
+-		hw_stats->tx_collisions +=
+-			mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x2c + offs);
+-		hw_stats->tx_bytes +=
+-			mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x30 + offs);
+-		stats =  mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x34 + offs);
+-		if (stats)
+-			hw_stats->tx_bytes += (stats << 32);
+-		hw_stats->tx_packets +=
+-			mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x38 + offs);
++
++		if (mtk_is_netsys_v3_or_greater(eth)) {
++			hw_stats->tx_skip +=
++				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x50 + offs);
++			hw_stats->tx_collisions +=
++				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x54 + offs);
++			hw_stats->tx_bytes +=
++				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x40 + offs);
++			stats =  mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x44 + offs);
++			if (stats)
++				hw_stats->tx_bytes += (stats << 32);
++			hw_stats->tx_packets +=
++				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x48 + offs);
++		} else {
++			hw_stats->tx_skip +=
++				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x28 + offs);
++			hw_stats->tx_collisions +=
++				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x2c + offs);
++			hw_stats->tx_bytes +=
++				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x30 + offs);
++			stats =  mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x34 + offs);
++			if (stats)
++				hw_stats->tx_bytes += (stats << 32);
++			hw_stats->tx_packets +=
++				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x38 + offs);
++		}
+ 	}
+ 
+ 	u64_stats_update_end(&hw_stats->syncp);
+@@ -1257,7 +1272,10 @@ static void mtk_tx_set_dma_desc_v2(struct net_device *dev, void *txd,
+ 		data |= TX_DMA_LS0;
+ 	WRITE_ONCE(desc->txd3, data);
+ 
+-	data = (mac->id + 1) << TX_DMA_FPORT_SHIFT_V2; /* forward port */
++	if (mac->id == MTK_GMAC3_ID)
++		data = PSE_GDM3_PORT;
++	else
++		data = (mac->id + 1) << TX_DMA_FPORT_SHIFT_V2; /* forward port */
+ 	data |= TX_DMA_SWC_V2 | QID_BITS_V2(info->qid);
+ 	WRITE_ONCE(desc->txd4, data);
+ 
+@@ -1268,6 +1286,8 @@ static void mtk_tx_set_dma_desc_v2(struct net_device *dev, void *txd,
+ 		/* tx checksum offload */
+ 		if (info->csum)
+ 			data |= TX_DMA_CHKSUM_V2;
++		if (mtk_is_netsys_v3_or_greater(eth) && netdev_uses_dsa(dev))
++			data |= TX_DMA_SPTAG_V3;
+ 	}
+ 	WRITE_ONCE(desc->txd5, data);
+ 
+@@ -1333,8 +1353,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 	mtk_tx_set_dma_desc(dev, itxd, &txd_info);
+ 
+ 	itx_buf->flags |= MTK_TX_FLAGS_SINGLE0;
+-	itx_buf->flags |= (!mac->id) ? MTK_TX_FLAGS_FPORT0 :
+-			  MTK_TX_FLAGS_FPORT1;
++	itx_buf->mac_id = mac->id;
+ 	setup_tx_buf(eth, itx_buf, itxd_pdma, txd_info.addr, txd_info.size,
+ 		     k++);
+ 
+@@ -1382,8 +1401,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 				memset(tx_buf, 0, sizeof(*tx_buf));
+ 			tx_buf->data = (void *)MTK_DMA_DUMMY_DESC;
+ 			tx_buf->flags |= MTK_TX_FLAGS_PAGE0;
+-			tx_buf->flags |= (!mac->id) ? MTK_TX_FLAGS_FPORT0 :
+-					 MTK_TX_FLAGS_FPORT1;
++			tx_buf->mac_id = mac->id;
+ 
+ 			setup_tx_buf(eth, tx_buf, txd_pdma, txd_info.addr,
+ 				     txd_info.size, k++);
+@@ -1685,7 +1703,7 @@ static int mtk_xdp_frame_map(struct mtk_eth *eth, struct net_device *dev,
+ 	}
+ 	mtk_tx_set_dma_desc(dev, txd, txd_info);
+ 
+-	tx_buf->flags |= !mac->id ? MTK_TX_FLAGS_FPORT0 : MTK_TX_FLAGS_FPORT1;
++	tx_buf->mac_id = mac->id;
+ 	tx_buf->type = dma_map ? MTK_TYPE_XDP_NDO : MTK_TYPE_XDP_TX;
+ 	tx_buf->data = (void *)MTK_DMA_DUMMY_DESC;
+ 
+@@ -1935,11 +1953,24 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 			break;
+ 
+ 		/* find out which mac the packet come from. values start at 1 */
+-		if (mtk_is_netsys_v2_or_greater(eth))
+-			mac = RX_DMA_GET_SPORT_V2(trxd.rxd5) - 1;
+-		else if (!MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628) &&
+-			 !(trxd.rxd4 & RX_DMA_SPECIAL_TAG))
++		if (mtk_is_netsys_v2_or_greater(eth)) {
++			u32 val = RX_DMA_GET_SPORT_V2(trxd.rxd5);
++
++			switch (val) {
++			case PSE_GDM1_PORT:
++			case PSE_GDM2_PORT:
++				mac = val - 1;
++				break;
++			case PSE_GDM3_PORT:
++				mac = MTK_GMAC3_ID;
++				break;
++			default:
++				break;
++			}
++		} else if (!MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628) &&
++			   !(trxd.rxd4 & RX_DMA_SPECIAL_TAG)) {
+ 			mac = RX_DMA_GET_SPORT(trxd.rxd4) - 1;
++		}
+ 
+ 		if (unlikely(mac < 0 || mac >= MTK_MAX_DEVS ||
+ 			     !eth->netdev[mac]))
+@@ -2161,7 +2192,6 @@ static int mtk_poll_tx_qdma(struct mtk_eth *eth, int budget,
+ 
+ 	while ((cpu != dma) && budget) {
+ 		u32 next_cpu = desc->txd2;
+-		int mac = 0;
+ 
+ 		desc = mtk_qdma_phys_to_virt(ring, desc->txd2);
+ 		if ((desc->txd3 & TX_DMA_OWNER_CPU) == 0)
+@@ -2169,15 +2199,13 @@ static int mtk_poll_tx_qdma(struct mtk_eth *eth, int budget,
+ 
+ 		tx_buf = mtk_desc_to_tx_buf(ring, desc,
+ 					    eth->soc->txrx.txd_size);
+-		if (tx_buf->flags & MTK_TX_FLAGS_FPORT1)
+-			mac = 1;
+-
+ 		if (!tx_buf->data)
+ 			break;
+ 
+ 		if (tx_buf->data != (void *)MTK_DMA_DUMMY_DESC) {
+ 			if (tx_buf->type == MTK_TYPE_SKB)
+-				mtk_poll_tx_done(eth, state, mac, tx_buf->data);
++				mtk_poll_tx_done(eth, state, tx_buf->mac_id,
++						 tx_buf->data);
+ 
+ 			budget--;
+ 		}
+@@ -3788,7 +3816,24 @@ static int mtk_hw_init(struct mtk_eth *eth, bool reset)
+ 	mtk_w32(eth, eth->soc->txrx.rx_irq_done_mask, reg_map->qdma.int_grp + 4);
+ 	mtk_w32(eth, 0x21021000, MTK_FE_INT_GRP);
+ 
+-	if (mtk_is_netsys_v2_or_greater(eth)) {
++	if (mtk_is_netsys_v3_or_greater(eth)) {
++		/* PSE should not drop port1, port8 and port9 packets */
++		mtk_w32(eth, 0x00000302, PSE_DROP_CFG);
++
++		/* GDM and CDM Threshold */
++		mtk_w32(eth, 0x00000707, MTK_CDMW0_THRES);
++		mtk_w32(eth, 0x00000077, MTK_CDMW1_THRES);
++
++		/* Disable GDM1 RX CRC stripping */
++		mtk_m32(eth, MTK_GDMA_STRP_CRC, 0, MTK_GDMA_FWD_CFG(0));
++
++		/* PSE GDM3 MIB counter has incorrect hw default values,
++		 * so the driver ought to read clear the values beforehand
++		 * in case ethtool retrieve wrong mib values.
++		 */
++		for (i = 0; i < 0x80; i += 0x4)
++			mtk_r32(eth, reg_map->gdm1_cnt + 0x100 + i);
++	} else if (!mtk_is_netsys_v1(eth)) {
+ 		/* PSE should not drop port8 and port9 packets from WDMA Tx */
+ 		mtk_w32(eth, 0x00000300, PSE_DROP_CFG);
+ 
+@@ -4358,7 +4403,11 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+ 	}
+ 	spin_lock_init(&mac->hw_stats->stats_lock);
+ 	u64_stats_init(&mac->hw_stats->syncp);
+-	mac->hw_stats->reg_offset = id * MTK_STAT_OFFSET;
++
++	if (mtk_is_netsys_v3_or_greater(eth))
++		mac->hw_stats->reg_offset = id * 0x80;
++	else
++		mac->hw_stats->reg_offset = id * 0x40;
+ 
+ 	/* phylink create */
+ 	err = of_get_phy_mode(np, &phy_mode);
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index e33be61acc047..2810c250ae9a6 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -122,6 +122,7 @@
+ #define MTK_GDMA_ICS_EN		BIT(22)
+ #define MTK_GDMA_TCS_EN		BIT(21)
+ #define MTK_GDMA_UCS_EN		BIT(20)
++#define MTK_GDMA_STRP_CRC	BIT(16)
+ #define MTK_GDMA_TO_PDMA	0x0
+ #define MTK_GDMA_DROP_ALL       0x7777
+ 
+@@ -287,8 +288,6 @@
+ /* QDMA Interrupt grouping registers */
+ #define MTK_RLS_DONE_INT	BIT(0)
+ 
+-#define MTK_STAT_OFFSET		0x40
+-
+ /* QDMA TX NUM */
+ #define QID_BITS_V2(x)		(((x) & 0x3f) << 16)
+ #define MTK_QDMA_GMAC2_QID	8
+@@ -301,6 +300,8 @@
+ #define TX_DMA_CHKSUM_V2	(0x7 << 28)
+ #define TX_DMA_TSO_V2		BIT(31)
+ 
++#define TX_DMA_SPTAG_V3         BIT(27)
++
+ /* QDMA V2 descriptor txd4 */
+ #define TX_DMA_FPORT_SHIFT_V2	8
+ #define TX_DMA_FPORT_MASK_V2	0xf
+@@ -634,12 +635,6 @@ enum mtk_tx_flags {
+ 	 */
+ 	MTK_TX_FLAGS_SINGLE0	= 0x01,
+ 	MTK_TX_FLAGS_PAGE0	= 0x02,
+-
+-	/* MTK_TX_FLAGS_FPORTx allows tracking which port the transmitted
+-	 * SKB out instead of looking up through hardware TX descriptor.
+-	 */
+-	MTK_TX_FLAGS_FPORT0	= 0x04,
+-	MTK_TX_FLAGS_FPORT1	= 0x08,
+ };
+ 
+ /* This enum allows us to identify how the clock is defined on the array of the
+@@ -725,6 +720,35 @@ enum mtk_dev_state {
+ 	MTK_RESETTING
+ };
+ 
++/* PSE Port Definition */
++enum mtk_pse_port {
++	PSE_ADMA_PORT = 0,
++	PSE_GDM1_PORT,
++	PSE_GDM2_PORT,
++	PSE_PPE0_PORT,
++	PSE_PPE1_PORT,
++	PSE_QDMA_TX_PORT,
++	PSE_QDMA_RX_PORT,
++	PSE_DROP_PORT,
++	PSE_WDMA0_PORT,
++	PSE_WDMA1_PORT,
++	PSE_TDMA_PORT,
++	PSE_NONE_PORT,
++	PSE_PPE2_PORT,
++	PSE_WDMA2_PORT,
++	PSE_EIP197_PORT,
++	PSE_GDM3_PORT,
++	PSE_PORT_MAX
++};
++
++/* GMAC Identifier */
++enum mtk_gmac_id {
++	MTK_GMAC1_ID = 0,
++	MTK_GMAC2_ID,
++	MTK_GMAC3_ID,
++	MTK_GMAC_ID_MAX
++};
++
+ enum mtk_tx_buf_type {
+ 	MTK_TYPE_SKB,
+ 	MTK_TYPE_XDP_TX,
+@@ -743,7 +767,8 @@ struct mtk_tx_buf {
+ 	enum mtk_tx_buf_type type;
+ 	void *data;
+ 
+-	u32 flags;
++	u16 mac_id;
++	u16 flags;
+ 	DEFINE_DMA_UNMAP_ADDR(dma_addr0);
+ 	DEFINE_DMA_UNMAP_LEN(dma_len0);
+ 	DEFINE_DMA_UNMAP_ADDR(dma_addr1);
+@@ -1191,6 +1216,11 @@ static inline bool mtk_is_netsys_v2_or_greater(struct mtk_eth *eth)
+ 	return eth->soc->version > 1;
+ }
+ 
++static inline bool mtk_is_netsys_v3_or_greater(struct mtk_eth *eth)
++{
++	return eth->soc->version > 2;
++}
++
+ static inline struct mtk_foe_entry *
+ mtk_foe_get_entry(struct mtk_ppe *ppe, u16 hash)
+ {
+-- 
+2.41.0
 
