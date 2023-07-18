@@ -4,106 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96986C001B0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:30:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 918AFC001B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:30:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pzvnaxwBwwORvQbS7D5g0+aYIhp8HhzVz5H7C8pRFBw=; b=KNgQnV0IwmnnWZ74yEnX4P6hFI
-	0CX2/ANrXHvCXfG94qyeGHDUhr/QtZrqX6QMp0olMQeHTeGb7lrUawlEABDjepcPrAoYKiNZRCG8V
-	L6tz2kkyBlT3FwZM4OsmG8ZRplDPwdp+84k0mo1EJLDC2GerY3UzKn0p1d7i4na7K+d2t9XH3mY4v
-	WPQQ/upcZg5UBczycBO1D4MZ6d0s6c+5HkRj7HPD8D4+9VGZXr3iL854Vcloki/LEWI6gvE6eqEtJ
-	aoEs6Z+l4pU3QqjhGNgHvWnvievfETnGtEH3AZl0sGkqQD35yi9+DkplFMBw2z7Ls3Pwcfih+uw5a
-	7V4NRvHQ==;
+	bh=oqJ9u4SGNXyNg5ofFpDQaS2ayWAUml8z0VaX7hI3krE=; b=IWifyaLyGZoumDj2wL5EF6cawo
+	N8pe7knn0GTwKNHn4nppOl8777iuGXcrj8Rng87twMOX1VOTF2oHboBhqGTAQQraGXO8865hJSpOQ
+	e06kiY/GC7vK8ubwfU7mZMWbWGwp0hSYs04X13yYL8vAYJee0aY94+G02S35NG/0rpT+yOE7X4Bpa
+	puFeZMLyPXfTk3JFllGkwOtkgx1iO/TpiS0uMV7iCtWGc6fub/GZA46tbUbORpkw6+T9eDkoIikpz
+	YzIlg4saUajcY7QHOOp3g6vs3VS5DmNhicGYyLgCpsSNp/zKaIEhCWrqtfv+kN7d4zDPIoNu2lMJy
+	zpO1SLhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2ZT-006MRr-1L;
-	Wed, 19 Jul 2023 08:30:07 +0000
+	id 1qM2Zv-006MgH-1T;
+	Wed, 19 Jul 2023 08:30:35 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2ZS-006MQy-1l;
-	Wed, 19 Jul 2023 08:30:06 +0000
+	id 1qM2Zu-006Mfc-0D
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 19 Jul 2023 08:30:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=pzvnaxwBwwORvQbS7D5g0+aYIhp8HhzVz5H7C8pRFBw=; b=PioGIRVfR2pTtN02W2XefOcA5B
-	2rw2r3CEkKCPxmlIUg8823mzYDMe9Ij0Dio9aURjxIwFsDuS1CoRZtLPs0oXNHOOsk8W9EO/1DTdy
-	oxDlwM3qPdpFj6B5kKcOAql97nlJoYSHyZT0AI4rufe/3x5/txi92bwXeY5/7w0Xi1eNmoWezty2p
-	Yg/iNpKCptOTioAB0COOXNWQl/71+XEgEjuftT3qW6u8VddxEBGRdLnn54JLkBKZtodlqGwgNWzdj
-	Xqp6oyndGYGcVJcUsZPfJx1z9Dvp+o1ELXdkHrE0wb+Txi7/VqT6ODQJiU4boNw5+d+M4zsBzWWDG
-	lLqas3rg==;
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	bh=oqJ9u4SGNXyNg5ofFpDQaS2ayWAUml8z0VaX7hI3krE=; b=R/Mzb9gqRl7DbPonTZo3fTY2hX
+	fh4ekMcskmP/8Y3fKJkGNg7cGH5NHKKAc8SpMK5BPMTZIxl8cmBYVXUShIbuG9a3FFUL8G+gjWxmH
+	bo5fOAPGs40zJDotV0U8vwju4R+x6usQjZ48Mc2xZbMXeQfCbhQgEUWb2N4gPYDhuWastyTNyDjq7
+	FNT3OnTrjwk5uid69NJ8+cb+83NTW+dU4RHASpdm+XhvFzpYtOUUgTZ2VQpABkMsY2RftIS75yAgD
+	7sSQB0Vy/geCbwKBvHZua7Pr0iWzJCIsQ0zKODsy+F1FqXidT2PX2ykZFXqAvMOcxQyK94Ktt8UYq
+	oNJRYr8g==;
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLU5N-009FSU-1n;
-	Mon, 17 Jul 2023 19:40:48 +0000
-Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-991ef0b464cso1284546766b.0;
-        Mon, 17 Jul 2023 12:40:43 -0700 (PDT)
+	id 1qLgEN-00BJQo-08
+	for linux-mediatek@lists.infradead.org;
+	Tue, 18 Jul 2023 08:38:53 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3fbc5d5742bso53925445e9.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Jul 2023 01:38:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1689622723; x=1692214723;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=pzvnaxwBwwORvQbS7D5g0+aYIhp8HhzVz5H7C8pRFBw=;
-        b=FiRiQHHwJkvt69aqh+jOHbOkpeDUm9bJCZzo/bIzNvXv33+g8pfIgIF2ZYvKOkquae
-         /ffDOMzSAn/cmRXkDPeGd/FpoyNgYPuqE9K5CPWtlDQjOTZX3L0ghvt4T1I47WnD+ci4
-         33PQkxXqiUurlTLVNfjrY0BaTMm9DB+40F00udddUtlL2ohyESp4gm9yAgKrHmUyNVlU
-         LAH38/mclJRvw7bS9aeaWHbk7IpokVI242eiBf2MSoiGouOzivPeFx5B3hbcrh61WKD0
-         FuqnDHgfqqGpbH3D/09tfpPwr6Sb6kFh2fjf29ddMPLPC/b3StAf1LsqPjoFysvEB/xB
-         k12Q==
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689669467; x=1692261467;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=oqJ9u4SGNXyNg5ofFpDQaS2ayWAUml8z0VaX7hI3krE=;
+        b=OtQl27dbnrPDI7c6OCZexeFM1iYA9d10Zwj0fJcjU/xtspNfbU+DGUpo46ndDA1aIM
+         gZg/OCmSHMHuQuMmvVeoXewgFNsxM0pIz6YgPuvE2vjcY+02CxfSY1UL4s58Ck/orQ1o
+         rYFArvC3gq1tjaq/Ls0ZSpzgjHsBPeY3D5vbiHVrl2WILTRaSuFa8nM1XkvE1CtETZM9
+         XWwbJsgMx7HE8f/oE1sWY419GaCKdr+lXUbKY+6EoISl4wlhMQT/T5YzFDmRxzggXRnj
+         qhUkGGoMXPPBH5sSG3KZe0+qk5qr1Ys7Z9El9iEcXhdSc1GBSVBQVKEGBQdURjhdcgg/
+         5zVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689622723; x=1692214723;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=pzvnaxwBwwORvQbS7D5g0+aYIhp8HhzVz5H7C8pRFBw=;
-        b=ge6MgyYqhYtTbL+sqXs6P1++hlkz1ktRVZGw8RJawvYmCorOPhMv4cNyFwIcs6o5uH
-         N86uPGuKeKlMefutg/hH9OTa5YWO4xqqdC4prKaLVTFFTkmaU1z9Q1SXIypAUCw2cck/
-         LB0GDCfhD+TpXOeiGyrhLT9b6cTgSSRVjckTsgdYgeILrNOMNtY+MNxHjRp65qAIC/fN
-         qwybbmVMTRuv9owKD4tmRAUKCJNXA89a3QZiBQf4HV1AHIO7NsYLRFojVMephw1vuqq0
-         pIKmjlvbSW+0iZmqX8cuSw2vFrgcA4ISM3Mb3v1thhst3MGEcXErn/v3L71UdyX3iY+M
-         Yc1A==
-X-Gm-Message-State: ABy/qLa/E+MhTwczO7ut+1ZfXQSMu5R31sUMVVWHoZ5pZ/mQrM1XgmsW
-	YVB1DyU9KKh51TykDdUHhN37+FOvcpwKi5CAY/k=
-X-Google-Smtp-Source: APBJJlE+VHLj7mC4ECfhwTbu4NFaO7sKnyH5XVNAzPprNo79TW0VvqfrC6d6hAbtJKJm4KRjeiwR0QctV4B0Sd+swhY=
-X-Received: by 2002:a17:907:7f88:b0:992:103c:43fa with SMTP id
- qk8-20020a1709077f8800b00992103c43famr15701919ejc.30.1689622723578; Mon, 17
- Jul 2023 12:38:43 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1689669467; x=1692261467;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=oqJ9u4SGNXyNg5ofFpDQaS2ayWAUml8z0VaX7hI3krE=;
+        b=ONl/LT+EwuuNZ2N3/UfASDDYkx4yELB0tgmpLl0YR1DXN5hLouA2zSoQOpkDs1U45p
+         nuuh8CCxyXyJGV827vHDjc16SBT4bgHAD0wSDNIIbHtKJPhciwcxqLt1b3nXsugkkKmM
+         8g3oml62/UM53j+75iQxj+fJB9quQMudhYcJculObylRMkb9RrUhG6qPD9KfxXIvVoqY
+         s2fLHjY8VoTN0de2AJS5rmWwWavoUHKXvGKnRqaKAzyj8ZHYx8D76J/BrUqKwqNHwCSM
+         KfG3kqH0eRw361mH8LX4fhA8RWSgPeMvgw7UHPoxpNe8+r9BecD2OCg0WXgjbw8CzpBr
+         gwLA==
+X-Gm-Message-State: ABy/qLZHSONrAqpFztw2EGoscglLc9AZQavNRuB0O4kJJxOtRV+0qqMu
+	wnMQv8K+0gNncLyOre9v7enMpg==
+X-Google-Smtp-Source: APBJJlFK/PMnPBKxy9LlIGsKQCxu9WTEnU0WFv4qPQ2XmQ7jxfyYmlP+rhkxlTGNQbZ/CrvEDeEwUA==
+X-Received: by 2002:a5d:49d0:0:b0:314:1e47:8bc2 with SMTP id t16-20020a5d49d0000000b003141e478bc2mr13465958wrs.0.1689669467371;
+        Tue, 18 Jul 2023 01:37:47 -0700 (PDT)
+Received: from [10.101.1.6] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.gmail.com with ESMTPSA id n18-20020adffe12000000b003143be36d99sm1696453wrr.58.2023.07.18.01.37.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Jul 2023 01:37:46 -0700 (PDT)
+Message-ID: <cf31ccd0-f11a-49f6-4e55-457fa78c8b86@baylibre.com>
+Date: Tue, 18 Jul 2023 10:37:45 +0200
 MIME-Version: 1.0
-References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
- <20230717172821.62827-10-andriy.shevchenko@linux.intel.com> <03592cf5d6854dd5e534e0416de946fd38e4380c.camel@crapouillou.net>
-In-Reply-To: <03592cf5d6854dd5e534e0416de946fd38e4380c.camel@crapouillou.net>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 17 Jul 2023 22:38:07 +0300
-Message-ID: <CAHp75VetZ-+AFGzEQzx42cmTrHxyr7pGBy8kSxHUM9cJzp2o=A@mail.gmail.com>
-Subject: Re: [PATCH v2 09/10] pinctrl: renesas: Switch to use
- DEFINE_NOIRQ_DEV_PM_OPS() helper
-To: Paul Cercueil <paul@crapouillou.net>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	Mika Westerberg <mika.westerberg@linux.intel.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Balsam CHIHI <bchihi@baylibre.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
-	linux-tegra@vger.kernel.org, linux-pm@vger.kernel.org, 
-	Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
-	Ludovic Desroches <ludovic.desroches@microchip.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 1/2] clk: mediatek: clk-mux: Support custom parent indices
+ for muxes
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ sboyd@kernel.org
+Cc: mturquette@baylibre.com, matthias.bgg@gmail.com, wenst@chromium.org,
+ msp@baylibre.com, yangyingliang@huawei.com, u.kleine-koenig@pengutronix.de,
+ miles.chen@mediatek.com, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com
+References: <20230713072138.84117-1-angelogioacchino.delregno@collabora.com>
+ <20230713072138.84117-2-angelogioacchino.delregno@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230713072138.84117-2-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_204047_381590_C58E254C 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20230718_093852_183015_158F5B49 
+X-CRM114-Status: GOOD (  14.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,25 +115,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 17, 2023 at 10:12=E2=80=AFPM Paul Cercueil <paul@crapouillou.ne=
-t> wrote:
-> Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=A9crit=
- :
 
-...
 
-> I think you could do:
->
-> .pm =3D IF_PTR(IS_ENABLED(CONFIG_ARM_PSCI_FW), pm_sleep_ptr(&sh_pfc_pm)),
->
-> Then you wouldn't need the #if defined(CONFIG_ARM_PSCI_FW) guard either
-> (as long as the code still compiles fine when that config option is
-> disabled), and you wouldn't need those dummy callbacks.
+On 13/07/2023 09:21, AngeloGioacchino Del Regno wrote:
+> Add support for customized parent indices for MediaTek muxes: this is
+> necessary for the case in which we want to exclude some clocks from
+> a mux's parent clocks list, where the exclusions are not from the
+> very bottom of the list but either in the middle or the beginning.
+> 
+> Example:
+> - MUX1 (all parents)
+>    - parent1; idx=0
+>    - parent2; idx=1
+>    - parent3; idx=2
+> 
+> - MUX1 (wanted parents)
+>    - parent1; idx=0
+>    - parent3; idx=2
+> 
+> To achieve that add a `parent_index` array pointer to struct mtk_mux,
+> then in .set_parent(), .get_parent() callbacks check if this array
+> was populated and eventually get the index from that.
+> 
+> Also, to avoid updating all clock drivers for all SoCs, rename the
+> "main" macro to __GATE_CLR_SET_UPD_FLAGS (so, `__` was added) and
+> add the new member to it; furthermore, GATE_CLK_SET_UPD_FLAGS has
+> been reintroduced as being fully compatible with the older version.
+> 
+> The new parent_index can be specified with the new `_INDEXED`
+> variants of the MUX_GATE_CLR_SET_UPD_xxxx macros.
 
-Thanks for the hint, but it's ugly looking code.
-If we go this direction, we would need local arm_psci_fw_ptr() macro or so.
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
---=20
-With Best Regards,
-Andy Shevchenko
+-- 
+Regards,
+Alexandre
 
