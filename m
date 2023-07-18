@@ -4,121 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FB4EC001DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:01:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20A54EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:02:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CUEJZ2jnO99PUeS7JxBs0K24keSEFO0PJQdiqMWdwp8=; b=0aFnsy9qd3QbhEemin71y9AY4g
-	r8WUkE+kGsOm98J19lg0hkEMEmGUg3ICaZIEIsu9lLdJKzw2ZFKfGaqWuOBQIIt19b0+psKS81BJP
-	xVi4hEUPJaLROqwwltRFGI1yAIJwC9kghjyu5R9SrpD/PCkXhIoyjwfWKbSZ1grKadd13N0CT57LO
-	2quvrEwP2nJUokD9miWf0hg3vNcwDie3Q/qY6IBtCyvBSjISyuNhGpho92BnHUlzA0evpL9T/hlPn
-	u2wo3LulkKnYhN8/8ct8nV6nxcb511MQUvBoP5HazhM8C+vrdybEO/+qA786d7QOTnNY/NRMX42n5
-	zDffdOIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9PudKBtLRGdIrG6woA6cD0ablmWghbSuQeHqb7JxJpo=; b=ySeG+D2vXlGm0jGDmXs53StNYI
+	XSSXBAkgA+BdzVbtCdlk+y8R/ZmyXnlUEmIMFUtpPQawQCq8mmhaDlcHToIO3HFsyHX1utL1r/jwd
+	2lacr5XO8UbATodCGlHzRLWj5AYlwlm98jyh5E6fHbCj4x/im2rhJ6R3zpZwvMfuEKfCHut2PvSw0
+	8AymScjESs8oPLTXzaThsf41ONt21iSyYzVQ6WONCuceFhQMTybaL1JLETFHwDN1BOWL4V5/FeWMB
+	VQSOeutriZXZ9NLACCCTUnR+hx+fZddPwXI4TDeKvvPyuS4g6U9R4ZaKdlCPjA/auUIQsUDfFCKGL
+	kRjOyvYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzJ5-0057Ey-0m;
-	Wed, 19 Jul 2023 05:00:59 +0000
+	id 1qLzKk-0057sh-2f;
+	Wed, 19 Jul 2023 05:02:42 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzIv-00579k-0v;
-	Wed, 19 Jul 2023 05:00:49 +0000
+	id 1qLzKi-0057s0-37;
+	Wed, 19 Jul 2023 05:02:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=CUEJZ2jnO99PUeS7JxBs0K24keSEFO0PJQdiqMWdwp8=; b=BP/ytKtXlJuvYGw4oR4vkcCOVx
-	4uxueBFv8fdzYKm7a9l4yG4qeA3XIB4BJKbNf6WW9xrirv3E2CDP9hLl48HG9tqhxBUCkEGkbNSjt
-	QOes9JrikQzJ7YC/wtkHV+nb03kbardrRtRhcNfPTQ7B1JYiJ9ws4s92+QBMJDaGBSePPghUVApVX
-	icPFIHE0hmBEn4Yn9KrY7hX6RK9rdUCLwO49BF4vEdGA+u1pmSDam7Zg1s/6jQz99HAt2QeJC/JuG
-	oQPH1RxGqYzysrVt6QNbvA7ZZnIIhh+C3eQ5CpvQV0SFSJ0HQl04p8GYpUvfM1WZBuLvkVA4Mdaxs
-	hhmm7Skw==;
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=9PudKBtLRGdIrG6woA6cD0ablmWghbSuQeHqb7JxJpo=; b=W0k2kqQy0aI5JY0Eb4Cr1vb36H
+	zeujAk7NoSLId/+QKmT2SQNGW0J5e7wlaCMmOmvLRN7vVaoNhaSIXeXynxkgPHkh5Z8jvwamEEyvS
+	kjZZCwp1mUbQ558ah7J5Bcqe3KOTa/CD+/NkY/wfAld89r2mxjQyLe9DNcMoBhmpqcORF11MAxIf2
+	pX0DFHrDsOd9+ZeQurveB7iErOjAWBDuIyuQKMhAS/XSgkltfzJL4sp0Om4jmdEBnkXEmdQaM0Sde
+	GIfbnVu0BcObS9TJBIImHnuqTXBnqrbeJtL9Jp+V7UGa9uUiZk5y+kDg9BgCtN5J8OjN5y0k9NvqR
+	oHeuRGbw==;
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLj6J-00BTP0-1D;
-	Tue, 18 Jul 2023 11:42:45 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-51e57874bfdso7984166a12.0;
-        Tue, 18 Jul 2023 04:42:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1689680493; x=1692272493;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=CUEJZ2jnO99PUeS7JxBs0K24keSEFO0PJQdiqMWdwp8=;
-        b=VAGPw4lI/UWtguFE5auxk6/N3bRlE0BGGpjfGEueMrR8A8Lk4nDBbRJO1VOi9axlYW
-         luXRULT+HgEWGzBIwfrbzNf4a+2e/D2yWMUp/LgyDr33Q7EZ5r6H4EN+Dn7WQIQNEG9V
-         YzTZ2J/IJ9iumAT6z3fWSF51WAuwstix2rz3kVvAMGvh6wXY0ztBEd6V3LZISyfPzceT
-         akJqUAB7aVSeZHFAVL1dDc047YBOlQHESqNnA8dEEaVnP2XnrGO01ejUV5ESDARd8zmG
-         eht00EsGL1es7DMDlKkLL6EUZKYqe2mZPTqWlD2XfwwYP0o+7xrT1ju4Vn4gXEmHw/jS
-         v6ng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689680493; x=1692272493;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=CUEJZ2jnO99PUeS7JxBs0K24keSEFO0PJQdiqMWdwp8=;
-        b=WbvLM48lptgy87mM14joMXcVbzddWioB7XcX+BAGc0MKbZeG2HKiVscqW52J3fL8Ws
-         DaesHeOB5igp3er815z8AaQG1RgC9HcZM/ajWHn71u4nSeqjUCPoufzDES8uTDSaaTys
-         rrvTZeB/OO3AqhcyKRLc0pPhuM/m0cms9eqRCDKzBosJ4KpxqDaEMzT7HHNmqicI+pJ4
-         Z8weEW5EVlBQj4gy65c9EDo4y6ttE6MTTZQWXfxQfjUe6+e7iatl5BVhsPyWvVk9cIn7
-         rJTduWTa9Yh/GdHhGYfItAOFfYas21AshWpEjg4lZVTskDLnVwtsH724r/IROcj0lrEX
-         mXRw==
-X-Gm-Message-State: ABy/qLbOuJTlISnBL2bqjMHA8+3P98Nqe41/iGDY62VIr4X2KHcM308p
-	t/2kjpw+b2RRjvrFk+Ku2z4=
-X-Google-Smtp-Source: APBJJlHObGKiuPqLOj8t4fatzc4FfNv5s5It0UjWbyLNieALj1jP3ypjcJeB75XYTDs5dKOHj12dJw==
-X-Received: by 2002:a05:6402:1856:b0:51d:9110:4b11 with SMTP id v22-20020a056402185600b0051d91104b11mr13215284edy.12.1689680493119;
-        Tue, 18 Jul 2023 04:41:33 -0700 (PDT)
-Received: from orome (p200300e41f4b7100f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f4b:7100:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id w5-20020aa7dcc5000000b005217a24addbsm1107974edu.20.2023.07.18.04.41.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Jul 2023 04:41:32 -0700 (PDT)
-Date: Tue, 18 Jul 2023 13:41:30 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Paul Cercueil <paul@crapouillou.net>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Mika Westerberg <mika.westerberg@linux.intel.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Balsam CHIHI <bchihi@baylibre.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-pm@vger.kernel.org, Andy Shevchenko <andy@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Ludovic Desroches <ludovic.desroches@microchip.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>
-Subject: Re: [PATCH v2 10/10] pinctrl: tegra: Switch to use
- DEFINE_NOIRQ_DEV_PM_OPS() helper
-Message-ID: <ZLZ6amp5HKUbm5w3@orome>
-References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
- <20230717172821.62827-11-andriy.shevchenko@linux.intel.com>
- <13f7153786cfcdc3c6185a3a674686f7fbf480dc.camel@crapouillou.net>
- <ZLZDL27zzDpY4q8E@orome>
- <5e4b5bc23f3edb3ed30cb465420a51ffceceb53d.camel@crapouillou.net>
+	id 1qLnU2-00BkpN-1p;
+	Tue, 18 Jul 2023 16:23:33 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 36IFsRTa015227;
+	Tue, 18 Jul 2023 16:22:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=9PudKBtLRGdIrG6woA6cD0ablmWghbSuQeHqb7JxJpo=;
+ b=V3hWrUBHM+woS1my6mR7GJ8l5RToeNqfgquoQjxX6hkw1KKaAanxIf6/jPFsF7ifNAvS
+ 1vHTPwrwUqCvEGemIWxR4BS+5Vgy8EgWyM/aEFM2j6GYDfZsLCOa/wC062IsQQ8e60YO
+ nY58M9LYuLrwkKYy0QwMyC9lr7E32TGVd5OZeWel5uipmEyukWZU+8ioEcyi8yf6S4Lm
+ FxLgw8WEfd2SFVdakSH3aKbFwmvmMX3H01gcOa4HzXuzGDK94uxnJqTL9ji9msXIuUZC
+ y5hMjcWR+DrEBvFl6znN3TEk8Zq+auOevV4dC/mJErlQcTEDSGAfWi1sGSjx/INajtzm Tg== 
+Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3rwqqg92xe-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 18 Jul 2023 16:22:04 +0000
+Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
+	by NASANPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 36IGM3IM002800
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 18 Jul 2023 16:22:03 GMT
+Received: from [10.110.1.206] (10.80.80.8) by nasanex01a.na.qualcomm.com
+ (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.30; Tue, 18 Jul
+ 2023 09:22:02 -0700
+Message-ID: <38716e0a-fb99-bb71-23f4-7952a4f6e04e@quicinc.com>
+Date: Tue, 18 Jul 2023 09:22:01 -0700
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Jp/MchPym/cMz+Qh"
-Content-Disposition: inline
-In-Reply-To: <5e4b5bc23f3edb3ed30cb465420a51ffceceb53d.camel@crapouillou.net>
-User-Agent: Mutt/2.2.10 (2023-03-25)
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v4 00/21] Add Qualcomm Minidump kernel driver related
+ support
+To: Greg KH <gregkh@linuxfoundation.org>, Mukesh Ojha <quic_mojha@quicinc.com>
+CC: <linux-samsung-soc@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+        <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
+        <konrad.dybcio@linaro.org>, <krzysztof.kozlowski+dt@linaro.org>,
+        <conor+dt@kernel.org>, <keescook@chromium.org>, <tony.luck@intel.com>,
+        <gpiccoli@igalia.com>, <catalin.marinas@arm.com>, <will@kernel.org>,
+        <andy.shevchenko@gmail.com>, <linux-doc@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+        <devicetree@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
+        <linux-remoteproc@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+        Linus Walleij <linus.walleij@linaro.org>,
+        "Rob
+ Herring" <robh+dt@kernel.org>,
+        Mathieu Poirier <mathieu.poirier@linaro.org>,
+        Alexander Shishkin <alexander.shishkin@linux.intel.com>
+References: <1687955688-20809-1-git-send-email-quic_mojha@quicinc.com>
+ <2023062814-chance-flounder-f002@gregkh>
+ <CAL_JsqLO9yey2-4FcWsaGxijiS6hGL0SH9VoMuiyei-u9=Cv=w@mail.gmail.com>
+ <CACRpkda3CJ7G4-wDPkWmzg6nyCoEfG+u2cQH6KXWNjbftd90ow@mail.gmail.com>
+ <355de4c7-180d-4edd-b6fd-9c8e29e40e42@quicinc.com>
+ <52650970-de78-764f-28e2-ee0115b7d5c6@quicinc.com>
+ <e4784d1c-73da-9cda-6aef-d02625e8efd2@quicinc.com>
+ <2023071833-clamshell-drinking-188c@gregkh>
+ <c8064592-bfac-67b4-1d7e-e173355c43f8@quicinc.com>
+ <2023071844-promptly-swimwear-f6f9@gregkh>
+Content-Language: en-US
+From: Trilok Soni <quic_tsoni@quicinc.com>
+In-Reply-To: <2023071844-promptly-swimwear-f6f9@gregkh>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: e8N4s61eNav6K3VmUuYrrBLypPGDxsor
+X-Proofpoint-ORIG-GUID: e8N4s61eNav6K3VmUuYrrBLypPGDxsor
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
+ definitions=2023-07-18_12,2023-07-18_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 mlxscore=0
+ mlxlogscore=999 phishscore=0 malwarescore=0 adultscore=0
+ lowpriorityscore=0 clxscore=1011 impostorscore=0 bulkscore=0
+ priorityscore=1501 suspectscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2306200000 definitions=main-2307180150
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_124243_595351_EF6A0C19 
-X-CRM114-Status: GOOD (  27.25  )
+X-CRM114-CacheID: sfid-20230718_172331_379315_79B909B8 
+X-CRM114-Status: GOOD (  15.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,94 +134,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 7/18/2023 7:41 AM, Greg KH wrote:
+> On Tue, Jul 18, 2023 at 07:25:15PM +0530, Mukesh Ojha wrote:
+>>
+>>
+>> On 7/18/2023 7:05 PM, Greg KH wrote:
+>>> On Tue, Jul 18, 2023 at 11:17:12AM +0530, Mukesh Ojha wrote:
+>>>> + linux-samsung-soc@vger.kernel.org
+>>>> + linux-mediatek@lists.infradead.org
+>>>
+>>> What does that do?
+>>
+>> This is to seek their feedback, if they have something similar requirement
+>> to debug end user device crashes.
+> 
+> Feedback to what?  There is no context here and no content either at
+> all.
+> 
+> Just adding a mailing list to the top of a message doesn't actually send
+> the thread there.
+> 
+> confused,
 
---Jp/MchPym/cMz+Qh
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Mukesh, instead of adding the mailing lists here, we should send either 
+the refreshed revision of this patchset (if there are enough changes) w/ 
+MLs CCed or start a new discussion with these mailing list with the 
+context of the minidump and refer these patches from the mailing list 
+archives.
 
-On Tue, Jul 18, 2023 at 10:42:47AM +0200, Paul Cercueil wrote:
-> Hi Thierry,
->=20
-> Le mardi 18 juillet 2023 =C3=A0 09:45 +0200, Thierry Reding a =C3=A9crit=
-=C2=A0:
-> > On Mon, Jul 17, 2023 at 09:14:12PM +0200, Paul Cercueil wrote:
-> > > Hi Andy,
-> > >=20
-> > > Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=A9=
-crit=C2=A0:
-> > > > Since pm.h provides a helper for system no-IRQ PM callbacks,
-> > > > switch the driver to use it instead of open coded variant.
-> > > >=20
-> > > > Signed-off-by: Andy Shevchenko
-> > > > <andriy.shevchenko@linux.intel.com>
-> > > > ---
-> > > > =C2=A0drivers/pinctrl/tegra/pinctrl-tegra.c | 5 +----
-> > > > =C2=A01 file changed, 1 insertion(+), 4 deletions(-)
-> > > >=20
-> > > > diff --git a/drivers/pinctrl/tegra/pinctrl-tegra.c
-> > > > b/drivers/pinctrl/tegra/pinctrl-tegra.c
-> > > > index 4547cf66d03b..734c71ef005b 100644
-> > > > --- a/drivers/pinctrl/tegra/pinctrl-tegra.c
-> > > > +++ b/drivers/pinctrl/tegra/pinctrl-tegra.c
-> > > > @@ -747,10 +747,7 @@ static int tegra_pinctrl_resume(struct
-> > > > device
-> > > > *dev)
-> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return 0;
-> > > > =C2=A0}
-> > > > =C2=A0
-> > > > -const struct dev_pm_ops tegra_pinctrl_pm =3D {
-> > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.suspend_noirq =3D &tegr=
-a_pinctrl_suspend,
-> > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.resume_noirq =3D &tegra=
-_pinctrl_resume
-> > > > -};
-> > > > +DEFINE_NOIRQ_DEV_PM_OPS(tegra_pinctrl_pm, tegra_pinctrl_suspend,
-> > > > tegra_pinctrl_resume);
-> > > > =C2=A0
-> > > > =C2=A0static bool tegra_pinctrl_gpio_node_has_range(struct tegra_pmx
-> > > > *pmx)
-> > > > =C2=A0{
-> > >=20
-> > > Another driver where using EXPORT_GPL_DEV_PM_OPS() would make more
-> > > sense.
-> >=20
-> > We don't currently export these PM ops because none of the Tegra
-> > pinctrl
-> > drivers can be built as a module.
->=20
-> This doesn't change anything. You'd want to use EXPORT_GPL_DEV_PM_OPS
-> (or better, the namespaced version) so that the PM ops can be defined
-> in one file and referenced in another, while still having them garbage-
-> collected when CONFIG_PM is disabled.
-
-Looking at the definition of EXPORT_GPL_DEV_PM_OPS(), it will cause an
-EXPORT_SYMBOL_GPL() to be added. So there very well is a change. And
-it's a completely bogus change because no module is ever going to use
-that symbol. If we were to ever support building the pinctrl driver as
-a module, then this would perhaps make sense, but we don't.
-
-Thierry
-
---Jp/MchPym/cMz+Qh
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmS2emoACgkQ3SOs138+
-s6G2GQ/+LZ0mO7AXXnFYUmyFkwZZsRzeaYA9YsgzEvgcS7Jffuq2kY3X7XzRakJw
-tA7ONWE7TdtsS2a0vrIWn6EnREV/cW9LH7LyCLfBrkI0VBK2NUML6v9ZtRYz+1/k
-5PJv8z3y9sB5lvQ56g1/9SiUseqJ+6uxrGDoWHDpMlwyxe2AW29M2xFfiYXSAe/i
-tYzjEZEq2Xa2hsJP9WUiFqWhu7LGg9G6LK1O9ZJ0LgbMfgqconOgN0lQb+MMxOwj
-opr9YZaz/MQPc3jNnljqsh4HSw9dk7p4K0Z6XEjRy/AYF9vVEa9f2avcB92azr+V
-xgD/YCRJJsnB8PUXtRRBIllIhrcUrpPYoLfEwOz6wzNpQhV8SQP4IrviU/SrNOSK
-bBRq3ym+Ib0s1DQKipgVyfr9CEoSNB+k3ztYxr+kfw5AI2T2ai/aMCQ7A7UGUN4O
-fTdO+w2DLmqrCDBK4ffBki7WAPlwghbC8/YpsUkFxksBMuslo3si5/kUeyg7q69P
-SQ8cz7RefitY5aod67stvmdb/YXtk9EbOsLHvQntaBiJOBxLWK8W40xAK6Kt7Wvk
-3rpz+zuRSIkZqcLF16p5LdeDQkJM6lRSjTUqkQT4qzrx+wcnYJqLL4z8kYuaxdDX
-CR+nV22Lk+YYApuQDe+Xl7n/NEVhuOLFHyrm36Gos+GEYNxM8Bs=
-=45Cn
------END PGP SIGNATURE-----
-
---Jp/MchPym/cMz+Qh--
+---Trilok Soni
 
