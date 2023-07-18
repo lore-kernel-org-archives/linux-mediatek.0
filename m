@@ -4,107 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3041C001B0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:46:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F699EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:46:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zpIC/vheFt0sfkteBFunYkR3K/TvtDGb+njBwXb1bVw=; b=v3f2QY+rCT44epGef3Y0+cf9fT
-	AM15zvhij1haHkwartggKgCBht0A+FgFQVU7Ugolnr/naTt3VRpiCHJanVfa+rQ/rNQfwbgTZFGKa
-	QzLcS79+2u77i63L01ZvN/n7fscOKiyhCI+acPGg0cvkcNbo17fnpM/TnCpLXlSv1wqFNmN3V9Yf0
-	7Kmz4aBtVhA86i39Y6yF/lTjmMPvqww7xOtePn/6PvKjzQGf0Z1uh/6xL5/aWQaCOa6uJY5ex5Ywm
-	l6g/9BBXwoTxip+g40HcDEhQ4QZ6UAUxUaEyQV4dGMUSdKtI1WC3kFeqqmLYIw1CY89/LtMfLJAJU
-	OdSo3muA==;
+	bh=3xq3ujbSjxhWeIWKgJDUZa0OdItm0TSOhOvS3o2YLY0=; b=ppcKFlutcIDYVk/S4HmS5SqKSV
+	/jcmkNZUElFyk5poifeO2eBWPiM1MCYGmS+lNlgUEjJIPAmG3WyHXot+mmShqnTF33wHqMxzilH7i
+	XSff3JkZ089IxaqgWZK00eP3vNqTtcnEEVK6nqwqmRhwaFcTGsSF8gG3BoU5PGF23rPacE4AB8ly7
+	a0URAKetiyYD7+twBbqrkJSlxsuyE/y5AysZQ/mcg7uixKZ5j6ATpV5TaHh7K3C6xub2UcNyFayK1
+	i/FSaz3+2VNSRIEaKzke4xeKECr7N/ytRpXxRC91J90gxXJ9hj9DpOwojw8dsGbNd3LDF7zAu0/Xv
+	MGzL0Rqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM01C-005Pco-2c;
-	Wed, 19 Jul 2023 05:46:34 +0000
+	id 1qM01X-005Pj5-0M;
+	Wed, 19 Jul 2023 05:46:55 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM016-005PZZ-1N
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 19 Jul 2023 05:46:28 +0000
+	id 1qM01R-005Pgx-0C;
+	Wed, 19 Jul 2023 05:46:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:From:Date:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=zpIC/vheFt0sfkteBFunYkR3K/TvtDGb+njBwXb1bVw=; b=ne6taG7AARn3dvqRXTkUReBVrO
-	VY+0ECeVjT1lszXiMvhDwqXHRckc0UKK4W4xuVH0h72ktrJ1VZDoi6uloy2APboxfp1GnB8Gdvo8E
-	bBzPQl5YboSmufwNVqsLZTxHiqZ9JY3IBf5OeShz1udWkT6kx0KsHWR/qLMvJBRErgTZOs3zXGHaC
-	GP4f//aa8kXSoDdo6ImBiGvjq9WfEHb6Pd8g2XAhRga9ejFd4czvWhFydcrJJj+i2ChRxyqfXATUp
-	5mV0HDvO96WwHmljqw4xwEmhKE4cB1O/i2icGeCy9F6MOSYma44vtzqsfOAbeONSYN1mazQwM9CC8
-	VIc+bwCA==;
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	bh=3xq3ujbSjxhWeIWKgJDUZa0OdItm0TSOhOvS3o2YLY0=; b=gFI8j3/ueMu1F/GAdEywWfcr7F
+	IJIZO1I+qJHyFiyJpBOTG7OPd/yRdarePTEU0JI/Bn5Q0e6nLubnVLHFP2+QGFGUzreYDBObkkeZI
+	DWRGhwrw+86O+f3umGFfV42EtU7E3S10/LGw77BCtfYInKirdZ4PGRhQMREyhVk3AMifG6IwqdUq1
+	CMcYSbJzEC1yeFBvIRutrMwGK7hR+LI59ceyTTMrxILHgQKsatSGL/GoadM3d3mxGeBX4va5Nskeb
+	ELB+Z071hkdq4kjzuJLIN/IiQ0NPfTo1RPaBy+YvE8csQ+Vl5BVFWg+y6rBU+bWVUWcD75g3Qqt3z
+	hULLgPxg==;
+Received: from frasgout.his.huawei.com ([185.176.79.56])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLULR-009HMk-1d
-	for linux-mediatek@lists.infradead.org;
-	Mon, 17 Jul 2023 19:57:23 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-51de9c2bc77so6629393a12.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 17 Jul 2023 12:57:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1689623720; x=1692215720;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=zpIC/vheFt0sfkteBFunYkR3K/TvtDGb+njBwXb1bVw=;
-        b=B0ly1khsPWB96zrFc7dyjFKzz+VKXdbdmOleSWMI9iPNVnQJ9BaryBnfDkWN1vlW9C
-         qFSSeSyyLeZup1VbUMoFERdX+KS2zyerrB+4REY29FQVbJ7nYdGiLw0hq9i53CmAIJ1D
-         DjV2mZy1X6V+dbJscHvd40lhUsd0z42cMbmLefuXI1Y9M668Wu68QY9tDUXMhg+NLKUa
-         lawvu25/DOCqKm86OCV9hh0jjVACEQTPva599OrfrpTGm4T/G2936rqcgedBLJ0cY0Nc
-         XtxP0Vb/qk+AakD8LSHG5C9uaLo641EIM87qYBQjjI1lUqIpQ0NwDD2CDCnZdYkYca1m
-         xewg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689623720; x=1692215720;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=zpIC/vheFt0sfkteBFunYkR3K/TvtDGb+njBwXb1bVw=;
-        b=Y7cDt0VQ8t8Bh6b2LyoLYBONravyQfjPy0/MBJw7NbjW63fmtIrewBDWg5VNyPRtY2
-         ADM63NY6wvAsG8eJ6zo7M043Pon8nkuHbU9xaEI7l6vRX+fI/Af6aYI9m5NkOI0R/PlH
-         VH68Ymtz+h7WSsQ1YWBOmGMA3lQky9gEaNOYsOQ4VtKzFDTee+IWtCIi7gYPqAiDP//d
-         nF5DztU6+HegFE3nmqT1meeeo539PS7d4xgfF+sw+6Ihts282VQcFhsFl9Y/ylXh/E9d
-         VbOLqAIO7PWfFmQq7uSZAcmKLqydXFEHXOb5VpfILGUY9UEZtfUH5NxpsNeRvHytsykg
-         +6Kg==
-X-Gm-Message-State: ABy/qLauWq3B/hBHX7ei5CXH+RuWjzwaf4XSSz5Y+n/IlgkdpEJLWzSD
-	XgwHI03IKo57fWO/b6VSefnQVg==
-X-Google-Smtp-Source: APBJJlH2ZBow7cATyCQicXDgX7fUHJgqQSPkaJq+UqX1f6NKkgZ6Mmi+m6jeuqTzgET/pn5dMaO6Dg==
-X-Received: by 2002:a17:906:77cd:b0:993:d9a5:dafe with SMTP id m13-20020a17090677cd00b00993d9a5dafemr12994208ejn.14.1689623720587;
-        Mon, 17 Jul 2023 12:55:20 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.223.104])
-        by smtp.gmail.com with ESMTPSA id y26-20020a170906471a00b0098e78ff1a87sm85676ejq.120.2023.07.17.12.55.18
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Jul 2023 12:55:19 -0700 (PDT)
-Message-ID: <9e46c996-3e3b-b437-f2c4-2ca86a1c7e6c@linaro.org>
-Date: Mon, 17 Jul 2023 21:55:17 +0200
+	id 1qLhgR-00BOwq-1K;
+	Tue, 18 Jul 2023 10:11:57 +0000
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4R4vmD14XFz67nfn;
+	Tue, 18 Jul 2023 18:08:28 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Tue, 18 Jul
+ 2023 11:11:43 +0100
+Date: Tue, 18 Jul 2023 11:11:43 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+CC: Mika Westerberg <mika.westerberg@linux.intel.com>, Linus Walleij
+	<linus.walleij@linaro.org>, Balsam CHIHI <bchihi@baylibre.com>, "Claudiu
+ Beznea" <claudiu.beznea@microchip.com>, Geert Uytterhoeven
+	<geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Thierry Reding <thierry.reding@gmail.com>, Paul Cercueil
+	<paul@crapouillou.net>, <linux-gpio@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-renesas-soc@vger.kernel.org>,
+	<linux-tegra@vger.kernel.org>, <linux-pm@vger.kernel.org>, Andy Shevchenko
+	<andy@kernel.org>, Andrew Lunn <andrew@lunn.ch>, Alexandre Belloni
+	<alexandre.belloni@bootlin.com>, Len Brown <len.brown@intel.com>, "Rafael J.
+ Wysocki" <rafael@kernel.org>, Gregory Clement <gregory.clement@bootlin.com>,
+	Sean Wang <sean.wang@kernel.org>, "Jonathan Hunter" <jonathanh@nvidia.com>,
+	Ludovic Desroches <ludovic.desroches@microchip.com>, Pavel Machek
+	<pavel@ucw.cz>, "Matthias Brugger" <matthias.bgg@gmail.com>, Sebastian
+ Hesselbarth <sebastian.hesselbarth@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 10/10] pinctrl: tegra: Switch to use
+ DEFINE_NOIRQ_DEV_PM_OPS() helper
+Message-ID: <20230718111143.000067dc@Huawei.com>
+In-Reply-To: <20230717172821.62827-11-andriy.shevchenko@linux.intel.com>
+References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
+	<20230717172821.62827-11-andriy.shevchenko@linux.intel.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v3 3/4] dt-bindings: soc: mediatek: pwrap: Add compatible
- for MT8188
-Content-Language: en-US
-To: Jason-ch Chen <jason-ch.chen@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?=
- <nfraprado@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20230717120300.21388-1-jason-ch.chen@mediatek.com>
- <20230717120300.21388-4-jason-ch.chen@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230717120300.21388-4-jason-ch.chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100003.china.huawei.com (7.191.160.210) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_205722_179444_F2E97B89 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20230718_111155_771367_51147D54 
+X-CRM114-Status: GOOD (  12.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,45 +99,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/07/2023 14:02, Jason-ch Chen wrote:
-> From: jason-ch chen <Jason-ch.Chen@mediatek.com>
-> 
-> Add MT8188 PMIC Wrapper compatible to binding document.
+On Mon, 17 Jul 2023 20:28:21 +0300
+Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
 
-No improvements here - the compatible is already there. Subject has the
-same issue. Explain what you are doing and why.
-
+> Since pm.h provides a helper for system no-IRQ PM callbacks,
+> switch the driver to use it instead of open coded variant.
 > 
-> Signed-off-by: jason-ch chen <Jason-ch.Chen@mediatek.com>
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+
+No pm_sleep_ptr()?
+
 > ---
->  .../devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml    | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
+>  drivers/pinctrl/tegra/pinctrl-tegra.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-> index a06ac2177444..4737e5f45d54 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-> @@ -41,7 +41,6 @@ properties:
->                - mediatek,mt8173-pwrap
->                - mediatek,mt8183-pwrap
->                - mediatek,mt8186-pwrap
-> -              - mediatek,mt8188-pwrap
-
-Look, here ^^^^
-
->                - mediatek,mt8195-pwrap
->                - mediatek,mt8365-pwrap
->                - mediatek,mt8516-pwrap
-> @@ -50,6 +49,11 @@ properties:
->                - mediatek,mt8186-pwrap
->                - mediatek,mt8195-pwrap
->            - const: syscon
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt8188-pwrap
-
-
-Best regards,
-Krzysztof
+> diff --git a/drivers/pinctrl/tegra/pinctrl-tegra.c b/drivers/pinctrl/tegra/pinctrl-tegra.c
+> index 4547cf66d03b..734c71ef005b 100644
+> --- a/drivers/pinctrl/tegra/pinctrl-tegra.c
+> +++ b/drivers/pinctrl/tegra/pinctrl-tegra.c
+> @@ -747,10 +747,7 @@ static int tegra_pinctrl_resume(struct device *dev)
+>  	return 0;
+>  }
+>  
+> -const struct dev_pm_ops tegra_pinctrl_pm = {
+> -	.suspend_noirq = &tegra_pinctrl_suspend,
+> -	.resume_noirq = &tegra_pinctrl_resume
+> -};
+> +DEFINE_NOIRQ_DEV_PM_OPS(tegra_pinctrl_pm, tegra_pinctrl_suspend, tegra_pinctrl_resume);
+>  
+>  static bool tegra_pinctrl_gpio_node_has_range(struct tegra_pmx *pmx)
+>  {
 
 
