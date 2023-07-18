@@ -4,78 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA92CC001DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:24:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D8C8C0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:24:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+uXi/bUIORJV4eq4SZu3fNzXWeEh0eoJj1vjtzZU8Z0=; b=t9imPCv5m+Tzm/N2ei/J5hiuI6
-	c/9se3Qs+YO/zhvhoMSclD7glQqRA1VonMy3ngoBG3lp3Hop6mlun2sz02+0q6+pYSWigqtzMPFvk
-	UOIGReneWxmJak6Zykj32gSEllzfy4jniVUQBrf216RhpbsvK/iSX+dR0ppFfsnjOqXMIOZ/Pktwq
-	M3S4KBQ4egJCZPBAMTfwUdAowOZ1+PNPHiZKNTzKcSGKGNRTPCLGLA5u+HsUxXBG01njQVeSBnO+q
-	6HORZhi/dA7yiSNrHxY2Yo0AKybVUhdRFeLa4xsoIWsO7+JluYv6dDtYUEXiSRtYRnM728stvvqcv
-	CaUfitRg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wwFV/HSClZfL0mPQDWrZCZVgvJdfgHFUvV8Erj6RGss=; b=txkmwa9/9FpmHHsF8P1KP5XMPi
+	+OmDuR5GBlTpyJxfWXFZ7lx37YF2k+VgGF+tfmi8JkaS+YII+fngUvrap8233HwBTpWs4mJzr86fl
+	4XisFT9cOmgJ2r46qBRphPEtQLsUfLAjY7ah2NB7XkHGrcBIXAUn3OC85DCTU1jLXKnX/MK6kEH60
+	yrE407x8ivucgG8wcpLMwSbW+PUxkHCeBwM+2fDpY7g9heWuUtYu/7prKFVzdrKz+uaL4jpfHlrfx
+	ez6zjlTtekna1ccxFbrCZYuFWqct69AgBj1/pq5r59/vtPlf+00lu09tfHSpYaTxJ2YB9kaFAw+jk
+	E1dgNv/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzfL-005Gqv-3A;
-	Wed, 19 Jul 2023 05:24:00 +0000
+	id 1qLzfO-005Gt6-1o;
+	Wed, 19 Jul 2023 05:24:02 +0000
 Received: from casper.infradead.org ([90.155.50.34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzcL-005Dg5-0H;
-	Wed, 19 Jul 2023 05:20:53 +0000
+	id 1qLzcT-005Dg5-3D
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 19 Jul 2023 05:21:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:To:From:Date:Sender:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=+uXi/bUIORJV4eq4SZu3fNzXWeEh0eoJj1vjtzZU8Z0=; b=UwxzEIEdFosstaw3Q5ssMb1qrj
-	pQ64XrueATQpI2xSwmKdm/V/AOEqblTbFvvXSbuGEeIKtAvy5UmKgsS4x1BGCAKFOPxuNVGcEt73O
-	MCbEdQPEc+J9h4/rCVxYcUTlmA22US+KWlV3zwgH3Kgv6FOg47evZ7JWPb6lio3e+KPSW46QbFkeS
-	NzGJi+Ah4hUIcK06ZmeEOTICalFPxhER1TrY0CtJm8VIHpq67v4QZ34HkeGDC7iNFPpu2Y3+TBJEj
-	KEiSUfA5NlJ34Zg+Tf1HcTHQItNHCj/pwQ89K4fyLJU1CbA3hIJjSwyQz3jsJgQiumx8RMMMR8C1W
-	rG0Fx1tA==;
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+	Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:MIME-Version:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=wwFV/HSClZfL0mPQDWrZCZVgvJdfgHFUvV8Erj6RGss=; b=MUylNIB3zhbSDss6tEvymcdvcr
+	a69vTpHXXZhhnO9I4UDv25TIlJROcQxwANmRT3fZLCiaUhLbSuUoB24mCw6S2la33aLNGUJx+Jhxn
+	uFNf8ahQNAksMSwAnJF2eITm4/gQ29xhRhiBDfmRX794P7/sWiebwKa0CSxji13leB78kdKaKqabA
+	GDNtyn3/ZU8CB5fC+v+2CcDEssUEEuznpN2cCqQSVLD88i7gYfW9ZlTQ91uJXR81MOYWgOhmqbsDB
+	eCVWcAwPNNEgniKg2rpbFbewZwNyOABzWKfiU6VEY7qoVguHm6erqigInPMGRKXinTD7B7u5sZb9d
+	WwuCivvQ==;
+Received: from 19.mo561.mail-out.ovh.net ([178.32.98.231])
 	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1qLsKM-005JGA-3A; Tue, 18 Jul 2023 21:33:51 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1qLsJ6-0001N5-09;
-	Tue, 18 Jul 2023 21:32:32 +0000
-Date: Tue, 18 Jul 2023 22:32:23 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Greg Ungerer <gerg@kernel.org>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v3 8/9] net: ethernet: mtk_eth_soc: convert clock
- bitmap to u64
-Message-ID: <01c699e86adf6eb0049e4bc0ff9237ef1da58262.1689714291.git.daniel@makrotopia.org>
-References: <cover.1689714290.git.daniel@makrotopia.org>
+	id 1qLgsS-004m2a-3z
+	for linux-mediatek@lists.infradead.org; Tue, 18 Jul 2023 09:20:18 +0000
+Received: from director2.ghost.mail-out.ovh.net (unknown [10.109.146.1])
+	by mo561.mail-out.ovh.net (Postfix) with ESMTP id DD33424F65
+	for <linux-mediatek@lists.infradead.org>; Tue, 18 Jul 2023 09:19:55 +0000 (UTC)
+Received: from ghost-submission-6684bf9d7b-mn4ct (unknown [10.109.138.229])
+	by director2.ghost.mail-out.ovh.net (Postfix) with ESMTPS id 9177E1FEB2;
+	Tue, 18 Jul 2023 09:19:49 +0000 (UTC)
+Received: from RCM-web4.webmail.mail.ovh.net ([176.31.235.81])
+	by ghost-submission-6684bf9d7b-mn4ct with ESMTPSA
+	id gQ79HjVZtmSJDgAAInjvQA
+	(envelope-from <rafal@milecki.pl>); Tue, 18 Jul 2023 09:19:49 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1689714290.git.daniel@makrotopia.org>
+Date: Tue, 18 Jul 2023 11:19:49 +0200
+From: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>
+To: Ahmad Fatoum <a.fatoum@pengutronix.de>
+Cc: =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>, Srinivas
+ Kandagatla <srinivas.kandagatla@linaro.org>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Alessandro Zummo <a.zummo@towertech.it>,
+ Vignesh Raghavendra <vigneshr@ti.com>, Kunihiko Hayashi
+ <hayashi.kunihiko@socionext.com>, linux-mtd@lists.infradead.org, Miquel
+ Raynal <miquel.raynal@bootlin.com>, Evgeniy Polyakov <zbr@ioremap.net>,
+ Fabio Estevam <festevam@gmail.com>,
+ linux-stm32@st-md-mailman.stormreply.com, Alyssa Rosenzweig
+ <alyssa@rosenzweig.io>, Heiko Stuebner <heiko@sntech.de>,
+ linux-rtc@vger.kernel.org, Samuel Holland <samuel@sholland.org>, Richard
+ Weinberger <richard@nod.at>, Michal Simek <michal.simek@xilinx.com>, Jernej
+ Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org,
+ Chen-Yu Tsai <wens@csie.org>, Andy Gross <agross@kernel.org>, NXP Linux Team
+ <linux-imx@nxp.com>, Vincent Shih <vincent.sunplus@gmail.com>, Orson Zhai
+ <orsonzhai@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ linux-sunxi@lists.linux.dev, asahi@lists.linux.dev, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Sven Peter <sven@svenpeter.dev>, Martin
+ Blumenstingl <martin.blumenstingl@googlemail.com>,
+ linux-arm-msm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>,
+ linux-mediatek@lists.infradead.org, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Neil
+ Armstrong <neil.armstrong@linaro.org>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Bjorn Andersson <andersson@kernel.org>, Hector Martin <marcan@marcan.st>,
+ linux-kernel@vger.kernel.org, Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Michael Walle <michael@walle.cc>, Masami Hiramatsu <mhiramat@kernel.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, Kevin Hilman
+ <khilman@baylibre.com>, Shawn Guo <shawnguo@kernel.org>, Claudiu Beznea
+ <claudiu.beznea@microchip.com>
+Subject: Re: [Linux-stm32] [PATCH V4] nvmem: add explicit config option to
+ read old syntax fixed OF cells
+In-Reply-To: <e5a8524c-8961-9ff0-db30-3b648345319e@pengutronix.de>
+References: <20230403225540.1931-1-zajec5@gmail.com>
+ <e5a8524c-8961-9ff0-db30-3b648345319e@pengutronix.de>
+User-Agent: Roundcube Webmail/1.4.13
+Message-ID: <d51234ebc05d2b9fe44625299c103caa@milecki.pl>
+X-Sender: rafal@milecki.pl
+X-Originating-IP: 31.11.218.106
+X-Webmail-UserID: rafal@milecki.pl
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 6429732894367460296
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedviedrgeeggdduvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeggfffhvfevufgjfhgfkfigihgtgfesthejjhdttdervdenucfhrhhomheptfgrfhgrlhcuofhilhgvtghkihcuoehrrghfrghlsehmihhlvggtkhhirdhplheqnecuggftrfgrthhtvghrnhepgfeuleeuteetfeeuhefhhffgtedvgeejfeelffeuvdfhueffvdehgeeuveeuhfelnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucfkphepuddvjedrtddrtddruddpfedurdduuddrvddukedruddtiedpudejiedrfedurddvfeehrdekudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoehrrghfrghlsehmihhlvggtkhhirdhplheqpdhnsggprhgtphhtthhopedupdhrtghpthhtoheplhhinhhugidqmhgvughirghtvghksehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdfovfetjfhoshhtpehmohehiedupdhmohguvgepshhmthhpohhuth
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_223350_143369_DE9877B2 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20230718_102016_194190_F59ADE15 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,132 +119,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The to-be-added MT7988 SoC adds many new clocks which need to be
-controlled by the Ethernet driver, which will result in their total
-number exceeding 32.
-Prepare by converting clock bitmaps into 64-bit types.
+Hi Ahmad,
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 96 +++++++++++----------
- 1 file changed, 49 insertions(+), 47 deletions(-)
+On 2023-07-18 11:08, Ahmad Fatoum wrote:
+>> diff --git a/drivers/mtd/mtdcore.c b/drivers/mtd/mtdcore.c
+>> index 60670b2f70b9..334adbae3690 100644
+>> --- a/drivers/mtd/mtdcore.c
+>> +++ b/drivers/mtd/mtdcore.c
+>> @@ -522,6 +522,7 @@ static int mtd_nvmem_add(struct mtd_info *mtd)
+>>  	config.dev = &mtd->dev;
+>>  	config.name = dev_name(&mtd->dev);
+>>  	config.owner = THIS_MODULE;
+>> +	config.add_legacy_fixed_of_cells = of_device_is_compatible(node, 
+>> "nvmem-cells");
+> 
+> How does the new binding look like in this situation?
+> 
+> Before it was:
+> 
+> &{flash/partitions} {
+> 	compatible = "fixed-partitions";
+> 	#address-cells = <1>;
+> 	#size-cells = <1>;
+> 
+> 	partition@0 {
+> 		compatible = "nvmem-cells";
+> 		reg = <0 0x100>;
+> 		#address-cells = <1>;
+> 		#size-cells = <1>;
+> 
+> 		calib@1 {
+> 			reg = <1 1>;
+> 		};
+> 	}
+> };
+> 
+> It it now the same, but s/"nvmem-cells"/"fixed-layout"/ ?
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 8d8601e553478..38c212b50f776 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -666,54 +666,56 @@ enum mtk_clks_map {
- 	MTK_CLK_MAX
- };
- 
--#define MT7623_CLKS_BITMAP	(BIT(MTK_CLK_ETHIF) | BIT(MTK_CLK_ESW) |  \
--				 BIT(MTK_CLK_GP1) | BIT(MTK_CLK_GP2) | \
--				 BIT(MTK_CLK_TRGPLL))
--#define MT7622_CLKS_BITMAP	(BIT(MTK_CLK_ETHIF) | BIT(MTK_CLK_ESW) |  \
--				 BIT(MTK_CLK_GP0) | BIT(MTK_CLK_GP1) | \
--				 BIT(MTK_CLK_GP2) | \
--				 BIT(MTK_CLK_SGMII_TX_250M) | \
--				 BIT(MTK_CLK_SGMII_RX_250M) | \
--				 BIT(MTK_CLK_SGMII_CDR_REF) | \
--				 BIT(MTK_CLK_SGMII_CDR_FB) | \
--				 BIT(MTK_CLK_SGMII_CK) | \
--				 BIT(MTK_CLK_ETH2PLL))
-+#define MT7623_CLKS_BITMAP	(BIT_ULL(MTK_CLK_ETHIF) | BIT_ULL(MTK_CLK_ESW) |  \
-+				 BIT_ULL(MTK_CLK_GP1) | BIT_ULL(MTK_CLK_GP2) | \
-+				 BIT_ULL(MTK_CLK_TRGPLL))
-+#define MT7622_CLKS_BITMAP	(BIT_ULL(MTK_CLK_ETHIF) | BIT_ULL(MTK_CLK_ESW) |  \
-+				 BIT_ULL(MTK_CLK_GP0) | BIT_ULL(MTK_CLK_GP1) | \
-+				 BIT_ULL(MTK_CLK_GP2) | \
-+				 BIT_ULL(MTK_CLK_SGMII_TX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII_RX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII_CDR_REF) | \
-+				 BIT_ULL(MTK_CLK_SGMII_CDR_FB) | \
-+				 BIT_ULL(MTK_CLK_SGMII_CK) | \
-+				 BIT_ULL(MTK_CLK_ETH2PLL))
- #define MT7621_CLKS_BITMAP	(0)
- #define MT7628_CLKS_BITMAP	(0)
--#define MT7629_CLKS_BITMAP	(BIT(MTK_CLK_ETHIF) | BIT(MTK_CLK_ESW) |  \
--				 BIT(MTK_CLK_GP0) | BIT(MTK_CLK_GP1) | \
--				 BIT(MTK_CLK_GP2) | BIT(MTK_CLK_FE) | \
--				 BIT(MTK_CLK_SGMII_TX_250M) | \
--				 BIT(MTK_CLK_SGMII_RX_250M) | \
--				 BIT(MTK_CLK_SGMII_CDR_REF) | \
--				 BIT(MTK_CLK_SGMII_CDR_FB) | \
--				 BIT(MTK_CLK_SGMII2_TX_250M) | \
--				 BIT(MTK_CLK_SGMII2_RX_250M) | \
--				 BIT(MTK_CLK_SGMII2_CDR_REF) | \
--				 BIT(MTK_CLK_SGMII2_CDR_FB) | \
--				 BIT(MTK_CLK_SGMII_CK) | \
--				 BIT(MTK_CLK_ETH2PLL) | BIT(MTK_CLK_SGMIITOP))
--#define MT7981_CLKS_BITMAP	(BIT(MTK_CLK_FE) | BIT(MTK_CLK_GP2) | BIT(MTK_CLK_GP1) | \
--				 BIT(MTK_CLK_WOCPU0) | \
--				 BIT(MTK_CLK_SGMII_TX_250M) | \
--				 BIT(MTK_CLK_SGMII_RX_250M) | \
--				 BIT(MTK_CLK_SGMII_CDR_REF) | \
--				 BIT(MTK_CLK_SGMII_CDR_FB) | \
--				 BIT(MTK_CLK_SGMII2_TX_250M) | \
--				 BIT(MTK_CLK_SGMII2_RX_250M) | \
--				 BIT(MTK_CLK_SGMII2_CDR_REF) | \
--				 BIT(MTK_CLK_SGMII2_CDR_FB) | \
--				 BIT(MTK_CLK_SGMII_CK))
--#define MT7986_CLKS_BITMAP	(BIT(MTK_CLK_FE) | BIT(MTK_CLK_GP2) | BIT(MTK_CLK_GP1) | \
--				 BIT(MTK_CLK_WOCPU1) | BIT(MTK_CLK_WOCPU0) | \
--				 BIT(MTK_CLK_SGMII_TX_250M) | \
--				 BIT(MTK_CLK_SGMII_RX_250M) | \
--				 BIT(MTK_CLK_SGMII_CDR_REF) | \
--				 BIT(MTK_CLK_SGMII_CDR_FB) | \
--				 BIT(MTK_CLK_SGMII2_TX_250M) | \
--				 BIT(MTK_CLK_SGMII2_RX_250M) | \
--				 BIT(MTK_CLK_SGMII2_CDR_REF) | \
--				 BIT(MTK_CLK_SGMII2_CDR_FB))
-+#define MT7629_CLKS_BITMAP	(BIT_ULL(MTK_CLK_ETHIF) | BIT_ULL(MTK_CLK_ESW) |  \
-+				 BIT_ULL(MTK_CLK_GP0) | BIT_ULL(MTK_CLK_GP1) | \
-+				 BIT_ULL(MTK_CLK_GP2) | BIT_ULL(MTK_CLK_FE) | \
-+				 BIT_ULL(MTK_CLK_SGMII_TX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII_RX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII_CDR_REF) | \
-+				 BIT_ULL(MTK_CLK_SGMII_CDR_FB) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_TX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_RX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_CDR_REF) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_CDR_FB) | \
-+				 BIT_ULL(MTK_CLK_SGMII_CK) | \
-+				 BIT_ULL(MTK_CLK_ETH2PLL) | BIT_ULL(MTK_CLK_SGMIITOP))
-+#define MT7981_CLKS_BITMAP	(BIT_ULL(MTK_CLK_FE) | BIT_ULL(MTK_CLK_GP2) | \
-+				 BIT_ULL(MTK_CLK_GP1) | \
-+				 BIT_ULL(MTK_CLK_WOCPU0) | \
-+				 BIT_ULL(MTK_CLK_SGMII_TX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII_RX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII_CDR_REF) | \
-+				 BIT_ULL(MTK_CLK_SGMII_CDR_FB) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_TX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_RX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_CDR_REF) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_CDR_FB) | \
-+				 BIT_ULL(MTK_CLK_SGMII_CK))
-+#define MT7986_CLKS_BITMAP	(BIT_ULL(MTK_CLK_FE) | BIT_ULL(MTK_CLK_GP2) | \
-+				 BIT_ULL(MTK_CLK_GP1) | \
-+				 BIT_ULL(MTK_CLK_WOCPU1) | BIT_ULL(MTK_CLK_WOCPU0) | \
-+				 BIT_ULL(MTK_CLK_SGMII_TX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII_RX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII_CDR_REF) | \
-+				 BIT_ULL(MTK_CLK_SGMII_CDR_FB) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_TX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_RX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_CDR_REF) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_CDR_FB))
- 
- enum mtk_dev_state {
- 	MTK_HW_INIT,
-@@ -1046,7 +1048,7 @@ struct mtk_soc_data {
- 	const struct mtk_reg_map *reg_map;
- 	u32             ana_rgc3;
- 	u64		caps;
--	u32		required_clks;
-+	u64		required_clks;
- 	bool		required_pctl;
- 	u8		offload_version;
- 	u8		hash_offset;
--- 
-2.41.0
+Please take a look at those commits and examples:
+
+bd912c991d2e ("dt-bindings: nvmem: layouts: add fixed-layout")
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bd912c991d2ef079a32558f057b8663bcf1fb6fc
+
+fa7fbe53ecdc ("dt-bindings: nvmem: convert base example to use NVMEM 
+fixed cells layout")
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fa7fbe53ecdc4e7d549a9f73a40e257b0046b4b9
+
+
+Basically you need a "nvmem-layout" node with:
+compatible = "fixed-layout";
+
+So in your case that would be:
+
+&{flash/partitions} {
+	compatible = "fixed-partitions";
+
+	partition@0 {
+		reg = <0 0x100>;
+
+		nvmem-layout {
+			compatible = "fixed-layout";
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			calib@1 {
+				reg = <1 1>;
+			};
+		};
+	}
+};
 
