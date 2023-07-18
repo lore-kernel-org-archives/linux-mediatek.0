@@ -4,86 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8426CEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:16:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA92CC001DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:24:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SHUDF46zorJw9cWcAaRb+5uRqKuLNnsGpbvYUSI9l1g=; b=BRR5z4yIhzeLRcBpBTrAYK2X4x
-	1+CCJfBbzpS8sIA280/mmU2qfEqcMDMDFMdj24Zymi5U0J/thylOKPWFnhHEtsGCiplukhFfGpNj1
-	LhZNYRC5QgyZKE0fLIJ1NqPR7m1yJMZU0jJlJJoIjr6q91yBJ/+tb58lrVCzTsDpSNYWS9WKk6sD7
-	bP5TvgEHjRwbzwTRSpGgqz5P9IINXlkuSWFaFlQYXKgLiVjsNf3XYYBs9IrWw99oFnU3I6520jrlh
-	gGksJb4I7Epy1CohiVl15xOnweVhpHUDdLA9bGivtSS+n+XHIzrFveVBAsjIMU8OqNGWIrH9qCpPQ
-	iQMmhrzQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+uXi/bUIORJV4eq4SZu3fNzXWeEh0eoJj1vjtzZU8Z0=; b=t9imPCv5m+Tzm/N2ei/J5hiuI6
+	c/9se3Qs+YO/zhvhoMSclD7glQqRA1VonMy3ngoBG3lp3Hop6mlun2sz02+0q6+pYSWigqtzMPFvk
+	UOIGReneWxmJak6Zykj32gSEllzfy4jniVUQBrf216RhpbsvK/iSX+dR0ppFfsnjOqXMIOZ/Pktwq
+	M3S4KBQ4egJCZPBAMTfwUdAowOZ1+PNPHiZKNTzKcSGKGNRTPCLGLA5u+HsUxXBG01njQVeSBnO+q
+	6HORZhi/dA7yiSNrHxY2Yo0AKybVUhdRFeLa4xsoIWsO7+JluYv6dDtYUEXiSRtYRnM728stvvqcv
+	CaUfitRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzXq-005COF-0j;
-	Wed, 19 Jul 2023 05:16:14 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qLzfL-005Gqv-3A;
+	Wed, 19 Jul 2023 05:24:00 +0000
+Received: from casper.infradead.org ([90.155.50.34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzXo-005CNI-1N
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 19 Jul 2023 05:16:12 +0000
+	id 1qLzcL-005Dg5-0H;
+	Wed, 19 Jul 2023 05:20:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=SHUDF46zorJw9cWcAaRb+5uRqKuLNnsGpbvYUSI9l1g=; b=PPOlgsXt4dpec97ipMIvrZQPF3
-	SfudyKUansIBTZd8EkZQF4TrLkdmyLWOIQeca7aUdxu+fK94KQRPGi7UQG2sR2qZ2inVJZo4VdqdX
-	lmhFI9o6sk7zKky82b1xjAteY1Z8Xxp4ksQXMicOFBNFy89M9Ho3T/kGr/MPn3GkoH/GeIN6uU52G
-	T4+aeW9cZ6uGPRsPykL4/VD2RK3WUBI7kJBsJfuVk2A/EiMTerKry3mNEvlZ7/CQm/fqGrcapqfDa
-	1TdgN4oY4kB4FEPDnI97uXCmyQ09NAESORJy5jEMEFMCmqdcaggUrbsPYTeVgcquq4kocjDX4OiP/
-	sinhDG4w==;
-Received: from [183.242.55.162] (helo=mail.208.org)
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLg50-00BJ5Y-2b
-	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Jul 2023 08:29:15 +0000
-Received: from mail.208.org (email.208.org [127.0.0.1])
-	by mail.208.org (Postfix) with ESMTP id 4R4sXp4Fv8zBR9sx
-	for <linux-mediatek@lists.infradead.org>; Tue, 18 Jul 2023 16:28:26 +0800 (CST)
-Authentication-Results: mail.208.org (amavisd-new); dkim=pass
-	reason="pass (just generated, assumed good)" header.d=208.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=208.org; h=
-	content-transfer-encoding:content-type:message-id:user-agent
-	:references:in-reply-to:subject:to:from:date:mime-version; s=
-	dkim; t=1689668906; x=1692260907; bh=D8d+MsQpIDEMC9w+5s1SwmR6S+n
-	0xq3gry16gHMpo4A=; b=1DepZRv0v9ufvyClbtE831S94x/8NSMzuCe7SENuKIP
-	EfTVng/v331BtBWiBJey1AhLXI9rvwvP+HrGJ6r4+71Lv2V0lvFVKh7mRNVFfbqL
-	mw1FwDiTyFJbSoul/PRtusSOkx9ODuJKWIXRB8lIaDqdM1MmRY4UzL2OWPaReKwy
-	AE6ygcLmUE7jRTl3NZ+bmTVEYAjWyhKhNNIIGXbhUnBc536TnD4ZbCsOQ3PhMMRW
-	qos7U9zPI2lLjSHXOHCveV+V/LJJPUkmEy2KvVjQ8Ee1AYhYG3TusDma11gIFsGE
-	z8OFcgJ6w9gjbZO73fAeqpPxmepmm18wiFmfZaKF1bQ==
-X-Virus-Scanned: amavisd-new at mail.208.org
-Received: from mail.208.org ([127.0.0.1])
-	by mail.208.org (mail.208.org [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id 0emrV3rHY8F2 for <linux-mediatek@lists.infradead.org>;
-	Tue, 18 Jul 2023 16:28:26 +0800 (CST)
-Received: from localhost (email.208.org [127.0.0.1])
-	by mail.208.org (Postfix) with ESMTPSA id 4R4sXp1ShhzBR7bp;
-	Tue, 18 Jul 2023 16:28:26 +0800 (CST)
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:To:From:Date:Sender:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=+uXi/bUIORJV4eq4SZu3fNzXWeEh0eoJj1vjtzZU8Z0=; b=UwxzEIEdFosstaw3Q5ssMb1qrj
+	pQ64XrueATQpI2xSwmKdm/V/AOEqblTbFvvXSbuGEeIKtAvy5UmKgsS4x1BGCAKFOPxuNVGcEt73O
+	MCbEdQPEc+J9h4/rCVxYcUTlmA22US+KWlV3zwgH3Kgv6FOg47evZ7JWPb6lio3e+KPSW46QbFkeS
+	NzGJi+Ah4hUIcK06ZmeEOTICalFPxhER1TrY0CtJm8VIHpq67v4QZ34HkeGDC7iNFPpu2Y3+TBJEj
+	KEiSUfA5NlJ34Zg+Tf1HcTHQItNHCj/pwQ89K4fyLJU1CbA3hIJjSwyQz3jsJgQiumx8RMMMR8C1W
+	rG0Fx1tA==;
+Received: from pidgin.makrotopia.org ([185.142.180.65])
+	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1qLsKM-005JGA-3A; Tue, 18 Jul 2023 21:33:51 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1qLsJ6-0001N5-09;
+	Tue, 18 Jul 2023 21:32:32 +0000
+Date: Tue, 18 Jul 2023 22:32:23 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Greg Ungerer <gerg@kernel.org>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next v3 8/9] net: ethernet: mtk_eth_soc: convert clock
+ bitmap to u64
+Message-ID: <01c699e86adf6eb0049e4bc0ff9237ef1da58262.1689714291.git.daniel@makrotopia.org>
+References: <cover.1689714290.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Date: Tue, 18 Jul 2023 16:28:26 +0800
-From: sunran001@208suo.com
-To: joro@8bytes.org, will@kernel.org, matthias.bgg@gmail.com
-Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] iommu/mtk_iommu_v1: add missing put_device()
-In-Reply-To: <20230718082500.17066-1-xujianghui@cdjrlc.com>
-References: <20230718082500.17066-1-xujianghui@cdjrlc.com>
-User-Agent: Roundcube Webmail
-Message-ID: <36b3ef1e2a73f84216d9fa656f6146a6@208suo.com>
-X-Sender: sunran001@208suo.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1689714290.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_092911_477874_40BAE8F2 
-X-CRM114-Status: UNSURE (   7.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230718_223350_143369_DE9877B2 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,29 +90,132 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The of_find_device_by_node() takes a reference to the underlying device
-structure, we should release that reference.
+The to-be-added MT7988 SoC adds many new clocks which need to be
+controlled by the Ethernet driver, which will result in their total
+number exceeding 32.
+Prepare by converting clock bitmaps into 64-bit types.
 
-./drivers/iommu/mtk_iommu_v1.c:669:3-9: ERROR: missing put_device; call
-of_find_device_by_node on line 662, but without a corresponding object
-release within this function.
-
-Signed-off-by: Ran Sun <sunran001@208suo.com>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
-  drivers/iommu/mtk_iommu_v1.c | 1 +
-  1 file changed, 1 insertion(+)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 96 +++++++++++----------
+ 1 file changed, 49 insertions(+), 47 deletions(-)
 
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 8a0a5e5d049f..1833d0ce7afe 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -666,6 +666,7 @@ static int mtk_iommu_v1_probe(struct platform_device 
-*pdev)
-          }
-          if (!plarbdev->dev.driver) {
-              of_node_put(larbnode);
-+            put_device(&plarbdev->dev);
-              return -EPROBE_DEFER;
-          }
-          data->larb_imu[i].dev = &plarbdev->dev;
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 8d8601e553478..38c212b50f776 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -666,54 +666,56 @@ enum mtk_clks_map {
+ 	MTK_CLK_MAX
+ };
+ 
+-#define MT7623_CLKS_BITMAP	(BIT(MTK_CLK_ETHIF) | BIT(MTK_CLK_ESW) |  \
+-				 BIT(MTK_CLK_GP1) | BIT(MTK_CLK_GP2) | \
+-				 BIT(MTK_CLK_TRGPLL))
+-#define MT7622_CLKS_BITMAP	(BIT(MTK_CLK_ETHIF) | BIT(MTK_CLK_ESW) |  \
+-				 BIT(MTK_CLK_GP0) | BIT(MTK_CLK_GP1) | \
+-				 BIT(MTK_CLK_GP2) | \
+-				 BIT(MTK_CLK_SGMII_TX_250M) | \
+-				 BIT(MTK_CLK_SGMII_RX_250M) | \
+-				 BIT(MTK_CLK_SGMII_CDR_REF) | \
+-				 BIT(MTK_CLK_SGMII_CDR_FB) | \
+-				 BIT(MTK_CLK_SGMII_CK) | \
+-				 BIT(MTK_CLK_ETH2PLL))
++#define MT7623_CLKS_BITMAP	(BIT_ULL(MTK_CLK_ETHIF) | BIT_ULL(MTK_CLK_ESW) |  \
++				 BIT_ULL(MTK_CLK_GP1) | BIT_ULL(MTK_CLK_GP2) | \
++				 BIT_ULL(MTK_CLK_TRGPLL))
++#define MT7622_CLKS_BITMAP	(BIT_ULL(MTK_CLK_ETHIF) | BIT_ULL(MTK_CLK_ESW) |  \
++				 BIT_ULL(MTK_CLK_GP0) | BIT_ULL(MTK_CLK_GP1) | \
++				 BIT_ULL(MTK_CLK_GP2) | \
++				 BIT_ULL(MTK_CLK_SGMII_TX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII_RX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII_CDR_REF) | \
++				 BIT_ULL(MTK_CLK_SGMII_CDR_FB) | \
++				 BIT_ULL(MTK_CLK_SGMII_CK) | \
++				 BIT_ULL(MTK_CLK_ETH2PLL))
+ #define MT7621_CLKS_BITMAP	(0)
+ #define MT7628_CLKS_BITMAP	(0)
+-#define MT7629_CLKS_BITMAP	(BIT(MTK_CLK_ETHIF) | BIT(MTK_CLK_ESW) |  \
+-				 BIT(MTK_CLK_GP0) | BIT(MTK_CLK_GP1) | \
+-				 BIT(MTK_CLK_GP2) | BIT(MTK_CLK_FE) | \
+-				 BIT(MTK_CLK_SGMII_TX_250M) | \
+-				 BIT(MTK_CLK_SGMII_RX_250M) | \
+-				 BIT(MTK_CLK_SGMII_CDR_REF) | \
+-				 BIT(MTK_CLK_SGMII_CDR_FB) | \
+-				 BIT(MTK_CLK_SGMII2_TX_250M) | \
+-				 BIT(MTK_CLK_SGMII2_RX_250M) | \
+-				 BIT(MTK_CLK_SGMII2_CDR_REF) | \
+-				 BIT(MTK_CLK_SGMII2_CDR_FB) | \
+-				 BIT(MTK_CLK_SGMII_CK) | \
+-				 BIT(MTK_CLK_ETH2PLL) | BIT(MTK_CLK_SGMIITOP))
+-#define MT7981_CLKS_BITMAP	(BIT(MTK_CLK_FE) | BIT(MTK_CLK_GP2) | BIT(MTK_CLK_GP1) | \
+-				 BIT(MTK_CLK_WOCPU0) | \
+-				 BIT(MTK_CLK_SGMII_TX_250M) | \
+-				 BIT(MTK_CLK_SGMII_RX_250M) | \
+-				 BIT(MTK_CLK_SGMII_CDR_REF) | \
+-				 BIT(MTK_CLK_SGMII_CDR_FB) | \
+-				 BIT(MTK_CLK_SGMII2_TX_250M) | \
+-				 BIT(MTK_CLK_SGMII2_RX_250M) | \
+-				 BIT(MTK_CLK_SGMII2_CDR_REF) | \
+-				 BIT(MTK_CLK_SGMII2_CDR_FB) | \
+-				 BIT(MTK_CLK_SGMII_CK))
+-#define MT7986_CLKS_BITMAP	(BIT(MTK_CLK_FE) | BIT(MTK_CLK_GP2) | BIT(MTK_CLK_GP1) | \
+-				 BIT(MTK_CLK_WOCPU1) | BIT(MTK_CLK_WOCPU0) | \
+-				 BIT(MTK_CLK_SGMII_TX_250M) | \
+-				 BIT(MTK_CLK_SGMII_RX_250M) | \
+-				 BIT(MTK_CLK_SGMII_CDR_REF) | \
+-				 BIT(MTK_CLK_SGMII_CDR_FB) | \
+-				 BIT(MTK_CLK_SGMII2_TX_250M) | \
+-				 BIT(MTK_CLK_SGMII2_RX_250M) | \
+-				 BIT(MTK_CLK_SGMII2_CDR_REF) | \
+-				 BIT(MTK_CLK_SGMII2_CDR_FB))
++#define MT7629_CLKS_BITMAP	(BIT_ULL(MTK_CLK_ETHIF) | BIT_ULL(MTK_CLK_ESW) |  \
++				 BIT_ULL(MTK_CLK_GP0) | BIT_ULL(MTK_CLK_GP1) | \
++				 BIT_ULL(MTK_CLK_GP2) | BIT_ULL(MTK_CLK_FE) | \
++				 BIT_ULL(MTK_CLK_SGMII_TX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII_RX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII_CDR_REF) | \
++				 BIT_ULL(MTK_CLK_SGMII_CDR_FB) | \
++				 BIT_ULL(MTK_CLK_SGMII2_TX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII2_RX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII2_CDR_REF) | \
++				 BIT_ULL(MTK_CLK_SGMII2_CDR_FB) | \
++				 BIT_ULL(MTK_CLK_SGMII_CK) | \
++				 BIT_ULL(MTK_CLK_ETH2PLL) | BIT_ULL(MTK_CLK_SGMIITOP))
++#define MT7981_CLKS_BITMAP	(BIT_ULL(MTK_CLK_FE) | BIT_ULL(MTK_CLK_GP2) | \
++				 BIT_ULL(MTK_CLK_GP1) | \
++				 BIT_ULL(MTK_CLK_WOCPU0) | \
++				 BIT_ULL(MTK_CLK_SGMII_TX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII_RX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII_CDR_REF) | \
++				 BIT_ULL(MTK_CLK_SGMII_CDR_FB) | \
++				 BIT_ULL(MTK_CLK_SGMII2_TX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII2_RX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII2_CDR_REF) | \
++				 BIT_ULL(MTK_CLK_SGMII2_CDR_FB) | \
++				 BIT_ULL(MTK_CLK_SGMII_CK))
++#define MT7986_CLKS_BITMAP	(BIT_ULL(MTK_CLK_FE) | BIT_ULL(MTK_CLK_GP2) | \
++				 BIT_ULL(MTK_CLK_GP1) | \
++				 BIT_ULL(MTK_CLK_WOCPU1) | BIT_ULL(MTK_CLK_WOCPU0) | \
++				 BIT_ULL(MTK_CLK_SGMII_TX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII_RX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII_CDR_REF) | \
++				 BIT_ULL(MTK_CLK_SGMII_CDR_FB) | \
++				 BIT_ULL(MTK_CLK_SGMII2_TX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII2_RX_250M) | \
++				 BIT_ULL(MTK_CLK_SGMII2_CDR_REF) | \
++				 BIT_ULL(MTK_CLK_SGMII2_CDR_FB))
+ 
+ enum mtk_dev_state {
+ 	MTK_HW_INIT,
+@@ -1046,7 +1048,7 @@ struct mtk_soc_data {
+ 	const struct mtk_reg_map *reg_map;
+ 	u32             ana_rgc3;
+ 	u64		caps;
+-	u32		required_clks;
++	u64		required_clks;
+ 	bool		required_pctl;
+ 	u8		offload_version;
+ 	u8		hash_offset;
+-- 
+2.41.0
 
