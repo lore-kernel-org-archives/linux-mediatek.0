@@ -4,109 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F58EEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:39:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CDC5EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:42:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cVSJ+GUtgjM/9lYbCvuJW6/WEZea92X8iN9RA0/Xmkc=; b=1WeI5n5wRlqobnQPicdcrTx8Qy
-	6KG/jMbCtaRwpNLr9//q/6WZfyAQlM5YYwDpu4u9GSGxt5qCtGJvpk0gdyQ/yHZFd18Z4MV/J3Kfv
-	tmSxl9KiZyADfUsMlTOiDH7xiF+mLxi4rUdECMVqdWd4dkthyhtA3xrtK/VPTajuIQ/uOaEyOO3ry
-	B0Uas8jLUPgbba3EXJpvD3djhZqtP1EXcLOHtEAKJs8DwWyLEBz834ZHyjkMn/HRwz2YURj5ZEvI8
-	l5kgcNKi7Z8sv845o6ymqlyUS1Y4TTh1O6AcEi/7Bzc/G48MfDV8q7mP4+S9cJtWfbJ1WTnxuuvNG
-	Mx/KmswA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3quue5muaabi4CozXaKq5cpAvjxqIHPBQ6qXUTBWbdw=; b=R2L3ofGsyUqjPNsnImmqnpg1Dg
+	COOxuttFW8Szs5CjZL1GC3jcy8oRwjO5sRbf/4FFKQTFSeemrOMbDOJKr7L5Cd43HzAbTH001GqZN
+	R3ZB/t7vvBd5WDN1Se9+reHf5UWVmGAybdNHg7X2yH+Urv7F+A4q+jgE0B23ES5RMLnZpzVh51r2w
+	rGEli0vKJW3geGNeFqEzvGSBJ/cEUCkO3vdgSOINCXcRnZSPR2761+fweLP7ywWfz7oWAyUhee9Fo
+	31RdSHEGYMXKqNgt+jAcoInmfCzOcxEZLnoYknd+it6cYEWCwtnKY4NvbibFX3fHjIGRx3MrG1RKY
+	AJO3BPvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzuW-005N0W-0d;
-	Wed, 19 Jul 2023 05:39:40 +0000
+	id 1qLzxb-005OFk-0O;
+	Wed, 19 Jul 2023 05:42:51 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzuU-005Mzy-2X;
-	Wed, 19 Jul 2023 05:39:38 +0000
+	id 1qLzxZ-005OEx-2x
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 19 Jul 2023 05:42:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=cVSJ+GUtgjM/9lYbCvuJW6/WEZea92X8iN9RA0/Xmkc=; b=d8i9tHtzB8hgYOez+3awxgv8vu
-	XUE//q5qnKCcRjhWEZLamcmqwSV34INx3ZAdWxtP8CNONowyjO1ExQcHQOF5ebDdMU/jGAqPFCIOV
-	sEsocjLr+btA+cnxvpJWDeqSFo279LvwABeTJdv3MokYvdu8tzaV9M07MkR1lfAFvnWhJVGWAgNsa
-	KXv8U4Y8KxxdEvjM1TCC8qgO2WuBQScjZcnOX/5xUhAI6bGnZq5XgszqbEvSc6alWfDWXnxBexbKk
-	C5rH1lOpdpn1Tl36VgYMy4UpW0a2V/8EQcDm2t2ILOef2UIgJItoL8Nt/j22glaPMQ69iZW718rNT
-	egUiHHtg==;
-Received: from mga04.intel.com ([192.55.52.120])
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=3quue5muaabi4CozXaKq5cpAvjxqIHPBQ6qXUTBWbdw=; b=UteXllcICy5v80noGktpo3Lk+H
+	VO9OFPe97uAKKTq/SaYv1rRmYSqaDEiji7YfmbJ8OmiWiqpzwgpDikSSvnL5Z9tDQYjkX5+HTZ5jO
+	OZI+8JqnZN3E0dyEwO33G0tY93GSuDpjQm7zVPeEVNKrAmDFoAeSZZUT1kJGCPZ+4iBD/8Tl3i43b
+	7qEvnnq0tW022cLqanHNApCSC5EuAj2PZZw6hmhL1qhsjlrqYVe9XSqy8UFELhg/q9xHGPgbYi9fS
+	rt/bhOEj5nMRxXT4nBPXPKf6am3Je83E3CAwVKBWKvOk79GCjDOVMQOUdrxdss6FuQhX9OwUYAPIs
+	4xA9Yj+w==;
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLl6o-00BaZf-1A;
-	Tue, 18 Jul 2023 13:51:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689688282; x=1721224282;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Z280C0QnfRU4Fge1sZLeOEz0ioQaTHytM42PyAGyTZA=;
-  b=NKh1wzEuKCsey+xNgnKfcMyivWWc9wIXaqqRLuwlHZn8hHjvQMWdfrs7
-   zIOeyaTc/qPzS0b+3wWG6u/QpDtAOZzSjX7QXiUale5DcU7rdO1DG+VcI
-   CJV8N9oURtzjAO5RCCxRX7g6D5f58kXMhrXhbEB5xqzRpj5YOSau/b0Dv
-   HAx98noIZOfKT17mizofnQtZMLd10EnnIXcDDbLD1NbVJHkS0dhTNTSYO
-   dVy1US5QeKmG7LsLbwV45zqo8jmiE/bUVan2kebjI8jTthf4bebNJqMqs
-   z9KZrur8v0KnVyVzLsTfwT1aX+VnotI5TJBW8Jh4BljraLGTFRmtcfAP6
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10775"; a="365087315"
-X-IronPort-AV: E=Sophos;i="6.01,214,1684825200"; 
-   d="scan'208";a="365087315"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2023 06:50:51 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10775"; a="700903622"
-X-IronPort-AV: E=Sophos;i="6.01,214,1684825200"; 
-   d="scan'208";a="700903622"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga006.jf.intel.com with ESMTP; 18 Jul 2023 06:50:45 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1qLl6A-00Fp8w-0P;
-	Tue, 18 Jul 2023 16:50:42 +0300
-Date: Tue, 18 Jul 2023 16:50:41 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Mika Westerberg <mika.westerberg@linux.intel.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Balsam CHIHI <bchihi@baylibre.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Paul Cercueil <paul@crapouillou.net>, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-pm@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Len Brown <len.brown@intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Ludovic Desroches <ludovic.desroches@microchip.com>,
-	Pavel Machek <pavel@ucw.cz>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 02/10] pinctrl: baytrail: Make use of pm_ptr()
-Message-ID: <ZLaYsdwnqj1ef3o6@smile.fi.intel.com>
-References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
- <20230717172821.62827-3-andriy.shevchenko@linux.intel.com>
- <20230718105322.000074ca@Huawei.com>
+	id 1qLjG5-00BTkf-0k
+	for linux-mediatek@lists.infradead.org;
+	Tue, 18 Jul 2023 11:52:51 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-52164adea19so5958952a12.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Jul 2023 04:52:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1689681103; x=1692273103;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=3quue5muaabi4CozXaKq5cpAvjxqIHPBQ6qXUTBWbdw=;
+        b=ai7bmqZWsoaWrpXI4H8t8ZMrZD7gYqG8TxIaP6A/L/kVtcTnV3PDNmK7VH1sFevrn4
+         pHZiJp2X6jGyxaaHBuB1/HjuHO8HCfWE5CFmt2QoXooyNuTL8mgOBUHtHhhDfcVR40p/
+         3nSifm44M09L5YisCb3cyB5olsUuOx+o5WH9gElgndkdtR1pTRnMqI/tp0yrzI7vZEBa
+         o+IhS3jFBmJSo33v6lDFeMbClfSfmu/1bVJ6cxadTubj4bNhYhywI6fEN/HEprvlcjf0
+         ZLY4mKnS4vFVx7r5DVL9BsL4g41wko3/QBY3GKAMhFTsWCq2rJUp8xb1X7He2pX+PapL
+         5Y7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689681103; x=1692273103;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3quue5muaabi4CozXaKq5cpAvjxqIHPBQ6qXUTBWbdw=;
+        b=MLpA7ycWW91TMn742Jm4dAkyfh0NcH4RvyUGDH85zJCNGnbR6ood2+GFLKJwQDdCHf
+         0NmeBUyJndLggsZvooZAIJxMsq5ZA7Rf2Lrn754c3vyHEI9E4F7KMGO1oFr4qsYrfEO8
+         YZTauLpFBMTksVLhDbEqwlCoWrXZ+pmk38IAPhUgIDaep0z2dinwP/LNU9SPbCHZC9/j
+         f903VTNBr33ozEMSiS/zOzy6x3doiXfGQrysGr3XdFXFhsOOOvKliGe2s6ZwetdNZ8BZ
+         qG8yKOuqZcT3vdntYG2HAvD9T6QfPx09AAXwcgoiiqUw+S3HBDu+0HXXiLhl8xLWzj5t
+         RzPw==
+X-Gm-Message-State: ABy/qLaLExTr4J+bz8NGobSXfnQpj7+msUtqJEFJV6++a2vRpELE8WfL
+	aSIFfdi8KBmaFxzYN6rFkbpdLQ==
+X-Google-Smtp-Source: APBJJlEPo8s5sbjPHwSDG/7oatXTr5mKLCpvbizDsLHDd6nf2YqkStcYaR8mA4ooxcBG7nnqL/dqUw==
+X-Received: by 2002:aa7:c6d3:0:b0:51b:d567:cfed with SMTP id b19-20020aa7c6d3000000b0051bd567cfedmr14504401eds.5.1689681102733;
+        Tue, 18 Jul 2023 04:51:42 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.223.104])
+        by smtp.gmail.com with ESMTPSA id c15-20020aa7df0f000000b005219de74217sm1110977edy.43.2023.07.18.04.51.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Jul 2023 04:51:42 -0700 (PDT)
+Message-ID: <5cc44894-2309-b432-72e4-e65bcebb2b06@linaro.org>
+Date: Tue, 18 Jul 2023 13:51:40 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230718105322.000074ca@Huawei.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 3/3] arm64: dts: Add node for chip info driver
+Content-Language: en-US
+To: William-tw Lin <william-tw.lin@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Kevin Hilman <khilman@kernel.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230718112143.14036-1-william-tw.lin@mediatek.com>
+ <20230718112143.14036-4-william-tw.lin@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230718112143.14036-4-william-tw.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_145122_939690_4E1A325B 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20230718_125249_564854_05485DB3 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,28 +117,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 18, 2023 at 10:53:22AM +0100, Jonathan Cameron wrote:
-> On Mon, 17 Jul 2023 20:28:13 +0300
-> Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
-> 
-> > Cleaning up the driver to use pm_ptr() and *_PM_OPS() macros that
-> > make it simpler and allows the compiler to remove those functions
-> > if built without CONFIG_PM and CONFIG_PM_SLEEP support.
-> > 
-> > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> 
-> LGTM but why is it in a set that claims to be about NOIRQ PM helper?
+On 18/07/2023 13:21, William-tw Lin wrote:
+> Add dts node for socinfo retrieval. This includes the following projects:
+> MT8173
+> MT8183
+> MT8186
+> MT8192
+> MT8195
 
-Have you chance to read a cover letter? I explained that I added them as
-they are "kinda" to the topic (PM related).
+Please
+wrap
+your
+lines. :)
 
-I can apply them and drop for next version.
+Please use subject prefixes matching the subsystem. You can get them for
+example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
+your patch is touching.
 
-Thank you for the review!
+Anyway, your commit suggests even more that you add driver. Drivers do
+not have place in DTS nor in bindings. Your code in patch 2 is very poor
+quality, so considering this "driver approach" I think you just send
+some random downstream driver. Don't.
 
--- 
-With Best Regards,
-Andy Shevchenko
+Entire concept is NAK.
 
+
+
+Best regards,
+Krzysztof
 
 
