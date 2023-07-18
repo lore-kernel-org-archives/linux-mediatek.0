@@ -4,117 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA0E0EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:41:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0E3FC001B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:41:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WXaT6APHJQXhpbwZ9c1qIYiSYwOvNOpb+GN5TESf5y0=; b=F4/NUiclH0WE5g4wXSmJg0P3Tk
-	c0RiE8ECS/0oBNL591fYb3k9vvvE0hyfuZeR+t5on2o4xtIMiC5VlJnQIqwfwqimFuZwlCmFQmVTu
-	OGPg98xlenM8EEBgcU/mEctlz2HaoeOAzkFT8PZtrbLXEJFTPC9qaLhU9FaH+252DzwcNLeaYtM1M
-	1uDrn7wHRwq/cpC9B/xKmJs1J3EuyzE4rRvWRO5KFWiXEsnrY1SI6B5uumKlXdhEqwIXgFB/jhJ0d
-	momO9j3ATWOMILobYl2Taj05hhskxwLTBkGGtcBwLSxbharJnOeVTzHKtNG1CbHZBs/D7xtgNzbnE
-	faV/YuxQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iMWNFsiRP079B5LYbYLQZfm+Mzjz5LU2gLm2aCCBKHU=; b=g40oJoIUp3mCPi0e1WjfXXO/BL
+	3shrUPKCXkWUrt0r3qRO36po/sq40EW54B60gOXfkikSEvV+7XbSzCo3JjLlfwFa4eCzEV9eOCshZ
+	oFPl+BczeK6NgxA6mfur9jX854R626h1jh5/Guc6IFEG+EDZ3yEMxycqTHdzvrysrZtY10qQH+G1H
+	PwnAq2wBaHXAyauqhLE+bgTm1iMJdQ2YsTmNLfFkG2bkY8IgjAgroVWS4cq3KEJPqfjmXHGPP2jjd
+	59RKheeNrtpjC9DrEVQRj3yYPMoVVx//pP8u3AtnhqD9oJ/NLOXoGC1EZ81hkdp3oPJZe7Q+xrMMD
+	iXmjm6uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0s8-005qYM-1L;
-	Wed, 19 Jul 2023 06:41:16 +0000
+	id 1qM0sO-005qhH-2G;
+	Wed, 19 Jul 2023 06:41:32 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0s7-005qXj-0v;
-	Wed, 19 Jul 2023 06:41:15 +0000
+	id 1qM0sN-005qgB-0R;
+	Wed, 19 Jul 2023 06:41:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=WXaT6APHJQXhpbwZ9c1qIYiSYwOvNOpb+GN5TESf5y0=; b=RqvUet4SjEx50fh9H7iQxhnvaF
-	Vv0+COFqNm8Dpvn2JMETCPvoGiamhUMVw0JWCNBdtGuLoqMONZ2uJLCBQL9xFD2iKnO+NNGtjjNK8
-	xGS69JCoTKgnrl22hNmWcp6gSdMFEfAIy2VfZAfZ4Y2TuNvjM+QcfUQsXeukIJjiI5IF5szmeC6/u
-	8FxK1WH20W1zpBLbvrPqh5cD4fMIXoT9eGXxWHIDFYsN5oA31dgPB71UmYErL3H8m57W0uNAanrAt
-	qWoFgUHmL4TIDWOH9/CRbgex51dpPC1sl8wQlk7VyYPh3h3hvq+qTnhHM9gRWiwhFUezIysazUX0p
-	qCfp8MQQ==;
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=iMWNFsiRP079B5LYbYLQZfm+Mzjz5LU2gLm2aCCBKHU=; b=Z0OWbI6ZbC1UWl/jyarH2UaKIA
+	w9HbqRnKnVkGaGliTRZ8m8PqFq1DKqxvkuIvCxOgofIcVkS4TK1h846QOgdspqSB2qVyn4cJfvcU0
+	jJfk03MRQN/BLSV7Q7ZQ25VzIZ4gLJD4uE/jWZ4VL0xjcocYDMsTb6CXQjAMIIs3UXVYZgvUmfdVt
+	qKAGmCEo3MSrg7AsIs71Be+2p/OS6DA85Mmy9fGADXU8TMZBnyy/Tv/wQkh7nGzNGO389F3DLROhR
+	EnlBNOiVfMoF+Xw/Zk0mJuBU2mhBwPw627z2yw+bsDAc6aVlYmcKGb0rzs6GriermCwoX41rYOVXJ
+	Le/p1CFw==;
+Received: from mail-yw1-f179.google.com ([209.85.128.179])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLfRP-00BGdD-0E;
-	Tue, 18 Jul 2023 07:48:17 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-51f7fb9a944so7559740a12.3;
-        Tue, 18 Jul 2023 00:48:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1689666374; x=1692258374;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=WXaT6APHJQXhpbwZ9c1qIYiSYwOvNOpb+GN5TESf5y0=;
-        b=kuUL6qubC4aVn22O15bxQLyYanj97a2vktrajCEMYVHyKka+ggyEPUfBwU6TJ1etlo
-         /le1HoC3ySgmofs9wboZlrd3lr6CNNlhWLqpzpU+b8hRrbVPfNiz2jF1BQ+XUVofm43n
-         rik5HU+yZMK2RPDKqQS9Pk8qhmThEAoDee1tesR1TMtLiQT6WT4bFijDhxFmv3WGXdU0
-         4FUT6ghKiWCkdUKVS1nMFcLsT39Cj31+5rgAmjZ6UrHGEHtGWcqyGRWnosMwRupt8M7z
-         cJD+JB0PT2uI1ncMuS9jHL619hKLBVvo8nx2MAFv3zCnbXpuSVABGv0x/hE6r04doVUB
-         E3Eg==
+	id 1qLhWP-00BOax-2T;
+	Tue, 18 Jul 2023 10:01:36 +0000
+Received: by mail-yw1-f179.google.com with SMTP id 00721157ae682-5774098f16eso58105207b3.0;
+        Tue, 18 Jul 2023 03:01:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689666374; x=1692258374;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20221208; t=1689674488; x=1692266488;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=WXaT6APHJQXhpbwZ9c1qIYiSYwOvNOpb+GN5TESf5y0=;
-        b=b0KMWRn2wMugkcMP3M4h5crXxmgSq0CNfY5bGTi59f/FQTzFFqKfnAzS1c0wCPoGRK
-         T122zOa9l7CD4s6codCxOCFgGxGmXgnB7DrAbT/DATC0aIrBTGkqtFj3IW3q3Orpj9qs
-         1AFCJ+nUkIs3ZrqfAbIxo33r9eE9/6WERNalQp7iSYBWnjF5JQlTFkUqvnuGI4ceXc5v
-         BwqydRI6rKisOo7u7rvj1y7MiAROnyasG1JuKtRGM3tzGIRBH5bhj1dEJ/XhUTCNm8+b
-         bxZC1xF/itEayYuWP+CvXrbT45mCVnP8z5mOZPQJosEmEE7ZsYGMfCjpc7jfY4EzcHmi
-         97sA==
-X-Gm-Message-State: ABy/qLai98eMDlf5PZWYbhdkqWYLYUPwE+Ay8v3Tg6sWUAnzQcLWiy2Z
-	UMMafYzmlqSK41E+2sahYRE=
-X-Google-Smtp-Source: APBJJlGEfvRTZ1qi772HzYEzzIQoZO2W4jSwQ00uCNhfTuToM8Pe+1d/DyRPiG4wclpp5+j+MPeKhQ==
-X-Received: by 2002:a17:907:7704:b0:992:c8d7:b66f with SMTP id kw4-20020a170907770400b00992c8d7b66fmr11300335ejc.75.1689666374008;
-        Tue, 18 Jul 2023 00:46:14 -0700 (PDT)
-Received: from orome (p200300e41f4b7100f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f4b:7100:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id o3-20020a170906860300b0099290e2c163sm638762ejx.204.2023.07.18.00.46.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Jul 2023 00:46:13 -0700 (PDT)
-Date: Tue, 18 Jul 2023 09:46:11 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Mika Westerberg <mika.westerberg@linux.intel.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Balsam CHIHI <bchihi@baylibre.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Paul Cercueil <paul@crapouillou.net>, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-pm@vger.kernel.org, Andy Shevchenko <andy@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Ludovic Desroches <ludovic.desroches@microchip.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>
-Subject: Re: [PATCH v2 10/10] pinctrl: tegra: Switch to use
- DEFINE_NOIRQ_DEV_PM_OPS() helper
-Message-ID: <ZLZDQ64QHsNi7kra@orome>
-References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
- <20230717172821.62827-11-andriy.shevchenko@linux.intel.com>
+        bh=iMWNFsiRP079B5LYbYLQZfm+Mzjz5LU2gLm2aCCBKHU=;
+        b=JfsrcL6h16lEJz2AW/RRoQT5KMtd567I42Q67BkCujIBdqrWdUADl21kL/zbkJEiIj
+         3Bn/HQHtF4Y/S7Sqd/jphdkVsp9G7uhxj/Tx7/YX/4QJXi4p6WQt+ei2m0edmETuS9dB
+         lYRyKLu8EPvU7gL70FtZRA3gxgRlPYavJQdbGh4uH7vtVCvUpRnd1Cn6jPgKTfluWoY9
+         WdJ8KDI6iTb2gpF4WeTfW++T1kPj0fu5Q1EtMilD6cjqLdJ+N6Vom3MKKnlvubEQSgQj
+         yeWl91BFORA4HcMqF32vd76UcQTu9Pyc6U+e5Q+s8+eN2TS3EaAVN+ZGZ3rI+uVdrdNj
+         WIeQ==
+X-Gm-Message-State: ABy/qLaiCZIoVPitt1wMxfPDfsWlLO4aBxDVkIdYJRmBe2RUDGGWbA+p
+	uxQGrSRpE/GMfQsexKEbrhiO/Vg7ux0Fjw==
+X-Google-Smtp-Source: APBJJlFFYYZgKUyaLMrAvPIjUyWQVHGwh19ea2bvuGrCwL1DucN8tJqCeHjxWEHUdo98E+kW3x4KvQ==
+X-Received: by 2002:a0d:e645:0:b0:583:4be8:73e5 with SMTP id p66-20020a0de645000000b005834be873e5mr2721548ywe.8.1689674488678;
+        Tue, 18 Jul 2023 03:01:28 -0700 (PDT)
+Received: from mail-yb1-f179.google.com (mail-yb1-f179.google.com. [209.85.219.179])
+        by smtp.gmail.com with ESMTPSA id o84-20020a815a57000000b0057085b18cddsm361509ywb.54.2023.07.18.03.01.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Jul 2023 03:01:26 -0700 (PDT)
+Received: by mail-yb1-f179.google.com with SMTP id 3f1490d57ef6-cc7863e7b82so3451555276.0;
+        Tue, 18 Jul 2023 03:01:26 -0700 (PDT)
+X-Received: by 2002:a5b:c47:0:b0:ced:271:950a with SMTP id d7-20020a5b0c47000000b00ced0271950amr437150ybr.47.1689674485821;
+ Tue, 18 Jul 2023 03:01:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="xXrLK6/iTZZPHAap"
-Content-Disposition: inline
-In-Reply-To: <20230717172821.62827-11-andriy.shevchenko@linux.intel.com>
-User-Agent: Mutt/2.2.10 (2023-03-25)
+References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com> <20230717172821.62827-2-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20230717172821.62827-2-andriy.shevchenko@linux.intel.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Tue, 18 Jul 2023 12:01:14 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdVgRDrWwQ6PKtgDE1Kmbp_zsmfrbswvG9Sq30zUVMZRAw@mail.gmail.com>
+Message-ID: <CAMuHMdVgRDrWwQ6PKtgDE1Kmbp_zsmfrbswvG9Sq30zUVMZRAw@mail.gmail.com>
+Subject: Re: [PATCH v2 01/10] pm: Introduce DEFINE_NOIRQ_DEV_PM_OPS() helper
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Mika Westerberg <mika.westerberg@linux.intel.com>, 
+	Linus Walleij <linus.walleij@linaro.org>, Balsam CHIHI <bchihi@baylibre.com>, 
+	Claudiu Beznea <claudiu.beznea@microchip.com>, 
+	Wolfram Sang <wsa+renesas@sang-engineering.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-renesas-soc@vger.kernel.org, linux-tegra@vger.kernel.org, 
+	linux-pm@vger.kernel.org, Andy Shevchenko <andy@kernel.org>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Gregory Clement <gregory.clement@bootlin.com>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
+	Ludovic Desroches <ludovic.desroches@microchip.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	"Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_084815_484934_09CE372C 
-X-CRM114-Status: GOOD (  13.40  )
+X-CRM114-CacheID: sfid-20230718_110134_902887_DC69754E 
+X-CRM114-Status: GOOD (  15.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,42 +112,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---xXrLK6/iTZZPHAap
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Jul 17, 2023 at 08:28:21PM +0300, Andy Shevchenko wrote:
-> Since pm.h provides a helper for system no-IRQ PM callbacks,
-> switch the driver to use it instead of open coded variant.
->=20
+On Mon, Jul 17, 2023 at 7:28=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+> _DEFINE_DEV_PM_OPS() helps to define PM operations for the system sleep
+> and/or runtime PM cases. Some of the existing users want to have _noirq()
+> variants to be set. For that purpose introduce a new helper which sets
+> up _noirq() callbacks to be set and struct dev_pm_ops be provided.
+>
 > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
->  drivers/pinctrl/tegra/pinctrl-tegra.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
 
-Acked-by: Thierry Reding <treding@nvidia.com>
+Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
---xXrLK6/iTZZPHAap
-Content-Type: application/pgp-signature; name="signature.asc"
+Gr{oetje,eeting}s,
 
------BEGIN PGP SIGNATURE-----
+                        Geert
 
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmS2Q0MACgkQ3SOs138+
-s6F/xA/+I0bEAIZvtYSJbWGW3odYR79tYmCu4u3Def9PnhZ4sLDjCh4N3pUGz/hc
-cmQzv/IXBSl8Z2xpnAmBCZHdz6EzsdEpaGxaykNyskzO1ABDIMw8YkkvN4vA3f+2
-g7NOaof0vdyf0n+Q6AtdJW/2KHVgwJSGqkfRVHHajwLJOZtCm1naB5wThiSCKz1a
-ytHyYiYwD4Os1zh2dD2EXJ0Ezz/+XkjwdTNoTaZZvaxvIyo3IgX9K0cXX2wzpMr+
-asMkplyryGX8LfjKcExpiPotUPGFUFwN93gA6Glg8PDdqRU9I1ARbTmlqlSld+eT
-V4xy5I4DNKeU8Zi1kN+umHEkhaZg2bC5ZFG8GHgmcTbHogmc5s3AB4nHmIr6geS4
-/zYsU7W/0wdR5fUF7Umnbe/DX0Tss27ntqbz1aEj/p+W7E0QDXvT4LtUKz5SiJjs
-8gcdP8h5ZM4Eji0+UlWlZX0JVtg3d+48FefiuaEf43gBJXrvKCZTlLNif4JEUzAZ
-cflDyd3QSeKNEXTVPKAju5++znR69t+PhlyrGqNkeEUhQ5RgM3O3CCbJuhuaycn7
-hZaNEynqbxNwQoeIXxfQ5a/i38iRosZyLhdVQt52YE8ON5Y3sl18Q4nXjvCTTQd8
-uPduIo56wHEd2064KmnQP6oWDa+ceh8kJI2/qmNH0xk15QYSVF4=
-=NQCN
------END PGP SIGNATURE-----
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
 
---xXrLK6/iTZZPHAap--
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
