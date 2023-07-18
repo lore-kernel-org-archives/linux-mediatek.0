@@ -4,104 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34D3AEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:57:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C77AC001DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:57:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RpKAtUiUinq9Lhw+v54h3QcTHPMMcdg2W9j58F9msCI=; b=bFPProlZTPGRKE3PFDz897rUd7
-	8LUlS+JkWEeFgWWAR8AYlXl3/W9UGAF7GiDTvn/q1LtCK4SMmbLRbyTBZQP7BqYHqKYL+Xq3UZdXw
-	4O5aGUUkQk1n3L81UEnpr0NDCSHlh4/0BvItSJM/5Ys4VD6TvjT9nz05q75RrZzQLykhlynnqi8Sb
-	QIuuMhHkkCpA9nW1ycbuM1UYXUwj7pOxDLHzpvNE6688ngmt+pvVWx0i8lH9UhyYmFz7brHTht/eD
-	YZxRVWmSutQiA87L11nxqUq7sGpEBiSwa84L/LoifV/S3TJtbIpJcL2/eTHsIZojgvl7F1VJZmsIe
-	BSumwDeg==;
+	bh=UWTPh21wQ0o2nnFjvu96hvu6BzutgKcmu1Ba9eo4YQk=; b=exiSH4Tl/AwyQnXSw80F62amr0
+	DCrBPT2GssiZVAn0EWzA8f9Rlli/2DhWPibFebypfMm4J2mHEt2gSxG2aebz9731PcvYyY14irBTS
+	okTvI/OvjHCk3eNRcZFh949wiekoUikEejyYH8ExPlh2ZRlQqkCTVe9f2aXqjQN10rqS6Gw5hJhgB
+	8CIJvnLArS4K22aZ9P5Z0JjCreyXe03Tr5sMXovEMELHE52HgyFk5Lu/6kw9/hGATWTWf/AytUiwb
+	fLmpSPAbnNOfn85Fg8SqpSNZZ3DYNWXK7WhjF6aUL8Ys2fVzxeDwEvdlhwfFVqS7t1VQGD0HKU8D6
+	1t8QB5gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM17b-005zpr-2T;
-	Wed, 19 Jul 2023 06:57:15 +0000
+	id 1qM17i-005zvR-0A;
+	Wed, 19 Jul 2023 06:57:22 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM17C-005zSU-2o;
-	Wed, 19 Jul 2023 06:56:51 +0000
+	id 1qM17N-005zdj-2l;
+	Wed, 19 Jul 2023 06:57:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=RpKAtUiUinq9Lhw+v54h3QcTHPMMcdg2W9j58F9msCI=; b=F3Ce31FjCpD97H49ycWH/uON4l
-	G7DbGdmmsnGTJvVBZ+SXSf4Ns5xQUivWbsUdFnnzRR2ZMrbGvnaHrxZ6/hZ4pV4N43Zqyj4a3+3CX
-	ayoTunY9wR9hj9mOf5VlwlZJYXSSgCwSE51fxhBUoXR6DeY1qasb55mw26rnmhx+kXK+Mzj2R2pOz
-	Vc+tZd8sT/dFpD4YVIZ2iCo1TMrjyrt2+er1/NQrqLhxaWYJFOpVSaMJIyAboleRTW26XSTTV/7Ni
-	T2xMqnL0BV4MVg0Osb2n7Qg6AFdgnbI4uX8ZzB5/dGR+hvtSzdzNpuxXnXj1AOQpAYUKr+mzQpeck
-	cYs/Vkdw==;
-Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
+	bh=UWTPh21wQ0o2nnFjvu96hvu6BzutgKcmu1Ba9eo4YQk=; b=XITK3xdT49Vi8RXL50slap5pzY
+	tuXPzxfj/XM7OYXqeDEBm5BLtk9SMy7ht53uf8M+qugrjyY1lozzrQlDC0XJ+DexbVdRthgwdW7FW
+	KlY3IRADyPw1Te+lLmJADS1xD07EIZ4qGDPdlEUeU5uiz9HM8WEEEPUCW03dAUrX/U6UsaickdWkM
+	I5RGdUR+LVQDGWQZWyALIOd+xV4+zWd3fG/Z+SF2CxNn14sECljOzcAEY7BE3aiVEjW7DjS6n7wX+
+	sEsU4Cfg+8tfoUqRXD/GQFM2TwJGgO2cof/0U2MMoN6CLckLL5N0USXdO/oRm6ZIMbWFo3A9U1zxj
+	ReyAw0dg==;
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLeG3-00BDZ1-2L;
-	Tue, 18 Jul 2023 06:32:29 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id E080220008;
-	Tue, 18 Jul 2023 06:31:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1689661919;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=RpKAtUiUinq9Lhw+v54h3QcTHPMMcdg2W9j58F9msCI=;
-	b=lVsAfqer8xWiySiEq4z7Whp9otUwyCQXKtPI1tRr5f7imi5WmvidsvbXpCUGXwxk1c+lvE
-	oUHmSljh698Kg7YXWz38yD7YKynczdgakNvh9W31vXeG3ASFtYmUbHMMJvu2jAXs6WXMFe
-	qDOvnq5fNCwuhkU5Pv9JkSJ8uAbs1yjvZIjT+WnxMiQeDJLtUHfZO7aM8YIAG7auX7E6KB
-	neoUdUzoHRJnTzkhM6WLVgYwYyzcHYvDk8cc5I9mppjSrEmHREOSYJaDUdNw61xuiMD/34
-	m7I4N+6JbCgr4Op1Mxo+kriyEeSldJsgWRrKtcIj3mGk+C0lffE+F3dHz9dysw==
-Date: Tue, 18 Jul 2023 08:31:49 +0200
-From: Herve Codina <herve.codina@bootlin.com>
-To: Rob Herring <robh@kernel.org>
-Cc: Peter Chen <peter.chen@kernel.org>, Pawel Laszczak <pawell@cadence.com>,
- Roger Quadros <rogerq@kernel.org>, Aswath Govindraju <a-govindraju@ti.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Shawn Guo
- <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
- Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
- NXP Linux Team <linux-imx@nxp.com>, Thierry Reding
- <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Minas
- Harutyunyan <hminas@synopsys.com>, Thinh Nguyen
- <Thinh.Nguyen@synopsys.com>, Li Yang <leoyang.li@nxp.com>, Daniel Mack
- <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, Robert
- Jarzmik <robert.jarzmik@free.fr>, Michal Simek <michal.simek@amd.com>, Alan
- Stern <stern@rowland.harvard.edu>, Nicolas Ferre
- <nicolas.ferre@microchip.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Claudiu Beznea
- <claudiu.beznea@microchip.com>, Mathias Nyman <mathias.nyman@intel.com>,
- Richard Leitner <richard.leitner@linux.dev>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Paul Cercueil <paul@crapouillou.net>, Bin Liu
- <b-liu@ti.com>, Conor Dooley <conor.dooley@microchip.com>, Daire McNamara
- <daire.mcnamara@microchip.com>, Chen-Yu Tsai <wens@csie.org>, Jernej
- Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>,
- Guenter Roeck <linux@roeck-us.net>, Heikki Krogerus
- <heikki.krogerus@linux.intel.com>, "Bryan O'Donoghue"
- <bryan.odonoghue@linaro.org>, Andy Gross <agross@kernel.org>, Bjorn
- Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno     
-    <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-renesas-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org,
- linux-riscv@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH] usb: Explicitly include correct DT includes
-Message-ID: <20230718083149.77fa57ef@bootlin.com>
-In-Reply-To: <20230714175027.4065135-1-robh@kernel.org>
-References: <20230714175027.4065135-1-robh@kernel.org>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
+	id 1qLcW3-00AtKO-23;
+	Tue, 18 Jul 2023 04:40:53 +0000
+Received: by mail-yb1-xb2a.google.com with SMTP id 3f1490d57ef6-bff89873d34so3978388276.2;
+        Mon, 17 Jul 2023 21:40:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1689655128; x=1692247128;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=UWTPh21wQ0o2nnFjvu96hvu6BzutgKcmu1Ba9eo4YQk=;
+        b=LXn0OrrCc8nSXZdXi43REx4QkR6y4xsPZFtSDG7gHOy94spKlPCdQwoGAcZ4RCR1Mf
+         qfWOREEYgEZca/DN3y7fHxeehmfwjrq4cv9yzA1ReNRhqtXmD/3qLV/qW/qOVAZWjd4z
+         TsEaVX5pP9DTshtD388ghYE2qFE1x9jNdMzhCTepFqATxb5vCu511APXOXckjSYDmLC+
+         OuCLpXbE7ZkuvRxXhIYI2oNxouU57iNEBFIjiA4SVBjom5eBsiAgsc16bXmB/6s0f8sj
+         WInpSy37EDWSw1QnKRSK3a+zU78dj6AMybRng8MAJiImSJm4hGdDLmtF/rpLp8fd0MXc
+         wl0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689655128; x=1692247128;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=UWTPh21wQ0o2nnFjvu96hvu6BzutgKcmu1Ba9eo4YQk=;
+        b=R5PsS08yEo9lo6iYLKER9lJh9FejpsH4bmNtPBeg2Wk5C616wR7jd4MTy41kRAWSM5
+         C3YSK9lzT0vPwnhdhDuz7tAK92aXgtTMG7h/rGSbRgwQ1Lp0HUYonjPv1yv3X/AwlmYb
+         C7DP1sipqYtrLa9REYaJYz/RCydiHGx0afssCgK/BLNzGhV7We6DbTrHJwfdBPM4hTVe
+         9XQuP7Q2KOxB74WsoT69FSvVmf52OXJSRxfn1Z1bg+ypF9wsocVCQaT3Oow5x8xuqo0g
+         z2Rt6CxKn2xsGvlrjAcmN+4h7IpTt3wKU9VUO1n+rIAfZUZWqShSPrsVZd9tO/jusRvp
+         9Z1A==
+X-Gm-Message-State: ABy/qLasrJfrFIAkVWCWNR6oy1nBOytP/yjU5vLrpcE7+iQUQzrh+n2F
+	1hUaqyRRP/xmcnDJWfb7jMeDhFWIl5xWKns/B5I=
+X-Google-Smtp-Source: APBJJlHODCyMhaRZAuj+B70ISRhuEA2eb/B1FFauIWR4wnse95GNXOFli7atYze+0le6B+cGF+V8c+5eR7wh14v97yM=
+X-Received: by 2002:a0d:c0c7:0:b0:561:a123:1041 with SMTP id
+ b190-20020a0dc0c7000000b00561a1231041mr12706032ywd.29.1689655128450; Mon, 17
+ Jul 2023 21:38:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: herve.codina@bootlin.com
+References: <20230703181256.3712079-1-azeemshaikh38@gmail.com> <202307121653.4A9C69C655@keescook>
+In-Reply-To: <202307121653.4A9C69C655@keescook>
+From: Azeem Shaikh <azeemshaikh38@gmail.com>
+Date: Tue, 18 Jul 2023 00:38:37 -0400
+Message-ID: <CADmuW3UY=w0p-h1h4qOord7z1nFnvpyCOU3fcCaATm_PvFFUeA@mail.gmail.com>
+Subject: Re: [PATCH] wifi: mt76: Replace strlcpy with strscpy
+To: Kees Cook <keescook@chromium.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	linux-hardening@vger.kernel.org, Shayne Chen <shayne.chen@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, linux-wireless@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, Kalle Valo <kvalo@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_073227_949982_32A71018 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20230718_054051_900455_ABB88D8F 
+X-CRM114-Status: GOOD (  14.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,45 +106,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+On Wed, Jul 12, 2023 at 7:54=E2=80=AFPM Kees Cook <keescook@chromium.org> w=
+rote:
+>
+> On Mon, Jul 03, 2023 at 06:12:56PM +0000, Azeem Shaikh wrote:
+> > strlcpy() reads the entire source buffer first.
+> > This read may exceed the destination size limit.
+> > This is both inefficient and can lead to linear read
+> > overflows if a source string is not NUL-terminated [1].
+> > In an effort to remove strlcpy() completely [2], replace
+> > strlcpy() here with strscpy().
+> >
+> > Direct replacement is safe here since DEV_ASSIGN is only used by
+> > TRACE macros and the return values are ignored.
+> >
+> > [1] https://www.kernel.org/doc/html/latest/process/deprecated.html#strl=
+cpy
+> > [2] https://github.com/KSPP/linux/issues/89
+> >
+> > Signed-off-by: Azeem Shaikh <azeemshaikh38@gmail.com>
+>
+> Looks good -- thing is using return values from the macros.
 
-On Fri, 14 Jul 2023 11:50:23 -0600
-Rob Herring <robh@kernel.org> wrote:
-
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
-
-[...]
-
-> diff --git a/drivers/usb/gadget/udc/renesas_usbf.c b/drivers/usb/gadget/udc/renesas_usbf.c
-> index 6cd0af83e91e..3482b41d0646 100644
-> --- a/drivers/usb/gadget/udc/renesas_usbf.c
-> +++ b/drivers/usb/gadget/udc/renesas_usbf.c
-> @@ -12,10 +12,9 @@
->  #include <linux/iopoll.h>
->  #include <linux/kernel.h>
->  #include <linux/kfifo.h>
-> +#include <linux/mod_devicetable.h>
->  #include <linux/module.h>
-> -#include <linux/of_address.h>
-> -#include <linux/of_irq.h>
-> -#include <linux/of_platform.h>
-> +#include <linux/platform_device.h>
->  #include <linux/pm_runtime.h>
->  #include <linux/types.h>
->  #include <linux/usb/composite.h>
-
-Acked-by: Herve Codina <herve.codina@bootlin.com>
-
-Best regards,
-Hervé
+Just to confirm, you mean *not* using return values from the macros?
 
