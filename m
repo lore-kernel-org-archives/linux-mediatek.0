@@ -4,97 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3C45C0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:21:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A819EEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:24:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W72tr0tg9BiWIz3zCp+YxWdsN0glxdmB5ZEHeCtkS6M=; b=tVHO8JZi+QgkX+quMN29TiAXFO
-	tXjgPUtaEaL5L1XtmvWql4Q+rXmiQghAUNLBr6Zn6vGNVlvywJVs7bzAtem6FZ2lKeMGX+r20+A+o
-	c5bawPLJlWCVCWc6FYFbw0gQgE3wwN3UL+UzOBPYGt8fx3beH8Moldg6dk8DVneXc+4ID7qDXr0YO
-	A2j8HCcwO6PjrsFg7X2GY8xh0DHBercUYScjPcGyAGBFZEV+DC3sYSMpCQJaaRJkE09+5eQ/ru4CU
-	FopegyFG/sgFzEerUKIsLn/rHSb48KJdxUDMvlfSKZwvyq/RAuBk7RUBogjZ7TFS4SqYSzKs2poOK
-	ck8kNc/g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5X3XXWlY4ncsj/lcqFwlEZR5H7pF6hkXCDdtwdDgOCA=; b=BLhGi/YW8zrFeVKYUfX5Jt3761
+	dTp1QApNSzjb3oJUI1h/Mk9GKlGO8VqyAL/COAFwmqTTg5bgAn3AhUD63TvodIVvRpmCPzTxo+Vqe
+	gUyVR2VYJx8ktIN7dCFgu1G952JPGLHL97NCRFSCa0Bx/KlhEKo/TJFKwmiOUD8N9Q2VYSxwnbAb+
+	Lt66Of7cnykF/FGexx3uNUue8G+gQuHThqbwO99A2Q3Ni12RyNOMd9qemb+A2u+ry/O51LD8cWgAe
+	J2XDWYkCwLuhPp10VXn8D7svhrZT4CufZyemxCyq6QpurFn5drE2yO6tQBfigYCgva0GaytrFVauC
+	E0cpg6pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0Yx-005gGn-2L;
-	Wed, 19 Jul 2023 06:21:27 +0000
+	id 1qM0br-005hzz-1o;
+	Wed, 19 Jul 2023 06:24:27 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0Yw-005gFF-0P
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 19 Jul 2023 06:21:26 +0000
+	id 1qM0bl-005hvZ-02;
+	Wed, 19 Jul 2023 06:24:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=W72tr0tg9BiWIz3zCp+YxWdsN0glxdmB5ZEHeCtkS6M=; b=fFr/5Aneth+dYllqOR66YZ9DwM
-	Ys/j2pGBV38WhFPUfTDpXUe07noVuTB3EijOUPc9wiSJQ5jnLyQW9El/qMb/oiNB2KKcSMAKwfHTB
-	Z88bFSa11TJjvhcGDRPPGQtrXRs3whJENJ3+K7zgxPnaFksU/Urqr7sb0vQnmAi+M2c0IyE0z8F6Y
-	B5ZlHVxbkSjOALoPHp4FzTOJjog961t+q1Y4digteo0zJmThDCpo/r6kU7jmIv5Mj2GRrKksDTXp6
-	DNrelQj+Uls8K/pLZvMkfVyJB8+BLACduyMIqDemUkuNbRHBxeoKCo3VN6AeIgiArf0kqDzo8wVN8
-	5JX0se3Q==;
-Received: from mail-vs1-xe2a.google.com ([2607:f8b0:4864:20::e2a])
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
+	Subject:To:From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=5X3XXWlY4ncsj/lcqFwlEZR5H7pF6hkXCDdtwdDgOCA=; b=a0donNQFyTiHkqcySB4xHMl8OV
+	Dw11En+q/6H+xqCQN1B8qWgEI67CpEaxrIgZXMT3LREezgAsLX7sJU0+Uoje0+y9LYmTCCmagLV+o
+	aagOwJL5cURNrU/hFWmmekZJBTWOCwJcP6z92XS0OB22qXnMErNcUSPeMzJEXE2+PEr0paZ+0lHJf
+	H25ZPDZTTU1gjF9eoNlbBrVt8nplUt/bPChob2ibCZe+fS0sDAfJDxiAJ9Iok+35zH4dGxmmwkwHr
+	hzCFGQ8wGO9lww9FpynrO52JBvtZEFC8xS8gUOj+zMVyR7OgDwWBk58EShwgynD9b2eIXE+w86kSJ
+	AZMQvScw==;
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLfLp-00BGTx-2M
-	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Jul 2023 07:42:31 +0000
-Received: by mail-vs1-xe2a.google.com with SMTP id ada2fe7eead31-444c42f608aso1424962137.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 18 Jul 2023 00:42:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1689666074; x=1692258074;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=W72tr0tg9BiWIz3zCp+YxWdsN0glxdmB5ZEHeCtkS6M=;
-        b=D2Co+OchLIu7OauttmGocQIy38so+rjD5zvtwRN66f0yhvg3kFzDdzKChQx7iRgHqO
-         VYA4sxaNZZxhk9QfJTqBYb/sru4zbwr3ixX56JSSiAORc1wl0LTzMQTQa6SnaBeK3hJU
-         bM03afISFjUoLTN0OEiUMm6edDxnvKRloViPg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689666074; x=1692258074;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=W72tr0tg9BiWIz3zCp+YxWdsN0glxdmB5ZEHeCtkS6M=;
-        b=YBfoEgYLD+8utsO1DFb22gzgIXukoqcrF2X8tklsi1rFsSZdme9pMR14KgyzF5uXnC
-         EELEJODvpO08Q55h1ADlEPWKD7i330jWVyfVj3JZJ6H4s5xvlv/ZkUg0n7DPVG8c5Hbp
-         JF8KqVC097xKZdfRLLQdeHE8jUwAXwb2Ze88gptbiV+0UKLCawrOPoIBgEJFU87kSXsd
-         /FM/0xoeoEMtSgjgk11OgEhLyMfb0S1X231k84moF8P8Dq2aDXTYCPx0BbUDPzKA0Gxh
-         yWoI0x61mNwjJZ6xUtcQCRxjbZ6o+yg7hzu8dfQO/EClHKs1VFVFu+xLYEGDhy3sGFjH
-         dkbg==
-X-Gm-Message-State: ABy/qLYlPOPfLoxTLQx76CA7b5FivV+vdIWNhLFlaOjzUWf56zqNKksw
-	YWvMR5o0AP4chUCQcYR41Y1DLp095vqzJVkj/aC6HQ==
-X-Google-Smtp-Source: APBJJlE9uS2QtTlCAm7Z6lCr5REH2fuUUfHsmmkyKOVMYvSCBg65YttmdObOYTuNF4oYeVP9mxLHWObTwXcmPy2TfaU=
-X-Received: by 2002:a67:e3d1:0:b0:445:2154:746b with SMTP id
- k17-20020a67e3d1000000b004452154746bmr791821vsm.4.1689666073558; Tue, 18 Jul
- 2023 00:41:13 -0700 (PDT)
+	id 1qLsHF-00C4FC-0i;
+	Tue, 18 Jul 2023 21:31:11 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1qLsGe-0001Jh-1v;
+	Tue, 18 Jul 2023 21:30:00 +0000
+Date: Tue, 18 Jul 2023 22:29:48 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Greg Ungerer <gerg@kernel.org>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next v3 0/9] net: ethernet: mtk_eth_soc: add basic
+ support for MT7988 SoC
+Message-ID: <cover.1689714290.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-References: <20230713090152.140060-1-angelogioacchino.delregno@collabora.com>
- <20230713090152.140060-2-angelogioacchino.delregno@collabora.com> <827cc3730c949e38eafd3786631135bcc7c7591c.camel@mediatek.com>
-In-Reply-To: <827cc3730c949e38eafd3786631135bcc7c7591c.camel@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 18 Jul 2023 15:41:02 +0800
-Message-ID: <CAGXv+5Gj85Fnski5g9dssF+BQH27VVKwG+KXQkJRUCWozGnMeQ@mail.gmail.com>
-Subject: Re: [PATCH v5 01/10] drm/mediatek: dp: Move AUX and panel poweron/off
- sequence to function
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-Cc: "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"kernel@collabora.com" <kernel@collabora.com>, 
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	"nfraprado@collabora.com" <nfraprado@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_084230_129311_D683F17F 
-X-CRM114-Status: GOOD (  29.51  )
+X-CRM114-CacheID: sfid-20230718_223043_559047_D3852D60 
+X-CRM114-Status: GOOD (  14.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,188 +89,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi CK,
+The MediaTek MT7988 SoC introduces a new version (3) of the NETSYS
+block and comes with three instead of two MACs.
 
-On Tue, Jul 18, 2023 at 3:40=E2=80=AFPM CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89)=
- <ck.hu@mediatek.com> wrote:
->
-> Hi, Angelo:
->
-> On Thu, 2023-07-13 at 11:01 +0200, AngeloGioacchino Del Regno wrote:
-> >
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >  Everytime we run bridge detection and/or EDID read we run a poweron
-> > and poweroff sequence for both the AUX and the panel; moreover, this
-> > is also done when enabling the bridge in the .atomic_enable()
-> > callback.
-> >
-> > Move this power on/off sequence to a new mtk_dp_aux_panel_poweron()
-> > function as to commonize it.
-> > Note that, before this commit, in mtk_dp_bridge_atomic_enable() only
-> > the AUX was getting powered on but the panel was left powered off if
-> > the DP cable wasn't plugged in while now we unconditionally send a D0
-> > request and this is done for two reasons:
-> >  - First, whether this request fails or not, it takes the same time
-> >    and anyway the DP hardware won't produce any error (or, if it
-> >    does, it's ignorable because it won't block further commands)
-> >  - Second, training the link between a sleeping/standby/unpowered
-> >    display makes little sense.
->
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+The first MAC can be internally connected to a built-in Gigabit
+Ethernet switch with four 1000M/100M/10M twisted pair user ports.
 
-There is a v6 already.
+The second MAC can be internally connected to a built-in 2500Base-T
+Ethernet PHY.
 
-> >
-> > Signed-off-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
-> > Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dp.c | 76 ++++++++++++-----------------
-> > --
-> >  1 file changed, 30 insertions(+), 46 deletions(-)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c
-> > b/drivers/gpu/drm/mediatek/mtk_dp.c
-> > index 64eee77452c0..8b7ded1746f3 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dp.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-> > @@ -1251,6 +1251,29 @@ static void mtk_dp_audio_mute(struct mtk_dp
-> > *mtk_dp, bool mute)
-> >                          val[2], AU_TS_CFG_DP_ENC0_P0_MASK);
-> >  }
-> >
-> > +static void mtk_dp_aux_panel_poweron(struct mtk_dp *mtk_dp, bool
-> > pwron)
-> > +{
-> > +     if (pwron) {
-> > +             /* power on aux */
-> > +             mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-> > +                                DP_PWR_STATE_BANDGAP_TPLL_LANE,
-> > +                                DP_PWR_STATE_MASK);
-> > +
-> > +             /* power on panel */
-> > +             drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER,
-> > DP_SET_POWER_D0);
-> > +             usleep_range(2000, 5000);
-> > +     } else {
-> > +             /* power off panel */
-> > +             drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER,
-> > DP_SET_POWER_D3);
-> > +             usleep_range(2000, 3000);
-> > +
-> > +             /* power off aux */
-> > +             mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-> > +                                DP_PWR_STATE_BANDGAP_TPLL,
-> > +                                DP_PWR_STATE_MASK);
-> > +     }
-> > +}
-> > +
-> >  static void mtk_dp_power_enable(struct mtk_dp *mtk_dp)
-> >  {
-> >       mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_RESET_AND_PROBE,
-> > @@ -1936,16 +1959,9 @@ static enum drm_connector_status
-> > mtk_dp_bdg_detect(struct drm_bridge *bridge)
-> >       if (!mtk_dp->train_info.cable_plugged_in)
-> >               return ret;
-> >
-> > -     if (!enabled) {
-> > -             /* power on aux */
-> > -             mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-> > -                                DP_PWR_STATE_BANDGAP_TPLL_LANE,
-> > -                                DP_PWR_STATE_MASK);
-> > +     if (!enabled)
-> > +             mtk_dp_aux_panel_poweron(mtk_dp, true);
-> >
-> > -             /* power on panel */
-> > -             drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER,
-> > DP_SET_POWER_D0);
-> > -             usleep_range(2000, 5000);
-> > -     }
-> >       /*
-> >        * Some dongles still source HPD when they do not connect to
-> > any
-> >        * sink device. To avoid this, we need to read the sink count
-> > @@ -1957,16 +1973,8 @@ static enum drm_connector_status
-> > mtk_dp_bdg_detect(struct drm_bridge *bridge)
-> >       if (DP_GET_SINK_COUNT(sink_count))
-> >               ret =3D connector_status_connected;
-> >
-> > -     if (!enabled) {
-> > -             /* power off panel */
-> > -             drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER,
-> > DP_SET_POWER_D3);
-> > -             usleep_range(2000, 3000);
-> > -
-> > -             /* power off aux */
-> > -             mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-> > -                                DP_PWR_STATE_BANDGAP_TPLL,
-> > -                                DP_PWR_STATE_MASK);
-> > -     }
-> > +     if (!enabled)
-> > +             mtk_dp_aux_panel_poweron(mtk_dp, false);
-> >
-> >       return ret;
-> >  }
-> > @@ -1982,15 +1990,7 @@ static struct edid *mtk_dp_get_edid(struct
-> > drm_bridge *bridge,
-> >
-> >       if (!enabled) {
-> >               drm_atomic_bridge_chain_pre_enable(bridge, connector-
-> > >state->state);
-> > -
-> > -             /* power on aux */
-> > -             mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-> > -                                DP_PWR_STATE_BANDGAP_TPLL_LANE,
-> > -                                DP_PWR_STATE_MASK);
-> > -
-> > -             /* power on panel */
-> > -             drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER,
-> > DP_SET_POWER_D0);
-> > -             usleep_range(2000, 5000);
-> > +             mtk_dp_aux_panel_poweron(mtk_dp, true);
-> >       }
-> >
-> >       new_edid =3D drm_get_edid(connector, &mtk_dp->aux.ddc);
-> > @@ -2010,15 +2010,7 @@ static struct edid *mtk_dp_get_edid(struct
-> > drm_bridge *bridge,
-> >       }
-> >
-> >       if (!enabled) {
-> > -             /* power off panel */
-> > -             drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER,
-> > DP_SET_POWER_D3);
-> > -             usleep_range(2000, 3000);
-> > -
-> > -             /* power off aux */
-> > -             mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-> > -                                DP_PWR_STATE_BANDGAP_TPLL,
-> > -                                DP_PWR_STATE_MASK);
-> > -
-> > +             mtk_dp_aux_panel_poweron(mtk_dp, false);
-> >               drm_atomic_bridge_chain_post_disable(bridge, connector-
-> > >state->state);
-> >       }
-> >
-> > @@ -2178,15 +2170,7 @@ static void mtk_dp_bridge_atomic_enable(struct
-> > drm_bridge *bridge,
-> >               return;
-> >       }
-> >
-> > -     /* power on aux */
-> > -     mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-> > -                        DP_PWR_STATE_BANDGAP_TPLL_LANE,
-> > -                        DP_PWR_STATE_MASK);
-> > -
-> > -     if (mtk_dp->train_info.cable_plugged_in) {
-> > -             drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER,
-> > DP_SET_POWER_D0);
-> > -             usleep_range(2000, 5000);
-> > -     }
-> > +     mtk_dp_aux_panel_poweron(mtk_dp, true);
-> >
-> >       /* Training */
-> >       ret =3D mtk_dp_training(mtk_dp);
-> > --
-> > 2.40.1
+There are two SerDes units which can be operated in USXGMII, 10GBase-(K)R,
+5GBase-R, 2500Base-X, 1000Base-X or SGMII interface mode.
+
+This series adds initial support for NETSYS v3 and the first MAC of the
+MT7988 SoC connecting the built-in DSA switch.
+
+The switch is supported since commit 110c18bfed414 ("net: dsa: mt7530:
+introduce driver for MT7988 built-in switch").
+
+Basic support for the 1000M/100M/10M built-in PHYs connected to the
+switch ports is present since commit ("98c485eaf509b net: phy: add
+driver for MediaTek SoC built-in GE PHYs").
+
+Changes since v2:
+  * Use version number instead of feature bits for NETSYS version
+  * Remove unneeded check for NULL when calling mtk_pcs_lynxi_destroy
+  * Reduce dt-bindings to what is actually needed at this point for
+    the driver to work.
+
+Changes since v1:
+  * Set MTK_MAX_DEVS to 3 instead of converting to dynamic number of
+    Ethernet MACs.
+  * use mtk_m32 when ever possible
+  * more small improvements and minor comments addressed
+
+Daniel Golle (3):
+  dt-bindings: net: mediatek,net: add missing mediatek,mt7621-eth
+  dt-bindings: net: mediatek,net: add mt7988-eth binding
+  net: ethernet: mtk_eth_soc: convert clock bitmap to u64
+
+Lorenzo Bianconi (6):
+  net: ethernet: mtk_eth_soc: add version in mtk_soc_data
+  net: ethernet: mtk_eth_soc: increase MAX_DEVS to 3
+  net: ethernet: mtk_eth_soc: rely on MTK_MAX_DEVS and remove
+    MTK_MAC_COUNT
+  net: ethernet: mtk_eth_soc: add NETSYS_V3 version support
+  net: ethernet: mtk_eth_soc: convert caps in mtk_soc_data struct to u64
+  net: ethernet: mtk_eth_soc: add basic support for MT7988 SoC
+
+ .../devicetree/bindings/net/mediatek,net.yaml | 101 ++++-
+ drivers/net/ethernet/mediatek/mtk_eth_path.c  |  36 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 398 ++++++++++++++----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 327 +++++++++-----
+ drivers/net/ethernet/mediatek/mtk_ppe.c       |  18 +-
+ .../net/ethernet/mediatek/mtk_ppe_offload.c   |   2 +-
+ drivers/net/ethernet/mediatek/mtk_wed.c       |   4 +-
+ 7 files changed, 661 insertions(+), 225 deletions(-)
+
+-- 
+2.41.0
 
