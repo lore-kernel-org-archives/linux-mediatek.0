@@ -4,85 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD446EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:00:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DADCEC001DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:00:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y5IibZC4xeosH2AJtbMQRsYUv8+tiycKs5oP5mBKA4g=; b=r98mPKvypPE+ennHWvronxK8xi
-	kN905fI1TwugdpDAU5B2ZOlNA0hme1jmDMBNDBaAy3+vxqmmutKi1k1/JiwoCVKJxYUErOBC7othv
-	uZxJE6J6+n1AHBhE7NHVzffzBjpvq1alPVrIxBHGT2r4Lz3ni4MekC2UXqXVRa1MiwydEKMsDXChT
-	xgxRRGkrQTAat03AYoRsM0ejqsl94m0PBgWiN3GIs51+qxDm4Z2UVYAFGLtSsfgEJvp8ayuACwCV2
-	Y2yT6XVO5+ZCs5rOtn2CPKmKatQ6UC/GRGuG/3zOAauwcQR2KKa7y/Whi486C60x1PDAtCxkOEZGU
-	7a0pyDTw==;
+	bh=ytViiwfcWe6lsyfyDSaN9OoXNWJryJiZznNT0Efms7I=; b=pdcJ2rPogJKJGAbROMROHmYSpW
+	/chcudF6hfeL+ZwWCuv/IlAfwf7Cbd1WGTN8/G+lVnUDJjRA4sA7ZBeks/EKeNAT9UXFKUK1O289s
+	VarbR5Df3ciIo50rLI2KevukDjcSYwJHe7f5n7DLt5DcmU0OXtaq4fQarq63H624YOSIW8hrE0JP5
+	AGi5EeOKuatkvOLzbAuCyNzFLW4NEJFdR851+7qGzFtF6zDka63ket3zGAkPCztqyq901w4ewuHtw
+	MhCsoReaKIgvfCXkoMDW77nxPH4DKlvsLhchT5ayM4v+zWBHEMGFk6GEECK7iDeDbmeL1u84GQoal
+	K4la7vOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzIE-0056mK-1A;
-	Wed, 19 Jul 2023 05:00:06 +0000
+	id 1qLzIu-00579s-2Y;
+	Wed, 19 Jul 2023 05:00:48 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzIC-0056l6-1e;
-	Wed, 19 Jul 2023 05:00:04 +0000
+	id 1qLzIt-00578t-2N;
+	Wed, 19 Jul 2023 05:00:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=y5IibZC4xeosH2AJtbMQRsYUv8+tiycKs5oP5mBKA4g=; b=WsXd4rjFn1rc00gldwngl+27ST
-	DJV5ZMRtWIxIBS+r7VWal61gBpytSN9PaI5dsSx+hhGPHzI7AzHQuKl4akIHA1o5enWDUTGuE1lO5
-	o3DyvDAcmxIp+MnAKiOGjIEQDDMNQrV8Necj9dp1poRWb8fORmYIDcjHrvAC0NsgdwOqOb2tButFi
-	JKJCzQaSpT8U630IyXMd6YjgisoOxfJvrmAJYTyeS/dL3dQoTVOt/nUqxoDUe3M8NEGIBIitvpEeq
-	RmdT30SVAuNcXHvvLDAe4OKz5V7cCusyBgrGDlkMlkj1JcoguQbHEPzpUp0v9nIiijlCAxbP94vrQ
-	50pp/6IA==;
-Received: from aposti.net ([89.234.176.197])
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=ytViiwfcWe6lsyfyDSaN9OoXNWJryJiZznNT0Efms7I=; b=ZaByB2XkZFiOahu+KpEugOphof
+	+6vZsRZXsznSAB7HpG9KAn0BiHx6PbYURq5cMAVMeldY8Hm5nfckhnptiCPjYq/iu3FF4qMoV8Vs8
+	5KcGe8TMt3Bsyu35p4ORwJhgtoTf5wCDJkShRK2nXoeYU2tXWjT38TTeQACqNjN5KZ9UbFJZ9gD/Z
+	GdgdVy/uKUNNa/MSSY1T0DkH1Zpw55lQSe2EXuQ30ttq199EE/aar+11nXb2T0Zo2qsCQzswasal3
+	nxs/1+hUO6alAWcaWmxJ+UxN5fNCn8slAHxEjO9WPwDijawOibH9zj6I1ZVTRCH1PTbpOQMy34uVZ
+	ZtjRvPSw==;
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLTsJ-009ErG-15;
-	Mon, 17 Jul 2023 19:27:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1689622004;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=y5IibZC4xeosH2AJtbMQRsYUv8+tiycKs5oP5mBKA4g=;
-	b=Hx8qDBVjDOj+kX8SmtMTQfmJdYRYIBvwyRGnUBTBKSZ2rJEn4xsUuuFEKlhysneAu3n8fu
-	bbDQV8SPYFyOhwEzZp40CKH1Yu48n9nY7EZ+uqfEWtBrMB171JNEhedaxz64M76uTkQUXE
-	B1Tt3WkESEtFV/eAsi/E7TC4sR/dihQ=
-Message-ID: <d092d1eca25964059c295c7bd0038578f2396d07.camel@crapouillou.net>
-Subject: Re: [PATCH v2 08/10] pinctrl: mvebu: Switch to use
+	id 1qLj4J-00BTJa-0L;
+	Tue, 18 Jul 2023 11:40:43 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-9923833737eso676157766b.3;
+        Tue, 18 Jul 2023 04:40:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1689680292; x=1692272292;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ytViiwfcWe6lsyfyDSaN9OoXNWJryJiZznNT0Efms7I=;
+        b=UH6/jNT6G/IyXGm0cDcz8bMGqhWZEcRoDl7YEmT4RLClO5FMO7umKh3Ngtz3zFW8gN
+         I0WNIoLjxncgOP5/cofemL/NG1RKHN4lCDDGPCL6kM3Rj14wSajZzVTnSLX9sE9VO4Y9
+         UQGo5AQBJoFaLQAK8kdRMoVQ+MNoeucfKLjjAXzovOPSdeF8l4P7RtYgS83aaXGJ5suT
+         kLR8SPe9ZSXCoNebACKkqT5ewGJYPxlRQpigC+nB//bkpsVFtd/ULixpqjsXjv6gKog0
+         xaQUKxLw2ODCfSaJnO6d1l4/zCYOMYUXkCl4+UDgjBxPH1DowrrJ0y81D6jo3dMoXRc6
+         fPvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689680292; x=1692272292;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ytViiwfcWe6lsyfyDSaN9OoXNWJryJiZznNT0Efms7I=;
+        b=lXJFtDYJDMDivMDhf+E3vphIUVqaiph9TL058zKDMwrBrq3/zPwI8Xq2W/VYU39IPd
+         TVdbX57uwTsLq4Ng4x8IReU2RL/ZO4bInzi8IOyMbbt/bzHVhmeMPIWF1QsTrI2WzX4A
+         hbQtC6nHLSIUC8d+QUP/5sQnlkj7mGECy/8swDjR671a08jbz3GuemaHLBguqXR/Tn1v
+         /Oi/q4F6Vvc5m3R2xYwY91ijvRPmyFY/QDQLBChlpUzz9oJBG2ajFB7+kvQHKexjG/1b
+         ZawtI5BKkNpL9h2OCTT9sKJcixzLBFV7+vcobEuyzH3jEeQwZBYXvjRcrZTlct81Oa/c
+         vamw==
+X-Gm-Message-State: ABy/qLYHePHKBMJGQPCPtPtRTq3bi9tWTcNtuiZxG8fteMeeEKuimE0B
+	nCtrQqcaHrXxW1AGYJ2kbKU=
+X-Google-Smtp-Source: APBJJlHJRSPDt4M6wS2e1KWsyePiNebOZ7j3ub/iC5nCKSHaAmmccwdmBc9nzeQ3r0OPWw7mcHpIAw==
+X-Received: by 2002:a17:907:7413:b0:96a:2acf:61e1 with SMTP id gj19-20020a170907741300b0096a2acf61e1mr13582422ejc.64.1689680291722;
+        Tue, 18 Jul 2023 04:38:11 -0700 (PDT)
+Received: from orome (p200300e41f4b7100f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f4b:7100:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id y14-20020a1709063a8e00b00988b86d6c7csm903639ejd.132.2023.07.18.04.38.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 18 Jul 2023 04:38:11 -0700 (PDT)
+Date: Tue, 18 Jul 2023 13:38:09 +0200
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Mika Westerberg <mika.westerberg@linux.intel.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Balsam CHIHI <bchihi@baylibre.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Paul Cercueil <paul@crapouillou.net>, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org, linux-tegra@vger.kernel.org,
+	linux-pm@vger.kernel.org, Andy Shevchenko <andy@kernel.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Len Brown <len.brown@intel.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Ludovic Desroches <ludovic.desroches@microchip.com>,
+	Pavel Machek <pavel@ucw.cz>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 10/10] pinctrl: tegra: Switch to use
  DEFINE_NOIRQ_DEV_PM_OPS() helper
-From: Paul Cercueil <paul@crapouillou.net>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg
- <mika.westerberg@linux.intel.com>, Linus Walleij
- <linus.walleij@linaro.org>,  Balsam CHIHI <bchihi@baylibre.com>, Claudiu
- Beznea <claudiu.beznea@microchip.com>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
-  Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org,  linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,  linux-renesas-soc@vger.kernel.org,
- linux-tegra@vger.kernel.org,  linux-pm@vger.kernel.org
-Cc: Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Andrew Lunn <andrew@lunn.ch>,
- Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth
- <sebastian.hesselbarth@gmail.com>, Ludovic Desroches
- <ludovic.desroches@microchip.com>, Nicolas Ferre
- <nicolas.ferre@microchip.com>,  Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>,
- Pavel Machek <pavel@ucw.cz>
-Date: Mon, 17 Jul 2023 21:26:42 +0200
-In-Reply-To: <20230717172821.62827-9-andriy.shevchenko@linux.intel.com>
+Message-ID: <ZLZ5obLK89E1S_2R@orome>
 References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
-	 <20230717172821.62827-9-andriy.shevchenko@linux.intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+ <20230717172821.62827-11-andriy.shevchenko@linux.intel.com>
+ <20230718111143.000067dc@Huawei.com>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="P74v0JVNv+vvpyMH"
+Content-Disposition: inline
+In-Reply-To: <20230718111143.000067dc@Huawei.com>
+User-Agent: Mutt/2.2.10 (2023-03-25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_202718_015560_A808BA1F 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20230718_124039_480822_91481613 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,78 +131,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
 
-Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=A9crit=
-=C2=A0:
-> Since pm.h provides a helper for system no-IRQ PM callbacks,
-> switch the driver to use it instead of open coded variant.
+--P74v0JVNv+vvpyMH
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Jul 18, 2023 at 11:11:43AM +0100, Jonathan Cameron wrote:
+> On Mon, 17 Jul 2023 20:28:21 +0300
+> Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
 >=20
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-
-Reviewed-by: Paul Cercueil <paul@crapouillou.net>
-
-Cheers,
--Paul
-
-> ---
-> =C2=A0drivers/pinctrl/mvebu/pinctrl-armada-37xx.c | 14 +++-----------
-> =C2=A01 file changed, 3 insertions(+), 11 deletions(-)
+> > Since pm.h provides a helper for system no-IRQ PM callbacks,
+> > switch the driver to use it instead of open coded variant.
+> >=20
+> > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 >=20
-> diff --git a/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
-> b/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
-> index 67c6751a6f06..46351c00ee73 100644
-> --- a/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
-> +++ b/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
-> @@ -1013,7 +1013,6 @@ static int armada_37xx_pinctrl_register(struct
-> platform_device *pdev,
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return 0;
-> =C2=A0}
-> =C2=A0
-> -#if defined(CONFIG_PM)
-> =C2=A0static int armada_3700_pinctrl_suspend(struct device *dev)
-> =C2=A0{
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct armada_37xx_pinctr=
-l *info =3D dev_get_drvdata(dev);
-> @@ -1107,15 +1106,8 @@ static int armada_3700_pinctrl_resume(struct
-> device *dev)
-> =C2=A0 * Since pinctrl is an infrastructure module, its resume should be
-> issued prior
-> =C2=A0 * to other IO drivers.
-> =C2=A0 */
-> -static const struct dev_pm_ops armada_3700_pinctrl_pm_ops =3D {
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.suspend_noirq =3D armada_3700=
-_pinctrl_suspend,
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.resume_noirq =3D armada_3700_=
-pinctrl_resume,
-> -};
-> -
-> -#define PINCTRL_ARMADA_37XX_DEV_PM_OPS (&armada_3700_pinctrl_pm_ops)
-> -#else
-> -#define PINCTRL_ARMADA_37XX_DEV_PM_OPS NULL
-> -#endif /* CONFIG_PM */
-> +static DEFINE_NOIRQ_DEV_PM_OPS(armada_3700_pinctrl_pm_ops,
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 armada_3700_pinctrl_suspend,
-> armada_3700_pinctrl_resume);
-> =C2=A0
-> =C2=A0static const struct of_device_id armada_37xx_pinctrl_of_match[] =3D=
- {
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0{
-> @@ -1182,7 +1174,7 @@ static struct platform_driver
-> armada_37xx_pinctrl_driver =3D {
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.driver =3D {
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0.name =3D "armada-37xx-pinctrl",
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0.of_match_table =3D armada_37xx_pinctrl_of_match,
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0.pm =3D PINCTRL_ARMADA_37XX_DEV_PM_OPS,
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0.pm =3D pm_sleep_ptr(&armada_3700_pinctrl_pm_ops),
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0},
-> =C2=A0};
-> =C2=A0
+> No pm_sleep_ptr()?
 
+pm_sleep_ptr() is pointless on this driver. This driver is selected by
+ARCH_TEGRA and ARCH_TEGRA also always selects PM.
+
+Thierry
+
+--P74v0JVNv+vvpyMH
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmS2eaEACgkQ3SOs138+
+s6HN5g//Ywj/wrs+BJr6VMHiLwbiRkA7v79ehOPzJ4OJUIYi3+1MAwmiWoFhEAcl
+/T/eouCmHEic/yTcPLdI+J281dGNEtUfBocjS2bjIDVmEJLxdEQaj9etacJ45Mcb
+IQYvnbmISFU6pJmF1TGioxkM6hSkHYpp1UNTAj4zZQZHqTGnk/NqOuEDIbht89x0
+wQB0lbP9v0MshiQFj8QQKzDL/Q1nfrMzjAuvi9esT8DDqxNXWObkxqhNsJWxvbzV
+a170XTFD7jE1+aTHyWt6KL2OtbLl4hKm4oyuyJsgGuW/NJRCIdFLyOfjPZ5bDWSS
+tpTQcbvkjeGNSLjbZHB7cq8b8pgfuC+3f1fRL9V+3WLiHv34tTi+KBE1mdtk7oMz
+jtWordkVw1MKp4coQrejaKK3kk24m4Xafa5ESYOJsL8F0CemS0Xqk8lQ+QrSEXGC
+DvUbBTLWCZYopNX1TTD0IN3zy7MAopgsvIoEXjVfUPupR6onNJ5MyriXzDOJEqAq
+P1WgES+vP23KX8uf/SCLCTBXSXMhfjwv1bDV+R2V5dIvVvYAW+SXbWncKxufAk24
+myEePxe0D6lfE3I0pXSJwFOy/1GBu2eMojpkHPAOXS6xalB1tfNA0i5ql0qXwIci
+yxdnnk39QqWv2w7pVnlUC43liVyc8pITB0bYSPspMhPsPFug1ug=
+=Df4E
+-----END PGP SIGNATURE-----
+
+--P74v0JVNv+vvpyMH--
 
