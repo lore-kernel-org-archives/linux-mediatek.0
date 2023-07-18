@@ -4,84 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D57EEC001DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:44:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DF5BEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:47:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VH54V72aOY3ogSKUOINjMnAMtLyl5t2LpD7MwgpBD1k=; b=f9uZyVC3UypQoAoyogJb2KgLZv
-	aSFxyWRGLkfRYcywkvkWRAtH8RuObW+iop0XkDsCIKkHY4PxEDCKMdrF6PiF0BJiS83774ztlu1Jg
-	kmw25iu//gLgb4qDKGXgci17tPkZh/zS/o9xBfkZ1mBISwivHXu3N3G8z2SHO9JGQf+u1x/CIgcwa
-	OQ9uL+x1zkHqKXkbSNL4sFAZNgJvGucqCJLmMCi3QPbYRsHbIlLKbLyEh+LYlMRl3UQMItH32txeC
-	5zRWEADNt3ALTCKAwYvqZUTrNUmoO5/sUtP22UM1/qg+6r2pqkPh1t6AyoYrPKnUo3Z89kimNXD+v
-	h4/6gG0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PmCJHBBe2F299v6iy99w4M5wPQZrcYCjifZmwmogXDg=; b=Ha1UchCN7xkRi3XF2acop5sbYv
+	RQ0ohWlJOGswQfl0++aGFphX/4CefHXzt9AiRhYQWFk9TcGzlCxqlxUIt5WRUlGEVefjezlCtNyNU
+	8knUYjATOm/lJ+dbTL2se8wVEAK+j4YcKIzKQh+n1FJVSEsTlHslAyvaa/1K5qpa0yfCkkHnhrcSe
+	L9zbLjCBEdkPWsKhLHrdF6RFtzEnK3Pg2VAm2ZSpWNLv1RzXkPMaY+J7XnOZ+qkrAql6uIe1OmrsM
+	947wHonUGguWGZaOrRF8tKcYLnyZkAvIt8vxNlurUkTHEEjNnA2QhGtiZSF364AGm9XreoMU0bMjh
+	kjUUsByg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0ve-005sDP-1n;
-	Wed, 19 Jul 2023 06:44:54 +0000
+	id 1qM0xt-005tUx-1G;
+	Wed, 19 Jul 2023 06:47:13 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0vU-005s7F-17;
-	Wed, 19 Jul 2023 06:44:44 +0000
+	id 1qM0xp-005tRY-1Q;
+	Wed, 19 Jul 2023 06:47:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:From:Date:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=VH54V72aOY3ogSKUOINjMnAMtLyl5t2LpD7MwgpBD1k=; b=dN93Dx8Hg9jl700rhw4nauUJid
-	HqSeJ8plWYGmtTdYra1gFhBCY5wYonA8jGyMeEF3cMtd0BH7lJ4BwDGipliCvJRPknBBNblMS3PEX
-	hM9ghPqUGoI00+UzUUUSxISzzTobFsY1nHTb83rNd/StWgD9Qi++tWftHiVSvCGgND+//lnBg5aOi
-	zye6x2uewJbQ8Ad+4DJcAbdeI1/+Jkdnt8UGlzQG79sbFq+DHUL/6m5eREduHEsao0tQwZU08wPdZ
-	DH/ju19F5SsGm8Hlt5m1GkslAp3W8P1MLFE7xFjk2T/V/SbkGJIaNag09pZugqeOVlExEU3U/FBzk
-	IOyUJQLQ==;
-Received: from aposti.net ([89.234.176.197])
+	bh=PmCJHBBe2F299v6iy99w4M5wPQZrcYCjifZmwmogXDg=; b=PvD2An4ymUPPi0bFlfxr972R4+
+	7OH6UXo4ZQe3dxFSX1QoNxMcsko59TQy2+RWxEgRr8DkrSUyu5gWi+yQ6rnodpkORgJuifR7AXGYs
+	ryNY713CfZKWksc8tafgt///YvsWiT/KldSFsXDGpQc7ucxKrXBVlN6G/2OxYXXLj0og6EsFs4lsN
+	yR5KG0vOuA/KWXhOt+QXembVhW19U+ZBOkDg+bP1X4KwzrHSSkXQEE1rssR2N+dJNSfoAZXFdIX+3
+	src1qUdhVhVexPSqoheF9DEwR4K0DH9TWzOqk8LYSqVKyZRrbBh4erP/tPcxqxJ63Gfa56HTWZ0G+
+	brjsEiIQ==;
+Received: from frasgout.his.huawei.com ([185.176.79.56])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLTly-009Efr-2F;
-	Mon, 17 Jul 2023 19:20:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1689621612;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=VH54V72aOY3ogSKUOINjMnAMtLyl5t2LpD7MwgpBD1k=;
-	b=yP2aG/l/BcAOIH9TVYi+sSms/ywPuGo+vB9qPeY/YWR/dpOVAMFasz5X3Lk79VnXxkuZJA
-	jahCOB2APvNis4xyyvFFGg6gWEuB8dYtA/S3NJHahOWyTmCy4lagb+zsg1mbE5CtfXHQgi
-	RXhFo+EX+9xJaQBIh/7VM7OitWq3rUA=
-Message-ID: <1f77bcc8ec861dc2abb9defb062ed9178d3d292e.camel@crapouillou.net>
-Subject: Re: [PATCH v2 02/10] pinctrl: baytrail: Make use of pm_ptr()
-From: Paul Cercueil <paul@crapouillou.net>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg
- <mika.westerberg@linux.intel.com>, Linus Walleij
- <linus.walleij@linaro.org>,  Balsam CHIHI <bchihi@baylibre.com>, Claudiu
- Beznea <claudiu.beznea@microchip.com>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
-  Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org,  linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,  linux-renesas-soc@vger.kernel.org,
- linux-tegra@vger.kernel.org,  linux-pm@vger.kernel.org
-Cc: Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Andrew Lunn <andrew@lunn.ch>,
- Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth
- <sebastian.hesselbarth@gmail.com>, Ludovic Desroches
- <ludovic.desroches@microchip.com>, Nicolas Ferre
- <nicolas.ferre@microchip.com>,  Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>,
- Pavel Machek <pavel@ucw.cz>
-Date: Mon, 17 Jul 2023 21:20:09 +0200
-In-Reply-To: <20230717172821.62827-3-andriy.shevchenko@linux.intel.com>
+	id 1qLhdX-00BOpN-2B;
+	Tue, 18 Jul 2023 10:08:57 +0000
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.207])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4R4vj946yhz6J67G;
+	Tue, 18 Jul 2023 18:05:49 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Tue, 18 Jul
+ 2023 11:08:19 +0100
+Date: Tue, 18 Jul 2023 11:08:18 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+CC: Mika Westerberg <mika.westerberg@linux.intel.com>, Linus Walleij
+	<linus.walleij@linaro.org>, Balsam CHIHI <bchihi@baylibre.com>, "Claudiu
+ Beznea" <claudiu.beznea@microchip.com>, Geert Uytterhoeven
+	<geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Thierry Reding <thierry.reding@gmail.com>, Paul Cercueil
+	<paul@crapouillou.net>, <linux-gpio@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-renesas-soc@vger.kernel.org>,
+	<linux-tegra@vger.kernel.org>, <linux-pm@vger.kernel.org>, Andy Shevchenko
+	<andy@kernel.org>, Andrew Lunn <andrew@lunn.ch>, Alexandre Belloni
+	<alexandre.belloni@bootlin.com>, Len Brown <len.brown@intel.com>, "Rafael J.
+ Wysocki" <rafael@kernel.org>, Gregory Clement <gregory.clement@bootlin.com>,
+	Sean Wang <sean.wang@kernel.org>, "Jonathan Hunter" <jonathanh@nvidia.com>,
+	Ludovic Desroches <ludovic.desroches@microchip.com>, Pavel Machek
+	<pavel@ucw.cz>, "Matthias Brugger" <matthias.bgg@gmail.com>, Sebastian
+ Hesselbarth <sebastian.hesselbarth@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 08/10] pinctrl: mvebu: Switch to use
+ DEFINE_NOIRQ_DEV_PM_OPS() helper
+Message-ID: <20230718110818.0000140c@Huawei.com>
+In-Reply-To: <20230717172821.62827-9-andriy.shevchenko@linux.intel.com>
 References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
-	 <20230717172821.62827-3-andriy.shevchenko@linux.intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
+	<20230717172821.62827-9-andriy.shevchenko@linux.intel.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100003.china.huawei.com (7.191.160.210) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_202044_081875_634DDD31 
-X-CRM114-Status: GOOD (  18.55  )
+X-CRM114-CacheID: sfid-20230718_110856_189238_E69FF83E 
+X-CRM114-Status: UNSURE (   5.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,51 +100,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQW5keSwKCkxlIGx1bmRpIDE3IGp1aWxsZXQgMjAyMyDDoCAyMDoyOCArMDMwMCwgQW5keSBT
-aGV2Y2hlbmtvIGEgw6ljcml0wqA6Cj4gQ2xlYW5pbmcgdXAgdGhlIGRyaXZlciB0byB1c2UgcG1f
-cHRyKCkgYW5kICpfUE1fT1BTKCkgbWFjcm9zIHRoYXQKPiBtYWtlIGl0IHNpbXBsZXIgYW5kIGFs
-bG93cyB0aGUgY29tcGlsZXIgdG8gcmVtb3ZlIHRob3NlIGZ1bmN0aW9ucwo+IGlmIGJ1aWx0IHdp
-dGhvdXQgQ09ORklHX1BNIGFuZCBDT05GSUdfUE1fU0xFRVAgc3VwcG9ydC4KPiAKPiBTaWduZWQt
-b2ZmLWJ5OiBBbmR5IFNoZXZjaGVua28gPGFuZHJpeS5zaGV2Y2hlbmtvQGxpbnV4LmludGVsLmNv
-bT4KClJldmlld2VkLWJ5OiBQYXVsIENlcmN1ZWlsIDxwYXVsQGNyYXBvdWlsbG91Lm5ldD4KCkNo
-ZWVycywKLVBhdWwKCj4gLS0tCj4gwqBkcml2ZXJzL3BpbmN0cmwvaW50ZWwvcGluY3RybC1iYXl0
-cmFpbC5jIHwgMTEgKysrLS0tLS0tLS0KPiDCoDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMo
-KyksIDggZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGluY3RybC9pbnRl
-bC9waW5jdHJsLWJheXRyYWlsLmMKPiBiL2RyaXZlcnMvcGluY3RybC9pbnRlbC9waW5jdHJsLWJh
-eXRyYWlsLmMKPiBpbmRleCAyN2FlZjYyZmM3YzAuLjY2YWFiYWM2YmU5YyAxMDA2NDQKPiAtLS0g
-YS9kcml2ZXJzL3BpbmN0cmwvaW50ZWwvcGluY3RybC1iYXl0cmFpbC5jCj4gKysrIGIvZHJpdmVy
-cy9waW5jdHJsL2ludGVsL3BpbmN0cmwtYmF5dHJhaWwuYwo+IEBAIC0xNzMzLDcgKzE3MzMsNiBA
-QCBzdGF0aWMgaW50IGJ5dF9waW5jdHJsX3Byb2JlKHN0cnVjdAo+IHBsYXRmb3JtX2RldmljZSAq
-cGRldikKPiDCoMKgwqDCoMKgwqDCoMKgcmV0dXJuIDA7Cj4gwqB9Cj4gwqAKPiAtI2lmZGVmIENP
-TkZJR19QTV9TTEVFUAo+IMKgc3RhdGljIGludCBieXRfZ3Bpb19zdXNwZW5kKHN0cnVjdCBkZXZp
-Y2UgKmRldikKPiDCoHsKPiDCoMKgwqDCoMKgwqDCoMKgc3RydWN0IGludGVsX3BpbmN0cmwgKnZn
-ID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4gQEAgLTE4MTcsOSArMTgxNiw3IEBAIHN0YXRpYyBp
-bnQgYnl0X2dwaW9fcmVzdW1lKHN0cnVjdCBkZXZpY2UgKmRldikKPiDCoMKgwqDCoMKgwqDCoMKg
-cmF3X3NwaW5fdW5sb2NrX2lycXJlc3RvcmUoJmJ5dF9sb2NrLCBmbGFncyk7Cj4gwqDCoMKgwqDC
-oMKgwqDCoHJldHVybiAwOwo+IMKgfQo+IC0jZW5kaWYKPiDCoAo+IC0jaWZkZWYgQ09ORklHX1BN
-Cj4gwqBzdGF0aWMgaW50IGJ5dF9ncGlvX3J1bnRpbWVfc3VzcGVuZChzdHJ1Y3QgZGV2aWNlICpk
-ZXYpCj4gwqB7Cj4gwqDCoMKgwqDCoMKgwqDCoHJldHVybiAwOwo+IEBAIC0xODI5LDE5ICsxODI2
-LDE3IEBAIHN0YXRpYyBpbnQgYnl0X2dwaW9fcnVudGltZV9yZXN1bWUoc3RydWN0Cj4gZGV2aWNl
-ICpkZXYpCj4gwqB7Cj4gwqDCoMKgwqDCoMKgwqDCoHJldHVybiAwOwo+IMKgfQo+IC0jZW5kaWYK
-PiDCoAo+IMKgc3RhdGljIGNvbnN0IHN0cnVjdCBkZXZfcG1fb3BzIGJ5dF9ncGlvX3BtX29wcyA9
-IHsKPiAtwqDCoMKgwqDCoMKgwqBTRVRfTEFURV9TWVNURU1fU0xFRVBfUE1fT1BTKGJ5dF9ncGlv
-X3N1c3BlbmQsCj4gYnl0X2dwaW9fcmVzdW1lKQo+IC3CoMKgwqDCoMKgwqDCoFNFVF9SVU5USU1F
-X1BNX09QUyhieXRfZ3Bpb19ydW50aW1lX3N1c3BlbmQsCj4gYnl0X2dwaW9fcnVudGltZV9yZXN1
-bWUsCj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IE5VTEwpCj4gK8KgwqDCoMKgwqDCoMKgTEFURV9TWVNURU1fU0xFRVBfUE1fT1BTKGJ5dF9ncGlv
-X3N1c3BlbmQsIGJ5dF9ncGlvX3Jlc3VtZSkKPiArwqDCoMKgwqDCoMKgwqBSVU5USU1FX1BNX09Q
-UyhieXRfZ3Bpb19ydW50aW1lX3N1c3BlbmQsCj4gYnl0X2dwaW9fcnVudGltZV9yZXN1bWUsIE5V
-TEwpCj4gwqB9Owo+IMKgCj4gwqBzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciBieXRfZ3Bp
-b19kcml2ZXIgPSB7Cj4gwqDCoMKgwqDCoMKgwqDCoC5wcm9iZcKgwqDCoMKgwqDCoMKgwqDCoCA9
-IGJ5dF9waW5jdHJsX3Byb2JlLAo+IMKgwqDCoMKgwqDCoMKgwqAuZHJpdmVywqDCoMKgwqDCoMKg
-wqDCoCA9IHsKPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC5uYW1lwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqA9ICJieXRfZ3BpbyIsCj4gLcKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoC5wbcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoD0gJmJ5dF9ncGlvX3BtX29wcywKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgLnBtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgPSBwbV9wdHIo
-JmJ5dF9ncGlvX3BtX29wcyksCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAuYWNw
-aV9tYXRjaF90YWJsZcKgwqDCoMKgwqDCoMKgPSBieXRfZ3Bpb19hY3BpX21hdGNoLAo+IMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLnN1cHByZXNzX2JpbmRfYXR0cnPCoMKgwqDCoD0g
-dHJ1ZSwKPiDCoMKgwqDCoMKgwqDCoMKgfSwKCg==
+On Mon, 17 Jul 2023 20:28:19 +0300
+Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
 
+> Since pm.h provides a helper for system no-IRQ PM callbacks,
+> switch the driver to use it instead of open coded variant.
+> 
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
