@@ -4,122 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20A54EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:02:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4662FC0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:03:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9PudKBtLRGdIrG6woA6cD0ablmWghbSuQeHqb7JxJpo=; b=ySeG+D2vXlGm0jGDmXs53StNYI
-	XSSXBAkgA+BdzVbtCdlk+y8R/ZmyXnlUEmIMFUtpPQawQCq8mmhaDlcHToIO3HFsyHX1utL1r/jwd
-	2lacr5XO8UbATodCGlHzRLWj5AYlwlm98jyh5E6fHbCj4x/im2rhJ6R3zpZwvMfuEKfCHut2PvSw0
-	8AymScjESs8oPLTXzaThsf41ONt21iSyYzVQ6WONCuceFhQMTybaL1JLETFHwDN1BOWL4V5/FeWMB
-	VQSOeutriZXZ9NLACCCTUnR+hx+fZddPwXI4TDeKvvPyuS4g6U9R4ZaKdlCPjA/auUIQsUDfFCKGL
-	kRjOyvYQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dIIcx1SGAw9uYYN1avMxPsLqak5l24gEpGFmCR8wXQs=; b=X8qaVFLIeLouzy/x2H1WkZ7BwU
+	sTdnaE2j971giHs4bQwCvpXqBwPunoE65HrBOf2toPEsDwDwkzOgLGj9yE4zpsYBakd2Cj0YPB93I
+	0sz7fh/nA4U9OfwkhZwYq5zFoqKEAuvok712aY3u010IsQ3RltmKqzrCoT5EwXgIKXg/lPVaU9u7Z
+	BRH8OARlAAhpU+7+YEJKhixAXqEVZzDBZ7OVq0kjOQsURfPEfjMdGPFt3/yZXRRhsOEV+PWYPEuda
+	fzUBKs0yxRr+Ur/F3S9XXNPUeWuV+Wa28s925sX+uKC78ASs+e+5cKRogMlSV0/Dgv/kURlWj4XCE
+	EXkEkHrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzKk-0057sh-2f;
-	Wed, 19 Jul 2023 05:02:42 +0000
+	id 1qLzL6-00580U-0I;
+	Wed, 19 Jul 2023 05:03:04 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzKi-0057s0-37;
-	Wed, 19 Jul 2023 05:02:41 +0000
+	id 1qLzKy-0057x8-2S;
+	Wed, 19 Jul 2023 05:02:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID:
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
+	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=9PudKBtLRGdIrG6woA6cD0ablmWghbSuQeHqb7JxJpo=; b=W0k2kqQy0aI5JY0Eb4Cr1vb36H
-	zeujAk7NoSLId/+QKmT2SQNGW0J5e7wlaCMmOmvLRN7vVaoNhaSIXeXynxkgPHkh5Z8jvwamEEyvS
-	kjZZCwp1mUbQ558ah7J5Bcqe3KOTa/CD+/NkY/wfAld89r2mxjQyLe9DNcMoBhmpqcORF11MAxIf2
-	pX0DFHrDsOd9+ZeQurveB7iErOjAWBDuIyuQKMhAS/XSgkltfzJL4sp0Om4jmdEBnkXEmdQaM0Sde
-	GIfbnVu0BcObS9TJBIImHnuqTXBnqrbeJtL9Jp+V7UGa9uUiZk5y+kDg9BgCtN5J8OjN5y0k9NvqR
-	oHeuRGbw==;
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	bh=dIIcx1SGAw9uYYN1avMxPsLqak5l24gEpGFmCR8wXQs=; b=gwfhlAfxXe2lkpul5TLd/IQp5C
+	gkdwYhcyw7idjIaaOKU+o2ezUPAvw2NbhhAmKNt6oy91A7utmErBYMUgqo7XNpPNLmb3PZVSFEGHZ
+	jwCQkUZG2K3Lwk16LhEJHtcakktdauszi6BsK6EKVu+Z0Bx5FB2Hs+HFJnnHF7jZseCzZt0RD1ZKy
+	x5vEPHJucyS5ocUrYdwQpEccwAC3YuwUE2lIYnFiKahgEVs0+up8tVRNzZByhIFgojPNDtdFriIWq
+	3wSW1L7e2i1/RVP7+3D8Mhsx0Zw78ix+tyt380iCs6JwACqmsUtEmNI5cSQP0JImUa0iew/3o2O6H
+	z6ANgMfw==;
+Received: from aposti.net ([89.234.176.197])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLnU2-00BkpN-1p;
-	Tue, 18 Jul 2023 16:23:33 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 36IFsRTa015227;
-	Tue, 18 Jul 2023 16:22:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=9PudKBtLRGdIrG6woA6cD0ablmWghbSuQeHqb7JxJpo=;
- b=V3hWrUBHM+woS1my6mR7GJ8l5RToeNqfgquoQjxX6hkw1KKaAanxIf6/jPFsF7ifNAvS
- 1vHTPwrwUqCvEGemIWxR4BS+5Vgy8EgWyM/aEFM2j6GYDfZsLCOa/wC062IsQQ8e60YO
- nY58M9LYuLrwkKYy0QwMyC9lr7E32TGVd5OZeWel5uipmEyukWZU+8ioEcyi8yf6S4Lm
- FxLgw8WEfd2SFVdakSH3aKbFwmvmMX3H01gcOa4HzXuzGDK94uxnJqTL9ji9msXIuUZC
- y5hMjcWR+DrEBvFl6znN3TEk8Zq+auOevV4dC/mJErlQcTEDSGAfWi1sGSjx/INajtzm Tg== 
-Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3rwqqg92xe-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 18 Jul 2023 16:22:04 +0000
-Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
-	by NASANPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 36IGM3IM002800
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 18 Jul 2023 16:22:03 GMT
-Received: from [10.110.1.206] (10.80.80.8) by nasanex01a.na.qualcomm.com
- (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.30; Tue, 18 Jul
- 2023 09:22:02 -0700
-Message-ID: <38716e0a-fb99-bb71-23f4-7952a4f6e04e@quicinc.com>
-Date: Tue, 18 Jul 2023 09:22:01 -0700
+	id 1qLlB2-00BbIW-06;
+	Tue, 18 Jul 2023 13:55:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
+	s=mail; t=1689688538;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=dIIcx1SGAw9uYYN1avMxPsLqak5l24gEpGFmCR8wXQs=;
+	b=MeGV0ommnDXY0bZLzz2aUDd3eORngKqqpm/czs4W5fC56SGEpuHkxL+e3H80XeL4olpT4w
+	1ApOAoo+UVumdCRRcw4QCgk1bWX8vFzXQhxjA1hdPhx0ybjBisPaXhX4AezSFzKDJcy2CL
+	4umq/NBxiWzrvybq7Sv34wmBua/EBa4=
+Message-ID: <d674ed791e4e7a71b671d1a66a03796cd6867fde.camel@crapouillou.net>
+Subject: Re: [PATCH v2 04/10] pinctrl: intel: Switch to use
+ DEFINE_NOIRQ_DEV_PM_OPS() helper
+From: Paul Cercueil <paul@crapouillou.net>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg
+ <mika.westerberg@linux.intel.com>, Linus Walleij
+ <linus.walleij@linaro.org>,  Balsam CHIHI <bchihi@baylibre.com>, Claudiu
+ Beznea <claudiu.beznea@microchip.com>, Geert Uytterhoeven
+ <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
+  Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org,  linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,  linux-renesas-soc@vger.kernel.org,
+ linux-tegra@vger.kernel.org,  linux-pm@vger.kernel.org, Andy Shevchenko
+ <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Andrew Lunn <andrew@lunn.ch>,
+ Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth
+ <sebastian.hesselbarth@gmail.com>, Ludovic Desroches
+ <ludovic.desroches@microchip.com>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>,  Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>,
+ Pavel Machek <pavel@ucw.cz>
+Date: Tue, 18 Jul 2023 15:55:35 +0200
+In-Reply-To: <CAHp75VdPNCvhVSeKESbd7VNVPa8GVXVnw04jaE4HMUjK_b8+dA@mail.gmail.com>
+References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
+	 <20230717172821.62827-5-andriy.shevchenko@linux.intel.com>
+	 <c47c26ba7ea5bcbdcbe1d001b6cc527cee6c7d03.camel@crapouillou.net>
+	 <CAHp75Vcjq9=Q2_fsGJ9oCw=WYR3p3ot_cNLiDJV93psNcXXHLw@mail.gmail.com>
+	 <8c66f79025ddd8388eeb9bdb3f0e789fe9f362d9.camel@crapouillou.net>
+	 <CAHp75VdPNCvhVSeKESbd7VNVPa8GVXVnw04jaE4HMUjK_b8+dA@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v4 00/21] Add Qualcomm Minidump kernel driver related
- support
-To: Greg KH <gregkh@linuxfoundation.org>, Mukesh Ojha <quic_mojha@quicinc.com>
-CC: <linux-samsung-soc@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-        <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
-        <konrad.dybcio@linaro.org>, <krzysztof.kozlowski+dt@linaro.org>,
-        <conor+dt@kernel.org>, <keescook@chromium.org>, <tony.luck@intel.com>,
-        <gpiccoli@igalia.com>, <catalin.marinas@arm.com>, <will@kernel.org>,
-        <andy.shevchenko@gmail.com>, <linux-doc@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-        <devicetree@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
-        <linux-remoteproc@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
-        Linus Walleij <linus.walleij@linaro.org>,
-        "Rob
- Herring" <robh+dt@kernel.org>,
-        Mathieu Poirier <mathieu.poirier@linaro.org>,
-        Alexander Shishkin <alexander.shishkin@linux.intel.com>
-References: <1687955688-20809-1-git-send-email-quic_mojha@quicinc.com>
- <2023062814-chance-flounder-f002@gregkh>
- <CAL_JsqLO9yey2-4FcWsaGxijiS6hGL0SH9VoMuiyei-u9=Cv=w@mail.gmail.com>
- <CACRpkda3CJ7G4-wDPkWmzg6nyCoEfG+u2cQH6KXWNjbftd90ow@mail.gmail.com>
- <355de4c7-180d-4edd-b6fd-9c8e29e40e42@quicinc.com>
- <52650970-de78-764f-28e2-ee0115b7d5c6@quicinc.com>
- <e4784d1c-73da-9cda-6aef-d02625e8efd2@quicinc.com>
- <2023071833-clamshell-drinking-188c@gregkh>
- <c8064592-bfac-67b4-1d7e-e173355c43f8@quicinc.com>
- <2023071844-promptly-swimwear-f6f9@gregkh>
-Content-Language: en-US
-From: Trilok Soni <quic_tsoni@quicinc.com>
-In-Reply-To: <2023071844-promptly-swimwear-f6f9@gregkh>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01a.na.qualcomm.com (10.52.223.231)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: e8N4s61eNav6K3VmUuYrrBLypPGDxsor
-X-Proofpoint-ORIG-GUID: e8N4s61eNav6K3VmUuYrrBLypPGDxsor
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
- definitions=2023-07-18_12,2023-07-18_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 mlxscore=0
- mlxlogscore=999 phishscore=0 malwarescore=0 adultscore=0
- lowpriorityscore=0 clxscore=1011 impostorscore=0 bulkscore=0
- priorityscore=1501 suspectscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2306200000 definitions=main-2307180150
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_172331_379315_79B909B8 
-X-CRM114-Status: GOOD (  15.67  )
+X-CRM114-CacheID: sfid-20230718_145544_257589_9C4DE802 
+X-CRM114-Status: GOOD (  37.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,33 +102,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/18/2023 7:41 AM, Greg KH wrote:
-> On Tue, Jul 18, 2023 at 07:25:15PM +0530, Mukesh Ojha wrote:
->>
->>
->> On 7/18/2023 7:05 PM, Greg KH wrote:
->>> On Tue, Jul 18, 2023 at 11:17:12AM +0530, Mukesh Ojha wrote:
->>>> + linux-samsung-soc@vger.kernel.org
->>>> + linux-mediatek@lists.infradead.org
->>>
->>> What does that do?
->>
->> This is to seek their feedback, if they have something similar requirement
->> to debug end user device crashes.
-> 
-> Feedback to what?  There is no context here and no content either at
-> all.
-> 
-> Just adding a mailing list to the top of a message doesn't actually send
-> the thread there.
-> 
-> confused,
+Hi Andy,
 
-Mukesh, instead of adding the mailing lists here, we should send either 
-the refreshed revision of this patchset (if there are enough changes) w/ 
-MLs CCed or start a new discussion with these mailing list with the 
-context of the minidump and refer these patches from the mailing list 
-archives.
+Le mardi 18 juillet 2023 =C3=A0 15:57 +0300, Andy Shevchenko a =C3=A9crit=
+=C2=A0:
+> On Mon, Jul 17, 2023 at 10:56=E2=80=AFPM Paul Cercueil <paul@crapouillou.=
+net>
+> wrote:
+> > Le lundi 17 juillet 2023 =C3=A0 22:33 +0300, Andy Shevchenko a =C3=A9cr=
+it :
+> > > On Mon, Jul 17, 2023 at 10:02=E2=80=AFPM Paul Cercueil
+> > > <paul@crapouillou.net>
+> > > wrote:
+> > > > Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=
+=A9crit
+> > > > :
+>=20
+> ...
+>=20
+> > > > So the correct way to update this driver would be to have a
+> > > > conditionally-exported dev_pm_ops structure:
+> > > >=20
+> > > > EXPORT_GPL_DEV_PM_OPS(intel_pinctrl_pm_ops) =3D {
+> > > > =C2=A0=C2=A0=C2=A0 NOIRQ_SYSTEM_SLEEP_PM_OPS(intel_pinctrl_suspend_=
+noirq,
+> > > > intel_pinctrl_resume_noirq),
+> > > > };
+> > >=20
+> > > This looks ugly. I didn't know that EXPORT*PM_OPS designed that
+> > > way,
+> > > but it seems pm.h in such case needs EXPORT for NOIRQ case as
+> > > well.
+> >=20
+> > It's designed so that when CONFIG_PM is disabled, the dev_pm_ops is
+> > garbage-collected along with all its callbacks.
+> >=20
+> > I know it looks ugly, but we already have 4 variants (regular,
+> > namespace, GPL, namespace + GPL), if we start to add macros for
+> > specific use-cases then it will become bloated really quick.
+>=20
+> Maybe macros can be replaced / changed to make it scale?
 
----Trilok Soni
+If you have any ideas, then yes absolutely.
+
+>=20
+> > And the "bloat" I'm trying to avoid here is the extreme expansion
+> > of
+> > the API which makes it hard for people not familiar to the code to
+> > understand what should be used and how.
+>=20
+> So far, based on the rest of the messages in the thread the
+> EXPORT*PM_OPS() have the following issues:
+> 1) do not scale (for variants with different scope we need new set of
+> macros);
+> 2) do not cover cases with pm_sleep_ptr();
+> 3) export symbols in case when it's not needed.
+>=20
+> Am I right?
+
+I think that's right yes.
+
+>=20
+> > > > Then your two callbacks can be "static" and without #ifdef
+> > > > guards.
+> > > >=20
+> > > > The resulting "intel_pinctrl_pm_ops" can be marked as "extern"
+> > > > in
+> > > > the
+> > > > pinctrl-intel.h without any guards, as long as it is only
+> > > > referenced
+> > > > with the pm_ptr() macro.
+> > >=20
+> > > I'm not sure I got this. Currently drivers do not have any
+> > > guards.
+> > > Moreover, the correct one for noirq is pm_sleep_ptr(), isn't it?
+> >=20
+> > The EXPORT_*_DEV_PM_OPS() macros do export the "dev_pm_ops"
+> > conditionally depending on CONFIG_PM. We could add variants that
+> > export
+> > it conditionally depending on CONFIG_PM_SLEEP, but we're back at
+> > the
+> > problem of adding bloat.
+>=20
+> Exactly.
+>=20
+> > You could use pm_sleep_ptr() indeed, with the existing macros, with
+> > the
+> > drawback that in the case where CONFIG_PM && !CONFIG_PM_SLEEP, the
+> > dev_pm_ops + callbacks are compiled in but never referenced.
+>=20
+> And exactly.
+>=20
+> I don't think they are ready to use (in the current form). But let's
+> see what we may do better here...
+
+They were OK when Jonathan and myself were updating the IIO drivers -
+but now they definitely show their limitations.
+
+Cheers,
+-Paul
 
