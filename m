@@ -4,107 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDACCEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:09:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDA92EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:10:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SOp2ZZ3wc36w9kvHwXp3awpd0wFGnA+hVpdKbz6GNXU=; b=lgKyXMwlXdNsMX5y4bTcA9oxDN
-	A4YYkdap4dFgbPWwsWgNVyH0e0hNPB0zXVNMbukhDKeu19TCIvgb/MgSknQNa4X8GKveIh97yLPf5
-	T/fH2CqiaJXCV3zy604EF66KCKLQ9XuysiNthZRXt+koJ1V+k1OqJcqe8jHeF16uW0L0FFFDC8XoJ
-	hrmAO4pln055A+5IQF9KYwKA1C35hUPGaIZINCmmz+Po6e4mMeclNtewxXm3dm5H6X6fNI8q2HgE5
-	Lp4iMdoJkbJ27Gm58ZjaZBi3mXrS4J2RHvoln4FOQfGhLtQ5b21YBF/+pwcDJtRAdwORmTR5USzye
-	Tw7rhQ8Q==;
+	bh=botXgHX6lvKxI//MS5qCm7ZrIXLhTHjIntqkzLlfZ7E=; b=4VRnrc1cgAtoagTJucyMSIM8uZ
+	AiR6ZPB6seCU4hoizkDpVxIWWO6nRSry77Nj6aMa03WT7PeBkOXiRAECRWPnBQrHzUWtA/ymPU+e/
+	hwImwNZUqmN6wsNTJCwyXyhOdZbvuKTGl2fXyfg9QhPhWq9TrmYspivB7n37z7Zx0jLCgTIfLrNlE
+	Z4ClfUXqTjWXJzQkL5uIYOraUmpnrvBZKRNmAlvVRraOjNRrLTJeEv53yS1Cfua9aQycfeRMcesGI
+	D8CCrF9yiUG9IhwKE6yFHuIcJKlKbaoD6bi5viwodPpDx6aWYugxaDlrXbDVy1YNQsOKOc4H2STXB
+	cR08ibsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2Fi-006EsT-2Q;
-	Wed, 19 Jul 2023 08:09:42 +0000
+	id 1qM2GN-006FI9-29;
+	Wed, 19 Jul 2023 08:10:23 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2Fh-006ErA-2B;
-	Wed, 19 Jul 2023 08:09:41 +0000
+	id 1qM2GM-006FGm-06;
+	Wed, 19 Jul 2023 08:10:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=SOp2ZZ3wc36w9kvHwXp3awpd0wFGnA+hVpdKbz6GNXU=; b=UGuD/M5chL1X6wGDM3e/7Pnr4E
-	7jAyTGJzgKpgFBJoV/NKobqZtG35sqC0P2SDJYeSna+XoJ2aWrDnkySTVxAezsUfNp8PpsOUKs1M5
-	T7HB+VlVrUDV3LsMtW7Z3x1Kbm1BqSgRPzyJbplpADqqTI3Rivuxa0LgU37zlzOQTzOkK3lE2E88l
-	kMJTubDEM2JR4/QYMXPsDOg9j1dW4jgdVaHJKTr6eYB1XjfIUWn6uGTFSmojqmDm48J4htChzfXk8
-	+ZyynMZTpXv9YXtXBYBxzcQw6a0BUPZr3b0qtjljTnRHmhtEPxHAFmbuCTmvpfSOmnh5OB+MOQMGM
-	ZUfoP9aw==;
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	bh=botXgHX6lvKxI//MS5qCm7ZrIXLhTHjIntqkzLlfZ7E=; b=Sq8nUttjpdpn/odb3v02zII1p9
+	kwQ0Nn7uhJ8MTr3QwLCpObk8xcCFhXLke8Gif0cgm+bqzww1HJIfFnvBaL7nsEpIKyRF23Jzlrxn4
+	N5pqmLEDW0BUhNMgIOfxLJQu9KtZLXWWxVhaFWA+tNnMb7zelW5aPdDOZp5cG6W2Lybzb35OaSSGe
+	wbT8N3vT2myezytFEefBazKzIuf358xMLCyCodaIgG0cKVeDuh1BHMf0K1mhKUCMmEFbaiTUyg5Rw
+	1oaZjiFU2j0wftt2sWucm6N/CCPHLfIq7jvvLCAywYqgwmC31ZO4s7bdv2oVCh68Ts9pzrqDegn2w
+	Tfl09c2Q==;
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLU6v-009FU9-2u;
-	Mon, 17 Jul 2023 19:42:23 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-992f6d7c7fbso699998166b.3;
-        Mon, 17 Jul 2023 12:41:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1689622791; x=1692214791;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SOp2ZZ3wc36w9kvHwXp3awpd0wFGnA+hVpdKbz6GNXU=;
-        b=DheUe9jqHtnMNx6N40uCc5AiolO11iz7WAmfwD5rCkeOqGj09Sx8tR6PZERo3jKe1m
-         yaSa6GpCqRVUSf4+acnPacv2dNnsDZqeVxuPDfHw4Td6k3oLcEekxIHVL5DM7lUydvFZ
-         1yH4MXeuVnqFJR6JiFjmP4gXyjIUorYoxdLot1ekrL0gkrY6mjCO0iNwacJwU8c9fBaD
-         emJeHw+wYJaUYZTUsjKIXvMc6zD8+c9HU+BwD/q0gBAYdVVCZBwJXCBRrVJJgz75L9I3
-         qltW9FwH9S69mpWDlwv4/kUfAUFPPoUC25iZ/kMewrK0Gq+l2iI7fBTRnFlkzWzGH6za
-         OPZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689622791; x=1692214791;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=SOp2ZZ3wc36w9kvHwXp3awpd0wFGnA+hVpdKbz6GNXU=;
-        b=h1YB0H53Ab/a8IfaVGiramdvsgR8qbHaaciJlQgJQD3e3kqBh9svcP91aDomicfBrR
-         WKvLVyvNiRY9tftAWp81XvXW/saR5gLR+CcoqVclG87lL/E+MjgBMT3IE3KydZ/1vBF6
-         +L6Lu49+uqpE9YZMzKDyElPmhWtr2mvLylvj97a9QZ+n87NQQInX7uSuv4LA/9e6Pd6Z
-         7CjtAWN/uDRZJ2txvXLLdfFxpNLR9UrCUUd10cLP7LL8cQgxhde0MM/UykF3GasSP0wT
-         QJApnNqqCis/7AJRctLScAf2jDq13naLd9HYUUlMZnV2Aq/QccE1OukMbFjsFYTjx6pZ
-         RvFg==
-X-Gm-Message-State: ABy/qLalD3X9jCF3j0HMxfaMsH0dUegXsQK1PfIK6cyKvX2k7hw/UDqw
-	2BKN8zcd8vyPjpuWHDOaVz2v5CxTiEQSZYxckOc=
-X-Google-Smtp-Source: APBJJlG66q2eVrKtgpAASjhMjhczg4W5QDeuTaoOb4zn9mrNG3umEbjvgyH7X6msZHAYfZ9gd95bh+fbUtFHCcQUtj8=
-X-Received: by 2002:a17:907:1c1a:b0:992:ef60:ab0d with SMTP id
- nc26-20020a1709071c1a00b00992ef60ab0dmr12390276ejc.69.1689622790750; Mon, 17
- Jul 2023 12:39:50 -0700 (PDT)
+	id 1qLdZv-00BBtb-0l;
+	Tue, 18 Jul 2023 05:48:58 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 36I5eYYS008122;
+	Tue, 18 Jul 2023 05:47:29 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=botXgHX6lvKxI//MS5qCm7ZrIXLhTHjIntqkzLlfZ7E=;
+ b=J+4F8hVZ9+BwXwycxS77FsGp/9CE9z+niHIhfkHXTTN1u1B5I4Gz8RZIfz2g9YRSZyaQ
+ 5IiMd2Ea9PRZk6tya8+iagYVyPCKHdbDI2z83Gs9Ba+CD76fhvJylaXLGJnCqNeBfKQJ
+ TMFPlfaII/AgZHC2l1sB5BXV/3ltQJs5X6IaC+VqPDuLi6bz8Q8VeDlXA/woLuHyfixM
+ jrPmvjMPTJxYoLQCz8PZH0LHT5JpIGFLF7xPcpHJj9wHDK0+kg44VLM0N1yPA8Sd+jrY
+ H5i+W5aKvBQ66myjQAIbg/pvcTFLjzepU0hhJEb+ERLTXctjzZFJdewjSntr9XPMHNkl sA== 
+Received: from nasanppmta02.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3rwfj78jh8-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 18 Jul 2023 05:47:29 +0000
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
+	by NASANPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 36I5lSOk009126
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 18 Jul 2023 05:47:28 GMT
+Received: from [10.216.47.173] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.30; Mon, 17 Jul
+ 2023 22:47:20 -0700
+Message-ID: <e4784d1c-73da-9cda-6aef-d02625e8efd2@quicinc.com>
+Date: Tue, 18 Jul 2023 11:17:12 +0530
 MIME-Version: 1.0
-References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
- <20230717172821.62827-11-andriy.shevchenko@linux.intel.com> <13f7153786cfcdc3c6185a3a674686f7fbf480dc.camel@crapouillou.net>
-In-Reply-To: <13f7153786cfcdc3c6185a3a674686f7fbf480dc.camel@crapouillou.net>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 17 Jul 2023 22:39:14 +0300
-Message-ID: <CAHp75VdVM87gbFX9sPKo-+eVRUsK8pmC_fyCQ-_6oMMm1aAQ9Q@mail.gmail.com>
-Subject: Re: [PATCH v2 10/10] pinctrl: tegra: Switch to use
- DEFINE_NOIRQ_DEV_PM_OPS() helper
-To: Paul Cercueil <paul@crapouillou.net>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	Mika Westerberg <mika.westerberg@linux.intel.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Balsam CHIHI <bchihi@baylibre.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
-	linux-tegra@vger.kernel.org, linux-pm@vger.kernel.org, 
-	Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
-	Ludovic Desroches <ludovic.desroches@microchip.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v4 00/21] Add Qualcomm Minidump kernel driver related
+ support
+To: <linux-samsung-soc@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+CC: Greg KH <gregkh@linuxfoundation.org>, <corbet@lwn.net>,
+        <agross@kernel.org>, <andersson@kernel.org>,
+        <konrad.dybcio@linaro.org>, <krzysztof.kozlowski+dt@linaro.org>,
+        <conor+dt@kernel.org>, <keescook@chromium.org>, <tony.luck@intel.com>,
+        <gpiccoli@igalia.com>, <catalin.marinas@arm.com>, <will@kernel.org>,
+        <andy.shevchenko@gmail.com>, <linux-doc@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+        <devicetree@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
+        <linux-remoteproc@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+        "Trilok
+ Soni" <quic_tsoni@quicinc.com>,
+        Linus Walleij <linus.walleij@linaro.org>,
+        "Rob Herring" <robh+dt@kernel.org>,
+        Mathieu Poirier
+	<mathieu.poirier@linaro.org>,
+        Alexander Shishkin
+	<alexander.shishkin@linux.intel.com>
+References: <1687955688-20809-1-git-send-email-quic_mojha@quicinc.com>
+ <2023062814-chance-flounder-f002@gregkh>
+ <CAL_JsqLO9yey2-4FcWsaGxijiS6hGL0SH9VoMuiyei-u9=Cv=w@mail.gmail.com>
+ <CACRpkda3CJ7G4-wDPkWmzg6nyCoEfG+u2cQH6KXWNjbftd90ow@mail.gmail.com>
+ <355de4c7-180d-4edd-b6fd-9c8e29e40e42@quicinc.com>
+ <52650970-de78-764f-28e2-ee0115b7d5c6@quicinc.com>
+Content-Language: en-US
+From: Mukesh Ojha <quic_mojha@quicinc.com>
+In-Reply-To: <52650970-de78-764f-28e2-ee0115b7d5c6@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: 4MQCr3V3jn7NkD1q7loLspC5CvNWJFhH
+X-Proofpoint-ORIG-GUID: 4MQCr3V3jn7NkD1q7loLspC5CvNWJFhH
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
+ definitions=2023-07-17_15,2023-07-13_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 adultscore=0
+ mlxlogscore=999 impostorscore=0 clxscore=1011 phishscore=0 spamscore=0
+ lowpriorityscore=0 priorityscore=1501 mlxscore=0 bulkscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2306200000 definitions=main-2307180053
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_204222_330115_AE1839F4 
-X-CRM114-Status: UNSURE (   7.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230718_064856_256133_AC09CAAA 
+X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,23 +133,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 17, 2023 at 10:14=E2=80=AFPM Paul Cercueil <paul@crapouillou.ne=
-t> wrote:
-> Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=A9crit=
- :
++ linux-samsung-soc@vger.kernel.org
++ linux-mediatek@lists.infradead.org
 
-...
 
-> Another driver where using EXPORT_GPL_DEV_PM_OPS() would make more
-> sense.
 
-OK.
+On 7/15/2023 5:15 AM, Trilok Soni wrote:
+> On 7/5/2023 10:29 AM, Trilok Soni wrote:
+>> On 7/4/2023 2:27 AM, Linus Walleij wrote:
+>>> On Thu, Jun 29, 2023 at 1:12 AM Rob Herring <robh+dt@kernel.org> wrote:
+>>>
+>>>> My bigger issue with this whole series is what would this all look
+>>>> like if every SoC vendor upstreamed their own custom dumping
+>>>> mechanism. That would be a mess. (I have similar opinions on the
+>>>> $soc-vendor hypervisors.)
+>>>
+>>> I agree with Rob's stance.
+>>>
+>>> I think it would be useful to get input from the hwtracing developers
+>>> (Alexander and Mathieu) who faced this "necessarily different" issue
+>>> with all the hwtrace mechanisms and found a way out of it. I suspect
+>>> they can have an idea of how this should be abstracted.
+>>
+>> Any mailing list you suggest we expand to so that we get inputs from 
+>> the hwtracing developers and maintainers or just look into the 
+>> MAINTAINERS file and start an email thread?
+>>
+>> We are fine to submit the abstract for the LPC in next two weeks, but 
+>> prefer to have lot of good discussion before it on the mailing list, 
+>> so that we have code to talk about in LPC.
+> 
+> We have submitted abstract at LPC MC. Let's continue the discussion here 
+> though.
+> 
+> Mukesh, do you want to expand the lists as necessary to see if other 
+> soc-vendors are having any inputs here? May be add Exynos or MTK kernel 
+> mailing lists + linux-kernel? I don't know if anyone will respond or 
+> not, but let's try.
 
-...
+Sure.
 
-Thank you for the review of the series!
-
---=20
-With Best Regards,
-Andy Shevchenko
+-Mukesh
+> 
+> ---Trilok Soni
+> 
 
