@@ -4,79 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99FB6C001B0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 07:55:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A21CC0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 07:56:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uHQG93rQz2rdrUW9Z0PMHg5WySgNYeZupGPXtWoBO5E=; b=WkmJg91JozGpDqAzLdfBm4tj9D
-	1uK/lsODVu4ERhVSWXBZEifLPseyAiCeAg/r0I6pJvFvnPsa+91jLy3ZEPC9rMtHgQy4mgdqJdLRB
-	X+kMXcBbYJv/Wnk6n3KESJkxFGkc3mwh+ky4jJGSpzN9odRQ5qFmKFbbcUL7Fho69wg1Q2nbtDkYw
-	E74i6042ne+Z2h+ZXwrgtxS3SFRPnvGJfmwH07x9Dwtx5EtEY3iooXDcN/DsDgu6m+Fxb5rqVQ08F
-	rM6XrwaI0brVA1c/kcXRdbY+yVfruf/SS4/PhWx8SOQBaJHSzTLAsN+zW0LhmrzNJvhvGWAsnrETX
-	k8THh1rw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hAUu6cjfwMXsoHvCmdIwowJOF3QPY5SDYBrCCXvaisE=; b=PNx7tI2dz4+MEhI4l6gOAxXs7S
+	szoolkll7DmBidVaPMBFh1ns4nwshwQ8nvLY+KaJyiARaTrO+X/Gk/tGLOYJQMC5iV3INk03CiYCL
+	ZbaZcf1GywQKoYLMqbUjj778dGA3CByb4G6/JdSQbjsSunwEonuZH0LOYvqii1UwLZqxyGiq8CBoz
+	tA00F1fIJ8wKQpyIidpIbr+8XyYPK8HKhwRb8+KeoGqE6RjOMZarIU2Zy3v8nf8hF+xprp4A+KxHd
+	QrOinobUyVVXsfRtk02e5VhPWM07tJxdFj4IgxzoAfZfBC+1f3NevkTIGmtWnZXkMvmnd0mxY0FEC
+	oO+vNscw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM22L-0069vx-1A;
-	Wed, 19 Jul 2023 07:55:53 +0000
+	id 1qM22q-006A5w-1N;
+	Wed, 19 Jul 2023 07:56:24 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM22J-0069ty-1l;
-	Wed, 19 Jul 2023 07:55:51 +0000
+	id 1qM22g-006A2C-1a;
+	Wed, 19 Jul 2023 07:56:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:To:From:Date:Sender:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=uHQG93rQz2rdrUW9Z0PMHg5WySgNYeZupGPXtWoBO5E=; b=bPOHNHkek/0N+modzsuwLw5N8Y
-	xGH//M6SNdgFG9yTbK5fxDQ52yXZ8LbUckLd1tpN0GrC7WnMhoLMIUxmQAUSYOZQBI9KYM5xvPJyf
-	R+bLG6sAmM7qsKCUWwdf+jQgEW+rfbOvBpIiohuGrMcroDazXVqOL6FyVybvW+9vti9+zYMBgLAbc
-	L9wH+8qUJ9ICiFd6sglsPK+TNorEE4zkq3qKq1ioMaw1AGO1Q0EZcPW54jUqr/dtbaRXluURhd321
-	yf2hc4oAjMhhmo8u4rOE1ptWIsSwM8OuvTwIO3W2z+QUC6D6U3xtqS0/ht24VUOATbhzSSYbyjfYi
-	/6F6x/Qw==;
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:From:Date:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=hAUu6cjfwMXsoHvCmdIwowJOF3QPY5SDYBrCCXvaisE=; b=ExwiYO5/qaWlz5aFYYb0RRLOOq
+	UendujtMFSzhuVDITRlGjbGYYv0ubEDqPQes6XrP3nv/LNJfS4Ouv46vJwhH1cjlD/9CprVzyJzO7
+	6PmvJtS4UxSOQEUUTeBkf4TuM2cnfSP4Hq4mhxIiWjBcXwq5re+df6AEH7yQJvGnoC7nikXYA9nFx
+	VtRm5/XgdZmBzldO3IXmNcbG7aGYPJ7Ow8euFMI/YTULZk7Gt1bJibChBkX8Aeugw6yn6/KkEYPY/
+	NuB+1sfn2QKwphW4EPI1EZi4xIByI5g6kH3bDsAu/yFItuoi+w6118OauXOloQev6a4od0qgN7Tfj
+	7ulLIIEQ==;
+Received: from frasgout.his.huawei.com ([185.176.79.56])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLsJ4-00C4NL-2l;
-	Tue, 18 Jul 2023 21:33:46 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1qLsIq-0001MW-2n;
-	Tue, 18 Jul 2023 21:32:16 +0000
-Date: Tue, 18 Jul 2023 22:32:08 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Greg Ungerer <gerg@kernel.org>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v3 7/9] net: ethernet: mtk_eth_soc: convert caps in
- mtk_soc_data struct to u64
-Message-ID: <1e9e776186d16d35a80df7146e6062f970dc6d26.1689714291.git.daniel@makrotopia.org>
-References: <cover.1689714290.git.daniel@makrotopia.org>
+	id 1qLhP4-00BNAD-25;
+	Tue, 18 Jul 2023 09:54:00 +0000
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4R4vMx5rg8z6J6ts;
+	Tue, 18 Jul 2023 17:50:53 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Tue, 18 Jul
+ 2023 10:53:23 +0100
+Date: Tue, 18 Jul 2023 10:53:22 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+CC: Mika Westerberg <mika.westerberg@linux.intel.com>, Linus Walleij
+	<linus.walleij@linaro.org>, Balsam CHIHI <bchihi@baylibre.com>, "Claudiu
+ Beznea" <claudiu.beznea@microchip.com>, Geert Uytterhoeven
+	<geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Thierry Reding <thierry.reding@gmail.com>, Paul Cercueil
+	<paul@crapouillou.net>, <linux-gpio@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-renesas-soc@vger.kernel.org>,
+	<linux-tegra@vger.kernel.org>, <linux-pm@vger.kernel.org>, Andy Shevchenko
+	<andy@kernel.org>, Andrew Lunn <andrew@lunn.ch>, Alexandre Belloni
+	<alexandre.belloni@bootlin.com>, Len Brown <len.brown@intel.com>, "Rafael J.
+ Wysocki" <rafael@kernel.org>, Gregory Clement <gregory.clement@bootlin.com>,
+	Sean Wang <sean.wang@kernel.org>, "Jonathan Hunter" <jonathanh@nvidia.com>,
+	Ludovic Desroches <ludovic.desroches@microchip.com>, Pavel Machek
+	<pavel@ucw.cz>, "Matthias Brugger" <matthias.bgg@gmail.com>, Sebastian
+ Hesselbarth <sebastian.hesselbarth@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 02/10] pinctrl: baytrail: Make use of pm_ptr()
+Message-ID: <20230718105322.000074ca@Huawei.com>
+In-Reply-To: <20230717172821.62827-3-andriy.shevchenko@linux.intel.com>
+References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
+	<20230717172821.62827-3-andriy.shevchenko@linux.intel.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1689714290.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100003.china.huawei.com (7.191.160.210) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_223300_041413_100DEAA4 
-X-CRM114-Status: GOOD (  16.23  )
+X-CRM114-CacheID: sfid-20230718_105358_903479_4992EA05 
+X-CRM114-Status: GOOD (  18.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,197 +98,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+On Mon, 17 Jul 2023 20:28:13 +0300
+Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
 
-This is a preliminary patch to introduce support for MT7988 SoC.
+> Cleaning up the driver to use pm_ptr() and *_PM_OPS() macros that
+> make it simpler and allows the compiler to remove those functions
+> if built without CONFIG_PM and CONFIG_PM_SLEEP support.
+> 
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_path.c | 22 ++++----
- drivers/net/ethernet/mediatek/mtk_eth_soc.h  | 56 ++++++++++----------
- 2 files changed, 39 insertions(+), 39 deletions(-)
+LGTM but why is it in a set that claims to be about NOIRQ PM helper?
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_path.c b/drivers/net/ethernet/mediatek/mtk_eth_path.c
-index 317e447f49916..34ac492e047cb 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_path.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_path.c
-@@ -15,10 +15,10 @@
- struct mtk_eth_muxc {
- 	const char	*name;
- 	int		cap_bit;
--	int		(*set_path)(struct mtk_eth *eth, int path);
-+	int		(*set_path)(struct mtk_eth *eth, u64 path);
- };
- 
--static const char *mtk_eth_path_name(int path)
-+static const char *mtk_eth_path_name(u64 path)
- {
- 	switch (path) {
- 	case MTK_ETH_PATH_GMAC1_RGMII:
-@@ -40,7 +40,7 @@ static const char *mtk_eth_path_name(int path)
- 	}
- }
- 
--static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, int path)
-+static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, u64 path)
- {
- 	bool updated = true;
- 	u32 val, mask, set;
-@@ -71,7 +71,7 @@ static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, int path)
- 	return 0;
- }
- 
--static int set_mux_gmac2_gmac0_to_gephy(struct mtk_eth *eth, int path)
-+static int set_mux_gmac2_gmac0_to_gephy(struct mtk_eth *eth, u64 path)
- {
- 	unsigned int val = 0;
- 	bool updated = true;
-@@ -94,7 +94,7 @@ static int set_mux_gmac2_gmac0_to_gephy(struct mtk_eth *eth, int path)
- 	return 0;
- }
- 
--static int set_mux_u3_gmac2_to_qphy(struct mtk_eth *eth, int path)
-+static int set_mux_u3_gmac2_to_qphy(struct mtk_eth *eth, u64 path)
- {
- 	unsigned int val = 0, mask = 0, reg = 0;
- 	bool updated = true;
-@@ -125,7 +125,7 @@ static int set_mux_u3_gmac2_to_qphy(struct mtk_eth *eth, int path)
- 	return 0;
- }
- 
--static int set_mux_gmac1_gmac2_to_sgmii_rgmii(struct mtk_eth *eth, int path)
-+static int set_mux_gmac1_gmac2_to_sgmii_rgmii(struct mtk_eth *eth, u64 path)
- {
- 	unsigned int val = 0;
- 	bool updated = true;
-@@ -163,7 +163,7 @@ static int set_mux_gmac1_gmac2_to_sgmii_rgmii(struct mtk_eth *eth, int path)
- 	return 0;
- }
- 
--static int set_mux_gmac12_to_gephy_sgmii(struct mtk_eth *eth, int path)
-+static int set_mux_gmac12_to_gephy_sgmii(struct mtk_eth *eth, u64 path)
- {
- 	unsigned int val = 0;
- 	bool updated = true;
-@@ -218,7 +218,7 @@ static const struct mtk_eth_muxc mtk_eth_muxc[] = {
- 	},
- };
- 
--static int mtk_eth_mux_setup(struct mtk_eth *eth, int path)
-+static int mtk_eth_mux_setup(struct mtk_eth *eth, u64 path)
- {
- 	int i, err = 0;
- 
-@@ -249,7 +249,7 @@ static int mtk_eth_mux_setup(struct mtk_eth *eth, int path)
- 
- int mtk_gmac_sgmii_path_setup(struct mtk_eth *eth, int mac_id)
- {
--	int path;
-+	u64 path;
- 
- 	path = (mac_id == 0) ?  MTK_ETH_PATH_GMAC1_SGMII :
- 				MTK_ETH_PATH_GMAC2_SGMII;
-@@ -260,7 +260,7 @@ int mtk_gmac_sgmii_path_setup(struct mtk_eth *eth, int mac_id)
- 
- int mtk_gmac_gephy_path_setup(struct mtk_eth *eth, int mac_id)
- {
--	int path = 0;
-+	u64 path = 0;
- 
- 	if (mac_id == 1)
- 		path = MTK_ETH_PATH_GMAC2_GEPHY;
-@@ -274,7 +274,7 @@ int mtk_gmac_gephy_path_setup(struct mtk_eth *eth, int mac_id)
- 
- int mtk_gmac_rgmii_path_setup(struct mtk_eth *eth, int mac_id)
- {
--	int path;
-+	u64 path;
- 
- 	path = (mac_id == 0) ?  MTK_ETH_PATH_GMAC1_RGMII :
- 				MTK_ETH_PATH_GMAC2_RGMII;
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 2810c250ae9a6..8d8601e553478 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -866,41 +866,41 @@ enum mkt_eth_capabilities {
- };
- 
- /* Supported hardware group on SoCs */
--#define MTK_RGMII		BIT(MTK_RGMII_BIT)
--#define MTK_TRGMII		BIT(MTK_TRGMII_BIT)
--#define MTK_SGMII		BIT(MTK_SGMII_BIT)
--#define MTK_ESW			BIT(MTK_ESW_BIT)
--#define MTK_GEPHY		BIT(MTK_GEPHY_BIT)
--#define MTK_MUX			BIT(MTK_MUX_BIT)
--#define MTK_INFRA		BIT(MTK_INFRA_BIT)
--#define MTK_SHARED_SGMII	BIT(MTK_SHARED_SGMII_BIT)
--#define MTK_HWLRO		BIT(MTK_HWLRO_BIT)
--#define MTK_SHARED_INT		BIT(MTK_SHARED_INT_BIT)
--#define MTK_TRGMII_MT7621_CLK	BIT(MTK_TRGMII_MT7621_CLK_BIT)
--#define MTK_QDMA		BIT(MTK_QDMA_BIT)
--#define MTK_SOC_MT7628		BIT(MTK_SOC_MT7628_BIT)
--#define MTK_RSTCTRL_PPE1	BIT(MTK_RSTCTRL_PPE1_BIT)
--#define MTK_U3_COPHY_V2		BIT(MTK_U3_COPHY_V2_BIT)
-+#define MTK_RGMII		BIT_ULL(MTK_RGMII_BIT)
-+#define MTK_TRGMII		BIT_ULL(MTK_TRGMII_BIT)
-+#define MTK_SGMII		BIT_ULL(MTK_SGMII_BIT)
-+#define MTK_ESW			BIT_ULL(MTK_ESW_BIT)
-+#define MTK_GEPHY		BIT_ULL(MTK_GEPHY_BIT)
-+#define MTK_MUX			BIT_ULL(MTK_MUX_BIT)
-+#define MTK_INFRA		BIT_ULL(MTK_INFRA_BIT)
-+#define MTK_SHARED_SGMII	BIT_ULL(MTK_SHARED_SGMII_BIT)
-+#define MTK_HWLRO		BIT_ULL(MTK_HWLRO_BIT)
-+#define MTK_SHARED_INT		BIT_ULL(MTK_SHARED_INT_BIT)
-+#define MTK_TRGMII_MT7621_CLK	BIT_ULL(MTK_TRGMII_MT7621_CLK_BIT)
-+#define MTK_QDMA		BIT_ULL(MTK_QDMA_BIT)
-+#define MTK_SOC_MT7628		BIT_ULL(MTK_SOC_MT7628_BIT)
-+#define MTK_RSTCTRL_PPE1	BIT_ULL(MTK_RSTCTRL_PPE1_BIT)
-+#define MTK_U3_COPHY_V2		BIT_ULL(MTK_U3_COPHY_V2_BIT)
- 
- #define MTK_ETH_MUX_GDM1_TO_GMAC1_ESW		\
--	BIT(MTK_ETH_MUX_GDM1_TO_GMAC1_ESW_BIT)
-+	BIT_ULL(MTK_ETH_MUX_GDM1_TO_GMAC1_ESW_BIT)
- #define MTK_ETH_MUX_GMAC2_GMAC0_TO_GEPHY	\
--	BIT(MTK_ETH_MUX_GMAC2_GMAC0_TO_GEPHY_BIT)
-+	BIT_ULL(MTK_ETH_MUX_GMAC2_GMAC0_TO_GEPHY_BIT)
- #define MTK_ETH_MUX_U3_GMAC2_TO_QPHY		\
--	BIT(MTK_ETH_MUX_U3_GMAC2_TO_QPHY_BIT)
-+	BIT_ULL(MTK_ETH_MUX_U3_GMAC2_TO_QPHY_BIT)
- #define MTK_ETH_MUX_GMAC1_GMAC2_TO_SGMII_RGMII	\
--	BIT(MTK_ETH_MUX_GMAC1_GMAC2_TO_SGMII_RGMII_BIT)
-+	BIT_ULL(MTK_ETH_MUX_GMAC1_GMAC2_TO_SGMII_RGMII_BIT)
- #define MTK_ETH_MUX_GMAC12_TO_GEPHY_SGMII	\
--	BIT(MTK_ETH_MUX_GMAC12_TO_GEPHY_SGMII_BIT)
-+	BIT_ULL(MTK_ETH_MUX_GMAC12_TO_GEPHY_SGMII_BIT)
- 
- /* Supported path present on SoCs */
--#define MTK_ETH_PATH_GMAC1_RGMII	BIT(MTK_ETH_PATH_GMAC1_RGMII_BIT)
--#define MTK_ETH_PATH_GMAC1_TRGMII	BIT(MTK_ETH_PATH_GMAC1_TRGMII_BIT)
--#define MTK_ETH_PATH_GMAC1_SGMII	BIT(MTK_ETH_PATH_GMAC1_SGMII_BIT)
--#define MTK_ETH_PATH_GMAC2_RGMII	BIT(MTK_ETH_PATH_GMAC2_RGMII_BIT)
--#define MTK_ETH_PATH_GMAC2_SGMII	BIT(MTK_ETH_PATH_GMAC2_SGMII_BIT)
--#define MTK_ETH_PATH_GMAC2_GEPHY	BIT(MTK_ETH_PATH_GMAC2_GEPHY_BIT)
--#define MTK_ETH_PATH_GDM1_ESW		BIT(MTK_ETH_PATH_GDM1_ESW_BIT)
-+#define MTK_ETH_PATH_GMAC1_RGMII	BIT_ULL(MTK_ETH_PATH_GMAC1_RGMII_BIT)
-+#define MTK_ETH_PATH_GMAC1_TRGMII	BIT_ULL(MTK_ETH_PATH_GMAC1_TRGMII_BIT)
-+#define MTK_ETH_PATH_GMAC1_SGMII	BIT_ULL(MTK_ETH_PATH_GMAC1_SGMII_BIT)
-+#define MTK_ETH_PATH_GMAC2_RGMII	BIT_ULL(MTK_ETH_PATH_GMAC2_RGMII_BIT)
-+#define MTK_ETH_PATH_GMAC2_SGMII	BIT_ULL(MTK_ETH_PATH_GMAC2_SGMII_BIT)
-+#define MTK_ETH_PATH_GMAC2_GEPHY	BIT_ULL(MTK_ETH_PATH_GMAC2_GEPHY_BIT)
-+#define MTK_ETH_PATH_GDM1_ESW		BIT_ULL(MTK_ETH_PATH_GDM1_ESW_BIT)
- 
- #define MTK_GMAC1_RGMII		(MTK_ETH_PATH_GMAC1_RGMII | MTK_RGMII)
- #define MTK_GMAC1_TRGMII	(MTK_ETH_PATH_GMAC1_TRGMII | MTK_TRGMII)
-@@ -1045,7 +1045,7 @@ struct mtk_reg_map {
- struct mtk_soc_data {
- 	const struct mtk_reg_map *reg_map;
- 	u32             ana_rgc3;
--	u32		caps;
-+	u64		caps;
- 	u32		required_clks;
- 	bool		required_pctl;
- 	u8		offload_version;
--- 
-2.41.0
+FWIW
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+
+> ---
+>  drivers/pinctrl/intel/pinctrl-baytrail.c | 11 +++--------
+>  1 file changed, 3 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/intel/pinctrl-baytrail.c b/drivers/pinctrl/intel/pinctrl-baytrail.c
+> index 27aef62fc7c0..66aabac6be9c 100644
+> --- a/drivers/pinctrl/intel/pinctrl-baytrail.c
+> +++ b/drivers/pinctrl/intel/pinctrl-baytrail.c
+> @@ -1733,7 +1733,6 @@ static int byt_pinctrl_probe(struct platform_device *pdev)
+>  	return 0;
+>  }
+>  
+> -#ifdef CONFIG_PM_SLEEP
+>  static int byt_gpio_suspend(struct device *dev)
+>  {
+>  	struct intel_pinctrl *vg = dev_get_drvdata(dev);
+> @@ -1817,9 +1816,7 @@ static int byt_gpio_resume(struct device *dev)
+>  	raw_spin_unlock_irqrestore(&byt_lock, flags);
+>  	return 0;
+>  }
+> -#endif
+>  
+> -#ifdef CONFIG_PM
+>  static int byt_gpio_runtime_suspend(struct device *dev)
+>  {
+>  	return 0;
+> @@ -1829,19 +1826,17 @@ static int byt_gpio_runtime_resume(struct device *dev)
+>  {
+>  	return 0;
+>  }
+> -#endif
+>  
+>  static const struct dev_pm_ops byt_gpio_pm_ops = {
+> -	SET_LATE_SYSTEM_SLEEP_PM_OPS(byt_gpio_suspend, byt_gpio_resume)
+> -	SET_RUNTIME_PM_OPS(byt_gpio_runtime_suspend, byt_gpio_runtime_resume,
+> -			   NULL)
+> +	LATE_SYSTEM_SLEEP_PM_OPS(byt_gpio_suspend, byt_gpio_resume)
+> +	RUNTIME_PM_OPS(byt_gpio_runtime_suspend, byt_gpio_runtime_resume, NULL)
+>  };
+>  
+>  static struct platform_driver byt_gpio_driver = {
+>  	.probe          = byt_pinctrl_probe,
+>  	.driver         = {
+>  		.name			= "byt_gpio",
+> -		.pm			= &byt_gpio_pm_ops,
+> +		.pm			= pm_ptr(&byt_gpio_pm_ops),
+>  		.acpi_match_table	= byt_gpio_acpi_match,
+>  		.suppress_bind_attrs	= true,
+>  	},
+
 
