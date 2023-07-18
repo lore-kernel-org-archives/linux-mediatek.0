@@ -4,88 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B11B4EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:03:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8DC2EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:05:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XKiYWZdsKxeZoIlWBn6AT0ci7mAfahJFtV+A7m2aWb4=; b=1viTxG3zCvitbyPq9pEiq6NgfK
-	GgCYuD1Zub19gX8IJS+7Lb5Z7wc2rZEWKg4IVtPhcI4aHyerhCS6PnELX7tOcxZTTWn7v/oGA5LGY
-	Rka6q4Q/art8QqX8DpY51MUZO9gnlYa5VgUXiG/vNbHPiwgiRk776YIkQ5QsqDon3fkPe7lKkqUXB
-	9eM89SQkc83fvG636BzUtuTRLAhQw0qCXwrzUd6mla6nyYNJZ5DQMLmibFVR7VGcJ5PVvyXUbcIVt
-	6xNGd29qRTKqrgW6bG/yQgj35Yyo9RG7tWjTXUoD/sYq+WyT5c0h1VLHtpf4TTxxy6P7vjjJqX09N
-	Ht5PoWig==;
+	bh=AfYFC820D1pbCMtZYZeXrcP8yknUOsnJ9X0l99RKhzM=; b=BIMvVZe5nUvURBIkJq76hNpx4U
+	aSFfShRCi5eS4HN2IGIhjGEKvIUS69TEh/sjStsM0RtQTqEJQW77enYT9XQhZ2HaF5nnce+j8xcTP
+	xJgGmNIaenMeaiFdnHJrBbaLEzYpWjAiXxpdk5bCxyjcgdbaULDtbN/gsWGPlIsjCvtsCzIE14W2N
+	udzOFrNRAAWFXtY+8yv1uPVkENuYcD6qOi3sk3cXDPe3WJBbUhq/F93IQR936oTKB90jPrTdwqlSt
+	8EU9juvoVkqTTBFMzXc53Brxbh6xdWue02h7ZNU+kyMzOjX5vZiZo7jZAz3+uJTYXq4iYZXlCvmwF
+	FMN+hNZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0Hf-005Wwb-23;
-	Wed, 19 Jul 2023 06:03:35 +0000
+	id 1qM0JK-005XUa-1F;
+	Wed, 19 Jul 2023 06:05:18 +0000
 Received: from desiato.infradead.org ([90.155.92.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0Hd-005Wvh-1q;
-	Wed, 19 Jul 2023 06:03:33 +0000
+	id 1qM0JH-005XT6-07;
+	Wed, 19 Jul 2023 06:05:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:From:Date:
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=XKiYWZdsKxeZoIlWBn6AT0ci7mAfahJFtV+A7m2aWb4=; b=br71az7Qz5OHJ/uIkiqUQpOF4a
-	1JAZ33ZSC5XjqCyBptDgBOgUiBDRFMbWs81DZVP/fhD/G09RfiED3cjXYZPx15lhub/inI6WaH/rl
-	3UcL28rwC9dUZ307K3TqXTo13XtGLBYEhTQcciPlMcO1fkYP1JdC4vYZfPSOl+gZSdLBrR08Njmhm
-	b0PgoRNKa5T0RBimh5Nse+HXtyLFoa8fl4p26fF0Ia6oC64FgfgEGxA/Q8OF8mq8+y8bYQqnMvbFZ
-	K2Usyj57YFPiFm6cX2haXpHHkSSe8T3qPAXe9g2w7kCXJ8NnQ09cSS8AT8F0gudhFM8SPYQDkSf4t
-	7sXxM4xg==;
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+	bh=AfYFC820D1pbCMtZYZeXrcP8yknUOsnJ9X0l99RKhzM=; b=SejWfNIypGD+M5IwBgjIwm1T48
+	UySmEOtCX470evRTmq2WmhzmbQdFszFvLg2RB1KKhF7lo/QxQ1vTA3qzAgG7fmhSWvuw4nA7GQDed
+	pSsdS4GiEkqLiqdWdGxec403z70bf2fKqCo1nB37Hw0k83k0+mSBiZ+5q1bqiJvAbrAZ5FJNo8j+B
+	Yfpqs5LfA56XnndeuFA1T66XM6blWWXu7TOxP3lmCKspgNCa3OMuiZseOv30wxOSnQCclq+wefvOF
+	az/bxtadtOW4RhJpioPTCjIImhTPwhvMId5N2AKIALe0++0OHhhVtUvC/19up56qePISrDFR5P4k5
+	CJZVyefQ==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLhbq-00BOlc-1m;
-	Tue, 18 Jul 2023 10:07:12 +0000
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.201])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4R4vdp31L5z6D8ZD;
-	Tue, 18 Jul 2023 18:02:54 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Tue, 18 Jul
- 2023 11:06:51 +0100
-Date: Tue, 18 Jul 2023 11:06:50 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-CC: Mika Westerberg <mika.westerberg@linux.intel.com>, Linus Walleij
-	<linus.walleij@linaro.org>, Balsam CHIHI <bchihi@baylibre.com>, "Claudiu
- Beznea" <claudiu.beznea@microchip.com>, Geert Uytterhoeven
-	<geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Thierry Reding <thierry.reding@gmail.com>, Paul Cercueil
-	<paul@crapouillou.net>, <linux-gpio@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-renesas-soc@vger.kernel.org>,
-	<linux-tegra@vger.kernel.org>, <linux-pm@vger.kernel.org>, Andy Shevchenko
-	<andy@kernel.org>, Andrew Lunn <andrew@lunn.ch>, Alexandre Belloni
-	<alexandre.belloni@bootlin.com>, Len Brown <len.brown@intel.com>, "Rafael J.
- Wysocki" <rafael@kernel.org>, Gregory Clement <gregory.clement@bootlin.com>,
-	Sean Wang <sean.wang@kernel.org>, "Jonathan Hunter" <jonathanh@nvidia.com>,
-	Ludovic Desroches <ludovic.desroches@microchip.com>, Pavel Machek
-	<pavel@ucw.cz>, "Matthias Brugger" <matthias.bgg@gmail.com>, Sebastian
- Hesselbarth <sebastian.hesselbarth@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 06/10] pinctrl: at91: Switch to use
- DEFINE_NOIRQ_DEV_PM_OPS() helper
-Message-ID: <20230718110650.00002f1c@Huawei.com>
-In-Reply-To: <20230717172821.62827-7-andriy.shevchenko@linux.intel.com>
-References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
-	<20230717172821.62827-7-andriy.shevchenko@linux.intel.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+	id 1qLnTq-00Bkox-1M;
+	Tue, 18 Jul 2023 16:23:20 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 583146167A;
+	Tue, 18 Jul 2023 16:22:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE1FEC433CB;
+	Tue, 18 Jul 2023 16:22:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689697365;
+	bh=LTwHVSHoaSY0tlwADIKNZZi0zXhTwVVUMhY+CaieK9k=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=tYyRPzjcP/blsFXVIkoMhFfiWwoiKxiqpWe4Q7Ru8t6qZHyBK70jkwM4aOI/VWmi6
+	 tzCrBR0K6oN6zG/6g1YLsjNLkVCgxEP6hj95cauURLHV+XpSENn9fWVyYhdQeFAZmM
+	 7vJyS+sb6E4/kanecZPhRtT5DK8pQouPIlx8NjXNh0qLTNx0wiHxtPr+cqjmTZNDvY
+	 EtEts9aaCRP7QIstsaZShNP6DNG0zNogM1uxdtQIUzxb37C473mA1SjtPnixZhm2Qd
+	 WAagwGDbjkVLuqzl3RETia988eJnBp36/QdkDyf2zIpRv5R/sgF6TWZBAdNum3F3LP
+	 SEXvXPa5ZiJ/Q==
+Received: by mail-lj1-f180.google.com with SMTP id 38308e7fff4ca-2b946602d64so32377641fa.0;
+        Tue, 18 Jul 2023 09:22:45 -0700 (PDT)
+X-Gm-Message-State: ABy/qLYBTgB9zlkzH5R+GSLfPplynArsGYP9xKX5lV9MSbB0UdaZ6TAf
+	NYB6NVFRXsHI7fZRlmL7jLs6xJmHjz76WE2Xaw==
+X-Google-Smtp-Source: APBJJlErUqDENNI/5mOg1Ib0IoWsKzMqqGjhDh5AeFCFGhdxHxjAXyO701/QGQfWI6nmT6Ma2dedRQR82oM1goiArg8=
+X-Received: by 2002:a2e:3618:0:b0:2b6:ddab:506a with SMTP id
+ d24-20020a2e3618000000b002b6ddab506amr11118264lja.34.1689697363824; Tue, 18
+ Jul 2023 09:22:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100003.china.huawei.com (7.191.160.210) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
+References: <20230626221005.3946136-1-robh@kernel.org>
+In-Reply-To: <20230626221005.3946136-1-robh@kernel.org>
+From: Rob Herring <robh@kernel.org>
+Date: Tue, 18 Jul 2023 10:22:31 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqLGULS8nrzSHGUJhGzEVaMB+hn6_XEHmSWb3tBHmo6tPA@mail.gmail.com>
+Message-ID: <CAL_JsqLGULS8nrzSHGUJhGzEVaMB+hn6_XEHmSWb3tBHmo6tPA@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: Fix "status" values
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_110710_789726_79D39374 
-X-CRM114-Status: UNSURE (   5.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230718_172318_703395_5942E3CF 
+X-CRM114-Status: GOOD (  16.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,12 +98,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 17 Jul 2023 20:28:17 +0300
-Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
+On Mon, Jun 26, 2023 at 4:10=E2=80=AFPM Rob Herring <robh@kernel.org> wrote=
+:
+>
+> The defined value for "status" is "disabled", not "disable".
+>
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-> Since pm.h provides a helper for system no-IRQ PM callbacks,
-> switch the driver to use it instead of open coded variant.
-> 
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Ping!
+
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/a=
+rch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> index e4605d23fdc8..86cedb0bf1a9 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> @@ -585,11 +585,11 @@ &pwrap {
+>  };
+>
+>  &sata {
+> -       status =3D "disable";
+> +       status =3D "disabled";
+>  };
+>
+>  &sata_phy {
+> -       status =3D "disable";
+> +       status =3D "disabled";
+>  };
+>
+>  &spi0 {
+> --
+> 2.40.1
+>
 
