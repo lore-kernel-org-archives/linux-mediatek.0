@@ -4,90 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D84C2EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:37:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F58EEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:39:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tdlBUHWUDeKcYw0WXmCHBGLh8IA7flKlmSo8k4y0V60=; b=jDElH8yE5/+JbtdiOboqMetiuU
-	BhRheLhJ4hJKkLKlyCe6PS7foo3Ve4y5pTg7nCP1Wik5zbQ3C1XMEWOrXlFTv808YON4xqlRUAuC7
-	uidNfSbVtCMFIN2ZDnDQC+YEuTqpqY9YHf7Il3S9fJ/tcEQq+8vmpnQf23Rn1Mn6BnnGiIJLVCHFM
-	zziUcDfelk079TVprXXDDPI1UZUkGYrMAnwRzjwZBsvUW6r7lqXyPGLWbUzA4Y5ibh/Ct3PutkEIU
-	oNvnLK6CqQVdsChsUHdB5pQlGXCSZL4XCN9ZRDkvTGBTkcQZu7amDhg1zCycdLTTHG4Bz3X6/3xUV
-	/nEQ8wUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cVSJ+GUtgjM/9lYbCvuJW6/WEZea92X8iN9RA0/Xmkc=; b=1WeI5n5wRlqobnQPicdcrTx8Qy
+	6KG/jMbCtaRwpNLr9//q/6WZfyAQlM5YYwDpu4u9GSGxt5qCtGJvpk0gdyQ/yHZFd18Z4MV/J3Kfv
+	tmSxl9KiZyADfUsMlTOiDH7xiF+mLxi4rUdECMVqdWd4dkthyhtA3xrtK/VPTajuIQ/uOaEyOO3ry
+	B0Uas8jLUPgbba3EXJpvD3djhZqtP1EXcLOHtEAKJs8DwWyLEBz834ZHyjkMn/HRwz2YURj5ZEvI8
+	l5kgcNKi7Z8sv845o6ymqlyUS1Y4TTh1O6AcEi/7Bzc/G48MfDV8q7mP4+S9cJtWfbJ1WTnxuuvNG
+	Mx/KmswA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzrz-005M0M-2J;
-	Wed, 19 Jul 2023 05:37:03 +0000
+	id 1qLzuW-005N0W-0d;
+	Wed, 19 Jul 2023 05:39:40 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzry-005Lzh-2O
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 19 Jul 2023 05:37:02 +0000
+	id 1qLzuU-005Mzy-2X;
+	Wed, 19 Jul 2023 05:39:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=tdlBUHWUDeKcYw0WXmCHBGLh8IA7flKlmSo8k4y0V60=; b=qSfzccuzCi9H/ZDUnapggv1SG9
-	H24ntT0rzIaBi0SqTn5lXY8tOmFgIcllC0ceFgCdzLkX+y+sqUIfHXVZHmv5AsE03VP9A7Z3xF+Yi
-	lAW8Hqg9zELBmUa9dfMm2DBhx5IWELGQ5MCwkC9ZbwKnmIUeNnL/KjWDOklBfGToig3EXThA7s+SO
-	9yb5o8JdIbM5kJmJ4zhg+ray7vy1HFyTPW0ZkFL9UrYdsZGkykZX7E+UbU4k2WZgx6VhIWT5kIela
-	k7SaBnw5blHdt9xOW0Byv5OB8TlTDSSqD52kOUpMB0Lw+FSV33ZZq4TnGAY2+whaNr5GmwFApvMRD
-	yAJxBPKQ==;
-Received: from smtp-27.smtpout.orange.fr ([80.12.242.27] helo=smtp.smtpout.orange.fr)
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=cVSJ+GUtgjM/9lYbCvuJW6/WEZea92X8iN9RA0/Xmkc=; b=d8i9tHtzB8hgYOez+3awxgv8vu
+	XUE//q5qnKCcRjhWEZLamcmqwSV34INx3ZAdWxtP8CNONowyjO1ExQcHQOF5ebDdMU/jGAqPFCIOV
+	sEsocjLr+btA+cnxvpJWDeqSFo279LvwABeTJdv3MokYvdu8tzaV9M07MkR1lfAFvnWhJVGWAgNsa
+	KXv8U4Y8KxxdEvjM1TCC8qgO2WuBQScjZcnOX/5xUhAI6bGnZq5XgszqbEvSc6alWfDWXnxBexbKk
+	C5rH1lOpdpn1Tl36VgYMy4UpW0a2V/8EQcDm2t2ILOef2UIgJItoL8Nt/j22glaPMQ69iZW718rNT
+	egUiHHtg==;
+Received: from mga04.intel.com ([192.55.52.120])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLpj8-00BsxF-2b
-	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Jul 2023 18:47:17 +0000
-Received: from [192.168.1.18] ([86.243.2.178])
-	by smtp.orange.fr with ESMTPA
-	id LpbhqgTmDgEYrLpbhqs7UZ; Tue, 18 Jul 2023 20:39:42 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1689705582;
-	bh=tdlBUHWUDeKcYw0WXmCHBGLh8IA7flKlmSo8k4y0V60=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=ZQcVTd5KpaeF4EOE+fysig0lBxjfUmgJO3PowpFkNTGclDydzH+tYki8gEi+Imi5u
-	 GkIbpmer1NKaH9M0eWIT1ZN2NADE/n9oQfzomnZbCavOjN5nNUqy0UpIEHc5n8Q1vg
-	 5fq4ctk6/ZQ2JbRENF82CDW+oSr+cPd+noFMKqSeCxM7jysC5pbssV5dXpesa3A5pi
-	 2ILIlsUoiO61Bq59piNwXMNArZnQ/2s6sz4a4qynqKcYOe9d5BycztLKblt7MlhLcs
-	 VN1maZ3TcEOlXqOEKaF6s1+J/Qm86/IMmb0MrsGAuuFsuVxP6EamKutSk9sms1MJXR
-	 iAPTcIILmSPGg==
-X-ME-Helo: [192.168.1.18]
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Tue, 18 Jul 2023 20:39:42 +0200
-X-ME-IP: 86.243.2.178
-Message-ID: <60305a76-4e41-8e51-a394-dc55c0ba05da@wanadoo.fr>
-Date: Tue, 18 Jul 2023 20:39:32 +0200
+	id 1qLl6o-00BaZf-1A;
+	Tue, 18 Jul 2023 13:51:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1689688282; x=1721224282;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Z280C0QnfRU4Fge1sZLeOEz0ioQaTHytM42PyAGyTZA=;
+  b=NKh1wzEuKCsey+xNgnKfcMyivWWc9wIXaqqRLuwlHZn8hHjvQMWdfrs7
+   zIOeyaTc/qPzS0b+3wWG6u/QpDtAOZzSjX7QXiUale5DcU7rdO1DG+VcI
+   CJV8N9oURtzjAO5RCCxRX7g6D5f58kXMhrXhbEB5xqzRpj5YOSau/b0Dv
+   HAx98noIZOfKT17mizofnQtZMLd10EnnIXcDDbLD1NbVJHkS0dhTNTSYO
+   dVy1US5QeKmG7LsLbwV45zqo8jmiE/bUVan2kebjI8jTthf4bebNJqMqs
+   z9KZrur8v0KnVyVzLsTfwT1aX+VnotI5TJBW8Jh4BljraLGTFRmtcfAP6
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10775"; a="365087315"
+X-IronPort-AV: E=Sophos;i="6.01,214,1684825200"; 
+   d="scan'208";a="365087315"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2023 06:50:51 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10775"; a="700903622"
+X-IronPort-AV: E=Sophos;i="6.01,214,1684825200"; 
+   d="scan'208";a="700903622"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orsmga006.jf.intel.com with ESMTP; 18 Jul 2023 06:50:45 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.96)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1qLl6A-00Fp8w-0P;
+	Tue, 18 Jul 2023 16:50:42 +0300
+Date: Tue, 18 Jul 2023 16:50:41 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Mika Westerberg <mika.westerberg@linux.intel.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Balsam CHIHI <bchihi@baylibre.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Paul Cercueil <paul@crapouillou.net>, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org, linux-tegra@vger.kernel.org,
+	linux-pm@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Len Brown <len.brown@intel.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Ludovic Desroches <ludovic.desroches@microchip.com>,
+	Pavel Machek <pavel@ucw.cz>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 02/10] pinctrl: baytrail: Make use of pm_ptr()
+Message-ID: <ZLaYsdwnqj1ef3o6@smile.fi.intel.com>
+References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
+ <20230717172821.62827-3-andriy.shevchenko@linux.intel.com>
+ <20230718105322.000074ca@Huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH] media: mediatek: vcodec: Fix an error handling path in
- vdec_msg_queue_init()
-Content-Language: fr, en-US
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-kernel@vger.kernel.org,
- kernel-janitors@vger.kernel.org, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <efa0d4910998931a2ec9d933117fa71482d7b33a.1689624542.git.christophe.jaillet@wanadoo.fr>
- <1dcd0fab-eee3-4693-a7d2-4a72baef5c97@kadam.mountain>
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-In-Reply-To: <1dcd0fab-eee3-4693-a7d2-4a72baef5c97@kadam.mountain>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230718105322.000074ca@Huawei.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_194715_135416_B4274A5B 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20230718_145122_939690_4E1A325B 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,28 +121,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le 18/07/2023 à 08:58, Dan Carpenter a écrit :
-> On Mon, Jul 17, 2023 at 10:09:19PM +0200, Christophe JAILLET wrote:
->> All errors go to the error handling path, except this one. Be consistent
->> and also branch to it.
->>
->> Fixes: 2f5d0aef37c6 ("media: mediatek: vcodec: support stateless AV1 decoder")
->> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
->> ---
+On Tue, Jul 18, 2023 at 10:53:22AM +0100, Jonathan Cameron wrote:
+> On Mon, 17 Jul 2023 20:28:13 +0300
+> Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
 > 
-> I sent this one a month ago but it hasn't been applied.
+> > Cleaning up the driver to use pm_ptr() and *_PM_OPS() macros that
+> > make it simpler and allows the compiler to remove those functions
+> > if built without CONFIG_PM and CONFIG_PM_SLEEP support.
+> > 
+> > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 > 
-> https://lore.kernel.org/all/b8948d9a-65bc-4f3f-aa90-60addd064819@moroto.mountain/
-> 
-> regards,
-> dan carpenter
-> 
-> 
+> LGTM but why is it in a set that claims to be about NOIRQ PM helper?
 
-Hi Dan,
+Have you chance to read a cover letter? I explained that I added them as
+they are "kinda" to the topic (PM related).
 
-your patch is better than mine.
-Less verbose and more complete.
+I can apply them and drop for next version.
 
-CJ
+Thank you for the review!
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
