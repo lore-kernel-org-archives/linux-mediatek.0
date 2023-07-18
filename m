@@ -4,106 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04CCEC0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:59:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 706CBC0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:59:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NYJ6kOFjamhBvRAj7/wxocueNoAM4M+pGSMxfmWyQFo=; b=Q7LLSZbR0CRDb+S+w49wFGyv6J
-	lV2I/gu5qQsN/SkDhXziy9kCkHMdJ7LcBreRaumeOq+dpRj9xkXCvfiMGYjn4XipZ9SUzgQs0bU24
-	AkDV3oZ6w6h85rNbQrDESQDQIYVfptnggueqhgGCasfySKfGa961lf5k73rFTnjKDAqzD3Sd5GZIa
-	flOgzCdrz4ikjgdHqY7xLZW3hUTxK1kc2lmQOI3DbpUv/l5lsNrpzhRyfV2eo7AFE2KFMRo+ix9Wp
-	AXCpFyo+XqIASdQ2c8MbsQAAABE8thsErBYFPZD3eH78Xmqs/HDC2K6sbo/IN2t+hQmfdVHqXbjAq
-	Ew0QpkGA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=746J88w5LASN4k5pDaTDB470esrzjAqjGHg9hOWvxnQ=; b=Uxc0jHdU78FpLLCYj0oNax0Vlp
+	nZb14kxeUglFeflq/qc6VtUk6AGyZBjzawSulKSLgw7yykoe0B8xT0cZNtCXdY82DCq/CIE4mKWiT
+	HeIgZoh/urN0gcqtViadp5YAyOPy0IGBZchxaDSkRhErDNKdkyySLn+/9h8BQsCyC+ICVqQLD3YQO
+	hhVYNlmgQKIDjssIsxCchcmfuSoaLiIe/hj5whkl3+Cm0CULqSMkPCI3mh4zWB3fpT/dnIrXFoCZi
+	ZhHYln7VUZf+BaDQMwEJzaeaEa8zk+lMOJAOlioCL3NEafuReYz7G+psJW3WSyydyNATUJGymsz0b
+	ML5Wc7mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0DS-005Ufw-1W;
-	Wed, 19 Jul 2023 05:59:14 +0000
+	id 1qM0Dt-005Uxu-3D;
+	Wed, 19 Jul 2023 05:59:42 +0000
 Received: from desiato.infradead.org ([90.155.92.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0DP-005Ucu-0W;
-	Wed, 19 Jul 2023 05:59:11 +0000
+	id 1qM0Dr-005UwA-2I;
+	Wed, 19 Jul 2023 05:59:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=NYJ6kOFjamhBvRAj7/wxocueNoAM4M+pGSMxfmWyQFo=; b=nqBsaxuub1/JYmTdYIsG0F6WTq
-	b1Va90RzcRA96QdbNiBKUfsNo2Qqjljl1sK7jOjwFLi+pNBAVVpmgY8LCDqlvRHRSTplOo0auEt29
-	yz72bafW1ww66Cn+A30+IDeUQcw9xtp/bSAYbP9/+6+ff5iU+8ZKCZg+im6WuBCFuMb/pVZRArTCT
-	9o2T4p0n2jFFYZM0u/Ymnkhscw9jJrQdE5OJyKh/RfdHzpO9QBPyV/y+3y4Wl8uyd9NAXgFBiFr3V
-	SR4iP9j78EHJPaBgj7Nm4p+fIDGBqZpb9fBI3duu9MnCRWfX/nmo/CQbKZzI+nKq0PpIcGsCr/+6Z
-	C8vkaiGA==;
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=746J88w5LASN4k5pDaTDB470esrzjAqjGHg9hOWvxnQ=; b=hZwWNE51LgS69Bnt0tStheJupF
+	zlHHXSohu4dpWZJrW51UDVOmRW76na4RR4BBj9dA7p0LmTz8786iP/ZhhtvkYH4AMOBnpk5tFWO7V
+	ms7zUtMI6f5OC3arhuzA9VeibqGwK6CL7P3HTZJ6k0Z21b4VwgPaSXDu2yLn5lVDTxrxjFMI1c+j+
+	X4RJoB74XlIn0xKx++a0683KV4cNAPTRgKoZpqKvez/+BgKpMEHLZcL31/SjU8kXtkkrUz7mdT4+u
+	Alu0f2HEgepRjNk7koD76yymUJZG/AUz2ZdvOVFcVsDkV/seDOOzOtdfvHxrv5hJKJH6fE055wfzX
+	vpOg6/hA==;
+Received: from out30-118.freemail.mail.aliyun.com ([115.124.30.118])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLU2b-009FL8-1G;
-	Mon, 17 Jul 2023 19:38:02 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-9939fbb7191so1009632166b.0;
-        Mon, 17 Jul 2023 12:37:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1689622552; x=1692214552;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=NYJ6kOFjamhBvRAj7/wxocueNoAM4M+pGSMxfmWyQFo=;
-        b=PIP2Rn6tpp78cegzxLwoIVwZ4FoBHshqHfqr5nt5sFzhQBvh53GF/tVZ6bCY4fOp/5
-         KetATrSe/jBBRw8duCXzr0oy0PkUOSeVKHyxaTYZY3cg3IEcD4wp68j156/IDK7juTqa
-         PUQQSHBBwReNEkc4GfkEqyqyUQbnEzxSq4K3Oj8piOrGRe4QbZF6bCw6SYmY93TDBJnm
-         9LMTy0R/Cvm3TEhwgFe6oVgVZ6EDWHLMBpZoM120061PxwrCycG3JFe3B2ac4nC5MUac
-         UGwJJulRDn+UFcdkYS1OBa9V09CD++NvoB3oSd7vUTk6IZqcVKkREUhTvZHhWd17hT4x
-         0GZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689622552; x=1692214552;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=NYJ6kOFjamhBvRAj7/wxocueNoAM4M+pGSMxfmWyQFo=;
-        b=Aaj4XCMWXizrqjxz4ukDRYxCCwjKo6+8ykdavcLG+T+ItgGv0/PCL2348C5ZHh/mck
-         HPsIYbT15hY/0cTyjbc4P3oKQ0sGWWKYRmNUhz7XGJmdqLqsTHDGLA35+D4DO+F91wLa
-         EBxiYvC2ukV5XLADEIqbKH4Tt6nftRM+0BPbYQSYisI5r8aV7TG87caIiezNlt+G872U
-         /SukCGEzH1h4U+wu9oiUbRig7QOg+h602imZV7v0jmtgPsGyeufSItERF5pgFWUGKtUK
-         vRxw7AR/HpV0LSlzlTjeuHJ4zH7QCqeSkQKia3cMYLARso7/sZnBW9oVBMUGQOdp1slP
-         cW4A==
-X-Gm-Message-State: ABy/qLbr3qeBOHweSafAzhE8LZp1yrULQcNx9+7BijkIX1t/S2FgSa0G
-	nT/vogtdgzFf+Ab1FMOj7xFaS84M3UFucmJnFq8=
-X-Google-Smtp-Source: APBJJlGW4673ZXUdmH9EyALyJYqmzpqtgm1SGTb0UF42kwcQ8Wh+SSnyIk9sxfrz+X4Pht1lQFCoW9Rx+xQJMZNrq+c=
-X-Received: by 2002:a17:906:1da:b0:994:54d1:ff57 with SMTP id
- 26-20020a17090601da00b0099454d1ff57mr10191773ejj.4.1689622552398; Mon, 17 Jul
- 2023 12:35:52 -0700 (PDT)
+	id 1qLYei-009U9t-1y;
+	Tue, 18 Jul 2023 00:33:38 +0000
+X-Alimail-AntiSpam: AC=PASS;BC=-1|-1;BR=01201311R111e4;CH=green;DM=||false|;DS=||;FP=0|-1|-1|-1|0|-1|-1|-1;HT=ay29a033018046049;MF=yang.lee@linux.alibaba.com;NM=1;PH=DS;RN=9;SR=0;TI=SMTPD_---0VnfJwjs_1689640375;
+Received: from localhost(mailfrom:yang.lee@linux.alibaba.com fp:SMTPD_---0VnfJwjs_1689640375)
+          by smtp.aliyun-inc.com;
+          Tue, 18 Jul 2023 08:32:56 +0800
+From: Yang Li <yang.lee@linux.alibaba.com>
+To: broonie@kernel.org
+Cc: lgirdwood@gmail.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Yang Li <yang.lee@linux.alibaba.com>,
+	Abaci Robot <abaci@linux.alibaba.com>
+Subject: [PATCH -next] regulator: Remove duplicated include in mt6359-regulator.c
+Date: Tue, 18 Jul 2023 08:32:55 +0800
+Message-Id: <20230718003255.124594-1-yang.lee@linux.alibaba.com>
+X-Mailer: git-send-email 2.20.1.7.g153144c
 MIME-Version: 1.0
-References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
- <20230717172821.62827-7-andriy.shevchenko@linux.intel.com> <e356066d5e4001d5ae26a1f55996086ce0b59cf2.camel@crapouillou.net>
-In-Reply-To: <e356066d5e4001d5ae26a1f55996086ce0b59cf2.camel@crapouillou.net>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 17 Jul 2023 22:35:16 +0300
-Message-ID: <CAHp75VfkTUjv51MsLrZf3Zsg9Pn+6E-TkqW_c7fcwggD71RHrA@mail.gmail.com>
-Subject: Re: [PATCH v2 06/10] pinctrl: at91: Switch to use DEFINE_NOIRQ_DEV_PM_OPS()
- helper
-To: Paul Cercueil <paul@crapouillou.net>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	Mika Westerberg <mika.westerberg@linux.intel.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Balsam CHIHI <bchihi@baylibre.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
-	linux-tegra@vger.kernel.org, linux-pm@vger.kernel.org, 
-	Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
-	Ludovic Desroches <ludovic.desroches@microchip.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_203801_126061_9F3C78D1 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20230718_013333_275701_56A61808 
+X-CRM114-Status: UNSURE (   6.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,27 +78,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 17, 2023 at 10:26=E2=80=AFPM Paul Cercueil <paul@crapouillou.ne=
-t> wrote:
-> Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=A9crit=
- :
-> > Since pm.h provides a helper for system no-IRQ PM callbacks,
-> > switch the driver to use it instead of open coded variant.
-> >
-> > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
->
-> Reviewed-by: Paul Cercueil <paul@crapouillou.net>
+./drivers/regulator/mt6359-regulator.c: linux/platform_device.h is included more than once.
 
-Thank you!
+Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+Closes: https://bugzilla.openanolis.cn/show_bug.cgi?id=5901
+Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
+---
+ drivers/regulator/mt6359-regulator.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-> Although you could add a bit more info in the message of this patch, to
-> explain why it's OK to remove the __maybe_unused tags (the code is
-> always visible) and why switch from pm_ptr() to pm_sleep_ptr() (it's
-> only used for system-PM callbacks).
+diff --git a/drivers/regulator/mt6359-regulator.c b/drivers/regulator/mt6359-regulator.c
+index 5cf6448fb05f..c8a788858824 100644
+--- a/drivers/regulator/mt6359-regulator.c
++++ b/drivers/regulator/mt6359-regulator.c
+@@ -2,7 +2,6 @@
+ //
+ // Copyright (c) 2021 MediaTek Inc.
+ 
+-#include <linux/platform_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/mfd/mt6359/registers.h>
+ #include <linux/mfd/mt6359p/registers.h>
+-- 
+2.20.1.7.g153144c
 
-Sure.
-
---=20
-With Best Regards,
-Andy Shevchenko
 
