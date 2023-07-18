@@ -4,71 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75566C0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:18:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E72E9C0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:19:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mHY+1oH0Tgef7BNwDp0vFm2rZ8de64Px74Z8PHY05JY=; b=ig68+iH63CSOSAk0EeTqMpjWf3
-	PwYvh6Bf8RngX2yMAWb3ttbtirxk7jlQB3rk4lb6LNMRdGCbs6JnfZPAiNM/o9qu9RZfRbtD/fu9A
-	CA5Du0MHsXvLYTx1oMpd3hdK/T5hUkzhizIxEi+IIuRMW+L4LDPcQShrCwDhjAQ3l2PVCmUaXJrTs
-	01dnKh/n7qGA8l8EwkhmM5VXV4B6QjK09lSvcICQCABXuTXVJgQhB3xd8WHI1MgJ3DGP7dUh6y4fJ
-	6FJjXZWKUpX7mxZRHQE6iH3MPnaxx3w3xqA4Km/nsX6O1lAl24xAVDeobOyJ9vl43f8mP/642pMhl
-	sF+fDOlw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r3eRjU9qlc/HtWCZOEqE82aSE5kNybf7RR8ZGMXqc60=; b=QjH75iqjJ4XeFJHoQIF07mKlp0
+	bNWOEurcbHAEWdRUHzPcBnGOWWltd42ooKK+S3siu6xE2Dqy3Rt2kLseWc/avWzkCSP1Mvc7aBtKC
+	LxCju4xsPshRkHjtjWQV7HSfnGMC5ekGjEKPYp0PFyaXWM7HT6dw0jd8pL5rTXQ2R9s1qDZ7nUHiE
+	s5RXJWrq9SnlmnjHOeh65lgVdkLo9QKI2CaF+yQyatwVVFw5wUFEo3kiYERNSdpQ4Bsj666DkCIj8
+	CeYRMQnAqlww7O8JzrzmVVGbLFa+j3eW7t4jRiOlE2+uFz8rUqSCclymQ4pVORPfrwEgWQRcY/9qc
+	HqMrsXZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2O2-006HnR-1i;
-	Wed, 19 Jul 2023 08:18:18 +0000
+	id 1qM2PZ-006IN5-08;
+	Wed, 19 Jul 2023 08:19:53 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2O0-006HmX-21;
-	Wed, 19 Jul 2023 08:18:16 +0000
+	id 1qM2PY-006IML-1X;
+	Wed, 19 Jul 2023 08:19:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
-	Subject:To:From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=mHY+1oH0Tgef7BNwDp0vFm2rZ8de64Px74Z8PHY05JY=; b=RrTmpSQlXXmi0LvxLmmAvAmxEY
-	ZFBPRGsiUM2h2H2myvyHAfJEACjQ1g2kng1Anf8mE8rmM2GMUiWFqwlHffh+A0nSmFsV5oiTmjFdv
-	avS5AJGfkLGDsqbgX5sTaQXo3citlKjNb5L8dUH+pJGtKWXTWg/9sKYAAN9vLlN06Mu3NFn2jth1i
-	yzWMQCXgjqzjRP4dBML23kGhlrrfUPB3gVPnWINVeQeSpgRk4soVeyCJLvr7EFDcA8dz/KFcKvDQy
-	pMDhO4ryVul6yuLYiPqCXUHiuZUWgVBOqlxKPzT9jOo7DHwPXt4pa5RMPb/wVDgQHsHbMPKM/ElzR
-	tIpmjmAg==;
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=r3eRjU9qlc/HtWCZOEqE82aSE5kNybf7RR8ZGMXqc60=; b=FHpjyYMEpgHg6xrZNLFxU+VC7P
+	4TlS+RWTjvOKDwMRqhYZcMq3bDoCMqn3sstiwfMl4xBOPNYF0y9EPmoAN197jI2fTDGtrQa8lm48E
+	XY8IsrMWP41fzpcKNcZ6NBy+W32MRNrJjjdaEkAaxTsun7kfiWPh/UYyC7V5tZFrYdkE8bBr9Z325
+	CVfoQMZHVBVa3jsAz4FAOFPj8s2C0SmnbWfZEJeMHbsmufY/Rmp+dhGTbcX4hltn0JekpIpj01byu
+	srYw90e8SQco5CvrKOeOpU9dNCUnh7tHU6/K/9U2nEcmC046HD7q0VYTR72ZGQvByfVyQc17o9CIR
+	TxKa3oqg==;
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLvEh-00CKQP-12;
-	Wed, 19 Jul 2023 00:40:17 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1qLvEO-0002TA-0d;
-	Wed, 19 Jul 2023 00:39:52 +0000
-Date: Wed, 19 Jul 2023 01:39:36 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sujuan Chen <sujuan.chen@mediatek.com>,
-	Bo Jiao <Bo.Jiao@mediatek.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net] net: ethernet: mtk_eth_soc: always mtk_get_ib1_pkt_type
-Message-ID: <c0ae03d0182f4d27b874cbdf0059bc972c317f3c.1689727134.git.daniel@makrotopia.org>
+	id 1qLkIj-00BYK1-1P;
+	Tue, 18 Jul 2023 12:59:39 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-991f956fb5aso703378266b.0;
+        Tue, 18 Jul 2023 05:59:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1689685056; x=1692277056;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=r3eRjU9qlc/HtWCZOEqE82aSE5kNybf7RR8ZGMXqc60=;
+        b=g6z0JwGiNFW3lz4PmozRF+XBezdo2jwekkRhUykp1ZwKGIqp1lXzBnDwppLhroX43w
+         +h7R9WRr3XU6YoSKJtYC7dlhGyEi+wEwY0JiHZTH4QElAx6UnaINFkeHyA5F3zwFobtW
+         ozQi7ooh991iba2ndW2C1CW5pi/+b2dNrIR5X6l4AtF24MCyTSeKcxnrJqEF/cGt3o40
+         gEXfN+NQqDibali2B5IkDOKvyC9F5DtUxeXkIqLZVvOVu9R8PiJfnwQVvPYVERVyVPpa
+         uQFLj4rOWqAI+QISNqfVmoJIZLzoFqOZxN8vOESmohzgWtJMPk5Tp4NyDYqe2E4XUZC6
+         S4yQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689685056; x=1692277056;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=r3eRjU9qlc/HtWCZOEqE82aSE5kNybf7RR8ZGMXqc60=;
+        b=XSxsucVGoDWEbSyf+5bTZ04iaHCqNJweC4RRkYW55mJIq7Rbd9RPoPiooKAQFJeOBD
+         bv3oFBneg7Vpgl+d71ZSZipFpMqbcAqlYUYsdHM5OKeIlEtxkiHhH53oJ/Wo7TXBN0qN
+         2o9/k3nUgY4FBrdztlT6Hu+cCKgdVcRqevQ1YqaksavLpY7aS48BFuhiFI28WZ/tEAxc
+         mTm6U+7IwXPDXFZ/+awh7ofH+jLNJCqheLgeSapHoydgqIQpoU90wE8BUaIXyz0dz05H
+         SPA9+TzZAGoJVDkQi1fkq3DU9/sp8aqwI+LYBBtuo2ZylAxp7WDeHTpGxum33cj6gnC/
+         8AEg==
+X-Gm-Message-State: ABy/qLaPN9H/8W5ipsZmVOdcFW1OaeXNPV/V+D949I/DWd4P0rCfAJci
+	PkyRf57X3E3q//ca+addn0bd2OevkayrI0Cs9cM=
+X-Google-Smtp-Source: APBJJlElrlsnM8Wh1LOSDVOQPK6Ij0zGU/u15EPxUjBld0Dc/Kvg0px3zFSARhUXJU3vRjipS2x9YKFDV7eHqZ+urTU=
+X-Received: by 2002:a17:907:3a49:b0:988:f1ec:7400 with SMTP id
+ fc9-20020a1709073a4900b00988f1ec7400mr11363213ejc.36.1689685056299; Tue, 18
+ Jul 2023 05:57:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
+ <20230717172821.62827-5-andriy.shevchenko@linux.intel.com>
+ <c47c26ba7ea5bcbdcbe1d001b6cc527cee6c7d03.camel@crapouillou.net>
+ <CAHp75Vcjq9=Q2_fsGJ9oCw=WYR3p3ot_cNLiDJV93psNcXXHLw@mail.gmail.com> <8c66f79025ddd8388eeb9bdb3f0e789fe9f362d9.camel@crapouillou.net>
+In-Reply-To: <8c66f79025ddd8388eeb9bdb3f0e789fe9f362d9.camel@crapouillou.net>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Tue, 18 Jul 2023 15:57:00 +0300
+Message-ID: <CAHp75VdPNCvhVSeKESbd7VNVPa8GVXVnw04jaE4HMUjK_b8+dA@mail.gmail.com>
+Subject: Re: [PATCH v2 04/10] pinctrl: intel: Switch to use
+ DEFINE_NOIRQ_DEV_PM_OPS() helper
+To: Paul Cercueil <paul@crapouillou.net>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Mika Westerberg <mika.westerberg@linux.intel.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Balsam CHIHI <bchihi@baylibre.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+	linux-tegra@vger.kernel.org, linux-pm@vger.kernel.org, 
+	Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Gregory Clement <gregory.clement@bootlin.com>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
+	Ludovic Desroches <ludovic.desroches@microchip.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	"Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230719_014014_988269_BFA45CB5 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20230718_135937_697863_C5B0C5F0 
+X-CRM114-Status: GOOD (  31.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,31 +120,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-entries and bind debugfs files would display wrong data on NETSYS_V2 and
-later because instead of using mtk_get_ib1_pkt_type the driver would use
-MTK_FOE_IB1_PACKET_TYPE which corresponds to NETSYS_V1(.x) SoCs.
-Use mtk_get_ib1_pkt_type so entries and bind records display correctly.
+On Mon, Jul 17, 2023 at 10:56=E2=80=AFPM Paul Cercueil <paul@crapouillou.ne=
+t> wrote:
+> Le lundi 17 juillet 2023 =C3=A0 22:33 +0300, Andy Shevchenko a =C3=A9crit=
+ :
+> > On Mon, Jul 17, 2023 at 10:02=E2=80=AFPM Paul Cercueil <paul@crapouillo=
+u.net>
+> > wrote:
+> > > Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=A9=
+crit :
 
-Fixes: 03a3180e5c09e ("net: ethernet: mtk_eth_soc: introduce flow offloading support for mt7986")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+...
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c b/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-index 316fe2e70fead..1a97feca77f23 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-@@ -98,7 +98,7 @@ mtk_ppe_debugfs_foe_show(struct seq_file *m, void *private, bool bind)
- 
- 		acct = mtk_foe_entry_get_mib(ppe, i, NULL);
- 
--		type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->ib1);
-+		type = mtk_get_ib1_pkt_type(ppe->eth, entry->ib1);
- 		seq_printf(m, "%05x %s %7s", i,
- 			   mtk_foe_entry_state_str(state),
- 			   mtk_foe_pkt_type_str(type));
--- 
-2.41.0
+> > > So the correct way to update this driver would be to have a
+> > > conditionally-exported dev_pm_ops structure:
+> > >
+> > > EXPORT_GPL_DEV_PM_OPS(intel_pinctrl_pm_ops) =3D {
+> > >     NOIRQ_SYSTEM_SLEEP_PM_OPS(intel_pinctrl_suspend_noirq,
+> > > intel_pinctrl_resume_noirq),
+> > > };
+> >
+> > This looks ugly. I didn't know that EXPORT*PM_OPS designed that way,
+> > but it seems pm.h in such case needs EXPORT for NOIRQ case as well.
+>
+> It's designed so that when CONFIG_PM is disabled, the dev_pm_ops is
+> garbage-collected along with all its callbacks.
+>
+> I know it looks ugly, but we already have 4 variants (regular,
+> namespace, GPL, namespace + GPL), if we start to add macros for
+> specific use-cases then it will become bloated really quick.
 
+Maybe macros can be replaced / changed to make it scale?
+
+> And the "bloat" I'm trying to avoid here is the extreme expansion of
+> the API which makes it hard for people not familiar to the code to
+> understand what should be used and how.
+
+So far, based on the rest of the messages in the thread the
+EXPORT*PM_OPS() have the following issues:
+1) do not scale (for variants with different scope we need new set of macro=
+s);
+2) do not cover cases with pm_sleep_ptr();
+3) export symbols in case when it's not needed.
+
+Am I right?
+
+> > > Then your two callbacks can be "static" and without #ifdef guards.
+> > >
+> > > The resulting "intel_pinctrl_pm_ops" can be marked as "extern" in
+> > > the
+> > > pinctrl-intel.h without any guards, as long as it is only
+> > > referenced
+> > > with the pm_ptr() macro.
+> >
+> > I'm not sure I got this. Currently drivers do not have any guards.
+> > Moreover, the correct one for noirq is pm_sleep_ptr(), isn't it?
+>
+> The EXPORT_*_DEV_PM_OPS() macros do export the "dev_pm_ops"
+> conditionally depending on CONFIG_PM. We could add variants that export
+> it conditionally depending on CONFIG_PM_SLEEP, but we're back at the
+> problem of adding bloat.
+
+Exactly.
+
+> You could use pm_sleep_ptr() indeed, with the existing macros, with the
+> drawback that in the case where CONFIG_PM && !CONFIG_PM_SLEEP, the
+> dev_pm_ops + callbacks are compiled in but never referenced.
+
+And exactly.
+
+I don't think they are ready to use (in the current form). But let's
+see what we may do better here...
+
+--
+With Best Regards,
+Andy Shevchenko
 
