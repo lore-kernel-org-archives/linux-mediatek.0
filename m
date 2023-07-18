@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E779C0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:13:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8426CEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 05:16:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WPytza0FzLurbgMNNTIgRyVfzPQAcL6r2G/Kltyw3k0=; b=Osc41Hodv1OpG6nKPbcNqeGjuO
-	O26rGv9CJhAj5X+9D2hus3HPRqM8R2KbtNdlFZ8cNRVwmrHBaD0PPq3VKCg/iosD3nUniWKb3NE4E
-	IhMPcF137CAhG/V9y28DiX63QbL9O4jmAIC8W8DV1YD2p0hMe8o4TO3CY6ylCG03qRnSC7F7/Wbkg
-	XYZ53O7eWLuyTjLVNWgqQ0+qTyLgYsQBP3+wENEkdnrT25JqHw8llw3vxzeti+tOA9WXGjENMa3Gl
-	fcSYj9X6mdEeiDYopaT8Ne+FQWb7NqPjtdy/HntD8YqwAvJH1nX7BmZboZ4oXPckKWxUrLmZUw479
-	ByxIVOLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SHUDF46zorJw9cWcAaRb+5uRqKuLNnsGpbvYUSI9l1g=; b=BRR5z4yIhzeLRcBpBTrAYK2X4x
+	1+CCJfBbzpS8sIA280/mmU2qfEqcMDMDFMdj24Zymi5U0J/thylOKPWFnhHEtsGCiplukhFfGpNj1
+	LhZNYRC5QgyZKE0fLIJ1NqPR7m1yJMZU0jJlJJoIjr6q91yBJ/+tb58lrVCzTsDpSNYWS9WKk6sD7
+	bP5TvgEHjRwbzwTRSpGgqz5P9IINXlkuSWFaFlQYXKgLiVjsNf3XYYBs9IrWw99oFnU3I6520jrlh
+	gGksJb4I7Epy1CohiVl15xOnweVhpHUDdLA9bGivtSS+n+XHIzrFveVBAsjIMU8OqNGWIrH9qCpPQ
+	iQMmhrzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzVA-005BX4-0B;
-	Wed, 19 Jul 2023 05:13:28 +0000
+	id 1qLzXq-005COF-0j;
+	Wed, 19 Jul 2023 05:16:14 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLzV8-005BVy-0c;
-	Wed, 19 Jul 2023 05:13:26 +0000
+	id 1qLzXo-005CNI-1N
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 19 Jul 2023 05:16:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:MIME-Version:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=WPytza0FzLurbgMNNTIgRyVfzPQAcL6r2G/Kltyw3k0=; b=IBPkIQvmUHQQvVwbYhP58j05tY
-	HK4UUDyAQLtjBjNoPF/jsPVUFeoAd9kylCI5+GE/c/HshOkwFeE2n4sptEQAnDJTFCUox883eKBXh
-	HXRCLUNdV49F/BFM2pZCgZUt+sCWw8sKHn1Zbf46CqndA2Tjw3NFImcbI9L5Bc/vRhp1sgGHxwsg8
-	RM/OlSY7P7zVMtkUJr7imxj7qdBnrFHmuGuQ1qf45ZgidJ9LNQ6yEStXI23nhq0psJPGSlg/huqoO
-	cPbLTRgM0tVsyVQ8QhHfhDlIV5QU+z6yfIXkL/hSsfOQzDYFikVNPsil19g8STrqrRGWJf6vatwrB
-	JTO8O1yA==;
-Received: from aposti.net ([89.234.176.197])
+	bh=SHUDF46zorJw9cWcAaRb+5uRqKuLNnsGpbvYUSI9l1g=; b=PPOlgsXt4dpec97ipMIvrZQPF3
+	SfudyKUansIBTZd8EkZQF4TrLkdmyLWOIQeca7aUdxu+fK94KQRPGi7UQG2sR2qZ2inVJZo4VdqdX
+	lmhFI9o6sk7zKky82b1xjAteY1Z8Xxp4ksQXMicOFBNFy89M9Ho3T/kGr/MPn3GkoH/GeIN6uU52G
+	T4+aeW9cZ6uGPRsPykL4/VD2RK3WUBI7kJBsJfuVk2A/EiMTerKry3mNEvlZ7/CQm/fqGrcapqfDa
+	1TdgN4oY4kB4FEPDnI97uXCmyQ09NAESORJy5jEMEFMCmqdcaggUrbsPYTeVgcquq4kocjDX4OiP/
+	sinhDG4w==;
+Received: from [183.242.55.162] (helo=mail.208.org)
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLTgD-009EVL-0n;
-	Mon, 17 Jul 2023 19:14:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1689621254;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=WPytza0FzLurbgMNNTIgRyVfzPQAcL6r2G/Kltyw3k0=;
-	b=WDrNej2khKT49u/ZfzL6yobm0Zeq0Qp0TNdRO4GnsqipcI1U4g3vs8VJvik7jgqPbb+x/K
-	wI4DNWpNCRBaUxv2JjYJputr6VXkICPXLO+fYZFLN7mHFvzTlCvE7+z96AuKoK9PuM1tOU
-	ep6N1O1jqullaYEUkUSlrwzlhPyQY/M=
-Message-ID: <13f7153786cfcdc3c6185a3a674686f7fbf480dc.camel@crapouillou.net>
-Subject: Re: [PATCH v2 10/10] pinctrl: tegra: Switch to use
- DEFINE_NOIRQ_DEV_PM_OPS() helper
-From: Paul Cercueil <paul@crapouillou.net>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg
- <mika.westerberg@linux.intel.com>, Linus Walleij
- <linus.walleij@linaro.org>,  Balsam CHIHI <bchihi@baylibre.com>, Claudiu
- Beznea <claudiu.beznea@microchip.com>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
-  Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org,  linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,  linux-renesas-soc@vger.kernel.org,
- linux-tegra@vger.kernel.org,  linux-pm@vger.kernel.org
-Cc: Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Andrew Lunn <andrew@lunn.ch>,
- Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth
- <sebastian.hesselbarth@gmail.com>, Ludovic Desroches
- <ludovic.desroches@microchip.com>, Nicolas Ferre
- <nicolas.ferre@microchip.com>,  Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>,
- Pavel Machek <pavel@ucw.cz>
-Date: Mon, 17 Jul 2023 21:14:12 +0200
-In-Reply-To: <20230717172821.62827-11-andriy.shevchenko@linux.intel.com>
-References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
-	 <20230717172821.62827-11-andriy.shevchenko@linux.intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	id 1qLg50-00BJ5Y-2b
+	for linux-mediatek@lists.infradead.org;
+	Tue, 18 Jul 2023 08:29:15 +0000
+Received: from mail.208.org (email.208.org [127.0.0.1])
+	by mail.208.org (Postfix) with ESMTP id 4R4sXp4Fv8zBR9sx
+	for <linux-mediatek@lists.infradead.org>; Tue, 18 Jul 2023 16:28:26 +0800 (CST)
+Authentication-Results: mail.208.org (amavisd-new); dkim=pass
+	reason="pass (just generated, assumed good)" header.d=208.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=208.org; h=
+	content-transfer-encoding:content-type:message-id:user-agent
+	:references:in-reply-to:subject:to:from:date:mime-version; s=
+	dkim; t=1689668906; x=1692260907; bh=D8d+MsQpIDEMC9w+5s1SwmR6S+n
+	0xq3gry16gHMpo4A=; b=1DepZRv0v9ufvyClbtE831S94x/8NSMzuCe7SENuKIP
+	EfTVng/v331BtBWiBJey1AhLXI9rvwvP+HrGJ6r4+71Lv2V0lvFVKh7mRNVFfbqL
+	mw1FwDiTyFJbSoul/PRtusSOkx9ODuJKWIXRB8lIaDqdM1MmRY4UzL2OWPaReKwy
+	AE6ygcLmUE7jRTl3NZ+bmTVEYAjWyhKhNNIIGXbhUnBc536TnD4ZbCsOQ3PhMMRW
+	qos7U9zPI2lLjSHXOHCveV+V/LJJPUkmEy2KvVjQ8Ee1AYhYG3TusDma11gIFsGE
+	z8OFcgJ6w9gjbZO73fAeqpPxmepmm18wiFmfZaKF1bQ==
+X-Virus-Scanned: amavisd-new at mail.208.org
+Received: from mail.208.org ([127.0.0.1])
+	by mail.208.org (mail.208.org [127.0.0.1]) (amavisd-new, port 10026)
+	with ESMTP id 0emrV3rHY8F2 for <linux-mediatek@lists.infradead.org>;
+	Tue, 18 Jul 2023 16:28:26 +0800 (CST)
+Received: from localhost (email.208.org [127.0.0.1])
+	by mail.208.org (Postfix) with ESMTPSA id 4R4sXp1ShhzBR7bp;
+	Tue, 18 Jul 2023 16:28:26 +0800 (CST)
 MIME-Version: 1.0
+Date: Tue, 18 Jul 2023 16:28:26 +0800
+From: sunran001@208suo.com
+To: joro@8bytes.org, will@kernel.org, matthias.bgg@gmail.com
+Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] iommu/mtk_iommu_v1: add missing put_device()
+In-Reply-To: <20230718082500.17066-1-xujianghui@cdjrlc.com>
+References: <20230718082500.17066-1-xujianghui@cdjrlc.com>
+User-Agent: Roundcube Webmail
+Message-ID: <36b3ef1e2a73f84216d9fa656f6146a6@208suo.com>
+X-Sender: sunran001@208suo.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_201445_650152_6B1E70E8 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20230718_092911_477874_40BAE8F2 
+X-CRM114-Status: UNSURE (   7.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,44 +98,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+The of_find_device_by_node() takes a reference to the underlying device
+structure, we should release that reference.
 
-Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=A9crit=
-=C2=A0:
-> Since pm.h provides a helper for system no-IRQ PM callbacks,
-> switch the driver to use it instead of open coded variant.
->=20
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
-> =C2=A0drivers/pinctrl/tegra/pinctrl-tegra.c | 5 +----
-> =C2=A01 file changed, 1 insertion(+), 4 deletions(-)
->=20
-> diff --git a/drivers/pinctrl/tegra/pinctrl-tegra.c
-> b/drivers/pinctrl/tegra/pinctrl-tegra.c
-> index 4547cf66d03b..734c71ef005b 100644
-> --- a/drivers/pinctrl/tegra/pinctrl-tegra.c
-> +++ b/drivers/pinctrl/tegra/pinctrl-tegra.c
-> @@ -747,10 +747,7 @@ static int tegra_pinctrl_resume(struct device
-> *dev)
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return 0;
-> =C2=A0}
-> =C2=A0
-> -const struct dev_pm_ops tegra_pinctrl_pm =3D {
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.suspend_noirq =3D &tegra_pinc=
-trl_suspend,
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.resume_noirq =3D &tegra_pinct=
-rl_resume
-> -};
-> +DEFINE_NOIRQ_DEV_PM_OPS(tegra_pinctrl_pm, tegra_pinctrl_suspend,
-> tegra_pinctrl_resume);
-> =C2=A0
-> =C2=A0static bool tegra_pinctrl_gpio_node_has_range(struct tegra_pmx *pmx=
-)
-> =C2=A0{
+./drivers/iommu/mtk_iommu_v1.c:669:3-9: ERROR: missing put_device; call
+of_find_device_by_node on line 662, but without a corresponding object
+release within this function.
 
-Another driver where using EXPORT_GPL_DEV_PM_OPS() would make more
-sense.
+Signed-off-by: Ran Sun <sunran001@208suo.com>
+---
+  drivers/iommu/mtk_iommu_v1.c | 1 +
+  1 file changed, 1 insertion(+)
 
-Cheers,
--Paul
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index 8a0a5e5d049f..1833d0ce7afe 100644
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -666,6 +666,7 @@ static int mtk_iommu_v1_probe(struct platform_device 
+*pdev)
+          }
+          if (!plarbdev->dev.driver) {
+              of_node_put(larbnode);
++            put_device(&plarbdev->dev);
+              return -EPROBE_DEFER;
+          }
+          data->larb_imu[i].dev = &plarbdev->dev;
 
