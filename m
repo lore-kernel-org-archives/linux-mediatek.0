@@ -4,58 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A0A8C001B0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 07:51:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99FB6C001B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 07:55:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aI8cJ9QuHC8O0uC8gYyun5z/ClKX85DGvEYkLKDualk=; b=ayZPnxD5ZsdRv0
-	G+kEBQ1E45F0/69Uo07WsarArc52rAmHytljUxQy+/NWin2ZMLK38G/VifxJ4AX2j3DrZUEBYgUva
-	gn5o5kXZ7RpmSpLi+VhTQuC+mqMlOLxuiodAOOgCHlC2MYmGDwXwb8xFecZw0MftpBYvDiCKHYPIm
-	4B2ktHfOqR43WoY6IDSytYZgS9jN5e/tjtZwYHAwilgoumBr811k8S9GF/3QN0MDbB0atN4t7d+UR
-	CtvV3eo0dfp6RgghtflykhCnqwHwNhq1/HlNLCW8Nz9ByKRmnH/fEXwiANo+TKBRKtlraAXsarr5y
-	Sdd0dbYR1RH/lHoHgeaw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uHQG93rQz2rdrUW9Z0PMHg5WySgNYeZupGPXtWoBO5E=; b=WkmJg91JozGpDqAzLdfBm4tj9D
+	1uK/lsODVu4ERhVSWXBZEifLPseyAiCeAg/r0I6pJvFvnPsa+91jLy3ZEPC9rMtHgQy4mgdqJdLRB
+	X+kMXcBbYJv/Wnk6n3KESJkxFGkc3mwh+ky4jJGSpzN9odRQ5qFmKFbbcUL7Fho69wg1Q2nbtDkYw
+	E74i6042ne+Z2h+ZXwrgtxS3SFRPnvGJfmwH07x9Dwtx5EtEY3iooXDcN/DsDgu6m+Fxb5rqVQ08F
+	rM6XrwaI0brVA1c/kcXRdbY+yVfruf/SS4/PhWx8SOQBaJHSzTLAsN+zW0LhmrzNJvhvGWAsnrETX
+	k8THh1rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM1yK-0069AD-0q;
-	Wed, 19 Jul 2023 07:51:44 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qM22L-0069vx-1A;
+	Wed, 19 Jul 2023 07:55:53 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM1xo-0068pD-1h;
-	Wed, 19 Jul 2023 07:51:14 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BB3976607070;
-	Wed, 19 Jul 2023 08:51:10 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689753071;
-	bh=njEiJKpcfz3CxTzbe9ovf4JbHnWi0lISeut4u5WR9b0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=fNGCuNJzIqoBu7pmMvPVIs77YXhD/FXlxhrJydbQ4hyD8m0M86QcpWEx2cfnse0a9
-	 sud3E5UINvYro4eEFEcOh8XHg+g04JqM5GsvbA6a3oZUu5dJjTaE89Cjx22kI6S0u6
-	 NG3qBjQhDB3sH6pcs1/kNUV2mybd+ncj2AIAmnHMEyODk8g95X+/F1vNlNxK8zOSTy
-	 G+hhSF03G8OuY5WmdQl0S4hZVs+ib57XJrIXtGxecIqg4s44/TGgKb7CwwOaLFBzIr
-	 iaA6Cb2TJy+p75pWR48Tb6DTVcfOAPZ6LGnDxObn0Gt95qdrxt9uMf7RoCDNEJShDq
-	 5Z+D5k63RbexA==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Subject: [PATCH v2 6/6] drm/mediatek: mtk_dpi: Compress struct of_device_id entries
-Date: Wed, 19 Jul 2023 09:50:56 +0200
-Message-Id: <20230719075056.72178-7-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230719075056.72178-1-angelogioacchino.delregno@collabora.com>
-References: <20230719075056.72178-1-angelogioacchino.delregno@collabora.com>
+	id 1qM22J-0069ty-1l;
+	Wed, 19 Jul 2023 07:55:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:To:From:Date:Sender:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=uHQG93rQz2rdrUW9Z0PMHg5WySgNYeZupGPXtWoBO5E=; b=bPOHNHkek/0N+modzsuwLw5N8Y
+	xGH//M6SNdgFG9yTbK5fxDQ52yXZ8LbUckLd1tpN0GrC7WnMhoLMIUxmQAUSYOZQBI9KYM5xvPJyf
+	R+bLG6sAmM7qsKCUWwdf+jQgEW+rfbOvBpIiohuGrMcroDazXVqOL6FyVybvW+9vti9+zYMBgLAbc
+	L9wH+8qUJ9ICiFd6sglsPK+TNorEE4zkq3qKq1ioMaw1AGO1Q0EZcPW54jUqr/dtbaRXluURhd321
+	yf2hc4oAjMhhmo8u4rOE1ptWIsSwM8OuvTwIO3W2z+QUC6D6U3xtqS0/ht24VUOATbhzSSYbyjfYi
+	/6F6x/Qw==;
+Received: from pidgin.makrotopia.org ([185.142.180.65])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qLsJ4-00C4NL-2l;
+	Tue, 18 Jul 2023 21:33:46 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1qLsIq-0001MW-2n;
+	Tue, 18 Jul 2023 21:32:16 +0000
+Date: Tue, 18 Jul 2023 22:32:08 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Greg Ungerer <gerg@kernel.org>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next v3 7/9] net: ethernet: mtk_eth_soc: convert caps in
+ mtk_soc_data struct to u64
+Message-ID: <1e9e776186d16d35a80df7146e6062f970dc6d26.1689714291.git.daniel@makrotopia.org>
+References: <cover.1689714290.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1689714290.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230719_005112_708677_42A5E6EA 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20230718_223300_041413_100DEAA4 
+X-CRM114-Status: GOOD (  16.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,63 +88,200 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: p.zabel@pengutronix.de, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, daniel@ffwll.ch, matthias.bgg@gmail.com, kernel@collabora.com, airlied@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reduce line count by compressing the entries of struct of_device_id;
-while at it, also add the usual /* sentinel */ comment to the last
-entry.
+From: Lorenzo Bianconi <lorenzo@kernel.org>
 
-This commit brings no functional changes.
+This is a preliminary patch to introduce support for MT7988 SoC.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 30 ++++++++----------------------
- 1 file changed, 8 insertions(+), 22 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_path.c | 22 ++++----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h  | 56 ++++++++++----------
+ 2 files changed, 39 insertions(+), 39 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 244340df7468..ad1be4f9150c 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -1091,28 +1091,14 @@ static void mtk_dpi_remove(struct platform_device *pdev)
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_path.c b/drivers/net/ethernet/mediatek/mtk_eth_path.c
+index 317e447f49916..34ac492e047cb 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_path.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_path.c
+@@ -15,10 +15,10 @@
+ struct mtk_eth_muxc {
+ 	const char	*name;
+ 	int		cap_bit;
+-	int		(*set_path)(struct mtk_eth *eth, int path);
++	int		(*set_path)(struct mtk_eth *eth, u64 path);
+ };
+ 
+-static const char *mtk_eth_path_name(int path)
++static const char *mtk_eth_path_name(u64 path)
+ {
+ 	switch (path) {
+ 	case MTK_ETH_PATH_GMAC1_RGMII:
+@@ -40,7 +40,7 @@ static const char *mtk_eth_path_name(int path)
+ 	}
  }
  
- static const struct of_device_id mtk_dpi_of_ids[] = {
--	{ .compatible = "mediatek,mt2701-dpi",
--	  .data = &mt2701_conf,
--	},
--	{ .compatible = "mediatek,mt8173-dpi",
--	  .data = &mt8173_conf,
--	},
--	{ .compatible = "mediatek,mt8183-dpi",
--	  .data = &mt8183_conf,
--	},
--	{ .compatible = "mediatek,mt8186-dpi",
--	  .data = &mt8186_conf,
--	},
--	{ .compatible = "mediatek,mt8188-dp-intf",
--	  .data = &mt8188_dpintf_conf,
--	},
--	{ .compatible = "mediatek,mt8192-dpi",
--	  .data = &mt8192_conf,
--	},
--	{ .compatible = "mediatek,mt8195-dp-intf",
--	  .data = &mt8195_dpintf_conf,
--	},
--	{ },
-+	{ .compatible = "mediatek,mt2701-dpi", .data = &mt2701_conf },
-+	{ .compatible = "mediatek,mt8173-dpi", .data = &mt8173_conf },
-+	{ .compatible = "mediatek,mt8183-dpi", .data = &mt8183_conf },
-+	{ .compatible = "mediatek,mt8186-dpi", .data = &mt8186_conf },
-+	{ .compatible = "mediatek,mt8188-dp-intf", .data = &mt8188_dpintf_conf },
-+	{ .compatible = "mediatek,mt8192-dpi", .data = &mt8192_conf },
-+	{ .compatible = "mediatek,mt8195-dp-intf", .data = &mt8195_dpintf_conf },
-+	{ /* sentinel */ },
- };
- MODULE_DEVICE_TABLE(of, mtk_dpi_of_ids);
+-static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, int path)
++static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, u64 path)
+ {
+ 	bool updated = true;
+ 	u32 val, mask, set;
+@@ -71,7 +71,7 @@ static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, int path)
+ 	return 0;
+ }
  
+-static int set_mux_gmac2_gmac0_to_gephy(struct mtk_eth *eth, int path)
++static int set_mux_gmac2_gmac0_to_gephy(struct mtk_eth *eth, u64 path)
+ {
+ 	unsigned int val = 0;
+ 	bool updated = true;
+@@ -94,7 +94,7 @@ static int set_mux_gmac2_gmac0_to_gephy(struct mtk_eth *eth, int path)
+ 	return 0;
+ }
+ 
+-static int set_mux_u3_gmac2_to_qphy(struct mtk_eth *eth, int path)
++static int set_mux_u3_gmac2_to_qphy(struct mtk_eth *eth, u64 path)
+ {
+ 	unsigned int val = 0, mask = 0, reg = 0;
+ 	bool updated = true;
+@@ -125,7 +125,7 @@ static int set_mux_u3_gmac2_to_qphy(struct mtk_eth *eth, int path)
+ 	return 0;
+ }
+ 
+-static int set_mux_gmac1_gmac2_to_sgmii_rgmii(struct mtk_eth *eth, int path)
++static int set_mux_gmac1_gmac2_to_sgmii_rgmii(struct mtk_eth *eth, u64 path)
+ {
+ 	unsigned int val = 0;
+ 	bool updated = true;
+@@ -163,7 +163,7 @@ static int set_mux_gmac1_gmac2_to_sgmii_rgmii(struct mtk_eth *eth, int path)
+ 	return 0;
+ }
+ 
+-static int set_mux_gmac12_to_gephy_sgmii(struct mtk_eth *eth, int path)
++static int set_mux_gmac12_to_gephy_sgmii(struct mtk_eth *eth, u64 path)
+ {
+ 	unsigned int val = 0;
+ 	bool updated = true;
+@@ -218,7 +218,7 @@ static const struct mtk_eth_muxc mtk_eth_muxc[] = {
+ 	},
+ };
+ 
+-static int mtk_eth_mux_setup(struct mtk_eth *eth, int path)
++static int mtk_eth_mux_setup(struct mtk_eth *eth, u64 path)
+ {
+ 	int i, err = 0;
+ 
+@@ -249,7 +249,7 @@ static int mtk_eth_mux_setup(struct mtk_eth *eth, int path)
+ 
+ int mtk_gmac_sgmii_path_setup(struct mtk_eth *eth, int mac_id)
+ {
+-	int path;
++	u64 path;
+ 
+ 	path = (mac_id == 0) ?  MTK_ETH_PATH_GMAC1_SGMII :
+ 				MTK_ETH_PATH_GMAC2_SGMII;
+@@ -260,7 +260,7 @@ int mtk_gmac_sgmii_path_setup(struct mtk_eth *eth, int mac_id)
+ 
+ int mtk_gmac_gephy_path_setup(struct mtk_eth *eth, int mac_id)
+ {
+-	int path = 0;
++	u64 path = 0;
+ 
+ 	if (mac_id == 1)
+ 		path = MTK_ETH_PATH_GMAC2_GEPHY;
+@@ -274,7 +274,7 @@ int mtk_gmac_gephy_path_setup(struct mtk_eth *eth, int mac_id)
+ 
+ int mtk_gmac_rgmii_path_setup(struct mtk_eth *eth, int mac_id)
+ {
+-	int path;
++	u64 path;
+ 
+ 	path = (mac_id == 0) ?  MTK_ETH_PATH_GMAC1_RGMII :
+ 				MTK_ETH_PATH_GMAC2_RGMII;
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 2810c250ae9a6..8d8601e553478 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -866,41 +866,41 @@ enum mkt_eth_capabilities {
+ };
+ 
+ /* Supported hardware group on SoCs */
+-#define MTK_RGMII		BIT(MTK_RGMII_BIT)
+-#define MTK_TRGMII		BIT(MTK_TRGMII_BIT)
+-#define MTK_SGMII		BIT(MTK_SGMII_BIT)
+-#define MTK_ESW			BIT(MTK_ESW_BIT)
+-#define MTK_GEPHY		BIT(MTK_GEPHY_BIT)
+-#define MTK_MUX			BIT(MTK_MUX_BIT)
+-#define MTK_INFRA		BIT(MTK_INFRA_BIT)
+-#define MTK_SHARED_SGMII	BIT(MTK_SHARED_SGMII_BIT)
+-#define MTK_HWLRO		BIT(MTK_HWLRO_BIT)
+-#define MTK_SHARED_INT		BIT(MTK_SHARED_INT_BIT)
+-#define MTK_TRGMII_MT7621_CLK	BIT(MTK_TRGMII_MT7621_CLK_BIT)
+-#define MTK_QDMA		BIT(MTK_QDMA_BIT)
+-#define MTK_SOC_MT7628		BIT(MTK_SOC_MT7628_BIT)
+-#define MTK_RSTCTRL_PPE1	BIT(MTK_RSTCTRL_PPE1_BIT)
+-#define MTK_U3_COPHY_V2		BIT(MTK_U3_COPHY_V2_BIT)
++#define MTK_RGMII		BIT_ULL(MTK_RGMII_BIT)
++#define MTK_TRGMII		BIT_ULL(MTK_TRGMII_BIT)
++#define MTK_SGMII		BIT_ULL(MTK_SGMII_BIT)
++#define MTK_ESW			BIT_ULL(MTK_ESW_BIT)
++#define MTK_GEPHY		BIT_ULL(MTK_GEPHY_BIT)
++#define MTK_MUX			BIT_ULL(MTK_MUX_BIT)
++#define MTK_INFRA		BIT_ULL(MTK_INFRA_BIT)
++#define MTK_SHARED_SGMII	BIT_ULL(MTK_SHARED_SGMII_BIT)
++#define MTK_HWLRO		BIT_ULL(MTK_HWLRO_BIT)
++#define MTK_SHARED_INT		BIT_ULL(MTK_SHARED_INT_BIT)
++#define MTK_TRGMII_MT7621_CLK	BIT_ULL(MTK_TRGMII_MT7621_CLK_BIT)
++#define MTK_QDMA		BIT_ULL(MTK_QDMA_BIT)
++#define MTK_SOC_MT7628		BIT_ULL(MTK_SOC_MT7628_BIT)
++#define MTK_RSTCTRL_PPE1	BIT_ULL(MTK_RSTCTRL_PPE1_BIT)
++#define MTK_U3_COPHY_V2		BIT_ULL(MTK_U3_COPHY_V2_BIT)
+ 
+ #define MTK_ETH_MUX_GDM1_TO_GMAC1_ESW		\
+-	BIT(MTK_ETH_MUX_GDM1_TO_GMAC1_ESW_BIT)
++	BIT_ULL(MTK_ETH_MUX_GDM1_TO_GMAC1_ESW_BIT)
+ #define MTK_ETH_MUX_GMAC2_GMAC0_TO_GEPHY	\
+-	BIT(MTK_ETH_MUX_GMAC2_GMAC0_TO_GEPHY_BIT)
++	BIT_ULL(MTK_ETH_MUX_GMAC2_GMAC0_TO_GEPHY_BIT)
+ #define MTK_ETH_MUX_U3_GMAC2_TO_QPHY		\
+-	BIT(MTK_ETH_MUX_U3_GMAC2_TO_QPHY_BIT)
++	BIT_ULL(MTK_ETH_MUX_U3_GMAC2_TO_QPHY_BIT)
+ #define MTK_ETH_MUX_GMAC1_GMAC2_TO_SGMII_RGMII	\
+-	BIT(MTK_ETH_MUX_GMAC1_GMAC2_TO_SGMII_RGMII_BIT)
++	BIT_ULL(MTK_ETH_MUX_GMAC1_GMAC2_TO_SGMII_RGMII_BIT)
+ #define MTK_ETH_MUX_GMAC12_TO_GEPHY_SGMII	\
+-	BIT(MTK_ETH_MUX_GMAC12_TO_GEPHY_SGMII_BIT)
++	BIT_ULL(MTK_ETH_MUX_GMAC12_TO_GEPHY_SGMII_BIT)
+ 
+ /* Supported path present on SoCs */
+-#define MTK_ETH_PATH_GMAC1_RGMII	BIT(MTK_ETH_PATH_GMAC1_RGMII_BIT)
+-#define MTK_ETH_PATH_GMAC1_TRGMII	BIT(MTK_ETH_PATH_GMAC1_TRGMII_BIT)
+-#define MTK_ETH_PATH_GMAC1_SGMII	BIT(MTK_ETH_PATH_GMAC1_SGMII_BIT)
+-#define MTK_ETH_PATH_GMAC2_RGMII	BIT(MTK_ETH_PATH_GMAC2_RGMII_BIT)
+-#define MTK_ETH_PATH_GMAC2_SGMII	BIT(MTK_ETH_PATH_GMAC2_SGMII_BIT)
+-#define MTK_ETH_PATH_GMAC2_GEPHY	BIT(MTK_ETH_PATH_GMAC2_GEPHY_BIT)
+-#define MTK_ETH_PATH_GDM1_ESW		BIT(MTK_ETH_PATH_GDM1_ESW_BIT)
++#define MTK_ETH_PATH_GMAC1_RGMII	BIT_ULL(MTK_ETH_PATH_GMAC1_RGMII_BIT)
++#define MTK_ETH_PATH_GMAC1_TRGMII	BIT_ULL(MTK_ETH_PATH_GMAC1_TRGMII_BIT)
++#define MTK_ETH_PATH_GMAC1_SGMII	BIT_ULL(MTK_ETH_PATH_GMAC1_SGMII_BIT)
++#define MTK_ETH_PATH_GMAC2_RGMII	BIT_ULL(MTK_ETH_PATH_GMAC2_RGMII_BIT)
++#define MTK_ETH_PATH_GMAC2_SGMII	BIT_ULL(MTK_ETH_PATH_GMAC2_SGMII_BIT)
++#define MTK_ETH_PATH_GMAC2_GEPHY	BIT_ULL(MTK_ETH_PATH_GMAC2_GEPHY_BIT)
++#define MTK_ETH_PATH_GDM1_ESW		BIT_ULL(MTK_ETH_PATH_GDM1_ESW_BIT)
+ 
+ #define MTK_GMAC1_RGMII		(MTK_ETH_PATH_GMAC1_RGMII | MTK_RGMII)
+ #define MTK_GMAC1_TRGMII	(MTK_ETH_PATH_GMAC1_TRGMII | MTK_TRGMII)
+@@ -1045,7 +1045,7 @@ struct mtk_reg_map {
+ struct mtk_soc_data {
+ 	const struct mtk_reg_map *reg_map;
+ 	u32             ana_rgc3;
+-	u32		caps;
++	u64		caps;
+ 	u32		required_clks;
+ 	bool		required_pctl;
+ 	u8		offload_version;
 -- 
-2.40.1
-
+2.41.0
 
