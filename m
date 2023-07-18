@@ -4,79 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 295CCC001DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:07:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C3B8C0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 08:08:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/6/T7Rx9XkXI/OQ+PALxwqi90pDZgczqC9OMeg5WiCE=; b=iaPGqq0N2sE8xJSss2+O6RyvtJ
-	t1rNwzLsWgvHhOP1TJcvVJJKJyRCo7p7LNeQKj7z7Fp78xbhDULBonZV4PAZjpfPy+h33aqSGVoEq
-	pvRZ25FOtgzP4JILIZmLGyN/rDmMy+LOF+/lmTA8y/FhxeMtfjGCeXF/AFO05FXId57B1e5cxBGHp
-	i075dsa4DQnAHti8mASH/+UyIPA2ijvO1MXd+DR5RUZCL8CqL/MPXcq4HCpQZ0hv+k7DbGl2oNaR3
-	7TzpKzxrYpipZq16zVTjwCKCNkNos2m+6fEpDwiIpsf7OpA/mBYO35xPMjt0PPp47bB2boyHt89sL
-	xB09MT9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K6bRLOVfSwW0qn3SMzPfFP/67dSzOtG9jDmNa7DKFhQ=; b=QhxiYzZ/EA1J4Qmvyh4kB3WaP0
+	BkuCmGv7I1LvHTjpPKTMpG6NgYBnUnRZNvB4KcNdjaZA5hmZ3xQ/hcbkVGhEVQfBpwHcWLNu+FoqB
+	arMtf6nyCl3TVBJUq5DVJ2HvfFqQWNI70P31u2qLp7dBXRtpyYGwASP37CVIoqLjsSd9BeWKfbbCv
+	jQbCrbG71t8OzrzOLVASALyZBL7g5/NaXelZFTCY+iehdSyHlUpZYTKdat4TCx3ucaSXX7H+6msbs
+	jUFdJuzS0b12TlFyFhPxQpKjpBWJwux9gbssdZA5h9vbKWrz1ix8IlewmLW4nqsEivcoSYNr/F09p
+	0908mBBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2Du-006E5x-06;
-	Wed, 19 Jul 2023 08:07:50 +0000
+	id 1qM2Ev-006EX6-1L;
+	Wed, 19 Jul 2023 08:08:53 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM2Ds-006E4e-0t;
-	Wed, 19 Jul 2023 08:07:48 +0000
+	id 1qM2Eu-006EWc-0t
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 19 Jul 2023 08:08:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:To:From:Date:Sender:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=/6/T7Rx9XkXI/OQ+PALxwqi90pDZgczqC9OMeg5WiCE=; b=VerkgzgghYgAGf8Zy8nROWB9yP
-	X82jOPApdhN4O34D4hgZRDD5v6L3TAaiF/7Oj+MOilGBZceL9MxOUG73RpXOpro4vcnBuWNZeTkN5
-	edB2dJG5Egz9PUeROH1okOAz2qaMzJNrErNAlJGWfsspxQMoBuPd5cwXlRpvPakwmocrby/JixTZy
-	6lSDNSXIQgXFis4HTK3rKFsop7+MIjNoJbmIOHBAH1TzLvfIXllkTe5Q3ZGkSFyl0JwO/rLr+PAb9
-	hytPIMzlW5ktzu5LfE6zRRXTagzsH4tU2s+4vYDPbnKUqrGlQ+ct6kMIWJJOJVNje3Ty8yJg1sLwk
-	NzAs2Lug==;
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=K6bRLOVfSwW0qn3SMzPfFP/67dSzOtG9jDmNa7DKFhQ=; b=Xy5Icx3stisaj9BHh3fLO6O/QT
+	EVKZgVDC+i0kyUFohhRLBpXHeUHlW32IbmY09ek6O3KoZUu3y/oibT+izJLwxSXISnU2rh0b6hOxQ
+	XnwE0xVFlzYBObjnilz/SJmGZ5z5ankl0h46uR+oRrmKI20f5JMFpezeRmlZoV/DzvTwyZkc9XHU4
+	hkj+5Oi4gZP8Um+70YjBUMW8gBDyUZqG+zCoONAinVdIhFAZcFGpfgXfY6/lrIs5K3OnT6QJ6RM9j
+	8KRz2PBTZDznIPfc/T4tV1yMq/2s7ijPACx4+fVH28Oak96S+YxbjUnTiCxWyfJKGboa9g363+h14
+	/IK+pqlQ==;
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLsIv-00C4Md-0B;
-	Tue, 18 Jul 2023 21:32:47 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1qLsIb-0001MD-29;
-	Tue, 18 Jul 2023 21:32:01 +0000
-Date: Tue, 18 Jul 2023 22:31:53 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Greg Ungerer <gerg@kernel.org>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v3 6/9] net: ethernet: mtk_eth_soc: add NETSYS_V3
- version support
-Message-ID: <121a8ac65c685a896c2b046e00cf490cd61e61b0.1689714291.git.daniel@makrotopia.org>
-References: <cover.1689714290.git.daniel@makrotopia.org>
+	id 1qLgDv-00BJOo-2f
+	for linux-mediatek@lists.infradead.org;
+	Tue, 18 Jul 2023 08:38:25 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-3fbef8ad9bbso53958455e9.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Jul 2023 01:38:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689669438; x=1692261438;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=K6bRLOVfSwW0qn3SMzPfFP/67dSzOtG9jDmNa7DKFhQ=;
+        b=sSX6dRkYE95JM6tA4E+4JXuPwzYm/8iu/2yxvLVU+PoHPAhUq36r+qNyoqcryZUF6s
+         9QI2OR2B2GTBPE9LPS6ISOc+UnvJHIqWKepy4sB7QUHYfUIbRSqtAy6crsi0r1PLrrSQ
+         zxU9CqmorIZX6iVyoMKwrv/YRa+rA596+MeaLCtsMX+qB1BPAKA4fni4E1XBo5Mkv5Ri
+         IS2A81ThAQwHFbmppOgki2wF7933Oa6eXp/3eZ9GW1t7CNANosZinxJg9rh6XtdUXDwa
+         CqK/V2IoknmmVBp52EUbuC8kp6TgrlOIS7mW/A+g27VtDnfeMH8CX29545o3Z+exdRYn
+         oCng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689669438; x=1692261438;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=K6bRLOVfSwW0qn3SMzPfFP/67dSzOtG9jDmNa7DKFhQ=;
+        b=IH151nzZ++gDuNi4wrWYr9DOsnLlDhfXYYFRS1pwaJ1e8mI8XOKzzkvS2VFm+rIy+q
+         JSfhjRzDXc9sDNYM7ykhk0SFn2a7iBp5I02emz5+uX49f/s3rOX70ABVSdpm9QCzWbqi
+         b5ULzNfk2eC0GX7l1R3lW1UjkSIZKxtiyidThd+sc65i1jIEE+gDfV7RmdQn70wnfjyp
+         NjiZAueITtFf9dd/aI/TszedDH6vtprI1zZysfGB4m5y2HiWOPIdOgcNGx/8EP/G8i26
+         D10gijFQBDkT21oyPNm/SY3o780FZfjD+FZAkrh5hIGrlzd5iJEtiCx7UaSpMePFWbVS
+         tmWw==
+X-Gm-Message-State: ABy/qLad3QQBTahOpirSkca8qnCpK8yZzWoG94vwv043wzBW7P/YHCmh
+	16yHixZpuKNYyvLrQDxYhW+cXA==
+X-Google-Smtp-Source: APBJJlEooqOWwehp95jYwVjhyi4es64yaNnAecI+7w58zjvmoB3sjpzHREGowtUoSx5lAf04Ecvhdg==
+X-Received: by 2002:a7b:cd0a:0:b0:3fb:a1d9:ede8 with SMTP id f10-20020a7bcd0a000000b003fba1d9ede8mr1172225wmj.10.1689669437674;
+        Tue, 18 Jul 2023 01:37:17 -0700 (PDT)
+Received: from [10.101.1.6] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.gmail.com with ESMTPSA id p1-20020adff201000000b003141f3843e6sm1677348wro.90.2023.07.18.01.37.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Jul 2023 01:37:17 -0700 (PDT)
+Message-ID: <59a88e00-0758-32b8-7ce4-8dea84a9b0f7@baylibre.com>
+Date: Tue, 18 Jul 2023 10:37:13 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1689714290.git.daniel@makrotopia.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 2/2] clk: mediatek: mt8195-topckgen: Refactor parents for
+ top_dp/edp muxes
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Maxime Ripard <mripard@kernel.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, sboyd@kernel.org,
+ mturquette@baylibre.com, matthias.bgg@gmail.com, msp@baylibre.com,
+ yangyingliang@huawei.com, u.kleine-koenig@pengutronix.de,
+ miles.chen@mediatek.com, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com
+References: <20230713072138.84117-1-angelogioacchino.delregno@collabora.com>
+ <20230713072138.84117-3-angelogioacchino.delregno@collabora.com>
+ <9a0817c2-4101-5c21-977d-77ac0d83a067@baylibre.com>
+ <CAGXv+5E7YYdkG7GtxG90KzdAG8Kke+74Amtbw4mmyVNZgDZHRA@mail.gmail.com>
+ <jv6daj2w3pwjtde3m3m26yg4wyxbbio4zqra5yqc4gb32ri5ub@noinbbkjovwm>
+ <25724ee3-858a-01eb-352b-3edbfad31c8e@collabora.com>
+ <jxgy2pvns4ri2aj5nmdhb4zbluseuzdejbplh2avwz63df2cfx@grrrdm6ujzi4>
+ <24d17b07-1e8d-05f6-46b7-9da1ff1bed7a@collabora.com>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <24d17b07-1e8d-05f6-46b7-9da1ff1bed7a@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_223224_283940_F1BE73CB 
-X-CRM114-Status: GOOD (  24.32  )
+X-CRM114-CacheID: sfid-20230718_093824_103402_EB9F2AC4 
+X-CRM114-Status: GOOD (  19.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,311 +122,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Introduce NETSYS_V3 chipset version support.
-This is a preliminary patch to introduce support for MT7988 SoC.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 105 ++++++++++++++------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  48 +++++++--
- 2 files changed, 116 insertions(+), 37 deletions(-)
+On 17/07/2023 16:30, AngeloGioacchino Del Regno wrote:
+>>>>> However I'm not sure if that works for parents. It should, given the
+>>>>> original use case was for the sunxi platforms, which like the MediaTek
+>>>>> platform here has 2 PLLs for video related consumers, but I couldn't
+>>>>> find code verifying it.
+>>>>
+>>>> If you want to prevent clocks from ever being reparented, you can use
+>>>> the new clk_hw_determine_rate_no_reparent() determine_rate
+>>>> implementation.
+>>>>
+>>>
+>>> We want the clocks to be reparented, as we need them to switch 
+>>> parents as
+>>> explained before... that's more or less how the tree looks:
+>>>
+>>> TVDPLL(x) -> PLL Divider (fixed) -> MUX -> Gate -> Controller
+>>>
+>>> Besides, I think that forcing *one* parent to the dp/edp mux would 
+>>> produce a
+>>> loss of the flexibility that the clock framework provides.
+>>>
+>>> I again want to emphasize on the fact that TVDPLL1 and TVDPLL2 are 
+>>> *identical*
+>>> in specs, and on that there will never be a MT8195 SoC that has only 
+>>> one of
+>>> the two PLLs, for obvious reasons...
+>>>
+>>> P.S.: If you need more context, I'll be glad to answer to any other 
+>>> question!
+>>
+>> Then I have no idea what the question is :)
+>>
+>> What are you trying to achieve / fix, and how can I help you ? :)
+>>
+> 
+> Chen-Yu, Alexandre had/have questions about if there was any other 
+> solution instead
+> of using the solution of *this* commit, so, if there's any other better 
+> solution
+> than the one that I've sent as this commit.
+> 
+> I'm the one saying that this commit is the best solution :-P
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index ad8381be005f2..dd5a08c7ed41a 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -943,17 +943,32 @@ void mtk_stats_update_mac(struct mtk_mac *mac)
- 			mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x20 + offs);
- 		hw_stats->rx_flow_control_packets +=
- 			mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x24 + offs);
--		hw_stats->tx_skip +=
--			mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x28 + offs);
--		hw_stats->tx_collisions +=
--			mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x2c + offs);
--		hw_stats->tx_bytes +=
--			mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x30 + offs);
--		stats =  mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x34 + offs);
--		if (stats)
--			hw_stats->tx_bytes += (stats << 32);
--		hw_stats->tx_packets +=
--			mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x38 + offs);
-+
-+		if (mtk_is_netsys_v3_or_greater(eth)) {
-+			hw_stats->tx_skip +=
-+				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x50 + offs);
-+			hw_stats->tx_collisions +=
-+				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x54 + offs);
-+			hw_stats->tx_bytes +=
-+				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x40 + offs);
-+			stats =  mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x44 + offs);
-+			if (stats)
-+				hw_stats->tx_bytes += (stats << 32);
-+			hw_stats->tx_packets +=
-+				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x48 + offs);
-+		} else {
-+			hw_stats->tx_skip +=
-+				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x28 + offs);
-+			hw_stats->tx_collisions +=
-+				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x2c + offs);
-+			hw_stats->tx_bytes +=
-+				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x30 + offs);
-+			stats =  mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x34 + offs);
-+			if (stats)
-+				hw_stats->tx_bytes += (stats << 32);
-+			hw_stats->tx_packets +=
-+				mtk_r32(mac->hw, reg_map->gdm1_cnt + 0x38 + offs);
-+		}
- 	}
- 
- 	u64_stats_update_end(&hw_stats->syncp);
-@@ -1257,7 +1272,10 @@ static void mtk_tx_set_dma_desc_v2(struct net_device *dev, void *txd,
- 		data |= TX_DMA_LS0;
- 	WRITE_ONCE(desc->txd3, data);
- 
--	data = (mac->id + 1) << TX_DMA_FPORT_SHIFT_V2; /* forward port */
-+	if (mac->id == MTK_GMAC3_ID)
-+		data = PSE_GDM3_PORT;
-+	else
-+		data = (mac->id + 1) << TX_DMA_FPORT_SHIFT_V2; /* forward port */
- 	data |= TX_DMA_SWC_V2 | QID_BITS_V2(info->qid);
- 	WRITE_ONCE(desc->txd4, data);
- 
-@@ -1268,6 +1286,8 @@ static void mtk_tx_set_dma_desc_v2(struct net_device *dev, void *txd,
- 		/* tx checksum offload */
- 		if (info->csum)
- 			data |= TX_DMA_CHKSUM_V2;
-+		if (mtk_is_netsys_v3_or_greater(eth) && netdev_uses_dsa(dev))
-+			data |= TX_DMA_SPTAG_V3;
- 	}
- 	WRITE_ONCE(desc->txd5, data);
- 
-@@ -1333,8 +1353,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
- 	mtk_tx_set_dma_desc(dev, itxd, &txd_info);
- 
- 	itx_buf->flags |= MTK_TX_FLAGS_SINGLE0;
--	itx_buf->flags |= (!mac->id) ? MTK_TX_FLAGS_FPORT0 :
--			  MTK_TX_FLAGS_FPORT1;
-+	itx_buf->mac_id = mac->id;
- 	setup_tx_buf(eth, itx_buf, itxd_pdma, txd_info.addr, txd_info.size,
- 		     k++);
- 
-@@ -1382,8 +1401,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
- 				memset(tx_buf, 0, sizeof(*tx_buf));
- 			tx_buf->data = (void *)MTK_DMA_DUMMY_DESC;
- 			tx_buf->flags |= MTK_TX_FLAGS_PAGE0;
--			tx_buf->flags |= (!mac->id) ? MTK_TX_FLAGS_FPORT0 :
--					 MTK_TX_FLAGS_FPORT1;
-+			tx_buf->mac_id = mac->id;
- 
- 			setup_tx_buf(eth, tx_buf, txd_pdma, txd_info.addr,
- 				     txd_info.size, k++);
-@@ -1685,7 +1703,7 @@ static int mtk_xdp_frame_map(struct mtk_eth *eth, struct net_device *dev,
- 	}
- 	mtk_tx_set_dma_desc(dev, txd, txd_info);
- 
--	tx_buf->flags |= !mac->id ? MTK_TX_FLAGS_FPORT0 : MTK_TX_FLAGS_FPORT1;
-+	tx_buf->mac_id = mac->id;
- 	tx_buf->type = dma_map ? MTK_TYPE_XDP_NDO : MTK_TYPE_XDP_TX;
- 	tx_buf->data = (void *)MTK_DMA_DUMMY_DESC;
- 
-@@ -1935,11 +1953,24 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 			break;
- 
- 		/* find out which mac the packet come from. values start at 1 */
--		if (mtk_is_netsys_v2_or_greater(eth))
--			mac = RX_DMA_GET_SPORT_V2(trxd.rxd5) - 1;
--		else if (!MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628) &&
--			 !(trxd.rxd4 & RX_DMA_SPECIAL_TAG))
-+		if (mtk_is_netsys_v2_or_greater(eth)) {
-+			u32 val = RX_DMA_GET_SPORT_V2(trxd.rxd5);
-+
-+			switch (val) {
-+			case PSE_GDM1_PORT:
-+			case PSE_GDM2_PORT:
-+				mac = val - 1;
-+				break;
-+			case PSE_GDM3_PORT:
-+				mac = MTK_GMAC3_ID;
-+				break;
-+			default:
-+				break;
-+			}
-+		} else if (!MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628) &&
-+			   !(trxd.rxd4 & RX_DMA_SPECIAL_TAG)) {
- 			mac = RX_DMA_GET_SPORT(trxd.rxd4) - 1;
-+		}
- 
- 		if (unlikely(mac < 0 || mac >= MTK_MAX_DEVS ||
- 			     !eth->netdev[mac]))
-@@ -2161,7 +2192,6 @@ static int mtk_poll_tx_qdma(struct mtk_eth *eth, int budget,
- 
- 	while ((cpu != dma) && budget) {
- 		u32 next_cpu = desc->txd2;
--		int mac = 0;
- 
- 		desc = mtk_qdma_phys_to_virt(ring, desc->txd2);
- 		if ((desc->txd3 & TX_DMA_OWNER_CPU) == 0)
-@@ -2169,15 +2199,13 @@ static int mtk_poll_tx_qdma(struct mtk_eth *eth, int budget,
- 
- 		tx_buf = mtk_desc_to_tx_buf(ring, desc,
- 					    eth->soc->txrx.txd_size);
--		if (tx_buf->flags & MTK_TX_FLAGS_FPORT1)
--			mac = 1;
--
- 		if (!tx_buf->data)
- 			break;
- 
- 		if (tx_buf->data != (void *)MTK_DMA_DUMMY_DESC) {
- 			if (tx_buf->type == MTK_TYPE_SKB)
--				mtk_poll_tx_done(eth, state, mac, tx_buf->data);
-+				mtk_poll_tx_done(eth, state, tx_buf->mac_id,
-+						 tx_buf->data);
- 
- 			budget--;
- 		}
-@@ -3788,7 +3816,24 @@ static int mtk_hw_init(struct mtk_eth *eth, bool reset)
- 	mtk_w32(eth, eth->soc->txrx.rx_irq_done_mask, reg_map->qdma.int_grp + 4);
- 	mtk_w32(eth, 0x21021000, MTK_FE_INT_GRP);
- 
--	if (mtk_is_netsys_v2_or_greater(eth)) {
-+	if (mtk_is_netsys_v3_or_greater(eth)) {
-+		/* PSE should not drop port1, port8 and port9 packets */
-+		mtk_w32(eth, 0x00000302, PSE_DROP_CFG);
-+
-+		/* GDM and CDM Threshold */
-+		mtk_w32(eth, 0x00000707, MTK_CDMW0_THRES);
-+		mtk_w32(eth, 0x00000077, MTK_CDMW1_THRES);
-+
-+		/* Disable GDM1 RX CRC stripping */
-+		mtk_m32(eth, MTK_GDMA_STRP_CRC, 0, MTK_GDMA_FWD_CFG(0));
-+
-+		/* PSE GDM3 MIB counter has incorrect hw default values,
-+		 * so the driver ought to read clear the values beforehand
-+		 * in case ethtool retrieve wrong mib values.
-+		 */
-+		for (i = 0; i < 0x80; i += 0x4)
-+			mtk_r32(eth, reg_map->gdm1_cnt + 0x100 + i);
-+	} else if (!mtk_is_netsys_v1(eth)) {
- 		/* PSE should not drop port8 and port9 packets from WDMA Tx */
- 		mtk_w32(eth, 0x00000300, PSE_DROP_CFG);
- 
-@@ -4358,7 +4403,11 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
- 	}
- 	spin_lock_init(&mac->hw_stats->stats_lock);
- 	u64_stats_init(&mac->hw_stats->syncp);
--	mac->hw_stats->reg_offset = id * MTK_STAT_OFFSET;
-+
-+	if (mtk_is_netsys_v3_or_greater(eth))
-+		mac->hw_stats->reg_offset = id * 0x80;
-+	else
-+		mac->hw_stats->reg_offset = id * 0x40;
- 
- 	/* phylink create */
- 	err = of_get_phy_mode(np, &phy_mode);
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index e33be61acc047..2810c250ae9a6 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -122,6 +122,7 @@
- #define MTK_GDMA_ICS_EN		BIT(22)
- #define MTK_GDMA_TCS_EN		BIT(21)
- #define MTK_GDMA_UCS_EN		BIT(20)
-+#define MTK_GDMA_STRP_CRC	BIT(16)
- #define MTK_GDMA_TO_PDMA	0x0
- #define MTK_GDMA_DROP_ALL       0x7777
- 
-@@ -287,8 +288,6 @@
- /* QDMA Interrupt grouping registers */
- #define MTK_RLS_DONE_INT	BIT(0)
- 
--#define MTK_STAT_OFFSET		0x40
--
- /* QDMA TX NUM */
- #define QID_BITS_V2(x)		(((x) & 0x3f) << 16)
- #define MTK_QDMA_GMAC2_QID	8
-@@ -301,6 +300,8 @@
- #define TX_DMA_CHKSUM_V2	(0x7 << 28)
- #define TX_DMA_TSO_V2		BIT(31)
- 
-+#define TX_DMA_SPTAG_V3         BIT(27)
-+
- /* QDMA V2 descriptor txd4 */
- #define TX_DMA_FPORT_SHIFT_V2	8
- #define TX_DMA_FPORT_MASK_V2	0xf
-@@ -634,12 +635,6 @@ enum mtk_tx_flags {
- 	 */
- 	MTK_TX_FLAGS_SINGLE0	= 0x01,
- 	MTK_TX_FLAGS_PAGE0	= 0x02,
--
--	/* MTK_TX_FLAGS_FPORTx allows tracking which port the transmitted
--	 * SKB out instead of looking up through hardware TX descriptor.
--	 */
--	MTK_TX_FLAGS_FPORT0	= 0x04,
--	MTK_TX_FLAGS_FPORT1	= 0x08,
- };
- 
- /* This enum allows us to identify how the clock is defined on the array of the
-@@ -725,6 +720,35 @@ enum mtk_dev_state {
- 	MTK_RESETTING
- };
- 
-+/* PSE Port Definition */
-+enum mtk_pse_port {
-+	PSE_ADMA_PORT = 0,
-+	PSE_GDM1_PORT,
-+	PSE_GDM2_PORT,
-+	PSE_PPE0_PORT,
-+	PSE_PPE1_PORT,
-+	PSE_QDMA_TX_PORT,
-+	PSE_QDMA_RX_PORT,
-+	PSE_DROP_PORT,
-+	PSE_WDMA0_PORT,
-+	PSE_WDMA1_PORT,
-+	PSE_TDMA_PORT,
-+	PSE_NONE_PORT,
-+	PSE_PPE2_PORT,
-+	PSE_WDMA2_PORT,
-+	PSE_EIP197_PORT,
-+	PSE_GDM3_PORT,
-+	PSE_PORT_MAX
-+};
-+
-+/* GMAC Identifier */
-+enum mtk_gmac_id {
-+	MTK_GMAC1_ID = 0,
-+	MTK_GMAC2_ID,
-+	MTK_GMAC3_ID,
-+	MTK_GMAC_ID_MAX
-+};
-+
- enum mtk_tx_buf_type {
- 	MTK_TYPE_SKB,
- 	MTK_TYPE_XDP_TX,
-@@ -743,7 +767,8 @@ struct mtk_tx_buf {
- 	enum mtk_tx_buf_type type;
- 	void *data;
- 
--	u32 flags;
-+	u16 mac_id;
-+	u16 flags;
- 	DEFINE_DMA_UNMAP_ADDR(dma_addr0);
- 	DEFINE_DMA_UNMAP_LEN(dma_len0);
- 	DEFINE_DMA_UNMAP_ADDR(dma_addr1);
-@@ -1191,6 +1216,11 @@ static inline bool mtk_is_netsys_v2_or_greater(struct mtk_eth *eth)
- 	return eth->soc->version > 1;
- }
- 
-+static inline bool mtk_is_netsys_v3_or_greater(struct mtk_eth *eth)
-+{
-+	return eth->soc->version > 2;
-+}
-+
- static inline struct mtk_foe_entry *
- mtk_foe_get_entry(struct mtk_ppe *ppe, u16 hash)
- {
+Hi Angelo,
+
+My solution is based on PLL static allocation, because I missed it could 
+be reparented actually. I think I've a better understanding of this 
+commit now, thanks to your explanations. Looks fine for me.
+
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+
 -- 
-2.41.0
+Regards,
+Alexandre
 
