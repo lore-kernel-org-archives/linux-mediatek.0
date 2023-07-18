@@ -4,90 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B35C1C001DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:37:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81E9FC001B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:38:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cUcNwMpkRou4HoWP59j29IOth9JECxsyonqdKzM916o=; b=sO+X9MHxq5rrDLpurmAZTbjSPh
-	r+Z18sY52Q15OMXvBqzcnpr4lxQxngahuuqU1EszzM6NlktIIKiQ+uwnJ+LejGe7c/9j25kM5VI2u
-	mRFrU4t5Zjqah/P2DeXjnAo9eyJblP7qBgABWNh7UY59hkS82CjQrvin8q+ugwavcgUyw7M84d+wV
-	ZlvaUoEdNsWzS7VpMThIPbP3YcQjP5blVZZuzBtLJCEvW3Y1lIwh78k7UYpkmXYlBnUG4BUFS9yPs
-	ZX3Fue/fdzYN68D0N8mJIrHeSKfKhWrDxV4ZV4aezDy9TxPiWTkPhxneQxh9Usu0w51v/LXBTXrxX
-	qM2x77LQ==;
+	bh=EL/S9Tllz7yaDtU3nVskj85X6qXO9Rt0ZJ4RQzT3drQ=; b=bK8smUa3brtijiRPXpUfqXOtzc
+	rbYZFiH/v8sqEPMQvewR8CRd3X6PMCCRjbEKlUhavbWU4FPH+/V89GVFfXra34UGzRW7cABvWo3eL
+	qcPvGtfjY9u6biAg+8CNleHSxlfyIms2sBHOqVFfFubt7SO9xhK2zxgm73HmW8++Vx3BrmyHc/zIM
+	COlRs5h+A1DiA0o/6n5g1/AcVqTOLuwqL7dyKHj2Mb0uRCLMVS/9hIu+XkJunNyWqFAL/wnWSfEvZ
+	MPsZIAUFrbhswzKaaK0k5jQdE6lAVOP+PwsP898Ws8X3qVLysyYufLUoRtvX4C2LWO5ZI+UDS8t3D
+	ijDJ/M2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0oY-005obf-0z;
-	Wed, 19 Jul 2023 06:37:34 +0000
+	id 1qM0pN-005pB8-09;
+	Wed, 19 Jul 2023 06:38:25 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0oW-005oZB-0R;
-	Wed, 19 Jul 2023 06:37:32 +0000
+	id 1qM0pL-005p96-0Y;
+	Wed, 19 Jul 2023 06:38:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=cUcNwMpkRou4HoWP59j29IOth9JECxsyonqdKzM916o=; b=OYgg9LsoOXRB13Boq4vU3FnnE9
-	xWFX/huZ6LM1+b5duLbRdu38+vTfXlaMD56DWP96Mwh7f5bRD1Z3IXsRhZlUsz1JYuj436R7vOh4k
-	iIOGDYGlFJllihI4DMPrA/UYKjvwm1UxGO7O/DebP9nAw97dWYgbqCDNNswmaI+xQ0yn/OOcycjYG
-	Gka4XMSU3X7gagPQuCzcjhkBfWbfEYBnHAXd4aEPk9PJTtAzNR8a2amffbDIR/ATqrT0l2f5PTDtz
-	hLV3dz36Y00mOTWN3FQX8Cqdew883a1y94CsCewRtj6LXlGDZVOQNPq+BAGYoVqwC34X/Z6Cazp3v
-	JUMdi2DA==;
-Received: from aposti.net ([89.234.176.197])
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=EL/S9Tllz7yaDtU3nVskj85X6qXO9Rt0ZJ4RQzT3drQ=; b=iDaaXhoG96U1WAqQK6IlvFfrGs
+	oWK2cY2ks8leLEcO9j1T8ZZfUoP+gRLgkCMvRYN46NJAAIZOFO8vv7tnos2hmLT4JPk4+E/AO5CWH
+	Jw24mqt99ZT6fYT2chZPUsw1JzjIFzsJCa6g+Jc2YjsZ9dhLpEeBxiYohdfNbFvGqsgeYDWxcm9WO
+	YNoC0ZPEukNs/mYSQomnpbineK+uXi4508jEh5n0cDWGLpgj087DXpHdoEvF9v+WGGTA2mqXLlH1G
+	nbAJeEs/JoPqVudTIo4KHRz6Ybxq27fe+49lUieY1hMY517ItYm15lH1Va2SQtwKXfJQgnuymm2FW
+	gcCp2JUA==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLjIY-00BTtf-1v;
-	Tue, 18 Jul 2023 11:55:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1689681308;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cUcNwMpkRou4HoWP59j29IOth9JECxsyonqdKzM916o=;
-	b=3Uf7/QWlCCH5tyFroVybd1Qgx2JU1l06CTuA9m3ghJn+G0lPlIIF/07/Hxm/ZxptzHo46Z
-	h2OZUg6m/lQhQJIB6Il4yacDOBHUwVFFbI50WGHrQQU43CQxBY24dhU5MIPMJCetRF/jeH
-	v8qQUt4kIp37e6JvSTUVskqe2fHxiMw=
-Message-ID: <8f32cb8377808a073b043e0adf3ccf5ae5a84c92.camel@crapouillou.net>
-Subject: Re: [PATCH v2 10/10] pinctrl: tegra: Switch to use
- DEFINE_NOIRQ_DEV_PM_OPS() helper
-From: Paul Cercueil <paul@crapouillou.net>
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg
- <mika.westerberg@linux.intel.com>, Linus Walleij
- <linus.walleij@linaro.org>,  Balsam CHIHI <bchihi@baylibre.com>, Claudiu
- Beznea <claudiu.beznea@microchip.com>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
-  linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-renesas-soc@vger.kernel.org, linux-tegra@vger.kernel.org, 
- linux-pm@vger.kernel.org, Andy Shevchenko <andy@kernel.org>, Sean Wang
- <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andrew Lunn <andrew@lunn.ch>, Gregory Clement
- <gregory.clement@bootlin.com>, Sebastian Hesselbarth
- <sebastian.hesselbarth@gmail.com>, Ludovic Desroches
- <ludovic.desroches@microchip.com>, Nicolas Ferre
- <nicolas.ferre@microchip.com>,  Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>,
- Pavel Machek <pavel@ucw.cz>
-Date: Tue, 18 Jul 2023 13:55:05 +0200
-In-Reply-To: <ZLZ6amp5HKUbm5w3@orome>
-References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
-	 <20230717172821.62827-11-andriy.shevchenko@linux.intel.com>
-	 <13f7153786cfcdc3c6185a3a674686f7fbf480dc.camel@crapouillou.net>
-	 <ZLZDL27zzDpY4q8E@orome>
-	 <5e4b5bc23f3edb3ed30cb465420a51ffceceb53d.camel@crapouillou.net>
-	 <ZLZ6amp5HKUbm5w3@orome>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	id 1qLmOT-00Bgq0-2M;
+	Tue, 18 Jul 2023 15:13:46 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9A3A96162F;
+	Tue, 18 Jul 2023 15:13:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7801AC433CD;
+	Tue, 18 Jul 2023 15:13:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689693186;
+	bh=MQCBoldfsIWuP0gtUrC3ZlbXNQ20ZbKT7ydnIEd0bvk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SIscyqQ0K0RDQ9Tfe9lkcyc//V3wMggRr29mlP0a7splQzBN8Uwd6lB/h8alUKcuA
+	 6lT9Rp1a0sHHcuqCZN3SX+Da3JwDBO1EyZdd5hAoyYyoIkt/7TFakIR04XgiotBgv2
+	 d40YmoS4mo9uD11Inf6T8OY/YL3eJVmO0698/bVXcngxFRoc72Z+UPX2pcrVabpQpG
+	 6zD3OkKHotRJ9KddBPKEYWPeTFWBgOp7jcBmKLJGz0c2v2PIq6JKdxuC1KTuWgrRxD
+	 Aakf/LBn4D2ahWC9kQuAARxtd0prue28hFqk/JrIA+e7f/8QTb1OGCWlxzLl4ncVXi
+	 dnvWnJzf2uHjg==
+Date: Tue, 18 Jul 2023 16:13:01 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Jason-ch Chen <jason-ch.chen@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?iso-8859-1?Q?N=EDcolas_F_=2E_R_=2E_A_=2E?= Prado <nfraprado@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4 3/4] dt-bindings: soc: mediatek: pwrap: Modify
+ compatible for MT8188
+Message-ID: <20230718-sporting-refurbish-85fdfab85d32@spud>
+References: <20230718110947.13426-1-jason-ch.chen@mediatek.com>
+ <20230718110947.13426-4-jason-ch.chen@mediatek.com>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="EXKcfWAFHTVX6jj4"
+Content-Disposition: inline
+In-Reply-To: <20230718110947.13426-4-jason-ch.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_125523_000644_55A03D89 
-X-CRM114-Status: GOOD (  28.77  )
+X-CRM114-CacheID: sfid-20230718_161344_918291_1860C4F9 
+X-CRM114-Status: GOOD (  20.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,83 +98,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le mardi 18 juillet 2023 =C3=A0 13:41 +0200, Thierry Reding a =C3=A9crit=C2=
-=A0:
-> On Tue, Jul 18, 2023 at 10:42:47AM +0200, Paul Cercueil wrote:
-> > Hi Thierry,
-> >=20
-> > Le mardi 18 juillet 2023 =C3=A0 09:45 +0200, Thierry Reding a =C3=A9cri=
-t=C2=A0:
-> > > On Mon, Jul 17, 2023 at 09:14:12PM +0200, Paul Cercueil wrote:
-> > > > Hi Andy,
-> > > >=20
-> > > > Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a
-> > > > =C3=A9crit=C2=A0:
-> > > > > Since pm.h provides a helper for system no-IRQ PM callbacks,
-> > > > > switch the driver to use it instead of open coded variant.
-> > > > >=20
-> > > > > Signed-off-by: Andy Shevchenko
-> > > > > <andriy.shevchenko@linux.intel.com>
-> > > > > ---
-> > > > > =C2=A0drivers/pinctrl/tegra/pinctrl-tegra.c | 5 +----
-> > > > > =C2=A01 file changed, 1 insertion(+), 4 deletions(-)
-> > > > >=20
-> > > > > diff --git a/drivers/pinctrl/tegra/pinctrl-tegra.c
-> > > > > b/drivers/pinctrl/tegra/pinctrl-tegra.c
-> > > > > index 4547cf66d03b..734c71ef005b 100644
-> > > > > --- a/drivers/pinctrl/tegra/pinctrl-tegra.c
-> > > > > +++ b/drivers/pinctrl/tegra/pinctrl-tegra.c
-> > > > > @@ -747,10 +747,7 @@ static int tegra_pinctrl_resume(struct
-> > > > > device
-> > > > > *dev)
-> > > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return 0;
-> > > > > =C2=A0}
-> > > > > =C2=A0
-> > > > > -const struct dev_pm_ops tegra_pinctrl_pm =3D {
-> > > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.suspend_noirq =3D &te=
-gra_pinctrl_suspend,
-> > > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.resume_noirq =3D &teg=
-ra_pinctrl_resume
-> > > > > -};
-> > > > > +DEFINE_NOIRQ_DEV_PM_OPS(tegra_pinctrl_pm,
-> > > > > tegra_pinctrl_suspend,
-> > > > > tegra_pinctrl_resume);
-> > > > > =C2=A0
-> > > > > =C2=A0static bool tegra_pinctrl_gpio_node_has_range(struct
-> > > > > tegra_pmx
-> > > > > *pmx)
-> > > > > =C2=A0{
-> > > >=20
-> > > > Another driver where using EXPORT_GPL_DEV_PM_OPS() would make
-> > > > more
-> > > > sense.
-> > >=20
-> > > We don't currently export these PM ops because none of the Tegra
-> > > pinctrl
-> > > drivers can be built as a module.
-> >=20
-> > This doesn't change anything. You'd want to use
-> > EXPORT_GPL_DEV_PM_OPS
-> > (or better, the namespaced version) so that the PM ops can be
-> > defined
-> > in one file and referenced in another, while still having them
-> > garbage-
-> > collected when CONFIG_PM is disabled.
+
+--EXKcfWAFHTVX6jj4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Jul 18, 2023 at 07:09:46PM +0800, Jason-ch Chen wrote:
+> From: jason-ch chen <Jason-ch.Chen@mediatek.com>
 >=20
-> Looking at the definition of EXPORT_GPL_DEV_PM_OPS(), it will cause
-> an
-> EXPORT_SYMBOL_GPL() to be added. So there very well is a change. And
-> it's a completely bogus change because no module is ever going to use
-> that symbol. If we were to ever support building the pinctrl driver
-> as
-> a module, then this would perhaps make sense, but we don't.
+> The reason for changing the patch was that while MT8188 uses the same
+> pwrap as MT8195,
 
-In this particular case the EXPORT_SYMBOL_GPL() isn't really important,
-the rest of EXPORT_GPL_DEV_PM_OPS() is.
+> the original code was only applicable to 'compatible =3D
+> "mediatek,mt8188-pwrap"'.
 
-I don't think having a symbol exported it is a big deal, TBH, if you
-use the namespaced version. If you really don't want that, we need a
-version of EXPORT_GPL_DEV_PM_OPS() that doesn't export the symbol.
+I don't really understand what this means. Did you mean, "the original
+binding only allowed..."? If so,
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
--Paul
+Thanks,
+Conor.
+
+> To resolve the DTBS check warning that
+> '['mediatek,mt8188-pwrap', 'mediatek,mt8195-pwrap', 'syscon'] is too
+> long', it is necessary to modify the code.
+>=20
+> Signed-off-by: jason-ch chen <Jason-ch.Chen@mediatek.com>
+> ---
+>  .../devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml    | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwra=
+p.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+> index a06ac2177444..4737e5f45d54 100644
+> --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+> @@ -41,7 +41,6 @@ properties:
+>                - mediatek,mt8173-pwrap
+>                - mediatek,mt8183-pwrap
+>                - mediatek,mt8186-pwrap
+> -              - mediatek,mt8188-pwrap
+>                - mediatek,mt8195-pwrap
+>                - mediatek,mt8365-pwrap
+>                - mediatek,mt8516-pwrap
+> @@ -50,6 +49,11 @@ properties:
+>                - mediatek,mt8186-pwrap
+>                - mediatek,mt8195-pwrap
+>            - const: syscon
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8188-pwrap
+> +          - const: mediatek,mt8195-pwrap
+> +          - const: syscon
+> =20
+>    reg:
+>      minItems: 1
+> --=20
+> 2.18.0
+>=20
+
+--EXKcfWAFHTVX6jj4
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZLar/QAKCRB4tDGHoIJi
+0gzUAQCA+hb03Fyyv+lFYbelmyhip/sbhwTGybZsMTusz4F8PwEAnaGi4QhoI8g3
+Wi+ugNFLwULR/RaU57KUagR75DitXgc=
+=dcTK
+-----END PGP SIGNATURE-----
+
+--EXKcfWAFHTVX6jj4--
 
