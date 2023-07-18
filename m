@@ -4,133 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD4D8EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:15:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 323E9EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 06:16:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=RnLEhHQWScLLHZqoEPStaexmOu00uTjsXHaDjwDdVW0=; b=xPE3Z0cj8cKq0bXLg0N8XTR100
-	bNy2/J/9yxePCPxW7s1s6k1Ow8yGC4zOmrH2JmhVjuO4fehOVH4NbXZBm5aTt6s0b8SBHPLUUN6Mn
-	0ZIOpqzmg7MOO4AvPWWIXUDEUPc50Q7nn6yMAdWWB9tPAMzbxGt/+jz8rFSBWoTUBx1iCSjHellte
-	z2Gt9lQbh2CzuKtv+28V1ExRxoA1bfwxRgGQUsnjq6JTZoxTGA1JlNwQWQjhN00J8nbdmeJMucE9u
-	qskKYNQtcxpFSOyRV3Il+V5Iu2fYlY32LTbFFYar2zAB1zCm17eoPdiDLlVwIFkyV0NEHqU7NuTJ+
-	DdyuM30A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4XXAvWK8rNQ/H4MBZnhz1+8BiEC/rhEPybQEdDVdR8c=; b=WKGdoDWZu3s9POsJJg/Z43nknZ
+	WevqGtAkVonUA+tYMEQzD9ewDl03iaEnlmLy4GSyiwrsfS3sRR+1Ra+Gh3z4RiHXQ1AqN+BCCYdO2
+	dEflvZf6p+xGjQxv1Th6vu/T5IGS/9ikldij2l3jita9QExq+x75NdD5x7VVEszGZ8ws5lrrRUQsr
+	lcLRHND9jEoh9cajSbGkTuA+1nJMCtY39k5QOuX9z3cOdZaO0w7PMlQjqA38cmi+puyyHiMd9Iqcn
+	f+zJOSmWPhR52hEqaxOp8G++eC51nRpNT32DfH7EAQ2MrOchw+8ut+FLT+ySxUiC5JfK4V7/UyUfA
+	RRVqEXJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0TY-005dGE-2C;
-	Wed, 19 Jul 2023 06:15:52 +0000
+	id 1qM0Tq-005dRT-36;
+	Wed, 19 Jul 2023 06:16:10 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM0TW-005dES-2L
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 19 Jul 2023 06:15:50 +0000
+	id 1qM0Tp-005dQI-2H;
+	Wed, 19 Jul 2023 06:16:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:In-Reply-To:References;
-	bh=RnLEhHQWScLLHZqoEPStaexmOu00uTjsXHaDjwDdVW0=; b=fHzqGqSOaw/8jmwq3t5AfDGQrv
-	2tuEDP1PkT4yxxlJb+vuvx9tji3akc09ezQQvRGHjY3PlKLTDW6MPM+gYfV5rsg73jL6UIyPj3Bs6
-	tGjq+ZcWiIcAOkd6hPc9U0164DcETfTnftrcwOduyxknQ92E1CWlgIqlKAWCXjjW8BudZHqvDHdNX
-	5OIp/7X4AqrK2N1do6I7jcqsSRJ0PK/UJW49A9jFuxb+ud6VVhO+KIea1A6hyI7C6IXPdNHCF1SwA
-	onmgAgwvIV3g8utpmD6u4AjR0c3cYSC3CquGQePu/w+/vyxqbtHEyo4Nsy/iJMhpIYFbvCzJWnKid
-	WSppE0pQ==;
-Received: from mail-tycjpn01olkn20813.outbound.protection.outlook.com ([2a01:111:f403:7010::813] helo=JPN01-TYC-obe.outbound.protection.outlook.com)
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=4XXAvWK8rNQ/H4MBZnhz1+8BiEC/rhEPybQEdDVdR8c=; b=EBOn7P2Ol6+5cmNEsrxenZqeUE
+	D+52sk6mD8+rc8HoVFwSgIQ6SBYROemSbm19JEChwNhpsAyMozGxY4Pbik5WIQk8B6oLPdqirHxQG
+	keJMy10BeiIHdpI44MFXCMf5cqNXcbMG97hqn9qeHwmAfsX92r1PBD64176MB15T+4wp6XZ8at+Dx
+	craSbJWX3Sya/mHF3YaVnGa1YQuhpDE8Ckq3WN2Rew/GnTQ3/gcCfZ6iXv5asKwycGvKS403mnSB+
+	LGibj9GI41hvJKxvUEFEioQg5byaub6FS35u1vT4s3UEYX9N08cU2oqnrDIHVpQhDfFe/E4HYboWi
+	Jmot0hOw==;
+Received: from mail-ot1-f51.google.com ([209.85.210.51])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLmRW-00BgwU-0o
-	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Jul 2023 15:16:52 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iEwNYmfYcdK8eLbnUQsW1Vg2T+oNX+bdNU5gob6R3DHURnBoodDEMdf+FChuWzyyKQpAi659kvQv5YzehwEOhbF8d6ZqDMZPSMBtpZCK0NyiE2PWhd7DA9BGUA6HZGQ6W6XnEb00uFciiO87D2AVYQwL4Y+ralQpzfWfjGgQm5fw3zDGPqFDw7Q7EQRhd3mSqTuc/SpP8ZhG9oHrpfLkiArX76CBqMjNrjN4fYNjSQSUyiIOV6cxMc3Gy1If32r1uBJ6iJFdT6YsLpa3OK8WQMvBPQKQleuZET/UQwbzxsl9QLhMGPZmf58v0uDJOeHkR/KTZMcXvqZWA2N0JTrA5w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=RnLEhHQWScLLHZqoEPStaexmOu00uTjsXHaDjwDdVW0=;
- b=T3h0Bk4UYZW6G7fsdv6XTNubjhX37Z1MQntvAG+8PoQwwtE8r031FAjWYVPVLJcQ1Tuh/gP8xrRPeK8dMK0GTATnme+mKT3ZpJKE45mTzpOivPhrZOkT8PcZYtRs6wGkE/rVcqm7ywo2yjuT4n5fhHO4I9WMP8tYT77NAmxIHc3fDn3YtXUZaRyAJvXRAot81Yt7l9PtA014glygmBq19UWPmCssFYgW+MBamPPgmdIljPDPK0F+q79SaaM7n6wDSzMV8F2noTqeGDoLHRmppY/C0busY5PC6u1IEoOEM54xVtzaa7Tv0FOK6nDQMnHK/XWwoe6v5SEW+JNLxFvDaw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RnLEhHQWScLLHZqoEPStaexmOu00uTjsXHaDjwDdVW0=;
- b=udx0Uprg4zHh6RYQOh8nztpTZBbtoEChRB1LazWfUVN6NsXZRuUmAGexVk1HP0/H36asEV/p64bLFEb1z+VlTj/r2DMTu5gM2Fvs2VGE6ASRVsPb4i4JCGNzlaoejY0i2qPh9emjGbOIccrlVfDuAdoWu8a1H5ih1lSDrz6N1QoMBf7cHyEAe1oetAGm/v6s33noVbS7W8LMGR95Xl8x5fjl+DPyoncnX8Ao3AEiec9abcCoSxfT1HAEMg1/QWBowhed1gXo8PPzM9voevPDgf6S7TPi7RShzcEh4zNm1t+ep7kuMQCiavMPJT+tEEB52eNwHHqFronfOTohj77RCg==
-Received: from TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM (2603:1096:404:8041::8)
- by OS3P286MB2215.JPNP286.PROD.OUTLOOK.COM (2603:1096:604:19f::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6609.23; Tue, 18 Jul
- 2023 15:16:10 +0000
-Received: from TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
- ([fe80::f4c2:4b38:d074:f1e9]) by TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
- ([fe80::f4c2:4b38:d074:f1e9%5]) with mapi id 15.20.6588.031; Tue, 18 Jul 2023
- 15:16:09 +0000
-From: Shiji Yang <yangshiji66@outlook.com>
-To: linux-gpio@vger.kernel.org
-Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-mips@vger.kernel.org,
-	Shiji Yang <yangshiji66@outlook.com>
-Subject: [PATCH] pinctrl: mtmips: do not log when repeating the same pinctrl request
-Date: Tue, 18 Jul 2023 23:13:46 +0800
-Message-ID: <TYAP286MB0315FB4EAD83E36FA371F119BC38A@TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM>
-X-Mailer: git-send-email 2.30.2
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TMN: [b4oWDF+nRk2gc1a5ICE0Szv/OHSKiDA0Ni0AFMdORW4=]
-X-ClientProxiedBy: TYCPR01CA0102.jpnprd01.prod.outlook.com
- (2603:1096:405:4::18) To TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:404:8041::8)
-X-Microsoft-Original-Message-ID: <20230718151346.2512-1-yangshiji66@outlook.com>
+	id 1qLhaW-00BOiy-0c;
+	Tue, 18 Jul 2023 10:05:50 +0000
+Received: by mail-ot1-f51.google.com with SMTP id 46e09a7af769-6b73741a632so4371108a34.3;
+        Tue, 18 Jul 2023 03:05:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689674739; x=1692266739;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=4XXAvWK8rNQ/H4MBZnhz1+8BiEC/rhEPybQEdDVdR8c=;
+        b=UeVgFOdl5KifdCnlY8V2BhuTZpU6K4MSuEeyfCy4Z17f9Vy0l/Ca7MmscFRgv+c9QF
+         67KU7ryZjdRpvTxdxwOoxxSrTWah0nGeIG1alEoXbWYiLI152R++T1iPL7SySeyOH+Qf
+         9amXlOpqQPX335+Mf1iX4FkHOXfric6LSLLNix8dl2dUhvmvlAZcvu9MYcZZvUuE+cJg
+         5F6ZWevR6mUY+X5X/kbICUwVjyDvj6XMIdy0KO/w/YTy6EMUEvGI3sBSIxU/n8gfG/EP
+         6KqkeQuVuzXHqsfbU/rmQ/l7Cz/K6qvrY+SIiVosAJJqs3ns/G+9o2LHZ1I3zQwaMw1P
+         jW0w==
+X-Gm-Message-State: ABy/qLYqa3dtggMQGIOjs7jo+QxxPYUhZ/NP94hzDqBGZIu9ElYWl8cH
+	KCXVBCSxQMyrpZmay08k60e6AHpguqb0bw==
+X-Google-Smtp-Source: APBJJlFA4n2nV1Yrvsyob0guhqD4TLs3L+zy+3c08axlS0QL/q2nd4VprEq8jUL/bPWZF62/ADBjDA==
+X-Received: by 2002:a9d:7e86:0:b0:6b9:b0f6:eab8 with SMTP id m6-20020a9d7e86000000b006b9b0f6eab8mr14645187otp.5.1689674738014;
+        Tue, 18 Jul 2023 03:05:38 -0700 (PDT)
+Received: from mail-oo1-f44.google.com (mail-oo1-f44.google.com. [209.85.161.44])
+        by smtp.gmail.com with ESMTPSA id g9-20020a9d6c49000000b006b991ac6408sm702228otq.40.2023.07.18.03.05.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Jul 2023 03:05:37 -0700 (PDT)
+Received: by mail-oo1-f44.google.com with SMTP id 006d021491bc7-5633b7e5f90so3686568eaf.1;
+        Tue, 18 Jul 2023 03:05:37 -0700 (PDT)
+X-Received: by 2002:a05:6358:339a:b0:132:962d:b5c5 with SMTP id
+ i26-20020a056358339a00b00132962db5c5mr12434640rwd.30.1689674736826; Tue, 18
+ Jul 2023 03:05:36 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TYAP286MB0315:EE_|OS3P286MB2215:EE_
-X-MS-Office365-Filtering-Correlation-Id: a2ffe219-22da-43af-eea4-08db87a1ea64
-X-MS-Exchange-SLBlob-MailProps: 9IecXKUgicDvYya0XF0tkOtrlBp/mHl3nDh0vrcNBF+mdsNI54ktcXt8VMBdbQOGC/ZQTfjEWeolhuJ/nwc1u3e2sBrSt4wccnLHNLi+nd//p5eTp0QqJJFF3veRypNPRe3qGVN49CHzHtYnTeUtYLpb31I7Pt4js6/j6uJ27dKr99AOCSGYh1fB6giJM39nIm0SSdtK0an1DqHKZD9cSSCVS3yb5KwkNyhVwep0J8QcQIR7DGKbzmjpq0I1FgudoeDhlwuyKn55kD/5aqSwTLJsXq8Y2zNt9gT3/gB0cJ7zHT8L5+hWN9EDSXdBUKUXzlKuKdz5wQ81TL8yv8L3p6bW5iwp1HRRy/s1mFD8ZrJJK9XWmCwO7lRX5YM0qPEoAepdlYWRXgQoQI5lYIIBowBBTtU2fGCM9cYaiQ+6ETQv2WGuVIEYfRzdQBUT05uy47E1p0dTPptWcf9AYuAVVV/niKYoXaqcXO7s2bXtSxG+xFJFm7X8MHBTNa1yfU42fAhSmINxyszw++sBJtF516hfIwifPnSW3mGKuaeTSvjU+8rQMobjlg+xK9GmLL4g8xrySwrNEDCRANJlisiy8RVbh5WpbGZBi5Wlc0DoSvcY0JTaz5qAYILIrPts5StG86/vxTXlmvxCnTs3ubAtgzWfAN0PYhZfgwMAwSb4KZzxKoKe/L1wAGJyIEhGkta9dJ1G9WOUtIYtjgylWZuWw7h++GS9c4Ti9TrpuqxdAaeKKEU2yTsSyA==
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: WLJLlIZ9LuLH2u5Jwnfe7Nusuu2iPi5krLSsWW1ZBcsC7pq8jnAqdehnVokDtxwIH+am5D6rAuNUd4IdSRkXWwxpbSH/cmZHgRARkelNvv/sskeRwCgzN17TIAhbAmNc7UAkcd1p6MMnASZBr0jQkHBcssAqdgSXkOe7eyIg95+K3KvZCWqGmwmFaks+WwNw9Opj7iwCx0qH47yejWEFR1upqp8QHopR3kw8RLAChycqbOpBerNKBP88NwnZu2gDslhBMKRhhDOYjCJ0HwNfZKrhJger4KUKwdZB7g+l9PCaxRzqfgXVHyHalLClmcA58LOx9Hlxnk1FMQxyaZDegiRysB4BTPhOVxt7xf2+YJvtsZRE9ud8cYWPyf7sq2TWe+AqLBdKud5hB0jLJdZz41NzhQ1nk1ZGPOJbZmjKajvwUTBpSAY419REZTIl+kLJUW8km1f/lUnOBLc/uC/d4iAer3KA+4XRZsxmIUJKXDUT56JnOTMjZr96S40Ko+FEVhg1BgL14BFBeXRvxVrrv8jfFdnFwcoPLE7HDYFNZbEscdChfsqtwlBL1zV5ckVt26ikin+KJtbA6g53AUa5Ur+r3l7M0jYYyJiv8WhFEKukSpG3xhKj4trGf7F9fc/2
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?aPBQSwZRDPEziWnwJKcVrzESdKMmbAIGPZHDATj0KlzPbaDhsP78mejpBKqr?=
- =?us-ascii?Q?fG+jgln/rii3dRnV5d73OnrQfsGJviG353lnSHnXAqQ7EK8IMakFyb3i+qNK?=
- =?us-ascii?Q?Y+z1asHLnyS874X0lT8JylaeW0jVDsgS/4u144WbEUaOTURVIR0V6C+A8BCY?=
- =?us-ascii?Q?pKFykP9WEGwK1CFR+E5rT737tD8MMelxR+jgGPl8IkaJc4nOFzs3KiLZhf5H?=
- =?us-ascii?Q?6JPTRvx0Hte+IVMRgLU7YnvNJtUzPsHUI3lBS7/luJkw5+Kb5eYnyr8HNUdG?=
- =?us-ascii?Q?oEzBCRwb2B4n9BKf42hHNaFobpdmHctm6adEF/RfImTugNyopT7xV5LjpPUS?=
- =?us-ascii?Q?aDtKMnsuDYKcvVD+KNfIqVp03zHgWgJOwW2LPz4uYNWhv5CNEXIgWD7YIS+1?=
- =?us-ascii?Q?BJRS5FSyiJoVLfthAartCN52FI54ssvk73SUOp51Um8vPx/5yxwy0GL2OVPm?=
- =?us-ascii?Q?COA5+EyVJdDyOYyOK5wj2QqFrHIKLNWA0u08gEZEH/AnIC6DuDHe+eo2RpOj?=
- =?us-ascii?Q?1KvHXD5JZ5aKTZRWu2cth4ofq8jO5t3MmSo/z2nEpzHutvnJ6TmRfDjYW5jX?=
- =?us-ascii?Q?bnBxU5iKNqOkd5tjzlHH07khrXwzYD9SrO6sdkwLxUuCixajvll5RpsZ7GZZ?=
- =?us-ascii?Q?RhyIPOPScmg59Tdc28tf+mHvhrRlJMRL+zI28shTOp4eV7zggDqcz2osgbyd?=
- =?us-ascii?Q?onqbEnsxOSaG7LxqSo3aIShTEOjP8CzP+04nYo5uIJ5VM43XOweIdceplPNE?=
- =?us-ascii?Q?XMO/Qx3zHDHJLfJ5EDWg5TFAjed3V60uEQpdtXUB8S2KzNPUSGo/v991JLFG?=
- =?us-ascii?Q?0GC893FaIiQS4kbmFt+Xvzh2SEnnpJW/jQk+1kDGhcndBtCJ0G1iyvpHGx1F?=
- =?us-ascii?Q?YcRB0qVsv+6jI0kvpPHw23pr1etPYLHNrtS3MWJxqs8bgOBfEuwKT+/8bM7c?=
- =?us-ascii?Q?p9ZQDjbjgpRWokS2iQ19FnIMW/HjyzeYnIkYTLP5lMq3Q2Y3YEw+4Z9LgJbP?=
- =?us-ascii?Q?rrt9MQoeMPV9YxJ5b+bUgKnQFxVtW3nrDM31ET5YYsV/pjNKo/7aEd2Iq0PO?=
- =?us-ascii?Q?SEe2DeZuAzePezNflYSaLhRTF8lVEyZnXgC6QgPhXxaTweK+SnOR5642gAgr?=
- =?us-ascii?Q?2v4rjZ4gVowLVKdhlD9IbQXEnf303XrwVZIy+PaywT5YLhCqcbl1Cj0n5AKL?=
- =?us-ascii?Q?/GszseycEB2tbqT8aDqKLvWC3KD2DqYacsm69d4ESD+EDVi63sfFyQIVQ9U?=
- =?us-ascii?Q?=3D?=
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a2ffe219-22da-43af-eea4-08db87a1ea64
-X-MS-Exchange-CrossTenant-AuthSource: TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jul 2023 15:16:09.9134
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OS3P286MB2215
+References: <20230717172821.62827-1-andriy.shevchenko@linux.intel.com>
+ <20230717172821.62827-10-andriy.shevchenko@linux.intel.com> <03592cf5d6854dd5e534e0416de946fd38e4380c.camel@crapouillou.net>
+In-Reply-To: <03592cf5d6854dd5e534e0416de946fd38e4380c.camel@crapouillou.net>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Tue, 18 Jul 2023 12:05:25 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdWMHjFdh0Ze9k8gZC_Cjp62zdwDK1cvehHb5WXYw+p1XQ@mail.gmail.com>
+Message-ID: <CAMuHMdWMHjFdh0Ze9k8gZC_Cjp62zdwDK1cvehHb5WXYw+p1XQ@mail.gmail.com>
+Subject: Re: [PATCH v2 09/10] pinctrl: renesas: Switch to use
+ DEFINE_NOIRQ_DEV_PM_OPS() helper
+To: Paul Cercueil <paul@crapouillou.net>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Mika Westerberg <mika.westerberg@linux.intel.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Balsam CHIHI <bchihi@baylibre.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+	linux-tegra@vger.kernel.org, linux-pm@vger.kernel.org, 
+	Andy Shevchenko <andy@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Gregory Clement <gregory.clement@bootlin.com>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
+	Ludovic Desroches <ludovic.desroches@microchip.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	"Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230718_161650_570808_284930AB 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20230718_110548_646828_4CAF1436 
+X-CRM114-Status: GOOD (  29.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,35 +115,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Sometimes when driver fails to probe a device, the kernel will retry
-it later. However, this will result in duplicate requests for the
-same pinctrl configuration. In this case, we should not throw error
-logs. This patch adds extra check for the pin group function. Now the
-pinctrl driver only prints error log when attempting to configure the
-same group as different functions.
+Hi Paul,
 
-Signed-off-by: Shiji Yang <yangshiji66@outlook.com>
----
- drivers/pinctrl/mediatek/pinctrl-mtmips.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+On Mon, Jul 17, 2023 at 9:12=E2=80=AFPM Paul Cercueil <paul@crapouillou.net=
+> wrote:
+> Le lundi 17 juillet 2023 =C3=A0 20:28 +0300, Andy Shevchenko a =C3=A9crit=
+ :
+> > Since pm.h provides a helper for system no-IRQ PM callbacks,
+> > switch the driver to use it instead of open coded variant.
+> >
+> > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> > ---
+> >  drivers/pinctrl/renesas/core.c | 16 +++++++---------
+> >  1 file changed, 7 insertions(+), 9 deletions(-)
+> >
+> > diff --git a/drivers/pinctrl/renesas/core.c
+> > b/drivers/pinctrl/renesas/core.c
+> > index 0c8d081da6a8..34232b016960 100644
+> > --- a/drivers/pinctrl/renesas/core.c
+> > +++ b/drivers/pinctrl/renesas/core.c
+> > @@ -649,7 +649,7 @@ static const struct of_device_id
+> > sh_pfc_of_table[] =3D {
+> >  };
+> >  #endif
+> >
+> > -#if defined(CONFIG_PM_SLEEP) && defined(CONFIG_ARM_PSCI_FW)
+> > +#if defined(CONFIG_ARM_PSCI_FW)
+> >  static void sh_pfc_nop_reg(struct sh_pfc *pfc, u32 reg, unsigned int
+> > idx)
+> >  {
+> >  }
+> > @@ -732,15 +732,13 @@ static int sh_pfc_resume_noirq(struct device
+> > *dev)
+> >                 sh_pfc_walk_regs(pfc, sh_pfc_restore_reg);
+> >         return 0;
+> >  }
+> > -
+> > -static const struct dev_pm_ops sh_pfc_pm  =3D {
+> > -       SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(sh_pfc_suspend_noirq,
+> > sh_pfc_resume_noirq)
+> > -};
+> > -#define DEV_PM_OPS     &sh_pfc_pm
+> >  #else
+> >  static int sh_pfc_suspend_init(struct sh_pfc *pfc) { return 0; }
+> > -#define DEV_PM_OPS     NULL
+> > -#endif /* CONFIG_PM_SLEEP && CONFIG_ARM_PSCI_FW */
+> > +static int sh_pfc_suspend_noirq(struct device *dev) { return 0; }
+> > +static int sh_pfc_resume_noirq(struct device *dev) { return 0; }
+> > +#endif /* CONFIG_ARM_PSCI_FW */
+> > +
+> > +static DEFINE_NOIRQ_DEV_PM_OPS(sh_pfc_pm, sh_pfc_suspend_noirq,
+> > sh_pfc_resume_noirq);
+> >
+> >  #ifdef DEBUG
+> >  #define SH_PFC_MAX_REGS                300
+> > @@ -1418,7 +1416,7 @@ static struct platform_driver sh_pfc_driver =3D {
+> >         .driver         =3D {
+> >                 .name   =3D DRV_NAME,
+> >                 .of_match_table =3D of_match_ptr(sh_pfc_of_table),
+> > -               .pm     =3D DEV_PM_OPS,
+> > +               .pm     =3D pm_sleep_ptr(&sh_pfc_pm),
+>
+> I think you could do:
+>
+> .pm =3D IF_PTR(IS_ENABLED(CONFIG_ARM_PSCI_FW), pm_sleep_ptr(&sh_pfc_pm)),
+>
+> Then you wouldn't need the #if defined(CONFIG_ARM_PSCI_FW) guard either
+> (as long as the code still compiles fine when that config option is
+> disabled), and you wouldn't need those dummy callbacks.
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtmips.c b/drivers/pinctrl/mediatek/pinctrl-mtmips.c
-index efd77b6c5..8f5493220 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtmips.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtmips.c
-@@ -125,8 +125,9 @@ static int mtmips_pmx_group_enable(struct pinctrl_dev *pctrldev,
- 
- 	/* dont allow double use */
- 	if (p->groups[group].enabled) {
--		dev_err(p->dev, "%s is already enabled\n",
--			p->groups[group].name);
-+		if (!p->func[func]->enabled)
-+			dev_err(p->dev, "%s is already enabled\n",
-+				p->groups[group].name);
- 		return 0;
- 	}
- 
--- 
-2.30.2
+Unfortunately not, as the code refers to psci_ops.cpu_suspend.
 
+You could create a small wrapper for that, though.
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
+
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
