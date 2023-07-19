@@ -4,138 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78F99C001B0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 12:57:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0041FC001DE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 13:00:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vTJllK3QIosIdkN/l1AacXcP7ML5CIMxUDU9jzrNDpA=; b=eHHBncarnEtbn2qqKuTtWyYpjF
-	KVmVv4omaMPOgsDF+Zgbe2jULybVD7BAO4rVRWN7r0mz0CxB5B6YVxJn+lnTR4goEi9sIYobNeWTf
-	3U8B82SGlk/gl7dVro2ZwnJXhz8zEGyZS26kNtByP/RflrMtCEDWJgAp13ckyDPF/bjNaB1X4zPbw
-	OZM8qU4Wv8KD3GomoFUuPIkzjaj9ZLYyVD+RTEakfvhwJJ8Cw3zFpOBm9FJ33dJsm1ixNogEdafDs
-	czJfZI8PaInD8wkvf9FsWTOEg5lpJeO0dQOKYVUozD7VgRKM1wXl/oHfFkpTN6m5ZZJPeT4yoT6bN
-	HyODiFxg==;
+	bh=/tTGexhA5lNmtVlmLguqK/TKdm89A/yt8clx0r4pt9M=; b=CkSdiwbbBPhNEDQkRPjm4dwyMR
+	9Gg6uXGeHMmYP0WN4kiDcMK6EWjJedum9K9XeZK5VaxkGPBxEh9CXI36m/Wy7G0wpr7TPCzsK3nYI
+	Y4S8v9dNMw7e+eM390Ts4WFJaB2VEJPcc7pUcUH87wzPnl58NTmyZcLkF49Hsp2HO5YxWW+Mznoj+
+	hgN/9aFGfOGr+p1pnpu+0tL2eTfVQ7PB3LfugGYDD9yyLG/F8k8R+er8O04EaHJvUQMSeChIC6alS
+	byVCzR+cSY6Kd5xHQ6SP+/1x1/Zwq3Ppks05IKuSq+J/TlkDqdnW0vIkxq8DwrSutgri3H7PcMkaX
+	2DUELy2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM6kD-007TyG-00;
-	Wed, 19 Jul 2023 12:57:29 +0000
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+	id 1qM6nQ-007Udh-1W;
+	Wed, 19 Jul 2023 13:00:48 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM6k9-007TxP-2l;
-	Wed, 19 Jul 2023 12:57:27 +0000
-Received: from pps.filterd (m0353723.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 36JC13Ru024043;
-	Wed, 19 Jul 2023 12:57:03 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=vTJllK3QIosIdkN/l1AacXcP7ML5CIMxUDU9jzrNDpA=;
- b=GHGbdYQASDxavATVPpsM1WgWPgS/2U+jpxlUluO2wbWS1BpTVRZM8xxmRTAV1D/cAVHi
- XMox148U3Y6AQV/wV2Lcv1gOs8iqwGdwFBmztXjyvLWrVAhBRti1qz6bdmzG6JuVTWJE
- iBAOYNMouQ6G9DEGC9GBTNkFBJDR5VJcMGx5nb/LMQKumQan3RxQM/+U4Al4cklaXLs0
- Gqm2kb6gA91dWbgE/RpDricOxcKG+9H4PqTxPKheRrurwtEpAD0Ps7f4yUPxjVdBNrip
- ymHqrKhWUJ5QXPGY9qF+VNtFg5s6YJ239xLilYrda5QsVmSMjGAaJITNOPaU15Bd0PLC 7Q== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3rxcen6vht-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 19 Jul 2023 12:57:02 +0000
-Received: from m0353723.ppops.net (m0353723.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 36JBoV6T007562;
-	Wed, 19 Jul 2023 12:57:01 GMT
-Received: from ppma13.dal12v.mail.ibm.com (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3rxcen6vhc-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 19 Jul 2023 12:57:01 +0000
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
-	by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 36JBUgeR007434;
-	Wed, 19 Jul 2023 12:57:00 GMT
-Received: from smtprelay07.wdc07v.mail.ibm.com ([172.16.1.74])
-	by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3rv80j7bq8-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 19 Jul 2023 12:57:00 +0000
-Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com [10.241.53.104])
-	by smtprelay07.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 36JCuxQC61866456
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 19 Jul 2023 12:56:59 GMT
-Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 0697A58056;
-	Wed, 19 Jul 2023 12:56:59 +0000 (GMT)
-Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 069AB58052;
-	Wed, 19 Jul 2023 12:56:56 +0000 (GMT)
-Received: from [9.61.44.182] (unknown [9.61.44.182])
-	by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
-	Wed, 19 Jul 2023 12:56:55 +0000 (GMT)
-Message-ID: <3663c0e7-4108-c2cc-06cf-ac569f65d101@linux.ibm.com>
-Date: Wed, 19 Jul 2023 08:56:55 -0400
+	id 1qM6nM-007UcY-2j;
+	Wed, 19 Jul 2023 13:00:46 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 8F5596131A;
+	Wed, 19 Jul 2023 13:00:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4CCAFC433C8;
+	Wed, 19 Jul 2023 13:00:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689771642;
+	bh=vTRTi8gePGQh/v/SApP6VdgisFuhvR4V4ouD65IvxwQ=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Y0H1OEXL/5HzI2GvKdCbZZ5lX64S2dYzS441FtomQqJZrAdhgYgPTOG3Y9Hcfr9AJ
+	 SU5+SMqBOXZ6o36ULFel0jrL4YTcPhx73RVmfx0akqMFf/fmQRhtnmGjbYbiLiojCa
+	 PhvpZTbkq4DFce3erI+clBoPAyZeCQHld7UGFC1neK0n5YZP3X+xpFvL+sb6dOLFiD
+	 Gu5Dvq6d/v+fvm4IKbYBdRMjYK502U+ONKAB3qKI+OqAiZJzz5SKnaSWpV1aSRViQ6
+	 PmJAcRx71fbxaO55kKmMs9JB6f3/CITiM2QyxkFABDi2WTRUnHetFqqfguUnei/Q0O
+	 Lm09LgMRk8E4A==
+From: Mark Brown <broonie@kernel.org>
+To: Yang Li <yang.lee@linux.alibaba.com>
+Cc: lgirdwood@gmail.com, matthias.bgg@gmail.com, 
+ angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Abaci Robot <abaci@linux.alibaba.com>
+In-Reply-To: <20230718003255.124594-1-yang.lee@linux.alibaba.com>
+References: <20230718003255.124594-1-yang.lee@linux.alibaba.com>
+Subject: Re: [PATCH -next] regulator: Remove duplicated include in
+ mt6359-regulator.c
+Message-Id: <168977164102.32923.17335159942963668524.b4-ty@kernel.org>
+Date: Wed, 19 Jul 2023 14:00:41 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v11 4/6] iommu/s390: Force ISM devices to use
- IOMMU_DOMAIN_DMA
-Content-Language: en-US
-To: Niklas Schnelle <schnelle@linux.ibm.com>, Joerg Roedel <joro@8bytes.org>,
-        Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
-        Robin Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>
-Cc: Gerd Bayer <gbayer@linux.ibm.com>, Julian Ruess <julianr@linux.ibm.com>,
-        Pierre Morel <pmorel@linux.ibm.com>,
-        Alexandra Winter
- <wintera@linux.ibm.com>,
-        Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
-        Alexander Gordeev
- <agordeev@linux.ibm.com>,
-        Christian Borntraeger <borntraeger@linux.ibm.com>,
-        Sven Schnelle <svens@linux.ibm.com>,
-        Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-        Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
-        Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-        David Woodhouse <dwmw2@infradead.org>,
-        Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konrad.dybcio@linaro.org>,
-        Yong Wu <yong.wu@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-        Orson Zhai <orsonzhai@gmail.com>,
-        Baolin Wang
- <baolin.wang@linux.alibaba.com>,
-        Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Thierry Reding <thierry.reding@gmail.com>,
-        Krishna Reddy
- <vdumpa@nvidia.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
-        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-        iommu@lists.linux.dev, asahi@lists.linux.dev,
-        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
-References: <20230717-dma_iommu-v11-0-a7a0b83c355c@linux.ibm.com>
- <20230717-dma_iommu-v11-4-a7a0b83c355c@linux.ibm.com>
-From: Matthew Rosato <mjrosato@linux.ibm.com>
-In-Reply-To: <20230717-dma_iommu-v11-4-a7a0b83c355c@linux.ibm.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: mAn_ySuLThAyex-XKSILyYpwW2wAL_f5
-X-Proofpoint-ORIG-GUID: p_U8uENcifu8d_t15JnMCmjpsu3eYgTy
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
- definitions=2023-07-19_08,2023-07-19_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 mlxlogscore=999
- adultscore=0 lowpriorityscore=0 bulkscore=0 spamscore=0 malwarescore=0
- priorityscore=1501 suspectscore=0 clxscore=1011 mlxscore=0 impostorscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2306200000
- definitions=main-2307190113
+X-Mailer: b4 0.13-dev-099c9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230719_055726_023479_278064F8 
-X-CRM114-Status: GOOD (  22.58  )
+X-CRM114-CacheID: sfid-20230719_060044_944699_BA813B08 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,33 +77,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/17/23 7:00 AM, Niklas Schnelle wrote:
-> ISM devices are virtual PCI devices used for cross-LPAR communication.
-> Unlike real PCI devices ISM devices do not use the hardware IOMMU but
-> inspects IOMMU translation tables directly on IOTLB flush (s390 RPCIT
-> instruction).
+On Tue, 18 Jul 2023 08:32:55 +0800, Yang Li wrote:
+> ./drivers/regulator/mt6359-regulator.c: linux/platform_device.h is included more than once.
 > 
-> While ISM devices keep their DMA allocations static and only very rarely
-> DMA unmap at all, For each IOTLB flush that occurs after unmap the ISM
-> devices will inspect the area of the IOVA space indicated by the flush.
-> This means that for the global IOTLB flushes used by the flush queue
-> mechanism the entire IOVA space would be inspected. In principle this
-> would be fine, albeit potentially unnecessarily slow, it turns out
-> however that ISM devices are sensitive to seeing IOVA addresses that are
-> currently in use in the IOVA range being flushed. Seeing such in-use
-> IOVA addresses will cause the ISM device to enter an error state and
-> become unusable.
 > 
-> Fix this by forcing IOMMU_DOMAIN_DMA to be used for ISM devices. This
-> makes sure IOTLB flushes only cover IOVAs that have been unmapped and
-> also restricts the range of the IOTLB flush potentially reducing latency
-> spikes.
-> 
-> Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
 
-This makes sense to me.
+Applied to
 
-Reviewed-by: Matthew Rosato <mjrosato@linux.ibm.com>
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
 
+Thanks!
+
+[1/1] regulator: Remove duplicated include in mt6359-regulator.c
+      commit: 6023fffc3e276d1ab0d1262ea9be3b720325fede
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
