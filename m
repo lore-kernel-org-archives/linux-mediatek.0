@@ -4,78 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE937EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 07:43:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 603DEEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 07:46:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8kbs2DuWb4kB1m8a4nLkKBnUGt5UrZsO1n5+nbdXlnA=; b=rJ7U8YF3C1YP/o9Mu6DL0LYSyr
-	4MmOOkOIOG4c7HcxRm0rI8DnFnc40BeAfEUACN1wzuz7g4b4ZKoHDCXUciAklYv47O9Krv6I5wJn9
-	vGCmhV4DlenklxAbVKnN5pNTjwttz7w0Tv6dcfE3XltEKHFqRLLkKjvq15IIgvT0cHPKqlziBrpFt
-	x51uq6M32EGRUn7YaNtYAgPuCbIiIhHmnU7UAK+KpPC/+WhKj/xncigF/fR2IoWayRq+nk9HNVo6x
-	8eJcBLlEPZXrwG9MWEEaGg8VVl/xRvUNMR5fy1aq8bgzOO7WPqUZ1g7vS/EbG9OTdTRdN3zDdNTLI
-	pezv0aSA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=R7xRfRSvgVVrhgxbOcK9k3MGaaEalRaBl97IvWBViA4=; b=BD9g6w+vI/0OoxZtAkelWYjUMc
+	WbR38fCQH18jLabG1EzhNQt3TowKMhpaTRB2GBz7GnLYRQkjaboLScd5i8an2FLrFM1XYk0k2nirm
+	z0wA3+qAs5ipP1K694Wuu9QuOV3Hkp18muOjP5bgiku79/0SbDea6Ib7Ih89coe+RQpCCUjHFkq1U
+	xdfbd0HMa64io5cN1wqjZK0CUR0XldkdDo/9ko03gpWu2wEGpZp06FxSnM5IsslHmmTwa2SX0bKGF
+	zez2s43JTyremJxKly1vlPy8jEL34m18bBgf6eiaDe7CFVUlGLSX2RGujvpZ9/yPnPrveWgqRn2KN
+	cLFtFguQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM1pv-0067ha-29;
-	Wed, 19 Jul 2023 07:43:03 +0000
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+	id 1qM1sz-00687U-0l;
+	Wed, 19 Jul 2023 07:46:13 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM1ps-0067g1-1k
+	id 1qM1sx-00686r-1j
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 19 Jul 2023 07:46:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=R7xRfRSvgVVrhgxbOcK9k3MGaaEalRaBl97IvWBViA4=; b=I6MaecFUqIdyo8rmuh1/qu4Wj2
+	846RDYcDtkBOJ/Tiyq4V9erbuLcncYfHtuD7bAhrcD8/45gZJUE+HTa7Lopz4lr8F9Ab7huGlTqbc
+	44MQkQnqvnJhkzwhMwblpN9F2YgLHh4bIiY/r+tMMS1VUHnPE6meyn8zDnpVEBryVXzKxlZGrw4aT
+	RIsgEgveexo2MhSl/90cDvt8elTzXYrw5lnqySeiVcCXKIz7neL08XvG/ClGWHQ1Mjxa50uVaaZyF
+	lDdj4cMKkzkPvucxHGpleEHKChXlCZ/pBMLIxBgotENv98YBZucS86ok3PFVpwrQkkbK5+VZ1B79S
+	rGtvcA4w==;
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qM1ss-00DSpI-1c
 	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Jul 2023 07:43:02 +0000
-Received: by mail-pg1-x531.google.com with SMTP id 41be03b00d2f7-55b5a3915f5so4030508a12.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Jul 2023 00:42:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1689752577; x=1690357377;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=8kbs2DuWb4kB1m8a4nLkKBnUGt5UrZsO1n5+nbdXlnA=;
-        b=NxYRpMQ1MI3s26pnW2g/EuUERfFiKqPtolriGBIpLZlPtkVKTzvs3UcHHtciA4FRBc
-         tBmPpu1++ooa1smNKdUc/sF7158Vo8ra5BN2dcV7ZzjvtDZV+PjdQFOg8sQveIREZn3C
-         vWkPZVwlxjajHG5oNnNVAPaaI5JbsJYcUpzxM=
+	Wed, 19 Jul 2023 07:46:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1689752751;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=R7xRfRSvgVVrhgxbOcK9k3MGaaEalRaBl97IvWBViA4=;
+	b=UD12wRActMb/ZA2W+kOW5FHcvugbG2YlxCLSXovHW6M5OSMsRXQ519C7LqV2PqtvU7soGZ
+	ZxFUf1yePsxUwciFSMPMywR89rBktrhsqlwHpE6uBZI7izY9fU6w2AYdGbHDL/7IoLmPzc
+	wvAV+Tx8ALkaD57C+jp9jEUXErfgVlg=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1689752759;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=R7xRfRSvgVVrhgxbOcK9k3MGaaEalRaBl97IvWBViA4=;
+	b=LAOrIwFlApDYmfj+hGiIkNzaG5yLbkPTEAxK7f1vS4L7TM4wu6zQqNA4El+hquOn0rAf4A
+	SsCeeBNZ/Z+G8vVTMl206slK8XjpKdtXkSkkTKo3lgx04VXaLX6XnS5pl+wEs54HTcn0Kb
+	JX/oFpA3d2HdhOXEalZfHBkuTzB85ko=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-330-UGA6pw2yN_6xWcYT-UciPw-1; Wed, 19 Jul 2023 03:45:49 -0400
+X-MC-Unique: UGA6pw2yN_6xWcYT-UciPw-1
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-3fbfc766a78so36950385e9.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Jul 2023 00:45:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689752577; x=1690357377;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=8kbs2DuWb4kB1m8a4nLkKBnUGt5UrZsO1n5+nbdXlnA=;
-        b=WBM61BdIEqXpeB/7iGZbR7wl2tZb/JMsIUGps8sRQZkb37ZusoYg0UG7t8n/6XLkmA
-         6DJENaEwiOIBXaugyzZgYAZsmFA26ZGqTk6d5iPHMeHDbi/j21GX7ovfX20r0Ls9PFAN
-         XZCEuYJZmLZw/f9rdNqtEP3s+xGQBi0XcwAGVdCXjTJrGZqLnnUrFAAi8igt6xSfKw8q
-         BBEGeu7y4Ps81DDp6X7rn6IXYk9ZVVFna8fsPcD7gLcXxeClifTJxelDzCQLz7Y+jE3y
-         1vwSONDNeys4szy7r/1KCdsAvBcT5ENkye15lO8upsw2ApagewZVrS5jTYn6hc28HweD
-         lo6Q==
-X-Gm-Message-State: ABy/qLb0woEudS5l8ozaNvA4GfsAxOezbusdx8saY42V/8uMrdoxdLFe
-	OQu/zY9H2ZZJDS+Aa2b+NM22GZwkOdlUuWLZmCw=
-X-Google-Smtp-Source: APBJJlHj8emtlM2xqJSmgfj7e1lMySh3gNJProkHsWCZl2AjGt7U6HHZa476k9mL+uXpbwnw3nTGZA==
-X-Received: by 2002:a17:90a:f2cf:b0:263:f856:a82c with SMTP id gt15-20020a17090af2cf00b00263f856a82cmr1076296pjb.15.1689752576701;
-        Wed, 19 Jul 2023 00:42:56 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:dc1f:4359:d310:3643])
-        by smtp.gmail.com with ESMTPSA id z1-20020a17090a1fc100b002631f3d36a1sm710274pjz.36.2023.07.19.00.42.54
+        d=1e100.net; s=20221208; t=1689752749; x=1690357549;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=R7xRfRSvgVVrhgxbOcK9k3MGaaEalRaBl97IvWBViA4=;
+        b=ElBCO5UA5QHkYGSoybsqGPTv+zLcaqsLCjG9S9+OkYWMJBGpLpHZwpHHfisumQP2K7
+         WOG+2ggyDdd3CRlq2ZZuFueAKRuUsWoucWjnaqVtNWX6CgD2J437fs+30WGOZlJ83PXa
+         sZq7clIzS9LIp68VhjdybpSV9+oFtMRQTLplzrQITJBFW4oegqty0d0L//Q2seKvMM6j
+         YiPrQ0phlhUc97vp+9qbiKWRRao25pezAWzJn9Vjvzjv0YAsZOuFB9JnLHfcgma3mpH4
+         4jJMqdFU3jCKb8INwLTJN/BP+xwF5hXnpinBzzcY4f0e9OfyEWf3Cc4qZGZzFPPGLS6f
+         F52g==
+X-Gm-Message-State: ABy/qLYndN2syl3NqNnQM+uBzCgGjiwPYrNm90rdvLcEoVMlU8gYTffY
+	TlM9jzzHffQzFxscbccaw8+ZGwXDTQESm6iR4btAiLW93MSSb+UitFx/VbLvZnc/L5XR0UaeAko
+	ZJ5iTtAtgQk79JJydiJDnCK77bFX9e9h9
+X-Received: by 2002:a7b:c456:0:b0:3fb:a6ee:4cec with SMTP id l22-20020a7bc456000000b003fba6ee4cecmr3820579wmi.33.1689752748813;
+        Wed, 19 Jul 2023 00:45:48 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHFMLZKSxq7F5LPg4Fx0AA5d2LL5/pFgLGRKxUm8gQCvGOZCvpj1Ssuw2aSS+V/KfG/hnhfaQ==
+X-Received: by 2002:a7b:c456:0:b0:3fb:a6ee:4cec with SMTP id l22-20020a7bc456000000b003fba6ee4cecmr3820569wmi.33.1689752748478;
+        Wed, 19 Jul 2023 00:45:48 -0700 (PDT)
+Received: from localhost (net-130-25-106-149.cust.vodafonedsl.it. [130.25.106.149])
+        by smtp.gmail.com with ESMTPSA id k18-20020a05600c0b5200b003fc015ae1e1sm1019510wmr.3.2023.07.19.00.45.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Jul 2023 00:42:56 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Stephen Boyd <sboyd@kernel.org>,
+        Wed, 19 Jul 2023 00:45:47 -0700 (PDT)
+Date: Wed, 19 Jul 2023 09:45:46 +0200
+From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sujuan Chen <sujuan.chen@mediatek.com>,
+	Bo Jiao <Bo.Jiao@mediatek.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] clk: mediatek: mt8183: Add back SSPM related clocks
-Date: Wed, 19 Jul 2023 15:42:50 +0800
-Message-ID: <20230719074251.1219089-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.41.0.455.g037347b96a-goog
+Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: always
+ mtk_get_ib1_pkt_type
+Message-ID: <ZLeUqlqHcHbUSQVX@lore-desk>
+References: <c0ae03d0182f4d27b874cbdf0059bc972c317f3c.1689727134.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ESqLmvJwzuWNyDyo"
+Content-Disposition: inline
+In-Reply-To: <c0ae03d0182f4d27b874cbdf0059bc972c317f3c.1689727134.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230719_004300_599558_8C54E496 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20230719_084606_897388_3C9BB5A6 
+X-CRM114-Status: GOOD (  17.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,102 +133,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This reverts commit 860690a93ef23b567f781c1b631623e27190f101.
 
-On the MT8183, the SSPM related clocks were removed claiming a lack of
-usage. This however causes some issues when the driver was converted to
-the new simple-probe mechanism. This mechanism allocates enough space
-for all the clocks defined in the clock driver, not the highest index
-in the DT binding. This leads to out-of-bound writes if their are holes
-in the DT binding or the driver (due to deprecated or unimplemented
-clocks). These errors can go unnoticed and cause memory corruption,
-leading to crashes in unrelated areas, or nothing at all. KASAN will
-detect them.
+--ESqLmvJwzuWNyDyo
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Add the SSPM related clocks back to the MT8183 clock driver to fully
-implement the DT binding. The SSPM clocks are for the power management
-co-processor, and should never be turned off. They are marked as such.
+> entries and bind debugfs files would display wrong data on NETSYS_V2 and
+> later because instead of using mtk_get_ib1_pkt_type the driver would use
+> MTK_FOE_IB1_PACKET_TYPE which corresponds to NETSYS_V1(.x) SoCs.
+> Use mtk_get_ib1_pkt_type so entries and bind records display correctly.
+>=20
+> Fixes: 03a3180e5c09e ("net: ethernet: mtk_eth_soc: introduce flow offload=
+ing support for mt7986")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-Fixes: 3f37ba7cc385 ("clk: mediatek: mt8183: Convert all remaining clocks to common probe")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-Please merge for fixes.
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
- drivers/clk/mediatek/clk-mt8183.c | 27 +++++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
+> ---
+>  drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c b/drivers/ne=
+t/ethernet/mediatek/mtk_ppe_debugfs.c
+> index 316fe2e70fead..1a97feca77f23 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
+> @@ -98,7 +98,7 @@ mtk_ppe_debugfs_foe_show(struct seq_file *m, void *priv=
+ate, bool bind)
+> =20
+>  		acct =3D mtk_foe_entry_get_mib(ppe, i, NULL);
+> =20
+> -		type =3D FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->ib1);
+> +		type =3D mtk_get_ib1_pkt_type(ppe->eth, entry->ib1);
+>  		seq_printf(m, "%05x %s %7s", i,
+>  			   mtk_foe_entry_state_str(state),
+>  			   mtk_foe_pkt_type_str(type));
+> --=20
+> 2.41.0
+>=20
+>=20
 
-diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-index 1ba421b38ec5..e31f94387d87 100644
---- a/drivers/clk/mediatek/clk-mt8183.c
-+++ b/drivers/clk/mediatek/clk-mt8183.c
-@@ -328,6 +328,14 @@ static const char * const atb_parents[] = {
- 	"syspll_d5"
- };
- 
-+static const char * const sspm_parents[] = {
-+	"clk26m",
-+	"univpll_d2_d4",
-+	"syspll_d2_d2",
-+	"univpll_d2_d2",
-+	"syspll_d3"
-+};
-+
- static const char * const dpi0_parents[] = {
- 	"clk26m",
- 	"tvdpll_d2",
-@@ -507,6 +515,9 @@ static const struct mtk_mux top_muxes[] = {
- 	/* CLK_CFG_6 */
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_MUX_ATB, "atb_sel",
- 		atb_parents, 0xa0, 0xa4, 0xa8, 0, 2, 7, 0x004, 24),
-+	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MUX_SSPM, "sspm_sel",
-+				   sspm_parents, 0xa0, 0xa4, 0xa8, 8, 3, 15, 0x004, 25,
-+				   CLK_IS_CRITICAL | CLK_SET_RATE_PARENT),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_MUX_DPI0, "dpi0_sel",
- 		dpi0_parents, 0xa0, 0xa4, 0xa8, 16, 4, 23, 0x004, 26),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_MUX_SCAM, "scam_sel",
-@@ -673,10 +684,18 @@ static const struct mtk_gate_regs infra3_cg_regs = {
- 	GATE_MTK(_id, _name, _parent, &infra2_cg_regs, _shift,	\
- 		&mtk_clk_gate_ops_setclr)
- 
-+#define GATE_INFRA2_FLAGS(_id, _name, _parent, _shift, _flag)	\
-+	GATE_MTK_FLAGS(_id, _name, _parent, &infra2_cg_regs, 	\
-+		       _shift, &mtk_clk_gate_ops_setclr, _flag)
-+
- #define GATE_INFRA3(_id, _name, _parent, _shift)		\
- 	GATE_MTK(_id, _name, _parent, &infra3_cg_regs, _shift,	\
- 		&mtk_clk_gate_ops_setclr)
- 
-+#define GATE_INFRA3_FLAGS(_id, _name, _parent, _shift, _flag)	\
-+	GATE_MTK_FLAGS(_id, _name, _parent, &infra3_cg_regs, 	\
-+		       _shift, &mtk_clk_gate_ops_setclr, _flag)
-+
- static const struct mtk_gate infra_clks[] = {
- 	/* INFRA0 */
- 	GATE_INFRA0(CLK_INFRA_PMIC_TMR, "infra_pmic_tmr", "axi_sel", 0),
-@@ -748,7 +767,11 @@ static const struct mtk_gate infra_clks[] = {
- 	GATE_INFRA2(CLK_INFRA_UNIPRO_TICK, "infra_unipro_tick", "fufs_sel", 12),
- 	GATE_INFRA2(CLK_INFRA_UFS_MP_SAP_BCLK, "infra_ufs_mp_sap_bck", "fufs_sel", 13),
- 	GATE_INFRA2(CLK_INFRA_MD32_BCLK, "infra_md32_bclk", "axi_sel", 14),
-+	/* infra_sspm is main clock in co-processor, should not be closed in Linux. */
-+	GATE_INFRA2_FLAGS(CLK_INFRA_SSPM, "infra_sspm", "sspm_sel", 15, CLK_IS_CRITICAL),
- 	GATE_INFRA2(CLK_INFRA_UNIPRO_MBIST, "infra_unipro_mbist", "axi_sel", 16),
-+	/* infra_sspm_bus_hclk is main clock in co-processor, should not be closed in Linux. */
-+	GATE_INFRA2_FLAGS(CLK_INFRA_SSPM_BUS_HCLK, "infra_sspm_bus_hclk", "axi_sel", 17, CLK_IS_CRITICAL),
- 	GATE_INFRA2(CLK_INFRA_I2C5, "infra_i2c5", "i2c_sel", 18),
- 	GATE_INFRA2(CLK_INFRA_I2C5_ARBITER, "infra_i2c5_arbiter", "i2c_sel", 19),
- 	GATE_INFRA2(CLK_INFRA_I2C5_IMM, "infra_i2c5_imm", "i2c_sel", 20),
-@@ -766,6 +789,10 @@ static const struct mtk_gate infra_clks[] = {
- 	GATE_INFRA3(CLK_INFRA_MSDC0_SELF, "infra_msdc0_self", "msdc50_0_sel", 0),
- 	GATE_INFRA3(CLK_INFRA_MSDC1_SELF, "infra_msdc1_self", "msdc50_0_sel", 1),
- 	GATE_INFRA3(CLK_INFRA_MSDC2_SELF, "infra_msdc2_self", "msdc50_0_sel", 2),
-+	/* infra_sspm_26m_self is main clock in co-processor, should not be closed in Linux. */
-+	GATE_INFRA3_FLAGS(CLK_INFRA_SSPM_26M_SELF, "infra_sspm_26m_self", "f_f26m_ck", 3, CLK_IS_CRITICAL),
-+	/* infra_sspm_32k_self is main clock in co-processor, should not be closed in Linux. */
-+	GATE_INFRA3_FLAGS(CLK_INFRA_SSPM_32K_SELF, "infra_sspm_32k_self", "f_f26m_ck", 4, CLK_IS_CRITICAL),
- 	GATE_INFRA3(CLK_INFRA_UFS_AXI, "infra_ufs_axi", "axi_sel", 5),
- 	GATE_INFRA3(CLK_INFRA_I2C6, "infra_i2c6", "i2c_sel", 6),
- 	GATE_INFRA3(CLK_INFRA_AP_MSDC0, "infra_ap_msdc0", "msdc50_hclk_sel", 7),
--- 
-2.41.0.455.g037347b96a-goog
+--ESqLmvJwzuWNyDyo
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZLeUqQAKCRA6cBh0uS2t
+rMItAP9cG5nx1x++wWRU+VItTbh4XWUmLjFZMBYxpuC6g2SryQEA9jlez1vrwO/l
+iJfZu2dQp7s/Fe1wazOV2nLlYLp+0AE=
+=r4Sz
+-----END PGP SIGNATURE-----
+
+--ESqLmvJwzuWNyDyo--
 
 
