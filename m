@@ -4,122 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78FEAEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 14:02:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5566EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 15:26:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ow7m3jr75URZ7/he9bZZDJXevWwjWsi1e2wS+QOs+tU=; b=itFA6vXE7o5GlUnoOLPUySHUE7
-	i6QTgLK2lIipWCWQFBfjERRNNfZw+EyfN3Q6wsA46sDDI46azZP+s6sAQMTE8GIown3esEI4lvU51
-	YaZVmhxpF+8+5UI8xpKZmF3cRokYIxboKFFrvJ91do1AYkfw0BffV+AtT08LogmzDtjKqk9vFjHKp
-	aRjQA7pmgFeYmuL6VLSfh5fskKadai2K3pD6DHxhkBXheC2KF6i6YZxXyqektXiw8/ZtbqUeX1Dcy
-	hpO86o9bF9dYOA5+M4aETFgm0bO3Hx6TY0yLNke4DnP9l6+6U4KgOuvtOebetUkdsffRqbogMN/Ug
-	wEof/yjQ==;
+	bh=i7bxphw/YpWmzB+mtLf3PSOUO4YSLrGh8OWg8w+78sk=; b=c8WdIDjGbiz6Ardr3fssE2EpDs
+	VuFRNgpZeXd8PKZ402+lkkS0Nl0Tl2upwbhKs1GviCl20WOKBM2dl5hPd+dMKYhwgK6ILP1PqDL1y
+	5YIHTSEsL8a7EE5qp7eRjReFwaQyoqA4YedxZNXeFSniSj4h/WyIWBgYaELA2LTPWEp1cf+uMShQK
+	C+44MHLPouRE54pycKfhIE+OFfRf0Oj13mWjedfXoHZh9uo8gwNJjqxjTdGkCbit7BjSty9KXNQuB
+	F0lujPmBzrUc3PLTER2oTTu2IN9Db2maAkM2t0TyixHrr8yWpkJt3RqDbJJjo1K8rTEc0V4BFdV+m
+	A5i/DvIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM7kz-007exD-0Q;
-	Wed, 19 Jul 2023 14:02:21 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1qM94D-007vZg-0g;
+	Wed, 19 Jul 2023 15:26:17 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM7kv-007ew3-0e;
-	Wed, 19 Jul 2023 14:02:18 +0000
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 36JDhtKs007417;
-	Wed, 19 Jul 2023 14:01:50 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=Ow7m3jr75URZ7/he9bZZDJXevWwjWsi1e2wS+QOs+tU=;
- b=oAJrr0NbpKZfKlvIh+41mpTLblMhSq/1YHr4nGKTD6Y9NxTj1Z+dk/57l8PmvUUfQkFF
- Kx9KsQFK0g0mwNO21IsbaQcd5/L+V5WE0gMDXzyRFuQpb6t6Jv6PLeBiYkaBb2r3nI5l
- RhqpuKiHzJg5l3wKxdWdASX6SZQ7ZB2vdVz44436qUVd6BfMxpVpJZB2BXOdFke3ad9q
- 3OCPfheENKDccGyvETHbW6TtrA9dyCEH/XQK8ksvjuap0tXJ32CnJVG0CWX0+mBElIb7
- JpptWIidltBUgMa122fnq0WH81s0E06JKykdAedWpIEDaZPZuQdxy7xyorN3+pouRX4I VA== 
-Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3rwps5bed5-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 19 Jul 2023 14:01:48 +0000
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 36JE1lm1002273
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 19 Jul 2023 14:01:47 GMT
-Received: from [10.48.241.243] (10.49.16.6) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.30; Wed, 19 Jul
- 2023 07:01:46 -0700
-Message-ID: <7738463c-c592-5d59-61ec-d39f9544b18f@quicinc.com>
-Date: Wed, 19 Jul 2023 07:01:45 -0700
+	id 1qM949-007vYD-2m;
+	Wed, 19 Jul 2023 15:26:15 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 5193B6173E;
+	Wed, 19 Jul 2023 15:26:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DCD33C433D9;
+	Wed, 19 Jul 2023 15:26:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689780370;
+	bh=nXOLt+Ru1599YLHogJZDfcCqEFtOC1MXpEQo8Utf5+4=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=X5Ur6GtOca0SFfi+2pqbWqAT2zyHEBEDsVDrSunDo62xwbrVst2eiLVPhX8LugXjg
+	 VPDH89Nwmdq4z7T9tXZJcSsK5UZhxGjzsbMhwc+3YELx3nwxBr1uyAy1BrUVxflDnd
+	 gyS0lvCBVAN2uYJptRT+6wrKD8KOMVvcMLSUG2djW8YJNayqmxBPBlCnPIAgZCKqTq
+	 wSM2U3r2QwqV5nZxt97CKc0wcpwHvgcrpZuPAt3ga2aXnTdPEdV8HKUrn5wAKeIbl1
+	 HoVdUdR4ReF/1XyB6SYMJeCbie8OcWHaMfG0FKlpRhKaKn4Q6EGaaNhS6ge9z7gPkB
+	 7MNDCW+sYBPRw==
+Received: by mail-lj1-f181.google.com with SMTP id 38308e7fff4ca-2b701dee4bfso111183791fa.0;
+        Wed, 19 Jul 2023 08:26:10 -0700 (PDT)
+X-Gm-Message-State: ABy/qLakiytMPflEOpC7V59Ijl47BGl07h3ne7+M2OjYo0Te3YKef1b2
+	l31rfwY1je+KFYTEZBfTAapwKRF6I11Z3cFUfA==
+X-Google-Smtp-Source: APBJJlFD292w7Q5p4ODutCfH9ve7dS7RcKMi1F2heH6iTUGn+9PvFn4FmEnqaV09PWhCD4P6dYl3jZJjD/GC9Da5Kbg=
+X-Received: by 2002:a2e:985a:0:b0:2b6:a057:8098 with SMTP id
+ e26-20020a2e985a000000b002b6a0578098mr249343ljj.0.1689780368825; Wed, 19 Jul
+ 2023 08:26:08 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH net-next] page_pool: split types and declarations from
- page_pool.h
-Content-Language: en-US
-To: Yunsheng Lin <linyunsheng@huawei.com>, <davem@davemloft.net>,
-        <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        Alexander
- Lobakin <aleksander.lobakin@intel.com>,
-        Eric Dumazet <edumazet@google.com>, Wei Fang <wei.fang@nxp.com>,
-        Shenwei Wang <shenwei.wang@nxp.com>,
-        Clark Wang
-	<xiaoning.wang@nxp.com>,
-        NXP Linux Team <linux-imx@nxp.com>,
-        Sunil Goutham
-	<sgoutham@marvell.com>,
-        Geetha sowjanya <gakula@marvell.com>,
-        Subbaraya
- Sundeep <sbhatta@marvell.com>,
-        hariprasad <hkelam@marvell.com>, Saeed
- Mahameed <saeedm@nvidia.com>,
-        Leon Romanovsky <leon@kernel.org>,
-        Alexei
- Starovoitov <ast@kernel.org>,
-        Daniel Borkmann <daniel@iogearbox.net>,
-        Jesper
- Dangaard Brouer <hawk@kernel.org>,
-        John Fastabend <john.fastabend@gmail.com>,
-        Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-        Ryder
- Lee <ryder.lee@mediatek.com>,
-        Shayne Chen <shayne.chen@mediatek.com>,
-        Sean
- Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-        Matthias
- Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        Ilias Apalodimas
-	<ilias.apalodimas@linaro.org>,
-        <linux-rdma@vger.kernel.org>, <bpf@vger.kernel.org>,
-        <linux-wireless@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>
-References: <20230719121339.63331-1-linyunsheng@huawei.com>
-From: Jeff Johnson <quic_jjohnson@quicinc.com>
-In-Reply-To: <20230719121339.63331-1-linyunsheng@huawei.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.49.16.6]
-X-ClientProxiedBy: nalasex01c.na.qualcomm.com (10.47.97.35) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: _L3h4Q3N71Ht3lEC8JxD5IKpRtE2fNnX
-X-Proofpoint-ORIG-GUID: _L3h4Q3N71Ht3lEC8JxD5IKpRtE2fNnX
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
- definitions=2023-07-19_09,2023-07-19_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=821
- malwarescore=0 mlxscore=0 bulkscore=0 suspectscore=0 lowpriorityscore=0
- adultscore=0 phishscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2306200000 definitions=main-2307190125
+References: <20230523104234.7849-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230523104234.7849-1-angelogioacchino.delregno@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 19 Jul 2023 23:25:56 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__oDNUx+_c=5u6TqX6vx-AG1r1xVzE-UWe+LaqQQEaaSw@mail.gmail.com>
+Message-ID: <CAAOTY__oDNUx+_c=5u6TqX6vx-AG1r1xVzE-UWe+LaqQQEaaSw@mail.gmail.com>
+Subject: Re: [PATCH] drm: mediatek: mtk_dsi: Fix NO_EOT_PACKET settings/handling
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, jitao.shi@mediatek.com
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	daniel@ffwll.ch, matthias.bgg@gmail.com, ck.hu@mediatek.com, 
+	shaoming.chen@mediatek.com, yt.shen@mediatek.com, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230719_070217_384318_B7FD3C3F 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20230719_082614_003887_3F892086 
+X-CRM114-Status: GOOD (  22.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,13 +85,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/19/2023 5:13 AM, Yunsheng Lin wrote:
-> Split types and pure function declarations from page_pool.h
-> and add them in page_page_types.h, so that C sources can
+Hi, Jitao:
 
-nit: s/page_page_types/page_pool_types/
+Do you have any comment?
+If you have no comment, I would apply this patch.
 
-> include page_pool.h and headers should generally only include
-> page_pool_types.h as suggested by jakub.
+Regards,
+Chun-Kuang.
 
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
+=BC
+2023=E5=B9=B45=E6=9C=8823=E6=97=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=886:4=
+2=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> Due to the initial confusion about MIPI_DSI_MODE_EOT_PACKET, properly
+> renamed to MIPI_DSI_MODE_NO_EOT_PACKET, reflecting its actual meaning,
+> both the DSI_TXRX_CON register setting for bit (HSTX_)DIS_EOT and the
+> later calculation for horizontal sync-active (HSA), back (HBP) and
+> front (HFP) porches got incorrect due to the logic being inverted.
+>
+> This means that a number of settings were wrong because....:
+>  - DSI_TXRX_CON register setting: bit (HSTX_)DIS_EOT should be
+>    set in order to disable the End of Transmission packet;
+>  - Horizontal Sync and Back/Front porches: The delta used to
+>    calculate all of HSA, HBP and HFP should account for the
+>    additional EOT packet.
+>
+> Before this change...
+>  - Bit (HSTX_)DIS_EOT was being set when EOT packet was enabled;
+>  - For HSA/HBP/HFP delta... all three were wrong, as words were
+>    added when EOT disabled, instead of when EOT packet enabled!
+>
+> Invert the logic around flag MIPI_DSI_MODE_NO_EOT_PACKET in the
+> MediaTek DSI driver to fix the aforementioned issues.
+>
+> Fixes: 8b2b99fd7931 ("drm/mediatek: dsi: Fine tune the line time caused b=
+y EOTp")
+> Fixes: 2d52bfba09d1 ("drm/mediatek: add non-continuous clock mode and EOT=
+ packet control")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
+k/mtk_dsi.c
+> index 7d5250351193..b0ab38e59db9 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -407,7 +407,7 @@ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
+>         if (dsi->mode_flags & MIPI_DSI_CLOCK_NON_CONTINUOUS)
+>                 tmp_reg |=3D HSTX_CKLP_EN;
+>
+> -       if (!(dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET))
+> +       if (dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET)
+>                 tmp_reg |=3D DIS_EOT;
+>
+>         writel(tmp_reg, dsi->regs + DSI_TXRX_CTRL);
+> @@ -484,7 +484,7 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi =
+*dsi)
+>                           timing->da_hs_zero + timing->da_hs_exit + 3;
+>
+>         delta =3D dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST ? 18 : 12;
+> -       delta +=3D dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET ? 2 : 0;
+> +       delta +=3D dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET ? 0 : 2;
+>
+>         horizontal_frontporch_byte =3D vm->hfront_porch * dsi_tmp_buf_bpp=
+;
+>         horizontal_front_back_byte =3D horizontal_frontporch_byte + horiz=
+ontal_backporch_byte;
+> --
+> 2.40.1
+>
 
