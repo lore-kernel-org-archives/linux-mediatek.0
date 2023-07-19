@@ -4,90 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68E7FC001DE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 10:18:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E94CEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 10:23:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/12YzBMxFEuL9z1yWxB+UUCkYX6+8C24FFiPRnVOeYs=; b=H1fApcZILlDh06ZjqHEqVT+/6x
-	7WAD4OONOt7lmFkpYK8ShWxBACkKJbBreMBhy1WB8YTfAd5x2R7RurMDq2ju11J59GSofkGttQjKT
-	iMBEiNu3hfXhoein/RMt87I1sbjwak/CTYZ9ZWt1Oz12dV1RD58IQs3XSmOYUBJW86zrVaLoLd8CV
-	0F5m4rcJDKxThXfntQlbRqwFpR8AZ+7CZe6lnCM6TMkp0M0OQRiAUEW9BVoO89XPf8peq8FWZ/D9q
-	S/XoNl8YkNmAQVm4zwX2hjCOlQEs/Tt++YegLiXObMeSPi8n3Q3+TsE3kC5QIND3iXnKXZSB3Cy2O
-	kI2tqpTA==;
+	bh=ahbeWucAcoOgJsJY2s8d1VaxXiv71GHKoX+Vccdy9XU=; b=yzgOq9MKlU9qUjaY5CnH6ZlG3e
+	O2qPhd+1RU7le4y5yD8TbiVwuR3bfxkMM+VTl8veTGQ/02Lx4PlBBVnwOcDtojs5L8AdVXOF/YEf0
+	HrwkZiGqYFgJhxBzj7HF+MU+r4oQRkZc+gOf/Re+J7L+BDFf5M9+GU5XROkJyU+l0nZUypNfHkSw+
+	cYTENkug2RXJHICJfR2Ee8c/PKXkMHY6gFtkgWUEawYgW9MRqNjf5gZhNEDCx+DOlVANj0peuS39j
+	TMpwtkLprva6enzPCps62a3SawD7jSn0tzVG05FYgPbpxrthI6h2HT9zmLMYnV0WGXc6DNQC1zMVo
+	QdBti+IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM4Fv-006fTn-1F;
-	Wed, 19 Jul 2023 10:18:03 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1qM4LL-006gue-0U;
+	Wed, 19 Jul 2023 10:23:39 +0000
+Received: from mail-io1-xd29.google.com ([2607:f8b0:4864:20::d29])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qM4Fr-006fSA-0M
+	id 1qM4LH-006grR-37
 	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Jul 2023 10:18:01 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-31716932093so860986f8f.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Jul 2023 03:17:58 -0700 (PDT)
+	Wed, 19 Jul 2023 10:23:37 +0000
+Received: by mail-io1-xd29.google.com with SMTP id ca18e2360f4ac-7836164a08aso360198639f.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Jul 2023 03:23:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689761877; x=1690366677;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=/12YzBMxFEuL9z1yWxB+UUCkYX6+8C24FFiPRnVOeYs=;
-        b=h7/WTUUWaoUzOcX86SFAvjDqKxEWUmwu+YhE3cNW33MrssWBI/fbZ8ND6zHNcXjHgw
-         3j8kn05JCeCAbnsife3MAC/9la+wF4PRffF+SRhL+G12LmogFN6K3TioSMpzkLm7KG93
-         gVjWA+5C6tI7mcjQ3QVMply/DRiEnOsagoTEPNoAP+HjDSt0XGtXBYMyYc8kkS5SjFn2
-         nB2tbt0lWG/K5JQ9lgxdCI1H3FEjIOWMaVhNMTK30fySlZYJmq8/VRj0ettvrI9n1cVJ
-         cvsl4W62ZpzX+maxk5mts/VOjiWpHDL2RYFu0v2EkuRPhihuIY+rMNXsS+esJsloML/q
-         a83A==
+        d=chromium.org; s=google; t=1689762213; x=1692354213;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ahbeWucAcoOgJsJY2s8d1VaxXiv71GHKoX+Vccdy9XU=;
+        b=EPBukdUU6JZL7z6rax1O8Y1jHxExtSvPJnsurmUPhC//wDyCKsnEIw6X+7A8G7MeJV
+         c4yDExgcwcvfrRyQbsYkWalcWU/zFvzPGIoK+/JOWSys6t1UlBfjbd1Vqd9otuPPA+MT
+         Qz+qhGIpykg0AX4Z01moBKrysghiXmOSxaTXM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689761877; x=1690366677;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/12YzBMxFEuL9z1yWxB+UUCkYX6+8C24FFiPRnVOeYs=;
-        b=b20NXi9VkQBEnFkMLcgB2l6Qk7z37J1raP1Ydt2JkS2n0plmL0BDoNWwrtmUH8TOjz
-         /8D9B5Pluf2bIL0IZY0iNg+ERt7OSUBTq5jwf2tZp72U4305wDMF7XA+ubUdAvBVWRG1
-         sjLxjLNsJhCaUALmeIozVKHadSS78Zl8Gr/EZnFXoCxQ9V+NbLWyJVZ0zypx182rSq+o
-         3OyXE9PMVzp8IJIPA3kYz2lQpGZpy++H4V3ss/RbVVVuOjJA0RDI+EG2EbGqBSxk4Tr7
-         2qT8h4+ixM2XbX2e9VdcriSShQUQKLJpbCEpvO/MJZfnVDUtSsDfsYc/w3ulO7eJJAVr
-         2jbA==
-X-Gm-Message-State: ABy/qLaN4BZwamlHm+a4TMoe8sRnZRzju5eV/FfjhvPXktB0xULcUlBD
-	CBcMhF4KyvJ9vg+TTQBzfB+4+A==
-X-Google-Smtp-Source: APBJJlH/wReuFNESBCfYGmjiyYJIozOQLKMrl6ckmaNf19lwjXmfAOVCoYhJvsQXenBPnI/4zc4muQ==
-X-Received: by 2002:adf:ecd0:0:b0:30f:ca58:a00d with SMTP id s16-20020adfecd0000000b0030fca58a00dmr1786141wro.45.1689761877016;
-        Wed, 19 Jul 2023 03:17:57 -0700 (PDT)
-Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id j8-20020a5d4488000000b0031417b0d338sm4924130wrq.87.2023.07.19.03.17.55
+        d=1e100.net; s=20221208; t=1689762213; x=1692354213;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ahbeWucAcoOgJsJY2s8d1VaxXiv71GHKoX+Vccdy9XU=;
+        b=KJlHv5eqzuY/vKhflQNrf7MZ3QfIVTtOZSay8WL8FiiBGo3TcvelJzogUczeyC0HV6
+         lzt+Wsmu4tsCmjKf2SshQP93Haz+Tqtvh8I0wHJM4pBA+P40bWWakMPb28MNzn17Hjf4
+         uHAoz+2F4vR7FVH8Py5rI4rjLZ4Nddfkx1MeIbUUjjmg1TCCh5a2qf1B0HlgPsGYvVb1
+         BuS48OanqTMla+SVjdeMNE75X+BVUZLkfoaSYZ6Hf0zzRPiiHd59FsuTFM6qqFtZ7lJw
+         fU+cr/f9Hr0m4/r55xGc634ihQLZ5enZNWpIsaB7M6Loptd2LFIOxWUVPhMA/S12Kt8H
+         wuGg==
+X-Gm-Message-State: ABy/qLZgdIAidAuRPQHZkLPiFu5mUn6z/7FBg9T4x7a2MzXsL0OFf8fW
+	8GrkRg9NMrTmlatzQvzZRP65Y0vijJEidNfklVM=
+X-Google-Smtp-Source: APBJJlFFtKaW8UhO4jYQs3SML6YaCS9+hUhZpWwIWhTuvIKZ3MSfeewJ3J2jEYdBwohrHmwXviFNyw==
+X-Received: by 2002:a5d:80c4:0:b0:786:f10e:a473 with SMTP id h4-20020a5d80c4000000b00786f10ea473mr1283082ior.16.1689762212805;
+        Wed, 19 Jul 2023 03:23:32 -0700 (PDT)
+Received: from mail-io1-f46.google.com (mail-io1-f46.google.com. [209.85.166.46])
+        by smtp.gmail.com with ESMTPSA id e1-20020a05660222c100b0076c569c7a48sm1248972ioe.39.2023.07.19.03.23.31
+        for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 19 Jul 2023 03:17:56 -0700 (PDT)
-Message-ID: <55c336a4-b268-d2d3-47f3-213300e4e623@baylibre.com>
-Date: Wed, 19 Jul 2023 12:17:55 +0200
+        Wed, 19 Jul 2023 03:23:32 -0700 (PDT)
+Received: by mail-io1-f46.google.com with SMTP id ca18e2360f4ac-7872d448c5aso361504839f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Jul 2023 03:23:31 -0700 (PDT)
+X-Received: by 2002:a05:6602:3314:b0:783:60f7:ade9 with SMTP id
+ b20-20020a056602331400b0078360f7ade9mr1781762ioz.5.1689762211675; Wed, 19 Jul
+ 2023 03:23:31 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [RESEND PATCH v2] media: mtk-jpeg: Fix use after free bug due to
- uncanceled work
-To: Zheng Hacker <hackerzheng666@gmail.com>
-Cc: Zheng Wang <zyytlz.wz@163.com>, Kyrie.Wu@mediatek.com,
- bin.liu@mediatek.com, mchehab@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Irui.Wang@mediatek.com,
- security@kernel.org, 1395428693sheep@gmail.com, alex000young@gmail.com
-References: <20230707092414.866760-1-zyytlz.wz@163.com>
- <538096d2-7b24-e1c7-706d-4d4f952d35eb@baylibre.com>
- <CAJedcCzR6DzX_aG1KBgrMHDJ1xh=RTA-FrZ+TJ_4KawWpHyYuA@mail.gmail.com>
- <CAJedcCyKv-hdDhWcogDZrC-kY6qtO-H1fDYqjTXMJvCR19MxYg@mail.gmail.com>
-Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <CAJedcCyKv-hdDhWcogDZrC-kY6qtO-H1fDYqjTXMJvCR19MxYg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20230719075056.72178-1-angelogioacchino.delregno@collabora.com> <20230719075056.72178-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230719075056.72178-2-angelogioacchino.delregno@collabora.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Wed, 19 Jul 2023 18:22:55 +0800
+X-Gmail-Original-Message-ID: <CAC=S1ng+s5Fr_Evwct6E5yPZD8hN_NLYnx2sitrUWK3b4ti73g@mail.gmail.com>
+Message-ID: <CAC=S1ng+s5Fr_Evwct6E5yPZD8hN_NLYnx2sitrUWK3b4ti73g@mail.gmail.com>
+Subject: Re: [PATCH v2 1/6] drm/mediatek: mtk_dpi: Simplify with devm_drm_bridge_add()
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	daniel@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230719_031759_173021_810CB65C 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20230719_032336_008473_1231F534 
+X-CRM114-Status: UNSURE (   7.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,67 +98,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Jul 19, 2023 at 3:51=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Change drm_bridge_add() to its devm variant to slightly simplify the
+> probe function.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
-
-On 18/07/2023 05:07, Zheng Hacker wrote:
-> Friendly ping
-> 
-> Zheng Hacker <hackerzheng666@gmail.com> 于2023年7月16日周日 00:08写道：
->>
->> Hi,
->>
->> This issue has not been resolved for a long time. Is there anyone who can help?
->>
->> Best regards,
->> Zheng
->>
->> Alexandre Mergnat <amergnat@baylibre.com> 于2023年7月7日周五 22:11写道：
->>>
->>>
->>>
->>> On 07/07/2023 11:24, Zheng Wang wrote:
->>>> In mtk_jpeg_probe, &jpeg->job_timeout_work is bound with
->>>> mtk_jpeg_job_timeout_work. Then mtk_jpeg_dec_device_run
->>>> and mtk_jpeg_enc_device_run may be called to start the
->>>> work.
->>>> If we remove the module which will call mtk_jpeg_remove
->>>> to make cleanup, there may be a unfinished work. The
->>>> possible sequence is as follows, which will cause a
->>>> typical UAF bug.
->>>>
->>>> Fix it by canceling the work before cleanup in the mtk_jpeg_remove
->>>>
->>>> CPU0                  CPU1
->>>>
->>>>                       |mtk_jpeg_job_timeout_work
->>>> mtk_jpeg_remove     |
->>>>     v4l2_m2m_release  |
->>>>       kfree(m2m_dev); |
->>>>                       |
->>>>                       | v4l2_m2m_get_curr_priv
->>>>                       |   m2m_dev->curr_ctx //use
->>>
->>> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
->>>
->>> --
->>> Regards,
->>> Alexandre
-
-Hi Zheng,
-
-If you asking me to merge patch, sorry but I can't, I'm just a reviewer. 
-I invite you to ping the maintainers directly:
-
-Bin Liu <bin.liu@mediatek.com> (supporter:MEDIATEK JPEG DRIVER)
-Mauro Carvalho Chehab <mchehab@kernel.org> (maintainer:MEDIA INPUT 
-INFRASTRUCTURE (V4L/DVB))
-Matthias Brugger <matthias.bgg@gmail.com> (maintainer:ARM/Mediatek SoC 
-support)
-
-Otherwise, I misunderstood what you asking me. If so, can you rephrase 
-your question please?
-
--- 
-Regards,
-Alexandre
+Reviewed-by: Fei Shao <fshao@chromium.org>
 
