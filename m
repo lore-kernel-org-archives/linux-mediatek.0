@@ -4,85 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06F2EEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jul 2023 08:14:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F863EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jul 2023 04:53:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U+HorF4LeKiLNz5w8pGzA0k69aZAzTVqZHElBYNhWvo=; b=ppJiLOcrCh/k3exRHBYUaJIUSn
-	8wl3hHP3oBlCyJYIsGgaAbSgJt1LzlX0vONVWyj8x3cApEEL9irRxejosdGOh1dtYGVE1Km+0PiLq
-	A9x0k0tFG7WOcLA0yp0L4b3U8gi3V4wsdYxPltmd6V6mkbgeVL/g4KlZRIhy+DZvjyc9HXbABdSqf
-	o4ymkKrlMVHFFAPihAsgm3GHzP5NUeX0qN2eWm+e4+ge+Gbl5asczfTfUWk+Yo4RR40JNvjfguT7J
-	+611MrpaOgzF1kvdU1Q8Nf5BEyAtI0bq6SZ6PVTS/3SqCnm0ZKpZFoxCDLje1Fzwc/YotViewXO3w
-	ieljd+Wg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:Date:Message-Id:Subject:
+	Mime-Version:Content-Transfer-Encoding:Content-Type:From:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zxHRvKHlPZUnLRxeY6hYOhZ7r0H3DhpddiTleXw6kRI=; b=iCatawG8dv2dlovHjfJgpGBywl
+	/6zy8/ojIbPjBGReF9M4KUy5EC7keRihk80WhInWWNuSXq9HFcpgZYSGm9eLsGJRBBw1H09tT2gzh
+	xD2yjK4LeU/vTbStwpsm/2gp4Z0ELc8yn4o4Y42zi2ro2C6Pvxs6ER/O9IjJ+CgpZcvBF8uKapMoJ
+	+10R++NXHHD2loOV1cKoY+5y2d/1W/B8il+wmZUn7jn85vmKWD6STGI+oPiXtAKG966/nLwegmcWW
+	cPekD8b5sxTj2ebeZ8F2ns9+9B/W3qDEUvhSXrpFAFJSMRa3rPNCTG7D3g7cY5mEIaicqbZibezry
+	S38XfDGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLJMy-003Qrm-15;
-	Mon, 17 Jul 2023 08:14:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qLzC6-00559a-0z;
+	Wed, 19 Jul 2023 04:53:46 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qLJMr-003Qni-0h;
-	Mon, 17 Jul 2023 08:14:10 +0000
-X-UUID: e0e89ffe247911ee912e1518a6540028-20230717
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=U+HorF4LeKiLNz5w8pGzA0k69aZAzTVqZHElBYNhWvo=;
-	b=BwBoGDK2gE85ELT8uBv92DoRaJG0WCeu/RnSyZ4mnKR1I1y+AKp0tschm/JKsxj70Hff6/9HnWf2Kb8h3tNs/ECaJNvFkuBfz4U8MxamtrFXEqqdiK2IDFpk0aioIfPNmukMcjBATC0vGsaMgVs1nZdaaVsPdzcds7pucrct5NY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.28,REQID:c6f74142-55d4-4e30-bc59-2c1c40362581,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:70
-X-CID-INFO: VERSION:1.1.28,REQID:c6f74142-55d4-4e30-bc59-2c1c40362581,IP:0,URL
-	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:70
-X-CID-META: VersionHash:176cd25,CLOUDID:b306b487-44fb-401c-8de7-6a5572f1f5d5,B
-	ulkID:2307171613254T7HCBU9,BulkQuantity:4,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
-	TF_CID_SPAM_FSD
-X-UUID: e0e89ffe247911ee912e1518a6540028-20230717
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1768337391; Mon, 17 Jul 2023 01:13:57 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 17 Jul 2023 16:13:22 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 17 Jul 2023 16:13:21 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
- Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 2/2] media: mediatek: vcodec: checking encoder ack message parameter
-Date: Mon, 17 Jul 2023 16:13:19 +0800
-Message-ID: <20230717081319.12542-2-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230717081319.12542-1-yunfei.dong@mediatek.com>
-References: <20230717081319.12542-1-yunfei.dong@mediatek.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+	id 1qLzC2-005597-1T
+	for linux-mediatek@lists.infradead.org;
+	Wed, 19 Jul 2023 04:53:44 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-1b852785a65so2940305ad.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Jul 2023 21:53:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=mikesilva.com; s=google; t=1689742421; x=1692334421;
+        h=to:date:message-id:subject:mime-version:content-transfer-encoding
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=zxHRvKHlPZUnLRxeY6hYOhZ7r0H3DhpddiTleXw6kRI=;
+        b=fX6nziuRPy1pBvE/1prX03R2XYVoknKEb6Es5VHuDkNM7xbnXuiKNCMl9HXtRahFil
+         8PPKLXACdDXyzrglagmyFShb1JoCxCRZdKxf5KQbL0gaT4/necl40S0C75uFPyAmBotI
+         VBndq2cWuINb/n9awgP+mN8AzReNPeqw7x5/aEJByl5A7k0Ggm/fp/qu7GxVWoclIE4r
+         Mblwpc5vQULQtOSIDDiqkaWU7tMc6r4FsmK0NsLzbdjYAe0a8fbTFERId7lihcDWl3j/
+         04y0sbcUoUROQaC2rjw7f9vYxXUrid5BxGnYXPyJadyJIY3KU3QUINt2o7i+oaJo+g5+
+         AybA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689742421; x=1692334421;
+        h=to:date:message-id:subject:mime-version:content-transfer-encoding
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=zxHRvKHlPZUnLRxeY6hYOhZ7r0H3DhpddiTleXw6kRI=;
+        b=bUlwYwe5KLVH7P3ET2GiJKqViY6FcxiCZm25WxkGquvZj10vLfbcrmhbAHdr5RW8sc
+         niayBJ62K96NqLOlCrKdcDZRM/frOsZ6WNOcgw4J565EZ8SjYH6JZT0zh7bYv4QYzfeS
+         ASZoLER0qeuhg8QprMMCGX43Ed8kDywvLU3bAs99FAFhdZDyrMYO/yjSQjJljOfdbLiF
+         5NAuBy3ACmc0P0BY9pExT974g/agkoLFtdL1AVzeeKHlrm3jdugZHPEcqWqMd5HP/ge8
+         1B1YOegHGK5/niRq3XQQE8brc0MLFq7swe+UzBnNRJFGsEc3mrb+tmFR0koYGOU/6fnv
+         91Mw==
+X-Gm-Message-State: ABy/qLbiw1RQLqZuZ0uuvvOhk8LzPwE0Z/3NBceMetAaUK48RyFrxhxs
+	vO6QD6ZELLr/rk9GrkkQUywP97f/EM6vIy3JX1Mm0A==
+X-Google-Smtp-Source: APBJJlFFOTvLD7ANsQ96MMv2QBi/bSwB3wCpRbM0xi3Bf+57MD3NGCf9eujT3tr5VjqcoestZEyWiA==
+X-Received: by 2002:a17:902:ecc3:b0:1b8:5a42:5145 with SMTP id a3-20020a170902ecc300b001b85a425145mr1618266plh.31.1689742421154;
+        Tue, 18 Jul 2023 21:53:41 -0700 (PDT)
+Received: from smtpclient.apple ([2001:5a8:4322:b800:485:1be:7d86:53bd])
+        by smtp.gmail.com with ESMTPSA id jk14-20020a170903330e00b001b9cd9d7ce4sm2754680plb.219.2023.07.18.21.53.40
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 18 Jul 2023 21:53:40 -0700 (PDT)
+From: Mike Silva <mike.silva@mikesilva.com>
+Content-Type: text/plain;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.120.41.1.3\))
+Subject: mt7921 & mt7922 Losing Carrier After DFS Strike
+Message-Id: <2A80A9E9-CBCB-4F5F-AF11-4628CCFBB78F@mikesilva.com>
+Date: Tue, 18 Jul 2023 21:53:40 -0700
+To: linux-mediatek@lists.infradead.org
+X-Mailer: Apple Mail (2.3696.120.41.1.3)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230717_011405_302030_F0E24C03 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20230718_215342_512648_B38DAD7C 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,111 +88,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Need to checking all parameters of msg data are valid or not,
-in case of access null pointer or unreasonable value leading
-to kernel reboot.
+I and other users are having with the following error on the mt7921 & =
+mt7921 after a DFS strike. This has seemed to be an issue since the =
+chipsets were released.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../vcodec/encoder/mtk_vcodec_enc_drv.h       |  2 +
- .../mediatek/vcodec/encoder/venc_vpu_if.c     | 40 +++++++++++++++++--
- 2 files changed, 38 insertions(+), 4 deletions(-)
+I am experiencing this on:
+uname -a
+Linux Vancouver 6.2.0-1008-raspi #10-Ubuntu SMP PREEMPT Fri Jun 30 =
+12:20:13 UTC 2023 aarch64 aarch64 aarch64 GNU/Linux
 
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-index c07010e56649..a042f607ed8d 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-@@ -123,6 +123,7 @@ struct mtk_enc_params {
-  * @xfer_func: enum v4l2_xfer_func, colorspace transfer function
-  *
-  * @q_mutex: vb2_queue mutex.
-+ * @vpu_inst: vpu instance pointer.
-  */
- struct mtk_vcodec_enc_ctx {
- 	enum mtk_instance_type type;
-@@ -156,6 +157,7 @@ struct mtk_vcodec_enc_ctx {
- 	enum v4l2_xfer_func xfer_func;
- 
- 	struct mutex q_mutex;
-+	void *vpu_inst;
- };
- 
- /**
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-index 708db1bb32d4..213544e55166 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-@@ -42,19 +42,47 @@ static void handle_enc_encode_msg(struct venc_vpu_inst *vpu, const void *data)
- 	vpu->is_key_frm = msg->is_key_frm;
- }
- 
-+static bool vpu_enc_check_ap_inst(struct mtk_vcodec_enc_dev *enc_dev, struct venc_vpu_inst *vpu)
-+{
-+	struct mtk_vcodec_enc_ctx *ctx;
-+	int ret = false;
-+
-+	list_for_each_entry(ctx, &enc_dev->ctx_list, list) {
-+		if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst == vpu) {
-+			ret = true;
-+			break;
-+		}
-+	}
-+
-+	return ret;
-+}
-+
- static void vpu_enc_ipi_handler(void *data, unsigned int len, void *priv)
- {
-+	struct mtk_vcodec_enc_dev *enc_dev;
- 	const struct venc_vpu_ipi_msg_common *msg = data;
--	struct venc_vpu_inst *vpu =
--		(struct venc_vpu_inst *)(unsigned long)msg->venc_inst;
-+	struct venc_vpu_inst *vpu;
- 
- 	mtk_venc_debug(vpu->ctx, "msg_id %x inst %p status %d", msg->msg_id, vpu, msg->status);
- 
--	vpu->signaled = 1;
-+	enc_dev = (struct mtk_vcodec_enc_dev *)priv;
-+	vpu = (struct venc_vpu_inst *)(unsigned long)msg->venc_inst;
-+	if (!priv || !vpu) {
-+		mtk_v4l2_venc_err(vpu->ctx, "venc_inst is NULL, did the SCP hang or crash?");
-+		return;
-+	}
-+
-+	if (!vpu_enc_check_ap_inst(enc_dev, vpu) || msg->msg_id < VPU_IPIMSG_ENC_INIT_DONE ||
-+	    msg->msg_id > VPU_IPIMSG_ENC_DEINIT_DONE) {
-+		mtk_v4l2_venc_err(vpu->ctx, "venc msg id not correctly => 0x%x", msg->msg_id);
-+		vpu->failure = -EINVAL;
-+		goto error;
-+	}
-+
- 	vpu->failure = (msg->status != VENC_IPI_MSG_STATUS_OK);
- 	if (vpu->failure) {
- 		mtk_venc_err(vpu->ctx, "vpu enc status failure %d", vpu->failure);
--		return;
-+		goto error;
- 	}
- 
- 	switch (msg->msg_id) {
-@@ -72,6 +100,9 @@ static void vpu_enc_ipi_handler(void *data, unsigned int len, void *priv)
- 		mtk_venc_err(vpu->ctx, "unknown msg id %x", msg->msg_id);
- 		break;
- 	}
-+
-+error:
-+	vpu->signaled = 1;
- }
- 
- static int vpu_enc_send_msg(struct venc_vpu_inst *vpu, void *msg,
-@@ -105,6 +136,7 @@ int vpu_enc_init(struct venc_vpu_inst *vpu)
- 	init_waitqueue_head(&vpu->wq_hd);
- 	vpu->signaled = 0;
- 	vpu->failure = 0;
-+	vpu->ctx->vpu_inst = vpu;
- 
- 	status = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler, vpu->id,
- 					    vpu_enc_ipi_handler, "venc", NULL);
--- 
-2.18.0
+However, you can see that this is a common issue for people running on =
+other linux OSes and architectures, here:
+https://github.com/morrownr/USB-WiFi/issues/283
+
+I am running the latest driver in the git.kernel.org repository.
+kernel: mt7921u 2-2.4:1.3: WM Firmware Version: ____010000, Build Time: =
+20230526130958
+kernel: mt7921u 2-2.4:1.3: HW/SW Version: 0x8a108a10, Build Time: =
+20230526130917a
+
+However, as I said this has been an issue for months, so it=E2=80=99s =
+also effected previous kernel and mt76 driver versions. It also is an =
+issue whether I use wpa_supplicant or iwd to manage my WiFi connection.
+
+Where I live, DFS strikes seem fairly common, so I see this on at least =
+a daily basis. And, not infrequently multiple times in a day. Typical =
+log output is here:
+Jul 18 06:58:23 Vancouver kernel: wlxe0e1a9368b21: driver doesn't =
+support chan-switch with channel contexts
+Jul 18 06:58:23 Vancouver systemd-networkd[1033]: wlxe0e1a9368b21: Lost =
+carrier
+Jul 18 07:02:40 Vancouver systemd-resolved[1058]: wlxe0e1a9368b21: Bus =
+client set DNS server list to: 50.0.1.1, 50.0.2.2
+Jul 18 09:21:20 Vancouver NetworkManager[1229]: <info>  =
+[1689697280.5776] dhcp4 (wlxe0e1a9368b21): activation: beginning =
+transaction (timeout in 45 seconds)
+Jul 18 09:21:20 Vancouver NetworkManager[1229]: <info>  =
+[1689697280.5779] dhcp4 (wlxe0e1a9368b21): state changed no lease
+Jul 18 09:21:21 Vancouver avahi-daemon[1183]: Withdrawing address record =
+for 192.168.4.26 on wlxe0e1a9368b21.
+Jul 18 09:21:21 Vancouver avahi-daemon[1183]: Leaving mDNS multicast =
+group on interface wlxe0e1a9368b21.IPv4 with address 192.168.4.26.
+Jul 18 09:21:21 Vancouver avahi-daemon[1183]: Interface =
+wlxe0e1a9368b21.IPv4 no longer relevant for mDNS.
+Jul 18 09:22:05 Vancouver systemd-resolved[1058]: wlxe0e1a9368b21: Bus =
+client set default route setting: no
+Jul 18 09:22:05 Vancouver systemd-resolved[1058]: wlxe0e1a9368b21: Bus =
+client reset DNS server list.
+
+In short, DFS strike, AP changes channel, then the mt7921 loses carrier, =
+and my headless machine becomes unresponsive.
+
+I=E2=80=99m happy to provide more detailed logging, if you can suggest a =
+debug mode to run in and how to activate it. This is quite repeatable.
 
 
