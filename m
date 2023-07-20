@@ -4,100 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6743DC001DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 14:21:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 966D7EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 14:30:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5bM5fwQZuavzr0KLXlSpBqYe6ZYyOnK6tAtOA/McGh0=; b=Eie5HZsXoY6ZwtGdKnDJla3zNs
-	viWWfghppZoj/Js4JzsrZGYftqOluo8X001d8d7o6BOT9ayUM0wdiPpbsUp6CgPzQ1aK+CPj0QDqc
-	pEBK+lf9h5QR6dNz4ZmorcYW5t5NHf4IA7qjR7QjSNXcizW63X8pzbawW/nOjL28E/JdGRNjoV2/Q
-	M5rhX7OIhaYpHSIegyb3Vsi5yqD21Y7HaWHgcy8M1jtMp/FL2XuAn6sZOsKTzFSSK7LoEcXcdOVhK
-	3MhCYT/YqNnTuLFS25j/Zwj2QwQoHMOQA8hUXu6aJgnwyxFn3aHRLVAgGaL2U33DTXY0DnULNoec8
-	xe9y/tgQ==;
+	bh=+p4cBe1pMgniHvXw2LuLYSKKIqQxquV7AY6YDbEUJdE=; b=k0E3tjVRdbUN/cMuvsLutGRsx2
+	K4hFvWQ17QuYjDWvceDZ1HvWQpp3RDShYyiWRIMzvM4yXIYqIygeIqWMs4yiABZRuocXyH/i87RIx
+	/eTtakYwFl7iXBggZFkwg98kQqnIVJjwsBrxAsUI+RxbZyB9l6Seuci43UO1X80WTaizY29HUb9g4
+	m2RZvUl3BGplpKnFFW0MXcEsez+hXcRclz/WCjyOmpIfv2+2TeltIeInbq0c4GNbGo7clAYd9cLO+
+	JnL8jJ+x+jhoVzsE/3TJ0cBocTVYz4QlVJH1SHJNc8AAppRFwlS5zlLvSF/WfVyrwsKvciwCm/l/d
+	sfZWvRXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMUXB-00BNKB-15;
-	Thu, 20 Jul 2023 14:21:37 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1qMUgA-00BON7-1n;
+	Thu, 20 Jul 2023 14:30:54 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMUX7-00BNI1-2g
+	id 1qMUg7-00BOKy-0k
 	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Jul 2023 14:21:35 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2b6f943383eso12412281fa.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jul 2023 07:21:32 -0700 (PDT)
+	Thu, 20 Jul 2023 14:30:52 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-3fbc6ab5ff5so7028015e9.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jul 2023 07:30:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1689862891; x=1690467691;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689863447; x=1690468247;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=5bM5fwQZuavzr0KLXlSpBqYe6ZYyOnK6tAtOA/McGh0=;
-        b=spUGuRcegEQPc3fc25t8itt8SEf8ygAVohrhUn1ujEk4I9NT0xUvIMs1yqyuWqxNFr
-         fBngMP/QWUKoSJ4W5c8y5CIpFFLT2NdGs7KcRmUv/FP+F2rq6dMQaol9zCqPj/y+WTED
-         2PSRgpO+AuKpqQjbbAcTkKACjlLeF1nbuCreWEGmYWXHj2dY5nBdA3c0ybQNAqoK1TUq
-         kekBLt7Ich29WT7xHej4Hzg7GCemUc/EmRGwPy7fQEuunSvGNdqxqNwLHTK/PQwA40Dp
-         BwJdBbnoarNMLasaotpymgCSCXe725rnTO/e+1odjR+bU2WyYT4CLBrdqgOxxsPSCDk1
-         B2qg==
+        bh=+p4cBe1pMgniHvXw2LuLYSKKIqQxquV7AY6YDbEUJdE=;
+        b=oUUiGCS8pw8J7VoaCzy8JULE07XXLKQOywKwVV2oQdH9glG0suWrzfMxKYQOt3ySck
+         Ts0lKmWd/zI8NUEFA7MocNG6AsBcCcndzq6dFmOETbgezPyI9Gt7rf2OlH64v+25Euau
+         k9VG3h9NIkRhJXfLy3TxRJe9/sUX8C21mWgXHJYnipC/B0i+tTHZtGkiYoAC5Wa0BNTB
+         6eJ3yjLPwsZqapd4dJadZng5ywjpfO4pFWOY51Zml2uoJZXQi29eGMyZhe/xuCT2mL5H
+         YmT4g/d/TFxVLrKFvgheNOiI874jPDyzqzdVJJ2tOFcU+3kaW0OGccacJPta4HJuC8nb
+         RDMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689862891; x=1690467691;
+        d=1e100.net; s=20221208; t=1689863447; x=1690468247;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5bM5fwQZuavzr0KLXlSpBqYe6ZYyOnK6tAtOA/McGh0=;
-        b=PoIguHjAHGm6qmBPuVC+VZ+mIx+qNPJW0bYB0DB1W+feWekU/t008IjOjAkgDgggMo
-         12PeLhA04h+/ZJNfQzI4aBYjF0rndr+mhqqmNxOrH+210Ofoab1KfFqGMtFclUefFvIf
-         WDC1I7xB6TswRleHmJZoheQVdRiAsQWz0GanUWJPuD3b4i4x31IVV96CpMU5WiFA+iCn
-         B4sjpp/o8ULSSuaApUszgi3Q3yOazCU+/gMqnhLVdd7o/aCdWj3OwKdQkTFTfJyLH4f5
-         h7Ay9Nh+HSfFJwMJSfzUk72twoaVPeTLbNfhW5lRTf4a5jmF8pOd6Xh2fwMzuIxPILiw
-         3IbQ==
-X-Gm-Message-State: ABy/qLZi7By5u5x3jkutMio/2MF/IZuooBpZv/H3RZcVmZRghj/F3xWU
-	Q+/er6/uLmfJEVUM39irFoKa4Q==
-X-Google-Smtp-Source: APBJJlFpdXWglTYxIM2Ehzj8JoGpf26cOv1zlpe0BemO3ScIjse7kYRRtbcG/801j62owMtgpgABCA==
-X-Received: by 2002:a2e:3310:0:b0:2b6:d137:b5a1 with SMTP id d16-20020a2e3310000000b002b6d137b5a1mr2400228ljc.43.1689862891321;
-        Thu, 20 Jul 2023 07:21:31 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.223.104])
-        by smtp.gmail.com with ESMTPSA id c10-20020a056000104a00b0031434cebcd8sm1490017wrx.33.2023.07.20.07.21.29
+        bh=+p4cBe1pMgniHvXw2LuLYSKKIqQxquV7AY6YDbEUJdE=;
+        b=LgwEESos2nhkqFzNPNFOGVDXOZ0vQldX9ctg6PONK9a8Pwo1NOCsf+KCWEkaxXbskx
+         xJuk49LRrxyStT7d7lfda6iWLP/X02u1q1yFn3EwWGfTPu6FGw7/WadXQEzYueWjPqmQ
+         lNlrsJaWsp3pARiu3IybsiOSk7SYU8v1njLkuxUmEF2hl1Xm7AN8ey1l/mYZxzEwR0ql
+         Aa9dlvKFXuDwbJ9npM8T1e6rvdMN7I3ffyb7BOOawkYi9qu6tgJMrnObryQN9HipTcPB
+         r/GCtPm1E3VYyIfU3RhpStr0+zzI82IgngYGfXA4Q28lM5o5WExBKeT9xskQM4m/4qSq
+         8Cxw==
+X-Gm-Message-State: ABy/qLaTu6o5Pi6m4QqmjTPZ8KfXRcSIfB1z6B9ZuHvZ0NW7FL/vW9TJ
+	8JcipJUd16anlm91pwUwy5xaIA==
+X-Google-Smtp-Source: APBJJlGvGEcc3bxXa6+U1YfrxHHtDMiie6SxWyukbcPySyU+1GaZAiblUjugsW40vgKcbhSAJV0t3A==
+X-Received: by 2002:a1c:7507:0:b0:3fc:f9c:a3e6 with SMTP id o7-20020a1c7507000000b003fc0f9ca3e6mr7262763wmc.9.1689863446765;
+        Thu, 20 Jul 2023 07:30:46 -0700 (PDT)
+Received: from [10.1.3.131] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.gmail.com with ESMTPSA id m10-20020a7bca4a000000b003fc00702f65sm4028031wml.46.2023.07.20.07.30.45
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Jul 2023 07:21:30 -0700 (PDT)
-Message-ID: <2b5b982d-5a9f-810a-ec3f-df65e6c8b83b@linaro.org>
-Date: Thu, 20 Jul 2023 16:21:28 +0200
+        Thu, 20 Jul 2023 07:30:46 -0700 (PDT)
+Message-ID: <a2bde8d7-8a30-3f29-b4bd-629416ae20c5@baylibre.com>
+Date: Thu, 20 Jul 2023 16:30:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH v2 3/3] arm64: dts: Replace deprecated extcon-usb-gpio
- id-gpio/vbus-gpio properties
+Subject: Re: [PATCH v6 09/11] drm/mediatek: dp: Add support for embedded
+ DisplayPort aux-bus
 Content-Language: en-US
-To: Alexander Stein <alexander.stein@ew.tq-group.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi
- <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?=
- <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>,
- NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
- linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20230615145838.1526919-1-alexander.stein@ew.tq-group.com>
- <20230615145838.1526919-3-alexander.stein@ew.tq-group.com>
- <8374cb80-749a-401d-2d88-48001ad614c2@linaro.org>
- <2640608.BddDVKsqQX@steina-w>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <2640608.BddDVKsqQX@steina-w>
-Content-Type: text/plain; charset=UTF-8
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+ wenst@chromium.org, nfraprado@collabora.com
+References: <20230717141438.274419-1-angelogioacchino.delregno@collabora.com>
+ <20230717141438.274419-10-angelogioacchino.delregno@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230717141438.274419-10-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_072133_865861_FB913DF9 
-X-CRM114-Status: GOOD (  14.90  )
+X-CRM114-CacheID: sfid-20230720_073051_267127_8E51CCDE 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,43 +100,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/07/2023 15:58, Alexander Stein wrote:
-> Hi Krzysztof,
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+
+On 17/07/2023 16:14, AngeloGioacchino Del Regno wrote:
+> For the eDP case we can support using aux-bus on MediaTek DP: this
+> gives us the possibility to declare our panel as generic "panel-edp"
+> which will automatically configure the timings and available modes
+> via the EDID that we read from it.
 > 
-> Am Donnerstag, 20. Juli 2023, 10:07:04 CEST schrieb Krzysztof Kozlowski:
->> On 15/06/2023 16:58, Alexander Stein wrote:
->>> Use id-gpios and vbus-gpios instead.
->>>
->>> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
->>> Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
->>> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> #mediatek
->>> ---
->>> Changes in v2:
->>> * Added Heiko's A-b for rockchip
->>> * Added Matthias' R-b for mediatek
->>
->> Please split patches per subsystem, so this could be applied. Or send it
->> through soc tree, but you chosen the middle way - neither per subsystem
->> nor via soc tree - so it went nowhere :(
+> To do this, move the panel parsing at the end of the probe function
+> so that the hardware is initialized beforehand and also initialize
+> the DPTX AUX block and power both on as, when we populate the
+> aux-bus, the panel driver will trigger an EDID read to perform
+> panel detection.
 > 
-> How do you distinguish that? 
+> Last but not least, since now the AUX transfers can happen in the
+> separated aux-bus, it was necessary to add an exclusion for the
+> cable_plugged_in check in `mtk_dp_aux_transfer()` and the easiest
+> way to do this is to simply ignore checking that when the bridge
+> type is eDP.
 
-You create multiple patches per each DTS subdirectory. Then you send
-entire patchset to all people (might create too many Cc addresses) or
-patch-per-maintainers.
-
-> Almost all maintainers and mailing lists from 
-
-Yes, and they can only Ack it. If you wanted it to go via SoC, you
-should have Cc Soc. Since you didn't then it was not the intention, so
-only the first option is left - split per subsystem.
-
-> get_maintainer.pl output for patch 1 are also included in the list for patch 2 
-> & 3? Do you want me to send two series (1 binding patch and 2 DT patches), 
-> which you will receive both of them?
-
-
-Best regards,
-Krzysztof
-
+-- 
+Regards,
+Alexandre
 
