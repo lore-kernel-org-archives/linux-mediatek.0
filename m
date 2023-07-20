@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C98BEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 13:03:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C13A2EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 13:05:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rUTFNNzxpz9uwH1NN747Wn6G7mosnJMsS5OABZdxOY0=; b=NpN38fFG2y7YF8nv9AvWJlv0u5
-	hpoBzorgdu7XWOdiH6zC1pG0Fcpz0rbqSYGR8+TimReSljjJOea3lXwi1uVPk35kand4NPEDTP8Ew
-	sqIM1dGk4BYVf7oPA1/hpfNQQyVA4U0PGQTxs5x4nzyrZKWm7uHwXeEtYKomM6/lXaotXMs0xMruY
-	nM00k64xaNQ6ed35MxKO8353Tha5BNgEBmqJ4SlJJ4DMmeaYXRPPNypDEjbUEFk8FfkGOMvXoJnZ9
-	ATRWPXGqK6ZVg2fn1HwwB9FFzf2Cc5VZlr1UvqG3HeRtCEkoWpBzK7N8NnngSZMFzgULE1MeNFl2N
-	q7Oo9rSQ==;
+	bh=PXEWaHqf0lWHOwfVBdFzP3gPi6ixm8kTT6knvLIOnrY=; b=VknBiMDxg+n6QUEswQXMWRIhpM
+	Th2tElH/nzxxoNt4GHxuCQ3vcLf+UO9nQOAUAwi5uJGgXHx/kWGbPOYIXKOUMYxcvJEyYGwrMfjId
+	3jINgCp2AehsoQLJWFvzCI8gyg7c32UFxS3RVFBMFcmag924gtoSs8ctQHz1o9/TynXFbedENyrmP
+	ABJn8p6aJSVjsjN5u5SlwGxAdXKYxEumxmBtFRZAb8zRn25WbXO1ymHWzfvjex1b2lD5RMDhcHEMc
+	JlZ0MVqSeuQA0YmNlEOOK/45e8IZGBZNj2mq21yfnF3niS0k/9l92tYmiQ3swmr1I7+nBnw4YsYlR
+	96T1n/CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMTJF-00BCVz-2E;
-	Thu, 20 Jul 2023 13:03:09 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1qMTLA-00BD5r-2J;
+	Thu, 20 Jul 2023 13:05:08 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMTJB-00BCU8-2h
+	id 1qMTL7-00BD58-1m
 	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Jul 2023 13:03:07 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-4fba8f2197bso1212770e87.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jul 2023 06:03:03 -0700 (PDT)
+	Thu, 20 Jul 2023 13:05:06 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-51e2a6a3768so1024451a12.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jul 2023 06:05:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689858182; x=1690462982;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689858304; x=1690463104;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=rUTFNNzxpz9uwH1NN747Wn6G7mosnJMsS5OABZdxOY0=;
-        b=mYbSu1BjEcQ0to09bRKOeden10c8fmf60Z14TNO5q4AxtKBMUgSXli7MvsscGdm9Iu
-         QKnaueckfNnGNRBSEw/YLQX1zgzGec0p4FGihilxzeujQFIKv7oOu/Im1mebBhjUoaOv
-         X8N9PvNSLEn6TtBwtgKOQLw8HHIADQg8SXCZCgMVBCBLAXhfzV73vZIX+43mss3TBzyL
-         EbK99wcmYDmGoXjyZciyMv7P4W/SRIIcOTsu9laugpFvErRohtA6H7JMSgAQ9VGWlqh3
-         nFm9Y4G2KtqFOUCkutoQfAPyOZzutkuozCLOG4BbtBo/LZdiRFHJSVgLs/wVyTMMfLLs
-         5Byg==
+        bh=PXEWaHqf0lWHOwfVBdFzP3gPi6ixm8kTT6knvLIOnrY=;
+        b=wT923Xj1PAqxw+yaDhNJ/nUV/1XxpP2YqGKBg93pGqqICwOMUb0dd2qWkGps0F3RWv
+         A9BYnTGB8k2Ky18llb2v3KVscxfx2n4NbBZYQU/nOjTRUYeVcwKvrbIxDaW5nFs/0hTf
+         UGUk7Fr17e1IEPgeF1Qzvuole9rel2kVwbOhNDixj/ikRtx5sIMldhYoKXFxzBIthrSh
+         HgCaqAFjrzZqqcNquDtWyne4GU/oTbwe4otfgdZA1SZA1EwVN6MRKYsbgrko6pkWXyjg
+         uMpLOexle7flElpiGnShLxE4u16lsZnmcYSklUTMtphFCpZ7tCCpARdDy9JR1qqSSoot
+         l6PQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689858182; x=1690462982;
+        d=1e100.net; s=20221208; t=1689858304; x=1690463104;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=rUTFNNzxpz9uwH1NN747Wn6G7mosnJMsS5OABZdxOY0=;
-        b=K7NrhtSDh3/bUbsoOXbw5B6RpnzHbsa4lJ17kqe0mtdxQHSqnE6nFxqcG5h423En8t
-         RYZ6FJj82jCZdZxf4c2t5mXN+2COCqk4E9v5zjuxCCGt0gaYw4uy4sDcWz29D8Lw128C
-         8HjSix0AVONvPZC2Ca/FQCb+WHU7aqMGFdcF5kfIuw2ElHhNJzztuaA0p1kOwDpsphnP
-         Cs1gOMR3NbMSvN115hVLCwOc1aNxR2ORpsxGWYM1dZn1rNifwqavUZqM27DwhCIdx4Dd
-         Y2G9y9lMdEqmPfoXUzIHU9/e2jIcbYLcu33H1QIIburJzLdMaeFzxx1NnhNXPj718VLW
-         uG3g==
-X-Gm-Message-State: ABy/qLbBC6YC95skYmgE9cprJNrVDnNLle3dhPAnRou++4OKYuByI/Wn
-	bysyrDstZHmNrkzrb6M5AVI/vw==
-X-Google-Smtp-Source: APBJJlFkZFwqh4iAS4OEASUge9kO88VgdxXGm+cXnF0tKyKqeN44zff9Ug6bPKAeL6TZe9IEhiyqtw==
-X-Received: by 2002:ac2:5b85:0:b0:4f8:770f:1b01 with SMTP id o5-20020ac25b85000000b004f8770f1b01mr1499575lfn.19.1689858182181;
-        Thu, 20 Jul 2023 06:03:02 -0700 (PDT)
+        bh=PXEWaHqf0lWHOwfVBdFzP3gPi6ixm8kTT6knvLIOnrY=;
+        b=KgFyfig6RnZ5OnTYG+wJJORR5/pc0g+jDYhk+ODTpU/hJl41ZnGKJzucmUtbxhxBBM
+         jpXbOjOyfhQlZRpQcksYrasMlBoo5kRA+FGWigGabFGOeEuOvy3B69GaoFBnfLJ/7ets
+         I3r6SSheqiKTTCNq37JGN1rlkP8+0H+665BpDYgQRdHXBWfs4rDbl8TPpzrZXGnMsByV
+         ro52C/w0WAh6yZ3UVY5ijAnGBa2Y9c4bWJoLEMdJ8CBF8vWMFmep+bcVVrRJHyJYcsr1
+         YzT5rHiWZ+r/sHruNn3eAyv1NNtBJkegyvaMBBaI/G61IC7urh2fCAZzFjaiT/KqEXiC
+         A7bg==
+X-Gm-Message-State: ABy/qLYFiZRZmLKLQPbKOqS1BoDCHD+oVwPxZ5VAy3pgE/6MWFZb74S/
+	m2RHbuMtKkeRh2ztghYO7hH0xg==
+X-Google-Smtp-Source: APBJJlF3czr78AaBbYI9Dkak734DtCkiU5pcGw2eai4oYTX2OPvmfRHYRclHZY5ITbbeNeFmedVu8w==
+X-Received: by 2002:aa7:c1cc:0:b0:51e:ca0:8a2e with SMTP id d12-20020aa7c1cc000000b0051e0ca08a2emr4997368edp.36.1689858304071;
+        Thu, 20 Jul 2023 06:05:04 -0700 (PDT)
 Received: from [10.1.3.131] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id s2-20020aa7c542000000b0051a2d2f82fdsm745547edr.6.2023.07.20.06.03.01
+        by smtp.gmail.com with ESMTPSA id x19-20020aa7d393000000b0051bec856cb4sm734747edq.50.2023.07.20.06.05.03
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Jul 2023 06:03:01 -0700 (PDT)
-Message-ID: <7822b114-0ccd-0344-cea0-760b892c85e1@baylibre.com>
-Date: Thu, 20 Jul 2023 15:03:00 +0200
+        Thu, 20 Jul 2023 06:05:03 -0700 (PDT)
+Message-ID: <9d73d7e8-98ae-e5f1-706d-8c6128f2877b@baylibre.com>
+Date: Thu, 20 Jul 2023 15:05:02 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH v6 06/11] drm/mediatek: dp: Enable event interrupt only
- when bridge attached
+Subject: Re: [PATCH v6 07/11] drm/mediatek: dp: Avoid mutex locks if audio is
+ not supported/enabled
 Content-Language: en-US
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  chunkuang.hu@kernel.org
@@ -78,14 +78,14 @@ Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
  linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
  wenst@chromium.org, nfraprado@collabora.com
 References: <20230717141438.274419-1-angelogioacchino.delregno@collabora.com>
- <20230717141438.274419-7-angelogioacchino.delregno@collabora.com>
+ <20230717141438.274419-8-angelogioacchino.delregno@collabora.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230717141438.274419-7-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230717141438.274419-8-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_060305_870539_FA094F2D 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20230720_060505_594555_44B86DDE 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,18 +103,16 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 17/07/2023 16:14, AngeloGioacchino Del Regno wrote:
-> It is useless and error-prone to enable the DisplayPort event interrupt
-> before finishing to probe and install the driver, as the DP training
-> cannot happen before the entire pipeline is correctly set up, as the
-> interrupt handler also requires the full hardware to be initialized by
-> mtk_dp_bridge_attach().
+> If a controller (usually, eDP!) does not support audio, or audio is not
+> enabled because the endpoint has no audio support, it's useless to lock
+> a mutex only to unlock it right after because there's no .plugged_cb().
 > 
-> Anyway, depending in which state the controller is left from the
-> bootloader, this may cause an interrupt storm and consequently hang
-> the kernel during boot, so, avoid enabling the interrupt until we
-> reach a clean state by adding the IRQ_NOAUTOEN flag before requesting
-> it at probe time and manage the enablement of the ISR in the .attach()
-> and .detach() handlers for the DP bridge.
+> Check if the audio is supported and enabled before locking the mutex in
+> mtk_dp_update_plugged_status(): if not, we simply return immediately.
+> 
+> While at it, since the update_plugged_status_lock mutex would not be
+> used if the controller doesn't support audio at all, initialize it
+> only if `audio_supported` is true.
 
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
