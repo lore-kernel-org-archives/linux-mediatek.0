@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A47E0C001DC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 08:26:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D8F5EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 08:26:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ti0CyFMC0wMS7lE760bLV1Vvq4mXC0J3pcCFBbxfNGk=; b=D8Ktg7JO5JwCnqo3hO1wus7zz7
-	Lfhv/Knh9+m9ITGRIP7DMIETO3DOABxMjt2Jqa/rud7Sc0zGX7+FVZv2FT3lia/+ou0ONN6HdPB4F
-	QR0lc3pGsHRbHcLSpYSwqEz7jyksmmRpqhlP1L4UaWo3ZKSnoxTHoyrQmHZPnvaCqcPykggzcAIUV
-	l0ckni6zlqJJd/ZqyYYRmm5pMTGPSBpdp/0mUYg0CM2vpskcgrhA35884HUKbSDS8as9byKa1ty5L
-	HO79TjB8IUUYIjj7+yPSzfzshmU+t0/HBwymR3AoH0xslSLfxOD/uDUrsFlQyp42ZQeIEQ6P4u/uq
-	gDiQxNkw==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x3Ef2HXAMqtZCcHsQB0m7y6VJp+SmT8fZ8z5MnEgAEo=; b=DubALbCd7ELlBHrD0iSKGnsOt5
+	VG092JewZRKpsS+pbRXEKW6wh9MVZoo50KtCXA3E0eccwC5QF7JsXtIg0l1Ji31ZT+H1V1+5zf9wl
+	rznsm7Fj/ZdzsdPMhNni+rbDBhooiyxHMWSDR0PbAa+kUQzEmMUEZoCaacwuMcG7WQW07s/S9/S4Y
+	25i0gPl1nbEcJusd2bpm2GdhaEdAINN/5n8WgRh1QBtQ55peJtoy7YNiYhLe1koLPgargdm40072F
+	F3Sx9CzPDWdIZdLjO1GVpidxiT4QA3BuuORgMtBLuNW1IBpLTOySR2ye2dqlcIc/0D84+OkKIoGlQ
+	HbNxv8+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMOz9-00AIgL-2Q;
-	Thu, 20 Jul 2023 08:26:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qMOzD-00AIhK-0X;
+	Thu, 20 Jul 2023 08:26:11 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMOz6-00AIet-0e;
-	Thu, 20 Jul 2023 08:26:05 +0000
-X-UUID: 0de619c826d711ee912e1518a6540028-20230720
+	id 1qMOzA-00AIfb-1g;
+	Thu, 20 Jul 2023 08:26:10 +0000
+X-UUID: 0f151d0826d711ee83ed1395ce914268-20230720
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ti0CyFMC0wMS7lE760bLV1Vvq4mXC0J3pcCFBbxfNGk=;
-	b=bgZlTnJcHjyEuQcQax70b69SALKmbIMt4EYDad/V7qk08/7fxLuyEjOxuTYFf3GpF2RPgJN3Dv3lpiqLv4TnwXwUN3URIgBLafbqgczAwq+sdsqFk0RcHrjuqJqwHqUzXrX1DkkeyTEUFac4SVOUIurxT8XrscQCI6ReFnPb1iM=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=x3Ef2HXAMqtZCcHsQB0m7y6VJp+SmT8fZ8z5MnEgAEo=;
+	b=myAoEOP6zzVpJrsuN0V6Rj6/JaKVz7fURFpK9Ifj58uLnwbfPZ4rgOgfKbiH4Q9g8KfRzhRC3z3oVaqn2Vs6OhZpxBowGzfFpsxjbGvkQy3C21P+FqUjs4ksQzvuo3mqHoKVdsmYH/tOcHV/tvVcYZbddE91WZbbNWDFUhzfJMs=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.28,REQID:58f09f5f-e168-4b01-ba70-ce6f68f6a0fe,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:176cd25,CLOUDID:f335d687-44fb-401c-8de7-6a5572f1f5d5,B
+X-CID-O-INFO: VERSION:1.1.28,REQID:9412529e-3ecd-4bd8-a140-a65cb66902b7,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:176cd25,CLOUDID:0e3ad0dc-dc79-4898-9235-1134b97257a8,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 0de619c826d711ee912e1518a6540028-20230720
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 0f151d0826d711ee83ed1395ce914268-20230720
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <shuijing.li@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2138018782; Thu, 20 Jul 2023 01:25:58 -0700
+	with ESMTP id 459321583; Thu, 20 Jul 2023 01:26:00 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 20 Jul 2023 16:25:56 +0800
+ 15.2.1118.26; Thu, 20 Jul 2023 16:25:58 +0800
 Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 20 Jul 2023 16:25:55 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 20 Jul 2023 16:25:57 +0800
 From: Shuijing Li <shuijing.li@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
 	<daniel@ffwll.ch>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
@@ -63,18 +63,19 @@ CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Shuijing Li
 	<shuijing.li@mediatek.com>
-Subject: [PATCH v3,0/3] Add compatible to increase MT8188 audio control
-Date: Thu, 20 Jul 2023 16:26:01 +0800
-Message-ID: <20230720082604.18618-1-shuijing.li@mediatek.com>
+Subject: [PATCH v3,3/3] drm/mediatek: dp: Add the audio divider to mtk_dp_data struct
+Date: Thu, 20 Jul 2023 16:26:04 +0800
+Message-ID: <20230720082604.18618-4-shuijing.li@mediatek.com>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230720082604.18618-1-shuijing.li@mediatek.com>
+References: <20230720082604.18618-1-shuijing.li@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_012604_242090_82F17E34 
-X-CRM114-Status: UNSURE (   7.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230720_012608_563449_17F7B725 
+X-CRM114-Status: GOOD (  15.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,27 +90,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add dt-binding documentation of dp-tx for MediaTek MT8188 SoC.
-Mainly add the following two flag:
+Due to the difference of HW, different dividers need to be set.
 
-1.The audio packet arrangement function is to only arrange audio
-packets into the Hblanking area. In order to align with the HW
-default setting of g1200, this function needs to be turned off.
+Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+---
+Changes in v3:
+Separate these two things into two different patches.
+per suggestion from the previous thread:
+https://lore.kernel.org/lkml/e2ad22bcba31797f38a12a488d4246a01bf0cb2e.camel@mediatek.com/
+Changes in v2:
+- change the variables' name to be more descriptive
+- add a comment that describes the function of mtk_dp_audio_sample_arrange
+- reduce indentation by doing the inverse check
+- add a definition of some bits
+- add support for mediatek, mt8188-edp-tx
+per suggestion from the previous thread:
+https://lore.kernel.org/lkml/ac0fcec9-a2fe-06cc-c727-189ef7babe9c@collabora.com/
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c     | 7 ++++++-
+ drivers/gpu/drm/mediatek/mtk_dp_reg.h | 1 +
+ 2 files changed, 7 insertions(+), 1 deletion(-)
 
-2.Due to the difference of HW, different dividers need to be set.
-
-Base on the branch of linus/master v6.4.
-
-Shuijing Li (3):
-  dt-bindings: display: mediatek: dp: Add compatible for MediaTek MT8188
-  drm/mediatek: dp: Add the audio control to mtk_dp_data struct
-  drm/mediatek: dp: Add the audio divider to mtk_dp_data struct
-
- .../display/mediatek/mediatek,dp.yaml         |  2 +
- drivers/gpu/drm/mediatek/mtk_dp.c             | 47 ++++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_dp_reg.h         |  6 +++
- 3 files changed, 54 insertions(+), 1 deletion(-)
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index d8cda83d6fef..8e1a13ab2ba2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -140,6 +140,7 @@ struct mtk_dp_data {
+ 	const struct mtk_dp_efuse_fmt *efuse_fmt;
+ 	bool audio_supported;
+ 	bool audio_pkt_in_hblank_area;
++	u16 audio_m_div2_bit;
+ };
+ 
+ static const struct mtk_dp_efuse_fmt mt8195_edp_efuse_fmt[MTK_DP_CAL_MAX] = {
+@@ -648,7 +649,7 @@ static void mtk_dp_audio_sdp_asp_set_channels(struct mtk_dp *mtk_dp,
+ static void mtk_dp_audio_set_divider(struct mtk_dp *mtk_dp)
+ {
+ 	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30BC,
+-			   AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
++			   mtk_dp->data->audio_m_div2_bit,
+ 			   AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MASK);
+ }
+ 
+@@ -2636,6 +2637,7 @@ static const struct mtk_dp_data mt8188_edp_data = {
+ 	.efuse_fmt = mt8195_edp_efuse_fmt,
+ 	.audio_supported = false,
+ 	.audio_pkt_in_hblank_area = false,
++	.audio_m_div2_bit = MT8188_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
+ };
+ 
+ static const struct mtk_dp_data mt8188_dp_data = {
+@@ -2644,6 +2646,7 @@ static const struct mtk_dp_data mt8188_dp_data = {
+ 	.efuse_fmt = mt8195_dp_efuse_fmt,
+ 	.audio_supported = true,
+ 	.audio_pkt_in_hblank_area = true,
++	.audio_m_div2_bit = MT8188_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
+ };
+ 
+ static const struct mtk_dp_data mt8195_edp_data = {
+@@ -2652,6 +2655,7 @@ static const struct mtk_dp_data mt8195_edp_data = {
+ 	.efuse_fmt = mt8195_edp_efuse_fmt,
+ 	.audio_supported = false,
+ 	.audio_pkt_in_hblank_area = false,
++	.audio_m_div2_bit = AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
+ };
+ 
+ static const struct mtk_dp_data mt8195_dp_data = {
+@@ -2660,6 +2664,7 @@ static const struct mtk_dp_data mt8195_dp_data = {
+ 	.efuse_fmt = mt8195_dp_efuse_fmt,
+ 	.audio_supported = true,
+ 	.audio_pkt_in_hblank_area = false,
++	.audio_m_div2_bit = AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
+ };
+ 
+ static const struct of_device_id mtk_dp_of_match[] = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
+index f38d6ff12afe..6d7f0405867e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp_reg.h
++++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
+@@ -162,6 +162,7 @@
+ #define AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MUL_2	(1 << 8)
+ #define AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MUL_4	(2 << 8)
+ #define AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MUL_8	(3 << 8)
++#define MT8188_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2	(4 << 8)
+ #define AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2	(5 << 8)
+ #define AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_4	(6 << 8)
+ #define AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_8	(7 << 8)
 -- 
 2.40.1
 
