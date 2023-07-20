@@ -4,88 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 966D7EB64DC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 14:30:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA8DFEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 14:41:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+p4cBe1pMgniHvXw2LuLYSKKIqQxquV7AY6YDbEUJdE=; b=k0E3tjVRdbUN/cMuvsLutGRsx2
-	K4hFvWQ17QuYjDWvceDZ1HvWQpp3RDShYyiWRIMzvM4yXIYqIygeIqWMs4yiABZRuocXyH/i87RIx
-	/eTtakYwFl7iXBggZFkwg98kQqnIVJjwsBrxAsUI+RxbZyB9l6Seuci43UO1X80WTaizY29HUb9g4
-	m2RZvUl3BGplpKnFFW0MXcEsez+hXcRclz/WCjyOmpIfv2+2TeltIeInbq0c4GNbGo7clAYd9cLO+
-	JnL8jJ+x+jhoVzsE/3TJ0cBocTVYz4QlVJH1SHJNc8AAppRFwlS5zlLvSF/WfVyrwsKvciwCm/l/d
-	sfZWvRXw==;
+	bh=RwRHBU9c5xadzNDMxPmHn7wr/vyd2lyd2aWFINCC4iE=; b=czYjeo870U+dn95zgTD4OHyTRr
+	cgbGUP/GaK8gBtSI3tg6D3sLJwcw7kuaFBVRT893M7pOcH2Hl3bmr1sODkvYckH/+yLOmcTeYzq6K
+	XRZALAd4LrNwIf4NezaIeRtF4hcBuDfos8G4Tk2U5B1jePYMY7u6UAogrBTwGH+ug0NOCr/ytACHA
+	ahsAGAF4aZ2jWKmW8vgabM1B5VND7qfKJ1rrGYTRciBKowoaqPvZHFgWfdvOUQUjhWHRu2neYcOUA
+	cX0a0GIsr/dekxZoEpewG1TWESBjKl4yeBZQU6sS3mmM3NEVf1jIWpK6dfc0o0RTyVkX2hhDCuMNk
+	ADsm8iDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMUgA-00BON7-1n;
-	Thu, 20 Jul 2023 14:30:54 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1qMUqN-00BPhY-2Y;
+	Thu, 20 Jul 2023 14:41:27 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMUg7-00BOKy-0k
-	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Jul 2023 14:30:52 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-3fbc6ab5ff5so7028015e9.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jul 2023 07:30:48 -0700 (PDT)
+	id 1qMUqJ-00BPfJ-16;
+	Thu, 20 Jul 2023 14:41:24 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-991fe70f21bso148268166b.3;
+        Thu, 20 Jul 2023 07:41:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689863447; x=1690468247;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=+p4cBe1pMgniHvXw2LuLYSKKIqQxquV7AY6YDbEUJdE=;
-        b=oUUiGCS8pw8J7VoaCzy8JULE07XXLKQOywKwVV2oQdH9glG0suWrzfMxKYQOt3ySck
-         Ts0lKmWd/zI8NUEFA7MocNG6AsBcCcndzq6dFmOETbgezPyI9Gt7rf2OlH64v+25Euau
-         k9VG3h9NIkRhJXfLy3TxRJe9/sUX8C21mWgXHJYnipC/B0i+tTHZtGkiYoAC5Wa0BNTB
-         6eJ3yjLPwsZqapd4dJadZng5ywjpfO4pFWOY51Zml2uoJZXQi29eGMyZhe/xuCT2mL5H
-         YmT4g/d/TFxVLrKFvgheNOiI874jPDyzqzdVJJ2tOFcU+3kaW0OGccacJPta4HJuC8nb
-         RDMw==
+        d=gmail.com; s=20221208; t=1689864081; x=1690468881;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RwRHBU9c5xadzNDMxPmHn7wr/vyd2lyd2aWFINCC4iE=;
+        b=IYkSaw2fLykXQ37NjequnMJ89wJMsFWbIVL50S52MQzxYG63+qLDBbKhKOzKcstmwT
+         DaVvF46+YFdhnZvP2A/d93w496r8YnDadWvHbA4T3oCiPcNj1sC84g+IGWuhZwf8GUQn
+         94IuCvbFlswK4ZwAmHrXsT+8APe6vS3OzdOTj+Unfk4V/O2sFYPaG24DiTAaU0woO16f
+         yMkNztL3l//kUK4segexWIMRNNtFZEogs7zloT/Bnio4to1kJAF9HWGeOX9M6y0W1WVO
+         bXVSVky/EgyU7/NsBP4QiB84Ru+t6+KTTJasF2ZecHQC7w863ODzrKLuSLCOmFAq7epZ
+         FB4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689863447; x=1690468247;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+p4cBe1pMgniHvXw2LuLYSKKIqQxquV7AY6YDbEUJdE=;
-        b=LgwEESos2nhkqFzNPNFOGVDXOZ0vQldX9ctg6PONK9a8Pwo1NOCsf+KCWEkaxXbskx
-         xJuk49LRrxyStT7d7lfda6iWLP/X02u1q1yFn3EwWGfTPu6FGw7/WadXQEzYueWjPqmQ
-         lNlrsJaWsp3pARiu3IybsiOSk7SYU8v1njLkuxUmEF2hl1Xm7AN8ey1l/mYZxzEwR0ql
-         Aa9dlvKFXuDwbJ9npM8T1e6rvdMN7I3ffyb7BOOawkYi9qu6tgJMrnObryQN9HipTcPB
-         r/GCtPm1E3VYyIfU3RhpStr0+zzI82IgngYGfXA4Q28lM5o5WExBKeT9xskQM4m/4qSq
-         8Cxw==
-X-Gm-Message-State: ABy/qLaTu6o5Pi6m4QqmjTPZ8KfXRcSIfB1z6B9ZuHvZ0NW7FL/vW9TJ
-	8JcipJUd16anlm91pwUwy5xaIA==
-X-Google-Smtp-Source: APBJJlGvGEcc3bxXa6+U1YfrxHHtDMiie6SxWyukbcPySyU+1GaZAiblUjugsW40vgKcbhSAJV0t3A==
-X-Received: by 2002:a1c:7507:0:b0:3fc:f9c:a3e6 with SMTP id o7-20020a1c7507000000b003fc0f9ca3e6mr7262763wmc.9.1689863446765;
-        Thu, 20 Jul 2023 07:30:46 -0700 (PDT)
-Received: from [10.1.3.131] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id m10-20020a7bca4a000000b003fc00702f65sm4028031wml.46.2023.07.20.07.30.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Jul 2023 07:30:46 -0700 (PDT)
-Message-ID: <a2bde8d7-8a30-3f29-b4bd-629416ae20c5@baylibre.com>
-Date: Thu, 20 Jul 2023 16:30:45 +0200
+        d=1e100.net; s=20221208; t=1689864081; x=1690468881;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=RwRHBU9c5xadzNDMxPmHn7wr/vyd2lyd2aWFINCC4iE=;
+        b=KDfnVlSwgDH5oNWrjZV9wvH7wlhAwwaeO4qURsFp2Qc/AuT4hwpo9ZOQPSUi6c5Qz/
+         PmRr0spEKWWm+T78NOZvO0Hvh55wyKsIWMQwpcZgpNlEEXDHCzqVSIprsrgpmiNKVbla
+         FJqhGQv/FYR/L7Bs9lbrPPgucFtxqpfeQ8KSNtypndYUVO27wUg3baD36Et/GGzzNL2d
+         vTkYyS3ozX4COrWfFdvAWlH3jnuWeTQCmDgHGAVyWR7UMa7ct/Oj9D/sWJToP55R7JZN
+         zypa+avb9EEoG+bEP3GiXUstxmpDE1lb94+Rf0c7J7oHFdMm+m1f4OWf/sGnrnc4dJvq
+         KYTw==
+X-Gm-Message-State: ABy/qLY7mUM5JBb8EAIcoXtsW3imfDPZzOgq3Dtt6EZZBXyGBL1db4mK
+	yvd0fmmbx0TDQ+UaxvBQED0=
+X-Google-Smtp-Source: APBJJlHb0tKAQTS3OU1oBfmdDrT4eFmQjBmNHPnnE8cgWVrDPBMDuvkwOC0e1Hj67ZrNMamXYvALYg==
+X-Received: by 2002:a17:906:31d2:b0:994:4f08:2bad with SMTP id f18-20020a17090631d200b009944f082badmr5214427ejf.69.1689864081292;
+        Thu, 20 Jul 2023 07:41:21 -0700 (PDT)
+Received: from localhost (p200300e41f1bd600f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f1b:d600:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id a5-20020a170906274500b009932337747esm788354ejd.86.2023.07.20.07.41.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Jul 2023 07:41:20 -0700 (PDT)
+From: Thierry Reding <thierry.reding@gmail.com>
+To: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Hector Martin <marcan@marcan.st>,
+	Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Michael Walle <michael@walle.cc>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Hammer Hsieh <hammerh0314@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+	Rob Herring <robh@kernel.org>
+Cc: devicetree@vger.kernel.org,
+	linux-pwm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	chrome-platform@lists.linux.dev,
+	linux-mips@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org
+Subject: Re: [PATCH] pwm: Explicitly include correct DT includes
+Date: Thu, 20 Jul 2023 16:41:15 +0200
+Message-ID: <168986404883.1519829.12505785794624953835.b4-ty@gmail.com>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230714174852.4062251-1-robh@kernel.org>
+References: <20230714174852.4062251-1-robh@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v6 09/11] drm/mediatek: dp: Add support for embedded
- DisplayPort aux-bus
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
- matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
- wenst@chromium.org, nfraprado@collabora.com
-References: <20230717141438.274419-1-angelogioacchino.delregno@collabora.com>
- <20230717141438.274419-10-angelogioacchino.delregno@collabora.com>
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230717141438.274419-10-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_073051_267127_8E51CCDE 
-X-CRM114-Status: GOOD (  14.81  )
+X-CRM114-CacheID: sfid-20230720_074123_400466_97E36900 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,27 +137,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-On 17/07/2023 16:14, AngeloGioacchino Del Regno wrote:
-> For the eDP case we can support using aux-bus on MediaTek DP: this
-> gives us the possibility to declare our panel as generic "panel-edp"
-> which will automatically configure the timings and available modes
-> via the EDID that we read from it.
+On Fri, 14 Jul 2023 11:48:50 -0600, Rob Herring wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
 > 
-> To do this, move the panel parsing at the end of the probe function
-> so that the hardware is initialized beforehand and also initialize
-> the DPTX AUX block and power both on as, when we populate the
-> aux-bus, the panel driver will trigger an EDID read to perform
-> panel detection.
-> 
-> Last but not least, since now the AUX transfers can happen in the
-> separated aux-bus, it was necessary to add an exclusion for the
-> cable_plugged_in check in `mtk_dp_aux_transfer()` and the easiest
-> way to do this is to simply ignore checking that when the bridge
-> type is eDP.
+> [...]
 
+Applied, thanks!
+
+[1/1] pwm: Explicitly include correct DT includes
+      commit: 8d171282110fcde89bb4289c4010a15aca5cec95
+
+Best regards,
 -- 
-Regards,
-Alexandre
+Thierry Reding <thierry.reding@gmail.com>
 
