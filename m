@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82874EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 19:38:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69FD2EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 19:39:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1Aqo/gOfqS4N7dGQz+LUmrfdtT5oEda+VCbRxOBGots=; b=nzbDf8zQ038slwJEyw96oNoKjh
-	/VaSHJt9wZUC6BwMDm0r9utl56+yFtdhvO+bgNEgnyQsOqvHxNadQy31WEnJOO30ArcNywpFnR9OG
-	5qo/GC2eEaGGyOPZAxJdbJhalRNyeEKa/4yKNVxzCwkF4r3ZWVxvFKkAGQSBobb0vDjfmqGo2d6ws
-	X5GNp6lvUNTLberbEpoIz1ht51zDFvLUn3bXc6IojxMZ9hM+nhQBYmHimGDBDgb3+01ipGuS+98wn
-	iJemTSWwj3IRjikwCa3qRFriVaMiN0tRkU5TpZkocBwBq3k6YgbQldYtdp+FeCcgjYH3vZ7b+lelM
-	//IcEI3A==;
+	bh=VsRhJr7FcY6scIMyHxPkpixR+U75ZGXGrefwCjTURTo=; b=BUIRlKwy1Ls7NktsXndBL0EtBC
+	P6TpxEs8646iJGghBv9gnfsfpkU2qNmAHA0VYul/7/22tf33kt0mvM8kfZqNh3f4iAuroSa0FftCi
+	S2AAnSPNNUSFrcp6RMCvDClNCMHbIkvZm/9+gtG4KBxWZ5KAQba3AOfU9iw8Qb4C7ciRwv1b+n5kY
+	5JK0O9zkIT7URo1uvtMeaXGMN96A9MMe/zCjGEkmSnsZXCIPBYA1qiK6hmVzcNM68Tv78IfZ7lz6E
+	D4KFHcCrdwzZAvrbWOlWVCNevNUO8P/Qe5lsUD04H/j5DUGk69MCCO2e3RqKkdPqX3zGPkwnkUB0F
+	bjd+k+WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMZTY-00C4n1-1X;
-	Thu, 20 Jul 2023 19:38:12 +0000
-Received: from mail-vk1-xa2d.google.com ([2607:f8b0:4864:20::a2d])
+	id 1qMZV0-00C4vx-0t;
+	Thu, 20 Jul 2023 19:39:42 +0000
+Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMZTW-00C4lT-0b
+	id 1qMZUx-00C4ua-1g
 	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Jul 2023 19:38:11 +0000
-Received: by mail-vk1-xa2d.google.com with SMTP id 71dfb90a1353d-4814bea10e0so507327e0c.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jul 2023 12:38:07 -0700 (PDT)
+	Thu, 20 Jul 2023 19:39:40 +0000
+Received: by mail-qt1-x831.google.com with SMTP id d75a77b69052e-403cb525738so10219881cf.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jul 2023 12:39:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20221208.gappssmtp.com; s=20221208; t=1689881887; x=1690486687;
+        d=ndufresne-ca.20221208.gappssmtp.com; s=20221208; t=1689881977; x=1690486777;
         h=mime-version:user-agent:content-transfer-encoding:references
          :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=1Aqo/gOfqS4N7dGQz+LUmrfdtT5oEda+VCbRxOBGots=;
-        b=ZPaTGFbmPqDHsbzbKNAF//LB+sGL+e8ErB9u8GPN/U8qhUhBpWU5DIlQwFlaDosZe/
-         p1YWZfL3b3cBv1nolfN1PNi4DeR4PLwvVzZ8fAj+6nw3DJAb24Wqwn/VwUKntTp3zLV/
-         9PHE6PTDFxEEuWsRiOmcnrinF/tMUX8t8I6vFEk32+8BM+uucBbqMGvACmUVHREvXSQ2
-         HvmI9/5EXLfhUHjBHEsGfUVIE9qZApojxEI/84CjLmIDw6RrJ11Nk64mtLaXw3/LKsKD
-         hTMcKlTEGHrqIcfyBbirCeTGt5dsWczFkP9j9uFUhQYSDLaN147PSimQJiTkAVD0FgM0
-         +qrA==
+        bh=VsRhJr7FcY6scIMyHxPkpixR+U75ZGXGrefwCjTURTo=;
+        b=XzvE7+OHdICE7PEV0/J3stP745/NNNfkJnUDAAy0Bquc/kjJYwmwJAbPz4M9B9qwTL
+         MT1eF92Rce35E9PkT19HKVrlbg48F3M/vHUoWw5brFvShrlrbkvnHvH4HJBwlrNRrI3t
+         O4BA9JdPwbtKcdsjlHZJY36rxdaZ0+QrFaJ5rSpZu+2OB08ab44HvfmP6BRm/lLKl2zC
+         qLiWlu/VhAcaiJTOM0XbyAVlsVqP6U7AbPskt0fNttLVn0fdmnvUxReptFn/7SGRHWZK
+         HFq0YuMULs5QTQGbrEO1ynb9t6YCaM3ZugDtBV2x9ejzFSten3BL9lo9Y15kq8ukvaK4
+         Krog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689881887; x=1690486687;
+        d=1e100.net; s=20221208; t=1689881977; x=1690486777;
         h=mime-version:user-agent:content-transfer-encoding:references
          :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=1Aqo/gOfqS4N7dGQz+LUmrfdtT5oEda+VCbRxOBGots=;
-        b=JA7wzMmRmq2uyKH8/W1WrYTUavl2N3ZeeEfIlj+tmkXRYTjpi+IGbd95fVvmwgEgAo
-         l90uvYUmTtb8WW4cNrUWl2T/akexuNL6ZbeGmjjBUlwOW1zqwaOSBkuReDzMvPzI0Gdk
-         bLg72i2kSKcwi9x03NdS16ZnhIzOecVAB3p1kleFElopTpC1twPRrOhZNV25ufB74jEY
-         2fWu0pN6JoKzDFDZhnXvARY7hKJ6I+i7OdI3hL5ku9nfJ3Mz8+GtYM2VDmDls70TxurP
-         AqBe4zLqLIJvHqzirJalXSd2nhMIjVb+kKE9Y2GK/zUPGzPgzcNy3jwzY4qn5xMhnek+
-         Olwg==
-X-Gm-Message-State: ABy/qLYw1sq8PpqEZKcYJlVX8/3EftQ1GPrlM+KO+WNgk6Z8UCQf80v1
-	0hwZHqSi6DDPoKYz/qBI1N4o0Q==
-X-Google-Smtp-Source: APBJJlG58gxa9sCnD8UgtVvUAplhdSAm5YXTJem1cUMpfF3izF2KWjtxgd9RRD0H+1CykZ3PfvN1XA==
-X-Received: by 2002:a67:f243:0:b0:445:3bf:9387 with SMTP id y3-20020a67f243000000b0044503bf9387mr12927466vsm.4.1689881886847;
-        Thu, 20 Jul 2023 12:38:06 -0700 (PDT)
+        bh=VsRhJr7FcY6scIMyHxPkpixR+U75ZGXGrefwCjTURTo=;
+        b=g8dpvEXx8+yH78JQDOvO/aCxkwaRGYpIW57V/EI4TsjZIqo1WEeWy4xomyy/3jafqA
+         i71oV2sjpW2d4vGS8G8nof4V03HWbJYFZg/rV9YnFyfZrR7reIkr+fbnlz7O7MEqcw5j
+         g3NhLsekTUbarux90XXm2eAvaKje/HbFCMc+5Mfun4rDMq+nT9cFbFsMQuCy6+gWBpdV
+         A50dQi2kzPOaayXNPMs69+T1/25iqu4dR4XbCCqtdL2EfY4VrENq60hTSI15ZbH5wMR7
+         uKHLKphJMbJGicqp5cCPiZ6cpjoTmgCYOnDD/A/7MMqIjCtx8Cu/Q8EmyGSUZw3iFtDF
+         rDDg==
+X-Gm-Message-State: ABy/qLZhWcHkHHxwrm/W3rpNAeymm03GerYdvKg7Sgsg9QcDxE8V3EHZ
+	+ULm8JOU45v4UXkabNGGCSur8A==
+X-Google-Smtp-Source: APBJJlHvIsE+gIX66810YXYx0n0V9nlbQz7+vMSGp5n9VGHmJ7qSPjqcY/YQozwfUhbiwtAg2VZ+eA==
+X-Received: by 2002:a05:622a:284:b0:3ff:3013:d2aa with SMTP id z4-20020a05622a028400b003ff3013d2aamr80864qtw.12.1689881976834;
+        Thu, 20 Jul 2023 12:39:36 -0700 (PDT)
 Received: from nicolas-tpx395.localdomain ([2606:6d00:11:83d4::7a9])
-        by smtp.gmail.com with ESMTPSA id r22-20020a0cb296000000b0063600a119fcsm687199qve.37.2023.07.20.12.38.06
+        by smtp.gmail.com with ESMTPSA id j7-20020ac84c87000000b00401e04c66fesm658223qtv.37.2023.07.20.12.39.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Jul 2023 12:38:06 -0700 (PDT)
-Message-ID: <05048ff687ca5a030bbb218570f13e2165f623d8.camel@ndufresne.ca>
-Subject: Re: [PATCH 3/4] media: mediatek: vcodec: Fix potential crash in
- mtk_vcodec_dbgfs_remove()
+        Thu, 20 Jul 2023 12:39:36 -0700 (PDT)
+Message-ID: <492454f84df67bf70c760142546232a730305330.camel@ndufresne.ca>
+Subject: Re: [PATCH 4/4] media: mediatek: vcodec: Improve an error message
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
 To: Dan Carpenter <dan.carpenter@linaro.org>, Yunfei Dong
 	 <yunfei.dong@mediatek.com>
@@ -75,16 +74,16 @@ Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
  <hverkuil-cisco@xs4all.nl>, linux-media@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org,
  kernel-janitors@vger.kernel.org
-Date: Thu, 20 Jul 2023 15:38:05 -0400
-In-Reply-To: <d4fffbaa-f01d-4e2e-9b1b-45d996236642@moroto.mountain>
-References: <d4fffbaa-f01d-4e2e-9b1b-45d996236642@moroto.mountain>
+Date: Thu, 20 Jul 2023 15:39:35 -0400
+In-Reply-To: <0cdeeee4-3bd7-4bd5-88a1-c5ecf7f6a1f8@moroto.mountain>
+References: <0cdeeee4-3bd7-4bd5-88a1-c5ecf7f6a1f8@moroto.mountain>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_123810_223798_417DF14F 
-X-CRM114-Status: GOOD (  16.89  )
+X-CRM114-CacheID: sfid-20230720_123939_563003_82074DAE 
+X-CRM114-Status: GOOD (  16.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,52 +98,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le mercredi 14 juin 2023 =C3=A0 16:07 +0300, Dan Carpenter a =C3=A9crit=C2=
-=A0:
-> The list iterator "dbgfs_inst" is always non-NULL.  This means that the
-> test for NULL inside the loop is unnecessary and it also means that the
-> test for NULL outside the loop will not work.  If we do not find the item
-> on the list with the correct the ctx_id then it will free invalid memory
-> leading to a crash.
->=20
-> Fixes: cd403a6a0419 ("media: mediatek: vcodec: Add a debugfs file to get =
-different useful information")
+Thanks,
 
-Clearly better.
+Le mercredi 14 juin 2023 =C3=A0 16:19 +0300, Dan Carpenter a =C3=A9crit=C2=
+=A0:
+> This is intended to print the error code but there is a typo so it
+> prints IS_ERR() instead of PTR_ERR().
+>=20
+> Fixes: 77f3b023f452 ("media: mediatek: vcodec: Add debugfs interface to g=
+et debug information")
 
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
 > Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
 > ---
->  .../media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c | 11 ++++-------
->  1 file changed, 4 insertions(+), 7 deletions(-)
+> This driver has quite a bit of code to handle the case where DEBUG_FS is
+> turned off.  It's a bit over engineered.  With debugfs you're normally
+> just supposed to call the functions and ignore the errors.
+>=20
+> But it's also harmless to do it this way.
+>=20
+>  drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >=20
 > diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c b/=
 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-> index 2151c3967684..2ebf68d33d57 100644
+> index 2ebf68d33d57..6957105492ae 100644
 > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
 > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-> @@ -166,16 +166,13 @@ void mtk_vcodec_dbgfs_remove(struct mtk_vcodec_dev =
-*vcodec_dev, int ctx_id)
->  	struct mtk_vcodec_dbgfs_inst *dbgfs_inst;
+> @@ -185,8 +185,8 @@ void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vco=
+dec_dev, bool is_encode)
+>  	else
+>  		vcodec_dev->dbgfs.vcodec_root =3D debugfs_create_dir("vcodec-dec", NUL=
+L);
+>  	if (IS_ERR(vcodec_dev->dbgfs.vcodec_root))
+> -		dev_err(&vcodec_dev->plat_dev->dev, "create vcodec dir err:%d\n",
+> -			IS_ERR(vcodec_dev->dbgfs.vcodec_root));
+> +		dev_err(&vcodec_dev->plat_dev->dev, "create vcodec dir err:%ld\n",
+> +			PTR_ERR(vcodec_dev->dbgfs.vcodec_root));
 > =20
->  	list_for_each_entry(dbgfs_inst, &vcodec_dev->dbgfs.dbgfs_head, node) {
-> -		if (dbgfs_inst && dbgfs_inst->inst_id =3D=3D ctx_id) {
-> +		if (dbgfs_inst->inst_id =3D=3D ctx_id) {
->  			vcodec_dev->dbgfs.inst_count--;
-> -			break;
-> +			list_del(&dbgfs_inst->node);
-> +			kfree(dbgfs_inst);
-> +			return;
->  		}
->  	}
-> -
-> -	if (dbgfs_inst) {
-> -		list_del(&dbgfs_inst->node);
-> -		kfree(dbgfs_inst);
-> -	}
->  }
->  EXPORT_SYMBOL_GPL(mtk_vcodec_dbgfs_remove);
-> =20
+>  	vcodec_root =3D vcodec_dev->dbgfs.vcodec_root;
+>  	debugfs_create_x32("mtk_v4l2_dbg_level", 0644, vcodec_root, &mtk_v4l2_d=
+bg_level);
 
 
