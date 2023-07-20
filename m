@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86DB2EB64DC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 15:02:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2D6EEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 15:04:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:From:CC:To:MIME-Version:Date:Message-ID:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FYnhndaHLlAGmLEwmFnlF+PlGmmJDrC7zOccjmvv0Ig=; b=A0h5c9m4+QWvSNpcDHEYDKPpew
-	L8hzFLbSEVVNLtnTHIBA5ybKcNWOsEpqKc8dvrNnp29a4frhjrLwt2IwI7jxYeWpCfQcH+mW7by8x
-	9sCXPbzFOdWWAPQREMsjOn0wDtuZ6Hq4ZYo6OhehLIepfFwQF8M33Xxnm6EvwiTAO4DPUv3nsLexF
-	NBeob4YtliRdVuC6RaUO6G5tI5Bygn9q53hNroA0DzhBCsx6RmPa+t7RX6CjBfXdMyTBdI16ga1C5
-	2ojSH2GNkz8JGcCNx78DgIJ1jTHPL8xh8HCvQedwEUAjkGwlYdBfI3g/XWI1sjO0wxF9836L58CeG
-	2j2zKXFQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yk0+OfIBVrjxdxyJzd6k7bKe62s4LYJUT+/V2wesyK4=; b=ly17kPao325biqaOUJnRSGdNmw
+	N26DH2AoE08TbK9H0W36xVlBOsz5E1DRJASD6QDvAXW7YNXKtRu7pP22Cz6aNdCSi/doNydpA3oae
+	PUManGgFSYggccCfsvYWuvmYvDA493FhPVzvQ5YD7OeSx1R0kf92c7kWACvTXgj1b0khGdy2yXINn
+	FdUwwUUW5s6o9MJwYyfbHLBMhsaK26XYNqMwEIHdvnZu8bHzp31lQl2dHnDETiwBJe7RX8Y/yKzfi
+	p5hTF4pcwj9CjuWQuQz9AxTxCAmHOyCukVAv6rAZaRAakHy27wfd2K1TMeVZCqyfiiLs3FwqTdIOG
+	NcDDAgMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMVAx-00BTKJ-0S;
-	Thu, 20 Jul 2023 15:02:43 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1qMVCB-00BTde-2c;
+	Thu, 20 Jul 2023 15:03:59 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMVAt-00BTJA-1n
+	id 1qMVC7-00BTb6-23
 	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Jul 2023 15:02:41 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 36KDvC0c015644;
-	Thu, 20 Jul 2023 15:02:32 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : to : cc : from : subject : content-type :
- content-transfer-encoding; s=qcppdkim1;
- bh=FYnhndaHLlAGmLEwmFnlF+PlGmmJDrC7zOccjmvv0Ig=;
- b=bNJZCV8km0MA3TGnvB7XAF0q4+WBwSqzYX+OxOHh1hHroP/y70LKurGGuB6/s9N7b/pr
- NeSGxgMxOqD9WCxFKisALmobilS8zbscpjlYLyjGEs0+ClXL5qUuuvGb5gLHs89xIlpC
- pP1c2651viN0x9iYYfBR7HVz21KdvVbNKxcoiYqZbeigvJzoznw+eWPlz+YplEOxNsXt
- t1N8DwVphtkBAy7I1DF/YXjfahhbRE6wwaAUiHPirwDHb6pUbIdlgh6OQHLZRCBVu01y
- 5P0UD1j3bIz/v7VoJBo9BV4BYuel5cZz1WkfUfgn2HUFo7GB/K0KX5uFQw2IIHKk4w6+ hg== 
-Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3rxup4he6c-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 20 Jul 2023 15:02:31 +0000
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 36KF2UZK013352
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 20 Jul 2023 15:02:30 GMT
-Received: from [10.216.27.20] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.30; Thu, 20 Jul
- 2023 08:02:28 -0700
-Message-ID: <0199db00-1b1d-0c63-58ff-03efae02cb21@quicinc.com>
-Date: Thu, 20 Jul 2023 20:32:24 +0530
+	Thu, 20 Jul 2023 15:03:57 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-31441bc0092so735669f8f.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jul 2023 08:03:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689865431; x=1690470231;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=yk0+OfIBVrjxdxyJzd6k7bKe62s4LYJUT+/V2wesyK4=;
+        b=HvrixRAIL67I2qRJlTd4cc4z9glJkuSXOv1aDPxuTIHyLZ5BSGbNepxqA3n9t43KgE
+         LBNT82RTszenAssbCx8M1uPIjpd0Ga+VOzLnq6OyFtAzpVQFfyqIHXafX3CHjQQEd+NS
+         VWcHimCa5DPA9BQDKkPGcgLs1H3rql+tVoNrRRc5mvp+uIQi1VNB+fldBjbuDabP6L+Y
+         8dYfAF9ew641dJCCXIANGFdLugHY2oxVXI2bFgK7ZyX3PbaFwNVP35RxC7uFNQ9jBQt1
+         UR5uKK+kQodIL8dGRKlnO40omGFnZ3LRz/tJ6pX+75Kh1+xxemuvvap0HTtLYhqILSpR
+         v0Rw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689865431; x=1690470231;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=yk0+OfIBVrjxdxyJzd6k7bKe62s4LYJUT+/V2wesyK4=;
+        b=T2B3oZv/80qUlhltNpe1DlRwS0ycSkzU0QXuOcy+4Obqpkkwr3JlbsK5gZhewpiB1s
+         +xKcptSLAoOXEhUcSPHgEVsZ5K1CgJaLxgjAK/lbFN591IXh5DspmqHqJL3QQqklUDHS
+         drI7x9pXRw/bx4eWOoe+Qi1z2GiseqECI+gPxLOaHoM7VrVQgTOu3dNorg+pjVEzmGmm
+         IrcMxKBfWSD3l6gTdz2CjEHkYjkFghAlZmj93pQsaS+2QwVhe8yL+7DIDlcN1weh73B0
+         7akCQ0YEIoUncKXzv+PT2/1olM7A14AtT4nFMPecw6iegmxi4glFq5UfcigSU5vS7MPB
+         aIfA==
+X-Gm-Message-State: ABy/qLbTdNq6SItcfJh66SvIix/jE/t6WL5npB12WeUqPKFlxMox57sc
+	pr+e+WSGpmIyJJq7OV7Ge88W77+WqVcxyrrGm2c=
+X-Google-Smtp-Source: APBJJlEnxpnc6Eg6VtavPczW2DTVI9oBNtJTq6mn0UUWeRqPv/nKBvuumDIPWZPdrtpXnWvrphAq/Q==
+X-Received: by 2002:a5d:4c4b:0:b0:314:1f1e:3a85 with SMTP id n11-20020a5d4c4b000000b003141f1e3a85mr2051958wrt.61.1689865430880;
+        Thu, 20 Jul 2023 08:03:50 -0700 (PDT)
+Received: from [10.1.3.59] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.gmail.com with ESMTPSA id n12-20020a5d6b8c000000b003143c6e09ccsm1589783wrx.16.2023.07.20.08.03.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 20 Jul 2023 08:03:50 -0700 (PDT)
+Message-ID: <a3502c0b-d0e8-9166-b6b4-8f40650636c7@baylibre.com>
+Date: Thu, 20 Jul 2023 17:03:49 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
+Subject: Re: [PATCH v6 10/11] drm/mediatek: dp: Add .wait_hpd_asserted() for
+ AUX bus
 Content-Language: en-US
-To: <linux-samsung-soc@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-        lkml <linux-kernel@vger.kernel.org>
-CC: Trilok Soni <quic_tsoni@quicinc.com>,
-        "open list:ARM/QUALCOMM SUPPORT"
-	<linux-arm-msm@vger.kernel.org>
-From: Mukesh Ojha <quic_mojha@quicinc.com>
-Subject: Feedback on Qualcomm's minidump (debug) solution for end user device
- crash
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+ wenst@chromium.org, nfraprado@collabora.com
+References: <20230717141438.274419-1-angelogioacchino.delregno@collabora.com>
+ <20230717141438.274419-11-angelogioacchino.delregno@collabora.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20230717141438.274419-11-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: AxElWK3GY2mplQQdNjQr_H9fI-OmIpbb
-X-Proofpoint-ORIG-GUID: AxElWK3GY2mplQQdNjQr_H9fI-OmIpbb
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
- definitions=2023-07-20_08,2023-07-20_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 spamscore=0
- adultscore=0 mlxlogscore=553 lowpriorityscore=0 suspectscore=0
- priorityscore=1501 clxscore=1015 bulkscore=0 mlxscore=0 phishscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2306200000 definitions=main-2307200126
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_080239_739809_3CFAED83 
-X-CRM114-Status: UNSURE (   9.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230720_080355_672259_56B0CD5B 
+X-CRM114-Status: GOOD (  14.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,36 +100,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Samsung/MTK/Any other SOC vendors,
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-This is to bring to your notice that, we (Qualcomm) are working on 
-upstreaming our minidump solution which is to address the problem of
-debugging on field device crashes where collecting entire ddr dump
-would not be feasible and collecting minimal data from the ddr would
-help in debug direction or even help in root causing issue.
+On 17/07/2023 16:14, AngeloGioacchino Del Regno wrote:
+> In order to support usecases in which the panel regulator can be
+> switched on and off to save power, and usecases in which the panel
+> regulator is off at boot, add a .wait_hpd_asserted() callback for
+> the AUX bus: this will make sure to wait until the panel is fully
+> ready after power-on before trying to communicate with it.
+> 
+> Also, parse the eDP display capabilities in that callback, so that
+> we can also avoid using the .get_edid() callback from this bridge.
+> 
+> Since at this point the hpd machinery is performed in the new hpd
+> callback and the detection and edid reading are done outside of
+> this driver, assign the DRM_BRIDGE_OP_{DETECT, EDID, HPD} ops and
+> register the bridge unconditionally at probe time only if we are
+> probing full DisplayPort and not eDP while, for the latter, we
+> register the bridge in the .done_probing() callback and only if
+> the panel was found and triggered HPD.
 
-We have recently posted v4 version here [1]
-
-Based on comments[2], community is more worried about, if each SOC
-vendor come up with their own dumping method today or in future and
-whether it can have a common solution to a similar problem faced by
-other SOC vendor.
-
-We wanted to take your feedback if you also encounter a similar problem
-or maintain something similar solution in downstream which can be 
-upstreamed. This will help us in a way to have a common solution in
-upstream.
-
-[1]
-https://lore.kernel.org/lkml/10dd2ead-758a-89f0-cda4-70ae927269eb@quicinc.com/
-
-[2]
-https://lore.kernel.org/lkml/CAL_JsqLO9yey2-4FcWsaGxijiS6hGL0SH9VoMuiyei-u9=Cv=w@mail.gmail.com/
-
--Mukesh
-
-
-
-
-
+-- 
+Regards,
+Alexandre
 
