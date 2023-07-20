@@ -4,66 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31BDEEB64DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 13:58:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5E8DC04A6A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 14:05:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XpAMFGb/Xybkrxzme8WKAtLm3ABmr0EJ6sAi//VY/IQ=; b=cYkHuh7dQb16xQXyTaSIK8uTgA
-	w87Gzk3MPxndoZoiINTD4Pm12dr/KXwNFskGTiiEfmXz0WziGGuKWqnvsidjQXmPgCJ3HQhZRqgRF
-	6BOcLqHX5Z5jg6euwP8q9LyY1zvei8nUgZbEkYO3VllNMU/LioAdaavOh3Ta1jvNJqVv+BGCEMH3M
-	kjSkGRWVOfIIHnW7GmOpH3L19Ws5Cm+7opQyyf1l57mIY+PXu9T/gvdTc+P5m6eUGsNrWE5MRc5q7
-	QHpsJZmMDM96KbBwXrThcWx5g8gqwURtt1pZOjECohJwZ6NmBmvYHL6oZ9UxTy5YwoCytnEUwc2pH
-	9+ferV3w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=urFLPCaihFeblN7RNxXAq8w9KGHOzfM3JpH431NuBaw=; b=kz1hh2ZkV8/zzidrBDjvQk+Nm9
+	TMcyKoCGFT/NGd4eQsnzCx5ssLDVYZPqCDp67ZkpHnck/wSR8iTHCIE+JaqcRh/kv2NSNn2D+YNhl
+	QO3smplulIgCid7i04eqAUWhCBNgpmI4FV/garcq8b3vIyDU8RzQ3jYmepyFPMF3NF6fkzViQ+cjG
+	5PwcZ1lgyY37TpxyxNY1IFY2N00pjcYxp8yDySgfhX9rAUL/MZuuuDpHCXMJreTN5dnxRb+bQRoM+
+	gmN4T+/vcXMGgzh7x1VVBNhqpmxwFyX8ceQhCxRysN6KW2knqGb5Kq/fXQlKW6qC6XSPwQGav9kRR
+	MCAfKteA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMUBD-00BJt3-0t;
-	Thu, 20 Jul 2023 13:58:55 +0000
-Received: from mx1.tq-group.com ([93.104.207.81])
+	id 1qMUH8-00BKqp-02;
+	Thu, 20 Jul 2023 14:05:02 +0000
+Received: from mga07.intel.com ([134.134.136.100])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMUB9-00BJrQ-1t;
-	Thu, 20 Jul 2023 13:58:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
-  t=1689861531; x=1721397531;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=XpAMFGb/Xybkrxzme8WKAtLm3ABmr0EJ6sAi//VY/IQ=;
-  b=De0Y2vE5Uwtst45PEjFBo5wgDa/yb/QOc6SQiJIqetfC5PqUL0iCbgeG
-   Aj845KQBTnNvMbps/gDOcgbPRWrYMQZ8LaGqRwi/rTNGIq6Gq/ds9Bjzz
-   kp+CMj0j7kDp5zKm0hLFCIzFt5QgXubSgo/jlvM0C7dyOTpNrdEtD9eFj
-   G6jY5YUFZ8LCrZmqqABjiJWUcLdXf4RYVpDdiKwV4BqRr+LbeZ7E2dd7q
-   G/kMiF2edI+tfAO50JG1uCt2vQpkzcfoN5AyfkAVq/reDewADIN+6LiFu
-   uaUKb4kUuy+SdXf++ILpvoOnBTHGtPgwz+ltS/wAyeXJHr0FqMrpbAZ3D
-   Q==;
-X-IronPort-AV: E=Sophos;i="6.01,218,1684792800"; 
-   d="scan'208";a="32035611"
-Received: from vtuxmail01.tq-net.de ([10.115.0.20])
-  by mx1.tq-group.com with ESMTP; 20 Jul 2023 15:58:43 +0200
-Received: from steina-w.localnet (unknown [10.123.53.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id 4DD88280078;
-	Thu, 20 Jul 2023 15:58:43 +0200 (CEST)
-From: Alexander Stein <alexander.stein@ew.tq-group.com>
-To: MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, =?ISO-8859-1?Q?Beno=EEt?= Cousson <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 3/3] arm64: dts: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio properties
-Date: Thu, 20 Jul 2023 15:58:41 +0200
-Message-ID: <2640608.BddDVKsqQX@steina-w>
-Organization: TQ-Systems GmbH
-In-Reply-To: <8374cb80-749a-401d-2d88-48001ad614c2@linaro.org>
-References: <20230615145838.1526919-1-alexander.stein@ew.tq-group.com> <20230615145838.1526919-3-alexander.stein@ew.tq-group.com> <8374cb80-749a-401d-2d88-48001ad614c2@linaro.org>
+	id 1qMUH4-00BKoV-2v;
+	Thu, 20 Jul 2023 14:05:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1689861898; x=1721397898;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=jRwJIEhFunnqSNUPRBTmhjVK4I+hmWG8Zif3HjmDR94=;
+  b=cR++fv3W+MCic1Jb1Y25qvCT/8VMMtT1Vk9rvc/nxXILa2pI+0/04msM
+   2OoPgNFNzcuqkxLLup//MlPnzPAHWk2HR9xSru2Il9KlShQTUFcbozakZ
+   K5TwqyziLhywf3lyaiJyT7RWlmsc1B8XWZ/7vhMrcULBP3n8KR+yOPcmw
+   JrrVwOcoOkyTtPlXHlF+ucijDf0UQUH0M+yankT+bQA0bEVU/I/vQ/SPC
+   N+Qz6sfFA//B2N2LHcz7P29jm/R4a8NBftVwBXn82szBpXRuRb+hzsWTo
+   bLsK4wJHLGV4g1NvLz4Y3VmTSlw8tBet5Awe9itbc5TvPMwtIcCeZ7Tvx
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10777"; a="432951720"
+X-IronPort-AV: E=Sophos;i="6.01,219,1684825200"; 
+   d="scan'208";a="432951720"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jul 2023 06:31:34 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10777"; a="971033124"
+X-IronPort-AV: E=Sophos;i="6.01,218,1684825200"; 
+   d="scan'208";a="971033124"
+Received: from ahunter6-mobl1.ger.corp.intel.com (HELO [10.0.2.15]) ([10.252.32.109])
+  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jul 2023 06:31:21 -0700
+Message-ID: <9ecf44f2-7572-f3e6-9bd8-a54575588d0d@intel.com>
+Date: Thu, 20 Jul 2023 16:31:17 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Firefox/102.0 Thunderbird/102.13.0
+Subject: Re: [PATCH v2] mmc: Explicitly include correct DT includes
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Robert Richter <rric@kernel.org>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>,
+ Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ Florian Fainel li <florian.fainelli@broadcom.com>,
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Haibo Chen <haibo.chen@nxp.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Michal Simek
+ <michal.simek@amd.com>, Eugen Hristev <eugen.hristev@collabora.com>,
+ Lars Povlsen <lars.povlsen@microchip.com>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
+ Vignesh Raghavendra <vigneshr@ti.com>, Ben Dooks <ben-linux@fluff.org>,
+ Jaehoon Chung <jh80.chung@samsung.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-mmc@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-actions@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org
+References: <20230718143054.1065288-1-robh@kernel.org>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
+ Business Identity Code: 0357606 - 4, Domiciled in Helsinki
+In-Reply-To: <20230718143054.1065288-1-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_065851_954876_FDB98EC9 
-X-CRM114-Status: GOOD (  12.04  )
+X-CRM114-CacheID: sfid-20230720_070459_006626_5A492C53 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,39 +123,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+On 18/07/23 17:30, Rob Herring wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-Am Donnerstag, 20. Juli 2023, 10:07:04 CEST schrieb Krzysztof Kozlowski:
-> On 15/06/2023 16:58, Alexander Stein wrote:
-> > Use id-gpios and vbus-gpios instead.
-> >=20
-> > Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-> > Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
-> > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> #mediatek
-> > ---
-> > Changes in v2:
-> > * Added Heiko's A-b for rockchip
-> > * Added Matthias' R-b for mediatek
->=20
-> Please split patches per subsystem, so this could be applied. Or send it
-> through soc tree, but you chosen the middle way - neither per subsystem
-> nor via soc tree - so it went nowhere :(
-
-How do you distinguish that? Almost all maintainers and mailing lists from=
-=20
-get_maintainer.pl output for patch 1 are also included in the list for patc=
-h 2=20
-& 3? Do you want me to send two series (1 binding patch and 2 DT patches),=
-=20
-which you will receive both of them?
-
-Best regards,
-Alexander
-=2D-=20
-TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
-Amtsgericht M=FCnchen, HRB 105018
-Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
-http://www.tq-group.com/
-
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
 
 
