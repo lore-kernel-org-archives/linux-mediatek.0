@@ -4,111 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5E8DC04A6A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 14:05:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FAD4C001DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 14:19:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=urFLPCaihFeblN7RNxXAq8w9KGHOzfM3JpH431NuBaw=; b=kz1hh2ZkV8/zzidrBDjvQk+Nm9
-	TMcyKoCGFT/NGd4eQsnzCx5ssLDVYZPqCDp67ZkpHnck/wSR8iTHCIE+JaqcRh/kv2NSNn2D+YNhl
-	QO3smplulIgCid7i04eqAUWhCBNgpmI4FV/garcq8b3vIyDU8RzQ3jYmepyFPMF3NF6fkzViQ+cjG
-	5PwcZ1lgyY37TpxyxNY1IFY2N00pjcYxp8yDySgfhX9rAUL/MZuuuDpHCXMJreTN5dnxRb+bQRoM+
-	gmN4T+/vcXMGgzh7x1VVBNhqpmxwFyX8ceQhCxRysN6KW2knqGb5Kq/fXQlKW6qC6XSPwQGav9kRR
-	MCAfKteA==;
+	bh=4VuudQmBIXj4G0El46CDTssIhACcrhRIJLPm+Fr5SvU=; b=JMNGYDjbf0oYDJ2Hn9zuqo5CqV
+	BmMxlN0rqogEH2H5vUUwO13iq+Vx8eLLoI/zjn13xpWDYDM2+btuzRbbVmHctrVMfvQNHig/EYQpt
+	r23EKI1DqhmXYZwKppUE1GsBm6+5dm1MKfj2pa9BUXXZSlzGL2C1VmHjg5tHsQU+XUf1IhsYuPd4f
+	0mWY0mSf76DsOjbSBn+nN5etQrbY3YGJiDX9XI1Fii6MloW9r9o7ADd+jTUoOMY9a+mRQqm4A9rrH
+	4mnaOArRcWlKdfgLfftohuqwmi/A7eXXPfJcC9O4q71j+roMG2Kdy5gyAKp4//LKZYO6vqk2Y/a+x
+	C5GTrOkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMUH8-00BKqp-02;
-	Thu, 20 Jul 2023 14:05:02 +0000
-Received: from mga07.intel.com ([134.134.136.100])
+	id 1qMUUu-00BMxp-1e;
+	Thu, 20 Jul 2023 14:19:16 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMUH4-00BKoV-2v;
-	Thu, 20 Jul 2023 14:05:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1689861898; x=1721397898;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=jRwJIEhFunnqSNUPRBTmhjVK4I+hmWG8Zif3HjmDR94=;
-  b=cR++fv3W+MCic1Jb1Y25qvCT/8VMMtT1Vk9rvc/nxXILa2pI+0/04msM
-   2OoPgNFNzcuqkxLLup//MlPnzPAHWk2HR9xSru2Il9KlShQTUFcbozakZ
-   K5TwqyziLhywf3lyaiJyT7RWlmsc1B8XWZ/7vhMrcULBP3n8KR+yOPcmw
-   JrrVwOcoOkyTtPlXHlF+ucijDf0UQUH0M+yankT+bQA0bEVU/I/vQ/SPC
-   N+Qz6sfFA//B2N2LHcz7P29jm/R4a8NBftVwBXn82szBpXRuRb+hzsWTo
-   bLsK4wJHLGV4g1NvLz4Y3VmTSlw8tBet5Awe9itbc5TvPMwtIcCeZ7Tvx
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10777"; a="432951720"
-X-IronPort-AV: E=Sophos;i="6.01,219,1684825200"; 
-   d="scan'208";a="432951720"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jul 2023 06:31:34 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10777"; a="971033124"
-X-IronPort-AV: E=Sophos;i="6.01,218,1684825200"; 
-   d="scan'208";a="971033124"
-Received: from ahunter6-mobl1.ger.corp.intel.com (HELO [10.0.2.15]) ([10.252.32.109])
-  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jul 2023 06:31:21 -0700
-Message-ID: <9ecf44f2-7572-f3e6-9bd8-a54575588d0d@intel.com>
-Date: Thu, 20 Jul 2023 16:31:17 +0300
+	id 1qMUUr-00BMw9-18
+	for linux-mediatek@lists.infradead.org;
+	Thu, 20 Jul 2023 14:19:14 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-9928abc11deso147148366b.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jul 2023 07:19:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1689862751; x=1690467551;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=4VuudQmBIXj4G0El46CDTssIhACcrhRIJLPm+Fr5SvU=;
+        b=YUoIJB6FDGB8GH6BIYgP+Xi7qygbtlqRaQMXpJ8nIt5EfJ4IG0kcGSVG4mlUxNGjuR
+         RGJKmG3FrqEwGeEAGnQDGgBZh2YVjfXwg2IMB7x4FBAmay2AD1xf9anc+HWpid9xoKIM
+         9ENuARx2QLT4Y9COjylUEwuQ2HzwhSHCqOWNxoXcLoA3s37p3EaANaE1IGkf1CrkJXXR
+         zIj4vBQIzWYlLOzZw1YI0zDqXtXPSOxHCdYMhzoQrqinFEBJQAOYkdQ1MpQsTaN0vIGV
+         Ng0dWG8Ah9Zh7Kgws3UWA40f4oc6bI9z3JleFA0bXrHriGW+IeVaTOxhztBnwnA8DCzm
+         iXQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689862751; x=1690467551;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=4VuudQmBIXj4G0El46CDTssIhACcrhRIJLPm+Fr5SvU=;
+        b=QEpREImMB0JHuDWjiIkAwmzB+kOYV8GqVcHW2fYNXc+mrLomfYxuwBTKkUTfzVC/A9
+         ca6akI/eSf4Tvl2aXQqDgdXyv4seeA/fl8ShSZjg+X1oYmmPZoue2nVjnQFu2BDQUs+a
+         mBxDihW3Flka2H7S6TT19NuU57I7SXg2zubAyzzDr6o7U8VPfW2G8bTd5PtSHLv0lZOt
+         f4TJLMRVtGZ6Fh1SP74qjkWoAOzU2ZCTwLhNYfW3KeVbExvhtxrK/bAbmgrx1LlPye09
+         rNWgrDmdR0LaVKGCVVHWn3IhDd4tIAyIKKgVb/AHbEnk8hRjfeDpH6RyEE6m8VzDiVnv
+         S+Ig==
+X-Gm-Message-State: ABy/qLYiePuTWmAmCAmGRfYTx3g7vEF7cOAzymUNnRD3w4wG9vhaog4L
+	qDNiulqVQSz2pL5yd3tGWT81tA==
+X-Google-Smtp-Source: APBJJlGyP/7Ze5TkvrXGj9vY7+AQiDo9OUwh/zphiMxDAR0ol/ibJovtW4iJbyYqEu1ISpX4rU7FNQ==
+X-Received: by 2002:a17:906:3055:b0:94a:9f9a:b3c4 with SMTP id d21-20020a170906305500b0094a9f9ab3c4mr5162736ejd.49.1689862751345;
+        Thu, 20 Jul 2023 07:19:11 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.223.104])
+        by smtp.gmail.com with ESMTPSA id rk15-20020a170907214f00b009927a49ba94sm765690ejb.169.2023.07.20.07.19.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 20 Jul 2023 07:19:10 -0700 (PDT)
+Message-ID: <4b6faf13-e611-ac9a-0365-5eb9661dd309@linaro.org>
+Date: Thu, 20 Jul 2023 16:19:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Firefox/102.0 Thunderbird/102.13.0
-Subject: Re: [PATCH v2] mmc: Explicitly include correct DT includes
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v2 3/3] arm64: dts: Replace deprecated extcon-usb-gpio
+ id-gpio/vbus-gpio properties
 Content-Language: en-US
-To: Rob Herring <robh@kernel.org>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Robert Richter <rric@kernel.org>, Neil Armstrong
- <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>,
- Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+To: Bjorn Andersson <andersson@kernel.org>,
+ Alexander Stein <alexander.stein@ew.tq-group.com>
+Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?=
+ <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>,
  Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andy Gross <agross@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>,
  Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Florian Fainel li <florian.fainelli@broadcom.com>,
- Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Haibo Chen <haibo.chen@nxp.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Michal Simek
- <michal.simek@amd.com>, Eugen Hristev <eugen.hristev@collabora.com>,
- Lars Povlsen <lars.povlsen@microchip.com>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
- Vignesh Raghavendra <vigneshr@ti.com>, Ben Dooks <ben-linux@fluff.org>,
- Jaehoon Chung <jh80.chung@samsung.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-mmc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-actions@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org
-References: <20230718143054.1065288-1-robh@kernel.org>
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
- Business Identity Code: 0357606 - 4, Domiciled in Helsinki
-In-Reply-To: <20230718143054.1065288-1-robh@kernel.org>
+ NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
+ linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20230615145838.1526919-1-alexander.stein@ew.tq-group.com>
+ <20230615145838.1526919-3-alexander.stein@ew.tq-group.com>
+ <qezb3o5wsluf5tgbqoe37ibhanhgm3fsflgqpbqiw2t6fycdeb@2xbxbkpybz74>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <qezb3o5wsluf5tgbqoe37ibhanhgm3fsflgqpbqiw2t6fycdeb@2xbxbkpybz74>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_070459_006626_5A492C53 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20230720_071913_402575_34982FA2 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,18 +112,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18/07/23 17:30, Rob Herring wrote:
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
+On 10/07/2023 06:02, Bjorn Andersson wrote:
+> On Thu, Jun 15, 2023 at 04:58:38PM +0200, Alexander Stein wrote:
+>> Use id-gpios and vbus-gpios instead.
+>>
+>> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+>> Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
+>> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> #mediatek
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+> Any objections to me taking this through the qcom tree?
 
-Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+None from me:
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
 
 
