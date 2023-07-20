@@ -4,70 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C475EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 20:22:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B9BBEB64DA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 01:55:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+K9T4K4d+OdkgbFa9Y+GAJ9fSyMHGRLvQlttTfW5kRU=; b=zB0aTp/GcH5RwGTJwlBUuFixyN
-	OFf5Xc2iBGiQH5jp41X6NyPV6p0G/EqkbcAe0wMBNLaLjQG/3eIdE3eRYM0DNNspvKt9XF7B/4EmL
-	kyDSV1tTUulLfTi56SsqEy8RE6KcRAexeFNWm3reHKs4etDVlAswQSUaN/4/EAJnwxQ14BODObmJ7
-	TcWvymVOnmXSgZ6s961z2YLSC1nct3gMn8kGgbt/S/LQrv68VSUwS/6fzoYHiVgiB3oOGJPSnIC4K
-	qbMBbno212QJ9QgOqepPhL8HAAdn9WC1LvD2HhB6XmW1Kdf6NkF/TJj+0Ip5eZwhcQfemb06pyy3P
-	j3zCUA+w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5jb64syu8Us3wU0rAgN0OC3UoGb2ysNxwkjvP215WM0=; b=jxiw8py0ZbV5E1AdqGI1f9hKy0
+	xJr9s4o37q7V7lL7lILB/9mPmPwMT0T8ev5P6NoM9/MGan4DRFxa4OiVyHdu9d1Yx0A4xe+g/sqNt
+	9cLpJn5uxfVr5CNmk/EqffKMi22yaS2DF9sk5bbEGOOulkMoCQDBRODlF8aGq2+3iimjaWikbIHBn
+	4Ioz/NtW6DGevFlxZ4C6zgOzzz3lcidDmlOlfjoaMH1WENIHipfKZ7ObykHfhUS/hVx10tr2Kd28O
+	bQ3oIbegc5aBiISAZetY3EweVx3dvIeuwVHIHod0ElitrUAZGNPGGl6OaHLQLbfxAeagGH97Rw5Zp
+	AmNn/gLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMaAK-00C95t-2w;
-	Thu, 20 Jul 2023 20:22:24 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qMfMa-00CZc7-2q;
+	Fri, 21 Jul 2023 01:55:24 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMaAH-00C942-1G;
-	Thu, 20 Jul 2023 20:22:23 +0000
-Received: from nicolas-tpx395.localdomain (unknown [IPv6:2606:6d00:11:83d4::7a9])
+	id 1qMfMY-00CZa8-2v;
+	Fri, 21 Jul 2023 01:55:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:Content-Type:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=5jb64syu8Us3wU0rAgN0OC3UoGb2ysNxwkjvP215WM0=; b=LC8PvxAYG+KcskWThg1JfsRaPx
+	UtS9Us+6LrCwltm5HwcAnAdV85CFr5O6wK92PodmOu+sokynr6Kk17Rj2m+GgLx/Ph8roI8EzzYU6
+	q5Tp8ndxRuR4P/uBIHGW8T5DS29/YhCa63uQFH+VaO/WLnb7CsWMbi5xN/+PuqGM5fGbhgkm7dshB
+	JnOyoIwf5Evc8S9G2YqGf++Rv/swFldR2uDicP3ocpgA4+nqYD2ocIR2EgKG+d3r8KeeXhwXuuoGl
+	FXYVdpwn1VK06f1D/KyI10QONaXD9ZYjeUszEmJ/YvACJRpA93BfS3CEatKXrQuO9oNLvo1tOEQLi
+	7aJxGlEA==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qMdQh-00Fy2n-2d;
+	Thu, 20 Jul 2023 23:51:35 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9C9576607094;
-	Thu, 20 Jul 2023 21:22:14 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689884536;
-	bh=6M9ZDL21aWrrFRYxWzAwtVegdIAxdx1kKWISs1pHSfY=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=ajaVbOG/FS7aLl4qzeKDNblnyhHDdjhv4HXGt+6yqnskc/OSnzK4NiLvWsLFt2sW0
-	 xTP00Wi6Tcc0cGAl2LSXYGcOG0ujX7CRXDgceHtAuE6XEdvPvWVCAaaQBWoaW6wpm9
-	 EOhr4D8ohufkzr4u0Q83tDXnGXYbxeFkXqgSmsMhVTlG8kPmVaQhMbmNOWefEGt/7W
-	 7+yFPSuduXlaQmFf9fL7yoi+GpiTtNq2F8ypI+Sj/DzrtN4o9eG6yo+ePaqj7zKyfy
-	 Us246olv2/lmFLICCNghaggVQppOpduYaTsHMucFYhlm9gnS+CXPO3Cnkm/mM+Zj9u
-	 6UeEisI8xvNvw==
-Message-ID: <02e3f58e3dc009eadd1f37ac3d7d65a95706c9a6.camel@collabora.com>
-Subject: Re: [PATCH 1/2] media: mediatek: vcodec: checking decoder ack
- message parameter
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, =?ISO-8859-1?Q?N=EDcolas?= "F .
- R . A . Prado" <nfraprado@collabora.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>, 
- Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- Steve Cho <stevecho@chromium.org>,  linux-media@vger.kernel.org,
- devicetree@vger.kernel.org,  linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Date: Thu, 20 Jul 2023 16:22:06 -0400
-In-Reply-To: <20230717081319.12542-1-yunfei.dong@mediatek.com>
-References: <20230717081319.12542-1-yunfei.dong@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0259661CC8;
+	Thu, 20 Jul 2023 23:50:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 5FB79C433C8;
+	Thu, 20 Jul 2023 23:50:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689897021;
+	bh=feJewLUTFiUeftAknY22nUa7pWdY5sIWSFqpthJJNOs=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=tXBDZOgsmTJnhGz7BNLECINsPd6ybEu+oBNJSilrewRog3SQz9ZhoqJNRumFvO4/n
+	 VSUvaCzLsE5VtAri9r/PYG8eni8lspd28m2qrse6zvuwLwG1ca1zB7ZO4+i4RY+8N1
+	 fuyg3ODxaGveVsJTfgwXlZOG5Qjm875XmS34ksuLnsuTwdcKyotEF+G/+wK0PoBXw4
+	 PRSuYZTbu/W5ZE7qdLvCUN3HqdMMfPaV4fmkrlX9t/Qea3XbNOhxYls0a4Qw/L1fBA
+	 WdoJJOUixdLOUu76cur/wiw+GU3f6EjTo45m2ecPEookHgzSM758bOGPCt9pdWKaYg
+	 /8NhzLAUWTxLQ==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 41E98C595C3;
+	Thu, 20 Jul 2023 23:50:21 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH] bluetooth: Explicitly include correct DT includes
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <168989702126.8881.8720051222737802178.git-patchwork-notify@kernel.org>
+Date: Thu, 20 Jul 2023 23:50:21 +0000
+References: <20230714174057.4041063-1-robh@kernel.org>
+In-Reply-To: <20230714174057.4041063-1-robh@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com,
+ luiz.dentz@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org,
+ linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_132221_711166_4399A686 
-X-CRM114-Status: GOOD (  21.31  )
+X-CRM114-CacheID: sfid-20230721_005133_542826_E2A088A0 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,183 +93,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello:
 
-Le lundi 17 juillet 2023 =C3=A0 16:13 +0800, Yunfei Dong a =C3=A9crit=C2=A0=
-:
-> Need to checking all parameters of msg data are valid or not,
-> in case of access null pointer or unreasonable value leading
-> to kernel reboot.
->=20
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
->  .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  2 +
->  .../mediatek/vcodec/decoder/vdec_vpu_if.c     | 77 ++++++++++++-------
->  2 files changed, 52 insertions(+), 27 deletions(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_de=
-c_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv=
-.h
-> index c8b4374c5e6c..1ea5dbb475dd 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-> @@ -160,6 +160,7 @@ struct mtk_vcodec_dec_pdata {
->   * @hw_id: hardware index used to identify different hardware.
->   *
->   * @msg_queue: msg queue used to store lat buffer information.
-> + * @vpu_inst: vpu instance pointer.
->   */
->  struct mtk_vcodec_dec_ctx {
->  	enum mtk_instance_type type;
-> @@ -202,6 +203,7 @@ struct mtk_vcodec_dec_ctx {
->  	int hw_id;
-> =20
->  	struct vdec_msg_queue msg_queue;
-> +	void *vpu_inst;
->  };
-> =20
->  /**
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c=
- b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> index 82c3dc8c4127..23cfe5c6c90b 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-> @@ -72,6 +72,21 @@ static void handle_get_param_msg_ack(const struct vdec=
-_vpu_ipi_get_param_ack *ms
->  	}
->  }
-> =20
-> +static bool vpu_dec_check_ap_inst(struct mtk_vcodec_dec_dev *dec_dev, st=
-ruct vdec_vpu_inst *vpu)
-> +{
-> +	struct mtk_vcodec_dec_ctx *ctx;
-> +	int ret =3D false;
-> +
-> +	list_for_each_entry(ctx, &dec_dev->ctx_list, list) {
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-I'm not quite fully aware of the threading model in place, but this ctx_lis=
-t is
-normally protected by dev->dev_mutex, and is not being protected here. I al=
-so
-don't know which type of interrupt handler we are in here.
+On Fri, 14 Jul 2023 11:40:57 -0600 you wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
+> 
+> [...]
 
-> +		if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst =3D=3D vpu) {
-> +			ret =3D true;
-> +			break;
-> +		}
-> +	}
-> +
-> +	return ret;
-> +}
-> +
->  /*
->   * vpu_dec_ipi_handler - Handler for VPU ipi message.
->   *
-> @@ -84,44 +99,51 @@ static void handle_get_param_msg_ack(const struct vde=
-c_vpu_ipi_get_param_ack *ms
->   */
->  static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv=
-)
->  {
-> +	struct mtk_vcodec_dec_dev *dec_dev;
->  	const struct vdec_vpu_ipi_ack *msg =3D data;
-> -	struct vdec_vpu_inst *vpu =3D (struct vdec_vpu_inst *)
-> -					(unsigned long)msg->ap_inst_addr;
-> +	struct vdec_vpu_inst *vpu;
-> =20
-> -	if (!vpu) {
-> +	dec_dev =3D (struct mtk_vcodec_dec_dev *)priv;
-> +	vpu =3D (struct vdec_vpu_inst *)(unsigned long)msg->ap_inst_addr;
-> +	if (!priv || !vpu) {
->  		mtk_v4l2_vdec_err(vpu->ctx, "ap_inst_addr is NULL, did the SCP hang or=
- crash?");
->  		return;
->  	}
-> =20
-> -	mtk_vdec_debug(vpu->ctx, "+ id=3D%X", msg->msg_id);
-> +	if (!vpu_dec_check_ap_inst(dec_dev, vpu) || msg->msg_id < VPU_IPIMSG_DE=
-C_INIT_ACK ||
-> +	    msg->msg_id > VPU_IPIMSG_DEC_GET_PARAM_ACK) {
-> +		mtk_v4l2_vdec_err(vpu->ctx, "vdec msg id not correctly =3D> 0x%x", msg=
-->msg_id);
-> +		vpu->failure =3D -EINVAL;
-> +		goto error;
-> +	}
-> =20
->  	vpu->failure =3D msg->status;
-> -	vpu->signaled =3D 1;
-> +	if (msg->status !=3D 0)
-> +		goto error;
-> =20
-> -	if (msg->status =3D=3D 0) {
-> -		switch (msg->msg_id) {
-> -		case VPU_IPIMSG_DEC_INIT_ACK:
-> -			handle_init_ack_msg(data);
-> -			break;
-> +	switch (msg->msg_id) {
-> +	case VPU_IPIMSG_DEC_INIT_ACK:
-> +		handle_init_ack_msg(data);
-> +		break;
-> =20
-> -		case VPU_IPIMSG_DEC_START_ACK:
-> -		case VPU_IPIMSG_DEC_END_ACK:
-> -		case VPU_IPIMSG_DEC_DEINIT_ACK:
-> -		case VPU_IPIMSG_DEC_RESET_ACK:
-> -		case VPU_IPIMSG_DEC_CORE_ACK:
-> -		case VPU_IPIMSG_DEC_CORE_END_ACK:
-> -			break;
-> +	case VPU_IPIMSG_DEC_START_ACK:
-> +	case VPU_IPIMSG_DEC_END_ACK:
-> +	case VPU_IPIMSG_DEC_DEINIT_ACK:
-> +	case VPU_IPIMSG_DEC_RESET_ACK:
-> +	case VPU_IPIMSG_DEC_CORE_ACK:
-> +	case VPU_IPIMSG_DEC_CORE_END_ACK:
-> +		break;
-> =20
-> -		case VPU_IPIMSG_DEC_GET_PARAM_ACK:
-> -			handle_get_param_msg_ack(data);
-> -			break;
-> -		default:
-> -			mtk_vdec_err(vpu->ctx, "invalid msg=3D%X", msg->msg_id);
-> -			break;
-> -		}
-> +	case VPU_IPIMSG_DEC_GET_PARAM_ACK:
-> +		handle_get_param_msg_ack(data);
-> +		break;
-> +	default:
-> +		mtk_vdec_err(vpu->ctx, "invalid msg=3D%X", msg->msg_id);
-> +		break;
->  	}
-> =20
-> -	mtk_vdec_debug(vpu->ctx, "- id=3D%X", msg->msg_id);
-> +error:
-> +	vpu->signaled =3D 1;
->  }
-> =20
->  static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int=
- len)
-> @@ -182,9 +204,10 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
-> =20
->  	init_waitqueue_head(&vpu->wq);
->  	vpu->handler =3D vpu_dec_ipi_handler;
-> +	vpu->ctx->vpu_inst =3D vpu;
-> =20
->  	err =3D mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler, vpu->id,
-> -					 vpu->handler, "vdec", NULL);
-> +					 vpu->handler, "vdec", vpu->ctx->dev);
->  	if (err) {
->  		mtk_vdec_err(vpu->ctx, "vpu_ipi_register fail status=3D%d", err);
->  		return err;
-> @@ -193,7 +216,7 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
->  	if (vpu->ctx->dev->vdec_pdata->hw_arch =3D=3D MTK_VDEC_LAT_SINGLE_CORE)=
- {
->  		err =3D mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
->  						 vpu->core_id, vpu->handler,
-> -						 "vdec", NULL);
-> +						 "vdec", vpu->ctx->dev);
->  		if (err) {
->  			mtk_vdec_err(vpu->ctx, "vpu_ipi_register core fail status=3D%d", err)=
-;
->  			return err;
+Here is the summary with links:
+  - bluetooth: Explicitly include correct DT includes
+    https://git.kernel.org/bluetooth/bluetooth-next/c/f0eecb651f96
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
