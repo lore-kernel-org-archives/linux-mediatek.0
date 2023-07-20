@@ -4,86 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69FD2EB64DD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 19:39:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A4E4EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Jul 2023 19:42:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VsRhJr7FcY6scIMyHxPkpixR+U75ZGXGrefwCjTURTo=; b=BUIRlKwy1Ls7NktsXndBL0EtBC
-	P6TpxEs8646iJGghBv9gnfsfpkU2qNmAHA0VYul/7/22tf33kt0mvM8kfZqNh3f4iAuroSa0FftCi
-	S2AAnSPNNUSFrcp6RMCvDClNCMHbIkvZm/9+gtG4KBxWZ5KAQba3AOfU9iw8Qb4C7ciRwv1b+n5kY
-	5JK0O9zkIT7URo1uvtMeaXGMN96A9MMe/zCjGEkmSnsZXCIPBYA1qiK6hmVzcNM68Tv78IfZ7lz6E
-	D4KFHcCrdwzZAvrbWOlWVCNevNUO8P/Qe5lsUD04H/j5DUGk69MCCO2e3RqKkdPqX3zGPkwnkUB0F
-	bjd+k+WQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6uboV9zE5viSPMUN9jRcO0cjpaJKLGwKotI/bN04OyY=; b=2X+kFIfac72Hh7lJVHu56hl8AW
+	8eLTagPHJdnZFR1FF/c4P9wAQd9dbHntgATt8h7wj8vuAZjEQ8TKQ6DOrtW0Tq57ysMi9fwA4GMgQ
+	rALxih3HEvvO72K2K/I5JozbTn4B7Sa4W1ZW843MGF6JRSCZOLuUs1FX1WM77dDtUZRWdX4R1R+sc
+	8CJomEXWdIJuyoJfHLOjFaPP2kId6RHYjwRHCNiadWU8xTtWdQqxhroS/Vb6tYiEhAKIOOh0thOcD
+	p9D/u1J/SvMjl0ttOladLW/O5y6P1tIH3p/jI/ERNf0IgsEht6sd3JrCTb+jic/L4tsSreQocEiid
+	FidcHMAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMZV0-00C4vx-0t;
-	Thu, 20 Jul 2023 19:39:42 +0000
-Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+	id 1qMZXm-00C5Ei-1U;
+	Thu, 20 Jul 2023 19:42:34 +0000
+Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMZUx-00C4ua-1g
+	id 1qMZXi-00C5Bz-0e
 	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Jul 2023 19:39:40 +0000
-Received: by mail-qt1-x831.google.com with SMTP id d75a77b69052e-403cb525738so10219881cf.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jul 2023 12:39:37 -0700 (PDT)
+	Thu, 20 Jul 2023 19:42:32 +0000
+Received: by mail-yb1-xb2f.google.com with SMTP id 3f1490d57ef6-cfd4ea89978so1011377276.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Jul 2023 12:42:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20221208.gappssmtp.com; s=20221208; t=1689881977; x=1690486777;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=VsRhJr7FcY6scIMyHxPkpixR+U75ZGXGrefwCjTURTo=;
-        b=XzvE7+OHdICE7PEV0/J3stP745/NNNfkJnUDAAy0Bquc/kjJYwmwJAbPz4M9B9qwTL
-         MT1eF92Rce35E9PkT19HKVrlbg48F3M/vHUoWw5brFvShrlrbkvnHvH4HJBwlrNRrI3t
-         O4BA9JdPwbtKcdsjlHZJY36rxdaZ0+QrFaJ5rSpZu+2OB08ab44HvfmP6BRm/lLKl2zC
-         qLiWlu/VhAcaiJTOM0XbyAVlsVqP6U7AbPskt0fNttLVn0fdmnvUxReptFn/7SGRHWZK
-         HFq0YuMULs5QTQGbrEO1ynb9t6YCaM3ZugDtBV2x9ejzFSten3BL9lo9Y15kq8ukvaK4
-         Krog==
+        d=linaro.org; s=google; t=1689882143; x=1690486943;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=6uboV9zE5viSPMUN9jRcO0cjpaJKLGwKotI/bN04OyY=;
+        b=Is+h2NeaSzJfFfsZ98ro8BWc2npdTi8/mAPrWVvtpsxb716Whq2DsR1nkUJ5zX14Xz
+         79qaflwC3BG2VYXCeK0ijBZtmZDQ1AwFmwaxjZDd/vn/AKdit/VHpHHNt7ZvyrLIlMK1
+         rAvvaKIi1pdCGIE6T6PamxnnJ1xdepfGuegPYvjWZ/2v5uqSbyOmvOqKrH1HZMZxxQ9u
+         TipBUYHRAcaq7G2V/lDcSoviQy3dB4LjRa8c+TMTdx5eHkXHMxyv/6aRPA0MgnDthZDb
+         /qNXdFoMB9q33L3QYVfMXu7JSq0qiwBR5arRe8VeAjZhX1/RRVS46BZipMLM8QxKUS/8
+         /7lg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689881977; x=1690486777;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=VsRhJr7FcY6scIMyHxPkpixR+U75ZGXGrefwCjTURTo=;
-        b=g8dpvEXx8+yH78JQDOvO/aCxkwaRGYpIW57V/EI4TsjZIqo1WEeWy4xomyy/3jafqA
-         i71oV2sjpW2d4vGS8G8nof4V03HWbJYFZg/rV9YnFyfZrR7reIkr+fbnlz7O7MEqcw5j
-         g3NhLsekTUbarux90XXm2eAvaKje/HbFCMc+5Mfun4rDMq+nT9cFbFsMQuCy6+gWBpdV
-         A50dQi2kzPOaayXNPMs69+T1/25iqu4dR4XbCCqtdL2EfY4VrENq60hTSI15ZbH5wMR7
-         uKHLKphJMbJGicqp5cCPiZ6cpjoTmgCYOnDD/A/7MMqIjCtx8Cu/Q8EmyGSUZw3iFtDF
-         rDDg==
-X-Gm-Message-State: ABy/qLZhWcHkHHxwrm/W3rpNAeymm03GerYdvKg7Sgsg9QcDxE8V3EHZ
-	+ULm8JOU45v4UXkabNGGCSur8A==
-X-Google-Smtp-Source: APBJJlHvIsE+gIX66810YXYx0n0V9nlbQz7+vMSGp5n9VGHmJ7qSPjqcY/YQozwfUhbiwtAg2VZ+eA==
-X-Received: by 2002:a05:622a:284:b0:3ff:3013:d2aa with SMTP id z4-20020a05622a028400b003ff3013d2aamr80864qtw.12.1689881976834;
-        Thu, 20 Jul 2023 12:39:36 -0700 (PDT)
-Received: from nicolas-tpx395.localdomain ([2606:6d00:11:83d4::7a9])
-        by smtp.gmail.com with ESMTPSA id j7-20020ac84c87000000b00401e04c66fesm658223qtv.37.2023.07.20.12.39.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Jul 2023 12:39:36 -0700 (PDT)
-Message-ID: <492454f84df67bf70c760142546232a730305330.camel@ndufresne.ca>
-Subject: Re: [PATCH 4/4] media: mediatek: vcodec: Improve an error message
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Dan Carpenter <dan.carpenter@linaro.org>, Yunfei Dong
-	 <yunfei.dong@mediatek.com>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org,
- kernel-janitors@vger.kernel.org
-Date: Thu, 20 Jul 2023 15:39:35 -0400
-In-Reply-To: <0cdeeee4-3bd7-4bd5-88a1-c5ecf7f6a1f8@moroto.mountain>
-References: <0cdeeee4-3bd7-4bd5-88a1-c5ecf7f6a1f8@moroto.mountain>
+        d=1e100.net; s=20221208; t=1689882143; x=1690486943;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=6uboV9zE5viSPMUN9jRcO0cjpaJKLGwKotI/bN04OyY=;
+        b=U20FJpxHxlsVDJQ6TYNwReZuy+8A6SaitZGC5FAGV7KYucqgk5IYyBMx0QwzzdbGZW
+         av1PBTEM0jrpP30kl79L5By9elh9MG2UTlAItDICQntPCYmDp6Nbx5TMlEwL5KQ3TtoS
+         vUw7H+MdEB5IwkektnsZG3g6b+ZjWWxOKl3pmg0ix9ZrI45u3LVcTWFVzxDWOJqzHvff
+         YSXfNimdM/LJt0aKRAgTxp7XNayXqQzjbN+ZMf/rVqq38054pGzur2gGpefURVXAE0RD
+         G938QnNuVpcswlWMAsu0LKJ0l6T1FJ14BGjpwtmHW6MrQM9ONgSNThqeMxyhK+JLhLta
+         PTFQ==
+X-Gm-Message-State: ABy/qLbrjNOTmI1JS6Npww0304F0vzcxDwoE5VKCxISmLUoaumG1cQtj
+	FJ7qxHqD3HahzXZiWvz6/5icQ/HsvsyuRASnSJFMRw==
+X-Google-Smtp-Source: APBJJlE7cBabIqsDgOVse9OOZ6aTjmPoq/DJCfwfg6nCOEVEXRqRJUSYnSIJLuoYJ0UvKAptp1crbwCoFVPdkqeY7hY=
+X-Received: by 2002:a25:c50b:0:b0:cdd:6635:a1f8 with SMTP id
+ v11-20020a25c50b000000b00cdd6635a1f8mr5819173ybe.15.1689882143201; Thu, 20
+ Jul 2023 12:42:23 -0700 (PDT)
+MIME-Version: 1.0
+References: <20230714174901.4062397-1-robh@kernel.org>
+In-Reply-To: <20230714174901.4062397-1-robh@kernel.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 20 Jul 2023 21:42:12 +0200
+Message-ID: <CACRpkdYe9b4ZpvYZqkcMq0Jjni_VD_75Zt5oKv4+v9f3pmJbVA@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: Explicitly include correct DT includes
+To: Rob Herring <robh@kernel.org>
+Cc: Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Dong Aisheng <aisheng.dong@nxp.com>, 
+	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Jacky Bai <ping.bai@nxp.com>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	NXP Linux Team <linux-imx@nxp.com>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Gregory Clement <gregory.clement@bootlin.com>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Chester Lin <clin@suse.com>, 
+	NXP S32 Linux Team <s32@nxp.com>, Chen-Yu Tsai <wens@csie.org>, Damien Le Moal <dlemoal@kernel.org>, 
+	Vladimir Zapolskiy <vz@mleia.com>, Heiko Stuebner <heiko@sntech.de>, Tony Lindgren <tony@atomide.com>, 
+	Haojian Zhuang <haojian.zhuang@linaro.org>, Daniel Mack <daniel@zonque.org>, 
+	Robert Jarzmik <robert.jarzmik@free.fr>, Andy Gross <agross@kernel.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Tomasz Figa <tomasz.figa@gmail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Sylwester Nawrocki <s.nawrocki@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, 
+	Jianlong Huang <jianlong.huang@starfivetech.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Dvorkin Dmitry <dvorkin@tibbo.com>, Wells Lu <wellslutw@gmail.com>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-riscv@lists.infradead.org, linux-oxnas@groups.io, 
+	linux-rockchip@lists.infradead.org, linux-omap@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
-MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230720_123939_563003_82074DAE 
-X-CRM114-Status: GOOD (  16.71  )
+X-CRM114-CacheID: sfid-20230720_124230_282157_C47A6A60 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,47 +122,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks,
+On Fri, Jul 14, 2023 at 7:49=E2=80=AFPM Rob Herring <robh@kernel.org> wrote=
+:
 
-Le mercredi 14 juin 2023 =C3=A0 16:19 +0300, Dan Carpenter a =C3=A9crit=C2=
-=A0:
-> This is intended to print the error code but there is a typo so it
-> prints IS_ERR() instead of PTR_ERR().
->=20
-> Fixes: 77f3b023f452 ("media: mediatek: vcodec: Add debugfs interface to g=
-et debug information")
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
+>
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+It still applied cleanly so I just applied it.
 
-> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
-> ---
-> This driver has quite a bit of code to handle the case where DEBUG_FS is
-> turned off.  It's a bit over engineered.  With debugfs you're normally
-> just supposed to call the functions and ignore the errors.
->=20
-> But it's also harmless to do it this way.
->=20
->  drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c b/=
-drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-> index 2ebf68d33d57..6957105492ae 100644
-> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dbgfs.c
-> @@ -185,8 +185,8 @@ void mtk_vcodec_dbgfs_init(struct mtk_vcodec_dev *vco=
-dec_dev, bool is_encode)
->  	else
->  		vcodec_dev->dbgfs.vcodec_root =3D debugfs_create_dir("vcodec-dec", NUL=
-L);
->  	if (IS_ERR(vcodec_dev->dbgfs.vcodec_root))
-> -		dev_err(&vcodec_dev->plat_dev->dev, "create vcodec dir err:%d\n",
-> -			IS_ERR(vcodec_dev->dbgfs.vcodec_root));
-> +		dev_err(&vcodec_dev->plat_dev->dev, "create vcodec dir err:%ld\n",
-> +			PTR_ERR(vcodec_dev->dbgfs.vcodec_root));
-> =20
->  	vcodec_root =3D vcodec_dev->dbgfs.vcodec_root;
->  	debugfs_create_x32("mtk_v4l2_dbg_level", 0644, vcodec_root, &mtk_v4l2_d=
-bg_level);
+Thanks for attention to detail.
 
+Yours,
+Linus Walleij
 
