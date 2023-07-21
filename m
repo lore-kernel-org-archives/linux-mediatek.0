@@ -4,62 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1FC2C0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 11:44:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C68F5EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 12:03:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4ArmcI+MiZ5m7czOqaHrGM8yWFr07aDb2MfqTSakCKc=; b=PtF+wxSxLuN/dIhgeIroT9tyut
-	qLauPqsiLGSq59bRKE3iXqytS9aaRKM265Di1KcTWkMRabwhR/9qv0zjzMIkSPmsakMgBIWl+cUbF
-	WFreHJlNEryXWj5p2k305Aik9zeHiJr8dm52pRAwLXeaDPx2bsjYOz7QFoUARAYBer0Zb/N57XQxu
-	eZwuTGQugiga0PquXBK/CtYORL/7onmMsjmbZDAu03qhUBj2TWQ16yU/sokNUrclq1gzAEr+kEXJb
-	EWs+pF7QutyZkjj43KsGOdb+rjM4k9g2H/Ry8ognVUK+4g2kkFIYFPRhLFrxWKhMfrOgKQWGqjJqr
-	oEuWQ7KA==;
+	bh=0LfYJxT8/PQgOI8EMuv1dYvPO7R8GSgfQTCAsknpK04=; b=W7tceJBXH7UC5p0gnNNCb6NlQr
+	/myRAfHN26IjPYz4iyvhIGinXyWCI8raBRzj2Pef4BQEkbEbq4+nJuKfBH7g4K5ngRV9ng6HnH2ow
+	h0itU3QfSKSG0TlkfyUcTtFOKKH4/2C7qDwU+GFR53zlk/Ja9eHMRIjSWsJKwmdQNyKk/1H2qIAed
+	Gr+dUKCEPtGIyIQizRsUcnIQFvqdNlIc9af+B53+3k6uisxse29rYnNS4Fl5YSWPVO5Ao5L00d7kp
+	tIJzP4NCzsp1s1J2mS3yVeY60yYylEq5aG9HPNjKq2suV2zssI9/Lo4bQQxXPGPsDLyxx5JfvY/Wl
+	3pwxFoUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMoYU-00Dxlp-2y;
-	Fri, 21 Jul 2023 11:44:18 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qMoqw-00E0Tl-23;
+	Fri, 21 Jul 2023 12:03:22 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMoYR-00Dxkh-0p;
-	Fri, 21 Jul 2023 11:44:17 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9577D61A00;
-	Fri, 21 Jul 2023 11:44:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0051C433C7;
-	Fri, 21 Jul 2023 11:44:11 +0000 (UTC)
-Message-ID: <fe9b6ee0-4661-ec0d-a49f-5986e00cb355@xs4all.nl>
-Date: Fri, 21 Jul 2023 13:44:10 +0200
+	id 1qMoqs-00E0SU-2B
+	for linux-mediatek@lists.infradead.org;
+	Fri, 21 Jul 2023 12:03:21 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-3142970df44so1461748f8f.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Jul 2023 05:03:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1689940995; x=1690545795;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=0LfYJxT8/PQgOI8EMuv1dYvPO7R8GSgfQTCAsknpK04=;
+        b=W9dOJVxhBjvVomAhaW0PulNleqdkzk6xereHKsD3oXaTkxr1hd9dS3JIPkW2G7j3UF
+         TKHDxN/ONQVQK7DvY7NJIdQhBicgCADuL8Mhvwbyaz/C1toIw9LG8xvrt1sz4rphnDow
+         5Ky2V7Al3B/qtddK/pW7BMBrDKkzj4TYWml9Pbi1j2TPtBFOq6bFmWrDvscvaDffEVZ2
+         e5gypLalY1SqzdfDpKRC3jj4pA5aetZcT6gfqYu+hUiRb6zrz8Jf61nFaRvhU1VkR/cl
+         WBaelHocsGTIXau2pLRqC9VurkY4kCKiKr0q67zmlL2kRQBde0BPaMseXdSsqdfeSeTb
+         Ltcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689940995; x=1690545795;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=0LfYJxT8/PQgOI8EMuv1dYvPO7R8GSgfQTCAsknpK04=;
+        b=C8yUANZfz7pZE3Q90caNr5gK6pdeB+EQY7n8CFAoL4yzMGO+cciuD2YRrMGT8rcQO1
+         EFVZsEjx+tWwO054jbljpX/k/2qS3zrycpl1cNrHup94g19hjGotB9fcMCmHhlImGMvc
+         sOiPv+CP7uPsjVCQd3SZLEFSPBfRL5r+4sKHDl0Lm5IhuK6Q9ny2jKal8iyXrSSVM6Wv
+         87+9LzN1rRJKbKSzAWylq25K2qVqOwFo0dEce7Td7meBQvGhL4NCx+PtJdy3f5pvSDtR
+         cbv5hzJjOgZcsMTWYefT6C7D1LOKM32WGIex9CtfWzzREtn4JLTCRH4GknuXLRoa0oyB
+         wd8Q==
+X-Gm-Message-State: ABy/qLbbgjw89qPd3gbS9s1CCVzhDv5x+dyaPDrcDkq6P3xe8J5vFIhc
+	bRSHVRQANKfkzBTS0EpoguhBQA==
+X-Google-Smtp-Source: APBJJlGDdfidTPWDPa/uOrnnpikMk+ASrNSwczpIAbJ9RJi9RZki0USHaGyB+TQB/WJZCrRm4wDfbg==
+X-Received: by 2002:a5d:4089:0:b0:315:93a1:c733 with SMTP id o9-20020a5d4089000000b0031593a1c733mr1154305wrp.20.1689940995332;
+        Fri, 21 Jul 2023 05:03:15 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id o26-20020a5d58da000000b0030ae499da59sm3998420wrf.111.2023.07.21.05.03.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 21 Jul 2023 05:03:14 -0700 (PDT)
+Message-ID: <ed87a08c-363f-600e-6853-1a6009eb3c99@baylibre.com>
+Date: Fri, 21 Jul 2023 14:03:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v5 5/7] media: mediatek: vcodec: Read HW active status
- from syscon
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 0/3] MediaTek DRM: Clean up CMDQ support and ifdefs
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ matthias.bgg@gmail.com, wenst@chromium.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+References: <20230623094931.117918-1-angelogioacchino.delregno@collabora.com>
+ <6c71deca-112e-2ef6-9098-902bc4b92324@baylibre.com>
+ <d5c9f1c8-6c05-7679-777a-aa6cec01a3f6@collabora.com>
 Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- kernel@collabora.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20230630151436.155586-1-nfraprado@collabora.com>
- <20230630151436.155586-6-nfraprado@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230630151436.155586-6-nfraprado@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <d5c9f1c8-6c05-7679-777a-aa6cec01a3f6@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_044415_376037_1CE9BBC0 
-X-CRM114-Status: GOOD (  35.97  )
+X-CRM114-CacheID: sfid-20230721_050318_906140_E1100D94 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,187 +99,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/06/2023 17:14, Nícolas F. R. A. Prado wrote:
-> Remove the requirement of a VDEC_SYS reg iospace for both MT8173 and
-> MT8183. To achieve that, rely on a vdecsys syscon to be passed through
-> the DT, and use it to directly read the VDEC_HW_ACTIVE bit during IRQ
-> handling to check whether the HW is active. Also update the VP8 stateful
-> decoder to use the syscon, if present, for writes to VDEC_SYS.
-> 
-> The old behavior is still present when reg-names aren't supplied, as
-> to keep backward compatibility.
-> 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> 
-> ---
-> 
-> Changes in v5:
-> - Added explicit linux/bitfield.h include for FIELD_GET(), following
->   0day report
-> 
-> Changes in v4:
-> - Added new helper and updated VP8 stateful decoder to use it, so the
->   syscon can also be used by mt8173
-> - Made handling cleaner
-> - Reworded commit
-> 
-> Changes in v3:
-> - Switched handling of VDEC_HW_ACTIVE to use a syscon instead of the
->   'active' clock
-> - Reworded commit
-> - Removed changes to subdev part of driver, since they aren't used by
->   MT8183
-> 
->  .../mediatek/vcodec/mtk_vcodec_dec_drv.c      | 77 ++++++++++++++++---
->  .../platform/mediatek/vcodec/mtk_vcodec_drv.h |  1 +
->  .../mediatek/vcodec/mtk_vcodec_util.c         | 15 ++++
->  .../mediatek/vcodec/mtk_vcodec_util.h         |  2 +
->  .../mediatek/vcodec/vdec/vdec_vp8_if.c        | 10 +--
->  5 files changed, 87 insertions(+), 18 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-> index 83780d29a9cf..742b6903d030 100644
-> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-> @@ -5,13 +5,16 @@
->   *         Tiffany Lin <tiffany.lin@mediatek.com>
->   */
->  
-> +#include <linux/bitfield.h>
->  #include <linux/slab.h>
->  #include <linux/interrupt.h>
->  #include <linux/irq.h>
-> +#include <linux/mfd/syscon.h>
->  #include <linux/module.h>
->  #include <linux/of_device.h>
->  #include <linux/of.h>
->  #include <linux/pm_runtime.h>
-> +#include <linux/regmap.h>
->  #include <media/v4l2-event.h>
->  #include <media/v4l2-mem2mem.h>
->  #include <media/videobuf2-dma-contig.h>
-> @@ -38,22 +41,30 @@ static int mtk_vcodec_get_hw_count(struct mtk_vcodec_dev *dev)
->  	}
->  }
->  
-> +static bool mtk_vcodec_is_hw_active(struct mtk_vcodec_dev *dev)
-> +{
-> +	u32 cg_status;
-> +
-> +	if (dev->vdecsys_regmap)
-> +		return !regmap_test_bits(dev->vdecsys_regmap, VDEC_HW_ACTIVE_ADDR,
-> +					 VDEC_HW_ACTIVE_MASK);
-> +
-> +	cg_status = readl(dev->reg_base[VDEC_SYS] + VDEC_HW_ACTIVE_ADDR);
-> +	return !FIELD_GET(VDEC_HW_ACTIVE_MASK, cg_status);
-> +}
-> +
->  static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
->  {
->  	struct mtk_vcodec_dev *dev = priv;
->  	struct mtk_vcodec_ctx *ctx;
-> -	u32 cg_status = 0;
->  	unsigned int dec_done_status = 0;
->  	void __iomem *vdec_misc_addr = dev->reg_base[VDEC_MISC] +
->  					VDEC_IRQ_CFG_REG;
->  
->  	ctx = mtk_vcodec_get_curr_ctx(dev, MTK_VDEC_CORE);
->  
-> -	/* check if HW active or not */
-> -	cg_status = readl(dev->reg_base[0] + VDEC_HW_ACTIVE_ADDR);
-> -	if ((cg_status & VDEC_HW_ACTIVE_MASK) != 0) {
-> -		mtk_v4l2_err("DEC ISR, VDEC active is not 0x0 (0x%08x)",
-> -			     cg_status);
-> +	if (!mtk_vcodec_is_hw_active(dev)) {
-> +		mtk_v4l2_err("DEC ISR, VDEC active is not 0x0");
->  		return IRQ_HANDLED;
->  	}
->  
-> @@ -82,6 +93,33 @@ static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
->  {
->  	struct platform_device *pdev = dev->plat_dev;
->  	int reg_num, i;
-> +	struct resource *res;
-> +	bool has_vdecsys_reg;
-> +	static const char * const mtk_dec_reg_names[] = {
-> +		"misc",
-> +		"ld",
-> +		"top",
-> +		"cm",
-> +		"ad",
-> +		"av",
-> +		"pp",
-> +		"hwd",
-> +		"hwq",
-> +		"hwb",
-> +		"hwg"
-> +	};
-> +
-> +	/*
-> +	 * If we have reg-names in devicetree, this means that we're on a new
-> +	 * register organization, which implies that the VDEC_SYS iospace gets
-> +	 * R/W through a syscon (regmap).
-> +	 * Here we try to get the "misc" iostart only to check if we have reg-names
-> +	 */
-> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "misc");
-> +	if (res)
-> +		has_vdecsys_reg = false;
-> +	else
-> +		has_vdecsys_reg = true;
->  
->  	/* Sizeof(u32) * 4 bytes for each register base. */
->  	reg_num = of_property_count_elems_of_size(pdev->dev.of_node, "reg",
-> @@ -91,12 +129,29 @@ static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
->  		return -EINVAL;
->  	}
->  
-> -	for (i = 0; i < reg_num; i++) {
-> -		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
-> -		if (IS_ERR(dev->reg_base[i]))
-> -			return PTR_ERR(dev->reg_base[i]);
-> +	if (has_vdecsys_reg) {
-> +		for (i = 0; i < reg_num; i++) {
-> +			dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
-> +			if (IS_ERR(dev->reg_base[i]))
-> +				return PTR_ERR(dev->reg_base[i]);
-> +
-> +			mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
-> +		}
-> +	} else {
-> +		for (i = 0; i < reg_num; i++) {
-> +			dev->reg_base[i+1] = devm_platform_ioremap_resource_byname(pdev, mtk_dec_reg_names[i]);
-> +			if (IS_ERR(dev->reg_base[i+1]))
-> +				return PTR_ERR(dev->reg_base[i+1]);
->  
-> -		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
-> +			mtk_v4l2_debug(2, "reg[%d] base=%p", i+1, dev->reg_base[i+1]);
-> +		}
-> +
-> +		dev->vdecsys_regmap = syscon_regmap_lookup_by_phandle(pdev->dev.of_node,
-> +								      "mediatek,vdecsys");
-> +		if (IS_ERR(dev->vdecsys_regmap)) {
-> +			dev_err(&pdev->dev, "Missing mediatek,vdecsys property");
-> +			return PTR_ERR(dev->vdecsys_regmap);
-> +		}
->  	}
->  
->  	return 0;
-> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-> index f17d67e781c9..0b430936f67d 100644
-> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-> @@ -489,6 +489,7 @@ struct mtk_vcodec_dev {
->  	void __iomem *reg_base[NUM_MAX_VCODEC_REG_BASE];
->  	const struct mtk_vcodec_dec_pdata *vdec_pdata;
->  	const struct mtk_vcodec_enc_pdata *venc_pdata;
-> +	struct regmap *vdecsys_regmap;
 
-You forgot to add the kerneldoc documentation for this new field.
 
-If you just give me the documentation of this field then I can modify the
-patch. That's actually easier for me.
+On 19/07/2023 09:41, AngeloGioacchino Del Regno wrote:
+> Il 23/06/23 14:49, Alexandre Mergnat ha scritto:
+>>
+>>
+>> On 23/06/2023 11:49, AngeloGioacchino Del Regno wrote:
+>>> This series changes MediaTek CMDQ support to use the mtk-cmdq-helper
+>>> functions, removing duplicated cmdq setup code in mtk-drm and also
+>>> removing all instances of `#if IS_REACHABLE(CONFIG_MTK_CMDQ)` while
+>>> keeping compatibility with both CONFIG_MTK_CMDQ=n and =m/=y.
+>>>
+>>> This applies on top of [1] and [2].
+>>>
+>>> [1]:https://lore.kernel.org/lkml/20230524093412.92211-1-angelogioacchino.delregno@collabora.com
+>>> [2]:https://lore.kernel.org/lkml/20230608084727.74403-1-angelogioacchino.delregno@collabora.com
+>>
+>> Hi Angelo,
+>>
+>> Can you provide a public branch to test it please ?
+>> I tried to apply the dependencies but still have an issue with the 3rd 
+>> one:
+>>
+>> https://lore.kernel.org/lkml/20230523104234.7849-1-angelogioacchino.delregno@collabora.com
+>> OK
+>>
+>> https://lore.kernel.org/lkml/20230524093412.92211-1-angelogioacchino.delregno@collabora.com
+>> OK
+>>
+>> https://lore.kernel.org/lkml/20230608084727.74403-1-angelogioacchino.delregno@collabora.com
+>> KO
+>>
+>> Thanks
+>>
+> 
+> Sorry for the very late reply; I've somehow lost this email in the 
+> haystack...
+> 
+> There you go:
+> https://gitlab.collabora.com/google/chromeos-kernel/-/commits/for-kernelci/
+> 
 
+Thanks Angelo,
+
+I build/boot your branch for the i350-evk board.
+
+I had to revert this commit from your branch:
+"15f12798e218 TODO: soc: mediatek: mtk-pm-domains: Support CPU Power 
+Domains"
+Because it conflict with the "soc: mediatek: MT8365 power support" serie 
+[3].
+
+Also, I change back the defconfig to be aligned with the v6.5-rc1
+
+After that, the board boot and drm/display seems working like a charm.
+
+[3]: 
+https://lore.kernel.org/linux-arm-kernel/20230713150414.891893-1-msp@baylibre.com/
+
+-- 
 Regards,
-
-	Hans
+Alexandre
 
