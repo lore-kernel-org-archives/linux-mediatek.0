@@ -4,70 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F3EAEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 14:52:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE0FEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 14:56:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=68VDpVsLT/cBzsPEZKSP36t/Mqou9E9cqT7NspN2Yvc=; b=LB9+161XoOU0neshKVI8yAbytd
-	gAVkOEWYnBkYccnt62aVLAn7YvUocQlbpOh+Xajnz+xPdznUVs9Yn0uXYCzPbyR6UW98rOwec9YpJ
-	XoId946lUdzYm4KV9aQR41LTppgSvs7bdqNn6EJaTok2BHv+7d6xw1auRgIxHUtwT0KkdJo5b7srU
-	ZkBlgOa9uriQ/LMl9PHzdiAYMydHamgLjMfJZ3x86RAKxAfuqhbKv/uW0ZjTzQHDQLK5rVzjXPh5g
-	F+vHkGHJ2yc2LOw6Sj6luBNtu35K8pdtFAD7vYwtnWFqO1DmvjnzzqmQvKb+x/L64+KdpxrGtEZ5j
-	H/TOebmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GbEdKOfppLFqOiQbkW2R1KhTapJ4FFcPNoaoNaBCLKY=; b=I+MTPAAwhLa0rXgJo9neH12tCH
+	EfBU564WRI/Gjqw8icApsc4NxysxDLQ4q8D5J/UQFYyB6n21jDLhVxCfiULkPWOolTMBKRegDJMKd
+	hw6qO6CbSvY90GQMQGRd8kdAJe1AHOxsigUfyArcga67028Aoajr49pb8+Vg2HNrEd67KON3uXV6s
+	EmSSQFkkyKes4gtc6iA6yTGXUDKTJ95Ccl6Yd70K3JFW9J21vWgCnUhRfY/CPMT2TQOC7d1r/olXd
+	FH42dJIi9RGsQDJw4ekj/xxs7LpgVsDrSj+GrXnp3b5w/MHjVbyUdZew8o3/o2Rt68pYFydMEIqaY
+	mSxdmhVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMrUg-00ELR7-1J;
-	Fri, 21 Jul 2023 14:52:34 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qMrYM-00EMRR-2T;
+	Fri, 21 Jul 2023 14:56:22 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMrUd-00ELPs-0e;
-	Fri, 21 Jul 2023 14:52:32 +0000
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	id 1qMrYJ-00EMQQ-0s;
+	Fri, 21 Jul 2023 14:56:20 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 780E16606EE0;
-	Fri, 21 Jul 2023 15:52:26 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689951148;
-	bh=98bysGy+AeVi9wthSW3bKoLCU2PN4QMkm22+kvUMnWU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=joUUPWHADFpPK77514Ek71bf5t5zpKD6tvYcIO0gvGc+G4FTMiFstL89i+PqFIx39
-	 DX4FxMvrMdEcbmQKdXjwh+d7PWhx2Ii7bKGvx5TAzwkF5M6Xsz/PLiS1wmywRn6ZQP
-	 Pt0Nct/1ZoNTTGziCUvbEGm4+F5bwYZlC113Wj+fs9ckiFX2yhDN1N9CiyJ1cE9af2
-	 N73I8Vr3lNHHNft8iDK9VSike47aLodpcoJyU1nVw7Ok7R7iQrIm7L3B7QB16CBEDE
-	 vTjEFDOJMblL5MEZtQHxnE9Ay1QvqW9bLUcxtxcJcfbIgCK4zw4Kk/JgpXbFPTGws4
-	 LaFb5BxvYn3DA==
-Date: Fri, 21 Jul 2023 10:52:23 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v5 5/7] media: mediatek: vcodec: Read HW active status
- from syscon
-Message-ID: <08fab56b-c938-4509-940e-eab503f87740@notapiano>
-References: <20230630151436.155586-1-nfraprado@collabora.com>
- <20230630151436.155586-6-nfraprado@collabora.com>
- <fe9b6ee0-4661-ec0d-a49f-5986e00cb355@xs4all.nl>
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2E0F161B4D;
+	Fri, 21 Jul 2023 14:56:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E9D1C433C7;
+	Fri, 21 Jul 2023 14:56:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1689951377;
+	bh=GbEdKOfppLFqOiQbkW2R1KhTapJ4FFcPNoaoNaBCLKY=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=NXlKWpLuPeKFqxlrQAj4ALgNKRqep1DB4i8zp75V7Cvk8c/efHwVnko4stlpjU4/i
+	 90qJ6XaOrO/Q0iWCqzCKbSXeO6sa2SO8PtbYKhoqUEWtwhsbZNFjOGVPxUj9cQ1ONL
+	 ea6ISpEAjOP6gaPvwe/PUjlGBh22NxI2o7vYtxmgTFkSWT1OlhLe0BLR1a4Np62JRc
+	 WqwybNdxjwXcxp6R6p8oFhYpuRHyGsHIIyyOGgCnFxqCBiA6Kd8/VJqDZDqoNRCI9g
+	 K+ABmjUwR9H1QO1ejIRI9WI99NrytMs340M2ScQtOwONLs/z+3O+SClu0JjxYM/nic
+	 /bxbxhWrBks3A==
+Date: Fri, 21 Jul 2023 07:56:15 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Cc: Alexander Lobakin <aleksander.lobakin@intel.com>, <davem@davemloft.net>,
+ <pabeni@redhat.com>, <netdev@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>, Wei
+ Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang
+ <xiaoning.wang@nxp.com>, NXP Linux Team <linux-imx@nxp.com>, Sunil Goutham
+ <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, Subbaraya
+ Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, Saeed
+ Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Alexei
+ Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, John Fastabend
+ <john.fastabend@gmail.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
+ <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Ilias
+ Apalodimas <ilias.apalodimas@linaro.org>, <linux-rdma@vger.kernel.org>,
+ <bpf@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH net-next] page_pool: split types and declarations from
+ page_pool.h
+Message-ID: <20230721075615.118acad4@kernel.org>
+In-Reply-To: <f5d40062-bb0d-055b-8c02-912cfd020aca@huawei.com>
+References: <20230719121339.63331-1-linyunsheng@huawei.com>
+	<0838ed9e-8b5c-cc93-0175-9d6cbf695dda@intel.com>
+	<7e9c1276-9996-d9dd-c061-b1e66361c48b@huawei.com>
+	<20230720092247.279d65f3@kernel.org>
+	<f5d40062-bb0d-055b-8c02-912cfd020aca@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <fe9b6ee0-4661-ec0d-a49f-5986e00cb355@xs4all.nl>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_075231_412006_D38DEF9D 
-X-CRM114-Status: GOOD (  19.91  )
+X-CRM114-CacheID: sfid-20230721_075619_374326_5798AC36 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,62 +96,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 21, 2023 at 01:44:10PM +0200, Hans Verkuil wrote:
-> On 30/06/2023 17:14, Nícolas F. R. A. Prado wrote:
-[..]
-> > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-> > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-> > @@ -489,6 +489,7 @@ struct mtk_vcodec_dev {
-> >  	void __iomem *reg_base[NUM_MAX_VCODEC_REG_BASE];
-> >  	const struct mtk_vcodec_dec_pdata *vdec_pdata;
-> >  	const struct mtk_vcodec_enc_pdata *venc_pdata;
-> > +	struct regmap *vdecsys_regmap;
-> 
-> You forgot to add the kerneldoc documentation for this new field.
-> 
-> If you just give me the documentation of this field then I can modify the
-> patch. That's actually easier for me.
+On Fri, 21 Jul 2023 19:12:25 +0800 Yunsheng Lin wrote:
+> Just to be clear, include/net/page_pool.h is still there, we are not
+> putting page_pool.h in include/net/page_pool/ and renaming it to
+> something else, right? As there is no that kind of uniformity in
+> include/net/* as far as I can see.
 
-Sorry about that. Seems like I'm not getting a kerneldoc warning due to that,
-I'll look into why so I can catch this next time.
+Like many things the uniformity is a plan which mostly exists in my head
+at this stage :) But it is somewhat inspired by include/linux/sched.*
 
-This is the documentation:
+> More specificly, yon means the below, right?
+> include/net/page_pool.h
+> include/net/page_pool/types.h
 
-@vdecsys_regmap: VDEC_SYS register space passed through syscon
-
-Or if a patch that applies on top would make it easier to fixup:
-
-cat 0001-media-mediatek-vcodec-Add-missing-kerneldoc-for-vdec.patch
-From ee6a6d619dbe60c8f4947188a9b9bbeafc3616f7 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
- <nfraprado@collabora.com>
-Date: Fri, 21 Jul 2023 16:33:54 +0200
-Subject: [PATCH] media: mediatek: vcodec: Add missing kerneldoc for
- vdecsys_regmap
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-index 0b430936f67d..c38eb62bc72a 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-@@ -441,6 +441,7 @@ struct mtk_vcodec_enc_pdata {
-  * @reg_base: Mapped address of MTK Vcodec registers.
-  * @vdec_pdata: decoder IC-specific data
-  * @venc_pdata: encoder IC-specific data
-+ * @vdecsys_regmap: VDEC_SYS register space passed through syscon
-  *
-  * @fw_handler: used to communicate with the firmware.
-  * @id_counter: used to identify current opened instance
---
-2.30.2
-
-Thanks,
-Nícolas
+Yes.
 
