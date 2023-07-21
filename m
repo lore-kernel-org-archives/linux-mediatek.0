@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB1C9C00528
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 08:08:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46264C04A6A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 08:08:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NqcAnVxpvMo7IksBTYj7fHRMjHClyEVoFOPZWnp2zrc=; b=knZcX7idD2ZWNTLp7B+w3AmXZK
-	xhAuT88JJe59g3s08zB8fdVP01t5t2OhL93EHDai212XRwa9im2S+IMFFkgTToORH8tlkTep2a6or
-	F9gmOXMRw23MxAxjREY9+3g7aLi0mFyc9eZn51boUJUdmjKzycc+aURbpkz+55oTfMrQEM+XTwv+1
-	P+XHwtg4PWiphn0fRh9GARuXCy/C+veItlX4yUQOUBhIozLktqEc48u3sKCYVbQ5SpcrWtUYmS7F2
-	+WboNbdM2G9Qm8Jwd3rqBiD1naw63fys9mvU9eQUhsLSnGGlZwFb4B4xCa5LCFTo9LxWG8OgcY7+r
-	YqZyLWCw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gANVBGVeS5MlGx8TPeBiBkdc2Y9+xr4fJVm3EzJWyww=; b=lsWTWYxLpzzo53w/kaXMrro9Rl
+	jEZXQBlZvqY0Zgt33asJsI28RPeXIjOjHMHKNtIXF/Z1JYF87BfSTvOFNbQwwWlmBt4r0WwzTFH3l
+	sKeaJNmDZ1P81tQ1DDk2G1BT+SnCsOpmC9eIkEJcntKyvBHBr+sZBvYXS369PBB1Na4aED9rtTU1j
+	jqOzyZX7wRibAuwaQ4SHnMB4SXlY5mfV6wgnRX/HeDkC832xKIiwclTxaohBafw/wC2pFxIa8rSWg
+	BMmmH6g312+EJjtUl3rfwUgQszhZVXA4UhOFQwwcI0UmCqSpdDYoxOmGQi7K2GaNMYa2AQWqhYhnn
+	VjBbVqtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMlBa-00DJLc-31;
-	Fri, 21 Jul 2023 08:08:26 +0000
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+	id 1qMlBb-00DJLv-0m;
+	Fri, 21 Jul 2023 08:08:27 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMlBT-00DJDw-0N
+	id 1qMlBS-00DJDA-00
 	for linux-mediatek@lists.infradead.org;
 	Fri, 21 Jul 2023 08:08:20 +0000
-Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-5836d23abebso17453957b3.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Jul 2023 01:08:08 -0700 (PDT)
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-1b8b318c5a7so12507865ad.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Jul 2023 01:08:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1689926888; x=1690531688;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=NqcAnVxpvMo7IksBTYj7fHRMjHClyEVoFOPZWnp2zrc=;
-        b=FiaLlQpG+FX04kcW5hPzlM69UWqegsCa8SHht89DbgfZwxyZ2NPixF4HZ+bjd7wy80
-         w0A2C7YWmkD11MfX3bs7qVweeGnF99K6lmjgksE4chTNdK2n/UggSDKHtaI5ZUbxNNPO
-         0aCkJQsa5a3qlFG5A6KhT+53F03Rt19zOX/BM=
+        d=chromium.org; s=google; t=1689926885; x=1690531685;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=gANVBGVeS5MlGx8TPeBiBkdc2Y9+xr4fJVm3EzJWyww=;
+        b=RVPAoXsPVmL4Vaqkq73MwUfnz+QtYfW/n1CFqxFmm48Qlk+2O2xtNhGZEXSZ7QqcIx
+         6xXgKb2wgOiiSdtN2o+guY0PKD0Kq0oKWmgO/izgFTQ1ydKkGXfTL8XbjzMAsG307GOE
+         m+wWLbtDmieNJ780rhZfFPwtDB6Zu6ZtjsFdE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689926888; x=1690531688;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=NqcAnVxpvMo7IksBTYj7fHRMjHClyEVoFOPZWnp2zrc=;
-        b=hWMt1JCx66Y7hcQJWXvtEd2tlifW3IJFCMoTl9SvWGSM+LVX9m9tm2pR8yHB5NQPTR
-         UE2QHppzRcXowr8KcqEGos6xDFoPHOZhdnQ/sS2IkKufjeWTD8IsDvICfaqCRt6Dyhfu
-         BQHlhQfsdvMKs/U3zaW8JARvg+3s3Y2rrnDdggk/uX8dYvPZIsMD6j/4nHhZWTz8E3N6
-         xk1XxvKUDhq57GuiHa6M45tEieXSeN59QemCmDjLD3ML2kw2j0MCm6lmrfb/Tt4xRNeT
-         rhWmyWa9r6/fefb+3Fib75fDEty0lrmZfr/5wqMZUmYbkGtNOyaA3YQnixbI1zq3rcd/
-         Y1Rg==
-X-Gm-Message-State: ABy/qLaV/sBHitAsLMKka+L0b+lUtemM/M/AG8L74O9z1OPv7DicMVQw
-	lRP5SG8lm98wXwbPPPQC7vr4hQ==
-X-Google-Smtp-Source: APBJJlF8D2kE/WLC7WdE8mYRIasoZYyBucxGnkw1pAE30KqjiBSmN0qvmA+xlqWibibNJkQ/CaUsYQ==
-X-Received: by 2002:a0d:d6cb:0:b0:561:e8d7:ac6b with SMTP id y194-20020a0dd6cb000000b00561e8d7ac6bmr1388896ywd.49.1689926887693;
-        Fri, 21 Jul 2023 01:08:07 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1689926885; x=1690531685;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=gANVBGVeS5MlGx8TPeBiBkdc2Y9+xr4fJVm3EzJWyww=;
+        b=cDF7BERm8m5NPAVLy+VffgD3ZB4GreGcvBdPk01SICEwKgUDdpZlRwxJc4bS6JQpII
+         sEt6joKOZnQlB7ypC0I+fWCrfSDDZipDc7mUzhsddaQ9lsfS5gZ1ijyPGsImjv+X/F1I
+         AfUhQkqhGSU9pcemL8gWBECVf7n7NJ/0NOGhEi874w4KBn9XN84iirSEgCczR8OkQL9+
+         OY1U27t2LYm9eBDUHtQkFeK72+ZVD0O7+FHEzihwglEij27yijgKcAdBFbO5lgx0BSKP
+         1IUgcI6LdR7iw5KZAmAuAnhVOYy2VAfJ/b/0F4o8a3EWKe3VMReX1Hle2ESPDAJ16q5c
+         yViQ==
+X-Gm-Message-State: ABy/qLZe8H91OZsWFcbfxU4NXE40wyQ9sMKqLmy9E+sRiU8eTbluJyrM
+	/emahCcQDQsxkqHrrj8Khx1gsQ==
+X-Google-Smtp-Source: APBJJlHM9fyRUAQV7azReyM4HeiWFwiXZKUnthfAeikOCX3eyzp/KHFna0Ty3wlhzS1RY9iW2fsdig==
+X-Received: by 2002:a17:903:2341:b0:1b9:d335:2216 with SMTP id c1-20020a170903234100b001b9d3352216mr1709996plh.20.1689926885282;
+        Fri, 21 Jul 2023 01:08:05 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:6d86:d21:714:abab])
-        by smtp.gmail.com with ESMTPSA id o10-20020a170902bcca00b001b850c9af71sm2740294pls.285.2023.07.21.01.08.05
+        by smtp.gmail.com with ESMTPSA id o10-20020a170902bcca00b001b850c9af71sm2740294pls.285.2023.07.21.01.08.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Jul 2023 01:08:07 -0700 (PDT)
+        Fri, 21 Jul 2023 01:08:05 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -72,17 +71,15 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 1/7] mfd: mt6358: Add missing registers for LDO voltage calibration
-Date: Fri, 21 Jul 2023 16:07:42 +0800
-Message-ID: <20230721080751.2012318-2-wenst@chromium.org>
+Subject: [PATCH v2 0/7] regulator: mt6358: Remove bogus regulators and improvements
+Date: Fri, 21 Jul 2023 16:07:41 +0800
+Message-ID: <20230721080751.2012318-1-wenst@chromium.org>
 X-Mailer: git-send-email 2.41.0.487.g6d72f3e995-goog
-In-Reply-To: <20230721080751.2012318-1-wenst@chromium.org>
-References: <20230721080751.2012318-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_010819_176563_966E158E 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20230721_010818_039704_800FE870 
+X-CRM114-Status: GOOD (  22.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,35 +94,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Most of the LDOs, except the "VSRAM_*" ones, on the MT6358 and MT6366
-PMICs support a finer output voltage calibration within the range of
-+0 mV to +100 mV with 10 mV step. Some of the registers for this
-function are missing from the register table.
+Hi,
 
-Add the missing ones for MT6358.
+This is v2 of the remainder of the MT6358 regulator driver cleanup
+and improvement series. v1 can be found here [1].
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- include/linux/mfd/mt6358/registers.h | 6 ++++++
- 1 file changed, 6 insertions(+)
+Changes since v1:
+- Merged patches dropped
+- Added patch to move VCN33 regulator status sync after ID check
+- Added patch to fix VCN33 sync fail error message
+- Added patch to add missing register definitions
 
-diff --git a/include/linux/mfd/mt6358/registers.h b/include/linux/mfd/mt6358/registers.h
-index 3d33517f178c..5ea2590be710 100644
---- a/include/linux/mfd/mt6358/registers.h
-+++ b/include/linux/mfd/mt6358/registers.h
-@@ -262,6 +262,12 @@
- #define MT6358_LDO_VBIF28_CON3                0x1db0
- #define MT6358_VCAMA1_ANA_CON0                0x1e08
- #define MT6358_VCAMA2_ANA_CON0                0x1e0c
-+#define MT6358_VFE28_ANA_CON0                 0x1e10
-+#define MT6358_VCN28_ANA_CON0                 0x1e14
-+#define MT6358_VBIF28_ANA_CON0                0x1e18
-+#define MT6358_VAUD28_ANA_CON0                0x1e1c
-+#define MT6358_VAUX18_ANA_CON0                0x1e20
-+#define MT6358_VXO22_ANA_CON0                 0x1e24
- #define MT6358_VCN33_ANA_CON0                 0x1e28
- #define MT6358_VSIM1_ANA_CON0                 0x1e2c
- #define MT6358_VSIM2_ANA_CON0                 0x1e30
+Various discrepancies were found while preparing to upstream MT8186
+device trees, which utilize the MT6366 PMIC, that is also covered by
+this driver.
+
+Patch 1 should either go through the mfd tree and an immutable branch
+created for the regulator tree to consume, or given an Ack, merged
+directly through the regulator tree.
+
+Spoiler: a follow-up series dealing with the MT6366 PMIC, which is
+covered by the same driver, also has an mfd header patch that would
+need the same treatment.
+
+Patches 2~6 should go through the regulator tree, and patch 7 through
+the soc tree. Patches 2 and 3 should be merged as fixes for v6.5, as
+the commit they fix was just introduced in -rc1.
+
+Patches 5 and 6 depends on "[v3] regulator: Use bitfield values for
+range selectors" [2] I sent out earlier.
+
+This v2 series can be seen as three parts. v1 also had three parts, but
+one part was fully merged, and then v2 gained another cleanup.
+
+
+Part 1 - Fixing bogus regulators (patches 2, 3, and 7)
+
+There are some regulators listed in the bindings and driver that have no
+corresponding pin on the actual hardware. MediaTek says these are a
+hardware construct for shared control of the same regulator in the
+VCN33 case and an alternative control scheme for low power suspend.
+
+In the VCN33 case, there's only one actual regulator, so we merge the
+two and rename them to match the hardware pin. No existing devices use
+these AFAICT, so this should be safe to change.
+
+The driver changes for this part have been merged, but two review
+comments were not accounted for. They are addressed here with two new
+patches
+
+Part 2 - Robust chip ID checking (patch 4)
+
+Angelo suggested making the driver fail to probe if an unexpected chip
+ID was found. Patch 4 implements this.
+
+Part 3 - Output voltage fine tuning support (patches 1, 5, and 6)
+
+Many of the LDOs on these PMIC support an extra level of output voltage
+fine tuning. Most default to no offset, but a couple have a non-zero
+offset by default. Previously this was unaccounted for in the driver and
+device tree constraints. On the outputs with non-zero offset, this ends
+up becoming a discrepancy between the device tree and actual hardware.
+These two patches adds support for this second level of tuning, modeled
+as bunch of linear ranges. While it's unlikely we need this level of
+control, it's nice to be able to read back the accurate hardware
+settings.
+
+Please have a look. After this series is done I'll send out patches for
+the MT6366 PMIC, which is what started this. That will also include
+updated YAML bindings for MT6366. I think we can merge MT6358 bindings
+into them afterwards.
+
+Thanks
+ChenYu
+
+[1] https://lore.kernel.org/linux-arm-kernel/20230609083009.2822259-1-wenst@chromium.org/
+[2] https://lore.kernel.org/linux-arm-kernel/20230714081408.274567-1-wenst@chromium.org/
+
+
+Chen-Yu Tsai (7):
+  mfd: mt6358: Add missing registers for LDO voltage calibration
+  regulator: mt6358: Sync VCN33_* enable status after checking ID
+  regulator: mt6358: Fix incorrect VCN33 sync error message
+  regulator: mt6358: Fail probe on unknown chip ID
+  regulator: mt6358: Add output voltage fine tuning to fixed regulators
+  regulator: mt6358: Add output voltage fine tuning to variable LDOs
+  arm64: dts: mediatek: mt6358: Merge ldo_vcn33_* regulators
+
+ arch/arm64/boot/dts/mediatek/mt6358.dtsi |  11 +-
+ drivers/regulator/mt6358-regulator.c     | 314 +++++++++++------------
+ include/linux/mfd/mt6358/registers.h     |   6 +
+ 3 files changed, 151 insertions(+), 180 deletions(-)
+
 -- 
 2.41.0.487.g6d72f3e995-goog
 
