@@ -4,83 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ED1AEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 11:34:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9904EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 11:36:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bGSr0nArlfVl26hrcwMV/JaBpkbMJw8FXQVAi8Thplc=; b=kFq6KiDi5AVhu6JeBDNJCIwArE
-	RhnLIJpnKsBNnF5ejolVIjx5FPmxYTBVYUm3cE5+yeUDjyLLQpA46wjECxuLx7J4aOacGttb+kTKw
-	PhDIoNIbt+T3Jj4Q7eIST69cU1cGlUHATkon6tXHG55No7k3c2zHL8It2oSZIBA7Yus6SQYDyL6a4
-	P1gBkIm6gtRwBLY4bSJzPwSKV/LoGr4Ndvzz/6wM4bcAHTbenxp/Kfrs+Or3oFpfOiUhk6ol4iK7h
-	d52zGsr8e2A89IEXLq8suA4MyZ6Lu7qCi4XFnIWUTWsCmRR1mTzdECoRJUzai2nxnrYhg7k4elc2r
-	YYOx7fAw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=iItSOdqqfSgaHaVttPNHC8a08UlOwZdEhpHuVWdhpGE=; b=Smxu+wa2dh3+J4OeR1DubOX92e
+	7TT6HcHuX/8tpSLwDaPGgVpdWT9vLcMmyf7zTlPzyVMT8S5fApnpQwI4+NKf7Zscv/7fFliRNHlHS
+	YHDtBRmLv8MuXMQsgbfFVmOk1EtVtQx8JQVKgZdLR0GSaVFPZwzc9uL5cN0YA7wmHBzYA5SSEpEUo
+	CcuJu+7FYpRBNUK0ENHAllacO5OrchnzLaofKX5pXJigfeRS7Q+I+aQmAfRUeA2MqchxmDSSkIcLE
+	58hYNpXE69r1LIxCgfVVb/V9+Y+RsQPH4S9lqstpYtaSC059GtcB8U/Vyplzo+SLzw4VtVfJJc7zR
+	5HfNupPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMoPG-00DwWi-1p;
-	Fri, 21 Jul 2023 11:34:46 +0000
+	id 1qMoQr-00Dwoc-2u;
+	Fri, 21 Jul 2023 11:36:25 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMoP6-00DwSz-08;
-	Fri, 21 Jul 2023 11:34:37 +0000
+	id 1qMoQn-00DwPx-2y;
+	Fri, 21 Jul 2023 11:36:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=bGSr0nArlfVl26hrcwMV/JaBpkbMJw8FXQVAi8Thplc=; b=t6B1EbJJ5x2fwKRiVxMPUs6VM9
-	TAvxk9G6qsIqe+QO0eXZLsrB1K6htyjpKm9q4DOWYb71vPDVrtO0xokJ3WLRAXW7UYV8QHX+ltGVv
-	VhwLUFn2Ut/zAoZXC6gW8jDnutM6MS9vUj0IKXHxLa50jTr2DQO0a6KnZ/md9o5zx6Ce/9f90p94y
-	xtMJzV4Thhc9qo5qhPTXE55s4wHOe4IlQtquayRkvP2VEPttJcd5E8aFITdJ4YdDuXvE1tHH+CDcG
-	lbTwjDqbs8YQ2UFPXTbhjRDTvVhMAD7Dz9yBua8obmKyG0Tc0yDK3hNOR+Dhd8xSOsOdAzj9o4Dif
-	E6Gv99ug==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:45364 helo=rmk-PC.armlinux.org.uk)
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=iItSOdqqfSgaHaVttPNHC8a08UlOwZdEhpHuVWdhpGE=; b=0RXfcyA8km5soyBIeESvbsuQbU
+	8Ug+GTC9bUzujdfG/M19pdrz94nRjBagXuQqpl+yBW4/L9YGyJKPzBG97jTARieRmq9hIZdonzrpb
+	/HkUOHtfwlDgOK07F1qGCusEAVmCu1V3IZwsMHJZZdIx85aGwuJk+TcFTQGtTdT7XCp2vlzM4W4c3
+	WAJhhjokbAfr+lVzcNk41jxy3YBI22O2CWG4rJmvTZzGj4y8tQx6BB3vLhbWkLdTMzht4KSVXb7wk
+	K3l1AjxAbZdl2Wh/Y2VGzNdQDON01kY8+e+pW4HyswSxYhcvmz/1H5DHCxojGTf7INnJNLmD1F+q7
+	WpcvwrXA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:39288)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1qMoP0-0003od-1F;
-	Fri, 21 Jul 2023 12:34:30 +0100
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1qMoP0-000hhX-BQ; Fri, 21 Jul 2023 12:34:30 +0100
-In-Reply-To: <ZLptIKEb7qLY5LmS@shell.armlinux.org.uk>
-References: <ZLptIKEb7qLY5LmS@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	 Ar__n__ __NAL <arinc.unal@arinc9.com>,
-	 Frank Wunderlich <frank-w@public-files.de>,
-	 David Woodhouse <dwmw@amazon.co.uk>
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1qMoOT-0003nN-2d;
+	Fri, 21 Jul 2023 12:33:57 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1qMoOO-00065a-4i; Fri, 21 Jul 2023 12:33:52 +0100
+Date: Fri, 21 Jul 2023 12:33:52 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	DanielGolle <daniel@makrotopia.org>,
+	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	David Woodhouse <dwmw@amazon.co.uk>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Jakub Kicinski <kuba@kernel.org>,
-	John Crispin <john@phrozen.org>,
+	Eric Dumazet <edumazet@google.com>, Felix Fietkau <nbd@nbd.name>,
+	Jakub Kicinski <kuba@kernel.org>, John Crispin <john@phrozen.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
 	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH net-next 4/4] net: phylink: explicitly invalidate link_state
- members in mac_config
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>
+Subject: [PATCH net-next 0/4] Remove legacy phylink behaviour
+Message-ID: <ZLptIKEb7qLY5LmS@shell.armlinux.org.uk>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1qMoP0-000hhX-BQ@rmk-PC.armlinux.org.uk>
-Date: Fri, 21 Jul 2023 12:34:30 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_043436_078405_D77CA815 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20230721_043621_985082_1600DA84 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,54 +86,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Explicitly invalidate the phylink_link_state structure members in
-mac_config that do not contain reliable information for this function,
-thereby preventing their future incorrect use.
+Hi,
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/phy/phylink.c | 25 ++++++++++++++++---------
- 1 file changed, 16 insertions(+), 9 deletions(-)
+This series removes the - as far as I can tell - unreachable code in
+mtk_eth_soc that relies upon legacy phylink behaviour, and then removes
+the support in phylink for this legacy behaviour.
 
-diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
-index df413fb15088..4f1c8bb199e9 100644
---- a/drivers/net/phy/phylink.c
-+++ b/drivers/net/phy/phylink.c
-@@ -1066,17 +1066,24 @@ static void phylink_pcs_poll_start(struct phylink *pl)
- static void phylink_mac_config(struct phylink *pl,
- 			       const struct phylink_link_state *state)
- {
-+	struct phylink_link_state st = *state;
-+
-+	/* Stop drivers incorrectly using these */
-+	linkmode_zero(st.lp_advertising);
-+	st.speed = SPEED_UNKNOWN;
-+	st.duplex = DUPLEX_UNKNOWN;
-+	st.an_complete = false;
-+	st.link = false;
-+
- 	phylink_dbg(pl,
--		    "%s: mode=%s/%s/%s/%s/%s adv=%*pb pause=%02x link=%u\n",
-+		    "%s: mode=%s/%s/%s adv=%*pb pause=%02x\n",
- 		    __func__, phylink_an_mode_str(pl->cur_link_an_mode),
--		    phy_modes(state->interface),
--		    phy_speed_to_str(state->speed),
--		    phy_duplex_to_str(state->duplex),
--		    phy_rate_matching_to_str(state->rate_matching),
--		    __ETHTOOL_LINK_MODE_MASK_NBITS, state->advertising,
--		    state->pause, state->link);
--
--	pl->mac_ops->mac_config(pl->config, pl->cur_link_an_mode, state);
-+		    phy_modes(st.interface),
-+		    phy_rate_matching_to_str(st.rate_matching),
-+		    __ETHTOOL_LINK_MODE_MASK_NBITS, st.advertising,
-+		    st.pause);
-+
-+	pl->mac_ops->mac_config(pl->config, pl->cur_link_an_mode, &st);
- }
- 
- static void phylink_pcs_an_restart(struct phylink *pl)
+Patch 1 removes the clocking configuration from mtk_eth_soc for non-
+TRGMII, non-serdes based interface modes, and disables those interface
+modes prior to phylink configuration.
+
+Patch 2 removes the mac_pcs_get_state() method from mtk_eth_soc which
+I believe is also not used - mtk_eth_soc appears not to be used with
+SFPs (which would use a kind of in-band mode) nor does any DT appear
+to specify in-band mode for any non-serdes based interface mode.
+
+With both of those dealt with, the kernel is now free of any driver
+relying on the phylink legacy mode. Therefore, patch 3 removes support
+for this.
+
+Finally, with the advent of a new driver being submitted today that
+makes use of state->speed in the mac_config() path, patch 4 ensures that
+any phylink_link_state member that should not be used in mac_config is
+either cleared or set to an invalid value.
+
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 94 +++++------------------------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  1 +
+ drivers/net/phy/phylink.c                   | 48 ++++++---------
+ include/linux/phylink.h                     | 45 ++------------
+ 4 files changed, 42 insertions(+), 146 deletions(-)
 -- 
-2.30.2
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
