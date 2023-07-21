@@ -4,69 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E484C001DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 08:16:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D159AC00528
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 08:20:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Dk77Qc/dj00UQR6hsnHOlMA9gQBz3cX0XYQgbb44BiQ=; b=ntX49IGR4jvgwQhe8UUqSMLl2y
-	d+QiG4Xb3Mfyt5ZAa9qzRjf+tb0U7F4dOGVB8JdyYlTH04LxAsta9B2pHYB6QnxHHTDTKntKzz49B
-	BCR3Nm5GzY6bD3Clj4gJGlpY/tmTZ/hOVBWCMbONp38nDHUc0ayPVQvd1cBNKSD7/oNDssgoiBqFZ
-	mI8Dq53adUJoeHsMXWLbvPbPFap/tKpRgj6/Z+4PJ7jpNzVOn+zbHA9obbBxEmDx+jLH5wQUIWEzo
-	zkVYH7LZydkIbC2xexHnXwxOrG+Q72PGs5m+D5AVn73m9W4CKoiEXKLAb6eC5ttY40lZYvaGUVv+B
-	jGjkg9Rg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pNttBeZZhZdP5VWzICYQ/ABTkjg95x/HctL8gjTLrOU=; b=0pu7xFfKsFmNWvymzfOm/qAin0
+	dF4UdDYxiDN/vpnSUSWediPLUhoiyk8EOBgAutNRyqcCZZm/UUXnanWQgaiG+NuBogdaitsy8xxIH
+	gwfJ90dDKMG2VSqMCT1FeWpSnRRHBNDJRzc1ABJmgJIqcrFBD/J3hDzRwTtqJsVzYRIql4yOqWes5
+	hvrsC9b+2jtUTvK9Qq8at7ebmxp6YW459+NJyw+TL5EJFuZdlVr0dmGV725V3DxJP8SxS3nHtQMwB
+	+SV+Bssi8GIa0uvqDSazuUQc/wLbas+vkDkdYvktJqWk+KBMyIz5QWUpGaUnbx6RJ4zd5hOIAf0ct
+	FqYxzLQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMlJo-00DKS1-1X;
-	Fri, 21 Jul 2023 08:16:56 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qMlMl-00DKz5-1x;
+	Fri, 21 Jul 2023 08:19:59 +0000
+Received: from mx1.tq-group.com ([93.104.207.81])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMlJl-00DKQk-1t;
-	Fri, 21 Jul 2023 08:16:55 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1qMlMh-00DKxc-2t;
+	Fri, 21 Jul 2023 08:19:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+  t=1689927595; x=1721463595;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=pNttBeZZhZdP5VWzICYQ/ABTkjg95x/HctL8gjTLrOU=;
+  b=BQy3zmLdmD3LYsimm9u+T8AL33gsuUaIhD5CljTUcURqETfTR64MihhH
+   aqH9i0CpALWK6aMp5YjveabYC+Gg6ObyyirWLLNd2unVD17OmvjBeBsnl
+   N5VldQbyojOKL8kmXXIE/mye0UuZ6lv1gRrYL941ILWO8wlZVQ6r9KTn6
+   JZW9sFJJjaSQ4UQ/ReBEtjm/TTJyT5RIjeGSfrZQvHJQppXxwc6m1olNP
+   EZIYkA0+y8DfUZnqUEbzqdVxK5qlfRS0FDjujw3LNJDFDUK9MLrFEKmHq
+   e3S+zCHcusy0d219/5v4FlXvC0MCnaqSNb07j6VJ+sNG34jKLiAdu8y24
+   Q==;
+X-IronPort-AV: E=Sophos;i="6.01,220,1684792800"; 
+   d="scan'208";a="32048265"
+Received: from vtuxmail01.tq-net.de ([10.115.0.20])
+  by mx1.tq-group.com with ESMTP; 21 Jul 2023 10:19:53 +0200
+Received: from steina-w.tq-net.de (unknown [10.123.53.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 043796606FD8;
-	Fri, 21 Jul 2023 09:16:46 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689927407;
-	bh=Da4LQlPmUJ4jB9lCBAB/poUxMFWGV22f2vqy6CM2uCE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TWzxKl8DzdNWcaEdkKBN9YU/bWg4LM3NKyQoQwTqZN6NVP5JIFMmOTo4ECDoU+EGp
-	 exRttprdTpB/Q+mSz+jxxxOOLt6MyPTrWiAzf7HlFXGBtCAQ7VL4RsO/jU7C5/zI/9
-	 bg2fYR1XyKACcVpe52w3hJv1c48xjh/hweGexcD67T7kjYWWA94iZZ570dpAjZC6SX
-	 aTvDKDPufBOrsw+8EaDLLjwqCb8ILKdE69DBcAlFGNvKhT9YkutltakDfd2G3MVmrM
-	 5wfLvwe0Uf9HgOwTuR+Vb/4laLbWQwbGXqjDt1iNKg3+hE+FP4r2j5kUZH6G9RoeJ3
-	 b0cdkL7yx8jIQ==
-Message-ID: <8bb1a42d-2809-04a9-dcdd-45fc91ea1bde@collabora.com>
-Date: Fri, 21 Jul 2023 10:16:44 +0200
+	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id 5B690280078;
+	Fri, 21 Jul 2023 10:19:53 +0200 (CEST)
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	=?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>,
+	Tony Lindgren <tony@atomide.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Alexander Stein <alexander.stein@ew.tq-group.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	devicetree@vger.kernel.org,
+	linux-omap@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v3 1/2] ARM: dts: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio properties
+Date: Fri, 21 Jul 2023 10:19:47 +0200
+Message-Id: <20230721081948.1185360-1-alexander.stein@ew.tq-group.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Set DSU PMU status to fail
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com, Chen-Yu Tsai <wenst@chromium.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Seiya Wang <seiya.wang@mediatek.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20230720200753.322133-1-nfraprado@collabora.com>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230720200753.322133-1-nfraprado@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_011653_812456_70BE99EB 
-X-CRM114-Status: GOOD (  23.35  )
+X-CRM114-CacheID: sfid-20230721_011956_244806_473F806D 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,60 +96,169 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/07/23 22:07, Nícolas F. R. A. Prado ha scritto:
-> The DSU PMU allows monitoring performance events in the DSU cluster,
-> which is done by configuring and reading back values from the DSU PMU
-> system registers. However, for write-access to be allowed by ELs lower
-> than EL3, the EL3 firmware needs to update the setting on the ACTLR3_EL3
-> register, as it is disallowed by default.
+Use id-gpios and vbus-gpios instead.
 
-Typo: ACTLR_EL2, ACTLR_EL3 bit 12 must be set if SCR.NS is 1;
-ACTLR_EL3 bit 12 must be set if SCR.NS is 0.
+Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+---
+Changes in v3:
+* Rebased to next-20230721
+* Split from bindings patch
 
-On MT8195 Chromebooks, SCR.NS is 1 - hence ACTLR_EL2/EL3 must have BIT(12) set,
-but at least ACTLR_EL2 doesn't have it set.
+ arch/arm/boot/dts/nxp/imx/imx6qdl-colibri.dtsi    | 2 +-
+ arch/arm/boot/dts/nxp/imx/imx7-colibri.dtsi       | 2 +-
+ arch/arm/boot/dts/ti/omap/am571x-idk.dts          | 4 ++--
+ arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts | 2 +-
+ arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi  | 4 ++--
+ arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi    | 4 ++--
+ arch/arm/boot/dts/ti/omap/dra71-evm.dts           | 4 ++--
+ arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi   | 4 ++--
+ arch/arm/boot/dts/ti/omap/dra76-evm.dts           | 4 ++--
+ 9 files changed, 15 insertions(+), 15 deletions(-)
 
-I haven't verified EL3, but that doesn't matter, since both need to be set.
-
-> 
-> That configuration is not done on the firmware used by the MT8195 SoC,
-> as a consequence, booting a MT8195-based machine like
-> mt8195-cherry-tomato-r2 with CONFIG_ARM_DSU_PMU enabled hangs the kernel
-> just as it writes to the CLUSTERPMOVSCLR_EL1 register, since the
-> instruction faults to EL3, and BL31 apparently just re-runs the
-> instruction over and over.
-
-...at least for this SoC, TF-A's BL31 fault handler loops over the same
-instruction forever, hanging the AP...
-
-Regards,
-Angelo
-
-> 
-> Mark the DSU PMU node in the Devicetree with status "fail", as the
-> machine doesn't have a suitable firmware to make use of it from the
-> kernel, and allowing its driver to probe would hang the kernel.
-> 
-> Fixes: 37f2582883be ("arm64: dts: Add mediatek SoC mt8195 and evaluation board")
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> 
-> ---
-> 
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index 5c670fce1e47..0705d9c3a6a7 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -313,6 +313,7 @@ dsu-pmu {
->   		interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH 0>;
->   		cpus = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>,
->   		       <&cpu4>, <&cpu5>, <&cpu6>, <&cpu7>;
-> +		status = "fail";
->   	};
->   
->   	dmic_codec: dmic-codec {
-
+diff --git a/arch/arm/boot/dts/nxp/imx/imx6qdl-colibri.dtsi b/arch/arm/boot/dts/nxp/imx/imx6qdl-colibri.dtsi
+index 570995707504..11d9c7a2dacb 100644
+--- a/arch/arm/boot/dts/nxp/imx/imx6qdl-colibri.dtsi
++++ b/arch/arm/boot/dts/nxp/imx/imx6qdl-colibri.dtsi
+@@ -26,7 +26,7 @@ backlight: backlight {
+ 
+ 	extcon_usbc_det: usbc-det {
+ 		compatible = "linux,extcon-usb-gpio";
+-		id-gpio = <&gpio7 12 GPIO_ACTIVE_HIGH>; /* SODIMM 137 / USBC_DET */
++		id-gpios = <&gpio7 12 GPIO_ACTIVE_HIGH>; /* SODIMM 137 / USBC_DET */
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pinctrl_usbc_det>;
+ 	};
+diff --git a/arch/arm/boot/dts/nxp/imx/imx7-colibri.dtsi b/arch/arm/boot/dts/nxp/imx/imx7-colibri.dtsi
+index 104580d51d74..9fe51884af79 100644
+--- a/arch/arm/boot/dts/nxp/imx/imx7-colibri.dtsi
++++ b/arch/arm/boot/dts/nxp/imx/imx7-colibri.dtsi
+@@ -29,7 +29,7 @@ chosen {
+ 
+ 	extcon_usbc_det: usbc-det {
+ 		compatible = "linux,extcon-usb-gpio";
+-		id-gpio = <&gpio7 14 GPIO_ACTIVE_HIGH>; /* SODIMM 137 / USBC_DET */
++		id-gpios = <&gpio7 14 GPIO_ACTIVE_HIGH>; /* SODIMM 137 / USBC_DET */
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&pinctrl_usbc_det>;
+ 	};
+diff --git a/arch/arm/boot/dts/ti/omap/am571x-idk.dts b/arch/arm/boot/dts/ti/omap/am571x-idk.dts
+index 48425020281a..322cf79d22e9 100644
+--- a/arch/arm/boot/dts/ti/omap/am571x-idk.dts
++++ b/arch/arm/boot/dts/ti/omap/am571x-idk.dts
+@@ -168,8 +168,8 @@ blue3-led {
+ };
+ 
+ &extcon_usb2 {
+-	id-gpio = <&gpio5 7 GPIO_ACTIVE_HIGH>;
+-	vbus-gpio = <&gpio7 22 GPIO_ACTIVE_HIGH>;
++	id-gpios = <&gpio5 7 GPIO_ACTIVE_HIGH>;
++	vbus-gpios = <&gpio7 22 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &sn65hvs882 {
+diff --git a/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts b/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts
+index 149cfafb90bf..c5272302eb11 100644
+--- a/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts
++++ b/arch/arm/boot/dts/ti/omap/am5729-beagleboneai.dts
+@@ -197,7 +197,7 @@ brcmf_pwrseq: brcmf_pwrseq {
+ 	extcon_usb1: extcon_usb1 {
+ 		compatible = "linux,extcon-usb-gpio";
+ 		ti,enable-id-detection;
+-		id-gpio = <&gpio3 13 GPIO_ACTIVE_HIGH>;
++		id-gpios = <&gpio3 13 GPIO_ACTIVE_HIGH>;
+ 	};
+ };
+ 
+diff --git a/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi b/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi
+index 1d66278c3a72..3fca84819dc0 100644
+--- a/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi
++++ b/arch/arm/boot/dts/ti/omap/am572x-idk-common.dtsi
+@@ -169,8 +169,8 @@ blue3-led {
+ };
+ 
+ &extcon_usb2 {
+-	id-gpio = <&gpio3 16 GPIO_ACTIVE_HIGH>;
+-	vbus-gpio = <&gpio3 26 GPIO_ACTIVE_HIGH>;
++	id-gpios = <&gpio3 16 GPIO_ACTIVE_HIGH>;
++	vbus-gpios = <&gpio3 26 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &sn65hvs882 {
+diff --git a/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi b/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi
+index 4cdffd6db740..ed5199d7acd8 100644
+--- a/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi
++++ b/arch/arm/boot/dts/ti/omap/dra7-evm-common.dtsi
+@@ -15,12 +15,12 @@ chosen {
+ 
+ 	extcon_usb1: extcon_usb1 {
+ 		compatible = "linux,extcon-usb-gpio";
+-		id-gpio = <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
++		id-gpios = <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
+ 	};
+ 
+ 	extcon_usb2: extcon_usb2 {
+ 		compatible = "linux,extcon-usb-gpio";
+-		id-gpio = <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
++		id-gpios = <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
+ 	};
+ 
+ 	sound0: sound0 {
+diff --git a/arch/arm/boot/dts/ti/omap/dra71-evm.dts b/arch/arm/boot/dts/ti/omap/dra71-evm.dts
+index a64364443031..f747ac56eb92 100644
+--- a/arch/arm/boot/dts/ti/omap/dra71-evm.dts
++++ b/arch/arm/boot/dts/ti/omap/dra71-evm.dts
+@@ -293,11 +293,11 @@ &hdmi {
+ };
+ 
+ &extcon_usb1 {
+-	vbus-gpio = <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
++	vbus-gpios = <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &extcon_usb2 {
+-	vbus-gpio = <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
++	vbus-gpios = <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &ipu2 {
+diff --git a/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi b/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi
+index 31ab0c60ca75..f8151c61488e 100644
+--- a/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi
++++ b/arch/arm/boot/dts/ti/omap/dra72-evm-common.dtsi
+@@ -96,12 +96,12 @@ evm_3v3_sd: fixedregulator-sd {
+ 
+ 	extcon_usb1: extcon_usb1 {
+ 		compatible = "linux,extcon-usb-gpio";
+-		id-gpio = <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
++		id-gpios = <&pcf_gpio_21 1 GPIO_ACTIVE_HIGH>;
+ 	};
+ 
+ 	extcon_usb2: extcon_usb2 {
+ 		compatible = "linux,extcon-usb-gpio";
+-		id-gpio = <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
++		id-gpios = <&pcf_gpio_21 2 GPIO_ACTIVE_HIGH>;
+ 	};
+ 
+ 	hdmi0: connector {
+diff --git a/arch/arm/boot/dts/ti/omap/dra76-evm.dts b/arch/arm/boot/dts/ti/omap/dra76-evm.dts
+index 57868ac60d29..cf9c3d35b049 100644
+--- a/arch/arm/boot/dts/ti/omap/dra76-evm.dts
++++ b/arch/arm/boot/dts/ti/omap/dra76-evm.dts
+@@ -533,11 +533,11 @@ &pcie1_ep {
+ };
+ 
+ &extcon_usb1 {
+-	vbus-gpio = <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
++	vbus-gpios = <&pcf_lcd 14 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &extcon_usb2 {
+-	vbus-gpio = <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
++	vbus-gpios = <&pcf_lcd 15 GPIO_ACTIVE_HIGH>;
+ };
+ 
+ &m_can0 {
+-- 
+2.34.1
 
 
