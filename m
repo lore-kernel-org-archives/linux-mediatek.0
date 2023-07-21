@@ -4,69 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3AF3EB64DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 12:11:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD51C001DF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 12:22:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hJ2M7oZy09pQU7Rc+HwKVL3JXlQRCY+27o6eYDiCBOw=; b=C4gBcnCCwXQU+c4XSXcGALq8Cr
-	z7Ti7WhHJnvpcFpGzbrFpGBDKeyoygK49q4b/QR+dSKahRH07pUNyqQZcyufPFSrwob+TaJv8GSb5
-	3ooZ22OhVYu4ZaZQc8aHCr5ReSePUO26SsFiS6oEvZbs4gu4IGUhf94H140JDw9GV8VQ2M8muihFz
-	3qX5k6H+CB+ct4jy2LQIlCeZBVNMOV4XZfjoEf9ABLlz7fDge2DVZVKIsQfiPCle1gg660mTvY4wv
-	v16G32sVl1d/Yp1wJaa9KSPEZ7lKkydeafUiTQxpslWrffxYQG4YesW1SJyFbQnjn/GoRdcWquohk
-	KYLqwJWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BWpxgzm4YyqLL1nxw3+KtSqa8xTPS4Bh1HLxz27Ca48=; b=UkCvWXO7jQQRJppcd1qanrxg1L
+	/njX9n7C8MxVk/2xS9OAspHDYf0V8sMuyT11IPwbeni7twtOphbvo1PTvSM1GkN6IoHZuD/ZrdBJh
+	R8UTsHrPPioLpC3Uxoo6ADy5dsDi79km0rxFDc/VdaPjnWEbaPOWTQmVzoC5cQMywLtNCj2uKnCZi
+	8nIFjHMYKEzaX1i8xh6MeJUhG+YFyOox3BgtaQvLJl2uJE0pWbGmBJEgs8r469nYefm+tGqLzQnjo
+	WMueubXzykf9N7OgqtdlB3gcKBbfEFRBxBQytNhTjKZkBfrdpW9yHCPIluQ/RXkKW1g4fPtoMj5Rn
+	b94zfRGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMoyb-00E1XY-02;
-	Fri, 21 Jul 2023 12:11:17 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qMp9C-00E2O6-0S;
+	Fri, 21 Jul 2023 12:22:14 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMoyX-00E1WR-2Q;
-	Fri, 21 Jul 2023 12:11:14 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 1FA2761A0C;
-	Fri, 21 Jul 2023 12:11:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C6E9C433C9;
-	Fri, 21 Jul 2023 12:11:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1689941472;
-	bh=hJ2M7oZy09pQU7Rc+HwKVL3JXlQRCY+27o6eYDiCBOw=;
-	h=Subject:From:To:Date:In-Reply-To:References:From;
-	b=Bnt+PIbFNxpV9C1kCW/sa0AyI247EFlRDV6Wp3WTDuw6HrumMJB9BVFASXgvL8k3m
-	 yrF+mzba68CyW9YdLn3EowdoqSdHsViSyDHuJu3+M40mRMkyOZ9MYsL1k48aLHbbvj
-	 tSm77yZxLhEp3t+9vrmSSrB10SXdeRXwOJQJwfZtf4BSCLJ7YMrWEEcdOmtjGFuw8O
-	 g3gbg3b4jvRFLHF1a4T5VegTOZYPN52jDF+5Gnf2tjKg8VVCvRj9Zb8aZktxG78mvl
-	 mKgueMBoZjkffwTjsSW9soJTLDuI6m4r1r4LPhkmJwqc70Rje4oOM//PNfO6zjYJk9
-	 uMRFQcPILmSgw==
-Message-ID: <d0b24d6d5dd15d80be5b1dcd724560bc5a016c08.camel@kernel.org>
-Subject: Re: [PATCH] Fix BUG: KASAN: use-after-free in
- trace_event_raw_event_filelock_lock
-From: Jeff Layton <jlayton@kernel.org>
-To: Will Shiu <Will.Shiu@mediatek.com>, Chuck Lever
- <chuck.lever@oracle.com>,  Alexander Viro <viro@zeniv.linux.org.uk>,
- Christian Brauner <brauner@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, linux-fsdevel@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-Date: Fri, 21 Jul 2023 08:11:10 -0400
-In-Reply-To: <d50c6c34035f1a0b143507d9ab9fcf0d27a5dc86.camel@kernel.org>
-References: <20230721051904.9317-1-Will.Shiu@mediatek.com>
-	 <d50c6c34035f1a0b143507d9ab9fcf0d27a5dc86.camel@kernel.org>
-Content-Type: text/plain; charset="ISO-8859-15"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+	id 1qMp9A-00E2NC-0z
+	for linux-mediatek@lists.infradead.org;
+	Fri, 21 Jul 2023 12:22:13 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-51bece5d935so2577011a12.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Jul 2023 05:22:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1689942129; x=1690546929;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=BWpxgzm4YyqLL1nxw3+KtSqa8xTPS4Bh1HLxz27Ca48=;
+        b=A0cs1EZJ3USdSwmD8Zmh3BHe8ECUz3i/LDYB6rwgMenjXjzKol6h9cQafGd3mIi/N8
+         KDogdbP7gvOQK1svPbOI6mX7JR7l19JqTN97JPSpqhLrjOUlknE3puy0ugR0398ZLYo8
+         naxgj7qN3ZGNjf5lbDutUFiPL5qXCYetmt9kl5B2AWKvU4VWJ/ZZd9h5YVosYSWqiRjt
+         W8cq6p8Jyrf5Xrr+g9tereb1+qx1zhbITLmoTVBuYFWR/UOP1naRde+doexBATL0CiJj
+         TIqszl/alN3axDgU8rNVOlfgYsyyEbTRdlyyC/Wk2EnMo63bLN3ekuvj+bMT0APDQZgu
+         1btA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689942129; x=1690546929;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BWpxgzm4YyqLL1nxw3+KtSqa8xTPS4Bh1HLxz27Ca48=;
+        b=cZsKu9lwrCd1Sobr+P7xXcqYgvBPBw3MrueA07lTySw5J8hnAu0kygB3ffVGb7K7Hk
+         AJzQTQrreb4WwmCHry1l+ywl2a84p2h5GYwYY/shpFML5K4g3Pwjty9sBNc52lA7+GRl
+         9JAA4egfIqmKWu41p7N0MjWqyv8/sdIren17gotLF1UW/AzxvuHNkd99bOkYoZiyzRYC
+         rblFqxjK9cbtWfE60hlaJqQ+oLKATsNnZWqouP0q0SnNrUbvOaH4uSQ4e/d4lf6/Nufn
+         1gwL2KNz6UqMkmwKUZSsEZS6gPDlhF6tBrySCCTAWaqij8Cc25KNGZlfIaEEgcN5oqlG
+         NT3w==
+X-Gm-Message-State: ABy/qLa7DN044UW+QOYIoSgh2eHbrHYl32TmPmVPFPsjHAYdNYfhHqDu
+	Al8yI09R28VGRoD5j7zfVEep1g==
+X-Google-Smtp-Source: APBJJlEgrr+oqGqdLHlHtx6ewGfVXW3b8XDYFP7oP/kY1KKgiXY6CgYY6m3yXZcmQOqvbmIY53YC/Q==
+X-Received: by 2002:a05:6402:7c9:b0:51d:98d1:5337 with SMTP id u9-20020a05640207c900b0051d98d15337mr1478707edy.37.1689942129328;
+        Fri, 21 Jul 2023 05:22:09 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.223.104])
+        by smtp.gmail.com with ESMTPSA id u11-20020a056402064b00b0051dfa2e30b2sm2042298edx.9.2023.07.21.05.22.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 21 Jul 2023 05:22:08 -0700 (PDT)
+Message-ID: <c3ea2edb-1b3e-2c39-ccf6-333e3c8b9020@linaro.org>
+Date: Fri, 21 Jul 2023 14:22:06 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v3 2/2] arm64: dts: Replace deprecated extcon-usb-gpio
+ id-gpio/vbus-gpio properties
+Content-Language: en-US
+To: Alexander Stein <alexander.stein@ew.tq-group.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?=
+ <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Pengutronix Kernel Team <kernel@pengutronix.de>,
+ NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
+ linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20230721081948.1185360-1-alexander.stein@ew.tq-group.com>
+ <20230721081948.1185360-2-alexander.stein@ew.tq-group.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230721081948.1185360-2-alexander.stein@ew.tq-group.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_051113_849596_BF2821DF 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230721_052212_370387_AFA40B31 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,18 +109,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2023-07-21 at 06:34 -0400, Jeff Layton wrote:
->=20
-> Could you send along the entire KASAN log message? I'm not sure I see
-> how this is being tripped. The lock we're passing in here is "request"
-> and that shouldn't be freed since it's allocated and owned by the
-> caller.
->=20
+On 21/07/2023 10:19, Alexander Stein wrote:
+> Use id-gpios and vbus-gpios instead.
+> 
+> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+> Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> #mediatek
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Acked-by: Shawn Guo <shawnguo@kernel.org>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+> Changes in v3:
+> * Rebased to next-20230721
+> * Split from bindings patch
 
-Nevermind. I see how this could happen, and have gone ahead and merged
-the patch. It should make v6.6.
+I think you wanted to split it per subsystem, right? That's why you
+resent/v3? But the split did not happen. If you decide not to split,
+then try to figure out: who should pick up this patchset?
 
-Cheers,
---=20
-Jeff Layton <jlayton@kernel.org>
+Best regards,
+Krzysztof
+
 
