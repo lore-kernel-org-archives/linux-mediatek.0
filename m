@@ -4,92 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15D98C001DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 08:04:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE0BBEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 08:08:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5aObg4Rh5qEJeJ8tTIo3XUeRpbH8XsDqwD/4y5QHoas=; b=mXx8alHsms+utNZmNVgDrpNv14
-	RR+6Ill/FCpFoWKMycghe2IgUJ5EpliSqlNLB476kUA8GcYPxXUubF1JV+xdSi1w3zFdsd+D4BpQX
-	348eIiXLuilGGqRM9TeIUEsrvJO4apIenLrXnkwIZ9hdtj+Bpg/fFzaYC6CZVQKxjLQhOxoyQpuKI
-	Rv2k5XjF1dvkRx/wgUjd9py0dKaMMShKjSPblSWoC4p78/Bj27K9A+LnpgJBzNxorb2ug12qmQz35
-	zYcQU67GAL07fh/sdXlm3cTt9STOpQfhCp2TyfaY2JISnx6hrrv+GpL4WepHDcpxJ5Edj3/KU+0mX
-	03vIyGnQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mjm1htpsgUdaRZcHsGo757GH1rkymaOgiUPQg9DWT7s=; b=DEN0oVtqsX6ZzE
+	a696R/Kz5LH4kBnFZmS8aEbz6lNk4Otaa7URT1eqPeGRg1OrWrDynbFaPMLX9HDvxMj6uEh6nqZhD
+	sITZO5oL/r3FBZngSXigmdiWLkg6CGvLqWsuXEcDpqs/uGKaH/u9c0RVqaxzb7GmN/Hp0Ee9Shyw3
+	3KFQQ23eQu9A5dyFUyXl+nkRrab5/TNboyoXKLC1rRBiGEwAKcgBN+r9uvnB/HgigwO6aCPE/4gRT
+	0Tc8tAE4IoSbg5cmF41WvAsPojCJ8/rGod6v2IFnbyIWXyXBkBVWfEhuXvDfv82+2LWzbybcDwRZ3
+	FfF2KbDSPRX+JBQ9Gdmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMl7Q-00DIcX-29;
-	Fri, 21 Jul 2023 08:04:08 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1qMlBa-00DJLQ-23;
+	Fri, 21 Jul 2023 08:08:26 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMl7O-00DIai-13;
-	Fri, 21 Jul 2023 08:04:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=5aObg4Rh5qEJeJ8tTIo3XUeRpbH8XsDqwD/4y5QHoas=; b=ePWcXIwzt+RNEgOZKYQH8qXMiO
-	4KnaWZdeCy3jTxoOndr8CECc1s7RsE20nrWnYyEWsLK1Eoz3t6kNLKxugTA4+YRjIlGMIE6Fp2lKa
-	mq1kKxzsPU6Etd6cMHVyPiVEIIh8fMIOSWOTE1E4+22B8nb7SBKr9t2A9iFHBY67HgJU=;
-Received: from [217.114.218.24] (helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.94.2)
-	(envelope-from <nbd@nbd.name>)
-	id 1qMl78-003Cex-6Z; Fri, 21 Jul 2023 10:03:50 +0200
-Message-ID: <00a2f5ba-7f46-641c-2c0e-e8ecb1356df8@nbd.name>
-Date: Fri, 21 Jul 2023 10:03:49 +0200
+	id 1qMlBR-00DJFG-28
+	for linux-mediatek@lists.infradead.org;
+	Fri, 21 Jul 2023 08:08:20 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-5440e98616cso1953945a12.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Jul 2023 01:08:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1689926892; x=1690531692;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mjm1htpsgUdaRZcHsGo757GH1rkymaOgiUPQg9DWT7s=;
+        b=apTJsacQxezIERIOQSQqwO451/lek2u8gXH7fZL0cfCdEDjzED1YDa2Baxbhk9Skr8
+         08FwwyQ/l7u4oL/MEXt8tamuL+5yYji/Mqu99B67oXI7wh9ZmE0PRft4CzhT55XJMN3A
+         dwc5kMyE67C+0BtJfA5fjkXw4DR3dkg7NWXhw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1689926892; x=1690531692;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mjm1htpsgUdaRZcHsGo757GH1rkymaOgiUPQg9DWT7s=;
+        b=lBQGv4jLkaFEEQ7p/V8FoJ5aQsg6lKqhcJATQhV0PUkNg/eZCjqH+GMjfhxNucpvPb
+         bOJSmpyoLzw6vQw2sT0NhCu8IAi6INeRkGsr0tludyd8LGTdfWGrDFBF1k3aDCMgL8cY
+         xoY5o50BSs0XAwOgoMrWN/T7N3BKIHi2VaR9P7pWVkIzqqBnMkq/mO7uHIxPcmSpkxjf
+         E0kMtDc0jW4jGrQHoYDNVazhVZ1FKZ86YmI5Wzh0X0okq2PLUK29eIKfk6hCvEYX+4SX
+         kKRYUGPScDkn1iEfu7QyCYP1t5tDyKvlb/IGKGNL9RuSD2zGFO2sLCeEwuK3iBBqx17W
+         wyng==
+X-Gm-Message-State: ABy/qLbwQNzfq0r6w16aLJPk/AGzScVMacR1ml2KTRzolrRWWa4fGMPw
+	nAGYCT/EOw16sdx1zV46wb8TOw==
+X-Google-Smtp-Source: APBJJlGIS3+ANIVcIUnnknjeeQ8DSn4sVGCY4o1XMTR9Em25tsTHbHUsOx8EeBzPhWHUVPQUYP5HqA==
+X-Received: by 2002:a17:90a:64c2:b0:25e:f696:1cf8 with SMTP id i2-20020a17090a64c200b0025ef6961cf8mr1951333pjm.14.1689926892623;
+        Fri, 21 Jul 2023 01:08:12 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:6d86:d21:714:abab])
+        by smtp.gmail.com with ESMTPSA id o10-20020a170902bcca00b001b850c9af71sm2740294pls.285.2023.07.21.01.08.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Jul 2023 01:08:12 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 3/7] regulator: mt6358: Fix incorrect VCN33 sync error message
+Date: Fri, 21 Jul 2023 16:07:44 +0800
+Message-ID: <20230721080751.2012318-4-wenst@chromium.org>
+X-Mailer: git-send-email 2.41.0.487.g6d72f3e995-goog
+In-Reply-To: <20230721080751.2012318-1-wenst@chromium.org>
+References: <20230721080751.2012318-1-wenst@chromium.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] mt76: mt7615: do not advertise 5 GHz on first phy of
- MT7615D (DBDC)
-To: Paul Fertser <fercerpav@gmail.com>, linux-wireless@vger.kernel.org
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
- <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Rani Hod <rani.hod@gmail.com>, stable@vger.kernel.org
-References: <20230605073408.8699-1-fercerpav@gmail.com>
-Content-Language: en-US
-From: Felix Fietkau <nbd@nbd.name>
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <20230605073408.8699-1-fercerpav@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_010406_438949_9AEFE766 
-X-CRM114-Status: UNSURE (   6.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230721_010817_694419_20ED64C0 
+X-CRM114-Status: GOOD (  13.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,24 +89,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05.06.23 09:34, Paul Fertser wrote:
-> On DBDC devices the first (internal) phy is only capable of using
-> 2.4 GHz band, and the 5 GHz band is exposed via a separate phy object,
-> so avoid the false advertising.
-> 
-> Reported-by: Rani Hod <rani.hod@gmail.com>
-> Closes: https://github.com/openwrt/openwrt/pull/12361
-> Fixes: 7660a1bd0c22 ("mt76: mt7615: register ext_phy if DBDC is detected")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Paul Fertser <fercerpav@gmail.com>
-Acked-by: Felix Fietkau <nbd@nbd.name>
+After syncing the enable status of VCN33_WIFI to VCN33_BT, the driver
+will disable VCN33_WIFI. If it fails it will error out with a message.
+However the error message incorrectly refers to VCN33_BT.
 
-Jakub, could you please pick this one up for 6.5?
+Fix the error message so that it correctly refers to VCN33_WIFI.
 
-Thanks,
+Suggested-by: Fei Shao <fshao@chromium.org>
+Fixes: 65bae54e08c1 ("regulator: mt6358: Merge VCN33_* regulators")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/regulator/mt6358-regulator.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-- Felix
+diff --git a/drivers/regulator/mt6358-regulator.c b/drivers/regulator/mt6358-regulator.c
+index da6b40f947c4..b9cda2210c33 100644
+--- a/drivers/regulator/mt6358-regulator.c
++++ b/drivers/regulator/mt6358-regulator.c
+@@ -661,7 +661,7 @@ static int mt6358_sync_vcn33_setting(struct device *dev)
+ 	/* Disable VCN33_WIFI */
+ 	ret = regmap_update_bits(mt6397->regmap, MT6358_LDO_VCN33_CON0_1, BIT(0), 0);
+ 	if (ret) {
+-		dev_err(dev, "Failed to disable VCN33_BT\n");
++		dev_err(dev, "Failed to disable VCN33_WIFI\n");
+ 		return ret;
+ 	}
+ 
+-- 
+2.41.0.487.g6d72f3e995-goog
+
 
