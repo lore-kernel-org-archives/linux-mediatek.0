@@ -4,104 +4,189 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0D04EB64DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 15:53:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABAC2EB64DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 15:53:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Subject:Cc:To:
-	From:Date:References:In-Reply-To:Message-Id:Mime-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9hPn0vqDK5F4Kupt89UUmDtLQIxvFCQKDf5jwCD/rVE=; b=NO8Sw3rnWxry1RRFGTD8UZ9ajH
-	bA2eSAoAyM4bJl2Bp7ghg1KLmYEdPxwsOLPHBk/6sAhVZf4hfyTHZeHvA7NWu6o+s+mkykQ6cZ5lK
-	yYsWM7MtXvejoiRXDoblagPs84dA9yy6ZBzTuts+/8D37YzRUm2E5q0t3VvscMAya/pC1U2gCMaQq
-	J/8QyJnnCP20MaRHmyjNrxb0EgM2QKuqcvqVLMZHsZWSzm3ayfbW/2uWp+9rnQl/1Qk+4iiGSwXqN
-	ZnEMBi5OZVAD89Od4uQHQjI074CUJYGW2QzZ3jKC94ok7Ysjw+9hvsACUxbOXc90vXoiR+yydr64m
-	Pu2VJOyQ==;
+	bh=c8II4X3lXtucyX1Ab5YifNEecvgN9WvjLx5z709Kj/Q=; b=UhnT/r+UwmNdDTYvTFNz8jVWZ3
+	LIyfk5dk4sCVXLRzLN1G3T6tVI8IC5Qf3Hexa4eP1T7w2Rv0+GUXFDhbgO/O0Fzt0EycjrjsxdC6p
+	pJbXkc8gLWO2p7eL1aHkIzCIKhZL31HwT+pr4uHObFrP20WSDdjlfn3Le7g6zhav6cYdZg+6RpS8y
+	VGHIAvg4pYVW0CGgaBK23V9UdtHZeM/T89FAIaOtF+qLRQXQpW+qhR7N99z42ZpzYYhp2JzGOeFkX
+	zrbdpmPTMgxaERfZytq1Y6BCsNoMKG3vJYOu5Kb0863sxcMEWUl3AqZXl6QxViaryQYzFlRT4U5x5
+	09VKqcLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMsRL-00ETxo-1m;
-	Fri, 21 Jul 2023 15:53:11 +0000
-Received: from wout2-smtp.messagingengine.com ([64.147.123.25])
+	id 1qMsRX-00ETzu-2E;
+	Fri, 21 Jul 2023 15:53:23 +0000
+Received: from mga02.intel.com ([134.134.136.20])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMsRH-00ETwq-2Z;
-	Fri, 21 Jul 2023 15:53:09 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
-	by mailout.west.internal (Postfix) with ESMTP id 23F203200990;
-	Fri, 21 Jul 2023 11:53:05 -0400 (EDT)
-Received: from imap51 ([10.202.2.101])
-  by compute6.internal (MEProxy); Fri, 21 Jul 2023 11:53:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-type:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:sender
-	:subject:subject:to:to; s=fm2; t=1689954784; x=1690041184; bh=9h
-	Pn0vqDK5F4Kupt89UUmDtLQIxvFCQKDf5jwCD/rVE=; b=YMTYZo67fySHWULO6E
-	Ynw7vXR6QCHo3+LO1PXJmKQY3h3qEKR13mS1vI4jsW4yMLYZeLbQGOLXvavWpj/v
-	BT44AHcfYxke0EeNWldO3HHGdVnU+FiBq6YnIpLKpr6B/IFxafXKtmX7mqKrnfy5
-	bFa2jcPjAltL8ugcQlMCAf1XVcvKMDdQedMdgSlfG1uqwKMUmLt1UA0WSLTKGn/i
-	nRji/7rpZ7SPplPbtPjPGP8tAmFVHRN2c3oFX/f1V8865xnXUa1sBzgBd8+7dlzU
-	vlp29bqlKC5FVTUeowk3uR73JjVmMMXPnckfJCcTujtx2QXFJE07p+oPjFoah1lb
-	86vQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
-	:x-sasl-enc; s=fm3; t=1689954784; x=1690041184; bh=9hPn0vqDK5F4K
-	upt89UUmDtLQIxvFCQKDf5jwCD/rVE=; b=oneOUSr63ErkU897PPGwDKKr7BkXX
-	U02UoooSEW86a8ho9bKWMp8x6aej4JeA9IbiSCk6KdZgU+z8bsfyF83yONYxJOmQ
-	LDb6nNOuP5COmmiXDi89AQgmBgq8WJqgWKslJmPyuZ9hgq3/IFnRoIuNbObRMrqK
-	8/CFDzrO+OiiLbO3mYCzWIt7/ZeIWUck7Vc7ePH50vfPo4hkXqTiLQlLyJJXZXj4
-	hFC09ws2BTQZGDSbIGjLfcD882P6wEQca1KeLh/+GDA8dOzIOt736oqPYoylu/tk
-	e0FEQ1oS76OUIHYBg1FwZBBgCc5MYCEK2XsOi3EWX8W2srf+9JkcvFYgw==
-X-ME-Sender: <xms:4Km6ZHXs-n0p5vtx3LYYV46v2wziywExcvKQMer1UX-4aJzrdVOm8w>
-    <xme:4Km6ZPnnGc5OE6ifbURb-Qjgg1K2a6-lSE7_yqNDPe-MddenFJ5yQTTfKaj2_SI4E
-    d0y_03nC4uVjGdWqEs>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedviedrhedvgdeklecutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
-    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
-    fjughrpefofgggkfgjfhffhffvvefutgesthdtredtreertdenucfhrhhomhepfdetrhhn
-    ugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusgdruggvqeenucggtffrrghtth
-    gvrhhnpeffheeugeetiefhgeethfejgfdtuefggeejleehjeeutefhfeeggefhkedtkeet
-    ffenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrrh
-    hnugesrghrnhgusgdruggv
-X-ME-Proxy: <xmx:4Km6ZDbTXcZcyk3HkWJ0bnGNfl3rLTPRyTxhQyjGi2XLg9YpODiRRA>
-    <xmx:4Km6ZCXeYJDe8OiWHBPe6RLLtqBuMCUITy5DqjszswbzYqzAvEPF4Q>
-    <xmx:4Km6ZBmYM51PEEVjm4ygjGiKxPyx41FAJCswgaGzmYINtCMyZmyH4w>
-    <xmx:4Km6ZBFFQvac8VbqUFDUjWPGzGrvw84n-K5lEArQY0-7E8WV4eFKKg>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
-	id 440A2B6008D; Fri, 21 Jul 2023 11:53:04 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.9.0-alpha0-531-gfdfa13a06d-fm-20230703.001-gfdfa13a0
-Mime-Version: 1.0
-Message-Id: <4f8ce95e-99ac-40e0-9827-292ef0f67906@app.fastmail.com>
-In-Reply-To: <ZLqg5g5cmx8gX9E1@orome>
-References: <20230714174438.4054854-1-robh@kernel.org>
- <ZLqg5g5cmx8gX9E1@orome>
-Date: Fri, 21 Jul 2023 17:52:44 +0200
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "Thierry Reding" <thierry.reding@gmail.com>,
- "Rob Herring" <robh@kernel.org>, "Olof Johansson" <olof@lixom.net>
-Cc: "Sudeep Holla" <sudeep.holla@arm.com>,
- "Cristian Marussi" <cristian.marussi@arm.com>,
- "Shawn Guo" <shawnguo@kernel.org>, "Sascha Hauer" <s.hauer@pengutronix.de>,
- "Pengutronix Kernel Team" <kernel@pengutronix.de>,
- "Fabio Estevam" <festevam@gmail.com>, "NXP Linux Team" <linux-imx@nxp.com>,
- "Matthias Brugger" <matthias.bgg@gmail.com>,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- "Florian Fainelli" <florian.fainelli@broadcom.com>,
- "Broadcom internal kernel review list" <bcm-kernel-feedback-list@broadcom.com>,
- "Dinh Nguyen" <dinguyen@kernel.org>, "Jon Hunter" <jonathanh@nvidia.com>,
- "Michal Simek" <michal.simek@amd.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
- linux-tegra@vger.kernel.org
-Subject: Re: [PATCH] firmware: Explicitly include correct DT includes
-Content-Type: text/plain
+	id 1qMsRK-00ETwd-2T;
+	Fri, 21 Jul 2023 15:53:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1689954790; x=1721490790;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=yodEFnGZlGujUkKv50OWn70ICwYXjxcUSTuqqxjBSPQ=;
+  b=eHNGUo4Xkjg0EgR1FsUKvIx4GsqPfjioz1ULC7uqK+iaJPeR4Z2DJ70j
+   xvdrNj+YxwMSiEsRFp9VHLIUAHoqXIlgK7Zvfls6SiFDGjLfiynFEwMxX
+   iLtZN/cG0lJh3M31YDTgPD0MBKTEeDOSrcLiPzbabn2sfYD8jQL72mTkU
+   npxJiccf3hl1AfnJvtFnkcve6MlcVW2Lh8M+rCkkX5VPsCLXj6X0U4cpC
+   YiDM8YCz9s9XgcmP8oOHXF+g5EOurvYXkoFm7Y7PpMKYJraxpqRC+DvqL
+   DzF0SJxq4lomnESIAiv7a1OeJyKFJ/Zc/7jyxHide8+ecrd3lX8xDv7pY
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10778"; a="357044453"
+X-IronPort-AV: E=Sophos;i="6.01,222,1684825200"; 
+   d="scan'208";a="357044453"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Jul 2023 08:53:04 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10778"; a="702098205"
+X-IronPort-AV: E=Sophos;i="6.01,222,1684825200"; 
+   d="scan'208";a="702098205"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+  by orsmga006.jf.intel.com with ESMTP; 21 Jul 2023 08:52:54 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Fri, 21 Jul 2023 08:52:34 -0700
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Fri, 21 Jul 2023 08:52:32 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Fri, 21 Jul 2023 08:52:32 -0700
+Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.46) by
+ edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.27; Fri, 21 Jul 2023 08:52:32 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=aXDRvqv3zqWf9Gq+CMZintAusnTJ12PvbEMZ7nYzzutGh+7y1crXyykCkjg/0GgYoBcBfGoSrV02MuyJgtRbBtc2U5CEJPaQAW6+PhMcoZkgIAvDitAC//3jssvHvhJuYYMB7BXss7edyMGcR0MTraYEy8/iutYMNPIsgtKRj9a2AP3O9gIP+TFLhDVUkvZ13HW+ZQ55OC+vvk7zDf1g0m1rthFPxxhmY9iffy9fFFm7oJkqAsz8Wee+yY1TTht/hVhu9LJnxd9F28burlqLU6ZAD1vZzdIzh7u37GWyIbNZ6yn5rltqptGfYjw0QWgTZgf8jGaun5jdAFLFPHa6Ug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=c8II4X3lXtucyX1Ab5YifNEecvgN9WvjLx5z709Kj/Q=;
+ b=O7sMmPU6tyay/SRICzEHZMCi0sDZ+1dhAPC5HhSzH9nzDLljR3hL77DzcJhTDrOiQkQQ2lcpOCbGSCNKiHSlclfg0Bz124A1fiQbBiNF+OHEseGn5PQhxSdSxqT/3wytZsyP0m+b+6biRRw56iHwVDIfq+Deci5J9T9WbtzNE66KTFw+V995bp+L69JkYQd6Niqo53fPGmPJ3TMNFkxVpNqsRR0klksOUgV1y95GVQ8vKsJ9oobv5i0wzJJR0m9EFxVa53lQBZTZqhn/LsfgF+jWo6UsE1gQmE/fnjHqbnnankb50LVi+KBQTwWmWZ0TQESTm8dfchKo1QC+nmYMYA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from DM6PR11MB3625.namprd11.prod.outlook.com (2603:10b6:5:13a::21)
+ by IA1PR11MB7753.namprd11.prod.outlook.com (2603:10b6:208:421::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6609.28; Fri, 21 Jul
+ 2023 15:52:29 +0000
+Received: from DM6PR11MB3625.namprd11.prod.outlook.com
+ ([fe80::44ff:6a5:9aa4:124a]) by DM6PR11MB3625.namprd11.prod.outlook.com
+ ([fe80::44ff:6a5:9aa4:124a%7]) with mapi id 15.20.6609.026; Fri, 21 Jul 2023
+ 15:52:29 +0000
+Message-ID: <ccb728be-832c-be93-2023-6a5c78c53e6a@intel.com>
+Date: Fri, 21 Jul 2023 17:51:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH net-next] page_pool: split types and declarations from
+ page_pool.h
+Content-Language: en-US
+To: Jakub Kicinski <kuba@kernel.org>, Yunsheng Lin <linyunsheng@huawei.com>
+CC: <davem@davemloft.net>, <pabeni@redhat.com>, <netdev@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>, Wei Fang
+	<wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang
+	<xiaoning.wang@nxp.com>, NXP Linux Team <linux-imx@nxp.com>, Sunil Goutham
+	<sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, "Subbaraya
+ Sundeep" <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, "Saeed
+ Mahameed" <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, "Alexei
+ Starovoitov" <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
+ Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+	Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder
+ Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean
+ Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, "Ilias Apalodimas"
+	<ilias.apalodimas@linaro.org>, <linux-rdma@vger.kernel.org>,
+	<bpf@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+References: <20230719121339.63331-1-linyunsheng@huawei.com>
+ <0838ed9e-8b5c-cc93-0175-9d6cbf695dda@intel.com>
+ <7e9c1276-9996-d9dd-c061-b1e66361c48b@huawei.com>
+ <20230720092247.279d65f3@kernel.org>
+ <f5d40062-bb0d-055b-8c02-912cfd020aca@huawei.com>
+ <20230721075615.118acad4@kernel.org>
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+In-Reply-To: <20230721075615.118acad4@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: FR2P281CA0030.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:14::17) To DM6PR11MB3625.namprd11.prod.outlook.com
+ (2603:10b6:5:13a::21)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6PR11MB3625:EE_|IA1PR11MB7753:EE_
+X-MS-Office365-Filtering-Correlation-Id: 877191d8-17b6-43a3-da7a-08db8a027cc3
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: XamEHMGU00iU/GPWT5YFUps00A2dD8Cn6ssZpbZ196PpVCPYdDROlQyUfi1Nx4gYV73O72uKJrARYa/xww1fv6CaVoCD/qH14bKnp4agOzcUB8e74bEfYG2b53KLDzOz22i9adK1/BsiP0uBv68r4pJiKGhB3K/tQXEwbo2FG0uT97KZ/GQwb7cTwl2l8sui5JmUaHpJiXRUK9P9MgGJ5rMXWuoEwNn+9PvQ1fFw5AFFuP334CBHPp2K+tTt5YSuR4UCrXMQ5YRoNDC7sWc4q+xs3eqUXlx1Vr6FV/vDk/feOWydYjJ7PleY0H+0avBoT5c3wx9atHFiFFFFhEiiOrG8kGYy+QZSeTew7SnaAnNjsYGOWWwVLDI/cAzl+3s/aUAZGAp/J50ineXwHLhFnMZrkFfBwcZu7NzJ0BjDfcnrt3FHOIrTpeKN6r1K2qla1aG/RX9ocRjaoAX+aA1yN1PvHeH8uD/L8jisfTTi2A5Xd4vP/AJM0AJxtQJOb3ov3mfL8hr2m7AMIjZB7mjN051oOJpX3EN56EwFD5aGfAasuP7hkgh39H0Q57aQ9/dPXTIDjICMs7gscUb4HnXnKXawp4ydHdr3Hry0OklWKGLzq4pnEBGDu/TRP9YVnXGRbbAnzNZQgVl0S/kGSxpKWw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR11MB3625.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(376002)(396003)(346002)(39860400002)(366004)(136003)(451199021)(316002)(4326008)(66946007)(66556008)(66476007)(38100700002)(6512007)(6666004)(6486002)(31696002)(86362001)(110136005)(54906003)(478600001)(4744005)(2906002)(82960400001)(36756003)(41300700001)(2616005)(31686004)(5660300002)(8936002)(8676002)(7406005)(7416002)(186003)(6506007)(26005)(43740500002)(45980500001);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?aHVVKyswcFVqZTFYWlFpeGxNNDhRdzNUWGh1Tm5reVM4bnZsbmh5QnFpMTdD?=
+ =?utf-8?B?NnFXaVhtTU4welJDanRqS1lxVmRWTHhCRGJpdWN3QlpjYS9Tamxkdm9adGtV?=
+ =?utf-8?B?Kyt5OE52NS95TWdrNFQ3TmFVSllsaEdLOEcwL0NWc1FDQWpLRzdSZUdXZENB?=
+ =?utf-8?B?Um9jMDZCNEt2N2YyRG50SWFHV1Zid3hFLy9uUVFUZ2l0Tmx1SUpQV2lFcEwz?=
+ =?utf-8?B?WEZ5NGZ0V05XMm5KOVNWbTd5Vk5lTVFDeE5ZdHlDL09pemUrYzVOWjQrVEx6?=
+ =?utf-8?B?RmlQOXBVRVdlanV1WC9wb0ZYOFdZaWIwQjNUeEhFYmx6ZFM2a2lpb3ByR1ht?=
+ =?utf-8?B?SnhzZG5hVVJJckFVZ01ENnpma1hNQmsrdjdNeUo3S1haSXVqNzBwMTZuZTFT?=
+ =?utf-8?B?aTFwMlEwVWxUMnpSRDhvN1NJWnNJRldjL01iZlRVeDNCeUNPY01TZnZ5WVQr?=
+ =?utf-8?B?MDMzaEZzREljTi9xeGowaDVlQ2cvb3B0R3RFVjBxcTlyYkZHTjlodUUvbThj?=
+ =?utf-8?B?R3M4dTJVamVIaXFCV1hCR3dhdFNMaW5NY2xmR0lSTE9nWEFpbVpKMnprWXQx?=
+ =?utf-8?B?ZDk3cWt1RmhVdXYwdkpaRysxT0tTaDdleThOb3Zoak9CMFFURnc2MlV5L1RW?=
+ =?utf-8?B?RTl3WkNmMXU0TmFOZGttY1hvbmRHWEt1eHhnaThjT3daVW9WbVQrRlduN1p4?=
+ =?utf-8?B?bldXK2dBcmI5QUNVSWtwQi9TV09zdExWUTlZVlhhbmVyUjVHaHZkaHVBWE8x?=
+ =?utf-8?B?c29pQW1tNS84UnZaZ0pGUGZlamROMFBJRStnYXowSHIrb21mWHdZUTcrM3dL?=
+ =?utf-8?B?QUVkdWNNN1FjbWZ3RWM0OVdGUFNEKzNiZFc5UlhXRGdSUDdNWndiVHpvNGVO?=
+ =?utf-8?B?R25adnVHN2orbjRvREhYMXRwQk1QOG1BTzh2YnFNRXhDRXZLcmJ6LzZTUFM0?=
+ =?utf-8?B?U0RsdWM3NnNYWGVkQzJ3TmcxYzVEQkcvMUovR0thcS9OZkFZU291SWF4YWxx?=
+ =?utf-8?B?N1I1M0g0VGlnTkI2VGtjWHhHN2dOVW5qcGNBZWJsa1lYT2RVL2ExczQxYWpJ?=
+ =?utf-8?B?T0RoTWx5OXRBMFBuZkUxU3g5QUFoMjFPbFRTSHgza0JPcHozVWI4bHhtemx6?=
+ =?utf-8?B?V0VvbG1iWUc5WjREcWU0R0N1OERXTlF0d2g5Z3lKMldiME9ucmJOOGRwYk44?=
+ =?utf-8?B?NXkrVUl5QTZUMENLbFVlSDV3REZDbjhBcDNYbjkyT0tPeWkxUUJOWmp6clhC?=
+ =?utf-8?B?WmtsamQrSTU0R2tRbmJ5dHlBMkNwU244VGppNmdFN0dSUDZ0ckVVZzE4OHVL?=
+ =?utf-8?B?bTdVQXR0RzRBb09FSG1HL0wwOFM0V1draGo4VmJ6c1FCbHE1VmpxbFNmYjUy?=
+ =?utf-8?B?azUxdGUzVjdvdDRuZSsvZ1VFa1B5UlFiUXNKMXFXZHVUZTAyNU01c1FhWjBS?=
+ =?utf-8?B?NGQ3RjFLNHdKZ1ZxTk1wMWNRT3gwSmFTd1VqblBxT2dub01SUU1Ia09kaFlX?=
+ =?utf-8?B?MEorQzhjWWVoRjBmd1VVY0FoV0oySFhlRUlBZmNhOVNmRE9UVXkra2k1c09R?=
+ =?utf-8?B?MG4rOEkxQ3EySlhrc0dJaGRZcmc1NWRvUFYvdW9rdGlWcklsRllhOUdwMVBC?=
+ =?utf-8?B?Y1FUdyt0WFNZUWlaRGs2cUwzMFhSbldHWEpYVzVVZGx1UXhYdlF6SU8wRUl3?=
+ =?utf-8?B?R0lpQ0lZdkUvTHpaSjcvTWNSaGk4MGdJVkcxWlE4YlhlQ0NIcmNaKytUc2NT?=
+ =?utf-8?B?Sm1LUWJxdkZYZEd1dXZqOHh4L1htYlBHbHZvSUtwSmdCVFQwUDFoTzE3N0dR?=
+ =?utf-8?B?Y2NBWk94VDJPOS9iQUVOZFBLdG5rUnR3eGpwNUduRHRpTVlKalFvUnhqeU1P?=
+ =?utf-8?B?S2NnRTRwbzFDRzB4RGc4RFhJdFowNG0xSE1NZ0FuN1JwU3hSRTVnY1RyblQ0?=
+ =?utf-8?B?OUsrQUN1cXk1NkNNZFpwVDF6eExEU1ZWRURPa3hRcHJjNkc1MHVseVBKaE5s?=
+ =?utf-8?B?QzIwZG5XVVVKTG9LbkI5d2o3QjI4Y0MrYWpUTjFIRXhrUTBBdDYzaStFRktD?=
+ =?utf-8?B?THgyWHByWXVlejJ6T3B6a2x6RDZrOWlwYm9ISm50cDNhMm0rTGJMTGQyckZo?=
+ =?utf-8?B?NmNCR01WdVdXenY2V3pDTkJyVTdLbksxZHMxSVZ2RWIxRWpXbmFVQU5BRUZy?=
+ =?utf-8?Q?jfS/Wu7l8cVrvA12V3G+/xU=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 877191d8-17b6-43a3-da7a-08db8a027cc3
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3625.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jul 2023 15:52:29.4137
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: /A49SaXnk3GU/Yu80RSbZeqviZRJdnXylGu+uisQVR18MEazOjLB+ypkLKEQ+co/nqw+8925MRxabIz8NNaZbQpP98eij353NFMst3VW7HY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB7753
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_085307_863950_9B8D321B 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20230721_085310_925580_6C61A2CA 
+X-CRM114-Status: GOOD (  13.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,43 +201,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 21, 2023, at 17:14, Thierry Reding wrote:
-> On Fri, Jul 14, 2023 at 11:44:37AM -0600, Rob Herring wrote:
->> The DT of_device.h and of_platform.h date back to the separate
->> of_platform_bus_type before it as merged into the regular platform bus.
->> As part of that merge prepping Arm DT support 13 years ago, they
->> "temporarily" include each other. They also include platform_device.h
->> and of.h. As a result, there's a pretty much random mix of those include
->> files used throughout the tree. In order to detangle these headers and
->> replace the implicit includes with struct declarations, users need to
->> explicitly include the correct includes.
->> 
->> Signed-off-by: Rob Herring <robh@kernel.org>
->> ---
->>  drivers/firmware/arm_scmi/driver.c | 4 ++--
->>  drivers/firmware/imx/imx-dsp.c     | 1 -
->>  drivers/firmware/imx/imx-scu-irq.c | 1 +
->>  drivers/firmware/imx/imx-scu.c     | 1 +
->>  drivers/firmware/mtk-adsp-ipc.c    | 1 -
->>  drivers/firmware/raspberrypi.c     | 1 +
->>  drivers/firmware/scpi_pm_domain.c  | 3 ++-
->>  drivers/firmware/stratix10-rsu.c   | 1 -
->>  drivers/firmware/tegra/bpmp.c      | 3 +--
->>  drivers/firmware/xilinx/zynqmp.c   | 1 +
->>  10 files changed, 9 insertions(+), 8 deletions(-)
->
-> Not sure about the other maintainers, but I usually pick up
-> firmware/tegra patches up through the Tegra tree and then they
-> ultimately go through ARM SoC.
->
-> Arnd, Olof, does it make sense for you guys to pick this up directly?
+From: Jakub Kicinski <kuba@kernel.org>
+Date: Fri, 21 Jul 2023 07:56:15 -0700
 
-Sure, I was going to suggest the same thing.
+> On Fri, 21 Jul 2023 19:12:25 +0800 Yunsheng Lin wrote:
+>> Just to be clear, include/net/page_pool.h is still there, we are not
+>> putting page_pool.h in include/net/page_pool/ and renaming it to
+>> something else, right? As there is no that kind of uniformity in
+>> include/net/* as far as I can see.
+> 
+> Like many things the uniformity is a plan which mostly exists in my head
+> at this stage :) But it is somewhat inspired by include/linux/sched.*
+> 
+>> More specificly, yon means the below, right?
+>> include/net/page_pool.h
+>> include/net/page_pool/types.h
+> 
+> Yes.
 
-Rob, can you send the patch to soc@kernel.org assuming nobody
-has objections? Feel free to send this together with the bits
-for drivers/soc, drivers/bus, arch/arm/mach-*/ and anything else
-that usually gets merged this way.
+What I meant is
 
-     Arnd
+include/net/page_pool/types.h
+include/net/page_pool/driver.h
+
+I'm not insisting, just to be clear :)
+
+Thanks,
+Olek
 
