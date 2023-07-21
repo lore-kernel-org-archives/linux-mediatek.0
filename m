@@ -4,97 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD51C001DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 12:22:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F09CEB64DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 13:09:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BWpxgzm4YyqLL1nxw3+KtSqa8xTPS4Bh1HLxz27Ca48=; b=UkCvWXO7jQQRJppcd1qanrxg1L
-	/njX9n7C8MxVk/2xS9OAspHDYf0V8sMuyT11IPwbeni7twtOphbvo1PTvSM1GkN6IoHZuD/ZrdBJh
-	R8UTsHrPPioLpC3Uxoo6ADy5dsDi79km0rxFDc/VdaPjnWEbaPOWTQmVzoC5cQMywLtNCj2uKnCZi
-	8nIFjHMYKEzaX1i8xh6MeJUhG+YFyOox3BgtaQvLJl2uJE0pWbGmBJEgs8r469nYefm+tGqLzQnjo
-	WMueubXzykf9N7OgqtdlB3gcKBbfEFRBxBQytNhTjKZkBfrdpW9yHCPIluQ/RXkKW1g4fPtoMj5Rn
-	b94zfRGA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CtlyWn2I3ogc2VsptqSvO9P1T5RQycoIkTmKOHueTBg=; b=i2vbLRkC1etLQ6QE624m1OONol
+	paT9GuDbTOUX54wLca46+TgV+vb8L08kAEIybXTtqWAdS+eDtIUQTx7GZ4gxABNuD8bf211/hfeuk
+	EWsTv6vTg7BADTk5WRBT87w7eARAO4X9dLJnTJA/5PuXU90wfSk2SvEyJ9edingn8dwRp4qynBvn9
+	2Dksw28CuHVuhBoq/u+MJi/IvMabRj5Nnl6goWiSdfVDP4UJQDTGE6pDKMcObM/9X+w5KwOvyrFF+
+	9T8t667d9iPTJw3+YGtuFPWjWNGjEadwzCd+SchAlL+VGYEFz+Teg1tqMTIHG/RIjxrknIQnRXbKU
+	4p0Z14Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMp9C-00E2O6-0S;
-	Fri, 21 Jul 2023 12:22:14 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1qMpsW-00E6pf-2E;
+	Fri, 21 Jul 2023 13:09:04 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMp9A-00E2NC-0z
-	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Jul 2023 12:22:13 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-51bece5d935so2577011a12.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Jul 2023 05:22:10 -0700 (PDT)
+	id 1qMpsU-00E6oO-1A;
+	Fri, 21 Jul 2023 13:09:03 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-4fdd31bf179so3111667e87.2;
+        Fri, 21 Jul 2023 06:08:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1689942129; x=1690546929;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=BWpxgzm4YyqLL1nxw3+KtSqa8xTPS4Bh1HLxz27Ca48=;
-        b=A0cs1EZJ3USdSwmD8Zmh3BHe8ECUz3i/LDYB6rwgMenjXjzKol6h9cQafGd3mIi/N8
-         KDogdbP7gvOQK1svPbOI6mX7JR7l19JqTN97JPSpqhLrjOUlknE3puy0ugR0398ZLYo8
-         naxgj7qN3ZGNjf5lbDutUFiPL5qXCYetmt9kl5B2AWKvU4VWJ/ZZd9h5YVosYSWqiRjt
-         W8cq6p8Jyrf5Xrr+g9tereb1+qx1zhbITLmoTVBuYFWR/UOP1naRde+doexBATL0CiJj
-         TIqszl/alN3axDgU8rNVOlfgYsyyEbTRdlyyC/Wk2EnMo63bLN3ekuvj+bMT0APDQZgu
-         1btA==
+        d=gmail.com; s=20221208; t=1689944933; x=1690549733;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=CtlyWn2I3ogc2VsptqSvO9P1T5RQycoIkTmKOHueTBg=;
+        b=S8PTRVUMNu8G4Msql+QdzSAXokDbUKFUuzdDgIlBAjtRnFSD1ZQSop+HhaiOkZ33VJ
+         9cmr14AoKtGPPl7TIRE4XATfTXThA8ZmVQyPrBvZmKRd8P3vihO0ZVKQFNRfBdz/p6+p
+         FmbHdZo2zhe0WVn7XA4PyyUITo7Pu129O3HmSGMAgpdW1bupOTSkFYCSFj+FytORoElR
+         QxvIfTAw1ZNQoiscEAs0udy/ZZIAd93tGtHWlAVBWmIm7UewZjaUQ3rMK6f0HLZecFgJ
+         ugIrycFAnq0MRIMihz6GFJ8Z3J4Cye2/Sru3s6hgOg3j25nIgfaQMX+lgjPK2oTaEAw1
+         9IwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689942129; x=1690546929;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BWpxgzm4YyqLL1nxw3+KtSqa8xTPS4Bh1HLxz27Ca48=;
-        b=cZsKu9lwrCd1Sobr+P7xXcqYgvBPBw3MrueA07lTySw5J8hnAu0kygB3ffVGb7K7Hk
-         AJzQTQrreb4WwmCHry1l+ywl2a84p2h5GYwYY/shpFML5K4g3Pwjty9sBNc52lA7+GRl
-         9JAA4egfIqmKWu41p7N0MjWqyv8/sdIren17gotLF1UW/AzxvuHNkd99bOkYoZiyzRYC
-         rblFqxjK9cbtWfE60hlaJqQ+oLKATsNnZWqouP0q0SnNrUbvOaH4uSQ4e/d4lf6/Nufn
-         1gwL2KNz6UqMkmwKUZSsEZS6gPDlhF6tBrySCCTAWaqij8Cc25KNGZlfIaEEgcN5oqlG
-         NT3w==
-X-Gm-Message-State: ABy/qLa7DN044UW+QOYIoSgh2eHbrHYl32TmPmVPFPsjHAYdNYfhHqDu
-	Al8yI09R28VGRoD5j7zfVEep1g==
-X-Google-Smtp-Source: APBJJlEgrr+oqGqdLHlHtx6ewGfVXW3b8XDYFP7oP/kY1KKgiXY6CgYY6m3yXZcmQOqvbmIY53YC/Q==
-X-Received: by 2002:a05:6402:7c9:b0:51d:98d1:5337 with SMTP id u9-20020a05640207c900b0051d98d15337mr1478707edy.37.1689942129328;
-        Fri, 21 Jul 2023 05:22:09 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.223.104])
-        by smtp.gmail.com with ESMTPSA id u11-20020a056402064b00b0051dfa2e30b2sm2042298edx.9.2023.07.21.05.22.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 21 Jul 2023 05:22:08 -0700 (PDT)
-Message-ID: <c3ea2edb-1b3e-2c39-ccf6-333e3c8b9020@linaro.org>
-Date: Fri, 21 Jul 2023 14:22:06 +0200
+        d=1e100.net; s=20221208; t=1689944933; x=1690549733;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=CtlyWn2I3ogc2VsptqSvO9P1T5RQycoIkTmKOHueTBg=;
+        b=ghwLw+utehjryFdWhHAcW9L5crEMyMNOySgSVpdqd5De9W5i5u5W4c/uHEZjjCsYwG
+         65EILXVqSrIiakaev1kHYYRWDYOEHFDef42fGWT+M1G88VE8sIMKMsKiDvprev9zFLa1
+         3tcagIaI8pS9B6b0nuGaoWqg4Rp72rJ4skrak7jSYVUcGpyaX/vBAxeFJ2DAPN+XVCUg
+         paWyjrgQotASzoY6JPWlo6vbcaXgEqZwgFSTT/BP4z/y1gKKtmfzwGFu6U1cIlsAwYAg
+         Slyp1ZpCDUrAXVNaHknCJHl088NQJ1zMqb7j+ubVa92d24VNP13VLrKcKRnwkYRj5tVj
+         jX3w==
+X-Gm-Message-State: ABy/qLb5bRNt3SFq9A9jvZOcpNPYg3ftx/6+jprsP9bE2iKj4wO0I88N
+	spu0e1+BI9/EAzaJQs5OnuqMoDlLZr3GOw==
+X-Google-Smtp-Source: APBJJlGWg54hXrgHwtVxHtuUFDOm84BpYP/EqgGmtO39iCY1GtfP9Z2VtWTVC8s94tfgVprnEgBW3w==
+X-Received: by 2002:a05:6512:3243:b0:4fb:7666:3bc0 with SMTP id c3-20020a056512324300b004fb76663bc0mr1141674lfr.47.1689944932468;
+        Fri, 21 Jul 2023 06:08:52 -0700 (PDT)
+Received: from localhost.localdomain ([92.85.190.61])
+        by smtp.gmail.com with ESMTPSA id d17-20020aa7ce11000000b00521d42fb41asm2087154edv.67.2023.07.21.06.08.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Jul 2023 06:08:51 -0700 (PDT)
+From: Andrei Coardos <aboutphysycs@gmail.com>
+To: linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-gpio@vger.kernel.org
+Cc: angelogioacchino.delregno@collabora.com,
+	matthias.bgg@gmail.com,
+	andy@kernel.org,
+	brgl@bgdev.pl,
+	linus.walleij@linaro.org,
+	Andrei Coardos <aboutphysycs@gmail.com>,
+	Alexandru Ardelean <alex@shruggie.ro>
+Subject: [PATCH] gpio: mt7621: remove unnecessary call to platfrom_set_drvdata()
+Date: Fri, 21 Jul 2023 16:08:38 +0300
+Message-Id: <20230721130838.26616-1-aboutphysycs@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v3 2/2] arm64: dts: Replace deprecated extcon-usb-gpio
- id-gpio/vbus-gpio properties
-Content-Language: en-US
-To: Alexander Stein <alexander.stein@ew.tq-group.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?=
- <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>,
- NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org,
- linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20230721081948.1185360-1-alexander.stein@ew.tq-group.com>
- <20230721081948.1185360-2-alexander.stein@ew.tq-group.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230721081948.1185360-2-alexander.stein@ew.tq-group.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_052212_370387_AFA40B31 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20230721_060902_400812_2C8FE6DC 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,25 +95,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21/07/2023 10:19, Alexander Stein wrote:
-> Use id-gpios and vbus-gpios instead.
-> 
-> Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-> Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com> #mediatek
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Acked-by: Shawn Guo <shawnguo@kernel.org>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
-> Changes in v3:
-> * Rebased to next-20230721
-> * Split from bindings patch
+This function call was found to be unnecessary as there is no equivalent
+platform_get_drvdata() call to access the private data of the driver.
+Also, the private data is defined in this driver, so there is no risk of
+it being accessed outside of this driver file.
 
-I think you wanted to split it per subsystem, right? That's why you
-resent/v3? But the split did not happen. If you decide not to split,
-then try to figure out: who should pick up this patchset?
+Reviewed-by: Alexandru Ardelean <alex@shruggie.ro>
+Signed-off-by: Andrei Coardos <aboutphysycs@gmail.com>
+---
+ drivers/gpio/gpio-mt7621.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Best regards,
-Krzysztof
+diff --git a/drivers/gpio/gpio-mt7621.c b/drivers/gpio/gpio-mt7621.c
+index 93facbebb80e..c0c715167d9c 100644
+--- a/drivers/gpio/gpio-mt7621.c
++++ b/drivers/gpio/gpio-mt7621.c
+@@ -315,7 +315,6 @@ mediatek_gpio_probe(struct platform_device *pdev)
+ 		return mtk->gpio_irq;
+ 
+ 	mtk->dev = dev;
+-	platform_set_drvdata(pdev, mtk);
+ 
+ 	for (i = 0; i < MTK_BANK_CNT; i++) {
+ 		ret = mediatek_gpio_bank_probe(dev, i);
+-- 
+2.34.1
 
 
