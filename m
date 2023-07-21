@@ -4,83 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6937BEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 11:36:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1FC2C0015E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 11:44:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4/Q/U9XBLWZkesRPIKMTul49WNocWXn72UVe8RVnW4M=; b=E12fmwUCcEUFqMQ8ASvX7ZOgF7
-	LbEfnGosJoNSwiJTfgcae/UFGClKK5b7J1gdZ14Pax5h1E4FEy+Sume1qN82Z9GD3Kt3BR/EwGJvK
-	OvUEQXv6ZKwdlg2p0zk1iRNHxebcH/thcjuOecIhbrIZtCbCJpQVrahrHam2QNaHHx/EfW6kTPmNq
-	cek3YVJKgp6nApPDB2oin/CPWC8q1x3SUn00MZvopQdGpvaAIcDr5BWbAhgY5bOgMzDEe2W++scSS
-	8ftBK8z7z9LD9sXY+vsVA2Fijl5pHoFeajX/HOV9Qzp5OGhIKMjYVK5Owu4wFhUJDC0MhAahXDkLr
-	wpKZoajg==;
+	bh=4ArmcI+MiZ5m7czOqaHrGM8yWFr07aDb2MfqTSakCKc=; b=PtF+wxSxLuN/dIhgeIroT9tyut
+	qLauPqsiLGSq59bRKE3iXqytS9aaRKM265Di1KcTWkMRabwhR/9qv0zjzMIkSPmsakMgBIWl+cUbF
+	WFreHJlNEryXWj5p2k305Aik9zeHiJr8dm52pRAwLXeaDPx2bsjYOz7QFoUARAYBer0Zb/N57XQxu
+	eZwuTGQugiga0PquXBK/CtYORL/7onmMsjmbZDAu03qhUBj2TWQ16yU/sokNUrclq1gzAEr+kEXJb
+	EWs+pF7QutyZkjj43KsGOdb+rjM4k9g2H/Ry8ognVUK+4g2kkFIYFPRhLFrxWKhMfrOgKQWGqjJqr
+	oEuWQ7KA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMoR0-00Dwqa-1Y;
-	Fri, 21 Jul 2023 11:36:34 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1qMoYU-00Dxlp-2y;
+	Fri, 21 Jul 2023 11:44:18 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMoQo-00DwQ8-36;
-	Fri, 21 Jul 2023 11:36:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=4/Q/U9XBLWZkesRPIKMTul49WNocWXn72UVe8RVnW4M=; b=P1SrmFnHrTFr41R3xGsownVVyJ
-	QpW0H/cfzRLncYL5oDFWdVlfDuhaKXpU+rk/3IN3RiIr71nlbCgn+ruTfv0lQpdxtw+J4c4LV4mXC
-	DCrccPT5KT1Q2vSE0JHGO56xjUTdDiYJ9EUwAOlFTeBBoXtjErzvtP300hXlH1IP/iuhuxCOql+dP
-	BD1m/btC26D74RjKaOPRlb1oFGN0yPsZE6tWb6Cx2VCD0IroT0yv7LLiw+jU+WoeCnXGYZnKdm8B+
-	YIKaPdbg8QBY/qtTqmMmkfYl6CCKBFeKtFDUuCldMR1UPK5KXCYHa22qxAxLoP+v9LZuLaIuDWWeN
-	EokGevIQ==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:33010 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1qMoOk-0003nb-2z;
-	Fri, 21 Jul 2023 12:34:14 +0100
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1qMoOk-000hhF-TX; Fri, 21 Jul 2023 12:34:14 +0100
-In-Reply-To: <ZLptIKEb7qLY5LmS@shell.armlinux.org.uk>
-References: <ZLptIKEb7qLY5LmS@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	 Ar__n__ __NAL <arinc.unal@arinc9.com>,
-	 Frank Wunderlich <frank-w@public-files.de>,
-	 David Woodhouse <dwmw@amazon.co.uk>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Jakub Kicinski <kuba@kernel.org>,
-	John Crispin <john@phrozen.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH net-next 1/4] net: ethernet: mtk_eth_soc: remove incorrect PLL
- configuration
+	id 1qMoYR-00Dxkh-0p;
+	Fri, 21 Jul 2023 11:44:17 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9577D61A00;
+	Fri, 21 Jul 2023 11:44:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0051C433C7;
+	Fri, 21 Jul 2023 11:44:11 +0000 (UTC)
+Message-ID: <fe9b6ee0-4661-ec0d-a49f-5986e00cb355@xs4all.nl>
+Date: Fri, 21 Jul 2023 13:44:10 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v5 5/7] media: mediatek: vcodec: Read HW active status
+ from syscon
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230630151436.155586-1-nfraprado@collabora.com>
+ <20230630151436.155586-6-nfraprado@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230630151436.155586-6-nfraprado@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1qMoOk-000hhF-TX@rmk-PC.armlinux.org.uk>
-Date: Fri, 21 Jul 2023 12:34:14 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_043623_000287_5AD42457 
-X-CRM114-Status: GOOD (  21.29  )
+X-CRM114-CacheID: sfid-20230721_044415_376037_1CE9BBC0 
+X-CRM114-Status: GOOD (  35.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,149 +74,187 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT7623 GMAC0 attempts to configure the system clocking according to the
-required speed in the .mac_config callback for non-SGMII, non-baseX and
-non-TRGMII modes.
+On 30/06/2023 17:14, Nícolas F. R. A. Prado wrote:
+> Remove the requirement of a VDEC_SYS reg iospace for both MT8173 and
+> MT8183. To achieve that, rely on a vdecsys syscon to be passed through
+> the DT, and use it to directly read the VDEC_HW_ACTIVE bit during IRQ
+> handling to check whether the HW is active. Also update the VP8 stateful
+> decoder to use the syscon, if present, for writes to VDEC_SYS.
+> 
+> The old behavior is still present when reg-names aren't supplied, as
+> to keep backward compatibility.
+> 
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> ---
+> 
+> Changes in v5:
+> - Added explicit linux/bitfield.h include for FIELD_GET(), following
+>   0day report
+> 
+> Changes in v4:
+> - Added new helper and updated VP8 stateful decoder to use it, so the
+>   syscon can also be used by mt8173
+> - Made handling cleaner
+> - Reworded commit
+> 
+> Changes in v3:
+> - Switched handling of VDEC_HW_ACTIVE to use a syscon instead of the
+>   'active' clock
+> - Reworded commit
+> - Removed changes to subdev part of driver, since they aren't used by
+>   MT8183
+> 
+>  .../mediatek/vcodec/mtk_vcodec_dec_drv.c      | 77 ++++++++++++++++---
+>  .../platform/mediatek/vcodec/mtk_vcodec_drv.h |  1 +
+>  .../mediatek/vcodec/mtk_vcodec_util.c         | 15 ++++
+>  .../mediatek/vcodec/mtk_vcodec_util.h         |  2 +
+>  .../mediatek/vcodec/vdec/vdec_vp8_if.c        | 10 +--
+>  5 files changed, 87 insertions(+), 18 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+> index 83780d29a9cf..742b6903d030 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+> @@ -5,13 +5,16 @@
+>   *         Tiffany Lin <tiffany.lin@mediatek.com>
+>   */
+>  
+> +#include <linux/bitfield.h>
+>  #include <linux/slab.h>
+>  #include <linux/interrupt.h>
+>  #include <linux/irq.h>
+> +#include <linux/mfd/syscon.h>
+>  #include <linux/module.h>
+>  #include <linux/of_device.h>
+>  #include <linux/of.h>
+>  #include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+>  #include <media/v4l2-event.h>
+>  #include <media/v4l2-mem2mem.h>
+>  #include <media/videobuf2-dma-contig.h>
+> @@ -38,22 +41,30 @@ static int mtk_vcodec_get_hw_count(struct mtk_vcodec_dev *dev)
+>  	}
+>  }
+>  
+> +static bool mtk_vcodec_is_hw_active(struct mtk_vcodec_dev *dev)
+> +{
+> +	u32 cg_status;
+> +
+> +	if (dev->vdecsys_regmap)
+> +		return !regmap_test_bits(dev->vdecsys_regmap, VDEC_HW_ACTIVE_ADDR,
+> +					 VDEC_HW_ACTIVE_MASK);
+> +
+> +	cg_status = readl(dev->reg_base[VDEC_SYS] + VDEC_HW_ACTIVE_ADDR);
+> +	return !FIELD_GET(VDEC_HW_ACTIVE_MASK, cg_status);
+> +}
+> +
+>  static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+>  {
+>  	struct mtk_vcodec_dev *dev = priv;
+>  	struct mtk_vcodec_ctx *ctx;
+> -	u32 cg_status = 0;
+>  	unsigned int dec_done_status = 0;
+>  	void __iomem *vdec_misc_addr = dev->reg_base[VDEC_MISC] +
+>  					VDEC_IRQ_CFG_REG;
+>  
+>  	ctx = mtk_vcodec_get_curr_ctx(dev, MTK_VDEC_CORE);
+>  
+> -	/* check if HW active or not */
+> -	cg_status = readl(dev->reg_base[0] + VDEC_HW_ACTIVE_ADDR);
+> -	if ((cg_status & VDEC_HW_ACTIVE_MASK) != 0) {
+> -		mtk_v4l2_err("DEC ISR, VDEC active is not 0x0 (0x%08x)",
+> -			     cg_status);
+> +	if (!mtk_vcodec_is_hw_active(dev)) {
+> +		mtk_v4l2_err("DEC ISR, VDEC active is not 0x0");
+>  		return IRQ_HANDLED;
+>  	}
+>  
+> @@ -82,6 +93,33 @@ static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
+>  {
+>  	struct platform_device *pdev = dev->plat_dev;
+>  	int reg_num, i;
+> +	struct resource *res;
+> +	bool has_vdecsys_reg;
+> +	static const char * const mtk_dec_reg_names[] = {
+> +		"misc",
+> +		"ld",
+> +		"top",
+> +		"cm",
+> +		"ad",
+> +		"av",
+> +		"pp",
+> +		"hwd",
+> +		"hwq",
+> +		"hwb",
+> +		"hwg"
+> +	};
+> +
+> +	/*
+> +	 * If we have reg-names in devicetree, this means that we're on a new
+> +	 * register organization, which implies that the VDEC_SYS iospace gets
+> +	 * R/W through a syscon (regmap).
+> +	 * Here we try to get the "misc" iostart only to check if we have reg-names
+> +	 */
+> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "misc");
+> +	if (res)
+> +		has_vdecsys_reg = false;
+> +	else
+> +		has_vdecsys_reg = true;
+>  
+>  	/* Sizeof(u32) * 4 bytes for each register base. */
+>  	reg_num = of_property_count_elems_of_size(pdev->dev.of_node, "reg",
+> @@ -91,12 +129,29 @@ static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
+>  		return -EINVAL;
+>  	}
+>  
+> -	for (i = 0; i < reg_num; i++) {
+> -		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
+> -		if (IS_ERR(dev->reg_base[i]))
+> -			return PTR_ERR(dev->reg_base[i]);
+> +	if (has_vdecsys_reg) {
+> +		for (i = 0; i < reg_num; i++) {
+> +			dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
+> +			if (IS_ERR(dev->reg_base[i]))
+> +				return PTR_ERR(dev->reg_base[i]);
+> +
+> +			mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
+> +		}
+> +	} else {
+> +		for (i = 0; i < reg_num; i++) {
+> +			dev->reg_base[i+1] = devm_platform_ioremap_resource_byname(pdev, mtk_dec_reg_names[i]);
+> +			if (IS_ERR(dev->reg_base[i+1]))
+> +				return PTR_ERR(dev->reg_base[i+1]);
+>  
+> -		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
+> +			mtk_v4l2_debug(2, "reg[%d] base=%p", i+1, dev->reg_base[i+1]);
+> +		}
+> +
+> +		dev->vdecsys_regmap = syscon_regmap_lookup_by_phandle(pdev->dev.of_node,
+> +								      "mediatek,vdecsys");
+> +		if (IS_ERR(dev->vdecsys_regmap)) {
+> +			dev_err(&pdev->dev, "Missing mediatek,vdecsys property");
+> +			return PTR_ERR(dev->vdecsys_regmap);
+> +		}
+>  	}
+>  
+>  	return 0;
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+> index f17d67e781c9..0b430936f67d 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+> @@ -489,6 +489,7 @@ struct mtk_vcodec_dev {
+>  	void __iomem *reg_base[NUM_MAX_VCODEC_REG_BASE];
+>  	const struct mtk_vcodec_dec_pdata *vdec_pdata;
+>  	const struct mtk_vcodec_enc_pdata *venc_pdata;
+> +	struct regmap *vdecsys_regmap;
 
-state->speed setting has never been reliable in the .mac_config
-callback - there are cases where this is not the link speed,
-particularly via ethtool paths, so this has always been unreliable (as
-detailed in phylink's documentation.)
+You forgot to add the kerneldoc documentation for this new field.
 
-There is the additional issue that mtk_gmac0_rgmii_adjust() will only
-be called if state->interface changes, which means it only configures
-the system clocking on the very first .mac_config call, which will be
-made when the network device is first brought up before any link is
-established.
+If you just give me the documentation of this field then I can modify the
+patch. That's actually easier for me.
 
-Essentially, this code is incredibly buggy, and probably never worked.
+Regards,
 
-Moreover, checking the in-kernel DT files, it seems no platform makes
-use of this code path.
-
-Therefore, let's remove it, and disable interface modes for port 0 that
-are not SGMII, 1000base-X, 2500base-X or TRGMII on the MT7623.
-
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 59 ++++++---------------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  1 +
- 2 files changed, 17 insertions(+), 43 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 834c644b67db..46b80ec21b58 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -385,10 +385,8 @@ static int mt7621_gmac0_rgmii_adjust(struct mtk_eth *eth,
- }
- 
- static void mtk_gmac0_rgmii_adjust(struct mtk_eth *eth,
--				   phy_interface_t interface, int speed)
-+				   phy_interface_t interface)
- {
--	unsigned long rate;
--	u32 tck, rck, intf;
- 	int ret;
- 
- 	if (interface == PHY_INTERFACE_MODE_TRGMII) {
-@@ -399,30 +397,7 @@ static void mtk_gmac0_rgmii_adjust(struct mtk_eth *eth,
- 		return;
- 	}
- 
--	if (speed == SPEED_1000) {
--		intf = INTF_MODE_RGMII_1000;
--		rate = 250000000;
--		rck = RCK_CTRL_RGMII_1000;
--		tck = TCK_CTRL_RGMII_1000;
--	} else {
--		intf = INTF_MODE_RGMII_10_100;
--		rate = 500000000;
--		rck = RCK_CTRL_RGMII_10_100;
--		tck = TCK_CTRL_RGMII_10_100;
--	}
--
--	mtk_w32(eth, intf, INTF_MODE);
--
--	regmap_update_bits(eth->ethsys, ETHSYS_CLKCFG0,
--			   ETHSYS_TRGMII_CLK_SEL362_5,
--			   ETHSYS_TRGMII_CLK_SEL362_5);
--
--	ret = clk_set_rate(eth->clks[MTK_CLK_TRGPLL], rate);
--	if (ret)
--		dev_err(eth->dev, "Failed to set trgmii pll: %d\n", ret);
--
--	mtk_w32(eth, rck, TRGMII_RCK_CTRL);
--	mtk_w32(eth, tck, TRGMII_TCK_CTRL);
-+	dev_err(eth->dev, "Missing PLL configuration, ethernet may not work\n");
- }
- 
- static struct phylink_pcs *mtk_mac_select_pcs(struct phylink_config *config,
-@@ -498,17 +473,8 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
- 							      state->interface))
- 					goto err_phy;
- 			} else {
--				/* FIXME: this is incorrect. Not only does it
--				 * use state->speed (which is not guaranteed
--				 * to be correct) but it also makes use of it
--				 * in a code path that will only be reachable
--				 * when the PHY interface mode changes, not
--				 * when the speed changes. Consequently, RGMII
--				 * is probably broken.
--				 */
- 				mtk_gmac0_rgmii_adjust(mac->hw,
--						       state->interface,
--						       state->speed);
-+						       state->interface);
- 
- 				/* mt7623_pad_clk_setup */
- 				for (i = 0 ; i < NUM_TRGMII_CTRL; i++)
-@@ -4373,13 +4339,19 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
- 	mac->phylink_config.mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
- 		MAC_10 | MAC_100 | MAC_1000 | MAC_2500FD;
- 
--	__set_bit(PHY_INTERFACE_MODE_MII,
--		  mac->phylink_config.supported_interfaces);
--	__set_bit(PHY_INTERFACE_MODE_GMII,
--		  mac->phylink_config.supported_interfaces);
-+	/* MT7623 gmac0 is now missing its speed-specific PLL configuration
-+	 * in its .mac_config method (since state->speed is not valid there.
-+	 * Disable support for MII, GMII and RGMII.
-+	 */
-+	if (!mac->hw->soc->disable_pll_modes || mac->id != 0) {
-+		__set_bit(PHY_INTERFACE_MODE_MII,
-+			  mac->phylink_config.supported_interfaces);
-+		__set_bit(PHY_INTERFACE_MODE_GMII,
-+			  mac->phylink_config.supported_interfaces);
- 
--	if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_RGMII))
--		phy_interface_set_rgmii(mac->phylink_config.supported_interfaces);
-+		if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_RGMII))
-+			phy_interface_set_rgmii(mac->phylink_config.supported_interfaces);
-+	}
- 
- 	if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_TRGMII) && !mac->id)
- 		__set_bit(PHY_INTERFACE_MODE_TRGMII,
-@@ -4852,6 +4824,7 @@ static const struct mtk_soc_data mt7623_data = {
- 	.offload_version = 1,
- 	.hash_offset = 2,
- 	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
-+	.disable_pll_modes = true,
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma),
- 		.rxd_size = sizeof(struct mtk_rx_dma),
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 707445f6bcb1..28adda0c90c0 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -1030,6 +1030,7 @@ struct mtk_soc_data {
- 	u16		foe_entry_size;
- 	netdev_features_t hw_features;
- 	bool		has_accounting;
-+	bool		disable_pll_modes;
- 	struct {
- 		u32	txd_size;
- 		u32	rxd_size;
--- 
-2.30.2
-
+	Hans
 
