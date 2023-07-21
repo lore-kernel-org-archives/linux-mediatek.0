@@ -4,65 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76013C001DE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 21:35:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E071EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 22:41:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4dTeYLnv5KkWjyFcsWseDfE6FM9+hSFSEymyUK05jcI=; b=Mb/z2uH/VO0upXC54x8qp9HZwW
-	JlMQSTpNEqSik6f5N0hlhUijnO64+9T606cHqHkSUdRWhKCNGSOiuVXjE9LmH1mezNzxqZR4tOxsx
-	HDrVG5vPpmwyxgDjHKQEPArq6nfEDwknfcN43pW9gYOfYzU1T/maII5IAwYnLKKAMdAcm8ovFo2OL
-	dNhNLetmotrGqmsPmlliAenqG5i/2lkAPl/r59Djj6+VrX6t50dNUo9GhW048r0BG+wItmrRuWvf9
-	FB15itMHhozhe7lVL+C8EHAzbm3VlN9SycwaBpFZkMsXxfTC6bqm0ghV0sYx5Qg5eb3M7nXOsnge7
-	o7VIzrzA==;
+	bh=xZD091DWd/4BLP9jhdzwlagcKzQmrEYrxIoPI9X2NOo=; b=P31eA/rPHP+N8/kVSSs6eBq7CK
+	wwyIdXfyfZsFleCl2PP+fs3XWXDzunquwPJfn4JLBRlul99zbMu6e08sl1NwG6pexDnlCcG1raDVw
+	512WYmj36CpKetHwbytZY6O6zcgOyo5saeKB5mvbYm0xyuhImZ0fAmWFtHchWgmbwxNcLcalrSY94
+	OOFFOkYd2Oo1M6djwG480thQW04HXsWuwrdw7fSSBnJ/JQhlPtYVmD/Y1X0Mwo7VRa3LhY2pzpxG9
+	nUkrYQYsvKtIlKDEX8J9x7nPMKIdIPY4Z96red/TYQFdYmLcEOGl9iEaqYiZ3LxOYeDiFHIED3/6E
+	uK8QeE5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMxmh-00FBiZ-1W;
-	Fri, 21 Jul 2023 21:35:35 +0000
+	id 1qMyo6-00FILQ-10;
+	Fri, 21 Jul 2023 22:41:06 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMxmc-00FBg8-36;
-	Fri, 21 Jul 2023 21:35:33 +0000
+	id 1qMyo1-00FIJw-2y;
+	Fri, 21 Jul 2023 22:41:04 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1qMxmP-0004dq-1S;
-	Fri, 21 Jul 2023 21:35:17 +0000
-Date: Fri, 21 Jul 2023 22:35:09 +0100
+	id 1qMyna-0004qC-13;
+	Fri, 21 Jul 2023 22:40:34 +0000
+Date: Fri, 21 Jul 2023 23:40:25 +0100
 From: Daniel Golle <daniel@makrotopia.org>
-To: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
-	Greg Ungerer <gerg@kernel.org>,
-	Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v4 9/9] net: ethernet: mtk_eth_soc: add basic
- support for MT7988 SoC
-Message-ID: <e86850acc0d8bfc1967949896a6de95ec917018a.1689974536.git.daniel@makrotopia.org>
-References: <cover.1689974536.git.daniel@makrotopia.org>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Subject: Re: [PATCH net-next 0/4] Remove legacy phylink behaviour
+Message-ID: <ZLsJWXyFJ0oKLkEq@makrotopia.org>
+References: <ZLptIKEb7qLY5LmS@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1689974536.git.daniel@makrotopia.org>
+In-Reply-To: <ZLptIKEb7qLY5LmS@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_143531_351976_F6ACDEAB 
-X-CRM114-Status: GOOD (  20.85  )
+X-CRM114-CacheID: sfid-20230721_154102_002830_7D24CD89 
+X-CRM114-Status: GOOD (  21.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,486 +56,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Paolo Abeni <pabeni@redhat.com>, netdev@vger.kernel.org, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, linux-mediatek@lists.infradead.org, Mark Lee <Mark-MC.Lee@mediatek.com>, Eric Dumazet <edumazet@google.com>, John Crispin <john@phrozen.org>, linux-arm-kernel@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, Felix Fietkau <nbd@nbd.name>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, David Woodhouse <dwmw@amazon.co.uk>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+Hi Russell,
 
-Introduce support for ethernet chip available in MT7988 SoC to
-mtk_eth_soc driver. As a first step support only the first GMAC which
-is hard-wired to the internal DSA switch having 4 built-in gigabit
-Ethernet PHYs.
+On Fri, Jul 21, 2023 at 12:33:52PM +0100, Russell King (Oracle) wrote:
+> Hi,
+> 
+> This series removes the - as far as I can tell - unreachable code in
+> mtk_eth_soc that relies upon legacy phylink behaviour, and then removes
+> the support in phylink for this legacy behaviour.
+> 
+> Patch 1 removes the clocking configuration from mtk_eth_soc for non-
+> TRGMII, non-serdes based interface modes, and disables those interface
+> modes prior to phylink configuration.
+> 
+> Patch 2 removes the mac_pcs_get_state() method from mtk_eth_soc which
+> I believe is also not used - mtk_eth_soc appears not to be used with
+> SFPs (which would use a kind of in-band mode) nor does any DT appear
+> to specify in-band mode for any non-serdes based interface mode.
+> 
+> With both of those dealt with, the kernel is now free of any driver
+> relying on the phylink legacy mode. Therefore, patch 3 removes support
+> for this.
+> 
+> Finally, with the advent of a new driver being submitted today that
+> makes use of state->speed in the mac_config() path, patch 4 ensures that
+> any phylink_link_state member that should not be used in mac_config is
+> either cleared or set to an invalid value.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_path.c |  14 +-
- drivers/net/ethernet/mediatek/mtk_eth_soc.c  | 201 +++++++++++++++++--
- drivers/net/ethernet/mediatek/mtk_eth_soc.h  |  86 +++++++-
- 3 files changed, 273 insertions(+), 28 deletions(-)
+Thank you for taking care of this!
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_path.c b/drivers/net/ethernet/mediatek/mtk_eth_path.c
-index 34ac492e047cb..7c27a19c4d8f4 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_path.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_path.c
-@@ -43,7 +43,7 @@ static const char *mtk_eth_path_name(u64 path)
- static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, u64 path)
- {
- 	bool updated = true;
--	u32 val, mask, set;
-+	u32 mask, set, reg;
- 
- 	switch (path) {
- 	case MTK_ETH_PATH_GMAC1_SGMII:
-@@ -59,11 +59,13 @@ static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, u64 path)
- 		break;
- 	}
- 
--	if (updated) {
--		val = mtk_r32(eth, MTK_MAC_MISC);
--		val = (val & mask) | set;
--		mtk_w32(eth, val, MTK_MAC_MISC);
--	}
-+	if (mtk_is_netsys_v3_or_greater(eth))
-+		reg = MTK_MAC_MISC_V3;
-+	else
-+		reg = MTK_MAC_MISC;
-+
-+	if (updated)
-+		mtk_m32(eth, mask, set, reg);
- 
- 	dev_dbg(eth->dev, "path %s in %s updated = %d\n",
- 		mtk_eth_path_name(path), __func__, updated);
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index dc95da2505f4f..140fbc4713de6 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -152,6 +152,54 @@ static const struct mtk_reg_map mt7986_reg_map = {
- 	.pse_oq_sta		= 0x01a0,
- };
- 
-+static const struct mtk_reg_map mt7988_reg_map = {
-+	.tx_irq_mask		= 0x461c,
-+	.tx_irq_status		= 0x4618,
-+	.pdma = {
-+		.rx_ptr		= 0x6900,
-+		.rx_cnt_cfg	= 0x6904,
-+		.pcrx_ptr	= 0x6908,
-+		.glo_cfg	= 0x6a04,
-+		.rst_idx	= 0x6a08,
-+		.delay_irq	= 0x6a0c,
-+		.irq_status	= 0x6a20,
-+		.irq_mask	= 0x6a28,
-+		.adma_rx_dbg0	= 0x6a38,
-+		.int_grp	= 0x6a50,
-+	},
-+	.qdma = {
-+		.qtx_cfg	= 0x4400,
-+		.qtx_sch	= 0x4404,
-+		.rx_ptr		= 0x4500,
-+		.rx_cnt_cfg	= 0x4504,
-+		.qcrx_ptr	= 0x4508,
-+		.glo_cfg	= 0x4604,
-+		.rst_idx	= 0x4608,
-+		.delay_irq	= 0x460c,
-+		.fc_th		= 0x4610,
-+		.int_grp	= 0x4620,
-+		.hred		= 0x4644,
-+		.ctx_ptr	= 0x4700,
-+		.dtx_ptr	= 0x4704,
-+		.crx_ptr	= 0x4710,
-+		.drx_ptr	= 0x4714,
-+		.fq_head	= 0x4720,
-+		.fq_tail	= 0x4724,
-+		.fq_count	= 0x4728,
-+		.fq_blen	= 0x472c,
-+		.tx_sch_rate	= 0x4798,
-+	},
-+	.gdm1_cnt		= 0x1c00,
-+	.gdma_to_ppe		= 0x3333,
-+	.ppe_base		= 0x2000,
-+	.wdma_base = {
-+		[0]		= 0x4800,
-+		[1]		= 0x4c00,
-+	},
-+	.pse_iq_sta		= 0x0180,
-+	.pse_oq_sta		= 0x01a0,
-+};
-+
- /* strings used by ethtool */
- static const struct mtk_ethtool_stats {
- 	char str[ETH_GSTRING_LEN];
-@@ -179,10 +227,54 @@ static const struct mtk_ethtool_stats {
- };
- 
- static const char * const mtk_clks_source_name[] = {
--	"ethif", "sgmiitop", "esw", "gp0", "gp1", "gp2", "fe", "trgpll",
--	"sgmii_tx250m", "sgmii_rx250m", "sgmii_cdr_ref", "sgmii_cdr_fb",
--	"sgmii2_tx250m", "sgmii2_rx250m", "sgmii2_cdr_ref", "sgmii2_cdr_fb",
--	"sgmii_ck", "eth2pll", "wocpu0", "wocpu1", "netsys0", "netsys1"
-+	"ethif",
-+	"sgmiitop",
-+	"esw",
-+	"gp0",
-+	"gp1",
-+	"gp2",
-+	"gp3",
-+	"xgp1",
-+	"xgp2",
-+	"xgp3",
-+	"crypto",
-+	"fe",
-+	"trgpll",
-+	"sgmii_tx250m",
-+	"sgmii_rx250m",
-+	"sgmii_cdr_ref",
-+	"sgmii_cdr_fb",
-+	"sgmii2_tx250m",
-+	"sgmii2_rx250m",
-+	"sgmii2_cdr_ref",
-+	"sgmii2_cdr_fb",
-+	"sgmii_ck",
-+	"eth2pll",
-+	"wocpu0",
-+	"wocpu1",
-+	"netsys0",
-+	"netsys1",
-+	"ethwarp_wocpu2",
-+	"ethwarp_wocpu1",
-+	"ethwarp_wocpu0",
-+	"top_usxgmii0_sel",
-+	"top_usxgmii1_sel",
-+	"top_sgm0_sel",
-+	"top_sgm1_sel",
-+	"top_xfi_phy0_xtal_sel",
-+	"top_xfi_phy1_xtal_sel",
-+	"top_eth_gmii_sel",
-+	"top_eth_refck_50m_sel",
-+	"top_eth_sys_200m_sel",
-+	"top_eth_sys_sel",
-+	"top_eth_xgmii_sel",
-+	"top_eth_mii_sel",
-+	"top_netsys_sel",
-+	"top_netsys_500m_sel",
-+	"top_netsys_pao_2x_sel",
-+	"top_netsys_sync_250m_sel",
-+	"top_netsys_ppefb_250m_sel",
-+	"top_netsys_warp_sel",
- };
- 
- void mtk_w32(struct mtk_eth *eth, u32 val, unsigned reg)
-@@ -195,7 +287,7 @@ u32 mtk_r32(struct mtk_eth *eth, unsigned reg)
- 	return __raw_readl(eth->base + reg);
- }
- 
--static u32 mtk_m32(struct mtk_eth *eth, u32 mask, u32 set, unsigned reg)
-+u32 mtk_m32(struct mtk_eth *eth, u32 mask, u32 set, unsigned int reg)
- {
- 	u32 val;
- 
-@@ -425,6 +517,19 @@ static void mtk_gmac0_rgmii_adjust(struct mtk_eth *eth,
- 	mtk_w32(eth, tck, TRGMII_TCK_CTRL);
- }
- 
-+static void mtk_setup_bridge_switch(struct mtk_eth *eth)
-+{
-+	/* Force Port1 XGMAC Link Up */
-+	mtk_m32(eth, 0, MTK_XGMAC_FORCE_LINK(MTK_GMAC1_ID),
-+		MTK_XGMAC_STS(MTK_GMAC1_ID));
-+
-+	/* Adjust GSW bridge IPG to 11 */
-+	mtk_m32(eth, GSWTX_IPG_MASK | GSWRX_IPG_MASK,
-+		(GSW_IPG_11 << GSWTX_IPG_SHIFT) |
-+		(GSW_IPG_11 << GSWRX_IPG_SHIFT),
-+		MTK_GSW_CFG);
-+}
-+
- static struct phylink_pcs *mtk_mac_select_pcs(struct phylink_config *config,
- 					      phy_interface_t interface)
- {
-@@ -484,6 +589,8 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
- 					goto init_err;
- 			}
- 			break;
-+		case PHY_INTERFACE_MODE_INTERNAL:
-+			break;
- 		default:
- 			goto err_phy;
- 		}
-@@ -562,6 +669,15 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
- 		return;
- 	}
- 
-+	/* Setup gmac */
-+	if (mtk_is_netsys_v3_or_greater(eth) &&
-+	    mac->interface == PHY_INTERFACE_MODE_INTERNAL) {
-+		mtk_w32(mac->hw, MTK_GDMA_XGDM_SEL, MTK_GDMA_EG_CTRL(mac->id));
-+		mtk_w32(mac->hw, MAC_MCR_FORCE_LINK_DOWN, MTK_MAC_MCR(mac->id));
-+
-+		mtk_setup_bridge_switch(eth);
-+	}
-+
- 	return;
- 
- err_phy:
-@@ -807,11 +923,15 @@ static int mtk_mdio_init(struct mtk_eth *eth)
- 	}
- 	divider = min_t(unsigned int, DIV_ROUND_UP(MDC_MAX_FREQ, max_clk), 63);
- 
-+	/* Configure MDC Turbo Mode */
-+	if (mtk_is_netsys_v3_or_greater(eth))
-+		mtk_m32(eth, 0, MISC_MDC_TURBO, MTK_MAC_MISC_V3);
-+
- 	/* Configure MDC Divider */
--	val = mtk_r32(eth, MTK_PPSC);
--	val &= ~PPSC_MDC_CFG;
--	val |= FIELD_PREP(PPSC_MDC_CFG, divider) | PPSC_MDC_TURBO;
--	mtk_w32(eth, val, MTK_PPSC);
-+	val = FIELD_PREP(PPSC_MDC_CFG, divider);
-+	if (!mtk_is_netsys_v3_or_greater(eth))
-+		val |= PPSC_MDC_TURBO;
-+	mtk_m32(eth, PPSC_MDC_CFG, val, MTK_PPSC);
- 
- 	dev_dbg(eth->dev, "MDC is running on %d Hz\n", MDC_MAX_FREQ / divider);
- 
-@@ -1272,10 +1392,19 @@ static void mtk_tx_set_dma_desc_v2(struct net_device *dev, void *txd,
- 		data |= TX_DMA_LS0;
- 	WRITE_ONCE(desc->txd3, data);
- 
--	if (mac->id == MTK_GMAC3_ID)
--		data = PSE_GDM3_PORT;
--	else
--		data = (mac->id + 1) << TX_DMA_FPORT_SHIFT_V2; /* forward port */
-+	 /* set forward port */
-+	switch (mac->id) {
-+	case MTK_GMAC1_ID:
-+		data = PSE_GDM1_PORT << TX_DMA_FPORT_SHIFT_V2;
-+		break;
-+	case MTK_GMAC2_ID:
-+		data = PSE_GDM2_PORT << TX_DMA_FPORT_SHIFT_V2;
-+		break;
-+	case MTK_GMAC3_ID:
-+		data = PSE_GDM3_PORT << TX_DMA_FPORT_SHIFT_V2;
-+		break;
-+	}
-+
- 	data |= TX_DMA_SWC_V2 | QID_BITS_V2(info->qid);
- 	WRITE_ONCE(desc->txd4, data);
- 
-@@ -4457,6 +4586,17 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
- 			  mac->phylink_config.supported_interfaces);
- 	}
- 
-+	if (mtk_is_netsys_v3_or_greater(mac->hw) &&
-+	    MTK_HAS_CAPS(mac->hw->soc->caps, MTK_ESW_BIT) &&
-+	    id == MTK_GMAC1_ID) {
-+		mac->phylink_config.mac_capabilities = MAC_ASYM_PAUSE |
-+						       MAC_SYM_PAUSE |
-+						       MAC_10000FD;
-+		phy_interface_zero(mac->phylink_config.supported_interfaces);
-+		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
-+			  mac->phylink_config.supported_interfaces);
-+	}
-+
- 	phylink = phylink_create(&mac->phylink_config,
- 				 of_fwnode_handle(mac->of_node),
- 				 phy_mode, &mtk_phylink_ops);
-@@ -4982,6 +5122,24 @@ static const struct mtk_soc_data mt7986_data = {
- 	},
- };
- 
-+static const struct mtk_soc_data mt7988_data = {
-+	.reg_map = &mt7988_reg_map,
-+	.ana_rgc3 = 0x128,
-+	.caps = MT7988_CAPS,
-+	.hw_features = MTK_HW_FEATURES,
-+	.required_clks = MT7988_CLKS_BITMAP,
-+	.required_pctl = false,
-+	.version = 3,
-+	.txrx = {
-+		.txd_size = sizeof(struct mtk_tx_dma_v2),
-+		.rxd_size = sizeof(struct mtk_rx_dma_v2),
-+		.rx_irq_done_mask = MTK_RX_DONE_INT_V2,
-+		.rx_dma_l4_valid = RX_DMA_L4_VALID_V2,
-+		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
-+		.dma_len_offset = 8,
-+	},
-+};
-+
- static const struct mtk_soc_data rt5350_data = {
- 	.reg_map = &mt7628_reg_map,
- 	.caps = MT7628_CAPS,
-@@ -5000,14 +5158,15 @@ static const struct mtk_soc_data rt5350_data = {
- };
- 
- const struct of_device_id of_mtk_match[] = {
--	{ .compatible = "mediatek,mt2701-eth", .data = &mt2701_data},
--	{ .compatible = "mediatek,mt7621-eth", .data = &mt7621_data},
--	{ .compatible = "mediatek,mt7622-eth", .data = &mt7622_data},
--	{ .compatible = "mediatek,mt7623-eth", .data = &mt7623_data},
--	{ .compatible = "mediatek,mt7629-eth", .data = &mt7629_data},
--	{ .compatible = "mediatek,mt7981-eth", .data = &mt7981_data},
--	{ .compatible = "mediatek,mt7986-eth", .data = &mt7986_data},
--	{ .compatible = "ralink,rt5350-eth", .data = &rt5350_data},
-+	{ .compatible = "mediatek,mt2701-eth", .data = &mt2701_data },
-+	{ .compatible = "mediatek,mt7621-eth", .data = &mt7621_data },
-+	{ .compatible = "mediatek,mt7622-eth", .data = &mt7622_data },
-+	{ .compatible = "mediatek,mt7623-eth", .data = &mt7623_data },
-+	{ .compatible = "mediatek,mt7629-eth", .data = &mt7629_data },
-+	{ .compatible = "mediatek,mt7981-eth", .data = &mt7981_data },
-+	{ .compatible = "mediatek,mt7986-eth", .data = &mt7986_data },
-+	{ .compatible = "mediatek,mt7988-eth", .data = &mt7988_data },
-+	{ .compatible = "ralink,rt5350-eth", .data = &rt5350_data },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, of_mtk_match);
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 38c212b50f776..41c84030017eb 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -117,7 +117,8 @@
- #define MTK_CDMP_EG_CTRL	0x404
- 
- /* GDM Exgress Control Register */
--#define MTK_GDMA_FWD_CFG(x)	(0x500 + (x * 0x1000))
-+#define MTK_GDMA_FWD_CFG(x)	({ typeof(x) _x = (x); (_x == MTK_GMAC3_ID) ?	\
-+				   0x540 : 0x500 + (_x * 0x1000); })
- #define MTK_GDMA_SPECIAL_TAG	BIT(24)
- #define MTK_GDMA_ICS_EN		BIT(22)
- #define MTK_GDMA_TCS_EN		BIT(21)
-@@ -126,6 +127,11 @@
- #define MTK_GDMA_TO_PDMA	0x0
- #define MTK_GDMA_DROP_ALL       0x7777
- 
-+/* GDM Egress Control Register */
-+#define MTK_GDMA_EG_CTRL(x)	({ typeof(x) _x = (x); (_x == MTK_GMAC3_ID) ?	\
-+				   0x544 : 0x504 + (_x * 0x1000); })
-+#define MTK_GDMA_XGDM_SEL	BIT(31)
-+
- /* Unicast Filter MAC Address Register - Low */
- #define MTK_GDMA_MAC_ADRL(x)	(0x508 + (x * 0x1000))
- 
-@@ -389,7 +395,26 @@
- #define PHY_IAC_TIMEOUT		HZ
- 
- #define MTK_MAC_MISC		0x1000c
-+#define MTK_MAC_MISC_V3		0x10010
- #define MTK_MUX_TO_ESW		BIT(0)
-+#define MISC_MDC_TURBO		BIT(4)
-+
-+/* XMAC status registers */
-+#define MTK_XGMAC_STS(x)	(((x) == MTK_GMAC3_ID) ? 0x1001C : 0x1000C)
-+#define MTK_XGMAC_FORCE_LINK(x)	(((x) == MTK_GMAC2_ID) ? BIT(31) : BIT(15))
-+#define MTK_USXGMII_PCS_LINK	BIT(8)
-+#define MTK_XGMAC_RX_FC		BIT(5)
-+#define MTK_XGMAC_TX_FC		BIT(4)
-+#define MTK_USXGMII_PCS_MODE	GENMASK(3, 1)
-+#define MTK_XGMAC_LINK_STS	BIT(0)
-+
-+/* GSW bridge registers */
-+#define MTK_GSW_CFG		(0x10080)
-+#define GSWTX_IPG_MASK		GENMASK(19, 16)
-+#define GSWTX_IPG_SHIFT		16
-+#define GSWRX_IPG_MASK		GENMASK(3, 0)
-+#define GSWRX_IPG_SHIFT		0
-+#define GSW_IPG_11		11
- 
- /* Mac control registers */
- #define MTK_MAC_MCR(x)		(0x10100 + (x * 0x100))
-@@ -647,6 +672,11 @@ enum mtk_clks_map {
- 	MTK_CLK_GP0,
- 	MTK_CLK_GP1,
- 	MTK_CLK_GP2,
-+	MTK_CLK_GP3,
-+	MTK_CLK_XGP1,
-+	MTK_CLK_XGP2,
-+	MTK_CLK_XGP3,
-+	MTK_CLK_CRYPTO,
- 	MTK_CLK_FE,
- 	MTK_CLK_TRGPLL,
- 	MTK_CLK_SGMII_TX_250M,
-@@ -663,6 +693,27 @@ enum mtk_clks_map {
- 	MTK_CLK_WOCPU1,
- 	MTK_CLK_NETSYS0,
- 	MTK_CLK_NETSYS1,
-+	MTK_CLK_ETHWARP_WOCPU2,
-+	MTK_CLK_ETHWARP_WOCPU1,
-+	MTK_CLK_ETHWARP_WOCPU0,
-+	MTK_CLK_TOP_USXGMII_SBUS_0_SEL,
-+	MTK_CLK_TOP_USXGMII_SBUS_1_SEL,
-+	MTK_CLK_TOP_SGM_0_SEL,
-+	MTK_CLK_TOP_SGM_1_SEL,
-+	MTK_CLK_TOP_XFI_PHY_0_XTAL_SEL,
-+	MTK_CLK_TOP_XFI_PHY_1_XTAL_SEL,
-+	MTK_CLK_TOP_ETH_GMII_SEL,
-+	MTK_CLK_TOP_ETH_REFCK_50M_SEL,
-+	MTK_CLK_TOP_ETH_SYS_200M_SEL,
-+	MTK_CLK_TOP_ETH_SYS_SEL,
-+	MTK_CLK_TOP_ETH_XGMII_SEL,
-+	MTK_CLK_TOP_ETH_MII_SEL,
-+	MTK_CLK_TOP_NETSYS_SEL,
-+	MTK_CLK_TOP_NETSYS_500M_SEL,
-+	MTK_CLK_TOP_NETSYS_PAO_2X_SEL,
-+	MTK_CLK_TOP_NETSYS_SYNC_250M_SEL,
-+	MTK_CLK_TOP_NETSYS_PPEFB_250M_SEL,
-+	MTK_CLK_TOP_NETSYS_WARP_SEL,
- 	MTK_CLK_MAX
- };
- 
-@@ -716,6 +767,36 @@ enum mtk_clks_map {
- 				 BIT_ULL(MTK_CLK_SGMII2_RX_250M) | \
- 				 BIT_ULL(MTK_CLK_SGMII2_CDR_REF) | \
- 				 BIT_ULL(MTK_CLK_SGMII2_CDR_FB))
-+#define MT7988_CLKS_BITMAP	(BIT_ULL(MTK_CLK_FE) | BIT_ULL(MTK_CLK_ESW) | \
-+				 BIT_ULL(MTK_CLK_GP1) | BIT_ULL(MTK_CLK_GP2) | \
-+				 BIT_ULL(MTK_CLK_GP3) | BIT_ULL(MTK_CLK_XGP1) | \
-+				 BIT_ULL(MTK_CLK_XGP2) | BIT_ULL(MTK_CLK_XGP3) | \
-+				 BIT_ULL(MTK_CLK_CRYPTO) | \
-+				 BIT_ULL(MTK_CLK_SGMII_TX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII_RX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_TX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_RX_250M) | \
-+				 BIT_ULL(MTK_CLK_ETHWARP_WOCPU2) | \
-+				 BIT_ULL(MTK_CLK_ETHWARP_WOCPU1) | \
-+				 BIT_ULL(MTK_CLK_ETHWARP_WOCPU0) | \
-+				 BIT_ULL(MTK_CLK_TOP_USXGMII_SBUS_0_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_USXGMII_SBUS_1_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_SGM_0_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_SGM_1_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_XFI_PHY_0_XTAL_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_XFI_PHY_1_XTAL_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_ETH_GMII_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_ETH_REFCK_50M_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_ETH_SYS_200M_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_ETH_SYS_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_ETH_XGMII_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_ETH_MII_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_NETSYS_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_NETSYS_500M_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_NETSYS_PAO_2X_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_NETSYS_SYNC_250M_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_NETSYS_PPEFB_250M_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_NETSYS_WARP_SEL))
- 
- enum mtk_dev_state {
- 	MTK_HW_INIT,
-@@ -964,6 +1045,8 @@ enum mkt_eth_capabilities {
- 		      MTK_MUX_GMAC12_TO_GEPHY_SGMII | MTK_QDMA | \
- 		      MTK_RSTCTRL_PPE1)
- 
-+#define MT7988_CAPS  (MTK_GDM1_ESW | MTK_QDMA | MTK_RSTCTRL_PPE1)
-+
- struct mtk_tx_dma_desc_info {
- 	dma_addr_t	addr;
- 	u32		size;
-@@ -1308,6 +1391,7 @@ void mtk_stats_update_mac(struct mtk_mac *mac);
- 
- void mtk_w32(struct mtk_eth *eth, u32 val, unsigned reg);
- u32 mtk_r32(struct mtk_eth *eth, unsigned reg);
-+u32 mtk_m32(struct mtk_eth *eth, u32 mask, u32 set, unsigned int reg);
- 
- int mtk_gmac_sgmii_path_setup(struct mtk_eth *eth, int mac_id);
- int mtk_gmac_gephy_path_setup(struct mtk_eth *eth, int mac_id);
--- 
-2.41.0
+For the whole series:
+
+Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+Tested-by: Daniel Golle <daniel@makrotopia.org>
+
+Tested on BPi-R2 (MT7623N), BPi-R3 (MT7986A) and BPi-R64 (MT7622A).
+All works fine as expected.
+
+To apply the series I needed to resolve a minor conflict due to
+net: ethernet: mtk_ppe: add MTK_FOE_ENTRY_V{1,2}_SIZE macros
+being applied in the meantime.
+
+
+> 
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 94 +++++------------------------
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h |  1 +
+>  drivers/net/phy/phylink.c                   | 48 ++++++---------
+>  include/linux/phylink.h                     | 45 ++------------
+>  4 files changed, 42 insertions(+), 146 deletions(-)
+> -- 
+> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+> FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
