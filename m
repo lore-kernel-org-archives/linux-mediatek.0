@@ -4,70 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B88CC0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 20:17:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3949DEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Jul 2023 21:06:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yq5he0JP/YouQ2LQb3GUolT+3OkSYbWcP3yNSOtSPB4=; b=qxjF4uBlFhoRtP5MeTeDub878k
-	XLKzz9KysxLL8Pe5xtMR3PMv/iKJNtI4UxP6SZEvQRbaD+9oOsnEnS6PjPWtuGueKQRlJbFSbGbRS
-	k53fYHX3EXCX5tqcaAtFFNWKbflQOQYOb8AV+kmsHEl0geLORZax3qM9ZN1rF8EsUp0QY0Sw3Kpe8
-	p2IM5KqM6XhIjCiNjnDfOqEXatKu+68smxrhXFUEMwL/Ikx+zSZBoX0X8qm4jiOqQMTaqDVjyN1kz
-	Ku6zXBqi8hAjlnM36UIKlSCqS0EA9xVesy0JEKrqrOp5Ll3YbNju+LBrI9roF3lu50lDyOhodkB/x
-	OiIcU2uQ==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jgqpuM0U/+n1THvXDHH+do3sOEHcg4nAH1f0/m6O2+4=; b=Scs1S3Jn/41unFLULcIqIxG0B1
+	LyFYbFsqCFkZUGodY9SFRqdr7JYuaQFkvv/IrMAfXIB3GN3mjysSI6hHCjVf9UqauoknjklLXkHTl
+	67ZWakqcJd87IE0rcJcu6c84E0lnEyYgHGDU7iqtNR2D21L6qmaH6f0j+4WFxwrowQXZVjXZ2y4+4
+	YfiMrpkp4lP8VVzDGfTZpxZM8DDYQQvgOSM1QbixEgJwDpZD99U1F34u/X7fJEGRw1f4fxvngQfMe
+	0BMlwI4YmJOOa7X3U1Eqq65xN3ujLzQmF56px6neVi1kQTRGTV49FCDejVz3yGz3BzQHx4u6OFSo9
+	ypm2GVxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMwZU-00F24X-0a;
-	Fri, 21 Jul 2023 20:17:52 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qMxKc-00F7Ux-0Y;
+	Fri, 21 Jul 2023 21:06:34 +0000
+Received: from mx2.hosting.skole.hr ([161.53.165.186] helo=mx.skole.hr)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qMwZ3-00F1tb-38;
-	Fri, 21 Jul 2023 20:17:27 +0000
-Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 14FC066070F7;
-	Fri, 21 Jul 2023 21:17:22 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1689970644;
-	bh=OQ+uMM3DuJnJS29eyS3oK2aoBh9Y5cY70VQATcXr59g=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GyEF+c8erOO/Qs7gQRusAMP5IBO8XrL+ijJjwxya83usLMxDYCmHYq8QhK3s2OStJ
-	 0Q+EpZ1gOeuachYQlQDC0dpKgerHd7D7Ml3YRqtdy1+Oz4KxM21Tw22RYk9JPFofYt
-	 EiUdEKB/wvI6t7jWXQ8wJVqvwAWQ7CEGJ4yPlJlnhtfGn03JD6loQk9LHFS4YcF2Tm
-	 qQEdm/UjQsqKZAnJRVtPXdBvkttSCR+J2umQ4Bwham3T/J11vhxP/Z0FEXA84GVOpg
-	 MteVD03Up30r9fpQv39+WxjKoLpGCTcv7HwI9yPO4J8YPYXks5pqPDSDPaWKH/jnin
-	 iswfsQ5h5hB2A==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	id 1qMxKL-00F7Ov-0o;
+	Fri, 21 Jul 2023 21:06:21 +0000
+Received: from mx2.hosting.skole.hr (localhost.localdomain [127.0.0.1])
+	by mx.skole.hr (mx.skole.hr) with ESMTP id BF357880C0;
+	Fri, 21 Jul 2023 23:06:11 +0200 (CEST)
+From: =?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje.mihanovic@skole.hr>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 5/5] arm64: dts: mediatek: Add spherion-rev4
-Date: Fri, 21 Jul 2023 16:16:58 -0400
-Message-ID: <20230721201705.387426-6-nfraprado@collabora.com>
+Cc: ~postmarketos/upstreaming@lists.sr.ht,
+	phone-devel@vger.kernel.org,
+	afaerber@suse.com,
+	=?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje.mihanovic@skole.hr>
+Subject: [PATCH 00/10] Initial Marvell PXA1908 support
+Date: Fri, 21 Jul 2023 22:37:42 +0200
+Message-ID: <20230721210042.21535-1-duje.mihanovic@skole.hr>
 X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230721201705.387426-1-nfraprado@collabora.com>
-References: <20230721201705.387426-1-nfraprado@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_131726_135444_0FB05223 
-X-CRM114-Status: GOOD (  15.89  )
+X-CRM114-CacheID: sfid-20230721_140617_470765_203D5DC9 
+X-CRM114-Status: GOOD (  13.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,119 +63,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a devicetree for rev4 of Spherion. It uses the rt5682s audio codec
-instead of the rt5682 used in the previous revision.
+Hello,
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+This series adds initial support for the Marvell PXA1908 SoC and
+"samsung,coreprimevelte", a smartphone using the SoC.
 
----
+USB works and the phone can boot a rootfs from an SD card, but there are
+some warnings in the dmesg:
 
-(no changes since v2)
+During SMP initialization:
+[    0.006519] CPU features: SANITY CHECK: Unexpected variation in SYS_CNTFRQ_EL0. Boot CPU: 0x000000018cba80, CPU1: 0x00000000000000
+[    0.006542] CPU features: Unsupported CPU feature variation detected.
+[    0.006589] CPU1: Booted secondary processor 0x0000000001 [0x410fd032]
+[    0.010710] Detected VIPT I-cache on CPU2
+[    0.010716] CPU features: SANITY CHECK: Unexpected variation in SYS_CNTFRQ_EL0. Boot CPU: 0x000000018cba80, CPU2: 0x00000000000000
+[    0.010758] CPU2: Booted secondary processor 0x0000000002 [0x410fd032]
+[    0.014849] Detected VIPT I-cache on CPU3
+[    0.014855] CPU features: SANITY CHECK: Unexpected variation in SYS_CNTFRQ_EL0. Boot CPU: 0x000000018cba80, CPU3: 0x00000000000000
+[    0.014895] CPU3: Booted secondary processor 0x0000000003 [0x410fd032]
 
-Changes in v2:
-- Added audio nodes directly in this file
+SMMU probing fails:
+[    0.101798] arm-smmu c0010000.iommu: probing hardware configuration...
+[    0.101809] arm-smmu c0010000.iommu: SMMUv1 with:
+[    0.101816] arm-smmu c0010000.iommu: 	no translation support!
 
- arch/arm64/boot/dts/mediatek/Makefile         |  1 +
- .../mediatek/mt8192-asurada-spherion-r4.dts   | 77 +++++++++++++++++++
- 2 files changed, 78 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts
+On Samsung's PXA1908 phones, the bootloader does not start the ARM
+system timer, and my temporary solution (which isn't present in this
+series) was to put the code for starting the timer in the clock driver.
+Would this hack be accepted upstream in the form of a platform or
+clocksource driver such as drivers/clocksource/timer-mediatek-cpux.c?
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 05aede2777a4..80aaf71f23e1 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -47,6 +47,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r5-sku2.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-spherion-r0.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-spherion-r4.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-cherry-tomato-r1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-cherry-tomato-r2.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts
-new file mode 100644
-index 000000000000..0039158c9e60
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r4.dts
-@@ -0,0 +1,77 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2022 Google LLC
-+ */
-+/dts-v1/;
-+#include "mt8192-asurada.dtsi"
-+#include <dt-bindings/leds/common.h>
-+
-+/ {
-+	model = "Google Spherion (rev4)";
-+	compatible = "google,spherion-rev4", "google,spherion",
-+		     "mediatek,mt8192";
-+
-+	pwmleds {
-+		compatible = "pwm-leds";
-+
-+		led {
-+			function = LED_FUNCTION_KBD_BACKLIGHT;
-+			color = <LED_COLOR_ID_WHITE>;
-+			pwms = <&cros_ec_pwm 0>;
-+			max-brightness = <1023>;
-+		};
-+	};
-+};
-+
-+&cros_ec_pwm {
-+	status = "okay";
-+};
-+
-+&keyboard_controller {
-+	function-row-physmap = <
-+		MATRIX_KEY(0x00, 0x02, 0)	/* T1 */
-+		MATRIX_KEY(0x03, 0x02, 0)	/* T2 */
-+		MATRIX_KEY(0x02, 0x02, 0)	/* T3 */
-+		MATRIX_KEY(0x01, 0x02, 0)	/* T4 */
-+		MATRIX_KEY(0x03, 0x04, 0)	/* T5 */
-+		MATRIX_KEY(0x02, 0x04, 0)	/* T6 */
-+		MATRIX_KEY(0x01, 0x04, 0)	/* T7 */
-+		MATRIX_KEY(0x02, 0x09, 0)	/* T8 */
-+		MATRIX_KEY(0x01, 0x09, 0)	/* T9 */
-+		MATRIX_KEY(0x00, 0x04, 0)	/* T10 */
-+	>;
-+	linux,keymap = <
-+		MATRIX_KEY(0x00, 0x02, KEY_BACK)
-+		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)
-+		MATRIX_KEY(0x02, 0x02, KEY_FULL_SCREEN)
-+		MATRIX_KEY(0x01, 0x02, KEY_SCALE)
-+		MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)
-+		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN)
-+		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)
-+		MATRIX_KEY(0x02, 0x09, KEY_MUTE)
-+		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
-+		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
-+
-+		CROS_STD_MAIN_KEYMAP
-+	>;
-+};
-+
-+&rt5682 {
-+	compatible = "realtek,rt5682s";
-+};
-+
-+&sound {
-+	compatible = "mediatek,mt8192_mt6359_rt1015p_rt5682s";
-+
-+	speaker-codecs {
-+		sound-dai = <&rt1015p>;
-+	};
-+
-+	headset-codec {
-+		sound-dai = <&rt5682 0>;
-+	};
-+};
-+
-+&touchscreen {
-+	compatible = "elan,ekth3500";
-+};
+A 3.14 based Marvell tree is available on GitHub
+acorn-marvell/brillo_pxa_kernel, and a Samsung one on GitHub
+CoderCharmander/g361f-kernel.
+
+Andreas Färber attempted to upstream support for this SoC in 2017:
+https://lore.kernel.org/lkml/20170222022929.10540-1-afaerber@suse.de/
+
+Duje Mihanović (10):
+  tty: serial: 8250: Define earlycon for mrvl,mmp-uart
+  gpio: pxa: use dynamic allocation of base
+  gpio: pxa: make pxa_gpio_has_pinctrl return false for MMP_GPIO
+  clk: mmp: Add Marvell PXA1908 clock driver
+  dt-bindings: clock: Add Marvell PXA1908 clock bindings
+  dt-bindings: clock: Add documentation for Marvell PXA1908
+  arm64: Kconfig.platforms: Add config for Marvell PXA1908 platform
+  arm64: dts: Add DTS for Marvell PXA1908 and samsung,coreprimevelte
+  dt-bindings: marvell: Document PXA1908 SoC
+  MAINTAINERS: add myself as Marvell PXA1908 maintainer
+
+ .../bindings/arm/marvell/marvell,pxa1908.yaml |  33 ++
+ .../bindings/clock/marvell,pxa1908.yaml       |  53 +++
+ MAINTAINERS                                   |  10 +
+ arch/arm64/Kconfig.platforms                  |  11 +
+ arch/arm64/boot/dts/marvell/Makefile          |   1 +
+ .../pxa1908-samsung-coreprimevelte.dts        | 321 ++++++++++++++++++
+ arch/arm64/boot/dts/marvell/pxa1908.dtsi      | 298 ++++++++++++++++
+ drivers/clk/mmp/Makefile                      |   2 +-
+ drivers/clk/mmp/clk-of-pxa1908.c              | 282 +++++++++++++++
+ drivers/gpio/gpio-pxa.c                       |   2 +
+ drivers/tty/serial/8250/8250_pxa.c            |   1 +
+ include/dt-bindings/clock/marvell,pxa1908.h   |  93 +++++
+ 12 files changed, 1106 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/marvell/marvell,pxa1908.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/marvell,pxa1908.yaml
+ create mode 100644 arch/arm64/boot/dts/marvell/pxa1908-samsung-coreprimevelte.dts
+ create mode 100644 arch/arm64/boot/dts/marvell/pxa1908.dtsi
+ create mode 100644 drivers/clk/mmp/clk-of-pxa1908.c
+ create mode 100644 include/dt-bindings/clock/marvell,pxa1908.h
+
 -- 
 2.41.0
+
 
 
