@@ -4,75 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36B67EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jul 2023 12:14:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6CD1EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jul 2023 12:32:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/q5vPysvgwOOLB/JiDSQP3eCYUz8RtczsHjvgeJg1Gk=; b=s3TC0hD4lBnts4C7LqPVCF1JDC
-	yScUHDPMymsP/KyY2PGgef98L+avXGdhN0i7Rujro/QLyZ765Ort8yvvlKPAqirAy8cYWgvuDtO+I
-	xX4io3tdCUTAY6/f1RlN1ZnLOfvr9KTLfByxg47/RW/GZ4a418rP1Tbzp9APtQjI4ysepjkLPOUOB
-	ltSPZpuBFLm2Lz69x1R38r8kV5ElIDtz/nYHmk9WH1NNfN/a0S3N3girBfWe+hWV2sUW/qdnJnPmc
-	0ML+pTS+BJp+umur0MbM1O2GqYij9YSgQosYAyvoEIvZlR11UmSPiZylfccG2F/fBaIDPmlWb1boU
-	oXV1thRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=COq+3/35N+k1uddQSaLGncq/dXO2SSlKA741sVljo3g=; b=yBNuTUudBRYqW+L6MZie18oDze
+	9JkWWMSElD2FrhmTYyl2JDqH3xTB4ZakT/D+NRNUOoBHiqJDsN1ywzhs4esrWWHj6F91fQVRIns4o
+	4qZ98a2ibmeH1f1rS4LrmlynlP/VWmTae8KlB5A1PsfZGxWD2bF1gmusXyz/VrXrtcsQb046szcoN
+	MvfJ9hIfslqvFOD7WFhfrKCkD5dzaBxMaJBVbN623Oxe3Vh6zB9NhYekShzz++VaPcvh/1GOvSY+P
+	trJiQdDStft4lhGHDhqCv0r97zmWh9QqMejCysTsJzpQUzloH9DSalXvgTTdMqhcgr0h9ikfABI9s
+	HdW1Ol1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNBUl-00Gf6R-0X;
-	Sat, 22 Jul 2023 12:13:59 +0000
-Received: from sender4-op-o15.zoho.com ([136.143.188.15])
+	id 1qNBmS-00Gh4A-0G;
+	Sat, 22 Jul 2023 12:32:16 +0000
+Received: from mout.gmx.net ([212.227.15.19])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNBUi-00Gf5D-0A;
-	Sat, 22 Jul 2023 12:13:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1690028033; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=K9sEHU0nSLpZWOtlzt7nIwZkjo+ZUtg78DQ/J4Yvi1oWAF6zUNIVnrePOCeid8205wlTCAvuMFQpdmN9dGgqaRpA7+JtelbeHK5jLr6tdaZIrugwvWBWEJuHxL4B8cY2s4LDPU5w/b09PYsRXwNXEUeY2Qyq3P151V3NyyVznhQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1690028033; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=/q5vPysvgwOOLB/JiDSQP3eCYUz8RtczsHjvgeJg1Gk=; 
-	b=NqlQ4pNMTfCJryi0iHfTEu26624SDvrEBlEzAgkVxRvRNGyIN2C2M7QyBA5HRMEiAInmnOLXehEd8QYRHWyMCPUwZfgPL+NVU2dbqi2CRFFoEbazHbARx0eCuYorCv86YeKJj2XiaxmFr/mucSGvn5SA06aal3skpuR5BYCwre4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=icenowy.me;
-	spf=pass  smtp.mailfrom=uwu@icenowy.me;
-	dmarc=pass header.from=<uwu@icenowy.me>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1690028033;
-	s=zmail2; d=icenowy.me; i=uwu@icenowy.me;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=/q5vPysvgwOOLB/JiDSQP3eCYUz8RtczsHjvgeJg1Gk=;
-	b=APWVV1qoE4xWaSouk8cls37oMN6w/9JdpLHTEFaWangCnhDpkFSo1uUGxs/P/F2j
-	a0Oh5SgwYVvRcWeHgZvSTCoxeHf/6Bxx/iQnLPO4Ur/JaDP8rOCpXmtjajkNPn9yNre
-	djLfjJUmLHWqSrqrFZcPiJ+4O6jkOzMAjyctQHynimWoAsULuj288qDmpjeco4pTlaX
-	egrpK2+0KvycN9jDJ1Qf8qWUBfXbea1zw6lwKxqZ1v8/qkPsYk+vLjU9kR9mondBRYl
-	O4M3Mf9R6+eELzTC3U0wWneA2hRAyruPPQNNV8PSMCvNWwbvbCXtwL9cCZabWbZj9zY
-	qsa7kpGdCA==
-Received: from edelgard.fodlan.icenowy.me (120.85.97.227 [120.85.97.227]) by mx.zohomail.com
-	with SMTPS id 1690028030544550.8527003226176; Sat, 22 Jul 2023 05:13:50 -0700 (PDT)
-Message-ID: <05e6d2d6dd8805c4cded28f85ac873b96bc1467e.camel@icenowy.me>
-Subject: Re: [PATCH 0/2] thermal/drivers/mediatek: fix a regression
- affecting other subsystems
-From: Icenowy Zheng <uwu@icenowy.me>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, "Rafael J . Wysocki"
- <rafael@kernel.org>, Amit Kucheria <amitk@kernel.org>, Zhang Rui
- <rui.zhang@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Kang
- Chen <void0red@hust.edu.cn>, Dongliang Mu <dzm91@hust.edu.cn>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Sat, 22 Jul 2023 20:13:45 +0800
-In-Reply-To: <40546a57-27ac-8bf9-a2d8-77f7d4ab4aad@linaro.org>
-References: <20230529162056.3786301-1-uwu@icenowy.me>
-	 <40546a57-27ac-8bf9-a2d8-77f7d4ab4aad@linaro.org>
-Organization: Anthon Open-Source Community
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.4 
+	id 1qNBmO-00Gh3L-1t;
+	Sat, 22 Jul 2023 12:32:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+ s=s31663417; t=1690029105; x=1690633905; i=frank-w@public-files.de;
+ bh=rvO3syQy8p2eF0WNoTmES9a/lxxiAQ0F3RORzZidV/A=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=mBtI/5RpZrvQPPlOCFyKZzPGnjq+OLOgS7RYVmQAP/OvhJijbIR5NzMHyE1mHQPYITvwsZk
+ qQI2SSVT4aZprIgWFI0bFSEdd8oN8tM8/m3M/Gl/4tPqo0OpXIjkXwcWotP+VSf1n4EGBKDa0
+ 8NBd+INESIYJtlD0tqyM7GsoU8P5MTk9BpZafdd10PVYZqLLSpJNzPko+GsVbmIYgNIV6wGPa
+ MI3xR8R+tikS1/VovN+UpKrsk3zOIW76Hk79ly9kXda3e/joadAjJ6WNFmos2U22sTzwpDo23
+ PbY8qzbHa+NlPFqQ+CaAEfK8F5my8MziMe8fErb638sAA/DubDPw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [80.245.78.13] ([80.245.78.13]) by web-mail.gmx.net
+ (3c-app-gmx-bs12.server.lan [172.19.170.63]) (via HTTP); Sat, 22 Jul 2023
+ 14:31:45 +0200
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Message-ID: <trinity-d3292c8a-89e4-4d5e-838f-cdf1f65ff58b-1690029105348@3c-app-gmx-bs12>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>, Andrew Lunn
+ <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ =?UTF-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, David
+ Woodhouse <dwmw@amazon.co.uk>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Felix Fietkau
+ <nbd@nbd.name>, Jakub Kicinski <kuba@kernel.org>, John Crispin
+ <john@phrozen.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Paolo Abeni
+ <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>
+Subject: Aw: Re: [PATCH net-next 0/4] Remove legacy phylink behaviour
+Content-Type: text/plain; charset=UTF-8
+Date: Sat, 22 Jul 2023 14:31:45 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <ZLsJWXyFJ0oKLkEq@makrotopia.org>
+References: <ZLptIKEb7qLY5LmS@shell.armlinux.org.uk>
+ <ZLsJWXyFJ0oKLkEq@makrotopia.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:FnS5gDkMzYIQdXsIBbt3U8OtC9v3S7ceUa6YEWbss5Uaquf3VQO93KSSQL++J1XtkwlDT
+ Jk6B/EYF6IsYrQ0EdZTY9yWzv5FQt3kC2OszjU6Po/DFHYuenqw3Q419uvTTetn5lqAog99X6KZ9
+ kGMCzr9ZrRqKSI/h36wUvxuE4NVqBKr6DDSkibk4zRZbAEvNjTFjlFVoyx2bPJpgLKVS/A1cMudw
+ yWRM8vxT6CwzUPEPMnCbkFZGpL9Y867p2uhaDsZiUutpv/vFcn0H3P88bz/zysaLkwAcr3LWHfP5
+ ck=
+UI-OutboundReport: notjunk:1;M01:P0:9nB3fUsKP2U=;ozWUwmE2EsqZM/7jmqJykWNGVQO
+ A5bfnWipOw/j/k9aH3UPdFBPzdzFDEJgy2DI2zUJEgGewpzB9hjdGpaYiaAmkBPgQyNYkMzLg
+ rbdz7KSKNPfHKMp8WkPIP7ruibNFydltW3s2nbsVJtkQxJfjKf12jIAnBPcY6ggiQAYpxfg0b
+ tHXyL5XAUXgNz+gzT42FrnKlGEoeHaknbKIA/GJ/jRNu4o8RTIi15Y71ArEAhWq5InLV2okmA
+ hXNHcvEoD01vs/6MZr2o5IKrZbCMt0oiiV6L9HA69jePO5b9NzBjCLEdAbqMu5SAbvpTbikrK
+ T2s4BJi6WJS7+VQXX93yoy1/YrmWNaIFJiN/19w3lyOeXCuwJFqsNZDnF6vXjSqZHr5S+A4up
+ dE3dkRUFbkZVEae0pS+iSQlSSjipiTjm7oY5U6L+/nX11egyKOBKL8aMdgxK591VmO5e5lW8G
+ 1Dcp2ucK26lTUEAzVtSQYLucOOcmYamnLSj9yemjBVeTk8hT8jhbP7t3q+NOgBHjFN7yaG5dy
+ dNq3DdYk1fq42w+IZ4++7Y869/D/jOwk0Xw0aW03ZHsbq3g9jr5EK+p4I4vMVbjUU1SIDik2g
+ V3GBU9xQScLRGiLYItxgr5YuJBcaD09TjW//7Y7pyfeGYKHRyC0OctLh2xpBI75S/Q5wdWT3k
+ 081g6OH1ciaFxOIHAfwoqRG/eyIV0bqur+DIWcfNejiwsAH0/tE3tPBPSffMs3cWB8+TZRK36
+ hgomKW/vcHUE1sSMtK5tWkTEq+wM3w3n1kgVjSM+u6585j2sjqwNnQnBMkzc6CIncwwKZGyAg
+ RhcEZ4Ph4WlAWMiwxhgtCJpA==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230722_051356_143643_D072980E 
-X-CRM114-Status: GOOD (  20.03  )
+X-CRM114-CacheID: sfid-20230722_053213_015830_390B6E38 
+X-CRM114-Status: GOOD (  28.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,48 +101,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-=E5=9C=A8 2023-06-13=E6=98=9F=E6=9C=9F=E4=BA=8C=E7=9A=84 10:44 +0200=EF=BC=
-=8CDaniel Lezcano=E5=86=99=E9=81=93=EF=BC=9A
-> On 29/05/2023 18:20, Icenowy Zheng wrote:
-> > In the commit I reverted as the first commit of this patchset, the
-> > of_iomap function call, which allows multiple mapping of the same
-> > physical memory space, is replaced to calling devm_of_iomap, which
-> > registers exclusivity, and on my system (mt8173-elm), preventing
-> > display
-> > from working.
-> >=20
-> > So I reverted it, and to really solve the problem that the original
-> > commit wants to solve, I read the source of auxadc-thermal and
-> > realized
-> > that the address of these two memory blocks are not saved after
-> > probe,
-> > and they're only used when initializing the thermal sensors. This
-> > leads
-> > to my final fix, which is the second commit here, that adds
-> > of_iounmap
-> > just to the probe function.
-> >=20
-> > Icenowy Zheng (2):
-> > =C2=A0=C2=A0 Revert "thermal/drivers/mediatek: Use devm_of_iomap to avo=
-id
-> > resource
-> > =C2=A0=C2=A0=C2=A0=C2=A0 leak in mtk_thermal_probe"
-> > =C2=A0=C2=A0 thermal/drivers/mediatek: unmap foreign MMIO after probing
-> >=20
-> > =C2=A0 drivers/thermal/mediatek/auxadc_thermal.c | 46 ++++++++++++-----=
--
-> > -----
-> > =C2=A0 1 file changed, 24 insertions(+), 22 deletions(-)
->=20
-> I'll apply only the revert and let you revisit the patch 2 which
-> could=20
-> be improved.
+Hi
 
-Sorry, is the first patch applied? I didn't see it in any kernel
-trees...
+> Gesendet: Samstag, 22. Juli 2023 um 00:40 Uhr
+> Von: "Daniel Golle" <daniel@makrotopia.org>
+>
+> Hi Russell,
+>
+> On Fri, Jul 21, 2023 at 12:33:52PM +0100, Russell King (Oracle) wrote:
+> > Hi,
+> >
+> > This series removes the - as far as I can tell - unreachable code in
+> > mtk_eth_soc that relies upon legacy phylink behaviour, and then remove=
+s
+> > the support in phylink for this legacy behaviour.
+> >
+> > Patch 1 removes the clocking configuration from mtk_eth_soc for non-
+> > TRGMII, non-serdes based interface modes, and disables those interface
+> > modes prior to phylink configuration.
+> >
+> > Patch 2 removes the mac_pcs_get_state() method from mtk_eth_soc which
+> > I believe is also not used - mtk_eth_soc appears not to be used with
+> > SFPs (which would use a kind of in-band mode) nor does any DT appear
+> > to specify in-band mode for any non-serdes based interface mode.
+> >
+> > With both of those dealt with, the kernel is now free of any driver
+> > relying on the phylink legacy mode. Therefore, patch 3 removes support
+> > for this.
+> >
+> > Finally, with the advent of a new driver being submitted today that
+> > makes use of state->speed in the mac_config() path, patch 4 ensures th=
+at
+> > any phylink_link_state member that should not be used in mac_config is
+> > either cleared or set to an invalid value.
+>
+> Thank you for taking care of this!
 
-I have no current idea about how to fix in patch 2.
+> For the whole series:
+>
+> Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+> Tested-by: Daniel Golle <daniel@makrotopia.org>
+>
+> Tested on BPi-R2 (MT7623N), BPi-R3 (MT7986A) and BPi-R64 (MT7622A).
+> All works fine as expected.
 
->=20
+have you changed anything?
 
+in my test with bpi-r2 i see boot hangs after link-up on my wan-port (stil=
+l trgmii-mode configured), no access to userspace.
+
+[   10.881844] mtk_soc_eth 1b100000.ethernet eth0: configuring for fixed/t=
+rgmii link mode
+[   10.891611] mtk_soc_eth 1b100000.ethernet eth0: Link is Up - 1Gbps/Full=
+ - flow control rx/tx
+[   11.005814] mt7530-mdio mdio-bus:1f wan: configuring for phy/gmii link =
+mode
+[   11.016654] mt7530-mdio mdio-bus:1f lan3: configuring for phy/gmii link=
+ mode
+[   11.025685] mt7530-mdio mdio-bus:1f lan2: configuring for phy/gmii link=
+ mode
+[   11.035122] mt7530-mdio mdio-bus:1f lan1: configuring for phy/gmii link=
+ mode
+[   11.045370] mt7530-mdio mdio-bus:1f lan0: configuring for phy/gmii link=
+ mode
+
+[   15.144255] mt7530-mdio mdio-bus:1f wan: Link is Up - 1Gbps/Full - flow=
+ control rx/tx
+
+removing the cable does not show link down so it looks like completely sta=
+lled...but also no panic/crash or similar.
+When booting without cable it hangs too (without the up-message of course)=
+.
+
+> To apply the series I needed to resolve a minor conflict due to
+> net: ethernet: mtk_ppe: add MTK_FOE_ENTRY_V{1,2}_SIZE macros
+> being applied in the meantime.
+
+i used yesterdays net-next (6.5-rc2) and put series on top (also needed to=
+ do one hunk of first patch manually) and
+then my defconfig,buildscript etc. maybe i miss anything?
+
+afair trgmii is basicly rgmii only with higher clock-setting...and if this=
+ is dropped from mac-driver but switch is still using it it cannot work, b=
+ut i'm sure you know this ;)
+
+regards Frank
 
