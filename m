@@ -4,87 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9060EC001B0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jul 2023 11:51:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B24EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jul 2023 11:51:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=iRVy6KWUyqulQ6zTq7bMa84y6yN8EmR7H7VKy0sjKtE=; b=eF67CTjW0fa+nlaCtoBjOqaAO7
-	G8RW+3eoQvr/sXzONjVrzw+bLisD9RsBEoGx7TwMJREJjyvok6I2FNGqXIOV+sFQvccQqHMFmld4h
-	Oo0JogVB57RJsXatyXAVSAGt+Ub8C42vy9XsT+X3XbIiSQiErA+pqx9PgIobmLhdN5ZsiZTmuSn8L
-	VfqAh7Uyx+ltF4Tggoaan5PlVgYyDvcWoABXt4TdFXUp49Ak8N91VaMl7F8BES7BI4rpEb8dBSCoC
-	4RKNRzT4RwLpyrMsrNahtdboM5tZ5n7WG7d0xzcyrGGEyDFAkuMivrNNA1x55KtJalzp8p3N74s81
-	pDGj/3+g==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=R6PzViV5Y9OmUAkqhYjwDJV91zNywmpdfDXZvoN28Kc=; b=dz23FR5zIZBjfbx+sAjtATvFLx
+	gcVnqqRByNNwkEaQyOMjRueSjC6R0bqKgHCRrPPAvqmiMCT8jTtK6IQkbvCR1QmXGaVkEsJNaOQbu
+	jJ9oLjFUhScwtfuLND0tJjyRW6e0GCj+cOMr4IIBq80GZHmhlwJinTQ7UEtU7yloGGU7RJ8g88kX+
+	gd1tcS2Scssg92hHivKrFc7C8WTtcMpJBEwq23QRuQzoCcYkAU6pT9jcis6oRTHcvtIqndVwKS+qw
+	Nx3yB+hrBhTb1AQfViWypChR8CHl4uLmr5UVCf1ORAXPb9fEEGd7QiEuOPOkw+A8KEVMRqP0EW8qa
+	mB/pRHkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNB8f-00GcAI-1q;
-	Sat, 22 Jul 2023 11:51:09 +0000
+	id 1qNB9Q-00GcOu-2W;
+	Sat, 22 Jul 2023 11:51:56 +0000
 Received: from aposti.net ([89.234.176.197])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNB8b-00Gc8f-0h;
-	Sat, 22 Jul 2023 11:51:08 +0000
+	id 1qNB9N-00GcMt-1f;
+	Sat, 22 Jul 2023 11:51:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1690026657;
+	s=mail; t=1690026683;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=iRVy6KWUyqulQ6zTq7bMa84y6yN8EmR7H7VKy0sjKtE=;
-	b=n4zwvlMym2vdJ00/UlAVj3FjsE2TU+U7vSjoThcE2+recQVCBh1IdkeNaVYe3ifIRHs7sM
-	L8RAa8oT4UZAw6dns2dD1d4Zf8elkDru3MQw1w0IiXtSk06cteDJbXP6wHbsn2P7Sk7Vn0
-	Ld7Zipv0p8lxj9QR80JCNcmqKk+NXpc=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=R6PzViV5Y9OmUAkqhYjwDJV91zNywmpdfDXZvoN28Kc=;
+	b=Pn0M1dQJ+gnGPsD2C4uo9sbzKD2piUYePxYhxyzqPF+2/5lX0nc4DGms2fQqHFLsVti7Lr
+	r7IjsklAebG/5YrRtChUiXaWZMvLDTyJl1l74wxCoEX6Uy7GW7JFzSo9NYLikcaWINicuy
+	0K6P5c/w8J7rADVBIybnd0re0U+XN8w=
 From: Paul Cercueil <paul@crapouillou.net>
 To: Wolfram Sang <wsa@kernel.org>
 Cc: linux-i2c@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Paul Cercueil <paul@crapouillou.net>,
-	Elie Morisse <syniurge@gmail.com>,
-	Shyam Sundar S K <shyam-sundar.s-k@amd.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Kamal Dasu <kdasu.kdev@gmail.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Bartosz Golaszewski <brgl@bgdev.pl>,
-	Jarkko Nikula <jarkko.nikula@linux.intel.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Mika Westerberg <mika.westerberg@linux.intel.com>,
-	Jan Dabros <jsd@semihalf.com>,
-	Jean Delvare <jdelvare@suse.com>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
 	Qii Wang <qii.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Peter Korsgaard <peter@korsgaard.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Zapolskiy <vz@mleia.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Conghui Chen <conghui.chen@intel.com>,
-	Viresh Kumar <viresh.kumar@linaro.org>,
-	Peter Rosin <peda@axentia.se>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	virtualization@lists.linux-foundation.org
-Subject: [PATCH v2 00/22] i2c: Use new PM macros
-Date: Sat, 22 Jul 2023 13:50:24 +0200
-Message-Id: <20230722115046.27323-1-paul@crapouillou.net>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 12/22] i2c: mt65xx: Remove #ifdef guards for PM related functions
+Date: Sat, 22 Jul 2023 13:50:36 +0200
+Message-Id: <20230722115046.27323-13-paul@crapouillou.net>
+In-Reply-To: <20230722115046.27323-1-paul@crapouillou.net>
+References: <20230722115046.27323-1-paul@crapouillou.net>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Spam: Yes
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230722_045105_434861_FEB7BDBC 
-X-CRM114-Status: UNSURE (   8.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230722_045153_705270_200EE41E 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,71 +72,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Wolfram,
+Use the new PM macros for the suspend and resume functions to be
+automatically dropped by the compiler when CONFIG_PM or
+CONFIG_PM_SLEEP are disabled, without having to use #ifdef guards.
 
-Here is a revised version of my patchset that converts the I2C drivers
-to use the new PM macros.
+This has the advantage of always compiling these functions in,
+independently of any Kconfig option. Thanks to that, bugs and other
+regressions are subsequently easier to catch.
 
-Changes since V1 include:
-- Previous patch [01/23] that updated the amd-mp2 driver has been
-  dropped per Jonathan's request.
-- [09/22]: Unfold _DEV_PM_OPS() macro
-- [10/22]: Convert to use regular device PM instead of using
-  platform_driver.{suspend,resume}. I figured it was OK to also change
-  it to use the new PM macros and keep it in one single patch.
-- [13/22]: Rewrap runtime PM line
+Signed-off-by: Paul Cercueil <paul@crapouillou.net>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-Cheers,
--Paul
+---
+Cc: Qii Wang <qii.wang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-Paul Cercueil (22):
-  i2c: au1550: Remove #ifdef guards for PM related functions
-  i2c: iproc: Remove #ifdef guards for PM related functions
-  i2c: brcmstb: Remove #ifdef guards for PM related functions
-  i2c: davinci: Remove #ifdef guards for PM related functions
-  i2c: designware: Remove #ifdef guards for PM related functions
-  i2c: exynos5: Remove #ifdef guards for PM related functions
-  i2c: hix5hd2: Remove #ifdef guards for PM related functions
-  i2c: i801: Remove #ifdef guards for PM related functions
-  i2c: img-scb: Remove #ifdef guards for PM related functions
-  i2c: kempld: Convert to use regular device PM
-  i2c: lpc2k: Remove #ifdef guards for PM related functions
-  i2c: mt65xx: Remove #ifdef guards for PM related functions
-  i2c: nomadik: Remove #ifdef guards for PM related functions
-  i2c: ocores: Remove #ifdef guards for PM related functions
-  i2c: pnx: Remove #ifdef guards for PM related functions
-  i2c: pxa: Remove #ifdef guards for PM related functions
-  i2c: qup: Remove #ifdef guards for PM related functions
-  i2c: rcar: Remove #ifdef guards for PM related functions
-  i2c: s3c2410: Remove #ifdef guards for PM related functions
-  i2c: sh-mobile: Remove #ifdef guards for PM related functions
-  i2c: virtio: Remove #ifdef guards for PM related functions
-  i2c: mux: pca954x: Remove #ifdef guards for PM related functions
-
- drivers/i2c/busses/i2c-au1550.c             | 15 +++-----------
- drivers/i2c/busses/i2c-bcm-iproc.c          | 10 +---------
- drivers/i2c/busses/i2c-brcmstb.c            |  8 +++-----
- drivers/i2c/busses/i2c-davinci.c            | 12 +++--------
- drivers/i2c/busses/i2c-designware-platdrv.c | 22 ++++++---------------
- drivers/i2c/busses/i2c-exynos5.c            |  8 +++-----
- drivers/i2c/busses/i2c-hix5hd2.c            | 10 ++++------
- drivers/i2c/busses/i2c-i801.c               |  6 ++----
- drivers/i2c/busses/i2c-img-scb.c            | 10 +++-------
- drivers/i2c/busses/i2c-kempld.c             | 19 ++++++++----------
- drivers/i2c/busses/i2c-lpc2k.c              |  8 +-------
- drivers/i2c/busses/i2c-mt65xx.c             |  8 +++-----
- drivers/i2c/busses/i2c-nomadik.c            | 12 +++--------
- drivers/i2c/busses/i2c-ocores.c             | 10 +++-------
- drivers/i2c/busses/i2c-pnx.c                | 12 ++++-------
- drivers/i2c/busses/i2c-pxa.c                |  8 +-------
- drivers/i2c/busses/i2c-qup.c                | 16 ++++-----------
- drivers/i2c/busses/i2c-rcar.c               | 10 ++--------
- drivers/i2c/busses/i2c-s3c2410.c            | 14 +++----------
- drivers/i2c/busses/i2c-sh_mobile.c          | 12 +++--------
- drivers/i2c/busses/i2c-virtio.c             |  8 ++------
- drivers/i2c/muxes/i2c-mux-pca954x.c         |  6 ++----
- 22 files changed, 67 insertions(+), 177 deletions(-)
-
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 7ca3f2221ba6..21cc39e35cf6 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -1514,7 +1514,6 @@ static void mtk_i2c_remove(struct platform_device *pdev)
+ 	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
+ }
+ 
+-#ifdef CONFIG_PM_SLEEP
+ static int mtk_i2c_suspend_noirq(struct device *dev)
+ {
+ 	struct mtk_i2c *i2c = dev_get_drvdata(dev);
+@@ -1544,11 +1543,10 @@ static int mtk_i2c_resume_noirq(struct device *dev)
+ 
+ 	return 0;
+ }
+-#endif
+ 
+ static const struct dev_pm_ops mtk_i2c_pm = {
+-	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_i2c_suspend_noirq,
+-				      mtk_i2c_resume_noirq)
++	NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_i2c_suspend_noirq,
++				  mtk_i2c_resume_noirq)
+ };
+ 
+ static struct platform_driver mtk_i2c_driver = {
+@@ -1556,7 +1554,7 @@ static struct platform_driver mtk_i2c_driver = {
+ 	.remove_new = mtk_i2c_remove,
+ 	.driver = {
+ 		.name = I2C_DRV_NAME,
+-		.pm = &mtk_i2c_pm,
++		.pm = pm_sleep_ptr(&mtk_i2c_pm),
+ 		.of_match_table = mtk_i2c_of_match,
+ 	},
+ };
 -- 
 2.40.1
 
