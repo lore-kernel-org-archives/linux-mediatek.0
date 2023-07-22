@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33831C001B0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jul 2023 20:32:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43963C001DC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jul 2023 20:33:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
 	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b7o6K/jJA6ZoR8HhDQF21C/HKxRRr7+HtxLNhNXpxl0=; b=ewfrYS3JSqKqYMmYmkTll9VPV4
-	Q6B0loLxdBOWSagRYvCSme6cu/0f0aqs/ZU3iQ42DH8DpgdrOfCBGIXKrNuiB/KDfNDcD0gM0swws
-	HKXseBOW16Rpd8Aq4EC/w0sHv2tXp+jxiAmA4evmRK7+05mS7Hmzg3FXBTa+zPcN5LXT8NGS5JmbG
-	Nrli5Fdkw2k9shIrOqj0S/ffXCjt0y5CqhTRKykXKUsRmo4CYj7/JVFvVCJmevOZdnyYgTF8k6789
-	Zw6ohnqL9Zz+HBwHeA6oO2PEnM9i1IAcuXKd2F6g5BkauOIiMA9twNutGXOlE5n3pK880ZZD8Mx8L
-	itq0HLuw==;
+	bh=7yk0ur+hpEiQbBV8GfOTsAFqllReyk886VNMTZSfoAc=; b=soY0YfElwuRitll1Mre19k5u+3
+	uQZ5emWCwDhqaSp9d88kgIktwaetbzpJu+s7E/FDH2hWeAe5yZ3RKtzG0Gr4mVF8wzdUcgqxX+lBC
+	S+FRW7pzWkDeJ9AxTZBPqPxCJoj42Wzw0DO9wveWLQbeacBOboK4Wf1nT0Z8B3/n5zUCArqsfpd1k
+	rFYAAbtiglJJySOmHPHlb+69lmGR5TCULSKjB3bUIr9s576+3SR9R1V7rIL1sK0GGzrw5SofrfWNV
+	fa46g9hJVqjLX0+ob48gLeuXKqIr6g2uBVlkYU/XvXW7SDaR0+yWorPAH6SA574U3ltBsdr0lY/6d
+	2Zr0NscA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNJH5-00HG5z-0s;
-	Sat, 22 Jul 2023 20:32:23 +0000
+	id 1qNJHf-00HGFO-12;
+	Sat, 22 Jul 2023 20:32:59 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNJGt-00HG24-2o;
-	Sat, 22 Jul 2023 20:32:15 +0000
+	id 1qNJHa-00HGDk-0n;
+	Sat, 22 Jul 2023 20:32:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
 	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=b7o6K/jJA6ZoR8HhDQF21C/HKxRRr7+HtxLNhNXpxl0=; b=Q6yaMNWauf4HD5+hRR9uAN2LjP
-	vxrHfVSmManmQ3ZW0qXR/fR+FS1cHAZv96OljhvrinfgwoHsDEn78/asxOTLTn9hrAZO0P7uJ9uwY
-	sF6xuG68QaxZUVCXtIqIt0j5mNi9B1Njh44ZZY98uB2YDYGntkGfv1eQYZ/Kc2KPBFTfpHw9+l3Lk
-	Dq4lH6oKmxhg2tWzikeI1o4UKJmqExapEjm4xxTcnE/nJ/wAAZBGIISG5dLqwEwH/NOGpOFBrmCfW
-	/QjdJ0DxMmM/YvLRgcBAdNnJYNP4xph/jJS2eEt6r3Dc+KufFDsxlJPCiiYRzdLuBch5Via9SltiV
-	PRSjHwdQ==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:42486 helo=rmk-PC.armlinux.org.uk)
+	bh=7yk0ur+hpEiQbBV8GfOTsAFqllReyk886VNMTZSfoAc=; b=m6J2bxEh2fKXI+bKv9MAcewel/
+	19mw4VQE2j2UIljzN15f7up9gSROYXGZ9MHu/ImCOTOVAteVLaCLbJWSg4HBIFjZ7dFs7qXcZRsr7
+	2EbbKNLQsBtYzFmxLJDxtdRbv/LtmMGxKfQ0U4GIx+Dbpq+ei5Q5r8/nbmcWnztFehrqw7s8mL6dQ
+	yRrnBYJS+X2836Y6dEajDX15A7kYTqk8RINJ/N32rBFu0P6O0rIu1mlc3jYGPsZShweiHl47qf2Hg
+	jo7VIz3at+MV72he1pRiv7JwGXclnoEh8DMXYUWltmMpc414ELuBfdsbFuyw4xElugxe2qWs8G1LO
+	SUWgn5BA==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:48296 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <rmk@armlinux.org.uk>)
-	id 1qNJGq-000658-0A;
-	Sat, 22 Jul 2023 21:32:08 +0100
+	id 1qNJHV-00065r-21;
+	Sat, 22 Jul 2023 21:32:49 +0100
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1qNJGq-000kAY-2g; Sat, 22 Jul 2023 21:32:08 +0100
-In-Reply-To: <ZLptIKEb7qLY5LmS@shell.armlinux.org.uk>
-References: <ZLptIKEb7qLY5LmS@shell.armlinux.org.uk>
+	id 1qNJHV-000kFT-Km; Sat, 22 Jul 2023 21:32:49 +0100
+In-Reply-To: <ZLw8DoRskRXLQK37@shell.armlinux.org.uk>
+References: <ZLw8DoRskRXLQK37@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
 To: Andrew Lunn <andrew@lunn.ch>,
 	Heiner Kallweit <hkallweit1@gmail.com>,
@@ -70,17 +70,17 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	netdev@vger.kernel.org,
 	Paolo Abeni <pabeni@redhat.com>,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH net-next 2/4] net: ethernet: mtk_eth_soc: remove
- mac_pcs_get_state and modernise
+Subject: [PATCH net-next v2 1/4] net: ethernet: mtk_eth_soc: remove incorrect
+ PLL configuration
 MIME-Version: 1.0
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1qNJGq-000kAY-2g@rmk-PC.armlinux.org.uk>
-Date: Sat, 22 Jul 2023 21:32:08 +0100
+Message-Id: <E1qNJHV-000kFT-Km@rmk-PC.armlinux.org.uk>
+Date: Sat, 22 Jul 2023 21:32:49 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230722_133211_908869_4FCFBC44 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20230722_133254_429464_E50736EE 
+X-CRM114-Status: GOOD (  20.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,82 +95,151 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove the .mac_pcs_get_state function, since as far as I can tell is
-never called - no DT appears to specify an in-band-status management
-nor SFP support for this driver.
+MT7623 GMAC0 attempts to configure the system clocking according to the
+required speed in the .mac_config callback for non-SGMII, non-baseX and
+non-TRGMII modes.
 
-Removal of this, along with the previous patch to remove the incorrect
-clocking configuration, means that the driver becomes non-legacy, so
-we can remove the "legacy_pre_march2020" status from this driver.
+state->speed setting has never been reliable in the .mac_config
+callback - there are cases where this is not the link speed,
+particularly via ethtool paths, so this has always been unreliable (as
+detailed in phylink's documentation.)
+
+There is the additional issue that mtk_gmac0_rgmii_adjust() will only
+be called if state->interface changes, which means it only configures
+the system clocking on the very first .mac_config call, which will be
+made when the network device is first brought up before any link is
+established.
+
+Essentially, this code is incredibly buggy, and probably never worked.
+
+Moreover, checking the in-kernel DT files, it seems no platform makes
+use of this code path.
+
+Therefore, let's remove it, and disable interface modes for port 0 that
+are not SGMII, 1000base-X, 2500base-X or TRGMII on the MT7623.
 
 Reviewed-by: Daniel Golle <daniel@makrotopia.org>
 Tested-by: Daniel Golle <daniel@makrotopia.org>
 Tested-by: Frank Wunderlich <frank-w@public-files.de>
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 35 ---------------------
- 1 file changed, 35 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 59 ++++++---------------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  1 +
+ 2 files changed, 17 insertions(+), 43 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index fe8b7e38decc..7490d48000c2 100644
+index 18a8aca7944d..fe8b7e38decc 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -568,38 +568,6 @@ static int mtk_mac_finish(struct phylink_config *config, unsigned int mode,
- 	return 0;
+@@ -385,10 +385,8 @@ static int mt7621_gmac0_rgmii_adjust(struct mtk_eth *eth,
  }
  
--static void mtk_mac_pcs_get_state(struct phylink_config *config,
--				  struct phylink_link_state *state)
--{
--	struct mtk_mac *mac = container_of(config, struct mtk_mac,
--					   phylink_config);
--	u32 pmsr = mtk_r32(mac->hw, MTK_MAC_MSR(mac->id));
--
--	state->link = (pmsr & MAC_MSR_LINK);
--	state->duplex = (pmsr & MAC_MSR_DPX) >> 1;
--
--	switch (pmsr & (MAC_MSR_SPEED_1000 | MAC_MSR_SPEED_100)) {
--	case 0:
--		state->speed = SPEED_10;
--		break;
--	case MAC_MSR_SPEED_100:
--		state->speed = SPEED_100;
--		break;
--	case MAC_MSR_SPEED_1000:
--		state->speed = SPEED_1000;
--		break;
--	default:
--		state->speed = SPEED_UNKNOWN;
--		break;
+ static void mtk_gmac0_rgmii_adjust(struct mtk_eth *eth,
+-				   phy_interface_t interface, int speed)
++				   phy_interface_t interface)
+ {
+-	unsigned long rate;
+-	u32 tck, rck, intf;
+ 	int ret;
+ 
+ 	if (interface == PHY_INTERFACE_MODE_TRGMII) {
+@@ -399,30 +397,7 @@ static void mtk_gmac0_rgmii_adjust(struct mtk_eth *eth,
+ 		return;
+ 	}
+ 
+-	if (speed == SPEED_1000) {
+-		intf = INTF_MODE_RGMII_1000;
+-		rate = 250000000;
+-		rck = RCK_CTRL_RGMII_1000;
+-		tck = TCK_CTRL_RGMII_1000;
+-	} else {
+-		intf = INTF_MODE_RGMII_10_100;
+-		rate = 500000000;
+-		rck = RCK_CTRL_RGMII_10_100;
+-		tck = TCK_CTRL_RGMII_10_100;
 -	}
 -
--	state->pause &= (MLO_PAUSE_RX | MLO_PAUSE_TX);
--	if (pmsr & MAC_MSR_RX_FC)
--		state->pause |= MLO_PAUSE_RX;
--	if (pmsr & MAC_MSR_TX_FC)
--		state->pause |= MLO_PAUSE_TX;
--}
+-	mtk_w32(eth, intf, INTF_MODE);
 -
- static void mtk_mac_link_down(struct phylink_config *config, unsigned int mode,
- 			      phy_interface_t interface)
- {
-@@ -722,7 +690,6 @@ static void mtk_mac_link_up(struct phylink_config *config,
+-	regmap_update_bits(eth->ethsys, ETHSYS_CLKCFG0,
+-			   ETHSYS_TRGMII_CLK_SEL362_5,
+-			   ETHSYS_TRGMII_CLK_SEL362_5);
+-
+-	ret = clk_set_rate(eth->clks[MTK_CLK_TRGPLL], rate);
+-	if (ret)
+-		dev_err(eth->dev, "Failed to set trgmii pll: %d\n", ret);
+-
+-	mtk_w32(eth, rck, TRGMII_RCK_CTRL);
+-	mtk_w32(eth, tck, TRGMII_TCK_CTRL);
++	dev_err(eth->dev, "Missing PLL configuration, ethernet may not work\n");
+ }
  
- static const struct phylink_mac_ops mtk_phylink_ops = {
- 	.mac_select_pcs = mtk_mac_select_pcs,
--	.mac_pcs_get_state = mtk_mac_pcs_get_state,
- 	.mac_config = mtk_mac_config,
- 	.mac_finish = mtk_mac_finish,
- 	.mac_link_down = mtk_mac_link_down,
-@@ -4327,8 +4294,6 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+ static struct phylink_pcs *mtk_mac_select_pcs(struct phylink_config *config,
+@@ -498,17 +473,8 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
+ 							      state->interface))
+ 					goto err_phy;
+ 			} else {
+-				/* FIXME: this is incorrect. Not only does it
+-				 * use state->speed (which is not guaranteed
+-				 * to be correct) but it also makes use of it
+-				 * in a code path that will only be reachable
+-				 * when the PHY interface mode changes, not
+-				 * when the speed changes. Consequently, RGMII
+-				 * is probably broken.
+-				 */
+ 				mtk_gmac0_rgmii_adjust(mac->hw,
+-						       state->interface,
+-						       state->speed);
++						       state->interface);
  
- 	mac->phylink_config.dev = &eth->netdev[id]->dev;
- 	mac->phylink_config.type = PHYLINK_NETDEV;
--	/* This driver makes use of state->speed in mac_config */
--	mac->phylink_config.legacy_pre_march2020 = true;
+ 				/* mt7623_pad_clk_setup */
+ 				for (i = 0 ; i < NUM_TRGMII_CTRL; i++)
+@@ -4366,13 +4332,19 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
  	mac->phylink_config.mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
  		MAC_10 | MAC_100 | MAC_1000 | MAC_2500FD;
  
+-	__set_bit(PHY_INTERFACE_MODE_MII,
+-		  mac->phylink_config.supported_interfaces);
+-	__set_bit(PHY_INTERFACE_MODE_GMII,
+-		  mac->phylink_config.supported_interfaces);
++	/* MT7623 gmac0 is now missing its speed-specific PLL configuration
++	 * in its .mac_config method (since state->speed is not valid there.
++	 * Disable support for MII, GMII and RGMII.
++	 */
++	if (!mac->hw->soc->disable_pll_modes || mac->id != 0) {
++		__set_bit(PHY_INTERFACE_MODE_MII,
++			  mac->phylink_config.supported_interfaces);
++		__set_bit(PHY_INTERFACE_MODE_GMII,
++			  mac->phylink_config.supported_interfaces);
+ 
+-	if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_RGMII))
+-		phy_interface_set_rgmii(mac->phylink_config.supported_interfaces);
++		if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_RGMII))
++			phy_interface_set_rgmii(mac->phylink_config.supported_interfaces);
++	}
+ 
+ 	if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_TRGMII) && !mac->id)
+ 		__set_bit(PHY_INTERFACE_MODE_TRGMII,
+@@ -4845,6 +4817,7 @@ static const struct mtk_soc_data mt7623_data = {
+ 	.offload_version = 1,
+ 	.hash_offset = 2,
+ 	.foe_entry_size = MTK_FOE_ENTRY_V1_SIZE,
++	.disable_pll_modes = true,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma),
+ 		.rxd_size = sizeof(struct mtk_rx_dma),
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 707445f6bcb1..28adda0c90c0 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -1030,6 +1030,7 @@ struct mtk_soc_data {
+ 	u16		foe_entry_size;
+ 	netdev_features_t hw_features;
+ 	bool		has_accounting;
++	bool		disable_pll_modes;
+ 	struct {
+ 		u32	txd_size;
+ 		u32	rxd_size;
 -- 
 2.30.2
 
