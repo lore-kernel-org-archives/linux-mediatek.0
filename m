@@ -4,121 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 894D2C001E0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jul 2023 01:30:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDA20C001DE
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jul 2023 06:23:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YvapDlgEUzhYWt9kSo8gs1KQpSfobdwO/63wrHbPhWU=; b=y/dJI14nr02Etj4Kt1hVye0LjJ
-	XA9y80Y09OGmnAXPXFRFFpnlTu36drHQnv/+kPKvWfODq1ihLscHHIBdvdmLimPvHx8bnfeL4UXEM
-	KMuehxLx3SUE7TWd7IVJowqhnd1qSTEzq62IuyXKILySNJ+MoY7Mrs9kcqfwR6Bc9BIfmCldvtf4j
-	bkWjLYtaL1FNMxFmWm0ZgJY15P6jUN/KphQhrdhxTXywclh5/wyI21X2r6KeHevwpr/x/SFnve85B
-	Do7EzTAnHWkrrh/xG3p+b1p3otzNFgjb0AGydhxSy3iENLsYaHrGL3wLPdf2angeqlijlX8W51a8M
-	77AuFMcQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BzcwBdf78cB/48//MiDdlDYiBVzXqww9lihlrmokRJw=; b=HLDvkDbuv9/9/AAHRo11atWngV
+	xRfZcRbMN7DafiRmyWxvbcC5LY4j31FXsl3OVd8BQOOJfMYQVsg4IiZGm3sYJZmBk42aZS7C/xkuD
+	JIuSMIhbYfSQh3vWsel30oYh+8bxj/FtX7VAv8n/k17hUmMjtsdAfxnx0u+Yhf8ZOMxPnmLJ3NPF2
+	uk52W+tRZzP7jpsiOAN2mJled0KnMEGN1Cbs+LGL14Z1+t+KqGDxS3q0Kwdk0beqsC+e1FqePwfqh
+	gqvisMVbvrqEcQ6Z+W7VnjTBl2yk41vWfyI0fEWbDFPOVO6ZkmnqiXgvErqGFUQq/UMFlg5w3G7mz
+	530Jwtyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qN1RX-00FXUX-1R;
-	Sat, 22 Jul 2023 01:29:59 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1qN61H-00FwH8-2P;
+	Sat, 22 Jul 2023 06:23:11 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qN1RL-00FXQu-1i;
-	Sat, 22 Jul 2023 01:29:49 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 36M1RjGa015517;
-	Sat, 22 Jul 2023 01:29:30 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=YvapDlgEUzhYWt9kSo8gs1KQpSfobdwO/63wrHbPhWU=;
- b=csljY8xGK+xqVZd9kL9pb1hsEQS9UU02KLfZ7LjBQU+8xp/QkTeyqMVgLT+RfJgsSmbv
- NNq7U4CqUNqBoiyV8+ovGLlM6surnstAdWBmRT0V0TbP5KfGmx8NsOeauf7pnck7gspB
- 0rtpquf2QMwDDfh0AoN+qWLHTHiLii7bh8Ux5X7qOWTzrlybTOrt8dtRr0Z2FYQT+pk7
- ddMXf2SbkElQaVWC8NZBvdE2WO8DLFjSTc58XYAm42QMqemfByKfagPNqDmE9GHAXZiP
- v91Uy/FGSfwbG95fDDGqjhtrSk+BVzMa3LtWhcnrd+Njaxa1d9vuykDVxh13I4GkmS5B zg== 
-Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ryfyf2sqf-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Sat, 22 Jul 2023 01:29:30 +0000
-Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
-	by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 36M1TLt0013205
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Sat, 22 Jul 2023 01:29:21 GMT
-Received: from [10.110.24.156] (10.80.80.8) by nasanex01a.na.qualcomm.com
- (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.30; Fri, 21 Jul
- 2023 18:29:19 -0700
-Message-ID: <ed76cf3a-cf53-03ae-ef64-0f94ecb51242@quicinc.com>
-Date: Fri, 21 Jul 2023 18:29:19 -0700
+	id 1qN61F-00FwGK-09;
+	Sat, 22 Jul 2023 06:23:10 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 5368160A2B;
+	Sat, 22 Jul 2023 06:23:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 23582C433C8;
+	Sat, 22 Jul 2023 06:23:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1690006987;
+	bh=ATt0mJH63hD11NsGO1CXJNXu6h7gACVARO144Twht50=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=lrpv8S0y1i61UKW0kJN2SmXvdtQ/2eVs6CPM3ouaiY6RVD+ZLeJxE7aP/2isQU2GF
+	 YFGYStBGddsuVfDatpCqMKzbx0QNXobSYPnlKMs3Bg0FbOdh11jVqsIPsxioIoZuSa
+	 /BgqmsVhNXiPa+8l8kp8ZT1Ly0zvuy1OKFun3kLtTYwfVXlSr3jbghQKfpR704HR8V
+	 WnWQWjZs/0uTSBPcM7ABIoPTX9KDnJDcAVfXE3dnnw8IYLecATEUgsG4rEw2EcJqyt
+	 4BIXlDOb3YMbp1CDz9t6AvjVpangT9xN/jPvz1EqkRxyf4Ef3Wbud7I3agYId9YiSe
+	 rLvvNZqdHkbMQ==
+From: Kalle Valo <kvalo@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>,  Paul Fertser <fercerpav@gmail.com>,
+  linux-wireless@vger.kernel.org,  Lorenzo Bianconi <lorenzo@kernel.org>,
+  Ryder Lee <ryder.lee@mediatek.com>,  Shayne Chen
+ <shayne.chen@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>,  "David
+ S. Miller" <davem@davemloft.net>,  Eric Dumazet <edumazet@google.com>,
+  Paolo Abeni <pabeni@redhat.com>,  Matthias Brugger
+ <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  netdev@vger.kernel.org,
+  linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
+  linux-mediatek@lists.infradead.org,  Rani Hod <rani.hod@gmail.com>,
+  stable@vger.kernel.org
+Subject: Re: [PATCH] mt76: mt7615: do not advertise 5 GHz on first phy of
+ MT7615D (DBDC)
+References: <20230605073408.8699-1-fercerpav@gmail.com>
+	<00a2f5ba-7f46-641c-2c0e-e8ecb1356df8@nbd.name>
+	<20230721073701.38f8479c@kernel.org>
+Date: Sat, 22 Jul 2023 09:23:03 +0300
+In-Reply-To: <20230721073701.38f8479c@kernel.org> (Jakub Kicinski's message of
+	"Fri, 21 Jul 2023 07:37:01 -0700")
+Message-ID: <87jzus1n3s.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v4 2/9] virt: geniezone: Add GenieZone hypervisor support
-Content-Language: en-US
-To: =?UTF-8?B?WWktRGUgV3UgKOWQs+S4gOW+tyk=?= <Yi-De.Wu@mediatek.com>,
-        "corbet@lwn.net" <corbet@lwn.net>,
-        "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>,
-        "krzysztof.kozlowski@linaro.org"
-	<krzysztof.kozlowski@linaro.org>,
-        "catalin.marinas@arm.com"
-	<catalin.marinas@arm.com>,
-        =?UTF-8?B?WWluZ3NoaXVhbiBQYW4gKOa9mOepjui7kik=?=
-	<Yingshiuan.Pan@mediatek.com>,
-        "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>,
-        "arnd@arndb.de" <arnd@arndb.de>,
-        =?UTF-8?B?WmUteXUgV2FuZyAo546L5r6k5a6HKQ==?= <Ze-yu.Wang@mediatek.com>,
-        "will@kernel.org" <will@kernel.org>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-        "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-        "robh+dt@kernel.org" <robh+dt@kernel.org>,
-        =?UTF-8?B?TVkgQ2h1YW5nICjojormmI7ouo0p?= <MY.Chuang@mediatek.com>,
-        "conor.dooley@microchip.com" <conor.dooley@microchip.com>,
-        =?UTF-8?B?UGVpTHVuIFN1ZWkgKOmai+WfueWAqyk=?= <PeiLun.Suei@mediatek.com>,
-        =?UTF-8?B?TGlqdS1jbHIgQ2hlbiAo6Zmz6bqX5aaCKQ==?=
-	<Liju-clr.Chen@mediatek.com>,
-        =?UTF-8?B?SmFkZXMgU2hpaCAo5pa95ZCR546oKQ==?=
-	<jades.shih@mediatek.com>,
-        "conor+dt@kernel.org" <conor+dt@kernel.org>,
-        "dbrazdil@google.com" <dbrazdil@google.com>,
-        "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-        "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>,
-        =?UTF-8?B?U2hhd24gSHNpYW8gKOiVreW/l+elpSk=?= <shawn.hsiao@mediatek.com>,
-        "linux-arch@vger.kernel.org" <linux-arch@vger.kernel.org>,
-        "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
-        =?UTF-8?B?SXZhbiBUc2VuZyAo5pu+5b+X6LuSKQ==?= <ivan.tseng@mediatek.com>,
-        =?UTF-8?B?Q2hpLXNoZW4gWWVoICjokYnlpYfou5Ip?= <Chi-shen.Yeh@mediatek.com>
-References: <20230609085214.31071-1-yi-de.wu@mediatek.com>
- <20230609085214.31071-3-yi-de.wu@mediatek.com>
- <2fe0c7f9-55fc-ae63-3631-8526a0212ccd@linaro.org>
- <ea531ba80db67cccb03ea173e714fe868f869e91.camel@mediatek.com>
-From: Trilok Soni <quic_tsoni@quicinc.com>
-In-Reply-To: <ea531ba80db67cccb03ea173e714fe868f869e91.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01a.na.qualcomm.com (10.52.223.231)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: KmU9ARhqeji_KEvAO7GLvlFq471SDz7_
-X-Proofpoint-ORIG-GUID: KmU9ARhqeji_KEvAO7GLvlFq471SDz7_
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
- definitions=2023-07-21_12,2023-07-20_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=999 spamscore=0
- mlxscore=0 lowpriorityscore=0 bulkscore=0 phishscore=0 adultscore=0
- priorityscore=1501 impostorscore=0 clxscore=1011 malwarescore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2306200000 definitions=main-2307220011
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230721_182947_575997_AD39FADE 
-X-CRM114-Status: GOOD (  23.17  )
+X-CRM114-CacheID: sfid-20230721_232309_128798_9ABCBC2E 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,100 +86,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/21/2023 1:46 AM, Yi-De Wu (吳一德) wrote:
-> On Fri, 2023-06-09 at 17:22 +0200, Krzysztof Kozlowski wrote:
->>   	
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>   On 09/06/2023 10:52, Yi-De Wu wrote:
->>> From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
->>>
->>> GenieZone is MediaTek hypervisor solution, and it is running in EL2
->>> stand alone as a type-I hypervisor. This patch exports a set of
->> ioctl
->>> interfaces for userspace VMM (e.g., crosvm) to operate guest VMs
->>> lifecycle (creation and destroy) on GenieZone.
->>
->> ...
->>
->>> +static int gzvm_drv_probe(void)
->>> +{
->>> +int ret;
->>> +
->>> +if (gzvm_arch_probe() != 0) {
->>> +pr_err("Not found available conduit\n");
->>> +return -ENODEV;
->>> +}
->>> +
->>> +ret = misc_register(&gzvm_dev);
->>> +if (ret)
->>> +return ret;
->>> +gzvm_debug_dev = &gzvm_dev;
->>> +
->>> +return 0;
->>> +}
->>> +
->>> +static int gzvm_drv_remove(void)
->>> +{
->>> +destroy_all_vm();
->>> +misc_deregister(&gzvm_dev);
->>> +return 0;
->>> +}
->>> +
->>> +static int gzvm_dev_init(void)
->>> +{
->>> +return gzvm_drv_probe();
->>
->> So for every system and architecture you want to: probe, run some SMC
->> and then print error that it is not othe system you wanted.
->>
->> I don't think this is what we want. You basically pollute all of
->> other
->> users just to have your hypervisor guest additions...
->>
->>
->> Best regards,
->> Krzysztof
-> 
-> 
-> hi Krzysztof,
-> 
-> After some back-and-forth discussion[1][2][3][4][5], we'd like to bring
-> bakc all the attension of related issues in this thread.
-> 
-> We're going to restore the dt solution on our next version, which means
-> we would maintain a simple dt for discovering the hypervisor node and
-> probe for the status of the device when needed.
+Jakub Kicinski <kuba@kernel.org> writes:
 
-.. see the comment below.
+> On Fri, 21 Jul 2023 10:03:49 +0200 Felix Fietkau wrote:
+>> On 05.06.23 09:34, Paul Fertser wrote:
+>> > On DBDC devices the first (internal) phy is only capable of using
+>> > 2.4 GHz band, and the 5 GHz band is exposed via a separate phy object,
+>> > so avoid the false advertising.
+>> > 
+>> > Reported-by: Rani Hod <rani.hod@gmail.com>
+>> > Closes: https://github.com/openwrt/openwrt/pull/12361
+>> > Fixes: 7660a1bd0c22 ("mt76: mt7615: register ext_phy if DBDC is detected")
+>> > Cc: stable@vger.kernel.org
+>> > Signed-off-by: Paul Fertser <fercerpav@gmail.com>  
+>> Acked-by: Felix Fietkau <nbd@nbd.name>
+>> 
+>> Jakub, could you please pick this one up for 6.5?
+>
+> Kalle reported that he's back to wireless duties a few hours after you
+> posted so just to avoid any confusion - I'll leave this one to Kalle
+> unless told otherwise.
 
-> 
-> The reasons are listed below for the record.
-> - Although dt is for hardware, it's difficult to discover a specific
-> hypervisor without probing on all subsystem and thus pollute all of
-> other users[4] as a consequence.
+Yup, I'm back. I assigned this to me on patchwork and planning to queue
+for v6.5.
 
-I don't understand. Patches will help here to understand what exactly 
-you are referring here.
+-- 
+https://patchwork.kernel.org/project/linux-wireless/list/
 
-> - The GenieZone hypervisor could be considered as a vendor model to
-> assist platform virtualization whose implementation is independent from
-> Linuxism.
-
-Then why we are adding this hypervisor support in Linux?
-
-> 
-> Please let us if there're any other concerns.
-> 
-> Reference
-> 
-> [1]
-> https://android-review.googlesource.com/c/kernel/common/+/2447547/comment/495502f3_bb52344b/
-
-Why we look at the ACK patches here on the LKML? Please submit them here 
-if you would like to discuss and review?
-
----Trilok Soni
-
-
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
