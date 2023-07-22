@@ -4,39 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3180FEB64DC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jul 2023 12:43:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D59AAC001DC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jul 2023 16:15:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mCklsmq0z2M0owE9Q0KMHsvzsrQdCCMJXUvWrtt3znU=; b=D/1yCOD0TaBPYA3kd4QttR1VQk
-	pz3Vju6b2ov9eBUlQXCEVIEwasDxTDNEQBT5xFZxhJAsEnozI1Ni7cwOcklu8q3I5aJE875kuKmFP
-	nenubN1T2vSZ7Gdm2UtBHeGpyy9dBsECMDHvG20gCOqE51EiEv1oBzUSlvSG7iaOFplJxs/nfokED
-	fhx7afnxRTMkTBBtk0fGBwpd/ZUHG+7G5KJ8fIuJnl9/DXBYBbVNS9wGZI+kOncGrPkOtjOKU/dDB
-	Jde7Yk5/eARzBxVtp7XHpkNNH30CTsxqecQVpbQN48yiPksjpeCs4pZ11M4ZfVUmJpmlTrb9eFUe9
-	hjwblmpA==;
+	bh=XKVHJyJECSJtNJKaR7HbTNK7YofkTCudfbJW2IZ3DHw=; b=L/y2K3tMZ8sYTqHs7+wu+h/VmY
+	6gB2/5Gp4FDuEr+0MaW+vCB+q+Ub4ulloOOgGo/BFM4RERGRhJyhR0kMtjuFFQP0W1q80NIaVL+7p
+	f3LO+b1+QOzB6yaTSmjq63gMkkGqTExv0VbcU+VzPASSBznHnPSlKverzkF71YX41VOjHzvXizNby
+	vbJhyZcwB41LincmOboUqxfkARDi+Xk6gIaMnTGec68iPiQKV+1qvD0DRqrxuULfzyodo4+VpBJ5U
+	OaVqLG3vaqEbn+b8QeKHvw4LOX3EAjTUxvYw5rdPQirmILoWNQeYCZwxIYoFTFLgA+WWiSQLmwfBR
+	VUAWPIYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNBxZ-00GiVu-08;
-	Sat, 22 Jul 2023 12:43:45 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1qNFGE-00GyWS-2L;
+	Sat, 22 Jul 2023 16:15:14 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNBxW-00GiUC-0V;
-	Sat, 22 Jul 2023 12:43:43 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1qNBx5-0007uX-3D;
-	Sat, 22 Jul 2023 12:43:16 +0000
-Date: Sat, 22 Jul 2023 13:43:07 +0100
-From: Daniel Golle <daniel@makrotopia.org>
+	id 1qNFGA-00GyVP-0g;
+	Sat, 22 Jul 2023 16:15:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=XKVHJyJECSJtNJKaR7HbTNK7YofkTCudfbJW2IZ3DHw=; b=IX0pgwWEdave+2n/DxA/YB/YAk
+	uplHZ0UtmWv8GvRT+gRQC6SC6w2DWQc2zS89reTvqod87ZWYAJIFppF/+CtSra9kJV85fuCtHH6hE
+	9a/T9Dk0/LnS9KGCE37n+FVtk6JTE1+Unfb9qj/qpok2nNQqoAFlR4KJkL0Bmvu7TliAtUozk8xX0
+	fH+rPiSBNpmPSquKZ1brRKpsxfKObl4ijH8QzDBWbeRNef8S6QgeYe79RHxH0LeXHPpVvv5gNsxDW
+	jjaovStWIjCCfGSP8P+c4oLK5ItgutDQw4EfHnNRlkU9N1igvaXzCSJVCd2Wze3BEDaCTt+wMjEwU
+	afrcV26g==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:51558)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1qNFFu-0005uh-0H;
+	Sat, 22 Jul 2023 17:14:54 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1qNFFl-0007Hl-Gf; Sat, 22 Jul 2023 17:14:45 +0100
+Date: Sat, 22 Jul 2023 17:14:45 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Frank Wunderlich <frank-w@public-files.de>
-Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
-	Andrew Lunn <andrew@lunn.ch>,
+Cc: Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
 	Heiner Kallweit <hkallweit1@gmail.com>,
 	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
 	David Woodhouse <dwmw@amazon.co.uk>,
@@ -50,8 +64,8 @@ Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
 	Mark Lee <Mark-MC.Lee@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
 	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>
-Subject: Re: Aw: Re: [PATCH net-next 0/4] Remove legacy phylink behaviour
-Message-ID: <ZLvO2_OCBO53oS5c@makrotopia.org>
+Subject: Re: Re: [PATCH net-next 0/4] Remove legacy phylink behaviour
+Message-ID: <ZLwAdTvTIH3VakJS@shell.armlinux.org.uk>
 References: <ZLptIKEb7qLY5LmS@shell.armlinux.org.uk>
  <ZLsJWXyFJ0oKLkEq@makrotopia.org>
  <trinity-d3292c8a-89e4-4d5e-838f-cdf1f65ff58b-1690029105348@3c-app-gmx-bs12>
@@ -60,8 +74,8 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <trinity-d3292c8a-89e4-4d5e-838f-cdf1f65ff58b-1690029105348@3c-app-gmx-bs12>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230722_054342_191782_A7C3CE2E 
-X-CRM114-Status: GOOD (  33.15  )
+X-CRM114-CacheID: sfid-20230722_091510_545746_28F62DC4 
+X-CRM114-Status: GOOD (  33.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,18 +156,15 @@ On Sat, Jul 22, 2023 at 02:31:45PM +0200, Frank Wunderlich wrote:
 > 
 > i used yesterdays net-next (6.5-rc2) and put series on top (also needed to do one hunk of first patch manually) and
 > then my defconfig,buildscript etc. maybe i miss anything?
-
-I tested in a fairly similar way.
-
 > 
 > afair trgmii is basicly rgmii only with higher clock-setting...and if this is dropped from mac-driver but switch is still using it it cannot work, but i'm sure you know this ;)
 
-For TRGMII mode mtk_gmac0_rgmii_adjust behavior should not have changed,
-only speed-dependent adjustments for RGMII have been dropped.
-I also didn't not see such a problem when I was testing.
+Have you tried bisecting the four patches? Does that give any hints?
+Does the net-next base you used boot successfully?
 
-However, I guess in my case the MAC interface mode has already been
-setup in hardware because I booted the board via TFTP, hence U-Boot
-already took care of initializing everything, so that can also be
-a reason why it worked fine for me.
+Thanks.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
