@@ -4,81 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29728EB64DA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jul 2023 08:05:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3840EB64DA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Jul 2023 10:00:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1wIftbNNCAql/NPnhRepdInvxWQTrg7zNsKW5UuwLbY=; b=eFJBjJlyizwLy8lvJjpwSRmpzW
-	cRSDE7zlyLp5FxuvmZyoGE5Ta8GcHqofO+PixHzdHcdm98FBE/oQ5A5jt4gUI2lJmAobQQHZfrWpO
-	Jd9N+98REk3sgYJ7dQTc4J773NfkvKy1glgSG4Ik3qbYegPyx1gOFTbpbfZIaRHDYXJ5cRI6bjLnP
-	3m74HxZ8+PfSRMdcI++Hmb/EtveJepTqwHG+uZbHA/c++Rt/mTjgUn42CXFJqW9ovkXx/01c6Y3eK
-	JmqpIeEvnngo2NfsmjkC/1EBOJ18mlsM3eAP4wAQobVqOEaRQZRA86XLVEipzHzNGbCC6T8/OpJ2O
-	EXKsodMQ==;
+	bh=6yyk+8AUHogRY6VGCcq7gK19lYu9z6jQp5PJLadL41w=; b=ZTforjQc8NWtuFNJz7UuK41Gb+
+	XzH5V9/k0lfpcXeiYVcikPZmjI+1MfBfPcrttck5ymIe39fRLQIGm3KT6RL8HZtByez9BwJAsEQ4W
+	/gFH+MaUiIrmBLjhmK2OEUlr9w6x/T/efDVqBGR2YJ1wn0d7pOK5nfmXcxh0hqkJs4eSSFSjFa0mH
+	B4bAqXM03Mq6WffrmkVS8QbxQizrhnqCOc8CUFqxiPA0BxrHH8oIjiuu8fOYir6jyfek0VX6MRtzJ
+	exEpb3+EIBvuh9iWBawpefs32eXaUzLpokCIxdvGLliNRGXWGFIf7Q9Lk/l5gM7kEtnYhvqNNWNnF
+	JAmIyedA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qN7br-00G6Z7-0l;
-	Sat, 22 Jul 2023 08:05:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qN9PQ-00GJoV-1y;
+	Sat, 22 Jul 2023 10:00:20 +0000
+Received: from gofer.mess.org ([88.97.38.141])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qN7bo-00G6YC-1K;
-	Sat, 22 Jul 2023 08:05:01 +0000
-X-UUID: 71e1f344286611ee912e1518a6540028-20230722
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1wIftbNNCAql/NPnhRepdInvxWQTrg7zNsKW5UuwLbY=;
-	b=GqxkRDUagbJRnZAbz66HxWG8l/u8in2HI255dVlS26EKyIbQQs7IJ7DZiB7PYqlIxikQo7LEa0z0yGG+KlBQmsaurmG8cuRfLd9InbMf4EKRJeEfv2gAbeADy01ab7SV3KPRFHfIyd1/oCvYoKDJAwe8G4FIv1yBkckOGTx/bAQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.28,REQID:028553cb-85b2-485c-b803-bd67784621eb,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:176cd25,CLOUDID:2abcff4c-06c1-468b-847d-5b62d44dbb9b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 71e1f344286611ee912e1518a6540028-20230722
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1661291781; Sat, 22 Jul 2023 01:04:55 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 22 Jul 2023 15:44:52 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 22 Jul 2023 15:44:51 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
- Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>, Mingjia
- Zhang <mingjia.zhang@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2,2/3] media: mediatek: vcodec: Add capture format to support 10bit raster mode
-Date: Sat, 22 Jul 2023 15:44:47 +0800
-Message-ID: <20230722074448.30671-3-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230722074448.30671-1-yunfei.dong@mediatek.com>
-References: <20230722074448.30671-1-yunfei.dong@mediatek.com>
+	id 1qN9PM-00GJmL-1T;
+	Sat, 22 Jul 2023 10:00:18 +0000
+Received: by gofer.mess.org (Postfix, from userid 1000)
+	id 1365910006C; Sat, 22 Jul 2023 11:00:08 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mess.org; s=2020;
+	t=1690020008; bh=YcBVF9OByPJWzCU45MSsTPERsEXi6qu8BVTu0NkN++c=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RwUTEpJM3LXz5vvd/Y0UX8jlKMMGY5MBgH5ORtxvVA9epRgGRHV+EJ5bxsx5U1fQ6
+	 be1F7Q3RwRnOO5wlKAT0dYHSsoH4oFxvkbJDIwD8j47iVVLvWgdnaMVaH+O93y4uzm
+	 j3qDxiYJK6H8/rdrOpRd03QDT0xv1AjEWYkR9+0NsPhEsbWdUX1bQSfAM/Gx+soJCw
+	 ruhU+je4WXNX+nPIr793k7oHAUiPHpLY2zVhHHyJqGcJAQpdoBqqBU/02KtJcabL8p
+	 iq/Ie/NdHUd1BPLYxd1Z7aDweYfgxI67HdC317LlyUi4QUHxgrFjo0fCSxudDhfrPM
+	 X4oARS48J/LLA==
+Date: Sat, 22 Jul 2023 11:00:08 +0100
+From: Sean Young <sean@mess.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Rui Miguel Silva <rmfrfs@gmail.com>,
+	Steve Longerbeam <slongerbeam@gmail.com>,
+	Matt Ranostay <matt.ranostay@konsulko.com>,
+	Michael Tretter <m.tretter@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Ming Qian <ming.qian@nxp.com>, Shijie Qin <shijie.qin@nxp.com>,
+	Zhou Peng <eagle.zhou@nxp.com>, Eddie James <eajames@linux.ibm.com>,
+	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Bin Liu <bin.liu@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Stanimir Varbanov <stanimir.k.varbanov@gmail.com>,
+	Vikash Garodia <quic_vgarodia@quicinc.com>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>,
+	Jacopo Mondi <jacopo@jmondi.org>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krz ysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Yong Deng <yong.deng@magewell.com>,
+	Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+	Benoit Parrot <bparrot@ti.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org, openbmc@lists.ozlabs.org,
+	linux-aspeed@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-amlogic@lists.infradead.org
+Subject: Re: [PATCH v2] media: Explicitly include correct DT includes
+Message-ID: <ZLuoqDxYUAPHCPgo@gofer.mess.org>
+References: <20230718143118.1065743-1-robh@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230718143118.1065743-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230722_010500_457431_F17A5D90 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20230722_030016_661237_290EA8A8 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,76 +131,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mingjia Zhang <mingjia.zhang@mediatek.com>
+Hi,
 
-Define one uncompressed capture format V4L2_PIX_FMT_MT2110R in order to
-support 10bit for H264 in mt8195.
+On Tue, Jul 18, 2023 at 08:31:14AM -0600, Rob Herring wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-Signed-off-by: Mingjia Zhang <mingjia.zhang@mediatek.com>
-Co-developed-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- Documentation/userspace-api/media/v4l/pixfmt-reserved.rst | 6 ++++++
- drivers/media/v4l2-core/v4l2-common.c                     | 2 ++
- drivers/media/v4l2-core/v4l2-ioctl.c                      | 1 +
- include/uapi/linux/videodev2.h                            | 1 +
- 4 files changed, 10 insertions(+)
+For:
 
-diff --git a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-index 0bc69639baaa..296ad2025e8d 100644
---- a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-+++ b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-@@ -282,6 +282,12 @@ please make a proposal on the linux-media mailing list.
-       - This format is two-planar 10-Bit tile mode and having similitude with
-         ``V4L2_PIX_FMT_MM21`` in term of alignment and tiling. Used for VP9, AV1
-         and HEVC.
-+    * .. _V4L2-PIX-FMT-MT2110R:
-+
-+      - ``V4L2_PIX_FMT_MT2110R``
-+      - 'MT2110R'
-+      - This format is two-planar 10-Bit raster mode and having similitude with
-+        ``V4L2_PIX_FMT_MM21`` in term of alignment and tiling. Used for AVC.
- .. raw:: latex
- 
-     \normalsize
-diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index 869fc09a210b..3a4b15a98e02 100644
---- a/drivers/media/v4l2-core/v4l2-common.c
-+++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -264,6 +264,8 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
- 		{ .format = V4L2_PIX_FMT_YUV48_12, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 6, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
- 		{ .format = V4L2_PIX_FMT_MT2110T, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 2, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 2,
- 		  .block_w = { 16, 8, 0, 0 }, .block_h = { 32, 16, 0, 0 }},
-+		{ .format = V4L2_PIX_FMT_MT2110R, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 2, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 2,
-+		  .block_w = { 16, 8, 0, 0 }, .block_h = { 32, 16, 0, 0 }},
- 
- 		/* YUV planar formats */
- 		{ .format = V4L2_PIX_FMT_NV12,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index f465c0e3d6e3..f4d9d6279094 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1509,6 +1509,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 		case V4L2_PIX_FMT_AJPG:		descr = "Aspeed JPEG"; break;
- 		case V4L2_PIX_FMT_AV1_FRAME:	descr = "AV1 Frame"; break;
- 		case V4L2_PIX_FMT_MT2110T:	descr = "Mediatek 10bit Tile Mode"; break;
-+		case V4L2_PIX_FMT_MT2110R:	descr = "Mediatek 10bit Raster Mode"; break;
- 		default:
- 			if (fmt->description[0])
- 				return;
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 8c7d71afbdc7..78260e5d9985 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -797,6 +797,7 @@ struct v4l2_pix_format {
- #define V4L2_PIX_FMT_MT21C    v4l2_fourcc('M', 'T', '2', '1') /* Mediatek compressed block mode  */
- #define V4L2_PIX_FMT_MM21     v4l2_fourcc('M', 'M', '2', '1') /* Mediatek 8-bit block mode, two non-contiguous planes */
- #define V4L2_PIX_FMT_MT2110T  v4l2_fourcc('M', 'T', '2', 'T') /* Mediatek 10-bit block tile mode */
-+#define V4L2_PIX_FMT_MT2110R  v4l2_fourcc('M', 'T', '2', 'R') /* Mediatek 10-bit block raster mode */
- #define V4L2_PIX_FMT_INZI     v4l2_fourcc('I', 'N', 'Z', 'I') /* Intel Planar Greyscale 10-bit and Depth 16-bit */
- #define V4L2_PIX_FMT_CNF4     v4l2_fourcc('C', 'N', 'F', '4') /* Intel 4-bit packed depth confidence information */
- #define V4L2_PIX_FMT_HI240    v4l2_fourcc('H', 'I', '2', '4') /* BTTV 8-bit dithered RGB */
--- 
-2.18.0
+>  drivers/media/rc/meson-ir.c                                   | 2 +-
+>  drivers/media/rc/mtk-cir.c                                    | 3 ++-
+>  drivers/media/rc/sunxi-cir.c                                  | 3 ++-
 
+Reviewed-by: Sean Young <sean@mess.org>
+
+Thanks,
+
+Sean
 
