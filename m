@@ -4,74 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59561C001DC
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Jul 2023 20:24:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9F0EC001DC
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Jul 2023 21:57:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8sqXcPDWv+O+jfVeXiPd/H8D+JnGD9FSBKovJI0XLCI=; b=Wf2WHEUvPFvDsxsSkpEspNkNVL
-	bMMi6mpiOKDt/DWgt3r6FMAwfAoe1cPlp15BtGl5I0m4mwnujDCZ+I+rfAYTAnEuVDc5/ERA5HKDh
-	CJ3oI/AUfwWOXqg8HyGX9kxZLg0O947mkYtxiZzujEkIhmHXUwxcvJlvlu90hT+WfR4uamj+uPdBS
-	kO+RxJjsAfDAMiGkW9zxyECQqxUpDMj1AbklG86X4MJT3rN9NUvz4GQYmG/5U6vEZA+EgRYfwNwUz
-	mR8PnZYseXCXKS8C6+euRPEpePpdjfcF3JXcgdVVQfcxl6c2rowNgAg6HMgNi/na2MTFadxn90m7n
-	ZGfc6akQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fj3Bch5fq6Cjbw0mcOMLWL49slyYF01yr2V2oAwGnlM=; b=AWJK9mtpGkC+9JgaTVV9Uh6UeK
+	5VxtGxuoXEFGGSsf4LNybsw/Sp/oA+0dlb60nQwXVu83V5mp9YoLP3QV5dQSP7Ih3QNhAfezwHZHm
+	DQZQLU4ct6+Ng69n3pDKGOTiY3YeXmY7F5NKnIMiNHSOkfzkyXeKOsM7fGSNVAV+aZUp18JaxeSxP
+	ASZUI21aoasKveKe32p+dnmMTDZlzWvpevv7N7R2gveFc/HZYJsCmJKnJJf5Uj/ntFLcTDMn4DE1w
+	4V9oIWZGNtlZXP8rckFuOzAChT3NX8po/h6pKgi95rPE6biMl06pNvuBPLAHRKtAk42Xepwk48b1A
+	LvE3II3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNfcu-001nUz-09;
-	Sun, 23 Jul 2023 20:24:24 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qNh5N-001xwV-2I;
+	Sun, 23 Jul 2023 21:57:53 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNfcr-001nTw-0e;
-	Sun, 23 Jul 2023 20:24:22 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 440A460E98;
-	Sun, 23 Jul 2023 20:24:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F886C433C8;
-	Sun, 23 Jul 2023 20:24:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690143858;
-	bh=f8gObTjVO0ERFlmH3AL/oRX017qbf1NfDe3+e3e3X1c=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=B76f5Ogiw5r+ZSnn4N6mc/puCTJCuYQEDJq+DYeWnOLidGSnc2Z3RuO09pWNEQr1U
-	 Od6xSr7PB9qQJpENwyCDWgQoWieE1x/9iuwMHvintNhJNDiDHIBgJjiw0y3heGLGAz
-	 ToLj2vuYb8J5kojRYF+IiLsOibiE0TqgEezapcRPeUYNXL4H8s8LbhGbTqDS7Mdpy/
-	 ZHdCddNFbNRTd1oKGuURq7TGolqT0n6yW5wZxXyVDpk96AdYFygUEBwlCiy5nlTCPa
-	 IlT+q75wKR3lodezANXotV8ujPgcIYuAyYzqQqA/WxEmzxDiDh3KEJiPJ+m3xc5Zvc
-	 k7Pv54rli/baA==
-Message-ID: <87dfe310-520d-b3d7-a3ff-2bf5a19f9155@kernel.org>
-Date: Mon, 24 Jul 2023 05:24:12 +0900
+	id 1qNh5K-001xuB-0H;
+	Sun, 23 Jul 2023 21:57:51 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1qNh4p-0005PG-2t;
+	Sun, 23 Jul 2023 21:57:19 +0000
+Date: Sun, 23 Jul 2023 22:57:08 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
+	Greg Ungerer <gerg@kernel.org>,
+	Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next v5 0/9] net: ethernet: mtk_eth_soc: add basic
+ support for MT7988 SoC
+Message-ID: <cover.1690148927.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH] devfreq: imx: Explicitly include correct DT includes
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>, MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Dmitry Osipenko <digetx@gmail.com>, Thierry Reding
- <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>
-Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
-References: <20230714174425.4054393-1-robh@kernel.org>
-From: Chanwoo Choi <chanwoo@kernel.org>
-In-Reply-To: <20230714174425.4054393-1-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230723_132421_351733_2311AB3F 
-X-CRM114-Status: GOOD (  20.03  )
+X-CRM114-CacheID: sfid-20230723_145750_126706_E7671492 
+X-CRM114-Status: GOOD (  15.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,90 +75,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23. 7. 15. 02:44, Rob Herring wrote:
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  drivers/devfreq/imx-bus.c         | 2 +-
->  drivers/devfreq/imx8m-ddrc.c      | 2 +-
->  drivers/devfreq/mtk-cci-devfreq.c | 1 -
->  drivers/devfreq/tegra30-devfreq.c | 2 +-
->  4 files changed, 3 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/devfreq/imx-bus.c b/drivers/devfreq/imx-bus.c
-> index a727067980fb..86850b7dea09 100644
-> --- a/drivers/devfreq/imx-bus.c
-> +++ b/drivers/devfreq/imx-bus.c
-> @@ -7,7 +7,7 @@
->  #include <linux/devfreq.h>
->  #include <linux/device.h>
->  #include <linux/module.h>
-> -#include <linux/of_device.h>
-> +#include <linux/of.h>
->  #include <linux/pm_opp.h>
->  #include <linux/platform_device.h>
->  #include <linux/slab.h>
-> diff --git a/drivers/devfreq/imx8m-ddrc.c b/drivers/devfreq/imx8m-ddrc.c
-> index 16636973eb10..e1348490c8aa 100644
-> --- a/drivers/devfreq/imx8m-ddrc.c
-> +++ b/drivers/devfreq/imx8m-ddrc.c
-> @@ -3,9 +3,9 @@
->   * Copyright 2019 NXP
->   */
->  
-> +#include <linux/mod_devicetable.h>
->  #include <linux/module.h>
->  #include <linux/device.h>
-> -#include <linux/of_device.h>
->  #include <linux/platform_device.h>
->  #include <linux/devfreq.h>
->  #include <linux/pm_opp.h>
-> diff --git a/drivers/devfreq/mtk-cci-devfreq.c b/drivers/devfreq/mtk-cci-devfreq.c
-> index 6354622eda65..83a73f0ccd80 100644
-> --- a/drivers/devfreq/mtk-cci-devfreq.c
-> +++ b/drivers/devfreq/mtk-cci-devfreq.c
-> @@ -8,7 +8,6 @@
->  #include <linux/minmax.h>
->  #include <linux/module.h>
->  #include <linux/of.h>
-> -#include <linux/of_device.h>
->  #include <linux/platform_device.h>
->  #include <linux/pm_opp.h>
->  #include <linux/regulator/consumer.h>
-> diff --git a/drivers/devfreq/tegra30-devfreq.c b/drivers/devfreq/tegra30-devfreq.c
-> index 503376b894b6..4a4f0106ab9d 100644
-> --- a/drivers/devfreq/tegra30-devfreq.c
-> +++ b/drivers/devfreq/tegra30-devfreq.c
-> @@ -13,7 +13,7 @@
->  #include <linux/io.h>
->  #include <linux/irq.h>
->  #include <linux/module.h>
-> -#include <linux/of_device.h>
-> +#include <linux/of.h>
->  #include <linux/platform_device.h>
->  #include <linux/pm_opp.h>
->  #include <linux/reset.h>
+The MediaTek MT7988 SoC introduces a new version (3) of the NETSYS
+block and comes with three instead of two MACs.
 
-Looks good to me.
-But, need to change the patch title with 'PM / ' prefix 
-to keep the consistency of previous devfreq patch and then
-this patch touched the other devfreq drivers except for imx drivers.
+The first MAC can be internally connected to a built-in Gigabit
+Ethernet switch with four 1000M/100M/10M twisted pair user ports.
 
-So that I think that it is better to change the patch title as following
-and then applied it. Thanks.
-- "PM / devfreq: Explicitly include correct DT includes"
+The second MAC can be internally connected to a built-in 2500Base-T
+Ethernet PHY.
+
+There are two SerDes units which can be operated in USXGMII, 10GBase-(K)R,
+5GBase-R, 2500Base-X, 1000Base-X or SGMII interface mode.
+
+This series adds initial support for NETSYS v3 and the first MAC of the
+MT7988 SoC connecting the built-in DSA switch.
+
+The switch is supported since commit 110c18bfed414 ("net: dsa: mt7530:
+introduce driver for MT7988 built-in switch").
+
+Basic support for the 1000M/100M/10M built-in PHYs connected to the
+switch ports is present since commit ("98c485eaf509b net: phy: add
+driver for MediaTek SoC built-in GE PHYs").
+
+The series should not conflict with Russell's recently submitted series
+"Remove legacy phylink behaviour", hence the order of them being
+picked into net-next doesn't matter.
+
+Changes since v4:
+  * Rebase on current net-next tree
+
+Changes since v3:
+  * Set 'mediatek,infracfg = false;' in dt-bindings for those chips
+    which do not require infracfg phandle.
+
+Changes since v2:
+  * Use version number instead of feature bits for NETSYS version
+  * Remove unneeded check for NULL when calling mtk_pcs_lynxi_destroy
+  * Reduce dt-bindings to what is actually needed at this point for
+    the driver to work.
+
+Changes since v1:
+  * Set MTK_MAX_DEVS to 3 instead of converting to dynamic number of
+    Ethernet MACs.
+  * use mtk_m32 when ever possible
+  * more small improvements and minor comments addressed
+
+Daniel Golle (3):
+  dt-bindings: net: mediatek,net: add missing mediatek,mt7621-eth
+  dt-bindings: net: mediatek,net: add mt7988-eth binding
+  net: ethernet: mtk_eth_soc: convert clock bitmap to u64
+
+Lorenzo Bianconi (6):
+  net: ethernet: mtk_eth_soc: add version in mtk_soc_data
+  net: ethernet: mtk_eth_soc: increase MAX_DEVS to 3
+  net: ethernet: mtk_eth_soc: rely on MTK_MAX_DEVS and remove
+    MTK_MAC_COUNT
+  net: ethernet: mtk_eth_soc: add NETSYS_V3 version support
+  net: ethernet: mtk_eth_soc: convert caps in mtk_soc_data struct to u64
+  net: ethernet: mtk_eth_soc: add basic support for MT7988 SoC
+
+
+ .../devicetree/bindings/net/mediatek,net.yaml | 109 ++++-
+ drivers/net/ethernet/mediatek/mtk_eth_path.c  |  36 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 398 ++++++++++++++----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 327 +++++++++-----
+ drivers/net/ethernet/mediatek/mtk_ppe.c       |  18 +-
+ .../net/ethernet/mediatek/mtk_ppe_offload.c   |   2 +-
+ drivers/net/ethernet/mediatek/mtk_wed.c       |   4 +-
+ 7 files changed, 668 insertions(+), 226 deletions(-)
 
 -- 
-Best Regards,
-Samsung Electronics
-Chanwoo Choi
-
+2.41.0
 
