@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68306C001DE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Jul 2023 21:58:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB368C001DF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Jul 2023 21:58:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=goQBq6ugKS/BUWjMWs6Q49ZicZEa3mbuoDf4l0njwaU=; b=rpqkarGe7N4U1ybHNaz/XaHMXc
-	8lf8tnBqUrRzfevWKmjmTiih4TLYCULs3vBBguMTozLHFPW5MF8IE2pJD5iDb2/aiW/qRRcmeLKle
-	RH5l6/c2wDGELNYAWP2NstE+Zwrfk/iVkl6yZQv8Z74Twu8+xXc/1Txf/5Oomg4JIdlv5Hn5U2sin
-	oYgqH1aNb6DN88opn35FKxxPIzMVjPLaapswrO9nk/BZUprn2+o1dPV5aYCm83/AFH9Wz8BAmQsJI
-	lI0oPraUafsa2U/jlLXYgslX8UAjYptIulv53d64rvD6jYT5VdzC6/3GjmQpmz5ilxkqIKj64zNpT
-	1n4O2QHQ==;
+	bh=42fF/Dey54dE1gejx0RH+cPa7bl+q4p8UZMumaUvRqQ=; b=c76hRpkJhhUj86e2hqZ8uskxja
+	vib/uBBX+NDED/1MtBRM5xJK7c/DwOaP5s6tXIxDNiGAyJ4zcH1qCxJlFMnA9UB6+GGa/M+9EIvtV
+	pxBuu8H5VNP8MoBZs407M4B8rnwTG/BqSfbN7AEL9/nEEmxo6CLfC5J1tGtQh5s5LEWIvbTDRbCXP
+	74MN0mCnlSt8AmuMlB1aUt4mx4Cx2nb07GgzzBi+O7CDkJJkWDmKBrB6OOqW8Hw/eVe5AmCL7Szd9
+	E/4RiNxCe0rP1CKCrt1OGSL56YkqzPgsw5Wx56yn+qWdGipAMrrlyAJT+3xpTm0qp5Wo2T4MU3nup
+	tGaYewSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNh5W-001xzZ-0o;
-	Sun, 23 Jul 2023 21:58:02 +0000
+	id 1qNh5o-001y5U-2R;
+	Sun, 23 Jul 2023 21:58:20 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNh5L-001xvO-2R;
-	Sun, 23 Jul 2023 21:57:52 +0000
+	id 1qNh5l-001y3L-03;
+	Sun, 23 Jul 2023 21:58:18 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1qNh5A-0005PR-1F;
-	Sun, 23 Jul 2023 21:57:40 +0000
-Date: Sun, 23 Jul 2023 22:57:32 +0100
+	id 1qNh5X-0005Pv-1h;
+	Sun, 23 Jul 2023 21:58:03 +0000
+Date: Sun, 23 Jul 2023 22:57:55 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -52,17 +52,17 @@ To: "David S. Miller" <davem@davemloft.net>,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v5 1/9] dt-bindings: net: mediatek,net: add missing
- mediatek,mt7621-eth
-Message-ID: <8e7972028d1004ee0a306ebe8b3f2eae3da76c1e.1690148927.git.daniel@makrotopia.org>
+Subject: [PATCH net-next v5 2/9] dt-bindings: net: mediatek,net: add
+ mt7988-eth binding
+Message-ID: <fbd561c2f8b374970f8617941da9abf64137f145.1690148927.git.daniel@makrotopia.org>
 References: <cover.1690148927.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1690148927.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230723_145751_792433_9D8E101E 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20230723_145817_056251_162BDE5D 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,68 +77,166 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the Ethernet controller found in the MediaTek MT7621 MIPS SoC
-family which is supported by the mtk_eth_soc driver.
+Introduce DT bindings for the MT7988 SoC to mediatek,net.yaml.
+The MT7988 SoC got 3 Ethernet MACs operating at a maximum of
+10 Gigabit/sec supported by 2 packet processor engines for
+offloading tasks.
+The first MAC is hard-wired to a built-in switch which exposes
+four 1000Base-T PHYs as user ports.
+It also comes with built-in 2500Base-T PHY which can be used
+with the 2nd GMAC.
+The 2nd and 3rd GMAC can be connected to external PHYs or provide
+SFP(+) cages attached via SGMII, 1000Base-X, 2500Base-X, USXGMII,
+5GBase-KR or 10GBase-KR.
 
-Fixes: 889bcbdeee57 ("net: ethernet: mediatek: support MT7621 SoC ethernet hardware")
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
 ---
- .../devicetree/bindings/net/mediatek,net.yaml | 27 ++++++++++++++++++-
- 1 file changed, 26 insertions(+), 1 deletion(-)
+ .../devicetree/bindings/net/mediatek,net.yaml | 82 +++++++++++++++++--
+ 1 file changed, 76 insertions(+), 6 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-index acb2b2ac4fe1e..38aa3d97ee234 100644
+index 38aa3d97ee234..8d3554818c377 100644
 --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
 +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-@@ -19,6 +19,7 @@ properties:
-     enum:
-       - mediatek,mt2701-eth
-       - mediatek,mt7623-eth
-+      - mediatek,mt7621-eth
-       - mediatek,mt7622-eth
+@@ -24,6 +24,7 @@ properties:
        - mediatek,mt7629-eth
        - mediatek,mt7981-eth
-@@ -32,7 +33,7 @@ properties:
-   clock-names: true
+       - mediatek,mt7986-eth
++      - mediatek,mt7988-eth
+       - ralink,rt5350-eth
  
-   interrupts:
--    minItems: 3
-+    minItems: 1
-     maxItems: 4
+   reg:
+@@ -61,6 +62,12 @@ properties:
+       Phandle to the mediatek hifsys controller used to provide various clocks
+       and reset to the system.
  
-   power-domains:
-@@ -131,6 +132,30 @@ allOf:
++  mediatek,infracfg:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the syscon node that handles the path from GMAC to
++      PHY variants.
++
+   mediatek,sgmiisys:
+     $ref: /schemas/types.yaml#/definitions/phandle-array
+     minItems: 1
+@@ -122,6 +129,8 @@ allOf:
+             - const: gp1
+             - const: gp2
+ 
++        mediatek,infracfg: false
++
+         mediatek,pctl:
+           $ref: /schemas/types.yaml#/definitions/phandle
+           description:
+@@ -152,6 +161,8 @@ allOf:
+             - const: ethif
+             - const: fe
+ 
++        mediatek,infracfg: false
++
+         mediatek,wed: false
  
          mediatek,wed-pcie: false
+@@ -184,6 +195,8 @@ allOf:
+             - const: sgmii_ck
+             - const: eth2pll
  
++        mediatek,infracfg: false
++
+         mediatek,sgmiisys:
+           minItems: 1
+           maxItems: 1
+@@ -229,12 +242,6 @@ allOf:
+             - const: sgmii_ck
+             - const: eth2pll
+ 
+-        mediatek,infracfg:
+-          $ref: /schemas/types.yaml#/definitions/phandle
+-          description:
+-            Phandle to the syscon node that handles the path from GMAC to
+-            PHY variants.
+-
+         mediatek,sgmiisys:
+           minItems: 2
+           maxItems: 2
+@@ -275,6 +282,8 @@ allOf:
+             - const: netsys0
+             - const: netsys1
+ 
++        mediatek,infracfg: false
++
+         mediatek,sgmiisys:
+           minItems: 2
+           maxItems: 2
+@@ -311,6 +320,67 @@ allOf:
+             - const: netsys0
+             - const: netsys1
+ 
++        mediatek,infracfg: false
++
++        mediatek,sgmiisys:
++          minItems: 2
++          maxItems: 2
++
 +  - if:
 +      properties:
 +        compatible:
 +          contains:
-+            enum:
-+              - mediatek,mt7621-eth
++            const: mediatek,mt7988-eth
 +    then:
 +      properties:
 +        interrupts:
-+          maxItems: 1
++          minItems: 4
 +
 +        clocks:
-+          minItems: 2
-+          maxItems: 2
++          minItems: 34
++          maxItems: 34
 +
 +        clock-names:
 +          items:
-+            - const: ethif
++            - const: crypto
 +            - const: fe
++            - const: gp2
++            - const: gp1
++            - const: gp3
++            - const: ethwarp_wocpu2
++            - const: ethwarp_wocpu1
++            - const: ethwarp_wocpu0
++            - const: esw
++            - const: netsys0
++            - const: netsys1
++            - const: sgmii_tx250m
++            - const: sgmii_rx250m
++            - const: sgmii2_tx250m
++            - const: sgmii2_rx250m
++            - const: top_usxgmii0_sel
++            - const: top_usxgmii1_sel
++            - const: top_sgm0_sel
++            - const: top_sgm1_sel
++            - const: top_xfi_phy0_xtal_sel
++            - const: top_xfi_phy1_xtal_sel
++            - const: top_eth_gmii_sel
++            - const: top_eth_refck_50m_sel
++            - const: top_eth_sys_200m_sel
++            - const: top_eth_sys_sel
++            - const: top_eth_xgmii_sel
++            - const: top_eth_mii_sel
++            - const: top_netsys_sel
++            - const: top_netsys_500m_sel
++            - const: top_netsys_pao_2x_sel
++            - const: top_netsys_sync_250m_sel
++            - const: top_netsys_ppefb_250m_sel
++            - const: top_netsys_warp_sel
++            - const: wocpu1
++            - const: wocpu0
++            - const: xgp1
++            - const: xgp2
++            - const: xgp3
 +
-+        mediatek,wed: false
-+
-+        mediatek,wed-pcie: false
-+
-   - if:
-       properties:
-         compatible:
+         mediatek,sgmiisys:
+           minItems: 2
+           maxItems: 2
 -- 
 2.41.0
 
