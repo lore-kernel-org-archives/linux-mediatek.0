@@ -4,74 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03730C001DC
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Jul 2023 08:04:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E0D6C001DF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Jul 2023 10:17:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=y7jsUAWXRLNZg1K3uT3Uf7hZ4cK6ONaSzbu+HAbeh/M=; b=Pb/304f6hfRIIr7sCWwEuhiSw9
-	HnKV0GdBKxFA0fvhNja4wdpqMu8ClPIkP1pcCrBVsgxPHolM4Z8Hy5ANj1jzhtpzZEWolf7xQMujZ
-	rTTx/C5Ya/hBPf5gel1YqN+50TtRkSkZvGr3LTH6+CVY0iBNCsOR0SMQiQ9LDvcirbUOgqCBFX016
-	mwy36pUqRje4Yr5t6xsnpKtIkcfW6BPvAJKyuSjyNy1Y8MOeNrfAXUfac+np+hb5asOAKLWgtdr9m
-	f4SCPWMwmLikMi+L3Zz+drpR6hfTOUqBC+P1gN5HOog+RGhYcNV20y+AH3l+dVVdr2jWSngxei7R+
-	tpelbUTQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=G9bizb2XUBHywNQ7OsFuDywmc/SZSAKRG7HN4IcLmxA=; b=PmhcD3/UfO3xoWCY7u1MORO8jv
+	mz4N9uxk2A86pAB1oIexGOnN/zMLdoERveTyQMGt8nqjKLL25zIQzyfoUCTMKMIJYJ+ko1O+YytD3
+	oZE9ZFcY5UoombEbKSgHLUOlndTDo4Pqhdfla+Nnsl4eiIHcBHbqdTBLCJYn4jzLZGi3tyPxI8ZMA
+	EDWGW7Qzq9yh4QeYQSsy9rBz52G5ywtrPrDVY/TOaWOHXb/EBRvGdbO8dvNoQs5AsmZniX2emrlQB
+	1CEGfA1NvUIka1tYzfl+GgVQTPnymolWA2nyew8d4ilDyZjLdsnmFmboNEHIk2pyf7hrsQBJWG9EP
+	4v0zMzHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNU4r-000Z3M-32;
-	Sun, 23 Jul 2023 08:04:29 +0000
-Received: from spam.zju.edu.cn ([61.164.42.155] helo=zju.edu.cn)
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNU4n-000Z26-21;
-	Sun, 23 Jul 2023 08:04:27 +0000
-Received: from localhost.localdomain (unknown [39.174.92.167])
-	by mail-app3 (Coremail) with SMTP id cC_KCgBXX5_o3rxk7IN_Cw--.18863S4;
-	Sun, 23 Jul 2023 16:03:53 +0800 (CST)
-From: Lin Ma <linma@zju.edu.cn>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	kvalo@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	mcoquelin.stm32@gmail.com,
-	alexandre.torgue@foss.st.com,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Cc: Lin Ma <linma@zju.edu.cn>
-Subject: [PATCH v1] wifi: mt76: testmode: add nla_policy for MT76_TM_ATTR_TX_LENGTH
-Date: Sun, 23 Jul 2023 16:03:50 +0800
-Message-Id: <20230723080350.3716135-1-linma@zju.edu.cn>
-X-Mailer: git-send-email 2.17.1
-X-CM-TRANSID: cC_KCgBXX5_o3rxk7IN_Cw--.18863S4
-X-Coremail-Antispam: 1UD129KBjvJXoW7Gw15JF48ZFWfur4kWr1Dtrb_yoW8Jr4xpa
-	y2ga4xCayDCr4DJ3ykJF48WFn5Xa43ArWjgrnxX3s5Zr95ta1fKryft3Z2yryktF1UZ3yf
-	Z3W5K343GFyY937anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9j14x267AKxVW5JVWrJwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26w1j6s0DM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4U
-	JVWxJr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gc
-	CE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
-	2Ix0cI8IcVAFwI0_Jw0_WrylYx0Ex4A2jsIE14v26r4j6F4UMcvjeVCFs4IE7xkEbVWUJV
-	W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2
-	Y2ka0xkIwI1lc2xSY4AK67AK6r43MxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r
-	1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CE
-	b7AF67AKxVW8ZVWrXwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1I6r4UMIIF0x
-	vE2Ix0cI8IcVCY1x0267AKxVW8Jr0_Cr1UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI
-	42IY6I8E87Iv67AKxVW8JVWxJwCI42IY6I8E87Iv6xkF7I0E14v26r4UJVWxJrUvcSsGvf
-	C2KfnxnUUI43ZEXa7VUjj-e5UUUUU==
-X-CM-SenderInfo: qtrwiiyqvtljo62m3hxhgxhubq/
+	id 1qNW9d-000kLC-2R;
+	Sun, 23 Jul 2023 10:17:33 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qNW9b-000kKI-1K
+	for linux-mediatek@lists.infradead.org;
+	Sun, 23 Jul 2023 10:17:32 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-3fbd33a57ddso26205855e9.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 23 Jul 2023 03:17:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1690107449; x=1690712249;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=G9bizb2XUBHywNQ7OsFuDywmc/SZSAKRG7HN4IcLmxA=;
+        b=m24HZMH7N13lRaOv5+b9dQidpC9uy3119QSO4PCp2b/m6+hXwqvQ7jPMFHXOmkj9ts
+         TzMW1Yu46FjlE6yn1eOJqSqntfWnPUbNSIQX/7ZXWZ4mjjkbFBoFXJ21aSHAmpY4BFoo
+         EQl2X49dqkT4GA5yFDoPHXtJN8+L+6Ysd243ij7VDjcvI+r+gteX+q2+/vFSSpTiaoCS
+         JR6r7rdB0uxqIAC/MYsBicf80X3QG92XkdBLAMkfz7PaWKiuY68jVPZ4/uf5654ZgUDj
+         Q39juTJMrZkfFt9a/OGS+Y/JsEwcvAndxpncQQFfAxgHsyw2ejsNHDad6IeHiiKzlRyn
+         dCbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1690107449; x=1690712249;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=G9bizb2XUBHywNQ7OsFuDywmc/SZSAKRG7HN4IcLmxA=;
+        b=OrWIHGA58XZB4lmGV4u9sAFY2JyqM1PydXMBhB1xhqSmEgoCwcQvH7rdtkBixfShCo
+         U1/sX+e+Z999J1CMZH/O2psfcDvXcb5XfVm/7nuYeaZUj4xEu8LrAhIYjOkRtq0806Hh
+         9+mDENBgBCnXC8NZWbBTiMFo0TWGkQ1G0/XQaijw48fHDyBKrAVQ/x+baXmwHmsA/m7g
+         XmOq0hwHvr87S+blemVgrtQClvMelMO3fKcD2K3Mt5J4ozI91ZXFRIutZfo4EX+b0v7v
+         WfD1SNdbQSiLYOJIoi7pfkeBHWdV7mp8LjgOWd3Fu8jcD/6GATCfzEsV55ebTR8LQQbr
+         L3RQ==
+X-Gm-Message-State: ABy/qLZSWKWmP8UxsMU/zFcrVyYNCMRNG8Zu8Bwy0OIR+FxLJwqF71/w
+	H4CnwvPPKiqLMmBsaOcYkUFTBA==
+X-Google-Smtp-Source: APBJJlFljllVDRV4zSU98uny4rzyJPJfcQknRSy2KfrcGhNrDXhlnkPeB3obyiKeYnJqpyP75u5rDw==
+X-Received: by 2002:a05:600c:210d:b0:3fb:4055:1ddd with SMTP id u13-20020a05600c210d00b003fb40551dddmr4567872wml.28.1690107449150;
+        Sun, 23 Jul 2023 03:17:29 -0700 (PDT)
+Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.googlemail.com with ESMTPSA id bh17-20020a05600c3d1100b003fbb1ce274fsm25898354wmb.0.2023.07.23.03.17.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 23 Jul 2023 03:17:28 -0700 (PDT)
+Message-ID: <c0f1d7b9-5923-75d6-cb57-bb4bd4635cd7@linaro.org>
+Date: Sun, 23 Jul 2023 12:17:28 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH 0/2] thermal/drivers/mediatek: fix a regression affecting
+ other subsystems
+Content-Language: en-US
+To: Icenowy Zheng <uwu@icenowy.me>, "Rafael J . Wysocki" <rafael@kernel.org>,
+ Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Kang Chen <void0red@hust.edu.cn>, Dongliang Mu <dzm91@hust.edu.cn>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230529162056.3786301-1-uwu@icenowy.me>
+ <40546a57-27ac-8bf9-a2d8-77f7d4ab4aad@linaro.org>
+ <05e6d2d6dd8805c4cded28f85ac873b96bc1467e.camel@icenowy.me>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <05e6d2d6dd8805c4cded28f85ac873b96bc1467e.camel@icenowy.me>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230723_010426_168750_46612E76 
-X-CRM114-Status: UNSURE (   8.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230723_031731_479029_DF5C6473 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,34 +101,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It seems that the nla_policy in mt76_tm_policy is missed for attribute
-MT76_TM_ATTR_TX_LENGTH. This patch adds the correct description to make
-sure the
+On 22/07/2023 14:13, Icenowy Zheng wrote:
+> 在 2023-06-13星期二的 10:44 +0200，Daniel Lezcano写道：
+>> On 29/05/2023 18:20, Icenowy Zheng wrote:
+>>> In the commit I reverted as the first commit of this patchset, the
+>>> of_iomap function call, which allows multiple mapping of the same
+>>> physical memory space, is replaced to calling devm_of_iomap, which
+>>> registers exclusivity, and on my system (mt8173-elm), preventing
+>>> display
+>>> from working.
+>>>
+>>> So I reverted it, and to really solve the problem that the original
+>>> commit wants to solve, I read the source of auxadc-thermal and
+>>> realized
+>>> that the address of these two memory blocks are not saved after
+>>> probe,
+>>> and they're only used when initializing the thermal sensors. This
+>>> leads
+>>> to my final fix, which is the second commit here, that adds
+>>> of_iounmap
+>>> just to the probe function.
+>>>
+>>> Icenowy Zheng (2):
+>>>     Revert "thermal/drivers/mediatek: Use devm_of_iomap to avoid
+>>> resource
+>>>       leak in mtk_thermal_probe"
+>>>     thermal/drivers/mediatek: unmap foreign MMIO after probing
+>>>
+>>>    drivers/thermal/mediatek/auxadc_thermal.c | 46 ++++++++++++------
+>>> -----
+>>>    1 file changed, 24 insertions(+), 22 deletions(-)
+>>
+>> I'll apply only the revert and let you revisit the patch 2 which
+>> could
+>> be improved.
+> 
+> Sorry, is the first patch applied? I didn't see it in any kernel
+> trees...
 
-  u32 val = nla_get_u32(tb[MT76_TM_ATTR_TX_LENGTH]);
+Yes, sorry, I got another patch meanwhile which provided the same revert 
+with more tags
 
-in function mt76_testmode_cmd() is safe and will not result in
-out-of-attribute read.
+https://lore.kernel.org/r/20230525121811.3360268-1-ricardo.canuelo@collabora.com
 
-Fixes: f0efa8621550 ("mt76: add API for testmode support")
-Signed-off-by: Lin Ma <linma@zju.edu.cn>
----
- drivers/net/wireless/mediatek/mt76/testmode.c | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/testmode.c b/drivers/net/wireless/mediatek/mt76/testmode.c
-index 0accc71a91c9..4644dace9bb3 100644
---- a/drivers/net/wireless/mediatek/mt76/testmode.c
-+++ b/drivers/net/wireless/mediatek/mt76/testmode.c
-@@ -8,6 +8,7 @@ const struct nla_policy mt76_tm_policy[NUM_MT76_TM_ATTRS] = {
- 	[MT76_TM_ATTR_RESET] = { .type = NLA_FLAG },
- 	[MT76_TM_ATTR_STATE] = { .type = NLA_U8 },
- 	[MT76_TM_ATTR_TX_COUNT] = { .type = NLA_U32 },
-+	[MT76_TM_ATTR_TX_LENGTH] = { .type = NLA_U32 },
- 	[MT76_TM_ATTR_TX_RATE_MODE] = { .type = NLA_U8 },
- 	[MT76_TM_ATTR_TX_RATE_NSS] = { .type = NLA_U8 },
- 	[MT76_TM_ATTR_TX_RATE_IDX] = { .type = NLA_U8 },
 -- 
-2.17.1
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
 
