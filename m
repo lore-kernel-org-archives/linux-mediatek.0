@@ -4,92 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F23EC001B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 17:05:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 075E5C001DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 17:22:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r/1LJDLgyxtYwLLVQ7MqhyHlHTh4bPkUiDIcho+GZfM=; b=Nzpr5yoc1+u2EINU/CKRJcRaaz
-	jW1zDMVRR5uHHiJPcpkG0U0LSQoRwiQFJRzXZ6gxDRlHjFE/+wV8TC2VXRoTbXGMEGNKsTIECZren
-	6ISpmbdskWvuMEEQ7BeowO4SqLe2eaf+JT6DN/++mF/vDSfIblH6T4nZULUT8Une8cs7N+EiwS8kb
-	XH8gzoLvM8KDXb5w/xL7Q6Lj7FYgqbB8AQ0lob/zdBUDd81kgs4ufz78BvJRk2OXkbGVC6Xgxe3Sa
-	JZ23048pDZkSq7HgO/XLQJ9z1Eldy6TX6URurVoOfeUDSl5jbP+NsOVw4/1NhZYB5r3wt0EGkdOlJ
-	bHF0CHMA==;
+	bh=2iHXF79ZsLNr+U25wG96PT5wqn685MqH0c6RI6HOHFE=; b=D6SjfqOM/6FQJLIjcAkbFdHVux
+	5n9/U6PYsO0lIo8jZd5qvICk08TW/kHseIw2WQ6cBq2qYFTRRnzrLgGph7g28pWdUxooHPXSoWwat
+	qfUyamX+/yCHBl6AW0zG9Il+dj4wLeFtusnvUb2iKxWnzOZ8YrK+GdS3Ge+PBlVIt7gd7jVvCmeT2
+	rm95uqY0RHFBmUMjumbaAa2poRs7h3Ru+MQ8xDZdkqanMHb3Ur0EvUY3T26bfygWx+u2cAjsll1so
+	bj05uT2vvtNn9UmfCdM+usfA2UVqGMUjfon8P6fX8Qsxs/bYEhJpqliBbhIA4oJgcyuzrDfDtM6Zy
+	Dw7/bNug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNz0F-004y5y-1H;
-	Mon, 24 Jul 2023 17:05:47 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1qNzGP-00501t-24;
+	Mon, 24 Jul 2023 17:22:29 +0000
+Received: from mail-mw2nam10on2062c.outbound.protection.outlook.com ([2a01:111:f400:7e89::62c] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNz0C-004y4k-0d
-	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Jul 2023 17:05:45 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-992dcae74e0so770775766b.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Jul 2023 10:05:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690218340; x=1690823140;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=r/1LJDLgyxtYwLLVQ7MqhyHlHTh4bPkUiDIcho+GZfM=;
-        b=oqaIWLHBsBokwzA8MU+vTILFZrNZ6gabOBrfMq5TqHeSuEGcOEG8pjJxJhmUcCmP2A
-         RX+9KSZzq0KUfvi1SqYUjU4rqMKnHfAIpv00i5Z4VlDfx8qZJ74b/FVlZDIex9Zy4M7f
-         bt7La3JPALRHslMF4UJNLDeC3p2mmD3XN9+c5l4lvvIG26LdD/pxyKBcxwGbiV7/ltwz
-         VivBiO4h5xsYHke9MNNmaH4cBH+8SAohDxQ3JcBGSiUfKyYY/6E63fxUyrLpnP5gIlqx
-         lS4/RGpo4UCYHxC4Ljczy7g+AI9odUzxdAILOVqY+2Y95pXeaTLBbHIKj6ElsdFoQN3k
-         lZNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690218340; x=1690823140;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=r/1LJDLgyxtYwLLVQ7MqhyHlHTh4bPkUiDIcho+GZfM=;
-        b=UlqLwp+SeXdVRTVKQRbF3IOuFZdp81pxNFWU/nlHtEpZo9eHlTnBjomQJEfcr+FZFc
-         IXpDYsHJs5qXGMSflVKzxDq43fLxFSaHAm8a80VDVmMs6u36f6LIVIjlb3YP6U02ty+K
-         oVBX4Ow/g3dg+fu7MqIof5xpCsL9zQ7I/3szKhaTuEY4FEROr+vxS4HBer7w6iQy67nn
-         ijp7kQEIw6Hnqm82Fnm4xjLTXFrbgs7AcG2vadhXE3puROC1+9FDRzYiOYVK1ihoqVai
-         F1eqhuQVUV1/7PJVsOnGY88/yP9pgheR8CQIuNTnkUGKqm4MmetuD02yXpmYAwQllBZG
-         8/Zg==
-X-Gm-Message-State: ABy/qLbJJneuHNlymS3sh0pr19Yv63gZbbj9a346JYJJFQ2PiAE9FrCj
-	/nwVV9vXAs62haqrR/odwbCfcA==
-X-Google-Smtp-Source: APBJJlHwPcKTKIL8LVd0DfZgwQQ01hah+RbyGAamj9A4ipk0zwj2sUnqzG9iAqwMWQ1mO1hBmRf/Yw==
-X-Received: by 2002:a17:907:2e0b:b0:96b:e93:3aa8 with SMTP id ig11-20020a1709072e0b00b0096b0e933aa8mr9577637ejc.21.1690218340090;
-        Mon, 24 Jul 2023 10:05:40 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.223.104])
-        by smtp.gmail.com with ESMTPSA id qc12-20020a170906d8ac00b0098866a94f14sm6974227ejb.125.2023.07.24.10.05.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Jul 2023 10:05:24 -0700 (PDT)
-Message-ID: <60e7e772-bf0a-264d-abac-4ed72766a2d0@linaro.org>
-Date: Mon, 24 Jul 2023 19:05:03 +0200
+	id 1qNzGM-004zzV-2x;
+	Mon, 24 Jul 2023 17:22:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Vai1kMnFdYv6xMQz9nXv7R2rk/xqirQUT05/P2ykE3Sdbdf4hVEUQXyVhFUcLyUm3ORpI5Czu4Ivobk8Ef6XlOgbYvRUYYRfbB7fgMYIfAI+0XQrQKfWLlQXxDWWLn6aeQi0iJMzjUa9ezePL/PWMPefXIcnzNmaijU+0chNpsq6r04eNkSDnSnjZbeXllPG5XV1VR6nytwUguQ09Wyo7uofoPyoqxdsM+3JVnkbvXTsB+U/zEFDyBk5MCDts3i4p51jlE5iSOAe/IB6m9Wk26Hp27D4zC+uSFNFPA/6sux/j5L476WiVlvuUpGAIT16RjpvGyBAhYTu/2GNHtjFMg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=2iHXF79ZsLNr+U25wG96PT5wqn685MqH0c6RI6HOHFE=;
+ b=D5RTRFLhU89kCKNlqQHjU7LJ1PsC53zT5W/GNb66cE9NRmhfUwAAe+VG6nhBIxWoLVEE4THFfVw3Tx4bc+FMgghp7sc0x9wlj71olq5zGem7R1pCc09Tis8NLFa7b1G8JQZrftW7fZN228HLq/YhDSei9hdxetF2QD5MpC24iES/Ej3bFbYA7pqmjEbP+Q9fm95Vffw9xg6gDOgcuv9E/glW/Vtt8LDv+zp0c7n+QyXucBKdIpMsBzsWr9L6JrMMz231hODEopDuS8PIwV9VykqrVq8aKg5unxEV/1K3DSHcoQs0WJu1mDWwyvU07x0J2J/seSd9xzx6uAEk6dfRtw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=2iHXF79ZsLNr+U25wG96PT5wqn685MqH0c6RI6HOHFE=;
+ b=KTFJG2W+zf56/kGEnotugblu7UBDNUfl3tlDYImw1x44Zs747A+Gz1nOGax1Qr0iJNACGKoDh9tkRvTbvlz6IRRMFAHsOIxyLWZ2laukOn3KSCN/sRL/ghV0H0spdtMRUNs874sVyndpjKZ6fG37fI7k4I19MHmpws7Cm7CqSdAnJ2CYEDJb8BXRgB1SQgTr1tw6BvVTRMyVpk+0/wRPtcRDqKUt4DoWHzaEuigGQ0chy08LnBR3wYMzir+id3tzXsGxB+afsvADh1Q9ro3DV8Ro9ek1953lepl/K5t2+1uyqhun2fel1K2Gz8/e1EMEW2xGf7FsnDSLEkkrHDqm3A==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by PH7PR12MB7353.namprd12.prod.outlook.com (2603:10b6:510:20c::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6609.32; Mon, 24 Jul
+ 2023 17:22:17 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6609.032; Mon, 24 Jul 2023
+ 17:22:17 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Andy Gross <agross@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Kevin Tian <kevin.tian@intel.com>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
+	linuxppc-dev@lists.ozlabs.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Steven Price <steven.price@arm.com>,
+	Thierry Reding <treding@nvidia.com>
+Subject: [PATCH v5 04/25] iommu: Add IOMMU_DOMAIN_PLATFORM for S390
+Date: Mon, 24 Jul 2023 14:21:54 -0300
+Message-ID: <4-v5-d0a204c678c7+3d16a-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <0-v5-d0a204c678c7+3d16a-iommu_all_defdom_jgg@nvidia.com>
+References: 
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: BL0PR03CA0020.namprd03.prod.outlook.com
+ (2603:10b6:208:2d::33) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH] dt-bindings: usb: add missing unevaluatedProperties on
- USB connector
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jagan Sridharan <badhri@google.com>, ChiYuan Huang <cy_huang@richtek.com>,
- Min Guo <min.guo@mediatek.com>, Gene Chen <gene_chen@richtek.com>,
- linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230723071105.40157-1-krzysztof.kozlowski@linaro.org>
- <20230724162638.GA3784203-robh@kernel.org>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230724162638.GA3784203-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|PH7PR12MB7353:EE_
+X-MS-Office365-Filtering-Correlation-Id: cab6f812-c85a-4773-0a0f-08db8c6a8754
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: uB3bJPskIZ+5Mdwkj4kWSwhC04m9GGeDmZUPqVVS9EWDyDMzFpVAn23XUUClfxbJz/gd7nwVYRzvYcEar33DdI8pJrGR00udEJ5S+mox3KJhN5U75rmgU8YKY5VwbZlSSki5fjjfCy0BuRRRXQWQ2gqB8KT2Lzu6jHyw1r1oF+6sd97FMve/f99GqDe8MmapuGJxB2DaM7DBs7c/Xuh/tD4bNnnAWbOyI4QLKnXeX3qDt3JC1hkadLvqrDGLEEnj8Qgbw/KbpWu9rwlT8s3aq9GPX8rOQiCn7PhWTIEgWfJMbI73atmEOYp43d9aFqqqsTFHPl5ANiVlckze/XNVbfCrYifY2Mp9GWF40nry4pa0tU9QYlV0L8YKont7nzjqMhrrL4MmBOcC9Z4kcVSWXL7gYy4tQJhdB/PqoHe5EWj44MOxqhP5rNX2WNsApaIN4cak/JKJ8R/XYZV6D5sdQuTbqGefVw45DLOq78pgmGrmftCNyLWRqGzmM6q4PfMAp/jbcWvVJnTYA3c0NF+hZ2FL1phWv14w+pwDsUw+EqEGSamZz3QHxMp3A27YWPIY4YZvrp+SmPyfUnwpRpCNXRDl15vzFjCW1iLMYnAgsW6xRCq9CxhZQXbQfL4fA2e7
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(396003)(366004)(376002)(136003)(39860400002)(346002)(451199021)(36756003)(478600001)(6512007)(6486002)(110136005)(6666004)(54906003)(6506007)(186003)(26005)(107886003)(2906002)(316002)(4326008)(66946007)(66556008)(66476007)(7416002)(7406005)(8676002)(5660300002)(8936002)(921005)(38100700002)(41300700001)(86362001)(83380400001)(2616005)(4216001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?NuHWr8/e21IxXtEdt93RtGavNW6AofNutPCjsvXfyiXbzLgoe7HcdJzZ12Dh?=
+ =?us-ascii?Q?DHRSeC4TqhcZg1hHXMXWurhkhqLkYiTIuKMz1tTttQjEu/rHR+U82Yw+Q+/D?=
+ =?us-ascii?Q?8crAUSrsVjl6I6v9tvwOOCpvs3lJzKLTRONR9KKT66yibpJioJD2CR6ucqR0?=
+ =?us-ascii?Q?EffGuZStPlNVPu/ynK7VQhrrlUxxiD0MrxPXY94dbi12NNMSEkLhQE6Rg3fl?=
+ =?us-ascii?Q?tecmjCGDqi3aWX3sZZTCaDDlrTs2ZpcLa50hYMTTkvKZ8HzL/b4dVjFdiEse?=
+ =?us-ascii?Q?ATwLlV4sBojOOUruYsUo8DLAWtMO8qjs8CIASVi6I4CP2GPGxnY6LAB77Iv0?=
+ =?us-ascii?Q?UlB+Gi3x/KMf73hrjA4tAWvn0+Iyyq4N4PcN/UIhc1P8GfNoiBmASsYKUW9l?=
+ =?us-ascii?Q?XxquiAY7jN/lXgWox5HWBddIoTi54Uz9hi01LiMR9+vWH26mIK9S1Eud4fxx?=
+ =?us-ascii?Q?WFnBTEuforDDqRwDcqMCnyWuQA1TCulV5/c8UJGSGHuq6ESOt7FEGogZzARj?=
+ =?us-ascii?Q?XurWa5LEvf6Lmvr3LSkP3fi9noO1eaGNCc5OVNMV/d+A4YNCX6xtAVE0eygP?=
+ =?us-ascii?Q?T8+pTXLo2WnRxVoMCPw8eqgQbAjoKfy91R8LH479DJ4Ro9bX1r7Tj0gOvCWq?=
+ =?us-ascii?Q?2F7zssObqjHCFmRDgmOYI+/+Q6jUKSDyXNm8aJbGoZx4f0Rwn7g1UbJHyd5f?=
+ =?us-ascii?Q?ft2ICkbKQSsXCQaWVh/P5lZpMuc3xlFbggqhpYaJrQIEpVgVbkNs0vFlAY4e?=
+ =?us-ascii?Q?xl8Y8FcmVM9D7IfZ6w/Ti2JsBDD6ZXUtDjGoL66b67uFXXDyUKYH134OwJEZ?=
+ =?us-ascii?Q?YmvCW4vRUVW5lh5GHg4AJ+RWouVmq8w7ZqIZVjeqFnm+MKIZ365CP3qO25Hz?=
+ =?us-ascii?Q?HHbZaye+V1Dv3RsmSrDJNM4mjGEd4J/PC8yjwGESYT3wBLF9yE8i3LuBAym2?=
+ =?us-ascii?Q?/vTheWAKvC/XjlXVBGvDdjKXRiq5miPJ1nx7MQmPQ21i8nr19T9lT3BnTKwG?=
+ =?us-ascii?Q?NbVF6fERqjcjans1V4d/3IXghfJcKUZpddd0DYgAzwxl5O4u+g6X2tXZ4OIn?=
+ =?us-ascii?Q?kzMNuiiMjMxi01oOaIby1fuUo0pQS3LK1aJURh9UgfjmFdC64spTlQ/oBAwb?=
+ =?us-ascii?Q?8IgHMClRlyxsEXRQrGsTwRKfb2M35pf0oGkOUJBq36BjYkVarY8orOoNxf2u?=
+ =?us-ascii?Q?LrqkLj/0vaRTJVoQ0jZGLwWCUR8MX89cpOv6z4sRuSo6EMl9fbkLngQHaXBl?=
+ =?us-ascii?Q?DMecIrF3f0vVtVouef2OrO6iS9xTpS02EQWiFW6a58uUb3OyH7EffCS16RWw?=
+ =?us-ascii?Q?IU2qCb7i1oxSavucfRbL6k8JMQOgQZgpvVXuHIYNHC73BH8WJOVlSinFkpUi?=
+ =?us-ascii?Q?a7OqQpXsAmVNaLt+PqLWWTb7t2aNGvFtZqC6JmGXGLDl1PS/zXY2brpXSuwI?=
+ =?us-ascii?Q?lGPSbDBlAxdvwd+2otjVazshlF419cTrVr5V1zFRYBkw4kh7Zpw1i7XUzguT?=
+ =?us-ascii?Q?4XLokPP304ua4zj+nz1ev+kD+aTEvNSSxSA/agPPJVpzEqrnu618ZGsSuLc/?=
+ =?us-ascii?Q?1qQ0yR85YDvCn+kPrWu0mhHYUMBxrYdpQY6HcKxF?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cab6f812-c85a-4773-0a0f-08db8c6a8754
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jul 2023 17:22:17.0056
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: HlaSZ9q2yFnsXl/M07JVJuTywqICGBNLO40bbKXCGHkhPx0CKslkpBQ6MjvORs7n
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB7353
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_100544_242234_6C0C8B1B 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20230724_102226_960940_42AEBB78 
+X-CRM114-Status: GOOD (  14.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,37 +174,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/07/2023 18:26, Rob Herring wrote:
-> On Sun, Jul 23, 2023 at 09:11:05AM +0200, Krzysztof Kozlowski wrote:
->> The usb-connector.yaml schema allows any additional properties, thus its
->> usage should finish with unevaluatedProperties: false.
-> 
-> Is it problematic if usb-connector.yaml is restricted?
+The PLATFORM domain will be set as the default domain and attached as
+normal during probe. The driver will ignore the initial attach from a NULL
+domain to the PLATFORM domain.
 
-Yes, a bit.
-1. Missing reg/unit-address:
-Documentation/devicetree/bindings/usb/cypress,cypd4226.yaml
-I guess this could be easily solved.
+After this, the PLATFORM domain's attach_dev will be called whenever we
+detach from an UNMANAGED domain (eg for VFIO). This is the same time the
+original design would have called op->detach_dev().
 
-2. phy-supply:
-arch/arm64/boot/dts/marvell/armada-3720-turris-mox.dts
-(and more of armada)
-This is a bit odd:
+This is temporary until the S390 dma-iommu.c conversion is merged.
 
-phy@18300 {
-  compatible = "marvell,comphy-a3700";
-  comphy0: phy@0 {}
-  comphy1: phy@1 {}
-  comphy2: phy@2 {
-    connector {
-      compatible = "usb-a-connector";
-      phy-supply = <&exp_usb3_vbus>;
-   };
-};
+Tested-by: Heiko Stuebner <heiko@sntech.de>
+Tested-by: Niklas Schnelle <schnelle@linux.ibm.com>
+Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+---
+ drivers/iommu/s390-iommu.c | 21 +++++++++++++++++++--
+ 1 file changed, 19 insertions(+), 2 deletions(-)
 
-I would assume that phy-supply should be a property of the phy.
-
-Best regards,
-Krzysztof
+diff --git a/drivers/iommu/s390-iommu.c b/drivers/iommu/s390-iommu.c
+index fbf59a8db29b11..f0c867c57a5b9b 100644
+--- a/drivers/iommu/s390-iommu.c
++++ b/drivers/iommu/s390-iommu.c
+@@ -142,14 +142,31 @@ static int s390_iommu_attach_device(struct iommu_domain *domain,
+ 	return 0;
+ }
+ 
+-static void s390_iommu_set_platform_dma(struct device *dev)
++/*
++ * Switch control over the IOMMU to S390's internal dma_api ops
++ */
++static int s390_iommu_platform_attach(struct iommu_domain *platform_domain,
++				      struct device *dev)
+ {
+ 	struct zpci_dev *zdev = to_zpci_dev(dev);
+ 
++	if (!zdev->s390_domain)
++		return 0;
++
+ 	__s390_iommu_detach_device(zdev);
+ 	zpci_dma_init_device(zdev);
++	return 0;
+ }
+ 
++static struct iommu_domain_ops s390_iommu_platform_ops = {
++	.attach_dev = s390_iommu_platform_attach,
++};
++
++static struct iommu_domain s390_iommu_platform_domain = {
++	.type = IOMMU_DOMAIN_PLATFORM,
++	.ops = &s390_iommu_platform_ops,
++};
++
+ static void s390_iommu_get_resv_regions(struct device *dev,
+ 					struct list_head *list)
+ {
+@@ -428,12 +445,12 @@ void zpci_destroy_iommu(struct zpci_dev *zdev)
+ }
+ 
+ static const struct iommu_ops s390_iommu_ops = {
++	.default_domain = &s390_iommu_platform_domain,
+ 	.capable = s390_iommu_capable,
+ 	.domain_alloc = s390_domain_alloc,
+ 	.probe_device = s390_iommu_probe_device,
+ 	.release_device = s390_iommu_release_device,
+ 	.device_group = generic_device_group,
+-	.set_platform_dma_ops = s390_iommu_set_platform_dma,
+ 	.pgsize_bitmap = SZ_4K,
+ 	.get_resv_regions = s390_iommu_get_resv_regions,
+ 	.default_domain_ops = &(const struct iommu_domain_ops) {
+-- 
+2.41.0
 
 
