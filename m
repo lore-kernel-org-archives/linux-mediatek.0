@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32C4AC001B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 01:33:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C78FC001B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 01:33:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7fZtpL0iNYJsohXcq4CBeKTLBpuQ3naoPd+9PJ+rI0k=; b=E9zlmrpV9uu7gV97o56G/f4yLS
-	cn6dumOWyYrd9mq2REvzdTKCAGLySVpb9uf4cTeDJ+7T+oI/9TcxswDJUKphnvlV2BqAW8VzxdXK8
-	phahjK/rdtTj8OEwBh+QUeyhBn3wwt3Uzr/ql4XTUfCTY/ABTSKd1zuWyBHkDwGBFcTg6+DNMzWFl
-	M0bVQTTUBzbmdK0beaLryJ3uPKRbqcbDMAV9Ls8TLLobB07gBnnMfkWIg8fDisHDVZJYuYYKm5rcj
-	PjcKPo6RFlBVAEVJ0Rz7Iz8rvTOpVaPOaUgOdRSBMfEVnzK5o1RRsVphmNg2ZSL/hvbiW0TyKbSfY
-	rRWP7GFw==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0SFyAans+BdocrYnxIwOaxHQWj8A+PfWnkMiPJ3aLok=; b=2RGmE2uHKYvzWLlAwY5friO6Wb
+	1Kq3RBG6mlSgHHQWfIeJfygoj12oHmTyWXcQ2omdMkPsCXcfse6AMQT0wbw92TLShzvFLWuoWAOq8
+	H78FlY6pWPqi6+Hb4DZT9oJ6ndGs/nErV2IUk9Vwjjw5SPt/UjTOf7EV0yUr/vVFUCQ4MvxwVfpgO
+	XIu8742d6kOkNyb6Ekn4s90npdOpdFS7UUtY+mIU0K1H8O6RLeDFyQrvgYrlBvyxVUfqq5QC/1VXD
+	Bz9kHOL7F1WBJstrx1BmK3FOkARlbcdtszAxvMhSlppHlmO/IZ6UQ6AAhLsgPV8bHpuSGUW3J/UAg
+	3OyeYOug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNkS4-002ONi-0J;
-	Mon, 24 Jul 2023 01:33:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qNkSC-002OQQ-2E;
+	Mon, 24 Jul 2023 01:33:40 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNkS1-002OMg-1q;
-	Mon, 24 Jul 2023 01:33:30 +0000
+	id 1qNkS6-002OOP-1B;
+	Mon, 24 Jul 2023 01:33:35 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id EC26F60F60;
-	Mon, 24 Jul 2023 01:33:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67A8CC433C7;
-	Mon, 24 Jul 2023 01:33:27 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id BADD660FF8;
+	Mon, 24 Jul 2023 01:33:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4AA8C433CC;
+	Mon, 24 Jul 2023 01:33:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690162408;
-	bh=HBPxB4RSNktNe65BuqWS+L5dNFVXfE7ZABDYXvs5vsc=;
-	h=From:To:Cc:Subject:Date:From;
-	b=G0HO7mSzs/MsPLmcuwZw/bTJKEMBOkvpGKx01tPeq2NN8skcgKQiEEVCvB30w+Ci9
-	 E6OE83Jejzt6rTzsJUR+K0D4XuB4lNCvhQWvBLkJ9dC2gvI8n2TI+6FnNir0SlpbgE
-	 yFhSUXklDDoJ+uM6ZEk7U3LxmSuWbH6XfxKj2f0DXERhUQS+Fo/+CkcPtV39sDid+C
-	 kLr7Tesd42ZG4V2GeP60ZdznQAnkgGNvRN3fqVEnMUg6WFYQaNeIrgwQESYfhPUZyr
-	 CK6sAFvbdITpapu5cPv1RvgZbY+G25F4CraVv+Q5601HhtKDZZKUv/+e1JcKLGBU0p
-	 GUnRA65nx/MrQ==
+	s=k20201202; t=1690162413;
+	bh=aE6R5/LUDMOcNOLRnGALpC25FChiJ1VOZIwrp4XhCtI=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=DVetLGiKd2ykwJf/hui4Z/xEDPUXLwaTtQkrRLlWBs9k/JMld2Md2/5lge4UVFsJu
+	 chfo3GgXH+tVKboO7bPIC/FWFPQhVyuYkggA6IGYpRpBtn9zzzJRsoCZc59wNiDpbz
+	 dEeRtvSe4IWjlfUTYWgQ0nG2RcHZvirPm7mjsBf6TP1FEmkzSvpWyqAIX/fhL5vzyW
+	 X051rIipLBCFt9zolVTA17VNzi4itjt/hDfGoMVI0etXxyUrfky0tzHmB8hzevTtcD
+	 98dUphOUxqnxeQYZ027prhO4QWMmTajIUtmomjLP8quQL1bp+L41t0YgHO1izzyKQx
+	 7nGMlJal7uxpg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>,
-	Pina Chen <pina.chen@mediatek.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
+	minghsiu.tsai@mediatek.com,
+	houlong.wei@mediatek.com,
+	andrew-ct.chen@mediatek.com,
+	tiffany.lin@mediatek.com,
 	matthias.bgg@gmail.com,
 	linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 01/24] media: v4l2-mem2mem: add lock to protect parameter num_rdy
-Date: Sun, 23 Jul 2023 21:33:02 -0400
-Message-Id: <20230724013325.2332084-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 04/24] media: platform: mediatek: vpu: fix NULL ptr dereference
+Date: Sun, 23 Jul 2023 21:33:05 -0400
+Message-Id: <20230724013325.2332084-4-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230724013325.2332084-1-sashal@kernel.org>
+References: <20230724013325.2332084-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 5.15.121
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230723_183329_650167_07345D7E 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20230723_183334_446754_D199EB90 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,64 +87,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yunfei Dong <yunfei.dong@mediatek.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 
-[ Upstream commit 56b5c3e67b0f9af3f45cf393be048ee8d8a92694 ]
+[ Upstream commit 3df55cd773e8603b623425cc97b05e542854ad27 ]
 
-Getting below error when using KCSAN to check the driver. Adding lock to
-protect parameter num_rdy when getting the value with function:
-v4l2_m2m_num_src_bufs_ready/v4l2_m2m_num_dst_bufs_ready.
+If pdev is NULL, then it is still dereferenced.
 
-kworker/u16:3: [name:report&]BUG: KCSAN: data-race in v4l2_m2m_buf_queue
-kworker/u16:3: [name:report&]
+This fixes this smatch warning:
 
-kworker/u16:3: [name:report&]read-write to 0xffffff8105f35b94 of 1 bytes by task 20865 on cpu 7:
-kworker/u16:3:  v4l2_m2m_buf_queue+0xd8/0x10c
+drivers/media/platform/mediatek/vpu/mtk_vpu.c:570 vpu_load_firmware() warn: address of NULL pointer 'pdev'
 
-Signed-off-by: Pina Chen <pina.chen@mediatek.com>
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: Yunfei Dong <yunfei.dong@mediatek.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- include/media/v4l2-mem2mem.h | 18 ++++++++++++++++--
- 1 file changed, 16 insertions(+), 2 deletions(-)
+ drivers/media/platform/mtk-vpu/mtk_vpu.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
-index 5a91b548ecc0c..8d52c4506762d 100644
---- a/include/media/v4l2-mem2mem.h
-+++ b/include/media/v4l2-mem2mem.h
-@@ -588,7 +588,14 @@ void v4l2_m2m_buf_queue(struct v4l2_m2m_ctx *m2m_ctx,
- static inline
- unsigned int v4l2_m2m_num_src_bufs_ready(struct v4l2_m2m_ctx *m2m_ctx)
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+index 7f1647da0ade0..af59cc52fdd73 100644
+--- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
++++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+@@ -562,15 +562,17 @@ static int load_requested_vpu(struct mtk_vpu *vpu,
+ int vpu_load_firmware(struct platform_device *pdev)
  {
--	return m2m_ctx->out_q_ctx.num_rdy;
-+	unsigned int num_buf_rdy;
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&m2m_ctx->out_q_ctx.rdy_spinlock, flags);
-+	num_buf_rdy = m2m_ctx->out_q_ctx.num_rdy;
-+	spin_unlock_irqrestore(&m2m_ctx->out_q_ctx.rdy_spinlock, flags);
-+
-+	return num_buf_rdy;
- }
+ 	struct mtk_vpu *vpu;
+-	struct device *dev = &pdev->dev;
++	struct device *dev;
+ 	struct vpu_run *run;
+ 	int ret;
  
- /**
-@@ -600,7 +607,14 @@ unsigned int v4l2_m2m_num_src_bufs_ready(struct v4l2_m2m_ctx *m2m_ctx)
- static inline
- unsigned int v4l2_m2m_num_dst_bufs_ready(struct v4l2_m2m_ctx *m2m_ctx)
- {
--	return m2m_ctx->cap_q_ctx.num_rdy;
-+	unsigned int num_buf_rdy;
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&m2m_ctx->cap_q_ctx.rdy_spinlock, flags);
-+	num_buf_rdy = m2m_ctx->cap_q_ctx.num_rdy;
-+	spin_unlock_irqrestore(&m2m_ctx->cap_q_ctx.rdy_spinlock, flags);
-+
-+	return num_buf_rdy;
- }
+ 	if (!pdev) {
+-		dev_err(dev, "VPU platform device is invalid\n");
++		pr_err("VPU platform device is invalid\n");
+ 		return -EINVAL;
+ 	}
  
- /**
++	dev = &pdev->dev;
++
+ 	vpu = platform_get_drvdata(pdev);
+ 	run = &vpu->run;
+ 
 -- 
 2.39.2
 
