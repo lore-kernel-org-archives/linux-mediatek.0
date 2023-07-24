@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D18C0015E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 21:19:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D729C0015E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 21:19:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=L6aTOMltWWEwleVk4QXZysyc67GMhKSpOVID6QKcz/Q=; b=DiD+sbxhzuAFyfhsWAatBdohQ/
-	r0OtGWuVPz4K5ZjsHSdlIA65QYT7I7bRTbvPD6Z4P43Ken01xI8RMVtISi4TKaYfn0I5ff0ShGxET
-	+fMzlvF7470cnK1LYcw/NHCi04w2/sKtEq7PAI1Zuy8YMOuJBgyW5dgq28lEwMFjBBeVCZABTcuuI
-	vRTNb8SRrLO1Drjav0LhV/odI7mbgOv+knYvmJsozxVr3d9HnIa8jNzsdNcg/cn5vt1b7ArNRBFYI
-	6Sg2iCUTNAxS0OU1cTLuM9bD/dSFfBexOpAxVpuaD9lfJLRJTMJbuTtCsK69WDfm2+869ZCJbdqwk
-	V9YqBQXw==;
+	bh=B/XDH7ccw5du/8qjnuHrQ7jgOXnVt69s50pi7MHHSxs=; b=H3ubIl/B6y/smyOxrdHHXAX/vU
+	hvAN1anSxUWeYK+iaF9qgQEUnfegBjmJpub4gXaet/A7TWq/BGnKrn3ZYNciTQKVG9Sv8PzCqwUiM
+	fJMzKB4H7JgiOqhflRcwhMLVjKP8fWswmU7gFItixZO0xLY2bIwQ8w6W4DfQ+jjVJAv6oe3dkIL5k
+	DO3D85wpLIB+4ydMX75zqDF6wjKAyFR5+Co0IryMZrPYStsB/rqY241NYVWzoNF8KWUrxB4c9KetH
+	kHvX1MbIvmA0UR+itefHdC5R4kDOof1Kxux95E0VqjNWNhF0ghiKU2BkmJ/0M4Pn+qL62YXJiYAnS
+	4n02ab3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO2xc-005S1M-0g;
-	Mon, 24 Jul 2023 21:19:20 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qO2xl-005S5G-1S;
+	Mon, 24 Jul 2023 21:19:29 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO2xY-005S08-35;
-	Mon, 24 Jul 2023 21:19:18 +0000
+	id 1qO2xe-005S1w-0F;
+	Mon, 24 Jul 2023 21:19:23 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0D81B61423;
-	Mon, 24 Jul 2023 21:19:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B491C433C7;
-	Mon, 24 Jul 2023 21:19:12 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 7B2A561419;
+	Mon, 24 Jul 2023 21:19:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6EB16C433C7;
+	Mon, 24 Jul 2023 21:19:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690233553;
-	bh=Kj3XfjZcezJ9YNhnOjElUCHift7/ySxvviPokSxuUfw=;
+	s=k20201202; t=1690233560;
+	bh=bSAUEcuXqTqXpKIg7Bv5PY9P3Dl95C0bkG2c+6yz6uE=;
 	h=From:To:Cc:Subject:Date:From;
-	b=N20CdsGLjqTiQ1aVBymIuJeFt3sAkR8Xs1S7Xrei7URkWIFKMPxKhvZ7JzBAY/tZ6
-	 qeTGRI23GVQlJFw1i/SX6IMCz6HlvbNT4Q9ktfo82y4YZRKyIZm7Iz5GBX2naAD0La
-	 qhqGFY8QH33p0o4SGOfIRjTR5tUrDGDLgjopTQ44GGbgm+Nb8P/GSwNyCwKtR1YAi+
-	 lrDqOHcF6gCnWmjZR66gSRQlh3rrdfLvOzOqozasSXt7W3z6DbqQa8H4kqld8Vcmjy
-	 1EAvGj1phm/OfwT+nNWqHbtxEHMUq5UvGv9dZecMisg1azwXg1WCKoqPgkmDGHaCeu
-	 BXxlaySrNaymg==
-Received: (nullmailer pid 805831 invoked by uid 1000);
-	Mon, 24 Jul 2023 21:19:11 -0000
+	b=dByrJeAPcbCJsBQexUs5scUmplWaGVUp9/EPOQZt18/lsqhnGVSyumj52MG6ffBNk
+	 92lD5tebXIk0He97C5SOBgaq2nat970RKtx34vyWtIE+qPj43qYDQ+y9Nc00HQohso
+	 vaFkDBpyiAJ2+VVMYp7pigzNwRNZ4wlDgyxXt5Jt2mbShYH9/s5ruaztFr3E/psBpt
+	 +wWP8O24EqyMsDSZRDnTxvzdZWSrCrz4Qu3Ps48xZDM4qsVZy2/9xqJTpoeQVaKkAZ
+	 pzkrIfT0uHOmVjdR+Dl3gTiGq8nHjO9RvYSIa/9i57DGk5nUYqeXeQqKDrrQUbf9Dr
+	 Ie7OWZSG/YGrw==
+Received: (nullmailer pid 806011 invoked by uid 1000);
+	Mon, 24 Jul 2023 21:19:18 -0000
 From: Rob Herring <robh@kernel.org>
-To: =?UTF-8?q?Cl=C3=A9ment=20L=C3=A9ger?= <clement.leger@bootlin.com>, Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang <SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-renesas-soc@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v2] net: phy/pcs: Explicitly include correct DT includes
-Date: Mon, 24 Jul 2023 15:19:05 -0600
-Message-Id: <20230724211905.805665-1-robh@kernel.org>
+To: Kalle Valo <kvalo@kernel.org>, Loic Poulain <loic.poulain@linaro.org>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?UTF-8?q?J=C3=A9r=C3=B4me=20Pouiller?= <jerome.pouiller@silabs.com>
+Cc: ath10k@lists.infradead.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, ath11k@lists.infradead.org, wcn36xx@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] net: wireless: Explicitly include correct DT includes
+Date: Mon, 24 Jul 2023 15:19:13 -0600
+Message-Id: <20230724211914.805876-1-robh@kernel.org>
 X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_141917_080037_4BF04887 
-X-CRM114-Status: GOOD (  13.61  )
+X-CRM114-CacheID: sfid-20230724_141922_350187_DB9A0D7F 
+X-CRM114-Status: GOOD (  13.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,48 +86,118 @@ Signed-off-by: Rob Herring <robh@kernel.org>
 v2:
  - Split out can, dsa, wireless, phy/pcs to separate patches
 ---
- drivers/net/pcs/pcs-rzn1-miic.c   | 1 +
- drivers/net/phy/marvell-88x2222.c | 1 -
- drivers/net/phy/mediatek-ge-soc.c | 2 --
- 3 files changed, 1 insertion(+), 3 deletions(-)
+ drivers/net/wireless/ath/ath10k/ahb.c            | 2 +-
+ drivers/net/wireless/ath/ath11k/qmi.c            | 1 -
+ drivers/net/wireless/ath/wcn36xx/main.c          | 3 +--
+ drivers/net/wireless/intersil/orinoco/airport.c  | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c | 1 +
+ drivers/net/wireless/mediatek/mt76/mt7915/soc.c  | 1 -
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c | 1 +
+ drivers/net/wireless/silabs/wfx/bus_sdio.c       | 2 +-
+ 8 files changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/pcs/pcs-rzn1-miic.c b/drivers/net/pcs/pcs-rzn1-miic.c
-index 323bec5e57f8..e5d642c67a2c 100644
---- a/drivers/net/pcs/pcs-rzn1-miic.c
-+++ b/drivers/net/pcs/pcs-rzn1-miic.c
-@@ -12,6 +12,7 @@
- #include <linux/of_platform.h>
- #include <linux/pcs-rzn1-miic.h>
- #include <linux/phylink.h>
-+#include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <dt-bindings/net/pcs-rzn1-miic.h>
- 
-diff --git a/drivers/net/phy/marvell-88x2222.c b/drivers/net/phy/marvell-88x2222.c
-index f83cae64585d..e3aa30dad2e6 100644
---- a/drivers/net/phy/marvell-88x2222.c
-+++ b/drivers/net/phy/marvell-88x2222.c
-@@ -14,7 +14,6 @@
- #include <linux/mdio.h>
- #include <linux/marvell_phy.h>
+diff --git a/drivers/net/wireless/ath/ath10k/ahb.c b/drivers/net/wireless/ath/ath10k/ahb.c
+index 4a006fb4d424..76efea2f1138 100644
+--- a/drivers/net/wireless/ath/ath10k/ahb.c
++++ b/drivers/net/wireless/ath/ath10k/ahb.c
+@@ -5,7 +5,7 @@
+  */
+ #include <linux/module.h>
  #include <linux/of.h>
 -#include <linux/of_device.h>
- #include <linux/of_gpio.h>
- #include <linux/sfp.h>
- #include <linux/netdevice.h>
-diff --git a/drivers/net/phy/mediatek-ge-soc.c b/drivers/net/phy/mediatek-ge-soc.c
-index 95369171a7ba..da512fab0eb0 100644
---- a/drivers/net/phy/mediatek-ge-soc.c
-+++ b/drivers/net/phy/mediatek-ge-soc.c
-@@ -2,8 +2,6 @@
- #include <linux/bitfield.h>
- #include <linux/module.h>
- #include <linux/nvmem-consumer.h>
--#include <linux/of_address.h>
--#include <linux/of_platform.h>
- #include <linux/pinctrl/consumer.h>
- #include <linux/phy.h>
++#include <linux/platform_device.h>
+ #include <linux/clk.h>
+ #include <linux/reset.h>
+ #include "core.h"
+diff --git a/drivers/net/wireless/ath/ath11k/qmi.c b/drivers/net/wireless/ath/ath11k/qmi.c
+index d4eaf7d2ba84..98efa0f299ca 100644
+--- a/drivers/net/wireless/ath/ath11k/qmi.c
++++ b/drivers/net/wireless/ath/ath11k/qmi.c
+@@ -13,7 +13,6 @@
+ #include <linux/of_address.h>
+ #include <linux/ioport.h>
+ #include <linux/firmware.h>
+-#include <linux/of_device.h>
+ #include <linux/of_irq.h>
  
+ #define SLEEP_CLOCK_SELECT_INTERNAL_BIT	0x02
+diff --git a/drivers/net/wireless/ath/wcn36xx/main.c b/drivers/net/wireless/ath/wcn36xx/main.c
+index 8dbd115a393c..2bd1163177f0 100644
+--- a/drivers/net/wireless/ath/wcn36xx/main.c
++++ b/drivers/net/wireless/ath/wcn36xx/main.c
+@@ -19,9 +19,8 @@
+ #include <linux/module.h>
+ #include <linux/firmware.h>
+ #include <linux/platform_device.h>
++#include <linux/of.h>
+ #include <linux/of_address.h>
+-#include <linux/of_device.h>
+-#include <linux/of_irq.h>
+ #include <linux/rpmsg.h>
+ #include <linux/soc/qcom/smem_state.h>
+ #include <linux/soc/qcom/wcnss_ctrl.h>
+diff --git a/drivers/net/wireless/intersil/orinoco/airport.c b/drivers/net/wireless/intersil/orinoco/airport.c
+index a890bfa0d5cc..45ac00fdafa5 100644
+--- a/drivers/net/wireless/intersil/orinoco/airport.c
++++ b/drivers/net/wireless/intersil/orinoco/airport.c
+@@ -18,7 +18,7 @@
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+ #include <linux/delay.h>
+-#include <linux/of_device.h>
++#include <linux/mod_devicetable.h>
+ #include <asm/pmac_feature.h>
+ 
+ #include "orinoco.h"
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index ac2049f49bb3..aec47de35f53 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -4,6 +4,7 @@
+ #include <linux/etherdevice.h>
+ #include <linux/hwmon.h>
+ #include <linux/hwmon-sysfs.h>
++#include <linux/of.h>
+ #include <linux/thermal.h>
+ #include "mt7915.h"
+ #include "mac.h"
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
+index 32c137066e7f..701a27ffa4c2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
+@@ -6,7 +6,6 @@
+ #include <linux/platform_device.h>
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/of_reserved_mem.h>
+ #include <linux/of_gpio.h>
+ #include <linux/iopoll.h>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index f1b48cdda58f..5c980534f611 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include <linux/etherdevice.h>
++#include <linux/of.h>
+ #include <linux/thermal.h>
+ #include "mt7996.h"
+ #include "mac.h"
+diff --git a/drivers/net/wireless/silabs/wfx/bus_sdio.c b/drivers/net/wireless/silabs/wfx/bus_sdio.c
+index 51a0d58a9070..909d5f346a01 100644
+--- a/drivers/net/wireless/silabs/wfx/bus_sdio.c
++++ b/drivers/net/wireless/silabs/wfx/bus_sdio.c
+@@ -10,7 +10,7 @@
+ #include <linux/mmc/sdio_func.h>
+ #include <linux/mmc/card.h>
+ #include <linux/interrupt.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/of_irq.h>
+ #include <linux/irq.h>
+ #include <linux/align.h>
 -- 
 2.40.1
 
