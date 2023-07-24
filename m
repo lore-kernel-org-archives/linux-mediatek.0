@@ -4,63 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 646F9C04A6A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 21:22:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56FF0C001B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 21:29:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FKf34ShnB7yY7r9O351og3aex8I7qNCMwVCBuTMQqVQ=; b=qIIP1NoQS7CZSpFmdnRsK9ujp2
-	K4y2GSXQWGTpAXpp8AwOOYzc1Sxcp63MOZiE4q8rDafs2DR7rsewD29xs2mh5CFKO6MGlwE69W4Vi
-	5/pAZGkq5KVpv23OmDJdklWAYjGxH3Xpg+TQMNVihOcVKUNrFIRMBQiUjAszN+y/TI/bnXE+Kd8xC
-	c9hvk4hOlViLwQuLZZjqk7ikqST3wPz/hjmNSxsGwF9zuihsqJ2Rkc8kpKNs4b/8/gmT6/s5HTnQu
-	AUT15ZyK9tZw6YHk0sK0FOKmt2OZTrRXq6YmCCzcw1mjHDvyB6hCqiMPIZd84pcapdVK+v2Uye93l
-	IUIzK+pg==;
+	bh=ZxYZtkhXRjiitOQUc1ZykDsrDQxrX696sSoc7UHcofw=; b=eXVgT7gd6fvsWAWbjtBbSZNwBZ
+	Kz/N5iXbHxrWjkjGSyMQwYvA1J7DvPPibgG2pWVAau3dbJZqzC0cZw1IrOxU48SsTqpaLolsgj624
+	fOfBQ8offs6+f8XDmFEp1mzpkdhfko/D4NusBOQnmg+4vRutZwsY+QP3/sEggmMVgkTeRVdbBElpC
+	PEm3Cs0wMUxZNpTCZDP74WlEBrYLAc+N/S3yMOcTyPDqZMN2KfHvMRMrdZafPW3Slp0duKo+9QQXp
+	pEUzgeeRVsVJlPMbXcAoeulAj9lLpLQfKJdN7fkML7pqPiJ8TT08zjng6UKkL0zk7a1lcLQrpBmgo
+	EbpMwtwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO30s-005SaW-0w;
-	Mon, 24 Jul 2023 21:22:42 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qO37o-005SzS-0Y;
+	Mon, 24 Jul 2023 21:29:52 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO30l-005SZj-0d;
-	Mon, 24 Jul 2023 21:22:40 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 652DB61411;
-	Mon, 24 Jul 2023 21:22:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B9D0C433C7;
-	Mon, 24 Jul 2023 21:22:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690233753;
-	bh=XxYi/1Gt9v2LpWnn1if18vwrLT6DyG4npZ3OigxbwRk=;
-	h=From:To:Cc:Subject:Date:From;
-	b=K2A9RJnit2vN0UMa8CIYp4blG561GUaS/VYkcXbOplBtSLnikOEZtBka3725p1v4F
-	 KM6sfS3TtNaY3mXdRpxLDaeOK7DJbKJHyPGE+X7Tw1dh/rFrbQM/fvxWHCC4LLi3jj
-	 7945t1SKRIxGpTgkFTAGHTGmMb7YYkevAOdzGJg+JtUkgILgbL+bKXb/YWDk+TAHk3
-	 zmahpT5xuS+FnHFGsQ9qjknkQ1SeR0Z76uX8iSLLSjSKXRc+TBUR0YmYoel7izQ8qj
-	 fZwKtNK+JqFgcak+4ugW9pKkY2V33Nv73ep0w2SB+RBarr0JQ3V+VBD//JtzGO0/68
-	 0PGALBo2UQiug==
-Received: (nullmailer pid 810136 invoked by uid 1000);
-	Mon, 24 Jul 2023 21:22:25 -0000
-From: Rob Herring <robh@kernel.org>
-To: Andreas Larsson <andreas@gaisler.com>, "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Iyappan Subramanian <iyappan@os.amperecomputing.com>, Keyur Chudgar <keyur@os.amperecomputing.com>, Chris Snook <chris.snook@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Claudiu Beznea <claudiu.beznea@microchip.com>, Madalin Bucur <madalin.bucur@nxp.com>, Claudiu Manoil <claudiu.manoil@nxp.com>, Vladimir Oltean <vladimir.oltean@nxp.com>, Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, NXP Linux Team <linux-imx@nxp.com>, Sean Anderson <sean.anderson@seco.com>, Pantelis Antoniou <pantelis.antoniou@gmail.com>, Li Yang <leoyang.li@nxp.com>, Yisen Zhuang <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, Douglas Miller <dougmill@linux.ibm.com>, Marcin Wojtas <mw@semihalf.com>, Russell King <linux@armlinux.org.uk>, Taras Chorny
- i <taras.chornyi@plvision.eu>, Mirko Lindner <mlindner@marvell.com>, Stephen Hemminger <stephen@networkplumber.org>, Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Horatiu Vultur <horatiu.vultur@microchip.com>, UNGLinuxDriver@microchip.com, Alexandre Belloni <alexandre.belloni@bootlin.com>, Timur Tabi <timur@kernel.org>, Sergey Shtylyov <s.shtylyov@omp.ru>, Steve Glendinning <steve.glendinning@shawell.net>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
-  Fabio Estevam <festevam@gmail.com>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Vinod Koul <vkoul@kernel.org>, Bhupesh Sharma <bhupesh.sharma@linaro.org>, Emil Renner Berthing <kernel@esmil.dk>, Samin Guo <samin.guo@starfivetech.com>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, Grygorii Strashko <grygorii.strashko@ti.com>, Kevin Brace <kevinbrace@bracecomputerlab.com>, Francois Romieu <romieu@fr.zoreil.com>, Michal Simek <michal.simek@amd.com>, Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>, Alexander Aring <alex.aring@gmail.com>, Stefan Schmidt <stefan@datenfreihafen.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Alex Elder <elder@kernel.org>, A
- ndrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, Richard Cochran <richardcochran@gmail.com>
-Cc: Alex Elder <elder@linaro.org>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-amlogic@lists.infradead.org, linux-oxnas@groups.io, linux-arm-msm@vger.kernel.org, linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org, linux-wpan@vger.kernel.org
-Subject: [PATCH v2] net: Explicitly include correct DT includes
-Date: Mon, 24 Jul 2023 15:22:16 -0600
-Message-Id: <20230724212222.809909-1-robh@kernel.org>
-X-Mailer: git-send-email 2.40.1
+	id 1qO37l-005Sz5-2J
+	for linux-mediatek@lists.infradead.org;
+	Mon, 24 Jul 2023 21:29:51 +0000
+X-UUID: 356d9ac62a6911ee912e1518a6540028-20230724
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ZxYZtkhXRjiitOQUc1ZykDsrDQxrX696sSoc7UHcofw=;
+	b=rrcoOKCVKNbI/PA72wm2cJ//TkWps4jvgGJZBwIehvsEt0K7imamI1h7InZioB+EYlJxXkG66E1kr3ekVB1u1bB+83DAz8Xgq6InXkANZisRSB736GwbQ/uO32W7DWMbtrrh9bnd8oSGYn+PnXOFHmvNrpS2HxuVzl7cgjaxpcE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.29,REQID:7e3361f7-d1a5-4384-b884-ac14f282ea75,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:e7562a7,CLOUDID:b8e745d2-cd77-4e67-bbfd-aa4eaace762f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 356d9ac62a6911ee912e1518a6540028-20230724
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 674563529; Mon, 24 Jul 2023 14:29:45 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 25 Jul 2023 05:19:42 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 25 Jul 2023 05:19:42 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<Leon.Yen@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <jenhao.yang@mediatek.com>,
+	<robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
+	<Tom.Chou@mediatek.com>, <jsiuda@google.com>, <arowa@google.org>,
+	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
+	<abhishekpandit@google.com>, <shawnku@google.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 1/2] wifi: mt76: move struct ieee80211_chanctx_conf up to struct mt76_vif
+Date: Tue, 25 Jul 2023 05:19:39 +0800
+Message-ID: <8fd42ac8e1c97246f6e65225a14fc8a029ac3aaa.1690232804.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_142235_395739_ED863D35 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20230724_142949_786601_937AEDC9 
+X-CRM114-Status: GOOD (  13.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,1389 +89,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The DT of_device.h and of_platform.h date back to the separate
-of_platform_bus_type before it as merged into the regular platform bus.
-As part of that merge prepping Arm DT support 13 years ago, they
-"temporarily" include each other. They also include platform_device.h
-and of.h. As a result, there's a pretty much random mix of those include
-files used throughout the tree. In order to detangle these headers and
-replace the implicit includes with struct declarations, users need to
-explicitly include the correct includes.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Acked-by: Alex Elder <elder@linaro.org>
-Reviewed-by: Bhupesh Sharma <bhupesh.sharma@linaro.org>
-Reviewed-by: Wei Fang <wei.fang@nxp.com>
-Signed-off-by: Rob Herring <robh@kernel.org>
----
-v2:
- - Fix applying to net-next (was due to dependency in my tree)
- - Split out can, dsa, wireless, phy/pcs to separate patches
----
- drivers/net/ethernet/aeroflex/greth.c                   | 4 ++--
- drivers/net/ethernet/amd/sunlance.c                     | 2 +-
- drivers/net/ethernet/apm/xgene-v2/main.h                | 1 +
- drivers/net/ethernet/arc/emac_main.c                    | 2 +-
- drivers/net/ethernet/atheros/ag71xx.c                   | 3 ++-
- drivers/net/ethernet/cadence/macb_main.c                | 1 -
- drivers/net/ethernet/cirrus/cs89x0.c                    | 1 -
- drivers/net/ethernet/ezchip/nps_enet.c                  | 5 ++---
- drivers/net/ethernet/freescale/dpaa/dpaa_eth.c          | 3 ++-
- drivers/net/ethernet/freescale/dpaa/dpaa_ethtool.c      | 2 ++
- drivers/net/ethernet/freescale/enetc/enetc_ierb.c       | 2 +-
- drivers/net/ethernet/freescale/fec_mpc52xx.c            | 4 ++--
- drivers/net/ethernet/freescale/fec_mpc52xx_phy.c        | 3 ++-
- drivers/net/ethernet/freescale/fec_ptp.c                | 1 -
- drivers/net/ethernet/freescale/fman/fman.c              | 1 +
- drivers/net/ethernet/freescale/fman/fman_port.c         | 1 +
- drivers/net/ethernet/freescale/fman/mac.c               | 2 ++
- drivers/net/ethernet/freescale/fs_enet/mac-fcc.c        | 1 -
- drivers/net/ethernet/freescale/fs_enet/mac-fec.c        | 1 -
- drivers/net/ethernet/freescale/fs_enet/mac-scc.c        | 1 -
- drivers/net/ethernet/freescale/fsl_pq_mdio.c            | 1 +
- drivers/net/ethernet/freescale/gianfar.c                | 2 +-
- drivers/net/ethernet/freescale/gianfar_ethtool.c        | 2 ++
- drivers/net/ethernet/freescale/ucc_geth.c               | 3 ++-
- drivers/net/ethernet/freescale/xgmac_mdio.c             | 4 ++--
- drivers/net/ethernet/hisilicon/hns/hns_dsaf_ppe.c       | 3 ---
- drivers/net/ethernet/hisilicon/hns/hns_dsaf_rcb.c       | 4 ----
- drivers/net/ethernet/ibm/ehea/ehea_main.c               | 1 +
- drivers/net/ethernet/ibm/emac/core.c                    | 1 +
- drivers/net/ethernet/ibm/emac/core.h                    | 1 -
- drivers/net/ethernet/ibm/emac/mal.c                     | 2 ++
- drivers/net/ethernet/ibm/emac/rgmii.c                   | 2 ++
- drivers/net/ethernet/ibm/emac/tah.c                     | 2 ++
- drivers/net/ethernet/ibm/emac/zmii.c                    | 2 ++
- drivers/net/ethernet/korina.c                           | 2 +-
- drivers/net/ethernet/marvell/mvmdio.c                   | 2 +-
- drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c         | 1 -
- drivers/net/ethernet/marvell/prestera/prestera_rxtx.c   | 3 ---
- drivers/net/ethernet/marvell/sky2.c                     | 1 -
- drivers/net/ethernet/mediatek/mtk_eth_soc.c             | 3 ++-
- drivers/net/ethernet/mediatek/mtk_star_emac.c           | 1 -
- drivers/net/ethernet/mediatek/mtk_wed.c                 | 1 +
- drivers/net/ethernet/mediatek/mtk_wed_wo.c              | 3 +--
- drivers/net/ethernet/microchip/lan966x/lan966x_main.c   | 3 ++-
- drivers/net/ethernet/mscc/ocelot_fdma.c                 | 1 -
- drivers/net/ethernet/mscc/ocelot_vsc7514.c              | 3 ++-
- drivers/net/ethernet/ni/nixge.c                         | 5 ++---
- drivers/net/ethernet/qualcomm/emac/emac-sgmii.c         | 2 ++
- drivers/net/ethernet/qualcomm/emac/emac.c               | 1 -
- drivers/net/ethernet/qualcomm/qca_spi.c                 | 1 -
- drivers/net/ethernet/qualcomm/qca_uart.c                | 1 -
- drivers/net/ethernet/renesas/ravb_main.c                | 3 +--
- drivers/net/ethernet/renesas/rswitch.c                  | 3 +--
- drivers/net/ethernet/renesas/sh_eth.c                   | 2 --
- drivers/net/ethernet/smsc/smsc911x.c                    | 1 -
- drivers/net/ethernet/socionext/sni_ave.c                | 3 ++-
- drivers/net/ethernet/stmicro/stmmac/dwmac-dwc-qos-eth.c | 2 +-
- drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c         | 1 -
- drivers/net/ethernet/stmicro/stmmac/dwmac-ingenic.c     | 1 -
- drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c    | 2 +-
- drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c     | 2 +-
- drivers/net/ethernet/stmicro/stmmac/dwmac-oxnas.c       | 1 -
- drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c | 1 -
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c          | 2 +-
- drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c    | 4 +++-
- drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c         | 1 -
- drivers/net/ethernet/stmicro/stmmac/dwmac-stm32.c       | 1 -
- drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c       | 3 ++-
- drivers/net/ethernet/stmicro/stmmac/dwmac-tegra.c       | 2 +-
- drivers/net/ethernet/stmicro/stmmac/dwmac-visconti.c    | 3 ++-
- drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c   | 1 -
- drivers/net/ethernet/sun/niu.c                          | 2 +-
- drivers/net/ethernet/sun/sunbmac.c                      | 2 +-
- drivers/net/ethernet/sun/sungem.c                       | 1 +
- drivers/net/ethernet/sun/sunhme.c                       | 3 ++-
- drivers/net/ethernet/sun/sunqe.c                        | 2 +-
- drivers/net/ethernet/ti/am65-cpsw-nuss.c                | 1 +
- drivers/net/ethernet/ti/cpsw-common.c                   | 1 -
- drivers/net/ethernet/ti/cpsw-phy-sel.c                  | 1 -
- drivers/net/ethernet/ti/davinci_mdio.c                  | 1 -
- drivers/net/ethernet/via/via-rhine.c                    | 2 +-
- drivers/net/ethernet/via/via-velocity.c                 | 2 +-
- drivers/net/ethernet/xilinx/ll_temac.h                  | 1 +
- drivers/net/ethernet/xilinx/ll_temac_main.c             | 4 +---
- drivers/net/ethernet/xilinx/ll_temac_mdio.c             | 2 +-
- drivers/net/ethernet/xilinx/xilinx_axienet_main.c       | 3 ++-
- drivers/net/ethernet/xilinx/xilinx_emaclite.c           | 4 ++--
- drivers/net/ieee802154/ca8210.c                         | 1 -
- drivers/net/ipa/ipa_main.c                              | 2 +-
- net/core/of_net.c                                       | 1 +
- 90 files changed, 88 insertions(+), 92 deletions(-)
+Move struct ieee80211_chanctx_conf up to struct mt76_vif to allow the
+connac2 library can access the struct ieee80211_chanctx_conf * member in
+struct mt76_vif.
 
-diff --git a/drivers/net/ethernet/aeroflex/greth.c b/drivers/net/ethernet/aeroflex/greth.c
-index aa0d2f3aaeaa..597a02c75d52 100644
---- a/drivers/net/ethernet/aeroflex/greth.c
-+++ b/drivers/net/ethernet/aeroflex/greth.c
-@@ -29,9 +29,9 @@
- #include <linux/io.h>
- #include <linux/crc32.h>
- #include <linux/mii.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/of_net.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <asm/cacheflush.h>
- #include <asm/byteorder.h>
-diff --git a/drivers/net/ethernet/amd/sunlance.c b/drivers/net/ethernet/amd/sunlance.c
-index 68ca1225eedc..33bb539ad70a 100644
---- a/drivers/net/ethernet/amd/sunlance.c
-+++ b/drivers/net/ethernet/amd/sunlance.c
-@@ -92,7 +92,7 @@ static char lancestr[] = "LANCE";
- #include <linux/bitops.h>
- #include <linux/dma-mapping.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/gfp.h>
- #include <linux/pgtable.h>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76.h        |  1 +
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 16 ++++++++--------
+ .../net/wireless/mediatek/mt76/mt7921/mt7921.h   |  1 -
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 878087257ea7..bf9c781ff48c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -708,6 +708,7 @@ struct mt76_vif {
+ 	u8 basic_rates_idx;
+ 	u8 mcast_rates_idx;
+ 	u8 beacon_rates_idx;
++	struct ieee80211_chanctx_conf *ctx;
+ };
  
-diff --git a/drivers/net/ethernet/apm/xgene-v2/main.h b/drivers/net/ethernet/apm/xgene-v2/main.h
-index b3985a7be59d..7be6f83e22fe 100644
---- a/drivers/net/ethernet/apm/xgene-v2/main.h
-+++ b/drivers/net/ethernet/apm/xgene-v2/main.h
-@@ -22,6 +22,7 @@
- #include <linux/of_mdio.h>
- #include <linux/prefetch.h>
- #include <linux/phy.h>
-+#include <linux/platform_device.h>
- #include <net/ip.h>
- #include "mac.h"
- #include "enet.h"
-diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
-index 2b427d8a1831..31ee477dd131 100644
---- a/drivers/net/ethernet/arc/emac_main.c
-+++ b/drivers/net/ethernet/arc/emac_main.c
-@@ -15,11 +15,11 @@
- #include <linux/interrupt.h>
- #include <linux/io.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/of_irq.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
--#include <linux/of_platform.h>
+ struct mt76_phy {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 87067ac367eb..8987173a83f2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -804,7 +804,7 @@ void mt7921_mac_sta_assoc(struct mt76_dev *mdev, struct ieee80211_vif *vif,
  
- #include "emac.h"
+ 	if (vif->type == NL80211_IFTYPE_STATION && !sta->tdls)
+ 		mt76_connac_mcu_uni_add_bss(&dev->mphy, vif, &mvif->sta.wcid,
+-					    true, mvif->ctx);
++					    true, mvif->mt76.ctx);
  
-diff --git a/drivers/net/ethernet/atheros/ag71xx.c b/drivers/net/ethernet/atheros/ag71xx.c
-index ff1a5edf8df1..009e0b3066fa 100644
---- a/drivers/net/ethernet/atheros/ag71xx.c
-+++ b/drivers/net/ethernet/atheros/ag71xx.c
-@@ -29,9 +29,10 @@
+ 	ewma_avg_signal_init(&msta->avg_ack_signal);
  
- #include <linux/if_vlan.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/of.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <linux/phylink.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
-diff --git a/drivers/net/ethernet/cadence/macb_main.c b/drivers/net/ethernet/cadence/macb_main.c
-index f6a0f12a6d52..b61566afb2f4 100644
---- a/drivers/net/ethernet/cadence/macb_main.c
-+++ b/drivers/net/ethernet/cadence/macb_main.c
-@@ -26,7 +26,6 @@
- #include <linux/platform_device.h>
- #include <linux/phylink.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_gpio.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
-diff --git a/drivers/net/ethernet/cirrus/cs89x0.c b/drivers/net/ethernet/cirrus/cs89x0.c
-index 276c32c3926a..7c51fd9fc9be 100644
---- a/drivers/net/ethernet/cirrus/cs89x0.c
-+++ b/drivers/net/ethernet/cirrus/cs89x0.c
-@@ -54,7 +54,6 @@
- #include <linux/netdevice.h>
- #include <linux/etherdevice.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/kernel.h>
- #include <linux/types.h>
-diff --git a/drivers/net/ethernet/ezchip/nps_enet.c b/drivers/net/ethernet/ezchip/nps_enet.c
-index f1eb660aaee2..edf000e7bab4 100644
---- a/drivers/net/ethernet/ezchip/nps_enet.c
-+++ b/drivers/net/ethernet/ezchip/nps_enet.c
-@@ -6,10 +6,9 @@
- #include <linux/module.h>
- #include <linux/etherdevice.h>
- #include <linux/interrupt.h>
--#include <linux/of_address.h>
--#include <linux/of_irq.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/of_net.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include "nps_enet.h"
+@@ -839,7 +839,7 @@ void mt7921_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 		if (!sta->tdls)
+ 			mt76_connac_mcu_uni_add_bss(&dev->mphy, vif,
+ 						    &mvif->sta.wcid, false,
+-						    mvif->ctx);
++						    mvif->mt76.ctx);
+ 	}
  
- #define DRV_NAME			"nps_mgt_enet"
-diff --git a/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c b/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c
-index 431f8917dc39..7cbfc5864ade 100644
---- a/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c
-+++ b/drivers/net/ethernet/freescale/dpaa/dpaa_eth.c
-@@ -7,8 +7,8 @@
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+ 	spin_lock_bh(&dev->mt76.sta_poll_lock);
+@@ -1638,7 +1638,7 @@ mt7921_start_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	mt7921_mutex_acquire(dev);
  
- #include <linux/init.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
--#include <linux/of_platform.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
- #include <linux/io.h>
-@@ -17,6 +17,7 @@
- #include <linux/icmp.h>
- #include <linux/ip.h>
- #include <linux/ipv6.h>
-+#include <linux/platform_device.h>
- #include <linux/udp.h>
- #include <linux/tcp.h>
- #include <linux/net.h>
-diff --git a/drivers/net/ethernet/freescale/dpaa/dpaa_ethtool.c b/drivers/net/ethernet/freescale/dpaa/dpaa_ethtool.c
-index 9c71cbbb13d8..5bd0b36d1feb 100644
---- a/drivers/net/ethernet/freescale/dpaa/dpaa_ethtool.c
-+++ b/drivers/net/ethernet/freescale/dpaa/dpaa_ethtool.c
-@@ -6,7 +6,9 @@
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+ 	err = mt76_connac_mcu_uni_add_bss(phy->mt76, vif, &mvif->sta.wcid,
+-					  true, mvif->ctx);
++					  true, mvif->mt76.ctx);
+ 	if (err)
+ 		goto out;
  
- #include <linux/string.h>
-+#include <linux/of.h>
- #include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <linux/net_tstamp.h>
- #include <linux/fsl/ptp_qoriq.h>
+@@ -1670,7 +1670,7 @@ mt7921_stop_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		goto out;
  
-diff --git a/drivers/net/ethernet/freescale/enetc/enetc_ierb.c b/drivers/net/ethernet/freescale/enetc/enetc_ierb.c
-index b307bef4dc29..d39617ab9306 100644
---- a/drivers/net/ethernet/freescale/enetc/enetc_ierb.c
-+++ b/drivers/net/ethernet/freescale/enetc/enetc_ierb.c
-@@ -18,8 +18,8 @@
-  */
+ 	mt76_connac_mcu_uni_add_bss(phy->mt76, vif, &mvif->sta.wcid, false,
+-				    mvif->ctx);
++				    mvif->mt76.ctx);
  
- #include <linux/io.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
- #include <linux/pci.h>
- #include <linux/platform_device.h>
- #include "enetc.h"
-diff --git a/drivers/net/ethernet/freescale/fec_mpc52xx.c b/drivers/net/ethernet/freescale/fec_mpc52xx.c
-index b88816b71ddf..f843ea0df065 100644
---- a/drivers/net/ethernet/freescale/fec_mpc52xx.c
-+++ b/drivers/net/ethernet/freescale/fec_mpc52xx.c
-@@ -29,12 +29,12 @@
- #include <linux/crc32.h>
- #include <linux/hardirq.h>
- #include <linux/delay.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
+ out:
+ 	mt7921_mutex_release(dev);
+@@ -1695,7 +1695,7 @@ static void mt7921_ctx_iter(void *priv, u8 *mac,
+ 	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
+ 	struct ieee80211_chanctx_conf *ctx = priv;
  
- #include <linux/netdevice.h>
- #include <linux/etherdevice.h>
-diff --git a/drivers/net/ethernet/freescale/fec_mpc52xx_phy.c b/drivers/net/ethernet/freescale/fec_mpc52xx_phy.c
-index 95f778cce98c..894130985e2c 100644
---- a/drivers/net/ethernet/freescale/fec_mpc52xx_phy.c
-+++ b/drivers/net/ethernet/freescale/fec_mpc52xx_phy.c
-@@ -13,10 +13,11 @@
- #include <linux/module.h>
- #include <linux/netdevice.h>
- #include <linux/phy.h>
--#include <linux/of_platform.h>
- #include <linux/slab.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/of_mdio.h>
-+#include <linux/platform_device.h>
- #include <asm/io.h>
- #include <asm/mpc52xx.h>
- #include "fec_mpc52xx.h"
-diff --git a/drivers/net/ethernet/freescale/fec_ptp.c b/drivers/net/ethernet/freescale/fec_ptp.c
-index ab86bb8562ef..9428a06b6a87 100644
---- a/drivers/net/ethernet/freescale/fec_ptp.c
-+++ b/drivers/net/ethernet/freescale/fec_ptp.c
-@@ -30,7 +30,6 @@
- #include <linux/phy.h>
- #include <linux/fec.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_gpio.h>
- #include <linux/of_net.h>
+-	if (ctx != mvif->ctx)
++	if (ctx != mvif->mt76.ctx)
+ 		return;
  
-diff --git a/drivers/net/ethernet/freescale/fman/fman.c b/drivers/net/ethernet/freescale/fman/fman.c
-index 9d85fb136e34..d96028f01770 100644
---- a/drivers/net/ethernet/freescale/fman/fman.c
-+++ b/drivers/net/ethernet/freescale/fman/fman.c
-@@ -7,6 +7,7 @@
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+ 	if (vif->type == NL80211_IFTYPE_MONITOR)
+@@ -1728,7 +1728,7 @@ mt7921_assign_vif_chanctx(struct ieee80211_hw *hw,
+ 	struct mt7921_dev *dev = mt7921_hw_dev(hw);
  
- #include <linux/fsl/guts.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/delay.h>
- #include <linux/module.h>
-diff --git a/drivers/net/ethernet/freescale/fman/fman_port.c b/drivers/net/ethernet/freescale/fman/fman_port.c
-index ab90fe2bee5e..406e75e9e5ea 100644
---- a/drivers/net/ethernet/freescale/fman/fman_port.c
-+++ b/drivers/net/ethernet/freescale/fman/fman_port.c
-@@ -6,6 +6,7 @@
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+ 	mutex_lock(&dev->mt76.mutex);
+-	mvif->ctx = ctx;
++	mvif->mt76.ctx = ctx;
+ 	mutex_unlock(&dev->mt76.mutex);
  
- #include <linux/io.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/module.h>
- #include <linux/interrupt.h>
-diff --git a/drivers/net/ethernet/freescale/fman/mac.c b/drivers/net/ethernet/freescale/fman/mac.c
-index 43665806c590..57de8a6ab180 100644
---- a/drivers/net/ethernet/freescale/fman/mac.c
-+++ b/drivers/net/ethernet/freescale/fman/mac.c
-@@ -12,12 +12,14 @@
- #include <linux/of_net.h>
- #include <linux/of_mdio.h>
- #include <linux/device.h>
-+#include <linux/of_platform.h>
- #include <linux/phy.h>
- #include <linux/netdevice.h>
- #include <linux/phy_fixed.h>
- #include <linux/phylink.h>
- #include <linux/etherdevice.h>
- #include <linux/libfdt_env.h>
-+#include <linux/platform_device.h>
+ 	return 0;
+@@ -1744,7 +1744,7 @@ mt7921_unassign_vif_chanctx(struct ieee80211_hw *hw,
+ 	struct mt7921_dev *dev = mt7921_hw_dev(hw);
  
- #include "mac.h"
- #include "fman_mac.h"
-diff --git a/drivers/net/ethernet/freescale/fs_enet/mac-fcc.c b/drivers/net/ethernet/freescale/fs_enet/mac-fcc.c
-index b47490be872c..925428f1b0c8 100644
---- a/drivers/net/ethernet/freescale/fs_enet/mac-fcc.c
-+++ b/drivers/net/ethernet/freescale/fs_enet/mac-fcc.c
-@@ -32,7 +32,6 @@
- #include <linux/platform_device.h>
- #include <linux/phy.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/gfp.h>
- #include <linux/pgtable.h>
-diff --git a/drivers/net/ethernet/freescale/fs_enet/mac-fec.c b/drivers/net/ethernet/freescale/fs_enet/mac-fec.c
-index 61f4b6e50d29..f609dc112458 100644
---- a/drivers/net/ethernet/freescale/fs_enet/mac-fec.c
-+++ b/drivers/net/ethernet/freescale/fs_enet/mac-fec.c
-@@ -32,7 +32,6 @@
- #include <linux/fs.h>
- #include <linux/platform_device.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/gfp.h>
+ 	mutex_lock(&dev->mt76.mutex);
+-	mvif->ctx = NULL;
++	mvif->mt76.ctx = NULL;
+ 	mutex_unlock(&dev->mt76.mutex);
+ }
  
-diff --git a/drivers/net/ethernet/freescale/fs_enet/mac-scc.c b/drivers/net/ethernet/freescale/fs_enet/mac-scc.c
-index 64300ac13e02..66d40da5cde0 100644
---- a/drivers/net/ethernet/freescale/fs_enet/mac-scc.c
-+++ b/drivers/net/ethernet/freescale/fs_enet/mac-scc.c
-@@ -32,7 +32,6 @@
- #include <linux/platform_device.h>
- #include <linux/of_address.h>
- #include <linux/of_irq.h>
--#include <linux/of_platform.h>
+@@ -1758,7 +1758,7 @@ static void mt7921_mgd_prepare_tx(struct ieee80211_hw *hw,
+ 		       jiffies_to_msecs(HZ);
  
- #include <asm/irq.h>
- #include <linux/uaccess.h>
-diff --git a/drivers/net/ethernet/freescale/fsl_pq_mdio.c b/drivers/net/ethernet/freescale/fsl_pq_mdio.c
-index 9d58d8334467..647a499fe84b 100644
---- a/drivers/net/ethernet/freescale/fsl_pq_mdio.c
-+++ b/drivers/net/ethernet/freescale/fsl_pq_mdio.c
-@@ -12,6 +12,7 @@
-  */
+ 	mt7921_mutex_acquire(dev);
+-	mt7921_set_roc(mvif->phy, mvif, mvif->ctx->def.chan, duration,
++	mt7921_set_roc(mvif->phy, mvif, mvif->mt76.ctx->def.chan, duration,
+ 		       MT7921_ROC_REQ_JOIN);
+ 	mt7921_mutex_release(dev);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index ec9879650174..04a9ce50cff2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -173,7 +173,6 @@ struct mt7921_vif {
+ 	struct ewma_rssi rssi;
  
- #include <linux/kernel.h>
-+#include <linux/platform_device.h>
- #include <linux/string.h>
- #include <linux/errno.h>
- #include <linux/slab.h>
-diff --git a/drivers/net/ethernet/freescale/gianfar.c b/drivers/net/ethernet/freescale/gianfar.c
-index 38d5013c6fed..4f0099ce8f1e 100644
---- a/drivers/net/ethernet/freescale/gianfar.c
-+++ b/drivers/net/ethernet/freescale/gianfar.c
-@@ -60,6 +60,7 @@
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+ 	struct ieee80211_tx_queue_params queue_params[IEEE80211_NUM_ACS];
+-	struct ieee80211_chanctx_conf *ctx;
+ };
  
- #include <linux/kernel.h>
-+#include <linux/platform_device.h>
- #include <linux/string.h>
- #include <linux/errno.h>
- #include <linux/unistd.h>
-@@ -75,7 +76,6 @@
- #include <linux/of_address.h>
- #include <linux/of_irq.h>
- #include <linux/of_mdio.h>
--#include <linux/of_platform.h>
- #include <linux/ip.h>
- #include <linux/tcp.h>
- #include <linux/udp.h>
-diff --git a/drivers/net/ethernet/freescale/gianfar_ethtool.c b/drivers/net/ethernet/freescale/gianfar_ethtool.c
-index b2b0d3c26fcc..7a15b9245698 100644
---- a/drivers/net/ethernet/freescale/gianfar_ethtool.c
-+++ b/drivers/net/ethernet/freescale/gianfar_ethtool.c
-@@ -38,7 +38,9 @@
- #include <linux/phy.h>
- #include <linux/sort.h>
- #include <linux/if_vlan.h>
-+#include <linux/of.h>
- #include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <linux/fsl/ptp_qoriq.h>
- 
- #include "gianfar.h"
-diff --git a/drivers/net/ethernet/freescale/ucc_geth.c b/drivers/net/ethernet/freescale/ucc_geth.c
-index 7a4cb4f07c32..49e759f24444 100644
---- a/drivers/net/ethernet/freescale/ucc_geth.c
-+++ b/drivers/net/ethernet/freescale/ucc_geth.c
-@@ -28,11 +28,12 @@
- #include <linux/phy.h>
- #include <linux/phy_fixed.h>
- #include <linux/workqueue.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/of_irq.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- 
- #include <linux/uaccess.h>
- #include <asm/irq.h>
-diff --git a/drivers/net/ethernet/freescale/xgmac_mdio.c b/drivers/net/ethernet/freescale/xgmac_mdio.c
-index a13b4ba4d6e1..65dc07d0df0f 100644
---- a/drivers/net/ethernet/freescale/xgmac_mdio.c
-+++ b/drivers/net/ethernet/freescale/xgmac_mdio.c
-@@ -19,10 +19,10 @@
- #include <linux/kernel.h>
- #include <linux/mdio.h>
- #include <linux/module.h>
--#include <linux/of_address.h>
-+#include <linux/of.h>
- #include <linux/of_mdio.h>
--#include <linux/of_platform.h>
- #include <linux/phy.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- 
- /* Number of microseconds to wait for a register to respond */
-diff --git a/drivers/net/ethernet/hisilicon/hns/hns_dsaf_ppe.c b/drivers/net/ethernet/hisilicon/hns/hns_dsaf_ppe.c
-index a7eb87da4e70..a08d1f0a5a16 100644
---- a/drivers/net/ethernet/hisilicon/hns/hns_dsaf_ppe.c
-+++ b/drivers/net/ethernet/hisilicon/hns/hns_dsaf_ppe.c
-@@ -9,9 +9,6 @@
- #include <linux/netdevice.h>
- #include <linux/etherdevice.h>
- #include <linux/platform_device.h>
--#include <linux/of.h>
--#include <linux/of_address.h>
--#include <linux/of_platform.h>
- 
- #include "hns_dsaf_ppe.h"
- 
-diff --git a/drivers/net/ethernet/hisilicon/hns/hns_dsaf_rcb.c b/drivers/net/ethernet/hisilicon/hns/hns_dsaf_rcb.c
-index e2ff3ca198d1..93344563a259 100644
---- a/drivers/net/ethernet/hisilicon/hns/hns_dsaf_rcb.c
-+++ b/drivers/net/ethernet/hisilicon/hns/hns_dsaf_rcb.c
-@@ -11,10 +11,6 @@
- #include <linux/etherdevice.h>
- #include <asm/cacheflush.h>
- #include <linux/platform_device.h>
--#include <linux/of.h>
--#include <linux/of_address.h>
--#include <linux/of_platform.h>
--#include <linux/of_irq.h>
- #include <linux/spinlock.h>
- 
- #include "hns_dsaf_main.h"
-diff --git a/drivers/net/ethernet/ibm/ehea/ehea_main.c b/drivers/net/ethernet/ibm/ehea/ehea_main.c
-index b4aff59b3eb4..0a56e9752464 100644
---- a/drivers/net/ethernet/ibm/ehea/ehea_main.c
-+++ b/drivers/net/ethernet/ibm/ehea/ehea_main.c
-@@ -31,6 +31,7 @@
- #include <linux/prefetch.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/platform_device.h>
- 
- #include <net/ip.h>
- 
-diff --git a/drivers/net/ethernet/ibm/emac/core.c b/drivers/net/ethernet/ibm/emac/core.c
-index c97095abd26a..0c314bf97480 100644
---- a/drivers/net/ethernet/ibm/emac/core.c
-+++ b/drivers/net/ethernet/ibm/emac/core.c
-@@ -38,6 +38,7 @@
- #include <linux/of_irq.h>
- #include <linux/of_net.h>
- #include <linux/of_mdio.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- 
-diff --git a/drivers/net/ethernet/ibm/emac/core.h b/drivers/net/ethernet/ibm/emac/core.h
-index 89a1b0fea158..295516b07662 100644
---- a/drivers/net/ethernet/ibm/emac/core.h
-+++ b/drivers/net/ethernet/ibm/emac/core.h
-@@ -27,7 +27,6 @@
- #include <linux/netdevice.h>
- #include <linux/dma-mapping.h>
- #include <linux/spinlock.h>
--#include <linux/of_platform.h>
- #include <linux/slab.h>
- 
- #include <asm/io.h>
-diff --git a/drivers/net/ethernet/ibm/emac/mal.c b/drivers/net/ethernet/ibm/emac/mal.c
-index ff5487bbebe3..c3236b59e7e9 100644
---- a/drivers/net/ethernet/ibm/emac/mal.c
-+++ b/drivers/net/ethernet/ibm/emac/mal.c
-@@ -22,7 +22,9 @@
- 
- #include <linux/delay.h>
- #include <linux/slab.h>
-+#include <linux/of.h>
- #include <linux/of_irq.h>
-+#include <linux/platform_device.h>
- 
- #include "core.h"
- #include <asm/dcr-regs.h>
-diff --git a/drivers/net/ethernet/ibm/emac/rgmii.c b/drivers/net/ethernet/ibm/emac/rgmii.c
-index 50358cf00130..fd437f986edf 100644
---- a/drivers/net/ethernet/ibm/emac/rgmii.c
-+++ b/drivers/net/ethernet/ibm/emac/rgmii.c
-@@ -19,7 +19,9 @@
- #include <linux/slab.h>
- #include <linux/kernel.h>
- #include <linux/ethtool.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
-+#include <linux/platform_device.h>
- #include <asm/io.h>
- 
- #include "emac.h"
-diff --git a/drivers/net/ethernet/ibm/emac/tah.c b/drivers/net/ethernet/ibm/emac/tah.c
-index 008bbdaf1204..aae9a88d95d7 100644
---- a/drivers/net/ethernet/ibm/emac/tah.c
-+++ b/drivers/net/ethernet/ibm/emac/tah.c
-@@ -14,7 +14,9 @@
-  *
-  * Copyright (c) 2005 Eugene Surovegin <ebs@ebshome.net>
-  */
-+#include <linux/mod_devicetable.h>
- #include <linux/of_address.h>
-+#include <linux/platform_device.h>
- #include <asm/io.h>
- 
- #include "emac.h"
-diff --git a/drivers/net/ethernet/ibm/emac/zmii.c b/drivers/net/ethernet/ibm/emac/zmii.c
-index 57a25c7a9e70..6337388ee5f4 100644
---- a/drivers/net/ethernet/ibm/emac/zmii.c
-+++ b/drivers/net/ethernet/ibm/emac/zmii.c
-@@ -19,7 +19,9 @@
- #include <linux/slab.h>
- #include <linux/kernel.h>
- #include <linux/ethtool.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/of_address.h>
-+#include <linux/platform_device.h>
- #include <asm/io.h>
- 
- #include "emac.h"
-diff --git a/drivers/net/ethernet/korina.c b/drivers/net/ethernet/korina.c
-index 2b9335cb4bb3..41f3f3df6ec3 100644
---- a/drivers/net/ethernet/korina.c
-+++ b/drivers/net/ethernet/korina.c
-@@ -33,6 +33,7 @@
-  *  should stick to this procedure.
-  */
- 
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
- #include <linux/kernel.h>
- #include <linux/moduleparam.h>
-@@ -43,7 +44,6 @@
- #include <linux/ioport.h>
- #include <linux/iopoll.h>
- #include <linux/in.h>
--#include <linux/of_device.h>
- #include <linux/of_net.h>
- #include <linux/slab.h>
- #include <linux/string.h>
-diff --git a/drivers/net/ethernet/marvell/mvmdio.c b/drivers/net/ethernet/marvell/mvmdio.c
-index 8662543ca5c8..a1a80f13b1e8 100644
---- a/drivers/net/ethernet/marvell/mvmdio.c
-+++ b/drivers/net/ethernet/marvell/mvmdio.c
-@@ -24,8 +24,8 @@
- #include <linux/interrupt.h>
- #include <linux/io.h>
- #include <linux/kernel.h>
-+#include <linux/mod_devicetable.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
- #include <linux/of_mdio.h>
- #include <linux/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
-index 1fec84b4c068..9e1b596c8f08 100644
---- a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
-+++ b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
-@@ -24,7 +24,6 @@
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/phy.h>
- #include <linux/phylink.h>
- #include <linux/phy/phy.h>
-diff --git a/drivers/net/ethernet/marvell/prestera/prestera_rxtx.c b/drivers/net/ethernet/marvell/prestera/prestera_rxtx.c
-index 9277a8fd1339..cc2a9ae794be 100644
---- a/drivers/net/ethernet/marvell/prestera/prestera_rxtx.c
-+++ b/drivers/net/ethernet/marvell/prestera/prestera_rxtx.c
-@@ -5,9 +5,6 @@
- #include <linux/dmapool.h>
- #include <linux/etherdevice.h>
- #include <linux/if_vlan.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
--#include <linux/of.h>
- #include <linux/platform_device.h>
- 
- #include "prestera_dsa.h"
-diff --git a/drivers/net/ethernet/marvell/sky2.c b/drivers/net/ethernet/marvell/sky2.c
-index 7c487f9b36ec..c4cca27fb0d5 100644
---- a/drivers/net/ethernet/marvell/sky2.c
-+++ b/drivers/net/ethernet/marvell/sky2.c
-@@ -32,7 +32,6 @@
- #include <linux/prefetch.h>
- #include <linux/debugfs.h>
- #include <linux/mii.h>
--#include <linux/of_device.h>
- #include <linux/of_net.h>
- #include <linux/dmi.h>
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 2d15342c260a..ac8b98c023c8 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -6,11 +6,12 @@
-  *   Copyright (C) 2013-2016 Michael Lee <igvtee@gmail.com>
-  */
- 
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
- #include <linux/of_address.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/clk.h>
- #include <linux/pm_runtime.h>
-diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-index 02c03325911f..31aebeb2e285 100644
---- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-+++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-@@ -17,7 +17,6 @@
- #include <linux/module.h>
- #include <linux/netdevice.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index 985cff910f30..52688cbaa7b4 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -2,6 +2,7 @@
- /* Copyright (C) 2021 Felix Fietkau <nbd@nbd.name> */
- 
- #include <linux/kernel.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/module.h>
- #include <linux/bitfield.h>
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index 69fba29055e9..3bd51a3d6650 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -7,10 +7,9 @@
- 
- #include <linux/kernel.h>
- #include <linux/dma-mapping.h>
--#include <linux/of_platform.h>
- #include <linux/interrupt.h>
--#include <linux/of_address.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/of.h>
- #include <linux/of_irq.h>
- #include <linux/bitfield.h>
- 
-diff --git a/drivers/net/ethernet/microchip/lan966x/lan966x_main.c b/drivers/net/ethernet/microchip/lan966x/lan966x_main.c
-index fbb0bb4594cd..73f20683210e 100644
---- a/drivers/net/ethernet/microchip/lan966x/lan966x_main.c
-+++ b/drivers/net/ethernet/microchip/lan966x/lan966x_main.c
-@@ -5,9 +5,10 @@
- #include <linux/if_vlan.h>
- #include <linux/iopoll.h>
- #include <linux/ip.h>
--#include <linux/of_platform.h>
-+#include <linux/of.h>
- #include <linux/of_net.h>
- #include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
- #include <linux/reset.h>
- #include <net/addrconf.h>
- 
-diff --git a/drivers/net/ethernet/mscc/ocelot_fdma.c b/drivers/net/ethernet/mscc/ocelot_fdma.c
-index 83a3ce0c568e..312a46832154 100644
---- a/drivers/net/ethernet/mscc/ocelot_fdma.c
-+++ b/drivers/net/ethernet/mscc/ocelot_fdma.c
-@@ -12,7 +12,6 @@
- #include <linux/dmapool.h>
- #include <linux/dsa/ocelot.h>
- #include <linux/netdevice.h>
--#include <linux/of_platform.h>
- #include <linux/skbuff.h>
- 
- #include "ocelot_fdma.h"
-diff --git a/drivers/net/ethernet/mscc/ocelot_vsc7514.c b/drivers/net/ethernet/mscc/ocelot_vsc7514.c
-index 97e90e2869d4..151b42465348 100644
---- a/drivers/net/ethernet/mscc/ocelot_vsc7514.c
-+++ b/drivers/net/ethernet/mscc/ocelot_vsc7514.c
-@@ -10,8 +10,9 @@
- #include <linux/of_net.h>
- #include <linux/netdevice.h>
- #include <linux/phylink.h>
-+#include <linux/of.h>
- #include <linux/of_mdio.h>
--#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <linux/mfd/syscon.h>
- #include <linux/skbuff.h>
- #include <net/switchdev.h>
-diff --git a/drivers/net/ethernet/ni/nixge.c b/drivers/net/ethernet/ni/nixge.c
-index 0fd156286d4d..ba27bbc68f85 100644
---- a/drivers/net/ethernet/ni/nixge.c
-+++ b/drivers/net/ethernet/ni/nixge.c
-@@ -7,11 +7,10 @@
- #include <linux/etherdevice.h>
- #include <linux/module.h>
- #include <linux/netdevice.h>
--#include <linux/of_address.h>
-+#include <linux/of.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
--#include <linux/of_platform.h>
--#include <linux/of_irq.h>
-+#include <linux/platform_device.h>
- #include <linux/skbuff.h>
- #include <linux/phy.h>
- #include <linux/mii.h>
-diff --git a/drivers/net/ethernet/qualcomm/emac/emac-sgmii.c b/drivers/net/ethernet/qualcomm/emac/emac-sgmii.c
-index 802ef81493e0..e4bc18009d08 100644
---- a/drivers/net/ethernet/qualcomm/emac/emac-sgmii.c
-+++ b/drivers/net/ethernet/qualcomm/emac/emac-sgmii.c
-@@ -8,7 +8,9 @@
- #include <linux/interrupt.h>
- #include <linux/iopoll.h>
- #include <linux/acpi.h>
-+#include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include "emac.h"
- #include "emac-mac.h"
- #include "emac-sgmii.h"
-diff --git a/drivers/net/ethernet/qualcomm/emac/emac.c b/drivers/net/ethernet/qualcomm/emac/emac.c
-index eaa50050aa0b..19bb16daf4e7 100644
---- a/drivers/net/ethernet/qualcomm/emac/emac.c
-+++ b/drivers/net/ethernet/qualcomm/emac/emac.c
-@@ -11,7 +11,6 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_net.h>
--#include <linux/of_device.h>
- #include <linux/phy.h>
- #include <linux/platform_device.h>
- #include <linux/acpi.h>
-diff --git a/drivers/net/ethernet/qualcomm/qca_spi.c b/drivers/net/ethernet/qualcomm/qca_spi.c
-index 4a1b94e5a8ea..bec723028e96 100644
---- a/drivers/net/ethernet/qualcomm/qca_spi.c
-+++ b/drivers/net/ethernet/qualcomm/qca_spi.c
-@@ -35,7 +35,6 @@
- #include <linux/moduleparam.h>
- #include <linux/netdevice.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_net.h>
- #include <linux/sched.h>
- #include <linux/skbuff.h>
-diff --git a/drivers/net/ethernet/qualcomm/qca_uart.c b/drivers/net/ethernet/qualcomm/qca_uart.c
-index 26646cb6a20a..ace99c62d03a 100644
---- a/drivers/net/ethernet/qualcomm/qca_uart.c
-+++ b/drivers/net/ethernet/qualcomm/qca_uart.c
-@@ -32,7 +32,6 @@
- #include <linux/module.h>
- #include <linux/netdevice.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_net.h>
- #include <linux/sched.h>
- #include <linux/serdev.h>
-diff --git a/drivers/net/ethernet/renesas/ravb_main.c b/drivers/net/ethernet/renesas/ravb_main.c
-index 4d6b3b7d6abb..7df9f9f8e134 100644
---- a/drivers/net/ethernet/renesas/ravb_main.c
-+++ b/drivers/net/ethernet/renesas/ravb_main.c
-@@ -21,10 +21,9 @@
- #include <linux/module.h>
- #include <linux/net_tstamp.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
--#include <linux/of_irq.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
-+#include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/slab.h>
- #include <linux/spinlock.h>
-diff --git a/drivers/net/ethernet/renesas/rswitch.c b/drivers/net/ethernet/renesas/rswitch.c
-index 4e412ac0965a..0ba7fb75d589 100644
---- a/drivers/net/ethernet/renesas/rswitch.c
-+++ b/drivers/net/ethernet/renesas/rswitch.c
-@@ -12,11 +12,10 @@
- #include <linux/module.h>
- #include <linux/net_tstamp.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
--#include <linux/of_irq.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
- #include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/rtnetlink.h>
- #include <linux/slab.h>
-diff --git a/drivers/net/ethernet/renesas/sh_eth.c b/drivers/net/ethernet/renesas/sh_eth.c
-index d8ec729825be..274ea16c0a1f 100644
---- a/drivers/net/ethernet/renesas/sh_eth.c
-+++ b/drivers/net/ethernet/renesas/sh_eth.c
-@@ -19,8 +19,6 @@
- #include <linux/mdio-bitbang.h>
- #include <linux/netdevice.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
--#include <linux/of_irq.h>
- #include <linux/of_net.h>
- #include <linux/phy.h>
- #include <linux/cache.h>
-diff --git a/drivers/net/ethernet/smsc/smsc911x.c b/drivers/net/ethernet/smsc/smsc911x.c
-index 174dc8908b72..2f755722e858 100644
---- a/drivers/net/ethernet/smsc/smsc911x.c
-+++ b/drivers/net/ethernet/smsc/smsc911x.c
-@@ -43,7 +43,6 @@
- #include <linux/smsc911x.h>
- #include <linux/device.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_gpio.h>
- #include <linux/of_net.h>
- #include <linux/acpi.h>
-diff --git a/drivers/net/ethernet/socionext/sni_ave.c b/drivers/net/ethernet/socionext/sni_ave.c
-index 492c39c08af1..4838d2383a43 100644
---- a/drivers/net/ethernet/socionext/sni_ave.c
-+++ b/drivers/net/ethernet/socionext/sni_ave.c
-@@ -15,10 +15,11 @@
- #include <linux/mii.h>
- #include <linux/module.h>
- #include <linux/netdevice.h>
-+#include <linux/of.h>
- #include <linux/of_net.h>
- #include <linux/of_mdio.h>
--#include <linux/of_platform.h>
- #include <linux/phy.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
- #include <linux/types.h>
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-dwc-qos-eth.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-dwc-qos-eth.c
-index 9f88530c5e8c..2bf74efbf2eb 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-dwc-qos-eth.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-dwc-qos-eth.c
-@@ -14,7 +14,7 @@
- #include <linux/iopoll.h>
- #include <linux/ioport.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/of_net.h>
- #include <linux/mfd/syscon.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c
-index b9378a63f0e8..92e06a96757a 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-imx.c
-@@ -12,7 +12,6 @@
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_net.h>
- #include <linux/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-ingenic.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-ingenic.c
-index 8063ba1c3ce8..e22ef0d6bc73 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-ingenic.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-ingenic.c
-@@ -11,7 +11,6 @@
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_net.h>
- #include <linux/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-index 73c1dfa7ecb1..e301bf7fc30f 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-@@ -7,8 +7,8 @@
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_net.h>
-+#include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/stmmac.h>
- 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c
-index 92b16048f91c..0b159dc0d5f6 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c
-@@ -13,7 +13,7 @@
- #include <linux/io.h>
- #include <linux/ioport.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/of_net.h>
- #include <linux/mfd/syscon.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-oxnas.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-oxnas.c
-index 42954020de2c..f91753565d60 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-oxnas.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-oxnas.c
-@@ -12,7 +12,6 @@
- #include <linux/io.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/mfd/syscon.h>
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-index e62940414e54..fa791f0f24ad 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-@@ -3,7 +3,6 @@
- 
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/phy.h>
- #include <linux/phy/phy.h>
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index d81591b470a2..35789cb549f7 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -14,8 +14,8 @@
- #include <linux/of_net.h>
- #include <linux/gpio.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/of_gpio.h>
--#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regulator/consumer.h>
- #include <linux/delay.h>
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
-index d3a39d2fb3a9..b1c5f2527c0d 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
-@@ -7,8 +7,10 @@
-  *
-  */
- 
-+#include <linux/mod_devicetable.h>
-+#include <linux/platform_device.h>
-+#include <linux/property.h>
- #include <linux/mfd/syscon.h>
--#include <linux/of_device.h>
- #include <linux/regmap.h>
- 
- #include "stmmac_platform.h"
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c
-index dcbb17c4f07a..ef03e4669491 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c
-@@ -17,7 +17,6 @@
- #include <linux/regmap.h>
- #include <linux/clk.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_net.h>
- 
- #include "stmmac_platform.h"
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-stm32.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-stm32.c
-index bdb4de59a672..3a09085819dc 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-stm32.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-stm32.c
-@@ -11,7 +11,6 @@
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_net.h>
- #include <linux/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
-index 1e714380d125..2885d8568d4b 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
-@@ -11,9 +11,10 @@
- #include <linux/mdio-mux.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
-+#include <linux/of_platform.h>
- #include <linux/phy.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-tegra.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-tegra.c
-index f8367c5b490b..65ddf6ce1535 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-tegra.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-tegra.c
-@@ -1,6 +1,6 @@
- // SPDX-License-Identifier: GPL-2.0-only
- #include <linux/platform_device.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/module.h>
- #include <linux/stmmac.h>
- #include <linux/clk.h>
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-visconti.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-visconti.c
-index acbb284be174..a8731ce0fff0 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-visconti.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-visconti.c
-@@ -6,7 +6,8 @@
-  */
- 
- #include <linux/module.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
- #include <linux/of_net.h>
- #include <linux/stmmac.h>
- 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
-index 231152ee5a32..85ec9d975a55 100644
---- a/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c
-@@ -15,7 +15,6 @@
- #include <linux/io.h>
- #include <linux/of.h>
- #include <linux/of_net.h>
--#include <linux/of_device.h>
- #include <linux/of_mdio.h>
- 
- #include "stmmac.h"
-diff --git a/drivers/net/ethernet/sun/niu.c b/drivers/net/ethernet/sun/niu.c
-index 7a2e76776297..011d74087f86 100644
---- a/drivers/net/ethernet/sun/niu.c
-+++ b/drivers/net/ethernet/sun/niu.c
-@@ -31,7 +31,7 @@
- #include <linux/slab.h>
- 
- #include <linux/io.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- 
- #include "niu.h"
- 
-diff --git a/drivers/net/ethernet/sun/sunbmac.c b/drivers/net/ethernet/sun/sunbmac.c
-index 34b94153bf0c..cc34d92d2e3d 100644
---- a/drivers/net/ethernet/sun/sunbmac.c
-+++ b/drivers/net/ethernet/sun/sunbmac.c
-@@ -25,7 +25,7 @@
- #include <linux/bitops.h>
- #include <linux/dma-mapping.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/gfp.h>
- 
- #include <asm/auxio.h>
-diff --git a/drivers/net/ethernet/sun/sungem.c b/drivers/net/ethernet/sun/sungem.c
-index 4154e68639ac..9bd1df8308d2 100644
---- a/drivers/net/ethernet/sun/sungem.c
-+++ b/drivers/net/ethernet/sun/sungem.c
-@@ -40,6 +40,7 @@
- #include <linux/bitops.h>
- #include <linux/mm.h>
- #include <linux/gfp.h>
-+#include <linux/of.h>
- 
- #include <asm/io.h>
- #include <asm/byteorder.h>
-diff --git a/drivers/net/ethernet/sun/sunhme.c b/drivers/net/ethernet/sun/sunhme.c
-index b93613cd1994..b983b9c23be6 100644
---- a/drivers/net/ethernet/sun/sunhme.c
-+++ b/drivers/net/ethernet/sun/sunhme.c
-@@ -32,9 +32,10 @@
- #include <linux/mm.h>
- #include <linux/module.h>
- #include <linux/netdevice.h>
--#include <linux/of_device.h>
- #include <linux/of.h>
-+#include <linux/of_device.h>
- #include <linux/pci.h>
-+#include <linux/platform_device.h>
- #include <linux/random.h>
- #include <linux/skbuff.h>
- #include <linux/slab.h>
-diff --git a/drivers/net/ethernet/sun/sunqe.c b/drivers/net/ethernet/sun/sunqe.c
-index 6418fcc3139f..b37360f44972 100644
---- a/drivers/net/ethernet/sun/sunqe.c
-+++ b/drivers/net/ethernet/sun/sunqe.c
-@@ -27,8 +27,8 @@
- #include <linux/bitops.h>
- #include <linux/dma-mapping.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/pgtable.h>
-+#include <linux/platform_device.h>
- 
- #include <asm/io.h>
- #include <asm/dma.h>
-diff --git a/drivers/net/ethernet/ti/am65-cpsw-nuss.c b/drivers/net/ethernet/ti/am65-cpsw-nuss.c
-index bebcfd5e6b57..bea6fc0f324c 100644
---- a/drivers/net/ethernet/ti/am65-cpsw-nuss.c
-+++ b/drivers/net/ethernet/ti/am65-cpsw-nuss.c
-@@ -19,6 +19,7 @@
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/phylink.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/net/ethernet/ti/cpsw-common.c b/drivers/net/ethernet/ti/cpsw-common.c
-index bfa81bbfce3f..26dc906eae90 100644
---- a/drivers/net/ethernet/ti/cpsw-common.c
-+++ b/drivers/net/ethernet/ti/cpsw-common.c
-@@ -3,7 +3,6 @@
- #include <linux/kernel.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/regmap.h>
- #include <linux/mfd/syscon.h>
- 
-diff --git a/drivers/net/ethernet/ti/cpsw-phy-sel.c b/drivers/net/ethernet/ti/cpsw-phy-sel.c
-index 25e707d7b87c..4edb7963f856 100644
---- a/drivers/net/ethernet/ti/cpsw-phy-sel.c
-+++ b/drivers/net/ethernet/ti/cpsw-phy-sel.c
-@@ -12,7 +12,6 @@
- #include <linux/netdevice.h>
- #include <linux/phy.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- 
- #include "cpsw.h"
- 
-diff --git a/drivers/net/ethernet/ti/davinci_mdio.c b/drivers/net/ethernet/ti/davinci_mdio.c
-index 23169e36a3d4..89b6d23e9937 100644
---- a/drivers/net/ethernet/ti/davinci_mdio.c
-+++ b/drivers/net/ethernet/ti/davinci_mdio.c
-@@ -23,7 +23,6 @@
- #include <linux/pm_runtime.h>
- #include <linux/davinci_emac.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_mdio.h>
- #include <linux/pinctrl/consumer.h>
- #include <linux/mdio-bitbang.h>
-diff --git a/drivers/net/ethernet/via/via-rhine.c b/drivers/net/ethernet/via/via-rhine.c
-index d716e6fe26e1..3e09e5036490 100644
---- a/drivers/net/ethernet/via/via-rhine.c
-+++ b/drivers/net/ethernet/via/via-rhine.c
-@@ -94,7 +94,7 @@ static const int multicast_filter_limit = 32;
- #include <linux/ioport.h>
- #include <linux/interrupt.h>
- #include <linux/pci.h>
--#include <linux/of_device.h>
-+#include <linux/of.h>
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
- #include <linux/dma-mapping.h>
-diff --git a/drivers/net/ethernet/via/via-velocity.c b/drivers/net/ethernet/via/via-velocity.c
-index 86f7843b4591..731f689412e6 100644
---- a/drivers/net/ethernet/via/via-velocity.c
-+++ b/drivers/net/ethernet/via/via-velocity.c
-@@ -57,8 +57,8 @@
- #include <linux/if.h>
- #include <linux/uaccess.h>
- #include <linux/proc_fs.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/inetdevice.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/net/ethernet/xilinx/ll_temac.h b/drivers/net/ethernet/xilinx/ll_temac.h
-index 6668d1b760d8..90d122d5475c 100644
---- a/drivers/net/ethernet/xilinx/ll_temac.h
-+++ b/drivers/net/ethernet/xilinx/ll_temac.h
-@@ -5,6 +5,7 @@
- 
- #include <linux/netdevice.h>
- #include <linux/of.h>
-+#include <linux/platform_device.h>
- #include <linux/spinlock.h>
- 
- #ifdef CONFIG_PPC_DCR
-diff --git a/drivers/net/ethernet/xilinx/ll_temac_main.c b/drivers/net/ethernet/xilinx/ll_temac_main.c
-index e0ac1bcd9925..0bf9cdee1df2 100644
---- a/drivers/net/ethernet/xilinx/ll_temac_main.c
-+++ b/drivers/net/ethernet/xilinx/ll_temac_main.c
-@@ -35,12 +35,10 @@
- #include <linux/netdevice.h>
- #include <linux/if_ether.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
--#include <linux/of_platform.h>
--#include <linux/of_address.h>
-+#include <linux/platform_device.h>
- #include <linux/skbuff.h>
- #include <linux/spinlock.h>
- #include <linux/tcp.h>      /* needed for sizeof(tcphdr) */
-diff --git a/drivers/net/ethernet/xilinx/ll_temac_mdio.c b/drivers/net/ethernet/xilinx/ll_temac_mdio.c
-index 2371c072b53f..07a9fb49eda1 100644
---- a/drivers/net/ethernet/xilinx/ll_temac_mdio.c
-+++ b/drivers/net/ethernet/xilinx/ll_temac_mdio.c
-@@ -10,8 +10,8 @@
- #include <linux/mutex.h>
- #include <linux/phy.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_address.h>
-+#include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/of_mdio.h>
- #include <linux/platform_data/xilinx-ll-temac.h>
-diff --git a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
-index 8e32dc50a408..b7ec4dafae90 100644
---- a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
-+++ b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
-@@ -27,11 +27,12 @@
- #include <linux/etherdevice.h>
- #include <linux/module.h>
- #include <linux/netdevice.h>
-+#include <linux/of.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
--#include <linux/of_platform.h>
- #include <linux/of_irq.h>
- #include <linux/of_address.h>
-+#include <linux/platform_device.h>
- #include <linux/skbuff.h>
- #include <linux/math64.h>
- #include <linux/phy.h>
-diff --git a/drivers/net/ethernet/xilinx/xilinx_emaclite.c b/drivers/net/ethernet/xilinx/xilinx_emaclite.c
-index ad2c30d9a482..b358ecc67227 100644
---- a/drivers/net/ethernet/xilinx/xilinx_emaclite.c
-+++ b/drivers/net/ethernet/xilinx/xilinx_emaclite.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include <linux/module.h>
-+#include <linux/platform_device.h>
- #include <linux/uaccess.h>
- #include <linux/netdevice.h>
- #include <linux/etherdevice.h>
-@@ -15,9 +16,8 @@
- #include <linux/ethtool.h>
- #include <linux/io.h>
- #include <linux/slab.h>
-+#include <linux/of.h>
- #include <linux/of_address.h>
--#include <linux/of_device.h>
--#include <linux/of_platform.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
- #include <linux/phy.h>
-diff --git a/drivers/net/ieee802154/ca8210.c b/drivers/net/ieee802154/ca8210.c
-index f9b10e84de06..aebb19f1b3a4 100644
---- a/drivers/net/ieee802154/ca8210.c
-+++ b/drivers/net/ieee802154/ca8210.c
-@@ -57,7 +57,6 @@
- #include <linux/io.h>
- #include <linux/kfifo.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_gpio.h>
- #include <linux/module.h>
- #include <linux/mutex.h>
-diff --git a/drivers/net/ipa/ipa_main.c b/drivers/net/ipa/ipa_main.c
-index 6a2f2fc2f501..da853353a5c7 100644
---- a/drivers/net/ipa/ipa_main.c
-+++ b/drivers/net/ipa/ipa_main.c
-@@ -13,8 +13,8 @@
- #include <linux/firmware.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/of_device.h>
- #include <linux/of_address.h>
-+#include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/firmware/qcom/qcom_scm.h>
- #include <linux/soc/qcom/mdt_loader.h>
-diff --git a/net/core/of_net.c b/net/core/of_net.c
-index 55d3fe229269..93ea425b9248 100644
---- a/net/core/of_net.c
-+++ b/net/core/of_net.c
-@@ -8,6 +8,7 @@
- #include <linux/kernel.h>
- #include <linux/of_net.h>
- #include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <linux/phy.h>
- #include <linux/export.h>
- #include <linux/device.h>
+ enum {
 -- 
-2.40.1
+2.25.1
 
 
