@@ -4,65 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E813C001DE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Jul 2023 22:00:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C59C2C001B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 01:31:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3emeen0j6SUInBFkeTcpz3shTj4sIA7VNrpbWfBLc6E=; b=IRnunyNVOUwTOm5Rssdbbi1tcg
-	bzgat8rs5M0tYEAgozvP4jQ0lW6q/1i5CPajxx4R7kHB8igB2QZqeKi8abLXTIv7EIoodXA6pSWnR
-	VquZPpdfswAb2bGw1oLYfaLjTZBjbue8e4jaX1V3E9GnOLtFdnbrAEXtl5BfUEFMQqGWuh+MlSIH+
-	egnXMMXvX+kvByc+fgTu+oNXUszcAntRfCBXsugUfD3xHE+uQwf2tGfXqmCzFnWEIvxwHcVSaEByU
-	pWBweh56NYW7vM5klyoql6ugz3wV6Mp3OYgTai+Lo649YDtSU6wGakA0mnI0JTXDkvdG/IePxozcW
-	J8h3Xzlg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CtMhqfMU1mksJ9TkJRE4oQFoAlRrGgnjTWrn39pQ17o=; b=Z7U2BmJ5J4mu4jdSJPcKkuxYKR
+	JtLq4I5vR8j6t0jo6odLTdJJQktMCE0trH6ftvSK/cmOkAuPWDVDS52deF8TPxoPI0eYpW5JHdzNd
+	dw4YM2mol9AuNxwrP+1D8K9ya2haGg3b5TW/dc8AYCSzAyMtN7QkC7TtA+SZlReIg5VmAeTEDogMD
+	C241BqwKwD6AWyGGIvfVd3+eQSlhVDmdHWZ9pHijZoF3r+QARslZJ0lp5z0/Y5i9IOE7GpW4eQYiK
+	jpCl796i+lTmUUbNh0LHlntNaKbw6gr+t8GWcv7vMqeFJZA3I7sxjMKtW7U4VIRBfpSUdxwAHdt6d
+	r6R3rGsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNh7k-001ysl-1U;
-	Sun, 23 Jul 2023 22:00:20 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1qNkQU-002Ny6-2X;
+	Mon, 24 Jul 2023 01:31:54 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNh7g-001yqQ-0W;
-	Sun, 23 Jul 2023 22:00:18 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1qNh7P-0005UC-0a;
-	Sun, 23 Jul 2023 21:59:59 +0000
-Date: Sun, 23 Jul 2023 22:59:51 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
-	Greg Ungerer <gerg@kernel.org>,
-	Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	id 1qNkQN-002Nvt-1P;
+	Mon, 24 Jul 2023 01:31:48 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id F29D360F37;
+	Mon, 24 Jul 2023 01:31:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E549C433CC;
+	Mon, 24 Jul 2023 01:31:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1690162306;
+	bh=sPgqBc9MDblYXPHS71Myl2hrzTAGjCrucv1FSII+xSY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=PtQYyWlGdOnS/jH+ZGCJWimp1grJZ870ZbuAmtEcoGrx0nrxAL7SvjUYHdKg6zQ/7
+	 Np8RA9UxpR97BtTkCcF5YOMfrIXaN33he67Perlix7m6rFZNPM8XwHqQU34UF3OSMj
+	 LGXgMy8+6dbF3RO2KgZ3jnJZu8X3HSrN13mx5nTtOcq2gLF3scOxYyNpQpD7cIxwwW
+	 0EExZx8tkUGTVe0DPgs7wwGgyabBw4X91xi/TvDIcSaRhKi3E5yoBCMYjuCrl4qCTl
+	 JxXS9ddCIk8/Q5VnFSYZWrvXvLt7m10uwjIPCMbfoLxXUP6kiwuUtPB6UPljOH26U2
+	 1O8tG11yY7yHQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Yunfei Dong <yunfei.dong@mediatek.com>,
+	Pina Chen <pina.chen@mediatek.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Sasha Levin <sashal@kernel.org>,
+	matthias.bgg@gmail.com,
+	linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v5 9/9] net: ethernet: mtk_eth_soc: add basic
- support for MT7988 SoC
-Message-ID: <15641a4f6f8edbe8ca7665ea5006079200c126b6.1690148927.git.daniel@makrotopia.org>
-References: <cover.1690148927.git.daniel@makrotopia.org>
+Subject: [PATCH AUTOSEL 6.4 03/40] media: v4l2-mem2mem: add lock to protect parameter num_rdy
+Date: Sun, 23 Jul 2023 21:31:03 -0400
+Message-Id: <20230724013140.2327815-3-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230724013140.2327815-1-sashal@kernel.org>
+References: <20230724013140.2327815-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1690148927.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.4.5
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230723_150016_494390_CDB7864F 
-X-CRM114-Status: GOOD (  20.70  )
+X-CRM114-CacheID: sfid-20230723_183147_519088_21E1B509 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,483 +84,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+From: Yunfei Dong <yunfei.dong@mediatek.com>
 
-Introduce support for ethernet chip available in MT7988 SoC to
-mtk_eth_soc driver. As a first step support only the first GMAC which
-is hard-wired to the internal DSA switch having 4 built-in gigabit
-Ethernet PHYs.
+[ Upstream commit 56b5c3e67b0f9af3f45cf393be048ee8d8a92694 ]
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Getting below error when using KCSAN to check the driver. Adding lock to
+protect parameter num_rdy when getting the value with function:
+v4l2_m2m_num_src_bufs_ready/v4l2_m2m_num_dst_bufs_ready.
+
+kworker/u16:3: [name:report&]BUG: KCSAN: data-race in v4l2_m2m_buf_queue
+kworker/u16:3: [name:report&]
+
+kworker/u16:3: [name:report&]read-write to 0xffffff8105f35b94 of 1 bytes by task 20865 on cpu 7:
+kworker/u16:3:  v4l2_m2m_buf_queue+0xd8/0x10c
+
+Signed-off-by: Pina Chen <pina.chen@mediatek.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_path.c |  14 +-
- drivers/net/ethernet/mediatek/mtk_eth_soc.c  | 201 +++++++++++++++++--
- drivers/net/ethernet/mediatek/mtk_eth_soc.h  |  86 +++++++-
- 3 files changed, 273 insertions(+), 28 deletions(-)
+ include/media/v4l2-mem2mem.h | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_path.c b/drivers/net/ethernet/mediatek/mtk_eth_path.c
-index 34ac492e047cb..7c27a19c4d8f4 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_path.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_path.c
-@@ -43,7 +43,7 @@ static const char *mtk_eth_path_name(u64 path)
- static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, u64 path)
+diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
+index bb9de6a899e07..d6c8eb2b52019 100644
+--- a/include/media/v4l2-mem2mem.h
++++ b/include/media/v4l2-mem2mem.h
+@@ -593,7 +593,14 @@ void v4l2_m2m_buf_queue(struct v4l2_m2m_ctx *m2m_ctx,
+ static inline
+ unsigned int v4l2_m2m_num_src_bufs_ready(struct v4l2_m2m_ctx *m2m_ctx)
  {
- 	bool updated = true;
--	u32 val, mask, set;
-+	u32 mask, set, reg;
- 
- 	switch (path) {
- 	case MTK_ETH_PATH_GMAC1_SGMII:
-@@ -59,11 +59,13 @@ static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, u64 path)
- 		break;
- 	}
- 
--	if (updated) {
--		val = mtk_r32(eth, MTK_MAC_MISC);
--		val = (val & mask) | set;
--		mtk_w32(eth, val, MTK_MAC_MISC);
--	}
-+	if (mtk_is_netsys_v3_or_greater(eth))
-+		reg = MTK_MAC_MISC_V3;
-+	else
-+		reg = MTK_MAC_MISC;
+-	return m2m_ctx->out_q_ctx.num_rdy;
++	unsigned int num_buf_rdy;
++	unsigned long flags;
 +
-+	if (updated)
-+		mtk_m32(eth, mask, set, reg);
- 
- 	dev_dbg(eth->dev, "path %s in %s updated = %d\n",
- 		mtk_eth_path_name(path), __func__, updated);
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 1344e2fc6d6f2..b2eb721e777a1 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -152,6 +152,54 @@ static const struct mtk_reg_map mt7986_reg_map = {
- 	.pse_oq_sta		= 0x01a0,
- };
- 
-+static const struct mtk_reg_map mt7988_reg_map = {
-+	.tx_irq_mask		= 0x461c,
-+	.tx_irq_status		= 0x4618,
-+	.pdma = {
-+		.rx_ptr		= 0x6900,
-+		.rx_cnt_cfg	= 0x6904,
-+		.pcrx_ptr	= 0x6908,
-+		.glo_cfg	= 0x6a04,
-+		.rst_idx	= 0x6a08,
-+		.delay_irq	= 0x6a0c,
-+		.irq_status	= 0x6a20,
-+		.irq_mask	= 0x6a28,
-+		.adma_rx_dbg0	= 0x6a38,
-+		.int_grp	= 0x6a50,
-+	},
-+	.qdma = {
-+		.qtx_cfg	= 0x4400,
-+		.qtx_sch	= 0x4404,
-+		.rx_ptr		= 0x4500,
-+		.rx_cnt_cfg	= 0x4504,
-+		.qcrx_ptr	= 0x4508,
-+		.glo_cfg	= 0x4604,
-+		.rst_idx	= 0x4608,
-+		.delay_irq	= 0x460c,
-+		.fc_th		= 0x4610,
-+		.int_grp	= 0x4620,
-+		.hred		= 0x4644,
-+		.ctx_ptr	= 0x4700,
-+		.dtx_ptr	= 0x4704,
-+		.crx_ptr	= 0x4710,
-+		.drx_ptr	= 0x4714,
-+		.fq_head	= 0x4720,
-+		.fq_tail	= 0x4724,
-+		.fq_count	= 0x4728,
-+		.fq_blen	= 0x472c,
-+		.tx_sch_rate	= 0x4798,
-+	},
-+	.gdm1_cnt		= 0x1c00,
-+	.gdma_to_ppe		= 0x3333,
-+	.ppe_base		= 0x2000,
-+	.wdma_base = {
-+		[0]		= 0x4800,
-+		[1]		= 0x4c00,
-+	},
-+	.pse_iq_sta		= 0x0180,
-+	.pse_oq_sta		= 0x01a0,
-+};
++	spin_lock_irqsave(&m2m_ctx->out_q_ctx.rdy_spinlock, flags);
++	num_buf_rdy = m2m_ctx->out_q_ctx.num_rdy;
++	spin_unlock_irqrestore(&m2m_ctx->out_q_ctx.rdy_spinlock, flags);
 +
- /* strings used by ethtool */
- static const struct mtk_ethtool_stats {
- 	char str[ETH_GSTRING_LEN];
-@@ -179,10 +227,54 @@ static const struct mtk_ethtool_stats {
- };
- 
- static const char * const mtk_clks_source_name[] = {
--	"ethif", "sgmiitop", "esw", "gp0", "gp1", "gp2", "fe", "trgpll",
--	"sgmii_tx250m", "sgmii_rx250m", "sgmii_cdr_ref", "sgmii_cdr_fb",
--	"sgmii2_tx250m", "sgmii2_rx250m", "sgmii2_cdr_ref", "sgmii2_cdr_fb",
--	"sgmii_ck", "eth2pll", "wocpu0", "wocpu1", "netsys0", "netsys1"
-+	"ethif",
-+	"sgmiitop",
-+	"esw",
-+	"gp0",
-+	"gp1",
-+	"gp2",
-+	"gp3",
-+	"xgp1",
-+	"xgp2",
-+	"xgp3",
-+	"crypto",
-+	"fe",
-+	"trgpll",
-+	"sgmii_tx250m",
-+	"sgmii_rx250m",
-+	"sgmii_cdr_ref",
-+	"sgmii_cdr_fb",
-+	"sgmii2_tx250m",
-+	"sgmii2_rx250m",
-+	"sgmii2_cdr_ref",
-+	"sgmii2_cdr_fb",
-+	"sgmii_ck",
-+	"eth2pll",
-+	"wocpu0",
-+	"wocpu1",
-+	"netsys0",
-+	"netsys1",
-+	"ethwarp_wocpu2",
-+	"ethwarp_wocpu1",
-+	"ethwarp_wocpu0",
-+	"top_usxgmii0_sel",
-+	"top_usxgmii1_sel",
-+	"top_sgm0_sel",
-+	"top_sgm1_sel",
-+	"top_xfi_phy0_xtal_sel",
-+	"top_xfi_phy1_xtal_sel",
-+	"top_eth_gmii_sel",
-+	"top_eth_refck_50m_sel",
-+	"top_eth_sys_200m_sel",
-+	"top_eth_sys_sel",
-+	"top_eth_xgmii_sel",
-+	"top_eth_mii_sel",
-+	"top_netsys_sel",
-+	"top_netsys_500m_sel",
-+	"top_netsys_pao_2x_sel",
-+	"top_netsys_sync_250m_sel",
-+	"top_netsys_ppefb_250m_sel",
-+	"top_netsys_warp_sel",
- };
- 
- void mtk_w32(struct mtk_eth *eth, u32 val, unsigned reg)
-@@ -195,7 +287,7 @@ u32 mtk_r32(struct mtk_eth *eth, unsigned reg)
- 	return __raw_readl(eth->base + reg);
++	return num_buf_rdy;
  }
  
--static u32 mtk_m32(struct mtk_eth *eth, u32 mask, u32 set, unsigned reg)
-+u32 mtk_m32(struct mtk_eth *eth, u32 mask, u32 set, unsigned int reg)
+ /**
+@@ -605,7 +612,14 @@ unsigned int v4l2_m2m_num_src_bufs_ready(struct v4l2_m2m_ctx *m2m_ctx)
+ static inline
+ unsigned int v4l2_m2m_num_dst_bufs_ready(struct v4l2_m2m_ctx *m2m_ctx)
  {
- 	u32 val;
- 
-@@ -400,6 +492,19 @@ static void mtk_gmac0_rgmii_adjust(struct mtk_eth *eth,
- 	dev_err(eth->dev, "Missing PLL configuration, ethernet may not work\n");
+-	return m2m_ctx->cap_q_ctx.num_rdy;
++	unsigned int num_buf_rdy;
++	unsigned long flags;
++
++	spin_lock_irqsave(&m2m_ctx->cap_q_ctx.rdy_spinlock, flags);
++	num_buf_rdy = m2m_ctx->cap_q_ctx.num_rdy;
++	spin_unlock_irqrestore(&m2m_ctx->cap_q_ctx.rdy_spinlock, flags);
++
++	return num_buf_rdy;
  }
  
-+static void mtk_setup_bridge_switch(struct mtk_eth *eth)
-+{
-+	/* Force Port1 XGMAC Link Up */
-+	mtk_m32(eth, 0, MTK_XGMAC_FORCE_LINK(MTK_GMAC1_ID),
-+		MTK_XGMAC_STS(MTK_GMAC1_ID));
-+
-+	/* Adjust GSW bridge IPG to 11 */
-+	mtk_m32(eth, GSWTX_IPG_MASK | GSWRX_IPG_MASK,
-+		(GSW_IPG_11 << GSWTX_IPG_SHIFT) |
-+		(GSW_IPG_11 << GSWRX_IPG_SHIFT),
-+		MTK_GSW_CFG);
-+}
-+
- static struct phylink_pcs *mtk_mac_select_pcs(struct phylink_config *config,
- 					      phy_interface_t interface)
- {
-@@ -459,6 +564,8 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
- 					goto init_err;
- 			}
- 			break;
-+		case PHY_INTERFACE_MODE_INTERNAL:
-+			break;
- 		default:
- 			goto err_phy;
- 		}
-@@ -528,6 +635,15 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
- 		return;
- 	}
- 
-+	/* Setup gmac */
-+	if (mtk_is_netsys_v3_or_greater(eth) &&
-+	    mac->interface == PHY_INTERFACE_MODE_INTERNAL) {
-+		mtk_w32(mac->hw, MTK_GDMA_XGDM_SEL, MTK_GDMA_EG_CTRL(mac->id));
-+		mtk_w32(mac->hw, MAC_MCR_FORCE_LINK_DOWN, MTK_MAC_MCR(mac->id));
-+
-+		mtk_setup_bridge_switch(eth);
-+	}
-+
- 	return;
- 
- err_phy:
-@@ -740,11 +856,15 @@ static int mtk_mdio_init(struct mtk_eth *eth)
- 	}
- 	divider = min_t(unsigned int, DIV_ROUND_UP(MDC_MAX_FREQ, max_clk), 63);
- 
-+	/* Configure MDC Turbo Mode */
-+	if (mtk_is_netsys_v3_or_greater(eth))
-+		mtk_m32(eth, 0, MISC_MDC_TURBO, MTK_MAC_MISC_V3);
-+
- 	/* Configure MDC Divider */
--	val = mtk_r32(eth, MTK_PPSC);
--	val &= ~PPSC_MDC_CFG;
--	val |= FIELD_PREP(PPSC_MDC_CFG, divider) | PPSC_MDC_TURBO;
--	mtk_w32(eth, val, MTK_PPSC);
-+	val = FIELD_PREP(PPSC_MDC_CFG, divider);
-+	if (!mtk_is_netsys_v3_or_greater(eth))
-+		val |= PPSC_MDC_TURBO;
-+	mtk_m32(eth, PPSC_MDC_CFG, val, MTK_PPSC);
- 
- 	dev_dbg(eth->dev, "MDC is running on %d Hz\n", MDC_MAX_FREQ / divider);
- 
-@@ -1205,10 +1325,19 @@ static void mtk_tx_set_dma_desc_v2(struct net_device *dev, void *txd,
- 		data |= TX_DMA_LS0;
- 	WRITE_ONCE(desc->txd3, data);
- 
--	if (mac->id == MTK_GMAC3_ID)
--		data = PSE_GDM3_PORT;
--	else
--		data = (mac->id + 1) << TX_DMA_FPORT_SHIFT_V2; /* forward port */
-+	 /* set forward port */
-+	switch (mac->id) {
-+	case MTK_GMAC1_ID:
-+		data = PSE_GDM1_PORT << TX_DMA_FPORT_SHIFT_V2;
-+		break;
-+	case MTK_GMAC2_ID:
-+		data = PSE_GDM2_PORT << TX_DMA_FPORT_SHIFT_V2;
-+		break;
-+	case MTK_GMAC3_ID:
-+		data = PSE_GDM3_PORT << TX_DMA_FPORT_SHIFT_V2;
-+		break;
-+	}
-+
- 	data |= TX_DMA_SWC_V2 | QID_BITS_V2(info->qid);
- 	WRITE_ONCE(desc->txd4, data);
- 
-@@ -4387,6 +4516,17 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
- 			  mac->phylink_config.supported_interfaces);
- 	}
- 
-+	if (mtk_is_netsys_v3_or_greater(mac->hw) &&
-+	    MTK_HAS_CAPS(mac->hw->soc->caps, MTK_ESW_BIT) &&
-+	    id == MTK_GMAC1_ID) {
-+		mac->phylink_config.mac_capabilities = MAC_ASYM_PAUSE |
-+						       MAC_SYM_PAUSE |
-+						       MAC_10000FD;
-+		phy_interface_zero(mac->phylink_config.supported_interfaces);
-+		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
-+			  mac->phylink_config.supported_interfaces);
-+	}
-+
- 	phylink = phylink_create(&mac->phylink_config,
- 				 of_fwnode_handle(mac->of_node),
- 				 phy_mode, &mtk_phylink_ops);
-@@ -4913,6 +5053,24 @@ static const struct mtk_soc_data mt7986_data = {
- 	},
- };
- 
-+static const struct mtk_soc_data mt7988_data = {
-+	.reg_map = &mt7988_reg_map,
-+	.ana_rgc3 = 0x128,
-+	.caps = MT7988_CAPS,
-+	.hw_features = MTK_HW_FEATURES,
-+	.required_clks = MT7988_CLKS_BITMAP,
-+	.required_pctl = false,
-+	.version = 3,
-+	.txrx = {
-+		.txd_size = sizeof(struct mtk_tx_dma_v2),
-+		.rxd_size = sizeof(struct mtk_rx_dma_v2),
-+		.rx_irq_done_mask = MTK_RX_DONE_INT_V2,
-+		.rx_dma_l4_valid = RX_DMA_L4_VALID_V2,
-+		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
-+		.dma_len_offset = 8,
-+	},
-+};
-+
- static const struct mtk_soc_data rt5350_data = {
- 	.reg_map = &mt7628_reg_map,
- 	.caps = MT7628_CAPS,
-@@ -4931,14 +5089,15 @@ static const struct mtk_soc_data rt5350_data = {
- };
- 
- const struct of_device_id of_mtk_match[] = {
--	{ .compatible = "mediatek,mt2701-eth", .data = &mt2701_data},
--	{ .compatible = "mediatek,mt7621-eth", .data = &mt7621_data},
--	{ .compatible = "mediatek,mt7622-eth", .data = &mt7622_data},
--	{ .compatible = "mediatek,mt7623-eth", .data = &mt7623_data},
--	{ .compatible = "mediatek,mt7629-eth", .data = &mt7629_data},
--	{ .compatible = "mediatek,mt7981-eth", .data = &mt7981_data},
--	{ .compatible = "mediatek,mt7986-eth", .data = &mt7986_data},
--	{ .compatible = "ralink,rt5350-eth", .data = &rt5350_data},
-+	{ .compatible = "mediatek,mt2701-eth", .data = &mt2701_data },
-+	{ .compatible = "mediatek,mt7621-eth", .data = &mt7621_data },
-+	{ .compatible = "mediatek,mt7622-eth", .data = &mt7622_data },
-+	{ .compatible = "mediatek,mt7623-eth", .data = &mt7623_data },
-+	{ .compatible = "mediatek,mt7629-eth", .data = &mt7629_data },
-+	{ .compatible = "mediatek,mt7981-eth", .data = &mt7981_data },
-+	{ .compatible = "mediatek,mt7986-eth", .data = &mt7986_data },
-+	{ .compatible = "mediatek,mt7988-eth", .data = &mt7988_data },
-+	{ .compatible = "ralink,rt5350-eth", .data = &rt5350_data },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, of_mtk_match);
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 5902944ddb4fa..1a25724ae8e6a 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -117,7 +117,8 @@
- #define MTK_CDMP_EG_CTRL	0x404
- 
- /* GDM Exgress Control Register */
--#define MTK_GDMA_FWD_CFG(x)	(0x500 + (x * 0x1000))
-+#define MTK_GDMA_FWD_CFG(x)	({ typeof(x) _x = (x); (_x == MTK_GMAC3_ID) ?	\
-+				   0x540 : 0x500 + (_x * 0x1000); })
- #define MTK_GDMA_SPECIAL_TAG	BIT(24)
- #define MTK_GDMA_ICS_EN		BIT(22)
- #define MTK_GDMA_TCS_EN		BIT(21)
-@@ -126,6 +127,11 @@
- #define MTK_GDMA_TO_PDMA	0x0
- #define MTK_GDMA_DROP_ALL       0x7777
- 
-+/* GDM Egress Control Register */
-+#define MTK_GDMA_EG_CTRL(x)	({ typeof(x) _x = (x); (_x == MTK_GMAC3_ID) ?	\
-+				   0x544 : 0x504 + (_x * 0x1000); })
-+#define MTK_GDMA_XGDM_SEL	BIT(31)
-+
- /* Unicast Filter MAC Address Register - Low */
- #define MTK_GDMA_MAC_ADRL(x)	(0x508 + (x * 0x1000))
- 
-@@ -389,7 +395,26 @@
- #define PHY_IAC_TIMEOUT		HZ
- 
- #define MTK_MAC_MISC		0x1000c
-+#define MTK_MAC_MISC_V3		0x10010
- #define MTK_MUX_TO_ESW		BIT(0)
-+#define MISC_MDC_TURBO		BIT(4)
-+
-+/* XMAC status registers */
-+#define MTK_XGMAC_STS(x)	(((x) == MTK_GMAC3_ID) ? 0x1001C : 0x1000C)
-+#define MTK_XGMAC_FORCE_LINK(x)	(((x) == MTK_GMAC2_ID) ? BIT(31) : BIT(15))
-+#define MTK_USXGMII_PCS_LINK	BIT(8)
-+#define MTK_XGMAC_RX_FC		BIT(5)
-+#define MTK_XGMAC_TX_FC		BIT(4)
-+#define MTK_USXGMII_PCS_MODE	GENMASK(3, 1)
-+#define MTK_XGMAC_LINK_STS	BIT(0)
-+
-+/* GSW bridge registers */
-+#define MTK_GSW_CFG		(0x10080)
-+#define GSWTX_IPG_MASK		GENMASK(19, 16)
-+#define GSWTX_IPG_SHIFT		16
-+#define GSWRX_IPG_MASK		GENMASK(3, 0)
-+#define GSWRX_IPG_SHIFT		0
-+#define GSW_IPG_11		11
- 
- /* Mac control registers */
- #define MTK_MAC_MCR(x)		(0x10100 + (x * 0x100))
-@@ -647,6 +672,11 @@ enum mtk_clks_map {
- 	MTK_CLK_GP0,
- 	MTK_CLK_GP1,
- 	MTK_CLK_GP2,
-+	MTK_CLK_GP3,
-+	MTK_CLK_XGP1,
-+	MTK_CLK_XGP2,
-+	MTK_CLK_XGP3,
-+	MTK_CLK_CRYPTO,
- 	MTK_CLK_FE,
- 	MTK_CLK_TRGPLL,
- 	MTK_CLK_SGMII_TX_250M,
-@@ -663,6 +693,27 @@ enum mtk_clks_map {
- 	MTK_CLK_WOCPU1,
- 	MTK_CLK_NETSYS0,
- 	MTK_CLK_NETSYS1,
-+	MTK_CLK_ETHWARP_WOCPU2,
-+	MTK_CLK_ETHWARP_WOCPU1,
-+	MTK_CLK_ETHWARP_WOCPU0,
-+	MTK_CLK_TOP_USXGMII_SBUS_0_SEL,
-+	MTK_CLK_TOP_USXGMII_SBUS_1_SEL,
-+	MTK_CLK_TOP_SGM_0_SEL,
-+	MTK_CLK_TOP_SGM_1_SEL,
-+	MTK_CLK_TOP_XFI_PHY_0_XTAL_SEL,
-+	MTK_CLK_TOP_XFI_PHY_1_XTAL_SEL,
-+	MTK_CLK_TOP_ETH_GMII_SEL,
-+	MTK_CLK_TOP_ETH_REFCK_50M_SEL,
-+	MTK_CLK_TOP_ETH_SYS_200M_SEL,
-+	MTK_CLK_TOP_ETH_SYS_SEL,
-+	MTK_CLK_TOP_ETH_XGMII_SEL,
-+	MTK_CLK_TOP_ETH_MII_SEL,
-+	MTK_CLK_TOP_NETSYS_SEL,
-+	MTK_CLK_TOP_NETSYS_500M_SEL,
-+	MTK_CLK_TOP_NETSYS_PAO_2X_SEL,
-+	MTK_CLK_TOP_NETSYS_SYNC_250M_SEL,
-+	MTK_CLK_TOP_NETSYS_PPEFB_250M_SEL,
-+	MTK_CLK_TOP_NETSYS_WARP_SEL,
- 	MTK_CLK_MAX
- };
- 
-@@ -716,6 +767,36 @@ enum mtk_clks_map {
- 				 BIT_ULL(MTK_CLK_SGMII2_RX_250M) | \
- 				 BIT_ULL(MTK_CLK_SGMII2_CDR_REF) | \
- 				 BIT_ULL(MTK_CLK_SGMII2_CDR_FB))
-+#define MT7988_CLKS_BITMAP	(BIT_ULL(MTK_CLK_FE) | BIT_ULL(MTK_CLK_ESW) | \
-+				 BIT_ULL(MTK_CLK_GP1) | BIT_ULL(MTK_CLK_GP2) | \
-+				 BIT_ULL(MTK_CLK_GP3) | BIT_ULL(MTK_CLK_XGP1) | \
-+				 BIT_ULL(MTK_CLK_XGP2) | BIT_ULL(MTK_CLK_XGP3) | \
-+				 BIT_ULL(MTK_CLK_CRYPTO) | \
-+				 BIT_ULL(MTK_CLK_SGMII_TX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII_RX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_TX_250M) | \
-+				 BIT_ULL(MTK_CLK_SGMII2_RX_250M) | \
-+				 BIT_ULL(MTK_CLK_ETHWARP_WOCPU2) | \
-+				 BIT_ULL(MTK_CLK_ETHWARP_WOCPU1) | \
-+				 BIT_ULL(MTK_CLK_ETHWARP_WOCPU0) | \
-+				 BIT_ULL(MTK_CLK_TOP_USXGMII_SBUS_0_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_USXGMII_SBUS_1_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_SGM_0_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_SGM_1_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_XFI_PHY_0_XTAL_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_XFI_PHY_1_XTAL_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_ETH_GMII_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_ETH_REFCK_50M_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_ETH_SYS_200M_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_ETH_SYS_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_ETH_XGMII_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_ETH_MII_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_NETSYS_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_NETSYS_500M_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_NETSYS_PAO_2X_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_NETSYS_SYNC_250M_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_NETSYS_PPEFB_250M_SEL) | \
-+				 BIT_ULL(MTK_CLK_TOP_NETSYS_WARP_SEL))
- 
- enum mtk_dev_state {
- 	MTK_HW_INIT,
-@@ -964,6 +1045,8 @@ enum mkt_eth_capabilities {
- 		      MTK_MUX_GMAC12_TO_GEPHY_SGMII | MTK_QDMA | \
- 		      MTK_RSTCTRL_PPE1)
- 
-+#define MT7988_CAPS  (MTK_GDM1_ESW | MTK_QDMA | MTK_RSTCTRL_PPE1)
-+
- struct mtk_tx_dma_desc_info {
- 	dma_addr_t	addr;
- 	u32		size;
-@@ -1309,6 +1392,7 @@ void mtk_stats_update_mac(struct mtk_mac *mac);
- 
- void mtk_w32(struct mtk_eth *eth, u32 val, unsigned reg);
- u32 mtk_r32(struct mtk_eth *eth, unsigned reg);
-+u32 mtk_m32(struct mtk_eth *eth, u32 mask, u32 set, unsigned int reg);
- 
- int mtk_gmac_sgmii_path_setup(struct mtk_eth *eth, int mac_id);
- int mtk_gmac_gephy_path_setup(struct mtk_eth *eth, int mac_id);
+ /**
 -- 
-2.41.0
+2.39.2
+
 
