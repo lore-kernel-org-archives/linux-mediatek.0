@@ -4,74 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93F97C001DC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 01:32:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D500C001B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 01:32:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Hggr0nXWTIBBMHyGhQ4xgdPJ8N6GTinbhAnF/zMWEHM=; b=AtflDMYCwyqUpkxmNu+GP3R07z
-	GeW0OFNP8vAmpHUO7MFnkOViNYP3GbBW9f6xzjNGLoDHSh3M1SAWCbUIa+kyIb6BIvl0UnWAS7c02
-	jMI8WimwFz9DUpO68FH3L5bpVG2mu4EiVYzrkqZ1Ukp4MvNLYd0Wh0SS0Ocbb9EgRVkpg/zDEQQV9
-	F2X1fyKgH/wDOuf1Sp1dXp5k4HUkRaoqIffRR0r64mu6vhIuir41U3kFNMHqJmCYACvhmtBSYYDEe
-	uFCpvUXEJzdncrJRZ2WAmnoJSN/Mi0ScTgbUI5jnmwJ61SrA+dLp1guhXBJNbp0JJ4xVKxEtVTHbV
-	q1PhHq7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZmGqFkAFKPv1OOSnztujaaycylVXWO29pqrVZDFIWVM=; b=3gDbUrgpbfw9ZH2Jz5bIMjBMcM
+	uc0AFWM/HN7wk9vxgBiFp2C4bk/RogydS8kpTemLvrbcAZIgPEv81d8rVr3jLBlwlHJhB0pQHrR+T
+	FW0ee/kjoCvUSXh1ZDsPegAzhtVp6iWVteCK3VXOxxLoa6fAgsr81eIUAv+tDqUc2Vz7jtVOZaWES
+	M124jwFfKyX/dQt880xvCfQ22sVO3KrIDTjzZRLtw1fyL05FJrXlqyadBLXHs0Qsr6FcbXr6J6UW3
+	TsPabEmXQenf4wXUQoAOjAQapp89xM3D3FFG5RMWGMj57C6ZeJ5kTHUBxYQowZ5jfe2CDME3VtyXa
+	t6BTtvRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNkQk-002O2y-1j;
-	Mon, 24 Jul 2023 01:32:10 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qNkQo-002O4i-35;
+	Mon, 24 Jul 2023 01:32:14 +0000
+Received: from mail-tycjpn01olkn20822.outbound.protection.outlook.com ([2a01:111:f403:7010::822] helo=JPN01-TYC-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNkQX-002Nys-0V;
-	Mon, 24 Jul 2023 01:31:58 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7DA5860EF3;
-	Mon, 24 Jul 2023 01:31:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9BC11C433CC;
-	Mon, 24 Jul 2023 01:31:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690162315;
-	bh=eMxvVRosH6ZazwMWDYUo3hTwAqM4bw0NindcI86L55g=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kaZ/cuzBcoFp/GIQ5z1T8dFzR3cg9C6hmqMUT21+gB04BTXhHND57czWuVhgH671L
-	 zdsKkO1vdXBGnZ1USpwSK75qPcTpoimfmLYIK/emFbcPpQ8HXjdzvMTI9vsC5iTufs
-	 Q/2ETeML/zfVHWDsh3ydFMzgpA92MyfgKgMYdSW1FKiK2EoDBRH9D0FL4fbJF6QdTB
-	 Z/rT1TT8vWuOPJxTzbSuXOcOhF2XlxhtGYeohnvTKQ4Tpc+FTk5zG3IyjewTmYqSoh
-	 MOyt0REzKp1GJg1hSeu2ypNS3mo+azUv4dziFInwoA3Ap9xomP6TiiKZRRieaqxnfX
-	 P6RlWldbpsbcg==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Mathias Nyman <mathias.nyman@linux.intel.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Sasha Levin <sashal@kernel.org>,
-	mathias.nyman@intel.com,
-	matthias.bgg@gmail.com,
-	thierry.reding@gmail.com,
-	jonathanh@nvidia.com,
-	linux-usb@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1qNkQm-002Nzo-08
+	for linux-mediatek@lists.infradead.org;
+	Mon, 24 Jul 2023 01:32:13 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=K70k0SvOEVwS+YxD1fAvSgne8fUQ8ilEAChmzmxgvCfobTBiEDcKXEoV+lKygKC8pS+IFDIkVU7rDxyQxxKZVswNWYcJC0HwNW15H3ooATda0EiIfAfGMQHddDf4I6O+AYtUydrOgsVotfNBWXpf8DAajPnk+eOiyHiNygFa0L0gsqaaFbZ1SHsuOj+6jJ2l5FflJRi/Ms8LhkSjL1FPcz/QCxPBOIgmWmDumP538JE4h3k3bxRc/fZeiU02zAq8M1dFe6t80rQDB2oV2DWTEgRnkASaIuvjYtD7pHOnZEjydYvpqTRXZYtsa+uWa9uwaGWLw5N5ygTJxdpZ0VRZeQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ZmGqFkAFKPv1OOSnztujaaycylVXWO29pqrVZDFIWVM=;
+ b=Bl/1PBOqQG5yr14xs18SxcoAqS49a2QJCUhRiuKOtPXPr6IiCupeV+MPAOe+qsyB/CdUnZMRx0fqyK5Q3kdqeSQBLJF0zhMvVTJ36Ptx/6120eWGGlgCCvlPIVovtvx78BInfA3SPD09zpcPSt60w2vj+DyRZ9qoSRRjEnZU3T/SmBsQkmpHGxTdzRMV5MCbPPXDzintNo/dIa6nVVNX7zjkh/ol3aCx1ajkAdKq4XftX0v19bDmEsmGCHEZ/wkUY1XNs+dmBXgsGkcjhZ9LFF/bABtKSw8MNArxJ5zLJKBAp5oBmgI7SAcfL/URe5NwxqyvqmsMIcEuD+35lGEXiA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ZmGqFkAFKPv1OOSnztujaaycylVXWO29pqrVZDFIWVM=;
+ b=TeLkjDL+qhtbMDgn4eK/tq6zeCMPteJhJhbuho7xRALCmKOJS5kd7wtkrwhdrGV5RtDh3vtKlw3XI9siHfnCqMPfl6hR0pi2DFzq7lyKpIeLpd+FiRGMJW9QUYdLerwtsVpfkUNYrC5hdsauJ6WEo3RhyOTFg2pGeM7YgbTa9/ZwKsyxXqwKz0ST+p+m2KHcj8q5tiphUD16XIEEY+VXhIfSUopWkntHfRdGqhNWdBx+EffA2jrfyt/b0xTAF/F5lvmAY3BADInsccwTnkvtrD2k7eDc8jea4SMy5ztxcYTdt6L49HgGZOXY4d3Ui0BiHUbALvU+q/mnBsId1HbsdQ==
+Received: from TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM (2603:1096:404:8041::8)
+ by TYCP286MB2589.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:240::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6609.32; Mon, 24 Jul
+ 2023 01:31:47 +0000
+Received: from TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::f4c2:4b38:d074:f1e9]) by TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::f4c2:4b38:d074:f1e9%5]) with mapi id 15.20.6609.031; Mon, 24 Jul 2023
+ 01:31:47 +0000
+From: Shiji Yang <yangshiji66@outlook.com>
+To: linus.walleij@linaro.org
+Cc: angelogioacchino.delregno@collabora.com,
+	arinc.unal@arinc9.com,
+	linux-gpio@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-tegra@vger.kernel.org
-Subject: [PATCH AUTOSEL 6.4 10/40] xhci: get rid of XHCI_PLAT quirk that used to prevent MSI setup
-Date: Sun, 23 Jul 2023 21:31:10 -0400
-Message-Id: <20230724013140.2327815-10-sashal@kernel.org>
+	linux-mips@vger.kernel.org,
+	matthias.bgg@gmail.com,
+	sean.wang@kernel.org,
+	sergio.paracuellos@gmail.com,
+	yangshiji66@outlook.com
+Subject: Re: [PATCH] pinctrl: mtmips: do not log when repeating the same pinctrl request
+Date: Mon, 24 Jul 2023 09:31:34 +0800
+Message-ID: <TYAP286MB03159367B2B1932DD38252CDBC02A@TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230724013140.2327815-1-sashal@kernel.org>
-References: <20230724013140.2327815-1-sashal@kernel.org>
-MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.4.5
+In-Reply-To: <CACRpkdYzytbM0sN7Q-Niwq2jUgbeVPpREmwUTbja86eGROOB+w@mail.gmail.com>
+References: <CACRpkdYzytbM0sN7Q-Niwq2jUgbeVPpREmwUTbja86eGROOB+w@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-TMN: [ipFgohZ4bUdpKNU0nP06sPn16ykRPtEG]
+X-ClientProxiedBy: TYCP286CA0112.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:400:29c::7) To TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:404:8041::8)
+X-Microsoft-Original-Message-ID: <20230724013134.448-1-yangshiji66@outlook.com>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TYAP286MB0315:EE_|TYCP286MB2589:EE_
+X-MS-Office365-Filtering-Correlation-Id: ecb42ada-ccfc-4f6f-dcf2-08db8be5bf29
+X-MS-Exchange-SLBlob-MailProps: laRBL560oLS6buqkouoaL65lqUYHK3x1lBEEjJ7ORZvqLBYIUQ5aOEXVYyu1t13hx1SDdFwcDSRBBG2HPPj8V2Y/avzMhbLgztQFiGYJ/puzkzOaZ0lOAt6MFkgtCIMDrCM5SyjuEUwNM57s8fju9u15GtsEd8QwllJLNDZpBuY9AwObKtFGSZ7f8Ptyx1uaigQUw7O6L7CtyrLV8UbL2FI6Z/XvLqgOK4rKaoQDQE8pyBqiad6Scign3Yz1vFm3zW641sqKznjkshNV/fCVtAaiW0w33tc+G5x8Hoo0LQAO9ncyFsAbUy/sXLiYAxOfBY8vR6ekkw3e4fFCXAvc+Sb3fKkjTBY6srfNr1hWBivnw3LmG3tgkIQWUL6tBQp6ojk0DS91IRitU8jDdaBgTndrpC9HGFhc9PHjs6Zw6xCVR/gseOZxy23hov9AT7Ho28FM795o3NhhZLuYqqwrVNvAeiWF3/34MA8PH0c6V1TsrL3iXpBSkevt65QTLDLJBhBPunorvdRze/nhntULNTrTTYiFyNBZdNLqJvyCjM6P6ZTnK303KClz58tmWGt31d9E34ECOV7IPNg3WGy09w94u5+erKNzESZz68I0Oizk9iSUOHabA1GSQLJWrArG5gwpZYpJ9Qn0RPcl0KrAogEer5tEFON8ubJGSz+otOnvv0LDofEjdmw4J6xwhjY9f2H4FWLMqJQziAy3ps3glJKB8C24QVKXocuCIkQk8CusArRFBpfZzlI9hfF92nQEVzNe54sjwJRs9JbH6hdvEdlS/mKsAJsT
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: MqpkHVcjdRjVeMYOMlkATepWs1uFTFHPcCActBw3osYfovGaKWZnrf3bxLISURBBlvId1Zttof1/LtUMyxjxuey22mWlJxvQO9vgJqrUhClMKrgaIIslJEF7drtMaGuUzslIWkMRtxOjbU9GPpxAUf5rVrUAnklv/6z4n6OHz9lx7cXz8Fums99kThn0Wf0sSPi6MNujjER0vODiIsjIwamV4C+CDOhCSLhjs3XPmRq/V2fNQ4QudXkDwnSaVovZ/M8nw3IyjbF+in8eIE2beh+X5TFLV+WjHCyq8/xgDVQE4o6jPyu5L2jzDGccn2x3m4e6e1tUugJIwiGNRjzEa6g5cuh0718g7gPcAIUzbSqJY4d+PuFahRxZdxbUm6Ena8Pa0fdZ98h6vL8PMBYHcT2KWShMoFRQ63W318czbkXUhofuWrPYpC0CAK/8m/XP1AzAXzu0ErPXBrEQ2+tYMZrC5mq0nDkL1PgmPrlsoOQe9zS0Kmg0lKqaObzsQeubMKrKNSvwlDxDFYlEo4E6D2SsJKFgnVIertOjDg5fED9nBskcwSiJzF2ElP5KM9pvmTChrY2Xk1BQ9cKUAq6cA+I78Ia8Dr4f5nofrkPaxEM=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?KzVyR3JUbEpoZHNjcW03MlB3WExGNnJnTGsrUkwzVFVXbmQ0WTFLeEQrZ2No?=
+ =?utf-8?B?UFpmNzdORmd3NTdYQ0ZvNVdQeURNOHF6SmRRdDUvTzZ1MUlJU0Q2VGFoUnZ6?=
+ =?utf-8?B?c0drQTgyWGJwaWtaa0h2MHZsUmRJRm05c0M3M3BHZTIyR0FSbmtZdHhsbjli?=
+ =?utf-8?B?dXVKaUJnZUxGVFhVcWNCQjhKOVNpTVJEMlRHRWIvdWtTTUduOTlvU2RlcEkz?=
+ =?utf-8?B?amNMSm1HRnBmY0NrN2lwc2h0MXd0WG81eUNiazJDM2JqVWVCNldSVmRVTGtj?=
+ =?utf-8?B?Vzg4a2ZoWVR2ZGYwSVN1WjdkZFhrenoxeTVwSEMvMzdzb3BRZGpzVjNiZXRq?=
+ =?utf-8?B?N0NKTWJXOXZJTzVRc0xMdjlFaWo5WFMwOTFmNVp2dEJwN2pPeGM0NmZEMnhP?=
+ =?utf-8?B?cXpTeXVHREhYR1RDLzhnNElUM3dXSjNTTG8zODNmYytDeE5yUy9KZVJNTFRP?=
+ =?utf-8?B?R1YvN2xzRzlYK21pV1M1MGU1ZmFJUHFHcG1nVlNSb3l2OFBuMG5BOVloUXBZ?=
+ =?utf-8?B?cFd6bTNpa1ZlYnlxbXNzU3FjTTZKVkdpQkU2UVRlTFFqeWhCUUVMNHJpYkVX?=
+ =?utf-8?B?Y3VGK1F3blFDOVBZZlhxZmhMT3lUMCs3UTNSUE5DWVZON3pVZ0MvajlpYytO?=
+ =?utf-8?B?SHdRclE0bW5pejJFNGlFVjZNcXp3QStMUHVNQlV1ZjhmZzUzcmR5M28vR0FS?=
+ =?utf-8?B?WFJkb0ZaWVVhNEdNSWpuR3NjY3dTL0cycHdjM3JDSVY5N0ttbnZVZGRjRldO?=
+ =?utf-8?B?VElzYjREVCt2WFlGRzhRRXFyTGhyS3Z2eDVxKzNLU3VZVlIwNVJ1N0dwNEps?=
+ =?utf-8?B?T3h3OTdhc0lBZDdRbGkzYnkvWkk3aThVMTdrYkNOSjNreVgyZFhWQ0lXODVC?=
+ =?utf-8?B?WE9QcGtoS280K3VSazhpVi9QM2V0NzJJcStBSlJmTUdmaU9hY3ZsZm1FSWl0?=
+ =?utf-8?B?ZGhNWG5TU0o4bEZrM0s4bFk4cHNZZTFmWEsvYVpEOUhuamY5MytRYys4eC9Y?=
+ =?utf-8?B?b1lhTEdhQnpUVDhoQ2FqOVpHam5TN2NDMXpLUGNMS1dQUEZGNkxpeDZSbzZC?=
+ =?utf-8?B?RDNJcTE2NnB4Ny9ZSVpHUjBiUEZCRDNIcm40cng2cy9JZm9qU3FOZEsxRWZR?=
+ =?utf-8?B?T09ub0hOd1Q2TTRmdkYyaDQ3cWYrdlJlajNkUU1lV3lSUnhlTVl2WFFtR1BC?=
+ =?utf-8?B?YmtaeUVEQmJEcFB5QlYvR1hHa2Nwd2daekIvb21PSks1ZTNKS1FhOGVxZDRC?=
+ =?utf-8?B?TmtvTzY0VFNzVklZQW9pMDJtUWQ0bjVKVUk4SEF3V09GY3RFT2NzRFJBUE5Y?=
+ =?utf-8?B?NmNsR2Y3ZmR3ZXZ5WlVTM0cxYm42RjgwUDJ2VFljemozdUI1ajFmaGJpMk9p?=
+ =?utf-8?B?VzNNd0JYSkk3eWtTOWVBSFJETVpMeE1PTlRiaDlzYTVMbXp6dEdrdk1CTDYx?=
+ =?utf-8?B?WDNTcUJWRkNKS2kzRGZSVlJZdVQvaGpXY2k2L08vODc2blZra05mQzRJNE1p?=
+ =?utf-8?B?Vm0yQ0N6b2hWZUpud3ViZ2J1WWN5WHFvYWFvQlRlVGx0emtINkFCWURFa0Z5?=
+ =?utf-8?B?R3JZZWtNcCtUdUlPZnJaaGRTVHg2MCttTS9KeVhZdnBnVzVZN3BjSGtNNE1s?=
+ =?utf-8?Q?qqMY9We2/03yQRJMvt8VG8xGKWOHESBKJIBonWCQlE1E=3D?=
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ecb42ada-ccfc-4f6f-dcf2-08db8be5bf29
+X-MS-Exchange-CrossTenant-AuthSource: TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jul 2023 01:31:47.8355
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYCP286MB2589
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230723_183157_279526_545BFFC5 
-X-CRM114-Status: GOOD (  20.00  )
+X-CRM114-CacheID: sfid-20230723_183212_091017_BB17316B 
+X-CRM114-Status: GOOD (  18.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,149 +138,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mathias Nyman <mathias.nyman@linux.intel.com>
+Hi,
+Thank you for your review.
 
-[ Upstream commit 0a4776205b16d038ec6fedef2094951fcb6f441b ]
+On Sun, 23 Jul 2023 21:49:52 +0200 Linus Walleij wrote:
 
-The XHCI_PLAT quirk was only needed to ensure non-PCI xHC host avoided
-setting up MSI interrupts in generic xhci codepaths.
+>On Tue, Jul 18, 2023 at 5:16 PM Shiji Yang <yangshiji66@outlook.com> wrote:
+>
+>> Sometimes when driver fails to probe a device, the kernel will retry
+>> it later. However, this will result in duplicate requests for the
+>> same pinctrl configuration. In this case, we should not throw error
+>> logs. This patch adds extra check for the pin group function. Now the
+>> pinctrl driver only prints error log when attempting to configure the
+>> same group as different functions.
+>>
+>> Signed-off-by: Shiji Yang <yangshiji66@outlook.com>
+>> ---
+>>  drivers/pinctrl/mediatek/pinctrl-mtmips.c | 5 +++--
+>>  1 file changed, 3 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtmips.c b/drivers/pinctrl/mediatek/pinctrl-mtmips.c
+>> index efd77b6c5..8f5493220 100644
+>> --- a/drivers/pinctrl/mediatek/pinctrl-mtmips.c
+>> +++ b/drivers/pinctrl/mediatek/pinctrl-mtmips.c
+>> @@ -125,8 +125,9 @@ static int mtmips_pmx_group_enable(struct pinctrl_dev *pctrldev,
+>>
+>>         /* dont allow double use */
+>>         if (p->groups[group].enabled) {
+>> -               dev_err(p->dev, "%s is already enabled\n",
+>> -                       p->groups[group].name);
+>> +               if (!p->func[func]->enabled)
+>> +                       dev_err(p->dev, "%s is already enabled\n",
+>> +                               p->groups[group].name);
+>
+>Why is the driver not backing out properly and setting this .enabled back
+>to false when probing fails for some requesting driver?
+>
+>Or am I getting something wrong here?
+>
+>Yours,
+>Linus Walleij
+>
 
-The MSI setup code is now moved to PCI specific xhci-pci.c file so
-the quirk is no longer needed.
+We use pinctrl_select_state() to request the pinctrl and set the pin
+function. After searching "include/linux/pinctrl/consumer.h", I don't
+find a relevant API to reverse this operation so we can't set .enabled
+back to the false state. If I'm wrong please correct me, I don't know
+much about the pinctrl architecture.
 
-Remove setting the XHCI_PLAT quirk for HiSilocon SoC xHC, NVIDIA Tegra xHC,
-MediaTek xHC, the generic xhci-plat driver, and the checks for XHCI_PLAT
-in xhci-pci.c MSI setup code.
+At least I can sure pinctrl-mtmips doesn't have an implementation to
+unset func[]->enabled and groups[].enabled status.
 
-Signed-off-by: Mathias Nyman <mathias.nyman@linux.intel.com>
-Message-ID: <20230602144009.1225632-5-mathias.nyman@linux.intel.com>
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/usb/host/xhci-histb.c | 12 +-----------
- drivers/usb/host/xhci-mtk.c   |  6 ------
- drivers/usb/host/xhci-pci.c   |  7 -------
- drivers/usb/host/xhci-plat.c  |  7 +------
- drivers/usb/host/xhci-tegra.c |  1 -
- drivers/usb/host/xhci.h       |  2 +-
- 6 files changed, 3 insertions(+), 32 deletions(-)
+ref:
+https://elixir.bootlin.com/linux/latest/source/include/linux/pinctrl/consumer.h
 
-diff --git a/drivers/usb/host/xhci-histb.c b/drivers/usb/host/xhci-histb.c
-index 08369857686e7..42749ba2e2f85 100644
---- a/drivers/usb/host/xhci-histb.c
-+++ b/drivers/usb/host/xhci-histb.c
-@@ -164,16 +164,6 @@ static void xhci_histb_host_disable(struct xhci_hcd_histb *histb)
- 	clk_disable_unprepare(histb->bus_clk);
- }
- 
--static void xhci_histb_quirks(struct device *dev, struct xhci_hcd *xhci)
--{
--	/*
--	 * As of now platform drivers don't provide MSI support so we ensure
--	 * here that the generic code does not try to make a pci_dev from our
--	 * dev struct in order to setup MSI
--	 */
--	xhci->quirks |= XHCI_PLAT;
--}
--
- /* called during probe() after chip reset completes */
- static int xhci_histb_setup(struct usb_hcd *hcd)
- {
-@@ -186,7 +176,7 @@ static int xhci_histb_setup(struct usb_hcd *hcd)
- 			return ret;
- 	}
- 
--	return xhci_gen_setup(hcd, xhci_histb_quirks);
-+	return xhci_gen_setup(hcd, NULL);
- }
- 
- static const struct xhci_driver_overrides xhci_histb_overrides __initconst = {
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 90cf40d6d0c31..a6d3c5238bdde 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -418,12 +418,6 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
- 	struct usb_hcd *hcd = xhci_to_hcd(xhci);
- 	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
- 
--	/*
--	 * As of now platform drivers don't provide MSI support so we ensure
--	 * here that the generic code does not try to make a pci_dev from our
--	 * dev struct in order to setup MSI
--	 */
--	xhci->quirks |= XHCI_PLAT;
- 	xhci->quirks |= XHCI_MTK_HOST;
- 	/*
- 	 * MTK host controller gives a spurious successful event after a
-diff --git a/drivers/usb/host/xhci-pci.c b/drivers/usb/host/xhci-pci.c
-index 79b3691f373f3..3a9f907394a25 100644
---- a/drivers/usb/host/xhci-pci.c
-+++ b/drivers/usb/host/xhci-pci.c
-@@ -108,9 +108,6 @@ static void xhci_cleanup_msix(struct xhci_hcd *xhci)
- 	struct usb_hcd *hcd = xhci_to_hcd(xhci);
- 	struct pci_dev *pdev = to_pci_dev(hcd->self.controller);
- 
--	if (xhci->quirks & XHCI_PLAT)
--		return;
--
- 	/* return if using legacy interrupt */
- 	if (hcd->irq > 0)
- 		return;
-@@ -208,10 +205,6 @@ static int xhci_try_enable_msi(struct usb_hcd *hcd)
- 	struct pci_dev  *pdev;
- 	int ret;
- 
--	/* The xhci platform device has set up IRQs through usb_add_hcd. */
--	if (xhci->quirks & XHCI_PLAT)
--		return 0;
--
- 	pdev = to_pci_dev(xhci_to_hcd(xhci)->self.controller);
- 	/*
- 	 * Some Fresco Logic host controllers advertise MSI, but fail to
-diff --git a/drivers/usb/host/xhci-plat.c b/drivers/usb/host/xhci-plat.c
-index b0c8e8efc43b6..be2b5b786352e 100644
---- a/drivers/usb/host/xhci-plat.c
-+++ b/drivers/usb/host/xhci-plat.c
-@@ -78,12 +78,7 @@ static void xhci_plat_quirks(struct device *dev, struct xhci_hcd *xhci)
- {
- 	struct xhci_plat_priv *priv = xhci_to_priv(xhci);
- 
--	/*
--	 * As of now platform drivers don't provide MSI support so we ensure
--	 * here that the generic code does not try to make a pci_dev from our
--	 * dev struct in order to setup MSI
--	 */
--	xhci->quirks |= XHCI_PLAT | priv->quirks;
-+	xhci->quirks |= priv->quirks;
- }
- 
- /* called during probe() after chip reset completes */
-diff --git a/drivers/usb/host/xhci-tegra.c b/drivers/usb/host/xhci-tegra.c
-index c75d932441436..ebfbd547b2ec6 100644
---- a/drivers/usb/host/xhci-tegra.c
-+++ b/drivers/usb/host/xhci-tegra.c
-@@ -2662,7 +2662,6 @@ static void tegra_xhci_quirks(struct device *dev, struct xhci_hcd *xhci)
- {
- 	struct tegra_xusb *tegra = dev_get_drvdata(dev);
- 
--	xhci->quirks |= XHCI_PLAT;
- 	if (tegra && tegra->soc->lpm_support)
- 		xhci->quirks |= XHCI_LPM_SUPPORT;
- }
-diff --git a/drivers/usb/host/xhci.h b/drivers/usb/host/xhci.h
-index 6b690ec91ff3a..42444d9b47c9d 100644
---- a/drivers/usb/host/xhci.h
-+++ b/drivers/usb/host/xhci.h
-@@ -1874,7 +1874,7 @@ struct xhci_hcd {
- #define XHCI_SPURIOUS_REBOOT	BIT_ULL(13)
- #define XHCI_COMP_MODE_QUIRK	BIT_ULL(14)
- #define XHCI_AVOID_BEI		BIT_ULL(15)
--#define XHCI_PLAT		BIT_ULL(16)
-+#define XHCI_PLAT		BIT_ULL(16) /* Deprecated */
- #define XHCI_SLOW_SUSPEND	BIT_ULL(17)
- #define XHCI_SPURIOUS_WAKEUP	BIT_ULL(18)
- /* For controllers with a broken beyond repair streams implementation */
--- 
-2.39.2
-
+Regards,
+Shiji Yang
 
