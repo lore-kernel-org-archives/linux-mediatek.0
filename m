@@ -4,78 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8915C001B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 21:02:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD9F6C0015E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 21:19:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TXuxVnTwnsjsAA+3Bf3zPA8iygbYbe0kkXTFaK3FoHA=; b=2RnsRce+JdaLxTImQ0rHXCjVHP
-	0tMB+5IpXPjeBY/ErwNU17yueFoPgXM9c92b0ngCg5lekSULtbis87p6Qoxt6W3NtOVC0cT5wgx4S
-	Ecqo7ShtyXvzoSANgwCWbwx0u87sNivMM1yVGbIQYkzP4LEJmq4ham+k6dCLme4V21H0Rl8cbCxRY
-	rfLIdGVqM+chIIc16FWMco5SaRYDUvHe374++IukfobnIccGa8PEjYQVwzqG//3BBfG9x7SA33cAi
-	k0oOn1d/dZ+Fa7BA7qa4a+aqL7S/B1h9aAET1BDw+fhfj5GeUpYI51+G49xVuF5JIMIl4gEj8Xawv
-	KvVrM47A==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HFwxu4nqo9U/9r2sBnHuducoBx0y3uc7OnYgF0bUC8I=; b=2E3MoJzA8Pwy3vS0EvGFU3Ppps
+	b0dJt1YuUfI+jX+6MSuPwTpFwo0rvv1BBHlAHtBFEfp/UFPUY61WYmO6kABGidHkW4stElvAcxGXY
+	4vdf/tONMQU8FpunwGpjjZmD5uLgveP+p5l9OQFUqCueN5k53aI5KlQCBvPxk3XwxB75aKDJJAnv6
+	v8v68FubH+iUIVrOjn6GleYpzeo+1y9suSSguMN7ABZ1RpDlTdNMwt+kc0/i3238UMAdFVBUw97t2
+	XB1E6uluNZdrh0bW/njpcaCGelkRL8WzwtMfEtIWWvjfqPqfipbKc77ilQpvbJt5O3jlDlmiLRPqP
+	7fh7Q3sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO2hX-005Qbh-11;
-	Mon, 24 Jul 2023 21:02:43 +0000
+	id 1qO2xT-005RyF-1k;
+	Mon, 24 Jul 2023 21:19:11 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO2hU-005Qaj-0R;
-	Mon, 24 Jul 2023 21:02:41 +0000
+	id 1qO2xP-005Rx6-1Y;
+	Mon, 24 Jul 2023 21:19:09 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D4AF661312;
-	Mon, 24 Jul 2023 21:02:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20AADC433C8;
-	Mon, 24 Jul 2023 21:02:38 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id EC41B61411;
+	Mon, 24 Jul 2023 21:19:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1092C433C7;
+	Mon, 24 Jul 2023 21:19:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690232558;
-	bh=0+Srw7lXT1FA8YIDbGu44docy330MM50fqmGEpJ5PiY=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=eF880e10xh6n475OZjp5F/Po8sUNB+6EBgxnJbCsEXZK3RaXYlY+t3JoJzkMC5CUV
-	 TjA2GwYkIaFbjR1iRd1y7TXm/mEDexVUie/0iU3huXUxbyhN26riJMpZt88FNvDvi9
-	 Kcn4MX3KpjJRaA2BATIpZHbS0sqACpdYlP4WIwC5h6aN/paMxhVY/+7BrzUQA+21/g
-	 gcyzj9jR3ZFeArfjNVuNqDSCaXTcvgFcl3deDvxjOawX9gsXagFytQPlAgnZPRDfeP
-	 kYdOd5rTcMWpbV8TEl1op6AUBrzBkzavsxry0ellreSDbh0UxUKUUqvfeB8B1OIsUo
-	 XRipzVZd0M7+Q==
-Received: by mail-lj1-f180.google.com with SMTP id 38308e7fff4ca-2b70404a5a0so70144041fa.2;
-        Mon, 24 Jul 2023 14:02:38 -0700 (PDT)
-X-Gm-Message-State: ABy/qLblEdNVCILaDRCgW7yzbCgVWhsO/9eBbqQx4GM9QZvz5nkI86D3
-	MNlKszLjdvDLOBSg8kRLaMarHq0OT65BIzMM2Q==
-X-Google-Smtp-Source: APBJJlG02/cT58K6TBy2dpTL5aTHIezcfXvz2TD3qAfXrj44uyTbqvpoDx2CALCp5CDzH8HFqOlm6YDCvEHlbpVDOSQ=
-X-Received: by 2002:a2e:924b:0:b0:2b6:e536:a2a3 with SMTP id
- v11-20020a2e924b000000b002b6e536a2a3mr7171152ljg.19.1690232555975; Mon, 24
- Jul 2023 14:02:35 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230723071105.40157-1-krzysztof.kozlowski@linaro.org>
- <20230724162638.GA3784203-robh@kernel.org> <60e7e772-bf0a-264d-abac-4ed72766a2d0@linaro.org>
-In-Reply-To: <60e7e772-bf0a-264d-abac-4ed72766a2d0@linaro.org>
+	s=k20201202; t=1690233546;
+	bh=JGgmPEEqVjTVXg8adHUHdgecWbQUXlBTTTRnprnv5kk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=rrkET7gMGOg/ZuZ8cp373jMYhDGUbFOGq9JaX5tHrPrKy0HN5rkVk1OVzkERgTtOb
+	 jYI8WtSo1fi7fJ3XL+kkxEl1GPt1qglRSzs0HHqUyTOUFqhiLEcmvEyaY1f44QRZBO
+	 DZo33hzMSP7pZLQMdEan4jcqJklHKMvtXpoSkfYlysJbWWLYKskPcKkIwiYp53oQW3
+	 S6G316S1Jo0uBxp0tsI6c/ErBJcb+lrpqOgySWmr6ZvpyAZ9Ec4rqh4K8mCxlKyJEb
+	 chzwNRnRl7egmbxq86yr2+UPhqqXQHhEkODLKJMZyyZKSEaWoGhwdZtWqPANeyW0bK
+	 nJU1I7pxF9IyA==
+Received: (nullmailer pid 805596 invoked by uid 1000);
+	Mon, 24 Jul 2023 21:19:02 -0000
 From: Rob Herring <robh@kernel.org>
-Date: Mon, 24 Jul 2023 15:02:23 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqLwZR_VQEAuhLLqN4BF8Yvh=3vkQe=tFHaKWzJzMMP+qw@mail.gmail.com>
-Message-ID: <CAL_JsqLwZR_VQEAuhLLqN4BF8Yvh=3vkQe=tFHaKWzJzMMP+qw@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: usb: add missing unevaluatedProperties on
- USB connector
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jagan Sridharan <badhri@google.com>, ChiYuan Huang <cy_huang@richtek.com>, Min Guo <min.guo@mediatek.com>, 
-	Gene Chen <gene_chen@richtek.com>, linux-usb@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: Florian Fainelli <florian.fainelli@broadcom.com>, Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, Daniel Golle <daniel@makrotopia.org>, Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Linus Walleij <linus.walleij@linaro.org>, =?UTF-8?q?Alvin=20=C5=A0ipraga?= <alsi@bang-olufsen.dk>, George McCollister <george.mccollister@gmail.com>, Richard Cochran <richardcochran@gmail.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] net: dsa: Explicitly include correct DT includes
+Date: Mon, 24 Jul 2023 15:18:58 -0600
+Message-Id: <20230724211859.805481-1-robh@kernel.org>
+X-Mailer: git-send-email 2.40.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_140240_283774_F32A3DC3 
-X-CRM114-Status: GOOD (  18.62  )
+X-CRM114-CacheID: sfid-20230724_141907_604438_F421AE03 
+X-CRM114-Status: GOOD (  15.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,47 +72,259 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 24, 2023 at 11:05=E2=80=AFAM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->
-> On 24/07/2023 18:26, Rob Herring wrote:
-> > On Sun, Jul 23, 2023 at 09:11:05AM +0200, Krzysztof Kozlowski wrote:
-> >> The usb-connector.yaml schema allows any additional properties, thus i=
-ts
-> >> usage should finish with unevaluatedProperties: false.
-> >
-> > Is it problematic if usb-connector.yaml is restricted?
->
-> Yes, a bit.
-> 1. Missing reg/unit-address:
-> Documentation/devicetree/bindings/usb/cypress,cypd4226.yaml
-> I guess this could be easily solved.
->
-> 2. phy-supply:
-> arch/arm64/boot/dts/marvell/armada-3720-turris-mox.dts
-> (and more of armada)
-> This is a bit odd:
->
-> phy@18300 {
->   compatible =3D "marvell,comphy-a3700";
->   comphy0: phy@0 {}
->   comphy1: phy@1 {}
->   comphy2: phy@2 {
->     connector {
->       compatible =3D "usb-a-connector";
->       phy-supply =3D <&exp_usb3_vbus>;
->    };
-> };
->
-> I would assume that phy-supply should be a property of the phy.
+The DT of_device.h and of_platform.h date back to the separate
+of_platform_bus_type before it as merged into the regular platform bus.
+As part of that merge prepping Arm DT support 13 years ago, they
+"temporarily" include each other. They also include platform_device.h
+and of.h. As a result, there's a pretty much random mix of those include
+files used throughout the tree. In order to detangle these headers and
+replace the implicit includes with struct declarations, users need to
+explicitly include the correct includes.
 
-Indeed. We already have vbus-supply which this looks like it is. I'm
-pretty sure I've seen Vbus in phy bindings too which I've pushed back
-on as to whether Vbus really went to the phy or was there because the
-phy driver just wants to control Vbus.
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+v2:
+ - Split out can, dsa, wireless, phy/pcs to separate patches
+---
+ drivers/net/dsa/b53/b53_mdio.c             | 1 +
+ drivers/net/dsa/b53/b53_mmap.c             | 1 +
+ drivers/net/dsa/hirschmann/hellcreek.c     | 1 -
+ drivers/net/dsa/hirschmann/hellcreek_ptp.c | 1 +
+ drivers/net/dsa/lan9303-core.c             | 1 +
+ drivers/net/dsa/microchip/ksz8863_smi.c    | 3 +++
+ drivers/net/dsa/microchip/ksz_common.c     | 2 +-
+ drivers/net/dsa/mt7530-mmio.c              | 3 ++-
+ drivers/net/dsa/mv88e6xxx/chip.c           | 2 +-
+ drivers/net/dsa/ocelot/felix_vsc9959.c     | 1 +
+ drivers/net/dsa/ocelot/seville_vsc9953.c   | 3 ++-
+ drivers/net/dsa/qca/qca8k-leds.c           | 1 +
+ drivers/net/dsa/realtek/realtek-mdio.c     | 2 +-
+ drivers/net/dsa/realtek/realtek-smi.c      | 1 -
+ drivers/net/dsa/sja1105/sja1105_main.c     | 1 -
+ drivers/net/dsa/vitesse-vsc73xx-core.c     | 1 -
+ drivers/net/dsa/xrs700x/xrs700x.c          | 2 +-
+ 17 files changed, 17 insertions(+), 10 deletions(-)
 
-The marvell platforms aren't in great shape schema wise, so maybe
-don't worry about it now.
+diff --git a/drivers/net/dsa/b53/b53_mdio.c b/drivers/net/dsa/b53/b53_mdio.c
+index 8b422b298cd5..4d55d8d18376 100644
+--- a/drivers/net/dsa/b53/b53_mdio.c
++++ b/drivers/net/dsa/b53/b53_mdio.c
+@@ -19,6 +19,7 @@
+ #include <linux/kernel.h>
+ #include <linux/phy.h>
+ #include <linux/module.h>
++#include <linux/of.h>
+ #include <linux/delay.h>
+ #include <linux/brcmphy.h>
+ #include <linux/rtnetlink.h>
+diff --git a/drivers/net/dsa/b53/b53_mmap.c b/drivers/net/dsa/b53/b53_mmap.c
+index 5db1ed26f03a..5e39641ea887 100644
+--- a/drivers/net/dsa/b53/b53_mmap.c
++++ b/drivers/net/dsa/b53/b53_mmap.c
+@@ -19,6 +19,7 @@
+ #include <linux/bits.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
++#include <linux/of.h>
+ #include <linux/io.h>
+ #include <linux/platform_device.h>
+ #include <linux/platform_data/b53.h>
+diff --git a/drivers/net/dsa/hirschmann/hellcreek.c b/drivers/net/dsa/hirschmann/hellcreek.c
+index af50001ccdd4..720f4e4ed0b0 100644
+--- a/drivers/net/dsa/hirschmann/hellcreek.c
++++ b/drivers/net/dsa/hirschmann/hellcreek.c
+@@ -11,7 +11,6 @@
+ #include <linux/module.h>
+ #include <linux/device.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/of_mdio.h>
+ #include <linux/platform_device.h>
+ #include <linux/bitops.h>
+diff --git a/drivers/net/dsa/hirschmann/hellcreek_ptp.c b/drivers/net/dsa/hirschmann/hellcreek_ptp.c
+index 3e44ccb7db84..5249a1c2a80b 100644
+--- a/drivers/net/dsa/hirschmann/hellcreek_ptp.c
++++ b/drivers/net/dsa/hirschmann/hellcreek_ptp.c
+@@ -9,6 +9,7 @@
+  *	    Kurt Kanzenbach <kurt@linutronix.de>
+  */
+ 
++#include <linux/of.h>
+ #include <linux/ptp_clock_kernel.h>
+ #include "hellcreek.h"
+ #include "hellcreek_ptp.h"
+diff --git a/drivers/net/dsa/lan9303-core.c b/drivers/net/dsa/lan9303-core.c
+index ff76444057d2..02e93559d536 100644
+--- a/drivers/net/dsa/lan9303-core.c
++++ b/drivers/net/dsa/lan9303-core.c
+@@ -8,6 +8,7 @@
+ #include <linux/regmap.h>
+ #include <linux/mutex.h>
+ #include <linux/mii.h>
++#include <linux/of.h>
+ #include <linux/phy.h>
+ #include <linux/if_bridge.h>
+ #include <linux/if_vlan.h>
+diff --git a/drivers/net/dsa/microchip/ksz8863_smi.c b/drivers/net/dsa/microchip/ksz8863_smi.c
+index fd6e2e69a42a..5711a59e2ac9 100644
+--- a/drivers/net/dsa/microchip/ksz8863_smi.c
++++ b/drivers/net/dsa/microchip/ksz8863_smi.c
+@@ -5,6 +5,9 @@
+  * Copyright (C) 2019 Pengutronix, Michael Grzeschik <kernel@pengutronix.de>
+  */
+ 
++#include <linux/mod_devicetable.h>
++#include <linux/property.h>
++
+ #include "ksz8.h"
+ #include "ksz_common.h"
+ 
+diff --git a/drivers/net/dsa/microchip/ksz_common.c b/drivers/net/dsa/microchip/ksz_common.c
+index b18cd170ec06..a91c1a3a70a0 100644
+--- a/drivers/net/dsa/microchip/ksz_common.c
++++ b/drivers/net/dsa/microchip/ksz_common.c
+@@ -18,8 +18,8 @@
+ #include <linux/if_vlan.h>
+ #include <linux/irq.h>
+ #include <linux/irqdomain.h>
++#include <linux/of.h>
+ #include <linux/of_mdio.h>
+-#include <linux/of_device.h>
+ #include <linux/of_net.h>
+ #include <linux/micrel_phy.h>
+ #include <net/dsa.h>
+diff --git a/drivers/net/dsa/mt7530-mmio.c b/drivers/net/dsa/mt7530-mmio.c
+index 1a3d4b692f34..0a6a2fe34e64 100644
+--- a/drivers/net/dsa/mt7530-mmio.c
++++ b/drivers/net/dsa/mt7530-mmio.c
+@@ -1,7 +1,8 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ 
++#include <linux/mod_devicetable.h>
+ #include <linux/module.h>
+-#include <linux/of_platform.h>
++#include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ #include <linux/regulator/consumer.h>
+ #include <linux/reset.h>
+diff --git a/drivers/net/dsa/mv88e6xxx/chip.c b/drivers/net/dsa/mv88e6xxx/chip.c
+index c7d51a539451..8cde36626b79 100644
+--- a/drivers/net/dsa/mv88e6xxx/chip.c
++++ b/drivers/net/dsa/mv88e6xxx/chip.c
+@@ -23,7 +23,7 @@
+ #include <linux/list.h>
+ #include <linux/mdio.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/of_irq.h>
+ #include <linux/of_mdio.h>
+ #include <linux/platform_data/mv88e6xxx.h>
+diff --git a/drivers/net/dsa/ocelot/felix_vsc9959.c b/drivers/net/dsa/ocelot/felix_vsc9959.c
+index 1c113957fcf4..dce3548dcd05 100644
+--- a/drivers/net/dsa/ocelot/felix_vsc9959.c
++++ b/drivers/net/dsa/ocelot/felix_vsc9959.c
+@@ -16,6 +16,7 @@
+ #include <net/pkt_sched.h>
+ #include <linux/iopoll.h>
+ #include <linux/mdio.h>
++#include <linux/of.h>
+ #include <linux/pci.h>
+ #include <linux/time.h>
+ #include "felix.h"
+diff --git a/drivers/net/dsa/ocelot/seville_vsc9953.c b/drivers/net/dsa/ocelot/seville_vsc9953.c
+index 15003b2af264..8f912bda120b 100644
+--- a/drivers/net/dsa/ocelot/seville_vsc9953.c
++++ b/drivers/net/dsa/ocelot/seville_vsc9953.c
+@@ -2,13 +2,14 @@
+ /* Distributed Switch Architecture VSC9953 driver
+  * Copyright (C) 2020, Maxim Kochetkov <fido_max@inbox.ru>
+  */
++#include <linux/platform_device.h>
+ #include <linux/types.h>
+ #include <soc/mscc/ocelot_vcap.h>
+ #include <soc/mscc/ocelot_sys.h>
+ #include <soc/mscc/ocelot.h>
+ #include <linux/mdio/mdio-mscc-miim.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/of_mdio.h>
+-#include <linux/of_platform.h>
+ #include <linux/pcs-lynx.h>
+ #include <linux/dsa/ocelot.h>
+ #include <linux/iopoll.h>
+diff --git a/drivers/net/dsa/qca/qca8k-leds.c b/drivers/net/dsa/qca/qca8k-leds.c
+index 1261e0bb21ef..e8c16e76e34b 100644
+--- a/drivers/net/dsa/qca/qca8k-leds.c
++++ b/drivers/net/dsa/qca/qca8k-leds.c
+@@ -1,4 +1,5 @@
+ // SPDX-License-Identifier: GPL-2.0
++#include <linux/property.h>
+ #include <linux/regmap.h>
+ #include <net/dsa.h>
+ 
+diff --git a/drivers/net/dsa/realtek/realtek-mdio.c b/drivers/net/dsa/realtek/realtek-mdio.c
+index 5a8fe707ca25..4310e7793e58 100644
+--- a/drivers/net/dsa/realtek/realtek-mdio.c
++++ b/drivers/net/dsa/realtek/realtek-mdio.c
+@@ -20,7 +20,7 @@
+  */
+ 
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/overflow.h>
+ #include <linux/regmap.h>
+ 
+diff --git a/drivers/net/dsa/realtek/realtek-smi.c b/drivers/net/dsa/realtek/realtek-smi.c
+index 1b447d96b9c4..c2bd8bb6c9c2 100644
+--- a/drivers/net/dsa/realtek/realtek-smi.c
++++ b/drivers/net/dsa/realtek/realtek-smi.c
+@@ -31,7 +31,6 @@
+ #include <linux/spinlock.h>
+ #include <linux/skbuff.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/of_mdio.h>
+ #include <linux/delay.h>
+ #include <linux/gpio/consumer.h>
+diff --git a/drivers/net/dsa/sja1105/sja1105_main.c b/drivers/net/dsa/sja1105/sja1105_main.c
+index 3529a565b4aa..b74300d38943 100644
+--- a/drivers/net/dsa/sja1105/sja1105_main.c
++++ b/drivers/net/dsa/sja1105/sja1105_main.c
+@@ -15,7 +15,6 @@
+ #include <linux/of.h>
+ #include <linux/of_net.h>
+ #include <linux/of_mdio.h>
+-#include <linux/of_device.h>
+ #include <linux/pcs/pcs-xpcs.h>
+ #include <linux/netdev_features.h>
+ #include <linux/netdevice.h>
+diff --git a/drivers/net/dsa/vitesse-vsc73xx-core.c b/drivers/net/dsa/vitesse-vsc73xx-core.c
+index ef1a4a7c47b2..4f09e7438f3b 100644
+--- a/drivers/net/dsa/vitesse-vsc73xx-core.c
++++ b/drivers/net/dsa/vitesse-vsc73xx-core.c
+@@ -18,7 +18,6 @@
+ #include <linux/module.h>
+ #include <linux/device.h>
+ #include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/of_mdio.h>
+ #include <linux/bitops.h>
+ #include <linux/if_bridge.h>
+diff --git a/drivers/net/dsa/xrs700x/xrs700x.c b/drivers/net/dsa/xrs700x/xrs700x.c
+index fa622639d640..753fef757f11 100644
+--- a/drivers/net/dsa/xrs700x/xrs700x.c
++++ b/drivers/net/dsa/xrs700x/xrs700x.c
+@@ -7,7 +7,7 @@
+ #include <net/dsa.h>
+ #include <linux/etherdevice.h>
+ #include <linux/if_bridge.h>
+-#include <linux/of_device.h>
++#include <linux/of.h>
+ #include <linux/netdev_features.h>
+ #include <linux/if_hsr.h>
+ #include "xrs700x.h"
+-- 
+2.40.1
 
-Rob
 
