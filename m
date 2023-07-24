@@ -4,124 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28AE4C001DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 16:29:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 795EBC001DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 16:59:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UvqRTgPMkZyyUJ/eYLri/dywvbqF1gq/yURWmZL7/6A=; b=L6ZAnoot2uukKYKRO5wMqvJovP
-	YTPmx62fFRVxt6Fhci9KL08ru12fRk9QFFR9YqG4I2tbVPvTET3EU9L0Asw6MSq+t5Kgkm6lI+Hdp
-	mpTNZzYogTDH98AIeJ7NDwvt35Mg+IhLwyzdFtjvUUl+DJFRfZLfwN8MYsfLjgieCklfilgzx/6z4
-	W/ENwZ+gmBhHYhiE2H+4oMtub/8NAU+xwtVNqOxqYN8z8YtCQfpVctInMB6cYwlKxu+/n8VKxabZo
-	mIG0WJBmej8r7Rb6e7gAxu62/+GhM65HwiZucVERe2m7dBnvPlaZf/RIpdjkicVAe3FSWY9PeOB/S
-	jVrk/LTg==;
+	bh=4nkZEjGqKMSg9XiMs6wuEiyuXPT5uFzTR3xSKZPtXrE=; b=AbTLSAqO0dSPRLzH4ENXBnveeU
+	A7+EdC4JgIr0H/qm/VQBkHJyswSHTPEanlIXdngPvgirscu/vBi0VJbtA2q8imKru7LOJs5Do+Xs0
+	qMWhW2dj75kAvcUIbHJIJfZEFTTFTa0PRgW0uIvAU0ZjwzAMPwAVZv4U+HPDWqWWsJrJr6ZF0XsKg
+	cl3RicLEE1le8QvEXk5ZhxCMGzC4aUXEfD01XBnd79rrK+Spdg2koiTyBHO/iwOlckzrK7SIHLdPP
+	VBd1ebCwHHdM0p3y+x7FtCvThCRK8GTA84vGQqttfcPvL+dPEAIFe9RnDIldLA57BeUauDQEmKqlr
+	F9Fqx0nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNyQl-004sgH-2I;
-	Mon, 24 Jul 2023 16:29:07 +0000
-Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
+	id 1qNyuU-004xGn-3B;
+	Mon, 24 Jul 2023 16:59:50 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNyQi-004sfL-2C
+	id 1qNyuS-004xFw-1B
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Jul 2023 16:29:06 +0000
-Received: by mail-qv1-xf30.google.com with SMTP id 6a1803df08f44-63cfd6e3835so7242356d6.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Jul 2023 09:29:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ziepe.ca; s=google; t=1690216142; x=1690820942;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=UvqRTgPMkZyyUJ/eYLri/dywvbqF1gq/yURWmZL7/6A=;
-        b=JTxlLwpY4B+RxCOA0IT7t0KJtuxqOdUcLBueZqYEwWOGw9vBGNalO2vfSLeha3sDww
-         n23Q2fVF4XLsfCIJ7N2XehDqaKBLbFDRIYGVwcF+/T7FO8WCJIaZAFVHoCu1+ADDppdF
-         J9P/yTyeIu5AmCy7TmwinJWEhwXoPIvY6iS4xyJbx11IBdrOHgxK1FhlslIywkd4rYkp
-         okaSM9B557rsg+oZkzb0HeYzVvEpn2XAqbqS5qz2+aMG/7oTJ1rGBYMonxeaOuyrzZNF
-         ondYg2tvzr8bwYJY2FCAZSKUQnd5qWVtvwL/Mlli9wvr3A4647ZiN6lPyW1GLHxw+hpU
-         9CGw==
+	Mon, 24 Jul 2023 16:59:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1690217986;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=4nkZEjGqKMSg9XiMs6wuEiyuXPT5uFzTR3xSKZPtXrE=;
+	b=BUk70JH9iu9c/6pRiwq2AiLpLIZhN28+K8ZxBY2ksmYzl+242Z40prgo+HERqigHinALaz
+	TwnlDyg5Dc3crJ1louBFlO070QUquIUoFGsja9QacAZQaW6gbgC3d9IIfaYCQ2ji02SUOX
+	bc1zujiHnN8Yz8/lqF1BZHkenH+Ruv0=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-166-MG12xJBdOSqefYqVLCNerw-1; Mon, 24 Jul 2023 12:59:45 -0400
+X-MC-Unique: MG12xJBdOSqefYqVLCNerw-1
+Received: by mail-qv1-f72.google.com with SMTP id 6a1803df08f44-63cd05c0415so61271816d6.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Jul 2023 09:59:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690216142; x=1690820942;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=UvqRTgPMkZyyUJ/eYLri/dywvbqF1gq/yURWmZL7/6A=;
-        b=QxgcD7i7TqdhDGkuLAUiS7zDKIqpZsnjbF0cxwFNApzSMLtK+RcugRWejosQUO2qWj
-         2Nw4XTi2uW2D1qJLD9ZanbF4jy7Co27wb6eohvey9PQvbrHcgXZhox6jyAE4HJlQ8XSG
-         Q+Fz6V8sSpIcyGgp19fAReP62Lf+T5CIycRxhTiu4YFp0t4byr08eCrCznyxaYUZ+wT9
-         YJpewtKj4ftS0x/oBU+t55hIEIHmbpXdT689EH8UbMDqKO6O9H8ZcthJhnkoDLy5jrgm
-         tnQva2aiv0RVT9xtuShrj2E1Ey+SxJv88EAmjO/2s57FGbRJhiRw5v7daZ3gNLWk6fcU
-         OF6w==
-X-Gm-Message-State: ABy/qLaTY78AXrxLOahZZIB0SUsUsUyl+8a1Ngs7AioQ1cn1vKhfWj+4
-	AdvJLVxcDP9Bl3uR2R7tdR+0aw==
-X-Google-Smtp-Source: APBJJlEqioDGur2hWJN/oBxGPx39JbASLwLrWEnz70ekshKDJ87a6G6epx0cyhvpPQhxk2uV+XsBHg==
-X-Received: by 2002:a0c:de0a:0:b0:63c:ee13:5adb with SMTP id t10-20020a0cde0a000000b0063cee135adbmr268559qvk.47.1690216141736;
-        Mon, 24 Jul 2023 09:29:01 -0700 (PDT)
-Received: from ziepe.ca (hlfxns017vw-142-68-25-194.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.25.194])
-        by smtp.gmail.com with ESMTPSA id r12-20020a0ccc0c000000b0063003786840sm3659258qvk.99.2023.07.24.09.29.00
+        d=1e100.net; s=20221208; t=1690217984; x=1690822784;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=4nkZEjGqKMSg9XiMs6wuEiyuXPT5uFzTR3xSKZPtXrE=;
+        b=axMCu1KcGYnAPgUC+flOo7slqAtn44RjBMYlQY50PuO3G/sRIakxfhQvHvUHKZPata
+         /JBeT2yA96ULRu2ndQNCE11pDFXKXwn/0Zl6ba3gt3ZZg0vWLRtJBSpp0/O6p7g1N8GM
+         wQZbAxOxFiJ3hNOjsUteQM5tv0Z2wSbYk32ddSGX00SL79MAl785i1jfQ66Hid4MAJTF
+         SCoA6tWUN9C5EVkRaNMC0wJGGzl9c7n76mf5S9B4yr53JORspbk/VvwwquGfzyvkhIuf
+         PXbe6wUv0f0voidNwGcuVEl7U3DyEYUkrDnBKAqAXN4XkSEd1VMVc02vA4Us6c5/pUwp
+         NKDg==
+X-Gm-Message-State: ABy/qLZU/foiW/QWRNVUgBwjVa57e9Brot1AnXQ2mRJPEzNdVD1/mey6
+	Rq2dKq3exxaq371drKMn1AjGXFWdX9h+527LblxQF+aD+lb0z3x98VgHLr/dB/m5eOZXGJ+WdL3
+	96ypo0oCmrOg0TnuClCXBiGYscoqBN295hy4n6yBw
+X-Received: by 2002:a05:6214:4a4d:b0:63c:8afd:7273 with SMTP id ph13-20020a0562144a4d00b0063c8afd7273mr349407qvb.12.1690217984343;
+        Mon, 24 Jul 2023 09:59:44 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFO7x4sJQe6yNcwbJzHDwKetm24F7RG9qQSBeAxMG+DYnqfAzn8WMDsH6icpFD+s4FFI4gTGA==
+X-Received: by 2002:a05:6214:4a4d:b0:63c:8afd:7273 with SMTP id ph13-20020a0562144a4d00b0063c8afd7273mr349393qvb.12.1690217984140;
+        Mon, 24 Jul 2023 09:59:44 -0700 (PDT)
+Received: from brian-x1 (c-73-214-169-22.hsd1.pa.comcast.net. [73.214.169.22])
+        by smtp.gmail.com with ESMTPSA id v14-20020a0cdd8e000000b0062ffcda34c6sm3670040qvk.137.2023.07.24.09.59.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Jul 2023 09:29:00 -0700 (PDT)
-Received: from jgg by wakko with local (Exim 4.95)
-	(envelope-from <jgg@ziepe.ca>)
-	id 1qNyQd-000K2X-UT;
-	Mon, 24 Jul 2023 13:28:59 -0300
-Date: Mon, 24 Jul 2023 13:28:59 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Jesper Dangaard Brouer <jbrouer@redhat.com>
-Cc: Mina Almasry <almasrymina@google.com>, brouer@redhat.com,
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
-	Hari Ramakrishnan <rharix@google.com>,
-	David Ahern <dsahern@kernel.org>,
-	Samiullah Khawaja <skhawaja@google.com>,
-	Willem de Bruijn <willemb@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Christoph Hellwig <hch@lst.de>,
-	John Hubbard <jhubbard@nvidia.com>,
-	Dan Williams <dan.j.williams@intel.com>,
-	Alexander Duyck <alexander.duyck@gmail.com>,
-	Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
-	pabeni@redhat.com, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Yisen Zhuang <yisen.zhuang@huawei.com>,
-	Salil Mehta <salil.mehta@huawei.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Sunil Goutham <sgoutham@marvell.com>,
-	Geetha sowjanya <gakula@marvell.com>,
-	Subbaraya Sundeep <sbhatta@marvell.com>,
-	hariprasad <hkelam@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>,
-	Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jesper Dangaard Brouer <hawk@kernel.org>,
-	Ilias Apalodimas <ilias.apalodimas@linaro.org>,
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Jonathan Lemon <jonathan.lemon@gmail.com>, logang@deltatee.com,
-	Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
- page_pool: remove PP_FLAG_PAGE_FRAG flag)
-Message-ID: <ZL6my550xedf/L0Z@ziepe.ca>
-References: <20230711133915.03482fdc@kernel.org>
- <2263ae79-690e-8a4d-fca2-31aacc5c9bc6@kernel.org>
- <CAHS8izP=k8CqUZk7bGUx4ctm4m2kRC2MyEJv+N4+b0cHVkTQmA@mail.gmail.com>
- <ZK6kOBl4EgyYPtaD@ziepe.ca>
- <CAHS8izNuda2DXKTFAov64F7J2_BbMPaqJg1NuMpWpqGA20+S_Q@mail.gmail.com>
- <143a7ca4-e695-db98-9488-84cf8b78cf86@amd.com>
- <CAHS8izPm6XRS54LdCDZVd0C75tA1zHSu6jLVO8nzTLXCc=H7Nw@mail.gmail.com>
- <ZLFv2PIgdeH8gKmh@ziepe.ca>
- <CAHS8izNMB-H3w0CE9kj6hT5q_F6_XJy_X_HtZwmisOEDhp31yg@mail.gmail.com>
- <a2569132-393e-0149-f76c-f6de282e1c96@redhat.com>
+        Mon, 24 Jul 2023 09:59:43 -0700 (PDT)
+Date: Mon, 24 Jul 2023 12:59:42 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Mukesh Ojha <quic_mojha@quicinc.com>
+Cc: linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	lkml <linux-kernel@vger.kernel.org>,
+	Trilok Soni <quic_tsoni@quicinc.com>,
+	"open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: Feedback on Qualcomm's minidump (debug) solution for end user
+ device crash
+Message-ID: <ZL6t/sZTZBfvSYOm@brian-x1>
+References: <0199db00-1b1d-0c63-58ff-03efae02cb21@quicinc.com>
 MIME-Version: 1.0
+In-Reply-To: <0199db00-1b1d-0c63-58ff-03efae02cb21@quicinc.com>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <a2569132-393e-0149-f76c-f6de282e1c96@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_092904_884576_47BC1653 
-X-CRM114-Status: UNSURE (   8.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230724_095948_498976_0DD88A9F 
+X-CRM114-Status: GOOD (  14.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,25 +103,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 24, 2023 at 04:56:27PM +0200, Jesper Dangaard Brouer wrote:
++ linux-arm-kernel list
 
-> These massive throughput numbers are important, because they *exceed*
-> the physical host RAM/DIMM memory speeds.
+On Thu, Jul 20, 2023 at 08:32:24PM +0530, Mukesh Ojha wrote:
+> Hi Samsung/MTK/Any other SOC vendors,
+> 
+> This is to bring to your notice that, we (Qualcomm) are working on
+> upstreaming our minidump solution which is to address the problem of
+> debugging on field device crashes where collecting entire ddr dump
+> would not be feasible and collecting minimal data from the ddr would
+> help in debug direction or even help in root causing issue.
+> 
+> We have recently posted v4 version here [1]
+> 
+> Based on comments[2], community is more worried about, if each SOC
+> vendor come up with their own dumping method today or in future and
+> whether it can have a common solution to a similar problem faced by
+> other SOC vendor.
+> 
+> We wanted to take your feedback if you also encounter a similar problem
+> or maintain something similar solution in downstream which can be
+> upstreamed. This will help us in a way to have a common solution in
+> upstream.
+> 
+> [1]
+> https://lore.kernel.org/lkml/10dd2ead-758a-89f0-cda4-70ae927269eb@quicinc.com/
+> 
+> [2]
+> https://lore.kernel.org/lkml/CAL_JsqLO9yey2-4FcWsaGxijiS6hGL0SH9VoMuiyei-u9=Cv=w@mail.gmail.com/
 
-That's right, this HW is all designed to use the high memory bandwidth
-of the parallel GPUs. The CPU must not be involved in the data
-movement.
+Adding the main ARM list to solicit feedback from other silicon
+manufacturers.
 
-If you look at the reference block diagrams for a DGX-H100 you can see
-that the each GPU is directly wired to a 400Gb/s NIC, and there is
-even software that allows the GPU to directly operate its attached
-NIC interface.
+The cover sheet on the v4 patch set is available at:
+https://lore.kernel.org/lkml/1687955688-20809-1-git-send-email-quic_mojha@quicinc.com/
 
-Each of the 8 GPUs in the block diagram has 800 Gb/s full duplex RDMA,
-and 7200 Gb/sec full duplex on the nvlink interconnect directly
-connected to it.
+Brian
 
-The GPU is the center of all the interconnect in these systems.
-
-Jason
 
