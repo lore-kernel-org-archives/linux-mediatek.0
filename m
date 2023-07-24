@@ -4,91 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 795EBC001DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 16:59:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F23EC001B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Jul 2023 17:05:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4nkZEjGqKMSg9XiMs6wuEiyuXPT5uFzTR3xSKZPtXrE=; b=AbTLSAqO0dSPRLzH4ENXBnveeU
-	A7+EdC4JgIr0H/qm/VQBkHJyswSHTPEanlIXdngPvgirscu/vBi0VJbtA2q8imKru7LOJs5Do+Xs0
-	qMWhW2dj75kAvcUIbHJIJfZEFTTFTa0PRgW0uIvAU0ZjwzAMPwAVZv4U+HPDWqWWsJrJr6ZF0XsKg
-	cl3RicLEE1le8QvEXk5ZhxCMGzC4aUXEfD01XBnd79rrK+Spdg2koiTyBHO/iwOlckzrK7SIHLdPP
-	VBd1ebCwHHdM0p3y+x7FtCvThCRK8GTA84vGQqttfcPvL+dPEAIFe9RnDIldLA57BeUauDQEmKqlr
-	F9Fqx0nA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r/1LJDLgyxtYwLLVQ7MqhyHlHTh4bPkUiDIcho+GZfM=; b=Nzpr5yoc1+u2EINU/CKRJcRaaz
+	jW1zDMVRR5uHHiJPcpkG0U0LSQoRwiQFJRzXZ6gxDRlHjFE/+wV8TC2VXRoTbXGMEGNKsTIECZren
+	6ISpmbdskWvuMEEQ7BeowO4SqLe2eaf+JT6DN/++mF/vDSfIblH6T4nZULUT8Une8cs7N+EiwS8kb
+	XH8gzoLvM8KDXb5w/xL7Q6Lj7FYgqbB8AQ0lob/zdBUDd81kgs4ufz78BvJRk2OXkbGVC6Xgxe3Sa
+	JZ23048pDZkSq7HgO/XLQJ9z1Eldy6TX6URurVoOfeUDSl5jbP+NsOVw4/1NhZYB5r3wt0EGkdOlJ
+	bHF0CHMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNyuU-004xGn-3B;
-	Mon, 24 Jul 2023 16:59:50 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1qNz0F-004y5y-1H;
+	Mon, 24 Jul 2023 17:05:47 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qNyuS-004xFw-1B
+	id 1qNz0C-004y4k-0d
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Jul 2023 16:59:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1690217986;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=4nkZEjGqKMSg9XiMs6wuEiyuXPT5uFzTR3xSKZPtXrE=;
-	b=BUk70JH9iu9c/6pRiwq2AiLpLIZhN28+K8ZxBY2ksmYzl+242Z40prgo+HERqigHinALaz
-	TwnlDyg5Dc3crJ1louBFlO070QUquIUoFGsja9QacAZQaW6gbgC3d9IIfaYCQ2ji02SUOX
-	bc1zujiHnN8Yz8/lqF1BZHkenH+Ruv0=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-166-MG12xJBdOSqefYqVLCNerw-1; Mon, 24 Jul 2023 12:59:45 -0400
-X-MC-Unique: MG12xJBdOSqefYqVLCNerw-1
-Received: by mail-qv1-f72.google.com with SMTP id 6a1803df08f44-63cd05c0415so61271816d6.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Jul 2023 09:59:45 -0700 (PDT)
+	Mon, 24 Jul 2023 17:05:45 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-992dcae74e0so770775766b.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Jul 2023 10:05:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1690218340; x=1690823140;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=r/1LJDLgyxtYwLLVQ7MqhyHlHTh4bPkUiDIcho+GZfM=;
+        b=oqaIWLHBsBokwzA8MU+vTILFZrNZ6gabOBrfMq5TqHeSuEGcOEG8pjJxJhmUcCmP2A
+         RX+9KSZzq0KUfvi1SqYUjU4rqMKnHfAIpv00i5Z4VlDfx8qZJ74b/FVlZDIex9Zy4M7f
+         bt7La3JPALRHslMF4UJNLDeC3p2mmD3XN9+c5l4lvvIG26LdD/pxyKBcxwGbiV7/ltwz
+         VivBiO4h5xsYHke9MNNmaH4cBH+8SAohDxQ3JcBGSiUfKyYY/6E63fxUyrLpnP5gIlqx
+         lS4/RGpo4UCYHxC4Ljczy7g+AI9odUzxdAILOVqY+2Y95pXeaTLBbHIKj6ElsdFoQN3k
+         lZNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690217984; x=1690822784;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=4nkZEjGqKMSg9XiMs6wuEiyuXPT5uFzTR3xSKZPtXrE=;
-        b=axMCu1KcGYnAPgUC+flOo7slqAtn44RjBMYlQY50PuO3G/sRIakxfhQvHvUHKZPata
-         /JBeT2yA96ULRu2ndQNCE11pDFXKXwn/0Zl6ba3gt3ZZg0vWLRtJBSpp0/O6p7g1N8GM
-         wQZbAxOxFiJ3hNOjsUteQM5tv0Z2wSbYk32ddSGX00SL79MAl785i1jfQ66Hid4MAJTF
-         SCoA6tWUN9C5EVkRaNMC0wJGGzl9c7n76mf5S9B4yr53JORspbk/VvwwquGfzyvkhIuf
-         PXbe6wUv0f0voidNwGcuVEl7U3DyEYUkrDnBKAqAXN4XkSEd1VMVc02vA4Us6c5/pUwp
-         NKDg==
-X-Gm-Message-State: ABy/qLZU/foiW/QWRNVUgBwjVa57e9Brot1AnXQ2mRJPEzNdVD1/mey6
-	Rq2dKq3exxaq371drKMn1AjGXFWdX9h+527LblxQF+aD+lb0z3x98VgHLr/dB/m5eOZXGJ+WdL3
-	96ypo0oCmrOg0TnuClCXBiGYscoqBN295hy4n6yBw
-X-Received: by 2002:a05:6214:4a4d:b0:63c:8afd:7273 with SMTP id ph13-20020a0562144a4d00b0063c8afd7273mr349407qvb.12.1690217984343;
-        Mon, 24 Jul 2023 09:59:44 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFO7x4sJQe6yNcwbJzHDwKetm24F7RG9qQSBeAxMG+DYnqfAzn8WMDsH6icpFD+s4FFI4gTGA==
-X-Received: by 2002:a05:6214:4a4d:b0:63c:8afd:7273 with SMTP id ph13-20020a0562144a4d00b0063c8afd7273mr349393qvb.12.1690217984140;
-        Mon, 24 Jul 2023 09:59:44 -0700 (PDT)
-Received: from brian-x1 (c-73-214-169-22.hsd1.pa.comcast.net. [73.214.169.22])
-        by smtp.gmail.com with ESMTPSA id v14-20020a0cdd8e000000b0062ffcda34c6sm3670040qvk.137.2023.07.24.09.59.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Jul 2023 09:59:43 -0700 (PDT)
-Date: Mon, 24 Jul 2023 12:59:42 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Mukesh Ojha <quic_mojha@quicinc.com>
-Cc: linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	lkml <linux-kernel@vger.kernel.org>,
-	Trilok Soni <quic_tsoni@quicinc.com>,
-	"open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: Feedback on Qualcomm's minidump (debug) solution for end user
- device crash
-Message-ID: <ZL6t/sZTZBfvSYOm@brian-x1>
-References: <0199db00-1b1d-0c63-58ff-03efae02cb21@quicinc.com>
+        d=1e100.net; s=20221208; t=1690218340; x=1690823140;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=r/1LJDLgyxtYwLLVQ7MqhyHlHTh4bPkUiDIcho+GZfM=;
+        b=UlqLwp+SeXdVRTVKQRbF3IOuFZdp81pxNFWU/nlHtEpZo9eHlTnBjomQJEfcr+FZFc
+         IXpDYsHJs5qXGMSflVKzxDq43fLxFSaHAm8a80VDVmMs6u36f6LIVIjlb3YP6U02ty+K
+         oVBX4Ow/g3dg+fu7MqIof5xpCsL9zQ7I/3szKhaTuEY4FEROr+vxS4HBer7w6iQy67nn
+         ijp7kQEIw6Hnqm82Fnm4xjLTXFrbgs7AcG2vadhXE3puROC1+9FDRzYiOYVK1ihoqVai
+         F1eqhuQVUV1/7PJVsOnGY88/yP9pgheR8CQIuNTnkUGKqm4MmetuD02yXpmYAwQllBZG
+         8/Zg==
+X-Gm-Message-State: ABy/qLbJJneuHNlymS3sh0pr19Yv63gZbbj9a346JYJJFQ2PiAE9FrCj
+	/nwVV9vXAs62haqrR/odwbCfcA==
+X-Google-Smtp-Source: APBJJlHwPcKTKIL8LVd0DfZgwQQ01hah+RbyGAamj9A4ipk0zwj2sUnqzG9iAqwMWQ1mO1hBmRf/Yw==
+X-Received: by 2002:a17:907:2e0b:b0:96b:e93:3aa8 with SMTP id ig11-20020a1709072e0b00b0096b0e933aa8mr9577637ejc.21.1690218340090;
+        Mon, 24 Jul 2023 10:05:40 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.223.104])
+        by smtp.gmail.com with ESMTPSA id qc12-20020a170906d8ac00b0098866a94f14sm6974227ejb.125.2023.07.24.10.05.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 24 Jul 2023 10:05:24 -0700 (PDT)
+Message-ID: <60e7e772-bf0a-264d-abac-4ed72766a2d0@linaro.org>
+Date: Mon, 24 Jul 2023 19:05:03 +0200
 MIME-Version: 1.0
-In-Reply-To: <0199db00-1b1d-0c63-58ff-03efae02cb21@quicinc.com>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH] dt-bindings: usb: add missing unevaluatedProperties on
+ USB connector
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jagan Sridharan <badhri@google.com>, ChiYuan Huang <cy_huang@richtek.com>,
+ Min Guo <min.guo@mediatek.com>, Gene Chen <gene_chen@richtek.com>,
+ linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230723071105.40157-1-krzysztof.kozlowski@linaro.org>
+ <20230724162638.GA3784203-robh@kernel.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230724162638.GA3784203-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_095948_498976_0DD88A9F 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20230724_100544_242234_6C0C8B1B 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,41 +104,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-+ linux-arm-kernel list
+On 24/07/2023 18:26, Rob Herring wrote:
+> On Sun, Jul 23, 2023 at 09:11:05AM +0200, Krzysztof Kozlowski wrote:
+>> The usb-connector.yaml schema allows any additional properties, thus its
+>> usage should finish with unevaluatedProperties: false.
+> 
+> Is it problematic if usb-connector.yaml is restricted?
 
-On Thu, Jul 20, 2023 at 08:32:24PM +0530, Mukesh Ojha wrote:
-> Hi Samsung/MTK/Any other SOC vendors,
-> 
-> This is to bring to your notice that, we (Qualcomm) are working on
-> upstreaming our minidump solution which is to address the problem of
-> debugging on field device crashes where collecting entire ddr dump
-> would not be feasible and collecting minimal data from the ddr would
-> help in debug direction or even help in root causing issue.
-> 
-> We have recently posted v4 version here [1]
-> 
-> Based on comments[2], community is more worried about, if each SOC
-> vendor come up with their own dumping method today or in future and
-> whether it can have a common solution to a similar problem faced by
-> other SOC vendor.
-> 
-> We wanted to take your feedback if you also encounter a similar problem
-> or maintain something similar solution in downstream which can be
-> upstreamed. This will help us in a way to have a common solution in
-> upstream.
-> 
-> [1]
-> https://lore.kernel.org/lkml/10dd2ead-758a-89f0-cda4-70ae927269eb@quicinc.com/
-> 
-> [2]
-> https://lore.kernel.org/lkml/CAL_JsqLO9yey2-4FcWsaGxijiS6hGL0SH9VoMuiyei-u9=Cv=w@mail.gmail.com/
+Yes, a bit.
+1. Missing reg/unit-address:
+Documentation/devicetree/bindings/usb/cypress,cypd4226.yaml
+I guess this could be easily solved.
 
-Adding the main ARM list to solicit feedback from other silicon
-manufacturers.
+2. phy-supply:
+arch/arm64/boot/dts/marvell/armada-3720-turris-mox.dts
+(and more of armada)
+This is a bit odd:
 
-The cover sheet on the v4 patch set is available at:
-https://lore.kernel.org/lkml/1687955688-20809-1-git-send-email-quic_mojha@quicinc.com/
+phy@18300 {
+  compatible = "marvell,comphy-a3700";
+  comphy0: phy@0 {}
+  comphy1: phy@1 {}
+  comphy2: phy@2 {
+    connector {
+      compatible = "usb-a-connector";
+      phy-supply = <&exp_usb3_vbus>;
+   };
+};
 
-Brian
+I would assume that phy-supply should be a property of the phy.
+
+Best regards,
+Krzysztof
 
 
