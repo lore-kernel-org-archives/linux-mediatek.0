@@ -4,77 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACFCAC0015E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 09:55:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D710AC001DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 09:58:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yPZv3tM9vTtpWd34AkCCKWUdpVmNx/aOuZOzG2VcV74=; b=WuJHlzhKMLKARc1pMc7Bu0kA37
-	4E/gLRjDdmNaMmHcVXHQfe7VUQJIRrSp30+wxJNDTa2InH5CeXf5LhPIsUoszi9PTs/VmF5gGzf4v
-	+Tj0EuVphDAKsbuZfS+t3e14snrB2wxRVYGeRtwUlmBXS/dYRmzdpTWDR6IDI38xd5RF9N88wBIWv
-	gMLHdovveIl9mWqN3cgSBbX65OSwyIv0OmKSj+X3mz2OlGXFxCrWhym2Rck7AezMGAWSZTrj23m8Y
-	gpwiOLXRKiLomoGXtIIHRyr4uZ8xeykAwqp6Rfi2Elcq7wErQB7gMcNRgDnv3iQZhd0AD1SF3ui6A
-	pwk0Anlw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MsvSIGmmmwYIGUJNstXA/HbwqeFbbYONBIDrb2ff1OA=; b=F0nB3PgCK2erP+L71Oh+nR3yUF
+	YCLjfYR82tg5TwNnxe7IVCtTxksJvKnmbZJHrWLay67cGV2KholXYf5DpbDALe1chysvdoRGA0bQY
+	s9qMacafz3jpFJtNARF0d9X9xLhScsfhuXmoJAFRiXBsuAJCatfJUArihCx5AbeFzT9/bhRXNvspR
+	LoNyBRZjbKXFkfN+SZIFhkKhzqWZQyc5aB7eYBBIJvg47ROHd7c9+luS771DxvAsSZgSbgBv0Dqcn
+	dEyuR0s4vu8WpLr9rvSr4yovxUjBn1CfacYpee+JkElMBWVGl5tYV90UEl02IqUTc9HdmfcOOXO/1
+	5K83NIMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOEli-0070fx-1V;
-	Tue, 25 Jul 2023 09:55:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qOEoY-0071Ic-1K;
+	Tue, 25 Jul 2023 09:58:46 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOElf-0070eq-1e;
-	Tue, 25 Jul 2023 09:55:49 +0000
-X-UUID: 6888f23a2ad111ee912e1518a6540028-20230725
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=yPZv3tM9vTtpWd34AkCCKWUdpVmNx/aOuZOzG2VcV74=;
-	b=r2NxIXm8d7FUY+Nyld7O5AzqQjHDZ6hIX0c+G1WwpEfMiiUxWmCkSIOPDzJWExF2/+gdoL9BaeXCyAj2SOnFsjmbxKhII/uZQct7ZG52cRk38a/HSBmUhTotz2q+MCZUaeTXdYRMIUKVWwUZsucyvQbDlzZc8oHnDOBI0FUKcUA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.29,REQID:fcf75e59-db8a-4c80-b36a-bf95183da962,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7562a7,CLOUDID:114a6e42-d291-4e62-b539-43d7d78362ba,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 6888f23a2ad111ee912e1518a6540028-20230725
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <kuan-ying.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1047767663; Tue, 25 Jul 2023 02:55:38 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 25 Jul 2023 17:35:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 25 Jul 2023 17:35:34 +0800
-From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-To: Jan Kiszka <jan.kiszka@siemens.com>, Kieran Bingham <kbingham@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <chinwen.chang@mediatek.com>, <qun-wei.lin@mediatek.com>,
-	<linux-mm@kvack.org>, <linux-modules@vger.kernel.org>,
-	<casper.li@mediatek.com>, <akpm@linux-foundation.org>,
-	<linux-arm-kernel@lists.infradead.org>, Kuan-Ying Lee
-	<Kuan-Ying.Lee@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH 5/8] scripts/gdb/stackdepot: Add stackdepot support
-Date: Tue, 25 Jul 2023 17:34:55 +0800
-Message-ID: <20230725093458.30064-6-Kuan-Ying.Lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230725093458.30064-1-Kuan-Ying.Lee@mediatek.com>
-References: <20230725093458.30064-1-Kuan-Ying.Lee@mediatek.com>
+	id 1qOEoU-0071HZ-0C;
+	Tue, 25 Jul 2023 09:58:44 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 8B4FA615E3;
+	Tue, 25 Jul 2023 09:58:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F016AC433C7;
+	Tue, 25 Jul 2023 09:58:37 +0000 (UTC)
+Message-ID: <231e9976-93fe-b8b1-29d9-6c799a8e6a3a@xs4all.nl>
+Date: Tue, 25 Jul 2023 11:58:36 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v7,0/11] media: mediatek: vcodec: separate encoder and
+ decoder
+Content-Language: en-US
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230722074230.30558-1-yunfei.dong@mediatek.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230722074230.30558-1-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230725_025547_704548_492B5578 
-X-CRM114-Status: GOOD (  15.42  )
+X-CRM114-CacheID: sfid-20230725_025842_188399_50675763 
+X-CRM114-Status: GOOD (  19.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,98 +76,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for printing the backtrace of stackdepot handle.
+On 22/07/2023 09:42, Yunfei Dong wrote:
+> From: Yunfei Dong <yunfei.dong@mediatek.corp-partner.google.com>
+> 
+> With the driver more and more complex, encoder and decoder need to add more parameter
+> in shared struct 'mtk_vcodec_ctx' and 'mtk_vcodec_dev'. Encoder use about 40% and
+> decoder use 60% parameter. Need to allocate extra unused memory when encoder and decoder
+> working.
+> 
+> Separate encoder and decoder in different folder and use independent data struct.
+> 
+> patch 1 remove unused parameter.
+> patch 2~3 align fw and interrupt related interface.
+> patch 4~6 remove the dependency of debug log
+> patch 7~8 separate mtk_vcodec_ctx and mtk_vcodec_dev
+> patch 9 fix unreasonable parameter
+> patch 10 removed unused header files
+> patch 11 separate encoder and decoder in different folder
+> ---
+> Changed from v6:
+> - rebase to: https://git.linuxtv.org/hverkuil/media_tree.git/log/?h=fo-v6.6g.
+> Changed from v5:
+> - fix some words error for patch 3/6/11.
+> - rename mtk_vcodec_comm_drv.h to mtk_vcodec_cmn_drv.h for patch 7.
+> Changed from v4:
+> - add one parameter to record register base for reg_base for patch 3.
+> - add debug string for non ctx log for patch 6.
+> - change the comment of struct mtk_vcodec_dec_ctx and struct mtk_vcodec_enc_ctx for patch 7.
+> - prefer to use struct mtk_vcodec_dec_dev an current period, will re-construct in the future for patch 8.
+> Changed from v3:
+> - re-write commit message for patch 3.
+> Changed from v2:
+> - This patch main changed:
+>   1: add different macro mtk_dec_debug and mtk_enc_debug calling common
+>      macro mtk_vcodec_debug in order to use dev_dbg instead of pr_debug.
+>   2: add different macro mtk_v4l2_venc_dbg and mtk_v4l2_vdec_dbg calling common
+>      macro  in order to use dev_dbg instead of pr_debug.
+> Changed from v1:
+> - Change pr_dbg to dev_dbg for mtk_v4l2_level and mtk_vcodec_dbg for patch 4.
+> - Change pr_err to dev_err for mtk_v4l2_err and mtk_vcodec_err for patch 5.
+> - Fix unreasonable parameter for patch 8.
+> ---
+> Yunfei Dong (11):
+>   media: mediatek: vcodec: remove unused parameter
+>   media: mediatek: vcodec: align fw interface
+>   media: mediatek: vcodec: Removing struct 'mtk_vcodec_ctx/dev' for
+>     shared interface
+>   media: mediatek: vcodec: Removing useless debug log
+>   media: mediatek: vcodec: remove the dependency of vcodec debug log
+>   media: mediatek: vcodec: replace pr_* with dev_* for v4l2 debug
+>     message
+>   media: mediatek: vcodec: separate struct 'mtk_vcodec_ctx'
+>   media: mediatek: vcodec: separate struct mtk_vcodec_dev
+>   media: mediatek: vcodec: fix unreasonable parameter definition and
+>     style
+>   media: mediatek: vcodec: remove unused include header
+>   media: mediatek: vcodec: separate decoder and encoder
 
-This is the preparation patch for dumping page_owner,
-slabtrace usage.
+Besides the missing argument in patch 6/11 I also get this compiler warning:
 
-Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
----
- scripts/gdb/linux/constants.py.in |  1 +
- scripts/gdb/linux/stackdepot.py   | 54 +++++++++++++++++++++++++++++++
- scripts/gdb/vmlinux-gdb.py        |  1 +
- 3 files changed, 56 insertions(+)
- create mode 100644 scripts/gdb/linux/stackdepot.py
+drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c: In function 'vpu_enc_ipi_handler':
+drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c:64:31: warning: 'vpu' may be used uninitialized [-Wmaybe-uninitialized]
+   64 |         struct venc_vpu_inst *vpu;
+      |                               ^~~
 
-diff --git a/scripts/gdb/linux/constants.py.in b/scripts/gdb/linux/constants.py.in
-index 7c44222bbf23..ec88c9affdd2 100644
---- a/scripts/gdb/linux/constants.py.in
-+++ b/scripts/gdb/linux/constants.py.in
-@@ -133,3 +133,4 @@ LX_CONFIG(CONFIG_VMAP_STACK)
- if IS_BUILTIN(CONFIG_NUMA):
-     LX_VALUE(CONFIG_NODES_SHIFT)
- LX_CONFIG(CONFIG_DEBUG_VIRTUAL)
-+LX_CONFIG(CONFIG_STACKDEPOT)
-diff --git a/scripts/gdb/linux/stackdepot.py b/scripts/gdb/linux/stackdepot.py
-new file mode 100644
-index 000000000000..03b5eb19f056
---- /dev/null
-+++ b/scripts/gdb/linux/stackdepot.py
-@@ -0,0 +1,54 @@
-+# SPDX-License-Identifier: GPL-2.0
-+#
-+# Copyright (c) 2023 MediaTek Inc.
-+#
-+# Authors:
-+#  Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-+#
-+
-+import gdb
-+from linux import utils, constants
-+
-+stack_record_type = utils.CachedType('struct stack_record')
-+DEPOT_STACK_ALIGN = 4
-+
-+def stack_depot_fetch(handle):
-+    global DEPOT_STACK_ALIGN
-+    global stack_record_type
-+
-+    stack_depot_disabled = gdb.parse_and_eval('stack_depot_disabled')
-+
-+    if stack_depot_disabled:
-+        raise gdb.GdbError("stack_depot_disabled\n")
-+
-+    handle_parts_t = gdb.lookup_type("union handle_parts")
-+    parts = handle.cast(handle_parts_t)
-+    offset = parts['offset'] << DEPOT_STACK_ALIGN
-+    pool_index_cached = gdb.parse_and_eval('pool_index')
-+
-+    if parts['pool_index'] > pool_index_cached:
-+        gdb.write("pool index %d out of bounds (%d) for stack id 0x%08x\n" % (parts['pool_index'], pool_index_cached, handle))
-+        return gdb.Value(0), 0
-+
-+    stack_pools = gdb.parse_and_eval('stack_pools')
-+
-+    try:
-+        pool = stack_pools[parts['pool_index']]
-+        stack = (pool + gdb.Value(offset).cast(utils.get_size_t_type())).cast(stack_record_type.get_type().pointer())
-+        size = int(stack['size'].cast(utils.get_ulong_type()))
-+        return stack['entries'], size
-+    except Exception as e:
-+        gdb.write("%s\n" % e)
-+        return gdb.Value(0), 0
-+
-+def stack_depot_print(handle):
-+    if not constants.LX_CONFIG_STACKDEPOT:
-+        raise gdb.GdbError("CONFIG_STACKDEPOT is not enabled")
-+
-+    entries, nr_entries = stack_depot_fetch(handle)
-+    if nr_entries > 0:
-+        for i in range(0, nr_entries):
-+            try:
-+                gdb.execute("x /i 0x%x" % (int(entries[i])))
-+            except Exception as e:
-+                gdb.write("%s\n" % e)
-diff --git a/scripts/gdb/vmlinux-gdb.py b/scripts/gdb/vmlinux-gdb.py
-index fd24574bcec9..24f149694b81 100644
---- a/scripts/gdb/vmlinux-gdb.py
-+++ b/scripts/gdb/vmlinux-gdb.py
-@@ -45,3 +45,4 @@ else:
-     import linux.radixtree
-     import linux.interrupts
-     import linux.mm
-+    import linux.stackdepot
--- 
-2.18.0
+and this smatch error:
 
+drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c:138 mtk_vcodec_get_reg_bases() error: buffer overflow 'mtk_dec_reg_names' 11 <= 11
+
+However, I believe that was introduced by Nicolas' patch series.
+
+I'll try to pinpoint the precise patch.
+
+Regards,
+
+	Hans
 
