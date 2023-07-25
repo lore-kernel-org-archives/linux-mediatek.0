@@ -4,70 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50648C41513
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 20:44:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D009EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 21:12:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2BVWzhm385pmpQxclrdIFUUD3T4d2Dvi7eurxunpAts=; b=C9oQkU/pq5Ryr69OtqLq1c3NGh
-	rfGgBY0dyGmMk58OYJZbSxEHBxFmtfGRm50DXwTQKRNlsVXTnQlKRag4YvBtL0Ux/7IVlUgvDXrZk
-	7yPM4WWYbnkjXjOdPYn/3O/8zXVif8Mj+QfRrEivaTyC9qxAS0cmtH1ekGGcnUPpVFxiNMvpG3aif
-	Cwws/dEbaqFSvCSdfZXVxrrYEFagHhTh7uxLP1g283hD8fd0E9d/IYh7pIMZs2w/F8CgqLgEgwhQO
-	qJs4xPjPr4tAf7o1s6Q8gH92JdZB4/bla6f2wnvYFeYFUk+UcKU0ROVPA40kyFV/mQv+svmhknd5o
-	cUawKxyw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q2QDLzi9+YF0NoCFk8x0Z498RmWmOmi60z+45b3Pngo=; b=hAvoZDKr2TydUZK3bdg84/Jhwb
+	Wk9XBiE9wz5XrRm6xfd4Fw8JsSywyEaYA9nJSuMUAuSS6p1ye6HzeLGaBSRd4E95g7NduMCjS5IUp
+	xZ+p8zKMNCmbOqAa6qospT2ef88iRNuZFi5iNL6YYaa1HPTiCJkeOWL6tmgoUQeXLHimfYn0Elh9j
+	VzCz7Kxq+mYDRp+RI26UYKr6U92zirZH2zIASljSMPDA0kpeJ45Gno9hqd/o2XPY6mQkvnsOPlGxm
+	m6CY0QnVK6etse4bhNtKDsyVnEBvKmM9V3OL+nFLaX6dWW78PxYgSbrcQVpeCyR0UH8nRq9CbMmbB
+	LKeObLMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOOtG-008SwP-0h;
-	Tue, 25 Jul 2023 20:44:18 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qOPKY-008VzD-2I;
+	Tue, 25 Jul 2023 21:12:30 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOOtD-008Svm-1F;
-	Tue, 25 Jul 2023 20:44:16 +0000
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	id 1qOPKV-008VyJ-1h;
+	Tue, 25 Jul 2023 21:12:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 65EAE6606EEE;
-	Tue, 25 Jul 2023 21:44:12 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1690317854;
-	bh=l0QdiZLVFikXd6djh9oMfl+C2ChjeqPpqf7ac5R2fis=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=it21CKyA7WekFPItXvp7zTV3pDdq7MTw11C+d6Is0wunsHAzgQejIaLMW1dys51cx
-	 +OfSQ7YlmutsGoj53fpg/NrFVhxHMK34h8dJBprpBewiLkzYVFrv6FL44P9pehWXUq
-	 KoxEtTIKIkHDt3tmM0EjxGGmrDM8b0etKHAWFyHf3oGkbKQ9l9p4IruVoUCtDavvbm
-	 jPSTj2Yx2jLAbDstlibyw3qu+WxzlZfaw5oHtFeOZnQ63BAP1cB7zdy7PD5VoRIIOS
-	 SR16Wuo4/DxpM8rSzTNHgsZsewEfLoGqqDYAfNuaB4Wmnru+cRqQ43MTGyLOFFsHJj
-	 o8FxFs63Pw7UA==
-Date: Tue, 25 Jul 2023 16:44:08 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v5 5/7] media: mediatek: vcodec: Read HW active status
- from syscon
-Message-ID: <b5ba26b8-7c03-4ead-97ff-8ee3ae0efa26@notapiano>
-References: <20230630151436.155586-1-nfraprado@collabora.com>
- <20230630151436.155586-6-nfraprado@collabora.com>
- <b5fd2dff-14a5-3ad8-9698-d1a50f4516fa@xs4all.nl>
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0D81D6190B;
+	Tue, 25 Jul 2023 21:12:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48769C433C9;
+	Tue, 25 Jul 2023 21:12:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1690319545;
+	bh=+wjx3PSEq0K5+Aw7/+zFEoqif9hytq8mg416yZy/nHU=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=oDwGVunkHA4n7n03Gl8jk70U5ZjAYv48eGM6EMyCNpK27QgccD7LYKF9E3dH97YFT
+	 cqvhh48Z9nPUtchSJ/KbUX3zg0yMj4pX5j5/0Xn/ZvzJ6HIn4FMUmu7H3wKLHN0PXK
+	 zXoixoE1xRJinOW8sELWeoVoJKBphIpInvne8i+89HCy9OGrw636tFTmEixYbzEqkP
+	 yLrrITncMcu6w3VjQYDrfxrpNKUJwxhHRYgfv6WcW5N3LhGttkAyegjJfYv0C61xul
+	 pibX3ENru+yDIDv+zRTFwZbHQNBe0UH7lTDvydbQSgYvKj+dw/O78BZVL3tdK2a5aO
+	 65imaNtu1zwLw==
+Date: Tue, 25 Jul 2023 14:12:23 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+Cc: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
+ pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Alexander Lobakin <aleksander.lobakin@intel.com>, Eric Dumazet
+ <edumazet@google.com>, Wei Fang <wei.fang@nxp.com>, Shenwei Wang
+ <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, NXP Linux Team
+ <linux-imx@nxp.com>, Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya
+ <gakula@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad
+ <hkelam@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky
+ <leon@kernel.org>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann
+ <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, John
+ Fastabend <john.fastabend@gmail.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne
+ Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle
+ Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-rdma@vger.kernel.org, bpf@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v2] page_pool: split types and declarations
+ from page_pool.h
+Message-ID: <20230725141223.19c1c34c@kernel.org>
+In-Reply-To: <ZL/fVF7WetuLgB0l@hera>
+References: <20230725131258.31306-1-linyunsheng@huawei.com>
+	<ZL/fVF7WetuLgB0l@hera>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <b5fd2dff-14a5-3ad8-9698-d1a50f4516fa@xs4all.nl>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230725_134415_581099_47604AD7 
-X-CRM114-Status: GOOD (  25.04  )
+X-CRM114-CacheID: sfid-20230725_141227_629037_421971FE 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,66 +91,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 25, 2023 at 12:15:03PM +0200, Hans Verkuil wrote:
-> Hi Nicolas,
+On Tue, 25 Jul 2023 17:42:28 +0300 Ilias Apalodimas wrote:
+> Apologies for the very late replies, I was on long vacation with limited
+> internet access.
+> Yunsheng, since there's been a few mails and I lost track, this is instead of
+> [0] right? If so, I prefer this approach.  It looks ok on a first quick pass,
+> I'll have a closer look later.
 > 
-> On 30/06/2023 17:14, Nícolas F. R. A. Prado wrote:
-> > Remove the requirement of a VDEC_SYS reg iospace for both MT8173 and
-> > MT8183. To achieve that, rely on a vdecsys syscon to be passed through
-> > the DT, and use it to directly read the VDEC_HW_ACTIVE bit during IRQ
-> > handling to check whether the HW is active. Also update the VP8 stateful
-> > decoder to use the syscon, if present, for writes to VDEC_SYS.
-> > 
-> > The old behavior is still present when reg-names aren't supplied, as
-> > to keep backward compatibility.
-> > 
-> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > 
-> > ---
-> > 
-> > Changes in v5:
-> > - Added explicit linux/bitfield.h include for FIELD_GET(), following
-> >   0day report
-> > 
-> > Changes in v4:
-> > - Added new helper and updated VP8 stateful decoder to use it, so the
-> >   syscon can also be used by mt8173
-> > - Made handling cleaner
-> > - Reworded commit
-> > 
-> > Changes in v3:
-> > - Switched handling of VDEC_HW_ACTIVE to use a syscon instead of the
-> >   'active' clock
-> > - Reworded commit
-> > - Removed changes to subdev part of driver, since they aren't used by
-> >   MT8183
-> > 
-> >  .../mediatek/vcodec/mtk_vcodec_dec_drv.c      | 77 ++++++++++++++++---
-> >  .../platform/mediatek/vcodec/mtk_vcodec_drv.h |  1 +
-> >  .../mediatek/vcodec/mtk_vcodec_util.c         | 15 ++++
-> >  .../mediatek/vcodec/mtk_vcodec_util.h         |  2 +
-> >  .../mediatek/vcodec/vdec/vdec_vp8_if.c        | 10 +--
-> >  5 files changed, 87 insertions(+), 18 deletions(-)
-> 
-> This patch introduced this new smatch error:
-> 
-> drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c:143 mtk_vcodec_get_reg_bases() error: buffer overflow 'mtk_dec_reg_names' 11 <= 11
-> 
-> I think it is due to:
-> 
-> if (reg_num <= 0 || reg_num > NUM_MAX_VDEC_REG_BASE) {
-> 
-> in mtk_vcodec_get_reg_bases(): the '>' should probably be '>='.
-> 
-> Can you post a follow-up patch fixing this?
+> [0] https://lore.kernel.org/netdev/20230714170853.866018-2-aleksander.lobakin@intel.com/
 
-Hi Hans,
 
-sorry about that, and thanks for noticing it.
-
-I've just sent the fix:
-https://lore.kernel.org/all/20230725204043.569799-1-nfraprado@collabora.com
-
-Thanks,
-Nícolas
+I prefer the more systematic approach of creating a separate types.h
+file, so I don't have to keep chasing people or cleaning up the include
+hell myself. I think it should be adopted more widely going forward,
+it's not just about the page pool.
 
