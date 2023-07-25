@@ -4,77 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6C73C001DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 09:36:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 604BAC0015E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 09:37:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qV3yiLcapY79UYhQ2yxqusTw/Je4hCg71heXhG6JWXs=; b=tqT6nFv7AFpI8MoqvhfO3qBikl
-	DvCaXtMQdmiOmQA6TG7wP6/K0C1M0A1eQh/spIOPT9qZNG/+BeLCRr76zDJCBqhSUwNGICHPbO9BJ
-	J6f5jSxrJEvSqj93JDQqCu7Hb51wmaP9j0cgW4KPNZNzwHeEnsuSyK9QCdfplIjyxsME03gokqJcK
-	SW3Ehn/Q8D/Z/pbqNfXJ2xDBkrC21AP3V4wQqJNnFndtf6YWtMK4BTPu54ODTpQbkv6UQpS2UMv5F
-	iIOSiABopBsSvsDz04JzSGSVC5oP6lAr3HS0vFVLMP7JXdjkM2uYUJ97FWXtSxSlPVq7mGX5o9y1b
-	KPhyeUnA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sMMGo21kvY/Xtf6Onwdat3Hu72Fw6pZleBiae+1p9ns=; b=a11GKC7adu1Rog3tKSEytH59op
+	7mibDMyUidrMS7hbbkIKda/4TJ8cLc49BjAoc4kMCkmPxdXobiKICf97Kcyji20O2a3JqFRTWAnZs
+	NnSvlV347FK/VoJVty8caG3Ojtvb3hGE8RAC8kkx+mTt8+rptTkilpLdhAuGDm1V6f7vFXEy94m1Q
+	bj+7vakogwp9dNJLCvdXk52tX3SKY6lVI/2U+aRGvNow1TeHsT8J2+Yo3wI1I7EbwUrPyiVLIAlRF
+	bTBRTcscW8NF+ITvS21iayQFGOxGR7mWHVUc+QBDJD8O4OhhEcj8PwBCTJshqXPXGdtg5zlry7jxI
+	8q3yPtUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOETA-006xwA-2M;
-	Tue, 25 Jul 2023 09:36:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qOETz-006yHY-1F;
+	Tue, 25 Jul 2023 09:37:31 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOESq-006xlu-2i;
-	Tue, 25 Jul 2023 09:36:23 +0000
-X-UUID: b1ea93822ace11ee83ed1395ce914268-20230725
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=qV3yiLcapY79UYhQ2yxqusTw/Je4hCg71heXhG6JWXs=;
-	b=rhCXYQ0DMRq+4NbCpXmpyFMsstvAgBZ/mTgAYX7LwOP/itmW1dpIJtIv5wYnFDYOZJkraX/PtvyvW/Q7xKq2em1+ErEm82H23PIwPwGMMwloQTyO47wMq89ioY4MlNtsMj6uvogAnBCwRG4DzwGCQ6/Uje+xikZ/FlUf8cW8yhg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.29,REQID:349d45fc-37f9-4750-9ba1-fa1f7995ea7e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7562a7,CLOUDID:ebd2c3b3-a467-4aa9-9e04-f584452e3794,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: b1ea93822ace11ee83ed1395ce914268-20230725
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <kuan-ying.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 987966792; Tue, 25 Jul 2023 02:36:13 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 25 Jul 2023 17:35:42 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 25 Jul 2023 17:35:42 +0800
-From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-To: Jan Kiszka <jan.kiszka@siemens.com>, Kieran Bingham <kbingham@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <chinwen.chang@mediatek.com>, <qun-wei.lin@mediatek.com>,
-	<linux-mm@kvack.org>, <linux-modules@vger.kernel.org>,
-	<casper.li@mediatek.com>, <akpm@linux-foundation.org>,
-	<linux-arm-kernel@lists.infradead.org>, Kuan-Ying Lee
-	<Kuan-Ying.Lee@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH 7/8] scripts/gdb/slab: Add slab support
-Date: Tue, 25 Jul 2023 17:34:57 +0800
-Message-ID: <20230725093458.30064-8-Kuan-Ying.Lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230725093458.30064-1-Kuan-Ying.Lee@mediatek.com>
-References: <20230725093458.30064-1-Kuan-Ying.Lee@mediatek.com>
+	id 1qOETw-006yFh-0Q;
+	Tue, 25 Jul 2023 09:37:30 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4C5AE6159F;
+	Tue, 25 Jul 2023 09:37:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5C2CC433B9;
+	Tue, 25 Jul 2023 09:37:23 +0000 (UTC)
+Message-ID: <b2f44154-79a2-b5e4-4f59-bc578e19e31f@xs4all.nl>
+Date: Tue, 25 Jul 2023 11:37:21 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v7,06/11] media: mediatek: vcodec: replace pr_* with dev_*
+ for v4l2 debug message
+Content-Language: en-US
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230722074230.30558-1-yunfei.dong@mediatek.com>
+ <20230722074230.30558-7-yunfei.dong@mediatek.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230722074230.30558-7-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230725_023620_880969_482FF737 
-X-CRM114-Status: GOOD (  20.16  )
+X-CRM114-CacheID: sfid-20230725_023728_253402_A38676F7 
+X-CRM114-Status: GOOD (  18.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,427 +77,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add 'lx-slabinfo' and 'lx-slabtrace' support.
+On 22/07/2023 09:42, Yunfei Dong wrote:
+> Adding different macro mtk_v4l2_vdec_dbg and mtk_v4l2_venc_dbg for
+> encoder and decoder. Then calling the common macro mtk_v4l2_debug to
+> print debug message.
+> 
+> Replace pr_err with dev_err for 'mtk_v4l2_err' debug message.
+> Replace pr_debug with dev_dbg for 'mtk_v4l2_debug' debug message.
+> 
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../platform/mediatek/vcodec/mtk_vcodec_dec.c | 116 +++++-----
+>  .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |  54 +++--
+>  .../mediatek/vcodec/mtk_vcodec_dec_hw.c       |   7 +-
+>  .../mediatek/vcodec/mtk_vcodec_dec_pm.c       |  19 +-
+>  .../mediatek/vcodec/mtk_vcodec_dec_stateful.c | 143 ++++++------
+>  .../vcodec/mtk_vcodec_dec_stateless.c         |  62 ++---
+>  .../platform/mediatek/vcodec/mtk_vcodec_enc.c | 211 ++++++++----------
+>  .../mediatek/vcodec/mtk_vcodec_enc_drv.c      |  45 ++--
+>  .../mediatek/vcodec/mtk_vcodec_enc_pm.c       |   8 +-
+>  .../platform/mediatek/vcodec/mtk_vcodec_fw.c  |   2 +-
+>  .../mediatek/vcodec/mtk_vcodec_fw_scp.c       |   2 +-
+>  .../mediatek/vcodec/mtk_vcodec_fw_vpu.c       |   7 +-
+>  .../mediatek/vcodec/mtk_vcodec_intr.c         |  12 +-
+>  .../mediatek/vcodec/mtk_vcodec_util.c         |  30 ++-
+>  .../mediatek/vcodec/mtk_vcodec_util.h         |  27 ++-
+>  .../vcodec/vdec/vdec_av1_req_lat_if.c         |  10 +-
+>  .../mediatek/vcodec/vdec/vdec_h264_req_if.c   |  14 +-
+>  .../vcodec/vdec/vdec_h264_req_multi_if.c      |  16 +-
+>  .../vcodec/vdec/vdec_hevc_req_multi_if.c      |  14 +-
+>  .../platform/mediatek/vcodec/vdec_drv_if.c    |   4 +-
+>  .../platform/mediatek/vcodec/vdec_msg_queue.c |  52 +++--
+>  .../platform/mediatek/vcodec/vdec_msg_queue.h |   2 +
+>  .../platform/mediatek/vcodec/vdec_vpu_if.c    |   2 +-
+>  23 files changed, 417 insertions(+), 442 deletions(-)
+> 
 
-This GDB scripts print slabinfo and slabtrace for user
-to analyze slab memory usage.
+<snip>
 
-Example output like below:
-(gdb) lx-slabinfo
-     Pointer       |         name         | active_objs  |   num_objs   | objsize  | objperslab  | pagesperslab
------------------- | -------------------- | ------------ | ------------ | -------- | ----------- | -------------
-0xffff0000c59df480 | p9_req_t             | 0            | 0            | 280      | 29          | 2
-0xffff0000c59df280 | isp1760_qh           | 0            | 0            | 160      | 25          | 1
-0xffff0000c59df080 | isp1760_qtd          | 0            | 0            | 184      | 22          | 1
-0xffff0000c59dee80 | isp1760_urb_listite  | 0            | 0            | 136      | 30          | 1
-0xffff0000c59dec80 | asd_sas_event        | 0            | 0            | 256      | 32          | 2
-0xffff0000c59dea80 | sas_task             | 0            | 0            | 448      | 36          | 4
-0xffff0000c59de880 | bio-120              | 18           | 21           | 384      | 21          | 2
-0xffff0000c59de680 | io_kiocb             | 0            | 0            | 448      | 36          | 4
-0xffff0000c59de480 | bfq_io_cq            | 0            | 0            | 1504     | 21          | 8
-0xffff0000c59de280 | bfq_queue            | 0            | 0            | 720      | 22          | 4
-0xffff0000c59de080 | mqueue_inode_cache   | 1            | 28           | 1152     | 28          | 8
-0xffff0000c59dde80 | v9fs_inode_cache     | 0            | 0            | 832      | 39          | 8
-...
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
+> index fd951ff47fc3..6bc822c7d825 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_util.h
+> @@ -11,6 +11,9 @@
+>  #include <linux/types.h>
+>  #include <linux/dma-direction.h>
+>  
+> +#define MTK_DBG_VCODEC_STR "[MTK_VCODEC]"
+> +#define MTK_DBG_V4L2_STR "[MTK_V4L2]"
+> +
+>  struct mtk_vcodec_mem {
+>  	size_t size;
+>  	void *va;
+> @@ -28,8 +31,8 @@ struct mtk_vcodec_dev;
+>  #undef pr_fmt
+>  #define pr_fmt(fmt) "%s(),%d: " fmt, __func__, __LINE__
+>  
+> -#define mtk_v4l2_err(fmt, args...)                \
+> -	pr_err("[MTK_V4L2][ERROR] " fmt "\n", ##args)
+> +#define mtk_v4l2_err(plat_dev, fmt, args...)                            \
+> +	dev_err(&(plat_dev)->dev, "[MTK_V4L2][ERROR] " fmt "\n", ##args)
+>  
+>  #define mtk_vcodec_err(inst_id, plat_dev, fmt, args...)                                 \
+>  	dev_err(&(plat_dev)->dev, "[MTK_VCODEC][ERROR][%d]: " fmt "\n", inst_id, ##args)
+> @@ -38,11 +41,11 @@ struct mtk_vcodec_dev;
+>  extern int mtk_v4l2_dbg_level;
+>  extern int mtk_vcodec_dbg;
+>  
+> -#define mtk_v4l2_debug(level, fmt, args...)				\
+> -	do {								\
+> -		if (mtk_v4l2_dbg_level >= (level))			\
+> -			pr_debug("[MTK_V4L2] %s, %d: " fmt "\n",        \
+> -				 __func__, __LINE__, ##args);	        \
+> +#define mtk_v4l2_debug(plat_dev, level, fmt, args...)                             \
+> +	do {                                                                      \
+> +		if (mtk_v4l2_dbg_level >= (level))                                \
+> +			dev_dbg(&(plat_dev)->dev, "[MTK_V4L2] %s, %d: " fmt "\n", \
+> +				 __func__, __LINE__, ##args);                     \
+>  	} while (0)
 
-(gdb) lx-slabtrace --cache_name kmalloc-1k
-63 <tty_register_device_attr+508> waste=16632/264 age=46856/46871/46888 pid=1 cpus=6,
-   0xffff800008720240 <__kmem_cache_alloc_node+236>:    mov     x22, x0
-   0xffff80000862a4fc <kmalloc_trace+64>:       mov     x21, x0
-   0xffff8000095d086c <tty_register_device_attr+508>:   mov     x19, x0
-   0xffff8000095d0f98 <tty_register_driver+704>:        cmn     x0, #0x1, lsl #12
-   0xffff80000c2677e8 <vty_init+620>:   Cannot access memory at address 0xffff80000c2677e8
-   0xffff80000c265a10 <tty_init+276>:   Cannot access memory at address 0xffff80000c265a10
-   0xffff80000c26d3c4 <chr_dev_init+204>:       Cannot access memory at address 0xffff80000c26d3c4
-   0xffff8000080161d4 <do_one_initcall+176>:    mov     w21, w0
-   0xffff80000c1c1b58 <kernel_init_freeable+956>:       Cannot access memory at address 0xffff80000c1c1b58
-   0xffff80000acf1334 <kernel_init+36>: bl      0xffff8000081ac040 <async_synchronize_full>
-   0xffff800008018d00 <ret_from_fork+16>:       mrs     x28, sp_el0
+You forgot to add 'plat_dev' to the argument list of the mtk_v4l2_debug
+macro when CONFIG_DEBUG_FS is not set. That causes zillions of compiler
+warnings.
 
-(gdb) lx-slabtrace --cache_name kmalloc-1k --free
-428 <not-available> age=4294958600 pid=0 cpus=0,
+>  
+>  #define mtk_vcodec_debug(inst_id, plat_dev, fmt, args...)                               \
+> @@ -70,6 +73,16 @@ extern int mtk_vcodec_dbg;
+>  #define mtk_venc_debug(ctx, fmt, args...)                              \
+>  	mtk_vcodec_debug((ctx)->id, (ctx)->dev->plat_dev, fmt, ##args)
+>  
+> +#define mtk_v4l2_vdec_err(ctx, fmt, args...) mtk_v4l2_err((ctx)->dev->plat_dev, fmt, ##args)
+> +
+> +#define mtk_v4l2_vdec_dbg(level, ctx, fmt, args...)             \
+> +	mtk_v4l2_debug((ctx)->dev->plat_dev, level, fmt, ##args)
+> +
+> +#define mtk_v4l2_venc_err(ctx, fmt, args...) mtk_v4l2_err((ctx)->dev->plat_dev, fmt, ##args)
+> +
+> +#define mtk_v4l2_venc_dbg(level, ctx, fmt, args...)             \
+> +	mtk_v4l2_debug((ctx)->dev->plat_dev, level, fmt, ##args)
+> +
+>  void __iomem *mtk_vcodec_get_reg_addr(void __iomem **reg_base, unsigned int reg_idx);
+>  int mtk_vcodec_write_vdecsys(struct mtk_vcodec_ctx *ctx, unsigned int reg, unsigned int val);
+>  int mtk_vcodec_mem_alloc(void *priv, struct mtk_vcodec_mem *mem);
 
-Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
----
- scripts/gdb/linux/constants.py.in |  13 ++
- scripts/gdb/linux/slab.py         | 322 ++++++++++++++++++++++++++++++
- scripts/gdb/vmlinux-gdb.py        |   1 +
- 3 files changed, 336 insertions(+)
- create mode 100644 scripts/gdb/linux/slab.py
+Regards,
 
-diff --git a/scripts/gdb/linux/constants.py.in b/scripts/gdb/linux/constants.py.in
-index 7e375b89fb99..fa23f4e3546a 100644
---- a/scripts/gdb/linux/constants.py.in
-+++ b/scripts/gdb/linux/constants.py.in
-@@ -20,6 +20,7 @@
- #include <linux/of_fdt.h>
- #include <linux/page_ext.h>
- #include <linux/radix-tree.h>
-+#include <linux/slab.h>
- #include <linux/threads.h>
- #include <asm/memory.h>
- 
-@@ -99,6 +100,16 @@ if IS_BUILTIN(CONFIG_ARM64):
- LX_GDBPARSED(PAGE_EXT_OWNER)
- LX_GDBPARSED(PAGE_EXT_OWNER_ALLOCATED)
- 
-+/* linux/slab.h */
-+LX_GDBPARSED(SLAB_RED_ZONE)
-+LX_GDBPARSED(SLAB_POISON)
-+LX_GDBPARSED(SLAB_KMALLOC)
-+LX_GDBPARSED(SLAB_HWCACHE_ALIGN)
-+LX_GDBPARSED(SLAB_CACHE_DMA)
-+LX_GDBPARSED(SLAB_CACHE_DMA32)
-+LX_GDBPARSED(SLAB_STORE_USER)
-+LX_GDBPARSED(SLAB_PANIC)
-+
- /* Kernel Configs */
- LX_CONFIG(CONFIG_GENERIC_CLOCKEVENTS)
- LX_CONFIG(CONFIG_GENERIC_CLOCKEVENTS_BROADCAST)
-@@ -140,3 +151,5 @@ if IS_BUILTIN(CONFIG_NUMA):
- LX_CONFIG(CONFIG_DEBUG_VIRTUAL)
- LX_CONFIG(CONFIG_STACKDEPOT)
- LX_CONFIG(CONFIG_PAGE_OWNER)
-+LX_CONFIG(CONFIG_SLUB_DEBUG)
-+LX_CONFIG(CONFIG_SLAB_FREELIST_HARDENED)
-diff --git a/scripts/gdb/linux/slab.py b/scripts/gdb/linux/slab.py
-new file mode 100644
-index 000000000000..665bd249f2fb
---- /dev/null
-+++ b/scripts/gdb/linux/slab.py
-@@ -0,0 +1,322 @@
-+# SPDX-License-Identifier: GPL-2.0
-+#
-+# Copyright (c) 2023 MediaTek Inc.
-+#
-+# Authors:
-+#  Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-+#
-+
-+import gdb
-+import re
-+import traceback
-+from linux import lists, utils, stackdepot, constants, mm
-+
-+SLAB_RED_ZONE       = constants.LX_SLAB_RED_ZONE
-+SLAB_POISON         = constants.LX_SLAB_POISON
-+SLAB_KMALLOC        = constants.LX_SLAB_KMALLOC
-+SLAB_HWCACHE_ALIGN  = constants.LX_SLAB_HWCACHE_ALIGN
-+SLAB_CACHE_DMA      = constants.LX_SLAB_CACHE_DMA
-+SLAB_CACHE_DMA32    = constants.LX_SLAB_CACHE_DMA32
-+SLAB_STORE_USER     = constants.LX_SLAB_STORE_USER
-+SLAB_PANIC          = constants.LX_SLAB_PANIC
-+
-+OO_SHIFT = 16
-+OO_MASK = (1 << OO_SHIFT) - 1
-+
-+slab_type = utils.CachedType("struct slab")
-+slab_ptr_type = slab_type.get_type().pointer()
-+kmem_cache_type = utils.CachedType("struct kmem_cache")
-+kmem_cache_ptr_type = kmem_cache_type.get_type().pointer()
-+
-+track_type = gdb.lookup_type('struct track')
-+track_alloc = int(gdb.parse_and_eval('TRACK_ALLOC'))
-+track_free = int(gdb.parse_and_eval('TRACK_FREE'))
-+
-+def slab_folio(slab):
-+    return slab.cast(gdb.lookup_type("struct folio").pointer())
-+
-+def slab_address(slab):
-+    p_ops = mm.page_ops().ops
-+    folio = slab_folio(slab)
-+    return p_ops.folio_address(folio)
-+
-+def for_each_object(cache, addr, slab_objects):
-+    p = addr
-+    if cache['flags'] & SLAB_RED_ZONE:
-+        p += int(cache['red_left_pad'])
-+    while p < addr + (slab_objects * cache['size']):
-+        yield p
-+        p = p + int(cache['size'])
-+
-+def get_info_end(cache):
-+    if (cache['offset'] >= cache['inuse']):
-+        return cache['inuse'] + gdb.lookup_type("void").pointer().sizeof
-+    else:
-+        return cache['inuse']
-+
-+def get_orig_size(cache, obj):
-+    if cache['flags'] & SLAB_STORE_USER and cache['flags'] & SLAB_KMALLOC:
-+        p = mm.page_ops().ops.kasan_reset_tag(obj)
-+        p += get_info_end(cache)
-+        p += gdb.lookup_type('struct track').sizeof * 2
-+        p = p.cast(utils.get_uint_type().pointer())
-+        return p.dereference()
-+    else:
-+        return cache['object_size']
-+
-+def get_track(cache, object_pointer, alloc):
-+    p = object_pointer + get_info_end(cache)
-+    p += (alloc * track_type.sizeof)
-+    return p
-+
-+def oo_objects(x):
-+    return int(x['x']) & OO_MASK
-+
-+def oo_order(x):
-+    return int(x['x']) >> OO_SHIFT
-+
-+def reciprocal_divide(a, R):
-+    t = (a * int(R['m'])) >> 32
-+    return (t + ((a - t) >> int(R['sh1']))) >> int(R['sh2'])
-+
-+def __obj_to_index(cache, addr, obj):
-+    return reciprocal_divide(int(mm.page_ops().ops.kasan_reset_tag(obj)) - addr, cache['reciprocal_size'])
-+
-+def swab64(x):
-+    result = (((x & 0x00000000000000ff) << 56) |   \
-+    ((x & 0x000000000000ff00) << 40) |   \
-+    ((x & 0x0000000000ff0000) << 24) |   \
-+    ((x & 0x00000000ff000000) <<  8) |   \
-+    ((x & 0x000000ff00000000) >>  8) |   \
-+    ((x & 0x0000ff0000000000) >> 24) |   \
-+    ((x & 0x00ff000000000000) >> 40) |   \
-+    ((x & 0xff00000000000000) >> 56))
-+    return result
-+
-+def freelist_ptr(cache, ptr, ptr_addr):
-+    if constants.LX_CONFIG_SLAB_FREELIST_HARDENED:
-+        return ptr ^ cache['random'] ^ swab64(int(ptr_addr))
-+    else:
-+        return ptr
-+
-+def freelist_dereference(cache, ptr_addr):
-+    ptr = ptr_addr.cast(utils.get_ulong_type().pointer()).dereference()
-+    return freelist_ptr(cache, ptr, ptr_addr)
-+
-+def get_freepointer(cache, obj):
-+    obj = mm.page_ops().ops.kasan_reset_tag(obj)
-+    return freelist_dereference(cache, obj + cache['offset'])
-+
-+def loc_exist(loc_track, addr, handle, waste):
-+    for loc in loc_track:
-+        if loc['addr'] == addr and loc['handle'] == handle and loc['waste'] == waste:
-+            return loc
-+    return None
-+
-+def add_location(loc_track, cache, track, orig_size):
-+    jiffies = gdb.parse_and_eval("jiffies_64")
-+    age = jiffies - track['when']
-+    handle = 0
-+    waste = cache['object_size'] - int(orig_size)
-+    pid = int(track['pid'])
-+    cpuid = int(track['cpu'])
-+    addr = track['addr']
-+    if constants.LX_CONFIG_STACKDEPOT:
-+        handle = track['handle']
-+
-+    loc = loc_exist(loc_track, addr, handle, waste)
-+    if loc:
-+        loc['count'] += 1
-+        if track['when']:
-+            loc['sum_time'] += age
-+            loc['min_time'] = min(loc['min_time'], age)
-+            loc['max_time'] = max(loc['max_time'], age)
-+            loc['min_pid'] = min(loc['min_pid'], pid)
-+            loc['max_pid'] = max(loc['max_pid'], pid)
-+            loc['cpus'].add(cpuid)
-+    else:
-+        loc_track.append({
-+            'count' : 1,
-+            'addr' : addr,
-+            'sum_time' : age,
-+            'min_time' : age,
-+            'max_time' : age,
-+            'min_pid' : pid,
-+            'max_pid' : pid,
-+            'handle' : handle,
-+            'waste' : waste,
-+            'cpus' : {cpuid}
-+            }
-+        )
-+
-+def slabtrace(alloc, cache_name):
-+
-+    def __fill_map(obj_map, cache, slab):
-+        p = slab['freelist']
-+        addr = slab_address(slab)
-+        while p != gdb.Value(0):
-+            index = __obj_to_index(cache, addr, p)
-+            obj_map[index] = True # free objects
-+            p = get_freepointer(cache, p)
-+
-+    # process every slab page on the slab_list (partial and full list)
-+    def process_slab(loc_track, slab_list, alloc, cache):
-+        for slab in lists.list_for_each_entry(slab_list, slab_ptr_type, "slab_list"):
-+            obj_map[:] = [False] * oo_objects(cache['oo'])
-+            __fill_map(obj_map, cache, slab)
-+            addr = slab_address(slab)
-+            for object_pointer in for_each_object(cache, addr, slab['objects']):
-+                if obj_map[__obj_to_index(cache, addr, object_pointer)] == True:
-+                    continue
-+                p = get_track(cache, object_pointer, alloc)
-+                track = gdb.Value(p).cast(track_type.pointer())
-+                if alloc == track_alloc:
-+                    size = get_orig_size(cache, object_pointer)
-+                else:
-+                    size = cache['object_size']
-+                add_location(loc_track, cache, track, size)
-+                continue
-+
-+    slab_caches = gdb.parse_and_eval("slab_caches")
-+    if mm.page_ops().ops.MAX_NUMNODES > 1:
-+        nr_node_ids = int(gdb.parse_and_eval("nr_node_ids"))
-+    else:
-+        nr_node_ids = 1
-+
-+    target_cache = None
-+    loc_track = []
-+
-+    for cache in lists.list_for_each_entry(slab_caches, kmem_cache_ptr_type, 'list'):
-+        if cache['name'].string() == cache_name:
-+            target_cache = cache
-+            break
-+
-+    obj_map = [False] * oo_objects(target_cache['oo'])
-+
-+    if target_cache['flags'] & SLAB_STORE_USER:
-+        for i in range(0, nr_node_ids):
-+            cache_node = target_cache['node'][i]
-+            if cache_node['nr_slabs']['counter'] == 0:
-+                continue
-+            process_slab(loc_track, cache_node['partial'], alloc, target_cache)
-+            process_slab(loc_track, cache_node['full'], alloc, target_cache)
-+    else:
-+        raise gdb.GdbError("SLAB_STORE_USER is not set in %s" % target_cache['name'].string())
-+
-+    for loc in sorted(loc_track, key=lambda x:x['count'], reverse=True):
-+        if loc['addr']:
-+            addr = loc['addr'].cast(utils.get_ulong_type().pointer())
-+            gdb.write("%d %s" % (loc['count'], str(addr).split(' ')[-1]))
-+        else:
-+            gdb.write("%d <not-available>" % loc['count'])
-+
-+        if loc['waste']:
-+            gdb.write(" waste=%d/%d" % (loc['count'] * loc['waste'], loc['waste']))
-+
-+        if loc['sum_time'] != loc['min_time']:
-+            gdb.write(" age=%d/%d/%d" % (loc['min_time'], loc['sum_time']/loc['count'], loc['max_time']))
-+        else:
-+            gdb.write(" age=%d" % loc['min_time'])
-+
-+        if loc['min_pid'] != loc['max_pid']:
-+            gdb.write(" pid=%d-%d" % (loc['min_pid'], loc['max_pid']))
-+        else:
-+            gdb.write(" pid=%d" % loc['min_pid'])
-+
-+        if constants.LX_NR_CPUS > 1:
-+            nr_cpu = gdb.parse_and_eval('__num_online_cpus')['counter']
-+            if nr_cpu > 1:
-+                gdb.write(" cpus=")
-+                for i in loc['cpus']:
-+                    gdb.write("%d," % i)
-+        gdb.write("\n")
-+        if constants.LX_CONFIG_STACKDEPOT:
-+            if loc['handle']:
-+                stackdepot.stack_depot_print(loc['handle'])
-+        gdb.write("\n")
-+
-+def help():
-+    t = """Usage: lx-slabtrace --cache_name [cache_name] [Options]
-+    Options:
-+        --alloc
-+            print information of allocation trace of the allocated objects
-+        --free
-+            print information of freeing trace of the allocated objects
-+    Example:
-+        lx-slabtrace --cache_name kmalloc-1k --alloc
-+        lx-slabtrace --cache_name kmalloc-1k --free\n"""
-+    gdb.write("Unrecognized command\n")
-+    raise gdb.GdbError(t)
-+
-+class LxSlabTrace(gdb.Command):
-+    """Show specific cache slabtrace"""
-+
-+    def __init__(self):
-+        super(LxSlabTrace, self).__init__("lx-slabtrace", gdb.COMMAND_DATA)
-+
-+    def invoke(self, arg, from_tty):
-+        argv = gdb.string_to_argv(arg)
-+        alloc = track_alloc # default show alloc_traces
-+
-+        if len(argv) == 3:
-+            if argv[2] == '--alloc':
-+                alloc = track_alloc
-+            elif argv[2] == '--free':
-+                alloc = track_free
-+            else:
-+                help()
-+        if len(argv) >= 2 and argv[0] == '--cache_name':
-+            slabtrace(alloc, argv[1])
-+        else:
-+            help()
-+LxSlabTrace()
-+
-+def slabinfo():
-+    nr_node_ids = None
-+
-+    if not constants.LX_CONFIG_SLUB_DEBUG:
-+        raise gdb.GdbError("CONFIG_SLUB_DEBUG is not enabled")
-+
-+    def count_free(slab):
-+        total_free = 0
-+        for slab in lists.list_for_each_entry(slab, slab_ptr_type, 'slab_list'):
-+            total_free += int(slab['objects'] - slab['inuse'])
-+        return total_free
-+
-+    gdb.write("{:^18} | {:^20} | {:^12} | {:^12} | {:^8} | {:^11} | {:^13}\n".format('Pointer', 'name', 'active_objs', 'num_objs', 'objsize', 'objperslab', 'pagesperslab'))
-+    gdb.write("{:-^18} | {:-^20} | {:-^12} | {:-^12} | {:-^8} | {:-^11} | {:-^13}\n".format('', '', '', '', '', '', ''))
-+
-+    slab_caches = gdb.parse_and_eval("slab_caches")
-+    if mm.page_ops().ops.MAX_NUMNODES > 1:
-+        nr_node_ids = int(gdb.parse_and_eval("nr_node_ids"))
-+    else:
-+        nr_node_ids = 1
-+
-+    for cache in lists.list_for_each_entry(slab_caches, kmem_cache_ptr_type, 'list'):
-+        nr_objs = 0
-+        nr_free = 0
-+        nr_slabs = 0
-+        for i in range(0, nr_node_ids):
-+            cache_node = cache['node'][i]
-+            try:
-+                nr_slabs += cache_node['nr_slabs']['counter']
-+                nr_objs = int(cache_node['total_objects']['counter'])
-+                nr_free = count_free(cache_node['partial'])
-+            except:
-+                raise gdb.GdbError(traceback.format_exc())
-+        active_objs = nr_objs - nr_free
-+        num_objs = nr_objs
-+        active_slabs = nr_slabs
-+        objects_per_slab = oo_objects(cache['oo'])
-+        cache_order = oo_order(cache['oo'])
-+        gdb.write("{:18s} | {:20.19s} | {:12} | {:12} | {:8} | {:11} | {:13}\n".format(hex(cache), cache['name'].string(), str(active_objs), str(num_objs), str(cache['size']), str(objects_per_slab), str(1 << cache_order)))
-+
-+class LxSlabInfo(gdb.Command):
-+    """Show slabinfo"""
-+
-+    def __init__(self):
-+        super(LxSlabInfo, self).__init__("lx-slabinfo", gdb.COMMAND_DATA)
-+
-+    def invoke(self, arg, from_tty):
-+        slabinfo()
-+LxSlabInfo()
-diff --git a/scripts/gdb/vmlinux-gdb.py b/scripts/gdb/vmlinux-gdb.py
-index 89465f0de548..2526364f31fd 100644
---- a/scripts/gdb/vmlinux-gdb.py
-+++ b/scripts/gdb/vmlinux-gdb.py
-@@ -47,3 +47,4 @@ else:
-     import linux.mm
-     import linux.stackdepot
-     import linux.page_owner
-+    import linux.slab
--- 
-2.18.0
+	Hans
 
 
