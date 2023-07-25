@@ -4,86 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CE91EB64DD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 20:35:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6115C001DE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 20:41:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dEBFhajNAbJA8oyQ3SzCNr6bDDYsCg4XK+Nkm+WUeyo=; b=ohrGXfi063yCypwQolxfFWBZ07
-	M5BTSHBCDwOAeP+22Q8I71sSyFFelSDn1FRQaHYG0/39cb33kW5VElPTT9hXqXx2gecUdrS6LT128
-	Z9I2ojk8ywoZj6htMXovjGd0eaKcQEpabtikN7/alx7Ig572ZNjEXwCZ2GY8aERa6C89F/f1X1E+w
-	Tom+tqP9SiWnfqj4b0JsdJmwL33ppQvU49BGmPMUsmONq43xd1jwSRqj/0of5wzvOd8V+Ar3TeqnD
-	YIzlMuJop3X3f8P6sENbtt/ZtHHTERDFylw+t1qPC284afpBqRYrPYcbBlBWisDwRKTexFBsl1Mw4
-	ponavLWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KeHiYwDUMYfCKwxyU7pvurAIeuJQCvlwl13Xex3hWWI=; b=PNVe//zoeKRzxL4VlkQligRl6B
+	k0/xONb9DfHUBV9mkxFmJsaxU0nsXLg1DBmPCocLAZ+LF/wi3ykoHmDehm+9Hh3fYI4fOH4lUWRb5
+	9gcL1gi1noF27Fb0t9H69gdv6EKQ2kKppj6B5an+qDcwxt/PUz3e8ozpn4d4MBPMjvYjIykWWxJAM
+	iJKUBdPHMxFnFe4q6qdWpGfu4FZB6uDYy2tGSD7o/n+5Pe7twPirAFEbB9DbzG4S7J9N5B3nJclbz
+	mRHzwEhUdADmNauG9MjtIWjbKZrZxLYCSgST8IROvFmK/661sLLU16iF90JiJLdp/VKjNBglWy6o5
+	lyVAC/+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOOkN-008RiZ-37;
-	Tue, 25 Jul 2023 20:35:07 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+	id 1qOOq7-008Scp-2t;
+	Tue, 25 Jul 2023 20:41:03 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOOkK-008Rgp-2d
-	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Jul 2023 20:35:06 +0000
-Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-668709767b1so3848254b3a.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Jul 2023 13:35:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690317302; x=1690922102;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=dEBFhajNAbJA8oyQ3SzCNr6bDDYsCg4XK+Nkm+WUeyo=;
-        b=eY6zQW3yCE3HW7dgVJNQZhe10AN6qBQt2ko/chealQwqHrG4pM7GbfZSTeJjki77ur
-         vvleenmBb5FbgzGEaPwOFmpaKUTOWBHwreBUUoapzQSDFCTju1zARvVMKgp7X7voD+Nl
-         sXGfLqWP8rjifH8hqHsJWCsAktmKU/tFHQMq5EuvNH/TroIDEQo6kCLEp9pwNh7VUb3c
-         zLdZA9nSTj/zpvIkmp2CT+s8H4mAClm9FNigMM4FuVifUsUmWhUx+sNaPxSb6axgGSDq
-         g0fPFLH/O4qJeu+Cfaye5RHsStJDo8BFlqz0YObnHUoCnMYpBXWeebG+Imz7w0UTWiHL
-         YF4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690317302; x=1690922102;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dEBFhajNAbJA8oyQ3SzCNr6bDDYsCg4XK+Nkm+WUeyo=;
-        b=a7l7zK+izQnCuY1BW5eHCc+WaryEtDSmZTknZ5hab2frzEBX/xQGPduYBkdPTJswV1
-         91BHiXFgo2HL+BJ8b0gEgKbdK1cYMLP/6O3eR/kfmyFqUFUpjqnwpEKHjc9kqN8RYPBF
-         uNb9bdY+Qcb+kQ2qv7CdlWE8WjbCKV5zJs6nTOl+F/D1jgAXJAsM2MqRHeduOiNVjG7h
-         jCejqCtUOsHLrIsSTLJhyAiWYHHsRmzAf0cC90o4eARGWKbIWbUDjLnQYAWV3aviXNAJ
-         4KZrgr6VXcNbJlGx4nwumpez6K4duTJQdrMXpmieJAVKiM7Az3cHMsCCUe2pq9KPGIsn
-         KmWQ==
-X-Gm-Message-State: ABy/qLaPN9Pv7p5Z3+th9WnpJGK9v9Gp0isBMccHx+13jQujh8esha2K
-	+E3yyennDLdokO+PJkNyU6Jtww==
-X-Google-Smtp-Source: APBJJlGSzayuOHxBmo/tEETnK6cmj1CrVYQ2LOCdES+hgyiq0gr838HgHLCeJA/FeOOzp9ZE+OXsYw==
-X-Received: by 2002:a05:6a20:914d:b0:122:10f9:f635 with SMTP id x13-20020a056a20914d00b0012210f9f635mr119916pzc.19.1690317301899;
-        Tue, 25 Jul 2023 13:35:01 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:2116:2b1f:2fd8:ec8d])
-        by smtp.gmail.com with ESMTPSA id s11-20020a63770b000000b0052c22778e64sm10847608pgc.66.2023.07.25.13.35.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Jul 2023 13:35:01 -0700 (PDT)
-Date: Tue, 25 Jul 2023 14:34:58 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1qOOq4-008Sbn-0A;
+	Tue, 25 Jul 2023 20:41:01 +0000
+Received: from notapiano.myfiosgateway.com (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 83EEB66003AA;
+	Tue, 25 Jul 2023 21:40:51 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1690317653;
+	bh=iMBQ+s+wbpCm8QUbxfi+mfkOxoIlRyEKgUUo7g7/1i0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Cx3GrVj1e1Yf45KTfHj6nGdGPQwkfC3ZGbMopZLX6d+wmXEe1nUa0jxLgNGbS5soN
+	 mufw/QA1mUdaewY1A0DPSBvDbuMK9TGGIdm2CTUcuJckYGHZWDQtal+lspXcc74Kfz
+	 F6wSs1M7e5tKpWvgQF+3x/qEwvomKgU3uslCF5WAYcgsnxKSmp1PfIWNDYmXQrp66h
+	 CkvL7tDh0R5JwSBqKu+cs5nL6YoaZ/n9msdvVuV0vG5+ANjmlGSSqpMpdGwS1n8ia5
+	 AjUGAhWHbAN1+KjI70aaiaChZPlJwLT5K0nLsLIkBaL3rCuTSOqR5RU3kSsUTT+hfY
+	 BR8+sbXOms5HQ==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v15 00/13] Add support for MT8195 SCP 2nd core
-Message-ID: <ZMAx8mc0tjgPvU3j@p14s>
-References: <20230721024132.6548-1-tinghan.shen@mediatek.com>
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] media: mediatek: vcodec: Consider vdecsys presence in reg range check
+Date: Tue, 25 Jul 2023 16:40:39 -0400
+Message-ID: <20230725204043.569799-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230721024132.6548-1-tinghan.shen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230725_133504_853780_31A281A6 
-X-CRM114-Status: GOOD (  28.03  )
+X-CRM114-CacheID: sfid-20230725_134100_242345_DA105785 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,126 +81,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 21, 2023 at 10:41:19AM +0800, Tinghan Shen wrote:
-> The mediatek remoteproc driver currently only allows bringing up a 
-> single core SCP, e.g. MT8183. It also only bringing up the 1st 
-> core in SoCs with a dual-core SCP, e.g. MT8195. This series support 
-> to bring-up the 2nd core of the dual-core SCP.
-> 
-> v15 -> v14:
-> 1. Use the common SCP registers in struct mtk_scp_of_cluster instead of
->    copy it to struct mtk_scp at patchset 5 
-> 2. Use platform_set_drvdata instead of platform_device_add_data at patchset 5 
-> 3. Rename l2tcm_lock to cluster_lock at patchset 8
-> 4. Check l2tcm_refcnt value before decreasing at patchset 8
-> 5. Revise the commit message at patchset 11
+Commit fe8a33978383 ("media: mediatek: vcodec: Read HW active status
+from syscon") allowed the driver to read the VDEC_SYS io space from a
+syscon instead of from the reg property when reg-names are supplied.
+However as part of that change, a smatch warning was introduced:
 
-I am done reviewing this set.  Checkpatch is giving a warning for patch 01/13,
-something I would expect to have been dealt with after 15 iterations.  I will be
-away for the next 3 weeks so no point in rushing another revision to sqeeze
-in the v6.6 merge window.
+drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c:142 mtk_vcodec_get_reg_bases() error: buffer overflow 'mtk_dec_reg_names' 11 <= 11
 
-Mathieu
+With a correct Devicetree, that is, one that follows the dt-binding, it
+wouldn't be possible to trigger such a buffer overflow. Even so, update
+the range validation of the reg property, so that the smatch warning is
+fixed and if an incorrect Devicetree is ever supplied the code errors
+out instead of causing memory corruption.
 
-> 
-> v13 -> v14:
-> 1. add review tag to patchset 1,6
-> 2. exchange the order of sram power on and reset assert in
-> mt8195_scp_c1_before_load at patchset 2
-> 3. Use ERR_CAST in patchset 5
-> 4. Re-write patchset 7 to remove dependency between core 0 and core 1 
-> 5. Add patch set 10 to report watchdot timeout to all cores
-> 
-> v12 -> v13:
-> 1. replace subdevice with new mediatek scp operations in patchset 7 
-> 2. add review tag to patchset 3
-> 3. modify mediatek,scp phandle name of video-codec@18000000 at patchset 11
-> 
-> v11 -> v12:
-> 1. add scp_add_single/multi_core() to patchset 6
-> 2. remove unused comment in patchset 6
-> 3. rename list name from mtk_scp_cluster to mtk_scp_list
-> 4. rewrite the multi-core probe flow 
-> 5. disable rproc->autoboot and boot rproc by request_firmware_nowait at patchset 7 
-> 6. remove patchset 7 review tag  
-> 
-> v10 -> v11:
-> 1. rewrite patchset 5 to probe single-core SCP with the cluster list
-> 2. Also in patchset 5, move the pointer of mtk_scp object from the
->    platform data property to the driver data property 
-> 3. move the appearance of mtk_scp cluster property to patcheset 7
-> 
-> v9 -> v10:
-> 1. move the global mtk_scp list into the platform device driver data structure
-> 2. remove an unnecessary if() condition
-> 
-> v8 -> v9:
-> 1. initialize l1tcm_size/l1tcm_phys at patchset 05/11 
-> 2. rewrite patchset 06/11 to unify the flow and remove hacks
-> 
-> v7 -> v8:
-> 1. update the node name of mt8192 asurada SCP rpmsg subnode
-> 2. squash register definitions into driver patches
-> 3. initialize local variables on the declaration at patch v8 06/11 
-> 
-> v6 -> v7:
-> 1. merge the mtk_scp_cluster struct into the mtk_scp structure
->    at the "Probe multi-core SCP" patch
-> 
-> v5 -> v6:
-> 1. move the mtk_scp_of_regs structure from mtk_common.h to mtk_scp.c
-> 2. rename the SCP core 0 label from 'scp' to 'scp_c0'
-> 
-> v4 -> v5:
-> 1. move resource release actions to the platform driver remove operation 
-> 2. fix dual-core watchdog handling
-> 
-> v3 -> v4:
-> 1. change the representation of dual-core SCP in dts file and update SCP yaml
-> 2. rewrite SCP driver to reflect the change of dts node
-> 3. drop 'remove redundant call of rproc_boot for SCP' in v3 for further investigation
-> 
-> v2 -> v3:
-> 1. change the representation of dual-core SCP in dts file and update SCP yaml
-> 2. rewrite SCP driver to reflect the change of dts node
-> 3. add SCP core 1 node to mt8195.dtsi
-> 4. remove redundant call of rproc_boot for SCP
-> 5. refine IPI error message
-> 
-> v1 -> v2:
-> 1. update dt-binding property description
-> 2. remove kconfig for scp dual driver
-> 3. merge mtk_scp_dual.c and mtk_scp_subdev.c to mtk_scp.c
-> 
-> 
-> Tinghan Shen (13):
->   dt-bindings: remoteproc: mediatek: Improve the rpmsg subnode
->     definition
->   arm64: dts: mediatek: Update the node name of SCP rpmsg subnode
->   dt-bindings: remoteproc: mediatek: Support MT8195 dual-core SCP
->   remoteproc: mediatek: Add MT8195 SCP core 1 operations
->   remoteproc: mediatek: Extract SCP common registers
->   remoteproc: mediatek: Probe SCP cluster on single-core SCP
->   remoteproc: mediatek: Probe SCP cluster on multi-core SCP
->   remoteproc: mediatek: Remove dependency of MT8195 SCP L2TCM power
->     control on dual-core SCP
->   remoteproc: mediatek: Setup MT8195 SCP core 1 SRAM offset
->   remoteproc: mediatek: Handle MT8195 SCP core 1 watchdog timeout
->   remoteproc: mediatek: Report watchdog crash to all cores
->   remoteproc: mediatek: Refine ipi handler error message
->   arm64: dts: mediatek: mt8195: Add SCP 2nd core
-> 
->  .../bindings/remoteproc/mtk,scp.yaml          | 176 +++++-
->  .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |   2 +-
->  .../boot/dts/mediatek/mt8192-asurada.dtsi     |   2 +-
->  .../boot/dts/mediatek/mt8195-cherry.dtsi      |   6 +-
->  arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  34 +-
->  drivers/remoteproc/mtk_common.h               |  39 +-
->  drivers/remoteproc/mtk_scp.c                  | 534 ++++++++++++++----
->  drivers/remoteproc/mtk_scp_ipi.c              |   4 +-
->  8 files changed, 651 insertions(+), 146 deletions(-)
-> 
-> -- 
-> 2.18.0
-> 
+Reported-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Closes: https://lore.kernel.org/all/b5fd2dff-14a5-3ad8-9698-d1a50f4516fa@xs4all.nl
+Fixes: fe8a33978383 ("media: mediatek: vcodec: Read HW active status from syscon")
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+---
+
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+index 742b6903d030..cd62b3f68072 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+@@ -124,7 +124,8 @@ static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
+ 	/* Sizeof(u32) * 4 bytes for each register base. */
+ 	reg_num = of_property_count_elems_of_size(pdev->dev.of_node, "reg",
+ 						  sizeof(u32) * 4);
+-	if (reg_num <= 0 || reg_num > NUM_MAX_VDEC_REG_BASE) {
++	if (reg_num <= 0 || reg_num > NUM_MAX_VDEC_REG_BASE ||
++	    (!has_vdecsys_reg && reg_num > NUM_MAX_VDEC_REG_BASE - 1)) {
+ 		dev_err(&pdev->dev, "Invalid register property size: %d\n", reg_num);
+ 		return -EINVAL;
+ 	}
+-- 
+2.41.0
+
 
