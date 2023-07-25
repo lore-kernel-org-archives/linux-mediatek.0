@@ -4,78 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30EDAC0015E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 03:53:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B48D8C001DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 04:04:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bkuFlQZm1wGXwCPWMA9dpYXbQ7euJCFPWKLDx347OEc=; b=yymMomRnXusPqCvuHOTgNzMWWf
-	WuekaoD49QCIDNrkl8RpE7AyQrglul6/B+q1LJHuMVuDP0i8lqmVGAnVeAdURPlIdxR1Jgi+MJ5w1
-	ujTE0do8OeXbmn0Hu5YXc7CnBSNxEf+BC71NFwgiQ6Xj2+GpwI5kt3/dT8igIXvJdZfyU+GIPL3Sg
-	4/1EOOy9d5MIHhjlgR1D278ilRIHMBu3+fCFihkKQ8pZ+x3Tot0D3/fk4c46e+zFyn3pIQDOmJhf7
-	2GQcGpNBG/LuCA8qSYAexByK6c5mX4Y8N7YjMgxBLRNT9ejwxp8l89uhmxl2CfAl+Rm7PlCzt6MvL
-	5EZp9b6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LWdSnIWQun0ashRbVT0OVUHEFVk8YYt5YaTXkv+Xkhc=; b=Muzeb5mJWu+H6TEATojjtvajg6
+	B1oLBmPIUOPjH+4vb297FhmbcNpfI9gPkAlzi1DuVLrjPvBNQ/89/UiMoZiDoWeZjzMWIX+ggdXnN
+	h3hink9w8mLQUp0lSyHoktyYMCsT3XN2bnWKKxopLSVrzOzZwFpko+9KucGIO+Z5GPxGjbFCIYv41
+	YF/Wr9Dw5Poq+00X3VgtjlQecHivlQMCQSyxo7OZrH2mZnQ1inV++QzYjfGlTjmJ8YBorp0dT35t6
+	jM5hSqV99VAGNtu7tbrMmWALkuQMTpqYGPqJxrughA/cvsGc51j1XtSSURRGWH5JB/37ZCGSYfRXF
+	V3Pja8dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO97O-0064UF-0l;
-	Tue, 25 Jul 2023 03:53:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qO9Hv-0065KG-0F;
+	Tue, 25 Jul 2023 04:04:43 +0000
+Received: from mail-ua1-x92e.google.com ([2607:f8b0:4864:20::92e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO97L-0064T6-1P;
-	Tue, 25 Jul 2023 03:53:48 +0000
-X-UUID: d97c8cfa2a9e11ee83ed1395ce914268-20230724
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=bkuFlQZm1wGXwCPWMA9dpYXbQ7euJCFPWKLDx347OEc=;
-	b=ubp69JprWmDfGzxGEXavzXr/gV6AImb1kHHIUJ9FvlPUTGtj7rUOfi5zyXeu1/Rfh/9YOFRzAw48yKE2m0A0ZixM/sQ3t4nRlF2cVYj+1c54F70zacFYS+XrAEiZOpNITmT1/TFZhk4OBTOhbAIhyCKaLmCJ9uvNdZNZAN8MZb8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.29,REQID:c377a5b0-cad2-4394-b15e-79b8ac22bdf2,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:70
-X-CID-INFO: VERSION:1.1.29,REQID:c377a5b0-cad2-4394-b15e-79b8ac22bdf2,IP:0,URL
-	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
-	ON:quarantine,TS:70
-X-CID-META: VersionHash:e7562a7,CLOUDID:45526a42-d291-4e62-b539-43d7d78362ba,B
-	ulkID:230725115308CPP61VZA,BulkQuantity:5,Recheck:0,SF:29|28|17|19|48|38,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
-	TF_CID_SPAM_FSD
-X-UUID: d97c8cfa2a9e11ee83ed1395ce914268-20230724
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <trevor.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 565119704; Mon, 24 Jul 2023 20:53:43 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 25 Jul 2023 11:53:06 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 25 Jul 2023 11:53:06 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
-	<perex@perex.cz>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>
-Subject: [PATCH 1/3] ASoC: mediatek: mt8188-mt6359: support dynamic pinctrl
-Date: Tue, 25 Jul 2023 11:53:02 +0800
-Message-ID: <20230725035304.2864-2-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230725035304.2864-1-trevor.wu@mediatek.com>
-References: <20230725035304.2864-1-trevor.wu@mediatek.com>
+	id 1qO9Hr-0065JE-2R
+	for linux-mediatek@lists.infradead.org;
+	Tue, 25 Jul 2023 04:04:42 +0000
+Received: by mail-ua1-x92e.google.com with SMTP id a1e0cc1a2514c-79702eee5a8so1644629241.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Jul 2023 21:04:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20221208; t=1690257875; x=1690862675;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LWdSnIWQun0ashRbVT0OVUHEFVk8YYt5YaTXkv+Xkhc=;
+        b=uq3iusBbqJPc2CTRePG/0p4dDkjSLOvhrrfGgfOLYLE2ZyESAHXdxhgqjslHldiAD6
+         KLS/+wOLV71DZZb66aAvhvUbMCL1h01kRKYqujKDJeqnbLgjKMuBP1hmu/ZpXTG5oEUY
+         v+nnlclvWIOsOSs1i6/Qvgamieqnw6PyyfWKkqnuxKkZNGk8te+LsMcTcwd7Slkyut33
+         U39fhEDDpT7VIRm7piZhgyZZjgVbgjwCyc+h7gaudDhk84zIddYfWkC/cKc2oYL8VFuu
+         Q4qw8p47aAlVu+L+Nc0nxK0ZpOisK99ykmC1j5w4fVigBs13/OxIKhF4VB+7i+Pjo23Z
+         gJ+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1690257875; x=1690862675;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=LWdSnIWQun0ashRbVT0OVUHEFVk8YYt5YaTXkv+Xkhc=;
+        b=E4oPL3MNdPM3/5XFwNnJ3ecNmatG+emLGHdD+s3zXEjvcy3BYkfprDFNLl02gwTOrY
+         E7wDRrKp6UGduDsX4c2jOebdxGC6X7S+ViiiLVEAtaCpx+BKpFTzuARUXCKz7k2yRSpJ
+         k0PUU9MLp/50QuDEjLSnsbLydcn4TNTSDvZ81eIi73SDmCK109SBZi8ygLkJf5JIXDQy
+         t7V4IE1DalBrWeiN32fPXAsskaZSLdMutKbuZwGHHC/q9TB8CxsaqVzarWaXqcawTh95
+         817erhPaEQfnigk8Y07TOE0PBqS4ikiSc/OPDco0HLAJKB5+qFJZpKv/7KVofh0YWh+O
+         Zi1w==
+X-Gm-Message-State: ABy/qLZtZ1redroWP0PZuHjVKwuKZI0pJ91nbSFDKHVHVJLx/c61UqIP
+	G5iVgK1Qn3P+ZmZWQG+ovO7yr/f+2dAeaavgbSUs4w==
+X-Google-Smtp-Source: APBJJlH/rW02PNpLqFVAY3arLeMZJp58yKGRcc9g2NPQgHNQe1NBThAjBeX+q2qlifKktq+mF/RhIhIg5OW6qVs6rHo=
+X-Received: by 2002:a67:cf43:0:b0:443:7e93:641f with SMTP id
+ f3-20020a67cf43000000b004437e93641fmr3945436vsm.9.1690257875137; Mon, 24 Jul
+ 2023 21:04:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <04187826-8dad-d17b-2469-2837bafd3cd5@kernel.org>
+ <20230711093224.1bf30ed5@kernel.org> <CAHS8izNHkLF0OowU=p=mSNZss700HKAzv1Oxqu2bvvfX_HxttA@mail.gmail.com>
+ <20230711133915.03482fdc@kernel.org> <2263ae79-690e-8a4d-fca2-31aacc5c9bc6@kernel.org>
+ <CAHS8izP=k8CqUZk7bGUx4ctm4m2kRC2MyEJv+N4+b0cHVkTQmA@mail.gmail.com>
+ <ZK6kOBl4EgyYPtaD@ziepe.ca> <CAHS8izNuda2DXKTFAov64F7J2_BbMPaqJg1NuMpWpqGA20+S_Q@mail.gmail.com>
+ <143a7ca4-e695-db98-9488-84cf8b78cf86@amd.com> <CAHS8izPm6XRS54LdCDZVd0C75tA1zHSu6jLVO8nzTLXCc=H7Nw@mail.gmail.com>
+ <ZLFv2PIgdeH8gKmh@ziepe.ca> <CAHS8izNMB-H3w0CE9kj6hT5q_F6_XJy_X_HtZwmisOEDhp31yg@mail.gmail.com>
+ <a2569132-393e-0149-f76c-f6de282e1c96@redhat.com>
+In-Reply-To: <a2569132-393e-0149-f76c-f6de282e1c96@redhat.com>
+From: Mina Almasry <almasrymina@google.com>
+Date: Mon, 24 Jul 2023 21:04:23 -0700
+Message-ID: <CAHS8izP5DiHy9NpeMKM4QpXwmx0rw+7oavfQfQsbtiWz10MhOw@mail.gmail.com>
+Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
+ page_pool: remove PP_FLAG_PAGE_FRAG flag)
+To: Jesper Dangaard Brouer <jbrouer@redhat.com>
+Cc: Jason Gunthorpe <jgg@ziepe.ca>, brouer@redhat.com, 
+	=?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+	Hari Ramakrishnan <rharix@google.com>, David Ahern <dsahern@kernel.org>, 
+	Samiullah Khawaja <skhawaja@google.com>, Willem de Bruijn <willemb@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Christoph Hellwig <hch@lst.de>, John Hubbard <jhubbard@nvidia.com>, 
+	Dan Williams <dan.j.williams@intel.com>, Alexander Duyck <alexander.duyck@gmail.com>, 
+	Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, pabeni@redhat.com, 
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
+	Salil Mehta <salil.mehta@huawei.com>, Eric Dumazet <edumazet@google.com>, 
+	Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, 
+	Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, 
+	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
+	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Jesper Dangaard Brouer <hawk@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
+	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Jonathan Lemon <jonathan.lemon@gmail.com>, logang@deltatee.com, 
+	Bjorn Helgaas <bhelgaas@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_205347_480289_4106953F 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20230724_210440_352067_4B24FD19 
+X-CRM114-Status: GOOD (  43.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,71 +116,219 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To avoid power leakage, it is recommended to replace the default pinctrl
-state with dynamic pinctrl since certain audio pinmux functions can
-remain in a HIGH state even when audio is disabled. Linking pinctrl with
-DAPM using SND_SOC_DAPM_PINCTRL will ensure that audio pins remain in
-GPIO mode by default and only switch to an audio function when necessary.
+On Mon, Jul 24, 2023 at 7:56=E2=80=AFAM Jesper Dangaard Brouer
+<jbrouer@redhat.com> wrote:
+>
+>
+>
+> On 17/07/2023 03.53, Mina Almasry wrote:
+> > On Fri, Jul 14, 2023 at 8:55=E2=80=AFAM Jason Gunthorpe <jgg@ziepe.ca> =
+wrote:
+> >>
+> >> On Fri, Jul 14, 2023 at 07:55:15AM -0700, Mina Almasry wrote:
+> >>
+> >>> Once the skb frags with struct new_abstraction are in the TCP stack,
+> >>> they will need some special handling in code accessing the frags. But
+> >>> my RFC already addressed that somewhat because the frags were
+> >>> inaccessible in that case. In this case the frags will be both
+> >>> inaccessible and will not be struct pages at all (things like
+> >>> get_page() will not work), so more special handling will be required,
+> >>> maybe.
+> >>
+> >> It seems sort of reasonable, though there will be interesting concerns
+> >> about coherence and synchronization with generial purpose DMABUFs that
+> >> will need tackling.
+> >>
+> >> Still it is such a lot of churn and weridness in the netdev side, I
+> >> think you'd do well to present an actual full application as
+> >> justification.
+> >>
+> >> Yes, you showed you can stick unordered TCP data frags into GPU memory
+> >> sort of quickly, but have you gone further with this to actually show
+> >> it is useful for a real world GPU centric application?
+> >>
+> >> BTW your cover letter said 96% utilization, the usual server
+> >> configuation is one NIC per GPU, so you were able to hit 1500Gb/sec of
+> >> TCP BW with this?
+> >>
+> >
+> > I do notice that the number of NICs is missing from our public
+> > documentation so far, so I will refrain from specifying how many NICs
+> > are on those A3 VMs until the information is public. But I think I can
+> > confirm that your general thinking is correct, the perf that we're
+> > getting is 96.6% line rate of each GPU/NIC pair,
+>
+> What do you mean by 96.6% "line rate".
+> Is is the Ethernet line-rate?
+>
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
- sound/soc/mediatek/mt8188/mt8188-mt6359.c | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+Yes I believe this is the ethernet line-rate. I.e. the 200 Gbits/sec
+that my NICs run.
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-index 7c9e08e6a4f5..667d79f33bf2 100644
---- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-@@ -246,6 +246,11 @@ static const struct snd_soc_dapm_widget mt8188_mt6359_widgets[] = {
- 	SND_SOC_DAPM_MIC("Headset Mic", NULL),
- 	SND_SOC_DAPM_SINK("HDMI"),
- 	SND_SOC_DAPM_SINK("DP"),
-+
-+	/* dynamic pinctrl */
-+	SND_SOC_DAPM_PINCTRL("ETDM_SPK_PIN", "aud_etdm_spk_on", "aud_etdm_spk_off"),
-+	SND_SOC_DAPM_PINCTRL("ETDM_HP_PIN", "aud_etdm_hp_on", "aud_etdm_hp_off"),
-+	SND_SOC_DAPM_PINCTRL("MTKAIF_PIN", "aud_mtkaif_on", "aud_mtkaif_off"),
- };
- 
- static const struct snd_kcontrol_new mt8188_mt6359_controls[] = {
-@@ -267,6 +272,7 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
- 		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
- 	struct snd_soc_component *cmpnt_codec =
- 		asoc_rtd_to_codec(rtd, 0)->component;
-+	struct snd_soc_dapm_widget *pin_w = NULL, *w;
- 	struct mtk_base_afe *afe;
- 	struct mt8188_afe_private *afe_priv;
- 	struct mtkaif_param *param;
-@@ -306,6 +312,18 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
- 		return 0;
- 	}
- 
-+	for_each_card_widgets(rtd->card, w) {
-+		if (!strcmp(w->name, "MTKAIF_PIN")) {
-+			pin_w = w;
-+			break;
-+		}
-+	}
-+
-+	if (!pin_w)
-+		dev_dbg(afe->dev, "%s(), no pinmux widget, please check if default on\n", __func__);
-+	else
-+		dapm_pinctrl_event(pin_w, NULL, SND_SOC_DAPM_PRE_PMU);
-+
- 	pm_runtime_get_sync(afe->dev);
- 	mt6359_mtkaif_calibration_enable(cmpnt_codec);
- 
-@@ -403,6 +421,9 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
- 	for (i = 0; i < MT8188_MTKAIF_MISO_NUM; i++)
- 		param->mtkaif_phase_cycle[i] = mtkaif_phase_cycle[i];
- 
-+	if (pin_w)
-+		dapm_pinctrl_event(pin_w, NULL, SND_SOC_DAPM_POST_PMD);
-+
- 	dev_dbg(afe->dev, "%s(), end, calibration ok %d\n",
- 		__func__, param->mtkaif_calibration_ok);
- 
--- 
-2.18.0
+> Is the measured throughput the measured TCP data "goodput"?
 
+Yes, it is goodput. Roughly I believe we add up the return values of
+recvmsg() and divide that number by time (very roughly, I think).
+
+> Assuming
+>   - MTU 1500 bytes (1514 on wire).
+>   - Ethernet header 14 bytes
+>   - IP header 20 bytes
+>   - TCP header 20 bytes
+>
+> Due to header overhead the goodput will be approx 96.4%.
+>   - (1514-(14+20+20))/1514 =3D 0.9643
+>   - (Not taking Ethernet interframe gap into account).
+>
+> Thus, maybe you have hit Ethernet wire line-rate already?
+
+My MTU is 8244 actually, which gives me 8192 mss/payload for my
+connections. By my math the theoretical max would be 1 - 52/8244 =3D
+~99.3%. So it looks like I'm dropping ~3% line rate somewhere in the
+implementation.
+
+>
+> > and scales linearly
+> > for each NIC/GPU pair we've tested with so far. Line rate of each
+> > NIC/GPU pair is 200 Gb/sec.
+> >
+> > So if we have 8 NIC/GPU pairs we'd be hitting 96.6% * 200 * 8 =3D 1545 =
+GB/sec.
+>
+> Lets keep our units straight.
+> Here you mean 1545 Gbit/sec, which is 193 GBytes/s
+>
+
+Yes! Sorry! I definitely meant 1545 Gbits/sec, sorry!
+
+> > If we have, say, 2 NIC/GPU pairs, we'd be hitting 96.6% * 200 * 2 =3D 3=
+84 GB/sec
+>
+> Here you mean 384 Gbit/sec, which is 48 GBytes/sec.
+>
+
+Correct again!
+
+> > ...
+> > etc.
+> >
+>
+> These massive throughput numbers are important, because they *exceed*
+> the physical host RAM/DIMM memory speeds.
+>
+> This is the *real argument* why software cannot afford to do a single
+> copy of the data from host-RAM into GPU-memory, because the CPU memory
+> throughput to DRAM/DIMM are insufficient.
+>
+> My testlab CPU E5-1650 have 4 DIMM slots DDR4
+>   - Data Width: 64 bits (=3D 8 bytes)
+>   - Configured Memory Speed: 2400 MT/s
+>   - Theoretical maximum memory bandwidth: 76.8 GBytes/s (2400*8*4)
+>
+> Even the theoretical max 76.8 GBytes/s (614 Gbit/s) is not enough for
+> the 193 GBytes/s or 1545 Gbit/s (8 NIC/GPU pairs).
+>
+> When testing this with lmbench tool bw_mem, the results (below
+> signature) are in the area 14.8 GBytes/sec (118 Gbit/s), as soon as
+> exceeding L3 cache size.  In practice it looks like main memory is
+> limited to reading 118 Gbit/s *once*. (Mina's NICs run at 200 Gbit/s)
+>
+> Given DDIO can deliver network packets into L3, I also tried to figure
+> out what the L3 read bandwidth, which I measured to be 42.4 GBits/sec
+> (339 Gbit/s), in hopes that it would be enough, but it was not.
+>
+>
+
+Yes, avoiding any memory speed bottleneck as you note is important,
+but the second point mentioned in my cover letter is also impactful:
+
+" Alleviate PCIe BW pressure, by limiting data transfer to the lowest level
+  of the PCIe tree, compared to traditional path which sends data through t=
+he
+  root complex."
+
+Depending on the hardware, this is a bottleneck that we avoid with
+device memory TCP. NIC/GPU copies occupy the PCIe link bandwidth. In a
+hierarchy like this:
+
+          root complex
+                  | (uplink)
+          PCIe switch
+           /             \
+       NIC           GPU
+
+I believe the uplink from the PCIe switch to the root complex is used
+up 2 times for TX and 2 times for RX if the data needs to go through
+host memory:
+
+RX: NIC -> root complex -> GPU
+TX: GPU -> root complex -> NIC
+
+With device memory TCP, and enabling PCI P2P communication between the
+devices under the same PCIe switch, the payload flows directly from/to
+the NIC/GPU through the PCIe switch, and the payload never goes to the
+root complex, alleviating pressure/bottleneck on that link between the
+PCIe switch/root complex. I believe this is a core reason we're able
+to scale throughput linearly with NIC/GPU pairs, because we don't
+stress share uplink connections and all the payload data transfer
+happens beneath the PCIe switch.
+
+> --Jesper
+> (data below signature)
+>
+> CPU under test:
+>
+>   $ cat /proc/cpuinfo | egrep -e 'model name|cache size' | head -2
+>   model name    : Intel(R) Xeon(R) CPU E5-1650 v4 @ 3.60GHz
+>   cache size    : 15360 KB
+>
+>
+> Providing some cmdline outputs from lmbench "bw_mem" tool.
+> (Output format is "%0.2f %.2f\n", megabytes, megabytes_per_second)
+>
+> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 256M rd
+> 256.00 14924.50
+>
+> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 256M wr
+> 256.00 9895.25
+>
+> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 256M rdwr
+> 256.00 9737.54
+>
+> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 256M bcopy
+> 256.00 12462.88
+>
+> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 256M bzero
+> 256.00 14869.89
+>
+>
+> Next output shows reducing size below L3 cache size, which shows an
+> increase in speed, likely the L3 bandwidth.
+>
+> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 64M rd
+> 64.00 14840.58
+>
+> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 32M rd
+> 32.00 14823.97
+>
+> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 16M rd
+> 16.00 24743.86
+>
+> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 8M rd
+> 8.00 40852.26
+>
+> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 4M rd
+> 4.00 42545.65
+>
+> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 2M rd
+> 2.00 42447.82
+>
+> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 1M rd
+> 1.00 42447.82
+>
+
+
+--=20
+Thanks,
+Mina
 
