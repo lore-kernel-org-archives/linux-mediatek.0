@@ -4,103 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBE85C001DE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 14:42:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A03A0C41513
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 15:48:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wW+yxI8yxN2EpXQmQQmfIU1Bx6t3bU9b5y02DCMy5DA=; b=I2bTNNA+xJrRYyyyppPVEIzMZs
-	5/orh2cgaPldg4r41Z3Mz1Qy70skHhm2s1pUB8OGbUhGuN2IV6zahol9WZEfgxQR9kyG7ruoMz2ju
-	IOoPkn+/Od5l86qPo3KvKDfwTeJ4SW2VEsFNwLyCKKnXA13kKnzbn+Nb85JyzuXYQDqn5gj6uI68p
-	c2sBt+3Bb7Pr7nuzxZyuFtrfmO3RwxpxgqjpGRAPKHGIsIhPeDfRHOt6EAqS/0zx8bjN9WbBm9V4t
-	xczIqi0Li4LPTXISRhbIMjUQFg0DXNAIMdX+BaS/EkpHGI1jRN6rJFMs9YoCDuIvMIaJvXYwtOi4G
-	0/hLTIWA==;
+	bh=Kv0CVpIAbOCTgFuDNHhAn/Zzoy91v6oDWcgciC7rPpg=; b=Mn3AqFpuF7o0m4VUKfw1LeClF7
+	kZ5Uabj+l6fHbfMoDESo7aJNOeCBpGMUj6LcyTMEJEF3X+OKsoVNBCibzz0Hu+mf91EBFFSzp6Tg8
+	bi43A7tqWKtoBI+xrBM6bGTNNHmF2vBjEeHA1fQKMht0dmQAeA8Z1YBEd3pMsPZUGxU7R21xn1ID/
+	muF9I6di/bClORnwHaA17G/CMj9Bf/udlfClVN7bmKNVrG6LNU65mRAuXjKF+cg38nYwR8ynHr/Jx
+	gDKsQ2b/yC65AW000SbK4QFBvnUjtFfhLWa7yQyXaT4g6ouoiKoUm00GXICM56TBbS2TRVgP4e+Jx
+	dFEPEARA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOJFJ-007nm6-2W;
-	Tue, 25 Jul 2023 14:42:41 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1qOKGV-007x8H-0J;
+	Tue, 25 Jul 2023 15:47:59 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOJFE-007nkh-24
-	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Jul 2023 14:42:40 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-991da766865so940927266b.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Jul 2023 07:42:33 -0700 (PDT)
+	id 1qOKGP-007x7A-2u;
+	Tue, 25 Jul 2023 15:47:56 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-686b9920362so214208b3a.1;
+        Tue, 25 Jul 2023 08:47:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690296152; x=1690900952;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=wW+yxI8yxN2EpXQmQQmfIU1Bx6t3bU9b5y02DCMy5DA=;
-        b=AAC8QZGypnV8MlXLbCSuAJaXlkV0xrtlFF/8nKOHV4OTxwsN+rOZaVh5c+/e//EmnP
-         tUOVtSGe0dGDetbtUwbqrk7Su9hmsk66a4m1nZ7nrdIH59HBDQPRSsF8HhO83iEtCVtD
-         sN/s8E8dHD+/3dQJCl6s4F/ZmT4nGFFuOv+XAniukAIQ32Ktldsi9SLFMMT4Go2/RvVh
-         rf+YTntMigU40sd4ZmdBN7zLqC0mN3kcZwzF5+xU/ADQEGoymBLVqBTYObACrWiVmwKT
-         W+si7/6edvnWm2OCHWKLY2Q6J4un+QQrJiu0XaZTknPsfgTN0LMxS3ztbGlBRMl+2JrV
-         Uixg==
+        d=gmail.com; s=20221208; t=1690300069; x=1690904869;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=Kv0CVpIAbOCTgFuDNHhAn/Zzoy91v6oDWcgciC7rPpg=;
+        b=lhYTFpTzid9ySnq8fRb06le/uA7LUR52vbhdjkFXZNPRFyppAG7M9ZCku9BoMQRIVU
+         GJU69wJkn4KvFQifOOackpouOSfYMxe5NFXyMIGqiOpTPSZBxA6OqcebeZG3D7W4HCGU
+         PbZfJnlCF7PHbvBF7tJXKZvW4tQ4T3FgyhfJFcJ/3eDU4REnLYckyFI+6Ra9YT9Vs369
+         CWDt0hxIi2yv0pHdbTAiemfNH2F4kjmRHSbR66POc8YFjydL+MthFLWkkZRabPmdE4H+
+         7dEufGN6bMpej6Ludw30wDVZHVC/jYEi0uKvBRxmmrw3fKcyXvqa29HuH5sHKLPIjiVo
+         EpdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690296152; x=1690900952;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wW+yxI8yxN2EpXQmQQmfIU1Bx6t3bU9b5y02DCMy5DA=;
-        b=lTR+n8hHMEk3F5Y5SNPEG9Cf0pAOtZoq0dhPsL0qJjGu+2PlCHAoVvfkvSYz+P06/D
-         i2pGM04sCXF/XQ1cHoy6GXFHztIdaKXqn00x74b4mw5aatE6gjxbgY8vAEPxjyN15elz
-         PLZrfV2ZyZ80BXLf1O04h98qX+8dKFM1ikhDHuni+gnhdgejXzjK5ymhwEbt5PWkjCvG
-         WuIui/bCLPRnwhF7hb8+brgMImv50GMU7KugaVwmHucg7Lg/NU5Hlu/GXCdFcH5RzsbT
-         GNP/u4F8jCjbbfMReX7fcdaIcBVWY2ZSiXAmwVTu7skj0Rx9ohby5vGTpfNuy0XhOVCy
-         i0Ew==
-X-Gm-Message-State: ABy/qLbr1W1YrVI8IMg59Qd8WNkF5S+VrQ2J7e02zIB95LOb92zHQjAM
-	5ZEbjYSJS7wexhenlQnTjivzdg==
-X-Google-Smtp-Source: APBJJlGff6g71JWpQjVCHmNUgQhB/qfg/p/IK4FzRbAEAy0en6bUzjPsetKeoJvw/nCe0wlDIJ5+Ig==
-X-Received: by 2002:a17:906:7394:b0:994:4095:3abf with SMTP id f20-20020a170906739400b0099440953abfmr14078615ejl.14.1690296152484;
-        Tue, 25 Jul 2023 07:42:32 -0700 (PDT)
-Received: from hera (ppp089210088142.access.hol.gr. [89.210.88.142])
-        by smtp.gmail.com with ESMTPSA id v17-20020a1709067d9100b0098d2261d189sm8390955ejo.19.2023.07.25.07.42.29
+        d=1e100.net; s=20221208; t=1690300069; x=1690904869;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Kv0CVpIAbOCTgFuDNHhAn/Zzoy91v6oDWcgciC7rPpg=;
+        b=gOCLIJbSqciHNld/VSXKYvzf+pd6ut34fIAaBxmSc60gWqtQ2v+96kBqu0lz5QrjyZ
+         QbARzOLySiynW7OAdKCmQn4tZFM/89BwfyFsFbtWhjBjaXlnK6/HSsDvef3Ji9EoQ0D8
+         TVu/J3EWG3x1kjJDMSWtmvc+3YyFSQU4SHzCRrjxfdoZ1D8kqcTy+kMp4Cu7H4e26XcR
+         0IdHjbwzKqqT2yS8618sAN2qJJCsII3zH4mQGZpzqy4o4GB4T7xQNcv1kwpvXFlcdQAq
+         wHh20S3oB9Q8WdKhoWIsPV6b654b+zb/zV9CK3GDopW2JmgZVK4Eqmd7Fr/MQJl6r2jq
+         roKg==
+X-Gm-Message-State: ABy/qLZrSZ/113iYb8M/EyVGBJriHYM1DhpeoL2YJ0NMVyRpaJsON/DV
+	lZsBrXwWdBqK9z6UQujydRg=
+X-Google-Smtp-Source: APBJJlEf2D4XEit3kOveurI7H3H3WBNCTXjVjG+ZhQj+yjiPBiDNnTwmbzdrpR4hMoNYKSr2rDUWDg==
+X-Received: by 2002:a05:6a20:1388:b0:137:3803:33c with SMTP id hn8-20020a056a20138800b001373803033cmr9585663pzc.54.1690300069146;
+        Tue, 25 Jul 2023 08:47:49 -0700 (PDT)
+Received: from ?IPv6:2605:59c8:448:b800:82ee:73ff:fe41:9a02? ([2605:59c8:448:b800:82ee:73ff:fe41:9a02])
+        by smtp.googlemail.com with ESMTPSA id d20-20020aa78154000000b00682a8e600f0sm9814392pfn.35.2023.07.25.08.47.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Jul 2023 07:42:32 -0700 (PDT)
-Date: Tue, 25 Jul 2023 17:42:28 +0300
-From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	Alexander Lobakin <aleksander.lobakin@intel.com>,
-	Eric Dumazet <edumazet@google.com>, Wei Fang <wei.fang@nxp.com>,
-	Shenwei Wang <shenwei.wang@nxp.com>,
-	Clark Wang <xiaoning.wang@nxp.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Sunil Goutham <sgoutham@marvell.com>,
-	Geetha sowjanya <gakula@marvell.com>,
-	Subbaraya Sundeep <sbhatta@marvell.com>,
-	hariprasad <hkelam@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>,
-	Leon Romanovsky <leon@kernel.org>,
-	Alexei Starovoitov <ast@kernel.org>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Jesper Dangaard Brouer <hawk@kernel.org>,
-	John Fastabend <john.fastabend@gmail.com>,
-	Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-rdma@vger.kernel.org, bpf@vger.kernel.org,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v2] page_pool: split types and declarations from
- page_pool.h
-Message-ID: <ZL/fVF7WetuLgB0l@hera>
-References: <20230725131258.31306-1-linyunsheng@huawei.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+        Tue, 25 Jul 2023 08:47:48 -0700 (PDT)
+Message-ID: <94272ffed7636c4c92fcc73ccfc15236dd8e47dc.camel@gmail.com>
+Subject: Re: [PATCH net-next v2] page_pool: split types and declarations
+ from page_pool.h
+From: Alexander H Duyck <alexander.duyck@gmail.com>
+To: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
+ kuba@kernel.org,  pabeni@redhat.com
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Alexander Lobakin
+ <aleksander.lobakin@intel.com>, Eric Dumazet <edumazet@google.com>, Wei
+ Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang
+ <xiaoning.wang@nxp.com>, NXP Linux Team <linux-imx@nxp.com>, Sunil Goutham
+ <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, Subbaraya
+ Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, Saeed
+ Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Alexei
+ Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, John Fastabend
+ <john.fastabend@gmail.com>, Felix Fietkau <nbd@nbd.name>,  Lorenzo Bianconi
+ <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
+ <shayne.chen@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>, Kalle Valo
+ <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Ilias
+ Apalodimas <ilias.apalodimas@linaro.org>, linux-rdma@vger.kernel.org,
+ bpf@vger.kernel.org,  linux-wireless@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org
+Date: Tue, 25 Jul 2023 08:47:46 -0700
 In-Reply-To: <20230725131258.31306-1-linyunsheng@huawei.com>
+References: <20230725131258.31306-1-linyunsheng@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.3 (3.48.3-1.fc38) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230725_074236_686439_120E8DD5 
-X-CRM114-Status: GOOD (  36.52  )
+X-CRM114-CacheID: sfid-20230725_084753_970672_19504D37 
+X-CRM114-Status: GOOD (  42.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,26 +108,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yunsheng, all
-
-On Tue, Jul 25, 2023 at 09:12:55PM +0800, Yunsheng Lin wrote:
+On Tue, 2023-07-25 at 21:12 +0800, Yunsheng Lin wrote:
 > Split types and pure function declarations from page_pool.h
 > and add them in page_pool/types.h, so that C sources can
 > include page_pool.h and headers should generally only include
 > page_pool/types.h as suggested by jakub.
->
-
-Apologies for the very late replies, I was on long vacation with limited
-internet access.
-Yunsheng, since there's been a few mails and I lost track, this is instead of
-[0] right? If so, I prefer this approach.  It looks ok on a first quick pass,
-I'll have a closer look later.
-
-[0] https://lore.kernel.org/netdev/20230714170853.866018-2-aleksander.lobakin@intel.com/
-
-Thanks
-/Ilias
-
+>=20
 > Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
 > Suggested-by: Jakub Kicinski <kuba@kernel.org>
 > CC: Alexander Lobakin <aleksander.lobakin@intel.com>
@@ -155,7 +134,7 @@ Thanks
 >  include/net/page_pool/types.h                 | 193 ++++++++++++++++++
 >  11 files changed, 206 insertions(+), 189 deletions(-)
 >  create mode 100644 include/net/page_pool/types.h
->
+>=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
 > index d0553ad37865..1dbfe7fcb10e 100644
 > --- a/MAINTAINERS
@@ -167,104 +146,15 @@ Thanks
 > +F:	include/net/page_pool_types.h
 >  F:	include/trace/events/page_pool.h
 >  F:	net/core/page_pool.c
->
-> diff --git a/drivers/net/ethernet/engleder/tsnep_main.c b/drivers/net/ethernet/engleder/tsnep_main.c
-> index 079f9f6ae21a..934b890ba2ab 100644
-> --- a/drivers/net/ethernet/engleder/tsnep_main.c
-> +++ b/drivers/net/ethernet/engleder/tsnep_main.c
-> @@ -28,6 +28,7 @@
->  #include <linux/iopoll.h>
->  #include <linux/bpf.h>
->  #include <linux/bpf_trace.h>
-> +#include <net/page_pool.h>
->  #include <net/xdp_sock_drv.h>
->
->  #define TSNEP_RX_OFFSET (max(NET_SKB_PAD, XDP_PACKET_HEADROOM) + NET_IP_ALIGN)
-> diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethernet/freescale/fec_main.c
-> index 03ac7690b5c4..68b79bda632a 100644
-> --- a/drivers/net/ethernet/freescale/fec_main.c
-> +++ b/drivers/net/ethernet/freescale/fec_main.c
-> @@ -38,6 +38,7 @@
->  #include <linux/in.h>
->  #include <linux/ip.h>
->  #include <net/ip.h>
-> +#include <net/page_pool.h>
->  #include <net/selftests.h>
->  #include <net/tso.h>
->  #include <linux/tcp.h>
-> diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-> index 8cdd92dd9762..d4f1baf0f987 100644
-> --- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-> +++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-> @@ -7,6 +7,7 @@
->
->  #include <linux/interrupt.h>
->  #include <linux/pci.h>
-> +#include <net/page_pool.h>
->  #include <net/tso.h>
->  #include <linux/bitfield.h>
->
-> diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_pf.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_pf.c
-> index 9551b422622a..8807e40b1174 100644
-> --- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_pf.c
-> +++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_pf.c
-> @@ -16,6 +16,7 @@
->  #include <linux/bpf.h>
->  #include <linux/bpf_trace.h>
->  #include <linux/bitfield.h>
-> +#include <net/page_pool.h>
->
->  #include "otx2_reg.h"
->  #include "otx2_common.h"
-> diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/params.c b/drivers/net/ethernet/mellanox/mlx5/core/en/params.c
-> index 5ce28ff7685f..0f152f14165b 100644
-> --- a/drivers/net/ethernet/mellanox/mlx5/core/en/params.c
-> +++ b/drivers/net/ethernet/mellanox/mlx5/core/en/params.c
-> @@ -6,6 +6,7 @@
->  #include "en/port.h"
->  #include "en_accel/en_accel.h"
->  #include "en_accel/ipsec.h"
-> +#include <net/page_pool.h>
->  #include <net/xdp_sock_drv.h>
->
->  static u8 mlx5e_mpwrq_min_page_shift(struct mlx5_core_dev *mdev)
-> diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-> index 40589cebb773..16038c23b7d8 100644
-> --- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-> +++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-> @@ -35,6 +35,7 @@
->  #include "en/xdp.h"
->  #include "en/params.h"
->  #include <linux/bitfield.h>
-> +#include <net/page_pool.h>
->
->  int mlx5e_xdp_max_mtu(struct mlx5e_params *params, struct mlx5e_xsk_param *xsk)
->  {
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-> index 6b07b8fafec2..95c16f11d156 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-> @@ -15,6 +15,7 @@
->  #include <linux/average.h>
->  #include <linux/soc/mediatek/mtk_wed.h>
->  #include <net/mac80211.h>
-> +#include <net/page_pool.h>
->  #include "util.h"
->  #include "testmode.h"
->
-> diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
-> index faaba050f843..864c51c95ac4 100644
-> --- a/include/linux/skbuff.h
-> +++ b/include/linux/skbuff.h
-> @@ -32,7 +32,7 @@
->  #include <linux/if_packet.h>
->  #include <linux/llist.h>
->  #include <net/flow.h>
-> -#include <net/page_pool.h>
-> +#include <net/page_pool/types.h>
->  #if IS_ENABLED(CONFIG_NF_CONNTRACK)
->  #include <linux/netfilter/nf_conntrack_common.h>
->  #endif
+> =20
+
+The file name here doesn't match what you created below. I think you
+swapped a '/' for a '_'.
+
+
+
+<...>
+
 > diff --git a/include/net/page_pool.h b/include/net/page_pool.h
 > index f1d5cc1fa13b..dd70474c67cc 100644
 > --- a/include/net/page_pool.h
@@ -272,7 +162,7 @@ Thanks
 > @@ -29,107 +29,9 @@
 >  #ifndef _NET_PAGE_POOL_H
 >  #define _NET_PAGE_POOL_H
->
+> =20
 > -#include <linux/mm.h> /* Needed by ptr_ring */
 > -#include <linux/ptr_ring.h>
 > -#include <linux/dma-direction.h>
@@ -280,7 +170,8 @@ Thanks
 > -#define PP_FLAG_DMA_MAP		BIT(0) /* Should page_pool do the DMA
 > -					* map/unmap
 > -					*/
-> -#define PP_FLAG_DMA_SYNC_DEV	BIT(1) /* If set all pages that the driver gets
+> -#define PP_FLAG_DMA_SYNC_DEV	BIT(1) /* If set all pages that the driver =
+gets
 > -					* from page_pool will be
 > -					* DMA-synced-for-device according to
 > -					* the length provided by the device
@@ -353,7 +244,8 @@ Thanks
 > -};
 > -
 > -/* This struct wraps the above stats structs so users of the
-> - * page_pool_get_stats API can pass a single argument when requesting the
+> - * page_pool_get_stats API can pass a single argument when requesting th=
+e
 > - * stats for the page pool.
 > - */
 > -struct page_pool_stats {
@@ -368,18 +260,20 @@ Thanks
 > -/*
 > - * Drivers that wish to harvest page pool stats and report them to users
 > - * (perhaps via ethtool, debugfs, or another mechanism) can allocate a
-> - * struct page_pool_stats call page_pool_get_stats to get stats for the specified pool.
+> - * struct page_pool_stats call page_pool_get_stats to get stats for the =
+specified pool.
 > - */
 > -bool page_pool_get_stats(struct page_pool *pool,
 > -			 struct page_pool_stats *stats);
 > -#else
 > +#include <net/page_pool/types.h>
->
+> =20
 > +#ifndef CONFIG_PAGE_POOL_STATS
 >  static inline int page_pool_ethtool_stats_get_count(void)
 >  {
 >  	return 0;
-> @@ -144,72 +46,7 @@ static inline u64 *page_pool_ethtool_stats_get(u64 *data, void *stats)
+> @@ -144,72 +46,7 @@ static inline u64 *page_pool_ethtool_stats_get(u64 *d=
+ata, void *stats)
 >  {
 >  	return data;
 >  }
@@ -449,33 +343,40 @@ Thanks
 > -};
 > -
 > -struct page *page_pool_alloc_pages(struct page_pool *pool, gfp_t gfp);
->
->  static inline struct page *page_pool_dev_alloc_pages(struct page_pool *pool)
+> =20
+>  static inline struct page *page_pool_dev_alloc_pages(struct page_pool *p=
+ool)
 >  {
-> @@ -218,9 +55,6 @@ static inline struct page *page_pool_dev_alloc_pages(struct page_pool *pool)
+> @@ -218,9 +55,6 @@ static inline struct page *page_pool_dev_alloc_pages(s=
+truct page_pool *pool)
 >  	return page_pool_alloc_pages(pool, gfp);
 >  }
->
-> -struct page *page_pool_alloc_frag(struct page_pool *pool, unsigned int *offset,
+> =20
+> -struct page *page_pool_alloc_frag(struct page_pool *pool, unsigned int *=
+offset,
 > -				  unsigned int size, gfp_t gfp);
 > -
->  static inline struct page *page_pool_dev_alloc_frag(struct page_pool *pool,
+>  static inline struct page *page_pool_dev_alloc_frag(struct page_pool *po=
+ol,
 >  						    unsigned int *offset,
 >  						    unsigned int size)
-> @@ -239,20 +73,7 @@ inline enum dma_data_direction page_pool_get_dma_dir(struct page_pool *pool)
+> @@ -239,20 +73,7 @@ inline enum dma_data_direction page_pool_get_dma_dir(=
+struct page_pool *pool)
 >  	return pool->p.dma_dir;
 >  }
->
+> =20
 > -bool page_pool_return_skb_page(struct page *page, bool napi_safe);
 > -
-> -struct page_pool *page_pool_create(const struct page_pool_params *params);
+> -struct page_pool *page_pool_create(const struct page_pool_params *params=
+);
 > -
 > -struct xdp_mem_info;
 > -
 > -#ifdef CONFIG_PAGE_POOL
 > -void page_pool_unlink_napi(struct page_pool *pool);
 > -void page_pool_destroy(struct page_pool *pool);
-> -void page_pool_use_xdp_mem(struct page_pool *pool, void (*disconnect)(void *),
+> -void page_pool_use_xdp_mem(struct page_pool *pool, void (*disconnect)(vo=
+id *),
 > -			   struct xdp_mem_info *mem);
 > -void page_pool_put_page_bulk(struct page_pool *pool, void **data,
 > -			     int count);
@@ -484,35 +385,43 @@ Thanks
 >  static inline void page_pool_unlink_napi(struct page_pool *pool)
 >  {
 >  }
-> @@ -261,6 +82,7 @@ static inline void page_pool_destroy(struct page_pool *pool)
+> @@ -261,6 +82,7 @@ static inline void page_pool_destroy(struct page_pool =
+*pool)
 >  {
 >  }
->
+> =20
 > +struct xdp_mem_info;
 >  static inline void page_pool_use_xdp_mem(struct page_pool *pool,
 >  					 void (*disconnect)(void *),
 >  					 struct xdp_mem_info *mem)
-> @@ -273,10 +95,6 @@ static inline void page_pool_put_page_bulk(struct page_pool *pool, void **data,
+> @@ -273,10 +95,6 @@ static inline void page_pool_put_page_bulk(struct pag=
+e_pool *pool, void **data,
 >  }
 >  #endif
->
-> -void page_pool_put_defragged_page(struct page_pool *pool, struct page *page,
+> =20
+> -void page_pool_put_defragged_page(struct page_pool *pool, struct page *p=
+age,
 > -				  unsigned int dma_sync_size,
 > -				  bool allow_direct);
 > -
->  /* pp_frag_count represents the number of writers who can update the page
+>  /* pp_frag_count represents the number of writers who can update the pag=
+e
 >   * either by updating skb->data or via DMA mappings for the device.
->   * We can't rely on the page refcnt for that as we don't know who might be
-> @@ -385,8 +203,6 @@ static inline bool page_pool_put(struct page_pool *pool)
+>   * We can't rely on the page refcnt for that as we don't know who might =
+be
+> @@ -385,8 +203,6 @@ static inline bool page_pool_put(struct page_pool *po=
+ol)
 >  	return refcount_dec_and_test(&pool->user_cnt);
 >  }
->
+> =20
 > -/* Caller must provide appropriate safe context, e.g. NAPI. */
 > -void page_pool_update_nid(struct page_pool *pool, int new_nid);
->  static inline void page_pool_nid_changed(struct page_pool *pool, int new_nid)
+>  static inline void page_pool_nid_changed(struct page_pool *pool, int new=
+_nid)
 >  {
->  	if (unlikely(pool->p.nid != new_nid))
-> diff --git a/include/net/page_pool/types.h b/include/net/page_pool/types.h
+>  	if (unlikely(pool->p.nid !=3D new_nid))
+> diff --git a/include/net/page_pool/types.h b/include/net/page_pool/types.=
+h
 > new file mode 100644
 > index 000000000000..1d54ba0708db
 > --- /dev/null
@@ -529,7 +438,8 @@ Thanks
 > +#define PP_FLAG_DMA_MAP		BIT(0) /* Should page_pool do the DMA
 > +					* map/unmap
 > +					*/
-> +#define PP_FLAG_DMA_SYNC_DEV	BIT(1) /* If set all pages that the driver gets
+> +#define PP_FLAG_DMA_SYNC_DEV	BIT(1) /* If set all pages that the driver =
+gets
 > +					* from page_pool will be
 > +					* DMA-synced-for-device according to
 > +					* the length provided by the device
@@ -602,7 +512,8 @@ Thanks
 > +};
 > +
 > +/* This struct wraps the above stats structs so users of the
-> + * page_pool_get_stats API can pass a single argument when requesting the
+> + * page_pool_get_stats API can pass a single argument when requesting th=
+e
 > + * stats for the page pool.
 > + */
 > +struct page_pool_stats {
@@ -687,23 +598,27 @@ Thanks
 > +};
 > +
 > +struct page *page_pool_alloc_pages(struct page_pool *pool, gfp_t gfp);
-> +struct page *page_pool_alloc_frag(struct page_pool *pool, unsigned int *offset,
+> +struct page *page_pool_alloc_frag(struct page_pool *pool, unsigned int *=
+offset,
 > +				  unsigned int size, gfp_t gfp);
 > +bool page_pool_return_skb_page(struct page *page, bool napi_safe);
-> +struct page_pool *page_pool_create(const struct page_pool_params *params);
+> +struct page_pool *page_pool_create(const struct page_pool_params *params=
+);
 > +
 > +#ifdef CONFIG_PAGE_POOL
 > +void page_pool_unlink_napi(struct page_pool *pool);
 > +void page_pool_destroy(struct page_pool *pool);
 > +
 > +struct xdp_mem_info;
-> +void page_pool_use_xdp_mem(struct page_pool *pool, void (*disconnect)(void *),
+> +void page_pool_use_xdp_mem(struct page_pool *pool, void (*disconnect)(vo=
+id *),
 > +			   struct xdp_mem_info *mem);
 > +void page_pool_put_page_bulk(struct page_pool *pool, void **data,
 > +			     int count);
 > +#endif
 > +
-> +void page_pool_put_defragged_page(struct page_pool *pool, struct page *page,
+> +void page_pool_put_defragged_page(struct page_pool *pool, struct page *p=
+age,
 > +				  unsigned int dma_sync_size,
 > +				  bool allow_direct);
 > +
@@ -711,7 +626,20 @@ Thanks
 > +void page_pool_update_nid(struct page_pool *pool, int new_nid);
 > +
 > +#endif /* _NET_PAGE_POOL_H */
-> --
-> 2.33.0
->
+
+
+This seems kind of overkill for what is needed. It seems like the
+general thought process with splitting this was so that you had just
+the minimum of what is needed to support skbuff.h and the functions
+declared there. The rest of this would then be added via the .h to the
+.c files that will actually be calling the functions.
+
+By that logic I think the only thing we really need is the function
+declaration for page_pool_return_skb_page moved into skbuff.h. We could
+then just remove page_pool.h from skbuff.h couldn't we?
+
+Another thing we could consider doing is looking at splitting things up
+so that we had a include file in net/core/page_pool.h to handle some of
+the cases where we are just linking the page_pool bits to other core
+file bits such as xdp.c and skbuff.c.
 
