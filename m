@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91715C41513
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 00:51:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 360DFEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 00:51:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GiRsZQ5dG6mfcGn+pLRJAZ3Ylsvfh7YDf+U40XTshMc=; b=yMN5DYYwra99rAwQ2aZVgQuvUH
-	Dej0MMpmH/BqErqtr/okemp6lDtyDqAZaLp52/VS7O+JmV8PcNd5uTI84nBZjx2/y+PCfxGLTugbP
-	jslKeo7fpMXsRCaJRzpmBC/pPyr8tdg11kIgW8CYGQlV1WwIEYrQmxonc/mX8U3YPYUNUa9VLMK7o
-	zi/gGK/FsszDNhK9Eql+UT8wbzprWAOIN1kOWxs65usb3mDfSxkyFJbiA6xaupNIwGl4tna/uMxoN
-	UOrt7FVW0Yk+2BjXVEqeUD8I5Y0A2VNIQ7azPgQktnKaG+NHNSPdZWDi1ReKFWiTPk6qGh6zR+2Zn
-	+mVT4/Cw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=goQBq6ugKS/BUWjMWs6Q49ZicZEa3mbuoDf4l0njwaU=; b=vC6SQC9pcTDpkn7ACvG0OopeIe
+	fmsYkN/vt8VvL5uLaWkKAorolBbJh3ZraQDQwrLVdQhaOCejwYYp0/AN8g0P8b8kIXC5T8pK8Chlv
+	rMIbldqQQmmCeQKVoPvfdthMyKz6mCcKJdVR6PVmUPFqj5ZC1zQcaIyIZUULVxpWy/WfXUoBhBCI/
+	9uv71gKmwLr2KwkuMiKl8l3c8RbMrgyixYvc1MEU01Oef5oZgYDtMsVWOtHqzNq4fJbUEyHBERt1T
+	k4SPyoh6/PUDNhvYjY2HZcxLeAo45XsQIDn6gPUvvEDdDEOkbnMEbZL7QBJ5/d9dFX/FL2TpV6/gS
+	Ntz7Vuiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO6H9-005m06-1h;
-	Tue, 25 Jul 2023 00:51:43 +0000
+	id 1qO6HH-005m3Q-2i;
+	Tue, 25 Jul 2023 00:51:51 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO6H6-005lyR-1w;
+	id 1qO6H7-005lyj-1T;
 	Tue, 25 Jul 2023 00:51:42 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1qO6Ga-0004SA-10;
-	Tue, 25 Jul 2023 00:51:08 +0000
-Date: Tue, 25 Jul 2023 01:51:00 +0100
+	id 1qO6Gq-0004SH-2k;
+	Tue, 25 Jul 2023 00:51:24 +0000
+Date: Tue, 25 Jul 2023 01:51:16 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -52,15 +52,17 @@ To: "David S. Miller" <davem@davemloft.net>,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v6 0/8] net: ethernet: mtk_eth_soc: add basic
- support for MT7988 SoC
-Message-ID: <cover.1690246066.git.daniel@makrotopia.org>
+Subject: [PATCH net-next v6 1/8] dt-bindings: net: mediatek,net: add missing
+ mediatek,mt7621-eth
+Message-ID: <ec4371c4b5a331c5217b5f13a0c9e6c444838e14.1690246066.git.daniel@makrotopia.org>
+References: <cover.1690246066.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1690246066.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_175140_640548_3DFC708A 
-X-CRM114-Status: GOOD (  14.58  )
+X-CRM114-CacheID: sfid-20230724_175141_513649_434D675C 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,66 +77,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek MT7988 SoC introduces a new version (3) of the NETSYS
-block and comes with three instead of two MACs.
+Document the Ethernet controller found in the MediaTek MT7621 MIPS SoC
+family which is supported by the mtk_eth_soc driver.
 
-The first MAC can be internally connected to a built-in Gigabit
-Ethernet switch with four 1000M/100M/10M twisted pair user ports.
+Fixes: 889bcbdeee57 ("net: ethernet: mediatek: support MT7621 SoC ethernet hardware")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ .../devicetree/bindings/net/mediatek,net.yaml | 27 ++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
 
-The second MAC can be internally connected to a built-in 2500Base-T
-Ethernet PHY.
-
-There are two SerDes units which can be operated in USXGMII, 10GBase-(K)R,
-5GBase-R, 2500Base-X, 1000Base-X or SGMII interface mode.
-
-This series adds initial support for NETSYS v3 and the first MAC of the
-MT7988 SoC connecting the built-in DSA switch.
-
-The switch is supported since commit 110c18bfed414 ("net: dsa: mt7530:
-introduce driver for MT7988 built-in switch").
-
-Basic support for the 1000M/100M/10M built-in PHYs connected to the
-switch ports is present since commit ("98c485eaf509b net: phy: add
-driver for MediaTek SoC built-in GE PHYs").
-
-Changes since v5:
-  * Rebase again on current net-next tree
-
-Changes since v4:
-  * Rebase on current net-next tree
-
-Changes since v3:
-  * Set 'mediatek,infracfg = false;' in dt-bindings for those chips
-    which do not require infracfg phandle.
-
-Changes since v2:
-  * Use version number instead of feature bits for NETSYS version
-  * Remove unneeded check for NULL when calling mtk_pcs_lynxi_destroy
-  * Reduce dt-bindings to what is actually needed at this point for
-    the driver to work.
-
-Daniel Golle (3):
-  dt-bindings: net: mediatek,net: add missing mediatek,mt7621-eth
-  dt-bindings: net: mediatek,net: add mt7988-eth binding
-  net: ethernet: mtk_eth_soc: convert clock bitmap to u64
-
-Lorenzo Bianconi (5):
-  net: ethernet: mtk_eth_soc: add version in mtk_soc_data
-  net: ethernet: mtk_eth_soc: increase MAX_DEVS to 3
-  net: ethernet: mtk_eth_soc: rely on MTK_MAX_DEVS and remove
-    MTK_MAC_COUNT
-  net: ethernet: mtk_eth_soc: add NETSYS_V3 version support
-  net: ethernet: mtk_eth_soc: convert caps in mtk_soc_data struct to u64
-
- .../devicetree/bindings/net/mediatek,net.yaml | 109 +++++++-
- drivers/net/ethernet/mediatek/mtk_eth_path.c  |  22 +-
- drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 205 +++++++++------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 241 ++++++++++--------
- drivers/net/ethernet/mediatek/mtk_ppe.c       |  18 +-
- .../net/ethernet/mediatek/mtk_ppe_offload.c   |   2 +-
- drivers/net/ethernet/mediatek/mtk_wed.c       |   4 +-
- 7 files changed, 399 insertions(+), 202 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+index acb2b2ac4fe1e..38aa3d97ee234 100644
+--- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+@@ -19,6 +19,7 @@ properties:
+     enum:
+       - mediatek,mt2701-eth
+       - mediatek,mt7623-eth
++      - mediatek,mt7621-eth
+       - mediatek,mt7622-eth
+       - mediatek,mt7629-eth
+       - mediatek,mt7981-eth
+@@ -32,7 +33,7 @@ properties:
+   clock-names: true
+ 
+   interrupts:
+-    minItems: 3
++    minItems: 1
+     maxItems: 4
+ 
+   power-domains:
+@@ -131,6 +132,30 @@ allOf:
+ 
+         mediatek,wed-pcie: false
+ 
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt7621-eth
++    then:
++      properties:
++        interrupts:
++          maxItems: 1
++
++        clocks:
++          minItems: 2
++          maxItems: 2
++
++        clock-names:
++          items:
++            - const: ethif
++            - const: fe
++
++        mediatek,wed: false
++
++        mediatek,wed-pcie: false
++
+   - if:
+       properties:
+         compatible:
 -- 
 2.41.0
 
