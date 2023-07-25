@@ -4,84 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97B5BC001DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 07:00:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86D67C001DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 07:06:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O/wCFrYPEzzO/MfkHD0RMinAwo+j9ojz+4k/clTmCNQ=; b=mFf2I9WpUqUfC2UhgfepUU35bh
-	9iyCAuYEMThYUBTpaE8Pk+EdqxEffBWn1G3MXaX7acF0AnpKnYDG4dsEO8nKoU8QlQ4xam5Z/nskY
-	gpja1u/KrKBpUOtOs2UVd3n/LkLtelUFTRFf0m8fOAb8zPHsW60W++ckZz5KEyh1F1BluWNT0uJJg
-	nrnfHd4eRRNB72029tAJfuWJezrD3LD9XnkBmq8CRH/NPnz/utpzAEH5Bu0m1rUc7MoRfl0gl9vMk
-	3KY7ZIP0yfyXtr6e0MKwg5IBM2xkgn/4z3r867A9G2FUHRt5CsoMBfJbI81VrHZN7jSHTT0pz24lH
-	6g7QJ2ug==;
+	bh=gKafka3pGjcLn6R2OiYGs1IpkrjESTuIB/oh908hDCM=; b=eCxSV7sTucGz6ivyoL0XCDVi1M
+	c5CVWaPXM3/LzPw4othWc5XD+uTv2F/mLAey7CBLhsZUWRqQZui/JMu22HdySj7Yoh583uQm95Qgj
+	vciochiH0yyW9Z57xFRVa5NU9cNu4+R2SqLWVyE/29k5wmdfhXdIT/MVuh/ipWIawqhuOUbNaKbBm
+	pcGWFhkWQiSQJ3WCgpNKnrNItz15URD6BjNPYN1hdxjjAjBpyYERGAW2lBr/SUTLO46EpW9GXj9gv
+	DQag8mZtvGVd2Prf0RDAtuiK4poIIj6/nPnbaDVIgpC61vRzcxOSZ8P4emxBJiPE+UjnYLStx6o6r
+	3Laze0rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOC2A-006Vym-1D;
-	Tue, 25 Jul 2023 07:00:38 +0000
-Received: from mail-il1-x135.google.com ([2607:f8b0:4864:20::135])
+	id 1qOC82-006Wfv-1d;
+	Tue, 25 Jul 2023 07:06:42 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOC27-006Vxf-0u
-	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Jul 2023 07:00:36 +0000
-Received: by mail-il1-x135.google.com with SMTP id e9e14a558f8ab-3460815fde5so28423915ab.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Jul 2023 00:00:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1690268432; x=1690873232;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=O/wCFrYPEzzO/MfkHD0RMinAwo+j9ojz+4k/clTmCNQ=;
-        b=GhMhgrzhRi8xlIOr/f901h3+iOlA1BGwAn1p77n5kWP+v92Q5dtRO1S/d7r2WK2W06
-         cPI1SKAnt3eqyGckTri+16ofzgoMDHFOYs2glIAQknBO9wEvluNbR07ylp8L/MTls8f0
-         JDM2HGgNw81JLRKZ8S5766orREqMfbKHfFIX4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690268432; x=1690873232;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=O/wCFrYPEzzO/MfkHD0RMinAwo+j9ojz+4k/clTmCNQ=;
-        b=BkSJ2Zb17vTBd0HizPR6j0iKZeCyn7WKlVvR4JHed9oM4GcxMsIIq3mIa2J+9tDiOj
-         7+tQLpcRuzpgbKfyvpbOm9xAigQ5cGr1AToJ0//pm8cgkpG4ZARMVvBl8K1O+OjFqZvs
-         AN/lmQNGKs0+JYlPrBlFrDRKNim33YesxW9uxqYmaNoumfqxAp3tuYOHJfYRqQo657D+
-         4H0F/4E9td4tjem0oaw/45mx7BxOKC6otI3iLuB3UIzUMgAJTQtJl71O8wiGIUFJ6ym1
-         krg30245MB6usMkt/ys4yjkCSnqQx8s8gfHuQkAycUtl5KdLPtOb1dt0O3jBVgW1Lk8s
-         NgvA==
-X-Gm-Message-State: ABy/qLYy1f1Kwe0/537rHqbiPYOsYap5Gx7/7RtIBkz4d0cRYaD53Eeg
-	jNaFXQwoE9dgePUxjCVsVEYf4XIQKuZQ2QgXDzU=
-X-Google-Smtp-Source: APBJJlEyHHuU3/LDywleOu1WrWAPrldwBsrLCMFI4BhUcLVzlPw/B5Kq1BdBjsBRSH5iNbgsryuq2w==
-X-Received: by 2002:a05:6e02:1ba7:b0:345:7497:3cb7 with SMTP id n7-20020a056e021ba700b0034574973cb7mr2251845ili.10.1690268432522;
-        Tue, 25 Jul 2023 00:00:32 -0700 (PDT)
-Received: from mail-io1-f44.google.com (mail-io1-f44.google.com. [209.85.166.44])
-        by smtp.gmail.com with ESMTPSA id b6-20020a5d8d86000000b00783634b9eafsm3752867ioj.50.2023.07.25.00.00.32
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 25 Jul 2023 00:00:32 -0700 (PDT)
-Received: by mail-io1-f44.google.com with SMTP id ca18e2360f4ac-78372625badso274418339f.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Jul 2023 00:00:32 -0700 (PDT)
-X-Received: by 2002:a6b:7e06:0:b0:783:6190:f913 with SMTP id
- i6-20020a6b7e06000000b007836190f913mr2051985iom.4.1690268431885; Tue, 25 Jul
- 2023 00:00:31 -0700 (PDT)
+	id 1qOC7y-006Wei-2V;
+	Tue, 25 Jul 2023 07:06:40 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D00966606FD7;
+	Tue, 25 Jul 2023 08:06:36 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1690268797;
+	bh=yqfpjqkUtJH8uA1hTRcsCtHn3jzO74FwhI8vleq5HQE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=nHiL7NR+q2o7lXVyMeePASERgqUyC3BYbt3zfNt7DM4zusoA4rV3YPGVBFVmpFTSa
+	 VJIVjtglO7xTFXLdOwKVjcTFvr5S36Ya8QXkNr9d75TP2nJ7470hmLwXpENkAfN9oD
+	 C5R/AAoHno/7Pd2N2Ik8g9VfO43sCXGxNU6oF3K8FA1tqpSo74WA92u1dy+goNZqio
+	 hAa69oZdWSsIg56ZakNdgtQK/nQpIpdUqXsbORMt+VdzDaXt2bLh9zq5N6MPx4F9Mh
+	 8auc6NhSvESCZQKVmbCcoU7983vixRHxguODL4jMzPZny1C5qW+Xw2/J5n9phfuj1q
+	 oEuBrVp7znHrw==
+Message-ID: <5314542c-9a99-fad1-93f6-4f72c8698715@collabora.com>
+Date: Tue, 25 Jul 2023 09:06:34 +0200
 MIME-Version: 1.0
-References: <20230724175839.675911-1-greenjustin@chromium.org>
-In-Reply-To: <20230724175839.675911-1-greenjustin@chromium.org>
-From: Fei Shao <fshao@chromium.org>
-Date: Tue, 25 Jul 2023 14:59:55 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nju8_KWG0v=JNh+v9LVBuEVDnnW5JCfbcySBLGEJAMvxg@mail.gmail.com>
-Message-ID: <CAC=S1nju8_KWG0v=JNh+v9LVBuEVDnnW5JCfbcySBLGEJAMvxg@mail.gmail.com>
-Subject: Re: [PATCH RESEND] drm/mediatek: Add valid modifier check
-To: Justin Green <greenjustin@chromium.org>
-Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	chunkuang.hu@kernel.org, wenst@chromium.org, jason-jh.lin@mediatek.com, 
-	justin.yeh@mediatek.com, angelogioacchino.delregno@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 1/3] ASoC: mediatek: mt8188-mt6359: support dynamic
+ pinctrl
+Content-Language: en-US
+To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
+ lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, matthias.bgg@gmail.com
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20230725035304.2864-1-trevor.wu@mediatek.com>
+ <20230725035304.2864-2-trevor.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230725035304.2864-2-trevor.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230725_000035_372867_FA909858 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20230725_000638_950604_059ED068 
+X-CRM114-Status: GOOD (  20.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,23 +78,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 25, 2023 at 1:59=E2=80=AFAM Justin Green <greenjustin@chromium.=
-org> wrote:
->
-> Add a check to mtk_drm_mode_fb_create() that rejects any modifier that
-> is not the AFBC mode supported by MT8195's display overlays.
->
-> Tested by booting ChromeOS and verifying the UI works, and by running
-> the ChromeOS kms_addfb_basic binary, which has a test called
-> "addfb25-bad-modifier" that attempts to create a framebuffer with the
-> modifier DRM_FORMAT_MOD_INVALID and verifies the ADDFB2 ioctl returns
-> EINVAL.
->
-> Signed-off-by: Justin Green <greenjustin@chromium.org>
+Il 25/07/23 05:53, Trevor Wu ha scritto:
+> To avoid power leakage, it is recommended to replace the default pinctrl
+> state with dynamic pinctrl since certain audio pinmux functions can
+> remain in a HIGH state even when audio is disabled. Linking pinctrl with
+> DAPM using SND_SOC_DAPM_PINCTRL will ensure that audio pins remain in
+> GPIO mode by default and only switch to an audio function when necessary.
+> 
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+> ---
+>   sound/soc/mediatek/mt8188/mt8188-mt6359.c | 21 +++++++++++++++++++++
+>   1 file changed, 21 insertions(+)
+> 
+> diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> index 7c9e08e6a4f5..667d79f33bf2 100644
+> --- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> +++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+> @@ -246,6 +246,11 @@ static const struct snd_soc_dapm_widget mt8188_mt6359_widgets[] = {
+>   	SND_SOC_DAPM_MIC("Headset Mic", NULL),
+>   	SND_SOC_DAPM_SINK("HDMI"),
+>   	SND_SOC_DAPM_SINK("DP"),
+> +
+> +	/* dynamic pinctrl */
+> +	SND_SOC_DAPM_PINCTRL("ETDM_SPK_PIN", "aud_etdm_spk_on", "aud_etdm_spk_off"),
+> +	SND_SOC_DAPM_PINCTRL("ETDM_HP_PIN", "aud_etdm_hp_on", "aud_etdm_hp_off"),
+> +	SND_SOC_DAPM_PINCTRL("MTKAIF_PIN", "aud_mtkaif_on", "aud_mtkaif_off"),
+>   };
+>   
+>   static const struct snd_kcontrol_new mt8188_mt6359_controls[] = {
+> @@ -267,6 +272,7 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>   		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
+>   	struct snd_soc_component *cmpnt_codec =
+>   		asoc_rtd_to_codec(rtd, 0)->component;
+> +	struct snd_soc_dapm_widget *pin_w = NULL, *w;
+>   	struct mtk_base_afe *afe;
+>   	struct mt8188_afe_private *afe_priv;
+>   	struct mtkaif_param *param;
+> @@ -306,6 +312,18 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>   		return 0;
+>   	}
+>   
+> +	for_each_card_widgets(rtd->card, w) {
+> +		if (!strcmp(w->name, "MTKAIF_PIN")) {
 
-Tested-by: Fei Shao <fshao@chromium.org>
+if (strncmp(w->name, "MTKAIF_PIN", strlen(w->name) == 0) {
+	pin_w = w;
+	break;
+}
 
-Tested the UI and with the aforementioned binary on a MT8195
-Chromebook (AFBC supported) and a MT8188 Chromebook (AFBC not
-supported at this moment).
+That's safer.
+
+> +			pin_w = w;
+> +			break;
+> +		}
+> +	}
+> +
+> +	if (!pin_w)
+
+Just a nitpick: you're checking for `if (pin_w)` later in this function, so
+to increase readability please do the same here.
+
+if (pin_w)
+	dapm_pinctrl_event(...)
+else
+	dev_dbg(...)
+
+Regards,
+Angelo
 
