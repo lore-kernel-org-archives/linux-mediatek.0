@@ -4,104 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B48D8C001DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 04:04:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D1F1EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 05:53:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LWdSnIWQun0ashRbVT0OVUHEFVk8YYt5YaTXkv+Xkhc=; b=Muzeb5mJWu+H6TEATojjtvajg6
-	B1oLBmPIUOPjH+4vb297FhmbcNpfI9gPkAlzi1DuVLrjPvBNQ/89/UiMoZiDoWeZjzMWIX+ggdXnN
-	h3hink9w8mLQUp0lSyHoktyYMCsT3XN2bnWKKxopLSVrzOzZwFpko+9KucGIO+Z5GPxGjbFCIYv41
-	YF/Wr9Dw5Poq+00X3VgtjlQecHivlQMCQSyxo7OZrH2mZnQ1inV++QzYjfGlTjmJ8YBorp0dT35t6
-	jM5hSqV99VAGNtu7tbrMmWALkuQMTpqYGPqJxrughA/cvsGc51j1XtSSURRGWH5JB/37ZCGSYfRXF
-	V3Pja8dw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Tw6AmluQo9H+50YOZ8VzyqlQ1Px/nXDHyihqohOhOtQ=; b=OzwJ557zHF8ju5GD1pfePwaUaL
+	VraLMpXSZJrqTT4iiYNlB/gNOGGx9c0/YNLSdUnOJn6Fw67npNyeld33nRw6Ef6b9R9K6+G53rvIb
+	zMePP12X9hWVw4A5QOuMbY3G2N322Y4yFKTSmh0HjKU9g+z31su5ruTnSw0aJnAJotMyJVS2zIRHg
+	bxYlW7uXR/q9GABNI9QKKgSfnmxSQWE8USY7hGxE2D30TN5GOrC5fUMfQpXdrMganWcHP+TkaIN5T
+	kLnfajgsPBQ9xv5arqfU3akHsHvd4pASTNf6xjyTrP+psLkG+keAWq/HnbDtPRa1o7T+cLPvlfBls
+	kQ7L8PKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO9Hv-0065KG-0F;
-	Tue, 25 Jul 2023 04:04:43 +0000
-Received: from mail-ua1-x92e.google.com ([2607:f8b0:4864:20::92e])
+	id 1qOAzC-006LBK-36;
+	Tue, 25 Jul 2023 05:53:30 +0000
+Received: from mx1.tq-group.com ([93.104.207.81])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qO9Hr-0065JE-2R
-	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Jul 2023 04:04:42 +0000
-Received: by mail-ua1-x92e.google.com with SMTP id a1e0cc1a2514c-79702eee5a8so1644629241.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Jul 2023 21:04:36 -0700 (PDT)
+	id 1qOAz9-006L9O-0L;
+	Tue, 25 Jul 2023 05:53:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20221208; t=1690257875; x=1690862675;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=LWdSnIWQun0ashRbVT0OVUHEFVk8YYt5YaTXkv+Xkhc=;
-        b=uq3iusBbqJPc2CTRePG/0p4dDkjSLOvhrrfGgfOLYLE2ZyESAHXdxhgqjslHldiAD6
-         KLS/+wOLV71DZZb66aAvhvUbMCL1h01kRKYqujKDJeqnbLgjKMuBP1hmu/ZpXTG5oEUY
-         v+nnlclvWIOsOSs1i6/Qvgamieqnw6PyyfWKkqnuxKkZNGk8te+LsMcTcwd7Slkyut33
-         U39fhEDDpT7VIRm7piZhgyZZjgVbgjwCyc+h7gaudDhk84zIddYfWkC/cKc2oYL8VFuu
-         Q4qw8p47aAlVu+L+Nc0nxK0ZpOisK99ykmC1j5w4fVigBs13/OxIKhF4VB+7i+Pjo23Z
-         gJ+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690257875; x=1690862675;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=LWdSnIWQun0ashRbVT0OVUHEFVk8YYt5YaTXkv+Xkhc=;
-        b=E4oPL3MNdPM3/5XFwNnJ3ecNmatG+emLGHdD+s3zXEjvcy3BYkfprDFNLl02gwTOrY
-         E7wDRrKp6UGduDsX4c2jOebdxGC6X7S+ViiiLVEAtaCpx+BKpFTzuARUXCKz7k2yRSpJ
-         k0PUU9MLp/50QuDEjLSnsbLydcn4TNTSDvZ81eIi73SDmCK109SBZi8ygLkJf5JIXDQy
-         t7V4IE1DalBrWeiN32fPXAsskaZSLdMutKbuZwGHHC/q9TB8CxsaqVzarWaXqcawTh95
-         817erhPaEQfnigk8Y07TOE0PBqS4ikiSc/OPDco0HLAJKB5+qFJZpKv/7KVofh0YWh+O
-         Zi1w==
-X-Gm-Message-State: ABy/qLZtZ1redroWP0PZuHjVKwuKZI0pJ91nbSFDKHVHVJLx/c61UqIP
-	G5iVgK1Qn3P+ZmZWQG+ovO7yr/f+2dAeaavgbSUs4w==
-X-Google-Smtp-Source: APBJJlH/rW02PNpLqFVAY3arLeMZJp58yKGRcc9g2NPQgHNQe1NBThAjBeX+q2qlifKktq+mF/RhIhIg5OW6qVs6rHo=
-X-Received: by 2002:a67:cf43:0:b0:443:7e93:641f with SMTP id
- f3-20020a67cf43000000b004437e93641fmr3945436vsm.9.1690257875137; Mon, 24 Jul
- 2023 21:04:35 -0700 (PDT)
+  d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+  t=1690264407; x=1721800407;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=Tw6AmluQo9H+50YOZ8VzyqlQ1Px/nXDHyihqohOhOtQ=;
+  b=PXFeu5Foswzjxj5aWZZpAp690B2ldHM7JEu0sUtRpv922LhsgKqJ1paK
+   pc3cdjNtmoc98CmgQyDCHSncHwkmVS91TAdf/BBpz8xLhbwZB2AqAOUn3
+   Ro0BOnQ2oif0pCPGZnA9VvdD3Cc9C6XTF68og01KucCJGHIhfxpaDKozf
+   STov44wW3NGPP2r2DXscdhhk4DI/s8m53VEXKB1PWRHVIgCgI2s3MR4Zg
+   nafXilZuaJO49uGXWd1FqgUDsoJXCn4bxCbznvBoVgjh6m1lPC0zqGw/S
+   r+aHuor4SYpVsAxwH8KLDBjCqm/BvK3mikU38QrCw4l2rG9QaqsL8NMUz
+   A==;
+X-IronPort-AV: E=Sophos;i="6.01,229,1684792800"; 
+   d="scan'208";a="32093229"
+Received: from vtuxmail01.tq-net.de ([10.115.0.20])
+  by mx1.tq-group.com with ESMTP; 25 Jul 2023 07:53:24 +0200
+Received: from steina-w.localnet (unknown [10.123.53.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id 6A288280075;
+	Tue, 25 Jul 2023 07:53:24 +0200 (CEST)
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, =?ISO-8859-1?Q?Beno=EEt?= Cousson <bcousson@baylibre.com>, Tony Lindgren <tony@atomide.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Pengutronix Kernel Team <kernel@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v4 6/6] arm64: dts: qcom: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio properties
+Date: Tue, 25 Jul 2023 07:53:24 +0200
+Message-ID: <45689756.fMDQidcC6G@steina-w>
+Organization: TQ-Systems GmbH
+In-Reply-To: <6220628.iIbC2pHGDl@phil>
+References: <20230724103914.1779027-1-alexander.stein@ew.tq-group.com> <20230724103914.1779027-7-alexander.stein@ew.tq-group.com> <6220628.iIbC2pHGDl@phil>
 MIME-Version: 1.0
-References: <04187826-8dad-d17b-2469-2837bafd3cd5@kernel.org>
- <20230711093224.1bf30ed5@kernel.org> <CAHS8izNHkLF0OowU=p=mSNZss700HKAzv1Oxqu2bvvfX_HxttA@mail.gmail.com>
- <20230711133915.03482fdc@kernel.org> <2263ae79-690e-8a4d-fca2-31aacc5c9bc6@kernel.org>
- <CAHS8izP=k8CqUZk7bGUx4ctm4m2kRC2MyEJv+N4+b0cHVkTQmA@mail.gmail.com>
- <ZK6kOBl4EgyYPtaD@ziepe.ca> <CAHS8izNuda2DXKTFAov64F7J2_BbMPaqJg1NuMpWpqGA20+S_Q@mail.gmail.com>
- <143a7ca4-e695-db98-9488-84cf8b78cf86@amd.com> <CAHS8izPm6XRS54LdCDZVd0C75tA1zHSu6jLVO8nzTLXCc=H7Nw@mail.gmail.com>
- <ZLFv2PIgdeH8gKmh@ziepe.ca> <CAHS8izNMB-H3w0CE9kj6hT5q_F6_XJy_X_HtZwmisOEDhp31yg@mail.gmail.com>
- <a2569132-393e-0149-f76c-f6de282e1c96@redhat.com>
-In-Reply-To: <a2569132-393e-0149-f76c-f6de282e1c96@redhat.com>
-From: Mina Almasry <almasrymina@google.com>
-Date: Mon, 24 Jul 2023 21:04:23 -0700
-Message-ID: <CAHS8izP5DiHy9NpeMKM4QpXwmx0rw+7oavfQfQsbtiWz10MhOw@mail.gmail.com>
-Subject: Re: Memory providers multiplexing (Was: [PATCH net-next v4 4/5]
- page_pool: remove PP_FLAG_PAGE_FRAG flag)
-To: Jesper Dangaard Brouer <jbrouer@redhat.com>
-Cc: Jason Gunthorpe <jgg@ziepe.ca>, brouer@redhat.com, 
-	=?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
-	Hari Ramakrishnan <rharix@google.com>, David Ahern <dsahern@kernel.org>, 
-	Samiullah Khawaja <skhawaja@google.com>, Willem de Bruijn <willemb@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Christoph Hellwig <hch@lst.de>, John Hubbard <jhubbard@nvidia.com>, 
-	Dan Williams <dan.j.williams@intel.com>, Alexander Duyck <alexander.duyck@gmail.com>, 
-	Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, pabeni@redhat.com, 
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
-	Salil Mehta <salil.mehta@huawei.com>, Eric Dumazet <edumazet@google.com>, 
-	Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, 
-	Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, 
-	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jesper Dangaard Brouer <hawk@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Jonathan Lemon <jonathan.lemon@gmail.com>, logang@deltatee.com, 
-	Bjorn Helgaas <bhelgaas@google.com>
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230724_210440_352067_4B24FD19 
-X-CRM114-Status: GOOD (  43.72  )
+X-CRM114-CacheID: sfid-20230724_225327_522891_522EA7A8 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,219 +78,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 24, 2023 at 7:56=E2=80=AFAM Jesper Dangaard Brouer
-<jbrouer@redhat.com> wrote:
->
->
->
-> On 17/07/2023 03.53, Mina Almasry wrote:
-> > On Fri, Jul 14, 2023 at 8:55=E2=80=AFAM Jason Gunthorpe <jgg@ziepe.ca> =
-wrote:
-> >>
-> >> On Fri, Jul 14, 2023 at 07:55:15AM -0700, Mina Almasry wrote:
-> >>
-> >>> Once the skb frags with struct new_abstraction are in the TCP stack,
-> >>> they will need some special handling in code accessing the frags. But
-> >>> my RFC already addressed that somewhat because the frags were
-> >>> inaccessible in that case. In this case the frags will be both
-> >>> inaccessible and will not be struct pages at all (things like
-> >>> get_page() will not work), so more special handling will be required,
-> >>> maybe.
-> >>
-> >> It seems sort of reasonable, though there will be interesting concerns
-> >> about coherence and synchronization with generial purpose DMABUFs that
-> >> will need tackling.
-> >>
-> >> Still it is such a lot of churn and weridness in the netdev side, I
-> >> think you'd do well to present an actual full application as
-> >> justification.
-> >>
-> >> Yes, you showed you can stick unordered TCP data frags into GPU memory
-> >> sort of quickly, but have you gone further with this to actually show
-> >> it is useful for a real world GPU centric application?
-> >>
-> >> BTW your cover letter said 96% utilization, the usual server
-> >> configuation is one NIC per GPU, so you were able to hit 1500Gb/sec of
-> >> TCP BW with this?
-> >>
-> >
-> > I do notice that the number of NICs is missing from our public
-> > documentation so far, so I will refrain from specifying how many NICs
-> > are on those A3 VMs until the information is public. But I think I can
-> > confirm that your general thinking is correct, the perf that we're
-> > getting is 96.6% line rate of each GPU/NIC pair,
->
-> What do you mean by 96.6% "line rate".
-> Is is the Ethernet line-rate?
->
+Am Montag, 24. Juli 2023, 20:04:00 CEST schrieb Heiko Stuebner:
+> Am Montag, 24. Juli 2023, 12:39:13 CEST schrieb Alexander Stein:
+> > Use id-gpios and vbus-gpios instead.
+> >=20
+> > Signed-off-by: Alexander Stein <alexander.stein@ew.tq-group.com>
+> > Reviewed-by: AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> Acked-by: Shawn Guo
+> > <shawnguo@kernel.org>
+> > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> > ---
+> >=20
+> >  arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi                 | 2 +-
+>=20
+> sorry to be a spoilsport, but Rockchip is not part of qcom ;-) .
 
-Yes I believe this is the ethernet line-rate. I.e. the 200 Gbits/sec
-that my NICs run.
+Oh, I'm pretty sure I splitted them properly, so I probably accidentally=20
+squashed them again somehow :(
 
-> Is the measured throughput the measured TCP data "goodput"?
+> I don't have a massive problem with this going through the qcom tree
+> though, so if you don't respin,
+>=20
+> Acked-by: Heiko Stuebner <heiko@sntech.de> #rockchip
 
-Yes, it is goodput. Roughly I believe we add up the return values of
-recvmsg() and divide that number by time (very roughly, I think).
+Okay, thanks
 
-> Assuming
->   - MTU 1500 bytes (1514 on wire).
->   - Ethernet header 14 bytes
->   - IP header 20 bytes
->   - TCP header 20 bytes
->
-> Due to header overhead the goodput will be approx 96.4%.
->   - (1514-(14+20+20))/1514 =3D 0.9643
->   - (Not taking Ethernet interframe gap into account).
->
-> Thus, maybe you have hit Ethernet wire line-rate already?
+Best regards,
+Alexander
 
-My MTU is 8244 actually, which gives me 8192 mss/payload for my
-connections. By my math the theoretical max would be 1 - 52/8244 =3D
-~99.3%. So it looks like I'm dropping ~3% line rate somewhere in the
-implementation.
-
->
-> > and scales linearly
-> > for each NIC/GPU pair we've tested with so far. Line rate of each
-> > NIC/GPU pair is 200 Gb/sec.
-> >
-> > So if we have 8 NIC/GPU pairs we'd be hitting 96.6% * 200 * 8 =3D 1545 =
-GB/sec.
->
-> Lets keep our units straight.
-> Here you mean 1545 Gbit/sec, which is 193 GBytes/s
->
-
-Yes! Sorry! I definitely meant 1545 Gbits/sec, sorry!
-
-> > If we have, say, 2 NIC/GPU pairs, we'd be hitting 96.6% * 200 * 2 =3D 3=
-84 GB/sec
->
-> Here you mean 384 Gbit/sec, which is 48 GBytes/sec.
->
-
-Correct again!
-
-> > ...
-> > etc.
-> >
->
-> These massive throughput numbers are important, because they *exceed*
-> the physical host RAM/DIMM memory speeds.
->
-> This is the *real argument* why software cannot afford to do a single
-> copy of the data from host-RAM into GPU-memory, because the CPU memory
-> throughput to DRAM/DIMM are insufficient.
->
-> My testlab CPU E5-1650 have 4 DIMM slots DDR4
->   - Data Width: 64 bits (=3D 8 bytes)
->   - Configured Memory Speed: 2400 MT/s
->   - Theoretical maximum memory bandwidth: 76.8 GBytes/s (2400*8*4)
->
-> Even the theoretical max 76.8 GBytes/s (614 Gbit/s) is not enough for
-> the 193 GBytes/s or 1545 Gbit/s (8 NIC/GPU pairs).
->
-> When testing this with lmbench tool bw_mem, the results (below
-> signature) are in the area 14.8 GBytes/sec (118 Gbit/s), as soon as
-> exceeding L3 cache size.  In practice it looks like main memory is
-> limited to reading 118 Gbit/s *once*. (Mina's NICs run at 200 Gbit/s)
->
-> Given DDIO can deliver network packets into L3, I also tried to figure
-> out what the L3 read bandwidth, which I measured to be 42.4 GBits/sec
-> (339 Gbit/s), in hopes that it would be enough, but it was not.
->
->
-
-Yes, avoiding any memory speed bottleneck as you note is important,
-but the second point mentioned in my cover letter is also impactful:
-
-" Alleviate PCIe BW pressure, by limiting data transfer to the lowest level
-  of the PCIe tree, compared to traditional path which sends data through t=
-he
-  root complex."
-
-Depending on the hardware, this is a bottleneck that we avoid with
-device memory TCP. NIC/GPU copies occupy the PCIe link bandwidth. In a
-hierarchy like this:
-
-          root complex
-                  | (uplink)
-          PCIe switch
-           /             \
-       NIC           GPU
-
-I believe the uplink from the PCIe switch to the root complex is used
-up 2 times for TX and 2 times for RX if the data needs to go through
-host memory:
-
-RX: NIC -> root complex -> GPU
-TX: GPU -> root complex -> NIC
-
-With device memory TCP, and enabling PCI P2P communication between the
-devices under the same PCIe switch, the payload flows directly from/to
-the NIC/GPU through the PCIe switch, and the payload never goes to the
-root complex, alleviating pressure/bottleneck on that link between the
-PCIe switch/root complex. I believe this is a core reason we're able
-to scale throughput linearly with NIC/GPU pairs, because we don't
-stress share uplink connections and all the payload data transfer
-happens beneath the PCIe switch.
-
-> --Jesper
-> (data below signature)
->
-> CPU under test:
->
->   $ cat /proc/cpuinfo | egrep -e 'model name|cache size' | head -2
->   model name    : Intel(R) Xeon(R) CPU E5-1650 v4 @ 3.60GHz
->   cache size    : 15360 KB
->
->
-> Providing some cmdline outputs from lmbench "bw_mem" tool.
-> (Output format is "%0.2f %.2f\n", megabytes, megabytes_per_second)
->
-> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 256M rd
-> 256.00 14924.50
->
-> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 256M wr
-> 256.00 9895.25
->
-> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 256M rdwr
-> 256.00 9737.54
->
-> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 256M bcopy
-> 256.00 12462.88
->
-> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 256M bzero
-> 256.00 14869.89
->
->
-> Next output shows reducing size below L3 cache size, which shows an
-> increase in speed, likely the L3 bandwidth.
->
-> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 64M rd
-> 64.00 14840.58
->
-> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 32M rd
-> 32.00 14823.97
->
-> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 16M rd
-> 16.00 24743.86
->
-> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 8M rd
-> 8.00 40852.26
->
-> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 4M rd
-> 4.00 42545.65
->
-> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 2M rd
-> 2.00 42447.82
->
-> $ taskset -c 2 /usr/lib/lmbench/bin/x86_64-linux-gnu/bw_mem 1M rd
-> 1.00 42447.82
->
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> > b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi index
+> > aa3e21bd6c8f..20e3f41efe97 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> > @@ -27,7 +27,7 @@ module_led: led-0 {
+> >=20
+> >  	extcon_usb3: extcon-usb3 {
+> >  =09
+> >  		compatible =3D "linux,extcon-usb-gpio";
+> >=20
+> > -		id-gpio =3D <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
+> > +		id-gpios =3D <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
+> >=20
+> >  		pinctrl-names =3D "default";
+> >  		pinctrl-0 =3D <&usb3_id>;
+> >  =09
+> >  	};
 
 
---=20
-Thanks,
-Mina
+=2D-=20
+TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
+Amtsgericht M=FCnchen, HRB 105018
+Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
+http://www.tq-group.com/
+
+
 
