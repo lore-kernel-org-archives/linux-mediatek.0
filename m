@@ -4,65 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7250C04A6A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 07:11:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2DCDC001DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 07:20:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hIDvSJjvq1qyFB9fxMHVR4UP/k5PKyzha4tFIcA9m28=; b=Evss9NJyRJ0kM0wEYKOvaQcIQa
-	Bgf/HQWkKtPNnR09yiQO86oT7C2ERzYaDrMZoVVFuakeJYywB/ETP1zJalLxJLsrk8DD9U3Ti2xAz
-	gg3PRg1+RwKJ2gY+0emE+egVkGAow7dU+z1itHePkaInIB7P4DRYxxVF/rAoTKQ4p8TZBfTa/yR1R
-	Eu3aq6BlQD6ZHINU1qeCXFJj1kDu0ZyffGyZPNPirW5cReqtHkyKDpJ23/qWXoRtutvgLeeadD9X8
-	0cTn7RJonyESwwPtEh79r5uydG6odkHbtlUukedVo0HwBGyeNeAXa5u5rczu6VcOpXE0w5Q+I02Hn
-	yjFIpwyw==;
+	bh=NDY0R15801CZPI17NMNBmAMLOktcuzSpsElidr+LmcU=; b=2I1UAGGdZAzPrph7b22MragpZv
+	7xkqHx1WzUDN3ypi3VhQCUNShZaLjCejkFvqnVMZzers1cNOviG68JHrLrCUd+qEMVuTO12NmLJ1W
+	rdvHesNkGv6xZtzJsc2GWrQCsRC+NpItP+IdkEgO+u5TOCKeiHiqAQp2A37Lhewz4kb7vn19y6C2j
+	yPdq7uOPbc2l2Gk/YoOE3gFyqRFPyI+vFyCE7mVuozDwBfjYK/wVQcGa2erGi29rxMoHd8k7r72Dx
+	Zm1x+mVBlsIEsFurjaNArKYRB7MkN3+v+XXy06Kg+27RTBhF+bOo2sdoeruXjfuBatVZ1lxYH10Qv
+	vjjt65XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOCCb-006Xa2-2N;
-	Tue, 25 Jul 2023 07:11:25 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qOCL1-006Zg5-3A;
+	Tue, 25 Jul 2023 07:20:07 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOCCY-006XYP-0K;
-	Tue, 25 Jul 2023 07:11:23 +0000
+	id 1qOCKx-006ZeQ-34;
+	Tue, 25 Jul 2023 07:20:06 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4C28F6606FD7;
-	Tue, 25 Jul 2023 08:11:20 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0C83D6607106;
+	Tue, 25 Jul 2023 08:20:02 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1690269080;
-	bh=TBERhvLdPc8uWltVuzDZjIEgfcEavQOsWwBq+KgJp7Q=;
+	s=mail; t=1690269602;
+	bh=vbQ80xzI0mEIKxkOSt1CxW5Uwoqn4TRg4kjpv8ZquGs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mD+Uz3nOsR3b9E5rsLGabusAUlnF9IiuDNmpgN2XPa4e1jWPIOQmOmPqxWiJ8g7RN
-	 ZEpZ2C90f3O/URkirjOXjZmVkso2JhW0j/qEOMKpVZgB6Mn3mxYpsD8F/jwLJEo1Z6
-	 yVHF5sYSfPtAWV0miOFY7wcBAUfPe+lyXAxD74O7LP+XSaLMlykcHKB9ngSooBzQC4
-	 vuxhdiGLP/1QqDVcZDvMprPVPiRWj4PfOISc4i9OqubrH1XeNiIdeHPC7VkarBWXfy
-	 4xuZQ3WAX9MAhioH2e5YUSLyIxUPYRxazeOXTs7kHKhiBcsUAmXSof5hmO4uOrPOvA
-	 BmoNUCfSB9JPw==
-Message-ID: <229d6df5-9abb-64be-a095-dd6f5fbc3c77@collabora.com>
-Date: Tue, 25 Jul 2023 09:11:18 +0200
+	b=TRNrC1Y94J12i/tUhgVJm90x8AImCfDVvjbe0XcCZYvJt5s9x/OD44IQuvFCfBnwG
+	 vUhdXESET/1ljhVxvQMaUQwnKJGwNiqR1HywHHJvqwYxIjziCS3DngUgvved42HEYT
+	 DbpOs0Xjw9xhmE1xK+rirKMiVLRAOIhX7epYZGd2HT+Onz3nGn3BH3Z7KEHIlaQEfo
+	 BBsHt9eIAkGPzH4SqjIXM9oBj7yNpSYNG1/tDEO51NtN1ZEk+sQjlT+hqU9MK3i8zx
+	 x7C9b/N8ISjn6CZO02J0WRu0Qr7O36lmKnsivmQmlVd61mIBy2wDue9lGJ4od8R98J
+	 R8Ad7JJE6d5Zw==
+Message-ID: <eaeeb44b-b102-1865-9600-58de7f682ee8@collabora.com>
+Date: Tue, 25 Jul 2023 09:19:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH 3/3] ASoC: mediatek: mt8188-mt6359: add SOF support
+Subject: Re: [PATCH v6 11/11] drm/mediatek: dp: Don't register HPD interrupt
+ handler for eDP case
 Content-Language: en-US
-To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org,
- lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, matthias.bgg@gmail.com
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20230725035304.2864-1-trevor.wu@mediatek.com>
- <20230725035304.2864-4-trevor.wu@mediatek.com>
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "nfraprado@collabora.com" <nfraprado@collabora.com>
+References: <20230717141438.274419-1-angelogioacchino.delregno@collabora.com>
+ <20230717141438.274419-12-angelogioacchino.delregno@collabora.com>
+ <16123fef00babcc855c626ff65b5510fdeea6e15.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230725035304.2864-4-trevor.wu@mediatek.com>
+In-Reply-To: <16123fef00babcc855c626ff65b5510fdeea6e15.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230725_001122_410247_A20881E1 
-X-CRM114-Status: GOOD (  22.19  )
+X-CRM114-CacheID: sfid-20230725_002004_248456_76A24C3D 
+X-CRM114-Status: GOOD (  20.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,140 +86,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/07/23 05:53, Trevor Wu ha scritto:
-> SOF is enabled when adsp phandle is assigned to "mediatek,adsp".
-> The required callback will be assigned when SOF is enabled.
+Il 25/07/23 08:37, CK Hu (胡俊光) ha scritto:
+> Hi, Angelo:
 > 
-> Additionally, "mediatek,dai-link" is introduced to decide the supported
-> dai links for a project, so user can reuse the machine driver regardless
-> of dai link combination.
+> On Mon, 2023-07-17 at 16:14 +0200, AngeloGioacchino Del Regno wrote:
+>>   	
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>   The interrupt handler for HPD is useful only if a display is
+>> actually
+>> supposed to be hotpluggable, as that manages the machinery to perform
+>> cable (un)plug detection, debouncing and setup for re-training.
+>>
+>> Since eDP panels are not supposed to be hotpluggable we can avoid
+>> using the HPD interrupts altogether and rely on HPD polling only
+>> for the suspend/resume case, saving us some spinlocking action and
+>> the overhead of interrupts firing at every suspend/resume cycle,
+>> achieving a faster (even if just slightly) display resume.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <
+>> angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/gpu/drm/mediatek/mtk_dp.c | 81 ++++++++++++++++++-----------
+>> --
+>>   1 file changed, 46 insertions(+), 35 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c
+>> b/drivers/gpu/drm/mediatek/mtk_dp.c
+>> index e74295ba9707..c06fcc7318e7 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+>> @@ -2182,9 +2182,11 @@ static int mtk_dp_bridge_attach(struct
+>> drm_bridge *bridge,
+>>   
+>>   	mtk_dp->drm_dev = bridge->dev;
+>>   
+>> -	irq_clear_status_flags(mtk_dp->irq, IRQ_NOAUTOEN);
+>> -	enable_irq(mtk_dp->irq);
+>> -	mtk_dp_hwirq_enable(mtk_dp, true);
+>> +	if (mtk_dp->bridge.type != DRM_MODE_CONNECTOR_eDP) {
+>> +		irq_clear_status_flags(mtk_dp->irq, IRQ_NOAUTOEN);
+>> +		enable_irq(mtk_dp->irq);
+>> +		mtk_dp_hwirq_enable(mtk_dp, true);
+>> +	}
+>>   
+>>   	return 0;
+>>   
+>> @@ -2199,8 +2201,10 @@ static void mtk_dp_bridge_detach(struct
+>> drm_bridge *bridge)
+>>   {
+>>   	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
+>>   
+>> -	mtk_dp_hwirq_enable(mtk_dp, false);
+>> -	disable_irq(mtk_dp->irq);
+>> +	if (mtk_dp->bridge.type != DRM_MODE_CONNECTOR_eDP) {
+>> +		mtk_dp_hwirq_enable(mtk_dp, false);
+>> +		disable_irq(mtk_dp->irq);
+>> +	}
+>>   	mtk_dp->drm_dev = NULL;
+>>   	mtk_dp_poweroff(mtk_dp);
+>>   	drm_dp_aux_unregister(&mtk_dp->aux);
+>> @@ -2579,40 +2583,44 @@ static int mtk_dp_probe(struct
+>> platform_device *pdev)
+>>   	mtk_dp->dev = dev;
+>>   	mtk_dp->data = (struct mtk_dp_data
+>> *)of_device_get_match_data(dev);
+>>   
+>> -	mtk_dp->irq = platform_get_irq(pdev, 0);
+>> -	if (mtk_dp->irq < 0)
+>> -		return dev_err_probe(dev, mtk_dp->irq,
+>> -				     "failed to request dp irq
+>> resource\n");
+>> -
+>> -	mtk_dp->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node,
+>> 1, 0);
+>> -	if (IS_ERR(mtk_dp->next_bridge) &&
+>> -	    PTR_ERR(mtk_dp->next_bridge) == -ENODEV)
+>> -		mtk_dp->next_bridge = NULL;
+>> -	else if (IS_ERR(mtk_dp->next_bridge))
+>> -		return dev_err_probe(dev, PTR_ERR(mtk_dp->next_bridge),
+>> -				     "Failed to get bridge\n");
+>> -
 > 
-> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-> ---
->   sound/soc/mediatek/mt8188/mt8188-mt6359.c | 217 ++++++++++++++++++++--
->   1 file changed, 205 insertions(+), 12 deletions(-)
+> Why remove next_bridge setting?
 > 
-> diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-> index 667d79f33bf2..e205de2899a9 100644
-> --- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-> +++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
 
-..snip..
+Hello CK,
 
-> @@ -1074,21 +1215,64 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
->   	if (!card->name)
->   		card->name = card_data->name;
->   
-> -	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-> -	if (!priv)
-> -		return  -ENOMEM;
-> -
->   	if (of_property_read_bool(pdev->dev.of_node, "audio-routing")) {
->   		ret = snd_soc_of_parse_audio_routing(card, "audio-routing");
->   		if (ret)
->   			return ret;
->   	}
->   
-> +	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-> +	if (!priv)
-> +		return -ENOMEM;
-> +
-> +	soc_card_data = devm_kzalloc(&pdev->dev, sizeof(*card_data), GFP_KERNEL);
-> +	if (!soc_card_data)
-> +		return -ENOMEM;
-> +
-> +	soc_card_data->mach_priv = priv;
-> +
-> +	adsp_node = of_parse_phandle(pdev->dev.of_node, "mediatek,adsp", 0);
-> +	if (adsp_node) {
-> +		struct mtk_sof_priv *sof_priv;
-> +
-> +		sof_priv = devm_kzalloc(&pdev->dev, sizeof(*sof_priv), GFP_KERNEL);
-> +		if (!sof_priv) {
-> +			ret = -ENOMEM;
-> +			goto err_adsp_node;
-> +		}
-> +		sof_priv->conn_streams = g_sof_conn_streams;
-> +		sof_priv->num_streams = ARRAY_SIZE(g_sof_conn_streams);
-> +		soc_card_data->sof_priv = sof_priv;
-> +		card->probe = mtk_sof_card_probe;
-> +		card->late_probe = mtk_sof_card_late_probe;
-> +		if (!card->topology_shortname_created) {
-> +			snprintf(card->topology_shortname, 32, "sof-%s", card->name);
-> +			card->topology_shortname_created = true;
-> +		}
-> +		card->name = card->topology_shortname;
-> +	}
-> +
-> +	if (of_property_read_bool(pdev->dev.of_node, "mediatek,dai-link")) {
-> +		ret = mtk_sof_dailink_parse_of(card, pdev->dev.of_node,
-> +					       "mediatek,dai-link",
-> +					       mt8188_mt6359_dai_links,
-> +					       ARRAY_SIZE(mt8188_mt6359_dai_links));
-> +		if (ret) {
-> +			dev_err_probe(&pdev->dev, ret, "Parse dai-link fail\n");
-> +			goto err_adsp_node;
-> +		}
-> +	} else {
-> +		if (!adsp_node)
-> +			card->num_links = DAI_LINK_REGULAR_NUM;
-> +	}
-> +
->   	platform_node = of_parse_phandle(pdev->dev.of_node,
->   					 "mediatek,platform", 0);
->   	if (!platform_node) {
->   		ret = -EINVAL;
-> -		return dev_err_probe(&pdev->dev, ret, "Property 'platform' missing or invalid\n");
-> +		dev_err_probe(&pdev->dev, ret, "Property 'platform' missing or invalid\n");
+Thanks for making me notice that! The removal of this code snippet belongs
+to patch [9/11] `drm/mediatek: dp: Add support for embedded DisplayPort aux-bus`
+because in that patch I am moving the call to devm_drm_of_get_bridge() to function
+mtk_dp_edp_link_panel(), which is called as a .done_probing() callback if the eDP
+panel is on aux-bus, or "manually" if not on aux-bus.
 
-We could shorten this with
+I'll send a v7 with the removal of this snippet in the right patch.
 
-ret = dev_err_probe(&pdev->dev, -EINVAL, "Property ....");
-goto err_adsp_node;
-
-...but I don't have strong opinions about that, it's your choice.
-
-> +		goto err_platform_node;
-> +
->   	}
->   
->   	ret = parse_dai_link_info(card);
-> @@ -1096,8 +1280,12 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
->   		goto err;
->   
->   	for_each_card_prelinks(card, i, dai_link) {
-> -		if (!dai_link->platforms->name)
-> -			dai_link->platforms->of_node = platform_node;
-> +		if (!dai_link->platforms->name) {
-> +			if (!strncmp(dai_link->name, "AFE_SOF", strlen("AFE_SOF")) && adsp_node)
-> +				dai_link->platforms->of_node = adsp_node;
-> +			else
-> +				dai_link->platforms->of_node = platform_node;
-> +		}
->   
->   		if (strcmp(dai_link->name, "DPTX_BE") == 0) {
->   			if (strcmp(dai_link->codecs->dai_name, "snd-soc-dummy-dai"))
-> @@ -1140,7 +1328,7 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
->   	}
->   
->   	priv->private_data = card_data;
-> -	snd_soc_card_set_drvdata(card, priv);
-> +	snd_soc_card_set_drvdata(card, soc_card_data);
->   
->   	ret = devm_snd_soc_register_card(&pdev->dev, card);
->   	if (ret)
-> @@ -1149,6 +1337,11 @@ static int mt8188_mt6359_dev_probe(struct platform_device *pdev)
->   err:
->   	of_node_put(platform_node);
->   	clean_card_reference(card);
-> +
-> +err_adsp_node:
-> +err_platform_node:
-
-Just one label is enough. Keep err_adsp_node, remove err_platform_node.
-
-Regards,
+Thanks again,
 Angelo
-
 
 
