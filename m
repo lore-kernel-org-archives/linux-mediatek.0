@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB654C0015E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 07:33:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 522B5C0015E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 07:33:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d0vmKBL7pPBmAxt1W8SAMtzXtkXFwd/9twysIwFGbTQ=; b=DygHwC8yOTa/KBxP+AQHWuBV30
-	9J1O6UGJyEdHjz25jSnj9LlDl1SOZljYybpEsTWBxp69wVM70dDrwKNAG+CrbPWmrdulm7gHCq8fB
-	2VnJ+zoXD+FDsxL3S2+IODkhzqoB04k+jX3BxHbp2LqWTmEz7ktv8kp13dkPSGAiTe1/YwdQGI77T
-	t9AJ6/ZTt8DaOcCR5bcC3VeQuxqaVw6KW6y9tNEqjA8jeN9FVNFAk5T7b817ZRabtKRq4IaZsTC8k
-	/36TL36OrUE5HjA7jjJsIcVKTlGgsz6kJlWf1DHeNr45Q21eBakwShxs0ZEPaKskIQHogb3Ilig4G
-	A7+jynjg==;
+	bh=xaeUmoiGp4LYFaMQVcLH2mtRr62KoS+siquFFdTkrAU=; b=m+xFmQZJNxm35wBhO9OwSlM/ef
+	G/6bXTGbUT0OYQb8EJTR10WHYynGKXw7OtsLxiq05A32VwapVA2mkPFWabMJ+JsJQPPCPypHFX98r
+	rkbCEDJWzu49+cJu706nLPJPAaTqvzCT26ZnG+ONR8gWL3XYtytfx+E54cBe0QjzU4xXR62YYrK9a
+	TFCtUxo3nkXM4DAxeo29L8w84jkC0lw9M3+/28zxMKczP4qhdeO0CO5SpRqMbkzVYx6uNuI0nWMgD
+	wocMjX5/ThwDCQByuBui+ci57sdWiko1rNYDa039pU3xe07VfFRSBv3oUBRcJbFFK5V0oJSucXbpe
+	/wY8Ggew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOCY1-006bx3-20;
-	Tue, 25 Jul 2023 07:33:33 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qOCY9-006c1V-0M;
+	Tue, 25 Jul 2023 07:33:41 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOCXO-006bSo-0Q;
-	Tue, 25 Jul 2023 07:32:55 +0000
+	id 1qOCXP-006bUK-14;
+	Tue, 25 Jul 2023 07:32:57 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 27AD3660710A;
-	Tue, 25 Jul 2023 08:32:52 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0F5526607114;
+	Tue, 25 Jul 2023 08:32:53 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1690270372;
-	bh=Vg0YvjBSlDmlFYU7tKBjTOro4lXlpZBRQaqsrOefZqA=;
+	s=mail; t=1690270374;
+	bh=DR/G12pe4yglh3RcpLL0KLQLNBPShOVl9PCUQ7J4/Ac=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=coyHXIVWXIh/K9CpyuVpTlwkv8VJUao/RH/sELQqdBv76wvrulSNb6p0s6nZuM+gd
-	 VGIHPVCSVLERIZUsKwi7nqIRmCF7J3tL9uVOKnAkxJINB6tSHL1y2+bO9j2UicvZKd
-	 6VgKHTHy+SHXgLbdXJTxV1jtsTWt+rXzwk+VeXrFEsZcKMa0rwP4JqsAQqV7JaR5vg
-	 TvWpHq+COQThSnEN7i2H1f5UL4XacBLZes5HMC81oXngPbk/4OnhESLXMVCETAAdj1
-	 M/UOeYLbGJfpHcpsknLt+L/NG19PK6z3eQszu4VC3Rsug1BLc+wx64P/lsGsC627JD
-	 yXf3z1XKWCtWg==
+	b=ek3/7nOuynkGeshEIIpPIWjcnB7Gyvspt1najiSjv7jbsHZkmWg32O6pMn3eAYa45
+	 0kjKXhuSton6Pblpu4M0Xn2XV1hjR7lRNGx5okExSn6bxjcyenGwdwKWLg5YVi4hJ8
+	 E+sy8oJ8YYyoWxD86nda6/VkTJAJVzAUfcUKnLFtQ5zlhb45D9RAfBjITnMlLfr+HW
+	 d69sz+N+Vo55k64SmbMZrpvOeKFuUrBu7+M2f76HW7YTszA5vC/rJ4pvhm5HRSkB85
+	 3fdtsN2V0Fky8cY43mARZix+RU46FIr4B9bMmWLfyC81NcGGjwFB4LWbx5xvwWTd6J
+	 dSxRTfvWnU1dA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -58,19 +58,18 @@ Cc: p.zabel@pengutronix.de,
 	wenst@chromium.org,
 	nfraprado@collabora.com,
 	ehristev@collabora.com,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	CK Hu <ck.hu@mediatek.com>
-Subject: [PATCH v7 07/11] drm/mediatek: dp: Avoid mutex locks if audio is not supported/enabled
-Date: Tue, 25 Jul 2023 09:32:30 +0200
-Message-ID: <20230725073234.55892-8-angelogioacchino.delregno@collabora.com>
+	Alexandre Mergnat <amergnat@baylibre.com>
+Subject: [PATCH v7 08/11] drm/mediatek: dp: Move PHY registration to new function
+Date: Tue, 25 Jul 2023 09:32:31 +0200
+Message-ID: <20230725073234.55892-9-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230725073234.55892-1-angelogioacchino.delregno@collabora.com>
 References: <20230725073234.55892-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230725_003254_335965_7641057E 
-X-CRM114-Status: GOOD (  13.18  )
+X-CRM114-CacheID: sfid-20230725_003255_511969_CCA90622 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,53 +84,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If a controller (usually, eDP!) does not support audio, or audio is not
-enabled because the endpoint has no audio support, it's useless to lock
-a mutex only to unlock it right after because there's no .plugged_cb().
+In preparation for adding support for eDP, move the PHY registration
+code to a new mtk_dp_register_phy() function for better readability.
 
-Check if the audio is supported and enabled before locking the mutex in
-mtk_dp_update_plugged_status(): if not, we simply return immediately.
-
-While at it, since the update_plugged_status_lock mutex would not be
-used if the controller doesn't support audio at all, initialize it
-only if `audio_supported` is true.
+This commit brings no functional changes.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dp.c | 43 +++++++++++++++++++------------
+ 1 file changed, 26 insertions(+), 17 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 83e55f8dc84a..c1d1a882f1db 100644
+index c1d1a882f1db..1b4219e6a00b 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1948,6 +1948,9 @@ static int mtk_dp_dt_parse(struct mtk_dp *mtk_dp,
+@@ -2478,6 +2478,29 @@ static int mtk_dp_register_audio_driver(struct device *dev)
+ 	return PTR_ERR_OR_ZERO(mtk_dp->audio_pdev);
+ }
  
- static void mtk_dp_update_plugged_status(struct mtk_dp *mtk_dp)
++static int mtk_dp_register_phy(struct mtk_dp *mtk_dp)
++{
++	struct device *dev = mtk_dp->dev;
++
++	mtk_dp->phy_dev = platform_device_register_data(dev, "mediatek-dp-phy",
++							PLATFORM_DEVID_AUTO,
++							&mtk_dp->regs,
++							sizeof(struct regmap *));
++	if (IS_ERR(mtk_dp->phy_dev))
++		return dev_err_probe(dev, PTR_ERR(mtk_dp->phy_dev),
++				     "Failed to create device mediatek-dp-phy\n");
++
++	mtk_dp_get_calibration_data(mtk_dp);
++
++	mtk_dp->phy = devm_phy_get(&mtk_dp->phy_dev->dev, "dp");
++	if (IS_ERR(mtk_dp->phy)) {
++		platform_device_unregister(mtk_dp->phy_dev);
++		return dev_err_probe(dev, PTR_ERR(mtk_dp->phy), "Failed to get phy\n");
++	}
++
++	return 0;
++}
++
+ static int mtk_dp_probe(struct platform_device *pdev)
  {
-+	if (!mtk_dp->data->audio_supported || !mtk_dp->audio_enable)
-+		return;
-+
- 	mutex_lock(&mtk_dp->update_plugged_status_lock);
- 	if (mtk_dp->plugged_cb && mtk_dp->codec_dev)
- 		mtk_dp->plugged_cb(mtk_dp->codec_dev,
-@@ -2520,11 +2523,11 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 		return dev_err_probe(dev, ret,
- 				     "failed to request mediatek dptx irq\n");
+ 	struct mtk_dp *mtk_dp;
+@@ -2536,23 +2559,9 @@ static int mtk_dp_probe(struct platform_device *pdev)
+ 		}
+ 	}
  
--	mutex_init(&mtk_dp->update_plugged_status_lock);
+-	mtk_dp->phy_dev = platform_device_register_data(dev, "mediatek-dp-phy",
+-							PLATFORM_DEVID_AUTO,
+-							&mtk_dp->regs,
+-							sizeof(struct regmap *));
+-	if (IS_ERR(mtk_dp->phy_dev))
+-		return dev_err_probe(dev, PTR_ERR(mtk_dp->phy_dev),
+-				     "Failed to create device mediatek-dp-phy\n");
 -
- 	platform_set_drvdata(pdev, mtk_dp);
+-	mtk_dp_get_calibration_data(mtk_dp);
+-
+-	mtk_dp->phy = devm_phy_get(&mtk_dp->phy_dev->dev, "dp");
+-
+-	if (IS_ERR(mtk_dp->phy)) {
+-		platform_device_unregister(mtk_dp->phy_dev);
+-		return dev_err_probe(dev, PTR_ERR(mtk_dp->phy),
+-				     "Failed to get phy\n");
+-	}
++	ret = mtk_dp_register_phy(mtk_dp);
++	if (ret)
++		return ret;
  
- 	if (mtk_dp->data->audio_supported) {
-+		mutex_init(&mtk_dp->update_plugged_status_lock);
-+
- 		ret = mtk_dp_register_audio_driver(dev);
- 		if (ret) {
- 			dev_err(dev, "Failed to register audio driver: %d\n",
+ 	mtk_dp->bridge.funcs = &mtk_dp_bridge_funcs;
+ 	mtk_dp->bridge.of_node = dev->of_node;
 -- 
 2.41.0
 
