@@ -4,201 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38474C001DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 17:18:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 321FFEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Jul 2023 19:56:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DK9uHbsc3t+xogfPMg7kjIX+FMiUQnAapwvPyCJgoZE=; b=kVs6ePp8EcG5wqWLXHMv013xjM
-	uOvKQ6/8Fh5pTTZCCBSehM5w4YL1M+QOH9GkpIARNJjHBZzHY+FsaYRCnECAP2bsGPnMhGaWg9hkw
-	zpqg84ON5R6ol9EnWBFgD61OkL1B6BqxCgzYv5plJ5kSZb71OFvPbMgESJMnJ0DfZtG51zw7gWvk6
-	rQw9k1+HrUF63RBSoFxs1r8902lNwWygBZ+sZaWeBBWXb1AYv9Yj5JsYTLT2lrU8KDVfhTLi/Hses
-	dePDnnnjHmrnocw3wjvbpSP8K+29143CC38rU1XeLG9SnoDghG/vowzUxexht9Ney9edQpo1jm0TL
-	q0YX1XJg==;
+	bh=7fn+g5SVM5/TVR6A9/+TfRK8MQLSGt6ds677hc73rRw=; b=xyaFkFNJwpxADakoCrN54xbJDs
+	JpirweIE+/Jbs6U2EQutO+AiRXWrDP3qRQa8j6jfYySH+uhc8cgGpjnn3O9zFLnfo5bNTuHfk2CN9
+	qJmgdvAdYnrh82aQ1hUp8sGHF6i7YORfDMsMLxU5C2D5rvbPFY04M17zAJeK+DoTQLLvMPFA7XgVH
+	wXQ760U8nsYc//SAp7brZbyxiE6fdkj+Ov/LExN4PTWdege4takge+7DA1JkF1kqUKLwKx9AGAeQm
+	Ke3Rix5Myi9ZIz+MwjJ0bPjGc7zCerRh4jw55JQudEIb/hgdsz1BnqJOSX4AlA63RVZAYJjz/Aj80
+	TNUss1+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOLgP-0088xQ-0V;
-	Tue, 25 Jul 2023 17:18:49 +0000
-Received: from mail-co1nam11on20707.outbound.protection.outlook.com ([2a01:111:f400:7eab::707] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1qOO93-008NgW-1P;
+	Tue, 25 Jul 2023 19:56:33 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOLgL-0088wa-2x;
-	Tue, 25 Jul 2023 17:18:47 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LF7Nt6FB54q9wLFnqMh+KWU1gJu2w+VXEFT+Gm94jWu76pxreZZ42rFXlkaJb+GNCigmcyVQvmiuCO/YDeivI8ObDfEqE0S3SxV/rRC/8jtTrn2apAseZWp4ErUG8ViGJzltV0PSelcUrCXZIAJvV4Te4DXlqKNnKyZOLVs1XySvgghFn5PlFQqSnpZZJlhGB7PKxKqYQAiQTmX5jhRPDp51xn9oX/Axx6LJ3r9er5D1fqsXk8YHB/0yq85S0+90m7HSLGtI7kCTVONx5DIPQlIgBmmNMWWwRazUPAsQhGocwYcWGH214ck1IjO+xDNwFb5Zk/IHtI45wOyu29ybfw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DK9uHbsc3t+xogfPMg7kjIX+FMiUQnAapwvPyCJgoZE=;
- b=eP1EQBOCMbwlXLnRG3kxplC03+6yeHSsUw+juRtBXR2VWTLrq1pCCBMBYzR1k5ap//eHMNw4tV42/4NctcgD1ikw+EnFdBake1vW4pGOi26cmrLsBxN9KAYmM9zMBmv11K0XSg+4RHOzf8DmQqnqpFJ37OIr+utEWdLQ8RB06ol0cCo2jfuQW5zmyNd/ELruim0F/HUO1oRFPcGg4Qoc3ST9u5GUPY3ycJfb08LjXJSVh9WUx9/bQI1exCbeYsm1NeKhI+5sKP140CsdY0GLY9wc+Jjp/nvqDMF37JRnH5sqhp/dUyT8bePQQIsoSk8theP7N+O8zS+qw7lZ3vFgcg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
+	id 1qOO8y-008NfF-1r
+	for linux-mediatek@lists.infradead.org;
+	Tue, 25 Jul 2023 19:56:31 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-1bb893e6365so18964055ad.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 25 Jul 2023 12:56:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=DK9uHbsc3t+xogfPMg7kjIX+FMiUQnAapwvPyCJgoZE=;
- b=iWLcOQAvTSLwBrWinNqq3nQPLzctyuRnuYCRVRCvK3cOJ6AQ3tgZhLdAKI4UbrjqqcnpOOG74Hg2P9faH4x+ZI6+tw6/QxRittc7DjZuA1/w/EPO2EBIOeyWnnDo8YwRtGHxKLataoAEul08W3ISPGzjmY4tYNw/KU6hCNMTd20=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by SN7PR13MB6065.namprd13.prod.outlook.com (2603:10b6:806:32f::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6609.33; Tue, 25 Jul
- 2023 17:18:38 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::fde7:9821:f2d9:101d]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::fde7:9821:f2d9:101d%7]) with mapi id 15.20.6609.032; Tue, 25 Jul 2023
- 17:18:38 +0000
-Date: Tue, 25 Jul 2023 19:18:19 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: Rob Herring <robh@kernel.org>
-Cc: Andreas Larsson <andreas@gaisler.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Iyappan Subramanian <iyappan@os.amperecomputing.com>,
-	Keyur Chudgar <keyur@os.amperecomputing.com>,
-	Chris Snook <chris.snook@gmail.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Madalin Bucur <madalin.bucur@nxp.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Vladimir Oltean <vladimir.oltean@nxp.com>,
-	Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>,
-	Clark Wang <xiaoning.wang@nxp.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Sean Anderson <sean.anderson@seco.com>,
-	Pantelis Antoniou <pantelis.antoniou@gmail.com>,
-	Li Yang <leoyang.li@nxp.com>,
-	Yisen Zhuang <yisen.zhuang@huawei.com>,
-	Salil Mehta <salil.mehta@huawei.com>,
-	Douglas Miller <dougmill@linux.ibm.com>,
-	Marcin Wojtas <mw@semihalf.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Taras Chorny i <taras.chornyi@plvision.eu>,
-	Mirko Lindner <mlindner@marvell.com>,
-	Stephen Hemminger <stephen@networkplumber.org>,
-	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
+        d=linaro.org; s=google; t=1690314985; x=1690919785;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=7fn+g5SVM5/TVR6A9/+TfRK8MQLSGt6ds677hc73rRw=;
+        b=GWPgF24TpcpAr/vdigenZ2GQta85arMUzNMGV/lGi5gvBTxa7detC8YIcxFtVrHPEP
+         n/moNwtbrz3ooaaGTareRvWz9aPBSG7hibHHMxxawzNEICh4RXwJKF/L8eEvswR1Gn4i
+         UExC5vY/a0KpvzGTiYqaiYMDfNVmQUnL/O6hEDkIgeQJZOGz4gxP5OGJAWWeuSPn/i5g
+         amrXqleaJPiys8aMQTX5n5vkxTijXzis016ai45lS6JvB03EgSQnNi6AiaZ5jMKdk6k7
+         sf0wnJV2W0oNmIW9LxOt6vbzFET24wgp+u1Ula3jyLrp8d5cVuUMPet8d8y2UsIdGJEF
+         6sPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1690314985; x=1690919785;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7fn+g5SVM5/TVR6A9/+TfRK8MQLSGt6ds677hc73rRw=;
+        b=mGALEnNbNNz/XHFUR2coP0+BpKt166l8ACeyF4gI8RfZGLH/JBGJlJPRn/L1Xty3h6
+         4+jbOmkspuSYU2IUfxaGehUowUREt4l7RvOzgonulSl4i/mMOPZuxYkELNxIMyznHXn9
+         AJbxiETMj4bBabgBUn51a1XrIL58HS1zLh4pSVBI5hBn72WqGOVrQ/tOe2Ieta8uSIhv
+         lVPz15ajG7+dwIPnguTrV7kZmf3WVMCR6LXJhR7NK0XG7kVRF/Dxyiwm2eRYd4R6+wlX
+         lmFQypi3aMujElF/NfZiDzraGShNsrERNkJy+eou4xld28Tnbko1KkVQ0nIzT43njShP
+         2qlA==
+X-Gm-Message-State: ABy/qLYIBv+TgupnMXTwBdSGHR8pirJTM9SEX90mDldC3txb4O6vocMm
+	3BSLgD6iqVUfJt/WFGb/3nEfhg==
+X-Google-Smtp-Source: APBJJlE2vJeGxX0/rouk6QeAPjw+F+MntjweUpG+RUKh0k5PR9X3sKbyos6sssk9MsGN9IsrZY0Giw==
+X-Received: by 2002:a17:902:d2c1:b0:1b5:edd:e3c7 with SMTP id n1-20020a170902d2c100b001b50edde3c7mr168517plc.16.1690314985497;
+        Tue, 25 Jul 2023 12:56:25 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:2116:2b1f:2fd8:ec8d])
+        by smtp.gmail.com with ESMTPSA id x13-20020a170902820d00b001b89f6550d1sm11455997pln.16.2023.07.25.12.56.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 25 Jul 2023 12:56:24 -0700 (PDT)
+Date: Tue, 25 Jul 2023 13:56:22 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Timur Tabi <timur@kernel.org>, Sergey Shtylyov <s.shtylyov@omp.ru>,
-	Steve Glendinning <steve.glendinning@shawell.net>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Bhupesh Sharma <bhupesh.sharma@linaro.org>,
-	Emil Renner Berthing <kernel@esmil.dk>,
-	Samin Guo <samin.guo@starfivetech.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
-	Grygorii Strashko <grygorii.strashko@ti.com>,
-	Kevin Brace <kevinbrace@bracecomputerlab.com>,
-	Francois Romieu <romieu@fr.zoreil.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
-	Alexander Aring <alex.aring@gmail.com>,
-	Stefan Schmidt <stefan@datenfreihafen.org>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Alex Elder <elder@kernel.org>, A ndrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Richard Cochran <richardcochran@gmail.com>,
-	Alex Elder <elder@linaro.org>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org,
+	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-amlogic@lists.infradead.org, linux-oxnas@groups.io,
-	linux-arm-msm@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org,
-	linux-wpan@vger.kernel.org
-Subject: Re: [PATCH v2] net: Explicitly include correct DT includes
-Message-ID: <ZMAD25Yp6gCNq+wH@corigine.com>
-References: <20230724212222.809909-1-robh@kernel.org>
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v15 05/13] remoteproc: mediatek: Extract SCP common
+ registers
+Message-ID: <ZMAo5sn4KnvfvSWq@p14s>
+References: <20230721024132.6548-1-tinghan.shen@mediatek.com>
+ <20230721024132.6548-6-tinghan.shen@mediatek.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230724212222.809909-1-robh@kernel.org>
-X-ClientProxiedBy: AM8P190CA0030.EURP190.PROD.OUTLOOK.COM
- (2603:10a6:20b:219::35) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|SN7PR13MB6065:EE_
-X-MS-Office365-Filtering-Correlation-Id: bfcfba55-28cc-4df2-90e5-08db8d332f15
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: kVQINs0kkXBcwE8L5iyOtORfoG1Pd+xFjXPZ9LRODBMiMliUBEuEzEk3iVcrwXKJr8rAFVdqJgeYwWq3+TV/i2ltvCUcGsy44uTPpGg5JtJ7CMraHfl6jGw89N+GIsjdGq4JZQph/OOpvGT53zWj/oqmZs2uzXtxyilKNz2sCNftNLMJ4RV1Mi2crDarzhCjmPBkBf5nCS/Jd5kiSku0NYbM7aW3VWgo+9vPYlkKLvLKr7vcpQbCn0j767wjiVt23thNz4d1fnu/9/LPRR5CqYzqRvtGQCtMe7UIiztvNr9h5AMHeL2lt8Mv81bRppZSJp9rhsL/1lUQLPu+Sdvw+ripgZyplCZwKH09doFEnYxxRysQUMBtjmH4q2+BF/wJLxTrl7HbvqNiRVq4re5QsMYOtov0PLBOx9LZuRFtfAiccM82LIYKODAUhugvNIxxKWTGDstNffrm53GfCp0E1i2vK7Ko3fADdxq2o05WX3yw+l5hMzdytBW9aRHjrVmCuCauG88JwzTkLRp0X/pfjvk/HI5XJPKRtIKzqNmD3fSK/+JC7Im0wf9PyVOeNSgkCcCQUdxWrmpCEUyUTRHctqiBrREvZpt+9ce9mGQ9tp0VcTVfP5PIEWZi7iuxn7vnJFIUN9TouT6oWhL+TPvOUfhhKAml3+smPtF/DuFOglg=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(39840400004)(376002)(366004)(136003)(396003)(346002)(451199021)(36756003)(7416002)(86362001)(44832011)(2906002)(4744005)(7336002)(7366002)(7406005)(83380400001)(186003)(6506007)(6512007)(38100700002)(6486002)(54906003)(6666004)(8936002)(4326008)(66476007)(6916009)(66946007)(316002)(66556008)(41300700001)(5660300002)(478600001)(8676002)(2616005)(67856001);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?SfivlBpK0iZL4CHmNzCFK8GVBuqJNnfG4tpEURiqDu2qUXtgl7nra0Hl3D+D?=
- =?us-ascii?Q?TDl4OSMSGsMUhHcrQPQYgZmjub7iJvXyRmU0c6PMsUxeMubBTLInPEPVXSaZ?=
- =?us-ascii?Q?46kYdQ81k5PiHsUNt1cuGOPLckPycvCVspi4dEE+GSwu2XoHLUoLn6Z8TxQM?=
- =?us-ascii?Q?HUEihQTj9OP0wEP5xtFHjg3kfyrH/4b1/kvVWz3nQFcLVp+2x/dU4/zSByLY?=
- =?us-ascii?Q?Ml+v0Om2OULiq5Jo78qdrpSvryOkq12+781HITllpTWk9PHXHCztg6ikUiCv?=
- =?us-ascii?Q?45W3YrcmJ2Mb8W+jTO3TcthkrOS+GGeNfb2EErqLS3l8JW2MgTcF3hqhesbe?=
- =?us-ascii?Q?YL1GaWZrMwMhTjoGN8wjsy+ea21hb/MeUv8Uhc84IJ2A7E7JMWqRZ4ZI5Gvf?=
- =?us-ascii?Q?EwSYJOU64pTev1BBJc3MyPdhFHm0NCcI6+/9Llq/HQ2dxJco5pRucO8WU3Rx?=
- =?us-ascii?Q?+enuinJ32jB0VCQC5wqDVjB8I1vDjjYFfIfddoCh6TZZqfRtzN4fzcw4uDvp?=
- =?us-ascii?Q?wN/g0Hx3dGTLPKbhsemzhN+FSBEKiza8x9s3+wt5JMhkkswN8jrVPUuxnn/x?=
- =?us-ascii?Q?uXqnVvbEi5s9UtXQRB/WsAPhlFwdAG6CvhJTe/xYe7bVvwXOaJAYZZF4d44x?=
- =?us-ascii?Q?s200Q9lqq7JKWM0XdQNPBCtYSffBQaHT08jE0nIEMY7vbtdFmu1burl65/D/?=
- =?us-ascii?Q?dtPHiddakpgiDlKp+zv1YdTboPlh5R5EgsDVS/BSO/PWWlsIT5FNpaOtoRhv?=
- =?us-ascii?Q?jR+KQgaDDPT0WBA/IHTNuPL+45ik1WWeadVU7fKub1nCQeImkrQW819PJPC0?=
- =?us-ascii?Q?Md2ORPW/WwbYip4HTGS/3F/nldVG6cetrnhtFtVGArjETFpW4KhlsgW9PF5N?=
- =?us-ascii?Q?3R3M/WA7bxAtq5u1lVdf1twMXF17S/TFETgrgi17HbsHxi7nXpEZq8RNCt2j?=
- =?us-ascii?Q?zpOfMfZV94NkGGwgngDvxRVOur4wRX00X4pJC/nAz0efGlmwcYaBH6crG7NH?=
- =?us-ascii?Q?8K64RPHBI1BMYvWLDVHQuqk2izUM9QGQ9NMB0k6fF9yeaJaO5LeU3Bst1M+S?=
- =?us-ascii?Q?aWmKs2heLOdTBf+q5Wvi3Nk6nrMs2EqkueXsT41hKbHbhSSA4nJm9yu1uAWX?=
- =?us-ascii?Q?DIVXYTJBDPH1596HPDfvtoZ9mtlXKi9RAH7z0fDuFrrQOWNCNLVNSjupm1xy?=
- =?us-ascii?Q?lxEuDpJJ6qu0sE8H/HfxiEaPhTjg2NdctqN4qs4mLiTXab6LZu0EQNaG+UgY?=
- =?us-ascii?Q?lzkD2lfgG0+w0PQsHE+DJHBA9+5ELRG7JG1YQpZxp2sjbh4tSyYMp59tYIhD?=
- =?us-ascii?Q?siBaFJMRClIq8mS6BGLguvZbj9kqz13UBvaJFJHcP7Ow2rilh0ZcLEqRebfE?=
- =?us-ascii?Q?IHr67O0wg5qCkiBBSmfEmGU+xCJTBOhrzDI8qhvKaKRa/7qYHjjbpsB9PthE?=
- =?us-ascii?Q?nug7ecTlHhsgIGSNAo3XloesemLot0X0ll3JQAvzY8Hd8HK0PCFfqppuS4tW?=
- =?us-ascii?Q?6nfKKrkFu+eud8HUI1sTSX+HtrhKSDtIiC39S6S9OsMjDNGHuyeHJaAGFpMk?=
- =?us-ascii?Q?siYEUNMlx5SSwJZBGNC3dq2ZnwNHg4M/BHkwRA7JxbOPQtd8CJZL+WSV4SHT?=
- =?us-ascii?Q?bOaJpZYxTvRK6B4jYROZVzhxTWieF3ci+kudBTmhCkorYkQqvxK9aSUbBN0J?=
- =?us-ascii?Q?8TI0IA=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bfcfba55-28cc-4df2-90e5-08db8d332f15
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jul 2023 17:18:37.9129
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: CmON8172SiVviYEIWeRrGW6MJ4deG0a05MA6FmZOqw9dmoxdn9FmRvCA/R2Xs9SiafbJX7u1l23Wdh8sbM72MM5p0IuZ+rHjJg9KTwW5wUk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR13MB6065
+In-Reply-To: <20230721024132.6548-6-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230725_101845_954521_227604BD 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230725_125628_668722_D43E6F4A 
+X-CRM114-Status: GOOD (  25.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -213,20 +100,505 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 24, 2023 at 03:22:16PM -0600, Rob Herring wrote:
+On Fri, Jul 21, 2023 at 10:41:24AM +0800, Tinghan Shen wrote:
+> This is the 1st preliminary steps for probing multi-core SCP.
+> The registers of config and l1tcm are common on single-core SCP
+> and multi-core SCP. Extract these registers out to reduce duplicated
+> fields in mtk_scp when probing multi-core SCP.
+> 
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> ---
+>  drivers/remoteproc/mtk_common.h  |  13 +-
+>  drivers/remoteproc/mtk_scp.c     | 201 +++++++++++++++++--------------
+>  drivers/remoteproc/mtk_scp_ipi.c |   4 +-
+>  3 files changed, 122 insertions(+), 96 deletions(-)
+> 
+> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+> index c0905aec3b4b..b04d71277c1f 100644
+> --- a/drivers/remoteproc/mtk_common.h
+> +++ b/drivers/remoteproc/mtk_common.h
+> @@ -100,17 +100,20 @@ struct mtk_scp_of_data {
+>  	size_t ipi_buf_offset;
+>  };
+>  
+> +struct mtk_scp_of_cluster {
+> +	void __iomem *reg_base;
+> +	void __iomem *l1tcm_base;
+> +	size_t l1tcm_size;
+> +	phys_addr_t l1tcm_phys;
+> +};
+> +
 
-...
+Ok
 
->  90 files changed, 88 insertions(+), 92 deletions(-)
+>  struct mtk_scp {
+>  	struct device *dev;
+>  	struct rproc *rproc;
+>  	struct clk *clk;
+> -	void __iomem *reg_base;
+>  	void __iomem *sram_base;
+>  	size_t sram_size;
+>  	phys_addr_t sram_phys;
+> -	void __iomem *l1tcm_base;
+> -	size_t l1tcm_size;
+> -	phys_addr_t l1tcm_phys;
+> 
 
-Hi Rob,
+Ok
 
-I suppose that it's reasonable to take this patch through netdev.
-But it does have a pretty wide surface, and netdev moves a lot.
+>  	const struct mtk_scp_of_data *data;
+>  
+> @@ -128,6 +131,8 @@ struct mtk_scp {
+>  	size_t dram_size;
+>  
+>  	struct rproc_subdev *rpmsg_subdev;
+> +
+> +	struct mtk_scp_of_cluster *cluster;
 
-As it stands the patch doesn't apply due to a conflict
-in dwmac-qcom-ethqos.c
+Ok
 
--- 
-pw-bot: changes-requested
+>  };
+>  
+>  /**
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index 48e759c2d486..9486f5020946 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -152,45 +152,45 @@ static void mt8183_scp_reset_assert(struct mtk_scp *scp)
+>  {
+>  	u32 val;
+>  
+> -	val = readl(scp->reg_base + MT8183_SW_RSTN);
+> +	val = readl(scp->cluster->reg_base + MT8183_SW_RSTN);
+>  	val &= ~MT8183_SW_RSTN_BIT;
+> -	writel(val, scp->reg_base + MT8183_SW_RSTN);
+> +	writel(val, scp->cluster->reg_base + MT8183_SW_RSTN);
+>  }
+>  
+>  static void mt8183_scp_reset_deassert(struct mtk_scp *scp)
+>  {
+>  	u32 val;
+>  
+> -	val = readl(scp->reg_base + MT8183_SW_RSTN);
+> +	val = readl(scp->cluster->reg_base + MT8183_SW_RSTN);
+>  	val |= MT8183_SW_RSTN_BIT;
+> -	writel(val, scp->reg_base + MT8183_SW_RSTN);
+> +	writel(val, scp->cluster->reg_base + MT8183_SW_RSTN);
+>  }
+>  
+>  static void mt8192_scp_reset_assert(struct mtk_scp *scp)
+>  {
+> -	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
+> +	writel(1, scp->cluster->reg_base + MT8192_CORE0_SW_RSTN_SET);
+>  }
+>  
+>  static void mt8192_scp_reset_deassert(struct mtk_scp *scp)
+>  {
+> -	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_CLR);
+> +	writel(1, scp->cluster->reg_base + MT8192_CORE0_SW_RSTN_CLR);
+>  }
+>  
+>  static void mt8195_scp_c1_reset_assert(struct mtk_scp *scp)
+>  {
+> -	writel(1, scp->reg_base + MT8195_CORE1_SW_RSTN_SET);
+> +	writel(1, scp->cluster->reg_base + MT8195_CORE1_SW_RSTN_SET);
+>  }
+>  
+>  static void mt8195_scp_c1_reset_deassert(struct mtk_scp *scp)
+>  {
+> -	writel(1, scp->reg_base + MT8195_CORE1_SW_RSTN_CLR);
+> +	writel(1, scp->cluster->reg_base + MT8195_CORE1_SW_RSTN_CLR);
+>  }
+>  
+>  static void mt8183_scp_irq_handler(struct mtk_scp *scp)
+>  {
+>  	u32 scp_to_host;
+>  
+> -	scp_to_host = readl(scp->reg_base + MT8183_SCP_TO_HOST);
+> +	scp_to_host = readl(scp->cluster->reg_base + MT8183_SCP_TO_HOST);
+>  	if (scp_to_host & MT8183_SCP_IPC_INT_BIT)
+>  		scp_ipi_handler(scp);
+>  	else
+> @@ -198,14 +198,14 @@ static void mt8183_scp_irq_handler(struct mtk_scp *scp)
+>  
+>  	/* SCP won't send another interrupt until we set SCP_TO_HOST to 0. */
+>  	writel(MT8183_SCP_IPC_INT_BIT | MT8183_SCP_WDT_INT_BIT,
+> -	       scp->reg_base + MT8183_SCP_TO_HOST);
+> +	       scp->cluster->reg_base + MT8183_SCP_TO_HOST);
+>  }
+>  
+>  static void mt8192_scp_irq_handler(struct mtk_scp *scp)
+>  {
+>  	u32 scp_to_host;
+>  
+> -	scp_to_host = readl(scp->reg_base + MT8192_SCP2APMCU_IPC_SET);
+> +	scp_to_host = readl(scp->cluster->reg_base + MT8192_SCP2APMCU_IPC_SET);
+>  
+>  	if (scp_to_host & MT8192_SCP_IPC_INT_BIT) {
+>  		scp_ipi_handler(scp);
+> @@ -215,10 +215,10 @@ static void mt8192_scp_irq_handler(struct mtk_scp *scp)
+>  		 * MT8192_SCP2APMCU_IPC.
+>  		 */
+>  		writel(MT8192_SCP_IPC_INT_BIT,
+> -		       scp->reg_base + MT8192_SCP2APMCU_IPC_CLR);
+> +		       scp->cluster->reg_base + MT8192_SCP2APMCU_IPC_CLR);
+>  	} else {
+>  		scp_wdt_handler(scp, scp_to_host);
+> -		writel(1, scp->reg_base + MT8192_CORE0_WDT_IRQ);
+> +		writel(1, scp->cluster->reg_base + MT8192_CORE0_WDT_IRQ);
+>  	}
+>  }
+>  
+> @@ -226,12 +226,12 @@ static void mt8195_scp_c1_irq_handler(struct mtk_scp *scp)
+>  {
+>  	u32 scp_to_host;
+>  
+> -	scp_to_host = readl(scp->reg_base + MT8195_SSHUB2APMCU_IPC_SET);
+> +	scp_to_host = readl(scp->cluster->reg_base + MT8195_SSHUB2APMCU_IPC_SET);
+>  
+>  	if (scp_to_host & MT8192_SCP_IPC_INT_BIT)
+>  		scp_ipi_handler(scp);
+>  
+> -	writel(scp_to_host, scp->reg_base + MT8195_SSHUB2APMCU_IPC_CLR);
+> +	writel(scp_to_host, scp->cluster->reg_base + MT8195_SSHUB2APMCU_IPC_CLR);
+>  }
+>  
+>  static irqreturn_t scp_irq_handler(int irq, void *priv)
+> @@ -363,26 +363,26 @@ static int mt8195_scp_clk_get(struct mtk_scp *scp)
+>  static int mt8183_scp_before_load(struct mtk_scp *scp)
+>  {
+>  	/* Clear SCP to host interrupt */
+> -	writel(MT8183_SCP_IPC_INT_BIT, scp->reg_base + MT8183_SCP_TO_HOST);
+> +	writel(MT8183_SCP_IPC_INT_BIT, scp->cluster->reg_base + MT8183_SCP_TO_HOST);
+>  
+>  	/* Reset clocks before loading FW */
+> -	writel(0x0, scp->reg_base + MT8183_SCP_CLK_SW_SEL);
+> -	writel(0x0, scp->reg_base + MT8183_SCP_CLK_DIV_SEL);
+> +	writel(0x0, scp->cluster->reg_base + MT8183_SCP_CLK_SW_SEL);
+> +	writel(0x0, scp->cluster->reg_base + MT8183_SCP_CLK_DIV_SEL);
+>  
+>  	/* Initialize TCM before loading FW. */
+> -	writel(0x0, scp->reg_base + MT8183_SCP_L1_SRAM_PD);
+> -	writel(0x0, scp->reg_base + MT8183_SCP_TCM_TAIL_SRAM_PD);
+> +	writel(0x0, scp->cluster->reg_base + MT8183_SCP_L1_SRAM_PD);
+> +	writel(0x0, scp->cluster->reg_base + MT8183_SCP_TCM_TAIL_SRAM_PD);
+>  
+>  	/* Turn on the power of SCP's SRAM before using it. */
+> -	writel(0x0, scp->reg_base + MT8183_SCP_SRAM_PDN);
+> +	writel(0x0, scp->cluster->reg_base + MT8183_SCP_SRAM_PDN);
+>  
+>  	/*
+>  	 * Set I-cache and D-cache size before loading SCP FW.
+>  	 * SCP SRAM logical address may change when cache size setting differs.
+>  	 */
+>  	writel(MT8183_SCP_CACHE_CON_WAYEN | MT8183_SCP_CACHESIZE_8KB,
+> -	       scp->reg_base + MT8183_SCP_CACHE_CON);
+> -	writel(MT8183_SCP_CACHESIZE_8KB, scp->reg_base + MT8183_SCP_DCACHE_CON);
+> +	       scp->cluster->reg_base + MT8183_SCP_CACHE_CON);
+> +	writel(MT8183_SCP_CACHESIZE_8KB, scp->cluster->reg_base + MT8183_SCP_DCACHE_CON);
+>  
+>  	return 0;
+>  }
+> @@ -408,28 +408,28 @@ static void scp_sram_power_off(void __iomem *addr, u32 reserved_mask)
+>  static int mt8186_scp_before_load(struct mtk_scp *scp)
+>  {
+>  	/* Clear SCP to host interrupt */
+> -	writel(MT8183_SCP_IPC_INT_BIT, scp->reg_base + MT8183_SCP_TO_HOST);
+> +	writel(MT8183_SCP_IPC_INT_BIT, scp->cluster->reg_base + MT8183_SCP_TO_HOST);
+>  
+>  	/* Reset clocks before loading FW */
+> -	writel(0x0, scp->reg_base + MT8183_SCP_CLK_SW_SEL);
+> -	writel(0x0, scp->reg_base + MT8183_SCP_CLK_DIV_SEL);
+> +	writel(0x0, scp->cluster->reg_base + MT8183_SCP_CLK_SW_SEL);
+> +	writel(0x0, scp->cluster->reg_base + MT8183_SCP_CLK_DIV_SEL);
+>  
+>  	/* Turn on the power of SCP's SRAM before using it. Enable 1 block per time*/
+> -	scp_sram_power_on(scp->reg_base + MT8183_SCP_SRAM_PDN, 0);
+> +	scp_sram_power_on(scp->cluster->reg_base + MT8183_SCP_SRAM_PDN, 0);
+>  
+>  	/* Initialize TCM before loading FW. */
+> -	writel(0x0, scp->reg_base + MT8183_SCP_L1_SRAM_PD);
+> -	writel(0x0, scp->reg_base + MT8183_SCP_TCM_TAIL_SRAM_PD);
+> -	writel(0x0, scp->reg_base + MT8186_SCP_L1_SRAM_PD_P1);
+> -	writel(0x0, scp->reg_base + MT8186_SCP_L1_SRAM_PD_p2);
+> +	writel(0x0, scp->cluster->reg_base + MT8183_SCP_L1_SRAM_PD);
+> +	writel(0x0, scp->cluster->reg_base + MT8183_SCP_TCM_TAIL_SRAM_PD);
+> +	writel(0x0, scp->cluster->reg_base + MT8186_SCP_L1_SRAM_PD_P1);
+> +	writel(0x0, scp->cluster->reg_base + MT8186_SCP_L1_SRAM_PD_p2);
+>  
+>  	/*
+>  	 * Set I-cache and D-cache size before loading SCP FW.
+>  	 * SCP SRAM logical address may change when cache size setting differs.
+>  	 */
+>  	writel(MT8183_SCP_CACHE_CON_WAYEN | MT8183_SCP_CACHESIZE_8KB,
+> -	       scp->reg_base + MT8183_SCP_CACHE_CON);
+> -	writel(MT8183_SCP_CACHESIZE_8KB, scp->reg_base + MT8183_SCP_DCACHE_CON);
+> +	       scp->cluster->reg_base + MT8183_SCP_CACHE_CON);
+> +	writel(MT8183_SCP_CACHESIZE_8KB, scp->cluster->reg_base + MT8183_SCP_DCACHE_CON);
+>  
+>  	return 0;
+>  }
+> @@ -437,19 +437,19 @@ static int mt8186_scp_before_load(struct mtk_scp *scp)
+>  static int mt8192_scp_before_load(struct mtk_scp *scp)
+>  {
+>  	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
+> -	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
+> +	writel(0xff, scp->cluster->reg_base + MT8192_SCP2SPM_IPC_CLR);
+>  
+> -	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
+> +	writel(1, scp->cluster->reg_base + MT8192_CORE0_SW_RSTN_SET);
+>  
+>  	/* enable SRAM clock */
+> -	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+> -	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+> -	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+> -	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
+> -	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+> +	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+> +	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+> +	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+> +	scp_sram_power_on(scp->cluster->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
+> +	scp_sram_power_on(scp->cluster->reg_base + MT8192_CPU0_SRAM_PD, 0);
+>  
+>  	/* enable MPU for all memory regions */
+> -	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
+> +	writel(0xff, scp->cluster->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
+>  
+>  	return 0;
+>  }
+> @@ -457,20 +457,20 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
+>  static int mt8195_scp_before_load(struct mtk_scp *scp)
+>  {
+>  	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
+> -	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
+> +	writel(0xff, scp->cluster->reg_base + MT8192_SCP2SPM_IPC_CLR);
+>  
+> -	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
+> +	writel(1, scp->cluster->reg_base + MT8192_CORE0_SW_RSTN_SET);
+>  
+>  	/* enable SRAM clock */
+> -	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+> -	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+> -	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+> -	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
+> +	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+> +	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+> +	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+> +	scp_sram_power_on(scp->cluster->reg_base + MT8192_L1TCM_SRAM_PDN,
+>  			  MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
+> -	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+> +	scp_sram_power_on(scp->cluster->reg_base + MT8192_CPU0_SRAM_PD, 0);
+>  
+>  	/* enable MPU for all memory regions */
+> -	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
+> +	writel(0xff, scp->cluster->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
+>  
+>  	return 0;
+>  }
+> @@ -479,10 +479,10 @@ static int mt8195_scp_c1_before_load(struct mtk_scp *scp)
+>  {
+>  	scp->data->scp_reset_assert(scp);
+>  
+> -	scp_sram_power_on(scp->reg_base + MT8195_CPU1_SRAM_PD, 0);
+> +	scp_sram_power_on(scp->cluster->reg_base + MT8195_CPU1_SRAM_PD, 0);
+>  
+>  	/* enable MPU for all memory regions */
+> -	writel(0xff, scp->reg_base + MT8195_CORE1_MEM_ATT_PREDEF);
+> +	writel(0xff, scp->cluster->reg_base + MT8195_CORE1_MEM_ATT_PREDEF);
+>  
+>  	return 0;
+>  }
+> @@ -601,11 +601,11 @@ static void *mt8192_scp_da_to_va(struct mtk_scp *scp, u64 da, size_t len)
+>  	}
+>  
+>  	/* optional memory region */
+> -	if (scp->l1tcm_size &&
+> -	    da >= scp->l1tcm_phys &&
+> -	    (da + len) <= scp->l1tcm_phys + scp->l1tcm_size) {
+> -		offset = da - scp->l1tcm_phys;
+> -		return (void __force *)scp->l1tcm_base + offset;
+> +	if (scp->cluster->l1tcm_size &&
+> +	    da >= scp->cluster->l1tcm_phys &&
+> +	    (da + len) <= scp->cluster->l1tcm_phys + scp->cluster->l1tcm_size) {
+> +		offset = da - scp->cluster->l1tcm_phys;
+> +		return (void __force *)scp->cluster->l1tcm_base + offset;
+>  	}
+>  
+>  	/* optional memory region */
+> @@ -629,43 +629,43 @@ static void *scp_da_to_va(struct rproc *rproc, u64 da, size_t len, bool *is_iome
+>  static void mt8183_scp_stop(struct mtk_scp *scp)
+>  {
+>  	/* Disable SCP watchdog */
+> -	writel(0, scp->reg_base + MT8183_WDT_CFG);
+> +	writel(0, scp->cluster->reg_base + MT8183_WDT_CFG);
+>  }
+>  
+>  static void mt8192_scp_stop(struct mtk_scp *scp)
+>  {
+>  	/* Disable SRAM clock */
+> -	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+> -	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+> -	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+> -	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
+> -	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+> +	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+> +	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+> +	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+> +	scp_sram_power_off(scp->cluster->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
+> +	scp_sram_power_off(scp->cluster->reg_base + MT8192_CPU0_SRAM_PD, 0);
+>  
+>  	/* Disable SCP watchdog */
+> -	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
+> +	writel(0, scp->cluster->reg_base + MT8192_CORE0_WDT_CFG);
+>  }
+>  
+>  static void mt8195_scp_stop(struct mtk_scp *scp)
+>  {
+>  	/* Disable SRAM clock */
+> -	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+> -	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+> -	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+> -	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
+> +	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+> +	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+> +	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+> +	scp_sram_power_off(scp->cluster->reg_base + MT8192_L1TCM_SRAM_PDN,
+>  			   MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
+> -	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
+> +	scp_sram_power_off(scp->cluster->reg_base + MT8192_CPU0_SRAM_PD, 0);
+>  
+>  	/* Disable SCP watchdog */
+> -	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
+> +	writel(0, scp->cluster->reg_base + MT8192_CORE0_WDT_CFG);
+>  }
+>  
+>  static void mt8195_scp_c1_stop(struct mtk_scp *scp)
+>  {
+>  	/* Power off CPU SRAM */
+> -	scp_sram_power_off(scp->reg_base + MT8195_CPU1_SRAM_PD, 0);
+> +	scp_sram_power_off(scp->cluster->reg_base + MT8195_CPU1_SRAM_PD, 0);
+>  
+>  	/* Disable SCP watchdog */
+> -	writel(0, scp->reg_base + MT8195_CORE1_WDT_CFG);
+> +	writel(0, scp->cluster->reg_base + MT8195_CORE1_WDT_CFG);
+>  }
+>  
+>  static int scp_stop(struct rproc *rproc)
+> @@ -854,7 +854,8 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
+>  	}
+>  }
+>  
+> -static int scp_probe(struct platform_device *pdev)
+> +static int scp_cluster_init(struct platform_device *pdev,
+> +			    struct mtk_scp_of_cluster *scp_cluster)
+
+Why is the mtk_scp and mtk_scp_of_cluster structure refactoring entangled with
+scp_probe()?  Just add another patch to prepare the upcoming work, exactly the
+same way pach 04/13 does.
+
+>  {
+>  	struct device *dev = &pdev->dev;
+>  	struct device_node *np = dev->of_node;
+> @@ -876,6 +877,7 @@ static int scp_probe(struct platform_device *pdev)
+>  	scp->rproc = rproc;
+>  	scp->dev = dev;
+>  	scp->data = of_device_get_match_data(dev);
+> +	scp->cluster = scp_cluster;
+>  	platform_set_drvdata(pdev, scp);
+>  
+>  	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
+> @@ -887,24 +889,6 @@ static int scp_probe(struct platform_device *pdev)
+>  	scp->sram_size = resource_size(res);
+>  	scp->sram_phys = res->start;
+>  
+> -	/* l1tcm is an optional memory region */
+> -	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
+> -	scp->l1tcm_base = devm_ioremap_resource(dev, res);
+> -	if (IS_ERR(scp->l1tcm_base)) {
+> -		ret = PTR_ERR(scp->l1tcm_base);
+> -		if (ret != -EINVAL) {
+> -			return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
+> -		}
+> -	} else {
+> -		scp->l1tcm_size = resource_size(res);
+> -		scp->l1tcm_phys = res->start;
+> -	}
+> -
+> -	scp->reg_base = devm_platform_ioremap_resource_byname(pdev, "cfg");
+> -	if (IS_ERR(scp->reg_base))
+> -		return dev_err_probe(dev, PTR_ERR(scp->reg_base),
+> -				     "Failed to parse and map cfg memory\n");
+> -
+>  	ret = scp->data->scp_clk_get(scp);
+>  	if (ret)
+>  		return ret;
+> @@ -956,6 +940,43 @@ static int scp_probe(struct platform_device *pdev)
+>  	return ret;
+>  }
+>  
+> +static int scp_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct mtk_scp_of_cluster *scp_cluster;
+> +	struct resource *res;
+> +	int ret;
+> +
+> +	scp_cluster = devm_kzalloc(dev, sizeof(*scp_cluster), GFP_KERNEL);
+> +	if (!scp_cluster)
+> +		return -ENOMEM;
+> +
+> +	scp_cluster->reg_base = devm_platform_ioremap_resource_byname(pdev, "cfg");
+> +	if (IS_ERR(scp_cluster->reg_base))
+> +		return dev_err_probe(dev, PTR_ERR(scp_cluster->reg_base),
+> +				     "Failed to parse and map cfg memory\n");
+> +
+> +	/* l1tcm is an optional memory region */
+> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
+> +	scp_cluster->l1tcm_base = devm_ioremap_resource(dev, res);
+> +	if (IS_ERR(scp_cluster->l1tcm_base)) {
+> +		ret = PTR_ERR(scp_cluster->l1tcm_base);
+> +		if (ret != -EINVAL)
+> +			return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
+> +
+> +		scp_cluster->l1tcm_base = NULL;
+> +	} else {
+> +		scp_cluster->l1tcm_size = resource_size(res);
+> +		scp_cluster->l1tcm_phys = res->start;
+> +	}
+> +
+> +	ret = scp_cluster_init(pdev, scp_cluster);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return 0;
+> +}
+> +
+>  static void scp_remove(struct platform_device *pdev)
+>  {
+>  	struct mtk_scp *scp = platform_get_drvdata(pdev);
+> diff --git a/drivers/remoteproc/mtk_scp_ipi.c b/drivers/remoteproc/mtk_scp_ipi.c
+> index 9c7c17b9d181..cd0b60106ec2 100644
+> --- a/drivers/remoteproc/mtk_scp_ipi.c
+> +++ b/drivers/remoteproc/mtk_scp_ipi.c
+> @@ -177,7 +177,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
+>  	mutex_lock(&scp->send_lock);
+>  
+>  	 /* Wait until SCP receives the last command */
+> -	ret = readl_poll_timeout_atomic(scp->reg_base + scp->data->host_to_scp_reg,
+> +	ret = readl_poll_timeout_atomic(scp->cluster->reg_base + scp->data->host_to_scp_reg,
+>  					val, !val, 0, SCP_TIMEOUT_US);
+>  	if (ret) {
+>  		dev_err(scp->dev, "%s: IPI timeout!\n", __func__);
+> @@ -192,7 +192,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
+>  	scp->ipi_id_ack[id] = false;
+>  	/* send the command to SCP */
+>  	writel(scp->data->host_to_scp_int_bit,
+> -	       scp->reg_base + scp->data->host_to_scp_reg);
+> +	       scp->cluster->reg_base + scp->data->host_to_scp_reg);
+>  
+>  	if (wait) {
+>  		/* wait for SCP's ACK */
+> -- 
+> 2.18.0
+> 
 
