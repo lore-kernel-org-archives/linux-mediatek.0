@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3779EC0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 19:53:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34D61C001DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 20:18:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zKHidkh8ZdWvxzD0mo3s1bjGGnjJRCgOsDmvC2VyjkA=; b=aUz/zl/ZOHbEC5
-	gI4VzhLB3JdGte/zqpndZ2GFiqktHdc5fdjdddKn4u0ltXDqNWr0Z9p3j6adIEPMXvfKbzSsy6Zrn
-	BtunoGXzfMZYA6Lk0fp3DncORZEMY8otL5OwKk6EnL84zwBUQOinJ3OMSpFl23+lSTclatPwcUnWr
-	M2dpfQFhgBCssP6wyN0qQOrbs84CYbQPBc2ZEfNBObg9R3lkDNsidfvG4HdIxmjK15G4P4QBg693F
-	VFYnJwsGFyPtjPraAsUZ95NbY7T/9pHB8SF4Pd7BI22QCiV6/fciwpZq0Z0V/8KzCuuikJgGTuRaA
-	Ak4FgYCBaT5aBlISw/NA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=B46qLyQJ0RLJG3V0owLH7AhzKF9F7MAxul4nuhS+mlc=; b=qT89tE4UhcXELTTJOJq2hVEsia
+	ZXi/SnuXm1prEeueJ2zXynrnBjHQ/jz8HwQIngwTSjJNDGAhUGPuluhZhCeucu2gwsk2K/OuZ6B3Z
+	yAQnv8RK5X/FuctLqvfqfXfE0nO0ecJ77y9SQwcry483BupYZZCD2X3ZOpd5830Pd/3/u4JGo0xTp
+	ptLOXOdYEqHpRBSJmbG2cSOcy8Ok6V1v8PAqbqPoqMQf7zUWJXVsY57IxfKm+xsml1qWJXChWfKV6
+	M4oHLx4BG2mL1sktXEb9ZUHv0LfXV0KJOnT6GKz7aUOn5ER0HyCAh82NjRi4mnUd987lJGaiBnqMI
+	0b8DPMFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOkZj-00BQUf-0L;
-	Wed, 26 Jul 2023 19:53:35 +0000
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+	id 1qOky5-00BTAR-08;
+	Wed, 26 Jul 2023 20:18:45 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOkZf-00BQTy-36
-	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Jul 2023 19:53:33 +0000
-Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-7659c6cae2cso14725885a.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Jul 2023 12:53:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1690401209; x=1691006009;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=zKHidkh8ZdWvxzD0mo3s1bjGGnjJRCgOsDmvC2VyjkA=;
-        b=HKNcliHHaStZU7lXLGoUoI0NXRX5/kXgIfzxpyS8dJzfhn3Kczh5+aW9zG5dQQCqYU
-         FkgueEj+2sSFQRTUFIIhitqa++n8ITJsFarRpSzaFqxKq6SdPP9dbnqVPjsw52HRitjh
-         pfoj6z8VGNoRphf6x9zQ0ulQGI4vzndRT0j/U=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690401209; x=1691006009;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=zKHidkh8ZdWvxzD0mo3s1bjGGnjJRCgOsDmvC2VyjkA=;
-        b=KspdWEom8o0oX7XrHvPhH1bdHUHTIMWK8Ea3AlDSG79V872mZQqog0Bi6vTBniUuIu
-         ZmPshNmLlbyRtqy/MS6SLiaJ/zyBlz/OTFtJWHlrg5VueFCfUFKr+7ahOz9Qnp40Fii4
-         Ov5XRfu4OQtLjBZwObmMlsnxe8bCRcIvY0XwWpYpClVBUnKCQP1BdFJqcqYGoKAls12x
-         fr0MgVH8B2r2CMti3cCmrXT3JLt/LLfUsoivBkm+WWnrCRZt95jhY+Pfu0LTOFL1I9oc
-         2wzXa7orvP1VHweiTnoXJPDROfOF6Dy+pbqi/qNhQkQ/ejOhE1s2XPJVdERaMq/qHqeG
-         0MJA==
-X-Gm-Message-State: ABy/qLaThwBCOhSSzhRuDku6ctPpQj5kvR+tatKkkk0olNS9cqo/0YNg
-	UyiqTCuhn2Jnvq6usrc/gvx8v6ketQz4PgqFFwE=
-X-Google-Smtp-Source: APBJJlGoGy6HUnXCkuS5WXnhtOwWyhLYYQssZObAOiKcA3WK5jHtODnzGfK2alDLktwPF4vcQmrmRQ==
-X-Received: by 2002:a05:620a:45a5:b0:766:68cd:d9dc with SMTP id bp37-20020a05620a45a500b0076668cdd9dcmr3069449qkb.19.1690401209375;
-        Wed, 26 Jul 2023 12:53:29 -0700 (PDT)
-Received: from greenjustin3.nyc.corp.google.com ([2620:0:1003:314:f6f2:a0c:f40e:3570])
-        by smtp.gmail.com with ESMTPSA id o9-20020ae9f509000000b00767db6f47bbsm4570689qkg.73.2023.07.26.12.53.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Jul 2023 12:53:28 -0700 (PDT)
-From: Justin Green <greenjustin@chromium.org>
-To: linux-mediatek@lists.infradead.org,
-	dri-devel@lists.freedesktop.org
-Subject: [PATCH v2] drm/mediatek: Add valid modifier check
-Date: Wed, 26 Jul 2023 15:52:32 -0400
-Message-ID: <20230726195232.1369289-1-greenjustin@chromium.org>
-X-Mailer: git-send-email 2.41.0.487.g6d72f3e995-goog
-MIME-Version: 1.0
+	id 1qOky0-00BT9H-2w;
+	Wed, 26 Jul 2023 20:18:42 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9C16861CA5;
+	Wed, 26 Jul 2023 20:18:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F0FDC433C8;
+	Wed, 26 Jul 2023 20:18:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
+	s=korg; t=1690402719;
+	bh=MMioSWLe0J+F5cA3VOGFUM/YW6sX+D23b5MfVPZqMwg=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=BAp862XDg5jm4GYl6C/MPJCbU0NcJd6qPBVRi+my42pt/DpGQq+SWl6YIT7fPp2PL
+	 HcTDTo7GooY8BqKKq/e9K45b7acdnf/8e4JgzivN0rxkQUcPLhm+263tGJc5Oa2wxs
+	 G7HZ6q+3UPSjZyikhKl7/dD9hL3rjG9tai4JLO+c=
+Date: Wed, 26 Jul 2023 13:18:22 -0700
+From: Andrew Morton <akpm@linux-foundation.org>
+To: Andrew Yang (=?UTF-8?B?5qWK5pm65by3?=) <Andrew.Yang@mediatek.com>
+Cc: "senozhatsky@chromium.org" <senozhatsky@chromium.org>,
+ "bigeasy@linutronix.de" <bigeasy@linutronix.de>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-mm@kvack.org" <linux-mm@kvack.org>, wsd_upstream
+ <wsd_upstream@mediatek.com>, Casper Li (=?UTF-8?B?5p2O5Lit5qau?=)
+ <casper.li@mediatek.com>, "minchan@kernel.org" <minchan@kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+ <matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] zsmalloc: Fix races between modifications of fullness
+ and isolated
+Message-Id: <20230726131822.22ac039ee4c696ea0726b510@linux-foundation.org>
+In-Reply-To: <42f1209a686404ffd0f9dff05ed10a8d23383a11.camel@mediatek.com>
+References: <20230721063705.11455-1-andrew.yang@mediatek.com>
+	<20230726031846.GJ955071@google.com>
+	<42f1209a686404ffd0f9dff05ed10a8d23383a11.camel@mediatek.com>
+X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230726_125332_053384_5FB16E3D 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20230726_131841_014324_48BD9E99 
+X-CRM114-Status: GOOD (  18.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,47 +80,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: chunkuang.hu@kernel.org, Justin Green <greenjustin@chromium.org>, jason-jh.lin@mediatek.com, justin.yeh@mediatek.com, daniel@fooishbar.org, wenst@chromium.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a check to mtk_drm_mode_fb_create() that rejects any modifier that
-is not the AFBC mode supported by MT8195's display overlays.
+On Wed, 26 Jul 2023 06:59:20 +0000 Andrew Yang (楊智強) <Andrew.Yang@mediatek.com> wrote:
 
-Tested by booting ChromeOS and verifying the UI works, and by running
-the ChromeOS kms_addfb_basic binary, which has a test called
-"addfb25-bad-modifier" that attempts to create a framebuffer with the
-modifier DRM_FORMAT_MOD_INVALID and verifies the ADDFB2 ioctl returns
-EINVAL.
+> > Have you observed issues in real life? That commit is more than a
+> > year
+> > and a half old, so I wonder.
+> > 
+> Yes, we encountered many kernel exceptions of
+> VM_BUG_ON(zspage->isolated == 0) in dec_zspage_isolation() and
+> BUG_ON(!pages[1]) in zs_unmap_object() lately.
+> This issue only occurs when migration and reclamation occur at the
+> same time. With our memory stress test, we can reproduce this issue
+> several times a day. We have no idea why no one else encountered
+> this issue. BTW, we switched to the new kernel version with this
+> defect a few months ago.
 
-Signed-off-by: Justin Green <greenjustin@chromium.org>
-Tested-by: Fei Shao <fshao@chromium.org>
----
-v2:
- * Replace zero check with comparison to DRM_FORMAT_MOD_LINEAR.
+Ah.  It's important that such information be in the changelog!
 
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+I have put this info into my copy of the v1 patch's changelog.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index cd5b18ef7951..2719a1e3163a 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -51,6 +51,13 @@ mtk_drm_mode_fb_create(struct drm_device *dev,
- 	if (info->num_planes != 1)
- 		return ERR_PTR(-EINVAL);
- 
-+	if (cmd->modifier[0] != DRM_FORMAT_MOD_LINEAR &&
-+	    cmd->modifier[0] != DRM_FORMAT_MOD_ARM_AFBC(
-+					AFBC_FORMAT_MOD_BLOCK_SIZE_32x8 |
-+					AFBC_FORMAT_MOD_SPLIT |
-+					AFBC_FORMAT_MOD_SPARSE))
-+		return ERR_PTR(-EINVAL);
-+
- 	return drm_gem_fb_create(dev, file, cmd);
- }
- 
--- 
-2.41.0.487.g6d72f3e995-goog
+I have moved the v1 patch from the mm-unstable branch into
+mm-hotfixes-unstable, so it is staged for merging in this -rc cycle.
 
+I have also added a cc:stable so that the fix gets backported into
+kernels which contain c4549b871102.
+
+I have added a note-to-self that a v2 patch is expected.
 
