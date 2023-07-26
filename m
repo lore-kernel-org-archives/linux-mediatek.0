@@ -4,126 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46783C001DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 13:55:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B44DFC0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 13:55:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6cQxaTz7g73oz6xbuuUqbQehs/F3w6onjtnuM/ot98Q=; b=S7IqDMKIsCobK+vunSUJ9zhnon
-	TBfkTVs7isBx8L8NcP4IsTLRX8RsRJRyobFUzGJGAoBeZ7QY4Y1QipHR1N7q8xG1b8QK6borALyWN
-	+offfreWmLa4Qm+obzq0nWVOBNgKJ+wDflIoxNDuXledH37yVD9orJDJ/QPzPDpLvY4+jrRrsgd2u
-	ZLmOTWxN60i49kUra9bgfkpF4MsBzpwxzNzPRop170+HK/g8sg3XNRA7HN6Ss3Is5WekiblOfk8vu
-	yeygsdYfjLYlMpFbSs4QyJr3exlS3HaMh0wFN3ZE/NBgmg2dkWYFD2qFBVLFw4b6LCTJwRhanJUbz
-	EDRDNnMg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Pv4E2/kDpVfa/Dtz4RIrx4SYaXDBMv1Xx1z917P6AGI=; b=TqOWCUhWiY0ZbcmR37Ot9pfdFf
+	ee5CdPHzUtMTPii75kNPYc3oqkHZVj1xWnwxfbdDmBBBlVV8lNVpkY0sDIVAQGZ9m5aGzz9akxtrJ
+	4ldJy6vZnZIEewqGVBMdtun7gwTp2pxS5cHojC+4/tSMKymtYwEuDAE5BIBNEJjeO7UFqNi2EFQzU
+	Dob2eQZmbfnMazSa6ZoJs+l4Td9KaJyd82oa5VhMI0dJVX6M5UvQQJzy/Wtq1hP58RBoqn7pc4+YP
+	M/YhAqXpJ8u8ATxlAS46R7q4VXO62j6yIlXzRTHbglXFUnxGfbGNvxiYYnO3wTbfsrBHXTzVUBlBH
+	In0YXPSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOeza-00AbR5-0n;
-	Wed, 26 Jul 2023 13:55:54 +0000
-Received: from mail-os0jpn01olkn20828.outbound.protection.outlook.com ([2a01:111:f403:700c::828] helo=JPN01-OS0-obe.outbound.protection.outlook.com)
+	id 1qOezd-00AbSN-2P;
+	Wed, 26 Jul 2023 13:55:57 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOezX-00AbOa-2r;
-	Wed, 26 Jul 2023 13:55:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ofTNULpIWhGlvJ3bpKR3nc+KISkiGSC+9qYz1ZQiUwkmkYB9UH2Bz/vEBS0gOub6Q+oLmsvlt0JlytyCoH6U8+M/mrfrYdQKr+5UzIx3dfltUhRabBMgNe2HhU3vSha+WV8Lz4s/iiBNSvtRw9YPDMOybVjtbHk1WbNI0D6mTGl3ta5ag0YX+ee6kg3r0UJIqNx1npURWhkwJ87WK9zGOcQue+XnblyN6BNJSOBnTMsd1GInMp0YVA9KdBxsCRIt95xinQRKLnQ7+xoV+Cve0gfUTHlTmJoSs1HqasBydHBlVBVA/EsW8Os06Bu7p+Yu1UmDmkrqexztNSSQZ+Y09A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6cQxaTz7g73oz6xbuuUqbQehs/F3w6onjtnuM/ot98Q=;
- b=Cdmlmmttniavquykn6gE0kQTEeXeBmTIwPyIqjsLVa9JGLrJHCrhUFbm5kM2xN3SLhK5wGIYEmShYgvyh6tN5h9DJYBswefsPwO+SMT2Ru6hpnKiPdqL/0m5dm0geRLzYyQJfKJwlmBbYePpXxOw3cWsDOxqBBdsvizRZItpgIN0TMTc5FO0+yec7uj1JMx9sDMlCH+6vefMvaPHYwvyKj6xCaY61WR++/v6tBD8ZnGcIlK5Xr2OsfmwIEPkEwxIrH+cNSmPPp4NN6EsTMAoYJEjrmcthpt3PclngfXHH3T6/fcOUxXhwa/SCWz+CWvozNKIBzqRj9b9EAspthCeSQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6cQxaTz7g73oz6xbuuUqbQehs/F3w6onjtnuM/ot98Q=;
- b=n4tY015RC0wf1+nw7BXM8pwfYC4hTnhk6xOlEKz1FAvmv1bHVaWvA9b53iAEJwMEe1pAEL2kyNfp0OTEcURhbXCRxPUpr1bIKywR9W/3jUMTir2w+BCiZng1zncnNU89Z89vhHh35Jc7DIBKahjjnftOYkTEkUHaI5S99mzhdQLXmt5F4TvlmModRHlmi1bnKEiTQSrUKOo7RDBolmUNCsrkrFyWl/99Ic4loiEDdbf8CLSzh0PfcA0BfyK9PqvbwXli/3V5zdqZcRkYDyNyMtubCKatEsvYblo35PlTQvRQDOZHLW250X1eitQ2yelu72kzRRBcKILp9H9GmNSnwg==
-Received: from TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM (2603:1096:404:8041::8)
- by TYCP286MB3724.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:3be::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.29; Wed, 26 Jul
- 2023 13:55:43 +0000
-Received: from TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
- ([fe80::f4c2:4b38:d074:f1e9]) by TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
- ([fe80::f4c2:4b38:d074:f1e9%5]) with mapi id 15.20.6631.026; Wed, 26 Jul 2023
- 13:55:43 +0000
-From: Shiji Yang <yangshiji66@outlook.com>
-To: daniel@makrotopia.org
-Cc: angelogioacchino.delregno@collabora.com,
-	ansuelsmth@gmail.com,
-	john@phrozen.org,
-	kvalo@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-wireless@vger.kernel.org,
-	lorenzo@kernel.org,
-	matthias.bgg@gmail.com,
-	nbd@nbd.name,
-	ryder.lee@mediatek.com,
-	sean.wang@mediatek.com,
-	shayne.chen@mediatek.com,
-	Shiji Yang <yangshiji66@outlook.com>
-Subject: Re: [PATCH] wifi: mt76: support per-band MAC addresses from OF child nodes
-Date: Wed, 26 Jul 2023 21:53:07 +0800
-Message-ID: <TYAP286MB03153BE5014AA32BE048B8B7BC00A@TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <ZK9mXE00xEHZV4fi@makrotopia.org>
-References: <ZK9mXE00xEHZV4fi@makrotopia.org>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TMN: [VZOMPsTcg2+hanBfxJnwfWTavMFmQcSt]
-X-ClientProxiedBy: TYCP286CA0028.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:400:263::15) To TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:404:8041::8)
-X-Microsoft-Original-Message-ID: <20230726135306.392-1-yangshiji66@outlook.com>
+	id 1qOezc-00AbRn-12
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 26 Jul 2023 13:55:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=Pv4E2/kDpVfa/Dtz4RIrx4SYaXDBMv1Xx1z917P6AGI=; b=VdJQoIqDFuFSY8lD8ETSqXAhAh
+	SaAY+FLlG28/ACFsa4krSMsJ3oLHwdJGyEQKmjcN2g2leZart826WHa+FVJNXJ5Cm+HEs85QXb8FD
+	Xd/f5VbdussrtabdAP9TmtFEqCHLzLBDAMRWvaXbS86w6R1MpjaQqPEC9I9TdA0akxTDOe0IZKw6i
+	gV2+J7cFsH8vpwNWApVbhVTt0uN8SyAan8FftSZ6sonTvCr/juuPpawjfH1iK9WET1qL+0Nq/QjDR
+	83EsQcZxgwkK+wjgOIAz510tF2x88Ujg8gBe4oX7CEJ1mMB54zOPA/+I2bhMT/YFFZRzDPf9QGI67
+	WPWSjIaw==;
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qOckS-005pc9-2M
+	for linux-mediatek@lists.infradead.org;
+	Wed, 26 Jul 2023 11:32:10 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-1bb81809ca8so34376595ad.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 26 Jul 2023 04:31:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1690371113; x=1690975913;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=Pv4E2/kDpVfa/Dtz4RIrx4SYaXDBMv1Xx1z917P6AGI=;
+        b=l0T/8cA7WKqxO3XFgE9ZfKHIIgxeet6bqJaEbDCqCpPOhySJ+dWssA6/afqm4C3FaR
+         BR/Swp7B2kTCsvcYs2Oap1e+4HLd1dRmTS77blnj+HrL9avMOXUxz4gPSKuPLn5X/bfV
+         sQWxK2YW/GaopekmCSB+3S7uSk4HI1OVOvaWI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1690371113; x=1690975913;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Pv4E2/kDpVfa/Dtz4RIrx4SYaXDBMv1Xx1z917P6AGI=;
+        b=C4KU4I2+jQQwZoMdMG1cBVSLxIgwn+DHstrpm+Qu9prOFTbvsWBqw3wrzE4eGTaP0t
+         NIdLjlhOMlmlZeivkXrNbBoe5MDy95ATk6D/U98XCu9owC+R3J1rKOSBHL9RD8GKT9+s
+         u1hYaajOgcI+dMvW69JtvGg/gOXuotG3ZsWDLpfAVB9acgX6Fyyr4sECcs28AB4DMuHl
+         78Gj54/ksyfvFujHOLyYLgslwZaYKYtUHMX6wDWU2wo7xIF+sZkd2oFwpS0orPZHGw3i
+         SpVQL8RWqdS7n0ymDDDzLslz9c6g+xs6pd/vwaBmP9++fxlcI2vON8yNRNITvx9jwpgZ
+         UK4w==
+X-Gm-Message-State: ABy/qLarzgoZlv8+qoDCuOG7FPQPmH3P5ZQIKkMSImzMu/Cbh4Tnlqlu
+	6EFxnX6T1kHLHMSl6kQDYtMYogyOsKK6tfOBsbA=
+X-Google-Smtp-Source: APBJJlFCJJMP3H6D5za0xJAObSY0B6q4CxM92CBcDxsHlqd8NDdz090Z75NONySCDQqIjyGz7wBlWg==
+X-Received: by 2002:a17:902:8f8d:b0:1b8:8af0:416f with SMTP id z13-20020a1709028f8d00b001b88af0416fmr1630769plo.1.1690371112691;
+        Wed, 26 Jul 2023 04:31:52 -0700 (PDT)
+Received: from google.com ([2401:fa00:8f:203:a2a4:d590:6375:66ba])
+        by smtp.gmail.com with ESMTPSA id y3-20020a1709029b8300b001b895336435sm12863278plp.21.2023.07.26.04.31.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 Jul 2023 04:31:52 -0700 (PDT)
+Date: Wed, 26 Jul 2023 20:31:47 +0900
+From: Sergey Senozhatsky <senozhatsky@chromium.org>
+To: Andrew Yang =?utf-8?B?KOaliuaZuuW8tyk=?= <Andrew.Yang@mediatek.com>
+Cc: "senozhatsky@chromium.org" <senozhatsky@chromium.org>,
+	"bigeasy@linutronix.de" <bigeasy@linutronix.de>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-mm@kvack.org" <linux-mm@kvack.org>,
+	wsd_upstream <wsd_upstream@mediatek.com>,
+	Casper Li =?utf-8?B?KOadjuS4reamrik=?= <casper.li@mediatek.com>,
+	"akpm@linux-foundation.org" <akpm@linux-foundation.org>,
+	"minchan@kernel.org" <minchan@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] zsmalloc: Fix races between modifications of fullness
+ and isolated
+Message-ID: <20230726113147.GK955071@google.com>
+References: <20230721063705.11455-1-andrew.yang@mediatek.com>
+ <20230726031846.GJ955071@google.com>
+ <42f1209a686404ffd0f9dff05ed10a8d23383a11.camel@mediatek.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TYAP286MB0315:EE_|TYCP286MB3724:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9721e24b-70dd-4803-5c86-08db8de000cb
-X-MS-Exchange-SLBlob-MailProps: q6Zzr5Fg03EX4MSurZUzZTQFeLZtFhLusQUcZIfjBDe90lTD8R50MthGcPaV5dqFU35tXsWqHVlwVTM0ANrwM6Iqbdmi45YmrInAP6yicjjdYLEVXC69sKhBuLA3yi3RQQ5i8D7VtbZmW6+VJp12oUFbRgK7sskzYyAsk7oQbqwkV+RJQ0BKnHRWEO96Xdtw+1Bep9XfE1zjfecdLfDqAfpbxvHPBk3UIOQwJg+y879QM8DeW/t//JAUeeh/cHpLm+NJbg852U83FqwVCYqhmzOG8Kcn98fjEvt5ye/mTDUoKgpJ60YyNAKKv9PLazNfsQ9ETvB6zqw1gYI4l5yauPSL9o1Kzp6goDVhc1lL36cQ2OW7uhhDmj5Dw1H5tfif9pAytlM9ewYjFGqIvyATox7TDrkDp7M8MFeH4arRkNKA7ab0bVBS7ZUb2xxIFRu4tavSo1rFcavEUGCZ5XBaK/QeK4matE59LJv/uInqEGM5Fu3z5tm4FKBeFp6SYJUyEDywDTWh41WWvgYxZxYe9fBNmB+HVpQXHzXy2Xyad4freQufpuwEZca95xtvPLFbpN8C2eKQJmBs5scyYuA6ncLdOgyUi6mC2RCAkwfyvIrRbJlnIMd2K9wqaBi4zY8eqC4uKx6AgliXoX+/i5TpUkOMnqEvEsHjf6mEpro9fa+0pQdpIWD/+FgXmzUz5N9k
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 3OqgMTSItSS7x5NUqolOgRYHAD1sSglvYUQsF+ge6yv/H55fh+Ly26h2/Fpp8mfRAYwa/L2JPCh2D3M5uTNfb8CJLE2SPIxr1Loc7ZvpJk8YasSTb3YezoBLOA34GU0DmMFec0AgLfmGca1H28v2bnmJro1OIhGHIQM37HWhktt1BvMTxqSUMbYF5k2rlWDNUpIosjC8zE8xOztyqp3TKprYcStMYyH+20DmQTd5Moe7LwJ0DlwijZpSyGKQ6hSXYtwrV+UrPzRRaPnA3Zra6UJzHaBwJrRt69DATsH5Pz9pKOZZzwmKQTaqt4JWfxoJZAzTeolwqgpiOfOkGhOY2rr66968kKhlEcDhUu6hB/KbVuWcn8NfjRY6rJvwJBr9ctP/lc3t9oNv2kOVjbqV/Y9+CLEXEjkE7X+y5qtFWZ6gt7SJZEnjnI2VCSF7YvdgBrNWhgABM803BmhnKBIIhIJcatM8ec4EEkP7cqGrQh+GA3trmfqvk5SBUgOBEnCEJvK9P+oINGy3uQY4N09k0OYkG1dZtuJFKRlwMUHufw5ZIwTTc0df+fVxxXKvj1Ue1DYlEiArb98UixrlMDLSStV5lYxq1sbtnHNH2m4UXYuw/3PgiwfwKnFLCpetoPMy
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?zL8ygI1k0WnqLDyuLj0WMwBGTjDJZuLTUVPT1IiR9lFql0sjac5FwNBBGBof?=
- =?us-ascii?Q?h8L47wALCtUaTmDc37eoR4uwVUYg7lB05UGzfHL3K6uD/SivHxqke+5Ey14s?=
- =?us-ascii?Q?jIk+LRO7HFr84FycByq7iJQbw9njqIgEo7fi+fAdZ9WPdq7l2UqZeeWQVj0q?=
- =?us-ascii?Q?fY/oJmf4PA//efF4otkp9ixa2RjL0BiOxz638TeErtxBOOWYvp6ZPWpie1FZ?=
- =?us-ascii?Q?uBcG1jue2YjuU2gZgfLfEYryzGGDOKGEAI9A+V1VbyOQy08tUCfvDzvhmN3R?=
- =?us-ascii?Q?+oAniqjTZ25jj1EbuDf3xIlpSwLwsAyWeToZePcocq5XQIe/FXv+l6c6XJ2R?=
- =?us-ascii?Q?XSCclU/mtva3G3YdTkHlH7rv9U6sbvLocSmW7Wl0V73oC5Uz3ZzfgGk6IvPt?=
- =?us-ascii?Q?SGlIMEWCZByKNVH9EuwKOw9n7DzRm6iT0JRIUfK1vECLkDRK1jxCIKM4/zDN?=
- =?us-ascii?Q?bbhAFJfY4CODk1WtBxFiIAp/tLPT23bXigcH1dqt8O1DRL986pFOP5SP+X8g?=
- =?us-ascii?Q?yUGvTGHJcUhDajm70XQqVj8erZAONe0AzkWsLX5mUPT4ecAn/4Dc6hgp/zPZ?=
- =?us-ascii?Q?ABX/g+r7HnpSW0sqtbA4k0s2PfhTHpYM77ctHgLGCaZB+5SPQU1b6oXxIy4U?=
- =?us-ascii?Q?d5rNQAfwZwwN1kxMo6jtYLBo7sZABz5MdLJNezCXUdVhnhsA9LRteoXRtjcn?=
- =?us-ascii?Q?+bshkd7f6n6sW0xisiIDiSNNRYcNhvzMtvNPID06LZGC7gE5ljQ8kuTncbJH?=
- =?us-ascii?Q?+v249ni9fM6RQY9jSPd+zNK+iMzRA3EmOVBQ6CFD57UC7iTzbxS7e0DkBDC/?=
- =?us-ascii?Q?O1abUkM6rztolAOKsoRj43dkVq5eA0yCyWlVA2xTO0ynlmeAeKQafkbpOMQk?=
- =?us-ascii?Q?1EhjxZ0K0ppI2DhUQaXmXQqnG+cpBhcng7UvqfAaQSu8TW2/llNg9bByPTYY?=
- =?us-ascii?Q?cfGnZ5LJjhBZuw4KKAV3/4iwhSNhYYP6KNm4TZo14qfHqsBT+3lYFt5a7ukj?=
- =?us-ascii?Q?aV7RWZ0VNGcQ56CBwbnkTJUL3m3alLdp8QT4OP6N1kgRFxqC79wrq/AtoSf6?=
- =?us-ascii?Q?9/hkfDVbVAbnoGXZq80KROn7ZA73YoBUuuqLDdThCh4EJf1hayWy+M5wL0ut?=
- =?us-ascii?Q?SELn0ML2FKFKpgM+tO733WG4X1JwluP0oEBmjt9tgnfrX4Eva32odlGWaKf4?=
- =?us-ascii?Q?CV49+/WW75vEpvCKSpJVjXvwvdlyBUYPnf/iqmWKaw/awy56RBpb3/pY4h8?=
- =?us-ascii?Q?=3D?=
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9721e24b-70dd-4803-5c86-08db8de000cb
-X-MS-Exchange-CrossTenant-AuthSource: TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Jul 2023 13:55:43.2650
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYCP286MB3724
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <42f1209a686404ffd0f9dff05ed10a8d23383a11.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230726_065551_936530_D01F4A42 
-X-CRM114-Status: UNSURE (   3.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230726_123208_861057_910416DD 
+X-CRM114-Status: GOOD (  22.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,8 +117,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks.
-Works well on MT7615D and MT7915D.
+On (23/07/26 06:59), Andrew Yang (楊智強) wrote:
+> On Wed, 2023-07-26 at 12:18 +0900, Sergey Senozhatsky wrote:
+> >
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> >  On (23/07/21 14:37), Andrew Yang wrote:
+> > >
+> > > Since fullness and isolated share the same unsigned int,
+> > > modifications of them should be protected by the same lock.
+> > >
+> > > Signed-off-by: Andrew Yang <andrew.yang@mediatek.com>
+> > > Fixes: c4549b871102 ("zsmalloc: remove zspage isolation for
+> > migration")
+> >
+> > Have you observed issues in real life? That commit is more than a
+> > year
+> > and a half old, so I wonder.
+> >
+> Yes, we encountered many kernel exceptions of
+> VM_BUG_ON(zspage->isolated == 0) in dec_zspage_isolation() and
+> BUG_ON(!pages[1]) in zs_unmap_object() lately.
 
-Tested-by: Shiji Yang <yangshiji66@outlook.com>
+Got it.
+
+> This issue only occurs when migration and reclamation occur at the
+> same time. With our memory stress test, we can reproduce this issue
+> several times a day. We have no idea why no one else encountered
+> this issue. BTW, we switched to the new kernel version with this
+> defect a few months ago.
+
+Yeah, pretty curious myself.
+
+> > > @@ -1858,8 +1860,8 @@ static int zs_page_migrate(struct page
+> > *newpage, struct page *page,
+> > >   * Since we complete the data copy and set up new zspage
+> > structure,
+> > >   * it's okay to release the pool's lock.
+> > >   */
+> >
+> > This comment should be moved too, because this is not where we unlock
+> > the
+> > pool anymore.
+> >
+> Okay, I will submit a new patch later.
+
+Thank you!
 
