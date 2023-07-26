@@ -4,94 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 267C4C0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 15:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B10FEC001DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 15:31:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZVzpYZERtA0lnDhIQzSMQSUEurqolfAL4LCXCamUt8M=; b=blQZXjc7ZmzH/hrBPYbRmJOUp7
-	ADtptSKcednO+lPZUfD/+FdsD4sicbl4r2I9gPeV/2Y72VRRlSBJr1hm8G2OpT3Kjizdg3Qo/VpmH
-	NkW8Sa8+tLT0OF2krbsk8WAMl8m0X7mE4+psP9wZoUfsRZwPRfm2BXGAxXBvCgTa9qd8i6NIe7AV0
-	0h++rm0rkeaxeOuBiMR81x0OZfeXNCI/Dvz0oa+5f6z2h6KdgCUspm4NZB+4Te7D033wimPDKd1nk
-	7XLmRK9asZ8Vn38iisYwdYEMFhPMNL3ro4f864lagWqRg+c5m3AHj1GHc6dO854cKgISRCHSSFYg9
-	VMMyKfDg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QIvg9RvPixHqfad2Kamp9kJBh4DIZcFMKZRn7pfOsNE=; b=skDEWd60aTlaS9/7X+nm9WGUsH
+	DtjnFvlPaP86xhQki1AwVKLluzjiIfNLentTeyDRrQZfZ9X3cpk1LmhoLK2vkoaKwe9PCltcreFAi
+	h8nEp+pFrYD/HLQceNy1Sdqbsgu/8Pm+GKVYPW4TjcnbiD4mzLxywbYmkhNMoJ2WO6BRmxECpXIj/
+	iU+u3QlddEtBfIGh+Y3Hhhd+qcApp54xWEZqQuNdcgSrTXXfZ4tFtW4KM10d6tsYiik1IPhQbiM8U
+	DY0n3EQywQHJBKp6Oj3gES0ULneZ+YDdoh3HuSsu+PO+9t+BbUg9jRmOt+nAmKlSa3rfUeQP6HjI/
+	Ra2bM3jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOg2D-00Ak97-27;
-	Wed, 26 Jul 2023 15:02:41 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1qOgTb-00Ar6C-2D;
+	Wed, 26 Jul 2023 15:30:59 +0000
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOg28-00Ak7a-31
-	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Jul 2023 15:02:40 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-1bb7b8390e8so23491325ad.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Jul 2023 08:02:36 -0700 (PDT)
+	id 1qOgTX-00Ar4d-1S;
+	Wed, 26 Jul 2023 15:30:57 +0000
+Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-666ecf9a081so6316568b3a.2;
+        Wed, 26 Jul 2023 08:30:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1690383756; x=1690988556;
-        h=in-reply-to:from:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZVzpYZERtA0lnDhIQzSMQSUEurqolfAL4LCXCamUt8M=;
-        b=K/r2CzOP04SGbVHRYifSo5vUDx4M4PIqQehQQqqvXeeYNCIKBBqF4viE/hPsnoDQNF
-         TT8m+00T31vYiYAu4w8rZO25P33SinT3wzOIzT/6yF28tQiVIdVNh2Ani1+0cPWFVzSC
-         +4gTmudHWzMJe5GvQSq0L6DXvwGOWs7Grgivc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690383756; x=1690988556;
-        h=in-reply-to:from:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20221208; t=1690385454; x=1690990254;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ZVzpYZERtA0lnDhIQzSMQSUEurqolfAL4LCXCamUt8M=;
-        b=KRtjHClB9SYugm8S//PDh84EqbUWLBvf31Yimro1ahBXk9hUYTao4l3pJv1IOCypyH
-         LyxB8c/6JwZ0a50wnLxiaQ2b4i4hih1cWk7OLGtMgepqmytTzHv9I3CM4RQBhFp7D21e
-         9QG1T+dZq/sp7BJcMVVYs3ZLi3NqZbE/Oru7Vcti24VDZz2MWP060S9oeerfmfO2vpFc
-         HNK8I9stim+lyNXf/pTFMdMjV6RS4hLPUT3h37vCYXf4z5iuaKmCJAvzKpmZTimSkuvI
-         +YreSM2rdK/Fn3ZyQUIXm4j0mB9FyxEjLsKXX5Oz98D8ie2jyTWkgQXlZhIfNtdqjimb
-         1KBQ==
-X-Gm-Message-State: ABy/qLYC9DPF9slfDkogCyjCAVfprxguuM8taVvVrJ4p7rzFnoJDoECI
-	UEGCHKOV3k2DBM9plZuWjS6i7Q==
-X-Google-Smtp-Source: APBJJlHWunOYEBI/mCy5YBn4LKiKzFi9Dp3LcEQi3ZcmYwYZITb+vSPv7Ws2WK+23frWS/AFlFQMnQ==
-X-Received: by 2002:a17:902:f545:b0:1bb:a367:a77 with SMTP id h5-20020a170902f54500b001bba3670a77mr2012304plf.31.1690383756011;
-        Wed, 26 Jul 2023 08:02:36 -0700 (PDT)
-Received: from ?IPV6:2600:8802:b00:4a48:219d:3ea8:3ac1:9d26? ([2600:8802:b00:4a48:219d:3ea8:3ac1:9d26])
-        by smtp.gmail.com with ESMTPSA id x2-20020a1709027c0200b001b8c3c7b102sm5912715pll.127.2023.07.26.08.02.34
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 26 Jul 2023 08:02:35 -0700 (PDT)
-Message-ID: <87a860fc-14b7-600d-a37d-01f783fa733a@broadcom.com>
-Date: Wed, 26 Jul 2023 08:02:33 -0700
+        bh=QIvg9RvPixHqfad2Kamp9kJBh4DIZcFMKZRn7pfOsNE=;
+        b=UvNxr8eLJ9hNPoNo/nmVkgjI4LmuR9ztzcTY+8rMIzSoHv7gwljQlaHHd92gm95UVm
+         nU56pgA2IgpkZ87/1SXR5DOwjHop16+wfwPEV6IS33mO1QlQi6mSJ8FVmwoSi/+kZx4P
+         qanoK+6WcjuZX7MFStjdzc0nrwV3XSiclq3I9Cq47+YLuQmJjCuttPtZTA47gY8Px5VL
+         M0KGCrZjA8PmkcEwyq7+BkhWwhnMHinBdCCuaa+ygSj2WTJ1OO0iLTikgnWKqb83HYA/
+         7qGLhQ84+9qqmlQzBfUs/lur7fuEApadKSY61qyN9KpEKVsfsHhr/QJ2E0h+XppBvQji
+         sYQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1690385454; x=1690990254;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=QIvg9RvPixHqfad2Kamp9kJBh4DIZcFMKZRn7pfOsNE=;
+        b=QTHfndpOuMWJiBRByW2aPnTTZfumCgnyGzbgPzfTGZ87pxAciq7cNNt0Bswe+XMUv1
+         CWqbnzsCtygyvUPe0HqHnjbrjhHGf9LKjlCS8641aFP3raFxPT0fHlfksnCn97VQ8tpF
+         fXEtL14aR2EnvJKfNGLdba+yBM2HN+mY4HMTOkKGykrVNtx0itVeVQAx5vsKx8KsFtEc
+         2XR3F12k0accn+MQ7OdR7WEAZX+uMgqoRXFWNybKn5DaF/GmDa5+BwEawvHdzAV5XIJG
+         HfTL3V5Oq1kgamU7VLKsRKrR9hNM7l4Zq2f9pdPMeuelTzeQk13PKUZZ19atf79r6xr9
+         jG5Q==
+X-Gm-Message-State: ABy/qLbpLsVgxGtHHBc+n8/gu7JKeHyjh1OUMo0VJpXy2gv4G6KlInQ5
+	9Bt8sdPNTIemIRszgnuBCIkH4kLpd/oM24w9Eu4=
+X-Google-Smtp-Source: APBJJlGsYifDPtFqieNjZSRGPJL2WJtbotBq8b23fwCEiS2YFyApRJq7zsSItWWZeZOofGURnKLE/TZxtTf3oC+7O6c=
+X-Received: by 2002:a17:90b:a4e:b0:268:5620:cfc7 with SMTP id
+ gw14-20020a17090b0a4e00b002685620cfc7mr1509855pjb.30.1690385453708; Wed, 26
+ Jul 2023 08:30:53 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v2] net: dsa: Explicitly include correct DT includes
-To: Rob Herring <robh@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Kurt Kanzenbach <kurt@linutronix.de>, Woojung Huh
- <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
- =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Daniel Golle <daniel@makrotopia.org>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
- George McCollister <george.mccollister@gmail.com>,
- Richard Cochran <richardcochran@gmail.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230724211859.805481-1-robh@kernel.org>
-From: Florian Fainelli <florian.fainelli@broadcom.com>
-In-Reply-To: <20230724211859.805481-1-robh@kernel.org>
-Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256;
-	boundary="00000000000055f56a0601652330"
+References: <20230725131258.31306-1-linyunsheng@huawei.com>
+ <94272ffed7636c4c92fcc73ccfc15236dd8e47dc.camel@gmail.com>
+ <16b4ab57-dfb0-2c1d-9be1-57da30dff3c3@intel.com> <22af47fe-1347-3e32-70bf-745d833e88b9@huawei.com>
+In-Reply-To: <22af47fe-1347-3e32-70bf-745d833e88b9@huawei.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Wed, 26 Jul 2023 08:30:17 -0700
+Message-ID: <CAKgT0UcU4RJj0SMQiVM8oZu86ZzK+5NjzZ2ELg_yWZyWGr04PA@mail.gmail.com>
+Subject: Re: [PATCH net-next v2] page_pool: split types and declarations from page_pool.h
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Cc: Alexander Lobakin <aleksander.lobakin@intel.com>, davem@davemloft.net, kuba@kernel.org, 
+	pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Eric Dumazet <edumazet@google.com>, Wei Fang <wei.fang@nxp.com>, 
+	Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Sunil Goutham <sgoutham@marvell.com>, 
+	Geetha sowjanya <gakula@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>, 
+	hariprasad <hkelam@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>, 
+	Leon Romanovsky <leon@kernel.org>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, 
+	Jesper Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Felix Fietkau <nbd@nbd.name>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-rdma@vger.kernel.org, 
+	bpf@vger.kernel.org, linux-wireless@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230726_080236_976248_01E39972 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20230726_083055_496139_016624F1 
+X-CRM114-Status: GOOD (  32.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,109 +103,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---00000000000055f56a0601652330
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+On Wed, Jul 26, 2023 at 4:23=E2=80=AFAM Yunsheng Lin <linyunsheng@huawei.co=
+m> wrote:
+>
+> On 2023/7/26 18:43, Alexander Lobakin wrote:
+> > From: Alexander H Duyck <alexander.duyck@gmail.com>
+> > Date: Tue, 25 Jul 2023 08:47:46 -0700
+> >
+> >> On Tue, 2023-07-25 at 21:12 +0800, Yunsheng Lin wrote:
+> >>> Split types and pure function declarations from page_pool.h
+> >>> and add them in page_pool/types.h, so that C sources can
+> >>> include page_pool.h and headers should generally only include
+> >>> page_pool/types.h as suggested by jakub.
+> >>>
+> >>> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
+> >>> Suggested-by: Jakub Kicinski <kuba@kernel.org>
+> >>> CC: Alexander Lobakin <aleksander.lobakin@intel.com>
+> >
+> > [...]
+> >
+> >>> +/* Caller must provide appropriate safe context, e.g. NAPI. */
+> >>> +void page_pool_update_nid(struct page_pool *pool, int new_nid);
+> >>> +
+> >>> +#endif /* _NET_PAGE_POOL_H */
+> >>
+> >>
+> >> This seems kind of overkill for what is needed. It seems like the
+> >> general thought process with splitting this was so that you had just
+> >> the minimum of what is needed to support skbuff.h and the functions
+> >> declared there. The rest of this would then be added via the .h to the
+> >> .c files that will actually be calling the functions.
+> >>
+> >> By that logic I think the only thing we really need is the function
+> >> declaration for page_pool_return_skb_page moved into skbuff.h. We coul=
+d
+> >> then just remove page_pool.h from skbuff.h couldn't we?
+> >
+> > This patch is not to drop page_pool.h include from skbuff.h.
+> > This is more future-proof (since I'm dropping this include anyway in my
+> > series) to have includes organized and prevent cases like that one with
+> > skbuff.h from happening. And to save some CPU cycles on preprocessing i=
+f
+> > that makes sense.
+>
+> The suggestion is from below:
+>
+> https://lore.kernel.org/all/20230710113841.482cbeac@kernel.org/
 
+I get that. But it seemed like your types.h is full of inline
+functions. That is what I was responding to. I would leave the inline
+functions in page_pool.h unless there is some significant need for
+them.
 
+> >
+> >>
+> >> Another thing we could consider doing is looking at splitting things u=
+p
+> >> so that we had a include file in net/core/page_pool.h to handle some o=
+f
+> >> the cases where we are just linking the page_pool bits to other core
+> >> file bits such as xdp.c and skbuff.c.
+>
+> I suppose the above suggestion is about splitting or naming by
+> the user as the discussed in the below thread?
+> https://lore.kernel.org/all/20230721182942.0ca57663@kernel.org/
 
-On 7/24/2023 2:18 PM, Rob Herring wrote:
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+Actually my suggestion is more about defining boundaries for what is
+meant to be used by drivers and what isn't. The stuff you could keep
+in net/core/page_pool.h would only be usable by the files in net/core/
+whereas the stuff you are keeping in the include/net/ folder is usable
+by drivers. It is meant to prevent things like what you were
+complaining about with the Mellanox drivers making use of interfaces
+you didn't intend them to use.
 
-Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
--- 
-Florian
-
---00000000000055f56a0601652330
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Description: S/MIME Cryptographic Signature
-
-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
-riBJ/K1AFUjRAjFhGV64l++td7dkmnq/X8ET75ti+w1s4FRpFqkD2m7pg5NxdsZphYIXAgMBAAGj
-QjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBSP8Et/qC5FJK5N
-UPpjmove4t0bvDANBgkqhkiG9w0BAQsFAAOCAQEAS0DbwFCq/sgM7/eWVEVJu5YACUGssxOGhigH
-M8pr5nS5ugAtrqQK0/Xx8Q+Kv3NnSoPHRHt44K9ubG8DKY4zOUXDjuS5V2yq/BKW7FPGLeQkbLmU
-Y/vcU2hnVj6DuM81IcPJaP7O2sJTqsyQiunwXUaMld16WCgaLx3ezQA3QY/tRG3XUyiXfvNnBB4V
-14qWtNPeTCekTBtzc3b0F5nCH3oO4y0IrQocLP88q1UOD5F+NuvDV0m+4S4tfGCLw0FREyOdzvcy
-a5QBqJnnLDMfOjsl0oZAzjsshnjJYS8Uuu7bVW/fhO4FCU29KNhyztNiUGUe65KXgzHZs7XKR1g/
-XzCCBVgwggRAoAMCAQICDBP8P9hKRVySg3Qv5DANBgkqhkiG9w0BAQsFADBbMQswCQYDVQQGEwJC
-RTEZMBcGA1UEChMQR2xvYmFsU2lnbiBudi1zYTExMC8GA1UEAxMoR2xvYmFsU2lnbiBHQ0MgUjMg
-UGVyc29uYWxTaWduIDIgQ0EgMjAyMDAeFw0yMjA5MTAxMjE4MTFaFw0yNTA5MTAxMjE4MTFaMIGW
-MQswCQYDVQQGEwJJTjESMBAGA1UECBMJS2FybmF0YWthMRIwEAYDVQQHEwlCYW5nYWxvcmUxFjAU
-BgNVBAoTDUJyb2FkY29tIEluYy4xGTAXBgNVBAMTEEZsb3JpYW4gRmFpbmVsbGkxLDAqBgkqhkiG
-9w0BCQEWHWZsb3JpYW4uZmFpbmVsbGlAYnJvYWRjb20uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOC
-AQ8AMIIBCgKCAQEA+oi3jMmHltY4LMUy8Up5+1zjd1iSgUBXhwCJLj1GJQF+GwP8InemBbk5rjlC
-UwbQDeIlOfb8xGqHoQFGSW8p9V1XUw+cthISLkycex0AJ09ufePshLZygRLREU0H4ecNPMejxCte
-KdtB4COST4uhBkUCo9BSy1gkl8DJ8j/BQ1KNUx6oYe0CntRag+EnHv9TM9BeXBBLfmMRnWNhvOSk
-nSmRX0J3d9/G2A3FIC6WY2XnLW7eAZCQPa1Tz3n2B5BGOxwqhwKLGLNu2SRCPHwOdD6e0drURF7/
-Vax85/EqkVnFNlfxtZhS0ugx5gn2pta7bTdBm1IG4TX+A3B1G57rVwIDAQABo4IB3jCCAdowDgYD
-VR0PAQH/BAQDAgWgMIGjBggrBgEFBQcBAQSBljCBkzBOBggrBgEFBQcwAoZCaHR0cDovL3NlY3Vy
-ZS5nbG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyM3BlcnNvbmFsc2lnbjJjYTIwMjAuY3J0MEEG
-CCsGAQUFBzABhjVodHRwOi8vb2NzcC5nbG9iYWxzaWduLmNvbS9nc2djY3IzcGVyc29uYWxzaWdu
-MmNhMjAyMDBNBgNVHSAERjBEMEIGCisGAQQBoDIBKAowNDAyBggrBgEFBQcCARYmaHR0cHM6Ly93
-d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3NpdG9yeS8wCQYDVR0TBAIwADBJBgNVHR8EQjBAMD6gPKA6
-hjhodHRwOi8vY3JsLmdsb2JhbHNpZ24uY29tL2dzZ2NjcjNwZXJzb25hbHNpZ24yY2EyMDIwLmNy
-bDAoBgNVHREEITAfgR1mbG9yaWFuLmZhaW5lbGxpQGJyb2FkY29tLmNvbTATBgNVHSUEDDAKBggr
-BgEFBQcDBDAfBgNVHSMEGDAWgBSWM9HmWBdbNHWKgVZk1b5I3qGPzzAdBgNVHQ4EFgQUUwwfJ6/F
-KL0fRdVROal/Lp4lAF0wDQYJKoZIhvcNAQELBQADggEBAKBgfteDc1mChZjKBY4xAplC6uXGyBrZ
-kNGap1mHJ+JngGzZCz+dDiHRQKGpXLxkHX0BvEDZLW6LGOJ83ImrW38YMOo3ZYnCYNHA9qDOakiw
-2s1RH00JOkO5SkYdwCHj4DB9B7KEnLatJtD8MBorvt+QxTuSh4ze96Jz3kEIoHMvwGFkgObWblsc
-3/YcLBmCgaWpZ3Ksev1vJPr5n8riG3/N4on8gO5qinmmr9Y7vGeuf5dmZrYMbnb+yCBalkUmZQwY
-NxADYvcRBA0ySL6sZpj8BIIhWiXiuusuBmt2Mak2eEv0xDbovE6Z6hYyl/ZnRadbgK/ClgbY3w+O
-AfUXEZ0xggJtMIICaQIBATBrMFsxCzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52
-LXNhMTEwLwYDVQQDEyhHbG9iYWxTaWduIEdDQyBSMyBQZXJzb25hbFNpZ24gMiBDQSAyMDIwAgwT
-/D/YSkVckoN0L+QwDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcNAQkEMSIEIOR5UbBJs6Zv3mg7
-92fnMzEKJYwBK/xInAIgKgFsin3aMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcN
-AQkFMQ8XDTIzMDcyNjE1MDIzNlowaQYJKoZIhvcNAQkPMVwwWjALBglghkgBZQMEASowCwYJYIZI
-AWUDBAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG9w0BAQowCwYJKoZIhvcNAQEH
-MAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQB7Il9Ds52ch56EdcKcnyhXxjBVT93eaYzv
-vpLIwp/sgAVH5fXIfD5Iiu089+oswx+sgXPhzgdIHgYnt00PQSdEGEDdGUYcnk1StFcUTPJoEmC5
-GwfQritMQY8CI+FGzCckPPJr1JDz/NHy6zRcjinHIwe+32pDyuO63yfuSDZfm6SsUcx+Ze7jqcdM
-JkN//zJyPGniQk2cSnVGbmbsnnB6cw+vcw7cZuej0EQyj09CVzl/uyemotBRfaR3mrZwT2Vdzp00
-9DVoBDsIa3PVU7Jutv8P+aF6KeMJz9Hkf6NjgMlTfMajCYk19qasOYebSiSJh8LxhlgwENnOTqzI
-nVVC
---00000000000055f56a0601652330--
+So for example you could pull out functions like
+page_pool_return_skb_page, page_pool_use_xdp_mem,
+page_pool_update_nid, and the like and look at relocating them into
+the net/core/ folder and thereby prevent abuse of those functions by
+drivers.
 
