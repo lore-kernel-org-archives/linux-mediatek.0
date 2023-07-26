@@ -4,89 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49033C001E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 06:41:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F15EC0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 06:44:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3y/22I2v93+TWa6s1CXf0qTViEqrmWtHnFQP2RiZStM=; b=v4+UhUsfA25f5BPc1CkqiSuSaz
-	tLt47ocjsELoHUfwkEiZjBZiaTwI40ByUMkriDCm1B13cXbc8HA/JzU321hpGmWh3cejmViHYBpTO
-	GwYqif/n8L6tK7BTOEdoP/Lkhlr3GFaOpon2AXFqjeRuU2U1ZGWHjOA7jl5z14Zcv/W0cKN2cYYaA
-	5IQiqvTGptz+/BegFyMhQsetdCMifOtb0U5liW66YJvkoK3fiMbWxZVfhFVE+CZqYIutY8EHIALnl
-	iPezVpg6JxhzdY5HoMyAadA/im4o7KXawmPEByUkC3S+7/ojNaM/EeIzprtN9n+RchKL0Zk2HrJOa
-	WCZjfxpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=G7821ilhFlT029xM6oglzjHP+CqywS3YqF31rtl2Wi4=; b=mN2OvqK24EidsLGjmLfVKERU4Y
+	ybSMpGE7OBWY++nTI33l+i89A7BNLrdm03cWvT0vo06c41fFhf6Mnl8fBx9FS8qahFrSvckStxbjj
+	j1SjdUZWbNJ2CkzxYPMcAMvCUW8Zi0kZp7xzwq6FK8Wegyl+5H+ugac9ZsD8O+Qazoh/7/crnq/Qg
+	F37aylVp+jQ5KeMeNDAqw0zrM0wgb9uI7NHUKI+r/olo3iMmvV3M6FBX8UDohSjCnMIaGdQxk7x94
+	GPL4NhMZT95VHtJH67zbY+j/hy4UK2iCFADWdyP2MP+xSJYt7D1QN1XKU/sLZoksUxCGZYfercAC/
+	jqEQbyxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOYDX-009IEn-0t;
-	Wed, 26 Jul 2023 06:41:51 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1qOYFs-009ITe-0C;
+	Wed, 26 Jul 2023 06:44:16 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOYDT-009IDA-34
-	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Jul 2023 06:41:49 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-4fde022de07so8829179e87.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 25 Jul 2023 23:41:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690353705; x=1690958505;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=3y/22I2v93+TWa6s1CXf0qTViEqrmWtHnFQP2RiZStM=;
-        b=F03SUx2bWrNf/WDpUhqXyukSjU5FCI5ihDn/7rzZohIgM3+ICxFJ4nM7NmsfA/iT8S
-         Rep8k9bXe8gXhw7P/Q8L4UYgOzBQ9YuGrNoHrTNfoJGwFpPYXbQx7GCbJl12m9Fc7wkp
-         nDfJYhLNz/HqbwkF5DNJXOZop8Kkhz5DBh8CxCywtad+ZwkhFf8aA+M9RM1Rgcd+WOdP
-         2F6D1KAwG4xuYVHiH9+MZfg7RKTSk9Dg2DwT7VR5IHMXEFJ8GdHfbhHzrWbg1mZOv1fn
-         f38V43iuwVPWaYqHXQdaorL0A0TrDPr+AR1SnfyAadXGNs94XWeYYS+G93bvsyr5ILRs
-         QPvA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690353705; x=1690958505;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3y/22I2v93+TWa6s1CXf0qTViEqrmWtHnFQP2RiZStM=;
-        b=I8aMvlwnywxpf+MfOjWWW3ZDR/8FdjF5KD3MWSiS/Xg/Dl/sno+/7zCnShFwqKpkv2
-         5uYP6MZG0/tpNkjQ4ZlUY7vS4B/Uyk41fdbZVK+k7bQw3Ma49Tt8nC4Ax3s9B5ij5YoI
-         0ghBdhJ4bLf1RE+mCjgCrm73JVLyMb166Dc5R/6UsnVNhdHZ2Bp7TM2blJ/PbEl0aSp4
-         7Clp4O7nDCkJaI0Z2p+nf/UYqwlxYZaxf+uapxvEMCwtHwWyCdh3c2YRZfM5epGYGAOc
-         PBQy/b+Z5pSXDhVZwWapdNo7FiAdfZkyti8zP3/S9+ZiQy79MJ12+7yznih9fpe0JQK/
-         BAZQ==
-X-Gm-Message-State: ABy/qLajFvTNYLxt0fYry+hQE/oe4XVC7fY4BThZAHYY8iSzR213+dru
-	l2znX5mxjKGH4QasvXm+13hNWfzRvHWIZTEzKlNo5A==
-X-Google-Smtp-Source: APBJJlGzOjHjb9aiiq9rLMjcCYZohEXYqsGAsfrlAhqhGFGRUC/tHxEDwJrVtT/8u5/kP1c1LDwhAL7CANzQ4WuVjzQ=
-X-Received: by 2002:a2e:7a08:0:b0:2b6:d137:b61c with SMTP id
- v8-20020a2e7a08000000b002b6d137b61cmr730329ljc.39.1690353705569; Tue, 25 Jul
- 2023 23:41:45 -0700 (PDT)
+	id 1qOYFo-009IP6-0c;
+	Wed, 26 Jul 2023 06:44:14 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C55166606FCD;
+	Wed, 26 Jul 2023 07:43:56 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1690353837;
+	bh=ueP/nJT2Gh7HXLsoqgGPitlbPHdEBRo9/F4NVdXN5QA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=CsHt+jjIa69g/AtpQwjI8k3S4eSG1xRx95L9zMP9Fg/TuGdhL5XxU/jV0xp9Ffgy7
+	 Tgz2FV3IUjx66DnpJZukyzx1qPFuedXqvyNPod35NArm0RsKMvMCedP2WLLTZBVbuK
+	 ulaCAuMWLQC3kYBg4cBSBDuZfiQ/TeI1YB81zPsMyrcTTn4C9k+vpuctNgNU5X7zcI
+	 HLI+p7H5SjvTtRfaHa0N2220nU30r85wRBaKULGJC7WLH/R06/fq5eRO+r4Z1eMAPM
+	 z9VKLJajCFy9djuweNxfzDQ4BMFZADBLBF+UPsgGcMyz8PxpO3GF1M/Pyk4065svq1
+	 pnI/N1aBM6Egw==
+Message-ID: <320ab7cc-32dd-79dd-b2ae-96d3608aeb9c@collabora.com>
+Date: Wed, 26 Jul 2023 08:43:54 +0200
 MIME-Version: 1.0
-References: <20230725131258.31306-1-linyunsheng@huawei.com>
- <ZL/fVF7WetuLgB0l@hera> <20230725141223.19c1c34c@kernel.org>
-In-Reply-To: <20230725141223.19c1c34c@kernel.org>
-From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-Date: Wed, 26 Jul 2023 09:41:09 +0300
-Message-ID: <CAC_iWj+3kDccXSG2ADmu7KDDjN6MuitihwcEjYeyRLqrUbxBjg@mail.gmail.com>
-Subject: Re: [PATCH net-next v2] page_pool: split types and declarations from page_pool.h
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, pabeni@redhat.com, 
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	Alexander Lobakin <aleksander.lobakin@intel.com>, Eric Dumazet <edumazet@google.com>, 
-	Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, 
-	Clark Wang <xiaoning.wang@nxp.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Sunil Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, 
-	Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>, 
-	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Alexei Starovoitov <ast@kernel.org>, 
-	Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, 
-	John Fastabend <john.fastabend@gmail.com>, Felix Fietkau <nbd@nbd.name>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-rdma@vger.kernel.org, 
-	bpf@vger.kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 1/3] ASoC: mediatek: mt8188-mt6359: support dynamic
+ pinctrl
+To: =?UTF-8?B?VHJldm9yIFd1ICjlkLPmlofoia8p?= <Trevor.Wu@mediatek.com>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "broonie@kernel.org" <broonie@kernel.org>, "tiwai@suse.com"
+ <tiwai@suse.com>, "perex@perex.cz" <perex@perex.cz>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>
+References: <20230725035304.2864-1-trevor.wu@mediatek.com>
+ <20230725035304.2864-2-trevor.wu@mediatek.com>
+ <5314542c-9a99-fad1-93f6-4f72c8698715@collabora.com>
+ <69690b530fb46d6adad1732d570c8cfad9c0f23c.camel@mediatek.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <69690b530fb46d6adad1732d570c8cfad9c0f23c.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230725_234147_989187_8CB4C889 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20230725_234412_382239_E4B752E8 
+X-CRM114-Status: GOOD (  19.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,29 +86,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jakub,
+Il 26/07/23 04:19, Trevor Wu (吳文良) ha scritto:
+> On Tue, 2023-07-25 at 09:06 +0200, AngeloGioacchino Del Regno wrote:
+>> Il 25/07/23 05:53, Trevor Wu ha scritto:
+>>> To avoid power leakage, it is recommended to replace the default
+>>> pinctrl
+>>> state with dynamic pinctrl since certain audio pinmux functions can
+>>> remain in a HIGH state even when audio is disabled. Linking pinctrl
+>>> with
+>>> DAPM using SND_SOC_DAPM_PINCTRL will ensure that audio pins remain
+>>> in
+>>> GPIO mode by default and only switch to an audio function when
+>>> necessary.
+>>>
+>>> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+>>> ---
+>>>    sound/soc/mediatek/mt8188/mt8188-mt6359.c | 21
+>>> +++++++++++++++++++++
+>>>    1 file changed, 21 insertions(+)
+>>>
+>>> diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+>>> b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+>>> index 7c9e08e6a4f5..667d79f33bf2 100644
+>>> --- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+>>> +++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+>>> @@ -246,6 +246,11 @@ static const struct snd_soc_dapm_widget
+>>> mt8188_mt6359_widgets[] = {
+>>>    	SND_SOC_DAPM_MIC("Headset Mic", NULL),
+>>>    	SND_SOC_DAPM_SINK("HDMI"),
+>>>    	SND_SOC_DAPM_SINK("DP"),
+>>> +
+>>> +	/* dynamic pinctrl */
+>>> +	SND_SOC_DAPM_PINCTRL("ETDM_SPK_PIN", "aud_etdm_spk_on",
+>>> "aud_etdm_spk_off"),
+>>> +	SND_SOC_DAPM_PINCTRL("ETDM_HP_PIN", "aud_etdm_hp_on",
+>>> "aud_etdm_hp_off"),
+>>> +	SND_SOC_DAPM_PINCTRL("MTKAIF_PIN", "aud_mtkaif_on",
+>>> "aud_mtkaif_off"),
+>>>    };
+>>>    
+>>>    static const struct snd_kcontrol_new mt8188_mt6359_controls[] = {
+>>> @@ -267,6 +272,7 @@ static int
+>>> mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>>>    		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
+>>>    	struct snd_soc_component *cmpnt_codec =
+>>>    		asoc_rtd_to_codec(rtd, 0)->component;
+>>> +	struct snd_soc_dapm_widget *pin_w = NULL, *w;
+>>>    	struct mtk_base_afe *afe;
+>>>    	struct mt8188_afe_private *afe_priv;
+>>>    	struct mtkaif_param *param;
+>>> @@ -306,6 +312,18 @@ static int
+>>> mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+>>>    		return 0;
+>>>    	}
+>>>    
+>>> +	for_each_card_widgets(rtd->card, w) {
+>>> +		if (!strcmp(w->name, "MTKAIF_PIN")) {
+>>
+>> if (strncmp(w->name, "MTKAIF_PIN", strlen(w->name) == 0) {
+>> 	pin_w = w;
+>> 	break;
+>> }
+>>
+>> That's safer.
+>>
+> 
+> If w->name is MTKAIF, the strncmp expression will return 0. However,
+> the result is not expected. I prefer to keep strcmp here.
+> 
 
-On Wed, 26 Jul 2023 at 00:12, Jakub Kicinski <kuba@kernel.org> wrote:
->
-> On Tue, 25 Jul 2023 17:42:28 +0300 Ilias Apalodimas wrote:
-> > Apologies for the very late replies, I was on long vacation with limited
-> > internet access.
-> > Yunsheng, since there's been a few mails and I lost track, this is instead of
-> > [0] right? If so, I prefer this approach.  It looks ok on a first quick pass,
-> > I'll have a closer look later.
-> >
-> > [0] https://lore.kernel.org/netdev/20230714170853.866018-2-aleksander.lobakin@intel.com/
->
->
-> I prefer the more systematic approach of creating a separate types.h
-> file, so I don't have to keep chasing people or cleaning up the include
-> hell myself. I think it should be adopted more widely going forward,
-> it's not just about the page pool.
+You could also do, instead
 
-Right, my bad. We share the same opinion.  What I meant by "this" is
-the split proposed by Yunsheng, but reading my email again that wasn't
-very clear ...
+if (strncmp(w->name, "MTKAIF_PIN", strlen("MTKAIF_PIN") == 0))
 
-Cheers
-/Ilias
+...solving your concern.
+
+Regards,
+Angelo
+
+>>> +			pin_w = w;
+>>> +			break;
+>>> +		}
+>>> +	}
+>>> +
+>>> +	if (!pin_w)
+>>
+>> Just a nitpick: you're checking for `if (pin_w)` later in this
+>> function, so
+>> to increase readability please do the same here.
+>>
+>> if (pin_w)
+>> 	dapm_pinctrl_event(...)
+>> else
+>> 	dev_dbg(...)
+>>
+> 
+> OK. I will update it in v2.
+> 
+> Thanks,
+> Trevor
+
+
 
