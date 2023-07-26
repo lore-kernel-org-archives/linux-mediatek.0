@@ -4,100 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63717C001DF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 13:22:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46783C001DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 13:55:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YPWzpufJv6n62uslZTbP65dBXeCecv6//7U8vz226A4=; b=a4mRli+yrNWSqBVbl0wdvpbOwQ
-	jfYjOWVih+Kv6YDd3W9dCTwX8hhfGWeMZ62Qo67bfkiM5biHW74UpS7ByyaluyjAlNsRh8nqbfEuX
-	/A2D4Jx09eY33Q4gOCsnJqBunOPQIgyzb6JhhJxAdAbVPpBngUV2jdR4Rck4KWKQ+zMte8/N2F9SB
-	ALp/pfQLFkIaqIUhlPuGiRQPunI5Xl66Dgg+TU6CUqli/zgUaHSrs/eV3kdVmCXA/VL3EXIHPdxY3
-	7Vfkuyyi74Y7pM4ybIkFCDSW4msAVrq2kXONmNjh7jyPlep7mj8Yk9/i7gz+9b0isG5yhJMYIwijp
-	7SjXGNtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6cQxaTz7g73oz6xbuuUqbQehs/F3w6onjtnuM/ot98Q=; b=S7IqDMKIsCobK+vunSUJ9zhnon
+	TBfkTVs7isBx8L8NcP4IsTLRX8RsRJRyobFUzGJGAoBeZ7QY4Y1QipHR1N7q8xG1b8QK6borALyWN
+	+offfreWmLa4Qm+obzq0nWVOBNgKJ+wDflIoxNDuXledH37yVD9orJDJ/QPzPDpLvY4+jrRrsgd2u
+	ZLmOTWxN60i49kUra9bgfkpF4MsBzpwxzNzPRop170+HK/g8sg3XNRA7HN6Ss3Is5WekiblOfk8vu
+	yeygsdYfjLYlMpFbSs4QyJr3exlS3HaMh0wFN3ZE/NBgmg2dkWYFD2qFBVLFw4b6LCTJwRhanJUbz
+	EDRDNnMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOeSz-00AWOe-1b;
-	Wed, 26 Jul 2023 13:22:13 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1qOeza-00AbR5-0n;
+	Wed, 26 Jul 2023 13:55:54 +0000
+Received: from mail-os0jpn01olkn20828.outbound.protection.outlook.com ([2a01:111:f403:700c::828] helo=JPN01-OS0-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOeSw-00AWNW-1n;
-	Wed, 26 Jul 2023 13:22:11 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-4fcd615d7d6so10419872e87.3;
-        Wed, 26 Jul 2023 06:22:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1690377723; x=1690982523;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=YPWzpufJv6n62uslZTbP65dBXeCecv6//7U8vz226A4=;
-        b=ewpF9oz+uxhIZKk+HzUv370fc6StqAv+3SfLkcmwF3t5VfkJFS3RbGlFqoCCyoynRc
-         W8tOXEg1WJzADL8UXDNNoyqdobUJ9cpKVE0SNXiBf7ZlFgMJcEkt17f+vqVi++vFoysW
-         0wXqYnl2qvhmh6/BVHYZ+WHProF1bCivgcoLiUa4EtjPkZhZMS8ABJY1CQHWFmbm6eHD
-         lP77rpRYF/5JIePlt61ThEqkGf+tmcFnHh6kDyBe7X7D7qVqmdvYc7l9sNgDtISlllIA
-         9W1DRoTQnLozR2kCMMkmo7/9Ivuv2Iwkt/PoMNWJ3Wg1tGqMhoBEsBf+CtpmJfIbV8kO
-         nFvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690377723; x=1690982523;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YPWzpufJv6n62uslZTbP65dBXeCecv6//7U8vz226A4=;
-        b=Z++4cOrl09SHQ75m6jRJ3RySEVmzxgxHBXokWwP5pDRtNV1uC1U2OMsEQaMCzV0haa
-         B6sJT7fBM8L5ntk+hmoPbmKsuSaDrr8GHE11CoNDInyHXRY/vpfZqI+3dHb4RNdfckme
-         tX5PNSvutlo5Lteym29F+STuqqgul2VvmgzIiiAJXoX/J1ddCgP/zxgX8BWvUrAzGvpm
-         niz/uWZ/9IOYjJsel2MXqELdfTFCliSWbkphFyg6NDM+/4lUQm9LoMyOS2IyeAVf4wk3
-         A/DLZ7jG5W2HQNGXe3Vm59tbdzgnGvi2FmA6ML0UcJHveC60jzZu7aml8JWvYWncWXVo
-         XSNw==
-X-Gm-Message-State: ABy/qLZmhfzLX965rHpyrutzws+76iICTH2TOre2VhdEMRxfCgZ8Tv3r
-	U8FoFrIIpk+hRdE2ZbaqmQA=
-X-Google-Smtp-Source: APBJJlGrVtjZgA1ReJiDb3S0p0zyLFY5w1xsxsReaY7BnpGYnv56qAkNuEZZeM3E1fI6AMEfVisIOw==
-X-Received: by 2002:a19:e05d:0:b0:4fc:6e21:ff53 with SMTP id g29-20020a19e05d000000b004fc6e21ff53mr1406574lfj.11.1690377722464;
-        Wed, 26 Jul 2023 06:22:02 -0700 (PDT)
-Received: from skbuf ([188.25.175.105])
-        by smtp.gmail.com with ESMTPSA id u2-20020a5d4342000000b003141f96ed36sm19868392wrr.0.2023.07.26.06.22.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Jul 2023 06:22:02 -0700 (PDT)
-Date: Wed, 26 Jul 2023 16:21:59 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Rob Herring <robh@kernel.org>
-Cc: Florian Fainelli <florian.fainelli@broadcom.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	George McCollister <george.mccollister@gmail.com>,
-	Richard Cochran <richardcochran@gmail.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] net: dsa: Explicitly include correct DT includes
-Message-ID: <20230726132159.rni7zc5ayu67tkxv@skbuf>
-References: <20230724211859.805481-1-robh@kernel.org>
- <20230724211859.805481-1-robh@kernel.org>
+	id 1qOezX-00AbOa-2r;
+	Wed, 26 Jul 2023 13:55:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ofTNULpIWhGlvJ3bpKR3nc+KISkiGSC+9qYz1ZQiUwkmkYB9UH2Bz/vEBS0gOub6Q+oLmsvlt0JlytyCoH6U8+M/mrfrYdQKr+5UzIx3dfltUhRabBMgNe2HhU3vSha+WV8Lz4s/iiBNSvtRw9YPDMOybVjtbHk1WbNI0D6mTGl3ta5ag0YX+ee6kg3r0UJIqNx1npURWhkwJ87WK9zGOcQue+XnblyN6BNJSOBnTMsd1GInMp0YVA9KdBxsCRIt95xinQRKLnQ7+xoV+Cve0gfUTHlTmJoSs1HqasBydHBlVBVA/EsW8Os06Bu7p+Yu1UmDmkrqexztNSSQZ+Y09A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=6cQxaTz7g73oz6xbuuUqbQehs/F3w6onjtnuM/ot98Q=;
+ b=Cdmlmmttniavquykn6gE0kQTEeXeBmTIwPyIqjsLVa9JGLrJHCrhUFbm5kM2xN3SLhK5wGIYEmShYgvyh6tN5h9DJYBswefsPwO+SMT2Ru6hpnKiPdqL/0m5dm0geRLzYyQJfKJwlmBbYePpXxOw3cWsDOxqBBdsvizRZItpgIN0TMTc5FO0+yec7uj1JMx9sDMlCH+6vefMvaPHYwvyKj6xCaY61WR++/v6tBD8ZnGcIlK5Xr2OsfmwIEPkEwxIrH+cNSmPPp4NN6EsTMAoYJEjrmcthpt3PclngfXHH3T6/fcOUxXhwa/SCWz+CWvozNKIBzqRj9b9EAspthCeSQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=6cQxaTz7g73oz6xbuuUqbQehs/F3w6onjtnuM/ot98Q=;
+ b=n4tY015RC0wf1+nw7BXM8pwfYC4hTnhk6xOlEKz1FAvmv1bHVaWvA9b53iAEJwMEe1pAEL2kyNfp0OTEcURhbXCRxPUpr1bIKywR9W/3jUMTir2w+BCiZng1zncnNU89Z89vhHh35Jc7DIBKahjjnftOYkTEkUHaI5S99mzhdQLXmt5F4TvlmModRHlmi1bnKEiTQSrUKOo7RDBolmUNCsrkrFyWl/99Ic4loiEDdbf8CLSzh0PfcA0BfyK9PqvbwXli/3V5zdqZcRkYDyNyMtubCKatEsvYblo35PlTQvRQDOZHLW250X1eitQ2yelu72kzRRBcKILp9H9GmNSnwg==
+Received: from TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM (2603:1096:404:8041::8)
+ by TYCP286MB3724.JPNP286.PROD.OUTLOOK.COM (2603:1096:400:3be::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.29; Wed, 26 Jul
+ 2023 13:55:43 +0000
+Received: from TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::f4c2:4b38:d074:f1e9]) by TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::f4c2:4b38:d074:f1e9%5]) with mapi id 15.20.6631.026; Wed, 26 Jul 2023
+ 13:55:43 +0000
+From: Shiji Yang <yangshiji66@outlook.com>
+To: daniel@makrotopia.org
+Cc: angelogioacchino.delregno@collabora.com,
+	ansuelsmth@gmail.com,
+	john@phrozen.org,
+	kvalo@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-wireless@vger.kernel.org,
+	lorenzo@kernel.org,
+	matthias.bgg@gmail.com,
+	nbd@nbd.name,
+	ryder.lee@mediatek.com,
+	sean.wang@mediatek.com,
+	shayne.chen@mediatek.com,
+	Shiji Yang <yangshiji66@outlook.com>
+Subject: Re: [PATCH] wifi: mt76: support per-band MAC addresses from OF child nodes
+Date: Wed, 26 Jul 2023 21:53:07 +0800
+Message-ID: <TYAP286MB03153BE5014AA32BE048B8B7BC00A@TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <ZK9mXE00xEHZV4fi@makrotopia.org>
+References: <ZK9mXE00xEHZV4fi@makrotopia.org>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TMN: [VZOMPsTcg2+hanBfxJnwfWTavMFmQcSt]
+X-ClientProxiedBy: TYCP286CA0028.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:400:263::15) To TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:404:8041::8)
+X-Microsoft-Original-Message-ID: <20230726135306.392-1-yangshiji66@outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230724211859.805481-1-robh@kernel.org>
- <20230724211859.805481-1-robh@kernel.org>
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TYAP286MB0315:EE_|TYCP286MB3724:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9721e24b-70dd-4803-5c86-08db8de000cb
+X-MS-Exchange-SLBlob-MailProps: q6Zzr5Fg03EX4MSurZUzZTQFeLZtFhLusQUcZIfjBDe90lTD8R50MthGcPaV5dqFU35tXsWqHVlwVTM0ANrwM6Iqbdmi45YmrInAP6yicjjdYLEVXC69sKhBuLA3yi3RQQ5i8D7VtbZmW6+VJp12oUFbRgK7sskzYyAsk7oQbqwkV+RJQ0BKnHRWEO96Xdtw+1Bep9XfE1zjfecdLfDqAfpbxvHPBk3UIOQwJg+y879QM8DeW/t//JAUeeh/cHpLm+NJbg852U83FqwVCYqhmzOG8Kcn98fjEvt5ye/mTDUoKgpJ60YyNAKKv9PLazNfsQ9ETvB6zqw1gYI4l5yauPSL9o1Kzp6goDVhc1lL36cQ2OW7uhhDmj5Dw1H5tfif9pAytlM9ewYjFGqIvyATox7TDrkDp7M8MFeH4arRkNKA7ab0bVBS7ZUb2xxIFRu4tavSo1rFcavEUGCZ5XBaK/QeK4matE59LJv/uInqEGM5Fu3z5tm4FKBeFp6SYJUyEDywDTWh41WWvgYxZxYe9fBNmB+HVpQXHzXy2Xyad4freQufpuwEZca95xtvPLFbpN8C2eKQJmBs5scyYuA6ncLdOgyUi6mC2RCAkwfyvIrRbJlnIMd2K9wqaBi4zY8eqC4uKx6AgliXoX+/i5TpUkOMnqEvEsHjf6mEpro9fa+0pQdpIWD/+FgXmzUz5N9k
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 3OqgMTSItSS7x5NUqolOgRYHAD1sSglvYUQsF+ge6yv/H55fh+Ly26h2/Fpp8mfRAYwa/L2JPCh2D3M5uTNfb8CJLE2SPIxr1Loc7ZvpJk8YasSTb3YezoBLOA34GU0DmMFec0AgLfmGca1H28v2bnmJro1OIhGHIQM37HWhktt1BvMTxqSUMbYF5k2rlWDNUpIosjC8zE8xOztyqp3TKprYcStMYyH+20DmQTd5Moe7LwJ0DlwijZpSyGKQ6hSXYtwrV+UrPzRRaPnA3Zra6UJzHaBwJrRt69DATsH5Pz9pKOZZzwmKQTaqt4JWfxoJZAzTeolwqgpiOfOkGhOY2rr66968kKhlEcDhUu6hB/KbVuWcn8NfjRY6rJvwJBr9ctP/lc3t9oNv2kOVjbqV/Y9+CLEXEjkE7X+y5qtFWZ6gt7SJZEnjnI2VCSF7YvdgBrNWhgABM803BmhnKBIIhIJcatM8ec4EEkP7cqGrQh+GA3trmfqvk5SBUgOBEnCEJvK9P+oINGy3uQY4N09k0OYkG1dZtuJFKRlwMUHufw5ZIwTTc0df+fVxxXKvj1Ue1DYlEiArb98UixrlMDLSStV5lYxq1sbtnHNH2m4UXYuw/3PgiwfwKnFLCpetoPMy
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?zL8ygI1k0WnqLDyuLj0WMwBGTjDJZuLTUVPT1IiR9lFql0sjac5FwNBBGBof?=
+ =?us-ascii?Q?h8L47wALCtUaTmDc37eoR4uwVUYg7lB05UGzfHL3K6uD/SivHxqke+5Ey14s?=
+ =?us-ascii?Q?jIk+LRO7HFr84FycByq7iJQbw9njqIgEo7fi+fAdZ9WPdq7l2UqZeeWQVj0q?=
+ =?us-ascii?Q?fY/oJmf4PA//efF4otkp9ixa2RjL0BiOxz638TeErtxBOOWYvp6ZPWpie1FZ?=
+ =?us-ascii?Q?uBcG1jue2YjuU2gZgfLfEYryzGGDOKGEAI9A+V1VbyOQy08tUCfvDzvhmN3R?=
+ =?us-ascii?Q?+oAniqjTZ25jj1EbuDf3xIlpSwLwsAyWeToZePcocq5XQIe/FXv+l6c6XJ2R?=
+ =?us-ascii?Q?XSCclU/mtva3G3YdTkHlH7rv9U6sbvLocSmW7Wl0V73oC5Uz3ZzfgGk6IvPt?=
+ =?us-ascii?Q?SGlIMEWCZByKNVH9EuwKOw9n7DzRm6iT0JRIUfK1vECLkDRK1jxCIKM4/zDN?=
+ =?us-ascii?Q?bbhAFJfY4CODk1WtBxFiIAp/tLPT23bXigcH1dqt8O1DRL986pFOP5SP+X8g?=
+ =?us-ascii?Q?yUGvTGHJcUhDajm70XQqVj8erZAONe0AzkWsLX5mUPT4ecAn/4Dc6hgp/zPZ?=
+ =?us-ascii?Q?ABX/g+r7HnpSW0sqtbA4k0s2PfhTHpYM77ctHgLGCaZB+5SPQU1b6oXxIy4U?=
+ =?us-ascii?Q?d5rNQAfwZwwN1kxMo6jtYLBo7sZABz5MdLJNezCXUdVhnhsA9LRteoXRtjcn?=
+ =?us-ascii?Q?+bshkd7f6n6sW0xisiIDiSNNRYcNhvzMtvNPID06LZGC7gE5ljQ8kuTncbJH?=
+ =?us-ascii?Q?+v249ni9fM6RQY9jSPd+zNK+iMzRA3EmOVBQ6CFD57UC7iTzbxS7e0DkBDC/?=
+ =?us-ascii?Q?O1abUkM6rztolAOKsoRj43dkVq5eA0yCyWlVA2xTO0ynlmeAeKQafkbpOMQk?=
+ =?us-ascii?Q?1EhjxZ0K0ppI2DhUQaXmXQqnG+cpBhcng7UvqfAaQSu8TW2/llNg9bByPTYY?=
+ =?us-ascii?Q?cfGnZ5LJjhBZuw4KKAV3/4iwhSNhYYP6KNm4TZo14qfHqsBT+3lYFt5a7ukj?=
+ =?us-ascii?Q?aV7RWZ0VNGcQ56CBwbnkTJUL3m3alLdp8QT4OP6N1kgRFxqC79wrq/AtoSf6?=
+ =?us-ascii?Q?9/hkfDVbVAbnoGXZq80KROn7ZA73YoBUuuqLDdThCh4EJf1hayWy+M5wL0ut?=
+ =?us-ascii?Q?SELn0ML2FKFKpgM+tO733WG4X1JwluP0oEBmjt9tgnfrX4Eva32odlGWaKf4?=
+ =?us-ascii?Q?CV49+/WW75vEpvCKSpJVjXvwvdlyBUYPnf/iqmWKaw/awy56RBpb3/pY4h8?=
+ =?us-ascii?Q?=3D?=
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9721e24b-70dd-4803-5c86-08db8de000cb
+X-MS-Exchange-CrossTenant-AuthSource: TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Jul 2023 13:55:43.2650
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYCP286MB3724
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230726_062210_598165_4718CBBD 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20230726_065551_936530_D01F4A42 
+X-CRM114-Status: UNSURE (   3.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,18 +138,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 24, 2023 at 03:18:58PM -0600, Rob Herring wrote:
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
+Thanks.
+Works well on MT7615D and MT7915D.
 
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+Tested-by: Shiji Yang <yangshiji66@outlook.com>
 
