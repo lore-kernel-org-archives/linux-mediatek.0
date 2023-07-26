@@ -4,78 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 732C4C0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 16:04:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E8F3C04A6A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 16:43:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WemSbbi4nmxYWdvYoU1QjodfrKLGaKVRJYiHpPTC3RM=; b=aKsdS4tXg5VSuZ/SDSJlC+iTZ6
-	Zfxz07wMvFXinJCLqXV0D4fx9Pom1HrbFMs74s/idNj4FNgpF6//7z3VSvdMafL4I3yrtztuH8Xxm
-	wqmsF22N1OGSg2bPSd4+XWIu6tvgKWtefaEwNM/KVd2d0QCKHKPEM5erQcRZ438cgghzno2L0q86/
-	a4uGJy3D/5mM6Dp7VK0MfPd2B6TKunf+P4Mnoh9GRwemfMKtAAftdFoeNTGmdY1TiUTUTDuGCU3mE
-	Tx0crASnnsvm4vcJt/ak84vhADU3tOV872zIRzVWwmjltVZYuDZCsWANB9FoxV9R7eMXDUFPsiz8E
-	8mX1Z7EA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KCv8whutDfLJorKpUOqJ8+KkOpc2kOBhY8hTu1PhHvI=; b=OJNastu8O8rSrRVBQ//gsGmcho
+	8jzWjM9RdOBICKr4bszRuMZCBY4CvkeuveZsH36Bnmt+soOlS5kVDXcztC9vKUXj8jEAop5MmCEt/
+	FwDTEvzYvwvshM7lolwFYWzSvx9l59KSZsEyETq10MZjTxltBsTC21VnR4XQD4B0avd2UoLywJETM
+	lM+vL3AT4LHgnwyKuEj4ibzlxlg0LxTrbU3/sZEsOUmli73y1lRJT4IPeqdRvVrAxQas3hKMSJJPO
+	Zn5Tnbb5o56SZCiag1bIT5BAeYJtNw4OM6RHixcbnA44V9tDxHyxn643l6R87CrbqqkZT8QgGcR8e
+	Tb1en4NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOh07-00Awv7-0M;
-	Wed, 26 Jul 2023 16:04:35 +0000
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+	id 1qOhba-00B2ZV-0f;
+	Wed, 26 Jul 2023 16:43:18 +0000
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOh03-00AwuA-2W;
-	Wed, 26 Jul 2023 16:04:33 +0000
-Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-563f4e49ff9so150518a12.3;
-        Wed, 26 Jul 2023 09:04:30 -0700 (PDT)
+	id 1qOhbX-00B2X7-1G;
+	Wed, 26 Jul 2023 16:43:16 +0000
+Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-1bbd2761f1bso4597695ad.2;
+        Wed, 26 Jul 2023 09:43:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1690387470; x=1690992270;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=WemSbbi4nmxYWdvYoU1QjodfrKLGaKVRJYiHpPTC3RM=;
-        b=J0uZTtexUewfxyw8NOt1QJaabWMwcKVAmRiNXdw7EIVcafRcbFpmWYJpX070uwkLeK
-         Apemi6nazciA4BoUOE5uFffUn0Fe7lTaMygTPnBYt9xtiqF1RtRUPFXHQez2i3proKBG
-         eQ1aGXhownS9FM/d67rYQXP89cZx7X9o4Q+/B1B2jvXZwFu6M6NdNvb0VVgOhlcsdB6I
-         LRN6wYwinE67cmw7ZY0L7Cx8by++iVSlczDTexCz5jFu9Auc5S5jOTd9Y3xJfng/L/iP
-         IBbmKWmGmkUxQTOX/2qecqjkHl4kFnxlyQAAUB3MWXI/Qp08AGcQhvCoe53NZy9cMbGm
-         6SFg==
+        d=gmail.com; s=20221208; t=1690389792; x=1690994592;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=KCv8whutDfLJorKpUOqJ8+KkOpc2kOBhY8hTu1PhHvI=;
+        b=QMUznHOLJYfI3Cg1OGbvbUK2zwN4Xs54ZJ3JbZrw4JhdF1uxPQBZ3HVCSn31MYAgdc
+         Q3UdwouTq+Mcv+ne7ujpatnJtig71lQqScyMfCpcd4njFTx2RrYTuWYS75n+F8Ub+lJb
+         sgYnZK0m3NpEEtpkxeXqvlCQL5FyNn9joXe4bALGP92MnaPs+jHcAWAHXearGlrCz8vp
+         NiOWaE+mGvO2zNT5aJxPyQVlYzpIxZgun8DIiMsIyNzjTELMbe8K/8SOPkhf+s3/lXjk
+         II5NtI1EzZjw6UkqZdZsvukqb8KGZBLOTuS3MfVf02FYRvI+M5kRxGwBzEWcbh/IBuyC
+         WI3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690387470; x=1690992270;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=WemSbbi4nmxYWdvYoU1QjodfrKLGaKVRJYiHpPTC3RM=;
-        b=ReLAjYGLogCpjn5KkuKBAsYYhUgzcxiNxofHLJPZp2Wy6NT3sGrt1DAL6ymb4TUfwe
-         Ml2nVhfO+h9EfEBByZGkN/+yhvcKJlcw9L3AD+hdbkqoAeED1ev+QB8FkPiMQFlG16lP
-         7cJ0aZcx5c2esqeYMehnlalmEbYwoVZFk4VVCr8ULGH/VH0UznjLXwrnkDKo3IX/nkPA
-         Pwo7muR1uZb7beSBAeekz3SH/vu2prbH7uIBdptypgsxIv7QpceWiPKHnucOvYO/f0WE
-         w+o1XbaFHATZXVuqU28uxfPcpd+6QV/swoyyQIIMK8X+51wDvRMjf0J02laSgaV3Ubk1
-         s6Ew==
-X-Gm-Message-State: ABy/qLaVCCnGCNdtP3v/riXS0PnsLVzldbMPEgnV9T5UomOo/plPMPYm
-	FyOAD73qhsQIPi4SLM6IZT6XY+hdwTf0jZKIJXY=
-X-Google-Smtp-Source: APBJJlF3raRu7/V95hjDIqFG7tdPTZZsjE+OlqvOdwQaOS4lGXOjZbMI2nXIx5RVa9d1ARY03sOAeDCNzU7ZCYQjNyM=
-X-Received: by 2002:a17:90b:4018:b0:262:f449:4492 with SMTP id
- ie24-20020a17090b401800b00262f4494492mr1928327pjb.30.1690387469576; Wed, 26
- Jul 2023 09:04:29 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1690389792; x=1690994592;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=KCv8whutDfLJorKpUOqJ8+KkOpc2kOBhY8hTu1PhHvI=;
+        b=RRYFq/gBC8Q00EiCjR7ttKbUnUQlSVYgz8rSDv8jBP3wQxF819VVT+K49S6S88Xply
+         L2obqP7BQLzlVZiXzAfkPZRa3RcM3BxvZEGYdN7NwTHFZNkExY+RotPVXJKxetzRi8Uw
+         zMafCEHT4GyF9wfpw0qDOhsUoJqHqZuWYSEaeifQZodQZbIqrsh28HbDGFT2NlbLIzUa
+         bUjDfGapBrSPZyyUzPWQ62Q8oHCVaVxRokVgtX4jXBqGKvnw2uPaehes+qg5CN2DIQBa
+         BgZlT6l/KNrKrHA5fKs8pie1Vv756cgR+5pPsPnHUfLpnQVW0/bBYCvTYsTFJNwIKWwz
+         lH5g==
+X-Gm-Message-State: ABy/qLat6ZDPIZm7f6Nc01+Sgi0STZSh305MpY+1iyRFNA6uUF/Wd+0g
+	WgAZICmrA/2e/IcAILWt5vxakKlgvIucLZxseck=
+X-Google-Smtp-Source: APBJJlExta4H2GjqFCFJjAPMwlKu75pRye0RG2yh6z7/8hWP5WKagkLUkY7X/mJhBRsTApJB/W2FhSG2fN3oUXYQ7wA=
+X-Received: by 2002:a17:90a:c714:b0:263:f643:4bd3 with SMTP id
+ o20-20020a17090ac71400b00263f6434bd3mr2209207pjt.27.1690389791855; Wed, 26
+ Jul 2023 09:43:11 -0700 (PDT)
 MIME-Version: 1.0
-References: <ZK9mXE00xEHZV4fi@makrotopia.org>
-In-Reply-To: <ZK9mXE00xEHZV4fi@makrotopia.org>
-From: Jonas Gorski <jonas.gorski@gmail.com>
-Date: Wed, 26 Jul 2023 18:04:18 +0200
-Message-ID: <CAOiHx=m5jRYd70ymvX=-9Xh4ZDApJ04G39j9+U0YB18W1QPv7A@mail.gmail.com>
-Subject: Re: [PATCH] wifi: mt76: support per-band MAC addresses from OF child nodes
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+References: <20230725131258.31306-1-linyunsheng@huawei.com>
+ <94272ffed7636c4c92fcc73ccfc15236dd8e47dc.camel@gmail.com>
+ <16b4ab57-dfb0-2c1d-9be1-57da30dff3c3@intel.com> <22af47fe-1347-3e32-70bf-745d833e88b9@huawei.com>
+ <CAKgT0UcU4RJj0SMQiVM8oZu86ZzK+5NjzZ2ELg_yWZyWGr04PA@mail.gmail.com>
+ <CAKgT0UfL4ri-o7WifeewpezGQY1UQKwcBEUSSY80DyKoE8g-0w@mail.gmail.com> <20230726085049.36b527a4@kernel.org>
+In-Reply-To: <20230726085049.36b527a4@kernel.org>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Wed, 26 Jul 2023 09:42:34 -0700
+Message-ID: <CAKgT0UddT2CY_HrQ-d+5vPbpguuscsfF=oUVW02AFy0JAYet3w@mail.gmail.com>
+Subject: Re: [PATCH net-next v2] page_pool: split types and declarations from page_pool.h
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Yunsheng Lin <linyunsheng@huawei.com>, 
+	Alexander Lobakin <aleksander.lobakin@intel.com>, davem@davemloft.net, pabeni@redhat.com, 
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Eric Dumazet <edumazet@google.com>, Wei Fang <wei.fang@nxp.com>, 
+	Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, 
+	NXP Linux Team <linux-imx@nxp.com>, Sunil Goutham <sgoutham@marvell.com>, 
+	Geetha sowjanya <gakula@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>, 
+	hariprasad <hkelam@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>, 
+	Leon Romanovsky <leon@kernel.org>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, 
+	Jesper Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Felix Fietkau <nbd@nbd.name>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
 	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
 	Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Christian Marangi <ansuelsmth@gmail.com>, John Crispin <john@phrozen.org>
+	Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-rdma@vger.kernel.org, 
+	bpf@vger.kernel.org, linux-wireless@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230726_090431_819493_378D1672 
-X-CRM114-Status: GOOD (  20.06  )
+X-CRM114-CacheID: sfid-20230726_094315_434596_B349F2F2 
+X-CRM114-Status: GOOD (  24.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,76 +106,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Wed, Jul 26, 2023 at 8:50=E2=80=AFAM Jakub Kicinski <kuba@kernel.org> wr=
+ote:
+>
+> On Wed, 26 Jul 2023 08:39:43 -0700 Alexander Duyck wrote:
+> > > > I suppose the above suggestion is about splitting or naming by
+> > > > the user as the discussed in the below thread?
+> > > > https://lore.kernel.org/all/20230721182942.0ca57663@kernel.org/
+> > >
+> > > Actually my suggestion is more about defining boundaries for what is
+> > > meant to be used by drivers and what isn't. The stuff you could keep
+> > > in net/core/page_pool.h would only be usable by the files in net/core=
+/
+> > > whereas the stuff you are keeping in the include/net/ folder is usabl=
+e
+> > > by drivers. It is meant to prevent things like what you were
+> > > complaining about with the Mellanox drivers making use of interfaces
+> > > you didn't intend them to use.
+>
+> FWIW moving stuff which is only supposed to be used by core (xdp, skb,
+> etc.) to net/core/page_pool.h is a good idea, too.
+> Seems a bit independent from splitting the main header, tho.
 
-On Thu, 13 Jul 2023 at 04:53, Daniel Golle <daniel@makrotopia.org> wrote:
->
-> With dual-band-dual-congruent front-ends which appear as two independent
-> radios it is desirable to assign a per-band MAC address from device-tree,
-> eg. using nvmem-cells.
-> Support specifying MAC-address related properties in band-specific child
-> nodes, e.g.
->         mt7915@0,0 {
->                 reg = <0x0000 0 0 0 0>;
->                 #addr-cells = <1>;
->                 #size-cells = <0>;
->
->                 band@0 {
->                         /* 2.4 GHz */
->                         reg = <0>;
->                         nvmem-cells = <&macaddr 2>;
->                         nvmem-cell-names = "mac-address";
->                 };
->
->                 band@1 {
->                         /* 5 GHz */
->                         reg = <1>;
->                         nvmem-cells = <&macaddr 3>;
->                         nvmem-cell-names = "mac-address";
->                 };
->         };
->
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  drivers/net/wireless/mediatek/mt76/eeprom.c | 15 ++++++++++++++-
->  1 file changed, 14 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
-> index dce851d42e083..90ee138843a55 100644
-> --- a/drivers/net/wireless/mediatek/mt76/eeprom.c
-> +++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
-> @@ -106,7 +106,20 @@ void
->  mt76_eeprom_override(struct mt76_phy *phy)
->  {
->         struct mt76_dev *dev = phy->dev;
-> -       struct device_node *np = dev->dev->of_node;
-> +       struct device_node *child_np, *np = dev->dev->of_node;
-> +       u32 reg;
-> +       int ret;
-> +
-> +       for_each_child_of_node(np, child_np) {
-> +               ret = of_property_read_u32(child_np, "reg", &reg);
-> +               if (ret)
-> +                       continue;
-> +
-> +               if (reg == phy->band_idx) {
-> +                       np = child_np;
-> +                       break;
+It seems a bit independent, but I was reacting only because I feel
+like this ijust adding to the technical debt on this. Basically before
+we can really just go ahead and split it the header file itself should
+probably be cleaned up a bit.
 
-When breaking out of the loop here you still hold an additional
-reference to child_np, so you need to call of_node_put() for it,
-probably after calling of_get_mac_address().
+The reason why it occurred to me is that I noticed things like
+page_pool_use_xdp_mem and the forward declaration for xdp_mem_info was
+being picked up and moved into the types.h file in the move. The whole
+block was in a #if/#else statement w/ definitions for the PAGE_POOL
+and non-PAGE_POOL cases.
 
-> +               }
-> +       }
->
->         of_get_mac_address(np, phy->macaddr);
->
-
-probably just add a of_node_put(child_np); here, of_node_put() seems
-to be NULL safe.
-
-
-Regards,
-Jonas
+We also have functions that don't really need to be included such as
+page_pool_unlink_napi which is exported but not used outside of
+page_pool.c from what I can tell.
 
