@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9A44C001DE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 09:54:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E133C001DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Jul 2023 10:02:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:Cc:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wgjpivHS0eL/eY+dcQaveEIg5l76TVEBK5GqPZtw9RE=; b=Fv4gX5HFWEVU9tVWpyPqyq/74K
-	6sPibOvVe/9x86Rq88NNo8btsyjEWxTHgXzdQTsDISEqhyAjnZ80lvC1XiOJwHyQJG2CaHDHi8VuL
-	BihCMwZdP7FOsuZMWPsMzytZmHUZO3vRGsLnoReFT4raqxoDt9xhC+Um5zJqkeny3Ky4kz5QjOhke
-	n4RFGyHgnoCgJe/N/+WUXJ6R9Pg5/ER8xN4ffvkcqe8i3ZzxvUx7jBZK9oPDMma0sLOOJzh3y/8J9
-	pSRZ+IUGH6aLRtPP/4BKkvFDi6owPWSSuPm1diRXHrrGHRZ85ycSswpsgP12/EI0B/Bg5GHE3xxYt
-	Xh058Xuw==;
+	bh=a563QdCdDwoOlj6LxrrnwcdDdjgKrZnAD5zEsyGoPWg=; b=G0RK+zHIdq0D106z4k0m2Q0eQw
+	+kvfLr6hFBkMshtGO2o0c/tV2a43HlihdN+AXlN8T5L2gkHVdrDOVzLspFZTME1+pv1NJc84Lr5PC
+	kaWNRp9VgXvp9IQ/V/KCCGlT7yevnpPy3rRF6HzjWMiXf048o8jfuFiaqa+3/KHAFFBmC3m8ErkZ5
+	kqhypeCxKKTabywYqsnLjSnlQNTRWf8UUFCVUroe0NbPOhlPVTg3bRC7pja5neT3c1otftjjL1jU1
+	GctW3t//zMH8A1GCDq8JmL8gehfPh2RK2cuL9D/9qiT0TqF1JJnfh9CeCC1W+Hzy+YnmA9os0F5r+
+	qo09obdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qObE1-009p7r-2G;
-	Wed, 26 Jul 2023 09:54:33 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1qObLk-009qyJ-0H;
+	Wed, 26 Jul 2023 10:02:32 +0000
+Received: from mga02.intel.com ([134.134.136.20])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qObDy-009p7G-1b;
-	Wed, 26 Jul 2023 09:54:31 +0000
+	id 1qObLg-009qxV-1a;
+	Wed, 26 Jul 2023 10:02:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1690365270; x=1721901270;
+  t=1690365748; x=1721901748;
   h=message-id:date:mime-version:cc:subject:to:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=KI5Ekd4G7iMCYJ70MjZvH6+mRrT95owuJmYg2GgsOT8=;
-  b=dPcJ7U7yTp17sZyzqoGnJEclPtzlI1r7S8IY/Zof1hNc0FYgKE/MV17B
-   d6dkxyjC39HmmqoKWtqZU9aUXEXKLwXGA9XEak6obUL5cl+jCONak4u8D
-   ++glXIDp1NtfrNmAEoH6ZQpjd+SHLX64hziVh1WLIj9tJDER2sFgmyhNA
-   Q8CbpiOn9KLs5QaACLuouo3WDYq8fTsy1w0LLdudglqFuNI2pwnZAU+6h
-   rGIRjFPoJYfDaY/toQZg1ciOhQI5UhSwmJdaSXGb/B7+AOjSdomFn5TFZ
-   WqEKGLAfVZdwREqwD300j4d4NsOCKh40L/bHZS9YE4mzxFqpqCc5JH8LM
+  bh=fC7EcZ1a0N87YcWZSAEEbxYdBu8EmtydYwOfonr6+KI=;
+  b=jvbqR1ZLjrKHBv0vMBEIXaw4PsCDJub6btXfjSiOW9sHS2rPm/x7pU7Y
+   fMAFo6HDQHQF1u66KRpvdbbGuBFR+1QvQw3yw8qXtKpyWvSd+SWDK2Vdb
+   2r7xBR/E6LcsStp4ea0KOB6ufUXjm961j6Ye3XxIppU7q5nK2vA6BDrOU
+   acOyADy9PdTFHkH7sNPkfX3MxGbWKZvV72/FlobVWA8jm8KXABUN2Ts6v
+   B/HAAa9mpS7gYaDCW8C5mBX2ZRiIy6yUM1AcLFeSi2wtUai0QtFmwezv8
+   DXXFlRflHxYr28HSMb1Veu+jBhy8TTpNKfW9f6p39KNBkopkRvB4XYDbd
    g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10782"; a="352869803"
+X-IronPort-AV: E=McAfee;i="6600,9927,10782"; a="357971209"
 X-IronPort-AV: E=Sophos;i="6.01,231,1684825200"; 
-   d="scan'208";a="352869803"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Jul 2023 02:54:29 -0700
+   d="scan'208";a="357971209"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Jul 2023 03:02:25 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10782"; a="726479902"
+X-IronPort-AV: E=McAfee;i="6600,9927,10782"; a="761594570"
 X-IronPort-AV: E=Sophos;i="6.01,231,1684825200"; 
-   d="scan'208";a="726479902"
+   d="scan'208";a="761594570"
 Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.254.208.129]) ([10.254.208.129])
-  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Jul 2023 02:54:18 -0700
-Message-ID: <8cb5a8d9-9eff-ff2e-f173-8e72af82bca2@linux.intel.com>
-Date: Wed, 26 Jul 2023 17:54:16 +0800
+  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Jul 2023 03:02:14 -0700
+Message-ID: <1d6e3aba-bdbc-7b56-2f9c-eda6017dbbb5@linux.intel.com>
+Date: Wed, 26 Jul 2023 18:02:12 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
@@ -60,7 +60,7 @@ Cc: baolu.lu@linux.intel.com, Dmitry Osipenko <digetx@gmail.com>,
  Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
  <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
  Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v5 22/25] iommu: Add __iommu_group_domain_alloc()
+Subject: Re: [PATCH v5 23/25] iommu: Add ops->domain_alloc_paging()
 Content-Language: en-US
 To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
@@ -88,14 +88,14 @@ To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
  Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
  Chunyan Zhang <zhang.lyra@gmail.com>
-References: <22-v5-d0a204c678c7+3d16a-iommu_all_defdom_jgg@nvidia.com>
+References: <23-v5-d0a204c678c7+3d16a-iommu_all_defdom_jgg@nvidia.com>
 From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <22-v5-d0a204c678c7+3d16a-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <23-v5-d0a204c678c7+3d16a-iommu_all_defdom_jgg@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230726_025430_597461_2E4DC276 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20230726_030228_596465_FF83D2F9 
+X-CRM114-Status: GOOD (  19.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,16 +111,31 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 2023/7/25 1:22, Jason Gunthorpe wrote:
-> Allocate a domain from a group. Automatically obtains the iommu_ops to use
-> from the device list of the group. Convert the internal callers to use it.
+> This callback requests the driver to create only a __IOMMU_DOMAIN_PAGING
+> domain, so it saves a few lines in a lot of drivers needlessly checking
+> the type.
+> 
+> More critically, this allows us to sweep out all the
+> IOMMU_DOMAIN_UNMANAGED and IOMMU_DOMAIN_DMA checks from a lot of the
+> drivers, simplifying what is going on in the code and ultimately removing
+> the now-unused special cases in drivers where they did not support
+> IOMMU_DOMAIN_DMA.
+> 
+> domain_alloc_paging() should return a struct iommu_domain that is
+> functionally compatible with ARM_DMA_USE_IOMMU, dma-iommu.c and iommufd.
+> 
+> Be forwards looking and pass in a 'struct device *' argument. We can
+> provide this when allocating the default_domain. No drivers will look at
+> this.
 > 
 > Tested-by: Steven Price<steven.price@arm.com>
 > Tested-by: Marek Szyprowski<m.szyprowski@samsung.com>
 > Tested-by: Nicolin Chen<nicolinc@nvidia.com>
 > Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
 > ---
->   drivers/iommu/iommu.c | 66 ++++++++++++++++++++++++-------------------
->   1 file changed, 37 insertions(+), 29 deletions(-)
+>   drivers/iommu/iommu.c | 13 ++++++++++---
+>   include/linux/iommu.h |  3 +++
+>   2 files changed, 13 insertions(+), 3 deletions(-)
 
 Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
 
