@@ -4,132 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1339BC001E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 12:44:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9FD3C04A6A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 13:06:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FFQR1C8HIw9UW6vxPAOXeDBpgvNbva1nWs2Qlp9yTEM=; b=m+z42DqgEwZdojP53T6ZMPd55d
-	dRZE0YU2SsSIgTm7kodvPuuZadoEHM1SPxk1cDkFNOUlyZU4YsX167rwgvV5T1Gh0iTGbcLZDh627
-	l0GOpcbuQ8FCuX3q7zjZOhg6BYd1imMnYuKMDZZYrwFl+JiktNt27hmaQmXvCiSgvgAPpBg6HvEVF
-	+uHA1SQucfDV1XxDZCrIfcTn0mQ0040vnhAlYUQGBcgpvB+AJ6RtJQtSoRHIY2v1jT8drnx5WC8kR
-	wKRuM6LsD3W60nkv058XD6NkuTP9OeuUln/y83UNJ4ouHtrKPkvjZYWIIV8gxWUsR7NonPxpg1vLj
-	glg+7BMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7nmQ/RudgjiyaGVKCTCVY1/Mq24P2iTTInZzHxl1bmU=; b=hTWDfXYOEkqD2RKfAC1M3bJLPq
+	xwI4IPC8PUlmvGTKBzGQa01mZtH2muwqiL9QhEC+2oSiHoc8lRWb6cz6OF2ZBN9S/fTkjDeWw5ZgS
+	2yFbEU+yytutYIxVOEnWQXWBAqcGf9eUBMFx242/74SgrC7/Gk6lhshG4E+k5TrlGgE1v7t+yGYHV
+	NQbf1kwoPRK6PJgEaVphqPp8ZORnkaakSk3L0YkYaYCirsVvBCbJ1szcDeAy1jv4Me3DfsUZYXDzW
+	HBN9tFhwNctS6h6AuhRbcJcjitczareS7r9XANdUvqLVVu0KhglFcredmFX0PYLmXB16aPkpugZEo
+	03STpjXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qP0La-00E4tk-0L;
-	Thu, 27 Jul 2023 12:44:02 +0000
-Received: from mail-bn8nam12on20730.outbound.protection.outlook.com ([2a01:111:f400:fe5b::730] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+	id 1qP0h5-00EJbC-2T;
+	Thu, 27 Jul 2023 13:06:15 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qP0LW-00E4pX-2s;
-	Thu, 27 Jul 2023 12:44:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=coW2Bbgpxd79zdLma2D0twxmrNrSYGnlFDwtCtgs7i/MFL0FjPY6hzpHjFNxLGLin3KCzqmv5IJ/Ym+aDQ6mmcyrKTN1nsnG7UGqPv0NQYeIipIoTwv6ZcxB7BGoXT6ajR/unVsaMazeq9629R5A5xZI51Ltavm8wSak3sPhOAJVgMAkFWSnzvjMMtUVjBUCk7b0uVpnOJmLwzSrPCYIEszARv4e7y/MFAPPouxWHNDXtErFKaekLekG7ZX+5TOk9pOIGfVHlT3RA2aAb3THhIS7c4zI2HVQrHYTe77D4jnNOsahHtqoFhW4QFbNuQJk+TDU2L4hx8CZtrJBwFCslw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=FFQR1C8HIw9UW6vxPAOXeDBpgvNbva1nWs2Qlp9yTEM=;
- b=e4nEFihBQxvCziKSccBvrhJBxNUYdoPjKkIitguWLp4ypnmvIX2CFTPoJpk2SEznC/80KPh+YrmdhlZQMeiDLmpf7EK3/3c6/n9XcfhLrIourvcZLGXLs6hdhVf3MNe9fQ5JZNAaoAHpyL6cpFRLiklSDk4OLxE2uo244PS4/Xy82oVo4Hv+KCS5jK0x+3Izs0WrdZjZ24rkIoi6TVJl7fAh29WdPvFoc/cdNEghsdHtALUagkEEiryII7k1qOPaAm88DdWs0uKEZYV7ToycDkEHgvRKd+KnCjBB35XH+V690wbmGu0o00KscUqI9G7KdypyVIrdRJLnP2+xo8frUA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FFQR1C8HIw9UW6vxPAOXeDBpgvNbva1nWs2Qlp9yTEM=;
- b=qDrs1kMXn+Qp/xY0ulZ/0zekwIAHtHPEZQ/4bKNzshV7WGFBbdRBV5yvOnWtL9EIETAVA3h72cT2OtFw69eNuDdT4QfmeIbXd4nJHU6Kifd7Pa6aAgFT9xxT7SwNjRYncHw2K7Vx/vgkOFh35YM9/ofPJb2/ioBjK+exDtDmrZ4=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com (2603:10b6:510:78::6)
- by BL3PR13MB5092.namprd13.prod.outlook.com (2603:10b6:208:33f::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.29; Thu, 27 Jul
- 2023 12:43:49 +0000
-Received: from PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::fde7:9821:f2d9:101d]) by PH0PR13MB4842.namprd13.prod.outlook.com
- ([fe80::fde7:9821:f2d9:101d%7]) with mapi id 15.20.6631.026; Thu, 27 Jul 2023
- 12:43:49 +0000
-Date: Thu, 27 Jul 2023 14:43:41 +0200
-From: Simon Horman <simon.horman@corigine.com>
-To: patchwork-bot+netdevbpf@kernel.org
-Cc: Daniel Golle <daniel@makrotopia.org>, davem@davemloft.net,
-	edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org, nbd@nbd.name, john@phrozen.org,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	lorenzo@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, linux@armlinux.org.uk,
-	gerg@kernel.org, bjorn@mork.no, f.fainelli@gmail.com,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v6 0/8] net: ethernet: mtk_eth_soc: add basic
- support for MT7988 SoC
-Message-ID: <ZMJmffbj+K22BgIq@corigine.com>
-References: <cover.1690246066.git.daniel@makrotopia.org>
- <169043462350.30073.405534761855593169.git-patchwork-notify@kernel.org>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <169043462350.30073.405534761855593169.git-patchwork-notify@kernel.org>
-X-ClientProxiedBy: AM0PR02CA0021.eurprd02.prod.outlook.com
- (2603:10a6:208:3e::34) To PH0PR13MB4842.namprd13.prod.outlook.com
- (2603:10b6:510:78::6)
+	id 1qP0h0-00EJVx-2I;
+	Thu, 27 Jul 2023 13:06:13 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F0577660713C;
+	Thu, 27 Jul 2023 14:06:05 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1690463166;
+	bh=nIcE3OJoErKYJqW3Zt4z41Rw2r69rJ5mBgVnBs2oAAI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZfH3Abayj+SGW0mhS5XHz1ccb4ljxZJTvq6EtkyrcIWZrt+fDguM16ydkFL+ekzpp
+	 gBtRCpPXb73ZXo0o41A3S6x+dgdIJx5xp/oIOcxkuLO8tW3HntEuq7Y1leZMvIMQSq
+	 P633yZd5qj1cmUyYOk2yRC55Hkimy7DBCcWKmEecj1/NttH0Skjuqg6uZDR6w5wsWT
+	 A/wdDIi1rD8OxvJR9hAFmCPcfc6iO4fiF0ZDVibqHiC9Y2RV60PJy/rMVTc1kEmAz+
+	 4VDJXI58TrlIZkEjdHQxQP8D2ZFX6dMbgyJf+NmYYFwbxfHarqGk8vf4v4/UFHyjKe
+	 7bPagrwjB650g==
+Message-ID: <8b9769f3-8a7c-3607-ca9a-09443cfbc9d9@collabora.com>
+Date: Thu, 27 Jul 2023 15:06:03 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR13MB4842:EE_|BL3PR13MB5092:EE_
-X-MS-Office365-Filtering-Correlation-Id: b99b99f4-42c4-4946-85b8-08db8e9f2003
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: apo+keHueSfRGpwXajOhobwRBoANKln/gCjo5dfppZGkaEuS2b2l8uaZ6ZmO6kMsVqSej8gAROybtXYA2qQ6KPCns/6MQzLxtJhqJFXTJga8hp6OULh3bxM0RG9vjA+oiVQJqexMjVJUxuMSBQUmPy1HdjqrnRW5NYnRh6V7v2hyvItoL3kCkopBZx8TzMdOE07qJvNphYSUuqgeH0Y86wl5cMOXdWNnNpmwhvZfKW8Y4Q1aHG7CtqNk0r77pcCpndNQFuINj9RDLjz4CY7EJ20T6W01FEbyn1nTp8qSy+KU/imJtekQZdLpYYdqTos62aDnqCtaXE+H7NhVRmq42OH42h9LKN2D7766p8oNt7LcWWV9kiW21Lmfye3nqanQ167G8M2nya03KCXbgdrph5UO9AwFLiOcSwhLdRjJkmzfEM7I0dWTElZCLO5pzzUvMFVxvnVuXJeZehBJSiMhUrgEG0DVK3buC2tBsrvRqpDMTkRJb2OUx5jcOTsCPuNKvLlpD7T/lEQ6SLksDCXm7aXFMNRXarrIBMhHJ6pOx6QkJrJk/FfFOspgDQdVYm3XW8E+iP/YNgP1kFzgfk9uxbY5E/MIoIqcCLU9bDaiZ7/XhoxvtkdCiLRMlqYomFB014uWGkRmr2/72hC55PX+Ow==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR13MB4842.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(39840400004)(376002)(136003)(366004)(346002)(396003)(451199021)(6666004)(6486002)(478600001)(83380400001)(6506007)(6512007)(966005)(66946007)(66476007)(66556008)(4326008)(186003)(2616005)(38100700002)(5660300002)(7416002)(44832011)(8676002)(8936002)(2906002)(41300700001)(316002)(86362001)(36756003)(67856001);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?9n9TjB5oTBQzkQr/Buo0Bs304zaBfTXHhikxb9IO9fC5ye2589s8IVCo41QG?=
- =?us-ascii?Q?jZ9dKg+686+WspK8GefPtQdzJ0bbxpGn3qjCCflke/qVDwgh64BP9gJXWEOa?=
- =?us-ascii?Q?DuFzqvP7pj0fVYDsE+o344yBbeAOmjXEZefLd/LOUN89IyaH3pWwe5Jk+d1x?=
- =?us-ascii?Q?2cjIOZdZRHD4uIye7yz0Nsk2XJCXm06C8TfoW5D/SC5E+YvSV2lJ4OiwC2bY?=
- =?us-ascii?Q?yPW8yDhxrDIOuicny8b7uWefEvP84Opa5OaQuYXMAe8yhR+vIjRMsv2NGfPa?=
- =?us-ascii?Q?rFAghgc4zHT6VNjdLNnaVZjozoTqo2/kEu8pFFTYCHvPRWANm7xDr+QK9Y/W?=
- =?us-ascii?Q?oBFqT3ug6iaZ9FxJTv+nXF+4HaS1h1RVkOwgU91SCR6XeuzBT8zLUPt38OOs?=
- =?us-ascii?Q?F21er7nOPDDEsV4y+oY5GTh8DItVuHEGFXGlrrE00lMN+4QafrOX0ePQ8YMK?=
- =?us-ascii?Q?FxC3V0j4B5uWukIM/AclGW8k6Q7ruR2fpfLv5ijvIsx1viAUinXPP8UjUJ3S?=
- =?us-ascii?Q?w4oBP23DgyYILuB6Ih12dWKsmv3pEHfpZqlCkfJuEhsOhns8Tb3QG0R3Yvtc?=
- =?us-ascii?Q?T+wBsfzD255v7AGmBj6TCQ1ETVxokt3kOlwRzvbCXAKhAMUmMd2KZfT7vib9?=
- =?us-ascii?Q?ID8Zi1Gj7lMH4pKpoY3qAduJML9hUKmfDzoKVAFedk4neBjHzToW5lfYIas/?=
- =?us-ascii?Q?U8KFtf95IhHVMkqUjsCksLUqS8hZc4ljb00qru4g03Uh0yOYJEdVuzbzkO6M?=
- =?us-ascii?Q?Z7yjK/4DZ5oTqgoUgLuXPQJkyRvd0h/vuK6NxHZQP+CSilADIraEG6Z51IUn?=
- =?us-ascii?Q?FtGFF5XlDU0loM6EpUrw2zH/UcXXnWFWAyz6Dtv2vzEOaHMN7ifG7Y7hKVwU?=
- =?us-ascii?Q?7pSHKtrlKVmMqY+0KsVNnSOFvXYBj7cGkK9ZIuCMTOgUBi/yuHZI9URDGIp4?=
- =?us-ascii?Q?6A6ffqIkCh8eNSf83YOwxV4WHCkO44CeIllbLzR+4wbskutgJ4sknm+/Zkry?=
- =?us-ascii?Q?F6/E68fNbBMkEJi8JColaESfcv/ZsYQ09zvTwWqPAVdl5AF8vHpA46ceuB7a?=
- =?us-ascii?Q?q5fNTFUYeFCHRQ5wcKAEJGUYR348buoi1t8WPrzt0mC66MQCxhnreTQK0DVC?=
- =?us-ascii?Q?HgPSYSHFO+efqdSNFSB0swdPPqxRtPXp2V484vItfJ24jKHPj88Vx4r1qLTl?=
- =?us-ascii?Q?oXvUVGfBpszbMUEp+deT8OBcplqAf4AkTG6eu2ZLAqnUIZdCbeait6wtVvVS?=
- =?us-ascii?Q?e4TNxgwgN5dLiTSoRVtM5HKphTyKKGAdPxnqOiYn7l10s5uwfVGBRZg/H86Q?=
- =?us-ascii?Q?9TKUKaHwMU961X0XzZYpRwDF5eWKwX1rgANdTNbrYV/NpcHLjLfQv34N6F1x?=
- =?us-ascii?Q?+PwCTQfULSy9QkIjLE5Ii3OuAlydQ55dl5fPOkWZdmoxSe3tDFEChN8RLuMc?=
- =?us-ascii?Q?Jp86Chq1fRYhoYz66Uz0BSH+ra9btjTFNJ5VB1J87p25fxQ0QXKPMht0D1mD?=
- =?us-ascii?Q?VzyJSxIz/4QAui1bF9NX6CnZjv0DPtB7A47FycUAsna2IhbKOUWAzjmt/7G2?=
- =?us-ascii?Q?csQLERGGJrPkEAsMYIO8vENCQjc+ThoylViE6wTEPf9wzOloqxnIjf/WpJGc?=
- =?us-ascii?Q?EuWO+dttIekE/wByWiAldyHlxMsRyfT63sOzZj/K+9+HPZZwx9Ppal8kawHS?=
- =?us-ascii?Q?PXrB6w=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b99b99f4-42c4-4946-85b8-08db8e9f2003
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR13MB4842.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jul 2023 12:43:49.2991
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: A6GCpvm2B2eY8wSg8wbSIPn8lyPI9kcwkMoroSkE6lK2mUGDXgHVxVMJql+sBE1MngKy9MyLW47FPmpLbWT3GiTs1UjQ5WKlRx2CHdY7oag=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL3PR13MB5092
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH RESEND v6 09/11] drm/mediatek: gamma: Add support for
+ 12-bit LUT and MT8195
+Content-Language: en-US
+To: Alexandre Mergnat <amergnat@baylibre.com>, chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, wenst@chromium.org,
+ kernel@collabora.com, ehristev@collabora.com,
+ "Jason-JH . Lin" <jason-jh.lin@mediatek.com>
+References: <20230727094633.22505-1-angelogioacchino.delregno@collabora.com>
+ <20230727094633.22505-10-angelogioacchino.delregno@collabora.com>
+ <ec66e067-642e-1512-3e4b-b51065ccc75d@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <ec66e067-642e-1512-3e4b-b51065ccc75d@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230727_054358_945285_75D98D32 
-X-CRM114-Status: GOOD (  15.98  )
+X-CRM114-CacheID: sfid-20230727_060611_062855_6BEE268F 
+X-CRM114-Status: GOOD (  32.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,52 +82,229 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 27, 2023 at 05:10:23AM +0000, patchwork-bot+netdevbpf@kernel.org wrote:
-> Hello:
+Il 27/07/23 13:03, Alexandre Mergnat ha scritto:
+> Hi Angelo !
 > 
-> This series was applied to netdev/net-next.git (main)
-> by Jakub Kicinski <kuba@kernel.org>:
+> On 27/07/2023 11:46, AngeloGioacchino Del Regno wrote:
+>> Add support for 12-bit gamma lookup tables and introduce the first
+>> user for it: MT8195.
+>> While at it, also reorder the variables in mtk_gamma_set_common()
+>> and rename `lut_base` to `lut0_base` to improve readability.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> Reviewed-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+>> ---
+>>   drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 61 ++++++++++++++++++-----
+>>   1 file changed, 48 insertions(+), 13 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c 
+>> b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+>> index f1a0b18b6c1a..e0e2d2bdbf59 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+>> @@ -27,12 +27,20 @@
+>>   #define DISP_GAMMA_SIZE_VSIZE                GENMASK(12, 0)
+>>   #define DISP_GAMMA_BANK                0x0100
+>>   #define DISP_GAMMA_BANK_BANK                GENMASK(1, 0)
+>> +#define DISP_GAMMA_BANK_DATA_MODE            BIT(2)
+>>   #define DISP_GAMMA_LUT                0x0700
+>> +#define DISP_GAMMA_LUT1                0x0b00
 > 
-> On Tue, 25 Jul 2023 01:51:00 +0100 you wrote:
-> > The MediaTek MT7988 SoC introduces a new version (3) of the NETSYS
-> > block and comes with three instead of two MACs.
-> > 
-> > The first MAC can be internally connected to a built-in Gigabit
-> > Ethernet switch with four 1000M/100M/10M twisted pair user ports.
-> > 
-> > The second MAC can be internally connected to a built-in 2500Base-T
-> > Ethernet PHY.
-> > 
-> > [...]
+> Is this offset generic to all MTK SoC which support this driver ?
 > 
-> Here is the summary with links:
->   - [net-next,v6,1/8] dt-bindings: net: mediatek,net: add missing mediatek,mt7621-eth
->     https://git.kernel.org/netdev/net-next/c/1cbf487d7d3a
->   - [net-next,v6,2/8] dt-bindings: net: mediatek,net: add mt7988-eth binding
->     https://git.kernel.org/netdev/net-next/c/c94a9aabec36
->   - [net-next,v6,3/8] net: ethernet: mtk_eth_soc: add version in mtk_soc_data
->     https://git.kernel.org/netdev/net-next/c/a008e2a84e6b
->   - [net-next,v6,4/8] net: ethernet: mtk_eth_soc: increase MAX_DEVS to 3
->     https://git.kernel.org/netdev/net-next/c/6ca265571b9e
->   - [net-next,v6,5/8] net: ethernet: mtk_eth_soc: rely on MTK_MAX_DEVS and remove MTK_MAC_COUNT
->     https://git.kernel.org/netdev/net-next/c/e05fd6274ee6
->   - [net-next,v6,6/8] net: ethernet: mtk_eth_soc: add NETSYS_V3 version support
->     https://git.kernel.org/netdev/net-next/c/1953f134a1a8
->   - [net-next,v6,7/8] net: ethernet: mtk_eth_soc: convert caps in mtk_soc_data struct to u64
->     https://git.kernel.org/netdev/net-next/c/51a4df60db5c
->   - [net-next,v6,8/8] net: ethernet: mtk_eth_soc: convert clock bitmap to u64
->     https://git.kernel.org/netdev/net-next/c/c75e416ccfd2
->   - [v6,net-next,9/9] net: ethernet: mtk_eth_soc: add basic support for MT7988 SoC
->     (no matching commit)
+>> +/* For 10 bit LUT layout, R/G/B are in the same register */
+>>   #define DISP_GAMMA_LUT_10BIT_R            GENMASK(29, 20)
+>>   #define DISP_GAMMA_LUT_10BIT_G            GENMASK(19, 10)
+>>   #define DISP_GAMMA_LUT_10BIT_B            GENMASK(9, 0)
+>> +/* For 12 bit LUT layout, R/G are in LUT, B is in LUT1 */
+> 
+> As I understood from the application processor registers (v0.4), R/G are in LUT, B 
+> is in LUT1 for 10bit and 12bit for MT8195. Can you check please to be sure ?
+> 
 
-This last one seems to be:
-	https://git.kernel.org/netdev/net-next/c/445eb6448ed3
+That's right, but here I'm implying that 10-bit LUT is only for older SoCs, and
+all of them have got the same register layout with one LUT register for R, G, B,
+while all the new SoCs, which have got 12-bits LUT support, have got the new
+register layout with two LUT registers (and multiple banks).
+Infact, the MT8195 SoC was added here with 12-bits LUT support only (as the LUT
+parameters extraction is easily handled by the drm_color_lut_extract() function).
 
-> You are awesome, thank you!
-> -- 
-> Deet-doot-dot, I am a bot.
-> https://korg.docs.kernel.org/patchwork/pwbot.html
+The alternative would've been to add two compatibles, like
+"mediatek,mt8195-disp-gamma-10bits" and "mediatek,mt8195-disp-gamma-12bits",
+or a boolean property like "mediatek,lut-12bits" which would appear literally
+everywhere starting from a certain point in time (since there's no reason to
+use 10-bits LUT on MT8195, that starts now!).
+
+Even then, consider the complication in code, where mtk_gamma_set_common()
+would have to handle:
+- 10-bits, layout A
+- 10-bits, layout B -> but fallback to layout A if this is AAL
+- 12-bits layout
+
+is_aal = !(gamma && gamma->data);
+
+for_each_bank()
+{
+	if (num_lut_banks > 1) write_num_bank();
+
+	for (i = 0; i < lut_bank_size; i++) {
+		.......
+
+		if (!lut_diff || (i % 2 == 0)) {
+			if (lut_bits == 12 || (lut_bits == 10 && layout_b)) {
+				... setup word[0],[1] ...
+			} else if (layout_b && !is_aal) {
+				...setup word[0],[1]...
+			} else {
+				...setup word[0]
+			}
+		} else {
+			 ^^^ almost repeat the same ^^^
+		}
+		writel(word[0], (...));
+		if (lut_bits == 12 || (lut_bits == 10 && layout_b) && !is_aal)
+			writel(word[i] (....));
+	}
+}
+
+probe() {
+	if (of_property_read_bool(dev->of_node, "mediatek,lut-12bits") ||
+	    data->supports_only_12bits)
+		priv->lut_bits = 12;
+	else
+		priv->lut_bits = 10;
+}
+
+...at least, that's the implementation that I would do to solve your concern,
+which isn't *too bad*, but still, a big question arises here...
+
+
+Why should we care about supporting *both* 10-bit and 12-bit Gamma LUTs on
+the *same* SoC?
+
+
+A 12-bit LUT gives us more precision and there's no penalty if we want to
+convert a 10-bit LUT to a 12-bits one, as we're simply "ignoring" the value
+of two bits per component (no expensive calculation involved)...
+
+Is there anything that I'm underestimating here?
+
+Cheers,
+Angelo
+
+>> +#define DISP_GAMMA_LUT_12BIT_R            GENMASK(11, 0)
+>> +#define DISP_GAMMA_LUT_12BIT_G            GENMASK(23, 12)
+>> +#define DISP_GAMMA_LUT_12BIT_B            GENMASK(11, 0)
+>> +
+>>   #define LUT_10BIT_MASK                0x03ff
+>>   #define LUT_BITS_DEFAULT            10
+>>   #define LUT_SIZE_DEFAULT            512
+>> @@ -83,14 +91,15 @@ unsigned int mtk_gamma_get_lut_size(struct device *dev)
+>>   void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct 
+>> drm_crtc_state *state)
+>>   {
+>>       struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+>> -    unsigned int i;
+>> +    void __iomem *lut0_base = regs + DISP_GAMMA_LUT;
+>> +    void __iomem *lut1_base = regs + DISP_GAMMA_LUT1;
+>> +    u32 cfg_val, data_mode, lbank_val, word[2];
+>> +    int cur_bank, num_lut_banks;
+>> +    u16 lut_bank_size, lut_size;
+>>       struct drm_color_lut *lut;
+>> -    void __iomem *lut_base;
+>> +    unsigned int i;
+>>       bool lut_diff;
+>> -    u16 lut_bank_size, lut_size;
+>>       u8 lut_bits;
+>> -    u32 cfg_val, lbank_val, word;
+>> -    int cur_bank, num_lut_banks;
+>>       /* If there's no gamma lut there's nothing to do here. */
+>>       if (!state->gamma_lut)
+>> @@ -110,14 +119,17 @@ void mtk_gamma_set_common(struct device *dev, void __iomem 
+>> *regs, struct drm_crt
+>>       num_lut_banks = lut_size / lut_bank_size;
+>>       cfg_val = readl(regs + DISP_GAMMA_CFG);
+>> -    lut_base = regs + DISP_GAMMA_LUT;
+>>       lut = (struct drm_color_lut *)state->gamma_lut->data;
+>> +    /* Switch to 12 bits data mode if supported */
+>> +    data_mode = FIELD_PREP(DISP_GAMMA_BANK_DATA_MODE, !!(lut_bits == 12));
+>> +
+>>       for (cur_bank = 0; cur_bank < num_lut_banks; cur_bank++) {
+>>           /* Switch gamma bank and set data mode before writing LUT */
+>>           if (num_lut_banks > 1) {
+>>               lbank_val = FIELD_PREP(DISP_GAMMA_BANK_BANK, cur_bank);
+>> +            lbank_val |= data_mode;
+>>               writel(lbank_val, regs + DISP_GAMMA_BANK);
+>>           }
+>> @@ -130,9 +142,15 @@ void mtk_gamma_set_common(struct device *dev, void __iomem 
+>> *regs, struct drm_crt
+>>               hwlut.blue = drm_color_lut_extract(lut[n].blue, lut_bits);
+>>               if (!lut_diff || (i % 2 == 0)) {
+>> -                word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
+>> -                word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, hwlut.green);
+>> -                word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, hwlut.blue);
+>> +                if (lut_bits == 12) {
+>> +                    word[0] = FIELD_PREP(DISP_GAMMA_LUT_12BIT_R, hwlut.red);
+>> +                    word[0] |= FIELD_PREP(DISP_GAMMA_LUT_12BIT_G, hwlut.green);
+>> +                    word[1] = FIELD_PREP(DISP_GAMMA_LUT_12BIT_B, hwlut.blue);
+>> +                } else {
+>> +                    word[0] = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
+>> +                    word[0] |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, hwlut.green);
+>> +                    word[0] |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, hwlut.blue);
+>> +                }
+>>               } else {
+>>                   diff.red = lut[n].red - lut[n - 1].red;
+>>                   diff.red = drm_color_lut_extract(diff.red, lut_bits);
+>> @@ -143,11 +161,19 @@ void mtk_gamma_set_common(struct device *dev, void __iomem 
+>> *regs, struct drm_crt
+>>                   diff.blue = lut[n].blue - lut[n - 1].blue;
+>>                   diff.blue = drm_color_lut_extract(diff.blue, lut_bits);
+>> -                word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, diff.red);
+>> -                word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, diff.green);
+>> -                word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, diff.blue);
+>> +                if (lut_bits == 12) {
+>> +                    word[0] = FIELD_PREP(DISP_GAMMA_LUT_12BIT_R, diff.red);
+>> +                    word[0] |= FIELD_PREP(DISP_GAMMA_LUT_12BIT_G, diff.green);
+>> +                    word[1] = FIELD_PREP(DISP_GAMMA_LUT_12BIT_B, diff.blue);
+>> +                } else {
+>> +                    word[0] = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, diff.red);
+>> +                    word[0] |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, diff.green);
+>> +                    word[0] |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, diff.blue);
+>> +                }
+>>               }
+>> -            writel(word, (lut_base + i * 4));
+>> +            writel(word[0], (lut0_base + i * 4));
+>> +            if (lut_bits == 12)
+>> +                writel(word[1], (lut1_base + i * 4));
 > 
+> ditto
 > 
+>>           }
+>>       }
+>> @@ -271,11 +297,20 @@ static const struct mtk_disp_gamma_data 
+>> mt8183_gamma_driver_data = {
+>>       .lut_size = 512,
+>>   };
+>> +static const struct mtk_disp_gamma_data mt8195_gamma_driver_data = {
+>> +    .lut_bank_size = 256,
+>> +    .lut_bits = 12,
 > 
+> If I'm right, ".lut_bits = 10" will not work properly.
+> 
+>> +    .lut_diff = true,
+>> +    .lut_size = 1024,
+>> +};
+>> +
+>>   static const struct of_device_id mtk_disp_gamma_driver_dt_match[] = {
+>>       { .compatible = "mediatek,mt8173-disp-gamma",
+>>         .data = &mt8173_gamma_driver_data},
+>>       { .compatible = "mediatek,mt8183-disp-gamma",
+>>         .data = &mt8183_gamma_driver_data},
+>> +    { .compatible = "mediatek,mt8195-disp-gamma",
+>> +      .data = &mt8195_gamma_driver_data},
+>>       {},
+>>   };
+>>   MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
+> 
+
 
