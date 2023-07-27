@@ -4,51 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C7F4C04A6A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 16:30:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDB8EC001E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 16:57:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bzuTh1NVs4GWRrmVfFpsJRGIUEzZM0pTAQIqXVT60KU=; b=PsnqI8BKVj24S68vrP1VWZ/uTt
-	HyBXMpvicIhW6F/dckrKl2tRFCMLSP2CsXHffrqmAp/mMl3klLHYvg//SQFK28xixSfUmWQzCaGRR
-	MjSAAd4k71WkFnpYTi6PqPhInBKUl3Qn0cGDnBwuy3KChtEMKEWzW+STxZHRDusQeGmFieZu+VxFA
-	oA4xa94uBB6wuSC9Ogc5a2jsobomJ8EN+NuxPT6t1vijossGs7AkZr+IffP8gEq3RtenM2YitBO2F
-	dQcFWLHObiP2JvDMdjxkEuNNP+6gLiQXjTxhGoC4kvmmdn0fxXolG6HmBA07tZCiDpkBYXlYayxZO
-	+u25TgbQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jU/10Nkq0x+7qlTIxX5UvWSGsecwoSJlB8tqDooA93U=; b=4ZYfq6hrOiKPLnjHeVU0ABHHsd
+	Uxi7M8kmfxkDZ8Xd4+BtaHKmNeSLhxV/gk17d4rDUYd1y2gSDEeVMlN7ZbvZ/hawNMqEFb+J3o6HV
+	6IjhLsam35wAdX5G1zSQ/Xd5n1tUk9Dx108E99leZfsWm4UB7ZKw0DJVizNbwIRya81elf5tiMtDX
+	vHbrv9Ex8HM8KYccTigPDCqcz0Zo5u6QeV+IkrT3df+AjrlZYYAYURQe9d+61zdJDItpFEk45dFLP
+	EFAtv2MNcY0znFnxQwalhlTuJxJj+Vr/4t+kWBQxWu/KqoU1/Si826cRboINoVEZ7Z5Fp1gkqae1S
+	wEA48riQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qP3su-00GasH-2R;
-	Thu, 27 Jul 2023 16:30:40 +0000
-Received: from mx2.hosting.skole.hr ([161.53.165.186] helo=mx.skole.hr)
+	id 1qP4IY-00GyG5-1q;
+	Thu, 27 Jul 2023 16:57:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qP3sf-00GaQz-24;
-	Thu, 27 Jul 2023 16:30:27 +0000
-Received: from mx2.hosting.skole.hr (localhost.localdomain [127.0.0.1])
-	by mx.skole.hr (mx.skole.hr) with ESMTP id 7145383693;
-	Thu, 27 Jul 2023 18:30:11 +0200 (CEST)
-From: =?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje.mihanovic@skole.hr>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: ~postmarketos/upstreaming@lists.sr.ht,
-	phone-devel@vger.kernel.org,
-	afaerber@suse.com,
-	=?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje.mihanovic@skole.hr>
-Subject: [PATCH v2 0/9] Initial Marvell PXA1908 support
-Date: Thu, 27 Jul 2023 18:28:58 +0200
-Message-ID: <20230727162909.6031-1-duje.mihanovic@skole.hr>
-X-Mailer: git-send-email 2.41.0
+	id 1qP4IP-00Gy0m-21;
+	Thu, 27 Jul 2023 16:57:06 +0000
+X-UUID: 69ba1e0a2c9c11ee83ed1395ce914268-20230727
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=jU/10Nkq0x+7qlTIxX5UvWSGsecwoSJlB8tqDooA93U=;
+	b=GTSuQAeQGpnIYSYURUQxQS4GvNHopwyavcp7x3Z6Aoi6/1wmTJ4wixezXjz1qnWDlXe2qOh+M4qktADaaTIyX/2AzS1kDto0bRF8RBBirALqzxz78pQXIX6c2wVtkXhSskSYnHa7V/DVYzol9QPCpRQghdsNJTn38LfO7zk/Gcs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.30,REQID:be12a6c4-5501-4499-902f-2eab6976a7a9,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:70
+X-CID-INFO: VERSION:1.1.30,REQID:be12a6c4-5501-4499-902f-2eab6976a7a9,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:70
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:93728742-d291-4e62-b539-43d7d78362ba,B
+	ulkID:230728004120DZOVXXQB,BulkQuantity:1,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:40,QS:nil,BEC:nil,COL
+	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,
+	TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 69ba1e0a2c9c11ee83ed1395ce914268-20230727
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1964058325; Thu, 27 Jul 2023 09:41:19 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 28 Jul 2023 00:41:16 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 28 Jul 2023 00:41:16 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Jason-ch Chen
+	<jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
+	<shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Nathan Lu
+	<nathan.lu@mediatek.com>
+Subject: [PATCH v7 4/4] drm/mediatek: Add DSI support for mt8188 vdosys0
+Date: Fri, 28 Jul 2023 00:41:14 +0800
+Message-ID: <20230727164114.20638-5-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230727164114.20638-1-jason-jh.lin@mediatek.com>
+References: <20230727164114.20638-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230727_093025_894323_13548628 
-X-CRM114-Status: GOOD (  17.48  )
+X-CRM114-CacheID: sfid-20230727_095701_737995_D50F8711 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,106 +95,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-v1 -> v2:
-- Remove earlycon patch as it's been merged into tty-next
-- Address maintainer comments:
-  - Clarify GPIO regressions on older PXA platforms
-  - Add Fixes tag to commit disabling GPIO pinctrl calls for this SoC
-  - Add missing includes to clock driver
-  - Clock driver uses HZ_PER_MHZ, u32_fract and GENMASK
-  - Dual license clock bindings
-  - Change clock IDs to decimal
-  - Fix underscores in dt node names
-  - Move chosen node to top of board dts
-  - Clean up documentation
-  - Reorder commits
-  - Drop pxa,rev-id
-- Rename muic-i2c to i2c-muic
-- Reword some commits
-- Move framebuffer node to chosen
-- Add aliases for mmc nodes
-- Rebase on v6.5-rc3
+Add DSI as main display output for mt8188 vdosys0.
 
-Hello,
+Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     | 1 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 1 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 1 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c          | 9 +++++++++
+ 4 files changed, 12 insertions(+)
 
-This series adds initial support for the Marvell PXA1908 SoC and
-"samsung,coreprimevelte", a smartphone using the SoC.
-
-USB works and the phone can boot a rootfs from an SD card, but there are
-some warnings in the dmesg:
-
-During SMP initialization:
-[    0.006519] CPU features: SANITY CHECK: Unexpected variation in SYS_CNTFRQ_EL0. Boot CPU: 0x000000018cba80, CPU1: 0x00000000000000
-[    0.006542] CPU features: Unsupported CPU feature variation detected.
-[    0.006589] CPU1: Booted secondary processor 0x0000000001 [0x410fd032]
-[    0.010710] Detected VIPT I-cache on CPU2
-[    0.010716] CPU features: SANITY CHECK: Unexpected variation in SYS_CNTFRQ_EL0. Boot CPU: 0x000000018cba80, CPU2: 0x00000000000000
-[    0.010758] CPU2: Booted secondary processor 0x0000000002 [0x410fd032]
-[    0.014849] Detected VIPT I-cache on CPU3
-[    0.014855] CPU features: SANITY CHECK: Unexpected variation in SYS_CNTFRQ_EL0. Boot CPU: 0x000000018cba80, CPU3: 0x00000000000000
-[    0.014895] CPU3: Booted secondary processor 0x0000000003 [0x410fd032]
-
-SMMU probing fails:
-[    0.101798] arm-smmu c0010000.iommu: probing hardware configuration...
-[    0.101809] arm-smmu c0010000.iommu: SMMUv1 with:
-[    0.101816] arm-smmu c0010000.iommu:         no translation support!
-
-On Samsung's PXA1908 phones, the bootloader does not start the ARM
-system timer, and my temporary solution (which isn't present in this
-series) was to put the code for starting the timer in the clock driver.
-Would this hack be accepted upstream in the form of a platform or
-clocksource driver such as drivers/clocksource/timer-mediatek-cpux.c?
-
-A 3.14 based Marvell tree is available on GitHub
-acorn-marvell/brillo_pxa_kernel, and a Samsung one on GitHub
-CoderCharmander/g361f-kernel.
-
-Andreas Färber attempted to upstream support for this SoC in 2017:
-https://lore.kernel.org/lkml/20170222022929.10540-1-afaerber@suse.de/
-
-Andy Shevchenko (1):
-  clk: mmp: Switch to use struct u32_fract instead of custom one
-
-Duje Mihanović (8):
-  gpio: pxa: disable pinctrl calls for MMP_GPIO
-  gpio: pxa: use dynamic allocation of base
-  dt-bindings: clock: Add Marvell PXA1908 clock bindings
-  clk: mmp: Add Marvell PXA1908 clock driver
-  dt-bindings: marvell: Document PXA1908 SoC
-  arm64: Kconfig.platforms: Add config for Marvell PXA1908 platform
-  arm64: dts: Add DTS for Marvell PXA1908 and samsung,coreprimevelte
-  MAINTAINERS: add myself as Marvell PXA1908 maintainer
-
- .../bindings/arm/marvell/marvell,pxa1908.yaml |  22 ++
- .../bindings/clock/marvell,pxa1908.yaml       |  47 +++
- MAINTAINERS                                   |  10 +
- arch/arm64/Kconfig.platforms                  |  11 +
- arch/arm64/boot/dts/marvell/Makefile          |   3 +
- .../pxa1908-samsung-coreprimevelte.dts        | 329 ++++++++++++++++++
- arch/arm64/boot/dts/marvell/pxa1908.dtsi      | 292 ++++++++++++++++
- drivers/clk/mmp/Makefile                      |   2 +-
- drivers/clk/mmp/clk-frac.c                    |  57 ++-
- drivers/clk/mmp/clk-mmp2.c                    |   6 +-
- drivers/clk/mmp/clk-of-mmp2.c                 |  26 +-
- drivers/clk/mmp/clk-of-pxa168.c               |   4 +-
- drivers/clk/mmp/clk-of-pxa1908.c              | 286 +++++++++++++++
- drivers/clk/mmp/clk-of-pxa1928.c              |   6 +-
- drivers/clk/mmp/clk-of-pxa910.c               |   4 +-
- drivers/clk/mmp/clk-pxa168.c                  |   4 +-
- drivers/clk/mmp/clk-pxa910.c                  |   4 +-
- drivers/clk/mmp/clk.h                         |  10 +-
- drivers/gpio/gpio-pxa.c                       |   2 +
- include/dt-bindings/clock/marvell,pxa1908.h   |  93 +++++
- 20 files changed, 1154 insertions(+), 64 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/arm/marvell/marvell,pxa1908.yaml
- create mode 100644 Documentation/devicetree/bindings/clock/marvell,pxa1908.yaml
- create mode 100644 arch/arm64/boot/dts/marvell/pxa1908-samsung-coreprimevelte.dts
- create mode 100644 arch/arm64/boot/dts/marvell/pxa1908.dtsi
- create mode 100644 drivers/clk/mmp/clk-of-pxa1908.c
- create mode 100644 include/dt-bindings/clock/marvell,pxa1908.h
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index 5f07037670e9..fdaa21b6a9da 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -48,6 +48,7 @@ unsigned int mtk_dpi_encoder_index(struct device *dev);
+ 
+ void mtk_dsi_ddp_start(struct device *dev);
+ void mtk_dsi_ddp_stop(struct device *dev);
++unsigned int mtk_dsi_encoder_index(struct device *dev);
+ 
+ int mtk_gamma_clk_enable(struct device *dev);
+ void mtk_gamma_clk_disable(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index bc7b0a0c20db..e6a7a0b9de6c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -318,6 +318,7 @@ static const struct mtk_ddp_comp_funcs ddp_dsc = {
+ static const struct mtk_ddp_comp_funcs ddp_dsi = {
+ 	.start = mtk_dsi_ddp_start,
+ 	.stop = mtk_dsi_ddp_stop,
++	.encoder_index = mtk_dsi_encoder_index,
+ };
+ 
+ static const struct mtk_ddp_comp_funcs ddp_gamma = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index ecd113f9908c..9b7ca8d35f71 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -189,6 +189,7 @@ static const unsigned int mt8188_mtk_ddp_main[] = {
+ 
+ static const struct mtk_drm_route mt8188_mtk_ddp_main_routes[] = {
+ 	{0, DDP_COMPONENT_DP_INTF0},
++	{0, DDP_COMPONENT_DSI0},
+ };
+ 
+ static const unsigned int mt8192_mtk_ddp_main[] = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 7d5250351193..62d5362916a5 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -865,6 +865,15 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+ 	return ret;
+ }
+ 
++unsigned int mtk_dsi_encoder_index(struct device *dev)
++{
++	struct mtk_dsi *dsi = dev_get_drvdata(dev);
++	unsigned int encoder_index = drm_encoder_index(&dsi->encoder);
++
++	dev_dbg(dev, "encoder index:%d", encoder_index);
++	return encoder_index;
++}
++
+ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
+ {
+ 	int ret;
 -- 
-2.41.0
-
+2.18.0
 
 
