@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7059C0015E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 08:00:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F34EDC0015E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 08:00:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FgfBAzQoHFTaH2qCFD7VJQbtWH4Cthq+FXUmtuZGzHk=; b=OK2x2xsYMqkGUfTOg+SUQagXKG
-	BmF6GwOG8zMTlVcXSrvriMjMlWzKEutSIQ9SZKkCB4eEcieQ1a49giGsLR1Z/AcRobuUp4vvywHuT
-	lX8hnKCQWcwi3zj0Veu0AYpRWi+1PuRYHzCEyiExnCHR3HpgXH6wSHBtXgBzaRd3NfzwJn2qGW+oQ
-	zBGFZLSaE+tWVOjAb2sQqlEpb7/0J4ohGGoIHT3Slx9nYjSwsj70DPyx5mBI0k+H5yJ2yXSldpvz2
-	5tbDyzGbPrh5LlSOEij9HUo+xJ6FnHASw0JS8NyfB2Ab8CLE0j8kqbhL6cwaed/xLlRgQt6SYo8aP
-	Amj0yf5g==;
+	bh=mgs9/vfnXB+UqBMY5BF/kprRbaIQpOC+n1Cm3gcu/rA=; b=zm1H+hJGLyc4KWnhxBmGNi+R8D
+	PMvqFs1oNtKuUmT3wO/a5CDjJiWxxfROozDaPKJKUKw2TogKsmqTmjiCurfXirEKnA5YdDQHi3xWJ
+	1dsfZTCc5iMqLN92k7bd26jkQ8H2XNuRbvwsJvq7BJLu5G4hIjr/QSDJ3qFN6FnayPlXxgJgPkXNn
+	f5FMP+GwP49m3IMZvx1Ixm3nNE1+HzuneIZKtp8NpzI+SUSDSx6hkA+FFRQUvKO7/NnPUe2wCiRFD
+	XwMVRCVyS5aSBy78O6bTtdaQKIYi7KA6vybzjDyNqqjEqfEA8g1SllSSNI30lMFdvEVIbts+ogz7E
+	uIkSnQ0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOvvK-00CX1i-1j;
-	Thu, 27 Jul 2023 08:00:38 +0000
+	id 1qOvvU-00CX5M-2a;
+	Thu, 27 Jul 2023 08:00:48 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOvv5-00CWtR-11;
-	Thu, 27 Jul 2023 08:00:25 +0000
-X-UUID: 9faae5b02c5311ee912e1518a6540028-20230727
+	id 1qOvv6-00CWrM-2A;
+	Thu, 27 Jul 2023 08:00:28 +0000
+X-UUID: 9f3e9f222c5311ee912e1518a6540028-20230727
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FgfBAzQoHFTaH2qCFD7VJQbtWH4Cthq+FXUmtuZGzHk=;
-	b=ThnPt9zCSQkcf0vttgSuPwiJkevJ8xAi0jvgOBvdf623DqQmd/5ZhUu2X6a6pzCROJIpEuXgq8dSkQnE2p18axKJ0LrlO4PnCtPKzm0dmWM5rqASews9rBFumphCv9CWFXEiFByqJ7V9gKBQBUF56Ghhq9j3Lx8qjyqZO0YHtP8=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mgs9/vfnXB+UqBMY5BF/kprRbaIQpOC+n1Cm3gcu/rA=;
+	b=dIel7kD29RHqXGyCdgOR3uppWJdWJ+6kh1oTrzFvZXbLZDE+hOYUS4X1AWE5eSlBGPRmuJD5la2DmE5KlHXxhmlu7VMg4cQnCPP7pU5LfNaiY6tQLjCZ76DYpqZhB+PLQhb2qQzNfaU8t3jOt7jYlK6xRlUJsQVnCJFzWyKAxWE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.30,REQID:f55a44f4-b6ce-4715-88de-e968afc98d06,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:1fcc6f8,CLOUDID:58a862d2-cd77-4e67-bbfd-aa4eaace762f,B
+X-CID-O-INFO: VERSION:1.1.30,REQID:f1b8c1a5-bf57-4f08-82a7-ad28ee80fc57,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:57a862d2-cd77-4e67-bbfd-aa4eaace762f,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 9faae5b02c5311ee912e1518a6540028-20230727
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 9f3e9f222c5311ee912e1518a6540028-20230727
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <yi-de.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 958077912; Thu, 27 Jul 2023 01:00:16 -0700
+	with ESMTP id 1882883833; Thu, 27 Jul 2023 01:00:16 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 27 Jul 2023 16:00:14 +0800
+ 15.2.1118.26; Thu, 27 Jul 2023 16:00:13 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 27 Jul 2023 16:00:14 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 27 Jul 2023 16:00:13 +0800
 From: Yi-De Wu <yi-de.wu@mediatek.com>
 To: Yingshiuan Pan <yingshiuan.pan@mediatek.com>, Ze-Yu Wang
 	<ze-yu.wang@mediatek.com>, Yi-De Wu <yi-de.wu@mediatek.com>, Rob Herring
@@ -70,9 +70,9 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  Chuang <my.chuang@mediatek.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>,
 	PeiLun Suei <peilun.suei@mediatek.com>, Liju Chen
 	<liju-clr.chen@mediatek.com>, Willix Yeh <chi-shen.yeh@mediatek.com>
-Subject: [PATCH v5 05/12] virt: geniezone: Add irqchip support for virtual interrupt injection
-Date: Thu, 27 Jul 2023 15:59:58 +0800
-Message-ID: <20230727080005.14474-6-yi-de.wu@mediatek.com>
+Subject: [PATCH v5 01/12] docs: geniezone: Introduce GenieZone hypervisor
+Date: Thu, 27 Jul 2023 15:59:54 +0800
+Message-ID: <20230727080005.14474-2-yi-de.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230727080005.14474-1-yi-de.wu@mediatek.com>
 References: <20230727080005.14474-1-yi-de.wu@mediatek.com>
@@ -80,8 +80,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230727_010023_359524_494B42D0 
-X-CRM114-Status: GOOD (  29.72  )
+X-CRM114-CacheID: sfid-20230727_010024_720451_18551CE7 
+X-CRM114-Status: GOOD (  18.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,379 +96,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
+From: "Yi-De Wu" <yi-de.wu@mediatek.com>
 
-Enable GenieZone to handle virtual interrupt injection request.
+GenieZone is MediaTek proprietary hypervisor solution, and it is running
+in EL2 stand alone as a type-I hypervisor. It is a pure EL2
+implementation which implies it does not rely any specific host VM, and
+this behavior improves GenieZone's security as it limits its interface.
 
 Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
 Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
 Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202306151938.M7471qHi-lkp@intel.com/
 ---
- arch/arm64/geniezone/Makefile           |   2 +-
- arch/arm64/geniezone/vgic.c             | 108 ++++++++++++++++++++++++
- arch/arm64/include/uapi/asm/gzvm_arch.h |   4 +
- drivers/virt/geniezone/gzvm_common.h    |  12 +++
- drivers/virt/geniezone/gzvm_vm.c        |  82 ++++++++++++++++++
- include/linux/gzvm_drv.h                |   4 +
- include/uapi/linux/gzvm.h               |  66 +++++++++++++++
- 7 files changed, 277 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm64/geniezone/vgic.c
- create mode 100644 drivers/virt/geniezone/gzvm_common.h
+ Documentation/virt/geniezone/introduction.rst | 86 +++++++++++++++++++
+ Documentation/virt/index.rst                  |  1 +
+ MAINTAINERS                                   |  6 ++
+ 3 files changed, 93 insertions(+)
+ create mode 100644 Documentation/virt/geniezone/introduction.rst
 
-diff --git a/arch/arm64/geniezone/Makefile b/arch/arm64/geniezone/Makefile
-index 69b0a4abeab0..0e4f1087f9de 100644
---- a/arch/arm64/geniezone/Makefile
-+++ b/arch/arm64/geniezone/Makefile
-@@ -4,6 +4,6 @@
- #
- include $(srctree)/drivers/virt/geniezone/Makefile
- 
--gzvm-y += vm.o vcpu.o
-+gzvm-y += vm.o vcpu.o vgic.o
- 
- obj-$(CONFIG_MTK_GZVM) += gzvm.o
-diff --git a/arch/arm64/geniezone/vgic.c b/arch/arm64/geniezone/vgic.c
+diff --git a/Documentation/virt/geniezone/introduction.rst b/Documentation/virt/geniezone/introduction.rst
 new file mode 100644
-index 000000000000..3746e0c9e247
+index 000000000000..fb9fa41bcfb8
 --- /dev/null
-+++ b/arch/arm64/geniezone/vgic.c
-@@ -0,0 +1,108 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2023 MediaTek Inc.
-+ */
++++ b/Documentation/virt/geniezone/introduction.rst
+@@ -0,0 +1,86 @@
++.. SPDX-License-Identifier: GPL-2.0
 +
-+#include <linux/irqchip/arm-gic-v3.h>
-+#include <linux/gzvm.h>
-+#include <linux/gzvm_drv.h>
-+#include "gzvm_arch_common.h"
++======================
++GenieZone Introduction
++======================
 +
-+/**
-+ * is_irq_valid() - Check the irq number and irq_type are matched
-+ * @irq:		interrupt number
-+ * @irq_type:		interrupt type
-+ *
-+ * Return:
-+ * true if irq is valid else false.
-+ */
-+static bool is_irq_valid(u32 irq, u32 irq_type)
-+{
-+	switch (irq_type) {
-+	case GZVM_IRQ_TYPE_CPU:
-+		/*  0 ~ 15: SGI */
-+		if (likely(irq <= GZVM_IRQ_CPU_FIQ))
-+			return true;
-+		break;
-+	case GZVM_IRQ_TYPE_PPI:
-+		/* 16 ~ 31: PPI */
-+		if (likely(irq >= GZVM_VGIC_NR_SGIS &&
-+			   irq < GZVM_VGIC_NR_PRIVATE_IRQS))
-+			return true;
-+		break;
-+	case GZVM_IRQ_TYPE_SPI:
-+		/* 32 ~ : SPT */
-+		if (likely(irq >= GZVM_VGIC_NR_PRIVATE_IRQS))
-+			return true;
-+		break;
-+	default:
-+		return false;
-+	}
-+	return false;
-+}
++Overview
++========
++GenieZone hypervisor(gzvm) is a type-1 hypervisor that supports various virtual
++machine types and provides security features such as TEE-like scenarios and
++secure boot. It can create guest VMs for security use cases and has
++virtualization capabilities for both platform and interrupt. Although the
++hypervisor can be booted independently, it requires the assistance of GenieZone
++hypervisor kernel driver(gzvm-ko) to leverage the ability of Linux kernel for
++vCPU scheduling, memory management, inter-VM communication and virtio backend
++support.
 +
-+/**
-+ * gzvm_vgic_inject_irq() - Inject virtual interrupt to a VM
-+ * @gzvm: Pointer to struct gzvm
-+ * @vcpu_idx: vcpu index, only valid if PPI
-+ * @irq_type: Interrupt type
-+ * @irq: irq number
-+ * @level: 1 if true else 0
-+ *
-+ * Return:
-+ * * 0			- Success.
-+ * * Negative		- Failure.
-+ */
-+static int gzvm_vgic_inject_irq(struct gzvm *gzvm, unsigned int vcpu_idx,
-+				u32 irq_type, u32 irq, bool level)
-+{
-+	unsigned long a1 = assemble_vm_vcpu_tuple(gzvm->vm_id, vcpu_idx);
-+	struct arm_smccc_res res;
++Supported Architecture
++======================
++GenieZone now only supports MediaTek ARM64 SoC.
 +
-+	if (!unlikely(is_irq_valid(irq, irq_type)))
-+		return -EINVAL;
++Features
++========
 +
-+	gzvm_hypcall_wrapper(MT_HVC_GZVM_IRQ_LINE, a1, irq, level,
-+			     0, 0, 0, 0, &res);
-+	if (res.a0) {
-+		pr_err("Failed to set IRQ level (%d) to irq#%u on vcpu %d with ret=%d\n",
-+		       level, irq, vcpu_idx, (int)res.a0);
-+		return -EFAULT;
-+	}
++- vCPU Management
 +
-+	return 0;
-+}
++VM manager aims to provide vCPUs on the basis of time sharing on physical CPUs.
++It requires Linux kernel in host VM for vCPU scheduling and VM power management.
 +
-+/**
-+ * gzvm_vgic_inject_spi() - Inject virtual spi interrupt
-+ * @gzvm: Pointer to struct gzvm
-+ * @vcpu_idx: vcpu index
-+ * @spi_irq: This is spi interrupt number (starts from 0 instead of 32)
-+ * @level: 1 if true else 0
-+ *
-+ * Return:
-+ * * 0 if succeed else other negative values indicating each errors
-+ */
-+static int gzvm_vgic_inject_spi(struct gzvm *gzvm, unsigned int vcpu_idx,
-+				u32 spi_irq, bool level)
-+{
-+	return gzvm_vgic_inject_irq(gzvm, 0, GZVM_IRQ_TYPE_SPI,
-+				    spi_irq + GZVM_VGIC_NR_PRIVATE_IRQS,
-+				    level);
-+}
++- Memory Management
 +
-+int gzvm_arch_create_device(u16 vm_id, struct gzvm_create_device *gzvm_dev)
-+{
-+	struct arm_smccc_res res;
++Direct use of physical memory from VMs is forbidden and designed to be dictated
++to the privilege models managed by GenieZone hypervisor for security reason.
++With the help of gzvm-ko, the hypervisor would be able to manipulate memory as
++objects.
 +
-+	return gzvm_hypcall_wrapper(MT_HVC_GZVM_CREATE_DEVICE, vm_id,
-+				    virt_to_phys(gzvm_dev), 0, 0, 0, 0, 0,
-+				    &res);
-+}
++- Virtual Platform
 +
-+int gzvm_arch_inject_irq(struct gzvm *gzvm, unsigned int vcpu_idx,
-+			 u32 irq_type, u32 irq, bool level)
-+{
-+	/* default use spi */
-+	return gzvm_vgic_inject_spi(gzvm, vcpu_idx, irq, level);
-+}
-diff --git a/arch/arm64/include/uapi/asm/gzvm_arch.h b/arch/arm64/include/uapi/asm/gzvm_arch.h
-index e56b4700e07e..acfe9be0f849 100644
---- a/arch/arm64/include/uapi/asm/gzvm_arch.h
-+++ b/arch/arm64/include/uapi/asm/gzvm_arch.h
-@@ -47,4 +47,8 @@
- #define GZVM_REG_ARM_CORE_REG(name)	\
- 	(offsetof(struct gzvm_regs, name) / sizeof(__u32))
++We manage to emulate a virtual mobile platform for guest OS running on guest
++VM. The platform supports various architecture-defined devices, such as
++virtual arch timer, GIC, MMIO, PSCI, and exception watching...etc.
++
++- Inter-VM Communication
++
++Communication among guest VMs was provided mainly on RPC. More communication
++mechanisms were to be provided in the future based on VirtIO-vsock.
++
++- Device Virtualization
++
++The solution is provided using the well-known VirtIO. The gzvm-ko would
++redirect MMIO traps back to VMM where the virtual devices are mostly emulated.
++Ioeventfd is implemented using eventfd for signaling host VM that some IO
++events in guest VMs need to be processed.
++
++- Interrupt virtualization
++
++All Interrupts during some guest VMs running would be handled by GenieZone
++hypervisor with the help of gzvm-ko, both virtual and physical ones. In case
++there's no guest VM running out there, physical interrupts would be handled by
++host VM directly for performance reason. Irqfd is also implemented using
++eventfd for accepting vIRQ requests in gzvm-ko.
++
++Platform architecture component
++===============================
++
++- vm
++
++The vm component is responsible for setting up the capability and memory
++management for the protected VMs. The capability is mainly about the lifecycle
++control and boot context initialization. And the memory management is highly
++integrated with ARM 2-stage translation tables to convert VA to IPA to PA under
++proper security measures required by protected VMs.
++
++- vcpu
++
++The vcpu component is the core of virtualizing aarch64 physical CPU runnable,
++and it controls the vCPU lifecycle including creating, running and destroying.
++With self-defined exit handler, the vm component would be able to act
++accordingly before terminated.
++
++- vgic
++
++The vgic component exposes control interfaces to Linux kernel via irqchip, and
++we intend to support all SPI, PPI, and SGI. When it comes to virtual
++interrupts, the GenieZone hypervisor would write to list registers and trigger
++vIRQ injection in guest VMs via GIC.
+diff --git a/Documentation/virt/index.rst b/Documentation/virt/index.rst
+index 7fb55ae08598..cf12444db336 100644
+--- a/Documentation/virt/index.rst
++++ b/Documentation/virt/index.rst
+@@ -16,6 +16,7 @@ Virtualization Support
+    coco/sev-guest
+    coco/tdx-guest
+    hyperv/index
++   geniezone/introduction
  
-+#define GZVM_VGIC_NR_SGIS		16
-+#define GZVM_VGIC_NR_PPIS		16
-+#define GZVM_VGIC_NR_PRIVATE_IRQS	(GZVM_VGIC_NR_SGIS + GZVM_VGIC_NR_PPIS)
-+
- #endif /* __GZVM_ARCH_H__ */
-diff --git a/drivers/virt/geniezone/gzvm_common.h b/drivers/virt/geniezone/gzvm_common.h
-new file mode 100644
-index 000000000000..d0e39ded79e6
---- /dev/null
-+++ b/drivers/virt/geniezone/gzvm_common.h
-@@ -0,0 +1,12 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2023 MediaTek Inc.
-+ */
-+
-+#ifndef __GZ_COMMON_H__
-+#define __GZ_COMMON_H__
-+
-+int gzvm_irqchip_inject_irq(struct gzvm *gzvm, unsigned int vcpu_idx,
-+			    u32 irq_type, u32 irq, bool level);
-+
-+#endif /* __GZVM_COMMON_H__ */
-diff --git a/drivers/virt/geniezone/gzvm_vm.c b/drivers/virt/geniezone/gzvm_vm.c
-index aea99d050653..b1397180cd02 100644
---- a/drivers/virt/geniezone/gzvm_vm.c
-+++ b/drivers/virt/geniezone/gzvm_vm.c
-@@ -11,6 +11,7 @@
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/gzvm_drv.h>
-+#include "gzvm_common.h"
+ .. only:: html and subproject
  
- static DEFINE_MUTEX(gzvm_list_lock);
- static LIST_HEAD(gzvm_list);
-@@ -260,6 +261,73 @@ gzvm_vm_ioctl_set_memory_region(struct gzvm *gzvm,
- 	return register_memslot_addr_range(gzvm, memslot);
- }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index ae1fd58fc64c..a81903c029f2 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -8741,6 +8741,12 @@ F:	include/vdso/
+ F:	kernel/time/vsyscall.c
+ F:	lib/vdso/
  
-+int gzvm_irqchip_inject_irq(struct gzvm *gzvm, unsigned int vcpu_idx,
-+			    u32 irq_type, u32 irq, bool level)
-+{
-+	return gzvm_arch_inject_irq(gzvm, vcpu_idx, irq_type, irq, level);
-+}
++GENIEZONE HYPERVISOR DRIVER
++M:	Yingshiuan Pan <yingshiuan.pan@mediatek.com>
++M:	Ze-Yu Wang <ze-yu.wang@mediatek.com>
++M:	Yi-De Wu <yi-de.wu@mediatek.com>
++F:	Documentation/virt/geniezone/
 +
-+static int gzvm_vm_ioctl_irq_line(struct gzvm *gzvm,
-+				  struct gzvm_irq_level *irq_level)
-+{
-+	u32 irq = irq_level->irq;
-+	u32 irq_type, vcpu_idx, vcpu2_idx, irq_num;
-+	bool level = irq_level->level;
-+
-+	irq_type = FIELD_GET(GZVM_IRQ_LINE_TYPE, irq);
-+	vcpu_idx = FIELD_GET(GZVM_IRQ_LINE_VCPU, irq);
-+	vcpu2_idx = FIELD_GET(GZVM_IRQ_LINE_VCPU2, irq) * (GZVM_IRQ_VCPU_MASK + 1);
-+	irq_num = FIELD_GET(GZVM_IRQ_LINE_NUM, irq);
-+
-+	return gzvm_irqchip_inject_irq(gzvm, vcpu_idx + vcpu2_idx, irq_type, irq_num,
-+				       level);
-+}
-+
-+static int gzvm_vm_ioctl_create_device(struct gzvm *gzvm, void __user *argp)
-+{
-+	struct gzvm_create_device *gzvm_dev;
-+	void *dev_data = NULL;
-+	int ret;
-+
-+	gzvm_dev = (struct gzvm_create_device *)alloc_pages_exact(PAGE_SIZE,
-+								  GFP_KERNEL);
-+	if (!gzvm_dev)
-+		return -ENOMEM;
-+	if (copy_from_user(gzvm_dev, argp, sizeof(*gzvm_dev))) {
-+		ret = -EFAULT;
-+		goto err_free_dev;
-+	}
-+
-+	if (gzvm_dev->attr_addr != 0 && gzvm_dev->attr_size != 0) {
-+		size_t attr_size = gzvm_dev->attr_size;
-+		void __user *attr_addr = (void __user *)gzvm_dev->attr_addr;
-+
-+		/* Size of device specific data should not be over a page. */
-+		if (attr_size > PAGE_SIZE)
-+			return -EINVAL;
-+
-+		dev_data = alloc_pages_exact(attr_size, GFP_KERNEL);
-+		if (!dev_data) {
-+			ret = -ENOMEM;
-+			goto err_free_dev;
-+		}
-+
-+		if (copy_from_user(dev_data, attr_addr, attr_size)) {
-+			ret = -EFAULT;
-+			goto err_free_dev_data;
-+		}
-+		gzvm_dev->attr_addr = virt_to_phys(dev_data);
-+	}
-+
-+	ret = gzvm_arch_create_device(gzvm->vm_id, gzvm_dev);
-+err_free_dev_data:
-+	if (dev_data)
-+		free_pages_exact(dev_data, 0);
-+err_free_dev:
-+	free_pages_exact(gzvm_dev, 0);
-+	return ret;
-+}
-+
- static int gzvm_vm_ioctl_enable_cap(struct gzvm *gzvm,
- 				    struct gzvm_enable_cap *cap,
- 				    void __user *argp)
-@@ -294,6 +362,20 @@ static long gzvm_vm_ioctl(struct file *filp, unsigned int ioctl,
- 		ret = gzvm_vm_ioctl_set_memory_region(gzvm, &userspace_mem);
- 		break;
- 	}
-+	case GZVM_IRQ_LINE: {
-+		struct gzvm_irq_level irq_event;
-+
-+		if (copy_from_user(&irq_event, argp, sizeof(irq_event))) {
-+			ret = -EFAULT;
-+			goto out;
-+		}
-+		ret = gzvm_vm_ioctl_irq_line(gzvm, &irq_event);
-+		break;
-+	}
-+	case GZVM_CREATE_DEVICE: {
-+		ret = gzvm_vm_ioctl_create_device(gzvm, argp);
-+		break;
-+	}
- 	case GZVM_ENABLE_CAP: {
- 		struct gzvm_enable_cap cap;
- 
-diff --git a/include/linux/gzvm_drv.h b/include/linux/gzvm_drv.h
-index c42edb4345cc..d86885d46195 100644
---- a/include/linux/gzvm_drv.h
-+++ b/include/linux/gzvm_drv.h
-@@ -108,4 +108,8 @@ int gzvm_arch_vcpu_run(struct gzvm_vcpu *vcpu, __u64 *exit_reason);
- int gzvm_arch_destroy_vcpu(u16 vm_id, int vcpuid);
- int gzvm_arch_inform_exit(u16 vm_id);
- 
-+int gzvm_arch_create_device(u16 vm_id, struct gzvm_create_device *gzvm_dev);
-+int gzvm_arch_inject_irq(struct gzvm *gzvm, unsigned int vcpu_idx,
-+			 u32 irq_type, u32 irq, bool level);
-+
- #endif /* __GZVM_DRV_H__ */
-diff --git a/include/uapi/linux/gzvm.h b/include/uapi/linux/gzvm.h
-index 4814c82b0dff..fb019d232a98 100644
---- a/include/uapi/linux/gzvm.h
-+++ b/include/uapi/linux/gzvm.h
-@@ -64,6 +64,72 @@ struct gzvm_userspace_memory_region {
- #define GZVM_SET_USER_MEMORY_REGION _IOW(GZVM_IOC_MAGIC, 0x46, \
- 					 struct gzvm_userspace_memory_region)
- 
-+/* for GZVM_IRQ_LINE, irq field index values */
-+#define GZVM_IRQ_VCPU_MASK		0xff
-+#define GZVM_IRQ_LINE_TYPE		GENMASK(27, 24)
-+#define GZVM_IRQ_LINE_VCPU		GENMASK(23, 16)
-+#define GZVM_IRQ_LINE_VCPU2		GENMASK(31, 28)
-+#define GZVM_IRQ_LINE_NUM		GENMASK(15, 0)
-+
-+/* irq_type field */
-+#define GZVM_IRQ_TYPE_CPU		0
-+#define GZVM_IRQ_TYPE_SPI		1
-+#define GZVM_IRQ_TYPE_PPI		2
-+
-+/* out-of-kernel GIC cpu interrupt injection irq_number field */
-+#define GZVM_IRQ_CPU_IRQ		0
-+#define GZVM_IRQ_CPU_FIQ		1
-+
-+struct gzvm_irq_level {
-+	union {
-+		__u32 irq;
-+		__s32 status;
-+	};
-+	__u32 level;
-+};
-+
-+#define GZVM_IRQ_LINE              _IOW(GZVM_IOC_MAGIC,  0x61, \
-+					struct gzvm_irq_level)
-+
-+enum gzvm_device_type {
-+	GZVM_DEV_TYPE_ARM_VGIC_V3_DIST = 0,
-+	GZVM_DEV_TYPE_ARM_VGIC_V3_REDIST = 1,
-+	GZVM_DEV_TYPE_MAX,
-+};
-+
-+/**
-+ * struct gzvm_create_device: For GZVM_CREATE_DEVICE.
-+ * @dev_type: Device type.
-+ * @id: Device id.
-+ * @flags: Bypass to hypervisor to handle them and these are flags of virtual
-+ *         devices.
-+ * @dev_addr: Device ipa address in VM's view.
-+ * @dev_reg_size: Device register range size.
-+ * @attr_addr: If user -> kernel, this is user virtual address of device
-+ *             specific attributes (if needed). If kernel->hypervisor,
-+ *             this is ipa.
-+ * @attr_size: This attr_size is the buffer size in bytes of each attribute
-+ *             needed from various devices. The attribute here refers to the
-+ *             additional data passed from VMM(e.g. Crosvm) to GenieZone
-+ *             hypervisor when virtual devices were to be created. Thus,
-+ *             we need attr_addr and attr_size in the gzvm_create_device
-+ *             structure to keep track of the attribute mentioned.
-+ *
-+ * Store information needed to create device.
-+ */
-+struct gzvm_create_device {
-+	__u32 dev_type;
-+	__u32 id;
-+	__u64 flags;
-+	__u64 dev_addr;
-+	__u64 dev_reg_size;
-+	__u64 attr_addr;
-+	__u64 attr_size;
-+};
-+
-+#define GZVM_CREATE_DEVICE	   _IOWR(GZVM_IOC_MAGIC,  0xe0, \
-+					struct gzvm_create_device)
-+
- /*
-  * ioctls for vcpu fds
-  */
+ GENWQE (IBM Generic Workqueue Card)
+ M:	Frank Haverkamp <haver@linux.ibm.com>
+ S:	Supported
 -- 
 2.18.0
 
