@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D9B2C001DC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 09:38:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8AC8C001DC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 09:46:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3uc0Curgmt+VrULCExmwJ/YPmVc0tCAHeLhIS1yceX0=; b=P04UyGqhI4jei++L5lNxr+L79E
-	K7f494XxTtXaNXaHg4YQjovixZ0/4WNMTbV/iFLN1gUHsavYR1wyYPZWVeamuWmS7IB/0ngdr28js
-	fFKt3coTIUiCvV+TlSeOkbqtgDk8vojZmZsrooOMqfOKDHAhzeUjRvLcJloeafd7lZLBUwcwVBikK
-	Tpa+bUXa9PshcplCTcooH1afsW5QvZ0nE2JWZsGvPLMK2QYaJY9csulUJclS76xDV+kT/fsLzDNyN
-	m8CozDA+0cYgT6A+pImazKq3PXc2bxGScNcjf5VFmAXZKAaiEc+4XJdnsVn+fKiq6+eD72YCcO1BP
-	6yj4fTOQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IEHsRtrQm5HmYwF6hPWbEqTUtQqoXTTSmPIU8W6kfGs=; b=DF0FZmbbIot2gzoh6NKvwtjpY+
+	7vT8U4M7+t+56xxkv1N5BFxo5S9yld3EuUUmSlMGcB6eZ7znEe4i0egtREU4G6WaakAgATaiL/EU+
+	+cBO/dZRD0bIMQ38nAdZCLHY9XVLHRJGQNMj53lNa79TJyKmLuYRw9aKyQWwOuAkmwFoshxesZElu
+	wlioz24pXNXlbOyEp1+2NzNf8LeSGtf4HT/rsEcqoF5D0TwSibXpFBXIo136O6mf3xcREc4KHUJCN
+	oWAzqAbpAqWerQ9J9LTM82GbfBg8dTgayXMR7qaN41kRYanWUQm/TdxGZYufpEBT4S3/0CfqDRVgp
+	YmEKeuhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOxRZ-00Cr2n-06;
-	Thu, 27 Jul 2023 09:38:01 +0000
+	id 1qOxZz-00Cry7-2G;
+	Thu, 27 Jul 2023 09:46:43 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOxRV-00Cr2H-0V
-	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Jul 2023 09:37:59 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1qOxZv-00Crvq-2R;
+	Thu, 27 Jul 2023 09:46:41 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 780966607038;
-	Thu, 27 Jul 2023 10:37:55 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 91674660702D;
+	Thu, 27 Jul 2023 10:46:37 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1690450675;
-	bh=10mp7xD7Cx1D3lv25ctWipvmwRGE+3207Gw4RhcXQzE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KwGRUSuQxGQlU2yv2sqfBKZFWPTU+O353Ms2oGNUkS8cEF1e/XcogqaxvB+CPv6Bg
-	 9sloWG7DSzjnPtGH/caSjE2Y0FDfon4bWCPfO13tsjIhP17E5ovAaqteAT/b21M+ed
-	 rrqxyz98Nv0wWy+bYP3bTWCt7DMv+Q7GCktVS94oNUpr9EkyYHPcWjZ/4qbvxZksJ6
-	 8zHrkXeNBQBezE0zFHBsX3EwkPlle+au0npQXE9xR03e+tCDkq6vzehpkgKsV+dfSn
-	 PwUsTBOHC2ZKNE+caml+2kAoBd1jJZ8qJ841uKpTfjeWKtNci2MLgXPFAVqx7o49AE
-	 KFdUGc9ip4qHg==
-Message-ID: <9334a56f-77d1-f062-08d9-33a6c6136fdc@collabora.com>
-Date: Thu, 27 Jul 2023 11:37:52 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH RESEND] drm/mediatek: Add valid modifier check
-Content-Language: en-US
-To: Justin Green <greenjustin@chromium.org>,
- Daniel Stone <daniel@fooishbar.org>
-Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
- chunkuang.hu@kernel.org, jason-jh.lin@mediatek.com, justin.yeh@mediatek.com,
- wenst@chromium.org
-References: <20230724175839.675911-1-greenjustin@chromium.org>
- <CAPj87rNJa3CNWekovSMjgfGyduJ5BZtcqAumKfDdooW7Ocs9zQ@mail.gmail.com>
- <CAHC42Re3LoQQOzPww7SbYTEK2MLHwtkitvEtV6uBnkQNST30tQ@mail.gmail.com>
+	s=mail; t=1690451198;
+	bh=IH57ZyNRagERKQ5+mMux4tgPKLAjXI0mE3TZqze6Yq4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=QZuEjo6ntXZiJRNm2OP4NKTzNdBA7bLUEWW8uvpCQR+rbQRgDHl5XNxP4dgLHM+JL
+	 il/7ORKbFzctrh34rnL+xD9EjQ6yHLajfwsVLIjvymwUs+mymYYpdkY40VyNH9Aq78
+	 iui4Sf562cqO67VDSmdtI/JbvwyOrYwRSj7kves09hkA6V0R4IpHVGk0VFql4kxL2c
+	 xTBIlYzRwVUcPlmvINswuTLZ6N7UC4+Ua749RBRj1fMigiRj4gqBQFHkwokXpSGPV9
+	 Zjz3D1bR72SEKEPT1Tk3sG2vlqqNJaF5v+vQt3RyCypaH7hwfWUIz4I/xbQXMyN2e/
+	 /XIjDlBtiHp1w==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAHC42Re3LoQQOzPww7SbYTEK2MLHwtkitvEtV6uBnkQNST30tQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	wenst@chromium.org,
+	kernel@collabora.com,
+	ehristev@collabora.com
+Subject: [PATCH RESEND v6 00/11] MediaTek DDP GAMMA - 12-bit LUT support
+Date: Thu, 27 Jul 2023 11:46:22 +0200
+Message-ID: <20230727094633.22505-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.41.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230727_023757_342751_70FD946C 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20230727_024639_946469_F4BDADE5 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,38 +80,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/07/23 21:44, Justin Green ha scritto:
->> Would it make more sense to commmonize function mtk_plane_format_mod_supported()
->> and call that one here instead?
-> I had considered that, but mtk_plane_format_mod_supported() is
-> required to take a drm_plane as a parameter in order to conform to the
-> type signature defined in drm_plane_funcs, but
-> mtk_drm_mode_fb_create() does not have a drm_plane to provide, since
-> the framebuffer is created later in the function. Technically we don't
-> actually use the drm_plane in the implementation of
-> mtk_plane_format_mod_supported() today, so we could just use a null
-> pointer, but I figured we may one day need to add per-plane logic.
-> 
+Changes in RESEND-v6:
+ - None.
 
-My suggestion was not to use that function as-is, but rather to add a helper like
+Changes in v6:
+ - Fixed smatch warning in patch 11/11, ref.:
+   https://lore.kernel.org/all/202306101458.lRXHEE0Z-lkp@intel.com/
 
-bool mtk_format_modifier_supported(u32 format, u32 modifier) { ... }
+Changes in v5:
+ - Removed incorrect comment on default LUT size and bits
+ - Removed useless check for num_lut_banks
+ - Added comment about CMDQ implementation on patch 5
+ - Evaluated passing lut size/bits from AAL, idea discarded as
+   the implementation would be rather tricky while bringing no
+   benefits.
 
-...so that a per-plane logic in mtk_drm_plane can be easily added, because...
+Changes in v4:
+ - Fixed assignment typo appeared in v3
 
-static bool mtk_plane_format_mod_supported(struct drm_plane *plane,
-					   u32 format, u32 modifier)
-{
-	return mtk_format_modifier_supported(format, modifier);
-}
+Changes in v3:
+ - Fixed issues due to variables renaming during cleanup (oops)
+ - This is actually the right series, since v2 was taken from the
+   wrong kernel tree.... :-)
 
-so apart from that, is there any other reason to not do that? :-)
+Changes in v2:
+ - Added explicit inclusion of linux/bitfield.h in patch [06/11]
 
-Regards,
-Angelo
+This series adds support for GAMMA IP requiring and/or supporting
+a 12-bits LUT using a slightly different register layout and programming
+sequence for multiple LUT banks: this IP version is currently found
+on a number of SoCs, not only including the Chromebook/IoT oriented
+Kompanio 1200/1380 MT8195/MT8195T, but also Smartphone chips such as
+the Dimensity 9200 (MT6985) and others.
 
->> This is not DRM_FORMAT_MOD_INVALID. Please either explicitly compare against INVALID if that's what you meant, or against LINEAR if that's what you meant, or both.
-> Ack, I meant to use LINEAR. Will update for the next version of the patch.
+This series was tested on MT8195, MT8192, MT8173, MT6795:
+ * MT6795, MT8192, MT8173: No regression, works fine.
+ * MT8195: Color correction is finally working!
 
+AngeloGioacchino Del Regno (10):
+  drm/mediatek: gamma: Reduce indentation in mtk_gamma_set_common()
+  drm/mediatek: gamma: Support SoC specific LUT size
+  drm/mediatek: gamma: Improve and simplify HW LUT calculation
+  drm/mediatek: gamma: Enable the Gamma LUT table only after programming
+  drm/mediatek: gamma: Use bitfield macros
+  drm/mediatek: gamma: Support specifying number of bits per LUT
+    component
+  drm/mediatek: gamma: Support multi-bank gamma LUT
+  drm/mediatek: gamma: Add support for 12-bit LUT and MT8195
+  drm/mediatek: gamma: Make sure relay mode is disabled
+  drm/mediatek: gamma: Program gamma LUT type for descending or rising
+
+Jason-JH.Lin (1):
+  drm/mediatek: gamma: Adjust mtk_drm_gamma_set_common parameters
+
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c     |   2 +-
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   3 +-
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c   | 193 ++++++++++++++++----
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |   4 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |   1 -
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |   1 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   9 +
+ 7 files changed, 177 insertions(+), 36 deletions(-)
+
+-- 
+2.40.1
 
 
