@@ -4,93 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 802FDC001E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 15:18:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62B9FC04A94
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 15:53:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9aqdGX9nA2iQX2zweZK++in7R/avXw9W2bX/HtVPsxU=; b=jCiQRBb7kwjCG0C2qURnTyL8Dl
-	HRfxCfJCCvLEfgoZV//pGx/y5On+1Si26/Vs+2jMtkVnkMx+4856D1MUj6bZJ0Vpoau0luIl9/pov
-	1qNI3eHOiJyu574zhnGL/PxyZF/2yx0wYhWS225Zfu9NZ1sVE39RkMgfrnYb/DOkvT+ZoeHA4+Dqn
-	8mdlAeBf/UKW1Ftp5MylQ1Pws5wKLiwjA9Zt0XrXBGuUsRy7T4TN3xCwZPBoX7lvNYQAHY5Ymbhar
-	raLj83AfISNVzG0V5LSApuhPP2l2nsb8rqokicleFiopZgzA//5mc4ooHC7XA7Iia4/iaAkO4F/7S
-	374KRrEQ==;
+	bh=B+9U4Beprb9pu1uU4Mx83trCWS4lhvPi+RBhwLYwj+g=; b=fOtQAtiIioHyQVoylU/kz4kwE2
+	MGv67Hbq8K0cd+iYXKONQilGC7yDWK5zB5IYUUjuQpFJbSvswWKYuMgHdjTfiefll8OpAWV0zKj4G
+	VDzbs1kxKVSJp6H8rQu3QgP+pi6S3Uz+xG5Orsy/KVg8hauOF5MVhDHvVQyt1nl2fjvjw/3iAtTiW
+	dPeJ1+usI6Q26b1AbSFgXfmcb6VDapIVeUj3v6x+XrMRxGltGMC5BcXaqoKdzOuGSS9dY+muB47aj
+	8cLKKXW8Tb63Z6NCN10OMG2RpNmz3bNeK1XRP4xaw6LnfzHstP/LDInwlQPcRi4/ZBl35IexANvyG
+	L6p2wqkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qP2kp-00FllM-2e;
-	Thu, 27 Jul 2023 15:18:16 +0000
-Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
+	id 1qP3IZ-00G9tk-0Y;
+	Thu, 27 Jul 2023 15:53:07 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qP2kj-00FlaC-1x;
-	Thu, 27 Jul 2023 15:18:11 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 998C9C0006;
-	Thu, 27 Jul 2023 15:17:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1690471084;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9aqdGX9nA2iQX2zweZK++in7R/avXw9W2bX/HtVPsxU=;
-	b=RJKiI6QqwOneXyDOlHI7qbB9SyJiAEERWGqIsT0b0+gNi9GTgzZzaUkE+BE7gvc8+kuQdR
-	QWijR44Pcc8xVjqfnxBToFbBJ2wPbk4r6WOIoJtjY0E+StOeLVOD3syqjRgUoSxoFIJmRZ
-	xaK8qo0O240qPLXk0xh/K7Dd3pj9NDjtQ7v2369bc4LXLvt1R9iVO/oRVkKBb9PguVhtKC
-	4sa9pJls3QpfcVq2mav+OR2b6Qg6msajS+eN6b7WwzjlPV8w5ZavHal9WfWUZEGwH8GpM7
-	W0gkJHi4IN2im5i/LVAOqcTuq9ihYtVyFT5QUd8AzSelfeP5NCLRty5uapSXBA==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Rob Herring <robh@kernel.org>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Han Xu <han.xu@nxp.com>,
-	Harvey Hunt <harveyhuntnexus@gmail.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Liang Yang <liang.yang@amlogic.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	id 1qP3IV-00G9p0-0r
+	for linux-mediatek@lists.infradead.org;
+	Thu, 27 Jul 2023 15:53:05 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-1b89d47ffb6so7049585ad.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jul 2023 08:53:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1690473182; x=1691077982;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=B+9U4Beprb9pu1uU4Mx83trCWS4lhvPi+RBhwLYwj+g=;
+        b=WlWFNqNPyREpMe5W8ha9YLRAYUAVHVCcv9Lk68+jM9LBf9M5bKGSw3Lou098CcfPkB
+         mhNx9ShsdckTOhyZT5le4i6VwwwKJol7ks+8eXPXVkc3SdtHXMeObhwrB5YSeboQNYhf
+         T/+whbs3KyR6OmlvUUZnuSxVVvxBaOv0hlMwY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1690473182; x=1691077982;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=B+9U4Beprb9pu1uU4Mx83trCWS4lhvPi+RBhwLYwj+g=;
+        b=MrC0zSeYZxAEtfezeWgDj5lofHEc4c8Zw2toSHjygSCSASYbKz7gOVo+vhdNrxlabl
+         D6ML7MmILRlBWH1IMsdd8pgattJT8WO28Iinf8xR+F41zqzT0vGS152p0Fu/AFGZJf3t
+         oxwUovLoyOWhcI15NP5Rk60Ghl/CgzH6W7DSjLhEJ14wm4ipS9oW+WfkvtVaCGbowbEq
+         3Qu/R7y4/k16omw77WXty5Mcy/Hr6i1DlYFVHGB0UiJQ7oj3g5V8V3lzojM3gh98ujHi
+         e4/PGltR3y1pf6prH8g7lOda3Blg15h0R0rVsTXBmIhk4r/wfKUmnDcbLoItxfXp4KJF
+         94/w==
+X-Gm-Message-State: ABy/qLZwKuYi1ODAHIwhPf6L1ebfl1scyaU+xQgy0YYJFe0bkmIMC6zX
+	58wRkMy9wlRpeTnOkv8N5xEyXw==
+X-Google-Smtp-Source: APBJJlEbz+18hZOehpOx2Lg90Kn5OMIjVJqD6tiWpkUMlrFwOey76fAAMQaSy+GlhuNZNkNRKASRhA==
+X-Received: by 2002:a17:902:e885:b0:1bb:83cd:ad8b with SMTP id w5-20020a170902e88500b001bb83cdad8bmr5009270plg.30.1690473181766;
+        Thu, 27 Jul 2023 08:53:01 -0700 (PDT)
+Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net. [198.0.35.241])
+        by smtp.gmail.com with ESMTPSA id t8-20020a170902bc4800b001a6a6169d45sm1802462plz.168.2023.07.27.08.52.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Jul 2023 08:52:59 -0700 (PDT)
+From: Kees Cook <keescook@chromium.org>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Azeem Shaikh <azeemshaikh38@gmail.com>
+Cc: Kees Cook <keescook@chromium.org>,
+	linux-hardening@vger.kernel.org,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Kalle Valo <kvalo@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Vladimir Zapolskiy <vz@mleia.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Pratyush Yadav <pratyush@kernel.org>,
-	Michael Walle <michael@walle.cc>
-Cc: devicetree@vger.kernel.org,
-	linux-mtd@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mips@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH] mtd: Explicitly include correct DT includes
-Date: Thu, 27 Jul 2023 17:17:56 +0200
-Message-Id: <20230727151757.586430-1-miquel.raynal@bootlin.com>
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] wifi: mt76: Replace strlcpy with strscpy
+Date: Thu, 27 Jul 2023 08:52:55 -0700
+Message-Id: <169047317159.2400214.7882697833368890001.b4-ty@chromium.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230714174751.4060439-1-robh@kernel.org>
-References: 
+In-Reply-To: <20230703181256.3712079-1-azeemshaikh38@gmail.com>
+References: <20230703181256.3712079-1-azeemshaikh38@gmail.com>
 MIME-Version: 1.0
-X-linux-mtd-patch-notification: thanks
-X-linux-mtd-patch-commit: b'c2fc6b6947905eee832e9ef445df4803f0056cc6'
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230727_081809_793951_321B48DD 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20230727_085303_335617_6CD448E9 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,21 +102,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2023-07-14 at 17:47:49 UTC, Rob Herring wrote:
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
+
+On Mon, 03 Jul 2023 18:12:56 +0000, Azeem Shaikh wrote:
+> strlcpy() reads the entire source buffer first.
+> This read may exceed the destination size limit.
+> This is both inefficient and can lead to linear read
+> overflows if a source string is not NUL-terminated [1].
+> In an effort to remove strlcpy() completely [2], replace
+> strlcpy() here with strscpy().
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-> Acked-by: Heiko Stuebner <heiko@sntech.de>
+> [...]
 
-Applied to https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git mtd/next, thanks.
+Applied, thanks!
 
-Miquel
+[1/1] wifi: mt76: Replace strlcpy with strscpy
+      https://git.kernel.org/kees/c/535c78cbc0c4
+
+Best regards,
+-- 
+Kees Cook
+
 
