@@ -4,69 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB433C0015E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 16:00:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C7F4C04A6A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 16:30:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qb5rmolTz9mOsAP5ZXSqu5eejCbhg96Y/Wk3cVgybcQ=; b=4mVGcEBTGvDq2EnP9y0u6/YMxJ
-	YHkdOooS3oLCSm+kWieGA1r8tTq507Dsqqyeo3IWyzm56bE+LgWgtz3QTWE2poekCu6Os65+YaJLF
-	UFmImYMYvQFcL6a3lAzm9LXFR2b5ePDduLLSIqWvqT2887vrrH+eIh5/tmUfmHh844Lzy1PTwR2Pq
-	GCYY3jFkllncg9o9+7Tt1HWMec7kKGcbXwS4f3hS6qruHbkuckDBRP/8hpmAdmEU4kHEtsXtjfoOV
-	oG2GdD/Q9gpII+qoVV5BbCvqRiTNrcfCfKxJRnszASrSI/pT8YGlw344Ih9utJOnGzAa8njmhMHy1
-	xOR02DaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bzuTh1NVs4GWRrmVfFpsJRGIUEzZM0pTAQIqXVT60KU=; b=PsnqI8BKVj24S68vrP1VWZ/uTt
+	HyBXMpvicIhW6F/dckrKl2tRFCMLSP2CsXHffrqmAp/mMl3klLHYvg//SQFK28xixSfUmWQzCaGRR
+	MjSAAd4k71WkFnpYTi6PqPhInBKUl3Qn0cGDnBwuy3KChtEMKEWzW+STxZHRDusQeGmFieZu+VxFA
+	oA4xa94uBB6wuSC9Ogc5a2jsobomJ8EN+NuxPT6t1vijossGs7AkZr+IffP8gEq3RtenM2YitBO2F
+	dQcFWLHObiP2JvDMdjxkEuNNP+6gLiQXjTxhGoC4kvmmdn0fxXolG6HmBA07tZCiDpkBYXlYayxZO
+	+u25TgbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qP3Pp-00GFXZ-1U;
-	Thu, 27 Jul 2023 16:00:37 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qP3su-00GasH-2R;
+	Thu, 27 Jul 2023 16:30:40 +0000
+Received: from mx2.hosting.skole.hr ([161.53.165.186] helo=mx.skole.hr)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qP3Pl-00GFPk-1g;
-	Thu, 27 Jul 2023 16:00:34 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 3E44761EC0;
-	Thu, 27 Jul 2023 16:00:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F90CC433C8;
-	Thu, 27 Jul 2023 16:00:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690473626;
-	bh=f5m8BGhtN6zBxnVwJ+ho2scIqcjIJySmiEoYp/0u46I=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=Zx+nPrzkjVwYmOzLqBoOHudWiVte0aG41ndPOdr+LiYIMiXAAXXEKSP9pDuEG2y5L
-	 nmN8Kpd+cv43df4ijqgds7+65i0cNIIyPsv3E8Xo9vPPe1uFXsHSRtGd3wD9t9PwxS
-	 Q/Ym0Z8LxRYzEe1vvAUsmrl5tqV8dsf+KqVh05H9dFZ2tHUSToEOrh3mI5o9VW6RZx
-	 2X324IRq6rXWvu5t4cgcR1uLxO+IYzawNauV2VddPtVPq8NATjY20WdsCzogEkewHP
-	 bvEpJvlQpy7iEQ+VtKQt8RcZLTpbG0YKfcbSjSj30R20IT802X/OWcGrK7HT6sZvT9
-	 Wic+BgtEgdKYw==
-From: Kalle Valo <kvalo@kernel.org>
-To: Kees Cook <keescook@chromium.org>
-Cc: Felix Fietkau <nbd@nbd.name>,  Lorenzo Bianconi <lorenzo@kernel.org>,
-  Ryder Lee <ryder.lee@mediatek.com>,  Azeem Shaikh
- <azeemshaikh38@gmail.com>,  linux-hardening@vger.kernel.org,  Shayne Chen
- <shayne.chen@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>,
-  linux-wireless@vger.kernel.org,  linux-kernel@vger.kernel.org,  Matthias
- Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,
-  linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] wifi: mt76: Replace strlcpy with strscpy
-References: <20230703181256.3712079-1-azeemshaikh38@gmail.com>
-	<169047317159.2400214.7882697833368890001.b4-ty@chromium.org>
-Date: Thu, 27 Jul 2023 19:00:21 +0300
-In-Reply-To: <169047317159.2400214.7882697833368890001.b4-ty@chromium.org>
-	(Kees Cook's message of "Thu, 27 Jul 2023 08:52:55 -0700")
-Message-ID: <87tttpz6ne.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+	id 1qP3sf-00GaQz-24;
+	Thu, 27 Jul 2023 16:30:27 +0000
+Received: from mx2.hosting.skole.hr (localhost.localdomain [127.0.0.1])
+	by mx.skole.hr (mx.skole.hr) with ESMTP id 7145383693;
+	Thu, 27 Jul 2023 18:30:11 +0200 (CEST)
+From: =?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje.mihanovic@skole.hr>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: ~postmarketos/upstreaming@lists.sr.ht,
+	phone-devel@vger.kernel.org,
+	afaerber@suse.com,
+	=?UTF-8?q?Duje=20Mihanovi=C4=87?= <duje.mihanovic@skole.hr>
+Subject: [PATCH v2 0/9] Initial Marvell PXA1908 support
+Date: Thu, 27 Jul 2023 18:28:58 +0200
+Message-ID: <20230727162909.6031-1-duje.mihanovic@skole.hr>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230727_090033_622798_7A194304 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20230727_093025_894323_13548628 
+X-CRM114-Status: GOOD (  17.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,28 +63,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Kees Cook <keescook@chromium.org> writes:
+v1 -> v2:
+- Remove earlycon patch as it's been merged into tty-next
+- Address maintainer comments:
+  - Clarify GPIO regressions on older PXA platforms
+  - Add Fixes tag to commit disabling GPIO pinctrl calls for this SoC
+  - Add missing includes to clock driver
+  - Clock driver uses HZ_PER_MHZ, u32_fract and GENMASK
+  - Dual license clock bindings
+  - Change clock IDs to decimal
+  - Fix underscores in dt node names
+  - Move chosen node to top of board dts
+  - Clean up documentation
+  - Reorder commits
+  - Drop pxa,rev-id
+- Rename muic-i2c to i2c-muic
+- Reword some commits
+- Move framebuffer node to chosen
+- Add aliases for mmc nodes
+- Rebase on v6.5-rc3
 
-> On Mon, 03 Jul 2023 18:12:56 +0000, Azeem Shaikh wrote:
->> strlcpy() reads the entire source buffer first.
->> This read may exceed the destination size limit.
->> This is both inefficient and can lead to linear read
->> overflows if a source string is not NUL-terminated [1].
->> In an effort to remove strlcpy() completely [2], replace
->> strlcpy() here with strscpy().
->> 
->> [...]
->
-> Applied, thanks!
->
-> [1/1] wifi: mt76: Replace strlcpy with strscpy
->       https://git.kernel.org/kees/c/535c78cbc0c4
+Hello,
 
-Why did you take this? mt76 is in active development so risk of
-conflicts is high.
+This series adds initial support for the Marvell PXA1908 SoC and
+"samsung,coreprimevelte", a smartphone using the SoC.
+
+USB works and the phone can boot a rootfs from an SD card, but there are
+some warnings in the dmesg:
+
+During SMP initialization:
+[    0.006519] CPU features: SANITY CHECK: Unexpected variation in SYS_CNTFRQ_EL0. Boot CPU: 0x000000018cba80, CPU1: 0x00000000000000
+[    0.006542] CPU features: Unsupported CPU feature variation detected.
+[    0.006589] CPU1: Booted secondary processor 0x0000000001 [0x410fd032]
+[    0.010710] Detected VIPT I-cache on CPU2
+[    0.010716] CPU features: SANITY CHECK: Unexpected variation in SYS_CNTFRQ_EL0. Boot CPU: 0x000000018cba80, CPU2: 0x00000000000000
+[    0.010758] CPU2: Booted secondary processor 0x0000000002 [0x410fd032]
+[    0.014849] Detected VIPT I-cache on CPU3
+[    0.014855] CPU features: SANITY CHECK: Unexpected variation in SYS_CNTFRQ_EL0. Boot CPU: 0x000000018cba80, CPU3: 0x00000000000000
+[    0.014895] CPU3: Booted secondary processor 0x0000000003 [0x410fd032]
+
+SMMU probing fails:
+[    0.101798] arm-smmu c0010000.iommu: probing hardware configuration...
+[    0.101809] arm-smmu c0010000.iommu: SMMUv1 with:
+[    0.101816] arm-smmu c0010000.iommu:         no translation support!
+
+On Samsung's PXA1908 phones, the bootloader does not start the ARM
+system timer, and my temporary solution (which isn't present in this
+series) was to put the code for starting the timer in the clock driver.
+Would this hack be accepted upstream in the form of a platform or
+clocksource driver such as drivers/clocksource/timer-mediatek-cpux.c?
+
+A 3.14 based Marvell tree is available on GitHub
+acorn-marvell/brillo_pxa_kernel, and a Samsung one on GitHub
+CoderCharmander/g361f-kernel.
+
+Andreas Färber attempted to upstream support for this SoC in 2017:
+https://lore.kernel.org/lkml/20170222022929.10540-1-afaerber@suse.de/
+
+Andy Shevchenko (1):
+  clk: mmp: Switch to use struct u32_fract instead of custom one
+
+Duje Mihanović (8):
+  gpio: pxa: disable pinctrl calls for MMP_GPIO
+  gpio: pxa: use dynamic allocation of base
+  dt-bindings: clock: Add Marvell PXA1908 clock bindings
+  clk: mmp: Add Marvell PXA1908 clock driver
+  dt-bindings: marvell: Document PXA1908 SoC
+  arm64: Kconfig.platforms: Add config for Marvell PXA1908 platform
+  arm64: dts: Add DTS for Marvell PXA1908 and samsung,coreprimevelte
+  MAINTAINERS: add myself as Marvell PXA1908 maintainer
+
+ .../bindings/arm/marvell/marvell,pxa1908.yaml |  22 ++
+ .../bindings/clock/marvell,pxa1908.yaml       |  47 +++
+ MAINTAINERS                                   |  10 +
+ arch/arm64/Kconfig.platforms                  |  11 +
+ arch/arm64/boot/dts/marvell/Makefile          |   3 +
+ .../pxa1908-samsung-coreprimevelte.dts        | 329 ++++++++++++++++++
+ arch/arm64/boot/dts/marvell/pxa1908.dtsi      | 292 ++++++++++++++++
+ drivers/clk/mmp/Makefile                      |   2 +-
+ drivers/clk/mmp/clk-frac.c                    |  57 ++-
+ drivers/clk/mmp/clk-mmp2.c                    |   6 +-
+ drivers/clk/mmp/clk-of-mmp2.c                 |  26 +-
+ drivers/clk/mmp/clk-of-pxa168.c               |   4 +-
+ drivers/clk/mmp/clk-of-pxa1908.c              | 286 +++++++++++++++
+ drivers/clk/mmp/clk-of-pxa1928.c              |   6 +-
+ drivers/clk/mmp/clk-of-pxa910.c               |   4 +-
+ drivers/clk/mmp/clk-pxa168.c                  |   4 +-
+ drivers/clk/mmp/clk-pxa910.c                  |   4 +-
+ drivers/clk/mmp/clk.h                         |  10 +-
+ drivers/gpio/gpio-pxa.c                       |   2 +
+ include/dt-bindings/clock/marvell,pxa1908.h   |  93 +++++
+ 20 files changed, 1154 insertions(+), 64 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/marvell/marvell,pxa1908.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/marvell,pxa1908.yaml
+ create mode 100644 arch/arm64/boot/dts/marvell/pxa1908-samsung-coreprimevelte.dts
+ create mode 100644 arch/arm64/boot/dts/marvell/pxa1908.dtsi
+ create mode 100644 drivers/clk/mmp/clk-of-pxa1908.c
+ create mode 100644 include/dt-bindings/clock/marvell,pxa1908.h
 
 -- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+2.41.0
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+
 
