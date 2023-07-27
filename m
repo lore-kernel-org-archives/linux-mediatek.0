@@ -4,80 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C2C3C001E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 06:30:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ACE1EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 07:01:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HVj27kBDVpPvZ+j4dkr5RIuiJz1r0HErENAsJMpj6ng=; b=KTA/jA/Z1HZkN1XlL1A7wj4k2+
-	YhMOYJG1An+CmpYat7o8ttKH6Xx+eamTVRFBWOcsovI0jN0n0M7fAhv6OhqE74W0a6zcpY2klDqcj
-	s1lEe4rfA1FMLEe590h2sTR86xDebrIAlKo1FKToA8pYBvUavmPpKbzA2tG5+71bEdN5Xc+I0GCKe
-	oE6wl21QT1gpwVNEDfzp6YS8oMzdIJWfHCDdPiv8YKf6n7eTEBMw5sV9F9kb5GzkujYNDYnSYZfeP
-	ZKkkSYz32fo9OetHXHWYT7vP8K0KDcEDdFAMaFue6Q/qs5PiFg0u7JrVnBT+yB6oprD0SSdambQPp
-	cFMscz2w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-Id:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XGvwJMjXkY+aIWcQi5FBmNL1QkzER169wqMxqG1gqGg=; b=IwYQ5y351lwCtaIWBh2ALJzrfH
+	vm0ah6x2bf/wfyQZSJEkFkJQWmoWCB9OBOmGSRFEGLxxSL0rLpzjpfh/td0XVwnK/puOhaiOmH7S2
+	w8+cW2aPEdzNcTLFhKXIcz/MHtVG5C2MxxwF68k33kzK5gxGO6HMAMqZ4ssvwKpERlHoCY8OGC2lN
+	r95DWW0qrI5vnfZVIwoWvgbbvThrKL4XJusCCjKsWsf4OvE1aieUnp1o/duggqza8cwy7zbl1dgYe
+	2paNWAeudjOlRj9aunRUpHGYni30re/FUqmuKAWgoKJ4oNBUKY705d7bUZbr0N4q7ovURgRaGHCUA
+	91eMXzaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOuVf-00CJsg-1f;
-	Thu, 27 Jul 2023 06:30:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qOv0A-00COTf-0R;
+	Thu, 27 Jul 2023 07:01:34 +0000
+Received: from mail-tyzapc01on20725.outbound.protection.outlook.com ([2a01:111:f403:704b::725] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOuVd-00CJrH-15;
-	Thu, 27 Jul 2023 06:30:02 +0000
-X-UUID: fc8ddef22c4611ee83ed1395ce914268-20230726
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HVj27kBDVpPvZ+j4dkr5RIuiJz1r0HErENAsJMpj6ng=;
-	b=tj+XxvzvVKQqp4VEbm1pCbjkR0B2LfxdiN/GXsGp7S++KvdCOrDDoRbUdPH8oG2lgCtG//3WMwTZ/GOuDSrjsrAVow/viUZ2/axaZOYhXIhsFwf4Y7Nf/Sb1tl2b1s93QhjH6PxFsnNusGIiQMTh+nR2IzCLCCmwSRxfe0AJvd4=;
-X-CID-UNFAMILIAR: 1
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.29,REQID:d4e6346c-04be-4a78-be4b-2c2fcb7a2ea9,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:100
-X-CID-INFO: VERSION:1.1.29,REQID:d4e6346c-04be-4a78-be4b-2c2fcb7a2ea9,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:100
-X-CID-META: VersionHash:e7562a7,CLOUDID:26988242-d291-4e62-b539-43d7d78362ba,B
-	ulkID:230727142932X71U816G,BulkQuantity:1,Recheck:0,SF:16|19|48|38|29|28,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_USA,TF_CID_SPAM_FSD,
-	TF_CID_SPAM_SNR
-X-UUID: fc8ddef22c4611ee83ed1395ce914268-20230726
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <andrew.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 725371684; Wed, 26 Jul 2023 23:29:49 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 27 Jul 2023 14:29:13 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 27 Jul 2023 14:29:13 +0800
-From: Andrew Yang <andrew.yang@mediatek.com>
-To: Minchan Kim <minchan@kernel.org>, Sergey Senozhatsky
-	<senozhatsky@chromium.org>, Andrew Morton <akpm@linux-foundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Sebastian Andrzej Siewior
-	<bigeasy@linutronix.de>
-CC: <wsd_upstream@mediatek.com>, <casper.li@mediatek.com>, Andrew Yang
-	<andrew.yang@mediatek.com>, <linux-mm@kvack.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2] zsmalloc: Fix races between modifications of fullness and isolated
-Date: Thu, 27 Jul 2023 14:29:07 +0800
-Message-ID: <20230727062910.6337-1-andrew.yang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1qOuzy-00COLh-39;
+	Thu, 27 Jul 2023 07:01:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=YbzSfAyL/esAQASL7Bu02p03BN93Y17xGgwu8X9JxnT6Ezet3Y1sMtgr5Cteia23TdZq2E/jG+LLCMG0WfuiNX8Rv0rBEp8iTgiOYhcVAjA/aRXpMIfMOztAvlb/dPT6FxRPUp9iK1Qbw+qsHc4BKYTbPcjN3Xzez+cqIlNiz/QBO2iLnvUvC2IeI7vEu+w/52QXTq85JSHc8hrFNmFAOMLMvOgibXErooZbKe79yysF8Snt0Gdi6cgoEQMooboP/e4Es2+mmz7qJ/sojSPUl8sKrrR77gFrZNoLoTqIEjtV8ixspME/RaxNSB8+4MIYi5E7B9qDyug8fbHjiULH5Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=XGvwJMjXkY+aIWcQi5FBmNL1QkzER169wqMxqG1gqGg=;
+ b=dImUVLP5YKPyIG4kDVV3Co8rhavefJpZtFSZmbr/rrIdnpvQ85OXBh4YGy2OH1i16OuLvcIEIo78IydNn7ITareZTzDvf96E4XcuExLVg4emCmBLmS6MHGwXll8cAZi+6B/YNcmc+w1tDyIbJDTm2BvvwVlBAxDnaWo8S6ui7cW6cqo8pcE+erPz+Cv0r4gr/uGVj3A2NEiOQdzhkxd9gY8IrqQ7OOvQQfkOECpYsTjpVzuSqemQvlTmhp9Q5H58yBXJGyDzi/YqLhW23iX1Lt6WSJOA9TJFwnMicPl2KF3rYTr6da9vL45VZFa2+sLpsP022amT3dnhRy5KR1wyMA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=XGvwJMjXkY+aIWcQi5FBmNL1QkzER169wqMxqG1gqGg=;
+ b=orMpc7VJ8hxUJ1dEAatFvtGatJLWxHtsEYvHx/WDZS9IBYXVa5CCSjLuoH6lDbjCdNluhgKFmXmyvrVpqI66M2pnDD8WfniqAOl22XMaFoMYUMNZAmzDX+dEaT4f5iKdzaTTnCUU8t20McmXDfnSWzVJSOc7esINWoUGV6xTJw5Q6WGQNNDf5+a7Vkgi/EyUVDN7ZIyKk3MQPUkRiQ5dcrIQFlhEShSwpCuQ/yXExJWuORDFPNTd2aD6//XvSF0amD5j1sAc1sflPAN6o2cRz3QZx0geAxupREtvfeRdZN9/TcHhhNrRuJLFY7qdPWod9545K60A7Q64ztRAN84jSg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com (2603:1096:101:78::6)
+ by TYUPR06MB6027.apcprd06.prod.outlook.com (2603:1096:400:351::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.29; Thu, 27 Jul
+ 2023 07:01:11 +0000
+Received: from SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::732f:ea1d:45a1:1e0b]) by SEZPR06MB5269.apcprd06.prod.outlook.com
+ ([fe80::732f:ea1d:45a1:1e0b%3]) with mapi id 15.20.6631.026; Thu, 27 Jul 2023
+ 07:01:11 +0000
+From: Yangtao Li <frank.li@vivo.com>
+To: Chaotian Jing <chaotian.jing@mediatek.com>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Yangtao Li <frank.li@vivo.com>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	linux-mmc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 05/62] mmc: mtk-sd: Convert to platform remove callback returning void
+Date: Thu, 27 Jul 2023 14:59:54 +0800
+Message-Id: <20230727070051.17778-5-frank.li@vivo.com>
+X-Mailer: git-send-email 2.39.0
+In-Reply-To: <20230727070051.17778-1-frank.li@vivo.com>
+References: <20230727070051.17778-1-frank.li@vivo.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: SI2P153CA0017.APCP153.PROD.OUTLOOK.COM
+ (2603:1096:4:140::10) To SEZPR06MB5269.apcprd06.prod.outlook.com
+ (2603:1096:101:78::6)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5269:EE_|TYUPR06MB6027:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2e7c6b32-30f9-459d-1563-08db8e6f4258
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: dNIVMUIk94K5b0FrqRVedTmq3dOB9u8iXD3BNfzMG1bzE1wu/kDSKZDqPL5fc0+66x+meyaODuRA2amiN9Zo4KwXMlwgXS1UPJs8sMedDsxID2s6tVPR12cLJaau6OUBz10aRxEX31rsVbZuf90eMbPu0hlakfk9XuzgWcpaH0pfPE03Fvzv2hiH3ERjJtAid8GKHetOOBQuYcJVxBNddb2YrcDmJYSeUcwGtulvlnRAi3wpEwkaVhJHS9YSbSQ+VZLUt4p0Yjmq7OLlDcVzgw+dfKnRi1UPO+OPKKW3tRn5ALxC5PL+meUySZ/Y4L3/orD9l0fXAUPyHYWrywCb05R3p0enGN68h6zcYsq6yWgEwc7+S+xhjR6D1BrdoaQn4zZs5I8158wr3Wptzfp4u9yIJz+2nOdRUkXzDf0ACQb3v7749Daj+9frs9oxRY2s0XoVNImdMmmBMhad2cvSwwmXWceMi8RBqtcc06nfsjkJTYxeEJgo9g6Vjm2ucob6Ui+0hLJB7v+XsZs34oIOIj2a47Er/gOgvg5d2rTPDjdTVirT7/Pp1VgEbTZWyErTTg/Av1ORpPu8ym4ZVtcHTruLU3G+ziFkycl1Y60I+lwV47tNrCG6xt31G5I/HSXO
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5269.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(376002)(366004)(136003)(346002)(39860400002)(396003)(451199021)(2906002)(1076003)(6506007)(26005)(186003)(86362001)(316002)(38350700002)(38100700002)(2616005)(83380400001)(5660300002)(66946007)(41300700001)(66556008)(66476007)(8676002)(36756003)(8936002)(52116002)(110136005)(6512007)(6666004)(4326008)(6486002)(478600001)(54906003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NG1UUnFWMksxMmRwRGhQa25mTnhWazFmbXhnTTBicHZjS3hlaVF4UUtVUXZP?=
+ =?utf-8?B?TnJSTkdNOExCMjlMb1JOaHZmTWVwWDFiNE11bmtpRXU4OVFROHM1bXhwQy91?=
+ =?utf-8?B?UUtKZ2N0R0VBcmI4aks5bzVRUnhwRkhvMHBmK1JWbHNpdVk1Q0wzMW90Tk5Y?=
+ =?utf-8?B?dlpCVFlXd0pkUTIwMTZKR3VtWTh6SC9NZEladW5iaW1HcVhEQll1SU5tZllv?=
+ =?utf-8?B?cTZVQk4xM2lCQkhPQUZaZVBQY2hKQTZ0djFPMHdhVzJEQllKZDNyeU5xaFZv?=
+ =?utf-8?B?MHdsNWdWcEFHckV2TTAzVWRvS2tvOHdRT2V4TjI1VTdHcG5UN1MybytraXdU?=
+ =?utf-8?B?bHhYT2xKNlZHdlFYZjBkUzJlcCthTE1kQlBXbGJidzd0TTRyTGNuK3Y0TWUy?=
+ =?utf-8?B?OXNtUWljdTVSc0YycWNLeS94RHVHZTVlc0pNcEpLdkxvVklRYVUzaWRlUytG?=
+ =?utf-8?B?bEZ4ZWFHN3VRamliUjVOdDg2eHREMHFRRHgzdEpZQ1FjR1UwNzdLNmI5RjRK?=
+ =?utf-8?B?alB4czJCWEZWWGgxcEIxZGgxeW1lUDkzcU5MYXFHZWNaMGVRME5pNGF0cGNT?=
+ =?utf-8?B?Uzlna3JkdEhPU0NENjBSS1I2NDA0dlhlcjNpUE9jK1dXVHFVcUJhSVpDaENl?=
+ =?utf-8?B?anJZV1lYT3JxaHBCZlBrcWFXOEVIMzZ2dXNyQTVtUEgzMU93WnJ5SldxMTlB?=
+ =?utf-8?B?ZWJ1a2U2NzRIZEcwaG5MMzVMQURCQSt6ZStNS2xEU0NtNW85Mml5dmZNK1ZM?=
+ =?utf-8?B?M3A5NEg3azByY2FqYkRsZVkyV3dHUmVTWTA0YXNMSFFuYTVOYmFTV0c3Tyt6?=
+ =?utf-8?B?R3lXSWpqSUZ0RmNjTHRBT2NYMWlIRkJES0tKL2wxWGJTcVk0SlRoOE5SeGdP?=
+ =?utf-8?B?WU9MRTlhTEdJZ1FrNmtKbkVSUmhGQy81dHZ5OTFzNDdVWW5PeG1aMy9CRnF0?=
+ =?utf-8?B?S3pvSGVlY3M0VHA5MEIxMG9DK3BMWkl6TnFDci9hSzY3YmtZK0JqQmtnVlR2?=
+ =?utf-8?B?Z2J1OWpOVXpMNHA3WWw2Ukl3RkdybGMvanorekMxM0NSY21pR1p6TlBKZXhO?=
+ =?utf-8?B?Vi8zVFlYN0NTSWFpeFhPSzNsUll2MXB6U1Ria2hZditiaEZ2bUVGcWFjSDkw?=
+ =?utf-8?B?bEJTUnBKWTI5N1hWZHkrTlVZbnpsWUpVZmQwRU00b2lpbWd6bnY5aTY5L0Q5?=
+ =?utf-8?B?Sm4rME1OTXNBYTRwK1pBdllqTkVvMDFJbExlQTVFNHZ3Zmp1QjZ6bjZibW1H?=
+ =?utf-8?B?aUZtUGhwaEdZSDNYY2docDlWZUZhcjk1Qi9ocUFxTzhtLzV5MW90WWh4K1Z0?=
+ =?utf-8?B?ZXJNd0Q0dkNRV3RKTjY2Yi9DVE43dU8yWWZiZXpmYmowK2RqNjRzT1d0V2hC?=
+ =?utf-8?B?ZXJFbWpNY2FiUktETDlsck5HL3BEV1gyVnBndEc5UXF6bWgzeWd1QmZsLzhC?=
+ =?utf-8?B?aXovbjhmdE9vRWNYQmloWWp1UERieTVPRVV3L3FRU0JxUVVtVTZsU2hPSWdv?=
+ =?utf-8?B?Q0pPSVViMTVESXh4WVpYZHkrNzVPYXJKQURYblptOS9YQ01qaTdtdXhoRUJP?=
+ =?utf-8?B?TjBMZjdLNnZwMmJHOVJjZmgzL3pubUg3eTU4ZmMzbE5haEdobGo0R29QV2lK?=
+ =?utf-8?B?aEdhUEszSTJPYVJudnppR05TOW5zNVk1MkJCVVpxMWh5OE83dG02SWlKOHI5?=
+ =?utf-8?B?ZGkrSkYrUkwvd2ovZTQwNE5XMmxQMHRaY0tmUEg1SVUxTjhqRU1rUWxkM0lH?=
+ =?utf-8?B?aHZ6a2ZyamhKZFlSSmVoY3pIMlUrMjhwcnNzK0wwcWNlcDlCMTVqRXRWMSts?=
+ =?utf-8?B?VnhJQXlDdXlHVDEwM1ZRLzZLZ25uOW9ibytZZmthMmtCY1lNUnByUEUwVC95?=
+ =?utf-8?B?VGFGcTN0a0FGRzR3MXZRWnNxUjI2RU5SY2FUUnFtMUxaZjNOblBzTUlyWnhM?=
+ =?utf-8?B?OXp0SXVwZEZON256S2M1alRUcy9ITDUzRDdKelpVUGxFL21lMDNnZmtTU25k?=
+ =?utf-8?B?cndmTUVzUnVSUVVIam42b2dEbkdhWDBzdjRnWkFJSDBDWnVRNHFnN0cweHhT?=
+ =?utf-8?B?ZUhNc3VUQllBUW5LTjhYWXArOHNqQi85SFdoK3FKdlhZc28wY0hGbnZxeXgr?=
+ =?utf-8?Q?1ZV++nByTQbRAw0EXugj86n0a?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2e7c6b32-30f9-459d-1563-08db8e6f4258
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5269.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jul 2023 07:01:11.0148
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: d9Zw3WftG5PuUdJFBaOiV9uudrU1iecBJy+55xXogGlX40MLOQudcX9OdR7He3b4wRgbA832u169CtQMq+wWWQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYUPR06MB6027
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230726_233001_407618_2737A7E7 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20230727_000123_031826_38EB95B8 
+X-CRM114-Status: GOOD (  15.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,76 +147,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since fullness and isolated share the same unsigned int,
-modifications of them should be protected by the same lock.
+The .remove() callback for a platform driver returns an int which makes
+many driver authors wrongly assume it's possible to do error handling by
+returning an error code. However the value returned is (mostly) ignored
+and this typically results in resource leaks. To improve here there is a
+quest to make the remove callback return void. In the first step of this
+quest all drivers are converted to .remove_new() which already returns
+void.
 
-Signed-off-by: Andrew Yang <andrew.yang@mediatek.com>
-Fixes: c4549b871102 ("zsmalloc: remove zspage isolation for migration")
----
-v2: Moving comment too
----
- mm/zsmalloc.c | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
+Trivially convert this driver from always returning zero in the remove
+callback to the void returning variant.
 
-diff --git a/mm/zsmalloc.c b/mm/zsmalloc.c
-index 32f5bc4074df..b58f957429f0 100644
---- a/mm/zsmalloc.c
-+++ b/mm/zsmalloc.c
-@@ -1777,6 +1777,7 @@ static void replace_sub_page(struct size_class *class, struct zspage *zspage,
- 
- static bool zs_page_isolate(struct page *page, isolate_mode_t mode)
- {
-+	struct zs_pool *pool;
- 	struct zspage *zspage;
- 
- 	/*
-@@ -1786,9 +1787,10 @@ static bool zs_page_isolate(struct page *page, isolate_mode_t mode)
- 	VM_BUG_ON_PAGE(PageIsolated(page), page);
- 
- 	zspage = get_zspage(page);
--	migrate_write_lock(zspage);
-+	pool = zspage->pool;
-+	spin_lock(&pool->lock);
- 	inc_zspage_isolation(zspage);
--	migrate_write_unlock(zspage);
-+	spin_unlock(&pool->lock);
- 
- 	return true;
- }
-@@ -1854,12 +1856,12 @@ static int zs_page_migrate(struct page *newpage, struct page *page,
- 	kunmap_atomic(s_addr);
- 
- 	replace_sub_page(class, zspage, newpage, page);
-+	dec_zspage_isolation(zspage);
- 	/*
- 	 * Since we complete the data copy and set up new zspage structure,
- 	 * it's okay to release the pool's lock.
- 	 */
- 	spin_unlock(&pool->lock);
--	dec_zspage_isolation(zspage);
- 	migrate_write_unlock(zspage);
- 
- 	get_page(newpage);
-@@ -1876,14 +1878,16 @@ static int zs_page_migrate(struct page *newpage, struct page *page,
- 
- static void zs_page_putback(struct page *page)
- {
-+	struct zs_pool *pool;
- 	struct zspage *zspage;
- 
- 	VM_BUG_ON_PAGE(!PageIsolated(page), page);
- 
- 	zspage = get_zspage(page);
--	migrate_write_lock(zspage);
-+	pool = zspage->pool;
-+	spin_lock(&pool->lock);
- 	dec_zspage_isolation(zspage);
--	migrate_write_unlock(zspage);
-+	spin_unlock(&pool->lock);
+Cc: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+Signed-off-by: Yangtao Li <frank.li@vivo.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/mmc/host/mtk-sd.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 02403ff99e0d..9e2debd1edbe 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -2887,7 +2887,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 	return ret;
  }
  
- static const struct movable_operations zsmalloc_mops = {
+-static int msdc_drv_remove(struct platform_device *pdev)
++static void msdc_drv_remove(struct platform_device *pdev)
+ {
+ 	struct mmc_host *mmc;
+ 	struct msdc_host *host;
+@@ -2911,8 +2911,6 @@ static int msdc_drv_remove(struct platform_device *pdev)
+ 			host->dma.bd, host->dma.bd_addr);
+ 
+ 	mmc_free_host(mmc);
+-
+-	return 0;
+ }
+ 
+ static void msdc_save_reg(struct msdc_host *host)
+@@ -3054,7 +3052,7 @@ static const struct dev_pm_ops msdc_dev_pm_ops = {
+ 
+ static struct platform_driver mt_msdc_driver = {
+ 	.probe = msdc_drv_probe,
+-	.remove = msdc_drv_remove,
++	.remove_new = msdc_drv_remove,
+ 	.driver = {
+ 		.name = "mtk-msdc",
+ 		.probe_type = PROBE_PREFER_ASYNCHRONOUS,
 -- 
-2.18.0
+2.39.0
 
 
