@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C254C04E69
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 05:00:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6416EC0015E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Jul 2023 05:07:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9SouDmedxUrLS9Stt01WcKB5IMOWw+JcY80cyENVGls=; b=OdsBsNWe7pIh1LOVeDz4b4cMzP
-	wY0djsbAXN+QaXRdPbXsxuQ47c24NzKZa57R5PlAU6umiOOjL+QGq9kugfSDOpy1+mscoeJddmOvq
-	tfTdlrZbLP720jZXudK4fowr06ixTJTZBlKsWDyaXx0aNz8cn+6iRyGoQJU8VA+qD1PAuqW6tmKgn
-	7nie7jFpdFRnBr+0veiHVGEnjs8XwRE3roM1s8v+5kXW6JjGmIVLSxPcW44tZEb9A0KXnR8Vcsj+4
-	5MvZ7+HazETpYz4zr28EkQN4NVNGemnean1XSkGj0BBw8ONFEJo+HMVV98ypW4P7dOOiTvg5X6p52
-	FAzDaq3Q==;
+	bh=cpB8FunqnyFPgVxL+87HsNcuc7Et8PX72oCQ94PfQUs=; b=gy8oLvc1cB23GxYEmdFuk7VnHY
+	EXIu5ueGldgF7sXnU2pPPr7ZkftuJX67A/kXRXzOmWrn2vIK+RWC6poksJ8+uaj5wSEgOFWumcEC8
+	tc+JhMheb5gzo2oNbU964rILXIaRsHq9iX/ex5KO2lyr8ET/5g++jUFXHEv70XbysaVybq32Nuh87
+	QTufYmThQflWAoXgdbsJ3slSqD8iN3FbwLGG83a4ctYMG1MFPMYMR2p6ZKlpCssCGxxDnkTr8I8yY
+	OSUtdblZCNmEPk1t3I94Vxt75ebTtS5O/P6Au1T7ohLY+Ihgawl4SjoDhkingEg3Ef6AbkTlnKZQL
+	tBS3uDMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOt76-00C8oe-2Q;
-	Thu, 27 Jul 2023 05:00:36 +0000
+	id 1qOtDt-00C9b9-1d;
+	Thu, 27 Jul 2023 05:07:37 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qOt6u-00C8iN-0o;
-	Thu, 27 Jul 2023 05:00:25 +0000
+	id 1qOtDp-00C9ac-31;
+	Thu, 27 Jul 2023 05:07:35 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id BD8DB61D44;
-	Thu, 27 Jul 2023 05:00:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A3E10C433D9;
-	Thu, 27 Jul 2023 05:00:21 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id BCB7C61D3B;
+	Thu, 27 Jul 2023 05:07:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49E3DC433C7;
+	Thu, 27 Jul 2023 05:07:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690434021;
-	bh=FFH1pgMbxUQkbi+W6prTc8hoMQARLRPlW3fqf2rZAL8=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=hU+QuS93JAT1VG0BV4/1vkXRtYNlsPiMDnZMIJMNrUGBhTQwago6dU7nrctIYJNce
-	 zOamyaphbsrFVLn9XRR3pNzthZgCf8KNTCPxgAg/K64xZAp+LCTwa1Fp1RUczsxAaC
-	 PeRFdbKCAIHS/R8PsiZB6QYO/nw9y4S9rsRENzQJrQwsekdtTrviTXA/QRHm0XGUaa
-	 nIcvTNRsHXsB+MEfm14XY0IPxfIV/r4aNysr65kT4uQQAjV8HoE92Yq37Lz5gbaY5n
-	 hhgTYhPkdLaRoR3WZSIDv68Pv5h3xUMRByCrFFPCvpoO5NE1/gnSO+8bOHHgl6A9NU
-	 GRoBBxGMRj+Xw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 8BBE9C59A4C;
-	Thu, 27 Jul 2023 05:00:21 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1690434452;
+	bh=cu24BaSm7VP+M85cUQ+qtwEsAD/RBo9rNcVLe3xa3fo=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=u7MpNZdjK9fIYG2Pm23NLI7mZ3K/ANtsyc1c9bdh/SW1J9LKevMEUip+NbtDDOf//
+	 D5f+QXcGPKpxao454lTjfOErll5zWqeONgsBqbWLoE5kk+asdbstSZfADqGFma+Huu
+	 slsZjURasGfqLtK9Z+GdkrNK9pymB5jlRoRrbwHOZBJOvFl/7dr3crLLQnsEkJa68g
+	 HlVB+M/xTdoUteD9iMKyNxAPrHSJnnEG0JXvjtV1AkGL/IU9YbdhxxNL45Xrj3DaJF
+	 d4mpBfzc7TbyNNsyn2zVuJtuI5/G6uzhns67xPHWVP4hECjISAq/mGH65DnL8sxi+F
+	 K9DlyBwGMn/og==
+Date: Wed, 26 Jul 2023 22:07:30 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
+ <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Russell King <linux@armlinux.org.uk>, Greg Ungerer <gerg@kernel.org>,
+ =?UTF-8?B?QmrDuHJu?= Mork <bjorn@mork.no>, Florian Fainelli
+ <f.fainelli@gmail.com>, netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v6 0/8] net: ethernet: mtk_eth_soc: add basic
+ support for MT7988 SoC
+Message-ID: <20230726220730.6f78c790@kernel.org>
+In-Reply-To: <cover.1690246066.git.daniel@makrotopia.org>
+References: <cover.1690246066.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2] net: phy/pcs: Explicitly include correct DT includes
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169043402156.24382.3029642693015868159.git-patchwork-notify@kernel.org>
-Date: Thu, 27 Jul 2023 05:00:21 +0000
-References: <20230724211905.805665-1-robh@kernel.org>
-In-Reply-To: <20230724211905.805665-1-robh@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: clement.leger@bootlin.com, andrew@lunn.ch, hkallweit1@gmail.com,
- linux@armlinux.org.uk, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, daniel@makrotopia.org, dqfext@gmail.com,
- SkyLake.Huang@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-renesas-soc@vger.kernel.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230726_220024_348412_68F04B03 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20230726_220734_018521_C90A0AAF 
+X-CRM114-Status: GOOD (  16.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,31 +85,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Mon, 24 Jul 2023 15:19:05 -0600 you wrote:
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
+On Tue, 25 Jul 2023 01:51:00 +0100 Daniel Golle wrote:
+> The MediaTek MT7988 SoC introduces a new version (3) of the NETSYS
+> block and comes with three instead of two MACs.
 > 
-> [...]
+> The first MAC can be internally connected to a built-in Gigabit
+> Ethernet switch with four 1000M/100M/10M twisted pair user ports.
+> 
+> The second MAC can be internally connected to a built-in 2500Base-T
+> Ethernet PHY.
+> 
+> There are two SerDes units which can be operated in USXGMII, 10GBase-(K)R,
+> 5GBase-R, 2500Base-X, 1000Base-X or SGMII interface mode.
+> 
+> This series adds initial support for NETSYS v3 and the first MAC of the
+> MT7988 SoC connecting the built-in DSA switch.
+> 
+> The switch is supported since commit 110c18bfed414 ("net: dsa: mt7530:
+> introduce driver for MT7988 built-in switch").
+> 
+> Basic support for the 1000M/100M/10M built-in PHYs connected to the
+> switch ports is present since commit ("98c485eaf509b net: phy: add
+> driver for MediaTek SoC built-in GE PHYs").
 
-Here is the summary with links:
-  - [v2] net: phy/pcs: Explicitly include correct DT includes
-    https://git.kernel.org/netdev/net-next/c/ac3cb6de32b6
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+This was dangerously close to Russell's recent work.
+Do double check that I haven't fumbled applying it..
 
