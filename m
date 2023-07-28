@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 219FBC0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 08:11:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CB2CC001E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 08:11:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jGVvwH0oV1xP2c91Q5+E8p5Y7Z6a+omLEdmGqUKb5A0=; b=gBvo1KIoZ9mHrd4YLEFEYbR4pl
-	55r0HFYGzhfp3mGQjyrGWpMCpjDk6YQvHLrvBNe11Eo6isyvD8W/M6t83d8ZyxWDOTmri+NjBjaRc
-	1duKzcc42w8/BNmiciZHuw7dZPEX78ShiPEsPDd8mY+Yjx5pECqV7ZP3oDHG5K8F4UZbgqAuAQzhg
-	M3M7jTaRjITCKmBEzGkFZ/v2envf29MZ/Z3qst1xo1m57zceufq2GwQbLXpE8XjECCYqEZxGOxPzB
-	jUkXXQHGIegQ/x5JdITjXMGh/yDotoUWE9dyD6t/QH4QthlKbfXO0vCaEuwR7JyudVMrnzD2dJQKn
-	QMuLefrg==;
+	bh=l68HT7O6Xx8AWB37bZWB1pnAxXebHSVNVuTpzywGEt4=; b=JoveNAnwBv2r0LEo3Qbhhy3er0
+	k8flryG4jnVYvr60WoPnRsU5ETmPsAM/4FRGTKEiakXTCuRgB2r0wdnrKCheeGJnFIJx72FKW3TOu
+	+0cD02Zl1WV8yd4QnngMWY0hdp29lJVFYA2lyr+pjNjRUMetITvDUyDOd8f8G4VWTEOjaZjCVwh2Z
+	s8QG8DzivtP2qH3nioAvWm3v55ZeEqyO3X0AWGUi9zycVE1x//fTwQ6LvLshVozLVekzvX74/+mhN
+	Hn3X5Dbi3Ile/8NpZeCPpk2njh+Y4cgKEmW3mvfwbSjPtL8x4RVahJNQKoTCr6IdTrpN3Se3drths
+	+Y4czxEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPIZ8-002L4W-2x;
-	Fri, 28 Jul 2023 08:11:14 +0000
+	id 1qPIZJ-002L7y-0A;
+	Fri, 28 Jul 2023 08:11:25 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPIZ5-002L2Z-1D;
-	Fri, 28 Jul 2023 08:11:12 +0000
+	id 1qPIZ5-002L2O-1D;
+	Fri, 28 Jul 2023 08:11:13 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0BA0F6607166;
-	Fri, 28 Jul 2023 09:11:09 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DF5C3660704F;
+	Fri, 28 Jul 2023 09:11:06 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1690531869;
-	bh=yYvD8O4U9F8BRRQYpZMS0nxYKjHuhUsKk66nJf/o4K4=;
+	s=mail; t=1690531867;
+	bh=vCwUzlqOQGnNY9fGXomLGaxMGGyn0nTi6KpRvQZbsfw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PHxGpKjauUYQ+IRh+pFphVXTu+e4qLGhqkzO9B9n72R7UWmSP7Ty3QtoQjBnur7Xm
-	 4qDtxsdoAXvlXlqDQ/Zp5MCgFlqIBEDorPx0iNGIguKfoYgn34i9EggXOSzD3ZWHWz
-	 Qd2CBe/ojBoYPn24B1e9qga4uj+kM7qJGlxu7tNY4W4jNDULZpT5FeuOtmgCqNwNcn
-	 V7DSZ5Coz8ukTktW/KI0r3yoTc9eBbMMuPTGIgOz+ENl3MnVM1kp1iaTkuysjQtaBm
-	 563yHj5s8r1pxW+0TAE/VycPajQqcuGlAEdz64BsW1EJADolN323rlgmkInxvc3CPb
-	 D0Kgh27k4JCNQ==
-Message-ID: <8c18da20-87cb-4125-c93a-c6750fd02b7d@collabora.com>
-Date: Fri, 28 Jul 2023 10:11:06 +0200
+	b=K7hVcO8Oeapz0cviNUSNSl24JJFW3497w7NWQsDmgOOWg+mfCSAeRiao3ndHFmNLB
+	 uF0MzRhYqtapZnPT5MQDaMOg89Ul/j1VfCA4ABKVpSfJtTnmbn8s9UCjb9qVPUjPsP
+	 rZ1GYkthazIVXwZkicAzMeR2YlC3IfKrKO+de4igI6/bt3K+1FwBLyhSGxOYXwpWX9
+	 z4arbaKCBqHrhsnqRGiwcTFzmUMYaX/YO1uU6LhQ0zQ7LLSdWWo+gB+FnvYrvMbE8H
+	 TuOgLdfPhTzE4sBViPG1nos5UM1suh1PAhaFse0zNLM1DpRmBQzkG02DK0Puv/Ujr6
+	 GbXM3zzwC/DZA==
+Message-ID: <fd1cb69e-f942-581a-48e8-4fd160ab1b64@collabora.com>
+Date: Fri, 28 Jul 2023 10:11:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH v7 2/4] drm/mediatek: Fix using wrong drm private data to
- bind mediatek-drm
-Content-Language: en-US
+Subject: Re: [PATCH v7 1/4] drm/mediatek: Add mmsys_dev_num to mt8188 vdosys0
+ driver data
 To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>,
@@ -62,14 +61,15 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
  linux-kernel@vger.kernel.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20230727164114.20638-1-jason-jh.lin@mediatek.com>
- <20230727164114.20638-3-jason-jh.lin@mediatek.com>
+ <20230727164114.20638-2-jason-jh.lin@mediatek.com>
+Content-Language: en-US
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230727164114.20638-3-jason-jh.lin@mediatek.com>
+In-Reply-To: <20230727164114.20638-2-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230728_011111_567685_7CE68FA5 
-X-CRM114-Status: UNSURE (   6.57  )
+X-CRM114-CacheID: sfid-20230728_011111_567089_F3736D54 
+X-CRM114-Status: UNSURE (   6.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,12 +86,12 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 27/07/23 18:41, Jason-JH.Lin ha scritto:
-> Add checking the length of each data path before assigning drm private
-> data into all_drm_priv array.
+> Add missing mmsys_dev_num to mt8188 vdosys0 driver data.
 > 
-> Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 multi mmsys support")
+> Fixes: 54b48080278a ("drm/mediatek: Add mediatek-drm of vdosys0 support for mt8188")
 > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
