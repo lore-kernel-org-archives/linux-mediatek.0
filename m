@@ -4,63 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF66BC001DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 02:51:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6157CC0015E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 03:00:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NVcNsBAKcguHf60VNyFKcf1SSOWeVwHfHYiRahrpzP4=; b=lbBpjc9uhObmR/tkuZt/UHLVmQ
-	sHKE5kQfu4+TXQwVJmrOU7xwIHuHkECm2+iT+hgqKdltWwwRpR+JzoWhUuyRu0kYk71RiW9IbcqBy
-	nG27+64ZgeAyhNUSJPzeT6W9EZKn+iQWZSFOsppNySD0r5KWWgLA1xDJrSfBiUz6M3F37huCT9f7H
-	xh9PnvVRqBrkBDo6jMhKlbTRAr46iKrUwGtHG0yrvRmMZ9CroCz8ppQmt1u7Ft1HAHdRKQe0XrOlO
-	Slh2kkmwUv+Fd/TZsyDHY4BGpEfrd20jpkhduPv3USXvBHjYYxcY1HXZpgKw1lHBqSMS09p3SCc3b
-	snAWUyGg==;
+	bh=CxV19o0KC50J6ousdCuLaiAFSegaAoRHAMQOW5YpiiM=; b=rfyCxuZKgHpuXNKIBCywuosfXu
+	7QCr/ws82U/5kH/h9Ni0Cc6lrQhvtb5AIF1xJKK4fQ8SSFBMPzftief05n2bdWI+YTUT3KPxWFN7f
+	k8ruZLTc5InKXppvXYO92PXgkUNZHwnF4k7XLFecCZyOAFFCwseFh105zv1XlxMFtGggr9CWHBb0n
+	mxDTibCHFmsVW/jYDmjGJqfpinheV4WILIMzxKPY6UpnyohW33ZzxlwJxRoX+DDADAKT7KbzTuOC+
+	3dWCqvj0Wmg+FnrR7ZTWMwZras8ESfbq4VVOjuZQWdirdsFpxmz76Lj/IR41+nFDAAAfriocKIihM
+	nmNM/bdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPDZp-001Lwa-06;
-	Fri, 28 Jul 2023 02:51:37 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1qPDi4-001Q5r-1S;
+	Fri, 28 Jul 2023 03:00:08 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPDZl-001Lvd-2X;
-	Fri, 28 Jul 2023 02:51:35 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1qPDZc-000096-2m;
-	Fri, 28 Jul 2023 02:51:24 +0000
-Date: Fri, 28 Jul 2023 03:51:16 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 2/2] wifi: mt76: support per-band MAC addresses from OF
- child nodes
-Message-ID: <4958730e4f88b91442fa96365785d467fad502de.1690512516.git.daniel@makrotopia.org>
-References: <6e9cfac5758dd06429fadf6c1c70c569c86f3a95.1690512516.git.daniel@makrotopia.org>
+	id 1qPDi2-001Q5P-2N;
+	Fri, 28 Jul 2023 03:00:08 +0000
+X-UUID: da2e8e2c2cf211ee83ed1395ce914268-20230727
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=CxV19o0KC50J6ousdCuLaiAFSegaAoRHAMQOW5YpiiM=;
+	b=j13sVoVWmUUT5ve1Qr1QF7i7ZN18CKDZNWFiMzCpZgmY67geUyiP7/4wwOlqFL+AVrKmMDJ441aavhHiwymPEW1rYSh1pYxtVmicCEl6QMIckliayNVkIYQX5LAGTHYfd+cbGxPGQdLKp/qgfXC798hgbB52jMNNh7NoxU877OY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.30,REQID:8b63541b-1b3a-436c-a7f5-6b784ffbdcf7,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:fe376ad2-cd77-4e67-bbfd-aa4eaace762f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: da2e8e2c2cf211ee83ed1395ce914268-20230727
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1986294185; Thu, 27 Jul 2023 20:00:04 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 28 Jul 2023 10:40:01 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 28 Jul 2023 10:40:01 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tinghan
+ Shen <tinghan.shen@mediatek.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v16 01/14] dt-bindings: remoteproc: mediatek: Improve the rpmsg subnode definition
+Date: Fri, 28 Jul 2023 10:39:46 +0800
+Message-ID: <20230728023959.12293-2-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230728023959.12293-1-tinghan.shen@mediatek.com>
+References: <20230728023959.12293-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <6e9cfac5758dd06429fadf6c1c70c569c86f3a95.1690512516.git.daniel@makrotopia.org>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230727_195133_819999_B3DF0B7F 
-X-CRM114-Status: GOOD (  13.57  )
+X-CRM114-CacheID: sfid-20230727_200006_806840_10534D98 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,68 +90,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-With dual-band-dual-congruent front-ends which appear as two independent
-radios it is desirable to assign a per-band MAC address from device-tree,
-eg. using nvmem-cells.
-Support specifying MAC-address related properties in band-specific child
-nodes, e.g.
-        mt7915@0,0 {
-                reg = <0x0000 0 0 0 0>;
-                #addr-cells = <1>;
-                #size-cells = <0>;
+Improve the definition of the rpmsg subnode by assigning a distinct
+node name and adding the definition source of node properties.
 
-                band@0 {
-                        /* 2.4 GHz */
-                        reg = <0>;
-                        nvmem-cells = <&macaddr 2>;
-                        nvmem-cell-names = "mac-address";
-                };
-
-                band@1 {
-                        /* 5 GHz */
-                        reg = <1>;
-                        nvmem-cells = <&macaddr 3>;
-                        nvmem-cell-names = "mac-address";
-                };
-        };
-
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/net/wireless/mediatek/mt76/eeprom.c | 20 ++++++++++++++++++--
- 1 file changed, 18 insertions(+), 2 deletions(-)
+ .../bindings/remoteproc/mtk,scp.yaml          | 31 +++++++++----------
+ 1 file changed, 15 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
-index 36564930aef12..c2b3386cada1c 100644
---- a/drivers/net/wireless/mediatek/mt76/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
-@@ -161,9 +161,25 @@ void
- mt76_eeprom_override(struct mt76_phy *phy)
- {
- 	struct mt76_dev *dev = phy->dev;
--	struct device_node *np = dev->dev->of_node;
-+	struct device_node *np = dev->dev->of_node, *band_np;
-+	bool found_mac = false;
-+	u32 reg;
-+	int ret;
-+
-+	for_each_child_of_node(np, band_np) {
-+		ret = of_property_read_u32(band_np, "reg", &reg);
-+		if (ret)
-+			continue;
-+
-+		if (reg == phy->band_idx) {
-+			found_mac = !of_get_mac_address(band_np, phy->macaddr);
-+			of_node_put(band_np);
-+			break;
-+		}
-+	}
+diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+index 895415772d1d..271081df0e46 100644
+--- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
++++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+@@ -58,6 +58,18 @@ properties:
+   memory-region:
+     maxItems: 1
  
--	of_get_mac_address(np, phy->macaddr);
-+	if (!found_mac)
-+		of_get_mac_address(np, phy->macaddr);
++  cros-ec-rpmsg:
++    $ref: /schemas/mfd/google,cros-ec.yaml
++    description:
++      This subnode represents the rpmsg device. The properties
++      of this node are defined by the individual bindings for
++      the rpmsg devices.
++
++    required:
++      - mediatek,rpmsg-name
++
++    unevaluatedProperties: false
++
+ required:
+   - compatible
+   - reg
+@@ -89,21 +101,7 @@ allOf:
+         reg-names:
+           maxItems: 2
  
- 	if (!is_valid_ether_addr(phy->macaddr)) {
- 		eth_random_addr(phy->macaddr);
+-additionalProperties:
+-  type: object
+-  description:
+-    Subnodes of the SCP represent rpmsg devices. The names of the devices
+-    are not important. The properties of these nodes are defined by the
+-    individual bindings for the rpmsg devices.
+-  properties:
+-    mediatek,rpmsg-name:
+-      $ref: /schemas/types.yaml#/definitions/string-array
+-      description:
+-        Contains the name for the rpmsg device. Used to match
+-        the subnode to rpmsg device announced by SCP.
+-
+-  required:
+-    - mediatek,rpmsg-name
++additionalProperties: false
+ 
+ examples:
+   - |
+@@ -118,7 +116,8 @@ examples:
+         clocks = <&infracfg CLK_INFRA_SCPSYS>;
+         clock-names = "main";
+ 
+-        cros_ec {
++        cros-ec-rpmsg {
++            compatible = "google,cros-ec-rpmsg";
+             mediatek,rpmsg-name = "cros-ec-rpmsg";
+         };
+     };
 -- 
-2.41.0
+2.18.0
+
 
