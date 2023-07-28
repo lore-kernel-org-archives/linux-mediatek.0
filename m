@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C86DC001E0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 13:00:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46769C001DE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 13:01:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aQ7TENtsQkFhqj90o2fCA4gySBLYYAXohXgU0sJf+S4=; b=Z7LysPVvWiNheel4aXkqHTojzS
-	Nc7dNJG6Ls+gvk6/ajEPy0HNdgBwaArMShcK5Sdp4tCczPZEWojrNW5rYH1N+7LOVzPCHiOrkLWZm
-	9ST9BgUQSyYrdVQHuvXJiExHTZOOBAx/MpQlO0rwXQvrrI/4V+2857wpYZrr8Z/MNx6ieE8hR9al1
-	0fDlAZRmVoTCUoHfzcMFEPjvrc4B1Satcpd01QoJ6zmTLQ8y+2v+x+rCeW2WLXIs0cXTPNvoHbLkH
-	sAUzqNUMqdlPir0+PcBjjdTtT0Btc3ZjcL2pgP6rAoJ/uBxbE/3+AEHSVAjWRFgdvVCtLlzq0lTPP
-	8ThOrPGw==;
+	bh=Bf2mVoVflay+UuUZTM6QyCoyU7R8Oct66Mg/IJM6lZU=; b=YIB4qRjuWIt4lJ2SREYzdAeNLZ
+	fdVi0K4RMSber//omMobNVFukDen55krtycw27HmKVxrWP28rvc5b3l4LJpJO8Y/SOLIMQdXwiaiI
+	i2YdZETHPkZg5ARtBws2hoVPBP+xSdsCJDIbtrXuhXpxT/zLDuEUyjQA9xVgMWnYccEkBredTDCfm
+	eARWMPprp+xnBnd8RNx2/luJd767bRdNkn7gpsvaV0dhgH9+kXfU16B+Mv8xTVzT8H1N31D9ITGfg
+	E5RrMmczTnggvTtZ3uRoh4LcgYX6+FxAuKGx9vQu5+4x1gx01WdWi6zY3KU70BkFG9uTDrya77sa0
+	HwC1RWtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPN5Q-003Tew-0A;
-	Fri, 28 Jul 2023 13:00:52 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1qPN5g-003Tm3-0q;
+	Fri, 28 Jul 2023 13:01:08 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPN5N-003Tbd-0J
+	id 1qPN5a-003Tiq-2H
 	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Jul 2023 13:00:50 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-3fbd33a57b6so23467395e9.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 28 Jul 2023 06:00:45 -0700 (PDT)
+	Fri, 28 Jul 2023 13:01:06 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-3177f520802so1372834f8f.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 28 Jul 2023 06:01:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1690549244; x=1691154044;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1690549261; x=1691154061;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=aQ7TENtsQkFhqj90o2fCA4gySBLYYAXohXgU0sJf+S4=;
-        b=TdgjYD7E5glMNvLk6eOm8Wy4ecM1zmFsHffYKx7OaFpA70eMULEUlnhr6EL5yhYphW
-         ZXgzaO13Wjwqi+BroISZ6BxBCOYa39GX3b9vqNLkACsaxu4Rw0XUYwypzCS1i6uPP4fV
-         BZHq9PktFfwqULKVHpjNjOachoMGI7Fs5IbtzmHdqJnmKvQpb3qyXiMYwQtZq5y7pmpP
-         USfLCCn74J/L4j285lKh2BfAh3Q5EgT44fgFVkVj2SW737O2dF2yiCo7MVfUxL/apsgc
-         k5/ZGfkKcLpKJuUzSK00u49bww46McJbYi3k57a/JbSlZObpfe+UmTNo4rJmsYOJRmzM
-         38tg==
+        bh=Bf2mVoVflay+UuUZTM6QyCoyU7R8Oct66Mg/IJM6lZU=;
+        b=JME2b3NVifOSLmvYqpLZ6dYV47f3XRbiSi+7NW889mMqzoXpdDGEKdZWATqZ7ftWdW
+         4QWqynSN7bqiM8sQyoTErVMsn/rG7A2MKbUZPyqjqZVGf9D5S1RFFphW0fLwAFwG+bS3
+         VS16Jzgi129OW50T+WKR6QWKjI2kmfRp5k/rUK0w3WHXJX8mUsw75CKr9kvDgn/tjXj5
+         Vw0+jkIWkzGyjfAdvbhUtv2pG88ihXQEyhshq0MGMI050Ul05iL+DM4oPI9ZHQ+Bt/u3
+         ytD+hMbSidKRGWarh7IvfUVqrcJBjwrQYFa+cYgIqW0TIFfuGftfuibIsLfBh9R/Bnw+
+         SsnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690549244; x=1691154044;
+        d=1e100.net; s=20221208; t=1690549261; x=1691154061;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=aQ7TENtsQkFhqj90o2fCA4gySBLYYAXohXgU0sJf+S4=;
-        b=YnHKLLBqu098jo+x4RhhB8J6sAUNxM37sFKf5Z8Q+vb8JbC2eBFS6EOkBJ04OXD1FV
-         QKyMUpk0YLbf3Ggk/EyA02v5sXXvmL2a7I7o/vobWfBMayqX9Xtt+RF6j7+1E58warRt
-         GinaRNzdpiduYylC3ZeF/f9TQVGRB1IGz4/AuPAfr2yua5IoFkDMtRmNWkw4YeftgXGk
-         neqOnzRt5E+NVVNtQwjliVtYW0ioAorXzSim/UaliINL74Be1LdcdO5ZJ7pvm0pQYztB
-         nNeVftudOfyhSMeHgKoiNkCZdjGcQY8cbJEwDmLuyXITPN5v1frPg2vnDEUcOaXhsdCX
-         9qJw==
-X-Gm-Message-State: ABy/qLYCYb2eUfLW9manbrN/Kh35Crt2QJfag4AizM4XE5dTM91TKKCG
-	5HlOVNegj0IXrpsJv/PFj9Az2A==
-X-Google-Smtp-Source: APBJJlEOKfW1ZGAJOsrsnkH2CgAX1ClU5jm83vu2VnugwVvxyESowVTnZPErdgM6iYKniY4urP6VQA==
-X-Received: by 2002:a7b:cd0c:0:b0:3f9:b244:c294 with SMTP id f12-20020a7bcd0c000000b003f9b244c294mr1858283wmj.35.1690549244305;
-        Fri, 28 Jul 2023 06:00:44 -0700 (PDT)
+        bh=Bf2mVoVflay+UuUZTM6QyCoyU7R8Oct66Mg/IJM6lZU=;
+        b=ROUoh0Li0Q63DKKdnyLmmjJ77P2mgm/0K/EeZKAuZaVQ6LxHbkGgLTSjgu6mrIEr3L
+         +gq6I45najCpEZ1/Z0+Cyos0FgAsOHkO7rKDAW4sB4iPlAwVMEsZh/IW4+e3egvMO06a
+         8abEC0aEep+GU/kXmbwjnsQq5EiYgsD1PZQlgSSRzdRkQyQO8xDWMNs0RWmKMaAG7THn
+         hPz0C4Fup0LHSeEH7AwEfAIF6NoiTjblZ5mO7No7hJpssCenfJ69UG53sVsHG6Ju+Dsx
+         sfzP3jo8knbU6H1esjNMgkAtdYYvoPk4aalbNUjVPx2F8r61wPE/WUwYRPkrUPe/euVw
+         2f9g==
+X-Gm-Message-State: ABy/qLYlhkFc5JyuOequJvX4g2Z9R1fsf6sXChRNgB/RkF/8iRJq+vRg
+	dKnbkiY7i6WkaXoixAPBl/hteg==
+X-Google-Smtp-Source: APBJJlGVqDRGmbAbM0+sd1YryU2znrhwu0i4M4Xf/2epgtob/BhmHayOa5M7HaMRl38LctbCDO00tg==
+X-Received: by 2002:adf:e489:0:b0:317:5f35:854a with SMTP id i9-20020adfe489000000b003175f35854amr4674582wrm.13.1690549260939;
+        Fri, 28 Jul 2023 06:01:00 -0700 (PDT)
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id g17-20020adfe411000000b0031437299fafsm4818155wrm.34.2023.07.28.06.00.43
+        by smtp.gmail.com with ESMTPSA id k8-20020a056000004800b003141a3c4353sm4809226wrx.30.2023.07.28.06.00.59
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 28 Jul 2023 06:00:43 -0700 (PDT)
-Message-ID: <06162f85-bb38-d07a-38f6-e7303c80996c@baylibre.com>
-Date: Fri, 28 Jul 2023 15:00:42 +0200
+        Fri, 28 Jul 2023 06:01:00 -0700 (PDT)
+Message-ID: <05b6bfd6-5227-b146-f5c1-d47881300e6a@baylibre.com>
+Date: Fri, 28 Jul 2023 15:00:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH RESEND v6 04/11] drm/mediatek: gamma: Improve and simplify
- HW LUT calculation
+Subject: Re: [PATCH RESEND v6 05/11] drm/mediatek: gamma: Enable the Gamma LUT
+ table only after programming
 Content-Language: en-US
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  chunkuang.hu@kernel.org
@@ -79,15 +79,14 @@ Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
  kernel@collabora.com, ehristev@collabora.com,
  "Jason-JH . Lin" <jason-jh.lin@mediatek.com>
 References: <20230727094633.22505-1-angelogioacchino.delregno@collabora.com>
- <20230727094633.22505-5-angelogioacchino.delregno@collabora.com>
+ <20230727094633.22505-6-angelogioacchino.delregno@collabora.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230727094633.22505-5-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230727094633.22505-6-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230728_060049_141296_D6323E3F 
-X-CRM114-Status: UNSURE (   8.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230728_060104_308268_0C775214 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,13 +104,16 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 On 27/07/2023 11:46, AngeloGioacchino Del Regno wrote:
-> Use drm_color_lut_extract() to avoid open-coding the bits reduction
-> calculations for each color channel and use a struct drm_color_lut
-> to temporarily store the information instead of an array of u32.
+> Move the write to DISP_GAMMA_CFG to enable the Gamma LUT to after
+> programming the actual table to avoid potential visual glitches during
+> table modification.
 > 
-> Also, slightly improve the precision of the HW LUT calculation in the
-> LUT DIFF case by performing the subtractions on the 16-bits values and
-> doing the 10 bits conversion later.
+> Note:
+> GAMMA should get enabled in between vblanks, but this requires many
+> efforts in order to make this happen, as that requires migrating all
+> of the writes to make use of CMDQ instead of cpu writes and that's
+> not trivial. For this reason, this patch only moves the LUT enable.
+> The CMDQ rework will come at a later time.
 
 -- 
 Regards,
