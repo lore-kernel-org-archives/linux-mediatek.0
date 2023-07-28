@@ -4,176 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C44DC0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 08:14:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2001EC0015E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 08:15:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N0l/KWrqizG7wRxWcRuXTUPGF62vrxu7HR3Sd7QhgzU=; b=oOuJUjidSnXgro7H7do0sHZhx0
-	F3aHKr6a0dyQppzGKh41RptFht9OtYNmPhl1wVo0nj37dzyaAM5YVbIaSDzpNb1DMbV6YUWIXwefJ
-	tUVPO11vKwul9slVMwMvu5+Y9peWlYlKyfqkylHZbz5Ws4DwnmNBSZhiPLGV+eajPAVox5hjeNHtn
-	T2eD37b0aP9P81xbLXP/MTKBA8NSzgBivOz6SaQI4kCQ9bDBSEh2o6KaMkfRVQ/Ef3ISoF6Gy2qwi
-	e0VHqJ4Et1dyUR/i2EgzgGgSAKTgwSq4sOKFaGgkXHDOxP0ZDWm31GrYCTaFPKD9NZGkleL+iI2Hc
-	wYXGxXPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DcV8Q4Pgm6GKbUOkroMKjnPEjuGHxbPnmE1SCdpXwKc=; b=bo9A+XonUTGlkfUc+ydudYqDWj
+	PQedIw0SQ05UZktu9bUEhFt8E9SMUZLWprgwVvcfsXi9tz5LlUMpyvd+zlsOSjMVvAQxU1cBhdxcf
+	12XGm/dOjhKJ2fAAGMeTDZGyzlBYWxjMzcQR1CE49w8WGGCnid0QwwIK/s5rkcEGT2TQeILLGwynd
+	ZsJa6yoofVP0GW6Y5xxBfj+7JiBdX2koTlz2CJeze9468Jzb4HU+OAVNxCeAFTpmDl58wqRmDUVZ1
+	x/4mhOz6YfE+pKv52jjgmmG5MnsBctyBPGJi3jRnF+9cXpFtYOzdUnwGFOralIIpUEfeGvrTS29ZA
+	qJBKqVMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPIcD-002Ly5-1m;
-	Fri, 28 Jul 2023 08:14:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qPIcl-002M6M-0U;
+	Fri, 28 Jul 2023 08:14:59 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPIcA-002LwV-2m;
-	Fri, 28 Jul 2023 08:14:24 +0000
-X-UUID: bd1813a42d1e11ee83ed1395ce914268-20230728
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=N0l/KWrqizG7wRxWcRuXTUPGF62vrxu7HR3Sd7QhgzU=;
-	b=QucHW9iFyaTSI0XMGTW03qQU123nN7BisD7utt98JmoyqmItjk55OmhI4v/dH0i+XRpeo09LznSw6LBu0eUl3WicYMyS39S0hUrs3R9ZMFI2Xt0qOd6pQ/2b8Zsy8Bhs4q2IP3M63HSDfsX3ZQaSfVLJokyjU7CTg4w0+YferKw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.30,REQID:af79d081-db53-4d10-a8ef-ecc1a9d2b1c9,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:1fcc6f8,CLOUDID:90a7a1a0-0933-4333-8d4f-6c3c53ebd55b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: bd1813a42d1e11ee83ed1395ce914268-20230728
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 145765463; Fri, 28 Jul 2023 01:14:13 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 28 Jul 2023 15:54:10 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 28 Jul 2023 15:54:10 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TOZvLi3D6NpMSHt47iLK1VJqWN9XtxjWq+5XXXGX+sFqidQKXfDho2cbEwYYpsutJaKBW1EQbk3x7YKLfOPqZEu0++k1ollZDSlNVGL39yfolXAan7wzUfrOIN/Xii32bTTPseSg3Btdc3/nFjfCi7lmWOPL7u+s46j+mAo/Z8wcidDqjoiYCnIaKRXBniIePHGzHmABUBRE1RXXY/ZwqI/ieq4jFSZ8aJBC7CQ/MKUPJh7B0TGwnGfojCBI9OcNq0pIy3EaKJ9nP5tZ+ogAhnikLace9vOR/gkGRodsbYN0qxdFRO+P/aW2AVVRGCugX9+5PgZ41rvcweuo3p7q8g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=N0l/KWrqizG7wRxWcRuXTUPGF62vrxu7HR3Sd7QhgzU=;
- b=SIfFGjy78ajdHOrIndiMJlmAO4AhsKSli/i37bjIvyjg+SGfMZBDWlPTGTjWbeMCOPIEiskcHJNCfHuHC6Rl9SC4nci4kT5PcXLVu/6rO0n4eLrgEWlvzMM1OJOr5G9XYKhLX/81hfXe04ewdz8mYWCPNAaO3ty7e8vhpLpl7/kn685omc647HUD/9Ff6odJDXuqOOQfXo+y1p6U6GWQbhI822vg4JqWHtlQuoXQB9z6AqmXUQafTu3E9X5yNk0pd9rDyEEwgVF5SZpgzahcwK2EE9HCcNHgKXgXcZl8tQMF1oRHtlZ32H4TTp7Ir6GJBmSlPHDASMU5bWhN0k42Ig==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=N0l/KWrqizG7wRxWcRuXTUPGF62vrxu7HR3Sd7QhgzU=;
- b=F4wmZXrlYZ7evzVIxdzkK7Q6A9li8v2YugpqOWv7V2x48FC16FFoAZbUwxRlFkRgMESs72jlJYH6xFItKoC+l/oboX9s5dF38GX/zVH6o9n4uSxgplfd/Y24HRmUFoyCmkYbm3DaCJXfCSRibS86TjBIf+mICHXx0MGTFQ3px2c=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by KL1PR03MB8164.apcprd03.prod.outlook.com (2603:1096:820:ff::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.29; Fri, 28 Jul
- 2023 07:53:12 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::d126:7f34:9e4f:a95]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::d126:7f34:9e4f:a95%4]) with mapi id 15.20.6631.026; Fri, 28 Jul 2023
- 07:53:12 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	=?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
-	=?utf-8?B?Sm9obnNvbiBXYW5nICjnjovogZbpkasp?= <Johnson.Wang@mediatek.com>,
-	=?utf-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?=
-	<Jason-ch.Chen@mediatek.com>, =?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?=
-	<Shawn.Sung@mediatek.com>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>
-Subject: Re: [PATCH v7 1/4] drm/mediatek: Add mmsys_dev_num to mt8188 vdosys0
- driver data
-Thread-Topic: [PATCH v7 1/4] drm/mediatek: Add mmsys_dev_num to mt8188 vdosys0
- driver data
-Thread-Index: AQHZwKk4HfkzhGIMM06gXp4K6tA+ua/Oz8mA
-Date: Fri, 28 Jul 2023 07:53:12 +0000
-Message-ID: <7ccff501df5909936e27e352b08aee4c6276ffe6.camel@mediatek.com>
-References: <20230727164114.20638-1-jason-jh.lin@mediatek.com>
-	 <20230727164114.20638-2-jason-jh.lin@mediatek.com>
-In-Reply-To: <20230727164114.20638-2-jason-jh.lin@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|KL1PR03MB8164:EE_
-x-ms-office365-filtering-correlation-id: 5e625d90-963c-4045-9326-08db8f3fb185
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: jcb+4bPPpSPUzjnnVUk/eph/e8CiIlx1FWI4NPaJIzsyjuhmtEC07wl4mNYM0CBADqpCgj0JiGhyaXSg3aDS4Q66tA9p2pQ/9XOgpVVP/ucsp8yG75qxMsfxG/Q0tD0RDtwPJUxp2PrWPrIJHyWQ7wn6OGcxTNwTk3neQvN+dsgOxzsAhgnt1z0HRjzgVFj5amdxUN/Mp3raHh4fUL45ACZR9dRGZLQ5EXs+1AlJhzHhEFmG6WAM6E+dOi6YlIOnJDKucCcC0qXbG0kUZ17UlwCDeFImQR3t9KwbSScghVdIOuZovM+4qRHQVy3tUewTXcrD7nm7WwgmsF00EJMmCNS62LOXRJXhk7ENPSDD/VqjS6+mvGRgIraFv/DmJHo+x3fooPeUWwFN4KPQoprh/3dXXqmKTiOo2yqqSBn8iEZHrNJ4lBcA4/4AsqdtN8wzJLt5O60WVOFaTNkaA3WJ41m01UiwRAazR4NKKmumxxuGpJ5nIHSoOvd3cRLSFZ7XvRrRA7ttVwsGUiC+iFQTBfu4yACV3bg8z4d4D0aCsMH9sxZPgmKT+KfOLG83yzfOMe3H/veZuQMKhWIkP1P9Q4WSD4wnGBJx/XPqIfUhTxSJ7T5j5faD/rLZZmwSEvuJI8WGKWHlPTOLmXK8BgkyWNZrH4PIG7dPjrM/PpaP8XM=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(376002)(396003)(39860400002)(366004)(346002)(136003)(451199021)(6512007)(26005)(6506007)(54906003)(36756003)(110136005)(86362001)(85182001)(38100700002)(316002)(38070700005)(5660300002)(4744005)(76116006)(66556008)(66476007)(41300700001)(4326008)(66446008)(8676002)(71200400001)(66946007)(64756008)(8936002)(2906002)(6486002)(478600001)(122000001)(2616005)(186003);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?TkhIVWsyUGhZMXZ6ejIwY2ZudWpkWFVZaDJRZTNGRlBQc2FVRVNFV2RPSkg0?=
- =?utf-8?B?bnFYc0pkSCtOeGdsM1Y1MFFYa1p6Qmtpbld2SU9LVllsb2dQeit0Y2E5RTFO?=
- =?utf-8?B?RGI0UzdmZFR0b21KYTE5VUlucVV5eXdHRFdwM2pHRjl5eDl5NlZpT29HSDZR?=
- =?utf-8?B?bXpBNVcrUWdTVHNkcEJwMGhlcGpnMFZwZDM2bWtsWnpaWFVaWGg0TVk2dkVM?=
- =?utf-8?B?N1ZuYVJiQncxVnVqVkJXQWY1V1VpbHUxQU1GVUNtUFg5dW5PcjBKS2E5RDFE?=
- =?utf-8?B?TWk2NXNTSVJFMHpPbWZlekpTZWN6aHA2cDAxd2pBczNQSU9KQnpSQWo5U2Y4?=
- =?utf-8?B?Um12WmppcGNZcGo3WlBnb3p3UzVuVFBLTUtweGJsWm5VcXNoa2JUbG1HMU9M?=
- =?utf-8?B?YkVmaC8rcWxLRDlRemZZTTFTWDhMRm1ncm1wTTlTbEJpQW5xVnFwakJNN05P?=
- =?utf-8?B?ZjM0T0ZIZHJFYWtnV25seXNCYU9aZjkzbVpaTnoxaVRSdys4dXEvdFVkS3JO?=
- =?utf-8?B?cHZXdUMzZlJZbzFtcGhPVFFmbmllNS9NU2QveVIzN01HUUx6QUhleHpMVW5C?=
- =?utf-8?B?UzZET3RWU3dBc0xrVXNRTHJQQk9GOHdOVnhobzdWdkVQUUo1cDZ2WEw2cEt2?=
- =?utf-8?B?YktpZlFPWldEQlJFMjBpYUpyaGRneVZRR3ZldkN6czJVWmhmK05SWEwxSmlr?=
- =?utf-8?B?T2MxeEx1N1Rma2wzRUwzOTVGQjlJS09taC9IWXBKMTk3RC9kQ1ovYU9NRDBN?=
- =?utf-8?B?RG1aS0F6UEZUbFQvYVQ1M0tpY3orcVRwMjBFd2FvaTF5NTJxRGVZYmgzd3lz?=
- =?utf-8?B?eEx1Mk1hTk1leTUvNUVQay8wUzJVbEJRdnZ6ckZaRDY2dUNDQmhpOGcyQWg3?=
- =?utf-8?B?UHZmWkpUWkZxbnZtMUNqK2w1UEVXTFRDUUJUVlB5YXNNZCtEUUpxWWliMHBu?=
- =?utf-8?B?REh1SHM4cHFXMVBwMERCSHhwaGtNNWlkMzhvSFlRcVNobmVnUjE2TldzS1FL?=
- =?utf-8?B?QWNPUDZWbE5OUXNRZHV4VkF5bUVZTE9FSmY4T1QyS3VOZXRXVVFIY2tOSHU2?=
- =?utf-8?B?akFsNVk0ajFEdnhKMWR6Ym9BVEdaWWI4NDhsalN1NmxXYVZOamNUNWQranRF?=
- =?utf-8?B?QTlXSklNS0dDK0pSQmFYR2hXSXV6SWtsbFE0SXA5eGViYURRM3lCMjEreUkz?=
- =?utf-8?B?d3l4L0p1NUE4NlRzUmEzTWF5UXBISDlUa0R5ZjJKTTZGcFlWVVhxbXVWTU05?=
- =?utf-8?B?cTBSaEgvYzRyUlkyZ1V2SGdxMURoTG5ERWNpT0ltMW90QWczaG1nNE8vMURK?=
- =?utf-8?B?bkxHbzc5VGNOTGtJTlEwbkdOd284TFVlMU56dzIydE1GenZpTGdIdnV4STl1?=
- =?utf-8?B?cjM4RnlKeUpLcjg3V1ZmOEZnT0ZJeG9CRGNSY0R6bmlMZklmcitaNTFOLzVG?=
- =?utf-8?B?ZTNYc1pIaFVPWlZZNEk5RXpWMGEvcWlwWVVNWEdvYVVIQXMzWUgyb21ycnRV?=
- =?utf-8?B?RUk1OTJ5M3pQVkUxTmxrdUM1Z1hYMjM4TE0xaTMzazhHVmExK1I1L2lCMXdB?=
- =?utf-8?B?b3pTYk5IalNJcVVZRmZxSlVpQmNwT2dRMVNKYjlhM0Rsd2ZVZlFFZG51UWF5?=
- =?utf-8?B?aGExQ2hRVW9LYVVGQ1JkY1hCQUo5MmFqN3ZNNVlndWNMNUxuM05yTWtBL1li?=
- =?utf-8?B?SkZMblBwRFNDTlNzS2tpTmhoVmNRSU9kS2VFRkFlVlFkWWw4VTV0RkpOYU1C?=
- =?utf-8?B?WC9Xa3doRW5xMkhjTzl0WGJ4Z0Ftb0VzZTJZOFJKQ04zVUd1RnlIQlVzbnBY?=
- =?utf-8?B?Slp5NXNRWVRSVWkxS3QyT1hRK1lHWHdkM0FMR25JeHZzWjBOMXRvUmhKc2Ni?=
- =?utf-8?B?TEthWjFyWHBBUW8zWE9QekFmTW9jbHVQQjZlNzdGM2RzWkZXRDY1cWtWWkI0?=
- =?utf-8?B?MzVwS2licFRqRG11RDNzYm54Q1RDR1o3TnF2azBoNlQ3djZrdHZZV1pNZ1lj?=
- =?utf-8?B?Q2JFS3NQcFdYRlNkd3gvS29nWjBoTnIvSjcxakVtN081TXFCOTZUL0ROdjBo?=
- =?utf-8?B?UTRLYW12c0N4eE81RVVTWTAxV0ZWRG43cytIaGwvdDhyYlQxU2FvUk5nck44?=
- =?utf-8?Q?KVXqRnGl3SDxq2drdCPOwDLqb?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <8BBDF13B9A592C4E93655585DFAAADBF@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1qPIci-002M4l-0M;
+	Fri, 28 Jul 2023 08:14:57 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 184C5660704F;
+	Fri, 28 Jul 2023 09:14:54 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1690532094;
+	bh=2u0/wsFge3BQH+xmqZ62PwLYaH3IHkVQ6bmaZZoo6no=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=oBmGVlnP85D1wiHzRNV+MotQljwNcxh32EiHMhpZdOxo+WXXrOGMzTC84cLAo1rvu
+	 5WiDzf51juHFVdcu88oRebzt8Em7zwWOPQWkk07sE/EpEV+dR9IHo7/6/mpLuW0hD/
+	 2iucveIkR+jcyARHKCwkKwYr2lKoHQ4zPHOkajU/gjVb6JJupApanor54nyI66sG9Z
+	 NKgNrW6WiHOZ/x5OvbJ2CaUWLm1ZR4X5I9IUhxJV4NhRKePaJiNPdYed6HKjxPDiti
+	 Mfm+KnEMJOFqSEJ3pFIBQuHe+TTMgAdUpUC4xW+/XiIy1BpGreUlyTAWs/pxi64iXX
+	 IKuWLbwnA166Q==
+Message-ID: <3dca39b3-b152-34e7-8959-78fe68e1a899@collabora.com>
+Date: Fri, 28 Jul 2023 10:14:51 +0200
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5e625d90-963c-4045-9326-08db8f3fb185
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Jul 2023 07:53:12.6523
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 8drPCeuSDqmf+uVPKx1REatONtv2y/bSFvgSmfm9JEF9DHcU44wDHSipp32g8d5838zmNIvQLzwUpBE5Q+r9jw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB8164
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v7 4/4] drm/mediatek: Add DSI support for mt8188 vdosys0
+Content-Language: en-US
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Jason-ch Chen <jason-ch.chen@mediatek.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Nathan Lu <nathan.lu@mediatek.com>
+References: <20230727164114.20638-1-jason-jh.lin@mediatek.com>
+ <20230727164114.20638-5-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230727164114.20638-5-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230728_011422_902661_3F676017 
-X-CRM114-Status: GOOD (  14.24  )
+X-CRM114-CacheID: sfid-20230728_011456_403196_14980A3A 
+X-CRM114-Status: GOOD (  18.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -188,23 +84,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEphc29uOg0KDQpPbiBGcmksIDIwMjMtMDctMjggYXQgMDA6NDEgKzA4MDAsIEphc29uLUpI
-LkxpbiB3cm90ZToNCj4gQWRkIG1pc3NpbmcgbW1zeXNfZGV2X251bSB0byBtdDgxODggdmRvc3lz
-MCBkcml2ZXIgZGF0YS4NCg0KUmV2aWV3ZWQtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+
-DQoNCj4gDQo+IEZpeGVzOiA1NGI0ODA4MDI3OGEgKCJkcm0vbWVkaWF0ZWs6IEFkZCBtZWRpYXRl
-ay1kcm0gb2YgdmRvc3lzMA0KPiBzdXBwb3J0IGZvciBtdDgxODgiKQ0KPiBTaWduZWQtb2ZmLWJ5
-OiBKYXNvbi1KSC5MaW4gPGphc29uLWpoLmxpbkBtZWRpYXRlay5jb20+DQo+IC0tLQ0KPiAgZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgfCAxICsNCj4gIDEgZmlsZSBjaGFu
-Z2VkLCAxIGluc2VydGlvbigrKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2Rydi5jDQo+IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cm1fZHJ2LmMNCj4gaW5kZXggNmRjYjRiYTI0NjZjLi4yNDljOWZkNjM0N2UgMTAwNjQ0DQo+IC0t
-LSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jDQo+ICsrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jDQo+IEBAIC0yODcsNiArMjg3LDcgQEAg
-c3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVyX2RhdGENCj4gbXQ4MTg2X21tc3lz
-X2RyaXZlcl9kYXRhID0gew0KPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVy
-X2RhdGEgbXQ4MTg4X3Zkb3N5czBfZHJpdmVyX2RhdGENCj4gPSB7DQo+ICAJLm1haW5fcGF0aCA9
-IG10ODE4OF9tdGtfZGRwX21haW4sDQo+ICAJLm1haW5fbGVuID0gQVJSQVlfU0laRShtdDgxODhf
-bXRrX2RkcF9tYWluKSwNCj4gKwkubW1zeXNfZGV2X251bSA9IDEsDQo+ICB9Ow0KPiAgDQo+ICBz
-dGF0aWMgY29uc3Qgc3RydWN0IG10a19tbXN5c19kcml2ZXJfZGF0YSBtdDgxOTJfbW1zeXNfZHJp
-dmVyX2RhdGEgPQ0KPiB7DQo=
+Il 27/07/23 18:41, Jason-JH.Lin ha scritto:
+> Add DSI as main display output for mt8188 vdosys0.
+> 
+
+I would split this commit in two:
+
+1. drm/mediatek: dsi: Support dynamic connector selection
+2. drm/mediatek: Support DSI on MT8188 VDOSYS0
+
+Where the first one sets up the mtk_dsi driver for .encoder_index(), and
+where the second one is a one-liner simply adding `{0, DDP_COMPONENT_DSI0},`
+to the MT8188 main routes array.
+
+The reason is that if you split it like that, whoever reads the commit history
+will immediately understand how to add dynamic connector selection to a MTK DRM
+driver, and how to perform the SoC-specific connection....
+
+Please!
+
+Thanks,
+Angelo
+
+> Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> ---
+>   drivers/gpu/drm/mediatek/mtk_disp_drv.h     | 1 +
+>   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 1 +
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 1 +
+>   drivers/gpu/drm/mediatek/mtk_dsi.c          | 9 +++++++++
+>   4 files changed, 12 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> index 5f07037670e9..fdaa21b6a9da 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> @@ -48,6 +48,7 @@ unsigned int mtk_dpi_encoder_index(struct device *dev);
+>   
+>   void mtk_dsi_ddp_start(struct device *dev);
+>   void mtk_dsi_ddp_stop(struct device *dev);
+> +unsigned int mtk_dsi_encoder_index(struct device *dev);
+>   
+>   int mtk_gamma_clk_enable(struct device *dev);
+>   void mtk_gamma_clk_disable(struct device *dev);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> index bc7b0a0c20db..e6a7a0b9de6c 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> @@ -318,6 +318,7 @@ static const struct mtk_ddp_comp_funcs ddp_dsc = {
+>   static const struct mtk_ddp_comp_funcs ddp_dsi = {
+>   	.start = mtk_dsi_ddp_start,
+>   	.stop = mtk_dsi_ddp_stop,
+> +	.encoder_index = mtk_dsi_encoder_index,
+>   };
+>   
+>   static const struct mtk_ddp_comp_funcs ddp_gamma = {
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index ecd113f9908c..9b7ca8d35f71 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -189,6 +189,7 @@ static const unsigned int mt8188_mtk_ddp_main[] = {
+>   
+>   static const struct mtk_drm_route mt8188_mtk_ddp_main_routes[] = {
+>   	{0, DDP_COMPONENT_DP_INTF0},
+> +	{0, DDP_COMPONENT_DSI0},
+>   };
+>   
+>   static const unsigned int mt8192_mtk_ddp_main[] = {
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index 7d5250351193..62d5362916a5 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -865,6 +865,15 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+>   	return ret;
+>   }
+>   
+> +unsigned int mtk_dsi_encoder_index(struct device *dev)
+> +{
+> +	struct mtk_dsi *dsi = dev_get_drvdata(dev);
+> +	unsigned int encoder_index = drm_encoder_index(&dsi->encoder);
+> +
+> +	dev_dbg(dev, "encoder index:%d", encoder_index);
+> +	return encoder_index;
+> +}
+> +
+>   static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
+>   {
+>   	int ret;
+
+
+
 
