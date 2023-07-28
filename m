@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A2D9C001DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 13:01:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A4E8C001DE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 13:01:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GHiawQpngVfU3Z6lAbvF/XFA4hRpbcAvvOhJloZt9Vs=; b=ggBg4P/Xfsbgu3hQK2r1n0SIj6
-	mq12hd6C+hvnGVdysdQm/Gqp+12KBCYlcgQ2bzmv9ZFoIr/GennJHrxsWR58rEMvmwfqdGcKZ8z0d
-	q0MNXBPj6gtzRTnHEH3nfJV0yh2yzlUynRQE528iDSE4QhwqfoO0fjaYAfMLy6W7etrm3Dnl8M1Qh
-	WOUdCzDgsuoglf4Lapvu5EGDbqse/tii0HiPTyLzYPNGWi5MnlMqIUapG9h+uC/2IebUL8nHbwqk7
-	GeR52FawztLLnN4cEMcWQtlSo1jkk0HTpBvMMkJjmBRy0Qim3oMsOQOknSHAIT1sXAEWjYoP7/W69
-	lun4yZOA==;
+	bh=jb3oJuceNFsIyuY2+c/BQpFgMtKHX3DFUwV7BlO22rQ=; b=fdv689tcVW/yufFGlACRLWBsaD
+	9XlVcdz1BnHCOXT4ze4yWQ/ZKUJXZafGMf1yp1d3Zp/sj6thfvk+xJtp4gbXg0v9z9M4zRZpL/kzr
+	FI2xr4ggYn7DaqKWn8v80+YblzDzc7c7DN64UBsNZHH9B+zSYbbaaYx5Q3T89YHKhpNRiCz9c2xJC
+	6W33nRLO/Ut9w+g9zE9NsIIqwQyM5RTxiGIOdT9YK3DWqB/VFbXRAAsB51GcMoOhjRSQAnPhdgxQl
+	vyRpKDdQHKZERNfgtuEMv5K/30VWnUpaOzoDeSC9tXLDeAPiKe0kLhzNXJsfj65XXKGLE3KS+s5hn
+	+TlKVuNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPN69-003Twn-1W;
-	Fri, 28 Jul 2023 13:01:37 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1qPN6M-003U2O-0h;
+	Fri, 28 Jul 2023 13:01:50 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPN66-003TvU-2e
+	id 1qPN6H-003Tzt-0r
 	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Jul 2023 13:01:35 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-3fc02a92dcfso21681865e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 28 Jul 2023 06:01:34 -0700 (PDT)
+	Fri, 28 Jul 2023 13:01:46 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-3fbef8ad9bbso23344295e9.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 28 Jul 2023 06:01:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1690549293; x=1691154093;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1690549304; x=1691154104;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=GHiawQpngVfU3Z6lAbvF/XFA4hRpbcAvvOhJloZt9Vs=;
-        b=awllWdar0JnfZi5DTXXYlC2hQRqstsq4OagnOvDE4Y4dgS1nuIGsHmsgsIPkFO1t3J
-         iCFiJqPRuQWI6hod3BhObT+26Y5r1Vjfu4ukCouCZ4VrA8E6CwMY6ZjA3o+l1hMb4AHF
-         8GXsGhKOFGuM6+b/QIH3Jk5vpy6aKpIvO2sUafOsqqCerx9CRGYvA1MXUDz/DRrCv+Pb
-         DLe9t7/gpBaIrYcFkAS+YAH0WuiKkFibdTsU7EfQKI/zfvZT55kbifsD83OV/+NiA9By
-         c5mMuMTGuDSRi3A8iM4UxN5sx6ZQ/ZbJSa/pWb+5xqGErG61MWGbvkHSDNHoS588BwGx
-         5mPQ==
+        bh=jb3oJuceNFsIyuY2+c/BQpFgMtKHX3DFUwV7BlO22rQ=;
+        b=xKFkf3KeKsEZ7MlGQXbss31BqYAtexCwGSFhibddZbapf6TQJRPQdZl0EH1lvY8NxG
+         G8kOfa2vdunheArARTB+wyRiRVC2fGqyz0FffoadHHyxTaAUpzsygZMHFMjd8eWKXoii
+         HR6AOfvCvDIlcYo4izDNPHLqsDqoaQ6eNwCGUH8D09oZvPzRrDyh8DmpVtcWbAMpFG7P
+         x0Ok1ystdOp8Gb5sHGgdKjlO3biCA3lqMj/r2wWdTNiNBMMRgvvZpfKsrtQuffCcyfc+
+         3Kvwy2AKNxM6rudl5W3pIDJ8o6I2Suw6M3aHKEFvJvBfTbOQoYTm9cY0mHDYlc6hLP8g
+         Q2fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690549293; x=1691154093;
+        d=1e100.net; s=20221208; t=1690549304; x=1691154104;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=GHiawQpngVfU3Z6lAbvF/XFA4hRpbcAvvOhJloZt9Vs=;
-        b=O0kJZShtIJtcjfaoutqTrxSN/A+PkB36l07VPuMvdZOo/L0Q2M+gbWX8q5c3iRIDJk
-         VbeUQk7SmSOopJ5lrO0zXQURxGD66zIWAt6J8QQux9LSDmK5IVLcmrMiIx0wW++pzZ8X
-         1R+wKWQR8C12b6LXvs352gxPIw2AP/FeBlhXmLxd5hIEXjseyLiK6wxxGrCkRE3to6DR
-         MS7AOEJbUsL90qNqYh45j4qdaatp+hnvZyXoCCAGhDblYOWhWBnxD6tnxLSRucPVMPrY
-         SJFeFJO2IDm7kmnZuEJojihx5FyL4OP5ZWpEUCmWYEhLpg4aPxTxTL38NzTLP7IaIrwq
-         2jkg==
-X-Gm-Message-State: ABy/qLZisS7dA+B1JxV7zz8gkyqH0ScOtBmE2lEX/Q+D8wZGnmQWZXpv
-	4MkFpZUHZpZEJuW9fPS/GqZooQ==
-X-Google-Smtp-Source: APBJJlFsN+yCMtYDAo87KgEo3nUVITs5qB6btu/td2eWZ7u9kpNIrrhvdquppQoWVobCDh5dBZDZAQ==
-X-Received: by 2002:a7b:cc17:0:b0:3fd:2e93:c524 with SMTP id f23-20020a7bcc17000000b003fd2e93c524mr1690329wmh.26.1690549292943;
-        Fri, 28 Jul 2023 06:01:32 -0700 (PDT)
+        bh=jb3oJuceNFsIyuY2+c/BQpFgMtKHX3DFUwV7BlO22rQ=;
+        b=EhwJVOv14K8wG6cqOdSvIClbtfGEUwjKJ3gy4ULaVGYkFLE3AWGswxyDudIjtb3RED
+         pmnTBgdzsdWF3aw2dtS5WExfn9KnyNwpM/VyyKAYgBxG+XL2WW5obKaTf0UVzi4ptdeQ
+         +UlDCPcIZzMLLLfBiwEk8YbkVTvZ1EuFKkA55Mv9ZH9OwL6VIc8nafCECIT0k5YuZp90
+         qEaRMksWx3itdNI9KudKZ+UJNRKGKUq6y14EG/6FWrCLqf1lU2xX9+CcMjIqt5sk0kyo
+         Z8ea/70vCvw6XWgEETPSMqcqR57vzn8njJNJR+dKxgqpEfbyCQU+PjctbDbM19ssufaH
+         xa6Q==
+X-Gm-Message-State: ABy/qLYdcMxXLYMH34N1FKRCTwBX96otNKw4Uf5l9dPr9kVr9sWPNmHn
+	T8EmDhM7r8ZtMXFQiAV89oHAIQ==
+X-Google-Smtp-Source: APBJJlGKWeFPOrR4SRapsGW6B0B45Wr3r3nXWLAfqntpnpIaERf19EDZd2fNRukT2WrEz3kObz6QYw==
+X-Received: by 2002:a1c:f202:0:b0:3fb:a0fc:1ba1 with SMTP id s2-20020a1cf202000000b003fba0fc1ba1mr1846649wmc.35.1690549304029;
+        Fri, 28 Jul 2023 06:01:44 -0700 (PDT)
 Received: from [192.168.1.172] ([93.5.22.158])
-        by smtp.gmail.com with ESMTPSA id p24-20020a05600c205800b003fc01189b0dsm4174594wmg.42.2023.07.28.06.01.31
+        by smtp.gmail.com with ESMTPSA id c8-20020a7bc848000000b003fb40ec9475sm4180321wml.11.2023.07.28.06.01.43
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 28 Jul 2023 06:01:32 -0700 (PDT)
-Message-ID: <8b47f7ed-9d21-c244-716d-5a9c3cabd16e@baylibre.com>
-Date: Fri, 28 Jul 2023 15:01:31 +0200
+        Fri, 28 Jul 2023 06:01:43 -0700 (PDT)
+Message-ID: <ec9983bd-b9be-b672-8c26-d887f608de4c@baylibre.com>
+Date: Fri, 28 Jul 2023 15:01:42 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH RESEND v6 07/11] drm/mediatek: gamma: Support specifying
- number of bits per LUT component
+Subject: Re: [PATCH RESEND v6 08/11] drm/mediatek: gamma: Support multi-bank
+ gamma LUT
 Content-Language: en-US
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  chunkuang.hu@kernel.org
@@ -79,14 +79,14 @@ Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
  kernel@collabora.com, ehristev@collabora.com,
  "Jason-JH . Lin" <jason-jh.lin@mediatek.com>
 References: <20230727094633.22505-1-angelogioacchino.delregno@collabora.com>
- <20230727094633.22505-8-angelogioacchino.delregno@collabora.com>
+ <20230727094633.22505-9-angelogioacchino.delregno@collabora.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230727094633.22505-8-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230727094633.22505-9-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230728_060134_863207_D9481CF0 
-X-CRM114-Status: UNSURE (   7.31  )
+X-CRM114-CacheID: sfid-20230728_060145_306592_22D2C876 
+X-CRM114-Status: UNSURE (   7.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -105,10 +105,10 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 On 27/07/2023 11:46, AngeloGioacchino Del Regno wrote:
-> New SoCs, like MT8195, not only may support bigger lookup tables, but
-> have got a different register layout to support bigger precision:
-> support specifying the number of `lut_bits` for each SoC and use it
-> in mtk_gamma_set_common() to perform the right calculation.
+> Newer Gamma IP have got multiple LUT banks: support specifying the
+> size of the LUT banks and handle bank-switching before programming
+> the LUT in mtk_gamma_set_common() in preparation for adding support
+> for MT8195 and newer SoCs.
 
 -- 
 Regards,
