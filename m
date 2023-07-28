@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4AD3C04A6A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 02:51:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF66BC001DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 02:51:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=s5czhoY0QA5LabiZCh+g7FAzobi8i+egQsMxPk6ZR+w=; b=HYKzIYwUQAQdkzJQD0L2Jkx1E6
-	OvLmmB9GwjvZEb+tKaytUXCrdC6NNhQ2Rn1bJjj3dwwotIgvLphugGY0D5UZNxglvPbltcSacNyoa
-	1rMXLalBsv7VxUexQDe3kIeBd26ChHMTk2dWisFLG5BdpyqTk+M9q8n21sCvzFVyZ462YAsMV0yp6
-	NzcPnASHk/uKelm2l9CyTxXbdHTk14APoOlwU48HHbMGPtTw6kDtu3P9T4xEsMFEEwO1XDP1+LOHl
-	tuyU/c0K/QhHFiqjiWHwKgrWqL9WOq9ApC/QYgB/91n0t1BeQPvXf7DqOKBPCRPRq1Y1YXKqRDtJ9
-	O/gVg25g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NVcNsBAKcguHf60VNyFKcf1SSOWeVwHfHYiRahrpzP4=; b=lbBpjc9uhObmR/tkuZt/UHLVmQ
+	sHKE5kQfu4+TXQwVJmrOU7xwIHuHkECm2+iT+hgqKdltWwwRpR+JzoWhUuyRu0kYk71RiW9IbcqBy
+	nG27+64ZgeAyhNUSJPzeT6W9EZKn+iQWZSFOsppNySD0r5KWWgLA1xDJrSfBiUz6M3F37huCT9f7H
+	xh9PnvVRqBrkBDo6jMhKlbTRAr46iKrUwGtHG0yrvRmMZ9CroCz8ppQmt1u7Ft1HAHdRKQe0XrOlO
+	Slh2kkmwUv+Fd/TZsyDHY4BGpEfrd20jpkhduPv3USXvBHjYYxcY1HXZpgKw1lHBqSMS09p3SCc3b
+	snAWUyGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPDZZ-001LtA-2j;
-	Fri, 28 Jul 2023 02:51:21 +0000
+	id 1qPDZp-001Lwa-06;
+	Fri, 28 Jul 2023 02:51:37 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPDZW-001Lri-2T;
-	Fri, 28 Jul 2023 02:51:20 +0000
+	id 1qPDZl-001Lvd-2X;
+	Fri, 28 Jul 2023 02:51:35 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1qPDZ9-00008m-1J;
-	Fri, 28 Jul 2023 02:50:55 +0000
-Date: Fri, 28 Jul 2023 03:50:47 +0100
+	id 1qPDZc-000096-2m;
+	Fri, 28 Jul 2023 02:51:24 +0000
+Date: Fri, 28 Jul 2023 03:51:16 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
 	Ryder Lee <ryder.lee@mediatek.com>,
@@ -50,15 +50,17 @@ To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 1/2] dt-bindings: mt76: support setting per-band MAC
- address
-Message-ID: <6e9cfac5758dd06429fadf6c1c70c569c86f3a95.1690512516.git.daniel@makrotopia.org>
+Subject: [PATCH v2 2/2] wifi: mt76: support per-band MAC addresses from OF
+ child nodes
+Message-ID: <4958730e4f88b91442fa96365785d467fad502de.1690512516.git.daniel@makrotopia.org>
+References: <6e9cfac5758dd06429fadf6c1c70c569c86f3a95.1690512516.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <6e9cfac5758dd06429fadf6c1c70c569c86f3a95.1690512516.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230727_195118_808211_863AD6AA 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20230727_195133_819999_B3DF0B7F 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,131 +75,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce support for setting individual per-band MAC addresses using
-NVMEM cells by adding a 'bands' object with enumerated child nodes
-representing the 2.4 GHz, 5 GHz and 6 GHz bands.
+With dual-band-dual-congruent front-ends which appear as two independent
+radios it is desirable to assign a per-band MAC address from device-tree,
+eg. using nvmem-cells.
+Support specifying MAC-address related properties in band-specific child
+nodes, e.g.
+        mt7915@0,0 {
+                reg = <0x0000 0 0 0 0>;
+                #addr-cells = <1>;
+                #size-cells = <0>;
 
-In case it is defined, call of_get_mac_address for the per-band child
-node, otherwise try with of_get_mac_address on the main device node and
-fall back to a random address like it used to be.
+                band@0 {
+                        /* 2.4 GHz */
+                        reg = <0>;
+                        nvmem-cells = <&macaddr 2>;
+                        nvmem-cell-names = "mac-address";
+                };
 
-While at it, add MAC address related properties also for the main node
-and update example to use EEPROM via nvmem-cells instead of deprecated
-mediatek,mtd-eeprom property.
+                band@1 {
+                        /* 5 GHz */
+                        reg = <1>;
+                        nvmem-cells = <&macaddr 3>;
+                        nvmem-cell-names = "mac-address";
+                };
+        };
 
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- .../bindings/net/wireless/mediatek,mt76.yaml  | 59 ++++++++++++++++++-
- 1 file changed, 58 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/eeprom.c | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-index 252207adbc54c..2474f4f7e34b0 100644
---- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-+++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-@@ -37,6 +37,12 @@ properties:
-     description:
-       MT7986 should contain 3 regions consys, dcm, and sku, in this order.
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index 36564930aef12..c2b3386cada1c 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -161,9 +161,25 @@ void
+ mt76_eeprom_override(struct mt76_phy *phy)
+ {
+ 	struct mt76_dev *dev = phy->dev;
+-	struct device_node *np = dev->dev->of_node;
++	struct device_node *np = dev->dev->of_node, *band_np;
++	bool found_mac = false;
++	u32 reg;
++	int ret;
++
++	for_each_child_of_node(np, band_np) {
++		ret = of_property_read_u32(band_np, "reg", &reg);
++		if (ret)
++			continue;
++
++		if (reg == phy->band_idx) {
++			found_mac = !of_get_mac_address(band_np, phy->macaddr);
++			of_node_put(band_np);
++			break;
++		}
++	}
  
-+  '#address-cells':
-+    const: 1
-+
-+  '#size-cells':
-+    const: 0
-+
-   interrupts:
-     maxItems: 1
+-	of_get_mac_address(np, phy->macaddr);
++	if (!found_mac)
++		of_get_mac_address(np, phy->macaddr);
  
-@@ -72,13 +78,23 @@ properties:
- 
-   ieee80211-freq-limit: true
- 
-+  address: true
-+
-+  local-mac-address: true
-+
-+  mac-address: true
-+
-   nvmem-cells:
-+    minItems: 1
-     items:
-       - description: NVMEM cell with EEPROM
-+      - description: NVMEM cell with the MAC address
- 
-   nvmem-cell-names:
-+    minItems: 1
-     items:
-       - const: eeprom
-+      - const: mac-address
- 
-   mediatek,eeprom-data:
-     $ref: /schemas/types.yaml#/definitions/uint32-array
-@@ -213,6 +229,30 @@ properties:
-                     description:
-                       Half-dBm power delta for different numbers of antennas
- 
-+patternProperties:
-+  '^band@[0-2]+$':
-+    type: object
-+    additionalProperties: false
-+    properties:
-+      reg:
-+        maxItems: 1
-+
-+      address: true
-+      local-mac-address: true
-+      mac-address: true
-+
-+      nvmem-cells:
-+        description: NVMEM cell with the MAC address
-+
-+      nvmem-cell-names:
-+        items:
-+          - const: mac-address
-+
-+    required:
-+      - reg
-+
-+    unevaluatedProperties: false
-+
- required:
-   - compatible
-   - reg
-@@ -225,10 +265,13 @@ examples:
-       #address-cells = <3>;
-       #size-cells = <2>;
-       wifi@0,0 {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-         compatible = "mediatek,mt76";
-         reg = <0x0000 0 0 0 0>;
-         ieee80211-freq-limit = <5000000 6000000>;
--        mediatek,mtd-eeprom = <&factory 0x8000>;
-+        nvmem-cells = <&factory_eeprom>;
-+        nvmem-cell-names = "eeprom";
-         big-endian;
- 
-         led {
-@@ -257,6 +300,20 @@ examples:
-              };
-           };
-         };
-+
-+        band@0 {
-+          /* 2.4 GHz */
-+          reg = <0>;
-+          nvmem-cells = <&macaddr 0x4>;
-+          nvmem-cell-names = "mac-address";
-+        };
-+
-+        band@1 {
-+          /* 5 GHz */
-+          reg = <1>;
-+          nvmem-cells = <&macaddr 0xa>;
-+          nvmem-cell-names = "mac-address";
-+        };
-       };
-     };
- 
+ 	if (!is_valid_ether_addr(phy->macaddr)) {
+ 		eth_random_addr(phy->macaddr);
 -- 
 2.41.0
 
