@@ -4,85 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90D58C001DE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 05:27:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64E25C00528
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 06:46:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cE7yzj/ShJctTo/cH8TMuQ/2VH0iD1G1+5KA9qirh/Y=; b=ze2jt1CkLxeM8v0AqctUDNUzzT
-	rVBy5Q/I5LyT2c4X71LCXkxNmWo6to/R8PbRd0cA0uPWC/cAEJPDC2mUJ66SFRDe77FzzaX/6+OaI
-	Ex1Lv3Pf5VzWidJkQ9tc89aGzQoZfsuJT0psi68TcBXYZaMiJ3PO6QQY5h9hoIWV+oNUruIwUtZXx
-	j8aE6rqxb2ECcGel4E9M5byg3p50QMy9WsOztjj35Vr/CflWNjvH2zRicWLEeIAlTkxBXOpMjaX5W
-	Q3qV9VseeMe6g5ZFOVagMTk0dcmRPpgvOJcIZdPM/6c32zZAJOJ9WewWxQujv5VSbyoF2xXCoweOP
-	PB7akiKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BGY2nO4ftRXQP63Y2pNslApqrzNNXCRHiRU0fSeA3Xw=; b=F6q/p7EmcEsOyJookkexlmPvkk
+	mXtvXdn75YuwN4lrSqF6e/uENfQiOgpecCHprNvnq2tkc2qIb3nyuKzhYUdIlQdGaibejhfgAq0E0
+	MThPhnDDw1mWIHOdGdmrtUznai3T8LkvB0xcXCyVxzZlSrsaK4VQF+FHKrMxsgfFq0tGwNFTHzlaI
+	jYE1thqXaeOkRLDQsH0Sna0h4KF1+yAJ40v8wEUifqZMQnL62mFFnIDZ3Z8V1u0t/Eld9bbAbyZ2P
+	gaZAdLTm+BEXqUmReBGMZgfh2pL18wVtRJjixhLKJkmCMtJk1B12q1rFeY9zasGwHOqw6v/OEPfXM
+	Xxt11Bww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPG0A-001jIw-2U;
-	Fri, 28 Jul 2023 05:26:58 +0000
-Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b])
+	id 1qPHFR-001wF2-0k;
+	Fri, 28 Jul 2023 06:46:49 +0000
+Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPG06-001jGx-1S
+	id 1qPHFN-001wCx-1Z
 	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Jul 2023 05:26:57 +0000
-Received: by mail-qv1-xf2b.google.com with SMTP id 6a1803df08f44-63d10da0f26so11352686d6.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jul 2023 22:26:50 -0700 (PDT)
+	Fri, 28 Jul 2023 06:46:47 +0000
+Received: by mail-qt1-x832.google.com with SMTP id d75a77b69052e-4055c143ca6so11893561cf.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jul 2023 23:46:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar-org.20221208.gappssmtp.com; s=20221208; t=1690522010; x=1691126810;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=cE7yzj/ShJctTo/cH8TMuQ/2VH0iD1G1+5KA9qirh/Y=;
-        b=trpErXEJEPDZtUwJrLhT56jOvw/TASEnxJqiim24u87Ey219zXjICSpgcrZjP+hIvC
-         YOisNcRp1EFcZBuqaw0v47KkdLVd0rFI+qxA+sXUlebSorcP7hGjMv3NkVKwxd1A+1fM
-         +cPBg+wk6aUxXSizYt9OOW8K2HwaRZylnOeA2baYNkYAkyTSt3uSNK4bqSBTUKRlrYKH
-         veSyepWn/C4JI0VyBkgwNf9ieJKzWg0hb3tCI/tmQqhFz8s1wdV5XOJi6PQyomubgQDL
-         AUwaUxnOfbqg6WW2SXOJHHuKT2fULl3OjCF9EdNHMtPrrV+gZMyo2wDTP0lf87ec5+Bk
-         zCEg==
+        d=chromium.org; s=google; t=1690526802; x=1691131602;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=BGY2nO4ftRXQP63Y2pNslApqrzNNXCRHiRU0fSeA3Xw=;
+        b=k4Oigcu7aqKetFKoVexIE83Bu8ETLioCwuptG6SBn9YOfxWfNfnGv3G529VdF7B8uq
+         o3OupE40gllWnOarBVs8Fz/vxsZXz68E9WJpnOzNSkzIU6EneDGTxLNYU4pnDbqtNE1N
+         fJxrelkBzy9zdsFb14Bw/svw1stDs8fGmExJc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690522010; x=1691126810;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=cE7yzj/ShJctTo/cH8TMuQ/2VH0iD1G1+5KA9qirh/Y=;
-        b=eIcbr881jcy2wm6HhzyJzNCuSMpdpu7khBqUdGHCrHAZlX92C4egtR0Y0SlJ4N9Xis
-         Xr34xLKDzD8GHzOEp2nccPFx2fZnXxmLPclNyf6cGgPubob7n18QNi1LwcuCe5RDBa+y
-         EXOme+uGeWGOXononSboXKybyDXRIhU4bmLMpWW6gW2sLCqjhpU4IEm+0ZaDR2XaZ2IA
-         jO4adVy1Y9Uus3HLMwcwtlsGHMI9JIJjIW3oHQRxNYQokEw+NYB9MMAlnCNrjX5/+jNQ
-         rAWIFwbEU/BzRP3KmTO5njKSLQwFEYulu2vPzHZynhy1GWDbWdLslb1ZarjVfCfDiVrW
-         WhYw==
-X-Gm-Message-State: ABy/qLYo/xRVC4A0A2qI5tLrSZmGn8qEJgD+U68Ez+PDVelGkho1NyoA
-	om/bERdnUm0g7xUnumfn6F7GMjv6vkVQA7sNpsXlxA==
-X-Google-Smtp-Source: APBJJlGaHKu68l916QbJnESfurRQ8GLdxdUM6h1VlhU7qK1FfkFxQTpsfGqhPqGZxqp+5PbL922CfRISxETZ4hSkBS0=
-X-Received: by 2002:ad4:45a9:0:b0:63c:fc39:3c0d with SMTP id
- y9-20020ad445a9000000b0063cfc393c0dmr1353378qvu.62.1690522009771; Thu, 27 Jul
- 2023 22:26:49 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1690526802; x=1691131602;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=BGY2nO4ftRXQP63Y2pNslApqrzNNXCRHiRU0fSeA3Xw=;
+        b=AqqGkO4W8a+8pRwfbnUxfNGfLbGIPTLDFbO3ebVQ5h4XecPqbfk6Rmd/ziSzK2sIb7
+         1RMG7Rs8xKHSRZYrOtOVG2GI7TlPBKYKiW61+EY48umDkGIbbW9EX06BNmP9wGLrzDfy
+         sPS02FUvx0hXD3YR4BR1GNcpKS+Xn0XsJujh+tt56qJc6HJLSnFyVwJO3ozSYGBCyAn6
+         sRGO7AVIKE2nwVWBm5IbnEifcPf9gMjF6a4UkavL0QY75q4dtbcLvL1H0OcDgULE2zAw
+         Jg4RvJpTcEr+ShxYGGmu2LxtXBrPOB5lBtBq4EYdV2BFvRBZH0UP/EpQ7Eruj3jWs7rq
+         mlag==
+X-Gm-Message-State: ABy/qLYS7INnB1I6ot8t50ngF0bNf5tIO9uSfjgunYMZ+tgguXEzxcGa
+	Pi/A4rF0YtNsU8s1l1s+JhWzrKqex0WnNtIpqWUfN0nE
+X-Google-Smtp-Source: APBJJlF2WgZzNXGc8i73mRkzTXWExJLpS7eoFu2oJvDJVxe/W4cDe7zM4IEJ8cG7W2Sh8kABUPwSDA==
+X-Received: by 2002:a05:622a:1492:b0:403:97e7:e1a1 with SMTP id t18-20020a05622a149200b0040397e7e1a1mr1840030qtx.54.1690526801604;
+        Thu, 27 Jul 2023 23:46:41 -0700 (PDT)
+Received: from mail-qv1-f49.google.com (mail-qv1-f49.google.com. [209.85.219.49])
+        by smtp.gmail.com with ESMTPSA id a11-20020a0cb34b000000b00636291d04adsm1017824qvf.47.2023.07.27.23.46.40
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 27 Jul 2023 23:46:40 -0700 (PDT)
+Received: by mail-qv1-f49.google.com with SMTP id 6a1803df08f44-63d0f62705dso11832816d6.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jul 2023 23:46:40 -0700 (PDT)
+X-Received: by 2002:a05:6214:3b84:b0:63d:23c:41d with SMTP id
+ nf4-20020a0562143b8400b0063d023c041dmr1469017qvb.25.1690526800244; Thu, 27
+ Jul 2023 23:46:40 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230720152737.102382-1-helen.koike@collabora.com>
- <CAF6AEGtXL5vjp3Uup6Mk19MiY8E26-tpyXVmxXYhMd3fiadykQ@mail.gmail.com> <CAF6AEGsxLg4og1EkCdno6P8x31KK=rJfmerJa8uMeNR-n7RVRg@mail.gmail.com>
-In-Reply-To: <CAF6AEGsxLg4og1EkCdno6P8x31KK=rJfmerJa8uMeNR-n7RVRg@mail.gmail.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Fri, 28 Jul 2023 06:26:39 +0100
-Message-ID: <CAPj87rPNyJ=mX1Um6yaN_jTV2gH5MhMxr3mnSb7=nB7NEOf2Ag@mail.gmail.com>
-Subject: Re: [PATCH v10] drm: Add initial ci/ subdirectory
-To: Rob Clark <robdclark@gmail.com>
-Cc: Helen Koike <helen.koike@collabora.com>, emma@anholt.net, linux-doc@vger.kernel.org, 
-	david.heidelberg@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-amlogic@lists.infradead.org, jbrunet@baylibre.com, robdclark@google.com, 
-	corbet@lwn.net, khilman@baylibre.com, sergi.blanch.torne@collabora.com, 
-	gustavo.padovan@collabora.com, linux-rockchip@lists.infradead.org, 
-	daniels@collabora.com, martin.blumenstingl@googlemail.com, mripard@kernel.org, 
-	anholt@google.com, linux-mediatek@lists.infradead.org, 
-	robclark@freedesktop.org, matthias.bgg@gmail.com, 
-	linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, 
-	neil.armstrong@linaro.org, guilherme.gallo@collabora.com, 
-	linux-kernel@vger.kernel.org, tzimmermann@suse.de, 
-	Dave Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
+References: <20230622131349.144160-1-benjamin.gaignard@collabora.com>
+ <20230622131349.144160-5-benjamin.gaignard@collabora.com> <e7444263-0ce5-1575-8cca-1e51b1cfbe9a@synaptics.com>
+ <5cb3f216-5041-a155-5d2c-059dc1f15024@collabora.com> <25b21252-0d3a-3e50-0012-57055f386fee@synaptics.com>
+ <20230712104801.tgawhexpm53ocgd6@chromium.org> <2d239d33-b05d-1b51-2268-43b2839b64ea@synaptics.com>
+In-Reply-To: <2d239d33-b05d-1b51-2268-43b2839b64ea@synaptics.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Fri, 28 Jul 2023 15:46:29 +0900
+X-Gmail-Original-Message-ID: <CAAFQd5D7oNG8oZB66qEW720fR79paw_q0LGBg7X4jK-ZkgYD_g@mail.gmail.com>
+Message-ID: <CAAFQd5D7oNG8oZB66qEW720fR79paw_q0LGBg7X4jK-ZkgYD_g@mail.gmail.com>
+Subject: Re: [PATCH v3 04/11] media: videobuf2: Stop define VB2_MAX_FRAME as global
+To: Hsia-Jun Li <Randy.Li@synaptics.com>
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	m.szyprowski@samsung.com, linux-mediatek@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, hverkuil-cisco@xs4all.nl, 
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, 
+	linux-rockchip@lists.infradead.org, mchehab@kernel.org, 
+	linux-staging@lists.linux.dev, ming.qian@nxp.com, kernel@collabora.com, 
+	gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230727_222654_494264_F55A3655 
-X-CRM114-Status: GOOD (  15.28  )
+X-CRM114-CacheID: sfid-20230727_234645_523493_EAB1A23E 
+X-CRM114-Status: GOOD (  43.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,31 +104,264 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 27 Jul 2023 at 22:47, Rob Clark <robdclark@gmail.com> wrote:
-> > I did run into a bit of a chicken vs. egg problem with testing the "in
-> > tree" version (compared to earlier versions which kept most of the yml
-> > and scripts in a separate tree), is that it actually requires this
-> > commit to exist in the branch you want to run CI on.  My earlier
-> > workaround of pulling the drm/ci commit in via
-> > ${branchname}-external-fixes no longer works.
+On Mon, Jul 17, 2023 at 4:44=E2=80=AFPM Hsia-Jun Li <Randy.Li@synaptics.com=
+> wrote:
 >
-> After unwinding some more gitlab repo settings that were for the
-> previous out-of-tree yml setup, I have this working.
 >
-> Tested-by: Rob Clark <robdclark@gmail.com>
-> Acked-by: Rob Clark <robdclark@gmail.com>
+> On 7/12/23 18:48, Tomasz Figa wrote:
+> > CAUTION: Email originated externally, do not click links or open attach=
+ments unless you recognize the sender and know the content is safe.
+> >
+> >
+> > On Mon, Jul 03, 2023 at 04:35:30PM +0800, Hsia-Jun Li wrote:
+> >> On 7/3/23 16:09, Benjamin Gaignard wrote:
+> >>> CAUTION: Email originated externally, do not click links or open
+> >>> attachments unless you recognize the sender and know the content is
+> >>> safe.
+> >>>
+> >>>
+> >>> Le 30/06/2023 =C3=A0 11:51, Hsia-Jun Li a =C3=A9crit :
+> >>>> On 6/22/23 21:13, Benjamin Gaignard wrote:
+> >>>>> CAUTION: Email originated externally, do not click links or open
+> >>>>> attachments unless you recognize the sender and know the content is
+> >>>>> safe.
+> >>>>>
+> >>>>>
+> >>>>> After changing bufs arrays to a dynamic allocated array
+> >>>>> VB2_MAX_FRAME doesn't mean anything for videobuf2 core.
+> >>>> I think make it 64 which is the VB2_MAX_FRAME in Android GKI kernel =
+is
+> >>>> more reasonable.
+> >>>>
+> >>>> It would be hard to iterate the whole array, it would go worse with =
+a
+> >>>> filter. Such iterate may need to go twice because you mix
+> >>>> post-processing buffer and decoding buffer(with MV) in the same arra=
+y.
+> >>> Here I don't want to change drivers behavior so I keep the same value=
+.
+> >>> If it happens that they need more buffers, like for dynamic resolutio=
+n
+> >>> change
+> >>> feature for Verisilicon VP9 decoder, case by case patches will be nee=
+ded.
+> >>>
+> >> I just don't like the idea that using a variant length array here.
+> >>
+> > "I don't like" is not an argument. We had a number of arguments for
+> > using a generic helper (originally idr, but later decided to go with
+> > XArray, because the former is now deprecated) that we pointed out in
+> > our review comments for previous revisions. It wasn't really about the
+> > size being variable, but rather avoiding open coding things in vb2 and
+> > duplicating what's already implemented in generic code.
+>
+> I just want to say I don't think we need a variable length array to
+> store the buffer here.
+>
+> And the below is the reason that such a case could be avoided in the
+> first place.
+>
+> >
+> >> And I could explain why you won't need so many buffers for the perform=
+ance
+> >> of decoding.
+> >>
+> >> VP9 could support 10 reference frames in dpb.
+> >>
+> >> Even for those frequent resolution changing test set, it would only ha=
+ppen
+> >> to two resolutions,
+> >>
+> >> 32 would be enough for 20 buffers of two resolution plus golden frames=
+. It
+> >> also leaves enough slots for re-order latency.
+> >>
+> >> If your case had more two resolutions, likes low->medium->high.
+> >>
+> >> I would suggest just skip the medium resolutions, just allocate the lo=
+wer
+> >> one first for fast playback then the highest for all the possible
+> >>
+> >> medium cases. Reallocation happens frequently would only cause memory
+> >> fragment, nothing benefits your performance.
+> >>
+> > We have mechanisms in the kernel to deal with memory fragmentation
+> > (migration/compaction) and it would still only matters for the
+> > pathologic cases of hardware that require physically contiguous memory.
+> > Modern hardware with proper DMA capabilities can either scatter-gather
+> > or are equipped with an IOMMU, so the allocation always happens in page
+> > granularity and fragmentation is avoided.
+>
+> Unfortunately, there are more devices that didn't have a IOMMU attached
+> to it, supporting scatter gather is more odd.
+>
+> It would be more likely that IOMMU would be disabled for the performance
+> reason.
 
-And it's also:
-Acked-by: Daniel Stone <daniels@collabora.com>
+These days IOMMU is totally mandatory if you want to think about
+having any level of security in your system. Sure, there could be some
+systems that are completely isolated from any external environment,
+like some offline industry automation machines, but then arguably
+their running conditions would also be quite static and require very
+little memory re-allocation.
 
-It's been back and forth a few times by now and reviewed pretty
-heavily by all the people who are across the CI details. I think the
-next step is to answer all the workflow questions by actually getting
-it into trees and using it in anger. There was some discussion about
-whether this should come in from drm-misc, or the core DRM tree, or a
-completely separate pull, but I'm not sure what the conclusion was ...
-maintainers, thoughts?
+I also don't buy the performance reason. CPUs have been behind MMUs
+for ages and nobody is running them with paging disabled for
+performance reasons. Similarly, most of the modern consumer systems
+(mobile phones, PCs) run with IOMMUs enabled for pretty much anything
+because of the security reason and they don't seem to be having any
+performance issues. In fact, it can improve the performance, because
+memory allocation is much easier and without contiguous careouts (as
+we used to have long ago on Android devices) the extra memory can be
+used for buffers and caches to improve system performance.
 
-Cheers,
-Daniel
+Best regards,
+Tomasz
+
+>
+> >
+> > Best regards,
+> > Tomasz
+> >
+> >>>>> Remove it from the core definitions but keep it for drivers interna=
+l
+> >>>>> needs.
+> >>>>>
+> >>>>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> >>>>> ---
+> >>>>>    drivers/media/common/videobuf2/videobuf2-core.c | 2 ++
+> >>>>>    drivers/media/platform/amphion/vdec.c | 1 +
+> >>>>> .../media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c | 2 +=
++
+> >>>>>    drivers/media/platform/qcom/venus/hfi.h | 2 ++
+> >>>>>    drivers/media/platform/verisilicon/hantro_hw.h | 2 ++
+> >>>>>    drivers/staging/media/ipu3/ipu3-v4l2.c | 2 ++
+> >>>>>    include/media/videobuf2-core.h | 1 -
+> >>>>>    include/media/videobuf2-v4l2.h | 4 ----
+> >>>>>    8 files changed, 11 insertions(+), 5 deletions(-)
+> >>>>>
+> >>>>> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c
+> >>>>> b/drivers/media/common/videobuf2/videobuf2-core.c
+> >>>>> index 86e1e926fa45..899783f67580 100644
+> >>>>> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> >>>>> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> >>>>> @@ -31,6 +31,8 @@
+> >>>>>
+> >>>>>    #include <trace/events/vb2.h>
+> >>>>>
+> >>>>> +#define VB2_MAX_FRAME  32
+> >>>>> +
+> >>>>>    static int debug;
+> >>>>>    module_param(debug, int, 0644);
+> >>>>>
+> >>>>> diff --git a/drivers/media/platform/amphion/vdec.c
+> >>>>> b/drivers/media/platform/amphion/vdec.c
+> >>>>> index 3fa1a74a2e20..b3219f6d17fa 100644
+> >>>>> --- a/drivers/media/platform/amphion/vdec.c
+> >>>>> +++ b/drivers/media/platform/amphion/vdec.c
+> >>>>> @@ -28,6 +28,7 @@
+> >>>>>
+> >>>>>    #define VDEC_MIN_BUFFER_CAP            8
+> >>>>>    #define VDEC_MIN_BUFFER_OUT            8
+> >>>>> +#define VB2_MAX_FRAME                  32
+> >>>>>
+> >>>>>    struct vdec_fs_info {
+> >>>>>           char name[8];
+> >>>>> diff --git
+> >>>>> a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+> >>>>> b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+> >>>>> index 6532a69f1fa8..a1e0f24bb91c 100644
+> >>>>> --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_=
+if.c
+> >>>>> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_=
+if.c
+> >>>>> @@ -16,6 +16,8 @@
+> >>>>>    #include "../vdec_drv_if.h"
+> >>>>>    #include "../vdec_vpu_if.h"
+> >>>>>
+> >>>>> +#define VB2_MAX_FRAME  32
+> >>>>> +
+> >>>>>    /* reset_frame_context defined in VP9 spec */
+> >>>>>    #define VP9_RESET_FRAME_CONTEXT_NONE0 0
+> >>>>>    #define VP9_RESET_FRAME_CONTEXT_NONE1 1
+> >>>>> diff --git a/drivers/media/platform/qcom/venus/hfi.h
+> >>>>> b/drivers/media/platform/qcom/venus/hfi.h
+> >>>>> index f25d412d6553..bd5ca5a8b945 100644
+> >>>>> --- a/drivers/media/platform/qcom/venus/hfi.h
+> >>>>> +++ b/drivers/media/platform/qcom/venus/hfi.h
+> >>>>> @@ -10,6 +10,8 @@
+> >>>>>
+> >>>>>    #include "hfi_helper.h"
+> >>>>>
+> >>>>> +#define VB2_MAX_FRAME                          32
+> >>>>> +
+> >>>>>    #define VIDC_SESSION_TYPE_VPE                  0
+> >>>>>    #define VIDC_SESSION_TYPE_ENC                  1
+> >>>>>    #define VIDC_SESSION_TYPE_DEC                  2
+> >>>>> diff --git a/drivers/media/platform/verisilicon/hantro_hw.h
+> >>>>> b/drivers/media/platform/verisilicon/hantro_hw.h
+> >>>>> index e83f0c523a30..9e8faf7ba6fb 100644
+> >>>>> --- a/drivers/media/platform/verisilicon/hantro_hw.h
+> >>>>> +++ b/drivers/media/platform/verisilicon/hantro_hw.h
+> >>>>> @@ -15,6 +15,8 @@
+> >>>>>    #include <media/v4l2-vp9.h>
+> >>>>>    #include <media/videobuf2-core.h>
+> >>>>>
+> >>>>> +#define VB2_MAX_FRAME  32
+> >>>>> +
+> >>>>>    #define DEC_8190_ALIGN_MASK    0x07U
+> >>>>>
+> >>>>>    #define MB_DIM                 16
+> >>>>> diff --git a/drivers/staging/media/ipu3/ipu3-v4l2.c
+> >>>>> b/drivers/staging/media/ipu3/ipu3-v4l2.c
+> >>>>> index e530767e80a5..6627b5c2d4d6 100644
+> >>>>> --- a/drivers/staging/media/ipu3/ipu3-v4l2.c
+> >>>>> +++ b/drivers/staging/media/ipu3/ipu3-v4l2.c
+> >>>>> @@ -10,6 +10,8 @@
+> >>>>>    #include "ipu3.h"
+> >>>>>    #include "ipu3-dmamap.h"
+> >>>>>
+> >>>>> +#define VB2_MAX_FRAME  32
+> >>>>> +
+> >>>>>    /******************** v4l2_subdev_ops ********************/
+> >>>>>
+> >>>>>    #define IPU3_RUNNING_MODE_VIDEO                0
+> >>>>> diff --git a/include/media/videobuf2-core.h
+> >>>>> b/include/media/videobuf2-core.h
+> >>>>> index 77921cf894ef..080b783d608d 100644
+> >>>>> --- a/include/media/videobuf2-core.h
+> >>>>> +++ b/include/media/videobuf2-core.h
+> >>>>> @@ -20,7 +20,6 @@
+> >>>>>    #include <media/media-request.h>
+> >>>>>    #include <media/frame_vector.h>
+> >>>>>
+> >>>>> -#define VB2_MAX_FRAME  (32)
+> >>>>>    #define VB2_MAX_PLANES (8)
+> >>>>>
+> >>>>>    /**
+> >>>>> diff --git a/include/media/videobuf2-v4l2.h
+> >>>>> b/include/media/videobuf2-v4l2.h
+> >>>>> index 5a845887850b..88a7a565170e 100644
+> >>>>> --- a/include/media/videobuf2-v4l2.h
+> >>>>> +++ b/include/media/videobuf2-v4l2.h
+> >>>>> @@ -15,10 +15,6 @@
+> >>>>>    #include <linux/videodev2.h>
+> >>>>>    #include <media/videobuf2-core.h>
+> >>>>>
+> >>>>> -#if VB2_MAX_FRAME !=3D VIDEO_MAX_FRAME
+> >>>>> -#error VB2_MAX_FRAME !=3D VIDEO_MAX_FRAME
+> >>>>> -#endif
+> >>>>> -
+> >>>>>    #if VB2_MAX_PLANES !=3D VIDEO_MAX_PLANES
+> >>>>>    #error VB2_MAX_PLANES !=3D VIDEO_MAX_PLANES
+> >>>>>    #endif
+> >>>>> --
+> >>>>> 2.39.2
+> >>>>>
+> >> --
+> >> Hsia-Jun(Randy) Li
+> >>
+> --
+> Hsia-Jun(Randy) Li
+>
 
