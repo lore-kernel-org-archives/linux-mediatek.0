@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2001EC0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 08:15:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8001C0015E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 08:15:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DcV8Q4Pgm6GKbUOkroMKjnPEjuGHxbPnmE1SCdpXwKc=; b=bo9A+XonUTGlkfUc+ydudYqDWj
-	PQedIw0SQ05UZktu9bUEhFt8E9SMUZLWprgwVvcfsXi9tz5LlUMpyvd+zlsOSjMVvAQxU1cBhdxcf
-	12XGm/dOjhKJ2fAAGMeTDZGyzlBYWxjMzcQR1CE49w8WGGCnid0QwwIK/s5rkcEGT2TQeILLGwynd
-	ZsJa6yoofVP0GW6Y5xxBfj+7JiBdX2koTlz2CJeze9468Jzb4HU+OAVNxCeAFTpmDl58wqRmDUVZ1
-	x/4mhOz6YfE+pKv52jjgmmG5MnsBctyBPGJi3jRnF+9cXpFtYOzdUnwGFOralIIpUEfeGvrTS29ZA
-	qJBKqVMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=N0r3RPSlHpkVq6rNR6DaqZXRQvQQCMumynPYlWojVFI=; b=JxetFY868lXEi6Iku7301FWBXr
+	zKkF7dX9U1MtV5p875uR7mbRcYkN5hGV9Vs+3PUJkLibRvvCcQUMvyXLuxM+CJGBoKoRunljYBzW0
+	kj+9idZW6o56gxrPN1yXGY/EIeR7R0J0W44poxr7quHt/VHWW3j8A6BvZFx3YU8aktMf2LodLdJcn
+	x4sYQJldxJ8+1NJ0VESA0hU+SP9BQCULYZhioEe+TK9lq+Qezhbp2pXpantpyOh3TiC08ayAANEyV
+	xEkw1a6aWm9k2IKWNK7u1C6blZVRg6HAhG4fgFce/ZkJ2JlWiQsgPVZtQMA/FEWS6qmTkAueHWRER
+	bp1/axFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPIcl-002M6M-0U;
-	Fri, 28 Jul 2023 08:14:59 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qPId5-002MD4-0V;
+	Fri, 28 Jul 2023 08:15:19 +0000
+Received: from lelv0142.ext.ti.com ([198.47.23.249])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPIci-002M4l-0M;
-	Fri, 28 Jul 2023 08:14:57 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 184C5660704F;
-	Fri, 28 Jul 2023 09:14:54 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1690532094;
-	bh=2u0/wsFge3BQH+xmqZ62PwLYaH3IHkVQ6bmaZZoo6no=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oBmGVlnP85D1wiHzRNV+MotQljwNcxh32EiHMhpZdOxo+WXXrOGMzTC84cLAo1rvu
-	 5WiDzf51juHFVdcu88oRebzt8Em7zwWOPQWkk07sE/EpEV+dR9IHo7/6/mpLuW0hD/
-	 2iucveIkR+jcyARHKCwkKwYr2lKoHQ4zPHOkajU/gjVb6JJupApanor54nyI66sG9Z
-	 NKgNrW6WiHOZ/x5OvbJ2CaUWLm1ZR4X5I9IUhxJV4NhRKePaJiNPdYed6HKjxPDiti
-	 Mfm+KnEMJOFqSEJ3pFIBQuHe+TTMgAdUpUC4xW+/XiIy1BpGreUlyTAWs/pxi64iXX
-	 IKuWLbwnA166Q==
-Message-ID: <3dca39b3-b152-34e7-8959-78fe68e1a899@collabora.com>
-Date: Fri, 28 Jul 2023 10:14:51 +0200
+	id 1qPId0-002MAM-0g;
+	Fri, 28 Jul 2023 08:15:17 +0000
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 36S8ElsD130857;
+	Fri, 28 Jul 2023 03:14:47 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+	s=ti-com-17Q1; t=1690532087;
+	bh=N0r3RPSlHpkVq6rNR6DaqZXRQvQQCMumynPYlWojVFI=;
+	h=Date:From:To:CC:Subject:References:In-Reply-To;
+	b=BSHinxm9uOn2UhHLeZ5+D7ryjtr1iNxqEqvpVE8SNPAd0VN7P0CV2hZfPhXQi+F04
+	 /OTdEChYyASaG0mYemcvTiLXrtKoOt3jToFX4N9cznorAPKBwPGTirRFvzA2S4CDpI
+	 epEDIWMOTHbeRPiKkXs9jVpTrZ+FrK5s9mFqAoNo=
+Received: from DLEE105.ent.ti.com (dlee105.ent.ti.com [157.170.170.35])
+	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 36S8Elwj012046
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Fri, 28 Jul 2023 03:14:47 -0500
+Received: from DLEE106.ent.ti.com (157.170.170.36) by DLEE105.ent.ti.com
+ (157.170.170.35) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Fri, 28
+ Jul 2023 03:14:46 -0500
+Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE106.ent.ti.com
+ (157.170.170.36) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
+ Frontend Transport; Fri, 28 Jul 2023 03:14:46 -0500
+Received: from localhost (ileaxei01-snat2.itg.ti.com [10.180.69.6])
+	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 36S8Ekrv026247;
+	Fri, 28 Jul 2023 03:14:46 -0500
+Date: Fri, 28 Jul 2023 13:44:45 +0530
+From: Dhruva Gole <d-gole@ti.com>
+To: Ruan Jinjie <ruanjinjie@huawei.com>
+CC: <sre@kernel.org>, <matthias.bgg@gmail.com>,
+        <angelogioacchino.delregno@collabora.com>, <agross@kernel.org>,
+        <andersson@kernel.org>, <konrad.dybcio@linaro.org>,
+        <linux-pm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>
+Subject: Re: [PATCH -next v2] power: supply: Remove redundant dev_err_probe()
+ for platform_get_irq_byname()
+Message-ID: <20230728081445.bmij44pfbckyyrr7@dhruva>
+References: <20230727113550.2599335-1-ruanjinjie@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v7 4/4] drm/mediatek: Add DSI support for mt8188 vdosys0
-Content-Language: en-US
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Jason-ch Chen <jason-ch.chen@mediatek.com>,
- Johnson Wang <johnson.wang@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
- Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Nathan Lu <nathan.lu@mediatek.com>
-References: <20230727164114.20638-1-jason-jh.lin@mediatek.com>
- <20230727164114.20638-5-jason-jh.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230727164114.20638-5-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20230727113550.2599335-1-ruanjinjie@huawei.com>
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230728_011456_403196_14980A3A 
-X-CRM114-Status: GOOD (  18.34  )
+X-CRM114-CacheID: sfid-20230728_011514_331134_94F4EF84 
+X-CRM114-Status: GOOD (  19.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,95 +85,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/07/23 18:41, Jason-JH.Lin ha scritto:
-> Add DSI as main display output for mt8188 vdosys0.
+On Jul 27, 2023 at 19:35:50 +0800, Ruan Jinjie wrote:
+> There is no need to call the dev_err_probe() function directly to print
+> a custom message when handling an error from platform_get_irq_byname()
+> function as it is going to display an appropriate error message
+> in case of a failure.
+
+Ah yes, good catch!
+
 > 
-
-I would split this commit in two:
-
-1. drm/mediatek: dsi: Support dynamic connector selection
-2. drm/mediatek: Support DSI on MT8188 VDOSYS0
-
-Where the first one sets up the mtk_dsi driver for .encoder_index(), and
-where the second one is a one-liner simply adding `{0, DDP_COMPONENT_DSI0},`
-to the MT8188 main routes array.
-
-The reason is that if you split it like that, whoever reads the commit history
-will immediately understand how to add dynamic connector selection to a MTK DRM
-driver, and how to perform the SoC-specific connection....
-
-Please!
-
-Thanks,
-Angelo
-
-> Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Signed-off-by: Ruan Jinjie <ruanjinjie@huawei.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->   drivers/gpu/drm/mediatek/mtk_disp_drv.h     | 1 +
->   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 1 +
->   drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 1 +
->   drivers/gpu/drm/mediatek/mtk_dsi.c          | 9 +++++++++
->   4 files changed, 12 insertions(+)
+> v2:
+> - clarify the commit title
+> ---
+>  drivers/power/supply/mt6370-charger.c       | 4 +---
+>  drivers/power/supply/qcom_pmi8998_charger.c | 3 +--
+>  2 files changed, 2 insertions(+), 5 deletions(-)
+
+Reviewed-by: Dhruva Gole <d-gole@ti.com>
+
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> index 5f07037670e9..fdaa21b6a9da 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> @@ -48,6 +48,7 @@ unsigned int mtk_dpi_encoder_index(struct device *dev);
->   
->   void mtk_dsi_ddp_start(struct device *dev);
->   void mtk_dsi_ddp_stop(struct device *dev);
-> +unsigned int mtk_dsi_encoder_index(struct device *dev);
->   
->   int mtk_gamma_clk_enable(struct device *dev);
->   void mtk_gamma_clk_disable(struct device *dev);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> index bc7b0a0c20db..e6a7a0b9de6c 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> @@ -318,6 +318,7 @@ static const struct mtk_ddp_comp_funcs ddp_dsc = {
->   static const struct mtk_ddp_comp_funcs ddp_dsi = {
->   	.start = mtk_dsi_ddp_start,
->   	.stop = mtk_dsi_ddp_stop,
-> +	.encoder_index = mtk_dsi_encoder_index,
->   };
->   
->   static const struct mtk_ddp_comp_funcs ddp_gamma = {
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index ecd113f9908c..9b7ca8d35f71 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -189,6 +189,7 @@ static const unsigned int mt8188_mtk_ddp_main[] = {
->   
->   static const struct mtk_drm_route mt8188_mtk_ddp_main_routes[] = {
->   	{0, DDP_COMPONENT_DP_INTF0},
-> +	{0, DDP_COMPONENT_DSI0},
->   };
->   
->   static const unsigned int mt8192_mtk_ddp_main[] = {
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index 7d5250351193..62d5362916a5 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -865,6 +865,15 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
->   	return ret;
->   }
->   
-> +unsigned int mtk_dsi_encoder_index(struct device *dev)
-> +{
-> +	struct mtk_dsi *dsi = dev_get_drvdata(dev);
-> +	unsigned int encoder_index = drm_encoder_index(&dsi->encoder);
-> +
-> +	dev_dbg(dev, "encoder index:%d", encoder_index);
-> +	return encoder_index;
-> +}
-> +
->   static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
->   {
->   	int ret;
+> diff --git a/drivers/power/supply/mt6370-charger.c b/drivers/power/supply/mt6370-charger.c
+> index f27dae5043f5..571cf00dde07 100644
+> --- a/drivers/power/supply/mt6370-charger.c
+> +++ b/drivers/power/supply/mt6370-charger.c
+> @@ -849,9 +849,7 @@ static int mt6370_chg_init_irq(struct mt6370_priv *priv)
+>  		ret = platform_get_irq_byname(to_platform_device(priv->dev),
+>  					      mt6370_chg_irqs[i].name);
+>  		if (ret < 0)
+> -			return dev_err_probe(priv->dev, ret,
+> -					     "Failed to get irq %s\n",
+> -					     mt6370_chg_irqs[i].name);
+> +			return ret;
+>  
+>  		priv->irq_nums[i] = ret;
+>  		ret = devm_request_threaded_irq(priv->dev, ret, NULL,
+> diff --git a/drivers/power/supply/qcom_pmi8998_charger.c b/drivers/power/supply/qcom_pmi8998_charger.c
+> index d16c5ee17249..ce7392e7d8b8 100644
+> --- a/drivers/power/supply/qcom_pmi8998_charger.c
+> +++ b/drivers/power/supply/qcom_pmi8998_charger.c
+> @@ -922,8 +922,7 @@ static int smb2_init_irq(struct smb2_chip *chip, int *irq, const char *name,
+>  
+>  	irqnum = platform_get_irq_byname(to_platform_device(chip->dev), name);
+>  	if (irqnum < 0)
+> -		return dev_err_probe(chip->dev, irqnum,
+> -				     "Couldn't get irq %s byname\n", name);
+> +		return irqnum;
+>  
+>  	rc = devm_request_threaded_irq(chip->dev, irqnum, NULL, handler,
+>  				       IRQF_ONESHOT, name, chip);
+> -- 
+> 2.34.1
+> 
 
-
-
+-- 
+Best regards,
+Dhruva Gole <d-gole@ti.com>
 
