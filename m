@@ -4,83 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80BD8C0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 04:05:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90D58C001DE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 05:27:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jeOGYnCzh3/QdxYYg6W9NvOoMsLabvLqVOJO86ZVrUM=; b=0YBSFfC+eJDA7mYwIR7YUBcS94
-	RnK54LRx7YeawLlbnz+4d+yXHoHN0iarHR/jHZcNfgeECrNT9XdMv5FX02TUud/HTYmh8YbFItFLF
-	/YvRoK5SMdaFNauVDUTLemFSwVULQ1N5eBF0RwAXb7pkvxNYecgY8tr5AunYbZnJCJQaOI4C3P3Y6
-	Uc6Eg6K+grlb6oz50oiX7XiEhy2rUO0jZI3NhdY9zMG0RXlZ+K7qEycbx7LSClRAGdI8aOQQI4lf9
-	cB2Ma+RLE7TnrDx0nUAohku/4yRqLmzepiknu2TZmo8NPBfMcSer3JAO2e6kjYZIE66umbGa90wGF
-	0IaO4PFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cE7yzj/ShJctTo/cH8TMuQ/2VH0iD1G1+5KA9qirh/Y=; b=ze2jt1CkLxeM8v0AqctUDNUzzT
+	rVBy5Q/I5LyT2c4X71LCXkxNmWo6to/R8PbRd0cA0uPWC/cAEJPDC2mUJ66SFRDe77FzzaX/6+OaI
+	Ex1Lv3Pf5VzWidJkQ9tc89aGzQoZfsuJT0psi68TcBXYZaMiJ3PO6QQY5h9hoIWV+oNUruIwUtZXx
+	j8aE6rqxb2ECcGel4E9M5byg3p50QMy9WsOztjj35Vr/CflWNjvH2zRicWLEeIAlTkxBXOpMjaX5W
+	Q3qV9VseeMe6g5ZFOVagMTk0dcmRPpgvOJcIZdPM/6c32zZAJOJ9WewWxQujv5VSbyoF2xXCoweOP
+	PB7akiKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPEjf-001Y9n-1u;
-	Fri, 28 Jul 2023 04:05:51 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qPG0A-001jIw-2U;
+	Fri, 28 Jul 2023 05:26:58 +0000
+Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPEjc-001Y95-39;
-	Fri, 28 Jul 2023 04:05:50 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B9CFE61683;
-	Fri, 28 Jul 2023 04:05:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 910D6C433C7;
-	Fri, 28 Jul 2023 04:05:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690517147;
-	bh=2IkY25YAfB9fyvU9p02L4SvtbdbBgqTgi4g+lcXTQbY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=iueYcCS8E8vePhJayUOPdgR1Md/OQ7L2LVyLS4zKXI4p8c0fCE3Em+d2KDcj8UEPP
-	 YiatY3D2gUxoY0bCsZHnRPBuhsfVUkO7WixC7qqq/EjWlxdUvTtBkEAUKDG33pbID+
-	 dcCVgrPJpGXmu1ppcd9lCkHD2SbQX9wQ0TRbuJZVaxJUyeZdLoJYWT6y+eLAokFkOi
-	 mcBVbHHY8SO26FO6pCbG5gM+CfCiXwWKktKdkuffF//o9a7MLlGSvpgX7uQ+AyGpsn
-	 oNZme42d6ZeyFnnFXwnMt/DtIDb/Hw3nozS0TFa50/e1jD83VS8cNOazmhAUQhpxAG
-	 2t8D4lxTLAC0w==
-From: Bjorn Andersson <andersson@kernel.org>
-To: MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	=?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>,
-	Tony Lindgren <tony@atomide.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Gross <agross@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Alexander Stein <alexander.stein@ew.tq-group.com>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-omap@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [PATCH v4 0/6] extcon-usb-gpio YAML conversion
-Date: Thu, 27 Jul 2023 21:08:51 -0700
-Message-ID: <169051733320.1270972.17486978837874639727.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230724103914.1779027-1-alexander.stein@ew.tq-group.com>
-References: <20230724103914.1779027-1-alexander.stein@ew.tq-group.com>
+	id 1qPG06-001jGx-1S
+	for linux-mediatek@lists.infradead.org;
+	Fri, 28 Jul 2023 05:26:57 +0000
+Received: by mail-qv1-xf2b.google.com with SMTP id 6a1803df08f44-63d10da0f26so11352686d6.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 27 Jul 2023 22:26:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar-org.20221208.gappssmtp.com; s=20221208; t=1690522010; x=1691126810;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=cE7yzj/ShJctTo/cH8TMuQ/2VH0iD1G1+5KA9qirh/Y=;
+        b=trpErXEJEPDZtUwJrLhT56jOvw/TASEnxJqiim24u87Ey219zXjICSpgcrZjP+hIvC
+         YOisNcRp1EFcZBuqaw0v47KkdLVd0rFI+qxA+sXUlebSorcP7hGjMv3NkVKwxd1A+1fM
+         +cPBg+wk6aUxXSizYt9OOW8K2HwaRZylnOeA2baYNkYAkyTSt3uSNK4bqSBTUKRlrYKH
+         veSyepWn/C4JI0VyBkgwNf9ieJKzWg0hb3tCI/tmQqhFz8s1wdV5XOJi6PQyomubgQDL
+         AUwaUxnOfbqg6WW2SXOJHHuKT2fULl3OjCF9EdNHMtPrrV+gZMyo2wDTP0lf87ec5+Bk
+         zCEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1690522010; x=1691126810;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=cE7yzj/ShJctTo/cH8TMuQ/2VH0iD1G1+5KA9qirh/Y=;
+        b=eIcbr881jcy2wm6HhzyJzNCuSMpdpu7khBqUdGHCrHAZlX92C4egtR0Y0SlJ4N9Xis
+         Xr34xLKDzD8GHzOEp2nccPFx2fZnXxmLPclNyf6cGgPubob7n18QNi1LwcuCe5RDBa+y
+         EXOme+uGeWGOXononSboXKybyDXRIhU4bmLMpWW6gW2sLCqjhpU4IEm+0ZaDR2XaZ2IA
+         jO4adVy1Y9Uus3HLMwcwtlsGHMI9JIJjIW3oHQRxNYQokEw+NYB9MMAlnCNrjX5/+jNQ
+         rAWIFwbEU/BzRP3KmTO5njKSLQwFEYulu2vPzHZynhy1GWDbWdLslb1ZarjVfCfDiVrW
+         WhYw==
+X-Gm-Message-State: ABy/qLYo/xRVC4A0A2qI5tLrSZmGn8qEJgD+U68Ez+PDVelGkho1NyoA
+	om/bERdnUm0g7xUnumfn6F7GMjv6vkVQA7sNpsXlxA==
+X-Google-Smtp-Source: APBJJlGaHKu68l916QbJnESfurRQ8GLdxdUM6h1VlhU7qK1FfkFxQTpsfGqhPqGZxqp+5PbL922CfRISxETZ4hSkBS0=
+X-Received: by 2002:ad4:45a9:0:b0:63c:fc39:3c0d with SMTP id
+ y9-20020ad445a9000000b0063cfc393c0dmr1353378qvu.62.1690522009771; Thu, 27 Jul
+ 2023 22:26:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+References: <20230720152737.102382-1-helen.koike@collabora.com>
+ <CAF6AEGtXL5vjp3Uup6Mk19MiY8E26-tpyXVmxXYhMd3fiadykQ@mail.gmail.com> <CAF6AEGsxLg4og1EkCdno6P8x31KK=rJfmerJa8uMeNR-n7RVRg@mail.gmail.com>
+In-Reply-To: <CAF6AEGsxLg4og1EkCdno6P8x31KK=rJfmerJa8uMeNR-n7RVRg@mail.gmail.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Fri, 28 Jul 2023 06:26:39 +0100
+Message-ID: <CAPj87rPNyJ=mX1Um6yaN_jTV2gH5MhMxr3mnSb7=nB7NEOf2Ag@mail.gmail.com>
+Subject: Re: [PATCH v10] drm: Add initial ci/ subdirectory
+To: Rob Clark <robdclark@gmail.com>
+Cc: Helen Koike <helen.koike@collabora.com>, emma@anholt.net, linux-doc@vger.kernel.org, 
+	david.heidelberg@collabora.com, dri-devel@lists.freedesktop.org, 
+	linux-amlogic@lists.infradead.org, jbrunet@baylibre.com, robdclark@google.com, 
+	corbet@lwn.net, khilman@baylibre.com, sergi.blanch.torne@collabora.com, 
+	gustavo.padovan@collabora.com, linux-rockchip@lists.infradead.org, 
+	daniels@collabora.com, martin.blumenstingl@googlemail.com, mripard@kernel.org, 
+	anholt@google.com, linux-mediatek@lists.infradead.org, 
+	robclark@freedesktop.org, matthias.bgg@gmail.com, 
+	linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, 
+	neil.armstrong@linaro.org, guilherme.gallo@collabora.com, 
+	linux-kernel@vger.kernel.org, tzimmermann@suse.de, 
+	Dave Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230727_210549_063593_E7E2B140 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20230727_222654_494264_F55A3655 
+X-CRM114-Status: GOOD (  15.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,24 +97,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 27 Jul 2023 at 22:47, Rob Clark <robdclark@gmail.com> wrote:
+> > I did run into a bit of a chicken vs. egg problem with testing the "in
+> > tree" version (compared to earlier versions which kept most of the yml
+> > and scripts in a separate tree), is that it actually requires this
+> > commit to exist in the branch you want to run CI on.  My earlier
+> > workaround of pulling the drm/ci commit in via
+> > ${branchname}-external-fixes no longer works.
+>
+> After unwinding some more gitlab repo settings that were for the
+> previous out-of-tree yml setup, I have this working.
+>
+> Tested-by: Rob Clark <robdclark@gmail.com>
+> Acked-by: Rob Clark <robdclark@gmail.com>
 
-On Mon, 24 Jul 2023 12:39:07 +0200, Alexander Stein wrote:
-> after some misunderstanding on my side, sorry for that and the noise, v4
-> series now includes now all the changes for the bindings and DT in
-> individual patches.
-> I've transferred the R-b and A-b tags to the individual patches in the
-> arch/arm64 patches. Only to specific patches, e.g. mediatek, if sent with
-> #mediatek inidicator, to all patches otherwise. arch/arm has still yet to
-> receive feedback.
-> 
-> [...]
+And it's also:
+Acked-by: Daniel Stone <daniels@collabora.com>
 
-Applied, thanks!
+It's been back and forth a few times by now and reviewed pretty
+heavily by all the people who are across the CI details. I think the
+next step is to answer all the workflow questions by actually getting
+it into trees and using it in anger. There was some discussion about
+whether this should come in from drm-misc, or the core DRM tree, or a
+completely separate pull, but I'm not sure what the conclusion was ...
+maintainers, thoughts?
 
-[6/6] arm64: dts: qcom: Replace deprecated extcon-usb-gpio id-gpio/vbus-gpio properties
-      commit: f648504139a6f91224276ab77be684ba3da649d2
-
-Best regards,
--- 
-Bjorn Andersson <andersson@kernel.org>
+Cheers,
+Daniel
 
