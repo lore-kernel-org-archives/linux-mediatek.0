@@ -4,78 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6157CC0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 03:00:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CA9EC001DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 03:40:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CxV19o0KC50J6ousdCuLaiAFSegaAoRHAMQOW5YpiiM=; b=rfyCxuZKgHpuXNKIBCywuosfXu
-	7QCr/ws82U/5kH/h9Ni0Cc6lrQhvtb5AIF1xJKK4fQ8SSFBMPzftief05n2bdWI+YTUT3KPxWFN7f
-	k8ruZLTc5InKXppvXYO92PXgkUNZHwnF4k7XLFecCZyOAFFCwseFh105zv1XlxMFtGggr9CWHBb0n
-	mxDTibCHFmsVW/jYDmjGJqfpinheV4WILIMzxKPY6UpnyohW33ZzxlwJxRoX+DDADAKT7KbzTuOC+
-	3dWCqvj0Wmg+FnrR7ZTWMwZras8ESfbq4VVOjuZQWdirdsFpxmz76Lj/IR41+nFDAAAfriocKIihM
-	nmNM/bdQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tzt8WZRr7BHzTZZc3nNEvtMg/Vk3N5qA/GF5ekqB5yg=; b=cZyKyTL7xSkOhlRU4oLXvtjmXq
+	2e9x8au9ogFEi7Ksp3KH65Mf4iiQOgTBSRRm2qaMVbYxt6KKgC8zMrksz0zpj+8N8GihoEEFoJPWZ
+	JbUoCZrszD5yEE4qbLNP8Nfr9PLj6xYcYjc7/mReGvcn6DQt9fAAhKTU9QD4eTGHMfbC/6yv9/frc
+	TeM3RMTaJyOiwGVgjuom0ZrlhwVt1BSc6NOX4IMPlFuUMPXqYAlfUJ3Wvs1ZCVg0LNpXYNboKc0ay
+	Q84gvIxd7GN82317oVIn3DrYSFy8RoJGGs0Y6cBAUpgMY/dyI3hl0QU9fIRDtUfBjUwY/KsfGW7XC
+	nuND/YoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPDi4-001Q5r-1S;
-	Fri, 28 Jul 2023 03:00:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qPEL8-001T7i-0q;
+	Fri, 28 Jul 2023 03:40:30 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPDi2-001Q5P-2N;
-	Fri, 28 Jul 2023 03:00:08 +0000
-X-UUID: da2e8e2c2cf211ee83ed1395ce914268-20230727
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=CxV19o0KC50J6ousdCuLaiAFSegaAoRHAMQOW5YpiiM=;
-	b=j13sVoVWmUUT5ve1Qr1QF7i7ZN18CKDZNWFiMzCpZgmY67geUyiP7/4wwOlqFL+AVrKmMDJ441aavhHiwymPEW1rYSh1pYxtVmicCEl6QMIckliayNVkIYQX5LAGTHYfd+cbGxPGQdLKp/qgfXC798hgbB52jMNNh7NoxU877OY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.30,REQID:8b63541b-1b3a-436c-a7f5-6b784ffbdcf7,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:1fcc6f8,CLOUDID:fe376ad2-cd77-4e67-bbfd-aa4eaace762f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: da2e8e2c2cf211ee83ed1395ce914268-20230727
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1986294185; Thu, 27 Jul 2023 20:00:04 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 28 Jul 2023 10:40:01 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 28 Jul 2023 10:40:01 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
-	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tinghan
- Shen <tinghan.shen@mediatek.com>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v16 01/14] dt-bindings: remoteproc: mediatek: Improve the rpmsg subnode definition
-Date: Fri, 28 Jul 2023 10:39:46 +0800
-Message-ID: <20230728023959.12293-2-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230728023959.12293-1-tinghan.shen@mediatek.com>
-References: <20230728023959.12293-1-tinghan.shen@mediatek.com>
+	id 1qPEL4-001T6c-14;
+	Fri, 28 Jul 2023 03:40:27 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 8DEF561FC8;
+	Fri, 28 Jul 2023 03:40:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 6D85AC433CA;
+	Fri, 28 Jul 2023 03:40:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1690515623;
+	bh=nh7VNF71Px8+ehWsNezgTEu3Q5hpaEOt5oKxXH92/qA=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=n5OOA0hexFDJfGiqn8bTgbsd1NxuBlbkYDKSx4jve1A1uhS5AnTOvFTQV4JWG7aBf
+	 g/w60ZUiuyy1xVob0CGewYJXVq1VL+QTFR/Web3ZJJ2NNh+cY5USv/q3z7SDcq/wTR
+	 lonQnxK346qjNlcQZfWCfeuaLMI8E7TUSZjSKMLEMehF+DgMrtLu+XmXsACHxfUrce
+	 uCl8v7KPKSe+YopRiOOHSvNs0MFFYZuVftoYlnB7ke0VUB/3LypcDS6Ej2rHAU9kNd
+	 8tKWHNxo+5s5dfDX+o4x42ap7+FrTJwJM45yRjAs4oZ8Nub3PfEMVbrmDiV7UKUGPk
+	 vMj95R4jHRhaw==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 417E1C691EE;
+	Fri, 28 Jul 2023 03:40:23 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v3] net: Explicitly include correct DT includes
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <169051562326.23821.4231940284607437337.git-patchwork-notify@kernel.org>
+Date: Fri, 28 Jul 2023 03:40:23 +0000
+References: <20230727014944.3972546-1-robh@kernel.org>
+In-Reply-To: <20230727014944.3972546-1-robh@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: andreas@gaisler.com, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, iyappan@os.amperecomputing.com,
+ keyur@os.amperecomputing.com, chris.snook@gmail.com,
+ nicolas.ferre@microchip.com, claudiu.beznea@microchip.com,
+ madalin.bucur@nxp.com, claudiu.manoil@nxp.com, vladimir.oltean@nxp.com,
+ wei.fang@nxp.com, shenwei.wang@nxp.com, xiaoning.wang@nxp.com,
+ linux-imx@nxp.com, sean.anderson@seco.com, pantelis.antoniou@gmail.com,
+ leoyang.li@nxp.com, yisen.zhuang@huawei.com, salil.mehta@huawei.com,
+ dougmill@linux.ibm.com, mw@semihalf.com, linux@armlinux.org.uk,
+ taras.chornyi@plvision.eu, mlindner@marvell.com, stephen@networkplumber.org,
+ nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, horatiu.vultur@microchip.com,
+ UNGLinuxDriver@microchip.com, alexandre.belloni@bootlin.com,
+ timur@kernel.org, s.shtylyov@omp.ru, steve.glendinning@shawell.net,
+ hayashi.kunihiko@socionext.com, peppe.cavallaro@st.com,
+ alexandre.torgue@foss.st.com, joabreu@synopsys.com,
+ mcoquelin.stm32@gmail.com, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ kernel@pengutronix.de, festevam@gmail.com, neil.armstrong@linaro.org,
+ khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, vkoul@kernel.org,
+ bhupesh.sharma@linaro.org, kernel@esmil.dk, samin.guo@starfivetech.com,
+ wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org,
+ thierry.reding@gmail.com, jonathanh@nvidia.com,
+ nobuhiro1.iwamatsu@toshiba.co.jp, grygorii.strashko@ti.com,
+ kevinbrace@bracecomputerlab.com, romieu@fr.zoreil.com, michal.simek@amd.com,
+ radhey.shyam.pandey@amd.com, alex.aring@gmail.com, stefan@datenfreihafen.org,
+ miquel.raynal@bootlin.com, elder@kernel.org, andrew@lunn.ch,
+ hkallweit1@gmail.com, richardcochran@gmail.com, elder@linaro.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-amlogic@lists.infradead.org,
+ linux-oxnas@groups.io, linux-arm-msm@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ linux-omap@vger.kernel.org, linux-wpan@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230727_200006_806840_10534D98 
-X-CRM114-Status: GOOD (  13.05  )
+X-CRM114-CacheID: sfid-20230727_204026_460235_A8DBB424 
+X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,73 +111,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Improve the definition of the rpmsg subnode by assigning a distinct
-node name and adding the definition source of node properties.
+Hello:
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../bindings/remoteproc/mtk,scp.yaml          | 31 +++++++++----------
- 1 file changed, 15 insertions(+), 16 deletions(-)
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-index 895415772d1d..271081df0e46 100644
---- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-@@ -58,6 +58,18 @@ properties:
-   memory-region:
-     maxItems: 1
- 
-+  cros-ec-rpmsg:
-+    $ref: /schemas/mfd/google,cros-ec.yaml
-+    description:
-+      This subnode represents the rpmsg device. The properties
-+      of this node are defined by the individual bindings for
-+      the rpmsg devices.
-+
-+    required:
-+      - mediatek,rpmsg-name
-+
-+    unevaluatedProperties: false
-+
- required:
-   - compatible
-   - reg
-@@ -89,21 +101,7 @@ allOf:
-         reg-names:
-           maxItems: 2
- 
--additionalProperties:
--  type: object
--  description:
--    Subnodes of the SCP represent rpmsg devices. The names of the devices
--    are not important. The properties of these nodes are defined by the
--    individual bindings for the rpmsg devices.
--  properties:
--    mediatek,rpmsg-name:
--      $ref: /schemas/types.yaml#/definitions/string-array
--      description:
--        Contains the name for the rpmsg device. Used to match
--        the subnode to rpmsg device announced by SCP.
--
--  required:
--    - mediatek,rpmsg-name
-+additionalProperties: false
- 
- examples:
-   - |
-@@ -118,7 +116,8 @@ examples:
-         clocks = <&infracfg CLK_INFRA_SCPSYS>;
-         clock-names = "main";
- 
--        cros_ec {
-+        cros-ec-rpmsg {
-+            compatible = "google,cros-ec-rpmsg";
-             mediatek,rpmsg-name = "cros-ec-rpmsg";
-         };
-     };
+On Wed, 26 Jul 2023 19:49:39 -0600 you wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,v3] net: Explicitly include correct DT includes
+    https://git.kernel.org/netdev/net-next/c/3d40aed86287
+
+You are awesome, thank you!
 -- 
-2.18.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
