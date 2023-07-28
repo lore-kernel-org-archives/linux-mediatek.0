@@ -4,96 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDE39C0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 09:10:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAE71C001E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Jul 2023 09:25:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UZjkkHDL7ZTA+1HGFOAIVhHEoIpWXGP8CKYmIiCzoRs=; b=o5TJy8Xbq19wHGqAOqcmbZJRpY
-	FTIuUugHihVbQLT/G1RJrVtfxOR7a7Q2t3+x20jtyx2/gqNRmFl8jA575+kNejrwxPHOCuolPhPbG
-	I8RkwAQDhNtOh6w4LfaPvEb4RRqqWYVOI/4J9hjW92IZvw8UIsLMkO2gECVQ/O2tx7b5CPd8fWAA8
-	xpNtcgyGKMU1iZBJGklBUrAbLOf0/4Z75rE0b2GyiGMuWXsJj6LdCwtOIq7xCFfQy8VBD2ckIFzBu
-	bf1AQ4PvqMiRTHEAbj6/FD1huMlX0iysCDtC5n0eG7dEOv07l7ZbpAhSdzqcxgvqBIqWJqueVz9F7
-	7V8F+X7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BeZuXmpiEmno0bow7QoHwmir1t7SQOeK0Dqbujq52ps=; b=LtcAdk/wHByzAdfypsFGZPS4aw
+	RhQTC92NUDZAXCYss3hujWsxrtzze2BrYb7BSm9jnY8F4O/R+lk281bmF3+aJpAeuC31YYPWydZaO
+	HHuhvwXJNebKibCRw6ZHGqKLq+TTTb1lAJolm5CHeGLipScd+rYFa8U7U3Aa9aacqlk/WrCH12jF9
+	toK2QNHOPY+nGq+pRvNsUVaciBJi/9QdeFFkZRkppjxzoBGOj4cAFpqg2o6Si1ttWoLMtTJboIECu
+	59p68QHqx56Vx05Qol7Rlug0txc2gbBsy3aZ5nIeHmAciIY9i1kYEd+EZikLna/HkFhZlkAb1Hcln
+	o8c2++Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPJUf-002bE6-34;
-	Fri, 28 Jul 2023 09:10:41 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qPJjS-002d7R-2a;
+	Fri, 28 Jul 2023 09:25:58 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPJUc-002bCF-0k;
-	Fri, 28 Jul 2023 09:10:39 +0000
+	id 1qPJjP-002d60-1f;
+	Fri, 28 Jul 2023 09:25:57 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A4A2662086;
-	Fri, 28 Jul 2023 09:10:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFF74C433C7;
-	Fri, 28 Jul 2023 09:10:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690535437;
-	bh=jsukJ3h2ilmz083UcYGengZNcUIJYlLHWk6g/LKxW1A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Jq54e2P2vabTsv0/ZkCTu/TtAKcPA/986KlVzpTtjaLAFsettUVGxIIEhV012qHmY
-	 XjZnDjmAeW2ab1ZsUURkM7jE4L/524t63e/2b+AR7jZDEQXiyB3jMa2BRjo+JEpwRs
-	 l3QdUPJ8w/4urXWddV+VETsCyali7ZkVGVcRJ/K6g+RVz5T9C+bf9WioC+uygEDa9I
-	 Rh3AvZFW0PdulmDiZySwu0Xy2XsI/jHB3Xyi77hPM/dAwa7KUnEsd9+KEupPqjueWP
-	 u1x3RpBtfjI/oksjIHjYF89qn/jUU3ZW18drI+6RQKSDrQ5SYoMzV9cMfadNlCraZU
-	 lW9h48LazI1/g==
-Date: Fri, 28 Jul 2023 10:10:24 +0100
-From: Lee Jones <lee@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Thor Thayer <thor.thayer@linux.intel.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Cristian Ciocaltea <cristian.ciocaltea@gmail.com>,
-	Benson Leung <bleung@chromium.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Support Opensource <support.opensource@diasemi.com>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Tony Lindgren <tony@atomide.com>, Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Matti Vaittinen <mazziesaccount@gmail.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	patches@opensource.cirrus.com, linux-actions@lists.infradead.org,
-	chrome-platform@lists.linux.dev, alsa-devel@alsa-project.org,
-	linux-mediatek@lists.infradead.org, linux-omap@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev, linux-mtd@lists.infradead.org
-Subject: Re: [PATCH] mfd: Explicitly include correct DT includes
-Message-ID: <20230728091024.GE8175@google.com>
-References: <20230714174731.4059811-1-robh@kernel.org>
+	by dfw.source.kernel.org (Postfix) with ESMTPS id AFE01620A0;
+	Fri, 28 Jul 2023 09:25:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98F40C433C7;
+	Fri, 28 Jul 2023 09:25:49 +0000 (UTC)
+Message-ID: <2d9eeb0e-71b3-157c-b947-6dd5485f46e3@xs4all.nl>
+Date: Fri, 28 Jul 2023 11:25:47 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230714174731.4059811-1-robh@kernel.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v7,0/11] media: mediatek: vcodec: separate encoder and
+ decoder
+Content-Language: en-US
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230722074230.30558-1-yunfei.dong@mediatek.com>
+ <231e9976-93fe-b8b1-29d9-6c799a8e6a3a@xs4all.nl>
+In-Reply-To: <231e9976-93fe-b8b1-29d9-6c799a8e6a3a@xs4all.nl>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230728_021038_357304_08AECF2C 
-X-CRM114-Status: GOOD (  15.17  )
+X-CRM114-CacheID: sfid-20230728_022555_661313_1459B19A 
+X-CRM114-Status: GOOD (  18.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,74 +77,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 14 Jul 2023, Rob Herring wrote:
-
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
+On 25/07/2023 11:58, Hans Verkuil wrote:
+> On 22/07/2023 09:42, Yunfei Dong wrote:
+>> From: Yunfei Dong <yunfei.dong@mediatek.corp-partner.google.com>
+>>
+>> With the driver more and more complex, encoder and decoder need to add more parameter
+>> in shared struct 'mtk_vcodec_ctx' and 'mtk_vcodec_dev'. Encoder use about 40% and
+>> decoder use 60% parameter. Need to allocate extra unused memory when encoder and decoder
+>> working.
+>>
+>> Separate encoder and decoder in different folder and use independent data struct.
+>>
+>> patch 1 remove unused parameter.
+>> patch 2~3 align fw and interrupt related interface.
+>> patch 4~6 remove the dependency of debug log
+>> patch 7~8 separate mtk_vcodec_ctx and mtk_vcodec_dev
+>> patch 9 fix unreasonable parameter
+>> patch 10 removed unused header files
+>> patch 11 separate encoder and decoder in different folder
+>> ---
+>> Changed from v6:
+>> - rebase to: https://git.linuxtv.org/hverkuil/media_tree.git/log/?h=fo-v6.6g.
+>> Changed from v5:
+>> - fix some words error for patch 3/6/11.
+>> - rename mtk_vcodec_comm_drv.h to mtk_vcodec_cmn_drv.h for patch 7.
+>> Changed from v4:
+>> - add one parameter to record register base for reg_base for patch 3.
+>> - add debug string for non ctx log for patch 6.
+>> - change the comment of struct mtk_vcodec_dec_ctx and struct mtk_vcodec_enc_ctx for patch 7.
+>> - prefer to use struct mtk_vcodec_dec_dev an current period, will re-construct in the future for patch 8.
+>> Changed from v3:
+>> - re-write commit message for patch 3.
+>> Changed from v2:
+>> - This patch main changed:
+>>   1: add different macro mtk_dec_debug and mtk_enc_debug calling common
+>>      macro mtk_vcodec_debug in order to use dev_dbg instead of pr_debug.
+>>   2: add different macro mtk_v4l2_venc_dbg and mtk_v4l2_vdec_dbg calling common
+>>      macro  in order to use dev_dbg instead of pr_debug.
+>> Changed from v1:
+>> - Change pr_dbg to dev_dbg for mtk_v4l2_level and mtk_vcodec_dbg for patch 4.
+>> - Change pr_err to dev_err for mtk_v4l2_err and mtk_vcodec_err for patch 5.
+>> - Fix unreasonable parameter for patch 8.
+>> ---
+>> Yunfei Dong (11):
+>>   media: mediatek: vcodec: remove unused parameter
+>>   media: mediatek: vcodec: align fw interface
+>>   media: mediatek: vcodec: Removing struct 'mtk_vcodec_ctx/dev' for
+>>     shared interface
+>>   media: mediatek: vcodec: Removing useless debug log
+>>   media: mediatek: vcodec: remove the dependency of vcodec debug log
+>>   media: mediatek: vcodec: replace pr_* with dev_* for v4l2 debug
+>>     message
+>>   media: mediatek: vcodec: separate struct 'mtk_vcodec_ctx'
+>>   media: mediatek: vcodec: separate struct mtk_vcodec_dev
+>>   media: mediatek: vcodec: fix unreasonable parameter definition and
+>>     style
+>>   media: mediatek: vcodec: remove unused include header
+>>   media: mediatek: vcodec: separate decoder and encoder
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  drivers/mfd/ab8500-core.c           | 1 -
->  drivers/mfd/acer-ec-a500.c          | 2 +-
->  drivers/mfd/act8945a.c              | 2 +-
->  drivers/mfd/altera-sysmgr.c         | 3 +--
->  drivers/mfd/arizona-core.c          | 1 -
->  drivers/mfd/atc260x-core.c          | 1 -
->  drivers/mfd/bcm590xx.c              | 1 -
->  drivers/mfd/cros_ec_dev.c           | 2 +-
->  drivers/mfd/da9052-i2c.c            | 5 +----
->  drivers/mfd/da9055-i2c.c            | 1 -
->  drivers/mfd/da9062-core.c           | 2 +-
->  drivers/mfd/hi655x-pmic.c           | 4 ++--
->  drivers/mfd/iqs62x.c                | 2 +-
->  drivers/mfd/lp873x.c                | 2 +-
->  drivers/mfd/madera-i2c.c            | 1 -
->  drivers/mfd/madera-spi.c            | 1 -
->  drivers/mfd/max77620.c              | 1 -
->  drivers/mfd/max77686.c              | 1 -
->  drivers/mfd/max77843.c              | 2 +-
->  drivers/mfd/max8907.c               | 1 -
->  drivers/mfd/max8925-core.c          | 1 -
->  drivers/mfd/max8997.c               | 1 -
->  drivers/mfd/max8998.c               | 1 -
->  drivers/mfd/mt6358-irq.c            | 5 ++---
->  drivers/mfd/mt6397-core.c           | 5 +++--
->  drivers/mfd/mt6397-irq.c            | 5 ++---
->  drivers/mfd/palmas.c                | 3 ++-
->  drivers/mfd/qcom-pm8008.c           | 2 +-
->  drivers/mfd/rave-sp.c               | 2 +-
->  drivers/mfd/rk8xx-core.c            | 2 +-
->  drivers/mfd/rohm-bd71828.c          | 2 +-
->  drivers/mfd/rohm-bd718x7.c          | 2 +-
->  drivers/mfd/rohm-bd9576.c           | 2 +-
->  drivers/mfd/rt5033.c                | 2 +-
->  drivers/mfd/rz-mtu3.c               | 4 +++-
->  drivers/mfd/sec-core.c              | 2 --
->  drivers/mfd/sprd-sc27xx-spi.c       | 2 +-
->  drivers/mfd/ssbi.c                  | 6 +++---
->  drivers/mfd/stm32-lptimer.c         | 1 +
->  drivers/mfd/stm32-timers.c          | 1 +
->  drivers/mfd/sun4i-gpadc.c           | 4 ++--
->  drivers/mfd/ti-lmu.c                | 1 -
->  drivers/mfd/ti_am335x_tscadc.c      | 2 +-
->  drivers/mfd/tps6507x.c              | 1 -
->  drivers/mfd/tps65090.c              | 1 -
->  drivers/mfd/tps65217.c              | 1 -
->  drivers/mfd/tps65218.c              | 1 -
->  drivers/mfd/tps6594-core.c          | 2 +-
->  drivers/mfd/twl6040.c               | 2 --
->  drivers/mfd/wm831x-core.c           | 3 +--
->  drivers/mtd/chips/cfi_cmdset_0002.c | 3 +--
->  51 files changed, 42 insertions(+), 66 deletions(-)
+> Besides the missing argument in patch 6/11 I also get this compiler warning:
+> 
+> drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c: In function 'vpu_enc_ipi_handler':
+> drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c:64:31: warning: 'vpu' may be used uninitialized [-Wmaybe-uninitialized]
+>    64 |         struct venc_vpu_inst *vpu;
+>       |                               ^~~
+> 
+> and this smatch error:
+> 
+> drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c:138 mtk_vcodec_get_reg_bases() error: buffer overflow 'mtk_dec_reg_names' 11 <= 11
+> 
+> However, I believe that was introduced by Nicolas' patch series.
+> 
+> I'll try to pinpoint the precise patch.
 
-Applied, thanks
+That smatch error is now found and fixed in the staging tree.
 
--- 
-Lee Jones [李琼斯]
+Can you post a v8 fixing the other issues?
+
+Thanks!
+
+Regards,
+
+	Hans
+
+> 
+> Regards,
+> 
+> 	Hans
+
 
