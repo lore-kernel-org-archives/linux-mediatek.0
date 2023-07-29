@@ -4,57 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75809C001DC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 13:56:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F655C001DF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 13:58:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gzHkJk9ZzH8UYRdrC+IL3uvIITQeaguIDbIXmZcaUgI=; b=ktmaW0XV9TLR1M+Iqje88L6cCa
-	7Xts12nBZGcPMiTJHuKi5fs+FwyUhlVFOa80lhSd9sdeOZtIFabEzGbF97HoZgCO70S/bSZthvtw+
-	d+e6lDEMgjPrJgPVL+nR3T72MWYOUNzOTEOXuJcNQMyuMxVtN3yBVxIc3z58+4Y5Bu3aUuvrcK2mp
-	kw4KskSmcGB+keJKYEa+HqwV0r65Shrn9vHkCoXLX+QgGEft7omOT/Qto/MpRogd7u/bAlLFPBEaj
-	XT3VpVEld0kMnc625q823SmXZVFbbLoEZHM04n2K1VF4BY+dw1ufhDyjSCfLoy0t8Ew/FsWmB+UI7
-	pOcDEFZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cOPjuFWRIoL4Z0Eeol5gO6QE7SM7OBiqVr5rmWDNiY0=; b=Jt8YjbYmkvqm+iW5gHLak4FX4/
+	HlcPpYZ621WzVTll9VNvgyXzhvQgO7rb2uMeLwa6fvnV/1bDthbAum36reXENgPc3q2/80rd0EF/6
+	BBtvhwvcdbkE9PdmhbNTXU/4MP863BnLaW56F13SQJEp/G3clb5F8gy3cXMVDZcZR7lqnCzU9xlpi
+	+JIt1M76w+OHyALFuGN+rS0Ak0UTiWBfHtrMtHmlj4VgqkdcpQYsNv1L6QUvH4y5kigiLC5/EUXEr
+	Hie/0A8CY0rAnYkNwANfRp/WLU1tb3bFs+1RUt1K1B5ie5AmNREBjaYJJli6ek/lXOTr/Em+dlfcZ
+	nfwzvIIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPkQK-007ffe-1o;
-	Sat, 29 Jul 2023 13:56:00 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1qPkSl-007gR3-1F;
+	Sat, 29 Jul 2023 13:58:31 +0000
+Received: from relay5-d.mail.gandi.net ([2001:4b98:dc4:8::225])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPkQH-007fVv-1O;
-	Sat, 29 Jul 2023 13:55:58 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1qPkPr-0001I0-14;
-	Sat, 29 Jul 2023 13:55:31 +0000
-Date: Sat, 29 Jul 2023 14:55:15 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next] net: ethernet: mtk_eth_soc: support per-flow
- accounting on MT7988
-Message-ID: <801c89963e95e5ce8f1ab7dbda894dd9da0125cc.1690638748.git.daniel@makrotopia.org>
+	id 1qPkSg-007gFK-1C;
+	Sat, 29 Jul 2023 13:58:28 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id C6A241C0004;
+	Sat, 29 Jul 2023 13:58:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1690639101;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=cOPjuFWRIoL4Z0Eeol5gO6QE7SM7OBiqVr5rmWDNiY0=;
+	b=EBG41HMYCfHzsxX3Lu9wjhkOhuazVRfwvQjx8aikqyaWwoErHMXsViXnbGoqg8Nond5/Ie
+	HFcvgQ+1rSLKe6Noru8SdP36Q08DwtfLx+vnxlUmQwTyyJPL/qs3ONncHX5t9vasJE0DoX
+	/eUthf9xVwmkfO/rLXQZWdtFLykvy0nRUlIhEylCGqp+qNxw+t3FQG17qIEomftqzei86U
+	nf9JFAW3gXQsm8cxVOQEkEImwkkNkMtC/LEaxEvx4UslsC1bvpwcAcgGqreWQFtlGkpm8B
+	phERC66B0NTICUCuh6LsJeHI82jprLe45uKr1PAdK/4+AvNSTuhPiGZt3sxqiQ==
+Message-ID: <cef11e4e-d96e-8cc8-045c-adcf006bdcf0@arinc9.com>
+Date: Sat, 29 Jul 2023 16:58:10 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: MediaTek Frame Engine Ethernet: does it need any resets?
+Content-Language: en-US
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Network Development <netdev@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ linux-mips@vger.kernel.org,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Daniel Golle <daniel@makrotopia.org>
+References: <2a4da319-a78a-7cb1-6f18-f59180de779f@gmail.com>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <2a4da319-a78a-7cb1-6f18-f59180de779f@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230729_065557_466985_BAA2F42C 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20230729_065826_574397_66BB2F17 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,72 +80,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-NETSYS_V3 uses 64 bits for each counters while older SoCs were using
-48 bits for each counter.
-Support reading per-flow byte and package counters on NETSYS_V3.
+On 29.07.2023 14:45, Rafał Miłecki wrote:
+> Hi,
+> 
+> I'm trying to understand MediaTek's Ethernet controller resets.
+> 
+> I noticed there is sth fishy when checking dts files. See following
+> errors:
+> 
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: 
+> ethernet@1e100000: resets: [[2, 6], [2, 23]] is too short
+>          From schema: 
+> Documentation/devicetree/bindings/net/mediatek,net.yaml
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: 
+> ethernet@1e100000: reset-names:1: 'gmac' was expected
+>          From schema: 
+> Documentation/devicetree/bindings/net/mediatek,net.yaml
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: 
+> ethernet@1e100000: reset-names: ['fe', 'eth'] is too short
+>          From schema: 
+> Documentation/devicetree/bindings/net/mediatek,net.yaml
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: 
+> ethernet@1e100000: Unevaluated properties are not allowed 
+> ('reset-names', 'resets' were unexpected)
+>          From schema: 
+> Documentation/devicetree/bindings/net/mediatek,net.yaml
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c  |  1 +
- drivers/net/ethernet/mediatek/mtk_ppe.c      | 18 ++++++++++++++----
- drivers/net/ethernet/mediatek/mtk_ppe_regs.h |  2 ++
- 3 files changed, 17 insertions(+), 4 deletions(-)
+Sigh, looks like this patch was applied regardless of my points here. 
+Now we're here picking up the pieces.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 05be702f19c5e..1b89f800f6dff 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -5064,6 +5064,7 @@ static const struct mtk_soc_data mt7988_data = {
- 	.version = 3,
- 	.offload_version = 2,
- 	.hash_offset = 4,
-+	.has_accounting = true,
- 	.foe_entry_size = MTK_FOE_ENTRY_V3_SIZE,
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma_v2),
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-index bf1ecb0c1c109..1ec508bb206bf 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-@@ -107,10 +107,20 @@ static int mtk_mib_entry_read(struct mtk_ppe *ppe, u16 index, u64 *bytes, u64 *p
- 	cnt_r1 = readl(ppe->base + MTK_PPE_MIB_SER_R1);
- 	cnt_r2 = readl(ppe->base + MTK_PPE_MIB_SER_R2);
- 
--	byte_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R0_BYTE_CNT_LOW, cnt_r0);
--	byte_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R1_BYTE_CNT_HIGH, cnt_r1);
--	pkt_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R1_PKT_CNT_LOW, cnt_r1);
--	pkt_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R2_PKT_CNT_HIGH, cnt_r2);
-+	if (mtk_is_netsys_v3_or_greater(ppe->eth)) {
-+		/* 64 bit for each counter */
-+		bytes_cnt_low = cnt_r0;
-+		bytes_cnt_high = cnt_r1;
-+		pkt_cnt_low = cnt_r2;
-+		pkt_cnt_high = readl(ppe->base + MTK_PPE_MIB_SER_R3);
-+	} else {
-+		/* 48 bit for each counter */
-+		byte_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R0_BYTE_CNT_LOW, cnt_r0);
-+		byte_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R1_BYTE_CNT_HIGH, cnt_r1);
-+		pkt_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R1_PKT_CNT_LOW, cnt_r1);
-+		pkt_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R2_PKT_CNT_HIGH, cnt_r2);
-+	}
-+
- 	*bytes = ((u64)byte_cnt_high << 32) | byte_cnt_low;
- 	*packets = (pkt_cnt_high << 16) | pkt_cnt_low;
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_regs.h b/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
-index a2e61b3eb006d..3ce088eef0efd 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
-@@ -163,6 +163,8 @@ enum {
- #define MTK_PPE_MIB_SER_R2			0x348
- #define MTK_PPE_MIB_SER_R2_PKT_CNT_HIGH		GENMASK(23, 0)
- 
-+#define MTK_PPE_MIB_SER_R3			0x34c
-+
- #define MTK_PPE_MIB_CACHE_CTL			0x350
- #define MTK_PPE_MIB_CACHE_CTL_EN		BIT(0)
- #define MTK_PPE_MIB_CACHE_CTL_FLUSH		BIT(2)
--- 
-2.41.0
+https://lore.kernel.org/netdev/b6c7462d-99fc-a8e1-1cc2-d0a1efc7c34d@arinc9.com/
 
+> 
+> 
+> 1. Binding mediatek,net.yaml
+> It says that when present, there must be 3 resets: fe, gmac, ppe
+> 
+> 2. mt7621.dtsi
+> It specifies 2 resets: fe, eth
+> 
+> 3. mt7622.dtsi
+> It doesn't specify any resets
+> 
+> 4. mt7629.dtsi
+> It doesn't specify any resets
+> 
+> 5. drivers/net/ethernet/mediatek/
+> I don't see any reset_control_* code at all
+> 
+> 
+> Can someone help me what's the actual case with resets? Are they needed?
+> Are they used?
+
+I'm adding Sergio to CC as they've been the one working on this on 
+mt7621.dtsi.
+
+There's relevant information here.
+
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=64b2d6ffff862c0e7278198b4229e42e1abb3bb1
+
+Arınç
 
