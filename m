@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F655C001DF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 13:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63995C001DF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 14:09:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cOPjuFWRIoL4Z0Eeol5gO6QE7SM7OBiqVr5rmWDNiY0=; b=Jt8YjbYmkvqm+iW5gHLak4FX4/
-	HlcPpYZ621WzVTll9VNvgyXzhvQgO7rb2uMeLwa6fvnV/1bDthbAum36reXENgPc3q2/80rd0EF/6
-	BBtvhwvcdbkE9PdmhbNTXU/4MP863BnLaW56F13SQJEp/G3clb5F8gy3cXMVDZcZR7lqnCzU9xlpi
-	+JIt1M76w+OHyALFuGN+rS0Ak0UTiWBfHtrMtHmlj4VgqkdcpQYsNv1L6QUvH4y5kigiLC5/EUXEr
-	Hie/0A8CY0rAnYkNwANfRp/WLU1tb3bFs+1RUt1K1B5ie5AmNREBjaYJJli6ek/lXOTr/Em+dlfcZ
-	nfwzvIIQ==;
+	bh=HJHI+2B39D3Or8mTHomyEAuJmjF+7v9ZD1s100wtrNs=; b=BwvJoQEFWQ/m6DwmlxkpRxDU6Z
+	sE4AjzXak/DmbdHyNBHlK/cokjmwkPnfsgniSYb4xqpwQ107JfVMS9y6ExEzbQD/pToCVh3gvkYDV
+	hNW92Dj389i3eMt4hoW5HXD2d2Vfov+nRyINR7k40F+ePcp+IDAL2Cl75F8u0Ogp4RMjB2IiSk5UB
+	UfUDLRbM5FBtorcnTna8HGiXcxRuTTVNDhOjdI8Ok1e9TdcuiWxzUd9lpbyhbkPhazgMJUNgWx/P+
+	xhXNTLNTLprjT8ztphyZrhwVGS+hnfLP81r1ruNK/1ULmaZ1m3C3M6BtX5zcA+6WvnTF2pJon8sDH
+	xtO5ryJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPkSl-007gR3-1F;
-	Sat, 29 Jul 2023 13:58:31 +0000
+	id 1qPkdE-007jSq-1R;
+	Sat, 29 Jul 2023 14:09:20 +0000
 Received: from relay5-d.mail.gandi.net ([2001:4b98:dc4:8::225])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPkSg-007gFK-1C;
-	Sat, 29 Jul 2023 13:58:28 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id C6A241C0004;
-	Sat, 29 Jul 2023 13:58:15 +0000 (UTC)
+	id 1qPkdB-007jSE-0e;
+	Sat, 29 Jul 2023 14:09:18 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 5672A1C0004;
+	Sat, 29 Jul 2023 14:09:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1690639101;
+	t=1690639754;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=cOPjuFWRIoL4Z0Eeol5gO6QE7SM7OBiqVr5rmWDNiY0=;
-	b=EBG41HMYCfHzsxX3Lu9wjhkOhuazVRfwvQjx8aikqyaWwoErHMXsViXnbGoqg8Nond5/Ie
-	HFcvgQ+1rSLKe6Noru8SdP36Q08DwtfLx+vnxlUmQwTyyJPL/qs3ONncHX5t9vasJE0DoX
-	/eUthf9xVwmkfO/rLXQZWdtFLykvy0nRUlIhEylCGqp+qNxw+t3FQG17qIEomftqzei86U
-	nf9JFAW3gXQsm8cxVOQEkEImwkkNkMtC/LEaxEvx4UslsC1bvpwcAcgGqreWQFtlGkpm8B
-	phERC66B0NTICUCuh6LsJeHI82jprLe45uKr1PAdK/4+AvNSTuhPiGZt3sxqiQ==
-Message-ID: <cef11e4e-d96e-8cc8-045c-adcf006bdcf0@arinc9.com>
-Date: Sat, 29 Jul 2023 16:58:10 +0300
+	bh=HJHI+2B39D3Or8mTHomyEAuJmjF+7v9ZD1s100wtrNs=;
+	b=mu1xBkyaTSueDQVaSjy1rYEeqE37mKfdczlOLICOFcLo0tQesrxldCAQqqbIMb2pmY9i6E
+	zOeQVJv6/3nXuHRuTiQWnr66Ru2+EBL4gQVJURj0OkIem35WOQYi24/SGCRahCFsJvGcP6
+	Q2iFTFRN0OIRgb7Um0Wa2SoSyV9kuAS02KdtCGpCk/s1sao3+8RLibve2Z2cy98EIiR+Ez
+	juFoKYeR96euKoVIYDHyoaa8JM9z+NsTSFICki24p+8Lv+JhjbL850hPSVSNPMXYy6/v+u
+	NHqNaxIRUg8w9JFBtWfld+gjyZMoSjBSXv8GJwXnoEvgI3TKTbhlCOxk9vOxkA==
+Message-ID: <96bdb44d-3c59-b6e7-7baa-0ab80efeb720@arinc9.com>
+Date: Sat, 29 Jul 2023 17:08:55 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: MediaTek Frame Engine Ethernet: does it need any resets?
+Subject: Re: [PATCH] mips: dts: ralink: reorder MT7621 clocks in Ethernet
+ block
 Content-Language: en-US
 To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Network Development <netdev@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- linux-mips@vger.kernel.org,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Daniel Golle <daniel@makrotopia.org>
-References: <2a4da319-a78a-7cb1-6f18-f59180de779f@gmail.com>
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mips@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
+References: <20230729110449.1357-1-zajec5@gmail.com>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <2a4da319-a78a-7cb1-6f18-f59180de779f@gmail.com>
+In-Reply-To: <20230729110449.1357-1-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230729_065826_574397_66BB2F17 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20230729_070917_388364_1463C2B4 
+X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,64 +83,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29.07.2023 14:45, Rafał Miłecki wrote:
-> Hi,
+On 29.07.2023 14:04, Rafał Miłecki wrote:
+> From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> I'm trying to understand MediaTek's Ethernet controller resets.
+> Use order as specified in the binding (first "ethif" then "fe").
 > 
-> I noticed there is sth fishy when checking dts files. See following
-> errors:
+> This fixes:
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e100000: clock-names:0: 'ethif' was expected
+>          From schema: Documentation/devicetree/bindings/net/mediatek,net.yaml
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e100000: clock-names:1: 'fe' was expected
+>          From schema: Documentation/devicetree/bindings/net/mediatek,net.yaml
 > 
-> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: 
-> ethernet@1e100000: resets: [[2, 6], [2, 23]] is too short
->          From schema: 
-> Documentation/devicetree/bindings/net/mediatek,net.yaml
-> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: 
-> ethernet@1e100000: reset-names:1: 'gmac' was expected
->          From schema: 
-> Documentation/devicetree/bindings/net/mediatek,net.yaml
-> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: 
-> ethernet@1e100000: reset-names: ['fe', 'eth'] is too short
->          From schema: 
-> Documentation/devicetree/bindings/net/mediatek,net.yaml
-> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: 
-> ethernet@1e100000: Unevaluated properties are not allowed 
-> ('reset-names', 'resets' were unexpected)
->          From schema: 
-> Documentation/devicetree/bindings/net/mediatek,net.yaml
+> Fixes: 7a6ee0bbab25 ("mips: dts: ralink: add MT7621 SoC")
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 
-Sigh, looks like this patch was applied regardless of my points here. 
-Now we're here picking up the pieces.
-
-https://lore.kernel.org/netdev/b6c7462d-99fc-a8e1-1cc2-d0a1efc7c34d@arinc9.com/
-
-> 
-> 
-> 1. Binding mediatek,net.yaml
-> It says that when present, there must be 3 resets: fe, gmac, ppe
-> 
-> 2. mt7621.dtsi
-> It specifies 2 resets: fe, eth
-> 
-> 3. mt7622.dtsi
-> It doesn't specify any resets
-> 
-> 4. mt7629.dtsi
-> It doesn't specify any resets
-> 
-> 5. drivers/net/ethernet/mediatek/
-> I don't see any reset_control_* code at all
-> 
-> 
-> Can someone help me what's the actual case with resets? Are they needed?
-> Are they used?
-
-I'm adding Sergio to CC as they've been the one working on this on 
-mt7621.dtsi.
-
-There's relevant information here.
-
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=64b2d6ffff862c0e7278198b4229e42e1abb3bb1
+I'm not sure if I should agree with this patch. The relevant parts of 
+the schema for mediatek,mt7621-eth were added way later than the 
+existing bindings on mt7621.dtsi. Why don't we address this on the 
+schema along with a bunch of other issues the patch for 
+mediatek,mt7621-eth brought?
 
 Arınç
 
