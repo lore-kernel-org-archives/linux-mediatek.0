@@ -4,65 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8826C001DC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 17:47:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E8DDC0015E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 18:08:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q1vPYh+RBZ0E0Mk1ojSUtBjCV8F9zDSzqFOeRor6Gi8=; b=KeN9qFl7ZExd+H53rLeJRImXi+
-	F9oNHxKi3G0Sxn1+LyRhaOORqU1CRun5/VntQEKF2uAhtuF5ViUsJS3rBJRCaXl//imBU0yJiLiMc
-	MrmLvtLaplbSloNaeuDmDD79WxR2yRGOhwRLt7qClz4k5o8s/dRc7ExuC05CcYfku+gMvNvF4MCdV
-	6oi1vhYckYAKgpMJmK8BgUT3OFwvA6xsi1W4SBBhXIx0tPm/waN3HU53vaQ0SRcE4JCnpnxfLhCqc
-	K8ywKDA7/Ujpe9jksGkg/rbVVhYH9dTfWFMCAA+8rwaRSpIiqiqICzDfgwrGsUZ2gwnGo1nHts44Q
-	kay70JOg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iYpd//l/2R+lcGkC5hF58wQL53RdTemoTltNgR5ZuMw=; b=lqoI/G7mfyQ+ibwVGCdUpfXZKz
+	oYP2uvhWi2Jf4174ZF6s42aQXLQVLoJ/6jMwoU+yhMdUQCpLonTG0HzZzkc6Iu1QAooElj/v6lXat
+	u4Q2OuCDp+1gHu9Cn3WoT/En7/5qTVy+hlClI/Tsl7YTgPa+A9kc9hk5a4Z60b2cQhRhD9+8JemqR
+	g8pKO6HSTeEt04YxxXzUBmwDRpMtR5YaNPUND4fN8ZYXji5CqogCK7uyfuyP313unn9RbZhEMzQPD
+	cXotPX2bCL72TCrl+TTRsM2z2BigB+6EaeDqtH4Q5XrLMjNMu7XAahfc6AvYImjYC+VCjUtvy9Do1
+	/OU6KCFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPo27-008Hgm-1W;
-	Sat, 29 Jul 2023 17:47:15 +0000
-Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
+	id 1qPoMI-008Oq5-2c;
+	Sat, 29 Jul 2023 18:08:06 +0000
+Received: from [134.134.136.126] (helo=mgamail.intel.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPmyq-0083nj-0I
-	for linux-mediatek@lists.infradead.org;
-	Sat, 29 Jul 2023 16:39:50 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 9200B1BF207;
-	Sat, 29 Jul 2023 16:39:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1690648783;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Q1vPYh+RBZ0E0Mk1ojSUtBjCV8F9zDSzqFOeRor6Gi8=;
-	b=Ca6970Xdd0mzheJuqr9TNeSO6LKpUu9ThBv1MtHWD7tc1raBHhvJ7bI8jhDK0Sqe+Fide5
-	7+g08PbWPKt+CDHhFWYXfHKSGb5/ZjFk/ujaGX312s1TLnomUi4ncg3mrnEY4HWOlSc5rm
-	J9vmrWUYbRDzSuFh5BuU2yYRELwxBfPRB2mLKZzWjfdXr1X2qI1UHaCou3sAqXwSLLyOjX
-	89f8AMiI3sHBdBnGeztvJe+WonGDh/DnOxDlKM+wELQvP5JNi493OVoCQeMIYaWsbIjhqh
-	WXKWLM/9G9cpd+SqesY1QO9TTGfursygGS977NuPwrC/6Q5huqyh6pJ+MJmAAg==
-Message-ID: <2eb012d9-0d36-54c6-6f2c-1a286d45c497@arinc9.com>
-Date: Sat, 29 Jul 2023 19:39:34 +0300
+	id 1qPoLl-008Oj6-2i;
+	Sat, 29 Jul 2023 18:07:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1690654053; x=1722190053;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=tT3wP+FAPv+fZuu7vI6KFd2fqjjxbQbUxunSx/zWWXg=;
+  b=Bp6YmPPK24MZ+I99quW18+0iQ3lvF1SovlOFet485lHNk5i6Ite3MTyN
+   xuySH5nChm26+p4bwRq7pSZUixOvVX1exdB9iaBFPCdFKqMi31iF3wuos
+   PtZJ7PGmOEl7e0nQSbBxFqyt/t14nRksnRYJSw6AcAQkusb/QPekKhoS0
+   BzaY8hOzagbujWWukRzKy9dE+OMAYfad9oFUc6W/6RdCHOzGDs/j4aG1f
+   NzM4q8YTBN0THPN9iEgsP/IKPkglySXe0VLd2RgaRfIArrss81/M25RnW
+   W3ZGQDsEBWISeDlGwEchZw0Qf/3PlZ/ky75IM0ckwF8/V8PTcNvlCiQgp
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10786"; a="353687294"
+X-IronPort-AV: E=Sophos;i="6.01,240,1684825200"; 
+   d="scan'208";a="353687294"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jul 2023 11:07:05 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10786"; a="727797369"
+X-IronPort-AV: E=Sophos;i="6.01,240,1684825200"; 
+   d="scan'208";a="727797369"
+Received: from lkp-server02.sh.intel.com (HELO 953e8cd98f7d) ([10.239.97.151])
+  by orsmga002.jf.intel.com with ESMTP; 29 Jul 2023 11:07:01 -0700
+Received: from kbuild by 953e8cd98f7d with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qPoLE-0004EB-19;
+	Sat, 29 Jul 2023 18:07:00 +0000
+Date: Sun, 30 Jul 2023 02:06:57 +0800
+From: kernel test robot <lkp@intel.com>
+To: Daniel Golle <daniel@makrotopia.org>, Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: ethernet: mtk_eth_soc: support per-flow
+ accounting on MT7988
+Message-ID: <202307300133.j8MIsDCa-lkp@intel.com>
+References: <801c89963e95e5ce8f1ab7dbda894dd9da0125cc.1690638748.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] pinctrl: mtmips: support requesting different functions
- for same group
-To: Shiji Yang <yangshiji66@outlook.com>, linux-gpio@vger.kernel.org
-Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
-References: <TYAP286MB0315A9671B4BA0347E70D9E0BC00A@TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <TYAP286MB0315A9671B4BA0347E70D9E0BC00A@TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <801c89963e95e5ce8f1ab7dbda894dd9da0125cc.1690638748.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230729_093948_300330_8AA3D31C 
-X-CRM114-Status: GOOD (  22.50  )
+X-CRM114-CacheID: sfid-20230729_110733_918927_218BF517 
+X-CRM114-Status: GOOD (  16.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,54 +93,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26.07.2023 03:48, Shiji Yang wrote:
-> Sometimes pinctrl consumers may request different functions for the
-> same pin group in different situations. This patch can help to reset
-> the group function flag when requesting a different function.
-> 
-> Signed-off-by: Shiji Yang <yangshiji66@outlook.com>
-> ---
->   drivers/pinctrl/mediatek/pinctrl-mtmips.c | 21 +++++++++++++++++----
->   1 file changed, 17 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtmips.c b/drivers/pinctrl/mediatek/pinctrl-mtmips.c
-> index efd77b6c5..e5e085915 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtmips.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtmips.c
-> @@ -123,11 +123,24 @@ static int mtmips_pmx_group_enable(struct pinctrl_dev *pctrldev,
->   	int i;
->   	int shift;
->   
-> -	/* dont allow double use */
-> +	/*
-> +	 * for the same pin group, if request a different function,
-> +	 * then clear the group function flag and continue, else exit.
-> +	 */
->   	if (p->groups[group].enabled) {
-> -		dev_err(p->dev, "%s is already enabled\n",
-> -			p->groups[group].name);
-> -		return 0;
-> +		for (i = 0; i < p->groups[group].func_count; i++) {
-> +			if (p->groups[group].func[i].enabled == 1) {
-> +				if (!strcmp(p->func[func]->name,
-> +					p->groups[group].func[i].name))
-> +					return 0;
-> +				p->groups[group].func[i].enabled = 0;
-> +				break;
-> +			}
-> +		}
-> +
-> +		/* exit if request the "gpio" function again */
-> +		if (i == p->groups[group].func_count && func == 0)
-> +			return 0;
+Hi Daniel,
 
-Could you help me understand why? The @gpio_request_enable operation is 
-not properly implemented on this driver so this check would never be 
-true, no?
+kernel test robot noticed the following build errors:
 
-Even if it was, this makes it so that if a pin group is already given a 
-function (meaning the pin group is enabled), it will never be given the 
-gpio function when requested, unless I understand it wrong.
+[auto build test ERROR on net-next/main]
 
-Arınç
+url:    https://github.com/intel-lab-lkp/linux/commits/Daniel-Golle/net-ethernet-mtk_eth_soc-support-per-flow-accounting-on-MT7988/20230729-215634
+base:   net-next/main
+patch link:    https://lore.kernel.org/r/801c89963e95e5ce8f1ab7dbda894dd9da0125cc.1690638748.git.daniel%40makrotopia.org
+patch subject: [PATCH net-next] net: ethernet: mtk_eth_soc: support per-flow accounting on MT7988
+config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20230730/202307300133.j8MIsDCa-lkp@intel.com/config)
+compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
+reproduce: (https://download.01.org/0day-ci/archive/20230730/202307300133.j8MIsDCa-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202307300133.j8MIsDCa-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/net/ethernet/mediatek/mtk_ppe.c: In function 'mtk_mib_entry_read':
+>> drivers/net/ethernet/mediatek/mtk_ppe.c:112:17: error: 'bytes_cnt_low' undeclared (first use in this function); did you mean 'byte_cnt_low'?
+     112 |                 bytes_cnt_low = cnt_r0;
+         |                 ^~~~~~~~~~~~~
+         |                 byte_cnt_low
+   drivers/net/ethernet/mediatek/mtk_ppe.c:112:17: note: each undeclared identifier is reported only once for each function it appears in
+>> drivers/net/ethernet/mediatek/mtk_ppe.c:113:17: error: 'bytes_cnt_high' undeclared (first use in this function); did you mean 'byte_cnt_high'?
+     113 |                 bytes_cnt_high = cnt_r1;
+         |                 ^~~~~~~~~~~~~~
+         |                 byte_cnt_high
+
+
+vim +112 drivers/net/ethernet/mediatek/mtk_ppe.c
+
+    92	
+    93	static int mtk_mib_entry_read(struct mtk_ppe *ppe, u16 index, u64 *bytes, u64 *packets)
+    94	{
+    95		u32 byte_cnt_low, byte_cnt_high, pkt_cnt_low, pkt_cnt_high;
+    96		u32 val, cnt_r0, cnt_r1, cnt_r2;
+    97		int ret;
+    98	
+    99		val = FIELD_PREP(MTK_PPE_MIB_SER_CR_ADDR, index) | MTK_PPE_MIB_SER_CR_ST;
+   100		ppe_w32(ppe, MTK_PPE_MIB_SER_CR, val);
+   101	
+   102		ret = mtk_ppe_mib_wait_busy(ppe);
+   103		if (ret)
+   104			return ret;
+   105	
+   106		cnt_r0 = readl(ppe->base + MTK_PPE_MIB_SER_R0);
+   107		cnt_r1 = readl(ppe->base + MTK_PPE_MIB_SER_R1);
+   108		cnt_r2 = readl(ppe->base + MTK_PPE_MIB_SER_R2);
+   109	
+   110		if (mtk_is_netsys_v3_or_greater(ppe->eth)) {
+   111			/* 64 bit for each counter */
+ > 112			bytes_cnt_low = cnt_r0;
+ > 113			bytes_cnt_high = cnt_r1;
+   114			pkt_cnt_low = cnt_r2;
+   115			pkt_cnt_high = readl(ppe->base + MTK_PPE_MIB_SER_R3);
+   116		} else {
+   117			/* 48 bit for each counter */
+   118			byte_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R0_BYTE_CNT_LOW, cnt_r0);
+   119			byte_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R1_BYTE_CNT_HIGH, cnt_r1);
+   120			pkt_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R1_PKT_CNT_LOW, cnt_r1);
+   121			pkt_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R2_PKT_CNT_HIGH, cnt_r2);
+   122		}
+   123	
+   124		*bytes = ((u64)byte_cnt_high << 32) | byte_cnt_low;
+   125		*packets = (pkt_cnt_high << 16) | pkt_cnt_low;
+   126	
+   127		return 0;
+   128	}
+   129	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
