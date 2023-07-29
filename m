@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87381C001DC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 03:47:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A60C001DC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 03:48:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VEEwb4tnPlSsH6KiOPFjEFlmYoO7OdGBRVj4QRhhkX8=; b=kpXis5m2NnZf1bgRFRIRjqIAwK
-	hVtdaqRHHD+B1jAekRZIkc/jPsiwzDNpkOBNmRZZnbfurbyjOz690DbpxZWMnx5vqoRBkIIwrTf3c
-	LkxzQhFua6rRg2IsaCJ8oRYgyeNktExezTcIUoSDv1JditvaPyDruUPiXprVaC5l/1M8tG4q6i0u5
-	hkNQ3bRC8O7adsD3rnx6mbSUAaVxcgaaloMbCws7c9YLHxPDzFGzSX3vP1zmNkc53wLaMRBiFJHjX
-	wGWORY2IdnusCFOKeoFPfOqpDvn+IV1xRRaFKhF8IbcbfKdaEvty/5gTJN+qblnG4MgZ+k3aJmJV7
-	aQ9fXldg==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=frF69WcvIrOzT+hgDUhxie4Ou+1gy38h2cbfiP5qp9M=; b=btNuD1RU4ZbeUHVRhpqOJentp4
+	CNLsL7qHB2cDuDCSLxzEqxQy0NGOlnv8Lx/kY9FIXp/X6iU8p6DujUoihYidNJjAMLcRi9T8+FQv7
+	dh1p0CAgLU2owTkprqJ9nidLwVR+f0dQmqVMxglqVFF2v3gnMmtrMhkck4rVfTHdeztC4NKuhv/qC
+	7HgT0mdDXwft1iRl4S4/+H/+bS12XB7oRLmFJsa5upHBdNc2wkrs+6K0aqAMJ6aGuGVOLEGuigcYB
+	NtzSWHy5Rl/+bweROBi8NFs7dKc+KoCGby4epYhaV+gZnTaz/vaill0AE7KisjaHcROA6tQc1ujfO
+	b66FErag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPavi-0067Ka-0s;
-	Sat, 29 Jul 2023 03:47:46 +0000
+	id 1qPawE-0067PN-1Y;
+	Sat, 29 Jul 2023 03:48:18 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPavg-0067K8-0g;
-	Sat, 29 Jul 2023 03:47:45 +0000
-X-UUID: aa775fd02dc211ee912e1518a6540028-20230728
+	id 1qPawC-0067Os-08;
+	Sat, 29 Jul 2023 03:48:17 +0000
+X-UUID: bd9c1fec2dc211ee912e1518a6540028-20230728
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VEEwb4tnPlSsH6KiOPFjEFlmYoO7OdGBRVj4QRhhkX8=;
-	b=QWcKjRfNKBgRomPpJKTqceViG5ZSiTlcPlAFn3LxWgOtT6QFfNirfFOYXmOxwpPGsxnuS8HdMrP6M9Rqop7fjMafY2oTWSf7TivQoN23VRJmIAmwEpWw1g4ZK27UpoEoDrJ+NO/R96uBgjVVZFNbSkstxJ6kMC1kiXh3m6cuzto=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=frF69WcvIrOzT+hgDUhxie4Ou+1gy38h2cbfiP5qp9M=;
+	b=h/a5AWvKMydJonaXh1hmoVBbPZIQshv25/vicuEutmRpBn7AyHyitwFxFQAijEC83HOI5TOZiBghRxnYKkU6ApyzvgYm7YSqX8et7Wlz42toINI2cbRNVF6ty4ueiB7ekSYExlbsUVF7pOg0P2FLvzXp5DP+67ofk0IZmmaGlS0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.30,REQID:803ae234-dd8f-4685-aa95-47b7c6b54f3f,IP:0,U
+X-CID-O-INFO: VERSION:1.1.30,REQID:b501247b-357f-402f-8a3d-71f3cfaa46f8,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:1fcc6f8,CLOUDID:334b73d2-cd77-4e67-bbfd-aa4eaace762f,B
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:513b9442-d291-4e62-b539-43d7d78362ba,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: aa775fd02dc211ee912e1518a6540028-20230728
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-UUID: bd9c1fec2dc211ee912e1518a6540028-20230728
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 6396897; Fri, 28 Jul 2023 20:47:40 -0700
+	with ESMTP id 839651816; Fri, 28 Jul 2023 20:48:12 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 29 Jul 2023 11:47:37 +0800
+ 15.2.1118.26; Sat, 29 Jul 2023 11:47:36 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 29 Jul 2023 11:47:36 +0800
+ 15.2.1118.26 via Frontend Transport; Sat, 29 Jul 2023 11:47:35 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
@@ -60,25 +60,23 @@ To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
 	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
 CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, "Steve
- Cho" <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
+ Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
 	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3,2/2] media: mediatek: vcodec: Fix possible invalid memory access for encoder
-Date: Sat, 29 Jul 2023 11:47:35 +0800
-Message-ID: <20230729034735.17213-2-yunfei.dong@mediatek.com>
+Subject: [PATCH v3,1/2] media: mediatek: vcodec: Fix possible invalid memory access for decoder
+Date: Sat, 29 Jul 2023 11:47:34 +0800
+Message-ID: <20230729034735.17213-1-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230729034735.17213-1-yunfei.dong@mediatek.com>
-References: <20230729034735.17213-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230728_204744_284212_9EAF5ED0 
-X-CRM114-Status: GOOD (  15.68  )
+X-CRM114-CacheID: sfid-20230728_204816_085207_0576723A 
+X-CRM114-Status: GOOD (  18.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,48 +95,54 @@ The vpu maybe null pointer or unreasonable value when scp crash, need to
 validate that the vpu pointer and the vpu instance within this context is
 valid in case of leading to kernel reboot.
 
-Fixes: 27a274db6b4c6 ("[media] vcodec: mediatek: Add Mediatek VP8 Video Encoder Driver")
+Fixes: 590577a4e525 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Decoder Driver")
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 Reported-by: Steve Cho <stevecho@google.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- .../vcodec/encoder/mtk_vcodec_enc_drv.h       |  2 +
- .../mediatek/vcodec/encoder/venc_vpu_if.c     | 39 +++++++++++++++++--
- 2 files changed, 37 insertions(+), 4 deletions(-)
+- compared with v2:
+- rewrite the commit message for patch 01 and 02.
+- add Reported-by and Fixes tag.
+- fix smatch fail for patch 02/2.
+---
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  2 +
+ .../mediatek/vcodec/decoder/vdec_vpu_if.c     | 77 ++++++++++++-------
+ 2 files changed, 52 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-index c07010e566492..a042f607ed8d1 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-@@ -123,6 +123,7 @@ struct mtk_enc_params {
-  * @xfer_func: enum v4l2_xfer_func, colorspace transfer function
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+index 6c318de25a55e..7e36b2c69b7d1 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+@@ -161,6 +161,7 @@ struct mtk_vcodec_dec_pdata {
+  * @hw_id: hardware index used to identify different hardware.
   *
-  * @q_mutex: vb2_queue mutex.
+  * @msg_queue: msg queue used to store lat buffer information.
 + * @vpu_inst: vpu instance pointer.
+  *
+  * @is_10bit_bitstream: set to true if it's 10bit bitstream
   */
- struct mtk_vcodec_enc_ctx {
- 	enum mtk_instance_type type;
-@@ -156,6 +157,7 @@ struct mtk_vcodec_enc_ctx {
- 	enum v4l2_xfer_func xfer_func;
+@@ -205,6 +206,7 @@ struct mtk_vcodec_dec_ctx {
+ 	int hw_id;
  
- 	struct mutex q_mutex;
+ 	struct vdec_msg_queue msg_queue;
 +	void *vpu_inst;
- };
  
- /**
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-index 708db1bb32d44..b10f3544b2411 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-@@ -42,19 +42,46 @@ static void handle_enc_encode_msg(struct venc_vpu_inst *vpu, const void *data)
- 	vpu->is_key_frm = msg->is_key_frm;
+ 	bool is_10bit_bitstream;
+ };
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+index 82c3dc8c41273..23cfe5c6c90b7 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+@@ -72,6 +72,21 @@ static void handle_get_param_msg_ack(const struct vdec_vpu_ipi_get_param_ack *ms
+ 	}
  }
  
-+static bool vpu_enc_check_ap_inst(struct mtk_vcodec_enc_dev *enc_dev, struct venc_vpu_inst *vpu)
++static bool vpu_dec_check_ap_inst(struct mtk_vcodec_dec_dev *dec_dev, struct vdec_vpu_inst *vpu)
 +{
-+	struct mtk_vcodec_enc_ctx *ctx;
++	struct mtk_vcodec_dec_ctx *ctx;
 +	int ret = false;
 +
-+	list_for_each_entry(ctx, &enc_dev->ctx_list, list) {
++	list_for_each_entry(ctx, &dec_dev->ctx_list, list) {
 +		if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst == vpu) {
 +			ret = true;
 +			break;
@@ -148,56 +152,107 @@ index 708db1bb32d44..b10f3544b2411 100644
 +	return ret;
 +}
 +
- static void vpu_enc_ipi_handler(void *data, unsigned int len, void *priv)
+ /*
+  * vpu_dec_ipi_handler - Handler for VPU ipi message.
+  *
+@@ -84,44 +99,51 @@ static void handle_get_param_msg_ack(const struct vdec_vpu_ipi_get_param_ack *ms
+  */
+ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
  {
-+	struct mtk_vcodec_enc_dev *enc_dev;
- 	const struct venc_vpu_ipi_msg_common *msg = data;
--	struct venc_vpu_inst *vpu =
--		(struct venc_vpu_inst *)(unsigned long)msg->venc_inst;
-+	struct venc_vpu_inst *vpu;
-+
-+	enc_dev = (struct mtk_vcodec_enc_dev *)priv;
-+	vpu = (struct venc_vpu_inst *)(unsigned long)msg->venc_inst;
-+	if (!priv || !vpu) {
-+		mtk_v4l2_venc_err(vpu->ctx, "venc_inst is NULL, did the SCP hang or crash?");
-+		return;
-+	}
++	struct mtk_vcodec_dec_dev *dec_dev;
+ 	const struct vdec_vpu_ipi_ack *msg = data;
+-	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
+-					(unsigned long)msg->ap_inst_addr;
++	struct vdec_vpu_inst *vpu;
  
- 	mtk_venc_debug(vpu->ctx, "msg_id %x inst %p status %d", msg->msg_id, vpu, msg->status);
-+	if (!vpu_enc_check_ap_inst(enc_dev, vpu) || msg->msg_id < VPU_IPIMSG_ENC_INIT_DONE ||
-+	    msg->msg_id > VPU_IPIMSG_ENC_DEINIT_DONE) {
-+		mtk_v4l2_venc_err(vpu->ctx, "venc msg id not correctly => 0x%x", msg->msg_id);
+-	if (!vpu) {
++	dec_dev = (struct mtk_vcodec_dec_dev *)priv;
++	vpu = (struct vdec_vpu_inst *)(unsigned long)msg->ap_inst_addr;
++	if (!priv || !vpu) {
+ 		mtk_v4l2_vdec_err(vpu->ctx, "ap_inst_addr is NULL, did the SCP hang or crash?");
+ 		return;
+ 	}
+ 
+-	mtk_vdec_debug(vpu->ctx, "+ id=%X", msg->msg_id);
++	if (!vpu_dec_check_ap_inst(dec_dev, vpu) || msg->msg_id < VPU_IPIMSG_DEC_INIT_ACK ||
++	    msg->msg_id > VPU_IPIMSG_DEC_GET_PARAM_ACK) {
++		mtk_v4l2_vdec_err(vpu->ctx, "vdec msg id not correctly => 0x%x", msg->msg_id);
 +		vpu->failure = -EINVAL;
 +		goto error;
 +	}
  
+ 	vpu->failure = msg->status;
 -	vpu->signaled = 1;
- 	vpu->failure = (msg->status != VENC_IPI_MSG_STATUS_OK);
- 	if (vpu->failure) {
- 		mtk_venc_err(vpu->ctx, "vpu enc status failure %d", vpu->failure);
--		return;
++	if (msg->status != 0)
 +		goto error;
+ 
+-	if (msg->status == 0) {
+-		switch (msg->msg_id) {
+-		case VPU_IPIMSG_DEC_INIT_ACK:
+-			handle_init_ack_msg(data);
+-			break;
++	switch (msg->msg_id) {
++	case VPU_IPIMSG_DEC_INIT_ACK:
++		handle_init_ack_msg(data);
++		break;
+ 
+-		case VPU_IPIMSG_DEC_START_ACK:
+-		case VPU_IPIMSG_DEC_END_ACK:
+-		case VPU_IPIMSG_DEC_DEINIT_ACK:
+-		case VPU_IPIMSG_DEC_RESET_ACK:
+-		case VPU_IPIMSG_DEC_CORE_ACK:
+-		case VPU_IPIMSG_DEC_CORE_END_ACK:
+-			break;
++	case VPU_IPIMSG_DEC_START_ACK:
++	case VPU_IPIMSG_DEC_END_ACK:
++	case VPU_IPIMSG_DEC_DEINIT_ACK:
++	case VPU_IPIMSG_DEC_RESET_ACK:
++	case VPU_IPIMSG_DEC_CORE_ACK:
++	case VPU_IPIMSG_DEC_CORE_END_ACK:
++		break;
+ 
+-		case VPU_IPIMSG_DEC_GET_PARAM_ACK:
+-			handle_get_param_msg_ack(data);
+-			break;
+-		default:
+-			mtk_vdec_err(vpu->ctx, "invalid msg=%X", msg->msg_id);
+-			break;
+-		}
++	case VPU_IPIMSG_DEC_GET_PARAM_ACK:
++		handle_get_param_msg_ack(data);
++		break;
++	default:
++		mtk_vdec_err(vpu->ctx, "invalid msg=%X", msg->msg_id);
++		break;
  	}
  
- 	switch (msg->msg_id) {
-@@ -72,6 +99,9 @@ static void vpu_enc_ipi_handler(void *data, unsigned int len, void *priv)
- 		mtk_venc_err(vpu->ctx, "unknown msg id %x", msg->msg_id);
- 		break;
- 	}
-+
+-	mtk_vdec_debug(vpu->ctx, "- id=%X", msg->msg_id);
 +error:
 +	vpu->signaled = 1;
  }
  
- static int vpu_enc_send_msg(struct venc_vpu_inst *vpu, void *msg,
-@@ -105,6 +135,7 @@ int vpu_enc_init(struct venc_vpu_inst *vpu)
- 	init_waitqueue_head(&vpu->wq_hd);
- 	vpu->signaled = 0;
- 	vpu->failure = 0;
+ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
+@@ -182,9 +204,10 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
+ 
+ 	init_waitqueue_head(&vpu->wq);
+ 	vpu->handler = vpu_dec_ipi_handler;
 +	vpu->ctx->vpu_inst = vpu;
  
- 	status = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler, vpu->id,
- 					    vpu_enc_ipi_handler, "venc", NULL);
+ 	err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler, vpu->id,
+-					 vpu->handler, "vdec", NULL);
++					 vpu->handler, "vdec", vpu->ctx->dev);
+ 	if (err) {
+ 		mtk_vdec_err(vpu->ctx, "vpu_ipi_register fail status=%d", err);
+ 		return err;
+@@ -193,7 +216,7 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
+ 	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
+ 		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
+ 						 vpu->core_id, vpu->handler,
+-						 "vdec", NULL);
++						 "vdec", vpu->ctx->dev);
+ 		if (err) {
+ 			mtk_vdec_err(vpu->ctx, "vpu_ipi_register core fail status=%d", err);
+ 			return err;
 -- 
 2.18.0
 
