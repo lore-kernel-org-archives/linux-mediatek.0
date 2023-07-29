@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A60C001DC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 03:48:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2856C001DC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 03:51:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=frF69WcvIrOzT+hgDUhxie4Ou+1gy38h2cbfiP5qp9M=; b=btNuD1RU4ZbeUHVRhpqOJentp4
-	CNLsL7qHB2cDuDCSLxzEqxQy0NGOlnv8Lx/kY9FIXp/X6iU8p6DujUoihYidNJjAMLcRi9T8+FQv7
-	dh1p0CAgLU2owTkprqJ9nidLwVR+f0dQmqVMxglqVFF2v3gnMmtrMhkck4rVfTHdeztC4NKuhv/qC
-	7HgT0mdDXwft1iRl4S4/+H/+bS12XB7oRLmFJsa5upHBdNc2wkrs+6K0aqAMJ6aGuGVOLEGuigcYB
-	NtzSWHy5Rl/+bweROBi8NFs7dKc+KoCGby4epYhaV+gZnTaz/vaill0AE7KisjaHcROA6tQc1ujfO
-	b66FErag==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WuhC+TXuBS5+6mU1CksmvYSNDdGzSTMxmH8vdefqEVs=; b=f7RQJ6RXKrKxBDlZ80/njsVO2+
+	7W8IxmBqORU/VbVP5mPOPql/KbxcKKGH+teWKMK9aFSnW3/JtLWOAknY677d0JaXv8gJJmktwoVHL
+	ir7A/+pOcopRl6rTJt81ZUR0QhmCstT1Taha5YJS1ciCEQnVEHYvHCbFpfbL+MgVpBHJMOSYPyzPC
+	nL19V2ZLqorU0HyuPz2S4BnCCP2EILYN7WBSAXtDUbZixHWQrE/+Bs7CQ57K2zZhnzU9fJgUtxzGz
+	QWvVqOZhTTHe+Whc8qNO9nxGfKwqHYl6OplqoWnQNbsKEaMdl6d1sXAeHh6fiM6r85B8CAhRrts/o
+	2ml4ngIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPawE-0067PN-1Y;
-	Sat, 29 Jul 2023 03:48:18 +0000
+	id 1qPazG-0067ck-0J;
+	Sat, 29 Jul 2023 03:51:26 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPawC-0067Os-08;
-	Sat, 29 Jul 2023 03:48:17 +0000
-X-UUID: bd9c1fec2dc211ee912e1518a6540028-20230728
+	id 1qPazD-0067cC-18;
+	Sat, 29 Jul 2023 03:51:24 +0000
+X-UUID: 2c5a46022dc311ee912e1518a6540028-20230728
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=frF69WcvIrOzT+hgDUhxie4Ou+1gy38h2cbfiP5qp9M=;
-	b=h/a5AWvKMydJonaXh1hmoVBbPZIQshv25/vicuEutmRpBn7AyHyitwFxFQAijEC83HOI5TOZiBghRxnYKkU6ApyzvgYm7YSqX8et7Wlz42toINI2cbRNVF6ty4ueiB7ekSYExlbsUVF7pOg0P2FLvzXp5DP+67ofk0IZmmaGlS0=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=WuhC+TXuBS5+6mU1CksmvYSNDdGzSTMxmH8vdefqEVs=;
+	b=aQvnnvkB3U+xwUsW20u5InSNI4LMHt4go+3+vu8ghvFVJqiBGwcWVIyu/7ZG2sGkXgdpQxAqXDZG56uIDeb5TDNBG8Fq005uDIIS/S7VRBwezX0ieVkoI/P/hDd6ny90e93qSGkemcDaUO/S4atQgGA2uSGYo/SSdZhkvk0HerI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.30,REQID:b501247b-357f-402f-8a3d-71f3cfaa46f8,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:1fcc6f8,CLOUDID:513b9442-d291-4e62-b539-43d7d78362ba,B
+X-CID-O-INFO: VERSION:1.1.30,REQID:1f845234-1168-4e1a-b193-10d156b0f879,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:843e9442-d291-4e62-b539-43d7d78362ba,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: bd9c1fec2dc211ee912e1518a6540028-20230728
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 2c5a46022dc311ee912e1518a6540028-20230728
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 839651816; Fri, 28 Jul 2023 20:48:12 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+	with ESMTP id 526668753; Fri, 28 Jul 2023 20:51:18 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 29 Jul 2023 11:47:36 +0800
+ 15.2.1118.26; Sat, 29 Jul 2023 11:41:14 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 29 Jul 2023 11:47:35 +0800
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Sat, 29 Jul 2023 11:41:13 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
@@ -61,22 +61,24 @@ To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
 CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
 	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
- Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
+ Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>, Mingjia
+ Zhang <mingjia.zhang@mediatek.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3,1/2] media: mediatek: vcodec: Fix possible invalid memory access for decoder
-Date: Sat, 29 Jul 2023 11:47:34 +0800
-Message-ID: <20230729034735.17213-1-yunfei.dong@mediatek.com>
+Subject: [PATCH v3,1/3] media: mediatek: vcodec: Add capture format to support 10bit tile mode
+Date: Sat, 29 Jul 2023 11:41:10 +0800
+Message-ID: <20230729034112.16993-2-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230729034112.16993-1-yunfei.dong@mediatek.com>
+References: <20230729034112.16993-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230728_204816_085207_0576723A 
-X-CRM114-Status: GOOD (  18.61  )
+X-CRM114-CacheID: sfid-20230728_205123_401798_FC69F816 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,168 +93,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The vpu maybe null pointer or unreasonable value when scp crash, need to
-validate that the vpu pointer and the vpu instance within this context is
-valid in case of leading to kernel reboot.
+From: Mingjia Zhang <mingjia.zhang@mediatek.com>
 
-Fixes: 590577a4e525 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Decoder Driver")
+Define one uncompressed capture format V4L2_PIX_FMT_MT2110T in order to
+support 10bit for AV1/VP9/HEVC in mt8195.
+
+Signed-off-by: Mingjia Zhang <mingjia.zhang@mediatek.com>
+Co-developed-by: Yunfei Dong <yunfei.dong@mediatek.com>
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reported-by: Steve Cho <stevecho@google.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
-- compared with v2:
-- rewrite the commit message for patch 01 and 02.
-- add Reported-by and Fixes tag.
-- fix smatch fail for patch 02/2.
----
- .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  2 +
- .../mediatek/vcodec/decoder/vdec_vpu_if.c     | 77 ++++++++++++-------
- 2 files changed, 52 insertions(+), 27 deletions(-)
+ Documentation/userspace-api/media/v4l/pixfmt-reserved.rst | 7 +++++++
+ drivers/media/v4l2-core/v4l2-common.c                     | 2 ++
+ drivers/media/v4l2-core/v4l2-ioctl.c                      | 1 +
+ include/uapi/linux/videodev2.h                            | 1 +
+ 4 files changed, 11 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-index 6c318de25a55e..7e36b2c69b7d1 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-@@ -161,6 +161,7 @@ struct mtk_vcodec_dec_pdata {
-  * @hw_id: hardware index used to identify different hardware.
-  *
-  * @msg_queue: msg queue used to store lat buffer information.
-+ * @vpu_inst: vpu instance pointer.
-  *
-  * @is_10bit_bitstream: set to true if it's 10bit bitstream
-  */
-@@ -205,6 +206,7 @@ struct mtk_vcodec_dec_ctx {
- 	int hw_id;
+diff --git a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
+index 58f6ae25b2e7..0bc69639baaa 100644
+--- a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
++++ b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
+@@ -275,6 +275,13 @@ please make a proposal on the linux-media mailing list.
  
- 	struct vdec_msg_queue msg_queue;
-+	void *vpu_inst;
- 
- 	bool is_10bit_bitstream;
- };
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-index 82c3dc8c41273..23cfe5c6c90b7 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
-@@ -72,6 +72,21 @@ static void handle_get_param_msg_ack(const struct vdec_vpu_ipi_get_param_ack *ms
- 	}
- }
- 
-+static bool vpu_dec_check_ap_inst(struct mtk_vcodec_dec_dev *dec_dev, struct vdec_vpu_inst *vpu)
-+{
-+	struct mtk_vcodec_dec_ctx *ctx;
-+	int ret = false;
+         Decoder's implementation can be found here,
+         `aspeed_codec <https://github.com/AspeedTech-BMC/aspeed_codec/>`__
++    * .. _V4L2-PIX-FMT-MT2110T:
 +
-+	list_for_each_entry(ctx, &dec_dev->ctx_list, list) {
-+		if (!IS_ERR_OR_NULL(ctx) && ctx->vpu_inst == vpu) {
-+			ret = true;
-+			break;
-+		}
-+	}
-+
-+	return ret;
-+}
-+
- /*
-  * vpu_dec_ipi_handler - Handler for VPU ipi message.
-  *
-@@ -84,44 +99,51 @@ static void handle_get_param_msg_ack(const struct vdec_vpu_ipi_get_param_ack *ms
-  */
- static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
- {
-+	struct mtk_vcodec_dec_dev *dec_dev;
- 	const struct vdec_vpu_ipi_ack *msg = data;
--	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
--					(unsigned long)msg->ap_inst_addr;
-+	struct vdec_vpu_inst *vpu;
++      - ``V4L2_PIX_FMT_MT2110T``
++      - 'MT2110T'
++      - This format is two-planar 10-Bit tile mode and having similitude with
++        ``V4L2_PIX_FMT_MM21`` in term of alignment and tiling. Used for VP9, AV1
++        and HEVC.
+ .. raw:: latex
  
--	if (!vpu) {
-+	dec_dev = (struct mtk_vcodec_dec_dev *)priv;
-+	vpu = (struct vdec_vpu_inst *)(unsigned long)msg->ap_inst_addr;
-+	if (!priv || !vpu) {
- 		mtk_v4l2_vdec_err(vpu->ctx, "ap_inst_addr is NULL, did the SCP hang or crash?");
- 		return;
- 	}
+     \normalsize
+diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+index bee1535b04d3..869fc09a210b 100644
+--- a/drivers/media/v4l2-core/v4l2-common.c
++++ b/drivers/media/v4l2-core/v4l2-common.c
+@@ -262,6 +262,8 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
+ 		{ .format = V4L2_PIX_FMT_VYUY,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 1 },
+ 		{ .format = V4L2_PIX_FMT_Y212,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 1 },
+ 		{ .format = V4L2_PIX_FMT_YUV48_12, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 6, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
++		{ .format = V4L2_PIX_FMT_MT2110T, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 2, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 2,
++		  .block_w = { 16, 8, 0, 0 }, .block_h = { 32, 16, 0, 0 }},
  
--	mtk_vdec_debug(vpu->ctx, "+ id=%X", msg->msg_id);
-+	if (!vpu_dec_check_ap_inst(dec_dev, vpu) || msg->msg_id < VPU_IPIMSG_DEC_INIT_ACK ||
-+	    msg->msg_id > VPU_IPIMSG_DEC_GET_PARAM_ACK) {
-+		mtk_v4l2_vdec_err(vpu->ctx, "vdec msg id not correctly => 0x%x", msg->msg_id);
-+		vpu->failure = -EINVAL;
-+		goto error;
-+	}
- 
- 	vpu->failure = msg->status;
--	vpu->signaled = 1;
-+	if (msg->status != 0)
-+		goto error;
- 
--	if (msg->status == 0) {
--		switch (msg->msg_id) {
--		case VPU_IPIMSG_DEC_INIT_ACK:
--			handle_init_ack_msg(data);
--			break;
-+	switch (msg->msg_id) {
-+	case VPU_IPIMSG_DEC_INIT_ACK:
-+		handle_init_ack_msg(data);
-+		break;
- 
--		case VPU_IPIMSG_DEC_START_ACK:
--		case VPU_IPIMSG_DEC_END_ACK:
--		case VPU_IPIMSG_DEC_DEINIT_ACK:
--		case VPU_IPIMSG_DEC_RESET_ACK:
--		case VPU_IPIMSG_DEC_CORE_ACK:
--		case VPU_IPIMSG_DEC_CORE_END_ACK:
--			break;
-+	case VPU_IPIMSG_DEC_START_ACK:
-+	case VPU_IPIMSG_DEC_END_ACK:
-+	case VPU_IPIMSG_DEC_DEINIT_ACK:
-+	case VPU_IPIMSG_DEC_RESET_ACK:
-+	case VPU_IPIMSG_DEC_CORE_ACK:
-+	case VPU_IPIMSG_DEC_CORE_END_ACK:
-+		break;
- 
--		case VPU_IPIMSG_DEC_GET_PARAM_ACK:
--			handle_get_param_msg_ack(data);
--			break;
--		default:
--			mtk_vdec_err(vpu->ctx, "invalid msg=%X", msg->msg_id);
--			break;
--		}
-+	case VPU_IPIMSG_DEC_GET_PARAM_ACK:
-+		handle_get_param_msg_ack(data);
-+		break;
-+	default:
-+		mtk_vdec_err(vpu->ctx, "invalid msg=%X", msg->msg_id);
-+		break;
- 	}
- 
--	mtk_vdec_debug(vpu->ctx, "- id=%X", msg->msg_id);
-+error:
-+	vpu->signaled = 1;
- }
- 
- static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
-@@ -182,9 +204,10 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
- 
- 	init_waitqueue_head(&vpu->wq);
- 	vpu->handler = vpu_dec_ipi_handler;
-+	vpu->ctx->vpu_inst = vpu;
- 
- 	err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler, vpu->id,
--					 vpu->handler, "vdec", NULL);
-+					 vpu->handler, "vdec", vpu->ctx->dev);
- 	if (err) {
- 		mtk_vdec_err(vpu->ctx, "vpu_ipi_register fail status=%d", err);
- 		return err;
-@@ -193,7 +216,7 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
- 	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
- 		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
- 						 vpu->core_id, vpu->handler,
--						 "vdec", NULL);
-+						 "vdec", vpu->ctx->dev);
- 		if (err) {
- 			mtk_vdec_err(vpu->ctx, "vpu_ipi_register core fail status=%d", err);
- 			return err;
+ 		/* YUV planar formats */
+ 		{ .format = V4L2_PIX_FMT_NV12,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
+diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+index 01ba27f2ef87..f465c0e3d6e3 100644
+--- a/drivers/media/v4l2-core/v4l2-ioctl.c
++++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+@@ -1508,6 +1508,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+ 		case V4L2_PIX_FMT_QC10C:	descr = "QCOM Compressed 10-bit Format"; break;
+ 		case V4L2_PIX_FMT_AJPG:		descr = "Aspeed JPEG"; break;
+ 		case V4L2_PIX_FMT_AV1_FRAME:	descr = "AV1 Frame"; break;
++		case V4L2_PIX_FMT_MT2110T:	descr = "Mediatek 10bit Tile Mode"; break;
+ 		default:
+ 			if (fmt->description[0])
+ 				return;
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 3af6a82d0cad..8c7d71afbdc7 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -796,6 +796,7 @@ struct v4l2_pix_format {
+ #define V4L2_PIX_FMT_Z16      v4l2_fourcc('Z', '1', '6', ' ') /* Depth data 16-bit */
+ #define V4L2_PIX_FMT_MT21C    v4l2_fourcc('M', 'T', '2', '1') /* Mediatek compressed block mode  */
+ #define V4L2_PIX_FMT_MM21     v4l2_fourcc('M', 'M', '2', '1') /* Mediatek 8-bit block mode, two non-contiguous planes */
++#define V4L2_PIX_FMT_MT2110T  v4l2_fourcc('M', 'T', '2', 'T') /* Mediatek 10-bit block tile mode */
+ #define V4L2_PIX_FMT_INZI     v4l2_fourcc('I', 'N', 'Z', 'I') /* Intel Planar Greyscale 10-bit and Depth 16-bit */
+ #define V4L2_PIX_FMT_CNF4     v4l2_fourcc('C', 'N', 'F', '4') /* Intel 4-bit packed depth confidence information */
+ #define V4L2_PIX_FMT_HI240    v4l2_fourcc('H', 'I', '2', '4') /* BTTV 8-bit dithered RGB */
 -- 
 2.18.0
 
