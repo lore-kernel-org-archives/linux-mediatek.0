@@ -4,59 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DF5DC001DF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 03:41:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D862EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 03:41:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=igoiCjJKQT1M3exb7NUJhcghlRjy5CrQZYQZIjk5STM=; b=SWedYCtNv8zIDL+Swm9Emz+8tG
-	Qqfgw7s+iloX0ZCsPdEDh1e1FxYwW4FFqwya0Xl/sXu0/3eoonTFInHqedkxnwtk0hHHFJL6FR8X4
-	Jqfyr54pRIdOH/J1xoaSWlsOIBqm1gle5DGpBquKr//MNtdo1My47ep16Lw8jbrQD9uYhK2JdSwt9
-	7IViK1qwfyWhjpTF+Vz+C95KlIhN22b3ZG5XS647TjJMk3/D7/2nKo3Aw///NXfMw2CdiluZxMh4e
-	3EAkCuCDB16vEnODETI1eY2i+duloBKbBjV1KmOagSgc3YwWsdtbP6Ox8WIPaDZ9Oz75iSIc2DWE0
-	9z/86sOw==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TPr7sXgdlH3VNKL6uLkPjL/MuPJ8naNc1jeRgaa1pVM=; b=HZoRrU9THh9R3s3HKeE11jYBuj
+	FxNw/QpHbtH/eqpHawBTbL23oAShonm5biVUJzdSmnD6odGRO/6Y//bD+V/uev+VMyxq3LEp9o/Gd
+	3xbk5oJkdOtlp+pTThE6ObzbE4l27AhQNwiXYqgnO3jq+f4fB21Oq+7a3QIt3V94beayGZsb5ZmOV
+	5gzZ7+BtoasVx70uaeI6Pb5EEonTNyhk94UkzlCJNZvFi/Er39BQ8tSS/Y/FSJGQww+hdNVGogxBM
+	JPfRRa9DMhvMHAQbvdrOrnIBreSgMDUND0o3Byq7COjWvT/87bUgfcQen95TIAXR5jnuK5XGTowPm
+	R3tAocWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPapY-0066ps-2z;
-	Sat, 29 Jul 2023 03:41:24 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qPapc-0066rG-19;
+	Sat, 29 Jul 2023 03:41:28 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPapW-0066p5-0I;
-	Sat, 29 Jul 2023 03:41:23 +0000
-X-UUID: c5b1d0062dc111ee83ed1395ce914268-20230728
+	id 1qPapY-0066pU-0m;
+	Sat, 29 Jul 2023 03:41:26 +0000
+X-UUID: c79c72902dc111ee912e1518a6540028-20230728
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=igoiCjJKQT1M3exb7NUJhcghlRjy5CrQZYQZIjk5STM=;
-	b=CIYhQxaGFuuq62q3dvf5l0SmPGutcNa5k/WSkYxfo8efqSbEw1LcVGMIExAXYJ3VTCeSzGWPPbZkZFC5G87doeFgCcUJg+NuKckBrRL/H62Xl5vRWHIwi/DwYn4TlQUxkeB4m+84tjKRrZ9XuskLKvOcmONFycroDba4dFejEkM=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=TPr7sXgdlH3VNKL6uLkPjL/MuPJ8naNc1jeRgaa1pVM=;
+	b=SqqfDJ3JFnKTs1lSRXT77dIO4P5S1Cb8JLegmnQB/5fSBFJaGidaP6Baa/TCWOUTjV+qRSx2A+vQWBK01QaHRQwEtTsT0GPVsWsAI1gofrfAXaFATb8Ceu2abup2ZKHSrPHbzyWD+tS3cAOu83SDU5kI1appLTDiZNP4KGhGW40=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.30,REQID:42706678-6507-4b69-af68-79e80446c881,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:90
-X-CID-INFO: VERSION:1.1.30,REQID:42706678-6507-4b69-af68-79e80446c881,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:90
-X-CID-META: VersionHash:1fcc6f8,CLOUDID:a94473d2-cd77-4e67-bbfd-aa4eaace762f,B
-	ulkID:230729114118MM2NJGX5,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-O-INFO: VERSION:1.1.30,REQID:57b1e7d9-0cb5-4b5e-979c-f8622d6d5c18,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:4de2e9b3-a467-4aa9-9e04-f584452e3794,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
-	TF_CID_SPAM_FSD
-X-UUID: c5b1d0062dc111ee83ed1395ce914268-20230728
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: c79c72902dc111ee912e1518a6540028-20230728
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 778035242; Fri, 28 Jul 2023 20:41:16 -0700
+	with ESMTP id 1503186634; Fri, 28 Jul 2023 20:41:19 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 29 Jul 2023 11:41:13 +0800
+ 15.2.1118.26; Sat, 29 Jul 2023 11:41:16 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 29 Jul 2023 11:41:12 +0800
+ 15.2.1118.26 via Frontend Transport; Sat, 29 Jul 2023 11:41:15 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
@@ -64,23 +60,25 @@ To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
 	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
 CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
- Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>, Mingjia
- Zhang <mingjia.zhang@mediatek.com>, <linux-media@vger.kernel.org>,
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, "Steve
+ Cho" <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
+	"Mingjia Zhang" <mingjia.zhang@mediatek.com>, <linux-media@vger.kernel.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3,0/3] media: mediatek: vcodec: Add driver to support 10bit
-Date: Sat, 29 Jul 2023 11:41:09 +0800
-Message-ID: <20230729034112.16993-1-yunfei.dong@mediatek.com>
+Subject: [PATCH v3,3/3] media: mediatek: vcodec: Add driver to support 10bit
+Date: Sat, 29 Jul 2023 11:41:12 +0800
+Message-ID: <20230729034112.16993-4-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230729034112.16993-1-yunfei.dong@mediatek.com>
+References: <20230729034112.16993-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230728_204122_161282_3130577A 
-X-CRM114-Status: GOOD (  12.93  )
+X-CRM114-CacheID: sfid-20230728_204124_283404_8D04428E 
+X-CRM114-Status: GOOD (  20.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,58 +93,281 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yunfei Dong <yunfei.dong@mediatek.corp-partner.google.com>
+From: Mingjia Zhang <mingjia.zhang@mediatek.com>
 
-Define two capture formats V4L2_PIX_FMT_MT2110R and
-V4L2_PIX_FMT_MT2110T to support 10bit in mt8195, mt8199 and more.
-Getting the size of each plane again when user space set 10bit
-syntax to driver.
+Adding to support capture formats V4L2_PIX_FMT_MT2110T and
+V4L2_PIX_FMT_MT2110R for 10bit playback. Need to get the size
+of each plane again when user space setting syntax to get 10bit
+information.
 
-V4L2_PIX_FMT_MT2110R is used for H264, and V4L2_PIX_FMT_MT2110T
-is used for AV1/VP9/HEVC.
+V4L2_PIX_FMT_MT2110T for AV1/VP9/HEVC.
+V4L2_PIX_FMT_MT2110R for H264.
 
-patch 1 Add driver to support 10bit
-patch 2 Add capture format V4L2_PIX_FMT_MT2110T to support 10bit tile mode
-patch 3 Add capture format V4L2_PIX_FMT_MT2110R to support 10bit raster mode
+Signed-off-by: Mingjia Zhang <mingjia.zhang@mediatek.com>
+Co-developed-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
-- compared with v2:
-- add the compliance test result: Total for mtk-vcodec-dec device /dev/video-dec0: 46, Succeeded: 46, Failed: 0, Warnings: 0
-- this patch is based on separate encoder and decoder patch series.
-- compared with v1:
-- Fix set non sps return -EINVAL issue.
-- Driver test pass in mt8195/mt8188 with tast and Youtube.
-- Run v4l2 compliance in mt8195/mt8188 pass.
-- fluster test as below:
-- h264: (JVT-FR-EXT: 29/69  JVT-AVC_V1: 95/135)
-- h265: (JCT-VC-HEVC_V1: 142/147)
-- vp9 : (VP9-TEST-VECTORS: 1/6  VP9-TEST-VECTORS: 276/305)
-- av1 : (CHROMIUM-10bit-AV1-TEST-VECTORS: 22/23   CHROMIUM-8bit-AV1-TEST-VECTORS: 11/13
--        AV1-TEST-VECTORS: Ran 237/239)
-
-- send the first version v1:
-- Run 10bit VP9/AV1 fluster test pass.
-- Will return error when the 10bit parameter no correctly in function mtk_vdec_s_ctrl.
----
-
-Reference series:
-[1]: this series depends on v6 which is send by Yunfei Dong.
-     20230729025515.16029-1-yunfei.dong@mediatek.com
-
-Mingjia Zhang (3):
-  media: mediatek: vcodec: Add capture format to support 10bit tile mode
-  media: mediatek: vcodec: Add capture format to support 10bit raster
-    mode
-  media: mediatek: vcodec: Add driver to support 10bit
-
- .../media/v4l/pixfmt-reserved.rst             |  13 ++
  .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  |  22 ++-
  .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   5 +
  .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 144 +++++++++++++++++-
- drivers/media/v4l2-core/v4l2-common.c         |   4 +
- drivers/media/v4l2-core/v4l2-ioctl.c          |   2 +
- include/uapi/linux/videodev2.h                |   2 +
- 7 files changed, 188 insertions(+), 4 deletions(-)
+ 3 files changed, 167 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+index 5acb7dff18f2..91ed576d6821 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
+@@ -37,7 +37,9 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_dec_ctx *ctx, int format_inde
+ {
+ 	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
+ 	const struct mtk_video_fmt *fmt;
++	struct mtk_q_data *q_data;
+ 	int num_frame_count = 0, i;
++	bool ret = false;
+ 
+ 	fmt = &dec_pdata->vdec_formats[format_index];
+ 	for (i = 0; i < *dec_pdata->num_formats; i++) {
+@@ -47,10 +49,26 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_dec_ctx *ctx, int format_inde
+ 		num_frame_count++;
+ 	}
+ 
+-	if (num_frame_count == 1 || fmt->fourcc == V4L2_PIX_FMT_MM21)
++	if (num_frame_count == 1 || (!ctx->is_10bit_bitstream && fmt->fourcc == V4L2_PIX_FMT_MM21))
+ 		return true;
+ 
+-	return false;
++	q_data = &ctx->q_data[MTK_Q_DATA_SRC];
++	switch (q_data->fmt->fourcc) {
++	case V4L2_PIX_FMT_H264_SLICE:
++		if (ctx->is_10bit_bitstream && fmt->fourcc == V4L2_PIX_FMT_MT2110R)
++			ret = true;
++		break;
++	case V4L2_PIX_FMT_VP9_FRAME:
++	case V4L2_PIX_FMT_AV1_FRAME:
++	case V4L2_PIX_FMT_HEVC_SLICE:
++		if (ctx->is_10bit_bitstream && fmt->fourcc == V4L2_PIX_FMT_MT2110T)
++			ret = true;
++		break;
++	default:
++		break;
++	}
++
++	return ret;
+ }
+ 
+ static struct mtk_q_data *mtk_vdec_get_q_data(struct mtk_vcodec_dec_ctx *ctx,
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+index aa49969c54c1..6c318de25a55 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+@@ -31,6 +31,7 @@ enum mtk_vdec_format_types {
+ 	MTK_VDEC_FORMAT_AV1_FRAME = 0x800,
+ 	MTK_VDEC_FORMAT_HEVC_FRAME = 0x1000,
+ 	MTK_VCODEC_INNER_RACING = 0x20000,
++	MTK_VDEC_IS_SUPPORT_10BIT = 0x40000,
+ };
+ 
+ /*
+@@ -160,6 +161,8 @@ struct mtk_vcodec_dec_pdata {
+  * @hw_id: hardware index used to identify different hardware.
+  *
+  * @msg_queue: msg queue used to store lat buffer information.
++ *
++ * @is_10bit_bitstream: set to true if it's 10bit bitstream
+  */
+ struct mtk_vcodec_dec_ctx {
+ 	enum mtk_instance_type type;
+@@ -202,6 +205,8 @@ struct mtk_vcodec_dec_ctx {
+ 	int hw_id;
+ 
+ 	struct vdec_msg_queue msg_queue;
++
++	bool is_10bit_bitstream;
+ };
+ 
+ /**
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+index 99a84c7e1901..e29c9c58f3da 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+@@ -200,7 +200,7 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
+ 
+ #define NUM_CTRLS ARRAY_SIZE(mtk_stateless_controls)
+ 
+-static struct mtk_video_fmt mtk_video_formats[7];
++static struct mtk_video_fmt mtk_video_formats[9];
+ 
+ static struct mtk_video_fmt default_out_format;
+ static struct mtk_video_fmt default_cap_format;
+@@ -387,6 +387,138 @@ static int mtk_vdec_flush_decoder(struct mtk_vcodec_dec_ctx *ctx)
+ 	return vdec_if_decode(ctx, NULL, NULL, &res_chg);
+ }
+ 
++static int mtk_vcodec_get_pic_info(struct mtk_vcodec_dec_ctx *ctx)
++{
++	struct mtk_q_data *q_data;
++	int ret = 0;
++
++	q_data = &ctx->q_data[MTK_Q_DATA_DST];
++	if (q_data->fmt->num_planes == 1) {
++		mtk_v4l2_vdec_err(ctx, "[%d]Error!! 10bit mode not support one plane", ctx->id);
++		return -EINVAL;
++	}
++
++	ctx->capture_fourcc = q_data->fmt->fourcc;
++	ret = vdec_if_get_param(ctx, GET_PARAM_PIC_INFO, &ctx->picinfo);
++	if (ret) {
++		mtk_v4l2_vdec_err(ctx, "[%d]Error!! Get GET_PARAM_PICTURE_INFO Fail", ctx->id);
++		return ret;
++	}
++
++	ctx->last_decoded_picinfo = ctx->picinfo;
++
++	q_data->sizeimage[0] = ctx->picinfo.fb_sz[0];
++	q_data->bytesperline[0] = ctx->picinfo.buf_w * 5 / 4;
++
++	q_data->sizeimage[1] = ctx->picinfo.fb_sz[1];
++	q_data->bytesperline[1] = ctx->picinfo.buf_w * 5 / 4;
++
++	q_data->coded_width = ctx->picinfo.buf_w;
++	q_data->coded_height = ctx->picinfo.buf_h;
++	mtk_v4l2_vdec_dbg(1, ctx, "[%d] wxh=%dx%d pic wxh=%dx%d sz[0]=0x%x sz[1]=0x%x",
++			  ctx->id, ctx->picinfo.buf_w, ctx->picinfo.buf_h,
++			  ctx->picinfo.pic_w, ctx->picinfo.pic_h,
++			  q_data->sizeimage[0], q_data->sizeimage[1]);
++
++	return ret;
++}
++
++static int mtk_vdec_s_ctrl(struct v4l2_ctrl *ctrl)
++{
++	struct mtk_vcodec_dec_ctx *ctx = ctrl_to_dec_ctx(ctrl);
++	struct v4l2_ctrl_h264_sps *h264;
++	struct v4l2_ctrl_hevc_sps *h265;
++	struct v4l2_ctrl_vp9_frame *frame;
++	struct v4l2_ctrl_av1_sequence *seq;
++	struct v4l2_ctrl *hdr_ctrl;
++	const struct mtk_vcodec_dec_pdata *dec_pdata = ctx->dev->vdec_pdata;
++	const struct mtk_video_fmt *fmt;
++	int i = 0, ret = 0;
++
++	hdr_ctrl = ctrl;
++	if (!hdr_ctrl || !hdr_ctrl->p_new.p)
++		return -EINVAL;
++
++	switch (hdr_ctrl->id) {
++	case V4L2_CID_STATELESS_H264_SPS:
++		h264 = (struct v4l2_ctrl_h264_sps *)hdr_ctrl->p_new.p;
++
++		if (h264->bit_depth_chroma_minus8 == 2 && h264->bit_depth_luma_minus8 == 2) {
++			ctx->is_10bit_bitstream = true;
++		} else if (h264->bit_depth_chroma_minus8 != 0 &&
++			   h264->bit_depth_luma_minus8 != 0) {
++			mtk_v4l2_vdec_err(ctx, "H264: chroma_minus8:%d, luma_minus8:%d",
++					  h264->bit_depth_chroma_minus8,
++					  h264->bit_depth_luma_minus8);
++			return -EINVAL;
++		}
++		break;
++	case V4L2_CID_STATELESS_HEVC_SPS:
++		h265 = (struct v4l2_ctrl_hevc_sps *)hdr_ctrl->p_new.p;
++
++		if (h265->bit_depth_chroma_minus8 == 2 && h265->bit_depth_luma_minus8 == 2) {
++			ctx->is_10bit_bitstream = true;
++		} else if (h265->bit_depth_chroma_minus8 != 0 &&
++			   h265->bit_depth_luma_minus8 != 0) {
++			mtk_v4l2_vdec_err(ctx, "HEVC: chroma_minus8:%d, luma_minus8:%d",
++					  h265->bit_depth_chroma_minus8,
++					  h265->bit_depth_luma_minus8);
++			return -EINVAL;
++		}
++		break;
++	case V4L2_CID_STATELESS_VP9_FRAME:
++		frame = (struct v4l2_ctrl_vp9_frame *)hdr_ctrl->p_new.p;
++
++		if (frame->bit_depth == 10) {
++			ctx->is_10bit_bitstream = true;
++		} else if (frame->bit_depth != 8) {
++			mtk_v4l2_vdec_err(ctx, "VP9: bit_depth:%d", frame->bit_depth);
++			return -EINVAL;
++		}
++		break;
++	case V4L2_CID_STATELESS_AV1_SEQUENCE:
++		seq = (struct v4l2_ctrl_av1_sequence *)hdr_ctrl->p_new.p;
++
++		if (seq->bit_depth == 10) {
++			ctx->is_10bit_bitstream = true;
++		} else if (seq->bit_depth != 8) {
++			mtk_v4l2_vdec_err(ctx, "AV1: bit_depth:%d", seq->bit_depth);
++			return -EINVAL;
++		}
++		break;
++	default:
++		mtk_v4l2_vdec_dbg(3, ctx, "Not supported to set ctrl id: 0x%x\n", hdr_ctrl->id);
++		return ret;
++	}
++
++	if (!ctx->is_10bit_bitstream)
++		return ret;
++
++	for (i = 0; i < *dec_pdata->num_formats; i++) {
++		fmt = &dec_pdata->vdec_formats[i];
++		if (fmt->fourcc == V4L2_PIX_FMT_MT2110R &&
++		    hdr_ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
++			ctx->q_data[MTK_Q_DATA_DST].fmt = fmt;
++			break;
++		}
++
++		if (fmt->fourcc == V4L2_PIX_FMT_MT2110T &&
++		    (hdr_ctrl->id == V4L2_CID_STATELESS_HEVC_SPS ||
++		    hdr_ctrl->id == V4L2_CID_STATELESS_VP9_FRAME ||
++		    hdr_ctrl->id == V4L2_CID_STATELESS_AV1_SEQUENCE)) {
++			ctx->q_data[MTK_Q_DATA_DST].fmt = fmt;
++			break;
++		}
++	}
++	ret = mtk_vcodec_get_pic_info(ctx);
++
++	return ret;
++}
++
++static const struct v4l2_ctrl_ops mtk_vcodec_dec_ctrl_ops = {
++	.s_ctrl = mtk_vdec_s_ctrl,
++};
++
+ static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx *ctx)
+ {
+ 	unsigned int i;
+@@ -399,7 +531,7 @@ static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx *ctx)
+ 
+ 	for (i = 0; i < NUM_CTRLS; i++) {
+ 		struct v4l2_ctrl_config cfg = mtk_stateless_controls[i].cfg;
+-
++		cfg.ops = &mtk_vcodec_dec_ctrl_ops;
+ 		v4l2_ctrl_new_custom(&ctx->ctrl_hdl, &cfg, NULL);
+ 		if (ctx->ctrl_hdl.error) {
+ 			mtk_v4l2_vdec_err(ctx, "Adding control %d failed %d", i,
+@@ -466,6 +598,8 @@ static void mtk_vcodec_add_formats(unsigned int fourcc,
+ 		break;
+ 	case V4L2_PIX_FMT_MM21:
+ 	case V4L2_PIX_FMT_MT21C:
++	case V4L2_PIX_FMT_MT2110T:
++	case V4L2_PIX_FMT_MT2110R:
+ 		mtk_video_formats[count_formats].fourcc = fourcc;
+ 		mtk_video_formats[count_formats].type = MTK_FMT_FRAME;
+ 		mtk_video_formats[count_formats].num_planes = 2;
+@@ -491,6 +625,12 @@ static void mtk_vcodec_get_supported_formats(struct mtk_vcodec_dec_ctx *ctx)
+ 		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT21C, ctx);
+ 		cap_format_count++;
+ 	}
++	if (ctx->dev->dec_capability & MTK_VDEC_IS_SUPPORT_10BIT) {
++		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT2110T, ctx);
++		cap_format_count++;
++		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT2110R, ctx);
++		cap_format_count++;
++	}
+ 	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MM21) {
+ 		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
+ 		cap_format_count++;
 -- 
 2.18.0
 
