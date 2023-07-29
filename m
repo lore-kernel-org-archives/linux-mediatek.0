@@ -4,77 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E809C0015E
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 10:10:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CDFDC0015E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 11:05:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BzQEXfRpvFAotuqzKmscR6X+uFs6zMNV5A/qGbDlby8=; b=IEDC9hhbHz9f9ZzIWj7fYW+f83
-	p/1hgD41gDcCWEW+5cD0JVI8/L6DpLgTj7zvvYJEmCWEdygpYNJuETtDfAHNmTS6FNN4ft6ppZfBj
-	GDvmIix0f4UB5+NmSkSLhNPc2F63jP85M5B7G076r99eS/g+9AbqLtQJRqXXVQnxNPkgaqNFXpETM
-	Nl0Iihg2gsKeyYdtHSPFnT9RVBil01akQxKllK3bNhNAmTk5GbWhAq79hfTO3VQThg8CDtV1owXpA
-	pKhKPhmatWEGx80Y/outnpsZgCS56ADExIz9Um58VcL3SL0fLRUfQLR10VGzyEJlzhyDGg7vqhXGL
-	SqlSKa9w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ebeM2mGR4TMnC3Hsqfbcbfw6t45XlZ3ZN9tmUhCmp/4=; b=pYlGdJck8f1Iqx5k4W6C4M4rWS
+	cfrxjaTLs7tdJyllbCxjuhqU8lzeR8ZL4Yf1mDjJDA4haMIZSasti2fDWYOfhcMn32tVI5kVDnfgE
+	42e7BURbls/hPwD7lZql9UZVgq3AHSQjQ6t7tkY2A0ueO0dVIzRgTDmMlM8iiL5c9nw2BsKT3N6iP
+	Eqgmsavi/yJieP+TjXcbeQohl/l+4tC3UO0Ak+bk8F/2qwyADxJnPAtbsUNVUZqnEpiG65Ih2xI/O
+	xQH0BgJmF7TMSzxsW+3OUJcOORJV9RzUMc8SgGGiaN1EbSYhhKMD4+qmATT2Kzh45R/IPcXaRxv2a
+	8R+KmOCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPguW-00732c-0K;
-	Sat, 29 Jul 2023 10:10:56 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qPhkv-007INH-1O;
+	Sat, 29 Jul 2023 11:05:05 +0000
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPguS-007322-0f;
-	Sat, 29 Jul 2023 10:10:53 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 6C76F60A6F;
-	Sat, 29 Jul 2023 10:10:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B231AC433C7;
-	Sat, 29 Jul 2023 10:10:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690625450;
-	bh=0mZQVW2vbt1ay2W0qJ+pcf3lu40KCDjItFHk8MIbO1Y=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GFxOR42mKmw8/dz0qTeBEjZyEDoGmoHVyaVBqoCdYvsA0GhjakaME9lKMPHELRSVX
-	 E50rWRHyEhCfwTmsdopACbX7x7kyYYDU9h0eA+rZRlk9yaZLn62/SPZ0GbUFgWTDZh
-	 lul1D9qBYqREZMuzs3f3MJFpen3bNMAY8VYFcqlumy2hRHYqPLsQovy0ioOuUmzgLZ
-	 sAVxbaS1cK+DtWb0GowYiPSdsfeIhwDU67nOKEcjkYnCz6OrYHteQe2kECgPqfMzGi
-	 9Q4ha0aSN5KHwhXQlpNWY465kXPf1fUuskgvRFVhoC7ispok4497n0MzvA8B0ahPl9
-	 N4itIPqXKigZg==
-Date: Sat, 29 Jul 2023 11:10:44 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1qPhks-007IMG-0L;
+	Sat, 29 Jul 2023 11:05:03 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2b9cbaee7a9so28927621fa.0;
+        Sat, 29 Jul 2023 04:04:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1690628698; x=1691233498;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ebeM2mGR4TMnC3Hsqfbcbfw6t45XlZ3ZN9tmUhCmp/4=;
+        b=YqlKluSjEj86SSIVP8nR4TGkwdMAClWe/imOTxoQAiw9js2nPW6HHe8DDDUFoPCFz1
+         SsdArHnaFoFWm+nMuu2SdFf3+phqw6AZIDSgc+/2ICmQ0cc7Iz8E7ayYQMLbkIMaCf71
+         8z9D83CdLluWAGJqq1gV71Ra7zBOVefgt+8zSK0LItSkKykRry/euEtbve0ZSVgj+wvz
+         vNE42Jr3eNABTHEGxZRseMFPpdfMwv/9FehB0BleHXOBtO5K4htAb4jw4vtKcW51ZBMF
+         6faHRP+klBQO2pEyPV67KYxpUMHAwPgwzV3IKpDI/BXPuQDHa1HeHJ8gsVhbUrbM8ZXZ
+         3tUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1690628698; x=1691233498;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ebeM2mGR4TMnC3Hsqfbcbfw6t45XlZ3ZN9tmUhCmp/4=;
+        b=iOKtmA/zLhgMdRBwTn9r2lRQZzqIgdrG1m0Fzx71baXFkJpmbXTD/L4zkPppwFmE9Z
+         UQTSmztt4NHWLZwQxKkYVwYh0MnR7Gp+TmvxZKmjtscZzluRsmVXzKTX8CNOkONbTtNV
+         zFMMkS8eoOzwMvoruyQJSpY5HoQDu0gscMdv1koDjkfvobYg6tPiI+VBTDVtCSLl/6wK
+         Q5Ef+WApjc9GdqOgrmh3J1dXUcflJbRdYw9WnuIAcZhYqZ2i5Q494KOT8RP1lnG4GfH4
+         8ieo6YHTjxsytyw52DCcfZBvblNQuyRvOGJCcfFeHA0JGLzsw+oR16w6akYwan/gdDdw
+         zVjA==
+X-Gm-Message-State: ABy/qLYM1/FztKHgqhQaO/B29l94ucbdQT3BTeK83pQHumGPe9zVxqCe
+	U72OfYGOF667OkHs72VAs0I=
+X-Google-Smtp-Source: APBJJlHNub5uJTMcqIiLRw0Io/ZV6tQGW8ogC+GOYzkIcNXpusJt/7q9LmBqiU3iW1LpLkV8BbgQMw==
+X-Received: by 2002:a2e:2c0e:0:b0:2b8:4026:1f54 with SMTP id s14-20020a2e2c0e000000b002b840261f54mr3344659ljs.49.1690628697874;
+        Sat, 29 Jul 2023 04:04:57 -0700 (PDT)
+Received: from localhost.lan (031011218106.poznan.vectranet.pl. [31.11.218.106])
+        by smtp.gmail.com with ESMTPSA id y9-20020a2e9789000000b002b9ae051ea1sm1438688lji.113.2023.07.29.04.04.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 29 Jul 2023 04:04:57 -0700 (PDT)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-mips@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: mt76: support setting per-band MAC
- address
-Message-ID: <20230729-stingy-amiss-74bd459e2c59@spud>
-References: <6e9cfac5758dd06429fadf6c1c70c569c86f3a95.1690512516.git.daniel@makrotopia.org>
+	linux-mediatek@lists.infradead.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH] mips: dts: ralink: reorder MT7621 clocks in Ethernet block
+Date: Sat, 29 Jul 2023 13:04:49 +0200
+Message-Id: <20230729110449.1357-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="OVpYLz7Xm1cZxqHs"
-Content-Disposition: inline
-In-Reply-To: <6e9cfac5758dd06429fadf6c1c70c569c86f3a95.1690512516.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230729_031052_353321_1EC87805 
-X-CRM114-Status: GOOD (  17.53  )
+X-CRM114-CacheID: sfid-20230729_040502_149715_36EBB9BB 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,60 +100,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Rafał Miłecki <rafal@milecki.pl>
 
---OVpYLz7Xm1cZxqHs
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Use order as specified in the binding (first "ethif" then "fe").
 
-On Fri, Jul 28, 2023 at 03:50:47AM +0100, Daniel Golle wrote:
-> Introduce support for setting individual per-band MAC addresses using
-> NVMEM cells by adding a 'bands' object with enumerated child nodes
-> representing the 2.4 GHz, 5 GHz and 6 GHz bands.
->=20
-> In case it is defined, call of_get_mac_address for the per-band child
-> node, otherwise try with of_get_mac_address on the main device node and
-> fall back to a random address like it used to be.
->=20
-> While at it, add MAC address related properties also for the main node
-> and update example to use EEPROM via nvmem-cells instead of deprecated
-> mediatek,mtd-eeprom property.
+This fixes:
+arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e100000: clock-names:0: 'ethif' was expected
+        From schema: Documentation/devicetree/bindings/net/mediatek,net.yaml
+arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e100000: clock-names:1: 'fe' was expected
+        From schema: Documentation/devicetree/bindings/net/mediatek,net.yaml
 
-Could you mark that deprecated then please?
+Fixes: 7a6ee0bbab25 ("mips: dts: ralink: add MT7621 SoC")
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+---
+ arch/mips/boot/dts/ralink/mt7621.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-> +patternProperties:
-> +  '^band@[0-2]+$':
-> +    type: object
-> +    additionalProperties: false
-> +    properties:
-> +      reg:
-> +        maxItems: 1
-> +
-> +      address: true
-> +      local-mac-address: true
-> +      mac-address: true
-> +
-> +      nvmem-cells:
-> +        description: NVMEM cell with the MAC address
-> +
-> +      nvmem-cell-names:
-> +        items:
-> +          - const: mac-address
+diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
+index 7caed0d14f11..73035d4f4cc1 100644
+--- a/arch/mips/boot/dts/ralink/mt7621.dtsi
++++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
+@@ -300,9 +300,9 @@ ethernet: ethernet@1e100000 {
+ 		compatible = "mediatek,mt7621-eth";
+ 		reg = <0x1e100000 0x10000>;
+ 
+-		clocks = <&sysc MT7621_CLK_FE>,
+-			 <&sysc MT7621_CLK_ETH>;
+-		clock-names = "fe", "ethif";
++		clocks = <&sysc MT7621_CLK_ETH>,
++			 <&sysc MT7621_CLK_FE>;
++		clock-names = "ethif", "fe";
+ 
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+-- 
+2.35.3
 
-You should not need the items list if you only have one item.
-
-0
-
---OVpYLz7Xm1cZxqHs
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZMTlpAAKCRB4tDGHoIJi
-0vHeAPsH03gK8BH5fVJvQhH6H6InP+CbgNqslVeXnNjQNdJRJAEA/wonPwNJqvjk
-KOAfQUkd5f5Yn8fk376EPvQxAbRotgY=
-=b6/F
------END PGP SIGNATURE-----
-
---OVpYLz7Xm1cZxqHs--
 
