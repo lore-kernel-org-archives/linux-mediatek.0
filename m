@@ -4,93 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B74D7C04A6A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 13:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75809C001DC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Jul 2023 13:56:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3e9h1mjHXNaFhhktneoIjNiwNY2p47H6uRSWITeacf8=; b=JUaV2A9lsGpH3IoZJOJ/SyUYPA
-	YP97NweYNY2D3DV1bVF2KEVE4fpk8OLoba/rO6G4c6UU3Vt+ChkwuzJMtLiTkF/YJvMSl0T9m1L+Z
-	iyLrVUQXyJP3b10OqPt3vFtuS256dIZXIsKNR6KwFtQTzsX+IGC5aYY/hemU9gavVhA8doK9TZ8ZG
-	PK6Khi1lzlpCY8Hdm+QcyCL/fPcexTd9dAeB4LhG64zJS8QiqB6ouQXfgdk8qXQrqtqJ2yifZ+H0q
-	ba2sGkf38ly0A1dPmywPbpAqeNXncIDXyCyf52g0dtOoWHl6jVIB7Z1Sd6mcjvI3/vUikZL9Y5PDq
-	hpK9HI7g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gzHkJk9ZzH8UYRdrC+IL3uvIITQeaguIDbIXmZcaUgI=; b=ktmaW0XV9TLR1M+Iqje88L6cCa
+	7Xts12nBZGcPMiTJHuKi5fs+FwyUhlVFOa80lhSd9sdeOZtIFabEzGbF97HoZgCO70S/bSZthvtw+
+	d+e6lDEMgjPrJgPVL+nR3T72MWYOUNzOTEOXuJcNQMyuMxVtN3yBVxIc3z58+4Y5Bu3aUuvrcK2mp
+	kw4KskSmcGB+keJKYEa+HqwV0r65Shrn9vHkCoXLX+QgGEft7omOT/Qto/MpRogd7u/bAlLFPBEaj
+	XT3VpVEld0kMnc625q823SmXZVFbbLoEZHM04n2K1VF4BY+dw1ufhDyjSCfLoy0t8Ew/FsWmB+UI7
+	pOcDEFZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPkNL-007dLv-1H;
-	Sat, 29 Jul 2023 13:52:55 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1qPkQK-007ffe-1o;
+	Sat, 29 Jul 2023 13:56:00 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qPkNH-007dKv-19
-	for linux-mediatek@lists.infradead.org;
-	Sat, 29 Jul 2023 13:52:54 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-5217ad95029so3927483a12.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 29 Jul 2023 06:52:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690638769; x=1691243569;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=3e9h1mjHXNaFhhktneoIjNiwNY2p47H6uRSWITeacf8=;
-        b=D1w8WthUtE8ehHd3nb4SEpll+SUUhvdWnPQixiZ/dY274mYBgVyWIBGKVAB5ftEM//
-         /I8T0jfj+I53Rt7kKUp2TlKdBTfYFm2XudyMCKistf4oGYikg8Otv8TdCf+h8954HQeF
-         FZxrTL0gQvx6j45TX3rJ672DDdxGVbtWfCssm6epJNLOTUp5OVl51SZJzXaT47dDdQm9
-         4jF/2bdKh8xK1c+nY+sRnZ2BX78F6BAuAyhTxLJl2TnjeIsBq/2fC2fkGHL6dH2G7za/
-         Pd8sbareGKAlpqbl5pqMcuoidNqZNk22zH26AlI8QIaj8vqGU88LLS6kGodV3F5xgRKc
-         Q6cg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690638769; x=1691243569;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3e9h1mjHXNaFhhktneoIjNiwNY2p47H6uRSWITeacf8=;
-        b=c8Q9EZiPpqB2+ltCx4bqUz5RoSGK5K5KgmtpixtezGqfFZkDuN+ERyV6+Vl+XkDCzy
-         Mjngurypr+uAkSF1wi7AVTs/LfHGLqfJUsBiqLaOPVIa70jb4b9fL44BBi5qLJ67WwVG
-         Ehyj7d7jJwmtbLb9Qk6ccLIrAkvaCffSOc+sQof4EbjnlwqAXaeW5wt3N38oV8bWv6W8
-         vIRaxtfXtB5zlorHjys/GmpNUNxq3JpEJw7AQ8ft23zNTtQuFgQEutzgT8nLUlZxIJeH
-         Nq3FBQshePX5LUiSuDM6MBGeZgrKj98zDdY+9+ssi1CjKn7jNiWFgvdR8iXlKsrddvWO
-         s+HQ==
-X-Gm-Message-State: ABy/qLaD0pHLwPi0Qo1OIB+sIrglc86rMsLyF+ck4im8FIWkor2RPKx/
-	BsGBx1ijzLgewR23EAJy5tqgXg==
-X-Google-Smtp-Source: APBJJlEsGSrFZkZih0nqPZ7KkzS2vK2oTs+DEAnJxAjBCNeO/gQ2G4zspKF6FrGJ5Xmt0TLCuFYHtA==
-X-Received: by 2002:a17:907:7638:b0:997:deb1:ff6a with SMTP id jy24-20020a170907763800b00997deb1ff6amr1870674ejc.22.1690638768934;
-        Sat, 29 Jul 2023 06:52:48 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.223.104])
-        by smtp.gmail.com with ESMTPSA id kq6-20020a170906abc600b009828e26e519sm3282832ejb.122.2023.07.29.06.52.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 29 Jul 2023 06:52:48 -0700 (PDT)
-Message-ID: <9cd12d89-b0c1-484f-231e-7b6915f4572b@linaro.org>
-Date: Sat, 29 Jul 2023 15:52:46 +0200
+	id 1qPkQH-007fVv-1O;
+	Sat, 29 Jul 2023 13:55:58 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1qPkPr-0001I0-14;
+	Sat, 29 Jul 2023 13:55:31 +0000
+Date: Sat, 29 Jul 2023 14:55:15 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next] net: ethernet: mtk_eth_soc: support per-flow
+ accounting on MT7988
+Message-ID: <801c89963e95e5ce8f1ab7dbda894dd9da0125cc.1690638748.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH] dt-bindings: net: mediatek,net: fixup MAC binding
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20230729111045.1779-1-zajec5@gmail.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230729111045.1779-1-zajec5@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230729_065251_487959_6A4D5BDF 
-X-CRM114-Status: UNSURE (   6.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230729_065557_466985_BAA2F42C 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,18 +69,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29/07/2023 13:10, Rafał Miłecki wrote:
-> From: Rafał Miłecki <rafal@milecki.pl>
-> 
-> 1. Use unevaluatedProperties
-> It's needed to allow ethernet-controller.yaml properties work correctly.
-> 
-> 2. Drop unneeded phy-handle/phy-mode
-> 
+NETSYS_V3 uses 64 bits for each counters while older SoCs were using
+48 bits for each counter.
+Support reading per-flow byte and package counters on NETSYS_V3.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c  |  1 +
+ drivers/net/ethernet/mediatek/mtk_ppe.c      | 18 ++++++++++++++----
+ drivers/net/ethernet/mediatek/mtk_ppe_regs.h |  2 ++
+ 3 files changed, 17 insertions(+), 4 deletions(-)
 
-Best regards,
-Krzysztof
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 05be702f19c5e..1b89f800f6dff 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -5064,6 +5064,7 @@ static const struct mtk_soc_data mt7988_data = {
+ 	.version = 3,
+ 	.offload_version = 2,
+ 	.hash_offset = 4,
++	.has_accounting = true,
+ 	.foe_entry_size = MTK_FOE_ENTRY_V3_SIZE,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma_v2),
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+index bf1ecb0c1c109..1ec508bb206bf 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+@@ -107,10 +107,20 @@ static int mtk_mib_entry_read(struct mtk_ppe *ppe, u16 index, u64 *bytes, u64 *p
+ 	cnt_r1 = readl(ppe->base + MTK_PPE_MIB_SER_R1);
+ 	cnt_r2 = readl(ppe->base + MTK_PPE_MIB_SER_R2);
+ 
+-	byte_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R0_BYTE_CNT_LOW, cnt_r0);
+-	byte_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R1_BYTE_CNT_HIGH, cnt_r1);
+-	pkt_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R1_PKT_CNT_LOW, cnt_r1);
+-	pkt_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R2_PKT_CNT_HIGH, cnt_r2);
++	if (mtk_is_netsys_v3_or_greater(ppe->eth)) {
++		/* 64 bit for each counter */
++		bytes_cnt_low = cnt_r0;
++		bytes_cnt_high = cnt_r1;
++		pkt_cnt_low = cnt_r2;
++		pkt_cnt_high = readl(ppe->base + MTK_PPE_MIB_SER_R3);
++	} else {
++		/* 48 bit for each counter */
++		byte_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R0_BYTE_CNT_LOW, cnt_r0);
++		byte_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R1_BYTE_CNT_HIGH, cnt_r1);
++		pkt_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R1_PKT_CNT_LOW, cnt_r1);
++		pkt_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R2_PKT_CNT_HIGH, cnt_r2);
++	}
++
+ 	*bytes = ((u64)byte_cnt_high << 32) | byte_cnt_low;
+ 	*packets = (pkt_cnt_high << 16) | pkt_cnt_low;
+ 
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_regs.h b/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
+index a2e61b3eb006d..3ce088eef0efd 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
++++ b/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
+@@ -163,6 +163,8 @@ enum {
+ #define MTK_PPE_MIB_SER_R2			0x348
+ #define MTK_PPE_MIB_SER_R2_PKT_CNT_HIGH		GENMASK(23, 0)
+ 
++#define MTK_PPE_MIB_SER_R3			0x34c
++
+ #define MTK_PPE_MIB_CACHE_CTL			0x350
+ #define MTK_PPE_MIB_CACHE_CTL_EN		BIT(0)
+ #define MTK_PPE_MIB_CACHE_CTL_FLUSH		BIT(2)
+-- 
+2.41.0
 
 
