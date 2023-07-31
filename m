@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1191C001E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 13:05:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85C9EC001E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 13:05:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7su+cvr/RqDAIsYfaaQ5ajy8AvNg6lehChNDhQejwyg=; b=cTyCpRAh15Im2wlTstvYs42kdv
-	kQk1uns+Ttoj1iHiBhkmDDHA1ORojv9WoTxARKPankWBYkCteH05D2d52bQbu/F8tHUTLx+2GAbHR
-	u1unSTGfIWtJq+hSMwPSaZT4+f/bhT01OF8rgDlCq6/8SAdKgaaMABksy5wMZEWVgTPhH1VVcL2Ly
-	lccbyofUywn1Ho+Xzx6OdYasRBK10ARNiMVdQvciprAxqLwEVvO0oeb29GKgKyxg647O0KKbZEL1J
-	bx24sk+DuD18wxmxFe2QzMSaNYxO5QHKHRSkhBudpwp8FvQg8GXO63hUgxsrFOyrmXGABAWcWyJmb
-	84mbWYug==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dm6Nc3M0XahRr5SgCwL2z7cNin/dAvbdfmHjVdvJV98=; b=mUE00ru82PneCbLBXhkYdzWSiN
+	OMfFv6TeB/btWwEtvPl8GkO71UGetxLpHloXKANIXvPW8yaSr/1fkW5wgQlT0D4DfUwmNP3LfUtTP
+	hkw8URYpKDTmcZ3eTj86J4kn9Wnw4XyaadRj18FWQpiw3WkbH43rsInHhSSe3oGXWL2cctkqjyyPx
+	C8zIU24XcGu+qil3p0b43vgMsj16NuMCT5PsyTg/48ARaaWp2YzD1TO07qJjz+5iFqTwWuPFll/TQ
+	soFxaOgGpqju6mDBW5rA8jV0omH+Ru+N2cjmcwOE9FZzJ9MK9CgFY10kayjBDkS6VvFcb9dCplsqJ
+	gjr/Fc3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQSaI-00Ffut-2r;
-	Mon, 31 Jul 2023 13:05:14 +0000
+	id 1qQSaT-00Fg37-27;
+	Mon, 31 Jul 2023 13:05:25 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQSZt-00Ffeq-2D;
+	id 1qQSZv-00FfgT-2M;
 	Mon, 31 Jul 2023 13:04:53 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 17B9F66003AC;
-	Mon, 31 Jul 2023 14:04:45 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B31C2660710D;
+	Mon, 31 Jul 2023 14:04:49 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1690808685;
-	bh=xhmK2szNqpATULb/U51CKDpINT6FFCktw50/f6Vdp6M=;
-	h=From:To:Cc:Subject:Date:From;
-	b=f3Xw23WXSDOTX3n42XOeXtF64zWHP14NhBaJwBAehO+pweMEZxhZNRgO6SWVtMz+l
-	 UDlcmKD5YRT7VxpVqELKZLE318GfCHCP0zIey4/McEl6TJwR0Baialm+Fysmxa0PxI
-	 TzArTj7WYcALdFQSl+AZ/c/euMzaPOMo2QM5EsxKLupgNJI+a0QVok6HQcAnNHY0W8
-	 Gg2CvR2ytuCUaST0qSmrZ1uQjWBEXV90IW9CNQmR+cUhc06z9zxktZp/2gXOO5vv68
-	 gap9okmDxGqXnny6n3DYHw2ZLbNlGegljBgE3D4EDmXCURhKu1s8t/Q6ko0wILWgEg
-	 gFwzoyzwSGwwg==
+	s=mail; t=1690808690;
+	bh=jQ1ukxJYhgqz3VRiaaOzbMrQXLA2ENp1Hjs7vpajFxc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=gOw9PS5P/p8lyy95aWK13qA0Y9of/ZPlfhrniaS/yKcPm4KtAgyLt+fU4K61ORRXA
+	 9BmaNiyohXn7igHtssMjEOZAVbth9fptvV0sQ2IlkGNIKTIEC1KkD2Mh3CLqW5cj0y
+	 GIeSHH3aRYBPn3hKCkwu6br1J7ZdPS1lDc/rXSiOrabR3G58Xgg4zdT9LMcu2lwTCg
+	 QRc++U3T0wj+AzVv/ll0ScPNbkU9CSHZNcr+LPq6A5Kq2ynPQdV26jVaxA+eH5h/To
+	 2GhIIqusCzsnu0rNF22+RJd29t6XpaPw3ATd0IDEFZPurtcbauLryMOJqrPG0Kz5ao
+	 Do6qUfPfnOdVg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -56,16 +56,20 @@ Cc: p.zabel@pengutronix.de,
 	linux-arm-kernel@lists.infradead.org,
 	wenst@chromium.org,
 	kernel@collabora.com,
-	ehristev@collabora.com
-Subject: [PATCH v7 00/13] MediaTek DDP GAMMA - 12-bit LUT support
-Date: Mon, 31 Jul 2023 15:04:28 +0200
-Message-ID: <20230731130441.173960-1-angelogioacchino.delregno@collabora.com>
+	ehristev@collabora.com,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>
+Subject: [PATCH v7 05/13] drm/mediatek: gamma: Enable the Gamma LUT table only after programming
+Date: Mon, 31 Jul 2023 15:04:33 +0200
+Message-ID: <20230731130441.173960-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230731130441.173960-1-angelogioacchino.delregno@collabora.com>
+References: <20230731130441.173960-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_060449_857229_031D1F97 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20230731_060451_916442_46156615 
+X-CRM114-Status: GOOD (  15.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,73 +84,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v7:
- - Added check for NULL dev for AAL-gamma case
- - Added get_lut_size callback for AAL-gamma
- - Added comment to clarify SoC 10/12 bits support and old vs new
-   register layout as suggested by Alexandre M.
+Move the write to DISP_GAMMA_CFG to enable the Gamma LUT to after
+programming the actual table to avoid potential visual glitches during
+table modification.
 
-Changes in v6:
- - Fixed smatch warning in patch 11/11, ref.:
-   https://lore.kernel.org/all/202306101458.lRXHEE0Z-lkp@intel.com/
+Note:
+GAMMA should get enabled in between vblanks, but this requires many
+efforts in order to make this happen, as that requires migrating all
+of the writes to make use of CMDQ instead of cpu writes and that's
+not trivial. For this reason, this patch only moves the LUT enable.
+The CMDQ rework will come at a later time.
 
-Changes in v5:
- - Removed incorrect comment on default LUT size and bits
- - Removed useless check for num_lut_banks
- - Added comment about CMDQ implementation on patch 5
- - Evaluated passing lut size/bits from AAL, idea discarded as
-   the implementation would be rather tricky while bringing no
-   benefits.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
-Changes in v4:
- - Fixed assignment typo appeared in v3
-
-Changes in v3:
- - Fixed issues due to variables renaming during cleanup (oops)
- - This is actually the right series, since v2 was taken from the
-   wrong kernel tree.... :-)
-
-Changes in v2:
- - Added explicit inclusion of linux/bitfield.h in patch [06/11]
-
-This series adds support for GAMMA IP requiring and/or supporting
-a 12-bits LUT using a slightly different register layout and programming
-sequence for multiple LUT banks: this IP version is currently found
-on a number of SoCs, not only including the Chromebook/IoT oriented
-Kompanio 1200/1380 MT8195/MT8195T, but also Smartphone chips such as
-the Dimensity 9200 (MT6985) and others.
-
-This series was tested on MT8195, MT8192, MT8173, MT6795:
- * MT6795, MT8192, MT8173: No regression, works fine.
- * MT8195: Color correction is finally working!
-
-AngeloGioacchino Del Regno (12):
-  drm/mediatek: gamma: Reduce indentation in mtk_gamma_set_common()
-  drm/mediatek: gamma: Support SoC specific LUT size
-  drm/mediatek: gamma: Improve and simplify HW LUT calculation
-  drm/mediatek: gamma: Enable the Gamma LUT table only after programming
-  drm/mediatek: gamma: Use bitfield macros
-  drm/mediatek: gamma: Support specifying number of bits per LUT
-    component
-  drm/mediatek: gamma: Support multi-bank gamma LUT
-  drm/mediatek: gamma: Add support for 12-bit LUT and MT8195
-  drm/mediatek: gamma: Make sure relay mode is disabled
-  drm/mediatek: gamma: Program gamma LUT type for descending or rising
-  drm/mediatek: aal: Rewrite kerneldoc for struct mtk_disp_aal
-  drm/mediatek: gamma: Add kerneldoc for struct mtk_disp_gamma
-
-Jason-JH.Lin (1):
-  drm/mediatek: gamma: Adjust mtk_drm_gamma_set_common parameters
-
- drivers/gpu/drm/mediatek/mtk_disp_aal.c     |  27 ++-
- drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   4 +-
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c   | 217 +++++++++++++++++---
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |   8 +-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |   1 -
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |   2 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   9 +
- 7 files changed, 226 insertions(+), 42 deletions(-)
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+index fd6a75a64a9f..18b102bef370 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+@@ -68,12 +68,12 @@ unsigned int mtk_gamma_get_lut_size(struct device *dev)
+ void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crtc_state *state)
+ {
+ 	struct mtk_disp_gamma *gamma;
+-	unsigned int i, reg;
++	unsigned int i;
+ 	struct drm_color_lut *lut;
+ 	void __iomem *lut_base;
+ 	bool lut_diff;
+ 	u16 lut_size;
+-	u32 word;
++	u32 cfg_val, word;
+ 
+ 	/* If there's no gamma lut there's nothing to do here. */
+ 	if (!state->gamma_lut)
+@@ -90,9 +90,7 @@ void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crt
+ 		lut_size = LUT_SIZE_DEFAULT;
+ 	}
+ 
+-	reg = readl(regs + DISP_GAMMA_CFG);
+-	reg = reg | GAMMA_LUT_EN;
+-	writel(reg, regs + DISP_GAMMA_CFG);
++	cfg_val = readl(regs + DISP_GAMMA_CFG);
+ 	lut_base = regs + DISP_GAMMA_LUT;
+ 	lut = (struct drm_color_lut *)state->gamma_lut->data;
+ 	for (i = 0; i < lut_size; i++) {
+@@ -122,6 +120,11 @@ void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crt
+ 		}
+ 		writel(word, (lut_base + i * 4));
+ 	}
++
++	/* Enable the gamma table */
++	cfg_val = cfg_val | GAMMA_LUT_EN;
++
++	writel(cfg_val, regs + DISP_GAMMA_CFG);
+ }
+ 
+ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
 -- 
 2.41.0
 
