@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23D03C001E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 09:43:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A72CC04A94
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 09:43:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kdDSWpR2PwAaVc6xrPLUrP7cY8hR/WC31iRh9xFaQkU=; b=EOVAtBgTiRBk/0GctktVwo6U8O
-	+BegtEH+97OhUmFFJob+mU9NIx9Hl+q1okjr1I+t5wjv0ylNmKvH9+E6OzkJmhBw2nWFhZhCOIj0Q
-	MxpE8y8b8frzCbvuGMAIbE6zJFyk3Ihdtr2yqlx/LzG7FOmVnHpKgcOVGrCb+17QEnHmgdo/qzSn7
-	cnaJDI7ZZlfoH1KATCCPQKssJhUae8CccMpYOK+y2kM32mfW6mDi6Z040D7Nwlit+JOtJW4hwi4cc
-	wbt81gwB5aTyVrrCMGQ6WQyjconOI7zBY461FOtp9GVcX3dlGfYedOz4R9kiYHxhwmBIT8ue3Z/PQ
-	M2nNEO6A==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fMkdpsehTQiUEk5WvbiE/NK1y+1H3B3yrpjwlG6gOYw=; b=sd01CbXUj0N8DI7sz36asT8AeY
+	7v93tgTc9nezGEUDqUtrEObRUeRJUETpJ0kuYsGmwbxV+iXpwqYY72OjW7PrhXdWTz4kQBvPkzPXy
+	QQfQ3iaDbPz0u7kiCeGsB3ZWOO4esR+SSxt4gyOOqlkNbeXYO+cz6IENtVnDcWjlPwNFEZ9PP/9MT
+	sMQPtdF8rfstOmE92IqTQqiIdTS74g+dduGIUTB4NXI8wg+ldylkpUlHAkKwY5JYIWDGrMcNo9q7f
+	cKB+/K9GhXNXxTPYVXn8F8OE0MFv6IYOr8bp6GSM7qxDnfGYHgfthx6RK7qAHWXSf4kbTV9pRVU8k
+	M/j2J7EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQPQt-00EnbQ-05;
-	Mon, 31 Jul 2023 09:43:19 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1qQPQy-00Enev-1E;
+	Mon, 31 Jul 2023 09:43:24 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQPQq-00EnZ3-1O
+	id 1qQPQu-00Enc5-2y
 	for linux-mediatek@lists.infradead.org;
-	Mon, 31 Jul 2023 09:43:17 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-4fe28f92d8eso2275771e87.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 31 Jul 2023 02:43:13 -0700 (PDT)
+	Mon, 31 Jul 2023 09:43:22 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-99bc9e3cbf1so903451266b.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 31 Jul 2023 02:43:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690796592; x=1691401392;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=kdDSWpR2PwAaVc6xrPLUrP7cY8hR/WC31iRh9xFaQkU=;
-        b=JRaT/+kfL9uh8R15DPTFuDwkvjklHTznvty/KmRSZmAoyGr1+CR9ocuL4kvmw/UjGk
-         DJBS0rdn4ScZW5MInEzcVFhbv9GKdTDpJaBzNw0+/WzGByly5NW1xh/6u8bLsw9mtejZ
-         +rpLlG+09SagscOFEVnloXPJDybDA5EO57eet55qG0VZVuYHDpeI8C60dzhPYcWcUpSX
-         uW2370rK4gNIz6U2gPWBqCl5MRXooZ9CoM7efLE+ynZNjnJlunqSxScERrES7yClxhNT
-         37irKwNHH3pa2PC1EXEellvCP2cqF/V5/7TLqTXj/ZTgIkZtTQj025MlucYHe8QE+A1G
-         KT3g==
+        d=linaro.org; s=google; t=1690796599; x=1691401399;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fMkdpsehTQiUEk5WvbiE/NK1y+1H3B3yrpjwlG6gOYw=;
+        b=tn4w2YQmJTk0uY8ChJCamrtd1NcK7DH3BQF48MS47k8eGNen03b0H8BrqpxyZcEvWK
+         TPXsdcjEnmC3fTAo3UDqvw+henD34TO1onisgORuIUrwequZeMPv+n4uHfY13ORotoiv
+         rLN4hAb0lP69zVN/jHC6pzdlKqoort8C/+dXokjQYsHxgXt3tOsQCl2anHisRU5ep80I
+         RwGS8Pj1HR0lFBDLxSDNQeJZ/KbUg1sttYQb4MsMbazqmlM2tlYaauEfC/Z/7ycQHL+i
+         b7Tpp2/WI5HuL5GbF+kt7pzxeXCyFL3aUWSs5UGq6gO8A6RiVb4h03SE/3b8kEceXusx
+         XMyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690796592; x=1691401392;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=kdDSWpR2PwAaVc6xrPLUrP7cY8hR/WC31iRh9xFaQkU=;
-        b=Omb192ePYYd33vMTmnQHy+hTEV0HVJQr4xQc8d8dsVwER4MH1dw8mYYng6PE2oCpQy
-         pYUirYzXO2iKPTTU/CZOiAe0ZcoI1NPflX9Bawxr6g3Bcxovqkv7c4dFpkzvJNaE94GA
-         GMvLZeKsJhazc5tkm+KGpS/4wvdTcb5PQ1YBvWxRHtPB+G8qDt5MGfQv1Xwt2MGqK70m
-         scQ+bkr7NwHiqyES4EoR4Dtg90i07IxaYB+oydZkPsjHAfUuvXI1ldnSNro8i4UW6E2f
-         EtxMJQimfRa7HTMYZZ/LtwJKC/5zwsaO2haeAfuoG+/HnHnf9Ae4mN0Qc5MLSjPEPbCq
-         rJow==
-X-Gm-Message-State: ABy/qLa1Dg8uz6fezFjF52NKypMJS5yJSqf7qya/RAIekFRcg8pSTXbK
-	Lhd8eLn36GDUPU6yZ08pO5Zlwg==
-X-Google-Smtp-Source: APBJJlGki+SUDXYM8c3BbgK1LnBv0fjF2tGeoHiwrwf2124G5mJuEpJE4OQC/hLu1Gd0rntkBAJgrQ==
-X-Received: by 2002:a05:6512:1c5:b0:4f8:766f:8dc3 with SMTP id f5-20020a05651201c500b004f8766f8dc3mr4904749lfp.32.1690796591857;
-        Mon, 31 Jul 2023 02:43:11 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1690796599; x=1691401399;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=fMkdpsehTQiUEk5WvbiE/NK1y+1H3B3yrpjwlG6gOYw=;
+        b=OEPkkWytB2wr2gF38ubj4cWuyEgG77z+nZM21zLBEfPSn40ijbry4B9V+h6ZxEPX1f
+         UCVMAJv3dq5Xewlgs+cdPUNipQ/okx37vMn4DEc3Htf8PWjtTn4gSaPhd6xkcfj7v40/
+         iWfw9AOz4rVXzTJK+lg58/KOuUsCLCEfd+cj/hAKB6IDAU9Bw7Nw/4U8p+BrF9oEjSEd
+         TY71oF38+PjhF2PRUiawptCKpeCEUzGo1UvW+oIS7JN9uilv1zDRL44oz5rXg3Csxfyv
+         MLiVyssw3PBcZGjJqf5SC1D4uDXxq2dGtBL6bHqLXoPfkqd3Asrq911fldDzPypJuRuk
+         xTEQ==
+X-Gm-Message-State: ABy/qLYvBCLWBuwlE1cHZ2s+RuM9skQNcfV5PhkvZURz/1NRTP91Ta5p
+	nq0ct7apODv2sEWDp6fLNhvOTA==
+X-Google-Smtp-Source: APBJJlEHS8HRS+DJX1TaYBtav0YDH5TTIyB34YjlvE4tjVqyDckc7nADYmMtp8qDuz0QDDXeqOSJhQ==
+X-Received: by 2002:a17:906:309b:b0:993:da87:1c81 with SMTP id 27-20020a170906309b00b00993da871c81mr6791657ejv.20.1690796599396;
+        Mon, 31 Jul 2023 02:43:19 -0700 (PDT)
 Received: from krzk-bin.. ([178.197.222.183])
-        by smtp.gmail.com with ESMTPSA id z17-20020a170906815100b0099bcdfff7cbsm5867547ejw.160.2023.07.31.02.43.09
+        by smtp.gmail.com with ESMTPSA id z17-20020a170906815100b0099bcdfff7cbsm5867547ejw.160.2023.07.31.02.43.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Jul 2023 02:43:11 -0700 (PDT)
+        Mon, 31 Jul 2023 02:43:19 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Jerome Brunet <jbrunet@baylibre.com>,
 	Liam Girdwood <lgirdwood@gmail.com>,
@@ -91,16 +92,17 @@ To: Jerome Brunet <jbrunet@baylibre.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 00/12] ASoC: dt-bindings: Add sound-card-common.yaml
-Date: Mon, 31 Jul 2023 11:42:51 +0200
-Message-Id: <20230731094303.185067-1-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 03/12] ASoC: dt-bindings: mediatek,mt8188-mt6359: use common sound card
+Date: Mon, 31 Jul 2023 11:42:54 +0200
+Message-Id: <20230731094303.185067-4-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230731094303.185067-1-krzysztof.kozlowski@linaro.org>
+References: <20230731094303.185067-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_024316_471485_DE2AAC4F 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230731_024320_957629_9D234ECB 
+X-CRM114-Status: GOOD (  12.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,52 +117,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The mediatek,mt8188-mt6359 Linux sound machine driver requires the
+"model" property, so binding was incomplete.  Reference the common sound
+card properties to fix that which also allows to remove duplicated
+property definitions.  Leave the relevant parts of "audio-routing"
+description.
 
-Almost every board machine / sound cards has "audio-routing" and "model"
-properties, so we can make things simpler by introducing one common
-binding.  It is also expected that given property has only one definition.
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ .../bindings/sound/mediatek,mt8188-mt6359.yaml  | 17 +++++++----------
+ 1 file changed, 7 insertions(+), 10 deletions(-)
 
-If the patchset looks good, then the next steps will be:
-1. Convert more vendor audio-routing properties to audio-routing,
-2. Add dai-links children to common binding.
-
-Best regards,
-Krzysztof
-
-Krzysztof Kozlowski (12):
-  ASoC: dt-bindings: amlogic,gx-sound-card: correct maxItems constraints
-  ASoC: dt-bindings: Add common sound card properties
-  ASoC: dt-bindings: mediatek,mt8188-mt6359: use common sound card
-  ASoC: dt-bindings: samsung,aries-wm8994: use common sound card
-  ASoC: dt-bindings: samsung,midas-audio: use common sound card
-  ASoC: dt-bindings: samsung,odroid: use common sound card
-  ASoC: dt-bindings: samsung,tm2: use common sound card
-  ASoC: samsung: odroid: use of_property_present to check for property
-  ASoC: samsung: aries_wm8994: parse audio-routing
-  ASoC: samsung: midas_wm1811: parse audio-routing
-  ASoC: samsung: odroid: parse audio-routing
-  ASoC: samsung: tm2_wm5110: parse audio-routing
-
- .../sound/amlogic,axg-sound-card.yaml         | 15 +++--------
- .../bindings/sound/amlogic,gx-sound-card.yaml | 16 +++++------
- .../devicetree/bindings/sound/fsl,rpmsg.yaml  | 17 +++---------
- .../bindings/sound/google,sc7180-trogdor.yaml | 17 +++---------
- .../sound/google,sc7280-herobrine.yaml        | 17 +++---------
- .../bindings/sound/imx-audio-card.yaml        | 18 +++----------
- .../sound/mediatek,mt8188-mt6359.yaml         | 17 +++++-------
- .../bindings/sound/samsung,aries-wm8994.yaml  | 16 +++++------
- .../bindings/sound/samsung,midas-audio.yaml   | 16 +++++------
- .../bindings/sound/samsung,odroid.yaml        | 14 +++++-----
- .../bindings/sound/samsung,tm2.yaml           | 16 +++++------
- .../bindings/sound/sound-card-common.yaml     | 27 +++++++++++++++++++
- sound/soc/samsung/aries_wm8994.c              | 10 ++++---
- sound/soc/samsung/midas_wm1811.c              | 10 ++++---
- sound/soc/samsung/odroid.c                    | 15 ++++++-----
- sound/soc/samsung/tm2_wm5110.c                | 10 ++++---
- 16 files changed, 119 insertions(+), 132 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/sound/sound-card-common.yaml
-
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+index 05e532b5d50a..43b3b67bdf3b 100644
+--- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
++++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+@@ -9,23 +9,19 @@ title: MediaTek MT8188 ASoC sound card
+ maintainers:
+   - Trevor Wu <trevor.wu@mediatek.com>
+ 
++allOf:
++  - $ref: sound-card-common.yaml#
++
+ properties:
+   compatible:
+     enum:
+       - mediatek,mt8188-mt6359-evb
+       - mediatek,mt8188-nau8825
+ 
+-  model:
+-    $ref: /schemas/types.yaml#/definitions/string
+-    description: User specified audio sound card name
+-
+   audio-routing:
+-    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
+     description:
+-      A list of the connections between audio components. Each entry is a
+-      sink/source pair of strings. Valid names could be the input or output
+-      widgets of audio components, power supplies, MicBias of codec and the
+-      software switch.
++      Valid names could be the input or output widgets of audio components,
++      power supplies, MicBias of codec and the software switch.
+ 
+   mediatek,platform:
+     $ref: /schemas/types.yaml#/definitions/phandle
+@@ -86,7 +82,7 @@ patternProperties:
+     required:
+       - link-name
+ 
+-additionalProperties: false
++unevaluatedProperties: false
+ 
+ required:
+   - compatible
+@@ -96,6 +92,7 @@ examples:
+   - |
+     sound {
+         compatible = "mediatek,mt8188-mt6359-evb";
++        model = "MT6359-EVB";
+         mediatek,platform = <&afe>;
+         pinctrl-names = "default";
+         pinctrl-0 = <&aud_pins_default>;
 -- 
 2.34.1
 
