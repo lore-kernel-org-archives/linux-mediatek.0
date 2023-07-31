@@ -4,65 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EA16C001DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 10:52:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0389BC001E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 11:51:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zZWjSUbecP8us4ps1DOWf4oBRNjgb/r/X56//yR2bMU=; b=n6UTtGQWt1mcbYY0MPLIBuLINp
-	YBRKMVBY6VHLSnYGbSF+UJh4ukINl+Cu81quSWhe7bpe2f8xpqtf5Gu+UT7KbUAiCA58ErEQ7g2Ct
-	E4DOGrk++bZWl5IqgL8MqSwVUOc8ohgtGlT5XpSFBuhjBrkg6qvz94foMrNxdsfqfx69kc/18ED3n
-	Ctq3SIODFO+/G++jCMSaDO/r02UUyC74jB9fbDfXVUE0AWC8FvSI6AuE2e4JtNS+9sJPns2fibNfO
-	esEPdglQqRqgZwR4Vi8dc62TfF181hDcNi8GFHjko2OtCfOpZHFikp2Jx9mmkP/SYfBtfpgnPkmSM
-	uJgyfmXA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AOWwhYv+t8CDvyhND2LxS4NNrNKJuWikV9QiBFJH92s=; b=MltbZwpiQZwP8XKabS+n+ar3k2
+	3zwUf3iZXQlGt2X5u/6X05YAci4P2SzedRryJbSygsxgwA8TjN+vHIqALlwUUxLA5QMbaxMYlp68u
+	60K4y5UfUkqS4LkRPxMz/WPaoo4nstwqxYXL5jfxSanWt5fd9EgXHMMx4VBvHfMNrlmFY67qzREw7
+	UTbxizhw7NYoFYBcGh2O6i2/wU2ClC/VcEFzJkEMXxViW2kKW7Q77p566sUEr9E681LE/PRQq1Wby
+	YXhJMwbqHTHsCwFEjpDOjboVqXcLnqUMMWt2OuaayO+fc8VVJ0fLvEe+Kv+6E41k+gg1yV7O3f3aS
+	kpBWQ9OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQVQ-00FA4a-16;
-	Mon, 31 Jul 2023 10:52:04 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qQRQS-00FNBT-1z;
+	Mon, 31 Jul 2023 11:51:00 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQVM-00FA3G-0t;
-	Mon, 31 Jul 2023 10:52:01 +0000
+	id 1qQRQP-00FNAi-03;
+	Mon, 31 Jul 2023 11:50:58 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B84B161022;
-	Mon, 31 Jul 2023 10:51:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 139D4C433C8;
-	Mon, 31 Jul 2023 10:51:57 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C64776105A;
+	Mon, 31 Jul 2023 11:50:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE103C433C8;
+	Mon, 31 Jul 2023 11:50:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690800719;
-	bh=VRB/1XE21uItYhBv3v9HcbSnr1pNI+FT1F8W0UoZ4EQ=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Rx3XU9T/DfTBZmTe1X/pitgrSt+EjtnzJoqNRAZuy+u5vwBhkfxh+hUZZrw8G6eyB
-	 lFooQITIfBmh8/jxn75ajaVWWyL+K/4SU45HngfcLfFTzUUGPBR5u+9IjcHh4p2VuV
-	 Gn/BP1tBlmjRqXbGir615a2nw2/EGblZCbb/EdH53HfxfeXjlH0iUF72exIeOeH8ce
-	 iI0zsUs/KwhnnNIx6Lxy7o7ockkHS9S04Qeay5vnvJcuIp6si4rRnNUb+xaSuY4dlr
-	 /lvwh+EQxuP3f465WPY0yRWJu6eDmjBQECj4Tp33HLlFzlfhS5JD89tNI3MxRd9Faa
-	 LZXL9lzdwZVlg==
-Received: (nullmailer pid 2405199 invoked by uid 1000);
-	Mon, 31 Jul 2023 10:51:46 -0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	s=k20201202; t=1690804255;
+	bh=AOWwhYv+t8CDvyhND2LxS4NNrNKJuWikV9QiBFJH92s=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=uL2XhCM5GgiizRO+1NueJqOprVve9jG9ZNiTVFaZmlT0Q/zpwS7OIGkH1wOpYJzo7
+	 qRZ3NRfxvT0zTMbGLyJBm8HEDAzDE1VXzpskPjW9Z6koCwUQOj5yZKHR+1uBw6j1rn
+	 mqu+TreQdXB+3DlMYLWHSARGlScVJQ5XQf3CG4lN2fqdQjsYkmtsO0n1jAABoOItNk
+	 yTG4BJbMlq8NUZhH6CTPE2kfSEIYlVlVwkzKKeY73KOAAHsw1WyQH8K/e84e2ePbqv
+	 RtzsDIHhnQ3Ulw1hrtEaBMOf8RZPDpmzuEN04Y89w3ZWgWgoU4pF2vlmlUFYS+g80n
+	 kWNXkGQ/y6fjg==
+Date: Mon, 31 Jul 2023 12:50:48 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org,
+	robert.foss@linaro.org, Laurent.pinchart@ideasonboard.com,
+	kuninori.morimoto.gx@renesas.com,
+	angelogioacchino.delregno@collabora.com, nfraprado@collabora.com,
+	chunxu.li@mediatek.com, ajye_huang@compal.corp-partner.google.com,
+	allen-kh.cheng@mediatek.com, dri-devel@lists.freedesktop.org,
+	alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [v3 2/3] ASoC: mediatek: mt8186: correct the HDMI widgets
+Message-ID: <25e6ab45-ecad-4bc3-bf4d-983243c939ad@sirena.org.uk>
+References: <20230730180803.22570-1-jiaxin.yu@mediatek.com>
+ <20230730180803.22570-3-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: linux-arm-kernel@lists.infradead.org, Jaroslav Kysela <perex@perex.cz>, Sylwester Nawrocki <s.nawrocki@samsung.com>, linux-mediatek@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Mark Brown <broonie@kernel.org>, Shengjiu Wang <shengjiu.wang@nxp.com>, Cheng-Yi Chiang <cychiang@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>, Shawn Guo <shawnguo@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Jonathan Bakker <xc-racer2@live.ca>, Pengutronix Kernel Team <kernel@pengutronix.de>, devicetree@vger.kernel.org, Trevor Wu <trevor.wu@mediatek.com>, linux-kernel@vger.kernel.org, Rohit kumar <quic_rohkumar@quicinc.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rao Mandadapu <srivasam@codeaurora.org>, Jerome Brunet <jbrunet@baylibre.com>, alsa-devel@alsa-project.org, Takashi Iwai <
- tiwai@suse.com>, Judy Hsiao <judyhsiao@chromium.org>, Conor Dooley <conor+dt@kernel.org>
-In-Reply-To: <20230731094303.185067-7-krzysztof.kozlowski@linaro.org>
-References: <20230731094303.185067-1-krzysztof.kozlowski@linaro.org>
- <20230731094303.185067-7-krzysztof.kozlowski@linaro.org>
-Message-Id: <169080070445.2405101.15748974095026995722.robh@kernel.org>
-Subject: Re: [PATCH 06/12] ASoC: dt-bindings: samsung,odroid: use common
- sound card
-Date: Mon, 31 Jul 2023 04:51:46 -0600
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="m510aG4cVtaJEGRZ"
+Content-Disposition: inline
+In-Reply-To: <20230730180803.22570-3-jiaxin.yu@mediatek.com>
+X-Cookie: Single tasking: Just Say No.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_035200_401509_5E3A62C8 
-X-CRM114-Status: GOOD (  14.84  )
+X-CRM114-CacheID: sfid-20230731_045057_116381_852A481D 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,46 +84,31 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 31 Jul 2023 11:42:57 +0200, Krzysztof Kozlowski wrote:
-> Reference the common sound card properties and deprecate the
-> custom "samsung,audio-routing" in favor of generic one.  This allows to
-> remove "model" property and make the binding closer to other sounds
-> cards.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  .../devicetree/bindings/sound/samsung,odroid.yaml  | 14 +++++++-------
->  1 file changed, 7 insertions(+), 7 deletions(-)
-> 
+--m510aG4cVtaJEGRZ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+On Mon, Jul 31, 2023 at 02:08:02AM +0800, Jiaxin Yu wrote:
 
-yamllint warnings/errors:
+> Use SND_SOC_DAPM_LINE instead of SND_SOC_DAPM_OUTPUT to trigger
+> DAPM events to hdmi-codec when userspace control the DPAM pin.
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/sound/samsung,odroid.yaml:
-Error in referenced schema matching $id: http://devicetree.org/schemas/sound/sound-card-common.yaml
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/sound/samsung,odroid.example.dtb: sound: False schema does not allow {'compatible': ['hardkernel,odroid-xu3-audio'], 'model': ['Odroid-XU3'], 'audio-routing': ['Headphone Jack', 'HPL', 'Headphone Jack', 'HPR', 'IN1', 'Mic Jack', 'Mic Jack', 'MICBIAS'], 'cpu': {'sound-dai': [[4294967295, 0]]}, 'codec': {'sound-dai': [[4294967295], [4294967295]]}, '$nodename': ['sound']}
-	from schema $id: http://devicetree.org/schemas/sound/samsung,odroid.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/sound/samsung,odroid.example.dtb: sound: Unevaluated properties are not allowed ('audio-routing', 'model' were unexpected)
-	from schema $id: http://devicetree.org/schemas/sound/samsung,odroid.yaml#
+Why?
 
-doc reference errors (make refcheckdocs):
+--m510aG4cVtaJEGRZ
+Content-Type: application/pgp-signature; name="signature.asc"
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20230731094303.185067-7-krzysztof.kozlowski@linaro.org
+-----BEGIN PGP SIGNATURE-----
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmTHoBcACgkQJNaLcl1U
+h9DXVgf9HxthKv6tquZ80eqHswbBmda73YJgF+PneFtfjX5EUD8siEFTvhlHJOPb
+itkNuLs0xwuvU/ocou1TJ3JVkd4SlhXF2AQUB2MKqUJlOMYiEthVhAj2RWNMEMWb
+M6hNPAHydcz2O6rmMD0wknYpUUHLE+1Xv3EXeMZEKYLh8qZlrfstrqI1s/fhuQaJ
+TmQTCMTZ8AmSRgZ9ENPYon30oN6/7qeEvKbyW+PnOTCqSv/Zhz1pOVf21YoY2nhO
+94QnTgSNXrSZINA/rfNDUwEvG2W/OY4N/hb+gKf6qbraNOVxbw1o//Cc2tfTTWlL
+P2wCPNxJJXNDAizWmcN9zeH3ZZ4Iqg==
+=H16t
+-----END PGP SIGNATURE-----
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+--m510aG4cVtaJEGRZ--
 
