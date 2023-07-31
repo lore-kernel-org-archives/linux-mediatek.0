@@ -4,105 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2121C001DC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 14:56:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9E7FC001DC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 15:05:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Oa1SB02KtfMLxNE4mkxxs1OYoxXlIjwBI7+LigCTgCc=; b=NNlYfKZ13QiQXKSrNMEg8LgG9+
-	/QrQcV/HrOFX3nUTJ7QaX7OaVRlbC/L2xfymWOYt5S0FPP+dyBLFI8nfQulZ6xx1NxxDbV4NAwREU
-	4UyM9Izc+RLmJ/xY9l+/MuIxih5ffeeQAkUubC77cW8SEYz/2p/qkCA5zpetQzzF7eD1QyLK88u3j
-	FQSbmTefiGzh+kLpGwUFbOishenkT/prBHV8CSadwtItMQNKLK2Fd0eTXGX4K6gMh0DIzBSizr2i1
-	hwvYZFrB5mOIrTzYIb8XYWGOLcbAqtFV8rw0zcff/lM1+9xY0OK+eiW9IjAf9V3SHQ3vZHKqzSMYA
-	Dju9BIjA==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u6m8JY8xlL5lafnW2mrv8zTKCgyIbG7vfy4wiqcsH9M=; b=znw8fGgIShvKyAjwXaB/cwRya+
+	FUEJ5hsGnFxhD5ju6zdh0w9s027vnAsW/XG8GCD6xr+ACDvS1OX3HU9Tfr+JcpUVfet9GSzl+0I7U
+	HZpgBknqBBvzdAwwwB9ziCkjmFPkCxSAIpugJBSJbjmok9l3yH2VY/jcYshD1jnOdJQwXeDpScG8o
+	QRuszXDNQ0/ahm2BYwZ2CT809esSl+jgMFU1K0qWQUoSubvF3UCbV9SxfK6at8sbz7uf/B4nN8bSv
+	5ZI7OQC9ZJrwfsdZDnF5KU7mYTqpbApO3NJUP5Ip2NZ2O+Ko0QWGSFhBRyWXomuYZsD+OkLijKqlT
+	ZJpdfJHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQUKH-00GCov-1k;
-	Mon, 31 Jul 2023 14:56:49 +0000
-Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
+	id 1qQUSZ-00GFJf-2Z;
+	Mon, 31 Jul 2023 15:05:23 +0000
+Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQUKE-00GCmN-0l
-	for linux-mediatek@lists.infradead.org;
-	Mon, 31 Jul 2023 14:56:47 +0000
-Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-2b9bee2d320so68482591fa.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 31 Jul 2023 07:56:43 -0700 (PDT)
+	id 1qQUSU-00GFHU-0U;
+	Mon, 31 Jul 2023 15:05:19 +0000
+Received: by mail-oa1-x32.google.com with SMTP id 586e51a60fabf-1bb7a1c2fe5so3289319fac.2;
+        Mon, 31 Jul 2023 08:05:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690815402; x=1691420202;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :to:from:subject:user-agent:mime-version:date:message-id:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Oa1SB02KtfMLxNE4mkxxs1OYoxXlIjwBI7+LigCTgCc=;
-        b=Bps7HKIGU1d7zGk6EnCBSZB+lUHreffolw38t62M9CWeJ/hAtTcLbWEyRGx0OLdxN+
-         tVMbbmbRF2ohu2WxxLjNYl3IyaP6ok/GnwlqlRN29C3tUtFbSqIks28iNf8Ip0n3TGVQ
-         ZauRAK3cDiIdUD/7Fu+6khTozBYPwXrwsueNQklYPH4vrbltQb4xTuyZ2h2GKYMpFzYh
-         5Q9Lc9qZWNJwsss83IMWvph8fAq0e2bgQavQ2H3qcjE5rf3kzV+sqjYnCqFfs+Lc8znr
-         R2I9f4B8oxB6w1zJ5akEPy0M0Q7S5mHA5OPRYR+cBxdd/K8CBZV/lFEYIJcLPjhl60FZ
-         ahYg==
+        d=gmail.com; s=20221208; t=1690815910; x=1691420710;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=u6m8JY8xlL5lafnW2mrv8zTKCgyIbG7vfy4wiqcsH9M=;
+        b=rUNj22zwZBzunn/Ajoq/i5m40v6g0aCboJZnvwEo4kIsNVkvJS6n+ZjgbTRcq0lBTG
+         Q2LbRbSblCWiuDUMnEB8QD9YGEg/47qwm1srgYQGyv0C5kPjkil57PK9O60q+t5o6xRz
+         Ias1ysIofuAubayAYm0CDiiGjRpUnsAIEgmhwTgtdpXijeFaehkt4bOiqLVorQnclk05
+         sh63gX1w4FwJlt9WhXISfyF3dF8hbphjeWjr4x4q47uu+F3cWue9re/LNjEvFxCtoDnf
+         rWgHjkLmuCTxx7lBZRAVzp6Tmx1u44URkRSXjCU5Bm5ZfgtFmHIFTL+m9hhjq3eHr8l0
+         QVuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690815402; x=1691420202;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :to:from:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Oa1SB02KtfMLxNE4mkxxs1OYoxXlIjwBI7+LigCTgCc=;
-        b=heLXvPjS3MEgJ5nOGaLNIp42N3U7n+sKlZ4UNpgHJf2Zr3I5IkvPvJzxsyzcAHy544
-         OxAzpmmbCI9cyLyE5hf4yhAtxvo3dLWajQiDCv5dYRwdb13qbc1zk0JIN5VvzcwGfjZS
-         E/vkVNHYPdBczJvZx4ulGp22SoMgYnn41sMbjPA/QkWe/+z6T2ltZiAoe+NwdyebQcsY
-         buGt6TF0uv2akCax05dWHHxzL2R4S6pSctGzHwJCKMGZBkCHovp+3hephctzHNFB3922
-         8gDl2CiAw25jvXLuJno4n0t4Ib3ktdpyw/mcf+cipWMQeiFp6R6DhBtKGcRw7hM0AbJe
-         PCYg==
-X-Gm-Message-State: ABy/qLYYFjD7u9ypZAk/2OJ0ocXUx2BXZVUsCSrfOvkHUaqvvU6vXQXr
-	c9mjvZD68ptJJY/EfPlNMwAE7g==
-X-Google-Smtp-Source: APBJJlF7zuWD7Kp6ngSgGXo2OLttXqzIQ2Sxj/NgV2Jy37GYeVH1VK7pokm/jJZBd1ud+kDxL8TYug==
-X-Received: by 2002:a2e:8e92:0:b0:2b9:edcd:8770 with SMTP id z18-20020a2e8e92000000b002b9edcd8770mr138066ljk.43.1690815402023;
-        Mon, 31 Jul 2023 07:56:42 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.222.183])
-        by smtp.gmail.com with ESMTPSA id u17-20020a1709060b1100b00992bea2e9d2sm6335878ejg.62.2023.07.31.07.56.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 31 Jul 2023 07:56:41 -0700 (PDT)
-Message-ID: <26224f81-9993-0a4c-4c46-91acd1ff5f42@linaro.org>
-Date: Mon, 31 Jul 2023 16:56:39 +0200
+        d=1e100.net; s=20221208; t=1690815910; x=1691420710;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=u6m8JY8xlL5lafnW2mrv8zTKCgyIbG7vfy4wiqcsH9M=;
+        b=PPRgtWedgvasvwIATEWic87isWT6dqGDljcYDKWTZ72aLv2OGKZ0mt8iTFHhpYhgxd
+         9rJIHUmUQrSt1N5egxN787DhcKFAD9doQn9ghr+OxTOzAPPHg3Pr9yZzbt9rook9kkoz
+         MzxjKIWKXEVyPNEI5oX9uTuQbQC/aGjXgjFXq23FG7XeYHYx4A3s4Oni4hH4M0Iz99ec
+         /BidDPZPeEaA5Skp6Ua3HpFO8pOfsrP/9h87WYcf7MKcKWYUMwR6qc1GGQ+zR2eczMDe
+         GePG72CJiy7tGFFg+YfPHxHeCE0lfKt7EaSH8SiONX+VakuqDG1UAWiDDvyoaDZz/DN2
+         ipRA==
+X-Gm-Message-State: ABy/qLaHPidIiS2MBUpNcvBh4Kj1c91um57MARXSOIvNXRtKky85rT7B
+	9+mhdNeAqAUU22R9OIUlRZGndzpvh6k/XtXIc/M=
+X-Google-Smtp-Source: APBJJlHzJxErT5OwsIf3L0CIAEkHW1mfa5PTeh4zgx1s2WO25NgFeHjAtK94BgN2qYOHeThl/TN/0rbuvDCCIpD9Zfk=
+X-Received: by 2002:a05:6870:148b:b0:1b0:4fc5:2e4b with SMTP id
+ k11-20020a056870148b00b001b04fc52e4bmr12603538oab.9.1690815909642; Mon, 31
+ Jul 2023 08:05:09 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.1
-Subject: Re: [PATCH v3 5/6] ASoC: dt-bindings: mediatek,mt7986-wm8960: add
- mt7986-wm8960 document
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: =?UTF-8?B?TWFzbyBIdWFuZyAo6buD5Yqg56u5KQ==?= <Maso.Huang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "chenxiangrui@huaqin.corp-partner.google.com"
- <chenxiangrui@huaqin.corp-partner.google.com>,
- =?UTF-8?B?VHJldm9yIFd1ICjlkLPmlofoia8p?= <Trevor.Wu@mediatek.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "broonie@kernel.org" <broonie@kernel.org>,
- =?UTF-8?B?QWxsZW4tS0ggQ2hlbmcgKOeoi+WGoOWLsik=?=
- <Allen-KH.Cheng@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "tiwai@suse.com" <tiwai@suse.com>, "lgirdwood@gmail.com"
- <lgirdwood@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "perex@perex.cz" <perex@perex.cz>, "arnd@arndb.de" <arnd@arndb.de>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>,
- "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>
-References: <20230728090819.18038-1-maso.huang@mediatek.com>
- <20230728090819.18038-6-maso.huang@mediatek.com>
- <7d70f893-ee75-d355-4b4c-4afe7a72cd7c@linaro.org>
- <5f794f6d3595e845433aab3c48eb47ec7962c929.camel@mediatek.com>
- <ab66c8a4-6a5e-651b-8f77-047980ebc238@linaro.org>
-Content-Language: en-US
-In-Reply-To: <ab66c8a4-6a5e-651b-8f77-047980ebc238@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <2a4da319-a78a-7cb1-6f18-f59180de779f@gmail.com>
+In-Reply-To: <2a4da319-a78a-7cb1-6f18-f59180de779f@gmail.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Mon, 31 Jul 2023 17:04:57 +0200
+Message-ID: <CAMhs-H-ZES+O07ZbY37xVWqQ0f4YmmR5mz6BGvv43iXz+me2Mg@mail.gmail.com>
+Subject: Re: MediaTek Frame Engine Ethernet: does it need any resets?
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	=?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
+	Network Development <netdev@vger.kernel.org>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, linux-mips@vger.kernel.org, 
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_075646_284363_034D4FCD 
-X-CRM114-Status: GOOD (  18.83  )
+X-CRM114-CacheID: sfid-20230731_080518_193484_B7CE3DAF 
+X-CRM114-Status: GOOD (  15.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,56 +93,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/07/2023 10:14, Krzysztof Kozlowski wrote:
->>>> +  mediatek,audio-codec:
->>>> +    $ref: /schemas/types.yaml#/definitions/phandle
->>>> +    description: The phandle of wm8960 codec.
->>>> +
->>>
->>> How did you implement Rob's comment? Or did you just ignore it?
->>>
->>> Best regards,
->>> Krzysztof
->>>
->>
->> Hi Krzysztof,
->>
->> Sorry, I did not mean to ignore Rob's comment.
->> I waited for some suggestion in mail below, but it seems Rob was a
->> little busy.
->>
->> https://lore.kernel.org/lkml/8c6316e79e40406e4d46709f602dcb14a4c00562.camel@mediatek.com/
->>
->> After gentle ping last week and receiving your advice, I thought that
->> means to send the v3 patch and might discuss dtbingding in v3 series.
->>
->> So sorry for misunderstanding it, I'll check the details with Rob in v3
->> series then refine it in v4.
-> 
-> The problem is that you did not reference in this patch any ongoing
-> discussion and further questions, so comment looks like addressed, while
-> it was not.
-> 
-> Rob said:
-> "in a common schema and reference them "
-> You said:
-> "common part yaml and reference to it"
-> so I think you both agreed on the same.
-> 
-> The advice would be to create common binding which is then referenced by
-> other and your bindings. However if you start doing it, you will notice
-> that it is impossible, because you have conflicting types for
-> "audio-codec", so you cannot have one definition.
-> 
-> This leads to the point - property is probably wrong and you need
-> dai-link with sound-dai property, just like most cards are doing.
+Hi Rafal,
 
-BTW, might be useful for you, just sent:
-https://lore.kernel.org/linux-devicetree/20230731094303.185067-1-krzysztof.kozlowski@linaro.org/T/#t
+On Sat, Jul 29, 2023 at 1:55=E2=80=AFPM Rafa=C5=82 Mi=C5=82ecki <zajec5@gma=
+il.com> wrote:
+>
+> Hi,
+>
+> I'm trying to understand MediaTek's Ethernet controller resets.
+>
+> I noticed there is sth fishy when checking dts files. See following
+> errors:
+>
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e10000=
+0: resets: [[2, 6], [2, 23]] is too short
+>          From schema: Documentation/devicetree/bindings/net/mediatek,net.=
+yaml
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e10000=
+0: reset-names:1: 'gmac' was expected
+>          From schema: Documentation/devicetree/bindings/net/mediatek,net.=
+yaml
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e10000=
+0: reset-names: ['fe', 'eth'] is too short
+>          From schema: Documentation/devicetree/bindings/net/mediatek,net.=
+yaml
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e10000=
+0: Unevaluated properties are not allowed ('reset-names', 'resets' were une=
+xpected)
+>          From schema: Documentation/devicetree/bindings/net/mediatek,net.=
+yaml
+>
+>
+> 1. Binding mediatek,net.yaml
+> It says that when present, there must be 3 resets: fe, gmac, ppe
+>
+> 2. mt7621.dtsi
+> It specifies 2 resets: fe, eth
+>
+> 3. mt7622.dtsi
+> It doesn't specify any resets
+>
+> 4. mt7629.dtsi
+> It doesn't specify any resets
+>
+> 5. drivers/net/ethernet/mediatek/
+> I don't see any reset_control_* code at all
+>
+>
+> Can someone help me what's the actual case with resets? Are they needed?
+> Are they used?
 
-Anyway you need dai-links, I think.
+At least for mt7621 bindings have been released after the ethernet
+driver. The driver uses directly register offset for reset through the
+system controller syscon [1].
+
+Ideally reset_control APIs should be used since there is already a
+reset driver for mt7621 [2]. I don't know about the other SoCs.
+
+Hope this helps.
 
 Best regards,
-Krzysztof
+    Sergio Paracuellos
 
+[1]: https://elixir.bootlin.com/linux/v6.5-rc3/source/drivers/net/ethernet/=
+mediatek/mtk_eth_soc.h#L495
+[2]: https://elixir.bootlin.com/linux/v6.5-rc3/source/drivers/clk/ralink/cl=
+k-mt7621.c
 
