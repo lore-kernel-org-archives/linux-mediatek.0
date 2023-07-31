@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54885C001E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 14:41:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38CF1C00528
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 14:43:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O6BkbRW/aqCp9/R15YIXt5ZBrWcqdFvHepA8T5Q1n8s=; b=AYTCbKey0SNsZCY033paaYXfHJ
-	BNV74MVUtNAhF4em4wuYgN+tzJhp2KZitOKOckaDVasuaC3W40V/ArWHGAJNHor4yXTB2uiZcSJtU
-	QE/KbQoVXTaEbgt2BzFczSPmcZGVOcGBODwqQ7VxYkJJbZZ1/HgF/V0FhlUrHEVkjzK1xKo4LKxHp
-	ZhgoJhVaOJZE1+mucrw2t0Ecy6Mq16/iRx1G1mTYjbcaIMXbFygRi7m/5WN3PfzjUkxxYeD7nD4eV
-	eSdvMi3ZNA06Iu2Ef1prc7Syfn/WPdevMEHDBsqhiMk2edzIc4B2e6HaeaRNDotRpR4oSoUcMT8UD
-	ZaU45nhg==;
+	bh=8nJZCwRy/Xq1+6e+ehaY8LCMyK6sxC6BgnAqPc0CKoo=; b=s7lZ8a+GWshWHMFZNylm9Lqny3
+	+MmWjLIVVun9ogaYBqYWGtJ/AZs9yzgPcp+kCeYhe1Qptzy1m3+BXzhI3242fCT2MfCqPSO/+Xz8f
+	cHuvBxpluB/2JAQ4hcLUJH9ZHTRIWjt52xTh5v6DLlEESMyynDl8Xdn5dSj4G/CujVFOeaIQiXJEA
+	QapY6xRuAmSK4PHOoP5Zg/dd51WKk/8TE1efh44M0UUqd4Ty5Fbe8+GD86mfAe/OOyVeT95tl8ZtC
+	viJZjusQuPnujSg+MswsDsEVc1T0ZUWW8Apfa1l7yCoZi+S8TqeCroGWprvglnaR2ES/mIvt+5ENZ
+	5OTV6nWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQU5r-00GA03-14;
-	Mon, 31 Jul 2023 14:41:55 +0000
+	id 1qQU7N-00GAK9-0y;
+	Mon, 31 Jul 2023 14:43:29 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQU5e-00G9v8-1i;
-	Mon, 31 Jul 2023 14:41:43 +0000
+	id 1qQU7K-00GAJK-0C;
+	Mon, 31 Jul 2023 14:43:27 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id ED5556118C;
-	Mon, 31 Jul 2023 14:41:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5064C433C7;
-	Mon, 31 Jul 2023 14:41:39 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 830046117B;
+	Mon, 31 Jul 2023 14:43:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D868C433CB;
+	Mon, 31 Jul 2023 14:43:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690814501;
-	bh=6zs0p262FWZnT2q/CfUaDwyUeYXnBXhuseu1gVc38XQ=;
+	s=k20201202; t=1690814605;
+	bh=ZZP/+vM0qz6EaB+8dhpI2Dpi6RMKi1QnNhcTct6HcJc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=C/t+Ag8xPMkM4w/sN7awWdOpwxKL34AbhifM3ApfHy4wOszK/s4+Ee3pM1mlmxUHh
-	 v3ZzKncG+rC5CxEti9EIBWxgYFXoBwcLkKlSMrY6e3Lhtmjqic8diE+lH2SNhaJ14k
-	 PtrRzG2dTZ7uqXx/ovkZiPH/4TDr8HZgv06SC5w0LnHDMrw5vZb6+D3i/3YQHsZk2O
-	 zKJCFoYvZIJgkEyenckCSLpBgCRynXYx39uIE/6LvGshuAOhb2uAUy5VM77KQYMPWi
-	 ZU2HUveBRZOXlFXxUrQZsjwhUzAKIgFokee643ITPbAkWj227rcbvABFWI/mPu1Z+d
-	 UTgXJLPm/UV7Q==
-Received: (nullmailer pid 2934485 invoked by uid 1000);
-	Mon, 31 Jul 2023 14:41:38 -0000
-Date: Mon, 31 Jul 2023 08:41:38 -0600
+	b=gcf81MxHKfKQ6cb1/4LQVxpQJQBDyR9UMg13U+PabS/04OLLUefmHt1dU84ssOZZ9
+	 c0d2AZj+FB2qTva5iWdNN2E2AnFwsvtEv2Ks3VIQVYigWOnFqi8McciDtMf9PLGZ6M
+	 E7L790xhMnUuSiTkRqelk95M70e9aKxn9e36LUlS8rJrhYMm0ZfWUxDKfAz65ycs4a
+	 Yh9WU014M9UDp6ZN2WSStBAcAdiA4qFE270JVmBfnzxtgCdX8k3+ni8PhdGty4vieM
+	 iYEXJaLGPnQkoKYur2AJgZnuT44dfJ5BZ1fdXMvd/eCtycaMLqAzSXuqnMchXyUc2W
+	 prELTN76RjOsw==
+Received: (nullmailer pid 2936636 invoked by uid 1000);
+	Mon, 31 Jul 2023 14:43:21 -0000
+Date: Mon, 31 Jul 2023 08:43:21 -0600
 From: Rob Herring <robh@kernel.org>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: linux-mediatek@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, Shengjiu Wang <shengjiu.wang@nxp.com>, Liam Girdwood <lgirdwood@gmail.com>, Cheng-Yi Chiang <cychiang@chromium.org>, linux-kernel@vger.kernel.org, Jonathan Bakker <xc-racer2@live.ca>, Rao Mandadapu <srivasam@codeaurora.org>, Rohit kumar <quic_rohkumar@quicinc.com>, Judy Hsiao <judyhsiao@chromium.org>, Jerome Brunet <jbrunet@baylibre.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Fabio Estevam <festevam@gmail.com>, Mark Brown <broonie@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, NXP Linux Team <linux-imx@nxp.com>, Jaroslav Kysela <perex@perex.cz>, Trevor Wu <trevor.wu@mediatek.com>, alsa-devel@alsa-project.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, linux-arm-kernel@lists.infradead.org, Pengutronix Kernel Team <kernel@pengutronix.de>, Shawn Gu
- o <shawnguo@kernel.org>, Takashi Iwai <tiwai@suse.com>, Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH 05/12] ASoC: dt-bindings: samsung,midas-audio: use common
- sound card
-Message-ID: <169081449785.2934415.14179927279002446763.robh@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Shengjiu Wang <shengjiu.wang@nxp.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jerome Brunet <jbrunet@baylibre.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Cheng-Yi Chiang <cychiang@chromium.org>, Takashi Iwai <tiwai@suse.com>, Rohit kumar <quic_rohkumar@quicinc.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, Judy Hsiao <judyhsiao@chromium.org>, Jonathan Bakker <xc-racer2@live.ca>, Fabio Estevam <festevam@gmail.com>, Mark Brown <broonie@kernel.org>, alsa-devel@alsa-project.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, linux-mediatek@lists.infradead.org, Trevor Wu <trevor.wu@mediatek.com>, Jaroslav Kysela <perex@perex.cz>, NXP Linux Team <linux-imx@nxp.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Rao Mandadapu <srivasam@codeaurora.org>, Pengutronix Kernel Team <kernel@pengutronix.de>
+Subject: Re: [PATCH 07/12] ASoC: dt-bindings: samsung,tm2: use common sound
+ card
+Message-ID: <169081460128.2936591.465135796589060685.robh@kernel.org>
 References: <20230731094303.185067-1-krzysztof.kozlowski@linaro.org>
- <20230731094303.185067-6-krzysztof.kozlowski@linaro.org>
+ <20230731094303.185067-8-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230731094303.185067-6-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230731094303.185067-8-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_074142_611761_3496816D 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20230731_074326_139351_8D35F770 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,7 +78,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 31 Jul 2023 11:42:56 +0200, Krzysztof Kozlowski wrote:
+On Mon, 31 Jul 2023 11:42:58 +0200, Krzysztof Kozlowski wrote:
 > Reference the common sound card properties and deprecate the
 > custom "samsung,audio-routing" in favor of generic one.  This allows to
 > remove "model" property and make the binding closer to other sounds
@@ -86,7 +86,7 @@ On Mon, 31 Jul 2023 11:42:56 +0200, Krzysztof Kozlowski wrote:
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > ---
->  .../bindings/sound/samsung,midas-audio.yaml      | 16 ++++++++--------
+>  .../devicetree/bindings/sound/samsung,tm2.yaml   | 16 ++++++++--------
 >  1 file changed, 8 insertions(+), 8 deletions(-)
 > 
 
