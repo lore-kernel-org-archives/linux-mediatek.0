@@ -4,87 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6B63C001DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 14:47:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39689C001DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 14:51:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PqlYAMnZ+JfeuRXdftAEQ5hSDtUAYpYdfgTVGuT3sEo=; b=RXHTo3haZqrpXud9fLXfPtmiMR
-	UXbDa8gEsfEhHhnT7uxU9uQcZwCnsKm6YCKC3xbDIiScfnO9DA9Pq8LPpqSERhbvPh13BaG6+WwZK
-	U/oEYjqIp5nO5ZnEM7/DwprZ5Dp7Gygp7gtR1/uqWd9w1PFHWDq15RZPGwCxhb2nADdoQcxkKwq8S
-	PVdYiVy+3JyMbb5rWuOKgGR5UUFn7w2Wz6LW7rSPJUphmZYPwwIzTDMkLsVh/Q4WNR6r74VhM/UVU
-	KpJ1EP7vKlJfji/Q6vZ58WJseJCEdDBf6q36WcJt/6kLtHIxU9sffOjq6O6LKHng9ijpoqKxcr/Ee
-	OnwsNcmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fAPrkbK19s/j5Zx9BvuYAYuY534VPCFu5UMSEPN+FAE=; b=Hdp4FhVFA79e/9kw3ebQFkSpCQ
+	g0dggTm+64wcBbok0O4hWaH1yPr1h9Y/lha3Cq+7PNhIUSA4wiDf0cy3E/1KzcXyeAiqenkdn7QPJ
+	RwEyn4nG5//K+gkBotmTnSZ/o+Z6+IQPeyb/DrDM161hxdPAuJo3bZqNyKhXZJTObj/YNGI/K3QUs
+	tvb2AACZTXHaNsShZoigMXwi0KyZ76envU1yNahk0pCzCpbkANzLdzOo+h4NAWN4J89Qh+dhw29Jr
+	AeACvVjC5n9zvemedp1IdfG1llg8PIQ84mB3brsTWpZ7zcCRNO6CTUAx7bGIht8QWmAr6942BurZL
+	//sUyGXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQUAo-00GAug-1I;
-	Mon, 31 Jul 2023 14:47:02 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qQUF2-00GBVg-2z;
+	Mon, 31 Jul 2023 14:51:24 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQUAl-00GAtL-0P;
-	Mon, 31 Jul 2023 14:47:00 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 591416117A;
-	Mon, 31 Jul 2023 14:46:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FDC9C433C7;
-	Mon, 31 Jul 2023 14:46:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690814817;
-	bh=PqlYAMnZ+JfeuRXdftAEQ5hSDtUAYpYdfgTVGuT3sEo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TwBcAZY0NKbmJ5/K/4M5wt/q/Snl9MV8edbQpaIhW2ZSTntBQ5f77YrshzZRcfM+e
-	 +F4hKqaNsjLncLgFqOvZfW0HTRgOF62Qj+B0thqCeMAO1sC0HScYVmGQXi9sCw3tlE
-	 jNdt632W55A8xLfTP6hJe+b2z/6VkX4dsVXfN58691SetbITwgu8P2d5JsmecepkZz
-	 cbcedP4GmD28lPvBAMgkr2cFU2ZZcTFJtp2TaoRVBUJEdVolw+8kdcbqOCBPDUY1vj
-	 3eHpHAdbQdsOklnI7ZBoCcTqoia9YDAlfoAXiwlUaTTTfyYYY6J2NrnAvZbstdDn8M
-	 XABBzcl7BB2VQ==
-Date: Mon, 31 Jul 2023 15:46:49 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Jerome Brunet <jbrunet@baylibre.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Shengjiu Wang <shengjiu.wang@nxp.com>,
-	Rohit kumar <quic_rohkumar@quicinc.com>,
-	Cheng-Yi Chiang <cychiang@chromium.org>,
-	Rao Mandadapu <srivasam@codeaurora.org>,
-	Judy Hsiao <judyhsiao@chromium.org>,
-	Trevor Wu <trevor.wu@mediatek.com>,
-	Jonathan Bakker <xc-racer2@live.ca>, alsa-devel@alsa-project.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 01/12] ASoC: dt-bindings: amlogic,gx-sound-card: correct
- maxItems constraints
-Message-ID: <076d8a7d-8369-4e88-9997-d54b91b7920d@sirena.org.uk>
-References: <20230731094303.185067-1-krzysztof.kozlowski@linaro.org>
- <20230731094303.185067-2-krzysztof.kozlowski@linaro.org>
- <1jr0oowg6m.fsf@starbuckisacylon.baylibre.com>
+	id 1qQUEz-00GBUo-1d;
+	Mon, 31 Jul 2023 14:51:22 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-3fe078dcc3aso28077595e9.2;
+        Mon, 31 Jul 2023 07:51:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1690815079; x=1691419879;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fAPrkbK19s/j5Zx9BvuYAYuY534VPCFu5UMSEPN+FAE=;
+        b=ONefshDkN1jXMyg0wZ8QEmmAPXYcp3mA7Y4rLHbZ0B/sSm8FGewPffgqtdxTL/X1iT
+         AtnNYgJ+osFjNol3DgEwCoRMsRzED9sEjdYo+XNB6jA/vpUD06z0WPGVpFwk6veFO9OU
+         ibatrDvsrl3GB3m2uFuEY1sklgbBbV+M1ieeB/BLXlqQriOZZEEhJRnlTc6k3zry1pGI
+         8gT4pqVcCYAqeSjkliWxyT6pMGXOg8y1USl58BKNqUR4FGu0Ju4rskBjkX0SaL4zQ9IR
+         mABJjkmvgdQUqRb0sebjRifxOKcjyv4RmV6FD7aKFsKCahByl3oE/ln33nEvLUOnN/IR
+         cPxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1690815079; x=1691419879;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=fAPrkbK19s/j5Zx9BvuYAYuY534VPCFu5UMSEPN+FAE=;
+        b=czzHfEWzaKptAq/20DaR7a87k0LYt2+BGMDX+5xJ+zmG2FGCyki1iIj6Ab+uIE8ATF
+         LhVRfvzVFYz4Ea95cWuUPpn579zIVHKpz7pNy/dpe/tUP144ZkWlr/RC/DKoN39GJlSx
+         yheKwbAMVLf6pXkP6lndhTG4dEYA7aLjauXqpUW0zrRIXs6hIWKjN6Rzu7NX2tMuaIsw
+         gmIGH3vrh9TtwDEoYctCgwkVjO+Wx/XikcaC1pOAvjefKt44UkBvC2LtpNH221BFNvQS
+         WJMvGtJ7BPsoB9Veh7ydBFTDe9/2/a4/sHjSLRMdFTkY23emLyuqGjY7f8Fjk91843Lb
+         +euA==
+X-Gm-Message-State: ABy/qLbjDCCkPHhjKBM6ulOQ3VhXLGybWLWS6iayQEsaRHXRdLU2L6Ci
+	RA5/KzjGFECpq++p5ZelB4wxhwvR9ZF6Ck/iQzo=
+X-Google-Smtp-Source: APBJJlHp9CxGwet2vmvPctm3AruUc8MW3kWbH5+YX2xIIUpW5tevxLfL1O+U73H0pP1U9NLaYEZRubIxIr3M2m/csAQ=
+X-Received: by 2002:adf:e752:0:b0:314:3f98:a788 with SMTP id
+ c18-20020adfe752000000b003143f98a788mr58676wrn.7.1690815079341; Mon, 31 Jul
+ 2023 07:51:19 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="hTgg8DCib5JQmztO"
-Content-Disposition: inline
-In-Reply-To: <1jr0oowg6m.fsf@starbuckisacylon.baylibre.com>
-X-Cookie: Single tasking: Just Say No.
+References: <CAF6AEGtan-bQ7syKAwOKDY=044aKu26SLPQ0j1ieLqXNyQQS3g@mail.gmail.com>
+ <282e-64c7a800-77-46253680@38053863>
+In-Reply-To: <282e-64c7a800-77-46253680@38053863>
+From: Rob Clark <robdclark@gmail.com>
+Date: Mon, 31 Jul 2023 07:51:07 -0700
+Message-ID: <CAF6AEGufEzyOygPt6-tCbSC75GSD7sOB=FHE4nNGwPre6kHuOA@mail.gmail.com>
+Subject: Re: [PATCH v10] drm: Add initial ci/ subdirectory
+To: Helen Mae Koike Fornazier <helen.koike@collabora.com>
+Cc: Daniel Stone <daniel@fooishbar.org>, emma@anholt.net, linux-doc@vger.kernel.org, 
+	david.heidelberg@collabora.com, dri-devel@lists.freedesktop.org, 
+	linux-amlogic@lists.infradead.org, jbrunet@baylibre.com, robdclark@google.com, 
+	corbet@lwn.net, khilman@baylibre.com, sergi.blanch.torne@collabora.com, 
+	gustavo.padovan@collabora.com, linux-rockchip@lists.infradead.org, 
+	daniels@collabora.com, martin.blumenstingl@googlemail.com, mripard@kernel.org, 
+	anholt@google.com, linux-mediatek@lists.infradead.org, 
+	robclark@freedesktop.org, matthias.bgg@gmail.com, 
+	linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, 
+	neil.armstrong@linaro.org, guilherme.gallo@collabora.com, 
+	linux-kernel@vger.kernel.org, tzimmermann@suse.de, 
+	Dave Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_074659_248792_C0491AC6 
-X-CRM114-Status: GOOD (  15.52  )
+X-CRM114-CacheID: sfid-20230731_075121_542885_4A9940CE 
+X-CRM114-Status: GOOD (  31.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,40 +98,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Jul 31, 2023 at 5:25=E2=80=AFAM Helen Mae Koike Fornazier
+<helen.koike@collabora.com> wrote:
+>
+> Hello all,
+>
+> Thanks for your comments.
+>
+> On Friday, July 28, 2023 11:37 -03, Rob Clark <robdclark@gmail.com> wrote=
+:
+>
+> > On Thu, Jul 27, 2023 at 10:26=E2=80=AFPM Daniel Stone <daniel@fooishbar=
+.org> wrote:
+> > >
+> > > On Thu, 27 Jul 2023 at 22:47, Rob Clark <robdclark@gmail.com> wrote:
+> > > > > I did run into a bit of a chicken vs. egg problem with testing th=
+e "in
+> > > > > tree" version (compared to earlier versions which kept most of th=
+e yml
+> > > > > and scripts in a separate tree), is that it actually requires thi=
+s
+> > > > > commit to exist in the branch you want to run CI on.  My earlier
+> > > > > workaround of pulling the drm/ci commit in via
+> > > > > ${branchname}-external-fixes no longer works.
+> > > >
+> > > > After unwinding some more gitlab repo settings that were for the
+> > > > previous out-of-tree yml setup, I have this working.
+> > > >
+> > > > Tested-by: Rob Clark <robdclark@gmail.com>
+> > > > Acked-by: Rob Clark <robdclark@gmail.com>
+> > >
+> > > And it's also:
+> > > Acked-by: Daniel Stone <daniels@collabora.com>
+> > >
+> > > It's been back and forth a few times by now and reviewed pretty
+> > > heavily by all the people who are across the CI details. I think the
+> > > next step is to answer all the workflow questions by actually getting
+> > > it into trees and using it in anger. There was some discussion about
+> > > whether this should come in from drm-misc, or the core DRM tree, or a
+> > > completely separate pull, but I'm not sure what the conclusion was ..=
+.
+> > > maintainers, thoughts?
+> >
+> > I'd prefer a separate pull, so that I could merge it into msm-next as
+> > well without having to pull in all of drm-misc
+>
+> Should we create a drm-ci ?
 
---hTgg8DCib5JQmztO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I guess we can just wait and see how often it is that drm/ci updates
+need to be merged into multiple driver trees.  Hopefully most of the
+drm/ci changes are just expectation file updates which should go via
+driver tree.  Maybe i-g-t uprevs, if they have a lot of expectation
+changes would be something drivers would want to merge into their own
+tree?  But I guess we can see how it goes.
 
-On Mon, Jul 31, 2023 at 11:52:53AM +0200, Jerome Brunet wrote:
+> >
+> > Possibly some other driver trees would like to do similar?
+> >
+> > BR,
+> > -R
+>
+> Also, please wait for v11, I have a few adjustments to make as pointer by
+> some comments, and also regarding xfails list and how the configs should
+> be organized (unless if you are fine merging this version and I can submi=
+t
+> the adjustments later).
 
-> The upper limit of 8 might work now but is very likely to be wrong for
-> the next device to come.
+Ok
 
-> Is there way to correctly describe this "pair" contraint with DT schema ?
+BR,
+-R
 
-> If not, then I guess the most adequate solution is to drop minItems and
-> give no bound, like simple-card is doing for the same type of properties.
-
-> Same goes for the audio-widgets property
-
-Right, dropping minItems seems better than pulling a maxItems out of
-thin air.
-
---hTgg8DCib5JQmztO
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmTHyVgACgkQJNaLcl1U
-h9CwBgf9GKwK7KuMoeQQsc9Rl6Sc5X+7lsuk+17rjQr+cd3VJNRkXwkjGCYVxgeP
-X6JVUsaKujgeRg/hH9ICfqh0FPemGcEpBh23RVIalVSMA8XZZMGzqwsUw4HUinch
-cMfTWev5z6ga9lBwr0CclsNVXu/JYkQXKWPBk3vIYH6sTGwblalUI5AbB6WlwH3F
-uzJ7ejviucxNzfnFYheFgckbVJ2MIM+IC4WESBp+Cychr+veWiyr9bihzgSe/9f5
-dwEhwsZzQAXdxL6eh5P/shLLT2qHgRFiDfKL101YuzqFSze8ZWSsZ/7Xd0GEkzQa
-OF73R/jk4LKgIilX+yNwWW545Ynefw==
-=iYq3
------END PGP SIGNATURE-----
-
---hTgg8DCib5JQmztO--
+> Thanks,
+> Helen
+>
 
