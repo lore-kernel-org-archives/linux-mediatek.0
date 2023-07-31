@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59D61C001DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 10:27:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97991C001DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 10:32:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L215z5Fect0VtOXmSZcdGNlqzJJcmNsJxwDP7kf6RM0=; b=CRr1eqVM6PupXjTeLOs92a8rNi
-	syM+wQuYYA0IHdGHYAm+R2t98VycbaglrZXxKuaLSbr4Pk/ashojmmHsWyc1L5LnV3MOD0DxBqT5K
-	Hy7Gh2cYzitAYu41INIAZUI7YCxR4aYy+CuTpNYIelNhYMYXnsmYJkAfVYGRHw+JAG13CggxBklEg
-	Tq8uNIUh16tR96zJCW9HAs+98iqyOBSp5y/KrcLv8ZxsM7jsY4NQXt3fGrb9SVSQzvcjF603hVC2Z
-	eGYdr8DiWpBaoEJsHJOdEf7e6HSGBz4dnCPvx7CrUPS/eaL46HOmypQgHIJE8QgW110J/cmNY9WmG
-	gS8Oh8BA==;
+	bh=DwzIp0LLoc7KvPSlJW1vCbXPdFrCMBM0DEg+rL24Ga8=; b=Qy1vwbSvuv/Ad/gwt3m+e30pU7
+	gmRqBpuYxpSKieefvZpMf9E+AkBkffsiNLvKLjZIj3K3fatWQODMNpx5shStiiM3EsJhxajiXMOpq
+	1jn+G3MNUwPLhFpaTq1Gzz6jtDB2jkkYfGdJx8eGqg3pRobGn/xGAkGEv4uljG6NLQ/Go8stXAjXO
+	KOQoxjzFZUx1L0Jz1YXsM8bR7bh7iu/BIgV5XUC9ycUvAU+ue0BA6WH8fd8vgeCQ2x+DpslQjtO8k
+	UW0VzAaW0mfuQlIjO93XestcsnlV6DGyuE/JaKQEzKe8P7GdTI7eqsLhRFv8ktgm7VEoR9EEZfduv
+	O3AGj75Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQ7g-00F1au-1G;
-	Mon, 31 Jul 2023 10:27:32 +0000
+	id 1qQQCG-00F4R9-26;
+	Mon, 31 Jul 2023 10:32:16 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQQ7Y-00F1Rh-37;
-	Mon, 31 Jul 2023 10:27:26 +0000
+	id 1qQQCD-00F4Nm-1a;
+	Mon, 31 Jul 2023 10:32:14 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0ED246606FCD;
-	Mon, 31 Jul 2023 11:27:20 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7F03E6606FCD;
+	Mon, 31 Jul 2023 11:32:11 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1690799240;
-	bh=0EMt158aYdiMc6fR078Q1lPbm9qwFR7NqEIcGeRMPp8=;
+	s=mail; t=1690799532;
+	bh=xoosHj1qmc0o7HoZ4wSQyUt8HIP0cBsbyMoDAT5q+g4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=M6liAR1t331PIgPv5Jfnfc7l3w/Mxqzgh9SkfQTviYfRec/qGwATNyb4HbNjvz6Nn
-	 dJV5bmo6PXe//0QIjBbfHVNLHPQuEEE4ZK+LTOrJ44uXnZjpuM20WYObHn/bhFEmNB
-	 2Q2vi3rHd1B7Oft9U3no49ft1hnU+Zx8gEofzos+w2H8h23Sx8w9HynUO11GboS+LN
-	 HQDW6/Ik7hmISCrK4O7WWDQOBnP9UDg4Pd8HqcljRjQ7CAiSbwhdfkqpZ46OXJV//S
-	 deTmBA/iKR12dPeZUkTt3O2AhTIGN235vd54p1aspCSJNe4LDwGLBJXnOqHfGtkNfG
-	 BtFdTcXzoCvxw==
-Message-ID: <4e0bcb82-03f7-66de-19ec-9cc23f95ddad@collabora.com>
-Date: Mon, 31 Jul 2023 12:27:16 +0200
+	b=MstCsEWNQOdrkXbFZ5s2Yku4HVG5NMTLMlJFkDIwHkXuB3bRjyqFsOU/lvrIP+tNO
+	 D+LeQNZGY/dEsFzS3X92INL9/RxUdvq/P6+21BbpTQt7+9YZIKdhYhfxf0tO1Nbp0l
+	 rMh3qvkWVY6M21t6vnLKVwQRVe44U/JoGJbDDhiuNyYr9tsABBldGVspICjYJoR5lZ
+	 eo9rSumxAL2/EuGAVnZWjbc8E2iU7Wm9atwgmU9sCKC24XLEhfIIzql9X3+6VKg9lg
+	 v9OUuHkWnQ8ArqQ3FLOGVaVrDCsYAOOGGlt2iwvXmJtKU2LWe1/uQLMNv8s+dqj/Z9
+	 FqDVnuC1oyDGQ==
+Message-ID: <cae53693-80e9-2dcb-e222-511eb30ef74c@collabora.com>
+Date: Mon, 31 Jul 2023 12:32:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH RESEND v6 09/11] drm/mediatek: gamma: Add support for
- 12-bit LUT and MT8195
-To: Alexandre Mergnat <amergnat@baylibre.com>, chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
- matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, wenst@chromium.org,
- kernel@collabora.com, ehristev@collabora.com,
- "Jason-JH . Lin" <jason-jh.lin@mediatek.com>
-References: <20230727094633.22505-1-angelogioacchino.delregno@collabora.com>
- <20230727094633.22505-10-angelogioacchino.delregno@collabora.com>
- <ec66e067-642e-1512-3e4b-b51065ccc75d@baylibre.com>
- <8b9769f3-8a7c-3607-ca9a-09443cfbc9d9@collabora.com>
- <0b9d62d0-5958-2b0f-03d7-9e91e026c33d@baylibre.com>
+Subject: Re: [PATCH] dt-bindings: net: mediatek,net: fixup MAC binding
 Content-Language: en-US
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ "David S . Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Felix Fietkau <nbd@nbd.name>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>
+References: <20230729111045.1779-1-zajec5@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <0b9d62d0-5958-2b0f-03d7-9e91e026c33d@baylibre.com>
+In-Reply-To: <20230729111045.1779-1-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_032725_301924_7B0E033F 
-X-CRM114-Status: GOOD (  29.05  )
+X-CRM114-CacheID: sfid-20230731_033213_667636_BDF8A8CC 
+X-CRM114-Status: UNSURE (   9.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,122 +85,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/07/23 14:58, Alexandre Mergnat ha scritto:
-> Hi Angelo
+Il 29/07/23 13:10, Rafał Miłecki ha scritto:
+> From: Rafał Miłecki <rafal@milecki.pl>
 > 
-> On 27/07/2023 15:06, AngeloGioacchino Del Regno wrote:
->>>> +/* For 10 bit LUT layout, R/G/B are in the same register */
->>>>   #define DISP_GAMMA_LUT_10BIT_R            GENMASK(29, 20)
->>>>   #define DISP_GAMMA_LUT_10BIT_G            GENMASK(19, 10)
->>>>   #define DISP_GAMMA_LUT_10BIT_B            GENMASK(9, 0)
->>>> +/* For 12 bit LUT layout, R/G are in LUT, B is in LUT1 */
->>>
->>> As I understood from the application processor registers (v0.4), R/G are in LUT, 
->>> B is in LUT1 for 10bit and 12bit for MT8195. Can you check please to be sure ?
->>>
->>
->> That's right, but here I'm implying that 10-bit LUT is only for older SoCs, and
->> all of them have got the same register layout with one LUT register for R, G, B,
->> while all the new SoCs, which have got 12-bits LUT support, have got the new
->> register layout with two LUT registers (and multiple banks).
->> Infact, the MT8195 SoC was added here with 12-bits LUT support only (as the LUT
->> parameters extraction is easily handled by the drm_color_lut_extract() function).
->>
->> The alternative would've been to add two compatibles, like
->> "mediatek,mt8195-disp-gamma-10bits" and "mediatek,mt8195-disp-gamma-12bits",
->> or a boolean property like "mediatek,lut-12bits" which would appear literally
->> everywhere starting from a certain point in time (since there's no reason to
->> use 10-bits LUT on MT8195, that starts now!).
->>
->> Even then, consider the complication in code, where mtk_gamma_set_common()
->> would have to handle:
->> - 10-bits, layout A
->> - 10-bits, layout B -> but fallback to layout A if this is AAL
->> - 12-bits layout
->>
->> is_aal = !(gamma && gamma->data);
->>
->> for_each_bank()
->> {
->>      if (num_lut_banks > 1) write_num_bank();
->>
->>      for (i = 0; i < lut_bank_size; i++) {
->>          .......
->>
->>          if (!lut_diff || (i % 2 == 0)) {
->>              if (lut_bits == 12 || (lut_bits == 10 && layout_b)) {
->>                  ... setup word[0],[1] ...
->>              } else if (layout_b && !is_aal) {
->>                  ...setup word[0],[1]...
->>              } else {
->>                  ...setup word[0]
->>              }
->>          } else {
->>               ^^^ almost repeat the same ^^^
->>          }
->>          writel(word[0], (...));
->>          if (lut_bits == 12 || (lut_bits == 10 && layout_b) && !is_aal)
->>              writel(word[i] (....));
->>      }
->> }
->>
->> probe() {
->>      if (of_property_read_bool(dev->of_node, "mediatek,lut-12bits") ||
->>          data->supports_only_12bits)
->>          priv->lut_bits = 12;
->>      else
->>          priv->lut_bits = 10;
->> }
->>
->> ...at least, that's the implementation that I would do to solve your concern,
->> which isn't *too bad*, but still, a big question arises here...
->>
->>
->> Why should we care about supporting *both* 10-bit and 12-bit Gamma LUTs on
->> the *same* SoC?
->>
->>
->> A 12-bit LUT gives us more precision and there's no penalty if we want to
->> convert a 10-bit LUT to a 12-bits one, as we're simply "ignoring" the value
->> of two bits per component (no expensive calculation involved)...
->>
->> Is there anything that I'm underestimating here?
+> 1. Use unevaluatedProperties
+> It's needed to allow ethernet-controller.yaml properties work correctly.
 > 
-> Thanks for you explanation !
-> I think your choice is not bad, but it's not clear that MT8195 10 bit LUT isn't 
-> supported at all.
-> So, IMHO, the first solution is to support it like you explained it above, and the 
-> second solution is to add comment somewhere to clarify that driver doesn't support 
-> 10 bit LUT if the SoC is able to use 12 bit LUT, like MT8195 10 bit.
+> 2. Drop unneeded phy-handle/phy-mode
 > 
-> Is that relevant ? :D
+> 3. Don't require phy-handle
+> Some SoCs may use fixed link.
 > 
+> For in-kernel MT7621 DTS files this fixes following errors:
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e100000: mac@0: 'fixed-link' does not match any of the regexes: 'pinctrl-[0-9]+'
+>          From schema: Documentation/devicetree/bindings/net/mediatek,net.yaml
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e100000: mac@0: 'phy-handle' is a required property
+>          From schema: Documentation/devicetree/bindings/net/mediatek,net.yaml
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e100000: mac@1: 'fixed-link' does not match any of the regexes: 'pinctrl-[0-9]+'
+>          From schema: Documentation/devicetree/bindings/net/mediatek,net.yaml
+> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e100000: mac@1: 'phy-handle' is a required property
+>          From schema: Documentation/devicetree/bindings/net/mediatek,net.yaml
+> 
+> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 
-Even though the same as whhat I'm doing here was already done before, as the
-current 10-bits LUT support ignores 9-bits LUT support, I can add a comment to
-the code:
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-/*
-  * SoCs supporting 12-bits LUTs are using a new register layout that does
-  * always support (by HW) both 12-bits and 10-bits LUT but, on those, we
-  * ignore the support for 10-bits in this driver and always use 12-bits.
-  *
-  * Summarizing:
-  * - SoC HW support 9/10-bits LUT only
-  *   - Old register layout
-  *     - 10-bits LUT supported
-  *     - 9-bits LUT not supported
-  * - SoC HW support both 10/12bits LUT
-  *   - New register layout
-  *    - 12-bits LUT supported
-  *    - 10-its LUT not supported
-  */
 
-Where the SoCs supporting 9-bits and 10-bits: mt6795, 8173, 8192,others and
-12-bits are 8195, 8186, others.. of course.
-
-Would that work for you?
-
-Regards,
-Angelo
 
