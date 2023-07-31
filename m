@@ -4,65 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38CF1C00528
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 14:43:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6B63C001DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 14:47:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8nJZCwRy/Xq1+6e+ehaY8LCMyK6sxC6BgnAqPc0CKoo=; b=s7lZ8a+GWshWHMFZNylm9Lqny3
-	+MmWjLIVVun9ogaYBqYWGtJ/AZs9yzgPcp+kCeYhe1Qptzy1m3+BXzhI3242fCT2MfCqPSO/+Xz8f
-	cHuvBxpluB/2JAQ4hcLUJH9ZHTRIWjt52xTh5v6DLlEESMyynDl8Xdn5dSj4G/CujVFOeaIQiXJEA
-	QapY6xRuAmSK4PHOoP5Zg/dd51WKk/8TE1efh44M0UUqd4Ty5Fbe8+GD86mfAe/OOyVeT95tl8ZtC
-	viJZjusQuPnujSg+MswsDsEVc1T0ZUWW8Apfa1l7yCoZi+S8TqeCroGWprvglnaR2ES/mIvt+5ENZ
-	5OTV6nWQ==;
+	bh=PqlYAMnZ+JfeuRXdftAEQ5hSDtUAYpYdfgTVGuT3sEo=; b=RXHTo3haZqrpXud9fLXfPtmiMR
+	UXbDa8gEsfEhHhnT7uxU9uQcZwCnsKm6YCKC3xbDIiScfnO9DA9Pq8LPpqSERhbvPh13BaG6+WwZK
+	U/oEYjqIp5nO5ZnEM7/DwprZ5Dp7Gygp7gtR1/uqWd9w1PFHWDq15RZPGwCxhb2nADdoQcxkKwq8S
+	PVdYiVy+3JyMbb5rWuOKgGR5UUFn7w2Wz6LW7rSPJUphmZYPwwIzTDMkLsVh/Q4WNR6r74VhM/UVU
+	KpJ1EP7vKlJfji/Q6vZ58WJseJCEdDBf6q36WcJt/6kLtHIxU9sffOjq6O6LKHng9ijpoqKxcr/Ee
+	OnwsNcmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQU7N-00GAK9-0y;
-	Mon, 31 Jul 2023 14:43:29 +0000
+	id 1qQUAo-00GAug-1I;
+	Mon, 31 Jul 2023 14:47:02 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQU7K-00GAJK-0C;
-	Mon, 31 Jul 2023 14:43:27 +0000
+	id 1qQUAl-00GAtL-0P;
+	Mon, 31 Jul 2023 14:47:00 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 830046117B;
-	Mon, 31 Jul 2023 14:43:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D868C433CB;
-	Mon, 31 Jul 2023 14:43:22 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 591416117A;
+	Mon, 31 Jul 2023 14:46:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FDC9C433C7;
+	Mon, 31 Jul 2023 14:46:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690814605;
-	bh=ZZP/+vM0qz6EaB+8dhpI2Dpi6RMKi1QnNhcTct6HcJc=;
+	s=k20201202; t=1690814817;
+	bh=PqlYAMnZ+JfeuRXdftAEQ5hSDtUAYpYdfgTVGuT3sEo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gcf81MxHKfKQ6cb1/4LQVxpQJQBDyR9UMg13U+PabS/04OLLUefmHt1dU84ssOZZ9
-	 c0d2AZj+FB2qTva5iWdNN2E2AnFwsvtEv2Ks3VIQVYigWOnFqi8McciDtMf9PLGZ6M
-	 E7L790xhMnUuSiTkRqelk95M70e9aKxn9e36LUlS8rJrhYMm0ZfWUxDKfAz65ycs4a
-	 Yh9WU014M9UDp6ZN2WSStBAcAdiA4qFE270JVmBfnzxtgCdX8k3+ni8PhdGty4vieM
-	 iYEXJaLGPnQkoKYur2AJgZnuT44dfJ5BZ1fdXMvd/eCtycaMLqAzSXuqnMchXyUc2W
-	 prELTN76RjOsw==
-Received: (nullmailer pid 2936636 invoked by uid 1000);
-	Mon, 31 Jul 2023 14:43:21 -0000
-Date: Mon, 31 Jul 2023 08:43:21 -0600
-From: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: linux-arm-kernel@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Shengjiu Wang <shengjiu.wang@nxp.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jerome Brunet <jbrunet@baylibre.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Cheng-Yi Chiang <cychiang@chromium.org>, Takashi Iwai <tiwai@suse.com>, Rohit kumar <quic_rohkumar@quicinc.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, Judy Hsiao <judyhsiao@chromium.org>, Jonathan Bakker <xc-racer2@live.ca>, Fabio Estevam <festevam@gmail.com>, Mark Brown <broonie@kernel.org>, alsa-devel@alsa-project.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, linux-mediatek@lists.infradead.org, Trevor Wu <trevor.wu@mediatek.com>, Jaroslav Kysela <perex@perex.cz>, NXP Linux Team <linux-imx@nxp.com>, Shawn Guo <shawnguo@kernel.org>, 
- Rao Mandadapu <srivasam@codeaurora.org>, Pengutronix Kernel Team <kernel@pengutronix.de>
-Subject: Re: [PATCH 07/12] ASoC: dt-bindings: samsung,tm2: use common sound
- card
-Message-ID: <169081460128.2936591.465135796589060685.robh@kernel.org>
+	b=TwBcAZY0NKbmJ5/K/4M5wt/q/Snl9MV8edbQpaIhW2ZSTntBQ5f77YrshzZRcfM+e
+	 +F4hKqaNsjLncLgFqOvZfW0HTRgOF62Qj+B0thqCeMAO1sC0HScYVmGQXi9sCw3tlE
+	 jNdt632W55A8xLfTP6hJe+b2z/6VkX4dsVXfN58691SetbITwgu8P2d5JsmecepkZz
+	 cbcedP4GmD28lPvBAMgkr2cFU2ZZcTFJtp2TaoRVBUJEdVolw+8kdcbqOCBPDUY1vj
+	 3eHpHAdbQdsOklnI7ZBoCcTqoia9YDAlfoAXiwlUaTTTfyYYY6J2NrnAvZbstdDn8M
+	 XABBzcl7BB2VQ==
+Date: Mon, 31 Jul 2023 15:46:49 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Jerome Brunet <jbrunet@baylibre.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Shengjiu Wang <shengjiu.wang@nxp.com>,
+	Rohit kumar <quic_rohkumar@quicinc.com>,
+	Cheng-Yi Chiang <cychiang@chromium.org>,
+	Rao Mandadapu <srivasam@codeaurora.org>,
+	Judy Hsiao <judyhsiao@chromium.org>,
+	Trevor Wu <trevor.wu@mediatek.com>,
+	Jonathan Bakker <xc-racer2@live.ca>, alsa-devel@alsa-project.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 01/12] ASoC: dt-bindings: amlogic,gx-sound-card: correct
+ maxItems constraints
+Message-ID: <076d8a7d-8369-4e88-9997-d54b91b7920d@sirena.org.uk>
 References: <20230731094303.185067-1-krzysztof.kozlowski@linaro.org>
- <20230731094303.185067-8-krzysztof.kozlowski@linaro.org>
+ <20230731094303.185067-2-krzysztof.kozlowski@linaro.org>
+ <1jr0oowg6m.fsf@starbuckisacylon.baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="hTgg8DCib5JQmztO"
 Content-Disposition: inline
-In-Reply-To: <20230731094303.185067-8-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <1jr0oowg6m.fsf@starbuckisacylon.baylibre.com>
+X-Cookie: Single tasking: Just Say No.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_074326_139351_8D35F770 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20230731_074659_248792_C0491AC6 
+X-CRM114-Status: GOOD (  15.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,18 +100,39 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 31 Jul 2023 11:42:58 +0200, Krzysztof Kozlowski wrote:
-> Reference the common sound card properties and deprecate the
-> custom "samsung,audio-routing" in favor of generic one.  This allows to
-> remove "model" property and make the binding closer to other sounds
-> cards.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  .../devicetree/bindings/sound/samsung,tm2.yaml   | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
-> 
+--hTgg8DCib5JQmztO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+On Mon, Jul 31, 2023 at 11:52:53AM +0200, Jerome Brunet wrote:
 
+> The upper limit of 8 might work now but is very likely to be wrong for
+> the next device to come.
+
+> Is there way to correctly describe this "pair" contraint with DT schema ?
+
+> If not, then I guess the most adequate solution is to drop minItems and
+> give no bound, like simple-card is doing for the same type of properties.
+
+> Same goes for the audio-widgets property
+
+Right, dropping minItems seems better than pulling a maxItems out of
+thin air.
+
+--hTgg8DCib5JQmztO
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmTHyVgACgkQJNaLcl1U
+h9CwBgf9GKwK7KuMoeQQsc9Rl6Sc5X+7lsuk+17rjQr+cd3VJNRkXwkjGCYVxgeP
+X6JVUsaKujgeRg/hH9ICfqh0FPemGcEpBh23RVIalVSMA8XZZMGzqwsUw4HUinch
+cMfTWev5z6ga9lBwr0CclsNVXu/JYkQXKWPBk3vIYH6sTGwblalUI5AbB6WlwH3F
+uzJ7ejviucxNzfnFYheFgckbVJ2MIM+IC4WESBp+Cychr+veWiyr9bihzgSe/9f5
+dwEhwsZzQAXdxL6eh5P/shLLT2qHgRFiDfKL101YuzqFSze8ZWSsZ/7Xd0GEkzQa
+OF73R/jk4LKgIilX+yNwWW545Ynefw==
+=iYq3
+-----END PGP SIGNATURE-----
+
+--hTgg8DCib5JQmztO--
 
