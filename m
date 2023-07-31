@@ -4,78 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 322A1C001DC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 12:06:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8DFCC001DC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Jul 2023 12:25:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=C6CrSBdjoAyzVpB6u/w8qzO48wNDLvceWe2rRQBmWzY=; b=aLO4YUTL6Kjtx0MfDajiU2HzIf
-	qrkRkjD7LoSztjpvvh+KWQlqmEffqo3ihggRw0f28ijda8V4FcjYmV/8Zyy4Qjy/OA2ZQQDvhxlha
-	W+7EKT880YeCoauR7emEcEm3wD3P5U8jMu0sDUNf/qMDBkaEg8j8h2i2Eg0shvBdG8Mw/TxCTgTtK
-	oQleeE+XxTEP33ldkSiiPg1eJdYTWa0KUE9XDwnLwibRpAQ8jG3FTiUffass5zH5vGiYsvy1jB/jp
-	0ztY6b9p3SDic/KelOIpSs67l2rp3uUtwr4p4D9oLtpPc4B6Up5rtAegt3cRmWMZDaTjZ2Lp6EEys
-	0y1qlQlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Subject:Message-ID:MIME-Version:To:Cc:Date:Content-Type:In-Reply-To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=xlqjbZD8Olr9Rt4iJaano3yCaOvodCX1R2mTY02oa7c=; b=NCF8KnHT97J8dJtEfFceV2A8ZD
+	mwTvREITeZmf6doGLEKwuq30BpD+h09zvahzeXM0efnCjHDkHaSd5vAyAFtN6uGPiaq+TzwQTRF1L
+	P7l0AsdtpNhZqEzCW8ZjsdcJ+AeKcwFRsBb7IFQs3352hDb191EU1CsfbcnHy4xIStIYqn8uptK2u
+	BuPzBHitMzahLqFxduf6EBGCerTf/q1PPY12BojzVs8KPh9GzcL7Id0JfSERckzbZQ39dklxjLNZj
+	Agxw77wK967AmN+1hv0pREL6ytaO0bf/CTT049SMu02XYZpkQlxOJrZD2YZVk5xQpymsXPOx7GJ9u
+	57DX/bUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQRfT-00FVKe-0s;
-	Mon, 31 Jul 2023 12:06:31 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qQRxa-00FYvv-2x;
+	Mon, 31 Jul 2023 12:25:14 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQRfR-00FVIi-19;
-	Mon, 31 Jul 2023 12:06:30 +0000
-X-UUID: a962576a2f9a11ee912e1518a6540028-20230731
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=C6CrSBdjoAyzVpB6u/w8qzO48wNDLvceWe2rRQBmWzY=;
-	b=dkhSndMqGlZ9VYhEzuPygaPnNLY9kuMGzrE1CW1EF5p95rcnNJCh3NNOPBMSAulzKmf6KTd30rHaRdqPE7z9Di4S6NqY9EuQsAue8GtsE+tZI3xErMmWtZWu9awXTNE8rGnAhFU/j7xLogUg32HLadMU65hG/BzHrDtnSVY4PUw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.30,REQID:e8b40d97-946a-475a-afd7-3e42577b9c17,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACT
-	ION:release,TS:75
-X-CID-INFO: VERSION:1.1.30,REQID:e8b40d97-946a-475a-afd7-3e42577b9c17,IP:0,URL
-	:0,TC:0,Content:-25,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACT
-	ION:quarantine,TS:75
-X-CID-META: VersionHash:1fcc6f8,CLOUDID:be9cfbb3-a467-4aa9-9e04-f584452e3794,B
-	ulkID:230731200549UTEE0GFU,BulkQuantity:1,Recheck:0,SF:48|38|29|28|17|19,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,
-	TF_CID_SPAM_ASC
-X-UUID: a962576a2f9a11ee912e1518a6540028-20230731
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <mark-pk.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1186772968; Mon, 31 Jul 2023 05:06:20 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 31 Jul 2023 20:05:47 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 31 Jul 2023 20:05:47 +0800
-From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-To: Andrey Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko
-	<glider@google.com>, Andrey Konovalov <andreyknvl@gmail.com>, Dmitry Vyukov
-	<dvyukov@google.com>, Vincenzo Frascino <vincenzo.frascino@arm.com>, Russell
- King <linux@armlinux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <yj.chiang@mediatek.com>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
-	<kasan-dev@googlegroups.com>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] arm: kasan: Use memblock_alloc_try_nid_raw for shadow page allocation
-Date: Mon, 31 Jul 2023 20:05:36 +0800
-Message-ID: <20230731120537.13152-1-mark-pk.tsai@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1qQRxX-00FYuS-1b;
+	Mon, 31 Jul 2023 12:25:12 +0000
+Received: from hamburger.collabora.co.uk (hamburger.collabora.co.uk [IPv6:2a01:4f8:1c1c:f269::1])
+	by madras.collabora.co.uk (Postfix) with ESMTP id 17F5166020AE;
+	Mon, 31 Jul 2023 13:25:06 +0100 (BST)
+From: "Helen Mae Koike Fornazier" <helen.koike@collabora.com>
+In-Reply-To: <CAF6AEGtan-bQ7syKAwOKDY=044aKu26SLPQ0j1ieLqXNyQQS3g@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+X-Forward: 127.0.0.1
+Date: Mon, 31 Jul 2023 13:25:05 +0100
+Cc: "Daniel Stone" <daniel@fooishbar.org>, emma@anholt.net, linux-doc@vger.kernel.org, david.heidelberg@collabora.com, dri-devel@lists.freedesktop.org, linux-amlogic@lists.infradead.org, jbrunet@baylibre.com, robdclark@google.com, corbet@lwn.net, khilman@baylibre.com, sergi.blanch.torne@collabora.com, gustavo.padovan@collabora.com, linux-rockchip@lists.infradead.org, daniels@collabora.com, martin.blumenstingl@googlemail.com, mripard@kernel.org, anholt@google.com, linux-mediatek@lists.infradead.org, robclark@freedesktop.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org, guilherme.gallo@collabora.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, "Dave Airlie" <airlied@gmail.com>, "Daniel Vetter" <daniel@ffwll.ch>
+To: "Rob Clark" <robdclark@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Message-ID: <282e-64c7a800-77-46253680@38053863>
+Subject: =?utf-8?q?Re=3A?= [PATCH v10] =?utf-8?q?drm=3A?= Add initial ci/ 
+ subdirectory
+User-Agent: SOGoMail 5.8.4
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_050629_397363_994AB01E 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20230731_052511_687207_C9B4F5F8 
+X-CRM114-Status: GOOD (  21.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,47 +59,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-kasan_pte_populate fill KASAN_SHADOW_INIT in the newly
-allocated shadow page, so it's unnecessary to
-use memblock_alloc_try_nid, which always zero the
-new allocated memory.
+Hello all,
 
-Use memblock_alloc_try_nid_raw instead of
-memblock_alloc_try_nid like arm64 does which
-can make kasan init faster.
+Thanks for your comments.
 
-Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
----
- arch/arm/mm/kasan_init.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+On Friday, July 28, 2023 11:37 -03, Rob Clark <robdclark@gmail.com> wro=
+te:
 
-diff --git a/arch/arm/mm/kasan_init.c b/arch/arm/mm/kasan_init.c
-index 24d71b5db62d..111d4f703136 100644
---- a/arch/arm/mm/kasan_init.c
-+++ b/arch/arm/mm/kasan_init.c
-@@ -28,6 +28,12 @@ static pgd_t tmp_pgd_table[PTRS_PER_PGD] __initdata __aligned(PGD_SIZE);
- 
- pmd_t tmp_pmd_table[PTRS_PER_PMD] __page_aligned_bss;
- 
-+static __init void *kasan_alloc_block_raw(size_t size)
-+{
-+	return memblock_alloc_try_nid_raw(size, size, __pa(MAX_DMA_ADDRESS),
-+				      MEMBLOCK_ALLOC_NOLEAKTRACE, NUMA_NO_NODE);
-+}
-+
- static __init void *kasan_alloc_block(size_t size)
- {
- 	return memblock_alloc_try_nid(size, size, __pa(MAX_DMA_ADDRESS),
-@@ -50,7 +56,7 @@ static void __init kasan_pte_populate(pmd_t *pmdp, unsigned long addr,
- 			if (!pte_none(READ_ONCE(*ptep)))
- 				continue;
- 
--			p = kasan_alloc_block(PAGE_SIZE);
-+			p = kasan_alloc_block_raw(PAGE_SIZE);
- 			if (!p) {
- 				panic("%s failed to allocate shadow page for address 0x%lx\n",
- 				      __func__, addr);
--- 
-2.18.0
+> On Thu, Jul 27, 2023 at 10:26=E2=80=AFPM Daniel Stone <daniel@fooishb=
+ar.org> wrote:
+> >
+> > On Thu, 27 Jul 2023 at 22:47, Rob Clark <robdclark@gmail.com> wrote=
+:
+> > > > I did run into a bit of a chicken vs. egg problem with testing =
+the "in
+> > > > tree" version (compared to earlier versions which kept most of =
+the yml
+> > > > and scripts in a separate tree), is that it actually requires t=
+his
+> > > > commit to exist in the branch you want to run CI on.  My earlie=
+r
+> > > > workaround of pulling the drm/ci commit in via
+> > > > ${branchname}-external-fixes no longer works.
+> > >
+> > > After unwinding some more gitlab repo settings that were for the
+> > > previous out-of-tree yml setup, I have this working.
+> > >
+> > > Tested-by: Rob Clark <robdclark@gmail.com>
+> > > Acked-by: Rob Clark <robdclark@gmail.com>
+> >
+> > And it's also:
+> > Acked-by: Daniel Stone <daniels@collabora.com>
+> >
+> > It's been back and forth a few times by now and reviewed pretty
+> > heavily by all the people who are across the CI details. I think th=
+e
+> > next step is to answer all the workflow questions by actually getti=
+ng
+> > it into trees and using it in anger. There was some discussion abou=
+t
+> > whether this should come in from drm-misc, or the core DRM tree, or=
+ a
+> > completely separate pull, but I'm not sure what the conclusion was =
+...
+> > maintainers, thoughts?
+>=20
+> I'd prefer a separate pull, so that I could merge it into msm-next as
+> well without having to pull in all of drm-misc
+
+Should we create a drm-ci ?
+
+>=20
+> Possibly some other driver trees would like to do similar?
+>=20
+> BR,
+> -R
+
+Also, please wait for v11, I have a few adjustments to make as pointer =
+by
+some comments, and also regarding xfails list and how the configs shoul=
+d
+be organized (unless if you are fine merging this version and I can sub=
+mit
+the adjustments later).
+
+Thanks,
+Helen
 
 
