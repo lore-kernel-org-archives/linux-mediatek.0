@@ -4,84 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 180DBC001DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 14:35:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2949BC001E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 14:35:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lJtekU7iYNArAtsU7VeTyVGW5swpEORD91LFWRVt94s=; b=Fv32kEppIx0weKuwmZ2+qa/wYz
-	VoNF9Xckejha5fOJxqtuj4zLN8ou+xHx00Tzc2awyz7BWmPYq2dbv3o7nN05ouqkOfkE3fuSWLGCi
-	1n12VoKvYe/FT70Yutjah1zQosaDVKQ7tz3FRCJDIuS6UQIPpMm7atpBxxAkerrjkMKdcp1ufTtL2
-	79ywGYzv8mneE02myykpBirA4jQDiSuH/nq10AYxTtMNmjUDu882bqMARhhmz2ye2gZ+aY2UPSyhK
-	jF5u9ALGcq0kRRteF90+yCF4WC5CS3G6ct0N1LdOnBMGC4ecwycjw9deOfkXMlUMk0enYwf4Cn6ZT
-	cRPKMLXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GtO7l74MiDOCASn4v8QtrTO68migCuNl/oaqN3ri9ic=; b=t8qNmEw55rR9yCvRpwPKKSm6QE
+	J8VzTVzhGcdU6AUsxli44TCCPXS2Ci3wgdMGNfm6X++Hgr9U1p0k5Z2iW12U3ctWzj5o69Erm4Pje
+	1xapHCGQky47YFdgH3Q66qcN8lAxz59Ri047LJX+3sF/rYfLsA0vfJXP1v+/Gp8h19MmSgzZgw0Fc
+	lwudU4dlzF4d4aJ07bYzWqlc1oobYvNEaUCG2ne9GiAK9BuOQWyDhDsXrXOFIMD08ZELW4ghYv5qS
+	ynUxKYCgYBz2wLhVTRuuZ0I0qiQrV5LiIWoGI8rUGz8K2atbCqnztoElu4OKXqkHfAcx9VjyxsSnz
+	K6ZTIMzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQqSz-002btC-0N;
-	Tue, 01 Aug 2023 14:35:17 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1qQqTW-002c26-0d;
+	Tue, 01 Aug 2023 14:35:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQqSw-002brq-1Z;
-	Tue, 01 Aug 2023 14:35:15 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-1bba54f7eefso43943955ad.1;
-        Tue, 01 Aug 2023 07:35:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1690900509; x=1691505309;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:from:to:cc:subject:date:message-id:reply-to;
-        bh=lJtekU7iYNArAtsU7VeTyVGW5swpEORD91LFWRVt94s=;
-        b=ryLp7WXFaj2drpBSmRl2LGHfP927CcAO+W2SGZwWnslyTyLf6tuJ/FkYPv5nc8KInX
-         SM2WXe3D8HC44OIadFt9xgwYvFt+15NN0MrPsuTsgAkWdxTr/ifcVIgq5cQucF72kvf+
-         FR5DT79DLc3ADHmwlJ6ycL0RRHQ9ZdAAdXjNY0MLKVM2Ft0ajcuHwGNAofZqHJgrh/+n
-         teYboJ2OwprRH0/BGeOG3SJAkzkx4jIz+QKpgbthSk1SDbNyBVvw0Vxo3XdpP2Ly9WM3
-         iwsvofjn4JPjUgaE3w6KRRWfKpETgKX6B7Hk6pf3sXyt4MX+HO8NDc5E5cqapx5sKXCi
-         EzkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690900509; x=1691505309;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=lJtekU7iYNArAtsU7VeTyVGW5swpEORD91LFWRVt94s=;
-        b=F3tv2T5P1lVxuOzJ0zoTRp3qzatiBHvd4z3sHplg0sjUZRuzbSIsRPoafNfXU3Zgi2
-         lTc/J03Tlz2ond5xQ9aHVrS6TcouwCTCcyy0xN1mQIORFQCG3YExfyPxJG0Sp1wJZQD+
-         F4MNeXrF+kxFZs9Qeeai5UkzsxbtYjJ8vG+vfhcUwBsjSZr49vUrr4Bsg4AhkaUedXAy
-         uvIwzVpAUaz/Nha+pNgp4lZDTxXK0BoEVKhp+vIWZl86PIivtaHiKpmPaBCejd4tFs04
-         tEWH05U/wWgoO0Z/C12ZnP9vJDF6D0FPleCSz5Dn5MJLg9kfhGak3kV/kGU4z7rVcg3f
-         Yqcw==
-X-Gm-Message-State: ABy/qLZhOR2Uc5ctOZ4c5ZQsjDXmev07MpsSqh0ODqGEiDfn5RNJZNVe
-	EmJvX3cSz7MQztPfhZoCcYU=
-X-Google-Smtp-Source: APBJJlGEjU1esn5ww96Q26G5Cjme5PbcxruiY/d4kC2vXu8zIBXMIO7z1MRjwF6FyQASNB+nJXBkcQ==
-X-Received: by 2002:a17:902:e745:b0:1b8:8682:62fb with SMTP id p5-20020a170902e74500b001b8868262fbmr15825031plf.4.1690900508862;
-        Tue, 01 Aug 2023 07:35:08 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c? ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id jd20-20020a170903261400b001b8b0ac2258sm10570705plb.174.2023.08.01.07.35.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 01 Aug 2023 07:35:08 -0700 (PDT)
-Message-ID: <c8d0e527-b4ea-8df2-fb78-4e8dfc5d7b93@roeck-us.net>
-Date: Tue, 1 Aug 2023 07:35:07 -0700
+	id 1qQqTT-002c0W-2g
+	for linux-mediatek@lists.infradead.org;
+	Tue, 01 Aug 2023 14:35:49 +0000
+X-UUID: b30fea5a307811ee83ed1395ce914268-20230801
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=GtO7l74MiDOCASn4v8QtrTO68migCuNl/oaqN3ri9ic=;
+	b=QwjJmrTFwpMKNdBMhhUo9npuaKRsQLQzhQcdzmgg5VSefxDT3fnOtqMKDeYzlgA7G0tp0krNvRS8peqKBY6CuJujBfsDryWCCzcLB5dwadncgTYXTxLzkPnusqwAg6gHubOSZCo737x1BbCsTRlHfoTP/527j8tss2t66bSKvzw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.30,REQID:7ac940fc-fef2-4c41-a811-4e0a39318fba,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:8bfdc5a0-0933-4333-8d4f-6c3c53ebd55b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: b30fea5a307811ee83ed1395ce914268-20230801
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 802012439; Tue, 01 Aug 2023 07:35:45 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 1 Aug 2023 22:35:43 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 1 Aug 2023 22:35:43 +0800
+From: Deren Wu <deren.wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>, linux-wireless
+	<linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH 08/17] wifi: mt76: mt7925: add mac.h
+Date: Tue, 1 Aug 2023 22:34:24 +0800
+Message-ID: <8399ff9f4fb596b3b78aae0e96b9457c2d2a1838.1690864199.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <cover.1690864199.git.deren.wu@mediatek.com>
+References: <cover.1690864199.git.deren.wu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH -next] usb: typec: tcpci_mt6370: remove redundant
- dev_err_probe()
-Content-Language: en-US
-To: Zhu Wang <wangzhu9@huawei.com>, heikki.krogerus@linux.intel.com,
- gregkh@linuxfoundation.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230801122834.89168-1-wangzhu9@huawei.com>
-From: Guenter Roeck <linux@roeck-us.net>
-In-Reply-To: <20230801122834.89168-1-wangzhu9@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230801_073514_527373_255393A0 
-X-CRM114-Status: GOOD (  17.82  )
+X-CRM114-CacheID: sfid-20230801_073547_869425_54E3CBBE 
+X-CRM114-Status: GOOD (  11.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,30 +86,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/1/23 05:28, Zhu Wang wrote:
-> When platform_get_irq() is called, the error message has been printed,
-> so it need not to call dev_err_probe() to present error messages.
-> 
-> Signed-off-by: Zhu Wang <wangzhu9@huawei.com>
+(Patches split into one patch per file for easier review, but the final
+commit will be one big patch. See the cover letter for more info.)
 
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7925/mac.h   | 23 +++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/mac.h
 
-> ---
->   drivers/usb/typec/tcpm/tcpci_mt6370.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/usb/typec/tcpm/tcpci_mt6370.c b/drivers/usb/typec/tcpm/tcpci_mt6370.c
-> index 2a079464b398..9cda1005ef01 100644
-> --- a/drivers/usb/typec/tcpm/tcpci_mt6370.c
-> +++ b/drivers/usb/typec/tcpm/tcpci_mt6370.c
-> @@ -147,7 +147,7 @@ static int mt6370_tcpc_probe(struct platform_device *pdev)
->   
->   	irq = platform_get_irq(pdev, 0);
->   	if (irq < 0)
-> -		return dev_err_probe(dev, irq, "Failed to get irq\n");
-> +		return irq;
->   
->   	/* Assign TCPCI feature and ops */
->   	priv->tcpci_data.auto_discharge_disconnect = 1;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.h b/drivers/net/wireless/mediatek/mt76/mt7925/mac.h
+new file mode 100644
+index 000000000000..b10a993326b9
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.h
+@@ -0,0 +1,23 @@
++/* SPDX-License-Identifier: ISC */
++/* Copyright (C) 2023 MediaTek Inc. */
++
++#ifndef __MT7925_MAC_H
++#define __MT7925_MAC_H
++
++#include "../mt76_connac3_mac.h"
++
++#define MT_WTBL_TXRX_CAP_RATE_OFFSET	7
++#define MT_WTBL_TXRX_RATE_G2_HE		24
++#define MT_WTBL_TXRX_RATE_G2		12
++
++#define MT_WTBL_AC0_CTT_OFFSET		20
++
++static inline u32 mt7925_mac_wtbl_lmac_addr(struct mt792x_dev *dev, u16 wcid, u8 dw)
++{
++	mt76_wr(dev, MT_WTBLON_TOP_WDUCR,
++		FIELD_PREP(MT_WTBLON_TOP_WDUCR_GROUP, (wcid >> 7)));
++
++	return MT_WTBL_LMAC_OFFS(wcid, dw);
++}
++
++#endif
+-- 
+2.18.0
 
 
