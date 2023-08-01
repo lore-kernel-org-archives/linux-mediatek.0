@@ -4,69 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1B14C001E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 12:59:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AAC5C001E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 13:35:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+th+aWZ3O27UWlE6uee+T08Qnh46aAnPRjm10588jIA=; b=AXqrg3EIvqDr5XbFNMGhFaa+a3
-	QyILN4wKBd/ghs9RDW3rYVsHkMFmfUoFVfr3Wq+1Kvvq6qc7UH56RsUUUg75x0GbnPOqR9mCyJCYq
-	ifsTQDTzAv0Fxn0LIn+bIQfalHwVZ0XEcz0+Gf5s5ocs8Mai/c726F7TDF96OKkrExiiLI/UOu0gY
-	+zmHlTnzFryeFwjetaYzcm9lsUQl/1IfKTKk2VG2wi5or3oJPUStD2mHomnJjfHj0IWGBGAZS34Hd
-	onByPK9SANytOBobSqi1ygkTIFjp4rIt4wnCUZhyHEXHx/dZA3uax4ZzDmdt+aYE+/lE5gqDWqQve
-	3bIyLwLQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HdazcTEFCseLReVrm5lXfmcb+hE9liItZpU9OIkKkLY=; b=JERJdd/Sva7xnTUtlSZrSoP39I
+	4a3yz/Zpku3zVQZrIG+QIp675pIfnQ+FQlSv8uRUes5q2nDnu5sRr+jv4wx5MTJK37gANLlcMC/n8
+	MDuYNHMxQXXC27Aj/urFnJUrAv24BxnNj0a3yKekw9N6ua5uZ56cTIphZaXtbQwLSV4eCfOgAOMXP
+	9sJCmX6lcz2BZeZu7eBRw/lbjySIOqkfYO8iMIMdJu2FZ98FUqTuNb3LtrhsqgsAXSjkGMZGAmrhQ
+	3pZNu5jfU4UIy85IajlU5ieqngMRUbo/3iFWR/9/7hKV/1qrOYnQ93QBY5wPfsx2yimh5wEAbvHMp
+	mcBItKMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQoyT-002PRz-2T;
-	Tue, 01 Aug 2023 12:59:41 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qQpWs-002ShQ-07;
+	Tue, 01 Aug 2023 13:35:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQoyR-002PQ9-0z;
-	Tue, 01 Aug 2023 12:59:40 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 47E6E66003AC;
-	Tue,  1 Aug 2023 13:59:34 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1690894774;
-	bh=wcMBx/ohaotvYjHRfPSVtaceruas7z+3W5OIceB8WzE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=agtQ4HiXkLHJajRKm8TEMi5HmYzmISAmo+2VOKRRrNUCoGO0sToSrR+OymkD6mleN
-	 fXV3gzK82vVVCLlF1ivdrDP13xKzjZg9NnYdbMJvoD5rW/L5Y+WaxPw1BIGcchctoF
-	 i3zLMWN5zO+P4+w3F1+TvZBpcAe2bLWy6qocn9cj+IGxtQ5GcosdiiORu3Sq8hMuNP
-	 aLgYPO37plgio7D0CjVac+QxqLSQSIdVCDqQGCouFTRot1pGXSCr7utC9ykNwpEw8h
-	 naWq2/vmxoVTmaNA0qfF4bgrSZs0G9oUYmbUh+LP6E23sF470jw6zGspjRvB0atC+C
-	 /GTA6/x/pJnvw==
-Message-ID: <75ebcfa1-2413-76b0-4573-0ebf70fa59ad@collabora.com>
-Date: Tue, 1 Aug 2023 14:59:32 +0200
+	id 1qQpWo-002Sg2-3A
+	for linux-mediatek@lists.infradead.org;
+	Tue, 01 Aug 2023 13:35:12 +0000
+X-UUID: 380683b2307011ee912e1518a6540028-20230801
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HdazcTEFCseLReVrm5lXfmcb+hE9liItZpU9OIkKkLY=;
+	b=Ufz8fynCRqheSWmI7zCoK65wlYVOgb7Efl/xf2f/0klqMveUkFfNfzCAh2C0lFAl0PvLkOLpD4fmNX3muiSitgvv9i59uKdVEERS1ce8sgr7M7QAv4i8nZVn3yc3P9ENYXXQbLaTuqUT9f2Ux9KG92iqNsVYkfiaJ9a/Q/2itkM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.30,REQID:20f4910a-f12e-45cb-b94a-39b07f426017,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:b83791d2-cd77-4e67-bbfd-aa4eaace762f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 380683b2307011ee912e1518a6540028-20230801
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1088061309; Tue, 01 Aug 2023 06:35:02 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 1 Aug 2023 21:35:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 1 Aug 2023 21:35:00 +0800
+From: <peter.wang@mediatek.com>
+To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <stable@vger.kernel.org>
+Subject: [PATCH v1] ufs: core: only suspend clock scaling if scale down
+Date: Tue, 1 Aug 2023 21:34:58 +0800
+Message-ID: <20230801133458.6837-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v2 07/12] drm/mediatek: Convert to platform remove
- callback returning void
-Content-Language: en-US
-To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org,
- Thomas Zimmermann <tzimmermann@suse.de>, Jyri Sarha <jyri.sarha@iki.fi>
-References: <20230801110239.831099-1-u.kleine-koenig@pengutronix.de>
- <20230801110239.831099-8-u.kleine-koenig@pengutronix.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230801110239.831099-8-u.kleine-koenig@pengutronix.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230801_055939_518426_A2FCE0C5 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20230801_063511_031730_0A5186C2 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,24 +89,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/08/23 13:02, Uwe Kleine-König ha scritto:
-> The .remove() callback for a platform driver returns an int which makes
-> many driver authors wrongly assume it's possible to do error handling by
-> returning an error code. However the value returned is (mostly) ignored
-> and this typically results in resource leaks. To improve here there is a
-> quest to make the remove callback return void. In the first step of this
-> quest all drivers are converted to .remove_new() which already returns
-> void.
-> 
-> Trivially convert the mediatek drm drivers from always returning zero in
-> the remove callback to the void returning variant.
-> 
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Reviewed-by: Thomas Zimmermann <tzimmermann@suse.de>
-> Reviewed-by: Jyri Sarha <jyri.sarha@iki.fi>
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+From: Peter Wang <peter.wang@mediatek.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+If clock scale up and suspend clock scaling, ufs will keep high
+performance/power mode but no read/write requests on going.
+It is logic wrong and have power concern.
 
+Fixes: 401f1e4490ee ("scsi: ufs: don't suspend clock scaling during clock gating")
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 129446775796..e3672e55efae 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -1458,7 +1458,7 @@ static int ufshcd_devfreq_target(struct device *dev,
+ 		ktime_to_us(ktime_sub(ktime_get(), start)), ret);
+ 
+ out:
+-	if (sched_clk_scaling_suspend_work)
++	if (sched_clk_scaling_suspend_work && !scale_up)
+ 		queue_work(hba->clk_scaling.workq,
+ 			   &hba->clk_scaling.suspend_work);
+ 
+-- 
+2.18.0
 
 
