@@ -4,82 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB997C0015E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 06:34:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D805FEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 06:43:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LKCc2rKXf8V4+XCXWPe8OLQkPwapI0w4aGB/FpbSmi4=; b=ivdd5sWyGX2s/+ND5pCSC/sLAq
-	mScbcDLWP17CrjgrfIE4akAFiKDR4pFh2kKg0tHNOungEYuJFstiNQ3zbGeOm6vfmruAke8AENf9B
-	3LkSCFQunXKhEx5fgYQM2ZbNXJNdU/FCPj2fDQA9WVfsMaqBCmWnlHE+nOH7EXthPPhIm2Brf9Vko
-	C6zAP0rHM2Fwc8OEJeusb4lHJjxT6JTXRlyb4mbOlrZUS+1rAOCDRxROcWXDDKrSGaC2r8cM/aIVE
-	Wm+68kZeXSZjaU87/JGCtkiTt7fqcpzsshWopu6LEeUNE5bhXgaCjeysrVCN4ufj+gCEYjxm6sE/q
-	kcB05dWw==;
+	bh=v3VvrVTmS3ewdRk3DK8RHjaOEKGb5fZ7apaK+oODe/I=; b=1XlguhyhcYqoBr1BH9PLyVslg0
+	mVdU5fT3Gc6SwB0oF0CiG/dAoffmTgv1dP2MwJ3x2iDkGehtcmLHxo5v/G18aNung4BeJoMQg2QE9
+	I21RufFJvY1LGfSW9F26zwwvFpq66hEM6+0Oyy6XSV0854gaSfelvXDkRqVOwSYL+yMQN/QueZOwN
+	3myo4mUa9V53zXqMF2czDb7J+Mm2/jWgRzMTJrBbqETq+39vD83dpxsvWDNqj4F9tN0/38NgwtmzM
+	ZDKUoEfBqR1N9PwqcFNniDRHmbaBW1EojQ7Mnuq3+2mKYCoeoS1B3prZ9Sf3k4NpfAP9SUk09x4RT
+	6QHpm41g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQixH-000TC2-2e;
-	Tue, 01 Aug 2023 06:34:03 +0000
-Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32])
+	id 1qQj66-000U2p-2q;
+	Tue, 01 Aug 2023 06:43:10 +0000
+Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQixE-000TBK-0a;
-	Tue, 01 Aug 2023 06:34:01 +0000
-Received: by mail-oo1-xc32.google.com with SMTP id 006d021491bc7-565db4666d7so3975703eaf.0;
-        Mon, 31 Jul 2023 23:33:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1690871638; x=1691476438;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=LKCc2rKXf8V4+XCXWPe8OLQkPwapI0w4aGB/FpbSmi4=;
-        b=qiemk3mohhg+xAOpbLyh75xBQ0XBf+pyKp8+mn3/iwJr7lb/d6K4Jmd2CT/3NhGxpJ
-         0ig6IJLsSCSM2hjvFqaaE7KRNu/sRSEGscDbk64GseP1uJjscnZNEwJ8nR7gqCrvYNzp
-         IJTtYU/ZnEDQMWEDnHb5vDTYldERmJUQC0kziFDooKMObuBg0P0TIUTM1AHWA2tQ65ME
-         YATRzqFKFQHCn7POVF9LZMKIfw1mQYVFRJkNHd6tszZ01Hd5lECAcuXlfjvrNPCa2dt4
-         kEjF0YibGo2edUsW373dRNmgFcE5zHwPlEAazqLFOaVbpk2oNq5o4AJ1JVxN4OetErIH
-         VcfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690871638; x=1691476438;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=LKCc2rKXf8V4+XCXWPe8OLQkPwapI0w4aGB/FpbSmi4=;
-        b=Q9BH0ZADDhvU4d0vLLH3eH9Y8TG85qOcz0HSH1Jz70922ItodK1JV37uwJfstgUNCD
-         HwJZKTbmW+6lX2cFvdRiNH5b7B3/OUKLebrLddqZyo8xBntE5ocd84nvb4MHDu1xbOek
-         vKRPrRsvw63texVHLSmqqese8unJKkyysAlual3cq174DCrhQP/jnWcl1iY45dyqfCLF
-         rwru/yEx/wnoRbmBQM+ru/gDwtxlBvcHMrVj7vxk08iP0s3G1dsjW5z7+y2ttsh068D6
-         fBIHx/obTH06N4CK3wz7PXzEjcSQPTonPRfquC+a4NikClHoEquHkJ7YpS35aKYJcOYT
-         fZfw==
-X-Gm-Message-State: ABy/qLY05L1Z/MsZ+QHuk72Jh6bgDVea9yMXqt3bjWtngZMlriappYqg
-	7SYxNxsSo0T5Bw/Y/WI5dHEg0BCLUUoAigLNmts=
-X-Google-Smtp-Source: APBJJlE7oK2nlXq2a2uZW19q6boXQ0GoIFtAt0DViwCQHqSjaq44TkYovJHXpkKu7Yr24VlvKFZwqsDS2UMCA9m0Fsc=
-X-Received: by 2002:a4a:9c03:0:b0:565:bbc0:2e36 with SMTP id
- y3-20020a4a9c03000000b00565bbc02e36mr10919110ooj.3.1690871637923; Mon, 31 Jul
- 2023 23:33:57 -0700 (PDT)
+	id 1qQj63-000U1V-1h;
+	Tue, 01 Aug 2023 06:43:09 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 8EA981BF206;
+	Tue,  1 Aug 2023 06:42:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1690872181;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=v3VvrVTmS3ewdRk3DK8RHjaOEKGb5fZ7apaK+oODe/I=;
+	b=cL3g/ZWzj9cEh8UwFFtxipC92h6O4N8ufQP+0KOvB+BShgr6DIg43HYaqOqktLbPaE5INr
+	qkgSuCUF7u+UeSpaRsdNzEB+kihPeYZQUO1ncSOCWpM/BJf+fo+7s7otcdlh9QENEx5kEP
+	feEkJ0qb3xv2bqK32vqyNBPTYBQHXdU+bjVIe8hIYbcTUqQ0Ylwphb/9lHfJaPXuVR4TN4
+	V1cZDtNRXECwB88xN/RbjSXXhKVu5J3Vo+Wj7SGZWANQ9XLXryHsOeU1pXFY6cFwgPKUI6
+	5TQjZiTZUPC/sZlfxpJ6yq3YMqflR/pQvwAlS3fXzf6kcMih0vgipaJlek4Pdg==
+Message-ID: <0b605849-0976-f58b-d449-56031b1d0282@arinc9.com>
+Date: Tue, 1 Aug 2023 09:42:48 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] mips: dts: ralink: reorder MT7621 clocks in Ethernet
+ block
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mips@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
 References: <20230729110449.1357-1-zajec5@gmail.com>
-In-Reply-To: <20230729110449.1357-1-zajec5@gmail.com>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Tue, 1 Aug 2023 08:33:45 +0200
-Message-ID: <CAMhs-H9RpyCTcrRjtALg_aqGR7cmrz_ufQdVYm=WSEgUObpxKA@mail.gmail.com>
-Subject: Re: [PATCH] mips: dts: ralink: reorder MT7621 clocks in Ethernet block
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mips@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	=?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+ <96bdb44d-3c59-b6e7-7baa-0ab80efeb720@arinc9.com>
+In-Reply-To: <96bdb44d-3c59-b6e7-7baa-0ab80efeb720@arinc9.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230731_233400_239198_49E38943 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20230731_234307_742690_9CB65A94 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,32 +83,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 29, 2023 at 1:04=E2=80=AFPM Rafa=C5=82 Mi=C5=82ecki <zajec5@gma=
-il.com> wrote:
->
-> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
->
-> Use order as specified in the binding (first "ethif" then "fe").
->
-> This fixes:
-> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e10000=
-0: clock-names:0: 'ethif' was expected
->         From schema: Documentation/devicetree/bindings/net/mediatek,net.y=
-aml
-> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: ethernet@1e10000=
-0: clock-names:1: 'fe' was expected
->         From schema: Documentation/devicetree/bindings/net/mediatek,net.y=
-aml
->
-> Fixes: 7a6ee0bbab25 ("mips: dts: ralink: add MT7621 SoC")
-> Signed-off-by: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
-> ---
->  arch/mips/boot/dts/ralink/mt7621.dtsi | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
+I haven't received anything arguing with this so my answer is still no.
 
-Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Also, this patch changes the lines introduced with b2f471a26721 
+("staging: mt7621-dts: make use of new 'mt7621-clk'").
 
-Thanks,
-    Sergio Paracuellos
+Arınç
+
+On 29.07.2023 17:08, Arınç ÜNAL wrote:
+> On 29.07.2023 14:04, Rafał Miłecki wrote:
+>> From: Rafał Miłecki <rafal@milecki.pl>
+>>
+>> Use order as specified in the binding (first "ethif" then "fe").
+>>
+>> This fixes:
+>> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: 
+>> ethernet@1e100000: clock-names:0: 'ethif' was expected
+>>          From schema: 
+>> Documentation/devicetree/bindings/net/mediatek,net.yaml
+>> arch/mips/boot/dts/ralink/mt7621-tplink-hc220-g5-v1.dtb: 
+>> ethernet@1e100000: clock-names:1: 'fe' was expected
+>>          From schema: 
+>> Documentation/devicetree/bindings/net/mediatek,net.yaml
+>>
+>> Fixes: 7a6ee0bbab25 ("mips: dts: ralink: add MT7621 SoC")
+>> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> 
+> I'm not sure if I should agree with this patch. The relevant parts of 
+> the schema for mediatek,mt7621-eth were added way later than the 
+> existing bindings on mt7621.dtsi. Why don't we address this on the 
+> schema along with a bunch of other issues the patch for 
+> mediatek,mt7621-eth brought?
+> 
+> Arınç
 
