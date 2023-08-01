@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 350FCC04A94
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 14:35:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61D7EC04FDF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 14:35:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MngREa3tzTztuZpub6LB7rywTQ1g699xg/PwMcMxFuM=; b=sHICSy+swlxDYyl4jegzutpnWe
-	SDohn9361rgG+ADky08i2J9+fOeYvr4I0E+WNUu1UzBwi8fVDSjZsQuN87KDiDfpe9dx+gOGs4qpx
-	Hlew5yewkY4y4lqwmV+2axhqgNfrkJ4mVyi2javkoUmesBOOZ4OSCd+Ct/rUvCdxUZrRMawdJW9wO
-	sJlFEv8GlxXErRXEoG8dkCuS8PGzfX2ifLUoKVp53paRFjsp8RP0JguW4pn7KwVW6Fxge5yh3ujZJ
-	BxsS6r+5zwtHutbWiWgRtfbLYzJasgtLtDBXttEK/eImpydE1471RUhL51YXhuuZ6DZh+JWaXtw8Z
-	7qddaUqQ==;
+	bh=UxVUmm/hIeZZkEF2wqtjkkHPQm3+pJOxQq99x49XDIg=; b=PT9Uzypz3A7vkLzGiI9cybnYcL
+	qUYEg+kjDuQZJgG5T4E+pbqE5SMoaUTX2DRmyuntUjK9xjlDvCAN4dQfhHmpj9WV8OpAy52IDVnHv
+	owYuMlqdwLR1npYehgBcwYbZPFel0WHFE6jCRGdW1IJd32RijLrR9xGUO+9fhoEzKjhtltVCCdx9v
+	9/acrYYBEgPZW3j1HUnePR30To5JATtyUTGtx3J1IparyL40fqiKZwkPnYAB18g26uLw1sVl8Xqi+
+	NdGDyod6/c0Yxd2DrhOspypTibS/ClwxRZgc0jVTnkYfZxOyoAoQvuBqIxAWdbTmk0o3my6WMlPgH
+	UwoSEIdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQqTX-002c3K-37;
-	Tue, 01 Aug 2023 14:35:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qQqTa-002c4Q-1E;
+	Tue, 01 Aug 2023 14:35:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQqTV-002c0W-0O
+	id 1qQqTV-002c1Z-1U
 	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Aug 2023 14:35:50 +0000
-X-UUID: b2c100e8307811ee83ed1395ce914268-20230801
+	Tue, 01 Aug 2023 14:35:52 +0000
+X-UUID: b4041c10307811ee912e1518a6540028-20230801
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=MngREa3tzTztuZpub6LB7rywTQ1g699xg/PwMcMxFuM=;
-	b=BrWXNwXcNauJsZUegaMk/2xHtMV6ChK1mP0F18Ekz5zmAHqEOb+yN8iJbQ0X/7lClwMuuJVXZs1ibDBhvzG4bVSLpo1xkKBdFAlSINAQSCpd2nM3U3ZKI26b+6ofmEaK+evc4hT5rznRE59MZqQ6Oe1VL1UVaE6O3Ro9PAnm6vE=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=UxVUmm/hIeZZkEF2wqtjkkHPQm3+pJOxQq99x49XDIg=;
+	b=cW2o6pFyg8HQb43SOJhye7X67cnG165MG6GvCflpVJC05bAjPzTmcrFXzzkpglC20zhq9+rYGpuZyiSSew27LUrF6KgqDmHrcTyvxwtRaRPKKJMj3X1h4RV+6fWd+HljvB9CbFQYW21OVEYkLa1ewcJu9nQUc7jl1wDF09DEKV8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.30,REQID:1a4c5fe6-a8b3-4da2-b334-75b72a8612c7,IP:0,U
+X-CID-O-INFO: VERSION:1.1.30,REQID:5565ce08-c559-4be2-9d52-37b2196ea519,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:1fcc6f8,CLOUDID:8dfdc5a0-0933-4333-8d4f-6c3c53ebd55b,B
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:5972b242-d291-4e62-b539-43d7d78362ba,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: b2c100e8307811ee83ed1395ce914268-20230801
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-UUID: b4041c10307811ee912e1518a6540028-20230801
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <deren.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1212422739; Tue, 01 Aug 2023 07:35:44 -0700
+	with ESMTP id 1972198495; Tue, 01 Aug 2023 07:35:46 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 1 Aug 2023 22:35:42 +0800
+ 15.2.1118.26; Tue, 1 Aug 2023 22:35:44 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 1 Aug 2023 22:35:42 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 1 Aug 2023 22:35:44 +0800
 From: Deren Wu <deren.wu@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
 CC: Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
 	Shayne Chen <shayne.chen@mediatek.com>, linux-wireless
 	<linux-wireless@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH 04/17] wifi: mt76: mt7925: add regs.h
-Date: Tue, 1 Aug 2023 22:34:20 +0800
-Message-ID: <2b31c82a7bef889f7ac1ff328fec75ec5d5aeb8a.1690864199.git.deren.wu@mediatek.com>
+Subject: [PATCH 14/17] wifi: mt76: mt7925: add usb.c
+Date: Tue, 1 Aug 2023 22:34:30 +0800
+Message-ID: <cb5f9a18e60dab93665b619440c3f50af5b4d9ac.1690864199.git.deren.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <cover.1690864199.git.deren.wu@mediatek.com>
 References: <cover.1690864199.git.deren.wu@mediatek.com>
@@ -70,8 +70,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230801_073549_184049_580979A3 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20230801_073549_519628_D23ED01A 
+X-CRM114-Status: GOOD (  20.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,108 +93,356 @@ Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7925/regs.h  | 92 +++++++++++++++++++
- 1 file changed, 92 insertions(+)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/regs.h
+ .../net/wireless/mediatek/mt76/mt7925/usb.c   | 340 ++++++++++++++++++
+ 1 file changed, 340 insertions(+)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/usb.c
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/regs.h b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
 new file mode 100644
-index 000000000000..985794a40c1a
+index 000000000000..6cbcecabf40e
 --- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-@@ -0,0 +1,92 @@
-+/* SPDX-License-Identifier: ISC */
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
+@@ -0,0 +1,340 @@
++// SPDX-License-Identifier: ISC
 +/* Copyright (C) 2023 MediaTek Inc. */
 +
-+#ifndef __MT7925_REGS_H
-+#define __MT7925_REGS_H
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/usb.h>
 +
-+#include "../mt792x_regs.h"
++#include "mt7925.h"
++#include "mcu.h"
++#include "mac.h"
 +
-+#define MT_MDP_BASE			0x820cc800
-+#define MT_MDP(ofs)			(MT_MDP_BASE + (ofs))
++static const struct usb_device_id mt7925u_device_table[] = {
++	{ USB_DEVICE_AND_INTERFACE_INFO(0x0e8d, 0x7925, 0xff, 0xff, 0xff),
++		.driver_info = (kernel_ulong_t)MT7925_FIRMWARE_WM },
++	{ },
++};
 +
-+#define MT_MDP_DCR0			MT_MDP(0x000)
-+#define MT_MDP_DCR0_DAMSDU_EN		BIT(15)
-+#define MT_MDP_DCR0_RX_HDR_TRANS_EN	BIT(19)
++static int
++mt7925u_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
++			 int cmd, int *seq)
++{
++	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
++	u32 pad, ep;
++	int ret;
 +
-+#define MT_MDP_DCR1			MT_MDP(0x004)
-+#define MT_MDP_DCR1_MAX_RX_LEN		GENMASK(15, 3)
++	ret = mt7925_mcu_fill_message(mdev, skb, cmd, seq);
++	if (ret)
++		return ret;
 +
-+#define MT_MDP_BNRCFR0(_band)		MT_MDP(0x090 + ((_band) << 8))
-+#define MT_MDP_RCFR0_MCU_RX_MGMT	GENMASK(5, 4)
-+#define MT_MDP_RCFR0_MCU_RX_CTL_NON_BAR	GENMASK(7, 6)
-+#define MT_MDP_RCFR0_MCU_RX_CTL_BAR	GENMASK(9, 8)
++	mdev->mcu.timeout = 3 * HZ;
 +
-+#define MT_MDP_BNRCFR1(_band)		MT_MDP(0x094 + ((_band) << 8))
-+#define MT_MDP_RCFR1_MCU_RX_BYPASS	GENMASK(23, 22)
-+#define MT_MDP_RCFR1_RX_DROPPED_UCAST	GENMASK(28, 27)
-+#define MT_MDP_RCFR1_RX_DROPPED_MCAST	GENMASK(30, 29)
-+#define MT_MDP_TO_HIF			0
-+#define MT_MDP_TO_WM			1
++	if (cmd != MCU_CMD(FW_SCATTER))
++		ep = MT_EP_OUT_INBAND_CMD;
++	else
++		ep = MT_EP_OUT_AC_BE;
 +
-+#define MT_WFDMA0_HOST_INT_ENA		MT_WFDMA0(0x228)
-+#define MT_WFDMA0_HOST_INT_DIS		MT_WFDMA0(0x22c)
-+#define HOST_RX_DONE_INT_ENA4		BIT(12)
-+#define HOST_RX_DONE_INT_ENA5		BIT(13)
-+#define HOST_RX_DONE_INT_ENA6		BIT(14)
-+#define HOST_RX_DONE_INT_ENA7		BIT(15)
-+#define HOST_RX_DONE_INT_ENA8		BIT(16)
-+#define HOST_RX_DONE_INT_ENA9		BIT(17)
-+#define HOST_RX_DONE_INT_ENA10		BIT(18)
-+#define HOST_RX_DONE_INT_ENA11		BIT(19)
-+#define HOST_TX_DONE_INT_ENA15		BIT(25)
-+#define HOST_TX_DONE_INT_ENA16		BIT(26)
-+#define HOST_TX_DONE_INT_ENA17		BIT(27)
++	mt7925_skb_add_usb_sdio_hdr(dev, skb, 0);
++	pad = round_up(skb->len, 4) + 4 - skb->len;
++	__skb_put_zero(skb, pad);
 +
-+/* WFDMA interrupt */
-+#define MT_INT_RX_DONE_DATA		HOST_RX_DONE_INT_ENA2
-+#define MT_INT_RX_DONE_WM		HOST_RX_DONE_INT_ENA0
-+#define MT_INT_RX_DONE_WM2		HOST_RX_DONE_INT_ENA1
-+#define MT_INT_RX_DONE_ALL		(MT_INT_RX_DONE_DATA | \
-+					 MT_INT_RX_DONE_WM | \
-+					 MT_INT_RX_DONE_WM2)
++	ret = mt76u_bulk_msg(&dev->mt76, skb->data, skb->len, NULL,
++			     1000, ep);
++	dev_kfree_skb(skb);
 +
-+#define MT_INT_TX_DONE_MCU_WM		(HOST_TX_DONE_INT_ENA15 | \
-+					 HOST_TX_DONE_INT_ENA17)
++	return ret;
++}
 +
-+#define MT_INT_TX_DONE_FWDL		HOST_TX_DONE_INT_ENA16
-+#define MT_INT_TX_DONE_BAND0		HOST_TX_DONE_INT_ENA0
++static int mt7925u_mcu_init(struct mt792x_dev *dev)
++{
++	static const struct mt76_mcu_ops mcu_ops = {
++		.headroom = MT_SDIO_HDR_SIZE +
++			    sizeof(struct mt76_connac2_mcu_txd),
++		.tailroom = MT_USB_TAIL_SIZE,
++		.mcu_skb_send_msg = mt7925u_mcu_send_message,
++		.mcu_parse_response = mt7925_mcu_parse_response,
++	};
++	int ret;
 +
-+#define MT_INT_TX_DONE_MCU		(MT_INT_TX_DONE_MCU_WM |	\
-+					 MT_INT_TX_DONE_FWDL)
-+#define MT_INT_TX_DONE_ALL		(MT_INT_TX_DONE_MCU_WM |	\
-+					 MT_INT_TX_DONE_BAND0 |	\
-+					GENMASK(18, 4))
++	dev->mt76.mcu_ops = &mcu_ops;
 +
-+#define MT_RX_DATA_RING_BASE		MT_WFDMA0(0x500)
++	mt76_set(dev, MT_UDMA_TX_QSEL, MT_FW_DL_EN);
++	ret = mt7925_run_firmware(dev);
++	if (ret)
++		return ret;
 +
-+#define MT_INFRA_CFG_BASE		0xd1000
-+#define MT_INFRA(ofs)			(MT_INFRA_CFG_BASE + (ofs))
++	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
++	mt76_clear(dev, MT_UDMA_TX_QSEL, MT_FW_DL_EN);
 +
-+#define MT_HIF_REMAP_L1			0x155024
-+#define MT_HIF_REMAP_L1_MASK		GENMASK(31, 16)
-+#define MT_HIF_REMAP_L1_OFFSET		GENMASK(15, 0)
-+#define MT_HIF_REMAP_L1_BASE		GENMASK(31, 16)
-+#define MT_HIF_REMAP_BASE_L1		0x130000
++	return 0;
++}
 +
-+#define MT_HIF_REMAP_L2			0x0120
-+#if IS_ENABLED(CONFIG_MT76_DEV)
-+#define MT_HIF_REMAP_BASE_L2		(0x7c500000 - (0x7c000000 - 0x18000000))
-+#else
-+#define MT_HIF_REMAP_BASE_L2		0x18500000
-+#endif
++static void mt7925u_stop(struct ieee80211_hw *hw)
++{
++	struct mt792x_dev *dev = mt792x_hw_dev(hw);
 +
-+#define MT_WFSYS_SW_RST_B		0x7c000140
++	mt76u_stop_tx(&dev->mt76);
++	mt7925_stop(hw);
++}
 +
-+#define MT_WTBLON_TOP_WDUCR		MT_WTBLON_TOP(0x370)
-+#define MT_WTBLON_TOP_WDUCR_GROUP	GENMASK(4, 0)
++static int mt7925u_mac_reset(struct mt792x_dev *dev)
++{
++	int err;
 +
-+#define MT_WTBL_UPDATE			MT_WTBLON_TOP(0x380)
-+#define MT_WTBL_UPDATE_WLAN_IDX		GENMASK(11, 0)
-+#define MT_WTBL_UPDATE_ADM_COUNT_CLEAR	BIT(14)
++	mt76_txq_schedule_all(&dev->mphy);
++	mt76_worker_disable(&dev->mt76.tx_worker);
 +
-+#endif
++	set_bit(MT76_RESET, &dev->mphy.state);
++	set_bit(MT76_MCU_RESET, &dev->mphy.state);
++
++	wake_up(&dev->mt76.mcu.wait);
++	skb_queue_purge(&dev->mt76.mcu.res_q);
++
++	mt76u_stop_rx(&dev->mt76);
++	mt76u_stop_tx(&dev->mt76);
++
++	mt792xu_wfsys_reset(dev);
++
++	clear_bit(MT76_MCU_RESET, &dev->mphy.state);
++	err = mt76u_resume_rx(&dev->mt76);
++	if (err)
++		goto out;
++
++	err = mt792xu_mcu_power_on(dev);
++	if (err)
++		goto out;
++
++	err = mt792xu_dma_init(dev, false);
++	if (err)
++		goto out;
++
++	mt76_wr(dev, MT_SWDEF_MODE, MT_SWDEF_NORMAL_MODE);
++	mt76_set(dev, MT_UDMA_TX_QSEL, MT_FW_DL_EN);
++
++	err = mt7925_run_firmware(dev);
++	if (err)
++		goto out;
++
++	mt76_clear(dev, MT_UDMA_TX_QSEL, MT_FW_DL_EN);
++
++	err = mt7925_mcu_set_eeprom(dev);
++	if (err)
++		goto out;
++
++	err = mt7925_mac_init(dev);
++	if (err)
++		goto out;
++
++	err = __mt7925_start(&dev->phy);
++out:
++	clear_bit(MT76_RESET, &dev->mphy.state);
++
++	mt76_worker_enable(&dev->mt76.tx_worker);
++
++	return err;
++}
++
++static int mt7925u_probe(struct usb_interface *usb_intf,
++			 const struct usb_device_id *id)
++{
++	static const struct mt76_driver_ops drv_ops = {
++		.txwi_size = MT_SDIO_TXD_SIZE,
++		.drv_flags = MT_DRV_RX_DMA_HDR | MT_DRV_HW_MGMT_TXQ |
++			     MT_DRV_AMSDU_OFFLOAD,
++		.survey_flags = SURVEY_INFO_TIME_TX |
++				SURVEY_INFO_TIME_RX |
++				SURVEY_INFO_TIME_BSS_RX,
++		.tx_prepare_skb = mt7925_usb_sdio_tx_prepare_skb,
++		.tx_complete_skb = mt7925_usb_sdio_tx_complete_skb,
++		.tx_status_data = mt7925_usb_sdio_tx_status_data,
++		.rx_skb = mt7925_queue_rx_skb,
++		.rx_check = mt7925_rx_check,
++		.sta_add = mt7925_mac_sta_add,
++		.sta_assoc = mt7925_mac_sta_assoc,
++		.sta_remove = mt7925_mac_sta_remove,
++		.update_survey = mt792x_update_channel,
++	};
++	static const struct mt792x_hif_ops hif_ops = {
++		.mcu_init = mt7925u_mcu_init,
++		.init_reset = mt792xu_init_reset,
++		.reset = mt7925u_mac_reset,
++	};
++	static struct mt76_bus_ops bus_ops = {
++		.rr = mt792xu_rr,
++		.wr = mt792xu_wr,
++		.rmw = mt792xu_rmw,
++		.read_copy = mt76u_read_copy,
++		.write_copy = mt792xu_copy,
++		.type = MT76_BUS_USB,
++	};
++	struct usb_device *udev = interface_to_usbdev(usb_intf);
++	struct ieee80211_ops *ops;
++	struct ieee80211_hw *hw;
++	struct mt792x_dev *dev;
++	struct mt76_dev *mdev;
++	u8 features;
++	int ret;
++
++	ops = mt792x_get_mac80211_ops(&usb_intf->dev, &mt7925_ops,
++				      (void *)id->driver_info, &features);
++	if (!ops)
++		return -ENOMEM;
++
++	ops->stop = mt7925u_stop;
++
++	mdev = mt76_alloc_device(&usb_intf->dev, sizeof(*dev), ops, &drv_ops);
++	if (!mdev)
++		return -ENOMEM;
++
++	dev = container_of(mdev, struct mt792x_dev, mt76);
++	dev->fw_features = features;
++	dev->hif_ops = &hif_ops;
++
++	udev = usb_get_dev(udev);
++	usb_reset_device(udev);
++
++	usb_set_intfdata(usb_intf, dev);
++
++	ret = __mt76u_init(mdev, usb_intf, &bus_ops);
++	if (ret < 0)
++		goto error;
++
++	mdev->rev = (mt76_rr(dev, MT_HW_CHIPID) << 16) |
++		    (mt76_rr(dev, MT_HW_REV) & 0xff);
++	dev_dbg(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
++
++	if (mt76_get_field(dev, MT_CONN_ON_MISC, MT_TOP_MISC2_FW_N9_RDY)) {
++		ret = mt792xu_wfsys_reset(dev);
++		if (ret)
++			goto error;
++	}
++
++	ret = mt792xu_mcu_power_on(dev);
++	if (ret)
++		goto error;
++
++	ret = mt76u_alloc_mcu_queue(&dev->mt76);
++	if (ret)
++		goto error;
++
++	ret = mt76u_alloc_queues(&dev->mt76);
++	if (ret)
++		goto error;
++
++	ret = mt792xu_dma_init(dev, false);
++	if (ret)
++		goto error;
++
++	hw = mt76_hw(dev);
++	/* check hw sg support in order to enable AMSDU */
++	hw->max_tx_fragments = mdev->usb.sg_en ? MT_HW_TXP_MAX_BUF_NUM : 1;
++
++	ret = mt7925_register_device(dev);
++	if (ret)
++		goto error;
++
++	return 0;
++
++error:
++	mt76u_queues_deinit(&dev->mt76);
++
++	usb_set_intfdata(usb_intf, NULL);
++	usb_put_dev(interface_to_usbdev(usb_intf));
++
++	mt76_free_device(&dev->mt76);
++
++	return ret;
++}
++
++#ifdef CONFIG_PM
++static int mt7925u_suspend(struct usb_interface *intf, pm_message_t state)
++{
++	struct mt792x_dev *dev = usb_get_intfdata(intf);
++	struct mt76_connac_pm *pm = &dev->pm;
++	int err;
++
++	pm->suspended = true;
++	flush_work(&dev->reset_work);
++
++	err = mt76_connac_mcu_set_hif_suspend(&dev->mt76, true);
++	if (err)
++		goto failed;
++
++	mt76u_stop_rx(&dev->mt76);
++	mt76u_stop_tx(&dev->mt76);
++
++	return 0;
++
++failed:
++	pm->suspended = false;
++
++	if (err < 0)
++		mt792x_reset(&dev->mt76);
++
++	return err;
++}
++
++static int mt7925u_resume(struct usb_interface *intf)
++{
++	struct mt792x_dev *dev = usb_get_intfdata(intf);
++	struct mt76_connac_pm *pm = &dev->pm;
++	bool reinit = true;
++	int err, i;
++
++	for (i = 0; i < 10; i++) {
++		u32 val = mt76_rr(dev, MT_WF_SW_DEF_CR_USB_MCU_EVENT);
++
++		if (!(val & MT_WF_SW_SER_TRIGGER_SUSPEND)) {
++			reinit = false;
++			break;
++		}
++		if (val & MT_WF_SW_SER_DONE_SUSPEND) {
++			mt76_wr(dev, MT_WF_SW_DEF_CR_USB_MCU_EVENT, 0);
++			break;
++		}
++
++		msleep(20);
++	}
++
++	if (reinit || mt792x_dma_need_reinit(dev)) {
++		err = mt792xu_dma_init(dev, true);
++		if (err)
++			goto failed;
++	}
++
++	err = mt76u_resume_rx(&dev->mt76);
++	if (err < 0)
++		goto failed;
++
++	err = mt76_connac_mcu_set_hif_suspend(&dev->mt76, false);
++failed:
++	pm->suspended = false;
++
++	if (err < 0)
++		mt792x_reset(&dev->mt76);
++
++	return err;
++}
++#endif /* CONFIG_PM */
++
++MODULE_DEVICE_TABLE(usb, mt7925u_device_table);
++MODULE_FIRMWARE(MT7925_FIRMWARE_WM);
++MODULE_FIRMWARE(MT7925_ROM_PATCH);
++
++static struct usb_driver mt7925u_driver = {
++	.name		= KBUILD_MODNAME,
++	.id_table	= mt7925u_device_table,
++	.probe		= mt7925u_probe,
++	.disconnect	= mt792xu_disconnect,
++#ifdef CONFIG_PM
++	.suspend	= mt7925u_suspend,
++	.resume		= mt7925u_resume,
++	.reset_resume	= mt7925u_resume,
++#endif /* CONFIG_PM */
++	.soft_unbind	= 1,
++	.disable_hub_initiated_lpm = 1,
++};
++module_usb_driver(mt7925u_driver);
++
++MODULE_AUTHOR("Lorenzo Bianconi <lorenzo@kernel.org>");
++MODULE_LICENSE("Dual BSD/GPL");
 -- 
 2.18.0
 
