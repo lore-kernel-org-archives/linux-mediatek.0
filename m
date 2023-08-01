@@ -4,55 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADE06C00528
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 14:35:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A355C04A94
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 14:35:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SgAPRGvgX3dm83yIBAUp1v6jgMWaGvCFgkl26MeFD+g=; b=WBvgoWOxpq9QOGGdkNMD+TrJOO
-	t+UxfWLJiapIbu4MMYCjK/cjC20CsjwZGiUX7RWDA6JilM6ioNgPi1GvTG3QzLqvUmbGa0RoP7mhC
-	GTX05QebL+Ls8u+YQmV2Pza+kDrua5VzHKJR/KEkQ6vrLJoNwQ37vX9ZmsTXLEN9ZNOpue8xbjOFQ
-	qawkbX/zX4wHOXL3UClPfOb9VFt/YLW1ate5+9Pt+UpaFUsK/vnrwBDMSHmfmVbEKn7UrEGQw0q58
-	ZuvjV8sZIA88umKy4WPs6tH+EMkc8PcdaeULFEXZKRR3i9Gc6AFeNolfSownmtGHN14lHKKbGaO04
-	l3NuTjQQ==;
+	bh=k9okLo6zBlK+vhgJuPoOYO7rSosaMAMYLkgLmvwYcAQ=; b=TLF9xjjF6gZTJ5ZYx8g1woMGAt
+	KlN0nsW5NO3FHZcSma880Tnl77AGd3HM4Q9Z1oC9/iH3TC4OAM+NpJqk8RgNnPoc6/7Zr4KKAjk9C
+	2ERlJJ3z/+qsEedwfCY3BKfabvB0odQy9fDWy4ccBVMjgP83Gi5lcxP0n03epGGQEUiGQn5Pfb8AX
+	XholgZhBXRBVj27iReDwnzqbU/yyekdcskRoYTnWgqpo0jTRGvP3xHiQHeInUVkqFkqw7vkNR6Fmu
+	QgwDv1oAyebP1qMOIR9F6jfXt/PmYt9MeYNqm3bBqfJCDVi5PZ9yEQ/z1VSZmqB5ZWyFpA9iS3VFw
+	XUzc3iWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQqTa-002c4e-2O;
-	Tue, 01 Aug 2023 14:35:54 +0000
+	id 1qQqTb-002c56-1H;
+	Tue, 01 Aug 2023 14:35:55 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQqTV-002c1p-2Q
+	id 1qQqTW-002c0y-21
 	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Aug 2023 14:35:52 +0000
-X-UUID: b3320fcc307811ee83ed1395ce914268-20230801
+	Tue, 01 Aug 2023 14:35:53 +0000
+X-UUID: b35ee326307811ee83ed1395ce914268-20230801
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=SgAPRGvgX3dm83yIBAUp1v6jgMWaGvCFgkl26MeFD+g=;
-	b=AiRPl06hS9jqUfvvKvP2i7MFyTR63VpCvEX7ZiTj13Gg2z9tBD5S7D0z5+u2grqDsQOZ5JCZ+P2mPSK7XTNfzYJBG8u2zyMsKueSvC/tzTTu1pZVj2gXdd50OKAk01gMD5dOi17AC6O4+rvccGZYBkq0YYYubbuedieXEMRwdSs=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=k9okLo6zBlK+vhgJuPoOYO7rSosaMAMYLkgLmvwYcAQ=;
+	b=sTSNZirorz5wCU9sjAfP0nnNChCmmE6CxmXJ0YwqCoz2mE7NEeV+xz6Vp0B3lTEq2Ikx9ChtDPv6x91Rc8sS+Ms4VN8S0hzBzQlxbjGwLX85IWybj0ZX6UO1Fv5N8CBqlVEaLVuAusQ3xwwu7sncc+NkIfN0SQjb7qYQIytzAm8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.30,REQID:aa7ff49b-6fbe-4846-ab0b-672fc6f11cbf,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.30,REQID:aa7ff49b-6fbe-4846-ab0b-672fc6f11cbf,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:1fcc6f8,CLOUDID:8efdc5a0-0933-4333-8d4f-6c3c53ebd55b,B
-	ulkID:230801223546IUDN587D,BulkQuantity:0,Recheck:0,SF:17|19|48|38|29|28,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,CO
-	L:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-O-INFO: VERSION:1.1.30,REQID:0f6e5d43-0c7a-498f-a0a6-534d8ed82a82,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:4f72b242-d291-4e62-b539-43d7d78362ba,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,TF_CID_SPAM_ULN,
-	TF_CID_SPAM_SNR,TF_CID_SPAM_SDM
-X-UUID: b3320fcc307811ee83ed1395ce914268-20230801
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: b35ee326307811ee83ed1395ce914268-20230801
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <deren.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 67698055; Tue, 01 Aug 2023 07:35:45 -0700
+	with ESMTP id 1289695929; Tue, 01 Aug 2023 07:35:45 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Tue, 1 Aug 2023 22:35:44 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -64,9 +60,9 @@ CC: Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
 	Shayne Chen <shayne.chen@mediatek.com>, linux-wireless
 	<linux-wireless@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH 15/17] wifi: mt76: mt7925: add debugfs.c
-Date: Tue, 1 Aug 2023 22:34:31 +0800
-Message-ID: <167363384a162e4b697c0d5bdf95e50a04b22a34.1690864199.git.deren.wu@mediatek.com>
+Subject: [PATCH 13/17] wifi: mt76: mt7925: add pci.c
+Date: Tue, 1 Aug 2023 22:34:29 +0800
+Message-ID: <2131230a3ff4d29915e5934fb4385842c586afce.1690864199.git.deren.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <cover.1690864199.git.deren.wu@mediatek.com>
 References: <cover.1690864199.git.deren.wu@mediatek.com>
@@ -74,8 +70,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230801_073549_793537_8FE3888E 
-X-CRM114-Status: GOOD (  18.74  )
+X-CRM114-CacheID: sfid-20230801_073550_672084_9890682E 
+X-CRM114-Status: GOOD (  21.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,335 +93,602 @@ Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt7925/debugfs.c   | 319 ++++++++++++++++++
- 1 file changed, 319 insertions(+)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
+ .../net/wireless/mediatek/mt76/mt7925/pci.c   | 586 ++++++++++++++++++
+ 1 file changed, 586 insertions(+)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/pci.c
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
 new file mode 100644
-index 000000000000..1e2fc6577e78
+index 000000000000..08ef75e24e1c
 --- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
-@@ -0,0 +1,319 @@
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+@@ -0,0 +1,586 @@
 +// SPDX-License-Identifier: ISC
 +/* Copyright (C) 2023 MediaTek Inc. */
 +
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/pci.h>
++
 +#include "mt7925.h"
++#include "mac.h"
 +#include "mcu.h"
++#include "../dma.h"
 +
-+static int
-+mt7925_reg_set(void *data, u64 val)
++static const struct pci_device_id mt7925_pci_device_table[] = {
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7925),
++		.driver_data = (kernel_ulong_t)MT7925_FIRMWARE_WM },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0717),
++		.driver_data = (kernel_ulong_t)MT7925_FIRMWARE_WM },
++	{ },
++};
++
++static bool mt7925_disable_aspm;
++module_param_named(disable_aspm, mt7925_disable_aspm, bool, 0644);
++MODULE_PARM_DESC(disable_aspm, "disable PCI ASPM support");
++
++static int mt7925e_init_reset(struct mt792x_dev *dev)
 +{
-+	struct mt792x_dev *dev = data;
-+	u32 regval = val;
-+
-+	mt792x_mutex_acquire(dev);
-+	mt7925_mcu_regval(dev, dev->mt76.debugfs_reg, &regval, true);
-+	mt792x_mutex_release(dev);
-+
-+	return 0;
++	return mt792x_wpdma_reset(dev, true);
 +}
 +
-+static int
-+mt7925_reg_get(void *data, u64 *val)
-+{
-+	struct mt792x_dev *dev = data;
-+	u32 regval;
-+	int ret;
-+
-+	mt792x_mutex_acquire(dev);
-+	ret = mt7925_mcu_regval(dev, dev->mt76.debugfs_reg, &regval, false);
-+	mt792x_mutex_release(dev);
-+	if (!ret)
-+		*val = regval;
-+
-+	return 0;
-+}
-+
-+DEFINE_DEBUGFS_ATTRIBUTE(fops_regval, mt7925_reg_get, mt7925_reg_set,
-+			 "0x%08llx\n");
-+static int
-+mt7925_fw_debug_set(void *data, u64 val)
-+{
-+	struct mt792x_dev *dev = data;
-+
-+	mt792x_mutex_acquire(dev);
-+
-+	dev->fw_debug = (u8)val;
-+	mt7925_mcu_fw_log_2_host(dev, dev->fw_debug);
-+
-+	mt792x_mutex_release(dev);
-+
-+	return 0;
-+}
-+
-+static int
-+mt7925_fw_debug_get(void *data, u64 *val)
-+{
-+	struct mt792x_dev *dev = data;
-+
-+	*val = dev->fw_debug;
-+
-+	return 0;
-+}
-+
-+DEFINE_DEBUGFS_ATTRIBUTE(fops_fw_debug, mt7925_fw_debug_get,
-+			 mt7925_fw_debug_set, "%lld\n");
-+
-+DEFINE_SHOW_ATTRIBUTE(mt792x_tx_stats);
-+
-+static void
-+mt7925_seq_puts_array(struct seq_file *file, const char *str,
-+		      s8 val[][2], int len, u8 band_idx)
++static void mt7925e_unregister_device(struct mt792x_dev *dev)
 +{
 +	int i;
++	struct mt76_connac_pm *pm = &dev->pm;
 +
-+	seq_printf(file, "%-22s:", str);
-+	for (i = 0; i < len; i++)
-+		if (val[i][band_idx] == 127)
-+			seq_printf(file, " %6s", "N.A");
-+		else
-+			seq_printf(file, " %6d", val[i][band_idx]);
-+	seq_puts(file, "\n");
++	cancel_work_sync(&dev->init_work);
++	mt76_unregister_device(&dev->mt76);
++	mt76_for_each_q_rx(&dev->mt76, i)
++		napi_disable(&dev->mt76.napi[i]);
++	cancel_delayed_work_sync(&pm->ps_work);
++	cancel_work_sync(&pm->wake_work);
++	cancel_work_sync(&dev->reset_work);
++
++	mt7925_tx_token_put(dev);
++	__mt792x_mcu_drv_pmctrl(dev);
++	mt792x_dma_cleanup(dev);
++	mt792x_wfsys_reset(dev);
++	skb_queue_purge(&dev->mt76.mcu.res_q);
++
++	tasklet_disable(&dev->mt76.irq_tasklet);
 +}
 +
-+#define mt7925_print_txpwr_entry(prefix, rate, idx)	\
-+({							\
-+	mt7925_seq_puts_array(s, #prefix " (tmac)",	\
-+			      txpwr->rate,		\
-+			      ARRAY_SIZE(txpwr->rate),	\
-+			      idx);			\
-+})
-+
-+static inline void
-+mt7925_eht_txpwr(struct seq_file *s, struct mt7925_txpwr *txpwr, u8 band_idx)
++static void mt7925_reg_remap_restore(struct mt792x_dev *dev)
 +{
-+	seq_printf(s, "%-22s  %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s\n",
-+		   " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4", "mcs5",
-+		   "mcs6", "mcs7", "mcs8", "mcs9", "mcs10", "mcs11",
-+		   "mcs12", "mcs13", "mcs14", "mcs15");
-+	mt7925_print_txpwr_entry(EHT26, eht26, band_idx);
-+	mt7925_print_txpwr_entry(EHT52, eht52, band_idx);
-+	mt7925_print_txpwr_entry(EHT106, eht106, band_idx);
-+	mt7925_print_txpwr_entry(EHT242, eht242, band_idx);
-+	mt7925_print_txpwr_entry(EHT484, eht484, band_idx);
++	/* remap to ori status */
++	if (unlikely(dev->backup_l1)) {
++		dev->bus_ops->wr(&dev->mt76, MT_HIF_REMAP_L1, dev->backup_l1);
++		dev->backup_l1 = 0;
++	}
 +
-+	mt7925_print_txpwr_entry(EHT996, eht996, band_idx);
-+	mt7925_print_txpwr_entry(EHT996x2, eht996x2, band_idx);
-+	mt7925_print_txpwr_entry(EHT996x4, eht996x4, band_idx);
-+	mt7925_print_txpwr_entry(EHT26_52, eht26_52, band_idx);
-+	mt7925_print_txpwr_entry(EHT26_106, eht26_106, band_idx);
-+	mt7925_print_txpwr_entry(EHT484_242, eht484_242, band_idx);
-+	mt7925_print_txpwr_entry(EHT996_484, eht996_484, band_idx);
-+	mt7925_print_txpwr_entry(EHT996_484_242, eht996_484_242, band_idx);
-+	mt7925_print_txpwr_entry(EHT996x2_484, eht996x2_484, band_idx);
-+	mt7925_print_txpwr_entry(EHT996x3, eht996x3, band_idx);
-+	mt7925_print_txpwr_entry(EHT996x3_484, eht996x3_484, band_idx);
++	if (dev->backup_l2) {
++		dev->bus_ops->wr(&dev->mt76, MT_HIF_REMAP_L2, dev->backup_l2);
++		dev->backup_l2 = 0;
++	}
 +}
 +
-+static int
-+mt7925_txpwr(struct seq_file *s, void *data)
++static u32 mt7925_reg_map_l1(struct mt792x_dev *dev, u32 addr)
 +{
-+	struct mt792x_dev *dev = dev_get_drvdata(s->private);
-+	struct mt7925_txpwr *txpwr = NULL;
-+	u8 band_idx = dev->mphy.band_idx;
-+	int ret = 0;
++	u32 offset = FIELD_GET(MT_HIF_REMAP_L1_OFFSET, addr);
++	u32 base = FIELD_GET(MT_HIF_REMAP_L1_BASE, addr);
 +
-+	txpwr = devm_kmalloc(dev->mt76.dev, sizeof(*txpwr), GFP_KERNEL);
++	dev->backup_l1 = dev->bus_ops->rr(&dev->mt76, MT_HIF_REMAP_L1);
 +
-+	if (!txpwr)
-+		return -ENOMEM;
++	dev->bus_ops->rmw(&dev->mt76, MT_HIF_REMAP_L1,
++			  MT_HIF_REMAP_L1_MASK,
++			  FIELD_PREP(MT_HIF_REMAP_L1_MASK, base));
 +
-+	mt792x_mutex_acquire(dev);
-+	ret = mt7925_get_txpwr_info(dev, band_idx, txpwr);
-+	mt792x_mutex_release(dev);
++	/* use read to push write */
++	dev->bus_ops->rr(&dev->mt76, MT_HIF_REMAP_L1);
 +
++	return MT_HIF_REMAP_BASE_L1 + offset;
++}
++
++static u32 mt7925_reg_map_l2(struct mt792x_dev *dev, u32 addr)
++{
++	u32 base = FIELD_GET(MT_HIF_REMAP_L1_BASE, MT_HIF_REMAP_BASE_L2);
++
++	dev->backup_l2 = dev->bus_ops->rr(&dev->mt76, MT_HIF_REMAP_L1);
++
++	dev->bus_ops->rmw(&dev->mt76, MT_HIF_REMAP_L1,
++			  MT_HIF_REMAP_L1_MASK,
++			  FIELD_PREP(MT_HIF_REMAP_L1_MASK, base));
++
++	dev->bus_ops->wr(&dev->mt76, MT_HIF_REMAP_L2, addr);
++	/* use read to push write */
++	dev->bus_ops->rr(&dev->mt76, MT_HIF_REMAP_L1);
++
++	return MT_HIF_REMAP_BASE_L1;
++}
++
++static u32 __mt7925_reg_addr(struct mt792x_dev *dev, u32 addr)
++{
++	static const struct mt76_connac_reg_map fixed_map[] = {
++		{ 0x830c0000, 0x000000, 0x0001000 }, /* WF_MCU_BUS_CR_REMAP */
++		{ 0x54000000, 0x002000, 0x0001000 }, /* WFDMA PCIE0 MCU DMA0 */
++		{ 0x55000000, 0x003000, 0x0001000 }, /* WFDMA PCIE0 MCU DMA1 */
++		{ 0x56000000, 0x004000, 0x0001000 }, /* WFDMA reserved */
++		{ 0x57000000, 0x005000, 0x0001000 }, /* WFDMA MCU wrap CR */
++		{ 0x58000000, 0x006000, 0x0001000 }, /* WFDMA PCIE1 MCU DMA0 (MEM_DMA) */
++		{ 0x59000000, 0x007000, 0x0001000 }, /* WFDMA PCIE1 MCU DMA1 */
++		{ 0x820c0000, 0x008000, 0x0004000 }, /* WF_UMAC_TOP (PLE) */
++		{ 0x820c8000, 0x00c000, 0x0002000 }, /* WF_UMAC_TOP (PSE) */
++		{ 0x820cc000, 0x00e000, 0x0002000 }, /* WF_UMAC_TOP (PP) */
++		{ 0x74030000, 0x010000, 0x0001000 }, /* PCIe MAC */
++		{ 0x820e0000, 0x020000, 0x0000400 }, /* WF_LMAC_TOP BN0 (WF_CFG) */
++		{ 0x820e1000, 0x020400, 0x0000200 }, /* WF_LMAC_TOP BN0 (WF_TRB) */
++		{ 0x820e2000, 0x020800, 0x0000400 }, /* WF_LMAC_TOP BN0 (WF_AGG) */
++		{ 0x820e3000, 0x020c00, 0x0000400 }, /* WF_LMAC_TOP BN0 (WF_ARB) */
++		{ 0x820e4000, 0x021000, 0x0000400 }, /* WF_LMAC_TOP BN0 (WF_TMAC) */
++		{ 0x820e5000, 0x021400, 0x0000800 }, /* WF_LMAC_TOP BN0 (WF_RMAC) */
++		{ 0x820ce000, 0x021c00, 0x0000200 }, /* WF_LMAC_TOP (WF_SEC) */
++		{ 0x820e7000, 0x021e00, 0x0000200 }, /* WF_LMAC_TOP BN0 (WF_DMA) */
++		{ 0x820cf000, 0x022000, 0x0001000 }, /* WF_LMAC_TOP (WF_PF) */
++		{ 0x820e9000, 0x023400, 0x0000200 }, /* WF_LMAC_TOP BN0 (WF_WTBLOFF) */
++		{ 0x820ea000, 0x024000, 0x0000200 }, /* WF_LMAC_TOP BN0 (WF_ETBF) */
++		{ 0x820eb000, 0x024200, 0x0000400 }, /* WF_LMAC_TOP BN0 (WF_LPON) */
++		{ 0x820ec000, 0x024600, 0x0000200 }, /* WF_LMAC_TOP BN0 (WF_INT) */
++		{ 0x820ed000, 0x024800, 0x0000800 }, /* WF_LMAC_TOP BN0 (WF_MIB) */
++		{ 0x820ca000, 0x026000, 0x0002000 }, /* WF_LMAC_TOP BN0 (WF_MUCOP) */
++		{ 0x820d0000, 0x030000, 0x0010000 }, /* WF_LMAC_TOP (WF_WTBLON) */
++		{ 0x40000000, 0x070000, 0x0010000 }, /* WF_UMAC_SYSRAM */
++		{ 0x00400000, 0x080000, 0x0010000 }, /* WF_MCU_SYSRAM */
++		{ 0x00410000, 0x090000, 0x0010000 }, /* WF_MCU_SYSRAM (configure register) */
++		{ 0x820f0000, 0x0a0000, 0x0000400 }, /* WF_LMAC_TOP BN1 (WF_CFG) */
++		{ 0x820f1000, 0x0a0600, 0x0000200 }, /* WF_LMAC_TOP BN1 (WF_TRB) */
++		{ 0x820f2000, 0x0a0800, 0x0000400 }, /* WF_LMAC_TOP BN1 (WF_AGG) */
++		{ 0x820f3000, 0x0a0c00, 0x0000400 }, /* WF_LMAC_TOP BN1 (WF_ARB) */
++		{ 0x820f4000, 0x0a1000, 0x0000400 }, /* WF_LMAC_TOP BN1 (WF_TMAC) */
++		{ 0x820f5000, 0x0a1400, 0x0000800 }, /* WF_LMAC_TOP BN1 (WF_RMAC) */
++		{ 0x820f7000, 0x0a1e00, 0x0000200 }, /* WF_LMAC_TOP BN1 (WF_DMA) */
++		{ 0x820f9000, 0x0a3400, 0x0000200 }, /* WF_LMAC_TOP BN1 (WF_WTBLOFF) */
++		{ 0x820fa000, 0x0a4000, 0x0000200 }, /* WF_LMAC_TOP BN1 (WF_ETBF) */
++		{ 0x820fb000, 0x0a4200, 0x0000400 }, /* WF_LMAC_TOP BN1 (WF_LPON) */
++		{ 0x820fc000, 0x0a4600, 0x0000200 }, /* WF_LMAC_TOP BN1 (WF_INT) */
++		{ 0x820fd000, 0x0a4800, 0x0000800 }, /* WF_LMAC_TOP BN1 (WF_MIB) */
++		{ 0x820c4000, 0x0a8000, 0x0004000 }, /* WF_LMAC_TOP BN1 (WF_MUCOP) */
++		{ 0x820b0000, 0x0ae000, 0x0001000 }, /* [APB2] WFSYS_ON */
++		{ 0x80020000, 0x0b0000, 0x0010000 }, /* WF_TOP_MISC_OFF */
++		{ 0x81020000, 0x0c0000, 0x0010000 }, /* WF_TOP_MISC_ON */
++		{ 0x7c020000, 0x0d0000, 0x0010000 }, /* CONN_INFRA, wfdma */
++		{ 0x7c060000, 0x0e0000, 0x0010000 }, /* CONN_INFRA, conn_host_csr_top */
++		{ 0x7c000000, 0x0f0000, 0x0010000 }, /* CONN_INFRA */
++		{ 0x70020000, 0x1f0000, 0x0010000 }, /* Reserved for CBTOP, can't switch */
++		{ 0x7c500000, 0x060000, 0x2000000 }, /* remap */
++		{ 0x0, 0x0, 0x0 } /* End */
++	};
++	int i;
++
++	if (addr < 0x200000)
++		return addr;
++
++	mt7925_reg_remap_restore(dev);
++
++	for (i = 0; i < ARRAY_SIZE(fixed_map); i++) {
++		u32 ofs;
++
++		if (addr < fixed_map[i].phys)
++			continue;
++
++		ofs = addr - fixed_map[i].phys;
++		if (ofs > fixed_map[i].size)
++			continue;
++
++		return fixed_map[i].maps + ofs;
++	}
++
++	if ((addr >= 0x18000000 && addr < 0x18c00000) ||
++	    (addr >= 0x70000000 && addr < 0x78000000) ||
++	    (addr >= 0x7c000000 && addr < 0x7c400000))
++		return mt7925_reg_map_l1(dev, addr);
++
++	return mt7925_reg_map_l2(dev, addr);
++}
++
++static u32 mt7925_rr(struct mt76_dev *mdev, u32 offset)
++{
++	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
++	u32 addr = __mt7925_reg_addr(dev, offset);
++
++	return dev->bus_ops->rr(mdev, addr);
++}
++
++static void mt7925_wr(struct mt76_dev *mdev, u32 offset, u32 val)
++{
++	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
++	u32 addr = __mt7925_reg_addr(dev, offset);
++
++	dev->bus_ops->wr(mdev, addr, val);
++}
++
++static u32 mt7925_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 val)
++{
++	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
++	u32 addr = __mt7925_reg_addr(dev, offset);
++
++	return dev->bus_ops->rmw(mdev, addr, mask, val);
++}
++
++static int mt7925_dma_init(struct mt792x_dev *dev)
++{
++	int ret;
++
++	mt76_dma_attach(&dev->mt76);
++
++	ret = mt792x_dma_disable(dev, true);
 +	if (ret)
-+		goto out;
++		return ret;
 +
-+	seq_printf(s, "%-22s  %6s %6s %6s %6s\n",
-+		   " ", "1m", "2m", "5m", "11m");
-+	mt7925_print_txpwr_entry(CCK, cck, band_idx);
++	/* init tx queue */
++	ret = mt76_connac_init_tx_queues(dev->phy.mt76, MT7925_TXQ_BAND0,
++					 MT7925_TX_RING_SIZE,
++					 MT_TX_RING_BASE, 0);
++	if (ret)
++		return ret;
 +
-+	seq_printf(s, "%-22s  %6s %6s %6s %6s %6s %6s %6s %6s\n",
-+		   " ", "6m", "9m", "12m", "18m", "24m", "36m",
-+		   "48m", "54m");
-+	mt7925_print_txpwr_entry(OFDM, ofdm, band_idx);
++	mt76_wr(dev, MT_WFDMA0_TX_RING0_EXT_CTRL, 0x4);
 +
-+	seq_printf(s, "%-22s  %6s %6s %6s %6s %6s %6s %6s %6s\n",
-+		   " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4", "mcs5",
-+		   "mcs6", "mcs7");
-+	mt7925_print_txpwr_entry(HT20, ht20, band_idx);
++	/* command to WM */
++	ret = mt76_init_mcu_queue(&dev->mt76, MT_MCUQ_WM, MT7925_TXQ_MCU_WM,
++				  MT7925_TX_MCU_RING_SIZE, MT_TX_RING_BASE);
++	if (ret)
++		return ret;
 +
-+	seq_printf(s, "%-22s  %6s %6s %6s %6s %6s %6s %6s %6s %6s\n",
-+		   " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4", "mcs5",
-+		   "mcs6", "mcs7", "mcs32");
-+	mt7925_print_txpwr_entry(HT40, ht40, band_idx);
++	/* firmware download */
++	ret = mt76_init_mcu_queue(&dev->mt76, MT_MCUQ_FWDL, MT7925_TXQ_FWDL,
++				  MT7925_TX_FWDL_RING_SIZE, MT_TX_RING_BASE);
++	if (ret)
++		return ret;
 +
-+	seq_printf(s, "%-22s  %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s\n",
-+		   " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4", "mcs5",
-+		   "mcs6", "mcs7", "mcs8", "mcs9", "mcs10", "mcs11");
-+	mt7925_print_txpwr_entry(VHT20, vht20, band_idx);
-+	mt7925_print_txpwr_entry(VHT40, vht40, band_idx);
++	/* rx event */
++	ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_MCU],
++			       MT7925_RXQ_MCU_WM, MT7925_RX_MCU_RING_SIZE,
++			       MT_RX_BUF_SIZE, MT_RX_EVENT_RING_BASE);
++	if (ret)
++		return ret;
 +
-+	mt7925_print_txpwr_entry(VHT80, vht80, band_idx);
-+	mt7925_print_txpwr_entry(VHT160, vht160, band_idx);
++	/* rx data */
++	ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_MAIN],
++			       MT7925_RXQ_BAND0, MT7925_RX_RING_SIZE,
++			       MT_RX_BUF_SIZE, MT_RX_DATA_RING_BASE);
++	if (ret)
++		return ret;
 +
-+	mt7925_print_txpwr_entry(HE26, he26, band_idx);
-+	mt7925_print_txpwr_entry(HE52, he52, band_idx);
-+	mt7925_print_txpwr_entry(HE106, he106, band_idx);
-+	mt7925_print_txpwr_entry(HE242, he242, band_idx);
-+	mt7925_print_txpwr_entry(HE484, he484, band_idx);
++	ret = mt76_init_queues(dev, mt792x_poll_rx);
++	if (ret < 0)
++		return ret;
 +
-+	mt7925_print_txpwr_entry(HE996, he996, band_idx);
-+	mt7925_print_txpwr_entry(HE996x2, he996x2, band_idx);
++	netif_napi_add_tx(&dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
++			  mt792x_poll_tx);
++	napi_enable(&dev->mt76.tx_napi);
 +
-+	mt7925_eht_txpwr(s, txpwr, band_idx);
++	return mt792x_dma_enable(dev);
++}
 +
-+out:
-+	devm_kfree(dev->mt76.dev, txpwr);
++static int mt7925_pci_probe(struct pci_dev *pdev,
++			    const struct pci_device_id *id)
++{
++	static const struct mt76_driver_ops drv_ops = {
++		/* txwi_size = txd size + txp size */
++		.txwi_size = MT_TXD_SIZE + sizeof(struct mt76_connac_hw_txp),
++		.drv_flags = MT_DRV_TXWI_NO_FREE | MT_DRV_HW_MGMT_TXQ |
++			     MT_DRV_AMSDU_OFFLOAD,
++		.survey_flags = SURVEY_INFO_TIME_TX |
++				SURVEY_INFO_TIME_RX |
++				SURVEY_INFO_TIME_BSS_RX,
++		.token_size = MT7925_TOKEN_SIZE,
++		.tx_prepare_skb = mt7925e_tx_prepare_skb,
++		.tx_complete_skb = mt76_connac_tx_complete_skb,
++		.rx_check = mt7925_rx_check,
++		.rx_skb = mt7925_queue_rx_skb,
++		.rx_poll_complete = mt792x_rx_poll_complete,
++		.sta_add = mt7925_mac_sta_add,
++		.sta_assoc = mt7925_mac_sta_assoc,
++		.sta_remove = mt7925_mac_sta_remove,
++		.update_survey = mt792x_update_channel,
++	};
++	static const struct mt792x_hif_ops mt7925_pcie_ops = {
++		.init_reset = mt7925e_init_reset,
++		.reset = mt7925e_mac_reset,
++		.mcu_init = mt7925e_mcu_init,
++		.drv_own = mt792xe_mcu_drv_pmctrl,
++		.fw_own = mt792xe_mcu_fw_pmctrl,
++	};
++	static const struct mt792x_irq_map irq_map = {
++		.host_irq_enable = MT_WFDMA0_HOST_INT_ENA,
++		.tx = {
++			.all_complete_mask = MT_INT_TX_DONE_ALL,
++			.mcu_complete_mask = MT_INT_TX_DONE_MCU,
++		},
++		.rx = {
++			.data_complete_mask = HOST_RX_DONE_INT_ENA2,
++			.wm_complete_mask = HOST_RX_DONE_INT_ENA0,
++		},
++	};
++	struct ieee80211_ops *ops;
++	struct mt76_bus_ops *bus_ops;
++	struct mt792x_dev *dev;
++	struct mt76_dev *mdev;
++	u8 features;
++	int ret;
++	u16 cmd;
++
++	ret = pcim_enable_device(pdev);
++	if (ret)
++		return ret;
++
++	ret = pcim_iomap_regions(pdev, BIT(0), pci_name(pdev));
++	if (ret)
++		return ret;
++
++	pci_read_config_word(pdev, PCI_COMMAND, &cmd);
++	if (!(cmd & PCI_COMMAND_MEMORY)) {
++		cmd |= PCI_COMMAND_MEMORY;
++		pci_write_config_word(pdev, PCI_COMMAND, cmd);
++	}
++	pci_set_master(pdev);
++
++	ret = pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
++	if (ret < 0)
++		return ret;
++
++	ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
++	if (ret)
++		goto err_free_pci_vec;
++
++	if (mt7925_disable_aspm)
++		mt76_pci_disable_aspm(pdev);
++
++	ops = mt792x_get_mac80211_ops(&pdev->dev, &mt7925_ops,
++				      (void *)id->driver_data, &features);
++	if (!ops) {
++		ret = -ENOMEM;
++		goto err_free_pci_vec;
++	}
++
++	mdev = mt76_alloc_device(&pdev->dev, sizeof(*dev), ops, &drv_ops);
++	if (!mdev) {
++		ret = -ENOMEM;
++		goto err_free_pci_vec;
++	}
++
++	pci_set_drvdata(pdev, mdev);
++
++	dev = container_of(mdev, struct mt792x_dev, mt76);
++	dev->fw_features = features;
++	dev->hif_ops = &mt7925_pcie_ops;
++	dev->irq_map = &irq_map;
++	mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
++	tasklet_init(&mdev->irq_tasklet, mt792x_irq_tasklet, (unsigned long)dev);
++
++	dev->phy.dev = dev;
++	dev->phy.mt76 = &dev->mt76.phy;
++	dev->mt76.phy.priv = &dev->phy;
++	dev->bus_ops = dev->mt76.bus;
++	bus_ops = devm_kmemdup(dev->mt76.dev, dev->bus_ops, sizeof(*bus_ops),
++			       GFP_KERNEL);
++	if (!bus_ops) {
++		ret = -ENOMEM;
++		goto err_free_dev;
++	}
++
++	bus_ops->rr = mt7925_rr;
++	bus_ops->wr = mt7925_wr;
++	bus_ops->rmw = mt7925_rmw;
++	dev->mt76.bus = bus_ops;
++
++	ret = __mt792x_mcu_fw_pmctrl(dev);
++	if (ret)
++		goto err_free_dev;
++
++	ret = __mt792xe_mcu_drv_pmctrl(dev);
++	if (ret)
++		goto err_free_dev;
++
++	mdev->rev = (mt76_rr(dev, MT_HW_CHIPID) << 16) |
++		    (mt76_rr(dev, MT_HW_REV) & 0xff);
++
++	dev_info(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
++
++	ret = mt792x_wfsys_reset(dev);
++	if (ret)
++		goto err_free_dev;
++
++	mt76_wr(dev, irq_map.host_irq_enable, 0);
++
++	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
++
++	ret = devm_request_irq(mdev->dev, pdev->irq, mt792x_irq_handler,
++			       IRQF_SHARED, KBUILD_MODNAME, dev);
++	if (ret)
++		goto err_free_dev;
++
++	ret = mt7925_dma_init(dev);
++	if (ret)
++		goto err_free_irq;
++
++	ret = mt7925_register_device(dev);
++	if (ret)
++		goto err_free_irq;
++
++	return 0;
++
++err_free_irq:
++	devm_free_irq(&pdev->dev, pdev->irq, dev);
++err_free_dev:
++	mt76_free_device(&dev->mt76);
++err_free_pci_vec:
++	pci_free_irq_vectors(pdev);
++
 +	return ret;
 +}
 +
-+static int
-+mt7925_pm_set(void *data, u64 val)
++static void mt7925_pci_remove(struct pci_dev *pdev)
 +{
-+	struct mt792x_dev *dev = data;
++	struct mt76_dev *mdev = pci_get_drvdata(pdev);
++	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
++
++	mt7925e_unregister_device(dev);
++	devm_free_irq(&pdev->dev, pdev->irq, dev);
++	mt76_free_device(&dev->mt76);
++	pci_free_irq_vectors(pdev);
++}
++
++static int mt7925_pci_suspend(struct device *device)
++{
++	struct pci_dev *pdev = to_pci_dev(device);
++	struct mt76_dev *mdev = pci_get_drvdata(pdev);
++	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
 +	struct mt76_connac_pm *pm = &dev->pm;
++	int i, err;
 +
-+	if (mt76_is_usb(&dev->mt76))
-+		return -EOPNOTSUPP;
++	pm->suspended = true;
++	flush_work(&dev->reset_work);
++	cancel_delayed_work_sync(&pm->ps_work);
++	cancel_work_sync(&pm->wake_work);
 +
-+	mutex_lock(&dev->mt76.mutex);
++	err = mt792x_mcu_drv_pmctrl(dev);
++	if (err < 0)
++		goto restore_suspend;
 +
-+	if (val == pm->enable_user)
-+		goto out;
-+
-+	if (!pm->enable_user) {
-+		pm->stats.last_wake_event = jiffies;
-+		pm->stats.last_doze_event = jiffies;
-+	}
-+	/* make sure the chip is awake here and ps_work is scheduled
-+	 * just at end of the this routine.
++	/* always enable deep sleep during suspend to reduce
++	 * power consumption
 +	 */
-+	pm->enable = false;
-+	mt76_connac_pm_wake(&dev->mphy, pm);
++	mt7925_mcu_set_deep_sleep(dev, true);
 +
-+	pm->enable_user = val;
-+	mt7925_set_runtime_pm(dev);
-+	mt76_connac_power_save_sched(&dev->mphy, pm);
-+out:
-+	mutex_unlock(&dev->mt76.mutex);
++	err = mt76_connac_mcu_set_hif_suspend(mdev, true);
++	if (err)
++		goto restore_suspend;
 +
-+	return 0;
-+}
++	napi_disable(&mdev->tx_napi);
++	mt76_worker_disable(&mdev->tx_worker);
 +
-+static int
-+mt7925_pm_get(void *data, u64 *val)
-+{
-+	struct mt792x_dev *dev = data;
-+
-+	*val = dev->pm.enable_user;
-+
-+	return 0;
-+}
-+
-+DEFINE_DEBUGFS_ATTRIBUTE(fops_pm, mt7925_pm_get, mt7925_pm_set, "%lld\n");
-+
-+static int
-+mt7925_deep_sleep_set(void *data, u64 val)
-+{
-+	struct mt792x_dev *dev = data;
-+	struct mt76_connac_pm *pm = &dev->pm;
-+	bool monitor = !!(dev->mphy.hw->conf.flags & IEEE80211_CONF_MONITOR);
-+	bool enable = !!val;
-+
-+	if (mt76_is_usb(&dev->mt76))
-+		return -EOPNOTSUPP;
-+
-+	mt792x_mutex_acquire(dev);
-+	if (pm->ds_enable_user == enable)
-+		goto out;
-+
-+	pm->ds_enable_user = enable;
-+	pm->ds_enable = enable && !monitor;
-+	mt7925_mcu_set_deep_sleep(dev, pm->ds_enable);
-+out:
-+	mt792x_mutex_release(dev);
-+
-+	return 0;
-+}
-+
-+static int
-+mt7925_deep_sleep_get(void *data, u64 *val)
-+{
-+	struct mt792x_dev *dev = data;
-+
-+	*val = dev->pm.ds_enable_user;
-+
-+	return 0;
-+}
-+
-+DEFINE_DEBUGFS_ATTRIBUTE(fops_ds, mt7925_deep_sleep_get,
-+			 mt7925_deep_sleep_set, "%lld\n");
-+
-+DEFINE_DEBUGFS_ATTRIBUTE(fops_pm_idle_timeout, mt792x_pm_idle_timeout_get,
-+			 mt792x_pm_idle_timeout_set, "%lld\n");
-+
-+static int mt7925_chip_reset(void *data, u64 val)
-+{
-+	struct mt792x_dev *dev = data;
-+	int ret = 0;
-+
-+	switch (val) {
-+	case 1:
-+		/* Reset wifisys directly. */
-+		mt792x_reset(&dev->mt76);
-+		break;
-+	default:
-+		/* Collect the core dump before reset wifisys. */
-+		mt792x_mutex_acquire(dev);
-+		ret = mt7925_mcu_chip_config(dev, "assert");
-+		mt792x_mutex_release(dev);
-+		break;
++	mt76_for_each_q_rx(mdev, i) {
++		napi_disable(&mdev->napi[i]);
 +	}
 +
-+	return ret;
-+}
++	/* wait until dma is idle  */
++	mt76_poll(dev, MT_WFDMA0_GLO_CFG,
++		  MT_WFDMA0_GLO_CFG_TX_DMA_BUSY |
++		  MT_WFDMA0_GLO_CFG_RX_DMA_BUSY, 0, 1000);
 +
-+DEFINE_DEBUGFS_ATTRIBUTE(fops_reset, NULL, mt7925_chip_reset, "%lld\n");
++	/* put dma disabled */
++	mt76_clear(dev, MT_WFDMA0_GLO_CFG,
++		   MT_WFDMA0_GLO_CFG_TX_DMA_EN | MT_WFDMA0_GLO_CFG_RX_DMA_EN);
 +
-+int mt7925_init_debugfs(struct mt792x_dev *dev)
-+{
-+	struct dentry *dir;
++	/* disable interrupt */
++	mt76_wr(dev, dev->irq_map->host_irq_enable, 0);
++	mt76_wr(dev, MT_WFDMA0_HOST_INT_DIS,
++		dev->irq_map->tx.all_complete_mask |
++		MT_INT_RX_DONE_ALL | MT_INT_MCU_CMD);
 +
-+	dir = mt76_register_debugfs_fops(&dev->mphy, &fops_regval);
-+	if (!dir)
-+		return -ENOMEM;
++	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0x0);
 +
-+	if (mt76_is_mmio(&dev->mt76))
-+		debugfs_create_devm_seqfile(dev->mt76.dev, "xmit-queues",
-+					    dir, mt792x_queues_read);
-+	else
-+		debugfs_create_devm_seqfile(dev->mt76.dev, "xmit-queues",
-+					    dir, mt76_queues_read);
++	synchronize_irq(pdev->irq);
++	tasklet_kill(&mdev->irq_tasklet);
 +
-+	debugfs_create_devm_seqfile(dev->mt76.dev, "acq", dir,
-+				    mt792x_queues_acq);
-+	debugfs_create_devm_seqfile(dev->mt76.dev, "txpower_sku", dir,
-+				    mt7925_txpwr);
-+	debugfs_create_file("tx_stats", 0400, dir, dev, &mt792x_tx_stats_fops);
-+	debugfs_create_file("fw_debug", 0600, dir, dev, &fops_fw_debug);
-+	debugfs_create_file("runtime-pm", 0600, dir, dev, &fops_pm);
-+	debugfs_create_file("idle-timeout", 0600, dir, dev,
-+			    &fops_pm_idle_timeout);
-+	debugfs_create_file("chip_reset", 0600, dir, dev, &fops_reset);
-+	debugfs_create_devm_seqfile(dev->mt76.dev, "runtime_pm_stats", dir,
-+				    mt792x_pm_stats);
-+	debugfs_create_file("deep-sleep", 0600, dir, dev, &fops_ds);
++	err = mt792x_mcu_fw_pmctrl(dev);
++	if (err)
++		goto restore_napi;
 +
 +	return 0;
++
++restore_napi:
++	mt76_for_each_q_rx(mdev, i) {
++		napi_enable(&mdev->napi[i]);
++	}
++	napi_enable(&mdev->tx_napi);
++
++	if (!pm->ds_enable)
++		mt7925_mcu_set_deep_sleep(dev, false);
++
++	mt76_connac_mcu_set_hif_suspend(mdev, false);
++
++restore_suspend:
++	pm->suspended = false;
++
++	if (err < 0)
++		mt792x_reset(&dev->mt76);
++
++	return err;
 +}
++
++static int mt7925_pci_resume(struct device *device)
++{
++	struct pci_dev *pdev = to_pci_dev(device);
++	struct mt76_dev *mdev = pci_get_drvdata(pdev);
++	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
++	struct mt76_connac_pm *pm = &dev->pm;
++	int i, err;
++
++	err = mt792x_mcu_drv_pmctrl(dev);
++	if (err < 0)
++		goto failed;
++
++	mt792x_wpdma_reinit_cond(dev);
++
++	/* enable interrupt */
++	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
++	mt76_connac_irq_enable(&dev->mt76,
++			       dev->irq_map->tx.all_complete_mask |
++			       MT_INT_RX_DONE_ALL | MT_INT_MCU_CMD);
++	mt76_set(dev, MT_MCU2HOST_SW_INT_ENA, MT_MCU_CMD_WAKE_RX_PCIE);
++
++	/* put dma enabled */
++	mt76_set(dev, MT_WFDMA0_GLO_CFG,
++		 MT_WFDMA0_GLO_CFG_TX_DMA_EN | MT_WFDMA0_GLO_CFG_RX_DMA_EN);
++
++	mt76_worker_enable(&mdev->tx_worker);
++
++	local_bh_disable();
++	mt76_for_each_q_rx(mdev, i) {
++		napi_enable(&mdev->napi[i]);
++		napi_schedule(&mdev->napi[i]);
++	}
++	napi_enable(&mdev->tx_napi);
++	napi_schedule(&mdev->tx_napi);
++	local_bh_enable();
++
++	err = mt76_connac_mcu_set_hif_suspend(mdev, false);
++
++	/* restore previous ds setting */
++	if (!pm->ds_enable)
++		mt7925_mcu_set_deep_sleep(dev, false);
++
++failed:
++	pm->suspended = false;
++
++	if (err < 0)
++		mt792x_reset(&dev->mt76);
++
++	return err;
++}
++
++static void mt7925_pci_shutdown(struct pci_dev *pdev)
++{
++	mt7925_pci_remove(pdev);
++}
++
++static DEFINE_SIMPLE_DEV_PM_OPS(mt7925_pm_ops, mt7925_pci_suspend, mt7925_pci_resume);
++
++static struct pci_driver mt7925_pci_driver = {
++	.name		= KBUILD_MODNAME,
++	.id_table	= mt7925_pci_device_table,
++	.probe		= mt7925_pci_probe,
++	.remove		= mt7925_pci_remove,
++	.shutdown       = mt7925_pci_shutdown,
++	.driver.pm	= pm_sleep_ptr(&mt7925_pm_ops),
++};
++
++module_pci_driver(mt7925_pci_driver);
++
++MODULE_DEVICE_TABLE(pci, mt7925_pci_device_table);
++MODULE_FIRMWARE(MT7925_FIRMWARE_WM);
++MODULE_FIRMWARE(MT7925_ROM_PATCH);
++MODULE_AUTHOR("Deren Wu <deren.wu@mediatek.com>");
++MODULE_AUTHOR("Lorenzo Bianconi <lorenzo@kernel.org>");
++MODULE_LICENSE("Dual BSD/GPL");
 -- 
 2.18.0
 
