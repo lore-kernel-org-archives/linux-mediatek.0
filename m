@@ -4,63 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4435C001E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 11:03:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 934FAC001E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 11:03:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jIxArUfpbi1AhSHbDxpI2dfUzA+pMaVmKK9q0G6a11s=; b=iivUysqSXWvP4KxdtmBVSdXg0V
-	uiyscQPlVOEq8Pj/6uhO3X4lg0SrINjYNzSsK3ZfNuJVyn8BsajBsQJwCuOeLjN1A3SIWH9GtBExa
-	vK6zapY5WVMQIr4rE8T2wKrr+ViUUKKJbo9tK4L1xGQawoUGVceJIiPQdzWA1215r0cA9FNborwUr
-	ywce0Rtu6KXmkc6b8RuTyiRvaHzaZPfGm31G/ymZPAPhc9lf0QLiXlhw9RaGsBlxy6NJ8vX6hfVlI
-	C8zfaSXyiCYOWwPib7Nu6qHgsJJJUX7iRVE/4E9N827W+NonWnF9+alIjLHyTB515koZm+ch59A07
-	iiFQbbyQ==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gJqBXmiX93tHeT0Dp9Vx+RaHaL50rUAQw+lqzycyIvc=; b=fuZUOySWAuHQebjNb1MaQL9dVJ
+	oeY/acGZ6bhv+AOViFWzLecz/sqF8Gp4xFlSdjZuUCSZv5jx+krej7/wb6F0op5PPkMVsfsJI/Tdb
+	uV3E2aKwHRum1o+wWKkG+I7jJr41ssN7cF9nYuCXL+kXrw0JiuxaswCVYGmrk8QP9yIaWa41SuEoR
+	JZO1FcuzEPDsy+9n7Lf1bTpIHvuh8GDsh1KSWe/Umj3UxxT0wp1FZ7tR2ENq2J1ePGX6D/HMoIKCJ
+	unme0ZNItuvlJ5X+EqZfqE83ceuGX9rF0y85M3vavCo9a+i6JtFfXtT5LTuqZaajxgS/xVdXFP45Q
+	HywMsNnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQn9X-0022fP-1g;
-	Tue, 01 Aug 2023 11:02:59 +0000
+	id 1qQnAH-00236y-1t;
+	Tue, 01 Aug 2023 11:03:45 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQn9R-0022ag-1s
+	id 1qQnAA-00233G-1f
 	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Aug 2023 11:02:57 +0000
+	Tue, 01 Aug 2023 11:03:43 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1qQn9J-0006g7-Ca; Tue, 01 Aug 2023 13:02:45 +0200
+	id 1qQn9L-0006er-TG; Tue, 01 Aug 2023 13:02:47 +0200
 Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1qQn9I-000MZC-LS; Tue, 01 Aug 2023 13:02:44 +0200
+	id 1qQn9G-000MYc-Qz; Tue, 01 Aug 2023 13:02:42 +0200
 Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1qQn9H-009bbR-Fv; Tue, 01 Aug 2023 13:02:43 +0200
+	id 1qQn9F-009bb2-Rs; Tue, 01 Aug 2023 13:02:41 +0200
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
+To: Russell King <linux@armlinux.org.uk>,
 	David Airlie <airlied@gmail.com>,
 	Daniel Vetter <daniel@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@pengutronix.de,
-	linux-arm-kernel@lists.infradead.org,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+	Edmund Dea <edmund.j.dea@intel.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Clark <robdclark@gmail.com>,
+	Abhinav Kumar <quic_abhinavk@quicinc.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	Johan Hovold <johan+linaro@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	"Joel Fernandes (Google)" <joel@joelfernandes.org>,
+	Akhil P Oommen <quic_akhilpo@quicinc.com>,
+	Jessica Zhang <quic_jesszhan@quicinc.com>,
+	Liu Shixin <liushixin2@huawei.com>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	Jyri Sarha <jyri.sarha@iki.fi>
-Subject: [PATCH v2 07/12] drm/mediatek: Convert to platform remove callback returning void
-Date: Tue,  1 Aug 2023 13:02:34 +0200
-Message-Id: <20230801110239.831099-8-u.kleine-koenig@pengutronix.de>
+	Su Hui <suhui@nfschina.com>,
+	Kuogee Hsieh <quic_khsieh@quicinc.com>,
+	Vinod Polimera <quic_vpolimer@quicinc.com>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Dan Carpenter <dan.carpenter@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	Jyri Sarha <jyri.sarha@iki.fi>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Sam Ravnborg <sam@ravnborg.org>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Ben Skeggs <bskeggs@redhat.com>,
+	Karol Herbst <kherbst@redhat.com>,
+	Lyude Paul <lyude@redhat.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Danilo Krummrich <dakr@redhat.com>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Deepak R Varma <drv@mailo.com>,
+	Steven Price <steven.price@arm.com>,
+	Thierry Reding <treding@nvidia.com>,
+	Jani Nikula <jani.nikula@intel.com>,
+	Alexey Brodkin <abrodkin@synopsys.com>
+Cc: dri-devel@lists.freedesktop.org,
+	kernel@pengutronix.de,
+	Russell King <linux+etnaviv@armlinux.org.uk>,
+	Christian Gmeiner <christian.gmeiner@gmail.com>,
+	etnaviv@lists.freedesktop.org,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mips@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	Sean Paul <sean@poorly.run>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	linux-arm-msm@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	nouveau@lists.freedesktop.org,
+	linux-renesas-soc@vger.kernel.org
+Subject: [PATCH v2 00/12] drm: Convert to platform remove callback returning void
+Date: Tue,  1 Aug 2023 13:02:27 +0200
+Message-Id: <20230801110239.831099-1-u.kleine-koenig@pengutronix.de>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230801110239.831099-1-u.kleine-koenig@pengutronix.de>
-References: <20230801110239.831099-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=16183; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=7qIu1bYvzC6fI8c3HUA/QPQpK23WhyOMK1caiZDNKiY=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBkyOW8M42JP8Pr1cd8tMnDC/Aps7svEUTSg+tgW ErOw/hM+KiJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZMjlvAAKCRCPgPtYfRL+ TtaaB/4w1a8Q8x25uylKl2nk3SL8/E21yj7iNwl6wLtftDDf45daRs5X+onL7ibO3j/8E0MyM0k KXtU8NUIMYaXUj3G1JZYYghSI8aAi6/a9BVJ2IE9QmNvn1pcYBcEFleOijLblrv+siodMURLFWL m/w9A8QetP6+QkcYxwpoD3sGEAAwkKlrssA0gOjmrS+xS+C/F6ctoQzMluOHH62Jceafv4K48vL /RKJfp277soP90E2EoxBLaGvq5L7zYBp09e+kBpbDB71d0OLbtSkqzwdqFzv5TMH2RA1H/L2r62 9dK2v7HaINGqqCktfsZN820H92qGq/7B1dnD9X7nMZvRK0Fg
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4647; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=lLYOduakdAZPV7h2t7p0GtcJJgBTffjjiGktWPRzcYQ=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBkyOWz7AY2J/amMZa1ly1xZnt1qVfdI+rjtzZOC 8JCyUY0p4KJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZMjlswAKCRCPgPtYfRL+ ToYFCACzSxwyZvnMzJgJyOkvEePf/ZXRnGrtlXaVQ3ZoUTHkj+i/+jpBQWVCP7WrMGN7DsJJNtK 0JA9E3Yn8ljBPqK2hZbNAJIiaj3l1RjP00t00TVHzUaRcD8bpf0MQbCl7XVh+S1lGpscwAhUhU5 EuB/uIagIPze58OicfVqTEO6iH3tvWG6Tiw+Vj2etWniKNEhnyG94qzpKxsJ1UQxqjG+th5ODs2 R/fbiH6ltN6uLcrT7oBmUbtwgnmFm0z6KSzEqBKSAi6WhI4Cz6iIb1+Kt+G3TH2c0+5ZjkMcAix V3zjdSfyyffaoQc3LkxVPtw9eSDLh/jJp7lNI4Ci05e+WBPm
 X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
@@ -68,8 +121,8 @@ X-SA-Exim-Mail-From: ukl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230801_040253_957112_27DFCB0C 
-X-CRM114-Status: GOOD (  16.98  )
+X-CRM114-CacheID: sfid-20230801_040338_737866_F1154FCD 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,455 +137,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The .remove() callback for a platform driver returns an int which makes
-many driver authors wrongly assume it's possible to do error handling by
-returning an error code. However the value returned is (mostly) ignored
-and this typically results in resource leaks. To improve here there is a
-quest to make the remove callback return void. In the first step of this
-quest all drivers are converted to .remove_new() which already returns
-void.
+Hello,
 
-Trivially convert the mediatek drm drivers from always returning zero in
-the remove callback to the void returning variant.
+(implicit) v1 of this series can be found at
+https://lore.kernel.org/dri-devel/20230507162616.1368908-1-u.kleine-koenig@pengutronix.de
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Reviewed-by: Thomas Zimmermann <tzimmermann@suse.de>
-Reviewed-by: Jyri Sarha <jyri.sarha@iki.fi>
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
----
- drivers/gpu/drm/mediatek/mtk_cec.c        | 5 ++---
- drivers/gpu/drm/mediatek/mtk_disp_aal.c   | 6 ++----
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 6 ++----
- drivers/gpu/drm/mediatek/mtk_disp_color.c | 6 ++----
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 6 ++----
- drivers/gpu/drm/mediatek/mtk_disp_merge.c | 6 ++----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c   | 6 ++----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c  | 6 ++----
- drivers/gpu/drm/mediatek/mtk_dp.c         | 6 ++----
- drivers/gpu/drm/mediatek/mtk_dpi.c        | 6 ++----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c    | 6 ++----
- drivers/gpu/drm/mediatek/mtk_dsi.c        | 6 ++----
- drivers/gpu/drm/mediatek/mtk_hdmi.c       | 5 ++---
- drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c   | 6 ++----
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.c   | 5 ++---
- 15 files changed, 30 insertions(+), 57 deletions(-)
+Back then the series contained 53 patches. A big bunch was already
+applied to drm-misc, this is the remainder; with only little changes
+compared to v1:
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_cec.c b/drivers/gpu/drm/mediatek/mtk_cec.c
-index b640bc0559e7..f47f417d8ba6 100644
---- a/drivers/gpu/drm/mediatek/mtk_cec.c
-+++ b/drivers/gpu/drm/mediatek/mtk_cec.c
-@@ -235,13 +235,12 @@ static int mtk_cec_probe(struct platform_device *pdev)
- 	return 0;
- }
- 
--static int mtk_cec_remove(struct platform_device *pdev)
-+static void mtk_cec_remove(struct platform_device *pdev)
- {
- 	struct mtk_cec *cec = platform_get_drvdata(pdev);
- 
- 	mtk_cec_htplg_irq_disable(cec);
- 	clk_disable_unprepare(cec->clk);
--	return 0;
- }
- 
- static const struct of_device_id mtk_cec_of_ids[] = {
-@@ -252,7 +251,7 @@ MODULE_DEVICE_TABLE(of, mtk_cec_of_ids);
- 
- struct platform_driver mtk_cec_driver = {
- 	.probe = mtk_cec_probe,
--	.remove = mtk_cec_remove,
-+	.remove_new = mtk_cec_remove,
- 	.driver = {
- 		.name = "mediatek-cec",
- 		.of_match_table = mtk_cec_of_ids,
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-index cdbec79474d1..136b1328e459 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-@@ -139,11 +139,9 @@ static int mtk_disp_aal_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_disp_aal_remove(struct platform_device *pdev)
-+static void mtk_disp_aal_remove(struct platform_device *pdev)
- {
- 	component_del(&pdev->dev, &mtk_disp_aal_component_ops);
--
--	return 0;
- }
- 
- static const struct mtk_disp_aal_data mt8173_aal_driver_data = {
-@@ -160,7 +158,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_aal_driver_dt_match);
- 
- struct platform_driver mtk_disp_aal_driver = {
- 	.probe		= mtk_disp_aal_probe,
--	.remove		= mtk_disp_aal_remove,
-+	.remove_new	= mtk_disp_aal_remove,
- 	.driver		= {
- 		.name	= "mediatek-disp-aal",
- 		.owner	= THIS_MODULE,
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-index 7c5e04ee5b9f..bd859008eff9 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-@@ -194,11 +194,9 @@ static int mtk_disp_ccorr_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_disp_ccorr_remove(struct platform_device *pdev)
-+static void mtk_disp_ccorr_remove(struct platform_device *pdev)
- {
- 	component_del(&pdev->dev, &mtk_disp_ccorr_component_ops);
--
--	return 0;
- }
- 
- static const struct mtk_disp_ccorr_data mt8183_ccorr_driver_data = {
-@@ -220,7 +218,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_ccorr_driver_dt_match);
- 
- struct platform_driver mtk_disp_ccorr_driver = {
- 	.probe		= mtk_disp_ccorr_probe,
--	.remove		= mtk_disp_ccorr_remove,
-+	.remove_new	= mtk_disp_ccorr_remove,
- 	.driver		= {
- 		.name	= "mediatek-disp-ccorr",
- 		.owner	= THIS_MODULE,
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-index 0b9b4b06d19c..78ea99f1444f 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-@@ -131,11 +131,9 @@ static int mtk_disp_color_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_disp_color_remove(struct platform_device *pdev)
-+static void mtk_disp_color_remove(struct platform_device *pdev)
- {
- 	component_del(&pdev->dev, &mtk_disp_color_component_ops);
--
--	return 0;
- }
- 
- static const struct mtk_disp_color_data mt2701_color_driver_data = {
-@@ -163,7 +161,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_color_driver_dt_match);
- 
- struct platform_driver mtk_disp_color_driver = {
- 	.probe		= mtk_disp_color_probe,
--	.remove		= mtk_disp_color_remove,
-+	.remove_new	= mtk_disp_color_remove,
- 	.driver		= {
- 		.name	= "mediatek-disp-color",
- 		.owner	= THIS_MODULE,
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-index 7746dceadb20..673f9a5738f2 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-@@ -182,11 +182,9 @@ static int mtk_disp_gamma_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_disp_gamma_remove(struct platform_device *pdev)
-+static void mtk_disp_gamma_remove(struct platform_device *pdev)
- {
- 	component_del(&pdev->dev, &mtk_disp_gamma_component_ops);
--
--	return 0;
- }
- 
- static const struct mtk_disp_gamma_data mt8173_gamma_driver_data = {
-@@ -208,7 +206,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
- 
- struct platform_driver mtk_disp_gamma_driver = {
- 	.probe		= mtk_disp_gamma_probe,
--	.remove		= mtk_disp_gamma_remove,
-+	.remove_new	= mtk_disp_gamma_remove,
- 	.driver		= {
- 		.name	= "mediatek-disp-gamma",
- 		.owner	= THIS_MODULE,
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-index bea8a0d8040a..e525a6b9e5b0 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-@@ -294,11 +294,9 @@ static int mtk_disp_merge_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_disp_merge_remove(struct platform_device *pdev)
-+static void mtk_disp_merge_remove(struct platform_device *pdev)
- {
- 	component_del(&pdev->dev, &mtk_disp_merge_component_ops);
--
--	return 0;
- }
- 
- static const struct of_device_id mtk_disp_merge_driver_dt_match[] = {
-@@ -310,7 +308,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_merge_driver_dt_match);
- 
- struct platform_driver mtk_disp_merge_driver = {
- 	.probe = mtk_disp_merge_probe,
--	.remove = mtk_disp_merge_remove,
-+	.remove_new = mtk_disp_merge_remove,
- 	.driver = {
- 		.name = "mediatek-disp-merge",
- 		.owner = THIS_MODULE,
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 73320a7425cd..2bffe4245466 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -561,12 +561,10 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_disp_ovl_remove(struct platform_device *pdev)
-+static void mtk_disp_ovl_remove(struct platform_device *pdev)
- {
- 	component_del(&pdev->dev, &mtk_disp_ovl_component_ops);
- 	pm_runtime_disable(&pdev->dev);
--
--	return 0;
- }
- 
- static const struct mtk_disp_ovl_data mt2701_ovl_driver_data = {
-@@ -658,7 +656,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_ovl_driver_dt_match);
- 
- struct platform_driver mtk_disp_ovl_driver = {
- 	.probe		= mtk_disp_ovl_probe,
--	.remove		= mtk_disp_ovl_remove,
-+	.remove_new	= mtk_disp_ovl_remove,
- 	.driver		= {
- 		.name	= "mediatek-disp-ovl",
- 		.owner	= THIS_MODULE,
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index a12c05786d28..faa907f2f443 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -379,13 +379,11 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_disp_rdma_remove(struct platform_device *pdev)
-+static void mtk_disp_rdma_remove(struct platform_device *pdev)
- {
- 	component_del(&pdev->dev, &mtk_disp_rdma_component_ops);
- 
- 	pm_runtime_disable(&pdev->dev);
--
--	return 0;
- }
- 
- static const struct mtk_disp_rdma_data mt2701_rdma_driver_data = {
-@@ -427,7 +425,7 @@ MODULE_DEVICE_TABLE(of, mtk_disp_rdma_driver_dt_match);
- 
- struct platform_driver mtk_disp_rdma_driver = {
- 	.probe		= mtk_disp_rdma_probe,
--	.remove		= mtk_disp_rdma_remove,
-+	.remove_new	= mtk_disp_rdma_remove,
- 	.driver		= {
- 		.name	= "mediatek-disp-rdma",
- 		.owner	= THIS_MODULE,
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 64eee77452c0..4dbc5be156f4 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -2574,7 +2574,7 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 	return 0;
- }
- 
--static int mtk_dp_remove(struct platform_device *pdev)
-+static void mtk_dp_remove(struct platform_device *pdev)
- {
- 	struct mtk_dp *mtk_dp = platform_get_drvdata(pdev);
- 
-@@ -2585,8 +2585,6 @@ static int mtk_dp_remove(struct platform_device *pdev)
- 	platform_device_unregister(mtk_dp->phy_dev);
- 	if (mtk_dp->audio_pdev)
- 		platform_device_unregister(mtk_dp->audio_pdev);
--
--	return 0;
- }
- 
- #ifdef CONFIG_PM_SLEEP
-@@ -2645,7 +2643,7 @@ MODULE_DEVICE_TABLE(of, mtk_dp_of_match);
- 
- static struct platform_driver mtk_dp_driver = {
- 	.probe = mtk_dp_probe,
--	.remove = mtk_dp_remove,
-+	.remove_new = mtk_dp_remove,
- 	.driver = {
- 		.name = "mediatek-drm-dp",
- 		.of_match_table = mtk_dp_of_match,
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 28bdb1f427ff..0ef722c24150 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -1101,14 +1101,12 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 	return 0;
- }
- 
--static int mtk_dpi_remove(struct platform_device *pdev)
-+static void mtk_dpi_remove(struct platform_device *pdev)
- {
- 	struct mtk_dpi *dpi = platform_get_drvdata(pdev);
- 
- 	component_del(&pdev->dev, &mtk_dpi_component_ops);
- 	drm_bridge_remove(&dpi->bridge);
--
--	return 0;
- }
- 
- static const struct of_device_id mtk_dpi_of_ids[] = {
-@@ -1139,7 +1137,7 @@ MODULE_DEVICE_TABLE(of, mtk_dpi_of_ids);
- 
- struct platform_driver mtk_dpi_driver = {
- 	.probe = mtk_dpi_probe,
--	.remove = mtk_dpi_remove,
-+	.remove_new = mtk_dpi_remove,
- 	.driver = {
- 		.name = "mediatek-dpi",
- 		.of_match_table = mtk_dpi_of_ids,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 961715dd5b11..d16cc8219105 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -907,7 +907,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_drm_remove(struct platform_device *pdev)
-+static void mtk_drm_remove(struct platform_device *pdev)
- {
- 	struct mtk_drm_private *private = platform_get_drvdata(pdev);
- 	int i;
-@@ -917,8 +917,6 @@ static int mtk_drm_remove(struct platform_device *pdev)
- 	of_node_put(private->mutex_node);
- 	for (i = 0; i < DDP_COMPONENT_DRM_ID_MAX; i++)
- 		of_node_put(private->comp_node[i]);
--
--	return 0;
- }
- 
- static int mtk_drm_sys_prepare(struct device *dev)
-@@ -951,7 +949,7 @@ static const struct dev_pm_ops mtk_drm_pm_ops = {
- 
- static struct platform_driver mtk_drm_platform_driver = {
- 	.probe	= mtk_drm_probe,
--	.remove	= mtk_drm_remove,
-+	.remove_new = mtk_drm_remove,
- 	.driver	= {
- 		.name	= "mediatek-drm",
- 		.pm     = &mtk_drm_pm_ops,
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 7d5250351193..d8bfc2cce54d 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -1178,14 +1178,12 @@ static int mtk_dsi_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_dsi_remove(struct platform_device *pdev)
-+static void mtk_dsi_remove(struct platform_device *pdev)
- {
- 	struct mtk_dsi *dsi = platform_get_drvdata(pdev);
- 
- 	mtk_output_dsi_disable(dsi);
- 	mipi_dsi_host_unregister(&dsi->host);
--
--	return 0;
- }
- 
- static const struct mtk_dsi_driver_data mt8173_dsi_driver_data = {
-@@ -1223,7 +1221,7 @@ MODULE_DEVICE_TABLE(of, mtk_dsi_of_match);
- 
- struct platform_driver mtk_dsi_driver = {
- 	.probe = mtk_dsi_probe,
--	.remove = mtk_dsi_remove,
-+	.remove_new = mtk_dsi_remove,
- 	.driver = {
- 		.name = "mtk-dsi",
- 		.of_match_table = mtk_dsi_of_match,
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 0a8e0a13f516..86133bf16326 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1746,13 +1746,12 @@ static int mtk_drm_hdmi_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_drm_hdmi_remove(struct platform_device *pdev)
-+static void mtk_drm_hdmi_remove(struct platform_device *pdev)
- {
- 	struct mtk_hdmi *hdmi = platform_get_drvdata(pdev);
- 
- 	drm_bridge_remove(&hdmi->bridge);
- 	mtk_hdmi_clk_disable_audio(hdmi);
--	return 0;
- }
- 
- #ifdef CONFIG_PM_SLEEP
-@@ -1806,7 +1805,7 @@ MODULE_DEVICE_TABLE(of, mtk_drm_hdmi_of_ids);
- 
- static struct platform_driver mtk_hdmi_driver = {
- 	.probe = mtk_drm_hdmi_probe,
--	.remove = mtk_drm_hdmi_remove,
-+	.remove_new = mtk_drm_hdmi_remove,
- 	.driver = {
- 		.name = "mediatek-drm-hdmi",
- 		.of_match_table = mtk_drm_hdmi_of_ids,
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
-index 4d39ea0a05ca..d675c954befe 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c
-@@ -324,14 +324,12 @@ static int mtk_hdmi_ddc_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_hdmi_ddc_remove(struct platform_device *pdev)
-+static void mtk_hdmi_ddc_remove(struct platform_device *pdev)
- {
- 	struct mtk_hdmi_ddc *ddc = platform_get_drvdata(pdev);
- 
- 	i2c_del_adapter(&ddc->adap);
- 	clk_disable_unprepare(ddc->clk);
--
--	return 0;
- }
- 
- static const struct of_device_id mtk_hdmi_ddc_match[] = {
-@@ -342,7 +340,7 @@ MODULE_DEVICE_TABLE(of, mtk_hdmi_ddc_match);
- 
- struct platform_driver mtk_hdmi_ddc_driver = {
- 	.probe = mtk_hdmi_ddc_probe,
--	.remove = mtk_hdmi_ddc_remove,
-+	.remove_new = mtk_hdmi_ddc_remove,
- 	.driver = {
- 		.name = "mediatek-hdmi-ddc",
- 		.of_match_table = mtk_hdmi_ddc_match,
-diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-index 4806bdd4b8fa..c3adaeefd551 100644
---- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-@@ -314,11 +314,10 @@ static int mtk_mdp_rdma_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
--static int mtk_mdp_rdma_remove(struct platform_device *pdev)
-+static void mtk_mdp_rdma_remove(struct platform_device *pdev)
- {
- 	component_del(&pdev->dev, &mtk_mdp_rdma_component_ops);
- 	pm_runtime_disable(&pdev->dev);
--	return 0;
- }
- 
- static const struct of_device_id mtk_mdp_rdma_driver_dt_match[] = {
-@@ -329,7 +328,7 @@ MODULE_DEVICE_TABLE(of, mtk_mdp_rdma_driver_dt_match);
- 
- struct platform_driver mtk_mdp_rdma_driver = {
- 	.probe = mtk_mdp_rdma_probe,
--	.remove = mtk_mdp_rdma_remove,
-+	.remove_new = mtk_mdp_rdma_remove,
- 	.driver = {
- 		.name = "mediatek-mdp-rdma",
- 		.owner = THIS_MODULE,
+ - rebased to todays drm-misc-next
+ - Squashed together the two mediatek patches
+ - Adapted the subject prefix for the arcpgu as pointed out by Thomas
+   Zimmermann. (This affected two patches originally, one of them was merged
+   already before anyhow (next-20230801~41^2~34^2~179).)
+
+All these patches are pairwise independant of each other and so can be
+applied individually to their respective maintainer trees. I'm open to
+get these all in together via drm-misc, but each maintainer picking the
+individual patches that they are repsonsible for is maybe the easier
+approach?!
+
+Best regards
+Uwe
+   
+
+Uwe Kleine-König (12):
+  drm/armada: Convert to platform remove callback returning void
+  drm/etnaviv: Convert to platform remove callback returning void
+  drm/imx/dcss: Convert to platform remove callback returning void
+  drm/imx/ipuv3: Convert to platform remove callback returning void
+  drm/ingenic: Convert to platform remove callback returning void
+  drm/kmb: Convert to platform remove callback returning void
+  drm/mediatek: Convert to platform remove callback returning void
+  drm/msm: Convert to platform remove callback returning void
+  drm/nouveau: Convert to platform remove callback returning void
+  drm/shmobile: Convert to platform remove callback returning void
+  drm/sprd: Convert to platform remove callback returning void
+  drm/arcpgu: Convert to platform remove callback returning void
+
+ drivers/gpu/drm/armada/armada_crtc.c             | 5 ++---
+ drivers/gpu/drm/armada/armada_drv.c              | 5 ++---
+ drivers/gpu/drm/etnaviv/etnaviv_drv.c            | 6 ++----
+ drivers/gpu/drm/etnaviv/etnaviv_gpu.c            | 5 ++---
+ drivers/gpu/drm/imx/dcss/dcss-drv.c              | 6 ++----
+ drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c          | 6 ++----
+ drivers/gpu/drm/imx/ipuv3/imx-drm-core.c         | 5 ++---
+ drivers/gpu/drm/imx/ipuv3/imx-ldb.c              | 5 ++---
+ drivers/gpu/drm/imx/ipuv3/imx-tve.c              | 5 ++---
+ drivers/gpu/drm/imx/ipuv3/ipuv3-crtc.c           | 5 ++---
+ drivers/gpu/drm/imx/ipuv3/parallel-display.c     | 6 ++----
+ drivers/gpu/drm/ingenic/ingenic-drm-drv.c        | 6 ++----
+ drivers/gpu/drm/ingenic/ingenic-ipu.c            | 5 ++---
+ drivers/gpu/drm/kmb/kmb_drv.c                    | 5 ++---
+ drivers/gpu/drm/mediatek/mtk_cec.c               | 5 ++---
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c          | 6 ++----
+ drivers/gpu/drm/mediatek/mtk_disp_ccorr.c        | 6 ++----
+ drivers/gpu/drm/mediatek/mtk_disp_color.c        | 6 ++----
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c        | 6 ++----
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c        | 6 ++----
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c          | 6 ++----
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c         | 6 ++----
+ drivers/gpu/drm/mediatek/mtk_dp.c                | 6 ++----
+ drivers/gpu/drm/mediatek/mtk_dpi.c               | 6 ++----
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c           | 6 ++----
+ drivers/gpu/drm/mediatek/mtk_dsi.c               | 6 ++----
+ drivers/gpu/drm/mediatek/mtk_hdmi.c              | 5 ++---
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c          | 6 ++----
+ drivers/gpu/drm/mediatek/mtk_mdp_rdma.c          | 5 ++---
+ drivers/gpu/drm/msm/adreno/adreno_device.c       | 5 ++---
+ drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c          | 6 ++----
+ drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c         | 6 ++----
+ drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c         | 5 ++---
+ drivers/gpu/drm/msm/dp/dp_display.c              | 6 ++----
+ drivers/gpu/drm/msm/dsi/dsi.c                    | 6 ++----
+ drivers/gpu/drm/msm/hdmi/hdmi.c                  | 6 ++----
+ drivers/gpu/drm/msm/hdmi/hdmi_phy.c              | 6 ++----
+ drivers/gpu/drm/msm/msm_drv.c                    | 6 ++----
+ drivers/gpu/drm/msm/msm_mdss.c                   | 6 ++----
+ drivers/gpu/drm/nouveau/nouveau_platform.c       | 5 ++---
+ drivers/gpu/drm/renesas/shmobile/shmob_drm_drv.c | 6 ++----
+ drivers/gpu/drm/sprd/sprd_dpu.c                  | 6 ++----
+ drivers/gpu/drm/sprd/sprd_drm.c                  | 5 ++---
+ drivers/gpu/drm/sprd/sprd_dsi.c                  | 6 ++----
+ drivers/gpu/drm/tiny/arcpgu.c                    | 6 ++----
+ 45 files changed, 90 insertions(+), 164 deletions(-)
+
+base-commit: 290cdd7959a734a0ef20ec096af7810177c4b9f8
 -- 
 2.39.2
 
