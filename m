@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3011EC00528
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 11:59:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 827F4C0015E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 11:59:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rw2upx4uQDzS7mQMAiyiJi/e2686xh+8+FE7qbo/1aA=; b=LB7jv3a2827i5kXDfhjvVuIYGQ
-	Y8SJPzbFFfetF0JUf34cOKaQNuw24IxCiIy6Y7xYs3g04/VnOGhR02OHYj4QtsjTcXfg+xbnQMZcp
-	ZPLcVdKg5So7JRQ6H/9ILmpx1Fj45u2TzMSed9BxL4iPCJnu7KQl5gSsqwNzjMOeNGTNmB85/0xyA
-	zF7LFuhOFmcLZ2QCLFtQvJt1mHCgsKrfROS0bbvvnnvKEGz4AbBdCKDDhOBM9G53RecfqYiDLSuXo
-	53Fs1SblZlGyq5jPU3Nv29wBit4AUfJjchY++3+5D1IPg8TlrokBPqp2uD9NiVeyLMfU3aphiyT/g
-	vOif5BIA==;
+	bh=UNihVARbpmZ5nC9MOnplVf6/4JU0g8pcltwHqI+PhG8=; b=o7vviislo5ss579dFtaOpx/VRP
+	tcfZB11zrkd9RWlmgA3xH4Jcla3gJgyg2HGbhHjpOEdy1ZR0iqgKpY7naDRYNrtUm5/ZwddTVOLDB
+	81F8BSb3JUahVpFypTkU+CMHfiBhdYMkwxt6TItnAHIPGJTrtcpstjIH+grr54PKsIGlU5LH2LEZI
+	dL3ihUYpI/KtSJJOtBtJUDyarxIKbbJYN3r4ZexJkuuSFqVX42sT45+eLj9254bfkZwaf2zKfr/rC
+	s56v4NCsgb1JKxGJljNQ+LtEVhnmQuSjlZxSudzN3PaWlHHQogS01DLjt9+S9VFBqt+a+bNalTcj8
+	mVfkcQwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQo29-0029pB-08;
-	Tue, 01 Aug 2023 11:59:25 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qQo2A-0029r9-11;
+	Tue, 01 Aug 2023 11:59:26 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQo1u-0029X4-24;
+	id 1qQo1v-0029Ya-3B;
 	Tue, 01 Aug 2023 11:59:13 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4724A6607122;
-	Tue,  1 Aug 2023 12:59:08 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 189EE6607187;
+	Tue,  1 Aug 2023 12:59:10 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1690891149;
-	bh=8iTSGfNRKvCrxoCSk6XWzck/ZFzO3orwWSgEXkTMybQ=;
+	s=mail; t=1690891150;
+	bh=UAAO2HoKPXD+qG8ixrf5L5LtVEeyeVBuoZsSD3TuWEI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=b253pANwe071zbzRfNBXQoHbev6jwrPuyX4k9bVajc5uC3Ozj0wDFQppO/x5nSFMt
-	 MzYMOhr7UGxRargAuYLCmNZ8IHItLR9Di2tpyMpgK36kpUGc+hkkThJvU6rjgJpjl4
-	 QaNbC3aHK+2+uDGOGJ5d1J8SpdsJedHOk7mxmX8pu0nXZzgg4Y3gY8xj7EXfM+ljOL
-	 kqVVfCmvQldFnFlnxzCgW8pBT+r84OMZBsaAdLdbxJdnMvp6l4UxVMbVSqNJMFWtUi
-	 ynFtSgj64G8jrFb22s1Ze/HrI8iGSu/mjsuxdbuwGssWozoqHXc8RlA8mEVRKJKTg5
-	 nmuJNaWdTqAMA==
+	b=hI5DV91YdjAsWDodW5XhndupE/+dPYBgPFyZXjRaTtIt34+OT4Kst9HhWTcnAnRqQ
+	 Tc4ibpxhIspeMPekDJk1UnEwnam3guR4KpDcWhzZJ0p8vGo14x3bbI8B7a5PegtzBD
+	 AkdFFCO0QihXrwAqDBpxaB41ohzynYyxqdDvjvA3yYECcj2oqsWcByS7ID/767u+fF
+	 2kW5gllIV5kIsS9SpuuIxprMs+h4ZqzEdodKmFsIb2ZnAezEIyUYTafJWo2DrpZ5BZ
+	 4Uk1gnA85rPYlgAVqFW332nCfG696JN0v4Pd4G1M46ctE4cZhSsVLoEb4vVmmPhxyV
+	 fw9GGQHKDgTFw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -59,17 +59,17 @@ Cc: p.zabel@pengutronix.de,
 	ehristev@collabora.com,
 	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
 	Alexandre Mergnat <amergnat@baylibre.com>
-Subject: [PATCH v8 09/13] drm/mediatek: gamma: Add support for 12-bit LUT and MT8195
-Date: Tue,  1 Aug 2023 13:58:50 +0200
-Message-ID: <20230801115854.150346-10-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v8 11/13] drm/mediatek: gamma: Program gamma LUT type for descending or rising
+Date: Tue,  1 Aug 2023 13:58:52 +0200
+Message-ID: <20230801115854.150346-12-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230801115854.150346-1-angelogioacchino.delregno@collabora.com>
 References: <20230801115854.150346-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230801_045910_962095_EECB52C8 
-X-CRM114-Status: GOOD (  17.24  )
+X-CRM114-CacheID: sfid-20230801_045912_198461_34869241 
+X-CRM114-Status: GOOD (  13.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,166 +84,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for 12-bit gamma lookup tables and introduce the first
-user for it: MT8195.
-While at it, also reorder the variables in mtk_gamma_set_common()
-and rename `lut_base` to `lut0_base` to improve readability.
+All of the SoCs that don't have dithering control in the gamma IP
+have got a GAMMA_LUT_TYPE bit that tells to the IP if the LUT is
+"descending" (bit set) or "rising" (bit cleared): make sure to set
+it correctly after programming the LUT.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 77 +++++++++++++++++++----
- 1 file changed, 64 insertions(+), 13 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-index fb7c3650a9f7..12614cc26bf8 100644
+index 6591797ed10c..c6b77ca3e655 100644
 --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
 +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-@@ -26,12 +26,20 @@
+@@ -22,6 +22,7 @@
+ #define GAMMA_RELAY_MODE				BIT(0)
+ #define GAMMA_LUT_EN					BIT(1)
+ #define GAMMA_DITHERING					BIT(2)
++#define GAMMA_LUT_TYPE					BIT(2)
+ #define DISP_GAMMA_SIZE				0x0030
+ #define DISP_GAMMA_SIZE_HSIZE				GENMASK(28, 16)
  #define DISP_GAMMA_SIZE_VSIZE				GENMASK(12, 0)
- #define DISP_GAMMA_BANK				0x0100
- #define DISP_GAMMA_BANK_BANK				GENMASK(1, 0)
-+#define DISP_GAMMA_BANK_DATA_MODE			BIT(2)
- #define DISP_GAMMA_LUT				0x0700
-+#define DISP_GAMMA_LUT1				0x0b00
- 
-+/* For 10 bit LUT layout, R/G/B are in the same register */
- #define DISP_GAMMA_LUT_10BIT_R			GENMASK(29, 20)
- #define DISP_GAMMA_LUT_10BIT_G			GENMASK(19, 10)
- #define DISP_GAMMA_LUT_10BIT_B			GENMASK(9, 0)
- 
-+/* For 12 bit LUT layout, R/G are in LUT, B is in LUT1 */
-+#define DISP_GAMMA_LUT_12BIT_R			GENMASK(11, 0)
-+#define DISP_GAMMA_LUT_12BIT_G			GENMASK(23, 12)
-+#define DISP_GAMMA_LUT_12BIT_B			GENMASK(11, 0)
-+
- #define LUT_10BIT_MASK				0x03ff
- #define LUT_BITS_DEFAULT			10
- #define LUT_BANK_SIZE_DEFAULT			512
-@@ -75,18 +83,34 @@ unsigned int mtk_gamma_get_lut_size(struct device *dev)
+@@ -84,6 +85,16 @@ unsigned int mtk_gamma_get_lut_size(struct device *dev)
  	return gamma->data->lut_size;
  }
  
-+/*
-+ * SoCs supporting 12-bits LUTs are using a new register layout that does
-+ * always support (by HW) both 12-bits and 10-bits LUT but, on those, we
-+ * ignore the support for 10-bits in this driver and always use 12-bits.
-+ *
-+ * Summarizing:
-+ * - SoC HW support 9/10-bits LUT only
-+ *   - Old register layout
-+ *     - 10-bits LUT supported
-+ *     - 9-bits LUT not supported
-+ * - SoC HW support both 10/12bits LUT
-+ *   - New register layout
-+ *     - 12-bits LUT supported
-+ *     - 10-its LUT not supported
-+ */
- void mtk_gamma_set_common(struct device *dev, void __iomem *regs,
- 			  struct drm_crtc_state *state, u16 lut_size)
- {
- 	struct mtk_disp_gamma *gamma;
--	unsigned int i;
-+	void __iomem *lut0_base = regs + DISP_GAMMA_LUT;
-+	void __iomem *lut1_base = regs + DISP_GAMMA_LUT1;
-+	u32 cfg_val, data_mode, lbank_val, word[2];
-+	int cur_bank, num_lut_banks;
- 	struct drm_color_lut *lut;
--	void __iomem *lut_base;
-+	u16 lut_bank_size;
-+	unsigned int i;
- 	bool lut_diff;
- 	u8 lut_bits;
--	u16 lut_bank_size;
--	u32 cfg_val, lbank_val, word;
--	int cur_bank, num_lut_banks;
- 
- 	/* If there's no gamma lut there's nothing to do here. */
- 	if (!state->gamma_lut)
-@@ -107,13 +131,17 @@ void mtk_gamma_set_common(struct device *dev, void __iomem *regs,
- 	num_lut_banks = lut_size / lut_bank_size;
- 
- 	cfg_val = readl(regs + DISP_GAMMA_CFG);
--	lut_base = regs + DISP_GAMMA_LUT;
- 	lut = (struct drm_color_lut *)state->gamma_lut->data;
++static bool mtk_gamma_lut_is_descending(struct drm_color_lut *lut, u32 lut_size)
++{
++	u64 first, last;
 +
-+	/* Switch to 12 bits data mode if supported */
-+	data_mode = FIELD_PREP(DISP_GAMMA_BANK_DATA_MODE, !!(lut_bits == 12));
++	first = lut[0].red + lut[0].green + lut[0].blue;
++	last = lut[lut_size].red + lut[lut_size].green + lut[lut_size].blue;
 +
- 	for (cur_bank = 0; cur_bank < num_lut_banks; cur_bank++) {
- 
- 		/* Switch gamma bank and set data mode before writing LUT */
- 		if (num_lut_banks > 1) {
- 			lbank_val = FIELD_PREP(DISP_GAMMA_BANK_BANK, cur_bank);
-+			lbank_val |= data_mode;
- 			writel(lbank_val, regs + DISP_GAMMA_BANK);
- 		}
- 
-@@ -126,9 +154,15 @@ void mtk_gamma_set_common(struct device *dev, void __iomem *regs,
- 			hwlut.blue = drm_color_lut_extract(lut[n].blue, lut_bits);
- 
- 			if (!lut_diff || (i % 2 == 0)) {
--				word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
--				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, hwlut.green);
--				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, hwlut.blue);
-+				if (lut_bits == 12) {
-+					word[0] = FIELD_PREP(DISP_GAMMA_LUT_12BIT_R, hwlut.red);
-+					word[0] |= FIELD_PREP(DISP_GAMMA_LUT_12BIT_G, hwlut.green);
-+					word[1] = FIELD_PREP(DISP_GAMMA_LUT_12BIT_B, hwlut.blue);
-+				} else {
-+					word[0] = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
-+					word[0] |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, hwlut.green);
-+					word[0] |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, hwlut.blue);
-+				}
- 			} else {
- 				diff.red = lut[n].red - lut[n - 1].red;
- 				diff.red = drm_color_lut_extract(diff.red, lut_bits);
-@@ -139,11 +173,19 @@ void mtk_gamma_set_common(struct device *dev, void __iomem *regs,
- 				diff.blue = lut[n].blue - lut[n - 1].blue;
- 				diff.blue = drm_color_lut_extract(diff.blue, lut_bits);
- 
--				word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, diff.red);
--				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, diff.green);
--				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, diff.blue);
-+				if (lut_bits == 12) {
-+					word[0] = FIELD_PREP(DISP_GAMMA_LUT_12BIT_R, diff.red);
-+					word[0] |= FIELD_PREP(DISP_GAMMA_LUT_12BIT_G, diff.green);
-+					word[1] = FIELD_PREP(DISP_GAMMA_LUT_12BIT_B, diff.blue);
-+				} else {
-+					word[0] = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, diff.red);
-+					word[0] |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, diff.green);
-+					word[0] |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, diff.blue);
-+				}
- 			}
--			writel(word, (lut_base + i * 4));
-+			writel(word[0], (lut0_base + i * 4));
-+			if (lut_bits == 12)
-+				writel(word[1], (lut1_base + i * 4));
++	return !!(first > last);
++}
++
+ /*
+  * SoCs supporting 12-bits LUTs are using a new register layout that does
+  * always support (by HW) both 12-bits and 10-bits LUT but, on those, we
+@@ -190,6 +201,14 @@ void mtk_gamma_set_common(struct device *dev, void __iomem *regs,
  		}
  	}
  
-@@ -267,11 +309,20 @@ static const struct mtk_disp_gamma_data mt8183_gamma_driver_data = {
- 	.lut_size = 512,
- };
- 
-+static const struct mtk_disp_gamma_data mt8195_gamma_driver_data = {
-+	.lut_bank_size = 256,
-+	.lut_bits = 12,
-+	.lut_diff = true,
-+	.lut_size = 1024,
-+};
++	if (gamma && gamma->data && !gamma->data->has_dither) {
++		/* Descending or Rising LUT */
++		if (mtk_gamma_lut_is_descending(lut, lut_size))
++			cfg_val |= FIELD_PREP(GAMMA_LUT_TYPE, 1);
++		else
++			cfg_val &= ~GAMMA_LUT_TYPE;
++	}
 +
- static const struct of_device_id mtk_disp_gamma_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt8173-disp-gamma",
- 	  .data = &mt8173_gamma_driver_data},
- 	{ .compatible = "mediatek,mt8183-disp-gamma",
- 	  .data = &mt8183_gamma_driver_data},
-+	{ .compatible = "mediatek,mt8195-disp-gamma",
-+	  .data = &mt8195_gamma_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
+ 	/* Enable the gamma table */
+ 	cfg_val |= FIELD_PREP(GAMMA_LUT_EN, 1);
+ 
 -- 
 2.41.0
 
