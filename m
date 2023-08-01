@@ -4,162 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1199BC0015E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 14:26:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D146C001DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 14:34:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZLowloLK5ZzWo+44MHny6eQPuI1zCcbXudkz11npUW8=; b=wu4wWk5OKEVSN4tYZRBGELuLKf
-	mg1QKg7DR7wko8Ey5BUZBEKRTEOlnkaI1QITOvb3ijs9wxZZ6EkM5qn7/MH85bOmjQMxotJcWX2Rm
-	OfX4YHm4dr5tp+JYES3EW07bHeDeSeDnfN7ws1xnWhQ4HjIVKJtWSnU6CXtfddpAxHfjaQPpUnbHb
-	fF19HN5SbyzjEn1xzXd5LHGcrPNPvQXUIXCM8bwz7pm0ogO8Dut3IMpM3VVhJvZPdoudxkBp4Vn5Y
-	U4fCapK9C9xJMNlaKS61opZ9gB8F8iplZg/CknpIxViSwZJF+BGg62v5xwQaAUOqNtZT6V5uPZDFR
-	OLXsrBzw==;
+	bh=0VS8gSsVuMwZr/o3K+zhlxl36PX/Dz5r/CuPxCYPVdQ=; b=Nw809jPzH7jqpjudFAbz5N45XN
+	T4bYvQ3ARHR12r5/hfTzp9lWzndaf+tgwPEkjgTHt4Kvsm0RrlI9UkizX7qEyCGmIJtecvYnp7Ghx
+	NNtvqO4qbEkl5KoYsXbkiQ9hvkoWcDMJSzIlSbLlOQ4VNt6IWjw6VEsFpnJxbjpY8qjt4lSoZ51Aq
+	k5mrYm6rIjwj2BMnf74SGeRwbxOnp8zmmG3onuSuYCuzX2Aet8Oh06tOElK0osVYNDMQf4xY/Vl4k
+	hQFdxHtS96GIVzhX0IpMhg7VkRjiPgBJAAjncjUxdxpswB/xPNPDiCBfop3xoDgZfiphc3orpIUGb
+	ZhtoCBcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQqJy-002Zn3-0O;
-	Tue, 01 Aug 2023 14:25:58 +0000
-Received: from [192.55.52.151] (helo=mgamail.intel.com)
+	id 1qQqRo-002bbn-1S;
+	Tue, 01 Aug 2023 14:34:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQqJv-002Zjh-0D;
-	Tue, 01 Aug 2023 14:25:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1690899955; x=1722435955;
-  h=date:from:to:cc:subject:message-id:references:
-   in-reply-to:mime-version;
-  bh=fL6ZfUb/bWmsot10LPf/VL/L4/8LdokS3aBXRrlaPus=;
-  b=h4KfdOo51IkuvoA9q3lPJfQJZkzklBV60sa4VTbv60R+rpO4JK39zqDy
-   4l8VZuP3ToAnEjvCD5NmA6cXUgn2WQ8W9OKrmZ3J9ktOG/bbQYt/2UHSC
-   /4CpDokJKZIKvK3pkuyiMM3BLKcYaiEMGhbdNrLNYlbJFZoU6u+Njb9/n
-   97iNSFxsKUGA5s0v0mTElxob482ZGUi7x8pVl5Aw8P9hG70omKvV+DOYk
-   53NTI4XBfgLgLaqvwDdkqpr+tU7cRtLeoYc9pjLf6iXdN+G8xf34ewt/S
-   64LOQENHrOCdDOrojMMRrDnqdzbuQGz+PyY+oeYadN61ke4/MHMrCS8dY
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10789"; a="349604964"
-X-IronPort-AV: E=Sophos;i="6.01,247,1684825200"; 
-   d="scan'208";a="349604964"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Aug 2023 07:25:25 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10789"; a="852486552"
-X-IronPort-AV: E=Sophos;i="6.01,247,1684825200"; 
-   d="scan'208";a="852486552"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
-  by orsmga004.jf.intel.com with ESMTP; 01 Aug 2023 07:25:25 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Tue, 1 Aug 2023 07:25:25 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Tue, 1 Aug 2023 07:25:24 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Tue, 1 Aug 2023 07:25:24 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.172)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+	id 1qQqRl-002bYU-2O
+	for linux-mediatek@lists.infradead.org;
+	Tue, 01 Aug 2023 14:34:03 +0000
+X-UUID: 70fd9982307811ee912e1518a6540028-20230801
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=0VS8gSsVuMwZr/o3K+zhlxl36PX/Dz5r/CuPxCYPVdQ=;
+	b=NB93qlTKbId5CTaQVrrC/UY/yhb+fBCoIHAFpubjJMB1B+vs8yfmjmKIoh0U81YylX4JBcvc3SCYLOEIvj4sIc836yZUFCDDU1b/oqYhFl6TU/kx7oJ8tL5ssj7tRiIWVG+LqWFr7poypvNzMau9/dHFlpcZu5fJnRz6BT7DBdU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.30,REQID:29db034d-5a12-4fe1-8a94-b291664626ec,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:95
+X-CID-INFO: VERSION:1.1.30,REQID:29db034d-5a12-4fe1-8a94-b291664626ec,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
+	:quarantine,TS:95
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:6b8c91d2-cd77-4e67-bbfd-aa4eaace762f,B
+	ulkID:2308012233533W5STOB3,BulkQuantity:1,Recheck:0,SF:28|17|19|48|38|29,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,
+	TF_CID_SPAM_ASC
+X-UUID: 70fd9982307811ee912e1518a6540028-20230801
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1462038503; Tue, 01 Aug 2023 07:33:54 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.27; Tue, 1 Aug 2023 07:25:24 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=h+DQtZuwGouptrD16yooIc8sS1jh43bEY83AU+7Pplnum6D15H9Q7RtoTRFop37tQnXL3xwlp6ByFoAgXSbx+9zKqLSwlnpK6kr4eLZhamqc1DWbfIiZkRUNGwXwA+41rMm9vGqZVFfHozV6wCgTOBElAInCoc3i2gb8ntxf4pRwh9a6eNZlGhY0lklYnnROXSM6CDwRAMgz8WMWHa/o3frZ1caJFAk4swg9Xm0AXLATV5SWkWfCTycuFxVeg+YfCF4EOEF2a+6oHM6NJLc5+BkMSh/55LpvUajaIT5rZhIbLVjyhEzKBVzjj1KLNLEeGWrOV0GEyX/MOgTYn7DitQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZLowloLK5ZzWo+44MHny6eQPuI1zCcbXudkz11npUW8=;
- b=DMMiJsY9YpXJEPCecXb7aUSWZNrx9utbpfbe5TLbiMrOAT9bz608xLKJq3t8tQc0gPTWrRrczriJCxwMfZnwb6oXNf8DP6FN9D6/c8w/nTiVji3UR8Mswbxr4n6zRgJO2bQnySJfXYDWT9Cj5zzheKa5iOdgF0pVlYJwUXztYamW1y72ScRZ2/QQQKIvII78jYcj1I/HjpuYRmT5F4/yWfgxAlXRfMKfb263Qwo0dRoSXwyZ1QExwx4B9jZ7qTG3Y3e7PnHX1aKve+hh4/SaozTEXC5AOLplhm+vbXxjbJxWZ+Wh9r4GzhCZMdYgYouVG4ytMdkIV5xdH4BMrjXg4A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from SN7PR11MB7540.namprd11.prod.outlook.com (2603:10b6:806:340::7)
- by CY5PR11MB6161.namprd11.prod.outlook.com (2603:10b6:930:2a::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.44; Tue, 1 Aug
- 2023 14:25:23 +0000
-Received: from SN7PR11MB7540.namprd11.prod.outlook.com
- ([fe80::2e3b:2384:e6ce:698a]) by SN7PR11MB7540.namprd11.prod.outlook.com
- ([fe80::2e3b:2384:e6ce:698a%7]) with mapi id 15.20.6631.026; Tue, 1 Aug 2023
- 14:25:23 +0000
-Date: Tue, 1 Aug 2023 16:20:33 +0200
-From: Larysa Zaremba <larysa.zaremba@intel.com>
-To: Daniel Golle <daniel@makrotopia.org>
-CC: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
-	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, "Lorenzo
- Bianconi" <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, "Paolo
- Abeni" <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH net-next v2] net: ethernet: mtk_eth_soc: support per-flow
- accounting on MT7988
-Message-ID: <ZMkUsZkxsU5mOOV+@lincoln>
-References: <66032a4e2093ef82d2035966212c5a2ef2b6fdc9.1690762860.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <66032a4e2093ef82d2035966212c5a2ef2b6fdc9.1690762860.git.daniel@makrotopia.org>
-X-ClientProxiedBy: FR3P281CA0067.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:4b::14) To SN7PR11MB7540.namprd11.prod.outlook.com
- (2603:10b6:806:340::7)
+ 15.2.1118.26; Tue, 1 Aug 2023 22:33:51 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 1 Aug 2023 22:33:51 +0800
+From: Deren Wu <deren.wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>, linux-wireless
+	<linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH 4/8] wifi: mt76: connac: add eht support for phy mode config
+Date: Tue, 1 Aug 2023 22:30:28 +0800
+Message-ID: <fb4d362a45a3989b725191ab98a43a6593e37280.1690863143.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <cover.1690863143.git.deren.wu@mediatek.com>
+References: <cover.1690863143.git.deren.wu@mediatek.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN7PR11MB7540:EE_|CY5PR11MB6161:EE_
-X-MS-Office365-Filtering-Correlation-Id: 42772ddb-43e6-4309-9cb1-08db929b2491
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 8p73adN2Htqy08Gqb8ugp4gcdq/KcZZMx/coGtje0Y+y4ZleNO9Ib39jJVi0oAiS4QGVnnASIXrzobKTGNzP9BxrjzXz9DktWPUKFWecChOdii+5XA1KwKrO3E56GvzvgWqs0SsDCqdUOAFm6pElUdyDZ30pvvvkpCnNtqnZu3StFFYYI0uKPBDz0QG23djG41C9CD9PZhxbb5simVKazZT31/W54aw8Qa4epxIfmmHWWjv0v2rfvVHovHCc2FXbUlKhI615rvzPqAG7YjoxRWcgmze2wQnfd/WaMOn/ajLox0LPxIxhwR/1rEGjLtBo2XnaJsH8/CmebWLNAgZT/Iw0z41RYnkvkKvHPwbPX4PTY0riRNjwyeG1OTM03tgDVo8uITQElmxQsxsiAY/xZ7lGij6HDWgIQxW7A7Q+DlQqptU1ruwFzN3HDjsTovnKnkeMRs/NWU/ra1R/2IoCQIayOVt/kyFiNQ0yH405ozhcG7gLk4zWThzKIK1KL+W3y+a0Vnuz0Hd8Nd8TJ7W1lMomns1vGsXXfwIS333wLtwQV3zpPdvLG48ahMWJihz4
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SN7PR11MB7540.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(7916004)(136003)(396003)(39860400002)(376002)(366004)(346002)(451199021)(8936002)(8676002)(6486002)(41300700001)(33716001)(478600001)(2906002)(6666004)(26005)(44832011)(83380400001)(316002)(186003)(86362001)(6506007)(5660300002)(7416002)(38100700002)(6512007)(54906003)(9686003)(4326008)(6916009)(82960400001)(66556008)(66476007)(66946007);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?bb68GPbQz3ULc3wZlCrIdNX8mh7CeE4bdUT2K4Jwh9s4S3Mh65T5jWPo9U9z?=
- =?us-ascii?Q?L9FKuMBxj6Si7hB5/vLFb/WWDNdYRnMMVILwGnYIRfwAY3noystvlzQCmLlV?=
- =?us-ascii?Q?eFFvmBdrgcPYqytl9u4PHRytK9X6V+LZn5fDsZC/nMawKRItXKV3a9y7SsaN?=
- =?us-ascii?Q?cfhvvjo96jzi/fh1RzCtW03P9/dTOoCFiK4JoILe2oHPiItqLAbCouy80yH5?=
- =?us-ascii?Q?HIXNyERYun1U7M5tY0aJVfz9VljJf7ded5zJDa2sHIq6GKO34mrk3SB/vorZ?=
- =?us-ascii?Q?qDE3xMA/f6mVz/jxgZrWNNUJe6tP++DK1EFktYhgUVk1Xl0XlA3qSxJwKgS8?=
- =?us-ascii?Q?hCJ8CRbIYO2E6USvjR+3/9R/B8npN30iCLZO3lxRIrnFkUEBU//tQHmV/qvF?=
- =?us-ascii?Q?vWHQWGWqwiQL2FzKyVp/KwAea1WvwSqmXdkDTP35+poLuNAPo9vQ2jI/MPFR?=
- =?us-ascii?Q?BeHTH0t/6PPnLsDGLoAsjXSb9xbj3EB+TRYsmMMiL9V6rvggNxw8sp9vi1e9?=
- =?us-ascii?Q?x8gft85GIsZF2B0CemorU2xKf+rp/q107W04grgaQ+tUcFTjGZa7/abflW37?=
- =?us-ascii?Q?wHOGUn9RLGZ2BObzMz8LOygMUKDwiqq7h//odheerPzDBJygoSc+RFkuK4tM?=
- =?us-ascii?Q?nVmkcUSFGn1rm/7S1bt8+sOISt1RjGJZQ7BdJK25A+HPNtV1+TxaoieBAl+g?=
- =?us-ascii?Q?xFfVy453zoCgAS9YHVhcg7s6xfT3mFimhOgxqsKLqsmXCF4/J1jf11wgm0MV?=
- =?us-ascii?Q?P24XCTBp9DyZCwUrt53xzWQOJB8C/IHfLYg6Ml/4usGM0L4+j0J88VjIvRaN?=
- =?us-ascii?Q?2m1b0OxwPArlpkFMqooaTaXaFQYxShw+tiCXmDjJ0RUS43yQ/O6WPcaLKyaG?=
- =?us-ascii?Q?N5mPkjBgMWZumPOCON7vSBehW3UAqbsyEO+MF+nuBRDuQ8BPBXeKI9YM+NlF?=
- =?us-ascii?Q?tSUcWI2PmdfFIs+p/OMAyTwI3wLgHFGMW9JqjrgRpEyj7XcdfkwkLoEW7k3d?=
- =?us-ascii?Q?8VICe2e4XIPtnacIUAehv2uGbb5JBhcyexhf/FgzBpXKH1+HltpcyeE8B82G?=
- =?us-ascii?Q?puMVc6AuKpm92EHro+1YCAczkXlzICclc0Ut7udUxV3uBK1SqnJslFPI/hCh?=
- =?us-ascii?Q?D0j3zGp7pLwCc+b0bTZVf2P6fgxA9df4NGNNu9moM0dKL/ZFY6Ok91VQhwzf?=
- =?us-ascii?Q?wsj7fpC1sMyzI0ZtdUKzUJFJUr9kEixvYkzCDPP0oLV0hHyLCnOdxKMtmGm0?=
- =?us-ascii?Q?95kRiAMdXjRdZ8JPiWsrMhQCfuSwEuyuinjwXuB3hd/MDYzX59HR/kxlG7J6?=
- =?us-ascii?Q?xOGZlT8JGVPlKk3ZJTcJSA9aAhJZbux+Ewm21GTchxpHtPpH9k5DLtqJOjUP?=
- =?us-ascii?Q?j3IfB70hNIeS50by0n2S+AFgjwD2ha7+7RxaSzkpFD8RP8UOdXPXFJYLLHU+?=
- =?us-ascii?Q?TACWtET5vOikj39mVpjsUtbGdTOE3abVNmx6MXHs80tk86dsVI3pN6UFlnhq?=
- =?us-ascii?Q?EKQ6qku6yVs7gA2T9pF9dGsMqd/Ip/imQbw740SGMVbZwmpdts7O1YkmP9dr?=
- =?us-ascii?Q?X6gMyWWiOp/vojRE5xMHeth32pRctykBhv7tC9pS25zn2lxVcADnXRjA68cq?=
- =?us-ascii?Q?tw=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 42772ddb-43e6-4309-9cb1-08db929b2491
-X-MS-Exchange-CrossTenant-AuthSource: SN7PR11MB7540.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Aug 2023 14:25:23.5269
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: FB7OoQIXO/TsNGsL1BquJTn5VrRwMFNySnIzsjKqQPJJX3aZSgPZMECSNNrQhGPcLd6XzTTmXCBx0FOXnuaHD08uEHJt/M8C0BCST7gIbvs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR11MB6161
-X-OriginatorOrg: intel.com
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230801_072555_136508_1B771FE0 
-X-CRM114-Status: GOOD (  22.02  )
+X-CRM114-CacheID: sfid-20230801_073401_787597_C41D6A6B 
+X-CRM114-Status: GOOD (  13.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -174,91 +90,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 31, 2023 at 01:24:22AM +0100, Daniel Golle wrote:
-> NETSYS_V3 uses 64 bits for each counters while older SoCs were using
-> 48 bits for each counter.
-> Support reading per-flow byte and package counters on NETSYS_V3.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Add eht configuration support in existing function
+mt76_connac_get_phy_mode_v2() and export it for mt7925.
 
-Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
+This is a preliminary patch to support mt7925 driver.
 
-> ---
-> v2: fix typo bytes_cnt_* -> byte_cnt_*
-> 
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c  |  1 +
->  drivers/net/ethernet/mediatek/mtk_ppe.c      | 18 ++++++++++++++----
->  drivers/net/ethernet/mediatek/mtk_ppe_regs.h |  2 ++
->  3 files changed, 17 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 05be702f19c5e..1b89f800f6dff 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -5064,6 +5064,7 @@ static const struct mtk_soc_data mt7988_data = {
->  	.version = 3,
->  	.offload_version = 2,
->  	.hash_offset = 4,
-> +	.has_accounting = true,
->  	.foe_entry_size = MTK_FOE_ENTRY_V3_SIZE,
->  	.txrx = {
->  		.txd_size = sizeof(struct mtk_tx_dma_v2),
-> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-> index bf1ecb0c1c109..dd2df32b29c3b 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-> @@ -107,10 +107,20 @@ static int mtk_mib_entry_read(struct mtk_ppe *ppe, u16 index, u64 *bytes, u64 *p
->  	cnt_r1 = readl(ppe->base + MTK_PPE_MIB_SER_R1);
->  	cnt_r2 = readl(ppe->base + MTK_PPE_MIB_SER_R2);
->  
-> -	byte_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R0_BYTE_CNT_LOW, cnt_r0);
-> -	byte_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R1_BYTE_CNT_HIGH, cnt_r1);
-> -	pkt_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R1_PKT_CNT_LOW, cnt_r1);
-> -	pkt_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R2_PKT_CNT_HIGH, cnt_r2);
-> +	if (mtk_is_netsys_v3_or_greater(ppe->eth)) {
+Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 12 +++++++++++-
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h |  4 ++++
+ 2 files changed, 15 insertions(+), 1 deletion(-)
 
-Would be more readable with
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index dfbe31ae4b14..c0f129dd8aef 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -780,19 +780,21 @@ mt76_connac_mcu_sta_he_tlv_v2(struct sk_buff *skb, struct ieee80211_sta *sta)
+ }
+ EXPORT_SYMBOL_GPL(mt76_connac_mcu_sta_he_tlv_v2);
+ 
+-static u8
++u8
+ mt76_connac_get_phy_mode_v2(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 			    enum nl80211_band band, struct ieee80211_sta *sta)
+ {
+ 	struct ieee80211_sta_ht_cap *ht_cap;
+ 	struct ieee80211_sta_vht_cap *vht_cap;
+ 	const struct ieee80211_sta_he_cap *he_cap;
++	const struct ieee80211_sta_eht_cap *eht_cap;
+ 	u8 mode = 0;
+ 
+ 	if (sta) {
+ 		ht_cap = &sta->deflink.ht_cap;
+ 		vht_cap = &sta->deflink.vht_cap;
+ 		he_cap = &sta->deflink.he_cap;
++		eht_cap = &sta->deflink.eht_cap;
+ 	} else {
+ 		struct ieee80211_supported_band *sband;
+ 
+@@ -800,6 +802,7 @@ mt76_connac_get_phy_mode_v2(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 		ht_cap = &sband->ht_cap;
+ 		vht_cap = &sband->vht_cap;
+ 		he_cap = ieee80211_get_he_iftype_cap(sband, vif->type);
++		eht_cap = ieee80211_get_eht_iftype_cap(sband, vif->type);
+ 	}
+ 
+ 	if (band == NL80211_BAND_2GHZ) {
+@@ -810,6 +813,9 @@ mt76_connac_get_phy_mode_v2(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 
+ 		if (he_cap && he_cap->has_he)
+ 			mode |= PHY_TYPE_BIT_HE;
++
++		if (eht_cap && eht_cap->has_eht)
++			mode |= PHY_TYPE_BIT_BE;
+ 	} else if (band == NL80211_BAND_5GHZ || band == NL80211_BAND_6GHZ) {
+ 		mode |= PHY_TYPE_BIT_OFDM;
+ 
+@@ -821,10 +827,14 @@ mt76_connac_get_phy_mode_v2(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 
+ 		if (he_cap && he_cap->has_he)
+ 			mode |= PHY_TYPE_BIT_HE;
++
++		if (eht_cap && eht_cap->has_eht)
++			mode |= PHY_TYPE_BIT_BE;
+ 	}
+ 
+ 	return mode;
+ }
++EXPORT_SYMBOL_GPL(mt76_connac_get_phy_mode_v2);
+ 
+ void mt76_connac_mcu_sta_tlv(struct mt76_phy *mphy, struct sk_buff *skb,
+ 			     struct ieee80211_sta *sta,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 879a66564c54..4b64426d371d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -919,6 +919,7 @@ enum {
+ 	PHY_TYPE_HT_INDEX,
+ 	PHY_TYPE_VHT_INDEX,
+ 	PHY_TYPE_HE_INDEX,
++	PHY_TYPE_BE_INDEX,
+ 	PHY_TYPE_INDEX_NUM
+ };
+ 
+@@ -928,6 +929,7 @@ enum {
+ #define PHY_TYPE_BIT_HT				BIT(PHY_TYPE_HT_INDEX)
+ #define PHY_TYPE_BIT_VHT			BIT(PHY_TYPE_VHT_INDEX)
+ #define PHY_TYPE_BIT_HE				BIT(PHY_TYPE_HE_INDEX)
++#define PHY_TYPE_BIT_BE				BIT(PHY_TYPE_BE_INDEX)
+ 
+ #define MT_WTBL_RATE_TX_MODE			GENMASK(9, 6)
+ #define MT_WTBL_RATE_MCS			GENMASK(5, 0)
+@@ -1808,6 +1810,8 @@ int mt76_connac_mcu_sta_update_hdr_trans(struct mt76_dev *dev,
+ 					 struct ieee80211_vif *vif,
+ 					 struct mt76_wcid *wcid, int cmd);
+ void mt76_connac_mcu_sta_he_tlv_v2(struct sk_buff *skb, struct ieee80211_sta *sta);
++u8 mt76_connac_get_phy_mode_v2(struct mt76_phy *mphy, struct ieee80211_vif *vif,
++			       enum nl80211_band band, struct ieee80211_sta *sta);
+ int mt76_connac_mcu_wtbl_update_hdr_trans(struct mt76_dev *dev,
+ 					  struct ieee80211_vif *vif,
+ 					  struct ieee80211_sta *sta);
+-- 
+2.18.0
 
-u32 cnt_r3 = readl(ppe->base + MTK_PPE_MIB_SER_R3);
-
-> +		/* 64 bit for each counter */
-> +		byte_cnt_low = cnt_r0;
-> +		byte_cnt_high = cnt_r1;
-> +		pkt_cnt_low = cnt_r2;
-
-and
-
-pkt_cnt_high = cnt_r3;
-
-But looks fine as it is.
-
-> +		pkt_cnt_high = readl(ppe->base + MTK_PPE_MIB_SER_R3);
-> +	} else {
-> +		/* 48 bit for each counter */
-> +		byte_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R0_BYTE_CNT_LOW, cnt_r0);
-> +		byte_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R1_BYTE_CNT_HIGH, cnt_r1);
-> +		pkt_cnt_low = FIELD_GET(MTK_PPE_MIB_SER_R1_PKT_CNT_LOW, cnt_r1);
-> +		pkt_cnt_high = FIELD_GET(MTK_PPE_MIB_SER_R2_PKT_CNT_HIGH, cnt_r2);
-> +	}
-> +
->  	*bytes = ((u64)byte_cnt_high << 32) | byte_cnt_low;
->  	*packets = (pkt_cnt_high << 16) | pkt_cnt_low;
->  
-> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_regs.h b/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
-> index a2e61b3eb006d..3ce088eef0efd 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
-> +++ b/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
-> @@ -163,6 +163,8 @@ enum {
->  #define MTK_PPE_MIB_SER_R2			0x348
->  #define MTK_PPE_MIB_SER_R2_PKT_CNT_HIGH		GENMASK(23, 0)
->  
-> +#define MTK_PPE_MIB_SER_R3			0x34c
-> +
->  #define MTK_PPE_MIB_CACHE_CTL			0x350
->  #define MTK_PPE_MIB_CACHE_CTL_EN		BIT(0)
->  #define MTK_PPE_MIB_CACHE_CTL_FLUSH		BIT(2)
-> -- 
-> 2.41.0
-> 
-> 
 
