@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61D7EC04FDF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADE06C00528
 	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 14:35:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,43 +12,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UxVUmm/hIeZZkEF2wqtjkkHPQm3+pJOxQq99x49XDIg=; b=PT9Uzypz3A7vkLzGiI9cybnYcL
-	qUYEg+kjDuQZJgG5T4E+pbqE5SMoaUTX2DRmyuntUjK9xjlDvCAN4dQfhHmpj9WV8OpAy52IDVnHv
-	owYuMlqdwLR1npYehgBcwYbZPFel0WHFE6jCRGdW1IJd32RijLrR9xGUO+9fhoEzKjhtltVCCdx9v
-	9/acrYYBEgPZW3j1HUnePR30To5JATtyUTGtx3J1IparyL40fqiKZwkPnYAB18g26uLw1sVl8Xqi+
-	NdGDyod6/c0Yxd2DrhOspypTibS/ClwxRZgc0jVTnkYfZxOyoAoQvuBqIxAWdbTmk0o3my6WMlPgH
-	UwoSEIdA==;
+	bh=SgAPRGvgX3dm83yIBAUp1v6jgMWaGvCFgkl26MeFD+g=; b=WBvgoWOxpq9QOGGdkNMD+TrJOO
+	t+UxfWLJiapIbu4MMYCjK/cjC20CsjwZGiUX7RWDA6JilM6ioNgPi1GvTG3QzLqvUmbGa0RoP7mhC
+	GTX05QebL+Ls8u+YQmV2Pza+kDrua5VzHKJR/KEkQ6vrLJoNwQ37vX9ZmsTXLEN9ZNOpue8xbjOFQ
+	qawkbX/zX4wHOXL3UClPfOb9VFt/YLW1ate5+9Pt+UpaFUsK/vnrwBDMSHmfmVbEKn7UrEGQw0q58
+	ZuvjV8sZIA88umKy4WPs6tH+EMkc8PcdaeULFEXZKRR3i9Gc6AFeNolfSownmtGHN14lHKKbGaO04
+	l3NuTjQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQqTa-002c4Q-1E;
+	id 1qQqTa-002c4e-2O;
 	Tue, 01 Aug 2023 14:35:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQqTV-002c1Z-1U
+	id 1qQqTV-002c1p-2Q
 	for linux-mediatek@lists.infradead.org;
 	Tue, 01 Aug 2023 14:35:52 +0000
-X-UUID: b4041c10307811ee912e1518a6540028-20230801
+X-UUID: b3320fcc307811ee83ed1395ce914268-20230801
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=UxVUmm/hIeZZkEF2wqtjkkHPQm3+pJOxQq99x49XDIg=;
-	b=cW2o6pFyg8HQb43SOJhye7X67cnG165MG6GvCflpVJC05bAjPzTmcrFXzzkpglC20zhq9+rYGpuZyiSSew27LUrF6KgqDmHrcTyvxwtRaRPKKJMj3X1h4RV+6fWd+HljvB9CbFQYW21OVEYkLa1ewcJu9nQUc7jl1wDF09DEKV8=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=SgAPRGvgX3dm83yIBAUp1v6jgMWaGvCFgkl26MeFD+g=;
+	b=AiRPl06hS9jqUfvvKvP2i7MFyTR63VpCvEX7ZiTj13Gg2z9tBD5S7D0z5+u2grqDsQOZ5JCZ+P2mPSK7XTNfzYJBG8u2zyMsKueSvC/tzTTu1pZVj2gXdd50OKAk01gMD5dOi17AC6O4+rvccGZYBkq0YYYubbuedieXEMRwdSs=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.30,REQID:5565ce08-c559-4be2-9d52-37b2196ea519,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:1fcc6f8,CLOUDID:5972b242-d291-4e62-b539-43d7d78362ba,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-O-INFO: VERSION:1.1.30,REQID:aa7ff49b-6fbe-4846-ab0b-672fc6f11cbf,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:95
+X-CID-INFO: VERSION:1.1.30,REQID:aa7ff49b-6fbe-4846-ab0b-672fc6f11cbf,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
+	:quarantine,TS:95
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:8efdc5a0-0933-4333-8d4f-6c3c53ebd55b,B
+	ulkID:230801223546IUDN587D,BulkQuantity:0,Recheck:0,SF:17|19|48|38|29|28,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,CO
+	L:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: b4041c10307811ee912e1518a6540028-20230801
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,TF_CID_SPAM_ULN,
+	TF_CID_SPAM_SNR,TF_CID_SPAM_SDM
+X-UUID: b3320fcc307811ee83ed1395ce914268-20230801
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <deren.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1972198495; Tue, 01 Aug 2023 07:35:46 -0700
+	with ESMTP id 67698055; Tue, 01 Aug 2023 07:35:45 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Tue, 1 Aug 2023 22:35:44 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -60,9 +64,9 @@ CC: Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
 	Shayne Chen <shayne.chen@mediatek.com>, linux-wireless
 	<linux-wireless@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH 14/17] wifi: mt76: mt7925: add usb.c
-Date: Tue, 1 Aug 2023 22:34:30 +0800
-Message-ID: <cb5f9a18e60dab93665b619440c3f50af5b4d9ac.1690864199.git.deren.wu@mediatek.com>
+Subject: [PATCH 15/17] wifi: mt76: mt7925: add debugfs.c
+Date: Tue, 1 Aug 2023 22:34:31 +0800
+Message-ID: <167363384a162e4b697c0d5bdf95e50a04b22a34.1690864199.git.deren.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <cover.1690864199.git.deren.wu@mediatek.com>
 References: <cover.1690864199.git.deren.wu@mediatek.com>
@@ -70,8 +74,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230801_073549_519628_D23ED01A 
-X-CRM114-Status: GOOD (  20.83  )
+X-CRM114-CacheID: sfid-20230801_073549_793537_8FE3888E 
+X-CRM114-Status: GOOD (  18.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,356 +97,335 @@ Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7925/usb.c   | 340 ++++++++++++++++++
- 1 file changed, 340 insertions(+)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/usb.c
+ .../wireless/mediatek/mt76/mt7925/debugfs.c   | 319 ++++++++++++++++++
+ 1 file changed, 319 insertions(+)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
 new file mode 100644
-index 000000000000..6cbcecabf40e
+index 000000000000..1e2fc6577e78
 --- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-@@ -0,0 +1,340 @@
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
+@@ -0,0 +1,319 @@
 +// SPDX-License-Identifier: ISC
 +/* Copyright (C) 2023 MediaTek Inc. */
 +
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/usb.h>
-+
 +#include "mt7925.h"
 +#include "mcu.h"
-+#include "mac.h"
-+
-+static const struct usb_device_id mt7925u_device_table[] = {
-+	{ USB_DEVICE_AND_INTERFACE_INFO(0x0e8d, 0x7925, 0xff, 0xff, 0xff),
-+		.driver_info = (kernel_ulong_t)MT7925_FIRMWARE_WM },
-+	{ },
-+};
 +
 +static int
-+mt7925u_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
-+			 int cmd, int *seq)
++mt7925_reg_set(void *data, u64 val)
 +{
-+	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
-+	u32 pad, ep;
-+	int ret;
++	struct mt792x_dev *dev = data;
++	u32 regval = val;
 +
-+	ret = mt7925_mcu_fill_message(mdev, skb, cmd, seq);
-+	if (ret)
-+		return ret;
-+
-+	mdev->mcu.timeout = 3 * HZ;
-+
-+	if (cmd != MCU_CMD(FW_SCATTER))
-+		ep = MT_EP_OUT_INBAND_CMD;
-+	else
-+		ep = MT_EP_OUT_AC_BE;
-+
-+	mt7925_skb_add_usb_sdio_hdr(dev, skb, 0);
-+	pad = round_up(skb->len, 4) + 4 - skb->len;
-+	__skb_put_zero(skb, pad);
-+
-+	ret = mt76u_bulk_msg(&dev->mt76, skb->data, skb->len, NULL,
-+			     1000, ep);
-+	dev_kfree_skb(skb);
-+
-+	return ret;
-+}
-+
-+static int mt7925u_mcu_init(struct mt792x_dev *dev)
-+{
-+	static const struct mt76_mcu_ops mcu_ops = {
-+		.headroom = MT_SDIO_HDR_SIZE +
-+			    sizeof(struct mt76_connac2_mcu_txd),
-+		.tailroom = MT_USB_TAIL_SIZE,
-+		.mcu_skb_send_msg = mt7925u_mcu_send_message,
-+		.mcu_parse_response = mt7925_mcu_parse_response,
-+	};
-+	int ret;
-+
-+	dev->mt76.mcu_ops = &mcu_ops;
-+
-+	mt76_set(dev, MT_UDMA_TX_QSEL, MT_FW_DL_EN);
-+	ret = mt7925_run_firmware(dev);
-+	if (ret)
-+		return ret;
-+
-+	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
-+	mt76_clear(dev, MT_UDMA_TX_QSEL, MT_FW_DL_EN);
++	mt792x_mutex_acquire(dev);
++	mt7925_mcu_regval(dev, dev->mt76.debugfs_reg, &regval, true);
++	mt792x_mutex_release(dev);
 +
 +	return 0;
 +}
 +
-+static void mt7925u_stop(struct ieee80211_hw *hw)
++static int
++mt7925_reg_get(void *data, u64 *val)
 +{
-+	struct mt792x_dev *dev = mt792x_hw_dev(hw);
++	struct mt792x_dev *dev = data;
++	u32 regval;
++	int ret;
 +
-+	mt76u_stop_tx(&dev->mt76);
-+	mt7925_stop(hw);
++	mt792x_mutex_acquire(dev);
++	ret = mt7925_mcu_regval(dev, dev->mt76.debugfs_reg, &regval, false);
++	mt792x_mutex_release(dev);
++	if (!ret)
++		*val = regval;
++
++	return 0;
 +}
 +
-+static int mt7925u_mac_reset(struct mt792x_dev *dev)
++DEFINE_DEBUGFS_ATTRIBUTE(fops_regval, mt7925_reg_get, mt7925_reg_set,
++			 "0x%08llx\n");
++static int
++mt7925_fw_debug_set(void *data, u64 val)
 +{
-+	int err;
++	struct mt792x_dev *dev = data;
 +
-+	mt76_txq_schedule_all(&dev->mphy);
-+	mt76_worker_disable(&dev->mt76.tx_worker);
++	mt792x_mutex_acquire(dev);
 +
-+	set_bit(MT76_RESET, &dev->mphy.state);
-+	set_bit(MT76_MCU_RESET, &dev->mphy.state);
++	dev->fw_debug = (u8)val;
++	mt7925_mcu_fw_log_2_host(dev, dev->fw_debug);
 +
-+	wake_up(&dev->mt76.mcu.wait);
-+	skb_queue_purge(&dev->mt76.mcu.res_q);
++	mt792x_mutex_release(dev);
 +
-+	mt76u_stop_rx(&dev->mt76);
-+	mt76u_stop_tx(&dev->mt76);
++	return 0;
++}
 +
-+	mt792xu_wfsys_reset(dev);
++static int
++mt7925_fw_debug_get(void *data, u64 *val)
++{
++	struct mt792x_dev *dev = data;
 +
-+	clear_bit(MT76_MCU_RESET, &dev->mphy.state);
-+	err = mt76u_resume_rx(&dev->mt76);
-+	if (err)
++	*val = dev->fw_debug;
++
++	return 0;
++}
++
++DEFINE_DEBUGFS_ATTRIBUTE(fops_fw_debug, mt7925_fw_debug_get,
++			 mt7925_fw_debug_set, "%lld\n");
++
++DEFINE_SHOW_ATTRIBUTE(mt792x_tx_stats);
++
++static void
++mt7925_seq_puts_array(struct seq_file *file, const char *str,
++		      s8 val[][2], int len, u8 band_idx)
++{
++	int i;
++
++	seq_printf(file, "%-22s:", str);
++	for (i = 0; i < len; i++)
++		if (val[i][band_idx] == 127)
++			seq_printf(file, " %6s", "N.A");
++		else
++			seq_printf(file, " %6d", val[i][band_idx]);
++	seq_puts(file, "\n");
++}
++
++#define mt7925_print_txpwr_entry(prefix, rate, idx)	\
++({							\
++	mt7925_seq_puts_array(s, #prefix " (tmac)",	\
++			      txpwr->rate,		\
++			      ARRAY_SIZE(txpwr->rate),	\
++			      idx);			\
++})
++
++static inline void
++mt7925_eht_txpwr(struct seq_file *s, struct mt7925_txpwr *txpwr, u8 band_idx)
++{
++	seq_printf(s, "%-22s  %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s\n",
++		   " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4", "mcs5",
++		   "mcs6", "mcs7", "mcs8", "mcs9", "mcs10", "mcs11",
++		   "mcs12", "mcs13", "mcs14", "mcs15");
++	mt7925_print_txpwr_entry(EHT26, eht26, band_idx);
++	mt7925_print_txpwr_entry(EHT52, eht52, band_idx);
++	mt7925_print_txpwr_entry(EHT106, eht106, band_idx);
++	mt7925_print_txpwr_entry(EHT242, eht242, band_idx);
++	mt7925_print_txpwr_entry(EHT484, eht484, band_idx);
++
++	mt7925_print_txpwr_entry(EHT996, eht996, band_idx);
++	mt7925_print_txpwr_entry(EHT996x2, eht996x2, band_idx);
++	mt7925_print_txpwr_entry(EHT996x4, eht996x4, band_idx);
++	mt7925_print_txpwr_entry(EHT26_52, eht26_52, band_idx);
++	mt7925_print_txpwr_entry(EHT26_106, eht26_106, band_idx);
++	mt7925_print_txpwr_entry(EHT484_242, eht484_242, band_idx);
++	mt7925_print_txpwr_entry(EHT996_484, eht996_484, band_idx);
++	mt7925_print_txpwr_entry(EHT996_484_242, eht996_484_242, band_idx);
++	mt7925_print_txpwr_entry(EHT996x2_484, eht996x2_484, band_idx);
++	mt7925_print_txpwr_entry(EHT996x3, eht996x3, band_idx);
++	mt7925_print_txpwr_entry(EHT996x3_484, eht996x3_484, band_idx);
++}
++
++static int
++mt7925_txpwr(struct seq_file *s, void *data)
++{
++	struct mt792x_dev *dev = dev_get_drvdata(s->private);
++	struct mt7925_txpwr *txpwr = NULL;
++	u8 band_idx = dev->mphy.band_idx;
++	int ret = 0;
++
++	txpwr = devm_kmalloc(dev->mt76.dev, sizeof(*txpwr), GFP_KERNEL);
++
++	if (!txpwr)
++		return -ENOMEM;
++
++	mt792x_mutex_acquire(dev);
++	ret = mt7925_get_txpwr_info(dev, band_idx, txpwr);
++	mt792x_mutex_release(dev);
++
++	if (ret)
 +		goto out;
 +
-+	err = mt792xu_mcu_power_on(dev);
-+	if (err)
-+		goto out;
++	seq_printf(s, "%-22s  %6s %6s %6s %6s\n",
++		   " ", "1m", "2m", "5m", "11m");
++	mt7925_print_txpwr_entry(CCK, cck, band_idx);
 +
-+	err = mt792xu_dma_init(dev, false);
-+	if (err)
-+		goto out;
++	seq_printf(s, "%-22s  %6s %6s %6s %6s %6s %6s %6s %6s\n",
++		   " ", "6m", "9m", "12m", "18m", "24m", "36m",
++		   "48m", "54m");
++	mt7925_print_txpwr_entry(OFDM, ofdm, band_idx);
 +
-+	mt76_wr(dev, MT_SWDEF_MODE, MT_SWDEF_NORMAL_MODE);
-+	mt76_set(dev, MT_UDMA_TX_QSEL, MT_FW_DL_EN);
++	seq_printf(s, "%-22s  %6s %6s %6s %6s %6s %6s %6s %6s\n",
++		   " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4", "mcs5",
++		   "mcs6", "mcs7");
++	mt7925_print_txpwr_entry(HT20, ht20, band_idx);
 +
-+	err = mt7925_run_firmware(dev);
-+	if (err)
-+		goto out;
++	seq_printf(s, "%-22s  %6s %6s %6s %6s %6s %6s %6s %6s %6s\n",
++		   " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4", "mcs5",
++		   "mcs6", "mcs7", "mcs32");
++	mt7925_print_txpwr_entry(HT40, ht40, band_idx);
 +
-+	mt76_clear(dev, MT_UDMA_TX_QSEL, MT_FW_DL_EN);
++	seq_printf(s, "%-22s  %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s %6s\n",
++		   " ", "mcs0", "mcs1", "mcs2", "mcs3", "mcs4", "mcs5",
++		   "mcs6", "mcs7", "mcs8", "mcs9", "mcs10", "mcs11");
++	mt7925_print_txpwr_entry(VHT20, vht20, band_idx);
++	mt7925_print_txpwr_entry(VHT40, vht40, band_idx);
 +
-+	err = mt7925_mcu_set_eeprom(dev);
-+	if (err)
-+		goto out;
++	mt7925_print_txpwr_entry(VHT80, vht80, band_idx);
++	mt7925_print_txpwr_entry(VHT160, vht160, band_idx);
 +
-+	err = mt7925_mac_init(dev);
-+	if (err)
-+		goto out;
++	mt7925_print_txpwr_entry(HE26, he26, band_idx);
++	mt7925_print_txpwr_entry(HE52, he52, band_idx);
++	mt7925_print_txpwr_entry(HE106, he106, band_idx);
++	mt7925_print_txpwr_entry(HE242, he242, band_idx);
++	mt7925_print_txpwr_entry(HE484, he484, band_idx);
 +
-+	err = __mt7925_start(&dev->phy);
++	mt7925_print_txpwr_entry(HE996, he996, band_idx);
++	mt7925_print_txpwr_entry(HE996x2, he996x2, band_idx);
++
++	mt7925_eht_txpwr(s, txpwr, band_idx);
++
 +out:
-+	clear_bit(MT76_RESET, &dev->mphy.state);
-+
-+	mt76_worker_enable(&dev->mt76.tx_worker);
-+
-+	return err;
++	devm_kfree(dev->mt76.dev, txpwr);
++	return ret;
 +}
 +
-+static int mt7925u_probe(struct usb_interface *usb_intf,
-+			 const struct usb_device_id *id)
++static int
++mt7925_pm_set(void *data, u64 val)
 +{
-+	static const struct mt76_driver_ops drv_ops = {
-+		.txwi_size = MT_SDIO_TXD_SIZE,
-+		.drv_flags = MT_DRV_RX_DMA_HDR | MT_DRV_HW_MGMT_TXQ |
-+			     MT_DRV_AMSDU_OFFLOAD,
-+		.survey_flags = SURVEY_INFO_TIME_TX |
-+				SURVEY_INFO_TIME_RX |
-+				SURVEY_INFO_TIME_BSS_RX,
-+		.tx_prepare_skb = mt7925_usb_sdio_tx_prepare_skb,
-+		.tx_complete_skb = mt7925_usb_sdio_tx_complete_skb,
-+		.tx_status_data = mt7925_usb_sdio_tx_status_data,
-+		.rx_skb = mt7925_queue_rx_skb,
-+		.rx_check = mt7925_rx_check,
-+		.sta_add = mt7925_mac_sta_add,
-+		.sta_assoc = mt7925_mac_sta_assoc,
-+		.sta_remove = mt7925_mac_sta_remove,
-+		.update_survey = mt792x_update_channel,
-+	};
-+	static const struct mt792x_hif_ops hif_ops = {
-+		.mcu_init = mt7925u_mcu_init,
-+		.init_reset = mt792xu_init_reset,
-+		.reset = mt7925u_mac_reset,
-+	};
-+	static struct mt76_bus_ops bus_ops = {
-+		.rr = mt792xu_rr,
-+		.wr = mt792xu_wr,
-+		.rmw = mt792xu_rmw,
-+		.read_copy = mt76u_read_copy,
-+		.write_copy = mt792xu_copy,
-+		.type = MT76_BUS_USB,
-+	};
-+	struct usb_device *udev = interface_to_usbdev(usb_intf);
-+	struct ieee80211_ops *ops;
-+	struct ieee80211_hw *hw;
-+	struct mt792x_dev *dev;
-+	struct mt76_dev *mdev;
-+	u8 features;
-+	int ret;
++	struct mt792x_dev *dev = data;
++	struct mt76_connac_pm *pm = &dev->pm;
 +
-+	ops = mt792x_get_mac80211_ops(&usb_intf->dev, &mt7925_ops,
-+				      (void *)id->driver_info, &features);
-+	if (!ops)
-+		return -ENOMEM;
++	if (mt76_is_usb(&dev->mt76))
++		return -EOPNOTSUPP;
 +
-+	ops->stop = mt7925u_stop;
++	mutex_lock(&dev->mt76.mutex);
 +
-+	mdev = mt76_alloc_device(&usb_intf->dev, sizeof(*dev), ops, &drv_ops);
-+	if (!mdev)
-+		return -ENOMEM;
++	if (val == pm->enable_user)
++		goto out;
 +
-+	dev = container_of(mdev, struct mt792x_dev, mt76);
-+	dev->fw_features = features;
-+	dev->hif_ops = &hif_ops;
-+
-+	udev = usb_get_dev(udev);
-+	usb_reset_device(udev);
-+
-+	usb_set_intfdata(usb_intf, dev);
-+
-+	ret = __mt76u_init(mdev, usb_intf, &bus_ops);
-+	if (ret < 0)
-+		goto error;
-+
-+	mdev->rev = (mt76_rr(dev, MT_HW_CHIPID) << 16) |
-+		    (mt76_rr(dev, MT_HW_REV) & 0xff);
-+	dev_dbg(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
-+
-+	if (mt76_get_field(dev, MT_CONN_ON_MISC, MT_TOP_MISC2_FW_N9_RDY)) {
-+		ret = mt792xu_wfsys_reset(dev);
-+		if (ret)
-+			goto error;
++	if (!pm->enable_user) {
++		pm->stats.last_wake_event = jiffies;
++		pm->stats.last_doze_event = jiffies;
 +	}
++	/* make sure the chip is awake here and ps_work is scheduled
++	 * just at end of the this routine.
++	 */
++	pm->enable = false;
++	mt76_connac_pm_wake(&dev->mphy, pm);
 +
-+	ret = mt792xu_mcu_power_on(dev);
-+	if (ret)
-+		goto error;
-+
-+	ret = mt76u_alloc_mcu_queue(&dev->mt76);
-+	if (ret)
-+		goto error;
-+
-+	ret = mt76u_alloc_queues(&dev->mt76);
-+	if (ret)
-+		goto error;
-+
-+	ret = mt792xu_dma_init(dev, false);
-+	if (ret)
-+		goto error;
-+
-+	hw = mt76_hw(dev);
-+	/* check hw sg support in order to enable AMSDU */
-+	hw->max_tx_fragments = mdev->usb.sg_en ? MT_HW_TXP_MAX_BUF_NUM : 1;
-+
-+	ret = mt7925_register_device(dev);
-+	if (ret)
-+		goto error;
++	pm->enable_user = val;
++	mt7925_set_runtime_pm(dev);
++	mt76_connac_power_save_sched(&dev->mphy, pm);
++out:
++	mutex_unlock(&dev->mt76.mutex);
 +
 +	return 0;
++}
 +
-+error:
-+	mt76u_queues_deinit(&dev->mt76);
++static int
++mt7925_pm_get(void *data, u64 *val)
++{
++	struct mt792x_dev *dev = data;
 +
-+	usb_set_intfdata(usb_intf, NULL);
-+	usb_put_dev(interface_to_usbdev(usb_intf));
++	*val = dev->pm.enable_user;
 +
-+	mt76_free_device(&dev->mt76);
++	return 0;
++}
++
++DEFINE_DEBUGFS_ATTRIBUTE(fops_pm, mt7925_pm_get, mt7925_pm_set, "%lld\n");
++
++static int
++mt7925_deep_sleep_set(void *data, u64 val)
++{
++	struct mt792x_dev *dev = data;
++	struct mt76_connac_pm *pm = &dev->pm;
++	bool monitor = !!(dev->mphy.hw->conf.flags & IEEE80211_CONF_MONITOR);
++	bool enable = !!val;
++
++	if (mt76_is_usb(&dev->mt76))
++		return -EOPNOTSUPP;
++
++	mt792x_mutex_acquire(dev);
++	if (pm->ds_enable_user == enable)
++		goto out;
++
++	pm->ds_enable_user = enable;
++	pm->ds_enable = enable && !monitor;
++	mt7925_mcu_set_deep_sleep(dev, pm->ds_enable);
++out:
++	mt792x_mutex_release(dev);
++
++	return 0;
++}
++
++static int
++mt7925_deep_sleep_get(void *data, u64 *val)
++{
++	struct mt792x_dev *dev = data;
++
++	*val = dev->pm.ds_enable_user;
++
++	return 0;
++}
++
++DEFINE_DEBUGFS_ATTRIBUTE(fops_ds, mt7925_deep_sleep_get,
++			 mt7925_deep_sleep_set, "%lld\n");
++
++DEFINE_DEBUGFS_ATTRIBUTE(fops_pm_idle_timeout, mt792x_pm_idle_timeout_get,
++			 mt792x_pm_idle_timeout_set, "%lld\n");
++
++static int mt7925_chip_reset(void *data, u64 val)
++{
++	struct mt792x_dev *dev = data;
++	int ret = 0;
++
++	switch (val) {
++	case 1:
++		/* Reset wifisys directly. */
++		mt792x_reset(&dev->mt76);
++		break;
++	default:
++		/* Collect the core dump before reset wifisys. */
++		mt792x_mutex_acquire(dev);
++		ret = mt7925_mcu_chip_config(dev, "assert");
++		mt792x_mutex_release(dev);
++		break;
++	}
 +
 +	return ret;
 +}
 +
-+#ifdef CONFIG_PM
-+static int mt7925u_suspend(struct usb_interface *intf, pm_message_t state)
++DEFINE_DEBUGFS_ATTRIBUTE(fops_reset, NULL, mt7925_chip_reset, "%lld\n");
++
++int mt7925_init_debugfs(struct mt792x_dev *dev)
 +{
-+	struct mt792x_dev *dev = usb_get_intfdata(intf);
-+	struct mt76_connac_pm *pm = &dev->pm;
-+	int err;
++	struct dentry *dir;
 +
-+	pm->suspended = true;
-+	flush_work(&dev->reset_work);
++	dir = mt76_register_debugfs_fops(&dev->mphy, &fops_regval);
++	if (!dir)
++		return -ENOMEM;
 +
-+	err = mt76_connac_mcu_set_hif_suspend(&dev->mt76, true);
-+	if (err)
-+		goto failed;
++	if (mt76_is_mmio(&dev->mt76))
++		debugfs_create_devm_seqfile(dev->mt76.dev, "xmit-queues",
++					    dir, mt792x_queues_read);
++	else
++		debugfs_create_devm_seqfile(dev->mt76.dev, "xmit-queues",
++					    dir, mt76_queues_read);
 +
-+	mt76u_stop_rx(&dev->mt76);
-+	mt76u_stop_tx(&dev->mt76);
++	debugfs_create_devm_seqfile(dev->mt76.dev, "acq", dir,
++				    mt792x_queues_acq);
++	debugfs_create_devm_seqfile(dev->mt76.dev, "txpower_sku", dir,
++				    mt7925_txpwr);
++	debugfs_create_file("tx_stats", 0400, dir, dev, &mt792x_tx_stats_fops);
++	debugfs_create_file("fw_debug", 0600, dir, dev, &fops_fw_debug);
++	debugfs_create_file("runtime-pm", 0600, dir, dev, &fops_pm);
++	debugfs_create_file("idle-timeout", 0600, dir, dev,
++			    &fops_pm_idle_timeout);
++	debugfs_create_file("chip_reset", 0600, dir, dev, &fops_reset);
++	debugfs_create_devm_seqfile(dev->mt76.dev, "runtime_pm_stats", dir,
++				    mt792x_pm_stats);
++	debugfs_create_file("deep-sleep", 0600, dir, dev, &fops_ds);
 +
 +	return 0;
-+
-+failed:
-+	pm->suspended = false;
-+
-+	if (err < 0)
-+		mt792x_reset(&dev->mt76);
-+
-+	return err;
 +}
-+
-+static int mt7925u_resume(struct usb_interface *intf)
-+{
-+	struct mt792x_dev *dev = usb_get_intfdata(intf);
-+	struct mt76_connac_pm *pm = &dev->pm;
-+	bool reinit = true;
-+	int err, i;
-+
-+	for (i = 0; i < 10; i++) {
-+		u32 val = mt76_rr(dev, MT_WF_SW_DEF_CR_USB_MCU_EVENT);
-+
-+		if (!(val & MT_WF_SW_SER_TRIGGER_SUSPEND)) {
-+			reinit = false;
-+			break;
-+		}
-+		if (val & MT_WF_SW_SER_DONE_SUSPEND) {
-+			mt76_wr(dev, MT_WF_SW_DEF_CR_USB_MCU_EVENT, 0);
-+			break;
-+		}
-+
-+		msleep(20);
-+	}
-+
-+	if (reinit || mt792x_dma_need_reinit(dev)) {
-+		err = mt792xu_dma_init(dev, true);
-+		if (err)
-+			goto failed;
-+	}
-+
-+	err = mt76u_resume_rx(&dev->mt76);
-+	if (err < 0)
-+		goto failed;
-+
-+	err = mt76_connac_mcu_set_hif_suspend(&dev->mt76, false);
-+failed:
-+	pm->suspended = false;
-+
-+	if (err < 0)
-+		mt792x_reset(&dev->mt76);
-+
-+	return err;
-+}
-+#endif /* CONFIG_PM */
-+
-+MODULE_DEVICE_TABLE(usb, mt7925u_device_table);
-+MODULE_FIRMWARE(MT7925_FIRMWARE_WM);
-+MODULE_FIRMWARE(MT7925_ROM_PATCH);
-+
-+static struct usb_driver mt7925u_driver = {
-+	.name		= KBUILD_MODNAME,
-+	.id_table	= mt7925u_device_table,
-+	.probe		= mt7925u_probe,
-+	.disconnect	= mt792xu_disconnect,
-+#ifdef CONFIG_PM
-+	.suspend	= mt7925u_suspend,
-+	.resume		= mt7925u_resume,
-+	.reset_resume	= mt7925u_resume,
-+#endif /* CONFIG_PM */
-+	.soft_unbind	= 1,
-+	.disable_hub_initiated_lpm = 1,
-+};
-+module_usb_driver(mt7925u_driver);
-+
-+MODULE_AUTHOR("Lorenzo Bianconi <lorenzo@kernel.org>");
-+MODULE_LICENSE("Dual BSD/GPL");
 -- 
 2.18.0
 
