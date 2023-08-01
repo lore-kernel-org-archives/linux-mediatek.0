@@ -4,70 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 268ADC04A94
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 14:48:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 818DCC0015E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 18:45:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-ID:Cc:To:
-	References:In-Reply-To:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jS3K5hptncqA37Vba6iyqhj2/xB8o5vU7OGX6EMJj2U=; b=Ecx9LY1CkQD43/VSNhntgYjNyW
-	9AkMwBCFIf/zljISX4Own6PniSVuc3n1HwmiaM2EN2g9iviDTaJSiyhTNK7McdnTbpbdY3HSpbLFh
-	c7zqm06KxKoZ4jy6nDcgDsGy/sw5EkWLJg3Is/igPZypZdoHPfN70M1z4KlynS32u0Urmq+F8eP+W
-	6L2HkAFDkQB7MAWsr4yte2SweV7Q8pLzbgCcGeAn7scoSX7khgW5pDDOdkrJkDI+NgKNLyL5SjT15
-	xG/50+LUYp/QD7NGu238MSOLixK7gFeknXkRtCoJwW8mJa8xF3XhGCEiJOB9eHdd9cc1GhqaQIUw9
-	1VupZUOQ==;
+	bh=XIhCH6Qlq4dS5A53LxoK9zmsNGQ35uoo8uih7TfxMy0=; b=F8n58xb+b2DdRfa/R80ThAussd
+	Kj3kVwuLHvFTfvBN2lSwiE6XRbdYbakNwcQoZ8arX9o0veVKk1CxNA9BOjmQVmGUdcnWf/DScDX67
+	FyzeXHQaEx4W+4IkiE+9TKoq0unOS4f0RliuLdb63uQDswLlk91sLR/ywaBMn11HQdQdYhGD0YSEr
+	EH9AAzQoUFpdN/yfOD0EbEjjZWkYTTcnj2zfQzpmX++PvPIIOHXySaMTQQ7qRfENVipJepN5gpkK0
+	El5WmxIPJ4XTuDrTIueOrpdb/VAibIosSapcgz7aPYACEfsIN6kw5mVy9bCm+cYVCZmVGHocnj0Xh
+	dOiKzsYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQqgB-002dqW-0d;
-	Tue, 01 Aug 2023 14:48:55 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qQuN7-00348M-1t;
+	Tue, 01 Aug 2023 18:45:29 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQqg6-002dpT-2i;
-	Tue, 01 Aug 2023 14:48:52 +0000
+	id 1qQuN3-00347K-1s;
+	Tue, 01 Aug 2023 18:45:26 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B2588615A9;
-	Tue,  1 Aug 2023 14:48:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BADCAC433C7;
-	Tue,  1 Aug 2023 14:48:45 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 1453D61691;
+	Tue,  1 Aug 2023 18:45:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E760C433C7;
+	Tue,  1 Aug 2023 18:45:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1690901329;
-	bh=nT8gUQ6qDAmcesueSE4m0Nz7EwpMx5l0NtHDJ0UaUKc=;
-	h=Subject:From:In-Reply-To:References:To:Cc:Date:From;
-	b=YNcdFczYzaieRuS9r1BQyiKUAmTILRQLhyy9Bdhw4fY7U6RKJHISLOpTIpTQTWOWG
-	 qjpntf0uj4YT8FUENS/vE151qxVlzro8RDEMDu3Ix/i6u5DPhWQS9yj019zH+5dmb/
-	 dQbhnMlk26ZEVpJ7+Y2i5OLH8a12tjJ5q2SlvL4X1sZDHXiKzmBz0v/QRCwyzVe5T+
-	 x7I2LFOvRrXEnxy2C+T1eaqmUhXbDmAb/NbeM5Rm+XpOP+q9wJkDeq84xVWyYyrmWb
-	 gihdh3gxke8iWCdpm108MZ2XHbsc385uwa0Ejgod2lvTOgHWmCQUgT5bRbBdsmFX41
-	 IeBO6cPajX/6w==
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1690915524;
+	bh=6ecqCthtX5y6DW+x8fFvSPeJvMEWUDYrHhQnKo4fw2g=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=MCgeSAtxkn/Cm+2KX+Cy2ya7BIdT7/jl+ViyqC9GLpRguZ1quqlduJY201e9YY+Gl
+	 tPuWVXKidBwoQEQOGw9dB+OvKt+xnFrB0j54IxicMem/IXJTfyVWG62tXO8z1Oidqn
+	 2NOA3Pu3s2NQonYg8bgH4gYg1I3ajHJTZ18017Ae5m9Oa4tGlZ1fXI3lCOlefo7d8y
+	 ThVJ77i4Sa8SZrf7DUrw4H3M9A25o0ZXrQMqesV5j/lH8f2SyyTLSeFXCYClgzdAqC
+	 onCUY8LhZGFKLCVVvkTKYf+Ki+4WGuZFHhFEKqNomiwiYDAlugFGuYkdZfhNjJFDS6
+	 h8ARfo4bV8Srw==
+From: Vinod Koul <vkoul@kernel.org>
+To: Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, 
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
+ Ludovic Desroches <ludovic.desroches@microchip.com>, 
+ Tudor Ambarus <tudor.ambarus@linaro.org>, 
+ Paul Cercueil <paul@crapouillou.net>, 
+ Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, 
+ Viresh Kumar <vireshk@kernel.org>, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+ Li Yang <leoyang.li@nxp.com>, Zhang Wei <zw@zh-kernel.org>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Vladimir Zapolskiy <vz@mleia.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ =?utf-8?q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Sinan Kaya <okaya@kernel.org>, 
+ Andy Gross <agross@ker>, Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>, Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Laxman Dewangan <ldewangan@nvidia.com>, Jon Hunter <jonathanh@nvidia.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Peter Ujfalusi <peter.ujfalusi@gmail.com>, 
+ Michal Simek <michal.simek@amd.com>, Rob Herring <robh@kernel.org>
+Cc: devicetree@vger.kernel.org, asahi@lists.linux.dev, 
+ linux-arm-kernel@lists.infradead.org, dmaengine@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, 
+ linuxppc-dev@lists.ozlabs.org, linux-mediatek@lists.infradead.org, 
+ linux-actions@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
+ linux-tegra@vger.kernel.org
+In-Reply-To: <20230718143138.1066177-1-robh@kernel.org>
+References: <20230718143138.1066177-1-robh@kernel.org>
+Subject: Re: [PATCH v2] dmaengine: Explicitly include correct DT includes
+Message-Id: <169091550886.69468.9371544048617721749.b4-ty@kernel.org>
+Date: Wed, 02 Aug 2023 00:15:08 +0530
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Subject: Re: [v2] wifi: drivers: Explicitly include correct DT includes
-From: Kalle Valo <kvalo@kernel.org>
-In-Reply-To: <20230724211914.805876-1-robh@kernel.org>
-References: <20230724211914.805876-1-robh@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Loic Poulain <loic.poulain@linaro.org>, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno  <angelogioacchino.delregno@collabora.com>,
- =?utf-8?b?SsOpcsO0bWUgUG91aWxsZXI=?=  <jerome.pouiller@silabs.com>,
- ath10k@lists.infradead.org, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, ath11k@lists.infradead.org,
- wcn36xx@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-User-Agent: pwcli/0.1.1-git (https://github.com/kvalo/pwcli/) Python/3.11.2
-Message-ID: <169090132389.212423.4907787613050355047.kvalo@kernel.org>
-Date: Tue,  1 Aug 2023 14:48:45 +0000 (UTC)
+X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230801_074850_964932_837041F0 
-X-CRM114-Status: UNSURE (   8.79  )
+X-CRM114-CacheID: sfid-20230801_114525_712155_FAC1E3CE 
+X-CRM114-Status: UNSURE (   9.27  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,8 +108,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rob Herring <robh@kernel.org> wrote:
 
+On Tue, 18 Jul 2023 08:31:35 -0600, Rob Herring wrote:
 > The DT of_device.h and of_platform.h date back to the separate
 > of_platform_bus_type before it as merged into the regular platform bus.
 > As part of that merge prepping Arm DT support 13 years ago, they
@@ -94,15 +119,16 @@ Rob Herring <robh@kernel.org> wrote:
 > replace the implicit includes with struct declarations, users need to
 > explicitly include the correct includes.
 > 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+> [...]
 
-Patch applied to wireless-next.git, thanks.
+Applied, thanks!
 
-e7899a90cebe wifi: drivers: Explicitly include correct DT includes
+[1/1] dmaengine: Explicitly include correct DT includes
+      commit: 897500c7ea91702966adb9b412fa39400b4edee6
 
+Best regards,
 -- 
-https://patchwork.kernel.org/project/linux-wireless/patch/20230724211914.805876-1-robh@kernel.org/
+~Vinod
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
 
