@@ -4,54 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9E33C001DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 12:32:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34F22C001DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Aug 2023 12:38:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xiA1XaECpdcwK7c8+j8fljdKrKhBHuap+BUSsrHrhB4=; b=oJBnjcnwRVSUCzeoTUja35L/ap
-	n2wNj5CYG8sG7Anq8NZ0edNznsw82zm85t2b05z4Zc+C84RZ5z5TtoMfscYZqCL5xEJUWGfQlGjfO
-	LQpLywstB5zPcWClsUDwY9a9zK5oSquRFLfyh3UBKUr2KzIEI4kgHFBE4UzNrxxzoP0W8FMDxKTT1
-	Ug9Nq6QqUkrrisiZgDBA7wdBIAWEki3Mw69DuD9q/GStua0aQ2FyrWH0Qb76VtCOSG48g3qLJ6zJ0
-	mUoFAWR4YLS1rNWTiM+feacSYR6rP0SGeNixmxwVxtzMW9GFqumm8OXNUHsmpLI6oKLi/KYmo4wpG
-	2ruhpRIA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iAVNLGim5wFcrilOkEuC/NOxcnAKTVYANQjEkiqMNuk=; b=oV8M2rsGxFhXPfpdn590Qm/ui9
+	dF9HqHWmZFfZ51W+HAwrQ4oJ5r2qvAKfF89L747UZyZ6kajwOVcNbqJD07X5THiYgKAh5sNT/sGrK
+	DYexfH+sRovxDCWDVYQBen5rRNwykGR+xNG5rIl8zoaJIylsx3/tdcfmColR7/X3R/CltGyON/JGy
+	tqOsd2gP3cxD3HR+wPIl6W7H28A+Ix3VmDa2sRMMoT5exTSnCgiO2pCYY2QpSmXa0yW1ltJF2D3GY
+	ZHRSK6/Vg6j1+C17xhMO4/o2qk2Dn8ChWvvqOSiYCNf1JeLcGQONpKTNolnQhrOUvt1JVjq1LcrHU
+	cS66u08A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQoXr-002MOP-1H;
-	Tue, 01 Aug 2023 12:32:11 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1qQoeM-002NJM-0F;
+	Tue, 01 Aug 2023 12:38:54 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qQoV4-002LSY-2V;
-	Tue, 01 Aug 2023 12:29:20 +0000
-Received: from dggpeml500025.china.huawei.com (unknown [172.30.72.57])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RFZB23DB2zVjpT;
-	Tue,  1 Aug 2023 20:27:22 +0800 (CST)
-Received: from ubuntu1804.huawei.com (10.67.174.202) by
- dggpeml500025.china.huawei.com (7.185.36.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Tue, 1 Aug 2023 20:29:05 +0800
-From: Zhu Wang <wangzhu9@huawei.com>
-To: <linux@roeck-us.net>, <heikki.krogerus@linux.intel.com>,
-	<gregkh@linuxfoundation.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <linux-usb@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: <wangzhu9@huawei.com>
-Subject: [PATCH -next] usb: typec: tcpci_mt6370: remove redundant dev_err_probe()
-Date: Tue, 1 Aug 2023 20:28:34 +0800
-Message-ID: <20230801122834.89168-1-wangzhu9@huawei.com>
-X-Mailer: git-send-email 2.17.1
+	id 1qQoeI-002NIX-2T;
+	Tue, 01 Aug 2023 12:38:52 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5229E6607122;
+	Tue,  1 Aug 2023 13:38:48 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1690893528;
+	bh=Bk+q0IviZB4Tcjk/qAmz5SKyCcwQz4wwuUuql3kc1JI=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=PinpC2hYqWzD0ckspYNgggeWeaJ0e3COeZOxWKiTY5rJaaW+AkVhZi6okWZFBsMXv
+	 QqPwmWK49yRy+7iFsjdqDO+5r+Eb2T0Dqs9e9/BbnroAQX8iG90DboAb74yg/FJ2Yg
+	 ojOkT5+2iTslacuSxcrj+UCNF5lthkaTSe8S/22Zqkk8euJwICX+8smmy59afuXlQ1
+	 38N/RNctwGkm/u3MXTfy/VAaqO96EJEHBS/V1UhqXw8FAdmSCTjHgBZcqukTsbl2Sv
+	 CzynL2EI6t9XdDcOduLBt4AhxOBk/yIqMFE1GdZPMdk74/I1w1is16cWhMcO0Naok+
+	 Mw1dFNtzS77Dw==
+Message-ID: <a37298af-a12f-0c49-113f-cda389d8232d@collabora.com>
+Date: Tue, 1 Aug 2023 14:38:45 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.67.174.202]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggpeml500025.china.huawei.com (7.185.36.35)
-X-CFilter-Loop: Reflected
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH -next] usb: typec: tcpci_mt6370: remove redundant
+ dev_err_probe()
+Content-Language: en-US
+To: Zhu Wang <wangzhu9@huawei.com>, linux@roeck-us.net,
+ heikki.krogerus@linux.intel.com, gregkh@linuxfoundation.org,
+ matthias.bgg@gmail.com, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230801122834.89168-1-wangzhu9@huawei.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230801122834.89168-1-wangzhu9@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230801_052919_025637_F8D2397A 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20230801_053851_024179_C39526D0 
+X-CRM114-Status: UNSURE (   7.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,28 +78,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When platform_get_irq() is called, the error message has been printed,
-so it need not to call dev_err_probe() to present error messages.
+Il 01/08/23 14:28, Zhu Wang ha scritto:
+> When platform_get_irq() is called, the error message has been printed,
+> so it need not to call dev_err_probe() to present error messages.
+> 
+> Signed-off-by: Zhu Wang <wangzhu9@huawei.com>
 
-Signed-off-by: Zhu Wang <wangzhu9@huawei.com>
----
- drivers/usb/typec/tcpm/tcpci_mt6370.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/drivers/usb/typec/tcpm/tcpci_mt6370.c b/drivers/usb/typec/tcpm/tcpci_mt6370.c
-index 2a079464b398..9cda1005ef01 100644
---- a/drivers/usb/typec/tcpm/tcpci_mt6370.c
-+++ b/drivers/usb/typec/tcpm/tcpci_mt6370.c
-@@ -147,7 +147,7 @@ static int mt6370_tcpc_probe(struct platform_device *pdev)
- 
- 	irq = platform_get_irq(pdev, 0);
- 	if (irq < 0)
--		return dev_err_probe(dev, irq, "Failed to get irq\n");
-+		return irq;
- 
- 	/* Assign TCPCI feature and ops */
- 	priv->tcpci_data.auto_discharge_disconnect = 1;
--- 
-2.17.1
 
 
