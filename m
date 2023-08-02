@@ -4,57 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56EA1C001DF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 09:46:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21F7CC00528
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 10:03:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=BW2XvmEW+IPXledMDw7XZf2mTLZJ4WE3BgNw5WmcIQ8=; b=hjiAc8V5rBi37WTsOOisoy0Z6V
-	b5WMfxS6JCasxud4n+BVO01xfDk9czIvnEO7LRiCcf4RZlwM4MjLkNn/u6PAPmyTW+lIDUjo2HajX
-	RhUI2VEQ8iywCY8qfxihV7y3f7a6Pqckaafsw5YaMIqq5l6yan295fR2pkDEf55Y+DjJSgDsvX2r9
-	kHEtynUzRgJcYfWaNk8TB9+q5Uqnkdi+GDzZfbkGbJHsm5rM1aVTfRYGwes8aoQrIW1/EiNwZpJQB
-	DGwp2HA9axyxXBIXLO/uqtFlcg2Vmr+mD+rnMV6/8kaBZNIX0EFvmkqCZooOfQ1xnHfemtchFdGQA
-	utk86DDg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6GIOROGf7nsi06R9/Lt9IPJdN/Sz2xDv6zWdpHb4nuQ=; b=H9oSc92RIOaUI+eETxLEoUs30D
+	akO6KHRarPR6M1i3WyEk7hqUIFMEoO91/3Udav4EZArf0GYqpgPyppzAvx74Bb2knGmxu6r+/PfEm
+	79TusuZa0wdHy1Qi9KGJGTiVUi9q4pCuICtKmwxrkdCHcXybf/pzFYCaia17kvdOzH1DlKwSVBq7l
+	FoioBWq5dH7e3C8rFkAgx8QAJ1VyMB3fUN2y5f8/pd0FnzpQkHCBQ4Y3U3h2y1YbUpCcTYfefiiiO
+	BWfWPvj73NS7TIXw4JRBG4l7+2sxZTKyneoyPrslF9GarciJDgiJOSFPEN4vpYUeAZfNhlDkW37rR
+	QJL3Zkiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qR8Qd-004WOy-0b;
-	Wed, 02 Aug 2023 09:46:03 +0000
-Received: from szxga03-in.huawei.com ([45.249.212.189])
+	id 1qR8hF-004YbJ-2o;
+	Wed, 02 Aug 2023 10:03:13 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qR8Qa-004WNT-1l;
-	Wed, 02 Aug 2023 09:46:01 +0000
-Received: from dggpemm500016.china.huawei.com (unknown [172.30.72.54])
-	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4RG6V96zRYzLp2C;
-	Wed,  2 Aug 2023 17:43:13 +0800 (CST)
-Received: from huawei.com (10.90.53.73) by dggpemm500016.china.huawei.com
- (7.185.36.25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Wed, 2 Aug
- 2023 17:45:56 +0800
-From: Chen Jiahao <chenjiahao16@huawei.com>
-To: <rafael@kernel.org>, <daniel.lezcano@linaro.org>, <amitk@kernel.org>,
-	<rui.zhang@intel.com>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <bchihi@baylibre.com>,
-	<wenst@chromium.org>, <robh@kernel.org>, <frank.li@vivo.com>,
-	<linux-pm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-CC: <chenjiahao16@huawei.com>
-Subject: [PATCH -next] thermal: Clean up redundant dev_err_probe()
-Date: Wed, 2 Aug 2023 17:45:27 +0800
-Message-ID: <20230802094527.988842-1-chenjiahao16@huawei.com>
-X-Mailer: git-send-email 2.34.1
+	id 1qR8hC-004YaD-0V;
+	Wed, 02 Aug 2023 10:03:11 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8F30F6607185;
+	Wed,  2 Aug 2023 11:03:00 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1690970581;
+	bh=QNUoS1nkaqDteBmKu4yeaJCyte/W4BgCT/xXj6oe8+o=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=TgGj95aKjuqRnIkJVqPQSWhr/2CpazGKqCOROs2+oVooR+e0TBfKwBsKarzLtiwbZ
+	 r/OQSVMbUT05fa4vzoNhxAZL5ayuCM1aB0yyAAg7OE7czHHeCxGllAPzkhZ1IPWVUS
+	 yRQn9z8zbYryoKWHN5k+tgONyR2bOSgrJQgVGsRwNtefJ5X05La2JajAzt7nWR/z/C
+	 aIZpKYdfj3CKjTHjCNlhQH/GGJ+YAGbMVIfb6UQ9uJ2Ws5BN0YIUCvBBClmQaazmOi
+	 9Vc5cMFqMqFcy9tmsxsd1dbmBd9W0lsYid0D8Lxk8LBhJe6HEbjZElZy7gEjugRqet
+	 GoHttZIOV4CHg==
+Message-ID: <8c0db188-bc71-a5b6-956b-02d451dfa854@collabora.com>
+Date: Wed, 2 Aug 2023 12:02:58 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.90.53.73]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- dggpemm500016.china.huawei.com (7.185.36.25)
-X-CFilter-Loop: Reflected
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH -next] thermal: Clean up redundant dev_err_probe()
+Content-Language: en-US
+To: Chen Jiahao <chenjiahao16@huawei.com>, rafael@kernel.org,
+ daniel.lezcano@linaro.org, amitk@kernel.org, rui.zhang@intel.com,
+ matthias.bgg@gmail.com, bchihi@baylibre.com, wenst@chromium.org,
+ robh@kernel.org, frank.li@vivo.com, linux-pm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230802094527.988842-1-chenjiahao16@huawei.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230802094527.988842-1-chenjiahao16@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230802_024600_793863_43B1FBE5 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20230802_030310_370791_313A9C8E 
+X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,33 +78,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Referring to platform_get_irq()'s definition, the return value has
-already been checked if ret < 0, and printed via dev_err_probe().
-Calling dev_err_probe() one more time outside platform_get_irq()
-is obviously redundant.
+Il 02/08/23 11:45, Chen Jiahao ha scritto:
+> Referring to platform_get_irq()'s definition, the return value has
+> already been checked if ret < 0, and printed via dev_err_probe().
+> Calling dev_err_probe() one more time outside platform_get_irq()
+> is obviously redundant.
+> 
+> Removing dev_err_probe() outside platform_get_irq() to clean up
+> above problem.
+> 
+> Signed-off-by: Chen Jiahao <chenjiahao16@huawei.com>
 
-Removing dev_err_probe() outside platform_get_irq() to clean up
-above problem.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Signed-off-by: Chen Jiahao <chenjiahao16@huawei.com>
----
- drivers/thermal/mediatek/lvts_thermal.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index 054c965ae5e1..371f66e899bd 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -1138,7 +1138,7 @@ static int lvts_probe(struct platform_device *pdev)
- 
- 	irq = platform_get_irq(pdev, 0);
- 	if (irq < 0)
--		return dev_err_probe(dev, irq, "No irq resource\n");
-+		return irq;
- 
- 	ret = lvts_domain_init(dev, lvts_td, lvts_data);
- 	if (ret)
--- 
-2.34.1
 
 
