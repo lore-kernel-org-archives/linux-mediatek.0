@@ -4,80 +4,177 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FB92C001DF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 15:08:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7FE6C41513
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 15:13:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7IVB1CC6BZwxJkece5d/SoXOpHZFxcvvr7Jdp61fNso=; b=h2tWHamX/sWDb1K2g6hSeaAIzc
-	4fPbKQDtvwiEbaBfdNnj04rc5NbqTuu1FkXPyKhouvwD701WavJyQGkwJMbMWb4Q/dQRUQCpihTk5
-	uRtsXELEe91g6v1Nl1+/y4TkGAgp8mB5zEtwzEij0VZmxJH2zTNS2jCUz7fqgsI3ljK5fQP+5U1YY
-	VXM5swDVlfUZjvFApm8uof6N/5qp3rGlsbGE6sA4Rk6DJU8iEHpMBTGEviFcShMzzvRh8JUQ+3AFX
-	3T8A1OAXnhB02BUQjl/X9w3ol65fy/01oyqw+WDu/nPEgrwi/8G9KQGUj1XtJzkhaDBbdDg70m0Fz
-	smuZP4Qw==;
+	bh=vf0Ob3GoFKzgO51jz6PdnbtA3ZdChCHR2QEDtbM6myM=; b=wUhe50IE2UVD4L3KPZ9RwzM882
+	d0FJBY/Psu2CtON22HpOZJFD2vYPZ4YegpwQjKqqAOhHmSFl7IgFJTStaVMzvDYsJ/tnuuHBj3fV2
+	+dxpaVRFXr3vb9Dm40rbDAj3P6zaHBgacjXYGCUnFfUB8jSqzXqiRTj1eCZo5LlUSn84dRwEXXr/d
+	BAJJIGwtpo98MvldXpijp1YFgmWrKe7tJALo72Ps7ciKLacJdB3sIDXUD3VaJkuLgu7CdTljVUoQK
+	ACoBCw6SWjLv4cu5eFbGs5fPjbHpOj8WNbjy6zw2qlwYPUyNhtiitg/SQILLkv4OHz6moSleZLrMN
+	mwAgMYJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRDT1-005BWK-1e;
-	Wed, 02 Aug 2023 15:08:51 +0000
+	id 1qRDXF-005C2T-30;
+	Wed, 02 Aug 2023 15:13:13 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRDSy-005BVA-03;
-	Wed, 02 Aug 2023 15:08:49 +0000
-X-UUID: 7783ca28314611ee83ed1395ce914268-20230802
+	id 1qRDXC-005C1q-36;
+	Wed, 02 Aug 2023 15:13:12 +0000
+X-UUID: 14a21d96314711ee83ed1395ce914268-20230802
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=7IVB1CC6BZwxJkece5d/SoXOpHZFxcvvr7Jdp61fNso=;
-	b=SrZjH5llkzSsm1WP6TZDUlzARdfoza/TGWQgwrEbci9e9RRYUMD7wlS98LTVn8a++7mZfa6ZPQDBy+/+HAkc0KcJY5o+lLy9cIqT1XyyOfs23Y7VNgIS0XzjoO35/rUkuTtFuZtdgV8lW+Bz6djrHH1DGjgdXLCZBuj5ttnVPIk=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=vf0Ob3GoFKzgO51jz6PdnbtA3ZdChCHR2QEDtbM6myM=;
+	b=gOjs0MCXY5gRe+Omjy+v+1rgZ82UTfExZsFG8nQOsz0AbfMthvt2TuVdGeN4eJblBjwkluBxw7LLbVO5/s0RMeZ6xT36KXCRhY8isAH0a3ptQJjAS51lRfOcNd5s6hIxx1p689fRbG0Ke05feebHLU9ee18tYBWyMVIje9yQ9KI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.30,REQID:6237ec74-7e0b-4215-8587-c2e356a95344,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:1fcc6f8,CLOUDID:721cbe42-d291-4e62-b539-43d7d78362ba,B
+X-CID-O-INFO: VERSION:1.1.30,REQID:c8837623-40c1-42b0-8a85-1bb909ea83d5,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:b223be42-d291-4e62-b539-43d7d78362ba,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 7783ca28314611ee83ed1395ce914268-20230802
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 14a21d96314711ee83ed1395ce914268-20230802
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
+	(envelope-from <jiaxin.yu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 813507891; Wed, 02 Aug 2023 08:08:41 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+	with ESMTP id 346776721; Wed, 02 Aug 2023 08:13:05 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 2 Aug 2023 22:48:04 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 2 Aug 2023 22:48:04 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Eugen Hristev
-	<eugen.hristev@collabora.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Jason-ch Chen
-	<jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>,
-	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
-	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
-	<shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Nathan Lu
-	<nathan.lu@mediatek.com>
-Subject: [PATCH v8 6/8] drm/mediatek: Add ability to support dynamic connector selection
-Date: Wed, 2 Aug 2023 22:48:00 +0800
-Message-ID: <20230802144802.751-7-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230802144802.751-1-jason-jh.lin@mediatek.com>
-References: <20230802144802.751-1-jason-jh.lin@mediatek.com>
+ 15.2.1118.26; Wed, 2 Aug 2023 22:53:02 +0800
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 2 Aug 2023 22:53:01 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=IiOcl04tbGyJr/kBQgCIp8bb65HQ4zdjd1BFNjuV+Nh7hjeRYM9h4b42qgnrBzsv7ryu8V/KW07PDYwlI07r3mjK4PyZxzVDJXgzLLmJ4nDQSvAdKBgiN3dqDjzDsKEVoPFQX92OnYXNsV7pqX1pmgdMSnaTncpmOLda3xTK8L3zyizVmltuLNYuFSKASL6k6O7Bf0dlvpjd9obFp+qVCkCe6a7Lbb4cXS9VMdxyzoGvLVH0SV33QOzPqd099RFDrLhdHPKX1UEymV1aV+oVVt/G5xZTLqK2tvJ9dbuBB8GKwBXbY+YAoEfBY+dMloF7DlT+ECCJMl9I0pL4BSy42g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=vf0Ob3GoFKzgO51jz6PdnbtA3ZdChCHR2QEDtbM6myM=;
+ b=I1PkSSLmTn/rMd5DW7bI/8WbuzPZmIyQaAmkguLGGWEp3O4f7VsdjlPc4QVl201wqkoYhdFM26pDUDZdQT+bUGTToFXJXsAunoM3dgdAxIA2zn8isHrGvf3Q0f7ZJE/oGf8KYRQyC1sgjfKP8fww7ZSEsCoYJbzhwpLQiZS3iCIxpqF98Tp9S4EvoOZRh2cA9AZpabiiSaIv4wWfBTFTiH+CpUXD26zbzpodbTh3huMWH5PzewRJv6SjNrKSweZ+o4rYm2xW7dAm5mrHADjaSYAD5BvH5+m0hD3ix5nGjGB7fXBqA0GinTsDJB3+fKEn9BuQHOIVoNiRXlgkkYJy/g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vf0Ob3GoFKzgO51jz6PdnbtA3ZdChCHR2QEDtbM6myM=;
+ b=nBCx+JbL3VCc/HJZOFUpuetdG1Fl964jqfoJozvftFxN8zdXHDKvZDLRf4K7EaFEv1VTwofLa/4Cq71VqfpLiCIivp4kLcH6VEDNHDZrX57MJBzlQFun/xVdZM2DljarpxINFO9KwT5Q0oyOIN4U+NIi5MnmroULqE5XI/m/uzo=
+Received: from SEYPR03MB6459.apcprd03.prod.outlook.com (2603:1096:101:50::10)
+ by KL1PR03MB5764.apcprd03.prod.outlook.com (2603:1096:820:64::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6652.19; Wed, 2 Aug
+ 2023 14:52:57 +0000
+Received: from SEYPR03MB6459.apcprd03.prod.outlook.com
+ ([fe80::b532:b348:3c02:982b]) by SEYPR03MB6459.apcprd03.prod.outlook.com
+ ([fe80::b532:b348:3c02:982b%6]) with mapi id 15.20.6631.045; Wed, 2 Aug 2023
+ 14:52:57 +0000
+From: =?utf-8?B?SmlheGluIFl1ICjkv57lrrbpkasp?= <Jiaxin.Yu@mediatek.com>
+To: "broonie@kernel.org" <broonie@kernel.org>
+CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	=?utf-8?B?Q2h1bnh1IExpICjmnY7mmKXml60p?= <Chunxu.Li@mediatek.com>,
+	"ajye_huang@compal.corp-partner.google.com"
+	<ajye_huang@compal.corp-partner.google.com>,
+	=?utf-8?B?QWxsZW4tS0ggQ2hlbmcgKOeoi+WGoOWLsik=?=
+	<Allen-KH.Cheng@mediatek.com>, "dri-devel@lists.freedesktop.org"
+	<dri-devel@lists.freedesktop.org>, "kuninori.morimoto.gx@renesas.com"
+	<kuninori.morimoto.gx@renesas.com>, "andrzej.hajda@intel.com"
+	<andrzej.hajda@intel.com>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "robert.foss@linaro.org"
+	<robert.foss@linaro.org>, "Laurent.pinchart@ideasonboard.com"
+	<Laurent.pinchart@ideasonboard.com>, "neil.armstrong@linaro.org"
+	<neil.armstrong@linaro.org>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "nfraprado@collabora.com"
+	<nfraprado@collabora.com>, "alsa-devel@alsa-project.org"
+	<alsa-devel@alsa-project.org>
+Subject: Re: [v3 2/3] ASoC: mediatek: mt8186: correct the HDMI widgets
+Thread-Topic: [v3 2/3] ASoC: mediatek: mt8186: correct the HDMI widgets
+Thread-Index: AQHZwxDWBavvSbTht0etjS6nC3ISe6/TxFwAgANXjQA=
+Date: Wed, 2 Aug 2023 14:52:57 +0000
+Message-ID: <c6ae8630d06138b6d0156c19323afebf0718f522.camel@mediatek.com>
+References: <20230730180803.22570-1-jiaxin.yu@mediatek.com>
+	 <20230730180803.22570-3-jiaxin.yu@mediatek.com>
+	 <25e6ab45-ecad-4bc3-bf4d-983243c939ad@sirena.org.uk>
+In-Reply-To: <25e6ab45-ecad-4bc3-bf4d-983243c939ad@sirena.org.uk>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEYPR03MB6459:EE_|KL1PR03MB5764:EE_
+x-ms-office365-filtering-correlation-id: 9e889414-9421-4500-dd5b-08db936828f1
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: mrHkiwvLh5pKd/Z+6Tm6pLOmE373ApOkUFxTd8A2G0oKSnvWfzZnlxlt6N5I8maXGNxgO/lHT5IBrR8ar0v2JpjT0dgnw4wygd9NxCGQKeW9XC1/mHCsTeuEBh2NdbymQOgndCw5ht/X/A/svbp9WEIdyOeJLyFODza+TOnADn1RgeKVqN75aOlBEvQscj0MygvyaILwzaidNiHp1WxQ5BqGy9iVH5wQH1/lsA6cQZZpbrLcMKY4e6b9RrkXAmfC8QFSs1x8SDr2HJfRRv9QSzvaoUPCD84pGRi2wi7mbDrI9zhp93t4Q6b/2FmfI0C7W8rZyOJFelZz7wVSWyY/iwTWZKWPt9k4UUBiICCzCKeMifXTkc9s3mX1/oZtZO8SnVLA6eb+nNzCMQtMDlF2f9QzhhjEw5gtth3n+aPatcmaCneN9a6+Q615G+0JcrSL0JuDsh3TyRwosicdTZpOKf8qKef3M9qR5JXLx0KzAuizL9WZdk6BDnb8gHlr3kYiqLmR74rNa72A294ChC1Rvu0mkUTe18b7Kdilp8XopTYYSx99md4/+MwuCZrWSCzvxW9qu1CoXX7YWUy3FSgcrb9jXysL1FrO18x7FfhwGaqYmfIFWLATES1NJQdjbC67SCvIt7D7KKO1qk8jCGvCdXmFnPBW+Yp8pvByASu7b5I=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEYPR03MB6459.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(346002)(366004)(39860400002)(396003)(136003)(376002)(451199021)(66476007)(66556008)(66946007)(66446008)(64756008)(6916009)(4326008)(316002)(91956017)(76116006)(5660300002)(6506007)(41300700001)(38100700002)(8676002)(7416002)(26005)(186003)(8936002)(6512007)(6486002)(478600001)(2906002)(38070700005)(85182001)(54906003)(36756003)(83380400001)(71200400001)(86362001)(2616005)(122000001);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cWZEZ2x2RUw2akhNUi91R3diUWVmbzFia0o4c2FLT3dNcGl1aG1keG0yOU9k?=
+ =?utf-8?B?Skp3LzZCQU5MUm9HelhuODY0NTUvMXBMRFlDQUdnMDQrQ0syWTFYN3h2YzNU?=
+ =?utf-8?B?Y2N3K0p6ZzE3cTNvd3FHbUdDQ04zcmtuT2p3N0VyTFZJRW9tRGNXRVJRemxz?=
+ =?utf-8?B?VFlqaHdQRGo1a25remlYOTJsVVZFckllSUs0VC9JYkQ5Z0NCY1JhTlFqdnhm?=
+ =?utf-8?B?bmthVlNzN2JOUXlwVEJjaE9wRm9YdzdUMXAvL3M4N05iaU1TZXFCem5jVWMz?=
+ =?utf-8?B?RzFFNHgwQ1FhYWZDcFlDbERBb1ViblZGMzhjVklFaXZlZWlOalBOd0cwTy9N?=
+ =?utf-8?B?allLOFZFR2xWQXVIREkxd1puZngyajRNY1U1UFZiSkMyRzAxZ2FmV09vQ3Zq?=
+ =?utf-8?B?MzhnSmJhOTZpRnB3ZENZM2tWa1h1UnFRZjNqOHhNMi91YWNvQ2pMV0RLckVL?=
+ =?utf-8?B?Tk5Xa0NUYm12VU80bTgxcnFOMHJiU2tOOFVadDMwaU56SnpPNmZsWlZpNm8v?=
+ =?utf-8?B?ck4wWVVmSk9jOGdXbVZlZXFuajZUMmpTN3h6Q2pVaGQ2NUdINDlKaGx5WTBY?=
+ =?utf-8?B?aDN3Q0dJWjB5VERQMHphak54cFA1SnBIeUFNKzJDMFFNVC9QVjZXK1ZmOU1R?=
+ =?utf-8?B?MkFVb21HSXMyWVRLMDhScnZ1Y1VyUGYwWEV3QzQ4TjVVM3YyY1h3L0ZhcGY3?=
+ =?utf-8?B?eDNBeDhmSHFlRGlUSXlWMmJtRmRRdXNwRFNqeFZuaVBvNklwZkdVbE4wOG9z?=
+ =?utf-8?B?MzRramdUdmc0eGl0bzdTVzRGQlI5Vm1HTFljSnRFSFRVR2JtRE56T3FhYTNa?=
+ =?utf-8?B?cU80aTJ4VDlIdkFqeWZEbmpwSnF4eW9CdXhOOUs4bld6Zk0vdDVpbnpyVlpw?=
+ =?utf-8?B?WGl6dk95SS96aVpqWWtESis2UkxjYTFkZ3VCeHBsWmw0OVhLSTZzYjNncDBP?=
+ =?utf-8?B?cStzZXN2R3hleSt4cExjNHlTa1E1cXlJZ08yczNadzNzcU1GWUNZN0RLWXJ6?=
+ =?utf-8?B?blE2SGdFMkRHblR1MHMxcVk5ait2c1c0K1VnTGhhU0dHcHlCY1RXeVVsc3dO?=
+ =?utf-8?B?cjV2UUN6SGdNSkhyVC9vU3BXdDhBc1pkU05VV0ZxNGdJSGc1QnJVSTU4QU1X?=
+ =?utf-8?B?aFkrMWdOVU92NkZLNEx4RGtLM0VmL0hDQUFjaFlqT3c5RnRhK1lYQ2UySHZR?=
+ =?utf-8?B?SE15WkFuOFI4aHhZVG53WU82MlhZdFRER056T3ZSSVNSMzJYTGRLSWlHcHJz?=
+ =?utf-8?B?ZFhieGZUOXBkbWx6RUJWQWlnNytPbGFRKytsWnI0VWoyQ1djd0cveE5pZDI0?=
+ =?utf-8?B?NDV6SVZqN0ExNlVYbFp4K1NDKzZnR1dZcDNNakZJeEVLZ2hoNjN1UFpta0Rk?=
+ =?utf-8?B?YUZCK1FNR2tPMHpWT243V1hweTBUdVhXbzA0Q1g4cHNGRnkyRWtzK1d1aG5F?=
+ =?utf-8?B?bEpvVzlBbTFUOFI4K3hiUjIwWjlpWFFBaUdPQytMS0p5Sm1EMkpoaVMyU2tG?=
+ =?utf-8?B?VDViaG9ZeUNQWldYQ1pGRkdtMEtDTjdXRlZNbUhXQ3U1U0dmd1ExNmd6OEYz?=
+ =?utf-8?B?Nkw1cGkxQS85OVNNeG5aRWFlekNJS2Z3OEkxdTFMV3RrU3d0akQ0SDNQYmhx?=
+ =?utf-8?B?dkhPb2tVTWtFcGZOdENBQVQyTVdUMWVtTjlQdG5YTXFXOEZSdk1KZ2NrcHFx?=
+ =?utf-8?B?WGxMeU9NS1BqVVovTEM1Q0RPZW1nRlo0czh2S2pmbExDYXZZUjZ1bHpDMzFZ?=
+ =?utf-8?B?bFAydE52aG9LRCtvLzNuNWdPRnErblhQTmt3MWRyWTZrbEY4UlZKUDM2djIx?=
+ =?utf-8?B?VTFiUTVpczVmaUc2OThETEUxRzNheDNoZjVmVVZaYk9hazJST2lhdVFjWWFP?=
+ =?utf-8?B?a1crTXpGMVpQQ1Btb3JxMFF0SFRrbThYT3ljMElkV0ozWmdCeE8zZ1kzQ0d3?=
+ =?utf-8?B?ZGFSTHdsNmVxZHdaWXBsQlpuekZLbDIza1NOTmM2UVF1SEhBbnpjVmc2K0Ir?=
+ =?utf-8?B?N0ZFSXExdlN2cjZMU0taU0FMMExYRUtFVlAvemV5cElIcHhiem1qK3kzWkpW?=
+ =?utf-8?B?bHppRkk5NG9PdTBxM2N1VzlmZDkybDRSRjdIRFlBbjB1T1paTDV0aElUbmlS?=
+ =?utf-8?B?VVpWcmdXQ09ERkFkVUtldGozL1ozSEEvbjJ3OHhFM2h6RHdFTmtvbWt1Sk9j?=
+ =?utf-8?B?RlE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <1A09919FB4C26F459AB07B0F5D0CA576@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEYPR03MB6459.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9e889414-9421-4500-dd5b-08db936828f1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Aug 2023 14:52:57.5760
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: zMqAgn/z6q7+8TKL5FxLe6fK1qf1YqFlyhQZ4VWqyFQit+yWtvPbXK2i7kiSxOJVT6PXoRB2n8dvnpLH2pnIKw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB5764
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230802_080848_053498_7039D61F 
-X-CRM114-Status: GOOD (  23.12  )
+X-CRM114-CacheID: sfid-20230802_081311_006424_CC85162E 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,297 +189,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. Move output drm connector from each ddp_path array to connector array.
-2. Add dynamic select available connector flow in crtc create and enable.
-
-Signed-off-by: Nancy Lin <nancy.lin@mediatek.com>
-Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 81 ++++++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  5 +-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 27 ++++++-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 20 ++++-
- drivers/gpu/drm/mediatek/mtk_drm_drv.h      |  7 ++
- 5 files changed, 133 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index d40142842f85..c57012f9c0c8 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -62,6 +62,8 @@ struct mtk_drm_crtc {
- 	struct mtk_mutex		*mutex;
- 	unsigned int			ddp_comp_nr;
- 	struct mtk_ddp_comp		**ddp_comp;
-+	unsigned int			num_conn_routes;
-+	const struct mtk_drm_route	*conn_routes;
- 
- 	/* lock for display hardware access */
- 	struct mutex			hw_lock;
-@@ -649,6 +651,47 @@ static void mtk_drm_crtc_disable_vblank(struct drm_crtc *crtc)
- 	mtk_ddp_comp_disable_vblank(comp);
- }
- 
-+static void mtk_drm_crtc_update_output(struct drm_crtc *crtc,
-+				       struct drm_atomic_state *state)
-+{
-+	int crtc_index = drm_crtc_index(crtc);
-+	int i;
-+	struct device *dev;
-+	struct drm_crtc_state *crtc_state = state->crtcs[crtc_index].new_state;
-+	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_drm_private *priv = crtc->dev->dev_private;
-+	unsigned int comp_id;
-+	unsigned int encoder_mask = crtc_state->encoder_mask;
-+
-+	if (!crtc_state->connectors_changed)
-+		return;
-+
-+	if (!mtk_crtc->num_conn_routes)
-+		return;
-+
-+	priv = priv->all_drm_private[crtc_index];
-+	dev = priv->dev;
-+
-+	dev_dbg(dev, "connector change:%d, encoder mask:0x%x for crtc:%d\n",
-+		crtc_state->connectors_changed, encoder_mask, crtc_index);
-+
-+	for (i = 0; i < mtk_crtc->num_conn_routes; i++) {
-+		struct mtk_ddp_comp *comp;
-+
-+		comp_id = mtk_crtc->conn_routes[i].route_ddp;
-+		comp = &priv->ddp_comp[comp_id];
-+		if (comp->encoder_index >= 0 &&
-+		    encoder_mask & BIT(comp->encoder_index)) {
-+			mtk_crtc->ddp_comp[mtk_crtc->ddp_comp_nr - 1] = comp;
-+			dev_dbg(dev, "Add comp_id: %d at path index %d\n",
-+				comp->id, mtk_crtc->ddp_comp_nr - 1);
-+			break;
-+		}
-+	}
-+
-+	dev_dbg(dev, "Update total comp num:%d", mtk_crtc->ddp_comp_nr);
-+}
-+
- int mtk_drm_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
- 			     struct mtk_plane_state *state)
- {
-@@ -681,6 +724,8 @@ static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
- 
- 	DRM_DEBUG_DRIVER("%s %d\n", __func__, crtc->base.id);
- 
-+	mtk_drm_crtc_update_output(crtc, state);
-+
- 	ret = pm_runtime_resume_and_get(comp->dev);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(comp->dev, "Failed to enable power domain: %d\n", ret);
-@@ -886,7 +931,8 @@ struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc)
- 
- int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 			const unsigned int *path, unsigned int path_len,
--			int priv_data_index)
-+			int priv_data_index, const struct mtk_drm_route *conn_routes,
-+			unsigned int num_conn_routes)
- {
- 	struct mtk_drm_private *priv = drm_dev->dev_private;
- 	struct device *dev = drm_dev->dev;
-@@ -1040,5 +1086,38 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 		init_waitqueue_head(&mtk_crtc->cb_blocking_queue);
- 	}
- #endif
-+
-+	if (conn_routes) {
-+		struct device_node *node;
-+		struct mtk_ddp_comp *comp;
-+		unsigned int comp_id;
-+
-+		for (i = 0; i < num_conn_routes; i++) {
-+			comp_id = conn_routes[i].route_ddp;
-+			node = priv->comp_node[comp_id];
-+			comp = &priv->ddp_comp[comp_id];
-+
-+			if (!comp->dev) {
-+				dev_dbg(dev, "comp_id:%d, Component %pOF not initialized\n",
-+					comp_id, node);
-+				comp->encoder_index = -1;
-+				continue;
-+			}
-+
-+			mtk_ddp_comp_encoder_index_set(&priv->ddp_comp[comp_id]);
-+		}
-+
-+		mtk_crtc->num_conn_routes = num_conn_routes;
-+		mtk_crtc->conn_routes = conn_routes;
-+
-+		/* append the last ddp_comp and ddp_comp_nr at the end of mtk_drm_crtc_create */
-+		mtk_crtc->ddp_comp[mtk_crtc->ddp_comp_nr] =
-+			devm_kmalloc(dev, sizeof(*mtk_crtc->ddp_comp), GFP_KERNEL);
-+		if (!mtk_crtc->ddp_comp[mtk_crtc->ddp_comp_nr])
-+			return -ENOMEM;
-+
-+		mtk_crtc->ddp_comp_nr++;
-+	}
-+
- 	return 0;
- }
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-index 3e9046993d09..3c224595fa71 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-@@ -8,6 +8,7 @@
- 
- #include <drm/drm_crtc.h>
- #include "mtk_drm_ddp_comp.h"
-+#include "mtk_drm_drv.h"
- #include "mtk_drm_plane.h"
- 
- #define MTK_LUT_SIZE	512
-@@ -18,7 +19,9 @@ void mtk_drm_crtc_commit(struct drm_crtc *crtc);
- int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 			const unsigned int *path,
- 			unsigned int path_len,
--			int priv_data_index);
-+			int priv_data_index,
-+			const struct mtk_drm_route *conn_routes,
-+			unsigned int num_conn_routes);
- int mtk_drm_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
- 			     struct mtk_plane_state *state);
- void mtk_drm_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index effaaa769b46..c1ea112e6be8 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -508,6 +508,23 @@ static bool mtk_drm_find_comp_in_ddp(struct device *dev,
- 	return false;
- }
- 
-+static int mtk_drm_find_comp_in_ddp_conn_path(struct device *dev,
-+					      const struct mtk_drm_route *routes,
-+					      unsigned int num_routes,
-+					      struct mtk_ddp_comp *ddp_comp)
-+{
-+	unsigned int i;
-+
-+	if (!routes)
-+		return -EINVAL;
-+
-+	for (i = 0; i < num_routes; i++)
-+		if (dev == ddp_comp[routes[i].route_ddp].dev)
-+			return BIT(routes[i].crtc_id);
-+
-+	return -ENODEV;
-+}
-+
- int mtk_ddp_comp_get_id(struct device_node *node,
- 			enum mtk_ddp_comp_type comp_type)
- {
-@@ -539,7 +556,15 @@ unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
- 					  private->data->third_len, private->ddp_comp))
- 		ret = BIT(2);
- 	else
--		DRM_INFO("Failed to find comp in ddp table\n");
-+		ret = mtk_drm_find_comp_in_ddp_conn_path(dev,
-+							 private->data->conn_routes,
-+							 private->data->num_conn_routes,
-+							 private->ddp_comp);
-+
-+	if (ret <= 0) {
-+		DRM_INFO("Failed to find comp in ddp table, ret =%d\n", ret);
-+		ret = 0;
-+	}
- 
- 	return ret;
- }
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index c12886f31e54..9900007667a2 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -185,7 +185,10 @@ static const unsigned int mt8188_mtk_ddp_main[] = {
- 	DDP_COMPONENT_GAMMA,
- 	DDP_COMPONENT_POSTMASK0,
- 	DDP_COMPONENT_DITHER0,
--	DDP_COMPONENT_DP_INTF0,
-+};
-+
-+static const struct mtk_drm_route mt8188_mtk_ddp_main_routes[] = {
-+	{0, DDP_COMPONENT_DP_INTF0},
- };
- 
- static const unsigned int mt8192_mtk_ddp_main[] = {
-@@ -287,6 +290,8 @@ static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
- static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
- 	.main_path = mt8188_mtk_ddp_main,
- 	.main_len = ARRAY_SIZE(mt8188_mtk_ddp_main),
-+	.conn_routes = mt8188_mtk_ddp_main_routes,
-+	.num_conn_routes = ARRAY_SIZE(mt8188_mtk_ddp_main_routes),
- 	.mmsys_dev_num = 1,
- };
- 
-@@ -419,6 +424,11 @@ static bool mtk_drm_find_mmsys_comp(struct mtk_drm_private *private, int comp_id
- 			if (drv_data->third_path[i] == comp_id)
- 				return true;
- 
-+	if (drv_data->num_conn_routes)
-+		for (i = 0; i < drv_data->num_conn_routes; i++)
-+			if (drv_data->conn_routes[i].route_ddp == comp_id)
-+				return true;
-+
- 	return false;
- }
- 
-@@ -477,21 +487,23 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 
- 			if (i == CRTC_MAIN && priv_n->data->main_len) {
- 				ret = mtk_drm_crtc_create(drm, priv_n->data->main_path,
--							  priv_n->data->main_len, j);
-+							  priv_n->data->main_len, j,
-+							  priv_n->data->conn_routes,
-+							  priv_n->data->num_conn_routes);
- 				if (ret)
- 					goto err_component_unbind;
- 
- 				continue;
- 			} else if (i == CRTC_EXT && priv_n->data->ext_len) {
- 				ret = mtk_drm_crtc_create(drm, priv_n->data->ext_path,
--							  priv_n->data->ext_len, j);
-+							  priv_n->data->ext_len, j, NULL, 0);
- 				if (ret)
- 					goto err_component_unbind;
- 
- 				continue;
- 			} else if (i == CRTC_THIRD && priv_n->data->third_len) {
- 				ret = mtk_drm_crtc_create(drm, priv_n->data->third_path,
--							  priv_n->data->third_len, j);
-+							  priv_n->data->third_len, j, NULL, 0);
- 				if (ret)
- 					goto err_component_unbind;
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index f4de8bb27685..6f98fff4f1a4 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -28,6 +28,11 @@ struct drm_fb_helper;
- struct drm_property;
- struct regmap;
- 
-+struct mtk_drm_route {
-+	const unsigned int crtc_id;
-+	const unsigned int route_ddp;
-+};
-+
- struct mtk_mmsys_driver_data {
- 	const unsigned int *main_path;
- 	unsigned int main_len;
-@@ -35,6 +40,8 @@ struct mtk_mmsys_driver_data {
- 	unsigned int ext_len;
- 	const unsigned int *third_path;
- 	unsigned int third_len;
-+	const struct mtk_drm_route *conn_routes;
-+	unsigned int num_conn_routes;
- 
- 	bool shadow_register;
- 	unsigned int mmsys_id;
--- 
-2.18.0
-
+T24gTW9uLCAyMDIzLTA3LTMxIGF0IDEyOjUwICswMTAwLCBNYXJrIEJyb3duIHdyb3RlOg0KPiBP
+biBNb24sIEp1bCAzMSwgMjAyMyBhdCAwMjowODowMkFNICswODAwLCBKaWF4aW4gWXUgd3JvdGU6
+DQo+IA0KPiA+IFVzZSBTTkRfU09DX0RBUE1fTElORSBpbnN0ZWFkIG9mIFNORF9TT0NfREFQTV9P
+VVRQVVQgdG8gdHJpZ2dlcg0KPiA+IERBUE0gZXZlbnRzIHRvIGhkbWktY29kZWMgd2hlbiB1c2Vy
+c3BhY2UgY29udHJvbCB0aGUgRFBBTSBwaW4uDQo+IA0KPiBXaHk/DQoNCkkgaGF2ZSBkZWZpbmVk
+IGFuIFNPQ19EQVBNX1BJTl9TV0lUQ0ggdGhhdCBuYW1lZCBhcyAiSERNSTEiLCBpZiBJIHVzZQ0K
+U05EX1NPQ19EQVBNX09VVFBVVCwgaXQgY2FuJ3QgYmUgY29udHJvbGxlZCBieSBIRE1JMSdzIFBJ
+Tl9TV0lUQ0guDQoNCiA5OTQgc3RhdGljIGNvbnN0IHN0cnVjdCBzbmRfa2NvbnRyb2xfbmV3DQog
+OTk1IG10ODE4Nl9tdDYzNjZfZGE3MjE5X21heDk4MzU3X2NvbnRyb2xzW10gPSB7DQogOTk2ICAg
+ICAgICAgU09DX0RBUE1fUElOX1NXSVRDSCgiU3BlYWtlcnMiKSwNCiA5OTcgICAgICAgICBTT0Nf
+REFQTV9QSU5fU1dJVENIKCJIZWFkcGhvbmVzIiksDQogOTk4ICAgICAgICAgU09DX0RBUE1fUElO
+X1NXSVRDSCgiSGVhZHNldCBNaWMiKSwNCiA5OTkgICAgICAgICBTT0NfREFQTV9QSU5fU1dJVENI
+KCJIRE1JMSIpLA0KDQpJIHRoaW5rIFNORF9TT0NfREFQTV9PVVRQVVQgbXVzdCBiZSBqdWRnZWQg
+YXMgZXAsIHNvIEkgd2FudCB0byBkZWZpbmUNCkhETUkxIGFzIGEgc25kX3NvY19kYXBtX3Nwaydz
+IHdpZGdldC4NCkZyb20gdGhlIHBlcnNwZWN0aXZlIG9mIGhhcmR3YXJlIGNvbm5lY3Rpb24sIHRo
+ZWlyIHJlbGF0aW9uc2hpcCBpcw0KaW5kZWVkIGVxdWFsLCBzbyBJIGZpbmQgU09DX1NPQ19EQVBN
+X0xJTkUgdG8gZGVmaW5lIEhETUkxLg0KDQoNCiAgICAgICAgICAgICAgICAgICAgICAgPT0+IGhk
+bWktY29kZWMgPT0+IGl0NjUwNShIRE1JIG91dHB1dCkNCkRMMShGRSkgPT0+IEkyUzMoQkUpDQog
+ICAgICAgICAgICAgICAgICAgICAgID09PiBydDEwMTVwKFNQRUFLRVIgb3V0cHV0KQ0KDQoyNzM4
+IHN0YXRpYyB2b2lkIGRhcG1fdXBkYXRlX3dpZGdldF9mbGFncyhzdHJ1Y3Qgc25kX3NvY19kYXBt
+X3dpZGdldA0KKncpDQoyNzM5IHsNCjI3NDAgICAgICAgICBlbnVtIHNuZF9zb2NfZGFwbV9kaXJl
+Y3Rpb24gZGlyOw0KMjc0MSAgICAgICAgIHN0cnVjdCBzbmRfc29jX2RhcG1fcGF0aCAqcDsNCjI3
+NDIgICAgICAgICB1bnNpZ25lZCBpbnQgZXA7DQoyNzQzICAgICAgICAgLi4uDQoyNzYwICAgICAg
+ICAgY2FzZSBzbmRfc29jX2RhcG1fb3V0cHV0Og0KMjc2MSAgICAgICAgICAgICAgICAgLyogT24g
+YSBmdWxseSByb3V0ZWQgY2FyZCBhIG91dHB1dCBpcyBuZXZlciBhIHNpbmsNCiovDQoyNzYyICAg
+ICAgICAgICAgICAgICBpZiAody0+ZGFwbS0+Y2FyZC0+ZnVsbHlfcm91dGVkKQ0KMjc2MyAgICAg
+ICAgICAgICAgICAgICAgICAgICByZXR1cm47DQoyNzY0ICAgICAgICAgICAgICAgICBlcCA9IFNO
+RF9TT0NfREFQTV9FUF9TSU5LOw0KMjc2NSAgICAgICAgICAgICAgICAgc25kX3NvY19kYXBtX3dp
+ZGdldF9mb3JfZWFjaF9zaW5rX3BhdGgodywgcCkgew0KMjc2NiAgICAgICAgICAgICAgICAgICAg
+ICAgICBpZiAocC0+c2luay0+aWQgPT0gc25kX3NvY19kYXBtX3NwayB8fA0KMjc2NyAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHAtPnNpbmstPmlkID09IHNuZF9zb2NfZGFwbV9ocCB8
+fA0KMjc2OCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHAtPnNpbmstPmlkID09IHNu
+ZF9zb2NfZGFwbV9saW5lDQp8fA0KMjc2OSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IHAtPnNpbmstPmlkID09IHNuZF9zb2NfZGFwbV9pbnB1dCkNCnsNCjI3NzAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVwID0gMDsNCjI3NzEgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIGJyZWFrOw0KMjc3MiAgICAgICAgICAgICAgICAgICAg
+ICAgICB9DQoyNzczICAgICAgICAgICAgICAgICB9DQoyNzc0ICAgICAgICAgICAgICAgICBicmVh
+azsNCg==
 
