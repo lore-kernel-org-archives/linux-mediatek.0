@@ -4,93 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B7C2C001DF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 14:59:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 756E2C41513
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 15:08:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kYt/Og8p2momDhgHcuYS5iX+cpuUqKiX9hwxMzS4blc=; b=3CpaFmhBb27WfOlxUr1oVh8LJX
-	6OFV6PLx4+J21vOiS6+XTKJTzllxdyr1qGOmWJswW+/nSYSuX6cqf7fer0DSBhbqAreIe1Se0i5Ci
-	7EN70A3XUKB4vnPGzsTPpcik8J3/yfahHl54xevRYlvEVm5lsyhysuV9OeC6NhhJv16wElwo9/Njb
-	je2Y4q8VSS9lvEml6rLBzbdPhW0V3r9IOHZAOrnMAHoDJ7gi9oDAdjnyJ04mmcjNZ+vnRuCIChwFI
-	XYZpHr5HA7IrY/BLXBVD2fqwqX6xd5KvOiHwhLgtMZ3mXXDC8mBVJC2GTbu0Rbjp8OBNqs6LE6Et0
-	I6hug8qQ==;
+	bh=czILUA+gU23y0OfnsNXXiJJt0iAx966H0jubmhVIhCQ=; b=3mc5eQnkymf/rjX3zFv7m8FEIQ
+	/hKRtYdk1GlfqOH2sOckdjn8KdNCDYWMARL20AM+Mcqaj1zE/GtPYDQKJa6I4MLX3uFevzxrdt9xA
+	vL2Aey9uE0W34E5x/UrBNyuD8IH+QtwU4CtxX5vuDo8taQ4EZO1chRZ5cWgDlUld7TDaVesE1Q7pq
+	fxnB+bw1iuQo1PCsNCpeaUFyQtxRgXm/GZoUttqZHQTKzEVPnZBHd5GIkd19c4w2YcCZHtop1WVEO
+	aCFR02yEI7fwzoHTCeySeYkE7Lrh/rYkFuowwGanBygeITdY/b2jzVY8gbiEVuswf6Gres8tNoBl8
+	h9m+1qcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRDKE-0059Gf-1B;
-	Wed, 02 Aug 2023 14:59:46 +0000
-Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
+	id 1qRDSS-005BNZ-2h;
+	Wed, 02 Aug 2023 15:08:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRDKA-0059F2-2a
-	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Aug 2023 14:59:44 +0000
-Received: by mail-qt1-x829.google.com with SMTP id d75a77b69052e-40694b191cfso52009141cf.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Aug 2023 07:59:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20221208.gappssmtp.com; s=20221208; t=1690988380; x=1691593180;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=kYt/Og8p2momDhgHcuYS5iX+cpuUqKiX9hwxMzS4blc=;
-        b=Xi+WBCiziQ3cHF88fwmCmkWvQI4yv33QxIjWVB51ktnlyBEAsL28b4oQ1BUdZaK+JF
-         nYbXVEI1IGoSZKvYjJDrZnj+uDpTze3WdybGoiBgC83QaiCL/YWh2RlxRCdkgOzvXCaz
-         VEgvXPDbTkYrVUc6FvsfNSIvLofL7CMKqg4yzMLGxjx50ssakplERt+G1CwdMJlGbbta
-         XnndwNq881nOEH5sWbRYEzqVPQkzQe7rXBdTcvanlWM0NOLfGm+FhYwQfUZF5OA25rf5
-         UfVpGn3qACVSexIk5541LPj2bx9+EoBerbxih3qj+iuXzCrRoxWS7cKgnwY25ARbwrWD
-         kbnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690988380; x=1691593180;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=kYt/Og8p2momDhgHcuYS5iX+cpuUqKiX9hwxMzS4blc=;
-        b=W66ByNgLLrWeFSE6wvxfYPFb0Qys+64UIV/VpCRz3L4Ra/7cTe0fxAL2zn45SAZMNb
-         2kZye18lRZo8k0uuVeozku6KRhb8YCJ9emhbj0T73oQCYlAd8ddUN0aXi/or3ka5rt8O
-         tuM6Qfks4GssPQVJ6ly23b0j3IdPBH+nyKr6Obu+3/JjTiAPiKDvlpK8nZkCPadZk1PQ
-         ZjPLuK5bv2pk3VaxJtz9Z6xr6Hzm0XrpTT/jooq+iuKYgQGesGfPNnuXxCwS7F6zA5iO
-         lMEWUScrEgaJ/QGt2YlGw4xPneMm+nDJ4V9FrN2wI1HyyrqhnzOdEcfTbg8NS1X/ii1U
-         0o+w==
-X-Gm-Message-State: ABy/qLbEKyWtnXK/E9xZerSHFDredKOFcWOIgg5Jual5nRFwuEnXj4Rw
-	umR8UQqwYeaQGyrcF+HJjzHf2Q==
-X-Google-Smtp-Source: APBJJlEtOXevsfG2Yv79DAn4/lz0ItSRpvVSeZStBYQZom93mQdmljLYQZ2CJSUmNHoJL/XXeyC+Qg==
-X-Received: by 2002:a05:622a:1786:b0:403:aa49:606e with SMTP id s6-20020a05622a178600b00403aa49606emr21938733qtk.30.1690988380513;
-        Wed, 02 Aug 2023 07:59:40 -0700 (PDT)
-Received: from nicolas-tpx395.localdomain ([2606:6d00:10:2688::7a9])
-        by smtp.gmail.com with ESMTPSA id z1-20020ac83e01000000b003e3918f350dsm5438001qtf.25.2023.08.02.07.59.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Aug 2023 07:59:40 -0700 (PDT)
-Message-ID: <95eb0ff22da269ad6df5685aee6fa8d4ad0ca738.camel@ndufresne.ca>
-Subject: Re: [v2] media: mediatek: vcodec: fix AV1 decode fail for 36bit iova
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Yunfei Dong
- <yunfei.dong@mediatek.com>, Alexandre Courbot <acourbot@chromium.org>, Hans
- Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-Cc: George Sun <george.sun@mediatek.com>, Hsin-Yi Wang
- <hsinyi@chromium.org>,  Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter
- <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang
- <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Date: Wed, 02 Aug 2023 10:59:39 -0400
-In-Reply-To: <20230704015135.31850-1-xiaoyong.lu@mediatek.com>
-References: <20230704015135.31850-1-xiaoyong.lu@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+	id 1qRDSQ-005BLu-0d;
+	Wed, 02 Aug 2023 15:08:15 +0000
+X-UUID: 62d0105a314611ee912e1518a6540028-20230802
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=czILUA+gU23y0OfnsNXXiJJt0iAx966H0jubmhVIhCQ=;
+	b=MZlWRScncof2CD/OwsnbH16yA1ku7IOmJo9Ck2t4a4Atul3jDefnhgMKfXEW35yezliQ2UKMKc75HQyv6QyoxoAl3JWb4QbMEe640+MQj8kZV2uneEjjoYLfq87oFzhmbXMMliiQ9LYKfBXOGM1+zR9ufjJD73R44qbbDu8VfUU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.30,REQID:1662b4f3-02da-4810-8af6-9a2d41d99581,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:5bc613b4-a467-4aa9-9e04-f584452e3794,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 62d0105a314611ee912e1518a6540028-20230802
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 261615183; Wed, 02 Aug 2023 08:08:07 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 2 Aug 2023 22:48:03 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 2 Aug 2023 22:48:03 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Eugen Hristev
+	<eugen.hristev@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Jason-ch Chen
+	<jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
+	<shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v8 1/8] drm/mediatek: Add mmsys_dev_num to mt8188 vdosys0 driver data
+Date: Wed, 2 Aug 2023 22:47:55 +0800
+Message-ID: <20230802144802.751-2-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230802144802.751-1-jason-jh.lin@mediatek.com>
+References: <20230802144802.751-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230802_075942_838588_00393EBA 
-X-CRM114-Status: GOOD (  19.17  )
+X-CRM114-CacheID: sfid-20230802_080814_246294_EB4A7DEC 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,88 +91,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Add missing mmsys_dev_num to mt8188 vdosys0 driver data.
 
-Le mardi 04 juillet 2023 =C3=A0 09:51 +0800, Xiaoyong Lu a =C3=A9crit=C2=A0=
-:
-> Fix av1 decode fail when iova is 36bit.
+Fixes: 54b48080278a ("drm/mediatek: Add mediatek-drm of vdosys0 support for mt8188")
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-I'd change the subject to "media: mediatek: vcodec: fix AV1 decoding on MT8=
-188"
-And rephrase this one to:
-
-  Fix AV1 decoding failure when the iova is 36bit.
-
->=20
-> Decoder hardware will access incorrect iova address when tile buffer is
-> 36bit, it will lead to iommu fault when hardware access dram data.
-
-Suggest to rephrase this:
-
-   Before this fix, the decoder was accessing incorrect addresses with 36bi=
-t
-   iova tile buffer, leading to iommu faults.
-
->=20
-> Fixes: 2f5d0aef37c6 ("media: mediatek: vcodec: support stateless AV1 deco=
-der")
-> Signed-off-by: Xiaoyong Lu<xiaoyong.lu@mediatek.com>
-
-With some rework of the commit message, see my suggestions above:
-
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
-> ---
-> Changes from v1
->=20
-> - prefer '|' rather than '+'
-> - prefer '&' rather than shift operation
-> - add comments for address operations
->=20
-> v1:
-> - VDEC HW can access tile buffer and decode normally.
-> - Test ok by mt8195 32bit and mt8188 36bit iova.
->=20
-> ---
->  .../mediatek/vcodec/vdec/vdec_av1_req_lat_if.c       | 12 ++++++++----
->  1 file changed, 8 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat=
-_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-> index 404a1a23fd402..e9f2393f6a883 100644
-> --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-> @@ -1658,9 +1658,9 @@ static void vdec_av1_slice_setup_tile_buffer(struct=
- vdec_av1_slice_instance *ins
->  	u32 allow_update_cdf =3D 0;
->  	u32 sb_boundary_x_m1 =3D 0, sb_boundary_y_m1 =3D 0;
->  	int tile_info_base;
-> -	u32 tile_buf_pa;
-> +	u64 tile_buf_pa;
->  	u32 *tile_info_buf =3D instance->tile.va;
-> -	u32 pa =3D (u32)bs->dma_addr;
-> +	u64 pa =3D (u64)bs->dma_addr;
-> =20
->  	if (uh->disable_cdf_update =3D=3D 0)
->  		allow_update_cdf =3D 1;
-> @@ -1673,8 +1673,12 @@ static void vdec_av1_slice_setup_tile_buffer(struc=
-t vdec_av1_slice_instance *ins
->  		tile_info_buf[tile_info_base + 0] =3D (tile_group->tile_size[tile_num]=
- << 3);
->  		tile_buf_pa =3D pa + tile_group->tile_start_offset[tile_num];
-> =20
-> -		tile_info_buf[tile_info_base + 1] =3D (tile_buf_pa >> 4) << 4;
-> -		tile_info_buf[tile_info_base + 2] =3D (tile_buf_pa % 16) << 3;
-> +		/* save av1 tile high 4bits(bit 32-35) address in lower 4 bits positio=
-n
-> +		 * and clear original for hw requirement.
-> +		 */
-> +		tile_info_buf[tile_info_base + 1] =3D (tile_buf_pa & 0xFFFFFFF0ull) |
-> +			((tile_buf_pa & 0xF00000000ull) >> 32);
-> +		tile_info_buf[tile_info_base + 2] =3D (tile_buf_pa & 0xFull) << 3;
-> =20
->  		sb_boundary_x_m1 =3D
->  			(tile->mi_col_starts[tile_col + 1] - tile->mi_col_starts[tile_col] - =
-1) &
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 6dcb4ba2466c..249c9fd6347e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -287,6 +287,7 @@ static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
+ static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
+ 	.main_path = mt8188_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt8188_mtk_ddp_main),
++	.mmsys_dev_num = 1,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+-- 
+2.18.0
 
 
