@@ -4,77 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BBB1C001DE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 10:26:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7105DC00528
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 10:32:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oV8c+343/TT2vqfq6aaLIFv4uzKP54NVbj7LEuZ19WI=; b=P3d9CQe9CQRzX0xZQs0B5kZi2u
-	JSz+qfY9HksM0tg0hLN/UwLZsOOmzn0+aIFz/DTWayPRV/ei3YrfkLxE9y0ClkYCHDuUbtr+3UFP0
-	Ic7kVkikQL4eME5nPe7zfJu/yfOIXGfVYZpWiNxniOLIJzFQ4+z9ZgZVjjB/zUIw1oSUR1Gw7HmWF
-	0fXUwGKcJrKg5W7HUW8YzBp01nj3/OKlaW/G4vxbmqvHkNICRIMSw3RSIzKTcaZgRXFDNzFZk7bH/
-	fZdf/93iOXdpCM1aRfF8ARmBmr3Ls+MoCB7ZW1/JZTDOKNA2FVFFT3ZoIM2VZ6qMOgzbwQSFX3Xs/
-	cETZibcA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7LsmC20iCMbHBtDgrWjEoXfLxe/DFrLJ4YLDXDr/KEg=; b=KepJF0CKOsSs8qDTQcbJCmR+as
+	n9yQM1UVm99jYjwq7upW4Ts57seIhjU1FyZEMr+3twDqKEMiLiAKjuGDh8VGAzVTOMKNcCHtQAVRr
+	7PPNbwhj3J856U63GEXIho4ysyp9FCEQXfkSyMeEyLD9HOu5pZ+w4paDUG7C5C76ZZEhcZY9fFLkJ
+	4btIq0zb6n8OaJ27GQFg3AnYsGsCE+ZOzQ2/lnxDC0QnAnE1Oqr4P2guuoapWDJUtfLRPu6hDu1yE
+	a/BEjz5W5ioruk6M/Pe+NJh15YuhUyce6qjz6pK61g3b9K+hLxvcAN2J4c/TtuEtLCiAAkzyRmGp/
+	ZCosWc6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qR945-004b1d-08;
-	Wed, 02 Aug 2023 10:26:49 +0000
-Received: from [192.55.52.88] (helo=mgamail.intel.com)
+	id 1qR99r-004bZk-1q;
+	Wed, 02 Aug 2023 10:32:47 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qR942-004b10-1M
-	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Aug 2023 10:26:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1690972006; x=1722508006;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=RljGlw3peibrHMvrvL9Zo+t3sqqwY5SPLptaScys/SA=;
-  b=POVKVFG3IsQKjFA2J0k7ntdAmHZ3HjWA1FInc/pF3hWsfHN8CF08iqla
-   2DDhk9+WS+3DwqoF9on0BKE+hVIQ/C0xV2/tWKYNFhTJWo/0TjTJcQaYf
-   UpYXVqVt+yleHWpTC7qSnXkgQZHOMA3D88l4Qaj58U6m/B4SsVAdW5ZeO
-   ca9M19ytVUvuASoiYok+8Nfde066gOoUm8HFuTdVKZQCKK/m2UnijYecM
-   2Zvq7fvKJwqxgjA8nv6q2pXTSePZ5x0BJ9DqBwNTy7pZFo9DxCQguOG2w
-   86m3pTXqOZY/Lei/O7WrE4TQA3LW6+Vw0SKEwpn78mGYPPhMEmQYleUnM
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10789"; a="400492146"
-X-IronPort-AV: E=Sophos;i="6.01,248,1684825200"; 
-   d="scan'208";a="400492146"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Aug 2023 03:26:27 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10789"; a="764171284"
-X-IronPort-AV: E=Sophos;i="6.01,248,1684825200"; 
-   d="scan'208";a="764171284"
-Received: from lkp-server01.sh.intel.com (HELO d1ccc7e87e8f) ([10.239.97.150])
-  by orsmga001.jf.intel.com with ESMTP; 02 Aug 2023 03:26:25 -0700
-Received: from kbuild by d1ccc7e87e8f with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1qR93g-00017f-1c;
-	Wed, 02 Aug 2023 10:26:24 +0000
-Date: Wed, 2 Aug 2023 18:25:58 +0800
-From: kernel test robot <lkp@intel.com>
-To: Deren Wu <deren.wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev, Sean Wang <sean.wang@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>,
-	Deren Wu <deren.wu@mediatek.com>
-Subject: Re: [PATCH 17/17] wifi: mt76: add mt7925 to Kconfig
-Message-ID: <202308021841.dVQEY7mc-lkp@intel.com>
-References: <12bafb6334728c3c12cdd8ab3e7505a963d4356d.1690864199.git.deren.wu@mediatek.com>
+	id 1qR99n-004bYs-29;
+	Wed, 02 Aug 2023 10:32:45 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 22E0566018CF;
+	Wed,  2 Aug 2023 11:32:38 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1690972359;
+	bh=/7pQ+RL+C9IsOxEUKck+Ky/01nkzrjWwtJzBRApAFFg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=FSPr7IDaJUZI8qae4UT7rbflUxVKpkNX71m4yCF5Ruhxl/K4k5yyEdDxEQkQccg9k
+	 qDCrpbpi6aumO2kervMVnEQq432YsYqfYdS160+3UTkYZiNBUr3te5/PO0PzOSsSis
+	 ioBQTiDXnuTlca51tOlHBJzoOBnrEsg8bQ3z7jcsS5qPjVIKWfQePpct+eFJDw99be
+	 RW746hV1YiZIkVkK9FOJnpsgOOGL1qUqC4dUwbjywXrTA0DkjPt4VGh4oNU7fdwr/P
+	 3f9lzB2BzLVkwByQNV++CgFAla1k/rgVOBc5Gi/57J1Q2HEy+7tXrh5F35M3xkuAlP
+	 0xOcVABb4VkwA==
+Message-ID: <a410f098-af13-435d-688c-1021cc7b8cbb@collabora.com>
+Date: Wed, 2 Aug 2023 12:32:35 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <12bafb6334728c3c12cdd8ab3e7505a963d4356d.1690864199.git.deren.wu@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v2 1/3] mm-unstable: Multi-gen LRU: Fix per-zone reclaim
+Content-Language: en-US
+To: Kalesh Singh <kaleshsingh@google.com>, yuzhao@google.com,
+ akpm@linux-foundation.org
+Cc: surenb@google.com, android-mm@google.com, kernel-team@android.com,
+ stable@vger.kernel.org, Charan Teja Kalla <quic_charante@quicinc.com>,
+ Lecopzer Chen <lecopzer.chen@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Suleiman Souhlal <suleiman@google.com>,
+ Oleksandr Natalenko <oleksandr@natalenko.name>,
+ "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>,
+ Qi Zheng <zhengqi.arch@bytedance.com>, Steven Barrett <steven@liquorix.net>,
+ Brian Geffon <bgeffon@google.com>, Barry Song <baohua@kernel.org>,
+ linux-mm@kvack.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230802025606.346758-1-kaleshsingh@google.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230802025606.346758-1-kaleshsingh@google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230802_032646_520043_B2548621 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20230802_033243_968144_3B4DF9F5 
+X-CRM114-Status: GOOD (  33.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,46 +85,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Deren,
+Il 02/08/23 04:56, Kalesh Singh ha scritto:
+> MGLRU has a LRU list for each zone for each type (anon/file) in each
+> generation:
+> 
+> 	long nr_pages[MAX_NR_GENS][ANON_AND_FILE][MAX_NR_ZONES];
+> The min_seq (oldest generation) can progress independently for each
+> type but the max_seq (youngest generation) is shared for both anon and
+> file. This is to maintain a common frame of reference.
+> 
+> In order for eviction to advance the min_seq of a type, all the per-zone
+> lists in the oldest generation of that type must be empty.
+> 
+> The eviction logic only considers pages from eligible zones for
+> eviction or promotion.
+> 
+>      scan_folios() {
+> 	...
+> 	for (zone = sc->reclaim_idx; zone >= 0; zone--)  {
+> 	    ...
+> 	    sort_folio(); 	// Promote
+> 	    ...
+> 	    isolate_folio(); 	// Evict
+> 	}
+> 	...
+>      }
+> 
+> Consider the system has the movable zone configured and default 4
+> generations. The current state of the system is as shown below
+> (only illustrating one type for simplicity):
+> 
+> Type: ANON
+> 
+> 	Zone    DMA32     Normal    Movable    Device
+> 
+> 	Gen 0       0          0        4GB         0
+> 
+> 	Gen 1       0        1GB        1MB         0
+> 
+> 	Gen 2     1MB        4GB        1MB         0
+> 
+> 	Gen 3     1MB        1MB        1MB         0
+> 
+> Now consider there is a GFP_KERNEL allocation request (eligible zone
+> index <= Normal), evict_folios() will return without doing any work
+> since there are no pages to scan in the eligible zones of the oldest
+> generation. Reclaim won't make progress until triggered from a ZONE_MOVABLE
+> allocation request; which may not happen soon if there is a lot of free
+> memory in the movable zone. This can lead to OOM kills, although there
+> is 1GB pages in the Normal zone of Gen 1 that we have not yet tried to
+> reclaim.
+> 
+> This issue is not seen in the conventional active/inactive LRU since
+> there are no per-zone lists.
+> 
+> If there are no (not enough) folios to scan in the eligible zones, move
+> folios from ineligible zone (zone_index > reclaim_index) to the next
+> generation. This allows for the progression of min_seq and reclaiming
+> from the next generation (Gen 1).
+> 
+> Qualcomm, Mediatek and raspberrypi [1] discovered this issue independently.
+> 
+> [1] https://github.com/raspberrypi/linux/issues/5395
+> 
+> Fixes: ac35a4902374 ("mm: multi-gen LRU: minimal implementation")
+> Cc: stable@vger.kernel.org
+> Cc: Yu Zhao <yuzhao@google.com>
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+> Reported-by: Charan Teja Kalla <quic_charante@quicinc.com>
+> Reported-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+> Signed-off-by: Kalesh Singh <kaleshsingh@google.com>
 
-kernel test robot noticed the following build errors:
+Whole series tested on MT8173 Elm Chromebook and MT6795 Xperia M5 as those are
+low ram devices. Can't reproduce the issue described in your [1] link from RPi.
 
-[auto build test ERROR on wireless-next/main]
-[also build test ERROR on wireless/main linus/master v6.5-rc4 next-20230802]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+MediaTek:
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Deren-Wu/wifi-mt76-mt7925-add-Kconfig/20230801-223655
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-patch link:    https://lore.kernel.org/r/12bafb6334728c3c12cdd8ab3e7505a963d4356d.1690864199.git.deren.wu%40mediatek.com
-patch subject: [PATCH 17/17] wifi: mt76: add mt7925 to Kconfig
-config: sh-allmodconfig (https://download.01.org/0day-ci/archive/20230802/202308021841.dVQEY7mc-lkp@intel.com/config)
-compiler: sh4-linux-gcc (GCC) 12.3.0
-reproduce: (https://download.01.org/0day-ci/archive/20230802/202308021841.dVQEY7mc-lkp@intel.com/reproduce)
+> ---
+> 
+> Changes in v2:
+>    - Add Fixes tag and cc stable
+> 
+>   mm/vmscan.c | 18 ++++++++++++++----
+>   1 file changed, 14 insertions(+), 4 deletions(-)
+> 
+> diff --git a/mm/vmscan.c b/mm/vmscan.c
+> index 4039620d30fe..489a4fc7d9b1 100644
+> --- a/mm/vmscan.c
+> +++ b/mm/vmscan.c
+> @@ -4889,7 +4889,8 @@ static int lru_gen_memcg_seg(struct lruvec *lruvec)
+>    *                          the eviction
+>    ******************************************************************************/
+>   
+> -static bool sort_folio(struct lruvec *lruvec, struct folio *folio, int tier_idx)
+> +static bool sort_folio(struct lruvec *lruvec, struct folio *folio, struct scan_control *sc,
+> +		       int tier_idx)
+>   {
+>   	bool success;
+>   	int gen = folio_lru_gen(folio);
+> @@ -4939,6 +4940,13 @@ static bool sort_folio(struct lruvec *lruvec, struct folio *folio, int tier_idx)
+>   		return true;
+>   	}
+>   
+> +	/* ineligible */
+> +	if (zone > sc->reclaim_idx) {
+> +		gen = folio_inc_gen(lruvec, folio, false);
+> +		list_move_tail(&folio->lru, &lrugen->folios[gen][type][zone]);
+> +		return true;
+> +	}
+> +
+>   	/* waiting for writeback */
+>   	if (folio_test_locked(folio) || folio_test_writeback(folio) ||
+>   	    (type == LRU_GEN_FILE && folio_test_dirty(folio))) {
+> @@ -4987,7 +4995,8 @@ static bool isolate_folio(struct lruvec *lruvec, struct folio *folio, struct sca
+>   static int scan_folios(struct lruvec *lruvec, struct scan_control *sc,
+>   		       int type, int tier, struct list_head *list)
+>   {
+> -	int gen, zone;
+> +	int i;
+> +	int gen;
+>   	enum vm_event_item item;
+>   	int sorted = 0;
+>   	int scanned = 0;
+> @@ -5003,9 +5012,10 @@ static int scan_folios(struct lruvec *lruvec, struct scan_control *sc,
+>   
+>   	gen = lru_gen_from_seq(lrugen->min_seq[type]);
+>   
+> -	for (zone = sc->reclaim_idx; zone >= 0; zone--) {
+> +	for (i = MAX_NR_ZONES; i > 0; i--) {
+>   		LIST_HEAD(moved);
+>   		int skipped = 0;
+> +		int zone = (sc->reclaim_idx + i) % MAX_NR_ZONES;
+>   		struct list_head *head = &lrugen->folios[gen][type][zone];
+>   
+>   		while (!list_empty(head)) {
+> @@ -5019,7 +5029,7 @@ static int scan_folios(struct lruvec *lruvec, struct scan_control *sc,
+>   
+>   			scanned += delta;
+>   
+> -			if (sort_folio(lruvec, folio, tier))
+> +			if (sort_folio(lruvec, folio, sc, tier))
+>   				sorted += delta;
+>   			else if (isolate_folio(lruvec, folio, sc)) {
+>   				list_add(&folio->lru, list);
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202308021841.dVQEY7mc-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   In file included from drivers/net/wireless/mediatek/mt76/mt7925/mac.c:7:
->> drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h:7:10: fatal error: ../mt792x.h: No such file or directory
-       7 | #include "../mt792x.h"
-         |          ^~~~~~~~~~~~~
-   compilation terminated.
-
-
-vim +7 drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-
-d5f8016ffd8fd01 Deren Wu 2023-08-01  6  
-d5f8016ffd8fd01 Deren Wu 2023-08-01 @7  #include "../mt792x.h"
-d5f8016ffd8fd01 Deren Wu 2023-08-01  8  #include "regs.h"
-d5f8016ffd8fd01 Deren Wu 2023-08-01  9  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
