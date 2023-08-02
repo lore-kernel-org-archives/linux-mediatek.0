@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7105DC00528
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 10:32:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A6E7C00528
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 10:41:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7LsmC20iCMbHBtDgrWjEoXfLxe/DFrLJ4YLDXDr/KEg=; b=KepJF0CKOsSs8qDTQcbJCmR+as
-	n9yQM1UVm99jYjwq7upW4Ts57seIhjU1FyZEMr+3twDqKEMiLiAKjuGDh8VGAzVTOMKNcCHtQAVRr
-	7PPNbwhj3J856U63GEXIho4ysyp9FCEQXfkSyMeEyLD9HOu5pZ+w4paDUG7C5C76ZZEhcZY9fFLkJ
-	4btIq0zb6n8OaJ27GQFg3AnYsGsCE+ZOzQ2/lnxDC0QnAnE1Oqr4P2guuoapWDJUtfLRPu6hDu1yE
-	a/BEjz5W5ioruk6M/Pe+NJh15YuhUyce6qjz6pK61g3b9K+hLxvcAN2J4c/TtuEtLCiAAkzyRmGp/
-	ZCosWc6g==;
+	bh=lMOWKBsIG0FPljouxKiiVPGFO6Pk05o1ZrXUViE1Djk=; b=1PXg0QxghzCVSSvX+bLiA+Qvck
+	nGzOGdidKTHSgKc8pE1BB4kU8G7cy8dz+nYQo5buhGQcbf/BBfaUokBifyFxWGJRWxTuKihlLh+Bz
+	eTrsUeSkWIPketm5RhLZn5aUvXjVCbBejmHn/BKvQCnCoz3VCGS/BlxeXpdyyRkXfd8GvCpKI1cz2
+	9f0lMUiRXS/7WDyUVNg4/XanRKlZRoxi0XiZykOi2LxQIfuPXmqCh70gaJ0fbJIL0OIx8qX7F4DGk
+	yueha3pSYJkjLgN/PULqB/3s9hV29UTRLSVgxcNx+4O4H0nUMDwtlrcO31uYlXpk7jRuAofKclH82
+	LJsm5W4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qR99r-004bZk-1q;
-	Wed, 02 Aug 2023 10:32:47 +0000
+	id 1qR9Hw-004cIA-0v;
+	Wed, 02 Aug 2023 10:41:08 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qR99n-004bYs-29;
-	Wed, 02 Aug 2023 10:32:45 +0000
+	id 1qR9Ht-004cHR-1J;
+	Wed, 02 Aug 2023 10:41:06 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 22E0566018CF;
-	Wed,  2 Aug 2023 11:32:38 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 76C7A66018CF;
+	Wed,  2 Aug 2023 11:41:03 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1690972359;
-	bh=/7pQ+RL+C9IsOxEUKck+Ky/01nkzrjWwtJzBRApAFFg=;
+	s=mail; t=1690972863;
+	bh=TrhwwG3QrrMmg/W1ATIbTGu9eOuiVphNZE4suN3mq0s=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FSPr7IDaJUZI8qae4UT7rbflUxVKpkNX71m4yCF5Ruhxl/K4k5yyEdDxEQkQccg9k
-	 qDCrpbpi6aumO2kervMVnEQq432YsYqfYdS160+3UTkYZiNBUr3te5/PO0PzOSsSis
-	 ioBQTiDXnuTlca51tOlHBJzoOBnrEsg8bQ3z7jcsS5qPjVIKWfQePpct+eFJDw99be
-	 RW746hV1YiZIkVkK9FOJnpsgOOGL1qUqC4dUwbjywXrTA0DkjPt4VGh4oNU7fdwr/P
-	 3f9lzB2BzLVkwByQNV++CgFAla1k/rgVOBc5Gi/57J1Q2HEy+7tXrh5F35M3xkuAlP
-	 0xOcVABb4VkwA==
-Message-ID: <a410f098-af13-435d-688c-1021cc7b8cbb@collabora.com>
-Date: Wed, 2 Aug 2023 12:32:35 +0200
+	b=MI2ZWz0/dRBbh6O+gTO95tHTji6IthyxgaWUF03Cau2KNopLADiedZ+hedjPNu2p4
+	 l1ar6/CMwRdRrPr5cCrDmQZPfMP7j30poLK1RzLoW+QGBT9zCi0wCQx4seyXCaGB9h
+	 ifAV6es/KuEVQHTV9taxu0cSGfEvIoFQ+foDRYfdZXz8GX0foUAfqWgxUDlDyWI8pK
+	 mnVHXEk6L4mdD5GK9f7ZQ2Szuzax+cwNtOgrMqgUhEUrBS7f6vFnNmaF0L1PuJhER1
+	 oTApsY0tbDJADzDy35NQOzadUhOPUk32GwDB+1/28KuWIF3RRHBC/vOrvPmGX//AXt
+	 2tnvcFzzq0kFg==
+Message-ID: <0acd286d-d4f4-97b2-c296-b2860a00def6@collabora.com>
+Date: Wed, 2 Aug 2023 12:41:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH v2 1/3] mm-unstable: Multi-gen LRU: Fix per-zone reclaim
+Subject: Re: [PATCH 1/3] drm/mediatek: Dynamically allocate CMDQ and use
+ helper functions
 Content-Language: en-US
-To: Kalesh Singh <kaleshsingh@google.com>, yuzhao@google.com,
- akpm@linux-foundation.org
-Cc: surenb@google.com, android-mm@google.com, kernel-team@android.com,
- stable@vger.kernel.org, Charan Teja Kalla <quic_charante@quicinc.com>,
- Lecopzer Chen <lecopzer.chen@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Suleiman Souhlal <suleiman@google.com>,
- Oleksandr Natalenko <oleksandr@natalenko.name>,
- "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>,
- Qi Zheng <zhengqi.arch@bytedance.com>, Steven Barrett <steven@liquorix.net>,
- Brian Geffon <bgeffon@google.com>, Barry Song <baohua@kernel.org>,
- linux-mm@kvack.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230802025606.346758-1-kaleshsingh@google.com>
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+References: <20230623094931.117918-1-angelogioacchino.delregno@collabora.com>
+ <20230623094931.117918-2-angelogioacchino.delregno@collabora.com>
+ <bd19faf644fa80f8fa77ed0841a724aa3ca871f5.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230802025606.346758-1-kaleshsingh@google.com>
+In-Reply-To: <bd19faf644fa80f8fa77ed0841a724aa3ca871f5.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230802_033243_968144_3B4DF9F5 
-X-CRM114-Status: GOOD (  33.99  )
+X-CRM114-CacheID: sfid-20230802_034105_604086_D43D8B40 
+X-CRM114-Status: GOOD (  20.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,149 +85,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/08/23 04:56, Kalesh Singh ha scritto:
-> MGLRU has a LRU list for each zone for each type (anon/file) in each
-> generation:
+Il 02/08/23 08:24, CK Hu (胡俊光) ha scritto:
+> Hi, Angelo:
 > 
-> 	long nr_pages[MAX_NR_GENS][ANON_AND_FILE][MAX_NR_ZONES];
-> The min_seq (oldest generation) can progress independently for each
-> type but the max_seq (youngest generation) is shared for both anon and
-> file. This is to maintain a common frame of reference.
+> On Fri, 2023-06-23 at 11:49 +0200, AngeloGioacchino Del Regno wrote:
+>>   	
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>   Instead of stack allocating the cmdq_client and cmdq_handle
+>> structures
+>> switch them to pointers, allowing us to migrate this driver to use
+>> the
+>> common functions provided by mtk-cmdq-helper.
+>> In order to do this, it was also necessary to add a `priv` pointer to
+>> struct cmdq_client, as that's used to pass (in this case) a mtk_crtc
+>> handle to the ddp_cmdq_cb() mailbox RX callback function.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <
+>> angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 107 +++++++---------------
+>> --
+>>   include/linux/soc/mediatek/mtk-cmdq.h   |   1 +
+>>   2 files changed, 32 insertions(+), 76 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+>> b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+>> index 0df62b076f49..b63289ab6787 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+>> @@ -50,8 +50,8 @@ struct mtk_drm_crtc {
+>>   	bool				pending_async_planes;
+>>   
+>>   #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+>> -	struct cmdq_client		cmdq_client;
+>> -	struct cmdq_pkt			cmdq_handle;
+>> +	struct cmdq_client		*cmdq_client;
+>> +	struct cmdq_pkt			*cmdq_handle;
+>>   	u32				cmdq_event;
+>>   	u32				cmdq_vblank_cnt;
+>>   	wait_queue_head_t		cb_blocking_queue;
+>> @@ -108,47 +108,6 @@ static void mtk_drm_finish_page_flip(struct
+>> mtk_drm_crtc *mtk_crtc)
+>>   	}
+>>   }
+>>   
+>> -#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+>> -static int mtk_drm_cmdq_pkt_create(struct cmdq_client *client,
+>> struct cmdq_pkt *pkt,
+>> -				   size_t size)
+>> -{
+>> -	struct device *dev;
+>> -	dma_addr_t dma_addr;
+>> -
+>> -	pkt->va_base = kzalloc(size, GFP_KERNEL);
+>> -	if (!pkt->va_base) {
+>> -		kfree(pkt);
+>> -		return -ENOMEM;
+>> -	}
+>> -	pkt->buf_size = size;
+>> -	pkt->cl = (void *)client;
 > 
-> In order for eviction to advance the min_seq of a type, all the per-zone
-> lists in the oldest generation of that type must be empty.
+> I have a plan to remove cl in struct cmdq_pkt. But this modification
+> would make this plan more difficult. So I would pending this patch
+> until cl is removed from struct cmdq_pkt.
 > 
-> The eviction logic only considers pages from eligible zones for
-> eviction or promotion.
-> 
->      scan_folios() {
-> 	...
-> 	for (zone = sc->reclaim_idx; zone >= 0; zone--)  {
-> 	    ...
-> 	    sort_folio(); 	// Promote
-> 	    ...
-> 	    isolate_folio(); 	// Evict
-> 	}
-> 	...
->      }
-> 
-> Consider the system has the movable zone configured and default 4
-> generations. The current state of the system is as shown below
-> (only illustrating one type for simplicity):
-> 
-> Type: ANON
-> 
-> 	Zone    DMA32     Normal    Movable    Device
-> 
-> 	Gen 0       0          0        4GB         0
-> 
-> 	Gen 1       0        1GB        1MB         0
-> 
-> 	Gen 2     1MB        4GB        1MB         0
-> 
-> 	Gen 3     1MB        1MB        1MB         0
-> 
-> Now consider there is a GFP_KERNEL allocation request (eligible zone
-> index <= Normal), evict_folios() will return without doing any work
-> since there are no pages to scan in the eligible zones of the oldest
-> generation. Reclaim won't make progress until triggered from a ZONE_MOVABLE
-> allocation request; which may not happen soon if there is a lot of free
-> memory in the movable zone. This can lead to OOM kills, although there
-> is 1GB pages in the Normal zone of Gen 1 that we have not yet tried to
-> reclaim.
-> 
-> This issue is not seen in the conventional active/inactive LRU since
-> there are no per-zone lists.
-> 
-> If there are no (not enough) folios to scan in the eligible zones, move
-> folios from ineligible zone (zone_index > reclaim_index) to the next
-> generation. This allows for the progression of min_seq and reclaiming
-> from the next generation (Gen 1).
-> 
-> Qualcomm, Mediatek and raspberrypi [1] discovered this issue independently.
-> 
-> [1] https://github.com/raspberrypi/linux/issues/5395
-> 
-> Fixes: ac35a4902374 ("mm: multi-gen LRU: minimal implementation")
-> Cc: stable@vger.kernel.org
-> Cc: Yu Zhao <yuzhao@google.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Reported-by: Charan Teja Kalla <quic_charante@quicinc.com>
-> Reported-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-> Signed-off-by: Kalesh Singh <kaleshsingh@google.com>
 
-Whole series tested on MT8173 Elm Chromebook and MT6795 Xperia M5 as those are
-low ram devices. Can't reproduce the issue described in your [1] link from RPi.
+I think that this ifdef cleanup is more urgent than the removal of `cl` from
+struct cmdq_pkt, as those ifdefs shouldn't have reached upstream in the first
+place, don't you agree?
 
-MediaTek:
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> ---
-> 
-> Changes in v2:
->    - Add Fixes tag and cc stable
-> 
->   mm/vmscan.c | 18 ++++++++++++++----
->   1 file changed, 14 insertions(+), 4 deletions(-)
-> 
-> diff --git a/mm/vmscan.c b/mm/vmscan.c
-> index 4039620d30fe..489a4fc7d9b1 100644
-> --- a/mm/vmscan.c
-> +++ b/mm/vmscan.c
-> @@ -4889,7 +4889,8 @@ static int lru_gen_memcg_seg(struct lruvec *lruvec)
->    *                          the eviction
->    ******************************************************************************/
->   
-> -static bool sort_folio(struct lruvec *lruvec, struct folio *folio, int tier_idx)
-> +static bool sort_folio(struct lruvec *lruvec, struct folio *folio, struct scan_control *sc,
-> +		       int tier_idx)
->   {
->   	bool success;
->   	int gen = folio_lru_gen(folio);
-> @@ -4939,6 +4940,13 @@ static bool sort_folio(struct lruvec *lruvec, struct folio *folio, int tier_idx)
->   		return true;
->   	}
->   
-> +	/* ineligible */
-> +	if (zone > sc->reclaim_idx) {
-> +		gen = folio_inc_gen(lruvec, folio, false);
-> +		list_move_tail(&folio->lru, &lrugen->folios[gen][type][zone]);
-> +		return true;
-> +	}
-> +
->   	/* waiting for writeback */
->   	if (folio_test_locked(folio) || folio_test_writeback(folio) ||
->   	    (type == LRU_GEN_FILE && folio_test_dirty(folio))) {
-> @@ -4987,7 +4995,8 @@ static bool isolate_folio(struct lruvec *lruvec, struct folio *folio, struct sca
->   static int scan_folios(struct lruvec *lruvec, struct scan_control *sc,
->   		       int type, int tier, struct list_head *list)
->   {
-> -	int gen, zone;
-> +	int i;
-> +	int gen;
->   	enum vm_event_item item;
->   	int sorted = 0;
->   	int scanned = 0;
-> @@ -5003,9 +5012,10 @@ static int scan_folios(struct lruvec *lruvec, struct scan_control *sc,
->   
->   	gen = lru_gen_from_seq(lrugen->min_seq[type]);
->   
-> -	for (zone = sc->reclaim_idx; zone >= 0; zone--) {
-> +	for (i = MAX_NR_ZONES; i > 0; i--) {
->   		LIST_HEAD(moved);
->   		int skipped = 0;
-> +		int zone = (sc->reclaim_idx + i) % MAX_NR_ZONES;
->   		struct list_head *head = &lrugen->folios[gen][type][zone];
->   
->   		while (!list_empty(head)) {
-> @@ -5019,7 +5029,7 @@ static int scan_folios(struct lruvec *lruvec, struct scan_control *sc,
->   
->   			scanned += delta;
->   
-> -			if (sort_folio(lruvec, folio, tier))
-> +			if (sort_folio(lruvec, folio, sc, tier))
->   				sorted += delta;
->   			else if (isolate_folio(lruvec, folio, sc)) {
->   				list_add(&folio->lru, list);
+Regards,
+Angelo
 
 
