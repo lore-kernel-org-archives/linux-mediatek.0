@@ -4,82 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFBFFC0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 02:56:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF2C4EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 03:00:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
-	Subject:Message-ID:References:Mime-Version:In-Reply-To:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/hIR85jBvXabpNDlh2e7xtBRwmCRiojtCshBAYjOX1Y=; b=aFGw5281iDGZLskK8F5GIzFrkf
-	u2vMVwnrkWOlGX8iuV1bijQ67fjilhh8OhAwQfflShlmsu36oDYwKd4ndWgq3gKwvkW/pSoUo6APg
-	fc1eB2gkD3V0d09tOc9LlJvB1Pn58dn7u6QYnX2ylqYq8oSKKqiGT8dCEYYbwHVnIrEepdiAsR3x5
-	oCP0EIdQj4+/wuhG7DaOdno4ec+Gi7UjJ0QmNZbKUhJkqB6qUNCNcMN369jkCcjJiPmrOfFGuwk0j
-	8z+ADDbh6iO1FXYhnf7EjJVrJnIP4VOEOwcweef2zokUrsAsNrJRpdwIEFf1gfwSWxm9Mia+x65tp
-	LvLle4IQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RlAKMW2hhyEGf7EbQoDjxae+sXt59ciz5L61y3xkpbo=; b=JlgD4nTcU6VzP14O0+x+WpAOos
+	ZnlNC6lGSftoB5Sl21tnzT12L6kKaGi35cHmMno7WeGe64j20749lNmJvisWkBy7SoO+0yZF5z4ZP
+	9P0H2aQ0MaCc3x/3Wl8hWipkoPm9fKgYZH8CaXqZHWjMCFTwfWahFD9GyZrbK+0YHScqVz41IJ1qx
+	l58zNw1POS2w+Dg1iRzZX/ZKqoZ0XcNkGQUWbDqziYIUL53AN65d9IsfFSHV5AWoFWiL5juLi1Xm8
+	66l3maL13kGdMMZitD6hLesGtj1jqVyw1HjrlqILQNTvdf1fwp3v1YJbIPkinyeG5zgrUbtUPDtiy
+	HivStTHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qR22H-003pCn-1x;
-	Wed, 02 Aug 2023 02:56:29 +0000
-Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
+	id 1qR26N-003pe5-2A;
+	Wed, 02 Aug 2023 03:00:43 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qR22E-003p9m-1l
+	id 1qR26J-003pc1-1u
 	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Aug 2023 02:56:27 +0000
-Received: by mail-yw1-x1149.google.com with SMTP id 00721157ae682-564fb1018bcso74364167b3.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 01 Aug 2023 19:56:24 -0700 (PDT)
+	Wed, 02 Aug 2023 03:00:41 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-3fe32ec7201so7175e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 01 Aug 2023 20:00:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20221208; t=1690944984; x=1691549784;
-        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
-         :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=/hIR85jBvXabpNDlh2e7xtBRwmCRiojtCshBAYjOX1Y=;
-        b=NaC24ZANDfp+9XAVYJ2zthvJ8rUBTQ6l5oOsseG6mfA3cvF+arl71fQG1qHAhLbqJ9
-         9qeh16JOmABIOlkWmOSbROyLEpFlmq9EQUA6/uFoeGgx/95B08yoDHueOaoh/i5155mY
-         XVuhu3IiHZBf1PozmtFvavLXWlrDny3HMWCrGbcbi3wm/Avg9RqMK4JG4u4VTr67QtHd
-         KbHI/PNLuqrNbAwO5JvECyVMzM5KsSmQk2W4uE2b/bpTqBDpICou5hRnR2Ky2iDO0WiX
-         xNEzbL/OrqT3RifP1ne+1qALr+MKSfhXAnsSEvF0phJYNv0q7iAwZlhSP5UEXbHyOUib
-         Cf7w==
+        d=google.com; s=20221208; t=1690945233; x=1691550033;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RlAKMW2hhyEGf7EbQoDjxae+sXt59ciz5L61y3xkpbo=;
+        b=vQJAOG12dWe2jHunL4c0y4nkGH47MCyLHObcx3wytIGo7cJbUOCvivyIOYUfF+wrFO
+         unrIYujYnkF+ySOaIF+/kcNOKmOBLJwGwj82XBbWwBb4288Zuc617LPlcbAkRHKXxyc5
+         rQZH0wA/4bJp316IZY7q/iIlBwVwzQoknehVtxOnQF9lE4ooLuTLpS3sAyHviJqQTGml
+         CUIsHiFKJHycqolab+QqPxjMe5wacy98j7JS/gsZ7WJMly20mExGGR5QswsxqfNN6H8z
+         b1QZLQZMBTSFcRd6AW/jY+z3nqiiHzg9EFUz6rDPVjnkT4UfpTVHJzZLPg+mdXbypAn9
+         E6iA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690944984; x=1691549784;
-        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
-         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/hIR85jBvXabpNDlh2e7xtBRwmCRiojtCshBAYjOX1Y=;
-        b=lUjdVeysTILgu8f9U8rE+t9RgicuWKbb8IibaaCnoCiWCna6jGkXHR16EWnbDsz7lm
-         thnuhDeVDEgOy7fH8yhEdxP/meO6kK/OgqtkJC5XDpujg5+EClvR1fbCnL5/UbbpC7bh
-         QrpTSQ6LbdRh6EAXArVn+TATiAAs1aQoumqcO9S/jo0S1+gcBNs4M9OEkUKFSTb37dpa
-         baOSrOfYM8tH/XW0kcznmgg3FbCNEouxXRpSydT6B3IO3lU6Eh3/CPuOBTKFGWJW1f7q
-         0zwrnZHHY3tFE2XsdwvbffdgEqxCr2MCN/WJ5/6TwtbD8JZ0F939Eru0evrV5c1MFzP1
-         TBxg==
-X-Gm-Message-State: ABy/qLZbDkhudMoDK3fJQAljDdrWjxWQ64vjmJSyRqYInZ7QRy4o/jR7
-	1a1Q5ZZUn8dkUOUKjgksQhHNBJZY+mqOI2TE3g==
-X-Google-Smtp-Source: APBJJlHj0tBKgoeUZ7ci0leYLXMuHGiQZrYMbH4Cl/uWTIvoLc5trBzIvMofv2F1eZ7phbcd71NDee6Wx5e539GPkA==
-X-Received: from kalesh.mtv.corp.google.com ([2620:15c:211:201:aa5f:ff75:318:255])
- (user=kaleshsingh job=sendgmr) by 2002:a81:a706:0:b0:583:4f82:b9d9 with SMTP
- id e6-20020a81a706000000b005834f82b9d9mr120587ywh.5.1690944984182; Tue, 01
- Aug 2023 19:56:24 -0700 (PDT)
-Date: Tue,  1 Aug 2023 19:56:04 -0700
-In-Reply-To: <20230802025606.346758-1-kaleshsingh@google.com>
-Mime-Version: 1.0
-References: <20230802025606.346758-1-kaleshsingh@google.com>
-X-Mailer: git-send-email 2.41.0.255.g8b1d071c50-goog
-Message-ID: <20230802025606.346758-3-kaleshsingh@google.com>
-Subject: [PATCH v2 3/3] mm-unstable: Multi-gen LRU: Fix can_swap in lru_gen_look_around()
+        d=1e100.net; s=20221208; t=1690945233; x=1691550033;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=RlAKMW2hhyEGf7EbQoDjxae+sXt59ciz5L61y3xkpbo=;
+        b=hI58pirvfTQVPjdhnk+Ye7O8JX7sgV1jlnCso9KE9aLO8JSKCNXgYTWqu5VJLqOogS
+         fA0r71aQWSO0NeW+NFlWxbIsvZG8N754ls7bgs6/nrQUP7NBfHeTDHnw2b4UrZDL9KQZ
+         4Nh1ZB1VnMI8kINnU4SqcpoLC8D+5KWqX6uP1Y04CUDSg85pfh1YF/Gr100CK4syDuxm
+         yl2WN3/dR7aXfTfTgaB621495AuiaDMcjDKFiLTAfWIFrley6OLEAbpkW05V104uyZy9
+         VJOMvTglITvqGZYtmU30lcIRjRSBejkw6HtAlTkpKy8jXcYfdVCE72Et5eOl2t2r1FGZ
+         5Q4Q==
+X-Gm-Message-State: ABy/qLbhI+nvUFlkSThc9R+cxMhr1QArw8aa52E82JXRU+8OfJ0YB7C+
+	AqwKV3P29kk/D2q9OKAfb7wy40Fh1xIMjkPbZUp1Mw==
+X-Google-Smtp-Source: APBJJlEAU7sf9LNnkdL9BM8PD1a8rc+IfAWYFJmdLXziM/Js7RppZ43toQ4SbcluXzArg9H2qin9Z8zMAbCrzSlThAg=
+X-Received: by 2002:a05:600c:1f0a:b0:3f7:e59f:2183 with SMTP id
+ bd10-20020a05600c1f0a00b003f7e59f2183mr310158wmb.5.1690945232638; Tue, 01 Aug
+ 2023 20:00:32 -0700 (PDT)
+MIME-Version: 1.0
+References: <20230802001938.3913174-1-kaleshsingh@google.com> <CAOUHufbz-VHZ12b9wrCFxZ9mqVnU=Xstkoo5Ym9_tw72R1-2Gg@mail.gmail.com>
+In-Reply-To: <CAOUHufbz-VHZ12b9wrCFxZ9mqVnU=Xstkoo5Ym9_tw72R1-2Gg@mail.gmail.com>
 From: Kalesh Singh <kaleshsingh@google.com>
-To: yuzhao@google.com, akpm@linux-foundation.org
-Cc: surenb@google.com, android-mm@google.com, kernel-team@android.com, 
-	Kalesh Singh <kaleshsingh@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Suleiman Souhlal <suleiman@google.com>, Steven Barrett <steven@liquorix.net>, 
-	Oleksandr Natalenko <oleksandr@natalenko.name>, 
-	"Jan Alexander Steffens (heftig)" <heftig@archlinux.org>, Qi Zheng <zhengqi.arch@bytedance.com>, 
-	Brian Geffon <bgeffon@google.com>, Barry Song <baohua@kernel.org>, linux-mm@kvack.org, 
+Date: Tue, 1 Aug 2023 20:00:20 -0700
+Message-ID: <CAC_TJveohqQNDT+AuoP-25Bm+=GWTZY=XWV+Q=_t=H5YujNF4g@mail.gmail.com>
+Subject: Re: [PATCH 1/3] mm-unstable: Multi-gen LRU: Fix per-zone reclaim
+To: Yu Zhao <yuzhao@google.com>
+Cc: akpm@linux-foundation.org, surenb@google.com, android-mm@google.com, 
+	kernel-team@android.com, Charan Teja Kalla <quic_charante@quicinc.com>, 
+	Lecopzer Chen <lecopzer.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mm@kvack.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230801_195626_582700_55667614 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20230801_200039_643434_3B28F1AB 
+X-CRM114-Status: GOOD (  26.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,44 +92,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-walk->can_swap might be invalid since it's not guaranteed to be
-initialized for the particular lruvec. Instead deduce it from the folio
-type (anon/file).
+On Tue, Aug 1, 2023 at 7:08=E2=80=AFPM Yu Zhao <yuzhao@google.com> wrote:
+>
+> On Tue, Aug 1, 2023 at 6:19=E2=80=AFPM Kalesh Singh <kaleshsingh@google.c=
+om> wrote:
+> >
+> > MGLRU has a LRU list for each zone for each type (anon/file) in each
+> > generation:
+> >
+> >         long nr_pages[MAX_NR_GENS][ANON_AND_FILE][MAX_NR_ZONES];
+> >
+> > The min_seq (oldest generation) can progress independently for each
+> > type but the max_seq (youngest generation) is shared for both anon and
+> > file. This is to maintain a common frame of reference.
+> >
+> > In order for eviction to advance the min_seq of a type, all the per-zon=
+e
+> > lists in the oldest generation of that type must be empty.
+> >
+> > The eviction logic only considers pages from eligible zones for
+> > eviction or promotion.
+> >
+> >     scan_folios() {
+> >         ...
+> >         for (zone =3D sc->reclaim_idx; zone >=3D 0; zone--)  {
+> >             ...
+> >             sort_folio();       // Promote
+> >             ...
+> >             isolate_folio();    // Evict
+> >         }
+> >         ...
+> >     }
+> >
+> > Consider the system has the movable zone configured and default 4
+> > generations. The current state of the system is as shown below
+> > (only illustrating one type for simplicity):
+> >
+> > Type: ANON
+> >
+> >         Zone    DMA32     Normal    Movable    Device
+> >
+> >         Gen 0       0          0        4GB         0
+> >
+> >         Gen 1       0        1GB        1MB         0
+> >
+> >         Gen 2     1MB        4GB        1MB         0
+> >
+> >         Gen 3     1MB        1MB        1MB         0
+> >
+> > Now consider there is a GFP_KERNEL allocation request (eligible zone
+> > index <=3D Normal), evict_folios() will return without doing any work
+> > since there are no pages to scan in the eligible zones of the oldest
+> > generation. Reclaim won't make progress until triggered from a ZONE_MOV=
+ABLE
+> > allocation request; which may not happen soon if there is a lot of free
+> > memory in the movable zone. This can lead to OOM kills, although there
+> > is 1GB pages in the Normal zone of Gen 1 that we have not yet tried to
+> > reclaim.
+> >
+> > This issue is not seen in the conventional active/inactive LRU since
+> > there are no per-zone lists.
+> >
+> > If there are no (not enough) folios to scan in the eligible zones, move
+> > folios from ineligible zone (zone_index > reclaim_index) to the next
+> > generation. This allows for the progression of min_seq and reclaiming
+> > from the next generation (Gen 1).
+> >
+> > Qualcomm, Mediatek and raspberrypi [1] discovered this issue independen=
+tly.
+> >
+> > [1] https://github.com/raspberrypi/linux/issues/5395
+> >
+> > Cc: Yu Zhao <yuzhao@google.com>
+> > Cc: Andrew Morton <akpm@linux-foundation.org>
+> > Reported-by: Charan Teja Kalla <quic_charante@quicinc.com>
+> > Reported-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+> > Signed-off-by: Kalesh Singh <kaleshsingh@google.com>
+>
+> LGTM. But I think we need the Fixes tag and Cc stable.
 
-Fixes: 018ee47f1489 ("mm: multi-gen LRU: exploit locality in rmap")
-Cc: Yu Zhao <yuzhao@google.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>
-Signed-off-by: Kalesh Singh <kaleshsingh@google.com>
----
+I've reposted the patches with fixes tag and stable cc'ed at:
+https://lore.kernel.org/lkml/20230802025606.346758-1-kaleshsingh@google.com=
+/#t
 
-Changes in v2:
-  - Add Fixes tag
-
- mm/vmscan.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/mm/vmscan.c b/mm/vmscan.c
-index 6eecd291756c..b4329f93a682 100644
---- a/mm/vmscan.c
-+++ b/mm/vmscan.c
-@@ -4656,6 +4656,7 @@ void lru_gen_look_around(struct page_vma_mapped_walk *pvmw)
- 	pte_t *pte = pvmw->pte;
- 	unsigned long addr = pvmw->address;
- 	struct folio *folio = pfn_folio(pvmw->pfn);
-+	bool can_swap = !folio_is_file_lru(folio);
- 	struct mem_cgroup *memcg = folio_memcg(folio);
- 	struct pglist_data *pgdat = folio_pgdat(folio);
- 	struct lruvec *lruvec = mem_cgroup_lruvec(memcg, pgdat);
-@@ -4704,7 +4705,7 @@ void lru_gen_look_around(struct page_vma_mapped_walk *pvmw)
- 		if (!pte_young(ptent))
- 			continue;
- 
--		folio = get_pfn_folio(pfn, memcg, pgdat, !walk || walk->can_swap);
-+		folio = get_pfn_folio(pfn, memcg, pgdat, can_swap);
- 		if (!folio)
- 			continue;
- 
--- 
-2.41.0.255.g8b1d071c50-goog
-
+Thanks,
+Kalesh
 
