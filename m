@@ -4,102 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 984FEC001E0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 11:42:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 159EEC001E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Aug 2023 14:48:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=guJ37QtxG3DruOPStXclgXIZhZya9NYk/GyruzfWmAI=; b=HBsFYHfo2zA8I35Zb9s4pDKR80
-	lE4hzDZdAOI9on9db6q4ttGsm3SrtQ42qcsKQua42YMxgGF9Jcqrt+OitknCn1PFb2lOtjjl5nV+6
-	sAvcgZlLg0FTEuI6oUm3HqJNnVtDAxMCYfU2CkA0mk4vevlsUH9zUzf6i2XEKV50pKLCei+M5oiXk
-	DBBxqZFLhwXNumMm27Y+m4qyL0iLmJiEdUqGv6GGMaYIDSYLdRyog99ziWsV0IQsUC4WmQMZ1zavl
-	HBgxCvmXPo+e+9MszQgShxeEBSMk2Q22yHq92YpgfjrG0ME6gnHMfL4rJ+hapudZ1JPIzcrQy5ywG
-	lWAMFgUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ex722iVzhUj3+Nbr4v4VvudKMy5LYdBilR3IWl4HsjE=; b=J5ty3dQodnY7BVL6XYpQ/n/sBt
+	4gV98wleFCbRLwX+zurozJbLesG7AuLZ49a2kkcYblPSnQpwzJUnpF6UG8keAnQq2+3Ir//QE1qGA
+	DO079PbL9tusvWUKmXGa6qjZCLJ7KuoSSZXSYiVW5MGTqY0gOunUL04MZCbVWMjkBPWAQJ3uN3IiB
+	CpbXzbpXuJN06nC92EGd3o8m2+/THfALO9lQMsp31M8YdCGxwvo8dMqJxXznexEZpfYRcIgZcTsb7
+	6y1aoLeMyJQpbh9Q8WOfOnZVDcVuqB25VhVGC3ehTwf3xcLhiU6KAoGut0tC+XI+XoENaMHxRSl+B
+	vYxUFpMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRAFU-004p40-24;
-	Wed, 02 Aug 2023 11:42:40 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1qRD96-0057Pt-2A;
+	Wed, 02 Aug 2023 14:48:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRAFQ-004p30-1Z;
-	Wed, 02 Aug 2023 11:42:38 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 372A4vrJ024218;
-	Wed, 2 Aug 2023 11:41:58 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=guJ37QtxG3DruOPStXclgXIZhZya9NYk/GyruzfWmAI=;
- b=jGV80U9YdS9bZXgflbUXpSYPJWzA+z5lrlg7c33gz4aRov3T/A0YFAZsa8na1LRUyLzW
- s7/8FnucO3QJlkdvxdfmhzCytyW7z0rva737tldPWdvAMLyKDzrRGmdNcIcTZUsvIbC4
- Eedh2m3l2m8Ypm71y7s6BRFab81DZ9I+voWA2Q84JAlMPFA8ONWzf+NPQHcR4aZKnCmo
- eEjNvpX4ktoG1g7puAK4C2TNwB7nhPC2CzHO08u2eenqLZK6v2gHpHjidJVIyFyXYJKE
- DqXE9bYkDuNQN71nIiOa8+nv6U8fHZ41lxCEogTyl4NDu8tPJ0/TffJylxjIpb1tGH2m LA== 
-Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3s7bp69gdn-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 02 Aug 2023 11:41:57 +0000
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 372BfuTr005620
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 2 Aug 2023 11:41:56 GMT
-Received: from [10.216.58.189] (10.80.80.8) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.30; Wed, 2 Aug
- 2023 04:41:50 -0700
-Message-ID: <447aa786-b7c5-807e-1a6e-fb8369fc8a97@quicinc.com>
-Date: Wed, 2 Aug 2023 17:11:47 +0530
+	id 1qRD92-0057Nm-0U;
+	Wed, 02 Aug 2023 14:48:14 +0000
+X-UUID: 977a1ad8314311ee83ed1395ce914268-20230802
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Ex722iVzhUj3+Nbr4v4VvudKMy5LYdBilR3IWl4HsjE=;
+	b=WnyLoMY7cZwMsXYQ830HSCXX5yLKjo9SJ0BUGiGpiMZWTUu+AB2oJd+Q1yvSaGZi+WzQWDRbcTqpjPG/TiWN6rCJn8woGwZpIIndF6E1m2/O2K7gPmHj5mMronh8Gb258CplXPKwyDCzgG10fk8Abi9opdOsY4Uh3kZV8QrobdA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.30,REQID:3426756b-2ec6-4d02-b8c8-6f1159ceb307,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:90
+X-CID-INFO: VERSION:1.1.30,REQID:3426756b-2ec6-4d02-b8c8-6f1159ceb307,IP:0,URL
+	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:90
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:5a1f9dd2-cd77-4e67-bbfd-aa4eaace762f,B
+	ulkID:230802224806DJ5E8RIY,BulkQuantity:1,Recheck:0,SF:28|17|19|48|38|29,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,TF_CID_SPAM_SNR,
+	TF_CID_SPAM_SDM
+X-UUID: 977a1ad8314311ee83ed1395ce914268-20230802
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 260723458; Wed, 02 Aug 2023 07:48:06 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 2 Aug 2023 22:48:04 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 2 Aug 2023 22:48:04 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Eugen Hristev
+	<eugen.hristev@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Jason-ch Chen
+	<jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
+	<shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v8 4/8] drm/mediatek: Add encoder_index function to mtk_ddp_comp_funcs
+Date: Wed, 2 Aug 2023 22:47:58 +0800
+Message-ID: <20230802144802.751-5-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230802144802.751-1-jason-jh.lin@mediatek.com>
+References: <20230802144802.751-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.2
-Subject: Re: [PATCH v2 1/3] mm-unstable: Multi-gen LRU: Fix per-zone reclaim
-Content-Language: en-US
-To: Kalesh Singh <kaleshsingh@google.com>, <yuzhao@google.com>,
-        <akpm@linux-foundation.org>
-CC: <surenb@google.com>, <android-mm@google.com>, <kernel-team@android.com>,
-        <stable@vger.kernel.org>, Lecopzer Chen <lecopzer.chen@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        Suleiman Souhlal
-	<suleiman@google.com>,
-        Oleksandr Natalenko <oleksandr@natalenko.name>,
-        "Jan
- Alexander Steffens (heftig)" <heftig@archlinux.org>,
-        Qi Zheng
-	<zhengqi.arch@bytedance.com>,
-        Steven Barrett <steven@liquorix.net>,
-        Brian
- Geffon <bgeffon@google.com>, Barry Song <baohua@kernel.org>,
-        <linux-mm@kvack.org>, <linux-kernel@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>
-References: <20230802025606.346758-1-kaleshsingh@google.com>
-From: Charan Teja Kalla <quic_charante@quicinc.com>
-In-Reply-To: <20230802025606.346758-1-kaleshsingh@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: 4XUYOAFIT1jf5-1o0YBu2i45mHyWOX_D
-X-Proofpoint-ORIG-GUID: 4XUYOAFIT1jf5-1o0YBu2i45mHyWOX_D
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
- definitions=2023-08-02_06,2023-08-01_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
- phishscore=0 lowpriorityscore=0 malwarescore=0 impostorscore=0 spamscore=0
- mlxlogscore=999 bulkscore=0 suspectscore=0 clxscore=1011 adultscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2306200000 definitions=main-2308020103
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230802_044236_662657_78B8A545 
-X-CRM114-Status: GOOD (  27.78  )
+X-CRM114-CacheID: sfid-20230802_074812_197158_34D34792 
+X-CRM114-Status: GOOD (  11.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,86 +95,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks Kalesh for taking this to upstream.
+1. Add encoder_index function to mtk_ddp_comp_funcs to support dynamic
+connector selection for some ddp_comp who has encoder_index.
+2. Add mtk_ddp_comp_encoder_index_set function to set encoder_index to
+each comp.
 
-On 8/2/2023 8:26 AM, Kalesh Singh wrote:
-> MGLRU has a LRU list for each zone for each type (anon/file) in each
-> generation:
-> 
-> 	long nr_pages[MAX_NR_GENS][ANON_AND_FILE][MAX_NR_ZONES];
-> The min_seq (oldest generation) can progress independently for each
-> type but the max_seq (youngest generation) is shared for both anon and
-> file. This is to maintain a common frame of reference.
-> 
-> In order for eviction to advance the min_seq of a type, all the per-zone
-> lists in the oldest generation of that type must be empty.
-> 
-> The eviction logic only considers pages from eligible zones for
-> eviction or promotion.
-> 
->     scan_folios() {
-> 	...
-> 	for (zone = sc->reclaim_idx; zone >= 0; zone--)  {
-> 	    ...
-> 	    sort_folio(); 	// Promote
-> 	    ...
-> 	    isolate_folio(); 	// Evict
-> 	}
-> 	...
->     }
-> 
-> Consider the system has the movable zone configured and default 4
-> generations. The current state of the system is as shown below
-> (only illustrating one type for simplicity):
-> 
-> Type: ANON
-> 
-> 	Zone    DMA32     Normal    Movable    Device
-> 
-> 	Gen 0       0          0        4GB         0
-> 
-> 	Gen 1       0        1GB        1MB         0
-> 
-> 	Gen 2     1MB        4GB        1MB         0
-> 
-> 	Gen 3     1MB        1MB        1MB         0
-> 
-> Now consider there is a GFP_KERNEL allocation request (eligible zone
-> index <= Normal), evict_folios() will return without doing any work
-> since there are no pages to scan in the eligible zones of the oldest
-> generation. Reclaim won't make progress until triggered from a ZONE_MOVABLE
-> allocation request; which may not happen soon if there is a lot of free
-> memory in the movable zone. This can lead to OOM kills, although there
-> is 1GB pages in the Normal zone of Gen 1 that we have not yet tried to
-> reclaim.
-> 
-> This issue is not seen in the conventional active/inactive LRU since
-> there are no per-zone lists.
-> 
-> If there are no (not enough) folios to scan in the eligible zones, move
-> folios from ineligible zone (zone_index > reclaim_index) to the next
-> generation. This allows for the progression of min_seq and reclaiming
-> from the next generation (Gen 1).
-> 
-As discussing offline, I think this can make system to spend too much
-time in scan_folios() in moving the pages from Gen-0 to Gen-1 of the
-other zone which can result into OOM is not active when necessary.
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-> Qualcomm, Mediatek and raspberrypi [1] discovered this issue independently.
-> 
-> [1] https://github.com/raspberrypi/linux/issues/5395
-> 
-> Fixes: ac35a4902374 ("mm: multi-gen LRU: minimal implementation")
-> Cc: stable@vger.kernel.org
-> Cc: Yu Zhao <yuzhao@google.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Reported-by: Charan Teja Kalla <quic_charante@quicinc.com>
-> Reported-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-> Signed-off-by: Kalesh Singh <kaleshsingh@google.com>
-
-We tested this patch on our systems for couple of weeks and aggressive
-OOM is not observed which otherwise is easily reproducible.
-
-Tested-by: Charan Teja Kalla <quic_charante@quicinc.com>
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index febcaeef16a1..8428baca70f4 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -80,6 +80,7 @@ struct mtk_ddp_comp_funcs {
+ 	void (*disconnect)(struct device *dev, struct device *mmsys_dev, unsigned int next);
+ 	void (*add)(struct device *dev, struct mtk_mutex *mutex);
+ 	void (*remove)(struct device *dev, struct mtk_mutex *mutex);
++	unsigned int (*encoder_index)(struct device *dev);
+ };
+ 
+ struct mtk_ddp_comp {
+@@ -87,6 +88,7 @@ struct mtk_ddp_comp {
+ 	int irq;
+ 	unsigned int id;
+ 	const struct mtk_ddp_comp_funcs *funcs;
++	unsigned int encoder_index;
+ };
+ 
+ static inline int mtk_ddp_comp_clk_enable(struct mtk_ddp_comp *comp)
+@@ -275,6 +277,12 @@ static inline bool mtk_ddp_comp_disconnect(struct mtk_ddp_comp *comp, struct dev
+ 	return false;
+ }
+ 
++static inline void mtk_ddp_comp_encoder_index_set(struct mtk_ddp_comp *comp)
++{
++	if (comp->funcs && comp->funcs->encoder_index)
++		comp->encoder_index = comp->funcs->encoder_index(comp->dev);
++}
++
+ int mtk_ddp_comp_get_id(struct device_node *node,
+ 			enum mtk_ddp_comp_type comp_type);
+ unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
+-- 
+2.18.0
 
 
