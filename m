@@ -4,83 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8350DC00528
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 11:10:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F5DBEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 12:49:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=y1/bPs/BxFNXGqv9H1rzERGNtX0OyJ3swYdBbl4atw8=; b=GvaQwDBiK/EEXeEcTq+Z05nXBr
-	RqMQcLW1x3Evr+JxKU9Phbqb3RvHGGOeo9gRPqgY48OJaGTfKUtnBKHBC3WgqiAq3DonDmBLPSer5
-	GvQiUXAGsGUtGVKT8PrW6gKctYL59jMpjS2enHa1BJSQi/S2ZN7WSpAGzn1/cHL0DRgUjqaJz7kZo
-	qX10NvkeebpQxqWm4uWhNlmsOAMkog4Ozx5SJnpVGCfEVC9njwGpd3Jdsp148wvlTWZct1J9qyi4Q
-	pfWrv0aliBaDLfUPcSY/MuinjZv5B4ekIm+L96ysoRQ9KAdICgLaXOW7A60erfXl1ypWs1CojgZrn
-	4AL8UhfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KINzkY+2pTqpgggwDRnN6ZDXxLdRP48C4+yT1alhZW0=; b=gdcK8eHzde0eBJpOIkfmNPND5N
+	k0SUnzEEYv1w3NLbkfikg7USUpZJL4vyi5BkJpYA5gsnPZ1SqRZmfFpgWjYVsgvoi4u76hORe83dd
+	Uasmd6hSG9dFgLA4t/BuocZmswQVLdR3UiACbtBOHY4gfWBexpoZrEgFXmmB6br0fG8vG8FZ4J0g4
+	biKvGbkonW5jbXAd1/eQa3vFekLN7VP2ZRIzOzioqjHoRIXcUnHCb/zcRpYNE3abfIhZ0Q/E5OYF+
+	DarY4cxpB2LAEARONE9ClY9IBM0nDfsBQ2mSA+MiJfBmzrFDpfuoewcP+qslh4lsiI/9/6ufD9cQs
+	5cPB9yew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRWDx-007g00-1s;
-	Thu, 03 Aug 2023 11:10:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qRXlR-008c48-1A;
+	Thu, 03 Aug 2023 12:49:13 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRWDu-007fwX-08;
-	Thu, 03 Aug 2023 11:10:31 +0000
-X-UUID: 56ef602631ee11ee912e1518a6540028-20230803
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=y1/bPs/BxFNXGqv9H1rzERGNtX0OyJ3swYdBbl4atw8=;
-	b=PiwlT4zTQLrBxUTvpO2LqKe3RXbRHrZI5s7jRxkt1Li47C31rASohhHiZ09f8cmFkVQR6Fuq6nimT9R6CgSYGWBLH/m0wH1pkYHLlny1CqPH4dheqMiuw2NwuQiG+oK6Imx+fRN7KtdcrReOXdWjGr5ImyVE2K6V60t1zO9B47k=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.30,REQID:5307b4c4-1abc-4a4b-bd7d-37cbb76a3f69,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:1fcc6f8,CLOUDID:a5a6d9a0-0933-4333-8d4f-6c3c53ebd55b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: 56ef602631ee11ee912e1518a6540028-20230803
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <xiaoyong.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 823216570; Thu, 03 Aug 2023 04:10:22 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 3 Aug 2023 19:10:19 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 3 Aug 2023 19:10:18 +0800
-From: Xiaoyong Lu <xiaoyong.lu@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
-	<acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
- Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
-	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
-	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
-	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [v3] media: mediatek: vcodec: fix AV1 decoding on MT8188
-Date: Thu, 3 Aug 2023 19:10:17 +0800
-Message-ID: <20230803111017.2418-1-xiaoyong.lu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1qRXlO-008c0y-14
+	for linux-mediatek@lists.infradead.org;
+	Thu, 03 Aug 2023 12:49:11 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-26814f65d7fso475088a91.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 03 Aug 2023 05:49:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1691066948; x=1691671748;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=KINzkY+2pTqpgggwDRnN6ZDXxLdRP48C4+yT1alhZW0=;
+        b=FLG0aNm32sS+XHN5I5Y+oBXcneb5nhWHffdSaglK04SJWjwdCruhjcCMpGRDmQKEo/
+         dUNa5R5rumYhograB20KM5QQblPCxXoQ8ZGQVLvR3UoUkEic8GJvmZpmWcmiIah2dok7
+         fbGqVsz9ep9aogRrBoMg9zggdj9lXDLtihA5A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1691066948; x=1691671748;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=KINzkY+2pTqpgggwDRnN6ZDXxLdRP48C4+yT1alhZW0=;
+        b=VnFDhARnWEoHfF7v9LPz/Q2RMnOd7yPQUKa1gQcp58ppS6XY4k+ELJhzXKfqbez+pu
+         5e+NIOOjiOg83jlTHa75v7oaaHFqjuR5GaujDDO+CszEllh99sp9NjyLc1Z5crrKdXQ8
+         oPGdOtxWA/iudxw4j+qUSfdmujThqkYAM/B1/Wb9IXXN2M35AgqyJxN5p+B9hjgxpKPf
+         4GcEa0PqwiTkpmAIQWXHpnlInOmc5+lQtv7mlkqV2HaeavmQX6h6bdOWUyKL1tkjLLWN
+         eI+aJsTCvBBzoKZMIG2qJFybwf2Si+76EtaSAIbXRLTrXdc8V/kD6iC6/HnDstJcvBd7
+         wFEw==
+X-Gm-Message-State: ABy/qLaaPp74r2auovWKcvvYTZiI4mUo9bCUAZZg6O19YMxAo6h3jvCy
+	Mw+4LQ6Mwq1tsL1+lmXwx8/5mbl6jfVvgwEk0zMpNA==
+X-Google-Smtp-Source: APBJJlFjhCqu83YatWbs6solrrW1ZC3HnaGzLi79mqRRwPhv8z+cIO3WAE1eJpOmWss6LSTrOliZSTyEMjemBAej5JA=
+X-Received: by 2002:a17:90b:4f81:b0:267:f893:d562 with SMTP id
+ qe1-20020a17090b4f8100b00267f893d562mr16081750pjb.8.1691066947603; Thu, 03
+ Aug 2023 05:49:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20230724175839.675911-1-greenjustin@chromium.org> <ZMtkIHkfhbOCodhw@phenom.ffwll.local>
+In-Reply-To: <ZMtkIHkfhbOCodhw@phenom.ffwll.local>
+From: Justin Green <greenjustin@chromium.org>
+Date: Thu, 3 Aug 2023 08:48:56 -0400
+Message-ID: <CAHC42Rfz6jjY9RfVsrrPuENgXiaCB7EecH=-Dnfzm0KynGFNjA@mail.gmail.com>
+Subject: Re: [PATCH RESEND] drm/mediatek: Add valid modifier check
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
+	chunkuang.hu@kernel.org, jason-jh.lin@mediatek.com, justin.yeh@mediatek.com, 
+	wenst@chromium.org, angelogioacchino.delregno@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230803_041030_108980_6BB69C33 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20230803_054910_394176_73C2C8A4 
+X-CRM114-Status: GOOD (  28.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,64 +86,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix AV1 decoding failure when the iova is 36bit.
+> See c91acda3a380 ("drm/gem: Check for valid formats") and the related gem
+fb helper functions to see how this is supposed to be done.
 
-Before this fix, the decoder was accessing incorrect addresses with 36bit
-iova tile buffer, leading to iommu faults.
+Oh that's interesting, so does this imply that the infrastructure
+automatically calls format_mod_supported() during framebuffer
+creation? In that case, this entire patch might be unnecessary in the
+tip of tree kernel.
 
-Fixes: 2f5d0aef37c6 ("media: mediatek: vcodec: support stateless AV1 decoder")
-Signed-off-by: Xiaoyong Lu<xiaoyong.lu@mediatek.com>
----
-Changes from v2:
-
-- refine commit subject and message
-
-Changes from v1:
-
-- prefer '|' rather than '+'
-- prefer '&' rather than shift operation
-- add comments for address operations
-
-v1:
-- VDEC HW can access tile buffer and decode normally.
-- Test ok by mt8195 32bit and mt8188 36bit iova.
-
----
- .../mediatek/vcodec/vdec/vdec_av1_req_lat_if.c       | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-index 404a1a23fd402..e9f2393f6a883 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-@@ -1658,9 +1658,9 @@ static void vdec_av1_slice_setup_tile_buffer(struct vdec_av1_slice_instance *ins
- 	u32 allow_update_cdf = 0;
- 	u32 sb_boundary_x_m1 = 0, sb_boundary_y_m1 = 0;
- 	int tile_info_base;
--	u32 tile_buf_pa;
-+	u64 tile_buf_pa;
- 	u32 *tile_info_buf = instance->tile.va;
--	u32 pa = (u32)bs->dma_addr;
-+	u64 pa = (u64)bs->dma_addr;
- 
- 	if (uh->disable_cdf_update == 0)
- 		allow_update_cdf = 1;
-@@ -1673,8 +1673,12 @@ static void vdec_av1_slice_setup_tile_buffer(struct vdec_av1_slice_instance *ins
- 		tile_info_buf[tile_info_base + 0] = (tile_group->tile_size[tile_num] << 3);
- 		tile_buf_pa = pa + tile_group->tile_start_offset[tile_num];
- 
--		tile_info_buf[tile_info_base + 1] = (tile_buf_pa >> 4) << 4;
--		tile_info_buf[tile_info_base + 2] = (tile_buf_pa % 16) << 3;
-+		/* save av1 tile high 4bits(bit 32-35) address in lower 4 bits position
-+		 * and clear original for hw requirement.
-+		 */
-+		tile_info_buf[tile_info_base + 1] = (tile_buf_pa & 0xFFFFFFF0ull) |
-+			((tile_buf_pa & 0xF00000000ull) >> 32);
-+		tile_info_buf[tile_info_base + 2] = (tile_buf_pa & 0xFull) << 3;
- 
- 		sb_boundary_x_m1 =
- 			(tile->mi_col_starts[tile_col + 1] - tile->mi_col_starts[tile_col] - 1) &
--- 
-2.18.0
-
+On Thu, Aug 3, 2023 at 4:24=E2=80=AFAM Daniel Vetter <daniel@ffwll.ch> wrot=
+e:
+>
+> On Mon, Jul 24, 2023 at 01:58:39PM -0400, Justin Green wrote:
+> > Add a check to mtk_drm_mode_fb_create() that rejects any modifier that
+> > is not the AFBC mode supported by MT8195's display overlays.
+> >
+> > Tested by booting ChromeOS and verifying the UI works, and by running
+> > the ChromeOS kms_addfb_basic binary, which has a test called
+> > "addfb25-bad-modifier" that attempts to create a framebuffer with the
+> > modifier DRM_FORMAT_MOD_INVALID and verifies the ADDFB2 ioctl returns
+> > EINVAL.
+> >
+> > Signed-off-by: Justin Green <greenjustin@chromium.org>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 7 +++++++
+> >  1 file changed, 7 insertions(+)
+> >
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/m=
+ediatek/mtk_drm_drv.c
+> > index cd5b18ef7951..2096e8a794ad 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> > @@ -51,6 +51,13 @@ mtk_drm_mode_fb_create(struct drm_device *dev,
+> >       if (info->num_planes !=3D 1)
+> >               return ERR_PTR(-EINVAL);
+> >
+> > +     if (cmd->modifier[0] &&
+> > +         cmd->modifier[0] !=3D DRM_FORMAT_MOD_ARM_AFBC(
+> > +                                     AFBC_FORMAT_MOD_BLOCK_SIZE_32x8 |
+> > +                                     AFBC_FORMAT_MOD_SPLIT |
+> > +                                     AFBC_FORMAT_MOD_SPARSE))
+> > +             return ERR_PTR(-EINVAL);
+>
+> If you set the modifiers/format properties correctly and use all the
+> helpers then the drm core should already validate that only formats you
+> can use are allowed.
+>
+> See c91acda3a380 ("drm/gem: Check for valid formats") and the related gem
+> fb helper functions to see how this is supposed to be done. These kind of
+> checks in driver code for gem drivers (which really is everyone at this
+> point) should not be needed at all.
+>
+> Cheers, Sima
+>
+> > +
+> >       return drm_gem_fb_create(dev, file, cmd);
+> >  }
+> >
+> > --
+> > 2.41.0.162.gfafddb0af9-goog
+> >
+>
+> --
+> Daniel Vetter
+> Software Engineer, Intel Corporation
+> http://blog.ffwll.ch
 
