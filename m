@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA2C9EB64DD
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 04:04:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B98EC04A6A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 04:57:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6l8m5h9M7Dr8k4NdntXRrjBS5Qyk+YtWNxzvxS8oYGM=; b=EbZa2o/I/QxIVwGxDWx3tD42t2
-	CTmwnRN0gi0h7bcFsVDcEXOzs6odwVgEh1PIROIlgESxgyjgqi8WUsFc+yu2aehemcaCuUESwX6TS
-	PHLPOLakv83jMCgtcMh5awxI6Rat+7nyqdnQs7IhHYP+6RbqpFVD63qGncT+qH8FOokhamplQTdzb
-	NSxfyIb4jM16bFMhVRvIdBk+OvpwtPEL1040xTU0Y25jIlEsmFOel/bAs3IKkcEw1c+8THgJRtpae
-	tX8CCswwCX02NQK2XrLUvytmR36mVxqn3b4O88doflnn9keXIE3CpxlSPAvqYHrYIcSfru66lnCZR
-	vQq7KOrg==;
+	bh=GGqErloYwrbXUxMLMFvmaAe2Hxyh/wgUo5745N2j3QY=; b=x2FUkFMDCIbTNKg7JpHPElzFah
+	GwYIW/U6WTboScseNkbO4mWdlGXk2URHToxaCBp7JyEud+/jaiycMMY5T5bydCIWhs3skyt6Urx7P
+	KdPygGxe/vyU4sYpe1iM/YRltGwORoI6bqKqtWhZIrCssp9HNZQ9Yc3sdolsTe1/gKOV6WAhOv/GS
+	Y89CODC0ekSsOZhS63XFiWDVlYCaKn77nZhH7PdCbdae969hCohqQ34QHT5cohzI2GLllEuTsFGeH
+	JH/PhPEf8ahiiY1ksyFu8kCujgIWeV4m6ig4uiYEpKlr1YKk1NQrZsQc0xHjzIaDw9vUZjScfYBMh
+	mHyveKyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRPZv-006ash-39;
-	Thu, 03 Aug 2023 04:04:47 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1qRQPH-006eSl-2B;
+	Thu, 03 Aug 2023 04:57:51 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRPZp-006apk-2u;
-	Thu, 03 Aug 2023 04:04:43 +0000
-Received: from kwepemi500008.china.huawei.com (unknown [172.30.72.57])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4RGZvq0m7nz1GDS1;
-	Thu,  3 Aug 2023 12:03:35 +0800 (CST)
-Received: from huawei.com (10.90.53.73) by kwepemi500008.china.huawei.com
- (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 3 Aug
- 2023 12:04:37 +0800
-From: Ruan Jinjie <ruanjinjie@huawei.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
-	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <robh@kernel.org>,
-	<tomeu.vizoso@collabora.com>, <steven.price@arm.com>,
-	<alyssa.rosenzweig@collabora.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-CC: <ruanjinjie@huawei.com>
-Subject: [PATCH -next v2 2/2] drm/mediatek: Do not check for 0 return after calling platform_get_irq()
-Date: Thu, 3 Aug 2023 12:04:00 +0800
-Message-ID: <20230803040401.3067484-3-ruanjinjie@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230803040401.3067484-1-ruanjinjie@huawei.com>
-References: <20230803040401.3067484-1-ruanjinjie@huawei.com>
+	id 1qRQPE-006eSM-33
+	for linux-mediatek@lists.infradead.org;
+	Thu, 03 Aug 2023 04:57:50 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2BFE761BB6;
+	Thu,  3 Aug 2023 04:57:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1FDE8C433C8;
+	Thu,  3 Aug 2023 04:57:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1691038667;
+	bh=yew0nIIdv5+4cZdHKECsN2/+DIEEPUIsBer6rmfZnuQ=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=sZfGRrT+SOUTRe8tt6a0byCjSYAkLQ+OIBSAyZzxMVkpnzuynGE8YsPTu+xOyZP3p
+	 hkrqR15pNZOVnRaV16erWiKaDOt3iftzNWAsvwre5cpPlHOV/32O3b34tn2Q0jAsMi
+	 3qnKBtOyc3rf6Ic9LW6SsmRxyZ/Qvj7qBXdAhgxwA3JQtLT+2xgdNpY4RqaJzamb9Y
+	 n3tWEy9MblzCaO1VK9Lh+ZHNgggafqeuPyZC6T9AsInpj5qaYybmFYqvQ/60+sa+XJ
+	 VTxNePln3pYzM2GfdrrYh2aoY/rvWSbVOYGQnllU0XZdMeU9lCYZZB0A7c15eIir9f
+	 21jGc3tjyvxSQ==
+From: Kalle Valo <kvalo@kernel.org>
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>,  <linux-wireless@vger.kernel.org>,
+  Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,  Shayne Chen
+ <shayne.chen@mediatek.com>,  Evelyn Tsai <evelyn.tsai@mediatek.com>,
+  <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] wifi: mt76: mt7915: enable BSS_CHANGED_MU_GROUPS support
+References: <ff63866d7d62d088edd4a9f7587320f8f59a361f.1690999957.git.ryder.lee@mediatek.com>
+Date: Thu, 03 Aug 2023 07:58:07 +0300
+In-Reply-To: <ff63866d7d62d088edd4a9f7587320f8f59a361f.1690999957.git.ryder.lee@mediatek.com>
+	(Ryder Lee's message of "Thu, 3 Aug 2023 02:49:44 +0800")
+Message-ID: <87bkfozpr4.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-Originating-IP: [10.90.53.73]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- kwepemi500008.china.huawei.com (7.221.188.139)
-X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230802_210442_108647_8C06F4F9 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20230802_215749_055170_8D88A5E4 
+X-CRM114-Status: GOOD (  16.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,30 +77,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It is not possible for platform_get_irq() to return 0. Use the
-return value from platform_get_irq().
+Ryder Lee <ryder.lee@mediatek.com> writes:
 
-Signed-off-by: Ruan Jinjie <ruanjinjie@huawei.com>
----
- drivers/gpu/drm/mediatek/mtk_dpi.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> The Group ID Management frame is an Action frame of category VHT.
+> It is transmitted by the AP to assign or change the user position
+> of a STA for one or more group IDs.
+>
+> Also, sniffer can use a given group id to monitor STA that belongs
+> to that group.
+>
+> Notify underlying driver of changes via BSS_CHANGED_MU_GROUPS.
+>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Change-Id: I3d2f5508a2b6eb7c929c3997c31a9285713c8bea
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 28bdb1f427ff..641a43ae4e6f 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -1073,8 +1073,8 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 	}
- 
- 	dpi->irq = platform_get_irq(pdev, 0);
--	if (dpi->irq <= 0)
--		return -EINVAL;
-+	if (dpi->irq < 0)
-+		return dpi->irq;
- 
- 	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0,
- 					  NULL, &dpi->next_bridge);
+No Change-Id, please.
+
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+> @@ -593,6 +593,34 @@ mt7915_update_bss_color(struct ieee80211_hw *hw,
+>  	}
+>  }
+>  
+> +static void
+> +mt7915_update_mu_group(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+> +		       struct ieee80211_bss_conf *info)
+> +{
+> +	struct mt7915_phy *phy = mt7915_hw_phy(hw);
+> +	struct mt7915_dev *dev = mt7915_hw_dev(hw);
+> +	u8 i, band = phy->mt76->band_idx;
+> +	u32 *mu;
+> +
+> +	mu = (u32 *)info->mu_group.membership;
+
+Is this safe on big endian?
+
+> +	for (i = 0; i < WLAN_MEMBERSHIP_LEN / sizeof(*mu); i++) {
+> +		if (is_mt7916(&dev->mt76))
+> +			mt76_wr(dev, MT_WF_PHY_RX_GID_TAB_VLD_MT7916(band, i),
+> +				mu[i]);
+> +		else
+> +			mt76_wr(dev, MT_WF_PHY_RX_GID_TAB_VLD(band, i), mu[i]);
+> +	}
+> +
+> +	mu = (u32 *)info->mu_group.position;
+
+And this?
+
 -- 
-2.34.1
+https://patchwork.kernel.org/project/linux-wireless/list/
 
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
