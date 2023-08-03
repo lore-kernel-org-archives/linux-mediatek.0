@@ -4,73 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B913C001DF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 13:27:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91247C04A94
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 14:08:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TD90mx/J4VQmWoAC4jGr8MeSBckXZnIRdDpMY+yO3zg=; b=X4HGaMhkkZDKdaZrm0H8xOd6ar
-	xRqELkHDyX9lMN+1QjMCDS4YaPcELlvNtK3MPi8oEoG/LLgDWvQStEuTBZ0aBGh3bthUMhbUBRWdF
-	orAZK/vxgE7Ykg0Ugy3VQsd+NdwZpoOpthWbbcyNHjjGMCxJd3TNwRQ7hsRWIs9YKIvtHOh1bVrFD
-	8ENKi09u05PVP4rCp0cmWKFbd9r3i7x7FMh1dtrVj9jMhRfQFAAGY2TtObIa4PTaWcII95/WaRA01
-	4eJcOPrM/z48mE3vDs5tYJMDq7HeEEz6rBZWJGaNejey379aJHJKl4VDKg7d0YwWSO7Rd9tJOahTt
-	8F9ZPQCQ==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2DMSVEDoohba3p1SZ/8XkuymG1+kSZMwJHyDIWo0HdY=; b=BWKFFgxNaX0ECP+1Wly5F9Otkl
+	HQdeh2VBR9nZXHZFynz4n92DzFHXcQFpfyrDJrlvFKMv58t5H64IZ18qZKvJzbkydWg7vImYuKToB
+	orKHDZsJTSvxjkX4rIpq+1dvidEaU5Dg9RL9ruQtqQlGvZbafJ52TKwrowl7ker2O1bxgz73TRMBs
+	CGYM1Wf183iWBSvMCTzWhxElxM2WmEc40lsgiN90Gnsm07zxlFzyX5hYTNf7tbzCUXmYL5vlXP0XE
+	EmmyfdhLL7EQZuUV4YqoYyBtLcuQvPrIbNIyIoC1PGSaIxbSPiNrnQS79q+nqnV8ml11qgurW9ZU6
+	uTAnuhow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRYMQ-008z3l-0j;
-	Thu, 03 Aug 2023 13:27:26 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qRZ0C-009RoQ-0C;
+	Thu, 03 Aug 2023 14:08:32 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRYML-008yyw-2V;
-	Thu, 03 Aug 2023 13:27:23 +0000
-Received: from [192.168.0.125] (unknown [82.76.24.202])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6F24966015A0;
-	Thu,  3 Aug 2023 14:27:19 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1691069240;
-	bh=GKxVpL2htb4W/V44J3R/Ch3TGxu315qMlN6i5BaRp1I=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Oo7mc+GB6YB9oHQ4koa2nFWMb8g7v4RNgRYnrJHXmeh30XNsgyn8zplPvdMUNDlFO
-	 BdmZbGx13CeVWR+/isBu7FirOF9+o5xQ4uWaz4789oqKXDk4F5PujVr3zb3idQbDD8
-	 eJ/l8O50Hbnolo2AOvdECXDijID+AdjplSkKF+I3BOagFtr1pu3SkH4sia0BCikRBi
-	 W/dn8xJk4OMFa/U6h8+tq+iqGv/KbbodwNPsUOcJrYcysqnKchFj0Vh7Aeuw50hEJr
-	 +lzzCdiTECDbV2dumyS0ec2Y2lKvt3kHZ47gfP/7bPn6EamnwGNec0ZYR033sBNKa/
-	 o2VDfs0neynLw==
-Message-ID: <a0b5ab0a-4c2e-d14c-508c-09a981d7087b@collabora.com>
-Date: Thu, 3 Aug 2023 16:27:16 +0300
+	id 1qRZ04-009Rgy-0k
+	for linux-mediatek@lists.infradead.org;
+	Thu, 03 Aug 2023 14:08:27 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qRYyZ-0006mV-Nr; Thu, 03 Aug 2023 16:06:51 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qRYyN-000rBF-In; Thu, 03 Aug 2023 16:06:39 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qRYyM-00A9kB-Jk; Thu, 03 Aug 2023 16:06:38 +0200
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Andy Shevchenko <andy@kernel.org>,
+	Douglas Anderson <dianders@chromium.org>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Pavel Machek <pavel@ucw.cz>,
+	Lee Jones <lee@kernel.org>,
+	Hector Martin <marcan@marcan.st>,
+	Sven Peter <sven@svenpeter.dev>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Alexander Shiyan <shc_work@mail.ru>,
+	Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?utf-8?q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Michael Walle <michael@walle.cc>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Samuel Holland <samuel@sholland.org>,
+	Hammer Hsieh <hammerh0314@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+	Sean Anderson <sean.anderson@seco.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Johan Hovold <johan@kernel.org>,
+	Alex Elder <elder@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-pwm@vger.kernel.org,
+	linux-gpio@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-leds@vger.kernel.org,
+	asahi@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	chrome-platform@lists.linux.dev,
+	linux-mips@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev
+Subject: [PATCH 0/2] pwm: Manage owner assignment implicitly for drivers
+Date: Thu,  3 Aug 2023 16:06:30 +0200
+Message-Id: <20230803140633.138165-1-u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v8 4/8] drm/mediatek: Add encoder_index function to
- mtk_ddp_comp_funcs
-Content-Language: en-US
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Jason-ch Chen <jason-ch.chen@mediatek.com>,
- Johnson Wang <johnson.wang@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
- Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230802144802.751-1-jason-jh.lin@mediatek.com>
- <20230802144802.751-5-jason-jh.lin@mediatek.com>
-From: Eugen Hristev <eugen.hristev@collabora.com>
-In-Reply-To: <20230802144802.751-5-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4136; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=fUIfC654WxtfT7CEJ8mGT4DHYTt22edc6EeQOO0mgBU=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBky7RhOm8jkQTlEYB5GsZS8El0/H9apHFEdsZFO x8y+5Ja40OJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZMu0YQAKCRCPgPtYfRL+ TsJcB/90L6hN+ip+TjX3AzflYEmXfAvsD7DvqLlndSD4q7tLpczaexF3R7J6u81XciSqOUe2jgL ZFH92dwUdpov0xdqiWraRK+aZJ+b0W4jpGsrqqlhoMdolr0pAB7fIFytPguywOKD62dbKy1CvL1 Dhl29UAwsXqsIV7jcTR/3lRLsFUwN9/STI8/IVeD4JJHoLv16c1Q61uVC/I22L/ivskcK9F/YQX 7it5vFhz9lfLpr79GuNQ3+d+atoBJRDfjCnDak/HWaR9JRk7b7F8pb+oq6ih+R2INrvw1jlBxDW 1b3cg6OWSLaXTh/Y3/NSkgaZz/kG8/JbVRjAFD6tfDS0KfZO
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230803_062721_957780_7C654FE6 
-X-CRM114-Status: GOOD (  20.59  )
+X-CRM114-CacheID: sfid-20230803_070824_427971_44697F89 
+X-CRM114-Status: GOOD (  14.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,62 +154,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/2/23 17:47, Jason-JH.Lin wrote:
-> 1. Add encoder_index function to mtk_ddp_comp_funcs to support dynamic
-> connector selection for some ddp_comp who has encoder_index.
-> 2. Add mtk_ddp_comp_encoder_index_set function to set encoder_index to
-> each comp.
-> 
+Hello,
 
-Usually a commit that does two things in a list is supposed to be two 
-actual commits.
+while working on the pwm core I noticed that pwm-crc doesn't assign
+.owner in its pwm_ops structure. This isn't a problem in practise though
+as this driver can only be compiled built-in (up to now).
+
+Still prevent future pwm drivers not assigning .owner by wrapping
+pwmchip_add() in a macro that automates owner handling simplifying each
+driver a (tiny) bit.
+
+I also found that there is no hard reason to only compile pwm-crc as a
+built-in on x86, so this limitation is lifted in the second patch.
+
+Best regards
+Uwe
+
+Uwe Kleine-König (2):
+  pwm: Manage owner assignment implicitly for drivers
+  pwm: crc: Allow compilation as module and with COMPILE_TEST
+
+ drivers/gpio/gpio-mvebu.c             |  1 -
+ drivers/gpu/drm/bridge/ti-sn65dsi86.c |  1 -
+ drivers/leds/rgb/leds-qcom-lpg.c      |  1 -
+ drivers/pwm/Kconfig                   |  4 ++--
+ drivers/pwm/core.c                    | 20 +++++++++++---------
+ drivers/pwm/pwm-ab8500.c              |  1 -
+ drivers/pwm/pwm-apple.c               |  1 -
+ drivers/pwm/pwm-atmel-hlcdc.c         |  1 -
+ drivers/pwm/pwm-atmel-tcb.c           |  1 -
+ drivers/pwm/pwm-atmel.c               |  1 -
+ drivers/pwm/pwm-bcm-iproc.c           |  1 -
+ drivers/pwm/pwm-bcm-kona.c            |  1 -
+ drivers/pwm/pwm-bcm2835.c             |  1 -
+ drivers/pwm/pwm-berlin.c              |  1 -
+ drivers/pwm/pwm-brcmstb.c             |  1 -
+ drivers/pwm/pwm-clk.c                 |  1 -
+ drivers/pwm/pwm-clps711x.c            |  1 -
+ drivers/pwm/pwm-crc.c                 |  5 ++++-
+ drivers/pwm/pwm-cros-ec.c             |  1 -
+ drivers/pwm/pwm-dwc.c                 |  1 -
+ drivers/pwm/pwm-ep93xx.c              |  1 -
+ drivers/pwm/pwm-fsl-ftm.c             |  1 -
+ drivers/pwm/pwm-hibvt.c               |  1 -
+ drivers/pwm/pwm-img.c                 |  1 -
+ drivers/pwm/pwm-imx-tpm.c             |  1 -
+ drivers/pwm/pwm-imx1.c                |  1 -
+ drivers/pwm/pwm-imx27.c               |  1 -
+ drivers/pwm/pwm-intel-lgm.c           |  1 -
+ drivers/pwm/pwm-iqs620a.c             |  1 -
+ drivers/pwm/pwm-jz4740.c              |  1 -
+ drivers/pwm/pwm-keembay.c             |  1 -
+ drivers/pwm/pwm-lp3943.c              |  1 -
+ drivers/pwm/pwm-lpc18xx-sct.c         |  1 -
+ drivers/pwm/pwm-lpc32xx.c             |  1 -
+ drivers/pwm/pwm-lpss.c                |  1 -
+ drivers/pwm/pwm-mediatek.c            |  1 -
+ drivers/pwm/pwm-meson.c               |  1 -
+ drivers/pwm/pwm-microchip-core.c      |  1 -
+ drivers/pwm/pwm-mtk-disp.c            |  1 -
+ drivers/pwm/pwm-mxs.c                 |  1 -
+ drivers/pwm/pwm-ntxec.c               |  1 -
+ drivers/pwm/pwm-omap-dmtimer.c        |  1 -
+ drivers/pwm/pwm-pca9685.c             |  1 -
+ drivers/pwm/pwm-pxa.c                 |  1 -
+ drivers/pwm/pwm-raspberrypi-poe.c     |  1 -
+ drivers/pwm/pwm-rcar.c                |  1 -
+ drivers/pwm/pwm-renesas-tpu.c         |  1 -
+ drivers/pwm/pwm-rockchip.c            |  1 -
+ drivers/pwm/pwm-rz-mtu3.c             |  1 -
+ drivers/pwm/pwm-samsung.c             |  1 -
+ drivers/pwm/pwm-sifive.c              |  1 -
+ drivers/pwm/pwm-sl28cpld.c            |  1 -
+ drivers/pwm/pwm-spear.c               |  1 -
+ drivers/pwm/pwm-sprd.c                |  1 -
+ drivers/pwm/pwm-sti.c                 |  1 -
+ drivers/pwm/pwm-stm32-lp.c            |  1 -
+ drivers/pwm/pwm-stm32.c               |  1 -
+ drivers/pwm/pwm-stmpe.c               |  1 -
+ drivers/pwm/pwm-sun4i.c               |  1 -
+ drivers/pwm/pwm-sunplus.c             |  1 -
+ drivers/pwm/pwm-tegra.c               |  1 -
+ drivers/pwm/pwm-tiecap.c              |  1 -
+ drivers/pwm/pwm-tiehrpwm.c            |  1 -
+ drivers/pwm/pwm-twl-led.c             |  2 --
+ drivers/pwm/pwm-twl.c                 |  2 --
+ drivers/pwm/pwm-visconti.c            |  1 -
+ drivers/pwm/pwm-vt8500.c              |  1 -
+ drivers/pwm/pwm-xilinx.c              |  1 -
+ drivers/staging/greybus/pwm.c         |  1 -
+ include/linux/pwm.h                   |  8 +++++---
+ 70 files changed, 22 insertions(+), 83 deletions(-)
 
 
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
->   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 8 ++++++++
->   1 file changed, 8 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> index febcaeef16a1..8428baca70f4 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> @@ -80,6 +80,7 @@ struct mtk_ddp_comp_funcs {
->   	void (*disconnect)(struct device *dev, struct device *mmsys_dev, unsigned int next);
->   	void (*add)(struct device *dev, struct mtk_mutex *mutex);
->   	void (*remove)(struct device *dev, struct mtk_mutex *mutex);
-> +	unsigned int (*encoder_index)(struct device *dev);
->   };
->   
->   struct mtk_ddp_comp {
-> @@ -87,6 +88,7 @@ struct mtk_ddp_comp {
->   	int irq;
->   	unsigned int id;
->   	const struct mtk_ddp_comp_funcs *funcs;
-> +	unsigned int encoder_index;
-
-For better alignment I would suggest variables to be declared together 
-and pointers afterwards, not mixed up
-
->   };
->   
->   static inline int mtk_ddp_comp_clk_enable(struct mtk_ddp_comp *comp)
-> @@ -275,6 +277,12 @@ static inline bool mtk_ddp_comp_disconnect(struct mtk_ddp_comp *comp, struct dev
->   	return false;
->   }
->   
-> +static inline void mtk_ddp_comp_encoder_index_set(struct mtk_ddp_comp *comp)
-> +{
-> +	if (comp->funcs && comp->funcs->encoder_index)
-> +		comp->encoder_index = comp->funcs->encoder_index(comp->dev);
-> +}
-
-it's also a bit strange that you added a function that is not used 
-anywhere. Don't you get like a compiler warning for it ?
-
-> +
->   int mtk_ddp_comp_get_id(struct device_node *node,
->   			enum mtk_ddp_comp_type comp_type);
->   unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
+base-commit: 3ccb179aa40d931eb00ef8910d7b812a95659563
+-- 
+2.39.2
 
 
