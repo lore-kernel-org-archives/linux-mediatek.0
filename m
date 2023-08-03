@@ -4,82 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1200FC04A6A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 14:57:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E763EC001DB
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 16:07:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BtoiTWg/wie+YUV9nDTimeU0umr3skhvQtwNFa8H0qo=; b=cJ8uWBh5/VI1Trl0aDKZX88o4Y
-	pOFM0Dodey6Os2lpuB37KknmvUfXvLsjyuRII9ymTkFDQfF+bvaNWS+k9Oyhf3pWKiOkuDFoW2jbS
-	qmyi6kZuBFAb5hGOEcwlLka0LAHCHwc/cOc+0zAQWpVW4yDrfiwWFH7fLDhIH1XGIQL+wupKdoCNt
-	aNGGIytq+w3avE4CdoS+BdkHNzeJfnOQb0Ckgc0e3z9CxBacGUZ35QY5YqxyQhwxGw/47HFOvXUNO
-	o+cDPvp8ykF7OPoDlCgVoXHKYN6v6KCFmm9gVHHCo0OYB1YKVxn9nW8Ri2NzP1lt7GZ/h2vmAkRMU
-	oBRrLfhA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PTkqFR6q726nRHd5A7Fd2fcxQ/BUl+q5XHs1dnDMVXc=; b=20LdsBPG58mMZ/Pf7c44L44vfI
+	0mCkv4/iGiN8Zh1h73kg3D9zSiJ2awgaDfSnX+cBN8WtOpuc2I43cEK++kwpDMre8xmA6F+5tUF1W
+	/M13+005QoVp8U+ltrrrV8RRQFVR8DwkGiKgPkR+RSKcKJOh+eEwdRY1AfuL7hOkyfPJ6V5b2Z3Uo
+	KcMDZ4s056gIdhJSNrvUbHVNN66Gf+87jLy528zgHly+1WOWFwnv/ZHLQrph3Yn9GJAgt56Nt6t88
+	oqApYDxMdQVfjph88cvEoECy5Vi+1CINy9GcsvJD+5ZB+vFVLoNqpTQ1WuFpKUe6ZrwT3Y5gdg4pH
+	Ez532Y9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRZle-009vsC-2E;
-	Thu, 03 Aug 2023 14:57:34 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1qRar4-00AHTJ-1W;
+	Thu, 03 Aug 2023 16:07:14 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRZlc-009vp5-0T
-	for linux-mediatek@lists.infradead.org;
-	Thu, 03 Aug 2023 14:57:33 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-4fe0a3377bfso448421e87.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 03 Aug 2023 07:57:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google; t=1691074650; x=1691679450;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=BtoiTWg/wie+YUV9nDTimeU0umr3skhvQtwNFa8H0qo=;
-        b=HFhFpOsy+MD1XmsUcSrWzHh5kJ5zayPAvPM2bAleZEZJZHYQNOIN1yn7A5Ky2AzASs
-         M/TgpoL76zoqvgtaT58Sf+7wrFdXCP/ANiaS+mm/zJG6N+T3B0HHpOBq1N96TKTqXLXt
-         UuWVXT/0s53DOIegOx4+YP/VGCXMN5rs+Ghi8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691074650; x=1691679450;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BtoiTWg/wie+YUV9nDTimeU0umr3skhvQtwNFa8H0qo=;
-        b=emJAYnH/Wg9QqEsSwGGJzJKYpD0+MeEezcwWpwoANpF2NLOYa+CXSlrl3U0vnCEYMF
-         qTdLcjNP5n+uG23Z1PAm/dxJv9YMtgbKs/gnBENeo8JhN27JaqXwYIsyPRNEqDCTx9rF
-         SL8RqOSfjAj3DAsg+HvSuTNRQji8rxZPBDr8ou3agYN5q0F99l2HGeSHI9m95VGk6Gm3
-         HxvnrkyOKSCZm3nTdQ4ZPyhhe6R+oDf9zZJBHvzQIuoPREg0YkpYX/Z2NfKgb9EDYhSf
-         6kzuNTxBIdrQ+jKat3axywYhaQYrrDbxD41bYCnyiFBjfez8Km15h6QKt/ySefoSlG8B
-         I66g==
-X-Gm-Message-State: ABy/qLaC3HAgOtGA88h1XWytSqcYD5r0Q5cMn1wzqtHdjQGPQs0E0Ka3
-	wQc2WXmfY7gmCmzGSXW6kxgJpw==
-X-Google-Smtp-Source: APBJJlEpF0DWzUN+W6T0dNmRzfn5TpxtjrNfgi2K+oa/HBRt3yDg0KvZd/++TnbwzIPjVUChsKzmNQ==
-X-Received: by 2002:ac2:44d2:0:b0:4fd:cbd8:17d5 with SMTP id d18-20020ac244d2000000b004fdcbd817d5mr8690927lfm.4.1691074650248;
-        Thu, 03 Aug 2023 07:57:30 -0700 (PDT)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
-        by smtp.gmail.com with ESMTPSA id y10-20020a17090668ca00b0099bd1ce18fesm10740953ejr.10.2023.08.03.07.57.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Aug 2023 07:57:29 -0700 (PDT)
-Date: Thu, 3 Aug 2023 16:57:27 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Justin Green <greenjustin@chromium.org>
-Cc: Daniel Vetter <daniel@ffwll.ch>, linux-mediatek@lists.infradead.org,
-	dri-devel@lists.freedesktop.org, chunkuang.hu@kernel.org,
-	jason-jh.lin@mediatek.com, justin.yeh@mediatek.com,
-	wenst@chromium.org, angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH RESEND] drm/mediatek: Add valid modifier check
-Message-ID: <ZMvAV42bm7ZTKXfv@phenom.ffwll.local>
-References: <20230724175839.675911-1-greenjustin@chromium.org>
- <ZMtkIHkfhbOCodhw@phenom.ffwll.local>
- <CAHC42Rfz6jjY9RfVsrrPuENgXiaCB7EecH=-Dnfzm0KynGFNjA@mail.gmail.com>
+	id 1qRar0-00AHQG-0U;
+	Thu, 03 Aug 2023 16:07:11 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3CCE861DF3;
+	Thu,  3 Aug 2023 16:07:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9FD9DC433C9;
+	Thu,  3 Aug 2023 16:06:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1691078820;
+	bh=WFkWYTKMLYwXJPpiFwn6+nzj0asvIDnafBfv+uPqLzE=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=TbvhIzx8+/0bmePAnHF0GvFZvkFX+FRP23Raa41AAn/yCkE4TKXLDO6eH/276hAw4
+	 q78+4Ed3RMhrsQnhqKYfKWlB6Kv3hzw5zl3VjZecchWrcdz23VSvV+VA+5WiLaY4iE
+	 6YquXb7FRZMrg6r6uFVu52EanFnWxlFp1QUM97P1s6dSs4DDs+MGbDm+hbX7Va1wLo
+	 IvSdDMVY27kkfqkUstUeyIFYHzRJJj/olO3VbbueAtgCp1IXIOSkKy9y4q/ayzLyix
+	 9ndgi6B3ryHAopGe3aiBuJXS0ydfgjBxkJ/Vu3bkcs6nmb/iRyHZ62Wz9a4+xkNUol
+	 Rz2sbDgka5+xg==
+From: Mark Brown <broonie@kernel.org>
+To: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Takashi Iwai <tiwai@suse.com>, 
+ Thomas Gleixner <tglx@linutronix.de>
+In-Reply-To: <20230803083908.9DxbPvOK@linutronix.de>
+References: <20230803083908.9DxbPvOK@linutronix.de>
+Subject: Re: [PATCH] ASoC: mediatek: mt8186: Remove unused mutex.
+Message-Id: <169107881835.86804.11585848310133291937.b4-ty@kernel.org>
+Date: Thu, 03 Aug 2023 17:06:58 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAHC42Rfz6jjY9RfVsrrPuENgXiaCB7EecH=-Dnfzm0KynGFNjA@mail.gmail.com>
-X-Operating-System: Linux phenom 6.3.0-2-amd64 
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-034f2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230803_075732_190766_5801AC53 
-X-CRM114-Status: GOOD (  36.21  )
+X-CRM114-CacheID: sfid-20230803_090710_249541_8881BAFE 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,84 +78,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 03, 2023 at 08:48:56AM -0400, Justin Green wrote:
-> > See c91acda3a380 ("drm/gem: Check for valid formats") and the related gem
-> fb helper functions to see how this is supposed to be done.
+On Thu, 03 Aug 2023 10:39:08 +0200, Sebastian Andrzej Siewior wrote:
+> The mutex mutex_request_dram has no user.
 > 
-> Oh that's interesting, so does this imply that the infrastructure
-> automatically calls format_mod_supported() during framebuffer
-> creation? In that case, this entire patch might be unnecessary in the
-> tip of tree kernel.
-
-It /should/, but maybe a wheel fell off somewhere. So please double-check
-that it doesn indeed work.
-
-Also because we had to put the check into gem helpers, if your driver
-doesn't use those but hand-rolls a bit of that code (the helpers predate a
-bunch of drivers, not sure all got converted), then you might also have a
-validation gap here.
-
-Cheers, Sima
-
+> Remove mutex_request_dram.
 > 
-> On Thu, Aug 3, 2023 at 4:24 AM Daniel Vetter <daniel@ffwll.ch> wrote:
-> >
-> > On Mon, Jul 24, 2023 at 01:58:39PM -0400, Justin Green wrote:
-> > > Add a check to mtk_drm_mode_fb_create() that rejects any modifier that
-> > > is not the AFBC mode supported by MT8195's display overlays.
-> > >
-> > > Tested by booting ChromeOS and verifying the UI works, and by running
-> > > the ChromeOS kms_addfb_basic binary, which has a test called
-> > > "addfb25-bad-modifier" that attempts to create a framebuffer with the
-> > > modifier DRM_FORMAT_MOD_INVALID and verifies the ADDFB2 ioctl returns
-> > > EINVAL.
-> > >
-> > > Signed-off-by: Justin Green <greenjustin@chromium.org>
-> > > ---
-> > >  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 7 +++++++
-> > >  1 file changed, 7 insertions(+)
-> > >
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > > index cd5b18ef7951..2096e8a794ad 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > > @@ -51,6 +51,13 @@ mtk_drm_mode_fb_create(struct drm_device *dev,
-> > >       if (info->num_planes != 1)
-> > >               return ERR_PTR(-EINVAL);
-> > >
-> > > +     if (cmd->modifier[0] &&
-> > > +         cmd->modifier[0] != DRM_FORMAT_MOD_ARM_AFBC(
-> > > +                                     AFBC_FORMAT_MOD_BLOCK_SIZE_32x8 |
-> > > +                                     AFBC_FORMAT_MOD_SPLIT |
-> > > +                                     AFBC_FORMAT_MOD_SPARSE))
-> > > +             return ERR_PTR(-EINVAL);
-> >
-> > If you set the modifiers/format properties correctly and use all the
-> > helpers then the drm core should already validate that only formats you
-> > can use are allowed.
-> >
-> > See c91acda3a380 ("drm/gem: Check for valid formats") and the related gem
-> > fb helper functions to see how this is supposed to be done. These kind of
-> > checks in driver code for gem drivers (which really is everyone at this
-> > point) should not be needed at all.
-> >
-> > Cheers, Sima
-> >
-> > > +
-> > >       return drm_gem_fb_create(dev, file, cmd);
-> > >  }
-> > >
-> > > --
-> > > 2.41.0.162.gfafddb0af9-goog
-> > >
-> >
-> > --
-> > Daniel Vetter
-> > Software Engineer, Intel Corporation
-> > http://blog.ffwll.ch
+> 
 
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: mediatek: mt8186: Remove unused mutex.
+      commit: 248c74bf42c16262f95f26523683334686a26263
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
