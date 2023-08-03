@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1643FC001DF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 01:24:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77748C001DF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 03:17:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xuqjIfY0PBIfx15jhTLaY6Pt60tgGESsk+GQewUinlE=; b=RRPB9H0CzbfsWVeLQv0m9OqZHp
-	5XOr76u9UQCnQWPMTGCDyvxRZOwZ+OpchPhzK8j3pui011UgN57izofcQpPu8nnjRipBgtOWR3Y7g
-	M7FnwFNZn2CCmad6xZPRxgr7S+abclSen8h9XmOVRMuZXEXuC4KL8QI60o1+rdzYck0zG52dmmSvS
-	cUhC998wCtSaCGDP65Oou6PAjOYuKJ40gs55W/xW5BqIleOmrzXwq6FoQw18SOGP9Ctrt24WP3zE9
-	aiFWDZiuXbre2+7SR2ZBp4hNGNol6lk+Lq/LJ1/jKtnGA1ftGktEA7lS6GEZvd1l/P0hr/UxZqBv3
-	xMgwK/qg==;
+	bh=OKNwR7WAGADBlGZeVud7oq8ArZS/SIZux7L4yafgQvk=; b=SAK5HL2Y0KkjQJ34n+ZJB1sEQL
+	qiMOPLnMIvSfWiX53tMT5qTqJFqcY0oeLnRm7U1PO5cLNIby+wV3esG+QjrCAXqSpx0iJq9/YmefV
+	y+EeCvI3CAcjBc+BQQGTXjxvjnTqMsd2vAQ0EH1EDWILEr4MCCpJCpmeA71xBg7iF1bR9KhehcNga
+	Z5yGsxUTCmhFaaGq6WZyFtXp97qL8nkQporuPQRYF1o3+STsARJ9taWR7nxv3Nfk6wRAm/+RGVQoo
+	PNoslOA4Cx2XnScYZZl04Q5S95EnIh8Q4CoGX/X38MaQK89aD3YG0sxQdilYUzj3bWX+T8KyAWeJV
+	1LH+wqVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRN4d-006MDs-0r;
-	Thu, 03 Aug 2023 01:24:19 +0000
+	id 1qROpm-006X8C-2d;
+	Thu, 03 Aug 2023 03:17:06 +0000
 Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRN4Z-006MCl-0s;
-	Thu, 03 Aug 2023 01:24:17 +0000
-Received: from dggpemm500016.china.huawei.com (unknown [172.30.72.54])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RGWLf6ctvzrS7V;
-	Thu,  3 Aug 2023 09:23:06 +0800 (CST)
-Received: from huawei.com (10.90.53.73) by dggpemm500016.china.huawei.com
- (7.185.36.25) with Microsoft SMTP Server (version=TLS1_2,
+	id 1qROpi-006X71-1w;
+	Thu, 03 Aug 2023 03:17:04 +0000
+Received: from kwepemi500008.china.huawei.com (unknown [172.30.72.57])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RGYrp4h6gzrS65;
+	Thu,  3 Aug 2023 11:15:54 +0800 (CST)
+Received: from huawei.com (10.90.53.73) by kwepemi500008.china.huawei.com
+ (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 3 Aug
- 2023 09:24:10 +0800
-From: Chen Jiahao <chenjiahao16@huawei.com>
-To: <rafael@kernel.org>, <daniel.lezcano@linaro.org>, <amitk@kernel.org>,
-	<rui.zhang@intel.com>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <aouledameur@baylibre.com>,
-	<void0red@hust.edu.cn>, <robh@kernel.org>, <daniel@makrotopia.org>,
-	<linux-pm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-CC: <chenjiahao16@huawei.com>
-Subject: [PATCH -next] thermal/drivers/mediatek: Remove repeating warn msg after devm_thermal_add_hwmon_sysfs()
-Date: Thu, 3 Aug 2023 09:23:41 +0800
-Message-ID: <20230803012341.2388831-1-chenjiahao16@huawei.com>
+ 2023 11:16:57 +0800
+From: Ruan Jinjie <ruanjinjie@huawei.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <robh@kernel.org>,
+	<tomeu.vizoso@collabora.com>, <steven.price@arm.com>,
+	<alyssa.rosenzweig@collabora.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
+CC: <ruanjinjie@huawei.com>
+Subject: [PATCH -next 0/2] drm: Do not check for 0 return after calling platform_get_irq()
+Date: Thu, 3 Aug 2023 11:16:20 +0800
+Message-ID: <20230803031622.3023868-1-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.90.53.73]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggpemm500016.china.huawei.com (7.185.36.25)
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230802_182415_482594_03B33D1B 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20230802_201702_794561_F42F0260 
+X-CRM114-Status: UNSURE (   8.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,36 +70,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Referring to commit 8416ecfb32923 ("thermal/hwmon: Add error
-information printing for devm_thermal_add_hwmon_sysfs()"),
-return value has already been checked if ret != 0 in
-devm_thermal_add_hwmon_sysfs(). Error handling has also been
-performed in this case, including print warning message for
-debugging.
+Since commit a85a6c86c25be ("driver core: platform: Clarify that
+IRQ 0 is invalid)", there is no possible both for platform_get_irq() 
+and platform_get_irq_byname() to return 0,
 
-Removing dev_warn() following devm_thermal_add_hwmon_sysfs()
-to clean up redundant warning message.
+And the return value of platform_get_irq() or platform_get_irq_byname() 
+is more sensible to show the error reason.
 
-Signed-off-by: Chen Jiahao <chenjiahao16@huawei.com>
----
- drivers/thermal/mediatek/auxadc_thermal.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Ruan Jinjie (2):
+  drm/panfrost: Do not check for 0 return after calling
+    platform_get_irq_byname()
+  drm/mediatek: Do not check for 0 return after calling
+    platform_get_irq()
 
-diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
-index c537aed71017..7f8450c66646 100644
---- a/drivers/thermal/mediatek/auxadc_thermal.c
-+++ b/drivers/thermal/mediatek/auxadc_thermal.c
-@@ -1289,9 +1289,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 	if (IS_ERR(tzdev))
- 		return PTR_ERR(tzdev);
- 
--	ret = devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
--	if (ret)
--		dev_warn(&pdev->dev, "error in thermal_add_hwmon_sysfs");
-+	devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
- 
- 	return 0;
- }
+ drivers/gpu/drm/mediatek/mtk_dpi.c      | 4 ++--
+ drivers/gpu/drm/panfrost/panfrost_gpu.c | 4 ++--
+ drivers/gpu/drm/panfrost/panfrost_job.c | 4 ++--
+ drivers/gpu/drm/panfrost/panfrost_mmu.c | 4 ++--
+ 4 files changed, 8 insertions(+), 8 deletions(-)
+
 -- 
 2.34.1
 
