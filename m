@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70C67C04A6A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 11:03:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D52FCC00528
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 11:03:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kMdA727ML9GfYlwdB+N4dG3v8MdPr2da4KnC11PmGzE=; b=k7ViD+PxoOR7+VDdb/OU8kKfoP
-	L2YiGygs9sYqrCU54zue13KHKGlbNlSs/C5IvUnkvTn3pXrkSR5vz7f5LbWfA8wDqTBktBgsUG1od
-	S427vdhTdlcvbhHNHwY1Jn80gqZc0C1e58/h4uaIBoqIcOo38qiF0hS1nYvRpbmYBLbo0ty6pTZuE
-	tEAYkw6MhxR/SyAnMHdjh9bZsePhCocGbaNO8xat6JgKT9dY79exBJRI5GlBm5ovI6mhnteXf8sRR
-	8m9mfzbpEZFuFpTC+u2jQoDmUYb1RHHm2FgSjDIRA06y03dhG/zqGNkiTM1SnnHbbnVuPqOkTijUM
-	OWCdcklA==;
+	bh=hss0ZsZOOp0t4erVi4tRlLXI42grDAuGEr2g9tbK9+k=; b=ztlfElQJXzmBQa1UbUG/s/3Sv3
+	OqupruPRj83SMy63NIMQZm70P2KOuBYFJt5Z2ypR8QbjU6V2LmLxKKty+B/CzEyzU9zZYCB/WfFaK
+	8WZ6jeKfRpedyiqx2Jz40cql9pxwkor2867iC/qTlfejcfHIuqY66whP+nhKunruuU8HMoZRuwZ5z
+	4cM8jtp87FweqBAPEgxbQSndhgOQWLJ9JFdII48UvZ5MQ/qO/DcZz674R544fMPyHmsKkrBrjH35Z
+	taOsOHnfMuxQac+IToR7Ca1qztgBnbgh9fp6e7aaUQlH4t/vd+SdUIAPNraKcCdZsQX/9ruQDQfZP
+	xHE24z2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRW7F-007cp3-2t;
-	Thu, 03 Aug 2023 11:03:38 +0000
+	id 1qRW7M-007cvw-1O;
+	Thu, 03 Aug 2023 11:03:44 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRW6D-007bos-04;
-	Thu, 03 Aug 2023 11:02:38 +0000
+	id 1qRW6D-007bp6-0X;
+	Thu, 03 Aug 2023 11:02:39 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id ACC3966071A9;
-	Thu,  3 Aug 2023 12:02:28 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7403F66071A6;
+	Thu,  3 Aug 2023 12:02:30 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1691060549;
-	bh=G9jUBbuND2wlk1NRIFaK24JaPI1K8tQwQG9IqubvDH8=;
+	s=mail; t=1691060551;
+	bh=n8HvV63ZZGMSvMV6QA95OQQ7cx7V5oON5E66oBaNqmA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=d0+Ftu88Cle2UkG96ilsTMn3206yazQ+Zze/3bL+tu2NQY2HNUsR1fN6VXUKAien3
-	 GPGsUDgh0UtvOAULHZtxE83y5iLZMWn9uAFzIhA9g0TInmjQm+XKR0MyOva0h7274o
-	 wJJwkMDMNSJh3jiXOJWw3bAkiqmszPt0vZqF/DDK3pYRUweMPgn+Md8RFydu2CplwJ
-	 6HKPyX4a4wN3u08M0OI0w6TAQAN2Iwj9ju24RefjXNQA3AGLX7E8dMyKs9e4xp+o5t
-	 rv3OFD0coc3DetFGDz7TqGdJxqhtpjiOUjvxnwnbS3IW1PDbNcdYyl+V3sEOMiLanO
-	 wfWQKzS0G7gbQ==
+	b=N/wuBhL5RfBQ83ntwFbrMNoTHw14m7RF521k2cMK6UBlNQlRFhAjh/A1Zl3qy9H/5
+	 Ykoc+wvz4qIvq5VBdb86kKZRnHiXsd73plSfFT7SCrk8YX0YuVdebYzFyjxwjWkODl
+	 0Pm5GwAhGU0zr4xkf7z514R18Qa8XVXwzZLzgFSheh9Rf0LnCOGbpmEp3UW4Ht624d
+	 P+2nyu5mWhsRvf1ZsDxbDKJzoGP1kjTbYPO1AAIODQQ+yShrDxijXbdbTqwPWqBlmm
+	 DKjO+skdHD8B/1TaSCBY+4RaYZDkQOdEyhet772zU9TRSr6DBm/Vr40Awkcunr6aD6
+	 yqqStageyAx4A==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -59,17 +59,17 @@ Cc: p.zabel@pengutronix.de,
 	ehristev@collabora.com,
 	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
 	Alexandre Mergnat <amergnat@baylibre.com>
-Subject: [PATCH v9 09/16] drm/mediatek: gamma: Support specifying number of bits per LUT component
-Date: Thu,  3 Aug 2023 13:02:07 +0200
-Message-ID: <20230803110214.163645-10-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v9 11/16] drm/mediatek: gamma: Add support for 12-bit LUT and MT8195
+Date: Thu,  3 Aug 2023 13:02:09 +0200
+Message-ID: <20230803110214.163645-12-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230803110214.163645-1-angelogioacchino.delregno@collabora.com>
 References: <20230803110214.163645-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230803_040233_231122_B229E8FA 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20230803_040233_491213_32F1F49A 
+X-CRM114-Status: GOOD (  17.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,73 +84,161 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-New SoCs, like MT8195, not only may support bigger lookup tables, but
-have got a different register layout to support bigger precision:
-support specifying the number of `lut_bits` for each SoC and use it
-in mtk_gamma_set_common() to perform the right calculation.
+Add support for 12-bit gamma lookup tables and introduce the first
+user for it: MT8195.
+While at it, also reorder the variables in mtk_gamma_set_common()
+and rename `lut_base` to `lut0_base` to improve readability.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 74 +++++++++++++++++++----
+ 1 file changed, 62 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-index 001b98694761..1845bd326a6d 100644
+index 3f1c6815ea5a..7d2f8042ace0 100644
 --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
 +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-@@ -38,6 +38,7 @@ struct mtk_disp_gamma_data {
- 	bool has_dither;
- 	bool lut_diff;
- 	u16 lut_size;
-+	u8 lut_bits;
- };
+@@ -26,12 +26,20 @@
+ #define DISP_GAMMA_SIZE_VSIZE				GENMASK(12, 0)
+ #define DISP_GAMMA_BANK				0x0100
+ #define DISP_GAMMA_BANK_BANK				GENMASK(1, 0)
++#define DISP_GAMMA_BANK_DATA_MODE			BIT(2)
+ #define DISP_GAMMA_LUT				0x0700
++#define DISP_GAMMA_LUT1				0x0b00
  
- /*
-@@ -91,9 +92,9 @@ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
- 	for (i = 0; i < gamma->data->lut_size; i++) {
- 		struct drm_color_lut diff, hwlut;
++/* For 10 bit LUT layout, R/G/B are in the same register */
+ #define DISP_GAMMA_LUT_10BIT_R			GENMASK(29, 20)
+ #define DISP_GAMMA_LUT_10BIT_G			GENMASK(19, 10)
+ #define DISP_GAMMA_LUT_10BIT_B			GENMASK(9, 0)
  
--		hwlut.red = drm_color_lut_extract(lut[i].red, LUT_BITS_DEFAULT);
--		hwlut.green = drm_color_lut_extract(lut[i].green, LUT_BITS_DEFAULT);
--		hwlut.blue = drm_color_lut_extract(lut[i].blue, LUT_BITS_DEFAULT);
-+		hwlut.red = drm_color_lut_extract(lut[i].red, gamma->data->lut_bits);
-+		hwlut.green = drm_color_lut_extract(lut[i].green, gamma->data->lut_bits);
-+		hwlut.blue = drm_color_lut_extract(lut[i].blue, gamma->data->lut_bits);
++/* For 12 bit LUT layout, R/G are in LUT, B is in LUT1 */
++#define DISP_GAMMA_LUT_12BIT_R			GENMASK(11, 0)
++#define DISP_GAMMA_LUT_12BIT_G			GENMASK(23, 12)
++#define DISP_GAMMA_LUT_12BIT_B			GENMASK(11, 0)
++
+ #define LUT_10BIT_MASK				0x03ff
+ #define LUT_BITS_DEFAULT			10
+ #define LUT_SIZE_DEFAULT			512
+@@ -77,14 +85,30 @@ unsigned int mtk_gamma_get_lut_size(struct device *dev)
+ 	return LUT_SIZE_DEFAULT;
+ }
  
- 		if (!gamma->data->lut_diff || (i % 2 == 0)) {
- 			word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
-@@ -101,13 +102,13 @@ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
- 			word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, hwlut.blue);
- 		} else {
- 			diff.red = lut[i].red - lut[i - 1].red;
--			diff.red = drm_color_lut_extract(diff.red, LUT_BITS_DEFAULT);
-+			diff.red = drm_color_lut_extract(diff.red, gamma->data->lut_bits);
++/*
++ * SoCs supporting 12-bits LUTs are using a new register layout that does
++ * always support (by HW) both 12-bits and 10-bits LUT but, on those, we
++ * ignore the support for 10-bits in this driver and always use 12-bits.
++ *
++ * Summarizing:
++ * - SoC HW support 9/10-bits LUT only
++ *   - Old register layout
++ *     - 10-bits LUT supported
++ *     - 9-bits LUT not supported
++ * - SoC HW support both 10/12bits LUT
++ *   - New register layout
++ *     - 12-bits LUT supported
++ *     - 10-its LUT not supported
++ */
+ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
+ {
+ 	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+-	unsigned int i;
+-	struct drm_color_lut *lut;
+-	void __iomem *lut_base;
+-	u32 cfg_val, lbank_val, word;
++	void __iomem *lut0_base = gamma->regs + DISP_GAMMA_LUT;
++	void __iomem *lut1_base = gamma->regs + DISP_GAMMA_LUT1;
++	u32 cfg_val, data_mode, lbank_val, word[2];
+ 	int cur_bank, num_lut_banks;
++	struct drm_color_lut *lut;
++	unsigned int i;
  
- 			diff.green = lut[i].green - lut[i - 1].green;
--			diff.green = drm_color_lut_extract(diff.green, LUT_BITS_DEFAULT);
-+			diff.green = drm_color_lut_extract(diff.green, gamma->data->lut_bits);
+ 	/* If there's no gamma lut there's nothing to do here. */
+ 	if (!state->gamma_lut)
+@@ -92,14 +116,17 @@ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
  
- 			diff.blue = lut[i].blue - lut[i - 1].blue;
--			diff.blue = drm_color_lut_extract(diff.blue, LUT_BITS_DEFAULT);
-+			diff.blue = drm_color_lut_extract(diff.blue, gamma->data->lut_bits);
+ 	num_lut_banks = gamma->data->lut_size / gamma->data->lut_bank_size;
+ 	cfg_val = readl(gamma->regs + DISP_GAMMA_CFG);
+-	lut_base = gamma->regs + DISP_GAMMA_LUT;
+ 	lut = (struct drm_color_lut *)state->gamma_lut->data;
  
- 			word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, diff.red);
- 			word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, diff.green);
-@@ -217,10 +218,12 @@ static int mtk_disp_gamma_remove(struct platform_device *pdev)
++	/* Switch to 12 bits data mode if supported */
++	data_mode = FIELD_PREP(DISP_GAMMA_BANK_DATA_MODE, !!(gamma->data->lut_bits == 12));
++
+ 	for (cur_bank = 0; cur_bank < num_lut_banks; cur_bank++) {
  
- static const struct mtk_disp_gamma_data mt8173_gamma_driver_data = {
- 	.has_dither = true,
-+	.lut_bits = 10,
+ 		/* Switch gamma bank and set data mode before writing LUT */
+ 		if (num_lut_banks > 1) {
+ 			lbank_val = FIELD_PREP(DISP_GAMMA_BANK_BANK, cur_bank);
++			lbank_val |= data_mode;
+ 			writel(lbank_val, gamma->regs + DISP_GAMMA_BANK);
+ 		}
+ 
+@@ -112,9 +139,15 @@ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
+ 			hwlut.blue = drm_color_lut_extract(lut[n].blue, gamma->data->lut_bits);
+ 
+ 			if (!gamma->data->lut_diff || (i % 2 == 0)) {
+-				word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
+-				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, hwlut.green);
+-				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, hwlut.blue);
++				if (gamma->data->lut_bits == 12) {
++					word[0] = FIELD_PREP(DISP_GAMMA_LUT_12BIT_R, hwlut.red);
++					word[0] |= FIELD_PREP(DISP_GAMMA_LUT_12BIT_G, hwlut.green);
++					word[1] = FIELD_PREP(DISP_GAMMA_LUT_12BIT_B, hwlut.blue);
++				} else {
++					word[0] = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, hwlut.red);
++					word[0] |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, hwlut.green);
++					word[0] |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, hwlut.blue);
++				}
+ 			} else {
+ 				diff.red = lut[n].red - lut[n - 1].red;
+ 				diff.red = drm_color_lut_extract(diff.red, gamma->data->lut_bits);
+@@ -125,11 +158,19 @@ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
+ 				diff.blue = lut[n].blue - lut[n - 1].blue;
+ 				diff.blue = drm_color_lut_extract(diff.blue, gamma->data->lut_bits);
+ 
+-				word = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, diff.red);
+-				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, diff.green);
+-				word |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, diff.blue);
++				if (gamma->data->lut_bits == 12) {
++					word[0] = FIELD_PREP(DISP_GAMMA_LUT_12BIT_R, diff.red);
++					word[0] |= FIELD_PREP(DISP_GAMMA_LUT_12BIT_G, diff.green);
++					word[1] = FIELD_PREP(DISP_GAMMA_LUT_12BIT_B, diff.blue);
++				} else {
++					word[0] = FIELD_PREP(DISP_GAMMA_LUT_10BIT_R, diff.red);
++					word[0] |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_G, diff.green);
++					word[0] |= FIELD_PREP(DISP_GAMMA_LUT_10BIT_B, diff.blue);
++				}
+ 			}
+-			writel(word, (lut_base + i * 4));
++			writel(word[0], (lut0_base + i * 4));
++			if (gamma->data->lut_bits == 12)
++				writel(word[1], (lut1_base + i * 4));
+ 		}
+ 	}
+ 
+@@ -246,11 +287,20 @@ static const struct mtk_disp_gamma_data mt8183_gamma_driver_data = {
  	.lut_size = 512,
  };
  
- static const struct mtk_disp_gamma_data mt8183_gamma_driver_data = {
-+	.lut_bits = 10,
- 	.lut_diff = true,
- 	.lut_size = 512,
++static const struct mtk_disp_gamma_data mt8195_gamma_driver_data = {
++	.lut_bank_size = 256,
++	.lut_bits = 12,
++	.lut_diff = true,
++	.lut_size = 1024,
++};
++
+ static const struct of_device_id mtk_disp_gamma_driver_dt_match[] = {
+ 	{ .compatible = "mediatek,mt8173-disp-gamma",
+ 	  .data = &mt8173_gamma_driver_data},
+ 	{ .compatible = "mediatek,mt8183-disp-gamma",
+ 	  .data = &mt8183_gamma_driver_data},
++	{ .compatible = "mediatek,mt8195-disp-gamma",
++	  .data = &mt8195_gamma_driver_data},
+ 	{},
  };
+ MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
 -- 
 2.41.0
 
