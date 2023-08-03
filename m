@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F5DBEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 12:49:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AFCFC04E69
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 13:18:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KINzkY+2pTqpgggwDRnN6ZDXxLdRP48C4+yT1alhZW0=; b=gdcK8eHzde0eBJpOIkfmNPND5N
-	k0SUnzEEYv1w3NLbkfikg7USUpZJL4vyi5BkJpYA5gsnPZ1SqRZmfFpgWjYVsgvoi4u76hORe83dd
-	Uasmd6hSG9dFgLA4t/BuocZmswQVLdR3UiACbtBOHY4gfWBexpoZrEgFXmmB6br0fG8vG8FZ4J0g4
-	biKvGbkonW5jbXAd1/eQa3vFekLN7VP2ZRIzOzioqjHoRIXcUnHCb/zcRpYNE3abfIhZ0Q/E5OYF+
-	DarY4cxpB2LAEARONE9ClY9IBM0nDfsBQ2mSA+MiJfBmzrFDpfuoewcP+qslh4lsiI/9/6ufD9cQs
-	5cPB9yew==;
+	bh=70p97bF2yfpR7se8To5x2VZtf1iSgpwI4SiSr88fzXs=; b=nMBc8Y8oAtZ6mwVUke7VSXH7aw
+	FEoO+kxtz1rmKFXZQg4iBwRkVSmeysQTAXT9PwS2iyAap5XAeyrvzkzCnf7pSobLDhPedq5MUmzgF
+	t8hwy+x6wt7ofIdytIGVY/jallNsQayW9K4t3bzduXo319yIcJz+Q5OFcuk7/9cGCrZvgQVNsu7xQ
+	NWuMFBi80rXXVvI1ATGOsh1J/bdLu2fW0xidzvByO6g72Vs4+rNGvBIS6djmAJIQNM40Bd7RgWWBq
+	yjoN3Prk9KP9RvMtrxPJRTTDtoZ4qBA365IEJtK746js3v8teGDRiZURDDor4QVrmmrNcr/XlmX0t
+	qVBtRfvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRXlR-008c48-1A;
-	Thu, 03 Aug 2023 12:49:13 +0000
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+	id 1qRYDe-008tQS-0P;
+	Thu, 03 Aug 2023 13:18:22 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRXlO-008c0y-14
-	for linux-mediatek@lists.infradead.org;
-	Thu, 03 Aug 2023 12:49:11 +0000
-Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-26814f65d7fso475088a91.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 03 Aug 2023 05:49:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1691066948; x=1691671748;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=KINzkY+2pTqpgggwDRnN6ZDXxLdRP48C4+yT1alhZW0=;
-        b=FLG0aNm32sS+XHN5I5Y+oBXcneb5nhWHffdSaglK04SJWjwdCruhjcCMpGRDmQKEo/
-         dUNa5R5rumYhograB20KM5QQblPCxXoQ8ZGQVLvR3UoUkEic8GJvmZpmWcmiIah2dok7
-         fbGqVsz9ep9aogRrBoMg9zggdj9lXDLtihA5A=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691066948; x=1691671748;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=KINzkY+2pTqpgggwDRnN6ZDXxLdRP48C4+yT1alhZW0=;
-        b=VnFDhARnWEoHfF7v9LPz/Q2RMnOd7yPQUKa1gQcp58ppS6XY4k+ELJhzXKfqbez+pu
-         5e+NIOOjiOg83jlTHa75v7oaaHFqjuR5GaujDDO+CszEllh99sp9NjyLc1Z5crrKdXQ8
-         oPGdOtxWA/iudxw4j+qUSfdmujThqkYAM/B1/Wb9IXXN2M35AgqyJxN5p+B9hjgxpKPf
-         4GcEa0PqwiTkpmAIQWXHpnlInOmc5+lQtv7mlkqV2HaeavmQX6h6bdOWUyKL1tkjLLWN
-         eI+aJsTCvBBzoKZMIG2qJFybwf2Si+76EtaSAIbXRLTrXdc8V/kD6iC6/HnDstJcvBd7
-         wFEw==
-X-Gm-Message-State: ABy/qLaaPp74r2auovWKcvvYTZiI4mUo9bCUAZZg6O19YMxAo6h3jvCy
-	Mw+4LQ6Mwq1tsL1+lmXwx8/5mbl6jfVvgwEk0zMpNA==
-X-Google-Smtp-Source: APBJJlFjhCqu83YatWbs6solrrW1ZC3HnaGzLi79mqRRwPhv8z+cIO3WAE1eJpOmWss6LSTrOliZSTyEMjemBAej5JA=
-X-Received: by 2002:a17:90b:4f81:b0:267:f893:d562 with SMTP id
- qe1-20020a17090b4f8100b00267f893d562mr16081750pjb.8.1691066947603; Thu, 03
- Aug 2023 05:49:07 -0700 (PDT)
+	id 1qRYDa-008tMl-2E;
+	Thu, 03 Aug 2023 13:18:20 +0000
+Received: from [192.168.0.125] (unknown [82.76.24.202])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: ehristev)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7A0966600359;
+	Thu,  3 Aug 2023 14:18:15 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1691068696;
+	bh=ehtnooF4XJa6rGTTWGX8btVhMNGF1adK7GnhGx2DAtI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ipwFnpLSOqCnx0wmqJHvBrSv2dMow/rQ+/kB4KqSlAY3JSTm7Tj7+m82MaRDPfAE7
+	 +tmY5B9VuWavIYILkiw3ltBLZjuhYo6tqzEaI+DsXCXfq8x1UpJ7LHBj4wNhcz0QYe
+	 VOuJ9H8LohHpv4klgjgYz3b5oG/e8v8woDmveqadGeEOA2JkebW8YXS/Y+vEAp6kpm
+	 CgbtoJIuVqT4pkD3sg8SYZbHmKSOuI7PSR232FlkYF8Gvhw+UjYPt9QA1ORJWRFdtm
+	 gk1yHbOEZKG/YYBIxjDhf9JADiNuFY8//MhhVDyJlhE9LNURJUvFwCNUaK1SL6XnO5
+	 8wyKQm3thV+5Q==
+Message-ID: <38720b56-df8e-d25a-0e6f-ca6e1fb3df26@collabora.com>
+Date: Thu, 3 Aug 2023 16:18:12 +0300
 MIME-Version: 1.0
-References: <20230724175839.675911-1-greenjustin@chromium.org> <ZMtkIHkfhbOCodhw@phenom.ffwll.local>
-In-Reply-To: <ZMtkIHkfhbOCodhw@phenom.ffwll.local>
-From: Justin Green <greenjustin@chromium.org>
-Date: Thu, 3 Aug 2023 08:48:56 -0400
-Message-ID: <CAHC42Rfz6jjY9RfVsrrPuENgXiaCB7EecH=-Dnfzm0KynGFNjA@mail.gmail.com>
-Subject: Re: [PATCH RESEND] drm/mediatek: Add valid modifier check
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	chunkuang.hu@kernel.org, jason-jh.lin@mediatek.com, justin.yeh@mediatek.com, 
-	wenst@chromium.org, angelogioacchino.delregno@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v8 2/8] drm/mediatevk: Add crtc path enum for all_drm_priv
+ array
+Content-Language: en-US
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Jason-ch Chen <jason-ch.chen@mediatek.com>,
+ Johnson Wang <johnson.wang@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230802144802.751-1-jason-jh.lin@mediatek.com>
+ <20230802144802.751-3-jason-jh.lin@mediatek.com>
+From: Eugen Hristev <eugen.hristev@collabora.com>
+In-Reply-To: <20230802144802.751-3-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230803_054910_394176_73C2C8A4 
-X-CRM114-Status: GOOD (  28.76  )
+X-CRM114-CacheID: sfid-20230803_061818_949386_921D6E5E 
+X-CRM114-Status: GOOD (  16.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,69 +85,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> See c91acda3a380 ("drm/gem: Check for valid formats") and the related gem
-fb helper functions to see how this is supposed to be done.
+On 8/2/23 17:47, Jason-JH.Lin wrote:
+> Add mtk_drm_crtc_path enum for eatch display path.
 
-Oh that's interesting, so does this imply that the infrastructure
-automatically calls format_mod_supported() during framebuffer
-creation? In that case, this entire patch might be unnecessary in the
-tip of tree kernel.
+Typo: each
 
-On Thu, Aug 3, 2023 at 4:24=E2=80=AFAM Daniel Vetter <daniel@ffwll.ch> wrot=
-e:
->
-> On Mon, Jul 24, 2023 at 01:58:39PM -0400, Justin Green wrote:
-> > Add a check to mtk_drm_mode_fb_create() that rejects any modifier that
-> > is not the AFBC mode supported by MT8195's display overlays.
-> >
-> > Tested by booting ChromeOS and verifying the UI works, and by running
-> > the ChromeOS kms_addfb_basic binary, which has a test called
-> > "addfb25-bad-modifier" that attempts to create a framebuffer with the
-> > modifier DRM_FORMAT_MOD_INVALID and verifies the ADDFB2 ioctl returns
-> > EINVAL.
-> >
-> > Signed-off-by: Justin Green <greenjustin@chromium.org>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 7 +++++++
-> >  1 file changed, 7 insertions(+)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/m=
-ediatek/mtk_drm_drv.c
-> > index cd5b18ef7951..2096e8a794ad 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > @@ -51,6 +51,13 @@ mtk_drm_mode_fb_create(struct drm_device *dev,
-> >       if (info->num_planes !=3D 1)
-> >               return ERR_PTR(-EINVAL);
-> >
-> > +     if (cmd->modifier[0] &&
-> > +         cmd->modifier[0] !=3D DRM_FORMAT_MOD_ARM_AFBC(
-> > +                                     AFBC_FORMAT_MOD_BLOCK_SIZE_32x8 |
-> > +                                     AFBC_FORMAT_MOD_SPLIT |
-> > +                                     AFBC_FORMAT_MOD_SPARSE))
-> > +             return ERR_PTR(-EINVAL);
->
-> If you set the modifiers/format properties correctly and use all the
-> helpers then the drm core should already validate that only formats you
-> can use are allowed.
->
-> See c91acda3a380 ("drm/gem: Check for valid formats") and the related gem
-> fb helper functions to see how this is supposed to be done. These kind of
-> checks in driver code for gem drivers (which really is everyone at this
-> point) should not be needed at all.
->
-> Cheers, Sima
->
-> > +
-> >       return drm_gem_fb_create(dev, file, cmd);
-> >  }
-> >
-> > --
-> > 2.41.0.162.gfafddb0af9-goog
-> >
->
-> --
-> Daniel Vetter
-> Software Engineer, Intel Corporation
-> http://blog.ffwll.ch
+> 
+> Instead of using array index of all_drm_priv in mtk_drm_kms_init(),
+> mtk_drm_crtc_path enum can make more readable.
+
+can make *code* more readable ?
+> 
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> ---
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 6 +++---
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.h | 8 +++++++-
+>   2 files changed, 10 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index 249c9fd6347e..89a38561ba27 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -465,21 +465,21 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+>   		for (j = 0; j < private->data->mmsys_dev_num; j++) {
+>   			priv_n = private->all_drm_private[j];
+>   
+> -			if (i == 0 && priv_n->data->main_len) {
+> +			if (i == CRTC_MAIN && priv_n->data->main_len) {
+>   				ret = mtk_drm_crtc_create(drm, priv_n->data->main_path,
+>   							  priv_n->data->main_len, j);
+>   				if (ret)
+>   					goto err_component_unbind;
+>   
+>   				continue;
+> -			} else if (i == 1 && priv_n->data->ext_len) {
+> +			} else if (i == CRTC_EXT && priv_n->data->ext_len) {
+>   				ret = mtk_drm_crtc_create(drm, priv_n->data->ext_path,
+>   							  priv_n->data->ext_len, j);
+>   				if (ret)
+>   					goto err_component_unbind;
+>   
+>   				continue;
+> -			} else if (i == 2 && priv_n->data->third_len) {
+> +			} else if (i == CRTC_THIRD && priv_n->data->third_len) {
+>   				ret = mtk_drm_crtc_create(drm, priv_n->data->third_path,
+>   							  priv_n->data->third_len, j);
+>   				if (ret)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> index eb2fd45941f0..f4de8bb27685 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> @@ -9,11 +9,17 @@
+>   #include <linux/io.h>
+>   #include "mtk_drm_ddp_comp.h"
+>   
+> -#define MAX_CRTC	3
+>   #define MAX_CONNECTOR	2
+>   #define DDP_COMPONENT_DRM_OVL_ADAPTOR (DDP_COMPONENT_ID_MAX + 1)
+>   #define DDP_COMPONENT_DRM_ID_MAX (DDP_COMPONENT_DRM_OVL_ADAPTOR + 1)
+>   
+> +enum mtk_drm_crtc_path {
+> +	CRTC_MAIN,
+> +	CRTC_EXT,
+> +	CRTC_THIRD,
+> +	MAX_CRTC,
+> +};
+> +
+>   struct device;
+>   struct device_node;
+>   struct drm_crtc;
+
 
