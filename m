@@ -4,86 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51056C001E0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 07:43:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C751C0015E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Aug 2023 07:50:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vrPeOXoKc2hUZA03cIawOYELY2pxQM3mW6RdAg6oP4Q=; b=vn405TlVw0SKC5nzfirHL6jakv
-	XEL74w5sk6+zdptbP9SW8peJlLg0LUmJ8vouEc8pIzfj9zF3ILIkXfvkI4JsierEg3u0jA3YYJCwT
-	+8EP+kky7+fPAWh5RTk9gcq9Y93Wx3xuIhaUn1aLhkpyT48xNy51b5snsashszfPQfZDpJS8gm5kS
-	26t4Rr7b3p29yFKlxv8c8ymWaqyXQRJk/4gEG8lG1USxNbCXwWHSwbFmLzUYIyqVYFkXTSDJ/HZ1Q
-	b902AyHHhJ0eTiDyrHiIDpokPMYAuP0CPowGOlAjylUrx2RWZEUNJ5HPR0y0tgsImCwgWz9rWG+ii
-	fe4yPBpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zXH6sbvQV5thKqmsP6yJ7hqCSFhMzTMFPJkhA6neuGg=; b=ALdAwguPE2JnEXc6mjJ7HzW/8l
+	3wRAflExaKEcPXBV10rlpQ6R/LhWRHljdGo2BXxUIB88ROz627eRtPW1Ce+/rx+ar6YiLxXcc9Aas
+	KkSRhjB8c5VLcsDGt/izdhvN06MJvPI7UkfT+4uL81RxuopdTTttDwQQxhJHs82GLBxqFjyAmvLTE
+	fqu06+mU2pWALgNiTI5bFIL/GY1dGWU8qjV4yN61ElRPgOtJ1+feLgILgsLrJVeXiUldKoV9qrr8D
+	9H6wPZcBy3vRWx5j0kF8sMr/EhCLEy7O03IkvLvBYq5b0OpuhMLsqibUyW/MsdflNSaHvW5W065w4
+	FhxoJJUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRSzZ-006uUq-0o;
-	Thu, 03 Aug 2023 07:43:29 +0000
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+	id 1qRT6b-006vW1-12;
+	Thu, 03 Aug 2023 07:50:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRSzR-006uLe-23
-	for linux-mediatek@lists.infradead.org;
-	Thu, 03 Aug 2023 07:43:23 +0000
-Received: by mail-pg1-x530.google.com with SMTP id 41be03b00d2f7-56401f1da3dso335506a12.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 03 Aug 2023 00:43:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1691048600; x=1691653400;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vrPeOXoKc2hUZA03cIawOYELY2pxQM3mW6RdAg6oP4Q=;
-        b=B64w8cCq99lVMCbkJggf/D7Dt6lLV5K5zg7oC1ThIFLNH3t5f1k3gSs8+jSLNo/ka8
-         7PcdgmMrzsxU8npBb4uQYX9e7OPVdfd6aJDYBa6wJ8Z1u0I3jU5/6hkQVS71dHVk4JrU
-         iDZQJbm63agTlZLMmk5l7hGyemkE7pqJogmMY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691048600; x=1691653400;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vrPeOXoKc2hUZA03cIawOYELY2pxQM3mW6RdAg6oP4Q=;
-        b=OgxND6l/CyB9OoPDpXr+Fc7U1y/T7f2af2ipcHFTFoevOuDYtyID+ZAhIf7ctIq0Cd
-         3eaLy7E1hTddA7cL6ZVbPEU8+dW+++ramxO7AEphrwl7ygn5Ngjj2pyLndWN+8EoH/fQ
-         vYlreqcEIL78vdOVt0zhsQlU3kywxidZ1ZK8tCi8JncseUGDJkR0ENeDD/2ekPrpl/jI
-         zv8FVTsnNWtol5i1RflFvFM9VzixnSdBqZCpoyPFRq72jquHAnWj8TFIueifnrqTzHlo
-         ovMmBu+/K1KWsTUd3+GyalA5yfWQ2rGVce63Ah5n5hs2qr9t8wFdhsx1PEpQYYE6xuqO
-         ptcA==
-X-Gm-Message-State: ABy/qLYHdZugL4CiIY54EclYb7JVGOo7yy2T5ZDa6hB+zlgKm1+4fKWt
-	sgy97dcsB7lx7R/B0sthtzVfEw==
-X-Google-Smtp-Source: APBJJlFurYNnQLVV4RTU7su1Ey1Aj+eNI2+WPiuqHQ1LmYf3d/bpTlfIF23QfhrRuirChqwjNcAVsA==
-X-Received: by 2002:a17:90a:d78d:b0:268:1f64:cefc with SMTP id z13-20020a17090ad78d00b002681f64cefcmr13321482pju.49.1691048600567;
-        Thu, 03 Aug 2023 00:43:20 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:6f3e:66ee:db46:473b])
-        by smtp.gmail.com with ESMTPSA id l11-20020a17090a72cb00b00262d079720bsm2095753pjk.29.2023.08.03.00.43.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Aug 2023 00:43:20 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Lee Jones <lee@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Brown <broonie@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Zhiyong Tao <zhiyong.tao@mediatek.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 9/9] soc: mediatek: pwrap: add support for MT6366 PMIC
-Date: Thu,  3 Aug 2023 15:42:47 +0800
-Message-ID: <20230803074249.3065586-10-wenst@chromium.org>
-X-Mailer: git-send-email 2.41.0.585.gd2178a4bd4-goog
-In-Reply-To: <20230803074249.3065586-1-wenst@chromium.org>
-References: <20230803074249.3065586-1-wenst@chromium.org>
+	id 1qRT6Y-006vV0-1E;
+	Thu, 03 Aug 2023 07:50:43 +0000
+X-UUID: 6d1c39a831d211ee912e1518a6540028-20230803
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zXH6sbvQV5thKqmsP6yJ7hqCSFhMzTMFPJkhA6neuGg=;
+	b=aRC1M50+4z2u8hhjg5ZGCDpTLDvwwdM4cwjxbOaHAftkM0zsgo93q9wNy5wb5c2sSCco3r7VvcDQIoBJUaV3q8qnRZQqCs1HwgkptSltHcd3YXVDg9AE0RJJAiBjo2ziiGVsdTTBJqXxSt8RFwB17xj22m8YJGoscSSm2GGAQrc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.30,REQID:b534e2b5-cadc-454a-98af-4bfad82fa2b3,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:70
+X-CID-INFO: VERSION:1.1.30,REQID:b534e2b5-cadc-454a-98af-4bfad82fa2b3,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:70
+X-CID-META: VersionHash:1fcc6f8,CLOUDID:e011d8a0-0933-4333-8d4f-6c3c53ebd55b,B
+	ulkID:23080315503407VZUZJE,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,
+	TF_CID_SPAM_SNR
+X-UUID: 6d1c39a831d211ee912e1518a6540028-20230803
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <trevor.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2136693418; Thu, 03 Aug 2023 00:50:33 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 3 Aug 2023 15:50:30 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 3 Aug 2023 15:50:30 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <pierre-louis.bossart@linux.intel.com>, <peter.ujfalusi@linux.intel.com>,
+	<yung-chuan.liao@linux.intel.com>, <ranjani.sridharan@linux.intel.com>,
+	<kai.vehmanen@linux.intel.com>, <daniel.baluta@nxp.com>,
+	<broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
+	<perex@perex.cz>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <trevor.wu@mediatek.com>, <yc.hung@mediatek.com>,
+	<allen-kh.cheng@mediatek.com>, <sound-open-firmware@alsa-project.org>,
+	<alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH] ASoC: SOF: mediatek: mt8186 modify dram type as non-cache
+Date: Thu, 3 Aug 2023 15:50:28 +0800
+Message-ID: <20230803075028.32170-1-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230803_004321_709106_435A7120 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20230803_005042_451787_D440408F 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,31 +92,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT6366 PMIC is mostly, but not fully, compatible with MT6358. It has
-a different set of regulators. Specifically, it lacks the camera related
-VCAM* LDOs, but has additional VM18, VMDDR, and VSRAM_CORE LDOs.
+To prevent incorrect access between the host and DSP sides, we need to
+modify DRAM as a non-cache memory type. Additionally, we can retrieve
+the size of shared DMA from the device tree.
 
-Add a separate compatible for the MT6366 PMIC.
-
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+Reviewed-by: Yaochun Hung <yc.hung@mediatek.com>
+Reviewed-by: Kuan-Hsun Cheng <Allen-KH.Cheng@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-pmic-wrap.c | 2 ++
- 1 file changed, 2 insertions(+)
+ sound/soc/sof/mediatek/mt8186/mt8186.c | 40 +++++++++++++++-----------
+ 1 file changed, 23 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 11095b8de71a..e3c0e767033b 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -2257,6 +2257,8 @@ static const struct of_device_id of_slave_match_tbl[] = {
- 	{ .compatible = "mediatek,mt6357", .data = &pmic_mt6357 },
- 	{ .compatible = "mediatek,mt6358", .data = &pmic_mt6358 },
- 	{ .compatible = "mediatek,mt6359", .data = &pmic_mt6359 },
-+	/* MT6366 is mostly compatible with MT6358, except for slightly different regulators. */
-+	{ .compatible = "mediatek,mt6366", .data = &pmic_mt6358 },
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+index 3e0ea0e109e2..f587edf9e0a7 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.c
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+@@ -111,6 +111,14 @@ static int platform_parse_resource(struct platform_device *pdev, void *data)
  
- 	/* The MT6380 PMIC only implements a regulator, so we bind it
- 	 * directly instead of using a MFD.
+ 	dev_dbg(dev, "DMA %pR\n", &res);
+ 
++	adsp->pa_shared_dram = (phys_addr_t)res.start;
++	adsp->shared_size = resource_size(&res);
++	if (adsp->pa_shared_dram & DRAM_REMAP_MASK) {
++		dev_err(dev, "adsp shared dma memory(%#x) is not 4K-aligned\n",
++			(u32)adsp->pa_shared_dram);
++		return -EINVAL;
++	}
++
+ 	ret = of_reserved_mem_device_init(dev);
+ 	if (ret) {
+ 		dev_err(dev, "of_reserved_mem_device_init failed\n");
+@@ -244,23 +252,18 @@ static int adsp_shared_base_ioremap(struct platform_device *pdev, void *data)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_adsp_chip_info *adsp = data;
+-	u32 shared_size;
+ 
+ 	/* remap shared-dram base to be non-cachable */
+-	shared_size = TOTAL_SIZE_SHARED_DRAM_FROM_TAIL;
+-	adsp->pa_shared_dram = adsp->pa_dram + adsp->dramsize - shared_size;
+-	if (adsp->va_dram) {
+-		adsp->shared_dram = adsp->va_dram + DSP_DRAM_SIZE - shared_size;
+-	} else {
+-		adsp->shared_dram = devm_ioremap(dev, adsp->pa_shared_dram,
+-						 shared_size);
+-		if (!adsp->shared_dram) {
+-			dev_err(dev, "ioremap failed for shared DRAM\n");
+-			return -ENOMEM;
+-		}
++	adsp->shared_dram = devm_ioremap(dev, adsp->pa_shared_dram,
++					 adsp->shared_size);
++	if (!adsp->shared_dram) {
++		dev_err(dev, "failed to ioremap base %pa size %#x\n",
++			adsp->shared_dram, adsp->shared_size);
++		return -ENOMEM;
+ 	}
+-	dev_dbg(dev, "shared-dram vbase=%p, phy addr :%pa, size=%#x\n",
+-		adsp->shared_dram, &adsp->pa_shared_dram, shared_size);
++
++	dev_dbg(dev, "shared-dram vbase=%p, phy addr :%pa,  size=%#x\n",
++		adsp->shared_dram, &adsp->pa_shared_dram, adsp->shared_size);
+ 
+ 	return 0;
+ }
+@@ -307,9 +310,12 @@ static int mt8186_dsp_probe(struct snd_sof_dev *sdev)
+ 		return -ENOMEM;
+ 	}
+ 
+-	sdev->bar[SOF_FW_BLK_TYPE_SRAM] = devm_ioremap_wc(sdev->dev,
+-							  priv->adsp->pa_dram,
+-							  priv->adsp->dramsize);
++	priv->adsp->va_sram = sdev->bar[SOF_FW_BLK_TYPE_IRAM];
++
++	sdev->bar[SOF_FW_BLK_TYPE_SRAM] = devm_ioremap(sdev->dev,
++						       priv->adsp->pa_dram,
++						       priv->adsp->dramsize);
++
+ 	if (!sdev->bar[SOF_FW_BLK_TYPE_SRAM]) {
+ 		dev_err(sdev->dev, "failed to ioremap base %pa size %#x\n",
+ 			&priv->adsp->pa_dram, priv->adsp->dramsize);
 -- 
-2.41.0.585.gd2178a4bd4-goog
+2.18.0
 
 
