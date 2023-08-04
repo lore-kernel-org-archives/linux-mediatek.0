@@ -4,70 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AD9BC04A94
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 07:29:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D833C001DB
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 07:34:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ala1ks6V0rarnm7IA1fl3swYvyi677tS76330+JRWP4=; b=CQJvrzecCSFpBcTPLLCiLAtjvD
-	zqw2oO+GRZ4jPIq09Srk57LjFNL2Ea1lBysUyXWteNbDWvGGRMZjFjM+GqR/BLa2KXersYYYJkZB4
-	ZI1pWTV0tgoEgosupF/SYH4Wb984sll924kgt8EqLGMNYJpXsjxzmG9YJgUWKm5QLW5R7XM3WdyBU
-	IZZw7HuSqD2oyO38jBinSGbigAyxmYN9qraZ8df233Q9ne5VyazsdQpKic3AiYDe6T1x1Hhr++ZQW
-	GwdilICoUx66x13WJPeuJJr1S4LcorzJUgyKIs1iq5bzUH8wsR5jb6DxF4ARMGaF2pR4maN1+EJMp
-	5eJQUWJA==;
+	bh=MGrDh/1hSwr3pJmv2Agn/SebV7nRrYJNL/2nYoem9Qc=; b=N6LWiZ84vOl+DY29SumdIk9zNy
+	7V61a2xSovIg+1fXxgxUW/Tw3mleZWbymuuRd8+9NIBPMdaih7r8s5VbE4rg2KTe02rlCMUDoQTTy
+	/3I2IG5Jh7iA/7NS+sBG007RJDSqDdyZX+yAWAuXlngg3Qp0yH3kVYXK6vmbeFH9HlWvxXNjSZWxD
+	GSJdUSqYGH6FPEI4w8UlqNQ9WhaM2fWotNJb+ZvCqN+cCp1a6QqqUn8nR4zNDtBK/dl1eTmS3G0PF
+	yPSe05r1l2w+v+UK5DQSxwD7gudZ4MaXLwGvMMK5sGDxYGDPgMjeCL+E7coF7+yNyKHdturrqfBXA
+	/fwdK0mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRpFo-00Bn9S-0m;
-	Fri, 04 Aug 2023 07:29:44 +0000
+	id 1qRpKo-00Bnuq-1l;
+	Fri, 04 Aug 2023 07:34:54 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRpFI-00BmVF-0G;
-	Fri, 04 Aug 2023 07:29:13 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	id 1qRpKk-00Bnu0-32;
+	Fri, 04 Aug 2023 07:34:52 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4D8D766071C2;
-	Fri,  4 Aug 2023 08:29:10 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6B6D366071B9;
+	Fri,  4 Aug 2023 08:34:48 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1691134150;
-	bh=eOGxKFVDezkCZBwW2hUee7R5nYDwDHZk82jsXyRXIgQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=cB9BjZ+Uh0lMovSOzN0a/Ugu0u79UdFA39R9jOkGWpsGAIuE/yvVPkSaK9yGjcD1A
-	 atqx7Bn/kZGL3XX2lgxbpyhURUD4/G2snCvNmr3pdr0EXiKC3UFNVQo9+jtvZvi3pd
-	 BNZDHv3q9fSSm/Q7r97fR/tmZN0xbjxL59PpWye9XAcVASV28skJwuhd/xv2hftjpA
-	 zj90iUOorcQrN+C3ygC7ChzInMNnuznvohNKXV7RqxZivGFYmKuuahD6ZX+irw0VL7
-	 BN1kawNtm1oeJC1xd1EkeUde0ybauzjNS6iq5jhYwkorvdjp8/UvWmzxFQ6c1TB5TB
-	 rE/jinzzjd+Ag==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	wenst@chromium.org,
-	kernel@collabora.com,
-	ehristev@collabora.com
-Subject: [PATCH v10 16/16] drm/mediatek: aal: Compress of_device_id entries and add sentinel
-Date: Fri,  4 Aug 2023 09:28:50 +0200
-Message-ID: <20230804072850.89365-17-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230804072850.89365-1-angelogioacchino.delregno@collabora.com>
-References: <20230804072850.89365-1-angelogioacchino.delregno@collabora.com>
+	s=mail; t=1691134489;
+	bh=MXbusVUsaCgkKBWlp45fgfQiAF4swbRrk9BMMk9IFdM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=mq+OvgPmNdNb5U2BdRb7h+9YCFOmonTNcfmb6SEl352eZJBvgy6lCgJADLaU+XCtl
+	 WufTLrs/KPODEoOh3DGPz9FIquGjpms8x2+u4HGNluiFQy/JrGOsaW0moyx2K8blAl
+	 JRfCTTMp7PR1d0+L5mRmITZVBr/LPiCA2/YqiNIiCP5yBBhG87GX9+s9G+INO61gKD
+	 TjAD5qYOFB4GT/3YJSjTUq1C4JCpvfrlzuQtkupYu2xcXhWDpBPvZSEBXn2FYyNDFG
+	 Oa+COXPZh0UOqoai2z7nwKLu28ihrwj5lLmHfr5deUKt0wiAz8w+nH8EegePDa7fTO
+	 D8DPraXxpCHPQ==
+Message-ID: <52744f4c-9344-d49a-755a-cc7f7962bc9e@collabora.com>
+Date: Fri, 4 Aug 2023 09:34:45 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v2 4/4] media: platform: mediatek: isp_30: add mediatek
+ ISP3.0 camsv
+Content-Language: en-US
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: Phi-bang Nguyen <pnguyen@baylibre.com>,
+ Florian Sylvestre <fsylvestre@baylibre.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>,
+ Andy Hsieh <andy.hsieh@mediatek.com>, Conor Dooley <conor+dt@kernel.org>,
+ daoyuan huang <daoyuan.huang@mediatek.com>, devicetree@vger.kernel.org,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+ Louis Kuo <louis.kuo@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Moudy Ho <moudy.ho@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Vasily Gorbik <gor@linux.ibm.com>
+References: <20230630100321.1951138-1-jstephan@baylibre.com>
+ <20230630100321.1951138-5-jstephan@baylibre.com>
+ <0430ddab-6a6c-9fa3-95bd-05ce8ac5b94f@collabora.com>
+ <iq7jffjeaejdfb26a4ysjgjzuopov4ji2ecgzmv4563tdveaep@hh2gzgzkbdzj>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <iq7jffjeaejdfb26a4ysjgjzuopov4ji2ecgzmv4563tdveaep@hh2gzgzkbdzj>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230804_002912_275205_B288B5F7 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20230804_003451_108569_E1B6AEEF 
+X-CRM114-Status: GOOD (  17.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,36 +91,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Compress the entry for mediatek,mt8173-disp-aal, as it fits in one
-line, and fix the style; while at it, also add the usual sentinel
-comment to the last entry.
+Il 03/08/23 11:53, Julien Stephan ha scritto:
+> On Mon, Jul 03, 2023 at 02:21:17PM +0200, AngeloGioacchino Del Regno wrote:
+> ..snip..
+>>> +
+>>> +	mtk_cam_init_cfg(&cam->subdev, NULL);
+>>
+>> mtk_cam_init_cfg() returns an integer, and this is probably because you expect
+>> it to get logic to fail: in that case, check the result of that call here,
+>> otherwise, make that function void.
+>>
+> 
+> Hi Angelo,
+> 
+> mtk_cam_init_cfg returns an int because it should match v4l2_subdev_pad_ops->init_cfg prototype..
+> 
+> mtk_cam_init does not fail, always return 0, so I though it would be ok
+> to discard the return value here. What do you think?
+> 
 
-This commit brings no functional changes.
+Right, I was thinking to make a void __mtk_cam_init_cfg(), but as an afterthought
+it's just better to leave it as it is, let's go with your solution.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_aal.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+Cheers,
+Angelo
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-index e6ab3eaa1126..70de5f3007e4 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-@@ -212,10 +212,9 @@ static const struct mtk_disp_aal_data mt8173_aal_driver_data = {
- };
- 
- static const struct of_device_id mtk_disp_aal_driver_dt_match[] = {
--	{ .compatible = "mediatek,mt8173-disp-aal",
--	  .data = &mt8173_aal_driver_data},
--	{ .compatible = "mediatek,mt8183-disp-aal"},
--	{},
-+	{ .compatible = "mediatek,mt8173-disp-aal", .data = &mt8173_aal_driver_data },
-+	{ .compatible = "mediatek,mt8183-disp-aal" },
-+	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_aal_driver_dt_match);
- 
--- 
-2.41.0
+>>> +
+> 
+> ..snip..
+> 
+>>> +	unsigned int bpp;
+>>
+>> Can we get any format that uses a billion bits per pixel? :-P
+>>
+>> u8 bpp;
+>>
+> 
+> I am preparing the driver for futur upgrades.. in a billion years ;)
+> 
+> Cheers
+> Julien
 
 
