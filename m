@@ -4,71 +4,164 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD4F5C001DB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 15:05:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E432C001DB
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 15:11:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+LZBwIaE+oAAZTAGTeOHXkg3Tm/u3i+LK+Ey4FTfqyE=; b=GgWuBWDqh8m+Qmu374hjhJqYEc
-	RyYp1hDUbEqbSFtZGXJWphthe5abSOEYJx3x9WuLlgx9DudmC6aNNFmiyE/+76WU3qjL70Hm7ZfYY
-	AmMxzAHDiodbTXgNxB5bZZj4GHRAbMU++tWqWldI+e3WB1bq+H74RLALKjKf5DWZmIZEUiVluM2li
-	iPrB7PF9iUvgAGoIINOqgodUt/+4TzS1K9jUPmFh27U1nNz1syNvd279z/47Fs0SIvP9U26ADjga1
-	7h5Y6MgemTUneZkTmgRkAnAYKLFiUi5t2QaCLVzSJsyHQ7BDcchWWxXwyroWbdGSqsZ9bGAmRCVNs
-	lKobrzeQ==;
+	bh=LClNqNr4jHDoCc+3ZN0rCOV65ruhdO76AS3wOe1oD/w=; b=FwUZpMVWMExnNbgx8GLLd3/z8U
+	5+dGPz9XCDkOIe2HQs4carE2ZL9idgxnSTzolNmBPoKF1mtfl/H7PSm3cGXIGqJcuNhvg/DBfA3op
+	a2mxOKBJiETlqlQhOnI1bUFwJprTM2Mxhb8888P9XL2DHHX3MIMCKy8PfCpJ4JfLoXv+BaZfussu5
+	Q3d9DZ88JooGVDN21KtpQf8D8cxnWSPh+964p8vm2pOmsgogThRDG8MQcra3LmK2FgJ1zbJ+L3w3i
+	GPVTnn5AIxIhvLsmTbUIwajB8/dZt5pTPG7qHMfFpzHEuvaMab5ebojv6GDSdmE0Ncdba26NG8z2b
+	/eXqvKLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRwMY-00Cf3y-0B;
-	Fri, 04 Aug 2023 15:05:10 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1qRwT5-00Cfmb-2N;
+	Fri, 04 Aug 2023 15:11:55 +0000
+Received: from mail-vi1eur05on2062d.outbound.protection.outlook.com ([2a01:111:f400:7d00::62d] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRwMU-00Cf2F-2D;
-	Fri, 04 Aug 2023 15:05:08 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C141012E4;
-	Fri,  4 Aug 2023 17:03:56 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1691161437;
-	bh=tr+A81mL8nDcTz82HPvWaHO5DYHcvkl8gnXU6YqP/oA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NwnKqGOISSHCoT4g/onIOtdggT3c8VNVe6JntI6V+8rCGpENwgWORyCFsw5KPHQPn
-	 z9aUrJ9sF4Ag2/bqkXDyI2JmTZAejBZ21hI2p9CWsqv8wQDHzHf9Ryv+MgK5XnDPal
-	 Bm3mUPZxQnzBSY8IvBa5/qa4AO6u5zgCBJbM3K2k=
-Date: Fri, 4 Aug 2023 18:05:07 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Julien Stephan <jstephan@baylibre.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Louis Kuo <louis.kuo@mediatek.com>,
-	Phi-bang Nguyen <pnguyen@baylibre.com>,
-	Florian Sylvestre <fsylvestre@baylibre.com>,
-	Alexander Gordeev <agordeev@linux.ibm.com>,
-	Andy Hsieh <andy.hsieh@mediatek.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	daoyuan huang <daoyuan.huang@mediatek.com>,
-	devicetree@vger.kernel.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Moudy Ho <moudy.ho@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
-	Vasily Gorbik <gor@linux.ibm.com>
-Subject: Re: [PATCH v2 2/4] media: platform: mediatek: isp_30: add mediatek
- ISP3.0 sensor interface
-Message-ID: <20230804150507.GI12951@pendragon.ideasonboard.com>
-References: <20230630100321.1951138-1-jstephan@baylibre.com>
- <20230630100321.1951138-3-jstephan@baylibre.com>
- <da891ec5-473c-5bef-d88b-661fac70ed25@collabora.com>
- <72ixohoacq4vgj7nqg4l5gt5bs5e5ewain6a5ovqs3winx3qzz@sbg5lfohq5mq>
+	id 1qRwT1-00Cfkx-1l;
+	Fri, 04 Aug 2023 15:11:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Or9u4/jF0FrENp9NYIAX2kNP7uCKNR304iEhKCeI6p3CIF07QFHsW07IgMEhSRCQFaPcfHiqvv7zifUoTCEqMdK7EBf9/oRYd/QTzD4ZVTrwnbwvofcP+SXAgwe0c6PC5yDo4uSyl5knh48Zv96QJSehi6JFtDu6FB2VXOPAmHrHxuExDVWDJBLAPhR1wHYnSr7aAbSPxciVAt7LrE8FO1Gjmz11N0hyxIt37XxKLpWn5Btb/lkfLxCuEPJxxeJ5ENhhmUyRyNNaxy6ucLFasXbUCTkPtSnmh7pEzB0iMDqB6zpVcsGpYE1643dU2xxvDFqclZWwnI31QO4DlA5/rg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=LClNqNr4jHDoCc+3ZN0rCOV65ruhdO76AS3wOe1oD/w=;
+ b=VQyZuaTPEKvTUAHhbiG1GumdYD7Lk73GdqDZ4wfH/7jplNgpKI08HDu9lr2uUk/4DRkhIMP+PRl/Gvy136Ua+CTaOzOE247US5lJhhLT0tSwhqyiApM05y7bAn6EsnUeNEY+cEWBO15PvI/4m6egafpqhy1qkkgdK5aYhFqmmXYbJTaDA1UzeSr2AuzrUC1lJY9aEh8D973ZvmLTHxYvjw6qzi/LJvIG/Ks4v4fIfVuuo1qQAy+0PXocbXjs8oWwGqcg7/v3nLFBTomoG9wbLENscKtZY8/jBiCcx1UD3SBRreAShZGJF9gEvkGsoB2PhviyEWrdg25mYEVrGewiWg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=LClNqNr4jHDoCc+3ZN0rCOV65ruhdO76AS3wOe1oD/w=;
+ b=izHSysVQFVFkK2gffMfw9bHWwQ+3W4uy+n8EX4dcU1eVOWxlr3UajaPgPyRcHmqGKRxMHs+veBeTt84MaJN7HKLC2Gx9fS73JKnDLcfVs8ov4nMfOp5GRlIQpN9Hm/HhHl1xumLwYuZbe7TAdpEPTc1W5E0DiEBHyNEGXWUtxvc=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from DB9PR04MB9380.eurprd04.prod.outlook.com (2603:10a6:10:368::16)
+ by DBBPR04MB7980.eurprd04.prod.outlook.com (2603:10a6:10:1f0::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.47; Fri, 4 Aug
+ 2023 15:11:42 +0000
+Received: from DB9PR04MB9380.eurprd04.prod.outlook.com
+ ([fe80::179f:1c4a:4573:acb9]) by DB9PR04MB9380.eurprd04.prod.outlook.com
+ ([fe80::179f:1c4a:4573:acb9%4]) with mapi id 15.20.6652.021; Fri, 4 Aug 2023
+ 15:11:42 +0000
+Message-ID: <485cb11c-3e34-c4a3-bc63-87ac505b7bb0@nxp.com>
+Date: Fri, 4 Aug 2023 18:11:33 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH v2 16/23] bus: Explicitly include correct DT includes
+Content-Language: en-CA
+To: Rob Herring <robh@kernel.org>, soc@kernel.org,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Tsahee Zidenberg <tsahee@annapurnalabs.com>,
+ Antoine Tenart <atenart@kernel.org>, Jisheng Zhang <jszhang@kernel.org>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
+ Jean-Marie Verdun <verdun@hpe.com>, Nick Hawkins <nick.hawkins@hpe.com>,
+ Lubomir Rintel <lkundrak@v3.sk>, Linus Walleij <linus.walleij@linaro.org>,
+ Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
+ Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
+ Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
+ Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>,
+ Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>,
+ Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, Viresh Kumar
+ <vireshk@kernel.org>, Shiraz Has him <shiraz.linux.kernel@gmail.com>,
+ Stuart Yoder <stuyoder@gmail.com>, Jay Fang <f.fangjian@huawei.com>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Cristian Marussi <cristian.marussi@arm.com>, Shawn Guo
+ <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Dinh Nguyen <dinguyen@kernel.org>, Thierry Reding
+ <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Michal Simek <michal.simek@amd.com>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@aj.id.au>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Li Yang <leoyang.li@nxp.com>, Qiang Zhao <qiang.zhao@nxp.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
+ linux-aspeed@lists.ozlabs.org, linux-pm@vger.kernel.org
+References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
+ <20230803-dt-header-cleanups-for-soc-v2-16-d8de2cc88bff@kernel.org>
+From: Laurentiu Tudor <laurentiu.tudor@nxp.com>
+In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-16-d8de2cc88bff@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: AM0PR07CA0020.eurprd07.prod.outlook.com
+ (2603:10a6:208:ac::33) To DB9PR04MB9380.eurprd04.prod.outlook.com
+ (2603:10a6:10:368::16)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <72ixohoacq4vgj7nqg4l5gt5bs5e5ewain6a5ovqs3winx3qzz@sbg5lfohq5mq>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DB9PR04MB9380:EE_|DBBPR04MB7980:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9f6b8a41-5b7c-4355-f475-08db94fd1c0e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: E8hWa6LySNFZyERpdjjlqYEefw6+BZDOiy0IeujDexNPEW3v3efrSBly/QiAGzQ9bMOtg1AVTHpuwu/i6KM+Jx8L6yC3XNTUwCx+qnbwGE48/RnIvUgEjF1juQJCVNmjO6NEVEmfAY/maFpj9unbrY2PHOlfuEkaisjN6KjpRkvJw6nP0f/nehX1FE7OOZH7kbaHNfZGa/4yN1nJQ/82EHTpEemTAkF/rVNKI6Si4GLFFO6HZ+OztNtCnwYTFRJ5L4nxpMFfUc9TF1qHIqlE0C/iSC7WuFDNI2akvfXc0itE+7AdPNxABT3cpM0CmfQ/WCTIWAmREtmJo0zttF3gW4neSBYpWEHwmxX1Tb9XhEf4zU8ipXMlZV++rX+2QtaTQOwO/WwW4o7sv96VYYI3ZQNJ5rtrCrHUwWb8OXaxHHI2UjOY36glJEmpF5IqH4DiyjNAa+Arz5tbTGANqLxNFDKllMoGwUfAHMvfWiU5VgppC1KOLT+oMJdUyG8ouC/er73Bs0lKjuqD4RHz6R28obOSFwMNr5pEW0wVOs740a2AAnZDg/H9clR6T/t99O/rsQxnMKH0aEEOwXg++DLwuU+0FaTWJ7dWEE6i5/zbEITolGLZUhWQEgMRdDmIByQ65mIVmDnhFeuoLpyt49YtmNVW2O6TAhYSK1NS8LqPY7UPtBB15A0GdBJCFUK2cDZUfvQosvA03t8Cj72ov8XBmjImEZ290cvcyFHjCoTjc90=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB9PR04MB9380.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(136003)(396003)(366004)(39860400002)(376002)(346002)(186006)(1800799003)(451199021)(31686004)(66476007)(66556008)(66946007)(110136005)(4326008)(6636002)(478600001)(316002)(6486002)(53546011)(55236004)(26005)(6506007)(6666004)(41300700001)(8936002)(8676002)(52116002)(6512007)(83380400001)(44832011)(7416002)(7406005)(5660300002)(7366002)(2906002)(86362001)(36756003)(2616005)(31696002)(921005)(38350700002)(38100700002)(41080700001)(45980500001)(43740500002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?aWl5Zm4xM2xzZVVwNUF0NUdZcHYxOXRnQi9jWVlHUk5FdmdXWGt5Y3hlZWhn?=
+ =?utf-8?B?T2MydWJvMzA5aTExU1ZKcXRwQmljQlM4M1ZSVFZ0c1g4TzlhNGFaMzBLL1lF?=
+ =?utf-8?B?TW5pZGJWTHFUMzBjVTBIRmNKZldvbFJoK0VpUzMreDdQL011VTNNY3lmNmRT?=
+ =?utf-8?B?TTUvT2N6WndvMmJQSlh4b3BPR3k2UWpSR3Z4aVRqcjJlOVA2MGxid3FOZVRZ?=
+ =?utf-8?B?WmtFVHZkc2FTYnZ0aURySXNXNGVBd2phZ2lQMjVRRDdXSlh4Y0ozMG4yOWFF?=
+ =?utf-8?B?bGRkdVpWWE1PNHV6OHo3VmlWWWdHRU9SOW9XZllJR1lBVDZlZWRMZVBhcHNi?=
+ =?utf-8?B?TTJVNzIrY3Avc1VZR3RqdTkyejlFYXpKWWc5ZGlVOUwwT2ljSzZjSWZYRUdi?=
+ =?utf-8?B?MkZEdjUxVmp0SHhSc1pRR3FMNkFGYVg4OU94WlNOaHZxT2RPeTJJSWtkbDRa?=
+ =?utf-8?B?SmU4WnBXbElvYkNtTmszVU1LQmpyQVNhNTBVK2gzL252YnlLTFZZc1B1VGRI?=
+ =?utf-8?B?QjhXS29tQUwrTjB2RFNvTUpPUmJucjN2dGNWNnExa0JvZ0dCQ2M4SzRpaHV5?=
+ =?utf-8?B?NGcwNkJUSHBmTUdlYzMvMzB4Y3kvL2dsM0l6TmxmWFdNSnpxTUFRdHZIb1Fj?=
+ =?utf-8?B?T1RzbFQ0SFZtQmo5Q21uOWNuVFZjVE1vQzc4T2FqS3ZjUy95QUxzUnFycm1h?=
+ =?utf-8?B?MmlKcDZsN29VVXQrY2Z6dEZPWXdrZ2RnM2dPTi9NQTF6b3Mram9ZajB2ajFT?=
+ =?utf-8?B?aXNOdWxxQXk5UzQraDVNekxrd1RJY213M0g1ME82YUhZSWx3QXFkbmdpU2pO?=
+ =?utf-8?B?akNYRURSVUxTcmxVT29xeGlISkJVcVZjdTFyZlgyaXZKeGRRam4zQXI5bG5C?=
+ =?utf-8?B?enZJRXNGeGEvZmNnYzBaUVRicFVteCthYjk5RFlaVHdZdVJRVGhPTDM0U0h2?=
+ =?utf-8?B?ZUQ2Yjhwcm1wSVBVaHd1ejdKTWNVOXBNaE4wL0s3N21IakRQSHhzN3BPeHZJ?=
+ =?utf-8?B?UzlXcHJXTEYrNVY4bVVGc3pqQ1NpMENucmU0eEVjSDRERmF2cEdvS2tWVVda?=
+ =?utf-8?B?NHEyamtoNnk5ajIyOWFzbktMdzhkRVBBTUczaU9qcEZzQjQ4aDQ2RUlQUi9G?=
+ =?utf-8?B?Vm9Zb2N6cUs0YUd6bGRaUW9yR2FWZmNEbUpYdmxRZUlibm5LWjZpa1ljQk5j?=
+ =?utf-8?B?eEd6Sm5iQ2xQWDFEY1phV3ZMc05iQTc5M3pEbnBrdjFkVFFrb3MzdVE5bldH?=
+ =?utf-8?B?blNqMkFEZ3lIblFTOC8rcFR0cHQ5enE3ZS9HZGZEdTExc3paSldEUENqcG9p?=
+ =?utf-8?B?RUNidzZhNGdsTEtlQlRlSVBuUndjZmwwbzQ1bnAwNDZtWU5kd1M3bnJuT3B1?=
+ =?utf-8?B?eDFNTWdiZm9MV3B2NTFzSGZDQi91cExPemhOQ2htNHZIbldFZEN1bDZ1eGk4?=
+ =?utf-8?B?bDJrNFlJeFdCeUVTWE9GckNqa2pDT3RJS3pUVmFXR3dhd01NaERXRVJwT3Iv?=
+ =?utf-8?B?MklsQ0RjUU5lb2dmamN2TzhLOUtKaHlqVzNZRlRSeVAvc0hJNEUrZkVjYW1L?=
+ =?utf-8?B?NUl3ZHAwTjhOZ1hRVzhVeis1bEVWb0h6VDVqYlQvWjRIZmw4KzhkeFl4Nm84?=
+ =?utf-8?B?TmExbk1UKzNEYVZmSWdWb2o4TFl5MGRaZlY4NFFZdVRYV1BlYnMybUhpZmhW?=
+ =?utf-8?B?TzBYZENJaTFLN1RqKzJ0OVhvaDEzbS94dVJxRDZkVjkvM0RvbmtQckZYNWNW?=
+ =?utf-8?B?TVFUdXAvTmZIRSs2M3p4TVBBSEl3eXFSeUZBTmlDaUxyU0srZkprMWNpUjlN?=
+ =?utf-8?B?T3N5VGpLbkRlN2NEM3dDUm9ob2ZodkJ5L2F1YWdqaWJtbWVwUkkwSUdFYjAw?=
+ =?utf-8?B?MEdKKzNQT3doajVjUXhVN2dZZjFZK2xybHdMZzBoMWtGSFN3WWltTXdPRFFu?=
+ =?utf-8?B?dnhwNFgza3U4U2ExYlFFZjRFYjlqV3BXVy9wemREeTRhalVUc1JyY3pxTWJC?=
+ =?utf-8?B?akVXSVY5bmFlWTdTeDU4SjFibjZBV0x2dlpRTGw4TG84VmZRTHNCK2dVaGd6?=
+ =?utf-8?B?WENXbndGbzM0N0xUSkJ4dmxuK3pYV1dPQ2RSS3ErWUluTUhrS1l4T2FoY0Ez?=
+ =?utf-8?B?WXMxYkNEZlczckloVHA5SkxjSU1uc2ZCZzZjY1BmK2hybVFxUjJKQWc5R2FJ?=
+ =?utf-8?B?cUE9PQ==?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9f6b8a41-5b7c-4355-f475-08db94fd1c0e
+X-MS-Exchange-CrossTenant-AuthSource: DB9PR04MB9380.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Aug 2023 15:11:42.5370
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qwPJQgbYeCNOB28yLj0YdYb1lDAXIIPZhTfGSCpCLWGxU0pNBySRHyzXLNi/PgSQxo6sJz31YjXGil+r0BoYAQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR04MB7980
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230804_080506_867849_A8F73AE7 
-X-CRM114-Status: GOOD (  19.06  )
+X-CRM114-CacheID: sfid-20230804_081151_629744_1B4E61E4 
+X-CRM114-Status: GOOD (  15.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,66 +176,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 04, 2023 at 04:50:05PM +0200, Julien Stephan wrote:
-> On Mon, Jul 03, 2023 at 01:02:02PM +0200, AngeloGioacchino Del Regno wrote:
-> > Il 30/06/23 12:01, Julien Stephan ha scritto:
-> ..snip..
-> > > +
-> > > +static const struct mtk_seninf_format_info mtk_seninf_formats[] = {
-> > > +	{
-> > > +		.code = MEDIA_BUS_FMT_SBGGR8_1X8,
-> > > +		.flags = MTK_SENINF_FORMAT_BAYER,
-> >
-> > Each entry fits in one line.
-> >
-> > 	{ .code = MEDIA_BUS_FMT_SBGGR8_1X8, .flags = MTK_SENINF_FORMAT_BAYER },
-> >
-> 
-> Hi Angelo,
-> 
-> Actually not all entries fit in one line. The last 4 ones don't:
-> 
->        { .code = MEDIA_BUS_FMT_SGRBG10_DPCM8_1X8, .flags = MTK_SENINF_FORMAT_DPCM | MTK_SENINF_FORMAT_INPUT_ONLY },
-> which is 115 chars..
-> 
-> so what is the best? put all in one line except the last 4 one? or keep
-> them all as is?
 
-I'd keep them all as is.
 
-> > > +	}, {
-> ..snip..
-> > > +	udelay(1);
-> > > +	mtk_seninf_input_update(input, SENINF_CTRL, CSI2_SW_RST, 0);
-> >
-> > Is there any way to check if the CSI port did reset, or is it *guaranteed* to get
-> > out of reset in a microsecond after deasserting SW_RST?
+On 8/4/2023 1:42 AM, Rob Herring wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
 > 
-> I will double check this
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>   drivers/bus/fsl-mc/fsl-mc-bus.c | 1 +
+>   drivers/bus/fsl-mc/fsl-mc-msi.c | 2 --
+>   drivers/bus/hisi_lpc.c          | 2 +-
+>   drivers/bus/omap_l3_smx.c       | 1 -
+>   drivers/bus/simple-pm-bus.c     | 2 ++
+>   drivers/bus/sunxi-rsb.c         | 2 +-
+>   drivers/bus/ti-pwmss.c          | 2 +-
+>   7 files changed, 6 insertions(+), 6 deletions(-)
 > 
-> > > +}
-> > > +
-> ..snip..
-> > > +
-> > > +	val = mtk_seninf_mux_read(mux, SENINF_MUX_CTRL);
-> >
-> > rst_mask = SENINF_MUX_CTRL_SENINF_IRQ_SW_RST | SENINF_MUX_CTRL_SENINF_MUX_SW_RST;
-> >
-> > writel(mux->base + SENINF_MUX_CTRL, val | rst_mask);
-> > writel(mux->base + SENINFMUX_CTRL, val & ~rst_mask);
-> >
-> > that's better, right? :-)
 
-With mtk_seninf_mux_write() instead of writel(), yes :-)
+For drivers/bus/fsl-mc bits:
 
-> right :)
-> 
-> > > +	mtk_seninf_mux_write(mux, SENINF_MUX_CTRL, val |
-> > > +			     SENINF_MUX_CTRL_SENINF_IRQ_SW_RST |
-> > > +			     SENINF_MUX_CTRL_SENINF_MUX_SW_RST);
+Acked-by: Laurentiu Tudor <laurentiu.tudor@nxp.com>
 
--- 
-Regards,
-
-Laurent Pinchart
+---
+Thanks & Best Regards, Laurentiu
 
