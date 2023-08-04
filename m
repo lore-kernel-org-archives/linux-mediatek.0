@@ -4,71 +4,165 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 903DCC001DB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 06:39:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDBA6C04A6A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 06:51:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EPN3OZOEZTi78dK229bXvPun+jZDzpaARmmUs1x+NNY=; b=iepzDTlozeDcRHAXpI6p4qLZAb
-	+Wv4BlfXrTehvXyy6Fi2DcCW6VVkUmS7dt05BxYXwBNGEPDwJuYuarraJO/cJurqL0UpqDNFzPIrA
-	+0XyjLBUmzAv7M0giVHVf1GYt2CH7MDWc/sNAayUWWovbIwEssnKTDIgBaSF083pW5ClyCLJ8iB2g
-	sdvOH3VNuOjuIbKWhqXpTZf9qTPkoataZHcZPCyjDSI/ksWoJFn7s4s22H0LhTBAskOhgD1QeOwCq
-	TFmTpx2jF0A15Ko+McvxizhwXy/uYfEf2cJu1uHZnFDHidP2ee67XlzRfyCMLSTXgWM5uB06RI+oM
-	HJegWAsg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AqbXpil4fNASqtH8rPpuL6Hr7+sS+zS1wJgsDe/6MvQ=; b=JSWyyoCx7he7lhFBVRyvHQMPqA
+	0kzSdLrsKPuVIl3F/bnM7ZRb9sOS6qnBxw/3HoXuJSwnllCExCrxghH3CVbFYj8qlMwj/u0Ul9uNp
+	RbBzVCRKFzCgO0th6c8jPXhBG87yZSGFPRJL/K2CnokB8jbTEzxYB8wk+xxePW4pPz3zN/1VVFRZL
+	xTLv7p25wa3zWuGMDq3lSQfplQCPjm6isaIofJCbj1M1iMYOXebF+KFJvT5bPZ1acyHTOq4SCkC5i
+	aIsTMAOKNvxwHzVAg9R3TW0pfXJNwuJzXM7I5EStVneu2TwHnnyHk6azpQ8Qn7QRzLA6VCimeajLQ
+	P1pOFXhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRoTA-00Bh6G-24;
-	Fri, 04 Aug 2023 06:39:28 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qRofA-00BiH3-2z;
+	Fri, 04 Aug 2023 06:51:52 +0000
+Received: from mail-bn8nam12on20619.outbound.protection.outlook.com ([2a01:111:f400:fe5b::619] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRoT6-00Bh5X-1Y;
-	Fri, 04 Aug 2023 06:39:26 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 731F666071B4;
-	Fri,  4 Aug 2023 07:39:22 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1691131163;
-	bh=IpOr9pdyxS7HsU+ktjaQ4KJw4Ht++OfuZ4la3Xj62Co=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GpkoezfJwAo9ULIN3eIyaMLcNz+NZU763pz33LeEcEZ0jpK8bt+Uer8CrjEZI7UfJ
-	 6+HlbHyaXqjGoNhJNtf98lIHNuH/CjAaoiG4k7x2yiXXPWFqKIO58JRXWPvK90r8Zi
-	 1ccoITx1ZOhlrN0bReJT15Hjc1JtTIamfoIWtbYsVv5gJx8j49WwIgsKsyA29iyEmD
-	 w7xSCnsKl5Ju3v7MomI3vey/d+Keo6q9aq4UpxM5dP/JuWbuS13NFab4SJXbS6xyGh
-	 +fi3z6UZjkl61Trr8NSTqWB46G8thAqw1T53McfocUbGZqVYrbTCWabmEkFuXe5vY3
-	 SzsBFdDgY22Mw==
-Message-ID: <4762b4cc-f7bf-d4cb-a53b-ba2cfb5700fc@collabora.com>
-Date: Fri, 4 Aug 2023 08:39:19 +0200
-MIME-Version: 1.0
+	id 1qRof6-00BiF5-0A;
+	Fri, 04 Aug 2023 06:51:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TbTbiokhRgZeoPLHLsopCaok3zGud+WsjgsPtB+FI4DIfqlWkfILiBpRBFYIvk0VwsW0wZfgqtFaCW2/5PWO2w6oiXZj82eK8+Jy2zkvVnb8j1LUhM6WV13j2uHB+021UmYR5ziAdxRElhW30YQXeMQrmWsN/JxuG2d62rHRit0dozEfO/Pc07cO+JgCwj+E3EqW6i4KV/E2g0F1sUFpDVOSS737VtdxIpNCDGxConmGSNNPjHVDCeHVPTXej6uJhmt1hQZP19VE7KUVhneK49hYg+UDpyu9EHRPBzEAXUwhquCXXzsCILBmlBXXWWn1rOhPZwu4aSdWcCaWN8BRJw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=AqbXpil4fNASqtH8rPpuL6Hr7+sS+zS1wJgsDe/6MvQ=;
+ b=Le51XZ0ygCfJYaP0DZJ6RgCEc9x3vL9HFwlmYHS6Zx5lO0qZirn94O7V2dp2739SqnaByYVGKWN0hBXuWBMvfA9IVkQx5L1IZJTvBOui6o2bPA5PsYAJmGXu6lXgUu2zaSv2Cbq7e2ehOoa/tcUSUX48zN1UVVWMLPIUv9b9oZVJdZQjrW6pCGNqNXJ3IUT3gUd3+LRn65FUcoYfomqQwM/0rtDTwup8GBWb8YUYuRKDhDNrAt8wzTTh6h0T4NBU+2S9oexYngGJmkrEZtHfOJvyeYtU2G4UKkcFA3nCTLK/1LuWqfDuMyMtCmPqTRNIZ4O3R3h2P8AAkKqgTHP9Vg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=AqbXpil4fNASqtH8rPpuL6Hr7+sS+zS1wJgsDe/6MvQ=;
+ b=PykSd8Kp1Z8H/yaYPpGciazZgbjKCzUe/bjymm0GGSZM6BPOBuV9bQe04SGpsO5i3PXooORVf5D/KsZrLeb4EMGbjVV7dIvCo8w6+uKBg84998yBL7Qd3X7BiIHnjurLZjID8qSOG9sb2QO2+NaMIT778zll0glKcKwGv9vCp14=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from BYAPR12MB4758.namprd12.prod.outlook.com (2603:10b6:a03:a5::28)
+ by MN6PR12MB8470.namprd12.prod.outlook.com (2603:10b6:208:46d::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6652.20; Fri, 4 Aug
+ 2023 06:51:39 +0000
+Received: from BYAPR12MB4758.namprd12.prod.outlook.com
+ ([fe80::dc36:145a:99ff:f834]) by BYAPR12MB4758.namprd12.prod.outlook.com
+ ([fe80::dc36:145a:99ff:f834%6]) with mapi id 15.20.6652.020; Fri, 4 Aug 2023
+ 06:51:39 +0000
+Message-ID: <2cd4f9e5-87b6-64f9-2d50-f146cae6c83a@amd.com>
+Date: Fri, 4 Aug 2023 08:51:24 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 3/9] mfd: mt6397: Split MediaTek MT6366 PMIC out of MT6358
-To: Chen-Yu Tsai <wenst@chromium.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>,
- Zhiyong Tao <zhiyong.tao@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20230803074249.3065586-1-wenst@chromium.org>
- <20230803074249.3065586-4-wenst@chromium.org>
- <aa8f232f-701a-5b4c-eda8-89fc0e6fe5a8@collabora.com>
- <CAGXv+5EAR9Q5gGzkw=5UEEMOHbp56oKD5m_FyiHfZ3em8QwVAQ@mail.gmail.com>
+ Thunderbird/102.14.0
+Subject: Re: [PATCH v2 22/23] soc: xilinx: Explicitly include correct DT
+ includes
 Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5EAR9Q5gGzkw=5UEEMOHbp56oKD5m_FyiHfZ3em8QwVAQ@mail.gmail.com>
+To: Rob Herring <robh@kernel.org>, soc@kernel.org,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Tsahee Zidenberg <tsahee@annapurnalabs.com>,
+ Antoine Tenart <atenart@kernel.org>, Jisheng Zhang <jszhang@kernel.org>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
+ Jean-Marie Verdun <verdun@hpe.com>, Nick Hawkins <nick.hawkins@hpe.com>,
+ Lubomir Rintel <lkundrak@v3.sk>, Linus Walleij <linus.walleij@linaro.org>,
+ Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
+ Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
+ Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
+ Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>,
+ Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>,
+ Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, Viresh Kumar
+ <vireshk@kernel.org>, Shiraz Has him <shiraz.linux.kernel@gmail.com>,
+ Stuart Yoder <stuyoder@gmail.com>, Laurentiu Tudor
+ <laurentiu.tudor@nxp.com>, Jay Fang <f.fangjian@huawei.com>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Cristian Marussi <cristian.marussi@arm.com>, Shawn Guo
+ <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Dinh Nguyen <dinguyen@kernel.org>, Thierry Reding
+ <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Li Yang <leoyang.li@nxp.com>,
+ Qiang Zhao <qiang.zhao@nxp.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
+ linux-aspeed@lists.ozlabs.org, linux-pm@vger.kernel.org
+References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
+ <20230803-dt-header-cleanups-for-soc-v2-22-d8de2cc88bff@kernel.org>
+From: Michal Simek <michal.simek@amd.com>
+In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-22-d8de2cc88bff@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: FR0P281CA0220.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:ac::15) To BYAPR12MB4758.namprd12.prod.outlook.com
+ (2603:10b6:a03:a5::28)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BYAPR12MB4758:EE_|MN6PR12MB8470:EE_
+X-MS-Office365-Filtering-Correlation-Id: b0d83a05-8869-4433-607b-08db94b74076
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: TFBcV3KQx9Y5TA2iC6dRnwcsBAacMaWNl9XYhHc1uFTIbwMr6iLpGUOm89H1yJsx1REzBN7hwp4pQOhdFm1B/6MhgyKu94gX2+yvI5rocbCtLcD6LobWa0wuMEuuRSPgEptE9+pd+ZlAgHL/nnh+p2ffYfB+QxP5ccKkWkdpsUGtvPpac05ySQa0OxkvU2jTwMX2QeYgaG0p+GutAr4oHjGJF8vfWmDHCA7TguISi9G8+5InpQEg6k5K5wQtTzCuxy7BE4xF44ThRWiAEONv5dps8YRfLX/opsZRpr8pOLya4OvdiVlApVD9p7RalZ/BzOirFoyVYwGZlhxC5rw2n2briyaDc1r1oGZrIFX4y89/B7MNPwU7iT7NpbE5xL8zx5fIAvk+AiUuyNpDROHAaNNqHr4GzEpmb3vobiZl85KIjj78d2A5tbftkbmu7r8dPA3uY/Q+8Wtu9tL+V9mjWBZLV2sAOaJFRnlTbCj6+sDOKR40nNbrcaJHs+I94zPgdfHvSFXhrJ8NNfjohOMJqaxLEllNf5t4chhOTlgDUVGdrax1nGIvVpBfH8riiZr6fqmfP1kVnOb/UsApFhAYnfpxA4qOg6JXn6GwENv5wrtk6i9BBnR4nrNikI9q+UZ2O/bYN2pEc6dYXl6rCAWu1bODcPmv/DGAsb67tRNzHtPkLtkbyUCLT6eRLjbTMmBLPlJaNZGiIYAcZwqrMUKNQA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BYAPR12MB4758.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(366004)(136003)(396003)(39860400002)(376002)(346002)(1800799003)(451199021)(186006)(2616005)(53546011)(8676002)(26005)(6506007)(83380400001)(66476007)(2906002)(316002)(4326008)(66946007)(5660300002)(66556008)(44832011)(8936002)(7416002)(41300700001)(6666004)(7406005)(6486002)(6512007)(110136005)(478600001)(921005)(38100700002)(31696002)(36756003)(86362001)(7366002)(31686004)(45980500001)(43740500002)(41080700001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RSt6OFZ4c0twL2FyV2xseHZDQWphdWVkb0JDV3hXdlVTVnFMVFNUWW1EaWtL?=
+ =?utf-8?B?M3FWYmpYQ3dlU2c5eFEzSnAxRW5pRGxybUJtaHR6ekdLK1FwVldERWpvY0FG?=
+ =?utf-8?B?RWlsc2t4OENSOGdoeDc0blBDUnJPZXRhb0QxcksvK2ZkSkpSUXVCNkYyUkpP?=
+ =?utf-8?B?QkZUaERFZUhpaXdWbkl6YmtSTXRYUG1FK1A5LytjTGpQLzJaSGZuYnA0MEZt?=
+ =?utf-8?B?T2s1R0pwZFN1M0pwR3orVFFrZ3NPbGd3OER4VnBOa0pPdHpZQUpGMm94STB3?=
+ =?utf-8?B?Y0lNbHZtL3FHd1JhVStjZEMxVURLRGttaHZ1TEVLclVHaUZScVNsOXF3TUVL?=
+ =?utf-8?B?Q1NwcFI5ZDdHbFRQTXZhNkVrUkdSOVViZzdvSXlYUXN1VHpMSytNRFBUUStj?=
+ =?utf-8?B?alM5RE5IN1MrTmRWcWgzUkVLSnF4QnIwbUNUVDNQTkRKYjd1cmtDZkdERGJJ?=
+ =?utf-8?B?b0lrUlhKdFhDUXMxWDlLZmkwM1IxQXhzWXRFK0sveGVkbXI2V09za1NPb3l3?=
+ =?utf-8?B?Q3VnRWp5UjFQeTVxRjFobm1IQm9JV2ZYUHN5RzExQzJZS0J5SHU4VHZYOEtO?=
+ =?utf-8?B?bEljZ0VadUV4VHBxamJnWWc4TllHMlFxbzRrdkVLRnIraTEvZW1SdWErbmF5?=
+ =?utf-8?B?bDdIOC82TG9NTURiOGs3K0QvcVFRd3dvc0xGamFWSmh6MEhFR1lpdDFINmZX?=
+ =?utf-8?B?SCtsakdhclFyUWRsOVltaC92N3kraWtNYVVHK2VjVjYyUTlLTXJSRDhwMUdE?=
+ =?utf-8?B?VUlxYkZLajV1S3NpMkJsUWRxZ0ZGWWxMS0pyRjFud3dCSHhBL0pNTE9HRnZm?=
+ =?utf-8?B?VEZRamVzejdtbDhjWE9WSkJSYUdKdys4ZnV4cFNFQjFCczl2aFlSV25NbGFJ?=
+ =?utf-8?B?Yk43aUZTMkJrTSs0VzNHemVmeG1qRWFjQS9VN0VnYjFNbTZEMFhzK1hYWXZI?=
+ =?utf-8?B?ems2R3M5TTNKSVBVM0grMzdvQ1I5NFRxMWNnV01oMllmSzdZdUNHNFlnaG9F?=
+ =?utf-8?B?TU5WNTFQZnBZV3FCbld6SWJXazFjQWtpZFVNdTh6YkFDeEZlYmx0dkt3M0Vs?=
+ =?utf-8?B?L21OSTl1b1MrYjBVRElqT0ZVS3lIcjBKNEUwaUl6YjJtMk5jL2pUZ3hiUFBK?=
+ =?utf-8?B?ZUhoZG82ZWJnbTYydk9kN0NyK01wcmllUWIvRjVFYXJLOFg2RzdpaVVzaVow?=
+ =?utf-8?B?a2JZRkpNN2MzWEpGaGdVU0F1V29YR2h0NDF4OWpxMkhTcnRiekFWSWpEcUUz?=
+ =?utf-8?B?MXRYV2pnQzl5Tjc3MFA1NmxOVk56R3crRmFuT3R2OVRwZWdmc1FpdTVpcTBz?=
+ =?utf-8?B?VWI3b0FlUjZzL2p3cDhkdkhYNGh4NzY4aTNQNFZWSGx5N21BV1BSY3BsSVQ5?=
+ =?utf-8?B?NkZLa3FyMllmUmc1SzZ5MnA2QW1qWnZNelJjdzlsM1RGRFBoRlN1d01SN0Vz?=
+ =?utf-8?B?RitTQ0NBVURsYmx2b3FFSTNxNEplczAydlNUdlhQTVg0WUUyemxQZ3ZSV1Uz?=
+ =?utf-8?B?b2hESThUNm1vRnVPUXJSdXVOWGdJZmxUSTZVUFVqSElXY3BBeGJxbXpyUDBR?=
+ =?utf-8?B?QnA1ekpTSThNMUZESXg0bmFodUVOUUttb3VWNVdaNXBoc0EzT1Vyc1g2ZWdi?=
+ =?utf-8?B?M25vQ1ZBM2h1clhHM0RVNk56RXhIM01VSkRDQmcvcHFIZ1N3TUNNTzJVVzlS?=
+ =?utf-8?B?ajI1aWh2YXNBS2N5cktxd2RYTFF6WSswSEVHc2NOZ1k1K0tRMEVmcyt6alJM?=
+ =?utf-8?B?ZUxLeDQyQmYwNFl2QmxETjJsaWEyU0tVaVd0cDlVN25tSFQzWWhuTGZPSklh?=
+ =?utf-8?B?VWpKOHhxZHAydkRGNHkxYWtlZmppWWNDTU01UzN4bk5yMWdyTFpadTB5b0ds?=
+ =?utf-8?B?M3k5MHl4WktqZEEyekNZMnAraENDUXE4aWJvb1lEN3ZPZTdIYTFlQUFLQVRN?=
+ =?utf-8?B?c2JGdi9FMHhKVzR0L0dVY1RJTWFxck5hWk9YbzhNa0FQa096ekdLeGVEc2ZV?=
+ =?utf-8?B?NnkrVXR0RnBEbDJHYWtDNkM2bW92dkt3MmtTNWc1ZVM2WWJ2RUtpc0loWDNY?=
+ =?utf-8?B?anJpRmI0V3pPSUtKTVQraVVtaWRLM2ZXcGRjNE8vd3JScEdScjdnTWRSNjZz?=
+ =?utf-8?Q?GZxaHMJiyASqbAEJ6e8P4mlVS?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b0d83a05-8869-4433-607b-08db94b74076
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR12MB4758.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Aug 2023 06:51:38.8664
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 6hlnFLevFMxgluYWUBm0/QRsRTrD9MYRvQUCjOpyWf0vTFSgC5PjKgZaQfCsyGr5
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN6PR12MB8470
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230803_233924_827432_C19E3750 
-X-CRM114-Status: GOOD (  28.43  )
+X-CRM114-CacheID: sfid-20230803_235148_123866_EF9F62CF 
+X-CRM114-Status: GOOD (  19.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,122 +177,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/08/23 05:47, Chen-Yu Tsai ha scritto:
-> On Thu, Aug 3, 2023 at 5:01 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 03/08/23 09:42, Chen-Yu Tsai ha scritto:
->>> The MT6366 PMIC is mostly, but not fully, compatible with MT6358. It has
->>> a different set of regulators. Specifically, it lacks the camera related
->>> VCAM* LDOs, but has additional VM18, VMDDR, and VSRAM_CORE LDOs.
->>>
->>> Add a separate compatible for the MT6366 PMIC. The regulator cell for
->>> this new entry uses a new compatible string matching MT6366.
->>>
->>> Fixes: c47383f84909 ("mfd: Add support for the MediaTek MT6366 PMIC")
->>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->>
->> I agree in that the LDOs are a bit different, but that's handled by the
->> mt6358-regulator driver regardless of the actual devicetree compatible,
->> as that's selected through a chip_id check.
->>
->> Finally, looking at the driver implementation itself, the addition of a
->> specific mt6366 compatible here seems redundant, because the actual HW is
->>    - Handled by drivers, but
->>    - Described by bindings
->>
->> Any other opinions on this?
+Hi Rob,
+
+On 8/4/23 00:43, Rob Herring wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
 > 
-> Well, on the bindings side, we can't have MT6366 fall back to MT6358,
-> neither for the whole PMIC nor just for the regulators. For the latter
-> it's because neither is a subset of the other, which a) makes them not
-> fallback compatible as required by the spirit of fallback compatibles,
-> and b) cannot be described with a fallback compatible, as the fallback
-> one will have properties/nodes that are not valid for the other, and
-> vice versa.
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>   drivers/soc/xilinx/zynqmp_power.c | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> Without a fallback compatible to lean in for the regulator driver, we
-> will need to split out the compatible at the mfd level as well. AFAIU
-> the mfd core matches mfd-cells based on the compatible strings it is
-> given in the driver.
+> diff --git a/drivers/soc/xilinx/zynqmp_power.c b/drivers/soc/xilinx/zynqmp_power.c
+> index 641dcc958911..913417506468 100644
+> --- a/drivers/soc/xilinx/zynqmp_power.c
+> +++ b/drivers/soc/xilinx/zynqmp_power.c
+> @@ -11,6 +11,7 @@
+>   
+>   #include <linux/mailbox_client.h>
+>   #include <linux/module.h>
+> +#include <linux/of.h>
+>   #include <linux/platform_device.h>
+>   #include <linux/reboot.h>
+>   #include <linux/suspend.h>
 > 
 
-Hmm... you might actually be right on this.
-But! I just want to be sure that we're doing things the right way.. and
-I'd like to get an opinion from a bindings person, as I think that's the
-most appropriate thing that can be done.
+I was checking and I was on CC on the v1 but I didn't get this to my inbox.
+Anyway let me apply this to my queue.
 
-Krzysztof, please, can you check this one?
+Arnd: If you want to take it directly I am fine with it too.
 
-Thanks!
-Angelo
-
-> ChenYu
-> 
->> Regards,
->> Angelo
->>
->>> ---
->>>    drivers/mfd/mt6397-core.c | 31 +++++++++++++++++++++++++++++++
->>>    1 file changed, 31 insertions(+)
->>>
->>> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
->>> index f6c1f80f94a4..3f8dfe60a59b 100644
->>> --- a/drivers/mfd/mt6397-core.c
->>> +++ b/drivers/mfd/mt6397-core.c
->>> @@ -206,6 +206,26 @@ static const struct mfd_cell mt6359_devs[] = {
->>>        },
->>>    };
->>>
->>> +static const struct mfd_cell mt6366_devs[] = {
->>> +     {
->>> +             .name = "mt6358-regulator",
->>> +             .of_compatible = "mediatek,mt6366-regulator"
->>> +     }, {
->>> +             .name = "mt6358-rtc",
->>> +             .num_resources = ARRAY_SIZE(mt6358_rtc_resources),
->>> +             .resources = mt6358_rtc_resources,
->>> +             .of_compatible = "mediatek,mt6358-rtc",
->>> +     }, {
->>> +             .name = "mt6358-sound",
->>> +             .of_compatible = "mediatek,mt6358-sound"
->>> +     }, {
->>> +             .name = "mt6358-keys",
->>> +             .num_resources = ARRAY_SIZE(mt6358_keys_resources),
->>> +             .resources = mt6358_keys_resources,
->>> +             .of_compatible = "mediatek,mt6358-keys"
->>> +     },
->>> +};
->>> +
->>>    static const struct mfd_cell mt6397_devs[] = {
->>>        {
->>>                .name = "mt6397-rtc",
->>> @@ -280,6 +300,14 @@ static const struct chip_data mt6359_core = {
->>>        .irq_init = mt6358_irq_init,
->>>    };
->>>
->>> +static const struct chip_data mt6366_core = {
->>> +     .cid_addr = MT6358_SWCID,
->>> +     .cid_shift = 8,
->>> +     .cells = mt6366_devs,
->>> +     .cell_size = ARRAY_SIZE(mt6366_devs),
->>> +     .irq_init = mt6358_irq_init,
->>> +};
->>> +
->>>    static const struct chip_data mt6397_core = {
->>>        .cid_addr = MT6397_CID,
->>>        .cid_shift = 0,
->>> @@ -358,6 +386,9 @@ static const struct of_device_id mt6397_of_match[] = {
->>>        }, {
->>>                .compatible = "mediatek,mt6359",
->>>                .data = &mt6359_core,
->>> +     }, {
->>> +             .compatible = "mediatek,mt6366",
->>> +             .data = &mt6366_core,
->>>        }, {
->>>                .compatible = "mediatek,mt6397",
->>>                .data = &mt6397_core,
->>
->>
-
+Thanks,
+Michal
 
