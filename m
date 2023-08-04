@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8246CC001DE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 03:50:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE70BC04A6A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 04:23:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LVSXp7pt1ynfIFYVxUfKRmE0SvUQ9GE4LWveQ3EWr04=; b=b2Rbw9xr7RIKNYu85ohLE4Z/3s
-	aOXVOi+yqiiJa4Q2nXlKeHevL17CswKTIOYB+5UOvvxvOM5Pdz4WvWbXYBnlzeUh2YQ9am2sBrj1U
-	g+Y4MkDjv6gHuncqxw1/giG+IUVcEVl8tgb2B3DC6bL/bAw3PB/1lJNG6+jHyhvcf4Vj8SflweGyI
-	WivVRT5ydgCyPJHA2ie367T1fpqR8h9qIHTn5NqZ5BTWx8O+eHLcAc1laBUQtvTaWk5faI4SSta5E
-	5MVYZP5fTM4NMPzH2KcLJxaTDQzva9lxlSQm1O8kTSViWPgzNc021Rw+rzt1OO61yqK+QeJaBowlu
-	VPMh7M1g==;
+	bh=jyxoLO007wer8vGQEULqHDYToyFmbyl5+nKvUOzjdb4=; b=oFDLEpa5NV37f0fu7GgeORfARP
+	4p8HvImrriPWQVTbnM/o8mOMvjoBKRu/YqMYr7msGJov5b4NRuIIHyEu+PPINrziwPWqzuzjQ2pqX
+	f8vpGL7qsi3ciA8tEgCChVLFWC3sNMQw1tmN3ooZfxB2pSIjj/nRoQefFSkrTSVVejuEHCN+bQkAI
+	Hhbb0YyZoNiyRevcuuS2jUUUi4XPu0/msJbPYyFgYZAc/R9XKWXpOFt5OeFHfaSdi9OUEylG4dEoa
+	WrdDoBXeTNFzetYFuvCT4DN+MMCd03mloBfjZQNisZpoRnQKiYfmnMZaqV94LzNp8Zl6gY8tt9rIK
+	bFYukPEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRlpA-00BTdd-2L;
-	Fri, 04 Aug 2023 03:50:00 +0000
-Received: from mail-vk1-xa34.google.com ([2607:f8b0:4864:20::a34])
+	id 1qRmL5-00BWXH-2l;
+	Fri, 04 Aug 2023 04:22:59 +0000
+Received: from mail-vk1-xa31.google.com ([2607:f8b0:4864:20::a31])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRlp7-00BTam-37
+	id 1qRmL3-00BWVs-1E
 	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Aug 2023 03:49:59 +0000
-Received: by mail-vk1-xa34.google.com with SMTP id 71dfb90a1353d-48715f54356so372393e0c.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 03 Aug 2023 20:49:54 -0700 (PDT)
+	Fri, 04 Aug 2023 04:22:58 +0000
+Received: by mail-vk1-xa31.google.com with SMTP id 71dfb90a1353d-487179c285fso304159e0c.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 03 Aug 2023 21:22:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1691120993; x=1691725793;
+        d=chromium.org; s=google; t=1691122975; x=1691727775;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=LVSXp7pt1ynfIFYVxUfKRmE0SvUQ9GE4LWveQ3EWr04=;
-        b=kuZVbEqhHTsnlhU4yOn7K+V0x//RYjK4AwrNZf3Pi5jTwku1adyhSoQ6KkKQ+LLqDh
-         Qa+Vf7E/P3XbgbKMEG3wnNn0cu1Nh1j+fzr7YFAmPi4NyCBd2T41h2s5+r822Dk25Dbd
-         sLCHjo4nM1pZUy5NDn8ET+YoCmMJsWoQNUWWk=
+        bh=jyxoLO007wer8vGQEULqHDYToyFmbyl5+nKvUOzjdb4=;
+        b=HhCcRMkezocHEWPSlGsjN6Df5ziasYgLp+/MegocGZ5QyXALKJUFRvYCyB1ZLBKlxw
+         jUbaUziLCoxrwYv3P8F8mSrEdq6K1d+MJ3nxCCoLtPWhZnPyMPmSv5yEmduGjeRi7WIn
+         var+a7bGU0jSz/JjRNGVunR0qb/efTwOkTPVI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691120993; x=1691725793;
+        d=1e100.net; s=20221208; t=1691122975; x=1691727775;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=LVSXp7pt1ynfIFYVxUfKRmE0SvUQ9GE4LWveQ3EWr04=;
-        b=Jhq3n9T+HrYx+ZzQ8T71z8PNSSJSITlF71csgXH6TJDHIXDoBqKr6dGtCis7WSlmCV
-         GI+dn8PLS9ji8d/iN/KeYooyDX8DjAG38huJs55itmob6cCx8L55f0fhWSBvLwF+Luc9
-         8FOkDwXkgqdnYGHgJen8/uqaFs7HLJB4PqeXrQQ09PnFmresrhtqXc9pvg+3W7nb5+y5
-         UQRUgiL6MTzBRV8XXtZGp8DTOPH99+dylfmqSrQ3MoBjWn78x2jLRFFuQHRAji89LMIU
-         caCRHQAum+T2xrbX3VnvgOBawATXAZFxjDlcOxIL5P4lMzv+e2uvtxAOsXH7HFOffRgZ
-         O4NQ==
-X-Gm-Message-State: AOJu0Yzq9RcY5hxv16kKi6VJPvETABA3lNBwq3ESxgo7qmpkR/xc12B2
-	2cDkErvj7dF9LrfLMflp1Rb4giuguVxFVZv3v0v6Wg==
-X-Google-Smtp-Source: AGHT+IHYBwhOGTrCuCN8IOCqvpmaj2FCreDh6icca0SFM57jjcqreajpJTjlRkJ6xgR7wTok6XJeu9AaAfRKP49caHs=
-X-Received: by 2002:a1f:e081:0:b0:486:556c:a0bb with SMTP id
- x123-20020a1fe081000000b00486556ca0bbmr269439vkg.9.1691120993526; Thu, 03 Aug
- 2023 20:49:53 -0700 (PDT)
+        bh=jyxoLO007wer8vGQEULqHDYToyFmbyl5+nKvUOzjdb4=;
+        b=W4ieSrjHtsHixzcsCxCsdGFgNlrZ/lLJuytnL5DGE0D++jmpsxOfJxdHXqBkbJacHx
+         X6BWU9zbjlyJvR8KQsN0Vh2PSgvLTcHJl5DKkUzT3TntqOQHkQIilO/QhwAxGDEZlCbM
+         g204Dhkc1MKUD6pzvbTqEuimgErsjCH3eiGyjsULjeYhU4x2vRajfWnh8m6vNdS2j5ws
+         tMhZ6ti935qcnz9E00QHCFKSK0sYt3TjeM6ssNFysPIfpUYRK7sSIyNGW2JtBg/8rbZk
+         1/GPS1T+RcQPXAXZiBpsOctqXD7N8y8S2Gvm39Kd1eXy9fC3A4qv6e8Wpdih9N3s8nV9
+         xnLg==
+X-Gm-Message-State: AOJu0YyvxqdnLuppp4Vb/VSs5cKdtaXk2JdyOVw5jZNTv59rhfZWVPrI
+	EM9ZmGf9ybtQixEZ+Kx5718yam6wwfZNpdIXIUfGDQ==
+X-Google-Smtp-Source: AGHT+IFYGSRicG0zDcxiQP5nBUEu++Q6FFkpz7aoPRLFhF+eMD9RVVQWfLW+KaLFuSN55QHHLbuYZL2f/A9BObI5TWE=
+X-Received: by 2002:a1f:5f84:0:b0:487:1586:4c29 with SMTP id
+ t126-20020a1f5f84000000b0048715864c29mr383643vkb.1.1691122975222; Thu, 03 Aug
+ 2023 21:22:55 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230803074249.3065586-1-wenst@chromium.org> <20230803074249.3065586-10-wenst@chromium.org>
- <e9c38029-f27d-7800-2ba8-d9ee19d999e4@collabora.com>
-In-Reply-To: <e9c38029-f27d-7800-2ba8-d9ee19d999e4@collabora.com>
+References: <20230803012341.2388831-1-chenjiahao16@huawei.com>
+In-Reply-To: <20230803012341.2388831-1-chenjiahao16@huawei.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 4 Aug 2023 11:49:42 +0800
-Message-ID: <CAGXv+5G+kLNaj3F1NG+Y2zQuc7Xv_wczHeFUEUNGo8ZdVWYM1w@mail.gmail.com>
-Subject: Re: [PATCH 9/9] soc: mediatek: pwrap: add support for MT6366 PMIC
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Zhiyong Tao <zhiyong.tao@mediatek.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+Date: Fri, 4 Aug 2023 12:22:44 +0800
+Message-ID: <CAGXv+5H1LL-0FbcmuwRCtkmnWRmO0L4+0jxzKZeAzJKTWDiZqw@mail.gmail.com>
+Subject: Re: [PATCH -next] thermal/drivers/mediatek: Remove repeating warn msg
+ after devm_thermal_add_hwmon_sysfs()
+To: Chen Jiahao <chenjiahao16@huawei.com>, rafael@kernel.org, daniel.lezcano@linaro.org
+Cc: amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, aouledameur@baylibre.com, 
+	void0red@hust.edu.cn, robh@kernel.org, daniel@makrotopia.org, 
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230803_204958_047499_C1055A26 
-X-CRM114-Status: GOOD (  25.78  )
+X-CRM114-CacheID: sfid-20230803_212257_438420_5D70B22B 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,65 +90,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 3, 2023 at 5:01=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+On Thu, Aug 3, 2023 at 9:24=E2=80=AFAM Chen Jiahao <chenjiahao16@huawei.com=
+> wrote:
 >
-> Il 03/08/23 09:42, Chen-Yu Tsai ha scritto:
-> > The MT6366 PMIC is mostly, but not fully, compatible with MT6358. It ha=
-s
-> > a different set of regulators. Specifically, it lacks the camera relate=
-d
-> > VCAM* LDOs, but has additional VM18, VMDDR, and VSRAM_CORE LDOs.
-> >
-> > Add a separate compatible for the MT6366 PMIC.
-> >
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Referring to commit 8416ecfb32923 ("thermal/hwmon: Add error
+> information printing for devm_thermal_add_hwmon_sysfs()"),
+> return value has already been checked if ret !=3D 0 in
+> devm_thermal_add_hwmon_sysfs(). Error handling has also been
+> performed in this case, including print warning message for
+> debugging.
 >
-> We can express the same partial-compatibility state with bindings, adding=
- a
-> new compatible here with the same platform data doesn't really add any va=
-lue...
+> Removing dev_warn() following devm_thermal_add_hwmon_sysfs()
+> to clean up redundant warning message.
 >
-> ...also because in DT we'll have something like
->         compatible =3D "mediatek,mt6366", "mediatek,mt6358";
->
-> so if any variation of platform data in mtk-pmic-wrap will ever be needed=
-, we
-> would still be able to do that in the future without any headache.
->
-> In my opinion, this commit can be dropped.
+> Signed-off-by: Chen Jiahao <chenjiahao16@huawei.com>
 
-As mentioned in my reply to the mfd patch, this might not be doable. There
-are limitations on both the DT bindings and mfd driver sides.
-
-ChenYu
-
-> P.S.: We could add a comment in the mt6366.dtsi pmic devicetree for that,=
- too?
->
-> Cheers,
-> Angelo
->
-> > ---
-> >   drivers/soc/mediatek/mtk-pmic-wrap.c | 2 ++
-> >   1 file changed, 2 insertions(+)
-> >
-> > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediate=
-k/mtk-pmic-wrap.c
-> > index 11095b8de71a..e3c0e767033b 100644
-> > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > @@ -2257,6 +2257,8 @@ static const struct of_device_id of_slave_match_t=
-bl[] =3D {
-> >       { .compatible =3D "mediatek,mt6357", .data =3D &pmic_mt6357 },
-> >       { .compatible =3D "mediatek,mt6358", .data =3D &pmic_mt6358 },
-> >       { .compatible =3D "mediatek,mt6359", .data =3D &pmic_mt6359 },
-> > +     /* MT6366 is mostly compatible with MT6358, except for slightly d=
-ifferent regulators. */
-> > +     { .compatible =3D "mediatek,mt6366", .data =3D &pmic_mt6358 },
-> >
-> >       /* The MT6380 PMIC only implements a regulator, so we bind it
-> >        * directly instead of using a MFD.
->
->
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
