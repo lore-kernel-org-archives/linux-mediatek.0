@@ -4,109 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83F7CC001DF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 14:38:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B424FC04E69
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 14:50:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BM5R+rkSeL9WIp21l2emysOOucIRf/CjafaqigjE3ns=; b=xyJ0U2DFsh5XGqIzFkTX82hO1d
-	Qo5bE/KpRkwS60xtfp8U+Y7c/5sgbobRsb+3boKNuki9NHM24G4CCUh1cGAuCLLZ52zLIopb7MyGM
-	7ecESM7WCnpUZgbQaAaw3zHyzxoTp/9iHddlV2Vo7BqzIBcZvjocGKqoQS2/w5hD/kz/jCJhUwR6p
-	PTW+nsoxWg0OupYAyYnnCoSoHDCmnCeUIdQCbU8d/kYDhlnk/pYJxbLpDkhOt6A5+HS2PWvvdkHqj
-	3gF+9Dh5T+8zD5QlwLvfG/5u/XhiHY/H/2QSP73AwE9NgaR92yhn/vpUNS6TP0OWc/esGTpwLPAkw
-	tZ2lLvng==;
+	bh=SMo6gMfYlM/VNtFOwn/e5G1+vIj8kyfLio8gxupX/74=; b=PcXQaidRxDE4gvaKAydo7lpRwD
+	7xg+7AK49iw+EBB3BkzC02LGPfDGPVlQcc1SeLU3YzDg2btg3M68EQUzEt0SJMZ215kO2UWGId5Hc
+	AyW2f6CPkFJs8dofY0pWqdgx5KYXXTrlOx+f/xXX9qrDCF3eHQxUComv8RsLR+xq7JQ3tKoXRS5+E
+	JnHuTIQh6nWTanf/z4UxH0rVD7NVzIUAV0IszwH+918J4+JLNtoUk7OtrCZ14v3c39T1C+Ne0d64t
+	f8DDKn46TDql/XpOy6HRY/EfHMJ3eQloBB0wFWj7gCGW8qF0UjOAfUKbq5Km8W6018hdqLEbippCi
+	voiX89Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRvwi-00Cbze-22;
-	Fri, 04 Aug 2023 14:38:28 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1qRw85-00Cd8w-2a;
+	Fri, 04 Aug 2023 14:50:13 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRvwe-00Cbyb-2f;
-	Fri, 04 Aug 2023 14:38:26 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-3fe4b45a336so4463165e9.1;
-        Fri, 04 Aug 2023 07:38:16 -0700 (PDT)
+	id 1qRw81-00Cd7e-37
+	for linux-mediatek@lists.infradead.org;
+	Fri, 04 Aug 2023 14:50:12 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-2b9ba3d6157so35370311fa.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Aug 2023 07:50:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1691159895; x=1691764695;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BM5R+rkSeL9WIp21l2emysOOucIRf/CjafaqigjE3ns=;
-        b=P52o47d9dHG1aUMZwk0pd23gUMU1gSEcAaorjtm0PUBSc4CTskirX886xdzRJezLg6
-         M4MtQIA6juxB9+sFPFH3EPWi9hMPTVDd1wwyWh3PmXuu1po0m+repmiBQFo72mEPoUaF
-         CKzmuVyB06487jxO3URnO0OYZ2cjQP/ZYPY+Ly4YmQO1h8Ul1MwxJiS6CzfTEpBkUg4D
-         GvHC2AtRasiPCNfOkLFtYCr2iYrhUrXdaNuwr9xpfY5akGkjLPDtWAHv3doGspA8ZqzA
-         BVho52Djxf/ClpbDDROl0ciKQJHwoe5ELFkv+xQsoTFDKnytt8GlFd+Ntd6Geakv25p/
-         LA8g==
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1691160607; x=1691765407;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=SMo6gMfYlM/VNtFOwn/e5G1+vIj8kyfLio8gxupX/74=;
+        b=Mfog46uUvnC1c3rJIRnxVP4Rn1RbM25sv6wJsTw/NSVKIwWmjjCO90AC35/gzaa/Y5
+         F3rZRVvXDuuGz6MMqir/9Eh0mflOU0TgDqPn9elrJExaK5oBz588NIunZgMZIHUVzB/G
+         54NpDe2kPhOJN3NU+NolDhb/A3wovEabDWmtdgXv8KGTCPee+zgTuRPt533tcJFlA1i6
+         XRq8+VcfmJaRwMDSYHJ4QfTZl/APXx0z8YuY8Vqr5gY407AiuxzAQB490bCFp3dlR39b
+         aW8l1/6W0FrEM1CVF9+wIoB1ktl2ZJhCjkqt/OpAIYpjy0mln0oczHM5luyUJBt6gvXD
+         12hQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691159895; x=1691764695;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=BM5R+rkSeL9WIp21l2emysOOucIRf/CjafaqigjE3ns=;
-        b=F6r+jxmTG9wKNBIe1qfqm7c+2db32oKYeol4ZwO+bmIQFr+3PVNQr8xGkUqNgzPzNL
-         HfOCnxRrZIRkeUfgkFnA2oRmcSiQW1qd6Oac3xvoRkVN+AaYJJ4t0/gnhGoJu5Itq/Mm
-         a8ZtXWeQIdqdGlMeEBbwgE8xQ458ZiSAzpEYkkFI098tVzazsTsm0nB9qNpZmMHMsPp+
-         pdb0OCzpWF4/9eQls/Ob7SuPen/nv7Ea6oa7nPVyF3CcSAkXD5pZ6bbBM7xS1y96Jn12
-         J8gt9aYin16CWgw0wg24/dF/XRJwJRtF+bC7FhVKN4KRzEoY+AOyHRD7UNhQsoqM66My
-         sM9Q==
-X-Gm-Message-State: AOJu0YxSIv7I8tw/DTUngixzvu1aQ/yNmQ/ZLEr/POoibFKy+QWoWRo1
-	q7RqKwvriJaKd4t3XechIcs=
-X-Google-Smtp-Source: AGHT+IFR8gDqjRYqyXRMOxF0JJDJ3mrxElW64dDSszEM8SNr/lPevhKIntH0L12mO9e2OcoWVt3KOw==
-X-Received: by 2002:a1c:7c05:0:b0:3fb:e4ce:cc65 with SMTP id x5-20020a1c7c05000000b003fbe4cecc65mr1591896wmc.25.1691159894687;
-        Fri, 04 Aug 2023 07:38:14 -0700 (PDT)
-Received: from jernej-laptop.localnet (82-149-1-233.dynamic.telemach.net. [82.149.1.233])
-        by smtp.gmail.com with ESMTPSA id f9-20020a7bc8c9000000b003fba92fad35sm6833727wml.26.2023.08.04.07.38.11
+        d=1e100.net; s=20221208; t=1691160607; x=1691765407;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=SMo6gMfYlM/VNtFOwn/e5G1+vIj8kyfLio8gxupX/74=;
+        b=cnUngsMbU2H+dawJclRO4pdfGIMJL3IK+K+MIinfs4UfGWVEv6x2s2wjLkiEVIgAGW
+         zVTCzqiyy903umnTwBwoed+6UXXfTibHbBK61ax0m5cGw4927veWB0wxeOdwZWVPx7Wv
+         CZbN3wBPPH6zM+nIroMpdpQV7q5ILdDZcWiGRZPMrtZ6cdvxfTTrIPcFEZeNVooJ479n
+         k3Jw2SgRW0Z7WjDhDCDQmgq8NtufrXgjXzRwCVtGH4QS7AG0SKKcvGHpW+lKD4zXNmgy
+         54MmuE5oeOC0wtR24iZbZKMr4j7TvQTF0ZTeGUTqcpb4h02nXaaebRXq2jaQJ+vc+rOH
+         00dw==
+X-Gm-Message-State: AOJu0YzyVWcRC65WuqkrYSBB35JftqiWbY5WzH9lpnaR6SgXLtDt7UbS
+	KVtBwW9Ww9J/lW3ejBqKgqZw9A==
+X-Google-Smtp-Source: AGHT+IH9U6AIT6bF+8F9r2Z0sZcprmA3N5tubjVSO8iveevPtXWr9d3p3tebi9qlowrLhtjtfMqA8Q==
+X-Received: by 2002:a2e:a176:0:b0:2b9:ee3e:2407 with SMTP id u22-20020a2ea176000000b002b9ee3e2407mr1664532ljl.38.1691160606509;
+        Fri, 04 Aug 2023 07:50:06 -0700 (PDT)
+Received: from localhost ([2a01:e0a:55f:21e0:9e19:4376:dea6:dbfa])
+        by smtp.gmail.com with ESMTPSA id l26-20020a1c791a000000b003fbb06af219sm2540259wme.32.2023.08.04.07.50.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Aug 2023 07:38:14 -0700 (PDT)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>,
- Tsahee Zidenberg <tsahee@annapurnalabs.com>,
- Antoine Tenart <atenart@kernel.org>, Jisheng Zhang <jszhang@kernel.org>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
- Jean-Marie Verdun <verdun@hpe.com>, Nick Hawkins <nick.hawkins@hpe.com>,
- Lubomir Rintel <lkundrak@v3.sk>, Linus Walleij <linus.walleij@linaro.org>,
- Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
- Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
- Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
- Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>,
- Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>,
- Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>, Viresh Kumar <vireshk@kernel.org>,
- Shiraz Has him <shiraz.linux.kernel@gmail.com>,
- Stuart Yoder <stuyoder@gmail.com>, Laurentiu Tudor <laurentiu.tudor@nxp.com>,
- Jay Fang <f.fangjian@huawei.com>, Chen-Yu Tsai <wens@csie.org>,
- Samuel Holland <samuel@sholland.org>,
- Cristian Marussi <cristian.marussi@arm.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Dinh Nguyen <dinguyen@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Michal Simek <michal.simek@amd.com>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- Ulf Hansson <ulf.hansson@linaro.org>, Li Yang <leoyang.li@nxp.com>,
- Qiang Zhao <qiang.zhao@nxp.com>, Rob Herring <robh@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
- linux-aspeed@lists.ozlabs.org, linux-pm@vger.kernel.org
-Subject: Re: [PATCH v2 21/23] soc: sunxi: Explicitly include correct DT includes
-Date: Fri, 04 Aug 2023 16:38:11 +0200
-Message-ID: <2690872.mvXUDI8C0e@jernej-laptop>
-In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-21-d8de2cc88bff@kernel.org>
-References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
- <20230803-dt-header-cleanups-for-soc-v2-21-d8de2cc88bff@kernel.org>
+        Fri, 04 Aug 2023 07:50:06 -0700 (PDT)
+Date: Fri, 4 Aug 2023 16:50:05 +0200
+From: Julien Stephan <jstephan@baylibre.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Louis Kuo <louis.kuo@mediatek.com>, 
+	Phi-bang Nguyen <pnguyen@baylibre.com>, Florian Sylvestre <fsylvestre@baylibre.com>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Alexander Gordeev <agordeev@linux.ibm.com>, 
+	Andy Hsieh <andy.hsieh@mediatek.com>, Conor Dooley <conor+dt@kernel.org>, 
+	daoyuan huang <daoyuan.huang@mediatek.com>, devicetree@vger.kernel.org, 
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-media@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Moudy Ho <moudy.ho@mediatek.com>, 
+	Rob Herring <robh+dt@kernel.org>, Vasily Gorbik <gor@linux.ibm.com>
+Subject: Re: [PATCH v2 2/4] media: platform: mediatek: isp_30: add mediatek
+ ISP3.0 sensor interface
+Message-ID: <72ixohoacq4vgj7nqg4l5gt5bs5e5ewain6a5ovqs3winx3qzz@sbg5lfohq5mq>
+References: <20230630100321.1951138-1-jstephan@baylibre.com>
+ <20230630100321.1951138-3-jstephan@baylibre.com>
+ <da891ec5-473c-5bef-d88b-661fac70ed25@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <da891ec5-473c-5bef-d88b-661fac70ed25@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230804_073824_867266_8F430ECD 
-X-CRM114-Status: GOOD (  18.40  )
+X-CRM114-CacheID: sfid-20230804_075010_005244_D3D8D74C 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,46 +101,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dne petek, 04. avgust 2023 ob 00:43:01 CEST je Rob Herring napisal(a):
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
+On Mon, Jul 03, 2023 at 01:02:02PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 30/06/23 12:01, Julien Stephan ha scritto:
+..snip..
+> > +
+> > +static const struct mtk_seninf_format_info mtk_seninf_formats[] = {
+> > +	{
+> > +		.code = MEDIA_BUS_FMT_SBGGR8_1X8,
+> > +		.flags = MTK_SENINF_FORMAT_BAYER,
+>
+> Each entry fits in one line.
+>
+> 	{ .code = MEDIA_BUS_FMT_SBGGR8_1X8, .flags = MTK_SENINF_FORMAT_BAYER },
+>
 
-Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+Hi Angelo,
 
-Should I take this through sunxi tree?
+Actually not all entries fit in one line. The last 4 ones don't:
 
-Best regards,
-Jernej
+       { .code = MEDIA_BUS_FMT_SGRBG10_DPCM8_1X8, .flags = MTK_SENINF_FORMAT_DPCM | MTK_SENINF_FORMAT_INPUT_ONLY },
+which is 115 chars..
 
-> ---
-> v2:
->  - Drop sun20i-ppu.c which moved
-> ---
->  drivers/soc/sunxi/sunxi_sram.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/soc/sunxi/sunxi_sram.c b/drivers/soc/sunxi/sunxi_sram.c
-> index 4c4864cd2342..4458b2e0562b 100644
-> --- a/drivers/soc/sunxi/sunxi_sram.c
-> +++ b/drivers/soc/sunxi/sunxi_sram.c
-> @@ -15,7 +15,7 @@
->  #include <linux/module.h>
->  #include <linux/of.h>
->  #include <linux/of_address.h>
-> -#include <linux/of_device.h>
-> +#include <linux/of_platform.h>
->  #include <linux/platform_device.h>
->  #include <linux/regmap.h>
+so what is the best? put all in one line except the last 4 one? or keep
+them all as is?
 
 
+> > +	}, {
+..snip..
+> > +	udelay(1);
+> > +	mtk_seninf_input_update(input, SENINF_CTRL, CSI2_SW_RST, 0);
+>
+> Is there any way to check if the CSI port did reset, or is it *guaranteed* to get
+> out of reset in a microsecond after deasserting SW_RST?
+>
 
+I will double check this
 
+> > +}
+> > +
+..snip..
+> > +
+> > +	val = mtk_seninf_mux_read(mux, SENINF_MUX_CTRL);
+>
+> rst_mask = SENINF_MUX_CTRL_SENINF_IRQ_SW_RST | SENINF_MUX_CTRL_SENINF_MUX_SW_RST;
+>
+> writel(mux->base + SENINF_MUX_CTRL, val | rst_mask);
+> writel(mux->base + SENINFMUX_CTRL, val & ~rst_mask);
+>
+> that's better, right? :-)
+>
+
+right :)
+
+Cheers
+Julien
+
+> > +	mtk_seninf_mux_write(mux, SENINF_MUX_CTRL, val |
+> > +			     SENINF_MUX_CTRL_SENINF_IRQ_SW_RST |
+> > +			     SENINF_MUX_CTRL_SENINF_MUX_SW_RST);
 
