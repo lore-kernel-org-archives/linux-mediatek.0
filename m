@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DD91C001DB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 15:31:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CCC4C001DE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 16:57:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hxuljz+as8AT+zpeXq/iy/DqqC73aBdecpgf/sdIuMM=; b=fyTjNS4Ny2/7zytApt6H6WADI9
-	Amr0zS9tIdXQRnA9WwgNfaL0XnLDFyHq6iN239qBTujlZ64XZA6URc91A/C1BN3WPWraNlk/L9WWv
-	RgmIzjOPoywagLkEoXRPwmNu6Y6SwsobcVIPjf0WQfwOWJZxQof0pepJPXUu/64sngxpP1T4VV3nz
-	2J/irk8gPrWFd4bC4gnOUERTaectwL0x2XFybDqU6zvhsnDJR8u+SyAZd4mayvdRMFsnZAUf+1czQ
-	L/ujXryav1ovyO57Z0oo/g942bzPW707koG0sOd59Pp2UZ0jyNWtIl0uRl39HLnJUY5Y3ArrsaVKW
-	55OnfZ1g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LyHD1yV2bJDAhL6yCAU8kaYRct3HjQ5s+oa9dgsR0hU=; b=DDztVJ4qL7MyxDrWqykIXjkNBA
+	7MttPg2HQc4vnUiCZlW8c7TKQ3FLfqW7KbvM4p0bOA1X0srwAXLv5zPVHp11wwP0cbOQQjvC+366C
+	wvsbMEAkcMyXGlqdYlNPhOBINm33FtGim9WV+6ktfcYgLt5+G4aYSTWugYgxLinooiBhcGS/OpHeH
+	+IkBnGS7T74OeIaDqOy/KrHpKFWfNdq/ZSLBbV+rXUneD5SnBhrCtSOj5WQlTaripPraqgQjxdBux
+	FufsAPplSIzu49xiKwLbyFbkCBbUGsKeEfLOzQFpod9JEFByRx0G4uADfl28h3S1cNOwfmFgPxyUq
+	75z2H5WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRwlj-00CiLu-3B;
-	Fri, 04 Aug 2023 15:31:11 +0000
+	id 1qRy7K-00CqLP-05;
+	Fri, 04 Aug 2023 16:57:34 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRwlh-00CiL9-0M;
-	Fri, 04 Aug 2023 15:31:10 +0000
+	id 1qRy7F-00CqK0-2t;
+	Fri, 04 Aug 2023 16:57:31 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8B3B96207A;
-	Fri,  4 Aug 2023 15:31:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5AF8DC433C8;
-	Fri,  4 Aug 2023 15:31:05 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6C2A9620D2;
+	Fri,  4 Aug 2023 16:57:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A87BC433C7;
+	Fri,  4 Aug 2023 16:57:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1691163068;
-	bh=hxuljz+as8AT+zpeXq/iy/DqqC73aBdecpgf/sdIuMM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=klEPnspdL15FMXZhCDx9iQmDWkYwf4YOiftzjqB8LoOt3N4xjvt/LAz8gFZehM7NZ
-	 Jn8JHgs2gckOC3Gc3G84j3/CTLpecGfKOm8WWg2StOrQQJUhtm4CTGv5eu6CATD5u3
-	 YJhnzoKI4fxtmlYyLS+M89XUQCyhHCi79fZUsV/0XKcNrtT6AR9G9Rq2ob0zhJk/3o
-	 Viz1YMWyAdzB4vqoW2jDOxQyqgFeGP2hubLzCeghgr0uow5VgQjYx7c+jN/6KfPvvN
-	 7EmEAhIFplW+ozamyBQQtfHPrxLUJEPRolbJt6LJGGMJ8+BiArM9bJe65Aap7aca9x
-	 9LDfhR+siUd5Q==
-Date: Fri, 4 Aug 2023 16:31:03 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Brown <broonie@kernel.org>,
-	Zhiyong Tao <zhiyong.tao@mediatek.com>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/9] dt-bindings: mfd: mt6397: Split out compatible for
- MediaTek MT6366 PMIC
-Message-ID: <20230804-rift-unvented-1194b51744f4@spud>
-References: <20230803074249.3065586-1-wenst@chromium.org>
- <20230803074249.3065586-2-wenst@chromium.org>
+	s=k20201202; t=1691168249;
+	bh=EypImsegK9bJKnJsBqy304+rYPk0LV8Bbnk7RSxHhMQ=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=EqmSMS7TudlJ8JTc68GnSkQ6v1QbSvx9urhSxPhIn/xrw5CTd1uycJqW1/W0L5bC3
+	 ljN6G13tUtgvK7PVwW47ThVqaEbCpgUF6+uD7cN6LDO93uFywUhiGt/bBv3J9TL5NK
+	 YLbNxe2WbSqUI1beL+vIS4IxDbYPZpqbt5NWHblnyiXGY7AgyTp0nuGuoLBr4bpmQO
+	 WH5YwDEOcPn9xfBYlZ0kmRoWo8qzvdsJmb/IW2ackNKNMZS62bmq2VVla2dIBe1+Iq
+	 zZlRnfWHNJtbL/AOvQZOv7fQ2i7V/QD96XsnUNt3kzRhTDBaX+AH8tuYpYy72Hx6sh
+	 zUSZwSs/CmwHg==
+From: Mark Brown <broonie@kernel.org>
+To: pierre-louis.bossart@linux.intel.com, peter.ujfalusi@linux.intel.com, 
+ yung-chuan.liao@linux.intel.com, ranjani.sridharan@linux.intel.com, 
+ kai.vehmanen@linux.intel.com, daniel.baluta@nxp.com, lgirdwood@gmail.com, 
+ tiwai@suse.com, perex@perex.cz, matthias.bgg@gmail.com, 
+ angelogioacchino.delregno@collabora.com, Trevor Wu <trevor.wu@mediatek.com>
+Cc: yc.hung@mediatek.com, allen-kh.cheng@mediatek.com, 
+ sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20230803075028.32170-1-trevor.wu@mediatek.com>
+References: <20230803075028.32170-1-trevor.wu@mediatek.com>
+Subject: Re: [PATCH] ASoC: SOF: mediatek: mt8186 modify dram type as
+ non-cache
+Message-Id: <169116824521.110745.9626523635220489877.b4-ty@kernel.org>
+Date: Fri, 04 Aug 2023 17:57:25 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="7uwcHrcVztFuPIhA"
-Content-Disposition: inline
-In-Reply-To: <20230803074249.3065586-2-wenst@chromium.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13-dev-034f2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230804_083109_192745_393A7B58 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20230804_095729_976743_C85C0A07 
+X-CRM114-Status: GOOD (  12.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,38 +81,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 03 Aug 2023 15:50:28 +0800, Trevor Wu wrote:
+> To prevent incorrect access between the host and DSP sides, we need to
+> modify DRAM as a non-cache memory type. Additionally, we can retrieve
+> the size of shared DMA from the device tree.
+> 
+> 
 
---7uwcHrcVztFuPIhA
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Applied to
 
-On Thu, Aug 03, 2023 at 03:42:39PM +0800, Chen-Yu Tsai wrote:
-> The MT6366 PMIC is mostly, but not fully, compatible with MT6358. It has
-> a different set of regulators. Specifically, it lacks the camera related
-> VCAM* LDOs, but has additional VM18, VMDDR, and VSRAM_CORE LDOs.
->=20
-> Add a separate compatible for the MT6366 PMIC.
->=20
-> Fixes: 49be16305587 ("dt-bindings: mfd: Add compatible for the MediaTek M=
-T6366 PMIC")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+Thanks!
+
+[1/1] ASoC: SOF: mediatek: mt8186 modify dram type as non-cache
+      commit: 1d54134df47684ee29d4d4bbe28174a4282389e0
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
 Thanks,
-Conor.
+Mark
 
---7uwcHrcVztFuPIhA
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZM0ZtgAKCRB4tDGHoIJi
-0qDyAPsHuwCui775ZKeH0xfMeYOmy3RU0RV5Fv5KqB7imiFqfwEA19FJcLsJ+INy
-AR2LebWepVlpr+2xxBBkGWmxwLNzPwY=
-=47nj
------END PGP SIGNATURE-----
-
---7uwcHrcVztFuPIhA--
 
