@@ -4,183 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7FE4C001DE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 07:08:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46D39C04A6A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 07:11:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xia3SrCq57VvHpa7awBaY2cHpqhtKg6CObzUU52kMoA=; b=PMx8GDiamtj1jX6zXpgta+lXq8
-	Tsg0sKnatorB4JA/FlY91EwtP3RTATRfu8RivMnSE0rbNiHkx6KYrW/84vLatLeBY8bTXQqRhjXyN
-	GXuqi4Q7Qv9p8C3l75fh9RmFpLJ7C6cUFbM1EWgETXNyoEdbMSmhxBUQGeB0z9O1rYFBXiD8vCIFv
-	CvUO5nuBuHXxv2aIzeRQVVpPzHfSU5W2QmFypwzYZXix0vPRrlwgCsUv3zQtpo/b8ETawQABrGPO4
-	WUg6wkth1S2h55Udqnw1L+em3AQx7J+ulCTf2rrSB57dpGItlRayNObAuLqqZh9t/D8dGjnx8778t
-	D6kpm/Xw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qLgqGxCEOJUWYl1HLzDiDyCtuT3vN8bbM1YFd5If7Hk=; b=BemMU6FPjJPk7+/9SNkpyjJXcJ
+	3WU3kjmKTZ71eD5X4WXfISvf8KiPtUAlF9WRz6LlkhMW2HgSpfoMg92sygzEEJp/HPkSyVsiCpmKo
+	Vc8F+M4aRbFNruH/zsGVtBPzKlkt+QZtjTfyN6bSRZjtjq0NmZyGFeo2s8r7PpmouiYpl0uuGhLum
+	IVixUk6GhJS7VWQN1McqNB6/Ah2AeKp2uLvCko7+IADAviGxK69rj/XjFLbnu5Uc/PVNk2wNRgcoK
+	P4aa6rZrup1VhZFWEnVlfP+tU20SG9q1flsMJCn04X5d+1XM95Ks4YBCaMPQDBqmpuUjfnnx9PZjT
+	LDRKdrgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRov2-00Bk69-20;
-	Fri, 04 Aug 2023 07:08:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qRoxh-00BkMU-1b;
+	Fri, 04 Aug 2023 07:11:01 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRouz-00Bk5B-1e
+	id 1qRoxe-00BkLc-32
 	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Aug 2023 07:08:15 +0000
-X-UUID: a9cea728329511ee912e1518a6540028-20230804
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:To:From; bh=xia3SrCq57VvHpa7awBaY2cHpqhtKg6CObzUU52kMoA=;
-	b=cyJS5GvSNVAN64GaKdHh4/BjY06B6XrZRmcuYgTEUs5096KBVwxt5qbDM3KfmVdT0OirNCZKx3dzkRCiqPsDmykqMLX/L2ig5af6ncXHUJUwO+9ARNRfMDnnvhpzgHUSiYZ1TkVhBifZTtwPptOxl29UwkGJx26b0/OAK2r1klI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.30,REQID:b9c5826d-359c-4672-83dc-d6209d13da23,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:1fcc6f8,CLOUDID:4b6dce42-d291-4e62-b539-43d7d78362ba,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: a9cea728329511ee912e1518a6540028-20230804
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <maso.huang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2026156461; Fri, 04 Aug 2023 00:08:07 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 4 Aug 2023 15:08:04 +0800
-Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 4 Aug 2023 15:08:04 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=GJ2JJcap3bx3Mqqo/bY/vOvIee0hw/XxxFn9iQmpCObWuysYXb1VOsr/1dvV+7ML0kMlCi4+3YtXRTcn6E2XL+7Zms5qrLkr71WPpAOPgAM+5T7pF4u7o9biB+j19OdzvrD1s6Vven1t39rmtldON6NN+FHpRNaTisdiyklqzm70KER1aUvJDCpUFP5+tRB9Wj9kTPYHKdTs9oEZzcp7kUuFiqAjXZH+7UUr5TxGy61hNQl1bWfGGRZbz8peEdZW/5IRc47NoxZOg4u6k6eNlwFVbTFaOSL1AsQyXCwWLoRvHmG0TJ1xTWFv5V/+2aBGD009aD6tyOrdZRB489xQDw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=xia3SrCq57VvHpa7awBaY2cHpqhtKg6CObzUU52kMoA=;
- b=ctc3coahKG02zjUIWOhbBoaC9CYkBnCElkMwdZujk/0tonhw/wndEt9c67NC3mbkwdw1R7X4ypBqdIZf2EXJNmKqYVyO1qDLR5dk9NLOvJkRZ1aGOMW4v7AMko2WPEA+FRogHPf5dF00nU6KVxpI2crziy5qbQ3DkCyoJe98LG7iEF2QzfE4B/UinIXFQrHIfeQLfvFoPIv98Qa9mPEc67dRqM+Hb8UpftwJW6CcTCxTY9OiQZpw/6GAAltepj9FE2mBtVmPuOOK0xKS0fIvMjpy3WRH0D4/S+WDLGF1RAW+DKs3kUMroqt2ZEHmVls+X+gAqfbKDmsCe9zt/9HF5g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	Fri, 04 Aug 2023 07:11:00 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-1bba04b9df3so15361695ad.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Aug 2023 00:10:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=xia3SrCq57VvHpa7awBaY2cHpqhtKg6CObzUU52kMoA=;
- b=sv8fHtnUo4SUCDRRk6lUNZyJvSIlsQj5nbW+Y1uRG2zC8TVAd93TQcObVPwnQnU+uPFLHD6lXaMjZWiNXCwezsSOWb4QZkfSt4PDKwEkx6L6AurwBPxUC8qHns/gIt1XyY0lsFM9UB0ouy1xCS/MofxcvmNxtgKv+fU9F7VZ1C8=
-Received: from KL1PR03MB6389.apcprd03.prod.outlook.com (2603:1096:820:94::13)
- by TYSPR03MB7883.apcprd03.prod.outlook.com (2603:1096:400:480::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6631.47; Fri, 4 Aug
- 2023 07:08:01 +0000
-Received: from KL1PR03MB6389.apcprd03.prod.outlook.com
- ([fe80::d040:b1d4:ab0b:b28e]) by KL1PR03MB6389.apcprd03.prod.outlook.com
- ([fe80::d040:b1d4:ab0b:b28e%6]) with mapi id 15.20.6652.020; Fri, 4 Aug 2023
- 07:08:01 +0000
-From: =?utf-8?B?TWFzbyBIdWFuZyAo6buD5Yqg56u5KQ==?= <Maso.Huang@mediatek.com>
-To: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"robh+dt@kernel.org" <robh+dt@kernel.org>,
-	"chenxiangrui@huaqin.corp-partner.google.com"
-	<chenxiangrui@huaqin.corp-partner.google.com>,
-	=?utf-8?B?VHJldm9yIFd1ICjlkLPmlofoia8p?= <Trevor.Wu@mediatek.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
-	"broonie@kernel.org" <broonie@kernel.org>,
-	=?utf-8?B?QWxsZW4tS0ggQ2hlbmcgKOeoi+WGoOWLsik=?=
-	<Allen-KH.Cheng@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"tiwai@suse.com" <tiwai@suse.com>, "lgirdwood@gmail.com"
-	<lgirdwood@gmail.com>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "perex@perex.cz" <perex@perex.cz>, "arnd@arndb.de"
-	<arnd@arndb.de>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "alsa-devel@alsa-project.org"
-	<alsa-devel@alsa-project.org>
-Subject: Re: [PATCH v3 5/6] ASoC: dt-bindings: mediatek,mt7986-wm8960: add
- mt7986-wm8960 document
-Thread-Topic: [PATCH v3 5/6] ASoC: dt-bindings: mediatek,mt7986-wm8960: add
- mt7986-wm8960 document
-Thread-Index: AQHZwTM9qZx2VdeqykKSfnhu9XP0Bq/PIWcAgAReQgCAAAv2AIAAcGWAgAXGYwA=
-Date: Fri, 4 Aug 2023 07:08:01 +0000
-Message-ID: <2e781d29087b40bdf2c04a1fe11206986ff01ca8.camel@mediatek.com>
-References: <20230728090819.18038-1-maso.huang@mediatek.com>
-	 <20230728090819.18038-6-maso.huang@mediatek.com>
-	 <7d70f893-ee75-d355-4b4c-4afe7a72cd7c@linaro.org>
-	 <5f794f6d3595e845433aab3c48eb47ec7962c929.camel@mediatek.com>
-	 <ab66c8a4-6a5e-651b-8f77-047980ebc238@linaro.org>
-	 <26224f81-9993-0a4c-4c46-91acd1ff5f42@linaro.org>
-In-Reply-To: <26224f81-9993-0a4c-4c46-91acd1ff5f42@linaro.org>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: KL1PR03MB6389:EE_|TYSPR03MB7883:EE_
-x-ms-office365-filtering-correlation-id: bccb37ec-829f-47ff-0702-08db94b98a8a
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: o7PuiB6r92wp17waXZIh2mxIuacuUK7CjmKsGEpAgnOYfkuSFaOMFCb+dk+fQtB6h5m+OsTfUv+lLh9/RO3cZpdkIEB3ATj7epzYSksaZA6ldHTo4bsqYGmRAGpKKtFx50AEimLMPuIwRfp+VJszN+BstBYNGk1Immq/MhlxN4aKgpzn9PEj4HaPmN/C3kuoje6+dPFIQDkYgduUCV8nAIV3vLD1Ote5+gBPmojf3Mu2rgiLUFvhF8Z1xhFaUZnvVjS6PEeQYkeuACzCB0Hbqso3xAmwh7bKM+LwFOEZQrdDjcabI8xGjqTHbwq+dIuP2MvSeJoT3SJ75nnUOvbbtV1d/T6OmFz8dBqJA5TIbGKC6pqCJ12EKgGdjY4b+ZPHWyAiLfi7BZF7u8hBqT9JfFJjPYUmA7AT0wxXJdyO4dIYAbDdEAuulocoEh6txw8O3LqjxtYLZOjwfG/P/Lq+p27H6novIHbYftckWSk8Id5JBfSL4oVx/AnIGCpM2mexcLWnmAob33XhNLzq+QYuHWWMwynJzKlvNxk6eXaGquzUIMr+vKFwaSyUnyKP79aZ3L5WeVfBdFQBc1JtDLEdTr+1L9ocwkfBsYsHOMfWyjsIn2QTl63OZFB+FPzFiOu8JF9wKUMmjBoAVRwO6Rn8psUXYgploZVm8VbWVowkZX3Ewh225nfVcDXr7JSoryYo32t94XGnMe+soXgjAozZeg==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KL1PR03MB6389.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(376002)(39860400002)(136003)(346002)(396003)(366004)(451199021)(1800799003)(186006)(2616005)(2906002)(86362001)(966005)(76116006)(66446008)(6512007)(66556008)(66476007)(66946007)(64756008)(71200400001)(91956017)(6486002)(316002)(36756003)(85182001)(122000001)(478600001)(921005)(53546011)(26005)(6506007)(41300700001)(83380400001)(38070700005)(5660300002)(38100700002)(110136005)(7416002)(8936002)(8676002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?eS9vK3pVQTNyOEpYdG50Q1V5WnVSYjF0QW5kckZKNHJuRDdGMmhBc3AwYklp?=
- =?utf-8?B?ZnpRaWlMOUY0SkQ2enlQMk8yUm03UDQ2QlVmemd0WjZNTUo0bWNOVzBXVU9V?=
- =?utf-8?B?Y0dKNzh2M1pqaW83ejRKMU81c2VmU1hOOG5kSG5yOWZiUFFVSmVjU0VrWDlD?=
- =?utf-8?B?YXhGNlRMa0ZwR2RjR3g2UTNBaWFHQWZWWkZGa0VRcUpOZFY3OXUrcGs4YzZa?=
- =?utf-8?B?R3JudDMwd1BtODlreXZPaGswSWtNdUN5T0V2NlFkYkJEYmJuZTBIK2RvRjZ4?=
- =?utf-8?B?WjlNWVowUmJ1dFBMeE1YTXA0dnhFc0VNZFE1b1JreCt5QWtaR05Fd2NUWHZM?=
- =?utf-8?B?MFBTVjFNSnNheEZ1ZytGb2FNNU9iMjIya2VyODJpY09JaFNmeUFXbUdPOUJ6?=
- =?utf-8?B?ZDdjWFVBejB3eVdwVExYcHUyWU9MdndTUURPQjgwUVhZdmtQSmpONmZydFNp?=
- =?utf-8?B?WG56QXhMV3hDa1RNT202M01oMVRxTERNTzFqK2tmSzBZMEpVQWFwWGthbm55?=
- =?utf-8?B?YzM0N3VobzB6V1VTTFRiemM3N0tvc1lpVmFlRjU1T1A0dklBWm9GaVR4YjhW?=
- =?utf-8?B?UUZFeE96QlUvNCtpbEZETFVadkMzYmIwYldPZjlRSGxDcEJ1UmRyS2hTeGEw?=
- =?utf-8?B?a0VrYlU4ZlRUUG5QUDZWTkhTNW5lOVpRcGJIdnZYSE8vTHZ3R1lhUFEvQnAr?=
- =?utf-8?B?bTR2cXZFRnB6TUlrMVdoNXJZTjc2OHJtczZuWXFFZElDUjhBVWZkeGJ3aWpn?=
- =?utf-8?B?cWF6dnhUcGJZdG9RbThZeUk3MkRBWjExeTJHV2x0aG1NSThvOHlRM3p2emlP?=
- =?utf-8?B?UjJpNkN4SC84U2RYQm5EL1k2NXRWMXJQWVgyQWd6YjZzWDJGSUlyYnhpdmZp?=
- =?utf-8?B?UzlCSWY4Y0J2cmxWV2N0M29hWWhaUklnY1l4SHVzYkloMEl4Qit5WEJ4bzRs?=
- =?utf-8?B?YlExUW5JZGpoODVORTBMZ2t1Q1cwQ0FjbWJmYUxrWUtVci9ieDdlZW1ma0dr?=
- =?utf-8?B?VTA4Qk5WaVlMcC9CYlVLWTVXMk1DSFdQVHp3UUs3ZDJWQTRTb3FLRkxuUjlN?=
- =?utf-8?B?V3R3ZUtIWFNsN1dxZU1MSnlFTHlPMG1tTXo1SWNwQ0liRmVUTDZ3T0V1dlY3?=
- =?utf-8?B?Ly9FblRjM0pJbllBOVV5WUYxZUI3L2dIc2xVZmxkQ2V5dWUxbkI1TDFjWTI1?=
- =?utf-8?B?dWRqVHVuL3UvaVNNV0xLWjNKd3k4OVQzVlpaSDdIYmUyY0pGUDU1dUhSUEJh?=
- =?utf-8?B?WTV4em00TWdDM3pWY2duQVdYODE4dTA4OHhhYlNkTE15cnFHTHZHS2JXYk9D?=
- =?utf-8?B?M1RMOUFNQkVEUnFlVDJYNXc4M3AzcW42U2FBcVoybThIdHV1N0srczlydGJV?=
- =?utf-8?B?UTJJZ1VpT2FjM0JzbzRKdm9iL1Q5ZjVTVUdsaTF1TUZWQjhZaG1FQ3pxU3Bn?=
- =?utf-8?B?MEIvdGpPUWZZcnNDaE1NL3pJQnRtTUZ0TmxGcHdITUw5QUozR1p1SWdnV3Ru?=
- =?utf-8?B?Wk9ESkR6Nk1FSE4zQ3ZZQTN5VllhNWRGVHR4QmV4UE9mT0R5bE8yRTNmaE1R?=
- =?utf-8?B?Y04yMTBFRWRiei9rRDA1NzcwcW9wS2poSDVYZ3hHaXBxd0lWU2hrN2labTFE?=
- =?utf-8?B?ZGdFSm9ha3A0SXgzQUQrZVJENmxsUU5CblpISmFJbjFqZ0NoMjFtdUhLS3JJ?=
- =?utf-8?B?MFRrV1hMWi9aQ1BhTUd3L2tESTRZSU9qcHZiL1FrVDRaRmh5Vk85bEoyaHl1?=
- =?utf-8?B?czQrckZNNUVWbXhlUmtCQzFtcXR1OXZyNDFydm4wbWs4TGNkM3JWRzgzK1E4?=
- =?utf-8?B?Q3hhWVo5N3RnR0ZGbkY1ZWt5ZU9TRGp0TGdJYVVmWmRhOW84dVJTUk9TNmpU?=
- =?utf-8?B?bjVUbnExT1liMVpIcTN0TUswUDIzUktmYzU2dTJNMUlDWStPNlJwSlQ4TlA0?=
- =?utf-8?B?eWw5Y2F6N1JTdVU1TnprRHlqRjFaTGF6em0yTlcwNkNpT1hRTzc2NUR1TEZC?=
- =?utf-8?B?MlZhRXRRcFJ2RzR6TmcyVkxiNGhQYXZrakFiajlWVk1jendPV3lKbENkVVQ4?=
- =?utf-8?B?WThRVFJaN0hBTnBtdExaWjBNQkRlUlR5cEdOSzJob2hSVnZ2aXlEODVZYmZm?=
- =?utf-8?B?WEhOYW12eVU1YlRpdkNNOCtaS2w0dmRIcDdMaldRWjFwalF2cWIyVHpKSUk4?=
- =?utf-8?B?Q2c9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <34AD1388FE41A347BA4C8AFE00B17D02@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=chromium.org; s=google; t=1691133056; x=1691737856;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=qLgqGxCEOJUWYl1HLzDiDyCtuT3vN8bbM1YFd5If7Hk=;
+        b=huTaTGCouicXJqoF3OEt6UaDylAOrbKUTRYDM7hccOOkVS8vQFtKchgBM/8pr81TGl
+         4xRvendyIemNoWM+VcufHw84hR05Gxlm7QgRIexK1Fcgr5E/tN5IX84CFamvf5CpsVcl
+         dItnBo2ldYwo2a3ihnDIW6/30sopoDS2QNH8k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1691133056; x=1691737856;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=qLgqGxCEOJUWYl1HLzDiDyCtuT3vN8bbM1YFd5If7Hk=;
+        b=CttZ7Cp9V38K+aOmXL4f971gGmlje9oKS0iObWazvy2yl3QRhUVpejnx62SJ3ytPFn
+         32erv4Ou74d9+ZUpZQuPB1+R2bDLeaWKHjrjkJ9ggaA2KTulzHrLm8PQcmdwJGHYHrvn
+         +Fa2lXiwYbEnVrDQGoF0+JFGDK35AlMj0Oz3yN4/98fU7sIdedn1nFyHdQhEBmkuDHTM
+         yjVaLar97WUVCZg8H5TQj20NxbgtxH8RjUtwydQMMLBscav81zNob2vlk6IVNhbkJbf8
+         nttaMed9AJ+yEtTtRjmTe7mlPnqa2NgKEw7sXQUEMFJzCCQJzIulJNoUFvEEbBwx3xWz
+         5CVg==
+X-Gm-Message-State: AOJu0Yx73G8BUiWSiZcvYJ7GwqDppFdOTl8Oe5Wx2geTSifgmzobip75
+	WZALIZReGRfeR/yLQVsKzLrD7Q==
+X-Google-Smtp-Source: AGHT+IETdwNZg9gj+A7ervMmpFTsOMlLZiUHM59Tw5IabaPwEazFEscS0doAxstPoxaGixEQ6FiJCg==
+X-Received: by 2002:a17:902:d904:b0:1bb:2020:be0d with SMTP id c4-20020a170902d90400b001bb2020be0dmr950403plz.14.1691133056517;
+        Fri, 04 Aug 2023 00:10:56 -0700 (PDT)
+Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net. [198.0.35.241])
+        by smtp.gmail.com with ESMTPSA id t15-20020a1709027fcf00b001bb9d6b1baasm1004673plb.198.2023.08.04.00.10.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 04 Aug 2023 00:10:56 -0700 (PDT)
+From: Kees Cook <keescook@chromium.org>
+To: Russell King <linux@armlinux.org.uk>
+Cc: Kees Cook <keescook@chromium.org>,
+	Arnd Bergmann <arnd@kernel.org>,
+	Lecopzer Chen <lecopzer.chen@mediatek.com>,
+	Oleg Nesterov <oleg@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Linus Walleij <linus.walleij@linaro.org>,
+	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-hardening@vger.kernel.org
+Subject: [PATCH] ARM: ptrace: Restore syscall skipping and restart while tracing
+Date: Fri,  4 Aug 2023 00:10:53 -0700
+Message-Id: <20230804071045.never.134-kees@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR03MB6389.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bccb37ec-829f-47ff-0702-08db94b98a8a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Aug 2023 07:08:01.7116
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: NkOf7bQecxmX6IbDz52Dnf3AjkDpSsWiJzYkhaqVpNSwnSgUr9rtdVHBtOLXOE0QEnPhD30UVp4UPZQmKBy98Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYSPR03MB7883
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3616; i=keescook@chromium.org;
+ h=from:subject:message-id; bh=YJOlkz5vR8N2JtifY2dbTGKNtQ5WuTgnR2Q8FS+sopI=;
+ b=owEBbQKS/ZANAwAKAYly9N/cbcAmAcsmYgBkzKR9I86BSc6Kgktbv/7TDrdJhNiDSv95T3xHY
+ eyI/ytlKbuJAjMEAAEKAB0WIQSlw/aPIp3WD3I+bhOJcvTf3G3AJgUCZMykfQAKCRCJcvTf3G3A
+ Jik5D/wJIILgmLRP6PaC7n466O199JDTx/nN4iSx3/PxF6xa5b2VxRNepGSXm+bdcy5M4OqFg3r
+ TA1mKMteXSnWTrbT6GiBIpzbb7RZFqHQOobd5wekGbI0n067nE+ORmctWJhm+Ez+ND7kvimDYsA
+ m0J22/G7zNs0ra32uU0923Itwf0Ecq3IpRk6/Nq0Thkqs6Ske3CEnT7knCi/TW2wVVRFaYYGBg4
+ JRpm78U3nRqxZZKGzRMHXrjS+C0zpxMYb/mAi70Gqst2Cv8SQ6zG+AF+0yXYHtn9nDL6cpYs/zg
+ 2RJt+z6nn1dc1PjKFW2epvs50HQWpZ6bxr27B9saaxelsggIzQvZiSP3kRP20HiSKuy15PBpfCt
+ lPiwqMq/vdC+jkApGPq34GOt5QykWpS6foa957+wSOq8zGbgJ+P6VR9dABq/CWSKdpYo8u8Rq1Q
+ QivGh6o9OZTwFFf+tzPyFnrCP8vukNObnld8PCe9Fb2ZReOQa7Q0dce7AWkvt6u0DflPGvGr9NT
+ wFVfmqWQUQRZ4u9BQS/OSWloz11A49wuJuNiBnO43ROHdO94wjO1qs4Z5Iz4X4KfaUUsSguYalJ
+ H4OwKyvCk8gKBRbgGrvrMqp4nQvKxVditb2rk2EjVJEARIxXoYwJwZEmcJEeKbv2JPCRnqimCs/
+ PCY1+m3 4PNLqCLQ==
+X-Developer-Key: i=keescook@chromium.org; a=openpgp; fpr=A5C3F68F229DD60F723E6E138972F4DFDC6DC026
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230804_000813_611466_D352EC42 
-X-CRM114-Status: GOOD (  28.44  )
+X-CRM114-CacheID: sfid-20230804_001059_012690_EF218C89 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -195,48 +108,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIzLTA3LTMxIGF0IDE2OjU2ICswMjAwLCBLcnp5c3p0b2YgS296bG93c2tpIHdy
-b3RlOg0KPiAgCSANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtz
-IG9yIG9wZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRl
-ciBvciB0aGUgY29udGVudC4NCj4gIE9uIDMxLzA3LzIwMjMgMTA6MTQsIEtyenlzenRvZiBLb3ps
-b3dza2kgd3JvdGU6DQo+ID4+Pj4gKyAgbWVkaWF0ZWssYXVkaW8tY29kZWM6DQo+ID4+Pj4gKyAg
-ICAkcmVmOiAvc2NoZW1hcy90eXBlcy55YW1sIy9kZWZpbml0aW9ucy9waGFuZGxlDQo+ID4+Pj4g
-KyAgICBkZXNjcmlwdGlvbjogVGhlIHBoYW5kbGUgb2Ygd204OTYwIGNvZGVjLg0KPiA+Pj4+ICsN
-Cj4gPj4+DQo+ID4+PiBIb3cgZGlkIHlvdSBpbXBsZW1lbnQgUm9iJ3MgY29tbWVudD8gT3IgZGlk
-IHlvdSBqdXN0IGlnbm9yZSBpdD8NCj4gPj4+DQo+ID4+PiBCZXN0IHJlZ2FyZHMsDQo+ID4+PiBL
-cnp5c3p0b2YNCj4gPj4+DQo+ID4+DQo+ID4+IEhpIEtyenlzenRvZiwNCj4gPj4NCj4gPj4gU29y
-cnksIEkgZGlkIG5vdCBtZWFuIHRvIGlnbm9yZSBSb2IncyBjb21tZW50Lg0KPiA+PiBJIHdhaXRl
-ZCBmb3Igc29tZSBzdWdnZXN0aW9uIGluIG1haWwgYmVsb3csIGJ1dCBpdCBzZWVtcyBSb2Igd2Fz
-IGENCj4gPj4gbGl0dGxlIGJ1c3kuDQo+ID4+DQo+ID4+IA0KPiBodHRwczovL2xvcmUua2VybmVs
-Lm9yZy9sa21sLzhjNjMxNmU3OWU0MDQwNmU0ZDQ2NzA5ZjYwMmRjYjE0YTRjMDA1NjIuY2FtZWxA
-bWVkaWF0ZWsuY29tLw0KPiA+Pg0KPiA+PiBBZnRlciBnZW50bGUgcGluZyBsYXN0IHdlZWsgYW5k
-IHJlY2VpdmluZyB5b3VyIGFkdmljZSwgSSB0aG91Z2h0DQo+IHRoYXQNCj4gPj4gbWVhbnMgdG8g
-c2VuZCB0aGUgdjMgcGF0Y2ggYW5kIG1pZ2h0IGRpc2N1c3MgZHRiaW5nZGluZyBpbiB2Mw0KPiBz
-ZXJpZXMuDQo+ID4+DQo+ID4+IFNvIHNvcnJ5IGZvciBtaXN1bmRlcnN0YW5kaW5nIGl0LCBJJ2xs
-IGNoZWNrIHRoZSBkZXRhaWxzIHdpdGggUm9iDQo+IGluIHYzDQo+ID4+IHNlcmllcyB0aGVuIHJl
-ZmluZSBpdCBpbiB2NC4NCj4gPiANCj4gPiBUaGUgcHJvYmxlbSBpcyB0aGF0IHlvdSBkaWQgbm90
-IHJlZmVyZW5jZSBpbiB0aGlzIHBhdGNoIGFueSBvbmdvaW5nDQo+ID4gZGlzY3Vzc2lvbiBhbmQg
-ZnVydGhlciBxdWVzdGlvbnMsIHNvIGNvbW1lbnQgbG9va3MgbGlrZSBhZGRyZXNzZWQsDQo+IHdo
-aWxlDQo+ID4gaXQgd2FzIG5vdC4NCj4gPiANCj4gPiBSb2Igc2FpZDoNCj4gPiAiaW4gYSBjb21t
-b24gc2NoZW1hIGFuZCByZWZlcmVuY2UgdGhlbSAiDQo+ID4gWW91IHNhaWQ6DQo+ID4gImNvbW1v
-biBwYXJ0IHlhbWwgYW5kIHJlZmVyZW5jZSB0byBpdCINCj4gPiBzbyBJIHRoaW5rIHlvdSBib3Ro
-IGFncmVlZCBvbiB0aGUgc2FtZS4NCj4gPiANCj4gPiBUaGUgYWR2aWNlIHdvdWxkIGJlIHRvIGNy
-ZWF0ZSBjb21tb24gYmluZGluZyB3aGljaCBpcyB0aGVuDQo+IHJlZmVyZW5jZWQgYnkNCj4gPiBv
-dGhlciBhbmQgeW91ciBiaW5kaW5ncy4gSG93ZXZlciBpZiB5b3Ugc3RhcnQgZG9pbmcgaXQsIHlv
-dSB3aWxsDQo+IG5vdGljZQ0KPiA+IHRoYXQgaXQgaXMgaW1wb3NzaWJsZSwgYmVjYXVzZSB5b3Ug
-aGF2ZSBjb25mbGljdGluZyB0eXBlcyBmb3INCj4gPiAiYXVkaW8tY29kZWMiLCBzbyB5b3UgY2Fu
-bm90IGhhdmUgb25lIGRlZmluaXRpb24uDQo+ID4gDQo+ID4gVGhpcyBsZWFkcyB0byB0aGUgcG9p
-bnQgLSBwcm9wZXJ0eSBpcyBwcm9iYWJseSB3cm9uZyBhbmQgeW91IG5lZWQNCj4gPiBkYWktbGlu
-ayB3aXRoIHNvdW5kLWRhaSBwcm9wZXJ0eSwganVzdCBsaWtlIG1vc3QgY2FyZHMgYXJlIGRvaW5n
-Lg0KPiANCj4gQlRXLCBtaWdodCBiZSB1c2VmdWwgZm9yIHlvdSwganVzdCBzZW50Og0KPiANCmh0
-dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LWRldmljZXRyZWUvMjAyMzA3MzEwOTQzMDMuMTg1
-MDY3LTEta3J6eXN6dG9mLmtvemxvd3NraUBsaW5hcm8ub3JnL1QvI3QNCj4gDQo+IEFueXdheSB5
-b3UgbmVlZCBkYWktbGlua3MsIEkgdGhpbmsuDQo+IA0KPiBCZXN0IHJlZ2FyZHMsDQo+IEtyenlz
-enRvZg0KPiANCg0KSGkgS3J6eXN6dG9mLA0KDQpUaGFua3MgZm9yIHlvdXIgdXNlZnVsIGluZm8h
-DQpJJ2xsIHJlZmVyZW5jZSB0byBzb3VuZC1jYXJkLWNvbW1vbi55YW1sIGZvciBhdWRpby1yb3V0
-aW5nLg0KDQpGb3IgbWVkaWF0ZWsscGxhdGZvcm0gYW5kIG1lZGlhdGVrLGF1ZGlvLWNvZGVjLCBJ
-IHdvdWxkIGxpa2UgdG8gcmVwbGFjZQ0KdGhlbSB3aXRoIGNwdSBhbmQgY29kZWMgYXMgcHJvcGVy
-dGllcyBkaXJlY3RseSBsaWtlIGJlbG93Lg0KDQpjcHUgew0KICAgIHNvdW5kLWRhaSA8JmF0ZT47
-DQp9Ow0KDQpjb2RlYyB7DQogICAgc291bmQtZGFpIDwmd204OTYwPjsNCn07DQoNCklzIHRoYXQg
-T0s/DQoNCkJlc3QgcmVnYXJkcywNCk1hc28NCg==
+Since commit 4e57a4ddf6b0 ("ARM: 9107/1: syscall: always store
+thread_info->abi_syscall"), the seccomp selftests "syscall_errno",
+"syscall_faked", and "syscall_restart" have been broken. This was
+related to two issues:
+
+- seccomp and PTRACE depend on using the special value of "-1" for
+  skipping syscalls. This value wasn't working because it was getting
+  masked by __NR_SYSCALL_MASK in both PTRACE_SET_SYSCALL and
+  get_syscall_nr().
+
+- the syscall entry label "local_restart" is used for resuming syscalls
+  interrupted by signals, but the updated syscall number (in scno) was
+  not being stored in current_thread_info()->abi_syscall, causing traced
+  syscall restarting to fail.
+
+Explicitly test for -1 in PTRACE_SET_SYSCALL and get_syscall_nr(),
+leaving it exposed when present, allowing tracers to skip syscalls
+again.
+
+Move the AEABI-only assignment of current_thread_info()->abi_syscall
+after the "local_restart" label to allow tracers to survive syscall
+restarting.
+
+Cc: Russell King <linux@armlinux.org.uk>
+Cc: Arnd Bergmann <arnd@kernel.org>
+Cc: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Cc: Oleg Nesterov <oleg@redhat.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Fixes: 4e57a4ddf6b0 ("ARM: 9107/1: syscall: always store thread_info->abi_syscall")
+Signed-off-by: Kees Cook <keescook@chromium.org>
+---
+Note that I haven't tested OABI at all, and AEABI+OABI_COMPAT doesn't
+work with seccomp. I booted an AEABI system under AEABI+OABI_COMPAT,
+but I wasn't able to test tracing...
+---
+ arch/arm/include/asm/syscall.h | 3 +++
+ arch/arm/kernel/entry-common.S | 5 +++--
+ arch/arm/kernel/ptrace.c       | 5 +++--
+ 3 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm/include/asm/syscall.h b/arch/arm/include/asm/syscall.h
+index dfeed440254a..fe4326d938c1 100644
+--- a/arch/arm/include/asm/syscall.h
++++ b/arch/arm/include/asm/syscall.h
+@@ -25,6 +25,9 @@ static inline int syscall_get_nr(struct task_struct *task,
+ 	if (IS_ENABLED(CONFIG_AEABI) && !IS_ENABLED(CONFIG_OABI_COMPAT))
+ 		return task_thread_info(task)->abi_syscall;
+ 
++	if (task_thread_info(task)->abi_syscall == -1)
++		return -1;
++
+ 	return task_thread_info(task)->abi_syscall & __NR_SYSCALL_MASK;
+ }
+ 
+diff --git a/arch/arm/kernel/entry-common.S b/arch/arm/kernel/entry-common.S
+index bcc4c9ec3aa4..08bd624e4c6f 100644
+--- a/arch/arm/kernel/entry-common.S
++++ b/arch/arm/kernel/entry-common.S
+@@ -246,8 +246,6 @@ ENTRY(vector_swi)
+ 	bic	scno, scno, #0xff000000		@ mask off SWI op-code
+ 	str	scno, [tsk, #TI_ABI_SYSCALL]
+ 	eor	scno, scno, #__NR_SYSCALL_BASE	@ check OS number
+-#else
+-	str	scno, [tsk, #TI_ABI_SYSCALL]
+ #endif
+ 	/*
+ 	 * Reload the registers that may have been corrupted on entry to
+@@ -256,6 +254,9 @@ ENTRY(vector_swi)
+  TRACE(	ldmia	sp, {r0 - r3}		)
+ 
+ local_restart:
++#if defined(CONFIG_AEABI) && !defined(CONFIG_OABI_COMPAT)
++	str	scno, [tsk, #TI_ABI_SYSCALL]	@ store scno for syscall restart
++#endif
+ 	ldr	r10, [tsk, #TI_FLAGS]		@ check for syscall tracing
+ 	stmdb	sp!, {r4, r5}			@ push fifth and sixth args
+ 
+diff --git a/arch/arm/kernel/ptrace.c b/arch/arm/kernel/ptrace.c
+index 2d8e2516906b..fef32d73f912 100644
+--- a/arch/arm/kernel/ptrace.c
++++ b/arch/arm/kernel/ptrace.c
+@@ -783,8 +783,9 @@ long arch_ptrace(struct task_struct *child, long request,
+ 			break;
+ 
+ 		case PTRACE_SET_SYSCALL:
+-			task_thread_info(child)->abi_syscall = data &
+-							__NR_SYSCALL_MASK;
++			if (data != -1)
++				data &= __NR_SYSCALL_MASK;
++			task_thread_info(child)->abi_syscall = data;
+ 			ret = 0;
+ 			break;
+ 
+-- 
+2.34.1
+
 
