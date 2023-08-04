@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CD67C41513
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 07:29:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CB45C04E69
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Aug 2023 07:29:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KrhrYJjj0iCkUTzbVZgmlZw0Jyqjtlkt8XtUKAvHtdo=; b=JWVS16H2kAYOk8i0IS0DJKrPn+
-	xpv59eLKCbA6azzlyshVPRF+CTF4MP4YGOxbmyyNcwCLcyvgg6zATRMzWYUhsnbDDWs7lLZu081Qa
-	iA0WauhOkJm3rfL/ffMnhtUj+CsbKCP4Cub5bCjaka+Z4dgvVI4VoyX14Lox4iuVViMOd/Dnk5cH1
-	LCSeo+wMN2p0olOfWHb0r0OSP8wQGVcfzqrT4RbsLNdF/JYt60Woauh5UqNPWEW6ADky9NeAuUFg5
-	xKvq2s+bt6Gg/oBntiUm2UlJAT01x4RIhie/8e7P92W0gyFJl/2QPqPPVt5OJdL/D4ZTzNz4XlZ7w
-	vqd3uHVQ==;
+	bh=KOh0egWiIzOhiKedrMVp6vfsrLVNuJ8Xkfw0kLaMAfY=; b=O+ZfbVO1oxFYUtlDr6N55L9Zft
+	O78zocMqroAiELX6bw7MpbtR4Vlx1DaC24DXFG1ji2ymA8WsCFwGbkGjFdKVZGp3fEikvb/Pund0e
+	NXX4cpAlbgsy4lZiuUImKet3X7iVd1ynC3mIOSWNRAbmHdywl8R+ZEJrqKa8OMEKRzg2qJjMatuYE
+	J0D0Yly3eO+4lJZTL+WgSOV18EQoKWTEKnWtXwQuc9jPML5YekWfSdPeAJq+xtRWq0nFJDw1Wfq/s
+	IG636zdzQP13lP/o7NqJsKTv+IG6Tq1mXs3yAZbn8oQ4zLoU7SFZed4PvgIzIuU47LCV0erqaheY3
+	67zzOqmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRpFc-00Bmtd-04;
-	Fri, 04 Aug 2023 07:29:32 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qRpFf-00BmxK-1O;
+	Fri, 04 Aug 2023 07:29:35 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qRpFF-00BmSh-2O;
+	id 1qRpFG-00BmTf-1i;
 	Fri, 04 Aug 2023 07:29:11 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C8B1466071CB;
-	Fri,  4 Aug 2023 08:29:07 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AD0FF66071BF;
+	Fri,  4 Aug 2023 08:29:08 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1691134148;
-	bh=Xw0ZEaJZnUUVzop6jWBNiSdfQOZObWFWliMoyYC7chw=;
+	s=mail; t=1691134149;
+	bh=0mQCLyW1Ws1lLoPWJcO0iech2ujtO9xHY8S2bs46Dv8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OsX9MPNAZbTa5XIyyWo/RqHN2N2WUvFMSp6q28yLZBH2WIC4ARPTUAcEBpbYaBz9Q
-	 yC7GqT8adcDIUmbS6xVO3sSqbMxU840Sz/Tm3VQ4+8HUZ1jO/oHURdInQLc8Js7sZc
-	 xsyEROIAieg1X83xcjHz5MEts5Q1ztdWA7rsXchne/LtAKg/wn1qkytFj03zS6W3mx
-	 S8enzxilUOHUfpBuHAFJRyfHrHiWaZkJzQVAXA1xhXnm64dGXdzH8sYudHqdFA2Jcm
-	 Z/qYpJ2xlgg+JhnK7LS0LE9esiEYxZnZzzywhUGEAWKoz4WwsMLg3EozbcSWnm4qWR
-	 afxt8uV61qqlQ==
+	b=UOwWAxNQxMg5ozA9RguaWrWLqegvxwOAfHp5ZX6QqCIRs8CeVOzqZ/HGJlt3aRsjv
+	 vdCDBWxpKO+QMU2Zzbs/pXZR+v3H9Tljfq/UpHm7FDVSD5Q/FWVu+OGokXv3o08NmD
+	 HHDjk/aluxo1bWSIKpQXA7EPB0TDw6I7zYDAsCiW463GxZiOzmBgV8/6en/2GiNKgt
+	 21lViRXHP4Nol307aLBsgbzFidLMTZVST5l6qSzuRdgbhJUPwNO1Xlt9gEIYUDczmT
+	 015CAQO//jiJESk/kJF26uX3dQTYAxel/v4a6YKkzIFaF+T1LQZ8yGLvvHs7BOjVIy
+	 ng+9l+AhMcNZw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -56,20 +56,19 @@ Cc: p.zabel@pengutronix.de,
 	linux-arm-kernel@lists.infradead.org,
 	wenst@chromium.org,
 	kernel@collabora.com,
-	ehristev@collabora.com,
-	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>
-Subject: [PATCH v10 13/16] drm/mediatek: gamma: Program gamma LUT type for descending or rising
-Date: Fri,  4 Aug 2023 09:28:47 +0200
-Message-ID: <20230804072850.89365-14-angelogioacchino.delregno@collabora.com>
+	ehristev@collabora.com
+Subject: [PATCH v10 14/16] drm/mediatek: aal: Rewrite kerneldoc for struct mtk_disp_aal
+Date: Fri,  4 Aug 2023 09:28:48 +0200
+Message-ID: <20230804072850.89365-15-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230804072850.89365-1-angelogioacchino.delregno@collabora.com>
 References: <20230804072850.89365-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230804_002909_940409_C4475848 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20230804_002910_698365_23C55C1F 
+X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,63 +83,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All of the SoCs that don't have dithering control in the gamma IP
-have got a GAMMA_LUT_TYPE bit that tells to the IP if the LUT is
-"descending" (bit set) or "rising" (bit cleared): make sure to set
-it correctly after programming the LUT.
+The kerneldoc for struct mtk_disp_aal was entirely wrong: rewrite it
+to actually document the structure.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-index fbff9f97b737..d9a70238d524 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-@@ -22,6 +22,7 @@
- #define GAMMA_RELAY_MODE				BIT(0)
- #define GAMMA_LUT_EN					BIT(1)
- #define GAMMA_DITHERING					BIT(2)
-+#define GAMMA_LUT_TYPE					BIT(2)
- #define DISP_GAMMA_SIZE				0x0030
- #define DISP_GAMMA_SIZE_HSIZE				GENMASK(28, 16)
- #define DISP_GAMMA_SIZE_VSIZE				GENMASK(12, 0)
-@@ -86,6 +87,17 @@ unsigned int mtk_gamma_get_lut_size(struct device *dev)
- 	return LUT_SIZE_DEFAULT;
- }
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+index 992dc1424c91..e6ab3eaa1126 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+@@ -36,9 +36,11 @@ struct mtk_disp_aal_data {
+ };
  
-+static bool mtk_gamma_lut_is_descending(struct drm_color_lut *lut, u32 lut_size)
-+{
-+	u64 first, last;
-+	int last_entry = lut_size - 1;
-+
-+	first = lut[0].red + lut[0].green + lut[0].blue;
-+	last = lut[last_entry].red + lut[last_entry].green + lut[last_entry].blue;
-+
-+	return !!(first > last);
-+}
-+
- /*
-  * SoCs supporting 12-bits LUTs are using a new register layout that does
-  * always support (by HW) both 12-bits and 10-bits LUT but, on those, we
-@@ -175,6 +187,14 @@ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
- 		}
- 	}
- 
-+	if (!gamma->data->has_dither) {
-+		/* Descending or Rising LUT */
-+		if (mtk_gamma_lut_is_descending(lut, gamma->data->lut_size - 1))
-+			cfg_val |= FIELD_PREP(GAMMA_LUT_TYPE, 1);
-+		else
-+			cfg_val &= ~GAMMA_LUT_TYPE;
-+	}
-+
- 	/* Enable the gamma table */
- 	cfg_val |= FIELD_PREP(GAMMA_LUT_EN, 1);
- 
+ /**
+- * struct mtk_disp_aal - DISP_AAL driver structure
+- * @ddp_comp - structure containing type enum and hardware resources
+- * @crtc - associated crtc to report irq events to
++ * struct mtk_disp_aal - Display Adaptive Ambient Light driver structure
++ * @clk:      clock for DISP_AAL controller
++ * @regs:     MMIO registers base
++ * @cmdq_reg: CMDQ Client register
++ * @data:     platform specific data for DISP_AAL
+  */
+ struct mtk_disp_aal {
+ 	struct clk *clk;
 -- 
 2.41.0
 
