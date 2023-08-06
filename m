@@ -4,66 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7100EB64DD
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Aug 2023 03:25:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF822C001DE
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Aug 2023 09:38:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=whpOHeAcCcjjqwU/OvON8VF060T2SRGxq+DJKQd8260=; b=afOpDNouwinWDARreQNI5munke
-	ymFADNG1Ashrfk9dK0yyQsDJDZXvMDZVRuVNBhIiZ690tmAQUQizp9FO3KqCNIN3SZN6iUTA5fzAA
-	wPfzvj/4n+vL7MVQZzF/TmRStjFCyeyPApB15guxAvpaW12ugGU37CxYx1TguLjBBjuFjReXLxCZ4
-	GdD4Nqp5LZK0yFZrJYEiqwKFRupIv27tO+i4yDEQY+CI4w4M2YzsZJicpRKwtm2gYjqMk6ToT8DWM
-	uUQa+Te1zWHk9c4bMpdTjkHQGCs2TFBWzXNQSvX+WiAOes6fdPGadoK45Nn16IdagZM2uFn6Qmpaz
-	RbCVJQQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=woOMOS/2vNFpFVmzX0Do7WRSCj4Hieyp/f+e03kiv+8=; b=dGq9TIEpKTK3H/zVCzHO+W+9Dp
+	In6lnGoeajKZhe2Yp9coG55rPCj0ug4PV1oiE/FWWFNLDXvErmfw+FFGGg0mClRUk0Sl+lZA9gfwn
+	OBAI/ZZE/r+ChZ1CWt9ES4W98b7/me3xQmkEseyzzoYuzctLvoDRQQkQMrH1NHAk3D2flOSkjUCL3
+	n1VwmpTI1rO1kE4nb7VuWopnAJwzWQrj/iZJ56mKghOiMQNT9PHuoGq8yQ3ppopS3imbKbLbYde/J
+	fzs15kUnnwYj+pCV/yvsFNM342YEpDNAHRXDhBQZKhnIV+tXXGPqJmbYg3WzTqgDLl7oHVGfOyCz/
+	REwMSX4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qSUOp-00EpFv-1d;
-	Sun, 06 Aug 2023 03:25:47 +0000
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qSUOk-00EpEs-0S;
-	Sun, 06 Aug 2023 03:25:45 +0000
-Received: from ubuntu.localdomain (unknown [218.12.19.97])
-	by mail-app4 (Coremail) with SMTP id cS_KCgCnrBSYEs9kXASjCg--.63926S2;
-	Sun, 06 Aug 2023 11:25:21 +0800 (CST)
-From: Duoming Zhou <duoming@zju.edu.cn>
-To: sean.wang@mediatek.com
-Cc: vkoul@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	dmaengine@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Duoming Zhou <duoming@zju.edu.cn>
-Subject: [PATCH] dmaengine: mediatek: Fix deadlock caused by synchronize_irq()
-Date: Sun,  6 Aug 2023 11:25:11 +0800
-Message-Id: <20230806032511.45263-1-duoming@zju.edu.cn>
-X-Mailer: git-send-email 2.17.1
-X-CM-TRANSID: cS_KCgCnrBSYEs9kXASjCg--.63926S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7Zryxuw4rJF4ktw1UtrWfGrg_yoW8GFy3pF
-	WDJa45CFWqyr1Dua1UCr42qFWrC3WfGrW7Gr4fXw43Ca4rJryYvr1FyayavF4jqr9rKa97
-	Kr4UtrWrCF4jyr7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUym14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26w1j6s0DM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4U
-	JVWxJr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gc
-	CE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
-	2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJV
-	W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1l42xK82IYc2Ij64vI
-	r41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8Gjc
-	xK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0
-	cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r1j6r4UMIIF0xvE42xK8V
-	AvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E
-	14v26r1j6r4UYxBIdaVFxhVjvjDU0xZFpf9x0JUdHUDUUUUU=
-X-CM-SenderInfo: qssqjiasttq6lmxovvfxof0/1tbiAwQSAWTNp-sHcgAhs1
+	id 1qSaD9-00F8vq-18;
+	Sun, 06 Aug 2023 09:38:07 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qSaD2-00F8vO-2G;
+	Sun, 06 Aug 2023 09:38:02 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D043160FE5;
+	Sun,  6 Aug 2023 09:37:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07DBFC433C7;
+	Sun,  6 Aug 2023 09:37:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1691314678;
+	bh=eVpmHvQ+el5oYnGHhCSpJ5MEq+qn7dtrQFEijdKMa8E=;
+	h=Date:From:To:List-Id:Cc:Subject:References:In-Reply-To:From;
+	b=hVSQsnl40hPx5Hzzj5zBBPn+ff8r3wDMB4k07G0sRzVhqsLlZsELCofYkyX1vHEH9
+	 03ftiNg9xoj/PdueOZCPd4+FYwDyorhR9keodEEfyj9p9KA4/h9hFsiKMDTw1wM7lf
+	 //8t24an4y9cxraswJL0vsj9Y8Zk5jSE5vPvdgX9dinzZrLvJvcZVXFm6si+6Nq2rF
+	 1Tt8WY1cesvzjLLo4dNhnZQZE5teSMdzrfqdtaOHt49D6vcGVyzszm2dZZYrfboNVH
+	 m6uPs5ND889+AtHQvdUCRX8b03lZtROnjo0oDt7LRhtMcC0TWq4ZFRWob1DxWot5kb
+	 F1CL31Cx36ztg==
+Date: Sun, 6 Aug 2023 17:26:09 +0800
+From: Jisheng Zhang <jszhang@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>,
+	Tsahee Zidenberg <tsahee@annapurnalabs.com>,
+	Antoine Tenart <atenart@kernel.org>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Jean-Marie Verdun <verdun@hpe.com>,
+	Nick Hawkins <nick.hawkins@hpe.com>,
+	Lubomir Rintel <lkundrak@v3.sk>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Daniel Mack <daniel@zonque.org>,
+	Haojian Zhuang <haojian.zhuang@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>,
+	Heiko Stuebner <heiko@sntech.de>, Liviu Dudau <liviu.dudau@arm.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Viresh Kumar <vireshk@kernel.org>,
+	Shiraz Has him <shiraz.linux.kernel@gmail.com>,
+	Stuart Yoder <stuyoder@gmail.com>,
+	Laurentiu Tudor <laurentiu.tudor@nxp.com>,
+	Jay Fang <f.fangjian@huawei.com>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Cristian Marussi <cristian.marussi@arm.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Dinh Nguyen <dinguyen@kernel.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Michal Simek <michal.simek@amd.com>, Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Ulf Hansson <ulf.hansson@linaro.org>, Li Yang <leoyang.li@nxp.com>,
+	Qiang Zhao <qiang.zhao@nxp.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
+	linux-aspeed@lists.ozlabs.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH v2 04/23] ARM: berlin: Drop unused includes
+Message-ID: <ZM9nMTHTFEY8JcC/@xhacker>
+References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
+ <20230803-dt-header-cleanups-for-soc-v2-4-d8de2cc88bff@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-4-d8de2cc88bff@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230805_202542_332421_1CD255C1 
-X-CRM114-Status: UNSURE (   9.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230806_023800_847944_4131AB6B 
+X-CRM114-Status: GOOD (  14.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,44 +119,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The synchronize_irq(c->irq) will not return until the IRQ handler
-mtk_uart_apdma_irq_handler() is completed. If the synchronize_irq()
-holds a spin_lock and waits the IRQ handler to complete, but the
-IRQ handler also needs the same spin_lock. The deadlock will happen.
-The process is shown below:
+On Thu, Aug 03, 2023 at 04:42:44PM -0600, Rob Herring wrote:
+> Several includes are not needed, so drop them.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-          cpu0                        cpu1
-mtk_uart_apdma_device_pause() | mtk_uart_apdma_irq_handler()
-  spin_lock_irqsave()         |
-                              |   spin_lock_irqsave()
-  //hold the lock to wait     |
-  synchronize_irq()           |
+Reviewed-by: Jisheng Zhang <jszhang@kernel.org>
 
-This patch reorders the synchronize_irq(c->irq) outside the spin_lock
-in order to mitigate the bug.
+Thanks!
 
-Fixes: 9135408c3ace ("dmaengine: mediatek: Add MediaTek UART APDMA support")
-Signed-off-by: Duoming Zhou <duoming@zju.edu.cn>
----
- drivers/dma/mediatek/mtk-uart-apdma.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
-index a1517ef1f4a..0acf6a92a4a 100644
---- a/drivers/dma/mediatek/mtk-uart-apdma.c
-+++ b/drivers/dma/mediatek/mtk-uart-apdma.c
-@@ -451,9 +451,8 @@ static int mtk_uart_apdma_device_pause(struct dma_chan *chan)
- 	mtk_uart_apdma_write(c, VFF_EN, VFF_EN_CLR_B);
- 	mtk_uart_apdma_write(c, VFF_INT_EN, VFF_INT_EN_CLR_B);
- 
--	synchronize_irq(c->irq);
--
- 	spin_unlock_irqrestore(&c->vc.lock, flags);
-+	synchronize_irq(c->irq);
- 
- 	return 0;
- }
--- 
-2.17.1
-
+PS: what would be the better merge path? Arnd take it directly with each
+sub-maintainers' ack or something else?
+> ---
+>  arch/arm/mach-berlin/berlin.c | 5 -----
+>  1 file changed, 5 deletions(-)
+> 
+> diff --git a/arch/arm/mach-berlin/berlin.c b/arch/arm/mach-berlin/berlin.c
+> index 2424ad40190c..13d5c899f09e 100644
+> --- a/arch/arm/mach-berlin/berlin.c
+> +++ b/arch/arm/mach-berlin/berlin.c
+> @@ -8,11 +8,6 @@
+>   *  (c) Marvell International Ltd.
+>   */
+>  
+> -#include <linux/init.h>
+> -#include <linux/io.h>
+> -#include <linux/kernel.h>
+> -#include <linux/of_platform.h>
+> -#include <asm/hardware/cache-l2x0.h>
+>  #include <asm/mach/arch.h>
+>  
+>  static const char * const berlin_dt_compat[] = {
+> 
+> -- 
+> 2.40.1
+> 
 
