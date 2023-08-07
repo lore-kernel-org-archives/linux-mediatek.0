@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E69FC001B0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Aug 2023 10:52:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3068EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Aug 2023 11:05:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/R7hsZqtyoqQt21/TWUQXzVnmsj6oyIZ+sWReSAWIGk=; b=l1CkCKls9ihmCORntyXXUKRsgJ
-	xTWblRdfRD/cLuxttiaU9VC5sljYA3R2Ent9uMf3sfEzdcI4y+VXW8++JOLhi2wzSLA+DuBS4j3O2
-	7sqaiP6nxX89Ml00TBde1Q1jZW0ruusN4GN1Z4ZAOr5jimTc74Xnv1ch0l5p+/6ryTPOjgN1bmLW/
-	2RFe4qRnOKVAa+p5AWQi/pQEofsriOZ7T5KgDFTCBy4/LiDLw/CyqprOK3nzjAJjconxqskffLz9Q
-	FXsO5/2dRUDgfTt2cXCQbgIgWHXZNS6R/iRisM5YEQgQq1OtjxqbW11yIsZcm81HiErL3BJy0Opxh
-	ndoROGYg==;
+	bh=r5OsQ4AuyiC2CrHHurCsWNqs5Q2r8YSSGtzarIpfdSs=; b=3GzvFQY6c8yXtv5MZHn07kEEUk
+	5HvWNzjizl0mNUOqLkD3QcsHhf1iTMaiJzQifEejwL8ELuf9DNj5LGxPRooIETrX/L/FKns1EZLbW
+	OImHHVO6HJdhXMghjGWdiJ/Y/87VcksPxHi55uMcMIaHygu+GFPh3LHrtcRhWZ5UQEKTW+lz0nai7
+	cD0QH+2RoKm3bKDg501KMIEwJ5v/r2SZkuJK+jZy5BgHkdkR/0kDM9rKDLA1RZ9BkjLL7WehVuAtv
+	vHtKrPZ6inwFt0nx8qTBuOyorzjAz6QXQNAlL+ledkkLfZY3NhUvtSnxeC+ySm0Kct4XSN1Hr1GL+
+	BWMZbt0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qSxqR-00GvCq-1k;
-	Mon, 07 Aug 2023 10:52:15 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qSy3Y-00Gxeu-2j;
+	Mon, 07 Aug 2023 11:05:48 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qSxqN-00GvAz-2P;
-	Mon, 07 Aug 2023 10:52:13 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	id 1qSy3W-00Gxdb-0p;
+	Mon, 07 Aug 2023 11:05:47 +0000
+Received: from [192.168.0.125] (unknown [82.76.24.202])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9FB97617A0;
-	Mon,  7 Aug 2023 10:52:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5AA53C433C8;
-	Mon,  7 Aug 2023 10:52:07 +0000 (UTC)
-Message-ID: <1cb55979-b2a9-9a1f-067e-1ea898229203@xs4all.nl>
-Date: Mon, 7 Aug 2023 12:52:05 +0200
+	(Authenticated sender: ehristev)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 47F7966071C7;
+	Mon,  7 Aug 2023 12:05:40 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1691406340;
+	bh=5YZT2Ezwe663qvbFpPpMjH+Ew5+w9TA+lbeL02sFIH4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=PqnXPwe27tmgzJ/9eJPCGfRFEWlwIVmjykHR/a8JuqJVr5orHWac7Bt7j3HI/UQD6
+	 bScMtv0xOeakR53Cm43plg2SnKUy5AvGLSig4JyGbwt1qtarHiIGAv0sBdZVSFMUjZ
+	 fGAo6CkcObnixHCWDRv0y1vNRPe7zfdhMv3whGb+LZhdUOeGfbQHv8ifqZemtxTOye
+	 memHGt2MQgztxy1zkdBQIAo2mQKoJ2g9zq4z9sgceDGL4Txh6wWgmyyXaWsYwuXWJ/
+	 Vu6CjVfqpuMQdkACXl/gc6oHO6qObC5aHe+4M3w45213DPpentP4N4NrRxJlNYafUc
+	 C2u1to8BEK8Eg==
+Message-ID: <f9ed06cb-2c9b-6b82-0bb4-2189a05218a1@collabora.com>
+Date: Mon, 7 Aug 2023 14:05:37 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH] media: mediatek: vcodec: Fix an error handling path in
- vdec_msg_queue_init()
+ Thunderbird/102.13.0
+Subject: Re: [PATCH] arm64: dts: mt8195: change watchdog reset boot flow
 Content-Language: en-US
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <efa0d4910998931a2ec9d933117fa71482d7b33a.1689624542.git.christophe.jaillet@wanadoo.fr>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <efa0d4910998931a2ec9d933117fa71482d7b33a.1689624542.git.christophe.jaillet@wanadoo.fr>
-Content-Type: text/plain; charset=UTF-8
+To: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Hsin-Te Yuan <yuanhsinte@google.com>
+References: <20230807085811.1.I7d08b8323531c59c0ec247570b2d05a790bfd3d4@changeid>
+From: Eugen Hristev <eugen.hristev@collabora.com>
+In-Reply-To: <20230807085811.1.I7d08b8323531c59c0ec247570b2d05a790bfd3d4@changeid>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230807_035211_844519_36851A22 
-X-CRM114-Status: GOOD (  17.27  )
+X-CRM114-CacheID: sfid-20230807_040546_479402_3C025335 
+X-CRM114-Status: GOOD (  14.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,49 +80,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Christophe,
+Hello Hsin-Te,
 
-This no longer applies after some major rework of the driver from Yunfei that
-was merged to our media_stage tree.
-
-Can you rebase this patch (if it is even still relevant)?
-
-Thanks,
-
-	Hans
-
-On 17/07/2023 22:09, Christophe JAILLET wrote:
-> All errors go to the error handling path, except this one. Be consistent
-> and also branch to it.
+On 8/7/23 11:58, Hsin-Te Yuan wrote:
+> The external output reset signal was originally disabled and sent from
+> firmware. However, an unfixed bug in the firmware prevents the signal
+> from being sent, causing the device to fail to boot. To fix this, enable
+> external output reset signal to allow the device to reboot normally.
 > 
-> Fixes: 2f5d0aef37c6 ("media: mediatek: vcodec: support stateless AV1 decoder")
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> Signed-off-by: Hsin-Te Yuan <yuanhsinte@google.com>
 > ---
->  drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-> index 04e6dc6cfa1d..c6cc2785e0e8 100644
-> --- a/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-> +++ b/drivers/media/platform/mediatek/vcodec/vdec_msg_queue.c
-> @@ -338,14 +338,16 @@ int vdec_msg_queue_init(struct vdec_msg_queue *msg_queue,
->  			err = mtk_vcodec_mem_alloc(ctx, &lat_buf->rd_mv_addr);
->  			if (err) {
->  				mtk_v4l2_err("failed to allocate rd_mv_addr buf[%d]", i);
-> -				return -ENOMEM;
-> +				err = -ENOMEM;
-> +				goto mem_alloc_err;
->  			}
->  
->  			lat_buf->tile_addr.size = VDEC_LAT_TILE_SZ;
->  			err = mtk_vcodec_mem_alloc(ctx, &lat_buf->tile_addr);
->  			if (err) {
->  				mtk_v4l2_err("failed to allocate tile_addr buf[%d]", i);
-> -				return -ENOMEM;
-> +				err = -ENOMEM;
-> +				goto mem_alloc_err;
->  			}
->  		}
->  
+>   arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> index 37a3e9de90ff7..5dc4214e1840b 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> @@ -1147,6 +1147,10 @@ &uart0 {
+>   	status = "okay";
+>   };
+>   
+> +&watchdog {
+> +	/delete-property/ mediatek,disable-extrst;
+> +};
+> +
+
+Does this affect only the mt8195-cherry or all mt8195 boards ?
+
+Judging by this commit , I think only mt8195-cherry, but your commit 
+message somehow suggests otherwise.
+
+Eugen
+
+>   &xhci0 {
+>   	status = "okay";
+>   
 
 
