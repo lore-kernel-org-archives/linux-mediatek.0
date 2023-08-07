@@ -4,70 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A384C41513
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Aug 2023 11:11:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98B8DC001DF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Aug 2023 11:30:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nNkO7n9iFI3x5Yuof9DjMG9aFBC/jzOd4VsLGCN4cpY=; b=NebVR+26u88oYYXmoCIxFKQmfP
-	NYPjRvNtoxu0kGH9IFJNPVBxbGxP2okWrUCJx92t4KN6zzTbdqJhY9G+EWN1KO01H0Rfolm4RVrG0
-	av8RE8vQSl8GeRXbwGBF6tjM95Gdv/2MCPP0gvoSaDuvLN7bb9S8/lPNl5h6tXuZHqjuGeD7vKu1g
-	dK09zXcsTRQFZqERSAyt2HAVubuM5DSL3dfQLwjJkEnIYDlkFj1/0G6yN06X6ZSHzVyihLfUokg8U
-	Vi60hC58iucC83+CxJ96XUDT9fMMeAnGeH9wTOaJEFe+ASVKJAdk0KfMrDeKSJ5CyjNzL7NvNAiYm
-	QtiQC9vw==;
+	bh=RjHUbpsXNTdXDllv/Zczg2nbxv2zyY7VFFQt2sH3BkI=; b=d1K12AtASfxAY3XmMTC4eOdDIS
+	LDqSHjChkAFd0K+60Fm6At/B4Hitt89rPmskz77Q0PGHMEj9PMktmTcudr34kJET7R+eP1DCbIAyM
+	etxv3WWIUEeTCkwn1WQQvOTKs8LmxAXILPh4ZEUs/fsLKtGiqYdZzDaaAyjoW06jumuoTVC56oUrj
+	DkuMNTEG9bR6G7we2Pa31iWUuNwX0VEyozu2FJiueisZMeas928R5euqqjt3SMzBVMv7HRnPssZOR
+	dTvE7/Yf2qL+Wid4jR8hapZ0ECmE3f++C6whzwfdJsLGVBY+tsg7/F3Bqs1ZU0XxHDQloFFWHgB+a
+	LQ90mKOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qSy8i-00GymB-1M;
-	Mon, 07 Aug 2023 11:11:08 +0000
+	id 1qSyRG-00H5dO-22;
+	Mon, 07 Aug 2023 11:30:18 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qSy8e-00Gyhn-0S;
-	Mon, 07 Aug 2023 11:11:06 +0000
+	id 1qSxPb-00GlwQ-2E;
+	Mon, 07 Aug 2023 10:24:33 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A1F84617E1;
-	Mon,  7 Aug 2023 11:11:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56EF0C433C8;
-	Mon,  7 Aug 2023 11:10:58 +0000 (UTC)
-Message-ID: <daaafe46-ce37-fe2e-4b77-d1e24d2b5662@xs4all.nl>
-Date: Mon, 7 Aug 2023 13:10:56 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id AE19C6176A;
+	Mon,  7 Aug 2023 10:24:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91344C433C8;
+	Mon,  7 Aug 2023 10:24:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1691403870;
+	bh=kIxXXpUAI67ManDrcGXE3YDE4EVMXn6NSEkXJ/fOOpc=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=J9MfkH41er9naJzIKmcUvOMwb+y45aHUagRy050m1jH5jq0vWRz9z+qJpVXi2KvpR
+	 hCwoIssCZ06zgHKlWimHqw6LEbN7IbKkc92cu4rUsrirFuBgMEgXFQwoJb0r3SOv5L
+	 2u94SOUH1q2fqdVAMEhnE7CjTLhNWzcLkGsuGir2NE2nS3UG8gWMdaaIyVkVzjH/DJ
+	 dvHQeQ8rEYS7Ecu7sK2RDVAV+6LixGftRs5imgYosYbsNb+GLJwxlB+FweRV4B6rcO
+	 V8mlURxgh0HN+dj0VQKUf82CUi+Hknx5ChATup/VNmFcKZaqpPdNaJrPLvotdcgp5z
+	 5L5Z4IFV/hNdQ==
+Received: (nullmailer pid 791243 invoked by uid 1000);
+	Mon, 07 Aug 2023 10:24:27 -0000
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [v3] media: mediatek: vcodec: fix AV1 decoding on MT8188
-Content-Language: en-US, nl
-To: Xiaoyong Lu <xiaoyong.lu@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Nicolas Dufresne <nicolas@ndufresne.ca>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: George Sun <george.sun@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20230803111017.2418-1-xiaoyong.lu@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230803111017.2418-1-xiaoyong.lu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+From: Rob Herring <robh@kernel.org>
+To: Julien Stephan <jstephan@baylibre.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Florian Sylvestre <fsylvestre@baylibre.com>, Rob Herring <robh+dt@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, daoyuan huang <daoyuan.huang@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Phi-Bang Nguyen <pnguyen@baylibre.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Hsieh <andy.hsieh@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Louis Kuo <louis.kuo@mediatek.com>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Moudy Ho <moudy.ho@mediatek.com>
+In-Reply-To: <20230807094940.329165-2-jstephan@baylibre.com>
+References: <20230807094940.329165-1-jstephan@baylibre.com>
+ <20230807094940.329165-2-jstephan@baylibre.com>
+Message-Id: <169140386586.791137.15518824950356939117.robh@kernel.org>
+Subject: Re: [PATCH v3 1/4] dt-bindings: media: add mediatek ISP3.0 sensor
+ interface
+Date: Mon, 07 Aug 2023 04:24:27 -0600
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230807_041104_269619_932433E1 
-X-CRM114-Status: GOOD (  21.29  )
+X-CRM114-CacheID: sfid-20230807_032431_819325_25DA3ED1 
+X-CRM114-Status: GOOD (  16.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,72 +76,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-FYI: the v2 patch has already been merged, so I dropped this v3.
 
-On 03/08/2023 13:10, Xiaoyong Lu wrote:
-> Fix AV1 decoding failure when the iova is 36bit.
+On Mon, 07 Aug 2023 11:48:10 +0200, Julien Stephan wrote:
+> From: Louis Kuo <louis.kuo@mediatek.com>
 > 
-> Before this fix, the decoder was accessing incorrect addresses with 36bit
-> iova tile buffer, leading to iommu faults.
+> This adds the bindings, for the mediatek ISP3.0 SENINF module embedded in
+> some Mediatek SoC, such as the mt8365
 > 
-> Fixes: 2f5d0aef37c6 ("media: mediatek: vcodec: support stateless AV1 decoder")
-> Signed-off-by: Xiaoyong Lu<xiaoyong.lu@mediatek.com>
+> Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
+> Signed-off-by: Phi-Bang Nguyen <pnguyen@baylibre.com>
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
 > ---
-> Changes from v2:
+>  .../media/mediatek,mt8365-seninf.yaml         | 259 ++++++++++++++++++
+>  MAINTAINERS                                   |   7 +
+>  2 files changed, 266 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8365-seninf.yaml
 > 
-> - refine commit subject and message
 
-It's only subject/commit message changes, the actual code is the same.
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Regards,
+yamllint warnings/errors:
 
-	Hans
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/media/mediatek,mt8365-seninf.example.dts:28:18: fatal error: dt-bindings/power/mediatek,mt8365-power.h: No such file or directory
+   28 |         #include <dt-bindings/power/mediatek,mt8365-power.h>
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[2]: *** [scripts/Makefile.lib:419: Documentation/devicetree/bindings/media/mediatek,mt8365-seninf.example.dtb] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1500: dt_binding_check] Error 2
+make: *** [Makefile:234: __sub-make] Error 2
 
-> 
-> Changes from v1:
-> 
-> - prefer '|' rather than '+'
-> - prefer '&' rather than shift operation
-> - add comments for address operations
-> 
-> v1:
-> - VDEC HW can access tile buffer and decode normally.
-> - Test ok by mt8195 32bit and mt8188 36bit iova.
-> 
-> ---
->  .../mediatek/vcodec/vdec/vdec_av1_req_lat_if.c       | 12 ++++++++----
->  1 file changed, 8 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-> index 404a1a23fd402..e9f2393f6a883 100644
-> --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_av1_req_lat_if.c
-> @@ -1658,9 +1658,9 @@ static void vdec_av1_slice_setup_tile_buffer(struct vdec_av1_slice_instance *ins
->  	u32 allow_update_cdf = 0;
->  	u32 sb_boundary_x_m1 = 0, sb_boundary_y_m1 = 0;
->  	int tile_info_base;
-> -	u32 tile_buf_pa;
-> +	u64 tile_buf_pa;
->  	u32 *tile_info_buf = instance->tile.va;
-> -	u32 pa = (u32)bs->dma_addr;
-> +	u64 pa = (u64)bs->dma_addr;
->  
->  	if (uh->disable_cdf_update == 0)
->  		allow_update_cdf = 1;
-> @@ -1673,8 +1673,12 @@ static void vdec_av1_slice_setup_tile_buffer(struct vdec_av1_slice_instance *ins
->  		tile_info_buf[tile_info_base + 0] = (tile_group->tile_size[tile_num] << 3);
->  		tile_buf_pa = pa + tile_group->tile_start_offset[tile_num];
->  
-> -		tile_info_buf[tile_info_base + 1] = (tile_buf_pa >> 4) << 4;
-> -		tile_info_buf[tile_info_base + 2] = (tile_buf_pa % 16) << 3;
-> +		/* save av1 tile high 4bits(bit 32-35) address in lower 4 bits position
-> +		 * and clear original for hw requirement.
-> +		 */
-> +		tile_info_buf[tile_info_base + 1] = (tile_buf_pa & 0xFFFFFFF0ull) |
-> +			((tile_buf_pa & 0xF00000000ull) >> 32);
-> +		tile_info_buf[tile_info_base + 2] = (tile_buf_pa & 0xFull) << 3;
->  
->  		sb_boundary_x_m1 =
->  			(tile->mi_col_starts[tile_col + 1] - tile->mi_col_starts[tile_col] - 1) &
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20230807094940.329165-2-jstephan@baylibre.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
