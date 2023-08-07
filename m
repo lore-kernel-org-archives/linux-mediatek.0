@@ -4,96 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B35DC001DF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Aug 2023 12:31:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AEFFC001DF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Aug 2023 12:38:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IeSCRN7LQH0G+TbFV5xj/6YyE8DspF7qV0UbMHUtQn8=; b=XEvtNdeBUjD1nGqRbeDhPhuYMC
-	2HbxRYeqRyAGs01LI8i6Mjh77kJOHLKwSfO+Z5NpcKsuUjGYnyFjjWz+zub7s45+xjz2URHggQISt
-	6otGQG9afDByjG+MkHH2OCN0M4QXPjkOhQh60e+cNA8lygNcOG27Meef8uEatbadFOr74GWpyVIf1
-	Gyvx4fOZSXzeKMuumz3Ygsj+vAbZTfnQpwKwNOC4gushgZzxsFYV8p41xBsBAZU9QxatJrCHBpWtE
-	jiZTmWFyFKlV4N0slltDK0r4GUWAqx4n9m6H8svS67TBzPznVeImB6qK/oxOVEu29qfV7uEhq0t/x
-	D8FSySmw==;
+	bh=CXHryVI73wJZajWQdtZdeOA1bA7vsuYvfEUOkG10pjM=; b=FzAz7RQhVjU0o1nUYKR9uP5Zxy
+	NEdaDVuHjWLbT3AIpqrkYsTEfi4CTjYcwNK+dWcEptK6gMg+UGL32E788oIFvxKAKH5hFlstjfpas
+	5OvMoKVO653SUi136SQ72QfxkeT/D7NcAyCVnnn/3ZFvvpDRwUfqCKODf4PE1+DEr0TT5NQj8SBvI
+	ughJGCp7FZck5acrccMMUnmdRnq6hXqwqr8xbGMsWek9yAMcoYUzYAE/2+Czai779w6PNwYqLKpaw
+	fMbw+of4rQnW1GooDE+5nbRAkS6vRfp1zzCf2mxdXqyiHsGN5Sz2NNQgzMEWnA9B3QolmYbFqX312
+	ETtZcTaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qSzOo-00HE1O-0q;
-	Mon, 07 Aug 2023 12:31:50 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1qSzVS-00HF4I-18;
+	Mon, 07 Aug 2023 12:38:42 +0000
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qSzOl-00HDyJ-2s;
-	Mon, 07 Aug 2023 12:31:49 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 377CLbWv020687;
-	Mon, 7 Aug 2023 12:31:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=IeSCRN7LQH0G+TbFV5xj/6YyE8DspF7qV0UbMHUtQn8=;
- b=nPrXVmvHaf8Wz9/R2oW0bDnaRWZ6cy1QrsAo40ICODcnh87tKqwE7rFbZNp47UyagARl
- GcG3qxOLlTinHJPTLwYP4l4yy+NzmeHLV0QvXpynCnddscll4inHKlFHgShDU6mVLxvi
- PtgdpYVCgD1HSPxgVuyRdo8qyz0f3CwUiOOdOLadQ7j3oXYfhuleww6GrEunxnhp8kEh
- wC2vg5snBLM6fbBNx8fLPqxi8gw1H3/5i2o+Jc4O9uxRPSX/vzI24+utcrnjBTQWtaQf
- QN0X6+vafMINL5Leq1nn5Hc0SZo98FqTBlNSN8ZfzsraE7bhq9hImXhtlROcP3DVl7at 1w== 
-Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3s9dcybg78-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 07 Aug 2023 12:31:39 +0000
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 377CVdru003542
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 7 Aug 2023 12:31:39 GMT
-Received: from [10.214.66.81] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.30; Mon, 7 Aug
- 2023 05:31:35 -0700
-Message-ID: <81b15738-615d-a039-7bc3-22aa5b3a54bd@quicinc.com>
-Date: Mon, 7 Aug 2023 18:01:27 +0530
+	id 1qSzVP-00HF3m-0S
+	for linux-mediatek@lists.infradead.org;
+	Mon, 07 Aug 2023 12:38:40 +0000
+Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-583fe10bb3cso51222057b3.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 07 Aug 2023 05:38:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1691411917; x=1692016717;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=CXHryVI73wJZajWQdtZdeOA1bA7vsuYvfEUOkG10pjM=;
+        b=AqnpNcvlh4sds/xSatKCl2xVyvy0hZTCsSRIHJWRkhi4gXQh5XYOBErLnsSSRjPYYA
+         DtoGOjX31CHvvksJ5c2oWv07QEkcWeSC7rmUtq0hIrzmxro6e+ZAMMfkvElT/kzJPJlc
+         t9AuoFHtoOwwNzJmmmQmK5MuONx3kD9dehEunjV4UrwnGfxaV8yPk4o8z9OzMt5h0613
+         5w+LsJ9M+J66JAPioTVd0vJ780jnYycbkjRgUCqlBWQUXuWooqelwI3y2OaYo/3DSrOC
+         +vu6+XJj4vzfd9zgEHtlJVX20OZphLNar3wo6lLJyqaapiO9RsQnl13GNPLaxzqURbp6
+         pQtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1691411917; x=1692016717;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=CXHryVI73wJZajWQdtZdeOA1bA7vsuYvfEUOkG10pjM=;
+        b=OBAu8jIP6+MEGUozXVZRWnydPVs0/PS+hpnTPxSnwrZ/yW5usmZmIvhZgPf8OGpcBh
+         zvjrY/rGayJyQX0HB+H/zTUdAl22IcXkXevf8b9WdqKvOfEMjgr3Y08M9mOeDUslizmm
+         4J0A43MKj5XXBL9NTlUlR/k0MYW1OcKPR0ntkkx1ejivNncdSm1SpC0boD05QYA9Ne/U
+         5QHe0Ao917Zz3AZuZYDMz2SVoQtau/xwqRgBnufb5UIHUWzjINTJswu5tls5GmkBvJpW
+         X55836rrxvPoMz1/+RytPkn0n94EwO4DQtVuTvK52QNLSEBqmsTWf4TBR0E32tju1zIe
+         kYlw==
+X-Gm-Message-State: AOJu0YxoezFDFcAysXwwV1HFlQWPKyv7EBhvKrzon2upiUWdJCndha0T
+	U7mX636og2MNKJxb/tjKZ9XJ+m60etlICEovQOw9LA==
+X-Google-Smtp-Source: AGHT+IGXtX8kyUWlc/nPtBroLcm+XO3U3aTNFbrBNBbUQrZKvcnLrSkqNj9OxkRfxLPtO3c4BvLombwNR/1DiZYcvcY=
+X-Received: by 2002:a25:8404:0:b0:d3f:2238:8872 with SMTP id
+ u4-20020a258404000000b00d3f22388872mr9540358ybk.63.1691411917691; Mon, 07 Aug
+ 2023 05:38:37 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: Feedback on Qualcomm's minidump (debug) solution for end user
- device crash
-To: Krzysztof Kozlowski <krzk@kernel.org>, Brian Masney <bmasney@redhat.com>
-CC: <linux-samsung-soc@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-        lkml <linux-kernel@vger.kernel.org>,
-        Trilok Soni <quic_tsoni@quicinc.com>,
-        "open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        Alim Akhtar
-	<alim.akhtar@samsung.com>, Kukjin Kim <kgene@kernel.org>,
-        Vignesh Raghavendra
-	<vigneshr@ti.com>, Nishanth Menon <nm@ti.com>,
-        Matthias Brugger
-	<matthias.bgg@gmail.com>
-References: <0199db00-1b1d-0c63-58ff-03efae02cb21@quicinc.com>
- <ZL6t/sZTZBfvSYOm@brian-x1> <15caeb52-b670-9000-fa2b-b8d1b8485016@kernel.org>
-Content-Language: en-US
-From: Mukesh Ojha <quic_mojha@quicinc.com>
-In-Reply-To: <15caeb52-b670-9000-fa2b-b8d1b8485016@kernel.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: 7NUSzpeiHBwBl3kjaqMRKkjROOgAmd4j
-X-Proofpoint-GUID: 7NUSzpeiHBwBl3kjaqMRKkjROOgAmd4j
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
- definitions=2023-08-07_12,2023-08-03_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 adultscore=0 malwarescore=0
- mlxscore=0 bulkscore=0 impostorscore=0 mlxlogscore=651 suspectscore=0
- spamscore=0 lowpriorityscore=0 clxscore=1011 priorityscore=1501
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2306200000 definitions=main-2308070116
+References: <CACRpkdYzytbM0sN7Q-Niwq2jUgbeVPpREmwUTbja86eGROOB+w@mail.gmail.com>
+ <TYAP286MB03159367B2B1932DD38252CDBC02A@TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM>
+In-Reply-To: <TYAP286MB03159367B2B1932DD38252CDBC02A@TYAP286MB0315.JPNP286.PROD.OUTLOOK.COM>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 7 Aug 2023 14:38:26 +0200
+Message-ID: <CACRpkdZgPNQ8HDrS95qcAisEN9m2oush1eg_FL72ndqRk=VaPw@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mtmips: do not log when repeating the same
+ pinctrl request
+To: Shiji Yang <yangshiji66@outlook.com>
+Cc: angelogioacchino.delregno@collabora.com, arinc.unal@arinc9.com, 
+	linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-mips@vger.kernel.org, matthias.bgg@gmail.com, sean.wang@kernel.org, 
+	sergio.paracuellos@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230807_053147_932829_AE568FDB 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20230807_053839_199152_4EBD6131 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,54 +92,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Jul 24, 2023 at 3:31=E2=80=AFAM Shiji Yang <yangshiji66@outlook.com=
+> wrote:
 
+> We use pinctrl_select_state() to request the pinctrl and set the pin
+> function. After searching "include/linux/pinctrl/consumer.h", I don't
+> find a relevant API to reverse this operation so we can't set .enabled
+> back to the false state. If I'm wrong please correct me, I don't know
+> much about the pinctrl architecture.
 
-On 7/30/2023 5:14 PM, Krzysztof Kozlowski wrote:
-> On 24/07/2023 18:59, Brian Masney wrote:
->> + linux-arm-kernel list
->>
->> On Thu, Jul 20, 2023 at 08:32:24PM +0530, Mukesh Ojha wrote:
->>> Hi Samsung/MTK/Any other SOC vendors,
->>>
->>> This is to bring to your notice that, we (Qualcomm) are working on
->>> upstreaming our minidump solution which is to address the problem of
->>> debugging on field device crashes where collecting entire ddr dump
->>> would not be feasible and collecting minimal data from the ddr would
->>> help in debug direction or even help in root causing issue.
->>>
->>> We have recently posted v4 version here [1]
->>>
->>> Based on comments[2], community is more worried about, if each SOC
->>> vendor come up with their own dumping method today or in future and
->>> whether it can have a common solution to a similar problem faced by
->>> other SOC vendor.
->>>
->>> We wanted to take your feedback if you also encounter a similar problem
->>> or maintain something similar solution in downstream which can be
->>> upstreamed. This will help us in a way to have a common solution in
->>> upstream.
->>>
->>> [1]
->>> https://lore.kernel.org/lkml/10dd2ead-758a-89f0-cda4-70ae927269eb@quicinc.com/
->>>
->>> [2]
->>> https://lore.kernel.org/lkml/CAL_JsqLO9yey2-4FcWsaGxijiS6hGL0SH9VoMuiyei-u9=Cv=w@mail.gmail.com/
->>
->> Adding the main ARM list to solicit feedback from other silicon
->> manufacturers.
->>
->> The cover sheet on the v4 patch set is available at:
->> https://lore.kernel.org/lkml/1687955688-20809-1-git-send-email-quic_mojha@quicinc.com/
-> 
-> I doubt anyone follows the lists, so at least Cc some maintainers.
-> 
-> +Cc Alim, Kukjin, Vignesh, Nishanth, Matthias.
+I don't think that has much to do with the pinctrl core.
 
-Thanks @Krzysztof/@Brian for extending the list.
+I expect the driver to set this .enabled variable to false wherever
+the enablement fails, note that this is inside
+struct mtmips_priv *p, i.e. nothing to do with the pin control core.
 
--Mukesh
-> 
-> Best regards,
-> Krzysztof
-> 
+This patch appears to paper over the real issue.
+
+Yours,
+Linus Walleij
 
