@@ -4,81 +4,178 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAAE8C001B0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Aug 2023 08:31:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 785A2C001DF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Aug 2023 08:38:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KkKl47yr9p1LdaLrQw4ux4p7T6jvHHScktOtGmDcFH0=; b=BsMNfec/B6vlYunHzHFEiapaGs
-	XlatX8bTt/0ZHbyRbj78TJQLXz5ttAjf18Bv9+i5UjD91C+i0/amQhT7gJ/DPrYyzB1Yf8LgdSsU8
-	lYojB1HNdSmvE09PNOuQtj/bENrkfhjKGy5zTyGcibhbjIIhvJlJoIxVyj7q6GEFbg5Wk7C4wUKys
-	6DSSDVqjRkRcelDOKL2Z8a7kGqYL//tEW1eke55rUaB7VFnatMGkGr51I8gUNR2zJXIvB8vRBAsQ3
-	BVV0jB3r/IHZNFJhnOdMgVmnvrTsOBUvmT8GwyzbYghVO4X2mKK5I1zTqNCtEbWOD3Y7Wwgdl/yTo
-	W7ns+fHw==;
+	bh=ZU74V6Vt7d0ghoWMNU9oe+xFVfUShww9+Yz88EXY4rs=; b=1qXtGa2XtvxtrJbLlBq/SiiiHt
+	8PhjY/Q7gPCiNkN09Hm3MWSTFv7bm6t3nP4i3dTMYlOPIjkT7cMyHlb09b2481wiUQP5q2wNi0TOD
+	HW2+a8PydOer+QRYHIUyjWI7dDiuAtZvI//A3c9xoxdVgobqKWVeI5YtTYWw4aAzxmvF8lPHqcXMe
+	PGAlz3wky14KvfR5MpcxIxvoW/ljBegpa+f37rxFIDwvsZ6yghO057UZhcg3a5E2ubhxqsRq6Nz1H
+	AP8o3/0DURvGjxRUPHpNbfNiwFiH2jfeHoi2JOJpCSyXPncvDxLkg6GXzw7u+rn6Cw4if+ZnddO4V
+	KNaPebAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTI7e-00220J-0x;
-	Tue, 08 Aug 2023 08:31:22 +0000
+	id 1qTIEh-0023Z8-0Y;
+	Tue, 08 Aug 2023 08:38:39 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTI7X-0021vw-2x;
-	Tue, 08 Aug 2023 08:31:21 +0000
-X-UUID: ee03959235c511ee83ed1395ce914268-20230808
+	id 1qTIEe-0023YK-2L;
+	Tue, 08 Aug 2023 08:38:38 +0000
+X-UUID: f2c7612035c611ee83ed1395ce914268-20230808
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=KkKl47yr9p1LdaLrQw4ux4p7T6jvHHScktOtGmDcFH0=;
-	b=Be3erY+BCgnclOYey5Lmx4RH4YB+tTD1dGRVXk3st2OruxqOClkmWCvvK6xcc+OuIhaR7cc5DKKjliDsLIot/azLE9VMfO6Od2CZP3zpIVaAytref8WQ/IH//JW2oB/f6F+4mtw16eHKyXDbCM3eStuErKdYBaestdpRr76Lk6w=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=ZU74V6Vt7d0ghoWMNU9oe+xFVfUShww9+Yz88EXY4rs=;
+	b=a/Dl9otC/bCOVBjvuojXi5OCdpGj67Qet4Nv4y4oft5ytFxDXNRbaP2fP42OpyqqttOnc3pkdJaEVB3e1Liwqhtc36lIiYVB2scxA0TKsmbmu+e7/Q3YyclbEUor4tFYEg+m4SgaCoLNupt+2OgY3oQ6YiP/dJq2ZdzQdbwyaV8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:5fe470e2-58bd-4a5d-aa5e-223a7c859cfe,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.31,REQID:5fe470e2-58bd-4a5d-aa5e-223a7c859cfe,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:0ad78a4,CLOUDID:27e9cfd2-cd77-4e67-bbfd-aa4eaace762f,B
-	ulkID:230808163040SFFLFA8X,BulkQuantity:1,Recheck:0,SF:48|38|29|28|17|19,T
-	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:40,QS:nil,BEC:nil,COL
-	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,TF_CID_SPAM_ULN,
-	TF_CID_SPAM_SNR,TF_CID_SPAM_SDM
-X-UUID: ee03959235c511ee83ed1395ce914268-20230808
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <kuan-ying.lee@mediatek.com>)
+X-CID-O-INFO: VERSION:1.1.31,REQID:ead317a4-5ac5-446b-b865-2bd18df81d98,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:28,RULE:Release_Ham,ACTIO
+	N:release,TS:73
+X-CID-INFO: VERSION:1.1.31,REQID:ead317a4-5ac5-446b-b865-2bd18df81d98,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:28,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:73
+X-CID-META: VersionHash:0ad78a4,CLOUDID:5e6e04a1-0933-4333-8d4f-6c3c53ebd55b,B
+	ulkID:230807165914VND9HJNH,BulkQuantity:21,Recheck:0,SF:29|28|17|19|48|38|
+	102,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40|20,QS:nil,BEC:ni
+	l,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:PA,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
+	TF_CID_SPAM_FSD,TF_CID_SPAM_OBB,TF_CID_SPAM_FCD
+X-UUID: f2c7612035c611ee83ed1395ce914268-20230808
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 610217641; Tue, 08 Aug 2023 01:31:11 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 1248107601; Tue, 08 Aug 2023 01:38:28 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 8 Aug 2023 16:30:36 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 8 Aug 2023 16:30:36 +0800
-From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-To: Jan Kiszka <jan.kiszka@siemens.com>, Kieran Bingham <kbingham@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ 15.2.1118.26; Tue, 8 Aug 2023 16:38:26 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 8 Aug 2023 16:38:26 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=LcK1ukKK/Q+q5XJCtxl6zy/Y3JPYdBEhLt0NYlZ1qW7KXpqvzPFr6GKHy5970K/8NR7/6WZWfwmjmhrOXZsy/yDnV15B1QjeuhA695omerpU/ddp7UI3eDTmnW1EuQHozWNpH5QOui2JfMhOxZPXWvAdD1oVuCrpbbS6/LBzSXDCKchG3nWd1f+5igk+8w58duUweVJ5bs6Gv97Rru60yR5TDZBVgJGlSkYYsKQ2kDaRIG5kHcaSsL/DJrq5IzzLtYRcnf1gjjnmU/GkOkc//jLIdHQpX0S1IE6BQLNyQI5kXfdx0MkPpCZpv3O3DRs26NmTJvhzAQBH7HdNHDk4jA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ZU74V6Vt7d0ghoWMNU9oe+xFVfUShww9+Yz88EXY4rs=;
+ b=UVwVv+9wswAIs1BAJ4W8OUCwSND9/gErWT32jPwwi6ykEDEFQg5yStRQ1I+Arp5Pco63dEXIdsJQxfMaBXN5/ML4/SftlMsJ9lxV0HszHqP0x4fom4wQgOkFtBIVEZhn7Fh4zJuxeuE+CDOGC90tFKyIj5u6ME4/1shwXFDEZDQNRddkmx9DEHnzgBCXilQcyDhjGpF70/Tj+wrC0hguwyb8X6LgBPw97Y9TBci89y8wJS2G4pCcI8GEBJHb8/3FecXu9VVoC5ubi+MTsrfEeOglWMq1IKhJAnHp8F5gPAVySZU3SKNpAhJL7I0/tPtN1QxrRYtZNupSNbZCMnTJuA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ZU74V6Vt7d0ghoWMNU9oe+xFVfUShww9+Yz88EXY4rs=;
+ b=DithlLEY5D5hgGe778Ocabeznn2DQYRRl7C5DlUrxtS3CQ6252FPOdHV9UISBFy/Z8pe8ZSkvqw/q4JYvP//y8uNb1GONUg5GC4hMVm4FcdVwXbhZ0Gk9XgwR5mUikAceBWlwZ8659waB8FHczB7jXHLw/3gwrJJ8p1QbQlenF0=
+Received: from SEYPR03MB7682.apcprd03.prod.outlook.com (2603:1096:101:149::11)
+ by SI2PR03MB5545.apcprd03.prod.outlook.com (2603:1096:4:131::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6652.26; Tue, 8 Aug
+ 2023 08:38:24 +0000
+Received: from SEYPR03MB7682.apcprd03.prod.outlook.com
+ ([fe80::1b82:a45d:e171:62e8]) by SEYPR03MB7682.apcprd03.prod.outlook.com
+ ([fe80::1b82:a45d:e171:62e8%4]) with mapi id 15.20.6652.026; Tue, 8 Aug 2023
+ 08:38:23 +0000
+From: =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
+To: "amergnat@baylibre.com" <amergnat@baylibre.com>, "chunkuang.hu@kernel.org"
+	<chunkuang.hu@kernel.org>, "angelogioacchino.delregno@collabora.com"
 	<angelogioacchino.delregno@collabora.com>
-CC: <chinwen.chang@mediatek.com>, <qun-wei.lin@mediatek.com>,
-	<linux-mm@kvack.org>, <linux-modules@vger.kernel.org>,
-	<casper.li@mediatek.com>, <akpm@linux-foundation.org>,
-	<linux-arm-kernel@lists.infradead.org>, Kuan-Ying Lee
-	<Kuan-Ying.Lee@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 4/8] scripts/gdb/aarch64: add aarch64 page operation helper commands and configs
-Date: Tue, 8 Aug 2023 16:30:14 +0800
-Message-ID: <20230808083020.22254-5-Kuan-Ying.Lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230808083020.22254-1-Kuan-Ying.Lee@mediatek.com>
-References: <20230808083020.22254-1-Kuan-Ying.Lee@mediatek.com>
+CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
+	=?utf-8?B?Sm9obnNvbiBXYW5nICjnjovogZbpkasp?= <Johnson.Wang@mediatek.com>,
+	=?utf-8?B?SmFzb24tY2ggQ2hlbiAo6Zmz5bu66LGqKQ==?=
+	<Jason-ch.Chen@mediatek.com>, =?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?=
+	<Shawn.Sung@mediatek.com>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, =?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?=
+	<Nancy.Lin@mediatek.com>, "dri-devel@lists.freedesktop.org"
+	<dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH RESEND v4 2/2] drm/mediatek: Fix iommu fault during crtc
+ enabling
+Thread-Topic: [PATCH RESEND v4 2/2] drm/mediatek: Fix iommu fault during crtc
+ enabling
+Thread-Index: AQHZyRPpFsizTgWRg0G/DVBCFYkp76/gFTqA
+Date: Tue, 8 Aug 2023 08:38:23 +0000
+Message-ID: <44b511d536ce2b96da49d03da2e301f123385c0a.camel@mediatek.com>
+References: <20230807015110.30579-1-jason-jh.lin@mediatek.com>
+	 <20230807015110.30579-3-jason-jh.lin@mediatek.com>
+	 <98fe8211-52b4-37ec-a0eb-7dc0ae5a0615@baylibre.com>
+In-Reply-To: <98fe8211-52b4-37ec-a0eb-7dc0ae5a0615@baylibre.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEYPR03MB7682:EE_|SI2PR03MB5545:EE_
+x-ms-office365-filtering-correlation-id: e9beb1e0-9b3d-4618-2b3c-08db97ead410
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: XRCpze0x4LuQ5Pzc/wGBlABvsB7SK4XEsqYHSrxZ1xkpgeLIzCKjHARlS0t7Fm5bgQfPjNzdwtVmSIACBNLOfIzkvd8Ls6hXX9g3cYLQzczZt0/qSqnQ1xtlaGXYuMfL3J52lel4KESYwrLPYdFWnW32gLRzsErbT3/9tNsEDEc8rFjICWgN1CbuWo7cYPmEAto35/RWCy2JD6hAku4HccVt/w40QaR2INEqQC4SxG2gg3xZmLD3GpODnhvE1S2YO0mj8XsR3KzJ/mRMuUqB3exmAIYlIlYAW98OfKLxz6sIXuk6dVdgzfse4ntT/a8kn8YeVdXrwM1Pvia6q7t9q167PLa+cqoEQswyn5ZgAfTlVHvbq8Cv/vlEeMsov84VHTZKXnYPfWdgDkGeS3YnkP8pE2NRjNtytrQVFxRwoFFlUCemHKjDfE5sC/MaSNn62Y8gXeh2S3CAMEPSezzsJv3lQRIN9qjJrsA3RMNOwXKX73GE6AfbiMxwoYdCoBpJAnD2B5pasGb6AAvAEd7KwsXy954U6PIr5hUvxSq0NX17cZMb1/hHWlDwHR0IOE348DZn1ycDA5KxGbMRv/ADyMsVAHTqOEfBQapMI61j+/VRC6bMnHvUvTXY7eglDo5vfzgFxJDSqQX4xJ86LVrSjqSMPZPB7ov/zjuufRe6ofQ=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEYPR03MB7682.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(39860400002)(136003)(366004)(396003)(376002)(346002)(186006)(1800799003)(451199021)(8676002)(8936002)(5660300002)(478600001)(54906003)(110136005)(71200400001)(6512007)(6486002)(83380400001)(2906002)(36756003)(53546011)(85182001)(26005)(2616005)(6506007)(66476007)(41300700001)(86362001)(4326008)(316002)(66446008)(64756008)(38070700005)(66556008)(66946007)(76116006)(91956017)(122000001)(38100700002);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dWc0Ujh1cGZDVDlRMGpjZFpIeVlBRnhLNlpYTFhhcDVBam92OHQ3MUw2NWxh?=
+ =?utf-8?B?aVJ0aHJjZlBwVjFyNUF6SytxdllqOWtoUDdlWVR0aTZ4dDE5OUFRUnluQnU0?=
+ =?utf-8?B?Rlpyekt3dy9pbTZvQW12WkIyS2IrbzVXeWtsUTR2OGRGcFNLK00xVFlPRVRk?=
+ =?utf-8?B?Y3FPSlZUb290UGJxYTRnVmRPcENEbWJxQkJNRi9QZTRUTDkrdDNoUWx3ZG5U?=
+ =?utf-8?B?RkNvbko1eHUrV3dEWFhKbkRqZWkwNE5LcStHcWRPckQ1T1hSZVprc3VqTkZO?=
+ =?utf-8?B?cHVGZVRkR043aGxHcFgrVlNaRlVsNGZvWmJ3ODdrNVdMbW1qWitla2J3QUt4?=
+ =?utf-8?B?endJZkFZWjdidXZGNVduLzdpcVpWeE9FYk1GdmVNZzFyT0NUSUw2S2FDTkw3?=
+ =?utf-8?B?TWtiazJrbi9oWHFOZkFEWlFYdDNzakphZFJVc1piY1F2K2pYSlFEUDNiVkpM?=
+ =?utf-8?B?dkp6VmYwaGpRTlVIN1BkbFkrVi9sbTBNTzMra2NxWlY4RDZjaitWMExRTExS?=
+ =?utf-8?B?emlZWWtjeFUxQnVsamh4djQrcHovaFliR3FCMUZ6RCtOS2lZUGV4bVppVGNP?=
+ =?utf-8?B?QitDZnVBQm5rOFYyRXNtZFJ3ems2WkVWWThNTHlGcUhjbmFJZHVVOEFWdEwv?=
+ =?utf-8?B?TW1iR3pxREsrbG11UzBCZlFqOEIyckdzZjdqYXZYcEhDVENLL0FqNkk0dk1k?=
+ =?utf-8?B?VEtwWEU4em5PdXFWUG5NNWRPYmE2M0RRU3l1ZkRWSGpCKzZHSWJmTEp0andl?=
+ =?utf-8?B?RXU3OWxoRTBCdHFhd25YeUFBc1VLcXVTNWVwKzFJK1BsVmoyelFkV08vTDJu?=
+ =?utf-8?B?aFFwWmdLa0J1USs5NWRjK2d4UCt5KzNaYlBweEpVWW5CdDgzc3I4WTNEbVll?=
+ =?utf-8?B?ckRuWTNMNlozZmNkTWZJblpUN1ZDcFZPMGdwaDQvUm53ZmZtc3RiYThqUkFP?=
+ =?utf-8?B?NVZDWVg0dWNON3djaU1WSmdPN2l2ZEVaTnpsMHdvUUo0RFpoOXFnbGNiSTFn?=
+ =?utf-8?B?K1FNNXBpL3lSNERucy9ML21teGdrQk1UUnZrQVlWNmUvelQreGNpN3pEVmRS?=
+ =?utf-8?B?OE9UbTRyNGh3MU1kVjloQ09kTTBlT2FtcUJCVGRjNHNBcXA0VjU5WG50Mm1E?=
+ =?utf-8?B?TWRZa0lsRDdnOWxLbGhuVGtPMGFJQ1oyTkltM1h0a0VTYm85KzlEdmdrRjhz?=
+ =?utf-8?B?MEw1bHhGdDVpdzVRVGNrcHNHcnVGQm1lbkFweUdGRjZZaGovWmJnSS9ZeVg1?=
+ =?utf-8?B?Z1JHOEJFU1FGb0JlSlhSRWgwQ2ozVnVmTzR6RUZzRkJkTmpBNHJpT3FqUVl2?=
+ =?utf-8?B?TWd3ZU5mYVhpekFlTjlJRmF3R2VWUkJQRVZGS0hlTk8zL1lqRDJsQlFid3BR?=
+ =?utf-8?B?YnpzNDZrNGZ5SzZ1S0N6cU95TTZrNGRmNEN5T2dKaldkemU4ZEgwMEM5TnBT?=
+ =?utf-8?B?WDNRUU9CaWFkR21qbWFoQTFSMXdWMmRHTkUxNno5VWxiSTBlNHJSd2tFNVZ3?=
+ =?utf-8?B?NmlhdlVwdzZUK3dYc2Z6TEdSK3gxY05Fek9EZWpQaWhGbFloUlRsOVN2UzZl?=
+ =?utf-8?B?VlZ2YU83eGZtUW1qM1g0cUF4Q2xGdytwaTROQUx0ckRtTUY1T1JORDlLMTlh?=
+ =?utf-8?B?dEdYeEpEL3ZnZUFFSStHdEFlc0RVRnQweHJRUDZDbG5GR002bG9NdHJyUnlT?=
+ =?utf-8?B?bVhUY0xFSVVHNHJKWC91S0x2VXd6bzVEL3FmdDRPdG1LQkJFSGpRQnQ2Y2px?=
+ =?utf-8?B?N0tCcDlSRUM2Vmp3Qy9EV3lOeXRKbTd5OHJ5UkduTXQ3eFVnK3VqTlpNNFl6?=
+ =?utf-8?B?Y292S2FMcWY3bUpIL0dvekZpYTU2Rkk0NFdPZmxXNTJkNGRNWHBIZDhGcEhY?=
+ =?utf-8?B?ZDUzUU5QdEQ3bFN4ai9GYTVGUjJnbW1TNnNMcmdLd2toSnNwcWF1K0JiUGth?=
+ =?utf-8?B?Qmd4UnBNaW1ldnJyTEhoTmdzQmhWamFxZGpNQ3RBcEJNM1ZkRVJtSGZQTzA3?=
+ =?utf-8?B?R2hXcmZKK1dzM3RyOW12bDNSd0lsdjZFTDYzS1VOdEV2TzFVRXN0VDZOQVBU?=
+ =?utf-8?B?REdvbERVblFJbUlCQWFXeEIrSEpnV2pJUjN5MTlGS0J6U1VDVlRWZ2k5b2Np?=
+ =?utf-8?B?azY1OUxSclp6bTVtdUNyR0h4ekxxVU50SXVoZGIxQUVSYVBXQWdEcmx2NEZG?=
+ =?utf-8?B?dGc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <360129148A1CA64E8FF7A0E1A3239178@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEYPR03MB7682.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e9beb1e0-9b3d-4618-2b3c-08db97ead410
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Aug 2023 08:38:23.8783
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: IAeSjw9Aghe9q5cI+sWtRQpDg8v3uYG2xl6mRBmW/KmsFdFoSO336nGGZZPeYnlM13oub7AngtFBFuYDLGZ7ma1nnOfn6clRScAWUJLo54I=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR03MB5545
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230808_013115_965886_E33AEB58 
-X-CRM114-Status: GOOD (  14.53  )
+X-CRM114-CacheID: sfid-20230808_013836_774805_83EC760F 
+X-CRM114-Status: GOOD (  16.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,904 +190,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. Move page table debugging from mm.py to pgtable.py.
-
-2. Add aarch64 kernel config and memory constants value.
-
-3. Add below aarch64 page operation helper commands.
-   page_to_pfn, page_to_phys, pfn_to_page, page_address,
-   virt_to_phys, sym_to_pfn, pfn_to_kaddr, virt_to_page.
-
-4. Only support CONFIG_SPARSEMEM_VMEMMAP=y now.
-
-Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
----
- scripts/gdb/linux/constants.py.in |  23 ++
- scripts/gdb/linux/mm.py           | 582 +++++++++++++++++++-----------
- scripts/gdb/linux/pgtable.py      | 222 ++++++++++++
- scripts/gdb/vmlinux-gdb.py        |   3 +-
- 4 files changed, 626 insertions(+), 204 deletions(-)
- create mode 100644 scripts/gdb/linux/pgtable.py
-
-diff --git a/scripts/gdb/linux/constants.py.in b/scripts/gdb/linux/constants.py.in
-index fab74ca9df6f..0805aeab3dcd 100644
---- a/scripts/gdb/linux/constants.py.in
-+++ b/scripts/gdb/linux/constants.py.in
-@@ -105,3 +105,26 @@ LX_CONFIG(CONFIG_X86_MCE_AMD)
- LX_CONFIG(CONFIG_X86_MCE)
- LX_CONFIG(CONFIG_X86_IO_APIC)
- LX_CONFIG(CONFIG_HAVE_KVM)
-+LX_CONFIG(CONFIG_NUMA)
-+LX_CONFIG(CONFIG_ARM64)
-+LX_CONFIG(CONFIG_ARM64_4K_PAGES)
-+LX_CONFIG(CONFIG_ARM64_16K_PAGES)
-+LX_CONFIG(CONFIG_ARM64_64K_PAGES)
-+if IS_BUILTIN(CONFIG_ARM64):
-+    LX_VALUE(CONFIG_ARM64_PA_BITS)
-+    LX_VALUE(CONFIG_ARM64_VA_BITS)
-+    LX_VALUE(CONFIG_ARM64_PAGE_SHIFT)
-+    LX_VALUE(CONFIG_ARCH_FORCE_MAX_ORDER)
-+LX_CONFIG(CONFIG_SPARSEMEM)
-+LX_CONFIG(CONFIG_SPARSEMEM_EXTREME)
-+LX_CONFIG(CONFIG_SPARSEMEM_VMEMMAP)
-+LX_CONFIG(CONFIG_KASAN)
-+LX_CONFIG(CONFIG_KASAN_GENERIC)
-+LX_CONFIG(CONFIG_KASAN_SW_TAGS)
-+LX_CONFIG(CONFIG_KASAN_HW_TAGS)
-+if IS_BUILTIN(CONFIG_KASAN_GENERIC) or IS_BUILTIN(CONFIG_KASAN_SW_TAGS):
-+    LX_VALUE(CONFIG_KASAN_SHADOW_OFFSET)
-+LX_CONFIG(CONFIG_VMAP_STACK)
-+if IS_BUILTIN(CONFIG_NUMA):
-+    LX_VALUE(CONFIG_NODES_SHIFT)
-+LX_CONFIG(CONFIG_DEBUG_VIRTUAL)
-diff --git a/scripts/gdb/linux/mm.py b/scripts/gdb/linux/mm.py
-index 30d837f3dfae..ad5641dcb068 100644
---- a/scripts/gdb/linux/mm.py
-+++ b/scripts/gdb/linux/mm.py
-@@ -1,222 +1,398 @@
--# SPDX-License-Identifier: GPL-2.0-only
-+# SPDX-License-Identifier: GPL-2.0
- #
--# gdb helper commands and functions for Linux kernel debugging
--#
--#  routines to introspect page table
-+# Copyright (c) 2023 MediaTek Inc.
- #
- # Authors:
--#  Dmitrii Bundin <dmitrii.bundin.a@gmail.com>
-+#  Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
- #
- 
- import gdb
-+import math
-+from linux import utils, constants
-+
-+def DIV_ROUND_UP(n,d):
-+    return ((n) + (d) - 1) // (d)
- 
--from linux import utils
-+def test_bit(nr, addr):
-+    if addr.dereference() & (0x1 << nr):
-+        return True
-+    else:
-+        return False
- 
--PHYSICAL_ADDRESS_MASK = gdb.parse_and_eval('0xfffffffffffff')
-+class page_ops():
-+    ops = None
-+    def __init__(self):
-+        if not constants.LX_CONFIG_SPARSEMEM_VMEMMAP:
-+            raise gdb.GdbError('Only support CONFIG_SPARSEMEM_VMEMMAP now')
-+        if constants.LX_CONFIG_ARM64 and utils.is_target_arch('aarch64'):
-+            self.ops = aarch64_page_ops()
-+        else:
-+            raise gdb.GdbError('Only support aarch64 now')
- 
-+class aarch64_page_ops():
-+    def __init__(self):
-+        self.SUBSECTION_SHIFT = 21
-+        self.SEBSECTION_SIZE = 1 << self.SUBSECTION_SHIFT
-+        self.MODULES_VSIZE = 128 * 1024 * 1024
- 
--def page_mask(level=1):
--    # 4KB
--    if level == 1:
--        return gdb.parse_and_eval('(u64) ~0xfff')
--    # 2MB
--    elif level == 2:
--        return gdb.parse_and_eval('(u64) ~0x1fffff')
--    # 1GB
--    elif level == 3:
--        return gdb.parse_and_eval('(u64) ~0x3fffffff')
--    else:
--        raise Exception(f'Unknown page level: {level}')
--
--
--#page_offset_base in case CONFIG_DYNAMIC_MEMORY_LAYOUT is disabled
--POB_NO_DYNAMIC_MEM_LAYOUT = '0xffff888000000000'
--def _page_offset_base():
--    pob_symbol = gdb.lookup_global_symbol('page_offset_base')
--    pob = pob_symbol.name if pob_symbol else POB_NO_DYNAMIC_MEM_LAYOUT
--    return gdb.parse_and_eval(pob)
--
--
--def is_bit_defined_tupled(data, offset):
--    return offset, bool(data >> offset & 1)
--
--def content_tupled(data, bit_start, bit_end):
--    return (bit_start, bit_end), data >> bit_start & ((1 << (1 + bit_end - bit_start)) - 1)
--
--def entry_va(level, phys_addr, translating_va):
--        def start_bit(level):
--            if level == 5:
--                return 48
--            elif level == 4:
--                return 39
--            elif level == 3:
--                return 30
--            elif level == 2:
--                return 21
--            elif level == 1:
--                return 12
-+        if constants.LX_CONFIG_ARM64_64K_PAGES:
-+            self.SECTION_SIZE_BITS = 29
-+        else:
-+            self.SECTION_SIZE_BITS = 27
-+        self.MAX_PHYSMEM_BITS = constants.LX_CONFIG_ARM64_VA_BITS
-+
-+        self.PAGE_SHIFT = constants.LX_CONFIG_ARM64_PAGE_SHIFT
-+        self.PAGE_SIZE = 1 << self.PAGE_SHIFT
-+        self.PAGE_MASK = (~(self.PAGE_SIZE - 1)) & ((1 << 64) - 1)
-+
-+        self.VA_BITS = constants.LX_CONFIG_ARM64_VA_BITS
-+        if self.VA_BITS > 48:
-+            self.VA_BITS_MIN = 48
-+            self.vabits_actual = gdb.parse_and_eval('vabits_actual')
-+        else:
-+            self.VA_BITS_MIN = self.VA_BITS
-+            self.vabits_actual = self.VA_BITS
-+        self.kimage_voffset = gdb.parse_and_eval('kimage_voffset') & ((1 << 64) - 1)
-+
-+        self.SECTIONS_SHIFT = self.MAX_PHYSMEM_BITS - self.SECTION_SIZE_BITS
-+
-+        if str(constants.LX_CONFIG_ARCH_FORCE_MAX_ORDER).isdigit():
-+            self.MAX_ORDER = constants.LX_CONFIG_ARCH_FORCE_MAX_ORDER
-+        else:
-+            self.MAX_ORDER = 11
-+
-+        self.MAX_ORDER_NR_PAGES = 1 << (self.MAX_ORDER - 1)
-+        self.PFN_SECTION_SHIFT = self.SECTION_SIZE_BITS - self.PAGE_SHIFT
-+        self.NR_MEM_SECTIONS = 1 << self.SECTIONS_SHIFT
-+        self.PAGES_PER_SECTION = 1 << self.PFN_SECTION_SHIFT
-+        self.PAGE_SECTION_MASK = (~(self.PAGES_PER_SECTION - 1)) & ((1 << 64) - 1)
-+
-+        if constants.LX_CONFIG_SPARSEMEM_EXTREME:
-+            self.SECTIONS_PER_ROOT = self.PAGE_SIZE // gdb.lookup_type("struct mem_section").sizeof
-+        else:
-+            self.SECTIONS_PER_ROOT = 1
-+
-+        self.NR_SECTION_ROOTS = DIV_ROUND_UP(self.NR_MEM_SECTIONS, self.SECTIONS_PER_ROOT)
-+        self.SECTION_ROOT_MASK = self.SECTIONS_PER_ROOT - 1
-+        self.SUBSECTION_SHIFT = 21
-+        self.SEBSECTION_SIZE = 1 << self.SUBSECTION_SHIFT
-+        self.PFN_SUBSECTION_SHIFT = self.SUBSECTION_SHIFT - self.PAGE_SHIFT
-+        self.PAGES_PER_SUBSECTION = 1 << self.PFN_SUBSECTION_SHIFT
-+
-+        self.SECTION_HAS_MEM_MAP = 1 << int(gdb.parse_and_eval('SECTION_HAS_MEM_MAP_BIT'))
-+        self.SECTION_IS_EARLY = 1 << int(gdb.parse_and_eval('SECTION_IS_EARLY_BIT'))
-+
-+        self.struct_page_size = utils.get_page_type().sizeof
-+        self.STRUCT_PAGE_MAX_SHIFT = (int)(math.log(self.struct_page_size, 2))
-+
-+        self.PAGE_OFFSET = self._PAGE_OFFSET(self.VA_BITS)
-+        self.MODULES_VADDR = self._PAGE_END(self.VA_BITS_MIN)
-+        self.MODULES_END = self.MODULES_VADDR + self.MODULES_VSIZE
-+
-+        self.VMEMMAP_SHIFT = (self.PAGE_SHIFT - self.STRUCT_PAGE_MAX_SHIFT)
-+        self.VMEMMAP_SIZE = ((self._PAGE_END(self.VA_BITS_MIN) - self.PAGE_OFFSET) >> self.VMEMMAP_SHIFT)
-+        self.VMEMMAP_START = (-(1 << (self.VA_BITS - self.VMEMMAP_SHIFT))) & 0xffffffffffffffff
-+        self.VMEMMAP_END = self.VMEMMAP_START + self.VMEMMAP_SIZE
-+
-+        self.VMALLOC_START = self.MODULES_END
-+        self.VMALLOC_END = self.VMEMMAP_START - 256 * 1024 * 1024
-+
-+        self.memstart_addr = gdb.parse_and_eval("memstart_addr")
-+        self.PHYS_OFFSET = self.memstart_addr
-+        self.vmemmap = gdb.Value(self.VMEMMAP_START).cast(utils.get_page_type().pointer()) - (self.memstart_addr >> self.PAGE_SHIFT)
-+
-+        self.KERNEL_START = gdb.parse_and_eval("_text")
-+        self.KERNEL_END = gdb.parse_and_eval("_end")
-+
-+        if constants.LX_CONFIG_KASAN_GENERIC or constants.LX_CONFIG_KASAN_SW_TAGS:
-+            if constants.LX_CONFIG_KASAN_GENERIC:
-+                self.KASAN_SHADOW_SCALE_SHIFT = 3
-             else:
--                raise Exception(f'Unknown level {level}')
--
--        entry_offset =  ((translating_va >> start_bit(level)) & 511) * 8
--        entry_va = _page_offset_base() + phys_addr + entry_offset
--        return entry_va
--
--class Cr3():
--    def __init__(self, cr3, page_levels):
--        self.cr3 = cr3
--        self.page_levels = page_levels
--        self.page_level_write_through = is_bit_defined_tupled(cr3, 3)
--        self.page_level_cache_disabled = is_bit_defined_tupled(cr3, 4)
--        self.next_entry_physical_address = cr3 & PHYSICAL_ADDRESS_MASK & page_mask()
--
--    def next_entry(self, va):
--        next_level = self.page_levels
--        return PageHierarchyEntry(entry_va(next_level, self.next_entry_physical_address, va), next_level)
--
--    def mk_string(self):
--            return f"""\
--cr3:
--    {'cr3 binary data': <30} {hex(self.cr3)}
--    {'next entry physical address': <30} {hex(self.next_entry_physical_address)}
--    ---
--    {'bit' : <4} {self.page_level_write_through[0]: <10} {'page level write through': <30} {self.page_level_write_through[1]}
--    {'bit' : <4} {self.page_level_cache_disabled[0]: <10} {'page level cache disabled': <30} {self.page_level_cache_disabled[1]}
--"""
--
--
--class PageHierarchyEntry():
--    def __init__(self, address, level):
--        data = int.from_bytes(
--            memoryview(gdb.selected_inferior().read_memory(address, 8)),
--            "little"
--        )
--        if level == 1:
--            self.is_page = True
--            self.entry_present = is_bit_defined_tupled(data, 0)
--            self.read_write = is_bit_defined_tupled(data, 1)
--            self.user_access_allowed = is_bit_defined_tupled(data, 2)
--            self.page_level_write_through = is_bit_defined_tupled(data, 3)
--            self.page_level_cache_disabled = is_bit_defined_tupled(data, 4)
--            self.entry_was_accessed = is_bit_defined_tupled(data, 5)
--            self.dirty = is_bit_defined_tupled(data, 6)
--            self.pat = is_bit_defined_tupled(data, 7)
--            self.global_translation = is_bit_defined_tupled(data, 8)
--            self.page_physical_address = data & PHYSICAL_ADDRESS_MASK & page_mask(level)
--            self.next_entry_physical_address = None
--            self.hlat_restart_with_ordinary = is_bit_defined_tupled(data, 11)
--            self.protection_key = content_tupled(data, 59, 62)
--            self.executed_disable = is_bit_defined_tupled(data, 63)
-+                self.KASAN_SHADOW_SCALE_SHIFT = 4
-+            self.KASAN_SHADOW_OFFSET = constants.LX_CONFIG_KASAN_SHADOW_OFFSET
-+            self.KASAN_SHADOW_END = (1 << (64 - self.KASAN_SHADOW_SCALE_SHIFT)) + self.KASAN_SHADOW_OFFSET
-+            self.PAGE_END = self.KASAN_SHADOW_END - (1 << (self.vabits_actual - self.KASAN_SHADOW_SCALE_SHIFT))
-+        else:
-+            self.PAGE_END = self._PAGE_END(self.VA_BITS_MIN)
-+
-+        if constants.LX_CONFIG_NUMA and constants.LX_CONFIG_NODES_SHIFT:
-+            self.NODE_SHIFT = constants.LX_CONFIG_NODES_SHIFT
-+        else:
-+            self.NODE_SHIFT = 0
-+
-+        self.MAX_NUMNODES = 1 << self.NODE_SHIFT
-+
-+    def SECTION_NR_TO_ROOT(self, sec):
-+        return sec // self.SECTIONS_PER_ROOT
-+
-+    def __nr_to_section(self, nr):
-+        root = self.SECTION_NR_TO_ROOT(nr)
-+        mem_section = gdb.parse_and_eval("mem_section")
-+        return mem_section[root][nr & self.SECTION_ROOT_MASK]
-+
-+    def pfn_to_section_nr(self, pfn):
-+        return pfn >> self.PFN_SECTION_SHIFT
-+
-+    def section_nr_to_pfn(self, sec):
-+        return sec << self.PFN_SECTION_SHIFT
-+
-+    def __pfn_to_section(self, pfn):
-+        return self.__nr_to_section(self.pfn_to_section_nr(pfn))
-+
-+    def pfn_to_section(self, pfn):
-+        return self.__pfn_to_section(pfn)
-+
-+    def subsection_map_index(self, pfn):
-+        return (pfn & ~(self.PAGE_SECTION_MASK)) // self.PAGES_PER_SUBSECTION
-+
-+    def pfn_section_valid(self, ms, pfn):
-+        if constants.LX_CONFIG_SPARSEMEM_VMEMMAP:
-+            idx = self.subsection_map_index(pfn)
-+            return test_bit(idx, ms['usage']['subsection_map'])
-+        else:
-+            return True
-+
-+    def valid_section(self, mem_section):
-+        if mem_section != None and (mem_section['section_mem_map'] & self.SECTION_HAS_MEM_MAP):
-+            return True
-+        return False
-+
-+    def early_section(self, mem_section):
-+        if mem_section != None and (mem_section['section_mem_map'] & self.SECTION_IS_EARLY):
-+            return True
-+        return False
-+
-+    def pfn_valid(self, pfn):
-+        ms = None
-+        if self.PHYS_PFN(self.PFN_PHYS(pfn)) != pfn:
-+            return False
-+        if self.pfn_to_section_nr(pfn) >= self.NR_MEM_SECTIONS:
-+            return False
-+        ms = self.__pfn_to_section(pfn)
-+
-+        if not self.valid_section(ms):
-+            return False
-+        return self.early_section(ms) or self.pfn_section_valid(ms, pfn)
-+
-+    def _PAGE_OFFSET(self, va):
-+        return (-(1 << (va))) & 0xffffffffffffffff
-+
-+    def _PAGE_END(self, va):
-+        return (-(1 << (va - 1))) & 0xffffffffffffffff
-+
-+    def kasan_reset_tag(self, addr):
-+        if constants.LX_CONFIG_KASAN_SW_TAGS or constants.LX_CONFIG_KASAN_HW_TAGS:
-+            return int(addr) | (0xff << 56)
-+        else:
-+            return addr
-+
-+    def __is_lm_address(self, addr):
-+        if (addr - self.PAGE_OFFSET) < (self.PAGE_END - self.PAGE_OFFSET):
-+            return True
-+        else:
-+            return False
-+    def __lm_to_phys(self, addr):
-+        return addr - self.PAGE_OFFSET + self.PHYS_OFFSET
-+
-+    def __kimg_to_phys(self, addr):
-+        return addr - self.kimage_voffset
-+
-+    def __virt_to_phys_nodebug(self, va):
-+        untagged_va = self.kasan_reset_tag(va)
-+        if self.__is_lm_address(untagged_va):
-+            return self.__lm_to_phys(untagged_va)
-+        else:
-+            return self.__kimg_to_phys(untagged_va)
-+
-+    def __virt_to_phys(self, va):
-+        if constants.LX_CONFIG_DEBUG_VIRTUAL:
-+            if not self.__is_lm_address(self.kasan_reset_tag(va)):
-+                raise gdb.GdbError("Warning: virt_to_phys used for non-linear address: 0x%lx\n" % va)
-+        return self.__virt_to_phys_nodebug(va)
-+
-+    def virt_to_phys(self, va):
-+        return self.__virt_to_phys(va)
-+
-+    def PFN_PHYS(self, pfn):
-+        return pfn << self.PAGE_SHIFT
-+
-+    def PHYS_PFN(self, phys):
-+        return phys >> self.PAGE_SHIFT
-+
-+    def __phys_to_virt(self, pa):
-+        return (pa - self.PHYS_OFFSET) | self.PAGE_OFFSET
-+
-+    def __phys_to_pfn(self, pa):
-+        return self.PHYS_PFN(pa)
-+
-+    def __pfn_to_phys(self, pfn):
-+        return self.PFN_PHYS(pfn)
-+
-+    def __pa_symbol_nodebug(self, x):
-+        return self.__kimg_to_phys(x)
-+
-+    def __phys_addr_symbol(self, x):
-+        if constants.LX_CONFIG_DEBUG_VIRTUAL:
-+            if x < self.KERNEL_START or x > self.KERNEL_END:
-+                raise gdb.GdbError("0x%x exceed kernel range" % x)
-+        return self.__pa_symbol_nodebug(x)
-+
-+    def __pa_symbol(self, x):
-+        return self.__phys_addr_symbol(x)
-+
-+    def __va(self, pa):
-+        return self.__phys_to_virt(pa)
-+
-+    def pfn_to_kaddr(self, pfn):
-+        return self.__va(pfn << self.PAGE_SHIFT)
-+
-+    def virt_to_pfn(self, va):
-+        return self.__phys_to_pfn(self.__virt_to_phys(va))
-+
-+    def sym_to_pfn(self, x):
-+        return self.__phys_to_pfn(self.__pa_symbol(x))
-+
-+    def page_to_pfn(self, page):
-+        return int(page.cast(utils.get_page_type().pointer()) - self.vmemmap.cast(utils.get_page_type().pointer()))
-+
-+    def page_to_phys(self, page):
-+        return self.__pfn_to_phys(self.page_to_pfn(page))
-+
-+    def pfn_to_page(self, pfn):
-+        return (self.vmemmap + pfn).cast(utils.get_page_type().pointer())
-+
-+    def page_to_virt(self, page):
-+        if constants.LX_CONFIG_DEBUG_VIRTUAL:
-+            return self.__va(self.page_to_phys(page))
-         else:
--            page_size = is_bit_defined_tupled(data, 7)
--            page_size_bit = page_size[1]
--            self.is_page = page_size_bit
--            self.entry_present = is_bit_defined_tupled(data, 0)
--            self.read_write = is_bit_defined_tupled(data, 1)
--            self.user_access_allowed = is_bit_defined_tupled(data, 2)
--            self.page_level_write_through = is_bit_defined_tupled(data, 3)
--            self.page_level_cache_disabled = is_bit_defined_tupled(data, 4)
--            self.entry_was_accessed = is_bit_defined_tupled(data, 5)
--            self.page_size = page_size
--            self.dirty = is_bit_defined_tupled(
--                data, 6) if page_size_bit else None
--            self.global_translation = is_bit_defined_tupled(
--                data, 8) if page_size_bit else None
--            self.pat = is_bit_defined_tupled(
--                data, 12) if page_size_bit else None
--            self.page_physical_address = data & PHYSICAL_ADDRESS_MASK & page_mask(level) if page_size_bit else None
--            self.next_entry_physical_address = None if page_size_bit else data & PHYSICAL_ADDRESS_MASK & page_mask()
--            self.hlat_restart_with_ordinary = is_bit_defined_tupled(data, 11)
--            self.protection_key = content_tupled(data, 59, 62) if page_size_bit else None
--            self.executed_disable = is_bit_defined_tupled(data, 63)
--        self.address = address
--        self.page_entry_binary_data = data
--        self.page_hierarchy_level = level
--
--    def next_entry(self, va):
--        if self.is_page or not self.entry_present[1]:
--            return None
--
--        next_level = self.page_hierarchy_level - 1
--        return PageHierarchyEntry(entry_va(next_level, self.next_entry_physical_address, va), next_level)
--
--
--    def mk_string(self):
--        if not self.entry_present[1]:
--            return f"""\
--level {self.page_hierarchy_level}:
--    {'entry address': <30} {hex(self.address)}
--    {'page entry binary data': <30} {hex(self.page_entry_binary_data)}
--    ---
--    PAGE ENTRY IS NOT PRESENT!
--"""
--        elif self.is_page:
--            def page_size_line(ps_bit, ps, level):
--                return "" if level == 1 else f"{'bit': <3} {ps_bit: <5} {'page size': <30} {ps}"
--
--            return f"""\
--level {self.page_hierarchy_level}:
--    {'entry address': <30} {hex(self.address)}
--    {'page entry binary data': <30} {hex(self.page_entry_binary_data)}
--    {'page size': <30} {'1GB' if self.page_hierarchy_level == 3 else '2MB' if self.page_hierarchy_level == 2 else '4KB' if self.page_hierarchy_level == 1 else 'Unknown page size for level:' + self.page_hierarchy_level}
--    {'page physical address': <30} {hex(self.page_physical_address)}
--    ---
--    {'bit': <4} {self.entry_present[0]: <10} {'entry present': <30} {self.entry_present[1]}
--    {'bit': <4} {self.read_write[0]: <10} {'read/write access allowed': <30} {self.read_write[1]}
--    {'bit': <4} {self.user_access_allowed[0]: <10} {'user access allowed': <30} {self.user_access_allowed[1]}
--    {'bit': <4} {self.page_level_write_through[0]: <10} {'page level write through': <30} {self.page_level_write_through[1]}
--    {'bit': <4} {self.page_level_cache_disabled[0]: <10} {'page level cache disabled': <30} {self.page_level_cache_disabled[1]}
--    {'bit': <4} {self.entry_was_accessed[0]: <10} {'entry has been accessed': <30} {self.entry_was_accessed[1]}
--    {"" if self.page_hierarchy_level == 1 else f"{'bit': <4} {self.page_size[0]: <10} {'page size': <30} {self.page_size[1]}"}
--    {'bit': <4} {self.dirty[0]: <10} {'page dirty': <30} {self.dirty[1]}
--    {'bit': <4} {self.global_translation[0]: <10} {'global translation': <30} {self.global_translation[1]}
--    {'bit': <4} {self.hlat_restart_with_ordinary[0]: <10} {'restart to ordinary': <30} {self.hlat_restart_with_ordinary[1]}
--    {'bit': <4} {self.pat[0]: <10} {'pat': <30} {self.pat[1]}
--    {'bits': <4} {str(self.protection_key[0]): <10} {'protection key': <30} {self.protection_key[1]}
--    {'bit': <4} {self.executed_disable[0]: <10} {'execute disable': <30} {self.executed_disable[1]}
--"""
-+            __idx = int((page.cast(gdb.lookup_type("unsigned long")) - self.VMEMMAP_START).cast(utils.get_ulong_type())) // self.struct_page_size
-+            return self.PAGE_OFFSET + (__idx * self.PAGE_SIZE)
-+
-+    def virt_to_page(self, va):
-+        if constants.LX_CONFIG_DEBUG_VIRTUAL:
-+            return self.pfn_to_page(self.virt_to_pfn(va))
-         else:
--            return f"""\
--level {self.page_hierarchy_level}:
--    {'entry address': <30} {hex(self.address)}
--    {'page entry binary data': <30} {hex(self.page_entry_binary_data)}
--    {'next entry physical address': <30} {hex(self.next_entry_physical_address)}
--    ---
--    {'bit': <4} {self.entry_present[0]: <10} {'entry present': <30} {self.entry_present[1]}
--    {'bit': <4} {self.read_write[0]: <10} {'read/write access allowed': <30} {self.read_write[1]}
--    {'bit': <4} {self.user_access_allowed[0]: <10} {'user access allowed': <30} {self.user_access_allowed[1]}
--    {'bit': <4} {self.page_level_write_through[0]: <10} {'page level write through': <30} {self.page_level_write_through[1]}
--    {'bit': <4} {self.page_level_cache_disabled[0]: <10} {'page level cache disabled': <30} {self.page_level_cache_disabled[1]}
--    {'bit': <4} {self.entry_was_accessed[0]: <10} {'entry has been accessed': <30} {self.entry_was_accessed[1]}
--    {'bit': <4} {self.page_size[0]: <10} {'page size': <30} {self.page_size[1]}
--    {'bit': <4} {self.hlat_restart_with_ordinary[0]: <10} {'restart to ordinary': <30} {self.hlat_restart_with_ordinary[1]}
--    {'bit': <4} {self.executed_disable[0]: <10} {'execute disable': <30} {self.executed_disable[1]}
--"""
--
--
--class TranslateVM(gdb.Command):
--    """Prints the entire paging structure used to translate a given virtual address.
--
--Having an address space of the currently executed process translates the virtual address
--and prints detailed information of all paging structure levels used for the transaltion.
--Currently supported arch: x86"""
-+            __idx = int(self.kasan_reset_tag(va) - self.PAGE_OFFSET) // self.PAGE_SIZE
-+            addr = self.VMEMMAP_START + (__idx * self.struct_page_size)
-+            return gdb.Value(addr).cast(utils.get_page_type().pointer())
-+
-+    def page_address(self, page):
-+        return self.page_to_virt(page)
-+
-+    def folio_address(self, folio):
-+        return self.page_address(folio['page'].address)
-+
-+class LxPFN2Page(gdb.Command):
-+    """PFN to struct page"""
- 
-     def __init__(self):
--        super(TranslateVM, self).__init__('translate-vm', gdb.COMMAND_USER)
-+        super(LxPFN2Page, self).__init__("lx-pfn_to_page", gdb.COMMAND_USER)
- 
-     def invoke(self, arg, from_tty):
--        if utils.is_target_arch("x86"):
--            vm_address = gdb.parse_and_eval(f'{arg}')
--            cr3_data = gdb.parse_and_eval('$cr3')
--            cr4 = gdb.parse_and_eval('$cr4')
--            page_levels = 5 if cr4 & (1 << 12) else 4
--            page_entry = Cr3(cr3_data, page_levels)
--            while page_entry:
--                gdb.write(page_entry.mk_string())
--                page_entry = page_entry.next_entry(vm_address)
--        else:
--            gdb.GdbError("Virtual address translation is not"
--                         "supported for this arch")
-+        argv = gdb.string_to_argv(arg)
-+        pfn = int(argv[0])
-+        page = page_ops().ops.pfn_to_page(pfn)
-+        gdb.write("pfn_to_page(0x%x) = 0x%x\n" % (pfn, page))
-+
-+LxPFN2Page()
-+
-+class LxPage2PFN(gdb.Command):
-+    """struct page to PFN"""
-+
-+    def __init__(self):
-+        super(LxPage2PFN, self).__init__("lx-page_to_pfn", gdb.COMMAND_USER)
-+
-+    def invoke(self, arg, from_tty):
-+        argv = gdb.string_to_argv(arg)
-+        struct_page_addr = int(argv[0], 16)
-+        page = gdb.Value(struct_page_addr).cast(utils.get_page_type().pointer())
-+        pfn = page_ops().ops.page_to_pfn(page)
-+        gdb.write("page_to_pfn(0x%x) = 0x%x\n" % (page, pfn))
-+
-+LxPage2PFN()
-+
-+class LxPageAddress(gdb.Command):
-+    """struct page to linear mapping address"""
-+
-+    def __init__(self):
-+        super(LxPageAddress, self).__init__("lx-page_address", gdb.COMMAND_USER)
-+
-+    def invoke(self, arg, from_tty):
-+        argv = gdb.string_to_argv(arg)
-+        struct_page_addr = int(argv[0], 16)
-+        page = gdb.Value(struct_page_addr).cast(utils.get_page_type().pointer())
-+        addr = page_ops().ops.page_address(page)
-+        gdb.write("page_address(0x%x) = 0x%x\n" % (page, addr))
- 
-+LxPageAddress()
-+
-+class LxPage2Phys(gdb.Command):
-+    """struct page to physical address"""
-+
-+    def __init__(self):
-+        super(LxPage2Phys, self).__init__("lx-page_to_phys", gdb.COMMAND_USER)
-+
-+    def invoke(self, arg, from_tty):
-+        argv = gdb.string_to_argv(arg)
-+        struct_page_addr = int(argv[0], 16)
-+        page = gdb.Value(struct_page_addr).cast(utils.get_page_type().pointer())
-+        phys_addr = page_ops().ops.page_to_phys(page)
-+        gdb.write("page_to_phys(0x%x) = 0x%x\n" % (page, phys_addr))
-+
-+LxPage2Phys()
-+
-+class LxVirt2Phys(gdb.Command):
-+    """virtual address to physical address"""
-+
-+    def __init__(self):
-+        super(LxVirt2Phys, self).__init__("lx-virt_to_phys", gdb.COMMAND_USER)
-+
-+    def invoke(self, arg, from_tty):
-+        argv = gdb.string_to_argv(arg)
-+        linear_addr = int(argv[0], 16)
-+        phys_addr = page_ops().ops.virt_to_phys(linear_addr)
-+        gdb.write("virt_to_phys(0x%x) = 0x%x\n" % (linear_addr, phys_addr))
-+
-+LxVirt2Phys()
-+
-+class LxVirt2Page(gdb.Command):
-+    """virtual address to struct page"""
-+
-+    def __init__(self):
-+        super(LxVirt2Page, self).__init__("lx-virt_to_page", gdb.COMMAND_USER)
-+
-+    def invoke(self, arg, from_tty):
-+        argv = gdb.string_to_argv(arg)
-+        linear_addr = int(argv[0], 16)
-+        page = page_ops().ops.virt_to_page(linear_addr)
-+        gdb.write("virt_to_page(0x%x) = 0x%x\n" % (linear_addr, page))
-+
-+LxVirt2Page()
-+
-+class LxSym2PFN(gdb.Command):
-+    """symbol address to PFN"""
-+
-+    def __init__(self):
-+        super(LxSym2PFN, self).__init__("lx-sym_to_pfn", gdb.COMMAND_USER)
-+
-+    def invoke(self, arg, from_tty):
-+        argv = gdb.string_to_argv(arg)
-+        sym_addr = int(argv[0], 16)
-+        pfn = page_ops().ops.sym_to_pfn(sym_addr)
-+        gdb.write("sym_to_pfn(0x%x) = %d\n" % (sym_addr, pfn))
-+
-+LxSym2PFN()
-+
-+class LxPFN2Kaddr(gdb.Command):
-+    """PFN to kernel address"""
-+
-+    def __init__(self):
-+        super(LxPFN2Kaddr, self).__init__("lx-pfn_to_kaddr", gdb.COMMAND_USER)
-+
-+    def invoke(self, arg, from_tty):
-+        argv = gdb.string_to_argv(arg)
-+        pfn = int(argv[0])
-+        kaddr = page_ops().ops.pfn_to_kaddr(pfn)
-+        gdb.write("pfn_to_kaddr(%d) = 0x%x\n" % (pfn, kaddr))
- 
--TranslateVM()
-+LxPFN2Kaddr()
-diff --git a/scripts/gdb/linux/pgtable.py b/scripts/gdb/linux/pgtable.py
-new file mode 100644
-index 000000000000..30d837f3dfae
---- /dev/null
-+++ b/scripts/gdb/linux/pgtable.py
-@@ -0,0 +1,222 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+#
-+# gdb helper commands and functions for Linux kernel debugging
-+#
-+#  routines to introspect page table
-+#
-+# Authors:
-+#  Dmitrii Bundin <dmitrii.bundin.a@gmail.com>
-+#
-+
-+import gdb
-+
-+from linux import utils
-+
-+PHYSICAL_ADDRESS_MASK = gdb.parse_and_eval('0xfffffffffffff')
-+
-+
-+def page_mask(level=1):
-+    # 4KB
-+    if level == 1:
-+        return gdb.parse_and_eval('(u64) ~0xfff')
-+    # 2MB
-+    elif level == 2:
-+        return gdb.parse_and_eval('(u64) ~0x1fffff')
-+    # 1GB
-+    elif level == 3:
-+        return gdb.parse_and_eval('(u64) ~0x3fffffff')
-+    else:
-+        raise Exception(f'Unknown page level: {level}')
-+
-+
-+#page_offset_base in case CONFIG_DYNAMIC_MEMORY_LAYOUT is disabled
-+POB_NO_DYNAMIC_MEM_LAYOUT = '0xffff888000000000'
-+def _page_offset_base():
-+    pob_symbol = gdb.lookup_global_symbol('page_offset_base')
-+    pob = pob_symbol.name if pob_symbol else POB_NO_DYNAMIC_MEM_LAYOUT
-+    return gdb.parse_and_eval(pob)
-+
-+
-+def is_bit_defined_tupled(data, offset):
-+    return offset, bool(data >> offset & 1)
-+
-+def content_tupled(data, bit_start, bit_end):
-+    return (bit_start, bit_end), data >> bit_start & ((1 << (1 + bit_end - bit_start)) - 1)
-+
-+def entry_va(level, phys_addr, translating_va):
-+        def start_bit(level):
-+            if level == 5:
-+                return 48
-+            elif level == 4:
-+                return 39
-+            elif level == 3:
-+                return 30
-+            elif level == 2:
-+                return 21
-+            elif level == 1:
-+                return 12
-+            else:
-+                raise Exception(f'Unknown level {level}')
-+
-+        entry_offset =  ((translating_va >> start_bit(level)) & 511) * 8
-+        entry_va = _page_offset_base() + phys_addr + entry_offset
-+        return entry_va
-+
-+class Cr3():
-+    def __init__(self, cr3, page_levels):
-+        self.cr3 = cr3
-+        self.page_levels = page_levels
-+        self.page_level_write_through = is_bit_defined_tupled(cr3, 3)
-+        self.page_level_cache_disabled = is_bit_defined_tupled(cr3, 4)
-+        self.next_entry_physical_address = cr3 & PHYSICAL_ADDRESS_MASK & page_mask()
-+
-+    def next_entry(self, va):
-+        next_level = self.page_levels
-+        return PageHierarchyEntry(entry_va(next_level, self.next_entry_physical_address, va), next_level)
-+
-+    def mk_string(self):
-+            return f"""\
-+cr3:
-+    {'cr3 binary data': <30} {hex(self.cr3)}
-+    {'next entry physical address': <30} {hex(self.next_entry_physical_address)}
-+    ---
-+    {'bit' : <4} {self.page_level_write_through[0]: <10} {'page level write through': <30} {self.page_level_write_through[1]}
-+    {'bit' : <4} {self.page_level_cache_disabled[0]: <10} {'page level cache disabled': <30} {self.page_level_cache_disabled[1]}
-+"""
-+
-+
-+class PageHierarchyEntry():
-+    def __init__(self, address, level):
-+        data = int.from_bytes(
-+            memoryview(gdb.selected_inferior().read_memory(address, 8)),
-+            "little"
-+        )
-+        if level == 1:
-+            self.is_page = True
-+            self.entry_present = is_bit_defined_tupled(data, 0)
-+            self.read_write = is_bit_defined_tupled(data, 1)
-+            self.user_access_allowed = is_bit_defined_tupled(data, 2)
-+            self.page_level_write_through = is_bit_defined_tupled(data, 3)
-+            self.page_level_cache_disabled = is_bit_defined_tupled(data, 4)
-+            self.entry_was_accessed = is_bit_defined_tupled(data, 5)
-+            self.dirty = is_bit_defined_tupled(data, 6)
-+            self.pat = is_bit_defined_tupled(data, 7)
-+            self.global_translation = is_bit_defined_tupled(data, 8)
-+            self.page_physical_address = data & PHYSICAL_ADDRESS_MASK & page_mask(level)
-+            self.next_entry_physical_address = None
-+            self.hlat_restart_with_ordinary = is_bit_defined_tupled(data, 11)
-+            self.protection_key = content_tupled(data, 59, 62)
-+            self.executed_disable = is_bit_defined_tupled(data, 63)
-+        else:
-+            page_size = is_bit_defined_tupled(data, 7)
-+            page_size_bit = page_size[1]
-+            self.is_page = page_size_bit
-+            self.entry_present = is_bit_defined_tupled(data, 0)
-+            self.read_write = is_bit_defined_tupled(data, 1)
-+            self.user_access_allowed = is_bit_defined_tupled(data, 2)
-+            self.page_level_write_through = is_bit_defined_tupled(data, 3)
-+            self.page_level_cache_disabled = is_bit_defined_tupled(data, 4)
-+            self.entry_was_accessed = is_bit_defined_tupled(data, 5)
-+            self.page_size = page_size
-+            self.dirty = is_bit_defined_tupled(
-+                data, 6) if page_size_bit else None
-+            self.global_translation = is_bit_defined_tupled(
-+                data, 8) if page_size_bit else None
-+            self.pat = is_bit_defined_tupled(
-+                data, 12) if page_size_bit else None
-+            self.page_physical_address = data & PHYSICAL_ADDRESS_MASK & page_mask(level) if page_size_bit else None
-+            self.next_entry_physical_address = None if page_size_bit else data & PHYSICAL_ADDRESS_MASK & page_mask()
-+            self.hlat_restart_with_ordinary = is_bit_defined_tupled(data, 11)
-+            self.protection_key = content_tupled(data, 59, 62) if page_size_bit else None
-+            self.executed_disable = is_bit_defined_tupled(data, 63)
-+        self.address = address
-+        self.page_entry_binary_data = data
-+        self.page_hierarchy_level = level
-+
-+    def next_entry(self, va):
-+        if self.is_page or not self.entry_present[1]:
-+            return None
-+
-+        next_level = self.page_hierarchy_level - 1
-+        return PageHierarchyEntry(entry_va(next_level, self.next_entry_physical_address, va), next_level)
-+
-+
-+    def mk_string(self):
-+        if not self.entry_present[1]:
-+            return f"""\
-+level {self.page_hierarchy_level}:
-+    {'entry address': <30} {hex(self.address)}
-+    {'page entry binary data': <30} {hex(self.page_entry_binary_data)}
-+    ---
-+    PAGE ENTRY IS NOT PRESENT!
-+"""
-+        elif self.is_page:
-+            def page_size_line(ps_bit, ps, level):
-+                return "" if level == 1 else f"{'bit': <3} {ps_bit: <5} {'page size': <30} {ps}"
-+
-+            return f"""\
-+level {self.page_hierarchy_level}:
-+    {'entry address': <30} {hex(self.address)}
-+    {'page entry binary data': <30} {hex(self.page_entry_binary_data)}
-+    {'page size': <30} {'1GB' if self.page_hierarchy_level == 3 else '2MB' if self.page_hierarchy_level == 2 else '4KB' if self.page_hierarchy_level == 1 else 'Unknown page size for level:' + self.page_hierarchy_level}
-+    {'page physical address': <30} {hex(self.page_physical_address)}
-+    ---
-+    {'bit': <4} {self.entry_present[0]: <10} {'entry present': <30} {self.entry_present[1]}
-+    {'bit': <4} {self.read_write[0]: <10} {'read/write access allowed': <30} {self.read_write[1]}
-+    {'bit': <4} {self.user_access_allowed[0]: <10} {'user access allowed': <30} {self.user_access_allowed[1]}
-+    {'bit': <4} {self.page_level_write_through[0]: <10} {'page level write through': <30} {self.page_level_write_through[1]}
-+    {'bit': <4} {self.page_level_cache_disabled[0]: <10} {'page level cache disabled': <30} {self.page_level_cache_disabled[1]}
-+    {'bit': <4} {self.entry_was_accessed[0]: <10} {'entry has been accessed': <30} {self.entry_was_accessed[1]}
-+    {"" if self.page_hierarchy_level == 1 else f"{'bit': <4} {self.page_size[0]: <10} {'page size': <30} {self.page_size[1]}"}
-+    {'bit': <4} {self.dirty[0]: <10} {'page dirty': <30} {self.dirty[1]}
-+    {'bit': <4} {self.global_translation[0]: <10} {'global translation': <30} {self.global_translation[1]}
-+    {'bit': <4} {self.hlat_restart_with_ordinary[0]: <10} {'restart to ordinary': <30} {self.hlat_restart_with_ordinary[1]}
-+    {'bit': <4} {self.pat[0]: <10} {'pat': <30} {self.pat[1]}
-+    {'bits': <4} {str(self.protection_key[0]): <10} {'protection key': <30} {self.protection_key[1]}
-+    {'bit': <4} {self.executed_disable[0]: <10} {'execute disable': <30} {self.executed_disable[1]}
-+"""
-+        else:
-+            return f"""\
-+level {self.page_hierarchy_level}:
-+    {'entry address': <30} {hex(self.address)}
-+    {'page entry binary data': <30} {hex(self.page_entry_binary_data)}
-+    {'next entry physical address': <30} {hex(self.next_entry_physical_address)}
-+    ---
-+    {'bit': <4} {self.entry_present[0]: <10} {'entry present': <30} {self.entry_present[1]}
-+    {'bit': <4} {self.read_write[0]: <10} {'read/write access allowed': <30} {self.read_write[1]}
-+    {'bit': <4} {self.user_access_allowed[0]: <10} {'user access allowed': <30} {self.user_access_allowed[1]}
-+    {'bit': <4} {self.page_level_write_through[0]: <10} {'page level write through': <30} {self.page_level_write_through[1]}
-+    {'bit': <4} {self.page_level_cache_disabled[0]: <10} {'page level cache disabled': <30} {self.page_level_cache_disabled[1]}
-+    {'bit': <4} {self.entry_was_accessed[0]: <10} {'entry has been accessed': <30} {self.entry_was_accessed[1]}
-+    {'bit': <4} {self.page_size[0]: <10} {'page size': <30} {self.page_size[1]}
-+    {'bit': <4} {self.hlat_restart_with_ordinary[0]: <10} {'restart to ordinary': <30} {self.hlat_restart_with_ordinary[1]}
-+    {'bit': <4} {self.executed_disable[0]: <10} {'execute disable': <30} {self.executed_disable[1]}
-+"""
-+
-+
-+class TranslateVM(gdb.Command):
-+    """Prints the entire paging structure used to translate a given virtual address.
-+
-+Having an address space of the currently executed process translates the virtual address
-+and prints detailed information of all paging structure levels used for the transaltion.
-+Currently supported arch: x86"""
-+
-+    def __init__(self):
-+        super(TranslateVM, self).__init__('translate-vm', gdb.COMMAND_USER)
-+
-+    def invoke(self, arg, from_tty):
-+        if utils.is_target_arch("x86"):
-+            vm_address = gdb.parse_and_eval(f'{arg}')
-+            cr3_data = gdb.parse_and_eval('$cr3')
-+            cr4 = gdb.parse_and_eval('$cr4')
-+            page_levels = 5 if cr4 & (1 << 12) else 4
-+            page_entry = Cr3(cr3_data, page_levels)
-+            while page_entry:
-+                gdb.write(page_entry.mk_string())
-+                page_entry = page_entry.next_entry(vm_address)
-+        else:
-+            gdb.GdbError("Virtual address translation is not"
-+                         "supported for this arch")
-+
-+
-+TranslateVM()
-diff --git a/scripts/gdb/vmlinux-gdb.py b/scripts/gdb/vmlinux-gdb.py
-index 2d32308c3f7a..fd24574bcec9 100644
---- a/scripts/gdb/vmlinux-gdb.py
-+++ b/scripts/gdb/vmlinux-gdb.py
-@@ -41,6 +41,7 @@ else:
-     import linux.genpd
-     import linux.device
-     import linux.vfs
--    import linux.mm
-+    import linux.pgtable
-     import linux.radixtree
-     import linux.interrupts
-+    import linux.mm
--- 
-2.18.0
-
+SGkgQWxleGFuZHJlLA0KDQpPbiBNb24sIDIwMjMtMDgtMDcgYXQgMTE6NDUgKzAyMDAsIEFsZXhh
+bmRyZSBNZXJnbmF0IHdyb3RlOg0KPiAgCSANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8g
+bm90IGNsaWNrIGxpbmtzIG9yIG9wZW4gYXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVy
+aWZpZWQgdGhlIHNlbmRlciBvciB0aGUgY29udGVudC4NCj4gIEhpIEphc29uLA0KPiANCj4gWW91
+IGZvcmdvdCB0byBwdXQgdGhlIFJldmlld2VkLWJ5IGdvdCBmcm9tIHRoZSBWMyBpbiB5b3VyIGNv
+bW1pdA0KPiBtZXNzYWdlLg0KPiANCg0KU2luY2UgSSBjaGFuZ2VkIHRoZSBvcmlnaW5hbCBtZXRo
+b2QgYXQgdGhlIG5ldyB2ZXJzaW9uLCBJIHJlbW92ZWQgYWxsDQpyZXZpZXdlZC1ieSB0YWdzLg0K
+SW4gb3JkZXIgdG8gYXZvaWQgdGhlIHZlcnNpb24geW91IGhhdmUgcmV2aWV3ZWQgaXMgdG9vIGRp
+ZmZlcmVudC4NCg0KUmVnYXJkcywNCkphc29uLUpILkxpbg0KDQo+IA0KPiBPbiAwNy8wOC8yMDIz
+IDAzOjUxLCBKYXNvbi1KSC5MaW4gd3JvdGU6DQo+ID4gVGhlIHBsYW5lX3N0YXRlIG9mIGRybV9h
+dG9taWNfc3RhdGUgaXMgbm90IHN5bmMgdG8gdGhlDQo+IG10a19wbGFuZV9zdGF0ZQ0KPiA+IHN0
+b3JlZCBpbiBtdGtfY3J0YyBkdXJpbmcgY3J0YyBlbmFibGluZy4NCj4gPiANCj4gPiBTbyB3ZSBu
+ZWVkIHRvIHVwZGF0ZSB0aGUgbXRrX3BsYW5lX3N0YXRlIHN0b3JlZCBpbiBtdGtfY3J0YyBieSB0
+aGUNCj4gPiBkcm1fYXRvbWljX3N0YXRlIGNhcnJpZWQgZnJvbSBtdGtfZHJtX2NydGNfYXRvbWlj
+X2VuYWJsZSgpLg0KPiA+IA0KPiA+IFdoaWxlIHVwZGF0aW5nIG10a19wbGFuZV9zdGF0ZSwgT1ZM
+IGxheWVyIHNob3VsZCBiZSBkaXNhYmxlZCB3aGVuDQo+IHRoZSBmYg0KPiA+IGluIHBsYW5lX3N0
+YXRlIG9mIGRybV9hdG9taWNfc3RhdGUgaXMgTlVMTC4NCj4gPiANCj4gPiBGaXhlczogMTE5ZjUx
+NzM2MjhhICgiZHJtL21lZGlhdGVrOiBBZGQgRFJNIERyaXZlciBmb3IgTWVkaWF0ZWsgU29DDQo+
+IE1UODE3My4iKQ0KPiA+IFNpZ25lZC1vZmYtYnk6IEphc29uLUpILkxpbiA8amFzb24tamgubGlu
+QG1lZGlhdGVrLmNvbT4NCj4gPiAtLS0NCj4gPiBDaGFuZ2UgaW4gUkVTRU5EIHY0Og0KPiA+IFJl
+bW92ZSByZWR1bmRhbnQgcGxhbmVfc3RhdGUgYXNzaWduaW5nLg0KPiA+IC0tLQ0KPiANCj4gDQo+
+IC0tIA0KPiBSZWdhcmRzLA0KPiBBbGV4YW5kcmUNCg==
 
