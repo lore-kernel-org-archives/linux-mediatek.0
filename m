@@ -4,55 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC8D9C001DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Aug 2023 08:30:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C274BC001DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Aug 2023 08:31:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sTBXTXgg1FJwPGo4j7K5vvqI1OKJzEYPfvBF8BSajHY=; b=LG343er0SjZMZ+11NAJGBtUdAQ
-	Hj4fL7xGacNnQRLTTPLAy3n1AvcZZiLF30DAKHxqX+yxB8TAvKZmKT04/nGQsUrPezowgJWTwu+VT
-	7kPkubmMSpGBH3Adb97JLNxdacMUOm4b0gBi1xkaBwPMhAip+GuIutoQXloDAT9jLuc9zcwtFVoNm
-	kFfBJMuNWqyi2iEW2SCpXNH4u2iL17c6iGVBoET8Lq4L5DGZ6iUZspEgoDRZvhv8mwKhROu8nfgkE
-	rz4tOFSbocUUTiKA4Q6kwYrAEtL11K8QNhiaL3uH570OIyQ+6H0u1SsjHylLkcUUkAzSqK/mpyeIk
-	dN7EchTg==;
+	bh=3bTI4ezWT0dRlseV1XH1auN5umDiuiT9sp0ElLkplnk=; b=H1gtEGaIwqyOXsJNgaX2kP7Off
+	2vDm7HgD061EbM731Rpghhx25z71vGJmvrHdN784PHyxOaeCGVdFKt9mnfk2PYaPmBcFeinHBnRd4
+	X0aoYNqp3m7Drlj33YQVnl/c+eDls9ISOQyZaCEQm42had75jbRpCVda0zEZxdaTGba2iBLzDSPOn
+	7Ig+sCpNvo9DbZaAJr9f397/IRmFldlVsYIEYcSmHnePcgcJKz2jE9Ylg2WkfgXVtY+U1FI2lT/M1
+	EHNyv4ZlfaiS6WH7aiKJDVCFOyuJvd5o7J9YztcftrPLdwDyY4IdY+CnzhQg8Mnqc2iyYi7mwTvya
+	4B0r6QKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTI6y-0021gD-28;
-	Tue, 08 Aug 2023 08:30:40 +0000
+	id 1qTI7K-0021nD-1p;
+	Tue, 08 Aug 2023 08:31:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTI6v-0021e4-2k;
-	Tue, 08 Aug 2023 08:30:39 +0000
-X-UUID: d5e2312635c511ee83ed1395ce914268-20230808
+	id 1qTI7H-0021lp-33;
+	Tue, 08 Aug 2023 08:31:01 +0000
+X-UUID: e5b3c02e35c511ee83ed1395ce914268-20230808
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sTBXTXgg1FJwPGo4j7K5vvqI1OKJzEYPfvBF8BSajHY=;
-	b=Ss9WLDIA+9Z/G6ps45Ui37MZVX7CCWy4l7FgVrVmBNoH4PrDjC5NDwt5R5TY5yz3LzfhVM6TSnGgLuHRQuV3jLPKvaNsCr9xOrx+4oj6Zq4/fuAwEPRfc+aI7QJPVN0UwoRP+YbjHT2eY8888kozS2EsquM8d/zdB7gUjE6CgZ8=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3bTI4ezWT0dRlseV1XH1auN5umDiuiT9sp0ElLkplnk=;
+	b=qyrZII5nSYfDgdidaw0URf4ZofwG1EVXxfgB82I25iLr1fGG5VBErD7TvzBhg96A9B5+kb/ogGfTQ4OCbf6AoR+58kbRMDd7K0JiOR/BAjneLgRzr2OohbVyf9EijJM8VpITHX4ggUNOukzOB5mkO2uy5lmhSBaUbapqtcfdldM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:fb05a936-032c-4a58-a138-574a4cbb498d,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:0ad78a4,CLOUDID:d8e6cfd2-cd77-4e67-bbfd-aa4eaace762f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: d5e2312635c511ee83ed1395ce914268-20230808
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-CID-O-INFO: VERSION:1.1.31,REQID:2b2bf52b-da0f-440d-a72c-7c8423b40bbb,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-INFO: VERSION:1.1.31,REQID:2b2bf52b-da0f-440d-a72c-7c8423b40bbb,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:100
+X-CID-META: VersionHash:0ad78a4,CLOUDID:1fe8cfd2-cd77-4e67-bbfd-aa4eaace762f,B
+	ulkID:230808163051S0PE58AX,BulkQuantity:2,Recheck:0,SF:29|28|17|19|48|38,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:40,QS:nil,BEC:nil,COL
+	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
+	TF_CID_SPAM_FSD,TF_CID_SPAM_ULN
+X-UUID: e5b3c02e35c511ee83ed1395ce914268-20230808
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <kuan-ying.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1600597031; Tue, 08 Aug 2023 01:30:30 -0700
+	with ESMTP id 1096057068; Tue, 08 Aug 2023 01:30:57 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 8 Aug 2023 16:30:28 +0800
+ 15.2.1118.26; Tue, 8 Aug 2023 16:30:47 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 8 Aug 2023 16:30:28 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 8 Aug 2023 16:30:47 +0800
 From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
 To: Jan Kiszka <jan.kiszka@siemens.com>, Kieran Bingham <kbingham@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
@@ -62,10 +66,10 @@ CC: <chinwen.chang@mediatek.com>, <qun-wei.lin@mediatek.com>,
 	<casper.li@mediatek.com>, <akpm@linux-foundation.org>,
 	<linux-arm-kernel@lists.infradead.org>, Kuan-Ying Lee
 	<Kuan-Ying.Lee@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 1/8] scripts/gdb/symbols: add specific ko module load command
-Date: Tue, 8 Aug 2023 16:30:11 +0800
-Message-ID: <20230808083020.22254-2-Kuan-Ying.Lee@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, <bpf@vger.kernel.org>
+Subject: [PATCH v2 8/8] scripts/gdb/vmalloc: add vmallocinfo support
+Date: Tue, 8 Aug 2023 16:30:18 +0800
+Message-ID: <20230808083020.22254-9-Kuan-Ying.Lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230808083020.22254-1-Kuan-Ying.Lee@mediatek.com>
 References: <20230808083020.22254-1-Kuan-Ying.Lee@mediatek.com>
@@ -73,8 +77,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230808_013037_920029_8B0357C9 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20230808_013059_986392_7CEE8C33 
+X-CRM114-Status: GOOD (  15.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,69 +93,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add lx-symbols <ko_path> command to support add specific
-ko module.
+This GDB script shows the vmallocinfo for user to
+analyze the vmalloc memory usage.
 
-Example output like below:
-(gdb) lx-symbols mm/kasan/kasan_test.ko
-loading @0xffff800002d30000: mm/kasan/kasan_test.ko
+Example output:
+0xffff800008000000-0xffff800008009000      36864 <start_kernel+372> pages=8 vmalloc
+0xffff800008009000-0xffff80000800b000       8192 <gicv2m_init_one+400> phys=0x8020000 ioremap
+0xffff80000800b000-0xffff80000800d000       8192 <bpf_prog_alloc_no_stats+72> pages=1 vmalloc
+0xffff80000800d000-0xffff80000800f000       8192 <bpf_jit_alloc_exec+16> pages=1 vmalloc
+0xffff800008010000-0xffff80000ad30000   47316992 <paging_init+452> phys=0x40210000 vmap
+0xffff80000ad30000-0xffff80000c1c0000   21561344 <paging_init+556> phys=0x42f30000 vmap
+0xffff80000c1c0000-0xffff80000c370000    1769472 <paging_init+592> phys=0x443c0000 vmap
+0xffff80000c370000-0xffff80000de90000   28442624 <paging_init+692> phys=0x44570000 vmap
+0xffff80000de90000-0xffff80000f4c1000   23269376 <paging_init+788> phys=0x46090000 vmap
+0xffff80000f4c1000-0xffff80000f4c3000       8192 <gen_pool_add_owner+112> pages=1 vmalloc
+0xffff80000f4c3000-0xffff80000f4c5000       8192 <gen_pool_add_owner+112> pages=1 vmalloc
+0xffff80000f4c5000-0xffff80000f4c7000       8192 <gen_pool_add_owner+112> pages=1 vmalloc
 
 Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
 ---
- scripts/gdb/linux/symbols.py | 23 +++++++++++++++++++++--
- 1 file changed, 21 insertions(+), 2 deletions(-)
+ scripts/gdb/linux/constants.py.in |  8 +++++
+ scripts/gdb/linux/vmalloc.py      | 56 +++++++++++++++++++++++++++++++
+ scripts/gdb/vmlinux-gdb.py        |  1 +
+ 3 files changed, 65 insertions(+)
+ create mode 100644 scripts/gdb/linux/vmalloc.py
 
-diff --git a/scripts/gdb/linux/symbols.py b/scripts/gdb/linux/symbols.py
-index c8047f4441e6..5179edd1b627 100644
---- a/scripts/gdb/linux/symbols.py
-+++ b/scripts/gdb/linux/symbols.py
-@@ -111,11 +111,12 @@ lx-symbols command."""
-         return "{textaddr} {sections}".format(
-             textaddr=textaddr, sections="".join(args))
+diff --git a/scripts/gdb/linux/constants.py.in b/scripts/gdb/linux/constants.py.in
+index 03fa6d2cfe01..e3517d4ab8ec 100644
+--- a/scripts/gdb/linux/constants.py.in
++++ b/scripts/gdb/linux/constants.py.in
+@@ -22,6 +22,7 @@
+ #include <linux/radix-tree.h>
+ #include <linux/slab.h>
+ #include <linux/threads.h>
++#include <linux/vmalloc.h>
  
--    def load_module_symbols(self, module):
-+    def load_module_symbols(self, module, module_file=None):
-         module_name = module['name'].string()
-         module_addr = str(module['mem'][constants.LX_MOD_TEXT]['base']).split()[0]
+ /* We need to stringify expanded macros so that they can be parsed */
  
--        module_file = self._get_module_file(module_name)
-+        if not module_file:
-+            module_file = self._get_module_file(module_name)
-         if not module_file and not self.module_files_updated:
-             self._update_module_files()
-             module_file = self._get_module_file(module_name)
-@@ -138,6 +139,19 @@ lx-symbols command."""
-         else:
-             gdb.write("no module object found for '{0}'\n".format(module_name))
+@@ -91,6 +92,13 @@ LX_GDBPARSED(RADIX_TREE_MAP_SIZE)
+ LX_GDBPARSED(RADIX_TREE_MAP_SHIFT)
+ LX_GDBPARSED(RADIX_TREE_MAP_MASK)
  
-+    def load_ko_symbols(self, mod_path):
-+        self.loaded_modules = []
-+        module_list = modules.module_list()
++/* linux/vmalloc.h */
++LX_VALUE(VM_IOREMAP)
++LX_VALUE(VM_ALLOC)
++LX_VALUE(VM_MAP)
++LX_VALUE(VM_USERMAP)
++LX_VALUE(VM_DMA_COHERENT)
 +
-+        for module in module_list:
-+            module_name = module['name'].string()
-+            module_pattern = ".*/{0}\.ko(?:.debug)?$".format(
-+                module_name.replace("_", r"[_\-]"))
-+            if re.match(module_pattern, mod_path) and os.path.exists(mod_path):
-+                self.load_module_symbols(module, mod_path)
-+                return
-+        raise gdb.GdbError("%s is not a valid .ko\n" % mod_path)
+ /* linux/page_ext.h */
+ if IS_BUILTIN(CONFIG_PAGE_OWNER):
+     LX_GDBPARSED(PAGE_EXT_OWNER)
+diff --git a/scripts/gdb/linux/vmalloc.py b/scripts/gdb/linux/vmalloc.py
+new file mode 100644
+index 000000000000..48e4a4fae7bb
+--- /dev/null
++++ b/scripts/gdb/linux/vmalloc.py
+@@ -0,0 +1,56 @@
++# SPDX-License-Identifier: GPL-2.0
++#
++# Copyright (c) 2023 MediaTek Inc.
++#
++# Authors:
++#  Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
++#
 +
-     def load_all_symbols(self):
-         gdb.write("loading vmlinux\n")
- 
-@@ -176,6 +190,11 @@ lx-symbols command."""
-         self.module_files = []
-         self.module_files_updated = False
- 
-+        argv = gdb.string_to_argv(arg)
-+        if len(argv) == 1:
-+            self.load_ko_symbols(argv[0])
-+            return
++import gdb
++import re
++from linux import lists, utils, stackdepot, constants, mm
 +
-         self.load_all_symbols()
- 
-         if hasattr(gdb, 'Breakpoint'):
++vmap_area_type = utils.CachedType('struct vmap_area')
++vmap_area_ptr_type = vmap_area_type.get_type().pointer()
++
++def is_vmalloc_addr(x):
++    pg_ops = mm.page_ops().ops
++    addr = pg_ops.kasan_reset_tag(x)
++    return addr >= pg_ops.VMALLOC_START and addr < pg_ops.VMALLOC_END
++
++class LxVmallocInfo(gdb.Command):
++    """Show vmallocinfo"""
++
++    def __init__(self):
++        super(LxVmallocInfo, self).__init__("lx-vmallocinfo", gdb.COMMAND_DATA)
++
++    def invoke(self, arg, from_tty):
++        vmap_area_list = gdb.parse_and_eval('vmap_area_list')
++        for vmap_area in lists.list_for_each_entry(vmap_area_list, vmap_area_ptr_type, "list"):
++            if not vmap_area['vm']:
++                gdb.write("0x%x-0x%x %10d vm_map_ram\n" % (vmap_area['va_start'], vmap_area['va_end'],
++                    vmap_area['va_end'] - vmap_area['va_start']))
++                continue
++            v = vmap_area['vm']
++            gdb.write("0x%x-0x%x %10d" % (v['addr'], v['addr'] + v['size'], v['size']))
++            if v['caller']:
++                gdb.write(" %s" % str(v['caller']).split(' ')[-1])
++            if v['nr_pages']:
++                gdb.write(" pages=%d" % v['nr_pages'])
++            if v['phys_addr']:
++                gdb.write(" phys=0x%x" % v['phys_addr'])
++            if v['flags'] & constants.LX_VM_IOREMAP:
++                gdb.write(" ioremap")
++            if v['flags'] & constants.LX_VM_ALLOC:
++                gdb.write(" vmalloc")
++            if v['flags'] & constants.LX_VM_MAP:
++                gdb.write(" vmap")
++            if v['flags'] & constants.LX_VM_USERMAP:
++                gdb.write(" user")
++            if v['flags'] & constants.LX_VM_DMA_COHERENT:
++                gdb.write(" dma-coherent")
++            if is_vmalloc_addr(v['pages']):
++                gdb.write(" vpages")
++            gdb.write("\n")
++
++LxVmallocInfo()
+diff --git a/scripts/gdb/vmlinux-gdb.py b/scripts/gdb/vmlinux-gdb.py
+index 2526364f31fd..fc53cdf286f1 100644
+--- a/scripts/gdb/vmlinux-gdb.py
++++ b/scripts/gdb/vmlinux-gdb.py
+@@ -48,3 +48,4 @@ else:
+     import linux.stackdepot
+     import linux.page_owner
+     import linux.slab
++    import linux.vmalloc
 -- 
 2.18.0
 
