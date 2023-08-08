@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0ED5C04E69
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Aug 2023 13:46:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 426CCC001DB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Aug 2023 13:47:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qtIG2M/ca+5GsdX8n1RK00emvWGjV3tMf5tcX7VIHus=; b=dwxILeTpPLNC/XYUPHceHK50FC
-	hsKER9rYt2cyAc/sRdhZieP8+ZhYSJnehP08twkeIZVS6EP88ozBt7ix/9dzPtJv7rNmkKd0NSdUD
-	tjq8mW9G4unyw3bHWVFs8svDku/MO9+rr75t3S/l+FTySBwfXnMMaKX5sct4NuTOrQGfqaS6KxuGM
-	mH8Ejq9762yBEkko2Hx760lU5HsS8wDvsOlLwWe5h4p/6OBK0WlUuvRqZPbsGLnTJM/CtR9Jf4e3/
-	xKycc0X4yF45Czx6gTc3jkfmUH3dYIg2ZAOpbVm2UFLnfy5QDgevb2UHhuA/Yy17bZqVSIGaNFXHP
-	Ox9MJY9A==;
+	bh=F0cDrJs50zXCjDACInHgYpsbmw7IC3CDn78nE0wDJEU=; b=VAvTE2gFt8BbapfQVDjWxgDZfJ
+	LJPNlpQTkMEaMKt1D5d1yajKYfgDHknN3wQwCS45ko4q2DHHefoJ2IQjZI7v3aV965mgJdBuJrE0i
+	CCkYAb+iOyh/yDYOutFDqYGoj00M5vtmnTVb2jzRYOEGNiQn1yoO/G+WLNWGGtmao/STMo4F7lNMN
+	OeUnwR19lHLgdk/Rl7W3yrI47j+wuL8F042qkXG0WlO0m8n64VoBzcXupgpVxFdr+friEAbR12hhg
+	NjPnhR6QGI7zHauS6Y427gc7337CjkDfmGncXSIUuMibXePlkFMf+CRoVB9pv4SPqh+yDbYlFCniE
+	w9rWz6cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTN34-002gkt-2E;
-	Tue, 08 Aug 2023 13:46:58 +0000
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+	id 1qTN38-002goV-0I;
+	Tue, 08 Aug 2023 13:47:02 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTN2s-002gaM-13
+	id 1qTN2v-002gez-33
 	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Aug 2023 13:46:47 +0000
-Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-2b9aa1d3029so91150731fa.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 08 Aug 2023 06:46:44 -0700 (PDT)
+	Tue, 08 Aug 2023 13:46:51 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-2b9338e4695so91807041fa.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 08 Aug 2023 06:46:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1691502403; x=1692107203;
+        d=linaro.org; s=google; t=1691502408; x=1692107208;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=qtIG2M/ca+5GsdX8n1RK00emvWGjV3tMf5tcX7VIHus=;
-        b=L1ioPgmqCaR2U1LEvON1pzt4xhIpqkUbXHSqD5kQQdQD8ItW4L7rQu5OvNfP1xQ8Ah
-         LRm/YCzvU4jss3oE0aKFQKHMimmQ7ietflCwFVA0kxYT6sbI/LmGAsbHkY0xSjHofXWM
-         bNs6c0XG0OFZbQ0AaVtOIIO0ykzTDwFWCYQhXtn2vJoBaIu6HfCktVcJgj5TTUg3sIK9
-         w79RIRH0oWhIqAxkDQ7nbqGTE9yaAJFbJm1zp697qxrngU2bV6vOyydY3fCfMl81G8qP
-         8Kc7GFQdAcC5chfXg+tU1T4oDpQBxpKl+Deq1qQUFTZ2cQ26yafHT4AiYPR6egBWrhHC
-         9Vsw==
+        bh=F0cDrJs50zXCjDACInHgYpsbmw7IC3CDn78nE0wDJEU=;
+        b=NjFU64ElykuH9jiCm/pdyN+2LgGuqg+6PY/QkPHpGDdN+VoNeAwYjpfKDAQkyo0n+t
+         WVSdKIyREy40IZPGENCGy0sigb/tNR9VaFPbRw1OwvTJT7bSCfwZf8dMUWd1neIJIB+z
+         WENnrM0jdL7dft1KRNUEZgSjhA4lr7VHb3QmVDp34Qcjr5Iven+S9Ap7KCPyRapV/E+K
+         gQzE87WYJTYJ4D6Kna5o1SjtVxN9fal8ZiVHDk+u0R5bi14Xh6zbDSJRAU014MSKLZ0g
+         f75/3lNcSfY/5WVaONw/cI+VDmWpXQ3fhKND9+Vk74OtOn5ehaBlPup5C0ztdWtZL365
+         wivQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691502403; x=1692107203;
+        d=1e100.net; s=20221208; t=1691502408; x=1692107208;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=qtIG2M/ca+5GsdX8n1RK00emvWGjV3tMf5tcX7VIHus=;
-        b=J1zCfY7MeoOOeWj5ZbW+G4ytRu/P7xA0uh6SXdUnJfGPT54NbprWqfFYCQ4j18NWwx
-         9zS/0gaK8p7niARRuuoagi/5R3OICAY/gu1BdJUIp8Gmv3tTTGKh9rPT9XemguaMIftx
-         UczZWXIV5IiXWRUaR1nOvojbFpxT1BFufZFV7o7PxYlXb0E9Y7Zo10DKkQ3MRDKsOrn8
-         KumJsPZ7vobQeF4M6CPw/fNk2LHRR5CKIdpj1b0A8FwJQEqUl6uIicUhtXo6oFm0HkLG
-         6YSGxqDHEKSBxUSUTU0Kaby8D6GQfnnD+h3+WSVse6dodTfaJ7hkvPMXwJZrXGIqMS2m
-         xWmQ==
-X-Gm-Message-State: AOJu0YxLgtevpdv1f07Vds85e0LJnKc/Q8JsA3harzhY6oUc/K1JyskA
-	QJpyERLopsvZMb9j9GoNEdnFjw==
-X-Google-Smtp-Source: AGHT+IGabpvcf+YfqqvSp128b6pb/ZcVi3xmONq1O6a4S0szO5ZdOqerklrUaTjPj2ZyYc9Tu1UkPA==
-X-Received: by 2002:a2e:6817:0:b0:2b5:8a21:5627 with SMTP id c23-20020a2e6817000000b002b58a215627mr9324746lja.51.1691502403287;
-        Tue, 08 Aug 2023 06:46:43 -0700 (PDT)
+        bh=F0cDrJs50zXCjDACInHgYpsbmw7IC3CDn78nE0wDJEU=;
+        b=gu9V0egZqQgJV305fmg/ISpasPFvzmelg/YPf2EtKGLz7JsXtV5PXGPQl9cwlebOBA
+         dTdnUXp28PM0S5Rr4yas6d6vHy/cjHnW7V1160zkKPZO+7P6XdyM26jYUlIJa0OlPw2x
+         drsHh2T1dGYKChQbeMnOU7zzWOywnHyjZHy608WNBQ02TWj0Q7Q17YbhqPcVqEi+Ke/M
+         naRL+SNO4J9DDFg20iSsvs7mpg69+/5MuFdFKa26MXLk7opRWqcx4Juak6y3JuhAQWY4
+         /ITE0xSdolqvvwymesErVtQrIq3r6RDKr2YuivfYuA2ND1tjX6/BAPys8pb+O8LwPS+Z
+         5GJA==
+X-Gm-Message-State: AOJu0Yw4ol0NG9JIwJfq2bhcXNNze4TfCw3CQ3XZWJQH56hughyjNdt8
+	kIFtN5shFMZQ42Xwww/FBIcwqQ==
+X-Google-Smtp-Source: AGHT+IHyCb1MAZ9guoP9QuCWqFrH2Mfihs7/gMTBRCoMInNTntAhiMDP4HfHYPGkmdal7HBOrio1hg==
+X-Received: by 2002:a2e:b708:0:b0:2b9:d074:1871 with SMTP id j8-20020a2eb708000000b002b9d0741871mr8655874ljo.45.1691502408584;
+        Tue, 08 Aug 2023 06:46:48 -0700 (PDT)
 Received: from [127.0.1.1] ([85.235.12.238])
-        by smtp.gmail.com with ESMTPSA id u23-20020a2e8557000000b002b93d66b82asm2284493ljj.112.2023.08.08.06.46.42
+        by smtp.gmail.com with ESMTPSA id u23-20020a2e8557000000b002b93d66b82asm2284493ljj.112.2023.08.08.06.46.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Aug 2023 06:46:42 -0700 (PDT)
+        Tue, 08 Aug 2023 06:46:47 -0700 (PDT)
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 08 Aug 2023 15:46:31 +0200
-Subject: [PATCH 04/11] regulator: rk808: Drop useless headers
+Date: Tue, 08 Aug 2023 15:46:35 +0200
+Subject: [PATCH 08/11] regulator: max20086: Drop useless header
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20230808-descriptors-regulator-v1-4-939b5e84dd18@linaro.org>
+Message-Id: <20230808-descriptors-regulator-v1-8-939b5e84dd18@linaro.org>
 References: <20230808-descriptors-regulator-v1-0-939b5e84dd18@linaro.org>
 In-Reply-To: <20230808-descriptors-regulator-v1-0-939b5e84dd18@linaro.org>
 To: Tony Lindgren <tony@atomide.com>, Liam Girdwood <lgirdwood@gmail.com>, 
@@ -85,9 +85,8 @@ Cc: linux-omap@vger.kernel.org, linux-kernel@vger.kernel.org,
  Linus Walleij <linus.walleij@linaro.org>
 X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230808_064646_367291_744E8940 
-X-CRM114-Status: UNSURE (   9.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230808_064650_003878_BA2C18BF 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,30 +101,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The RK808 is already using the proper <linux/gpio/consumer.h>
-header and includes the legacy headers <linux/gpio.h> and
-<linux/of_gpio.h> for no reason, drop the includes.
+The max20086 regulator driver includes the legacy header
+<linux/gpio.h> for no reason, it is already using the proper
+<linux/gpio/consumer.h> include. Drop the include.
 
 Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
 ---
- drivers/regulator/rk808-regulator.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/regulator/max20086-regulator.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
-index 460525ed006c..e65339ef47ad 100644
---- a/drivers/regulator/rk808-regulator.c
-+++ b/drivers/regulator/rk808-regulator.c
-@@ -15,10 +15,8 @@
-  */
+diff --git a/drivers/regulator/max20086-regulator.c b/drivers/regulator/max20086-regulator.c
+index fad31f5f435e..32f47b896fd1 100644
+--- a/drivers/regulator/max20086-regulator.c
++++ b/drivers/regulator/max20086-regulator.c
+@@ -6,7 +6,6 @@
+ // Copyright (C) 2018 Avnet, Inc.
  
- #include <linux/delay.h>
+ #include <linux/err.h>
 -#include <linux/gpio.h>
+ #include <linux/gpio/consumer.h>
+ #include <linux/i2c.h>
  #include <linux/module.h>
- #include <linux/of_device.h>
--#include <linux/of_gpio.h>
- #include <linux/mfd/rk808.h>
- #include <linux/regulator/driver.h>
- #include <linux/regulator/of_regulator.h>
 
 -- 
 2.34.1
