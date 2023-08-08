@@ -4,89 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24947C001DF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Aug 2023 13:47:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B13BEC001B0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Aug 2023 14:22:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NUr4rBKoQ5U9kNDxTC6J3Fd6dDx63tGiQB8aHXquZB0=; b=sLwAabXXUYh068lr2qqTgzM+oo
-	DTQZpI0BtR5fwF4yK9vIcm3MQ8ZcreeZbt/gXaZkPk+BDSJm4p7IBr4b2I/FThrI1Pj0nPxzGO216
-	HLBHRh53dKzhlOX2intjCT3SNtFfhr/5ZLlgrcYc68mMDKFMngmKm38yUh9RJzbLQIKkm6mxwehYE
-	lP6XiWuwEoBFWIhFL4c5g5W/ZEOMxtREGPjl4z4pxqalSgTJFKZLrfMGlczuiP8p9CfsC7RWt/Fd3
-	sytNA38QoUBQRqb0KMhdprfXH0r80krssLA2PozVYMFiYupab9HL/V4fK44azHOgqEwAkahvvjXQV
-	2bT4hkkA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BoGZL15qINg92iX5GzpIYjPkRrdnPmg9jKUou+Jzouk=; b=eAKQkrAEI2LcwBD89ttkIu3rLA
+	zq+8/xmIX0R3slgneTtwXI2N5mHWcTydARyBhS+otWCbin8E+UajrnRFPU3mMJ9tis4zdLSBAEAXN
+	NG7SkSRE5SpRYNcf80pYteR1QnXVnW6ReO3FvGtJ4f2ogfKvSGNZJCx7NsJ4TWsfAhASyuEgNO/Uj
+	CgwbzTNgQmdHxDrcEtOeU0Hk/EWnlpflmeetAfOmm2Nrx0FpeAHWbg50Xng24aAbm8czFE23IWxS7
+	REMXas/Untz46cT3dWiHF7mn4CZONKPoebm/mqmlnLQa1G8LfBdsOkVVG+gu0xHQO9sBg0d4h+vHy
+	r8ob6iMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTN3B-002gre-03;
-	Tue, 08 Aug 2023 13:47:05 +0000
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+	id 1qTNbs-002jyD-14;
+	Tue, 08 Aug 2023 14:22:56 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTN2y-002gfb-2F
-	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Aug 2023 13:46:53 +0000
-Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-2b9bf52cd08so88389391fa.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 08 Aug 2023 06:46:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1691502409; x=1692107209;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=NUr4rBKoQ5U9kNDxTC6J3Fd6dDx63tGiQB8aHXquZB0=;
-        b=jKEbbtHIcqo164S8rtCxRv1DMuGAvjsPKzOzboUDDSR0zu1t4lA2dAo1PA8pIVtzEA
-         hNbPMcrz+uyT5KqDwFP5PSb6DJitElTOIpkGxdKhEXXqroquR3vKhNHOfWk0/jlAIaKQ
-         RULEkMcHt9FMrsDgisYbQr+G5SvSaGAtYJHZFikvO2qnlQBmmNQRavkYdaJUYrgq7ngi
-         8GW45nFsyd3+L2Sn28IJ7JSnYDHsN2bDcUd0QGtvzsrjdEtpEBmWitr4nCJwcOnYMuu6
-         RAGFOjw8R0ia104j42KGY0pVIWboZEzwRSHbVyTq4PmuGP/ge5gQdwjja3BgdSeUbBPK
-         rCTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691502409; x=1692107209;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=NUr4rBKoQ5U9kNDxTC6J3Fd6dDx63tGiQB8aHXquZB0=;
-        b=NstkUJIquVvZb7ddZW39hYg+BH4VuMkehG3BHdCY7d8xtYoKbVZP+HnqNGJb2G+szk
-         YdvMMJYWvJeHUOMaIu4/S0oyLSYwWmcJLT1iuIDl9an1eW5oGF6TdxjxHC75Zx6O4efm
-         sCDPFAAV7yKBWpSRQveSize4FVva4dPFoKsHWSoI+Xcwcvz9P0GtfKuHIT70Pd1pJTAJ
-         rVdTksaZrUAZxk37zpVD9ioZg5uTzH/w+lXRcX7Qg2xVyRO+sdskLpPckzGLcuIp8HwE
-         9GqGPLkrd1KGcR0QN2xWMVkCRGFDBrrmknMUXVvk6qRuE1ir/itvjUsfp/cACqvj+C24
-         /iTA==
-X-Gm-Message-State: AOJu0YxMuLKi5PTzFH8uk3po78Fu5MupwYIU5Mt6nSQWZFgiMxA3sksC
-	UmhcV+dM4fPragTNn+NqsOk5aQ==
-X-Google-Smtp-Source: AGHT+IGl6ac+w+vJLfJZuq8P35/Ynv+o1liAhoqzrNLA3A9/ISpnNwHIwbTBb6DgRgGMJoZAmBq78w==
-X-Received: by 2002:a2e:95cf:0:b0:2b6:a763:5d13 with SMTP id y15-20020a2e95cf000000b002b6a7635d13mr8927600ljh.27.1691502409667;
-        Tue, 08 Aug 2023 06:46:49 -0700 (PDT)
-Received: from [127.0.1.1] ([85.235.12.238])
-        by smtp.gmail.com with ESMTPSA id u23-20020a2e8557000000b002b93d66b82asm2284493ljj.112.2023.08.08.06.46.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Aug 2023 06:46:49 -0700 (PDT)
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 08 Aug 2023 15:46:36 +0200
-Subject: [PATCH 09/11] regulator: lp8755: Drop useless header
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20230808-descriptors-regulator-v1-9-939b5e84dd18@linaro.org>
+	id 1qTNbp-002jxE-0Y;
+	Tue, 08 Aug 2023 14:22:54 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 98ED662561;
+	Tue,  8 Aug 2023 14:22:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38757C433C8;
+	Tue,  8 Aug 2023 14:22:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1691504572;
+	bh=BoGZL15qINg92iX5GzpIYjPkRrdnPmg9jKUou+Jzouk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ta/lRXrtw7X135/22WFEcwjVzLrKE5yQB+5gr7xclahM8A9Lueh96MhshT1fVEA8b
+	 bNRgDfCoOVe02L4toTo6oFg/cmFPOwr8V2T9MIUu7RoMDvOqdZ/0DjTDK42ClIXNQn
+	 rrygqvHN9T4oZx0Kly93o9GAYfwITMRnQ+MS09+UlSg9/I7osHpOma/SgFUenCYOzC
+	 A7IiZo+EdzWHW6AV8IVvppp98GQoI5WoIjnUi9E+VL/184Jwd40frtCo5eJtQOF3qs
+	 1cU0Wk2ukrPW1rNLCjnf60SKUjUg6yiYlZa750yuW+PIEaI8vx4I6VlQrlfG3oZkln
+	 BRCIdj0t21C3g==
+Date: Tue, 8 Aug 2023 15:22:46 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Tony Lindgren <tony@atomide.com>, Liam Girdwood <lgirdwood@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Matti Vaittinen <mazziesaccount@gmail.com>,
+	linux-omap@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 04/11] regulator: rk808: Drop useless headers
+Message-ID: <78af1ca5-12c9-4c12-a08d-6ce2df29ff60@sirena.org.uk>
 References: <20230808-descriptors-regulator-v1-0-939b5e84dd18@linaro.org>
-In-Reply-To: <20230808-descriptors-regulator-v1-0-939b5e84dd18@linaro.org>
-To: Tony Lindgren <tony@atomide.com>, Liam Girdwood <lgirdwood@gmail.com>, 
- Mark Brown <broonie@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Claudiu Beznea <claudiu.beznea@microchip.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Matti Vaittinen <mazziesaccount@gmail.com>
-Cc: linux-omap@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-samsung-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Linus Walleij <linus.walleij@linaro.org>
-X-Mailer: b4 0.12.3
+ <20230808-descriptors-regulator-v1-4-939b5e84dd18@linaro.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="02s0islE/xNt6q2j"
+Content-Disposition: inline
+In-Reply-To: <20230808-descriptors-regulator-v1-4-939b5e84dd18@linaro.org>
+X-Cookie: Beware of low-flying butterflies.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230808_064652_747115_09536B1D 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20230808_072253_252310_C3625097 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,28 +85,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The lp8755 includes the legacy header <linux/gpio.h> for no
-reason, drop the include.
 
-Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
----
- drivers/regulator/lp8755.c | 1 -
- 1 file changed, 1 deletion(-)
+--02s0islE/xNt6q2j
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/drivers/regulator/lp8755.c b/drivers/regulator/lp8755.c
-index 4bc310f972ed..8d01e18046f3 100644
---- a/drivers/regulator/lp8755.c
-+++ b/drivers/regulator/lp8755.c
-@@ -13,7 +13,6 @@
- #include <linux/err.h>
- #include <linux/irq.h>
- #include <linux/interrupt.h>
--#include <linux/gpio.h>
- #include <linux/regmap.h>
- #include <linux/uaccess.h>
- #include <linux/regulator/driver.h>
+On Tue, Aug 08, 2023 at 03:46:31PM +0200, Linus Walleij wrote:
+> The RK808 is already using the proper <linux/gpio/consumer.h>
+> header and includes the legacy headers <linux/gpio.h> and
+> <linux/of_gpio.h> for no reason, drop the includes.
 
--- 
-2.34.1
+This doesn't apply against current code, please check and resend.
 
+--02s0islE/xNt6q2j
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmTST7UACgkQJNaLcl1U
+h9BCWQf/f1t9dZeSv6IT+0vb+00EGsLxELQMnJFIxNYkecL+4eTfiotF+Xg5YzH/
+4dEUdEx4lsQOrH4mCYLm1ndKhwFLTCC1ElqJI4rmdvDeMePJXUCbndA/qz/pNOwc
+cpUUqlCBr5qhP35uksyfRyYkk9gclBGhbEQ4xva3IewZCq4UiL6FiW8zFw/MHbc5
+/LI9IdCzBPbgmI5cw3gf5D3u7dxkgz5BKKditUYJ5gE+3f9Jnk+g13cZY23idjzT
+wIWe+RH8yjoUdA8ahzLJtR47zZsNeas5mhLncA3jqFVD+XafqKzubgtqa9JNcWj2
+to9N+Oej2TNpi7y/5AuwJ6BCp+AzbQ==
+=1iIc
+-----END PGP SIGNATURE-----
+
+--02s0islE/xNt6q2j--
 
