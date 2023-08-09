@@ -4,78 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7A7EEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Aug 2023 13:08:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5D49EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Aug 2023 13:38:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Iu79yptYpyKZLcmwVdcw+eT1MS0JVGJo459s4a36Hvg=; b=N7oiyS4lgvZ0q6tJLHoQeDyURu
-	cN4rpVn9lhsTweSLVawcnXQ4K1Rji5P7XwALxjr817or5z76alIGwBeppVWCTirlAkhxUiqyyBx5u
-	h+aNyEgeU3zlaK5sl+lorizL3lgsRyz3s6EVkPCfEDPoG7nHyWzse92atGAuOZvbKTJivtxZkP9X1
-	6nL3Li7dQp8n3PaJQMJ7mQ/lCquICI/xW4/enoO/k8/elZHl4BnTZWsa7SFFWL1OvrujDVUj0wbai
-	FzOWq29sSWYhMNVOy5q5d6W0eAMrAXpq29Tu1PWFpkSw12XZJCtbuGga2t7EraEQsCSYO3kTyVdW2
-	ei0AVxFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8Btky6tTdvG25ZLsauzNmPRJKTtp0p2jrZzqQzvClL8=; b=q2QCPJgjvCS//5OJr0mWGzDGEa
+	C9XBdQIpV/Ig/asXCIf5jvtuqUFxkwM6l7E8y/BUT+cTJOyM2lt2wmx2EQdCWIfBx3DXdtpoJvKil
+	+fcyLJ6ySOkzUCTImUUUNEnKvS35AnvN+BshqAokcjKKJVjjBby3AJLM9tcYeJYxn+HQFaWvbqFog
+	KHcY2uTjk953l7mkm4EW/JtIaRC9DFK3k2N02nSgwewv3ug81Ofx3mri3DR+gj7K1OU3BOsDFzTcT
+	97l9hB6ZU3gntiOMY+xUA9gUaU+cqdfFIODkzGgQeCCQ2Hz3M1iFYsGqAEs0he6YMW36Dg66OwVGe
+	SoCqkXwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTiv0-004xwn-1X;
-	Wed, 09 Aug 2023 13:08:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qTjOK-0053RB-13;
+	Wed, 09 Aug 2023 13:38:24 +0000
+Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTiuy-004xvu-0U;
-	Wed, 09 Aug 2023 13:08:05 +0000
-X-UUID: c3ede53236b511ee912e1518a6540028-20230809
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Iu79yptYpyKZLcmwVdcw+eT1MS0JVGJo459s4a36Hvg=;
-	b=Nf+/ksfA+sE3T3T3B6aINgAEFPLYaX6V5lXMLf4n0H9rmP3a0PLl5uR7ALWFqKBjSelDNTybx6WPzY0v2p7jsp8x3x0ajnKK+7laaNFgxpSjuQ4GqhGYD1HP+CxyKJ7+0t9I0VsqNir3MD4hbC0q8xGJBeGShu23EiN/QxUG27Q=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:53b481e7-c1f6-467e-a911-21df03c93153,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:3134aac1-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: c3ede53236b511ee912e1518a6540028-20230809
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1726587398; Wed, 09 Aug 2023 06:07:59 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 9 Aug 2023 20:57:23 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 9 Aug 2023 20:57:23 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Alexandre Mergnat
-	<amergnat@baylibre.com>, Eugen Hristev <eugen.hristev@collabora.com>
-CC: Jason-ch Chen <jason-ch.chen@mediatek.com>, Johnson Wang
-	<johnson.wang@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
-	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
-	Shawn Sung <shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5 1/2] drm/mediatek: Fix iommu fault by swapping FBs after updating plane state
-Date: Wed, 9 Aug 2023 20:57:21 +0800
-Message-ID: <20230809125722.24112-2-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230809125722.24112-1-jason-jh.lin@mediatek.com>
-References: <20230809125722.24112-1-jason-jh.lin@mediatek.com>
+	id 1qTjOG-0053P4-38;
+	Wed, 09 Aug 2023 13:38:22 +0000
+Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 18516124F;
+	Wed,  9 Aug 2023 15:38:13 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1691588293;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=8Btky6tTdvG25ZLsauzNmPRJKTtp0p2jrZzqQzvClL8=;
+	b=r4wKl3ihNbNJWLLG5hf4K10pWKB/qcqJZWT79pdX14Hwy6cFCNoDp523ysrGvSxR0hF0sV
+	S19UUVxjs0tcqcFDwaa/NkVjQnAj2+cyBE5RQNYWGpyiW44j/FWxQygtTL+wtS+237ZPBi
+	AtOsW9She/DFFxiMreuzoOh5io7RuXTgqIlbCCUn4LHHa90Z+A4PZo97sfdrSy4KQLmkYs
+	hhFi301ZV0pK+bOMSJlqwINPWSXFfHk08E4h61f4wk1UScNwCWh6iBthi3AlIm+EDBA4U6
+	GVakjg8rtPJGDbRJZnIXlKnvbOR8bknUPLybW2kI3kAAfIaJexJ1gSpJk2GYOw==
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Date: Wed, 09 Aug 2023 15:38:12 +0200
+From: Michael Walle <michael@walle.cc>
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart
+ <Laurent.pinchart@ideasonboard.com>, Linus Walleij
+ <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Andy
+ Shevchenko <andy@kernel.org>, Douglas Anderson <dianders@chromium.org>,
+ Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Jonas Karlman
+ <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, David Airlie
+ <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Pavel Machek
+ <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, Hector Martin
+ <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig
+ <alyssa@rosenzweig.io>, Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea
+ <claudiu.beznea@microchip.com>, Ray Jui <rjui@broadcom.com>, Scott Branden
+ <sbranden@broadcom.com>, Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Florian Fainelli
+ <florian.fainelli@broadcom.com>, Alexander Shiyan <shc_work@mail.ru>, Benson
+ Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>, Shawn Guo
+ <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
+ Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP
+ Linux Team <linux-imx@nxp.com>, Paul Cercueil <paul@crapouillou.net>,
+ Vladimir Zapolskiy <vz@mleia.com>, Kevin Hilman <khilman@baylibre.com>,
+ Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
+ <martin.blumenstingl@googlemail.com>, Conor Dooley
+ <conor.dooley@microchip.com>, Daire McNamara <daire.mcnamara@microchip.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, =?UTF-8?Q?Jonathan_Neusch?=
+ =?UTF-8?Q?=C3=A4fer?= <j.neuschaefer@gmx.net>, Heiko Stuebner
+ <heiko@sntech.de>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang
+ <zhang.lyra@gmail.com>, Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Chen-Yu Tsai <wens@csie.org>, Samuel Holland
+ <samuel@sholland.org>, Hammer Hsieh <hammerh0314@gmail.com>, Jonathan Hunter
+ <jonathanh@nvidia.com>, Nobuhiro Iwamatsu
+ <nobuhiro1.iwamatsu@toshiba.co.jp>, Sean Anderson <sean.anderson@seco.com>,
+ Michal Simek <michal.simek@amd.com>, Johan Hovold <johan@kernel.org>, Alex
+ Elder <elder@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Anjelique Melendez <quic_amelende@quicinc.com>, Dmitry Baryshkov
+ <dmitry.baryshkov@linaro.org>, Luca Weiss <luca@z3ntu.xyz>, Bjorn Andersson
+ <quic_bjorande@quicinc.com>, linux-pwm@vger.kernel.org,
+ linux-gpio@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-leds@vger.kernel.org, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
+ chrome-platform@lists.linux.dev, linux-mips@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-riscv@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev
+Subject: Re: [PATCH v2 1/2] pwm: Manage owner assignment implicitly for
+ drivers
+In-Reply-To: <20230804142707.412137-2-u.kleine-koenig@pengutronix.de>
+References: <20230804142707.412137-1-u.kleine-koenig@pengutronix.de>
+ <20230804142707.412137-2-u.kleine-koenig@pengutronix.de>
+Message-ID: <a6ba206a709b2f4f1c817df8c868a683@walle.cc>
+X-Sender: michael@walle.cc
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230809_060804_283783_0F9B8E6E 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20230809_063821_388137_39B370AA 
+X-CRM114-Status: GOOD (  14.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,38 +126,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-According to the comment in drm_atomic_helper_async_commit(),
-we should make sure FBs have been swapped, so that cleanups in the
-new_state performs a cleanup in the old FB.
+Hi,
 
-So we should move swapping FBs after calling mtk_plane_update_new_state(),
-to avoid using the old FB which could be freed.
+> Instead of requiring each driver to care for assigning the owner member
+> of struct pwm_ops, handle that implicitly using a macro. Note that the
+> owner member has to be moved to struct pwm_chip, as the ops structure
+> usually lives in read-only memory and so cannot be modified.
+> 
+> The upside is that new lowlevel drivers cannot forget the assignment 
+> and
+> save one line each. The pwm-crc driver didn't assign .owner, that's not
+> a problem in practise though as the driver cannot be compiled as a
+> module.
+> 
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 
-Fixes: 1a64a7aff8da ("drm/mediatek: Fix cursor plane no update")
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_plane.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+...
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index 31f9420aff6f..b1a918ffe457 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -210,9 +210,9 @@ static void mtk_plane_atomic_async_update(struct drm_plane *plane,
- 	plane->state->src_y = new_state->src_y;
- 	plane->state->src_h = new_state->src_h;
- 	plane->state->src_w = new_state->src_w;
--	swap(plane->state->fb, new_state->fb);
- 
- 	mtk_plane_update_new_state(new_state, new_plane_state);
-+	swap(plane->state->fb, new_state->fb);
- 	wmb(); /* Make sure the above parameters are set before update */
- 	new_plane_state->pending.async_dirty = true;
- 	mtk_drm_crtc_async_update(new_state->crtc, plane, state);
--- 
-2.18.0
+>  drivers/pwm/pwm-sl28cpld.c            |  1 -
 
+Acked-by: Michael Walle <michael@walle.cc>
 
