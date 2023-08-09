@@ -4,108 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2560C0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Aug 2023 13:58:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19C32C0015E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Aug 2023 16:18:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cswTEByuqWpeOlZdKGDMRzVxn/HpbgZ+DF3/Ia0ZobQ=; b=Su95OclCK5mwWkvURzfpQf488N
-	sAFHnWkToRSBmh1BKnGZ2zayp1n5swMmphZxj3hRRzMfdkvLdcNuziDDxllotZNeLu7omY8G1a9L7
-	3OaF7dFv5QTqssLJeZOChug6peiwGo77udxsPmgDHqOTAWWICcgBsFB6pXBG8D0TyS7xo/VBDcy/6
-	fsd3UFmWHySxDEgCg4pf3kPS169mc6lWVq2X4OO9YCrRnev/k76MvqmJlheRdJ0PrJPPS4MQ730Ic
-	HfO4qD+WSbH0dMpBwZHCcd96Y9TPth9vlhmpt8srTX5RrGb5LCw0xJ8SRs3eN1Xx1qQKGdPouxyym
-	J474/VAw==;
+	bh=pc+j7IaGMjxp0gWLH/cgKwZFlgWmLlLO/9/+BwPqzeo=; b=2S/ejPag6axjb4aXhdYqnT0PZf
+	Zb2OgD5gZt99RcGroF95TfNu1I0Ul5QzJem81nbDa0WzkK9RMvo7EVpu8TA2pvKvv29TpR9pfjIBJ
+	KqNwfRUFTwVrs7WgRhRujdZH94jDK5wO6D/ZaoGLbn2KDlq7NPnC23evgIdDB7BJY9EJCEKF4UzN+
+	+17ZXwhTOd1LiALzlHACiALSRWk3PKM3xiN841eFlRyVqCeut2ZblhyYHCtrJlJn4uc29Tf/BC30+
+	T8PPdeMLh6heLwP8aKJJKJijrUUU85/vG6jdFR0DGDNBREtYbrnKFL5XXXosEeFQ4WeHYtysAK+NP
+	stea71RQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTjhi-0056QQ-1p;
-	Wed, 09 Aug 2023 13:58:26 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1qTlt6-005NcH-1u;
+	Wed, 09 Aug 2023 16:18:20 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTjhf-0056PB-1e;
-	Wed, 09 Aug 2023 13:58:24 +0000
-Received: from [194.95.143.137] (helo=phil.dip.tu-dresden.de)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1qTjgu-0007Qm-Nw; Wed, 09 Aug 2023 15:57:36 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Daniel Mack <daniel@zonque.org>,
-	Jay Fang <f.fangjian@huawei.com>,
-	Qiang Zhao <qiang.zhao@nxp.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Jisheng Zhang <jszhang@kernel.org>,
-	Tsahee Zidenberg <tsahee@annapurnalabs.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Li Yang <leoyang.li@nxp.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Rob Herring <robh@kernel.org>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Cristian Marussi <cristian.marussi@arm.com>,
-	soc@kernel.org,
-	Nick Hawkins <nick.hawkins@hpe.com>,
-	Patrick Venture <venture@google.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Dinh Nguyen <dinguyen@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Joel Stanley <joel@jms.id.au>,
-	Jean-Marie Verdun <verdun@hpe.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Nancy Yuen <yuenn@google.com>,
-	Laurentiu Tudor <laurentiu.tudor@nxp.com>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Haojian Zhuang <haojian.zhuang@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Shiraz Has him <shiraz.linux.kernel@gmail.com>,
-	Stuart Yoder <stuyoder@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Lubomir Rintel <lkundrak@v3.sk>,
-	Robert Jarzmik <robert.jarzmik@free.fr>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Antoine Tenart <atenart@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Thierry Reding <treding@nvidia.com>,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	Viresh Kumar <viresh.kumar@linaro.org>,
-	linux-sunxi@lists.linux.dev,
-	openbmc@lists.ozlabs.org,
-	linux-aspeed@lists.ozlabs.org
-Subject: Re: (subset) [PATCH v2 00/23] ARM: DT include cleanups
-Date: Wed,  9 Aug 2023 15:57:33 +0200
-Message-Id: <169158939237.3288791.15504684466280859190.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
-References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org>
+	id 1qTlt3-005Nbb-16;
+	Wed, 09 Aug 2023 16:18:19 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 379F7Kbd015177;
+	Wed, 9 Aug 2023 16:18:09 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=pc+j7IaGMjxp0gWLH/cgKwZFlgWmLlLO/9/+BwPqzeo=;
+ b=MJlzFhUrRSUHKJysr6TuYDlhd1iYS/ouQn6Hcs0uKBowN+fs2AUDTXES9eKdy5tVGdi7
+ HIdV0LDXbuRSImfdZSXvrJwVg/DIYoWfdcPtkqaKwl1db6XtS9abTASw6EBHwI3MdbC4
+ KPKAmtdsPb4jDosiBakhdB8Aonu3Q6yW8mivWZn+d0HYKw/7rD9jTRDkafVVutm6Vleb
+ rla4uIAdAzJLpwStK1+98Bn8KakXzgSXPzvCe81W3AjU27dUStVXVbMvYRhkGpxOSwye
+ A2f/HiVL9T4AdERYuH/Df7mwaDB1etnk9md0m7slHzSxAOFnhrOT6dDuv5O1fg5igR9T zQ== 
+Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3sc1ny1rhb-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 09 Aug 2023 16:18:09 +0000
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
+	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 379GI8FN018967
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 9 Aug 2023 16:18:08 GMT
+Received: from [10.216.57.155] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.30; Wed, 9 Aug
+ 2023 09:18:02 -0700
+Message-ID: <a8750c05-15d4-1b58-c274-39f24ac018ca@quicinc.com>
+Date: Wed, 9 Aug 2023 21:47:58 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: Feedback on Qualcomm's minidump (debug) solution for end user
+ device crash
+Content-Language: en-US
+To: Kukjin Kim <kgene.kim@gmail.com>, Brian Masney <bmasney@redhat.com>
+CC: Krzysztof Kozlowski <krzk@kernel.org>, <linux-samsung-soc@vger.kernel.org>,
+        <linux-mediatek@lists.infradead.org>,
+        lkml <linux-kernel@vger.kernel.org>,
+        Trilok Soni <quic_tsoni@quicinc.com>,
+        "open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>,
+        Alim Akhtar
+	<alim.akhtar@samsung.com>, Kukjin Kim <kgene@kernel.org>,
+        Vignesh Raghavendra
+	<vigneshr@ti.com>, Nishanth Menon <nm@ti.com>,
+        Matthias Brugger
+	<matthias.bgg@gmail.com>
+References: <ZNEJAh0in/fjq6s9@brian-x1>
+ <1DAA278D-BDFE-4880-8453-99F098D4E259@gmail.com>
+From: Mukesh Ojha <quic_mojha@quicinc.com>
+In-Reply-To: <1DAA278D-BDFE-4880-8453-99F098D4E259@gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: 75Jwzds8lHrLoCfIBzffa-zf_i-VWGcn
+X-Proofpoint-ORIG-GUID: 75Jwzds8lHrLoCfIBzffa-zf_i-VWGcn
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
+ definitions=2023-08-09_13,2023-08-09_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1011 mlxscore=0
+ spamscore=0 bulkscore=0 adultscore=0 suspectscore=0 lowpriorityscore=0
+ impostorscore=0 malwarescore=0 mlxlogscore=881 phishscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2306200000 definitions=main-2308090143
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230809_065823_545988_8F70A542 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20230809_091817_386321_F989D0DF 
+X-CRM114-Status: GOOD (  24.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,27 +109,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 03 Aug 2023 16:42:40 -0600, Rob Herring wrote:
-> Arnd, This is all the remaining ARM and SoC related patches of DT
-> include cleanups which have not be applied by sub-arch maintainers.
+
+
+On 8/9/2023 1:19 PM, Kukjin Kim wrote:
 > 
-> A few of these are v2, but most are just resends of v1.
+>> 2023. 8. 8. 오전 12:08, Brian Masney <bmasney@redhat.com> 작성:
+>>
+>> ﻿On Mon, Aug 07, 2023 at 06:01:27PM +0530, Mukesh Ojha wrote:
+>>>> On 7/30/2023 5:14 PM, Krzysztof Kozlowski wrote:
+>>>> On 24/07/2023 18:59, Brian Masney wrote:
+>>>>> + linux-arm-kernel list
+>>>>>
+>>>>> On Thu, Jul 20, 2023 at 08:32:24PM +0530, Mukesh Ojha wrote:
+>>>>>> Hi Samsung/MTK/Any other SOC vendors,
+>>>>>>
+>>>>>> This is to bring to your notice that, we (Qualcomm) are working on
+>>>>>> upstreaming our minidump solution which is to address the problem of
+>>>>>> debugging on field device crashes where collecting entire ddr dump
+>>>>>> would not be feasible and collecting minimal data from the ddr would
+>>>>>> help in debug direction or even help in root causing issue.
+>>>>>>
+>>>>>> We have recently posted v4 version here [1]
+>>>>>>
+>>>>>> Based on comments[2], community is more worried about, if each SOC
+>>>>>> vendor come up with their own dumping method today or in future and
+>>>>>> whether it can have a common solution to a similar problem faced by
+>>>>>> other SOC vendor.
+>>>>>>
+>>>>>> We wanted to take your feedback if you also encounter a similar problem
+>>>>>> or maintain something similar solution in downstream which can be
+>>>>>> upstreamed. This will help us in a way to have a common solution in
+>>>>>> upstream.
+>>>>>>
+>>>>>> [1]
+>>>>>> https://lore.kernel.org/lkml/10dd2ead-758a-89f0-cda4-70ae927269eb@quicinc.com/
+>>>>>>
+>>>>>> [2]
+>>>>>> https://lore.kernel.org/lkml/CAL_JsqLO9yey2-4FcWsaGxijiS6hGL0SH9VoMuiyei-u9=Cv=w@mail.gmail.com/
+>>>>>
+>>>>> Adding the main ARM list to solicit feedback from other silicon
+>>>>> manufacturers.
+>>>>>
+>>>>> The cover sheet on the v4 patch set is available at:
+>>>>> https://lore.kernel.org/lkml/1687955688-20809-1-git-send-email-quic_mojha@quicinc.com/
+>>>>
+>>>> I doubt anyone follows the lists, so at least Cc some maintainers.
+>>>>
+>>>> +Cc Alim, Kukjin, Vignesh, Nishanth, Matthias.
+>>>
+>>> Thanks @Krzysztof/@Brian for extending the list.
+>>
+>> Hi Mukesh,
+>>
+>> Since no one has responded yet: I suspect your best bet to land the
+>> minidump functionality upstream is to refactor it to use the pstore
+>> functionality that Rob suggested:
+>>
+>> https://lore.kernel.org/lkml/CAL_JsqK7MHR09U5h01=Gf1ZLeDVCgZdN-W1hQRH3AX+E94_uUg@mail.gmail.com/
+>>
+>> Brian
+>>
+> Hi all,
 > 
+> Sorry for the late response and thanks for the asking.
 > 
+> In Samsung side, we’re checking about that internally as well. I’d like to know whether the minidump upstreaming is considered to be used in other chipset or some logic of that can be used. In addition, if Samsung wants, own the way upstreaming can be acceptable. It doesn’t mean we have a plan at this moment though.
 
-Applied, thanks!
+Thanks for the response @Kukjin
 
-I didn't find a reply to the thread in terms of it going
-in alltogether, so went forward and picked the Rockchip things
-I missed before.
+It is not something considered already instead it is what Qualcomm has
+support for its SOC in the downstream and we want to upstream the linux
+drivers and Minidump will need boot firmware support to be able to be
+used by other SOC vendors.
 
+So, the reason of seeking feedback on exactly the problem statement
+to debug crash from field devices where complete ddr dump is not
+feasible instead collect minimal information available to debug
+crashes and also about if SOC vendors have any solution for this
+issue which is common and upstream-able and can be leveraged.
 
-[12/23] ARM: rockchip: Drop unused includes
-        commit: 8cbdf5d2880923070198c240534f4cca3e04dfb1
-[20/23] soc: rockchip: Explicitly include correct DT includes
-        commit: fc7696e2ae81404c6ca176e7ebbddd4b19c40953
+So, if the problem statement is valid and now it is the time to
+share and get conclusion on some common solution, Feel free to
+check and comment on our minidump patches.
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+https://lore.kernel.org/lkml/10dd2ead-758a-89f0-cda4-70ae927269eb@quicinc.com/
+
+-Mukesh
+
+> 
+> Thanks,
+> Kukjin Kim <kgene(at)kernel.org>
 
