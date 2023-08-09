@@ -4,97 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19C32C0015E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Aug 2023 16:18:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 049E2C001E0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Aug 2023 16:44:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pc+j7IaGMjxp0gWLH/cgKwZFlgWmLlLO/9/+BwPqzeo=; b=2S/ejPag6axjb4aXhdYqnT0PZf
-	Zb2OgD5gZt99RcGroF95TfNu1I0Ul5QzJem81nbDa0WzkK9RMvo7EVpu8TA2pvKvv29TpR9pfjIBJ
-	KqNwfRUFTwVrs7WgRhRujdZH94jDK5wO6D/ZaoGLbn2KDlq7NPnC23evgIdDB7BJY9EJCEKF4UzN+
-	+17ZXwhTOd1LiALzlHACiALSRWk3PKM3xiN841eFlRyVqCeut2ZblhyYHCtrJlJn4uc29Tf/BC30+
-	T8PPdeMLh6heLwP8aKJJKJijrUUU85/vG6jdFR0DGDNBREtYbrnKFL5XXXosEeFQ4WeHYtysAK+NP
-	stea71RQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nDhLE3ZT6vGy7jFyOFpA8ZS/b+W0KeOHURtugtULW3g=; b=IZDmHHb2ZE6hnRlLUReglofK5Y
+	lnlJYkM+l/qN2t0dLrP8FDXnXdpBfTNeRwxxKf7pj2mI0TvRdjz9X56mOeeGIMJL4qZSQOKkIeCgs
+	7e6XXxIV2q+FEmwbLLAsDsNroqEtHhrYDtZUzGCag9/VG9ILxBGvq/NGXoJQT66KnS26JhTu5yKkH
+	HnhTXeSatlfStIHl620Ltho18aWTSrMMm+dzBvJSpA52YPPi3AgJ0lkQ0Ott4WWoVo8dFd5T8DFlK
+	6pVR7E4cCJZFEXhGwEu6yovElZtZpgbanKnGJsq7OEL3/n7IXIKozSK/Rw1bYYp85gm28ISvolg39
+	l4kzvelw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTlt6-005NcH-1u;
-	Wed, 09 Aug 2023 16:18:20 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1qTmIo-005QI2-30;
+	Wed, 09 Aug 2023 16:44:54 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTlt3-005Nbb-16;
-	Wed, 09 Aug 2023 16:18:19 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 379F7Kbd015177;
-	Wed, 9 Aug 2023 16:18:09 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=pc+j7IaGMjxp0gWLH/cgKwZFlgWmLlLO/9/+BwPqzeo=;
- b=MJlzFhUrRSUHKJysr6TuYDlhd1iYS/ouQn6Hcs0uKBowN+fs2AUDTXES9eKdy5tVGdi7
- HIdV0LDXbuRSImfdZSXvrJwVg/DIYoWfdcPtkqaKwl1db6XtS9abTASw6EBHwI3MdbC4
- KPKAmtdsPb4jDosiBakhdB8Aonu3Q6yW8mivWZn+d0HYKw/7rD9jTRDkafVVutm6Vleb
- rla4uIAdAzJLpwStK1+98Bn8KakXzgSXPzvCe81W3AjU27dUStVXVbMvYRhkGpxOSwye
- A2f/HiVL9T4AdERYuH/Df7mwaDB1etnk9md0m7slHzSxAOFnhrOT6dDuv5O1fg5igR9T zQ== 
-Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3sc1ny1rhb-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 09 Aug 2023 16:18:09 +0000
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 379GI8FN018967
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 9 Aug 2023 16:18:08 GMT
-Received: from [10.216.57.155] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.30; Wed, 9 Aug
- 2023 09:18:02 -0700
-Message-ID: <a8750c05-15d4-1b58-c274-39f24ac018ca@quicinc.com>
-Date: Wed, 9 Aug 2023 21:47:58 +0530
+	id 1qTmIl-005QFk-0R;
+	Wed, 09 Aug 2023 16:44:52 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 84B7A2187E;
+	Wed,  9 Aug 2023 16:44:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.cz; s=susede2_rsa;
+	t=1691599487; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=nDhLE3ZT6vGy7jFyOFpA8ZS/b+W0KeOHURtugtULW3g=;
+	b=dfLcv7/AijRLKHjL1t1noAK9Qk5iKSFINL4VURbX3V9BPdMkLGdsFnao+maJUgXRq8FzHA
+	ampedrAG6ab+ku3msmXGKGC50qGzvzpq1uFfrkN4bpx5ePJf7RBuXFD1UZW1zZJf/ZoseJ
+	NK9IGgKfeS2AVFS48lEAsqJgWhNBWag=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.cz;
+	s=susede2_ed25519; t=1691599487;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=nDhLE3ZT6vGy7jFyOFpA8ZS/b+W0KeOHURtugtULW3g=;
+	b=IC1FePROY468GiaL9M2rWyaAYV2g2X93uqoziugzeEp2uSvcA4TmqRA0ZiA/wR/ocuihXL
+	TD4pMgaSKCACQrAA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 6F4F8133B5;
+	Wed,  9 Aug 2023 16:44:47 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id pbEbG3/C02S1awAAMHmgww
+	(envelope-from <jack@suse.cz>); Wed, 09 Aug 2023 16:44:47 +0000
+Received: by quack3.suse.cz (Postfix, from userid 1000)
+	id F112CA0769; Wed,  9 Aug 2023 18:44:46 +0200 (CEST)
+Date: Wed, 9 Aug 2023 18:44:46 +0200
+From: Jan Kara <jack@suse.cz>
+To: Haibo Li <haibo.li@mediatek.com>
+Cc: linux-kernel@vger.kernel.org,
+	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-fsdevel@vger.kernel.org, linux-mm@kvack.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, xiaoming.yu@mediatek.com
+Subject: Re: [PATCH] mm/filemap.c:fix update prev_pos after one read request
+ done
+Message-ID: <20230809164446.uwxryhrfbjka2lio@quack3>
+References: <20230628110220.120134-1-haibo.li@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: Feedback on Qualcomm's minidump (debug) solution for end user
- device crash
-Content-Language: en-US
-To: Kukjin Kim <kgene.kim@gmail.com>, Brian Masney <bmasney@redhat.com>
-CC: Krzysztof Kozlowski <krzk@kernel.org>, <linux-samsung-soc@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>,
-        lkml <linux-kernel@vger.kernel.org>,
-        Trilok Soni <quic_tsoni@quicinc.com>,
-        "open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        Alim Akhtar
-	<alim.akhtar@samsung.com>, Kukjin Kim <kgene@kernel.org>,
-        Vignesh Raghavendra
-	<vigneshr@ti.com>, Nishanth Menon <nm@ti.com>,
-        Matthias Brugger
-	<matthias.bgg@gmail.com>
-References: <ZNEJAh0in/fjq6s9@brian-x1>
- <1DAA278D-BDFE-4880-8453-99F098D4E259@gmail.com>
-From: Mukesh Ojha <quic_mojha@quicinc.com>
-In-Reply-To: <1DAA278D-BDFE-4880-8453-99F098D4E259@gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: 75Jwzds8lHrLoCfIBzffa-zf_i-VWGcn
-X-Proofpoint-ORIG-GUID: 75Jwzds8lHrLoCfIBzffa-zf_i-VWGcn
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
- definitions=2023-08-09_13,2023-08-09_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1011 mlxscore=0
- spamscore=0 bulkscore=0 adultscore=0 suspectscore=0 lowpriorityscore=0
- impostorscore=0 malwarescore=0 mlxlogscore=881 phishscore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2306200000 definitions=main-2308090143
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230628110220.120134-1-haibo.li@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230809_091817_386321_F989D0DF 
-X-CRM114-Status: GOOD (  24.42  )
+X-CRM114-CacheID: sfid-20230809_094451_319485_62D61B5D 
+X-CRM114-Status: GOOD (  34.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,94 +96,134 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 8/9/2023 1:19 PM, Kukjin Kim wrote:
+On Wed 28-06-23 19:02:20, Haibo Li wrote:
+> ra->prev_pos tracks the last visited byte in the previous read request.
+> It is used to check whether it is sequential read in
+> ondemand_readahead and thus affects the readahead window.
 > 
->> 2023. 8. 8. 오전 12:08, Brian Masney <bmasney@redhat.com> 작성:
->>
->> ﻿On Mon, Aug 07, 2023 at 06:01:27PM +0530, Mukesh Ojha wrote:
->>>> On 7/30/2023 5:14 PM, Krzysztof Kozlowski wrote:
->>>> On 24/07/2023 18:59, Brian Masney wrote:
->>>>> + linux-arm-kernel list
->>>>>
->>>>> On Thu, Jul 20, 2023 at 08:32:24PM +0530, Mukesh Ojha wrote:
->>>>>> Hi Samsung/MTK/Any other SOC vendors,
->>>>>>
->>>>>> This is to bring to your notice that, we (Qualcomm) are working on
->>>>>> upstreaming our minidump solution which is to address the problem of
->>>>>> debugging on field device crashes where collecting entire ddr dump
->>>>>> would not be feasible and collecting minimal data from the ddr would
->>>>>> help in debug direction or even help in root causing issue.
->>>>>>
->>>>>> We have recently posted v4 version here [1]
->>>>>>
->>>>>> Based on comments[2], community is more worried about, if each SOC
->>>>>> vendor come up with their own dumping method today or in future and
->>>>>> whether it can have a common solution to a similar problem faced by
->>>>>> other SOC vendor.
->>>>>>
->>>>>> We wanted to take your feedback if you also encounter a similar problem
->>>>>> or maintain something similar solution in downstream which can be
->>>>>> upstreamed. This will help us in a way to have a common solution in
->>>>>> upstream.
->>>>>>
->>>>>> [1]
->>>>>> https://lore.kernel.org/lkml/10dd2ead-758a-89f0-cda4-70ae927269eb@quicinc.com/
->>>>>>
->>>>>> [2]
->>>>>> https://lore.kernel.org/lkml/CAL_JsqLO9yey2-4FcWsaGxijiS6hGL0SH9VoMuiyei-u9=Cv=w@mail.gmail.com/
->>>>>
->>>>> Adding the main ARM list to solicit feedback from other silicon
->>>>> manufacturers.
->>>>>
->>>>> The cover sheet on the v4 patch set is available at:
->>>>> https://lore.kernel.org/lkml/1687955688-20809-1-git-send-email-quic_mojha@quicinc.com/
->>>>
->>>> I doubt anyone follows the lists, so at least Cc some maintainers.
->>>>
->>>> +Cc Alim, Kukjin, Vignesh, Nishanth, Matthias.
->>>
->>> Thanks @Krzysztof/@Brian for extending the list.
->>
->> Hi Mukesh,
->>
->> Since no one has responded yet: I suspect your best bet to land the
->> minidump functionality upstream is to refactor it to use the pstore
->> functionality that Rob suggested:
->>
->> https://lore.kernel.org/lkml/CAL_JsqK7MHR09U5h01=Gf1ZLeDVCgZdN-W1hQRH3AX+E94_uUg@mail.gmail.com/
->>
->> Brian
->>
-> Hi all,
+> From commit 06c0444290ce ("mm/filemap.c: generic_file_buffered_read()
+> now uses find_get_pages_contig"),update logic of prev_pos is changed.
+> It updates prev_pos after each returns from filemap_get_pages.
+> But the read request from user may be not fully completed
+> at this point.
+> The updated prev_pos impacts the subsequent readahead window.
 > 
-> Sorry for the late response and thanks for the asking.
+> The real problem is performance drop of fsck_msdos between linux-5.4
+> and linux-5.15(also linux-6.4).
+> Comparing to linux-5.4,It spends about 110% time and read 140% pages.
+> The read pattern of fsck_msdos is not fully sequential.
 > 
-> In Samsung side, we’re checking about that internally as well. I’d like to know whether the minidump upstreaming is considered to be used in other chipset or some logic of that can be used. In addition, if Samsung wants, own the way upstreaming can be acceptable. It doesn’t mean we have a plan at this moment though.
-
-Thanks for the response @Kukjin
-
-It is not something considered already instead it is what Qualcomm has
-support for its SOC in the downstream and we want to upstream the linux
-drivers and Minidump will need boot firmware support to be able to be
-used by other SOC vendors.
-
-So, the reason of seeking feedback on exactly the problem statement
-to debug crash from field devices where complete ddr dump is not
-feasible instead collect minimal information available to debug
-crashes and also about if SOC vendors have any solution for this
-issue which is common and upstream-able and can be leveraged.
-
-So, if the problem statement is valid and now it is the time to
-share and get conclusion on some common solution, Feel free to
-check and comment on our minidump patches.
-
-https://lore.kernel.org/lkml/10dd2ead-758a-89f0-cda4-70ae927269eb@quicinc.com/
-
--Mukesh
-
+> Simplified read pattern of fsck_msdos likes below:
+> 1.read at page offset 0xa,size 0x1000
+> 2.read at other page offset like 0x20,size 0x1000
+> 3.read at page offset 0xa,size 0x4000
+> 4.read at page offset 0xe,size 0x1000
 > 
-> Thanks,
-> Kukjin Kim <kgene(at)kernel.org>
+> Here is the read status on linux-6.4:
+> 1.after read at page offset 0xa,size 0x1000
+>     ->page ofs 0xa go into pagecache
+> 2.after read at page offset 0x20,size 0x1000
+>     ->page ofs 0x20 go into pagecache
+> 3.read at page offset 0xa,size 0x4000
+>     ->filemap_get_pages read ofs 0xa from pagecache and returns
+>     ->prev_pos is updated to 0xb and goto next loop
+>     ->filemap_get_pages tends to read ofs 0xb,size 0x3000
+>     ->initial_readahead case in ondemand_readahead since prev_pos is
+>       the same as request ofs.
+>     ->read 8 pages while async size is 5 pages
+>       (PageReadahead flag at page 0xe)
+> 4.read at page offset 0xe,size 0x1000
+>     ->hit page 0xe with PageReadahead flag set,double the ra_size.
+>       read 16 pages while async size is 16 pages
+> Now it reads 24 pages while actually uses 5 pages
+> 
+> on linux-5.4:
+> 1.the same as 6.4
+> 2.the same as 6.4
+> 3.read at page offset 0xa,size 0x4000
+>     ->read ofs 0xa from pagecache
+>     ->read ofs 0xb,size 0x3000 using page_cache_sync_readahead
+>       read 3 pages
+>     ->prev_pos is updated to 0xd before generic_file_buffered_read
+>       returns
+> 4.read at page offset 0xe,size 0x1000
+>     ->initial_readahead case in ondemand_readahead since
+>       request ofs-prev_pos==1
+>     ->read 4 pages while async size is 3 pages
+> 
+> Now it reads 7 pages while actually uses 5 pages.
+> 
+> In above demo,the initial_readahead case is triggered by offset
+> of user request on linux-5.4.
+> While it may be triggered by update logic of prev_pos on linux-6.4.
+> 
+> To fix the performance drop,update prev_pos after finishing one read
+> request.
+> 
+> Signed-off-by: Haibo Li <haibo.li@mediatek.com>
+
+Sorry for the delayed reply. This seems to have fallen through the cracks.
+So if I understand your analysis right, you are complaining that random
+read larger than 1 page gets misdetected as sequential read and so "larger
+than necessary" readahead happens. I tend to agree with your opinion and your
+solution looks good to me. Feel free to add:
+
+Reviewed-by: Jan Kara <jack@suse.cz>
+
+Willy, any opinion? Andrew, can you pickup the patch if Willy doesn't
+object?
+
+								Honza
+
+> ---
+>  mm/filemap.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+> 
+> diff --git a/mm/filemap.c b/mm/filemap.c
+> index 83dda76d1fc3..16b2054eee71 100644
+> --- a/mm/filemap.c
+> +++ b/mm/filemap.c
+> @@ -2670,6 +2670,7 @@ ssize_t filemap_read(struct kiocb *iocb, struct iov_iter *iter,
+>  	int i, error = 0;
+>  	bool writably_mapped;
+>  	loff_t isize, end_offset;
+> +	loff_t last_pos = ra->prev_pos;
+>  
+>  	if (unlikely(iocb->ki_pos >= inode->i_sb->s_maxbytes))
+>  		return 0;
+> @@ -2721,8 +2722,8 @@ ssize_t filemap_read(struct kiocb *iocb, struct iov_iter *iter,
+>  		 * When a read accesses the same folio several times, only
+>  		 * mark it as accessed the first time.
+>  		 */
+> -		if (!pos_same_folio(iocb->ki_pos, ra->prev_pos - 1,
+> -							fbatch.folios[0]))
+> +		if (!pos_same_folio(iocb->ki_pos, last_pos - 1,
+> +				    fbatch.folios[0]))
+>  			folio_mark_accessed(fbatch.folios[0]);
+>  
+>  		for (i = 0; i < folio_batch_count(&fbatch); i++) {
+> @@ -2749,7 +2750,7 @@ ssize_t filemap_read(struct kiocb *iocb, struct iov_iter *iter,
+>  
+>  			already_read += copied;
+>  			iocb->ki_pos += copied;
+> -			ra->prev_pos = iocb->ki_pos;
+> +			last_pos = iocb->ki_pos;
+>  
+>  			if (copied < bytes) {
+>  				error = -EFAULT;
+> @@ -2763,7 +2764,7 @@ ssize_t filemap_read(struct kiocb *iocb, struct iov_iter *iter,
+>  	} while (iov_iter_count(iter) && iocb->ki_pos < isize && !error);
+>  
+>  	file_accessed(filp);
+> -
+> +	ra->prev_pos = last_pos;
+>  	return already_read ? already_read : error;
+>  }
+>  EXPORT_SYMBOL_GPL(filemap_read);
+> -- 
+> 2.25.1
+> 
+-- 
+Jan Kara <jack@suse.com>
+SUSE Labs, CR
 
