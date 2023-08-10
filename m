@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DF52C001DB
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2975C04E69
 	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 06:33:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,56 +12,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jYTzTb8UrxRc66FImFP9rRfhwslszsfgsuSxr/7YLlU=; b=mpDrZulp0yNMbN9mxkxO++4SxN
-	f2tWbbngrsK+w+7Ns9X54wYJD2drIPEXQjoDTjB8f+Msm3yWFVPE6dGdLbz7qAGBzOpozyGESRjc0
-	ftv8qYS6rhNU+KLgdP8iePfgcu6BCSW2M1aYHxmqe1LpJxSzlbGD1C2E65nWP4MfiLJwCw2RmeYen
-	qs0WDXwG1H9Gud9Gfgqd3cg1X3K0+6dK/jUdljcykXmT/bI8LjFCmhpDFDVVc+Pl3fM5Aflqx9t/T
-	ThatRaRNkwHLBzEmAt54q/WwltinDB1eBg9KUdOE/M1tVhtj6vL2rsuUd7E9snl4pMXmrRCQpIcZL
-	rKoEyqCg==;
+	bh=V+hlC8d67YmntwV4mHtT3ZdGF2DLfbF3GgSUytsMD/g=; b=M0tbn2NiXLj+2U3PwhsnkeEMGw
+	znMGOMvZRSw6vyxXsC7xyBwxQxeaXt4xW1RvMjvqr2aseo30DPcPFAtiBj/y6NOJ3fhq0uCv9nynr
+	VotGc6e0Ys1syh32Di69N5gJ9SxNhP80vo2MZTymRMPnUo332kqvXARezwIkF6SZYiP3Cwefctt20
+	aVUdsc7fOy3shl8DFpH37eSmNNGiTO2kihFz6mnOPpt1RhEtcLmlTvSZ/XWSWAWW/jdRqREz6Yu/g
+	B3JudCJiaEzRy7cSfUjSw0K+rtOGpL1+rdRH+TW6I8YtoPKteWZYFpYPH251Jk/QrapTuIj84Uzyy
+	8jYliO3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTzEV-006fSj-0f;
+	id 1qTzEV-006fSw-1p;
 	Thu, 10 Aug 2023 06:33:19 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTzEO-006fN3-1h
+	id 1qTzEO-006fMM-2M
 	for linux-mediatek@lists.infradead.org;
 	Thu, 10 Aug 2023 06:33:14 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-3fe2ba3e260so4693125e9.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 09 Aug 2023 23:33:12 -0700 (PDT)
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-4fe7e1ef45dso775791e87.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 09 Aug 2023 23:33:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1691649191; x=1692253991;
+        d=linaro.org; s=google; t=1691649189; x=1692253989;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=jYTzTb8UrxRc66FImFP9rRfhwslszsfgsuSxr/7YLlU=;
-        b=XVBoF8/yUIY8PYBHbJ0Z7j3ZbEFoK9XkPKGih+mU3xS6CHBVaV+E0rs9k7VHhJNUqY
-         woMLWZioH8QrrAqWcuFhR9m5Vu0Iq8ia7WIu7aVeqrcjYHU2WD48Hz4jAjqaHVTBvejV
-         gpaUjTWl2Fnuyq4TyzmmTDFvks/qHg6YwnFTwFmuQLKbLhwrkf5EUQ9F5chIaUg5yj4G
-         LdyaY3nW5radp2afOmQ388Arp2Km9PsKOFERYVJcnhs6gccUF7rMee8rqyenPJ4yiOnU
-         3MWV60QVUcPvc4ieNtbGjzC8Ga6jPurlMbqxkTSkixHbUqV75zBWK+bc7IN4+fcp4Q72
-         S1GQ==
+        bh=V+hlC8d67YmntwV4mHtT3ZdGF2DLfbF3GgSUytsMD/g=;
+        b=crE5DJCi/45bcCANTTjlEfON6RKdtpo+VtOBUUEQ1imOZ4MoBn4AbHHCxCSY789Gqy
+         DaG1wpNWkKHV6Efqw2W1gFB9RwoWWWTKWi8EVK8SBE6ZCOlfsFh0SL4mO8NI1xkk/Vbr
+         jPaiBQpcwxcSRqZXjBgVF0X1LnGlyiIEKYKywgwrrnKacEu4eee23jO8es1PsxhqnbjS
+         VBiknW8jM8bc2Xf8KPRZtiztqMQuBa9cAo7+1l9qdMH/mFnC3OgPhe5Y/a7jatebr/TA
+         JY2V16taZADsBWs8Jcqm7u0z5Tl32sHkP4OetKecvumukU3dvjuJl0UoFBdDPhx/m/mN
+         YWvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691649191; x=1692253991;
+        d=1e100.net; s=20221208; t=1691649189; x=1692253989;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=jYTzTb8UrxRc66FImFP9rRfhwslszsfgsuSxr/7YLlU=;
-        b=iZfLOeYGIoVurt1ao1tqW9h2MuS3JweK84+4qv0dTd+rU9BVXmSZ0r8Njz3EU3VuMR
-         lvEytM6x1cHz6qtiP/x/N5I9gr7/4avBzSC9KA+vm+9vkpGrRdr5+JF4fvhbrhfD1Jdn
-         T3+oUbve4UuxsARUfZGHOHdfzyXLfx3w3CY8aLW0fO4JKPP7xjrWO7iA0DFNVqsQ4dzL
-         bKxCJpyc/5mzPo2su8XOJUIJfWzJcn6VfBKy2mSg5ahLl36qg6V4U08AjRCTsgZbjLC3
-         Vy9mkxHtvpPk4miitA2Rlx158BIKeX/+BTvnQmYxGTer+fku+Ozh3xnsnG1fidR9w90B
-         +y0A==
-X-Gm-Message-State: AOJu0YyyheZKb6G0t3/fydkf72V/UDv288akFoDd4yuVqhvLeRyEMicg
-	95EBZCpnBvCJynJPc61x87LbJA==
-X-Google-Smtp-Source: AGHT+IEqJ1GJ3dbmjoju3DRXle+Ph5P/SXAKqQihojhMe01unHEJ1z2+BYJ7yRiSfY0mY+2UQE9aOA==
-X-Received: by 2002:a05:600c:213:b0:3fa:934c:8356 with SMTP id 19-20020a05600c021300b003fa934c8356mr1122754wmi.10.1691649191009;
-        Wed, 09 Aug 2023 23:33:11 -0700 (PDT)
+        bh=V+hlC8d67YmntwV4mHtT3ZdGF2DLfbF3GgSUytsMD/g=;
+        b=CtBNiP9tmN3YvPtBuIhnkjzkurc45T7KaDqv7aFbgsycR2I/lSu0hK8BCr7ghEYnmr
+         DKfO2N9YXh7NaTDshS8hdte8gT7oHTKPZaVZw/9B8RW0xXPOEWBKb8SdYt0tA68+5jMv
+         kjBc6uebTN5Rm6yz+zqo+PlTaVPkrlf1HAqeftDfsAm5YEgqOeKRP6E3DaSdtidd9ypK
+         FfbeJvehePY69XlhDZJjPwZBe3RDmyt+j2e0LfbVNGRrh5fc7iSZzXYTbW8x6UwFq6lM
+         uwNqaN+BxzTqcQMKfYgeq4Wc+o6dmrGpOEofJKFk+lFyfT/4t3noeUXomxdb7AadDK2k
+         ZxtA==
+X-Gm-Message-State: AOJu0YwXFcq623LVjkk9gHJkIrFLlMo/4WPlY6LCKfeRKQL3BXZJ9NfA
+	DS/hPI9j0krh9yVZMrr7uN79hw==
+X-Google-Smtp-Source: AGHT+IErGy790Xkb6/KzdX9Bvv40e18+/V59YRvZrbqtUlAQog8GWO8fIcwIyb/Yl5HGLGY7G2ICtw==
+X-Received: by 2002:a05:6512:3483:b0:4fe:347c:874b with SMTP id v3-20020a056512348300b004fe347c874bmr907453lfr.8.1691649188761;
+        Wed, 09 Aug 2023 23:33:08 -0700 (PDT)
 Received: from krzk-bin.. ([178.197.222.113])
-        by smtp.gmail.com with ESMTPSA id o10-20020a1c750a000000b003fe2b6d64c8sm4020018wmc.21.2023.08.09.23.33.08
+        by smtp.gmail.com with ESMTPSA id o10-20020a1c750a000000b003fe2b6d64c8sm4020018wmc.21.2023.08.09.23.33.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Aug 2023 23:33:10 -0700 (PDT)
+        Wed, 09 Aug 2023 23:33:08 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Jerome Brunet <jbrunet@baylibre.com>,
 	Liam Girdwood <lgirdwood@gmail.com>,
@@ -93,17 +93,17 @@ To: Jerome Brunet <jbrunet@baylibre.com>,
 	linux-mediatek@lists.infradead.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
 	Rob Herring <robh@kernel.org>
-Subject: [PATCH v2 04/11] ASoC: dt-bindings: samsung,midas-audio: use common sound card
-Date: Thu, 10 Aug 2023 08:32:52 +0200
-Message-Id: <20230810063300.20151-4-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 03/11] ASoC: dt-bindings: samsung,aries-wm8994: use common sound card
+Date: Thu, 10 Aug 2023 08:32:51 +0200
+Message-Id: <20230810063300.20151-3-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230810063300.20151-1-krzysztof.kozlowski@linaro.org>
 References: <20230810063300.20151-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230809_233312_564153_311B9588 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20230809_233312_786655_A66C97BC 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,23 +126,26 @@ cards.
 Reviewed-by: Rob Herring <robh@kernel.org>
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../bindings/sound/samsung,midas-audio.yaml      | 16 ++++++++--------
+ .../bindings/sound/samsung,aries-wm8994.yaml     | 16 ++++++++--------
  1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/sound/samsung,midas-audio.yaml b/Documentation/devicetree/bindings/sound/samsung,midas-audio.yaml
-index 31095913e330..6ec80f529d84 100644
---- a/Documentation/devicetree/bindings/sound/samsung,midas-audio.yaml
-+++ b/Documentation/devicetree/bindings/sound/samsung,midas-audio.yaml
-@@ -9,14 +9,13 @@ title: Samsung Midas audio complex with WM1811 codec
+diff --git a/Documentation/devicetree/bindings/sound/samsung,aries-wm8994.yaml b/Documentation/devicetree/bindings/sound/samsung,aries-wm8994.yaml
+index 447e013f6e17..5ea0819a261a 100644
+--- a/Documentation/devicetree/bindings/sound/samsung,aries-wm8994.yaml
++++ b/Documentation/devicetree/bindings/sound/samsung,aries-wm8994.yaml
+@@ -9,6 +9,9 @@ title: Samsung Aries audio complex with WM8994 codec
  maintainers:
-   - Sylwester Nawrocki <s.nawrocki@samsung.com>
+   - Jonathan Bakker <xc-racer2@live.ca>
  
 +allOf:
 +  - $ref: sound-card-common.yaml#
 +
  properties:
    compatible:
-     const: samsung,midas-audio
+     enum:
+@@ -17,10 +20,6 @@ properties:
+       # Without FM radio and modem slave
+       - samsung,fascinate4g-wm8994
  
 -  model:
 -    $ref: /schemas/types.yaml#/definitions/string
@@ -151,23 +154,23 @@ index 31095913e330..6ec80f529d84 100644
    cpu:
      type: object
      additionalProperties: false
-@@ -38,6 +37,7 @@ properties:
-       - sound-dai
+@@ -46,6 +45,7 @@ properties:
  
    samsung,audio-routing:
-+    deprecated: true
      $ref: /schemas/types.yaml#/definitions/non-unique-string-array
++    deprecated: true
      description: |
-       List of the connections between audio components; each entry is
-@@ -45,6 +45,7 @@ properties:
-       being the connection's source; valid names for sources and sinks are
-       the WM1811's pins (as documented in its binding), and the jacks
-       on the board: HP, SPK, Main Mic, Sub Mic, Headset Mic.
+       List of the connections between audio
+       components;  each entry is a pair of strings, the first being the
+@@ -56,6 +56,7 @@ properties:
+       or FM In
+       For samsung,fascinate4g-wm8994: HP, SPK, RCV, LINE, Main Mic,
+       or HeadsetMic
 +      Deprecated, use audio-routing.
  
-   mic-bias-supply:
-     description: Supply for the micbias on the Main microphone
-@@ -62,14 +63,13 @@ properties:
+   extcon:
+     description: Extcon phandle for dock detection
+@@ -87,10 +88,9 @@ properties:
  
  required:
    - compatible
@@ -176,22 +179,26 @@ index 31095913e330..6ec80f529d84 100644
    - codec
 -  - samsung,audio-routing
 +  - audio-routing
-   - mic-bias-supply
-   - submic-bias-supply
+   - extcon
+   - main-micbias-supply
+   - headset-micbias-supply
+@@ -98,7 +98,7 @@ required:
+   - headset-detect-gpios
+   - headset-key-gpios
  
 -additionalProperties: false
 +unevaluatedProperties: false
  
  examples:
    - |
-@@ -84,7 +84,7 @@ examples:
-         mic-bias-supply = <&mic_bias_reg>;
-         submic-bias-supply = <&submic_bias_reg>;
+@@ -121,7 +121,7 @@ examples:
+         headset-detect-gpios = <&gph0 6 GPIO_ACTIVE_HIGH>;
+         headset-key-gpios = <&gph3 6 GPIO_ACTIVE_HIGH>;
  
 -        samsung,audio-routing =
 +        audio-routing =
-                 "HP", "HPOUT1L",
-                 "HP", "HPOUT1R",
+             "HP", "HPOUT1L",
+             "HP", "HPOUT1R",
  
 -- 
 2.34.1
