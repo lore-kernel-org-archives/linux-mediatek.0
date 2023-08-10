@@ -4,68 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76644C04A6A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 22:12:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E546C001DE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 22:51:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Du4ekhcEj8g7IZ7AzOhPv7PqxGa9JtdsMerbSFHNbkg=; b=XiKkJ3xxZGHKJQ9Hx+8n8evN60
-	x3SdeahgxsgpsR1zqudNovdCPSBeS+SwT5Q4BbHMt7qI1OfokqQgNsH3Jc81/yNp7KGFl+G3Vo2vJ
-	ixniHxlIbEMlsB5HEskMCUcO+liV2RYgoBoQdd9WusDyUoPYM2fajoCYLDdZP9UP8qMW1LjCaMJ6x
-	lOmththdOBSYrLrb7y8V6hCRwLu/h6rGAsYN6z8q/BJ8rQIWj9LflaKVbBtOXP11IqNM5arx+H0Or
-	oYEpnk0NkCVvkWu38Bv5EtER7ArAKIe4Zs4gFXEU9i64yOxzDPNLoT2s/MMC7ZKaZmu2sJK209unw
-	b7TehUpA==;
+	bh=5APYFm2DOcUlHFwZTgKZHuYxuZ9KVmW8+AsBSuN6Ix8=; b=TN5BbfCjpJ4tIlFtP0S8ciG5V9
+	1oh45d2H8UsK+4Oc4x42WeWqV0mbH9/sfonxx/Ik0jX1EW9zLN9XfsLp3j8Hk/iOSl0mLB2IOaZSV
+	MZ6fdnLqafK/HcJOhkFZF1ErZ8rtZ3pkuevu886zWkcdm54E5ShK2NIttAp33Lec9dBfeP+DKbwI0
+	9Z4ZNoUpV9OcqT5gBHG5Z9YO83hUgjRj52i3QZAGQFp+0nlbMifdkBQX1stQqzwkeu0iiIyJtkIV7
+	z0SNSEKXOQzs7tDE0owbQJtUW+zcc/4LR5I2OYg3IWq5yCQzH/iEzWZy7h6cRGouBbNHTk9uJqTEX
+	YJLPbEhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUDtQ-008omc-1j;
-	Thu, 10 Aug 2023 22:12:32 +0000
+	id 1qUEVA-008roE-2k;
+	Thu, 10 Aug 2023 22:51:32 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUDtM-008olL-1X;
-	Thu, 10 Aug 2023 22:12:30 +0000
+	id 1qUEV7-008rnh-0y;
+	Thu, 10 Aug 2023 22:51:30 +0000
 Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2329D6607234;
-	Thu, 10 Aug 2023 23:12:18 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 99EE76607234;
+	Thu, 10 Aug 2023 23:51:25 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1691705540;
-	bh=Cjoy1Kbx7vl3aNLQHQODSus0OKCsku5K0lb8+lPAifw=;
+	s=mail; t=1691707887;
+	bh=xX2TKwjWSum0DXCFhBKwo7grgh23hCvtVCMmYEmXmyw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=anIuDNjv1Qfh8KjqWhnIaiSGJECftLfLAvKsOBzHvwM9TAWBDKk/3bSlkyLSd7f2i
-	 rYt14YwiwykTWFYcPwR9/RcOJKEf9OYHLxFi70cCDnwf2VJu2SN1a/0QHl16m1nTue
-	 QC4QoJejcfBjpaZVJ5E5W6SuE6T5lwz31SVOOwPpu1aNP2Q2FCCR233jNKhrgIEQhq
-	 83NktOkjTFDYO25yhTXOSyD2UL0Tmd2Q07pWFKEkNDGds94MBSSBu+hTz9aePVAqAz
-	 Bf9hD8y7yU7Kgc/geWObBPHah+Rn9tovRJ/PnqJQ4Xh+rLAsF7sTIHs2oXjeOswuyE
-	 Y8nC4GDeJP6/w==
-Date: Thu, 10 Aug 2023 18:12:14 -0400
+	b=aaptVNrqp7UANGPO7f3GoJzbdNmTkraXOTFZUZJlCr4/2zgcZ5XRb+eKUlTHOyWhu
+	 ommN4v9BOQpsZdevBR+wrXFpl55W0N1j7CT2+L6O6aCc9WF3b7mInL5Twq3CdmgygA
+	 7z/p5IVJZZf77Pjzo9U73oaY4I2tVHkQFmuoOBF7fa9j7c/fxgEIHuVKZy6H5OcumY
+	 3m3R1mooQIma/H67JokJIro8o45Tjt9fucg3tuUTksrr0pn7DZqjKqlMSguaT1uDQv
+	 PTDaVlWJFxc9W+OLm8PeU1/xksR3A4hiDR3MQH0nBLd4Et63YndN4Kq1VgN3qNrh4M
+	 ujNWWDWwuGz8g==
+Date: Thu, 10 Aug 2023 18:51:22 -0400
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, Chen-Yu Tsai <wenst@chromium.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Seiya Wang <seiya.wang@mediatek.com>,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Set DSU PMU status to fail
-Message-ID: <e053e9fe-5d88-44f1-bb24-280113665185@notapiano>
-References: <20230720200753.322133-1-nfraprado@collabora.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Bernhard =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Amit Kucheria <amitk@kernel.org>,
+	Balsam CHIHI <bchihi@baylibre.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Yangtao Li <frank.li@vivo.com>, Zhang Rui <rui.zhang@intel.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH v2] thermal/drivers/mediatek/lvts_thermal: Make readings
+ valid in filtered mode
+Message-ID: <8117521e-efb8-46dc-9db1-d521a01af0bc@notapiano>
+References: <20230713154743.611870-1-nfraprado@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230720200753.322133-1-nfraprado@collabora.com>
+In-Reply-To: <20230713154743.611870-1-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230810_151228_943716_B12E8085 
-X-CRM114-Status: GOOD (  18.08  )
+X-CRM114-CacheID: sfid-20230810_155129_539462_2D4602E1 
+X-CRM114-Status: GOOD (  14.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,31 +84,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 20, 2023 at 04:07:51PM -0400, Nícolas F. R. A. Prado wrote:
-> The DSU PMU allows monitoring performance events in the DSU cluster,
-> which is done by configuring and reading back values from the DSU PMU
-> system registers. However, for write-access to be allowed by ELs lower
-> than EL3, the EL3 firmware needs to update the setting on the ACTLR3_EL3
-> register, as it is disallowed by default.
+On Thu, Jul 13, 2023 at 11:42:37AM -0400, Nícolas F. R. A. Prado wrote:
+> Currently, when a controller is configured to use filtered mode, thermal
+> readings are valid only about 30% of the time.
 > 
-> That configuration is not done on the firmware used by the MT8195 SoC,
-> as a consequence, booting a MT8195-based machine like
-> mt8195-cherry-tomato-r2 with CONFIG_ARM_DSU_PMU enabled hangs the kernel
-> just as it writes to the CLUSTERPMOVSCLR_EL1 register, since the
-> instruction faults to EL3, and BL31 apparently just re-runs the
-> instruction over and over.
+> Upon testing, it was noticed that lowering any of the interval settings
+> resulted in an improved rate of valid data. The same was observed when
+> decreasing the number of samples for each sensor (which also results in
+> quicker measurements).
 > 
-> Mark the DSU PMU node in the Devicetree with status "fail", as the
-> machine doesn't have a suitable firmware to make use of it from the
-> kernel, and allowing its driver to probe would hang the kernel.
+> Retrying the read with a timeout longer than the time it takes to
+> resample (about 344us with these settings and 4 sensors) also improves
+> the rate.
 > 
-> Fixes: 37f2582883be ("arm64: dts: Add mediatek SoC mt8195 and evaluation board")
+> Lower all timing settings to the minimum, configure the filtering to
+> single sample, and poll the measurement register for at least one period
+> to improve the data validity on filtered mode.  With these changes in
+> place, out of 100000 reads, a single one failed, ie 99.999% of the data
+> was valid.
+> 
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Hi Matthias,
+Hi Daniel,
 
-gentle ping on this patch, as it's not possible to boot MT8195 Chromebooks with
-the mainline defconfig without this fix.
+gentle ping on this patch.
 
 Thanks,
 Nícolas
