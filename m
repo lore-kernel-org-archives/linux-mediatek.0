@@ -4,98 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CA92C001B0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Aug 2023 22:01:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 347F7C04A6A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 05:32:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zd4L1RcNMatQQw5hO4kN0BqebHH8Z7kfM3C1HqnlYUY=; b=Jizc7Thwim70ju1qWPbq2UgoM9
-	EPKAIZLA1nl5edzFLxrmCbEjbFq4JzgfH8p3XrjspCrm1eV++ea2/QDtz6g8EmX6clZjTKYi7S+AQ
-	9fddeAQ2r6X+EtwMsnOIZml0trhgM0qa02tqAGrn5/rrDsMyd60Y976o6q7xQKKbOMozCzpjNaeYY
-	eVN0ubHrie/HAGq9JwsUyz/6nM4B0D8Mx9VI3iQXeSJibJidQ744rk9c5Cq7bLJizwSIQQabea2fz
-	Aznn+h0oFOzqVrgfWSvfXTIlWQA4NCMq3h1iIlOKIwlNy6PNlWI6qkCfxflx5TB8uBb/OUSnJpFhV
-	AfEVI8ow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=90vuit1vtETcc7ICm483dG4LoGioHBxHspT621cfQB0=; b=QSUfcLzY1qV/Oz1kuN+wcCEHD5
+	HsVpQUPljBrJdNmbPvCz1gwmSAkYAEH/45wgs9sXNHS9wFh2UuqwoOklqe+SlcmCOWVE+hm/kZHJ5
+	/lNAIptKIIWQCDqjJe2pgO8AO3OdwSdbUTiIk5cZMtX7h5u1eS/Ee6rx1/qJs8pv2BawpYq6YSrUY
+	p0AumTAxCAZENcEe05VosVBzjr9r+MmypC9PLk7xnrKdNVGP4vYuIaNkqrxvNYhF+6uTl72GxLY7n
+	7uNrKUnUfuvAF/ZW8R1N2HpRh2CnqIurZhgiZH8HYsJ9KG5y9+ksg4BUN3a8jVUBXyLmpmPjuc/wt
+	ANhxaK1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTrEw-005xN9-1c;
-	Wed, 09 Aug 2023 22:01:14 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1qTyHG-006a9A-1r;
+	Thu, 10 Aug 2023 05:32:06 +0000
+Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTrEq-005xM8-07;
-	Wed, 09 Aug 2023 22:01:12 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-317e427488aso294745f8f.1;
-        Wed, 09 Aug 2023 15:01:06 -0700 (PDT)
+	id 1qTyHD-006a86-2S
+	for linux-mediatek@lists.infradead.org;
+	Thu, 10 Aug 2023 05:32:05 +0000
+Received: by mail-io1-xd33.google.com with SMTP id ca18e2360f4ac-790fef20fafso42175139f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 09 Aug 2023 22:32:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1691618465; x=1692223265;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=Zd4L1RcNMatQQw5hO4kN0BqebHH8Z7kfM3C1HqnlYUY=;
-        b=IUZ+Ifb4IB0F/S0DIL8t0yC14UqjN1pzQsDj/ddHAUFQHfxzismvpH+yD9UHzen5Na
-         iIxhAMogeV3vcFrg/M+wagnmVH5bMWpS3750ZWpn41b+5/bBs8LKqIs5t6FkOGh0v34T
-         ek5RlZAJkDF0gxSxIpEiWZCU/1Djyk2emKX4OVa189VqzT23J3dfEdV+YGMcCRb2KNMR
-         cXy98+ILJYIzTCrD36KCHUjuNY6iFaoUMqD07kSfLarr1rLP7zfTMO4UZDl6q8sskilf
-         24KW2ligoxC+R7ThIKnXOOkM+NRW4pIolW9EwA1JXBtlvXIiNDKcXzEleLL6kHsrcU6A
-         xSIA==
+        d=chromium.org; s=google; t=1691645522; x=1692250322;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=90vuit1vtETcc7ICm483dG4LoGioHBxHspT621cfQB0=;
+        b=WJJogRNM6Mk8P3sdz8L3D0d80nJu2cpmp2YPfhgM77MzAqx9eFdDFbghqW6ZOkuWd6
+         ohv6qZZkuNtUr18E2yqc2cLIo71iXRjEvDDYo7h+dzlXwoQa0RBN3WLJ9yF/PAsgp1MC
+         LW6uQNaHXuBndssmA9PoIHV25ZFOoBAcsZStU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691618465; x=1692223265;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Zd4L1RcNMatQQw5hO4kN0BqebHH8Z7kfM3C1HqnlYUY=;
-        b=QuDx7r8Pfl5Uw6xpzj1noPYqHeOWbNs/pUUII5RZj7friiwjA7Bhd6iHxynCYOVzg1
-         eMdPDnF5AmS1uk95FVN/V+cY0G88eCqCiOT90Jv8gKhrkKQNOl6NwaSVuzMl4qpZof9e
-         O637ZdriOITpXq6YNQNEzoofr0oemg0j15+Hoc9w6ecYPnve1PNIIBNUkEQ09FcFapLq
-         3s5Tx/O0zqKPrrE+6/754zHjXLr0HXIaNo2huYdNHMoVZHU0NT6LyVt5mhYAjC7m+mUf
-         lBTkjW68xXQ2zyteAVU+XB0mEKngXGxrPqJJwNqq6aKni1KHQmmPHHQCxeH8DWHpbZMZ
-         yl6g==
-X-Gm-Message-State: AOJu0YyghAoAm0De+EYVZvfXaHZrEMZmpOTZ/zQyz9QQO9Jbd2foGbIi
-	7NSRp9lRer4q8x768cH4MUk=
-X-Google-Smtp-Source: AGHT+IEkVjpEjBs0/DVnPkvkOgz0pDNqvnwAyD9x+MOAlUpcdK4j4QHczbRXIG77r+sexstUochFaw==
-X-Received: by 2002:a05:6000:1090:b0:317:58eb:1e33 with SMTP id y16-20020a056000109000b0031758eb1e33mr495585wrw.8.1691618465110;
-        Wed, 09 Aug 2023 15:01:05 -0700 (PDT)
-Received: from skbuf ([188.27.184.144])
-        by smtp.gmail.com with ESMTPSA id p4-20020a056402074400b005233ec5f16bsm15547edy.79.2023.08.09.15.01.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Aug 2023 15:01:04 -0700 (PDT)
-Date: Thu, 10 Aug 2023 01:01:02 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH RESEND net-next 2/2] dt-bindings: net: dsa:
- mediatek,mt7530: document MDIO-bus
-Message-ID: <20230809220102.t3dqw7iojez5xsq3@skbuf>
-References: <6eb1b7b8dbc3a4b14becad15f0707d4f624ee18b.1691246461.git.daniel@makrotopia.org>
- <9aec0fe0cb676b76132c388bb3ead46f596a6e6e.1691246461.git.daniel@makrotopia.org>
- <dcb981b9-b435-c0e5-8e47-d66add207fdc@arinc9.com>
- <20230808121707.chona7hakapp6whe@skbuf>
- <44fde617-1159-4961-84c4-372fe265fbd8@arinc9.com>
+        d=1e100.net; s=20221208; t=1691645522; x=1692250322;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=90vuit1vtETcc7ICm483dG4LoGioHBxHspT621cfQB0=;
+        b=CB6DihcNq9Bi7/Q12BNx9JD5UTdrlH8NRKwk1dDdltcRWWk+z16KGGEhSKV5GSiQMs
+         Exlh6YEvhfXuHq+u0BspGD+yI84BelGuef65r3rzdGlNsv8vuqed1ele+iG1j8yHuLts
+         zyZhfviGgoEzRV1Ab7ufzl40j8I/BOAyudoucyjiXCAzh/pxx4W1A5vdj5yDDeUgBAJJ
+         RR9gR0ySlKG9ud+baeEf7WZ6XcsIV83/CHz3cJRN+Pz5fJA8Ru5zHLGLjlE/0nuHj6i3
+         SZMqHWt6chS2DD1pUR4RdYpSVfEoRmbn3//+MYo52kRVnNQ/UO9Nv/M7bDTwTDJHOqHk
+         chmA==
+X-Gm-Message-State: AOJu0YygK6/8ZnAlQq6bXlPSv4awn1oKDtXZh5nBmhjooMfzdkEKbVAD
+	jTSnEOAGzzvB0Hty18hM9/xcrvoe8ONrUJystdE=
+X-Google-Smtp-Source: AGHT+IFJsXMTkthXW6zjbQV9zbSGTWER43f4tW9mGwG3bPMmFdYQCTFynsAjdfVKUy1jcbe4/G4+Eg==
+X-Received: by 2002:a5d:9d47:0:b0:787:c08:6817 with SMTP id k7-20020a5d9d47000000b007870c086817mr1582150iok.5.1691645522135;
+        Wed, 09 Aug 2023 22:32:02 -0700 (PDT)
+Received: from mail-io1-f42.google.com (mail-io1-f42.google.com. [209.85.166.42])
+        by smtp.gmail.com with ESMTPSA id a5-20020a6b6605000000b0078335414ddesm244261ioc.26.2023.08.09.22.32.00
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 09 Aug 2023 22:32:01 -0700 (PDT)
+Received: by mail-io1-f42.google.com with SMTP id ca18e2360f4ac-7908ff76516so13968039f.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 09 Aug 2023 22:32:00 -0700 (PDT)
+X-Received: by 2002:a05:6602:2552:b0:790:aed5:d0b0 with SMTP id
+ cg18-20020a056602255200b00790aed5d0b0mr1722545iob.0.1691645520345; Wed, 09
+ Aug 2023 22:32:00 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <44fde617-1159-4961-84c4-372fe265fbd8@arinc9.com>
+References: <20230809181525.7561-1-jason-jh.lin@mediatek.com> <20230809181525.7561-2-jason-jh.lin@mediatek.com>
+In-Reply-To: <20230809181525.7561-2-jason-jh.lin@mediatek.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Thu, 10 Aug 2023 13:31:23 +0800
+X-Gmail-Original-Message-ID: <CAC=S1ng4UKNy2ZtJr1YUAtZ5M+A5DgRWt68ibKaW3ohwV6foTw@mail.gmail.com>
+Message-ID: <CAC=S1ng4UKNy2ZtJr1YUAtZ5M+A5DgRWt68ibKaW3ohwV6foTw@mail.gmail.com>
+Subject: Re: [PATCH v9 1/7] drm/mediatek: Add mmsys_dev_num to mt8188 vdosys0
+ driver data
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Eugen Hristev <eugen.hristev@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Jason-ch Chen <jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, 
+	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, 
+	Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230809_150108_098226_905A7BD3 
-X-CRM114-Status: GOOD (  33.70  )
+X-CRM114-CacheID: sfid-20230809_223203_831559_40216981 
+X-CRM114-Status: UNSURE (   7.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,93 +104,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 09, 2023 at 12:03:19PM +0300, Arınç ÜNAL wrote:
-> On 8.08.2023 15:17, Vladimir Oltean wrote:
-> > On Sat, Aug 05, 2023 at 11:15:15PM +0300, Arınç ÜNAL wrote:
-> > > I don't see a reason to resubmit this without addressing the requested
-> > > change.
-> > > 
-> > > > > Wouldn't we just skip the whole issue by documenting the need for defining all PHYs
-> > > > > used on the switch when defining the MDIO bus?
-> > > > 
-> > > > Good idea, please do that.
-> > > 
-> > > https://lore.kernel.org/netdev/0f501bb6-18a0-1713-b08c-6ad244c022ec@arinc9.com/
-> > > 
-> > > Arınç
-> > 
-> > Arınç, where do you see that comment being added? AFAIU, it is a
-> > characteristic of the generic __of_mdiobus_register() code to set
-> > mdio->phy_mask = ~0, and nothing specific to the mt7530.
-> 
-> What I believe is specific to DSA is, 1:1 mapping of the port reg to the
-> PHY reg on the mdio bus is disabled if the mdio bus is defined. Therefore,
-> I believe a notice like below fits mediatek,mt7530.yaml.
-> 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> index e532c6b795f4..c59d58252cd5 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> @@ -128,6 +128,15 @@ properties:
->        See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt for
->        details for the regulator setup on these boards.
-> +  mdio:
-> +    $ref: /schemas/net/mdio.yaml#
-> +    unevaluatedProperties: false
-> +    description:
-> +      Node for the internal MDIO bus connected to the embedded ethernet-PHYs.
-> +      For every port defined under the "^(ethernet-)?ports$" node, a PHY must be
-> +      defined under here and a phy-handle property must be defined under the
-> +      port node to point to the PHY node.
-> +
->    mediatek,mcm:
->      type: boolean
->      description:
-> 
-> Arınç
+On Thu, Aug 10, 2023 at 2:35=E2=80=AFAM Jason-JH.Lin <jason-jh.lin@mediatek=
+.com> wrote:
+>
+> Add missing mmsys_dev_num to mt8188 vdosys0 driver data.
+>
+> Fixes: 54b48080278a ("drm/mediatek: Add mediatek-drm of vdosys0 support f=
+or mt8188")
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
 
-In that case, putting the comment here would make more sense, no?
-(and maybe enforcing an actual schema, but I've no idea how to do that)
+Tested with MT8188 and the internal display is up and functioning.
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-index 480120469953..5a415f12f162 100644
---- a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-@@ -59,7 +59,14 @@ properties:
-       - rtl8_4t
-       - seville
-
--# CPU and DSA ports must have phylink-compatible link descriptions
-+# CPU and DSA ports must have phylink-compatible link descriptions.
-+# On user ports, these are also supported, but are optional and may be omitted,
-+# meaning that these ports are implicitly connected to a PHY on an internal
-+# MDIO bus of the switch that isn't described in the device tree. If the switch
-+# does have a child node for the internal MDIO bus, the phylink-compatible
-+# bindings are also required (even if this is not enforced here). The detection
-+# of an internal MDIO bus is model-specific and may involve matching on the
-+# "mdio" node name or compatible string.
- if:
-   oneOf:
-     - required: [ ethernet ]
-
-Since commit fe7324b93222 ("net: dsa: OF-ware slave_mii_bus"), DSA as a
-framework also supports auto-creating an internal MDIO bus based on the
-presence of the "mdio" node name, so I guess it makes sense for the
-"mdio" to appear in the generic dsa.yaml if there's nothing else that's
-special about it.
-
-Also, in the earlier patch version you had replied to David Bauer:
-
-| > While i was not aware of this side effect, I don't see how this breaks the ABI.
-| 
-| Your patch doesn't break it, my then-intention of doing PHY muxing by
-| utilising this would. Your first patch is perfectly fine as is.
-
-Could you please clarify what is your valid use case for not having a
-phy-handle to a PHY on an MDIO bus that is otherwise present in OF?
-It doesn't _have_ to be broken. Since DSA knows the addresses of the
-internal PHYs, it can circumvent the lack of auto-scanning by manually
-calling get_phy_device() at the right (port-based) MDIO addresses.
-But any patch would need to have a clear reason before being considered
-for merging.
+Reviewed-by: Fei Shao <fshao@chromium.org>
+Tested-by: Fei Shao <fshao@chromium.org>
 
