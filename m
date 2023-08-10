@@ -4,105 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4EFCC001DE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 08:19:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 823C1C001B0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 08:23:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=78OX4fId0Em709uz0mp6uxgk8bb4IwlDXBz/uTj2fjY=; b=UoIDuJzSz4yckRNWJzjiEJvfyX
-	Mt7fHLPg056P5SdAotodVOJ5HziREDV5hUHok3O5IesJGW5yoXU/gPoG253eQHedOWqW46qGK5DEF
-	nKZeioxaAijDmM2S6UNxzStzjVyAqKjyTU+igkn910UajZ0zbtjIB36sNN6rHWfYinAhsVfjrDhqA
-	Zn6tf7HHYE2LVCizIsawr+nw3Rf9Pw5EbGV9zyEf/xVkrHVoP2CfPwiJn8WB/cHFGLLo0jzz3kIyq
-	r0m5RcD5eIUvBnhc+v92lDugMHMVx74qP5ZoA4qKW3NS9mO2HjDorH8IoZQJpMgKhGymSEav6H1UG
-	Zh1Ospng==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+e1KIdPkZ9W1pyyhd0vEg/XdGpbw4lhXOUhvTsBhFP8=; b=CBPh4EK9EEbEAcuHXZdqS3xsj0
+	qPGiTnU/GkxoH12iWlJguzwIF0R6/ei3bYrOCk+W7nH+Gm5nQ4/JTRP4VveJxV94DkIiGNvPd6+V8
+	BmYMXvssRDatarjoCGYhotJRHC24/QuPdpTw7IbkB+3V8hyOQca0x+O0aYXTMAEnFzQAZMe1qPyy8
+	kL30Nz0AZGGdHO2ml2FX9erXdUHIdcwqw/wtFFzCZZUiXl5ys/8bkdDMOMN5AVrKg7xlpMGWGGk33
+	myITKhf8Hj9AZisQdqkxRrV/yvoUsTD2ZkVSy0dp+4CjcyuLu827lcaUMDFqpEXPZ+UVmuKxsExnk
+	XNU1mQIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU0t9-006rPI-2W;
-	Thu, 10 Aug 2023 08:19:23 +0000
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+	id 1qU0xP-006rzr-1G;
+	Thu, 10 Aug 2023 08:23:47 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU0t6-006rMy-1H
-	for linux-mediatek@lists.infradead.org;
-	Thu, 10 Aug 2023 08:19:21 +0000
-Received: by mail-yb1-xb29.google.com with SMTP id 3f1490d57ef6-d07c535377fso602017276.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 10 Aug 2023 01:19:18 -0700 (PDT)
+	id 1qU0xM-006ryO-0l;
+	Thu, 10 Aug 2023 08:23:45 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-26b138db5easo69261a91.1;
+        Thu, 10 Aug 2023 01:23:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1691655558; x=1692260358;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=78OX4fId0Em709uz0mp6uxgk8bb4IwlDXBz/uTj2fjY=;
-        b=YAetKf4q0nZa/dO71z7++J7KKpe1E1CC7O3ahafQ7APpHv5jmvyn5BBv2mwDpYC5is
-         aCqkyV5eahWJcbkNVk0H4ZuATN+jOIeGgJTiNul2i5t9tXVMigNJA6VlxX/a8OMvNSIA
-         YaLs/IE+usEOobqLkPYKtN3CknTSd/aP7iBrjDMEftqOkGi4Hzn8W27JugL/elhtZAtS
-         lvN5G1ptPirqDO85jdOp47BWA9MJm/z4Kcuzuh6yVL2pnLpcF/Uw4mERq/Siv1vZ2eMQ
-         WGKJAkQHqeDReRN5me9rxTKini4wIOwCZjirxG0wunRnpyvqVfZs1EDQzXiZjCK8xLxA
-         VFLw==
+        d=gmail.com; s=20221208; t=1691655821; x=1692260621;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=+e1KIdPkZ9W1pyyhd0vEg/XdGpbw4lhXOUhvTsBhFP8=;
+        b=TTOA9ZLE7hKSMCbIwQzADz/+r4wuL4LTp2U75XuUd+F7tqRVer2IsUqHdhUTm4I+7e
+         EQ8T8tV3MIvU4c6sNRhK1SsTSBMh1WlNdCP6IDXwOo+G3Eo3XzfSoVGb1TuIUDM66Zx1
+         phsMLiRCjyZ8YUolNzCy6Je0WdBvVU+G4uZOYQmzc28zHPObIPykgnsBXcDN+SLHqDXC
+         eu6yvHjG8KUj5jEjr3/l1NjOgT99tm3j7cGCYJonYBPcpiQVgIkwRGuEsYrtBPLTk4bV
+         gIlwQebmAvJq8O77JKv26Nws533bFZAx/UULe9hmAWRaOWc4EQ0YSwJERc77jZjot+2D
+         9RWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691655558; x=1692260358;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=78OX4fId0Em709uz0mp6uxgk8bb4IwlDXBz/uTj2fjY=;
-        b=V8lD5qNTHgGA+2kYK5sAssqzA8Ww7KSVSZxJ8FOWGjtFDrMNQiIXqqvkbVRi0FmIM2
-         BdZJi91KbMFDy21yeodt8/jX1LSdgDnwKcIlVBi7su9UaltpS9tk7bA90of6AHu79buu
-         4VtFlZGG0WoSut+eRbN6MRJiQJOFp8Arm/OsYX6BlysHmFvrmL+gknw88mD3IlbsjwO3
-         4aGb6rErblhSaC4W7uk7hon0Q/3WMcD12jVheV7S/HoH2WCAtv2lQuiVsUfIjIOVHNLO
-         YLQ+LjWSLr2M4Idg76Rp6eJZ1YhKRdhRyVQu7rYDpGHxtYfKDwPBxIL/dQakV7xXTjjP
-         jeAw==
-X-Gm-Message-State: AOJu0YzNIzOBNUiMAOjdRX44C46+mcDkfE9BGAiKbpPfD9x2z6yxjlDJ
-	LKep5IsatlKdTY16wFO6gKDaPUtLh+Ehb17wGJAeMA==
-X-Google-Smtp-Source: AGHT+IG5aWoH89NQGXx33HlD2q+rxamc3JsaObqeeE5H8gH+u446bjvEEFYnXEHJg1VQn5y6v1yXRNGsOkfTWSlQZaU=
-X-Received: by 2002:a25:d711:0:b0:d1a:b59c:502d with SMTP id
- o17-20020a25d711000000b00d1ab59c502dmr1894292ybg.18.1691655558135; Thu, 10
- Aug 2023 01:19:18 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1691655821; x=1692260621;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=+e1KIdPkZ9W1pyyhd0vEg/XdGpbw4lhXOUhvTsBhFP8=;
+        b=aTu4D7++V9kySGDKX+FPRmQNqYoem3UTBdYOxeNlMN5h4xyVTLnmsfB44amnAJk48a
+         2GKF9dBAQ1rYUdvFw3ZuekyjMrhbBgCsh0XkRSp/uYJuFOeAbdGan+YtjuhkQDVb0m82
+         wTX4ra54e/whRbSHcppILkK9WDyzj/jpnljGrrhhVa/3so42g/1objJt42O7VzkAsfpF
+         0EXVCDshSz/rWX9z+9aIjSomiO8xq1htSgfQRiMCErC0zqNBdDed98HT9SGvHIkLDyTp
+         G3RlggV06lxZvTpP56NlrutcTguWw/racuug/e0ki0ig0Icqr21Cw0sxHijp0cIuNtFd
+         wBIQ==
+X-Gm-Message-State: AOJu0YyELwla4q2x/wRSPgEO5QOs8uQNY9vbufNkMhMk66MoO8Sovo9T
+	8jIizxngLYPhECZr1+UXQtg=
+X-Google-Smtp-Source: AGHT+IF0RBM4ZHsM63NvX20vvcHeYHCe+RlLwL/acMRAMdeJsd+ke0rPK6heeKTWeIZNx8WQyrf4ng==
+X-Received: by 2002:a17:90a:384a:b0:268:2b5c:14c with SMTP id l10-20020a17090a384a00b002682b5c014cmr1384067pjf.13.1691655820696;
+        Thu, 10 Aug 2023 01:23:40 -0700 (PDT)
+Received: from chcpu13.cse.ust.hk (191host119.mobilenet.cse.ust.hk. [143.89.191.119])
+        by smtp.gmail.com with ESMTPSA id y7-20020a17090a2b4700b0025dc5749b4csm2772243pjc.21.2023.08.10.01.23.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Aug 2023 01:23:40 -0700 (PDT)
+From: Wei Chen <harperchen1110@gmail.com>
+To: tiffany.lin@mediatek.com
+Cc: andrew-ct.chen@mediatek.com,
+	yunfei.dong@mediatek.com,
+	mchehab@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Wei Chen <harperchen1110@gmail.com>,
+	stable@vger.kernel.org
+Subject: [PATCH v2] media: vcodec: Fix potential array out-of-bounds in encoder queue_setup
+Date: Thu, 10 Aug 2023 08:23:33 +0000
+Message-Id: <20230810082333.972165-1-harperchen1110@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org> <20230803-dt-header-cleanups-for-soc-v2-13-d8de2cc88bff@kernel.org>
-In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-13-d8de2cc88bff@kernel.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 10 Aug 2023 10:19:07 +0200
-Message-ID: <CACRpkdYsdKCrQpfoXZFv1XqT-o1skX=TDY-WJ1CSpgavMb+UrQ@mail.gmail.com>
-Subject: Re: [PATCH v2 13/23] ARM: versatile: Drop unused includes
-To: Rob Herring <robh@kernel.org>
-Cc: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>, 
-	Tsahee Zidenberg <tsahee@annapurnalabs.com>, Antoine Tenart <atenart@kernel.org>, 
-	Jisheng Zhang <jszhang@kernel.org>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, Jean-Marie Verdun <verdun@hpe.com>, 
-	Nick Hawkins <nick.hawkins@hpe.com>, Lubomir Rintel <lkundrak@v3.sk>, 
-	Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
-	Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, 
-	Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, 
-	Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, 
-	Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Viresh Kumar <vireshk@kernel.org>, 
-	Shiraz Has him <shiraz.linux.kernel@gmail.com>, Stuart Yoder <stuyoder@gmail.com>, 
-	Laurentiu Tudor <laurentiu.tudor@nxp.com>, Jay Fang <f.fangjian@huawei.com>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Cristian Marussi <cristian.marussi@arm.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, Dinh Nguyen <dinguyen@kernel.org>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Michal Simek <michal.simek@amd.com>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, 
-	Ulf Hansson <ulf.hansson@linaro.org>, Li Yang <leoyang.li@nxp.com>, 
-	Qiang Zhao <qiang.zhao@nxp.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, openbmc@lists.ozlabs.org, 
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, 
-	linux-tegra@vger.kernel.org, linux-aspeed@lists.ozlabs.org, 
-	linux-pm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230810_011920_435718_A002B8B8 
-X-CRM114-Status: UNSURE (   8.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230810_012344_274579_6A587292 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,15 +96,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 4, 2023 at 12:43=E2=80=AFAM Rob Herring <robh@kernel.org> wrote=
-:
+variable *nplanes is provided by user via system call argument. The
+possible value of q_data->fmt->num_planes is 1-3, while the value
+of *nplanes can be 1-8. The array access by index i can cause array
+out-of-bounds.
 
-> Several includes are not needed, so drop them.
->
-> Signed-off-by: Rob Herring <robh@kernel.org>
+Fix this bug by checking *nplanes against the array size.
 
-Acked-by: Linus Walleij <linus.walleij@linaro.org>
+Fixes: 4e855a6efa54 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Encoder Driver")
+Signed-off-by: Wei Chen <harperchen1110@gmail.com>
+Cc: stable@vger.kernel.org
+---
+Changes in v2:
+- Add Fixes tag and CC stable email address
+- Change the title to be more expressive
 
-Yours,
-Linus Walleij
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+index 9ff439a50f53..9e8817863cb8 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+@@ -821,6 +821,8 @@ static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
+ 		return -EINVAL;
+ 
+ 	if (*nplanes) {
++		if (*nplanes != q_data->fmt->num_planes)
++			return -EINVAL;
+ 		for (i = 0; i < *nplanes; i++)
+ 			if (sizes[i] < q_data->sizeimage[i])
+ 				return -EINVAL;
+-- 
+2.25.1
+
 
