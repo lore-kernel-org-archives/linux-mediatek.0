@@ -4,84 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4370C04A6A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 16:35:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AA97C001E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 18:12:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vseSRLmlE6TrnuWqyVbQuscqNdv4VUb/dWbhVa5oOnQ=; b=yKqNihmmEFmK4FVeo9hn8sEXfa
-	FABETGHjw311IRk7HTT8SgRblreQCyQZUNMgNRJqGvyD5wfRuxK1Z1/NXOmksOoGISxZ5T8auCIpZ
-	QWkb5CRfqPaE6b3MQiZh9C8u9AWhzqQJ+Oe215cbX/UrWdS/N+acb72sRZ2DUpEEdFWuQD2C8IdIm
-	llHAA2fxcn49pmJiFUP9fNuxfq0Nl/3tx5OS4SsnT4T63+LO/+A9jcAl+TemA9mXh4rE1g8JqpOTz
-	leLVHdLlQTM8lXxY1nmSMUuF+GuVKBeTbIdHkKjaCF3oOeLAsqQ25CoxHf0OKa/ah911ZDevLEsPN
-	cPCbLxMQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hbko1ie21EmrHam9zE7OmrbWipe6Zn4PD2Jb8HdIlvI=; b=wGlD2EyoCrVSheGvnC0l4XUA9O
+	0XExYeyT1k4qk0f/slvycXgU6Kpzc+vAmEdYFe0d0/zsytCD3OyYEoXvWWrIpDxmKbDLfyumZZpxY
+	zVYouDDcU03RTtOeEEApWFn7CJ0nf4UXgZhj7TcWBU/W8jmqZ73DqGWgbETyzxpPfRehKNp/yRx2E
+	yL1pP5BNYR75rRj74BaRYVjogZYDN69xu2KdmJvBAnGCmIkB/Ez2gfjJoI5U2v2ZPCxRB7tlyVwd2
+	/oJPQs1OskVJgEnzn8LRQnaM70Sn0OoD0QBBKk6M47837+NeeKTExvd8o/P72pm0eW+pBweVL8KsW
+	zEdjViFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU8dZ-008D5S-0l;
-	Thu, 10 Aug 2023 16:35:49 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qUA8t-008OFU-1f;
+	Thu, 10 Aug 2023 18:12:15 +0000
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU8dV-008D4U-2T;
-	Thu, 10 Aug 2023 16:35:47 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C29D76639E;
-	Thu, 10 Aug 2023 16:35:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABFA0C433CD;
-	Thu, 10 Aug 2023 16:35:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1691685343;
-	bh=tAd8cGqWXnMp+MhyA+QN6jDgfWonWi3hyrZySG4ENN8=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=JXB07tmP1/SRRe6/WnKUKx+EHTRS4Y+3pwfbddMMxRPcFQgijA8lk9u7PsqrzAkcb
-	 kP3L1o8hmC2780WNQmMuCB98OLnqSNHNpst0XbcQN4U+D0MqFxhb1++CSDuDDSlYsx
-	 zEvn5o1aiaKfFVqGZ2mlqpuw/FZRIzikDM+Lerc99HGS/COF6NHA4bWhPk2XiZ/tll
-	 vaAH7atcMxYLNbmf9yylYAkTRcpYaSZWddJelDqvyW6JheiuC95U0ElFUlouJ1DYda
-	 r747Yp2U8Ikh2VPT4HapI39XQUSd9GoQ5JOmBvFGHPyH9P/X2RQ/VqUhFY8A+PPNVN
-	 tL5YcKIQnCRgg==
-Received: by mail-lj1-f178.google.com with SMTP id 38308e7fff4ca-2b9338e4695so17131271fa.2;
-        Thu, 10 Aug 2023 09:35:43 -0700 (PDT)
-X-Gm-Message-State: AOJu0Yy0uEywaLpi7HZFHHLTIQQZNu5vzPMoAeZCOQfYE6DPUIBBkAAw
-	OW72BIFJqniOAVsExeQ+KC5ZdzFgIbhzPnokQA==
-X-Google-Smtp-Source: AGHT+IGMhThSGcH6iK3+zXMwVeXv9qRB2ftg4Knvd20JgbzEnsxMFjNJQ8haNG3+I9TXP94jb4Whom2WJEFxRHLe5Aw=
-X-Received: by 2002:a2e:3c11:0:b0:2b6:a804:4cc with SMTP id
- j17-20020a2e3c11000000b002b6a80404ccmr2488397lja.53.1691685341671; Thu, 10
- Aug 2023 09:35:41 -0700 (PDT)
+	id 1qUA8q-008ODr-1V
+	for linux-mediatek@lists.infradead.org;
+	Thu, 10 Aug 2023 18:12:13 +0000
+Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2b9d07a8d84so19312201fa.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Aug 2023 11:12:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1691691128; x=1692295928;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=hbko1ie21EmrHam9zE7OmrbWipe6Zn4PD2Jb8HdIlvI=;
+        b=ZXrkVJwXoMvaalWcrMIqQqkVyieuWdVsqozNAsI3wa4cGtWajQiwWuMikaxEImsXA8
+         ra7Gba3+QHfB96/Yq+nAhmELTf4d9xeCfE+Lv7BA4oy3aNSD/IJl79pmE4ulzdV98QT+
+         6wfP3fLdijjTV7Ftjvf4v0fqUvADIYqZiIvm0SPRdGdRZRynuoP7OmlTma5nfHDzm47K
+         5ulRlMjPwtDp2mX5iviVudPwUk1KNLkL6ZIF76x5togadcVSIj5G0TjrfUPeFnhrYgdY
+         OrRNiD/lO8vX9ZMQPD3i3cm03Ik6JPgCexNd63LuPBtv1gHWIw886kn9gs7yAbtS+P1U
+         EFfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1691691128; x=1692295928;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=hbko1ie21EmrHam9zE7OmrbWipe6Zn4PD2Jb8HdIlvI=;
+        b=UZ/Dom3NyHQv4dsBxZp1kQLYPcYaHNqtel6oSibtBD+89gIUyoy476yQz1UAoFaL5j
+         6Qgan6t3TcHrQGoj0C6orVDJG6y1SvutfPiK1UeRlAmiVwGsA1zCJ+zVMMPGogfpWICX
+         dmybrDKY4ij6nuVvMyszMZ1hviFnrOAMXNLm5cruga5jl82hIKgOUCqdm0seVu89M9H1
+         ffozsijN4aHyn596dosiI1VLraFFiwPR+CvFgiUPj1AltP884kCeJyIBG/tdhfKkqBUG
+         xdpsOXaXHuN5FJwxPTf//Zl2Vk9uWjDvUSUuCjPBxPDgwNslY7JrmqoI+6GVLCUj+KBy
+         ZwAA==
+X-Gm-Message-State: AOJu0YzkJXQs6M1ggV51QVbIy0Z/OAxBNp0MMHK49iNCHUZrwx4FHkQ+
+	IXuY70EfFbTL0luviBgHB0emSQ==
+X-Google-Smtp-Source: AGHT+IEwP7fzvIS0NEzTzMO1heFpeKEKZ7p3yiRnTAYgiv0QUz/QETCEH9UHAyRhmI+7NIFrAq2X8Q==
+X-Received: by 2002:a05:651c:238:b0:2b9:5eae:814f with SMTP id z24-20020a05651c023800b002b95eae814fmr2404041ljn.50.1691691128330;
+        Thu, 10 Aug 2023 11:12:08 -0700 (PDT)
+Received: from [192.168.1.101] (abxi185.neoplus.adsl.tpnet.pl. [83.9.2.185])
+        by smtp.gmail.com with ESMTPSA id n19-20020a2e7213000000b002b9f239df62sm457621ljc.74.2023.08.10.11.12.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Aug 2023 11:12:07 -0700 (PDT)
+From: Konrad Dybcio <konrad.dybcio@linaro.org>
+Date: Thu, 10 Aug 2023 20:12:03 +0200
+Subject: [PATCH] cpufreq: mediatek-hw: Remove unused define
 MIME-Version: 1.0
-References: <20230810063300.20151-1-krzysztof.kozlowski@linaro.org>
- <20230810063300.20151-2-krzysztof.kozlowski@linaro.org> <169165201641.3911557.18445521260746432395.robh@kernel.org>
- <137a734e-0e5a-5fcb-f0d3-1fdbb5e8da34@linaro.org>
-In-Reply-To: <137a734e-0e5a-5fcb-f0d3-1fdbb5e8da34@linaro.org>
-From: Rob Herring <robh@kernel.org>
-Date: Thu, 10 Aug 2023 10:35:28 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqL-x5V2mJOCgDC8xoHuvu6A1enQh-idmxGJjy80A9fdow@mail.gmail.com>
-Message-ID: <CAL_JsqL-x5V2mJOCgDC8xoHuvu6A1enQh-idmxGJjy80A9fdow@mail.gmail.com>
-Subject: Re: [PATCH v2 02/11] ASoC: dt-bindings: mediatek,mt8188-mt6359: use
- common sound card
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, Judy Hsiao <judyhsiao@chromium.org>, 
-	linux-arm-kernel@lists.infradead.org, NXP Linux Team <linux-imx@nxp.com>, 
-	Trevor Wu <trevor.wu@mediatek.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Fabio Estevam <festevam@gmail.com>, Shengjiu Wang <shengjiu.wang@nxp.com>, 
-	Jonathan Bakker <xc-racer2@live.ca>, Shawn Guo <shawnguo@kernel.org>, linux-kernel@vger.kernel.org, 
-	Liam Girdwood <lgirdwood@gmail.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Sylwester Nawrocki <s.nawrocki@samsung.com>, Jaroslav Kysela <perex@perex.cz>, 
-	Rao Mandadapu <srivasam@codeaurora.org>, Takashi Iwai <tiwai@suse.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, 
-	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
-	Conor Dooley <conor+dt@kernel.org>, Rohit kumar <quic_rohkumar@quicinc.com>, 
-	Cheng-Yi Chiang <cychiang@chromium.org>, Mark Brown <broonie@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20230810-topic-mtk_fixup-v1-1-88022eaea0ac@linaro.org>
+X-B4-Tracking: v=1; b=H4sIAHIo1WQC/x2NUQqEMAwFryL5NtAqhV2vIiJtjWtYraVVEcS7G
+ /yc4Q3vgkyJKUNTXJDo4MxrENBlAX6y4UfIgzBUqqrVRyvc1sgel+3fj3zuEUkPzn+NMbUZQSp
+ nM6FLNvhJurDPs8iYSNbvTdvd9wPmgW6fdgAAAA==
+To: "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Viresh Kumar <viresh.kumar@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Marijn Suijten <marijn.suijten@somainline.org>, 
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Konrad Dybcio <konrad.dybcio@linaro.org>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1691691127; l=878;
+ i=konrad.dybcio@linaro.org; s=20230215; h=from:subject:message-id;
+ bh=ifZhDFap5bks4IWvBGc5lYMz3WsqWbWti71CuknCvOE=;
+ b=L/I2QS1YREUvkMZGYEnL9kfATn0rRfKSXj0r+utNJGyDY2HdOOKua0fKaNfRDyEP96V1DtNrQ
+ rwSt/HYJlYTAmNA3YTbUjlTGse9mcnLmkWpthz7Y03g/RioQSXLEWVK
+X-Developer-Key: i=konrad.dybcio@linaro.org; a=ed25519;
+ pk=iclgkYvtl2w05SSXO5EjjSYlhFKsJ+5OSZBjOkQuEms=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230810_093545_908168_8E54547C 
-X-CRM114-Status: GOOD (  18.82  )
+X-CRM114-CacheID: sfid-20230810_111212_502376_4F390009 
+X-CRM114-Status: UNSURE (   8.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,48 +105,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 10, 2023 at 1:47=E2=80=AFAM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->
-> On 10/08/2023 09:20, Rob Herring wrote:
-> >
-> > On Thu, 10 Aug 2023 08:32:50 +0200, Krzysztof Kozlowski wrote:
-> >> The mediatek,mt8188-mt6359 Linux sound machine driver requires the
-> >> "model" property, so binding was incomplete.  Reference the common sou=
-nd
-> >> card properties to fix that which also allows to remove duplicated
-> >> property definitions.  Leave the relevant parts of "audio-routing"
-> >> description.
-> >>
-> >> Reviewed-by: Rob Herring <robh@kernel.org>
-> >> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@col=
-labora.com>
-> >> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> >> ---
-> >>  .../bindings/sound/mediatek,mt8188-mt6359.yaml  | 17 +++++++---------=
+DYNAMIC_POWER does not seem to be used anywhere in the tree, remove it.
+
+Signed-off-by: Konrad Dybcio <konrad.dybcio@linaro.org>
+---
+ drivers/cpufreq/mediatek-cpufreq.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+index fef68cb2b38f..a0a61919bc4c 100644
+--- a/drivers/cpufreq/mediatek-cpufreq.c
++++ b/drivers/cpufreq/mediatek-cpufreq.c
+@@ -313,8 +313,6 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+ 	return ret;
+ }
+ 
+-#define DYNAMIC_POWER "dynamic-power-coefficient"
 -
-> >>  1 file changed, 7 insertions(+), 10 deletions(-)
-> >>
-> >
-> > My bot found errors running 'make DT_CHECKER_FLAGS=3D-m dt_binding_chec=
-k'
-> > on your patch (DT_CHECKER_FLAGS is new in v5.13):
-> >
-> > yamllint warnings/errors:
-> >
-> > dtschema/dtc warnings/errors:
-> >
->
-> I think the bot responds like this if the patch could not be applied.
-> Probably we can ignore it.
+ static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
+ 				    unsigned long event, void *data)
+ {
 
-It's because I converted dtschema to use pyproject.toml (the newest
-and 3rd way to do python packaging). I started getting deprecation
-warnings on debian testing due to using setup.py. Converting breaks on
-ubuntu 22.04. Seems to be this bug[1]. The CI job should now be fixed
-by installing the latest pip version.
+---
+base-commit: 21ef7b1e17d039053edaeaf41142423810572741
+change-id: 20230810-topic-mtk_fixup-e1dbc955535f
 
-Rob
+Best regards,
+-- 
+Konrad Dybcio <konrad.dybcio@linaro.org>
 
-[1] https://bugs.launchpad.net/ubuntu/+source/python-pip/+bug/2018288
 
