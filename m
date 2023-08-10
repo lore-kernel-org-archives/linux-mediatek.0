@@ -4,67 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9412C001B0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 09:12:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75243C001DB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 09:46:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tykg+JgKMerAJph3hDB8YBZCvrzptsWpwQU4Seju5nk=; b=2potSCIrwkKp7ytq5iAq8Wk+bt
-	vk7BXTHhFtx0A2cZaSHkTy/v+V4qocGmjvAGg/vF76v2v/Zu8WyjswLIEpVmkFXChzI8avfdsM1Ir
-	jNuHqXGTW92ZAEH2P3TV374v5gumF4Nzs9Qxgwgavcykw15MzTFcXsSliB7wWzoFOjK6AxXQZjT6v
-	et3d1bJQfo828WbMvfksGPYIG8w4Ax2XiJBKr9vG4xxCoXz3tMb/GIySbjnw2H2dEIGCYh35720tW
-	FDr6i81vLNZpX5QEDPxXYPHNZBop34zJUFUusWpPgtUuZETAGTyGcagsKggppFV6Kaft/cx1c9dU2
-	FvTkUSfw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=T5qTe0YO8ZqB3VKwRihJas1gwrGZq8M70nX+lVeOtE4=; b=j8AcYPZ4VTtmW1WEH0HzyBxZw2
+	yjUdEx0D3UyCqBDCpeXkNnkrplE3UEKzHRqv51bg+DgOCDJQ611ThBn/gv3ACKXe75VOlS+lpQD+i
+	bDYga/WaqLGqsRGQNBxYy6/cYOzhoPcoPiFK26nOg3PmcYFvFlJwF/7RpY5zJ+aa+Jw9JzMFbxY3T
+	qQGF4HR9npi2Cp25harNTrLYMA7tmnGYBSidc7wMAvUtRX2x5Ta9Zu7Kz8wdoo3ZNvnX3vu/HvN0k
+	O8iK6W5VBUojeQNO3phnwyh0tXQVYRyJ6y5NA7GwtA5mYeiV771FfDETELl4e7+zRbKttN0kY9Bak
+	1epTxt7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU1ir-006wqF-2R;
-	Thu, 10 Aug 2023 09:12:49 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qU2F8-0070vk-2j;
+	Thu, 10 Aug 2023 09:46:10 +0000
+Received: from smtp-out1.suse.de ([2001:67c:2178:6::1c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU1in-006wnS-2m;
-	Thu, 10 Aug 2023 09:12:47 +0000
-Received: from [192.168.0.125] (unknown [82.76.24.202])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1qU2F2-0070sf-2e;
+	Thu, 10 Aug 2023 09:46:09 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 969606607217;
-	Thu, 10 Aug 2023 10:12:41 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1691658762;
-	bh=0Iq8D34Lbklgdl/9jdr8DFLgHMB7aekBr8AJu2XlV50=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VerEY/cM1db+oPVxME0Q0OW16JQXahZtGoZtorW3gNTu7iVDPYgMe+ssBYklK6br6
-	 mZrCxKjoGOJIYy4q2nMMt4lfeDiNRDl1/BW3+AdbGVRdh8KuXTWbUlnuxKvQ55GsSo
-	 IXB5sCWsF10W1YYMs3vIZACJNA28yPd8aHMuFkltth0QFS6x/vctNvATIQXF/J42pB
-	 eBodvnmQe8zkxCathdhkxEY5st4ZrdO80hB6utUhP5lFfiAjs95Hizbctlr8dKFPiD
-	 UtNdSvHYFIJjHHE2nBdb9uPPkrrT1s81NYo0cjrnjOto7HOTgiW6WarIUqdGYlBb5/
-	 72J4fNOYiiU9Q==
-Message-ID: <45d0f538-9769-f4eb-7479-cf676337ff55@collabora.com>
-Date: Thu, 10 Aug 2023 12:12:39 +0300
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 44EE421852;
+	Thu, 10 Aug 2023 09:45:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.cz; s=susede2_rsa;
+	t=1691660758; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=T5qTe0YO8ZqB3VKwRihJas1gwrGZq8M70nX+lVeOtE4=;
+	b=ncg0wKhJKKECfLl1sFF4YhPUNlfV59io48guMoOonvWgTdJjVRfGbdT+1/bWhly/jpv7hx
+	kIdLlCbqD7WfxmQ2H97bi6Z5frEgW1eDwSJCenXTxKr4sPNFcDpXOcQh97eaztbtVe1DRT
+	jGXCmWWCnE6LF3DX1/qMszXsf+Qkxyw=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.cz;
+	s=susede2_ed25519; t=1691660758;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=T5qTe0YO8ZqB3VKwRihJas1gwrGZq8M70nX+lVeOtE4=;
+	b=z2fwfT5Fk/VdD3D/wapPZUHO8CNQLtNVsxwkSYm/8Ip/D4tiTihZOBGPtvem3ZPDvLmSn6
+	O/i0ueJsxX0FexDA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 33164138E0;
+	Thu, 10 Aug 2023 09:45:58 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id 4fbbC9ax1GSsCAAAMHmgww
+	(envelope-from <jack@suse.cz>); Thu, 10 Aug 2023 09:45:58 +0000
+Received: by quack3.suse.cz (Postfix, from userid 1000)
+	id A36BCA076F; Thu, 10 Aug 2023 11:45:57 +0200 (CEST)
+Date: Thu, 10 Aug 2023 11:45:57 +0200
+From: Jan Kara <jack@suse.cz>
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: Jan Kara <jack@suse.cz>, Haibo Li <haibo.li@mediatek.com>,
+	linux-kernel@vger.kernel.org,
+	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-fsdevel@vger.kernel.org, linux-mm@kvack.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, xiaoming.yu@mediatek.com
+Subject: Re: [PATCH] mm/filemap.c:fix update prev_pos after one read request
+ done
+Message-ID: <20230810094557.pesc4pnwuicrisqh@quack3>
+References: <20230628110220.120134-1-haibo.li@mediatek.com>
+ <20230809164446.uwxryhrfbjka2lio@quack3>
+ <20230809114507.57282ff1dd14973f3964e669@linux-foundation.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v2] media: vcodec: Fix potential array out-of-bounds in
- encoder queue_setup
-Content-Language: en-US
-To: Wei Chen <harperchen1110@gmail.com>, tiffany.lin@mediatek.com
-Cc: andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com,
- mchehab@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-References: <20230810082333.972165-1-harperchen1110@gmail.com>
-From: Eugen Hristev <eugen.hristev@collabora.com>
-In-Reply-To: <20230810082333.972165-1-harperchen1110@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230809114507.57282ff1dd14973f3964e669@linux-foundation.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230810_021246_106336_F2A7AF64 
-X-CRM114-Status: GOOD (  19.21  )
+X-CRM114-CacheID: sfid-20230810_024604_999009_E2738F0E 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,50 +98,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Wei,
-
-On 8/10/23 11:23, Wei Chen wrote:
-> variable *nplanes is provided by user via system call argument. The
-> possible value of q_data->fmt->num_planes is 1-3, while the value
-> of *nplanes can be 1-8. The array access by index i can cause array
-> out-of-bounds.
+On Wed 09-08-23 11:45:07, Andrew Morton wrote:
+> On Wed, 9 Aug 2023 18:44:46 +0200 Jan Kara <jack@suse.cz> wrote:
 > 
-> Fix this bug by checking *nplanes against the array size.
+> > Willy, any opinion? Andrew, can you pickup the patch if Willy doesn't
+> > object?
 > 
-> Fixes: 4e855a6efa54 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Encoder Driver")
-> Signed-off-by: Wei Chen <harperchen1110@gmail.com>
-> Cc: stable@vger.kernel.org
-> ---
-> Changes in v2:
-> - Add Fixes tag and CC stable email address
-I guess stable needs to be added by the maintainer, not by the submitter
+> I added it to mm.git on July 2.
 
-> - Change the title to be more expressive
+Ah, sorry for the noise then. I should have checked that. Thanks!
 
-Subject message should include mediatek I believe, as `media: vcodec:` 
-does not reference the mediatek vcodec.
+								Honza
 
-> 
->   drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-> index 9ff439a50f53..9e8817863cb8 100644
-> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-> @@ -821,6 +821,8 @@ static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
->   		return -EINVAL;
->   
->   	if (*nplanes) {
-> +		if (*nplanes != q_data->fmt->num_planes)
-> +			return -EINVAL;
-
-Have you run v4l2-compliance on the device to make sure nothing is broken ?
-
->   		for (i = 0; i < *nplanes; i++)
->   			if (sizes[i] < q_data->sizeimage[i])
->   				return -EINVAL;
-
-
-Greetings,
+-- 
+Jan Kara <jack@suse.com>
+SUSE Labs, CR
 
