@@ -4,74 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C8B2C001B0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 08:13:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFB98C001B0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 08:18:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gXVZ68cdpgp0Oc06O+iDMDHFl7uPsJSDhRHvYoDqwWY=; b=LWSGHZei2DdUzwQIBHZzwDgSOU
-	BHufIPJJO3OK6harD6IgqR+iTTYzBqmAdU7Z+zAFVZUtKcT/J1ehUpyFjqQa+h8NziZOvBWmOMsig
-	n+XFfjSeYLg56XUkjkmfPkkW9ta5XtHGskn28lV9zY89YcgUox0ZCwuzcz+tOyg7f8g3kOWKJsCM9
-	va4+H0jzUavLWONSfjy3vo20ngQX3+kaBwZ6ik3dZIx4z+c9EpRkqxEO+6zLH6X2StnS0QBpNVD/P
-	pyke7iWg1a9WiV2s8HD5pgJXr5pKdEVrVS3PbpErCHei6g5bBwKU23Zxx5Ruqx5j337/d3VsTEWuV
-	N8ORxI3Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=N1S3yE96sxZWitB4oiJ30vpkB3MWLEMpL6UDMSJWZXU=; b=3oflK11EnxN1ik0prDTn6zJMwM
+	7aM0bokF0YrHJZev5AbkWs0PwsrCFpch0+LT6kBC23LfwR77Mc4ENed0XYw4Mf/TLnT4T6Ok6lh8o
+	r9ThhgfUKmnn0jvuZHZqWmpsV8z2LhSB/ZVf6RitmxwKbBdMyHZluuWhyCQ5iWwBKJ58iNnoQOXGK
+	+eajotdXVDPf6Fhf16HKXDwS1uHyVAP7W78iox4IvECk95h+HUgB8IGxDl8nD8CimB9aMYLF66K0u
+	evkH2dO/ERjVfiNeuvdgGgHrsIpCgLIcLrqJ4fkFJWUOQTmq4aNycx6+a88j1Xnr7sa0LVb1DcKs/
+	yfC9SfPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU0nX-006q7J-00;
-	Thu, 10 Aug 2023 08:13:35 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qU0sc-006rFG-2U;
+	Thu, 10 Aug 2023 08:18:50 +0000
+Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU0nT-006q5W-1p;
-	Thu, 10 Aug 2023 08:13:32 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A9D00652F9;
-	Thu, 10 Aug 2023 08:13:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83019C433D9;
-	Thu, 10 Aug 2023 08:13:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1691655210;
-	bh=gXVZ68cdpgp0Oc06O+iDMDHFl7uPsJSDhRHvYoDqwWY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bSQJ3MDGIPvJ0HMdmJojPNOITtyTnIaObs3s8neo3b0T4ZqDx67kFFQVnWaIlvSq0
-	 XbT2KMjZ4kRCPECjY9wzhAZIaEpnY8sOrR6YoMMkBhomarPH2yUscPuKDgMwVXygvL
-	 931+QUJn8LtveKV+Uc+R4qqJYghlHkz7D5jRSTwBFNp5MlKKPGF92rAFNid/YCWjt5
-	 wdoO/S0kBgRa9gvVkt8X79r5m0kQBttlpf/RvPowbcQWJMqkxTWaUIF7ln+O7O75gx
-	 +/Z3QFtPJJd7fJuxGaoYpZUxAebuqPOXjPYpPpP2zE6JtAnsUtzsJNw2q7VYEwiMAs
-	 Rw5p2OsG22CmA==
-Date: Thu, 10 Aug 2023 10:13:26 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Nikita Zhandarovich <n.zhandarovich@fintech.ru>
-Cc: David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Alex Deucher <alexander.deucher@amd.com>, Alain Volmat <alain.volmat@foss.st.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Jani Nikula <jani.nikula@linux.intel.com>, 
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
-	"Pan, Xinhui" <Xinhui.Pan@amd.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Mikko Perttunen <mperttunen@nvidia.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Emma Anholt <emma@anholt.net>, Helge Deller <deller@gmx.de>, 
-	Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, Ankit Nautiyal <ankit.k.nautiyal@intel.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	amd-gfx@lists.freedesktop.org, linux-tegra@vger.kernel.org, linux-fbdev@vger.kernel.org, 
-	lvc-project@linuxtesting.org
-Subject: Re: [PATCH] video/hdmi: convert *_infoframe_init() functions to void
-Message-ID: <ibwl2bpz5bs72co4ivkvjcc35lv5mqyuvj2hbr3p54hliujklm@uje662ldqfdw>
-References: <20230808180245.7474-1-n.zhandarovich@fintech.ru>
+	id 1qU0sZ-006rCX-07
+	for linux-mediatek@lists.infradead.org;
+	Thu, 10 Aug 2023 08:18:48 +0000
+Received: by mail-yb1-xb2d.google.com with SMTP id 3f1490d57ef6-d35a9d7a5bdso588370276.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Aug 2023 01:18:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1691655524; x=1692260324;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=N1S3yE96sxZWitB4oiJ30vpkB3MWLEMpL6UDMSJWZXU=;
+        b=sKRwat/bRypjQs0GDj+E5aX6U0l+rdH2Ppp7jgbUiwQQsqjEaK0abvIScLRA0wD+XB
+         V+k33vveoWCeS1c6XgCqjjXWr//cl1HyFtdD8ttwfDC6tU5h0yWEtUhgAWWlSrBAqi9t
+         tXTEm4YMv0WM1uBDtQtenVY2VwUD4UxTzpZEwHsGCFe7Z/2lAj6TisZ1wfKRqkKtHkMv
+         q4kQ3tqQ3kjjJBlQFVfvfmjVGvTI9ZG6qPa9xIgWc3cwJulHzC1kKt6V4uv2UEb2aMy8
+         OAS7Hff9YtpzqDV058P27LVyQvRktH36oLc1Ux2VOWBYO61uLfbyzTdGhTV/qpGrAtF8
+         glUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1691655524; x=1692260324;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=N1S3yE96sxZWitB4oiJ30vpkB3MWLEMpL6UDMSJWZXU=;
+        b=MMMIZI3VvIBRR+IF0pxj+LnBUmzhKWlXzace0yKvB3epUc4yu0+bnxsX1czTuTt8Ui
+         nPLE1Cx/cAEk6B60eTI0cKfPVQVHc70R2b6tBpZt1MMRVu6sAY1j2A2MyK/Wi/yeYZVq
+         TrBQGM/TV8s4e5EJnQafx7v+lofoBOUKuw7mZ/H6RtemAJyISZlE+Z/v5uHeYJ5VkZZW
+         e1a3qCscrzoCDb9wrkbK8x1Nj3OYuWvaQdGyx9EQmyuoencN5OiJZLwn8xrYOV/KH9iZ
+         cwAUkW78ABEtFk0IangQGZx8WKSFA84C2tRj8djMyf1ZZOqpQHgzVTIDNH8N6HGPLHY9
+         g/kw==
+X-Gm-Message-State: AOJu0Yw323QDg5Um3DMFF9WF0h9LfAAzCcLLAnI05FRHOB+TrMIT75eW
+	tOQj03hAi60rpkt4y+zzgT+VjwM+qH9IDrwsmw04lA==
+X-Google-Smtp-Source: AGHT+IE+UnSxHykLJJfIQch1e5QQ0u1bPECfUCUFUDCntbpI1NXH0v2rJAWr/evYDXltegUQu7z4Swu4ag0Zr1/V/sw=
+X-Received: by 2002:a25:3611:0:b0:d4c:aa71:8294 with SMTP id
+ d17-20020a253611000000b00d4caa718294mr1849966yba.33.1691655524705; Thu, 10
+ Aug 2023 01:18:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="syn7hsjtm3zubtz2"
-Content-Disposition: inline
-In-Reply-To: <20230808180245.7474-1-n.zhandarovich@fintech.ru>
+References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org> <20230803-dt-header-cleanups-for-soc-v2-8-d8de2cc88bff@kernel.org>
+In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-8-d8de2cc88bff@kernel.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 10 Aug 2023 10:18:33 +0200
+Message-ID: <CACRpkdaX=nABoxGMAK+3uEHOt1imucK6LXXRrNuAYFiH3-jt7g@mail.gmail.com>
+Subject: Re: [PATCH v2 08/23] ARM: nomadik: Drop unused includes
+To: Rob Herring <robh@kernel.org>
+Cc: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>, 
+	Tsahee Zidenberg <tsahee@annapurnalabs.com>, Antoine Tenart <atenart@kernel.org>, 
+	Jisheng Zhang <jszhang@kernel.org>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Gregory Clement <gregory.clement@bootlin.com>, Jean-Marie Verdun <verdun@hpe.com>, 
+	Nick Hawkins <nick.hawkins@hpe.com>, Lubomir Rintel <lkundrak@v3.sk>, 
+	Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
+	Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, 
+	Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, 
+	Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, 
+	Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>, 
+	Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Viresh Kumar <vireshk@kernel.org>, 
+	Shiraz Has him <shiraz.linux.kernel@gmail.com>, Stuart Yoder <stuyoder@gmail.com>, 
+	Laurentiu Tudor <laurentiu.tudor@nxp.com>, Jay Fang <f.fangjian@huawei.com>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, Cristian Marussi <cristian.marussi@arm.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Florian Fainelli <florian.fainelli@broadcom.com>, Dinh Nguyen <dinguyen@kernel.org>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Michal Simek <michal.simek@amd.com>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, 
+	Ulf Hansson <ulf.hansson@linaro.org>, Li Yang <leoyang.li@nxp.com>, 
+	Qiang Zhao <qiang.zhao@nxp.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, openbmc@lists.ozlabs.org, 
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, 
+	linux-tegra@vger.kernel.org, linux-aspeed@lists.ozlabs.org, 
+	linux-pm@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230810_011331_705102_AF226B0D 
-X-CRM114-Status: GOOD (  14.36  )
+X-CRM114-CacheID: sfid-20230810_011847_073905_B3872697 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,50 +117,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Aug 4, 2023 at 12:44=E2=80=AFAM Rob Herring <robh@kernel.org> wrote=
+:
 
---syn7hsjtm3zubtz2
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> Several includes are not needed, so drop them.
+>
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-Hi,
+Thanks for cleaning out this.
 
-On Tue, Aug 08, 2023 at 11:02:45AM -0700, Nikita Zhandarovich wrote:
-> Four hdmi_*_infoframe_init() functions that initialize different
-> types of hdmi infoframes only return the default 0 value, contrary to
-> their descriptions. Yet these functions are still unnecessarily checked
-> against possible errors in case of failure.
->=20
-> Remove redundant error checks in calls to following functions:
-> - hdmi_spd_infoframe_init
-> - hdmi_audio_infoframe_init
-> - hdmi_vendor_infoframe_init
-> - hdmi_drm_infoframe_init
-> Also, convert these functions to 'void' and fix their descriptions.
+Acked-by: Linus Walleij <linus.walleij@linaro.org>
 
-I'm not sure what value it actually adds. None of them return any
-errors, but very well might if we started to be a bit serious about it.
+Will you funnel this to ARM SoC with the rest?
 
-Since the error handling is already there, then I'd rather leave it
-there.
-
-> Fixes: 2c676f378edb ("[media] hdmi: added unpack and logging functions fo=
-r InfoFrames")
-
-I'm confused about that part. What does it fix exactly?
-
-Maxime
-
---syn7hsjtm3zubtz2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZNScJgAKCRDj7w1vZxhR
-xSWxAPkBKpcYa8fvgV9S3h2fxehetHD5UXS8LuBJb/F6EtKr5QEA1tv3DgElGqJD
-Vd+9ES535Sb39MjXfvkcbNMyPRxsjQU=
-=6V+A
------END PGP SIGNATURE-----
-
---syn7hsjtm3zubtz2--
+Yours,
+Linus Walleij
 
