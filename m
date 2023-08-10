@@ -4,65 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA362C001DB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 13:36:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A70D1C001B0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 13:58:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aW4MnkZXDOajNmrXYpt6GNCJxqJykJSzBGG0EXFMA8E=; b=R9eJrGF2MNRubu04l0XXxYFNQi
-	CFB31rX4B2x7CbAJShHw6yxcnHutOkD9H3eD6m7CikOKek5P4Ab92EbqdHETsVkl8RisWRCkj0POj
-	nvm/THBF8KmGMZiuQB+JVQohlWjFdSXNopL4pN1WHBNjNwCCQSTnfzXEV9WShfR/73n1MWR64rF81
-	2onk1B6OY/wgRSZtxTq8LClE03BYtgnR21S1GXlNRkkjuPaeYZcx5fjOIXXRhwOhfOApx2/qEdatk
-	455gPtiuCZw+sFolp23i6JAalp7I84SFvthDdVGmHwIGDbP7mofA3dZiW5HTQH25vSMKuc62xae3f
-	LHztl8Bw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1rJTz5bg4rzwnI3ff4rWN2qUwfmBH27c5Qh2BAvyn5w=; b=ubRrqR+Eo0uM6WlJcBDfzjujEv
+	+KY/8ziFN4a2Gt5jIgFgcx2moz8oeH8HC+9/h/sYW8X4Errv+aK4GTdMb+nh0SGFOMGzoFKvvHxYr
+	13cEgjzxdpqRTrDW3R2UTDC1PnZ4gMfLAKxMAK7kBy61clrVanjG6DovJnpMM9HvBfVaRHKIMlUkM
+	tKkkPMGvE0/GaHhdiIGjPyLvqZzpbBS6UzItT7ThJeT1p+VtmvHlxsZuepnj4j1AB3JW05++d5aro
+	BtiylAUlRgaJlkfIF0OaLVVhvWhB5JiAE4cflmAATfef0SFj2AbOm0eqR+dGuRJkI/vdCGmNQsA8g
+	4phFE/bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU5px-007l0C-1w;
-	Thu, 10 Aug 2023 13:36:25 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qU6BD-007nzp-3B;
+	Thu, 10 Aug 2023 13:58:23 +0000
+Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU5pt-007kxf-2g;
-	Thu, 10 Aug 2023 13:36:23 +0000
-Received: from eugen-station.. (unknown [82.76.24.202])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B241B6607225;
-	Thu, 10 Aug 2023 14:36:16 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1691674577;
-	bh=FZNpea/iwGbxvzCEyLfqqXbsIddKAIFuEpzLsMyHdHA=;
-	h=From:To:Cc:Subject:Date:From;
-	b=TlxqIOQm3c85cQpJVwAvVXbI0l3QpW2ur0Lqg5PTGOGge1W9lIHE38YuRRelM69Qp
-	 NIX1BNE/oJhBbXykkrpkNoVM0J2DqpqetVag5+6uO/6P3IPnVNQKktRjgDoG4gD79W
-	 r3nItD5oR4SMmkazxMnrGMkvfh8G9++UBLvwb3rPnaVmD1NUyTcRIyZON/qBHj9M1i
-	 7gDMv3lAKj18yZPALdR0F9rcyR6iVTTpvSIBlmsPRFXb22KomU32a56i0+aKG8l/uO
-	 /wlKMZs+iydxAstIyI7AGNcP+CgsYQEcyYFhSVpgn1RVnNXUSpolxh4yyr5wvbo7b8
-	 78WtIgJnupCmw==
-From: Eugen Hristev <eugen.hristev@collabora.com>
-To: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org
-Cc: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com,
-	Eugen Hristev <eugen.hristev@collabora.com>
-Subject: [PATCH] dt-bindings: arm: mediatek: convert audsys to yaml
-Date: Thu, 10 Aug 2023 16:36:02 +0300
-Message-Id: <20230810133602.48024-1-eugen.hristev@collabora.com>
-X-Mailer: git-send-email 2.34.1
+	id 1qU6BB-007nyS-0C
+	for linux-mediatek@lists.infradead.org;
+	Thu, 10 Aug 2023 13:58:22 +0000
+Received: by mail-qv1-xf31.google.com with SMTP id 6a1803df08f44-63cf96c37beso4304816d6.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Aug 2023 06:58:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20221208.gappssmtp.com; s=20221208; t=1691675899; x=1692280699;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=1rJTz5bg4rzwnI3ff4rWN2qUwfmBH27c5Qh2BAvyn5w=;
+        b=ndjuLFarKWmxp0QE3j1BO1vhYb4/6pLnad8C4kQcrHaNNL88TKuLQ2SHjDEgt7l443
+         aI5Krkq3C5BHh/B/BhChf+P5jqieFmbgL0r75qd30KDOFJGLBdXoFPnGKQ7/5XyBPaWd
+         KgkF3cIkg6+HlWTUvoCLuhb2GSjAY2SffLX2d+8bbCy1aLKL7h93+OGBseelXC26cO0V
+         90vgtnJ+OqIZI1kHXmFraAd510MMGIf/X7wG/q8v7g6StOnSATFU6/IqUcSHMvqmgJma
+         r8E9ge5QwC45LQawKQbILJIoaKFnQmkDB4dmz6UnFLf+1EDLH1x/VIHX3XsCj6eLVWkt
+         NYFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1691675899; x=1692280699;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1rJTz5bg4rzwnI3ff4rWN2qUwfmBH27c5Qh2BAvyn5w=;
+        b=bdCI5t2FndNHdztU5kBACRbO4bAxxKaFEv4C4ZgK/pkz3z9xQ0YvTbws25Wvjx84wt
+         RZ6QY6Guyp3eHkvonIoUc1i35JX1gjwG7nFBzb9QdijpilS4nibOl+N9gMMIIEUTQptk
+         Smdlcv6hyNtpoDhSA3cDTG6kZ7lrqGR8bYLaeiR/2ne44QQloNIlCXC0m/YFV2WE2weo
+         3d5QFNi71gfeHKIeMQLvOmihrXjulc7yfJLPvPLkqGxkgheLcyR/P6muabTULgSU3c3h
+         4C4x2dXS1vbPfILGSihJi2GTLYQtBLmdqjGyDgDpKlAjCWsjvRduoOsx60iXcpBCfqhI
+         rxBQ==
+X-Gm-Message-State: AOJu0YwNMMen7o9MruIYl257GoUpvy2+ZafQcpGtNKEN22hK8ilO+k+r
+	YmtotF+C5gitJcdD2NG5LcXesA==
+X-Google-Smtp-Source: AGHT+IGy90htbxaGVBLfMsqw9TjY9f1KySdKUMqiW6L1VOLB4Zx6hUjqKjFiwiogcvkiBUNYIqIvVg==
+X-Received: by 2002:a0c:e54f:0:b0:63f:c070:492f with SMTP id n15-20020a0ce54f000000b0063fc070492fmr1963509qvm.8.1691675898960;
+        Thu, 10 Aug 2023 06:58:18 -0700 (PDT)
+Received: from nicolas-tpx395.localdomain ([2606:6d00:15:bae9::7a9])
+        by smtp.gmail.com with ESMTPSA id y3-20020a0cf143000000b0063d4631d1e4sm173766qvl.68.2023.08.10.06.58.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Aug 2023 06:58:18 -0700 (PDT)
+Message-ID: <5a70c141736e91f635f71d9922a3bbe993a76c69.camel@ndufresne.ca>
+Subject: Re: [PATCH v2] media: vcodec: Fix potential array out-of-bounds in
+ encoder queue_setup
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Wei Chen <harperchen1110@gmail.com>, tiffany.lin@mediatek.com
+Cc: andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com,
+ mchehab@kernel.org,  matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com,  linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,  stable@vger.kernel.org
+Date: Thu, 10 Aug 2023 09:58:17 -0400
+In-Reply-To: <20230810082333.972165-1-harperchen1110@gmail.com>
+References: <20230810082333.972165-1-harperchen1110@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230810_063622_053481_B9399836 
-X-CRM114-Status: GOOD (  14.09  )
+X-CRM114-CacheID: sfid-20230810_065821_292226_E6D94C94 
+X-CRM114-Status: GOOD (  19.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,139 +96,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the mediatek,audsys binding to YAML.
+Hi,
 
-Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
----
+Le jeudi 10 ao=C3=BBt 2023 =C3=A0 08:23 +0000, Wei Chen a =C3=A9crit=C2=A0:
+> variable *nplanes is provided by user via system call argument. The
+> possible value of q_data->fmt->num_planes is 1-3, while the value
+> of *nplanes can be 1-8. The array access by index i can cause array
+> out-of-bounds.
+>=20
+> Fix this bug by checking *nplanes against the array size.
+>=20
+> Fixes: 4e855a6efa54 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video E=
+ncoder Driver")
+> Signed-off-by: Wei Chen <harperchen1110@gmail.com>
+> Cc: stable@vger.kernel.org
+> ---
+> Changes in v2:
+> - Add Fixes tag and CC stable email address
+> - Change the title to be more expressive
+>=20
+>  drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>=20
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/dr=
+ivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+> index 9ff439a50f53..9e8817863cb8 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+> @@ -821,6 +821,8 @@ static int vb2ops_venc_queue_setup(struct vb2_queue *=
+vq,
+>  		return -EINVAL;
+> =20
+>  	if (*nplanes) {
+> +		if (*nplanes !=3D q_data->fmt->num_planes)
+> +			return -EINVAL;
 
-Ref to /schemas/sound/mt2701-afe-pcm.yaml added as informative only because
-that schema has not been converted yet
+I don't think the claim really exists. 	For this driver, when *nplane is se=
+t,
+it will be:
 
 
- .../bindings/arm/mediatek/mediatek,audsys.txt | 39 -----------
- .../arm/mediatek/mediatek,audsys.yaml         | 66 +++++++++++++++++++
- 2 files changed, 66 insertions(+), 39 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml
+        case V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE:
+                requested_planes =3D f->fmt.pix_mp.num_planes;
+                if (requested_planes =3D=3D 0 ||
+                    requested_planes > VIDEO_MAX_PLANES)
+                        return -EINVAL;
+                for (i =3D 0; i < requested_planes; i++)
+                        requested_sizes[i] =3D
+                                f->fmt.pix_mp.plane_fmt[i].sizeimage;
+                break;
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-deleted file mode 100644
-index 699776be1dd3..000000000000
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-+++ /dev/null
-@@ -1,39 +0,0 @@
--MediaTek AUDSYS controller
--============================
--
--The MediaTek AUDSYS controller provides various clocks to the system.
--
--Required Properties:
--
--- compatible: Should be one of:
--	- "mediatek,mt2701-audsys", "syscon"
--	- "mediatek,mt6765-audsys", "syscon"
--	- "mediatek,mt6779-audio", "syscon"
--	- "mediatek,mt7622-audsys", "syscon"
--	- "mediatek,mt7623-audsys", "mediatek,mt2701-audsys", "syscon"
--	- "mediatek,mt8167-audiosys", "syscon"
--	- "mediatek,mt8183-audiosys", "syscon"
--	- "mediatek,mt8192-audsys", "syscon"
--	- "mediatek,mt8516-audsys", "syscon"
--- #clock-cells: Must be 1
--
--The AUDSYS controller uses the common clk binding from
--Documentation/devicetree/bindings/clock/clock-bindings.txt
--The available clocks are defined in dt-bindings/clock/mt*-clk.h.
--
--Required sub-nodes:
---------
--For common binding part and usage, refer to
--../sonud/mt2701-afe-pcm.txt.
--
--Example:
--
--	audsys: clock-controller@11220000 {
--		compatible = "mediatek,mt7622-audsys", "syscon";
--		reg = <0 0x11220000 0 0x2000>;
--		#clock-cells = <1>;
--
--		afe: audio-controller {
--			...
--		};
--	};
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml
-new file mode 100644
-index 000000000000..b879a3a060da
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml
-@@ -0,0 +1,66 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,audsys.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek AUDSYS controller
-+
-+maintainers:
-+  - Eugen Hristev <eugen.hristev@collabora.com>
-+
-+description:
-+  The MediaTek AUDSYS controller provides various clocks to the system.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - enum:
-+              - mediatek,mt2701-audsys
-+              - mediatek,mt6765-audsys
-+              - mediatek,mt6779-audsys
-+              - mediatek,mt7622-audsys
-+              - mediatek,mt8167-audsys
-+              - mediatek,mt8173-audsys
-+              - mediatek,mt8183-audsys
-+              - mediatek,mt8186-audsys
-+              - mediatek,mt8192-audsys
-+              - mediatek,mt8516-audsys
-+          - const: syscon
-+      - items:
-+          # Special case for mt7623 for backward compatibility
-+          - const: mediatek,mt7623-audsys
-+          - const: mediatek,mt2701-audsys
-+          - const: syscon
-+
-+  reg:
-+    maxItems: 1
-+
-+  '#clock-cells':
-+    const: 1
-+
-+  audio-controller:
-+    #  $ref: /schemas/sound/mt2701-afe-pcm.yaml#
-+    type: object
-+
-+required:
-+  - compatible
-+  - reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+        audsys: clock-controller@11220000 {
-+            compatible = "mediatek,mt7622-audsys", "syscon";
-+            reg = <0 0x11220000 0 0x2000>;
-+            #clock-cells = <1>;
-+
-+            audio-controller {
-+            };
-+        };
-+    };
--- 
-2.34.1
+Or the value the driver have set it in the previous call with *nplane =3D=
+=3D 0. So
+unless there is a bug, this should not happen, and more importantly, the co=
+re
+should not let that happen, meaning it should not be driver jobs to validat=
+e
+this.
+
+my 2 cents,
+Nicolas
+
+
+>  		for (i =3D 0; i < *nplanes; i++)
+>  			if (sizes[i] < q_data->sizeimage[i])
+>  				return -EINVAL;
 
 
