@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D247C04E69
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56439C001E0
 	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 19:54:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+KSmMqqtvDIiHz4Ho0lGfwn8AtEPGP14LPDghXjLYrI=; b=jhTCLOlU8cbFVF/bX8gpr8ysg2
-	yS21Ok8vajixgxLQH3+qS+G8PYoBNuaWQ/D8n15gN79OlP+dn8wVb+D/lWOELQjCYwrE3ccoENOWJ
-	KLWVnDeO/IZG1/X3r6OFVbTmnb1Eiv9pnbAhbkcWkqrG6GLlDARNw1skOPQSkzeaKpcmQKYbQ9xqT
-	QyjSt9K4s4//4Lxsdgy3TVCSiCpxH+qTK0O796o1me5JqzT4iOSzfv01KmcvtTekv8AnLRoW6zMbu
-	NMLcOTHTkZgBQa4MR+lBQewgm10G+sr4xKfGrwpMJtZnWyS1QxEzQqKf9IfMVZ1WoV0SAGFla4qvV
-	8ntNSeJw==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2AzFyigJ847Mx7E2oFBB8SMRyOnv8+4md/Rgc3rIkTY=; b=mD99bcS8QpZVUkvRePh46qBEEm
+	1FM4VREDPinvKYLoLgZsrKcQRD3vHQg3HS5zPdDFSfOZchZ2p6Mtzg2J2bvIb7XwwdGlQ7FM0m2QK
+	2q57b6XoRrN4Xg2wRVrkpxsp1R8JXuUZEKhF1DlsaOMsdYzzH6Ldz6S6OtR8MEf7QKTHA1ozGs601
+	aygyWPZLVGUN/lkPHE4NI3a6wJ8EF1ZMWXjrmZ/jhXZffqRFTvi0FJfywuLI1Drfe7J9USICLn6MB
+	WBf+7Q57TCsyqdd4dscKwJNZ9dZ//EwKEgy8upacWt66vb8+Pu0ldXLwC7iygbhmIMTbQ3g8Kh8/G
+	PPIH8n/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUBjq-008bL6-38;
-	Thu, 10 Aug 2023 19:54:30 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1qUBjr-008bLH-0u;
+	Thu, 10 Aug 2023 19:54:31 +0000
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUBjl-008bHU-0r
+	id 1qUBjm-008bIP-0n
 	for linux-mediatek@lists.infradead.org;
 	Thu, 10 Aug 2023 19:54:27 +0000
-Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-1bc99545d53so11496555ad.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 10 Aug 2023 12:54:24 -0700 (PDT)
+Received: by mail-pg1-x531.google.com with SMTP id 41be03b00d2f7-564cd28d48dso897879a12.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Aug 2023 12:54:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1691697264; x=1692302064;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=+KSmMqqtvDIiHz4Ho0lGfwn8AtEPGP14LPDghXjLYrI=;
-        b=nrXbwl42fHl/TmgPZPbp4NYdzZS26suBRDTcs7Wk4VaUdbnJFtqlYuY2kVpZaOc7eE
-         ZlYyHSoOEqPr8lDHmmJ2KCFnyPADLw+V4jlJXFebMimObgbYQvVI4AV6ufI6GOAMe0O3
-         /cc+CErvpTqxvL+kqT8XL2a6TPPC7RrAj+ppE=
+        d=chromium.org; s=google; t=1691697265; x=1692302065;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2AzFyigJ847Mx7E2oFBB8SMRyOnv8+4md/Rgc3rIkTY=;
+        b=EhymeSt9AwGdnLF38z1BWoMcYtzxxbOkqvwmhWp/GRcUvwylg9CoK26H1e3AGke8+B
+         RPety8gwpWVVuXWVCYQ3s1K3sd50189fikQk3mSOocuvNuuiO5MVVxnZBq2+8Iy3GSEr
+         GVH5i8CrUQaibx4+voYbDmJYrn6UTF1rIVDow=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691697264; x=1692302064;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+KSmMqqtvDIiHz4Ho0lGfwn8AtEPGP14LPDghXjLYrI=;
-        b=V+c9WWG4wK8QWGCr+F9tWD/K30m9riIv0abETHDsj+swHBh872zVqw+7Ci6mTs14tQ
-         +6GlU1/kOnt7NoRmTr540Xxi4+LNWhyyBn44Q/zvYMqtWsrkUV51DysTaMUU+flArc+n
-         LMVsGvcFgbr5MVtYOmFIjpmnmv6pp5jBAPg4EY9Se2laFwUSyQMJMq7SXJmvrW0T6z4i
-         qk9DTaVhLKBrmylq0iJqXN0ckcmaduYaKvaYe+sYkmGxgZ8gFtGx9JF8+XHgSJt0w9O+
-         l6CRpBpDpX6vU/3xwW+cGpG/R5nRrRLvyEJXTIlfk6QJDx7CoCzPDdkWH1O8pOAd9uBc
-         qYrw==
-X-Gm-Message-State: AOJu0YyE588LKkC161yyuYIvtdcCXtAZRSWZf25FKYNFVkkwrsWcD7A2
-	LhXXeyszH1RddAquK+5WuHM7kg==
-X-Google-Smtp-Source: AGHT+IHw2G+HNk0pb7rzPTFmiR+l4BrfXX5lv/VPOP/htPgz5DnJIC6tehMM+4QHARhcvvVVGb92Rg==
-X-Received: by 2002:a17:903:22d1:b0:1b5:219a:cbbd with SMTP id y17-20020a17090322d100b001b5219acbbdmr4340562plg.3.1691697263898;
-        Thu, 10 Aug 2023 12:54:23 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1691697265; x=1692302065;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=2AzFyigJ847Mx7E2oFBB8SMRyOnv8+4md/Rgc3rIkTY=;
+        b=YyHKyA7PLmKc1tv0t90+WhkNvd3UJlEdp+g8ym2Jxz795z6nRpwAKN++o2cL8f7raf
+         yOno1WOBCqZx3K++a1CZmiTW9iwWUDSJtQe/d0MlUrwlOa29aHOX5ZlhAFMwKLovOcgu
+         qZXBcFEM4OxWgyfYYSvxU8v242O+6vbe1B263Gu0scjNd62/vnBJm4jxLZWvZR19EsRC
+         cwfGcB2zBKubMApV2lRtYz/Z6SR9QD/cZuHO4DIcikj/JRb5+i6jb3dX+Ix10TaQxgNQ
+         QdkonSIR6/4ayRob1BlGIQ2Y9e2knt1N981MGr/B8PUREHEjXeg6CyAwl0WornPQsE4N
+         9/zg==
+X-Gm-Message-State: AOJu0YwdvrS5at24dGb5awpU3Jwr0QoGFXww598vvOpQhR40oAmOa8J4
+	0ljWKWcY2nCreA2RuuSM1iQ+rA==
+X-Google-Smtp-Source: AGHT+IHf7dBPbEfSl1xqIGQRGLihbjGL2keEOoa4x4FFnpIIuQxIh6x560I9zGOiV02ODZa7GkaZmQ==
+X-Received: by 2002:a05:6a20:4424:b0:140:54ab:7f43 with SMTP id ce36-20020a056a20442400b0014054ab7f43mr4680369pzb.52.1691697265119;
+        Thu, 10 Aug 2023 12:54:25 -0700 (PDT)
 Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net. [198.0.35.241])
-        by smtp.gmail.com with ESMTPSA id o4-20020a170902d4c400b001bbf7fd354csm2158636plg.213.2023.08.10.12.54.22
+        by smtp.gmail.com with ESMTPSA id u9-20020a62ed09000000b00668652b020bsm1890241pfh.105.2023.08.10.12.54.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 10 Aug 2023 12:54:22 -0700 (PDT)
 From: Kees Cook <keescook@chromium.org>
@@ -64,6 +65,7 @@ Cc: Kees Cook <keescook@chromium.org>,
 	Arnd Bergmann <arnd@kernel.org>,
 	Lecopzer Chen <lecopzer.chen@mediatek.com>,
 	Oleg Nesterov <oleg@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
@@ -72,33 +74,33 @@ Cc: Kees Cook <keescook@chromium.org>,
 	Dan Williams <dan.j.williams@intel.com>,
 	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-hardening@vger.kernel.org
-Subject: [PATCH v2 0/2] ARM: ptrace: Restore syscall skipping and restart while tracing
-Date: Thu, 10 Aug 2023 12:54:17 -0700
-Message-Id: <20230810195141.never.338-kees@kernel.org>
+Subject: [PATCH v2 1/2] ARM: ptrace: Restore syscall restart tracing
+Date: Thu, 10 Aug 2023 12:54:18 -0700
+Message-Id: <20230810195422.2304827-1-keescook@chromium.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230810195141.never.338-kees@kernel.org>
+References: <20230810195141.never.338-kees@kernel.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=696; i=keescook@chromium.org;
- h=from:subject:message-id; bh=LCtgD+PkZR6hbDOPphiW7QCeCuo059Geg0rwEi/JXFY=;
- b=owEBbQKS/ZANAwAKAYly9N/cbcAmAcsmYgBk1UBqGYdSbOqXERSHJr0Lg4TG85J053QilT3rx
- 86gcS3SVtWJAjMEAAEKAB0WIQSlw/aPIp3WD3I+bhOJcvTf3G3AJgUCZNVAagAKCRCJcvTf3G3A
- JiYID/4/t1FvGqMPIZTEFTDWaziXdqRsIgasib2VD3Jxm2l2wQZbrf4v5wkXyRD3N8pNt8bKWsP
- hgXBdnAmaw0wVgFVOd4ndKxz3mPyf4uRjrGZ+ROt4tk8jcuIesbqpiZG6hmphvaj6k+afiwDz4+
- rZsNZ4CSy01PD3/4xtg9DD3kQAMqcxL5DiOsysyu3r84yV2WDA9szFriGj1QZf136ah7QF3Aupm
- AldTkpzllWT2PV43vXW41N+rSQOKTApFMu3Zqx2yKXBy5uN9Oyo77xCXZgsyJ86SYRQvC7A1jCr
- eHc0NcFnR5cC2X5kexSm945JtTHCzDClECCewMFNJPnDr8jesTNw06UJEi+SM/xthFEeH7mcdhP
- KgVz28hRWjzk4vMgN2xcXBNae5I6RvEsPPd8RRFRib1H8QZzinYH24fnxgraz9R7E3d+ZaWWR8x
- nw1NCGg5UNWwTqfGmdoSl5KzS+WSnZAR/QM3TLGs5SdMfjgPsWAyZgCao60+nPHeiDmIsuB08uJ
- Wfp+BavPWbToB/UEl0uj61Pj/O349RScCZwUxwXdTXJzpFBKNG6uD0njcUxBk6vq1rbOxNPVlw0
- AXI1XTCDPJeyHMPgkipEVbyifWObQs6PoN1WsJA8zHa5BjgQlRGW6WZ6FlHuo84LJVxUKqgOzcr
- U11nDG3L XieHU1w==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1376; i=keescook@chromium.org;
+ h=from:subject; bh=PM9VbACsiruUm736SKU4lZ4ZDYtSsZTBmd3nctTMIWk=;
+ b=owEBbQKS/ZANAwAKAYly9N/cbcAmAcsmYgBk1UBrSDo2U2GotGsBMY+sQ1nnEqac9N2ubUHNK
+ geMLpezF8yJAjMEAAEKAB0WIQSlw/aPIp3WD3I+bhOJcvTf3G3AJgUCZNVAawAKCRCJcvTf3G3A
+ JgEwD/4/PU3jZw0GGsDb1rhpeL2CWa374R86q0eGZC9bP7yNGHj2MZNotCIzG1ln7HnfvVYFEqj
+ ImnJ1VEoF2kur2GameknXgNcAnswvPigS2VhmBQwdreCXLTctILVJ6xaNWv9zI7s/o8S2qRk3jx
+ tLChRFwN5bYukIbOiCVJi0/ZlsEbrkv9KJ28UEoH+l52omPYycquPtuUAyyXjd/xqDSxNe8GHTg
+ QPQTl40snYaEBVFrg4IYKAEqDn3MrTuaQh30+kT0is+AlcENKEFbC83w8dijgS+NDGYtqPW1Pum
+ 9wi3XC+PwGwDRMC2GBeIx/DMCWEE70iElmjUXaljFYAS2/Qn59GFtgeFca3bYN5R9VPBhI1UrBv
+ /guxuT6h9WK0dK80nUqcPeAJyfQt9pOUleFh3lRAEYjCPJF3/eM0JRLofpZ/eJrvoqypt5ON8Vp
+ 90Qs6Yt1qvpF1b1kQqdrGNrG6NR1t1KmrcvoK/FvdJiLQh1uQ/P0sCJsv0sU8HL0XA3/KSORI7L
+ vwl03qLaPkhHsbWxFWQKV+VGlVfniPDjLaDUiFEMiAkAXx3mla223m6DGkZex8RIy7IzHKQiLZ2
+ 6kZsj36XGm95XXJXq84VUgZfPu0oxDYeq5c+v0dlZgj2Vz4UqwZB9lEef1mWbHm8S64fjs1a/g4 2hN+/trZF0WnbKA==
 X-Developer-Key: i=keescook@chromium.org; a=openpgp; fpr=A5C3F68F229DD60F723E6E138972F4DFDC6DC026
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230810_125425_298017_7A24249B 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20230810_125426_297770_70BDE103 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,30 +115,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Since commit 4e57a4ddf6b0 ("ARM: 9107/1: syscall: always store
+thread_info->abi_syscall"), the seccomp selftests "syscall_restart" has
+been broken. This was caused by the restart syscall not being stored to
+"abi_syscall" during restart setup before branching to the "local_restart"
+label. Tracers would see the wrong syscall, and scno would get overwritten
+while returning from the TIF_WORK path. Add the missing store.
 
-Fix tracing on arm since commit 4e57a4ddf6b0 ("ARM: 9107/1: syscall:
-always store thread_info->abi_syscall"). This was seen with the broken
-seccomp tests "syscall_errno", "syscall_faked", and "syscall_restart".
-
-Thanks!
-
--Kees
-
-v2:
-- split fixes
-- move scno store into the actual restart path
-v1: https://lore.kernel.org/lkml/20230804071045.never.134-kees@kernel.org
-
-Kees Cook (2):
-  ARM: ptrace: Restore syscall restart tracing
-  ARM: ptrace: Restore syscall skipping for tracers
-
- arch/arm/include/asm/syscall.h | 3 +++
+Cc: Russell King <linux@armlinux.org.uk>
+Cc: Arnd Bergmann <arnd@kernel.org>
+Cc: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Cc: Oleg Nesterov <oleg@redhat.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Fixes: 4e57a4ddf6b0 ("ARM: 9107/1: syscall: always store thread_info->abi_syscall")
+Signed-off-by: Kees Cook <keescook@chromium.org>
+---
  arch/arm/kernel/entry-common.S | 1 +
- arch/arm/kernel/ptrace.c       | 5 +++--
- 3 files changed, 7 insertions(+), 2 deletions(-)
+ 1 file changed, 1 insertion(+)
 
+diff --git a/arch/arm/kernel/entry-common.S b/arch/arm/kernel/entry-common.S
+index bcc4c9ec3aa4..5c31e9de7a60 100644
+--- a/arch/arm/kernel/entry-common.S
++++ b/arch/arm/kernel/entry-common.S
+@@ -90,6 +90,7 @@ slow_work_pending:
+ 	cmp	r0, #0
+ 	beq	no_work_pending
+ 	movlt	scno, #(__NR_restart_syscall - __NR_SYSCALL_BASE)
++	str	scno, [tsk, #TI_ABI_SYSCALL]	@ make sure tracers see update
+ 	ldmia	sp, {r0 - r6}			@ have to reload r0 - r6
+ 	b	local_restart			@ ... and off we go
+ ENDPROC(ret_fast_syscall)
 -- 
 2.34.1
 
