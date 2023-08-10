@@ -4,98 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 641BFC41513
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 20:27:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3938C001B0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 22:04:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7VqWk9TlJRT8ykwWsdvSnZzCfxI5F9cpgpLcByRA+sY=; b=kFVBTRVAlRzU2Jsj8L+LSgsrvo
-	ynHRoL/xDQ/7AVBNCFx8xIQSJKnQ8r6GukJ/1D8YPYAlZIv7JGO0gEDsFVAOJAY02TpNg5DaMLcWx
-	KtMlge5t9gboznuxNJrchkKIkFVhBPLFqyxlEKB7TbhAIGE4aREJDq4x9L+Gv5IoWQc8PCvNy/qNf
-	SW8YbXkbceAx4bYuZDfDRslsUthMmI728etzehpCesy16rw0csI83lw6qVf6pfTY1KbSPSfaP/QT5
-	f8tp3aJVD+ti5bn33xXammeq4Hm/zuBhOYKQ/+vJ+g9crB8NaBMKu+QxNZPB2BXrWPChMqTKOrSKD
-	HoUyL83g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3k2OOXXjJ/0jlJYbFzrhAWpYad7xcBCqy2YqNYhfHdE=; b=j2ge12eN9xkvokL3gARX2D+7LF
+	psqeHQ0WzpEH1aZR2ZW2kRT1FYs33cCwTWM5REpfbxLblZ2TvRQsFXPZMYH9FvTptioyREbeAg4Tk
+	rYnLhahujh+7akj6v/kcMUuuCjmIORD/S4ujDTXqofHluXyjH2nMIGkILc0XF+1MzHaW1/SIghYzL
+	pD5K8dgHcdXD6XyXDXslOL0wKh88Q5mN+0w7wgubjqbXplsqyB004bf/yLvPQTVbFvtfvR+v9cLUV
+	bXVTGPoz5sCnpk8bALM8C8d5ZPO5AXUoip07Yfd2OBp38qKgj7vufwz+LBy86eM/qWgdOEVqH9fNy
+	C1YN3Crw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUCFL-008ebO-00;
-	Thu, 10 Aug 2023 20:27:03 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1qUDlA-008o2Q-1b;
+	Thu, 10 Aug 2023 22:04:00 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUCFI-008eaH-0Z
-	for linux-mediatek@lists.infradead.org;
-	Thu, 10 Aug 2023 20:27:01 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-1bc5acc627dso10196615ad.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 10 Aug 2023 13:26:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1691699219; x=1692304019;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=7VqWk9TlJRT8ykwWsdvSnZzCfxI5F9cpgpLcByRA+sY=;
-        b=K6Xr+JpfP3xNnjYDhY0dK5WU16CS3QdsDehTrDhfKyWhlQr9Ju/mj540r6Y+bgal7r
-         Iu8tF0uh1VerGPWpO5/wmQxvZkh8iK1gyky0YbGqEnpkyPiNkPHdIw5lKML5Pok1+I7a
-         XPeKJAL5CSpLJAKuJCFlHYDzyBBWqVnVMzUfw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691699219; x=1692304019;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=7VqWk9TlJRT8ykwWsdvSnZzCfxI5F9cpgpLcByRA+sY=;
-        b=TmStEl3OryEbeM0+CwZFV1TuKg6T9mxgi70mOpTMWFudAZ2tykTD+wLDf0fn5nzUvx
-         0MeP2oDOzWQ2hxRbdBGXxGTpgAxtP926OVNGP/lA5l13MdXOOS9BeFOrjf2OuNJc66lP
-         +w8SRU/VCa9RWi7aI45IBfU7ZYEp9BuRNRUkaehJlqD/KzHkGJ3DmSufOyixifFbdXNi
-         O8GqCnj6dU/7ZdlmKdQvBMIwM411EsPpnGCDvX+6pzaL3HmMCDTs5IaMTD/s4LKg4q/i
-         hJdrlm4hc34qeCRknxyIKtCvA0xfzes/M9U7/YxnOC9xQL2CopjLZMASdhYvhNPOZT44
-         81NA==
-X-Gm-Message-State: AOJu0YwT9FtMSde1pPRxHVlPqjepqZ8vlqx5VVWDPbtRA6XRb8nc7vN8
-	/KUQ4jQByRpK0dXYWHy/OJS72w==
-X-Google-Smtp-Source: AGHT+IFgOcyEjd2Q4OTHrM/7gs8YLxs3o0idMAJRHLTXxcQ2zXZGYP1++8Hj+FJQ5dwHLcBJL9Zu0w==
-X-Received: by 2002:a17:902:d3cd:b0:1bb:5b88:73da with SMTP id w13-20020a170902d3cd00b001bb5b8873damr2990326plb.61.1691699218904;
-        Thu, 10 Aug 2023 13:26:58 -0700 (PDT)
-Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net. [198.0.35.241])
-        by smtp.gmail.com with ESMTPSA id k3-20020a170902694300b001a98f844e60sm2183276plt.263.2023.08.10.13.26.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Aug 2023 13:26:58 -0700 (PDT)
-From: Kees Cook <keescook@chromium.org>
-To: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Cc: Kees Cook <keescook@chromium.org>,
-	Andy Lutomirski <luto@amacapital.net>,
-	Will Drewry <wad@chromium.org>,
-	Shuah Khan <shuah@kernel.org>,
-	Christian Brauner <brauner@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1qUDl7-008o14-1Z;
+	Thu, 10 Aug 2023 22:03:58 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 264AE6607234;
+	Thu, 10 Aug 2023 23:03:52 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1691705033;
+	bh=6T/7egYNdrUimo6+730pCHWC9ylPwq+ljDhhdzr7HFc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=M4Bh+ORvPNXXa126m8W13yZjzuJM+v4pK5z3u1dNQVk7UyncP6Ixr9iX87JeV8EHE
+	 JNo5lZvuBnDW/1SmhcWVsPTpnTRor6Pxuxr1Iew54EOJukMeaE9krX7mf+KrsGP7Yp
+	 I+59Y0JH/bSyTeq9pOMgtVQxOeRYZH3g7g4jJtDzHpbTUHjk9FzmwFNivz3DNG+bSR
+	 jCJVOcRnklH+dkXvrfH3uUDGw3eBHfzCBPxnMqfit4fM2BMxIgbY98EjxfXHNIuSuZ
+	 YKaVqApvuUgTHUrSegmo9tkduOni5mBN5DWLSi9ayBe2CWdBsg9j9+2yPkG6y6lyC7
+	 B1La0X3KYgxNw==
+Date: Thu, 10 Aug 2023 18:03:47 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: Chen-Yu Tsai <wenst@google.com>, kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	linux-kselftest@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-hardening@vger.kernel.org
-Subject: [PATCH] selftests/seccomp: Handle arm32 corner cases better
-Date: Thu, 10 Aug 2023 13:26:56 -0700
-Message-Id: <20230810202653.never.932-kees@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+	James Lo <james.lo@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3] spmi: mtk-pmif: Serialize PMIF status check and
+ command submission
+Message-ID: <a4684a81-eb04-492a-bff6-a5ff78fe6b0f@notapiano>
+References: <20230724154739.493724-1-nfraprado@collabora.com>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2014; i=keescook@chromium.org;
- h=from:subject:message-id; bh=CLpz6EOfRrbHfxs+DW+QOBPRQnZKfWBS9qhYDrihYZA=;
- b=owEBbQKS/ZANAwAKAYly9N/cbcAmAcsmYgBk1UgQGhY779bsGNZZQsbavTn3fuJhNl9tmHaJi
- pe/oTK88q2JAjMEAAEKAB0WIQSlw/aPIp3WD3I+bhOJcvTf3G3AJgUCZNVIEAAKCRCJcvTf3G3A
- JuJ/EACTcQ+/SL8NKJMeMFthsYqig1wZP1bL6BwiogHpMrhrE4JVzTccWGM8XLHbP63E9NyJdTG
- CbifBfVw4Q2qw1VXKAvuSpkN6uSsMv4s3/BosmYE5yEu4i608R2SQMqm1ifN1U1ovAAYvXxVXY4
- mEy+5TG5jPr/3XZrHHgf7ygankQSzS38Na8mfcmebpJfZweX8kDy8Zew6h2tSG09wMBoAlirQEt
- K2TKbjN/dhB2e906M3h7tHIXjIH8gThBwY+4s6o+DI5vhpDjT/6ETxNgaAK9wmXNCyP2v+o3GBL
- hscos8jzbMZ4QJ/+1PCtSgY7j2PzQmbNzr/wDgkA/LSuAVhL58isbFkaIrHmgXPHd6IDjiaEXR5
- Vr7pR97vDB1V6HJ5lHg9kZShcr1TABvwit/h/O5anJXH2Aer12Ng1kHn9m+2buZI5tYjvB8gicC
- JJg/zttnHUhUwzKUKUk3wlToFm9Czbj+vraJF+kexBjCW+DPUS0l6Oa6JPjElLKe5BrrUhTlyBN
- 3LLd16WA4HhAwVyVlq6vm2gbEUUeXthpn3hm6b/JxOULzY/vOxkMGjjbKalbsRof+RKDJPz6vM5
- cYVUoyL+rap+LF2B7gOhxuHz9zwF4EvwPoQ4wd4snZlGZ/T6NlRz3bHc8/4DkmejD6OCLSsBxS6
- UCCv7P2 xUDMYFGA==
-X-Developer-Key: i=keescook@chromium.org; a=openpgp; fpr=A5C3F68F229DD60F723E6E138972F4DFDC6DC026
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230724154739.493724-1-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230810_132700_210646_209F89A9 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20230810_150357_671729_CBA08DD7 
+X-CRM114-Status: GOOD (  19.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,63 +80,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It turns out arm32 doesn't handle syscall -1 gracefully, so skip testing
-for that. Additionally skip tests that depend on clone3 when it is not
-available (for example when building the seccomp selftests on an old arm
-image without clone3 headers). And improve error reporting for when
-nanosleep fails, as seen on arm32 since v5.15.
+On Mon, Jul 24, 2023 at 11:47:33AM -0400, Nícolas F. R. A. Prado wrote:
+> Before writing the read or write command to the SPMI arbiter through the
+> PMIF interface, the current status of the channel is checked to ensure
+> it is idle. However, since the status only changes from idle when the
+> command is written, it is possible for two concurrent calls to determine
+> that the channel is idle and simultaneously send their commands. At this
+> point the PMIF interface hangs, with the status register no longer being
+> updated, and thus causing all subsequent operations to time out.
+> 
+> This was observed on the mt8195-cherry-tomato-r2 machine, particularly
+> after commit 46600ab142f8 ("regulator: Set PROBE_PREFER_ASYNCHRONOUS for
+> drivers between 5.10 and 5.15") was applied, since then the two MT6315
+> devices present on the SPMI bus would probe assynchronously and
+> sometimes (during probe or at a later point) read the bus
+> simultaneously, breaking the PMIF interface and consequently slowing
+> down the whole system.
+> 
+> To fix the issue at its root cause, introduce locking around the channel
+> status check and the command write, so that both become an atomic
+> operation, preventing race conditions between two (or more) SPMI bus
+> read/write operations. A spinlock is used since this is a fast bus, as
+> indicated by the usage of the atomic variant of readl_poll, and
+> '.fast_io = true' being used in the mt6315 driver, so spinlocks are
+> already used for the regmap access.
+> 
+> Fixes: b45b3ccef8c0 ("spmi: mediatek: Add support for MT6873/8192")
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Cc: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Signed-off-by: Kees Cook <keescook@chromium.org>
----
- tools/testing/selftests/seccomp/seccomp_bpf.c | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+Hi,
 
-diff --git a/tools/testing/selftests/seccomp/seccomp_bpf.c b/tools/testing/selftests/seccomp/seccomp_bpf.c
-index f6a04d88e02f..38f651469968 100644
---- a/tools/testing/selftests/seccomp/seccomp_bpf.c
-+++ b/tools/testing/selftests/seccomp/seccomp_bpf.c
-@@ -2184,6 +2184,9 @@ FIXTURE_TEARDOWN(TRACE_syscall)
- 
- TEST(negative_ENOSYS)
- {
-+#if defined(__arm__)
-+	SKIP(return, "arm32 does not support calling syscall -1");
-+#endif
- 	/*
- 	 * There should be no difference between an "internal" skip
- 	 * and userspace asking for syscall "-1".
-@@ -3072,7 +3075,8 @@ TEST(syscall_restart)
- 		timeout.tv_sec = 1;
- 		errno = 0;
- 		EXPECT_EQ(0, nanosleep(&timeout, NULL)) {
--			TH_LOG("Call to nanosleep() failed (errno %d)", errno);
-+			TH_LOG("Call to nanosleep() failed (errno %d: %s)",
-+				errno, strerror(errno));
- 		}
- 
- 		/* Read final sync from parent. */
-@@ -3908,6 +3912,9 @@ TEST(user_notification_filter_empty)
- 		TH_LOG("Kernel does not support PR_SET_NO_NEW_PRIVS!");
- 	}
- 
-+	if (__NR_clone3 < 0)
-+		SKIP(return, "Test not built with clone3 support");
-+
- 	pid = sys_clone3(&args, sizeof(args));
- 	ASSERT_GE(pid, 0);
- 
-@@ -3962,6 +3969,9 @@ TEST(user_notification_filter_empty_threaded)
- 		TH_LOG("Kernel does not support PR_SET_NO_NEW_PRIVS!");
- 	}
- 
-+	if (__NR_clone3 < 0)
-+		SKIP(return, "Test not built with clone3 support");
-+
- 	pid = sys_clone3(&args, sizeof(args));
- 	ASSERT_GE(pid, 0);
- 
--- 
-2.34.1
+gentle ping on this one. MT8195 Chromebooks sometimes boot to a broken state
+without it.
 
+Thanks,
+Nícolas
 
