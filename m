@@ -4,105 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3489CC04A94
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 06:33:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 666B9C04A94
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 07:47:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/WBYHWBePTU6C5eucIxmnpm6TRHg4GxWEuDC87hbIx8=; b=0GmLTlpsV49ZuxWGeSVH2Ybrm1
-	DolQ1MC2P2RWnHFlZCNI2QUR2egFc8dXWd+Dtp06BrmPrmqYDvY7zZYLHzTAOCpZXWPjsFDmKhwvx
-	BrGCZ6JSjV5r3gbJfXyYatjxlPxVU5WjZS/4bhF5q5gRTc6/7FQOYV7VP58XfRF86pfkUlqIWq/G1
-	SS/MDVdjt/nqfMIq/I+fDZFescA+38Q1uqcjyEAz3G0/JpQTWjMvaN7U4SudaMpinvF2vKlLsJeQx
-	nriwLly0k4y1lLTksXrDKoUXZQQcwLTdu7oBNlRsumkEW/uQln0l5c2Z3ehGTIqqAJ84jIClkfm8V
-	f2HfKU2w==;
+	bh=dhpGgdbtPxtlzBnzGvNtLx/+CntVAPL8Getc9S/EtvE=; b=sGm9toRwue8Td2+8ODz7ntSTVe
+	Ko3c6GC9lDicbhIp00DQFq1mcGl6rXXcBnqTrN9bjSLlafaWYPd3kZyUCMI9fHaKj5WsKJNNkn1o2
+	Lpk/gYo7JLT3Xg72U3Rkv8Ml011/EXSmTGD+qZNBa1wo2OF+HsPIP62v4sIB8PVUEaqDrqg/9wXmX
+	QW22YIeLDr4blQHRunm0mTZnkmn+ABmhbgJfhwhqR4MsxpoaS3Er7u9GX78u5WsZFtmSLWTW74C8o
+	BdbHlXL2x9UHVG6TKicg0wBz02a3Sa5hx+F+J1mvI9Vxo27Gu4wf+/lD8QqoqK7Vu7/fVr4l9o52K
+	c3SW80Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTzF6-006fw1-0E;
-	Thu, 10 Aug 2023 06:33:56 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1qU0OL-006mYS-2p;
+	Thu, 10 Aug 2023 07:47:33 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qTzEi-006fbj-0f
+	id 1qU0OJ-006mXV-2V
 	for linux-mediatek@lists.infradead.org;
-	Thu, 10 Aug 2023 06:33:33 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-3fe4ad22eb0so4684385e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 09 Aug 2023 23:33:29 -0700 (PDT)
+	Thu, 10 Aug 2023 07:47:33 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-52340d9187aso693459a12.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Aug 2023 00:47:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1691649208; x=1692254008;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/WBYHWBePTU6C5eucIxmnpm6TRHg4GxWEuDC87hbIx8=;
-        b=WsW7N5hH568pRQc1HRO3Dph5sZBjMP7VCQ9PCz17RKguEShZUyFktuqumSMowNXnNL
-         eZS7dxaBqYwAANnxZaDYAmepUMVya8yW7kPjBBApwlk7OvvMjJEZO7H+FbP07j4yW/Q9
-         v+OQWgdu1hwGASwjeScs1jrTLWsV+ZWk6T7EU3sxTyt8AmDwR3GSouEMghCxR7wTB4+l
-         QyKQhIQUJpsbbZm1bTH7OH4EwIzoF2l1A+au4POCQyT1uXwMkgZcMkz5b1mxwoyN3S41
-         HQkoW65jAh72hsl2jei/YeCfL+DOSWqvIbvOk1YayxqYBkf7jfR67GAuRMcFIDR1qauT
-         ezqw==
+        d=linaro.org; s=google; t=1691653647; x=1692258447;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dhpGgdbtPxtlzBnzGvNtLx/+CntVAPL8Getc9S/EtvE=;
+        b=TCouXo8hPM/jVxiHx4HiCypCk6rJQPbI9AuhBPVcn/DeoHQoGs0K/qmCBg/fXBxrnm
+         x9ndiKsg6ceAeVt7oq4Ax2tf5qYsxftiA8FXg4oYaev50pnzZ0Ndp7Q5YOHJqxUNhVod
+         qyQi4hFrls3IYYHvBlt23AoWpVRhRZnIhEm6+jfNyVfgIKcmJD7VmucVkf172J7NdzpT
+         U497GQCzvnuf6QEpie6uMYEQDyvoVDoisfnAMpwkqdfcq6xl+xKIgUtw8M/p2sM5uLkM
+         WTcUgemTcfTqlK7Yij1gZunpx3csb95oeh96TtGz7ByTAQRAZNyRkHay/kkaLS5hAU4N
+         jkwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691649208; x=1692254008;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/WBYHWBePTU6C5eucIxmnpm6TRHg4GxWEuDC87hbIx8=;
-        b=STfCqbIl36+zpCMUn/Dz1lBzNzumk7/02TkzvSfmjo5N50Z+vbiu0Ip/SwwGT14h+a
-         nwt2HuWt9TnntmVCeUy/jcaTc+MDWBvV1KGdNKM+VcWCoVRPVIIIaUEBb3mni86oqDR7
-         35eVkIp6v6U0Yk3g/ff+Jip5RNwSKUZSSVZX7LPqWEXivl+4vkj9x/vaQb6Hs0iHtZnI
-         SufEgcLKsJALAtzA49T6opgm4UWcbAYuBf3Z6rrIzeMU+d4rV/q/8GR4/eWFvbI7WTUQ
-         IVVaFPSp33AEtxSVsDoRuThDEu3cblgQISA0HuuPmnXo7bbXAUKuD7XjaHh/3EtzRlFK
-         VLRg==
-X-Gm-Message-State: AOJu0Yypov9w+txRu1+HMMi82DkjVwhv9U8co8Q37bmf1iZHwdfrxaKr
-	J3LwvPyLM7f/7MUuUAN4BRIvJw==
-X-Google-Smtp-Source: AGHT+IEXV/tZ+ldWvHaqx8+19PGg8/1xO8IsS1t83BnY9Nx8oyuLOskgHlviUqUGSPNbI+PEAFXAUg==
-X-Received: by 2002:a7b:ce8e:0:b0:3fe:2109:b9ff with SMTP id q14-20020a7bce8e000000b003fe2109b9ffmr1127175wmj.0.1691649208491;
-        Wed, 09 Aug 2023 23:33:28 -0700 (PDT)
-Received: from krzk-bin.. ([178.197.222.113])
-        by smtp.gmail.com with ESMTPSA id o10-20020a1c750a000000b003fe2b6d64c8sm4020018wmc.21.2023.08.09.23.33.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Aug 2023 23:33:28 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Jerome Brunet <jbrunet@baylibre.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Shengjiu Wang <shengjiu.wang@nxp.com>,
-	Rohit kumar <quic_rohkumar@quicinc.com>,
-	Cheng-Yi Chiang <cychiang@chromium.org>,
-	Rao Mandadapu <srivasam@codeaurora.org>,
-	Judy Hsiao <judyhsiao@chromium.org>,
-	Trevor Wu <trevor.wu@mediatek.com>,
-	Jonathan Bakker <xc-racer2@live.ca>,
-	alsa-devel@alsa-project.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v2 11/11] ASoC: samsung: tm2_wm5110: parse audio-routing
-Date: Thu, 10 Aug 2023 08:32:59 +0200
-Message-Id: <20230810063300.20151-11-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230810063300.20151-1-krzysztof.kozlowski@linaro.org>
-References: <20230810063300.20151-1-krzysztof.kozlowski@linaro.org>
+        d=1e100.net; s=20221208; t=1691653647; x=1692258447;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=dhpGgdbtPxtlzBnzGvNtLx/+CntVAPL8Getc9S/EtvE=;
+        b=hN4q5+t0THYdLe0UB3FPI4hx7E1IT0L2rrcqyT95wgGzsu8B+PNk+TRvA0MBj28HX+
+         vOV5ltuJH5tkt+J7lroeGR9iGldEITqSFpb2jwnmEwANAe7f5kXHkH3OokpCJaGBlWCy
+         0U8V6pZIzXOwlGhvkE77bv9MFf/P/Hl0d1o9JOC+A4tJ5mlNqSGofQ/l/wVUVTW3UbXT
+         vrOKVmknvDU2LNm3A3u2c+MZLY0U9P3SOIeaOorX0bHTlD2XYOF7BOZKibngIXcptVKP
+         VDFEHvza7Aiewoq5nSoom4V13p7mGrthu4c0lymg8q/vohmRCp0tVdXiNvnJasiF+Tcr
+         669w==
+X-Gm-Message-State: AOJu0Yw2JJreVQCHLIIjkkHa6MrYazvmxOTanUT2ZHQyzZd4PgZ/usl7
+	3ZkHk7mwH71uesEZMzfejplyGg==
+X-Google-Smtp-Source: AGHT+IF9zsTmioOuHxTFGoxEizbPFEc/AaHn3qyFS7Ire5UldEq2+XXEFPOCEZP4aWihn4A+p0JOyg==
+X-Received: by 2002:a17:906:2189:b0:99b:cf0c:2cb1 with SMTP id 9-20020a170906218900b0099bcf0c2cb1mr1357849eju.66.1691653647608;
+        Thu, 10 Aug 2023 00:47:27 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.222.113])
+        by smtp.gmail.com with ESMTPSA id w20-20020a170906385400b0097404f4a124sm560321ejc.2.2023.08.10.00.47.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 10 Aug 2023 00:47:27 -0700 (PDT)
+Message-ID: <137a734e-0e5a-5fcb-f0d3-1fdbb5e8da34@linaro.org>
+Date: Thu, 10 Aug 2023 09:47:24 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.14.0
+Subject: Re: [PATCH v2 02/11] ASoC: dt-bindings: mediatek,mt8188-mt6359: use
+ common sound card
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>, Judy Hsiao
+ <judyhsiao@chromium.org>, linux-arm-kernel@lists.infradead.org,
+ NXP Linux Team <linux-imx@nxp.com>, Trevor Wu <trevor.wu@mediatek.com>,
+ Jerome Brunet <jbrunet@baylibre.com>, Fabio Estevam <festevam@gmail.com>,
+ Shengjiu Wang <shengjiu.wang@nxp.com>, Jonathan Bakker <xc-racer2@live.ca>,
+ Shawn Guo <shawnguo@kernel.org>, linux-kernel@vger.kernel.org,
+ Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>, Jaroslav Kysela
+ <perex@perex.cz>, Rao Mandadapu <srivasam@codeaurora.org>,
+ Takashi Iwai <tiwai@suse.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>,
+ Rohit kumar <quic_rohkumar@quicinc.com>,
+ Cheng-Yi Chiang <cychiang@chromium.org>, Mark Brown <broonie@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20230810063300.20151-1-krzysztof.kozlowski@linaro.org>
+ <20230810063300.20151-2-krzysztof.kozlowski@linaro.org>
+ <169165201641.3911557.18445521260746432395.robh@kernel.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <169165201641.3911557.18445521260746432395.robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230809_233332_261292_87DB4D56 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20230810_004731_815701_BF8A8491 
+X-CRM114-Status: GOOD (  14.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,37 +112,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Parse generic sound card "audio-routing" property and fallback to
-"samsung,audio-routing" if it is missing.
+On 10/08/2023 09:20, Rob Herring wrote:
+> 
+> On Thu, 10 Aug 2023 08:32:50 +0200, Krzysztof Kozlowski wrote:
+>> The mediatek,mt8188-mt6359 Linux sound machine driver requires the
+>> "model" property, so binding was incomplete.  Reference the common sound
+>> card properties to fix that which also allows to remove duplicated
+>> property definitions.  Leave the relevant parts of "audio-routing"
+>> description.
+>>
+>> Reviewed-by: Rob Herring <robh@kernel.org>
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>> ---
+>>  .../bindings/sound/mediatek,mt8188-mt6359.yaml  | 17 +++++++----------
+>>  1 file changed, 7 insertions(+), 10 deletions(-)
+>>
+> 
+> My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+> on your patch (DT_CHECKER_FLAGS is new in v5.13):
+> 
+> yamllint warnings/errors:
+> 
+> dtschema/dtc warnings/errors:
+> 
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- sound/soc/samsung/tm2_wm5110.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+I think the bot responds like this if the patch could not be applied.
+Probably we can ignore it.
 
-diff --git a/sound/soc/samsung/tm2_wm5110.c b/sound/soc/samsung/tm2_wm5110.c
-index d611ec9e5325..5ebf17f3de1e 100644
---- a/sound/soc/samsung/tm2_wm5110.c
-+++ b/sound/soc/samsung/tm2_wm5110.c
-@@ -523,10 +523,14 @@ static int tm2_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
--	ret = snd_soc_of_parse_audio_routing(card, "samsung,audio-routing");
-+	ret = snd_soc_of_parse_audio_routing(card, "audio-routing");
- 	if (ret < 0) {
--		dev_err(dev, "Audio routing is not specified or invalid\n");
--		return ret;
-+		/* Backwards compatible way */
-+		ret = snd_soc_of_parse_audio_routing(card, "samsung,audio-routing");
-+		if (ret < 0) {
-+			dev_err(dev, "Audio routing is not specified or invalid\n");
-+			return ret;
-+		}
- 	}
- 
- 	card->aux_dev[0].dlc.of_node = of_parse_phandle(dev->of_node,
--- 
-2.34.1
+Best regards,
+Krzysztof
 
 
