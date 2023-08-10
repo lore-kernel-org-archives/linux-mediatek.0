@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFB98C001B0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 08:18:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4EFCC001DE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 08:19:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N1S3yE96sxZWitB4oiJ30vpkB3MWLEMpL6UDMSJWZXU=; b=3oflK11EnxN1ik0prDTn6zJMwM
-	7aM0bokF0YrHJZev5AbkWs0PwsrCFpch0+LT6kBC23LfwR77Mc4ENed0XYw4Mf/TLnT4T6Ok6lh8o
-	r9ThhgfUKmnn0jvuZHZqWmpsV8z2LhSB/ZVf6RitmxwKbBdMyHZluuWhyCQ5iWwBKJ58iNnoQOXGK
-	+eajotdXVDPf6Fhf16HKXDwS1uHyVAP7W78iox4IvECk95h+HUgB8IGxDl8nD8CimB9aMYLF66K0u
-	evkH2dO/ERjVfiNeuvdgGgHrsIpCgLIcLrqJ4fkFJWUOQTmq4aNycx6+a88j1Xnr7sa0LVb1DcKs/
-	yfC9SfPA==;
+	bh=78OX4fId0Em709uz0mp6uxgk8bb4IwlDXBz/uTj2fjY=; b=UoIDuJzSz4yckRNWJzjiEJvfyX
+	Mt7fHLPg056P5SdAotodVOJ5HziREDV5hUHok3O5IesJGW5yoXU/gPoG253eQHedOWqW46qGK5DEF
+	nKZeioxaAijDmM2S6UNxzStzjVyAqKjyTU+igkn910UajZ0zbtjIB36sNN6rHWfYinAhsVfjrDhqA
+	Zn6tf7HHYE2LVCizIsawr+nw3Rf9Pw5EbGV9zyEf/xVkrHVoP2CfPwiJn8WB/cHFGLLo0jzz3kIyq
+	r0m5RcD5eIUvBnhc+v92lDugMHMVx74qP5ZoA4qKW3NS9mO2HjDorH8IoZQJpMgKhGymSEav6H1UG
+	Zh1Ospng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU0sc-006rFG-2U;
-	Thu, 10 Aug 2023 08:18:50 +0000
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
+	id 1qU0t9-006rPI-2W;
+	Thu, 10 Aug 2023 08:19:23 +0000
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU0sZ-006rCX-07
+	id 1qU0t6-006rMy-1H
 	for linux-mediatek@lists.infradead.org;
-	Thu, 10 Aug 2023 08:18:48 +0000
-Received: by mail-yb1-xb2d.google.com with SMTP id 3f1490d57ef6-d35a9d7a5bdso588370276.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 10 Aug 2023 01:18:45 -0700 (PDT)
+	Thu, 10 Aug 2023 08:19:21 +0000
+Received: by mail-yb1-xb29.google.com with SMTP id 3f1490d57ef6-d07c535377fso602017276.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Aug 2023 01:19:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1691655524; x=1692260324;
+        d=linaro.org; s=google; t=1691655558; x=1692260358;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=N1S3yE96sxZWitB4oiJ30vpkB3MWLEMpL6UDMSJWZXU=;
-        b=sKRwat/bRypjQs0GDj+E5aX6U0l+rdH2Ppp7jgbUiwQQsqjEaK0abvIScLRA0wD+XB
-         V+k33vveoWCeS1c6XgCqjjXWr//cl1HyFtdD8ttwfDC6tU5h0yWEtUhgAWWlSrBAqi9t
-         tXTEm4YMv0WM1uBDtQtenVY2VwUD4UxTzpZEwHsGCFe7Z/2lAj6TisZ1wfKRqkKtHkMv
-         q4kQ3tqQ3kjjJBlQFVfvfmjVGvTI9ZG6qPa9xIgWc3cwJulHzC1kKt6V4uv2UEb2aMy8
-         OAS7Hff9YtpzqDV058P27LVyQvRktH36oLc1Ux2VOWBYO61uLfbyzTdGhTV/qpGrAtF8
-         glUQ==
+        bh=78OX4fId0Em709uz0mp6uxgk8bb4IwlDXBz/uTj2fjY=;
+        b=YAetKf4q0nZa/dO71z7++J7KKpe1E1CC7O3ahafQ7APpHv5jmvyn5BBv2mwDpYC5is
+         aCqkyV5eahWJcbkNVk0H4ZuATN+jOIeGgJTiNul2i5t9tXVMigNJA6VlxX/a8OMvNSIA
+         YaLs/IE+usEOobqLkPYKtN3CknTSd/aP7iBrjDMEftqOkGi4Hzn8W27JugL/elhtZAtS
+         lvN5G1ptPirqDO85jdOp47BWA9MJm/z4Kcuzuh6yVL2pnLpcF/Uw4mERq/Siv1vZ2eMQ
+         WGKJAkQHqeDReRN5me9rxTKini4wIOwCZjirxG0wunRnpyvqVfZs1EDQzXiZjCK8xLxA
+         VFLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691655524; x=1692260324;
+        d=1e100.net; s=20221208; t=1691655558; x=1692260358;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=N1S3yE96sxZWitB4oiJ30vpkB3MWLEMpL6UDMSJWZXU=;
-        b=MMMIZI3VvIBRR+IF0pxj+LnBUmzhKWlXzace0yKvB3epUc4yu0+bnxsX1czTuTt8Ui
-         nPLE1Cx/cAEk6B60eTI0cKfPVQVHc70R2b6tBpZt1MMRVu6sAY1j2A2MyK/Wi/yeYZVq
-         TrBQGM/TV8s4e5EJnQafx7v+lofoBOUKuw7mZ/H6RtemAJyISZlE+Z/v5uHeYJ5VkZZW
-         e1a3qCscrzoCDb9wrkbK8x1Nj3OYuWvaQdGyx9EQmyuoencN5OiJZLwn8xrYOV/KH9iZ
-         cwAUkW78ABEtFk0IangQGZx8WKSFA84C2tRj8djMyf1ZZOqpQHgzVTIDNH8N6HGPLHY9
-         g/kw==
-X-Gm-Message-State: AOJu0Yw323QDg5Um3DMFF9WF0h9LfAAzCcLLAnI05FRHOB+TrMIT75eW
-	tOQj03hAi60rpkt4y+zzgT+VjwM+qH9IDrwsmw04lA==
-X-Google-Smtp-Source: AGHT+IE+UnSxHykLJJfIQch1e5QQ0u1bPECfUCUFUDCntbpI1NXH0v2rJAWr/evYDXltegUQu7z4Swu4ag0Zr1/V/sw=
-X-Received: by 2002:a25:3611:0:b0:d4c:aa71:8294 with SMTP id
- d17-20020a253611000000b00d4caa718294mr1849966yba.33.1691655524705; Thu, 10
- Aug 2023 01:18:44 -0700 (PDT)
+        bh=78OX4fId0Em709uz0mp6uxgk8bb4IwlDXBz/uTj2fjY=;
+        b=V8lD5qNTHgGA+2kYK5sAssqzA8Ww7KSVSZxJ8FOWGjtFDrMNQiIXqqvkbVRi0FmIM2
+         BdZJi91KbMFDy21yeodt8/jX1LSdgDnwKcIlVBi7su9UaltpS9tk7bA90of6AHu79buu
+         4VtFlZGG0WoSut+eRbN6MRJiQJOFp8Arm/OsYX6BlysHmFvrmL+gknw88mD3IlbsjwO3
+         4aGb6rErblhSaC4W7uk7hon0Q/3WMcD12jVheV7S/HoH2WCAtv2lQuiVsUfIjIOVHNLO
+         YLQ+LjWSLr2M4Idg76Rp6eJZ1YhKRdhRyVQu7rYDpGHxtYfKDwPBxIL/dQakV7xXTjjP
+         jeAw==
+X-Gm-Message-State: AOJu0YzNIzOBNUiMAOjdRX44C46+mcDkfE9BGAiKbpPfD9x2z6yxjlDJ
+	LKep5IsatlKdTY16wFO6gKDaPUtLh+Ehb17wGJAeMA==
+X-Google-Smtp-Source: AGHT+IG5aWoH89NQGXx33HlD2q+rxamc3JsaObqeeE5H8gH+u446bjvEEFYnXEHJg1VQn5y6v1yXRNGsOkfTWSlQZaU=
+X-Received: by 2002:a25:d711:0:b0:d1a:b59c:502d with SMTP id
+ o17-20020a25d711000000b00d1ab59c502dmr1894292ybg.18.1691655558135; Thu, 10
+ Aug 2023 01:19:18 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org> <20230803-dt-header-cleanups-for-soc-v2-8-d8de2cc88bff@kernel.org>
-In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-8-d8de2cc88bff@kernel.org>
+References: <20230803-dt-header-cleanups-for-soc-v2-0-d8de2cc88bff@kernel.org> <20230803-dt-header-cleanups-for-soc-v2-13-d8de2cc88bff@kernel.org>
+In-Reply-To: <20230803-dt-header-cleanups-for-soc-v2-13-d8de2cc88bff@kernel.org>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 10 Aug 2023 10:18:33 +0200
-Message-ID: <CACRpkdaX=nABoxGMAK+3uEHOt1imucK6LXXRrNuAYFiH3-jt7g@mail.gmail.com>
-Subject: Re: [PATCH v2 08/23] ARM: nomadik: Drop unused includes
+Date: Thu, 10 Aug 2023 10:19:07 +0200
+Message-ID: <CACRpkdYsdKCrQpfoXZFv1XqT-o1skX=TDY-WJ1CSpgavMb+UrQ@mail.gmail.com>
+Subject: Re: [PATCH v2 13/23] ARM: versatile: Drop unused includes
 To: Rob Herring <robh@kernel.org>
 Cc: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>, 
 	Tsahee Zidenberg <tsahee@annapurnalabs.com>, Antoine Tenart <atenart@kernel.org>, 
@@ -100,8 +100,8 @@ Cc: soc@kernel.org, Patrice Chotard <patrice.chotard@foss.st.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230810_011847_073905_B3872697 
-X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-CacheID: sfid-20230810_011920_435718_A002B8B8 
+X-CRM114-Status: UNSURE (   8.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -117,18 +117,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 4, 2023 at 12:44=E2=80=AFAM Rob Herring <robh@kernel.org> wrote=
+On Fri, Aug 4, 2023 at 12:43=E2=80=AFAM Rob Herring <robh@kernel.org> wrote=
 :
 
 > Several includes are not needed, so drop them.
 >
 > Signed-off-by: Rob Herring <robh@kernel.org>
 
-Thanks for cleaning out this.
-
 Acked-by: Linus Walleij <linus.walleij@linaro.org>
-
-Will you funnel this to ARM SoC with the rest?
 
 Yours,
 Linus Walleij
