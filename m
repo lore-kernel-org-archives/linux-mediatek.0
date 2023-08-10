@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34650C04FDF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 08:11:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 852C9C001B0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 08:12:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O109voinB4i42hzf7+Gca1AfZl5TFAeRyQ+uKbGY2GE=; b=mcdw8yUmN1LSmQYrVohMj7di1M
-	Z0PlpLFnwKC2ZmDKLsIJ8LvGmmG06gZj9ZFVrs37MGeqdcoI4CLcK8ANCyFuM06S3rBVFGp5SoL5e
-	lfrkZVY1h88az8IkTSoFDdBiUTa7l7HlPDLI2l+Y4c4ffdMne6wcEjSwzIgBLa1Utt2bRZ414nGkc
-	uiXsQ74cutzasonPsSUnP0ijK1pey/ki7zXpx8UdYIWOmbrwwBZwpJ+OA+WLy5eHyAqEYBXExTiBC
-	3F8eoc/OWrBEt40jMe9c9gLdEQPM7q+aShHgOhtkAdALCCnkn1wAhdTmrl5SWRgT6LddY4mauYvbY
-	o7B7ix0A==;
+	bh=FkR+gqGCuuesY9WOQbPQ2Y2ld+iDLFnZPn/SNaXxV5E=; b=oal+jPvU9+T0GvYnKgiJkaeahD
+	OZg5bTi1tdY+K6qtafoarqSZt24+r5OA0xTJK8onMCTI1oLlJ4wFnETR23+7SNI+lJ5+dap+dT+3I
+	X0FiWRijkXyeqOuzmNnOjoXiqjAYU2E7gTm9E1IJ61Ou4QHpqPTIEOxdEdNHCqOxfY9Yjpov7D4v4
+	EGiCG2dQx5sllzfKghzz6vhYgGf7CwpV4nm9ejsa3k5O8oQKwmnh24Mvto4xDiaT0cWgRYn3cVnXX
+	1fcWeHdfVXC9HtsQGbkcp2Ms7InI3WZVX4gUgPWdz4JEURmkMWu/M4YJw2svFxhPMpYlrk37igcfU
+	91Q/VZXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU0lv-006pLs-2o;
-	Thu, 10 Aug 2023 08:11:55 +0000
+	id 1qU0m4-006pPo-1W;
+	Thu, 10 Aug 2023 08:12:04 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qU0lq-006pHb-0o;
-	Thu, 10 Aug 2023 08:11:51 +0000
-X-UUID: 8b4481aa375511ee912e1518a6540028-20230810
+	id 1qU0lr-006pH8-0Y;
+	Thu, 10 Aug 2023 08:11:52 +0000
+X-UUID: 8ae200b6375511ee912e1518a6540028-20230810
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=O109voinB4i42hzf7+Gca1AfZl5TFAeRyQ+uKbGY2GE=;
-	b=oqvQKWjo2O6Pel/jBsbH5KxULr305Ko2KdjVvnhiG/r5b6RUvc5Bvk1XLceOSyI/zwsuFadhG7XK07eqGOdBYRTOb8tgxWZHSdgG/5hbgJ11eTPNF0knS+U6sOCfDkguw21COWCiLpZWlVWcYgHeOX7tYth5ftZ7ApIAOpWyjAE=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FkR+gqGCuuesY9WOQbPQ2Y2ld+iDLFnZPn/SNaXxV5E=;
+	b=poqNaEkkg81jK5TtVCHPUR/CKgSZT34ZOb+CEja36NHb+RMwVhVc8ENht6ErRFn7fW9SnY3+TJfd7KpbNY1CXIQQsJnhpgxff1aPXAl0GkuRLW6ubs927ylnjRB7isppgqRLP9THYhNEXs5Q05cXdagrpinrIeQkWYpIcM1K/K4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:12369d8d-96df-4567-aa3e-af4cf6980231,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.31,REQID:12369d8d-96df-4567-aa3e-af4cf6980231,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:0ad78a4,CLOUDID:c6fd5eee-9a6e-4c39-b73e-f2bc08ca3dc5,B
-	ulkID:230810161146DMZE4IKQ,BulkQuantity:0,Recheck:0,SF:38|29|28|17|19|48,T
+X-CID-O-INFO: VERSION:1.1.31,REQID:b4e78fd0-ab87-4cae-b30c-1e5302da50be,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:70
+X-CID-INFO: VERSION:1.1.31,REQID:b4e78fd0-ab87-4cae-b30c-1e5302da50be,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:70
+X-CID-META: VersionHash:0ad78a4,CLOUDID:c5fd5eee-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:2308101611456U010RDK,BulkQuantity:0,Recheck:0,SF:48|38|29|28|17|19,T
 	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
 	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,
-	TF_CID_SPAM_SNR
-X-UUID: 8b4481aa375511ee912e1518a6540028-20230810
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
+	TF_CID_SPAM_FSD
+X-UUID: 8ae200b6375511ee912e1518a6540028-20230810
 Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1120539744; Thu, 10 Aug 2023 01:11:44 -0700
+	with ESMTP id 630171460; Thu, 10 Aug 2023 01:11:43 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -65,9 +65,9 @@ To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
 CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>
-Subject: [PATCH v3 2/3] ASoC: mediatek: common: revise SOF common code
-Date: Thu, 10 Aug 2023 16:11:38 +0800
-Message-ID: <20230810081139.27957-3-trevor.wu@mediatek.com>
+Subject: [PATCH v3 1/3] ASoC: mediatek: mt8188-mt6359: support dynamic pinctrl
+Date: Thu, 10 Aug 2023 16:11:37 +0800
+Message-ID: <20230810081139.27957-2-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230810081139.27957-1-trevor.wu@mediatek.com>
 References: <20230810081139.27957-1-trevor.wu@mediatek.com>
@@ -75,8 +75,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230810_011150_301275_74500BFE 
-X-CRM114-Status: GOOD (  23.87  )
+X-CRM114-CacheID: sfid-20230810_011151_242894_9399EF51 
+X-CRM114-Status: GOOD (  13.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,232 +91,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Originally, normal dai link fixup callback is overwritten by sof fixup
-callback on mtk_sof_card_late_probe and it relies on the mapping defined
-on struct sof_conn_stream.
-
-It's not flexible. When a new hardware connection is adopted, user needs
-to update struct sof_conn_stream defined in machine driver which is used
-to specify the mapping relationship of normal BE and SOF BE.
-
-In the patch, mtk_sof_check_tplg_be_dai_link_fixup() is introduced for
-all normal BEs. In mtk_sof_late_probe, back up normal BE fixup if it
-exists and then overwrite be_hw_params_fixup by the new callback.
-
-There are two cases for FE and BE connection.
-
-case 1:
-SOF FE -> normal BE
-       -> SOF_BE
-
-case 2:
-normal FE -> normal BE
-
-In the new fixup callback, it tries to find SOF_BE which connects to the
-same FE, and then reuses the fixup of SOF_BE. If no SOF_BE exists,
-it must be case 2, so rollback to the original fixup if it exists.
-
-As a result, the predefined relation is not needed anymore. Hardware
-connection can be controlled by the mixer control for AFE interconn.
-Then, DPCM finds the BE mapping at runtime.
+To avoid power leakage, it is recommended to replace the default pinctrl
+state with dynamic pinctrl since certain audio pinmux functions can
+remain in a HIGH state even when audio is disabled. Linking pinctrl with
+DAPM using SND_SOC_DAPM_PINCTRL will ensure that audio pins remain in
+GPIO mode by default and only switch to an audio function when necessary.
 
 Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../soc/mediatek/common/mtk-dsp-sof-common.c  | 113 +++++++++++++++---
- .../soc/mediatek/common/mtk-dsp-sof-common.h  |   8 ++
- 2 files changed, 106 insertions(+), 15 deletions(-)
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/sound/soc/mediatek/common/mtk-dsp-sof-common.c b/sound/soc/mediatek/common/mtk-dsp-sof-common.c
-index 6fef16306f74..f3894010f656 100644
---- a/sound/soc/mediatek/common/mtk-dsp-sof-common.c
-+++ b/sound/soc/mediatek/common/mtk-dsp-sof-common.c
-@@ -54,6 +54,8 @@ int mtk_sof_card_probe(struct snd_soc_card *card)
- {
- 	int i;
- 	struct snd_soc_dai_link *dai_link;
-+	struct mtk_soc_card_data *soc_card_data = snd_soc_card_get_drvdata(card);
-+	struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
+diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+index 7c9e08e6a4f5..e7ac2b6671d3 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
++++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+@@ -246,6 +246,11 @@ static const struct snd_soc_dapm_widget mt8188_mt6359_widgets[] = {
+ 	SND_SOC_DAPM_MIC("Headset Mic", NULL),
+ 	SND_SOC_DAPM_SINK("HDMI"),
+ 	SND_SOC_DAPM_SINK("DP"),
++
++	/* dynamic pinctrl */
++	SND_SOC_DAPM_PINCTRL("ETDM_SPK_PIN", "aud_etdm_spk_on", "aud_etdm_spk_off"),
++	SND_SOC_DAPM_PINCTRL("ETDM_HP_PIN", "aud_etdm_hp_on", "aud_etdm_hp_off"),
++	SND_SOC_DAPM_PINCTRL("MTKAIF_PIN", "aud_mtkaif_on", "aud_mtkaif_off"),
+ };
  
- 	/* Set stream_name to help sof bind widgets */
- 	for_each_card_prelinks(card, i, dai_link) {
-@@ -61,10 +63,81 @@ int mtk_sof_card_probe(struct snd_soc_card *card)
- 			dai_link->stream_name = dai_link->name;
- 	}
- 
-+	INIT_LIST_HEAD(&sof_priv->dai_link_list);
-+
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(mtk_sof_card_probe);
- 
-+static struct snd_soc_pcm_runtime *mtk_sof_find_tplg_be(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_card *card = rtd->card;
-+	struct mtk_soc_card_data *soc_card_data = snd_soc_card_get_drvdata(card);
-+	struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
-+	struct snd_soc_pcm_runtime *fe;
-+	struct snd_soc_pcm_runtime *be;
-+	struct snd_soc_dpcm *dpcm;
-+	int i, stream;
-+
-+	for_each_pcm_streams(stream) {
-+		fe = NULL;
-+		for_each_dpcm_fe(rtd, stream, dpcm) {
-+			fe = dpcm->fe;
-+			if (fe)
-+				break;
-+		}
-+
-+		if (!fe)
-+			continue;
-+
-+		for_each_dpcm_be(fe, stream, dpcm) {
-+			be = dpcm->be;
-+			if (be == rtd)
-+				continue;
-+
-+			for (i = 0; i < sof_priv->num_streams; i++) {
-+				const struct sof_conn_stream *conn = &sof_priv->conn_streams[i];
-+
-+				if (!strcmp(be->dai_link->name, conn->sof_link))
-+					return be;
-+			}
-+		}
-+	}
-+
-+	return NULL;
-+}
-+
-+/* fixup the BE DAI link to match any values from topology */
-+static int mtk_sof_check_tplg_be_dai_link_fixup(struct snd_soc_pcm_runtime *rtd,
-+						struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_card *card = rtd->card;
-+	struct mtk_soc_card_data *soc_card_data = snd_soc_card_get_drvdata(card);
-+	struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
-+	struct snd_soc_pcm_runtime *sof_be;
-+	struct mtk_dai_link *dai_link;
-+	int ret = 0;
-+
-+	sof_be = mtk_sof_find_tplg_be(rtd);
-+	if (sof_be) {
-+		if (sof_priv->sof_dai_link_fixup)
-+			ret = sof_priv->sof_dai_link_fixup(rtd, params);
-+		else if (sof_be->dai_link->be_hw_params_fixup)
-+			ret = sof_be->dai_link->be_hw_params_fixup(sof_be, params);
-+	} else {
-+		list_for_each_entry(dai_link, &sof_priv->dai_link_list, list) {
-+			if (strcmp(dai_link->name, rtd->dai_link->name) == 0) {
-+				if (dai_link->be_hw_params_fixup)
-+					ret = dai_link->be_hw_params_fixup(rtd, params);
-+
-+				break;
-+			}
-+		}
-+	}
-+
-+	return ret;
-+}
-+
- int mtk_sof_card_late_probe(struct snd_soc_card *card)
- {
- 	struct snd_soc_pcm_runtime *rtd;
-@@ -72,6 +145,8 @@ int mtk_sof_card_late_probe(struct snd_soc_card *card)
- 	struct mtk_soc_card_data *soc_card_data =
- 		snd_soc_card_get_drvdata(card);
- 	struct mtk_sof_priv *sof_priv = soc_card_data->sof_priv;
-+	struct snd_soc_dai_link *dai_link;
-+	struct mtk_dai_link *mtk_dai_link;
- 	int i;
- 
- 	/* 1. find sof component */
-@@ -86,25 +161,37 @@ int mtk_sof_card_late_probe(struct snd_soc_card *card)
+ static const struct snd_kcontrol_new mt8188_mt6359_controls[] = {
+@@ -267,6 +272,7 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+ 		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
+ 	struct snd_soc_component *cmpnt_codec =
+ 		asoc_rtd_to_codec(rtd, 0)->component;
++	struct snd_soc_dapm_widget *pin_w = NULL, *w;
+ 	struct mtk_base_afe *afe;
+ 	struct mt8188_afe_private *afe_priv;
+ 	struct mtkaif_param *param;
+@@ -306,6 +312,18 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
  		return 0;
  	}
  
--	/* 2. add route path and fixup callback */
-+	/* 2. overwrite all BE fixups, and backup the existing fixup */
-+	for_each_card_prelinks(card, i, dai_link) {
-+		if (dai_link->be_hw_params_fixup) {
-+			mtk_dai_link = devm_kzalloc(card->dev,
-+						    sizeof(*mtk_dai_link),
-+						    GFP_KERNEL);
-+			if (!mtk_dai_link)
-+				return -ENOMEM;
-+
-+			mtk_dai_link->be_hw_params_fixup = dai_link->be_hw_params_fixup;
-+			mtk_dai_link->name = dai_link->name;
-+
-+			list_add(&mtk_dai_link->list, &sof_priv->dai_link_list);
++	for_each_card_widgets(rtd->card, w) {
++		if (!strcmp(w->name, "MTKAIF_PIN")) {
++			pin_w = w;
++			break;
 +		}
-+
-+		if (dai_link->no_pcm)
-+			dai_link->be_hw_params_fixup = mtk_sof_check_tplg_be_dai_link_fixup;
 +	}
 +
-+	/* 3. add route path and SOF_BE fixup callback */
- 	for (i = 0; i < sof_priv->num_streams; i++) {
- 		const struct sof_conn_stream *conn = &sof_priv->conn_streams[i];
- 		struct snd_soc_pcm_runtime *sof_rtd = NULL;
--		struct snd_soc_pcm_runtime *normal_rtd = NULL;
- 
- 		for_each_card_rtds(card, rtd) {
- 			if (!strcmp(rtd->dai_link->name, conn->sof_link)) {
- 				sof_rtd = rtd;
--				continue;
--			}
--			if (!strcmp(rtd->dai_link->name, conn->normal_link)) {
--				normal_rtd = rtd;
--				continue;
--			}
--			if (normal_rtd && sof_rtd)
- 				break;
-+			}
- 		}
--		if (normal_rtd && sof_rtd) {
-+		if (sof_rtd) {
- 			int j;
- 			struct snd_soc_dai *cpu_dai;
- 
-@@ -131,13 +218,9 @@ int mtk_sof_card_late_probe(struct snd_soc_card *card)
- 				}
- 			}
- 
-+			/* overwrite SOF BE fixup */
- 			sof_rtd->dai_link->be_hw_params_fixup =
- 				sof_comp->driver->be_hw_params_fixup;
--			if (sof_priv->sof_dai_link_fixup)
--				normal_rtd->dai_link->be_hw_params_fixup =
--					sof_priv->sof_dai_link_fixup;
--			else
--				normal_rtd->dai_link->be_hw_params_fixup = mtk_sof_dai_link_fixup;
- 		}
- 	}
- 
-diff --git a/sound/soc/mediatek/common/mtk-dsp-sof-common.h b/sound/soc/mediatek/common/mtk-dsp-sof-common.h
-index dd38c4a93574..4bc5e1c0c8ed 100644
---- a/sound/soc/mediatek/common/mtk-dsp-sof-common.h
-+++ b/sound/soc/mediatek/common/mtk-dsp-sof-common.h
-@@ -18,11 +18,19 @@ struct sof_conn_stream {
- 	int stream_dir;
- };
- 
-+struct mtk_dai_link {
-+	const char *name;
-+	int (*be_hw_params_fixup)(struct snd_soc_pcm_runtime *rtd,
-+				  struct snd_pcm_hw_params *params);
-+	struct list_head list;
-+};
++	if (pin_w)
++		dapm_pinctrl_event(pin_w, NULL, SND_SOC_DAPM_PRE_PMU);
++	else
++		dev_dbg(afe->dev, "%s(), no pinmux widget, please check if default on\n", __func__);
 +
- struct mtk_sof_priv {
- 	const struct sof_conn_stream *conn_streams;
- 	int num_streams;
- 	int (*sof_dai_link_fixup)(struct snd_soc_pcm_runtime *rtd,
- 				  struct snd_pcm_hw_params *params);
-+	struct list_head dai_link_list;
- };
+ 	pm_runtime_get_sync(afe->dev);
+ 	mt6359_mtkaif_calibration_enable(cmpnt_codec);
  
- int mtk_sof_dai_link_fixup(struct snd_soc_pcm_runtime *rtd,
+@@ -403,6 +421,9 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+ 	for (i = 0; i < MT8188_MTKAIF_MISO_NUM; i++)
+ 		param->mtkaif_phase_cycle[i] = mtkaif_phase_cycle[i];
+ 
++	if (pin_w)
++		dapm_pinctrl_event(pin_w, NULL, SND_SOC_DAPM_POST_PMD);
++
+ 	dev_dbg(afe->dev, "%s(), end, calibration ok %d\n",
+ 		__func__, param->mtkaif_calibration_ok);
+ 
 -- 
 2.18.0
 
