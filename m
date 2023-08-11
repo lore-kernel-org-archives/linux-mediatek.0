@@ -4,89 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74CD8C001B0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Aug 2023 19:29:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB02C0015E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Aug 2023 22:45:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yXWmRapdmWSpOJGcCnf+eTbv0hwO0eR2fATZocuX9i0=; b=GbwiG3ie59zp/1luf4Wxk1JBdd
-	IAyn0cjN0uA/olMIHv/RB9kHcRQgkJNXuzxaz+ahmgWUaEMygZoylo14sS66E4TTbVwwjYTddfFfz
-	zjOADn2BTkdvWcZpTvHMYH4lWgMbuSnxWbF/h5bfTx56Y2ZrGerocFXx+q8/+68KkhyXX5hcgFBGC
-	IBAGmQUWfUOldDHU/iAs4DHfqAguAoGq4ul4++OdPwmamkQ4CS940+ua6bGcpdTo+uy0ziKuxcexh
-	s9prySaeP3kgEGgPdFpM62aOWo5gcKmYYlkPsp6ELPMIV+dlksdPcEWpyFcW7lZchMhQWKzfZyIFx
-	rMaGkvOw==;
+	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pbtUUoJutGSdy50RvaJ3kKz0WaAIY7fJ4VKyrVHb2W8=; b=i89Ze8Ax758F41mD2LB2uYDguN
+	sI9Ty25qsk0du3Vn0xaeH6N8n9ibbvivoXtfxKzXvyVE+lnn0r/mOVFA6ZFQaNiZHeSN0hsOz1V35
+	FurAlE7OeSe9/UFrStoRmlSHBZbayi4eFaGcuIH870GTbkmUkK+yDcrIolfVwcKv322YGGl8CGOEx
+	5FTmhFU0GXfp+MjGQpJM1CnxVsY++NuFoGG5ld3cyIzt66Et//u8PS+W1p7uTxcTkkOvTm6jlft9g
+	xecKZEhrICSzVcO9Ckh8SaS9vFOfcSU249xouYRlmj2Xr7RuvQ8hQ5aF+uZY5ob+zfa4Jgx+Qb9lx
+	97z9uxVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUXom-00BSmy-0M;
-	Fri, 11 Aug 2023 19:29:04 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1qUat8-00BoJe-0Y;
+	Fri, 11 Aug 2023 22:45:46 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUXoj-00BSlj-0N;
-	Fri, 11 Aug 2023 19:29:02 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-3fe4ad22eb0so21180345e9.3;
-        Fri, 11 Aug 2023 12:28:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1691782136; x=1692386936;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=yXWmRapdmWSpOJGcCnf+eTbv0hwO0eR2fATZocuX9i0=;
-        b=M4zMHdklTi41Vs2EVIqzFP2uvzg71K+uZTT7l1mwsTIvPH7npW6JMwx+UepkXInA2Q
-         U3aTBo6YuIKIw82euChV6xBdwwQPGA3nRTfc6Omf9XUBWnzctWHOe2ZD9WVM45y0Q7Cj
-         azumh/Tu3XaF+dnqtICRy4ld5RAE3SFxYN7IFo+2r37jC8gBeXV5UAgKJA7fHMnHvVvr
-         Lpvp+rQ+9rC+/j7rGuviRy4oY5Jlm58VyTaLLuisnaErMCR560KlYf4H21ZL0hz4GvFJ
-         9oy2ToFc1t/CDvu8Psl5qCBO39bybfdeyZdE5XY6y0bMp9GgQ1rAfodrqhhWMLswYfkF
-         gx5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691782136; x=1692386936;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=yXWmRapdmWSpOJGcCnf+eTbv0hwO0eR2fATZocuX9i0=;
-        b=jeS52noplUxiKFTaouh4+7+3XmlI6m0b3M0j9V5Vn8I8JT/1Q3VmDLRNM0+npphInv
-         dxF/gv1IQe2kDqhUzkNVVev2necnhfHFGxaPymepyE+bTD3/BaZeC6hSt7yzU3uCpr8o
-         pHZDsFk3cMxdYxQz7CSNMrV8lpuFbz5OzeiGgnOlR22u+m14JaUYrb4oZhRBZbWFzBdO
-         +XUp1Gz6/P+jFmaNqkYWg1yIFSbNW8rSFko0UP/7uCVQ4n9m6ZurtOxIHO4NagqLmjgv
-         GMbDvc3G8/tl4Y7k9hO0rxnPYzVWqs6FJPLFpB1T0o3ZAXUsY6aK7oF2nXC4Qg+v5obQ
-         n0dg==
-X-Gm-Message-State: AOJu0Yy6il2etUKnhyGH7Vt7WBo49C9NDNfEXNSAUTQseytMwLXxRPyh
-	HK5aLe+vuyXlG7jLV0j/xsSVHns+9BWUaQ==
-X-Google-Smtp-Source: AGHT+IFbYgQt8ICnMPepR4vjBncTPqeCwItzMpL0iUVa8ME8CdhVjlBBG5eEBluNJoJzLV9WIwI0EQ==
-X-Received: by 2002:a1c:7c10:0:b0:3fd:2dd9:6d58 with SMTP id x16-20020a1c7c10000000b003fd2dd96d58mr2153458wmc.26.1691782136239;
-        Fri, 11 Aug 2023 12:28:56 -0700 (PDT)
-Received: from localhost.localdomain ([92.85.190.61])
-        by smtp.gmail.com with ESMTPSA id f20-20020a1c6a14000000b003fe8b249df1sm1871152wmc.41.2023.08.11.12.28.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 11 Aug 2023 12:28:55 -0700 (PDT)
-From: Andrei Coardos <aboutphysycs@gmail.com>
-To: linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org
-Cc: rdunlap@infradead.org,
-	void0red@hust.edu.cn,
-	daniel@makrotopia.org,
-	bchihi@baylibre.com,
-	aouledameur@baylibre.com,
-	angelogioacchino.delregno@collabora.com,
-	matthias.bgg@gmail.com,
-	rui.zhang@intel.com,
-	amitk@kernel.org,
-	daniel.lezcano@linaro.org,
-	rafael@kernel.org,
-	alex@shruggie.ro,
-	Andrei Coardos <aboutphysycs@gmail.com>
-Subject: [PATCH] thermal: mediatek: auxadc_thermal: removed call to platform_set_drvdata()
-Date: Fri, 11 Aug 2023 22:28:47 +0300
-Message-Id: <20230811192847.3838-1-aboutphysycs@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	id 1qUat3-00BoIC-1M;
+	Fri, 11 Aug 2023 22:45:43 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id BE388FF802;
+	Fri, 11 Aug 2023 22:45:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1691793936;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=pbtUUoJutGSdy50RvaJ3kKz0WaAIY7fJ4VKyrVHb2W8=;
+	b=G3vzjQWDz1PJOJkqVLNt8besnssHlQHj72Mj+EsY2ZKzP12pEziBSaD/RyQ6McCE1hbMzN
+	JFLjDkjioBJKafMfizcAO+iC66Xnd8VLwIo59dhaDMK9zQEyMsX5F3btfZC6b8in4BAUFy
+	uogFdKKn6C0+UcyInpJ9Nc1bYL5hN7GO4bRetEs/0lnWarSUkDkS7ZFbTBHWgGU6QvLbWn
+	BfHHdcdN9GuGHZTY3fX7I3LLlotEakVf7Ggf7hOqfG5vLywQNMDX3OH81NOrPWJl7S2e3b
+	hBsOuUneKGzVQJDc6xZDWRmOxK1yO2yylwja+4g9h7ftQlCmv8oGLkoYgDHWog==
+Message-ID: <3f262579-eec1-4b21-9b18-1d1d612e715b@arinc9.com>
+Date: Sat, 12 Aug 2023 01:45:29 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: Re: [PATCH RESEND net-next 2/2] dt-bindings: net: dsa:
+ mediatek,mt7530: document MDIO-bus
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <6eb1b7b8dbc3a4b14becad15f0707d4f624ee18b.1691246461.git.daniel@makrotopia.org>
+ <9aec0fe0cb676b76132c388bb3ead46f596a6e6e.1691246461.git.daniel@makrotopia.org>
+ <dcb981b9-b435-c0e5-8e47-d66add207fdc@arinc9.com>
+ <20230808121707.chona7hakapp6whe@skbuf>
+ <44fde617-1159-4961-84c4-372fe265fbd8@arinc9.com>
+ <20230809220102.t3dqw7iojez5xsq3@skbuf>
+Content-Language: en-US
+In-Reply-To: <20230809220102.t3dqw7iojez5xsq3@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230811_122901_160579_F6D744DC 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20230811_154541_747778_A85C7381 
+X-CRM114-Status: GOOD (  39.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,30 +89,261 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This function call was found to be unnecessary as there is no equivalent
-platform_get_drvdata() call to access the private data of the driver. Also,
-the private data is defined in this driver, so there is no risk of it being
-accessed outside of this driver file.
+On 10.08.2023 01:01, Vladimir Oltean wrote:
+> On Wed, Aug 09, 2023 at 12:03:19PM +0300, Arınç ÜNAL wrote:
+>> On 8.08.2023 15:17, Vladimir Oltean wrote:
+>>> On Sat, Aug 05, 2023 at 11:15:15PM +0300, Arınç ÜNAL wrote:
+>>>> I don't see a reason to resubmit this without addressing the requested
+>>>> change.
+>>>>
+>>>>>> Wouldn't we just skip the whole issue by documenting the need for defining all PHYs
+>>>>>> used on the switch when defining the MDIO bus?
+>>>>>
+>>>>> Good idea, please do that.
+>>>>
+>>>> https://lore.kernel.org/netdev/0f501bb6-18a0-1713-b08c-6ad244c022ec@arinc9.com/
+>>>>
+>>>> Arınç
+>>>
+>>> Arınç, where do you see that comment being added? AFAIU, it is a
+>>> characteristic of the generic __of_mdiobus_register() code to set
+>>> mdio->phy_mask = ~0, and nothing specific to the mt7530.
+>>
+>> What I believe is specific to DSA is, 1:1 mapping of the port reg to the
+>> PHY reg on the mdio bus is disabled if the mdio bus is defined. Therefore,
+>> I believe a notice like below fits mediatek,mt7530.yaml.
+>>
+>> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>> index e532c6b795f4..c59d58252cd5 100644
+>> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>> @@ -128,6 +128,15 @@ properties:
+>>         See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt for
+>>         details for the regulator setup on these boards.
+>> +  mdio:
+>> +    $ref: /schemas/net/mdio.yaml#
+>> +    unevaluatedProperties: false
+>> +    description:
+>> +      Node for the internal MDIO bus connected to the embedded ethernet-PHYs.
+>> +      For every port defined under the "^(ethernet-)?ports$" node, a PHY must be
+>> +      defined under here and a phy-handle property must be defined under the
+>> +      port node to point to the PHY node.
+>> +
+>>     mediatek,mcm:
+>>       type: boolean
+>>       description:
+>>
+>> Arınç
+> 
+> In that case, putting the comment here would make more sense, no?
+> (and maybe enforcing an actual schema, but I've no idea how to do that)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
+> index 480120469953..5a415f12f162 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
+> @@ -59,7 +59,14 @@ properties:
+>         - rtl8_4t
+>         - seville
+> 
+> -# CPU and DSA ports must have phylink-compatible link descriptions
+> +# CPU and DSA ports must have phylink-compatible link descriptions.
+> +# On user ports, these are also supported, but are optional and may be omitted,
+> +# meaning that these ports are implicitly connected to a PHY on an internal
+> +# MDIO bus of the switch that isn't described in the device tree. If the switch
+> +# does have a child node for the internal MDIO bus, the phylink-compatible
+> +# bindings are also required (even if this is not enforced here). The detection
+> +# of an internal MDIO bus is model-specific and may involve matching on the
+> +# "mdio" node name or compatible string.
+>   if:
+>     oneOf:
+>       - required: [ ethernet ]
+> 
+> Since commit fe7324b93222 ("net: dsa: OF-ware slave_mii_bus"), DSA as a
+> framework also supports auto-creating an internal MDIO bus based on the
+> presence of the "mdio" node name, so I guess it makes sense for the
+> "mdio" to appear in the generic dsa.yaml if there's nothing else that's
+> special about it.
 
-Signed-off-by: Andrei Coardos <aboutphysycs@gmail.com>
----
- drivers/thermal/mediatek/auxadc_thermal.c | 2 --
- 1 file changed, 2 deletions(-)
+I agree with this. I've done this which works. It's even found a port
+node with the ethernet property missing, as it should've.
 
-diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
-index f59d36de20a0..99a1c35c68e7 100644
---- a/drivers/thermal/mediatek/auxadc_thermal.c
-+++ b/drivers/thermal/mediatek/auxadc_thermal.c
-@@ -1283,8 +1283,6 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 			mtk_thermal_init_bank(mt, i, apmixed_phys_base,
- 					      auxadc_phys_base, ctrl_id);
- 
--	platform_set_drvdata(pdev, mt);
+diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.yaml b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
+index ec74a660beda..03ccedbc49dc 100644
+--- a/Documentation/devicetree/bindings/net/dsa/dsa.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
+@@ -31,6 +31,24 @@ properties:
+        (single device hanging off a CPU port) must not specify this property
+      $ref: /schemas/types.yaml#/definitions/uint32-array
+  
++  mdio:
++    description: The internal MDIO bus of the switch
++    $ref: /schemas/net/mdio.yaml#
++
++if:
++  required: [ mdio ]
++then:
++  patternProperties:
++    "^(ethernet-)?ports$":
++      patternProperties:
++        "^(ethernet-)?port@[0-9]+$":
++          if:
++            not:
++              required: [ ethernet ]
++          then:
++            required:
++              - phy-handle
++
+  additionalProperties: true
+  
+  $defs:
+diff --git a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
+index 8d7e878b84dc..fe1e2008995d 100644
+--- a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
+@@ -78,6 +78,16 @@ examples:
+              };
+      };
+  
++    macb1 {
++            #address-cells = <1>;
++            #size-cells = <0>;
++
++            fixed-link {
++                    speed = <1000>;
++                    full-duplex;
++            };
++    };
++
+      spi {
+              #address-cells = <1>;
+              #size-cells = <0>;
+@@ -138,6 +148,7 @@ examples:
+                                      phy-mode = "rgmii";
+                                      tx-internal-delay-ps = <2000>;
+                                      rx-internal-delay-ps = <2000>;
++                                    ethernet = <&macb0>;
+  
+                                      fixed-link {
+                                              speed = <1000>;
+diff --git a/Documentation/devicetree/bindings/net/dsa/realtek.yaml b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
+index cfd69c2604ea..f600e65fc990 100644
+--- a/Documentation/devicetree/bindings/net/dsa/realtek.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
+@@ -6,9 +6,6 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
+  
+  title: Realtek switches for unmanaged switches
+  
+-allOf:
+-  - $ref: dsa.yaml#/$defs/ethernet-ports
 -
- 	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
- 					      &mtk_thermal_ops);
- 	if (IS_ERR(tzdev))
--- 
-2.34.1
+  maintainers:
+    - Linus Walleij <linus.walleij@linaro.org>
+  
+@@ -95,37 +92,41 @@ properties:
+        - '#address-cells'
+        - '#interrupt-cells'
+  
+-  mdio:
+-    $ref: /schemas/net/mdio.yaml#
+-    unevaluatedProperties: false
+-
+-    properties:
+-      compatible:
+-        const: realtek,smi-mdio
+-
+-if:
+-  required:
+-    - reg
+-
+-then:
+-  $ref: /schemas/spi/spi-peripheral-props.yaml#
+-  not:
+-    required:
+-      - mdc-gpios
+-      - mdio-gpios
+-      - mdio
+-
+-  properties:
+-    mdc-gpios: false
+-    mdio-gpios: false
+-    mdio: false
+-
+-else:
+-  required:
+-    - mdc-gpios
+-    - mdio-gpios
+-    - mdio
+-    - reset-gpios
++allOf:
++  - $ref: dsa.yaml#/$defs/ethernet-ports
++  - if:
++      required: [ mdio ]
++    then:
++      properties:
++        mdio:
++          properties:
++            compatible:
++              const: realtek,smi-mdio
++
++          required:
++            - compatible
++
++  - if:
++      required:
++        - reg
++    then:
++      $ref: /schemas/spi/spi-peripheral-props.yaml#
++      not:
++        required:
++          - mdc-gpios
++          - mdio-gpios
++          - mdio
++
++      properties:
++        mdc-gpios: false
++        mdio-gpios: false
++        mdio: false
++    else:
++      required:
++        - mdc-gpios
++        - mdio-gpios
++        - mdio
++        - reset-gpios
+  
+  required:
+    - compatible
 
+
+> 
+> Also, in the earlier patch version you had replied to David Bauer:
+> 
+> | > While i was not aware of this side effect, I don't see how this breaks the ABI.
+> |
+> | Your patch doesn't break it, my then-intention of doing PHY muxing by
+> | utilising this would. Your first patch is perfectly fine as is.
+> 
+> Could you please clarify what is your valid use case for not having a
+> phy-handle to a PHY on an MDIO bus that is otherwise present in OF?
+
+I had one possible use case, PHY muxing, but it has nothing to do with
+the PHY registers of the PHYs on the internal MDIO bus so it's not a
+valid use case.
+
+> It doesn't _have_ to be broken. Since DSA knows the addresses of the
+> internal PHYs, it can circumvent the lack of auto-scanning by manually
+> calling get_phy_device() at the right (port-based) MDIO addresses.
+> But any patch would need to have a clear reason before being considered
+> for merging.
+
+I think circumventing the mdio node for ports without a phy-handle will
+bring unnecessary complexity and confusion as I may define a port with
+reg = <1> with phy-handle to a phy with reg = <4>. In that case, a port
+with reg = <4> without a phy-handle would try the phy with reg <4> and fail.
+
+This is of course if I understood correctly that "(port-based) MDIO
+addresses" means reading the MDIO address of a phy from the reg of a
+port defined under the ports node.
+
+Arınç
 
