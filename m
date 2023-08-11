@@ -4,91 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8407AC001DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Aug 2023 11:01:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50036C04A6A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Aug 2023 11:09:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wq6rCNtRJuWHJjaVoPantiU5p6m/bCS3GxWdOo6VotM=; b=XE7bQbDhTCBFZYx3v7f66p9/2L
-	6JH6ddJX2rB+VW9+hrzJ6GZgmU1jI8O49HSZOTOvOzet7ru80K0aZNLJ24Awb9HkkhRnSQn3c0t+Z
-	nD4lmamLImbvjUjZ/xSLN+YbY4iHWLKpazx787o9bMV8Wz/fKAM78tg+rACEz2BY+HRkiU5yCM1uR
-	OJ8/A1mOTdOst6cOoau8gWNdz4hx0CLfQCzbkRkDOp8Lg0xb36wJUSjK8h8XQSXmCOCiQsa+Xtgn1
-	JtV4eK1yuv4dLE3rw5tqBFkj2kGTRZzDpmVUwn0///U2wTFxRGG+yFmEMhYLU9mmfk2E1qP0vlBfz
-	iW+tflfQ==;
+	bh=KX9hqV0zskRK5OaD5DugwhktsOLn+sDNYThqE6fMwQc=; b=ar0MLe4wvq4cfT23uR5mlNRBwr
+	O3Ut0PbJ6IRZTECWINagH4EXYN7cu5xG3lEEJNelf7aG0uCGzsXihig7shwUknHfmKslQej8jhLd3
+	AkO8blaZTPZLGkjfh9MsvBe3O/MLTenzHGcMZmhy4xeGXijpuTqq5yoqKAVXBJjjGPTMCd7CNpIxT
+	oLFUPEqusp+T9OmCk8BTULTxNV0icMBT/gktSDaw8jOhNlWsocLc36Xx1Ey80o3qVjIlnjUsc9aqF
+	7AF2Ikgv6h5Y9bJUicazoKXVxb+NKuIZqYGoOsYABW6qQloUeWREgkafqhQsB5OdaZBZfV5rhbON7
+	TeZDC66g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUPtc-00AMQF-37;
-	Fri, 11 Aug 2023 11:01:32 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1qUQ1E-00AOPs-0m;
+	Fri, 11 Aug 2023 11:09:24 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUPtY-00AMOr-3A
+	id 1qUQ1B-00AOOg-1w
 	for linux-mediatek@lists.infradead.org;
-	Fri, 11 Aug 2023 11:01:31 +0000
-Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-31781e15a0cso1664690f8f.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 11 Aug 2023 04:01:28 -0700 (PDT)
+	Fri, 11 Aug 2023 11:09:23 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-3fe501e0b4cso17291675e9.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 11 Aug 2023 04:09:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1691751687; x=1692356487;
+        d=baylibre-com.20221208.gappssmtp.com; s=20221208; t=1691752159; x=1692356959;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Wq6rCNtRJuWHJjaVoPantiU5p6m/bCS3GxWdOo6VotM=;
-        b=fdbZuOBtDpR54KoDZ7bjXOJyX1+vsRS26SItSnfpB482DRIBUsLZ3mPHwyiEuQIQZM
-         d1r5PMnDYa60o2XN4r1tFjr+x86Hv28rsRYY9orAdiJBzjDtySjZuJlmCsEFfTXBiMTr
-         fkgcAZtBywl66q8uOAlR+6r73wLzRYzLoLlco7eIxi3Mb+7gHniBllIY/PoNX8Z71+yD
-         j4t+NialtrbOUxN5Zw+dTzP/Bhq41FgY+LUotEyAqGCc6Gb1P843EkVyPrEqMo1P5061
-         n8YgSLlsEANtlasIV+/H7vVpnPwQsBSUKZjh162bYI5CJURFG0eMi4zFhyF9PygEqE+R
-         ow2Q==
+        bh=KX9hqV0zskRK5OaD5DugwhktsOLn+sDNYThqE6fMwQc=;
+        b=g6mgQru0bhMZCH1A8HevYnzTiKTOaXTOS7u4uZG61NUaEDA80dYEhY9SDNJoRRX2Nj
+         Q354eqZZWpvDvdE+UfhcwAWI3NsgjCJa0YX++RKzte7Ekc4eb83ossEMmJ+4/1MPUf5q
+         bucxgvncF5O7ogC8V73p9zCsGlH3oU8h5zX5SuItreyF0x/8z2T2S9GUl/H+so6eoPeV
+         vTl1GEocXtOWLr1NlZJsJ93g8ktXxZ0XA1LLC2RXjpUqhEhUdT4dK9pfAVddybqm+vUk
+         +kMecwfxIFbBfn0eSFOPAlYoS1bwHHTg+naW+VCrOHB1jxm6SQukaaCrgsmEwYs+vIoO
+         G/Pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691751687; x=1692356487;
+        d=1e100.net; s=20221208; t=1691752159; x=1692356959;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Wq6rCNtRJuWHJjaVoPantiU5p6m/bCS3GxWdOo6VotM=;
-        b=WEU7QkRcddrtPAAFWR55qejlJTKIK4rVzoWr4dkXN4cpLA9NJqiUkTnWJbDSBcFdrq
-         PDZtDafoznk0HASqvF6Wvjj2LN0D8GVcA1t89paIWUveBuDXcQyJPMfcc+zHfaHXa5/u
-         wLM3enJNfgAAn+2p+pre3DQkCUebMmR0hTI1MQv2LTYpPtWwzo+2ltz9//esG6bacc3d
-         WDwexa1OrnKvNJ1gWvti/z+7QPVfoq30U49P/hR48tWPj/aZeZfxRkib9nDf4bV8aeXb
-         nQE6BJ5IizZX/qYPzBKNelz8AcMUMFa+gakpC6jOwFQoVwf+8E4EJ9176YuwSLUdsqND
-         hziw==
-X-Gm-Message-State: AOJu0Yz1Lw+g0wxQE05y2fXKp4T5nDGoZeV/XNGy4iyJfZtNnSz9WvtO
-	GYVegLIMRXexgs5upZ0z8Af2FA==
-X-Google-Smtp-Source: AGHT+IFN6FIrAF8uUc/LBfkNlUB+1kXQV2At2Htm2rDvexqs7oWO5TreHNx76NdUio/+JzgV86S0lA==
-X-Received: by 2002:a05:6000:100d:b0:314:475:bc47 with SMTP id a13-20020a056000100d00b003140475bc47mr1031035wrx.69.1691751686187;
-        Fri, 11 Aug 2023 04:01:26 -0700 (PDT)
+        bh=KX9hqV0zskRK5OaD5DugwhktsOLn+sDNYThqE6fMwQc=;
+        b=VrtQLjvfLvSe5VEAxV92gNi1wVl/oCVdoZNRR0IdrKeQtKAQ0ni5b3MmFyfZ7bd4/P
+         KLgl5K8LMhGsUeKVaRyHPdpKigBzQuXyC83uzttB2FUh7F8TDmlc29Cm7vk4VYgPeEAE
+         sMgBQJXbgzFtZ/UDPJeLOBOQLvnuB3GEiAfCW3FjrCupDuVW/598Bkn3sPqTZyS4rg+c
+         lxpurFt13tJkPugs/4k5MXC0IDrkJY4/MlkxsKy4IBacnVd3uTdBOKH7buUm/vjeaCPV
+         +MftzaaYYbM/9w4t59eIOBt1oCXsc2NpieHJVIjeFvxpryoOml4wtJBzF1Hn+SY31rgo
+         8C/g==
+X-Gm-Message-State: AOJu0YyOhywYlxOaWjeZy04Rr1CTXBiY4XaUeR6m9oK+/0n+rB7zBhol
+	2QG+14LRA8g8PXoXhR3WO/KjtQ==
+X-Google-Smtp-Source: AGHT+IHcNm4hdhkNSFEzx0s9rsAiJpNxzgPz/RG9vyafP/LWZuKwRYte/96gHS7ydYnStSxDYks07g==
+X-Received: by 2002:a7b:c453:0:b0:3fc:1bd:95a6 with SMTP id l19-20020a7bc453000000b003fc01bd95a6mr1318137wmi.31.1691752158817;
+        Fri, 11 Aug 2023 04:09:18 -0700 (PDT)
 Received: from [192.168.3.194] ([89.226.188.33])
-        by smtp.gmail.com with ESMTPSA id d2-20020a5d6dc2000000b00317f70240afsm5063042wrz.27.2023.08.11.04.01.25
+        by smtp.gmail.com with ESMTPSA id o11-20020a056000010b00b0031431fb40fasm5082632wrx.89.2023.08.11.04.09.17
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Aug 2023 04:01:25 -0700 (PDT)
-Message-ID: <9db9f842-fcbe-77e0-4b7f-0f5c26a1db51@baylibre.com>
-Date: Fri, 11 Aug 2023 13:01:24 +0200
+        Fri, 11 Aug 2023 04:09:18 -0700 (PDT)
+Message-ID: <22fd0d8e-ef10-8ce5-09d1-ff136f594c8c@baylibre.com>
+Date: Fri, 11 Aug 2023 13:09:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH v2] thermal/drivers/mediatek/lvts_thermal: Make readings
- valid in filtered mode
+Subject: Re: [PATCH v3] spmi: mtk-pmif: Serialize PMIF status check and
+ command submission
 Content-Language: en-US
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: kernel@collabora.com,
+ Stephen Boyd <sboyd@kernel.org>
+Cc: Chen-Yu Tsai <wenst@google.com>, kernel@collabora.com,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chen-Yu Tsai <wenst@chromium.org>, =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?=
- <bero@baylibre.com>, Amit Kucheria <amitk@kernel.org>,
- Balsam CHIHI <bchihi@baylibre.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rafael@kernel.org>,
- Yangtao Li <frank.li@vivo.com>, Zhang Rui <rui.zhang@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+ James Lo <james.lo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-References: <20230713154743.611870-1-nfraprado@collabora.com>
+ linux-mediatek@lists.infradead.org
+References: <20230724154739.493724-1-nfraprado@collabora.com>
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20230713154743.611870-1-nfraprado@collabora.com>
+In-Reply-To: <20230724154739.493724-1-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230811_040129_236975_B357CBD3 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20230811_040921_644100_F3608866 
+X-CRM114-Status: GOOD (  17.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,24 +103,30 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-On 13/07/2023 17:42, Nícolas F. R. A. Prado wrote:
-> Currently, when a controller is configured to use filtered mode, thermal
-> readings are valid only about 30% of the time.
+On 24/07/2023 17:47, Nícolas F. R. A. Prado wrote:
+> Before writing the read or write command to the SPMI arbiter through the
+> PMIF interface, the current status of the channel is checked to ensure
+> it is idle. However, since the status only changes from idle when the
+> command is written, it is possible for two concurrent calls to determine
+> that the channel is idle and simultaneously send their commands. At this
+> point the PMIF interface hangs, with the status register no longer being
+> updated, and thus causing all subsequent operations to time out.
 > 
-> Upon testing, it was noticed that lowering any of the interval settings
-> resulted in an improved rate of valid data. The same was observed when
-> decreasing the number of samples for each sensor (which also results in
-> quicker measurements).
+> This was observed on the mt8195-cherry-tomato-r2 machine, particularly
+> after commit 46600ab142f8 ("regulator: Set PROBE_PREFER_ASYNCHRONOUS for
+> drivers between 5.10 and 5.15") was applied, since then the two MT6315
+> devices present on the SPMI bus would probe assynchronously and
+> sometimes (during probe or at a later point) read the bus
+> simultaneously, breaking the PMIF interface and consequently slowing
+> down the whole system.
 > 
-> Retrying the read with a timeout longer than the time it takes to
-> resample (about 344us with these settings and 4 sensors) also improves
-> the rate.
-> 
-> Lower all timing settings to the minimum, configure the filtering to
-> single sample, and poll the measurement register for at least one period
-> to improve the data validity on filtered mode.  With these changes in
-> place, out of 100000 reads, a single one failed, ie 99.999% of the data
-> was valid.
+> To fix the issue at its root cause, introduce locking around the channel
+> status check and the command write, so that both become an atomic
+> operation, preventing race conditions between two (or more) SPMI bus
+> read/write operations. A spinlock is used since this is a fast bus, as
+> indicated by the usage of the atomic variant of readl_poll, and
+> '.fast_io = true' being used in the mt6315 driver, so spinlocks are
+> already used for the regmap access.
 
 -- 
 Regards,
