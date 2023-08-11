@@ -4,72 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E546C001DE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Aug 2023 22:51:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DC03C001DE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Aug 2023 00:45:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5APYFm2DOcUlHFwZTgKZHuYxuZ9KVmW8+AsBSuN6Ix8=; b=TN5BbfCjpJ4tIlFtP0S8ciG5V9
-	1oh45d2H8UsK+4Oc4x42WeWqV0mbH9/sfonxx/Ik0jX1EW9zLN9XfsLp3j8Hk/iOSl0mLB2IOaZSV
-	MZ6fdnLqafK/HcJOhkFZF1ErZ8rtZ3pkuevu886zWkcdm54E5ShK2NIttAp33Lec9dBfeP+DKbwI0
-	9Z4ZNoUpV9OcqT5gBHG5Z9YO83hUgjRj52i3QZAGQFp+0nlbMifdkBQX1stQqzwkeu0iiIyJtkIV7
-	z0SNSEKXOQzs7tDE0owbQJtUW+zcc/4LR5I2OYg3IWq5yCQzH/iEzWZy7h6cRGouBbNHTk9uJqTEX
-	YJLPbEhw==;
+	bh=hN0C8RZhlNl5Im8CUD21G9MoVGTEckrSYOi51AO54JI=; b=0rN2TOF3NsaRs+76KW4U0ZwlGC
+	bCtZpKgO34wo2yGFWJqHbVL0IeS+9toU2Fj/6t3ib0gGgXG/+5P7bTjPuYxQjFPArgLVovErK01+Q
+	AdZtsPM26Wisd7FilZC8Gsbel8zGdEyRfJIgT3Pko4BxLHZIDMRuyVjQevIYHrFvL1njP1tBFg4EV
+	hBcefrCN/Y13RrSxJOhBIiONgEya0QxyOejIaxCpQCsytyx6HFZ3u4IfNqGT48X8uzzrhsHQNiScG
+	ab9fq7dzMGfLdjYSM/VpdkhIqg9Y+IQvPbg5vy4Ejy4Oz9VWmPjg0CByUwe3Ozad5lIkGQ4Lg2KSq
+	g2Zlu7oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUEVA-008roE-2k;
-	Thu, 10 Aug 2023 22:51:32 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qUGHo-0090Qh-2T;
+	Fri, 11 Aug 2023 00:45:52 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUEV7-008rnh-0y;
-	Thu, 10 Aug 2023 22:51:30 +0000
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 99EE76607234;
-	Thu, 10 Aug 2023 23:51:25 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1691707887;
-	bh=xX2TKwjWSum0DXCFhBKwo7grgh23hCvtVCMmYEmXmyw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aaptVNrqp7UANGPO7f3GoJzbdNmTkraXOTFZUZJlCr4/2zgcZ5XRb+eKUlTHOyWhu
-	 ommN4v9BOQpsZdevBR+wrXFpl55W0N1j7CT2+L6O6aCc9WF3b7mInL5Twq3CdmgygA
-	 7z/p5IVJZZf77Pjzo9U73oaY4I2tVHkQFmuoOBF7fa9j7c/fxgEIHuVKZy6H5OcumY
-	 3m3R1mooQIma/H67JokJIro8o45Tjt9fucg3tuUTksrr0pn7DZqjKqlMSguaT1uDQv
-	 PTDaVlWJFxc9W+OLm8PeU1/xksR3A4hiDR3MQH0nBLd4Et63YndN4Kq1VgN3qNrh4M
-	 ujNWWDWwuGz8g==
-Date: Thu, 10 Aug 2023 18:51:22 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: kernel@collabora.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Bernhard =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Amit Kucheria <amitk@kernel.org>,
-	Balsam CHIHI <bchihi@baylibre.com>,
+	id 1qUGHl-0090Q1-1t
+	for linux-mediatek@lists.infradead.org;
+	Fri, 11 Aug 2023 00:45:51 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-267fc1d776eso920082a91.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Aug 2023 17:45:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1691714748; x=1692319548;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=hN0C8RZhlNl5Im8CUD21G9MoVGTEckrSYOi51AO54JI=;
+        b=z0G502ieEKLfw4NxCmJW/ByenMdnGZnj1JtLTkLaSZP/xtH18aU4hVwBi0JRbrJa6s
+         ovscaFg5OYsBK35wNFL2EoFKZxaigQOZC3MFDHCOxo/ZfLYsomTFVlbHzsBNTUIjtBq4
+         ZRP15uVE9Z3sv4bR7Sog45Wxk3KxMhKBVNYJOf/9ZWrAhkZ5+eCKRQVrF+WQQ0aZinXm
+         fMwelxnMoW/uYiK08O5LwZ6UyzX61YWxHGcGF/h9b9t4Us9L2R3b4c0AJk1NOlkSgm3M
+         apWOENr8WrdgwsOpA156J20+0PmTp623uSuo8zP2+tKuuf47nWJ0s7BNj+EMJfuCelLw
+         mSTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1691714748; x=1692319548;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hN0C8RZhlNl5Im8CUD21G9MoVGTEckrSYOi51AO54JI=;
+        b=MP+hh3Q2ujemnqs1h53WGZNq+OOCxOnf4/ye8mhwS9iZfKDiJgK5XqzHDnqG2Nd6SL
+         OjUVwGTiuX/n+zrCaSK4GpfdTWOoWszw8WkUeqSsOnmGbs2mfRqXyUkAiVfIAF850I6X
+         hbJatxlbGF4cUdbciH/gLh2EqaGXjaQ/D51Pc9Z9yEN51gDS2IhQNpoWEMm06bNtZxmJ
+         8Di08xGqitLRHOjqH4vo+PYijjVVG5j6hFWpOGrZMlRTxBBSsmI02xbRLymEfK2znwjp
+         AwXLbBggjr3hQHqtqKyUolYMIvQpjPpPq2XNk7IKhxSjfFF9cwpjz/a5RZp60rcT+o5x
+         MMHw==
+X-Gm-Message-State: AOJu0YyfvcjNiHLJMoeyacDtbxodrteYtiMscz3e5aQLeJlc65tA1EeV
+	mDFteicwVtbum3Orzdh2L+gyaA==
+X-Google-Smtp-Source: AGHT+IFyCGjHHsJUOnPRbxJsciSKygnHwkBnNMD52LoSvwsX/eTKtMEnIehB5fZgiiy5jZYXOmht7A==
+X-Received: by 2002:a17:90b:70a:b0:268:ce03:e17e with SMTP id s10-20020a17090b070a00b00268ce03e17emr160210pjz.47.1691714747966;
+        Thu, 10 Aug 2023 17:45:47 -0700 (PDT)
+Received: from localhost ([122.172.87.195])
+        by smtp.gmail.com with ESMTPSA id hx11-20020a17090b440b00b00263dee538b1sm2119638pjb.25.2023.08.10.17.45.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Aug 2023 17:45:47 -0700 (PDT)
+Date: Fri, 11 Aug 2023 06:15:43 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Konrad Dybcio <konrad.dybcio@linaro.org>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Yangtao Li <frank.li@vivo.com>, Zhang Rui <rui.zhang@intel.com>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-Subject: Re: [PATCH v2] thermal/drivers/mediatek/lvts_thermal: Make readings
- valid in filtered mode
-Message-ID: <8117521e-efb8-46dc-9db1-d521a01af0bc@notapiano>
-References: <20230713154743.611870-1-nfraprado@collabora.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] cpufreq: mediatek-hw: Remove unused define
+Message-ID: <20230811004543.dzc2ebhjurrsjz57@vireshk-i7>
+References: <20230810-topic-mtk_fixup-v1-1-88022eaea0ac@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230713154743.611870-1-nfraprado@collabora.com>
+In-Reply-To: <20230810-topic-mtk_fixup-v1-1-88022eaea0ac@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230810_155129_539462_2D4602E1 
-X-CRM114-Status: GOOD (  14.14  )
+X-CRM114-CacheID: sfid-20230810_174549_667760_5FD91A46 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,33 +95,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 13, 2023 at 11:42:37AM -0400, Nícolas F. R. A. Prado wrote:
-> Currently, when a controller is configured to use filtered mode, thermal
-> readings are valid only about 30% of the time.
+On 10-08-23, 20:12, Konrad Dybcio wrote:
+> DYNAMIC_POWER does not seem to be used anywhere in the tree, remove it.
 > 
-> Upon testing, it was noticed that lowering any of the interval settings
-> resulted in an improved rate of valid data. The same was observed when
-> decreasing the number of samples for each sensor (which also results in
-> quicker measurements).
+> Signed-off-by: Konrad Dybcio <konrad.dybcio@linaro.org>
+> ---
+>  drivers/cpufreq/mediatek-cpufreq.c | 2 --
+>  1 file changed, 2 deletions(-)
 > 
-> Retrying the read with a timeout longer than the time it takes to
-> resample (about 344us with these settings and 4 sensors) also improves
-> the rate.
-> 
-> Lower all timing settings to the minimum, configure the filtering to
-> single sample, and poll the measurement register for at least one period
-> to improve the data validity on filtered mode.  With these changes in
-> place, out of 100000 reads, a single one failed, ie 99.999% of the data
-> was valid.
-> 
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+> index fef68cb2b38f..a0a61919bc4c 100644
+> --- a/drivers/cpufreq/mediatek-cpufreq.c
+> +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> @@ -313,8 +313,6 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+>  	return ret;
+>  }
+>  
+> -#define DYNAMIC_POWER "dynamic-power-coefficient"
+> -
+>  static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
+>  				    unsigned long event, void *data)
+>  {
 
-Hi Daniel,
+Applied. Thanks.
 
-gentle ping on this patch.
-
-Thanks,
-Nícolas
+-- 
+viresh
 
