@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFECCC0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Aug 2023 12:14:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87E15C04A94
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Aug 2023 13:07:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jR1AIVThmXsJqgcaD3ynnK3MvxrEh5+EIAyQSaYBo90=; b=xncqiGTuRwyDWwzoQZBinA0efH
-	OB2hVkE+sk/6IP9BDyztflfT2ZaCO9M3shCWWyhsOWt4/bCN/CFswGfZ7X3nfi3dJLUxnTnzDLGSI
-	MWgpMbXeaD+H575nGHwVa4xmgKCIg0TZgviXhQshQHDNUYyMj8jXgvWR3jGb/X3P6prkb+VFjk0gn
-	fEf5ROy8jZEncMPHMgFOupJq9+Btu8hnokoEKdIdvMjzIemWsAX7pjwOA+8pBAKz6GKDnguyWUwtl
-	TBp/ffSE2gFYhCVHEcW4GOY7BgzTD8g5fuVAF1fYRwUofy9qqYjKjrRd0OCdkqtV3GzcvGOGiPBZe
-	p1S6OaIw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0An2e1abhdIFPUIRrageueiL8VrU4x/yiS800RQ/7AE=; b=JI88iIr4Xqlj/c8P0rjTTLKfCX
+	Fgb4CKIwuXhvly9YxAq7hZzZQw3Wzw5jFVy91C/jo3sLV7lLegen6fWbqsx1DVXp3mqx3VhvUF08t
+	LOpqc+6Vpo4yyWEhGu3KyxJv4ucFpRljhcVHqkECjW7JWN2RBhLoLd/HRLJBDLGJi/X6bgHD0doBW
+	4n59HCBhc8op7nZJvimHSWyKNU/k1pbrvHXdSmP+nxLom7+Hwr7XCCyJ/zeHAubG1ak8SHXwVmS+m
+	Q45t11b/uL2wBeqxYLhVblIh4QnHE4bNNjPtSE61xDfbJoicI7X/vQSptvcAReEf+rH8EfzXM2Ags
+	5MJAkCJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUR2E-00AYIP-1X;
-	Fri, 11 Aug 2023 12:14:30 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qURrS-00AgHd-39;
+	Fri, 11 Aug 2023 13:07:26 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUR2B-00AYHN-0V;
-	Fri, 11 Aug 2023 12:14:28 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	id 1qURrQ-00AgEi-0L;
+	Fri, 11 Aug 2023 13:07:25 +0000
+Received: from eugen-station.. (unknown [82.76.24.202])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9416867129;
-	Fri, 11 Aug 2023 12:14:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08977C433C7;
-	Fri, 11 Aug 2023 12:14:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1691756066;
-	bh=X18zr/QcdYMrxcBX8La2HBCDEiVgZjJTuiWyzbTkl/8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZCLdNg2g9sOp4NIREt5zz+T04EPHnMQaDuxafD5DWmeacmFeVksHycKhfYGg3P+t2
-	 iCIZrQz5uPVIlRDzD54a4HeqyCx/q8Gtr0kRsbCVUXkGO4B3dNXzGuhyfz8FfjeCBG
-	 m2O9/ywOUEjCUQX4CFmEaJIO0yxMVjaEjHdA5xq5qOyhfcF5QTr6Yfj0GwNSnUV/7V
-	 5NJx1e0KpiVPKFCVUzDCiYQMoYBdaaMCn+6Ej/Zb2bTgYgcgLNfQ3ZrpWQ8r4gN59F
-	 f4gZJoPaAQXktRyXjRQP/Cqpzo5sMBnLPgzIMf8+J+XVIMa0Zs4FZGj3rZgcBGh9PG
-	 EGnI7xf6rMefA==
-Date: Fri, 11 Aug 2023 14:14:20 +0200
-From: Simon Horman <horms@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	(Authenticated sender: ehristev)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F38F0660724A;
+	Fri, 11 Aug 2023 14:07:16 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1691759238;
+	bh=VXusoYfjHaf1R8Q5raJ4gZK4qcwaz24tSqOkD12Aa0A=;
+	h=From:To:Cc:Subject:Date:From;
+	b=m8YQ5hghF7NJPiDxoc0eVVVZW0KT3+2lKdL7KpjLs3T6BxQzGVqflAELP09jpQOva
+	 HlTaaoipnyBpu/3hJSrIVt4UDpTzRWTR4qmJhHq9X8Azx4jDM7yZizsCCk3H3t1Fhb
+	 ceQ30FZ58AU7DW3MyV5yuuYLrnAwLkSwn2zYf4C/fRHCrPtY36/oyHHugo0IlG4sE1
+	 l/DJM/FmWQsaF94awvFv8xWprPaUGPYDcV0QQPw7J3kx0HwW0xFh6B8SDTexcgr11o
+	 1DPHnpoDWquQy189H7EWvcmQUQPP3Hib3n7MMGjmeJ0749lDj6aXjNAfQkb7dzxTCV
+	 D4KR5yNet74cA==
+From: Eugen Hristev <eugen.hristev@collabora.com>
+To: linux-mediatek@lists.infradead.org
+Cc: krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next] net: phy: mediatek-ge-soc: support PHY LEDs
-Message-ID: <ZNYmHFkC5ZxySq1h@vergenet.net>
-References: <a21288bf80f26dda6c9729edb5b25d0995df5e38.1691724757.git.daniel@makrotopia.org>
+	linux-kernel@vger.kernel.org,
+	conor+dt@kernel.org,
+	kernel@collabora.com,
+	Eugen Hristev <eugen.hristev@collabora.com>
+Subject: [PATCH 1/2] dt-bindings: phy: mediatek,tphy: allow simple nodename pattern
+Date: Fri, 11 Aug 2023 16:06:59 +0300
+Message-Id: <20230811130700.72787-1-eugen.hristev@collabora.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <a21288bf80f26dda6c9729edb5b25d0995df5e38.1691724757.git.daniel@makrotopia.org>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230811_051427_278187_22CB8E3B 
-X-CRM114-Status: GOOD (  23.08  )
+X-CRM114-CacheID: sfid-20230811_060724_315287_A7163044 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,207 +78,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 11, 2023 at 04:35:38AM +0100, Daniel Golle wrote:
-> Implement netdev trigger and primitive bliking offloading as well as
-> simple set_brigthness function for both PHY LEDs of the in-SoC PHYs
-> found in MT7981 and MT7988.
-> 
-> On MT7988 it is necessary to read the boottrap register and apply LED
-> polarities accordingly to get uniform behavior from all LEDs.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+The pattern for the nodename only allows t-phy@... , however, for the case
+when the t-phy has no `reg` and only `ranges` (basically when the t-phy
+is just a parent node), dtc will throw this warning:
 
-...
+Warning (unit_address_vs_reg): /t-phy@1a243000: node has a unit name, but no reg or ranges property
 
-> +static int mt798x_phy_hw_led_on_set(struct phy_device *phydev, u8 index,
-> +				    bool on)
-> +{
-> +	struct mtk_socphy_priv *priv = phydev->priv;
-> +	u32 mask = MTK_PHY_LED_STATE_FORCE_ON << (index ? 16 : 0);
-> +	bool changed;
-> +
-> +	if (on)
-> +		changed = (test_and_set_bit(mask, &priv->led_state) != mask);
-> +	else
-> +		changed = !!test_and_clear_bit(mask, &priv->led_state);
+For a node like this:
 
-Hi Daniel,
+	sata_phy: t-phy@1a243000 {
+		ranges;
 
-are you sure the first parameter to test_and_set_bit() and
-test_and_clear_bit() is correct here and below?
+		sata_port: sata-phy@1a243000 {
+			reg = <0 0x1a243000 0 0x0100>;
+		};
+	};
 
-Smatch warns that: test_and_clear_bit() takes a bit number
+it is normal that the parent node 't-phy' would be without any address, as in:
 
-I.e. the first argument should be a bit number, not a mask.
+	sata_phy: t-phy {
+		ranges;
 
-> +
-> +	changed |= !!test_and_clear_bit(MTK_PHY_LED_STATE_NETDEV <<
-> +					(index ? 16 : 0), &priv->led_state);
-> +	if (changed)
-> +		return phy_modify_mmd(phydev, MDIO_MMD_VEND2, index ?
-> +				      MTK_PHY_LED1_ON_CTRL : MTK_PHY_LED0_ON_CTRL,
-> +				      MTK_PHY_LED_ON_MASK,
-> +				      on ? MTK_PHY_LED_ON_FORCE_ON : 0);
-> +	else
-> +		return 0;
-> +}
-> +
-> +static int mt798x_phy_hw_led_blink_set(struct phy_device *phydev, u8 index,
-> +				       bool blinking)
-> +{
-> +	struct mtk_socphy_priv *priv = phydev->priv;
-> +	u32 mask = MTK_PHY_LED_STATE_FORCE_BLINK << (index ? 16 : 0);
-> +	bool changed;
-> +
-> +	if (blinking)
-> +		changed = (test_and_set_bit(mask, &priv->led_state) != mask);
-> +	else
-> +		changed = !!test_and_clear_bit(mask, &priv->led_state);
-> +
-> +	changed |= !!test_bit(MTK_PHY_LED_STATE_NETDEV << (index ? 16 : 0), &priv->led_state);
-> +	if (changed)
-> +		return phy_write_mmd(phydev, MDIO_MMD_VEND2, index ?
-> +				     MTK_PHY_LED1_BLINK_CTRL : MTK_PHY_LED0_BLINK_CTRL,
-> +				     blinking ? MTK_PHY_LED_BLINK_FORCE_BLINK : 0);
-> +	else
-> +		return 0;
-> +}
+		sata_port: sata-phy@1a243000 {
+			reg = <0 0x1a243000 0 0x0100>;
+		};
+	};
 
-...
+because being just a holder it does not have its own reg.
 
-> +static int mt798x_phy_led_hw_control_get(struct phy_device *phydev, u8 index,
-> +					 unsigned long *rules)
-> +{
-> +	u32 blink_mask = MTK_PHY_LED_STATE_FORCE_BLINK << (index ? 16 : 0);
-> +	u32 netdev_mask = MTK_PHY_LED_STATE_NETDEV << (index ? 16 : 0);
-> +	u32 on_mask = MTK_PHY_LED_STATE_FORCE_ON << (index ? 16 : 0);
-> +	struct mtk_socphy_priv *priv = phydev->priv;
-> +	int on, blink;
-> +
-> +	if (index > 1)
-> +		return -EINVAL;
-> +
-> +	on = phy_read_mmd(phydev, MDIO_MMD_VEND2,
-> +			  index ? MTK_PHY_LED1_ON_CTRL : MTK_PHY_LED0_ON_CTRL);
-> +
-> +	if (on < 0)
-> +		return -EIO;
-> +
-> +	blink = phy_read_mmd(phydev, MDIO_MMD_VEND2,
-> +			     index ? MTK_PHY_LED1_BLINK_CTRL :
-> +				     MTK_PHY_LED0_BLINK_CTRL);
-> +	if (blink < 0)
-> +		return -EIO;
-> +
-> +	if ((on & (MTK_PHY_LED_ON_LINK1000 | MTK_PHY_LED_ON_LINK100 |
-> +		   MTK_PHY_LED_ON_LINK10)) ||
-> +	    (blink & (MTK_PHY_LED_BLINK_1000RX | MTK_PHY_LED_BLINK_100RX |
-> +		      MTK_PHY_LED_BLINK_10RX | MTK_PHY_LED_BLINK_1000TX |
-> +		      MTK_PHY_LED_BLINK_100TX | MTK_PHY_LED_BLINK_10TX)))
-> +		set_bit(netdev_mask, &priv->led_state);
-> +	else
-> +		clear_bit(netdev_mask, &priv->led_state);
-> +
-> +	if (on & MTK_PHY_LED_ON_FORCE_ON)
-> +		set_bit(on_mask, &priv->led_state);
-> +	else
-> +		clear_bit(on_mask, &priv->led_state);
-> +
-> +	if (blink & MTK_PHY_LED_BLINK_FORCE_BLINK)
-> +		set_bit(blink_mask, &priv->led_state);
-> +	else
-> +		clear_bit(blink_mask, &priv->led_state);
-> +
-> +	if (!rules)
-> +		return 0;
-> +
-> +	if (on & (MTK_PHY_LED_ON_LINK1000 | MTK_PHY_LED_ON_LINK100 | MTK_PHY_LED_ON_LINK10))
-> +		*rules |= BIT(TRIGGER_NETDEV_LINK);
-> +
-> +	if (on & MTK_PHY_LED_ON_LINK10)
-> +		*rules |= BIT(TRIGGER_NETDEV_LINK_10);
-> +
-> +	if (on & MTK_PHY_LED_ON_LINK100)
-> +		*rules |= BIT(TRIGGER_NETDEV_LINK_100);
-> +
-> +	if (on & MTK_PHY_LED_ON_LINK1000)
-> +		*rules |= BIT(TRIGGER_NETDEV_LINK_1000);
-> +
-> +	if (on & MTK_PHY_LED_ON_FDX)
-> +		*rules |= BIT(TRIGGER_NETDEV_FULL_DUPLEX);
-> +
-> +	if (on & MTK_PHY_LED_ON_HDX)
-> +		*rules |= BIT(TRIGGER_NETDEV_HALF_DUPLEX);
-> +
-> +	if (blink & (MTK_PHY_LED_BLINK_1000RX | MTK_PHY_LED_BLINK_100RX | MTK_PHY_LED_BLINK_10RX))
-> +		*rules |= BIT(TRIGGER_NETDEV_RX);
-> +
-> +	if (blink & (MTK_PHY_LED_BLINK_1000TX | MTK_PHY_LED_BLINK_100TX | MTK_PHY_LED_BLINK_10TX))
-> +		*rules |= BIT(TRIGGER_NETDEV_TX);
-> +
-> +	return 0;
-> +};
-> +
-> +static int mt798x_phy_led_hw_control_set(struct phy_device *phydev, u8 index,
-> +					 unsigned long rules)
-> +{
-> +	u32 mask = MTK_PHY_LED_STATE_NETDEV << (index ? 16 : 0);
-> +	struct mtk_socphy_priv *priv = phydev->priv;
-> +	u16 on = 0, blink = 0;
-> +	int ret;
-> +
-> +	if (index > 1)
-> +		return -EINVAL;
-> +
-> +	if (rules & BIT(TRIGGER_NETDEV_FULL_DUPLEX))
-> +		on |= MTK_PHY_LED_ON_FDX;
-> +
-> +	if (rules & BIT(TRIGGER_NETDEV_HALF_DUPLEX))
-> +		on |= MTK_PHY_LED_ON_HDX;
-> +
-> +	if (rules & (BIT(TRIGGER_NETDEV_LINK_10) | BIT(TRIGGER_NETDEV_LINK)))
-> +		on |= MTK_PHY_LED_ON_LINK10;
-> +
-> +	if (rules & (BIT(TRIGGER_NETDEV_LINK_100) | BIT(TRIGGER_NETDEV_LINK)))
-> +		on |= MTK_PHY_LED_ON_LINK100;
-> +
-> +	if (rules & (BIT(TRIGGER_NETDEV_LINK_1000) | BIT(TRIGGER_NETDEV_LINK)))
-> +		on |= MTK_PHY_LED_ON_LINK1000;
-> +
-> +	if (rules & BIT(TRIGGER_NETDEV_RX)) {
-> +		blink |= MTK_PHY_LED_BLINK_10RX  |
-> +			 MTK_PHY_LED_BLINK_100RX |
-> +			 MTK_PHY_LED_BLINK_1000RX;
-> +	}
-> +
-> +	if (rules & BIT(TRIGGER_NETDEV_TX)) {
-> +		blink |= MTK_PHY_LED_BLINK_10TX  |
-> +			 MTK_PHY_LED_BLINK_100TX |
-> +			 MTK_PHY_LED_BLINK_1000TX;
-> +	}
-> +
-> +	if (blink || on)
-> +		set_bit(mask, &priv->led_state);
-> +	else
-> +		clear_bit(mask, &priv->led_state);
-> +
-> +	ret = phy_modify_mmd(phydev, MDIO_MMD_VEND2, index ?
-> +				MTK_PHY_LED1_ON_CTRL :
-> +				MTK_PHY_LED0_ON_CTRL,
-> +			     MTK_PHY_LED_ON_FDX     |
-> +			     MTK_PHY_LED_ON_HDX     |
-> +			     MTK_PHY_LED_ON_LINK10  |
-> +			     MTK_PHY_LED_ON_LINK100 |
-> +			     MTK_PHY_LED_ON_LINK1000,
-> +			     on);
-> +
-> +	if (ret)
-> +		return ret;
-> +
-> +	return phy_write_mmd(phydev, MDIO_MMD_VEND2, index ?
-> +				MTK_PHY_LED1_BLINK_CTRL :
-> +				MTK_PHY_LED0_BLINK_CTRL, blink);
-> +};
+However the binding does not allow such a name for the t-phy, so with this
+patch, making the `@[0-9a-f]+` part optional, such node is possible.
 
-...
+Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
+---
+ Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+index 230a17f24966..2bb91542e984 100644
+--- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
++++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+@@ -64,7 +64,7 @@ description: |
+ 
+ properties:
+   $nodename:
+-    pattern: "^t-phy@[0-9a-f]+$"
++    pattern: "^t-phy(@[0-9a-f]+)?$"
+ 
+   compatible:
+     oneOf:
+-- 
+2.34.1
+
 
