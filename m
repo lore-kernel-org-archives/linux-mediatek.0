@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E68D3C001DE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Aug 2023 16:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D22F2C001DE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Aug 2023 16:52:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=admShfSykcaAtbel+tfZWUdxGTiA82izBewytBKFlQ8=; b=F1aHJ6TEazJc1Gu501BdIIjxVW
-	PuSf6KFF0RU42XRQNy0NvWxpM3oZ4kFegrCzf5xPYYJtRCzylsIFN0Zuy1t+l+gPBRGdkiLB5ePXe
-	JCKkUY+yxnZNdlI+gMQWuyFVMpPMoL+F18y5idDm7f+JfpLWe51oGrp628uU/sQw7UfRJoalRRySQ
-	9CeAAUtRj00CKUeaR/T0oJitZWOX4aVkGpWHING83N0P2tDiuw8XVw9ARc/pxtjLwYiocvGUidlHR
-	h8qbqIX4R0KGhygTHdD95vCMWG0Tq4CeTPc0YV7EEPBsPBGgoPyCsojibS73dcormIj1RW8tPftWc
-	d4apBS+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PJb1lPZss5n9QWVriHrKfiwlMHXSneZ9uZ4y2QLpuyM=; b=oy/E6VZml6jcm/WptzDx3AQjs6
+	KZxSFC7QXJHfeMl03CpMTXGnsDgsoGgSFg+9KCx9qFvC/krhLv93be4If9TZzygaUm53bmyV2C4vi
+	8VerQvaQ11uYejSCenVmaRlsJaSq4ixyGYxMUgIYGEPQ/Fb0MRgquCgjU94yg5ECMan1a6X7P3Pbg
+	qCAd03ZOWK890uTDkOJ8QUDs16mIFa7UMzyBw333MjIEagAltuGY7u+hCZbM4SpucoxYk28i6RQzV
+	qAKZ3GRg3V0ap/1VeuO3Tiqiaf3Cw6y7O8VzlXb7NrK1Qj34bqZRDwiHzL4jITNr6P4vu5Ym85pCD
+	A3r5hpew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUVG4-00B95S-2k;
-	Fri, 11 Aug 2023 16:45:04 +0000
-Received: from out-105.mta1.migadu.com ([95.215.58.105])
+	id 1qUVND-00BA9l-2J;
+	Fri, 11 Aug 2023 16:52:27 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUVG2-00B93l-1J
-	for linux-mediatek@lists.infradead.org;
-	Fri, 11 Aug 2023 16:45:03 +0000
-Message-ID: <03763b62-8d49-6fbf-5ce9-21c334c9aac2@linux.dev>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1691772299;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=admShfSykcaAtbel+tfZWUdxGTiA82izBewytBKFlQ8=;
-	b=RIok6yu/Auqn0MWP4OKNMvm04myfUt1AS598KaVNv0crBmVGWPuLF/VrUoacz0fJcmspTE
-	b6+9STyNuUxLP6a2PcQyjSNhMw68Tj+mCkXjOXWNIrpY5VI3s/I8u0LCmV1y6s5N3znJ0x
-	hYMMwEvvVarUEoJ8BNStd3ucIvWQ2Qs=
-Date: Fri, 11 Aug 2023 17:44:55 +0100
+	id 1qUVNA-00BA6u-1J;
+	Fri, 11 Aug 2023 16:52:25 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C6C82665C0;
+	Fri, 11 Aug 2023 16:52:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BFF7EC433C8;
+	Fri, 11 Aug 2023 16:52:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1691772743;
+	bh=vdQ+VbOk0WXAqkeu5hhMiFqWiP0BvXxpd1MCJU3hfYk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=b/BNsIRPuQtwLLYF4Dd+iwrfrqPmcNqllqq3xN06Uvfm0viioyARouTP43LNjeGB8
+	 UhOuXInH4w/7nD/y/azYPSBVxxeOOHAp6w3kqJkeLZkGYko6s+OKGTq5OEZ4E8gmkk
+	 31iWq0SLarEWFY4DX7jv8FYVXY+txo3p/7c0sRdL6/SYtlY5bvgswHwrLfVbGPtbKS
+	 Y1uyWu8IQmEtry2UhEYAObF8fsZIl4sPDp4k/KJ+OFgVTbOSEdd3Wwpq75h8Xby6Wi
+	 CrVyMT6oh39QKpTB1WqKnWoSdh+zJTozsRegdCFmnFqpUCKh4A/0KpDXz8JtvM5AwP
+	 XABhDoVjvQoJQ==
+Received: (nullmailer pid 3596930 invoked by uid 1000);
+	Fri, 11 Aug 2023 16:52:19 -0000
+Date: Fri, 11 Aug 2023 10:52:19 -0600
+From: Rob Herring <robh@kernel.org>
+To: Yi-De Wu <yi-de.wu@mediatek.com>
+Cc: Yingshiuan Pan <yingshiuan.pan@mediatek.com>, Ze-Yu Wang <ze-yu.wang@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-arch@vger.kernel.org, linux-mediatek@lists.infradead.org, David Bradil <dbrazdil@google.com>, Trilok Soni <quic_tsoni@quicinc.com>, Ivan Tseng <ivan.tseng@mediatek.com>, Jade Shih <jades.shih@mediatek.com>, My Chuang <my.chuang@mediatek.com>, Shawn Hsiao <shawn.hsiao@mediatek.com>, PeiLun Suei <peilun.suei@mediatek.com>, Liju Chen <liju-clr.chen@mediatek.com>, Willix Yeh <chi-shen.yeh@mediatek.com>
+Subject: Re: [PATCH v5 00/12] GenieZone hypervisor drivers
+Message-ID: <20230811165219.GA3593414-robh@kernel.org>
+References: <20230727080005.14474-1-yi-de.wu@mediatek.com>
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next] net: phy: mediatek-ge-soc: support PHY LEDs
-Content-Language: en-US
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>,
- SkyLake Huang <SkyLake.Huang@mediatek.com>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <a21288bf80f26dda6c9729edb5b25d0995df5e38.1691724757.git.daniel@makrotopia.org>
- <ac6a4318-3a47-2c77-6b81-b5f04765c04e@linux.dev>
- <ed096dfe-6a42-4838-972b-7a28afaf2f6e@lunn.ch>
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-In-Reply-To: <ed096dfe-6a42-4838-972b-7a28afaf2f6e@lunn.ch>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230727080005.14474-1-yi-de.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230811_094502_592788_0988C613 
-X-CRM114-Status: GOOD (  10.22  )
+X-CRM114-CacheID: sfid-20230811_095224_484893_3FECED2C 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,19 +74,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/08/2023 17:39, Andrew Lunn wrote:
->>> +	/* Only now setup pinctrl to avoid bogus blinking */
->>> +	pinctrl = devm_pinctrl_get_select(&phydev->mdio.dev, "gbe-led");
->>
->> This function gets reference on phydev->mdio.dev, but there is no code
->> to release it. It looks like a leak which will prevent module unload,
->> but I don't have hardware now to prove it.
+On Thu, Jul 27, 2023 at 03:59:53PM +0800, Yi-De Wu wrote:
+> This series is based on linux-next, tag: next-20230726.
 > 
-> Since it is a devm_ function, it should get released when the device
-> is destroyed. Or am i missing something?
+> GenieZone hypervisor(gzvm) is a type-1 hypervisor that supports various virtual
+> machine types and provides security features such as TEE-like scenarios and
+> secure boot. It can create guest VMs for security use cases and has
+> virtualization capabilities for both platform and interrupt. Although the
+> hypervisor can be booted independently, it requires the assistance of GenieZone
+> hypervisor kernel driver(gzvm-ko) to leverage the ability of Linux kernel for
+> vCPU scheduling, memory management, inter-VM communication and virtio backend
+> support.
 > 
+> Changes in v5:
+> - Add dt solution back for device initialization
 
-Oh, got it. Yeah, resource managed code needs no explicit *put() calls.
-Thanks for the clarification.
+Why? It's a software interface that you define and control. Make that 
+interface discoverable.
 
+Rob
 
