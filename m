@@ -4,77 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB02C0015E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Aug 2023 22:45:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8984BEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Aug 2023 01:37:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:To:Subject:Cc:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pbtUUoJutGSdy50RvaJ3kKz0WaAIY7fJ4VKyrVHb2W8=; b=i89Ze8Ax758F41mD2LB2uYDguN
-	sI9Ty25qsk0du3Vn0xaeH6N8n9ibbvivoXtfxKzXvyVE+lnn0r/mOVFA6ZFQaNiZHeSN0hsOz1V35
-	FurAlE7OeSe9/UFrStoRmlSHBZbayi4eFaGcuIH870GTbkmUkK+yDcrIolfVwcKv322YGGl8CGOEx
-	5FTmhFU0GXfp+MjGQpJM1CnxVsY++NuFoGG5ld3cyIzt66Et//u8PS+W1p7uTxcTkkOvTm6jlft9g
-	xecKZEhrICSzVcO9Ckh8SaS9vFOfcSU249xouYRlmj2Xr7RuvQ8hQ5aF+uZY5ob+zfa4Jgx+Qb9lx
-	97z9uxVA==;
+	bh=fTKP72RbxBaLLQDh7lKth1HoAnL8wq4cl8CXVlTOUuE=; b=m3TyvhIGEKpfdFKm4MJTKozaRs
+	pa3fwzvcpO74gQTBRVj6311hHHEep13EdgSIJYouTakF9FqdLlUau4XLPM0qzeCns/un1L2YXfngH
+	UHi9rVm6VDDgkmTiIWNVY+YLetGZK2FgOdhCvjSpmn/zjNcdq1fvtS6rnJ8inOE0N4PWT878qq5S0
+	ySjF4CNRzyX4tql8lMEpRJSrzWbwGyN288aBFPl4adYalLceXSQzHkMnqF/Tx5kFLUWRTeY07R1GD
+	mMcAHfJXP+nseTyoiR7xci3GNQ1BXBQuLBb9iCGK+OEhJj55qqUVwvov7bVaf8yksfGHe1NSHI++H
+	qyyuHHsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUat8-00BoJe-0Y;
-	Fri, 11 Aug 2023 22:45:46 +0000
-Received: from relay9-d.mail.gandi.net ([217.70.183.199])
+	id 1qUdYw-00CLH5-1Z;
+	Sat, 12 Aug 2023 01:37:06 +0000
+Received: from mgamail.intel.com ([192.55.52.115])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUat3-00BoIC-1M;
-	Fri, 11 Aug 2023 22:45:43 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id BE388FF802;
-	Fri, 11 Aug 2023 22:45:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1691793936;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=pbtUUoJutGSdy50RvaJ3kKz0WaAIY7fJ4VKyrVHb2W8=;
-	b=G3vzjQWDz1PJOJkqVLNt8besnssHlQHj72Mj+EsY2ZKzP12pEziBSaD/RyQ6McCE1hbMzN
-	JFLjDkjioBJKafMfizcAO+iC66Xnd8VLwIo59dhaDMK9zQEyMsX5F3btfZC6b8in4BAUFy
-	uogFdKKn6C0+UcyInpJ9Nc1bYL5hN7GO4bRetEs/0lnWarSUkDkS7ZFbTBHWgGU6QvLbWn
-	BfHHdcdN9GuGHZTY3fX7I3LLlotEakVf7Ggf7hOqfG5vLywQNMDX3OH81NOrPWJl7S2e3b
-	hBsOuUneKGzVQJDc6xZDWRmOxK1yO2yylwja+4g9h7ftQlCmv8oGLkoYgDHWog==
-Message-ID: <3f262579-eec1-4b21-9b18-1d1d612e715b@arinc9.com>
-Date: Sat, 12 Aug 2023 01:45:29 +0300
+	id 1qUdYt-00CLFg-0O;
+	Sat, 12 Aug 2023 01:37:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1691804223; x=1723340223;
+  h=message-id:date:mime-version:cc:subject:to:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=InQwijdXw9W+QsSLGg97dJTKcOqeU8+07ewmIVxJV4I=;
+  b=QPageSS5VL07idujR4MthMo+R30+lmNoVlWu/O0S7r5sxJyIk63WCoW4
+   B+g1EBFpzZAKEKT93J9TbaQidTWxNQqXWYV8YjQfddiAacZZcVR84kuj0
+   X+JYNaYMqzhcQdYZChQDxJlmGfJ2JH3l8vCwWsJTVmYJ8dKlQ0sKHi0Sa
+   LNNv3Ce9XMDvhZ/4uH6ySFFA3ghPm2Dof4kaX2rvMkbDmGJilbv4oK6Eb
+   9wEYYSTKn8chyvCsoNSXiAEWmUHNf2TR6eS6DrHRa3YDS7A1+rZA2ejmF
+   u0r44BYw6kqt+R+YjqWfPlFaz7noyXE0Ma0sXliW4qJSZteXEE5lis2Q5
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10799"; a="371797634"
+X-IronPort-AV: E=Sophos;i="6.01,167,1684825200"; 
+   d="scan'208";a="371797634"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 18:36:46 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10799"; a="1063472658"
+X-IronPort-AV: E=Sophos;i="6.01,167,1684825200"; 
+   d="scan'208";a="1063472658"
+Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.254.215.79]) ([10.254.215.79])
+  by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 18:36:35 -0700
+Message-ID: <dde32ea5-2b1a-1148-c329-3c52ffcb71a7@linux.intel.com>
+Date: Sat, 12 Aug 2023 09:36:33 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH RESEND net-next 2/2] dt-bindings: net: dsa:
- mediatek,mt7530: document MDIO-bus
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.14.0
+Cc: baolu.lu@linux.intel.com, Dmitry Osipenko <digetx@gmail.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
+ <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
+ Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v6 02/25] iommu: Add IOMMU_DOMAIN_PLATFORM
+To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
+ <andersson@kernel.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <6eb1b7b8dbc3a4b14becad15f0707d4f624ee18b.1691246461.git.daniel@makrotopia.org>
- <9aec0fe0cb676b76132c388bb3ead46f596a6e6e.1691246461.git.daniel@makrotopia.org>
- <dcb981b9-b435-c0e5-8e47-d66add207fdc@arinc9.com>
- <20230808121707.chona7hakapp6whe@skbuf>
- <44fde617-1159-4961-84c4-372fe265fbd8@arinc9.com>
- <20230809220102.t3dqw7iojez5xsq3@skbuf>
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Christophe Leroy <christophe.leroy@csgroup.eu>,
+ Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+ Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
+ Kevin Tian <kevin.tian@intel.com>, Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ Russell King <linux@armlinux.org.uk>, linuxppc-dev@lists.ozlabs.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>,
+ Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
+ Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>,
+ Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy
+ <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
+ Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>
+References: <2-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
 Content-Language: en-US
-In-Reply-To: <20230809220102.t3dqw7iojez5xsq3@skbuf>
+From: Baolu Lu <baolu.lu@linux.intel.com>
+In-Reply-To: <2-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230811_154541_747778_A85C7381 
-X-CRM114-Status: GOOD (  39.85  )
+X-CRM114-CacheID: sfid-20230811_183703_190293_8E797205 
+X-CRM114-Status: GOOD (  28.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,261 +110,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10.08.2023 01:01, Vladimir Oltean wrote:
-> On Wed, Aug 09, 2023 at 12:03:19PM +0300, Arınç ÜNAL wrote:
->> On 8.08.2023 15:17, Vladimir Oltean wrote:
->>> On Sat, Aug 05, 2023 at 11:15:15PM +0300, Arınç ÜNAL wrote:
->>>> I don't see a reason to resubmit this without addressing the requested
->>>> change.
->>>>
->>>>>> Wouldn't we just skip the whole issue by documenting the need for defining all PHYs
->>>>>> used on the switch when defining the MDIO bus?
->>>>>
->>>>> Good idea, please do that.
->>>>
->>>> https://lore.kernel.org/netdev/0f501bb6-18a0-1713-b08c-6ad244c022ec@arinc9.com/
->>>>
->>>> Arınç
->>>
->>> Arınç, where do you see that comment being added? AFAIU, it is a
->>> characteristic of the generic __of_mdiobus_register() code to set
->>> mdio->phy_mask = ~0, and nothing specific to the mt7530.
->>
->> What I believe is specific to DSA is, 1:1 mapping of the port reg to the
->> PHY reg on the mdio bus is disabled if the mdio bus is defined. Therefore,
->> I believe a notice like below fits mediatek,mt7530.yaml.
->>
->> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->> index e532c6b795f4..c59d58252cd5 100644
->> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->> @@ -128,6 +128,15 @@ properties:
->>         See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt for
->>         details for the regulator setup on these boards.
->> +  mdio:
->> +    $ref: /schemas/net/mdio.yaml#
->> +    unevaluatedProperties: false
->> +    description:
->> +      Node for the internal MDIO bus connected to the embedded ethernet-PHYs.
->> +      For every port defined under the "^(ethernet-)?ports$" node, a PHY must be
->> +      defined under here and a phy-handle property must be defined under the
->> +      port node to point to the PHY node.
->> +
->>     mediatek,mcm:
->>       type: boolean
->>       description:
->>
->> Arınç
+On 2023/8/3 8:07, Jason Gunthorpe wrote:
+> This is used when the iommu driver is taking control of the dma_ops,
+> currently only on S390 and power spapr. It is designed to preserve the
+> original ops->detach_dev() semantic that these S390 was built around.
 > 
-> In that case, putting the comment here would make more sense, no?
-> (and maybe enforcing an actual schema, but I've no idea how to do that)
+> Provide an opaque domain type and a 'default_domain' ops value that allows
+> the driver to trivially force any single domain as the default domain.
 > 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-> index 480120469953..5a415f12f162 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
-> @@ -59,7 +59,14 @@ properties:
->         - rtl8_4t
->         - seville
+> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>   drivers/iommu/iommu.c | 14 +++++++++++++-
+>   include/linux/iommu.h |  6 ++++++
+>   2 files changed, 19 insertions(+), 1 deletion(-)
 > 
-> -# CPU and DSA ports must have phylink-compatible link descriptions
-> +# CPU and DSA ports must have phylink-compatible link descriptions.
-> +# On user ports, these are also supported, but are optional and may be omitted,
-> +# meaning that these ports are implicitly connected to a PHY on an internal
-> +# MDIO bus of the switch that isn't described in the device tree. If the switch
-> +# does have a child node for the internal MDIO bus, the phylink-compatible
-> +# bindings are also required (even if this is not enforced here). The detection
-> +# of an internal MDIO bus is model-specific and may involve matching on the
-> +# "mdio" node name or compatible string.
->   if:
->     oneOf:
->       - required: [ ethernet ]
-> 
-> Since commit fe7324b93222 ("net: dsa: OF-ware slave_mii_bus"), DSA as a
-> framework also supports auto-creating an internal MDIO bus based on the
-> presence of the "mdio" node name, so I guess it makes sense for the
-> "mdio" to appear in the generic dsa.yaml if there's nothing else that's
-> special about it.
+> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> index 5e3cdc9f3a9e78..c64365169b678d 100644
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -1705,6 +1705,17 @@ iommu_group_alloc_default_domain(struct iommu_group *group, int req_type)
+>   
+>   	lockdep_assert_held(&group->mutex);
+>   
+> +	/*
+> +	 * Allow legacy drivers to specify the domain that will be the default
+> +	 * domain. This should always be either an IDENTITY or PLATFORM domain.
+> +	 * Do not use in new drivers.
+> +	 */
+> +	if (bus->iommu_ops->default_domain) {
+> +		if (req_type)
+> +			return ERR_PTR(-EINVAL);
+> +		return bus->iommu_ops->default_domain;
+> +	}
+> +
+>   	if (req_type)
+>   		return __iommu_group_alloc_default_domain(bus, group, req_type);
+>   
+> @@ -1967,7 +1978,8 @@ void iommu_domain_free(struct iommu_domain *domain)
+>   	if (domain->type == IOMMU_DOMAIN_SVA)
+>   		mmdrop(domain->mm);
+>   	iommu_put_dma_cookie(domain);
+> -	domain->ops->free(domain);
+> +	if (domain->ops->free)
+> +		domain->ops->free(domain);
+>   }
+>   EXPORT_SYMBOL_GPL(iommu_domain_free);
+>   
+> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+> index e05c93b6c37fba..87aebba474e093 100644
+> --- a/include/linux/iommu.h
+> +++ b/include/linux/iommu.h
+> @@ -64,6 +64,7 @@ struct iommu_domain_geometry {
+>   #define __IOMMU_DOMAIN_DMA_FQ	(1U << 3)  /* DMA-API uses flush queue    */
+>   
+>   #define __IOMMU_DOMAIN_SVA	(1U << 4)  /* Shared process address space */
+> +#define __IOMMU_DOMAIN_PLATFORM	(1U << 5)
+>   
+>   #define IOMMU_DOMAIN_ALLOC_FLAGS ~__IOMMU_DOMAIN_DMA_FQ
+>   /*
+> @@ -81,6 +82,8 @@ struct iommu_domain_geometry {
+>    *				  invalidation.
+>    *	IOMMU_DOMAIN_SVA	- DMA addresses are shared process addresses
+>    *				  represented by mm_struct's.
+> + *	IOMMU_DOMAIN_PLATFORM	- Legacy domain for drivers that do their own
+> + *				  dma_api stuff. Do not use in new drivers.
+>    */
+>   #define IOMMU_DOMAIN_BLOCKED	(0U)
+>   #define IOMMU_DOMAIN_IDENTITY	(__IOMMU_DOMAIN_PT)
+> @@ -91,6 +94,7 @@ struct iommu_domain_geometry {
+>   				 __IOMMU_DOMAIN_DMA_API |	\
+>   				 __IOMMU_DOMAIN_DMA_FQ)
+>   #define IOMMU_DOMAIN_SVA	(__IOMMU_DOMAIN_SVA)
+> +#define IOMMU_DOMAIN_PLATFORM	(__IOMMU_DOMAIN_PLATFORM)
+>   
+>   struct iommu_domain {
+>   	unsigned type;
+> @@ -256,6 +260,7 @@ struct iommu_iotlb_gather {
+>    * @owner: Driver module providing these ops
+>    * @identity_domain: An always available, always attachable identity
+>    *                   translation.
+> + * @default_domain: If not NULL this will always be set as the default domain.
+>    */
+>   struct iommu_ops {
+>   	bool (*capable)(struct device *dev, enum iommu_cap);
+> @@ -290,6 +295,7 @@ struct iommu_ops {
+>   	unsigned long pgsize_bitmap;
+>   	struct module *owner;
+>   	struct iommu_domain *identity_domain;
+> +	struct iommu_domain *default_domain;
 
-I agree with this. I've done this which works. It's even found a port
-node with the ethernet property missing, as it should've.
+I am imaging whether we can merge above two pointers into a single one.
+It is either an IDENTITY or PLATFORM domain and the core will choose it
+as the default domain of a group if iommu_group_alloc_default_domain()
+fails to allocate one through the iommu dev_ops.
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.yaml b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-index ec74a660beda..03ccedbc49dc 100644
---- a/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
-@@ -31,6 +31,24 @@ properties:
-        (single device hanging off a CPU port) must not specify this property
-      $ref: /schemas/types.yaml#/definitions/uint32-array
-  
-+  mdio:
-+    description: The internal MDIO bus of the switch
-+    $ref: /schemas/net/mdio.yaml#
-+
-+if:
-+  required: [ mdio ]
-+then:
-+  patternProperties:
-+    "^(ethernet-)?ports$":
-+      patternProperties:
-+        "^(ethernet-)?port@[0-9]+$":
-+          if:
-+            not:
-+              required: [ ethernet ]
-+          then:
-+            required:
-+              - phy-handle
-+
-  additionalProperties: true
-  
-  $defs:
-diff --git a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
-index 8d7e878b84dc..fe1e2008995d 100644
---- a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
-@@ -78,6 +78,16 @@ examples:
-              };
-      };
-  
-+    macb1 {
-+            #address-cells = <1>;
-+            #size-cells = <0>;
-+
-+            fixed-link {
-+                    speed = <1000>;
-+                    full-duplex;
-+            };
-+    };
-+
-      spi {
-              #address-cells = <1>;
-              #size-cells = <0>;
-@@ -138,6 +148,7 @@ examples:
-                                      phy-mode = "rgmii";
-                                      tx-internal-delay-ps = <2000>;
-                                      rx-internal-delay-ps = <2000>;
-+                                    ethernet = <&macb0>;
-  
-                                      fixed-link {
-                                              speed = <1000>;
-diff --git a/Documentation/devicetree/bindings/net/dsa/realtek.yaml b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-index cfd69c2604ea..f600e65fc990 100644
---- a/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-@@ -6,9 +6,6 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
-  
-  title: Realtek switches for unmanaged switches
-  
--allOf:
--  - $ref: dsa.yaml#/$defs/ethernet-ports
--
-  maintainers:
-    - Linus Walleij <linus.walleij@linaro.org>
-  
-@@ -95,37 +92,41 @@ properties:
-        - '#address-cells'
-        - '#interrupt-cells'
-  
--  mdio:
--    $ref: /schemas/net/mdio.yaml#
--    unevaluatedProperties: false
--
--    properties:
--      compatible:
--        const: realtek,smi-mdio
--
--if:
--  required:
--    - reg
--
--then:
--  $ref: /schemas/spi/spi-peripheral-props.yaml#
--  not:
--    required:
--      - mdc-gpios
--      - mdio-gpios
--      - mdio
--
--  properties:
--    mdc-gpios: false
--    mdio-gpios: false
--    mdio: false
--
--else:
--  required:
--    - mdc-gpios
--    - mdio-gpios
--    - mdio
--    - reset-gpios
-+allOf:
-+  - $ref: dsa.yaml#/$defs/ethernet-ports
-+  - if:
-+      required: [ mdio ]
-+    then:
-+      properties:
-+        mdio:
-+          properties:
-+            compatible:
-+              const: realtek,smi-mdio
-+
-+          required:
-+            - compatible
-+
-+  - if:
-+      required:
-+        - reg
-+    then:
-+      $ref: /schemas/spi/spi-peripheral-props.yaml#
-+      not:
-+        required:
-+          - mdc-gpios
-+          - mdio-gpios
-+          - mdio
-+
-+      properties:
-+        mdc-gpios: false
-+        mdio-gpios: false
-+        mdio: false
-+    else:
-+      required:
-+        - mdc-gpios
-+        - mdio-gpios
-+        - mdio
-+        - reset-gpios
-  
-  required:
-    - compatible
+Those iommu drivers that could result in a NULL default domain could
+provide such domain and guarantee that this domain is always usable for
+devices.
 
+Probably we could give it a more meaningful name? For example,
+supplemental_domain or rescue_domain?
 
-> 
-> Also, in the earlier patch version you had replied to David Bauer:
-> 
-> | > While i was not aware of this side effect, I don't see how this breaks the ABI.
-> |
-> | Your patch doesn't break it, my then-intention of doing PHY muxing by
-> | utilising this would. Your first patch is perfectly fine as is.
-> 
-> Could you please clarify what is your valid use case for not having a
-> phy-handle to a PHY on an MDIO bus that is otherwise present in OF?
+I am not sure whether this can address the NULL-default-domain issues
+of all drivers this series tries to address. So just for discussion
+purpose.
 
-I had one possible use case, PHY muxing, but it has nothing to do with
-the PHY registers of the PHYs on the internal MDIO bus so it's not a
-valid use case.
-
-> It doesn't _have_ to be broken. Since DSA knows the addresses of the
-> internal PHYs, it can circumvent the lack of auto-scanning by manually
-> calling get_phy_device() at the right (port-based) MDIO addresses.
-> But any patch would need to have a clear reason before being considered
-> for merging.
-
-I think circumventing the mdio node for ports without a phy-handle will
-bring unnecessary complexity and confusion as I may define a port with
-reg = <1> with phy-handle to a phy with reg = <4>. In that case, a port
-with reg = <4> without a phy-handle would try the phy with reg <4> and fail.
-
-This is of course if I understood correctly that "(port-based) MDIO
-addresses" means reading the MDIO address of a phy from the reg of a
-port defined under the ports node.
-
-Arınç
+Best regards,
+baolu
 
