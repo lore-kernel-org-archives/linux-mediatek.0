@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8984BEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Aug 2023 01:37:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DFF9EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Aug 2023 01:42:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:Cc:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fTKP72RbxBaLLQDh7lKth1HoAnL8wq4cl8CXVlTOUuE=; b=m3TyvhIGEKpfdFKm4MJTKozaRs
-	pa3fwzvcpO74gQTBRVj6311hHHEep13EdgSIJYouTakF9FqdLlUau4XLPM0qzeCns/un1L2YXfngH
-	UHi9rVm6VDDgkmTiIWNVY+YLetGZK2FgOdhCvjSpmn/zjNcdq1fvtS6rnJ8inOE0N4PWT878qq5S0
-	ySjF4CNRzyX4tql8lMEpRJSrzWbwGyN288aBFPl4adYalLceXSQzHkMnqF/Tx5kFLUWRTeY07R1GD
-	mMcAHfJXP+nseTyoiR7xci3GNQ1BXBQuLBb9iCGK+OEhJj55qqUVwvov7bVaf8yksfGHe1NSHI++H
-	qyyuHHsA==;
+	bh=SWtgIcUkOw+k0OiAdyi38OeAyCYkTnktsSK+SyljicE=; b=WvA8/P+NpyUVW2MKwTNJxhG8R/
+	KF/rAhdkycVQbFoIZ69jQo/zDiHPrWy+tOe+Tu0BBd4pT9kEW4Kh3cdRpLPrmuCHlMTXyar8VSLoO
+	NjBbiZdN6bc9k7hj+mezGZ7uOJkeCPmUxwXQyOLWfj4WQd0A5bPxlVaYF03IdPxfQSOe+GQLNIplR
+	CO8kZroWkg7LET1HFPQNgg2Kj3Pro+ZKwZpPQEW1MU6XbsP+rUIgdJo9v1ckzdqC8MH5K2Wv7Z/d8
+	j/RpZOQRuD/c0iY5De1P1TtT2tjTR9nHV0RAeO/PtP6Rk9G4Rhcwx1MvgmSiA5y/BZSX4l4YLjgG1
+	G3ZEWlQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUdYw-00CLH5-1Z;
-	Sat, 12 Aug 2023 01:37:06 +0000
-Received: from mgamail.intel.com ([192.55.52.115])
+	id 1qUde4-00CMNo-1c;
+	Sat, 12 Aug 2023 01:42:24 +0000
+Received: from mgamail.intel.com ([192.55.52.88])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qUdYt-00CLFg-0O;
-	Sat, 12 Aug 2023 01:37:04 +0000
+	id 1qUde1-00CMMs-0i;
+	Sat, 12 Aug 2023 01:42:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1691804223; x=1723340223;
+  t=1691804541; x=1723340541;
   h=message-id:date:mime-version:cc:subject:to:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=InQwijdXw9W+QsSLGg97dJTKcOqeU8+07ewmIVxJV4I=;
-  b=QPageSS5VL07idujR4MthMo+R30+lmNoVlWu/O0S7r5sxJyIk63WCoW4
-   B+g1EBFpzZAKEKT93J9TbaQidTWxNQqXWYV8YjQfddiAacZZcVR84kuj0
-   X+JYNaYMqzhcQdYZChQDxJlmGfJ2JH3l8vCwWsJTVmYJ8dKlQ0sKHi0Sa
-   LNNv3Ce9XMDvhZ/4uH6ySFFA3ghPm2Dof4kaX2rvMkbDmGJilbv4oK6Eb
-   9wEYYSTKn8chyvCsoNSXiAEWmUHNf2TR6eS6DrHRa3YDS7A1+rZA2ejmF
-   u0r44BYw6kqt+R+YjqWfPlFaz7noyXE0Ma0sXliW4qJSZteXEE5lis2Q5
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10799"; a="371797634"
+  bh=5GY/e8XTSIPzCfiJLnCpeo3J53rYLGWoWboZiWN0iEY=;
+  b=JERIDtKibZ4oNoYTQRDmtzo+/avY6Tx4EmeydQYLEPjrOTToZheRnuwl
+   QXK+OKwdBhLEKGBZ/eGOm9y+91/38rWP6gjOSDqqrduNIUXmt+8H5pF71
+   Xyhn6pFESgDbCADnUFHgxp255w8lkhqA3hmuoVJ2dveL6ntvYRrFqzlYz
+   UAasycnRIlscGgZD8L0h/HoI9ZOxwos0DskhGkH3+mMmLo7XvvHhdisYs
+   FwfmR8NVDMOdP7e9ZDMz7JFYFuiFGFfXw/TKotTL4LXQhEW6e0iYlRqGa
+   l+cot+2Evk7OcqNYWmvGZrsOXyDecvHR1ZwiBXPq/HWTXBqqNC7qQiJn8
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10799"; a="402773663"
 X-IronPort-AV: E=Sophos;i="6.01,167,1684825200"; 
-   d="scan'208";a="371797634"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 18:36:46 -0700
+   d="scan'208";a="402773663"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 18:42:04 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10799"; a="1063472658"
+X-IronPort-AV: E=McAfee;i="6600,9927,10799"; a="682718124"
 X-IronPort-AV: E=Sophos;i="6.01,167,1684825200"; 
-   d="scan'208";a="1063472658"
+   d="scan'208";a="682718124"
 Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.254.215.79]) ([10.254.215.79])
-  by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 18:36:35 -0700
-Message-ID: <dde32ea5-2b1a-1148-c329-3c52ffcb71a7@linux.intel.com>
-Date: Sat, 12 Aug 2023 09:36:33 +0800
+  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2023 18:41:52 -0700
+Message-ID: <b772c318-80b0-944a-dfe9-beb70127dc88@linux.intel.com>
+Date: Sat, 12 Aug 2023 09:41:50 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
@@ -61,6 +61,7 @@ Cc: baolu.lu@linux.intel.com, Dmitry Osipenko <digetx@gmail.com>,
  <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
  Thierry Reding <treding@nvidia.com>
 Subject: Re: [PATCH v6 02/25] iommu: Add IOMMU_DOMAIN_PLATFORM
+Content-Language: en-US
 To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
  <andersson@kernel.org>,
@@ -88,14 +89,13 @@ To: Jason Gunthorpe <jgg@nvidia.com>, Andy Gross <agross@kernel.org>,
  Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
  Chunyan Zhang <zhang.lyra@gmail.com>
 References: <2-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
-Content-Language: en-US
 From: Baolu Lu <baolu.lu@linux.intel.com>
 In-Reply-To: <2-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230811_183703_190293_8E797205 
-X-CRM114-Status: GOOD (  28.64  )
+X-CRM114-CacheID: sfid-20230811_184221_272238_99463884 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,42 +111,6 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 2023/8/3 8:07, Jason Gunthorpe wrote:
-> This is used when the iommu driver is taking control of the dma_ops,
-> currently only on S390 and power spapr. It is designed to preserve the
-> original ops->detach_dev() semantic that these S390 was built around.
-> 
-> Provide an opaque domain type and a 'default_domain' ops value that allows
-> the driver to trivially force any single domain as the default domain.
-> 
-> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->   drivers/iommu/iommu.c | 14 +++++++++++++-
->   include/linux/iommu.h |  6 ++++++
->   2 files changed, 19 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-> index 5e3cdc9f3a9e78..c64365169b678d 100644
-> --- a/drivers/iommu/iommu.c
-> +++ b/drivers/iommu/iommu.c
-> @@ -1705,6 +1705,17 @@ iommu_group_alloc_default_domain(struct iommu_group *group, int req_type)
->   
->   	lockdep_assert_held(&group->mutex);
->   
-> +	/*
-> +	 * Allow legacy drivers to specify the domain that will be the default
-> +	 * domain. This should always be either an IDENTITY or PLATFORM domain.
-> +	 * Do not use in new drivers.
-> +	 */
-> +	if (bus->iommu_ops->default_domain) {
-> +		if (req_type)
-> +			return ERR_PTR(-EINVAL);
-> +		return bus->iommu_ops->default_domain;
-> +	}
-> +
->   	if (req_type)
->   		return __iommu_group_alloc_default_domain(bus, group, req_type);
->   
 > @@ -1967,7 +1978,8 @@ void iommu_domain_free(struct iommu_domain *domain)
 >   	if (domain->type == IOMMU_DOMAIN_SVA)
 >   		mmdrop(domain->mm);
@@ -183,38 +147,13 @@ On 2023/8/3 8:07, Jason Gunthorpe wrote:
 >   				 __IOMMU_DOMAIN_DMA_FQ)
 >   #define IOMMU_DOMAIN_SVA	(__IOMMU_DOMAIN_SVA)
 > +#define IOMMU_DOMAIN_PLATFORM	(__IOMMU_DOMAIN_PLATFORM)
->   
->   struct iommu_domain {
->   	unsigned type;
-> @@ -256,6 +260,7 @@ struct iommu_iotlb_gather {
->    * @owner: Driver module providing these ops
->    * @identity_domain: An always available, always attachable identity
->    *                   translation.
-> + * @default_domain: If not NULL this will always be set as the default domain.
->    */
->   struct iommu_ops {
->   	bool (*capable)(struct device *dev, enum iommu_cap);
-> @@ -290,6 +295,7 @@ struct iommu_ops {
->   	unsigned long pgsize_bitmap;
->   	struct module *owner;
->   	struct iommu_domain *identity_domain;
-> +	struct iommu_domain *default_domain;
 
-I am imaging whether we can merge above two pointers into a single one.
-It is either an IDENTITY or PLATFORM domain and the core will choose it
-as the default domain of a group if iommu_group_alloc_default_domain()
-fails to allocate one through the iommu dev_ops.
+Nit: As a default domain could be the type of IOMMU_DOMAIN_PLATFORM,
 
-Those iommu drivers that could result in a NULL default domain could
-provide such domain and guarantee that this domain is always usable for
-devices.
+static const char *iommu_domain_type_str(unsigned int t)
 
-Probably we could give it a more meaningful name? For example,
-supplemental_domain or rescue_domain?
-
-I am not sure whether this can address the NULL-default-domain issues
-of all drivers this series tries to address. So just for discussion
-purpose.
+needs to be updated, so that users can get a right string when reading 
+/sys/.../[group_id]/type.
 
 Best regards,
 baolu
