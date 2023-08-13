@@ -4,79 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28B46C04A6A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Aug 2023 11:23:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9170BEB64DD
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Aug 2023 11:53:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9GXovUO/PFAmMSu4eDPxz+1S111/9HB7f0QHyjq9J88=; b=lJR/SNVrYiunIVPe6yceXbBy9V
-	+7RmUisgGZrK/MHIW1OeP9iWCzwwxVBHCuOMuRzB4ydCcjDBT7Y0QNFNDvF2GeTmQDNkwUAt0lGXf
-	efTIcu3GYqHUyB4sj+K63yckmawe1YBM/RpYUqm1nfq8WIZkM/cInYkUAk07XjuF58nlTsEj5H+01
-	r+pGvV4edB66q5RTOtMLntE9sRbQPT16H8D6LBaNl2SJ3OVkWyMXAtNBvp9rGYF6xWyJAtaefVQi/
-	zG5v1k14dhc1KnTLOkRYDw4wvD3/82KEXZMx0r6PGNlczwWeDBFLGpCiBFBBNDx73uTZaApsRmYMT
-	YAHVhI6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oRPTsvi2xvnA/c1MYOB0hguXkvQfZTWWTzslMYWxYKU=; b=UK/Zj7mxuNnOZikaVWZv+234dq
+	WlsQ24VPV8y+MwGAc1iY7KedVYFmCUQ1mWEN/Fip9cURie9kpx6NA1nLaBACzt1ZKLh8rfgjgDlX5
+	oLUZC3eyvsMvpWKlJ1ob0F2wa+ILnt61QnBQsqKbEiERqSotUxk8FoBicOLeW6M0BdVnVx6QJgiCG
+	KG6+RUYGq5q7UC+MdnTysPF3G5lVTrq6WKXU+/letrJ9cjXxlF9SIvT5o1jjK0seJLP6foFlSvCnL
+	ALbWIBNkmiJACDVxBJmF45R84KL846ObZLvPeW2Za+mhPbfr9oWhrrc9BSz/+X3iW9Bgz1RZRj6UK
+	RFojoF0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qV9Bv-00F1a1-0V;
-	Sun, 13 Aug 2023 11:23:27 +0000
-Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
+	id 1qV9em-00F3TJ-2n;
+	Sun, 13 Aug 2023 11:53:16 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qV9Bs-00F1ZH-1e;
-	Sun, 13 Aug 2023 11:23:26 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 8DF9D40003;
-	Sun, 13 Aug 2023 11:23:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1691925800;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9GXovUO/PFAmMSu4eDPxz+1S111/9HB7f0QHyjq9J88=;
-	b=MEO8bynVSnOxZ01sRklkbXmoBw+J8LaQRA7TI6gDLKiq2Z6rv8LcwgSJvOH7uqbev8KURt
-	TrWsWTvx0cisOxLJl9Jsd5U6AhKfM8Vawwnc3F950pKoeWuqUVD51RTYzzYEOTZGiNUBp9
-	KkY0o3sTyTIohpr0KOqb/mvrRH7UFYd930PofaMrhXqmNgotEgVyUcnaa5GXO/nAhxykge
-	lp0fDU4JHgJr7Yg7aMPrdA8aAFGkzFmh4HgAbBXexTcb5EWJtjG+9cyu0Q5bDnOd0j11eR
-	uDeHxATwJwJaNo2csLR6FU73vH3DWRxrla/o1kkz3jWXdeS/PSi5SkIfzdTD6Q==
-Message-ID: <49acfbe1-a310-441d-99a5-16955b4cf41e@arinc9.com>
-Date: Sun, 13 Aug 2023 14:23:10 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] dt-bindings: net: dsa: microchip,lan937x: add missing
- ethernet on example
-To: Vladimir Oltean <olteanv@gmail.com>
+	id 1qV9ei-00F3SZ-2y;
+	Sun, 13 Aug 2023 11:53:14 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-99cce6f7de2so477740166b.3;
+        Sun, 13 Aug 2023 04:53:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1691927590; x=1692532390;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=oRPTsvi2xvnA/c1MYOB0hguXkvQfZTWWTzslMYWxYKU=;
+        b=ATFt2tpDvrfMsMtWfojgvpZXF1CVomdsotvhq/cgY2o4e9GBSlQghZMgJaDSvevKxs
+         j3zR7YB9K03vAEE92dJodLz6waJFp+cGtRmcatrwlEwtC7OFGMFY3gZfk+8EiSx1tJaG
+         xU9YrkBFxx6zAjrfZcVEMuN/2bxYTT+np0RANNFfrQ3BaaEnxnKkI/1Ua+mzHyQdTSuk
+         eXAVyB2Vulvn6jU2+6TmtvXS+KX4OUzkHNxeg0hYctbNhTH3ohITpCE/JnX6hfoMzh4q
+         Rv4x5UsTH49Tfr/TA4VKPGneLzFqOkcL7+VrnBsh1ttn9deIq3LzQWktru+6P85l/6Wq
+         IE0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1691927590; x=1692532390;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=oRPTsvi2xvnA/c1MYOB0hguXkvQfZTWWTzslMYWxYKU=;
+        b=czexH70+PeuDsm2V9XR+ZnaXwP0XL2ZXqwxFC6wzD373sDNI3OQYajrvDUc317/cwB
+         BW3Vg7YVnu3t8fEo7hpIiBgR8JDc3o51MYW2IF+kwiQte0TS9HS5VJ1oZnAjLH6JvSV/
+         Gd6F3I4ynt9dvCEhJmanOwKMDQdRD9doe1ql05i2b6G3y3G2tcyYVIKKz3sxIaRhUATV
+         KCIlB72fJrO+M1lh/Y0VJIrD3BYYehDUjHSQupVwowZFNZjak7XUjySbaaRiF7+TCAwR
+         gh1eBMuNe1RknC0FxmVUXy4ipNdGSOAb4iUXGg67DYzgcDU6A5w4qk+qo+nqYWEL69C0
+         KQLQ==
+X-Gm-Message-State: AOJu0Yw8VD2lwXtJbKykfm8i105pmZv+CN9vbA9UUWzaBTUj+Fr5vylW
+	G7Z0Gf3R3bn1vD7F9hJ4uMk=
+X-Google-Smtp-Source: AGHT+IFKg5qQEbxbCrnVhjCDPohFCLQymMifmy+mbyfCzfkWgjI3v6iEVwhPJM++NNBZ34XE9gdJgw==
+X-Received: by 2002:a17:906:5181:b0:993:f2b4:13c9 with SMTP id y1-20020a170906518100b00993f2b413c9mr6169481ejk.21.1691927589752;
+        Sun, 13 Aug 2023 04:53:09 -0700 (PDT)
+Received: from skbuf ([188.27.184.148])
+        by smtp.gmail.com with ESMTPSA id cd19-20020a170906b35300b0098e42bef732sm4467015ejb.183.2023.08.13.04.53.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 13 Aug 2023 04:53:09 -0700 (PDT)
+Date: Sun, 13 Aug 2023 14:53:06 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Woojung Huh <woojung.huh@microchip.com>,
- UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
- Daniel Golle <daniel@makrotopia.org>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
+Message-ID: <20230813112026.ohsx6srbt2staxma@skbuf>
 References: <20230812091708.34665-1-arinc.unal@arinc9.com>
+ <20230812091708.34665-3-arinc.unal@arinc9.com>
+ <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
  <20230812091708.34665-1-arinc.unal@arinc9.com>
- <20230812091708.34665-2-arinc.unal@arinc9.com>
- <20230812091708.34665-2-arinc.unal@arinc9.com>
- <20230813110747.rvvsvte2t6pbe5j4@skbuf>
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20230813110747.rvvsvte2t6pbe5j4@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <20230812091708.34665-3-arinc.unal@arinc9.com>
+ <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+In-Reply-To: <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230813_042324_835930_19080435 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20230813_045312_986291_8B62A20E 
+X-CRM114-Status: GOOD (  19.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,46 +118,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13.08.2023 14:07, Vladimir Oltean wrote:
-> On Sat, Aug 12, 2023 at 12:17:05PM +0300, Arınç ÜNAL wrote:
->> The port@5 node on the example is missing the ethernet property. Add it.
->> Remove the MAC bindings on the example as they cannot be validated.
->>
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> ---
->>   .../bindings/net/dsa/microchip,lan937x.yaml           | 11 +----------
->>   1 file changed, 1 insertion(+), 10 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
->> index 8d7e878b84dc..49af4b0d5916 100644
->> --- a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
->> +++ b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
->> @@ -68,16 +68,6 @@ examples:
->>     - |
->>       #include <dt-bindings/gpio/gpio.h>
->>   
->> -    macb0 {
->> -            #address-cells = <1>;
->> -            #size-cells = <0>;
->> -
->> -            fixed-link {
->> -                    speed = <1000>;
->> -                    full-duplex;
->> -            };
->> -    };
->> -
->>       spi {
->>               #address-cells = <1>;
->>               #size-cells = <0>;
->> @@ -138,6 +128,7 @@ examples:
->>                                       phy-mode = "rgmii";
->>                                       tx-internal-delay-ps = <2000>;
->>                                       rx-internal-delay-ps = <2000>;
->> +                                    ethernet = <&macb1>;
+On Sat, Aug 12, 2023 at 10:20:43PM +0300, Arınç ÜNAL wrote:
+> diff --git a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
+> index 4d5f5cc6d031e2..82dda8fae8b16e 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
+> @@ -72,6 +72,10 @@ properties:
+>            - compatible
+>            - reg
+> +  mdio:
+> +    $ref: dsa.yaml#/properties/mdio
+> +    unevaluatedProperties: false
+
+sja1105 does not support an "mdio" child property. I haven't checked the
+others. Don't add properties that aren't supported.
+
+> +
+>  patternProperties:
+>    "^(ethernet-)?ports$":
+>      patternProperties:
 > 
-> macb1 instead of macb0: was it intentional?
+> The nxp,sja1105.yaml schema also needed some changes.
+> 
+> dt-bindings: net: dsa: nxp,sja1105: improve internal MDIO bus bindings
+> 
+> SJA1110 Ethernet Switch uses the mdios property for its internal MDIO bus.
+> Therefore, disallow the mdios property for SJA1105, and the mdio property
+> for SJA1110.
+> 
+> Require the phy-handle property on the non-CPU ports if the mdios property
+> is being used.
+> 
+> Refer to dsa.yaml#/properties/mdio to point the human readers to the
+> description on the dsa.yaml schema.
+> 
+> ---
+>  .../bindings/net/dsa/nxp,sja1105.yaml         | 20 ++++++++++++++++++-
+>  1 file changed, 19 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
+> index 82dda8fae8b16e..7d92350f1065b2 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
+> @@ -52,7 +52,7 @@ properties:
+>      patternProperties:
+>        "^mdio@[0-1]$":
+> -        $ref: /schemas/net/mdio.yaml#
+> +        $ref: dsa.yaml#/properties/mdio
+>          unevaluatedProperties: false
+>          properties:
+> @@ -128,14 +128,32 @@ allOf:
+>      then:
+>        properties:
+>          spi-cpol: false
+> +        mdios: false
+> +
+>        required:
+>          - spi-cpha
+>      else:
+>        properties:
+>          spi-cpha: false
+> +        mdio: false
+> +
+>        required:
+>          - spi-cpol
+> +  - if:
+> +      required: [ mdios ]
+> +    then:
+> +      patternProperties:
+> +        "^(ethernet-)?ports$":
+> +          patternProperties:
+> +            "^(ethernet-)?port@[0-9]+$":
+> +              if:
+> +                not:
+> +                  required: [ ethernet ]
+> +              then:
+> +                required:
+> +                  - phy-handle
 
-Yes, port@4 defines macb0. I used macb1 for port@5 here.
+For sja1105, phylink-compatible bindings (phy-handle, fixed-link or managed)
+are required for all ports (user, dsa or cpu).
 
-Arınç
+Also, sja1105 does not populate the slave_mii_bus, so it never uses the
+fallback where ports implicitly connect to an internal PHY if no phylink
+bindings are present.
+
+> +
+>  unevaluatedProperties: false
+>  examples:
+> 
+> Arınç
 
