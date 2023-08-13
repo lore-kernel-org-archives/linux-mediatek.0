@@ -4,100 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AD4EEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Aug 2023 12:11:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B2A5C04A6A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Aug 2023 12:59:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:Cc:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4UERmI2PHehjkhAKZ/+GFHDlRMEvH2qkJ6NAeV6cdTM=; b=pxoV9BNql26lJ9tKSbESZKttbR
-	ITh8HekHzjGGqmyFFGm35H8sNbl5g0Gv+3gKvcAAW9wOO9//qmUsPXngWBOwNGEBe22fQYMGuB1Y2
-	LugrtaO7NBbOXmiF/sUVM0vutX93117d7/UP4BLvJ7YS4/ToAYP6SbeuElrZY91PtWOLoXta20z+c
-	CJO0VkW3w3hdBF9yZG3XwXpJzoj+zTi6PHUAw/r7hQ6lX0Ytm0Gh1GoL7xHwB81+mnrcIYXGfzjYQ
-	yYyyV1oQWkcCKmSz59zSIMRkZCv13uHvaW+7cRf2Y7FSZj7OxgDy7D7F4XSo/vedhQUbK9mooMmLw
-	hZnVj16w==;
+	bh=1Das/Iq62AV66sLwCAUWNuFrHn8CiB8KngbQOudN7xQ=; b=aWcZCsRNF1E0u2zZl2BpOzzkes
+	fLEWcxN2rdqg7RGzvr14o6wY81qiv2EBrkVPQcz3QFkLcejHCYTQjHE1zSYQzKtgFoOgBlzyRMDeT
+	gLwsc4wKbTfAGfuKza2N8EokioeeLev6e1097I74XrGTNwhSeXWMCc/GooBxH4gkaUlqPJYauJbzL
+	c2jIAqwoZto/qfA+/8vcARqtvH7/XmoHDI+7z8zkl3RfWtcEMB3HNZRca+Hp8ilsIoI0ZBSYb6mzZ
+	l2KlADwf6UOviIzCwlyLmwnAczg4B3pZpAMNtGgpiqDnNCofmFHNPhBn6T6e0wSHAL/0dZ7nPPnSw
+	F3zc9ddQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qV9wl-00F512-2c;
-	Sun, 13 Aug 2023 12:11:51 +0000
-Received: from mgamail.intel.com ([134.134.136.126])
+	id 1qVAgc-00F7wd-03;
+	Sun, 13 Aug 2023 12:59:14 +0000
+Received: from relay1-d.mail.gandi.net ([217.70.183.193])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qV9wi-00F50K-1R;
-	Sun, 13 Aug 2023 12:11:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1691928708; x=1723464708;
-  h=message-id:date:mime-version:cc:subject:to:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=EPKMap/YIslWzTcA4tjCBfC0/lQThAIgVXzQUtL7nv8=;
-  b=NZN+HEwLAyukKrnpi/Nv5vPG7dsLgzF/ojNOFEl8G7nGfMe6tATvVALN
-   lJEx+YVqS7rUb80CJ1drOoX0d/voezr7DggUr6NVvAgss4QHwsIUJhikV
-   APZ5SoL+erIjHM6E43czh3xf2uOdSmy+GJ6eYhr5ESgCyMSVJZADu073i
-   Fzn3zjn+VaVJjXI8isnNjmhsF2g6jiiVwRM/U/sykiBISQunBsoAwB1+G
-   AoNfnd3C1XxYAvrLUVEXNAH312P0zP6JdI4ZeC0CXGMKZRJaKOKuU5R/i
-   Eq+gweARsOunJvk33mceoaRc2zsKA6Q8PWkrzWXLU/wV5XQoTCQP0TQ0F
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10800"; a="356852437"
-X-IronPort-AV: E=Sophos;i="6.01,170,1684825200"; 
-   d="scan'208";a="356852437"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2023 05:11:44 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10800"; a="906929981"
-X-IronPort-AV: E=Sophos;i="6.01,170,1684825200"; 
-   d="scan'208";a="906929981"
-Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.249.169.238]) ([10.249.169.238])
-  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2023 05:11:32 -0700
-Message-ID: <a9651d96-dbfb-aece-0811-2b36c4eb0a07@linux.intel.com>
-Date: Sun, 13 Aug 2023 20:11:30 +0800
+	id 1qVAgY-00F7vw-2V;
+	Sun, 13 Aug 2023 12:59:12 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 78A6B240002;
+	Sun, 13 Aug 2023 12:58:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1691931546;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1Das/Iq62AV66sLwCAUWNuFrHn8CiB8KngbQOudN7xQ=;
+	b=VJSxRm1D9aLplYld0WQ+k0Ue066GLcVMyoyYyKc9sTR+FKcKFxo0k2O3qKaAp28gkmbQY+
+	YEJ7JxPysfSYWbX3axnJLN4pVrH8Ej7/z+7LKfu+lWQYpoMM4w1XZPp/YE7l3dp9GxgSsD
+	HKPVzzRbxUiGNjmwZuDaOcRcTKs4IJFFucp2qUZHumVRg+vW7sISaJ9WGaoktqfzSgKXRH
+	/IlDEYl4+ye2oQoVkXIHHJaMqiUgdGLGkEGdaxntMB9t0imwMYb0NuSmwechDHMmjpQbi6
+	v0TAdYXeU5WY0hK5tryE0im1ns6nN5w7rVrIAUG3giEnOc7tIwKzwxazd+MxAg==
+Message-ID: <2598d0f8-8d87-4712-ada1-fc76efb61d61@arinc9.com>
+Date: Sun, 13 Aug 2023 15:58:55 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Cc: baolu.lu@linux.intel.com, Andy Gross <agross@kernel.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
- <andersson@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
- Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
- Kevin Tian <kevin.tian@intel.com>, Konrad Dybcio <konrad.dybcio@linaro.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- Russell King <linux@armlinux.org.uk>, linuxppc-dev@lists.ozlabs.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>,
- Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy
- <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
- Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Dmitry Osipenko <digetx@gmail.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
- <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
- Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v6 02/25] iommu: Add IOMMU_DOMAIN_PLATFORM
-To: Jason Gunthorpe <jgg@nvidia.com>
-References: <2-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
- <dde32ea5-2b1a-1148-c329-3c52ffcb71a7@linux.intel.com>
- <ZNds4kejneylOYBE@nvidia.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
 Content-Language: en-US
-From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <ZNds4kejneylOYBE@nvidia.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Woojung Huh <woojung.huh@microchip.com>,
+ UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+ Daniel Golle <daniel@makrotopia.org>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230812091708.34665-1-arinc.unal@arinc9.com>
+ <20230812091708.34665-1-arinc.unal@arinc9.com>
+ <20230812091708.34665-3-arinc.unal@arinc9.com>
+ <20230812091708.34665-3-arinc.unal@arinc9.com>
+ <20230813111536.xzmxytghjzxhzmq7@skbuf>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20230813111536.xzmxytghjzxhzmq7@skbuf>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230813_051148_585431_8EB44F06 
-X-CRM114-Status: GOOD (  20.39  )
+X-CRM114-CacheID: sfid-20230813_055911_120480_1E289A55 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,56 +90,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023/8/12 19:28, Jason Gunthorpe wrote:
-> On Sat, Aug 12, 2023 at 09:36:33AM +0800, Baolu Lu wrote:
->>> @@ -290,6 +295,7 @@ struct iommu_ops {
->>>    	unsigned long pgsize_bitmap;
->>>    	struct module *owner;
->>>    	struct iommu_domain *identity_domain;
->>> +	struct iommu_domain *default_domain;
+On 13.08.2023 14:15, Vladimir Oltean wrote:
+> On Sat, Aug 12, 2023 at 12:17:06PM +0300, Arınç ÜNAL wrote:
+>> Add the schema to document the internal MDIO bus. Adjust realtek.yaml
+>> accordingly.
 >>
->> I am imaging whether we can merge above two pointers into a single one.
->> It is either an IDENTITY or PLATFORM domain and the core will choose it
->> as the default domain of a group if iommu_group_alloc_default_domain()
->> fails to allocate one through the iommu dev_ops.
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>> ---
+>>   .../devicetree/bindings/net/dsa/dsa.yaml      | 18 +++++
+>>   .../devicetree/bindings/net/dsa/realtek.yaml  | 66 +++++++++----------
+>>   2 files changed, 50 insertions(+), 34 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/net/dsa/dsa.yaml b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
+>> index ec74a660beda..03ccedbc49dc 100644
+>> --- a/Documentation/devicetree/bindings/net/dsa/dsa.yaml
+>> +++ b/Documentation/devicetree/bindings/net/dsa/dsa.yaml
+>> @@ -31,6 +31,24 @@ properties:
+>>         (single device hanging off a CPU port) must not specify this property
+>>       $ref: /schemas/types.yaml#/definitions/uint32-array
+>>   
+>> +  mdio:
+>> +    description: The internal MDIO bus of the switch
+>> +    $ref: /schemas/net/mdio.yaml#
+>> +
+>> +if:
+>> +  required: [ mdio ]
+>> +then:
+>> +  patternProperties:
+>> +    "^(ethernet-)?ports$":
+>> +      patternProperties:
+>> +        "^(ethernet-)?port@[0-9]+$":
+>> +          if:
+>> +            not:
+>> +              required: [ ethernet ]
 > 
-> I think that would be the wrong direction..
+> To match only on user ports, this must also exclude DSA ports ("required: [ link ]").
 > 
-> identity_domain is a pointer that is always, ALWAYS an identity
-> domain. It is the shortcut for drivers (and all drivers should do
-> this) that implement a global static identity domain.
-
-I see. I originally thought this was special for arm32.
-
+>> +          then:
+>> +            required:
+>> +              - phy-handle
 > 
-> default_domain is a shortcut to avoid implementing the entire flow
-> around def_domain_type/domain_alloc for special cases. For this patch
-> the specialc ase is the IOMMU_DOMAIN_PLATFORM.
+> No. The only thing permitted by the slave_mii_bus is to do something meaningful
+> when phylink bindings ("phy-handle", "fixed-link" or "managed") are absent. But
+> the presence of slave_mii_bus does not imply that user ports have a required
+> phy-handle. They might be SerDes ports or xMII ports. So they might use "managed"
+> or "fixed-link". The only thing that you can enforce is that, if the slave_mii_bus
+> has an OF presence, then user ports must have phylink bindings.
 
-I think this is special for drivers like s390. You don't want it to be
-used beyond those special drivers, right?
+Got it. This should be the correct schema then. I don't check for ethernet
+or link as when the mdio property is used, these bindings apply to all
+ports. DSA and CPU ports are then further restricted with the dsa-port.yaml
+schema.
 
-If so, the naming of default_domain seems to be a bit generic. I can't
-think of a better one, hence I am fine if you keep as it-is. After all,
-the comment for this field has already explained it very clearly.
+if:
+   required: [ mdio ]
+then:
+   patternProperties:
+     "^(ethernet-)?ports$":
+       patternProperties:
+         "^(ethernet-)?port@[0-9]+$":
+           oneOf:
+             - required:
+                 - fixed-link
+             - required:
+                 - phy-handle
+             - required:
+                 - managed
 
-> We'll probably also get a blocking_domain pointer here too.
-
-Yes.
-
-> 
-> All of this is removing the type multiplexor in alloc_domain so we can
-> so  alloc_domain_paging()
-
-Agreed with you. The dummy domains like identity and blocking could be
-avoided from calling ops->domain_alloc.
-
->> Probably we could give it a more meaningful name? For example,
->> supplemental_domain or rescue_domain?
-> 
-> But that isn't what it is for, default_domain is the operational
-> domain for attached drivers..
-
-Best regards,
-baolu
+Arınç
 
