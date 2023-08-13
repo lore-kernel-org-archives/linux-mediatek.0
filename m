@@ -4,83 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CE80C001DB
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Aug 2023 14:59:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A13CEC001B0
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Aug 2023 15:27:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vbfJ1w4vh9YoBeVEGEmzngRytdBt78w8hV92B1PwD0w=; b=OipizEp7+z9dq038wIPqwrHKTA
-	U5qKL/P/dRFIRumcsK7m1aeFsiSx903SKWuIhYk2aKsz2jX5dkKHKblC8ad7iJ5MnA62ceZmhyN4H
-	QYcd1FpMLjRzfFCiyVWaSjXICXmvZwusjf5J6OY8YK2RtQ4o2lzINlk4KAnohZcINnY2NnMCVWSFC
-	XWKlJqTe74UW5VzjE9davS87MiXpJj7/j8vE3DqLWE1ti1hNerq2SIZMNwU9Muu5eXN1Af3r2dtom
-	O9w6x2b0gS6tG3hcJVzScgXcIEEnR5klCptexrHE2pG38Ki/LpomQEXK5m9lWY60VDzwJWu7WTizg
-	RwXTZHLw==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aFArg5kACAe5Oei1u9k7Gh/cN/DUfFPPW++4rn4jJ3k=; b=hxhMYY2lIa7F32F4El+F4iAxVX
+	8NfXNuj14wZicVAkQDKBkp8ePxIil8qpf6ASFlxhG6ecEaQU3aYRPenm8x1runquec60febvxxDPz
+	0uo+tBSsk5IY/uV+Dk/DDGN1HUBGstRVolSkkC3Ebg+b9sUCxXHSJcyzdnmd55F54zRPa8/HU06zi
+	zcyO3auxMrWE7NMlqp+IR5ilntDTdoqtmSKOF+gu2HVzlb6VADthNHacToWqmmwc2hcUfJxjnpEVn
+	u5spYmgujR9Y2RbxLJ6V8lXDyVQOqwhJnQ2Q26JLoa/Ph2ueDq5WXfixdFpzFYlYz+sVlJEXOya2u
+	1/u+3c+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVCYl-00FI26-0S;
-	Sun, 13 Aug 2023 14:59:15 +0000
-Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
+	id 1qVD0C-00FKks-08;
+	Sun, 13 Aug 2023 15:27:36 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVCYh-00FI1A-2f;
-	Sun, 13 Aug 2023 14:59:13 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 4E9BAC0003;
-	Sun, 13 Aug 2023 14:58:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1691938747;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vbfJ1w4vh9YoBeVEGEmzngRytdBt78w8hV92B1PwD0w=;
-	b=Zrz/Jo7HSDyWNAVlKAx9QLmmLp0ngnZoSEwxn4kw9tPJat6WjyJXyEV5i+jyX6p9CL6Urc
-	m8t9x3Pk52MAyX5BJeR0Hw+gXNBK9ze9V2pcd5Lw3WWIx2n7sSE1sk9sXfI4+Vm1rzdpcN
-	dw2CbphKiuUmzRM1kcq88sWEzsjoheclqsWZazQOe2VW3Vc4zxss0NC84zLzj2bBYGwV43
-	MJ23nSifNSw1hpsDn+2NLrHEcmWeRCpEXFE6xdHbYjjSVVT2muXFgsvl614TxiE5K8gRxm
-	X1p5BpNm09wOmAZB693eYrQ3xpa9a8rQxxOyChOrq9aDorKKgD3VDT4sdtdgjg==
-Message-ID: <891c0b67-abe1-416c-aa94-675f7f3d8044@arinc9.com>
-Date: Sun, 13 Aug 2023 17:58:57 +0300
+	id 1qVD09-00FKk5-0E
+	for linux-mediatek@lists.infradead.org;
+	Sun, 13 Aug 2023 15:27:34 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0903A6192A;
+	Sun, 13 Aug 2023 15:27:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5AB43C433C7;
+	Sun, 13 Aug 2023 15:27:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1691940451;
+	bh=xJYiJuaA3LSVPqhh7xJEHUAJFebjN0TG/fZeGdA6izU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=bvAB4SVN3DQHiUalcwqKM9N5ulDXC1pWLwa5VniPee/kEyzkCHrSGA0l9yScBBfpM
+	 +vVVVMcoNjZndPNbl6TRenwXV2FTNv8pEywYOS0DHkhgqQEqWyhVPTKN8e1gUpsFlm
+	 FKArpkPdL/dn4oAbpIrILmzV2l9PebR6gZ0KUqzkk1/ieIfwKifE9pQ62GQo93rMuQ
+	 UOahV1B/H19zvhxMF4iuG13RJ2wHbzH3+h37s+YdUMSLJ+4bInv4LeBmiCLl3yRKMO
+	 r9p/cVwQ0LCkbVNILsANzlXNmIciceEJOK5t2KkkUDiSqiLGbSS9Nb/+PwO1AJEmEI
+	 79VCYcSMFgZ3g==
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org
+Cc: "Nancy . Lin" <nancy.lin@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ruan Jinjie <ruanjinjie@huawei.com>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	Sui Jingfeng <suijingfeng@loongson.cn>,
+	Lee Jones <lee@kernel.org>
+Subject: [GIT PULL] mediatek drm next for 6.6
+Date: Sun, 13 Aug 2023 15:27:26 +0000
+Message-Id: <20230813152726.14802-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Woojung Huh <woojung.huh@microchip.com>,
- UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
- Daniel Golle <daniel@makrotopia.org>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230812091708.34665-1-arinc.unal@arinc9.com>
- <20230812091708.34665-3-arinc.unal@arinc9.com>
- <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
- <20230812091708.34665-1-arinc.unal@arinc9.com>
- <20230812091708.34665-3-arinc.unal@arinc9.com>
- <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
- <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
- <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
- <20230813112026.ohsx6srbt2staxma@skbuf>
- <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
-Content-Language: en-US
-In-Reply-To: <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230813_075912_153189_1835F90B 
-X-CRM114-Status: GOOD (  19.42  )
+X-CRM114-CacheID: sfid-20230813_082733_215730_971752C1 
+X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,115 +82,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13.08.2023 15:59, Arınç ÜNAL wrote:
-> On 13.08.2023 14:53, Vladimir Oltean wrote:
->> On Sat, Aug 12, 2023 at 10:20:43PM +0300, Arınç ÜNAL wrote:
->>> diff --git a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
->>> index 4d5f5cc6d031e2..82dda8fae8b16e 100644
->>> --- a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
->>> +++ b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
->>> @@ -72,6 +72,10 @@ properties:
->>>             - compatible
->>>             - reg
->>> +  mdio:
->>> +    $ref: dsa.yaml#/properties/mdio
->>> +    unevaluatedProperties: false
->>
->> sja1105 does not support an "mdio" child property. I haven't checked the
->> others. Don't add properties that aren't supported.
-> 
-> Adding the mdio property to the dsa.yaml schema will allow it on all of the
-> schemas that refer to dsa.yaml such as this one. This addition here is only
-> to disallow additional properties under the mdio property for this specific
-> schema.
-> 
-> That said, my understanding is that the internal MDIO bus exists on all of
-> the switches controlled by DSA. Whether each individual DSA subdriver
-> supports registering it does not matter in terms of documenting the
-> internal MDIO bus for all DSA switches.
+Hi, Dave & Daniel:
 
-On top of this, I'd argue to document the internal MDIO bus on the
-ethernet-switch.yaml schema instead.
+This includes:
 
-Arınç
+1. Small mtk-dpi cleanups
+2. DisplayPort: support eDP and aux-bus
+3. Fix uninitialized symbol
+4. Do not check for 0 return after calling platform_get_irq()
+5. Convert to platform remove callback returning void
+6. Fix coverity issues
+7. Fix potential memory leak if vmap() fail
+8. Fix void-pointer-to-enum-cast warning
+9. Rid W=1 warnings from GPU
 
-> 
-> SJA1110 uses the mdios property instead because it's got two internal mdio
-> buses, which is why I invalidate the mdio property for it. If SJA1105 has
-> also got two internal mdio buses, let me know.
-> 
->>
->>> +
->>>   patternProperties:
->>>     "^(ethernet-)?ports$":
->>>       patternProperties:
->>>
->>> The nxp,sja1105.yaml schema also needed some changes.
->>>
->>> dt-bindings: net: dsa: nxp,sja1105: improve internal MDIO bus bindings
->>>
->>> SJA1110 Ethernet Switch uses the mdios property for its internal MDIO bus.
->>> Therefore, disallow the mdios property for SJA1105, and the mdio property
->>> for SJA1110.
->>>
->>> Require the phy-handle property on the non-CPU ports if the mdios property
->>> is being used.
->>>
->>> Refer to dsa.yaml#/properties/mdio to point the human readers to the
->>> description on the dsa.yaml schema.
->>>
->>> ---
->>>   .../bindings/net/dsa/nxp,sja1105.yaml         | 20 ++++++++++++++++++-
->>>   1 file changed, 19 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
->>> index 82dda8fae8b16e..7d92350f1065b2 100644
->>> --- a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
->>> +++ b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
->>> @@ -52,7 +52,7 @@ properties:
->>>       patternProperties:
->>>         "^mdio@[0-1]$":
->>> -        $ref: /schemas/net/mdio.yaml#
->>> +        $ref: dsa.yaml#/properties/mdio
->>>           unevaluatedProperties: false
->>>           properties:
->>> @@ -128,14 +128,32 @@ allOf:
->>>       then:
->>>         properties:
->>>           spi-cpol: false
->>> +        mdios: false
->>> +
->>>         required:
->>>           - spi-cpha
->>>       else:
->>>         properties:
->>>           spi-cpha: false
->>> +        mdio: false
->>> +
->>>         required:
->>>           - spi-cpol
->>> +  - if:
->>> +      required: [ mdios ]
->>> +    then:
->>> +      patternProperties:
->>> +        "^(ethernet-)?ports$":
->>> +          patternProperties:
->>> +            "^(ethernet-)?port@[0-9]+$":
->>> +              if:
->>> +                not:
->>> +                  required: [ ethernet ]
->>> +              then:
->>> +                required:
->>> +                  - phy-handle
->>
->> For sja1105, phylink-compatible bindings (phy-handle, fixed-link or managed)
->> are required for all ports (user, dsa or cpu).
->>
->> Also, sja1105 does not populate the slave_mii_bus, so it never uses the
->> fallback where ports implicitly connect to an internal PHY if no phylink
->> bindings are present.
-> 
-> I'll handle these accordingly with your answer to my question above.
-> 
-> Arınç
+Regards,
+Chun-Kuang.
+
+The following changes since commit 06c2afb862f9da8dc5efa4b6076a0e48c3fbaaa5:
+
+  Linux 6.5-rc1 (2023-07-09 13:53:13 -0700)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-6.6
+
+for you to fetch changes up to fb7e600df0a006f3661eddb424cd92bae26df350:
+
+  drm/mediatek/mtk_disp_ccorr: Remove half completed incorrect struct header (2023-08-13 14:42:43 +0000)
+
+----------------------------------------------------------------
+Mediatek DRM Next for Linux 6.6
+
+1. Small mtk-dpi cleanups
+2. DisplayPort: support eDP and aux-bus
+3. Fix uninitialized symbol
+4. Do not check for 0 return after calling platform_get_irq()
+5. Convert to platform remove callback returning void
+6. Fix coverity issues
+7. Fix potential memory leak if vmap() fail
+8. Fix void-pointer-to-enum-cast warning
+9. Rid W=1 warnings from GPU
+
+----------------------------------------------------------------
+AngeloGioacchino Del Regno (17):
+      drm/mediatek: mtk_dpi: Simplify with devm_drm_bridge_add()
+      drm/mediatek: mtk_dpi: Simplify with dev_err_probe()
+      drm/mediatek: mtk_dpi: Switch to devm_drm_of_get_bridge()
+      drm/mediatek: mtk_dpi: Switch to .remove_new() void callback
+      drm/mediatek: mtk_dpi: Use devm_platform_ioremap_resource()
+      drm/mediatek: mtk_dpi: Compress struct of_device_id entries
+      drm/mediatek: dp: Add missing error checks in mtk_dp_parse_capabilities
+      drm/mediatek: dp: Move AUX and panel poweron/off sequence to function
+      drm/mediatek: dp: Change logging to dev for mtk_dp_aux_transfer()
+      drm/mediatek: dp: Use devm variant of drm_bridge_add()
+      drm/mediatek: dp: Move AUX_P0 setting to mtk_dp_initialize_aux_settings()
+      drm/mediatek: dp: Enable event interrupt only when bridge attached
+      drm/mediatek: dp: Avoid mutex locks if audio is not supported/enabled
+      drm/mediatek: dp: Move PHY registration to new function
+      drm/mediatek: dp: Add support for embedded DisplayPort aux-bus
+      drm/mediatek: dp: Add .wait_hpd_asserted() for AUX bus
+      drm/mediatek: dp: Don't register HPD interrupt handler for eDP case
+
+Jason-JH.Lin (4):
+      drm/mediatek: Remove freeing not dynamic allocated memory
+      drm/mediatek: Add cnt checking for coverity issue
+      drm/mediatek: Fix dereference before null check
+      drm/mediatek: Fix void-pointer-to-enum-cast warning
+
+Lee Jones (2):
+      drm/mediatek/mtk_disp_aal: Remove half completed incorrect struct header
+      drm/mediatek/mtk_disp_ccorr: Remove half completed incorrect struct header
+
+Nancy.Lin (1):
+      drm/mediatek: Fix uninitialized symbol
+
+Ruan Jinjie (1):
+      drm/mediatek: Do not check for 0 return after calling platform_get_irq()
+
+Sui Jingfeng (1):
+      drm/mediatek: Fix potential memory leak if vmap() fail
+
+Uwe Kleine-König (1):
+      drm/mediatek: Convert to platform remove callback returning void
+
+ drivers/gpu/drm/mediatek/Kconfig                |   1 +
+ drivers/gpu/drm/mediatek/mtk_cec.c              |   5 +-
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c         |  11 +-
+ drivers/gpu/drm/mediatek/mtk_disp_ccorr.c       |  11 +-
+ drivers/gpu/drm/mediatek/mtk_disp_color.c       |   6 +-
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c       |   6 +-
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c       |   6 +-
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c         |   6 +-
+ drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c |   2 +-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c        |   6 +-
+ drivers/gpu/drm/mediatek/mtk_dp.c               | 366 ++++++++++++++++--------
+ drivers/gpu/drm/mediatek/mtk_dpi.c              | 104 +++----
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c         |   7 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c     |  16 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c          |  13 +-
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c          |   6 +-
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c        |   6 +-
+ drivers/gpu/drm/mediatek/mtk_dsi.c              |   6 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi.c             |   5 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c         |   6 +-
+ drivers/gpu/drm/mediatek/mtk_mdp_rdma.c         |   5 +-
+ 21 files changed, 326 insertions(+), 274 deletions(-)
 
