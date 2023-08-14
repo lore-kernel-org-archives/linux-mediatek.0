@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EE9DC001DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Aug 2023 14:36:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CF97C001DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Aug 2023 14:53:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Cb+czWvjyYwGX3W5jJNktQj/kqBnzJwyrscW7IZnlQY=; b=E8C1qEMxnp0J9eWhY3/ceAgG6U
-	WQUSzoIHqnuLOXC4vO0ZS51FikOC2rcZsEAC4Va9hzMaFQD++VGvGmCHYwnA0NpX+uACRh8C8PBGf
-	0BpkKPaZmrMu4NFoRj0Odba50leevWLYCPnK4VOPLgrhX5O5i/Ju8DE22dyrwsckbTj7C4HT6360s
-	F7pDN9MWzvHtz7L8CzEn5lO5HBhk2rNv5UpTGI4M9V5gzz1x5iN24qN88olq14u/TpXNiDImQ80Uq
-	pZ+mce0LjkXUacXglLFMHUIN7J+JCplc2vZ9Nk6Fws/OsXrds3Ik/eqo3OPAXmKqEULtNzb4X9msO
-	wLti1dFA==;
+	bh=wWKCUp2yq16ZBo58YuOZhMaFJTEXME++1KBwQF44Y3o=; b=rwt88vuFT6f2LsPLxK63Yr9iAe
+	RRVTtW3j0nvddtQpobi6WYk4L59bxO7BWnBPhSRM3yNstQgRXHf+VCyKCtOM/+9WYNbn4sC77mD9T
+	NjX77vLwXuicupWNVoES6EGvNSrh7Nj1sE332oJAE9L17xkKnozuu7eHCaOdgiXcvn7m98eLyzuKa
+	QXG6dw8/J/XvSz9KYLNOX6wT2JCHnbntd0xQP2LD0TrJEHzLm3Ay25xIpwgfX+bLN9lya3ewtC6d3
+	wUASQI7Tn6xxqRTS+11baUOexxbpFpXpMT4IgqyxgdAIn0Ct4qdD1QXE+C+G5qnkrUkr01fCry427
+	Z0x9xrTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVYfy-00HMMf-0d;
-	Mon, 14 Aug 2023 14:36:10 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1qVYwS-00HNnx-1l;
+	Mon, 14 Aug 2023 14:53:12 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVYfu-00HMLm-2t;
-	Mon, 14 Aug 2023 14:36:08 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-99bf9252eddso619856666b.3;
-        Mon, 14 Aug 2023 07:36:06 -0700 (PDT)
+	id 1qVYwP-00HNnO-1s;
+	Mon, 14 Aug 2023 14:53:10 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-99c93638322so914428466b.1;
+        Mon, 14 Aug 2023 07:53:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1692023765; x=1692628565;
+        d=gmail.com; s=20221208; t=1692024787; x=1692629587;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=Cb+czWvjyYwGX3W5jJNktQj/kqBnzJwyrscW7IZnlQY=;
-        b=XbfMx5jsNXr50NyK210tfW4QKpsGsD74//ZIbinQlLd3unrsFsTE3Fy38/ZuUg6GAl
-         lnjA9xjzgaC6DyN8pHIIVMTdfwiKznFIEXVlWSfX5w/ScG80veQfBa73rVo0+chMb+dG
-         S2Mj+HBlFmaT5jiv9IfHPtBhIY/C6xLD7HtFr9n1gZZKq9Fk5S2x1vlp4IJmOcbnlMOf
-         5bTxtUqrxZDckP2xpGCfG6Qw0c2QsksVkowrOYMj12JA5Wp0N9qDwg3X8CUnqrPq6CTy
-         HIdNXjVZR+9cn4SiIikVE78sUWO4LWWn53vIuXgt4hpj6oTBf1qXcr4Dpc5C8ZUvX6mG
-         q+FA==
+        bh=wWKCUp2yq16ZBo58YuOZhMaFJTEXME++1KBwQF44Y3o=;
+        b=BVMd15TcKSqiobpIdT/J/hWTHgjlmyGfcHaTZx5coE8RbvluwebBuuXc3FxtyC7kvB
+         mgeoI9CwqQ1odg48P1swSA8Hc/dNSAZv9L4DSnNxzhvDKhMAI2/3639aPgKAZ0eKusn/
+         Ap6oL5ddWZtM+V3c6WPE2t0YsMPA0Giws2twA+IhMCLFIddg/quuD46ccKmhqT4DflUo
+         j9/ndUqGGk1LTzNS55e2NaCR87WIPIXCGBba1zFsBPNXEO6sGiDty2DJa7Ohbm4Wceky
+         +pYsKLNabLxVBCNN/DgOtcYBNPfUZaZycVxiaBCMzz4/3dWaKHKve8A+yhIW4xEPesRB
+         Nciw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692023765; x=1692628565;
+        d=1e100.net; s=20221208; t=1692024787; x=1692629587;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Cb+czWvjyYwGX3W5jJNktQj/kqBnzJwyrscW7IZnlQY=;
-        b=bfEBQ6xb5Cj/zvrO0oQkxFKPxRE3yJc+GYTdGNzojbjJ2OHxLL0PUyl2EM8aNK6tQU
-         Z0F6M7eAKv8FvSu55gKOs8y89CWZbIvtFFug/HXsdSjeA+evFimL7C6Au7mhibcS62nj
-         rvRPFic1KE/xr2aZx8Mhit2T4Jf4JoOAQOFNL9zrEyz3XwwNV8N7Hb1tgmoIVCOjfQRi
-         k40MYeJrKZfmVNWYV12+siwhbFmMqODqoY4l4G4Hf+16obkBqWoBq3B0SX2EYSpmK2sx
-         XhjY+kjQ1WbO7IFuNyeZ7DMOXlMcW4S+XGwByTTjX21rHiNit17A7v/W8fuRxggOFIe+
-         /9rA==
-X-Gm-Message-State: AOJu0YwHRi6vDXL8AGZINeBy6+HfsHmqyWRI0DLmSZVVVQ8deB4wfNjw
-	Lk3FAUV2k/NED0sekEWmocA=
-X-Google-Smtp-Source: AGHT+IEzC/K1rqJm6FyRoXxbVfFap/m4A3OEwMLw3F3kbnFkKMoPl1Ot5DzpCuUMPZZM11AzTmRiNg==
-X-Received: by 2002:a17:906:3299:b0:99b:66eb:2162 with SMTP id 25-20020a170906329900b0099b66eb2162mr7632434ejw.5.1692023764565;
-        Mon, 14 Aug 2023 07:36:04 -0700 (PDT)
+        bh=wWKCUp2yq16ZBo58YuOZhMaFJTEXME++1KBwQF44Y3o=;
+        b=CFUEAbSJg6U22aySGi1Jv7NTSMk01lsSEl0koXkmGa75vUTY1ygULRLNxwjiuGmLpB
+         dNtis1C29U/1RYb59LhxT6wqFQy7m1kyf7Uu8EN+BJ2LghUB+/fXqyHVWZA9IYjSxTZw
+         GuK8GWmkU2bFAUV/8mmQDMS+0h+tWwV8fh/Z27sK4jg0BqatTQ4sj13UfBhk+kExL1qs
+         pfvlGqATqRzGvVDEsDvkzqc3VGIAC9l56tdSlf2fqhsMZz0nT8FBJBfafCegrmfc5uUi
+         tXbOg/evLvH4ESMmGJmf8faVHuDOoItQj6XQZr4H/y9O8zIHrLnvZnQZ3bnWZjIllTU8
+         IvmA==
+X-Gm-Message-State: AOJu0YyZQOh19s+4Gy8bIBreqLl8ObXUYYGnmI21jrnO2C2aZULxry3b
+	ZJ6DFFixt9FmcGamdkLS/Ek=
+X-Google-Smtp-Source: AGHT+IFtixjrdADMZKOEGkvAvBctiXAzgbQ0mso/IW2gdlLC49MP49+TS5aibY9BoUnf8wWiX5cTgg==
+X-Received: by 2002:a17:907:9483:b0:99b:af5a:fc2c with SMTP id dm3-20020a170907948300b0099baf5afc2cmr14913956ejc.26.1692024787125;
+        Mon, 14 Aug 2023 07:53:07 -0700 (PDT)
 Received: from skbuf ([188.26.184.136])
-        by smtp.gmail.com with ESMTPSA id qc1-20020a170906d8a100b0099d9bc9bfd9sm2399461ejb.48.2023.08.14.07.36.03
+        by smtp.gmail.com with ESMTPSA id j19-20020a1709064b5300b00982a92a849asm5768751ejv.91.2023.08.14.07.53.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Aug 2023 07:36:04 -0700 (PDT)
-Date: Mon, 14 Aug 2023 17:36:01 +0300
+        Mon, 14 Aug 2023 07:53:06 -0700 (PDT)
+Date: Mon, 14 Aug 2023 17:53:03 +0300
 From: Vladimir Oltean <olteanv@gmail.com>
 To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
@@ -85,26 +85,19 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
 	netdev@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
-Message-ID: <20230814143601.mnpxtcm2zybnbvoh@skbuf>
-References: <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
- <20230812091708.34665-1-arinc.unal@arinc9.com>
- <20230812091708.34665-3-arinc.unal@arinc9.com>
- <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
- <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
- <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
- <20230813112026.ohsx6srbt2staxma@skbuf>
- <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
- <20230813190157.4y3zoro53qsz43pe@skbuf>
- <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
+Subject: Re: [PATCH 3/4] dt-bindings: net: dsa: realtek: require compatible
+ property under mdio node
+Message-ID: <20230814145303.bqiknvvi5urnpjgz@skbuf>
+References: <20230812091708.34665-1-arinc.unal@arinc9.com>
+ <20230812091708.34665-4-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
+In-Reply-To: <20230812091708.34665-4-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230814_073606_937708_9645811F 
-X-CRM114-Status: GOOD (  34.09  )
+X-CRM114-CacheID: sfid-20230814_075309_640428_2050653C 
+X-CRM114-Status: GOOD (  15.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,161 +112,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Arınç,
-
-On Mon, Aug 14, 2023 at 01:06:29PM +0300, Arınç ÜNAL wrote:
-> On 13.08.2023 22:01, Vladimir Oltean wrote:
-> > SJA1105 has zero internal MDIO buses and zero internal PHYs.
+On Sat, Aug 12, 2023 at 12:17:07PM +0300, Arınç ÜNAL wrote:
+> The compatible property must be defined under the mdio node. Enforce it.
 > 
-> Ah okay. I didn't consider the switch architecture where the data interface
-> of the PHY is connected to the switch, and the PHY management interface is
-> connected to the mdio bus that the switch is connected to.
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> ---
+
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+
+>  Documentation/devicetree/bindings/net/dsa/realtek.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
-> The schemas of the switches which already utilise the mdio property:
-> - /schemas/net/dsa/microchip,lan937x.yaml
-> - /schemas/net/dsa/qca8k.yaml
-> - /schemas/net/dsa/realtek.yaml
-> - /schemas/net/dsa/renesas,rzn1-a5psw.yaml
+> diff --git a/Documentation/devicetree/bindings/net/dsa/realtek.yaml b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
+> index ea7db0890abc..f600e65fc990 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/realtek.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
+> @@ -103,6 +103,9 @@ allOf:
+>              compatible:
+>                const: realtek,smi-mdio
+>  
+> +          required:
+> +            - compatible
+> +
+>    - if:
+>        required:
+>          - reg
+> -- 
+> 2.39.2
 > 
-> The schemas of the switches which don't have an internal MDIO bus, meaning
-> the mdio property must be invalid:
-> - /schemas/net/mscc,vsc7514-switch.yaml
-> - /schemas/net/dsa/nxp,sja1105.yaml
-> 
-> The schemas of the switches which I don't know if the switch has got an
-> internal MDIO bus:
-> - /schemas/net/dsa/arrow,xrs700x.yaml
->   - I believe, because there's phy-handle defined on every port without the
->     mdio node on the example, the PHYs are not connected to the internal
->     MDIO bus. Therefore, we can invalidate the mdio property for this
->     schema.
-> - /schemas/net/dsa/brcm,b53.yaml
->   - Seems ok to keep it valid.
-> - /schemas/net/dsa/brcm,sf2.yaml
->   - Seems ok to keep it valid.
-> - /schemas/net/dsa/hirschmann,hellcreek.yaml
->   - Same as /schemas/net/dsa/arrow,xrs700x.yaml.
-> - /schemas/net/dsa/microchip,ksz.yaml
->   - Seems ok to keep it valid.
-> - /schemas/net/dsa/mscc,ocelot.yaml
->   - Same as /schemas/net/dsa/arrow,xrs700x.yaml.
-> 
-> Not json-schema documentation, don't care about:
-> - ar9331.txt
-> - lan9303.txt
-> - lantiq-gswip.txt
-> - marvell.txt
-> - vitesse,vsc73xx.txt
-> 
-> Arınç
-
-We have to keep in sight why we're here, and stick to that.
-
-You had issues with a device tree that didn't work, but it passed
-validation, and you're trying to enforce extra rules through the
-json-schema so that next time, it fails. Verbally, that rule would be:
-"if the switch has a ds->slave_mii_bus which does not have an OF
-presence, then phylink compatible bindings may be omitted, and that has
-a special and valid meaning (the port is connected to an internal PHY on
-that ds->slave_mii_bus). If ds->slave_mii_bus has an OF presence, or if
-ds->slave_mii_bus is NULL, then phylink-compatible bindings (phy-handle
-or fixed-link or managed) are required on all user ports".
-
-So it becomes a question of tracking ds->slave_mii_bus for all drivers.
-In essence, it's fundamentally about the ds->slave_mii_bus, not about
-the "mdio" child node. See more below.
-
-There are 2 code paths that lead to its creation:
-
-1. DSA registers the bus in dsa_slave_mii_bus_init(), based on the
-   presence of ds->ops->phy_read() and ds->ops->phy_write(). Traditionally,
-   a slave_mii_bus created this way was always non-OF-based, but Luiz,
-   in commit fe7324b93222 ("net: dsa: OF-ware slave_mii_bus"), thought
-   it would be a good idea for them to be optionally OF-based (and thus,
-   useless at their primary purpose of being able to have internal PHYs
-   without a phy-handle). But, it was thought that the framework
-   registering an MDIO bus automatically would be a plus. So, ds->slave_mii_bus
-   created in this way may or may not have an OF presence, with no way
-   to know except to look at device trees (and to presume that they do).
-
-   The drivers that populate ds->ops->phy_read() and ds->ops->phy_write() are:
-    |
-    +--- dsa_loop_driver: not OF-based
-    |
-    +--- ksz_switch_ops: OF-based or non-OF-based
-    |
-    +--- mv88e6060_switch_ops: OF-based or non-OF-based
-    |
-    +--- lan9303_switch_ops: OF-based or non-OF-based
-    |
-    +--- rtl8365mb_switch_ops_mdio: OF-based or non-OF-based
-    |
-    +--- b53_switch_ops: OF-based or non-OF-based
-    |
-    +--- vsc73xx_ds_ops: OF-based or non-OF-based
-
-2. The switch driver registers the bus, and populates ds->slave_mii_bus with
-   a pointer to it.
-    |
-    +--- Bus is not OF-based (it was registered with mdiobus_register()).
-    |    This is the normal case:
-    |      * mv88e6xxx_default_mdio_bus() in some cases
-    |      * qca8k_mdio_register() in the "qca8k-legacy slave mii" case
-    |      * bcm_sf2_mdio_register()
-    |      * mt7530_setup_mdio()
-    |
-    +--- Bus is OF-based (it was registered with of_mdiobus_register()).
-         I've no idea why you'd do this, because you have neither the
-         benefit of using a non-OF-based phy_connect(), nor the benefit
-         of having DSA register the bus for you:
-           * mv88e6xxx_default_mdio_bus() when of_get_child_by_name(np, "mdio")
-             is non-NULL
-           * qca8k_mdio_register() when of_get_child_by_name(priv->dev->of_node, "mdio")
-             is non-NULL
-           * ksz_mdio_register() - it always wants an "mdio" child node
-           * gswip_mdio() - it always wants a child node compatible with
-             "lantiq,xrx200-mdio"
-           * realtek_smi_setup_mdio() - it always wants a child node
-             compatible with "realtek,smi-mdio"
-
-For switches in the first category, the presence of the "mdio" child
-node is what makes the ds->slave_mii_bus be OF-based or not, since it is
-all the same binding, imposed by Luiz in dsa_switch_setup().
-
-For switches in the second category, it all depends on the way in which
-the driver finds the node for of_mdiobus_register().
-
-
-Having identified all switches which make some sort of use of
-ds->slave_mii_bus, the rule would sound like this:
-
-1. If the schema is that of (need to replace this with compatible
-   strings, I'm too lazy for that):
-
-   - ksz_switch_ops
-   - mv88e6060_switch_ops
-   - lan9303_switch_ops
-   - rtl8365mb_switch_ops_mdio
-   - b53_switch_ops
-   - vsc73xx_ds_ops
-   - mv88e6xxx
-   - qca8k
-
-   and we have an "mdio" child, then phylink bindings are mandatory on user ports.
-
-2. If the schema is that of gswip_mdio and we have a child node of "lantiq,xrx200-mdio",
-   then phylink bindings are mandatory on user ports (I haven't checked,
-   but it might be that the "lantiq,xrx200-mdio" child is mandatory, and
-   in that case, this goes to category 4 below).
-
-3. If the schema is that of realtek_smi_setup_mdio and we have a child node of
-   "realtek,smi-mdio", then phylink bindings are mandatory on user ports
-   (same comment about the child MDIO note maybe being mandatory).
-
-4. If the switch didn't appear in the above set of rules, then phylink
-   bindings are unconditionally mandatory on user ports.
-
-We don't care at all what the drivers that don't use ds->slave_mii_bus
-do with the "mdio" child node. It doesn't change the fact that their
-user ports can't have missing phylink bindings.
 
