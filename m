@@ -4,107 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4B53EB64DD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Aug 2023 10:40:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49604C001DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Aug 2023 12:48:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aBAVpXS8NM/S563eJtaui9WR2vwiGDxIvWqt84h+Oyw=; b=nAcP+cGjS3+BWQ1WRERC9rCCd7
-	kflsFo5E/u8Od8ymzEIYfM4veiW7I15DsJ7lNC4k+U278U5+3Jgm4UtKfMYQFR1VueV/NfbXfEum3
-	8nnmVnwt9kSut9g3nn8XJe1xrXWZ3CJxVkK0JEJ2+/laewkB0sWxeabT0Acezchz83Om8MNGNqpmb
-	ESBqCFWdyd4Bzbm3HhAtXwkrukPzgNdXV5Ac2F48yDcxpuC0JJwbHcaZcFPXtDOfpS8XVrnMbOvEf
-	CK++kD90/1lLgV+dQEWcO2yEjz1RgR2jYaaa0L28W5csjVklvjWmULuy0nkBErhsLelxW66BKhgd2
-	FOPK3xiQ==;
+	bh=K8vxjLIGC1lancS+oQ9tSZEL9COmkkdrY6vklSDupUA=; b=hx2DYSnkq4rPwpnTNop2dpWvc+
+	WsHe2AC708pGh+c1ZE8VDxrlhZLru18TgA+OKWoOxU9Zati5VP89x5gUxQgSbQOls5v1h8NoTnsJu
+	CCoLqAIbo6FbwQzZo8knR5txeSSBzys7Dc1Qk/OUQYauV8iclMXtBOIvJgIeHDV8BRvwWgg+4S0e/
+	cMmNwcAYgb9/Q8jdCM1kOAwZEhlgzicPjTZSwuVGZQw61fp/AqhAsawwUgs+su1sVfRcB/II8QIwe
+	EPqop3pTYHhzz4T3jN3assAegMNayUXhZJjhdeSw08kagLp6ehpLngcqMDGwPhjb9gSl7sbM9qbYY
+	lSrIO29w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVUzS-00GrkZ-19;
-	Mon, 14 Aug 2023 10:40:02 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1qVX09-00H4vo-2n;
+	Mon, 14 Aug 2023 12:48:53 +0000
+Received: from mail-bn8nam12on20608.outbound.protection.outlook.com ([2a01:111:f400:fe5b::608] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVUzP-00Grjo-0n;
-	Mon, 14 Aug 2023 10:40:00 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-99d90ffed68so376572666b.0;
-        Mon, 14 Aug 2023 03:39:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1692009595; x=1692614395;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=aBAVpXS8NM/S563eJtaui9WR2vwiGDxIvWqt84h+Oyw=;
-        b=V70f5VYcQVBIRnMn6jR03+6JOI14+oCqXEWxRdHaanV/itzXjH9HeO9NNoZV7KFT9j
-         nYaWU4HQ6T6n3IV5dPW7x9uINA6vgEvjmG0DE3jMr2iFoHsEty9DIWE/MdLgCbpm/BJg
-         nnAXEbLjMJtg9Wlm3s9H9HmJBQ6at1Jj3kpH4+req6Fyj/yHbK08CPwZHLZfUNamu9U+
-         APEy+XpTZzT1EwQD/sNFi8r3lzivs55sBQIvAjPMS7pfp+p4ueqyPl9bk0ilH+zuWTKU
-         tJkkYVwN/Qa+zF6n1GnoNUJ6ypDlepd+/oT7wD3Tg7wZ3QjeDCeaq10emFC6At5osy5m
-         24ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692009595; x=1692614395;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=aBAVpXS8NM/S563eJtaui9WR2vwiGDxIvWqt84h+Oyw=;
-        b=a2E3rkYqdJPsFRLzU+0HID6uy59oWzQUuHEC+1hGXnGU8R3zcOk+KMOvmqokOrf50i
-         u6lxN6hZ3CdiVxjsuyKJQOmd7a4xmGciEWQecCbaT0+WMLtVnbFITyGo6UPgzmTtp0Q+
-         uQekyk5H3x+LWifceBxksB5q2h5CoTu/B5W7j1902mL3ED37DDgwpHnrPeR/4vFnLnAc
-         8Cm8VxzL6vrZG00fFUS6moSF7fUY1DG4jHqrdCf6wz1XhbMwW0GpQagmwr2N2a6aNu00
-         KXNPgFYpMZRi35Sv5oSAk7pKnnhUHX8c7HCqHAimy4vG661eYpZc5d7YyyaukkDM886Y
-         8pxQ==
-X-Gm-Message-State: AOJu0YzJRtAYDTdsNxKoH/IjcHt2da6rjRjj4eIGpTI01lMipvO4+52i
-	He6MeBRKkaBeb1TnWvO2Hz8=
-X-Google-Smtp-Source: AGHT+IGWQdWdFfldoc+s7RKd4/99QgX6XSZumLq8F7bFXSVWECP7EKR6y4ID5N1QKyWzkJA/s+6bjw==
-X-Received: by 2002:a17:907:2d94:b0:978:8979:c66c with SMTP id gt20-20020a1709072d9400b009788979c66cmr13860963ejc.18.1692009595070;
-        Mon, 14 Aug 2023 03:39:55 -0700 (PDT)
-Received: from skbuf ([188.26.184.136])
-        by smtp.gmail.com with ESMTPSA id o8-20020a170906288800b0099cc15f09a0sm5495409ejd.55.2023.08.14.03.39.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Aug 2023 03:39:54 -0700 (PDT)
-Date: Mon, 14 Aug 2023 13:39:51 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1qVX06-00H4ue-2E;
+	Mon, 14 Aug 2023 12:48:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=PXlAojO20EnM/Qzggu0gXvSC7vramsEqIrQPZ7VeNfwgYsAMqK9tfN/tjd8IEecfOhcTnDDIqi/V2zlv2VWg5hWQ3vtQmLcKqDW8kcrQ8FKV2BzHe0Vjbbz4lq+WfSqTpVUQasNyuL47uB1NnXObB+nZkXk1UwLMHQ034BJzqipP69+NMqRkfC7NHJ7fXzUjwX7ZfJR4/PJPEpPhDFD0SRuoWTYilAJeWT8ddA0Y3L4po49ZXxNKZAGl5i/Gdu2Ce6D4i9ceKy4PMcHSqVlC2EL2ZS4pm4BWciUGQjCJdY8Sj//IDwlSj0pKyETKBSyYmdRqPa7/g8FTIP7PFcwl2Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=K8vxjLIGC1lancS+oQ9tSZEL9COmkkdrY6vklSDupUA=;
+ b=WLmxM/+UWyQAEZcD5mVGh7dew/ZwaRFwDNjPq+ZMWUvy7ZQVt6tL2cx6HWTxUSnXCz3OCaT+MHrI1Hg1CMKIMRKbJnmoo6Z26HYpL0FyYpoh0Bxx2HmFGRUhRf6CMfIImvnbVHnlYyIcM4YRHG6i8OsPNz1X5bf/KuK/5A9EwCApEClIyS9KdLw1Uv0oQ4PRYNxhsYEQsffXlrrlfWqSSJxeVGpbR7O9jD2Cf4qd5SgIJK1gISRYWirzlczBWK6FUB8Vo2G2TdcotqIA9mZkLqbMqftmlpjPeL2LOlcrm0Kq+lRyfScd/VKixrprd+lARy1M2ICWgo+n400iQWDe/A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=K8vxjLIGC1lancS+oQ9tSZEL9COmkkdrY6vklSDupUA=;
+ b=Z/b3QCikJ43TgJOIZZfkjIRye0+A/8fRPm+Jy0weFWFekUly1gaLPOX5IWlpRdIAPQmsM8+lEo7h/HJztCY1lFS2TRmtKY0xipdTJFVIcoITL36OeVLDnW3znlnJeJWvFCWAejJ1UE8F/qcfjhKsebnmEBxnpmo1C/bpG/nNBl6znp9t43vnObMqz7nS8RkBaNk8bCnhKxKHInuwEd8LrfRl9/5sMI/ebMmhHeATgOFb/kZBqochYgdJ5GM89uNEy+P2JE1KuQubupyMIXSpo6MQZZfBrXqcWo/pfrY+trUQEYH+zOzbAUCewVGEgbW/vPkqfKXidQ5KeIuyoEBerQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by MW3PR12MB4444.namprd12.prod.outlook.com (2603:10b6:303:5c::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6678.24; Mon, 14 Aug
+ 2023 12:48:43 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6678.022; Mon, 14 Aug 2023
+ 12:48:43 +0000
+Date: Mon, 14 Aug 2023 09:48:41 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Baolu Lu <baolu.lu@linux.intel.com>
+Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
-Message-ID: <20230814103951.epdk3bzhkn2h7oul@skbuf>
-References: <20230812091708.34665-1-arinc.unal@arinc9.com>
- <20230812091708.34665-3-arinc.unal@arinc9.com>
- <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
- <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
- <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
- <20230813112026.ohsx6srbt2staxma@skbuf>
- <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
- <891c0b67-abe1-416c-aa94-675f7f3d8044@arinc9.com>
- <20230813190227.6k2qyxfewbkmatn6@skbuf>
- <af044838-36ef-4ed3-af0a-a58181b6345a@arinc9.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
+	linuxppc-dev@lists.ozlabs.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Steven Price <steven.price@arm.com>,
+	Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v6 10/25] iommu/exynos: Implement an IDENTITY domain
+Message-ID: <ZNoiqd0/5GM+8kZL@nvidia.com>
+References: <10-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
+ <0104371e-a824-8ace-eae3-da90df285c41@linux.intel.com>
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <af044838-36ef-4ed3-af0a-a58181b6345a@arinc9.com>
+In-Reply-To: <0104371e-a824-8ace-eae3-da90df285c41@linux.intel.com>
+X-ClientProxiedBy: YT4PR01CA0035.CANPRD01.PROD.OUTLOOK.COM
+ (2603:10b6:b01:fe::21) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|MW3PR12MB4444:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0f1c3ecd-5623-47f8-8a61-08db9cc4cab9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: T3upvgdv7udyQHyGaudgbii9hPGpCa5jkelt/MXXkacjF6x0WvXJoLo6bg2JxO6SPFN6iWQcFmeLYtF1FOdwPSW+mX7pVgmJ0nZMrb94QRHM5aQyisl11dprLNIw3E/ZxAstJ/lzr7m85Uh9w0GqYAYJ9iGrd2bx7UvxoTlLeYqweprlypRX/0Zf20Aj3cPSYvCZcrFcAr0Y0r0qrNgPlWnX+eoZDvCOkxI9vBdVFivZWyPoedUXLNeMy2oJSbCkYbnaXXg/45jYfibxKLFkdtHH7rg+ASXksFeS2IghTiK/5ztEz3L4u4VafmHpJyRyZUe/WwjJDMCf2DDEHpEIpaF2HjXBQ9NxP/BLEQG9cpO7FfGJlWhzTGwWIKAJ/cdeJjZARrvf8T5YWxyyOCLAAOnmkPKcZzArjxCZtFpACnZpBVTd1XH3LmqDipuBqMrjr0srvHITFItDGBBriEA74K8yQJRfcUh97MjwfWEQrm8RbGZciCEtzRAFwvuP/L5COwSVo2jJs279u2VJPIOKIgVf4ZA5MdZzU0l6GQui0DLtoYI1z6/3zhFre814ATpv
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(346002)(39860400002)(366004)(396003)(136003)(376002)(186006)(1800799006)(451199021)(6512007)(6486002)(36756003)(86362001)(38100700002)(83380400001)(26005)(6506007)(107886003)(2906002)(7406005)(53546011)(54906003)(478600001)(2616005)(66556008)(66476007)(8936002)(5660300002)(8676002)(7416002)(66946007)(41300700001)(316002)(4326008)(6916009);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?PrBk5gIfi4+dr7m7nsH+UCnfa7o7gakM22rRHBC4mYZm8vTU78bpOwUFRG4y?=
+ =?us-ascii?Q?yu3S8DyhwXOMi6cUj+6aXKcVssQyneeSbvFnqKQpKdUYudpKRtct2HHYofnL?=
+ =?us-ascii?Q?v0MT8u6u100AQoKdYbrPYLhtO2c9/iq4u3jU5UZVWAnqFBIgPfc6SQId2Hlp?=
+ =?us-ascii?Q?ga9xYLWtqPKCEtOOKSeuXd5nfX5OwLrBVfzhTUmqGjl+5ocSHAI4Z2AfBtn8?=
+ =?us-ascii?Q?j9P8iXnj+elrNAddQsJDkZzt2CeLUNeZ3JppXeJfNwnGVxF32mchPaCF4nU0?=
+ =?us-ascii?Q?0dFYtB8zvDZujl8qYBiOb5VqFvlRG8VCZCnwJe/VpwQ9tLQwmktr2ZFA6L0r?=
+ =?us-ascii?Q?eOzOp0tFOZFF9vZrevA7toGLusxfdNsNX3hdGk6Xy/P+nMp42SHREsp14jMS?=
+ =?us-ascii?Q?gFFj0FYVgLgEQW1piBgK0OCUDMiZnV/UJIzRR40pheiLKvs2zQ9PDqeP9IZD?=
+ =?us-ascii?Q?F+Pg7QKrajEqy34UvIFhYs5dPvuzB21nOeBQV4A9hNcMY7smV01UjtTBCFoP?=
+ =?us-ascii?Q?M4by/CWT7Bis84EJsXK4iFrc1qgjjvyd0+NBaHuIZrMI3lVMjp/pgV7OrowG?=
+ =?us-ascii?Q?iqs2veBzJgWwbsgBVEMJIAHUEO3U0hHpir4pXFWd4JL5zUMJEzXqp0jqGf9O?=
+ =?us-ascii?Q?3B+Wk13wppmZO57Fm5xZyHtnxOgox3imONs6A4XxBtF5STB1jZZbAsfUJEzt?=
+ =?us-ascii?Q?+fuapKc9tlGV825GorpV834/470Ye60R+rsLTxTbQWnMwkth/pWGX6HY1YGn?=
+ =?us-ascii?Q?J6xbSGrxIkuZnXDrJcZaXyH4YQ/bIOrq+XdvthNbAQfbHhqNPispVVI79X8D?=
+ =?us-ascii?Q?ufeh/vABP5Lhw+8AXm3XCaLMazKiJ0MnA0sXmd6JliYKSVxn0K9GiqcrVXBe?=
+ =?us-ascii?Q?YT6a/OuXumu0/3H2Xm3r8bYkzRLwd9a5HzWaCMewN78vTBpzIBVXtFk7fPgv?=
+ =?us-ascii?Q?86+fua/cCZrh4sc8ghu88L/t2nOUbLf3Kk+Q0TwiRvwjZ8g0AqWp5i+mBklZ?=
+ =?us-ascii?Q?fgrwTF5pd36hXawJFVI/oMGnmzX/y6s1E0In3AT5+UnWXqOHibJDkvzW00dV?=
+ =?us-ascii?Q?km6QmIyapMNXz5ju/X9WJSE3FgyInMOAz5rTLFoptpfdJ4zNAi+Nz490qNr/?=
+ =?us-ascii?Q?PxMovjqEtoH5BA0Rr8GQEBi7yd2Kl2SLpZdlmm5sjfw9t9VWCQsBPLPvHfTc?=
+ =?us-ascii?Q?NuAZvIT6NxADm/jnHhMKCRGN1JOPAkBQJ7PCndOOzZCaUEKc38uuI/gIePjl?=
+ =?us-ascii?Q?5y0fMKFnTC9orSs+XW44Vvc2vIKa9eq2Pfwx9tIrioo6lpiZQnJTdNc1QFCX?=
+ =?us-ascii?Q?odHEitHvFydH6rSWyNn2Z7NX/cH16Yjv7oFRK/KQwsGsO669dUI8MGw2pyPp?=
+ =?us-ascii?Q?RQ4WRJBY3r/Fmww4RcxuNwcuCdGdUfWS6kJWJT0pruSIR/zPXYztK3U9HOM/?=
+ =?us-ascii?Q?rVP/2ssr2tJXE6rvsTPUWYNKI2TXummA9mhIlTaZCjxSQIut4NQQKS8wrsdl?=
+ =?us-ascii?Q?uYKgGm0v203SwLOg2rMpT1irbYkywPrmWgkbi2jR+gPESMZNEwWCmKTfp4UR?=
+ =?us-ascii?Q?j1l8JaEL3D+1w9xIotxcaCdnUdb4OUhrB1qU1Zy3?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0f1c3ecd-5623-47f8-8a61-08db9cc4cab9
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Aug 2023 12:48:43.5667
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: npYOKHbFbo7xyJdiz3XvDFLHX+I5Y6VQN+FwjxrMUS7AxbZSjzq+UBos/fZw81li
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR12MB4444
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230814_033959_310722_5813683B 
-X-CRM114-Status: GOOD (  14.29  )
+X-CRM114-CacheID: sfid-20230814_054850_789304_BCB8F9B2 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,24 +165,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 14, 2023 at 01:06:19PM +0300, Arınç ÜNAL wrote:
-> On 13.08.2023 22:02, Vladimir Oltean wrote:
-> > On Sun, Aug 13, 2023 at 05:58:57PM +0300, Arınç ÜNAL wrote:
-> > > On top of this, I'd argue to document the internal MDIO bus on the
-> > > ethernet-switch.yaml schema instead.
+On Mon, Aug 14, 2023 at 12:52:34PM +0800, Baolu Lu wrote:
+> On 2023/8/3 8:07, Jason Gunthorpe wrote:
+> > What exynos calls exynos_iommu_detach_device is actually putting the iommu
+> > into identity mode.
 > > 
-> > Why?
+> > Move to the new core support for ARM_DMA_USE_IOMMU by defining
+> > ops->identity_domain.
+> > 
+> > Tested-by: Marek Szyprowski<m.szyprowski@samsung.com>
+> > Acked-by: Marek Szyprowski<m.szyprowski@samsung.com>
+> > Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
+> > ---
+> >   drivers/iommu/exynos-iommu.c | 66 +++++++++++++++++-------------------
+> >   1 file changed, 32 insertions(+), 34 deletions(-)
+> > 
+> > diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
+> > index c275fe71c4db32..5e12b85dfe8705 100644
+> > --- a/drivers/iommu/exynos-iommu.c
+> > +++ b/drivers/iommu/exynos-iommu.c
+> > @@ -24,6 +24,7 @@
+> >   typedef u32 sysmmu_iova_t;
+> >   typedef u32 sysmmu_pte_t;
+> > +static struct iommu_domain exynos_identity_domain;
 > 
-> Because a generic switch can have an internal MDIO bus, it's not specific
-> to a DSA controlled switch.
-> 
-> Arınç
+> Is there a conflict between above and below?
 
-I'm not sure it's that simple. Check out arch/mips/boot/dts/mscc/ocelot.dtsi.
-Its switch IP ("mscc,vsc7514-switch") is on the same hierarchical level
-with the "mscc,ocelot-miim" nodes (so, not a child), because the MDIO controller
-isn't part of the address space of the switching IP. Actually that could equally
-be considered true for DSA. Placing the "mdio" node as a child of the switch is
-one of the possible options, but it has its limitations and is certainly
-not the only one.
+No, this is a C forward declaration.
+
+Jason
 
