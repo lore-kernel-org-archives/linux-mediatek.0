@@ -4,153 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AD84C001DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Aug 2023 14:34:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EE9DC001DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Aug 2023 14:36:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Aiek+NzBWHSAmNawhBA4EfFDicpqdIZWtcoJ1zynDtI=; b=LiBjLeXjSvdGVdzrCAG5jN0XXI
-	st4zDTvmD7FGmwYV4FbCUxXsFnoAQjMIShiz8Y3BPxmUYlru5Q/l3C1KitUxX6L4MhHstCMzgMQ/c
-	jDQiYCaorSYmRvpFtV1bmS8isSCPAxF2qOfTFylW86Q/HPQemwwyHglkH8PTf71VdZph3ay60AW8R
-	z7tlJ2/MpOR5N0epQkZWTQC58T3TQdMGvJBpFeNUZngaPzdj2WsAc8ZmSgRMk5mzQsI+R/tJbC/da
-	2kOyud9mEpTW4uKut5kGGX+PVsEtikIDV5DZ4hFBFnyoRjzcb4vCQ5H/m7PqvEsnesA+Pj62wCKsR
-	4uROfsog==;
+	bh=Cb+czWvjyYwGX3W5jJNktQj/kqBnzJwyrscW7IZnlQY=; b=E8C1qEMxnp0J9eWhY3/ceAgG6U
+	WQUSzoIHqnuLOXC4vO0ZS51FikOC2rcZsEAC4Va9hzMaFQD++VGvGmCHYwnA0NpX+uACRh8C8PBGf
+	0BpkKPaZmrMu4NFoRj0Odba50leevWLYCPnK4VOPLgrhX5O5i/Ju8DE22dyrwsckbTj7C4HT6360s
+	F7pDN9MWzvHtz7L8CzEn5lO5HBhk2rNv5UpTGI4M9V5gzz1x5iN24qN88olq14u/TpXNiDImQ80Uq
+	pZ+mce0LjkXUacXglLFMHUIN7J+JCplc2vZ9Nk6Fws/OsXrds3Ik/eqo3OPAXmKqEULtNzb4X9msO
+	wLti1dFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVYeg-00HMAm-31;
-	Mon, 14 Aug 2023 14:34:50 +0000
-Received: from mail-sn1nam02on2060c.outbound.protection.outlook.com ([2a01:111:f400:7ea9::60c] helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+	id 1qVYfy-00HMMf-0d;
+	Mon, 14 Aug 2023 14:36:10 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVYec-00HMA4-0c;
-	Mon, 14 Aug 2023 14:34:47 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=DDv6ZRg85zgz+YoFEFF8nQp7+Je5pqIMp3gHY+4VlhP2nETQPhpgmSlvXvaPGVYler1EsDJpl/6B/kNAdnmlKpwrAKhyGsbZR7Cdtm3+ssdoStoMUqB8JHdxBt6L1K9H+sqGIrakjk8BFk7q4akW8rYnOwcbDGdrqIAKtEBu1xrkkETvdKsgwfDUW1Z1L5r+ZCMpXPBstW7+fteRXGo5uxFU3NRSgsQY/xt1apzriou+dsQ8SRmjq7QkbdMAJTnBOaUM2U5Klah+4AVpOGJjzUpqWqFdTCBF7/OvMjhE3334cO8GsEvShba41Si1HK4VJNpwDZ8iquL3iB0Wbs4WMQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Aiek+NzBWHSAmNawhBA4EfFDicpqdIZWtcoJ1zynDtI=;
- b=nDYcBLSWw/l/+e7PZ6034Z6qx4VP01+NPz1ZKILYxXj7UID/kcSvNy080wvfMEiv2OQmBJ0MqGGy/FJ+4N52lWZp7l5McOpxbfuQkLLa5VtxtCWfP/hkM+rcGZFxBNFFlB74RxAMd5dzjIZJUahTVjdSN9Xh6mkNVHV/56g4T56SpOPf+it8CPDwpBVfKKwXq5IFnGCuIonPh0K1x56nKGwfDigvbXG24R9fs2joE4BLhdSb0W4px2Z2wa/7+6Eoh3XC90zlknjUm2hosECtiyQOCoNOxUqeB6pXNJDpfdfg+vFxmxcJUkExDevBFPLJASUeu8IgjjiS02dEnT2Hpw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Aiek+NzBWHSAmNawhBA4EfFDicpqdIZWtcoJ1zynDtI=;
- b=Bq/hltAM8HmOT6sdaJ4fkEUIgi5oyoObkLS65jm/GK4qw24DFF7/DI+jTANLufP0XTN2wfrrF9+ksjYh/Y8iQJuKB6D2/HWffekaZQqLKv2io5t5+IQNsq7YEh8/2M0ogHqSs6tuG72+eqaq8c39yier9b8yomevjhEK560CjlRFg8FX+IJ60epuec81ztTMs39kE2zcZF2iXMvHxG8c5OclhkRrSQnY8NTppMRiwJeId6hjipCiRTe5yHyE2aHGkWYNQClNKOty60f+H+a0g61iJButbwbjjG0NCfXeZ/x+tOWP4JEA0A7EG9B8ywOh34Ub34+O5kqKxNhPmItZ2A==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by LV2PR12MB5752.namprd12.prod.outlook.com (2603:10b6:408:14d::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6678.24; Mon, 14 Aug
- 2023 14:34:37 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6678.022; Mon, 14 Aug 2023
- 14:34:36 +0000
-Date: Mon, 14 Aug 2023 11:34:34 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Baolu Lu <baolu.lu@linux.intel.com>
-Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Christophe Leroy <christophe.leroy@csgroup.eu>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
-	linuxppc-dev@lists.ozlabs.org,
+	id 1qVYfu-00HMLm-2t;
+	Mon, 14 Aug 2023 14:36:08 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-99bf9252eddso619856666b.3;
+        Mon, 14 Aug 2023 07:36:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1692023765; x=1692628565;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=Cb+czWvjyYwGX3W5jJNktQj/kqBnzJwyrscW7IZnlQY=;
+        b=XbfMx5jsNXr50NyK210tfW4QKpsGsD74//ZIbinQlLd3unrsFsTE3Fy38/ZuUg6GAl
+         lnjA9xjzgaC6DyN8pHIIVMTdfwiKznFIEXVlWSfX5w/ScG80veQfBa73rVo0+chMb+dG
+         S2Mj+HBlFmaT5jiv9IfHPtBhIY/C6xLD7HtFr9n1gZZKq9Fk5S2x1vlp4IJmOcbnlMOf
+         5bTxtUqrxZDckP2xpGCfG6Qw0c2QsksVkowrOYMj12JA5Wp0N9qDwg3X8CUnqrPq6CTy
+         HIdNXjVZR+9cn4SiIikVE78sUWO4LWWn53vIuXgt4hpj6oTBf1qXcr4Dpc5C8ZUvX6mG
+         q+FA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692023765; x=1692628565;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Cb+czWvjyYwGX3W5jJNktQj/kqBnzJwyrscW7IZnlQY=;
+        b=bfEBQ6xb5Cj/zvrO0oQkxFKPxRE3yJc+GYTdGNzojbjJ2OHxLL0PUyl2EM8aNK6tQU
+         Z0F6M7eAKv8FvSu55gKOs8y89CWZbIvtFFug/HXsdSjeA+evFimL7C6Au7mhibcS62nj
+         rvRPFic1KE/xr2aZx8Mhit2T4Jf4JoOAQOFNL9zrEyz3XwwNV8N7Hb1tgmoIVCOjfQRi
+         k40MYeJrKZfmVNWYV12+siwhbFmMqODqoY4l4G4Hf+16obkBqWoBq3B0SX2EYSpmK2sx
+         XhjY+kjQ1WbO7IFuNyeZ7DMOXlMcW4S+XGwByTTjX21rHiNit17A7v/W8fuRxggOFIe+
+         /9rA==
+X-Gm-Message-State: AOJu0YwHRi6vDXL8AGZINeBy6+HfsHmqyWRI0DLmSZVVVQ8deB4wfNjw
+	Lk3FAUV2k/NED0sekEWmocA=
+X-Google-Smtp-Source: AGHT+IEzC/K1rqJm6FyRoXxbVfFap/m4A3OEwMLw3F3kbnFkKMoPl1Ot5DzpCuUMPZZM11AzTmRiNg==
+X-Received: by 2002:a17:906:3299:b0:99b:66eb:2162 with SMTP id 25-20020a170906329900b0099b66eb2162mr7632434ejw.5.1692023764565;
+        Mon, 14 Aug 2023 07:36:04 -0700 (PDT)
+Received: from skbuf ([188.26.184.136])
+        by smtp.gmail.com with ESMTPSA id qc1-20020a170906d8a100b0099d9bc9bfd9sm2399461ejb.48.2023.08.14.07.36.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Aug 2023 07:36:04 -0700 (PDT)
+Date: Mon, 14 Aug 2023 17:36:01 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Nicolin Chen <nicolinc@nvidia.com>,
-	Niklas Schnelle <schnelle@linux.ibm.com>,
-	Steven Price <steven.price@arm.com>,
-	Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v6 07/25] iommu/mtk_iommu_v1: Implement an IDENTITY domain
-Message-ID: <ZNo7eqMZEDBf7VKn@nvidia.com>
-References: <7-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
- <7b6b8118-813a-f4cd-1067-d209d2b40025@linux.intel.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <7b6b8118-813a-f4cd-1067-d209d2b40025@linux.intel.com>
-X-ClientProxiedBy: CH2PR05CA0056.namprd05.prod.outlook.com
- (2603:10b6:610:38::33) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
+Message-ID: <20230814143601.mnpxtcm2zybnbvoh@skbuf>
+References: <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
+ <20230812091708.34665-1-arinc.unal@arinc9.com>
+ <20230812091708.34665-3-arinc.unal@arinc9.com>
+ <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <20230813112026.ohsx6srbt2staxma@skbuf>
+ <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
+ <20230813190157.4y3zoro53qsz43pe@skbuf>
+ <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|LV2PR12MB5752:EE_
-X-MS-Office365-Filtering-Correlation-Id: 15e85150-5e25-427d-72d4-08db9cd3953c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: iBPTzvaJuyEAUVZ31eH/ZC+paNxEqgVCIkvsfBDkKKlUA90wQCd9tx3Ned32XWdKCg4KCZQ/iF6NdQ2JnA/u06tPVOJ5z9iWprUyqBmdi7/j88XZSXTxghGgPY2GfrML+yX24PRopKzuE5AR+ycY/Xkvee0CRTqVUc62OMQ8Yw9B7/gJ6gRhYWUtl5GPT2+SiKUrq4c3cCVzft9nsi94FhsmhZNlkQReicWiaoyIIZ0yMBJrer8esiiJ8x1Jvci/1+12c9UWSq/Haz+GB9RNsh7wvVlal67kidDGwDtJmhPcwVSJxuxXuCuIPidu3nz35mazJGpLx4K70VC9VwCe3yzoJ9CgJkQXrem3ElEsdG4sqfqyRDwmAuMA7nFcuo6eruTHYpYmlzAOymggn9HOivLhexnBwlGs3rgLOuaBmWC+eYw0EuQoFB64/Uw8z50Wd+PEajwtCzuMhMF0sR86XHXljbRdqObc0rBVg48B8X7WbzspFKlDDIhwVDchSgT+QjwUFQFN45uvK9xCidyqKPFS1XMhjiyrwO4ZFR6McWFwQh2zWpwTL7xd2mR7ZzZq
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(396003)(346002)(39860400002)(376002)(366004)(136003)(451199021)(186006)(1800799006)(6486002)(6506007)(478600001)(36756003)(86362001)(2906002)(7406005)(7416002)(6512007)(107886003)(26005)(66946007)(53546011)(2616005)(38100700002)(316002)(4326008)(8676002)(66476007)(6916009)(54906003)(66556008)(5660300002)(8936002)(41300700001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?6rAA1GUNNiKqg0WadYQaQqeCIzzxFcdLDHEZ98Rw0RQ665ewM04hopFXL1la?=
- =?us-ascii?Q?BwYgmzr/oU6IJp8hZsbqGAk4yFjw704/awFPMNIwAXISL33FOqr1l06wqjpu?=
- =?us-ascii?Q?NtBNyxQopmLmhPCvIKj9ZRq1Tp4B0e+SxRvGu/aZKnPRPlnUyaMGCnnfNc41?=
- =?us-ascii?Q?CkTDJorhpEyCLrlk3IQwTPBSuy1N4bC0RbhNhkHb6cb8soop2UMqaNonfBph?=
- =?us-ascii?Q?AYcTXcNqj11DMhzlp9g8C/vHvg5TNtxy9FCgUqrqdLHQiZUQXej8P+DYWXlb?=
- =?us-ascii?Q?Jow6Y4AqEipbTNXeezkHVHpzm+EPhcOYg/nqQV6GCHL8Vu2TGgENR2CoOzN3?=
- =?us-ascii?Q?5aKtUSTYYhCh9ZEXk/hwaH6esHiDk6qMTWNR0dn+KTtW9qZUoGsgPZMjexb4?=
- =?us-ascii?Q?Uk5e86Bi3SAq8HxxstQtb/wAaeZqZtarNb8i7/qx0Y5Qpq4wIYs7EsZwzwnl?=
- =?us-ascii?Q?SZsQR9Izce72jRoN+sR4Wph4Nop69mdd7q3RPtgwolodKaiNV5WA7ECA6055?=
- =?us-ascii?Q?9f9LU6RCwP9M2ukv8x6gMlc30e3Ce0ePaUBj0VjDHHIdTfBG7ZLFMNi1kkoH?=
- =?us-ascii?Q?qNpHvQPjm9TmVDbIZNTphEuLimtRYPqwf3lp1pkFZfweZNtdZ9gllJxA7+O5?=
- =?us-ascii?Q?O5ClyOBfnQQlRTWFBpno8JTl+517rgzsRn/3DQxTFbKOGnAWWUE0/b8v+nR1?=
- =?us-ascii?Q?EMkIk5Djv28xtU/ynOAAbezvdd0sh8UmVlLW3f3MuhN3fhNkZqAqevoaFKCQ?=
- =?us-ascii?Q?k5l9DuPrHsGP4XyspFL5ZdUEZQ56e0w+9QZZ5+qAonhzLqGs2ZuT876yW+7p?=
- =?us-ascii?Q?XiWzuHnf0ahtI69baowjJiJ9NYHJDzYIxG/cgw9AOXwROx9Uy8gmzjXnTesX?=
- =?us-ascii?Q?JP9Sc6lLl9rIDOdhA52Dogi/Jr0Dl3qHXSRioK3bsnNNSlCC3rSCKbUDmLlA?=
- =?us-ascii?Q?SUNUglUjPpzTbFE7idYOEMe4cRap/Ktr77pvV3Kp4Wh2eFa1wcb+W0Xxc6i+?=
- =?us-ascii?Q?Rd85vOGpJnVA4+4sAqEdT6dVcNblb3zA4LWMc1wyFca02SWO3IPHnSczv3S3?=
- =?us-ascii?Q?n9KShLJJNwElroSK1wLqVS8fEEj9BxvjbZpGguOn6qZN515NKwRzW0RNLzZD?=
- =?us-ascii?Q?9j2Gg+XYWvj4R5LD/TEQDFSsteWvUr/+8tjJuU7EtRRz9wZCgcDlA0djgx0G?=
- =?us-ascii?Q?coLF0qekdMdsUzm54QqKH5ugntKiQV7faH01IzmyJUENN+16SqVDjZ2xWiZa?=
- =?us-ascii?Q?+YrJ+gdHrzJhRdt3IvbtxHECftvVzvdwLlOfuVT63VwIJbuGGeopDgMNYPz4?=
- =?us-ascii?Q?bm3OZsFkP+kigsZaWqklmzAkI29gdRCLa3dvtJGF5gljFczlPGZST5NxFse3?=
- =?us-ascii?Q?4leM2rAJCZZKuBTVLZS0Mryq+A3DyAhCXUsGw06jGzMkg2CYi/pIMDAmBnEO?=
- =?us-ascii?Q?BLOXeCl+I4k4eTMcGVD344oteOJP7JbBxNwC1UdmqqO8J1ulZXqI2KhEq9i2?=
- =?us-ascii?Q?hP1cwV+zmUBFcuVEfWqeerEQdOZuODbWOv/N6v8wacVG1W1FnvLEkZlHMp5K?=
- =?us-ascii?Q?a/klxlsxoV5x2DomJplr1LymVICiqth4ko5ZcLfp?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 15e85150-5e25-427d-72d4-08db9cd3953c
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Aug 2023 14:34:36.7141
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 7i4fqKEzylOWuapdzmD6Tn4a3KdGOtHkRm4fHV90mMJWM2pBWYQneha50kob3IPu
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR12MB5752
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230814_073446_234886_7D260F73 
-X-CRM114-Status: GOOD (  29.53  )
+X-CRM114-CacheID: sfid-20230814_073606_937708_9645811F 
+X-CRM114-Status: GOOD (  34.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -165,82 +119,161 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 14, 2023 at 11:06:12AM +0800, Baolu Lu wrote:
-> On 2023/8/3 8:07, Jason Gunthorpe wrote:
-> > What mtk does during mtk_iommu_v1_set_platform_dma() is actually putting
-> > the iommu into identity mode. Make this available as a proper IDENTITY
-> > domain.
-> > 
-> > The mtk_iommu_v1_def_domain_type() from
-> > commit 8bbe13f52cb7 ("iommu/mediatek-v1: Add def_domain_type") explains
-> > this was needed to allow probe_finalize() to be called, but now the
-> > IDENTITY domain will do the same job so change the returned
-> > def_domain_type.
-> > 
-> > mkt_v1 is the only driver that returns IOMMU_DOMAIN_UNMANAGED from
-> > def_domain_type().  This allows the next patch to enforce an IDENTITY
-> > domain policy for this driver.
+Arınç,
+
+On Mon, Aug 14, 2023 at 01:06:29PM +0300, Arınç ÜNAL wrote:
+> On 13.08.2023 22:01, Vladimir Oltean wrote:
+> > SJA1105 has zero internal MDIO buses and zero internal PHYs.
 > 
-> This code seems to be not working properly.
+> Ah okay. I didn't consider the switch architecture where the data interface
+> of the PHY is connected to the switch, and the PHY management interface is
+> connected to the mdio bus that the switch is connected to.
 > 
->  * @def_domain_type: device default domain type, return value:
->  *              - IOMMU_DOMAIN_IDENTITY: must use an identity domain
->  *              - IOMMU_DOMAIN_DMA: must use a dma domain
->  *              - 0: use the default setting
+> The schemas of the switches which already utilise the mdio property:
+> - /schemas/net/dsa/microchip,lan937x.yaml
+> - /schemas/net/dsa/qca8k.yaml
+> - /schemas/net/dsa/realtek.yaml
+> - /schemas/net/dsa/renesas,rzn1-a5psw.yaml
 > 
-> The core code is not ready to accept any other return value.
-
-Right, it is not following the spec. The design does do what it is
-supposed to though..
-
-> > diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> > index 8a0a5e5d049f4a..cc3e7d53d33ad9 100644
-> > --- a/drivers/iommu/mtk_iommu_v1.c
-> > +++ b/drivers/iommu/mtk_iommu_v1.c
-> > @@ -319,11 +319,27 @@ static int mtk_iommu_v1_attach_device(struct iommu_domain *domain, struct device
-> >   	return 0;
-> >   }
-> > -static void mtk_iommu_v1_set_platform_dma(struct device *dev)
-> > +static int mtk_iommu_v1_identity_attach(struct iommu_domain *identity_domain,
-> > +					struct device *dev)
-> >   {
-> >   	struct mtk_iommu_v1_data *data = dev_iommu_priv_get(dev);
-> >   	mtk_iommu_v1_config(data, dev, false);
-> > +	return 0;
-> > +}
-> > +
-> > +static struct iommu_domain_ops mtk_iommu_v1_identity_ops = {
-> > +	.attach_dev = mtk_iommu_v1_identity_attach,
-> > +};
-> > +
-> > +static struct iommu_domain mtk_iommu_v1_identity_domain = {
-> > +	.type = IOMMU_DOMAIN_IDENTITY,
-> > +	.ops = &mtk_iommu_v1_identity_ops,
-> > +};
-> > +
-> > +static void mtk_iommu_v1_set_platform_dma(struct device *dev)
-> > +{
-> > +	mtk_iommu_v1_identity_attach(&mtk_iommu_v1_identity_domain, dev);
+> The schemas of the switches which don't have an internal MDIO bus, meaning
+> the mdio property must be invalid:
+> - /schemas/net/mscc,vsc7514-switch.yaml
+> - /schemas/net/dsa/nxp,sja1105.yaml
 > 
-> This callback seems to be a dead code now.
-
-Not yet in the series, it is still used. All this patch does is
-introduce the identity domain.
-
-> > @@ -443,7 +459,7 @@ static int mtk_iommu_v1_create_mapping(struct device *dev, struct of_phandle_arg
-> >   static int mtk_iommu_v1_def_domain_type(struct device *dev)
-> >   {
-> > -	return IOMMU_DOMAIN_UNMANAGED;
-> > +	return IOMMU_DOMAIN_IDENTITY;
+> The schemas of the switches which I don't know if the switch has got an
+> internal MDIO bus:
+> - /schemas/net/dsa/arrow,xrs700x.yaml
+>   - I believe, because there's phy-handle defined on every port without the
+>     mdio node on the example, the PHYs are not connected to the internal
+>     MDIO bus. Therefore, we can invalidate the mdio property for this
+>     schema.
+> - /schemas/net/dsa/brcm,b53.yaml
+>   - Seems ok to keep it valid.
+> - /schemas/net/dsa/brcm,sf2.yaml
+>   - Seems ok to keep it valid.
+> - /schemas/net/dsa/hirschmann,hellcreek.yaml
+>   - Same as /schemas/net/dsa/arrow,xrs700x.yaml.
+> - /schemas/net/dsa/microchip,ksz.yaml
+>   - Seems ok to keep it valid.
+> - /schemas/net/dsa/mscc,ocelot.yaml
+>   - Same as /schemas/net/dsa/arrow,xrs700x.yaml.
 > 
-> def_domain_type can't be used for this purpose. But this seems to be a
-> temporary code, as it will be removed in patch 09/25.
+> Not json-schema documentation, don't care about:
+> - ar9331.txt
+> - lan9303.txt
+> - lantiq-gswip.txt
+> - marvell.txt
+> - vitesse,vsc73xx.txt
+> 
+> Arınç
 
-It looked OK when I checked it, mkt_v1 is really confusing what it
-tries to do, but it should call probe_finalize and basically do the
-same hacky thing as what UNMANAGED was trying to accomplish.
+We have to keep in sight why we're here, and stick to that.
 
-Did you see something else?
+You had issues with a device tree that didn't work, but it passed
+validation, and you're trying to enforce extra rules through the
+json-schema so that next time, it fails. Verbally, that rule would be:
+"if the switch has a ds->slave_mii_bus which does not have an OF
+presence, then phylink compatible bindings may be omitted, and that has
+a special and valid meaning (the port is connected to an internal PHY on
+that ds->slave_mii_bus). If ds->slave_mii_bus has an OF presence, or if
+ds->slave_mii_bus is NULL, then phylink-compatible bindings (phy-handle
+or fixed-link or managed) are required on all user ports".
 
-Jason
+So it becomes a question of tracking ds->slave_mii_bus for all drivers.
+In essence, it's fundamentally about the ds->slave_mii_bus, not about
+the "mdio" child node. See more below.
+
+There are 2 code paths that lead to its creation:
+
+1. DSA registers the bus in dsa_slave_mii_bus_init(), based on the
+   presence of ds->ops->phy_read() and ds->ops->phy_write(). Traditionally,
+   a slave_mii_bus created this way was always non-OF-based, but Luiz,
+   in commit fe7324b93222 ("net: dsa: OF-ware slave_mii_bus"), thought
+   it would be a good idea for them to be optionally OF-based (and thus,
+   useless at their primary purpose of being able to have internal PHYs
+   without a phy-handle). But, it was thought that the framework
+   registering an MDIO bus automatically would be a plus. So, ds->slave_mii_bus
+   created in this way may or may not have an OF presence, with no way
+   to know except to look at device trees (and to presume that they do).
+
+   The drivers that populate ds->ops->phy_read() and ds->ops->phy_write() are:
+    |
+    +--- dsa_loop_driver: not OF-based
+    |
+    +--- ksz_switch_ops: OF-based or non-OF-based
+    |
+    +--- mv88e6060_switch_ops: OF-based or non-OF-based
+    |
+    +--- lan9303_switch_ops: OF-based or non-OF-based
+    |
+    +--- rtl8365mb_switch_ops_mdio: OF-based or non-OF-based
+    |
+    +--- b53_switch_ops: OF-based or non-OF-based
+    |
+    +--- vsc73xx_ds_ops: OF-based or non-OF-based
+
+2. The switch driver registers the bus, and populates ds->slave_mii_bus with
+   a pointer to it.
+    |
+    +--- Bus is not OF-based (it was registered with mdiobus_register()).
+    |    This is the normal case:
+    |      * mv88e6xxx_default_mdio_bus() in some cases
+    |      * qca8k_mdio_register() in the "qca8k-legacy slave mii" case
+    |      * bcm_sf2_mdio_register()
+    |      * mt7530_setup_mdio()
+    |
+    +--- Bus is OF-based (it was registered with of_mdiobus_register()).
+         I've no idea why you'd do this, because you have neither the
+         benefit of using a non-OF-based phy_connect(), nor the benefit
+         of having DSA register the bus for you:
+           * mv88e6xxx_default_mdio_bus() when of_get_child_by_name(np, "mdio")
+             is non-NULL
+           * qca8k_mdio_register() when of_get_child_by_name(priv->dev->of_node, "mdio")
+             is non-NULL
+           * ksz_mdio_register() - it always wants an "mdio" child node
+           * gswip_mdio() - it always wants a child node compatible with
+             "lantiq,xrx200-mdio"
+           * realtek_smi_setup_mdio() - it always wants a child node
+             compatible with "realtek,smi-mdio"
+
+For switches in the first category, the presence of the "mdio" child
+node is what makes the ds->slave_mii_bus be OF-based or not, since it is
+all the same binding, imposed by Luiz in dsa_switch_setup().
+
+For switches in the second category, it all depends on the way in which
+the driver finds the node for of_mdiobus_register().
+
+
+Having identified all switches which make some sort of use of
+ds->slave_mii_bus, the rule would sound like this:
+
+1. If the schema is that of (need to replace this with compatible
+   strings, I'm too lazy for that):
+
+   - ksz_switch_ops
+   - mv88e6060_switch_ops
+   - lan9303_switch_ops
+   - rtl8365mb_switch_ops_mdio
+   - b53_switch_ops
+   - vsc73xx_ds_ops
+   - mv88e6xxx
+   - qca8k
+
+   and we have an "mdio" child, then phylink bindings are mandatory on user ports.
+
+2. If the schema is that of gswip_mdio and we have a child node of "lantiq,xrx200-mdio",
+   then phylink bindings are mandatory on user ports (I haven't checked,
+   but it might be that the "lantiq,xrx200-mdio" child is mandatory, and
+   in that case, this goes to category 4 below).
+
+3. If the schema is that of realtek_smi_setup_mdio and we have a child node of
+   "realtek,smi-mdio", then phylink bindings are mandatory on user ports
+   (same comment about the child MDIO note maybe being mandatory).
+
+4. If the switch didn't appear in the above set of rules, then phylink
+   bindings are unconditionally mandatory on user ports.
+
+We don't care at all what the drivers that don't use ds->slave_mii_bus
+do with the "mdio" child node. It doesn't change the fact that their
+user ports can't have missing phylink bindings.
 
