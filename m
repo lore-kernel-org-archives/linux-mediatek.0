@@ -4,58 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 754A1C04E69
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Aug 2023 09:39:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0161EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Aug 2023 10:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NXvdJN93cVazImPnxG+ZccQDlFlt0h69tk7gCZTnhX8=; b=tL1gomm6u9jD2Y
-	PXHEM4aa7VVG68gQ4fm/zO7DhIlgN9cOqwSIGHogOQ6Mv7qmhnFQIXjs2o1xHa/HiGNtvS57Gax5A
-	bFqFAlf0nzk9HpOOirXx9yGQw6YCubPeXnZsfJK0lSNRGY7OIEUsQxtc5y9XsNTVS6RRxxZWmCryL
-	NkKObJ2ea1mYtE/So5murB7pynnNf5/cFOAEeSqM0Z+fOrcnonBjYUnMgihuHMcyzgawTSLHX2c7Z
-	YQ35IFGa0T3qJxKSLiGcZ4SerPiOUogRByUKVw2/7pnyC5L/RllO04dpz8ZJJXRoFs9Pf/puM/PXx
-	DwyWKaNqzHyPSGm/2qSg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PbVPpkyEOJUgGmxtmstEv2GtjtTazm0fOZVgp5UmpA8=; b=LntVDGXalkZ4sKQzn2svJ6wFcV
+	ngzRufV01TByGpGtolpuT08gHstSM/QimkQRD2vV0RjJzpqp8TB9A35+kWAkFdzHRxB2zcA3Kjdrd
+	ctPZwM/M8+E3Pj4EB0BgSvQ3iszA3b/zoRMjz2X35CDuSY5m+BbHsGBxgH6QiNcM4IWkWMXJ50X/e
+	MEkksXXUHZD4BYnTVItzS7MR7PSjukhUmrPYwUtfYZJ+OAjEGZE3CGUBETBa4Zw2moXeIZYFTKFQO
+	yKL0CZmlmQj9OndH7agkGzwpp9iIU0s26bM18ACgGfPVuBHO1ovhe4bQ53pmU208q4gI7DCSp1b4M
+	F6TWt8iQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVU37-00GdWt-1M;
-	Mon, 14 Aug 2023 09:39:45 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qVUT8-00Gg6S-0q;
+	Mon, 14 Aug 2023 10:06:38 +0000
+Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVU34-00GdUz-0F;
-	Mon, 14 Aug 2023 09:39:43 +0000
-Received: from eugen-station.. (unknown [86.127.70.132])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: ehristev)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 79CD666071AC;
-	Mon, 14 Aug 2023 10:39:39 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1692005980;
-	bh=zUgp9Iz5W4GMT6SF5CUiqsfkOtNwHl0ff/0cYu1hmrE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=FjmPvIPJBcugwq+fUn2of7pMdrac1FS0AaXXRfTAE05KyOtsBKPOvM2WjHJiSMp7u
-	 nADv4MUt1qwnD1/CqO9zQwBJeeKo4m7/OwUnTHohzDVux94BU9Ie64dEWnOG2CBO8k
-	 eLWA9GpcC9OntMob9mFdmXilDHnl6VISpz09lSuXeB1x64xubm4LDYd3etbeZySHkM
-	 iyOwykOLFeWMrpOt6ooY74oWxkPZsful7WX/3V2shWrU3Mbz3EYHF7LkACl5gh4km2
-	 FWP9WxX90JPU1WNA+gArcburQYvDHXm4Np6P0SQtNmy6kD4K2rXeKabbzSo0XBXG7D
-	 UQ3jVyWwwyELg==
-From: Eugen Hristev <eugen.hristev@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 2/2] arm64: dts: mediatek: fix t-phy unit name
-Date: Mon, 14 Aug 2023 12:39:31 +0300
-Message-Id: <20230814093931.9298-2-eugen.hristev@collabora.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230814093931.9298-1-eugen.hristev@collabora.com>
-References: <20230814093931.9298-1-eugen.hristev@collabora.com>
+	id 1qVUT4-00Gg5u-2A;
+	Mon, 14 Aug 2023 10:06:35 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 6BB671BF203;
+	Mon, 14 Aug 2023 10:06:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1692007591;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=PbVPpkyEOJUgGmxtmstEv2GtjtTazm0fOZVgp5UmpA8=;
+	b=N87HHv7egjNhT/uSaS+jgewIRjChDo0kX4/yyCZJRburX7A5u4+66LllAEhFYIBQuRF1IX
+	9LLT6I520brghXYfDy2vCyu8dH+pU+kbTbEu6C/IyiXJ1K4WNAJl8xKYIWZUh0/eZylTke
+	XYTBUeSEK+NqBRR2f2wjg16SSvI1grr9YE+88NgeTJuexjPDf/+V1rNKo8P12cYjxJaN+x
+	8yjTvXaaR8ueAtbHGu/EwuYMSP2engoCgkh3zbYESPzcLuiZ6n0GZk4GgrT0gONwlJJ6ou
+	JCWF9r3GRYW6QY+kQ45ZGT9qEJPHU8EhvQwNkf5mpmethiP5AkZMtu4ez0O2Kw==
+Message-ID: <af044838-36ef-4ed3-af0a-a58181b6345a@arinc9.com>
+Date: Mon, 14 Aug 2023 13:06:19 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
+Content-Language: en-US
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Woojung Huh <woojung.huh@microchip.com>,
+ UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+ Daniel Golle <daniel@makrotopia.org>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230812091708.34665-3-arinc.unal@arinc9.com>
+ <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
+ <20230812091708.34665-1-arinc.unal@arinc9.com>
+ <20230812091708.34665-3-arinc.unal@arinc9.com>
+ <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <20230813112026.ohsx6srbt2staxma@skbuf>
+ <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
+ <891c0b67-abe1-416c-aa94-675f7f3d8044@arinc9.com>
+ <20230813190227.6k2qyxfewbkmatn6@skbuf>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20230813190227.6k2qyxfewbkmatn6@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230814_023942_238425_36322260 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20230814_030634_866375_9374379F 
+X-CRM114-Status: UNSURE (   8.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,55 +94,18 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kishon@kernel.org, devicetree@vger.kernel.org, conor+dt@kernel.org, kernel@collabora.com, sam.shih@mediatek.com, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, matthias.bgg@gmail.com, vkoul@kernel.org, robh+dt@kernel.org, Eugen Hristev <eugen.hristev@collabora.com>, krzysztof.kozlowski+dt@linaro.org, chunfeng.yun@mediatek.com, jieyy.yang@mediatek.com, chris.obbard@collabora.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-dtbs_check throws a warning at t-phy nodes:
-Warning (unit_address_vs_reg): /t-phy@1a243000: node has a unit name, but no reg or ranges property
-Warning (unit_address_vs_reg): /soc/t-phy@11c00000: node has a unit name, but no reg or ranges property
+On 13.08.2023 22:02, Vladimir Oltean wrote:
+> On Sun, Aug 13, 2023 at 05:58:57PM +0300, Arınç ÜNAL wrote:
+>> On top of this, I'd argue to document the internal MDIO bus on the
+>> ethernet-switch.yaml schema instead.
+> 
+> Why?
 
-The ranges is empty thus removing the `@1a243000`, `@11c00000` from
-the node name.
+Because a generic switch can have an internal MDIO bus, it's not specific
+to a DSA controlled switch.
 
-Fixes: 6029cae696c8 ("arm64: dts: mediatek: mt7622: harmonize node names and compatibles")
-Fixes: 918aed7abd2d ("arm64: dts: mt7986: add pcie related device nodes")
-Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
----
-Changes in v2:
-- mention dtbs_check in the commit message and blame some commits
-
- arch/arm64/boot/dts/mediatek/mt7622.dtsi  | 2 +-
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-index 36ef2dbe8add..3ee9266fa8e9 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -905,7 +905,7 @@ sata: sata@1a200000 {
- 		status = "disabled";
- 	};
- 
--	sata_phy: t-phy@1a243000 {
-+	sata_phy: t-phy {
- 		compatible = "mediatek,mt7622-tphy",
- 			     "mediatek,generic-tphy-v1";
- 		#address-cells = <2>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-index 68539ea788df..24eda00e320d 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-@@ -434,7 +434,7 @@ pcie_intc: interrupt-controller {
- 			};
- 		};
- 
--		pcie_phy: t-phy@11c00000 {
-+		pcie_phy: t-phy {
- 			compatible = "mediatek,mt7986-tphy",
- 				     "mediatek,generic-tphy-v2";
- 			#address-cells = <2>;
--- 
-2.34.1
-
+Arınç
 
