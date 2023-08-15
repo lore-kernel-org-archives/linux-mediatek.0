@@ -4,76 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E2DEC0015E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 15:59:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EC9FC0015E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 17:21:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=74PPELyfTdRJMzG/844z25bsJa3XCvyEnvQBQNAdiaY=; b=1s3ktda3pzFM/fV6VS1RRO9xG7
-	YNp++XrBE1fLFzPtqsxEZi9bp/GmB3OzUW3lqTCCDua373SQYaLfWUBY6vXEpxBVfErdyZbICGpYG
-	fkuW9EpECXNnVoe/DTBWfjYwb1ii2WZQKFN+SLAzWMLoy7M9vij7vKECalq619BenfsVo6GJgqVTA
-	NTRgkIED7yss3uTHxhj248Wl7IuNwIpDKbp+7+qNGSlpZxXODsYVG3zvddTPxL0TqNLIq/zaWiqsA
-	l0Y30pOblvVr3EsKKKSYyhblncPyI7DPYsdqZJBp3ymcx/FbxVvT+OdFx6wbzSBR8xzAroWr2s4IF
-	+bsHemZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1XUys1huCh1+ir4pJ/yUia3YtNLT9j72S4nI3KcgIX0=; b=zlFGAwwKkXmaopuaW5MDPuXuH7
+	CummvyEe3dmDIcQpxF5VqN6rivuo2ZM3I5C2Z9/s2kVttTBk0f7UNoPYeoPqA5dFEKWagWbuuLH/o
+	CEEyYcwq6QIIxXDyp++/I+ijIWQ0vDWZcloyZjWKGs9kM8dTN4KPRC2ZG4bxz+i4pnVsX/wsdcicY
+	r5fsKsfBh0ZYJiethZd28gOh73QBnkw21x3SrnYy+nzzSKAN1XaxKe70uyAo5Mlmrplp1OOPs+HTI
+	t3huJiJs/2Kk7aMgwOWVnI0NfF052TBnlzdU65MZF6u3H0WW/v3ZzkpcAlgCj1VmfWWe7Gv5SOYUf
+	Eec16VwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVwSS-001vRk-0A;
-	Tue, 15 Aug 2023 15:59:48 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1qVxjc-0024Bo-04;
+	Tue, 15 Aug 2023 17:21:36 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVwSP-001vQR-0D;
-	Tue, 15 Aug 2023 15:59:46 +0000
-Received: from [127.0.0.1] (ip-109-43-115-51.web.vodafone.de [109.43.115.51])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	id 1qVxjY-0024BC-1j;
+	Tue, 15 Aug 2023 17:21:33 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 6B6F53D5;
-	Tue, 15 Aug 2023 17:59:36 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1692115176;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=74PPELyfTdRJMzG/844z25bsJa3XCvyEnvQBQNAdiaY=;
-	b=2LurkNY/UP++tp7HyhcQAep+uOzh7mSWOIHO4I7wCdCKHTrppFFdvhjvrgs+ZrKui2E9xm
-	JzvuT20uC9Zqh/+HN758R4LUWl8W3jqtbPyGvi2lWQol8JiWqVxuAeiF37/yk4M2ea73e7
-	aST0SfYvNKisMulDXoy3rP7N4/V3meWHvzjvZ3KjmToa/WEbAs98POlxnc48ddolyzklhD
-	2tn1oQ9akdoCL7IySSv+FNIigyHN+mvVecJ4hOCrPYm02RjxXEMaiIwd7m0LHhLhMMYnLI
-	rBdaW6KeyIoU13hl8/44rNf7/hK9gozl9G2KXX/uAdh5QDeetvIsl5ILnk2m/g==
-Date: Tue, 15 Aug 2023 17:59:34 +0200
-From: Michael Walle <michael@walle.cc>
-To: Hsin-Yi Wang <hsinyi@chromium.org>, Tudor Ambarus <tudor.ambarus@linaro.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <andersson@kernel.org>
-CC: Pratyush Yadav <pratyush@kernel.org>,
- "Miquel Raynal )" <miquel.raynal@bootlin.com>,
- "Richard Weinberger )" <richard@nod.at>,
- "Vignesh Raghavendra )" <vigneshr@ti.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- cros-qcom-dts-watchers@chromium.org, Andy Gross <agross@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>
-Subject: Re: [PATCH 0/4] Add a property to override the quad mode
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20230815154412.713846-1-hsinyi@chromium.org>
-References: <20230815154412.713846-1-hsinyi@chromium.org>
-Message-ID: <202A0C36-D1F6-4BB4-BDEC-F36A76B757A2@walle.cc>
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 50B5C617ED;
+	Tue, 15 Aug 2023 17:21:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 373CAC433C7;
+	Tue, 15 Aug 2023 17:21:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1692120090;
+	bh=Il2uMTP6lG0+AKxD0SbiK86g8kR0jT68a3j1liMLNMM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=D6xYkDOYe5/F6UacYnRo1uoKHSOBsQRSc2QXAihpKH0Uq7deScby6MYrJPS2gbi2E
+	 tW6WPOz8AvWPP7hc9aEXDIgbAYBm2Marpg5AcTU1j2NfC9lgdQ5+VT1GpSj3TPYVWQ
+	 o74MeGNE75lUwAIriAeD2At3m83zqvvC3BEyF3Kj3rjxRZRdW6kEErc4q/M8AnTpky
+	 HrUgUtVGNsWLIAOTUvooDhSHkwzDzEFnDgJGXJLmkH+VdzZuKL8VAbrGjxhLRCNBO5
+	 F61htQhvvC8JMPEor3x5Fk8LRA/1GNmK/xsXNQ9AjMJ+CVznXqVvjnzI7Zh2uGbyDC
+	 DLSynANZNTbzg==
+Date: Tue, 15 Aug 2023 18:21:22 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Trevor Wu =?utf-8?B?KOWQs+aWh+iJryk=?= <Trevor.Wu@mediatek.com>
+Cc: "linux-imx@nxp.com" <linux-imx@nxp.com>,
+	"s.nawrocki@samsung.com" <s.nawrocki@samsung.com>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"xc-racer2@live.ca" <xc-racer2@live.ca>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"cychiang@chromium.org" <cychiang@chromium.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"festevam@gmail.com" <festevam@gmail.com>,
+	"jbrunet@baylibre.com" <jbrunet@baylibre.com>,
+	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"tiwai@suse.com" <tiwai@suse.com>,
+	"judyhsiao@chromium.org" <judyhsiao@chromium.org>,
+	"lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+	"shawnguo@kernel.org" <shawnguo@kernel.org>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"shengjiu.wang@nxp.com" <shengjiu.wang@nxp.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"srivasam@codeaurora.org" <srivasam@codeaurora.org>,
+	"kernel@pengutronix.de" <kernel@pengutronix.de>,
+	"perex@perex.cz" <perex@perex.cz>,
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>,
+	"s.hauer@pengutronix.de" <s.hauer@pengutronix.de>,
+	"quic_rohkumar@quicinc.com" <quic_rohkumar@quicinc.com>,
+	"robh@kernel.org" <robh@kernel.org>
+Subject: Re: [PATCH v2 02/11] ASoC: dt-bindings: mediatek,mt8188-mt6359: use
+ common sound card
+Message-ID: <052ba5ef-e689-498c-9283-95482acfadcc@sirena.org.uk>
+References: <20230810063300.20151-1-krzysztof.kozlowski@linaro.org>
+ <20230810063300.20151-2-krzysztof.kozlowski@linaro.org>
+ <234edb7c2002106dee41d558481b4baf904208ab.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="mZn0hmd24oe3x4bQ"
+Content-Disposition: inline
+In-Reply-To: <234edb7c2002106dee41d558481b4baf904208ab.camel@mediatek.com>
+X-Cookie: Darth Vader sleeps with a Teddywookie.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230815_085945_337982_C5FDFD2D 
-X-CRM114-Status: UNSURE (   8.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230815_102132_686285_98CB16A0 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,27 +104,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,=20
 
->On gigadevice gd25lq64c, the quad mode is enabled after BFPT is parsed=2E
->According to datasheet[1], Quad enable (QE) bit needs to be set to 0 to
->use write protection (WP) pin=2E It also recommends setting default value=
- of
->QE to 0 to avoid a potential short issue=2E
+--mZn0hmd24oe3x4bQ
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-So you are using either dual or single io mode=2E Why can't you use the de=
-vice tree property spi-{tx,rx}-bus-width?=20
+On Fri, Aug 11, 2023 at 01:57:51AM +0000, Trevor Wu (=E5=90=B3=E6=96=87=E8=
+=89=AF) wrote:
+> On Thu, 2023-08-10 at 08:32 +0200, Krzysztof Kozlowski wrote:
+>=20
+> The mediatek,mt8188-mt6359 Linux sound machine driver requires the
+>=20
+> "model" property, so binding was incomplete.  Reference the common sound
+>=20
+> card properties to fix that which also allows to remove duplicated
+>=20
+> property definitions.  Leave the relevant parts of "audio-routing"
+>=20
+> description.
+>=20
+>=20
+> Reviewed-by: Rob Herring <robh@kernel.org<mailto:robh@kernel.org>>
 
->Add a disable-quad-mode property in devicetree that platform can use it t=
-o
->override the quad mode status parsed from BFPT to use write protection=2E
->
->[1]
->https://www=2Eelm-tech=2Ecom/ja/products/spi-flash-memory/gd25lq64/gd25lq=
-64=2Epdf
+Something's really wrecked the formatting of this mail...
 
-should be a link on the vendor Homepage if possible=2E=20
+--mZn0hmd24oe3x4bQ
+Content-Type: application/pgp-signature; name="signature.asc"
 
--michael
+-----BEGIN PGP SIGNATURE-----
 
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmTbtBEACgkQJNaLcl1U
+h9AkVQf+LCyv4Rxv2WwJ4vwg9gYMeT9mlq2c9+h5yXrqF3W3m4rwBxpVYqN2Ez5V
+VgEsH3D9dGm4h9LsqFw5IPnK25riu5Bb1Oj2JwigyD1wRnjimBC2C9zwa5IuzS6P
+/6EmFdMiTrtbxM1cNjA/kPbxnxIsrqCD5Carl/ubZ6qcq/au08dFZA37AMRSpozs
+DkiU38lOyP/SV6DW2jlJHV9BbIcxPmmrAl7Rw+9WcOhJqCg/TEFVSodXzX9PXx9z
+AfR6BqxbB/mfqQ8R47vePrcpNZbJ3qrmW+psqxeroNx7kE4pyc8Zzsnhdb+PMn2o
+bs8U5uonjNv62gLDqi2Sn/2f5Qrcag==
+=9W3r
+-----END PGP SIGNATURE-----
+
+--mZn0hmd24oe3x4bQ--
 
