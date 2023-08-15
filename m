@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5291C001DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 00:34:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 508A3C001B0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 00:57:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:Cc:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=98mzmOLL8MGskLC+onXOHsi40a0CO2BJpLxLKIebw1c=; b=OCIaCd3dUpQY1HOVq9wQMEDQY3
-	92J5YqaOujTl97E7jO+h6K8Ru9E1slbZGxG6xQPwqxQiQ8A/xHvWYADgcExQg4mfs/E9vGbijSAJS
-	BsBtWX//7ACYvZgHBdK2Dd1BxGGtrXdA86R8GOQjb8gwBcmWzo3Spn6v9S/VDeb70471ST2pjCKxJ
-	NFk/gLESLJN53ZxxdT6XOusX/xHtuPbwTkgOKVoxYuwvsD0sNxuwhOXo01eM+RjbVweEMqNXrh3bO
-	d9RuRMfr7aOAy8hYTyn5FReW5lH/+t9DSxJ6N10K93WGpBYFmD0ZH5wGOVJ2qpZ/4Q2SDTerozIlz
-	xzecr4KA==;
+	bh=YFYsIgymBpCqjqDV5TDnVIIqD4oYSzgKsai0Qj/Hi1M=; b=4z2oBtSTOXmP9eIWCOiOkRqeLK
+	/FQMQ5d0dA9p72nZjXfUI6pypf2Lix2xux5Me53fgHDVMKAs41ophP3PJ49wd7fXviKHQ5EzDIFXW
+	4iJ7fOjEYngqY7QPNI0MIobU7WigRSkbZ1yObgs+n48JXD49nnz2wNvX6G9vq46h3+ujBBN5A1vPV
+	sgtsm979OnN+p6ALi92IH1G1xRpv06B/ao5lQ2GCAzPccdqlevAMq4IuIBoABK/035xLj5M8DgyV4
+	d6v87PaJgMxYHxdMW+fyxHK69gyqdwEn2eM4uUKSsElWQRm+AsfiTGwwmJ7SRsApfEKig68bJqxxm
+	6QfLMAnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVi0r-000bMA-14;
-	Tue, 15 Aug 2023 00:34:21 +0000
-Received: from mgamail.intel.com ([134.134.136.24])
+	id 1qViN5-000dRi-05;
+	Tue, 15 Aug 2023 00:57:19 +0000
+Received: from mgamail.intel.com ([134.134.136.20])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVi0o-000bLa-1X;
-	Tue, 15 Aug 2023 00:34:19 +0000
+	id 1qViN1-000dQc-2v;
+	Tue, 15 Aug 2023 00:57:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1692059658; x=1723595658;
+  t=1692061035; x=1723597035;
   h=message-id:date:mime-version:cc:subject:to:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=VSM1w+2GQF5FWr9+uAkx0UUWSnoPqxj5esYUGnBEoIA=;
-  b=lOFIMV5FVj8Sjgnrw5mYRoVZrKNVbgFlxwCaWgJF+kKCue6BfN7fAhqB
-   uU73BSqaDJ/VmIF925TGcdtnaYRWfoRqCjkPHRPlWFGBs3FNvao9kvCZK
-   kXVgYnNQREjUzI0e3bh/u5S5b6PP3K0NwwPFinqSiPXFf9T4ywvDe2do6
-   UGM2MnUip7Wn3g3zcReARwnRtABJVNKhYBpO1mMUBDak4deibRladsitZ
-   s2Zz1Ic8qoHP34iyY1FTADcBDRwn+ZcH0TlyXpf8s9pDCQ2YPdWL1Yuxf
-   AterZllGgWV+dEsRbm2zatq9u0vOxb6WNu48RZMBuFksT2h9VyE6g0Drq
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10802"; a="374938108"
+  bh=EMtekiFoo0Tblby6wZQ8ziVNSJFBHzBXovBoPNar8KU=;
+  b=VNtIcUoNjYgw4f2olRobdmc8apqvusrnyYEREd/7+SmMHBlNi4oDRtk8
+   vbVdjI2NFIOMs6a7Wwz2ZErfBfGHedqbc+3xw8He5vFo4pgPn0HZBEJEC
+   wWDoP9CafkTMfFrXLl7vLj94ctpUzgngCrVGBqUR3hPF04xriIZ2qQOrp
+   JH8eB04uiY0CWrIK0ZEsI0P/k82m3CzAZ5Jw+q0zkcFsl2nXufsZepuMT
+   iB1v/9vetBtIZljVOt6SzQtVRGnplD9mmUgGjagqlQx5A41cQ+H/zMNfW
+   F5Qa6x2BgcsKZkgRPPQuJ+H7TvzHUbLp/dpFgUpsKrv4qVyJHCYRBh7YG
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10802"; a="362322787"
 X-IronPort-AV: E=Sophos;i="6.01,173,1684825200"; 
-   d="scan'208";a="374938108"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2023 17:34:16 -0700
+   d="scan'208";a="362322787"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2023 17:56:54 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10802"; a="823660205"
+X-IronPort-AV: E=McAfee;i="6600,9927,10802"; a="857243905"
 X-IronPort-AV: E=Sophos;i="6.01,173,1684825200"; 
-   d="scan'208";a="823660205"
-Received: from wanglu5-mobl.ccr.corp.intel.com (HELO [10.254.215.149]) ([10.254.215.149])
-  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2023 17:34:05 -0700
-Message-ID: <8f3ce115-7489-640a-b1fb-a6fb6cfb1682@linux.intel.com>
-Date: Tue, 15 Aug 2023 08:34:03 +0800
+   d="scan'208";a="857243905"
+Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.254.215.149]) ([10.254.215.149])
+  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2023 17:56:42 -0700
+Message-ID: <d645ddff-f274-7a01-6b06-3f5a7afef8fe@linux.intel.com>
+Date: Tue, 15 Aug 2023 08:56:40 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
@@ -85,19 +85,19 @@ Cc: baolu.lu@linux.intel.com, Andy Gross <agross@kernel.org>,
  Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
  <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
  Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v6 07/25] iommu/mtk_iommu_v1: Implement an IDENTITY domain
-To: Jason Gunthorpe <jgg@nvidia.com>
-References: <7-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
- <7b6b8118-813a-f4cd-1067-d209d2b40025@linux.intel.com>
- <ZNo7eqMZEDBf7VKn@nvidia.com>
+Subject: Re: [PATCH v6 17/25] iommu/qcom_iommu: Add an IOMMU_IDENTITIY_DOMAIN
 Content-Language: en-US
+To: Jason Gunthorpe <jgg@nvidia.com>
+References: <17-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
+ <8cef9a0d-15ba-f8af-7e22-d4d3063c97bf@linux.intel.com>
+ <ZNpJ5irR4XeLw6qG@nvidia.com>
 From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <ZNo7eqMZEDBf7VKn@nvidia.com>
+In-Reply-To: <ZNpJ5irR4XeLw6qG@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230814_173418_576849_28DC4217 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20230814_175716_013466_C795C2B6 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,21 +112,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023/8/14 22:34, Jason Gunthorpe wrote:
->>> @@ -443,7 +459,7 @@ static int mtk_iommu_v1_create_mapping(struct device *dev, struct of_phandle_arg
->>>    static int mtk_iommu_v1_def_domain_type(struct device *dev)
->>>    {
->>> -	return IOMMU_DOMAIN_UNMANAGED;
->>> +	return IOMMU_DOMAIN_IDENTITY;
->> def_domain_type can't be used for this purpose. But this seems to be a
->> temporary code, as it will be removed in patch 09/25.
-> It looked OK when I checked it, mkt_v1 is really confusing what it
-> tries to do, but it should call probe_finalize and basically do the
-> same hacky thing as what UNMANAGED was trying to accomplish.
+On 2023/8/14 23:36, Jason Gunthorpe wrote:
+> On Mon, Aug 14, 2023 at 02:32:33PM +0800, Baolu Lu wrote:
 > 
-> Did you see something else?
+>>> +	pm_runtime_get_sync(qcom_iommu->dev);
+>>> +	for (i = 0; i < fwspec->num_ids; i++) {
+>>> +		struct qcom_iommu_ctx *ctx = to_ctx(qcom_domain, fwspec->ids[i]);
+>>> +
+>>> +		/* Disable the context bank: */
+>>> +		iommu_writel(ctx, ARM_SMMU_CB_SCTLR, 0);
+>>> +
+>>> +		ctx->domain = NULL;
+>> Does setting ctx->domain to NULL still match this semantics?
+> Yes, I did not try to fix this driver. NULL means identity in the
+> ctx->domain.
 
-No.
+Okay.
 
 Best regards,
 baolu
