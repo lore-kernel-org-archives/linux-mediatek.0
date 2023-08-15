@@ -4,100 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8666C001DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 01:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4064C001B0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 05:16:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:Cc:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9cow+D/OuNibG87CSVlC4c0DvS3TBXj6y37gwgDKrJ4=; b=BjuikO2Rh9gYhWVHgxtQ3uz4zf
-	JZQZEG52VxdgubQE9wr7ixRgzAsNtBFg32LgCTXdEs/35HqfliHuRM1hxOf6Z0YBPpRF+EcO8iBLC
-	ZUhCWZG67q1gVusbq60SErxcTPh4FefQAZQo1eYKW7lDLSTisdx3hahxrPYE/paFcBhUAWSScXzfl
-	Guwuo3kcV3t7HdcVrfTNWTGi6WQL6EFYqrWkSke1iIkjYBRJmnzO+M1JbcFYVXFlYvXA5xt/Du4Dz
-	bWAlKHowGHsSzGAxIaYoLrOweUQ+33WXDxBpYdeYiLboNlVArQPVTnJ/BYGY2j4QyQMSXSOfHO5U4
-	9hjgfdXw==;
+	bh=9DcNIhmYiedc7YAAaUDTwseiwW1WSirSX4X1QMozncM=; b=2ZKi3K0kj/p45Ld0CbEFRkdNOb
+	kyfpF2FdAH04TEwHjGUsSPdZhENfrjZB6sxGAxI+3QvJPRMVEp8f/9hrLvGnCz08mKioC5s4XOdjb
+	ZGxRZipi8pokf/JnCPGXvCBtQ9KUzfVJ0fnR2oYTe8NuWxQVxFwLRpKUTnwKLqGxZ8ko7tlIajI6s
+	ZhYBmTGyH5ja/vBjo8+ZFHmhkjarbgYYt9Jgzpn9nUzz5L7aUxZRWfnqlSEM2dXOKVdKHggRxo3HT
+	Xi+yaMMM/e4c8zy7CNkv6c57sUhBc9OxpS8eMKIBqqEt26QzT2Jh6WRZh0odaERFJd481mJHCydjy
+	br0D5aNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVixM-000fyH-1n;
-	Tue, 15 Aug 2023 01:34:48 +0000
-Received: from mgamail.intel.com ([134.134.136.31])
+	id 1qVmPS-000uqY-17;
+	Tue, 15 Aug 2023 05:16:02 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVixJ-000fxY-2O;
-	Tue, 15 Aug 2023 01:34:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1692063285; x=1723599285;
-  h=message-id:date:mime-version:cc:subject:to:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=jkr/6uy80FBJ1zVM9rO0oVAo4kuNs+82saVQaD5txn0=;
-  b=idt4CGF2kLf+rGN3fWSU+WKTCnYsSf+q5ZRypDbiVROKVGYcKlSE/hVY
-   2ZZMyWVvxD4/W2cCIS119kv/eZe0zWZx+koHMytgd1mnbMzSL69fdguj1
-   nb6Qw0MAng+3AeBw+ArrokS+6TfCHtgOYBP605q+g+lq0fi2NM6pm+FzM
-   qSqYSHKeao37wbbeqEI/4NoHG6N8xUCcnu1lUBMswqigSjnnwxjFNj+Vp
-   3xFVLi1MR9PbsyokoxMSdO32zjnRY8aFIezWL/+Vv5YywegPEZqTSmV27
-   CYNBB5hul+5urEDK0pVDrcu0EZvMJuN7rd6AFeZTiO1XUrBVSaDiXskmF
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10802"; a="436073292"
-X-IronPort-AV: E=Sophos;i="6.01,173,1684825200"; 
-   d="scan'208";a="436073292"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2023 18:34:43 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10802"; a="768654964"
-X-IronPort-AV: E=Sophos;i="6.01,173,1684825200"; 
-   d="scan'208";a="768654964"
-Received: from blu2-mobl.ccr.corp.intel.com (HELO [10.254.215.149]) ([10.254.215.149])
-  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2023 18:34:30 -0700
-Message-ID: <7fdbf6a5-87a2-65c1-7c1e-d7b936dd3a67@linux.intel.com>
-Date: Tue, 15 Aug 2023 09:34:28 +0800
+	id 1qVmPP-000upN-1Y
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Aug 2023 05:16:01 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-986d8332f50so681607066b.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 14 Aug 2023 22:15:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1692076557; x=1692681357;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=9DcNIhmYiedc7YAAaUDTwseiwW1WSirSX4X1QMozncM=;
+        b=EqFsvYUS7kD514OEFpT729cORUW7iOU9gyABhtRxUw/iso84K/+FIupjT14goCyRoT
+         IGCw+Ot99zcvkJQ1VyOXNkju5piuc38G79TCSddAlpiPG5IiCNJU+SqGb+Ob0NkwScEI
+         xUquHpa2anpapPtWOK9H+aBy3Ciby+QsqTAk7JyukpkMZPNWHdXVZobISSexqKG/wTGB
+         RHhIzO34Cq1nkNOvhNS9vva9ymIpE0C1iVIEwlTsssUNDRR4dUkVd45NU6O67dbs0Hs8
+         RXLWeyN1Ks+gk0QyP3K+P/NpA6WTmyiIXH4FdpAlGfqMhORcCM6fS6c0DBwqLxqlUpUS
+         paLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692076557; x=1692681357;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=9DcNIhmYiedc7YAAaUDTwseiwW1WSirSX4X1QMozncM=;
+        b=bbGTus4yUgPDjEcv6c2nF+w2G8ODze/zZjVUHHbz8Cs1yjgzQElKyfkUaXk0wXQX76
+         jB0XmGIZDMsIqxBJptJTlD/0dWej45DdyTMv1WR30QBFZCVRJiyLwMtSBmllSCPWMIz2
+         gOrZZQUi9GSdbKMbVHCw4ALwltqS2jULJQ1Nt9hsVGv7d0cQBeUjAl96Tw2iZ6Nsdc5h
+         CWp/es0eR1bG7Ja9cedABKZIeEiSynNE43L9cDuN2zlIN8ktJkXN8M+mRpR9lQbV43c5
+         HzX9U+NtMSc89nLP0BwuWwX/8+9E67jc3597wUWYfgEZB+73h/WiDx88eqp0Qmg0drJ7
+         kYUA==
+X-Gm-Message-State: AOJu0YyL9RBog19hgyU4sRPuxdOaR+M8HLmWondXO25J/L+S1dGdCqQP
+	MYgyN0Q9hfTj/UgwiEnPLZ/Y2Q==
+X-Google-Smtp-Source: AGHT+IG1RrxofX9CeLU3M5cH+vSbJ+2a07TkS8A2zon57uWZ71OkHwvioJ2MjmW8tI5SL1pQZJX3zA==
+X-Received: by 2002:a17:906:5306:b0:993:dcca:9607 with SMTP id h6-20020a170906530600b00993dcca9607mr8692678ejo.2.1692076557112;
+        Mon, 14 Aug 2023 22:15:57 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.214.188])
+        by smtp.gmail.com with ESMTPSA id w20-20020a170906385400b0097404f4a124sm6517600ejc.2.2023.08.14.22.15.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 14 Aug 2023 22:15:56 -0700 (PDT)
+Message-ID: <1c385849-490e-1d78-0394-1ca51e3ce81d@linaro.org>
+Date: Tue, 15 Aug 2023 07:15:54 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
-Cc: baolu.lu@linux.intel.com, Andy Gross <agross@kernel.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Bjorn Andersson
- <andersson@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
- Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>,
- Kevin Tian <kevin.tian@intel.com>, Konrad Dybcio <konrad.dybcio@linaro.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- Russell King <linux@armlinux.org.uk>, linuxppc-dev@lists.ozlabs.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>,
- Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy
- <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
- Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Dmitry Osipenko <digetx@gmail.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle
- <schnelle@linux.ibm.com>, Steven Price <steven.price@arm.com>,
- Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v6 00/25] iommu: Make default_domain's mandatory
+Subject: Re: [PATCH v2] dt-bindings: arm: mediatek: convert audsys to yaml
 Content-Language: en-US
-To: Jason Gunthorpe <jgg@nvidia.com>
-References: <0-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
- <50feed07-f89a-dfc2-d8a8-16f9bf0fe937@linux.intel.com>
- <ZNpksUtIY+3N1Hn3@nvidia.com>
-From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <ZNpksUtIY+3N1Hn3@nvidia.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Eugen Hristev <eugen.hristev@collabora.com>, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
+ conor+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org
+References: <20230814085342.8474-1-eugen.hristev@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230814085342.8474-1-eugen.hristev@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230814_183445_862954_2CD40CE0 
-X-CRM114-Status: GOOD (  21.09  )
+X-CRM114-CacheID: sfid-20230814_221559_527560_F5E63CCF 
+X-CRM114-Status: GOOD (  15.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,52 +96,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023/8/15 1:30, Jason Gunthorpe wrote:
-> On Mon, Aug 14, 2023 at 04:43:23PM +0800, Baolu Lu wrote:
+On 14/08/2023 10:53, Eugen Hristev wrote:
+> Convert the mediatek,audsys binding to YAML.
 > 
->>> This is on github:https://github.com/jgunthorpe/linux/commits/iommu_all_defdom
->> It seems that after this series, all ARM iommu drivers are able to
->> support the IDENTITY default domain, hence perhaps we can remove below
->> code?
-> Yes, but this code is still used
-> 
->> If I remember it correctly, the background of this part of code is
->> that some arm drivers didn't support IDENTITY domain, so fall back to
->> DMA domain if IDENTITY domain allocation fails.
-> Not quite..
-> 
-> 	if (req_type)
-> 		return __iommu_group_alloc_default_domain(group, req_type);
-> 
-> req_type == 0 can still happen because it depends on what
-> def_domain_type returns, which is still 0 in alot of cases
-> 
-> 	/* The driver gave no guidance on what type to use, try the default */
-> 	dom = __iommu_group_alloc_default_domain(group, iommu_def_domain_type);
-> 	if (dom)
-> 		return dom;
-> 
-> So we try the default which might be IDENTITY/DMA/DMA_FQ - still have
-> to do this.
-> 
-> 	/* Otherwise IDENTITY and DMA_FQ defaults will try DMA */
-> 	if (iommu_def_domain_type == IOMMU_DOMAIN_DMA)
-> 		return NULL;
-> 	dom = __iommu_group_alloc_default_domain(group, IOMMU_DOMAIN_DMA);
-> 	if (!dom)
-> 		return NULL;
-> 
-> 	pr_warn("Failed to allocate default IOMMU domain of type %u for group %s - Falling back to IOMMU_DOMAIN_DMA",
-> 		iommu_def_domain_type, group->name);
-> 
-> And this hunk is primarily a fallback in case the DMA_FQ didn't
-> work. Then we try normal DMA.
-> 
-> That it also protected against not implementing IDENTITY is a side
-> effect, so I think we have to keep all of this still.
+> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
+> ---
+> Changes in v2:
+> - remove comment reference to inexistent binding
 
-Okay, fair enough. Thanks for the explanation.
+This is a friendly reminder during the review process.
+
+It looks like you received a tag and forgot to add it.
+
+If you do not know the process, here is a short explanation:
+Please add Acked-by/Reviewed-by/Tested-by tags when posting new
+versions, under or above your Signed-off-by tag. Tag is "received", when
+provided in a message replied to you on the mailing list. Tools like b4
+can help here. However, there's no need to repost patches *only* to add
+the tags. The upstream maintainer will do that for tags received on the
+version they apply.
+
+https://elixir.bootlin.com/linux/v6.5-rc3/source/Documentation/process/submitting-patches.rst#L577
+
+If a tag was not added on purpose, please state why and what changed.
+
+...
+
+> +
+> +  audio-controller:
+> +    type: object
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +        audsys: clock-controller@11220000 {
+> +            compatible = "mediatek,mt7622-audsys", "syscon";
+> +            reg = <0 0x11220000 0 0x2000>;
+> +            #clock-cells = <1>;
+> +
+> +            audio-controller {
+
+The binding and example are incomplete. This should be sent together
+with the afe conversion.
 
 Best regards,
-baolu
+Krzysztof
+
 
