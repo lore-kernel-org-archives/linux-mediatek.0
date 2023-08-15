@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76DC0C04A6A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 15:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D54B3C04A94
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 15:45:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xmLPugTGz1sgSy2J/v99Dk0J3o8zfc9d+fDcwlxsiEo=; b=DbRGRBhj0B/CntcArXY45gUR8T
-	T3dYq5Q827n6JQnl6geEXp6CxJcJDJ6+8OpkDUDR3t/PsH1i+BTs6AQlRmUJ9bYoe7DMmcpNk3zpA
-	HhfpOooviDhhFCBAKjBVSYrT5DDd9gJun8+/fWuPB4E7wKxtKx/Hbf31/Yq1K7ZpupIPapH+lazxs
-	vUE9JuAjx1EHJST88Io2a6J/VCK0qXscib5zFMBb39NIWvrjIcNm479g/vDcKTfw9yAu3bIiL71yU
-	PfZNCxzmRneoOxTiriTl9Agr9TBnUjrlPOoRlSJNsuzFk74ojgemj5UTluybDRJZ4eilXej99p9n8
-	qMJiXnNQ==;
+	bh=tA3QjSCigQ8q8wip9gFTKQkaEIdBJK1A3l6+t1K7Bv0=; b=HrxeqWSEKKn1lVDIygKtY60Qw/
+	ZK1noAP9cqCDYvHHKLDLNJCZObfbh61tXhkXF3G51yGm8hky0GINGXgyCnsXKACg4C5iwzz3eoeq9
+	Xku3RnqhE34iqwc82Yf9Cwn0xo9pYna5bjf6E3Q0XI+AB2KgHchN+sP6lA5BOXJgnqzPKkkQKBoTU
+	gEf/ToACgdze9peu3LUOpYYMBTI6zmHoWSromKcZpmCUU3zW09hfxNUjtROPgWXX1NQdBjUYqkHNK
+	Fmf5H8V9gKTYp6LK9rXRwlzdFDFP2gP/hFg5wn4Z6Y3WWHYX9r2EbzLo0x+iytH+XMkeKFiAgWK+o
+	24urYxow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVwEC-001tH1-0Y;
-	Tue, 15 Aug 2023 15:45:04 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1qVwEH-001tKL-2b;
+	Tue, 15 Aug 2023 15:45:09 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVwE6-001tBf-0B
+	id 1qVwE9-001tD5-1V
 	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Aug 2023 15:44:59 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-68706b39c4cso3929186b3a.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Aug 2023 08:44:55 -0700 (PDT)
+	Tue, 15 Aug 2023 15:45:03 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-6874d1c8610so3627819b3a.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Aug 2023 08:44:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1692114295; x=1692719095;
+        d=chromium.org; s=google; t=1692114298; x=1692719098;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=xmLPugTGz1sgSy2J/v99Dk0J3o8zfc9d+fDcwlxsiEo=;
-        b=hPdGnKSUgljhFqFsgGLQzZfUk5Zd5v3vXX+lFx5n/q9s02AfGmaHSqc010GOa/OM3f
-         aNaofPdOvBFPFjUmGdt3gDNvOc1wV1TJoZpvyVHeBIsK21QCzXmvuoygHnn6HnbssZcB
-         EsnO0+NmyNRllTqEzVtLDpy5CY61OZisnow1Q=
+        bh=tA3QjSCigQ8q8wip9gFTKQkaEIdBJK1A3l6+t1K7Bv0=;
+        b=ejBR2jtUerzx5wnrj86G8N+bYfois34YCppqR75oLTPLq7/QzDutph+WKgbHb9TqkQ
+         BRwskwQ64WTnA2SvrsJQrwU2R/Yf0P8FKH2BrA2mU1DIq1lqfoHLYujw3hlFqPKexAE0
+         PjCMKLHX9eH8M7wWAqubZGqfJFjytNf2qHyGE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692114295; x=1692719095;
+        d=1e100.net; s=20221208; t=1692114298; x=1692719098;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=xmLPugTGz1sgSy2J/v99Dk0J3o8zfc9d+fDcwlxsiEo=;
-        b=CLwbnahkD06B/0UgCyszIsZ/otl8IW2QrkgqpsD/nzrU1SXuXMyUBNDib7Sv4wYba6
-         4OWzLdWfSZcy+dVyjiwcHKd8d8QnkoLlbnMtcR41UXSdLzB4iPE1bzfeYwWKiM7vsypE
-         TK/oprfMFBjsl/E0EfiIvoRk9zlGhotKFgN9FrGO5DYVUox1k3s//txVRwLHk/IuNXvo
-         Hq+A6KNJqRzwu5zAlnGOjLd8z6PCzNm+7v6tlLoJ/GEi1YOR5KDOQDy+IkNIxcujRF07
-         IyqFa6Ijees1xii6ar1XcBlIdOugGzz5V/9Q9T5DcbMR+7/lCWQ2qGrFUAgojJ+e/i97
-         /TfA==
-X-Gm-Message-State: AOJu0YxECl9xtpUZxG4tNrVpHDzAMyr12pNXg94sEBMFDFHidKcYFGvC
-	3ZXXt8zUSjdO3+OlDP1zgAs4AA==
-X-Google-Smtp-Source: AGHT+IFGfwXqvhlQgK3dZJYanVm1WhEoRWmNzCEnvvClZuT/nup6kWHRH9gSZE0NGJjts8ZfBG+bbA==
-X-Received: by 2002:a05:6a00:1a50:b0:668:73f5:dce0 with SMTP id h16-20020a056a001a5000b0066873f5dce0mr12705130pfv.29.1692114295080;
-        Tue, 15 Aug 2023 08:44:55 -0700 (PDT)
+        bh=tA3QjSCigQ8q8wip9gFTKQkaEIdBJK1A3l6+t1K7Bv0=;
+        b=VyOWOmf/zTCMC40oNCL3hfirKMb5EcisKJ8Hr48RK2VsWYhXB/F2hkOjTRwxxCL586
+         bHxm3vjMkOOCKA+TdsuT1YFiPqkHCciuF3tX7pxOqG1oJ1DB06FDoPKNOTVlCEluOw1B
+         17wND2jg/1BzlnjxAi5O3j8Xu8C/lqfNz3wGOhxKw/F9c42loMlezvWLx6hl05ZEeXO2
+         Sm4j9h+d/GcmGqbP5dZvWwrtXZjf77jTW+ZWXCwT2x+wMTziHHnEZaLwczRmpCI+TwUD
+         up2uiz6fzvG5sqoB30K5+7VwPJ47HW4OlUKJgoX0Cxz7DpQ8C2GZaPP0kZ7kOFk4yAXg
+         cAUw==
+X-Gm-Message-State: AOJu0YxK2pwjk9U8nmAYTVX/3B+0P2i/RgyzbPSnsScMuc3t+Z9yhoKj
+	H/p12NBsnyaxTI8xAyZXZS7dTg==
+X-Google-Smtp-Source: AGHT+IG+MhhXs3J/eE7KIJtSsSOonQIqrRHLUlpGdM77zZQi1lncYBUpQPdXQrlw7WkocLYr2AbghA==
+X-Received: by 2002:a05:6a00:2305:b0:687:2fa9:532d with SMTP id h5-20020a056a00230500b006872fa9532dmr11655270pfh.17.1692114298463;
+        Tue, 15 Aug 2023 08:44:58 -0700 (PDT)
 Received: from hsinyi-z840.tpe.corp.google.com ([2401:fa00:1:10:40cf:3807:f8c8:2d76])
-        by smtp.gmail.com with ESMTPSA id n13-20020aa78a4d000000b0065e154bac6dsm9431247pfa.133.2023.08.15.08.44.52
+        by smtp.gmail.com with ESMTPSA id n13-20020aa78a4d000000b0065e154bac6dsm9431247pfa.133.2023.08.15.08.44.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Aug 2023 08:44:54 -0700 (PDT)
+        Tue, 15 Aug 2023 08:44:58 -0700 (PDT)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: Tudor Ambarus <tudor.ambarus@linaro.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -80,17 +80,17 @@ Cc: Pratyush Yadav <pratyush@kernel.org>,
 	cros-qcom-dts-watchers@chromium.org,
 	Andy Gross <agross@kernel.org>,
 	Konrad Dybcio <konrad.dybcio@linaro.org>
-Subject: [PATCH 2/4] mtd: spi-nor: sfdp: read disable-quad-mode property
-Date: Tue, 15 Aug 2023 23:31:53 +0800
-Message-ID: <20230815154412.713846-3-hsinyi@chromium.org>
+Subject: [PATCH 3/4] arm64: dts: mediatek: mt8183: disable quad mode for spi nor
+Date: Tue, 15 Aug 2023 23:31:54 +0800
+Message-ID: <20230815154412.713846-4-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.41.0.694.ge786442a9b-goog
 In-Reply-To: <20230815154412.713846-1-hsinyi@chromium.org>
 References: <20230815154412.713846-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230815_084458_098167_C1FDC76F 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20230815_084501_520781_331BB564 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,63 +105,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some flash devices, eg. gd25lq64c, enable quad mode by default after
-spi_nor_parse_bfpt(). However, the systems using these flash devices may
-required the quad mode to be turned off to use write protection or to
-avoid a potential short issue[1].
-
-Add a disable-quad-mode property in devicetree that system can use it to
-override the quad mode status parsed from BFPT.
-
-[1]https://www.elm-tech.com/ja/products/spi-flash-memory/gd25lq64/gd25lq64.pdf
-page 13
+Some of the SKUs are using gigadevice gd25lq64c flash chip. The chip
+default enables quad mode, which results in the write protect pin set to
+IO pin. In mt8183 kukui, we won't use quad enable for all SKUs, so apply
+the property to disable spi nor's quad mode.
 
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- drivers/mtd/spi-nor/core.c    | 5 +++++
- drivers/mtd/spi-nor/core.h    | 1 +
- drivers/mtd/spi-nor/debugfs.c | 1 +
- 3 files changed, 7 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
-index 614960c7d22cc..dcf4ff46c37ae 100644
---- a/drivers/mtd/spi-nor/core.c
-+++ b/drivers/mtd/spi-nor/core.c
-@@ -2847,6 +2847,11 @@ static void spi_nor_init_flags(struct spi_nor *nor)
- 	if (of_property_read_bool(np, "no-wp"))
- 		nor->flags |= SNOR_F_NO_WP;
- 
-+	if (of_property_read_bool(np, "disable-quad-mode")) {
-+		nor->flags |= SNOR_F_DISABLE_QUAD;
-+		nor->params->quad_enable = NULL;
-+	}
-+
- 	if (flags & SPI_NOR_SWP_IS_VOLATILE)
- 		nor->flags |= SNOR_F_SWP_IS_VOLATILE;
- 
-diff --git a/drivers/mtd/spi-nor/core.h b/drivers/mtd/spi-nor/core.h
-index 9217379b9cfef..b06bd97668f3a 100644
---- a/drivers/mtd/spi-nor/core.h
-+++ b/drivers/mtd/spi-nor/core.h
-@@ -133,6 +133,7 @@ enum spi_nor_option_flags {
- 	SNOR_F_RWW		= BIT(14),
- 	SNOR_F_ECC		= BIT(15),
- 	SNOR_F_NO_WP		= BIT(16),
-+	SNOR_F_DISABLE_QUAD	= BIT(17),
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index 6ce16a265e053..8e4761e2b8ff4 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -877,6 +877,7 @@ w25q64dw: flash@0 {
+ 		compatible = "winbond,w25q64dw", "jedec,spi-nor";
+ 		reg = <0>;
+ 		spi-max-frequency = <25000000>;
++		disable-quad-mode;
+ 	};
  };
- 
- struct spi_nor_read_command {
-diff --git a/drivers/mtd/spi-nor/debugfs.c b/drivers/mtd/spi-nor/debugfs.c
-index 6e163cb5b478c..c17451ae0931a 100644
---- a/drivers/mtd/spi-nor/debugfs.c
-+++ b/drivers/mtd/spi-nor/debugfs.c
-@@ -28,6 +28,7 @@ static const char *const snor_f_names[] = {
- 	SNOR_F_NAME(RWW),
- 	SNOR_F_NAME(ECC),
- 	SNOR_F_NAME(NO_WP),
-+	SNOR_F_NAME(DISABLE_QUAD),
- };
- #undef SNOR_F_NAME
  
 -- 
 2.41.0.694.ge786442a9b-goog
