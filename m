@@ -4,111 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69EC1C0015E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 19:19:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D2F8C001B0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 19:39:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HP5r8l+N/G++84rGRD6TPetR/Ye7KhL9+cTCQpuI0nU=; b=TPUbZnxi5yvEopkkg6J9tfxqLd
-	w2o0G3a5Ll3v4C8dd0Nkqk1gI0zsTMhKzvxzDyMAy5A0CISdJNlg1ougPfRcbKuA0PRN2+QNwAb30
-	iRz2MTNiccVioe4OuuagSxCZsW1gAUzXgCJTi9Qi8touwePciXP+vRkQqUrfUfCaFLZTxeMjArLSz
-	d7zjeG74Nz7ADgfTRhMWH4Qw8zuLbBU6DYL+pBefISP73ynRNzY6RbDHX0r5boEl83GzOy2tjKDD2
-	BbuwvQxfKGxzXx+JtZtbR5AechjhvEjboX7rb4QQbj7bW2gigSpjXvCM55wnfrm0QM2Iwtv+0ibGV
-	Emyk7jog==;
+	bh=7QUc0x0pjPpKWnmgAca1QOq5TW3L4ejfm50N+84Kmuc=; b=nU5NFdRtWMkXqK4wIJuIFoiNvy
+	iIbv7Xb2Y7hYD6i5kGBe3whmgsPcvmhK0TbVtEMcTADP6ighaNHna5bgDLuV1xmv6Jj0V08X730dJ
+	j6p6T+TFiDLqkHdia/vvZr9jBUIob63AppcsefGpfQn5mjkbmpD9BLp3384p0c5/0iZkJCXyNmTfM
+	L7j5oE9VNXqG6+YnDqB+HJl2WnKzWuyH8NDhaP4vfM4iF6fv4AP8A9bJTMN7my73nWqo+0E9Qyr08
+	IrSB7TAWWMNyvVlgJYctgO9gg5nyOjfrjaYBIWAPpcO+ohw64TrePWMyQEKopccaeOWX/HssISeNY
+	oOa3hBxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVzZy-002Inl-2r;
-	Tue, 15 Aug 2023 19:19:46 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1qVzsx-002KZG-0Y;
+	Tue, 15 Aug 2023 19:39:23 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVzZx-002InR-2H
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 15 Aug 2023 19:19:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=HP5r8l+N/G++84rGRD6TPetR/Ye7KhL9+cTCQpuI0nU=; b=cFNVG/Ywn30VGqGAORpcF2hl7P
-	OSh7/VJnezRg3FnqmGuR7qlRmfjysCjvkrtwGGzmYvj5rEB25UplmlP8iwRguCf6QmLQgiJ62xYDa
-	N93OaJf6G/q4TPQWwUxRF4xnCbwCdDgEjb3kXnMSY/E03LJGsP/6cvt75mKl5NU4a5k7pZoWP1LMU
-	tZKu6awjXyn7bZbB6PECBVi2LWeH6QeIwM0UXKn+zN0Vf3vu61GwhLXDRhl4kazuVkR8qsYeOPqto
-	5u+BYdXOGFZ1C8Itkr5jEYBC73LxB+Fu8mjvLXBG9ZfzIVKitJFV4hGJVIrjH8hhoXCejoqw3Tkfj
-	evcWrsOA==;
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVzZs-00C2cI-0a
+	id 1qVzst-002KYO-1k
 	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Aug 2023 19:19:44 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-99c1d03e124so708266966b.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Aug 2023 12:19:38 -0700 (PDT)
+	Tue, 15 Aug 2023 19:39:20 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-523bf06f7f8so6035066a12.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Aug 2023 12:39:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1692127177; x=1692731977;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=HP5r8l+N/G++84rGRD6TPetR/Ye7KhL9+cTCQpuI0nU=;
-        b=lUhNrtoERba3aorZadoUgJp9sCu3IbGKVivMwNrWnTG0yELOzp3fLhGA5srP0IpIxm
-         KBoGNzrF/crrZmebYELgHIEkxozcxxtEo3/rzUVJl78TFfL5q+sms/p0Ih6sWJ+yxmH0
-         WmIOggw4UWG9gVNckTrS8LMy+qNRpFpYXwv9toqdR3AU/V2kkKYXc6ipFkHJi+GnN+YA
-         3BOow5pnOGq74dIyo5z54P1Hbl7aOhsUNecfcx1JoHcYimBY7saJsaYLgWe7FBtoj7V3
-         IkqlbQA1sRa6r/wQa1WAPvD9lQm9WsBzLRoXl7pXOnic75zxJubcIxMOafFzX2CF3F8z
-         DkFQ==
+        d=chromium.org; s=google; t=1692128355; x=1692733155;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7QUc0x0pjPpKWnmgAca1QOq5TW3L4ejfm50N+84Kmuc=;
+        b=epkn3nESY5n3HxS7FqV7X+dZmCrr567ksE1leWFQXG6a2VYZ3kIFukk34i7A4n2KTn
+         XKHaP44TIML7qAi0CLOrJpJnBDADxItCyFs80OYIx/3pnomlFbS3Bza8ebqn5Rqi6+GK
+         Q4eY6mUSP90fphwRqNaFmr+mtcHJamid/Bczw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692127177; x=1692731977;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HP5r8l+N/G++84rGRD6TPetR/Ye7KhL9+cTCQpuI0nU=;
-        b=KorRrsg00lU/FpapVilQyAeuwcoNJklWQ2SYHCSF4Cey3R1Q6AbhHoOaTJTCYu54QU
-         oQ5yV/4P10TaldBB7artRpb2TGhQll6YJGiydn0sWhQVzwPOqXmiuocOAbKTKbDUayx4
-         WiLFcX+ZKDFNmm/8ln0zT0hsbTr19LcxUWo6sqXye6FHxlxmlIiLrY/rnXHUjfraNhr6
-         P9W/pv3GtIo/SXyLC6ZfYpnLxIbXjZoCSc2unnbjWUj890ZAKRD+U+HvYlxVtNTF8Ri2
-         XvdpkEPL2j4yDMCmIoykGF3SiV1ukPNBIQKdw7usyXWQtrgbB783xdvvctaUpOmJA2wR
-         263A==
-X-Gm-Message-State: AOJu0YxALR67Ehh3foe06973azlX4n/sqDm6skOEyUkB1ySJiJ73051w
-	yxdlLCAk2qEZySKLmPn8e/wbfA==
-X-Google-Smtp-Source: AGHT+IEamhO+Jl+q7/ydr+FDFDZuF0BIJhDmzs5q+uIy0rMFYS3cNVnuKTzqQrGnKGFA2D7kUp1BAQ==
-X-Received: by 2002:a17:906:2215:b0:99c:47a:8bd5 with SMTP id s21-20020a170906221500b0099c047a8bd5mr11216606ejs.65.1692127177101;
-        Tue, 15 Aug 2023 12:19:37 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.214.188])
-        by smtp.gmail.com with ESMTPSA id ov10-20020a170906fc0a00b00993cc1242d4sm7360694ejb.151.2023.08.15.12.19.34
+        d=1e100.net; s=20221208; t=1692128355; x=1692733155;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=7QUc0x0pjPpKWnmgAca1QOq5TW3L4ejfm50N+84Kmuc=;
+        b=TOaIlGlxhUFH/vBaSITOUXZfbBatl6Yr2p37YG1+aOgdXyaGbdJ54ol5sIVjts/1R6
+         auUe+I9CM/G351mCpVQyVNHOs7K8aiCpdCd5DySVrL/8x/rM9nCbUqOqnrRLaFZy5x2w
+         o0/yb3QWG0MjzQuhL+c9aV1e+ldnVF7fT98Ub8iTDe2PlqG6gtCU9RV4IVHxPojlq/WR
+         XxfpdaQhtKc5FOe/IxPEBr5uiLwC1ndERDDxl38DhAxaBbc7U1cU3sgyy0ZFXJnvWsqF
+         UTA9HvFDutMnrE8QKRfkh/VfnCER1DBGk0UFwKr2QGzarGymRs/+vF0Ir2LYNp5OYE0+
+         i/DQ==
+X-Gm-Message-State: AOJu0YzvqRQApXLxS7RbI089A4BDVA7i3wFI40OErQcJ6szarKhxL8os
+	8jrxhtKL1M0jAQGodglyF5UjfKIkcCISoJMr+2Do3bSb
+X-Google-Smtp-Source: AGHT+IEC7cAUwOqDnO1mbIhjlRPermwXJGzMyZW8tv1a4yamwaLy9k9B0BYjU1x7A2sr0/acPJMcMA==
+X-Received: by 2002:a05:6402:20c:b0:522:2111:1063 with SMTP id t12-20020a056402020c00b0052221111063mr10424320edv.18.1692128355354;
+        Tue, 15 Aug 2023 12:39:15 -0700 (PDT)
+Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com. [209.85.128.53])
+        by smtp.gmail.com with ESMTPSA id be18-20020a0564021a3200b00523d5d9bf1bsm5567702edb.23.2023.08.15.12.39.15
+        for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 15 Aug 2023 12:19:36 -0700 (PDT)
-Message-ID: <fb85c288-2ea9-3343-ff19-cd58940b44ec@linaro.org>
-Date: Tue, 15 Aug 2023 21:19:34 +0200
+        Tue, 15 Aug 2023 12:39:15 -0700 (PDT)
+Received: by mail-wm1-f53.google.com with SMTP id 5b1f17b1804b1-3fe2a116565so1895e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Aug 2023 12:39:15 -0700 (PDT)
+X-Received: by 2002:a05:600c:35c7:b0:3fd:e15:41e3 with SMTP id
+ r7-20020a05600c35c700b003fd0e1541e3mr24772wmq.2.1692127947638; Tue, 15 Aug
+ 2023 12:32:27 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Subject: Re: [PATCH 0/4] Add a property to override the quad mode
-Content-Language: en-US
-To: Hsin-Yi Wang <hsinyi@chromium.org>, Michael Walle <michael@walle.cc>
-Cc: Tudor Ambarus <tudor.ambarus@linaro.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Bjorn Andersson <andersson@kernel.org>,
- Pratyush Yadav <pratyush@kernel.org>,
- "Miquel Raynal )" <miquel.raynal@bootlin.com>,
- "Richard Weinberger )" <richard@nod.at>,
- "Vignesh Raghavendra )" <vigneshr@ti.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- cros-qcom-dts-watchers@chromium.org, Andy Gross <agross@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>
-References: <20230815154412.713846-1-hsinyi@chromium.org>
- <202A0C36-D1F6-4BB4-BDEC-F36A76B757A2@walle.cc>
- <CAJMQK-iw7ikyHKPPC8+hnpXuRq-_nq_N+21BKgWxD2nx=vAeJA@mail.gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CAJMQK-iw7ikyHKPPC8+hnpXuRq-_nq_N+21BKgWxD2nx=vAeJA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20230815154412.713846-1-hsinyi@chromium.org> <20230815154412.713846-5-hsinyi@chromium.org>
+In-Reply-To: <20230815154412.713846-5-hsinyi@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Date: Tue, 15 Aug 2023 12:32:15 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=UvDZOgJ0TxeBYGgDMqSUYUX9am+QAMEXpRQ0C-Hh=kVw@mail.gmail.com>
+Message-ID: <CAD=FV=UvDZOgJ0TxeBYGgDMqSUYUX9am+QAMEXpRQ0C-Hh=kVw@mail.gmail.com>
+Subject: Re: [PATCH 4/4] arm64: dts: qcom: sc7180: disable quad mode for spi nor
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Tudor Ambarus <tudor.ambarus@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Bjorn Andersson <andersson@kernel.org>, 
+	Pratyush Yadav <pratyush@kernel.org>, Michael Walle <michael@walle.cc>, 
+	"Miquel Raynal )" <miquel.raynal@bootlin.com>, "Richard Weinberger )" <richard@nod.at>, 
+	"Vignesh Raghavendra )" <vigneshr@ti.com>, Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	cros-qcom-dts-watchers@chromium.org, Andy Gross <agross@kernel.org>, 
+	Konrad Dybcio <konrad.dybcio@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230815_201940_487274_9D1787B5 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20230815_123919_583130_18B46648 
+X-CRM114-Status: GOOD (  16.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,37 +104,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15/08/2023 19:21, Hsin-Yi Wang wrote:
-> On Tue, Aug 15, 2023 at 11:59 PM Michael Walle <michael@walle.cc> wrote:
->>
->> Hi,
->>
->>> On gigadevice gd25lq64c, the quad mode is enabled after BFPT is parsed.
->>> According to datasheet[1], Quad enable (QE) bit needs to be set to 0 to
->>> use write protection (WP) pin. It also recommends setting default value of
->>> QE to 0 to avoid a potential short issue.
->>
->> So you are using either dual or single io mode. Why can't you use the device tree property spi-{tx,rx}-bus-width?
-> 
-> I tried setting spi-tx-bus-width and spi-rx-bus-width to either 0 or 1
-> and WP still doesn't work.
-> For this chip, quad_enable will be set to spi_nor_sr2_bit1_quad_enable
-> (QER flag is BFPT_DWORD15_QER_SR2_BIT1_BUGGY)[1]
-> 
-> spi_nor_write_sr_and_check() calls
-> spi_nor_write_16bit_sr_and_check()[2] and the function sets QE bit if
-> quad_enable is not NULL.
-> 
-> [1] https://elixir.bootlin.com/linux/latest/source/drivers/mtd/spi-nor/sfdp.c#L575
-> [2] https://elixir.bootlin.com/linux/latest/source/drivers/mtd/spi-nor/core.c#L879
-> 
-> Setting spi-{tx,rx}-bus-width still falls to this function and cases.
+Hi,
 
-with tx/rx bus width = 2, how quad mode is still possible? IOW, why do
-you need new property? You wrote here about driver, but I ask about
-bindings.
 
-Best regards,
-Krzysztof
+On Tue, Aug 15, 2023 at 8:45=E2=80=AFAM Hsin-Yi Wang <hsinyi@chromium.org> =
+wrote:
+>
+> Some of the SKUs are using gigadevice gd25lq64c flash chip. The chip
+> default enables quad mode, which results in the write protect pin set to
+> IO pin. In trogdor platforms, we won't use quad enable for all SKUs, so
+> apply the property to disable spi nor's quad mode.
+>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> ---
+>  arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi b/arch/arm64/bo=
+ot/dts/qcom/sc7180-trogdor.dtsi
+> index 5a33e16a8b677..0806ce8e86bea 100644
+> --- a/arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi
+> +++ b/arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi
+> @@ -436,6 +436,7 @@ flash@0 {
+>                 spi-max-frequency =3D <37500000>;
+>                 spi-tx-bus-width =3D <2>;
+>                 spi-rx-bus-width =3D <2>;
+> +               disable-quad-mode;
 
+This seems unnecessary. Unless "tx-bus-width" or "rx-bus-width" is 4
+then Quad SPI isn't enabled. You don't need an explicit property since
+this can just be inferred from the tx and rx bus width.
+
+-Doug
 
