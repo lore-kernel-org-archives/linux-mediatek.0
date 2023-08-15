@@ -4,93 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40160C04FDF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 15:45:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E2DEC0015E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 15:59:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gJmTT5Birsmw3IffSKTzNizstUWs73hZ2XtnCyouma4=; b=FiaXDgY6QL4UvzzCkIEFStTu5s
-	jyqFXRYP9Ch/U3x4ER3U3wfWJNNpTkBHC1hqSDaS7B19aMBnDJcrMnwAiUVHixYg358KaMCrCzj8k
-	HJNKedj3/aN07458EzR4pkgaubywV2tCvszZHZI3MP7lrtQVcyqXBXcMOmEm2ssj3H/D3W15Q17sA
-	v9ZNBbz3NzwgqyAnUEPB7BZrS+rQ/BgrPTXWngD0Kqv4gjTtNmkjAcowOHFRp1dx7CIJwErLp1v/l
-	n3HP5p+ZE6OO7lwPiSxgnewx1Omqisshv6OX93+5dROuikJFKdAnLImRVkHIXCr6bY6wTdr8G3s/T
-	i15T8W8g==;
+	bh=74PPELyfTdRJMzG/844z25bsJa3XCvyEnvQBQNAdiaY=; b=1s3ktda3pzFM/fV6VS1RRO9xG7
+	YNp++XrBE1fLFzPtqsxEZi9bp/GmB3OzUW3lqTCCDua373SQYaLfWUBY6vXEpxBVfErdyZbICGpYG
+	fkuW9EpECXNnVoe/DTBWfjYwb1ii2WZQKFN+SLAzWMLoy7M9vij7vKECalq619BenfsVo6GJgqVTA
+	NTRgkIED7yss3uTHxhj248Wl7IuNwIpDKbp+7+qNGSlpZxXODsYVG3zvddTPxL0TqNLIq/zaWiqsA
+	l0Y30pOblvVr3EsKKKSYyhblncPyI7DPYsdqZJBp3ymcx/FbxVvT+OdFx6wbzSBR8xzAroWr2s4IF
+	+bsHemZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVwEI-001tKh-0P;
-	Tue, 15 Aug 2023 15:45:10 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1qVwSS-001vRk-0A;
+	Tue, 15 Aug 2023 15:59:48 +0000
+Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVwEA-001tFZ-1H
-	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Aug 2023 15:45:03 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-6886d6895a9so369143b3a.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Aug 2023 08:45:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1692114302; x=1692719102;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gJmTT5Birsmw3IffSKTzNizstUWs73hZ2XtnCyouma4=;
-        b=EmtRFWNxOZBhCSvbwn/tqeAcE99fLpxaVbN7woJu/mWoDOtjxym1jTZkxHhu07Rkyt
-         aRrgPSp/P/3sucNU9SeuOykjKSQh3VlqmEj8eU7wU4xRqA6huNIOrfmc4oNT57mf+z5F
-         6gU0Vk6XMHXfclV87Ur5S7pFb+TluJkDGSF1w=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692114302; x=1692719102;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=gJmTT5Birsmw3IffSKTzNizstUWs73hZ2XtnCyouma4=;
-        b=b3MtNvZYap3+udsjyE3iY2ob10oP1a8UKjU0dgp/mPnk1huwnuxD+Kwi5IeXafipGr
-         1MM7B1Q/4O6tCiQc42VfNQLpnBg3rh90yYN5GxpNJD47ZNl1wkSO5GKmqsDp67oMP97P
-         8E9SS65peVNg0ImLTruNyWaIfBng/eedrfL5//+W7DNf/bGC3JFcYnx6Y7gUFzWhRxPg
-         xDnSulXRmMgD4CVYJSea55r6wgHFZFoK128lMpdJ6zezscQGzF2JLLGFuNJaKr8HApQg
-         i2os4jBBsoj1O3Lmq1r3on/sDtG6G9v4WoC8sVJPkVa/rueBmyXSjL9RPXGsovR/+XpH
-         jWaA==
-X-Gm-Message-State: AOJu0YzMHZtaS0meyMX/eRw6YpOPg7AxnpeftASRlQYS6gQOzpeDkwWq
-	05BPiWQsVLskkxgLxB0qolWZGQ==
-X-Google-Smtp-Source: AGHT+IF1i0bsPTgkJk9HYJHsQ+5ia/nkZZCBU7zl2is+oYE8IhKDNs3GjUWaIoKqVbHs5puDt5BuXg==
-X-Received: by 2002:a05:6a00:10cb:b0:688:48be:50b4 with SMTP id d11-20020a056a0010cb00b0068848be50b4mr1899247pfu.16.1692114301925;
-        Tue, 15 Aug 2023 08:45:01 -0700 (PDT)
-Received: from hsinyi-z840.tpe.corp.google.com ([2401:fa00:1:10:40cf:3807:f8c8:2d76])
-        by smtp.gmail.com with ESMTPSA id n13-20020aa78a4d000000b0065e154bac6dsm9431247pfa.133.2023.08.15.08.44.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Aug 2023 08:45:01 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Bjorn Andersson <andersson@kernel.org>
-Cc: Pratyush Yadav <pratyush@kernel.org>,
-	Michael Walle <michael@walle.cc>,
-	"Miquel Raynal )" <miquel.raynal@bootlin.com>,
-	"Richard Weinberger )" <richard@nod.at>,
-	"Vignesh Raghavendra )" <vigneshr@ti.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	linux-mtd@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	cros-qcom-dts-watchers@chromium.org,
-	Andy Gross <agross@kernel.org>,
-	Konrad Dybcio <konrad.dybcio@linaro.org>
-Subject: [PATCH 4/4] arm64: dts: qcom: sc7180: disable quad mode for spi nor
-Date: Tue, 15 Aug 2023 23:31:55 +0800
-Message-ID: <20230815154412.713846-5-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.41.0.694.ge786442a9b-goog
+	id 1qVwSP-001vQR-0D;
+	Tue, 15 Aug 2023 15:59:46 +0000
+Received: from [127.0.0.1] (ip-109-43-115-51.web.vodafone.de [109.43.115.51])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 6B6F53D5;
+	Tue, 15 Aug 2023 17:59:36 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1692115176;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=74PPELyfTdRJMzG/844z25bsJa3XCvyEnvQBQNAdiaY=;
+	b=2LurkNY/UP++tp7HyhcQAep+uOzh7mSWOIHO4I7wCdCKHTrppFFdvhjvrgs+ZrKui2E9xm
+	JzvuT20uC9Zqh/+HN758R4LUWl8W3jqtbPyGvi2lWQol8JiWqVxuAeiF37/yk4M2ea73e7
+	aST0SfYvNKisMulDXoy3rP7N4/V3meWHvzjvZ3KjmToa/WEbAs98POlxnc48ddolyzklhD
+	2tn1oQ9akdoCL7IySSv+FNIigyHN+mvVecJ4hOCrPYm02RjxXEMaiIwd7m0LHhLhMMYnLI
+	rBdaW6KeyIoU13hl8/44rNf7/hK9gozl9G2KXX/uAdh5QDeetvIsl5ILnk2m/g==
+Date: Tue, 15 Aug 2023 17:59:34 +0200
+From: Michael Walle <michael@walle.cc>
+To: Hsin-Yi Wang <hsinyi@chromium.org>, Tudor Ambarus <tudor.ambarus@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <andersson@kernel.org>
+CC: Pratyush Yadav <pratyush@kernel.org>,
+ "Miquel Raynal )" <miquel.raynal@bootlin.com>,
+ "Richard Weinberger )" <richard@nod.at>,
+ "Vignesh Raghavendra )" <vigneshr@ti.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ cros-qcom-dts-watchers@chromium.org, Andy Gross <agross@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>
+Subject: Re: [PATCH 0/4] Add a property to override the quad mode
+User-Agent: K-9 Mail for Android
 In-Reply-To: <20230815154412.713846-1-hsinyi@chromium.org>
 References: <20230815154412.713846-1-hsinyi@chromium.org>
+Message-ID: <202A0C36-D1F6-4BB4-BDEC-F36A76B757A2@walle.cc>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230815_084502_440666_219E93B9 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20230815_085945_337982_C5FDFD2D 
+X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,29 +88,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some of the SKUs are using gigadevice gd25lq64c flash chip. The chip
-default enables quad mode, which results in the write protect pin set to
-IO pin. In trogdor platforms, we won't use quad enable for all SKUs, so
-apply the property to disable spi nor's quad mode.
+Hi,=20
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+>On gigadevice gd25lq64c, the quad mode is enabled after BFPT is parsed=2E
+>According to datasheet[1], Quad enable (QE) bit needs to be set to 0 to
+>use write protection (WP) pin=2E It also recommends setting default value=
+ of
+>QE to 0 to avoid a potential short issue=2E
 
-diff --git a/arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi b/arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi
-index 5a33e16a8b677..0806ce8e86bea 100644
---- a/arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi
-+++ b/arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi
-@@ -436,6 +436,7 @@ flash@0 {
- 		spi-max-frequency = <37500000>;
- 		spi-tx-bus-width = <2>;
- 		spi-rx-bus-width = <2>;
-+		disable-quad-mode;
- 	};
- };
- 
--- 
-2.41.0.694.ge786442a9b-goog
+So you are using either dual or single io mode=2E Why can't you use the de=
+vice tree property spi-{tx,rx}-bus-width?=20
+
+>Add a disable-quad-mode property in devicetree that platform can use it t=
+o
+>override the quad mode status parsed from BFPT to use write protection=2E
+>
+>[1]
+>https://www=2Eelm-tech=2Ecom/ja/products/spi-flash-memory/gd25lq64/gd25lq=
+64=2Epdf
+
+should be a link on the vendor Homepage if possible=2E=20
+
+-michael
 
 
