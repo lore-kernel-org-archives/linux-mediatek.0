@@ -4,84 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DE9EC001B0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 09:54:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86EB6C04A6A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 12:14:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pPWKIi3cCAcUYZ79Tqrjq5RSyR+Am87+BzKT/5/LTjE=; b=J6aDZTYtmHfD7KE7uOQ8pnOFsb
-	0jkJ4OjN1RByfFFOLbYI8FgQfJMKm9R7VWB73Mjns+WE15QpJlftO1Sqj7ut6WnE59YICwwEquQUQ
-	UdTSEv3QSk8cooR+NvrNi9uLE3ElvWiGXmrJgazCqEodBiqLqPISMQTMadN+jGeQ7R43+e4jB/Ji0
-	mSzVIlGIb03oI9OycdG5OagGKipF6eRmEwdpIU5s+ZyBYW9BEEteyCl2xLvAJKuTpJUCDR9q8PXEV
-	EzpQrdOPLQTTLii/Bn9/Ev9qYx/nMm6egdFq2l/JBUTa86FBjqIfPN0NXrzV/kifS0wlAbx604VWX
-	tRKuIJXg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tyXMRhOdLAsflsZxbsHhFbM6pTunAygx9wUZGK4+va4=; b=WPgJ1HhCVCUj+zDw0S6ujifKlp
+	Sa0896hHy7ZkLrNQtf94rtMQFhVc/a9J2bBpN8IrPtrhNcGN8m591Y/3GC2ib81jSTUZ/iAh2Siew
+	x4E4SQyOD92H2Fza7NRspm1kh1nqBhcK960dxH55ekgPdJdXi5X87O93ctCKnSxB3jp8WKkJqbnRy
+	3GRU5ojEUgvVTjYNwUbB+q4oCVW59WBY07o1dRmePhWsCsSoZm5OhmqSj45BNbnDvj3h+DEN8Kfcr
+	z6On6Pa3owPFw7cAfNeJdl4rwz5I9aNu3lBmq0HfjpZ+/717fQHRtguxYDMZ06f156XKSTziaK4Bd
+	yfUO8OGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVqkS-001FBQ-2O;
-	Tue, 15 Aug 2023 09:54:00 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qVswp-001afW-0x;
+	Tue, 15 Aug 2023 12:14:55 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVqkQ-001FAd-03;
-	Tue, 15 Aug 2023 09:53:59 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A9A00653E1;
-	Tue, 15 Aug 2023 09:53:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6926DC433C8;
-	Tue, 15 Aug 2023 09:53:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1692093235;
-	bh=kvaqJ2sBEkbN7oMgKvzp6aMeCbQ6lN6aEQjyWQJ5X6s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Uqw5AIwCq5p7sCinwmmp/Lqz+8nGO5myfGcZEaCsclPS+/Dq5OkqZIWvlAsVY8uxR
-	 FL5dgh/XWOTklxmPq9FDZW5xT31bE/WIg6siTr5DLREiB2Zv7srizXhQIOcqQiDaS4
-	 PCZjYG6f3/OWUWTxkKEwh7oAlcEAZU/xrZ/iMoTlKvu1SjYYeqP4Uf5CwHYCvOgzjK
-	 rYulG/3FrqS9u8zCuJPbKQNYtQMWuPv1dS8t0eV05/iK8WzCJTpWThBQjtR4cOKgrU
-	 qCM6KGWyF2pkR9NkX9uqoHqsfYuQ4rVzrshHKaBe0jrpTTYMdWS100Oykaz9q5eP8k
-	 GMSfRQ3v6Nhuw==
-Date: Tue, 15 Aug 2023 10:53:47 +0100
-From: Will Deacon <will@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Yi-De Wu <yi-de.wu@mediatek.com>,
-	Yingshiuan Pan <yingshiuan.pan@mediatek.com>,
-	Ze-Yu Wang <ze-yu.wang@mediatek.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Arnd Bergmann <arnd@arndb.de>,
+	id 1qVswm-001aeL-0j;
+	Tue, 15 Aug 2023 12:14:53 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-313e742a787so3127014f8f.1;
+        Tue, 15 Aug 2023 05:14:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1692101688; x=1692706488;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=tyXMRhOdLAsflsZxbsHhFbM6pTunAygx9wUZGK4+va4=;
+        b=cDfuUZCgemlPICUotl9bXplDlFIT8Js96e3xxyay4LerLktDGKE65nSJp2VcKmtFd+
+         y9z8GsltSobQ1/vXuZoc45l+lQDcjzQnMbDk3jvhWagXVlEKTYJJZNTXzCkmG9K2oPKT
+         m2ZVs8o9DIW1exS7ixATKr4s7xPO1R+qbmGYfZlFyZg4zmMTiWggRutp8j41InW/yytL
+         IVQAiYyhviYQZphveamqbRx6txd64xjktC4eLoblcXWmIv47pTirPEKuNaB4nKOWD5x8
+         s2RmV4ClSaZRgtlV6lt5L0ISjD/mYEoTDmPcXXwfrpIQpKAkqxNeYOYwP3Z/ss9Jf8bs
+         zsPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692101688; x=1692706488;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=tyXMRhOdLAsflsZxbsHhFbM6pTunAygx9wUZGK4+va4=;
+        b=Me9cEK4viwmGAD7ZvpFkj1xXB750Wg7mU1srHqd6ExqD030maJJVjiu4TsP/Q3gtpf
+         5SMZD2SSLOBcuwJoXvjFqsOdOnrmDf1NSgPv9nZRf6C3LLDI2zQ2CtyfNW35RSG5lTjm
+         CN2nxJd54mXBxocYMuDl7oIP5mpmaVV+TGm9eKh4Sh9rxGG8+nmcrXO/6Y7lRI6nbOsr
+         3oxIceb47E+If4kbpldUtEX2y2klWytaNW7EnZ+SdZeax20wpMTCY0aMx1rjB+1CAzXw
+         OZC6iod5Hb2glmULwMQv7AmEKar5xHCIDqZYnU87p4rNcaYCC8su6LMbqsA2xdCPJo4k
+         JdbA==
+X-Gm-Message-State: AOJu0YyTqpwkaTwVgvqHWOm3wygsH2h67qwo50pQaExN4nERr8yQXzyr
+	BNVLmVkwQlB6CJyXkf44II8=
+X-Google-Smtp-Source: AGHT+IEwMuqs1Ttrj7d7T5WLLsuOk7IcerlFOkms3rb9c6fPo6crXQko9+9C8C7o/m8iOzB7ZLRmew==
+X-Received: by 2002:a5d:5292:0:b0:315:a235:8aa8 with SMTP id c18-20020a5d5292000000b00315a2358aa8mr1497503wrv.2.1692101687680;
+        Tue, 15 Aug 2023 05:14:47 -0700 (PDT)
+Received: from localhost (cpc154979-craw9-2-0-cust193.16-3.cable.virginm.net. [80.193.200.194])
+        by smtp.gmail.com with ESMTPSA id 8-20020a05600c228800b003fbcf032c55sm20631723wmf.7.2023.08.15.05.14.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Aug 2023 05:14:46 -0700 (PDT)
+From: Colin Ian King <colin.i.king@gmail.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-arch@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	David Bradil <dbrazdil@google.com>,
-	Trilok Soni <quic_tsoni@quicinc.com>,
-	Ivan Tseng <ivan.tseng@mediatek.com>,
-	Jade Shih <jades.shih@mediatek.com>,
-	My Chuang <my.chuang@mediatek.com>,
-	Shawn Hsiao <shawn.hsiao@mediatek.com>,
-	PeiLun Suei <peilun.suei@mediatek.com>,
-	Liju Chen <liju-clr.chen@mediatek.com>,
-	Willix Yeh <chi-shen.yeh@mediatek.com>
-Subject: Re: [PATCH v5 04/12] virt: geniezone: Add vcpu support
-Message-ID: <20230815095346.GA11083@willie-the-truck>
-References: <20230727080005.14474-1-yi-de.wu@mediatek.com>
- <20230727080005.14474-5-yi-de.wu@mediatek.com>
- <20230811170054.GB3593414-robh@kernel.org>
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	linux-media@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH][next] media: mediatek: vcodec: fix spelling mistake "resonable" -> "reasonable"
+Date: Tue, 15 Aug 2023 13:14:46 +0100
+Message-Id: <20230815121446.742742-1-colin.i.king@gmail.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230811170054.GB3593414-robh@kernel.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230815_025358_118266_FB5DC0E2 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20230815_051452_287490_0D64F7FD 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,32 +98,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 11, 2023 at 11:00:54AM -0600, Rob Herring wrote:
-> On Thu, Jul 27, 2023 at 03:59:57PM +0800, Yi-De Wu wrote:
-> > From: "Yingshiuan Pan" <yingshiuan.pan@mediatek.com>
-> > 
-> > VMM use this interface to create vcpu instance which is a fd, and this
-> > fd will be for any vcpu operations, such as setting vcpu registers and
-> > accepts the most important ioctl GZVM_VCPU_RUN which requests GenieZone
-> > hypervisor to do context switch to execute VM's vcpu context.
-> > 
-> > Signed-off-by: Yingshiuan Pan <yingshiuan.pan@mediatek.com>
-> > Signed-off-by: Jerry Wang <ze-yu.wang@mediatek.com>
-> > Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
-> > Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
-> > ---
-> >  arch/arm64/geniezone/Makefile           |   2 +-
-> >  arch/arm64/geniezone/gzvm_arch_common.h |  20 ++
-> >  arch/arm64/geniezone/vcpu.c             |  88 +++++++++
-> >  arch/arm64/geniezone/vm.c               |  11 ++
-> >  arch/arm64/include/uapi/asm/gzvm_arch.h |  30 +++
-> 
-> I'm almost certain that the arm64 maintainers will reject putting this 
-> here. What is the purpose of the split with drivers/virt/? Do you plan 
-> to support another arch in the near future?
+There are a couple of spelling mistakes in pr_err error messages. Fix them.
 
-Thanks, Rob. You're absolutely right that this doesn't belong in the
-architecture code.
+Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
+---
+ .../media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c   | 2 +-
+ .../media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Will
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+index 9e744d07a1e8..6bbe55de6ce9 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+@@ -68,7 +68,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use
+ 
+ 		plat_dev = dec_dev->plat_dev;
+ 	} else {
+-		pr_err("Invalid fw_use %d (use a resonable fw id here)\n", fw_use);
++		pr_err("Invalid fw_use %d (use a reasonable fw id here)\n", fw_use);
+ 		return ERR_PTR(-EINVAL);
+ 	}
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
+index 5e03b0886559..9f6e4b59455d 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
+@@ -109,7 +109,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(void *priv, enum mtk_vcodec_fw_use
+ 		plat_dev = dec_dev->plat_dev;
+ 		rst_id = VPU_RST_DEC;
+ 	} else {
+-		pr_err("Invalid fw_use %d (use a resonable fw id here)\n", fw_use);
++		pr_err("Invalid fw_use %d (use a reasonable fw id here)\n", fw_use);
+ 		return ERR_PTR(-EINVAL);
+ 	}
+ 
+-- 
+2.39.2
+
 
