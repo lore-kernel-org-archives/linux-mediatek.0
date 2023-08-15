@@ -4,86 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86EB6C04A6A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 12:14:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6149CC001B0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Aug 2023 15:44:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tyXMRhOdLAsflsZxbsHhFbM6pTunAygx9wUZGK4+va4=; b=WPgJ1HhCVCUj+zDw0S6ujifKlp
-	Sa0896hHy7ZkLrNQtf94rtMQFhVc/a9J2bBpN8IrPtrhNcGN8m591Y/3GC2ib81jSTUZ/iAh2Siew
-	x4E4SQyOD92H2Fza7NRspm1kh1nqBhcK960dxH55ekgPdJdXi5X87O93ctCKnSxB3jp8WKkJqbnRy
-	3GRU5ojEUgvVTjYNwUbB+q4oCVW59WBY07o1dRmePhWsCsSoZm5OhmqSj45BNbnDvj3h+DEN8Kfcr
-	z6On6Pa3owPFw7cAfNeJdl4rwz5I9aNu3lBmq0HfjpZ+/717fQHRtguxYDMZ06f156XKSTziaK4Bd
-	yfUO8OGg==;
+	bh=X+b40dDlDBakx8+hTHp2ebRkg2RA++lkqQVSTeac6zA=; b=iMpZ1jhduwSpvU9mF5wsf0Rzi0
+	gpwJi/16DLlQPyL/gJYTa9OSj8aFV6LDSD5AoznZPDrSlKSeAJ+1JSGy0JF//ca964Mlr/R+PEK0m
+	eO1qrJ2/xQlY0zok+anAr+lAsAx32PU6f+bw4/lpelWS0WqT4sXHEjdZE5zvJTOu2FELNE3bw9obo
+	Bwp4WK4GbD56F7cHuZUM3SYRF3DIWeppJNAPH+89RUjybvu39i8nIcwoJbJSQdVzwvPfeIdezl6Ku
+	DVd5s3lQMdt9kLH5ZUHFIoSMpNLseS6a9J5l39vDvye4SVzQ7x1PW2GnglY6ofZkt6Hsgwc5SXzF1
+	xZrxiK4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVswp-001afW-0x;
-	Tue, 15 Aug 2023 12:14:55 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1qVwE3-001tBt-2Q;
+	Tue, 15 Aug 2023 15:44:55 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qVswm-001aeL-0j;
-	Tue, 15 Aug 2023 12:14:53 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-313e742a787so3127014f8f.1;
-        Tue, 15 Aug 2023 05:14:49 -0700 (PDT)
+	id 1qVwDz-001t8w-1P
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Aug 2023 15:44:54 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-686efb9ee0cso5269551b3a.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Aug 2023 08:44:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1692101688; x=1692706488;
+        d=chromium.org; s=google; t=1692114288; x=1692719088;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=tyXMRhOdLAsflsZxbsHhFbM6pTunAygx9wUZGK4+va4=;
-        b=cDfuUZCgemlPICUotl9bXplDlFIT8Js96e3xxyay4LerLktDGKE65nSJp2VcKmtFd+
-         y9z8GsltSobQ1/vXuZoc45l+lQDcjzQnMbDk3jvhWagXVlEKTYJJZNTXzCkmG9K2oPKT
-         m2ZVs8o9DIW1exS7ixATKr4s7xPO1R+qbmGYfZlFyZg4zmMTiWggRutp8j41InW/yytL
-         IVQAiYyhviYQZphveamqbRx6txd64xjktC4eLoblcXWmIv47pTirPEKuNaB4nKOWD5x8
-         s2RmV4ClSaZRgtlV6lt5L0ISjD/mYEoTDmPcXXwfrpIQpKAkqxNeYOYwP3Z/ss9Jf8bs
-         zsPw==
+        bh=X+b40dDlDBakx8+hTHp2ebRkg2RA++lkqQVSTeac6zA=;
+        b=BtS41tzhfK7XY6exlpjzQzgARG+Ehge1+0PRdLnYhdOW6v1Bo7SJIi4QfUUoIKcI9x
+         pbi2VdZOgXud1DEl9BDa7AbCo5HKvn/XKF10E4aOV81o3c7y81bD4TpDN0gxIjiW+o34
+         PdoWIJpg8d/x3+RQWmBeMDtnW3My6yZM1rnx0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692101688; x=1692706488;
+        d=1e100.net; s=20221208; t=1692114288; x=1692719088;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=tyXMRhOdLAsflsZxbsHhFbM6pTunAygx9wUZGK4+va4=;
-        b=Me9cEK4viwmGAD7ZvpFkj1xXB750Wg7mU1srHqd6ExqD030maJJVjiu4TsP/Q3gtpf
-         5SMZD2SSLOBcuwJoXvjFqsOdOnrmDf1NSgPv9nZRf6C3LLDI2zQ2CtyfNW35RSG5lTjm
-         CN2nxJd54mXBxocYMuDl7oIP5mpmaVV+TGm9eKh4Sh9rxGG8+nmcrXO/6Y7lRI6nbOsr
-         3oxIceb47E+If4kbpldUtEX2y2klWytaNW7EnZ+SdZeax20wpMTCY0aMx1rjB+1CAzXw
-         OZC6iod5Hb2glmULwMQv7AmEKar5xHCIDqZYnU87p4rNcaYCC8su6LMbqsA2xdCPJo4k
-         JdbA==
-X-Gm-Message-State: AOJu0YyTqpwkaTwVgvqHWOm3wygsH2h67qwo50pQaExN4nERr8yQXzyr
-	BNVLmVkwQlB6CJyXkf44II8=
-X-Google-Smtp-Source: AGHT+IEwMuqs1Ttrj7d7T5WLLsuOk7IcerlFOkms3rb9c6fPo6crXQko9+9C8C7o/m8iOzB7ZLRmew==
-X-Received: by 2002:a5d:5292:0:b0:315:a235:8aa8 with SMTP id c18-20020a5d5292000000b00315a2358aa8mr1497503wrv.2.1692101687680;
-        Tue, 15 Aug 2023 05:14:47 -0700 (PDT)
-Received: from localhost (cpc154979-craw9-2-0-cust193.16-3.cable.virginm.net. [80.193.200.194])
-        by smtp.gmail.com with ESMTPSA id 8-20020a05600c228800b003fbcf032c55sm20631723wmf.7.2023.08.15.05.14.46
+        bh=X+b40dDlDBakx8+hTHp2ebRkg2RA++lkqQVSTeac6zA=;
+        b=MsbwBSIFxhOpXF+XfcCH+6Iy/dbo/lpi1YocaME/4mn8ZPFeD4FegfZrLZljabuE67
+         tYjYCO1HbA+hYoRmuiMf1IWsDuF4ECsH0QMDGEb81B/8zFIqBDqCdxm4cDdQOGiSS45a
+         JKgSBIcZr3g8reOIHWK+B2gh+0999jfWJC3xJ6W+i1EaBlqGP9XmH2uIgu7DpZgTDrqy
+         PrLHCmFYx01rrzXQJjT2VyzMIRNApYGEAhxsmvnCxriU9aQdVXqmXmheUTOMTQwk281Z
+         dGIw9QMTNwZS02Uv1mm4fPBDckzEtAS98nYgtmX+54wBEIhpfPRKnQ1Tie9SpQ8T6JBF
+         JsVg==
+X-Gm-Message-State: AOJu0YwjZD33CWPeHbitpfoL3/n1rm4TUobsCT9dc0TBQE4sRpNWTe/v
+	g1mwdiJFHubRlDlVUko23q0XYQ==
+X-Google-Smtp-Source: AGHT+IGzSeQ7P7d6hIuKp8jX5Kc6bcArFd2OV1P4lsTdQ+wIT/RytQKLIYbcjxTcDvbMf4xA8ee6oA==
+X-Received: by 2002:a05:6a20:3d28:b0:134:1011:8582 with SMTP id y40-20020a056a203d2800b0013410118582mr17945878pzi.47.1692114288344;
+        Tue, 15 Aug 2023 08:44:48 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com ([2401:fa00:1:10:40cf:3807:f8c8:2d76])
+        by smtp.gmail.com with ESMTPSA id n13-20020aa78a4d000000b0065e154bac6dsm9431247pfa.133.2023.08.15.08.44.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Aug 2023 05:14:46 -0700 (PDT)
-From: Colin Ian King <colin.i.king@gmail.com>
-To: Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
+        Tue, 15 Aug 2023 08:44:47 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	linux-media@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org,
+	Bjorn Andersson <andersson@kernel.org>
+Cc: Pratyush Yadav <pratyush@kernel.org>,
+	Michael Walle <michael@walle.cc>,
+	"Miquel Raynal )" <miquel.raynal@bootlin.com>,
+	"Richard Weinberger )" <richard@nod.at>,
+	"Vignesh Raghavendra )" <vigneshr@ti.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	linux-mtd@lists.infradead.org,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH][next] media: mediatek: vcodec: fix spelling mistake "resonable" -> "reasonable"
-Date: Tue, 15 Aug 2023 13:14:46 +0100
-Message-Id: <20230815121446.742742-1-colin.i.king@gmail.com>
-X-Mailer: git-send-email 2.39.2
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	cros-qcom-dts-watchers@chromium.org,
+	Andy Gross <agross@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>
+Subject: [PATCH 0/4] Add a property to override the quad mode
+Date: Tue, 15 Aug 2023 23:31:51 +0800
+Message-ID: <20230815154412.713846-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.41.0.694.ge786442a9b-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230815_051452_287490_0D64F7FD 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20230815_084451_473860_39C784FE 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,41 +102,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are a couple of spelling mistakes in pr_err error messages. Fix them.
+On gigadevice gd25lq64c, the quad mode is enabled after BFPT is parsed.
+According to datasheet[1], Quad enable (QE) bit needs to be set to 0 to
+use write protection (WP) pin. It also recommends setting default value of
+QE to 0 to avoid a potential short issue.
 
-Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
----
- .../media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c   | 2 +-
- .../media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c   | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Add a disable-quad-mode property in devicetree that platform can use it to
+override the quad mode status parsed from BFPT to use write protection.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-index 9e744d07a1e8..6bbe55de6ce9 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-@@ -68,7 +68,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv, enum mtk_vcodec_fw_use
- 
- 		plat_dev = dec_dev->plat_dev;
- 	} else {
--		pr_err("Invalid fw_use %d (use a resonable fw id here)\n", fw_use);
-+		pr_err("Invalid fw_use %d (use a reasonable fw id here)\n", fw_use);
- 		return ERR_PTR(-EINVAL);
- 	}
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-index 5e03b0886559..9f6e4b59455d 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-@@ -109,7 +109,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(void *priv, enum mtk_vcodec_fw_use
- 		plat_dev = dec_dev->plat_dev;
- 		rst_id = VPU_RST_DEC;
- 	} else {
--		pr_err("Invalid fw_use %d (use a resonable fw id here)\n", fw_use);
-+		pr_err("Invalid fw_use %d (use a reasonable fw id here)\n", fw_use);
- 		return ERR_PTR(-EINVAL);
- 	}
- 
+[1]
+https://www.elm-tech.com/ja/products/spi-flash-memory/gd25lq64/gd25lq64.pdf
+page 13
+
+Hsin-Yi Wang (4):
+  dt-bindings: mtd: jedec,spi-nor: Add disable-quad-mode property
+  mtd: spi-nor: sfdp: read disable-quad-mode property
+  arm64: dts: mediatek: mt8183: disable quad mode for spi nor
+  arm64: dts: qcom: sc7180: disable quad mode for spi nor
+
+ Documentation/devicetree/bindings/mtd/jedec,spi-nor.yaml | 7 +++++++
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi           | 1 +
+ arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi             | 1 +
+ drivers/mtd/spi-nor/core.c                               | 5 +++++
+ drivers/mtd/spi-nor/core.h                               | 1 +
+ drivers/mtd/spi-nor/debugfs.c                            | 1 +
+ 6 files changed, 16 insertions(+)
+
 -- 
-2.39.2
+2.41.0.694.ge786442a9b-goog
 
 
