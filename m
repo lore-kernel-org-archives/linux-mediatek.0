@@ -4,69 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4D9CC19F4F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 19:57:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F410C25B7F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 20:49:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2Bw8IWacgQTkThLac2vje/xz+YOEIscDPy2Ds4ZGFvU=; b=d/VIxmg9x/ud6Tq5odts8rDW5J
-	LmK8iEqJEcStvbvU+R9Kh6q81Y+UnQAQdJUULS0KhU7yetfktAHRwFn+aXMrmfaj0/8mv+vrsB++Q
-	fR9fEmsTMiyFClwp6INOIRyO0fB8u+p5VOCJr9X9RPR0MHjFEmJbj+gwL4rGPydGagyNv9FLMVgMk
-	ndobcBvWgr+g1DiBHap/kZulUxrADszZOxNBf+ZMouY0ncH/65U50L+hpxPLWMEfOLjZhp1Xqs9nD
-	sRYku1I2BWrqc7czVk7RvTTqk56mKtGOr2AJbghZQ+KUzUby9YkLTzFyiQKOl41eEeiyOVeBo4SBc
-	PJPi4tvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kJl2Cum5v1j8M/WdWxJ+2Hg9ZCvN4o0DHv+SL/M5e9A=; b=d5oR13LX4jPXygLxwP+UVu7v3Y
+	pPz6jBfavC/wkXVP7R9guMMPSrvl27pW2pwu0XOp0kPyUO/GF+C+VfECIBEiNuHaxvRYwxTYLtz2U
+	s1+N8deQdgP/uaT8Pi/IUYNHK+Nf/sXelfODGG6Cj8M90Rgw3dBW1kdWHkY6nDsqoGEdmMQW/X1FE
+	Wk571Gsspui/RG21Xt2PBuTK32T7sAz2n4Jdl3dNHrgj9kBJBWTOzmOFqt5Up0w83pdgYKGlbF5qK
+	dVeM5yXBnYHj39IDs7XhhWPAWoelw+WnK5v24pVttabehBFFGmL0ThS7WSBeqnSMxAG53cDObrBru
+	HY+j/Mvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWMeP-004v6X-3D;
-	Wed, 16 Aug 2023 19:57:54 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qWNSJ-004yyd-2l;
+	Wed, 16 Aug 2023 20:49:27 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWMeN-004v5Y-0Y;
-	Wed, 16 Aug 2023 19:57:52 +0000
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8D89666071BF;
-	Wed, 16 Aug 2023 20:57:43 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1692215866;
-	bh=FMkSrLQnK0fv59W1YNP5gvyExhodhHPfroxk6P347ts=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TxkNLLmSy4yNx8xb1w/UCoaDppZS9oG1fLVkiOHuPJF62f+5oY0MQxhr5IcKYBM99
-	 RsCiuZ1QIlMG/BNB4EBH6HBxsKtVMkzdSEJUcFfffi6cDhYOsC2aHBfkDHr3mL/YEF
-	 M0vXiAsq6rNNqk7Qzdstia4opWm4VLPvULlj5libNlu3JWCGmLswtOavtxCDCu4j74
-	 L35yOR34cTWlYe/DUxdKpAWvNX6WtaVPnSPq17ip3+40sEGILhWetPEe9nEu5Jg7wp
-	 yjkzVEBm4Yjj/sencVpY0dEvFa3C8JUORYccPz82YQDNcKBNuoaLq7RSk1FUPFFmP3
-	 PECPQU6PptiFQ==
-Date: Wed, 16 Aug 2023 15:57:40 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: daniel.lezcano@linaro.org
-Cc: Bernhard =?utf-8?Q?Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
-	angelogioacchino.delregno@collabora.com, rafael@kernel.org,
-	amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	rdunlap@infradead.org, ye.xingchen@zte.com.cn,
-	p.zabel@pengutronix.de, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	wenst@chromium.org, james.lo@mediatek.com, rex-bc.chen@mediatek.com,
-	abailon@baylibre.com, amergnat@baylibre.com, khilman@baylibre.com
-Subject: Re: [PATCH v4 0/5] Add LVTS support for mt8192
-Message-ID: <107678ff-c3d5-4c3a-ad0e-fa292a125daa@notapiano>
-References: <20230530195132.2286163-1-bero@baylibre.com>
+	id 1qWNSI-004yxj-02
+	for linux-mediatek@lists.infradead.org;
+	Wed, 16 Aug 2023 20:49:27 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3197b461bb5so2713730f8f.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Aug 2023 13:49:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1692218963; x=1692823763;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=kJl2Cum5v1j8M/WdWxJ+2Hg9ZCvN4o0DHv+SL/M5e9A=;
+        b=O6WSQYOx4vG3alpUI7OrrntJAaU1eprK0XFrLDLZprIVBQou4d+o1gesHIOvck50cc
+         LLYELyQ9wFphneQIJfvxJv+RUFsdzyNz8CqZx5/RhL4Lro6f6IigEMcvs9ONwXigp08K
+         TqdGr8CRkjb9QhVSygnhDpQ5vhwBpJK3++Sip8xjB8D0+5SNEooWFXEGJWr17xw8kD8K
+         Ie7Wz5e3lHOBuMB+gv/D1/pOT6/HP3YFbb1BIfDp5U+oPbUUUbdkSwhu9Lg2csOIomS2
+         zgvnic7ZZSoWXC0LyPTxgrfmvAD4sZ2eFeZZOvTGTq15e1hXaI4jKBVzLliA4Y7Ndn2C
+         /kXg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692218963; x=1692823763;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kJl2Cum5v1j8M/WdWxJ+2Hg9ZCvN4o0DHv+SL/M5e9A=;
+        b=Kb6EjR2rmDYcFjQQBVJGbiATe+hrlTe4rXlKTUQcHxCTCxKgx8O10bo+j5Ed7us1Nv
+         a1YrXPj6aerPXUjsh6GCD0CObYEso216SYOJwHqBoe/3tg0I9+QqtCcy8zbLxzY7OhXG
+         k8XnSXfefO+/jd0uKe03bk+R/eXilXaKhNev0shvR1dBJIv++Ua6uBRltWwBx6a7YUKq
+         rFxwSKclBcX+Kw5b5C31QZWR19eLG6hd8mBKh8sJe+lG8PQN8Dr5ew4BPjC07rk3gJCt
+         KTk1yaSWTrNqHRwYyLbUeKunfqIUipS7tPUVnCuC7zDS6ZOfTXT5BCBCPWQKhOsFQV0Y
+         CIyg==
+X-Gm-Message-State: AOJu0YzCbHmhR7s9RyKkZFbptGBU66ga7A4I9nqsp7XRJD8UcWQycwgu
+	/KUtdgUV9bYR09hGBJcy1I6LPw==
+X-Google-Smtp-Source: AGHT+IEUdC0DgMSeHraqpjQYSbPR8ia8XpHQGI73h9NGhXoy2ygew8Iv2toIFp6k/NP6kCCh8WVZwg==
+X-Received: by 2002:adf:ed0c:0:b0:319:8444:939f with SMTP id a12-20020adfed0c000000b003198444939fmr2396203wro.32.1692218963118;
+        Wed, 16 Aug 2023 13:49:23 -0700 (PDT)
+Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.googlemail.com with ESMTPSA id p14-20020a7bcc8e000000b003fe1cac37d8sm538331wma.11.2023.08.16.13.49.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 16 Aug 2023 13:49:22 -0700 (PDT)
+Message-ID: <a97efd71-23e2-5ac9-8d3d-427a431353c6@linaro.org>
+Date: Wed, 16 Aug 2023 22:49:21 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v4 0/5] Add LVTS support for mt8192
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
+ angelogioacchino.delregno@collabora.com, rafael@kernel.org,
+ amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de,
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, wenst@chromium.org, james.lo@mediatek.com,
+ rex-bc.chen@mediatek.com, abailon@baylibre.com, amergnat@baylibre.com,
+ khilman@baylibre.com
+References: <20230530195132.2286163-1-bero@baylibre.com>
+ <107678ff-c3d5-4c3a-ad0e-fa292a125daa@notapiano>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <107678ff-c3d5-4c3a-ad0e-fa292a125daa@notapiano>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230530195132.2286163-1-bero@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230816_125751_338145_6886AB5A 
-X-CRM114-Status: GOOD (  17.32  )
+X-CRM114-CacheID: sfid-20230816_134926_051115_6FE745E8 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,70 +104,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 30, 2023 at 09:51:27PM +0200, Bernhard Rosenkränzer wrote:
-> From: Balsam CHIHI <bchihi@baylibre.com>
-> 
-> Add full LVTS support (MCU thermal domain + AP thermal domain) to MediaTek MT8192 SoC.
-> Also, add Suspend and Resume support to LVTS Driver (all SoCs),
-> and update the documentation that describes the Calibration Data Offsets.
-> 
-> Changelog:
->     v4 :
->         - Shrink the lvts_ap thermal sensor I/O range to 0xc00 to make
->           room for SVS support, pointed out by
->           AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
->     v3 : 
->         - Rebased :
->             base-commit: 6a3d37b4d885129561e1cef361216f00472f7d2e
->         - Fix issues in v2 pointed out by Nícolas F. R. A. Prado <nfraprado@collabora.com>:
->           Use filtered mode to make sure threshold interrupts are triggered,
->           protocol documentation, cosmetics
->         - I (bero@baylibre.com) will be taking care of this patchset
->           from now on, since Balsam has left BayLibre. Thanks for
->           getting it almost ready, Balsam!
-> 
->     v2 :
->         - Based on top of thermal/linux-next :
->             base-commit: 7ac82227ee046f8234471de4c12a40b8c2d3ddcc
->         - Squash "add thermal zones and thermal nodes" and
->             "add temperature mitigation threshold" commits together to form
->             "arm64: dts: mediatek: mt8192: Add thermal nodes and thermal zones" commit.
->         - Add Suspend and Resume support to LVTS Driver.
->         - Update Calibration Data documentation.
->         - Fix calibration data offsets for mt8192
->             (Thanks to "Chen-Yu Tsai" and "Nícolas F. R. A. Prado").
->         https://lore.kernel.org/all/20230425133052.199767-1-bchihi@baylibre.com/
->         Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-> 
->     v1 :
->         - The initial series "Add LVTS support for mt8192" :
->             "https://lore.kernel.org/all/20230307163413.143334-1-bchihi@baylibre.com/".
-> 
-> Balsam CHIHI (5):
->   dt-bindings: thermal: mediatek: Add LVTS thermal controller definition
->     for mt8192
->   thermal/drivers/mediatek/lvts_thermal: Add suspend and resume
->   thermal/drivers/mediatek/lvts_thermal: Add mt8192 support
->   arm64: dts: mediatek: mt8192: Add thermal nodes and thermal zones
->   thermal/drivers/mediatek/lvts_thermal: Update calibration data
->     documentation
-> 
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi      | 454 ++++++++++++++++++
->  drivers/thermal/mediatek/lvts_thermal.c       | 160 +++++-
->  .../thermal/mediatek,lvts-thermal.h           |  19 +
->  3 files changed, 631 insertions(+), 2 deletions(-)
-> 
-> base-commit: 8c33787278ca8db73ad7d23f932c8c39b9f6e543
 
-Hi Daniel,
+Hi,
 
-just a gentle reminder. As you've just applied [1], there are no longer any
-concerns with this series, and it'll provide both working interrupts and
-reliable thermal readings on MT8192.
+On 16/08/2023 21:57, NÃ­colas F. R. A. Prado wrote:
 
-Thanks,
-Nícolas
+[ ... ]
 
-[1] https://lore.kernel.org/all/89fabd50-66ce-d94f-38c8-6dd6f343958d@linaro.org
+> Hi Daniel,
+> 
+> just a gentle reminder. As you've just applied [1], there are no longer any
+> concerns with this series, and it'll provide both working interrupts and
+> reliable thermal readings on MT8192.
+
+There are still concerns and questions in the series for patch2 and 3.
+
+
+
+
+
+-- 
+<http://www.linaro.org/> Linaro.org â”‚ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
+
 
