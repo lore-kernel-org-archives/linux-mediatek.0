@@ -4,76 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9C15C001E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 12:23:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07BE4C04A6A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 12:34:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EHiNxjeUrAwzOphGHu0eZkI/pOqktqiZVERvri1bSWI=; b=H8JJCEGfPBZTMPwJPjIAg119MX
-	qDF731fmbtCvw0QeSzWbq2FCPdiUroFmjUKcTRodnR3wbQANQeTtqb4CDB0UG13iGGSE5dUW+wMf/
-	cMKKJUkK2zYWlqQFA4e79gAhaZ1y+8qdXipJU7724tfyj0himiAx/09yHgK+l+k5C7sbfbJVtiB5b
-	tV8aymvGSqQ3qR7yWAQ3OrvWJo0nRc5b4movxUQG7PdvuIaou2thK5MY3fI+rOxpRjx/z1rG8PvRA
-	HJbkp3eFJzMp7sXjVe2GPDwbzpytJnrpG+RpP/gM/vZWZErEqokqbdTjwOqXdNfBcCK4Tdz0ufTLq
-	InYxAySQ==;
+	bh=yruZKqzLaC+4643Ot4X60prS0Wm0q5EyxySlt1tCThc=; b=zCc77aosy0DMhnRJ80fJlUvDwn
+	BR28Mnp/Z3F7LWW9cv0kPzJgFMAVCWv2aINIb0Pkwj/KtO2ug6yDl+pjHxAHyxbQeyi3gEfHrLN5v
+	MW25ZnL+Uqayx8dHEzyX5h56KYXIneqLIcmGNYoaXq/fOr47DPCQYEEb257MoR2buGJm453ug00Xw
+	v/b1PxqB8hH3WJcIW5oUWbFT2oDbHnwNkAKvujb5Muz5VfO1n5myS04SEVunrZepnV8GiGoNWjgQP
+	o5s3ltM9E2bOZaXLmzRAcXNTlCheYWXf0X/Ij0BVpN7R5Nqmn9KnUo1G3fCYpKSZ9vbQhb3lMnAPQ
+	9TTXUDnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWFYI-0047vP-1P;
-	Wed, 16 Aug 2023 12:23:06 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1qWFji-0049Z5-1Z;
+	Wed, 16 Aug 2023 12:34:54 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWFYE-0047u0-2b;
-	Wed, 16 Aug 2023 12:23:04 +0000
-Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 1F0C08E2;
-	Wed, 16 Aug 2023 14:22:59 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1692188580;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=EHiNxjeUrAwzOphGHu0eZkI/pOqktqiZVERvri1bSWI=;
-	b=o9R+3sm3pMwFG3qh3EzYHeTUHgjbIgTu8lM7an1cb+HYmwazI823tRZETHJIxMPBexoUPn
-	vd/LVkxhgcSSt66PqNTUGxJo6BAe+9pO/fsrhRRrpWad/F+sd7Esa9097f5ALhX8Yk8lec
-	RXlQNPwZ9Zo8v/Yh1nKCCEm8P7hFHGN8qXMahnr91zS0+arIA/Jlf4TMjXl8ymmPJ30+et
-	SkfSfq4YAQ4SGue9Z4DtVr/EQ9WzrUcshtuupvENfeTzZskiwq35yXaDgZepLf9MeNXRRs
-	2pygHBc6ovZ2wg2+Ha0gocKYgll3FMhxcqBrht2XxswRQ4jmfDuBPFwpwhgEaQ==
+	id 1qWFjg-0049YF-0y
+	for linux-mediatek@lists.infradead.org;
+	Wed, 16 Aug 2023 12:34:53 +0000
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-4ff8f2630e3so1229742e87.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Aug 2023 05:34:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1692189290; x=1692794090;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=yruZKqzLaC+4643Ot4X60prS0Wm0q5EyxySlt1tCThc=;
+        b=EY6fQH/mKR7ECTcxYzttcyuzzjs50D7QSork2aIfeBdRu6iYloEudaLTEOl1HxTbbk
+         Ht+CJtxx61RMaEakWl0vWkXOg6VcpCgQ16N2oi+WYGcs8RzUqx1xAuVV3QP2jcfs7c5o
+         cLOVgpKIh8Lz1iPhQ9hA7pXIcFnCeFjS4xR46NEMMpu3/PYnKAj5/0j/hSOBCZKglrZE
+         csUOEkq8P9Yc2GGk2RnGZKuoNGiX8gxYVQmUuJ6JxfcoNeQyIyEdeJ7ShPMU7OdUG+bC
+         AcnsUaRVOD/Tw3/e+hc8RJbJqHFLwrULWXWlRIQb072hpFhOTxmnGhNoZiVsdE18wM0E
+         dtOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692189290; x=1692794090;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=yruZKqzLaC+4643Ot4X60prS0Wm0q5EyxySlt1tCThc=;
+        b=i6B1V7b4x4+ClZaOXQK0ZSfxLUESrQPt1O1uEbIhA/0pdETrMx/7Ep+NRtHnZ6V7l3
+         5J0zDfqP4TB5rqnCEDifpK3xiqDzFRwuWFXSSew+ZcrXPZ9Sp8YHeC/D0i16NhNFDgAw
+         qquvzfgqn2KwetxaE9bJ7EdDejyrgSsuso+m3uXVzRNHMBOkjFkwRqYEvadjoyyVZDF7
+         AWBz2gf4D+Pdx5HsuM+uSKrmhkuEFGX/+swkF/jbKJHI8XygqHHdZcmC7yH1vaELHr4b
+         U+J8QS3pIGCUCMsY2VcTDNKkrSB0lFq/Hd8GnEzmHEY4tmqRaueGXNIbdjNrOWUuv9y2
+         2beg==
+X-Gm-Message-State: AOJu0Yyt8Ufwk1UFssmScUx1LrQJCYX/rd596AwegjoPqJPDHqmFftRR
+	Leb4DiPcu00KiY/LHxk96pofSQ==
+X-Google-Smtp-Source: AGHT+IGM+5Kgz2X4N//QD5CWhAuTE4i7Xl3eqvW0P418kkgaL1X4lO0nnZhIcEgVQ6CPLn/Wvn2sLA==
+X-Received: by 2002:a19:384a:0:b0:4fb:911b:4e19 with SMTP id d10-20020a19384a000000b004fb911b4e19mr1154375lfj.35.1692189290401;
+        Wed, 16 Aug 2023 05:34:50 -0700 (PDT)
+Received: from [192.168.0.107] ([79.115.63.44])
+        by smtp.gmail.com with ESMTPSA id y18-20020aa7ccd2000000b005227e53cec2sm8278663edt.50.2023.08.16.05.34.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 16 Aug 2023 05:34:49 -0700 (PDT)
+Message-ID: <0011a25a-e096-73ac-9800-9d8e35efdc8b@linaro.org>
+Date: Wed, 16 Aug 2023 13:34:47 +0100
 MIME-Version: 1.0
-Date: Wed, 16 Aug 2023 14:22:58 +0200
-From: Michael Walle <michael@walle.cc>
-To: Tudor Ambarus <tudor.ambarus@linaro.org>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Bjorn Andersson
- <andersson@kernel.org>, Pratyush Yadav <pratyush@kernel.org>, "Miquel Raynal
- )" <miquel.raynal@bootlin.com>, "Richard Weinberger )" <richard@nod.at>,
- "Vignesh Raghavendra )" <vigneshr@ti.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- cros-qcom-dts-watchers@chromium.org, Andy Gross <agross@kernel.org>, Konrad
- Dybcio <konrad.dybcio@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.1
 Subject: Re: [PATCH v2,1/2] mtd: spi-nor: giga: gd25lq64c: Disable quad mode
  according to bus width
-In-Reply-To: <5911201a-f703-abbd-3c7b-769f70df08a8@linaro.org>
+Content-Language: en-US
+To: Michael Walle <michael@walle.cc>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Bjorn Andersson <andersson@kernel.org>,
+ Pratyush Yadav <pratyush@kernel.org>,
+ "Miquel Raynal )" <miquel.raynal@bootlin.com>,
+ "Richard Weinberger )" <richard@nod.at>,
+ "Vignesh Raghavendra )" <vigneshr@ti.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ cros-qcom-dts-watchers@chromium.org, Andy Gross <agross@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>
 References: <20230816104245.2676965-1-hsinyi@chromium.org>
  <6702bac712daab13698b9bb9ad81d49e@walle.cc>
  <5911201a-f703-abbd-3c7b-769f70df08a8@linaro.org>
-Message-ID: <80ec748f37f40ae5c3c3c5d1602681b3@walle.cc>
-X-Sender: michael@walle.cc
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
+ <80ec748f37f40ae5c3c3c5d1602681b3@walle.cc>
+From: Tudor Ambarus <tudor.ambarus@linaro.org>
+In-Reply-To: <80ec748f37f40ae5c3c3c5d1602681b3@walle.cc>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230816_052302_995687_4A539E6D 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20230816_053452_340885_46C3E262 
+X-CRM114-Status: GOOD (  23.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,47 +110,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
->> like a fundamental problem and that commit 39d1e3340c73 ("mtd: 
->> spi-nor:
->> Fix clearing of QE bit on lock()/unlock()") is broken in that regard.
+
+On 8/16/23 13:22, Michael Walle wrote:
+> Hi,
 > 
-> what's wrong with the mentioned commit?
+>>> like a fundamental problem and that commit 39d1e3340c73 ("mtd: spi-nor:
+>>> Fix clearing of QE bit on lock()/unlock()") is broken in that regard.
+>>
+>> what's wrong with the mentioned commit?
+> 
+>         } else if (nor->params->quad_enable) {
+>                 /*
+>                  * If the Status Register 2 Read command (35h) is not
+>                  * supported, we should at least be sure we don't
+>                  * change the value of the SR2 Quad Enable bit.
+>                  *
+>                  * We can safely assume that when the Quad Enable method is
+>                  * set, the value of the QE bit is one, as a consequence of the
+>                  * nor->params->quad_enable() call.
+>                  *
+>                  * We can safely assume that the Quad Enable bit is present in
+>                  * the Status Register 2 at BIT(1). According to the JESD216
+>                  * revB standard, BFPT DWORDS[15], bits 22:20, the 16-bit
+>                  * Write Status (01h) command is available just for the cases
+>                  * in which the QE bit is described in SR2 at BIT(1).
+>                  */
+>                 sr_cr[1] = SR2_QUAD_EN_BIT1;
+>         } else {
+>                 sr_cr[1] = 0;
+>         }
+> 
+> "We can safely assume that when the Quad Enable method..". We cannot, if we
+> don't have 4 I/O lines. The quad_enable is just the op how to do it, but not
+> *if* can do it. It seems to be missing the same check as the
+> spi_nor_quad_enable(). But I'm not sure if it's that simple.
+> 
 
-         } else if (nor->params->quad_enable) {
-                 /*
-                  * If the Status Register 2 Read command (35h) is not
-                  * supported, we should at least be sure we don't
-                  * change the value of the SR2 Quad Enable bit.
-                  *
-                  * We can safely assume that when the Quad Enable method 
-is
-                  * set, the value of the QE bit is one, as a consequence 
-of the
-                  * nor->params->quad_enable() call.
-                  *
-                  * We can safely assume that the Quad Enable bit is 
-present in
-                  * the Status Register 2 at BIT(1). According to the 
-JESD216
-                  * revB standard, BFPT DWORDS[15], bits 22:20, the 
-16-bit
-                  * Write Status (01h) command is available just for the 
-cases
-                  * in which the QE bit is described in SR2 at BIT(1).
-                  */
-                 sr_cr[1] = SR2_QUAD_EN_BIT1;
-         } else {
-                 sr_cr[1] = 0;
-         }
+I see. Then extending the if condition should do the trick, as
+spi_nor_write_16bit_sr_and_check() is called after setup. Something
+like:
 
-"We can safely assume that when the Quad Enable method..". We cannot, if 
-we
-don't have 4 I/O lines. The quad_enable is just the op how to do it, but 
-not
-*if* can do it. It seems to be missing the same check as the
-spi_nor_quad_enable(). But I'm not sure if it's that simple.
+if (spi_nor_get_protocol_width(nor->read_proto) == 4 &&
+    spi_nor_get_protocol_width(nor->write_proto) == 4 &&
+    nor->params->quad_enable)
 
--michael
+Is this what Hsin-Yi is hitting?
 
