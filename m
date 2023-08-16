@@ -4,59 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE06FC001B0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 14:34:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6F76C001B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 16:28:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5n91htKzIHlpOuyIAFaHjnrWIciBtPbUUme3oKXxmls=; b=BXqwI3OghQPwBe+I796N5tLVDf
-	Ownn7QnvGOCwQCuKT6ZprxCs7boj4W6R1yWyMmQZAe2inld7PqXqdtlZcAcNDtPjV+DN62wlhMLTO
-	6GK4ZwrrwlfRqQ1OsAdZFHnwfz/rdTIOCeBTj+iOvjWOB8+BGoq5q1Ao0G7Z6IubiAs2qMmr5td1V
-	wvs7PHJocXkbvBMVNFKJPyIaxg7hXceDggGicw4HAYilDC1V415WHDgGe5US6dp8Wqjx0fXKoUGVy
-	B5vm9JddhOSgUwb9gjg2f3BIwiojgLtOBd3np2S/D0QgBZTnWHgOL4i2CNUzr7sPNaXLKJ15u38vk
-	pgHGqrBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OXgjHTAdytoLgUZyHzzq4dyrdO9fvokMGFShZim/Sxs=; b=yhuUsZ7BxStZXtcR29PUi8O8Jv
+	f/+BYKIi2FN1uFCfCGe58HHfyTFn9XViRKPD4YlBsTkFEpX13X6/D8YUrZnwPZ2pEm6A7qZhrWNeV
+	euObV+CZ4qFwTXs0QLEkIPj0hYfA79LixlYhp0gXQzQrk/AxoWmYm3cQYdC7cmaaIz7a+QP5iImdL
+	rYfgovdAWMn0AUcMHZywuUttk4pbdTBi59VbWJ5ffdvd/6+wdYVcxCThRUHPHkAiP5bn1fHKTPKPX
+	xWU1cGtGajY8fRLpeooBHo0fkLTodMM63JWi0UaRw8yv/XVKpL98BhLU0SlnW7X3iNF02PG+MTy90
+	2nc2Fwyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWHbX-004NWo-1e;
-	Wed, 16 Aug 2023 14:34:35 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1qWJOA-004ba9-18;
+	Wed, 16 Aug 2023 16:28:54 +0000
+Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWHbU-004NUY-1c
-	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Aug 2023 14:34:34 +0000
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id BD170C85;
-	Wed, 16 Aug 2023 16:33:13 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1692196394;
-	bh=ch/klZHDWO7+wfH82u1d/vkSCn7e/idW6e/eLKXAOcM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CWYyocUEZHPl4QsqQwrzXI2aFJhpjS60bm9JqNSp/G3txrZ+vWwJOPwbQl+9NZriA
-	 RzqTL3vt03+3MRkKKkWRWQPjgBwUuuUwGcIsIXlIGzmYY5bz121MXVH1AKa8kghUPq
-	 UzcNBo3d6EWfoi2B2PZJiLxud8luDeufVKADRWvo=
-Date: Wed, 16 Aug 2023 17:34:32 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Linux Media Mailing List <linux-media@vger.kernel.org>,
-	andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	linux-mediatek@lists.infradead.org,
-	Wei Chen <harperchen1110@gmail.com>, tiffany.lin@mediatek.com,
-	Nicolas Dufresne <nicolas@ndufresne.ca>
-Subject: Re: [PATCH] media: videobuf2-core.c: check if all buffers have the
- same number of planes
-Message-ID: <20230816143432.GA4436@pendragon.ideasonboard.com>
-References: <e75ff985-2499-9a16-21fe-ee2e81547e6f@xs4all.nl>
+	id 1qWJO6-004bZZ-1K;
+	Wed, 16 Aug 2023 16:28:51 +0000
+Received: by mail-oi1-x229.google.com with SMTP id 5614622812f47-3a800814122so2612985b6e.0;
+        Wed, 16 Aug 2023 09:28:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1692203328; x=1692808128;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=OXgjHTAdytoLgUZyHzzq4dyrdO9fvokMGFShZim/Sxs=;
+        b=qyw4CNHhKaU+ZrllPmAk3cWrbmVyZpXunhLa+YOqcH3nzzbq1D/DVyKIw2tKQB+8Ii
+         4ExeXVyehEL8JzztUlM2IasuE9W/bpPCi5Oy6nh8OYSDJM6Ja8fPZzt69RbfnHNk2ekH
+         RvoLxlm0LJqLVLCNEcLxJQnfxD9G1DkHbPlYwlKRg1+GRjV+ME7p5o/Dat4QRATgoYc4
+         g48Asy+rNv5T6ouXLT/hmD8D6eaqU/5+MhSNxgmtDq08O77AlQhyq+yzlM0C0INS3fTC
+         fpRth9QNiKiayu7KqDjn7TQOcnVI6Kud7adEhFsS0nnhNK0BKahchWp4eZMPjNPVNPL+
+         yQow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692203328; x=1692808128;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=OXgjHTAdytoLgUZyHzzq4dyrdO9fvokMGFShZim/Sxs=;
+        b=SDew9uaS5dPCOGAlAGC37xWD6cHKoBABUwSXFIcKCC0+XsVVM0mY0dp6RHcC7S190z
+         a5sDk4dtO+24LrNLVWilBvJIImWWauXL+6r2OY9ln1gCrCxlYjjN+TJZoptIOuCJanIn
+         XGGmdj0GsuO1L0H+2YTe1F5A12amw3RCa35lkejz3OPUStdD+Ly8SNqciqjwGH13wVMV
+         DU4D6p7bG0kIIbqyebcVtUcBFzcN24IWzPGyTGa7ZasPtC2GYE6ZxV3jkaWjVodWsccL
+         /V+Qri+RwdSEKc1CjLN20nadnDoJvcJCEzx7KdMdyijAmSXpmRbs5KWriAdqHvp2poq+
+         7YTw==
+X-Gm-Message-State: AOJu0YzmH/kxigNwEdKMW6Onf51fsel8qeXkcM1aOdomHXBA+ULlyRMi
+	85lUnpGDUkP8ar7fSXkc6Vo=
+X-Google-Smtp-Source: AGHT+IE7gF6G+GXuQtpoM6J4S+ngEbixSrE1pG1ziA+I7vG4LD60n9fDC6EXepNmmTmiT3gmnjdQoA==
+X-Received: by 2002:a05:6358:7f04:b0:135:89d6:22e9 with SMTP id p4-20020a0563587f0400b0013589d622e9mr2669136rwn.13.1692203327824;
+        Wed, 16 Aug 2023 09:28:47 -0700 (PDT)
+Received: from [10.67.48.245] ([192.19.223.252])
+        by smtp.googlemail.com with ESMTPSA id k7-20020ac80747000000b0040378535dccsm4553854qth.43.2023.08.16.09.28.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 16 Aug 2023 09:28:46 -0700 (PDT)
+Message-ID: <7d44ebf9-3d1c-d405-5c1a-5ce721dc37e8@gmail.com>
+Date: Wed, 16 Aug 2023 09:28:18 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <e75ff985-2499-9a16-21fe-ee2e81547e6f@xs4all.nl>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 3/4] dt-bindings: net: dsa: realtek: require compatible
+ property under mdio node
+Content-Language: en-US
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Woojung Huh <woojung.huh@microchip.com>,
+ UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
+ Daniel Golle <daniel@makrotopia.org>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230812091708.34665-1-arinc.unal@arinc9.com>
+ <20230812091708.34665-4-arinc.unal@arinc9.com>
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <20230812091708.34665-4-arinc.unal@arinc9.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230816_073432_709480_25833910 
-X-CRM114-Status: GOOD (  26.00  )
+X-CRM114-CacheID: sfid-20230816_092850_452511_FB045BFE 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,84 +111,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hans,
+On 8/12/23 02:17, Arınç ÜNAL wrote:
+> The compatible property must be defined under the mdio node. Enforce it.
+> 
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Thank you for the patch.
-
-On Wed, Aug 16, 2023 at 02:47:33PM +0200, Hans Verkuil wrote:
-> Currently if VIDIOC_CREATE_BUFS is called to add new buffers, then the requested
-> number of planes per buffer might be different from the already allocated buffers.
-> 
-> However, this does not make a lot of sense and there are no drivers that allow
-> for variable number of planes in the allocated buffers.
-> 
-> While it is possible do this today, when such a buffer is queued it will fail
-> in the buf_prepare() callback where the plane sizes are checked if those are
-> large enough. If fewer planes were allocated, then the size for the missing
-> planes are 0 and the check will return -EINVAL.
-> 
-> But it is much better to do this check in VIDIOC_CREATE_BUFS.
-
-I don't think this is a good idea. One important use case for
-VIDIOC_CREATE_BUFS is to allocate buffers for a different format than
-the one currently configured for the device, to prepare for a future
-capture (or output) session with a different configuration. This patch
-would prevent that.
-
-> This patch adds the check to videobuf2-core.c
-> 
-> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-> ---
-> With this patch the mediatek vcodec patch would no longer be needed:
-> https://patchwork.linuxtv.org/project/linux-media/patch/20230810082333.972165-1-harperchen1110@gmail.com/
-> ---
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index cf6727d9c81f..b88c08319bbe 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -938,6 +938,10 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  			dprintk(q, 1, "memory model mismatch\n");
->  			return -EINVAL;
->  		}
-> +		if (requested_planes != q->num_planes) {
-> +			dprintk(q, 1, "num_planes mismatch\n");
-> +			return -EINVAL;
-> +		}
->  		if (!verify_coherency_flags(q, non_coherent_mem))
->  			return -EINVAL;
->  	}
-> @@ -1002,6 +1006,8 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  		mutex_unlock(&q->mmap_lock);
->  		return -ENOMEM;
->  	}
-> +	if (no_previous_buffers)
-> +		q->num_planes = num_planes;
->  	mutex_unlock(&q->mmap_lock);
-> 
->  	/*
-> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-> index 4b6a9d2ea372..799a285447b7 100644
-> --- a/include/media/videobuf2-core.h
-> +++ b/include/media/videobuf2-core.h
-> @@ -558,6 +558,7 @@ struct vb2_buf_ops {
->   * @dma_dir:	DMA mapping direction.
->   * @bufs:	videobuf2 buffer structures
->   * @num_buffers: number of allocated/used buffers
-> + * @num_planes: number of planes in each buffer
->   * @queued_list: list of buffers currently queued from userspace
->   * @queued_count: number of buffers queued and ready for streaming.
->   * @owned_by_drv_count: number of buffers owned by the driver
-> @@ -621,6 +622,7 @@ struct vb2_queue {
->  	enum dma_data_direction		dma_dir;
->  	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
->  	unsigned int			num_buffers;
-> +	unsigned int			num_planes;
-> 
->  	struct list_head		queued_list;
->  	unsigned int			queued_count;
-
+Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
 -- 
-Regards,
+Florian
 
-Laurent Pinchart
 
