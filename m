@@ -4,68 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4A7CC001B0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 10:04:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 840E2C001B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 10:06:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K4a16yo4PRKzeYgEd9cANVguczBVLRFAz5ZIy+noK6U=; b=Yk+ljMLtMzt0lxGMbg2Lam9yHg
-	6WS6atFHnIe9QgEtsJnM5kof0twYoBtqBfidYd+UuM4T/Tzw5y5v1/1iieBDQO1Fhx6R2Uc3/E6Gy
-	eBfJUU4ap9VULZ/5nJZHhB+HgwQiTSe0hPVcshNdinxb9NLro0DGXfJotA/hp/fiBrvzO0Cuz7H+V
-	GgIt26TavHsLpE+QorGbz2ttfFOuw760SJpJIXbTnlscLSsteDO4OLAednN6pEXmzqGvzSkPgkdNy
-	xGCsfuH8mG+d5Qzaqs36x6higuArDp01IJRLiCqFeAZpq6FF4TZ6ZOKArwgH4dN/T0qY5ncAQ7EnT
-	yX2e3DcQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hbB0m9jG4429KI47XkJsVs85hA3EGeFnXeCiJDrb/4k=; b=mLDlw+V8pqEsF4I97IcHomwSgd
+	4VgwKUFsLZnoH1TmT3ULYFyhN+SGxsWTs+6baLDUGsZusBh77Dxc7v630RTZ2mza0UNuf06IOdSh+
+	glO42eva1FmDi20rzNj/Jp4iE4arJnXMRdm7boc0ZQbigyxOD1GSSL1AwrvlsGA1WCHn0oplxLxLb
+	CpnwVerxpci0bWuyNiO4ngMJNaOOU4WM2pojI4O939MNfTpWl7LKKCzgJp2fj50XA+p6OysI3HMYm
+	M2qBlmnQhA3MZsC6uV8I8ts0XN/7YaTun17B/ZpzE2t26dLyKsBMl42wMXxLfEopTH6Q+NTqDcTDF
+	Fan3RzRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWDO6-003gny-1v;
-	Wed, 16 Aug 2023 10:04:26 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1qWDQV-003hHP-1W;
+	Wed, 16 Aug 2023 10:06:55 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWDNx-003gkk-0z;
-	Wed, 16 Aug 2023 10:04:19 +0000
-Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.57])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RQkCl3HDQztRyn;
-	Wed, 16 Aug 2023 18:00:35 +0800 (CST)
-Received: from localhost.localdomain (10.69.192.56) by
- dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Wed, 16 Aug 2023 18:04:11 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
-	<linyunsheng@huawei.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Alexander
- Duyck <alexander.duyck@gmail.com>, Liang Chen <liangchen.linux@gmail.com>,
-	Alexander Lobakin <aleksander.lobakin@intel.com>, Michael Chan
-	<michael.chan@broadcom.com>, Eric Dumazet <edumazet@google.com>, Yisen Zhuang
-	<yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, Sunil
- Goutham <sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>,
-	Subbaraya Sundeep <sbhatta@marvell.com>, hariprasad <hkelam@marvell.com>,
-	Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
-	<kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jesper
- Dangaard Brouer <hawk@kernel.org>, Ilias Apalodimas
-	<ilias.apalodimas@linaro.org>, <linux-wireless@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH net-next v7 3/6] page_pool: remove PP_FLAG_PAGE_FRAG
-Date: Wed, 16 Aug 2023 18:01:10 +0800
-Message-ID: <20230816100113.41034-4-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20230816100113.41034-1-linyunsheng@huawei.com>
-References: <20230816100113.41034-1-linyunsheng@huawei.com>
+	id 1qWDQT-003hGS-2E
+	for linux-mediatek@lists.infradead.org;
+	Wed, 16 Aug 2023 10:06:55 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-31972944f30so2792996f8f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Aug 2023 03:06:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1692180410; x=1692785210;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=hbB0m9jG4429KI47XkJsVs85hA3EGeFnXeCiJDrb/4k=;
+        b=r9gn5CeiUSXfg+w1EI5cqkxp28xR87PUwiWYn2eefFZJfOqMMFn1CDOOzLMg0e2e/D
+         2lMbEqH6MulqSl63hi+Bd9TrMcfAJCy+/JOzr7cWjrhrn4lCmcKQIOLqcLmBxvs9GtMD
+         Rtocrug9Rnww7uuW9jFAPsEV47g5pVmz0vXDozvIyzqvfwiP4lOri+WD/9iE/v5v7rWf
+         JxVf0eSsbGeNl/CT8SqtUGA61x+Q+gnPbyQrAwqRe2qDwL/CE1KNV03a/gY9eXqj+Lbq
+         K9JkPpBnsNq/Ae2MraylUXCrwD/IuKSkDJEQRQF0la12TAoZGgrMtXJ3d96iFfr2EGzJ
+         B9dA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692180410; x=1692785210;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=hbB0m9jG4429KI47XkJsVs85hA3EGeFnXeCiJDrb/4k=;
+        b=W/8JrI6ASRol8nhEhmCsK+4/o4oCQDZ7rBOc2TRk42uQQ8k2wS4jAUpBStIilAmSjj
+         F8/TSWoOrh00vmElp9dAwYYwg2JuBWFNueBi8d6n6RX8Z5J6JIAM67NZHuGQz6Fqx2WD
+         2UoBd8wpDFpjOIq6j0TnBFhiq9/W9lkOjnr7VrhkLGLniWW2IHRIvDeAZMg6Z/0pffHi
+         QuD7q9FYgJ93uT4xtwKsSYWlZ3Aye9dBLm3x+rwLm6PeHwcOyAw6wDejzcMN5DMDqRyX
+         abhy4mCq1xmpuWZz3e44obpIu5eHxtlm5jJ4vNg3DbccAJzgt8pkAuvpKFenAvifTIF0
+         ypHw==
+X-Gm-Message-State: AOJu0YzUUJwoR6MQpfX+eSEAn8xZlQhAvn3kRwUlRVyNS+k8VEwyaDnW
+	thmHgURpXvgymkm4+GxZeWtQ0Q==
+X-Google-Smtp-Source: AGHT+IGWY/WCLAfZebyqWJoXw+L01sLw0TskurC4DcPHDorGVHqeHdru6MlwysH4nH9IQcec3JPUCQ==
+X-Received: by 2002:a5d:456d:0:b0:315:ad00:e628 with SMTP id a13-20020a5d456d000000b00315ad00e628mr1033039wrc.47.1692180409880;
+        Wed, 16 Aug 2023 03:06:49 -0700 (PDT)
+Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.googlemail.com with ESMTPSA id l18-20020a5d4112000000b003144b95e1ecsm20731349wrp.93.2023.08.16.03.06.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 16 Aug 2023 03:06:49 -0700 (PDT)
+Message-ID: <5545c715-0c30-7da5-fe5f-d414681ca7e9@linaro.org>
+Date: Wed, 16 Aug 2023 12:06:48 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH -next] thermal: Clean up redundant dev_err_probe()
+Content-Language: en-US
+To: Chen Jiahao <chenjiahao16@huawei.com>, rafael@kernel.org,
+ amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, bchihi@baylibre.com,
+ wenst@chromium.org, robh@kernel.org, frank.li@vivo.com,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20230802094527.988842-1-chenjiahao16@huawei.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20230802094527.988842-1-chenjiahao16@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.69.192.56]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- dggpemm500005.china.huawei.com (7.185.36.74)
-X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230816_030417_748298_84BF9D07 
-X-CRM114-Status: GOOD (  18.83  )
+X-CRM114-CacheID: sfid-20230816_030653_733683_60053A1B 
+X-CRM114-Status: UNSURE (   9.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,140 +98,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PP_FLAG_PAGE_FRAG is not really needed after pp_frag_count
-handling is unified and page_pool_alloc_frag() is supported
-in 32-bit arch with 64-bit DMA, so remove it.
+On 02/08/2023 11:45, Chen Jiahao wrote:
+> Referring to platform_get_irq()'s definition, the return value has
+> already been checked if ret < 0, and printed via dev_err_probe().
+> Calling dev_err_probe() one more time outside platform_get_irq()
+> is obviously redundant.
+> 
+> Removing dev_err_probe() outside platform_get_irq() to clean up
+> above problem.
+> 
+> Signed-off-by: Chen Jiahao <chenjiahao16@huawei.com>
+> ---
 
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
-CC: Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Alexander Duyck <alexander.duyck@gmail.com>
-CC: Liang Chen <liangchen.linux@gmail.com>
-CC: Alexander Lobakin <aleksander.lobakin@intel.com>
----
- drivers/net/ethernet/broadcom/bnxt/bnxt.c                | 2 --
- drivers/net/ethernet/hisilicon/hns3/hns3_enet.c          | 3 +--
- drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c | 2 +-
- drivers/net/wireless/mediatek/mt76/mac80211.c            | 2 +-
- include/net/page_pool/types.h                            | 8 ++------
- net/core/page_pool.c                                     | 3 ---
- net/core/skbuff.c                                        | 2 +-
- 7 files changed, 6 insertions(+), 16 deletions(-)
+Applied, thanks
 
-diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-index 7be917a8da48..60b699be0d9b 100644
---- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-+++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-@@ -3249,8 +3249,6 @@ static int bnxt_alloc_rx_page_pool(struct bnxt *bp,
- 	pp.napi = &rxr->bnapi->napi;
- 	pp.dev = &bp->pdev->dev;
- 	pp.dma_dir = DMA_BIDIRECTIONAL;
--	if (PAGE_SIZE > BNXT_RX_PAGE_SIZE)
--		pp.flags |= PP_FLAG_PAGE_FRAG;
- 
- 	rxr->page_pool = page_pool_create(&pp);
- 	if (IS_ERR(rxr->page_pool)) {
-diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c b/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
-index eac2d0573241..ff0c219365f1 100644
---- a/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
-+++ b/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
-@@ -4926,8 +4926,7 @@ static void hns3_put_ring_config(struct hns3_nic_priv *priv)
- static void hns3_alloc_page_pool(struct hns3_enet_ring *ring)
- {
- 	struct page_pool_params pp_params = {
--		.flags = PP_FLAG_DMA_MAP | PP_FLAG_PAGE_FRAG |
--				PP_FLAG_DMA_SYNC_DEV,
-+		.flags = PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV,
- 		.order = hns3_page_order(ring),
- 		.pool_size = ring->desc_num * hns3_buf_size(ring) /
- 				(PAGE_SIZE << hns3_page_order(ring)),
-diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-index dce3cea00032..edc6acebf369 100644
---- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-+++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-@@ -1433,7 +1433,7 @@ int otx2_pool_init(struct otx2_nic *pfvf, u16 pool_id,
- 		return 0;
- 	}
- 
--	pp_params.flags = PP_FLAG_PAGE_FRAG | PP_FLAG_DMA_MAP;
-+	pp_params.flags = PP_FLAG_DMA_MAP;
- 	pp_params.pool_size = numptrs;
- 	pp_params.nid = NUMA_NO_NODE;
- 	pp_params.dev = pfvf->dev;
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index d158320bc15d..fe7cc67b7ee2 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -566,7 +566,7 @@ int mt76_create_page_pool(struct mt76_dev *dev, struct mt76_queue *q)
- {
- 	struct page_pool_params pp_params = {
- 		.order = 0,
--		.flags = PP_FLAG_PAGE_FRAG,
-+		.flags = 0,
- 		.nid = NUMA_NO_NODE,
- 		.dev = dev->dma_dev,
- 	};
-diff --git a/include/net/page_pool/types.h b/include/net/page_pool/types.h
-index 079337c42aa6..4775cf95edb7 100644
---- a/include/net/page_pool/types.h
-+++ b/include/net/page_pool/types.h
-@@ -15,19 +15,15 @@
-  */
- #define PP_FLAG_DMA_SYNC_DEV		BIT(1)
- 
--/* for page frag feature */
--#define PP_FLAG_PAGE_FRAG		BIT(2)
--
- /* If set driver will do the page splitting itself. This is used to fail the
-  * page_pool creation because there is overlap issue between pp_frag_count and
-  * dma_addr_upper in 'struct page' for some arches with
-  * PAGE_POOL_DMA_USE_PP_FRAG_COUNT being true.
-  */
--#define PP_FLAG_PAGE_SPLIT_IN_DRIVER	BIT(3)
-+#define PP_FLAG_PAGE_SPLIT_IN_DRIVER	BIT(2)
- 
- #define PP_FLAG_ALL		(PP_FLAG_DMA_MAP |\
- 				 PP_FLAG_DMA_SYNC_DEV |\
--				 PP_FLAG_PAGE_FRAG |\
- 				 PP_FLAG_PAGE_SPLIT_IN_DRIVER)
- 
- /*
-@@ -53,7 +49,7 @@ struct pp_alloc_cache {
- 
- /**
-  * struct page_pool_params - page pool parameters
-- * @flags:	PP_FLAG_DMA_MAP, PP_FLAG_DMA_SYNC_DEV, PP_FLAG_PAGE_FRAG,
-+ * @flags:	PP_FLAG_DMA_MAP, PP_FLAG_DMA_SYNC_DEV,
-  *		PP_FLAG_PAGE_SPLIT_IN_DRIVER
-  * @order:	2^order pages on allocation
-  * @pool_size:	size of the ptr_ring
-diff --git a/net/core/page_pool.c b/net/core/page_pool.c
-index 386e6d791e90..d3b8efe98d5e 100644
---- a/net/core/page_pool.c
-+++ b/net/core/page_pool.c
-@@ -751,9 +751,6 @@ struct page *__page_pool_alloc_frag(struct page_pool *pool,
- 	unsigned int max_size = PAGE_SIZE << pool->p.order;
- 	struct page *page = pool->frag_page;
- 
--	if (WARN_ON(!(pool->p.flags & PP_FLAG_PAGE_FRAG)))
--		return NULL;
--
- 	*offset = pool->frag_offset;
- 
- 	if (page && *offset + size > max_size) {
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index 33fdf04d4334..4b90b6ed10b2 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -5709,7 +5709,7 @@ bool skb_try_coalesce(struct sk_buff *to, struct sk_buff *from,
- 	/* In general, avoid mixing page_pool and non-page_pool allocated
- 	 * pages within the same SKB. Additionally avoid dealing with clones
- 	 * with page_pool pages, in case the SKB is using page_pool fragment
--	 * references (PP_FLAG_PAGE_FRAG). Since we only take full page
-+	 * references (page_pool_alloc_frag()). Since we only take full page
- 	 * references for cloned SKBs at the moment that would result in
- 	 * inconsistent reference counts.
- 	 * In theory we could take full references if @from is cloned and
 -- 
-2.33.0
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
 
