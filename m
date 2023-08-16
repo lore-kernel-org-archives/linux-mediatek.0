@@ -4,78 +4,156 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 509A0C04A6A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 12:37:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70A13C001B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 12:44:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vJfh6GC8aHch959POkYyqkTUnj4NnXdjMKw7FcRwKoc=; b=g2Lsr23fLOO7hHlGJ1eEsS5tb9
-	eIrq8ygw8EbU7twZRv6owIKrKfUt7XKFNZtMBM7Z6e+9qbHID02XtbLsekOgo6MLA+LAIr2kRS+aW
-	HTs/sHdUaktbecToM25y/20lkWxRxUfVbVp0+bJHHgl1MCK7xUiRsNDws0sanZHVeFMARBF5AUjU/
-	jrTUOzPu+DmeL7CZpDeMUnqbQBwxwK/i3b0oo1gKkWgC6mZLehSCZLF0XU7DMsBNayfjciF5RtNOT
-	ms3yR481+Gnt5BnZLZH5nfCTgOQ/K/jfcRDLcZC4HEE1+clmYjH0r38myFkboCAyTBwz1l1Wtj1Ij
-	rfRIstWg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HTIS3tL6o8HXFow2YwPQlHE6eJ8x2zeA+YIsj9Z+Vbg=; b=BbIqKVadFNEGPoWMq0PzEQbq5Q
+	bqze/YgIQ9xWT58WwD+4HDBhP+Lr+AfFcwUvbZ1M2PUZjLEN6Wb4r59egZl8+pnxGTvS+GZ7gUs6f
+	nPJClq7u16SDrUqEv6hbIzHXdygZ1rqFyYGtQn+4niAZdv/P0utrhE1MSBBcAKGhTJl1J/Uf2YgfG
+	nVyn5CCiiEIQgcICc53IWL4w73ewGCExBUNyLngDDV5L9uoEaLGxhsIMlCtYQyNq9blJ0Eum++Xxk
+	ZMKqYWWkor7poiFybkr+YsKxrDXbnb1wMjp8VaUzuL3+JHYApooK4gSfP0QPmET+smfgybDcwnEJu
+	/yBc5vVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWFm7-0049wY-0k;
-	Wed, 16 Aug 2023 12:37:23 +0000
-Received: from 0001.3ffe.de ([159.69.201.130] helo=mail.3ffe.de)
+	id 1qWFtM-004Ahq-12;
+	Wed, 16 Aug 2023 12:44:52 +0000
+Received: from mail-bn7nam10on20626.outbound.protection.outlook.com ([2a01:111:f400:7e8a::626] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWFlw-0049tB-1O;
-	Wed, 16 Aug 2023 12:37:13 +0000
-Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 3514AA06;
-	Wed, 16 Aug 2023 14:37:08 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1692189428;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vJfh6GC8aHch959POkYyqkTUnj4NnXdjMKw7FcRwKoc=;
-	b=u8hsom4F23QN+Q0vmRp43G18VGyk4NagNu0MBrNjIj82pxXy7IdgNV1LyTKVVledQSz0Mr
-	yWqNrOj03deQUT0jvO8ZmrKfCDriYz9ymRcOGi9FU2T5d0Wbs/p088U7l0anJN/JvEFOu0
-	gEvQd+3d60Qg3aElZTBAvP9OJPTrCzb1vUnAhZJGSMps6CWM1kQ58UFp+laD9NR5/rcw1n
-	C1tWsUsHbPCaeKpN9GnRRcpO5a6NkVK9RA7baa99xytvA59XKaUtFl0ZpgUs+d54oRVXFg
-	NgpVc/pmdUwmfzBl1mXRHjIQvgjjrtSl+fT8m9Qo4GCuwQtGVtSDq9dtjW841A==
+	id 1qWFtJ-004Agu-10;
+	Wed, 16 Aug 2023 12:44:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=IWb9Q+f2EXppGaziNP28OUnaeQjMXy4c/b9vVVTlK6KKfHtX92XfP1H9noW6h15v8BeBYAOHbsa+Pgw5y+I/VF1jQRVaSntwQIGuhvqozmS/bFCGIvsOnKSapQjAtTkJq7oXseGNPdabVGpsznLHaka8Nerxf8DICVC7MMuSZftGXvl1O0Jgu2a5dJ2CY9RKqOcQPbLHtOxK3Jme4x7SMFsVrp7dFJvIjVwIAZ1XmMbtdiwDZ6rg2+hEAGUKZ2mC+KNu4xL5EyIUO9+K3qtijyCDgA03D2WvhpKzJm678Uihrbb70JSkwaZjnzCgzYbPq9uEEHxB9TZCN8Aq1t6FAQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=HTIS3tL6o8HXFow2YwPQlHE6eJ8x2zeA+YIsj9Z+Vbg=;
+ b=K6+bLeOXOBBTbqjHoDEzbM8EcvtWgnkJ2F4fCPdXSxZefTQJ/Tv2DSZRFILp5OQMxplw4LE0p5dOnpeAW5mpq9JN3DD+3f3tvzhX7VrpkCd9u7uUJLTWyaxqAtxJSSs3f3yxc3zqIl/UTZJIMDHYSVv9oXCPAEnYyRGprfTqPl83NuNisKZDbYKtKbfa2f6GsN3xg2oE/Uejs/FF/FeBR602WGirKo7V7RLGAA36znHvC+rVG2HswV/Q7pdpllxgvwyRu5BTBosmKMVjgxQWQAD/2veQJZDSiPuixSOL5lDa2m5Zf/Ppf8ENB3QrfjoT+pJfUYkuL7voEL3lp7rhog==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=HTIS3tL6o8HXFow2YwPQlHE6eJ8x2zeA+YIsj9Z+Vbg=;
+ b=MvUcAMIqiNrh/5CBIMIilz1XobwuGwolomHxiVTgo2wex2AdsHvE9g4a1rIC/VIxVrqa4wVmYQ2vbVBXjYTTYQ2wY9yiYVIbO+nee49m0BHoS0g+SvOjQcLvSsRaqrRvfAihXK/slbWnAh5dxEXIMIeyytb/oLM2fHn8pcZFFRYXi41aY5aLhiS9wLIr5N+4+nmtoch9tV5lafCu5TscvtcmuEeJhCoICkui6Xp/3cDlI6xzcAX8bFe5tm0BO4cqC3Q7LEdPZ8qGCaSrz/HnOp9vMmmJHZS9GVgOLkWM9dCvJoLVoJNejXoRGDNzs23+70ImH5AWQn2kc+KWVWVisA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by PH8PR12MB7445.namprd12.prod.outlook.com (2603:10b6:510:217::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6678.26; Wed, 16 Aug
+ 2023 12:44:43 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6678.025; Wed, 16 Aug 2023
+ 12:44:43 +0000
+Date: Wed, 16 Aug 2023 09:44:41 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Baolu Lu <baolu.lu@linux.intel.com>
+Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
+	linuxppc-dev@lists.ozlabs.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Steven Price <steven.price@arm.com>,
+	Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v6 08/25] iommu: Reorganize
+ iommu_get_default_domain_type() to respect def_domain_type()
+Message-ID: <ZNzEubbluKrz6lWs@nvidia.com>
+References: <8-v6-e8114faedade+425-iommu_all_defdom_jgg@nvidia.com>
+ <b50a464a-fa28-e359-1bc5-4f2b105326ad@linux.intel.com>
+ <ZNpjmiBLneBC9oWe@nvidia.com>
+ <c24e7eff-b28c-8152-6022-325ca89c8074@linux.intel.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c24e7eff-b28c-8152-6022-325ca89c8074@linux.intel.com>
+X-ClientProxiedBy: CH2PR20CA0028.namprd20.prod.outlook.com
+ (2603:10b6:610:58::38) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-Date: Wed, 16 Aug 2023 14:37:07 +0200
-From: Michael Walle <michael@walle.cc>
-To: Tudor Ambarus <tudor.ambarus@linaro.org>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Bjorn Andersson
- <andersson@kernel.org>, Pratyush Yadav <pratyush@kernel.org>, "Miquel Raynal
- )" <miquel.raynal@bootlin.com>, "Richard Weinberger )" <richard@nod.at>,
- "Vignesh Raghavendra )" <vigneshr@ti.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- cros-qcom-dts-watchers@chromium.org, Andy Gross <agross@kernel.org>, Konrad
- Dybcio <konrad.dybcio@linaro.org>
-Subject: Re: [PATCH v2,1/2] mtd: spi-nor: giga: gd25lq64c: Disable quad mode
- according to bus width
-In-Reply-To: <0011a25a-e096-73ac-9800-9d8e35efdc8b@linaro.org>
-References: <20230816104245.2676965-1-hsinyi@chromium.org>
- <6702bac712daab13698b9bb9ad81d49e@walle.cc>
- <5911201a-f703-abbd-3c7b-769f70df08a8@linaro.org>
- <80ec748f37f40ae5c3c3c5d1602681b3@walle.cc>
- <0011a25a-e096-73ac-9800-9d8e35efdc8b@linaro.org>
-Message-ID: <ecfe1bc6799755d1f2c6f94b8cb59b27@walle.cc>
-X-Sender: michael@walle.cc
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|PH8PR12MB7445:EE_
+X-MS-Office365-Filtering-Correlation-Id: d3f25203-f6e6-48bf-b6da-08db9e56907a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: EfcWWQv83+YJofu3dlHUx8ZSpBkFv+ou/rL0iku77GS2fpxFKJtHuYR99H88r7YwTu7XWtnYrVa7lO3DUS5jg8ypZ5J5cSAszyEHisZ2Ql15iOhOOwYX4OYSwYRFr6SzYX2xJkWqUXxN4QOEu5M+ugzcIukpqYLhd0N55391j8MEKrRJpoj44nMcYUiJEyprP79yToyix806bmGZmcqoMC0PPTB2ZtYN7NVzjuPBkU1Z0UQ1QGxzD3vpWvDzCGOo7fW/BHqdKnAfJrljMMEeCkltKXUpO0jm1Yv1N8rkNczIkAz4+BuW2J8u1P5TQEQAY9EILDskOEqhHZvuOp30v1Q+9H7VPoNsMOCUmuOIugcvm8TMshmI4n3G+ra/ndrZ4+74bx0rry+eFS1uKCmesG0rNKFlztzqpkeDIKnqLQlASrnmEv1cbz4w/r8w7ZhVqBVSXivNgEsUks5HI7IPm90r4Cc60V5zAV9vfIDnigyGapjuDfh0weyR6ZDbXrUzEimM5qMo+fNiSgD3QEWqKJt2rWdMm6KPDmEG9cUbM+8A27/LkG7pe8FMpc3Dr0Dh
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(396003)(39860400002)(346002)(366004)(376002)(136003)(1800799009)(451199024)(186009)(316002)(54906003)(6916009)(66946007)(66476007)(66556008)(41300700001)(5660300002)(38100700002)(8676002)(4326008)(8936002)(2906002)(83380400001)(26005)(478600001)(7416002)(7406005)(86362001)(6512007)(107886003)(6506007)(36756003)(2616005)(6486002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?YEFh7EViI9sw9XM5u/anGA7DFEO/4ik18m+UjLV1E9owrdDWtGikl4IJ5704?=
+ =?us-ascii?Q?dQyxu5DpSr6jRzjPV2KGWSR4FPc/c5FqbYwMR8J3CMxQz+b/mqlMHGFxj8aC?=
+ =?us-ascii?Q?P4li1BDiqm0fq3p1efavgYUFkoiMr37jkQljLO04ORJnT3spTfwBlOqFOM2A?=
+ =?us-ascii?Q?4buifHbEKKiLvdjs/1vocGVQtEguGC6EFVmG0ge+urssgvEgM197Jde7ePEX?=
+ =?us-ascii?Q?MdOVaf106dyKRxZ1EPg0Cqt30L380Qnbi4YaG0NsbFjbJ7NrivR9kGZjq4dM?=
+ =?us-ascii?Q?9ZuDJVmYXJKxkrO7FAl33onaEIZ/LjiIXcvuRk4y5rWg0fV806ybq99CpIci?=
+ =?us-ascii?Q?sxrSB7e3ztnsteXYqu8kGh7Y+aRa68Q+AVlEQLoMVTqDNaicNcj7Hd6yaNv4?=
+ =?us-ascii?Q?u4Ht219ivTAciyo/iRW8mVGZyrf2rhDmaDHhc3WYrqkAaIIj2YOO4uSDzZnV?=
+ =?us-ascii?Q?BcseGP7Tvo3D4/UZkFaC88C+8TDmGF2LilWRGjyME+8YqCZU3AxLr69SqGrD?=
+ =?us-ascii?Q?YBiG+r9xt+FNt3ojTb+iRlwpZdtXgEPMAg6YcTXNhdgrqBI1xTQAveBt3wS7?=
+ =?us-ascii?Q?Zr9OZO3ueeEsYFKyoW4/lZB/RNHCEb3y/ricMnhP+/9AofCy0X537zkZWfwG?=
+ =?us-ascii?Q?4bn1eS8k/l8jS+zXDLsB3ib68rZGWyNSQLyDaz93DYY4ZkUojd75vL2k8rSs?=
+ =?us-ascii?Q?cTDLG38jq2MFi7F1bjG+5hJjQqroY0Wf7HzaisqMg5rG9dp4bKzSkvhYbyum?=
+ =?us-ascii?Q?bhU+cPcgJUKqiQhpQ3C/EVZ5qN6fURT2otcjzN9UMCOfDsQBQH7tbuq/jg0A?=
+ =?us-ascii?Q?XK3xEpMUhOyGtThZB3nwjdNULwjSG+sg/CmdIBanIGXa+jOb02sXL5uF6SHP?=
+ =?us-ascii?Q?6oDb6O/8JA2YO3nX0eD6UKFqXACI9zoBHqTYXKnoy7qnaw4H4ph2M2gMNqt3?=
+ =?us-ascii?Q?4z30ETvBrpEDly3/IcbDsDVZiVxAJCeXgX2PykNr5HHNPQ1ZtWxDBS89xCXN?=
+ =?us-ascii?Q?841P9DveR/c+7NC9GLPFK2ROlIlqi6MRIf98v0nLSDC6nuJccvy47qahrcgG?=
+ =?us-ascii?Q?zHbee8pyTwwfd+FBYOxMlOEVO14KHpz86vDuwTd9PJgOtiYQ4f7SNDHWR1jZ?=
+ =?us-ascii?Q?VBii4Um7hAvjsLMSlBHiqg4a4iM+8O7YcevYHOdK1nslrW1OUm1Jq4EQY38/?=
+ =?us-ascii?Q?/U/FVZ2dUZEtfmhIkGqMtw42FiFJgclG8xr7Hf/4V2kECpuyifT0twKz6reH?=
+ =?us-ascii?Q?h4G2DnoiMf8Fd9VUdY/dzhKXIec8gfUPgOyTooVBXZ289X+mQDuVbUTvRB5w?=
+ =?us-ascii?Q?0wkv+mNBb40+M/42WeZt1Px0ym5qbRNNo8iOE6QQ/Dz3gapl2HAHA9OAzTkv?=
+ =?us-ascii?Q?hosqrRJ+FWq/rz+6Q+B4zHDGYCB+f61uc+N3h4fa/WeWiiwdKZEHRpwLs7/N?=
+ =?us-ascii?Q?oNg5tchl0zBvCNRhLXVUO9rpuw/nYzY6JZRLnXFZQta52wkLa0dJmQmEQXv/?=
+ =?us-ascii?Q?ywrktU8BJFXMyxj3Q/RY4bcNrA4t4HbuaVUIR5evMLlZneiQ0ycageRlNG0Z?=
+ =?us-ascii?Q?HTFhFvUEy7GB1qQ9XoExhL/bV2n6oknOx66RMf51?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d3f25203-f6e6-48bf-b6da-08db9e56907a
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Aug 2023 12:44:43.4838
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: XvkAla3FxciIfevCAI0JAvhgNXpBl1AUzC0EBX68AI1S/+CGyZcR9y9L1Hw0cA0m
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB7445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230816_053712_664951_44DEABDF 
-X-CRM114-Status: GOOD (  18.48  )
+X-CRM114-CacheID: sfid-20230816_054449_373371_170DDA4C 
+X-CRM114-Status: GOOD (  18.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,62 +168,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tue, Aug 15, 2023 at 09:18:59AM +0800, Baolu Lu wrote:
 
->>>> like a fundamental problem and that commit 39d1e3340c73 ("mtd: 
->>>> spi-nor:
->>>> Fix clearing of QE bit on lock()/unlock()") is broken in that 
->>>> regard.
->>> 
->>> what's wrong with the mentioned commit?
->> 
->>         } else if (nor->params->quad_enable) {
->>                 /*
->>                  * If the Status Register 2 Read command (35h) is not
->>                  * supported, we should at least be sure we don't
->>                  * change the value of the SR2 Quad Enable bit.
->>                  *
->>                  * We can safely assume that when the Quad Enable 
->> method is
->>                  * set, the value of the QE bit is one, as a 
->> consequence of the
->>                  * nor->params->quad_enable() call.
->>                  *
->>                  * We can safely assume that the Quad Enable bit is 
->> present in
->>                  * the Status Register 2 at BIT(1). According to the 
->> JESD216
->>                  * revB standard, BFPT DWORDS[15], bits 22:20, the 
->> 16-bit
->>                  * Write Status (01h) command is available just for 
->> the cases
->>                  * in which the QE bit is described in SR2 at BIT(1).
->>                  */
->>                 sr_cr[1] = SR2_QUAD_EN_BIT1;
->>         } else {
->>                 sr_cr[1] = 0;
->>         }
->> 
->> "We can safely assume that when the Quad Enable method..". We cannot, 
->> if we
->> don't have 4 I/O lines. The quad_enable is just the op how to do it, 
->> but not
->> *if* can do it. It seems to be missing the same check as the
->> spi_nor_quad_enable(). But I'm not sure if it's that simple.
->> 
+> > 	/*
+> > 	 * Try to recover, drivers are allowed to force IDENITY or DMA, IDENTITY
+> > 	 * takes precedence.
+> > 	 */
+> > 	if (cur_type || type == IOMMU_DOMAIN_IDENTITY)
+> > 		return IOMMU_DOMAIN_IDENTITY;
 > 
-> I see. Then extending the if condition should do the trick, as
-> spi_nor_write_16bit_sr_and_check() is called after setup. Something
-> like:
+> No need to check cur_type. It already returned if cur_type is 0.
+
+Yep
+ 
+> > 	return cur_type;
+> > }
+> > 
+> > /*
+> >   * A target_type of 0 will select the best domain type. 0 can be returned in
+> >   * this case meaning the global default should be used.
+> >   */
+> > static int iommu_get_default_domain_type(struct iommu_group *group,
+> > 					 int target_type)
+> > {
+> > 	struct device *untrusted = NULL;
+> > 	struct group_device *gdev;
+> > 	int driver_type = 0;
+> > 
+> > 	lockdep_assert_held(&group->mutex);
+> > 
+> > 	/*
+> > 	 * ARM32 drivers supporting CONFIG_ARM_DMA_USE_IOMMU can declare an
+> > 	 * identity_domain and it will automatically become their default
+> > 	 * domain. Later on ARM_DMA_USE_IOMMU will install its UNMANAGED domain.
+> > 	 * Override the selection to IDENTITY.
+> > 	 */
+> > 	if (IS_ENABLED(CONFIG_ARM_DMA_USE_IOMMU)) {
+> > 		static_assert(!(IS_ENABLED(CONFIG_ARM_DMA_USE_IOMMU) &&
+> > 				IS_ENABLED(CONFIG_IOMMU_DMA)));
 > 
-> if (spi_nor_get_protocol_width(nor->read_proto) == 4 &&
->     spi_nor_get_protocol_width(nor->write_proto) == 4 &&
->     nor->params->quad_enable)
+> IS_ENABLED(CONFIG_ARM_DMA_USE_IOMMU) is duplicate with the condition in the
+> if statement. So only
+> 		static_assert(!IS_ENABLED(CONFIG_IOMMU_DMA));
+> ?
+
+static_assert doesn't work that way, it ignores its calling context
+and always checks during compilation, so the duplication is required
+
+> > 
+> > 	for_each_group_device(group, gdev) {
+> > 		driver_type = iommu_get_def_domain_type(group, gdev->dev,
+> > 							driver_type);
 > 
-> Is this what Hsin-Yi is hitting?
+> No need to call this in the loop body?
 
-Hopefully :)
+Do need it, this only gets the def_domain_type of a single device so
+we have to iterate over all the devices in the group to 'reduce' the
+type for the group.
 
--michael
-
+Thanks,
+Jason
 
