@@ -4,87 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69AE2C001B0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 10:34:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A518C04A94
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 10:43:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3Zt5s29TnSg/CAmpiGJTp2KeGbSi5eYrrS3v7ExYhXA=; b=VPg5Yi0xt4VFvYwCB4PVoLsriz
-	0hyVQnBu1ESiCiMdvMQyL7fbDDFjVfxbjOqrwjsgG9nL1KmJ54d/VGG3RqVp7J14Bxpbdq/b/JXa6
-	1+8wWT6ncM5PyOGJXGmL0xDl7k3+zk/RG9UzdHSkJ+vIszJYmFHHlxPl3vn+LTNMUgD3fKMm8X9OG
-	46oRvhQrZTDwX+g/0SLSDEQ2fV6Fq7pS7R6pDZCeym4KYreprmTeQca1YGKHwYZAVtQinFc4wVAQI
-	tldVId1OuEelVKMxsFfT85lRBFv2RjtUM5D3yDZFYUtG85IebVQ1rmrLeamy/YSsechIM/iUWzJYf
-	4wezKMZg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7PnvIFrpSGnja4bvJtTn8bJ0Kfic4a2Wxy3t2tdxXRU=; b=vGen0gzZPJ2syoXaAFy6c8aCYK
+	NQuUJlrBYtiwdL3eIWMgp7hXh5anwm2yEFunWdtNUpOgp56VHUzxnKnA4RP2her7Z5gXN86SySUi6
+	hSFrNAm29fxYsGYaJhhwYO4XlayeqVpC3o6I9vT1FRdIHC+UfvsEYZZr7ZI/66x3d38pjzOc+q+kJ
+	A+Sk6AausXavYEwGMjbvw/1RBrSIUMwTtHDXRpsKDmztcLB7vu3qHqr5y1NTpus6tx0Gcxi9RuXw6
+	Qg2uTzBRC1B4temkTbvo2g2vk/EpjPOkHtSvRvFte+yVHziqKapf+T1ChIGcdAKAzaiAhQB1Ab2Cf
+	AdIfvmFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWDrD-003r5d-05;
-	Wed, 16 Aug 2023 10:34:31 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1qWDzP-003s3Q-0E;
+	Wed, 16 Aug 2023 10:42:59 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWDrA-003r4V-0H
+	id 1qWDzL-003s1P-0m
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Aug 2023 10:34:29 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-3fe4cdb727cso64699995e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Aug 2023 03:34:26 -0700 (PDT)
+	Wed, 16 Aug 2023 10:42:56 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-1bc7e65ea44so43396675ad.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Aug 2023 03:42:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1692182065; x=1692786865;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=3Zt5s29TnSg/CAmpiGJTp2KeGbSi5eYrrS3v7ExYhXA=;
-        b=XrTS+uZWIuwDbjV2LJQ6SaPt+4MG+NZ0PDne2qv/Mm0VWAwJiLWmy0oA8mNvJ85tZD
-         ovhnG7HnZezWid/JQ5eZUvQ5ZkJ43t+JAAU37fuM7hv0eP3cS0691IBZ8N0+gVg5nh+7
-         0XjvUI7QiT6DXAkOKBo7kqayPQwo1hmBxUUj2UgFNibnNY7VTekNygLuBdA7XWbFHC+6
-         5OkhGyTvnnhvlKTWst3gMYaRrDaEECz99+uYZxU0Lx8BJm6YJThyuV7uWTyaZu7Am2tM
-         I1/d4RLrNTe/Nuow5B7Ins8jTXRqyuUM8YJeP4wXGxm/CcqWN0hRzHU4ucZbo/w9l2Iw
-         kqXQ==
+        d=chromium.org; s=google; t=1692182572; x=1692787372;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=7PnvIFrpSGnja4bvJtTn8bJ0Kfic4a2Wxy3t2tdxXRU=;
+        b=CoAp7Fc1Cacsc2lmTyKEL5Lgy0D1mtYvNUWh/lzpXdMqI76zMeZUv1o3cpEgTmRLP/
+         kQ3Leidt/qHEmucA2U/DXSpGAbR1wh7SMHtLueY98tqpRiXqKsul9R38jTyghIwV4Bez
+         ZLQZnBLtq0Fiv4ucAAh1wbSGG1XqddS8CIm7w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692182065; x=1692786865;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3Zt5s29TnSg/CAmpiGJTp2KeGbSi5eYrrS3v7ExYhXA=;
-        b=X0GWhGv/DBqof7JUcXFs7BKcTvGhB2SGk63qJHPRN5d+NIcaZgQ6pA9p3GiJmbrXmv
-         vkIm+3APpGfc++BikyR6psNk51WFW4BeMnE35056VspqRvvFctiBQfCmrP+14AXwI3TL
-         sqsM03f+eE+8N1I1yOp/wzNppvzzzwkL3GBZQEIVTov66W31MBTSeRgV3w4bsPYhMmCK
-         ART/+GrSLKIMlWyjAT3uOT0PlXOdMGj/SQSzG7x2EzB9xYR+zs8gZbBfvxA9mGYLFgxZ
-         HmpJBjJymjD9jKiWDQC8+3CeYoLlGFnWPGwF4yNr1EMB6xhzakpAU2SwKuE325kWRvYj
-         BKKg==
-X-Gm-Message-State: AOJu0YzRrBJjlNvP6MyMojr+rT+5emTKaDMYqOselmu1CXRfzyL4embs
-	8GDvmElEQcvSGSfIIHpMkSQPxA==
-X-Google-Smtp-Source: AGHT+IEHnjG1745XHVSq0ZGcqMftv8YU1ddVlDVtAVOTAo25ZERTfubpQnq/0Y1258rby6TxUWnjkA==
-X-Received: by 2002:a7b:c458:0:b0:3fe:4cbc:c34c with SMTP id l24-20020a7bc458000000b003fe4cbcc34cmr1071490wmi.24.1692182064818;
-        Wed, 16 Aug 2023 03:34:24 -0700 (PDT)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id c16-20020a7bc010000000b003fc00212c1esm20895369wmb.28.2023.08.16.03.34.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Aug 2023 03:34:24 -0700 (PDT)
-Message-ID: <3a34c547-f6f5-7e8a-8a2c-157dd651490c@linaro.org>
-Date: Wed, 16 Aug 2023 12:34:23 +0200
+        d=1e100.net; s=20221208; t=1692182572; x=1692787372;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=7PnvIFrpSGnja4bvJtTn8bJ0Kfic4a2Wxy3t2tdxXRU=;
+        b=jEgiIyFsrVHkrNz5TkfqHbpDo6iPJwYTzrnKznzWfU0k2WygDYEsPD4qiwAyOS01jG
+         mNQYbS61zq1MCwuRi7qTwUJBLfU7SDUnDWIfi8FcLY/jX8/FN28iV40SX38hUZ3JMUz0
+         fHXmwOKvhian3jl5Z3b1M2EUSWqc/wZ/mt0QBNQbIsFaar+d3i5Ikbl3sUWZWxIhww5U
+         MGrFPsD5OzPv+edeqL4ZAUEAvfl3L4+GqFL0/3j3htt3ZGSGl4WoKFNlQzBMSS3jr2rA
+         e5fnIBt/xXhi1iTVsncOAG1aTn1vPVYXMQgsFsjCsRcT2oT6kNXsNaaoPAPcA6cOhvIW
+         lwbw==
+X-Gm-Message-State: AOJu0Yw0eBuuCG7WKg9vm7Lg1E6ybB0qzIhMVaxtHbWyFGqxeUn9s/Z2
+	zn5i/mBVcrjIJZc216tmqDBMqQ==
+X-Google-Smtp-Source: AGHT+IFPXnWFX4zJxPA3lPUtxu59Q9sGZo/xVnTX67kYXuB7P1GInWKjqj/biOIS/1y+wH4+4gntTQ==
+X-Received: by 2002:a17:902:c70c:b0:1bd:f69e:a407 with SMTP id p12-20020a170902c70c00b001bdf69ea407mr4771921plp.8.1692182572401;
+        Wed, 16 Aug 2023 03:42:52 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com ([2401:fa00:1:10:40cf:3807:f8c8:2d76])
+        by smtp.gmail.com with ESMTPSA id kx14-20020a170902f94e00b001b8a3dd5a4asm2899270plb.283.2023.08.16.03.42.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Aug 2023 03:42:52 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Bjorn Andersson <andersson@kernel.org>
+Cc: Pratyush Yadav <pratyush@kernel.org>,
+	Michael Walle <michael@walle.cc>,
+	"Miquel Raynal )" <miquel.raynal@bootlin.com>,
+	"Richard Weinberger )" <richard@nod.at>,
+	"Vignesh Raghavendra )" <vigneshr@ti.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	linux-mtd@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	cros-qcom-dts-watchers@chromium.org,
+	Andy Gross <agross@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>
+Subject: [PATCH v2,1/2] mtd: spi-nor: giga: gd25lq64c: Disable quad mode according to bus width
+Date: Wed, 16 Aug 2023 18:38:32 +0800
+Message-ID: <20230816104245.2676965-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.41.0.694.ge786442a9b-goog
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH] thermal: mediatek: auxadc_thermal: removed call to
- platform_set_drvdata()
-Content-Language: en-US
-To: Andrei Coardos <aboutphysycs@gmail.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org
-Cc: rdunlap@infradead.org, void0red@hust.edu.cn, daniel@makrotopia.org,
- bchihi@baylibre.com, aouledameur@baylibre.com,
- angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
- rui.zhang@intel.com, amitk@kernel.org, rafael@kernel.org, alex@shruggie.ro
-References: <20230811192847.3838-1-aboutphysycs@gmail.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20230811192847.3838-1-aboutphysycs@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230816_033428_142493_B5CD9B98 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20230816_034255_304715_96879EB7 
+X-CRM114-Status: GOOD (  16.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,23 +102,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/08/2023 21:28, Andrei Coardos wrote:
-> This function call was found to be unnecessary as there is no equivalent
-> platform_get_drvdata() call to access the private data of the driver. Also,
-> the private data is defined in this driver, so there is no risk of it being
-> accessed outside of this driver file.
-> 
-> Signed-off-by: Andrei Coardos <aboutphysycs@gmail.com>
-> ---
+gd25lq64c has Quad Enable Requirement flag parsed as
+BFPT_DWORD15_QER_SR2_BIT1_BUGGY in BFPT, even if spi-{rx/tx}-bus-width
+set as non QUAD, eg. 0, 1, 2... Thus quad_enable will not be NULL and
+quad enable (QE) bit will be set to 1 by default. According to
+datasheet[1], if QE bit is enabled, WP pin will become IO pin and the
+system can't use write protection feature, and it's also not recommended
+to set QE bit to 1[1].
 
+Add a post_bfpt fixup that reads spi-rx-bus-width to remove quad_enable
+if the width is set to below QUAD mode.
 
-Applied, thanks
+[1]
+https://www.gigadevice.com.cn/Public/Uploads/uploadfile/files/20220714/DS-00012-GD25LQ64C-Rev3.4.pdf
+page 13
 
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+ drivers/mtd/spi-nor/gigadevice.c | 28 +++++++++++++++++++++++++++-
+ 1 file changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mtd/spi-nor/gigadevice.c b/drivers/mtd/spi-nor/gigadevice.c
+index d57ddaf1525b3..8ea89e1858f9b 100644
+--- a/drivers/mtd/spi-nor/gigadevice.c
++++ b/drivers/mtd/spi-nor/gigadevice.c
+@@ -33,6 +33,31 @@ static const struct spi_nor_fixups gd25q256_fixups = {
+ 	.post_bfpt = gd25q256_post_bfpt,
+ };
+ 
++static int
++gd25lq64c_post_bfpt(struct spi_nor *nor,
++		    const struct sfdp_parameter_header *bfpt_header,
++		    const struct sfdp_bfpt *bfpt)
++{
++	struct device_node *np = spi_nor_get_flash_node(nor);
++	u32 value;
++
++	/*
++	 * Even if spi-{tx,rx}-bus-width is set to DUAL mode, due to the QER
++	 * flag parsed from BFPT is BFPT_DWORD15_QER_SR2_BIT1_BUGGY, so the
++	 * quad_enable will be set and QE bit set to 1.
++	 */
++	if (!of_property_read_u32(np, "spi-rx-bus-width", &value)) {
++		if (value <= 2)
++			nor->params->quad_enable = NULL;
++	}
++
++	return 0;
++}
++
++static struct spi_nor_fixups gd25lq64c_fixups = {
++	.post_bfpt = gd25lq64c_post_bfpt,
++};
++
+ static const struct flash_info gigadevice_nor_parts[] = {
+ 	{ "gd25q16", INFO(0xc84015, 0, 64 * 1024,  32)
+ 		FLAGS(SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
+@@ -53,7 +78,8 @@ static const struct flash_info gigadevice_nor_parts[] = {
+ 	{ "gd25lq64c", INFO(0xc86017, 0, 64 * 1024, 128)
+ 		FLAGS(SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
+ 		NO_SFDP_FLAGS(SECT_4K | SPI_NOR_DUAL_READ |
+-			      SPI_NOR_QUAD_READ) },
++			      SPI_NOR_QUAD_READ)
++		.fixups = &gd25lq64c_fixups },
+ 	{ "gd25lq128d", INFO(0xc86018, 0, 64 * 1024, 256)
+ 		FLAGS(SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
+ 		NO_SFDP_FLAGS(SECT_4K | SPI_NOR_DUAL_READ |
 -- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+2.41.0.694.ge786442a9b-goog
 
 
