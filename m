@@ -4,95 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2A95C001E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 12:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9C15C001E0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 12:23:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1qfNUhMcJlVHTX5ugL614Z3rtxdFD686ztYoNw3q9y0=; b=hf2LBLKBPNHlHogfDjiQ10ReGV
-	mWyouo+lrRBYOo/Mfh1zQuhe8aeOD3BhVy801+Qj4dgytl3XLKZO6+xQ7JbCsdGGvAh3Su+4OwwNJ
-	ixH/nzn5xvytF3mAn4W2PNn9AAe1cpMq9gD1DmvoJ2vVrR095Mygyikjal1bcAyG58hgSNeoDRokE
-	f+q0S0TVSCxhBBvhfZHta6OcJ1qX6zhVHobM4B7Owf6Ebqbvmz+Vi4xtT6+X2ew3xdkSXrfDFu+ar
-	QctHhCqtpTnAEFVjFl2mI7RaZaPLHSpOe1keVS1UbpJlq4gbjhkAnvBW6YN8IKrQfcDxpb3FLARbA
-	RbQ3SDYw==;
+	bh=EHiNxjeUrAwzOphGHu0eZkI/pOqktqiZVERvri1bSWI=; b=H8JJCEGfPBZTMPwJPjIAg119MX
+	qDF731fmbtCvw0QeSzWbq2FCPdiUroFmjUKcTRodnR3wbQANQeTtqb4CDB0UG13iGGSE5dUW+wMf/
+	cMKKJUkK2zYWlqQFA4e79gAhaZ1y+8qdXipJU7724tfyj0himiAx/09yHgK+l+k5C7sbfbJVtiB5b
+	tV8aymvGSqQ3qR7yWAQ3OrvWJo0nRc5b4movxUQG7PdvuIaou2thK5MY3fI+rOxpRjx/z1rG8PvRA
+	HJbkp3eFJzMp7sXjVe2GPDwbzpytJnrpG+RpP/gM/vZWZErEqokqbdTjwOqXdNfBcCK4Tdz0ufTLq
+	InYxAySQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWFS6-00479F-1D;
-	Wed, 16 Aug 2023 12:16:42 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1qWFYI-0047vP-1P;
+	Wed, 16 Aug 2023 12:23:06 +0000
+Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWFS1-00477v-2w
-	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Aug 2023 12:16:39 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-99c0cb7285fso800951366b.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Aug 2023 05:16:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1692188192; x=1692792992;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=1qfNUhMcJlVHTX5ugL614Z3rtxdFD686ztYoNw3q9y0=;
-        b=H/mJ78nNtCoBbXVd1duxJf4+gPfM/iAJ2ovVQOTaNuEHibJJ0xCPAsD+UwT58Txvew
-         mZTl64AXOEbMKm1wpNSzXPR9c95y+Bo1aEclJmNykBPSL3PznqC4mdCOuGQ0WLqqiks9
-         OpJO0LXuPmjoEZXiHBM8mOdJaJ6osZp9Mvw38j4xtaKRO8Dz3sVXr7ZzMc/prB5lxFii
-         OnBLkh+O+A5yMoahjDthsJ2sRvR7D4LGtj07ibRjO4yK5USOH+N/UALLo2SCAhpNMovg
-         7cjq2Fnt1873ZEPdyk2lvjJABIEbMy4HWlFjRGUS/QsMeEYt8+h6ypqlIgrlCXAxc6r2
-         48cQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692188192; x=1692792992;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1qfNUhMcJlVHTX5ugL614Z3rtxdFD686ztYoNw3q9y0=;
-        b=gfRXM8HRmNSBOaHnX45Rx/jyzQS8nbM6BcKkdiJ/KFE5oLDrVC4+mIz1P7m+X+25ty
-         GjppEXwLHjjm0hKglf0GMfd25POf8mWHy8wZ5nNfHyRuVrUIBc0abbx3gW6jRGKlx6sI
-         hh5TQsNVUoOflyJHCHU1lt9UDMaIedKdpyV5xHo3GRgGfQvTQbUcTqlWcSFsja9Hod6b
-         ZRX4Ke4GO0Vswi7V7ipvTlPnJ1S6GXPOvxTRoQdwHUrbqqGinaHsdTy4hNs5wRn+VUYo
-         q3aQzr8LpAMWr8L6WbchVh3O4ipM7t//hMU3D3RtBofO3+rC3MMiQIXMq8JwNx9QHLx6
-         goxQ==
-X-Gm-Message-State: AOJu0YxntdCfnQQkCRSBaKueSoc1sVGE5eSHiEApj58bmp4hQ3+iouUW
-	e+f39oCsIDWqKaEukcmAKlXWSg==
-X-Google-Smtp-Source: AGHT+IH2npSDQNyY7+hshJrvpkJswRw8jux0gNkJJiFZHSRMt71tiA/2TE9iIxDK3yb7mgMZsTxffA==
-X-Received: by 2002:a17:906:704c:b0:994:2fa9:7446 with SMTP id r12-20020a170906704c00b009942fa97446mr1221712ejj.46.1692188192549;
-        Wed, 16 Aug 2023 05:16:32 -0700 (PDT)
-Received: from [192.168.0.107] ([79.115.63.44])
-        by smtp.gmail.com with ESMTPSA id rl24-20020a170907217800b0099bd1ce18fesm8538796ejb.10.2023.08.16.05.16.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Aug 2023 05:16:32 -0700 (PDT)
-Message-ID: <5911201a-f703-abbd-3c7b-769f70df08a8@linaro.org>
-Date: Wed, 16 Aug 2023 13:16:29 +0100
+	id 1qWFYE-0047u0-2b;
+	Wed, 16 Aug 2023 12:23:04 +0000
+Received: from 3ffe.de (0001.3ffe.de [IPv6:2a01:4f8:c0c:9d57::1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 1F0C08E2;
+	Wed, 16 Aug 2023 14:22:59 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1692188580;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=EHiNxjeUrAwzOphGHu0eZkI/pOqktqiZVERvri1bSWI=;
+	b=o9R+3sm3pMwFG3qh3EzYHeTUHgjbIgTu8lM7an1cb+HYmwazI823tRZETHJIxMPBexoUPn
+	vd/LVkxhgcSSt66PqNTUGxJo6BAe+9pO/fsrhRRrpWad/F+sd7Esa9097f5ALhX8Yk8lec
+	RXlQNPwZ9Zo8v/Yh1nKCCEm8P7hFHGN8qXMahnr91zS0+arIA/Jlf4TMjXl8ymmPJ30+et
+	SkfSfq4YAQ4SGue9Z4DtVr/EQ9WzrUcshtuupvENfeTzZskiwq35yXaDgZepLf9MeNXRRs
+	2pygHBc6ovZ2wg2+Ha0gocKYgll3FMhxcqBrht2XxswRQ4jmfDuBPFwpwhgEaQ==
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.1
-Subject: Re: [PATCH v2,1/2] mtd: spi-nor: giga: gd25lq64c: Disable quad mode
- according to bus width
-To: Michael Walle <michael@walle.cc>, Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Bjorn Andersson <andersson@kernel.org>,
- Pratyush Yadav <pratyush@kernel.org>,
- "Miquel Raynal )" <miquel.raynal@bootlin.com>,
- "Richard Weinberger )" <richard@nod.at>,
+Date: Wed, 16 Aug 2023 14:22:58 +0200
+From: Michael Walle <michael@walle.cc>
+To: Tudor Ambarus <tudor.ambarus@linaro.org>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Bjorn Andersson
+ <andersson@kernel.org>, Pratyush Yadav <pratyush@kernel.org>, "Miquel Raynal
+ )" <miquel.raynal@bootlin.com>, "Richard Weinberger )" <richard@nod.at>,
  "Vignesh Raghavendra )" <vigneshr@ti.com>, Rob Herring <robh+dt@kernel.org>,
  linux-mtd@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- cros-qcom-dts-watchers@chromium.org, Andy Gross <agross@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>
+ cros-qcom-dts-watchers@chromium.org, Andy Gross <agross@kernel.org>, Konrad
+ Dybcio <konrad.dybcio@linaro.org>
+Subject: Re: [PATCH v2,1/2] mtd: spi-nor: giga: gd25lq64c: Disable quad mode
+ according to bus width
+In-Reply-To: <5911201a-f703-abbd-3c7b-769f70df08a8@linaro.org>
 References: <20230816104245.2676965-1-hsinyi@chromium.org>
  <6702bac712daab13698b9bb9ad81d49e@walle.cc>
-Content-Language: en-US
-From: Tudor Ambarus <tudor.ambarus@linaro.org>
-In-Reply-To: <6702bac712daab13698b9bb9ad81d49e@walle.cc>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+ <5911201a-f703-abbd-3c7b-769f70df08a8@linaro.org>
+Message-ID: <80ec748f37f40ae5c3c3c5d1602681b3@walle.cc>
+X-Sender: michael@walle.cc
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230816_051638_008167_F193CF9E 
-X-CRM114-Status: GOOD (  25.23  )
+X-CRM114-CacheID: sfid-20230816_052302_995687_4A539E6D 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,80 +88,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
-
-On 8/16/23 12:51, Michael Walle wrote:
-> Am 2023-08-16 12:38, schrieb Hsin-Yi Wang:
->> gd25lq64c has Quad Enable Requirement flag parsed as
->> BFPT_DWORD15_QER_SR2_BIT1_BUGGY in BFPT, even if spi-{rx/tx}-bus-width
->> set as non QUAD, eg. 0, 1, 2... Thus quad_enable will not be NULL and
->> quad enable (QE) bit will be set to 1 by default. According to
->> datasheet[1], if QE bit is enabled, WP pin will become IO pin and the
->> system can't use write protection feature, and it's also not recommended
->> to set QE bit to 1[1].
->>
->> Add a post_bfpt fixup that reads spi-rx-bus-width to remove quad_enable
->> if the width is set to below QUAD mode.
->>
->> [1]
->> https://www.gigadevice.com.cn/Public/Uploads/uploadfile/files/20220714/DS-00012-GD25LQ64C-Rev3.4.pdf
->> page 13
->>
->> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
->> ---
->>  drivers/mtd/spi-nor/gigadevice.c | 28 +++++++++++++++++++++++++++-
->>  1 file changed, 27 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/mtd/spi-nor/gigadevice.c b/drivers/mtd/spi-nor/gigadevice.c
->> index d57ddaf1525b3..8ea89e1858f9b 100644
->> --- a/drivers/mtd/spi-nor/gigadevice.c
->> +++ b/drivers/mtd/spi-nor/gigadevice.c
->> @@ -33,6 +33,31 @@ static const struct spi_nor_fixups gd25q256_fixups = {
->>      .post_bfpt = gd25q256_post_bfpt,
->>  };
->>
->> +static int
->> +gd25lq64c_post_bfpt(struct spi_nor *nor,
->> +            const struct sfdp_parameter_header *bfpt_header,
->> +            const struct sfdp_bfpt *bfpt)
->> +{
->> +    struct device_node *np = spi_nor_get_flash_node(nor);
->> +    u32 value;
->> +
->> +    /*
->> +     * Even if spi-{tx,rx}-bus-width is set to DUAL mode, due to the QER
->> +     * flag parsed from BFPT is BFPT_DWORD15_QER_SR2_BIT1_BUGGY, so the
->> +     * quad_enable will be set and QE bit set to 1.
->> +     */
->> +    if (!of_property_read_u32(np, "spi-rx-bus-width", &value)) {
->> +        if (value <= 2)
->> +            nor->params->quad_enable = NULL;
->> +    }
->> +
->> +    return 0;
->> +}
->> +
->> +static struct spi_nor_fixups gd25lq64c_fixups = {
->> +    .post_bfpt = gd25lq64c_post_bfpt,
+>> like a fundamental problem and that commit 39d1e3340c73 ("mtd: 
+>> spi-nor:
+>> Fix clearing of QE bit on lock()/unlock()") is broken in that regard.
 > 
-> No. Please fix it in the core and not just for this part. To me it seems
+> what's wrong with the mentioned commit?
 
-The core seems fine to me. We already adjust the hw caps by keeping just the
-hardware capabilities supported by both the SPI controller and the flash,
-see spi_nor_spimem_adjust_hwcaps(). If you set spi-rx-bus-width = <2>; 
-(spi_nor_get_protocol_width(nor->read_proto) will be 2, thus the quad enable
-method will not be called. Are you sure you don't have the quad enable bit
-set by the bootloaders? Please add some prints and check whether the
-quad_enable method is called or not.
+         } else if (nor->params->quad_enable) {
+                 /*
+                  * If the Status Register 2 Read command (35h) is not
+                  * supported, we should at least be sure we don't
+                  * change the value of the SR2 Quad Enable bit.
+                  *
+                  * We can safely assume that when the Quad Enable method 
+is
+                  * set, the value of the QE bit is one, as a consequence 
+of the
+                  * nor->params->quad_enable() call.
+                  *
+                  * We can safely assume that the Quad Enable bit is 
+present in
+                  * the Status Register 2 at BIT(1). According to the 
+JESD216
+                  * revB standard, BFPT DWORDS[15], bits 22:20, the 
+16-bit
+                  * Write Status (01h) command is available just for the 
+cases
+                  * in which the QE bit is described in SR2 at BIT(1).
+                  */
+                 sr_cr[1] = SR2_QUAD_EN_BIT1;
+         } else {
+                 sr_cr[1] = 0;
+         }
 
-> like a fundamental problem and that commit 39d1e3340c73 ("mtd: spi-nor:
-> Fix clearing of QE bit on lock()/unlock()") is broken in that regard.
+"We can safely assume that when the Quad Enable method..". We cannot, if 
+we
+don't have 4 I/O lines. The quad_enable is just the op how to do it, but 
+not
+*if* can do it. It seems to be missing the same check as the
+spi_nor_quad_enable(). But I'm not sure if it's that simple.
 
-what's wrong with the mentioned commit?
-
-Cheers,
-ta
-> Tudor?
-> 
-> -michael
+-michael
 
