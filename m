@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDBC8C27C7A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 08:34:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 203D4C27C7A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 08:38:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7BF6h8GPK1HKwPQblEC4BrTzenLHp9nKopnnC/7OFI4=; b=Y42VaC2cYSYQkWhYddsR1UyQfi
-	Mz+k98jiXGgdEKfw27EjFRKetNTR1msSbXcU/pres9+mjkuHZBvGidpep1do5QD8KLG00Fe8NRZ4N
-	Wk1I7dyFbS+pD3uMcMTPa1fNQz5icbKZKstV731zouk+sLn25Rokh6i12qVs4l7EeGw858fQEkLCp
-	/TgWSxpHG8D9YJhlU0w3MlcJyhklT0Q/F2vjJYXndRkt5N020x2dRLZeH0I8ihxm1tz1Qqtp5RyyC
-	cr6lWAfDLBwIFwC2SwBaBZ/BGSwaSeYZEWatby65uqNT+zLqQzjfBTrUF1XueDNG4fF2AEeiusAGw
-	+xtK5dcA==;
+	bh=GFrTZexqLjQTWDNUsvnncrD9kb8WfaN/zu8FiMtEY4A=; b=kO8lfzmcWZ4Axx6msLtVCkJp6E
+	szLU/HSyk9NbfX5VC0w0QdJzwVpfJvRsm7WT7KFVzRljdF4J9Ljk+LCYJJF49lQe9dMwGuqjbVnIr
+	bWrjyX2/FH0UJOXnVOtQtcXd2peVndWDliSdntYkdXbumrVGQe3SdvJnqn3WZJwklJhQeZw3QqXZ9
+	W7FA7ZMAK7HlcTR1P1Ue7WjcTVH34w27irApT7rgVeuRpZ+XlyODcGewRUCze42iXmXEBZCpo+SU7
+	jqLM8MHQkRwzHCkX+q7HRFe1CuipJYyh6QJm2RD1U+EP51XPaTULlcHY7va43Qp0VPv6R3xZHaI9U
+	tMl04okQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWYSy-005pwN-1w;
-	Thu, 17 Aug 2023 08:34:52 +0000
-Received: from relay2-d.mail.gandi.net ([217.70.183.194])
+	id 1qWYWD-005qI1-0Y;
+	Thu, 17 Aug 2023 08:38:13 +0000
+Received: from relay5-d.mail.gandi.net ([2001:4b98:dc4:8::225])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWYSu-005pvS-36;
-	Thu, 17 Aug 2023 08:34:50 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id D571740007;
-	Thu, 17 Aug 2023 08:34:44 +0000 (UTC)
+	id 1qWYW9-005qHO-0Q;
+	Thu, 17 Aug 2023 08:38:12 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 361EE1C0009;
+	Thu, 17 Aug 2023 08:37:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1692261287;
+	t=1692261484;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=7BF6h8GPK1HKwPQblEC4BrTzenLHp9nKopnnC/7OFI4=;
-	b=mkAXKPfGKRDmwH0jRlMeFRcGqW8gaHB2vsewulwhhhOYbDDuWvvqvuev/QIHWcCCyAL72h
-	AxBg9ZnUkAZRqu5JYHlmD/5TqedBwuVgOyfdzGIujvUvFQNXgGSWAOje07NeEq1MDryuW/
-	PYvUp92GBcxFqKiKL+9YkMTMSvBkDZDKVYzF7rE3AqU+KWNcV8WR3duI6YPL2XZjlB7Sno
-	L3E1yyGsqN4Cm1jqbwKUoGGSzhKcHYFlLeXKMCq1kbakNDlSwF2iSLu6heqxZ4xMpq75cP
-	FrKxphMkKl0kQmRUH0Mx8/HKTzh6vbw+HjPNgG1jgSi9KYq0fPW/ClmJkacCzQ==
-Date: Thu, 17 Aug 2023 10:34:44 +0200
+	bh=GFrTZexqLjQTWDNUsvnncrD9kb8WfaN/zu8FiMtEY4A=;
+	b=lCDxw3lXC0rdW6d/sfAkKUVKB76hkI6rZgcTaNM6U7Qx6Izl1d2tvqTk7UV0Z/DOruFrMq
+	e1mI0T6e/MO5/fuk6FvcsuoE4e1pdfLL3zH3dSYMf5+noGzZb2FQ5wFH3B4I66yfAGGgEd
+	hVlneit7lZSNTujY0iVpbt91htI1D52CZAy5G2jOmtbs68gtApOnwZ65SN05jjoUOOYa0/
+	fe0eJ7FjgBTvGTT9fL+OAMondBlTiidxhLbU+qHh7tQ/iqCMKYKGeRCRxV/hfmH5kIJD12
+	HbQVMNi/JV61f4tUoUKKg03ZRWhrZ5xcDw+AYzgocORVBX/3CWpctKyyed8BpQ==
+Date: Thu, 17 Aug 2023 10:37:59 +0200
 From: Miquel Raynal <miquel.raynal@bootlin.com>
 To: Li Zetao <lizetao1@huawei.com>
 Cc: <richard@nod.at>, <vigneshr@ti.com>, <michal.simek@amd.com>,
@@ -59,12 +59,12 @@ Cc: <richard@nod.at>, <vigneshr@ti.com>, <michal.simek@amd.com>,
  <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>,
  <linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>
-Subject: Re: [PATCH -next 07/11] mtd: rawnand: mtk: Use helper function
+Subject: Re: [PATCH -next 11/11] mtd: spi-nor: Use helper function
  devm_clk_get_enabled()
-Message-ID: <20230817103444.521d087f@xps-13>
-In-Reply-To: <20230817024509.3951629-8-lizetao1@huawei.com>
+Message-ID: <20230817103759.3b8934a7@xps-13>
+In-Reply-To: <20230817024509.3951629-12-lizetao1@huawei.com>
 References: <20230817024509.3951629-1-lizetao1@huawei.com>
-	<20230817024509.3951629-8-lizetao1@huawei.com>
+	<20230817024509.3951629-12-lizetao1@huawei.com>
 Organization: Bootlin
 X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
@@ -72,8 +72,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230817_013449_263650_3611B555 
-X-CRM114-Status: GOOD (  20.20  )
+X-CRM114-CacheID: sfid-20230817_013810_613734_9B77926D 
+X-CRM114-Status: UNSURE (   8.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,7 +91,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Li,
 
-lizetao1@huawei.com wrote on Thu, 17 Aug 2023 10:45:05 +0800:
+lizetao1@huawei.com wrote on Thu, 17 Aug 2023 10:45:09 +0800:
 
 > After the commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for
 > prepared and enabled clocks"), it can replace the pair of functions,
@@ -98,100 +99,13 @@ lizetao1@huawei.com wrote on Thu, 17 Aug 2023 10:45:05 +0800:
 > devm_clk_get_enabled(). Moreover, the driver will keeps a clock prepared
 > (or enabled) during the whole lifetime of the driver, it is unnecessary to
 > unprepare and disable clock explicitly when remove driver or in the error
-> handling path. The mtk_nfc_enable_clk() is a helper function that enables
-> the "clk->nfi_clk" and "clk->pad_clk", it can be combined into
-> devm_clk_get_enabled().
+> handling path.
 >=20
 > Signed-off-by: Li Zetao <lizetao1@huawei.com>
-> ---
->  drivers/mtd/nand/raw/mtk_nand.c | 20 ++++++--------------
->  1 file changed, 6 insertions(+), 14 deletions(-)
->=20
-> diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_n=
-and.c
-> index b6eb8cb6b5e9..0d185e650aaf 100644
-> --- a/drivers/mtd/nand/raw/mtk_nand.c
-> +++ b/drivers/mtd/nand/raw/mtk_nand.c
-> @@ -1545,40 +1545,36 @@ static int mtk_nfc_probe(struct platform_device *=
-pdev)
->  		goto release_ecc;
->  	}
-> =20
-> -	nfc->clk.nfi_clk =3D devm_clk_get(dev, "nfi_clk");
-> +	nfc->clk.nfi_clk =3D devm_clk_get_enabled(dev, "nfi_clk");
->  	if (IS_ERR(nfc->clk.nfi_clk)) {
->  		dev_err(dev, "no clk\n");
->  		ret =3D PTR_ERR(nfc->clk.nfi_clk);
->  		goto release_ecc;
->  	}
-> =20
-> -	nfc->clk.pad_clk =3D devm_clk_get(dev, "pad_clk");
-> +	nfc->clk.pad_clk =3D devm_clk_get_enabled(dev, "pad_clk");
->  	if (IS_ERR(nfc->clk.pad_clk)) {
->  		dev_err(dev, "no pad clk\n");
->  		ret =3D PTR_ERR(nfc->clk.pad_clk);
->  		goto release_ecc;
->  	}
-> =20
-> -	ret =3D mtk_nfc_enable_clk(dev, &nfc->clk);
-> -	if (ret)
-> -		goto release_ecc;
-> -
->  	irq =3D platform_get_irq(pdev, 0);
->  	if (irq < 0) {
->  		ret =3D -EINVAL;
-> -		goto clk_disable;
-> +		goto release_ecc;
->  	}
-> =20
->  	ret =3D devm_request_irq(dev, irq, mtk_nfc_irq, 0x0, "mtk-nand", nfc);
->  	if (ret) {
->  		dev_err(dev, "failed to request nfi irq\n");
-> -		goto clk_disable;
-> +		goto release_ecc;
->  	}
-> =20
->  	ret =3D dma_set_mask(dev, DMA_BIT_MASK(32));
->  	if (ret) {
->  		dev_err(dev, "failed to set dma mask\n");
-> -		goto clk_disable;
-> +		goto release_ecc;
->  	}
-> =20
->  	platform_set_drvdata(pdev, nfc);
-> @@ -1586,14 +1582,11 @@ static int mtk_nfc_probe(struct platform_device *=
-pdev)
->  	ret =3D mtk_nfc_nand_chips_init(dev, nfc);
->  	if (ret) {
->  		dev_err(dev, "failed to init nand chips\n");
-> -		goto clk_disable;
-> +		goto release_ecc;
->  	}
-> =20
->  	return 0;
-> =20
-> -clk_disable:
-> -	mtk_nfc_disable_clk(&nfc->clk);
-> -
->  release_ecc:
->  	mtk_ecc_release(nfc->ecc);
-> =20
-> @@ -1618,7 +1611,6 @@ static void mtk_nfc_remove(struct platform_device *=
-pdev)
->  	}
-> =20
->  	mtk_ecc_release(nfc->ecc);
-> -	mtk_nfc_disable_clk(&nfc->clk);
 
-mtk_nfc_disable_clk() now has a single user, which is the suspend
-callback. This callback does nothing else than calling
-mtk_nfs_disable_clk(). Can you please drop the helper and just move the
-two lines in the suspend function?
+With the commit log corrected as suggested in another answer,
 
->  }
-> =20
->  #ifdef CONFIG_PM_SLEEP
-
+Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
 
 Thanks,
 Miqu=C3=A8l
