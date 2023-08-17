@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 896AAC2FC14
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 12:01:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCDE6C27C7A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 12:04:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SeryiRbYKJ2WZYtVkRUX0Kn5X9MRqiXewa99UPs1Pes=; b=4SnaTz2SvXRI3RKy82lecLNMZ5
-	6s8pbCS8bM6J6yD8lc5UtnANS7+Jsv07bYWVKlbv1aWc5QJtnJqcvsugzQue5oFF/hUouDHN7MHDD
-	TKe9KdEX2rkmpPtHOsPTlwMw9qqp3HHeBhSRSL0LFpnewNK8iY7T3DKaLPr06wO0p3YV1I4hoiYXE
-	JIgvsYYi5IZtqhVv4SXfNY+SXBhda/RXwWkDvg1nv1KnenJZS8iEycf8WXaZ7Y/BjP/yTwuz83tyt
-	mD2B4UA+7aQ5TP8RM11eSpPiN9SmyRQdAjGAfJ5quxYWVEIw6YIsdeAezVsbVxldUSIeTpPhz4fuG
-	rRVkPLuA==;
+	bh=brA8GoAvDNp8q8xbP+QJWVaL+zpV7fP9YmTxAqc9jSQ=; b=bof96j7CQnaB3u2GvLEzDkVOOY
+	u6JmeUDTbpNQE7GYZVt615yAHmn25K2/CgADaAwlv2vDFHWqTAGTOu6htTsWJNkqyAjv7gDXT3FLA
+	AwJYtEY6GjeCCKiCzxHgtxqSJXJFHNsEFOkgXvEIdYJgyosZJkUsjCeTmqKz/tnPg/ZKFTKGZkwM4
+	01XnaclS2ImF2jpbAOCWs1hgaX7x9OjmFW01RIplpQ5mm48/Hz8KUR2WPFM1jfHS90g6o3P96T6yv
+	dcZLTnTa0muHa9Nl+/f7mDwRkUVncFK2IVO62K6AO6ifb6D2K0FpN0oUrdHFur3Caa/s8J1L4IsL9
+	aqflSNWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWbhI-006L9N-0v;
-	Thu, 17 Aug 2023 12:01:52 +0000
+	id 1qWbjx-006LPU-2M;
+	Thu, 17 Aug 2023 12:04:37 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWbhF-006L8D-0z;
-	Thu, 17 Aug 2023 12:01:50 +0000
+	id 1qWbju-006LOi-1A;
+	Thu, 17 Aug 2023 12:04:35 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1qWbh3-0001ko-02;
-	Thu, 17 Aug 2023 12:01:38 +0000
-Date: Thu, 17 Aug 2023 13:01:11 +0100
+	id 1qWbjj-0001mN-0l;
+	Thu, 17 Aug 2023 12:04:23 +0000
+Date: Thu, 17 Aug 2023 13:04:06 +0100
 From: Daniel Golle <daniel@makrotopia.org>
-To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
+To: Alexander Couzens <lynxis@fe80.eu>,
+	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sujuan Chen <sujuan.chen@mediatek.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net] net: ethernet: mtk_eth_soc: fix NULL pointer on hw reset
-Message-ID: <6863f378a2a077701c60cea6ae654212e919d624.1692273610.git.daniel@makrotopia.org>
+Subject: [PATCH net-next] net: pcs: lynxi: fully reconfigure if link is down
+Message-ID: <e9831ec99acd5a8ab03c76fce87fa750c7041e60.1692273723.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230817_050149_339853_F206B44D 
-X-CRM114-Status: GOOD (  12.86  )
+X-CRM114-CacheID: sfid-20230817_050434_402911_091F8B41 
+X-CRM114-Status: GOOD (  16.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,61 +68,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When a hardware reset is triggered on devices not initializing WED the
-calls to mtk_wed_fe_reset and mtk_wed_fe_reset_complete dereference a
-pointer on uninitialized stack memory.
-Initialize the hw_list will 0s and break out of both functions in case
-a hw_list entry is 0.
+On MT7988 When switching from 10GBase-R/5GBase-R/USXGMII to one of the
+interface modes provided by mtk-pcs-lynxi we need to make sure to
+always perform a full configuration of the PHYA.
+As the idea behind not doing that was mostly to prevent an existing link
+going down without any need for it to do so. Hence we can just always
+perform a full confinguration in case the link is down.
 
-Fixes: 08a764a7c51b ("net: ethernet: mtk_wed: add reset/reset_complete callbacks")
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/ethernet/mediatek/mtk_wed.c | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
+ drivers/net/pcs/pcs-mtk-lynxi.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index 00aeee0d5e45f..d14f5137379b9 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -41,7 +41,7 @@
- #define MTK_WED_RRO_QUE_CNT		8192
- #define MTK_WED_MIOD_ENTRY_CNT		128
+diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
+index b0f3ede945d96..788c2ccde064e 100644
+--- a/drivers/net/pcs/pcs-mtk-lynxi.c
++++ b/drivers/net/pcs/pcs-mtk-lynxi.c
+@@ -108,8 +108,8 @@ static int mtk_pcs_lynxi_config(struct phylink_pcs *pcs, unsigned int neg_mode,
+ 				bool permit_pause_to_mac)
+ {
+ 	struct mtk_pcs_lynxi *mpcs = pcs_to_mtk_pcs_lynxi(pcs);
+-	bool mode_changed = false, changed;
+-	unsigned int rgc3, sgm_mode, bmcr;
++	bool mode_changed = false, changed, link;
++	unsigned int bm, rgc3, sgm_mode, bmcr;
+ 	int advertise, link_timer;
  
--static struct mtk_wed_hw *hw_list[2];
-+static struct mtk_wed_hw *hw_list[2] = {};
- static DEFINE_MUTEX(hw_lock);
+ 	advertise = phylink_mii_c22_pcs_encode_advertisement(interface,
+@@ -117,6 +117,10 @@ static int mtk_pcs_lynxi_config(struct phylink_pcs *pcs, unsigned int neg_mode,
+ 	if (advertise < 0)
+ 		return advertise;
  
- struct mtk_wed_flow_block_priv {
-@@ -222,9 +222,13 @@ void mtk_wed_fe_reset(void)
- 
- 	for (i = 0; i < ARRAY_SIZE(hw_list); i++) {
- 		struct mtk_wed_hw *hw = hw_list[i];
--		struct mtk_wed_device *dev = hw->wed_dev;
-+		struct mtk_wed_device *dev;
- 		int err;
- 
-+		if (!hw)
-+			break;
++	/* Check if link is currently up */
++	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &bm);
++	link = !!(FIELD_GET(SGMII_BMSR, bm) & BMSR_LSTATUS);
 +
-+		dev = hw->wed_dev;
- 		if (!dev || !dev->wlan.reset)
- 			continue;
+ 	/* Clearing IF_MODE_BIT0 switches the PCS to BASE-X mode, and
+ 	 * we assume that fixes it's speed at bitrate = line rate (in
+ 	 * other words, 1000Mbps or 2500Mbps).
+@@ -137,7 +141,10 @@ static int mtk_pcs_lynxi_config(struct phylink_pcs *pcs, unsigned int neg_mode,
+ 		bmcr = 0;
+ 	}
  
-@@ -245,8 +249,12 @@ void mtk_wed_fe_reset_complete(void)
- 
- 	for (i = 0; i < ARRAY_SIZE(hw_list); i++) {
- 		struct mtk_wed_hw *hw = hw_list[i];
--		struct mtk_wed_device *dev = hw->wed_dev;
-+		struct mtk_wed_device *dev;
-+
-+		if (!hw)
-+			break;
- 
-+		dev = hw->wed_dev;
- 		if (!dev || !dev->wlan.reset_complete)
- 			continue;
- 
+-	if (mpcs->interface != interface) {
++	/* Do a full reconfiguration only if the link is down or the interface
++	 * mode has changed
++	 */
++	if (mpcs->interface != interface || !link) {
+ 		link_timer = phylink_get_link_timer_ns(interface);
+ 		if (link_timer < 0)
+ 			return link_timer;
 -- 
 2.41.0
-
 
