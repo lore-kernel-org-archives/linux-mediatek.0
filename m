@@ -4,73 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 117CAC41513
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 13:06:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59D88C27C7A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 13:13:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2O+oMCc4tCMfBiIfp7tXuumeCBqFXKjABtwXyZskEPw=; b=nhC7P+RlZZg8lhhvLcwwN/Yrd0
-	UCTcnka43F30QUq66ZZ6A5R/O+yVy4Reaesh+dd4Ui55A5kDiVsDezymyk9iFhD5eYoUniE05v9ZF
-	T97TVi6vbO9Otl4AHbXED2vwf9PQ+OeDRwo7CmU0RDPlRokuikBMqCdjUPRtn+vTKz5Rz3gdNzAnF
-	KxY7aT9hrVMLo5sMFcPuK+TzOOfrXw0zjuIhp3r2LMMQLYMEuAgRsrXqQrPLBNmV+OW+7X+GW5q5n
-	p7i2rVI6MoxFgkMbYcWOdyM6xhAvQZ0dcFdVoeObmcklsRbSonmVWMLbRn4ZOc8kz1U02KYHDaEdR
-	WZhBw2KA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NGHE/p4sCN/7vLHlmX0J+FqvhKQ1k35l/n9hGy5/t7c=; b=LKghzivKW/6r978N5XQlwC/RYA
+	rmsYT+BBB9GEUxDGmgrCiP+I8ygasSZyEQS4OrnicDFoivgXb1t0Ziq4ckYMHB4YG9R+4qduMijRK
+	DmI34BtWSW8X6g30T5RZclrcEXSHEYvnm+XSpGmpDoVCXRP5Dv0xPDq/W4wg3A0hEpLBL4gjZK7Jk
+	TCacX8JCXEiNOqqvmHBbBfEUGWuFmCUAyZBh2pS9PtpeCyCWd4NP9WR+ztpB36aok13jL1bczCbKI
+	7IjcCLcnohbfstxF0wHTG9fWMEl1AgpY7eYvExGwLP4QF9NlDUEvSXhw0+e+h3Nb5L5aVJ4XzYB24
+	5ZKO6vIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWchR-006QVc-0g;
-	Thu, 17 Aug 2023 13:06:05 +0000
-Received: from [2001:4d48:ad52:32c8:5054:ff:fe00:142] (helo=pandora.armlinux.org.uk)
+	id 1qWcp1-006RN8-3D;
+	Thu, 17 Aug 2023 13:13:56 +0000
+Received: from smtp-out1.suse.de ([2001:67c:2178:6::1c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWchM-006QPe-2i;
-	Thu, 17 Aug 2023 13:06:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=2O+oMCc4tCMfBiIfp7tXuumeCBqFXKjABtwXyZskEPw=; b=xGhRgbFnSSNHr2vcTGi9qICnPQ
-	wnFJyD4mcsojgjl7m4A6TH6Vbd2KqJRj9YCbHhk1+a7ohdxeMUyW8J9EpgS8n/y+AOlxbHy//a3fq
-	RzchlP+XTJE+uRAtv2yoyRwUu78eUUuoJ72uw3Qkd5/0DgZz8BVWZFtOs4+cpNSb8cNvwTrNoBYCX
-	C/2YY8tb70oZjsIIoWwE1KUdu78y4obXNDEMxzsUvDr7ho1kzBUvfobuL3x4BwLR90wgq5GD+LYNp
-	2+smJFaErreGkcpezH0dGQJqyVnw3ADQIa1R3mZWW6YTQHZSI/RyvhVd5ZaWiFMJruaqfIkfZ1oFD
-	P+z76Ftw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:46006)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1qWcf7-0004CA-2Y;
-	Thu, 17 Aug 2023 14:03:41 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1qWcf6-0000cG-FX; Thu, 17 Aug 2023 14:03:40 +0100
-Date: Thu, 17 Aug 2023 14:03:40 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Alexander Couzens <lynxis@fe80.eu>, Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
+	id 1qWcoy-006RM1-14;
+	Thu, 17 Aug 2023 13:13:53 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 463AE2186F;
+	Thu, 17 Aug 2023 13:13:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1692278025; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=NGHE/p4sCN/7vLHlmX0J+FqvhKQ1k35l/n9hGy5/t7c=;
+	b=XATF+sc2ch6jyL/Ol3PBJJrxuZy/17xDRjLCXeNYd/uwMJ9cFkmb/B5FxUdDGdWbcjZSQc
+	LGGC0yXo6eYLlVc7lnjiyoz/CdoOD/v+slsPtPSd8SnBc1bwsDvSu9ugKIX8ItoNJyASdG
+	Nj+TqJBPWzOGgKztFEu9EbQiYiokeL4=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1692278025;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=NGHE/p4sCN/7vLHlmX0J+FqvhKQ1k35l/n9hGy5/t7c=;
+	b=xzwuIRVlHRiYyaurPVGprTL3wIO4zWyUCB2BWFYfr96ExKvodWemqZxLwOY3DZuScNJ+iN
+	WZS+SG96HGLGXuDw==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 1892D1392B;
+	Thu, 17 Aug 2023 13:13:45 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id vCQuBQkd3mTvdwAAMHmgww
+	(envelope-from <dkirjanov@suse.de>); Thu, 17 Aug 2023 13:13:45 +0000
+Message-ID: <565a8248-c4d1-f135-2499-6bbfe76def53@suse.de>
+Date: Thu, 17 Aug 2023 16:13:44 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.1
 Subject: Re: [PATCH net-next] net: pcs: lynxi: fully reconfigure if link is
  down
-Message-ID: <ZN4arCVzdszcIBX0@shell.armlinux.org.uk>
+Content-Language: en-US
+To: Daniel Golle <daniel@makrotopia.org>, Alexander Couzens <lynxis@fe80.eu>,
+ Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <e9831ec99acd5a8ab03c76fce87fa750c7041e60.1692273723.git.daniel@makrotopia.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+From: Denis Kirjanov <dkirjanov@suse.de>
 In-Reply-To: <e9831ec99acd5a8ab03c76fce87fa750c7041e60.1692273723.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230817_060600_903837_08DB0F57 
-X-CRM114-Status: GOOD (  22.05  )
+X-CRM114-CacheID: sfid-20230817_061352_536540_CEB85EF3 
+X-CRM114-Status: GOOD (  25.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,62 +99,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 17, 2023 at 01:04:06PM +0100, Daniel Golle wrote:
+
+
+On 8/17/23 15:04, Daniel Golle wrote:
 > On MT7988 When switching from 10GBase-R/5GBase-R/USXGMII to one of the
 > interface modes provided by mtk-pcs-lynxi we need to make sure to
 > always perform a full configuration of the PHYA.
 > As the idea behind not doing that was mostly to prevent an existing link
 > going down without any need for it to do so. Hence we can just always
 > perform a full confinguration in case the link is down.
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  drivers/net/pcs/pcs-mtk-lynxi.c | 13 ++++++++++---
+>  1 file changed, 10 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
+> index b0f3ede945d96..788c2ccde064e 100644
+> --- a/drivers/net/pcs/pcs-mtk-lynxi.c
+> +++ b/drivers/net/pcs/pcs-mtk-lynxi.c
+> @@ -108,8 +108,8 @@ static int mtk_pcs_lynxi_config(struct phylink_pcs *pcs, unsigned int neg_mode,
+>  				bool permit_pause_to_mac)
+>  {
+>  	struct mtk_pcs_lynxi *mpcs = pcs_to_mtk_pcs_lynxi(pcs);
+> -	bool mode_changed = false, changed;
+> -	unsigned int rgc3, sgm_mode, bmcr;
+> +	bool mode_changed = false, changed, link;
+> +	unsigned int bm, rgc3, sgm_mode, bmcr;
+>  	int advertise, link_timer;
+>  
+>  	advertise = phylink_mii_c22_pcs_encode_advertisement(interface,
+> @@ -117,6 +117,10 @@ static int mtk_pcs_lynxi_config(struct phylink_pcs *pcs, unsigned int neg_mode,
+>  	if (advertise < 0)
+>  		return advertise;
+>  
+> +	/* Check if link is currently up */
+> +	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &bm);
+> +	link = !!(FIELD_GET(SGMII_BMSR, bm) & BMSR_LSTATUS);
+> +
+>  	/* Clearing IF_MODE_BIT0 switches the PCS to BASE-X mode, and
+>  	 * we assume that fixes it's speed at bitrate = line rate (in
+>  	 * other words, 1000Mbps or 2500Mbps).
+> @@ -137,7 +141,10 @@ static int mtk_pcs_lynxi_config(struct phylink_pcs *pcs, unsigned int neg_mode,
+>  		bmcr = 0;
+>  	}
+>  
+> -	if (mpcs->interface != interface) {
+> +	/* Do a full reconfiguration only if the link is down or the interface
+> +	 * mode has changed
+> +	 */
+> +	if (mpcs->interface != interface || !link) {
 
-And this is racy - because in the case with inband signalling, the link
-can come up between reading the status and acting on it. It could even
-be already up, but the link status indicates it is not. Lastly, reading
-the BMSR has side effects: the link status bit latches low until a read.
+btw is it a thread-safe to check the mpcs->interface member?
+I've quick checked and phylink_pcs_config can be invoked from different places
+and the code below does the following assignment:
+mpcs->interface = interface;
 
-Basically, do not read the BMSR here, it's buggy to read it any place
-other than pcs_get_state.
 
-I think what we need to do instead are:
 
-1) mtk_mac_select_pcs() returns the SGMII PCS or NULL. Presumably this
-   is the driver which supports 10GBase-R/5GBase-R/USXGMII, and thus
-   this returns NULL for 10GBase-R/5GBase-R/USXGMII.
-
-   Phylink doesn't cater for mac_select_pcs() returning non-NULL for
-   some modes and NULL for others, mainly because the presence of a PCS
-   _used_ to cause phylink to change its behaviour (see
-   https://lore.kernel.org/netdev/YZRLQqLblRurUd4V@shell.armlinux.org.uk/).
-   That has now changed (we've got rid of the legacy stuff at last!) so
-   there is no technical reason not to now allow that.
-
-   Vladimir did have some arguments for not allowing it when we had the
-   phylink_set_pcs() interface:
-   https://lore.kernel.org/netdev/20211123181515.qqo7e4xbuu2ntwgt@skbuf/
-   I'm assuming that your requirement now provides sufficient
-   justification for allowing this.
-
-   There is one bug that does need fixing first:
-   phylink_change_inband_advert() checks pl->pcs->neg_mode without
-   first checking whether pl->pcs is non-NULL.
-
-   To allow this, phylink_major_config() needs:
-
-   	pcs_changed = pcs && pl->pcs != pcs;
-
-   to become:
-
-   	pcs_changed = pl->pcs != pcs;
-
-2) with (1) solved, there are a couple of callbacks that can be used to
-   solve this - I think pcs_disable() is the one you want, which will
-   be called when we switch to a mode where _this_ PCS will no longer
-   be used (thus you can reset mpcs->interface to _NA, ready for when
-   it is next brought into use.)
-
-Would that work for you?
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+>  		link_timer = phylink_get_link_timer_ns(interface);
+>  		if (link_timer < 0)
+>  			return link_timer;
 
