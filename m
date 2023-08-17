@@ -4,78 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E366BEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 09:19:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AB19C2FC0E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 09:55:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qbGMPo3tGq+YirHQo7N71fQRLGFMALJjCkoQPoPiIHU=; b=nL6XmURbb89JSSFdKFnMz5Zdne
-	npAFS/Q/jorWOWTFIKTB1oevzXxCRC1TAHw4QEC9lNAJnsB99N2+oL8j0Wh0kh0n2Xb8HcDHT8lqf
-	RJpHrza8fej2banOu01U2tGqPfOI5SN8FOvT/haOGUG/ittU2JAkQmO8p34uzWOvue1UNFxWc3IYj
-	41xduptnVIjHLJ+xm9dGtXwHpdUETbFZOVH6OZzSdXWUrx+ONyKWNVIF6Ql+Qm3cBbjY5jC+zrDp3
-	iPlH1bzhyKqA18SKUqqY2Q6V4SqJNVn+QaG5+Y4bzzmDXPh84p84HhgQEtabUAPZlz2whjwTsXA3x
-	58tnKkFQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6UalgFGN0l1ulWyf08LUfx22RUHg0HY+3Vqj0JEgamM=; b=of3JaojKK0babP
+	buwsAnVOQYQyncgdWtR/txR8sTa/VUeMHWFhBIs8hgxBriZIygCEJV198DFW/vnP8hqZwPrdvYA9a
+	9+tUCXRdmaA2AdFRe/bveC42W8yga3jdUnOJRh30FpUXbp0uroqa07fhN8svQg8a0MUD4ntQi5MoJ
+	rv6eTeEwKQOA2xfGg/8M1WeFPvB4gJfzc0rRTav2ZbyFurGHk1w3IxY2QkIuY7/g9SOooV/ceDVsu
+	W9T5XyGelRe+gz0zKJnNWG92FYinch/l5A6QzA3ohmrmMYGXCc/EZEekGM3lr2wzsGjcG+5ZMmzdh
+	eLoXcs8NIkq0mANv1+zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWZAH-005vKE-1H;
-	Thu, 17 Aug 2023 09:19:37 +0000
-Received: from mail-ua1-x92e.google.com ([2607:f8b0:4864:20::92e])
+	id 1qWZjJ-005z88-2p;
+	Thu, 17 Aug 2023 09:55:49 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWZAE-005vJb-3A
-	for linux-mediatek@lists.infradead.org;
-	Thu, 17 Aug 2023 09:19:36 +0000
-Received: by mail-ua1-x92e.google.com with SMTP id a1e0cc1a2514c-7919342c456so1515593241.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 17 Aug 2023 02:19:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1692263973; x=1692868773;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qbGMPo3tGq+YirHQo7N71fQRLGFMALJjCkoQPoPiIHU=;
-        b=Qm4ciNzlc9FRYwftkqfSAyfAJyKqfzBRh+ndFYouevcnVSonb3hkzyvNI/TpnCr7df
-         YQVULPS4tC7BQPr/r0pwsUCTYp2OeYVOwQStWnaMlrdJ2CswwHkpGf3RWEeQRg7YL1c9
-         NM0YInO7/bmGJBXYmx4HfUeLSpeUf0aNlJcHU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692263973; x=1692868773;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=qbGMPo3tGq+YirHQo7N71fQRLGFMALJjCkoQPoPiIHU=;
-        b=PMkHtyPlTbCRjM7S33cm7kY2EKCy2twA0vaTqA+FeD5L0+ubBkqzdKSjQ16MIJKnfw
-         wc+W7Q1z7HRYbe1NRACfeI+Sf/Q31rVRhViXoOdkFhoYQ/wQej8wT4H+LffUTEpt8S92
-         +PYfilkJYO5sD5ollSJQ21b6HwxeQTZvRABnmHeDLnDl/UbGhu79wampY9P6EivgaB41
-         miWsDsD/anzPnjRfUO1hSdyhJygBwHQACclyqZO7f1g99aTGPDbDBEsOucf6Fz5wkjXr
-         nKciatv2BpxfbWxIvt+Sd2vF6V+jYCO3syZs96CHqFH/mKartRUYT/bKQVyL1OWanqAj
-         QSyg==
-X-Gm-Message-State: AOJu0YxecI4m6o4U4rxRtdmpzY3noVb4GIgwFo3x7JmJmZdAL3xaclBP
-	2OkdugA7NpXmsWueWkN0Nc/FyOzJZzEBsUKadBC7Iw==
-X-Google-Smtp-Source: AGHT+IHwlHp84D6NTZQKO4FRUFD+68Z2Jmt2OGg+nN3JshwrNkRkLgGjAWC0Nkmq381j0LC9zkZDtC2kGHPxE51tmPw=
-X-Received: by 2002:a67:ce0e:0:b0:443:7eba:e22c with SMTP id
- s14-20020a67ce0e000000b004437ebae22cmr3050838vsl.8.1692263973474; Thu, 17 Aug
- 2023 02:19:33 -0700 (PDT)
+	id 1qWZj9-005z4o-3C;
+	Thu, 17 Aug 2023 09:55:41 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 822DE63944;
+	Thu, 17 Aug 2023 09:55:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 96B3FC433CC;
+	Thu, 17 Aug 2023 09:55:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1692266138;
+	bh=pXiGancAeYKnPcvOFhUswbg11PDFY6ZLcz2zikEUJVg=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=brXns1YmUYp1vyVgROcwnPjf7nbY3k2odTOaRRIPfWHHZ7WMV1Rw+ZQdpvvtLe1Es
+	 CG+otVE+H4qlFvN8qoV0Z4ZGjKYCdwLZ+05f+I/kRQf1383ISYuJg81eLSY0qC6NZ5
+	 SP8uShxTY5gRC7/w5RPLAf2I0PN1LQl/riWzj+6tGdy/lVuykGoj5dF3cFVAplmSRf
+	 5r/1GbONOFOIRZ3AQ+RFAJxmAgXEq3CZEMYdeTrIuzomhjanU8DnQnoKomzC5eCAkp
+	 tavvCchX8+cCNvXuUmHSMcEgM/9GhoqUeLH+LKP8Tymw+wGSjJtBj3PG71HBQyd/IU
+	 9xMkTBlrvXe+A==
+From: Vinod Koul <vkoul@kernel.org>
+To: linux-mediatek@lists.infradead.org, 
+ Eugen Hristev <eugen.hristev@collabora.com>
+In-Reply-To: <20230814093931.9298-1-eugen.hristev@collabora.com>
+References: <20230814093931.9298-1-eugen.hristev@collabora.com>
+Subject: Re: (subset) [PATCH v2 1/2] dt-bindings: phy: mediatek,tphy: allow
+ simple nodename pattern
+Message-Id: <169226613323.81413.1101515821069495424.b4-ty@kernel.org>
+Date: Thu, 17 Aug 2023 15:25:33 +0530
 MIME-Version: 1.0
-References: <20230816190427.2137768-1-nfraprado@collabora.com>
-In-Reply-To: <20230816190427.2137768-1-nfraprado@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 17 Aug 2023 17:19:22 +0800
-Message-ID: <CAGXv+5EnbovYSfw=_wSKyKTSbDQYu6UW8u8L5bm9PKjN1dVGyQ@mail.gmail.com>
-Subject: Re: [PATCH v3] arm64: dts: mediatek: cherry: Configure eDP and
- internal display
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Conor Dooley <conor+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.12.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230817_021935_038400_7B001A1C 
-X-CRM114-Status: GOOD (  18.28  )
+X-CRM114-CacheID: sfid-20230817_025540_092007_B50509C9 
+X-CRM114-Status: UNSURE (   7.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,105 +72,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: kishon@kernel.org, devicetree@vger.kernel.org, conor+dt@kernel.org, kernel@collabora.com, sam.shih@mediatek.com, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, chunfeng.yun@mediatek.com, jieyy.yang@mediatek.com, chris.obbard@collabora.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 17, 2023 at 3:04=E2=80=AFAM N=C3=ADcolas F. R. A. Prado
-<nfraprado@collabora.com> wrote:
->
-> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com=
->
->
-> Add the required nodes to enable the DisplayPort interface, connected
-> to the Embedded DisplayPort port, where we have an internal display.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> [nfraprado: removed always-on, added vin-supply and enable delay]
-> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+On Mon, 14 Aug 2023 12:39:30 +0300, Eugen Hristev wrote:
+> The pattern for the nodename only allows t-phy@... , however, for the case
+> when the t-phy has no `reg` and only `ranges` (basically when the t-phy
+> is just a parent node), dtc will throw this warning:
+> 
+> Warning (unit_address_vs_reg): /t-phy@1a243000: node has a unit name, but no reg or ranges property
+> 
+> For a node like this:
+> 
+> [...]
 
-> ---
-> The MediaTek DRM changes needed for MT8195 have already been queued for
-> v6.6 [1], so this DT patch is the last missing piece needed to get
-> a working display on MT8195 Tomato.
->
-> [1] https://lore.kernel.org/all/20230813152726.14802-1-chunkuang.hu@kerne=
-l.org/
->
-> Changes in v3:
-> - Split from "MT8195 Acer Tomato - devicetrees Part 3" series
+Applied, thanks!
 
-The platform thermal patch from that series hasn't been merged either?
+[1/2] dt-bindings: phy: mediatek,tphy: allow simple nodename pattern
+      commit: e4077ca4ebdefa1b4616e4dafcb67b621253b233
 
-> - Removed regulator-always-on as it's no longer needed
-> - Added missing vin-supply and regulator-enable-delay
->
->  .../boot/dts/mediatek/mt8195-cherry.dtsi      | 33 +++++++++++++++++++
->  1 file changed, 33 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64=
-/boot/dts/mediatek/mt8195-cherry.dtsi
-> index 37a3e9de90ff..dd5b89b73190 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> @@ -47,6 +47,19 @@ memory@40000000 {
->                 reg =3D <0 0x40000000 0 0x80000000>;
->         };
->
-> +       pp3300_disp_x: regulator-pp3300-disp-x {
-> +               compatible =3D "regulator-fixed";
-> +               regulator-name =3D "pp3300_disp_x";
-> +               regulator-min-microvolt =3D <3300000>;
-> +               regulator-max-microvolt =3D <3300000>;
-> +               regulator-enable-ramp-delay =3D <2500>;
-> +               enable-active-high;
-> +               gpio =3D <&pio 55 GPIO_ACTIVE_HIGH>;
-> +               pinctrl-names =3D "default";
-> +               pinctrl-0 =3D <&panel_fixed_pins>;
-> +               vin-supply =3D <&pp3300_z2>;
-> +       };
-> +
->         /* system wide LDO 3.3V power rail */
->         pp3300_z5: regulator-pp3300-ldo-z5 {
->                 compatible =3D "regulator-fixed";
-> @@ -217,6 +230,20 @@ port@1 {
->                         reg =3D <1>;
->                         edp_out: endpoint {
->                                 data-lanes =3D <0 1 2 3>;
-> +                               remote-endpoint =3D <&panel_in>;
-> +                       };
-> +               };
-> +       };
-> +
-> +       aux-bus {
-> +               panel {
-> +                       compatible =3D "edp-panel";
-> +                       power-supply =3D <&pp3300_disp_x>;
-> +                       backlight =3D <&backlight_lcd0>;
-> +                       port {
-> +                               panel_in: endpoint {
-> +                                       remote-endpoint =3D <&edp_out>;
-> +                               };
->                         };
->                 };
->         };
-> @@ -881,6 +908,12 @@ pins-bus {
->                 };
->         };
->
-> +       panel_fixed_pins: panel-pwr-default-pins {
-> +               pins-vreg-en {
-> +                       pinmux =3D <PINMUX_GPIO55__FUNC_GPIO55>;
-> +               };
-> +       };
-> +
->         pio_default: pio-default-pins {
->                 pins-wifi-enable {
->                         pinmux =3D <PINMUX_GPIO58__FUNC_GPIO58>;
-> --
-> 2.41.0
->
+Best regards,
+-- 
+~Vinod
+
+
 
