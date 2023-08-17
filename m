@@ -4,79 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15A9DEB64DD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 10:24:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1937C2FC0E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 11:39:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5ZDyn/jzI7YZMWK+GEkv2+EBtYNLSKjcacHJd1oDIk8=; b=EJuASLHhtYZQtRJcqOwdxeN+Wz
-	t1qAcsZkFFNCZh18r+k0s7MLPH8xgQuBYE3aij1ZqR8S9DTqK156Futl85DCp87gKHy/YmAZfWqDn
-	nkT1wSN9WqEDjNYVa1ZPdQ6TsTXSvWHAgseW/mT7dhyO1H+49EQs9XEbxTDEMtGCIzivMDYoo4+bH
-	4+u8do9acEEhS8lwOvCoFdeY/i4R9R+Rpprbq0dGgo7fUU/9qtAq0TUXMIqmsS2S0FsfwYCB2/TNh
-	3pYYqD5gTDC/ky7EFmmi89RZnV982zgLqN4yw4nVfAZSXkbaioML+uTwaGcFWvhmv/Upo5DbPkFW8
-	menKXQXg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TTEZsdCY4/ROvTDegYueu3UoNKVTo+C9n4Jn+JaTP2o=; b=uKTiknn4hHz+o7kJxLkfe1WSc5
+	aK1+WrA5MS6D8wie4o0hwQt5tiTOqPqB3LSqFNHCOKis3wPT4y1yjd4U5AkhgfU6y3tX421+pYWQl
+	+5dscejme+kVqg/FomkOmsQO/DwyiQuJNRVsBSinrVVKakA52y1ErM9nbRt1Qwu9N5I3t8/enfOLb
+	RiDyQH7bvn4hlkQ3+N525UU+iZiS7rc0TJmylFN23Ia/xxmNerZvegV3fpt1MDdFj7cgoBpRbYucK
+	yw+YLhMQ/3eXb2K+T4mmvB/UOaUOdd0S+xQA21iy4+czFOZBm8VOhozPn2KD25zDVxg1XF2xFs4N0
+	TMy+6fbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWaAi-0061ls-1T;
-	Thu, 17 Aug 2023 10:24:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qWbLa-006I0o-1a;
+	Thu, 17 Aug 2023 11:39:26 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWaAe-0061ko-0q;
-	Thu, 17 Aug 2023 10:24:06 +0000
-X-UUID: 2d4f82c83ce811ee912e1518a6540028-20230817
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5ZDyn/jzI7YZMWK+GEkv2+EBtYNLSKjcacHJd1oDIk8=;
-	b=FaC+XA3JGDg62kFWYAefWQtoVWstwsl5PS3M9Recoyb5p2bhGeFaGrZlYwwFEwPfWPVKLFqdwUpngLYCgnTlct2Ictz/IbAaL+LTLV8wf4tX88uiQRhKRPewZaUxRrkrYfv/QYceaEnAphVsyNE7p90u5IEhUVIbNo9HrrwT0gA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:79c5adfb-a55f-4787-9031-bd0eb285105a,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:0ad78a4,CLOUDID:9beee012-4929-4845-9571-38c601e9c3c9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 2d4f82c83ce811ee912e1518a6540028-20230817
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <maso.huang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 512300423; Thu, 17 Aug 2023 03:23:58 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 17 Aug 2023 18:13:55 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 17 Aug 2023 18:13:55 +0800
-From: Maso Huang <maso.huang@mediatek.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob
- Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>, Trevor Wu <trevor.wu@mediatek.com>, Arnd
- Bergmann <arnd@arndb.de>, Mars Chen
-	<chenxiangrui@huaqin.corp-partner.google.com>, Allen-KH Cheng
-	<allen-kh.cheng@mediatek.com>, <alsa-devel@alsa-project.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Maso Huang <maso.huang@mediatek.com>
-Subject: [PATCH v4 2/6] ASoC: mediatek: mt7986: support etdm in platform driver
-Date: Thu, 17 Aug 2023 18:13:34 +0800
-Message-ID: <20230817101338.18782-3-maso.huang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230817101338.18782-1-maso.huang@mediatek.com>
-References: <20230817101338.18782-1-maso.huang@mediatek.com>
+	id 1qWbLX-006HyE-0z
+	for linux-mediatek@lists.infradead.org;
+	Thu, 17 Aug 2023 11:39:24 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3fe5c0e5747so5609585e9.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 17 Aug 2023 04:39:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1692272359; x=1692877159;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=TTEZsdCY4/ROvTDegYueu3UoNKVTo+C9n4Jn+JaTP2o=;
+        b=oX5yPVth+PHIjocLUBndePdGLypDvYq2solc5BzuflSzikrFXb3kjbOOxCzeIXUOc2
+         eMRRn1Y5UkU4Y7HoKz9ahfaZy2mVS5ClWAtrqtSr5TZ+Zxe/kyZM8J1YkzTb+9LS5T7c
+         iEawd+lQth5ZCOZC1GA5tHDPx4dG/nU+F9hV4Rg4zFa/seAonVVXc7XYFbWzxdN7l/yi
+         yZ2YYFXEsbbBOg2qRfFt9dPWobIgklKKF1O9yB5b/8u4n3ehRrRCpcqoojzhPe5mG2Ae
+         KqeCVbtlKG4lP6k/0BhYNtRVHXy7GVEcVY2etFpfdOQmrcff1COpd+rvL+gcXg/Vg1+n
+         yWjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692272359; x=1692877159;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=TTEZsdCY4/ROvTDegYueu3UoNKVTo+C9n4Jn+JaTP2o=;
+        b=GIivn7+qTj4V47edS8i+liO66ZE6XB4FhRBDiv3w/X3/Ron+WPMC3BzY3MdcngC3kE
+         lGNQWlrRPYXXm9wjawyA8VlzcESKtD1f+Aw7vUbTQD4XZ3AVUrFLQ0ljSTy9WXuZUtCF
+         XeFuhOwXfyhMhJLNHwJIH3IwDXZ5NVG6SZ/nnRyLUywQdUkG4f8uzbzh8piv5Zy5ZaGF
+         eEzf5tFA98cWPk7Nwh/9MRhtJ9ipSTrKX7OBFPHgMzFwuy/1RxP8WXvrPvmzDIQABBtw
+         j4csZRHVi2d+i7XyuN9EUqSDyv+TuINrU84L4IWt64WsKh3jWybaJS0w8EjAG3dNpAp5
+         bTjA==
+X-Gm-Message-State: AOJu0YyfjtBc3+7c5K+cBOhmcsJa6gJhrNIeO+l+uhLHMus6/lG8nT+S
+	mFQD5fsv5+iZc14j5O0U/Ta8bA==
+X-Google-Smtp-Source: AGHT+IGplJUJS6D5RdP0gSy2QTohSeSR4gSIA81af/fmBPrRIPnGjoUraXeZu9PIoTjkHGZhXLeFjw==
+X-Received: by 2002:a05:600c:3c8b:b0:3fe:4c29:e626 with SMTP id bg11-20020a05600c3c8b00b003fe4c29e626mr1942612wmb.13.1692272358746;
+        Thu, 17 Aug 2023 04:39:18 -0700 (PDT)
+Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.googlemail.com with ESMTPSA id a23-20020a05600c225700b003fe1cdbc33dsm2749722wmm.9.2023.08.17.04.39.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 17 Aug 2023 04:39:18 -0700 (PDT)
+Message-ID: <d5393131-602f-c9ae-8ca9-1ee69479c705@linaro.org>
+Date: Thu, 17 Aug 2023 13:39:17 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v4 0/5] Add LVTS support for mt8192
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
+ angelogioacchino.delregno@collabora.com, rafael@kernel.org,
+ amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de,
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, james.lo@mediatek.com, rex-bc.chen@mediatek.com,
+ abailon@baylibre.com, amergnat@baylibre.com, khilman@baylibre.com
+References: <20230530195132.2286163-1-bero@baylibre.com>
+ <107678ff-c3d5-4c3a-ad0e-fa292a125daa@notapiano>
+ <a97efd71-23e2-5ac9-8d3d-427a431353c6@linaro.org>
+ <CAGXv+5EFD_yMF7q0P5rqiRWeyRqm016Or8iB0niwj26HFVp93Q@mail.gmail.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <CAGXv+5EFD_yMF7q0P5rqiRWeyRqm016Or8iB0niwj26HFVp93Q@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230817_032404_319544_30D1CAC1 
-X-CRM114-Status: GOOD (  19.24  )
+X-CRM114-CacheID: sfid-20230817_043923_345215_9EBCD58F 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,433 +105,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt7986 etdm dai driver support.
+On 17/08/2023 10:45, Chen-Yu Tsai wrote:
+> On Thu, Aug 17, 2023 at 4:49 AM Daniel Lezcano
+> <daniel.lezcano@linaro.org> wrote:
+>>
+>>
+>> Hi,
+>>
+>> On 16/08/2023 21:57, Nícolas F. R. A. Prado wrote:
+>>
+>> [ ... ]
+>>
+>>> Hi Daniel,
+>>>
+>>> just a gentle reminder. As you've just applied [1], there are no longer any
+>>> concerns with this series, and it'll provide both working interrupts and
+>>> reliable thermal readings on MT8192.
+>>
+>> There are still concerns and questions in the series for patch2 and 3.
+> 
+> FWIW the readout errors raised in patch 3 were fixed by
+> 
+> "thermal/drivers/mediatek/lvts_thermal: Make readings valid in filtered mode"
+> 
+> So I guess the remaining concern is on patch 2 about whether the noirq
+> suspend callback should be used instead.
 
-Signed-off-by: Maso Huang <maso.huang@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- sound/soc/mediatek/mt7986/mt7986-dai-etdm.c | 411 ++++++++++++++++++++
- 1 file changed, 411 insertions(+)
- create mode 100644 sound/soc/mediatek/mt7986/mt7986-dai-etdm.c
+Yes, and the reordering of the lvts_of_match
 
-diff --git a/sound/soc/mediatek/mt7986/mt7986-dai-etdm.c b/sound/soc/mediatek/mt7986/mt7986-dai-etdm.c
-new file mode 100644
-index 000000000000..e523d33846fe
---- /dev/null
-+++ b/sound/soc/mediatek/mt7986/mt7986-dai-etdm.c
-@@ -0,0 +1,411 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * MediaTek ALSA SoC Audio DAI eTDM Control
-+ *
-+ * Copyright (c) 2023 MediaTek Inc.
-+ * Authors: Vic Wu <vic.wu@mediatek.com>
-+ *          Maso Huang <maso.huang@mediatek.com>
-+ */
-+
-+#include <linux/bitfield.h>
-+#include <linux/bitops.h>
-+#include <linux/regmap.h>
-+#include <sound/pcm_params.h>
-+#include "mt7986-afe-common.h"
-+#include "mt7986-reg.h"
-+
-+#define HOPPING_CLK  0
-+#define APLL_CLK     1
-+#define MTK_DAI_ETDM_FORMAT_I2S   0
-+#define MTK_DAI_ETDM_FORMAT_DSPA  4
-+#define MTK_DAI_ETDM_FORMAT_DSPB  5
-+
-+enum {
-+	MTK_ETDM_RATE_8K = 0,
-+	MTK_ETDM_RATE_12K = 1,
-+	MTK_ETDM_RATE_16K = 2,
-+	MTK_ETDM_RATE_24K = 3,
-+	MTK_ETDM_RATE_32K = 4,
-+	MTK_ETDM_RATE_48K = 5,
-+	MTK_ETDM_RATE_96K = 7,
-+	MTK_ETDM_RATE_192K = 9,
-+	MTK_ETDM_RATE_11K = 16,
-+	MTK_ETDM_RATE_22K = 17,
-+	MTK_ETDM_RATE_44K = 18,
-+	MTK_ETDM_RATE_88K = 19,
-+	MTK_ETDM_RATE_176K = 20,
-+};
-+
-+struct mtk_dai_etdm_priv {
-+	bool bck_inv;
-+	bool lrck_inv;
-+	bool slave_mode;
-+	unsigned int format;
-+};
-+
-+static unsigned int mt7986_etdm_rate_transform(struct device *dev, unsigned int rate)
-+{
-+	switch (rate) {
-+	case 8000:
-+		return MTK_ETDM_RATE_8K;
-+	case 11025:
-+		return MTK_ETDM_RATE_11K;
-+	case 12000:
-+		return MTK_ETDM_RATE_12K;
-+	case 16000:
-+		return MTK_ETDM_RATE_16K;
-+	case 22050:
-+		return MTK_ETDM_RATE_22K;
-+	case 24000:
-+		return MTK_ETDM_RATE_24K;
-+	case 32000:
-+		return MTK_ETDM_RATE_32K;
-+	case 44100:
-+		return MTK_ETDM_RATE_44K;
-+	case 48000:
-+		return MTK_ETDM_RATE_48K;
-+	case 88200:
-+		return MTK_ETDM_RATE_88K;
-+	case 96000:
-+		return MTK_ETDM_RATE_96K;
-+	case 176400:
-+		return MTK_ETDM_RATE_176K;
-+	case 192000:
-+		return MTK_ETDM_RATE_192K;
-+	default:
-+		dev_warn(dev, "%s(), rate %u invalid, using %d!!!\n",
-+			 __func__, rate, MTK_ETDM_RATE_48K);
-+		return MTK_ETDM_RATE_48K;
-+	}
-+}
-+
-+static int get_etdm_wlen(unsigned int bitwidth)
-+{
-+	return bitwidth <= 16 ? 16 : 32;
-+}
-+
-+/* dai component */
-+/* interconnection */
-+
-+static const struct snd_kcontrol_new o124_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I032_Switch", AFE_CONN124_1, 0, 1, 0),
-+};
-+
-+static const struct snd_kcontrol_new o125_mix[] = {
-+	SOC_DAPM_SINGLE_AUTODISABLE("I033_Switch", AFE_CONN125_1, 1, 1, 0),
-+};
-+
-+static const struct snd_soc_dapm_widget mtk_dai_etdm_widgets[] = {
-+
-+	/* DL */
-+	SND_SOC_DAPM_MIXER("I150", SND_SOC_NOPM, 0, 0, NULL, 0),
-+	SND_SOC_DAPM_MIXER("I151", SND_SOC_NOPM, 0, 0, NULL, 0),
-+	/* UL */
-+	SND_SOC_DAPM_MIXER("O124", SND_SOC_NOPM, 0, 0, o124_mix, ARRAY_SIZE(o124_mix)),
-+	SND_SOC_DAPM_MIXER("O125", SND_SOC_NOPM, 0, 0, o125_mix, ARRAY_SIZE(o125_mix)),
-+};
-+
-+static const struct snd_soc_dapm_route mtk_dai_etdm_routes[] = {
-+	{"I150", NULL, "ETDM Capture"},
-+	{"I151", NULL, "ETDM Capture"},
-+	{"ETDM Playback", NULL, "O124"},
-+	{"ETDM Playback", NULL, "O125"},
-+	{"O124", "I032_Switch", "I032"},
-+	{"O125", "I033_Switch", "I033"},
-+};
-+
-+/* dai ops */
-+static int mtk_dai_etdm_startup(struct snd_pcm_substream *substream,
-+				struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct mt7986_afe_private *afe_priv = afe->platform_priv;
-+	int ret;
-+
-+	ret = clk_bulk_prepare_enable(afe_priv->num_clks, afe_priv->clks);
-+	if (ret)
-+		return dev_err_probe(afe->dev, ret, "Failed to enable clocks\n");
-+
-+	regmap_update_bits(afe->regmap, AUDIO_TOP_CON2, CLK_OUT5_PDN_MASK, 0);
-+	regmap_update_bits(afe->regmap, AUDIO_TOP_CON2, CLK_IN5_PDN_MASK, 0);
-+
-+	return 0;
-+}
-+
-+static void mtk_dai_etdm_shutdown(struct snd_pcm_substream *substream,
-+				  struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct mt7986_afe_private *afe_priv = afe->platform_priv;
-+
-+	regmap_update_bits(afe->regmap, AUDIO_TOP_CON2, CLK_OUT5_PDN_MASK,
-+			   CLK_OUT5_PDN);
-+	regmap_update_bits(afe->regmap, AUDIO_TOP_CON2, CLK_IN5_PDN_MASK,
-+			   CLK_IN5_PDN);
-+
-+	clk_bulk_disable_unprepare(afe_priv->num_clks, afe_priv->clks);
-+}
-+
-+static unsigned int get_etdm_ch_fixup(unsigned int channels)
-+{
-+	if (channels > 16)
-+		return 24;
-+	else if (channels > 8)
-+		return 16;
-+	else if (channels > 4)
-+		return 8;
-+	else if (channels > 2)
-+		return 4;
-+	else
-+		return 2;
-+}
-+
-+static int mtk_dai_etdm_config(struct mtk_base_afe *afe,
-+			       struct snd_pcm_hw_params *params,
-+			       struct snd_soc_dai *dai,
-+			       int stream)
-+{
-+	struct mt7986_afe_private *afe_priv = afe->platform_priv;
-+	struct mtk_dai_etdm_priv *etdm_data = afe_priv->dai_priv[dai->id];
-+	unsigned int rate = params_rate(params);
-+	unsigned int etdm_rate = mt7986_etdm_rate_transform(afe->dev, rate);
-+	unsigned int afe_rate = mt7986_afe_rate_transform(afe->dev, rate);
-+	unsigned int channels = params_channels(params);
-+	unsigned int bit_width = params_width(params);
-+	unsigned int wlen = get_etdm_wlen(bit_width);
-+	unsigned int val = 0;
-+	unsigned int mask = 0;
-+
-+	dev_dbg(afe->dev, "%s(), stream %d, rate %u, bitwidth %u\n",
-+		 __func__, stream, rate, bit_width);
-+
-+	/* CON0 */
-+	mask |= ETDM_BIT_LEN_MASK;
-+	val |= FIELD_PREP(ETDM_BIT_LEN_MASK, bit_width - 1);
-+	mask |= ETDM_WRD_LEN_MASK;
-+	val |= FIELD_PREP(ETDM_WRD_LEN_MASK, wlen - 1);
-+	mask |= ETDM_FMT_MASK;
-+	val |= FIELD_PREP(ETDM_FMT_MASK, etdm_data->format);
-+	mask |= ETDM_CH_NUM_MASK;
-+	val |= FIELD_PREP(ETDM_CH_NUM_MASK, get_etdm_ch_fixup(channels) - 1);
-+	mask |= RELATCH_SRC_MASK;
-+	val |= FIELD_PREP(RELATCH_SRC_MASK, APLL_CLK);
-+
-+	switch (stream) {
-+	case SNDRV_PCM_STREAM_PLAYBACK:
-+		/* set ETDM_OUT5_CON0 */
-+		regmap_update_bits(afe->regmap, ETDM_OUT5_CON0, mask, val);
-+
-+		/* set ETDM_OUT5_CON4 */
-+		regmap_update_bits(afe->regmap, ETDM_OUT5_CON4,
-+				   OUT_RELATCH_MASK, OUT_RELATCH(afe_rate));
-+		regmap_update_bits(afe->regmap, ETDM_OUT5_CON4,
-+				   OUT_CLK_SRC_MASK, OUT_CLK_SRC(APLL_CLK));
-+		regmap_update_bits(afe->regmap, ETDM_OUT5_CON4,
-+				   OUT_SEL_FS_MASK, OUT_SEL_FS(etdm_rate));
-+
-+		/* set ETDM_OUT5_CON5 */
-+		regmap_update_bits(afe->regmap, ETDM_OUT5_CON5,
-+				   ETDM_CLK_DIV_MASK, ETDM_CLK_DIV);
-+		break;
-+	case SNDRV_PCM_STREAM_CAPTURE:
-+		/* set ETDM_IN5_CON0 */
-+		regmap_update_bits(afe->regmap, ETDM_IN5_CON0, mask, val);
-+		regmap_update_bits(afe->regmap, ETDM_IN5_CON0,
-+				   ETDM_SYNC_MASK, ETDM_SYNC);
-+
-+		/* set ETDM_IN5_CON2 */
-+		regmap_update_bits(afe->regmap, ETDM_IN5_CON2,
-+				   IN_CLK_SRC_MASK, IN_CLK_SRC(APLL_CLK));
-+
-+		/* set ETDM_IN5_CON3 */
-+		regmap_update_bits(afe->regmap, ETDM_IN5_CON3,
-+				   IN_SEL_FS_MASK, IN_SEL_FS(etdm_rate));
-+
-+		/* set ETDM_IN5_CON4 */
-+		regmap_update_bits(afe->regmap, ETDM_IN5_CON4,
-+				   IN_RELATCH_MASK, IN_RELATCH(afe_rate));
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_dai_etdm_hw_params(struct snd_pcm_substream *substream,
-+				  struct snd_pcm_hw_params *params,
-+				  struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+
-+	mtk_dai_etdm_config(afe, params, dai, SNDRV_PCM_STREAM_PLAYBACK);
-+	mtk_dai_etdm_config(afe, params, dai, SNDRV_PCM_STREAM_CAPTURE);
-+
-+	return 0;
-+}
-+
-+static int mtk_dai_etdm_trigger(struct snd_pcm_substream *substream, int cmd,
-+				struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+
-+	dev_dbg(afe->dev, "%s(), cmd %d, dai id %d\n", __func__, cmd, dai->id);
-+	switch (cmd) {
-+	case SNDRV_PCM_TRIGGER_START:
-+	case SNDRV_PCM_TRIGGER_RESUME:
-+		regmap_update_bits(afe->regmap, ETDM_IN5_CON0, ETDM_EN_MASK,
-+				   ETDM_EN);
-+		regmap_update_bits(afe->regmap, ETDM_OUT5_CON0, ETDM_EN_MASK,
-+				   ETDM_EN);
-+		break;
-+	case SNDRV_PCM_TRIGGER_STOP:
-+	case SNDRV_PCM_TRIGGER_SUSPEND:
-+		regmap_update_bits(afe->regmap, ETDM_IN5_CON0, ETDM_EN_MASK,
-+				   0);
-+		regmap_update_bits(afe->regmap, ETDM_OUT5_CON0, ETDM_EN_MASK,
-+				   0);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_dai_etdm_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct mt7986_afe_private *afe_priv = afe->platform_priv;
-+	struct mtk_dai_etdm_priv *etdm_data;
-+	void *priv_data;
-+
-+	switch (dai->id) {
-+	case MT7986_DAI_ETDM:
-+		break;
-+	default:
-+		dev_warn(afe->dev, "%s(), id %d not support\n",
-+			 __func__, dai->id);
-+		return -EINVAL;
-+	}
-+
-+	priv_data = devm_kzalloc(afe->dev, sizeof(struct mtk_dai_etdm_priv),
-+				 GFP_KERNEL);
-+	if (!priv_data)
-+		return -ENOMEM;
-+
-+	afe_priv->dai_priv[dai->id] = priv_data;
-+	etdm_data = afe_priv->dai_priv[dai->id];
-+
-+	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
-+	case SND_SOC_DAIFMT_I2S:
-+		etdm_data->format = MTK_DAI_ETDM_FORMAT_I2S;
-+		break;
-+	case SND_SOC_DAIFMT_DSP_A:
-+		etdm_data->format = MTK_DAI_ETDM_FORMAT_DSPA;
-+		break;
-+	case SND_SOC_DAIFMT_DSP_B:
-+		etdm_data->format = MTK_DAI_ETDM_FORMAT_DSPB;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
-+	case SND_SOC_DAIFMT_NB_NF:
-+		etdm_data->bck_inv = false;
-+		etdm_data->lrck_inv = false;
-+		break;
-+	case SND_SOC_DAIFMT_NB_IF:
-+		etdm_data->bck_inv = false;
-+		etdm_data->lrck_inv = true;
-+		break;
-+	case SND_SOC_DAIFMT_IB_NF:
-+		etdm_data->bck_inv = true;
-+		etdm_data->lrck_inv = false;
-+		break;
-+	case SND_SOC_DAIFMT_IB_IF:
-+		etdm_data->bck_inv = true;
-+		etdm_data->lrck_inv = true;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-+	case SND_SOC_DAIFMT_CBM_CFM:
-+		etdm_data->slave_mode = true;
-+		break;
-+	case SND_SOC_DAIFMT_CBS_CFS:
-+		etdm_data->slave_mode = false;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct snd_soc_dai_ops mtk_dai_etdm_ops = {
-+	.startup = mtk_dai_etdm_startup,
-+	.shutdown = mtk_dai_etdm_shutdown,
-+	.hw_params = mtk_dai_etdm_hw_params,
-+	.trigger = mtk_dai_etdm_trigger,
-+	.set_fmt = mtk_dai_etdm_set_fmt,
-+};
-+
-+/* dai driver */
-+#define MTK_ETDM_RATES (SNDRV_PCM_RATE_8000_48000 |\
-+			SNDRV_PCM_RATE_88200 |\
-+			SNDRV_PCM_RATE_96000 |\
-+			SNDRV_PCM_RATE_176400 |\
-+			SNDRV_PCM_RATE_192000)
-+
-+#define MTK_ETDM_FORMATS (SNDRV_PCM_FMTBIT_S16_LE |\
-+			  SNDRV_PCM_FMTBIT_S24_LE |\
-+			  SNDRV_PCM_FMTBIT_S32_LE)
-+
-+static struct snd_soc_dai_driver mtk_dai_etdm_driver[] = {
-+	{
-+		.name = "ETDM",
-+		.id = MT7986_DAI_ETDM,
-+		.capture = {
-+			.stream_name = "ETDM Capture",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_ETDM_RATES,
-+			.formats = MTK_ETDM_FORMATS,
-+		},
-+		.playback = {
-+			.stream_name = "ETDM Playback",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_ETDM_RATES,
-+			.formats = MTK_ETDM_FORMATS,
-+		},
-+		.ops = &mtk_dai_etdm_ops,
-+		.symmetric_rate = 1,
-+		.symmetric_sample_bits = 1,
-+	},
-+};
-+
-+int mt7986_dai_etdm_register(struct mtk_base_afe *afe)
-+{
-+	struct mtk_base_afe_dai *dai;
-+
-+	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
-+	if (!dai)
-+		return -ENOMEM;
-+
-+	list_add(&dai->list, &afe->sub_dais);
-+
-+	dai->dai_drivers = mtk_dai_etdm_driver;
-+	dai->num_dai_drivers = ARRAY_SIZE(mtk_dai_etdm_driver);
-+
-+	dai->dapm_widgets = mtk_dai_etdm_widgets;
-+	dai->num_dapm_widgets = ARRAY_SIZE(mtk_dai_etdm_widgets);
-+	dai->dapm_routes = mtk_dai_etdm_routes;
-+	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_etdm_routes);
-+
-+	return 0;
-+}
+
 -- 
-2.18.0
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
 
