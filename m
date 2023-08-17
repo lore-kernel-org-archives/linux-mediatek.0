@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BBB2C2FC0F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 02:46:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C317C05052
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 02:46:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H5+0qC3DYtZWQ3yrmtFCBuRHbjDp34dK050JGgHv4l4=; b=awomrfgBO1GBA0PtASC7Jm/5Oy
-	Ydlp3WRkjGVRe7NCRhH6CNL+EcOOUISjRBvft8aDMx9BPAhESWPnLBWu6wzE+aNexm6OOkgo3TbJi
-	NFa1G+zmZ6MeHX7050rsadtoTA+y14Vj6FbCwJB6pQIYa4EpX184CiJfzdtvLRIuJPvphuUa5FNzE
-	Vzrbj+wRo75ujMjN9NeQQe8u5BThL/I/Cp99mJY8O3kHhpOOUnlBWFAGjy/6/nZ7QFtfgaEcvAfhP
-	G64fq0RU94TvW8WPFaP3ifLR/ZnEm/aGo0WiRYe3VYRsA43q7tD13bgNCZkCre3TMStOSyNLd8QoN
-	lB17TQPg==;
+	bh=hTF5GVNXzUVfWTUpIMbtnImlmTSLZCHWRFc13AWUZqo=; b=WNDe7y60Pz9MfOGl8U934dmw3O
+	r7tcoq3fi3LZjKuSaj4GKd3ZiJwz9lRyc5gH+EAokurSRaJUL87Bp4v0aDrlx0yrK+5YA6r9RqsSB
+	p/6mof2jEfC/zE/rrljLk/jPqWrVtwgJqaloBCQmRGrhPHz66JSGkG1S/ecTRISb0HY4gFmyUgyUj
+	Q7uM4O+nzkakaT4eo0gkpjnBVq3T6/fQkTVNo2CLRR/9frTt/QtkdPj70gDBX7swwduh4xe20YZKH
+	+04DAkiWuwO6sQFGnIqRdsu2P3jCNdSHcvrMfN5f1GPVXxGN0sxHy0CSmPDu4klw85tLkkFyCC5GA
+	BDkFPd1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWT1m-005NYe-1U;
+	id 1qWT1m-005NZA-38;
 	Thu, 17 Aug 2023 02:46:26 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+Received: from szxga03-in.huawei.com ([45.249.212.189])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWT11-005Mzr-2J;
-	Thu, 17 Aug 2023 02:45:41 +0000
+	id 1qWT12-005N0v-12;
+	Thu, 17 Aug 2023 02:45:42 +0000
 Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.53])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RR8R957c5ztRwX;
-	Thu, 17 Aug 2023 10:41:57 +0800 (CST)
+	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4RR8Rz442wzFqjg;
+	Thu, 17 Aug 2023 10:42:39 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Thu, 17 Aug
- 2023 10:45:34 +0800
+ 2023 10:45:36 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <miquel.raynal@bootlin.com>, <richard@nod.at>, <vigneshr@ti.com>,
 	<michal.simek@amd.com>, <vz@mleia.com>, <matthias.bgg@gmail.com>,
@@ -50,9 +50,9 @@ CC: <robh@kernel.org>, <martin.blumenstingl@googlemail.com>,
 	<linux-mtd@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>
-Subject: [PATCH -next 08/11] mtd: rawnand: stm32_fmc2: Use helper function devm_clk_get_enabled()
-Date: Thu, 17 Aug 2023 10:45:06 +0800
-Message-ID: <20230817024509.3951629-9-lizetao1@huawei.com>
+Subject: [PATCH -next 10/11] mtd: rawnand: vf610_nfc: Use helper function devm_clk_get_enabled()
+Date: Thu, 17 Aug 2023 10:45:08 +0800
+Message-ID: <20230817024509.3951629-11-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230817024509.3951629-1-lizetao1@huawei.com>
 References: <20230817024509.3951629-1-lizetao1@huawei.com>
@@ -64,8 +64,8 @@ X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230816_194540_286131_D34A7DF1 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20230816_194540_807432_BB0AA0D5 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,58 +90,96 @@ handling path.
 
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
- drivers/mtd/nand/raw/stm32_fmc2_nand.c | 17 ++++-------------
- 1 file changed, 4 insertions(+), 13 deletions(-)
+ drivers/mtd/nand/raw/vf610_nfc.c | 29 +++++++++--------------------
+ 1 file changed, 9 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/stm32_fmc2_nand.c b/drivers/mtd/nand/raw/stm32_fmc2_nand.c
-index 2f9e43f64dd7..88811139aaf5 100644
---- a/drivers/mtd/nand/raw/stm32_fmc2_nand.c
-+++ b/drivers/mtd/nand/raw/stm32_fmc2_nand.c
-@@ -1951,21 +1951,17 @@ static int stm32_fmc2_nfc_probe(struct platform_device *pdev)
+diff --git a/drivers/mtd/nand/raw/vf610_nfc.c b/drivers/mtd/nand/raw/vf610_nfc.c
+index dcdf33dbaef2..1ce9d5c2b1f7 100644
+--- a/drivers/mtd/nand/raw/vf610_nfc.c
++++ b/drivers/mtd/nand/raw/vf610_nfc.c
+@@ -834,21 +834,15 @@ static int vf610_nfc_probe(struct platform_device *pdev)
+ 	if (IS_ERR(nfc->regs))
+ 		return PTR_ERR(nfc->regs);
  
- 	init_completion(&nfc->complete);
- 
--	nfc->clk = devm_clk_get(nfc->cdev, NULL);
+-	nfc->clk = devm_clk_get(&pdev->dev, NULL);
 -	if (IS_ERR(nfc->clk))
-+	nfc->clk = devm_clk_get_enabled(nfc->cdev, NULL);
++	nfc->clk = devm_clk_get_enabled(&pdev->dev, NULL);
 +	if (IS_ERR(nfc->clk)) {
-+		dev_err(dev, "can not get and enable the clock\n");
++		dev_err(nfc->dev, "Unable to get and enable clock!\n");
  		return PTR_ERR(nfc->clk);
 -
--	ret = clk_prepare_enable(nfc->clk);
--	if (ret) {
--		dev_err(dev, "can not enable the clock\n");
--		return ret;
+-	err = clk_prepare_enable(nfc->clk);
+-	if (err) {
+-		dev_err(nfc->dev, "Unable to enable clock!\n");
+-		return err;
  	}
  
- 	rstc = devm_reset_control_get(dev, NULL);
- 	if (IS_ERR(rstc)) {
- 		ret = PTR_ERR(rstc);
- 		if (ret == -EPROBE_DEFER)
--			goto err_clk_disable;
-+			return ret;
- 	} else {
- 		reset_control_assert(rstc);
- 		reset_control_deassert(rstc);
-@@ -2018,9 +2014,6 @@ static int stm32_fmc2_nfc_probe(struct platform_device *pdev)
- 	sg_free_table(&nfc->dma_data_sg);
- 	sg_free_table(&nfc->dma_ecc_sg);
+ 	of_id = of_match_device(vf610_nfc_dt_ids, &pdev->dev);
+-	if (!of_id) {
+-		err = -ENODEV;
+-		goto err_disable_clk;
+-	}
++	if (!of_id)
++		return -ENODEV;
  
--err_clk_disable:
+ 	nfc->variant = (enum vf610_nfc_variant)of_id->data;
+ 
+@@ -858,9 +852,8 @@ static int vf610_nfc_probe(struct platform_device *pdev)
+ 			if (nand_get_flash_node(chip)) {
+ 				dev_err(nfc->dev,
+ 					"Only one NAND chip supported!\n");
+-				err = -EINVAL;
+ 				of_node_put(child);
+-				goto err_disable_clk;
++				return -EINVAL;
+ 			}
+ 
+ 			nand_set_flash_node(chip, child);
+@@ -869,8 +862,7 @@ static int vf610_nfc_probe(struct platform_device *pdev)
+ 
+ 	if (!nand_get_flash_node(chip)) {
+ 		dev_err(nfc->dev, "NAND chip sub-node missing!\n");
+-		err = -ENODEV;
+-		goto err_disable_clk;
++		return -ENODEV;
+ 	}
+ 
+ 	chip->options |= NAND_NO_SUBPAGE_WRITE;
+@@ -880,7 +872,7 @@ static int vf610_nfc_probe(struct platform_device *pdev)
+ 	err = devm_request_irq(nfc->dev, irq, vf610_nfc_irq, 0, DRV_NAME, nfc);
+ 	if (err) {
+ 		dev_err(nfc->dev, "Error requesting IRQ!\n");
+-		goto err_disable_clk;
++		return err;
+ 	}
+ 
+ 	vf610_nfc_preinit_controller(nfc);
+@@ -892,7 +884,7 @@ static int vf610_nfc_probe(struct platform_device *pdev)
+ 	/* Scan the NAND chip */
+ 	err = nand_scan(chip, 1);
+ 	if (err)
+-		goto err_disable_clk;
++		return err;
+ 
+ 	platform_set_drvdata(pdev, nfc);
+ 
+@@ -904,8 +896,6 @@ static int vf610_nfc_probe(struct platform_device *pdev)
+ 
+ err_cleanup_nand:
+ 	nand_cleanup(chip);
+-err_disable_clk:
 -	clk_disable_unprepare(nfc->clk);
--
- 	return ret;
+ 	return err;
  }
  
-@@ -2045,8 +2038,6 @@ static void stm32_fmc2_nfc_remove(struct platform_device *pdev)
- 	sg_free_table(&nfc->dma_data_sg);
- 	sg_free_table(&nfc->dma_ecc_sg);
- 
+@@ -918,7 +908,6 @@ static void vf610_nfc_remove(struct platform_device *pdev)
+ 	ret = mtd_device_unregister(nand_to_mtd(chip));
+ 	WARN_ON(ret);
+ 	nand_cleanup(chip);
 -	clk_disable_unprepare(nfc->clk);
--
- 	stm32_fmc2_nfc_wp_enable(nand);
  }
  
+ #ifdef CONFIG_PM_SLEEP
 -- 
 2.34.1
 
