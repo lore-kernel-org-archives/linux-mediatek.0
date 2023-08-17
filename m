@@ -4,78 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83EDFC27C7A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 06:46:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B2D6EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 07:11:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E/+xSEjeEKXM3yEBEL+rZfRWTcvVBsEN9Ge5xp19tds=; b=woQhkhSD+EOKbMZ3ArKdW6FFLU
-	8SELPY8905+gM8IsQ/tWblOaKIvuKbT/6tj8EJV3rQ5+8SILw/P65eIF+UTDrcfqH3HKWQ/9FO0N/
-	v7yca/XMTg4zOhvadL8owLP9+kxsQnX3cj8g/GwTvwM49TN2Of+1WNhBvnZt2lud092E9hv2p+NXM
-	ohAczhhAxd8+dbjKWoZ+Y4Rv10YT/EdJ1FfXBr1IIQMqfkq6UNUYEWfCgUFjwKhz04CVcyMMiN5O9
-	B3LG3OfhZp+KzDcM55vtTCRmxpoRpMqwGihUt+SaE++KPU4MM25xRMC6lWHBG9sIrRhY4QR+qisMg
-	+VatygyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SYIubR0vsbL2I01y4mt2tVH+hnp889Ebe7bA8SyGOuw=; b=eyzphoDk5ICWw68vf3mJcYlNGZ
+	8eR33a1YEyyjlEPt3rAq5ARGidctMCMBzPTl6hBlmQMeSzcPI8MCaFEM/RHsC6BH/AW00dlfmlyej
+	77OdDCCUOGgWUTb0skwmNikxWfW74UetLPRC6R0xrOUlLpy9ZzqjF6UrGIn83aJ+O8uJ9tSAxMLX2
+	9B6PAUyYC+ouTgyH/LxbKH/bA1yzFbBxUrtz7AEp8Vw55uE4II3nVzkYtZ3mFL3NDw10hsq3g9IRJ
+	yJcjRPrrrMGRVT2ETlKo0bbPhnre/b3xV1wQVMo7acZHrX1eeOImCgkWXtPekCm/pIekjcIYQ/fxF
+	9fLU1nNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWWmH-005fbG-0q;
-	Thu, 17 Aug 2023 06:46:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qWXAY-005gyQ-2d;
+	Thu, 17 Aug 2023 07:11:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWWmD-005faH-2i;
-	Thu, 17 Aug 2023 06:46:39 +0000
-X-UUID: cae6bd403cc911ee83ed1395ce914268-20230816
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=E/+xSEjeEKXM3yEBEL+rZfRWTcvVBsEN9Ge5xp19tds=;
-	b=mNoUsEXrlQf71+silxPB/LOA3iHBJyNGOmMGAJrYMrQSdBEhCVlbD8MHSdHRHJcO319qrOEd4olXsKM+6iVstcBaDwTQvr8IPkTGWsbEQ53Ub/Luw/417USL/eJ47BOZfxkPF0ok46nLgr6Pa7aghJSERYfqQIRcUCsB+EDDOfs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:ba6fb190-5c46-40f8-86ce-5ff3eaf56daa,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:0ad78a4,CLOUDID:79c4a0ee-9a6e-4c39-b73e-f2bc08ca3dc5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: cae6bd403cc911ee83ed1395ce914268-20230816
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <shuijing.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 455050054; Wed, 16 Aug 2023 23:46:28 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 17 Aug 2023 14:26:25 +0800
-Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 17 Aug 2023 14:26:24 +0800
-From: Shuijing Li <shuijing.li@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
-	<daniel@ffwll.ch>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Shuijing Li
-	<shuijing.li@mediatek.com>
-Subject: [PATCH v5,2/4] drm/mediatek: dp: Add the audio packet flag to mtk_dp_data struct
-Date: Thu, 17 Aug 2023 14:26:33 +0800
-Message-ID: <20230817062635.8786-3-shuijing.li@mediatek.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230817062635.8786-1-shuijing.li@mediatek.com>
-References: <20230817062635.8786-1-shuijing.li@mediatek.com>
+	id 1qWXAU-005gxu-1L
+	for linux-mediatek@lists.infradead.org;
+	Thu, 17 Aug 2023 07:11:44 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6BAD760F59;
+	Thu, 17 Aug 2023 07:11:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C26F1C433C9;
+	Thu, 17 Aug 2023 07:11:38 +0000 (UTC)
+Message-ID: <532a4f36-ad81-50fb-24d2-1f31f93cc714@xs4all.nl>
+Date: Thu, 17 Aug 2023 09:11:36 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH] media: videobuf2-core.c: check if all buffers have the
+ same number of planes
+To: Sakari Ailus <sakari.ailus@iki.fi>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Linux Media Mailing List <linux-media@vger.kernel.org>,
+ andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-mediatek@lists.infradead.org, Wei Chen <harperchen1110@gmail.com>,
+ tiffany.lin@mediatek.com, Nicolas Dufresne <nicolas@ndufresne.ca>
+References: <e75ff985-2499-9a16-21fe-ee2e81547e6f@xs4all.nl>
+ <20230816143432.GA4436@pendragon.ideasonboard.com>
+ <ZN0L6SAWlr+KZTVK@valkosipuli.retiisi.eu>
+Content-Language: en-US, nl
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <ZN0L6SAWlr+KZTVK@valkosipuli.retiisi.eu>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230816_234637_887178_D1FE2374 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20230817_001142_526442_5F7617E0 
+X-CRM114-Status: GOOD (  25.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,96 +74,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The audio packet arrangement function is to only arrange audio
-packets into the Hblanking area. In order to align with the HW
-default setting of mt8195, this function needs to be turned off.
+On 16/08/2023 19:48, Sakari Ailus wrote:
+> Hi Hans, Laurent,
+> 
+> On Wed, Aug 16, 2023 at 05:34:32PM +0300, Laurent Pinchart wrote:
+>> Hi Hans,
+>>
+>> Thank you for the patch.
+>>
+>> On Wed, Aug 16, 2023 at 02:47:33PM +0200, Hans Verkuil wrote:
+>>> Currently if VIDIOC_CREATE_BUFS is called to add new buffers, then the requested
+>>> number of planes per buffer might be different from the already allocated buffers.
+>>>
+>>> However, this does not make a lot of sense and there are no drivers that allow
+>>> for variable number of planes in the allocated buffers.
+>>>
+>>> While it is possible do this today, when such a buffer is queued it will fail
+>>> in the buf_prepare() callback where the plane sizes are checked if those are
+>>> large enough. If fewer planes were allocated, then the size for the missing
+>>> planes are 0 and the check will return -EINVAL.
+>>>
+>>> But it is much better to do this check in VIDIOC_CREATE_BUFS.
+>>
+>> I don't think this is a good idea. One important use case for
+>> VIDIOC_CREATE_BUFS is to allocate buffers for a different format than
+>> the one currently configured for the device, to prepare for a future
+>> capture (or output) session with a different configuration. This patch
+>> would prevent that.
+> 
+> I'd prefer to keep this capability in videobuf2, too. Although... one way
+> achieve that could be to add a flag (or an integer field) in struct
+> vb2_queue to tell vb2 core that the driver wants to do the num_planes
+> checks by itself.
 
-Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
----
-Changes in v5:
-Separate mt8188 related code into mtk_dp_data structure and mt8188 dp/edp function
-per suggestion from the previous thread:
-https://lore.kernel.org/lkml/c1c84616f3da83a8a2bc245b0d3c7697153cd81a.camel@mediatek.com/
-Changes in v4:
-drop mt8188_edp_data and remove unnecessary modification.
-per suggestion from the previous thread:
-https://lore.kernel.org/all/bddb1a1a445ead85056202c355627698051f12c9.camel@mediatek.com/
-Changes in v3:
-Separate these two things into two different patches.
-per suggestion from the previous thread:
-https://lore.kernel.org/lkml/e2ad22bcba31797f38a12a488d4246a01bf0cb2e.camel@mediatek.com/
-Changes in v2:
-- change the variables' name to be more descriptive
-- add a comment that describes the function of mtk_dp_audio_sample_arrange
-- reduce indentation by doing the inverse check
-- add a definition of some bits
-- add support for mediatek, mt8188-edp-tx
-per suggestion from the previous thread:
-https://lore.kernel.org/lkml/ac0fcec9-a2fe-06cc-c727-189ef7babe9c@collabora.com/
----
- drivers/gpu/drm/mediatek/mtk_dp.c     | 17 +++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_dp_reg.h |  5 +++++
- 2 files changed, 22 insertions(+)
+Having a flag for this was something I intended to do once we have a
+driver that actually supports this feature. I'm not aware of any driver
+that needs this today. But I'll make a v2 adding this flag, it is simple
+to do and doesn't hurt.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 64eee77452c0..be557b6f5854 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -139,6 +139,7 @@ struct mtk_dp_data {
- 	unsigned int smc_cmd;
- 	const struct mtk_dp_efuse_fmt *efuse_fmt;
- 	bool audio_supported;
-+	bool audio_pkt_in_hblank_area;
- };
- 
- static const struct mtk_dp_efuse_fmt mt8195_edp_efuse_fmt[MTK_DP_CAL_MAX] = {
-@@ -2616,6 +2617,14 @@ static int mtk_dp_resume(struct device *dev)
- 
- static SIMPLE_DEV_PM_OPS(mtk_dp_pm_ops, mtk_dp_suspend, mtk_dp_resume);
- 
-+static const struct mtk_dp_data mt8188_dp_data = {
-+	.bridge_type = DRM_MODE_CONNECTOR_DisplayPort,
-+	.smc_cmd = MTK_DP_SIP_ATF_VIDEO_UNMUTE,
-+	.efuse_fmt = mt8195_dp_efuse_fmt,
-+	.audio_supported = true,
-+	.audio_pkt_in_hblank_area = true,
-+};
-+
- static const struct mtk_dp_data mt8195_edp_data = {
- 	.bridge_type = DRM_MODE_CONNECTOR_eDP,
- 	.smc_cmd = MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE,
-@@ -2631,6 +2640,14 @@ static const struct mtk_dp_data mt8195_dp_data = {
- };
- 
- static const struct of_device_id mtk_dp_of_match[] = {
-+	{
-+		.compatible = "mediatek,mt8188-edp-tx",
-+		.data = &mt8195_edp_data,
-+	},
-+	{
-+		.compatible = "mediatek,mt8188-dp-tx",
-+		.data = &mt8188_dp_data,
-+	},
- 	{
- 		.compatible = "mediatek,mt8195-edp-tx",
- 		.data = &mt8195_edp_data,
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-index 84e38cef03c2..f38d6ff12afe 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-+++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-@@ -228,6 +228,11 @@
- 							 VIDEO_STABLE_CNT_THRD_DP_ENC1_P0 | \
- 							 SDP_DP13_EN_DP_ENC1_P0 | \
- 							 BS2BS_MODE_DP_ENC1_P0)
-+
-+#define MTK_DP_ENC1_P0_3374			0x3374
-+#define SDP_ASP_INSERT_IN_HBLANK_DP_ENC1_P0_MASK	BIT(12)
-+#define SDP_DOWN_ASP_CNT_INIT_DP_ENC1_P0_MASK		GENMASK(11, 0)
-+
- #define MTK_DP_ENC1_P0_33F4			0x33f4
- #define DP_ENC_DUMMY_RW_1_AUDIO_RST_EN			BIT(0)
- #define DP_ENC_DUMMY_RW_1				BIT(9)
--- 
-2.40.1
+> 
+> It'd be also nicer, considering the end result, to configure this when
+> setting up the queue, rather than based on the first buffer created. This
+> would involve changing a large number of drivers though.
+> 
 
+"to configure this": what is "this"? The new flag? Or the number of planes?
+And with "setting up the queue" do you mean the queue_setup callback or
+when the vb2_queue is initialized?
+
+Regards,
+
+	Hans
 
