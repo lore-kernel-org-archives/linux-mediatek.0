@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3E52C27C7A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 11:59:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 896AAC2FC14
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 12:01:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Nn7P667y6ZndU15Khc4nsy67gqzWp2Um84eqQpYl0fI=; b=i/0FtKh4rse6ICMpA0foT4yTsG
-	ybVGimTmjAYHLnLlUEQ2BWexTSgfaZdWdpoQP49mJbjB4fGqN825Ok0f70EO/npvSmGcHK/LKfRqs
-	phACgU1fQgCcbXODrWELACs15RUwZO/3xBqjRQSulkUNaE64Ux2QS0XX8Brhzn8cr7/3hDpwgwraI
-	4iNvKpCmPoGE4u6Upb5bCbgwdHr2GcFGNVs2wiDx7PAQnI3vzYDlHdrXdeGMHejMVnJA+hi2F/dnu
-	sBcF1WV6OPG+dpOThnIVrn08Ch5fVuTwBLYH1Z46eTK7eo1gsVV+7otN9dOXf9x4vs3luVbs30jim
-	EDQvAOtw==;
+	bh=SeryiRbYKJ2WZYtVkRUX0Kn5X9MRqiXewa99UPs1Pes=; b=4SnaTz2SvXRI3RKy82lecLNMZ5
+	6s8pbCS8bM6J6yD8lc5UtnANS7+Jsv07bYWVKlbv1aWc5QJtnJqcvsugzQue5oFF/hUouDHN7MHDD
+	TKe9KdEX2rkmpPtHOsPTlwMw9qqp3HHeBhSRSL0LFpnewNK8iY7T3DKaLPr06wO0p3YV1I4hoiYXE
+	JIgvsYYi5IZtqhVv4SXfNY+SXBhda/RXwWkDvg1nv1KnenJZS8iEycf8WXaZ7Y/BjP/yTwuz83tyt
+	mD2B4UA+7aQ5TP8RM11eSpPiN9SmyRQdAjGAfJ5quxYWVEIw6YIsdeAezVsbVxldUSIeTpPhz4fuG
+	rRVkPLuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWbfA-006Kh8-1r;
-	Thu, 17 Aug 2023 11:59:40 +0000
+	id 1qWbhI-006L9N-0v;
+	Thu, 17 Aug 2023 12:01:52 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWbf7-006Kfb-1z;
-	Thu, 17 Aug 2023 11:59:38 +0000
+	id 1qWbhF-006L8D-0z;
+	Thu, 17 Aug 2023 12:01:50 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.96)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1qWbeh-0001jX-17;
-	Thu, 17 Aug 2023 11:59:12 +0000
-Date: Thu, 17 Aug 2023 12:58:29 +0100
+	id 1qWbh3-0001ko-02;
+	Thu, 17 Aug 2023 12:01:38 +0000
+Date: Thu, 17 Aug 2023 13:01:11 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
 	Sean Wang <sean.wang@mediatek.com>,
@@ -43,19 +43,17 @@ To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
+	Sujuan Chen <sujuan.chen@mediatek.com>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next] net: ethernet: mtk_eth_soc: fix register
- definitions for MT7988
-Message-ID: <0c0547381d3dc2374e219c97645ab7e1fdfbc385.1692273294.git.daniel@makrotopia.org>
+Subject: [PATCH net] net: ethernet: mtk_eth_soc: fix NULL pointer on hw reset
+Message-ID: <6863f378a2a077701c60cea6ae654212e919d624.1692273610.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230817_045937_677618_0C6E89A6 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230817_050149_339853_F206B44D 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,44 +68,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-More register macros need to be adjusted for the 3rd GMAC on MT7988.
-Account for added bit in SYSCFG0_SGMII_MASK and adjust macros
-MTK_GDMA_MAC_ADRx to return correct registers for the 3rd GMAC.
+When a hardware reset is triggered on devices not initializing WED the
+calls to mtk_wed_fe_reset and mtk_wed_fe_reset_complete dereference a
+pointer on uninitialized stack memory.
+Initialize the hw_list will 0s and break out of both functions in case
+a hw_list entry is 0.
 
-Fixes: 445eb6448ed3 ("net: ethernet: mtk_eth_soc: add basic support for MT7988 SoC")
+Fixes: 08a764a7c51b ("net: ethernet: mtk_wed: add reset/reset_complete callbacks")
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_wed.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 4a2470fbad2cf..8d2d35b322351 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -133,10 +133,12 @@
- #define MTK_GDMA_XGDM_SEL	BIT(31)
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+index 00aeee0d5e45f..d14f5137379b9 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+@@ -41,7 +41,7 @@
+ #define MTK_WED_RRO_QUE_CNT		8192
+ #define MTK_WED_MIOD_ENTRY_CNT		128
  
- /* Unicast Filter MAC Address Register - Low */
--#define MTK_GDMA_MAC_ADRL(x)	(0x508 + (x * 0x1000))
-+#define MTK_GDMA_MAC_ADRL(x)	({ typeof(x) _x = (x); (_x == MTK_GMAC3_ID) ?	\
-+				   0x548 : 0x508 + (_x * 0x1000); })
+-static struct mtk_wed_hw *hw_list[2];
++static struct mtk_wed_hw *hw_list[2] = {};
+ static DEFINE_MUTEX(hw_lock);
  
- /* Unicast Filter MAC Address Register - High */
--#define MTK_GDMA_MAC_ADRH(x)	(0x50C + (x * 0x1000))
-+#define MTK_GDMA_MAC_ADRH(x)	({ typeof(x) _x = (x); (_x == MTK_GMAC3_ID) ?	\
-+				   0x54C : 0x50C + (_x * 0x1000); })
+ struct mtk_wed_flow_block_priv {
+@@ -222,9 +222,13 @@ void mtk_wed_fe_reset(void)
  
- /* FE global misc reg*/
- #define MTK_FE_GLO_MISC         0x124
-@@ -503,7 +505,7 @@
- #define ETHSYS_SYSCFG0		0x14
- #define SYSCFG0_GE_MASK		0x3
- #define SYSCFG0_GE_MODE(x, y)	(x << (12 + (y * 2)))
--#define SYSCFG0_SGMII_MASK     GENMASK(9, 8)
-+#define SYSCFG0_SGMII_MASK     GENMASK(9, 7)
- #define SYSCFG0_SGMII_GMAC1    ((2 << 8) & SYSCFG0_SGMII_MASK)
- #define SYSCFG0_SGMII_GMAC2    ((3 << 8) & SYSCFG0_SGMII_MASK)
- #define SYSCFG0_SGMII_GMAC1_V2 BIT(9)
+ 	for (i = 0; i < ARRAY_SIZE(hw_list); i++) {
+ 		struct mtk_wed_hw *hw = hw_list[i];
+-		struct mtk_wed_device *dev = hw->wed_dev;
++		struct mtk_wed_device *dev;
+ 		int err;
+ 
++		if (!hw)
++			break;
++
++		dev = hw->wed_dev;
+ 		if (!dev || !dev->wlan.reset)
+ 			continue;
+ 
+@@ -245,8 +249,12 @@ void mtk_wed_fe_reset_complete(void)
+ 
+ 	for (i = 0; i < ARRAY_SIZE(hw_list); i++) {
+ 		struct mtk_wed_hw *hw = hw_list[i];
+-		struct mtk_wed_device *dev = hw->wed_dev;
++		struct mtk_wed_device *dev;
++
++		if (!hw)
++			break;
+ 
++		dev = hw->wed_dev;
+ 		if (!dev || !dev->wlan.reset_complete)
+ 			continue;
+ 
 -- 
 2.41.0
 
