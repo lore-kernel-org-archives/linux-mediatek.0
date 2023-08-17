@@ -4,73 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 887F9C27C42
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Aug 2023 21:22:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59784C05052
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 02:45:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3MCw2NA6FuQmF0PukMrc2Be25BqR+HvivDNyfSxsc+Y=; b=3BhujArabL/91pZQ9uq9n4YXKT
-	c3+kMds/bp4E8IKxPhLufRRuQVigkawBapQ4lTH5+/NgtqmJtrJq3AIAG1ypuxMvpclHVvPAkjMkU
-	QvixqCkm1OE+JuyZ3daDupzR4q2cO/IpEo9gXxB1AqDpBWHGQiUM7NPWNwGyutvx7SphqwOuHYNt0
-	eVP17fNwnWYNu9vbBNvc2AksVY1rTgWqRW7D2E/bGXgqV2n0XhWex7Cirv8ul8OR7732chXmTvD+Z
-	efvyeGaFM9K98PomP+TfId6h8w3o3SUDWvq60JjMOUB9UpMdmir3KJkEuuzPGnwBKR6bIx+n988KW
-	S7uOW8xQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HO3vD9tW8srn+a3czG+0ASbwk2Zqb74XI6EoHkXxBX8=; b=m0404Ij9xPiyMva8F4x5vhUlTP
+	H2EL4WJ8wG9o6o/E8D6Fwr18ITlhaV7LdOX+t6WpU4vnTJWMrcms9dgCDXpM/BBu/P9LgfDpTCsvz
+	3wSH8hsm1QP3SJeuJ+ILSRlS/52ZVkg1dIjw9bI1GGv0N5X2pXXouw94xQ2FcfcvDm1RDtW1xAv5y
+	dYEM4NvmHOIQ3wI/xBryeWXIvjF5Da8CsHcsgDliosd38oTPaTNlCJ5A2lsoG2CaUQnbeTWBfaMN/
+	SqemWfRbFPDajZPhbmA+vUdOsaDBLehZEwj9GR8VMS5cq6eoTbqO9HAV7SiXJTf1aCQF/pV3tvgl/
+	mU2uToRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWNxx-0051ne-0K;
-	Wed, 16 Aug 2023 21:22:09 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qWT14-005N3c-2J;
+	Thu, 17 Aug 2023 02:45:42 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWNxu-0051nG-0C
-	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Aug 2023 21:22:07 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E3CD561B20
-	for <linux-mediatek@lists.infradead.org>; Wed, 16 Aug 2023 21:22:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56E45C433C7
-	for <linux-mediatek@lists.infradead.org>; Wed, 16 Aug 2023 21:22:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1692220924;
-	bh=3Bvp22ELU8nW3j1fp0s4i/sN9z5ZKJBspasKela5NhI=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=FxUoroUCUDcJgv65sZTpxDJ3g7K+m3CvLM7Z096Hq8JyZYn7jK5KrGzklLDGUXTgh
-	 S1IISiynyWEDHSxY8BZKCizCibGQaXYjxLu4lqZLlD2kfRLZBl74tfBRX+pOrsAeC5
-	 R7yrnXqni8kX+3QFwoblJeMjEFeRCuQ1m9y1PYgBtkS8FVDmtxYGh1IdtSf8ojwgfS
-	 uXRxtP2BWMUkDalm/fBH7UOdHJN0mzgkxhaiTN7/uxNbEQBGA3qukhAid/jJssFJ79
-	 6bg/qrsLwiUoiAL1PomOivwrlEEwBR2cfXxpLbD7b3iRhJ4MZ3mSrchpaVBBzhbPx6
-	 ISRnpfcQN69wQ==
-Received: by mail-ej1-f54.google.com with SMTP id a640c23a62f3a-99c4e426714so158115666b.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Aug 2023 14:22:04 -0700 (PDT)
-X-Gm-Message-State: AOJu0Yw+oFdGNaPN65zNaQWhzHRc69fCI7p3vl/LN0wwJOw90xAWuXlQ
-	aN+Me0Ldl8qYoUwo/DuAhM4IEEDjathECUGjqwM=
-X-Google-Smtp-Source: AGHT+IHqWODBc+h3tM2wS4K19wUprvx5pfsDx8ZnoT5mBofV6pD/AUeaQUn/R6py3UHYuEJvOD2B4YnZuHIkJNX+/dQ=
-X-Received: by 2002:a17:906:51c5:b0:99d:e629:6cc1 with SMTP id
- v5-20020a17090651c500b0099de6296cc1mr2035501ejk.5.1692220922611; Wed, 16 Aug
- 2023 14:22:02 -0700 (PDT)
+	id 1qWT0y-005Mxq-2Z;
+	Thu, 17 Aug 2023 02:45:38 +0000
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.54])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RR8Sq0XFRzVkPQ;
+	Thu, 17 Aug 2023 10:43:23 +0800 (CST)
+Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
+ (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Thu, 17 Aug
+ 2023 10:45:28 +0800
+From: Li Zetao <lizetao1@huawei.com>
+To: <miquel.raynal@bootlin.com>, <richard@nod.at>, <vigneshr@ti.com>,
+	<michal.simek@amd.com>, <vz@mleia.com>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <mcoquelin.stm32@gmail.com>,
+	<alexandre.torgue@foss.st.com>, <wens@csie.org>, <jernej.skrabec@gmail.com>,
+	<samuel@sholland.org>, <stefan@agner.ch>, <tudor.ambarus@linaro.org>,
+	<pratyush@kernel.org>, <michael@walle.cc>, <frank.li@vivo.com>
+CC: <robh@kernel.org>, <martin.blumenstingl@googlemail.com>,
+	<philmd@linaro.org>, <geert+renesas@glider.be>,
+	<u.kleine-koenig@pengutronix.de>, <rogerq@kernel.org>,
+	<paul@crapouillou.net>, <nicolas.ferre@microchip.com>,
+	<yangyingliang@huawei.com>, <dmitry.torokhov@gmail.com>, <heiko@sntech.de>,
+	<christophe.leroy@csgroup.eu>, <christophe.kerello@foss.st.com>,
+	<jinpu.wang@ionos.com>, <lizetao1@huawei.com>,
+	<linux-mtd@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>
+Subject: [PATCH -next 03/11] mtd: rawnand: fsmc: Use helper function devm_clk_get_enabled()
+Date: Thu, 17 Aug 2023 10:45:01 +0800
+Message-ID: <20230817024509.3951629-4-lizetao1@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230817024509.3951629-1-lizetao1@huawei.com>
+References: <20230817024509.3951629-1-lizetao1@huawei.com>
 MIME-Version: 1.0
-References: <cover.1690863143.git.deren.wu@mediatek.com>
-In-Reply-To: <cover.1690863143.git.deren.wu@mediatek.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Wed, 16 Aug 2023 14:21:50 -0700
-X-Gmail-Original-Message-ID: <CAGp9Lzr1Q48GnvWE1zCGqa0r33u8VQAbaQ7-xBsXxej=gF-xHQ@mail.gmail.com>
-Message-ID: <CAGp9Lzr1Q48GnvWE1zCGqa0r33u8VQAbaQ7-xBsXxej=gF-xHQ@mail.gmail.com>
-Subject: Re: [PATCH 0/8] wifi: mt76: mt792x: add mt7925 support
-To: Deren Wu <deren.wu@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
-	linux-wireless <linux-wireless@vger.kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.90.53.73]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ kwepemi500012.china.huawei.com (7.221.188.12)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230816_142206_147054_BCF2C11E 
-X-CRM114-Status: GOOD (  13.33  )
+X-CRM114-CacheID: sfid-20230816_194537_057939_4C3CA3B6 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,38 +80,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+After the commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for
+prepared and enabled clocks"), it can replace the pair of functions,
+devm_clk_get() and clk_prepare_enable() with a single helper function
+devm_clk_get_enabled(). Moreover, the driver will keeps a clock prepared
+(or enabled) during the whole lifetime of the driver, it is unnecessary to
+unprepare and disable clock explicitly when remove driver or in the error
+handling path.
 
-For the whole series, Reviewed-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Li Zetao <lizetao1@huawei.com>
+---
+ drivers/mtd/nand/raw/fsmc_nand.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-On Tue, Aug 1, 2023 at 7:38=E2=80=AFAM Deren Wu <deren.wu@mediatek.com> wro=
-te:
->
-> This patch set adds more functionalities for mt7925 to reuse common layer=
-,
-> connac and mt792x. This is a preliminary patch to add mt7925 chipset supp=
-ort.
->
-> Deren Wu (8):
->   wifi: mt76: connac: introduce helper for mt7925 chipset
->   wifi: mt76: mt792x: support mt7925 chip init
->   wifi: mt76: connac: export functions for mt7925
->   wifi: mt76: connac: add eht support for phy mode config
->   wifi: mt76: connac: add eht support for tx power
->   wifi: mt76: connac: add data field in struct tlv
->   wifi: mt76: connac: add more unified command IDs
->   wifi: mt76: connac: add more unified event IDs
->
->  drivers/net/wireless/mediatek/mt76/mt76.h     |  1 +
->  .../net/wireless/mediatek/mt76/mt76_connac.h  |  6 ++
->  .../wireless/mediatek/mt76/mt76_connac_mac.c  |  4 +-
->  .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 60 +++++++++++++------
->  .../wireless/mediatek/mt76/mt76_connac_mcu.h  | 33 +++++++++-
->  drivers/net/wireless/mediatek/mt76/mt792x.h   |  6 ++
->  .../net/wireless/mediatek/mt76/mt792x_dma.c   | 49 ++++++++++-----
->  7 files changed, 123 insertions(+), 36 deletions(-)
->
-> --
-> 2.18.0
->
+diff --git a/drivers/mtd/nand/raw/fsmc_nand.c b/drivers/mtd/nand/raw/fsmc_nand.c
+index 7b4742420dfc..ab1b9a5c93e9 100644
+--- a/drivers/mtd/nand/raw/fsmc_nand.c
++++ b/drivers/mtd/nand/raw/fsmc_nand.c
+@@ -1066,16 +1066,12 @@ static int __init fsmc_nand_probe(struct platform_device *pdev)
+ 	host->regs_va = base + FSMC_NOR_REG_SIZE +
+ 		(host->bank * FSMC_NAND_BANK_SZ);
+ 
+-	host->clk = devm_clk_get(&pdev->dev, NULL);
++	host->clk = devm_clk_get_enabled(&pdev->dev, NULL);
+ 	if (IS_ERR(host->clk)) {
+ 		dev_err(&pdev->dev, "failed to fetch block clock\n");
+ 		return PTR_ERR(host->clk);
+ 	}
+ 
+-	ret = clk_prepare_enable(host->clk);
+-	if (ret)
+-		return ret;
+-
+ 	/*
+ 	 * This device ID is actually a common AMBA ID as used on the
+ 	 * AMBA PrimeCell bus. However it is not a PrimeCell.
+@@ -1157,7 +1153,6 @@ static int __init fsmc_nand_probe(struct platform_device *pdev)
+ 		dma_release_channel(host->read_dma_chan);
+ disable_clk:
+ 	fsmc_nand_disable(host);
+-	clk_disable_unprepare(host->clk);
+ 
+ 	return ret;
+ }
+@@ -1182,7 +1177,6 @@ static void fsmc_nand_remove(struct platform_device *pdev)
+ 			dma_release_channel(host->write_dma_chan);
+ 			dma_release_channel(host->read_dma_chan);
+ 		}
+-		clk_disable_unprepare(host->clk);
+ 	}
+ }
+ 
+-- 
+2.34.1
+
 
