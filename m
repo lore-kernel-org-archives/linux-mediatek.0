@@ -4,93 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1937C2FC0E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 11:39:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3E52C27C7A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 11:59:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TTEZsdCY4/ROvTDegYueu3UoNKVTo+C9n4Jn+JaTP2o=; b=uKTiknn4hHz+o7kJxLkfe1WSc5
-	aK1+WrA5MS6D8wie4o0hwQt5tiTOqPqB3LSqFNHCOKis3wPT4y1yjd4U5AkhgfU6y3tX421+pYWQl
-	+5dscejme+kVqg/FomkOmsQO/DwyiQuJNRVsBSinrVVKakA52y1ErM9nbRt1Qwu9N5I3t8/enfOLb
-	RiDyQH7bvn4hlkQ3+N525UU+iZiS7rc0TJmylFN23Ia/xxmNerZvegV3fpt1MDdFj7cgoBpRbYucK
-	yw+YLhMQ/3eXb2K+T4mmvB/UOaUOdd0S+xQA21iy4+czFOZBm8VOhozPn2KD25zDVxg1XF2xFs4N0
-	TMy+6fbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Nn7P667y6ZndU15Khc4nsy67gqzWp2Um84eqQpYl0fI=; b=i/0FtKh4rse6ICMpA0foT4yTsG
+	ybVGimTmjAYHLnLlUEQ2BWexTSgfaZdWdpoQP49mJbjB4fGqN825Ok0f70EO/npvSmGcHK/LKfRqs
+	phACgU1fQgCcbXODrWELACs15RUwZO/3xBqjRQSulkUNaE64Ux2QS0XX8Brhzn8cr7/3hDpwgwraI
+	4iNvKpCmPoGE4u6Upb5bCbgwdHr2GcFGNVs2wiDx7PAQnI3vzYDlHdrXdeGMHejMVnJA+hi2F/dnu
+	sBcF1WV6OPG+dpOThnIVrn08Ch5fVuTwBLYH1Z46eTK7eo1gsVV+7otN9dOXf9x4vs3luVbs30jim
+	EDQvAOtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWbLa-006I0o-1a;
-	Thu, 17 Aug 2023 11:39:26 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1qWbfA-006Kh8-1r;
+	Thu, 17 Aug 2023 11:59:40 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWbLX-006HyE-0z
-	for linux-mediatek@lists.infradead.org;
-	Thu, 17 Aug 2023 11:39:24 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-3fe5c0e5747so5609585e9.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 17 Aug 2023 04:39:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1692272359; x=1692877159;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=TTEZsdCY4/ROvTDegYueu3UoNKVTo+C9n4Jn+JaTP2o=;
-        b=oX5yPVth+PHIjocLUBndePdGLypDvYq2solc5BzuflSzikrFXb3kjbOOxCzeIXUOc2
-         eMRRn1Y5UkU4Y7HoKz9ahfaZy2mVS5ClWAtrqtSr5TZ+Zxe/kyZM8J1YkzTb+9LS5T7c
-         iEawd+lQth5ZCOZC1GA5tHDPx4dG/nU+F9hV4Rg4zFa/seAonVVXc7XYFbWzxdN7l/yi
-         yZ2YYFXEsbbBOg2qRfFt9dPWobIgklKKF1O9yB5b/8u4n3ehRrRCpcqoojzhPe5mG2Ae
-         KqeCVbtlKG4lP6k/0BhYNtRVHXy7GVEcVY2etFpfdOQmrcff1COpd+rvL+gcXg/Vg1+n
-         yWjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692272359; x=1692877159;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TTEZsdCY4/ROvTDegYueu3UoNKVTo+C9n4Jn+JaTP2o=;
-        b=GIivn7+qTj4V47edS8i+liO66ZE6XB4FhRBDiv3w/X3/Ron+WPMC3BzY3MdcngC3kE
-         lGNQWlrRPYXXm9wjawyA8VlzcESKtD1f+Aw7vUbTQD4XZ3AVUrFLQ0ljSTy9WXuZUtCF
-         XeFuhOwXfyhMhJLNHwJIH3IwDXZ5NVG6SZ/nnRyLUywQdUkG4f8uzbzh8piv5Zy5ZaGF
-         eEzf5tFA98cWPk7Nwh/9MRhtJ9ipSTrKX7OBFPHgMzFwuy/1RxP8WXvrPvmzDIQABBtw
-         j4csZRHVi2d+i7XyuN9EUqSDyv+TuINrU84L4IWt64WsKh3jWybaJS0w8EjAG3dNpAp5
-         bTjA==
-X-Gm-Message-State: AOJu0YyfjtBc3+7c5K+cBOhmcsJa6gJhrNIeO+l+uhLHMus6/lG8nT+S
-	mFQD5fsv5+iZc14j5O0U/Ta8bA==
-X-Google-Smtp-Source: AGHT+IGplJUJS6D5RdP0gSy2QTohSeSR4gSIA81af/fmBPrRIPnGjoUraXeZu9PIoTjkHGZhXLeFjw==
-X-Received: by 2002:a05:600c:3c8b:b0:3fe:4c29:e626 with SMTP id bg11-20020a05600c3c8b00b003fe4c29e626mr1942612wmb.13.1692272358746;
-        Thu, 17 Aug 2023 04:39:18 -0700 (PDT)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id a23-20020a05600c225700b003fe1cdbc33dsm2749722wmm.9.2023.08.17.04.39.17
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 17 Aug 2023 04:39:18 -0700 (PDT)
-Message-ID: <d5393131-602f-c9ae-8ca9-1ee69479c705@linaro.org>
-Date: Thu, 17 Aug 2023 13:39:17 +0200
+	id 1qWbf7-006Kfb-1z;
+	Thu, 17 Aug 2023 11:59:38 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1qWbeh-0001jX-17;
+	Thu, 17 Aug 2023 11:59:12 +0000
+Date: Thu, 17 Aug 2023 12:58:29 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next] net: ethernet: mtk_eth_soc: fix register
+ definitions for MT7988
+Message-ID: <0c0547381d3dc2374e219c97645ab7e1fdfbc385.1692273294.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v4 0/5] Add LVTS support for mt8192
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- angelogioacchino.delregno@collabora.com, rafael@kernel.org,
- amitk@kernel.org, rui.zhang@intel.com, matthias.bgg@gmail.com,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- rdunlap@infradead.org, ye.xingchen@zte.com.cn, p.zabel@pengutronix.de,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, james.lo@mediatek.com, rex-bc.chen@mediatek.com,
- abailon@baylibre.com, amergnat@baylibre.com, khilman@baylibre.com
-References: <20230530195132.2286163-1-bero@baylibre.com>
- <107678ff-c3d5-4c3a-ad0e-fa292a125daa@notapiano>
- <a97efd71-23e2-5ac9-8d3d-427a431353c6@linaro.org>
- <CAGXv+5EFD_yMF7q0P5rqiRWeyRqm016Or8iB0niwj26HFVp93Q@mail.gmail.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <CAGXv+5EFD_yMF7q0P5rqiRWeyRqm016Or8iB0niwj26HFVp93Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230817_043923_345215_9EBCD58F 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20230817_045937_677618_0C6E89A6 
+X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,40 +70,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/08/2023 10:45, Chen-Yu Tsai wrote:
-> On Thu, Aug 17, 2023 at 4:49 AM Daniel Lezcano
-> <daniel.lezcano@linaro.org> wrote:
->>
->>
->> Hi,
->>
->> On 16/08/2023 21:57, Nícolas F. R. A. Prado wrote:
->>
->> [ ... ]
->>
->>> Hi Daniel,
->>>
->>> just a gentle reminder. As you've just applied [1], there are no longer any
->>> concerns with this series, and it'll provide both working interrupts and
->>> reliable thermal readings on MT8192.
->>
->> There are still concerns and questions in the series for patch2 and 3.
-> 
-> FWIW the readout errors raised in patch 3 were fixed by
-> 
-> "thermal/drivers/mediatek/lvts_thermal: Make readings valid in filtered mode"
-> 
-> So I guess the remaining concern is on patch 2 about whether the noirq
-> suspend callback should be used instead.
+More register macros need to be adjusted for the 3rd GMAC on MT7988.
+Account for added bit in SYSCFG0_SGMII_MASK and adjust macros
+MTK_GDMA_MAC_ADRx to return correct registers for the 3rd GMAC.
 
-Yes, and the reordering of the lvts_of_match
+Fixes: 445eb6448ed3 ("net: ethernet: mtk_eth_soc: add basic support for MT7988 SoC")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 4a2470fbad2cf..8d2d35b322351 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -133,10 +133,12 @@
+ #define MTK_GDMA_XGDM_SEL	BIT(31)
+ 
+ /* Unicast Filter MAC Address Register - Low */
+-#define MTK_GDMA_MAC_ADRL(x)	(0x508 + (x * 0x1000))
++#define MTK_GDMA_MAC_ADRL(x)	({ typeof(x) _x = (x); (_x == MTK_GMAC3_ID) ?	\
++				   0x548 : 0x508 + (_x * 0x1000); })
+ 
+ /* Unicast Filter MAC Address Register - High */
+-#define MTK_GDMA_MAC_ADRH(x)	(0x50C + (x * 0x1000))
++#define MTK_GDMA_MAC_ADRH(x)	({ typeof(x) _x = (x); (_x == MTK_GMAC3_ID) ?	\
++				   0x54C : 0x50C + (_x * 0x1000); })
+ 
+ /* FE global misc reg*/
+ #define MTK_FE_GLO_MISC         0x124
+@@ -503,7 +505,7 @@
+ #define ETHSYS_SYSCFG0		0x14
+ #define SYSCFG0_GE_MASK		0x3
+ #define SYSCFG0_GE_MODE(x, y)	(x << (12 + (y * 2)))
+-#define SYSCFG0_SGMII_MASK     GENMASK(9, 8)
++#define SYSCFG0_SGMII_MASK     GENMASK(9, 7)
+ #define SYSCFG0_SGMII_GMAC1    ((2 << 8) & SYSCFG0_SGMII_MASK)
+ #define SYSCFG0_SGMII_GMAC2    ((3 << 8) & SYSCFG0_SGMII_MASK)
+ #define SYSCFG0_SGMII_GMAC1_V2 BIT(9)
 -- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+2.41.0
 
 
