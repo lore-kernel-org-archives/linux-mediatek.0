@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D723DC2FC14
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 02:45:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 730F6C2FC15
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 02:45:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1eHzROKCr8FRqcH743tCTtTrKPWTC6WmLxr6gmtv8gc=; b=S2HWLsKwBdfnvc8bXzsbUIoTw+
-	UnPq7bveD1pMebBQRlb7w/BXYR5AnYdWHDNr3HpFQVq5tK8VMmE+H89aNHYPW3zuFdx1DyIXLpvoN
-	4pENYw6TfLHYqdFlMKtLH6wgKazNlhkORB3E011B5RZ/nHDAqd9/ZT6+vB+Yr0Shl+UbLIobYFWaX
-	BfvDq6Rja8xQxDXtrUjUgHpxE++PE5gYcC8bfpCMRY2PLRvhSYa2miX/mBvcjfmwKcV/2Tsanfjwo
-	O3zXyFbuNdZZM3k4FQT0uxY/lPaP/dyg/sSoYSCCgkWQdUwE+b4vVBu/VVTVHPolP/JzUCGkKLyMC
-	LkFDJdFg==;
+	bh=LZrJkNK6NaoAIk1MaV8SaDsQlgaq6TVDT/kIBlkqA6c=; b=eZe5HHhz4WDurzPJvhFSN9C6mx
+	HGKyNPlmre485pkogaMW2H7fmv9khI+sCDW9YhZq3fYLVsDQxJSVOHb4rkKK43H4NmS6NQhHN9Qm6
+	CuZrEuamh0NKpo97J8vFYSXI/FXnUO9nCJ0xKrSX6vWhgxily2EgPSYu9O1gJCwSDVOTeBXF7ILc5
+	ja+6HuVOC3QWU9/rpiJwj2CcZSad+CFN5hhUnt6PZXGzNGYcwf5s6hDZ5gexUNb+lgprna07rjaZ5
+	hqf7IwU+XjhMeuuzdk5PGmkRZDM1pr8Is664DMlpe9M3wyBz4KXFfG4k3mPfB8m66MjsIQVT3djXy
+	R5q/AJBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWT1J-005NB7-2b;
-	Thu, 17 Aug 2023 02:45:57 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1qWT1K-005NBm-1S;
+	Thu, 17 Aug 2023 02:45:58 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWT10-005Mxm-0I;
+	id 1qWT10-005MyX-0I;
 	Thu, 17 Aug 2023 02:45:40 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.56])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RR8Td4ChWzrSX8;
-	Thu, 17 Aug 2023 10:44:05 +0800 (CST)
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.55])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RR8St45rwzVkSF;
+	Thu, 17 Aug 2023 10:43:26 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Thu, 17 Aug
- 2023 10:45:26 +0800
+ 2023 10:45:31 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <miquel.raynal@bootlin.com>, <richard@nod.at>, <vigneshr@ti.com>,
 	<michal.simek@amd.com>, <vz@mleia.com>, <matthias.bgg@gmail.com>,
@@ -50,9 +50,9 @@ CC: <robh@kernel.org>, <martin.blumenstingl@googlemail.com>,
 	<linux-mtd@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>
-Subject: [PATCH -next 01/11] mtd: spear_smi: Use helper function devm_clk_get_enabled()
-Date: Thu, 17 Aug 2023 10:44:59 +0800
-Message-ID: <20230817024509.3951629-2-lizetao1@huawei.com>
+Subject: [PATCH -next 06/11] mtd: rawnand: mpc5121: Use helper function devm_clk_get_enabled()
+Date: Thu, 17 Aug 2023 10:45:04 +0800
+Message-ID: <20230817024509.3951629-7-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230817024509.3951629-1-lizetao1@huawei.com>
 References: <20230817024509.3951629-1-lizetao1@huawei.com>
@@ -64,8 +64,8 @@ X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230816_194538_369329_E3CDEBD5 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20230816_194538_368017_128E82AF 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,62 +90,42 @@ handling path.
 
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
- drivers/mtd/devices/spear_smi.c | 15 +++------------
- 1 file changed, 3 insertions(+), 12 deletions(-)
+ drivers/mtd/nand/raw/mpc5121_nfc.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/mtd/devices/spear_smi.c b/drivers/mtd/devices/spear_smi.c
-index 93bca5225116..0a35e5236ae5 100644
---- a/drivers/mtd/devices/spear_smi.c
-+++ b/drivers/mtd/devices/spear_smi.c
-@@ -993,21 +993,17 @@ static int spear_smi_probe(struct platform_device *pdev)
- 		dev->num_flashes = MAX_NUM_FLASH_CHIP;
- 	}
+diff --git a/drivers/mtd/nand/raw/mpc5121_nfc.c b/drivers/mtd/nand/raw/mpc5121_nfc.c
+index 6e8e790f84e7..215610f808f1 100644
+--- a/drivers/mtd/nand/raw/mpc5121_nfc.c
++++ b/drivers/mtd/nand/raw/mpc5121_nfc.c
+@@ -595,8 +595,6 @@ static void mpc5121_nfc_free(struct device *dev, struct mtd_info *mtd)
+ 	struct nand_chip *chip = mtd_to_nand(mtd);
+ 	struct mpc5121_nfc_prv *prv = nand_get_controller_data(chip);
  
--	dev->clk = devm_clk_get(&pdev->dev, NULL);
-+	dev->clk = devm_clk_get_enabled(&pdev->dev, NULL);
- 	if (IS_ERR(dev->clk)) {
- 		ret = PTR_ERR(dev->clk);
- 		goto err;
- 	}
- 
--	ret = clk_prepare_enable(dev->clk);
--	if (ret)
--		goto err;
+-	clk_disable_unprepare(prv->clk);
 -
- 	ret = devm_request_irq(&pdev->dev, irq, spear_smi_int_handler, 0,
- 			       pdev->name, dev);
- 	if (ret) {
- 		dev_err(&dev->pdev->dev, "SMI IRQ allocation failed\n");
--		goto err_irq;
-+		goto err;
- 	}
- 
- 	mutex_init(&dev->lock);
-@@ -1020,14 +1016,11 @@ static int spear_smi_probe(struct platform_device *pdev)
- 		ret = spear_smi_setup_banks(pdev, i, pdata->np[i]);
- 		if (ret) {
- 			dev_err(&dev->pdev->dev, "bank setup failed\n");
--			goto err_irq;
-+			goto err;
- 		}
- 	}
- 
- 	return 0;
--
--err_irq:
--	clk_disable_unprepare(dev->clk);
- err:
- 	return ret;
+ 	if (prv->csreg)
+ 		iounmap(prv->csreg);
  }
-@@ -1056,8 +1049,6 @@ static int spear_smi_remove(struct platform_device *pdev)
- 		WARN_ON(mtd_device_unregister(&flash->mtd));
+@@ -717,17 +715,12 @@ static int mpc5121_nfc_probe(struct platform_device *op)
  	}
  
--	clk_disable_unprepare(dev->clk);
--
- 	return 0;
- }
+ 	/* Enable NFC clock */
+-	clk = devm_clk_get(dev, "ipg");
++	clk = devm_clk_get_enabled(dev, "ipg");
+ 	if (IS_ERR(clk)) {
+-		dev_err(dev, "Unable to acquire NFC clock!\n");
++		dev_err(dev, "Unable to acquire and enable NFC clock!\n");
+ 		retval = PTR_ERR(clk);
+ 		goto error;
+ 	}
+-	retval = clk_prepare_enable(clk);
+-	if (retval) {
+-		dev_err(dev, "Unable to enable NFC clock!\n");
+-		goto error;
+-	}
+ 	prv->clk = clk;
  
+ 	/* Reset NAND Flash controller */
 -- 
 2.34.1
 
