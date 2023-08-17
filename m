@@ -4,91 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 437C5C2FC0E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 08:11:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48F71EB64DD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Aug 2023 08:22:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xnhnXpfMXVOkUdJ8XTjqlG22FaxEQYoj9IS672h/7bM=; b=bMYuu5MnmajtUTeFww4lG7D0J0
-	3G4E7aO9WSRCuxiCSJuuV+a/Kx9n9yt+8i47HclNwy96tpz7MW8nFvjLNxge2Q3qhjcKcd4jaq7Pf
-	J6IJRf63QiExC5CU2CbeTKkmbxwxFKcyHUfAhKSfpp1SFMdPZHwcPCbmYtCr4hEjbUhyO0KAb8CGE
-	MJbmX6eoJuDznd/l4yQ7PObxZA0zS2LPyekn45lLb63ouTtzPahG2F5JgkUG6qrNbIDky1pn7gRum
-	gISRpnXBSyAdo47vZWOg6v+gTP1oy1r9HqfRSDr1H/Ah30jbZij+GBBdsNbPv85hHbdwS5Z9fzlTM
-	xFy94Y8w==;
+	bh=WZsmyyef6fSCPM1XFuWX/nw+vZGT1RRMdGuOVKh9dnM=; b=0s+hP2hJqTz2lkFeopAhkGVkwj
+	kHc9mhe/HX1psKP1epii8n8EVCRI+qGHreD2XA03EOkimTkiTndtYCXRrsSE5KILtFiLtuxnUTnqX
+	9FlKahPkXZAkXNwcIdJbZ4GaUFRBRsNk1AGoHt5I9+Hjs/Kc/EyN22EWlqMjvcuvPJ1HJvXAMV2V0
+	6eE+ru5ehUVkgy09YT7xmnzqLKbtsspcY7XlB0wdcS81vprUcgWui0gsaA2HuiCf5xYyfAzlholVS
+	0jnC9j1GEBvOOllX2qAPAymanbm0ixIvAhJLlHeAKFkOUAYxBzQ9EoynZzEJwT8BKkpg72zd2Ur3k
+	nh5W639Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWY60-005nIv-0c;
-	Thu, 17 Aug 2023 08:11:08 +0000
-Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
+	id 1qWYGe-005oDN-2W;
+	Thu, 17 Aug 2023 08:22:08 +0000
+Received: from mail-ua1-x92e.google.com ([2607:f8b0:4864:20::92e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWY5x-005nIA-0u
+	id 1qWYGa-005oAW-0G
 	for linux-mediatek@lists.infradead.org;
-	Thu, 17 Aug 2023 08:11:07 +0000
-Received: by mail-ua1-x936.google.com with SMTP id a1e0cc1a2514c-76d846a4b85so1974068241.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 17 Aug 2023 01:11:04 -0700 (PDT)
+	Thu, 17 Aug 2023 08:22:07 +0000
+Received: by mail-ua1-x92e.google.com with SMTP id a1e0cc1a2514c-796d78b3f68so2141195241.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 17 Aug 2023 01:21:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1692259863; x=1692864663;
+        d=chromium.org; s=google; t=1692260512; x=1692865312;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=xnhnXpfMXVOkUdJ8XTjqlG22FaxEQYoj9IS672h/7bM=;
-        b=VamYqVM5YtUAB1bPNlGnv50ns9In+OK4nsXx1TvaHbtNVOerYEcmISzAKjpCgptdZ5
-         Z7/ONLchmQ2mERNnLJtZmUryheCtJA4k2G1TquEt2U4PU+nytlBWDnL73rM+/xqi3Iut
-         SyHaRPwV5vobvIwfAyQymJoDRGzeX2h2vib9M=
+        bh=WZsmyyef6fSCPM1XFuWX/nw+vZGT1RRMdGuOVKh9dnM=;
+        b=JthCO4eH5lvZELavVAWLC0p/AFsN1Y4I4u2FWRXE9av9/ZT58RL2PGbgJbMqHoxpLR
+         m70NtNF4hO/D1I7qvVImODfMopvOq4QBb9HQDdO8qCtcnWL8tCjxYNmuU4wZ/zInrIBM
+         /3MUQVaW3tov2DbXtyjmLwlT6N436QJJu5ekM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692259863; x=1692864663;
+        d=1e100.net; s=20221208; t=1692260512; x=1692865312;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=xnhnXpfMXVOkUdJ8XTjqlG22FaxEQYoj9IS672h/7bM=;
-        b=BBogIdascCiFey/t109daDWTp6UzC2ENKRnw8XiGFfAAG23zOdLwS+uB7LcQxOZ88/
-         ZyPjmehutimUA9UoMNctUb09AujKSa2SQEn7DcH2NFw1hoqt2OeBWdgc+XfVS3m272Wj
-         JwpesUTm2EesIGLOvhOtvR71APRCDVRG4deilKEFvQVXWMCrBODcSuH2cXoZ+xBQp52h
-         /U3hnfcikwzDeupzR0S0uQpDGl4iGUCRERGv93yEc3OT1EdFBcRE9r4LCBaB6gsfLocS
-         dj3SIsNMqJCE7LXlcAgZrttitDSgqZlH6DFLVr1ifa0OZ518f7LkzvQ8SBC9T83ANlBp
-         9+pQ==
-X-Gm-Message-State: AOJu0YzcBfxsGuGnpKAFCRihuLwMQjzOOLrGsiGf+grVisJH6j6TTSM+
-	xrxZgSWw2oFG7MA/0wgXV35XE6h3Sc3AItiY8cirXg==
-X-Google-Smtp-Source: AGHT+IFMsqL3pFYM3QtwPqpO5LX2pHlaj7if/3HlFso69UDgkdRzVb32750YVOtroJzIB9qxeEO7OeSMQcZ129EchfA=
-X-Received: by 2002:a67:f150:0:b0:445:209:cac7 with SMTP id
- t16-20020a67f150000000b004450209cac7mr3439728vsm.27.1692259863374; Thu, 17
- Aug 2023 01:11:03 -0700 (PDT)
+        bh=WZsmyyef6fSCPM1XFuWX/nw+vZGT1RRMdGuOVKh9dnM=;
+        b=WaTROY59jxkJhbpxlurKlGsSr1tFg0fGplrqhfKX6zzlq9MztdgGjX1LP2Yy2xQ0jX
+         H8IUXhMeIPuMeCcCGSA0p+a0whXF+ARL1gY4KaIodSTLqYUyPftrolJU20eJLRsnrUBq
+         f6nxhxJkm4aOyZeSjizh7cUxgNHkz4iw2nRaqiRy8s84nfdSHaO3nULR/UGKN4q5DQER
+         bBomUnZBQmHJGUJ22mcaYl5OqugNnfWNbZaN5lH6n4CSpSuXgOCyNYbytprlQ+xW9R+4
+         fIXGnqzkBY6OfTkuwCHKBaiwqirWnQbPnsr90lCL+mOT3ir4dtdfeBO/aA+5H4ugVnNZ
+         l6Ig==
+X-Gm-Message-State: AOJu0YwfhTOM60+N3IAw35r1TOukRcB/o20oJJFEb+lM1lBgwtGqv3vB
+	kDZze27utpoXVbLDpjFFeH73WKve4cKz89656umjsg==
+X-Google-Smtp-Source: AGHT+IFRQboQr2arT0UzVFrt8+jzOiOThcgnBceVyUNiW7ebzWt31GgSU1UGDRvw9u6gApiIzF6RAUK4fXBk/hNNu20=
+X-Received: by 2002:a67:ff14:0:b0:443:5ec3:55da with SMTP id
+ v20-20020a67ff14000000b004435ec355damr2951530vsp.15.1692260511837; Thu, 17
+ Aug 2023 01:21:51 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230602090227.7264-1-yong.wu@mediatek.com> <20230602090227.7264-6-yong.wu@mediatek.com>
- <CAGXv+5EKwvn-axETPcuxTpxRkUGLroymeDYL+kr4QW8duAymmQ@mail.gmail.com>
- <b695962fa3c3baac08f8be5202e6a5697e7826a0.camel@mediatek.com>
- <CAGXv+5EVqODJJ4Ck+EcB9sn1bTjG5yFrWLi9mHTfVa0sB4wsug@mail.gmail.com>
- <810a3cbca7e837925b5750fd2eb1d1a261e865dc.camel@mediatek.com>
- <CAGXv+5G=CM9203GR42szWXx8K7F+swkvKJ_M3ev5_bGTk_zjGg@mail.gmail.com> <2607586420f4c81a2e2fd9f3395263e85d1f83ef.camel@mediatek.com>
-In-Reply-To: <2607586420f4c81a2e2fd9f3395263e85d1f83ef.camel@mediatek.com>
+References: <20230602090227.7264-1-yong.wu@mediatek.com> <20230602090227.7264-2-yong.wu@mediatek.com>
+In-Reply-To: <20230602090227.7264-2-yong.wu@mediatek.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 17 Aug 2023 16:10:52 +0800
-Message-ID: <CAGXv+5E13wFUPH9yw+JeP6-=O6ta51shUGsCH1o5Pvsd5W3h2w@mail.gmail.com>
-Subject: Re: [PATCH v12 5/7] iommu/mediatek: Add MT8188 IOMMU Support
-To: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"robh+dt@kernel.org" <robh+dt@kernel.org>, 
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
-	=?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?= <Jianjiao.Zeng@mediatek.com>, 
-	"robin.murphy@arm.com" <robin.murphy@arm.com>, "joro@8bytes.org" <joro@8bytes.org>, 
-	=?UTF-8?B?Q2hlbmdjaSBYdSAo6K645om/6LWQKQ==?= <Chengci.Xu@mediatek.com>, 
-	=?UTF-8?B?WUYgV2FuZyAo546L5LqR6aOeKQ==?= <YF.Wang@mediatek.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"iommu@lists.linux.dev" <iommu@lists.linux.dev>, 
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	=?UTF-8?B?TWluZ3l1YW4gTWEgKOmprOm4o+i/nCk=?= <Mingyuan.Ma@mediatek.com>, 
-	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
-	"will@kernel.org" <will@kernel.org>
+Date: Thu, 17 Aug 2023 16:21:40 +0800
+Message-ID: <CAGXv+5Gor1BvV+G2i3rbRiQq+GaX8PtHC3t7mULi1qT8thYvSw@mail.gmail.com>
+Subject: Re: [PATCH v12 1/7] dt-bindings: mediatek: mt8188: Add binding for MM
+ & INFRA IOMMU
+To: Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, iommu@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	mingyuan.ma@mediatek.com, yf.wang@mediatek.com, jianjiao.zeng@mediatek.com, 
+	chengci.xu@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230817_011105_323001_B8D0F995 
-X-CRM114-Status: GOOD (  44.42  )
+X-CRM114-CacheID: sfid-20230817_012204_156154_14B7ED42 
+X-CRM114-Status: GOOD (  30.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,159 +93,826 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 17, 2023 at 4:03=E2=80=AFPM Yong Wu (=E5=90=B4=E5=8B=87) <Yong.=
-Wu@mediatek.com> wrote:
+On Fri, Jun 2, 2023 at 5:03=E2=80=AFPM Yong Wu <yong.wu@mediatek.com> wrote=
+:
 >
-> On Mon, 2023-08-14 at 16:21 +0800, Chen-Yu Tsai wrote:
-> >
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >  On Mon, Aug 14, 2023 at 3:14=E2=80=AFPM Yong Wu (=E5=90=B4=E5=8B=87) <=
-Yong.Wu@mediatek.com>
-> > wrote:
-> > >
-> > > On Fri, 2023-08-11 at 11:30 +0800, Chen-Yu Tsai wrote:
-> > > >
-> > > > External email : Please do not click links or open attachments
-> > until
-> > > > you have verified the sender or the content.
-> > > >  On Thu, Aug 10, 2023 at 8:23=E2=80=AFPM Yong Wu (=E5=90=B4=E5=8B=
-=87) <
-> > Yong.Wu@mediatek.com>
-> > > > wrote:
-> > > > >
-> > > > > On Tue, 2023-08-08 at 17:53 +0800, Chen-Yu Tsai wrote:
-> > > > > >
-> > > > > > External email : Please do not click links or open
-> > attachments
-> > > > until
-> > > > > > you have verified the sender or the content.
-> > > > > >  On Fri, Jun 2, 2023 at 5:04=E2=80=AFPM Yong Wu <yong.wu@mediat=
-ek.com
-> > >
-> > > > wrote:
-> > > > > > >
-> > > > > > > From: "Chengci.Xu" <chengci.xu@mediatek.com>
-> > > > > > >
-> > > > > > > MT8188 has 3 IOMMU, containing 2 MM IOMMUs, one is for vdo,
-> > the
-> > > > > > other
-> > > > > > > is for vpp. and 1 INFRA IOMMU.
-> > > > > > >
-> > > > > > > Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
-> > > > > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > > > > > > Reviewed-by: AngeloGioacchino Del Regno <
-> > > > > > angelogioacchino.delregno@collabora.com>
-> > > > > > > ---
-> > > > > > >  drivers/iommu/mtk_iommu.c | 49
-> > > > > > +++++++++++++++++++++++++++++++++++++++
-> > > > > > >  1 file changed, 49 insertions(+)
-> > > > > > >
-> > > > > > > diff --git a/drivers/iommu/mtk_iommu.c
-> > > > b/drivers/iommu/mtk_iommu.c
-> > > > > > > index 9c89cf894a4d..5c66af0c45a8 100644
-> > > > > > > --- a/drivers/iommu/mtk_iommu.c
-> > > > > > > +++ b/drivers/iommu/mtk_iommu.c
-> > > > > > > @@ -170,6 +170,7 @@ enum mtk_iommu_plat {
-> > > > > > >         M4U_MT8173,
-> > > > > > >         M4U_MT8183,
-> > > > > > >         M4U_MT8186,
-> > > > > > > +       M4U_MT8188,
-> > > > > > >         M4U_MT8192,
-> > > > > > >         M4U_MT8195,
-> > > > > > >         M4U_MT8365,
-> > > > > > > @@ -1593,6 +1594,51 @@ static const struct
-> > mtk_iommu_plat_data
-> > > > > > mt8186_data_mm =3D {
-> > > > > > >         .iova_region_larb_msk =3D mt8186_larb_region_msk,
-> > > > > > >  };
-> > > > > > >
-> > > > > > > +static const struct mtk_iommu_plat_data mt8188_data_infra
-> > =3D {
-> > > > > > > +       .m4u_plat         =3D M4U_MT8188,
-> > > > > > > +       .flags            =3D WR_THROT_EN | DCM_DISABLE |
-> > > > > > STD_AXI_MODE | PM_CLK_AO |
-> > > > > > > +                           MTK_IOMMU_TYPE_INFRA |
-> > > > > > IFA_IOMMU_PCIE_SUPPORT |
-> > > > > > > +                           PGTABLE_PA_35_EN |
-> > > > > > CFG_IFA_MASTER_IN_ATF,
-> > > > > >
-> > > > > > FWIW, CFG_IFA_MASTER_IN_ATF should not be tied to the
-> > compatible
-> > > > > > string,
-> > > > > > but set via a DT property. The IOMMU controls are secured by
-> > > > > > firmware.
-> > > > > > It is not a property intrinsically tied to the hardware.
-> > > > >
-> > > > > The flag CFG_IFA_MASTER_IN_ATF means the registers which
-> > > > enable/disable
-> > > > > iommu are in the secure world. If the master like pcie want to
-> > > > enable
-> > > > > iommu, we have to enter secure world to configure it. It should
-> > be
-> > > > HW
-> > > > > intrinsical, right?
-> > > >
-> > > > If I understand correctly, this is forced by setting some
-> > registers.
-> > > > The registers are set by the firmware at boot time.
-> > >
-> > > The register will be set before the masters that have the "iommus=3D"
-> > > property probe. If the master doesn't have "iommus=3D" property in
-> > its
-> > > dtsi node, this register won't be set, then its iommu will be
-> > disabled
-> > > and it has to access continuous buffer.
-> > >
-> > > >
-> > > > So if a different firmware that doesn't set the registers is
-> > used,
-> > > > then the IOMMU is available to non-secure kernel, correct?
-> > >
-> > > No. The meaning of this register is whether to enable iommu. If the
-> > > register are not set, the IOMMU for that master is disabled.
-> >
-> > For clarity, I'm referring to PERI_MST_PROT [1], not the registers in
-> > the
-> > IOMMU or LARBs. So not any of the registers used in this patch.
-> >
-> > If that register doesn't restrict access to IOMMU register space to
-> > secure
-> > only, then I assume it is controlled by fuses?
+> From: "Chengci.Xu" <chengci.xu@mediatek.com>
 >
-> Thanks for the clarification. Understand this now. If that register
-> doesn't restrict this, the register for enabling the iommu could be
-> accessed in normal world.
+> Add descriptions for mt8188 IOMMU which also use ARM Short-Descriptor
+> translation table format.
 >
-> > [1]
-> > https://review.trustedfirmware.org/plugins/gitiles/TF-A/trusted-firmwar=
-e-a/+/be457248c6b0a7f3c61bd95af58372938d13decd/plat/mediatek/drivers/iommu/=
-mt8188/mtk_iommu_plat.c#93
-> >
-> > > >
-> > > > That's why I said that it should not be tied to a particular
-> > hardware
-> > > > platform, but set using a boolean device tree property.
-> > > >
-> > > > > >
-> > > > > > If on some other project there is no such security
-> > requirement
-> > > > and
-> > > > > > the
-> > > > > > IOMMU is opened up to non-secure world, and ATF not even
-> > having
-> > > > > > support
-> > > > > > for the SMC call, this becomes unusable and hard to rectify
-> > > > without
-> > > > > > introducing a new compatible string.
+> In mt8188, there are two smi-common HW and IOMMU, one is for vdo(video
+> output), the other is for vpp(video processing pipe). They connects
+> with different smi-larbs, then some setting(larbid_remap) is different.
+> Differentiate them with the compatible string.
 >
-> Then this make sense. Sorry, I don't know if such project exist, I
-> guess no, right? we could add it when necessary?
+> Something like this:
+>
+>    IOMMU(VDO)          IOMMU(VPP)
+>       |                   |
+>  SMI_COMMON_VDO      SMI_COMMON_VPP
+>  ---------------     ----------------
+>   |     |    ...      |     |    ...
+> larb0 larb2  ...    larb1 larb3  ...
+>
+> We also have an IOMMU that is for infra master like PCIe.
+> And infra master don't have the larb and ports.
+>
+> Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-I guess that works. It would be a negative property, such as
-"mediatek,iommu-is-non-secure". However, since this lock down is orthogonal
-to the SoC model, it would be better to model it as such from the beginning=
-.
+
+Question for DT maintainers:
+
+On this new platform, the IOMMU is locked down to secure world in ATF by
+setting some registers. Since this is dependent on the firmware, I think
+this should be indicated by a new property.
+
+Any ideas? How do other platforms indicate a particular hardware block
+is locked down or not accessible by the kernel?
 
 ChenYu
+
+>  .../bindings/iommu/mediatek,iommu.yaml        |  12 +-
+>  .../memory/mediatek,mt8188-memory-port.h      | 489 ++++++++++++++++++
+>  2 files changed, 500 insertions(+), 1 deletion(-)
+>  create mode 100644 include/dt-bindings/memory/mediatek,mt8188-memory-por=
+t.h
+>
+> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml =
+b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> index 5b6395bc10e0..ea6b0f5f24de 100644
+> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> @@ -78,6 +78,9 @@ properties:
+>            - mediatek,mt8173-m4u  # generation two
+>            - mediatek,mt8183-m4u  # generation two
+>            - mediatek,mt8186-iommu-mm         # generation two
+> +          - mediatek,mt8188-iommu-vdo        # generation two
+> +          - mediatek,mt8188-iommu-vpp        # generation two
+> +          - mediatek,mt8188-iommu-infra      # generation two
+>            - mediatek,mt8192-m4u  # generation two
+>            - mediatek,mt8195-iommu-vdo        # generation two
+>            - mediatek,mt8195-iommu-vpp        # generation two
+> @@ -123,6 +126,7 @@ properties:
+>      description: |
+>        This is the mtk_m4u_id according to the HW. Specifies the mtk_m4u_=
+id as
+>        defined in
+> +      dt-binding/memory/mediatek,mt8188-memory-port.h for mt8188,
+>        dt-binding/memory/mt2701-larb-port.h for mt2701 and mt7623,
+>        dt-binding/memory/mt2712-larb-port.h for mt2712,
+>        dt-binding/memory/mt6779-larb-port.h for mt6779,
+> @@ -155,6 +159,8 @@ allOf:
+>                - mediatek,mt6795-m4u
+>                - mediatek,mt8173-m4u
+>                - mediatek,mt8186-iommu-mm
+> +              - mediatek,mt8188-iommu-vdo
+> +              - mediatek,mt8188-iommu-vpp
+>                - mediatek,mt8192-m4u
+>                - mediatek,mt8195-iommu-vdo
+>                - mediatek,mt8195-iommu-vpp
+> @@ -168,6 +174,8 @@ allOf:
+>          compatible:
+>            enum:
+>              - mediatek,mt8186-iommu-mm
+> +            - mediatek,mt8188-iommu-vdo
+> +            - mediatek,mt8188-iommu-vpp
+>              - mediatek,mt8192-m4u
+>              - mediatek,mt8195-iommu-vdo
+>              - mediatek,mt8195-iommu-vpp
+> @@ -194,7 +202,9 @@ allOf:
+>          properties:
+>            compatible:
+>              contains:
+> -              const: mediatek,mt8195-iommu-infra
+> +              enum:
+> +                - mediatek,mt8188-iommu-infra
+> +                - mediatek,mt8195-iommu-infra
+>
+>      then:
+>        required:
+> diff --git a/include/dt-bindings/memory/mediatek,mt8188-memory-port.h b/i=
+nclude/dt-bindings/memory/mediatek,mt8188-memory-port.h
+> new file mode 100644
+> index 000000000000..337ab11262af
+> --- /dev/null
+> +++ b/include/dt-bindings/memory/mediatek,mt8188-memory-port.h
+> @@ -0,0 +1,489 @@
+> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
+> +/*
+> + * Copyright (c) 2022 MediaTek Inc.
+> + * Author: Chengci Xu <chengci.xu@mediatek.com>
+> + */
+> +#ifndef _DT_BINDINGS_MEMORY_MEDIATEK_MT8188_LARB_PORT_H_
+> +#define _DT_BINDINGS_MEMORY_MEDIATEK_MT8188_LARB_PORT_H_
+> +
+> +#include <dt-bindings/memory/mtk-memory-port.h>
+> +
+> +/*
+> + * MM IOMMU larbs:
+> + * From below, for example larb11 has larb11a/larb11b/larb11c,
+> + * the index of larb is not in order. So we reindexed these larbs from a
+> + * software view.
+> + */
+> +#define SMI_L0_ID              0
+> +#define SMI_L1_ID              1
+> +#define SMI_L2_ID              2
+> +#define SMI_L3_ID              3
+> +#define SMI_L4_ID              4
+> +#define SMI_L5_ID              5
+> +#define SMI_L6_ID              6
+> +#define SMI_L7_ID              7
+> +#define SMI_L9_ID              8
+> +#define SMI_L10_ID             9
+> +#define SMI_L11A_ID            10
+> +#define SMI_L11B_ID            11
+> +#define SMI_L11C_ID            12
+> +#define SMI_L12_ID             13
+> +#define SMI_L13_ID             14
+> +#define SMI_L14_ID             15
+> +#define SMI_L15_ID             16
+> +#define SMI_L16A_ID            17
+> +#define SMI_L16B_ID            18
+> +#define SMI_L17A_ID            19
+> +#define SMI_L17B_ID            20
+> +#define SMI_L19_ID             21
+> +#define SMI_L21_ID             22
+> +#define SMI_L23_ID             23
+> +#define SMI_L27_ID             24
+> +#define SMI_L28_ID             25
+> +
+> +/*
+> + * MM IOMMU supports 16GB dma address. We separate it to four ranges:
+> + * 0 ~ 4G; 4G ~ 8G; 8G ~ 12G; 12G ~ 16G, we could adjust these masters
+> + * locate in anyone region. BUT:
+> + * a) Make sure all the ports inside a larb are in one range.
+> + * b) The iova of any master can NOT cross the 4G/8G/12G boundary.
+> + *
+> + * This is the suggested mapping in this SoC:
+> + *
+> + * modules    dma-address-region       larbs-ports
+> + * disp         0 ~ 4G                  larb0/1/2/3
+> + * vcodec      4G ~ 8G                  larb19(21)[1]/21(22)/23
+> + * cam/mdp     8G ~ 12G                 the other larbs.
+> + * N/A         12G ~ 16G
+> + * CCU0   0x24000_0000 ~ 0x243ff_ffff   larb27(24): port 0/1
+> + * CCU1   0x24400_0000 ~ 0x247ff_ffff   larb27(24): port 2/3
+> + *
+> + * This SoC have two MM IOMMU HWs, this is the connected information:
+> + * iommu-vdo: larb0/2/5/9/10/11A/11C/13/16B/17B/19/21
+> + * iommu-vpp: larb1/3/4/6/7/11B/12/14/15/16A/17A/23/27
+> + *
+> + * [1]: This is larb19, but the index is 21 from the SW view.
+> + */
+> +
+> +/* MM IOMMU ports */
+> +/* LARB 0 -- VDO-0 */
+> +#define M4U_PORT_L0_DISP_RDMA1                 MTK_M4U_ID(SMI_L0_ID, 0)
+> +#define M4U_PORT_L0_DISP_WDMA0                 MTK_M4U_ID(SMI_L0_ID, 1)
+> +#define M4U_PORT_L0_DISP_OVL0_RDMA0            MTK_M4U_ID(SMI_L0_ID, 2)
+> +#define M4U_PORT_L0_DISP_OVL0_RDMA1            MTK_M4U_ID(SMI_L0_ID, 3)
+> +#define M4U_PORT_L0_DISP_OVL0_HDR              MTK_M4U_ID(SMI_L0_ID, 4)
+> +#define M4U_PORT_L0_DISP_POSTMASK0             MTK_M4U_ID(SMI_L0_ID, 5)
+> +#define M4U_PORT_L0_DISP_FAKE_ENG0             MTK_M4U_ID(SMI_L0_ID, 6)
+> +
+> +/* LARB 1 -- VD0-0 */
+> +#define M4U_PORT_L1_DISP_RDMA0                 MTK_M4U_ID(SMI_L1_ID, 0)
+> +#define M4U_PORT_L1_DISP_WDMA1                 MTK_M4U_ID(SMI_L1_ID, 1)
+> +#define M4U_PORT_L1_DISP_OVL1_RDMA0            MTK_M4U_ID(SMI_L1_ID, 2)
+> +#define M4U_PORT_L1_DISP_OVL1_RDMA1            MTK_M4U_ID(SMI_L1_ID, 3)
+> +#define M4U_PORT_L1_DISP_OVL1_HDR              MTK_M4U_ID(SMI_L1_ID, 4)
+> +#define M4U_PORT_L1_DISP_WROT0                 MTK_M4U_ID(SMI_L1_ID, 5)
+> +#define M4U_PORT_L1_DISP_FAKE_ENG1             MTK_M4U_ID(SMI_L1_ID, 6)
+> +
+> +/* LARB 2 -- VDO-1 */
+> +#define M4U_PORT_L2_MDP_RDMA0                  MTK_M4U_ID(SMI_L2_ID, 0)
+> +#define M4U_PORT_L2_MDP_RDMA2                  MTK_M4U_ID(SMI_L2_ID, 1)
+> +#define M4U_PORT_L2_MDP_RDMA4                  MTK_M4U_ID(SMI_L2_ID, 2)
+> +#define M4U_PORT_L2_MDP_RDMA6                  MTK_M4U_ID(SMI_L2_ID, 3)
+> +#define M4U_PORT_L2_DISP_FAKE1                 MTK_M4U_ID(SMI_L2_ID, 4)
+> +
+> +/* LARB 3 -- VDO-1 */
+> +#define M4U_PORT_L3_MDP_RDMA1                  MTK_M4U_ID(SMI_L3_ID, 0)
+> +#define M4U_PORT_L3_MDP_RDMA3                  MTK_M4U_ID(SMI_L3_ID, 1)
+> +#define M4U_PORT_L3_MDP_RDMA5                  MTK_M4U_ID(SMI_L3_ID, 2)
+> +#define M4U_PORT_L3_MDP_RDMA7                  MTK_M4U_ID(SMI_L3_ID, 3)
+> +#define M4U_PORT_L3_HDR_DS_SMI                 MTK_M4U_ID(SMI_L3_ID, 4)
+> +#define M4U_PORT_L3_HDR_ADL_SMI                        MTK_M4U_ID(SMI_L3=
+_ID, 5)
+> +#define M4U_PORT_L3_DISP_FAKE1                 MTK_M4U_ID(SMI_L3_ID, 6)
+> +
+> +/* LARB 4 -- VPP-0 */
+> +#define M4U_PORT_L4_MDP_RDMA                   MTK_M4U_ID(SMI_L4_ID, 0)
+> +#define M4U_PORT_L4_MDP_FG                     MTK_M4U_ID(SMI_L4_ID, 1)
+> +#define M4U_PORT_L4_MDP_OVL                    MTK_M4U_ID(SMI_L4_ID, 2)
+> +#define M4U_PORT_L4_MDP_WROT                   MTK_M4U_ID(SMI_L4_ID, 3)
+> +#define M4U_PORT_L4_FAKE_ENG                   MTK_M4U_ID(SMI_L4_ID, 4)
+> +#define M4U_PORT_L4_DISP_RDMA                  MTK_M4U_ID(SMI_L4_ID, 5)
+> +#define M4U_PORT_L4_DISP_WDMA                  MTK_M4U_ID(SMI_L4_ID, 6)
+> +
+> +/* LARB 5 -- VPP-1 */
+> +#define M4U_PORT_L5_SVPP1_MDP_RDMA             MTK_M4U_ID(SMI_L5_ID, 0)
+> +#define M4U_PORT_L5_SVPP1_MDP_FG               MTK_M4U_ID(SMI_L5_ID, 1)
+> +#define M4U_PORT_L5_SVPP1_MDP_OVL              MTK_M4U_ID(SMI_L5_ID, 2)
+> +#define M4U_PORT_L5_SVPP1_MDP_WROT             MTK_M4U_ID(SMI_L5_ID, 3)
+> +#define M4U_PORT_L5_SVPP2_MDP_RDMA             MTK_M4U_ID(SMI_L5_ID, 4)
+> +#define M4U_PORT_L5_SVPP2_MDP_FG               MTK_M4U_ID(SMI_L5_ID, 5)
+> +#define M4U_PORT_L5_SVPP2_MDP_WROT             MTK_M4U_ID(SMI_L5_ID, 6)
+> +#define M4U_PORT_L5_LARB5_FAKE_ENG             MTK_M4U_ID(SMI_L5_ID, 7)
+> +
+> +/* LARB 6 -- VPP-1 */
+> +#define M4U_PORT_L6_SVPP3_MDP_RDMA             MTK_M4U_ID(SMI_L6_ID, 0)
+> +#define M4U_PORT_L6_SVPP3_MDP_FG               MTK_M4U_ID(SMI_L6_ID, 1)
+> +#define M4U_PORT_L6_SVPP3_MDP_WROT             MTK_M4U_ID(SMI_L6_ID, 2)
+> +#define M4U_PORT_L6_LARB6_FAKE_ENG             MTK_M4U_ID(SMI_L6_ID, 3)
+> +
+> +/* LARB 7 -- WPE */
+> +#define M4U_PORT_L7_WPE_RDMA_0                 MTK_M4U_ID(SMI_L7_ID, 0)
+> +#define M4U_PORT_L7_WPE_RDMA_1                 MTK_M4U_ID(SMI_L7_ID, 1)
+> +#define M4U_PORT_L7_WPE_WDMA_0                 MTK_M4U_ID(SMI_L7_ID, 2)
+> +
+> +/* LARB 9 -- IMG-M */
+> +#define M4U_PORT_L9_IMGI_T1_A                  MTK_M4U_ID(SMI_L9_ID, 0)
+> +#define M4U_PORT_L9_UFDI_T1_A                  MTK_M4U_ID(SMI_L9_ID, 1)
+> +#define M4U_PORT_L9_IMGBI_T1_A                 MTK_M4U_ID(SMI_L9_ID, 2)
+> +#define M4U_PORT_L9_IMGCI_T1_A                 MTK_M4U_ID(SMI_L9_ID, 3)
+> +#define M4U_PORT_L9_SMTI_T1_A                  MTK_M4U_ID(SMI_L9_ID, 4)
+> +#define M4U_PORT_L9_SMTI_T4_A                  MTK_M4U_ID(SMI_L9_ID, 5)
+> +#define M4U_PORT_L9_TNCSTI_T1_A                        MTK_M4U_ID(SMI_L9=
+_ID, 6)
+> +#define M4U_PORT_L9_TNCSTI_T4_A                        MTK_M4U_ID(SMI_L9=
+_ID, 7)
+> +#define M4U_PORT_L9_YUVO_T1_A                  MTK_M4U_ID(SMI_L9_ID, 8)
+> +#define M4U_PORT_L9_YUVBO_T1_A                 MTK_M4U_ID(SMI_L9_ID, 9)
+> +#define M4U_PORT_L9_YUVCO_T1_A                 MTK_M4U_ID(SMI_L9_ID, 10)
+> +#define M4U_PORT_L9_TIMGO_T1_A                 MTK_M4U_ID(SMI_L9_ID, 11)
+> +#define M4U_PORT_L9_YUVO_T2_A                  MTK_M4U_ID(SMI_L9_ID, 12)
+> +#define M4U_PORT_L9_YUVO_T5_A                  MTK_M4U_ID(SMI_L9_ID, 13)
+> +#define M4U_PORT_L9_IMGI_T1_B                  MTK_M4U_ID(SMI_L9_ID, 14)
+> +#define M4U_PORT_L9_IMGBI_T1_B                 MTK_M4U_ID(SMI_L9_ID, 15)
+> +#define M4U_PORT_L9_IMGCI_T1_B                 MTK_M4U_ID(SMI_L9_ID, 16)
+> +#define M4U_PORT_L9_SMTI_T4_B                  MTK_M4U_ID(SMI_L9_ID, 17)
+> +#define M4U_PORT_L9_TNCSO_T1_A                 MTK_M4U_ID(SMI_L9_ID, 18)
+> +#define M4U_PORT_L9_SMTO_T1_A                  MTK_M4U_ID(SMI_L9_ID, 19)
+> +#define M4U_PORT_L9_SMTO_T4_A                  MTK_M4U_ID(SMI_L9_ID, 20)
+> +#define M4U_PORT_L9_TNCSTO_T1_A                        MTK_M4U_ID(SMI_L9=
+_ID, 21)
+> +#define M4U_PORT_L9_YUVO_T2_B                  MTK_M4U_ID(SMI_L9_ID, 22)
+> +#define M4U_PORT_L9_YUVO_T5_B                  MTK_M4U_ID(SMI_L9_ID, 23)
+> +#define M4U_PORT_L9_SMTO_T4_B                  MTK_M4U_ID(SMI_L9_ID, 24)
+> +
+> +/* LARB 10 -- IMG-D */
+> +#define M4U_PORT_L10_IMGI_D1                   MTK_M4U_ID(SMI_L10_ID, 0)
+> +#define M4U_PORT_L10_IMGBI_D1                  MTK_M4U_ID(SMI_L10_ID, 1)
+> +#define M4U_PORT_L10_IMGCI_D1                  MTK_M4U_ID(SMI_L10_ID, 2)
+> +#define M4U_PORT_L10_IMGDI_D1                  MTK_M4U_ID(SMI_L10_ID, 3)
+> +#define M4U_PORT_L10_DEPI_D1                   MTK_M4U_ID(SMI_L10_ID, 4)
+> +#define M4U_PORT_L10_DMGI_D1                   MTK_M4U_ID(SMI_L10_ID, 5)
+> +#define M4U_PORT_L10_SMTI_D1                   MTK_M4U_ID(SMI_L10_ID, 6)
+> +#define M4U_PORT_L10_RECI_D1                   MTK_M4U_ID(SMI_L10_ID, 7)
+> +#define M4U_PORT_L10_RECI_D1_N                 MTK_M4U_ID(SMI_L10_ID, 8)
+> +#define M4U_PORT_L10_TNRWI_D1                  MTK_M4U_ID(SMI_L10_ID, 9)
+> +#define M4U_PORT_L10_TNRCI_D1                  MTK_M4U_ID(SMI_L10_ID, 10=
+)
+> +#define M4U_PORT_L10_TNRCI_D1_N                        MTK_M4U_ID(SMI_L1=
+0_ID, 11)
+> +#define M4U_PORT_L10_IMG4O_D1                  MTK_M4U_ID(SMI_L10_ID, 12=
+)
+> +#define M4U_PORT_L10_IMG4BO_D1                 MTK_M4U_ID(SMI_L10_ID, 13=
+)
+> +#define M4U_PORT_L10_SMTI_D8                   MTK_M4U_ID(SMI_L10_ID, 14=
+)
+> +#define M4U_PORT_L10_SMTO_D1                   MTK_M4U_ID(SMI_L10_ID, 15=
+)
+> +#define M4U_PORT_L10_TNRMO_D1                  MTK_M4U_ID(SMI_L10_ID, 16=
+)
+> +#define M4U_PORT_L10_TNRMO_D1_N                        MTK_M4U_ID(SMI_L1=
+0_ID, 17)
+> +#define M4U_PORT_L10_SMTO_D8                   MTK_M4U_ID(SMI_L10_ID, 18=
+)
+> +#define M4U_PORT_L10_DBGO_D1                   MTK_M4U_ID(SMI_L10_ID, 19=
+)
+> +
+> +/* LARB 11A -- IMG-D */
+> +#define M4U_PORT_L11A_WPE_RDMA_0               MTK_M4U_ID(SMI_L11A_ID, 0=
+)
+> +#define M4U_PORT_L11A_WPE_RDMA_1               MTK_M4U_ID(SMI_L11A_ID, 1=
+)
+> +#define M4U_PORT_L11A_WPE_RDMA_4P_0            MTK_M4U_ID(SMI_L11A_ID, 2=
+)
+> +#define M4U_PORT_L11A_WPE_RDMA_4P_1            MTK_M4U_ID(SMI_L11A_ID, 3=
+)
+> +#define M4U_PORT_L11A_WPE_CQ0                  MTK_M4U_ID(SMI_L11A_ID, 4=
+)
+> +#define M4U_PORT_L11A_WPE_CQ1                  MTK_M4U_ID(SMI_L11A_ID, 5=
+)
+> +#define M4U_PORT_L11A_PIMGI_P1                 MTK_M4U_ID(SMI_L11A_ID, 6=
+)
+> +#define M4U_PORT_L11A_PIMGBI_P1                        MTK_M4U_ID(SMI_L1=
+1A_ID, 7)
+> +#define M4U_PORT_L11A_PIMGCI_P1                        MTK_M4U_ID(SMI_L1=
+1A_ID, 8)
+> +#define M4U_PORT_L11A_IMGI_T1_C                        MTK_M4U_ID(SMI_L1=
+1A_ID, 9)
+> +#define M4U_PORT_L11A_IMGBI_T1_C               MTK_M4U_ID(SMI_L11A_ID, 1=
+0)
+> +#define M4U_PORT_L11A_IMGCI_T1_C               MTK_M4U_ID(SMI_L11A_ID, 1=
+1)
+> +#define M4U_PORT_L11A_SMTI_T1_C                        MTK_M4U_ID(SMI_L1=
+1A_ID, 12)
+> +#define M4U_PORT_L11A_SMTI_T4_C                        MTK_M4U_ID(SMI_L1=
+1A_ID, 13)
+> +#define M4U_PORT_L11A_SMTI_T6_C                        MTK_M4U_ID(SMI_L1=
+1A_ID, 14)
+> +#define M4U_PORT_L11A_YUVO_T1_C                        MTK_M4U_ID(SMI_L1=
+1A_ID, 15)
+> +#define M4U_PORT_L11A_YUVBO_T1_C               MTK_M4U_ID(SMI_L11A_ID, 1=
+6)
+> +#define M4U_PORT_L11A_YUVCO_T1_C               MTK_M4U_ID(SMI_L11A_ID, 1=
+7)
+> +#define M4U_PORT_L11A_WPE_WDMA_0               MTK_M4U_ID(SMI_L11A_ID, 1=
+8)
+> +#define M4U_PORT_L11A_WPE_WDMA_4P_0            MTK_M4U_ID(SMI_L11A_ID, 1=
+9)
+> +#define M4U_PORT_L11A_WROT_P1                  MTK_M4U_ID(SMI_L11A_ID, 2=
+0)
+> +#define M4U_PORT_L11A_TCCSO_P1                 MTK_M4U_ID(SMI_L11A_ID, 2=
+1)
+> +#define M4U_PORT_L11A_TCCSI_P1                 MTK_M4U_ID(SMI_L11A_ID, 2=
+2)
+> +#define M4U_PORT_L11A_TIMGO_T1_C               MTK_M4U_ID(SMI_L11A_ID, 2=
+3)
+> +#define M4U_PORT_L11A_YUVO_T2_C                        MTK_M4U_ID(SMI_L1=
+1A_ID, 24)
+> +#define M4U_PORT_L11A_YUVO_T5_C                        MTK_M4U_ID(SMI_L1=
+1A_ID, 25)
+> +#define M4U_PORT_L11A_SMTO_T1_C                        MTK_M4U_ID(SMI_L1=
+1A_ID, 26)
+> +#define M4U_PORT_L11A_SMTO_T4_C                        MTK_M4U_ID(SMI_L1=
+1A_ID, 27)
+> +#define M4U_PORT_L11A_SMTO_T6_C                        MTK_M4U_ID(SMI_L1=
+1A_ID, 28)
+> +#define M4U_PORT_L11A_DBGO_T1_C                        MTK_M4U_ID(SMI_L1=
+1A_ID, 29)
+> +
+> +/* LARB 11B -- IMG-D */
+> +#define M4U_PORT_L11B_WPE_RDMA_0               MTK_M4U_ID(SMI_L11B_ID, 0=
+)
+> +#define M4U_PORT_L11B_WPE_RDMA_1               MTK_M4U_ID(SMI_L11B_ID, 1=
+)
+> +#define M4U_PORT_L11B_WPE_RDMA_4P_0            MTK_M4U_ID(SMI_L11B_ID, 2=
+)
+> +#define M4U_PORT_L11B_WPE_RDMA_4P_1            MTK_M4U_ID(SMI_L11B_ID, 3=
+)
+> +#define M4U_PORT_L11B_WPE_CQ0                  MTK_M4U_ID(SMI_L11B_ID, 4=
+)
+> +#define M4U_PORT_L11B_WPE_CQ1                  MTK_M4U_ID(SMI_L11B_ID, 5=
+)
+> +#define M4U_PORT_L11B_PIMGI_P1                 MTK_M4U_ID(SMI_L11B_ID, 6=
+)
+> +#define M4U_PORT_L11B_PIMGBI_P1                        MTK_M4U_ID(SMI_L1=
+1B_ID, 7)
+> +#define M4U_PORT_L11B_PIMGCI_P1                        MTK_M4U_ID(SMI_L1=
+1B_ID, 8)
+> +#define M4U_PORT_L11B_IMGI_T1_C                        MTK_M4U_ID(SMI_L1=
+1B_ID, 9)
+> +#define M4U_PORT_L11B_IMGBI_T1_C               MTK_M4U_ID(SMI_L11B_ID, 1=
+0)
+> +#define M4U_PORT_L11B_IMGCI_T1_C               MTK_M4U_ID(SMI_L11B_ID, 1=
+1)
+> +#define M4U_PORT_L11B_SMTI_T1_C                        MTK_M4U_ID(SMI_L1=
+1B_ID, 12)
+> +#define M4U_PORT_L11B_SMTI_T4_C                        MTK_M4U_ID(SMI_L1=
+1B_ID, 13)
+> +#define M4U_PORT_L11B_SMTI_T6_C                        MTK_M4U_ID(SMI_L1=
+1B_ID, 14)
+> +#define M4U_PORT_L11B_YUVO_T1_C                        MTK_M4U_ID(SMI_L1=
+1B_ID, 15)
+> +#define M4U_PORT_L11B_YUVBO_T1_C               MTK_M4U_ID(SMI_L11B_ID, 1=
+6)
+> +#define M4U_PORT_L11B_YUVCO_T1_C               MTK_M4U_ID(SMI_L11B_ID, 1=
+7)
+> +#define M4U_PORT_L11B_WPE_WDMA_0               MTK_M4U_ID(SMI_L11B_ID, 1=
+8)
+> +#define M4U_PORT_L11B_WPE_WDMA_4P_0            MTK_M4U_ID(SMI_L11B_ID, 1=
+9)
+> +#define M4U_PORT_L11B_WROT_P1                  MTK_M4U_ID(SMI_L11B_ID, 2=
+0)
+> +#define M4U_PORT_L11B_TCCSO_P1                 MTK_M4U_ID(SMI_L11B_ID, 2=
+1)
+> +#define M4U_PORT_L11B_TCCSI_P1                 MTK_M4U_ID(SMI_L11B_ID, 2=
+2)
+> +#define M4U_PORT_L11B_TIMGO_T1_C               MTK_M4U_ID(SMI_L11B_ID, 2=
+3)
+> +#define M4U_PORT_L11B_YUVO_T2_C                        MTK_M4U_ID(SMI_L1=
+1B_ID, 24)
+> +#define M4U_PORT_L11B_YUVO_T5_C                        MTK_M4U_ID(SMI_L1=
+1B_ID, 25)
+> +#define M4U_PORT_L11B_SMTO_T1_C                        MTK_M4U_ID(SMI_L1=
+1B_ID, 26)
+> +#define M4U_PORT_L11B_SMTO_T4_C                        MTK_M4U_ID(SMI_L1=
+1B_ID, 27)
+> +#define M4U_PORT_L11B_SMTO_T6_C                        MTK_M4U_ID(SMI_L1=
+1B_ID, 28)
+> +#define M4U_PORT_L11B_DBGO_T1_C                        MTK_M4U_ID(SMI_L1=
+1B_ID, 29)
+> +
+> +/* LARB 11C -- IMG-D */
+> +#define M4U_PORT_L11C_WPE_RDMA_0               MTK_M4U_ID(SMI_L11C_ID, 0=
+)
+> +#define M4U_PORT_L11C_WPE_RDMA_1               MTK_M4U_ID(SMI_L11C_ID, 1=
+)
+> +#define M4U_PORT_L11C_WPE_RDMA_4P_0            MTK_M4U_ID(SMI_L11C_ID, 2=
+)
+> +#define M4U_PORT_L11C_WPE_RDMA_4P_1            MTK_M4U_ID(SMI_L11C_ID, 3=
+)
+> +#define M4U_PORT_L11C_WPE_CQ0                  MTK_M4U_ID(SMI_L11C_ID, 4=
+)
+> +#define M4U_PORT_L11C_WPE_CQ1                  MTK_M4U_ID(SMI_L11C_ID, 5=
+)
+> +#define M4U_PORT_L11C_PIMGI_P1                 MTK_M4U_ID(SMI_L11C_ID, 6=
+)
+> +#define M4U_PORT_L11C_PIMGBI_P1                        MTK_M4U_ID(SMI_L1=
+1C_ID, 7)
+> +#define M4U_PORT_L11C_PIMGCI_P1                        MTK_M4U_ID(SMI_L1=
+1C_ID, 8)
+> +#define M4U_PORT_L11C_IMGI_T1_C                        MTK_M4U_ID(SMI_L1=
+1C_ID, 9)
+> +#define M4U_PORT_L11C_IMGBI_T1_C               MTK_M4U_ID(SMI_L11C_ID, 1=
+0)
+> +#define M4U_PORT_L11C_IMGCI_T1_C               MTK_M4U_ID(SMI_L11C_ID, 1=
+1)
+> +#define M4U_PORT_L11C_SMTI_T1_C                        MTK_M4U_ID(SMI_L1=
+1C_ID, 12)
+> +#define M4U_PORT_L11C_SMTI_T4_C                        MTK_M4U_ID(SMI_L1=
+1C_ID, 13)
+> +#define M4U_PORT_L11C_SMTI_T6_C                        MTK_M4U_ID(SMI_L1=
+1C_ID, 14)
+> +#define M4U_PORT_L11C_YUVO_T1_C                        MTK_M4U_ID(SMI_L1=
+1C_ID, 15)
+> +#define M4U_PORT_L11C_YUVBO_T1_C               MTK_M4U_ID(SMI_L11C_ID, 1=
+6)
+> +#define M4U_PORT_L11C_YUVCO_T1_C               MTK_M4U_ID(SMI_L11C_ID, 1=
+7)
+> +#define M4U_PORT_L11C_WPE_WDMA_0               MTK_M4U_ID(SMI_L11C_ID, 1=
+8)
+> +#define M4U_PORT_L11C_WPE_WDMA_4P_0            MTK_M4U_ID(SMI_L11C_ID, 1=
+9)
+> +#define M4U_PORT_L11C_WROT_P1                  MTK_M4U_ID(SMI_L11C_ID, 2=
+0)
+> +#define M4U_PORT_L11C_TCCSO_P1                 MTK_M4U_ID(SMI_L11C_ID, 2=
+1)
+> +#define M4U_PORT_L11C_TCCSI_P1                 MTK_M4U_ID(SMI_L11C_ID, 2=
+2)
+> +#define M4U_PORT_L11C_TIMGO_T1_C               MTK_M4U_ID(SMI_L11C_ID, 2=
+3)
+> +#define M4U_PORT_L11C_YUVO_T2_C                        MTK_M4U_ID(SMI_L1=
+1C_ID, 24)
+> +#define M4U_PORT_L11C_YUVO_T5_C                        MTK_M4U_ID(SMI_L1=
+1C_ID, 25)
+> +#define M4U_PORT_L11C_SMTO_T1_C                        MTK_M4U_ID(SMI_L1=
+1C_ID, 26)
+> +#define M4U_PORT_L11C_SMTO_T4_C                        MTK_M4U_ID(SMI_L1=
+1C_ID, 27)
+> +#define M4U_PORT_L11C_SMTO_T6_C                        MTK_M4U_ID(SMI_L1=
+1C_ID, 28)
+> +#define M4U_PORT_L11C_DBGO_T1_C                        MTK_M4U_ID(SMI_L1=
+1C_ID, 29)
+> +
+> +/* LARB 12 -- IPE */
+> +#define M4U_PORT_L12_FDVT_RDA_0                        MTK_M4U_ID(SMI_L1=
+2_ID, 0)
+> +#define M4U_PORT_L12_FDVT_RDB_0                        MTK_M4U_ID(SMI_L1=
+2_ID, 1)
+> +#define M4U_PORT_L12_FDVT_WRA_0                        MTK_M4U_ID(SMI_L1=
+2_ID, 2)
+> +#define M4U_PORT_L12_FDVT_WRB_0                        MTK_M4U_ID(SMI_L1=
+2_ID, 3)
+> +#define M4U_PORT_L12_ME_RDMA                   MTK_M4U_ID(SMI_L12_ID, 4)
+> +#define M4U_PORT_L12_ME_WDMA                   MTK_M4U_ID(SMI_L12_ID, 5)
+> +#define M4U_PORT_L12_DVS_RDMA                  MTK_M4U_ID(SMI_L12_ID, 6)
+> +#define M4U_PORT_L12_DVS_WDMA                  MTK_M4U_ID(SMI_L12_ID, 7)
+> +#define M4U_PORT_L12_DVP_RDMA                  MTK_M4U_ID(SMI_L12_ID, 8)
+> +#define M4U_PORT_L12_DVP_WDMA                  MTK_M4U_ID(SMI_L12_ID, 9)
+> +#define M4U_PORT_L12_FDVT_2ND_RDA_0            MTK_M4U_ID(SMI_L12_ID, 10=
+)
+> +#define M4U_PORT_L12_FDVT_2ND_RDB_0            MTK_M4U_ID(SMI_L12_ID, 11=
+)
+> +#define M4U_PORT_L12_FDVT_2ND_WRA_0            MTK_M4U_ID(SMI_L12_ID, 12=
+)
+> +#define M4U_PORT_L12_FDVT_2ND_WRB_0            MTK_M4U_ID(SMI_L12_ID, 13=
+)
+> +#define M4U_PORT_L12_DHZEI_E1                  MTK_M4U_ID(SMI_L12_ID, 14=
+)
+> +#define M4U_PORT_L12_DHZEO_E1                  MTK_M4U_ID(SMI_L12_ID, 15=
+)
+> +
+> +/* LARB 13 -- CAM-1 */
+> +#define M4U_PORT_L13_CAMSV_CQI_E1              MTK_M4U_ID(SMI_L13_ID, 0)
+> +#define M4U_PORT_L13_CAMSV_CQI_E2              MTK_M4U_ID(SMI_L13_ID, 1)
+> +#define M4U_PORT_L13_GCAMSV_A_IMGO_1           MTK_M4U_ID(SMI_L13_ID, 2)
+> +#define M4U_PORT_L13_GCAMSV_C_IMGO_1           MTK_M4U_ID(SMI_L13_ID, 3)
+> +#define M4U_PORT_L13_GCAMSV_A_IMGO_2           MTK_M4U_ID(SMI_L13_ID, 4)
+> +#define M4U_PORT_L13_GCAMSV_C_IMGO_2           MTK_M4U_ID(SMI_L13_ID, 5)
+> +#define M4U_PORT_L13_PDAI_A_0                  MTK_M4U_ID(SMI_L13_ID, 6)
+> +#define M4U_PORT_L13_PDAI_A_1                  MTK_M4U_ID(SMI_L13_ID, 7)
+> +#define M4U_PORT_L13_CAMSV_CQI_B_E1            MTK_M4U_ID(SMI_L13_ID, 8)
+> +#define M4U_PORT_L13_CAMSV_CQI_B_E2            MTK_M4U_ID(SMI_L13_ID, 9)
+> +#define M4U_PORT_L13_CAMSV_CQI_C_E1            MTK_M4U_ID(SMI_L13_ID, 10=
+)
+> +#define M4U_PORT_L13_CAMSV_CQI_C_E2            MTK_M4U_ID(SMI_L13_ID, 11=
+)
+> +#define M4U_PORT_L13_GCAMSV_E_IMGO_1           MTK_M4U_ID(SMI_L13_ID, 12=
+)
+> +#define M4U_PORT_L13_GCAMSV_E_IMGO_2           MTK_M4U_ID(SMI_L13_ID, 13=
+)
+> +#define M4U_PORT_L13_GCAMSV_A_UFEO_1           MTK_M4U_ID(SMI_L13_ID, 14=
+)
+> +#define M4U_PORT_L13_GCAMSV_C_UFEO_1           MTK_M4U_ID(SMI_L13_ID, 15=
+)
+> +#define M4U_PORT_L13_GCAMSV_A_UFEO_2           MTK_M4U_ID(SMI_L13_ID, 16=
+)
+> +#define M4U_PORT_L13_GCAMSV_C_UFEO_2           MTK_M4U_ID(SMI_L13_ID, 17=
+)
+> +#define M4U_PORT_L13_GCAMSV_E_UFEO_1           MTK_M4U_ID(SMI_L13_ID, 18=
+)
+> +#define M4U_PORT_L13_GCAMSV_E_UFEO_2           MTK_M4U_ID(SMI_L13_ID, 19=
+)
+> +#define M4U_PORT_L13_GCAMSV_G_IMGO_1           MTK_M4U_ID(SMI_L13_ID, 20=
+)
+> +#define M4U_PORT_L13_GCAMSV_G_IMGO_2           MTK_M4U_ID(SMI_L13_ID, 21=
+)
+> +#define M4U_PORT_L13_PDAO_A                    MTK_M4U_ID(SMI_L13_ID, 22=
+)
+> +#define M4U_PORT_L13_PDAO_C                    MTK_M4U_ID(SMI_L13_ID, 23=
+)
+> +
+> +/* LARB 14 -- CAM-1 */
+> +#define M4U_PORT_L14_GCAMSV_B_IMGO_1           MTK_M4U_ID(SMI_L14_ID, 0)
+> +#define M4U_PORT_L14_GCAMSV_B_IMGO_2           MTK_M4U_ID(SMI_L14_ID, 1)
+> +#define M4U_PORT_L14_SCAMSV_A_IMGO_1           MTK_M4U_ID(SMI_L14_ID, 2)
+> +#define M4U_PORT_L14_SCAMSV_A_IMGO_2           MTK_M4U_ID(SMI_L14_ID, 3)
+> +#define M4U_PORT_L14_SCAMSV_B_IMGO_1           MTK_M4U_ID(SMI_L14_ID, 4)
+> +#define M4U_PORT_L14_SCAMSV_B_IMGO_2           MTK_M4U_ID(SMI_L14_ID, 5)
+> +#define M4U_PORT_L14_PDAI_B_0                  MTK_M4U_ID(SMI_L14_ID, 6)
+> +#define M4U_PORT_L14_PDAI_B_1                  MTK_M4U_ID(SMI_L14_ID, 7)
+> +#define M4U_PORT_L14_GCAMSV_D_IMGO_1           MTK_M4U_ID(SMI_L14_ID, 8)
+> +#define M4U_PORT_L14_GCAMSV_D_IMGO_2           MTK_M4U_ID(SMI_L14_ID, 9)
+> +#define M4U_PORT_L14_GCAMSV_F_IMGO_1           MTK_M4U_ID(SMI_L14_ID, 10=
+)
+> +#define M4U_PORT_L14_GCAMSV_F_IMGO_2           MTK_M4U_ID(SMI_L14_ID, 11=
+)
+> +#define M4U_PORT_L14_GCAMSV_H_IMGO_1           MTK_M4U_ID(SMI_L14_ID, 12=
+)
+> +#define M4U_PORT_L14_GCAMSV_H_IMGO_2           MTK_M4U_ID(SMI_L14_ID, 13=
+)
+> +#define M4U_PORT_L14_GCAMSV_B_UFEO_1           MTK_M4U_ID(SMI_L14_ID, 14=
+)
+> +#define M4U_PORT_L14_GCAMSV_B_UFEO_2           MTK_M4U_ID(SMI_L14_ID, 15=
+)
+> +#define M4U_PORT_L14_GCAMSV_D_UFEO_1           MTK_M4U_ID(SMI_L14_ID, 16=
+)
+> +#define M4U_PORT_L14_GCAMSV_D_UFEO_2           MTK_M4U_ID(SMI_L14_ID, 17=
+)
+> +#define M4U_PORT_L14_PDAO_B                    MTK_M4U_ID(SMI_L14_ID, 18=
+)
+> +#define M4U_PORT_L14_IPUI                      MTK_M4U_ID(SMI_L14_ID, 19=
+)
+> +#define M4U_PORT_L14_IPUO                      MTK_M4U_ID(SMI_L14_ID, 20=
+)
+> +#define M4U_PORT_L14_IPU3O                     MTK_M4U_ID(SMI_L14_ID, 21=
+)
+> +#define M4U_PORT_L14_FAKE                      MTK_M4U_ID(SMI_L14_ID, 22=
+)
+> +
+> +/* LARB 15 -- IMG-D */
+> +#define M4U_PORT_L15_VIPI_D1                   MTK_M4U_ID(SMI_L15_ID, 0)
+> +#define M4U_PORT_L15_VIPBI_D1                  MTK_M4U_ID(SMI_L15_ID, 1)
+> +#define M4U_PORT_L15_SMTI_D6                   MTK_M4U_ID(SMI_L15_ID, 2)
+> +#define M4U_PORT_L15_TNCSTI_D1                 MTK_M4U_ID(SMI_L15_ID, 3)
+> +#define M4U_PORT_L15_TNCSTI_D4                 MTK_M4U_ID(SMI_L15_ID, 4)
+> +#define M4U_PORT_L15_SMTI_D4                   MTK_M4U_ID(SMI_L15_ID, 5)
+> +#define M4U_PORT_L15_IMG3O_D1                  MTK_M4U_ID(SMI_L15_ID, 6)
+> +#define M4U_PORT_L15_IMG3BO_D1                 MTK_M4U_ID(SMI_L15_ID, 7)
+> +#define M4U_PORT_L15_IMG3CO_D1                 MTK_M4U_ID(SMI_L15_ID, 8)
+> +#define M4U_PORT_L15_IMG2O_D1                  MTK_M4U_ID(SMI_L15_ID, 9)
+> +#define M4U_PORT_L15_SMTI_D9                   MTK_M4U_ID(SMI_L15_ID, 10=
+)
+> +#define M4U_PORT_L15_SMTO_D4                   MTK_M4U_ID(SMI_L15_ID, 11=
+)
+> +#define M4U_PORT_L15_FEO_D1                    MTK_M4U_ID(SMI_L15_ID, 12=
+)
+> +#define M4U_PORT_L15_TNCSO_D1                  MTK_M4U_ID(SMI_L15_ID, 13=
+)
+> +#define M4U_PORT_L15_TNCSTO_D1                 MTK_M4U_ID(SMI_L15_ID, 14=
+)
+> +#define M4U_PORT_L15_SMTO_D6                   MTK_M4U_ID(SMI_L15_ID, 15=
+)
+> +#define M4U_PORT_L15_SMTO_D9                   MTK_M4U_ID(SMI_L15_ID, 16=
+)
+> +#define M4U_PORT_L15_TNCO_D1                   MTK_M4U_ID(SMI_L15_ID, 17=
+)
+> +#define M4U_PORT_L15_TNCO_D1_N                 MTK_M4U_ID(SMI_L15_ID, 18=
+)
+> +
+> +/* LARB 16A -- CAM */
+> +#define M4U_PORT_L16A_IMGO_R1                  MTK_M4U_ID(SMI_L16A_ID, 0=
+)
+> +#define M4U_PORT_L16A_CQI_R1                   MTK_M4U_ID(SMI_L16A_ID, 1=
+)
+> +#define M4U_PORT_L16A_CQI_R2                   MTK_M4U_ID(SMI_L16A_ID, 2=
+)
+> +#define M4U_PORT_L16A_BPCI_R1                  MTK_M4U_ID(SMI_L16A_ID, 3=
+)
+> +#define M4U_PORT_L16A_LSCI_R1                  MTK_M4U_ID(SMI_L16A_ID, 4=
+)
+> +#define M4U_PORT_L16A_RAWI_R2                  MTK_M4U_ID(SMI_L16A_ID, 5=
+)
+> +#define M4U_PORT_L16A_RAWI_R3                  MTK_M4U_ID(SMI_L16A_ID, 6=
+)
+> +#define M4U_PORT_L16A_UFDI_R2                  MTK_M4U_ID(SMI_L16A_ID, 7=
+)
+> +#define M4U_PORT_L16A_UFDI_R3                  MTK_M4U_ID(SMI_L16A_ID, 8=
+)
+> +#define M4U_PORT_L16A_RAWI_R4                  MTK_M4U_ID(SMI_L16A_ID, 9=
+)
+> +#define M4U_PORT_L16A_RAWI_R5                  MTK_M4U_ID(SMI_L16A_ID, 1=
+0)
+> +#define M4U_PORT_L16A_AAI_R1                   MTK_M4U_ID(SMI_L16A_ID, 1=
+1)
+> +#define M4U_PORT_L16A_UFDI_R5                  MTK_M4U_ID(SMI_L16A_ID, 1=
+2)
+> +#define M4U_PORT_L16A_FHO_R1                   MTK_M4U_ID(SMI_L16A_ID, 1=
+3)
+> +#define M4U_PORT_L16A_AAO_R1                   MTK_M4U_ID(SMI_L16A_ID, 1=
+4)
+> +#define M4U_PORT_L16A_TSFSO_R1                 MTK_M4U_ID(SMI_L16A_ID, 1=
+5)
+> +#define M4U_PORT_L16A_FLKO_R1                  MTK_M4U_ID(SMI_L16A_ID, 1=
+6)
+> +
+> +/* LARB 16B -- CAM */
+> +#define M4U_PORT_L16B_IMGO_R1                  MTK_M4U_ID(SMI_L16B_ID, 0=
+)
+> +#define M4U_PORT_L16B_CQI_R1                   MTK_M4U_ID(SMI_L16B_ID, 1=
+)
+> +#define M4U_PORT_L16B_CQI_R2                   MTK_M4U_ID(SMI_L16B_ID, 2=
+)
+> +#define M4U_PORT_L16B_BPCI_R1                  MTK_M4U_ID(SMI_L16B_ID, 3=
+)
+> +#define M4U_PORT_L16B_LSCI_R1                  MTK_M4U_ID(SMI_L16B_ID, 4=
+)
+> +#define M4U_PORT_L16B_RAWI_R2                  MTK_M4U_ID(SMI_L16B_ID, 5=
+)
+> +#define M4U_PORT_L16B_RAWI_R3                  MTK_M4U_ID(SMI_L16B_ID, 6=
+)
+> +#define M4U_PORT_L16B_UFDI_R2                  MTK_M4U_ID(SMI_L16B_ID, 7=
+)
+> +#define M4U_PORT_L16B_UFDI_R3                  MTK_M4U_ID(SMI_L16B_ID, 8=
+)
+> +#define M4U_PORT_L16B_RAWI_R4                  MTK_M4U_ID(SMI_L16B_ID, 9=
+)
+> +#define M4U_PORT_L16B_RAWI_R5                  MTK_M4U_ID(SMI_L16B_ID, 1=
+0)
+> +#define M4U_PORT_L16B_AAI_R1                   MTK_M4U_ID(SMI_L16B_ID, 1=
+1)
+> +#define M4U_PORT_L16B_UFDI_R5                  MTK_M4U_ID(SMI_L16B_ID, 1=
+2)
+> +#define M4U_PORT_L16B_FHO_R1                   MTK_M4U_ID(SMI_L16B_ID, 1=
+3)
+> +#define M4U_PORT_L16B_AAO_R1                   MTK_M4U_ID(SMI_L16B_ID, 1=
+4)
+> +#define M4U_PORT_L16B_TSFSO_R1                 MTK_M4U_ID(SMI_L16B_ID, 1=
+5)
+> +#define M4U_PORT_L16B_FLKO_R1                  MTK_M4U_ID(SMI_L16B_ID, 1=
+6)
+> +
+> +/* LARB 17A -- CAM */
+> +#define M4U_PORT_L17A_YUVO_R1                  MTK_M4U_ID(SMI_L17A_ID, 0=
+)
+> +#define M4U_PORT_L17A_YUVO_R3                  MTK_M4U_ID(SMI_L17A_ID, 1=
+)
+> +#define M4U_PORT_L17A_YUVCO_R1                 MTK_M4U_ID(SMI_L17A_ID, 2=
+)
+> +#define M4U_PORT_L17A_YUVO_R2                  MTK_M4U_ID(SMI_L17A_ID, 3=
+)
+> +#define M4U_PORT_L17A_RZH1N2TO_R1              MTK_M4U_ID(SMI_L17A_ID, 4=
+)
+> +#define M4U_PORT_L17A_DRZS4NO_R1               MTK_M4U_ID(SMI_L17A_ID, 5=
+)
+> +#define M4U_PORT_L17A_TNCSO_R1                 MTK_M4U_ID(SMI_L17A_ID, 6=
+)
+> +
+> +/* LARB 17B -- CAM */
+> +#define M4U_PORT_L17B_YUVO_R1                  MTK_M4U_ID(SMI_L17B_ID, 0=
+)
+> +#define M4U_PORT_L17B_YUVO_R3                  MTK_M4U_ID(SMI_L17B_ID, 1=
+)
+> +#define M4U_PORT_L17B_YUVCO_R1                 MTK_M4U_ID(SMI_L17B_ID, 2=
+)
+> +#define M4U_PORT_L17B_YUVO_R2                  MTK_M4U_ID(SMI_L17B_ID, 3=
+)
+> +#define M4U_PORT_L17B_RZH1N2TO_R1              MTK_M4U_ID(SMI_L17B_ID, 4=
+)
+> +#define M4U_PORT_L17B_DRZS4NO_R1               MTK_M4U_ID(SMI_L17B_ID, 5=
+)
+> +#define M4U_PORT_L17B_TNCSO_R1                 MTK_M4U_ID(SMI_L17B_ID, 6=
+)
+> +
+> +/* LARB 19 -- VENC */
+> +#define M4U_PORT_L19_VENC_RCPU                 MTK_M4U_ID(SMI_L19_ID, 0)
+> +#define M4U_PORT_L19_VENC_REC                  MTK_M4U_ID(SMI_L19_ID, 1)
+> +#define M4U_PORT_L19_VENC_BSDMA                        MTK_M4U_ID(SMI_L1=
+9_ID, 2)
+> +#define M4U_PORT_L19_VENC_SV_COMV              MTK_M4U_ID(SMI_L19_ID, 3)
+> +#define M4U_PORT_L19_VENC_RD_COMV              MTK_M4U_ID(SMI_L19_ID, 4)
+> +#define M4U_PORT_L19_VENC_NBM_RDMA             MTK_M4U_ID(SMI_L19_ID, 5)
+> +#define M4U_PORT_L19_VENC_NBM_RDMA_LITE                MTK_M4U_ID(SMI_L1=
+9_ID, 6)
+> +#define M4U_PORT_L19_JPGENC_Y_RDMA             MTK_M4U_ID(SMI_L19_ID, 7)
+> +#define M4U_PORT_L19_JPGENC_C_RDMA             MTK_M4U_ID(SMI_L19_ID, 8)
+> +#define M4U_PORT_L19_JPGENC_Q_TABLE            MTK_M4U_ID(SMI_L19_ID, 9)
+> +#define M4U_PORT_L19_VENC_SUB_W_LUMA           MTK_M4U_ID(SMI_L19_ID, 10=
+)
+> +#define M4U_PORT_L19_VENC_FCS_NBM_RDMA         MTK_M4U_ID(SMI_L19_ID, 11=
+)
+> +#define M4U_PORT_L19_JPGENC_BSDMA              MTK_M4U_ID(SMI_L19_ID, 12=
+)
+> +#define M4U_PORT_L19_JPGDEC_WDMA_0             MTK_M4U_ID(SMI_L19_ID, 13=
+)
+> +#define M4U_PORT_L19_JPGDEC_BSDMA_0            MTK_M4U_ID(SMI_L19_ID, 14=
+)
+> +#define M4U_PORT_L19_VENC_NBM_WDMA             MTK_M4U_ID(SMI_L19_ID, 15=
+)
+> +#define M4U_PORT_L19_VENC_NBM_WDMA_LITE                MTK_M4U_ID(SMI_L1=
+9_ID, 16)
+> +#define M4U_PORT_L19_VENC_FCS_NBM_WDMA         MTK_M4U_ID(SMI_L19_ID, 17=
+)
+> +#define M4U_PORT_L19_JPGDEC_WDMA_1             MTK_M4U_ID(SMI_L19_ID, 18=
+)
+> +#define M4U_PORT_L19_JPGDEC_BSDMA_1            MTK_M4U_ID(SMI_L19_ID, 19=
+)
+> +#define M4U_PORT_L19_JPGDEC_HUFF_OFFSET_1      MTK_M4U_ID(SMI_L19_ID, 20=
+)
+> +#define M4U_PORT_L19_JPGDEC_HUFF_OFFSET_0      MTK_M4U_ID(SMI_L19_ID, 21=
+)
+> +#define M4U_PORT_L19_VENC_CUR_LUMA             MTK_M4U_ID(SMI_L19_ID, 22=
+)
+> +#define M4U_PORT_L19_VENC_CUR_CHROMA           MTK_M4U_ID(SMI_L19_ID, 23=
+)
+> +#define M4U_PORT_L19_VENC_REF_LUMA             MTK_M4U_ID(SMI_L19_ID, 24=
+)
+> +#define M4U_PORT_L19_VENC_REF_CHROMA           MTK_M4U_ID(SMI_L19_ID, 25=
+)
+> +#define M4U_PORT_L19_VENC_SUB_R_LUMA           MTK_M4U_ID(SMI_L19_ID, 26=
+)
+> +
+> +/* LARB 21 -- VDEC-CORE0 */
+> +#define M4U_PORT_L21_HW_VDEC_MC_EXT            MTK_M4U_ID(SMI_L21_ID, 0)
+> +#define M4U_PORT_L21_HW_VDEC_UFO_EXT           MTK_M4U_ID(SMI_L21_ID, 1)
+> +#define M4U_PORT_L21_HW_VDEC_PP_EXT            MTK_M4U_ID(SMI_L21_ID, 2)
+> +#define M4U_PORT_L21_HW_VDEC_PRED_RD_EXT       MTK_M4U_ID(SMI_L21_ID, 3)
+> +#define M4U_PORT_L21_HW_VDEC_PRED_WR_EXT       MTK_M4U_ID(SMI_L21_ID, 4)
+> +#define M4U_PORT_L21_HW_VDEC_PPWRAP_EXT                MTK_M4U_ID(SMI_L2=
+1_ID, 5)
+> +#define M4U_PORT_L21_HW_VDEC_TILE_EXT          MTK_M4U_ID(SMI_L21_ID, 6)
+> +#define M4U_PORT_L21_HW_VDEC_VLD_EXT           MTK_M4U_ID(SMI_L21_ID, 7)
+> +#define M4U_PORT_L21_HW_VDEC_VLD2_EXT          MTK_M4U_ID(SMI_L21_ID, 8)
+> +#define M4U_PORT_L21_HW_VDEC_AVC_MV_EXT                MTK_M4U_ID(SMI_L2=
+1_ID, 9)
+> +#define M4U_PORT_L21_HW_VDEC_UFO_EXT_C         MTK_M4U_ID(SMI_L21_ID, 10=
+)
+> +
+> +/* LARB 23 -- VDEC-SOC */
+> +#define M4U_PORT_L23_HW_VDEC_LAT0_VLD_EXT      MTK_M4U_ID(SMI_L23_ID, 0)
+> +#define M4U_PORT_L23_HW_VDEC_LAT0_VLD2_EXT     MTK_M4U_ID(SMI_L23_ID, 1)
+> +#define M4U_PORT_L23_HW_VDEC_LAT0_AVC_MV_EXT   MTK_M4U_ID(SMI_L23_ID, 2)
+> +#define M4U_PORT_L23_HW_VDEC_LAT0_PRED_RD_EXT  MTK_M4U_ID(SMI_L23_ID, 3)
+> +#define M4U_PORT_L23_HW_VDEC_LAT0_TILE_EXT     MTK_M4U_ID(SMI_L23_ID, 4)
+> +#define M4U_PORT_L23_HW_VDEC_LAT0_WDMA_EXT     MTK_M4U_ID(SMI_L23_ID, 5)
+> +#define M4U_PORT_L23_HW_VDEC_UFO_ENC_EXT       MTK_M4U_ID(SMI_L23_ID, 6)
+> +#define M4U_PORT_L23_HW_VDEC_UFO_ENC_EXT_C     MTK_M4U_ID(SMI_L23_ID, 7)
+> +#define M4U_PORT_L23_HW_VDEC_MC_EXT_C          MTK_M4U_ID(SMI_L23_ID, 8)
+> +
+> +/* LARB 27 -- CCU */
+> +#define M4U_PORT_L27_CCUI                      MTK_M4U_ID(SMI_L27_ID, 0)
+> +#define M4U_PORT_L27_CCUO                      MTK_M4U_ID(SMI_L27_ID, 1)
+> +#define M4U_PORT_L27_CCUI2                     MTK_M4U_ID(SMI_L27_ID, 2)
+> +#define M4U_PORT_L27_CCUO2                     MTK_M4U_ID(SMI_L27_ID, 3)
+> +
+> +/* LARB 28 -- AXI-CCU */
+> +#define M4U_PORT_L28_CCU_AXI_0                 MTK_M4U_ID(SMI_L28_ID, 0)
+> +
+> +/* infra/peri */
+> +#define IFR_IOMMU_PORT_PCIE_0                  MTK_IFAIOMMU_PERI_ID(0)
+> +
+> +#endif
+> --
+> 2.25.1
+>
+>
 
