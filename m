@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6CD7C001DE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Aug 2023 08:11:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA6B6C678DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Aug 2023 08:13:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=20wNMj8fVoVyKhboSQHfoKHw647G9BheWqVVEyUS5uM=; b=22j8JIdlqdUMzuaSjodpyuUXs2
-	pDqpCcml44UCXh09GQ6wuErJqg62K+/POCPq+/KH4ObRzkWfyCC7OvHj4VeDfe5Wp6O6Tk+j/hCkj
-	29JJ/azjy4wHK1ngFHPJ1Bw7vMNAYexYur6NUeQtrEANVurslB9p63Rz8s8P7FibKy38GyRcLxgBc
-	ZX7ZKPcR01etuZUsQx0sHL/9IAzdhuvSO++BSy5+j+kS/YduH3qspQwBYu/8qZeLtS9FEGjqwDg4v
-	+vi/8zobXyysBsG9ZaiWL7XiYCtjK49pfGyTDTbuQ98Ie6AjtgVPXFYyPz/PpFKt0nKK1MSAsGUGQ
-	dWveWGmA==;
+	bh=mzCVM+bK0VlZhouGuHfDfVW0KdhBecM197MixCtRvfQ=; b=Pj7P2R2wbIa76Q06UnXuhKuJa3
+	QuxgA/panQtK2piUmDjnnrWpA8pwu5gPVV9/7/s3O+fz9QPaiKzGAYK9tzGx0hV8LJsSnWZnCxa8c
+	r/zbiB9SD6NPPVHcOTHE+ybIiAuQ0bmHmCbKSelT+sq9ZUPgJFio4YNooOQyZnzPEHSUFBxKauHfN
+	VXqBSPJXk5jeRS1tgSFVscGUckRqlphIRJ/e6k8jiymQBZmOV8oq78xzoR1kosuSrIvCtnPsKSh8+
+	tITqbjJLKKzbTA9ETbPuitYcnNv5ou8yFudGBjHGvkkRKAeHn59d05r0motYyZgpCn++t2imzbyxL
+	ILrFmoKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWuZt-007xXT-2A;
-	Fri, 18 Aug 2023 08:11:29 +0000
-Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
+	id 1qWubL-007xoP-2Y;
+	Fri, 18 Aug 2023 08:12:59 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWuZm-007xUY-08;
-	Fri, 18 Aug 2023 08:11:26 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 2F8D1E0003;
-	Fri, 18 Aug 2023 08:11:10 +0000 (UTC)
+	id 1qWubE-007xmi-1e;
+	Fri, 18 Aug 2023 08:12:57 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id E2973FF803;
+	Fri, 18 Aug 2023 08:12:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1692346277;
+	t=1692346367;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=20wNMj8fVoVyKhboSQHfoKHw647G9BheWqVVEyUS5uM=;
-	b=E1kP1jnX29Q4qu4glrInautWz/RFHmzs5BNl+IerHY5vYL3V689QYZSLwGU3EW/Kj8mcTa
-	MY+D3fgMG+MK5C1j4+xNmHyEgANAJi1Na5Syh9v4yUsJj71FyBGTcgDjSlynxglSMkgrhk
-	QSq+PLzMOiHWIs8s4nI6ofe1I5XX0eZuv7nGJVhRniU+3RhgWwxSQESkuqPh9S8jkwHKMU
-	fEZlgnpP5gP+gWcqvXHpywClkvqh8XMuNDsemLABP9mFuz+FOwuh/QuU/Fz2e8It0nhUF3
-	/vwUryhfRLuFEHBth5h38xGCZ5eIWq8Uu70+nwW0kLYDz2hiF0Ttkun/IsrPDg==
-Date: Fri, 18 Aug 2023 10:11:10 +0200
+	bh=mzCVM+bK0VlZhouGuHfDfVW0KdhBecM197MixCtRvfQ=;
+	b=Jmp83XkDTC2MO6piwR/S+JMNYHW0Y17nyiWqjHmyKqLeJqK0dnwSYn4/4EZ8nhuwB95D6l
+	DK6mzVDiQeV2or5bZ/qCdESjI+eJ0d5I35Y4K+n1kp7aV0dBDct1+0GnUjTinv72HIAIuJ
+	GXIKPdqOkWIdD19loGNKnSoo5AKAzWMX+58BKdjhkYcEZeQI9RFkgdggJNxO8z27J43LKK
+	ztYe9QtVJymUiC+HoooqV10fY6+WTU0F2yUV3rd5jWJpzak1WbkF1rSa4beE/zB0TIv1ad
+	+StZn7GOnXF/njiTIb/fCXUqwnHVKZyH3c7ML+WKoXdBACeSHBlBedQMaOaVMw==
+Date: Fri, 18 Aug 2023 10:12:42 +0200
 From: Miquel Raynal <miquel.raynal@bootlin.com>
 To: Li Zetao <lizetao1@huawei.com>
 Cc: <alexandre.torgue@foss.st.com>,
@@ -59,13 +59,14 @@ Cc: <alexandre.torgue@foss.st.com>,
  <tudor.ambarus@linaro.org>, <u.kleine-koenig@pengutronix.de>,
  <vigneshr@ti.com>, <vz@mleia.com>, <wens@csie.org>,
  <yangyingliang@huawei.com>
-Subject: Re: [PATCH -next v2 03/12] mtd: rawnand: fsmc: Use helper function
- devm_clk_get_enabled()
-Message-ID: <20230818101110.23fad57d@xps-13>
-In-Reply-To: <20230818074642.308166-4-lizetao1@huawei.com>
+Subject: Re: [PATCH -next v2 02/12] mtd: rawnand: arasan: Use helper
+ function devm_clk_get_enabled()
+Message-ID: <20230818101242.12f54b5d@xps-13>
+In-Reply-To: <20230818101004.4f2cd343@xps-13>
 References: <20230817024509.3951629-1-lizetao1@huawei.com>
 	<20230818074642.308166-1-lizetao1@huawei.com>
-	<20230818074642.308166-4-lizetao1@huawei.com>
+	<20230818074642.308166-3-lizetao1@huawei.com>
+	<20230818101004.4f2cd343@xps-13>
 Organization: Bootlin
 X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
@@ -73,9 +74,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230818_011122_265787_FAE1DE31 
-X-CRM114-Status: UNSURE (   7.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230818_011252_744574_7B557082 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,22 +90,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Li,
 
-lizetao1@huawei.com wrote on Fri, 18 Aug 2023 15:46:33 +0800:
+miquel.raynal@bootlin.com wrote on Fri, 18 Aug 2023 10:10:04 +0200:
 
-> Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-> and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-> replaced by devm_clk_get_enabled() when driver enable (and possibly
-> prepare) the clocks for the whole lifetime of the device. Moreover, it is
-> no longer necessary to unprepare and disable the clock explicitly. The
-> label "disable_clk" no longer makes sense, rename it to "disable_fsmc".
+> Hi Li,
+>=20
+> lizetao1@huawei.com wrote on Fri, 18 Aug 2023 15:46:32 +0800:
+>=20
+> > Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepa=
+red
+> > and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now b=
+e =20
+>=20
+> > replaced by devm_clk_get_enabled() when driver enable (and possibly =20
+>=20
+> For all the commit logs:		  the driver enables (and possibly prepares)
+>=20
+> > prepare) the clocks for the whole lifetime of the device. Moreover, it =
+is
+> > no longer necessary to unprepare and disable the clock explicitly, so d=
+rop =20
+>=20
+> For all the commit logs:		       the clocks
+>=20
+> The ",so drop the label xxx" is not needed I believe.
+>=20
+> > the label "disable_bus_clk" and "disable_controller_clk".
 
-Yep, please keep this last sentence here, it is useful.
+Actually it does not bother, just keep it.
 
-> Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
-> Signed-off-by: Li Zetao <lizetao1@huawei.com>
-> ---
+> > Signed-off-by: Li Zetao <lizetao1@huawei.com>
+> > --- =20
+>=20
+> Thanks,
+> Miqu=C3=A8l
+
 
 Thanks,
 Miqu=C3=A8l
