@@ -4,54 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01BD2C001DE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Aug 2023 08:18:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64819C05052
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Aug 2023 09:01:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=elHzctRz/z3PfTIhGYJKd0TeBTmca98Y+JNgX4gfsPI=; b=b2m833wlnva+GOvqyx24J9LSHS
-	UqzL3mQ/swETCc8KPChy9/iXCzvnERzdVpXj32uqPM0LGeI7uGP/+nNXoNEmMksLW3cPhuB5lnT3U
-	H5YmS8UNCx4RnH4ZbxLaBQW1qrDYkmLEvQXGf8X7wKXiDfzzv2EVIc65wi7IMLF+ErHQ+6jzU1VoG
-	vWLWgT+XFe3AzjdrFn9y5vv5RiD87C1mWH3jXkBnrXhrUUIXHqRmZVIH/81UHbJL8Tjhe+ENr8ZQe
-	aKSeZ9I5dVk/WdSaSIW32+t8vPqzUjQTeDZW3h2o+odJtGFb7tsqZnggxccqQKG9Dl6f5R8oOrvdU
-	2IkAEGPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UBJ0/G8qCrpIYOSvdSC/c+l+uSPrnSEf5vuFBMJrvPk=; b=WAAdvLfjfwHsMmn8x+EfYP397P
+	YaewVzddyHWXOboSK52SeZUC6/FEZ8eRx1TsKCTBL4Phg5Yc0Yxv0lzBBwmuOpTGRyx9g5+tb1nXw
+	ICIPPelNZebo3Mma5Oe8luJAni8ejeeSCNupg0oxvpB2TAJKhWEk77SktH+XQenVn/2r8IK10hgoj
+	SpueZQNKC/caCNnOVxnoiQtSS6a3iF8HoKHPzYu+pEWUnIeq2HeGe8l9PXSmAcPrNSnASQd11lU80
+	xyKig6wyAYnHHA6oL1jBDU+oySGrE8aQit+yy03Qv2eOKX/YaCddLbGb4IeGXv1KXc26HYjMoke6J
+	wTnyyCUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWugh-007ysa-35;
-	Fri, 18 Aug 2023 08:18:31 +0000
-Received: from mail.leachkin.pl ([217.61.97.203])
+	id 1qWvLp-0082yH-1G;
+	Fri, 18 Aug 2023 09:01:01 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWugb-007yp6-2A
-	for linux-mediatek@lists.infradead.org;
-	Fri, 18 Aug 2023 08:18:29 +0000
-Received: by mail.leachkin.pl (Postfix, from userid 1001)
-	id 7AF6F843EE; Fri, 18 Aug 2023 09:16:14 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leachkin.pl; s=mail;
-	t=1692346586; bh=elHzctRz/z3PfTIhGYJKd0TeBTmca98Y+JNgX4gfsPI=;
-	h=Date:From:To:Subject:From;
-	b=p1hBiLJ08sgl/1GnzTZrCCcGQlwo6WcwhMBtPGs8HyqNoa8yy1Bc57TJhPUSr0f3Y
-	 e9auvHmE4FbLut+tsyGbjYThSaMekZpvegTZ0CPzykPFJLjj9lrM6RAtM9igwT1vPD
-	 qcIw1cQE8KaDnZu50Iq73yrw8DhF54OIT5qMjpuDGT79TursCzGuY8QhmMVqmh1zMd
-	 2YWVeYMJcex8bZGCzJIsDGnJv+you6pm196FvbIYRFwdxYmebd54lKS+zXzlwIstCD
-	 hJ1yKjZWHMvdS77wxfGIttqRcY84judqOXuGgWK1XDrX3m1oJAYM6kz00DxLdeyFM/
-	 dnIqrloA998Vw==
-Received: by mail.leachkin.pl for <linux-mediatek@lists.infradead.org>; Fri, 18 Aug 2023 08:15:51 GMT
-Message-ID: <20230818074501-0.1.4u.cu18.0.niian7eb76@leachkin.pl>
-Date: Fri, 18 Aug 2023 08:15:51 GMT
-From: "Jakub Lemczak" <jakub.lemczak@leachkin.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Pytanie_o_samoch=C3=B3d?=
-X-Mailer: mail.leachkin.pl
+	id 1qWuCo-007uKm-1A;
+	Fri, 18 Aug 2023 07:47:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=UBJ0/G8qCrpIYOSvdSC/c+l+uSPrnSEf5vuFBMJrvPk=; b=IcVqC5L85tUfUTS0o99jPGQE3d
+	GzKT5TS/vrLFZfBO7juhdtRzDNlP8CQ2JLBgTN1G+0Sl56q9IG1wcoVWCHp+bR5zWDlpLI3WEE8mE
+	fLHOARDUdn4j2z/lUnAjd1zjEehVMjwUeA2ohhyvrOEWwLPMYH7Kac9Xet5jDim9HbxuUL3y5IEQr
+	6RgKHacC5xuxZi1/QAOMyvXdrYIVq3+M6Vlx3uCjHbxB3g92jdCjpLb2JS5uok02qPLkq+hetbuVG
+	KPDGIOKqiBYTXbcc4KMnHGvJzhOXm6+Hwp9TbvdCsfom/GzSMm6xI9cye5vanhSrSskp4deISSS2b
+	wOQKJr1A==;
+Received: from szxga01-in.huawei.com ([45.249.212.187])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qWuCi-00FL7f-12;
+	Fri, 18 Aug 2023 07:47:37 +0000
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.56])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RRv7K2VNgzkX73;
+	Fri, 18 Aug 2023 15:45:49 +0800 (CST)
+Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
+ (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Fri, 18 Aug
+ 2023 15:47:11 +0800
+From: Li Zetao <lizetao1@huawei.com>
+To: <lizetao1@huawei.com>
+CC: <alexandre.torgue@foss.st.com>, <angelogioacchino.delregno@collabora.com>,
+	<christophe.kerello@foss.st.com>, <christophe.leroy@csgroup.eu>,
+	<dmitry.torokhov@gmail.com>, <frank.li@vivo.com>, <geert+renesas@glider.be>,
+	<heiko@sntech.de>, <jernej.skrabec@gmail.com>, <jinpu.wang@ionos.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-mtd@lists.infradead.org>, <linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-sunxi@lists.linux.dev>, <martin.blumenstingl@googlemail.com>,
+	<matthias.bgg@gmail.com>, <mcoquelin.stm32@gmail.com>, <michael@walle.cc>,
+	<michal.simek@amd.com>, <miquel.raynal@bootlin.com>,
+	<nicolas.ferre@microchip.com>, <paul@crapouillou.net>, <philmd@linaro.org>,
+	<pratyush@kernel.org>, <richard@nod.at>, <robh@kernel.org>,
+	<rogerq@kernel.org>, <samuel@sholland.org>, <stefan@agner.ch>,
+	<tudor.ambarus@linaro.org>, <u.kleine-koenig@pengutronix.de>,
+	<vigneshr@ti.com>, <vz@mleia.com>, <wens@csie.org>,
+	<yangyingliang@huawei.com>
+Subject: [PATCH -next v2 06/12] mtd: rawnand: mpc5121: Use helper function devm_clk_get_enabled()
+Date: Fri, 18 Aug 2023 15:46:36 +0800
+Message-ID: <20230818074642.308166-7-lizetao1@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230818074642.308166-1-lizetao1@huawei.com>
+References: <20230817024509.3951629-1-lizetao1@huawei.com>
+ <20230818074642.308166-1-lizetao1@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.90.53.73]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ kwepemi500012.china.huawei.com (7.221.188.12)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230818_011825_851878_2BC3CB68 
-X-CRM114-Status: UNSURE (   1.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230818_084732_805736_8827D865 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,13 +95,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
+and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
+replaced by devm_clk_get_enabled() when driver enable (and possibly
+prepare) the clocks for the whole lifetime of the device. Moreover, it is
+no longer necessary to unprepare and disable the clock explicitly.
 
-Czy interesuje Pa=C5=84stwa rozwi=C4=85zanie umo=C5=BCliwiaj=C4=85ce moni=
-torowanie samochod=C3=B3w firmowych oraz optymalizacj=C4=99 koszt=C3=B3w =
-ich utrzymania?=20
+Signed-off-by: Li Zetao <lizetao1@huawei.com>
+---
+v1 -> v2: Modify commit message.
+v1: https://lore.kernel.org/all/20230817024509.3951629-7-lizetao1@huawei.com/
 
+ drivers/mtd/nand/raw/mpc5121_nfc.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
-Pozdrawiam,
-Jakub Lemczak
+diff --git a/drivers/mtd/nand/raw/mpc5121_nfc.c b/drivers/mtd/nand/raw/mpc5121_nfc.c
+index 6e8e790f84e7..215610f808f1 100644
+--- a/drivers/mtd/nand/raw/mpc5121_nfc.c
++++ b/drivers/mtd/nand/raw/mpc5121_nfc.c
+@@ -595,8 +595,6 @@ static void mpc5121_nfc_free(struct device *dev, struct mtd_info *mtd)
+ 	struct nand_chip *chip = mtd_to_nand(mtd);
+ 	struct mpc5121_nfc_prv *prv = nand_get_controller_data(chip);
+ 
+-	clk_disable_unprepare(prv->clk);
+-
+ 	if (prv->csreg)
+ 		iounmap(prv->csreg);
+ }
+@@ -717,17 +715,12 @@ static int mpc5121_nfc_probe(struct platform_device *op)
+ 	}
+ 
+ 	/* Enable NFC clock */
+-	clk = devm_clk_get(dev, "ipg");
++	clk = devm_clk_get_enabled(dev, "ipg");
+ 	if (IS_ERR(clk)) {
+-		dev_err(dev, "Unable to acquire NFC clock!\n");
++		dev_err(dev, "Unable to acquire and enable NFC clock!\n");
+ 		retval = PTR_ERR(clk);
+ 		goto error;
+ 	}
+-	retval = clk_prepare_enable(clk);
+-	if (retval) {
+-		dev_err(dev, "Unable to enable NFC clock!\n");
+-		goto error;
+-	}
+ 	prv->clk = clk;
+ 
+ 	/* Reset NAND Flash controller */
+-- 
+2.34.1
+
 
