@@ -4,56 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09A02C71136
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Aug 2023 03:08:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05F96C001DE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Aug 2023 04:51:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IBUO2uNKo6cW99tMDi2TTggtzV1GAG9jZeGG97PGh4M=; b=d5UDXnw29Vz48PynkrheCHwewQ
-	Pl8WCPLq/FVL2wFZofuKCcDfXq1U72f/vzvbkCo8tOm3M8UTVQkwRCnDZY4sDxQ7IRXSQ86QGHKaV
-	B0AABX7lXVkuXOOByV4OWUW9MGNae+6uKklUGWMUNmky4EGxhfIMlfFv7cG/T51rAfGAtrLfpw6ze
-	hZ4+Ag1U/IT3qDuRUvskxOGIuawCGBw3MWfDurf6T5n8dVcFYLP7zAoDMXvGoIltc0+pnxcX6bH3n
-	VchgEiDCfOO2OBxGaccRtGxSyjWJrY+/k8hZ6ugZNlosngDFAv9et0e0MJtaGvxST/0Rl2t9hkETU
-	KF/Y9WXw==;
+	bh=TD+gevgj24BK8HPP9GIiWb36T/VnfPNgPphoj/WcGx0=; b=Zs0sqLUwdpOwwgGWx2YMldtnR9
+	fnxRKfnA466zKD5NoszHeS8yJ6h3pJukUwNjExTysXqhzbV9wekD0DnCzTTar2rXdRQNEsuqakruv
+	IRPnfMpdgFqHZwQElvCAtrwsKiOXCXrrauxQfjU4eh1OgiMlUTLKBSd7ZpBSxTqyY7rvPcqVUeIzq
+	xKK7ldPo4eQ2a9rraDyhJkGbXBdrMAtQyZE83GNM2+Diz5uIK0RavWvX7KcUti7JAl1iUDHSo3URj
+	IGZqPv7vnXxRZXxageI7YtL6DgUIYePkPiIJL7xPLttpdvtR3/8qRX4R6D8B/GYKqJ85o6WRCbmWK
+	Osyl6jVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWpqL-007aLy-2v;
-	Fri, 18 Aug 2023 03:08:09 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1qWrSU-007hgz-29;
+	Fri, 18 Aug 2023 04:51:38 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWpqI-007aLE-0E;
-	Fri, 18 Aug 2023 03:08:07 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1qWpq5-00056L-0G;
-	Fri, 18 Aug 2023 03:07:53 +0000
-Date: Fri, 18 Aug 2023 04:07:46 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Alexander Couzens <lynxis@fe80.eu>,
-	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1qWrSR-007hgJ-0c
+	for linux-mediatek@lists.infradead.org;
+	Fri, 18 Aug 2023 04:51:36 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-689e8115f8dso476838b3a.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 17 Aug 2023 21:51:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1692334292; x=1692939092;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=TD+gevgj24BK8HPP9GIiWb36T/VnfPNgPphoj/WcGx0=;
+        b=LeYl1NvcE31cfFvU2zGE9J5cv1gngt8rryB1sAeEokizuZXe19tFTbtA0Hhh4TVe+v
+         2ABCitl7HkikCwBgKVIlMa/nKGlTc1WrSIjOsm5OT1mH2kbV//8CmR4OWqxARI9ZNmHE
+         WM7J7AZiVSQsiKli6vfG+P7i7aUqtmxz5tNaA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692334292; x=1692939092;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=TD+gevgj24BK8HPP9GIiWb36T/VnfPNgPphoj/WcGx0=;
+        b=ecwXD5+1UoYXZLkTLqo2DiMGhOj46WE0hrkTeSGjvmp8O6cas2Q5eGagjKJKw9TiWc
+         LZ3pXTG5FQJQLnakO8VAev02gLHOANFtOVSmOIfuVDgLs75N8sW3CWbeT0B7WRtrAz2T
+         fU2SlOpRZOUxx4T9+w0A7Kwxw8uUhEq8MQ0+sGxV5DVKISE2wsf0jloIMIbjDNQYFRnd
+         XPO6KJieJGocgqhBg1LU1mClfM9G+hJbytBOyIybiEFL/GAVif0RnDany3AguZQ47Pds
+         d97NeMA0nNwiCbXETOqcRTJk/sA1HlC/A4dDzUEpnbwc0aJ30GxI9r1L29KQhQ8jHxtR
+         k8Yg==
+X-Gm-Message-State: AOJu0Yw3bxo1sxJee2QP4z7TPDcAhCrrZPLFxir8CwjuXV5g8tV80j6u
+	cNW87WEdyyHSsqzveWU/cyuHcA==
+X-Google-Smtp-Source: AGHT+IFjIFUEtXq1tnxcTXCexqGlqyUOsce3/7NPFcbB/8zb467vXeOLFQEEiT7xtoEunJegNEbCpA==
+X-Received: by 2002:a05:6a20:2593:b0:13e:e3aa:d871 with SMTP id k19-20020a056a20259300b0013ee3aad871mr1699472pzd.53.1692334292110;
+        Thu, 17 Aug 2023 21:51:32 -0700 (PDT)
+Received: from localhost (97.176.124.34.bc.googleusercontent.com. [34.124.176.97])
+        by smtp.gmail.com with UTF8SMTPSA id a2-20020aa780c2000000b00688214cff65sm603812pfn.44.2023.08.17.21.51.29
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 17 Aug 2023 21:51:31 -0700 (PDT)
+From: yuanhsinte@chromium.org
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Hsin-Te Yuan <yuanhsinte@chromium.org>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next] net: pcs: lynxi: implement pcs_disable op
-Message-ID: <f23d1a60d2c9d2fb72e32dcb0eaa5f7e867a3d68.1692327891.git.daniel@makrotopia.org>
+	linux-mediatek@lists.infradead.org,
+	Hsin-Te Yuan <yuanhsinte@google.com>
+Subject: [PATCH RESEND v2] arm64: dts: mt8195-cherry-tomato: change watchdog reset
+ boot flow
+Date: Fri, 18 Aug 2023 04:51:17 +0000
+Message-ID: <20230818-send-upstream-v2-1-f10d951a2971@google.com>
+X-Mailer: git-send-email 2.42.0.rc1.204.g551eb34607-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
+X-Mailer: b4 0.12.2
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230817_200806_127039_0BE445E7 
-X-CRM114-Status: GOOD (  11.37  )
+X-CRM114-CacheID: sfid-20230817_215135_244830_698251FF 
+X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,45 +97,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When switching from 10GBase-R/5GBase-R/USXGMII to one of the interface
-modes provided by mtk-pcs-lynxi we need to make sure to always perform
-a full configuration of the PHYA.
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>=0D
 
-Implement pcs_disable op which resets the stored interface mode to
-PHY_INTERFACE_MODE_NA to trigger a full reconfiguration once the LynxI
-PCS driver had previously been deselected in favor of another PCS
-driver such as the to-be-added driver for the USXGMII PCS found in
-MT7988.
-
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/pcs/pcs-mtk-lynxi.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
-index b0f3ede945d96..8501dd365279b 100644
---- a/drivers/net/pcs/pcs-mtk-lynxi.c
-+++ b/drivers/net/pcs/pcs-mtk-lynxi.c
-@@ -233,11 +233,19 @@ static void mtk_pcs_lynxi_link_up(struct phylink_pcs *pcs,
- 	}
- }
- 
-+static void mtk_pcs_lynxi_disable(struct phylink_pcs *pcs)
-+{
-+	struct mtk_pcs_lynxi *mpcs = pcs_to_mtk_pcs_lynxi(pcs);
-+
-+	mpcs->interface = PHY_INTERFACE_MODE_NA;
-+}
-+
- static const struct phylink_pcs_ops mtk_pcs_lynxi_ops = {
- 	.pcs_get_state = mtk_pcs_lynxi_get_state,
- 	.pcs_config = mtk_pcs_lynxi_config,
- 	.pcs_an_restart = mtk_pcs_lynxi_restart_an,
- 	.pcs_link_up = mtk_pcs_lynxi_link_up,
-+	.pcs_disable = mtk_pcs_lynxi_disable,
- };
- 
- struct phylink_pcs *mtk_pcs_lynxi_create(struct device *dev,
--- 
-2.41.0
+The external output reset signal was originally disabled and sent from=0D
+firmware. However, an unfixed bug in the firmware on tomato prevents=0D
+the signal from being sent, causing the device to fail to boot. To fix=0D
+this, enable external output reset signal to allow the device to reboot=0D
+normally.=0D
+=0D
+Signed-off-by: Hsin-Te Yuan <yuanhsinte@google.com>=0D
+---=0D
+Changes in v2:=0D
+- Limit the effect only on tomato.=0D
+---=0D
+ arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts | 4 ++++=0D
+ arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts | 4 ++++=0D
+ arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts | 4 ++++=0D
+ 3 files changed, 12 insertions(+)=0D
+=0D
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts b/arc=
+h/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts=0D
+index 2d5e8f371b6de..a82d716f10d44 100644=0D
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts=0D
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts=0D
+@@ -23,3 +23,7 @@ &sound {=0D
+ &ts_10 {=0D
+ 	status =3D "okay";=0D
+ };=0D
++=0D
++&watchdog {=0D
++	/delete-property/ mediatek,disable-extrst;=0D
++};=0D
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts b/arc=
+h/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts=0D
+index 2586c32ce6e6f..2fe20e0dad836 100644=0D
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts=0D
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts=0D
+@@ -43,3 +43,7 @@ &sound {=0D
+ &ts_10 {=0D
+ 	status =3D "okay";=0D
+ };=0D
++=0D
++&watchdog {=0D
++	/delete-property/ mediatek,disable-extrst;=0D
++};=0D
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts b/arc=
+h/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts=0D
+index f54f9477b99da..dd294ca98194c 100644=0D
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts=0D
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts=0D
+@@ -44,3 +44,7 @@ &sound {=0D
+ &ts_10 {=0D
+ 	status =3D "okay";=0D
+ };=0D
++=0D
++&watchdog {=0D
++	/delete-property/ mediatek,disable-extrst;=0D
++};=0D
+=0D
+---=0D
+base-commit: 5d0c230f1de8c7515b6567d9afba1f196fb4e2f4=0D
+change-id: 20230818-send-upstream-e91e615a893c=0D
+=0D
+Best regards,=0D
+-- =0D
+Hsin-Te Yuan <yuanhsinte@google.com>=0D
+=0D
 
