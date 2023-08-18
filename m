@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E0EAC678DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Aug 2023 07:47:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D546C001DE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Aug 2023 07:47:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tc7QQxhxw+Zme5MW2k3wB9T5soHwG8dQg2sM8FTcnPE=; b=dX1mYBzWyIBiMjtFZ71usfS0bN
-	40CsT4NGO5OzaxwCe3eYeJMA6vhu+nqDiFv2jaGSGRGIvApfmtWIRnIRjPBhVA8q+O9jO+01Y9eMr
-	Ev1R8eEiCDjV3Vi5uGw+RlPvbrDdBTBn3nXM9oLKclQWNjPZSl5vG87sie1WQT6QOb8UoPJwBIUSu
-	YbasX3LJlI0Rv496M2+iaq/hMH46Efkt/00daY5MWcVFUHesw4v2JtzrnIoVpacndDo4QwhmaLdpP
-	PG5csXKn5cdbGxBSD91A5DiRC5RpUBOFGiRx2S1fDgeyvc2fgRi465wuq77pCp8IOD0rGhi+TQT4p
-	cKffF/tQ==;
+	bh=srZZsbVCI6WT6c6a0ZKSkzyz1fK2G4xih/r0G1K4UXk=; b=Ck3VLWrU9bjchElFekJ7JME/iu
+	Mw2QNbR8vSOKAe5O+R/rWDnKbbDWzq/Q7qEZ07VTO8po5jSXT+t9g6k0/MLTOgtPP6BZB5aBEwa5B
+	PJs7GhhFLZulIJmWv1ondnFpr6qfszmuEcjIJLOgxKOlHmchE+m23m780rwR+wWzFvhJcY9kBLxwb
+	jpGNKNiyQjP39bF5flst3TSCLN0wSTHCc5+9Fv1aB214qQhz2LpzN8QPvHVeWlPwg1pZzv+vJIdlr
+	dPawJ5zGAD1E3P90Hsjq0bk6yLcvJNaHuUosQ4f09zrtDnR0v7MLTxHQpE41OuB6vS/wNTZz13cnq
+	6dRroPag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWuCa-007uGv-0O;
-	Fri, 18 Aug 2023 07:47:24 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1qWuCs-007uNg-0C;
+	Fri, 18 Aug 2023 07:47:42 +0000
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWuCS-007uCN-0B;
-	Fri, 18 Aug 2023 07:47:19 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.54])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RRv4j52spzNmrs;
-	Fri, 18 Aug 2023 15:43:33 +0800 (CST)
+	id 1qWuCR-007uCl-2y;
+	Fri, 18 Aug 2023 07:47:21 +0000
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.55])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RRv4g6j4PztS5C;
+	Fri, 18 Aug 2023 15:43:31 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Fri, 18 Aug
- 2023 15:47:04 +0800
+ 2023 15:47:09 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <lizetao1@huawei.com>
 CC: <alexandre.torgue@foss.st.com>, <angelogioacchino.delregno@collabora.com>,
@@ -50,9 +50,9 @@ CC: <alexandre.torgue@foss.st.com>, <angelogioacchino.delregno@collabora.com>,
 	<tudor.ambarus@linaro.org>, <u.kleine-koenig@pengutronix.de>,
 	<vigneshr@ti.com>, <vz@mleia.com>, <wens@csie.org>,
 	<yangyingliang@huawei.com>
-Subject: [PATCH -next v2 01/12] mtd: spear_smi: Use helper function devm_clk_get_enabled()
-Date: Fri, 18 Aug 2023 15:46:31 +0800
-Message-ID: <20230818074642.308166-2-lizetao1@huawei.com>
+Subject: [PATCH -next v2 04/12] mtd: rawnand: intel: Use helper function devm_clk_get_enabled()
+Date: Fri, 18 Aug 2023 15:46:34 +0800
+Message-ID: <20230818074642.308166-5-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230818074642.308166-1-lizetao1@huawei.com>
 References: <20230817024509.3951629-1-lizetao1@huawei.com>
@@ -65,9 +65,8 @@ X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230818_004716_619877_981DA0BF 
-X-CRM114-Status: UNSURE (   9.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230818_004716_510549_2239026A 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,69 +86,65 @@ and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
 replaced by devm_clk_get_enabled() when driver enable (and possibly
 prepare) the clocks for the whole lifetime of the device. Moreover, it is
 no longer necessary to unprepare and disable the clock explicitly, so drop
-the label "err_irq".
+the label "err_disable_unprepare_clk".
 
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
 v1 -> v2: Modify commit message.
-v1: https://lore.kernel.org/all/20230817024509.3951629-2-lizetao1@huawei.com/
+v1: https://lore.kernel.org/all/20230817024509.3951629-5-lizetao1@huawei.com/
 
- drivers/mtd/devices/spear_smi.c | 15 +++------------
+ drivers/mtd/nand/raw/intel-nand-controller.c | 15 +++------------
  1 file changed, 3 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/mtd/devices/spear_smi.c b/drivers/mtd/devices/spear_smi.c
-index 93bca5225116..0a35e5236ae5 100644
---- a/drivers/mtd/devices/spear_smi.c
-+++ b/drivers/mtd/devices/spear_smi.c
-@@ -993,21 +993,17 @@ static int spear_smi_probe(struct platform_device *pdev)
- 		dev->num_flashes = MAX_NUM_FLASH_CHIP;
+diff --git a/drivers/mtd/nand/raw/intel-nand-controller.c b/drivers/mtd/nand/raw/intel-nand-controller.c
+index a9909eb08124..cb5d88f42297 100644
+--- a/drivers/mtd/nand/raw/intel-nand-controller.c
++++ b/drivers/mtd/nand/raw/intel-nand-controller.c
+@@ -626,16 +626,10 @@ static int ebu_nand_probe(struct platform_device *pdev)
+ 		goto err_of_node_put;
  	}
  
--	dev->clk = devm_clk_get(&pdev->dev, NULL);
-+	dev->clk = devm_clk_get_enabled(&pdev->dev, NULL);
- 	if (IS_ERR(dev->clk)) {
- 		ret = PTR_ERR(dev->clk);
- 		goto err;
- 	}
- 
--	ret = clk_prepare_enable(dev->clk);
--	if (ret)
--		goto err;
+-	ebu_host->clk = devm_clk_get(dev, NULL);
++	ebu_host->clk = devm_clk_get_enabled(dev, NULL);
+ 	if (IS_ERR(ebu_host->clk)) {
+ 		ret = dev_err_probe(dev, PTR_ERR(ebu_host->clk),
+-				    "failed to get clock\n");
+-		goto err_of_node_put;
+-	}
 -
- 	ret = devm_request_irq(&pdev->dev, irq, spear_smi_int_handler, 0,
- 			       pdev->name, dev);
- 	if (ret) {
- 		dev_err(&dev->pdev->dev, "SMI IRQ allocation failed\n");
--		goto err_irq;
-+		goto err;
+-	ret = clk_prepare_enable(ebu_host->clk);
+-	if (ret) {
+-		dev_err(dev, "failed to enable clock: %d\n", ret);
++				    "failed to get and enable clock\n");
+ 		goto err_of_node_put;
  	}
  
- 	mutex_init(&dev->lock);
-@@ -1020,14 +1016,11 @@ static int spear_smi_probe(struct platform_device *pdev)
- 		ret = spear_smi_setup_banks(pdev, i, pdata->np[i]);
- 		if (ret) {
- 			dev_err(&dev->pdev->dev, "bank setup failed\n");
--			goto err_irq;
-+			goto err;
- 		}
+@@ -643,7 +637,7 @@ static int ebu_nand_probe(struct platform_device *pdev)
+ 	if (IS_ERR(ebu_host->dma_tx)) {
+ 		ret = dev_err_probe(dev, PTR_ERR(ebu_host->dma_tx),
+ 				    "failed to request DMA tx chan!.\n");
+-		goto err_disable_unprepare_clk;
++		goto err_of_node_put;
  	}
  
- 	return 0;
--
--err_irq:
--	clk_disable_unprepare(dev->clk);
- err:
- 	return ret;
- }
-@@ -1056,8 +1049,6 @@ static int spear_smi_remove(struct platform_device *pdev)
- 		WARN_ON(mtd_device_unregister(&flash->mtd));
- 	}
+ 	ebu_host->dma_rx = dma_request_chan(dev, "rx");
+@@ -698,8 +692,6 @@ static int ebu_nand_probe(struct platform_device *pdev)
+ 	nand_cleanup(&ebu_host->chip);
+ err_cleanup_dma:
+ 	ebu_dma_cleanup(ebu_host);
+-err_disable_unprepare_clk:
+-	clk_disable_unprepare(ebu_host->clk);
+ err_of_node_put:
+ 	of_node_put(chip_np);
  
--	clk_disable_unprepare(dev->clk);
--
- 	return 0;
+@@ -716,7 +708,6 @@ static void ebu_nand_remove(struct platform_device *pdev)
+ 	nand_cleanup(&ebu_host->chip);
+ 	ebu_nand_disable(&ebu_host->chip);
+ 	ebu_dma_cleanup(ebu_host);
+-	clk_disable_unprepare(ebu_host->clk);
  }
  
+ static const struct of_device_id ebu_nand_match[] = {
 -- 
 2.34.1
 
