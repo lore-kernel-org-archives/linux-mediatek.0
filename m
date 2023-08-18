@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25186C05052
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E0EAC678DC
 	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Aug 2023 07:47:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,27 +12,27 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n/eGbD5aF2/sdwD+/dAxS+2eszC4fUc4ZrhwgLyVR8c=; b=0I9HNvHIbGh8KvTT73tKht4DL1
-	E4BBKM8Q1/16CRdrB0A9KoP0vAfmTCjWBOxuWIaQEfcgS2vZvip0yZcyINqVoy+NeD5mWDgQad/BQ
-	UAfy8TyHW5hf+LFaDZhjvITTg4G2zLIbuhp8EwaZtwW1gCMZDIJqxhTLSlo+wh8xrwCY9lPaB57ZI
-	lvYRHcyW8QO1wml0/EdfSh/lzYIq3abFGLgJiz09AVgpz3Exk592qQY61FiZEddCrjOgSlY1De9Iw
-	xBrGZgJuqehzQkSW3zFv/+PHTkazz/KMlGwm+kt/JNOUr25+cIeMffqiQta3z+kG9CPFZ6zYCL3sq
-	Tkhz5mjA==;
+	bh=Tc7QQxhxw+Zme5MW2k3wB9T5soHwG8dQg2sM8FTcnPE=; b=dX1mYBzWyIBiMjtFZ71usfS0bN
+	40CsT4NGO5OzaxwCe3eYeJMA6vhu+nqDiFv2jaGSGRGIvApfmtWIRnIRjPBhVA8q+O9jO+01Y9eMr
+	Ev1R8eEiCDjV3Vi5uGw+RlPvbrDdBTBn3nXM9oLKclQWNjPZSl5vG87sie1WQT6QOb8UoPJwBIUSu
+	YbasX3LJlI0Rv496M2+iaq/hMH46Efkt/00daY5MWcVFUHesw4v2JtzrnIoVpacndDo4QwhmaLdpP
+	PG5csXKn5cdbGxBSD91A5DiRC5RpUBOFGiRx2S1fDgeyvc2fgRi465wuq77pCp8IOD0rGhi+TQT4p
+	cKffF/tQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWuCa-007uH2-1u;
+	id 1qWuCa-007uGv-0O;
 	Fri, 18 Aug 2023 07:47:24 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qWuCR-007uCD-36;
+	id 1qWuCS-007uCN-0B;
 	Fri, 18 Aug 2023 07:47:19 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.55])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RRv751dK3zkX6d;
-	Fri, 18 Aug 2023 15:45:37 +0800 (CST)
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.54])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RRv4j52spzNmrs;
+	Fri, 18 Aug 2023 15:43:33 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Fri, 18 Aug
- 2023 15:46:59 +0800
+ 2023 15:47:04 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <lizetao1@huawei.com>
 CC: <alexandre.torgue@foss.st.com>, <angelogioacchino.delregno@collabora.com>,
@@ -50,12 +50,13 @@ CC: <alexandre.torgue@foss.st.com>, <angelogioacchino.delregno@collabora.com>,
 	<tudor.ambarus@linaro.org>, <u.kleine-koenig@pengutronix.de>,
 	<vigneshr@ti.com>, <vz@mleia.com>, <wens@csie.org>,
 	<yangyingliang@huawei.com>
-Subject: [PATCH -next v2 00/12] mtd: Use devm_clk_get_*() helper function to simplify the drivers.
-Date: Fri, 18 Aug 2023 15:46:30 +0800
-Message-ID: <20230818074642.308166-1-lizetao1@huawei.com>
+Subject: [PATCH -next v2 01/12] mtd: spear_smi: Use helper function devm_clk_get_enabled()
+Date: Fri, 18 Aug 2023 15:46:31 +0800
+Message-ID: <20230818074642.308166-2-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230817024509.3951629-1-lizetao1@huawei.com>
+In-Reply-To: <20230818074642.308166-1-lizetao1@huawei.com>
 References: <20230817024509.3951629-1-lizetao1@huawei.com>
+ <20230818074642.308166-1-lizetao1@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -64,8 +65,8 @@ X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230818_004716_510207_1B8CBB42 
-X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-CacheID: sfid-20230818_004716_619877_981DA0BF 
+X-CRM114-Status: UNSURE (   9.63  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,58 +82,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-and enabled clocks") provides a new helper function for prepared and
-enabled clocks when a driver keeps a clock prepared (or enabled) during
-the whole lifetime of the driver. So where drivers get clocks and enable
-them immediately, it can be combined into a single function
-devm_clk_get_*(). Moreover, the unprepare and disable function
-has been registered to devm_clk_state, and before devm_clk_state is
-released, the clocks will be unprepareed and disable, so it is unnecessary
-to unprepare and disable clock explicitly when remove drivers or in the
-error handling path.
+Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
+and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
+replaced by devm_clk_get_enabled() when driver enable (and possibly
+prepare) the clocks for the whole lifetime of the device. Moreover, it is
+no longer necessary to unprepare and disable the clock explicitly, so drop
+the label "err_irq".
 
-Change log:
+Signed-off-by: Li Zetao <lizetao1@huawei.com>
+---
+v1 -> v2: Modify commit message.
+v1: https://lore.kernel.org/all/20230817024509.3951629-2-lizetao1@huawei.com/
 
-v2:
- - Modify the format of the reference commit, use "since" instead of
- "after".
- - Drop the helper functions mtk_nfc_enable_clk() and
- mtk_nfc_disable_clk(), because both of them now have a single user.
- - Add a new patch, replace devm_clk_get_optional() +
- clk_prepare_enable() with devm_clk_get_optional_enabled().
+ drivers/mtd/devices/spear_smi.c | 15 +++------------
+ 1 file changed, 3 insertions(+), 12 deletions(-)
 
-v1: https://lore.kernel.org/all/20230817024509.3951629-1-lizetao1@huawei.com/
-
-Li Zetao (12):
-  mtd: spear_smi: Use helper function devm_clk_get_enabled()
-  mtd: rawnand: arasan: Use helper function devm_clk_get_enabled()
-  mtd: rawnand: fsmc: Use helper function devm_clk_get_enabled()
-  mtd: rawnand: intel: Use helper function devm_clk_get_enabled()
-  mtd: rawnand: lpc32xx_slc: Use helper function devm_clk_get_enabled()
-  mtd: rawnand: mpc5121: Use helper function devm_clk_get_enabled()
-  mtd: rawnand: mtk: Use helper function devm_clk_get_enabled()
-  mtd: rawnand: stm32_fmc2: Use helper function devm_clk_get_enabled()
-  mtd: rawnand: sunxi: Use helper function devm_clk_get_enabled()
-  mtd: rawnand: vf610_nfc: Use helper function devm_clk_get_enabled()
-  mtd: spi-nor: nxp-spifi: Use helper function devm_clk_get_enabled()
-  mtd: rawnand: orion: Use helper function
-    devm_clk_get_optional_enabled()
-
- drivers/mtd/devices/spear_smi.c               | 15 +----
- drivers/mtd/nand/raw/arasan-nand-controller.c | 29 ++-------
- drivers/mtd/nand/raw/fsmc_nand.c              | 12 +---
- drivers/mtd/nand/raw/intel-nand-controller.c  | 15 +----
- drivers/mtd/nand/raw/lpc32xx_slc.c            | 12 +---
- drivers/mtd/nand/raw/mpc5121_nfc.c            | 11 +---
- drivers/mtd/nand/raw/mtk_nand.c               | 62 ++++++-------------
- drivers/mtd/nand/raw/orion_nand.c             | 22 ++-----
- drivers/mtd/nand/raw/stm32_fmc2_nand.c        | 17 ++---
- drivers/mtd/nand/raw/sunxi_nand.c             | 29 ++-------
- drivers/mtd/nand/raw/vf610_nfc.c              | 29 +++------
- drivers/mtd/spi-nor/controllers/nxp-spifi.c   | 33 ++--------
- 12 files changed, 67 insertions(+), 219 deletions(-)
-
+diff --git a/drivers/mtd/devices/spear_smi.c b/drivers/mtd/devices/spear_smi.c
+index 93bca5225116..0a35e5236ae5 100644
+--- a/drivers/mtd/devices/spear_smi.c
++++ b/drivers/mtd/devices/spear_smi.c
+@@ -993,21 +993,17 @@ static int spear_smi_probe(struct platform_device *pdev)
+ 		dev->num_flashes = MAX_NUM_FLASH_CHIP;
+ 	}
+ 
+-	dev->clk = devm_clk_get(&pdev->dev, NULL);
++	dev->clk = devm_clk_get_enabled(&pdev->dev, NULL);
+ 	if (IS_ERR(dev->clk)) {
+ 		ret = PTR_ERR(dev->clk);
+ 		goto err;
+ 	}
+ 
+-	ret = clk_prepare_enable(dev->clk);
+-	if (ret)
+-		goto err;
+-
+ 	ret = devm_request_irq(&pdev->dev, irq, spear_smi_int_handler, 0,
+ 			       pdev->name, dev);
+ 	if (ret) {
+ 		dev_err(&dev->pdev->dev, "SMI IRQ allocation failed\n");
+-		goto err_irq;
++		goto err;
+ 	}
+ 
+ 	mutex_init(&dev->lock);
+@@ -1020,14 +1016,11 @@ static int spear_smi_probe(struct platform_device *pdev)
+ 		ret = spear_smi_setup_banks(pdev, i, pdata->np[i]);
+ 		if (ret) {
+ 			dev_err(&dev->pdev->dev, "bank setup failed\n");
+-			goto err_irq;
++			goto err;
+ 		}
+ 	}
+ 
+ 	return 0;
+-
+-err_irq:
+-	clk_disable_unprepare(dev->clk);
+ err:
+ 	return ret;
+ }
+@@ -1056,8 +1049,6 @@ static int spear_smi_remove(struct platform_device *pdev)
+ 		WARN_ON(mtd_device_unregister(&flash->mtd));
+ 	}
+ 
+-	clk_disable_unprepare(dev->clk);
+-
+ 	return 0;
+ }
+ 
 -- 
 2.34.1
 
