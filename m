@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9F88EE49A5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Aug 2023 11:42:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C369EE49A3
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Aug 2023 14:41:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9SDLI6770cCnww+DWXlT8l/Kzed9Rm3ApbXShZgSJ1U=; b=hciwfz8OwD1Qd2Hm4IVe2AiJIi
-	xgOfyHegdUPznFqLzQ9g9dxstZ2PyB+0RPy264EX7ih0Tjj84AAH4z+xxQQdkyK6Koc5qyfEOAL71
-	T4Eiq5Z5wqWl2yfwFAetcLRfbKLHPVO+ZMUzWI5mK7/82KsjPOYKVwchw2M9+P8laBsPLL4K9jR0q
-	fARuUKs+kt8a07roV4E2EyES1gD7YfLezJuYB0JWADnSz7J3cMgnqJxd4G9zyVm3bnx+5oyzxXJOL
-	DARCrsxLam2StDUaBdYlxT6AcjTKkc78mIgmkdIcayufbQyxe+1tYKhxdIJsMrMhpClEBW750g9dZ
-	fEFAvocg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DHh3Iz9IDJHfKVjgb0UAiqOD3m9T6ZnBLnJtODOw/lc=; b=h/VuFWYMlOSToLYnuCvz3soHzk
+	vD0qSeg3nElaQFqTLw1+GNV5JeDhpJIEWtyWzDm9ogdoqHKIMVEhP6+D9LDnzCIsuEf4E3DlLcSXJ
+	xYK9vvYcuaJU1joJVj085+gUq14sUUXGawlOEFab/Sue4S5zavakF8V91zK7ChQXvei178hjw/Jze
+	Pluh3POY/9DehRNbGmWz8jbbDc5wxibUu/I48w44pSy2oWOKyYQlcWJzf0s5s+2X5uV7TKPCcZRsZ
+	sAVoQdK/Pjm6Q4K4eeg328blHBwrpJC8cwWH+Loo1iEoghbEV9+ZWnsyLjQsZaZANuWuVuodPnaVA
+	Ero5sJJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXKL8-00ArAq-2Z;
-	Sat, 19 Aug 2023 11:41:58 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qXN8i-00AyWK-1v;
+	Sat, 19 Aug 2023 14:41:20 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXKL0-00Ar9W-0k;
-	Sat, 19 Aug 2023 11:41:51 +0000
+	id 1qXN8e-00AyVf-2H;
+	Sat, 19 Aug 2023 14:41:18 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8112961B83;
-	Sat, 19 Aug 2023 11:41:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id CA02BC433C9;
-	Sat, 19 Aug 2023 11:41:47 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3F0FE6181B;
+	Sat, 19 Aug 2023 14:41:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5515C433C9;
+	Sat, 19 Aug 2023 14:41:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1692445307;
-	bh=LKmKQ0xSbZIzIwfqFbMR61HP7pVuNaLztMJQtV/tx80=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=s5ho89sUA59BNYnbFy+CaxKsuPq+fZY12YuNl9s+og6HoVU6PEIkMUbfXd2yc1L2v
-	 Dop3+9w5ELa6Y3pxNuAYQ3r4U3sUmw4fhEg4tH9VKflvpFTDfjMMxb3awOc65PjpTz
-	 PdnUgY5h9mHkIqh3/3McptNr5ea2tPv19qUtvo+o5rfrylvF1w0llbu0QVUjTxZep3
-	 7FBEqwrfxqtkiX+PpMKX32ss+vI2x26QNTSHu2xV3O/pauFp5p086X+t4yBrr1d3kw
-	 B0YfLITqWRRhGBDHsZWYrsIdvm1YfUDJS6L3qUuU9bpllD4rm2OPuLWPC0tot2yzg9
-	 54wTk6SHXRQQw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id A759FC59A4C;
-	Sat, 19 Aug 2023 11:41:47 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1692456074;
+	bh=s/6tz1ntVu9WHcizXMkOFm+PqgGopb/sQCUQJgN/UCw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RspyVU2C22Gq4717Y75wZ72mw3oilJhDHzF06iNK7vIzIfhkYMC9p3Dl2ictYYcGa
+	 Pj8PGuyGFy+ibtb5heSsWapbk8AbmxSkJ/Fb25XVQm55KTGpkxvLPHyOwNeie2tePw
+	 rNelyoxgP6jWnHQTvbhRRuyGSALKNez1mGv3j1bmC6xO0dfxZe3YOmraEBSqzLGaoe
+	 UVJga9KYMG5ebcm3/1WhLNmrUBt4GplifCR1HcJrkbK8VnZ84veRbtuyXqi1rESuDx
+	 Dxu/jLbp8ezbIPP154mbSd6uPmD60Mnbv9OQeXKGBSL4dQqbN592FuHAdql9b58/9g
+	 3FaXaeINNMAsQ==
+Date: Sat, 19 Aug 2023 16:41:09 +0200
+From: Simon Horman <horms@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: add reset bits for MT7988
+Message-ID: <ZODUhbw9SDOifv49@vergenet.net>
+References: <b983a3adf5184a30e4ce620fbbf028c9c76648ae.1692382239.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: dsa: mt7530: fix handling of 802.1X PAE frames
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169244530768.26291.13426375569408099631.git-patchwork-notify@kernel.org>
-Date: Sat, 19 Aug 2023 11:41:47 +0000
-References: <20230813105917.32102-1-arinc.unal@arinc9.com>
-In-Reply-To: <20230813105917.32102-1-arinc.unal@arinc9.com>
-To: =?utf-8?b?QXLEsW7DpyDDnE5BTCA8YXJpbmMudW5hbEBhcmluYzkuY29tPg==?=@ci.codeaurora.org
-Cc: daniel@makrotopia.org, Landen.Chao@mediatek.com, dqfext@gmail.com,
- sean.wang@mediatek.com, andrew@lunn.ch, f.fainelli@gmail.com,
- olteanv@gmail.com, davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, bartel.eerdekens@constell8.be,
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <b983a3adf5184a30e4ce620fbbf028c9c76648ae.1692382239.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230819_044150_338884_C9493BD2 
-X-CRM114-Status: GOOD (  10.09  )
+X-CRM114-CacheID: sfid-20230819_074116_849540_E4167A88 
+X-CRM114-Status: GOOD (  21.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,30 +83,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net.git (main)
-by David S. Miller <davem@davemloft.net>:
-
-On Sun, 13 Aug 2023 13:59:17 +0300 you wrote:
-> 802.1X PAE frames are link-local frames, therefore they must be trapped to
-> the CPU port. Currently, the MT753X switches treat 802.1X PAE frames as
-> regular multicast frames, therefore flooding them to user ports. To fix
-> this, set 802.1X PAE frames to be trapped to the CPU port(s).
+On Fri, Aug 18, 2023 at 07:15:24PM +0100, Daniel Golle wrote:
+> Add bits needed to reset the frame engine on MT7988.
 > 
-> Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> Fixes: 445eb6448ed3 ("net: ethernet: mtk_eth_soc: add basic support for MT7988 SoC")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 76 +++++++++++++++------
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h | 11 ++-
+>  2 files changed, 64 insertions(+), 23 deletions(-)
 > 
-> [...]
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index fe05c90202699..2482f47313085 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -3613,19 +3613,34 @@ static void mtk_hw_reset(struct mtk_eth *eth)
+>  {
+>  	u32 val;
+>  
+> -	if (mtk_is_netsys_v2_or_greater(eth)) {
+> +	if (mtk_is_netsys_v2_or_greater(eth))
+>  		regmap_write(eth->ethsys, ETHSYS_FE_RST_CHK_IDLE_EN, 0);
+> +
+> +	if (mtk_is_netsys_v3_or_greater(eth)) {
+> +		val = RSTCTRL_PPE0_V3;
+> +
+> +		if (MTK_HAS_CAPS(eth->soc->caps, MTK_RSTCTRL_PPE1))
+> +			val |= RSTCTRL_PPE1_V3;
+> +
+> +		if (MTK_HAS_CAPS(eth->soc->caps, MTK_RSTCTRL_PPE2))
+> +			val |= RSTCTRL_PPE2;
+> +
+> +		val |= RSTCTRL_WDMA0 | RSTCTRL_WDMA1 | RSTCTRL_WDMA2;
+> +	} else if (mtk_is_netsys_v2_or_greater(eth)) {
+>  		val = RSTCTRL_PPE0_V2;
+> +
+> +		if (MTK_HAS_CAPS(eth->soc->caps, MTK_RSTCTRL_PPE1))
+> +			val |= RSTCTRL_PPE1;
+>  	} else {
+>  		val = RSTCTRL_PPE0;
+>  	}
+>  
+> -	if (MTK_HAS_CAPS(eth->soc->caps, MTK_RSTCTRL_PPE1))
+> -		val |= RSTCTRL_PPE1;
+> -
+>  	ethsys_reset(eth, RSTCTRL_ETH | RSTCTRL_FE | val);
+>  
+> -	if (mtk_is_netsys_v2_or_greater(eth))
+> +	if (mtk_is_netsys_v3_or_greater(eth))
+> +		regmap_write(eth->ethsys, ETHSYS_FE_RST_CHK_IDLE_EN,
+> +			     0x6f8ff);
+> +	else if (mtk_is_netsys_v2_or_greater(eth))
+>  		regmap_write(eth->ethsys, ETHSYS_FE_RST_CHK_IDLE_EN,
+>  			     0x3ffffff);
+>  }
+> @@ -3651,13 +3666,21 @@ static void mtk_hw_warm_reset(struct mtk_eth *eth)
+>  		return;
+>  	}
+>  
+> -	if (mtk_is_netsys_v2_or_greater(eth))
+> +	if (mtk_is_netsys_v3_or_greater(eth)) {
+> +		rst_mask = RSTCTRL_ETH | RSTCTRL_PPE0_V3;
+> +		if (MTK_HAS_CAPS(eth->soc->caps, MTK_RSTCTRL_PPE1))
+> +			rst_mask |= RSTCTRL_PPE1_V3;
+> +		if (MTK_HAS_CAPS(eth->soc->caps, MTK_RSTCTRL_PPE2))
+> +			rst_mask |= RSTCTRL_PPE2;
+> +
+> +		rst_mask |= RSTCTRL_WDMA0 | RSTCTRL_WDMA1 | RSTCTRL_WDMA2;
+> +	} else if (mtk_is_netsys_v2_or_greater(eth)) {
+>  		rst_mask = RSTCTRL_ETH | RSTCTRL_PPE0_V2;
+> -	else
+> +		if (MTK_HAS_CAPS(eth->soc->caps, MTK_RSTCTRL_PPE1))
+> +			rst_mask |= RSTCTRL_PPE1;
+> +	} else {
+>  		rst_mask = RSTCTRL_ETH | RSTCTRL_PPE0;
+> -
+> -	if (MTK_HAS_CAPS(eth->soc->caps, MTK_RSTCTRL_PPE1))
+> -		rst_mask |= RSTCTRL_PPE1;
+> +	}
+>  
+>  	regmap_update_bits(eth->ethsys, ETHSYS_RSTCTRL, rst_mask, rst_mask);
+>  
 
-Here is the summary with links:
-  - [net] net: dsa: mt7530: fix handling of 802.1X PAE frames
-    https://git.kernel.org/netdev/net/c/e94b590abfff
+Hi Daniel,
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+The bits set by the code in the above two hunks seem both complex
+and similar. At the risk of suggesting excessive complexity,
+I do wonder if they can be consolidated somehow.
 
+Maybe the approach you have taken is best as a fix for net.
+But a follow-up could be considered for net-next.
+Just an idea.
+
+...
 
 
