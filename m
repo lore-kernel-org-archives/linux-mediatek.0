@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25ACAEE49A6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09B7DEE4993
 	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Aug 2023 15:32:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
@@ -12,50 +12,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SsbtKnqEZS1SBS/BTwtYQes3zVkGyGBksUmpnFniAzM=; b=U6mWD1HWIk3RdE
-	eK1gOQoakEjwjSfACggbU9KYiznHZ1Qg2FvJTFVHMRzOp3JIV98suegIZp0MCVtkhcnKAQ5eZ5wq/
-	FivHOAjw1/7O9B5WXRGDwysZmIPMK6c9W4i0yV24Ycu3XaCzzDKbj64vzg3RuU6zqzcN2vZJjhTZ+
-	1UuSLv2rElxGrvTYtpEwQycJB4zfsbHG4IT/+nYmgFYqI1lkoe/O5ohZkYVffaTq4eMXqoEj19xW5
-	KD71B3l++ybUy95eybFydYLSG72QsyaFOspQDUEatVWBEHU+QZqPfalFxz4N4av89PEIff6FOnJQC
-	jFjOKZVLe3Hrl4mtzn0A==;
+	List-Owner; bh=xl/Xr1AYEB8pKmlNDvd2VVnVn8pANzbVbDszA4un1gQ=; b=EmkVDwIOoY85pe
+	zfR4P5fxd0sl4WArbrT3dXbc14Ho751ORwgV1zuTtPcOhqfxH/7mjcUMoT9sGUuGKcZEwL7gK5miv
+	PmakFGHwHxzhR59ePc3L8YH7KpS69dvZIqKcB1K7Tlrr5xz0irpv8f3itIG5MD+f5UDvnH4glZAgw
+	gInUnLOR1KuBaMX4mxf9sGvdKK9j6K2dEHT6P97zjiozbsmxNwcFnacwc3Xj6nU8LgD/JB9Szkr/6
+	qro/Nb/cHXd5poYT1ZiPRJcbyTlQDeoxhfX3URBKzO/7ntCeveKKqiIZzv+YRPlcU3FT2ucFExCM2
+	YMRZBitDCUE0LvC+AXCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXkPJ-00C6uq-30;
-	Sun, 20 Aug 2023 15:32:01 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1qXkPK-00C6uu-0i;
+	Sun, 20 Aug 2023 15:32:02 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXkPF-00C6sH-34;
+	id 1qXkPF-00C6sE-2x;
 	Sun, 20 Aug 2023 15:31:59 +0000
 Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
-	by mxout2.routing.net (Postfix) with ESMTP id 574CE5FA81;
-	Sun, 20 Aug 2023 15:31:53 +0000 (UTC)
+	by mxout3.routing.net (Postfix) with ESMTP id B1CB2605B4;
+	Sun, 20 Aug 2023 15:31:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1692545513;
+	s=20200217; t=1692545512;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=SsbtKnqEZS1SBS/BTwtYQes3zVkGyGBksUmpnFniAzM=;
-	b=l28ZjGGRxA5usxJSSUCcuQvQ7eQvPtZIwgHBByGOmuaT2HIhcbulcN37G/BI8a/I6nWCj9
-	1QTDhBJv6zVQRwsOPIABFI/LZ9hOujh/4zWdZ4uVFnnt3Si5Drbfolatd0fTFM5Vky79iL
-	tNQesKw2oC1/IGRH5nkVDgOkLWES5Hg=
+	bh=xl/Xr1AYEB8pKmlNDvd2VVnVn8pANzbVbDszA4un1gQ=;
+	b=th3qTgfFD3yL+mMx19zZzBzjkPzEfQONvx9weyw/T/jL3BhxHSSlp2k0LM7CfIRnbpk95g
+	M7ABmp0r78vOopAbLMTbQbpB58pYi4ZfCctkHPNKwCrK96kMSeM0+tUVfPfTSF1s9W1s3L
+	fQMl+ttO27oQkmBGb/ik4IUGj6gyT80=
 Received: from frank-G5.. (fttx-pool-80.245.78.65.bambit.de [80.245.78.65])
-	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id AC639406E2;
+	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id 12CAD406A8;
 	Sun, 20 Aug 2023 15:31:52 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v1 2/3] arm64: dts: mt7986: change cooling trips
-Date: Sun, 20 Aug 2023 17:31:34 +0200
-Message-Id: <20230820153135.42588-3-linux@fw-web.de>
+Subject: [PATCH v1 1/3] arm64: dts: mt7986: define 3W max power to both SFP on BPI-R3
+Date: Sun, 20 Aug 2023 17:31:33 +0200
+Message-Id: <20230820153135.42588-2-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230820153135.42588-1-linux@fw-web.de>
 References: <20230820153135.42588-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 146a06ab-4984-4ce9-abad-c731e52ad8a3
+X-Mail-ID: 00bc8e6c-d91a-4620-80c0-866337966e05
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230820_083158_166527_FB8E17BB 
-X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-CacheID: sfid-20230820_083158_167017_3684AD82 
+X-CRM114-Status: UNSURE (   9.42  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,62 +74,36 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add Critical and hot trips for emergency system shutdown and limiting
-system load.
+All SFP power supplies are connected to the system VDD33 which is 3v3/8A.
+Set 3A per SFP slot to allow SFPs work which need more power than the
+default 1W.
 
-Change passive trip to active to make sure fan is activated on the
-lowest trip.
-
-Fixes: 1f5be05132f3 ("arm64: dts: mt7986: add thermal-zones")
-Suggested-by: Daniel Golle <daniel@makrotopia.org>
+Fixes: 8e01fb15b815 ("arm64: dts: mt7986: add Bananapi R3")
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 20 ++++++++++++++++----
- 1 file changed, 16 insertions(+), 4 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-index 207510abda89..36d8945400df 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-@@ -614,22 +614,34 @@ cpu_thermal: cpu-thermal {
- 			thermal-sensors = <&thermal 0>;
- 
- 			trips {
-+				cpu_trip_crit: crit {
-+					temperature = <125000>;
-+					hysteresis = <2000>;
-+					type = "critical";
-+				};
-+
-+				cpu_trip_hot: hot {
-+					temperature = <120000>;
-+					hysteresis = <2000>;
-+					type = "hot";
-+				};
-+
- 				cpu_trip_active_high: active-high {
- 					temperature = <115000>;
- 					hysteresis = <2000>;
- 					type = "active";
- 				};
- 
--				cpu_trip_active_low: active-low {
-+				cpu_trip_active_med: active-med {
- 					temperature = <85000>;
- 					hysteresis = <2000>;
- 					type = "active";
- 				};
- 
--				cpu_trip_passive: passive {
--					temperature = <40000>;
-+				cpu_trip_active_low: active-low {
-+					temperature = <60000>;
- 					hysteresis = <2000>;
--					type = "passive";
-+					type = "active";
- 				};
- 			};
- 		};
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+index af4a4309bda4..f9702284607a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+@@ -126,6 +126,7 @@ sfp1: sfp-1 {
+ 		compatible = "sff,sfp";
+ 		i2c-bus = <&i2c_sfp1>;
+ 		los-gpios = <&pio 46 GPIO_ACTIVE_HIGH>;
++		maximum-power-milliwatt = <3000>;
+ 		mod-def0-gpios = <&pio 49 GPIO_ACTIVE_LOW>;
+ 		tx-disable-gpios = <&pio 20 GPIO_ACTIVE_HIGH>;
+ 		tx-fault-gpios = <&pio 7 GPIO_ACTIVE_HIGH>;
+@@ -137,6 +138,7 @@ sfp2: sfp-2 {
+ 		i2c-bus = <&i2c_sfp2>;
+ 		los-gpios = <&pio 31 GPIO_ACTIVE_HIGH>;
+ 		mod-def0-gpios = <&pio 47 GPIO_ACTIVE_LOW>;
++		maximum-power-milliwatt = <3000>;
+ 		tx-disable-gpios = <&pio 15 GPIO_ACTIVE_HIGH>;
+ 		tx-fault-gpios = <&pio 48 GPIO_ACTIVE_HIGH>;
+ 	};
 -- 
 2.34.1
 
