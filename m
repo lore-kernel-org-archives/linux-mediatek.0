@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF51AEE49AA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Aug 2023 03:18:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6652EE4996
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Aug 2023 03:35:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CZI9gJJLjpHEasMuQiATd/YjHKbKgUrQLWaza80QXcM=; b=cxWzPNvoQzv+JVBq/kuGYAZjFS
-	H9q5ulcUU+H0z3ksvMzyPSnZlG8aTnszyhmEBFB+U9WhfkL0v3jx+Gp7yowqdDo44xf/9lLJ8/xBl
-	AU6aKf1wnCt2L4S2TtTD0hOCkx6Qh2VfS/41jRpXxHX3QFvGiMXauwLgTi8TXjTTAYAfqnbptu/ml
-	jBSsxWFWbv1AnJ9XEh0uHM5jLABSTGgipDgU3OWmDerrmP2QPSAxaHdhHhwnB2PQdGv47xF91iHx9
-	AWfYHXuwsfOtEOGc9OuEyT/sMgriyenHTUwhKW0Zx0ROE0PjZ+bmv3kHt1yAGICzIPPPJpvEAqvQg
-	cvBL+QQA==;
+	bh=00sTKj6r29idEJKO1tqRjR2HLLSE0fyMr4hXBqiW47I=; b=SrGrYR60Ny+H5gcbbb6+18LQW5
+	tcQfxK/mV+WoTxZfIvr4c+BXTNwYT5pCqauKlgmG6zHK2iQME6KCu7qpyTmlf6mxO6/Hq743b6me2
+	+GPCaGRMQDZ7qRj3G0SiGmJCBTk8GEcsRRHVMlMGHyBNj7EfvzYlwTC1IlfwQtarI3se6LSiJIi8p
+	oYeZxBvUukkZNvZI4lWxjntRw0OyCGs2mJnEtNoAAgcTMG40V980B8LAn11KqYIXMcLKHo8ahzU40
+	PLfzpVmh4J65WI0/JR74SmFEOCASQuXJPczEswHHKpwDT/PBBBXRhf88KdcsrRf6gwhdFObU/ICPm
+	LSDsB/UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXvRN-00Cx71-35;
-	Mon, 21 Aug 2023 03:18:53 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1qXvhc-00Czou-2G;
+	Mon, 21 Aug 2023 03:35:40 +0000
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXvQi-00CwVG-1D;
-	Mon, 21 Aug 2023 03:18:15 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.53])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4RTd1K71Hsz1L9Jy;
-	Mon, 21 Aug 2023 11:16:37 +0800 (CST)
-Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
- (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Mon, 21 Aug
- 2023 11:18:03 +0800
-From: Li Zetao <lizetao1@huawei.com>
-To: <miquel.raynal@bootlin.com>
-CC: <alexandre.torgue@foss.st.com>, <angelogioacchino.delregno@collabora.com>,
-	<christophe.kerello@foss.st.com>, <christophe.leroy@csgroup.eu>,
-	<dmitry.torokhov@gmail.com>, <frank.li@vivo.com>, <geert+renesas@glider.be>,
-	<heiko@sntech.de>, <jernej.skrabec@gmail.com>, <jinpu.wang@ionos.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-mtd@lists.infradead.org>, <linux-stm32@st-md-mailman.stormreply.com>,
-	<linux-sunxi@lists.linux.dev>, <lizetao1@huawei.com>,
-	<martin.blumenstingl@googlemail.com>, <matthias.bgg@gmail.com>,
-	<mcoquelin.stm32@gmail.com>, <michael@walle.cc>, <michal.simek@amd.com>,
-	<paul@crapouillou.net>, <philmd@linaro.org>, <pratyush@kernel.org>,
-	<richard@nod.at>, <robh@kernel.org>, <rogerq@kernel.org>,
-	<samuel@sholland.org>, <stefan@agner.ch>, <tudor.ambarus@linaro.org>,
-	<u.kleine-koenig@pengutronix.de>, <vigneshr@ti.com>, <vz@mleia.com>,
-	<wens@csie.org>, <yangyingliang@huawei.com>
-Subject: [PATCH -next v3 09/12] mtd: rawnand: sunxi: Use helper function devm_clk_get_enabled()
-Date: Mon, 21 Aug 2023 11:17:34 +0800
-Message-ID: <20230821031737.1973183-10-lizetao1@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230821031737.1973183-1-lizetao1@huawei.com>
-References: <20230818101004.4f2cd343@xps-13>
- <20230821031737.1973183-1-lizetao1@huawei.com>
+	id 1qXvhZ-00CzoB-1n
+	for linux-mediatek@lists.infradead.org;
+	Mon, 21 Aug 2023 03:35:38 +0000
+Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-56a8794b5adso730588a12.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 20 Aug 2023 20:35:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1692588936; x=1693193736;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=00sTKj6r29idEJKO1tqRjR2HLLSE0fyMr4hXBqiW47I=;
+        b=EoyOxijThar9EAUzeD2tdAYhkNhVBKLl5DvbKipB5sV6cz6R9mEcIg+4Z8Z9okgZ2k
+         YeZ2+ayHnz4AcanYdoMscZoQpZ7Te1XBrw3p9RyKA66C2vIxkEcpKYICCoALmRS3VlTM
+         iRe2QuQTxYpQJTh5Hz17W91X7F5RoYaXw1JaQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692588936; x=1693193736;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=00sTKj6r29idEJKO1tqRjR2HLLSE0fyMr4hXBqiW47I=;
+        b=jhDhDZOpQql15oqurOVOUBCFrfzBAPTFkXxSscUdZVL7lBFNxYKI9YNLahu6faUG21
+         1v0Cp5/hRfcSr9eFZIBqGzo0GOa6WN68sg3xeSKhrcHCyVVNbwqheMAV/k+MaU4Is8Be
+         oN/pdcO0qb+0xD8Q8Ca5bbxAUamcVHuse7xemEkWx7Bj3ZBgI6qbhNCzkNyJf9c4Z6uZ
+         KmzLIVYczX3eIs0cfJHC3+xK4Fq7Bt2Mm5AtjVV7GSdfwg4CUUMxclNavivQc+qHOblA
+         YGclYQwBZj0UCpQ9JWoICXbtn+n8k+NOhtbkiWFrImJ0iNmeGICgYTrSOGw8KhDNsf2T
+         ipHA==
+X-Gm-Message-State: AOJu0YxzNiEEbzq3lQcApIKIAmRWhO7KMwYwBGv9jJ5Y6OPZTHY3wxBe
+	nlN7soUbpg4G0HXrKhYy04YkZQ==
+X-Google-Smtp-Source: AGHT+IG5aGqs5D00DDjj7OJwcEOzDcmv6vQD+bo07/gyCLmBibr72UHzCi3wAuI/jaEHXPiLMS1QHg==
+X-Received: by 2002:a17:903:2305:b0:1bf:cdc:f402 with SMTP id d5-20020a170903230500b001bf0cdcf402mr7301478plh.48.1692588935784;
+        Sun, 20 Aug 2023 20:35:35 -0700 (PDT)
+Received: from google.com ([2401:fa00:1:10:d88c:8ac2:1586:6240])
+        by smtp.gmail.com with ESMTPSA id iz22-20020a170902ef9600b001b9da42cd7dsm5881881plb.279.2023.08.20.20.35.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 20 Aug 2023 20:35:35 -0700 (PDT)
+Date: Mon, 21 Aug 2023 11:35:32 +0800
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Yu-Che Cheng <giver@chromium.org>, Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH] spmi: mediatek: Fix UAF on device remove
+Message-ID: <20230821033532.GA21555@google.com>
+References: <20230717173934.1.If004a6e055a189c7f2d0724fa814422c26789839@changeid>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.90.53.73]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- kwepemi500012.china.huawei.com (7.221.188.12)
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230717173934.1.If004a6e055a189c7f2d0724fa814422c26789839@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230820_201812_891088_4BD7FFAC 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20230820_203537_627981_122F865A 
+X-CRM114-Status: GOOD (  24.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,96 +82,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org, James Lo <james.lo@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-replaced by devm_clk_get_enabled() when driver enables (and possibly
-prepares) the clocks for the whole lifetime of the device. Moreover, it is
-no longer necessary to unprepare and disable the clocks explicitly, so drop
-the label "out_mod_clk_unprepare" and "out_ahb_clk_unprepare".
+On Mon, Jul 17, 2023 at 05:39:35PM +0800, Yu-Che Cheng wrote:
+> The pmif driver data that contains the clocks is allocated along with
+> spmi_controller.
+> On device remove, spmi_controller will be freed first, and then devres
+> , including the clocks, will be cleanup.
+> This leads to UAF because putting the clocks will access the clocks in
+> the pmif driver data, which is already freed along with spmi_controller.
+> 
+> This can be reproduced by enabling DEBUG_TEST_DRIVER_REMOVE and
+> building the kernel with KASAN.
+> 
+> Fix the UAF issue by using unmanaged clk_bulk_get() and putting the
+> clocks before freeing spmi_controller.
+> 
+> Reported-by: Fei Shao <fshao@chromium.org>
+> Signed-off-by: Yu-Che Cheng <giver@chromium.org>
 
-Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
-Signed-off-by: Li Zetao <lizetao1@huawei.com>
----
-v2 -> v3: Modify the syntax error in the commit message.
-v2: https://lore.kernel.org/all/20230818074642.308166-10-lizetao1@huawei.com/
-v1 -> v2: Modify commit message.
-v1: https://lore.kernel.org/all/20230817024509.3951629-10-lizetao1@huawei.com/
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
- drivers/mtd/nand/raw/sunxi_nand.c | 29 ++++++-----------------------
- 1 file changed, 6 insertions(+), 23 deletions(-)
+Stephen, could you pick this up?
 
-diff --git a/drivers/mtd/nand/raw/sunxi_nand.c b/drivers/mtd/nand/raw/sunxi_nand.c
-index 64c09eae951d..9abf38049d35 100644
---- a/drivers/mtd/nand/raw/sunxi_nand.c
-+++ b/drivers/mtd/nand/raw/sunxi_nand.c
-@@ -2094,37 +2094,26 @@ static int sunxi_nfc_probe(struct platform_device *pdev)
- 	if (irq < 0)
- 		return irq;
- 
--	nfc->ahb_clk = devm_clk_get(dev, "ahb");
-+	nfc->ahb_clk = devm_clk_get_enabled(dev, "ahb");
- 	if (IS_ERR(nfc->ahb_clk)) {
- 		dev_err(dev, "failed to retrieve ahb clk\n");
- 		return PTR_ERR(nfc->ahb_clk);
- 	}
- 
--	ret = clk_prepare_enable(nfc->ahb_clk);
--	if (ret)
--		return ret;
--
--	nfc->mod_clk = devm_clk_get(dev, "mod");
-+	nfc->mod_clk = devm_clk_get_enabled(dev, "mod");
- 	if (IS_ERR(nfc->mod_clk)) {
- 		dev_err(dev, "failed to retrieve mod clk\n");
--		ret = PTR_ERR(nfc->mod_clk);
--		goto out_ahb_clk_unprepare;
-+		return PTR_ERR(nfc->mod_clk);
- 	}
- 
--	ret = clk_prepare_enable(nfc->mod_clk);
--	if (ret)
--		goto out_ahb_clk_unprepare;
--
- 	nfc->reset = devm_reset_control_get_optional_exclusive(dev, "ahb");
--	if (IS_ERR(nfc->reset)) {
--		ret = PTR_ERR(nfc->reset);
--		goto out_mod_clk_unprepare;
--	}
-+	if (IS_ERR(nfc->reset))
-+		return PTR_ERR(nfc->reset);
- 
- 	ret = reset_control_deassert(nfc->reset);
- 	if (ret) {
- 		dev_err(dev, "reset err %d\n", ret);
--		goto out_mod_clk_unprepare;
-+		return ret;
- 	}
- 
- 	nfc->caps = of_device_get_match_data(&pdev->dev);
-@@ -2163,10 +2152,6 @@ static int sunxi_nfc_probe(struct platform_device *pdev)
- 		dma_release_channel(nfc->dmac);
- out_ahb_reset_reassert:
- 	reset_control_assert(nfc->reset);
--out_mod_clk_unprepare:
--	clk_disable_unprepare(nfc->mod_clk);
--out_ahb_clk_unprepare:
--	clk_disable_unprepare(nfc->ahb_clk);
- 
- 	return ret;
- }
-@@ -2181,8 +2166,6 @@ static void sunxi_nfc_remove(struct platform_device *pdev)
- 
- 	if (nfc->dmac)
- 		dma_release_channel(nfc->dmac);
--	clk_disable_unprepare(nfc->mod_clk);
--	clk_disable_unprepare(nfc->ahb_clk);
- }
- 
- static const struct sunxi_nfc_caps sunxi_nfc_a10_caps = {
--- 
-2.34.1
+> ---
+> 
+>  drivers/spmi/spmi-mtk-pmif.c | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
+> index b3c991e1ea40..74b73f9bc222 100644
+> --- a/drivers/spmi/spmi-mtk-pmif.c
+> +++ b/drivers/spmi/spmi-mtk-pmif.c
+> @@ -465,7 +465,7 @@ static int mtk_spmi_probe(struct platform_device *pdev)
+>  	for (i = 0; i < arb->nclks; i++)
+>  		arb->clks[i].id = pmif_clock_names[i];
+>  
+> -	err = devm_clk_bulk_get(&pdev->dev, arb->nclks, arb->clks);
+> +	err = clk_bulk_get(&pdev->dev, arb->nclks, arb->clks);
+>  	if (err) {
+>  		dev_err(&pdev->dev, "Failed to get clocks: %d\n", err);
+>  		goto err_put_ctrl;
+> @@ -474,7 +474,7 @@ static int mtk_spmi_probe(struct platform_device *pdev)
+>  	err = clk_bulk_prepare_enable(arb->nclks, arb->clks);
+>  	if (err) {
+>  		dev_err(&pdev->dev, "Failed to enable clocks: %d\n", err);
+> -		goto err_put_ctrl;
+> +		goto err_put_clks;
+>  	}
+>  
+>  	ctrl->cmd = pmif_arb_cmd;
+> @@ -498,6 +498,8 @@ static int mtk_spmi_probe(struct platform_device *pdev)
+>  
+>  err_domain_remove:
+>  	clk_bulk_disable_unprepare(arb->nclks, arb->clks);
+> +err_put_clks:
+> +	clk_bulk_put(arb->nclks, arb->clks);
+>  err_put_ctrl:
+>  	spmi_controller_put(ctrl);
+>  	return err;
+> @@ -509,6 +511,7 @@ static void mtk_spmi_remove(struct platform_device *pdev)
+>  	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+>  
+>  	clk_bulk_disable_unprepare(arb->nclks, arb->clks);
+> +	clk_bulk_put(arb->nclks, arb->clks);
+>  	spmi_controller_remove(ctrl);
+>  	spmi_controller_put(ctrl);
 
+Maybe we need devres versions of spmi_controller_alloc and
+spmi_controller_add to avoid this in the future? I'm sure
+drivers put all sorts of stuff in their private data.
+
+ChenYu
+
+>  }
+> -- 
+> 2.41.0.255.g8b1d071c50-goog
+> 
 
