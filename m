@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0636EE4993
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Aug 2023 07:58:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51898EE49A5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Aug 2023 07:58:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lFzltPP4nRIoSkqqx+KOAlNyaW9bJVOdCuDM+IuIKJw=; b=U4K1t8gGr7zZb0T53ALWcLCEtp
-	XY+09RnMAPaM+yZ4gu/lpZZ/lj38MfnTN1VjgsWHqPBELwXqyxri1jv+oinmBbxVCZrBQo6AvD2kF
-	VZ6l65Pjx5K6fjAJ+9ls0XAgBX2JV3Zy+th6xGqlsZ6i/0OOivyr5qnnYS5CAltgcuJ04Y5B9UWdK
-	UM3ryZrfKkBjyNhw1q5glYYa1YDdWqFAMU/gIBzlwUw+W+vskAxOVjWTIahwtQdPMwX7LXgfzvNrf
-	D09mA6ziGn2thO2vBjBdhQ4LYCc+yPPK9dbP1XrQ12/4m7UHVVnkk+6CcZZWFk7TFClWyynA0AwR4
-	Pv9lorLA==;
+	bh=IUv1o9IMNE3avyw4itt9oKedRJf+XuJZ1Of8jI5p344=; b=2OA8r1Szio1QgH6oElDDCgG4Eu
+	o1cgh+sAYsdi2TOesCCziCCMOg36jUikTQxRUPtw1QF1loMypXzSwPTap61L0waU6BR+ninGp0wJd
+	esmQ4m6xIFjK4dX1J/eptqTZfHGDpTR3HLT/ODih6Ul8ecBoqCGW+nfT8lIyYPNWQ1CM+K1gm3LYN
+	hRAyJLxjnrisaizbY2Umen7jejxcsYI6g/snZ8a4DjO97PZR00Jj2cj0ExxClygERLDlSaiYzq19V
+	ox4ZK+wmaWOpHK9locb3/+V8v3N6Z8m3OEnJd/RMtYHs/jrx85xDxRO2+2rrVq7JpbD2uDhk4sP+n
+	BRI7JPmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXznY-00DPpv-2p;
-	Mon, 21 Aug 2023 07:58:04 +0000
-Received: from relay2-d.mail.gandi.net ([217.70.183.194])
+	id 1qXznk-00DPym-1z;
+	Mon, 21 Aug 2023 07:58:16 +0000
+Received: from relay6-d.mail.gandi.net ([217.70.183.198])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXznJ-00DPdR-0y;
-	Mon, 21 Aug 2023 07:57:50 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id C3ABF40002;
-	Mon, 21 Aug 2023 07:57:43 +0000 (UTC)
+	id 1qXznN-00DPgI-09;
+	Mon, 21 Aug 2023 07:57:54 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id CBD85C0002;
+	Mon, 21 Aug 2023 07:57:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1692604666;
+	t=1692604671;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=lFzltPP4nRIoSkqqx+KOAlNyaW9bJVOdCuDM+IuIKJw=;
-	b=YuiPmNNe9LVpR5rdIe5tKYeEpB8orrU7sUji4s69RX7fJZfUqOQJwgvrgCB0r0fsQKX0h4
-	Na53u1/mAp8ZrQsUV/n/yobkEps+OlcPD7mEHxNd9E+cWim4DBbVOHAOe5IlYaN9IMWa9a
-	oMt5RbzBQbmJDVKcbqtBcsAP2GnF2lAf8EslDjTn0EQ5jnm7PDWiyNRF09mPaBTIgi5r+5
-	opUzbaVAM0F43i3bKUhstBilo1T6q+xj4oD5ySSAbv/aK4TWXRRhCm5v3keHrDDPBuHmWn
-	GKDuPnSjSXRRiG/0z0WXqiu22ckkKbKWE33S3k2Wh9GSWIQpi/7b1RXx2mznJQ==
+	bh=IUv1o9IMNE3avyw4itt9oKedRJf+XuJZ1Of8jI5p344=;
+	b=FgVCZzjueGuohcIwUfV3YqZNYJT2uf1bFgJQnpCdGt4r3uV/NbakTu2Gn303Ss01ka5qOV
+	0tI7OIaQeSIb8I6QHINr5eOboVwA16o8e2BtpqW7FchqJaXHQ3IJb62DV64FmjxrNtJey6
+	bLzQySO7eo7MS4r0y50ciF+hdyX9QJlwrxdkBxGu/YRHKekxSedTTek6TKKvlrkLeO6nX6
+	YW3ww1VDSltXcL3P52+tMpr3UdMUo8fkUh9puqQi2TQmOWcuRLEnGK6IdxM8V7zXCbpUp6
+	1fNVQDUiGUHodWjOdJYtaAIMFDphPvFA/tAC4LHmXf+VZvqqo61Ps3L8eTCV6w==
 From: Miquel Raynal <miquel.raynal@bootlin.com>
 To: Li Zetao <lizetao1@huawei.com>,
 	miquel.raynal@bootlin.com
@@ -77,20 +77,20 @@ Cc: alexandre.torgue@foss.st.com,
 	vz@mleia.com,
 	wens@csie.org,
 	yangyingliang@huawei.com
-Subject: Re: [PATCH -next v3 08/12] mtd: rawnand: stm32_fmc2: Use helper function devm_clk_get_enabled()
-Date: Mon, 21 Aug 2023 09:57:43 +0200
-Message-Id: <20230821075743.33202-1-miquel.raynal@bootlin.com>
+Subject: Re: [PATCH -next v3 07/12] mtd: rawnand: mtk: Use helper function devm_clk_get_enabled()
+Date: Mon, 21 Aug 2023 09:57:48 +0200
+Message-Id: <20230821075748.33248-1-miquel.raynal@bootlin.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230821031737.1973183-9-lizetao1@huawei.com>
+In-Reply-To: <20230821031737.1973183-8-lizetao1@huawei.com>
 References: 
 MIME-Version: 1.0
 X-linux-mtd-patch-notification: thanks
-X-linux-mtd-patch-commit: b'7ec53e2beb98201baeb834cde52f0e6d60baf1a8'
+X-linux-mtd-patch-commit: b'2b34e8bd2f582be6342a9baae31a519698392444'
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230821_005749_466340_1428F2B8 
-X-CRM114-Status: UNSURE (   5.99  )
+X-CRM114-CacheID: sfid-20230821_005753_215443_EDA4500E 
+X-CRM114-Status: UNSURE (   7.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,13 +106,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2023-08-21 at 03:17:33 UTC, Li Zetao wrote:
+On Mon, 2023-08-21 at 03:17:32 UTC, Li Zetao wrote:
 > Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
 > and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
 > replaced by devm_clk_get_enabled() when driver enables (and possibly
 > prepares) the clocks for the whole lifetime of the device. Moreover, it is
 > no longer necessary to unprepare and disable the clocks explicitly, so drop
-> the label "err_clk_disable".
+> the label "clk_disable". And both mtk_nfc_enable_clk() and
+> mtk_nfc_disable_clk() now have a single user, which is the resume or
+> suspend callback, so drop this two helper function and just move related
+> operations in the resume or suspend function.
 > 
 > Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
 > Signed-off-by: Li Zetao <lizetao1@huawei.com>
