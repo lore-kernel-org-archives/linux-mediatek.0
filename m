@@ -4,61 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D27BBEE49AA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Aug 2023 14:41:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39FD6EE49AA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Aug 2023 14:43:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i47COaGYM+bJrhitU6WSTna//y6TBapeaviJwoaVaXw=; b=eBaVENT7nT8FUvjJQYzI9ViG2X
-	VFS/BMmFSOpVZ79t2NP2eEPARM/28vAy5oV7uuaJJixA+1QXnjdbXZvCUPySXrme/CIHieQXHS8It
-	WiNgNjdp67ZGRKve91AeH09oBbiBmPplQh5ubIOXVqaHZkCe90/wtMRKvPzyGRHQEuJk7LENPSgmR
-	2+yCphzXpot+bNSTkArpkEBpHqRkmDuFNy5TK5oTZiz/NtcaGGcTU+ZK3pptiTbx/1pbXQJBI8MDt
-	AtSqqifpgBbvm56QwoTnp/4+YUEfvI0jgBMgb3cmezKb2fOb8uHbIVS683j+zimzHZwMy9UO7SHED
-	zSQaDu5Q==;
+	bh=ZsdQa5njkqr8DLmpGjyKBbMPVOfqKBFppcErYJGoDDE=; b=25XdbrukB7sXMrLwSun1+uHOn+
+	+r9PEhvp6hFBoKCy112LfNHj7TRZB0GT+mtMriZBJmruLMxzhutrwkdYwETC4J2fgatHQRFH/BNGD
+	5EgoeZzcMOGhFoXTw6I2tTfskBF4R49z1X4JDhYPvqvFoo4ibXAwS34CYtKQ6amOi9vQmeC3lnQ6l
+	+NhfVIZr981AAbJpQisVkwa1m2mcM5XXz8RoGswO0NLzI/oMroeO40WUlkgEvhB4vbmKmCeSsg4An
+	nm1Zbwfe2oBw4MCwGD7jekIP/VtajsjRoCjY4f8I31EtpEMRParUl9hr9x19JMvP53nLerTmsOkJw
+	JqhixFAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qY664-00ECH3-1g;
-	Mon, 21 Aug 2023 14:41:36 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qY67Q-00ECeh-2z;
+	Mon, 21 Aug 2023 14:43:00 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qY661-00ECFA-17;
-	Mon, 21 Aug 2023 14:41:34 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	id 1qY67J-00ECZr-0l;
+	Mon, 21 Aug 2023 14:42:54 +0000
+Received: from localhost.localdomain (unknown [IPv6:2001:b07:646b:e2:e4be:399f:af39:e0db])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D052D60DDF;
-	Mon, 21 Aug 2023 14:41:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 261F7C433C7;
-	Mon, 21 Aug 2023 14:41:28 +0000 (UTC)
-Message-ID: <1b87f062-9d5e-fa8e-3d3b-e766362c6e3b@xs4all.nl>
-Date: Mon, 21 Aug 2023 16:41:27 +0200
+	(Authenticated sender: laura.nao)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 930A466071B1;
+	Mon, 21 Aug 2023 15:42:49 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1692628970;
+	bh=ZsdQa5njkqr8DLmpGjyKBbMPVOfqKBFppcErYJGoDDE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=egrMEBcdzmNh/J+cKMg/du6tVm8ZOKbrWrAVqvqKTGyKiqCxLXcrhFqUh6Ao2dsmz
+	 sDo8vxiR8xczeOtxhwzukbVH2JHSdibVdSbYfuSuM1zSNDa8fRiEcpNL/lW7hzQP5X
+	 FYgfeHFRyo7NtgWd2nmMtv3CsEZcSiGgMFtjjPa0cz95ISiYQH4QDxoxq5JjGip0ZN
+	 0VC55fJcDPwxOrg5TTGpG3esBzNAp2mjaX6I24qk59iwbNFGvk3ddADpX9l8qtagwp
+	 I0mmpAU7ZJIIj4LuvDVAqE38eUeldDZdT/YNZFuJKFqpCt7tjhhxyP6y6fLa5CsgGL
+	 Q6Njh9xJst9Uw==
+From: Laura Nao <laura.nao@collabora.com>
+To: yong.wu@mediatek.com
+Cc: angelogioacchino.delregno@collabora.com,
+	iommu@lists.linux.dev,
+	joro@8bytes.org,
+	laura.nao@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	matthias.bgg@gmail.com,
+	robin.murphy@arm.com,
+	will@kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH] iommu/mediatek: Fix share pgtable for iova over 4GB
+Date: Mon, 21 Aug 2023 16:42:34 +0200
+Message-Id: <20230821144234.301491-1-laura.nao@collabora.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20230819081443.8333-1-yong.wu@mediatek.com>
+References: <20230819081443.8333-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v4 05/10] media: verisilicon: Store chroma and motion
- vectors offset
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230705121056.37017-1-benjamin.gaignard@collabora.com>
- <20230705121056.37017-6-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230705121056.37017-6-benjamin.gaignard@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230821_074133_469857_CD5E04F6 
-X-CRM114-Status: GOOD (  19.20  )
+X-CRM114-CacheID: sfid-20230821_074253_438088_FF1DF86B 
+X-CRM114-Status: UNSURE (   6.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,74 +82,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/07/2023 14:10, Benjamin Gaignard wrote:
-> Store computed values of chroma and motion vectors offset because
-> they depends on width and height values which change if the resolution
-> change.
+Hello,
 
-Is this a bug fix? Does this patch belong in this series?
+I confirm this fixes decoding on MT8192 and fluster tests are passing again (tested on spherion with next-20230821).
 
-Same actually for the next few verisilicon patches. Shouldn't they be
-part of a separate 'fixes' patch series? It's confusing to see them
-in this series.
+Please note that I was only able to test this patch on MT8192 at the moment.
 
-Regards,
+The regression was originally reported by KernelCI, so:
 
-	Hans
+Reported-by: "kernelci.org bot" <bot@kernelci.org>
+Tested-by: Laura Nao <laura.nao@collabora.com>
 
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  drivers/media/platform/verisilicon/hantro.h            | 2 ++
->  drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c | 6 ++++--
->  2 files changed, 6 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-> index c8a3cf10cc64..53be00142473 100644
-> --- a/drivers/media/platform/verisilicon/hantro.h
-> +++ b/drivers/media/platform/verisilicon/hantro.h
-> @@ -320,6 +320,8 @@ struct hantro_vp9_decoded_buffer_info {
->  	/* Info needed when the decoded frame serves as a reference frame. */
->  	unsigned short width;
->  	unsigned short height;
-> +	size_t chroma_offset;
-> +	size_t mv_offset;
->  	u32 bit_depth : 4;
->  };
->  
-> diff --git a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-> index 6fc4b555517f..6db1c32fce4d 100644
-> --- a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-> +++ b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-> @@ -158,9 +158,11 @@ static void config_output(struct hantro_ctx *ctx,
->  
->  	chroma_addr = luma_addr + chroma_offset(ctx, dec_params);
->  	hantro_write_addr(ctx->dev, G2_OUT_CHROMA_ADDR, chroma_addr);
-> +	dst->vp9.chroma_offset = chroma_offset(ctx, dec_params);
->  
->  	mv_addr = luma_addr + mv_offset(ctx, dec_params);
->  	hantro_write_addr(ctx->dev, G2_OUT_MV_ADDR, mv_addr);
-> +	dst->vp9.mv_offset = mv_offset(ctx, dec_params);
->  }
->  
->  struct hantro_vp9_ref_reg {
-> @@ -195,7 +197,7 @@ static void config_ref(struct hantro_ctx *ctx,
->  	luma_addr = hantro_get_dec_buf_addr(ctx, &buf->base.vb.vb2_buf);
->  	hantro_write_addr(ctx->dev, ref_reg->y_base, luma_addr);
->  
-> -	chroma_addr = luma_addr + chroma_offset(ctx, dec_params);
-> +	chroma_addr = luma_addr + buf->vp9.chroma_offset;
->  	hantro_write_addr(ctx->dev, ref_reg->c_base, chroma_addr);
->  }
->  
-> @@ -238,7 +240,7 @@ static void config_ref_registers(struct hantro_ctx *ctx,
->  	config_ref(ctx, dst, &ref_regs[2], dec_params, dec_params->alt_frame_ts);
->  
->  	mv_addr = hantro_get_dec_buf_addr(ctx, &mv_ref->base.vb.vb2_buf) +
-> -		  mv_offset(ctx, dec_params);
-> +		  mv_ref->vp9.mv_offset;
->  	hantro_write_addr(ctx->dev, G2_REF_MV_ADDR(0), mv_addr);
->  
->  	hantro_reg_write(ctx->dev, &vp9_last_sign_bias,
+Thank you!
+
+Laura
 
 
