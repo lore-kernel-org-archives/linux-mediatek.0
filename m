@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4808BEE49A4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Aug 2023 03:18:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6045EEE49AB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Aug 2023 03:18:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1L95PnTsz/OsNWN/9VfXJrwl5+oc7iPLxhC+5IPybDk=; b=R4V2ge0i3EDdOJFN8i3m4uXNSI
-	U3sxsbJzBo2KSWbF5Rhjueqafm8Z6jkAqLx3lZ4DP+7249dggRNrCQaXDu0Z6Gd88F0msJmEBotuL
-	RHlmZt/adG02Yrlqqo1f0hx4Hq5Rlp1JU7iwgVmvn+82DQ6E9HVIsKF1zcAJgMJK3S5M4rI1mJK9c
-	q65pYCD2g7NzpuaDviuMNeMbqfDy35ZZS1YPUU5RcOIA6uwTWR+6005MI6YZFXHTcnUVdRnUQNcp3
-	IoVq2ibcIcGe7wsWKQGr030uTPmLhkZEsV/I0XTt0NxIsITV8p9BiEq3Isi/siU/zqB5OZh7GpMgX
-	cJboZKLw==;
+	bh=DD1QgCh/Ng59OMkkwjWrwyYUIJEXx/4HPdnQPVXZvdo=; b=3v9BPlm0MwwXFmGelQckBN2ABR
+	0YJR9aguTP9AGSSXLrT8Hn5xcLwAtOGD9pqQZ6jnivhFnxHUwWaYdX9xmohheA8AhWopFtKay1VOS
+	jgoaxtmq7b8DXPQthLCI004NTqzbiArctt/m7D2fljuoEQfQaDHHJcKneZef6frRTVP79L+519kb3
+	Yz97sn0UpBi/NuZ3iw8I2kPFMYaIQIKz2xgYftapiZUYmQ4W1m73QdLhqYOlB7VMDhb8eXm0oCNHw
+	xuVLfX1c+gsnChdufgYuFYpbxtHPIF+dBXH4+wJWlfdImeuWU1SmlnW871eUuYf7pCEfZbWlEg9g2
+	/SUgINmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXvR2-00Cwgr-0N;
+	id 1qXvR2-00Cwhf-2f;
 	Mon, 21 Aug 2023 03:18:32 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXvQc-00CwTQ-0j;
+	id 1qXvQc-00CwTD-0j;
 	Mon, 21 Aug 2023 03:18:10 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.55])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RTcyp127mzNn2R;
-	Mon, 21 Aug 2023 11:14:26 +0800 (CST)
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.57])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RTcyX4WfwztS5x;
+	Mon, 21 Aug 2023 11:14:12 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Mon, 21 Aug
- 2023 11:17:58 +0800
+ 2023 11:17:53 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <miquel.raynal@bootlin.com>
 CC: <alexandre.torgue@foss.st.com>, <angelogioacchino.delregno@collabora.com>,
@@ -49,13 +49,12 @@ CC: <alexandre.torgue@foss.st.com>, <angelogioacchino.delregno@collabora.com>,
 	<samuel@sholland.org>, <stefan@agner.ch>, <tudor.ambarus@linaro.org>,
 	<u.kleine-koenig@pengutronix.de>, <vigneshr@ti.com>, <vz@mleia.com>,
 	<wens@csie.org>, <yangyingliang@huawei.com>
-Subject: [PATCH -next v3 05/12] mtd: rawnand: lpc32xx_slc: Use helper function devm_clk_get_enabled()
-Date: Mon, 21 Aug 2023 11:17:30 +0800
-Message-ID: <20230821031737.1973183-6-lizetao1@huawei.com>
+Subject: [PATCH -next v3 00/12] mtd: Use devm_clk_get_*() helper function to simplify the drivers.
+Date: Mon, 21 Aug 2023 11:17:25 +0800
+Message-ID: <20230821031737.1973183-1-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230821031737.1973183-1-lizetao1@huawei.com>
+In-Reply-To: <20230818101004.4f2cd343@xps-13>
 References: <20230818101004.4f2cd343@xps-13>
- <20230821031737.1973183-1-lizetao1@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -64,8 +63,9 @@ X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230820_201806_729424_D6AF39D6 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20230820_201806_724718_BD9B406A 
+X-CRM114-Status: UNSURE (   8.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,78 +80,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-replaced by devm_clk_get_enabled() when driver enables (and possibly
-prepares) the clocks for the whole lifetime of the device. Moreover, it is
-no longer necessary to unprepare and disable the clocks explicitly, so drop
-the label "unprepare_clk".
+Commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
+and enabled clocks") provides a new helper function for prepared and
+enabled clocks when a driver keeps a clock prepared (or enabled) during
+the whole lifetime of the driver. So where drivers get clocks and enable
+them immediately, it can be combined into a single function
+devm_clk_get_*(). Moreover, the unprepare and disable function
+has been registered to devm_clk_state, and before devm_clk_state is
+released, the clocks will be unprepareed and disable, so it is unnecessary
+to unprepare and disable clocks explicitly when remove drivers or in the
+error handling path.
 
-Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
-Signed-off-by: Li Zetao <lizetao1@huawei.com>
----
-v2 -> v3: Modify the syntax error in the commit message.
-v2: https://lore.kernel.org/all/20230818074642.308166-6-lizetao1@huawei.com/
-v1 -> v2: Modify commit message.
-v1: https://lore.kernel.org/all/20230817024509.3951629-6-lizetao1@huawei.com/
+Change log:
 
- drivers/mtd/nand/raw/lpc32xx_slc.c | 12 +++---------
- 1 file changed, 3 insertions(+), 9 deletions(-)
+v3:
+ - Modify the syntax error in the commit message.
 
-diff --git a/drivers/mtd/nand/raw/lpc32xx_slc.c b/drivers/mtd/nand/raw/lpc32xx_slc.c
-index 2201264d3c37..1c5fa855b9f2 100644
---- a/drivers/mtd/nand/raw/lpc32xx_slc.c
-+++ b/drivers/mtd/nand/raw/lpc32xx_slc.c
-@@ -871,15 +871,12 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
- 	mtd->dev.parent = &pdev->dev;
- 
- 	/* Get NAND clock */
--	host->clk = devm_clk_get(&pdev->dev, NULL);
-+	host->clk = devm_clk_get_enabled(&pdev->dev, NULL);
- 	if (IS_ERR(host->clk)) {
- 		dev_err(&pdev->dev, "Clock failure\n");
- 		res = -ENOENT;
- 		goto enable_wp;
- 	}
--	res = clk_prepare_enable(host->clk);
--	if (res)
--		goto enable_wp;
- 
- 	/* Set NAND IO addresses and command/ready functions */
- 	chip->legacy.IO_ADDR_R = SLC_DATA(host->io_base);
-@@ -907,13 +904,13 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
- 				      GFP_KERNEL);
- 	if (host->data_buf == NULL) {
- 		res = -ENOMEM;
--		goto unprepare_clk;
-+		goto enable_wp;
- 	}
- 
- 	res = lpc32xx_nand_dma_setup(host);
- 	if (res) {
- 		res = -EIO;
--		goto unprepare_clk;
-+		goto enable_wp;
- 	}
- 
- 	/* Find NAND device */
-@@ -934,8 +931,6 @@ static int lpc32xx_nand_probe(struct platform_device *pdev)
- 	nand_cleanup(chip);
- release_dma:
- 	dma_release_channel(host->dma_chan);
--unprepare_clk:
--	clk_disable_unprepare(host->clk);
- enable_wp:
- 	lpc32xx_wp_enable(host);
- 
-@@ -962,7 +957,6 @@ static void lpc32xx_nand_remove(struct platform_device *pdev)
- 	tmp &= ~SLCCFG_CE_LOW;
- 	writel(tmp, SLC_CTRL(host->io_base));
- 
--	clk_disable_unprepare(host->clk);
- 	lpc32xx_wp_enable(host);
- }
- 
+v2: https://lore.kernel.org/all/20230818074642.308166-1-lizetao1@huawei.com
+ - Modify the format of the reference commit, use "since" instead of
+ "after".
+ - Drop the helper functions mtk_nfc_enable_clk() and
+ mtk_nfc_disable_clk(), because both of them now have a single user.
+ - Add a new patch, replace devm_clk_get_optional() +
+ clk_prepare_enable() with devm_clk_get_optional_enabled().
+
+v1: https://lore.kernel.org/all/20230817024509.3951629-1-lizetao1@huawei.com
+
+Li Zetao (12):
+  mtd: spear_smi: Use helper function devm_clk_get_enabled()
+  mtd: rawnand: arasan: Use helper function devm_clk_get_enabled()
+  mtd: rawnand: fsmc: Use helper function devm_clk_get_enabled()
+  mtd: rawnand: intel: Use helper function devm_clk_get_enabled()
+  mtd: rawnand: lpc32xx_slc: Use helper function devm_clk_get_enabled()
+  mtd: rawnand: mpc5121: Use helper function devm_clk_get_enabled()
+  mtd: rawnand: mtk: Use helper function devm_clk_get_enabled()
+  mtd: rawnand: stm32_fmc2: Use helper function devm_clk_get_enabled()
+  mtd: rawnand: sunxi: Use helper function devm_clk_get_enabled()
+  mtd: rawnand: vf610_nfc: Use helper function devm_clk_get_enabled()
+  mtd: spi-nor: nxp-spifi: Use helper function devm_clk_get_enabled()
+  mtd: rawnand: orion: Use helper function
+    devm_clk_get_optional_enabled()
+
+ drivers/mtd/devices/spear_smi.c               | 15 +----
+ drivers/mtd/nand/raw/arasan-nand-controller.c | 29 ++-------
+ drivers/mtd/nand/raw/fsmc_nand.c              | 12 +---
+ drivers/mtd/nand/raw/intel-nand-controller.c  | 15 +----
+ drivers/mtd/nand/raw/lpc32xx_slc.c            | 12 +---
+ drivers/mtd/nand/raw/mpc5121_nfc.c            | 11 +---
+ drivers/mtd/nand/raw/mtk_nand.c               | 62 ++++++-------------
+ drivers/mtd/nand/raw/orion_nand.c             | 22 ++-----
+ drivers/mtd/nand/raw/stm32_fmc2_nand.c        | 17 ++---
+ drivers/mtd/nand/raw/sunxi_nand.c             | 29 ++-------
+ drivers/mtd/nand/raw/vf610_nfc.c              | 29 +++------
+ drivers/mtd/spi-nor/controllers/nxp-spifi.c   | 33 ++--------
+ 12 files changed, 67 insertions(+), 219 deletions(-)
+
 -- 
 2.34.1
 
