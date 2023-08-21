@@ -4,58 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D1A7EE4993
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Aug 2023 15:32:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08E0CEE49A4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Aug 2023 03:18:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=09XlR83YFSi4NRf25+3bw/2BaTp3RGKRQHRUPxLTGrw=; b=iEAGJ+CYi1sA13
-	99SwCEJr3sF+o5NBiupjIwB4oVaTmnlOqV66bmNqV6eX6iYggtNWwUZqz0guPcvbqhfIhDs27lME2
-	DSgDXDqUc46JY61zpna2jEpZrlZS4ONuY4pbmqjj030VvSUYl/4kLP1ZZvTZ0ok9ZJWWSs5lZz6+9
-	PByhqFcNyOQoruN0Lo46p69yrzBRMHJSl6YVox8Ysz9WqnVPiHblXb46gDMUebwQS0oQtTMWH34eK
-	NWhsfGythxawj8lqgqTRe8iD56bcqarBQ+Ldj3nlMNmKlPey2CTSStCkPf6hwn521C6l0YHBjud5u
-	6ZJCTCuMkdrxBwfEkEgw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IRQ+DWTFutBsnR9lhZMdcNiQPO75/7UnUk6ouNURfAI=; b=zz9yo7AtoSLo1Y6Q5HWVBS/nH2
+	j5cQdcVF1dGhsx5W6vKf84JzdBxuPaC63TvJkUhgXT2Lm4sMGhOwwEyugTVOJyoqX67+eUYApt3zh
+	YaAi+GYW/RUDX+ezzB0FWrKLreWsdopaMeuIFlv3A9b2k4x+9BuEqyI4LkNZnXGFjh00Px2wqh76l
+	8/kHxt5J/45AsQgC4YkKrHaC/oTJ6condHsO992N5M5lmhHjSFz4mOtfMDu0J/aiMFyjeiwpcVghK
+	6FRzb9+QS6YJKmE3E/2gPZ7ZIcJSHEHzdWj5AoZ3RjCA4epeRg92D/K3PrcVftQnWSVyj73vm9vZE
+	jl6UyVOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXkPZ-00C6y2-00;
-	Sun, 20 Aug 2023 15:32:17 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1qXvQg-00CwWk-0y;
+	Mon, 21 Aug 2023 03:18:10 +0000
+Received: from szxga03-in.huawei.com ([45.249.212.189])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXkPF-00C6sI-3D;
-	Sun, 20 Aug 2023 15:32:00 +0000
-Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
-	by mxout4.routing.net (Postfix) with ESMTP id E43BE1006A2;
-	Sun, 20 Aug 2023 15:31:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1692545513;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=09XlR83YFSi4NRf25+3bw/2BaTp3RGKRQHRUPxLTGrw=;
-	b=aA34mCShWIjt/OJuI9kgsex39Pl5HOVtnaKoyii24yUdlkhPuvy543fX8VSs2nOerU6Iul
-	QhfpBiF9D2hAAv1PjGbh1yjgCBj/To+Qndxs9B3zcDQpE+5G8Hq6xFZVkMOmIj9F4UHqj7
-	stwlfqHakLX6UpIlErcQ2uBz/ofh6+0=
-Received: from frank-G5.. (fttx-pool-80.245.78.65.bambit.de [80.245.78.65])
-	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id 51506401CF;
-	Sun, 20 Aug 2023 15:31:53 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v1 3/3] arm64: dts: mt7986: change thermal trips on BPI-R3
-Date: Sun, 20 Aug 2023 17:31:35 +0200
-Message-Id: <20230820153135.42588-4-linux@fw-web.de>
+	id 1qXvQb-00CwTE-33;
+	Mon, 21 Aug 2023 03:18:08 +0000
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.53])
+	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4RTczJ6Tf9zLp6H;
+	Mon, 21 Aug 2023 11:14:52 +0800 (CST)
+Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
+ (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Mon, 21 Aug
+ 2023 11:17:54 +0800
+From: Li Zetao <lizetao1@huawei.com>
+To: <miquel.raynal@bootlin.com>
+CC: <alexandre.torgue@foss.st.com>, <angelogioacchino.delregno@collabora.com>,
+	<christophe.kerello@foss.st.com>, <christophe.leroy@csgroup.eu>,
+	<dmitry.torokhov@gmail.com>, <frank.li@vivo.com>, <geert+renesas@glider.be>,
+	<heiko@sntech.de>, <jernej.skrabec@gmail.com>, <jinpu.wang@ionos.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-mtd@lists.infradead.org>, <linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-sunxi@lists.linux.dev>, <lizetao1@huawei.com>,
+	<martin.blumenstingl@googlemail.com>, <matthias.bgg@gmail.com>,
+	<mcoquelin.stm32@gmail.com>, <michael@walle.cc>, <michal.simek@amd.com>,
+	<paul@crapouillou.net>, <philmd@linaro.org>, <pratyush@kernel.org>,
+	<richard@nod.at>, <robh@kernel.org>, <rogerq@kernel.org>,
+	<samuel@sholland.org>, <stefan@agner.ch>, <tudor.ambarus@linaro.org>,
+	<u.kleine-koenig@pengutronix.de>, <vigneshr@ti.com>, <vz@mleia.com>,
+	<wens@csie.org>, <yangyingliang@huawei.com>
+Subject: [PATCH -next v3 01/12] mtd: spear_smi: Use helper function devm_clk_get_enabled()
+Date: Mon, 21 Aug 2023 11:17:26 +0800
+Message-ID: <20230821031737.1973183-2-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230820153135.42588-1-linux@fw-web.de>
-References: <20230820153135.42588-1-linux@fw-web.de>
+In-Reply-To: <20230821031737.1973183-1-lizetao1@huawei.com>
+References: <20230818101004.4f2cd343@xps-13>
+ <20230821031737.1973183-1-lizetao1@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 58ee28ff-36e2-45c9-af2e-5d6e67be8ab5
+Content-Type: text/plain
+X-Originating-IP: [10.90.53.73]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ kwepemi500012.china.huawei.com (7.221.188.12)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230820_083158_193005_BA43F37B 
-X-CRM114-Status: GOOD (  11.35  )
+X-CRM114-CacheID: sfid-20230820_201806_496718_2BACE44A 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,47 +78,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
+and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
+replaced by devm_clk_get_enabled() when driver enables (and possibly
+prepares) the clocks for the whole lifetime of the device. Moreover, it is
+no longer necessary to unprepare and disable the clocks explicitly, so drop
+the label "err_irq".
 
-Apply new naming after mt7986 thermal trips were changed.
-
-Fixes: c26f779a2295 ("arm64: dts: mt7986: add pwm-fan and cooling-maps to BPI-R3 dts")
-Suggested-by: Daniel Golle <daniel@makrotopia.org>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
+Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
- .../boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts      | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+v2 -> v3: Modify the syntax error in the commit message.
+v2: https://lore.kernel.org/all/20230818074642.308166-2-lizetao1@huawei.com/
+v1 -> v2: Modify commit message.
+v1: https://lore.kernel.org/all/20230817024509.3951629-2-lizetao1@huawei.com/
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-index f9702284607a..b876e501216b 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-@@ -152,16 +152,16 @@ cpu-active-high {
- 			trip = <&cpu_trip_active_high>;
- 		};
+ drivers/mtd/devices/spear_smi.c | 15 +++------------
+ 1 file changed, 3 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/mtd/devices/spear_smi.c b/drivers/mtd/devices/spear_smi.c
+index 93bca5225116..0a35e5236ae5 100644
+--- a/drivers/mtd/devices/spear_smi.c
++++ b/drivers/mtd/devices/spear_smi.c
+@@ -993,21 +993,17 @@ static int spear_smi_probe(struct platform_device *pdev)
+ 		dev->num_flashes = MAX_NUM_FLASH_CHIP;
+ 	}
  
--		cpu-active-low {
-+		cpu-active-med {
- 			/* active: set fan to cooling level 1 */
- 			cooling-device = <&fan 1 1>;
--			trip = <&cpu_trip_active_low>;
-+			trip = <&cpu_trip_active_med>;
- 		};
+-	dev->clk = devm_clk_get(&pdev->dev, NULL);
++	dev->clk = devm_clk_get_enabled(&pdev->dev, NULL);
+ 	if (IS_ERR(dev->clk)) {
+ 		ret = PTR_ERR(dev->clk);
+ 		goto err;
+ 	}
  
--		cpu-passive {
--			/* passive: set fan to cooling level 0 */
-+		cpu-active-low {
-+			/* active: set fan to cooling level 0 */
- 			cooling-device = <&fan 0 0>;
--			trip = <&cpu_trip_passive>;
-+			trip = <&cpu_trip_active_low>;
- 		};
- 	};
- };
+-	ret = clk_prepare_enable(dev->clk);
+-	if (ret)
+-		goto err;
+-
+ 	ret = devm_request_irq(&pdev->dev, irq, spear_smi_int_handler, 0,
+ 			       pdev->name, dev);
+ 	if (ret) {
+ 		dev_err(&dev->pdev->dev, "SMI IRQ allocation failed\n");
+-		goto err_irq;
++		goto err;
+ 	}
+ 
+ 	mutex_init(&dev->lock);
+@@ -1020,14 +1016,11 @@ static int spear_smi_probe(struct platform_device *pdev)
+ 		ret = spear_smi_setup_banks(pdev, i, pdata->np[i]);
+ 		if (ret) {
+ 			dev_err(&dev->pdev->dev, "bank setup failed\n");
+-			goto err_irq;
++			goto err;
+ 		}
+ 	}
+ 
+ 	return 0;
+-
+-err_irq:
+-	clk_disable_unprepare(dev->clk);
+ err:
+ 	return ret;
+ }
+@@ -1056,8 +1049,6 @@ static int spear_smi_remove(struct platform_device *pdev)
+ 		WARN_ON(mtd_device_unregister(&flash->mtd));
+ 	}
+ 
+-	clk_disable_unprepare(dev->clk);
+-
+ 	return 0;
+ }
+ 
 -- 
 2.34.1
 
