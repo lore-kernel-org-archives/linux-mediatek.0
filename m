@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08E0CEE49A4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Aug 2023 03:18:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB662EE49A4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Aug 2023 03:18:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IRQ+DWTFutBsnR9lhZMdcNiQPO75/7UnUk6ouNURfAI=; b=zz9yo7AtoSLo1Y6Q5HWVBS/nH2
-	j5cQdcVF1dGhsx5W6vKf84JzdBxuPaC63TvJkUhgXT2Lm4sMGhOwwEyugTVOJyoqX67+eUYApt3zh
-	YaAi+GYW/RUDX+ezzB0FWrKLreWsdopaMeuIFlv3A9b2k4x+9BuEqyI4LkNZnXGFjh00Px2wqh76l
-	8/kHxt5J/45AsQgC4YkKrHaC/oTJ6condHsO992N5M5lmhHjSFz4mOtfMDu0J/aiMFyjeiwpcVghK
-	6FRzb9+QS6YJKmE3E/2gPZ7ZIcJSHEHzdWj5AoZ3RjCA4epeRg92D/K3PrcVftQnWSVyj73vm9vZE
-	jl6UyVOw==;
+	bh=Uc3qdWEPJNQSjPHBepLsI8bYNLDwqtB2gMKSlsPhAJo=; b=Tj531bNsNODyY9ftj0z/O0ekB7
+	aUxTX6evvnbR+kv6IhseKId0L5NpapBa5cSlmAN0RYTps9zR2Enx7BlpNdxi4c1mVYt9e3sGslFEa
+	5tXeEOGZODJ02AEeVZmnVEfvpp3H+0g9zB7uIwU5k1qU0eXXR6CM0aDtuKCRJYZJ+TfH4srvjVL5Z
+	mI4anx21tN4PIe0b6Wr1paalJWpe9lzfHsldpT2kIowza662Ea5J0gmfOjBEP/6jJd68KKV6/AusE
+	I/mKt7Nf8Da1S1+yGT15TnRCHZ5w3NOJOlxX9U0R+fjkHSkMpdvUttZjJqgB10pXz/dzejGd9Zcty
+	bUr4n0dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXvQg-00CwWk-0y;
-	Mon, 21 Aug 2023 03:18:10 +0000
-Received: from szxga03-in.huawei.com ([45.249.212.189])
+	id 1qXvQq-00Cwbv-2w;
+	Mon, 21 Aug 2023 03:18:20 +0000
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qXvQb-00CwTE-33;
+	id 1qXvQc-00CwTF-0j;
 	Mon, 21 Aug 2023 03:18:08 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.53])
-	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4RTczJ6Tf9zLp6H;
-	Mon, 21 Aug 2023 11:14:52 +0800 (CST)
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.56])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RTcyb5stCztRjV;
+	Mon, 21 Aug 2023 11:14:15 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Mon, 21 Aug
- 2023 11:17:54 +0800
+ 2023 11:17:56 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <miquel.raynal@bootlin.com>
 CC: <alexandre.torgue@foss.st.com>, <angelogioacchino.delregno@collabora.com>,
@@ -49,9 +49,9 @@ CC: <alexandre.torgue@foss.st.com>, <angelogioacchino.delregno@collabora.com>,
 	<samuel@sholland.org>, <stefan@agner.ch>, <tudor.ambarus@linaro.org>,
 	<u.kleine-koenig@pengutronix.de>, <vigneshr@ti.com>, <vz@mleia.com>,
 	<wens@csie.org>, <yangyingliang@huawei.com>
-Subject: [PATCH -next v3 01/12] mtd: spear_smi: Use helper function devm_clk_get_enabled()
-Date: Mon, 21 Aug 2023 11:17:26 +0800
-Message-ID: <20230821031737.1973183-2-lizetao1@huawei.com>
+Subject: [PATCH -next v3 03/12] mtd: rawnand: fsmc: Use helper function devm_clk_get_enabled()
+Date: Mon, 21 Aug 2023 11:17:28 +0800
+Message-ID: <20230821031737.1973183-4-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230821031737.1973183-1-lizetao1@huawei.com>
 References: <20230818101004.4f2cd343@xps-13>
@@ -64,9 +64,8 @@ X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230820_201806_496718_2BACE44A 
-X-CRM114-Status: UNSURE (   9.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230820_201806_643889_9DBC233B 
+X-CRM114-Status: GOOD (  12.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,71 +84,68 @@ Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
 and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
 replaced by devm_clk_get_enabled() when driver enables (and possibly
 prepares) the clocks for the whole lifetime of the device. Moreover, it is
-no longer necessary to unprepare and disable the clocks explicitly, so drop
-the label "err_irq".
+no longer necessary to unprepare and disable the clocks explicitly. The
+label "disable_clk" no longer makes sense, rename it to "disable_fsmc".
 
 Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
 v2 -> v3: Modify the syntax error in the commit message.
-v2: https://lore.kernel.org/all/20230818074642.308166-2-lizetao1@huawei.com/
-v1 -> v2: Modify commit message.
-v1: https://lore.kernel.org/all/20230817024509.3951629-2-lizetao1@huawei.com/
+v2: https://lore.kernel.org/all/20230818074642.308166-4-lizetao1@huawei.com/
+v1 -> v2: Modify commit message and rename the label "disable_clk" to "disable_fsmc"
+v1: https://lore.kernel.org/all/20230817024509.3951629-4-lizetao1@huawei.com/
 
- drivers/mtd/devices/spear_smi.c | 15 +++------------
- 1 file changed, 3 insertions(+), 12 deletions(-)
+ drivers/mtd/nand/raw/fsmc_nand.c | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/mtd/devices/spear_smi.c b/drivers/mtd/devices/spear_smi.c
-index 93bca5225116..0a35e5236ae5 100644
---- a/drivers/mtd/devices/spear_smi.c
-+++ b/drivers/mtd/devices/spear_smi.c
-@@ -993,21 +993,17 @@ static int spear_smi_probe(struct platform_device *pdev)
- 		dev->num_flashes = MAX_NUM_FLASH_CHIP;
+diff --git a/drivers/mtd/nand/raw/fsmc_nand.c b/drivers/mtd/nand/raw/fsmc_nand.c
+index 7b4742420dfc..7d587284c9a5 100644
+--- a/drivers/mtd/nand/raw/fsmc_nand.c
++++ b/drivers/mtd/nand/raw/fsmc_nand.c
+@@ -1066,16 +1066,12 @@ static int __init fsmc_nand_probe(struct platform_device *pdev)
+ 	host->regs_va = base + FSMC_NOR_REG_SIZE +
+ 		(host->bank * FSMC_NAND_BANK_SZ);
+ 
+-	host->clk = devm_clk_get(&pdev->dev, NULL);
++	host->clk = devm_clk_get_enabled(&pdev->dev, NULL);
+ 	if (IS_ERR(host->clk)) {
+ 		dev_err(&pdev->dev, "failed to fetch block clock\n");
+ 		return PTR_ERR(host->clk);
  	}
  
--	dev->clk = devm_clk_get(&pdev->dev, NULL);
-+	dev->clk = devm_clk_get_enabled(&pdev->dev, NULL);
- 	if (IS_ERR(dev->clk)) {
- 		ret = PTR_ERR(dev->clk);
- 		goto err;
- 	}
- 
--	ret = clk_prepare_enable(dev->clk);
+-	ret = clk_prepare_enable(host->clk);
 -	if (ret)
--		goto err;
+-		return ret;
 -
- 	ret = devm_request_irq(&pdev->dev, irq, spear_smi_int_handler, 0,
- 			       pdev->name, dev);
- 	if (ret) {
- 		dev_err(&dev->pdev->dev, "SMI IRQ allocation failed\n");
--		goto err_irq;
-+		goto err;
- 	}
- 
- 	mutex_init(&dev->lock);
-@@ -1020,14 +1016,11 @@ static int spear_smi_probe(struct platform_device *pdev)
- 		ret = spear_smi_setup_banks(pdev, i, pdata->np[i]);
- 		if (ret) {
- 			dev_err(&dev->pdev->dev, "bank setup failed\n");
--			goto err_irq;
-+			goto err;
+ 	/*
+ 	 * This device ID is actually a common AMBA ID as used on the
+ 	 * AMBA PrimeCell bus. However it is not a PrimeCell.
+@@ -1111,7 +1107,7 @@ static int __init fsmc_nand_probe(struct platform_device *pdev)
+ 		if (!host->read_dma_chan) {
+ 			dev_err(&pdev->dev, "Unable to get read dma channel\n");
+ 			ret = -ENODEV;
+-			goto disable_clk;
++			goto disable_fsmc;
  		}
- 	}
+ 		host->write_dma_chan = dma_request_channel(mask, filter, NULL);
+ 		if (!host->write_dma_chan) {
+@@ -1155,9 +1151,8 @@ static int __init fsmc_nand_probe(struct platform_device *pdev)
+ release_dma_read_chan:
+ 	if (host->mode == USE_DMA_ACCESS)
+ 		dma_release_channel(host->read_dma_chan);
+-disable_clk:
++disable_fsmc:
+ 	fsmc_nand_disable(host);
+-	clk_disable_unprepare(host->clk);
  
- 	return 0;
--
--err_irq:
--	clk_disable_unprepare(dev->clk);
- err:
  	return ret;
  }
-@@ -1056,8 +1049,6 @@ static int spear_smi_remove(struct platform_device *pdev)
- 		WARN_ON(mtd_device_unregister(&flash->mtd));
+@@ -1182,7 +1177,6 @@ static void fsmc_nand_remove(struct platform_device *pdev)
+ 			dma_release_channel(host->write_dma_chan);
+ 			dma_release_channel(host->read_dma_chan);
+ 		}
+-		clk_disable_unprepare(host->clk);
  	}
- 
--	clk_disable_unprepare(dev->clk);
--
- 	return 0;
  }
  
 -- 
