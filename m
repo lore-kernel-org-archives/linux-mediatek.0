@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39FD6EE49AA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Aug 2023 14:43:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D2B8EE4993
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Aug 2023 15:15:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZsdQa5njkqr8DLmpGjyKBbMPVOfqKBFppcErYJGoDDE=; b=25XdbrukB7sXMrLwSun1+uHOn+
-	+r9PEhvp6hFBoKCy112LfNHj7TRZB0GT+mtMriZBJmruLMxzhutrwkdYwETC4J2fgatHQRFH/BNGD
-	5EgoeZzcMOGhFoXTw6I2tTfskBF4R49z1X4JDhYPvqvFoo4ibXAwS34CYtKQ6amOi9vQmeC3lnQ6l
-	+NhfVIZr981AAbJpQisVkwa1m2mcM5XXz8RoGswO0NLzI/oMroeO40WUlkgEvhB4vbmKmCeSsg4An
-	nm1Zbwfe2oBw4MCwGD7jekIP/VtajsjRoCjY4f8I31EtpEMRParUl9hr9x19JMvP53nLerTmsOkJw
-	JqhixFAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=j0TRjvF00PWIS17fThXhey+mQPnIjutUpfP8XoFnkJE=; b=R8dO21AQG4sQ/TDbIlNy7JG3Wh
+	bHYxhqg4ul/NEWc8hUwOXn7JXA7hqjsQJkZWN6cpAaIB6/ppQKVjnvQFkNQJk+JfHt2ggfJ0aK5Uz
+	uC8FRHSLLHP8V29fvswMCvcQRSp4ljORI0RHxDE9KDNTjZ3nNTJqhpoET2eVgm6CiEQJ3coZBLSkk
+	4jW7EE3UhDrxTc+XgFg8swPm8Oimz28PMC65U4ED0lcRzSGRehuKT2BmWrgiLnFG598MkU/eCNfUI
+	lNj3bIjdSBQWKXlhDpjhJPiQSk2LSEsrHtcObcZf73kXoNHff3F1Wshm4TctkUuCXuR04JXqGYTbG
+	j1zWFL0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qY67Q-00ECeh-2z;
-	Mon, 21 Aug 2023 14:43:00 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qY6cZ-00EFld-3D;
+	Mon, 21 Aug 2023 15:15:12 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qY67J-00ECZr-0l;
-	Mon, 21 Aug 2023 14:42:54 +0000
-Received: from localhost.localdomain (unknown [IPv6:2001:b07:646b:e2:e4be:399f:af39:e0db])
+	id 1qY6cX-00EFjz-0V;
+	Mon, 21 Aug 2023 15:15:10 +0000
+Received: from nicolas-tpx395.localdomain (unknown [IPv6:2606:6d00:15:bae9::7a9])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 930A466071B1;
-	Mon, 21 Aug 2023 15:42:49 +0100 (BST)
+	(Authenticated sender: nicolas)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B121766071A2;
+	Mon, 21 Aug 2023 16:15:01 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1692628970;
-	bh=ZsdQa5njkqr8DLmpGjyKBbMPVOfqKBFppcErYJGoDDE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=egrMEBcdzmNh/J+cKMg/du6tVm8ZOKbrWrAVqvqKTGyKiqCxLXcrhFqUh6Ao2dsmz
-	 sDo8vxiR8xczeOtxhwzukbVH2JHSdibVdSbYfuSuM1zSNDa8fRiEcpNL/lW7hzQP5X
-	 FYgfeHFRyo7NtgWd2nmMtv3CsEZcSiGgMFtjjPa0cz95ISiYQH4QDxoxq5JjGip0ZN
-	 0VC55fJcDPwxOrg5TTGpG3esBzNAp2mjaX6I24qk59iwbNFGvk3ddADpX9l8qtagwp
-	 I0mmpAU7ZJIIj4LuvDVAqE38eUeldDZdT/YNZFuJKFqpCt7tjhhxyP6y6fLa5CsgGL
-	 Q6Njh9xJst9Uw==
-From: Laura Nao <laura.nao@collabora.com>
-To: yong.wu@mediatek.com
-Cc: angelogioacchino.delregno@collabora.com,
-	iommu@lists.linux.dev,
-	joro@8bytes.org,
-	laura.nao@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	robin.murphy@arm.com,
-	will@kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH] iommu/mediatek: Fix share pgtable for iova over 4GB
-Date: Mon, 21 Aug 2023 16:42:34 +0200
-Message-Id: <20230821144234.301491-1-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230819081443.8333-1-yong.wu@mediatek.com>
-References: <20230819081443.8333-1-yong.wu@mediatek.com>
+	s=mail; t=1692630903;
+	bh=yOP/crzuh324Aakcxxz+eZDVYJZgYrNZoRWG4V5bccQ=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=kxw8+vzPsdiXctTFi0QYl6nsI1jma5ed2T2gzHXgiSoGxahsSOn09uc1WKF59ENtg
+	 pdDyTrzmhDgvkXXCErA+3Jwn86Nex+xNS2n4BjX1ONWyIAm5q4DobU9ZkAuIiy2OCi
+	 YmfV6/xD1mNcumpRFapH8wU06O/3Unz9CasZn25bJXTPMPm3oCVYQVY5mKLP3M62db
+	 yqY0IWo90gmqNqgTlnS4smnKs3B2V2FPWLDYuSSMBmW9CYztsxwzIIdhxyS2y5GLk/
+	 mX5E0l25cKdFYtBux03+ubQztI3f89DPz/GLZ8GIXTIAyVMgWQuW8uJjKNFF12Sz4I
+	 Za9Zqx9pyTPNg==
+Message-ID: <f21dfae7466a441fbe175db62ad3c9aa4eff3f0c.camel@collabora.com>
+Subject: Re: [PATCH][next] media: mediatek: vcodec: fix spelling mistake
+ "resonable" -> "reasonable"
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Colin Ian King <colin.i.king@gmail.com>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans
+ Verkuil <hverkuil-cisco@xs4all.nl>, linux-media@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Date: Mon, 21 Aug 2023 11:14:52 -0400
+In-Reply-To: <20230815121446.742742-1-colin.i.king@gmail.com>
+References: <20230815121446.742742-1-colin.i.king@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230821_074253_438088_FF1DF86B 
-X-CRM114-Status: UNSURE (   6.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230821_081509_340387_C9E4C421 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,19 +80,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+Le mardi 15 ao=C3=BBt 2023 =C3=A0 13:14 +0100, Colin Ian King a =C3=A9crit=
+=C2=A0:
+> There are a couple of spelling mistakes in pr_err error messages. Fix the=
+m.
+>=20
+> Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
 
-I confirm this fixes decoding on MT8192 and fluster tests are passing again (tested on spherion with next-20230821).
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
-Please note that I was only able to test this patch on MT8192 at the moment.
-
-The regression was originally reported by KernelCI, so:
-
-Reported-by: "kernelci.org bot" <bot@kernelci.org>
-Tested-by: Laura Nao <laura.nao@collabora.com>
-
-Thank you!
-
-Laura
+> ---
+>  .../media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c   | 2 +-
+>  .../media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c   | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_=
+scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+> index 9e744d07a1e8..6bbe55de6ce9 100644
+> --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+> +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
+> @@ -68,7 +68,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *priv=
+, enum mtk_vcodec_fw_use
+> =20
+>  		plat_dev =3D dec_dev->plat_dev;
+>  	} else {
+> -		pr_err("Invalid fw_use %d (use a resonable fw id here)\n", fw_use);
+> +		pr_err("Invalid fw_use %d (use a reasonable fw id here)\n", fw_use);
+>  		return ERR_PTR(-EINVAL);
+>  	}
+> =20
+> diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_=
+vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
+> index 5e03b0886559..9f6e4b59455d 100644
+> --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
+> +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
+> @@ -109,7 +109,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(void *pr=
+iv, enum mtk_vcodec_fw_use
+>  		plat_dev =3D dec_dev->plat_dev;
+>  		rst_id =3D VPU_RST_DEC;
+>  	} else {
+> -		pr_err("Invalid fw_use %d (use a resonable fw id here)\n", fw_use);
+> +		pr_err("Invalid fw_use %d (use a reasonable fw id here)\n", fw_use);
+>  		return ERR_PTR(-EINVAL);
+>  	}
+> =20
 
 
