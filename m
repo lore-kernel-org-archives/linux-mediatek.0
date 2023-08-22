@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB96EE4993
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 13:13:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B498BEE49A4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 13:14:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=deyZxwWo8MUc1Ly8Ihjt6CNXeVqeIJSGK1alWj83ZBE=; b=gWa7CcywDt/FWTn7l1aSVih36r
-	2h8zTLwbb660Os8U8U/fD4ePexMN835Ga+CH5CF6GpNE9tVQvdps0wBWA63AzYsBbzVhvwIFChqs/
-	6OISyIdojwSihUDdgAdhWge0JB3WmF7WVOMLrp6bI2bNyG1CW+T8rZCR9iYbwTlL/JX2DGr5DMQTQ
-	gd1c90zcgdRHs7SnpDOkwxPrScyA0kMIAZJiWp1G7QItwO/vJZPNa8dpnrvMhHgC+/Vfsmc14PA4T
-	5poSp3d6ylxKGivQuv0lCUNRqP8pj3q1pIdan6NuwPl6PJewaQy3EahxVL5G7/mnYvaS4z0o3/QU1
-	FRrpUtCA==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nFu922dx2U4p350opolLyKvOc9kLw9QiQ+L2xDDzcvU=; b=DbBl7UywukZs6TAzCM2RkHHhjK
+	bbnw+IC48uZhgaMIuGwg5QwMCBvfybv39al/cXs5CXZ48Z8j9OnFsOqJAtwEk7wVcGVytrdYA5Tyj
+	X7kXUM13nBytr94ZldMCiUa2ioYwpk3KCPiKtfN8HR5MsWinxeKbO+4E390u8CnWRqGpKagkhr/9K
+	XOUMEeVnsbdRixzXnoTWokvdTfKkj7ap57eVzEmdKX9umadTrMLGdAYZzBHoMQCn2DXu4C9SZq31r
+	yXXZanJvu+hA+Yzi7apINhjm2b+Z3MZ+ACTPoYRPipYbKO7/wqk9aBJlENHBaKzWWGGMBI2+craHP
+	JMi6CzKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYRCk-00FyTj-1L;
-	Tue, 22 Aug 2023 13:13:54 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1qYRCv-00Fyft-26;
+	Tue, 22 Aug 2023 13:14:05 +0000
+Received: from szxga03-in.huawei.com ([45.249.212.189])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYRBu-00FxWF-2H;
+	id 1qYRBu-00FxVT-0H;
 	Tue, 22 Aug 2023 13:13:06 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.55])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RVV6s61w2zNnTg;
-	Tue, 22 Aug 2023 21:09:25 +0800 (CST)
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.57])
+	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4RVV7F1HmdzLpDb;
+	Tue, 22 Aug 2023 21:09:45 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Tue, 22 Aug
- 2023 21:12:58 +0800
+ 2023 21:12:48 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <broonie@kernel.org>, <chin-ting_kuo@aspeedtech.com>, <clg@kaod.org>,
 	<joel@jms.id.au>, <andrew@aj.id.au>, <florian.fainelli@broadcom.com>,
@@ -51,12 +51,10 @@ CC: <lizetao1@huawei.com>, <linux-spi@vger.kernel.org>,
 	<linux-rpi-kernel@lists.infradead.org>, <linux-amlogic@lists.infradead.org>,
 	<linux-riscv@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-rockchip@lists.infradead.org>
-Subject: [PATCH -next 10/25] spi: davinci: Use helper function devm_clk_get_enabled()
-Date: Tue, 22 Aug 2023 21:12:22 +0800
-Message-ID: <20230822131237.1022815-11-lizetao1@huawei.com>
+Subject: [PATCH -next 00/25] spi: Use devm_clk_get_*() helper function to simplify the drivers.
+Date: Tue, 22 Aug 2023 21:12:12 +0800
+Message-ID: <20230822131237.1022815-1-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230822131237.1022815-1-lizetao1@huawei.com>
-References: <20230822131237.1022815-1-lizetao1@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -65,8 +63,8 @@ X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230822_061303_790478_A3382E83 
-X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-CacheID: sfid-20230822_061302_606757_13420F32 
+X-CRM114-Status: UNSURE (   7.38  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,64 +80,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-replaced by devm_clk_get_enabled() when driver enables (and possibly
-prepares) the clocks for the whole lifetime of the device. Moreover, it is
-no longer necessary to unprepare and disable the clocks explicitly.
+Commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
+and enabled clocks") provides a new helper function for prepared and
+enabled clocks when a driver keeps a clock prepared (or enabled) during
+the whole lifetime of the driver. So where drivers get clocks and enable
+them immediately, it can be combined into a single function
+devm_clk_get_*(). Moreover, the unprepare and disable function
+has been registered to devm_clk_state, and before devm_clk_state is
+released, the clocks will be unprepareed and disable, so it is unnecessary
+to unprepare and disable clocks explicitly when remove drivers or in the
+error handling path.
 
-Signed-off-by: Li Zetao <lizetao1@huawei.com>
----
- drivers/spi/spi-davinci.c | 11 ++---------
- 1 file changed, 2 insertions(+), 9 deletions(-)
+Li Zetao (25):
+  spi: ar934x: Use helper function devm_clk_get_enabled()
+  spi: armada-3700: Use helper function devm_clk_get_prepared()
+  spi: aspeed: Use helper function devm_clk_get_enabled()
+  spi: ath79: Use helper function devm_clk_get_enabled()
+  spi: spi-axi-spi-engine: Use helper function devm_clk_get_enabled()
+  spi: bcm2835: Use helper function devm_clk_get_enabled()
+  spi: bcm2835aux: Use helper function devm_clk_get_enabled()
+  spi: spi-cadence: Use helper function devm_clk_get_enabled()
+  spi: spi-cavium-thunderx: Use helper function devm_clk_get_enabled()
+  spi: davinci: Use helper function devm_clk_get_enabled()
+  spi: dw-bt1: Use helper function devm_clk_get_enabled()
+  spi: dw-mmio: Use helper function devm_clk_get_*()
+  spi: spi-fsl-dspi: Use helper function devm_clk_get_enabled()
+  spi: lantiq-ssc: Use helper function devm_clk_get_enabled()
+  spi: meson-spicc: Use helper function devm_clk_get_enabled()
+  spi: spi-meson-spifc: Use helper function devm_clk_get_enabled()
+  spi: microchip-core-qspi: Use helper function devm_clk_get_enabled()
+  spi: microchip-core: Use helper function devm_clk_get_enabled()
+  spi: mtk-snfi: Use helper function devm_clk_get_enabled()
+  spi: npcm-fiu: Use helper function devm_clk_get_enabled()
+  spi: orion: Use helper function devm_clk_get_enabled()
+  spi: pic32-sqi: Use helper function devm_clk_get_enabled()
+  spi: pic32: Use helper function devm_clk_get_enabled()
+  spi: spl022: Use helper function devm_clk_get_enabled()
+  spi: rockchip: Use helper function devm_clk_get_enabled()
 
-diff --git a/drivers/spi/spi-davinci.c b/drivers/spi/spi-davinci.c
-index c457b550d3ad..5688be245c68 100644
---- a/drivers/spi/spi-davinci.c
-+++ b/drivers/spi/spi-davinci.c
-@@ -915,14 +915,11 @@ static int davinci_spi_probe(struct platform_device *pdev)
- 
- 	dspi->bitbang.master = host;
- 
--	dspi->clk = devm_clk_get(&pdev->dev, NULL);
-+	dspi->clk = devm_clk_get_enabled(&pdev->dev, NULL);
- 	if (IS_ERR(dspi->clk)) {
- 		ret = -ENODEV;
- 		goto free_host;
- 	}
--	ret = clk_prepare_enable(dspi->clk);
--	if (ret)
--		goto free_host;
- 
- 	host->use_gpio_descriptors = true;
- 	host->dev.of_node = pdev->dev.of_node;
-@@ -947,7 +944,7 @@ static int davinci_spi_probe(struct platform_device *pdev)
- 
- 	ret = davinci_spi_request_dma(dspi);
- 	if (ret == -EPROBE_DEFER) {
--		goto free_clk;
-+		goto free_host;
- 	} else if (ret) {
- 		dev_info(&pdev->dev, "DMA is not supported (%d)\n", ret);
- 		dspi->dma_rx = NULL;
-@@ -991,8 +988,6 @@ static int davinci_spi_probe(struct platform_device *pdev)
- 		dma_release_channel(dspi->dma_rx);
- 		dma_release_channel(dspi->dma_tx);
- 	}
--free_clk:
--	clk_disable_unprepare(dspi->clk);
- free_host:
- 	spi_controller_put(host);
- err:
-@@ -1018,8 +1013,6 @@ static void davinci_spi_remove(struct platform_device *pdev)
- 
- 	spi_bitbang_stop(&dspi->bitbang);
- 
--	clk_disable_unprepare(dspi->clk);
--
- 	if (dspi->dma_rx) {
- 		dma_release_channel(dspi->dma_rx);
- 		dma_release_channel(dspi->dma_tx);
+ drivers/spi/spi-ar934x.c              | 22 ++--------
+ drivers/spi/spi-armada-3700.c         | 18 ++------
+ drivers/spi/spi-aspeed-smc.c          | 16 +------
+ drivers/spi/spi-ath79.c               | 11 +----
+ drivers/spi/spi-axi-spi-engine.c      | 25 +++--------
+ drivers/spi/spi-bcm2835.c             | 11 +----
+ drivers/spi/spi-bcm2835aux.c          | 23 ++--------
+ drivers/spi/spi-cadence.c             | 23 ++--------
+ drivers/spi/spi-cavium-thunderx.c     |  8 +---
+ drivers/spi/spi-davinci.c             | 11 +----
+ drivers/spi/spi-dw-bt1.c              | 23 +++-------
+ drivers/spi/spi-dw-mmio.c             | 20 +++------
+ drivers/spi/spi-fsl-dspi.c            | 12 ++----
+ drivers/spi/spi-lantiq-ssc.c          | 10 +----
+ drivers/spi/spi-meson-spicc.c         | 33 +++------------
+ drivers/spi/spi-meson-spifc.c         | 17 ++------
+ drivers/spi/spi-microchip-core-qspi.c | 29 +++----------
+ drivers/spi/spi-microchip-core.c      |  9 +---
+ drivers/spi/spi-mtk-snfi.c            | 61 ++++-----------------------
+ drivers/spi/spi-npcm-fiu.c            | 14 ++----
+ drivers/spi/spi-orion.c               | 11 +----
+ drivers/spi/spi-pic32-sqi.c           | 27 ++----------
+ drivers/spi/spi-pic32.c               |  8 +---
+ drivers/spi/spi-pl022.c               | 21 +++------
+ drivers/spi/spi-rockchip.c            | 30 +++----------
+ 25 files changed, 88 insertions(+), 405 deletions(-)
+
 -- 
 2.34.1
 
