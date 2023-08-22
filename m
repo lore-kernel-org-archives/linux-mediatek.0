@@ -4,50 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63211EE49AC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 15:56:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02164EE4996
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 16:14:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S2nWE3aQXFlKdqzDmsVrOKSeJqyIatEgKjU2+rJLr14=; b=ZF6s2U50M7+qRJeYhH62RZdg7o
-	ozR2qdyYiaagqPE5DtJU3CFSaeeLEJ6M2pUxFH8V0KBNlXgiLCY69xLeYp2bJCCR+oBM1OKeJF1Tt
-	gXnMCTD9l128eqPyV8n1RLzW3hvQLhspZ97CAGU+IjTrI97no1VzLdPuk9otN4M9cgIcD8tDrSUXj
-	yYipiLy60uIGimbX0Q7cAVWPTgnVyVn2ID8nyub+MCY3EafKy6xpBpRxoJaAnwKsyI9d+9VpeVRZ+
-	yCBsiK+U7tlMcWv4D9nbDlvtnH3V+rDl0tvuSVZqnOOSBKNTfqyinNBw3XkKRDweMcH5ruAyZevOl
-	8dVuNbgQ==;
+	bh=mZU+PO63EnVFM/q+OFs5LO0C+vDKfTcQnxdkNsGcbok=; b=BmmlZ27TR7evzbkkTVn3pV9TBd
+	VJfc+aln07CcWyg3N7C0IcdNVljELdTLmWtA82ltK4l8KwuLlPQO6ra3ImuU/0p5wayvq8SfMCGD3
+	Dsjwu2zd1TErpyYGlhq170H+53ZsyaZEX5ilthEUx2/gMAPaWNfYCF4BCSEeN44KVxCN82uefGDGi
+	l4TyYrEsmmrRBsVUurXXiWmZPGFF86eSzrwv2KetbHz/lc9cYyV+trnGStDBaGaRbr0Y0GmS+/m/S
+	2UZ8ykVSj3jii5Ix5yaY86Dg/vwwbbRnw4AGKncEtEMu7xtrpyYIKdb9xW93+1LlMqsfgwSiE22R0
+	SgSLgDQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYTjZ-00GQ2n-0t;
-	Tue, 22 Aug 2023 15:55:57 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYTjW-00GQ17-2B;
-	Tue, 22 Aug 2023 15:55:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=S2nWE3aQXFlKdqzDmsVrOKSeJqyIatEgKjU2+rJLr14=; b=h3LZMwRi//eYTY51C/zEUbk/KO
-	Dho7q3CkJYHxVIdRK7/rrnp2+YNqLZsktupbQMebaIvDmYa2YpqGHA+7yqU06Kk5vULxXH6q5Yu7c
-	TShQ8Zjh3ocqJrA+BI2sDEi0aCjfHO5B09W19cbvlWyOfjnwbBfXDn3fcId9awHN6fr2zKv0iRjTN
-	E+mdjMh1TTg7K1Qe9lTSxVSkwrpC/pq/aA8jTZtrU1bpNAI/guBoyXTppDH//j0Fa7aGkIaJGb+I4
-	yVR8i++m+9VzLZYOu0ehN0C7gdOllVaqbLI3wHpp0GLVWL09SwiXkydAgQW5n1LXP7EOnzd2lOfbT
-	PyTaKutA==;
+	id 1qYU1g-00GRON-2X;
+	Tue, 22 Aug 2023 16:14:40 +0000
 Received: from frasgout.his.huawei.com ([185.176.79.56])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYTjR-002rSb-0Q;
-	Tue, 22 Aug 2023 15:55:53 +0000
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.206])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RVYnd4n4Yz6D8d1;
-	Tue, 22 Aug 2023 23:54:45 +0800 (CST)
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qYU1W-00GRKZ-1W;
+	Tue, 22 Aug 2023 16:14:33 +0000
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RVZCN5qYyz6HJbJ;
+	Wed, 23 Aug 2023 00:13:36 +0800 (CST)
 Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
  (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Tue, 22 Aug
- 2023 16:55:25 +0100
-Date: Tue, 22 Aug 2023 16:55:24 +0100
+ 2023 17:14:16 +0100
+Date: Tue, 22 Aug 2023 17:14:14 +0100
 From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
 To: Li Zetao <lizetao1@huawei.com>
 CC: <broonie@kernel.org>, <chin-ting_kuo@aspeedtech.com>, <clg@kaod.org>,
@@ -66,25 +52,24 @@ CC: <broonie@kernel.org>, <chin-ting_kuo@aspeedtech.com>, <clg@kaod.org>,
 	<linux-rpi-kernel@lists.infradead.org>, <linux-amlogic@lists.infradead.org>,
 	<linux-riscv@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH -next 02/25] spi: armada-3700: Use helper function
- devm_clk_get_prepared()
-Message-ID: <20230822165524.000062a8@Huawei.com>
-In-Reply-To: <20230822131237.1022815-3-lizetao1@huawei.com>
+Subject: Re: [PATCH -next 24/25] spi: spl022: Use helper function
+ devm_clk_get_enabled()
+Message-ID: <20230822171414.00003a69@Huawei.com>
+In-Reply-To: <20230822131237.1022815-25-lizetao1@huawei.com>
 References: <20230822131237.1022815-1-lizetao1@huawei.com>
-	<20230822131237.1022815-3-lizetao1@huawei.com>
+	<20230822131237.1022815-25-lizetao1@huawei.com>
 Organization: Huawei Technologies Research and Development (UK) Ltd.
 X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
+X-ClientProxiedBy: lhrpeml500001.china.huawei.com (7.191.163.213) To
  lhrpeml500005.china.huawei.com (7.191.163.240)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230822_165549_254497_F2D4CCAF 
-X-CRM114-Status: UNSURE (   6.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230822_091430_818737_D11E00C5 
+X-CRM114-Status: GOOD (  16.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,24 +84,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 22 Aug 2023 21:12:36 +0800
+Li Zetao <lizetao1@huawei.com> wrote:
 
-> @@ -909,10 +901,6 @@ static int a3700_spi_probe(struct platform_device *pdev)
->  
->  static void a3700_spi_remove(struct platform_device *pdev)
->  {
-> -	struct spi_controller *host = platform_get_drvdata(pdev);
-> -	struct a3700_spi *spi = spi_controller_get_devdata(host);
-> -
-> -	clk_unprepare(spi->clk);
+> Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
+> and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
+> replaced by devm_clk_get_enabled() when driver enables (and possibly
+> prepares) the clocks for the whole lifetime of the device. Moreover, it is
+> no longer necessary to unprepare and disable the clocks explicitly.
+> Moreover, the label "err_no_clk_en" is no used, drop it for clean code.
+> 
+> Signed-off-by: Li Zetao <lizetao1@huawei.com>
 Hi.
 
-No point in keeping an empty remove function.  Drop the whole thing now
-there is nothing to do.
+There is some odd formatting in the existing file, but cleaning that up
+should probably be a separate patch.
+
+Thanks,
 
 Jonathan
 
->  }
+> ---
+>  drivers/spi/spi-pl022.c | 21 ++++++---------------
+>  1 file changed, 6 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/spi/spi-pl022.c b/drivers/spi/spi-pl022.c
+> index 1af75eff26b6..468a7fea9091 100644
+> --- a/drivers/spi/spi-pl022.c
+> +++ b/drivers/spi/spi-pl022.c
+> @@ -2168,19 +2168,13 @@ static int pl022_probe(struct amba_device *adev, const struct amba_id *id)
+>  	dev_info(&adev->dev, "mapped registers from %pa to %p\n",
+>  		&adev->res.start, pl022->virtbase);
 >  
->  static struct platform_driver a3700_spi_driver = {
+> -	pl022->clk = devm_clk_get(&adev->dev, NULL);
+> +	pl022->clk = devm_clk_get_enabled(&adev->dev, NULL);
+>  	if (IS_ERR(pl022->clk)) {
+>  		status = PTR_ERR(pl022->clk);
+>  		dev_err(&adev->dev, "could not retrieve SSP/SPI bus clock\n");
+>  		goto err_no_clk;
+>  	}
+>  
+> -	status = clk_prepare_enable(pl022->clk);
+> -	if (status) {
+> -		dev_err(&adev->dev, "could not enable SSP/SPI bus clock\n");
+> -		goto err_no_clk_en;
+> -	}
+> -
+>  	/* Initialize transfer pump */
+>  	tasklet_init(&pl022->pump_transfers, pump_transfers,
+>  		     (unsigned long)pl022);
+> @@ -2236,16 +2230,14 @@ static int pl022_probe(struct amba_device *adev, const struct amba_id *id)
+>  
+>  	return 0;
+>  
+> - err_spi_register:
+> +err_spi_register:
+>  	if (platform_info->enable_dma)
+>  		pl022_dma_remove(pl022);
+> - err_no_irq:
+> -	clk_disable_unprepare(pl022->clk);
+> - err_no_clk_en:
+> - err_no_clk:
+> - err_no_ioremap:
+> +err_no_irq:
+> +err_no_clk:
+> +err_no_ioremap:
+>  	amba_release_regions(adev);
+> - err_no_ioregion:
+> +err_no_ioregion:
+>  	spi_master_put(master);
+>  	return status;
+>  }
+> @@ -2268,7 +2260,6 @@ pl022_remove(struct amba_device *adev)
+>  	if (pl022->master_info->enable_dma)
+>  		pl022_dma_remove(pl022);
+>  
+> -	clk_disable_unprepare(pl022->clk);
+>  	amba_release_regions(adev);
+>  	tasklet_disable(&pl022->pump_transfers);
+>  }
 
 
