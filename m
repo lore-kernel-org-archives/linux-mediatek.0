@@ -4,78 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D13FEE49AB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 18:35:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0E8AEE49AF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 18:51:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ekQ2+z1rJ3Hgh9TnPo6eVKPd6yHPuM9PqoaemUvTtM8=; b=07s6PRRb2NuCtYZGML6PQTPh6e
-	ASvG6XpXLxcxLVU7UsngwBMbIZmiheZCKtoQm1eGdQUiARw42SLRJxgQO1gl/hJC3MWgloCG1c4pV
-	Fd5rRNix/cf7H1JS4Cvbba0ZEEcdZ3X4nFV6NgvTVy3qqjF+3zjOq0JaGtP6oEFSfcpgoJ1B2WEr9
-	WCTzpNe3iizsovWBjnuQMziAUbJgLlPgiB1wiUkUDeKC4OgVAXannyhrE6omDdqbH6FlnLfdMGa7x
-	thI253Swt79Q28ngO44/R55qEmOMKy1fFcbzecLvdfd5jPsAqjHn19fDH+e47XQCF7lM1WGUnY6Pm
-	DxzxOWDg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xZZX1qwcSN/Zve5lO59czMHrqLaGMnaz+cybdv1PRn4=; b=vb61lmPrWyVWlJLZtGpQuxe7RM
+	yFy0T5Z2FjGVDfNcwsdILU91hBAi8uoG/5k0Hj0T/HEl0NL9boOfkMd9CT+O+87xm8OI/g7ouKTJh
+	RaurWGrbdKTpXG3EHrMJpS/wTO3YF2jWgzP3F/XE6iVQ5A/2GZOYs3lpMpzdmXTaHfKoieBB/gFXW
+	npsu4wpB88axwP4c79quiTG+ain8DLB4DvIXNvbnVMV+MnaVIYFTeEnkH+4cexlQ2mhk+Z+MPoDQY
+	EUqBmAPL/gko+o92Z9na5qdHQOJ7fL4HKUEI+UKttmb6kgptyAGFfq3S4eMi5qTR6s9R+6yk3RFSe
+	G0E7RQ2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYWEN-00Ge78-05;
-	Tue, 22 Aug 2023 18:35:55 +0000
-Received: from [2001:4d48:ad52:32c8:5054:ff:fe00:142] (helo=pandora.armlinux.org.uk)
+	id 1qYWTT-00GfP6-1L;
+	Tue, 22 Aug 2023 18:51:31 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYWEI-00Gdx5-0p;
-	Tue, 22 Aug 2023 18:35:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=ekQ2+z1rJ3Hgh9TnPo6eVKPd6yHPuM9PqoaemUvTtM8=; b=lRa+WD04bpeFSjyHCgoPsaIbnI
-	n6EgIFXz69dJ5alQuX1Am2hpU9aOkHxFmJrqI0oZx5oCfAbTLuwlwhsg6lIlXLoxLQVid4M/7mlys
-	teTokCNPVCWRMnWXqwd8nHk87jh6sNhysQVYrELBFHj0Fk0CrfoBbNxh0Gd6043NmR/VPZ0d6FgRd
-	EhvPOatk3x2fIo9umhjUe30avKbL/CuD17F6cwlLGfgKsOIbOzixgIsLG8Fm5bLfVeLEozT6oOpcc
-	AYgEgSk7NM4ICPWlj/+69v1arJfQtqStcApGSx5DHahKdLGES+RPslkuOmwCF1YszOpJ/bRYVfl0H
-	f/HcePBQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:35082)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1qYWBp-0001pM-2r;
-	Tue, 22 Aug 2023 19:33:17 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1qYWBk-00061G-Oa; Tue, 22 Aug 2023 19:33:12 +0100
-Date: Tue, 22 Aug 2023 19:33:12 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Bc-bocun Chen <bc-bocun.chen@mediatek.com>,
-	Henry Yen <Henry.Yen@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH RFC net-next] net: ethernet: mtk_eth_soc: add paths and
- SerDes modes for MT7988
-Message-ID: <ZOT/aIelVomIzdZk@shell.armlinux.org.uk>
-References: <27c3f231485968874487f9a35cb7e8d74ca3dfd8.1692726676.git.daniel@makrotopia.org>
+	id 1qYWTP-00GfKj-1w;
+	Tue, 22 Aug 2023 18:51:29 +0000
+Received: from [192.168.2.162] (109-252-153-31.dynamic.spd-mgts.ru [109.252.153.31])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: dmitry.osipenko)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4A30E6607215;
+	Tue, 22 Aug 2023 19:51:21 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1692730282;
+	bh=96QsXlllSAmKWT08tjveeH16MND/0hMOFl/BbnCS+9I=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=XcLtWDpBAhL3HbrCDa5nr+o9ID1FljKb/J+OChjddSGuwxJBEEFTsEnZUmHlVAyKg
+	 VV8/2oCl30divtpbZeVsuiYS5uLWf+vfogZwM2wOM19DwVm9rChb6QJ8ZlrzGUAuOg
+	 Ls1w25kK4CoaG1vVG/qM0bzyM+T0pxw5Qt7bHn3vafNseLmH6s/ILGpZOk1y7a+KP3
+	 gyLtyEWVlfJ/gnY7DJ0TAJOOvp1lDGirbLreIH9Q67CBQRqzIDzZeNxd+Iwk/Hzfgb
+	 jSbIC+7butS4PHBrKxrq59WQ7hXiiyOMuv2KnFvXqSIqu1sWEywn/E8CWebngBoU2W
+	 6/xfqlXkx9rTA==
+Message-ID: <8c8bd3ec-a5a4-32e4-45b5-ee16eeeac246@collabora.com>
+Date: Tue, 22 Aug 2023 21:51:18 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <27c3f231485968874487f9a35cb7e8d74ca3dfd8.1692726676.git.daniel@makrotopia.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [RESEND PATCH v2] media: mtk-jpeg: Fix use after free bug due to
+ uncanceled work
+To: Zheng Wang <zyytlz.wz@163.com>, Kyrie.Wu@mediatek.com
+Cc: bin.liu@mediatek.com, mchehab@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Irui.Wang@mediatek.com,
+ security@kernel.org, hackerzheng666@gmail.com, 1395428693sheep@gmail.com,
+ alex000young@gmail.com, Collabora Kernel ML <kernel@collabora.com>
+References: <20230707092414.866760-1-zyytlz.wz@163.com>
+Content-Language: en-US
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <20230707092414.866760-1-zyytlz.wz@163.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230822_113550_318433_1BA23345 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20230822_115127_766011_E3EE8513 
+X-CRM114-Status: GOOD (  24.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,152 +80,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello Zheng,
 
-I haven't fully reviewed this yet, but here's some initial comments.
+On 7/7/23 12:24, Zheng Wang wrote:
+> In mtk_jpeg_probe, &jpeg->job_timeout_work is bound with
+> mtk_jpeg_job_timeout_work. Then mtk_jpeg_dec_device_run
+> and mtk_jpeg_enc_device_run may be called to start the
+> work.
+> If we remove the module which will call mtk_jpeg_remove
+> to make cleanup, there may be a unfinished work. The
+> possible sequence is as follows, which will cause a
+> typical UAF bug.
+> 
+> Fix it by canceling the work before cleanup in the mtk_jpeg_remove
+> 
+> CPU0                  CPU1
+> 
+>                     |mtk_jpeg_job_timeout_work
+> mtk_jpeg_remove     |
+>   v4l2_m2m_release  |
+>     kfree(m2m_dev); |
+>                     |
+>                     | v4l2_m2m_get_curr_priv
+>                     |   m2m_dev->curr_ctx //use
+> Fixes: b2f0d2724ba4 ("[media] vcodec: mediatek: Add Mediatek JPEG Decoder Driver")
+> Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
+> ---
+> - v2: use cancel_delayed_work_sync instead of cancel_delayed_work suggested by Kyrie.
+> ---
+>  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 0051f372a66c..6069ecf420b0 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1816,6 +1816,7 @@ static void mtk_jpeg_remove(struct platform_device *pdev)
+>  {
+>  	struct mtk_jpeg_dev *jpeg = platform_get_drvdata(pdev);
+>  
+> +	cancel_delayed_work_sync(&jpeg->job_timeout_work);
+>  	pm_runtime_disable(&pdev->dev);
+>  	video_unregister_device(jpeg->vdev);
+>  	v4l2_m2m_release(jpeg->m2m_dev);
 
-On Tue, Aug 22, 2023 at 07:04:42PM +0100, Daniel Golle wrote:
-> MT7988 comes with a built-in 2.5G PHY as well as SerDes lanes to
-> connect external PHYs or transceivers in USXGMII, 10GBase-R, 5GBase-KR,
+AFAICS, there is a fundamental problem here. The job_timeout_work uses
+v4l2_m2m_get_curr_priv() and at the time when driver module is unloaded,
+all the v4l contexts must be closed and released. Hence the
+v4l2_m2m_get_curr_priv() shall return NULL and crash the kernel when
+work is executed before cancel_delayed_work_sync().
 
-5Gbase-KR K normally means backplane mode.
+At the time when mtk_jpeg_remove() is invoked, there shall be no
+job_timeout_work running in background because all jobs should be
+completed before context is released. If you'll look at
+v4l2_m2m_cancel_job(), you can see that it waits for the task completion
+before closing context.
 
-> +/* Register to read PCS AN status */
-> +#define RG_PCS_AN_STS0		0x81c
-> +#define USXGMII_LPA_SPEED_MASK	GENMASK(11, 9)
-> +#define USXGMII_LPA_SPEED_10	0
-> +#define USXGMII_LPA_SPEED_100	1
-> +#define USXGMII_LPA_SPEED_1000	2
-> +#define USXGMII_LPA_SPEED_10000	3
-> +#define USXGMII_LPA_SPEED_2500	4
-> +#define USXGMII_LPA_SPEED_5000	5
-> +#define USXGMII_LPA_DUPLEX	BIT(12)
-> +#define USXGMII_LPA_LINK	BIT(15)
+You shouldn't be able to remove driver module while it has active/opened
+v4l contexts. If you can do that, then this is yours bug that needs to
+be fixed.
 
-Aren't these the same as the MDIO_USXGMII_xxx definitions that define
-the UsxgmiiChannelInfo[15:0] bits?
-
-> +static int mtk_usxgmii_pcs_config(struct phylink_pcs *pcs, unsigned int neg_mode,
-> +				  phy_interface_t interface,
-> +				  const unsigned long *advertising,
-> +				  bool permit_pause_to_mac)
-> +{
-> +	struct mtk_usxgmii_pcs *mpcs = pcs_to_mtk_usxgmii_pcs(pcs);
-> +	struct mtk_eth *eth = mpcs->eth;
-> +	struct regmap *pextp = eth->regmap_pextp[mpcs->id];
-> +	unsigned int an_ctrl = 0, link_timer = 0, xfi_mode = 0, adapt_mode = 0;
-> +	bool mode_changed = false;
-> +
-> +	if (!pextp)
-> +		return -ENODEV;
-> +
-> +	if (interface == PHY_INTERFACE_MODE_USXGMII) {
-> +		an_ctrl = FIELD_PREP(USXGMII_AN_SYNC_CNT, 0x1FF) |
-> +			  (neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED) ?
-
-Using the new neg_mode here... but you haven't set pcs.neg_mode below
-true.
-
-> +static void mtk_usxgmii_pcs_get_state(struct phylink_pcs *pcs,
-> +				      struct phylink_link_state *state)
-> +{
-> +	struct mtk_usxgmii_pcs *mpcs = pcs_to_mtk_usxgmii_pcs(pcs);
-> +	struct mtk_eth *eth = mpcs->eth;
-> +	struct mtk_mac *mac = eth->mac[mtk_xgmii2mac_id(eth, mpcs->id)];
-> +	u32 val = 0;
-> +
-> +	regmap_read(mpcs->regmap, RG_PCS_AN_CTRL0, &val);
-> +	if (FIELD_GET(USXGMII_AN_ENABLE, val)) {
-> +		/* Refresh LPA by inverting LPA_LATCH */
-> +		regmap_read(mpcs->regmap, RG_PCS_AN_STS0, &val);
-> +		regmap_update_bits(mpcs->regmap, RG_PCS_AN_STS0,
-> +				   USXGMII_LPA_LATCH,
-> +				   !(val & USXGMII_LPA_LATCH));
-> +
-> +		regmap_read(mpcs->regmap, RG_PCS_AN_STS0, &val);
-> +
-> +		state->interface = mpcs->interface;
-> +		state->link = FIELD_GET(USXGMII_LPA_LINK, val);
-> +		state->duplex = FIELD_GET(USXGMII_LPA_DUPLEX, val);
-> +
-> +		switch (FIELD_GET(USXGMII_LPA_SPEED_MASK, val)) {
-> +		case USXGMII_LPA_SPEED_10:
-> +			state->speed = SPEED_10;
-> +			break;
-> +		case USXGMII_LPA_SPEED_100:
-> +			state->speed = SPEED_100;
-> +			break;
-> +		case USXGMII_LPA_SPEED_1000:
-> +			state->speed = SPEED_1000;
-> +			break;
-> +		case USXGMII_LPA_SPEED_2500:
-> +			state->speed = SPEED_2500;
-> +			break;
-> +		case USXGMII_LPA_SPEED_5000:
-> +			state->speed = SPEED_5000;
-> +			break;
-> +		case USXGMII_LPA_SPEED_10000:
-> +			state->speed = SPEED_10000;
-> +			break;
-> +		}
-
-Maybe consider using phylink_decode_usxgmii_word() ?
-
-> +	} else {
-> +		val = mtk_r32(mac->hw, MTK_XGMAC_STS(mac->id));
-> +
-> +		if (mac->id == MTK_GMAC2_ID)
-> +			val >>= 16;
-> +
-> +		switch (FIELD_GET(MTK_USXGMII_PCS_MODE, val)) {
-> +		case 0:
-> +			state->speed = SPEED_10000;
-> +			break;
-> +		case 1:
-> +			state->speed = SPEED_5000;
-> +			break;
-> +		case 2:
-> +			state->speed = SPEED_2500;
-> +			break;
-> +		case 3:
-> +			state->speed = SPEED_1000;
-> +			break;
-> +		}
-> +
-> +		state->interface = mpcs->interface;
-> +		state->link = FIELD_GET(MTK_USXGMII_PCS_LINK, val);
-> +		state->duplex = DUPLEX_FULL;
-> +	}
-> +
-> +	if (state->link == 0)
-> +		mtk_usxgmii_pcs_config(pcs, MLO_AN_INBAND,
-
-Passing old-style mode rather than neg_mode here.
-
-> +				       state->interface, NULL, false);
-
-It would be good to describe why you're reconfiguring the interface
-here. You describe why in mtk_usxgmii_pcs_link_up...
-
-> +		eth->usxgmii_pcs[i] = devm_kzalloc(dev, sizeof(*eth->usxgmii_pcs), GFP_KERNEL);
-> +		if (!eth->usxgmii_pcs[i])
-> +			return -ENOMEM;
-> +
-> +		eth->usxgmii_pcs[i]->id = i;
-> +		eth->usxgmii_pcs[i]->eth = eth;
-> +		eth->usxgmii_pcs[i]->regmap = syscon_node_to_regmap(np);
-> +		if (IS_ERR(eth->usxgmii_pcs[i]->regmap))
-> +			return PTR_ERR(eth->usxgmii_pcs[i]->regmap);
-> +
-> +		eth->usxgmii_pcs[i]->pcs.ops = &mtk_usxgmii_pcs_ops;
-> +		eth->usxgmii_pcs[i]->pcs.poll = true;
-> +		eth->usxgmii_pcs[i]->interface = PHY_INTERFACE_MODE_NA;
-
-All new PCS should set pcs.neg_mode true.
-
-Thanks.
+In addition to this all, the job_timeout_work is initialized only for
+the single-core JPEG device. I'd expect this patch should crash
+multi-core JPEG devices.
 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+Best regards,
+Dmitry
+
 
