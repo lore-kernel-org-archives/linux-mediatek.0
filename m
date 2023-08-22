@@ -4,68 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6504CEE49AA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 02:20:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29B20EE4996
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 02:42:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EzUFvxPDlvp244ge7STeGWyfiymsXJ3ns3RhUH87ntk=; b=zePnq+UitVnoX/6BFP2yti8ozx
-	ddsEPJg4NJcTzpwb7NZ108oAmv6m30GX2q5FeiMpcUuNDQWxHRD7PUL5YFaeWo8XE1p3tIwvpFWaR
-	BQ6nTSvkwB1ZNeEx9M3T/Rjgc1+qePV/6N3HMFCfOmrVqpRlO8/DNBew9J2GHEA+FdzXluof/iqHY
-	zF/aaefKubcVeRpAQyWY7tM2QmisnbqXZfumnw1NTcC4KdZI+hQ9O4fTN47Vy0x118BWC4upXeRv1
-	CrI8g1ZcNVbwq3Z3FAef/ouSBWiMp39RK0BhgvnHsnu00i1k2W/J6xxGbZDHK7yzTcQYtV76wI2sZ
-	BQ7+D+YQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=S/ocCM8Yp7sFWG6PMEpfFwFEf1JcgffJ1Ge74GIyhKg=; b=e61aCmee3JeyDteVOmG6MZLc1l
+	5oJcOWKQN43hK85Vkq7rAYPa85ihndO3BdUcwx/dl+ByyOl5mNAtc0CWv59i8jdEgxZxfl80GJB4e
+	CqPgm0xl+lPR1ck60d1n4YDdgwo9VrQCXB7MrfXTrdjce3fYtq7i0K9A+ptjC7serKfKmeghkEAcr
+	yIVkxmIykcoK97LqUzt0Z5JUUX7pMNbSK9SBceoHSA/eDnhiJa3O7e9dJt7xWA9GNM94lkoJBw2gw
+	q78ZHnCQ5J8haKD6yV5VP+6PE9z9BA84azXJzzVO43y0PIOMEkynnYw7gSu1OB1SQnombr+j8CY0v
+	XFxpEggQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYH0Q-00EyyV-0S;
-	Tue, 22 Aug 2023 02:20:30 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qYHLD-00EzzP-2e;
+	Tue, 22 Aug 2023 02:41:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYH0M-00Eyy3-2c;
-	Tue, 22 Aug 2023 02:20:28 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 65EDA6169A;
-	Tue, 22 Aug 2023 02:20:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id BF374C433C9;
-	Tue, 22 Aug 2023 02:20:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1692670824;
-	bh=WiuutlKZGSfnMqcEk2Hi4ACANiW2639zyoroXwPM8rY=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=qWwXRsyzXz/KvxTnNXQ9LEanWGs786Wm+OXoPuh2fuCHLLhwhBE8yyKxOB0xk3Wvj
-	 qDfNH2UoUt2j0sAFtlNTwJZwF/2DBvjBgyf+4wpsO+ex5Jc2laV4fuPavls02355Ki
-	 MTg6o6ODcPUVQm2aYtF6GXCB2zp2O9IXm2CzInxd0WO39M7KaIwsJ6TAJhh1jsgoIJ
-	 yu3HQat2zAsLmpM1pA7v1MEC9nfyT85wY1PuueulyBpaDQC5S3lAAFxKSd7hImXWak
-	 O5ShNTCb+xbbCva0BjuzdEWmYhIuyITcTiWUYgDWSVLl2SUB7KtpcuVMhosMCNMY/x
-	 S6noww69Hm7vg==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id A0B5BE4EAFB;
-	Tue, 22 Aug 2023 02:20:24 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1qYHLA-00EzyI-0V;
+	Tue, 22 Aug 2023 02:41:57 +0000
+X-UUID: 714d2c90409511ee83ed1395ce914268-20230821
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=S/ocCM8Yp7sFWG6PMEpfFwFEf1JcgffJ1Ge74GIyhKg=;
+	b=rffFdPIrMWpXAjAGgRVHjn4Ja2qdfy7asY6hee1WOEX5k5/1Y9u7HnsyWJHblNupQZdoIvj7yLDzptmc7t3SEjjlthN4DUiIRben600vW4DqpM6azS76EQwbNNTSkDzSw2jfOU2if+G9KrIqT3pNoum8d8406rW2Dyc9wSmhoIE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:415acde4-79ba-4510-98f9-0f44a5db07ef,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:0ad78a4,CLOUDID:6e530813-4929-4845-9571-38c601e9c3c9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 714d2c90409511ee83ed1395ce914268-20230821
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <shuijing.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 716512081; Mon, 21 Aug 2023 19:41:49 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 22 Aug 2023 10:41:46 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 22 Aug 2023 10:41:45 +0800
+From: Shuijing Li <shuijing.li@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<daniel@ffwll.ch>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Shuijing Li
+	<shuijing.li@mediatek.com>
+Subject: [PATCH v6,3/4] drm/mediatek: dp: Add the audio divider to mtk_dp_data struct
+Date: Tue, 22 Aug 2023 10:41:54 +0800
+Message-ID: <20230822024155.26670-4-shuijing.li@mediatek.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230822024155.26670-1-shuijing.li@mediatek.com>
+References: <20230822024155.26670-1-shuijing.li@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: pcs: lynxi: implement pcs_disable op
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169267082465.27540.3832216650125518638.git-patchwork-notify@kernel.org>
-Date: Tue, 22 Aug 2023 02:20:24 +0000
-References: <f23d1a60d2c9d2fb72e32dcb0eaa5f7e867a3d68.1692327891.git.daniel@makrotopia.org>
-In-Reply-To: <f23d1a60d2c9d2fb72e32dcb0eaa5f7e867a3d68.1692327891.git.daniel@makrotopia.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: lynxis@fe80.eu, andrew@lunn.ch, hkallweit1@gmail.com,
- linux@armlinux.org.uk, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230821_192026_913782_BDB3FD48 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20230821_194156_207135_9E6DA112 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,32 +90,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Due to the difference of HW, different dividers need to be set.
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
+---
+Changes in v6:
+Move MT8188 defintion to patch[4/4].
+per suggestion from the previous thread:
+https://lore.kernel.org/all/60ba1ab40fc943f1abf3e78b0b32223be402302c.camel@mediatek.com/
+Changes in v4:
+list all configuration for MT8188 and MT8195.
+per suggestion from the previous thread:
+https://lore.kernel.org/all/a9d1b9b7ef4780f51574d0bbbe28f6dd109a6ab8.camel@mediatek.com/
+Changes in v3:
+Separate these two things into two different patches.
+per suggestion from the previous thread:
+https://lore.kernel.org/lkml/e2ad22bcba31797f38a12a488d4246a01bf0cb2e.camel@mediatek.com/
+Changes in v2:
+- change the variables' name to be more descriptive
+- add a comment that describes the function of mtk_dp_audio_sample_arrange
+- reduce indentation by doing the inverse check
+- add a definition of some bits
+- add support for mediatek, mt8188-edp-tx
+per suggestion from the previous thread:
+https://lore.kernel.org/lkml/ac0fcec9-a2fe-06cc-c727-189ef7babe9c@collabora.com/
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c     |  5 ++++-
+ drivers/gpu/drm/mediatek/mtk_dp_reg.h | 12 ++++++------
+ 2 files changed, 10 insertions(+), 7 deletions(-)
 
-On Fri, 18 Aug 2023 04:07:46 +0100 you wrote:
-> When switching from 10GBase-R/5GBase-R/USXGMII to one of the interface
-> modes provided by mtk-pcs-lynxi we need to make sure to always perform
-> a full configuration of the PHYA.
-> 
-> Implement pcs_disable op which resets the stored interface mode to
-> PHY_INTERFACE_MODE_NA to trigger a full reconfiguration once the LynxI
-> PCS driver had previously been deselected in favor of another PCS
-> driver such as the to-be-added driver for the USXGMII PCS found in
-> MT7988.
-> 
-> [...]
-
-Here is the summary with links:
-  - [net-next] net: pcs: lynxi: implement pcs_disable op
-    https://git.kernel.org/netdev/net-next/c/90308679c297
-
-You are awesome, thank you!
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index badb205ffff2..0ba9a4fdf839 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -140,6 +140,7 @@ struct mtk_dp_data {
+ 	const struct mtk_dp_efuse_fmt *efuse_fmt;
+ 	bool audio_supported;
+ 	bool audio_pkt_in_hblank_area;
++	u16 audio_m_div2_bit;
+ };
+ 
+ static const struct mtk_dp_efuse_fmt mt8195_edp_efuse_fmt[MTK_DP_CAL_MAX] = {
+@@ -648,7 +649,7 @@ static void mtk_dp_audio_sdp_asp_set_channels(struct mtk_dp *mtk_dp,
+ static void mtk_dp_audio_set_divider(struct mtk_dp *mtk_dp)
+ {
+ 	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30BC,
+-			   AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
++			   mtk_dp->data->audio_m_div2_bit,
+ 			   AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MASK);
+ }
+ 
+@@ -2635,6 +2636,7 @@ static const struct mtk_dp_data mt8195_edp_data = {
+ 	.smc_cmd = MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE,
+ 	.efuse_fmt = mt8195_edp_efuse_fmt,
+ 	.audio_supported = false,
++	.audio_m_div2_bit = MT8195_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
+ };
+ 
+ static const struct mtk_dp_data mt8195_dp_data = {
+@@ -2642,6 +2644,7 @@ static const struct mtk_dp_data mt8195_dp_data = {
+ 	.smc_cmd = MTK_DP_SIP_ATF_VIDEO_UNMUTE,
+ 	.efuse_fmt = mt8195_dp_efuse_fmt,
+ 	.audio_supported = true,
++	.audio_m_div2_bit = MT8195_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
+ };
+ 
+ static const struct of_device_id mtk_dp_of_match[] = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
+index f38d6ff12afe..b9859ef067ce 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp_reg.h
++++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
+@@ -159,12 +159,12 @@
+ #define MTK_DP_ENC0_P0_30BC			0x30bc
+ #define ISRC_CONT_DP_ENC0_P0				BIT(0)
+ #define AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MASK	GENMASK(10, 8)
+-#define AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MUL_2	(1 << 8)
+-#define AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MUL_4	(2 << 8)
+-#define AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MUL_8	(3 << 8)
+-#define AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2	(5 << 8)
+-#define AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_4	(6 << 8)
+-#define AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_8	(7 << 8)
++#define MT8195_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MUL_2	(1 << 8)
++#define MT8195_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MUL_4	(2 << 8)
++#define MT8195_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MUL_8	(3 << 8)
++#define MT8195_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2	(5 << 8)
++#define MT8195_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_4	(6 << 8)
++#define MT8195_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_8	(7 << 8)
+ #define MTK_DP_ENC0_P0_30D8			0x30d8
+ #define MTK_DP_ENC0_P0_312C			0x312c
+ #define ASP_HB2_DP_ENC0_P0_MASK				GENMASK(7, 0)
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.40.1
 
 
