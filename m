@@ -4,70 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11AFCEE49AF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 18:10:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D13FEE49AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 18:35:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S4ueY7PMkYKJ3gqAhbrVPTfATkhutnrn6+EBdUCHDks=; b=nWEuqASYfILOR57QozdVgAd0rM
-	mDPcKLnTmJqMGjaYqrWxgWe1NH8/CLvenDtfJcbO1KiFmNWLzCIc1vjVaFQaQen8jrQm8wwCh18E1
-	Jsk/HkkjJxbUpr3lbv2lpFhMVJ4A2SyR9yc7lhvz9lktPvhZcrkjTUaRut2LPvzfRb8bnsN5ARE7j
-	UgugzIraFfllFj2PHUWEfgJN+5ammZagyTRMGqioIabmr6GYfOSH56btULOkaw/n4ujUtEV8jptPK
-	vuSlwo3aIBURIRousxXwgFA7yUn5qvtFilunnSHvyrv+PmoLVjSxAkwwrn+JBlNJ2Ug1d12PXTOvn
-	h27engWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ekQ2+z1rJ3Hgh9TnPo6eVKPd6yHPuM9PqoaemUvTtM8=; b=07s6PRRb2NuCtYZGML6PQTPh6e
+	ASvG6XpXLxcxLVU7UsngwBMbIZmiheZCKtoQm1eGdQUiARw42SLRJxgQO1gl/hJC3MWgloCG1c4pV
+	Fd5rRNix/cf7H1JS4Cvbba0ZEEcdZ3X4nFV6NgvTVy3qqjF+3zjOq0JaGtP6oEFSfcpgoJ1B2WEr9
+	WCTzpNe3iizsovWBjnuQMziAUbJgLlPgiB1wiUkUDeKC4OgVAXannyhrE6omDdqbH6FlnLfdMGa7x
+	thI253Swt79Q28ngO44/R55qEmOMKy1fFcbzecLvdfd5jPsAqjHn19fDH+e47XQCF7lM1WGUnY6Pm
+	DxzxOWDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYVpn-00Gd1g-06;
-	Tue, 22 Aug 2023 18:10:31 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qYWEN-00Ge78-05;
+	Tue, 22 Aug 2023 18:35:55 +0000
+Received: from [2001:4d48:ad52:32c8:5054:ff:fe00:142] (helo=pandora.armlinux.org.uk)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYVpk-00Gd10-0U;
-	Tue, 22 Aug 2023 18:10:29 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 671FF614F5;
-	Tue, 22 Aug 2023 18:10:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id C06C6C433C9;
-	Tue, 22 Aug 2023 18:10:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1692727826;
-	bh=U+cSFv8/1fknASccAAc5oGRY0vemVLI+IykDasqvQiU=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=eBSLngf2UJwYSxajRyiPc43wZS0Upcrex2n3c3ruWYzoh7E+npKodwtj7yMmJVCTC
-	 o5lIFbTSDMrb/k9NrSRJDObGF9p+Um/e90sa9K76NDPQLveIcLZ562tkMtD6YSc6hn
-	 csPGyqNlz0kw0ONgLFaI/PBiKG7+GlLkYxv5Y1uA1lzvlXJ8kYiWpGjq7+BY8dyhOE
-	 RznQbRlLJejUqWvRkATfirnLFqLnbutZifEOVjngz6Gx3Yl/0rZ0eThCwpQ1S4qvDP
-	 Nn3sxrrEnfM9VaEhUkenX0KzDfr7DW6AxQesGE6T465oKcLLUpHvbNmS/ER440JxsM
-	 +Cgh8+EAR5vlA==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id A0A24E4EAF6;
-	Tue, 22 Aug 2023 18:10:26 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net v2] net: ethernet: mtk_eth_soc: fix NULL pointer on hw
- reset
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169272782665.18530.10943324313439520312.git-patchwork-notify@kernel.org>
-Date: Tue, 22 Aug 2023 18:10:26 +0000
-References: <5465c1609b464cc7407ae1530c40821dcdf9d3e6.1692634266.git.daniel@makrotopia.org>
-In-Reply-To: <5465c1609b464cc7407ae1530c40821dcdf9d3e6.1692634266.git.daniel@makrotopia.org>
+	id 1qYWEI-00Gdx5-0p;
+	Tue, 22 Aug 2023 18:35:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=ekQ2+z1rJ3Hgh9TnPo6eVKPd6yHPuM9PqoaemUvTtM8=; b=lRa+WD04bpeFSjyHCgoPsaIbnI
+	n6EgIFXz69dJ5alQuX1Am2hpU9aOkHxFmJrqI0oZx5oCfAbTLuwlwhsg6lIlXLoxLQVid4M/7mlys
+	teTokCNPVCWRMnWXqwd8nHk87jh6sNhysQVYrELBFHj0Fk0CrfoBbNxh0Gd6043NmR/VPZ0d6FgRd
+	EhvPOatk3x2fIo9umhjUe30avKbL/CuD17F6cwlLGfgKsOIbOzixgIsLG8Fm5bLfVeLEozT6oOpcc
+	AYgEgSk7NM4ICPWlj/+69v1arJfQtqStcApGSx5DHahKdLGES+RPslkuOmwCF1YszOpJ/bRYVfl0H
+	f/HcePBQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:35082)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1qYWBp-0001pM-2r;
+	Tue, 22 Aug 2023 19:33:17 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1qYWBk-00061G-Oa; Tue, 22 Aug 2023 19:33:12 +0100
+Date: Tue, 22 Aug 2023 19:33:12 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Daniel Golle <daniel@makrotopia.org>
-Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- sujuan.chen@mediatek.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Bc-bocun Chen <bc-bocun.chen@mediatek.com>,
+	Henry Yen <Henry.Yen@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH RFC net-next] net: ethernet: mtk_eth_soc: add paths and
+ SerDes modes for MT7988
+Message-ID: <ZOT/aIelVomIzdZk@shell.armlinux.org.uk>
+References: <27c3f231485968874487f9a35cb7e8d74ca3dfd8.1692726676.git.daniel@makrotopia.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <27c3f231485968874487f9a35cb7e8d74ca3dfd8.1692726676.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230822_111028_234918_DE8685F8 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20230822_113550_318433_1BA23345 
+X-CRM114-Status: GOOD (  17.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,31 +90,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hi,
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+I haven't fully reviewed this yet, but here's some initial comments.
 
-On Mon, 21 Aug 2023 17:12:44 +0100 you wrote:
-> When a hardware reset is triggered on devices not initializing WED the
-> calls to mtk_wed_fe_reset and mtk_wed_fe_reset_complete dereference a
-> pointer on uninitialized stack memory.
-> Break out of both functions in case a hw_list entry is 0.
-> 
-> Fixes: 08a764a7c51b ("net: ethernet: mtk_wed: add reset/reset_complete callbacks")
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> Reviewed-by: Simon Horman <horms@kernel.org>
-> 
-> [...]
+On Tue, Aug 22, 2023 at 07:04:42PM +0100, Daniel Golle wrote:
+> MT7988 comes with a built-in 2.5G PHY as well as SerDes lanes to
+> connect external PHYs or transceivers in USXGMII, 10GBase-R, 5GBase-KR,
 
-Here is the summary with links:
-  - [net,v2] net: ethernet: mtk_eth_soc: fix NULL pointer on hw reset
-    https://git.kernel.org/netdev/net/c/604204fcb321
+5Gbase-KR K normally means backplane mode.
 
-You are awesome, thank you!
+> +/* Register to read PCS AN status */
+> +#define RG_PCS_AN_STS0		0x81c
+> +#define USXGMII_LPA_SPEED_MASK	GENMASK(11, 9)
+> +#define USXGMII_LPA_SPEED_10	0
+> +#define USXGMII_LPA_SPEED_100	1
+> +#define USXGMII_LPA_SPEED_1000	2
+> +#define USXGMII_LPA_SPEED_10000	3
+> +#define USXGMII_LPA_SPEED_2500	4
+> +#define USXGMII_LPA_SPEED_5000	5
+> +#define USXGMII_LPA_DUPLEX	BIT(12)
+> +#define USXGMII_LPA_LINK	BIT(15)
+
+Aren't these the same as the MDIO_USXGMII_xxx definitions that define
+the UsxgmiiChannelInfo[15:0] bits?
+
+> +static int mtk_usxgmii_pcs_config(struct phylink_pcs *pcs, unsigned int neg_mode,
+> +				  phy_interface_t interface,
+> +				  const unsigned long *advertising,
+> +				  bool permit_pause_to_mac)
+> +{
+> +	struct mtk_usxgmii_pcs *mpcs = pcs_to_mtk_usxgmii_pcs(pcs);
+> +	struct mtk_eth *eth = mpcs->eth;
+> +	struct regmap *pextp = eth->regmap_pextp[mpcs->id];
+> +	unsigned int an_ctrl = 0, link_timer = 0, xfi_mode = 0, adapt_mode = 0;
+> +	bool mode_changed = false;
+> +
+> +	if (!pextp)
+> +		return -ENODEV;
+> +
+> +	if (interface == PHY_INTERFACE_MODE_USXGMII) {
+> +		an_ctrl = FIELD_PREP(USXGMII_AN_SYNC_CNT, 0x1FF) |
+> +			  (neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED) ?
+
+Using the new neg_mode here... but you haven't set pcs.neg_mode below
+true.
+
+> +static void mtk_usxgmii_pcs_get_state(struct phylink_pcs *pcs,
+> +				      struct phylink_link_state *state)
+> +{
+> +	struct mtk_usxgmii_pcs *mpcs = pcs_to_mtk_usxgmii_pcs(pcs);
+> +	struct mtk_eth *eth = mpcs->eth;
+> +	struct mtk_mac *mac = eth->mac[mtk_xgmii2mac_id(eth, mpcs->id)];
+> +	u32 val = 0;
+> +
+> +	regmap_read(mpcs->regmap, RG_PCS_AN_CTRL0, &val);
+> +	if (FIELD_GET(USXGMII_AN_ENABLE, val)) {
+> +		/* Refresh LPA by inverting LPA_LATCH */
+> +		regmap_read(mpcs->regmap, RG_PCS_AN_STS0, &val);
+> +		regmap_update_bits(mpcs->regmap, RG_PCS_AN_STS0,
+> +				   USXGMII_LPA_LATCH,
+> +				   !(val & USXGMII_LPA_LATCH));
+> +
+> +		regmap_read(mpcs->regmap, RG_PCS_AN_STS0, &val);
+> +
+> +		state->interface = mpcs->interface;
+> +		state->link = FIELD_GET(USXGMII_LPA_LINK, val);
+> +		state->duplex = FIELD_GET(USXGMII_LPA_DUPLEX, val);
+> +
+> +		switch (FIELD_GET(USXGMII_LPA_SPEED_MASK, val)) {
+> +		case USXGMII_LPA_SPEED_10:
+> +			state->speed = SPEED_10;
+> +			break;
+> +		case USXGMII_LPA_SPEED_100:
+> +			state->speed = SPEED_100;
+> +			break;
+> +		case USXGMII_LPA_SPEED_1000:
+> +			state->speed = SPEED_1000;
+> +			break;
+> +		case USXGMII_LPA_SPEED_2500:
+> +			state->speed = SPEED_2500;
+> +			break;
+> +		case USXGMII_LPA_SPEED_5000:
+> +			state->speed = SPEED_5000;
+> +			break;
+> +		case USXGMII_LPA_SPEED_10000:
+> +			state->speed = SPEED_10000;
+> +			break;
+> +		}
+
+Maybe consider using phylink_decode_usxgmii_word() ?
+
+> +	} else {
+> +		val = mtk_r32(mac->hw, MTK_XGMAC_STS(mac->id));
+> +
+> +		if (mac->id == MTK_GMAC2_ID)
+> +			val >>= 16;
+> +
+> +		switch (FIELD_GET(MTK_USXGMII_PCS_MODE, val)) {
+> +		case 0:
+> +			state->speed = SPEED_10000;
+> +			break;
+> +		case 1:
+> +			state->speed = SPEED_5000;
+> +			break;
+> +		case 2:
+> +			state->speed = SPEED_2500;
+> +			break;
+> +		case 3:
+> +			state->speed = SPEED_1000;
+> +			break;
+> +		}
+> +
+> +		state->interface = mpcs->interface;
+> +		state->link = FIELD_GET(MTK_USXGMII_PCS_LINK, val);
+> +		state->duplex = DUPLEX_FULL;
+> +	}
+> +
+> +	if (state->link == 0)
+> +		mtk_usxgmii_pcs_config(pcs, MLO_AN_INBAND,
+
+Passing old-style mode rather than neg_mode here.
+
+> +				       state->interface, NULL, false);
+
+It would be good to describe why you're reconfiguring the interface
+here. You describe why in mtk_usxgmii_pcs_link_up...
+
+> +		eth->usxgmii_pcs[i] = devm_kzalloc(dev, sizeof(*eth->usxgmii_pcs), GFP_KERNEL);
+> +		if (!eth->usxgmii_pcs[i])
+> +			return -ENOMEM;
+> +
+> +		eth->usxgmii_pcs[i]->id = i;
+> +		eth->usxgmii_pcs[i]->eth = eth;
+> +		eth->usxgmii_pcs[i]->regmap = syscon_node_to_regmap(np);
+> +		if (IS_ERR(eth->usxgmii_pcs[i]->regmap))
+> +			return PTR_ERR(eth->usxgmii_pcs[i]->regmap);
+> +
+> +		eth->usxgmii_pcs[i]->pcs.ops = &mtk_usxgmii_pcs_ops;
+> +		eth->usxgmii_pcs[i]->pcs.poll = true;
+> +		eth->usxgmii_pcs[i]->interface = PHY_INTERFACE_MODE_NA;
+
+All new PCS should set pcs.neg_mode true.
+
+Thanks.
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
