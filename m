@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4E58EE49AF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 19:40:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8329AEE49AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 19:47:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oncWTlQk8VDq0hStA9yIW5pShLFRqkLO/45VKHfvDbY=; b=4IQab80b5rC60n8zFuyLOckCHy
-	MO5jSWBL43wHmZvvTt2JYsgS5H1Gc1QMCYO5yv2/lhRBF9FOhSgj1qDL7IJmHYMcZQICOKxQohsMm
-	OQZTKBXu00kdiESPDdhwaQHsLj4cLVUjYdm4C7VZtlkS56YWuyI9tbGEJQfP+evDvuJZSbyFKJ/Lw
-	sE/IuUNjYGzLp9/b/iYXVbg6DXkBmWf4jR0VCddyOH8myg7tgE/qWpG3Q6wutz1dm/2zGN9jo36Da
-	0cPXLU8Xv6I4//MwC7kCIG+hf6okUQA8b1We6FkTURNm1LRe2Qb04HmYI0EqxSxjjobMCvEzMcul+
-	etmb54Kg==;
+	bh=wP8V56gMXjaMA8xuJivdqqb4a/TtPfVwzUH0TySnGFk=; b=3eiiTtImhYwuSkHGQQERtSU5uL
+	SmtHk4A0qtBTiIpxB/ks0CdlKTlLIoWEKFevhyK4ciFaOpN19ltRJQP7lR8k536g3YnCZu51uLtJ/
+	fZAE7+XQTCWubca1ti2Z1Hgmb/kTp2rKf3W5mdmpfZZ8nvZbOcJxuC4j9MbGqcs37ZbjH/EzE85aF
+	gY0iuF1HCMfQbeClwIjxH36HutLomNfKLgGPoLhVmYH6YnQ7rCeEzVCYrj/cjbnb7ftW1UyIv0fSe
+	lOCslrqwJytY6tlouA/xoSm2JQn6YPriyk+ajqPHv4u9zNLFHatoXRvJDYkc6gfHm8gNXNWeMUnGB
+	YJwGRCow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYXEn-00Giub-2E;
-	Tue, 22 Aug 2023 19:40:25 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1qYXLa-00Gjtw-11;
+	Tue, 22 Aug 2023 19:47:26 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYXEk-00Gisw-1N
+	id 1qYXLY-00GjtK-1T
 	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Aug 2023 19:40:24 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-99bf8e5ab39so660955266b.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 22 Aug 2023 12:40:22 -0700 (PDT)
+	Tue, 22 Aug 2023 19:47:25 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-99c93638322so1000449966b.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 22 Aug 2023 12:47:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1692733221; x=1693338021;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        d=linaro.org; s=google; t=1692733643; x=1693338443;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=oncWTlQk8VDq0hStA9yIW5pShLFRqkLO/45VKHfvDbY=;
-        b=iqKxwUnpJsfPKGpODtNN+Pd+GT5zpruOKowDyFgFmDZDqT1p9lopCmC0R6vbFjeTgS
-         We3rj1I7cVPaPUnsiBDw3wHk37aqPZ6lnIVc8U3j2iBgRLzZWzvZcnLwG5uwhtrm5pa1
-         IqY8WL4o04kXjVF8EFsdlZwMgCWQTTmkl6A3Ke+o9gcKpbEy4ocWBtfAOCnrdbTl33MK
-         6vdUkZxibv/ypQt6Ejt7AK0+UWwmqfIUDGL9/EOKqPmfdMOtIocjo3Ozf89y/UwHCw7r
-         kDBkcewLbnIViDiJ9iTeTcDuTKnfZd97PAXVj3VadTky68vFIsRQcOcZEay+QITXL/Y4
-         S/3Q==
+        bh=wP8V56gMXjaMA8xuJivdqqb4a/TtPfVwzUH0TySnGFk=;
+        b=LPcyBY6Q4QNpkQalwXGTtYZCiFulPmXItYy3/b8aUob4oxkCVmmRoW1RvqYR1saZM6
+         wU5t4iP9L3wAty3cpb5TpDB9FVXbEqDs4Com3WHkbRwOHu/mzB7Zj+kVNerKiZl75Abl
+         Crs2stECCBhYREA06BMqTSX0HW2BAZB/TQx5AyZ+JoHONbvFgQcM2XJtKCUSJc0bL87a
+         31pWTfq1F4Zl7ZONEWWif7SLFEvcW3+VjebjI69zb1QsMwIdHkk3jvf/Zow1Z1Sz+q2C
+         bhxr4MIdWMgcnXi6MBNfA5xLM28ZzQSXxBCF+3kgCZV3nBFTmaNVJubSFp3xdo5Y6mmC
+         HN1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692733221; x=1693338021;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        d=1e100.net; s=20221208; t=1692733643; x=1693338443;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=oncWTlQk8VDq0hStA9yIW5pShLFRqkLO/45VKHfvDbY=;
-        b=ZXa6QpNqagq5u82ABc0Xng4os+tJBIDqnbEbLy/RDH02/2sFQQTTomluzZjwFGLiCY
-         DLS4fTABqMHgMY7zU5tY6Dg2bGvt3cQuvfhULoNV7nZ2tYscTm6HGzeccN9BQEWRfPzW
-         vxVcl9SyeYxDAQJrbi2Wymp39FNg8CT2+mDIknLHdMx4Yun95mHFbv8KgMT3Gm5ICKk+
-         mjXZasIfAFEMhHir9JdQeCHnGfLkYzD1ZtclJ8aAXDWJkuFcBH6EI6Exef77yy2YhyLK
-         qzl0/xaP2XH89CLI5Wtb5D3ykKgEnt+oEoR6Z9MIUeLXQixnrSvx4AyJaFZSD/FfLO6B
-         EHJw==
-X-Gm-Message-State: AOJu0YwMJHfn6f2PeD/MWNfXjlORsEaqN/CeaN2bbIgCL3SLRhZkCofJ
-	DckDY8WwaL1qCyU0Asrw2wTBOg==
-X-Google-Smtp-Source: AGHT+IEfWoVEpmQaJIzd2SVcJ8YfHw3JakiI1hknfuAmtQIy7qr8RlSu+3Xqc3F6rEIuTgoAgzS9oQ==
-X-Received: by 2002:a17:907:a041:b0:99d:e3d3:15a9 with SMTP id gz1-20020a170907a04100b0099de3d315a9mr8513551ejc.10.1692733220987;
-        Tue, 22 Aug 2023 12:40:20 -0700 (PDT)
+        bh=wP8V56gMXjaMA8xuJivdqqb4a/TtPfVwzUH0TySnGFk=;
+        b=j9QEPFqhE3au0+IY43HMyZNFaghTDhCnb+ojOXpAkt9B6P40nn6LTmPs1TAYCTYbtS
+         n2x1j0veFT/q8RZd8v6IRFGz2nSH7ehyp1XjOOQr39ActK1tdJnFhPqmpbLxibdMwQyd
+         aLUTBEg+vZ8BEPH1ydKQ3voKt1jDgrxECH3CgALMG1vdrBcoQK0ssRr+Oe8VfHhlguH9
+         QmvVtiHNjhPQ2KJg88bivCbF5AApdxXhVWMjN7SmSCcI6t2YVJOspTOATO76bmV10ulo
+         JSJHxaNE4NzwAOeq3Fe8OWTbE8PtCCKOcLMoeA+aoWM6s8GKyOMhubTzp8t5XrvFxIXF
+         021A==
+X-Gm-Message-State: AOJu0YykoAL9oM4ip04w6JKOSj3PYnghDPWVBGLymIhtPdOvRIMnrbXr
+	UwvFXQGCQFjSKoNKuxjWWfsF6g==
+X-Google-Smtp-Source: AGHT+IFA6vaH037bqItmbCjTD2cq16Ead293Dy7L2D+0FCyaqdqwV2We88f45rka1i6WgI/a9bPy5w==
+X-Received: by 2002:a17:906:c116:b0:993:f664:ce25 with SMTP id do22-20020a170906c11600b00993f664ce25mr11084012ejc.19.1692733642939;
+        Tue, 22 Aug 2023 12:47:22 -0700 (PDT)
 Received: from [192.168.0.22] ([77.252.47.198])
-        by smtp.gmail.com with ESMTPSA id e16-20020a170906045000b0098dfec235ccsm8621380eja.47.2023.08.22.12.40.19
+        by smtp.gmail.com with ESMTPSA id n12-20020a170906688c00b00982be08a9besm8870178ejr.172.2023.08.22.12.47.21
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Aug 2023 12:40:20 -0700 (PDT)
-Message-ID: <60221aab-d8da-9f0b-057b-e8a28840849f@linaro.org>
-Date: Tue, 22 Aug 2023 21:40:19 +0200
+        Tue, 22 Aug 2023 12:47:22 -0700 (PDT)
+Message-ID: <5ad5ff92-1367-ba96-b126-da80511a2769@linaro.org>
+Date: Tue, 22 Aug 2023 21:47:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
-Subject: Re: [PATCH v2 05/11] regulator: dt-bindings: mediatek: Add MT6366
- PMIC
+Subject: Re: [PATCH v2 03/11] regulator: dt-bindings: mt6358: Convert to DT
+ schema
 Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Chen-Yu Tsai <wenst@chromium.org>, Lee Jones <lee@kernel.org>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -82,14 +81,14 @@ Cc: Zhiyong Tao <zhiyong.tao@mediatek.com>, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20230822084520.564937-1-wenst@chromium.org>
- <20230822084520.564937-6-wenst@chromium.org>
- <337f20d5-4dfe-90ef-16b9-c10b14060b97@linaro.org>
-In-Reply-To: <337f20d5-4dfe-90ef-16b9-c10b14060b97@linaro.org>
+ <20230822084520.564937-4-wenst@chromium.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230822084520.564937-4-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230822_124022_468354_F5BCFAE3 
-X-CRM114-Status: GOOD (  18.16  )
+X-CRM114-CacheID: sfid-20230822_124724_491279_923EF03D 
+X-CRM114-Status: GOOD (  13.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,138 +103,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22/08/2023 21:39, Krzysztof Kozlowski wrote:
-> On 22/08/2023 10:45, Chen-Yu Tsai wrote:
->> From: Zhiyong Tao <zhiyong.tao@mediatek.com>
->>
->> The MediaTek MT6366 PMIC is similar to the MT6358 PMIC. It is designed
->> to be paired with the MediaTek MT8186 SoC. It has 9 buck regulators and
->> 29 LDO regulators, not counting ones that feed internally and basically
->> have no controls. The regulators are named after their intended usage
->> for the SoC and system design, thus not named generically as ldoX or
->> dcdcX, but as vcn33 or vgpu.
->>
->> Add a binding document describing all the regulators and their supplies.
->>
->> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
->> [wens@chromium.org: major rework and added commit message]
->> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->> ---
->> Changes since v1:
->> - Replaced underscores in supply names to hyphens
->> - Merged with MT6358 regulator binding
->> - Added MT6358 fallback compatible to MT6366 regulator
->>
->> Changes since Zhiyong's last version (v4) [1]:
->> - simplified regulator names
->> - added descriptions to regulators
->> - removed bogus regulators (*_sshub)
->> - merged vcn33-wifi and vcn33-bt as vcn33
->> - added missing regulators (vm18, vmddr, vsram-core)
->> - cut down examples to a handful of cases and made them complete
->> - expanded commit message a lot
->>
->> [1] https://lore.kernel.org/linux-arm-kernel/20220823123745.14061-1-zhiyong.tao@mediatek.com/
->>  .../regulator/mediatek,mt6358-regulator.yaml  | 227 +++++++++++++-----
->>  1 file changed, 168 insertions(+), 59 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml
->> index 82328fe17680..b350181f33ff 100644
->> --- a/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml
->> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6358-regulator.yaml
->> @@ -16,14 +16,18 @@ description: |
->>  
->>  properties:
->>    compatible:
->> -    const: mediatek,mt6358-regulator
->> +    oneOf:
->> +      - const: mediatek,mt6358-regulator
->> +      - items:
->> +          - const: mediatek,mt6366-regulator
->> +          - const: mediatek,mt6358-regulator
->>  
->>    vsys-ldo1-supply:
->>      description: Supply for LDOs vfe28, vxo22, vcn28, vaux18, vaud28, vsim1, vusb, vbif28
->>    vsys-ldo2-supply:
->> -    description: Supply for LDOs vldo28, vio28, vmc, vmch, vsim2
->> +    description: Supply for LDOs vldo28 (MT6358 only), vio28, vmc, vmch, vsim2
->>    vsys-ldo3-supply:
->> -    description: Supply for LDOs vcn33, vcama1, vcama2, vemc, vibr
->> +    description: Supply for LDOs vcn33, vcama[12] (MT6358 only), vemc, vibr
->>    vsys-vcore-supply:
->>      description: Supply for buck regulator vcore
->>    vsys-vdram1-supply:
->> @@ -43,75 +47,138 @@ properties:
->>    vsys-vs2-supply:
->>      description: Supply for buck regulator vs2
->>    vs1-ldo1-supply:
->> -    description: Supply for LDOs vrf18, vefuse, vcn18, vcamio, vio18
->> +    description: Supply for LDOs vrf18, vefuse, vcn18, vcamio (MT6358 only), vio18
->>    vs2-ldo1-supply:
->> -    description: Supply for LDOs vdram2
->> +    description: Supply for LDOs vdram2, vmddr (MT6366 only)
->>    vs2-ldo2-supply:
->>      description: Supply for LDOs vrf12, va12
->>    vs2-ldo3-supply:
->> -    description: Supply for LDOs vsram-gpu, vsram-others, vsram-proc11, vsram-proc12
->> -  vs2-ldo4-supply:
->> -    description: Supply for LDO vcamd
->> -
->> -patternProperties:
->> -  "^buck_v(core|dram1|gpu|modem|pa|proc1[12]|s[12])$":
->> -    description: Buck regulators
->> -    type: object
->> -    $ref: regulator.yaml#
->> -    unevaluatedProperties: false
->> -
->> -  "^ldo_v(a|rf)12":
->> -    description: LDOs with fixed 1.2V output and 0~100/10mV tuning
->> -    type: object
->> -    $ref: regulator.yaml#
->> -    unevaluatedProperties: false
->> -
->> -  "^ldo_v((aux|cn|io|rf)18|camio)":
->> -    description: LDOs with fixed 1.8V output and 0~100/10mV tuning
->> -    type: object
->> -    $ref: regulator.yaml#
->> -    unevaluatedProperties: false
->> -
->> -  "^ldo_vxo22":
->> -    description: LDOs with fixed 2.2V output and 0~100/10mV tuning
->> -    type: object
->> -    $ref: regulator.yaml#
->> -    unevaluatedProperties: false
->> -
->> -  "^ldo_v(aud|bif|cn|fe|io)28":
->> -    description: LDOs with fixed 2.8V output and 0~100/10mV tuning
->> -    type: object
->> -    $ref: regulator.yaml#
->> -    unevaluatedProperties: false
->> -
->> -  "^ldo_vusb":
->> -    description: LDOs with fixed 3.0V output and 0~100/10mV tuning
->> -    type: object
->> -    $ref: regulator.yaml#
->> -    unevaluatedProperties: false
->> -
->> -  "^ldo_vsram_(gpu|others|proc1[12])$":
->> -    description: LDOs with variable output
->> -    type: object
->> -    $ref: regulator.yaml#
->> -    unevaluatedProperties: false
->> -
->> -  "^ldo_v(cama[12]|camd|cn33|dram2|efuse|emc|ibr|ldo28|mc|mch|sim[12])$":
->> -    description: LDOs with variable output and 0~100/10mV tuning
->> -    type: object
->> -    $ref: regulator.yaml#
->> -    unevaluatedProperties: false
+On 22/08/2023 10:45, Chen-Yu Tsai wrote:
+> Convert this from the old style text based binding to the new DT schema
+> style. This will make adding the MT6366 portion easier.
 > 
-> I don't understand. You just added it and it is already wrong? Please,
-> do not add code which is clearly incorrect.
+> The examples have been trimmed down considerably, and the remaining
+> entries now match what is seen in actual device trees.
 
-Sent too early - anyway properties cannot be defined in allOf:. That's
-not the place for them and there is no single reason for it. From which
-regulator binding you got this example?
+...
+
+> +---
+> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6358-regulator.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT6358 Regulator
+> +
+> +maintainers:
+> +  - Zhiyong Tao <zhiyong.tao@mediatek.com>
+> +
+> +description: |
+
+Do not need '|' unless you need to preserve formatting.
+
+> +  Regulator node of the PMIC. This node should under the PMIC's device node.
+> +  All voltage regulators provided by the PMIC are described as sub-nodes of
+> +  this node.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt6358-regulator
+> +
+...
+
+
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/regulator/mediatek,mt6397-regulator.h>
+
+mt6397?
+
+> +
+> +    regulator {
+> +        compatible = "mediatek,mt6358-regulator";
+> +
+> +        buck_vgpu {
+> +            regulator-name = "vgpu";
+> +            regulator-min-microvolt = <625000>;
+> +            regulator-max-microvolt = <900000>;
+> +            regulator-ramp-delay = <6250>;
+> +            regulator-enable-ramp-delay = <200>;
+> +            regulator-allowed-modes = <MT6397_BUCK_MODE_AUTO
+
+mt6397?
+
+Both cases look a bit confusing.
 
 Best regards,
 Krzysztof
