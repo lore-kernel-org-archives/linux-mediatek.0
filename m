@@ -4,86 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EBF8EE49A5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 23:05:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C8A4EE49A5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 01:24:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tl1tPAJsY+6HeQIjw/xN1e5yMc1WTSncxxsEvTVmB8M=; b=FVLGq+Lvm/UPJATvBsqhI0hBdK
-	tfJEw5Mg83AgtYrr51lIlYUQX9x6Yz08OCnFYA3OMf57DKg0Ol5yKaSjqymVW9AoKmIN6Hb9QUaQ1
-	EBg/P0iRnjhGOjgoS3XglJLOz5b3nXMH2P1J9PSyDZjdIwQTc5/DQtBiuYMORUbb/2H+8cBevObfi
-	vsizOrY+E60EhpPisnb6eie+F/6rczCRcAi4fh8dfIVWMxm4aZc8hAXrhEAxmVFGCjrYo5A3/AWg8
-	wrUNWIaEh6aLrwXfJUa8EElV4fueE+I19jye0Hk+lcdG1lEmW55kRhh+C5F9LmAxhuH0Ry65ED8cw
-	uCRuqNPg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:From:To:
+	Subject:Content-Description:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Message-ID:Cc:Content-ID:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GMzYzcyTxDsE6wX/XHG6MHqAdAiHrhqbmmLQ/TZ1QnQ=; b=p2+AGdo+2PD+HtX70oqfHC37mT
+	7QGE8bqIXp5DItdzTsLD+lfpwL1HTu0RDxCtMFgR6G5bRbxE8UscY/u1gRAxWDpIVRWQzHAfhfaMD
+	NpmvYEZ4E3YM+qkGc/ngizYK6t7F+NGYBLZ/v7Rl6qNBm1V2KcCzlpZBUp3nPwPsCi8OaJl/NoASG
+	hiwaNtHcoK6G9tqe05E0a9A0ol6nag0SryL4S9uw6YjgQfPovBPZjcLdOh3WnlgUxW6hAoA8Fk/c+
+	uaQ4KXL3DR3o6cNRAhiKTS6GB1+nlvt8aSru3QzJj0CklyvSU5Cn2qHRkjaog3B4Ca8g73dxuG+cB
+	e4vorhSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYaRA-00Gv8U-0v;
-	Tue, 22 Aug 2023 23:05:24 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1qYcbl-00H0tq-1u;
+	Wed, 23 Aug 2023 01:24:29 +0000
+Received: from symantec4.comsats.net.pk ([203.124.41.30])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYaR7-00Gv7M-0J;
-	Tue, 22 Aug 2023 23:05:22 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-9a1681fa868so599569766b.3;
-        Tue, 22 Aug 2023 16:05:18 -0700 (PDT)
+	id 1qYcbi-00H0rg-0z
+	for linux-mediatek@lists.infradead.org;
+	Wed, 23 Aug 2023 01:24:27 +0000
+X-AuditID: cb7c291e-055ff70000002aeb-36-64e54ad3c2a4
+Received: from iesco.comsatshosting.com (iesco.comsatshosting.com [210.56.28.11])
+	(using TLS with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+	(Client did not present a certificate)
+	by symantec4.comsats.net.pk (Symantec Messaging Gateway) with SMTP id EF.CA.10987.3DA45E46; Wed, 23 Aug 2023 04:54:59 +0500 (PKT)
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns;
+        d=iesco.com.pk; s=default;
+        h=received:content-type:mime-version:content-transfer-encoding
+          :content-description:subject:to:from:date:reply-to;
+        b=jMUWROgm9Z5EnwMR/bNhs70wLftW53xZY2+tlgFbR0A7EmdrCXto11svj//f1R1cQ
+          dZCUHNag6o2Ty06s0H4uDNWKzKBBGZA/PtF7tpoHaVV9ep0FdyFDcOfJGpZGSpuSX
+          HHqT76/LwD0cTbDBg31Q65wYiF5GVbbBTQvNyM0zo=
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1692745517; x=1693350317;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Tl1tPAJsY+6HeQIjw/xN1e5yMc1WTSncxxsEvTVmB8M=;
-        b=J3AHJmH5FH5EWYJY8LWPuAdZqR9BdWQ9dx2Mj9W8vbp91TJ1UXiMgOCaUxI2aniiPB
-         f1leJ9g1sr121JreOI3n55cXPjQ7zA4o+tr/7Xj74XSjU5xhQVWLAfv65/vuYbr+kS+Q
-         /ovh7L4fXD1jtqk7udukzQ4S+YSX4HiRJ6H32pFUdajFJgi8zouIDKUDCUd8weXZcFy5
-         ZQdQmjTtG2icVUMVYzlmKfRIHEZx+3QyGoKxKz9zH+LFSEbggDHgyj35mT8loDz5Q5Ms
-         keThPZVmZN3bIb4H+MsLBJ3MXYDN+EbaYcEO8+DwlnB7dfUrh5WDAO80g84MD1k1IB9r
-         87Og==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692745517; x=1693350317;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Tl1tPAJsY+6HeQIjw/xN1e5yMc1WTSncxxsEvTVmB8M=;
-        b=YcCDFnFZfBNfPUaL7uWKuZUJe37DTS7tPOLilGRyl7Hv+ny0KNbQZ6cq/4MPjP3dmA
-         V4SiW51CA/4vNjVODxK6wAcoRLM0/vstggghDVv+xZi24aJhfwVZ+x65OwtHSK6WF1iS
-         /kaQTCHa/okVEwkqNVMj/5DweVv4AVtfBAoGnrmRPZvwNjD9StEdvdG66WO6f448Qt+x
-         Cq30SeKSlDrhdAi3U+/RJmWfn6RTESJrK+s6ytYXA+EXKzBG1eC2t/qK5gpOrn4hjJEm
-         ZXMAJ4V5Oi0UmQlxRH52S6WcCf948odde9reJg/XFxASnHiEs65XsEsEUior4716u8Sh
-         2SJQ==
-X-Gm-Message-State: AOJu0YxQb2LGa6mHv8REA2ba388n6nNQRrGdJlLCpm+oKgMXfA3uIIwg
-	Wn47WefzslsjGl1TDQYR71M+Dhbwo7+wV1Zs38E=
-X-Google-Smtp-Source: AGHT+IGc4vnfO5SO2rv82RsYq+TW7/uByZDfWyswWgwX0GX8iv3xt75IkRdZmjAU5aKwi0tBJtJFC8zrCiSUE6S0eJg=
-X-Received: by 2002:a17:906:535d:b0:98e:f13:e908 with SMTP id
- j29-20020a170906535d00b0098e0f13e908mr9494142ejo.60.1692745517251; Tue, 22
- Aug 2023 16:05:17 -0700 (PDT)
+        d=iesco.com.pk; s=default;
+        h=reply-to:date:from:to:subject:content-description
+          :content-transfer-encoding:mime-version:content-type;
+        bh=GMzYzcyTxDsE6wX/XHG6MHqAdAiHrhqbmmLQ/TZ1QnQ=;
+        b=MZ+BQMHCvy94b+vzTTx+x+OUuZ4KOlXmntpG3EQgns4kexBFSFy57EOatrd3T0X/V
+          PrXHHrVkJEk2YJwl08HhDj6xuGryaFbVhaQFtyfxsl2rHpm/ty2UnKPvU4UEEfbGS
+          Xvk+JveyhfmRQ7/yqGnBAUwZ9o217BMmRhVTXMEHg=
+Received: from [94.156.6.90] (UnknownHost [94.156.6.90]) by iesco.comsatshosting.com with SMTP;
+   Wed, 23 Aug 2023 04:31:03 +0500
+Message-ID: <EF.CA.10987.3DA45E46@symantec4.comsats.net.pk>
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-References: <20230714174702.4059100-1-robh@kernel.org>
-In-Reply-To: <20230714174702.4059100-1-robh@kernel.org>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Tue, 22 Aug 2023 18:05:06 -0500
-Message-ID: <CABb+yY0ZEkU2fEoFcihDM0GPuNBkCJHYXfkq-+bLJY1xtbf5Jw@mail.gmail.com>
-Subject: Re: [PATCH] mailbox: Explicitly include correct DT includes
-To: Rob Herring <robh@kernel.org>
-Cc: Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	NXP Linux Team <linux-imx@nxp.com>, Conor Dooley <conor.dooley@microchip.com>, 
-	Daire McNamara <daire.mcnamara@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Michal Simek <michal.simek@amd.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-tegra@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: Re; Interest,
+To: linux-mediatek@lists.infradead.org
+From: "Chen Yun" <pso.chairmanbod@iesco.com.pk>
+Date: Tue, 22 Aug 2023 16:31:17 -0700
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrLLMWRmVeSWpSXmKPExsVyyUKGW/ey19MUgzt7rSwuN19kdGD02Lyk
+	PoAxissmJTUnsyy1SN8ugStjyboLLAW7mSva+hexNDA+Zupi5OSQEDCR2P1iHWMXIxeHkMAe
+	JolN/ZvBHBaB1cwS89qes0E4D5kl3p9uZYcoa2aUWPvvI1g/r4C1xKsj3awgNrOAnsSNqVPY
+	IOKCEidnPmGBiGtLLFv4mrmLkQPIVpP42lUCEhYWEJP4NG0ZO4gtAhReMO8n2Eg2AX2JFV+b
+	GUFsFgFViYOb3oONFxKQkth4ZT3bBEb+WUi2zUKybRaSbbMQti1gZFnFKFFcmZsIDLZkE73k
+	/NzixJJivbzUEr2C7E2MwEA8XaMpt4Nx6aXEQ4wCHIxKPLw/1z1JEWJNLAPqOsQowcGsJMIr
+	/f1hihBvSmJlVWpRfnxRaU5q8SFGaQ4WJXFeW6FnyUIC6YklqdmpqQWpRTBZJg5OqQZGH9lj
+	nRYTTt1e7H1Af6ob+4/wrtchXmdeLk+9cXzVgrx9zDWxH1NVlyXOOpu8ze5r9rSpqvPzLENP
+	vRG5XLKY+ZrYR+njbjtU8xR0N/iwf/0y04x5Ce/HN8y/shd7/Oqvmzh/34PEzhlRN/scnv4x
+	3520tE7f77Wi4VGm126zXiybJNG5mfulqBJLcUaioRZzUXEiAGBFaApAAgAA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230822_160521_129863_9456FF8C 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20230822_182426_619456_362EF743 
+X-CRM114-Status: UNSURE (   0.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,26 +83,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: chnyne@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 14, 2023 at 12:47=E2=80=AFPM Rob Herring <robh@kernel.org> wrot=
-e:
->
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
->
-> Signed-off-by: Rob Herring <robh@kernel.org>
->
-I thought I was to pick the patch. But I see you intend to do it. Np.
+Re; Interest,
 
-Acked-by: Jassi Brar <jassisinghbrar@gmail.com>
+I am interested in discussing the Investment proposal as I explained
+in my previous mail. May you let me know your interest and the
+possibility of a cooperation aimed for mutual interest.
 
-thanks
+Looking forward to your mail for further discussion.
+
+Regards
+
+------
+Chen Yun - Chairman of CREC
+China Railway Engineering Corporation - CRECG
+China Railway Plaza, No.69 Fuxing Road, Haidian District, Beijing, P.R.
+China
+
 
