@@ -4,86 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B39F7EE4993
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 08:46:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 597D1EE4996
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 11:36:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hlF1u7hcM0QcOf0dBRcVX4obCkl3j7F2WIt5v6FZgoU=; b=mxDBsWzQRV3N5UIBwVbz/97Gcn
-	52adDcn+fLrkWkv2RXZVKXIXfQaYhZSrRUewUhIcgXPB1ZcqQsSnsxydjkgiYo+19q/oO6lWXkV0Y
-	TribGyhZHV9IcYLTMYsvbflvBe/bTy9j/ngbg4zAqR/GfENUphYuPJBKTQaWBOJIjNaxTx+YLz4Ih
-	08U5LrDUPMvm2/ogTMrORZ1+lwhjwEjFQJS/fxVMjbxnCb29JjVHHFLGsS1nbYMkmzUPfx1wgUmwl
-	bzSSD41xzqzYWt8TkKp2/hhuJfQJ66yjvhwl+bKnq/o66SkK7lO4I43lwLgCUYWjIDTqsMBxy4CeN
-	d2y30czA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=V8MYCpwFVHc1G2glwhZCMk6jQmmaWvwwd3CGRLt62Ys=; b=V8AMS0U/NhVoIDVtBqdd2IURrr
+	v1e0ns9yE8lYUfX1vAszx6Po3lZk/4jzy62wQaRMQWX4tvE650SNn6r9akkNzxx29/m92MnoUQzS4
+	gBlch+aEtm8Ms4fodcvBhSDIYg6IpFTsr3FDh1bNFjPOCXe4mWusTl6Qm2zOvZFY0Ggqbwn92oDOf
+	PEAWbqDPVqr24IDpVr6p3Lt0r8UeV7Qu/W/3qpClJYsJ5ddsDeNjbcQUofTNOLWzKu0dwTskTrOpk
+	qJUkZqGSq+zNhgn9nZ4HDj69hhdmJVHwVqP2ZrMcR8Q5X/1/1L8d/+N3keGzAmla7ktMHmMS8I+cI
+	1LNDKw5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYN25-00FUmt-1Z;
-	Tue, 22 Aug 2023 08:46:37 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1qYPgY-00FplR-0M;
+	Tue, 22 Aug 2023 11:36:34 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYN1S-00FUJf-1Q
-	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Aug 2023 08:46:00 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-68a410316a2so1325138b3a.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 22 Aug 2023 01:45:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1692693958; x=1693298758;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=hlF1u7hcM0QcOf0dBRcVX4obCkl3j7F2WIt5v6FZgoU=;
-        b=mhxuhaGqh88+7Ene1JAl6kiwkMKSUNbySevMtCh45aHQzwcstAH3Zxc0tfaKCOyV1g
-         ZwwqbRmdYMX9iHwcax5SYaE3jG5u3ApPmK4LhMkh2aWnTo/Z5esP4OgtPTiTgS/X4fM8
-         loOv7lDpdU/vDqg55o1JV3nZuZZRDW4GO7AWQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692693958; x=1693298758;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=hlF1u7hcM0QcOf0dBRcVX4obCkl3j7F2WIt5v6FZgoU=;
-        b=h8GWeQq5DfszEtvlWcdvE5zw0sFqWaCSgsKAav/QaBICGh/59IUxOkhvZT7WFJcP3n
-         Fdu5qkzauG3VzdGOVLc6vQ3lvz7yv/r80akzXe1DzTrdqVha3QxKAIlGMoPmG0LMQWv5
-         Gj0FZ4xjff3SoNT4BESfAf9IF9BO66iKEfHkNJsrTJ9g8hs1Dz60sL3ZPirmHG1xuKeg
-         BLkhVytwNeDdCg/LlaQNpB41vR9VCYz8xf+RF9qOX3unJZAPRMaUdsTr6B1guT5rjtJ1
-         A+ExCqRiQugF4cdvzLN8cKvcIIVm4ioIqIQp1R4Al2fYT3c3FBjSz7hL+GkyZE43b06I
-         yhXQ==
-X-Gm-Message-State: AOJu0Ywu8Ux8AIjfMYKGDmRjDoFxcKQ7Jni1qt0ZxJCl5JeU0YceDwfy
-	cKznN3Q2xRjUd8LpT6tbKSvcbg==
-X-Google-Smtp-Source: AGHT+IHjB5kNMo/7EJRgipMgtPWyKH6stKI6IA+7/JLvg5/DHP/HLoq+swtjIZEl1DUHRTjCliTjJQ==
-X-Received: by 2002:a05:6a20:7347:b0:140:6979:2952 with SMTP id v7-20020a056a20734700b0014069792952mr7772550pzc.47.1692693957871;
-        Tue, 22 Aug 2023 01:45:57 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:e619:3fa0:1a90:6bb0])
-        by smtp.gmail.com with ESMTPSA id s26-20020aa78d5a000000b00666b012baedsm7304790pfe.158.2023.08.22.01.45.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Aug 2023 01:45:57 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Lee Jones <lee@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
+	id 1qYPgT-00Fpis-1N;
+	Tue, 22 Aug 2023 11:36:32 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1qYPg5-0006wL-27;
+	Tue, 22 Aug 2023 11:36:06 +0000
+Date: Tue, 22 Aug 2023 12:35:47 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Brown <broonie@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Zhiyong Tao <zhiyong.tao@mediatek.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 11/11] arm64: dts: mediatek: mt8183-kukui: Add PMIC regulator supplies
-Date: Tue, 22 Aug 2023 16:45:19 +0800
-Message-ID: <20230822084520.564937-12-wenst@chromium.org>
-X-Mailer: git-send-email 2.42.0.rc1.204.g551eb34607-goog
-In-Reply-To: <20230822084520.564937-1-wenst@chromium.org>
-References: <20230822084520.564937-1-wenst@chromium.org>
+Subject: Re: [PATCH net-next v3 1/2] dt-bindings: mt76: support setting
+ per-band MAC address
+Message-ID: <ZOSdk6LyTlCayG4i@makrotopia.org>
+References: <d3130584b64309da28a04826100643ff6239f9ca.1690841657.git.daniel@makrotopia.org>
+ <20230811190944.GA3730441-robh@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230811190944.GA3730441-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230822_014558_508259_AB8FF4E4 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20230822_043629_459081_37A2F894 
+X-CRM114-Status: GOOD (  32.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,63 +76,190 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PMIC regulator node is missing regulator supplies. Now that the
-binding supports them, add all the power rail supplies. Most of them
-are fed from a system-wide semi-regulated power rail. A couple LDOs
-are fed from the PMIC's own buck regulator outputs.
+On Fri, Aug 11, 2023 at 01:09:44PM -0600, Rob Herring wrote:
+> On Mon, Jul 31, 2023 at 11:23:16PM +0100, Daniel Golle wrote:
+> > Introduce support for setting individual per-band MAC addresses using
+> > NVMEM cells by adding a 'bands' object with enumerated child nodes
+> > representing the 2.4 GHz, 5 GHz and 6 GHz bands.
+> > 
+> > In case it is defined, call of_get_mac_address for the per-band child
+> > node, otherwise try with of_get_mac_address on the main device node and
+> > fall back to a random address like it used to be.
+> > 
+> > While at it, add MAC address related properties also for the main node.
+> > 
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > ---
+> > Changes since v2:
+> >  * drop items list with only a single item
+> > 
+> > Changes since v1:
+> >  * add dt-bindings
+> > 
+> >  .../bindings/net/wireless/mediatek,mt76.yaml  | 58 ++++++++++++++++++-
+> >  1 file changed, 57 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+> > index 252207adbc54c..7eafed53da1de 100644
+> > --- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+> > +++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+> > @@ -37,6 +37,12 @@ properties:
+> >      description:
+> >        MT7986 should contain 3 regions consys, dcm, and sku, in this order.
+> >  
+> > +  '#address-cells':
+> > +    const: 1
+> > +
+> > +  '#size-cells':
+> > +    const: 0
+> > +
+> >    interrupts:
+> >      maxItems: 1
+> >  
+> > @@ -72,13 +78,23 @@ properties:
+> >  
+> >    ieee80211-freq-limit: true
+> >  
+> > +  address: true
+> 
+> What's this? Not a documented property.
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 28 +++++++++++++++++++
- 1 file changed, 28 insertions(+)
+Maybe it should be documented then...?
+See
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/core/of_net.c#n140
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index 6ce16a265e05..d48c66cc8c18 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -103,6 +103,14 @@ pp3300_alw: regulator6 {
- 		regulator-max-microvolt = <3300000>;
- 	};
- 
-+	/* system wide semi-regulated power rail from charger */
-+	reg_vsys: regulator-vsys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vsys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+
- 	reserved_memory: reserved-memory {
- 		#address-cells = <2>;
- 		#size-cells = <2>;
-@@ -404,6 +412,26 @@ &mt6358codec {
- 	Avdd-supply = <&mt6358_vaud28_reg>;
- };
- 
-+&mt6358regulator {
-+	vsys-ldo1-supply = <&reg_vsys>;
-+	vsys-ldo2-supply = <&reg_vsys>;
-+	vsys-ldo3-supply = <&reg_vsys>;
-+	vsys-vcore-supply = <&reg_vsys>;
-+	vsys-vdram1-supply = <&reg_vsys>;
-+	vsys-vgpu-supply = <&reg_vsys>;
-+	vsys-vmodem-supply = <&reg_vsys>;
-+	vsys-vpa-supply = <&reg_vsys>;
-+	vsys-vproc11-supply = <&reg_vsys>;
-+	vsys-vproc12-supply = <&reg_vsys>;
-+	vsys-vs1-supply = <&reg_vsys>;
-+	vsys-vs2-supply = <&reg_vsys>;
-+	vs1-ldo1-supply = <&mt6358_vs1_reg>;
-+	vs2-ldo1-supply = <&mt6358_vdram1_reg>;
-+	vs2-ldo2-supply = <&mt6358_vs2_reg>;
-+	vs2-ldo3-supply = <&mt6358_vs2_reg>;
-+	vs2-ldo4-supply = <&mt6358_vs2_reg>;
-+};
-+
- &mt6358_vgpu_reg {
- 	regulator-min-microvolt = <625000>;
- 	regulator-max-microvolt = <900000>;
--- 
-2.42.0.rc1.204.g551eb34607-goog
+```
+int of_get_mac_address(struct device_node *np, u8 *addr)
+{
+	int ret;
 
+	if (!np)
+		return -ENODEV;
+
+	ret = of_get_mac_addr(np, "mac-address", addr);
+	if (!ret)
+		return 0;
+
+	ret = of_get_mac_addr(np, "local-mac-address", addr);
+	if (!ret)
+		return 0;
+
+	ret = of_get_mac_addr(np, "address", addr);
+	if (!ret)
+		return 0;
+
+	return of_get_mac_address_nvmem(np, addr);
+}
+EXPORT_SYMBOL(of_get_mac_address);
+```
+
+> 
+> 
+> > +
+> > +  local-mac-address: true
+> > +
+> > +  mac-address: true
+> 
+> You really need a ref to the schema defining these. But first we need to 
+> split them out from ethernet-controller.yaml. Which I think there were 
+> patches for, but it stalled out.
+> 
+
+I understand, so have a schema to include whenever of_net.c is used to
+assign a MAC address, and then use that for ethernet-controller.yaml and
+in places such as here.
+
+If you point me to the existing patches I can pick them up and address
+whatever needs to be addressed to get them merged.
+
+> Anyways, it's fine for now if you're not up for that.
+
+So just remove the (supposedly deprecated) "address: true" for now and
+then create an of_net MAC-address related schema and move things there
+after that?
+
+> 
+> > +
+> >    nvmem-cells:
+> > +    minItems: 1
+> >      items:
+> >        - description: NVMEM cell with EEPROM
+> > +      - description: NVMEM cell with the MAC address
+> >  
+> >    nvmem-cell-names:
+> > +    minItems: 1
+> >      items:
+> >        - const: eeprom
+> > +      - const: mac-address
+> >  
+> >    mediatek,eeprom-data:
+> >      $ref: /schemas/types.yaml#/definitions/uint32-array
+> > @@ -213,6 +229,29 @@ properties:
+> >                      description:
+> >                        Half-dBm power delta for different numbers of antennas
+> >  
+> > +patternProperties:
+> > +  '^band@[0-2]+$':
+> > +    type: object
+> > +    additionalProperties: false
+> > +    properties:
+> > +      reg:
+> > +        maxItems: 1
+> > +
+> > +      address: true
+> > +      local-mac-address: true
+> > +      mac-address: true
+> > +
+> > +      nvmem-cells:
+> > +        description: NVMEM cell with the MAC address
+> > +
+> > +      nvmem-cell-names:
+> > +        const: mac-address
+> > +
+> > +    required:
+> > +      - reg
+> > +
+> > +    unevaluatedProperties: false
+> > +
+> >  required:
+> >    - compatible
+> >    - reg
+> > @@ -225,10 +264,13 @@ examples:
+> >        #address-cells = <3>;
+> >        #size-cells = <2>;
+> >        wifi@0,0 {
+> > +        #address-cells = <1>;
+> > +        #size-cells = <0>;
+> >          compatible = "mediatek,mt76";
+> >          reg = <0x0000 0 0 0 0>;
+> >          ieee80211-freq-limit = <5000000 6000000>;
+> > -        mediatek,mtd-eeprom = <&factory 0x8000>;
+> > +        nvmem-cells = <&factory_eeprom>;
+> > +        nvmem-cell-names = "eeprom";
+> >          big-endian;
+> >  
+> >          led {
+> > @@ -257,6 +299,20 @@ examples:
+> >               };
+> >            };
+> >          };
+> > +
+> > +        band@0 {
+> > +          /* 2.4 GHz */
+> > +          reg = <0>;
+> > +          nvmem-cells = <&macaddr 0x4>;
+> > +          nvmem-cell-names = "mac-address";
+> > +        };
+> > +
+> > +        band@1 {
+> > +          /* 5 GHz */
+> > +          reg = <1>;
+> > +          nvmem-cells = <&macaddr 0xa>;
+> > +          nvmem-cell-names = "mac-address";
+> > +        };
+> >        };
+> >      };
+> >  
+> > -- 
+> > 2.41.0
 
