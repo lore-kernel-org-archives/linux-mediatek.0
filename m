@@ -4,69 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD1AAEE4993
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 13:16:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 739CAEE49A3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Aug 2023 13:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vbpmQGSbg9GwepGzPYZFsjBMlo/NnZm/4woU+HdpGyE=; b=HyRSxnID5lB1tQCSbzRgRxse+m
-	VcV0F+gHEhkKrEUYAKk7eRvSg5J/gmImZep4UBg3nqVjXy99NfbGDNAN3c3HEbmIWU0Lh9g+2ymsM
-	xPmYox7fmtGeh8XpCoM0iwp4vMw8FrJZnm+L26+r4vmHXSWLWZKtYYKVybudpnuEMxzglIZClyZPe
-	o6xKeAlrqntqWypXuf8RTMlAb+v2pghgqMQel9VaVkqXQh/SAxkCMxrTbZR3jd54c8FwQcvYJkkZX
-	QjQ9fy0FcVBczR/3H4K4cqGKqRhBHQlxj8/aprtvLlef5XY7LnwxeLoNa+t1fvjtHy/rfWiF05Clu
-	tIR8xEAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XmBYoWGzylVDV1lmlCTNWMBiGwgRTxQyh02g5UOnlF4=; b=YfLCC6nfmT296GvKfzWkLHt7lP
+	NeWf3hGqIac8ZKD7HJR2bLkc0ZR7cm7WrrBwJuReVfGwOG0SCe905VqwWwYhvQ0tfuZuxHB4NoHBG
+	5Xj9vF+MA0IR4k+hC4LLujn476MME75lMiYJttleAxSNWMMe3OI0xThuYXBYbAlgB+Iary7+KAm19
+	zXsrT7WV5Ys26xugpTXDe2kFQS9uCmTBoTdtTt9UAHs5wkpym5YHAwXDfWsDd6PBk1IGjzjLM0UQR
+	6rotmzDDE+oPBx9U+gSLCkr6TanDEhx4oRS+7MDfhZrNgKQCdWBrP29ExQcdADWDHbncMAuW5uPgg
+	xo8H/KLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYRFA-00G1CL-2T;
-	Tue, 22 Aug 2023 13:16:24 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1qYRPb-00G2rH-1C;
+	Tue, 22 Aug 2023 13:27:11 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYRCA-00FxlB-2p;
-	Tue, 22 Aug 2023 13:13:21 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.54])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RVV706V9xztSDs;
-	Tue, 22 Aug 2023 21:09:32 +0800 (CST)
-Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
- (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Tue, 22 Aug
- 2023 21:13:15 +0800
-From: Li Zetao <lizetao1@huawei.com>
-To: <broonie@kernel.org>, <chin-ting_kuo@aspeedtech.com>, <clg@kaod.org>,
-	<joel@jms.id.au>, <andrew@aj.id.au>, <florian.fainelli@broadcom.com>,
-	<rjui@broadcom.com>, <sbranden@broadcom.com>,
-	<bcm-kernel-feedback-list@broadcom.com>, <fancer.lancer@gmail.com>,
-	<olteanv@gmail.com>, <neil.armstrong@linaro.org>, <khilman@baylibre.com>,
-	<jbrunet@baylibre.com>, <martin.blumenstingl@googlemail.com>,
-	<conor.dooley@microchip.com>, <daire.mcnamara@microchip.com>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<avifishman70@gmail.com>, <tmaimon77@gmail.com>, <tali.perry1@gmail.com>,
-	<venture@google.com>, <yuenn@google.com>, <benjaminfair@google.com>,
-	<linus.walleij@linaro.org>, <heiko@sntech.de>
-CC: <lizetao1@huawei.com>, <linux-spi@vger.kernel.org>,
-	<linux-aspeed@lists.ozlabs.org>, <openbmc@lists.ozlabs.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<linux-rpi-kernel@lists.infradead.org>, <linux-amlogic@lists.infradead.org>,
-	<linux-riscv@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>
-Subject: [PATCH -next 25/25] spi: rockchip: Use helper function devm_clk_get_enabled()
-Date: Tue, 22 Aug 2023 21:12:37 +0800
-Message-ID: <20230822131237.1022815-26-lizetao1@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230822131237.1022815-1-lizetao1@huawei.com>
-References: <20230822131237.1022815-1-lizetao1@huawei.com>
+	id 1qYRPX-00G2q8-2j;
+	Tue, 22 Aug 2023 13:27:09 +0000
+X-UUID: 8d5c9c1840ef11ee83ed1395ce914268-20230822
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=XmBYoWGzylVDV1lmlCTNWMBiGwgRTxQyh02g5UOnlF4=;
+	b=Vc8rElcems0pss9uScf2ngO2oHlmN4uBhE+7X7Jn+025m0ZxU3vTuw1/0CpYSvr0A8MjTrpA6zgSyh4dH4rL4LRG+hwnJ8FAafxcy3JEq8Njaia/bSteANHqozhpSMBnxNoh94n+5nMlf9Dgov5zNxx1VPX21MUN5PhqFW9Ezws=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:2be62554-7447-4d70-91bf-79567b87721c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:2f190f13-4929-4845-9571-38c601e9c3c9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 8d5c9c1840ef11ee83ed1395ce914268-20230822
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1087974408; Tue, 22 Aug 2023 06:26:50 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 22 Aug 2023 21:26:48 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 22 Aug 2023 21:26:48 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>, Eugen Hristev
+	<eugen.hristev@collabora.com>, Jason-ch Chen <jason-ch.chen@mediatek.com>,
+	Johnson Wang <johnson.wang@mediatek.com>, "Jason-JH . Lin"
+	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Nancy
+ Lin <nancy.lin@mediatek.com>, Shawn Sung <shawn.sung@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH] drm/mediatek: Add spinlock for setting vblank event in atomic_begin
+Date: Tue, 22 Aug 2023 21:26:46 +0800
+Message-ID: <20230822132646.9811-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-Originating-IP: [10.90.53.73]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- kwepemi500012.china.huawei.com (7.221.188.12)
-X-CFilter-Loop: Reflected
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230822_061319_430132_43099D50 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20230822_062707_888572_9F747014 
+X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,103 +89,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-replaced by devm_clk_get_enabled() when driver enables (and possibly
-prepares) the clocks for the whole lifetime of the device. Moreover, it is
-no longer necessary to unprepare and disable the clocks explicitly.
+Add spinlock protection to avoid race condition on vblank event
+between mtk_drm_crtc_atomic_begin() and mtk_drm_finish_page_flip().
 
-Signed-off-by: Li Zetao <lizetao1@huawei.com>
+Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 ---
- drivers/spi/spi-rockchip.c | 30 +++++-------------------------
- 1 file changed, 5 insertions(+), 25 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index a37943847e81..cdbb86049d59 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -782,42 +782,30 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 		goto err_put_ctlr;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index d40142842f85..128a672fe3c9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -746,6 +746,9 @@ static void mtk_drm_crtc_atomic_begin(struct drm_crtc *crtc,
+ 									  crtc);
+ 	struct mtk_crtc_state *mtk_crtc_state = to_mtk_crtc_state(crtc_state);
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
++	unsigned long flags;
++
++	spin_lock_irqsave(&crtc->dev->event_lock, flags);
+ 
+ 	if (mtk_crtc->event && mtk_crtc_state->base.event)
+ 		DRM_ERROR("new event while there is still a pending event\n");
+@@ -756,6 +759,8 @@ static void mtk_drm_crtc_atomic_begin(struct drm_crtc *crtc,
+ 		mtk_crtc->event = mtk_crtc_state->base.event;
+ 		mtk_crtc_state->base.event = NULL;
  	}
++
++	spin_unlock_irqrestore(&crtc->dev->event_lock, flags);
+ }
  
--	rs->apb_pclk = devm_clk_get(&pdev->dev, "apb_pclk");
-+	rs->apb_pclk = devm_clk_get_enabled(&pdev->dev, "apb_pclk");
- 	if (IS_ERR(rs->apb_pclk)) {
- 		dev_err(&pdev->dev, "Failed to get apb_pclk\n");
- 		ret = PTR_ERR(rs->apb_pclk);
- 		goto err_put_ctlr;
- 	}
- 
--	rs->spiclk = devm_clk_get(&pdev->dev, "spiclk");
-+	rs->spiclk = devm_clk_get_enabled(&pdev->dev, "spiclk");
- 	if (IS_ERR(rs->spiclk)) {
- 		dev_err(&pdev->dev, "Failed to get spi_pclk\n");
- 		ret = PTR_ERR(rs->spiclk);
- 		goto err_put_ctlr;
- 	}
- 
--	ret = clk_prepare_enable(rs->apb_pclk);
--	if (ret < 0) {
--		dev_err(&pdev->dev, "Failed to enable apb_pclk\n");
--		goto err_put_ctlr;
--	}
--
--	ret = clk_prepare_enable(rs->spiclk);
--	if (ret < 0) {
--		dev_err(&pdev->dev, "Failed to enable spi_clk\n");
--		goto err_disable_apbclk;
--	}
--
- 	spi_enable_chip(rs, false);
- 
- 	ret = platform_get_irq(pdev, 0);
- 	if (ret < 0)
--		goto err_disable_spiclk;
-+		goto err_put_ctlr;
- 
- 	ret = devm_request_threaded_irq(&pdev->dev, ret, rockchip_spi_isr, NULL,
- 			IRQF_ONESHOT, dev_name(&pdev->dev), ctlr);
- 	if (ret)
--		goto err_disable_spiclk;
-+		goto err_put_ctlr;
- 
- 	rs->dev = &pdev->dev;
- 	rs->freq = clk_get_rate(rs->spiclk);
-@@ -843,7 +831,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 	if (!rs->fifo_len) {
- 		dev_err(&pdev->dev, "Failed to get fifo length\n");
- 		ret = -EINVAL;
--		goto err_disable_spiclk;
-+		goto err_put_ctlr;
- 	}
- 
- 	pm_runtime_set_autosuspend_delay(&pdev->dev, ROCKCHIP_AUTOSUSPEND_TIMEOUT);
-@@ -937,10 +925,6 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 		dma_release_channel(ctlr->dma_tx);
- err_disable_pm_runtime:
- 	pm_runtime_disable(&pdev->dev);
--err_disable_spiclk:
--	clk_disable_unprepare(rs->spiclk);
--err_disable_apbclk:
--	clk_disable_unprepare(rs->apb_pclk);
- err_put_ctlr:
- 	spi_controller_put(ctlr);
- 
-@@ -950,13 +934,9 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- static void rockchip_spi_remove(struct platform_device *pdev)
- {
- 	struct spi_controller *ctlr = spi_controller_get(platform_get_drvdata(pdev));
--	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
- 
- 	pm_runtime_get_sync(&pdev->dev);
- 
--	clk_disable_unprepare(rs->spiclk);
--	clk_disable_unprepare(rs->apb_pclk);
--
- 	pm_runtime_put_noidle(&pdev->dev);
- 	pm_runtime_disable(&pdev->dev);
- 	pm_runtime_set_suspended(&pdev->dev);
+ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
 -- 
-2.34.1
+2.18.0
 
 
