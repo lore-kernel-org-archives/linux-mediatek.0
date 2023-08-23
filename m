@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA390EE49B2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 13:42:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2275EE49B5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 13:42:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uFwkFVPo8uNKCNG5e93no7WP/mFNk5Sn22ELmwTblmE=; b=Ek1jqZZRy1R5lbgVrfAcMvxctY
-	yXFGk5IuJFrEtpHcTvd7sH2qiiX8Cec7MQch+FvxM1n/sbeWJb457uC5kQV+r4vCDbN8PKAXOqDVI
-	L2lQV9kI8cmMcbhCgBqb6pT1kZPCY49KS5dz3H9IU+qUzswps5NHlT1b8uGgpxH9RGCpMvCfn+GA8
-	pQ2a/nGntQSVz7cIkpoblgi6s9es3blq8UBnQqACv60VTp77PC3BEsUsByILlbdx9qdK+7TlmHYnA
-	SI1MGQhBWMnxn+RF2TqtiSBtrZ4ekRF56ytq7hDcHVxhaVxW8Ig86V0cxVg69boOFQsIRLmpwqduF
-	7rKTpnyg==;
+	bh=UGjB/bmUUYUImwJ22GyujDj+0/KdgUosuoLulBfeyw8=; b=hmorBHC1zee5++rJjuy+OkxRq0
+	bQm4yIoqD5h42n1mtskN1JCo5f14sZ69CeeW18w/CZXgbIe2MRb0VPkBE6PddrTGoxX6FJ1nlCirz
+	hFNJIZFBuoq6Mif4QbxY/SXrVxb9oItxogxi5cWat8aA9P9PCOubNyfiqXOaTTrVcN0OjyWb45570
+	9noVMxxncQWuYpecvqEEDYqlHMszXTgr8hwnTr5AJPgQj+yV8+lCy1oRLiF1dZ8HyMRVKs7F8m1Pz
+	EiFWnUnZ631ZWeymKTmpopEYuNXLBYto9ZAKmNmPA8zN29heTCDGQUG7C0wkCdAoNIqa5QvrmdjMU
+	dN90UlBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo7f-000jbW-0B;
-	Wed, 23 Aug 2023 13:42:11 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1qYo7i-000jfd-23;
+	Wed, 23 Aug 2023 13:42:14 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo5m-000hW9-2u;
-	Wed, 23 Aug 2023 13:40:18 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.56])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4RW6kB3rsyz16Nyl;
-	Wed, 23 Aug 2023 21:38:42 +0800 (CST)
+	id 1qYo5k-000hUL-2j;
+	Wed, 23 Aug 2023 13:40:17 +0000
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.57])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4RW6jF5Hc2zTm8S;
+	Wed, 23 Aug 2023 21:37:53 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 23 Aug
- 2023 21:40:10 +0800
+ 2023 21:40:08 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <lizetao1@huawei.com>
 CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
@@ -51,9 +51,9 @@ CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
 	<rjui@broadcom.com>, <sbranden@broadcom.com>, <tali.perry1@gmail.com>,
 	<tmaimon77@gmail.com>, <venture@google.com>, <yuenn@google.com>, Jonathan
  Cameron <Jonathan.Cameron@huawei.com>
-Subject: [PATCH -next v2 19/25] spi: mtk-snfi: Use helper function devm_clk_get_enabled()
-Date: Wed, 23 Aug 2023 21:39:32 +0800
-Message-ID: <20230823133938.1359106-20-lizetao1@huawei.com>
+Subject: [PATCH -next v2 17/25] spi: microchip-core-qspi: Use helper function devm_clk_get_enabled()
+Date: Wed, 23 Aug 2023 21:39:30 +0800
+Message-ID: <20230823133938.1359106-18-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230823133938.1359106-1-lizetao1@huawei.com>
 References: <20230822131237.1022815-1-lizetao1@huawei.com>
@@ -66,8 +66,8 @@ X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_064015_481437_8EF8D677 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20230823_064015_367271_A7CF4EFA 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,162 +87,84 @@ and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
 replaced by devm_clk_get_enabled() when driver enables (and possibly
 prepares) the clocks for the whole lifetime of the device. Moreover, it is
 no longer necessary to unprepare and disable the clocks explicitly.
-Also, devm_clk_get_optional() and clk_prepare_enable() can now be
-replaced by devm_clk_get_optional_enabled().Moreover, the two functions
-mtk_snand_enable_clk() and mtk_snand_disable_clk() no longer are used,
-drop them for clean code.
 
 Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
 v1 -> v2: None
 
- drivers/spi/spi-mtk-snfi.c | 61 ++++++--------------------------------
- 1 file changed, 9 insertions(+), 52 deletions(-)
+ drivers/spi/spi-microchip-core-qspi.c | 29 +++++++--------------------
+ 1 file changed, 7 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
-index 4433a8a9299f..8ad5a4764855 100644
---- a/drivers/spi/spi-mtk-snfi.c
-+++ b/drivers/spi/spi-mtk-snfi.c
-@@ -1332,42 +1332,6 @@ static const struct of_device_id mtk_snand_ids[] = {
+diff --git a/drivers/spi/spi-microchip-core-qspi.c b/drivers/spi/spi-microchip-core-qspi.c
+index 4f76ddf97b10..396dfc0fa278 100644
+--- a/drivers/spi/spi-microchip-core-qspi.c
++++ b/drivers/spi/spi-microchip-core-qspi.c
+@@ -518,30 +518,23 @@ static int mchp_coreqspi_probe(struct platform_device *pdev)
+ 		return dev_err_probe(&pdev->dev, PTR_ERR(qspi->regs),
+ 				     "failed to map registers\n");
  
- MODULE_DEVICE_TABLE(of, mtk_snand_ids);
+-	qspi->clk = devm_clk_get(&pdev->dev, NULL);
++	qspi->clk = devm_clk_get_enabled(&pdev->dev, NULL);
+ 	if (IS_ERR(qspi->clk))
+ 		return dev_err_probe(&pdev->dev, PTR_ERR(qspi->clk),
+ 				     "could not get clock\n");
  
--static int mtk_snand_enable_clk(struct mtk_snand *ms)
--{
--	int ret;
--
--	ret = clk_prepare_enable(ms->nfi_clk);
--	if (ret) {
--		dev_err(ms->dev, "unable to enable nfi clk\n");
--		return ret;
--	}
--	ret = clk_prepare_enable(ms->pad_clk);
--	if (ret) {
--		dev_err(ms->dev, "unable to enable pad clk\n");
--		goto err1;
--	}
--	ret = clk_prepare_enable(ms->nfi_hclk);
--	if (ret) {
--		dev_err(ms->dev, "unable to enable nfi hclk\n");
--		goto err2;
--	}
--
--	return 0;
--
--err2:
--	clk_disable_unprepare(ms->pad_clk);
--err1:
--	clk_disable_unprepare(ms->nfi_clk);
--	return ret;
--}
--
--static void mtk_snand_disable_clk(struct mtk_snand *ms)
--{
--	clk_disable_unprepare(ms->nfi_hclk);
--	clk_disable_unprepare(ms->pad_clk);
--	clk_disable_unprepare(ms->nfi_clk);
--}
--
- static int mtk_snand_probe(struct platform_device *pdev)
- {
- 	struct device_node *np = pdev->dev.of_node;
-@@ -1406,49 +1370,45 @@ static int mtk_snand_probe(struct platform_device *pdev)
- 
- 	ms->dev = &pdev->dev;
- 
--	ms->nfi_clk = devm_clk_get(&pdev->dev, "nfi_clk");
-+	ms->nfi_clk = devm_clk_get_enabled(&pdev->dev, "nfi_clk");
- 	if (IS_ERR(ms->nfi_clk)) {
- 		ret = PTR_ERR(ms->nfi_clk);
- 		dev_err(&pdev->dev, "unable to get nfi_clk, err = %d\n", ret);
- 		goto release_ecc;
- 	}
- 
--	ms->pad_clk = devm_clk_get(&pdev->dev, "pad_clk");
-+	ms->pad_clk = devm_clk_get_enabled(&pdev->dev, "pad_clk");
- 	if (IS_ERR(ms->pad_clk)) {
- 		ret = PTR_ERR(ms->pad_clk);
- 		dev_err(&pdev->dev, "unable to get pad_clk, err = %d\n", ret);
- 		goto release_ecc;
- 	}
- 
--	ms->nfi_hclk = devm_clk_get_optional(&pdev->dev, "nfi_hclk");
-+	ms->nfi_hclk = devm_clk_get_optional_enabled(&pdev->dev, "nfi_hclk");
- 	if (IS_ERR(ms->nfi_hclk)) {
- 		ret = PTR_ERR(ms->nfi_hclk);
- 		dev_err(&pdev->dev, "unable to get nfi_hclk, err = %d\n", ret);
- 		goto release_ecc;
- 	}
- 
--	ret = mtk_snand_enable_clk(ms);
+-	ret = clk_prepare_enable(qspi->clk);
 -	if (ret)
--		goto release_ecc;
+-		return dev_err_probe(&pdev->dev, ret,
+-				     "failed to enable clock\n");
 -
- 	init_completion(&ms->op_done);
+ 	init_completion(&qspi->data_completion);
+ 	mutex_init(&qspi->op_lock);
  
- 	ms->irq = platform_get_irq(pdev, 0);
- 	if (ms->irq < 0) {
- 		ret = ms->irq;
--		goto disable_clk;
-+		goto release_ecc;
- 	}
- 	ret = devm_request_irq(ms->dev, ms->irq, mtk_snand_irq, 0x0,
- 			       "mtk-snand", ms);
- 	if (ret) {
- 		dev_err(ms->dev, "failed to request snfi irq\n");
--		goto disable_clk;
-+		goto release_ecc;
- 	}
+ 	qspi->irq = platform_get_irq(pdev, 0);
+-	if (qspi->irq < 0) {
+-		ret = qspi->irq;
+-		goto out;
+-	}
++	if (qspi->irq < 0)
++		return qspi->irq;
  
- 	ret = dma_set_mask(ms->dev, DMA_BIT_MASK(32));
+ 	ret = devm_request_irq(&pdev->dev, qspi->irq, mchp_coreqspi_isr,
+ 			       IRQF_SHARED, pdev->name, qspi);
  	if (ret) {
- 		dev_err(ms->dev, "failed to set dma mask\n");
--		goto disable_clk;
-+		goto release_ecc;
+ 		dev_err(&pdev->dev, "request_irq failed %d\n", ret);
+-		goto out;
++		return ret;
  	}
  
- 	// switch to SNFI mode
-@@ -1472,7 +1432,7 @@ static int mtk_snand_probe(struct platform_device *pdev)
- 	ret = mtk_snand_setup_pagefmt(ms, SZ_2K, SZ_64);
- 	if (ret) {
- 		dev_err(ms->dev, "failed to set initial page format\n");
--		goto disable_clk;
-+		goto release_ecc;
- 	}
+ 	ctlr->bits_per_word_mask = SPI_BPW_MASK(8);
+@@ -552,18 +545,11 @@ static int mchp_coreqspi_probe(struct platform_device *pdev)
+ 	ctlr->dev.of_node = np;
  
- 	// setup ECC engine
-@@ -1484,7 +1444,7 @@ static int mtk_snand_probe(struct platform_device *pdev)
- 	ret = nand_ecc_register_on_host_hw_engine(&ms->ecc_eng);
- 	if (ret) {
- 		dev_err(&pdev->dev, "failed to register ecc engine.\n");
--		goto disable_clk;
-+		goto release_ecc;
- 	}
- 
- 	ctlr->num_chipselect = 1;
-@@ -1496,12 +1456,10 @@ static int mtk_snand_probe(struct platform_device *pdev)
- 	ret = spi_register_controller(ctlr);
- 	if (ret) {
- 		dev_err(&pdev->dev, "spi_register_controller failed.\n");
--		goto disable_clk;
-+		goto release_ecc;
- 	}
+ 	ret = devm_spi_register_controller(&pdev->dev, ctlr);
+-	if (ret) {
+-		dev_err_probe(&pdev->dev, ret,
+-			      "spi_register_controller failed\n");
+-		goto out;
+-	}
++	if (ret)
++		return dev_err_probe(&pdev->dev, ret,
++				     "spi_register_controller failed\n");
  
  	return 0;
--disable_clk:
--	mtk_snand_disable_clk(ms);
- release_ecc:
- 	mtk_ecc_release(ms->ecc);
- 	return ret;
-@@ -1513,7 +1471,6 @@ static void mtk_snand_remove(struct platform_device *pdev)
- 	struct mtk_snand *ms = spi_controller_get_devdata(ctlr);
- 
- 	spi_unregister_controller(ctlr);
--	mtk_snand_disable_clk(ms);
- 	mtk_ecc_release(ms->ecc);
- 	kfree(ms->buf);
+-
+-out:
+-	clk_disable_unprepare(qspi->clk);
+-
+-	return ret;
  }
+ 
+ static void mchp_coreqspi_remove(struct platform_device *pdev)
+@@ -574,7 +560,6 @@ static void mchp_coreqspi_remove(struct platform_device *pdev)
+ 	mchp_coreqspi_disable_ints(qspi);
+ 	control &= ~CONTROL_ENABLE;
+ 	writel_relaxed(control, qspi->regs + REG_CONTROL);
+-	clk_disable_unprepare(qspi->clk);
+ }
+ 
+ static const struct of_device_id mchp_coreqspi_of_match[] = {
 -- 
 2.34.1
 
