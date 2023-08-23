@@ -4,74 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C8A4EE49A5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 01:24:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A166CEE49A3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 03:54:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:From:To:
-	Subject:Content-Description:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Message-ID:Cc:Content-ID:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GMzYzcyTxDsE6wX/XHG6MHqAdAiHrhqbmmLQ/TZ1QnQ=; b=p2+AGdo+2PD+HtX70oqfHC37mT
-	7QGE8bqIXp5DItdzTsLD+lfpwL1HTu0RDxCtMFgR6G5bRbxE8UscY/u1gRAxWDpIVRWQzHAfhfaMD
-	NpmvYEZ4E3YM+qkGc/ngizYK6t7F+NGYBLZ/v7Rl6qNBm1V2KcCzlpZBUp3nPwPsCi8OaJl/NoASG
-	hiwaNtHcoK6G9tqe05E0a9A0ol6nag0SryL4S9uw6YjgQfPovBPZjcLdOh3WnlgUxW6hAoA8Fk/c+
-	uaQ4KXL3DR3o6cNRAhiKTS6GB1+nlvt8aSru3QzJj0CklyvSU5Cn2qHRkjaog3B4Ca8g73dxuG+cB
-	e4vorhSA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PpgSyn7xJbJ2ia+L5enewNstSLbJUwgFsy1ZDAGcYqY=; b=U+cJ/A8y3308sD34aYqosaOYkb
+	S/ONRxSLPiVzjpDicLEABiA79mKJllVigejNsRsml1rgorLaH3GEl4I7hYiC1X6E7PT/TMubuGRuf
+	AbORtn4Xxp73bNLPePwP6h1doyz5UJqvPQYve94x/l2IUpyPWcqjkJv/tRbuJ7tAXzuH+TmNVGRHo
+	b3ZBpPqzooUZ2rf0pplNMz/82SRrvJdQfomJre1Y4u7Q/lRnFMoKFesjcMSu22v7BVeQb5MkaQk64
+	UDLNN1BAy/eAcmgH+HmlR/yRwZd3rj4bnZ0T9/sQ8EEjVWKTpIg1Rl56mf7ThVv1AV3dwOzuZIBMq
+	IXExfV5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYcbl-00H0tq-1u;
-	Wed, 23 Aug 2023 01:24:29 +0000
-Received: from symantec4.comsats.net.pk ([203.124.41.30])
+	id 1qYexA-00HAgj-0K;
+	Wed, 23 Aug 2023 03:54:44 +0000
+Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYcbi-00H0rg-0z
+	id 1qYex6-00HAfh-2S
 	for linux-mediatek@lists.infradead.org;
-	Wed, 23 Aug 2023 01:24:27 +0000
-X-AuditID: cb7c291e-055ff70000002aeb-36-64e54ad3c2a4
-Received: from iesco.comsatshosting.com (iesco.comsatshosting.com [210.56.28.11])
-	(using TLS with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
-	(Client did not present a certificate)
-	by symantec4.comsats.net.pk (Symantec Messaging Gateway) with SMTP id EF.CA.10987.3DA45E46; Wed, 23 Aug 2023 04:54:59 +0500 (PKT)
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns;
-        d=iesco.com.pk; s=default;
-        h=received:content-type:mime-version:content-transfer-encoding
-          :content-description:subject:to:from:date:reply-to;
-        b=jMUWROgm9Z5EnwMR/bNhs70wLftW53xZY2+tlgFbR0A7EmdrCXto11svj//f1R1cQ
-          dZCUHNag6o2Ty06s0H4uDNWKzKBBGZA/PtF7tpoHaVV9ep0FdyFDcOfJGpZGSpuSX
-          HHqT76/LwD0cTbDBg31Q65wYiF5GVbbBTQvNyM0zo=
+	Wed, 23 Aug 2023 03:54:42 +0000
+Received: by mail-ua1-x932.google.com with SMTP id a1e0cc1a2514c-7a257fabae5so1140676241.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 22 Aug 2023 20:54:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=iesco.com.pk; s=default;
-        h=reply-to:date:from:to:subject:content-description
-          :content-transfer-encoding:mime-version:content-type;
-        bh=GMzYzcyTxDsE6wX/XHG6MHqAdAiHrhqbmmLQ/TZ1QnQ=;
-        b=MZ+BQMHCvy94b+vzTTx+x+OUuZ4KOlXmntpG3EQgns4kexBFSFy57EOatrd3T0X/V
-          PrXHHrVkJEk2YJwl08HhDj6xuGryaFbVhaQFtyfxsl2rHpm/ty2UnKPvU4UEEfbGS
-          Xvk+JveyhfmRQ7/yqGnBAUwZ9o217BMmRhVTXMEHg=
-Received: from [94.156.6.90] (UnknownHost [94.156.6.90]) by iesco.comsatshosting.com with SMTP;
-   Wed, 23 Aug 2023 04:31:03 +0500
-Message-ID: <EF.CA.10987.3DA45E46@symantec4.comsats.net.pk>
-Content-Type: text/plain; charset="iso-8859-1"
+        d=chromium.org; s=google; t=1692762878; x=1693367678;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=PpgSyn7xJbJ2ia+L5enewNstSLbJUwgFsy1ZDAGcYqY=;
+        b=ZaVctbrBfkzXLNwJzOUDXAG923TLvSVpZLakRz0pr87hUdv3ji43rI6flITSmVn97s
+         0GsVe/Bj2jtCJC1ibxYAtWWaPjKmPDS6WT+EQnbC9bLNSFtRNODixcCs3CAYj0egtFUl
+         1o/DOg8zT1NKQxs8r2OgoanlufkClIcNRlH8E=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692762878; x=1693367678;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=PpgSyn7xJbJ2ia+L5enewNstSLbJUwgFsy1ZDAGcYqY=;
+        b=frwQi9tpPmBPims+UGgHmwcEzv/ngON6Q0K9geXRgB5aJnbKWJ/ZULjlYmCzYUIwkm
+         iG21HzOieXiebB7osU24TCbV3AVbh0Eg5jqoxa6jCKOASg3oIUixifx4tmX8p4G4l9yc
+         1J/BPO9yVZwONWTPp6qA5p/TWrHV5FGz5tHK5AbyUjZwkaLZodXiirTMSk1ueALP50bU
+         tIZ/y4Cs4qQv5WLUD9uFI9akZTqayl1Pr5HsXO26fl8kFMq3N7EPiHQoba/h79clw0oZ
+         hgvmAfjcsxc2JF/BIBfDI6UZR09xyxaGOnSM7l0cwPP4BgquV59310svunKc3GwywYDU
+         wcjg==
+X-Gm-Message-State: AOJu0Yzvw/W4s6kPLE4GGwWAQBaBhatMPkkQVALsdEatFxiuTdqm6B5U
+	UUj/eZru3HdtO4RLCYoom98bz7mYzFzdUaNiozYJ1A==
+X-Google-Smtp-Source: AGHT+IGeb5cnr2HQwWpeveiYpAoaqUO+M9ALIglCvEP4e2MermSqivcFXfRWShboeciowdTOYhCl/FeBH0LwVp27qHI=
+X-Received: by 2002:a67:de06:0:b0:44d:3c1b:2dc0 with SMTP id
+ q6-20020a67de06000000b0044d3c1b2dc0mr8182225vsk.26.1692762878173; Tue, 22 Aug
+ 2023 20:54:38 -0700 (PDT)
 MIME-Version: 1.0
+References: <20230822084520.564937-1-wenst@chromium.org> <20230822084520.564937-4-wenst@chromium.org>
+ <5ad5ff92-1367-ba96-b126-da80511a2769@linaro.org>
+In-Reply-To: <5ad5ff92-1367-ba96-b126-da80511a2769@linaro.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 23 Aug 2023 11:54:27 +0800
+Message-ID: <CAGXv+5Gc+R-hUJi5gm8an+dkq3JMD2JGwP4kDakKaHbAX2P0gQ@mail.gmail.com>
+Subject: Re: [PATCH v2 03/11] regulator: dt-bindings: mt6358: Convert to DT schema
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Mark Brown <broonie@kernel.org>, 
+	Zhiyong Tao <zhiyong.tao@mediatek.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-Subject: Re; Interest,
-To: linux-mediatek@lists.infradead.org
-From: "Chen Yun" <pso.chairmanbod@iesco.com.pk>
-Date: Tue, 22 Aug 2023 16:31:17 -0700
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrLLMWRmVeSWpSXmKPExsVyyUKGW/ey19MUgzt7rSwuN19kdGD02Lyk
-	PoAxissmJTUnsyy1SN8ugStjyboLLAW7mSva+hexNDA+Zupi5OSQEDCR2P1iHWMXIxeHkMAe
-	JolN/ZvBHBaB1cwS89qes0E4D5kl3p9uZYcoa2aUWPvvI1g/r4C1xKsj3awgNrOAnsSNqVPY
-	IOKCEidnPmGBiGtLLFv4mrmLkQPIVpP42lUCEhYWEJP4NG0ZO4gtAhReMO8n2Eg2AX2JFV+b
-	GUFsFgFViYOb3oONFxKQkth4ZT3bBEb+WUi2zUKybRaSbbMQti1gZFnFKFFcmZsIDLZkE73k
-	/NzixJJivbzUEr2C7E2MwEA8XaMpt4Nx6aXEQ4wCHIxKPLw/1z1JEWJNLAPqOsQowcGsJMIr
-	/f1hihBvSmJlVWpRfnxRaU5q8SFGaQ4WJXFeW6FnyUIC6YklqdmpqQWpRTBZJg5OqQZGH9lj
-	nRYTTt1e7H1Af6ob+4/wrtchXmdeLk+9cXzVgrx9zDWxH1NVlyXOOpu8ze5r9rSpqvPzLENP
-	vRG5XLKY+ZrYR+njbjtU8xR0N/iwf/0y04x5Ce/HN8y/shd7/Oqvmzh/34PEzhlRN/scnv4x
-	3520tE7f77Wi4VGm126zXiybJNG5mfulqBJLcUaioRZzUXEiAGBFaApAAgAA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230822_182426_619456_362EF743 
-X-CRM114-Status: UNSURE (   0.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230822_205440_795620_A1F149DF 
+X-CRM114-Status: GOOD (  16.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,24 +88,89 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: chnyne@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Re; Interest,
+On Wed, Aug 23, 2023 at 3:47=E2=80=AFAM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+>
+> On 22/08/2023 10:45, Chen-Yu Tsai wrote:
+> > Convert this from the old style text based binding to the new DT schema
+> > style. This will make adding the MT6366 portion easier.
+> >
+> > The examples have been trimmed down considerably, and the remaining
+> > entries now match what is seen in actual device trees.
+>
+> ...
+>
+> > +---
+> > +$id: http://devicetree.org/schemas/regulator/mediatek,mt6358-regulator=
+.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: MediaTek MT6358 Regulator
+> > +
+> > +maintainers:
+> > +  - Zhiyong Tao <zhiyong.tao@mediatek.com>
+> > +
+> > +description: |
+>
+> Do not need '|' unless you need to preserve formatting.
 
-I am interested in discussing the Investment proposal as I explained
-in my previous mail. May you let me know your interest and the
-possibility of a cooperation aimed for mutual interest.
+Ack.
 
-Looking forward to your mail for further discussion.
+> > +  Regulator node of the PMIC. This node should under the PMIC's device=
+ node.
+> > +  All voltage regulators provided by the PMIC are described as sub-nod=
+es of
+> > +  this node.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: mediatek,mt6358-regulator
+> > +
+> ...
+>
+>
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/regulator/mediatek,mt6397-regulator.h>
+>
+> mt6397?
+>
+> > +
+> > +    regulator {
+> > +        compatible =3D "mediatek,mt6358-regulator";
+> > +
+> > +        buck_vgpu {
+> > +            regulator-name =3D "vgpu";
+> > +            regulator-min-microvolt =3D <625000>;
+> > +            regulator-max-microvolt =3D <900000>;
+> > +            regulator-ramp-delay =3D <6250>;
+> > +            regulator-enable-ramp-delay =3D <200>;
+> > +            regulator-allowed-modes =3D <MT6397_BUCK_MODE_AUTO
+>
+> mt6397?
+>
+> Both cases look a bit confusing.
 
-Regards
+There's only two regulator binding header files, mt6397 and mt6360.
+They seem to correspond to the two classes of PMICs that MediaTek has.
+I believe the two header files and thus the macros are meant to be
+shared?
 
-------
-Chen Yun - Chairman of CREC
-China Railway Engineering Corporation - CRECG
-China Railway Plaza, No.69 Fuxing Road, Haidian District, Beijing, P.R.
-China
+MT6397 and co refer to their AP PMICs, i.e. PMICs that are companion
+chips to the SoC and provide most of the power rails a system needs,
+along with things like RTC, audio codecs, etc.. The MT6358 and MT6366
+belong to this class.
 
+MT6360 and possibly others refer to their charger PMICs, which integrate
+a battery charger, USB type-C PD stuff, LED drivers, and a handful of
+regulators.
+
+
+ChenYu
 
