@@ -4,91 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BE79EE49A0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 14:35:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 730BEEE49B5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 15:14:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k2TgiqCmPSnILANt5GZ18rswgB/K69rSR8VLR5YONDs=; b=gfH14eWvjkmDIOAXp66YKfDY8t
-	Il6jff9hqGiagWZzFsZFFZtHmXZCo9Hz4JPPB3Xz1nqrh4tVhJ0JZnpyEme5TayWw/YVgbLmKFm/g
-	uWH5jKU6AfIfpthdlb+57kJ6milxpykjCK0E2xG9i0EGVELEJymgohnCY32/uu35+Jn7rsEbRNdua
-	hhXyCkI/k+UutL/5laQ0CA92p/ePObDU7Xnh05oroTrENohKLCFd+qOnIRg2qA1BJ+QdDKZbtBbk+
-	5F8GRQugryT56Ep0uS602+ibmWkeksvsGpR3dg6en747NDK3PcHrHwXx0OnQADb8QmRMTXV0/TLOd
-	8tMEiZ3g==;
+	bh=vjHuAJtTxIQICn+XE23r+luFt5cxy+hHcBNHmzHlyYE=; b=5A96y/5gymvDNYBSTToPI4PVr7
+	yn8MbiP6nNxa7c+IWmJZLuyCYNPfy57pnpE9cjBnN6347PwH8QPtBLQIaPm+nofFe4/L9DxtJBfZY
+	B1UnjLKqOC06ZpcvyQpWdybaZemtQtZSM+Vi18U/6/WV5izsjOEmUUgqaJFQ5q80mIjhaxnctlkBz
+	+D+YUMacuYXsZZTSoQ98CKWQ0FMnuhKt6UnfofXcvYpUIh+qcaNBIl75h50BfrJCa9F38vd+0yw35
+	nGBwaAHBonbRDj46TzhCBXt9o6ntjZj3XydBFnS37IPlrbDFMtZemP/nk8W+/c525T9z3olKhbSQa
+	WZTdjJcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYoxf-000rKy-1l;
-	Wed, 23 Aug 2023 14:35:55 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1qYpYe-000w2L-0m;
+	Wed, 23 Aug 2023 15:14:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYoxb-000rHo-0R;
-	Wed, 23 Aug 2023 14:35:52 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-4ff8cf11b90so8952445e87.1;
-        Wed, 23 Aug 2023 07:35:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1692801340; x=1693406140;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=k2TgiqCmPSnILANt5GZ18rswgB/K69rSR8VLR5YONDs=;
-        b=RVzW2IYkj05E1QurcVWCK8Xr7hoWpAOpq6CNlM5mHjUNjLSfNyKWHfrrFTfD9jQ3sy
-         eDWbgQ442RcyjicydLE6/q60tWpJdy6owEAJS82xvbIcbBMG5mL58fFkQ2ll1I6CDNZk
-         sy57Jl1xt9HL9jEtz8CEZQj7WMl/hyN2A+zsuaCdZqYXcjp81CxeZbRcdAYxDsGZ/QXS
-         kSenj8ixe68J2WE8rMsSlvpz33p80M3zhzSMOE/X5uDBSnWHA9seXSpGOUV4gvZnTFxZ
-         Yv0Aegrg6xvVhrq6m+Gl4RABhOtV9dWhz9ongXNlT9GqtGbxTGyhdc9vo0S9nFxBcNYJ
-         nYuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692801340; x=1693406140;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=k2TgiqCmPSnILANt5GZ18rswgB/K69rSR8VLR5YONDs=;
-        b=fvZk26vBQLwDUU75lDggzhrlFPKcwA+ThgtXWQFLQVlF0B4iT3GMbtbOfdiA/MvptK
-         IDun3tYmraoi7E1JvzjgT/LT6/p4M95mfTxizgkAJN6pC5AG8xLBPg0W942p4OA3splU
-         +dw0BVHUng2S62JnZ7pjAJ2OjP1hiDsm34YqMix95OORfYh2WvXlqyS+llOvIytOKVZg
-         FiyNYvN5/o9Kj6Bmw+p5Tb/lknievhOBXRfHJCvPo7x8B9m8Zpn+sOKLSw56j3Iga8H4
-         /c6R78oUu9zve8onU7Uf0TDPcMDs0/xVa1OV++xL+8oITKKm9sKSBREE67cSQXFulXbX
-         z+zQ==
-X-Gm-Message-State: AOJu0Yz/WZa11q04byfiMU0aPwfj+qXL0rUeu/VbkA9+QOg7DLRe/UtA
-	IIRoLV8zm+pS92D/AGpRrkA=
-X-Google-Smtp-Source: AGHT+IFj+DCY0sY2R0WBzy7d65Q9hoRnlsbk7tAiZi/tGbFHUyZQZNNjWy+pVOAk7a3V21jYp3uHGg==
-X-Received: by 2002:ac2:5f6a:0:b0:4fd:d517:fbd8 with SMTP id c10-20020ac25f6a000000b004fdd517fbd8mr8210729lfc.9.1692801340064;
-        Wed, 23 Aug 2023 07:35:40 -0700 (PDT)
-Received: from mobilestation ([178.176.56.174])
-        by smtp.gmail.com with ESMTPSA id d11-20020ac244cb000000b005009b4d5c14sm59710lfm.265.2023.08.23.07.35.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Aug 2023 07:35:39 -0700 (PDT)
-Date: Wed, 23 Aug 2023 17:35:35 +0300
-From: Serge Semin <fancer.lancer@gmail.com>
-To: Li Zetao <lizetao1@huawei.com>
-Cc: andrew@aj.id.au, angelogioacchino.delregno@collabora.com, 
-	avifishman70@gmail.com, bcm-kernel-feedback-list@broadcom.com, benjaminfair@google.com, 
-	broonie@kernel.org, chin-ting_kuo@aspeedtech.com, clg@kaod.org, 
-	conor.dooley@microchip.com, daire.mcnamara@microchip.com, florian.fainelli@broadcom.com, 
-	heiko@sntech.de, jbrunet@baylibre.com, joel@jms.id.au, khilman@baylibre.com, 
-	linus.walleij@linaro.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-spi@vger.kernel.org, 
-	martin.blumenstingl@googlemail.com, matthias.bgg@gmail.com, neil.armstrong@linaro.org, 
-	olteanv@gmail.com, openbmc@lists.ozlabs.org, rjui@broadcom.com, 
-	sbranden@broadcom.com, tali.perry1@gmail.com, tmaimon77@gmail.com, venture@google.com, 
-	yuenn@google.com, Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Subject: Re: [PATCH -next v2 11/25] spi: dw-bt1: Use helper function
- devm_clk_get_enabled()
-Message-ID: <xxosi2ymo7otqyfbmjlubezzedqw6ulwwhdmbdjbto7yaqw673@q673weupq67y>
-References: <20230822131237.1022815-1-lizetao1@huawei.com>
- <20230823133938.1359106-1-lizetao1@huawei.com>
- <20230823133938.1359106-12-lizetao1@huawei.com>
+	id 1qYpYb-000vyx-28;
+	Wed, 23 Aug 2023 15:14:07 +0000
+X-UUID: adb3918241c711ee912e1518a6540028-20230823
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vjHuAJtTxIQICn+XE23r+luFt5cxy+hHcBNHmzHlyYE=;
+	b=DDgYc9n/xAvvDAUdioDFCXUKq2dw8cqegi0XG+pB3Y12d0T5qP/SzdN834r61ownZ4fqrfw0KZ6q9Jq4EuYwSZuckdnRBFSpW8vOLMQILu8Tq1PFDRelYbwsG6uIXh6ljhQUtkp5Ld7lzTKCIhgcwXxpvX8ZFSQB4L06HoBAGfU=;
+X-CID-P-RULE: Spam_GS6885AD
+X-CID-O-INFO: VERSION:1.1.31,REQID:00207b1c-ad8e-41db-bfcc-89e09ccea0d7,IP:0,U
+	RL:0,TC:0,Content:100,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS6885AD,AC
+	TION:quarantine,TS:195
+X-CID-INFO: VERSION:1.1.31,REQID:00207b1c-ad8e-41db-bfcc-89e09ccea0d7,IP:0,URL
+	:0,TC:0,Content:100,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_US65DF41,ACTI
+	ON:quarantine,TS:195
+X-CID-META: VersionHash:0ad78a4,CLOUDID:aa04ab1f-33fd-4aaa-bb43-d3fd68d9d5ae,B
+	ulkID:230823231355BXHISX8G,BulkQuantity:1,Recheck:0,SF:19|48|38|29|28|17|8
+	01,TC:nil,Content:3,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,CO
+	L:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,
+	TF_CID_SPAM_FSD
+X-UUID: adb3918241c711ee912e1518a6540028-20230823
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <shawn.sung@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1710288749; Wed, 23 Aug 2023 08:13:56 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 23 Aug 2023 23:13:53 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 23 Aug 2023 23:13:52 +0800
+From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Daniel Vetter
+	<daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jassi
+ Brar <jassisinghbrar@gmail.com>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Jason-JH Lin
+	<jason-jh.lin@mediatek.com>, Hsiao Chien Sung <shawn.sung@mediatek.com>
+Subject: [PATCH 04/15] mailbox: mtk-cmdq: Support GCE thread loop
+Date: Wed, 23 Aug 2023 23:13:21 +0800
+Message-ID: <20230823151332.28811-5-shawn.sung@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230823151332.28811-1-shawn.sung@mediatek.com>
+References: <20230823151332.28811-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230823133938.1359106-12-lizetao1@huawei.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_073551_179787_D54AA5BB 
-X-CRM114-Status: GOOD (  20.72  )
+X-CRM114-CacheID: sfid-20230823_081405_730337_8443BE30 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,96 +94,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 23, 2023 at 09:39:24PM +0800, Li Zetao wrote:
-> Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-> and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-> replaced by devm_clk_get_enabled() when driver enables (and possibly
-> prepares) the clocks for the whole lifetime of the device. Moreover, it is
-> no longer necessary to unprepare and disable the clocks explicitly.
-> 
+Do not disable CMDQ thread if it is a loop.
 
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Acked-by: Serge Semin <fancer.lancer@gmail.com>
-> Signed-off-by: Li Zetao <lizetao1@huawei.com>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c       | 5 +++++
+ include/linux/mailbox/mtk-cmdq-mailbox.h | 1 +
+ 2 files changed, 6 insertions(+)
 
-Just for the record, the tags order is normally supposed to reflect a
-patch route. Even though AFAICS it's explicitly defined for the Sob
-tags only (see Documentation/process/submitting-patches.rst), but
-almost all kernel developers apply that rule to all the tags. See the
-kernel git log as the brightest example. So your Sob tag should have
-been kept first, then either my Ab or Jonathan' Rb tags.
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index b18d47ea13a0..88ff39a28415 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -264,6 +264,11 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
+ 
+ 	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) << cmdq->pdata->shift;
+ 
++	task = list_first_entry_or_null(&thread->task_busy_list,
++					struct cmdq_task, list_entry);
++	if (task && task->pkt->loop)
++		return;
++
+ 	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
+ 				 list_entry) {
+ 		task_end_pa = task->pa_base + task->pkt->cmd_buf_size;
+diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+index a8f0070c7aa9..f78a08e7c6ed 100644
+--- a/include/linux/mailbox/mtk-cmdq-mailbox.h
++++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+@@ -76,6 +76,7 @@ struct cmdq_pkt {
+ 	size_t			cmd_buf_size; /* command occupied size */
+ 	size_t			buf_size; /* real buffer size */
+ 	void			*cl;
++	bool			loop;
+ };
+ 
+ u8 cmdq_get_shift_pa(struct mbox_chan *chan);
+-- 
+2.18.0
 
--Serge(y)
-
-> ---
-> v1 -> v2: None
-> 
->  drivers/spi/spi-dw-bt1.c | 23 +++++------------------
->  1 file changed, 5 insertions(+), 18 deletions(-)
-> 
-> diff --git a/drivers/spi/spi-dw-bt1.c b/drivers/spi/spi-dw-bt1.c
-> index 5e1c01822967..5391bcac305c 100644
-> --- a/drivers/spi/spi-dw-bt1.c
-> +++ b/drivers/spi/spi-dw-bt1.c
-> @@ -269,43 +269,32 @@ static int dw_spi_bt1_probe(struct platform_device *pdev)
->  
->  	dws->paddr = mem->start;
->  
-> -	dwsbt1->clk = devm_clk_get(&pdev->dev, NULL);
-> +	dwsbt1->clk = devm_clk_get_enabled(&pdev->dev, NULL);
->  	if (IS_ERR(dwsbt1->clk))
->  		return PTR_ERR(dwsbt1->clk);
->  
-> -	ret = clk_prepare_enable(dwsbt1->clk);
-> -	if (ret)
-> -		return ret;
-> -
->  	dws->bus_num = pdev->id;
->  	dws->reg_io_width = 4;
->  	dws->max_freq = clk_get_rate(dwsbt1->clk);
-> -	if (!dws->max_freq) {
-> -		ret = -EINVAL;
-> -		goto err_disable_clk;
-> -	}
-> +	if (!dws->max_freq)
-> +		return -EINVAL;
->  
->  	init_func = device_get_match_data(&pdev->dev);
->  	ret = init_func(pdev, dwsbt1);
->  	if (ret)
-> -		goto err_disable_clk;
-> +		return ret;
->  
->  	pm_runtime_enable(&pdev->dev);
->  
->  	ret = dw_spi_add_host(&pdev->dev, dws);
->  	if (ret) {
->  		pm_runtime_disable(&pdev->dev);
-> -		goto err_disable_clk;
-> +		return ret;
->  	}
->  
->  	platform_set_drvdata(pdev, dwsbt1);
->  
->  	return 0;
-> -
-> -err_disable_clk:
-> -	clk_disable_unprepare(dwsbt1->clk);
-> -
-> -	return ret;
->  }
->  
->  static void dw_spi_bt1_remove(struct platform_device *pdev)
-> @@ -315,8 +304,6 @@ static void dw_spi_bt1_remove(struct platform_device *pdev)
->  	dw_spi_remove_host(&dwsbt1->dws);
->  
->  	pm_runtime_disable(&pdev->dev);
-> -
-> -	clk_disable_unprepare(dwsbt1->clk);
->  }
->  
->  static const struct of_device_id dw_spi_bt1_of_match[] = {
-> -- 
-> 2.34.1
-> 
 
