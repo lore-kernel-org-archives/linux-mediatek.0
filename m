@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEB4EEE49AE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 08:35:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 911E6EE49AE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 09:21:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mmMZFZ62OdIAtWcX5zw3zpQ/Qr+ShV602MOY+LKIebw=; b=fSb+sFRm8ODugwsyL4ZtP+HwkE
-	vBrJ/HbELxp9kXkHr0vBSx1Yw1RsvpVO3dTW/0vhFPQ8xCw0snS49lKZvzzQo5s7jcqWVuVm1Jgb1
-	sxbTW2pCX4qRTuCtKyEWjZFhX55dHAzdoc/YTW1H6oe4jeqY8BurULjjN8KgpP2b2ezTMfnomn3Ii
-	i/uJjK+ugrUp9IWMuLA552/dVYu6mMSASTBvhUIfOf+hpbfc3GDzSFgg7BJIAHgCfgn4akkRJ7q/s
-	njTt9OUPi+IV9m3C4XhyiARdzwCkI+lyEDbv/8/ZAnD4pergWTS5GQ08kayBGXAXVbw8kdz7fCC0j
-	N9YzI6YQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uetrbrfWrgD400OH1ojtvDiq8JdXohR2zwXYZOz9U4I=; b=ZO0QqfoIZbQWbk706Gg2Go/S6y
+	NwiozB1OHvE2tjlbf2VBtIAXgu4bxYK49FMktMyik+lxXmq4mga/typmAo+w4r8rbcGeUJ+Ink81Y
+	dP4T1iVaXCSWhRJDNOdsUt87JT+OVL3FOZw9y0dZnJBxWkCulheSiAslDYbBNfC2U8Wn4oC1cpv0V
+	+bg4DB0EHVOKRkMpE4nwX2DuJbpubAAn5qX/VfiJ3ROYB4TpXMXg5uhtILWXzUbrOENGi47pLw7eh
+	7Fwi6U/AFYTWwF5ETGcly9OmpJAQM3YlNGuJrPSzen56pjES6T6MJ8dmc2GVWk2jc/AjjUtXq8etl
+	RfJH7+Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYjKU-00HZbq-0r;
-	Wed, 23 Aug 2023 08:35:06 +0000
-Received: from mail-vk1-xa30.google.com ([2607:f8b0:4864:20::a30])
+	id 1qYk3E-00037a-2x;
+	Wed, 23 Aug 2023 09:21:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYjKP-00HZan-1l
-	for linux-mediatek@lists.infradead.org;
-	Wed, 23 Aug 2023 08:35:03 +0000
-Received: by mail-vk1-xa30.google.com with SMTP id 71dfb90a1353d-48d14d11756so1126665e0c.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 23 Aug 2023 01:35:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1692779700; x=1693384500;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mmMZFZ62OdIAtWcX5zw3zpQ/Qr+ShV602MOY+LKIebw=;
-        b=aSQ7medMm32HRzU8weU8tNYTnPBrEEFQ41Kbmbur21/iF3yhiy/NKXSjPFkJmK47ce
-         bLOyRL2bjw153X6Zfwi5lIUgdDgBV2F3vQilek37DvEZdVgNnc4KT3GmiQLXPZQAlUJC
-         qynbBKaZYR7QVIC3/bxEKKUVTr1QP0b3/ezgw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692779700; x=1693384500;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mmMZFZ62OdIAtWcX5zw3zpQ/Qr+ShV602MOY+LKIebw=;
-        b=MPM+SmK/rQjitpea6r9B3+6Z8Ma5tcEFzhDnEA8dnJv5C0rLFBlooAAOE9jZLaN9dw
-         c6STTDxlkPNHWNbW9ccjGrYxeTmKFQtCfMLaTokxUmn+OMBj1Y3WWSYGiJa9FiIeXZnm
-         fTj/pAxWoZr978rRZfz0TXorGfKrK8W15hYFzPiFHbK2FFT7KVqMz9Mov2XGVJ32CJJ+
-         7LGO4qjEHXZ8CQUvjNCG5jLQe2oRRpDXmwB1X8AMzE402ihoV0zUq+MXKqmFky2jSXe7
-         eUSfgf0be8YumKhs+VOdRzs4X8DzFr/BD/ymV023uVs3gCuTV0QZ32CAaMLcMm433Yas
-         AhTw==
-X-Gm-Message-State: AOJu0YzC7NFHOpTiTEiAUHJXz0uTLUTvQNYXh8zLd6VaCPqbiPdnlygL
-	OPGjhDBoCAbVdZwBeBs40aeE+9nfhJhuHvU7JjuEsA==
-X-Google-Smtp-Source: AGHT+IGSDVGVupZv/MLbXhRgCOL+pMnSbFh3lgLbXxMSB5Hcf2CbFqQt0tXsFwyI797JMNTB1vUE2gYu9sF1UiFPuZQ=
-X-Received: by 2002:a1f:cd85:0:b0:48d:2a1:5d26 with SMTP id
- d127-20020a1fcd85000000b0048d02a15d26mr9307618vkg.4.1692779700344; Wed, 23
- Aug 2023 01:35:00 -0700 (PDT)
+	id 1qYk37-00035l-1U;
+	Wed, 23 Aug 2023 09:21:14 +0000
+X-UUID: 66262824419611ee83ed1395ce914268-20230823
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=uetrbrfWrgD400OH1ojtvDiq8JdXohR2zwXYZOz9U4I=;
+	b=EaTd+3oXhGAg3ImJSZ03o5sJ8bG3Cyn++9YVsciV0iUqNvxSdekYi5RbAFD1KdB2GId1fedJ1cxd7eeRX8kHyz/oYVUOoiEeUG9p0eu9NBapcTlwMrH2wVbNCQuzY0lGIxUA5t/5P4E5STfEIixsJpXq3yNdba5TbocLJ40vBYw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:2ae0d6bc-b505-4299-b013-86cd01b1f8d4,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:0ebe1813-4929-4845-9571-38c601e9c3c9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 66262824419611ee83ed1395ce914268-20230823
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <shuijing.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 574356650; Wed, 23 Aug 2023 02:21:10 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 23 Aug 2023 17:20:34 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 23 Aug 2023 17:20:34 +0800
+From: Shuijing Li <shuijing.li@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<jitao.shi@mediatek.com>, Shuijing Li <shuijing.li@mediatek.com>
+Subject: [PATCH v2] drm/mediatek: dsi: Add mode_valid callback to DSI bridge
+Date: Wed, 23 Aug 2023 17:20:47 +0800
+Message-ID: <20230823092047.32258-1-shuijing.li@mediatek.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-References: <20230823082549.24756-1-shuijing.li@mediatek.com>
-In-Reply-To: <20230823082549.24756-1-shuijing.li@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 23 Aug 2023 16:34:49 +0800
-Message-ID: <CAGXv+5FKpt0uxPPBTd0D0+PSD068NJFSf2AuQ5nckK8KW7WNag@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Support IGT in dp driver
-To: Shuijing Li <shuijing.li@mediatek.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	daniel@ffwll.ch, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, jitao.shi@mediatek.com, 
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_013501_627926_BB830C77 
-X-CRM114-Status: GOOD (  19.15  )
+X-CRM114-CacheID: sfid-20230823_022113_507621_89BA5BF2 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,69 +86,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 23, 2023 at 4:25=E2=80=AFPM Shuijing Li <shuijing.li@mediatek.c=
-om> wrote:
->
-> Support IGT (Intel GPU Tools) in Mediatek DisplayPort driver
+Support IGT (Intel GPU Tools) in Mediatek DSI driver.
+According to the description of MIPI Alliance Specification for D-PHY 
+Version 1.1, the maximum supported data rate is 1.5Gbps, so add mode_valid
+callback to dsi bridge to filter out the data rate exceeding the
+Specification.
 
-The commit message makes little sense.
+Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
+---
+Changes in v2:
+Correct descriptions of title and commit message.
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-First of all, you are changing the DSI driver, not the DisplayPort driver.
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 7d5250351193..a494e04f0ddf 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -806,6 +806,25 @@ static void mtk_dsi_bridge_atomic_post_disable(struct drm_bridge *bridge,
+ 	mtk_dsi_poweroff(dsi);
+ }
+ 
++static enum drm_mode_status
++mtk_dsi_bridge_mode_valid(struct drm_bridge *bridge,
++			  const struct drm_display_info *info,
++			  const struct drm_display_mode *mode)
++{
++	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
++	u32 bpp;
++
++	if (dsi->format == MIPI_DSI_FMT_RGB565)
++		bpp = 16;
++	else
++		bpp = 24;
++
++	if (mode->clock * bpp / dsi->lanes > 1500000)
++		return MODE_CLOCK_HIGH;
++
++	return MODE_OK;
++}
++
+ static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
+ 	.attach = mtk_dsi_bridge_attach,
+ 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+@@ -815,6 +834,7 @@ static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
+ 	.atomic_pre_enable = mtk_dsi_bridge_atomic_pre_enable,
+ 	.atomic_post_disable = mtk_dsi_bridge_atomic_post_disable,
+ 	.atomic_reset = drm_atomic_helper_bridge_reset,
++	.mode_valid = mtk_dsi_bridge_mode_valid,
+ 	.mode_set = mtk_dsi_bridge_mode_set,
+ };
+ 
+-- 
+2.40.1
 
-Second, the subject should say what was changed. In this case it would be
-something like "Add mode_valid callback to DSI bridge". "Support IGT" is
-*why* the change was done, should only be mentioned in the commit message
-body, and you could be more specific about which test in IGT needs it.
-
-ChenYu
-
-> Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 20 ++++++++++++++++++++
->  1 file changed, 20 insertions(+)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
-k/mtk_dsi.c
-> index 7d5250351193..a494e04f0ddf 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -806,6 +806,25 @@ static void mtk_dsi_bridge_atomic_post_disable(struc=
-t drm_bridge *bridge,
->         mtk_dsi_poweroff(dsi);
->  }
->
-> +static enum drm_mode_status
-> +mtk_dsi_bridge_mode_valid(struct drm_bridge *bridge,
-> +                         const struct drm_display_info *info,
-> +                         const struct drm_display_mode *mode)
-> +{
-> +       struct mtk_dsi *dsi =3D bridge_to_dsi(bridge);
-> +       u32 bpp;
-> +
-> +       if (dsi->format =3D=3D MIPI_DSI_FMT_RGB565)
-> +               bpp =3D 16;
-> +       else
-> +               bpp =3D 24;
-> +
-> +       if (mode->clock * bpp / dsi->lanes > 1500000)
-> +               return MODE_CLOCK_HIGH;
-> +
-> +       return MODE_OK;
-> +}
-> +
->  static const struct drm_bridge_funcs mtk_dsi_bridge_funcs =3D {
->         .attach =3D mtk_dsi_bridge_attach,
->         .atomic_destroy_state =3D drm_atomic_helper_bridge_destroy_state,
-> @@ -815,6 +834,7 @@ static const struct drm_bridge_funcs mtk_dsi_bridge_f=
-uncs =3D {
->         .atomic_pre_enable =3D mtk_dsi_bridge_atomic_pre_enable,
->         .atomic_post_disable =3D mtk_dsi_bridge_atomic_post_disable,
->         .atomic_reset =3D drm_atomic_helper_bridge_reset,
-> +       .mode_valid =3D mtk_dsi_bridge_mode_valid,
->         .mode_set =3D mtk_dsi_bridge_mode_set,
->  };
->
-> --
-> 2.40.1
->
 
