@@ -4,79 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F03CEE49B2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 09:31:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6825EE49A0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 10:53:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WHTqxrFEmuBd3YvMSfVGlAXWreyi/5MI1M+PBZMby+U=; b=dqO6oe4EjTuxvEAwZPXNXVxGGi
-	TDltByYSDbDNo52jRr6VYshS6tUs1CsDo4kZo1oALjdmEIQB+esKNHCoYEWfITPtdDAZOSk8D/2F1
-	SNwQeBR8krY/9a/BqjFThkctLbNYEt5i9dVKjeooi0Rom1OMFAFNXimh7QkELRDNvcOtXAVWJxsrI
-	ra5XhxFrLftI3dOr+39bHUfExsT0L28m43SPUIRot8ppzlR65i27hblRkRRB3Q9VXawinMSvohbNY
-	JNNAhalkrtgVHYfbZfu5lPfAF8+BdbpyuK1Mm/PO6rFqe0yfR1YgBt0ZqsmQ7mVdrdsb4yAZ6gfHM
-	0xvKezGg==;
+	bh=3eNJ1F1ZIh5qb5ABj3u6R40fpkitePvKxhd0FlU+G8s=; b=XXMto6V5EW88XHkmZ+UhtC2//m
+	JS0U+1eoPuPuHpz2EzfVmffncMDd6c+uIuKrIedmKA7m+ruANpvaOieO5H80uY+ZPIghj12vyNmrz
+	rSwi6eZKNmt4tAkoEyn+fbEw3KwNRQjt0zKDM4CCKoFDL13Jr5164VivV2I3LBAQD6CJ27WIr4gfG
+	oIHzrtmg7kUelvx2QTOlV3tn/4hC4/s/RHF9s0SOypNx460ZaWkzwT9T0dedtJE4TNAeR2Lj8w6SE
+	mdyP2AWxLk/LgiXOtOKnS0jYpThIREloZ6AKDZROs196z0afXM/Blafe/hGI9cTl+qEAq4ff+LTaJ
+	+wJorB2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYkCp-00044k-1m;
-	Wed, 23 Aug 2023 09:31:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qYlUg-000NiV-2G;
+	Wed, 23 Aug 2023 10:53:46 +0000
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYkCm-000435-0p
-	for linux-mediatek@lists.infradead.org;
-	Wed, 23 Aug 2023 09:31:13 +0000
-X-UUID: b8b9ccc0419711ee912e1518a6540028-20230823
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=WHTqxrFEmuBd3YvMSfVGlAXWreyi/5MI1M+PBZMby+U=;
-	b=GtfGNWPVvpuwi6Re+NMWYa8PKgXnKPFLMfzD9EbqOnydp33fT6uQvbspA1damx7KHVy0WdmJ57waggedpyMxQeA7W2oW35AXVxi1lyJPOt/1Jfszm+1VbS43omTUs9l3ZZpMF6XdUexLvdrJooTCr875Mjr7pm+/DXbLM8MZYe4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:1db0618a-c5c6-4709-9ce1-2142f5297712,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:0ad78a4,CLOUDID:10b3a81f-33fd-4aaa-bb43-d3fd68d9d5ae,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: b8b9ccc0419711ee912e1518a6540028-20230823
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1325621919; Wed, 23 Aug 2023 02:30:39 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 23 Aug 2023 17:29:50 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 23 Aug 2023 17:29:50 +0800
-From: <peter.wang@mediatek.com>
-To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
-	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
-	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>
-Subject: [PATCH v1 1/3] ufs: core: only suspend clock scaling if scale down
-Date: Wed, 23 Aug 2023 17:29:46 +0800
-Message-ID: <20230823092948.22734-2-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230823092948.22734-1-peter.wang@mediatek.com>
-References: <20230823092948.22734-1-peter.wang@mediatek.com>
+	id 1qYlUd-000NhL-0E;
+	Wed, 23 Aug 2023 10:53:44 +0000
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 37NAnB9r030951;
+	Wed, 23 Aug 2023 10:53:11 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=3eNJ1F1ZIh5qb5ABj3u6R40fpkitePvKxhd0FlU+G8s=;
+ b=VKt8IydGFnohWH59XRysxy6TXiX7WNJup4ggmXgZsJgtwJ0A17CkWAmXdihvozm7b8b7
+ RpfJB/mi8aDIlezw6SNvhk9occtvjPu8efnV7vSE/pWXbGTLRKpVvrsHx6qd7CneFaoy
+ i7RUQlIHzHGCSFEhkbo99IHpGeRRV4LHo7w0KNQyKD8D6uvtr5WBHoitFTotQ69fhAdn
+ wUu2uKRyEo30lmgj58dFk9lTzaGFc1sPjA+XFMEhviWb6/bloLfVQUKmIC2d+t2OLwQ3
+ SkuttcS/e3Or3U9TfQrcjQfiqMZW2oy37iHOUaLQULIq0b1UMVu2gN3yFnI+GqrIEqER hg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sngpfr1qa-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 23 Aug 2023 10:53:11 +0000
+Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 37NAnGSX031081;
+	Wed, 23 Aug 2023 10:53:10 GMT
+Received: from ppma13.dal12v.mail.ibm.com (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sngpfr1pt-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 23 Aug 2023 10:53:10 +0000
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+	by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 37N9Ujs5020144;
+	Wed, 23 Aug 2023 10:53:09 GMT
+Received: from smtprelay06.fra02v.mail.ibm.com ([9.218.2.230])
+	by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3sn22adnqx-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 23 Aug 2023 10:53:08 +0000
+Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com [10.20.54.100])
+	by smtprelay06.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 37NAr6TJ45089220
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 23 Aug 2023 10:53:06 GMT
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 1494B2004D;
+	Wed, 23 Aug 2023 10:53:06 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id B274420040;
+	Wed, 23 Aug 2023 10:53:03 +0000 (GMT)
+Received: from [9.171.92.225] (unknown [9.171.92.225])
+	by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Wed, 23 Aug 2023 10:53:03 +0000 (GMT)
+Message-ID: <67ec0e36908b7e6d7a6eba642ec76ef87d0d4945.camel@linux.ibm.com>
+Subject: Re: [PATCH v11 4/6] iommu/s390: Force ISM devices to use
+ IOMMU_DOMAIN_DMA
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+To: Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
+        Matthew Rosato <mjrosato@linux.ibm.com>, Will Deacon <will@kernel.org>,
+        Wenjia Zhang <wenjia@linux.ibm.com>, Jason Gunthorpe <jgg@ziepe.ca>
+Cc: Gerd Bayer <gbayer@linux.ibm.com>, Julian Ruess <julianr@linux.ibm.com>,
+        Pierre Morel <pmorel@linux.ibm.com>,
+        Alexandra Winter
+ <wintera@linux.ibm.com>,
+        Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik
+ <gor@linux.ibm.com>,
+        Alexander Gordeev <agordeev@linux.ibm.com>,
+        Christian
+ Borntraeger <borntraeger@linux.ibm.com>,
+        Sven Schnelle
+ <svens@linux.ibm.com>,
+        Suravee Suthikulpanit
+ <suravee.suthikulpanit@amd.com>,
+        Hector Martin <marcan@marcan.st>, Sven
+ Peter <sven@svenpeter.dev>,
+        Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+        David
+ Woodhouse <dwmw2@infradead.org>,
+        Lu Baolu <baolu.lu@linux.intel.com>, Andy
+ Gross <agross@kernel.org>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Konrad
+ Dybcio <konrad.dybcio@linaro.org>,
+        Yong Wu <yong.wu@mediatek.com>,
+        Matthias
+ Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+        Gerald Schaefer
+ <gerald.schaefer@linux.ibm.com>,
+        Orson Zhai <orsonzhai@gmail.com>,
+        Baolin
+ Wang <baolin.wang@linux.alibaba.com>,
+        Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Thierry Reding
+ <thierry.reding@gmail.com>,
+        Krishna Reddy <vdumpa@nvidia.com>,
+        Jonathan
+ Hunter <jonathanh@nvidia.com>,
+        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+        iommu@lists.linux.dev, asahi@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Date: Wed, 23 Aug 2023 12:53:03 +0200
+In-Reply-To: <ba1e0b29-52e0-2fc0-2eb9-475735febacf@arm.com>
+References: <20230717-dma_iommu-v11-0-a7a0b83c355c@linux.ibm.com>
+	 <20230717-dma_iommu-v11-4-a7a0b83c355c@linux.ibm.com>
+	 <ba1e0b29-52e0-2fc0-2eb9-475735febacf@arm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: Dn5I7UigftX5RBKQwAj9CDPxUIpK94FJ
+X-Proofpoint-GUID: X6PgzynOD1cJFA8yBLSkFvc2jrgZNG5R
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-08-23_06,2023-08-22_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1011
+ priorityscore=1501 lowpriorityscore=0 mlxscore=0 malwarescore=0
+ spamscore=0 phishscore=0 adultscore=0 impostorscore=0 bulkscore=0
+ suspectscore=0 mlxlogscore=999 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2308100000 definitions=main-2308230096
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_023112_296418_6A714621 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20230823_035343_116698_EC117C4A 
+X-CRM114-Status: GOOD (  33.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,31 +160,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+On Fri, 2023-08-18 at 20:10 +0100, Robin Murphy wrote:
+> On 2023-07-17 12:00, Niklas Schnelle wrote:
+> > ISM devices are virtual PCI devices used for cross-LPAR communication.
+> > Unlike real PCI devices ISM devices do not use the hardware IOMMU but
+> > inspects IOMMU translation tables directly on IOTLB flush (s390 RPCIT
+> > instruction).
+> >=20
+> > While ISM devices keep their DMA allocations static and only very rarel=
+y
+> > DMA unmap at all, For each IOTLB flush that occurs after unmap the ISM
+> > devices will inspect the area of the IOVA space indicated by the flush.
+> > This means that for the global IOTLB flushes used by the flush queue
+> > mechanism the entire IOVA space would be inspected. In principle this
+> > would be fine, albeit potentially unnecessarily slow, it turns out
+> > however that ISM devices are sensitive to seeing IOVA addresses that ar=
+e
+> > currently in use in the IOVA range being flushed. Seeing such in-use
+> > IOVA addresses will cause the ISM device to enter an error state and
+> > become unusable.
+> >=20
+> > Fix this by forcing IOMMU_DOMAIN_DMA to be used for ISM devices. This
+> > makes sure IOTLB flushes only cover IOVAs that have been unmapped and
+> > also restricts the range of the IOTLB flush potentially reducing latenc=
+y
+> > spikes.
+>=20
+> Would it not be simpler to return false for IOMMU_CAP_DEFERRED_FLUSH for=
+=20
+> these devices?
+>=20
+> Cheers,
+> Robin.
 
-If clock scale up and suspend clock scaling, ufs will keep high
-performance/power mode but no read/write requests on going.
-It is logic wrong and have power concern.
+Nice idea thank you. This is indeed less code, basically just return
+zdev->pft !=3D PCI_FUNC_TYPE_ISM for the IOMMU_CAP_DEFERRED_FLUSH check.
+I think it's also semantically more clear in that we don't really care
+about the domain type but about not getting deferred flushes.
 
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks,
+Niklas
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 129446775796..e3672e55efae 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -1458,7 +1458,7 @@ static int ufshcd_devfreq_target(struct device *dev,
- 		ktime_to_us(ktime_sub(ktime_get(), start)), ret);
- 
- out:
--	if (sched_clk_scaling_suspend_work)
-+	if (sched_clk_scaling_suspend_work && !scale_up)
- 		queue_work(hba->clk_scaling.workq,
- 			   &hba->clk_scaling.suspend_work);
- 
--- 
-2.18.0
+>=20
+> > Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
+> > ---
+> >   drivers/iommu/s390-iommu.c | 10 ++++++++++
+> >   1 file changed, 10 insertions(+)
+> >=20
+> > diff --git a/drivers/iommu/s390-iommu.c b/drivers/iommu/s390-iommu.c
+> > index f6d6c60e5634..020cc538e4c4 100644
+> > --- a/drivers/iommu/s390-iommu.c
+> > +++ b/drivers/iommu/s390-iommu.c
+> > @@ -710,6 +710,15 @@ struct zpci_iommu_ctrs *zpci_get_iommu_ctrs(struct=
+ zpci_dev *zdev)
+> >   	return &zdev->s390_domain->ctrs;
+> >   }
+> >  =20
+> > +static int s390_iommu_def_domain_type(struct device *dev)
+> > +{
+> > +	struct zpci_dev *zdev =3D to_zpci_dev(dev);
+> > +
+> > +	if (zdev->pft =3D=3D PCI_FUNC_TYPE_ISM)
+> > +		return IOMMU_DOMAIN_DMA;
+> > +	return 0;
+> > +}
+> > +
+> >   int zpci_init_iommu(struct zpci_dev *zdev)
+> >   {
+> >   	u64 aperture_size;
+> > @@ -789,6 +798,7 @@ static const struct iommu_ops s390_iommu_ops =3D {
+> >   	.probe_device =3D s390_iommu_probe_device,
+> >   	.probe_finalize =3D s390_iommu_probe_finalize,
+> >   	.release_device =3D s390_iommu_release_device,
+> > +	.def_domain_type =3D s390_iommu_def_domain_type,
+> >   	.device_group =3D generic_device_group,
+> >   	.pgsize_bitmap =3D SZ_4K,
+> >   	.get_resv_regions =3D s390_iommu_get_resv_regions,
+> >=20
+>=20
 
 
