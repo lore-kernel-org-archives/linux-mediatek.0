@@ -4,92 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32CD7EE49A0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 05:48:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A6A4EE49B0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 06:56:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=46RStdP/Qt/K8w0DMGkBqPuTHcz/tk87RawMdnkHi6E=; b=XWCFpNOBUGNMH7XJELrVht0oHV
-	Y+B0ZrOWa0jzrpBHuNtuS5Zr/y4IwsF7MNKVrfg6hOzg7ahAt+fE5IxNYaGw1mod/PunBK0295ICx
-	UHfl/vRbMVtqhjUqALhg1lg0G3RIiWsW4pQDSCdAm5f55imI/VzNJVoK45o4vBvIoToOoJD2cI4Oj
-	dm2dTLZwZUHywPvMtab3svjcwn0+eDpawsgMJq5fcoK7Bb/uSEFHogzmD+eNNTTt0ot9NVQDqdvIO
-	5h84N0U2/QL3NywcOTwrby7O40swXj2nTAC6lnO58IQMYRlHPZATBYbt7e3SDxu0FU7T0nqTFaggi
-	D8g9NPJg==;
+	bh=lB8ZbVq5sQ7DzHOBHLugPDAWi9TKXlIcXjvdJWhqI+A=; b=sKKbxs4UlAy90iDfwRpljDB4Z4
+	lCzizke6kUVLFjhMoVTl7Vb/H+qdP547FEWMHE8H54q3mlaW6IxeGr+BXL532YpWaURvKGZPo0Bsz
+	RglfQ7nn0PLDaFRV0s2YB4YncANPMdw845xATdwwPRYlAAshX9tQ+VPJcT9Xzb9j2RM1PcTT5RB5Q
+	VFwmVFU67Fkefaw0EKyBHzCVVcxN5k8iEcoXKACNdbGjCxJjFJTWz2bR9S3WuXtWbN+dc5vgAWrTp
+	8hiYPsVRf0j/ocfWJDWWi5yRwDRtypNGRgxS4aCcYncxgXKOCijkqNt1QDAjGHjTi7UU++J7Toquy
+	crDqyz6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYgj7-00HJKv-06;
-	Wed, 23 Aug 2023 05:48:21 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1qYhmh-00HPyr-1b;
+	Wed, 23 Aug 2023 06:56:07 +0000
+Received: from mail-vk1-xa30.google.com ([2607:f8b0:4864:20::a30])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYgj4-00HJJg-1H
+	id 1qYhmd-00HPwu-1J
 	for linux-mediatek@lists.infradead.org;
-	Wed, 23 Aug 2023 05:48:19 +0000
-Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-52a23227567so909766a12.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 22 Aug 2023 22:48:15 -0700 (PDT)
+	Wed, 23 Aug 2023 06:56:06 +0000
+Received: by mail-vk1-xa30.google.com with SMTP id 71dfb90a1353d-48d0e5b5a36so1172048e0c.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 22 Aug 2023 23:56:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1692769694; x=1693374494;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=46RStdP/Qt/K8w0DMGkBqPuTHcz/tk87RawMdnkHi6E=;
-        b=VgnbV634oF+2LRhvV8FXPyOie3JKBlaALcCr128w+ZlL8ZIfQ8r6ez41La0WHMQEEv
-         I39TW78SBxefwEkutIgzcPgSGg5ALNbnOowDrIIhr96Wlnpj7De27UijIe/vzPkX1J5V
-         j23uk0VgJmhNHtcU5sMktyx6u5ntsWY4Rf6EpZnXy/yxnUFXUX4etFX2vBg3Mim0ULhI
-         joaWvlpusrpccpDEXDUk0tHBf16bPiuRayxl7Wol4EBYguW4mJKhQsilGbrNu4zEa3it
-         02p/sVtPyoFJaRgwb8MKv7xb1iapVPfRIa6BL3k2MTWidKlmYcaIeCc16UJiOo8XbKUc
-         g1Dg==
+        d=linaro.org; s=google; t=1692773761; x=1693378561;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=lB8ZbVq5sQ7DzHOBHLugPDAWi9TKXlIcXjvdJWhqI+A=;
+        b=IClLffrpZcMu+6LKkWMb2iYMjsTjrkaUqrYA7WVBTBrZu8Rk9cEmTcQpNzwliaEYOs
+         Fh9iUcv2UOIcNrn97Bt9kXa9oRjEbVR0W3uxBGa2NbMYqsgayR3isNmKww9L5bY2Y7HI
+         RatRDyLvwjy/V+In9dVfKaPi6OaFcpK+NDakk0Nv89OnO9fYh5YklBNNKQABownwxaLy
+         Vc/ih1L6v1WPG18V+1O9nhhKRxifefgFowtPdN/aKz/n20BVZNJSUY38+FJAGH0gEmZp
+         idlDOcjuIoF4kaalYRzuLi6zFQOZYQjBzp9E75g8QeWRgjkGt3ZOSHq/LO3lLUIy5rai
+         33EA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692769694; x=1693374494;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=46RStdP/Qt/K8w0DMGkBqPuTHcz/tk87RawMdnkHi6E=;
-        b=jl1uZxejK5v1yYlQyfCf/FjiqlIabGcT2RdbjE6Y7918/8keSnBAm6JDOpKJPcL2x7
-         EbGUiijujRI7Y3Kd3dyJvPpAunRQtAcQe5iMwXAEck3n5HWokoKeFGA2xoOyi4fym8fw
-         lOFbl/JN1q222oO0pYH/LsjR+m+kSJ0h4jD8h0DJvilM8+5UY/dyR06yC9kj2FI+AqdD
-         RYoouMGbwh4WaOvINMGeVWlriTF323xkkISKbZukeMfac4BVr8ov3QlXsIuM3olhF/kL
-         3QtDf1D86TvfZ6P10Q+FoS4P8EeSToPPytHgWra9pKL00n8tcgFCnDIewl4GuQ4ujE+B
-         AcJw==
-X-Gm-Message-State: AOJu0YztcRCsRejAt0nqq0Lg/ZOxfTOZOzdvY9hI8dey9KzVWRWpBIqq
-	TQOViFhw44ThiHqejb57mDkOgQ==
-X-Google-Smtp-Source: AGHT+IFPbUlDSF0J1kdpdEmWO0Ky+QwxfXgQYdaLU5e/JsyKQcL8x8+JagL85rqm6r5cOkvvGNImBw==
-X-Received: by 2002:a17:906:8477:b0:991:c566:979 with SMTP id hx23-20020a170906847700b00991c5660979mr9479926ejc.36.1692769694610;
-        Tue, 22 Aug 2023 22:48:14 -0700 (PDT)
-Received: from [192.168.0.22] ([77.252.47.198])
-        by smtp.gmail.com with ESMTPSA id ke9-20020a17090798e900b00988e953a586sm9289732ejc.61.2023.08.22.22.48.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Aug 2023 22:48:14 -0700 (PDT)
-Message-ID: <e1c69599-a894-4cc8-123b-f4654b08412d@linaro.org>
-Date: Wed, 23 Aug 2023 07:48:13 +0200
+        d=1e100.net; s=20221208; t=1692773761; x=1693378561;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=lB8ZbVq5sQ7DzHOBHLugPDAWi9TKXlIcXjvdJWhqI+A=;
+        b=AzKl3/mOK2/lWrvK+ViSahFvOJgH0JCdOWjxGV/WNkwCrF1IHhG6Nywtf0u+YnJzkn
+         8rNKB82bS4ij3u6dWZ1KXvssgbrBLJJdoyukK9xcZJw8S7ib2YhuHZuq6PPxeTp9Wgw0
+         wGHyaNXupk9bN2xbWX3FyIgHFo3bNxitT2qQkH6H1OZlFP2YZKucYL9QbNofN/xL2lWh
+         J1WPjibgwDKPI9b3VkCD4etDGEsT0UxZPfW+U9PSq5PlMxqF9Cj00Z9V48LqblX5LRsy
+         MjOqZanFwTkwd7q+PMakB3f07VfgufMKAQ9ps9JHzA7sJ8bDi4fOQcX/YVDA7BmgRMP/
+         1BZA==
+X-Gm-Message-State: AOJu0YzXXglzNqSSP6SaAFbpNgXmx7dlyeI+yuJeE3C3kdAScOx5/Vh8
+	WbR5AeGHhKALcFdlmcGjRaBA1y6oS2YjFsiYCve8uQ==
+X-Google-Smtp-Source: AGHT+IEwjcDx1d3S7SNyrAkvaRo8eUvQkQP4M2xlywseolmmO9jwKjqIKIoGVYIjaFiR0hfjVai9PSjnU42jN3gPoW4=
+X-Received: by 2002:a1f:e2c2:0:b0:48d:13e5:1376 with SMTP id
+ z185-20020a1fe2c2000000b0048d13e51376mr7597851vkg.10.1692773760791; Tue, 22
+ Aug 2023 23:56:00 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Subject: Re: [PATCH v2 03/11] regulator: dt-bindings: mt6358: Convert to DT
- schema
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Mark Brown <broonie@kernel.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230822084520.564937-1-wenst@chromium.org>
- <20230822084520.564937-4-wenst@chromium.org>
- <5ad5ff92-1367-ba96-b126-da80511a2769@linaro.org>
- <CAGXv+5Gc+R-hUJi5gm8an+dkq3JMD2JGwP4kDakKaHbAX2P0gQ@mail.gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CAGXv+5Gc+R-hUJi5gm8an+dkq3JMD2JGwP4kDakKaHbAX2P0gQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20230822131237.1022815-1-lizetao1@huawei.com> <20230822131237.1022815-25-lizetao1@huawei.com>
+In-Reply-To: <20230822131237.1022815-25-lizetao1@huawei.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Wed, 23 Aug 2023 08:55:49 +0200
+Message-ID: <CACRpkdY1Q0U6Yh69hW6FYJbDf7a94=UnwinuKaUnz6aqOaWaLA@mail.gmail.com>
+Subject: Re: [PATCH -next 24/25] spi: spl022: Use helper function devm_clk_get_enabled()
+To: Li Zetao <lizetao1@huawei.com>
+Cc: broonie@kernel.org, chin-ting_kuo@aspeedtech.com, clg@kaod.org, 
+	joel@jms.id.au, andrew@aj.id.au, florian.fainelli@broadcom.com, 
+	rjui@broadcom.com, sbranden@broadcom.com, 
+	bcm-kernel-feedback-list@broadcom.com, fancer.lancer@gmail.com, 
+	olteanv@gmail.com, neil.armstrong@linaro.org, khilman@baylibre.com, 
+	jbrunet@baylibre.com, martin.blumenstingl@googlemail.com, 
+	conor.dooley@microchip.com, daire.mcnamara@microchip.com, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com, 
+	venture@google.com, yuenn@google.com, benjaminfair@google.com, 
+	heiko@sntech.de, linux-spi@vger.kernel.org, linux-aspeed@lists.ozlabs.org, 
+	openbmc@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230822_224818_435880_7FB0C1D4 
-X-CRM114-Status: GOOD (  16.74  )
+X-CRM114-CacheID: sfid-20230822_235603_525135_A327B691 
+X-CRM114-Status: UNSURE (   8.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,45 +102,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23/08/2023 05:54, Chen-Yu Tsai wrote:
->>> +
->>> +    regulator {
->>> +        compatible = "mediatek,mt6358-regulator";
->>> +
->>> +        buck_vgpu {
->>> +            regulator-name = "vgpu";
->>> +            regulator-min-microvolt = <625000>;
->>> +            regulator-max-microvolt = <900000>;
->>> +            regulator-ramp-delay = <6250>;
->>> +            regulator-enable-ramp-delay = <200>;
->>> +            regulator-allowed-modes = <MT6397_BUCK_MODE_AUTO
->>
->> mt6397?
->>
->> Both cases look a bit confusing.
-> 
-> There's only two regulator binding header files, mt6397 and mt6360.
-> They seem to correspond to the two classes of PMICs that MediaTek has.
-> I believe the two header files and thus the macros are meant to be
-> shared?
+On Tue, Aug 22, 2023 at 3:13=E2=80=AFPM Li Zetao <lizetao1@huawei.com> wrot=
+e:
 
-Defines have specific model name, so they do not look like meant to be
-shared. If all the values of the binding match, they can be shared, but
-then this should be mentioned in the binding plus it should be used in
-the driver. I don't see your driver patches add include of this header.
+> Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepare=
+d
+> and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
+> replaced by devm_clk_get_enabled() when driver enables (and possibly
+> prepares) the clocks for the whole lifetime of the device. Moreover, it i=
+s
+> no longer necessary to unprepare and disable the clocks explicitly.
+> Moreover, the label "err_no_clk_en" is no used, drop it for clean code.
+>
+> Signed-off-by: Li Zetao <lizetao1@huawei.com>
 
-> 
-> MT6397 and co refer to their AP PMICs, i.e. PMICs that are companion
-> chips to the SoC and provide most of the power rails a system needs,
-> along with things like RTC, audio codecs, etc.. The MT6358 and MT6366
-> belong to this class.
-> 
-> MT6360 and possibly others refer to their charger PMICs, which integrate
-> a battery charger, USB type-C PD stuff, LED drivers, and a handful of
-> regulators.
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
-
-Best regards,
-Krzysztof
-
+Yours,
+Linus Walleij
 
