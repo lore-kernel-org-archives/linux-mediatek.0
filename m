@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAAA8EE49A3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 13:41:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0052EE49B2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 13:42:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BJM6XbemLx50YItMhSKwwQphpWAl4MLSF5y7C4h/86U=; b=VnhGoidnp5Kh7FKMVUmXQGtWGm
-	6k9t7gACJqCC4Wm+gJYsQEq4xGWjBR1JTRpLAdljADJ6SI2GiG1QeBY2WQJr4oLRIK+uJsR0YeIll
-	CtaayDQLHdJBFo3+iIUWOGIhOe410kRromttfWzQKdIluO8Glo+KObgwR7E4JqCoQ8WX1ys82Zlrd
-	pnNLolcrAVZiEQtrva0m2oAHQ/wZNB3QwyRIRe/6BXoSbZqvmBc31Gz7gEt7+hMRutwNZaByignPv
-	8Er632IsKx9SBU0oCq5Txn0yf2LXoKcCj/KUjaogMpbqnaVsC3lLydlI6D7CJRqqgQZF7RWr+ykMB
-	nc1fb2Gg==;
+	bh=lYYQmsPVU4UhEVmG7HW11GggAKCfKa2xJU+1NBMxn3A=; b=SfQuCmi6BnH1Xs8LCvSCFJ/enp
+	itByHlSAW4HC0HIH6Yu4br1Q5cGul1H/0iKvcG9H7JQQ9uKdCx7ZQ8tIwdv/I1pd9hIpN9reO3Ro+
+	25MF5wRHHNKK1mAkNp9eLTa6V0HRRG/Ss4kUrPGX0IYoacJODfM8KGotVjxaFwrS8VAO7FgQsHhDf
+	yO1QcAJdxncnVav4qIIXux/FdmzRIgXr5E7zAMWObbl0upMO0JLrlZ9nK7NPK8/3jNPfMuuFnUcU7
+	mYODi5a2gn9w1dbdPC786YMnIkfHGPORRN4oystjLUPO3o9R18jmYW19eeTzS6pQoRJ8K9bO7p7e+
+	ap6yF+rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo7Q-000jJL-1h;
-	Wed, 23 Aug 2023 13:41:56 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1qYo7Y-000jT9-1h;
+	Wed, 23 Aug 2023 13:42:04 +0000
+Received: from szxga03-in.huawei.com ([45.249.212.189])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYo5j-000hSS-2I;
+	id 1qYo5i-000hRw-2C;
 	Wed, 23 Aug 2023 13:40:16 +0000
-Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.54])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RW6gX3YYgztS8b;
-	Wed, 23 Aug 2023 21:36:24 +0800 (CST)
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.55])
+	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4RW6hG4ZB9zLpCH;
+	Wed, 23 Aug 2023 21:37:02 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
  (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 23 Aug
- 2023 21:40:07 +0800
+ 2023 21:40:06 +0800
 From: Li Zetao <lizetao1@huawei.com>
 To: <lizetao1@huawei.com>
 CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
@@ -51,9 +51,9 @@ CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
 	<rjui@broadcom.com>, <sbranden@broadcom.com>, <tali.perry1@gmail.com>,
 	<tmaimon77@gmail.com>, <venture@google.com>, <yuenn@google.com>, Jonathan
  Cameron <Jonathan.Cameron@huawei.com>
-Subject: [PATCH -next v2 16/25] spi: spi-meson-spifc: Use helper function devm_clk_get_enabled()
-Date: Wed, 23 Aug 2023 21:39:29 +0800
-Message-ID: <20230823133938.1359106-17-lizetao1@huawei.com>
+Subject: [PATCH -next v2 15/25] spi: meson-spicc: Use helper function devm_clk_get_enabled()
+Date: Wed, 23 Aug 2023 21:39:28 +0800
+Message-ID: <20230823133938.1359106-16-lizetao1@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230823133938.1359106-1-lizetao1@huawei.com>
 References: <20230822131237.1022815-1-lizetao1@huawei.com>
@@ -66,8 +66,9 @@ X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  kwepemi500012.china.huawei.com (7.221.188.12)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_064012_333110_8834DC4B 
-X-CRM114-Status: GOOD (  10.70  )
+X-CRM114-CacheID: sfid-20230823_064011_280573_2C28F504 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,66 +88,104 @@ and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
 replaced by devm_clk_get_enabled() when driver enables (and possibly
 prepares) the clocks for the whole lifetime of the device. Moreover, it is
 no longer necessary to unprepare and disable the clocks explicitly.
-Moreover, the lable "out_clk" no longer makes sense, rename it to "out_pm".
 
 Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
 v1 -> v2: None
 
- drivers/spi/spi-meson-spifc.c | 17 +++--------------
- 1 file changed, 3 insertions(+), 14 deletions(-)
+ drivers/spi/spi-meson-spicc.c | 33 ++++++---------------------------
+ 1 file changed, 6 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/spi/spi-meson-spifc.c b/drivers/spi/spi-meson-spifc.c
-index 06626f406f68..d70a18885b49 100644
---- a/drivers/spi/spi-meson-spifc.c
-+++ b/drivers/spi/spi-meson-spifc.c
-@@ -312,19 +312,13 @@ static int meson_spifc_probe(struct platform_device *pdev)
- 		goto out_err;
+diff --git a/drivers/spi/spi-meson-spicc.c b/drivers/spi/spi-meson-spicc.c
+index 43d134f4b42b..1f2d26254e03 100644
+--- a/drivers/spi/spi-meson-spicc.c
++++ b/drivers/spi/spi-meson-spicc.c
+@@ -820,7 +820,7 @@ static int meson_spicc_probe(struct platform_device *pdev)
+ 		goto out_master;
  	}
  
--	spifc->clk = devm_clk_get(spifc->dev, NULL);
-+	spifc->clk = devm_clk_get_enabled(spifc->dev, NULL);
- 	if (IS_ERR(spifc->clk)) {
- 		dev_err(spifc->dev, "missing clock\n");
- 		ret = PTR_ERR(spifc->clk);
- 		goto out_err;
+-	spicc->core = devm_clk_get(&pdev->dev, "core");
++	spicc->core = devm_clk_get_enabled(&pdev->dev, "core");
+ 	if (IS_ERR(spicc->core)) {
+ 		dev_err(&pdev->dev, "core clock request failed\n");
+ 		ret = PTR_ERR(spicc->core);
+@@ -828,7 +828,7 @@ static int meson_spicc_probe(struct platform_device *pdev)
  	}
  
--	ret = clk_prepare_enable(spifc->clk);
+ 	if (spicc->data->has_pclk) {
+-		spicc->pclk = devm_clk_get(&pdev->dev, "pclk");
++		spicc->pclk = devm_clk_get_enabled(&pdev->dev, "pclk");
+ 		if (IS_ERR(spicc->pclk)) {
+ 			dev_err(&pdev->dev, "pclk clock request failed\n");
+ 			ret = PTR_ERR(spicc->pclk);
+@@ -836,22 +836,10 @@ static int meson_spicc_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
+-	ret = clk_prepare_enable(spicc->core);
 -	if (ret) {
--		dev_err(spifc->dev, "can't prepare clock\n");
--		goto out_err;
+-		dev_err(&pdev->dev, "core clock enable failed\n");
+-		goto out_master;
 -	}
 -
- 	rate = clk_get_rate(spifc->clk);
- 
- 	master->num_chipselect = 1;
-@@ -343,12 +337,11 @@ static int meson_spifc_probe(struct platform_device *pdev)
- 	ret = devm_spi_register_master(spifc->dev, master);
- 	if (ret) {
- 		dev_err(spifc->dev, "failed to register spi master\n");
+-	ret = clk_prepare_enable(spicc->pclk);
+-	if (ret) {
+-		dev_err(&pdev->dev, "pclk clock enable failed\n");
+-		goto out_core_clk;
+-	}
+-
+ 	spicc->pinctrl = devm_pinctrl_get(&pdev->dev);
+ 	if (IS_ERR(spicc->pinctrl)) {
+ 		ret = PTR_ERR(spicc->pinctrl);
 -		goto out_clk;
-+		goto out_pm;
++		goto out_master;
+ 	}
+ 
+ 	device_reset_optional(&pdev->dev);
+@@ -878,31 +866,25 @@ static int meson_spicc_probe(struct platform_device *pdev)
+ 	ret = meson_spicc_pow2_clk_init(spicc);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "pow2 clock registration failed\n");
+-		goto out_clk;
++		goto out_master;
+ 	}
+ 
+ 	if (spicc->data->has_enhance_clk_div) {
+ 		ret = meson_spicc_enh_clk_init(spicc);
+ 		if (ret) {
+ 			dev_err(&pdev->dev, "clock registration failed\n");
+-			goto out_clk;
++			goto out_master;
+ 		}
+ 	}
+ 
+ 	ret = devm_spi_register_master(&pdev->dev, master);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "spi master registration failed\n");
+-		goto out_clk;
++		goto out_master;
  	}
  
  	return 0;
--out_clk:
--	clk_disable_unprepare(spifc->clk);
-+out_pm:
- 	pm_runtime_disable(spifc->dev);
- out_err:
- 	spi_master_put(master);
-@@ -357,11 +350,7 @@ static int meson_spifc_probe(struct platform_device *pdev)
  
- static void meson_spifc_remove(struct platform_device *pdev)
- {
--	struct spi_master *master = platform_get_drvdata(pdev);
--	struct meson_spifc *spifc = spi_master_get_devdata(master);
+-out_clk:
+-	clk_disable_unprepare(spicc->pclk);
 -
- 	pm_runtime_get_sync(&pdev->dev);
--	clk_disable_unprepare(spifc->clk);
- 	pm_runtime_disable(&pdev->dev);
+-out_core_clk:
+-	clk_disable_unprepare(spicc->core);
+-
+ out_master:
+ 	spi_master_put(master);
+ 
+@@ -916,9 +898,6 @@ static void meson_spicc_remove(struct platform_device *pdev)
+ 	/* Disable SPI */
+ 	writel(0, spicc->base + SPICC_CONREG);
+ 
+-	clk_disable_unprepare(spicc->core);
+-	clk_disable_unprepare(spicc->pclk);
+-
+ 	spi_master_put(spicc->master);
  }
  
 -- 
