@@ -4,156 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1319CEE49A0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 07:11:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 096DDEE49AF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 07:48:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+7xSverx84p1FkG7XUOE1Uhtjz9zbU2K14Uh7EYXy7M=; b=ziYawuAxtF9YLMTl5zSV8JHfiV
-	fYcv6UVXiNGmQHL8k+HER8kkUy6ZFWSc7jY2u0iXZKaVyLXUHXuG10NT5zuJFevspkZwIQ3ohAR8y
-	x661qlxDfCtzNJsQcKCgb5eJ6iZSidB58AOl5h1cSoRqttjN6LK8sRbJcO5uu/vaZIOZKUgJYSLKP
-	1ivSulpN/Gsfam94xefp5QYTixzjDp2DT7hXK5onJ0z0PQ5U2q46L8FZzRGLCvfH1XPNhoTIOAw44
-	BftJ2Cm/cSQ7ZYrJwW/YqYBcLMvSZaCY7E4XOJI+Bkd1HjwWgbwLYlsqVrVErnqQ/pdMEPUl0AvPj
-	c9lRmovQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yMLqQ07/1S4FGZac+b+3f8r1p2hwvkhxqYFR9XhasgQ=; b=GiEP9jil0iYVcstAj87f7ANR+U
+	n/Wb2UiUNTY99V4yvNJtFU0T4HXGr/gHbalHet2xoUqJYDvRzhy74GbZsIMgvsekh7kBidmORslzD
+	N6olFqKycJEO4oVbIL4hEmOVwbUe60e7yV8LL7QulRtPAW1xE39mgkR/UT3zTmUdaPiXMZLLz7AJU
+	HMwcVkh+TX74eS8hpcAGwBVca95k868x34r9yePJHsLb9E6a5D+MR9oTSGnmZIcswEdiGCUiAmDhw
+	TGdVK91NFVtiqatfMaMp1uzByNZ15W71KseyKvB5OI6cFEnCZx1OWcxCFGl7gqfG86bxKVv2hAvGM
+	3CvixF8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYi1q-00HROR-27;
-	Wed, 23 Aug 2023 07:11:46 +0000
-Received: from mail-psaapc01on20723.outbound.protection.outlook.com ([2a01:111:f400:feae::723] helo=APC01-PSA-obe.outbound.protection.outlook.com)
+	id 1qYibK-00HVFc-2q;
+	Wed, 23 Aug 2023 07:48:26 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYi1i-00HRMI-2f;
-	Wed, 23 Aug 2023 07:11:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=C59nFZubldU+gDnkYX7TAIqx2/yAipuT2I39aPvHyUDuNxHAFFZKkAXaFqk0S9pvaogUxsk+V9oPpJZCaN0zDavJrgMLqbZEMrCVLVBrtadCRexa/Y4P9DmXuGfN2ptCTecN0SXjtT1IYYfb+zf0v1NxRS8KZ2JXNuyjAIEHWSC8DWNwkwrmNjIhuc3SqrbwrdcBUP8tGqkOi2RlJ5mZllfDPSev9l7jwyTD2YxD57SystpktTdQ9Fl8VKbDy9chby1QqBjj5Xfe3ZKJ/nJlsVHJHwauQwouQEAp8betcv6gHGRbweSdleZpQlQBjbaHcFiDvljx5TWMOd41AhVqPg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+7xSverx84p1FkG7XUOE1Uhtjz9zbU2K14Uh7EYXy7M=;
- b=isdgJ9xih/6d2BtXRJYhZXfwoKYhh3ON7Sd2VtzZ2LP5bJ0YN+bLgFqryAQ5ldBtowD9A6nl+1AWHJCBZOxRYQg5YHcnJIh94QwL9ImVQzIRDPBi2SskiOnskIbcIDQpCi7Cu2+4N8f7xbLwb42KztSCBToE5Wsq9qRvYM1FVnzfVKMVivDsH4ZufIv98haZl4LTsjHbvDUwPiZrS9OdndWdDRdkYjw+SR9XG3Rm8I7CyToxrqYCt1bDycmhpihX0NWUlJCJDVOfRy/xhCV+UOLc3dt86AecfAmO+seM+TQ81mw5d+O5Xf8wVC4Z+OmkNcE5l0LCm2eoXI6rUUb2Ag==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+7xSverx84p1FkG7XUOE1Uhtjz9zbU2K14Uh7EYXy7M=;
- b=ZUWlN3WSxMqN4xnMG4fHiVTnJQhqF3ORdVfciTJIjW+RSGD9o2yxI5Ro0cOKfTy0WIC14vUsXMgO8pmEPzK4xBd4p/YVP2V03tuize0EOc/AdotFSHuxbu1uoAX/7vMwKzsRg7/GOuApLoivV3R+GpjzDRZkB9zP7o8eoRwRVLQOHG+lBNHmEBFYnnWzDg9MoeF0mpuLmzI34v9nlqpY8aIA+11wQ/54e1oneb+b0fqNGYb/xTKjr9sYCQlsCxSGC4K5oPlQMTV1yEVFmohwy0nG/aZVGdjrcV/OuAKMIt/UvFL4sNp24huue5QmjXt9/vBbAg/PndN01t+X0teVmg==
-Received: from TYZPR06MB5203.apcprd06.prod.outlook.com (2603:1096:400:1f9::9)
- by SG2PR06MB5360.apcprd06.prod.outlook.com (2603:1096:4:1db::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6678.31; Wed, 23 Aug
- 2023 07:11:19 +0000
-Received: from TYZPR06MB5203.apcprd06.prod.outlook.com
- ([fe80::c404:538d:e090:f7b]) by TYZPR06MB5203.apcprd06.prod.outlook.com
- ([fe80::c404:538d:e090:f7b%5]) with mapi id 15.20.6699.020; Wed, 23 Aug 2023
- 07:11:19 +0000
-From: Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>
-To: Li Zetao <lizetao1@huawei.com>, "broonie@kernel.org" <broonie@kernel.org>,
-	"clg@kaod.org" <clg@kaod.org>, "joel@jms.id.au" <joel@jms.id.au>,
-	"andrew@aj.id.au" <andrew@aj.id.au>, "florian.fainelli@broadcom.com"
-	<florian.fainelli@broadcom.com>, "rjui@broadcom.com" <rjui@broadcom.com>,
-	"sbranden@broadcom.com" <sbranden@broadcom.com>,
-	"bcm-kernel-feedback-list@broadcom.com"
-	<bcm-kernel-feedback-list@broadcom.com>, "fancer.lancer@gmail.com"
-	<fancer.lancer@gmail.com>, "olteanv@gmail.com" <olteanv@gmail.com>,
-	"neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
-	"khilman@baylibre.com" <khilman@baylibre.com>, "jbrunet@baylibre.com"
-	<jbrunet@baylibre.com>, "martin.blumenstingl@googlemail.com"
-	<martin.blumenstingl@googlemail.com>, "conor.dooley@microchip.com"
-	<conor.dooley@microchip.com>, "daire.mcnamara@microchip.com"
-	<daire.mcnamara@microchip.com>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "avifishman70@gmail.com"
-	<avifishman70@gmail.com>, "tmaimon77@gmail.com" <tmaimon77@gmail.com>,
-	"tali.perry1@gmail.com" <tali.perry1@gmail.com>, "venture@google.com"
-	<venture@google.com>, "yuenn@google.com" <yuenn@google.com>,
-	"benjaminfair@google.com" <benjaminfair@google.com>,
-	"linus.walleij@linaro.org" <linus.walleij@linaro.org>, "heiko@sntech.de"
-	<heiko@sntech.de>
-CC: "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>,
-	"linux-aspeed@lists.ozlabs.org" <linux-aspeed@lists.ozlabs.org>,
-	"openbmc@lists.ozlabs.org" <openbmc@lists.ozlabs.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	"linux-rpi-kernel@lists.infradead.org"
-	<linux-rpi-kernel@lists.infradead.org>, "linux-amlogic@lists.infradead.org"
-	<linux-amlogic@lists.infradead.org>, "linux-riscv@lists.infradead.org"
-	<linux-riscv@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>
-Subject: RE: [PATCH -next 03/25] spi: aspeed: Use helper function
- devm_clk_get_enabled()
-Thread-Topic: [PATCH -next 03/25] spi: aspeed: Use helper function
- devm_clk_get_enabled()
-Thread-Index: AQHZ1Ppmytx9atFtzEKmu2Zv4vvkIa/3d2Ew
-Date: Wed, 23 Aug 2023 07:11:19 +0000
-Message-ID: <TYZPR06MB520349C9A467FD2D43E6F345B21CA@TYZPR06MB5203.apcprd06.prod.outlook.com>
-References: <20230822131237.1022815-1-lizetao1@huawei.com>
- <20230822131237.1022815-4-lizetao1@huawei.com>
-In-Reply-To: <20230822131237.1022815-4-lizetao1@huawei.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB5203:EE_|SG2PR06MB5360:EE_
-x-ms-office365-filtering-correlation-id: 2aec4954-4ee9-476e-46df-08dba3a82606
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: UksuVfA07KeYylAFTzYVwnR03vKUXPV1+C+/WfIt3E/yJeHHyOQFE0AeGU+psE8dqDZlvI1tamMx3ttkFGvLDhHcgmL8VglaiB1ltIoFJVi4hxrkM8ru+Z5jV/ouaL0dxD66i2Y3NAsZTWWlWM+HRYxBxVrtXPf14tVb/8UnXuPOKsBV9gCLErY5yOZO7Y3El6dXHLR/XbTdxskoZ/sRV4bGxfvFYiUXk0VSyF03P4d9Cps/7bMTBTO82ZkujaQ7n09q5Njs5miA83r7z/4o2TPp+N3rzRJa4zG1OXszJ3CKDE3wrkFZ+irkuITgfnYi+WjWvJIBN3R5YNXC8x2d4XmH/pubVrbsxLrFkDPG+L00B8G7L3sUWhDeQnEkOLYLvtn175xyla0vdVOqq13GX8Fr3k0PPi6E++fQcetMeyxNf+vzDfWasHp9PUvBiF8ODRVQT7G99x3t2TdFQ0TbGeHsfvD5iEsFWm+bJKOTZzEZYQ49ZUXaR39RGkIKDCmkKyKBJqUxXXYzvFbrYubb7GD8ZYnQXCnnjOKEapD6HUiRBWRfnyerEZ9QHfAU+8V5MtptVrOKS/SrUVI3UO9dOvbN9tkRcp/kX4I9sU14qxwbZtSbsWH0C+l3QIXB9bGH4RE3ErDJp422tnyP3to/aA==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR06MB5203.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(376002)(39850400004)(366004)(396003)(346002)(136003)(451199024)(186009)(1800799009)(26005)(9686003)(38070700005)(122000001)(55016003)(33656002)(38100700002)(86362001)(921005)(83380400001)(8676002)(8936002)(110136005)(66556008)(41300700001)(316002)(76116006)(66446008)(64756008)(54906003)(2906002)(66946007)(52536014)(5660300002)(4326008)(66476007)(7416002)(7406005)(71200400001)(7696005)(6506007)(53546011)(478600001);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?piirPloeETUiZDsm2mshr/STo7mKeHNoEE9xLsd6ZDB7EQqgDNl6jTOKUB8t?=
- =?us-ascii?Q?8pi8nE1YXuUlw/keJmT5XtJ0fb/8DoYSkzWYH04NUHpk5Ue1BkdGcB1vy0Mw?=
- =?us-ascii?Q?HedxUum+IlS8K0xCSjjKO/1WXarbwzwSB7Vvewxm9uv7vihVh9S2v+atSky2?=
- =?us-ascii?Q?l0ACvtpo19kPFM1otC1Jph+scqrUhkYdrjmehV1dbe/5mprIKPJD+ShVu1hM?=
- =?us-ascii?Q?tuUzs1FUe0WYsM3cwR5svoiVP1SoBYyIgHYzb1GDA4yzaINWBtzvgjXgn1fH?=
- =?us-ascii?Q?LUZj7MfRt2sbwe0kWIqptcv4WeQU/huC3ZRPoSoymrJ5e+V5+xxEpLTn94yf?=
- =?us-ascii?Q?NLjU9iuYUjA1JNkL3oc0bgL+SBd4txZwdAlsKe1ELdXeVCFPx4KDaKoZ4wu/?=
- =?us-ascii?Q?UGhyWHrUBfjiP86aErivfFdieJ57PEDkBOODwDXdipu8AD+8+r8E6DufsS1a?=
- =?us-ascii?Q?EfTv0N2jzeq99eXmcOjXiV0kq3wMXCkRur9MgNhOCFP4HQ5bLK8SG1nwbVGL?=
- =?us-ascii?Q?Dj1d1t5NuccVZluWMf+gevjbvLJhgioK9nsSQdkSXxGVpg/90wfFIam3mK66?=
- =?us-ascii?Q?D1Z3DmHijy87SKCFjpGGVOg+gWYZUV7YthrdqZHQYCozLyDS9CHW8EaH6qUx?=
- =?us-ascii?Q?1n3CA59XkoZPTDIM9ZF5o+e8qWXAiCVfE/9Mokb0Gzkj4udC+u/ro2jUVT3O?=
- =?us-ascii?Q?RzBioAS84FqwW73Ou1yaQI8MpV9lXLtYoIIZ2N1NXWcEnLGI1QFX5DbSzwBt?=
- =?us-ascii?Q?kJIhKZAWiqfs8tEF1io8zax5OXx2qcxwxesWzjil15MhIwJe/ugJk9gdKqcm?=
- =?us-ascii?Q?TqHPgbgefpjA21xfVDXz0+yZ9Z6yyS4peUyYvw49nb/2vVT6cgzouyhnZAjd?=
- =?us-ascii?Q?jE62xJyMWwqWoZeTInreNZvpjbc8TBSCa34POz1FYufU8C2vZoB56hIaWBC7?=
- =?us-ascii?Q?MnogW44ehRkhwnKAoL6YC0O+i6vcG/0Xt+/+FGa+YWNCjTATTzL0snIzW8DQ?=
- =?us-ascii?Q?zMnFUgZvqRNckWmtuu581+JOZnyoktvAcSMHsOpsRZKR5ok/azkQTOK6jaJg?=
- =?us-ascii?Q?V2N6W7EWkKrIDQU2a+Tmcr5/J2XxW9oIpBYvlkGTm2VqCBFL8lKMOxJ9ml3A?=
- =?us-ascii?Q?0U2X99qS0Zi6zleKkjkzyghJL8yPOqQNDGdk3Rrko4yvnOMAMPZD8cP+QrW3?=
- =?us-ascii?Q?DvG2Nzlm9w/Z2bnBCsp/keST7P+Ao3Yuy+/tnO6tzrWVhUuGBoWYxqv2bp32?=
- =?us-ascii?Q?XllweDmuSSg5S0J6muBUkC30bUG80AWOVGQSMrH+XfLCPx7PC31woAMQ4xYw?=
- =?us-ascii?Q?Kh/IgC4QCMi1NNQKrwQ1FQkhyijJY1FvK9Wl8Ki8neIhMgIAa2Hon0Hw6J2T?=
- =?us-ascii?Q?RXLuUPw+dRPY1bVmwVvRLRT/ruNkMzUatFAEj3gDDjHzFdQYZPV2ZKc6nu9X?=
- =?us-ascii?Q?7MDHEeLZmd7MWpzMEAcqQrSd83zZgkN9z4Bgx9trX8UVpE1YXfuwqzDg8na8?=
- =?us-ascii?Q?bTPay5h+xPebI/f2doPOZkpmZCKuqMEm9njUO7HxFhCMDv0hF4hk0I+oTEfF?=
- =?us-ascii?Q?wS7ktDs9JCaI2uRWtgnT92nLgtG6pqJGQUCz9Sy614YAw5ByWTlmOhuZq5Y8?=
- =?us-ascii?Q?Ug=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	id 1qYibI-00HVEW-05
+	for linux-mediatek@lists.infradead.org;
+	Wed, 23 Aug 2023 07:48:25 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-31ad779e6b3so4451287f8f.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 23 Aug 2023 00:48:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1692776901; x=1693381701;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=yMLqQ07/1S4FGZac+b+3f8r1p2hwvkhxqYFR9XhasgQ=;
+        b=xPQOyHts+i9uO+7Lq2SW75l7BNzXbnEHzbY/GIalOHkJV0T9C1s+5e2PYA/yb58BRc
+         j3JJEx2+1mhKBwvTO2lioBRdZYiQRurrgvJyx2sdWR3Zd4a1ryZfz1PkrK79eJCrSMc8
+         HCTJM2m7WTAMp3zHz2u1Guc7CHjED0IIOQB8B+CJW2DPAWhLPMhaOebScjTyT4ipNn4e
+         Y9lU477EdYf0BA/2IscFXXaGlvGtStv0SwE1h7CwP7aMbc2RuN5ImU5o6X3iRxsQO+IC
+         yRGmw1iqFdhUYbu2X3QIKq168/Hmwi0u5YsS7X6VgaM2TGa0pyZnkdKsoLwzno1yWsu9
+         fVIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692776901; x=1693381701;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=yMLqQ07/1S4FGZac+b+3f8r1p2hwvkhxqYFR9XhasgQ=;
+        b=XomXTUhZz7JcB9ieWK09MREDQ2KUXHHDqaTTD+1niUt+mqCB1uipI6rQf+DInrezou
+         zAZFjGX5/vQgyCLKuJjjXbv770erT+glBAm5XN74k3xd5aF6gI15ibVxfZgghSvaoLFZ
+         3ZZld3Z22o6a+raygChHshmYMrsgFQZy0JXmwwQ2zeMcClZR2Enc7nsoGYfN0WQy6Irr
+         UgJxeI3+QYFP0uEhpFkN+P3x7PkMUuo+Byx3xJwhSzCdK2hRT4w8BbfwvSxYOyy4riuA
+         A5nVznKov2kIThiRmNuj+5z6djj3fdYfGA8OTvLQmfX4RpRQZi+J5kiqXY9moHcRlA1y
+         FMUg==
+X-Gm-Message-State: AOJu0YzOLV4UjG0G3+H3q5oPXf3tVr6VUafrIrUVHVMbZn80qgQyo7Dv
+	PMOAQMDMX0LEtuyjwp/OEf7NLQ==
+X-Google-Smtp-Source: AGHT+IEJCgqNoN/t/JtugjJDUHt4ZTgJERVOv2dLtodMoCTxdTohodR2lggnhDmB/2raLk4Fvg/g7w==
+X-Received: by 2002:a5d:46cd:0:b0:317:5c36:913b with SMTP id g13-20020a5d46cd000000b003175c36913bmr9140847wrs.48.1692776901194;
+        Wed, 23 Aug 2023 00:48:21 -0700 (PDT)
+Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.googlemail.com with ESMTPSA id g16-20020adff3d0000000b00318147fd2d3sm17986636wrp.41.2023.08.23.00.48.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 23 Aug 2023 00:48:20 -0700 (PDT)
+Message-ID: <b544e079-c9de-23d3-80f7-cff89293eeb5@linaro.org>
+Date: Wed, 23 Aug 2023 09:48:19 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB5203.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2aec4954-4ee9-476e-46df-08dba3a82606
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Aug 2023 07:11:19.0828
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1Kt7NHf6kT+F7gf3XSI4DaWUAkIdrym/uf/uEEoRCaqwOpuJ4oY3DscO6Y5ZbR0DTYVendSZh83KK2xtwyM7njgJu8rnFYDA5xszVViGpXI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR06MB5360
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v4 2/5] thermal/drivers/mediatek/lvts_thermal: Add suspend
+ and resume
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
+ rafael@kernel.org, amitk@kernel.org, rui.zhang@intel.com,
+ matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, rdunlap@infradead.org,
+ ye.xingchen@zte.com.cn, p.zabel@pengutronix.de,
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, wenst@chromium.org, james.lo@mediatek.com,
+ rex-bc.chen@mediatek.com, nfraprado@collabora.com, abailon@baylibre.com,
+ amergnat@baylibre.com, khilman@baylibre.com
+References: <20230530195132.2286163-1-bero@baylibre.com>
+ <20230530195132.2286163-3-bero@baylibre.com>
+ <371790cd-5a7c-8fa6-cc38-3a3680525092@collabora.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <371790cd-5a7c-8fa6-cc38-3a3680525092@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_001140_969944_9D2A5230 
-X-CRM114-Status: GOOD (  18.94  )
+X-CRM114-CacheID: sfid-20230823_004824_101861_A021E9A6 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -168,84 +106,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 31/05/2023 10:05, AngeloGioacchino Del Regno wrote:
 
-> -----Original Message-----
-> From: Li Zetao <lizetao1@huawei.com>
-> Sent: Tuesday, August 22, 2023 9:12 PM
-> Subject: [PATCH -next 03/25] spi: aspeed: Use helper function
-> devm_clk_get_enabled()
->=20
-> Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepare=
-d
-> and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-> replaced by devm_clk_get_enabled() when driver enables (and possibly
-> prepares) the clocks for the whole lifetime of the device. Moreover, it i=
-s no
-> longer necessary to unprepare and disable the clocks explicitly.
->=20
-> Signed-off-by: Li Zetao <lizetao1@huawei.com>
-> ---
->  drivers/spi/spi-aspeed-smc.c | 16 ++--------------
->  1 file changed, 2 insertions(+), 14 deletions(-)
->=20
-> diff --git a/drivers/spi/spi-aspeed-smc.c b/drivers/spi/spi-aspeed-smc.c =
-index
-> 21b0fa646c7d..bbd417c55e7f 100644
-> --- a/drivers/spi/spi-aspeed-smc.c
-> +++ b/drivers/spi/spi-aspeed-smc.c
-> @@ -748,7 +748,7 @@ static int aspeed_spi_probe(struct platform_device
-> *pdev)
->  	aspi->ahb_window_size =3D resource_size(res);
->  	aspi->ahb_base_phy =3D res->start;
->=20
-> -	aspi->clk =3D devm_clk_get(&pdev->dev, NULL);
-> +	aspi->clk =3D devm_clk_get_enabled(&pdev->dev, NULL);
->  	if (IS_ERR(aspi->clk)) {
->  		dev_err(dev, "missing clock\n");
->  		return PTR_ERR(aspi->clk);
-> @@ -760,12 +760,6 @@ static int aspeed_spi_probe(struct platform_device
-> *pdev)
->  		return -EINVAL;
->  	}
->=20
-> -	ret =3D clk_prepare_enable(aspi->clk);
-> -	if (ret) {
-> -		dev_err(dev, "can not enable the clock\n");
-> -		return ret;
-> -	}
-> -
->  	/* IRQ is for DMA, which the driver doesn't support yet */
->=20
->  	ctlr->mode_bits =3D SPI_RX_DUAL | SPI_TX_DUAL | data->mode_bits; @@
-> -777,14 +771,9 @@ static int aspeed_spi_probe(struct platform_device *pde=
-v)
->  	ctlr->dev.of_node =3D dev->of_node;
->=20
->  	ret =3D devm_spi_register_controller(dev, ctlr);
-> -	if (ret) {
-> +	if (ret)
->  		dev_err(&pdev->dev, "spi_register_controller failed\n");
-> -		goto disable_clk;
-> -	}
-> -	return 0;
->=20
-> -disable_clk:
-> -	clk_disable_unprepare(aspi->clk);
->  	return ret;
->  }
->=20
-> @@ -793,7 +782,6 @@ static void aspeed_spi_remove(struct platform_device
-> *pdev)
->  	struct aspeed_spi *aspi =3D platform_get_drvdata(pdev);
->=20
->  	aspeed_spi_enable(aspi, false);
-> -	clk_disable_unprepare(aspi->clk);
->  }
->=20
->  /*
-> --
-> 2.34.1
+[ ... ]
 
-Reviewed-by: Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>
+>>   static const struct lvts_ctrl_data mt8195_lvts_mcu_data_ctrl[] = {
+>>       {
+>>           .cal_offset = { 0x04, 0x07 },
+>> @@ -1268,6 +1300,8 @@ MODULE_DEVICE_TABLE(of, lvts_of_match);
+>>   static struct platform_driver lvts_driver = {
+>>       .probe = lvts_probe,
+>>       .remove = lvts_remove,
+>> +    .suspend = lvts_suspend,
+> 
+> Should we do that in noirq handlers?
+> We're risking to miss a thermal interrupt.
+
+I'm not sure missing a thermal interrupt is a problem in this context 
+but we may go in the irq routine with an undefined state sensor setup 
+(eg. the internal clock stopped in the suspend and then read the sensor 
+in the isr).
+
+IMO, using suspend_noirq and resume_noirq may be required here.
+
+Alexandre are you taking over the next iteration?
+
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
 
