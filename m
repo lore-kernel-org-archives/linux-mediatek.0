@@ -4,61 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A69DDEE49B9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 13:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D1F8EE49B2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Aug 2023 13:40:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sV7vYQTyiAy3nWGgqxmiyOUH3WUFfyCP18D7p2WE0W4=; b=EZXoLLWL4QKxA3ufQ8pKh31DNo
-	qJuobtTQo7bLAtTQRd5fTs3MBx1FK3tgeHRYUSRBdUi5WTRfXFORgDrO71aoQe6DCpjuL2uUP29Vf
-	lPoUNBYN6QyTYFPo2sbqe10RcqBnerUaXrD0aRPxJ2KOp59UGNin1/l277tWBo349s6DrzNsNZalr
-	uaqbq7IjaBtWwaM9cuRjsQPwlTSO/tRvi99u0Bw+5t/izBqV5kL9M/YF0oiJfyFAfr1ypH04Yk3oI
-	Q3btpmVyi6vcVrq2E4sHgoRUFMVROTz2nRMUXbi7lW3gYoWidAWbmHuM+0nuc/W/wR4qZHxO1vQYN
-	9Uwotczg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vQBnicu5cc/7uTC2Pg/3ATTngvkXwrhR5vLsOxesr7Q=; b=kDcpCJy+XvU41vuYCgP79pt9CU
+	Eyp1l7373/sIe4bg5iSMlRd4veGb6WpB4RBSdsRB8JMQanrp7zDFC1ARb6yYmN9lWLiRoB5hLF1MN
+	SS05aZp8lAfdkFgFIiJ/3SMxac8SDu4PR8pp8nXafLBeqdxONLp7nOJmwxffqx1bNsxJLyjBWp7yQ
+	SyX2JLROx4e5En6saFcpWdwCUjd2DWAf2xOZo2kzqySl9sreI2Iuwyg4IuBt3vUN7WKguVjN0vWFE
+	moRItkLEwQnoxGNPiHvq3xCLxtUGfv95fjp9CmBKq66r/TyIc3XFta8iwHSGb8DNIywdrgZlO3Xn1
+	ZCeDHVOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYnj1-000dfj-1F;
-	Wed, 23 Aug 2023 13:16:43 +0000
-Received: from mail.ispras.ru ([83.149.199.84])
+	id 1qYo5k-000hVs-35;
+	Wed, 23 Aug 2023 13:40:12 +0000
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qYnid-000dHu-2j;
-	Wed, 23 Aug 2023 13:16:21 +0000
-Received: from lvc-arm12.ispras.local (unknown [83.149.199.126])
-	by mail.ispras.ru (Postfix) with ESMTPSA id ABAB840F1DF0;
-	Wed, 23 Aug 2023 13:16:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.ispras.ru ABAB840F1DF0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ispras.ru;
-	s=default; t=1692796572;
-	bh=sV7vYQTyiAy3nWGgqxmiyOUH3WUFfyCP18D7p2WE0W4=;
-	h=From:To:Cc:Subject:Date:From;
-	b=lr9dSMDK0+Z2UduJ9y/kFVIhW9+SRTiDbNkUlken3blmfvBYbdbLOJWl/PBxt7iqE
-	 MGWQwTw0lnclYj86DXDWr+nQ/YN5DDFdBqChE93J8wQbiMY2SaNHxhYtd43m+vJlUr
-	 all6a9W/shqONNfNY+r9Xpm5eAn0aUhf5xK9Gv4I=
-From: Katya Orlova <e.orlova@ispras.ru>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Katya Orlova <e.orlova@ispras.ru>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	lvc-project@linuxtesting.org
-Subject: [PATCH] drm/mediatek: mtk_drm_crtc: Avoid inappropriate kfree() in
-Date: Wed, 23 Aug 2023 16:15:38 +0300
-Message-Id: <20230823131538.29222-1-e.orlova@ispras.ru>
-X-Mailer: git-send-email 2.30.2
+	id 1qYo5e-000hOr-3C;
+	Wed, 23 Aug 2023 13:40:09 +0000
+Received: from kwepemi500012.china.huawei.com (unknown [172.30.72.54])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4RW6gH4PXcztRv3;
+	Wed, 23 Aug 2023 21:36:11 +0800 (CST)
+Received: from huawei.com (10.90.53.73) by kwepemi500012.china.huawei.com
+ (7.221.188.12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 23 Aug
+ 2023 21:39:54 +0800
+From: Li Zetao <lizetao1@huawei.com>
+To: <lizetao1@huawei.com>
+CC: <andrew@aj.id.au>, <angelogioacchino.delregno@collabora.com>,
+	<avifishman70@gmail.com>, <bcm-kernel-feedback-list@broadcom.com>,
+	<benjaminfair@google.com>, <broonie@kernel.org>,
+	<chin-ting_kuo@aspeedtech.com>, <clg@kaod.org>, <conor.dooley@microchip.com>,
+	<daire.mcnamara@microchip.com>, <fancer.lancer@gmail.com>,
+	<florian.fainelli@broadcom.com>, <heiko@sntech.de>, <jbrunet@baylibre.com>,
+	<joel@jms.id.au>, <khilman@baylibre.com>, <linus.walleij@linaro.org>,
+	<linux-amlogic@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-aspeed@lists.ozlabs.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-riscv@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-rpi-kernel@lists.infradead.org>, <linux-spi@vger.kernel.org>,
+	<martin.blumenstingl@googlemail.com>, <matthias.bgg@gmail.com>,
+	<neil.armstrong@linaro.org>, <olteanv@gmail.com>, <openbmc@lists.ozlabs.org>,
+	<rjui@broadcom.com>, <sbranden@broadcom.com>, <tali.perry1@gmail.com>,
+	<tmaimon77@gmail.com>, <venture@google.com>, <yuenn@google.com>, Jonathan
+ Cameron <Jonathan.Cameron@huawei.com>
+Subject: [PATCH -next v2 04/25] spi: ath79: Use helper function devm_clk_get_enabled()
+Date: Wed, 23 Aug 2023 21:39:17 +0800
+Message-ID: <20230823133938.1359106-5-lizetao1@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230823133938.1359106-1-lizetao1@huawei.com>
+References: <20230822131237.1022815-1-lizetao1@huawei.com>
+ <20230823133938.1359106-1-lizetao1@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.90.53.73]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ kwepemi500012.china.huawei.com (7.221.188.12)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_061620_081985_059289DC 
-X-CRM114-Status: UNSURE (   8.79  )
+X-CRM114-CacheID: sfid-20230823_064007_309460_1ACA4880 
+X-CRM114-Status: UNSURE (   9.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,47 +83,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_drm_crtc_create() and mtk_drm_cmdq_pkt_destroy() are called with
-argument 'pkt' pointed to a field 'cmdq_handle' of 'mtk_crtc' structure.
-There is no need to kfree it.
+Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
+and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
+replaced by devm_clk_get_enabled() when driver enables (and possibly
+prepares) the clocks for the whole lifetime of the device. Moreover, it is
+no longer necessary to unprepare and disable the clocks explicitly.
 
-Found by Linux Verification Center (linuxtesting.org) with SVACE.
-
-Fixes: 7627122fd1c0 ("drm/mediatek: Add cmdq_handle in mtk_crtc")
-Signed-off-by: Katya Orlova <e.orlova@ispras.ru>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Li Zetao <lizetao1@huawei.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 3 ---
- 1 file changed, 3 deletions(-)
+v1 -> v2: None
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index d40142842f85..ba7307efa675 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -117,7 +117,6 @@ static int mtk_drm_cmdq_pkt_create(struct cmdq_client *client, struct cmdq_pkt *
- 
- 	pkt->va_base = kzalloc(size, GFP_KERNEL);
- 	if (!pkt->va_base) {
--		kfree(pkt);
- 		return -ENOMEM;
- 	}
- 	pkt->buf_size = size;
-@@ -129,7 +128,6 @@ static int mtk_drm_cmdq_pkt_create(struct cmdq_client *client, struct cmdq_pkt *
- 	if (dma_mapping_error(dev, dma_addr)) {
- 		dev_err(dev, "dma map failed, size=%u\n", (u32)(u64)size);
- 		kfree(pkt->va_base);
--		kfree(pkt);
- 		return -ENOMEM;
+ drivers/spi/spi-ath79.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/spi/spi-ath79.c b/drivers/spi/spi-ath79.c
+index 1b6d977d111c..c9f1d1e1dcf7 100644
+--- a/drivers/spi/spi-ath79.c
++++ b/drivers/spi/spi-ath79.c
+@@ -200,20 +200,16 @@ static int ath79_spi_probe(struct platform_device *pdev)
+ 		goto err_put_host;
  	}
  
-@@ -145,7 +143,6 @@ static void mtk_drm_cmdq_pkt_destroy(struct cmdq_pkt *pkt)
- 	dma_unmap_single(client->chan->mbox->dev, pkt->pa_base, pkt->buf_size,
- 			 DMA_TO_DEVICE);
- 	kfree(pkt->va_base);
--	kfree(pkt);
+-	sp->clk = devm_clk_get(&pdev->dev, "ahb");
++	sp->clk = devm_clk_get_enabled(&pdev->dev, "ahb");
+ 	if (IS_ERR(sp->clk)) {
+ 		ret = PTR_ERR(sp->clk);
+ 		goto err_put_host;
+ 	}
+ 
+-	ret = clk_prepare_enable(sp->clk);
+-	if (ret)
+-		goto err_put_host;
+-
+ 	rate = DIV_ROUND_UP(clk_get_rate(sp->clk), MHZ);
+ 	if (!rate) {
+ 		ret = -EINVAL;
+-		goto err_clk_disable;
++		goto err_put_host;
+ 	}
+ 
+ 	sp->rrw_delay = ATH79_SPI_RRW_DELAY_FACTOR / rate;
+@@ -229,8 +225,6 @@ static int ath79_spi_probe(struct platform_device *pdev)
+ 
+ err_disable:
+ 	ath79_spi_disable(sp);
+-err_clk_disable:
+-	clk_disable_unprepare(sp->clk);
+ err_put_host:
+ 	spi_controller_put(host);
+ 
+@@ -243,7 +237,6 @@ static void ath79_spi_remove(struct platform_device *pdev)
+ 
+ 	spi_bitbang_stop(&sp->bitbang);
+ 	ath79_spi_disable(sp);
+-	clk_disable_unprepare(sp->clk);
+ 	spi_controller_put(sp->bitbang.master);
  }
- #endif
  
 -- 
-2.30.2
+2.34.1
 
 
