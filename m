@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F537C27C40
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 09:22:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D04CFC27C40
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 09:22:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ppO9GUYa8NK1DN6UjuZNbD5je5ZHPwfaBaPR38+Na58=; b=V13xtulfixHmK6aFGkihOOQ3Vi
-	c1++b4Misr8S5GfJ4qrXbzCxnmpNO58DAnFn6doi/U7L07iFnLo73BeDJYuuDr8BCnLLco9/dMYqO
-	fNvEc65+V1sNmulV0zM/SoJlFLCxlOEkOYkCgDVkRvQAd+IGIyl+1VCQF1eVh4PnhPF/5WXI/GSiR
-	zZ8ff2OIVS+ZDjHeWE1MDniNU9ArcNCKC8fQR7yTGWJ1ZdsvKr4yRwRBwMPqrB5X2stp4V+6Lv1Wy
-	h4Xu2+kBwxxY+QVfp4ypuhfmxV/7XH6M8sSoGFLe2saot3PIN4vYigqp6FTCqTtfwqjZx4TlKBlNd
-	9ICD49fw==;
+	bh=HeFU4iirMD/C8zAnnLuvVsqExwwX9oyU662qIGcGqiA=; b=xBl2DJZ/JrqqwCmMeMwsSOkRWK
+	ewfuN61WCdSeH881Bzv3vL7lv3sEV3nWVeKuegasl/LNbQjbefMEVdt8KAnM+QfuX/SzSVE+YWgeM
+	fLHBTlES1TxjCgOby7HDmYdHggvCKnHs86/zcDlCh6neVTNqzbN/15ZvF3r5CxonQKBNc52zsPJnO
+	T1aaRy2TdY+FNRRZ4qEnbtLr6dlQkQTJuJZ0x/YoUfPzYDPJwJJLnk/Qtj9qpKfhvVzKBH0GSjyTY
+	HYeYbqo2UK8q13WlwIxjluLPjRi6sh6oE9JbN+0DzAmMCRJWANpxd2OtuFHxCfONmftmpT7t8cRCZ
+	uG1eqVLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ6Xu-002gXS-0M;
-	Thu, 24 Aug 2023 09:22:30 +0000
+	id 1qZ6Y0-002gcX-2C;
+	Thu, 24 Aug 2023 09:22:36 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ6XG-002g6r-25;
-	Thu, 24 Aug 2023 09:21:55 +0000
+	id 1qZ6XG-002g6s-28;
+	Thu, 24 Aug 2023 09:21:56 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:c310:4c8a:3a97])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 42D116607324;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C6EE46607340;
 	Thu, 24 Aug 2023 10:21:45 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1692868905;
-	bh=7SuYFFsy0UMAkQQkxSlRxpuDU3mFA9H4F51e8vN5B0Q=;
+	s=mail; t=1692868906;
+	bh=WDraZOgWi0izES0K9FdWnGrtWWF6tf7zOBBP/EoWBNg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=oW8M0zme51EF2mG+W34pgdyjpdQHpfMyMUr6LW6PIKBgj8IArSpUTgUzgiXQD1Stl
-	 QkLf3jZeNZM/ExuwvJpAE1hrtB1bMt7qi+tJYdr4lCGVKJxR1/lv20PLQB1fC3E2tV
-	 3gIUY1/HxFsfqx3bgnQqAvYQInBM+i9W0C86fk5eDifFIrmEnq6AObhn+i/LHGosMb
-	 mx1RK1HxYnXHIyGU00aYeRkoYv5fU25gESjqHrSGitBNSEW5FZk2KRGHqJ0ZFL8wRd
-	 Ah9uOscxkilvMJkG8dbuUGKdjILYM5mXxJKOHrUO4togCQoceF/lH3uLK1fkGFzh5Q
-	 zugcb//lCquSQ==
+	b=Zq9oiDXUjZcdi9+7nMSjADzQn8H64qzRmsMgacOvIpUXGf8y0ICuEm9Xqb4im9sUF
+	 pKfE95AJtjfFIwNGSF0gm4P3pXcTi0LrGqMfKE2HZ/jiXDXzOfVK/6at/WKYNrSnnU
+	 n92uen5xlNd7B4cYgy/q/c6JSkvcQlxf+OnweOKN37FT+06nx56F2awaSXUFXOmBKk
+	 /eRQwbANk83lM6PMixAYlmYeP5jkb7eKhLBnXEmaC0Wff5AZEHwjj2ELaH2NHAsrNb
+	 SGFqxz8R8WiMJ/KD7B74Ig7/cdSZGDCBFj2FoBoi8eyr0/j9jrQcupPWVEvVVYV2Kq
+	 pnZXs+BDx1Qpw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v5 07/10] media: verisilicon: postproc: Fix down scale test
-Date: Thu, 24 Aug 2023 11:21:30 +0200
-Message-Id: <20230824092133.39510-8-benjamin.gaignard@collabora.com>
+Subject: [PATCH v5 08/10] media: verisilicon: vp9: Allow to change resolution while streaming
+Date: Thu, 24 Aug 2023 11:21:31 +0200
+Message-Id: <20230824092133.39510-9-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230824092133.39510-1-benjamin.gaignard@collabora.com>
 References: <20230824092133.39510-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230824_022150_815250_E9B09941 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20230824_022150_823311_E07DB8CB 
+X-CRM114-Status: GOOD (  13.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,31 +87,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Do not allow down scaling if the source buffer resolution is
-smaller  than destination one.
+Remove all checks that prohibit to set a new format while streaming.
+This allow to change dynamically the resolution if the pixel format
+remains the same.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Fixes: fbb6c848dd89 ("media: destage Hantro VPU driver")
 ---
-Note: Marek has propose exactly the same fix in this patch:
-[PATCH] media: verisilicon: Do not enable G2 postproc downscale if source is narrower than destination
+ .../media/platform/verisilicon/hantro_v4l2.c  | 24 +++----------------
+ 1 file changed, 3 insertions(+), 21 deletions(-)
 
- drivers/media/platform/verisilicon/hantro_postproc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
-index e624cd98f41b..77d8ecfbe12f 100644
---- a/drivers/media/platform/verisilicon/hantro_postproc.c
-+++ b/drivers/media/platform/verisilicon/hantro_postproc.c
-@@ -107,7 +107,7 @@ static void hantro_postproc_g1_enable(struct hantro_ctx *ctx)
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index f0d8b165abcd..27a1e77cca38 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -514,25 +514,14 @@ static int hantro_set_fmt_out(struct hantro_ctx *ctx,
+ 		return ret;
  
- static int down_scale_factor(struct hantro_ctx *ctx)
+ 	if (!ctx->is_encoder) {
+-		struct vb2_queue *peer_vq;
+-
+ 		/*
+ 		 * In order to support dynamic resolution change,
+ 		 * the decoder admits a resolution change, as long
+-		 * as the pixelformat remains. Can't be done if streaming.
+-		 */
+-		if (vb2_is_streaming(vq) || (vb2_is_busy(vq) &&
+-		    pix_mp->pixelformat != ctx->src_fmt.pixelformat))
+-			return -EBUSY;
+-		/*
+-		 * Since format change on the OUTPUT queue will reset
+-		 * the CAPTURE queue, we can't allow doing so
+-		 * when the CAPTURE queue has buffers allocated.
++		 * as the pixelformat remains.
+ 		 */
+-		peer_vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
+-					  V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
+-		if (vb2_is_busy(peer_vq))
++		if (vb2_is_streaming(vq) && pix_mp->pixelformat != ctx->src_fmt.pixelformat) {
+ 			return -EBUSY;
++		}
+ 	} else {
+ 		/*
+ 		 * The encoder doesn't admit a format change if
+@@ -577,15 +566,8 @@ static int hantro_set_fmt_out(struct hantro_ctx *ctx,
+ static int hantro_set_fmt_cap(struct hantro_ctx *ctx,
+ 			      struct v4l2_pix_format_mplane *pix_mp)
  {
--	if (ctx->src_fmt.width == ctx->dst_fmt.width)
-+	if (ctx->src_fmt.width <= ctx->dst_fmt.width)
- 		return 0;
+-	struct vb2_queue *vq;
+ 	int ret;
  
- 	return DIV_ROUND_CLOSEST(ctx->src_fmt.width, ctx->dst_fmt.width);
+-	/* Change not allowed if queue is busy. */
+-	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
+-			     V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
+-	if (vb2_is_busy(vq))
+-		return -EBUSY;
+-
+ 	if (ctx->is_encoder) {
+ 		struct vb2_queue *peer_vq;
+ 
 -- 
 2.39.2
 
