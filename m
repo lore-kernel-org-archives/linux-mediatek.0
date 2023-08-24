@@ -4,76 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14C7BC6FA8F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 10:56:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B08BC71145
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 11:59:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DmxySgPzhnxxUTeywFheyR9KmyLlbR5/9tECTYy/UEo=; b=gDCnU4MXC8M1mfJx2xeJjCn7ZA
-	JlXtPz1XRqHoAK/Epa/hVP0s7VaQoa8uIoY8sWN2f+XRAdcSDS+SdWEEg749u5Pft2BQvS9FZ3Oht
-	Arl0nuP1FJQKIqvk1cTK8xnC2c/TyegM7unUKoFYecP2gwefRDPB0pxYq+9rKHPBD16nbTj3IUvtU
-	KLt16PK9Lfag0DpcSmiv2fRx7tohI+silrSkvpzRwDSpjIh1ENjYosMjvi68MLa7UmddBBIU9y5+l
-	UOmuRcXBnZNgfRqXXM+d2qyuP8sCNLHXk63XU7TrnIOvPhc2actmTOAHUET8wN2qTnN3/69Vn7yBx
-	tIJ1rfPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZJ1epCQtpUseqRg6zMsAGTaN70pgrRpLcCkz5DZ6kpI=; b=aonDxyfsng7Io0Jtnw6TP5S/d2
+	StnXpCg6h3qxjpwHgetum4tyAJZ5Me7LQyO/4ciwqbeXxPXbqDVe9+1+0IoRAddT5J7CVSHp1uFXY
+	MWv/WBr8QqLCUQkaF1EESVK9n93vc4RYNGzmt/Be6bmUIHbpm7hKmbNtTZNasn2bFlEQO4NDl+noY
+	lQtChPYvNk189ZqPimFkY84+eS22GZEw32uKHDsH1FKSeFY6fis0Jeg5MwAQMxNv2iIBddO8OsVY+
+	xL+AjdgFPIRNqhWE6DwVbHCXN6JUjyzrHorwrkVhQ4FdDy5WYyBenk54m7LCvTFACD4Z+kyRTnVJn
+	I4nx/AwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ80S-002vV2-05;
-	Thu, 24 Aug 2023 10:56:04 +0000
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+	id 1qZ8zP-0031Sm-0I;
+	Thu, 24 Aug 2023 11:59:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ80O-002vUA-2y
-	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Aug 2023 10:56:02 +0000
-Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-58dce1f42d6so10787467b3.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 24 Aug 2023 03:56:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1692874559; x=1693479359;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=DmxySgPzhnxxUTeywFheyR9KmyLlbR5/9tECTYy/UEo=;
-        b=UaK5oz3c2QZPwlWA0J06xzTK/xDFzZZUAeUmpvMPlZj46JGOihJGLgJIi2kLwSrrCh
-         3+85Zhuv0OQ85bwUFghZXFQtLS1OKK4f1KvUvXth2VCnAq7aXfnrUJZ09nXvftIj9ug1
-         vqJdglFFR2XtF59xJ0TK8crRhW3Fj4vchycRaUAYcgkMH37beDeQeJdOalJdHnOTuK3X
-         mFbwzsMfl/HgjTmkkxLCKn/VFwV13ccwjMX8L0dXjxo3YiUaYbjPyWWlCPv578PLRiY1
-         YafaOaRX9Y1K/VGzxbHY8nTaj6bnuCZl9TTamO7gHZSeiUSWjP2tTsB/xR/7hR+6XAZj
-         gJbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692874559; x=1693479359;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=DmxySgPzhnxxUTeywFheyR9KmyLlbR5/9tECTYy/UEo=;
-        b=A8rW42Pg/jQSjtgzG6xZKZOGz6EmmsIkR2WKOG+08IIaF3FgnBuWgTr7ZOnBB/F4Ld
-         U8CLFbtItyfUsi7LJe07o3jEB7bytOjtjdd7oqEmmJ8dXMhdmK6hfgs5yH5TWWXvTyYk
-         LKu4mI34iqi1Il9BkaSpLxAK/pGoNUsct0qVwMAXrmzOu4ncDCzYa2MwcuX1gbJadDwL
-         FMDB9n8m05BZFIxZH6pxrq9F5XbdoQ3DVIn09C64eKvCW0z8re0/C4epvCXv/fdyZx4P
-         kPkFug0s1Ca1j+rkmvXEKqynVeP4ozu5Ru/v8u5SjRUkoidUlTCadV1gBZ9Vk7+0Sm+T
-         tIWg==
-X-Gm-Message-State: AOJu0Yy65KJdZIYWzJtxDhpR/9FHNp7hbOD5NEQUBQNDphKB5vvnqYt6
-	TU6ymP+SB42yoRiVYu2t/s57lP0mCrRH14QqtfRyrA==
-X-Google-Smtp-Source: AGHT+IG5g981hiNWc2Virq/saq14f3u+c5agrarXaFetTlwLXn91k4F7b/MHfUOZ5lpFVRkOWRINd19ymBubd9J94eU=
-X-Received: by 2002:a81:4f49:0:b0:56c:f0c7:7d72 with SMTP id
- d70-20020a814f49000000b0056cf0c77d72mr13387507ywb.4.1692874559668; Thu, 24
- Aug 2023 03:55:59 -0700 (PDT)
+	id 1qZ8zL-0031SJ-2t;
+	Thu, 24 Aug 2023 11:59:01 +0000
+X-UUID: 95261f32427511ee83ed1395ce914268-20230824
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=ZJ1epCQtpUseqRg6zMsAGTaN70pgrRpLcCkz5DZ6kpI=;
+	b=kOcNN7ELoZpgtk75j1kyHbpA3o8lNLxBaEQBWsN3YOZklLMSfVrCsGZvd22c+/VZkSGXmMh02TWFSlbLLcbZVx5u2KzUuhjp30KyQtyr6WZQQJ/AptMNmpK40gPqOoirg/i8qH0HxPQ8NxnT0K/POwVz1Ow4nVK1eu59A7n5VS8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:43bac542-6edd-4d85-9e37-ab0adfa17ae6,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:be2db51f-33fd-4aaa-bb43-d3fd68d9d5ae,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 95261f32427511ee83ed1395ce914268-20230824
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1089656345; Thu, 24 Aug 2023 04:58:47 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 24 Aug 2023 19:58:44 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Thu, 24 Aug 2023 19:58:44 +0800
+Message-ID: <6ea443cf-868b-bbbb-fe42-bbe5bf026cb3@mediatek.com>
+Date: Thu, 24 Aug 2023 19:58:41 +0800
 MIME-Version: 1.0
-References: <20230818022817.3341-1-Sharp.Xia@mediatek.com>
-In-Reply-To: <20230818022817.3341-1-Sharp.Xia@mediatek.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Thu, 24 Aug 2023 12:55:23 +0200
-Message-ID: <CAPDyKFqN0K=2e4rijUBz=9LXVfhEVvDzNgqXTyTgvaPRK-PBNQ@mail.gmail.com>
-Subject: Re: [PATCH 1/1] mmc: Set optimal I/O size when mmc_setip_queue
-To: Sharp.Xia@mediatek.com
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, wsd_upstream@medaitek.com, 
-	linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Set DSU PMU status to fail
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <kernel@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, Conor Dooley
+	<conor+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, Seiya
+ Wang <seiya.wang@mediatek.com>, Tinghan Shen <tinghan.shen@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Bear
+ Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>, Macpaul
+ Lin <macpaul@gmail.com>, <macpaul.lin@mediatek.com>, Mark Brown
+	<broonie@kernel.org>
+References: <20230720200753.322133-1-nfraprado@collabora.com>
+ <e053e9fe-5d88-44f1-bb24-280113665185@notapiano>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <e053e9fe-5d88-44f1-bb24-280113665185@notapiano>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230824_035600_987758_72CBCBDA 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20230824_045859_949289_B58F9CB8 
+X-CRM114-Status: GOOD (  26.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,41 +95,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 18 Aug 2023 at 04:45, <Sharp.Xia@mediatek.com> wrote:
->
-> From: Sharp Xia <Sharp.Xia@mediatek.com>
->
-> MMC does not set readahead and uses the default VM_READAHEAD_PAGES
-> resulting in slower reading speed.
-> Use the max_req_size reported by host driver to set the optimal
-> I/O size to improve performance.
+On 8/11/23 06:12, Nícolas F. R. A. Prado wrote:
+> On Thu, Jul 20, 2023 at 04:07:51PM -0400, Nícolas F. R. A. Prado wrote:
+>> The DSU PMU allows monitoring performance events in the DSU cluster,
+>> which is done by configuring and reading back values from the DSU PMU
+>> system registers. However, for write-access to be allowed by ELs lower
+>> than EL3, the EL3 firmware needs to update the setting on the ACTLR3_EL3
+>> register, as it is disallowed by default.
+>>
+>> That configuration is not done on the firmware used by the MT8195 SoC,
+>> as a consequence, booting a MT8195-based machine like
+>> mt8195-cherry-tomato-r2 with CONFIG_ARM_DSU_PMU enabled hangs the kernel
+>> just as it writes to the CLUSTERPMOVSCLR_EL1 register, since the
+>> instruction faults to EL3, and BL31 apparently just re-runs the
+>> instruction over and over.
+>>
+>> Mark the DSU PMU node in the Devicetree with status "fail", as the
+>> machine doesn't have a suitable firmware to make use of it from the
+>> kernel, and allowing its driver to probe would hang the kernel.
+>>
+>> Fixes: 37f2582883be ("arm64: dts: Add mediatek SoC mt8195 and evaluation board")
+>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> Hi Matthias,
+> 
+> gentle ping on this patch, as it's not possible to boot MT8195 Chromebooks with
+> the mainline defconfig without this fix.
 
-This seems reasonable to me. However, it would be nice if you could
-share some performance numbers too - comparing before and after
-$subject patch.
+I've encountered this issue for a long time since CONFIG_ARM_DSU_PMU has 
+been enabled by this patch.
+075ed7b9e408 arm64: configs: Enable all PMUs provided by Arm
 
-Kind regards
-Uffe
+I'm working on mt8195-demo board, I guess this board has the same issue 
+as mt8195-cherry-tomato-r2. Here's the log.
 
->
-> Signed-off-by: Sharp Xia <Sharp.Xia@mediatek.com>
-> ---
->  drivers/mmc/core/queue.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/drivers/mmc/core/queue.c b/drivers/mmc/core/queue.c
-> index b396e3900717..fc83c4917360 100644
-> --- a/drivers/mmc/core/queue.c
-> +++ b/drivers/mmc/core/queue.c
-> @@ -359,6 +359,7 @@ static void mmc_setup_queue(struct mmc_queue *mq, struct mmc_card *card)
->                 blk_queue_bounce_limit(mq->queue, BLK_BOUNCE_HIGH);
->         blk_queue_max_hw_sectors(mq->queue,
->                 min(host->max_blk_count, host->max_req_size / 512));
-> +       blk_queue_io_opt(mq->queue, host->max_req_size);
->         if (host->can_dma_map_merge)
->                 WARN(!blk_queue_can_use_dma_map_merging(mq->queue,
->                                                         mmc_dev(host)),
-> --
-> 2.18.0
->
+[   22.996825] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+[   22.997609] rcu:     (detected by 1, t=5254 jiffies, g=-603, q=3023 
+ncpus=8)
+[   22.998468] rcu: All QSes seen, last rcu_preempt kthread activity 
+5252 (4294898045-4294892793), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[   23.000036] rcu: rcu_preempt kthread timer wakeup didn't happen for 
+5251 jiffies! g-603 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x200
+[   23.001462] rcu:     Possible timer handling issue on cpu=2 
+timer-softirq=47
+[   23.002319] rcu: rcu_preempt kthread starved for 5252 jiffies! g-603 
+f0x2 RCU_GP_WAIT_FQS(5) ->state=0x200 ->cpu=2
+[   23.003625] rcu:     Unless rcu_preempt kthread gets sufficient CPU 
+time, OOM is now expected behavior.
+[   23.004776] rcu: RCU grace-period kthread stack dump:
+[   23.005414] task:rcu_preempt     state:R stack:0     pid:15    ppid:2 
+      flags:0x00000008
+[   23.006474] Call trace:
+[   23.006788]  __switch_to+0xe4/0x15c
+[   23.007240]  __schedule+0x2bc/0xaa0
+[   23.007685]  schedule+0x5c/0xc4
+[   23.008087]  schedule_timeout+0x80/0xf4
+[   23.008578]  rcu_gp_fqs_loop+0x124/0x3d4
+[   23.009081]  rcu_gp_kthread+0x124/0x160
+[   23.009571]  kthread+0x118/0x11c
+[   23.009985]  ret_from_fork+0x10/0x20
+
+I have a work around to enable DSU PMU in firmware (trusted-firmware-a) 
+to solve this hang problem.
+However, I think this is not the correct place to put these codes to 
+enable DSU PMU in trusted-firmware-a.
+
+--- a/include/arch/aarch64/el3_common_macros.S
++++ b/include/arch/aarch64/el3_common_macros.S
+@@ -39,6 +39,19 @@
+         msr     sctlr_el3, x0
+         isb
+
++       /* enable DSU PMU */
++       mov     x1, #(1 << 12)
++       mrs     x0, actlr_el3
++       orr     x0, x0, x1
++       msr     actlr_el3, x0
++       isb
++
++       mov     x1, #(1 << 12)
++       mrs     x0, actlr_el2
++       orr     x0, x0, x1
++       msr     actlr_el2, x0
++       isb
++
+  #ifdef IMAGE_BL31
+         /* 
+---------------------------------------------------------------------
+          * Initialise the per-cpu cache pointer to the CPU.
+
+If I put these codes in other platform dependent files to enable DSU PMU 
+instead of the common code beginning of the EL3, it just not work.
+
+It should be able to fixed in firmware in platform dependent files, but 
+I'm not familiar with how actlr_el3 and actlr_el2 should be accessed. 
+Otherwise, the DSU PMU node in dts should be disabled. Any idea is welcome.
+
+Thanks
+Macpaul Lin
 
