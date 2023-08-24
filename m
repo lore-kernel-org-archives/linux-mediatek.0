@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBD0FC6FA8F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 13:10:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2583C3DA6F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 13:13:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=P4XtuswCj5NJ4ljKORmSqie4pBZOU6uSzYQ3SfzIBS0=; b=EuAQW/IbTKcXl8jhQT49lbOQVK
-	RHmFmwHcDXudqiw8lF+bQHz6pORUfMu4pKbmQxQLIvXo5GWMvCJir8PN5Pg3a2MGhv11bznYioZSq
-	u59BtcjWnuK3MajVtP/sJ8X2RWu0tRw8i4ptlNR0/bMJ2XkTrELg2c1u65HXebEIeOyYKtyag1NKd
-	AUpci2j5w8UhOLkdVOxTG5+wZzRyGBlqgoeeDarxcc+8wZZwok4uWT+KYiC37r2p9FwQWbHQnxpSH
-	0wzi/kROLVDb/1o+L7BeKSALEkKODrNMqzN/98CFcpo6ivsAmDhPjeoulMhQGUMyBcQ9i91h5eJde
-	/byWzwMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kLMOPlqC8YHIeOONQyzhzvuodWGoLV7Rh3tHH+Puykg=; b=BtUSPcgQsTLnKeB+HwscA5Q0kZ
+	XCuB+DNjKBtS1XBN2JGkhL8i4FzIg+aAE1Es7x/ZbAIPOebWoFlkUKgU3LgfXxroGTeyF0WN4gXfA
+	LiXpSYSYl3wTAJGECmd0DnEavKceJdQaHdPtZTjD43cxGOlnm8OvPP1YL0XXljPZ7fWCScej1KU8Z
+	KimAP8y2M9N2MA1hV+3t51xYIXBeV/vvgWU7BWMx3JXnRB0cLH9/bnPk2PqoHSY+ooJR0zhPtUvMU
+	sYWG1wn9uQsOXfavktrl2L2ZdC57Pn+4qP4yPWuEQ2X6KtO2r0Lxv5xXVM8ZEnUPztkIpQ8UiWOGD
+	POrA8rAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZA6a-0037Qd-1J;
-	Thu, 24 Aug 2023 13:10:32 +0000
-Received: from mail.astralinux.ru ([217.74.38.119])
+	id 1qZA9f-0037dP-2e;
+	Thu, 24 Aug 2023 13:13:43 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZA6W-0037OM-24;
-	Thu, 24 Aug 2023 13:10:30 +0000
-Received: from localhost (localhost.localdomain [127.0.0.1])
-	by mail.astralinux.ru (Postfix) with ESMTP id 641B71866664;
-	Thu, 24 Aug 2023 16:10:12 +0300 (MSK)
-Received: from mail.astralinux.ru ([127.0.0.1])
-	by localhost (rbta-msk-vsrv-mail01.astralinux.ru [127.0.0.1]) (amavisd-new, port 10032)
-	with ESMTP id fThewjPZHioT; Thu, 24 Aug 2023 16:10:12 +0300 (MSK)
-Received: from localhost (localhost.localdomain [127.0.0.1])
-	by mail.astralinux.ru (Postfix) with ESMTP id 17BC31867F66;
-	Thu, 24 Aug 2023 16:10:12 +0300 (MSK)
-X-Virus-Scanned: amavisd-new at astralinux.ru
-Received: from mail.astralinux.ru ([127.0.0.1])
-	by localhost (rbta-msk-vsrv-mail01.astralinux.ru [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id uK8xMjecZl51; Thu, 24 Aug 2023 16:10:12 +0300 (MSK)
-Received: from rbta-msk-lt-302690.astralinux.ru (unknown [10.177.233.235])
-	by mail.astralinux.ru (Postfix) with ESMTPSA id D2124186765A;
-	Thu, 24 Aug 2023 16:10:10 +0300 (MSK)
-From: Alexandra Diupina <adiupina@astralinux.ru>
-To: Joerg Roedel <joro@8bytes.org>,
-	stable@vger.kernel.org,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Alexandra Diupina <adiupina@astralinux.ru>,
+	id 1qZA9b-0037ck-2m;
+	Thu, 24 Aug 2023 13:13:41 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C00BB62997;
+	Thu, 24 Aug 2023 13:13:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A422AC433C7;
+	Thu, 24 Aug 2023 13:13:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1692882818;
+	bh=SfeSvLlzV/QIsfQI6lGrqzROvKL38Kvs5ty/5yOH31A=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZhJLIz8BGyAb2ivMZw6rmCdfIOYmFrT9z8ODxNAAJEQ85enR0GfFmnfIbFsFmArtl
+	 FXYOynVSVtLEblhukepFVPKrJuXATUHOsl0w7G192F+Dh01gV5/rU18iIZ1iZF5rBy
+	 bA5+n8aGEXbZtIfZb49YeDS5zo5cbYTnS7/mUOWs=
+Date: Thu, 24 Aug 2023 15:13:35 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Alexandra Diupina <adiupina@astralinux.ru>
+Cc: Joerg Roedel <joro@8bytes.org>, stable@vger.kernel.org,
 	Will Deacon <will@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	iommu@lists.linux-foundation.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] [PATCH 5.10] iommu/mediatek: remove redundant comparison
-Date: Thu, 24 Aug 2023 16:09:54 +0300
-Message-Id: <20230824130954.29688-1-adiupina@astralinux.ru>
-X-Mailer: git-send-email 2.30.2
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] [PATCH 5.10] iommu/mediatek: remove redundant comparison
+Message-ID: <2023082458-mongrel-catlike-b73d@gregkh>
+References: <20230824130954.29688-1-adiupina@astralinux.ru>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230824130954.29688-1-adiupina@astralinux.ru>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230824_061029_186954_8E2CF27A 
-X-CRM114-Status: UNSURE (   7.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230824_061339_980526_24F48C74 
+X-CRM114-Status: GOOD (  19.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,35 +74,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-iommu_device_register always returns 0 in 4.11-5.12, so
-we need to remove redundant comparison with 0
+On Thu, Aug 24, 2023 at 04:09:54PM +0300, Alexandra Diupina wrote:
+> iommu_device_register always returns 0 in 4.11-5.12, so
 
-Found by Linux Verification Center (linuxtesting.org) with SVACE.
+What do you mean by "4.11-5.12"?
 
-Fixes: b16c0170b53c ("iommu/mediatek: Make use of iommu_device_register i=
-nterface")
-Signed-off-by: Alexandra Diupina <adiupina@astralinux.ru>
----
- drivers/iommu/mtk_iommu.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+> we need to remove redundant comparison with 0
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 051815c9d2bb..208c47218b75 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -748,9 +748,7 @@ static int mtk_iommu_probe(struct platform_device *pd=
-ev)
- 	iommu_device_set_ops(&data->iommu, &mtk_iommu_ops);
- 	iommu_device_set_fwnode(&data->iommu, &pdev->dev.of_node->fwnode);
-=20
--	ret =3D iommu_device_register(&data->iommu);
--	if (ret)
--		return ret;
-+	iommu_device_register(&data->iommu);
-=20
- 	spin_lock_init(&data->tlb_lock);
- 	list_add_tail(&data->list, &m4ulist);
---=20
-2.30.2
+Why?
 
+> 
+> Found by Linux Verification Center (linuxtesting.org) with SVACE.
+> 
+> Fixes: b16c0170b53c ("iommu/mediatek: Make use of iommu_device_register interface")
+
+How is this a fix if it isn't actually changing the code at all?
+
+> Signed-off-by: Alexandra Diupina <adiupina@astralinux.ru>
+> ---
+>  drivers/iommu/mtk_iommu.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 051815c9d2bb..208c47218b75 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -748,9 +748,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>  	iommu_device_set_ops(&data->iommu, &mtk_iommu_ops);
+>  	iommu_device_set_fwnode(&data->iommu, &pdev->dev.of_node->fwnode);
+>  
+> -	ret = iommu_device_register(&data->iommu);
+> -	if (ret)
+> -		return ret;
+> +	iommu_device_register(&data->iommu);
+
+This is obviously incorrect, please fix your "tool" that is telling you
+to make such a broken change.
+
+Unless your tool wants to create buggy code?  If so, it's succeeding
+very well.
+
+greg k-h
 
