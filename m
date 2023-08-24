@@ -4,110 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F35EC6FA8F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 15:17:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC986C27C40
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 17:08:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XOnI1uxGv+A5Y0c0SW5CIw0u1ZKpGf7Ta0MMclyJBT4=; b=19gFMBlmpWI5IrrdDOF2jHmTn+
-	5Lz5EPIr6WK0//p9f/LiZ+Ce1I9uP5+zLHHXmazo5Q8HNnGuOqIQKBKp2R+qxfl6pSZEgJ+CXsvYc
-	Shln5De89lN3ogCJefJYIFiTSDsuNtQY8ZB/MQTnXybGS6bqZFtJ+mnd5LeyAfFKelh6Vaj/9CRUT
-	eWOls118GsX4Tzv2i2TudYeaGSngszi/HSFLsBe3XtX0vYIBUmMuhVRnA58TG8un+sEv0DZIROd9y
-	osTXky4bnnveDhM+QEJXo3gTB621q5qQdy2ANe/6mF5wUmwX/H4ZQ2Pq3beFVSd+VM6IvohUMWeTO
-	aXYUviXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ATrXCM7+qSOheR+SJgfPJ9Nees7z4bkd7+kSh3wvmIE=; b=bNHQSWhn2LVPCoDae0+GfwmpCj
+	1CZgE5BKWw/fwd1/GjZ1efvV7lYtQtt0lkNX6nyTQz6TQRTmgZTfNZJgRLU8TQRsMuDdrHRQ0nGWv
+	MB5qo6MVJTWV0AKGvbNR84OC0KCOKvPhCUuXMXAT9ERpglQc3jDJvsvB92AqF9Z1RwinkBSsTI8mb
+	LuxoDtgibPKZjJ6b6IXlMdX04ATY3ilSgIcgZrVXxiIW0fQOcsmb0RPMGQ8jbt8N+PlERqKsHNS35
+	Q/XkH8Jfd5d7L540XO1hT5T8Mxi2YW1mUWMuWLgYMfTwZhp5iwZh9PTrRA6UbD6Tndh0XbNnBSMti
+	YuAvHFLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZC58-003LfG-2y;
-	Thu, 24 Aug 2023 15:17:10 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1qZDpB-003ViJ-2D;
+	Thu, 24 Aug 2023 17:08:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZC54-003LdC-2k
+	id 1qZDp8-003VhN-0o
 	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Aug 2023 15:17:09 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-68a3ced3ec6so3917828b3a.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 24 Aug 2023 08:16:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1692890219; x=1693495019;
-        h=in-reply-to:from:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=XOnI1uxGv+A5Y0c0SW5CIw0u1ZKpGf7Ta0MMclyJBT4=;
-        b=Nl7wD1c3wXNiOXBxZpcOgRiAqLdemHO5JFws8LFKh8Du2+iDZE05nifhEsfykuv9NJ
-         rlbP8YPT6jFyLJ2umuqBmLC3tBbKWZP8CdoULmI5br0ohnX380eWTOnlKwYo2xszlqNh
-         Cvark7Gmn95JshFlWz6fR73+I/Gw4kmPrh/9g=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692890219; x=1693495019;
-        h=in-reply-to:from:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XOnI1uxGv+A5Y0c0SW5CIw0u1ZKpGf7Ta0MMclyJBT4=;
-        b=gelHoTYLWR3q4QJCWTuagEcO6J0irxlNbiqXcxnQJ6LcYY0HE1QYupdvM7bPEcFDuC
-         W7v+kbYPxblGsbYD/VjnmUUwFt+TCVIyAvpP2bSnmaKZ34t6qt5eoeadqprCymNEKDEv
-         uaHO5zVrGQ9SrzleT9bMpR0v2OdTFp9UctEBVb23ZPQvzF0lcuUpYwTvIbGr5K3OI+01
-         w7n1GSn5WlHt4zKzrg2WVyqQjWq8SyFkEzCnibIMtXJfvKCrJOJCDrW6mmGR7ekfzlAF
-         WYpiSUI1BFGD+rnsLGV5hf1xqZ3UVwJ9nwbox/QsicD+335yaRI7RnI3FBgH0jFphclj
-         VakQ==
-X-Gm-Message-State: AOJu0YxVsnFlfKgsDBhQC1NQ6scNCXPZWIPUSo3aVz8p9tEskvsfgx96
-	I8MG0dLIrdxG7lWS3ECrDiU/wA==
-X-Google-Smtp-Source: AGHT+IHWD+IJ6SHtmSytHItm4n3pme/UFCVhe1Ydiq1H229vBi/c5qSM2mWdoh5w2nY5vU73BHdwVw==
-X-Received: by 2002:a05:6a20:8e01:b0:135:4527:efe4 with SMTP id y1-20020a056a208e0100b001354527efe4mr20898796pzj.10.1692890219164;
-        Thu, 24 Aug 2023 08:16:59 -0700 (PDT)
-Received: from [192.168.1.3] (ip72-194-116-95.oc.oc.cox.net. [72.194.116.95])
-        by smtp.gmail.com with ESMTPSA id y4-20020aa78544000000b006862b2a6b0dsm11535368pfn.15.2023.08.24.08.16.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 24 Aug 2023 08:16:58 -0700 (PDT)
-Message-ID: <bd0a1e56-be02-6c3e-374b-0610116d94aa@broadcom.com>
-Date: Thu, 24 Aug 2023 08:16:54 -0700
+	Thu, 24 Aug 2023 17:08:47 +0000
+X-UUID: dfb86cf042a011ee912e1518a6540028-20230824
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ATrXCM7+qSOheR+SJgfPJ9Nees7z4bkd7+kSh3wvmIE=;
+	b=QBwSREAKif2TGXY/DJDuAcHsgOxxB2Md/Bioo7/JUezqWe0p29tkfQUQKaOIe4AhAfEFmW4zS3Jbd8NXkTkcVAcjaGJ5R6pmgC32Rbirr/v4uYdgrYgIH+B5lFUURuHd1AK0Bw8EpejJCRJzygUBmdOQfpkYgMCzjatxfks1WIQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:6ca6d9bd-4aa0-410b-9e58-2a8824a9ccf7,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:1353e9ee-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: dfb86cf042a011ee912e1518a6540028-20230824
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1059683649; Thu, 24 Aug 2023 10:08:41 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 25 Aug 2023 01:08:38 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 25 Aug 2023 01:08:38 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>,
+	"Alexey D . Filimonov" <alexey@filimonic.net>
+Subject: [PATCH] wifi: mt76: add ability to explicitly forbid LED registration with DT
+Date: Fri, 25 Aug 2023 01:08:37 +0800
+Message-ID: <b08ef4d7c91c54e273c61784272e5c6f70c3c137.1692896654.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH] thermal: Explicitly include correct DT includes
-To: Rob Herring <robh@kernel.org>, Guillaume La Roque
- <glaroque@baylibre.com>, "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria
- <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Markus Mayer <mmayer@broadcom.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>,
- Thara Gopinath <thara.gopinath@gmail.com>,
- =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund@ragnatech.se>,
- Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Vasily Khoruzhick <anarsoul@gmail.com>, Yangtao Li <tiny.windzz@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20230714175008.4064592-1-robh@kernel.org>
-From: Florian Fainelli <florian.fainelli@broadcom.com>
-In-Reply-To: <20230714175008.4064592-1-robh@kernel.org>
-Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256;
-	boundary="0000000000002dbe5f0603acb880"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230824_081706_901213_CB2A2A66 
-X-CRM114-Status: GOOD (  11.08  )
+X-CRM114-CacheID: sfid-20230824_100846_302703_D906337C 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,113 +84,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---0000000000002dbe5f0603acb880
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Add ability to explicitly forbid LED registration using DT led\status = "disabled".
 
+Tested-by: Alexey D. Filimonov <alexey@filimonic.net>
+Signed-off-by: Alexey D. Filimonov <alexey@filimonic.net>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mac80211.c | 39 ++++++++++++-------
+ 1 file changed, 25 insertions(+), 14 deletions(-)
 
-
-On 7/14/2023 10:50 AM, Rob Herring wrote:
-> The DT of_device.h and of_platform.h date back to the separate
-> of_platform_bus_type before it as merged into the regular platform bus.
-> As part of that merge prepping Arm DT support 13 years ago, they
-> "temporarily" include each other. They also include platform_device.h
-> and of.h. As a result, there's a pretty much random mix of those include
-> files used throughout the tree. In order to detangle these headers and
-> replace the implicit includes with struct declarations, users need to
-> explicitly include the correct includes.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->   drivers/thermal/amlogic_thermal.c           | 2 --
->   drivers/thermal/broadcom/bcm2711_thermal.c  | 2 +-
->   drivers/thermal/broadcom/brcmstb_thermal.c  | 2 +-
-
-Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com> # broadcom
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index c0ff36a98bed..f768d9aed456 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -198,10 +198,33 @@ static int mt76_led_init(struct mt76_phy *phy)
+ {
+ 	struct mt76_dev *dev = phy->dev;
+ 	struct ieee80211_hw *hw = phy->hw;
++	struct device_node *np = dev->dev->of_node;
+ 
+ 	if (!phy->leds.cdev.brightness_set && !phy->leds.cdev.blink_set)
+ 		return 0;
+ 
++	np = of_get_child_by_name(np, "led");
++	if (np) {
++		if (!of_device_is_available(np)) {
++			of_node_put(np);
++			dev_info(dev->dev,
++				"led registration was explicitly disabled by dts\n");
++			return 0;
++		}
++
++		if (phy == &dev->phy) {
++			int led_pin;
++
++			if (!of_property_read_u32(np, "led-sources", &led_pin))
++				phy->leds.pin = led_pin;
++
++			phy->leds.al =
++				of_property_read_bool(np, "led-active-low");
++		}
++
++		of_node_put(np);
++	}
++
+ 	snprintf(phy->leds.name, sizeof(phy->leds.name), "mt76-%s",
+ 		 wiphy_name(hw->wiphy));
+ 
+@@ -212,20 +235,8 @@ static int mt76_led_init(struct mt76_phy *phy)
+ 					mt76_tpt_blink,
+ 					ARRAY_SIZE(mt76_tpt_blink));
+ 
+-	if (phy == &dev->phy) {
+-		struct device_node *np = dev->dev->of_node;
+-
+-		np = of_get_child_by_name(np, "led");
+-		if (np) {
+-			int led_pin;
+-
+-			if (!of_property_read_u32(np, "led-sources", &led_pin))
+-				phy->leds.pin = led_pin;
+-			phy->leds.al = of_property_read_bool(np,
+-							     "led-active-low");
+-			of_node_put(np);
+-		}
+-	}
++	dev_info(dev->dev,
++		"registering led '%s'\n", phy->leds.name);
+ 
+ 	return led_classdev_register(dev->dev, &phy->leds.cdev);
+ }
 -- 
-Florian
+2.18.0
 
---0000000000002dbe5f0603acb880
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Description: S/MIME Cryptographic Signature
-
-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
-riBJ/K1AFUjRAjFhGV64l++td7dkmnq/X8ET75ti+w1s4FRpFqkD2m7pg5NxdsZphYIXAgMBAAGj
-QjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBSP8Et/qC5FJK5N
-UPpjmove4t0bvDANBgkqhkiG9w0BAQsFAAOCAQEAS0DbwFCq/sgM7/eWVEVJu5YACUGssxOGhigH
-M8pr5nS5ugAtrqQK0/Xx8Q+Kv3NnSoPHRHt44K9ubG8DKY4zOUXDjuS5V2yq/BKW7FPGLeQkbLmU
-Y/vcU2hnVj6DuM81IcPJaP7O2sJTqsyQiunwXUaMld16WCgaLx3ezQA3QY/tRG3XUyiXfvNnBB4V
-14qWtNPeTCekTBtzc3b0F5nCH3oO4y0IrQocLP88q1UOD5F+NuvDV0m+4S4tfGCLw0FREyOdzvcy
-a5QBqJnnLDMfOjsl0oZAzjsshnjJYS8Uuu7bVW/fhO4FCU29KNhyztNiUGUe65KXgzHZs7XKR1g/
-XzCCBVgwggRAoAMCAQICDBP8P9hKRVySg3Qv5DANBgkqhkiG9w0BAQsFADBbMQswCQYDVQQGEwJC
-RTEZMBcGA1UEChMQR2xvYmFsU2lnbiBudi1zYTExMC8GA1UEAxMoR2xvYmFsU2lnbiBHQ0MgUjMg
-UGVyc29uYWxTaWduIDIgQ0EgMjAyMDAeFw0yMjA5MTAxMjE4MTFaFw0yNTA5MTAxMjE4MTFaMIGW
-MQswCQYDVQQGEwJJTjESMBAGA1UECBMJS2FybmF0YWthMRIwEAYDVQQHEwlCYW5nYWxvcmUxFjAU
-BgNVBAoTDUJyb2FkY29tIEluYy4xGTAXBgNVBAMTEEZsb3JpYW4gRmFpbmVsbGkxLDAqBgkqhkiG
-9w0BCQEWHWZsb3JpYW4uZmFpbmVsbGlAYnJvYWRjb20uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOC
-AQ8AMIIBCgKCAQEA+oi3jMmHltY4LMUy8Up5+1zjd1iSgUBXhwCJLj1GJQF+GwP8InemBbk5rjlC
-UwbQDeIlOfb8xGqHoQFGSW8p9V1XUw+cthISLkycex0AJ09ufePshLZygRLREU0H4ecNPMejxCte
-KdtB4COST4uhBkUCo9BSy1gkl8DJ8j/BQ1KNUx6oYe0CntRag+EnHv9TM9BeXBBLfmMRnWNhvOSk
-nSmRX0J3d9/G2A3FIC6WY2XnLW7eAZCQPa1Tz3n2B5BGOxwqhwKLGLNu2SRCPHwOdD6e0drURF7/
-Vax85/EqkVnFNlfxtZhS0ugx5gn2pta7bTdBm1IG4TX+A3B1G57rVwIDAQABo4IB3jCCAdowDgYD
-VR0PAQH/BAQDAgWgMIGjBggrBgEFBQcBAQSBljCBkzBOBggrBgEFBQcwAoZCaHR0cDovL3NlY3Vy
-ZS5nbG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyM3BlcnNvbmFsc2lnbjJjYTIwMjAuY3J0MEEG
-CCsGAQUFBzABhjVodHRwOi8vb2NzcC5nbG9iYWxzaWduLmNvbS9nc2djY3IzcGVyc29uYWxzaWdu
-MmNhMjAyMDBNBgNVHSAERjBEMEIGCisGAQQBoDIBKAowNDAyBggrBgEFBQcCARYmaHR0cHM6Ly93
-d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3NpdG9yeS8wCQYDVR0TBAIwADBJBgNVHR8EQjBAMD6gPKA6
-hjhodHRwOi8vY3JsLmdsb2JhbHNpZ24uY29tL2dzZ2NjcjNwZXJzb25hbHNpZ24yY2EyMDIwLmNy
-bDAoBgNVHREEITAfgR1mbG9yaWFuLmZhaW5lbGxpQGJyb2FkY29tLmNvbTATBgNVHSUEDDAKBggr
-BgEFBQcDBDAfBgNVHSMEGDAWgBSWM9HmWBdbNHWKgVZk1b5I3qGPzzAdBgNVHQ4EFgQUUwwfJ6/F
-KL0fRdVROal/Lp4lAF0wDQYJKoZIhvcNAQELBQADggEBAKBgfteDc1mChZjKBY4xAplC6uXGyBrZ
-kNGap1mHJ+JngGzZCz+dDiHRQKGpXLxkHX0BvEDZLW6LGOJ83ImrW38YMOo3ZYnCYNHA9qDOakiw
-2s1RH00JOkO5SkYdwCHj4DB9B7KEnLatJtD8MBorvt+QxTuSh4ze96Jz3kEIoHMvwGFkgObWblsc
-3/YcLBmCgaWpZ3Ksev1vJPr5n8riG3/N4on8gO5qinmmr9Y7vGeuf5dmZrYMbnb+yCBalkUmZQwY
-NxADYvcRBA0ySL6sZpj8BIIhWiXiuusuBmt2Mak2eEv0xDbovE6Z6hYyl/ZnRadbgK/ClgbY3w+O
-AfUXEZ0xggJtMIICaQIBATBrMFsxCzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52
-LXNhMTEwLwYDVQQDEyhHbG9iYWxTaWduIEdDQyBSMyBQZXJzb25hbFNpZ24gMiBDQSAyMDIwAgwT
-/D/YSkVckoN0L+QwDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcNAQkEMSIEIDAkara8lJPPBhCq
-t6v04LaDsVizwC4qkLKimmoSP16fMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcN
-AQkFMQ8XDTIzMDgyNDE1MTY1OVowaQYJKoZIhvcNAQkPMVwwWjALBglghkgBZQMEASowCwYJYIZI
-AWUDBAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG9w0BAQowCwYJKoZIhvcNAQEH
-MAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQBN41iIKZurmzTDDnuys23uH2al+WNIaYYH
-ZPi9ocbUCT/ikybgUePbne7VGwBRw8uCkvT27C584EqExUHb48XnsF5YmUcxSiS6P8Jum7Bm0PIN
-TrATKzhawVgJnjasjC6N+jOSvShJHUUPXo1E9v9j13ZFK2d1lLMoQLxNyOBbNwdFdBIsIM4rHfdq
-C5taTXmiv/fUtCRJietWBtCdWcc3I/FCPJwVKuXqvm+LMIx1mKGcbaAuM/S8C5ZtiPbm9jkEXkm1
-o8yCJMYpcdf6aQLxtEbLJuj9iZYDPf5WSXuWFx959hlBTJIm1ddKskMXcmTO8qGoGrVM1VIUurvo
-GCsT
---0000000000002dbe5f0603acb880--
 
