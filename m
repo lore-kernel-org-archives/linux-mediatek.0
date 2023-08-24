@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3BCBC3DA6F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 08:56:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E593C27C40
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 09:12:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gUylG3QHD9e6Z2fIY6F04F3ucTSCCpP7MjWAlKyLxwo=; b=o8jSzQFvp0dQPiWDkfIfwKaKag
-	s4ox/uFI2eepvIMBt4GNlMMPNBxx+Q+iAgZMf/az9KYW0xOoa/O4tYBR1Z4eBu5vfzybAhDrgS1qc
-	g5NQqFpUgDeARqRk4q2VfjQQPDJhvg1sbpm1BEYOpy4xUwqbdjkDeXviYJH3vlZ9XWKdNCWXms03o
-	qUMHpfnf8nkZHUI9CqYTO5Y9JKj/a6VNI4I/tx1agpQmEZhGE61sc2pblxjNuR4oHr26OhH0x5oDq
-	NMKRrNaQbDNPGlHkuzUEZ3T2nh5FlLNVPgWvUO/bFgbX/kI9h7EsIen93r5G9PkU0FjOoY8wVrFDv
-	C/X8HEFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8QWfWxMile/WgNFhvo8ZVwxIXeay3uNKMaVUJZ+Cgck=; b=GQyhiGT73iND+NLSZZLm8qotpI
+	LFTxx8UQS4wAO+WJ7QyWVUYiob3mCCvyNEfG+ZB2lJ3xFhhEc1HG2i1GbOGqyv7ch3xVNr4uYZdg/
+	6WnzyoDh3XWvenXyEP0jozKAQw+CA90bYxx24v012aWXHP6x6i6ZnoRnfBnCqasiHulyZS8mv8vUo
+	/mlAJcjpXSRsknJPb3qT7eqUqP5129j8Al6VjwS1qhDAGpf/RwV2LJb7pln5JdTyPTh499ueOrV5v
+	NT1j73+uA8Ya0L5KRRwDdfdjhig3njEkWFPuYE+Bu+/97JgKhDX8Gn2Xkfl182dPamkqMVmYkZHKy
+	S1zEjZiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ68S-002dPN-22;
-	Thu, 24 Aug 2023 08:56:12 +0000
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+	id 1qZ6OF-002f5u-3A;
+	Thu, 24 Aug 2023 09:12:31 +0000
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ68O-002dO2-0q;
-	Thu, 24 Aug 2023 08:56:09 +0000
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
-	by gandalf.ozlabs.org (Postfix) with ESMTP id 4RWcPT715Jz4wy7;
-	Thu, 24 Aug 2023 18:55:57 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.ozlabs.org (Postfix) with ESMTPSA id 4RWcPD1WXsz4wxn;
-	Thu, 24 Aug 2023 18:55:43 +1000 (AEST)
-Message-ID: <4450e65b-5de4-e503-ea2e-da95410f4c50@kaod.org>
-Date: Thu, 24 Aug 2023 10:55:37 +0200
+	id 1qZ6OC-002f58-1L
+	for linux-mediatek@lists.infradead.org;
+	Thu, 24 Aug 2023 09:12:29 +0000
+Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-5922b96c5fcso37998197b3.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 24 Aug 2023 02:12:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1692868346; x=1693473146;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=8QWfWxMile/WgNFhvo8ZVwxIXeay3uNKMaVUJZ+Cgck=;
+        b=uAMAMZb+Pl3xrF//1gf2QoomFCCwtreyRs4xAteq5++ErX/Jag+1pyV60vqF13g6qc
+         EWQYleaROyiNyiEmpy54E9f7zGOrUG370OYBBm53fN4GEz471yoC/pFSQ4b14keMgBFm
+         7ng6XIVQDxokSMklzIx+h8oZmarkKwbhTXrdGoqOePObuS5InclzCeCyXR6taZUn2/wm
+         U8QcZHCo3Fu9mOTcf8df+zbEUZ95ISfluXVW/6MIO2ViQ1iN12idqCJ7OBm8cAynaU/6
+         8Rsxe2AbXcTdn7pUXHPXDkQsstCnPF7swZ8nB3HO7IXLrfEtfHeOeBuSelO97JOAqEdm
+         5Qsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692868346; x=1693473146;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8QWfWxMile/WgNFhvo8ZVwxIXeay3uNKMaVUJZ+Cgck=;
+        b=NAc10LxyQeIdIvhMNxs3pXOliGupEBfS08F3Rf6DwPcBMeoW6U0RRLx9iWWAR40zyF
+         YdywuBPhbIhZnbjhnYg2sfFT3OtK9AJixF02sMjVHvG2eUGSJZIKNro0mBKaTv/XdnTm
+         WYuFiBPBYhW2/poniYoNUoCCwbbeuzgjd4d3alCTgUWFf6cm+XsnqpIDJj2citEZTJ2g
+         vrQ19S7TR+oPA4tpcp8ZA/g/1BT/Stv/QKzoPxuiA08VVVfAov2YTfP9qZtJpojWjqNN
+         lm3m7PoeCmmNkolehSpuwd3vFP0QsD8pJ3y9pyTeZI+YVG9a2XspCIgn2saX9jHw1Xk0
+         ucYw==
+X-Gm-Message-State: AOJu0YxO2+xQ1+jI0YpLkrMjqmI2dL8G92V66ikHFw791RL6M5tlaJ1l
+	6nwnNgWc9Ucq9Q/+0XnYegBso8dONZE3i1Pe8tKBaSLVVJDCEJy9vqg=
+X-Google-Smtp-Source: AGHT+IG3MvSq6xCe2a9q8hrZuopq70FerXK1DSmW4enmcJthTLxeat5RRxOKu4JoydhBbHioOu9VOWz1zigWQTudXgY=
+X-Received: by 2002:a0d:d713:0:b0:56d:d58:82b7 with SMTP id
+ z19-20020a0dd713000000b0056d0d5882b7mr16106989ywd.23.1692868346583; Thu, 24
+ Aug 2023 02:12:26 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH -next 03/25] spi: aspeed: Use helper function
- devm_clk_get_enabled()
-Content-Language: en-US
-To: Li Zetao <lizetao1@huawei.com>, broonie@kernel.org,
- chin-ting_kuo@aspeedtech.com, joel@jms.id.au, andrew@aj.id.au,
- florian.fainelli@broadcom.com, rjui@broadcom.com, sbranden@broadcom.com,
- bcm-kernel-feedback-list@broadcom.com, fancer.lancer@gmail.com,
- olteanv@gmail.com, neil.armstrong@linaro.org, khilman@baylibre.com,
- jbrunet@baylibre.com, martin.blumenstingl@googlemail.com,
- conor.dooley@microchip.com, daire.mcnamara@microchip.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com,
- venture@google.com, yuenn@google.com, benjaminfair@google.com,
- linus.walleij@linaro.org, heiko@sntech.de
-Cc: linux-spi@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
- openbmc@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20230822131237.1022815-1-lizetao1@huawei.com>
- <20230822131237.1022815-4-lizetao1@huawei.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20230822131237.1022815-4-lizetao1@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20230823170438.2489746-1-robh@kernel.org>
+In-Reply-To: <20230823170438.2489746-1-robh@kernel.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Thu, 24 Aug 2023 11:11:49 +0200
+Message-ID: <CAPDyKFrO5B-WoWgKYbogTwUEwCqm_0A_NEn0XV8hdQtpOkE0yQ@mail.gmail.com>
+Subject: Re: [PATCH v2] genpd: Explicitly include correct DT includes
+To: Rob Herring <robh@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230824_015608_466001_C0AC4B30 
-X-CRM114-Status: UNSURE (   6.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230824_021228_477495_91F6638F 
+X-CRM114-Status: GOOD (  17.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,20 +89,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/22/23 15:12, Li Zetao wrote:
-> Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-> and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-> replaced by devm_clk_get_enabled() when driver enables (and possibly
-> prepares) the clocks for the whole lifetime of the device. Moreover, it is
-> no longer necessary to unprepare and disable the clocks explicitly.
-> 
-> Signed-off-by: Li Zetao <lizetao1@huawei.com>
+On Wed, 23 Aug 2023 at 19:05, Rob Herring <robh@kernel.org> wrote:
+>
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it was merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
+>
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
+Applied for next, thanks!
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Kind regards
+Uffe
 
-Thanks,
-
-C.
-
+> ---
+> v2: Previously sent for drivers/soc/. Gathered up files which got moved
+>     to genpd to new patch.
+> ---
+>  drivers/genpd/mediatek/mtk-pm-domains.c | 2 +-
+>  drivers/genpd/mediatek/mtk-scpsys.c     | 2 +-
+>  drivers/genpd/sunxi/sun20i-ppu.c        | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/genpd/mediatek/mtk-pm-domains.c b/drivers/genpd/mediatek/mtk-pm-domains.c
+> index 354249cc1b12..ee962804b830 100644
+> --- a/drivers/genpd/mediatek/mtk-pm-domains.c
+> +++ b/drivers/genpd/mediatek/mtk-pm-domains.c
+> @@ -8,8 +8,8 @@
+>  #include <linux/io.h>
+>  #include <linux/iopoll.h>
+>  #include <linux/mfd/syscon.h>
+> +#include <linux/of.h>
+>  #include <linux/of_clk.h>
+> -#include <linux/of_device.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_domain.h>
+>  #include <linux/regmap.h>
+> diff --git a/drivers/genpd/mediatek/mtk-scpsys.c b/drivers/genpd/mediatek/mtk-scpsys.c
+> index 7a668888111c..b374d01fdac7 100644
+> --- a/drivers/genpd/mediatek/mtk-scpsys.c
+> +++ b/drivers/genpd/mediatek/mtk-scpsys.c
+> @@ -7,7 +7,7 @@
+>  #include <linux/io.h>
+>  #include <linux/iopoll.h>
+>  #include <linux/mfd/syscon.h>
+> -#include <linux/of_device.h>
+> +#include <linux/of.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_domain.h>
+>  #include <linux/regulator/consumer.h>
+> diff --git a/drivers/genpd/sunxi/sun20i-ppu.c b/drivers/genpd/sunxi/sun20i-ppu.c
+> index 98cb41d36560..8700f9dd5f75 100644
+> --- a/drivers/genpd/sunxi/sun20i-ppu.c
+> +++ b/drivers/genpd/sunxi/sun20i-ppu.c
+> @@ -5,7 +5,7 @@
+>  #include <linux/io.h>
+>  #include <linux/iopoll.h>
+>  #include <linux/module.h>
+> -#include <linux/of_device.h>
+> +#include <linux/of.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_domain.h>
+>  #include <linux/reset.h>
+> --
+> 2.40.1
+>
 
