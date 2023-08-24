@@ -4,107 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A17E9C71145
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 03:41:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47203C6FA8F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 08:20:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CH6mXKRKMtD7TEsSEIJfvoLTAwKYFLojoxw+I3lfT8w=; b=qL3XE5lYYqwEPjsGLTuA1xWLbX
-	Xv9mxtYaxVVxOvFhIC8BWAhLLt6eMkCWf6T0DBQHIr0AimSqV40z3M69B5Uq+4C+DJOMAhKSJGdwN
-	8RgK6M6Wl6dKJjuMp+2iG2KNCLvEd2U4v3KGh+XAwI7hafvHP/kLln8Sk1VfrALVCH9xTq/mGRCsz
-	FPDs21W01wguAwWd0LlesGOofj+f9PSVQDMURM6Ea9HBZf3leKOcxJSI5W8gJ4mdGbpQDPLXiKp5Y
-	IdBFESiXZQ76JsNJEh/oGjruR16eX1RBgfyU2TUDFmk/TxvMSxTHR58Ud6OmPI9i6BaM1A5bI4sWX
-	dq7oDfgg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4zGAuBw4gPHtRJdaOH14piD/nNNygF6IcHXj9bWHwdo=; b=VfUh4U74JaBLVhil5CJuIALpkV
+	uxIzHKkjPGvR16qgzu9Sh6txNejw/lYzvuPqlzSV4/1ucnHFsRE09H0YJAIcUVz/Nr+Hlg7x2qY3J
+	sBcjAB33Ne2Hpk9/1HJRLOPHwxDQ9w+49xjRf6lBJvSgvsTYnzqTJQ20/48YYtN7kaI9N65Ou9gx1
+	R6kHVfXY2VKe9L/rYq21c9Slps24m3sfUqEfN42/F3TLtJxNHuKdYd1sEpqJfaIxIMb1yMshirx14
+	NAc++v6m8quK3yqY2pB/DTyMosHiPfYDOvz2rwREfub4Jt7/i1z/U2Wy1Dmzb4UNoCKLzrPqhfKLz
+	RI3kM35A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ1EF-0023cj-0r;
-	Thu, 24 Aug 2023 03:41:51 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1qZ5a6-002Y4w-0Q;
+	Thu, 24 Aug 2023 08:20:42 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ1EC-0023bg-1p
-	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Aug 2023 03:41:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1692848505;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CH6mXKRKMtD7TEsSEIJfvoLTAwKYFLojoxw+I3lfT8w=;
-	b=I4kDFujAOgWWAOl0aUYsz5otZMn5Bz4nKwZZ1ysZ3QZDYN4aESBvifOmT2ecq345K2Jw3N
-	0QhzFTWfH85QV2HV6MEkDNBk/50VH7m80QmTkYJXprdvrgpCTo8Kv5/bHTku6asZSU5w1c
-	eweqoLnMePh71KUIs7LhK+iYjk7VSRY=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-492-6y3O2faWPhS2FKm2_7xRhg-1; Wed, 23 Aug 2023 23:41:44 -0400
-X-MC-Unique: 6y3O2faWPhS2FKm2_7xRhg-1
-Received: by mail-qt1-f197.google.com with SMTP id d75a77b69052e-40ff200f300so73330741cf.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 23 Aug 2023 20:41:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692848503; x=1693453303;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+	id 1qZ5a2-002Y3S-23;
+	Thu, 24 Aug 2023 08:20:40 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-1bf078d5fb7so44467185ad.0;
+        Thu, 24 Aug 2023 01:20:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1692865237; x=1693470037;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=CH6mXKRKMtD7TEsSEIJfvoLTAwKYFLojoxw+I3lfT8w=;
-        b=BhLDWuDXp87YH9GPC3ZLv35Qej7jMkIFwFVTwpQ8HdlqgUss68YwuUDNnrgQu+OO88
-         sI5e/jMqTtUD7Ge4dLhGgt1WkZOepcDUr/E0XqyXds6CD4dSxrK9PUSAFF7D/QGQB3Ic
-         253B3fDKcmdy6ua8Ozg+/sYgx9bpk+yGONfNd2O0+WnrD/Wqf0CU9NU9y9K83MMdLGpa
-         4YzeTj58tW4vmVxV/WmEh8mO8z9Z0Wbxhe1Oz3PLfu69v5eL1WjijWYcy75cSfKgfK+z
-         m7y+97wxlI2JqPbQDu6PifJLCmXz8nQAL7DBL40vKd/kbMIbS0hTZNa91rpPJLZ8E1Sk
-         k78w==
-X-Gm-Message-State: AOJu0YxoYPsXpxMBABNY4x6fvGIFZT07hSZcwj0PFQx/EytEjoqFwhdZ
-	rw2mw/Y69oKRX1YFvDBG9/n8OIc+6+mb4PmgJ/Bt56o93IFGAwRhwfEwUuQNvsRqdus9c/IAeXg
-	TNbVPNaNl9XR3F6jfFhYNl5qwOPHFh2jA
-X-Received: by 2002:a05:622a:1a19:b0:410:8551:2608 with SMTP id f25-20020a05622a1a1900b0041085512608mr13211977qtb.58.1692848503565;
-        Wed, 23 Aug 2023 20:41:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFHjWv1CiL8QEOPMtXQgjOpwEGJSl7biyyoMP2HI5INen9hHlXD9XV1I7hmZP4s4Z/4tJVc6A==
-X-Received: by 2002:a05:622a:1a19:b0:410:8551:2608 with SMTP id f25-20020a05622a1a1900b0041085512608mr13211932qtb.58.1692848503326;
-        Wed, 23 Aug 2023 20:41:43 -0700 (PDT)
-Received: from localhost (ip98-179-76-75.ph.ph.cox.net. [98.179.76.75])
-        by smtp.gmail.com with ESMTPSA id s26-20020a0cb31a000000b006375f9fd170sm5116337qve.34.2023.08.23.20.41.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Aug 2023 20:41:42 -0700 (PDT)
-Date: Wed, 23 Aug 2023 20:41:41 -0700
-From: Jerry Snitselaar <jsnitsel@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Bjorn Andersson <andersson@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Christophe Leroy <christophe.leroy@csgroup.eu>, Gerald Schaefer <gerald.schaefer@linux.ibm.com>, 
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>, 
-	Kevin Tian <kevin.tian@intel.com>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
-	Russell King <linux@armlinux.org.uk>, linuxppc-dev@lists.ozlabs.org, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
-	Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, 
-	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>, 
-	Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>, 
-	Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Lu Baolu <baolu.lu@linux.intel.com>, 
-	Dmitry Osipenko <digetx@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
-	Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle <schnelle@linux.ibm.com>, 
-	Steven Price <steven.price@arm.com>, Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v7 01/24] iommu: Add iommu_ops->identity_domain
-Message-ID: <r362pqn2venwjut7ernpzbxnc72kvknshxeobrvkvp7p5m554e@7jnu4wja663k>
-References: <0-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
- <1-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+        bh=4zGAuBw4gPHtRJdaOH14piD/nNNygF6IcHXj9bWHwdo=;
+        b=sMxR6fZNgXfWTXoyUrfQ6QsnCw0Z46C6iwKKpTEsxiKtRlJRX8qd28LbRaVysRw8Gs
+         1UxR8Zqm9KLnvrx3EnrdFRVIYIKineXAaQpayjZ3amWyD7MhFQL4sgD65+x1aQkC+JUG
+         0ww3TYIOBKani5h5mfwzqg8C2mvfMBywRbsJlPihyPRdvyR0F3F/RToRvchXLtDlF5Ft
+         cJkLE0nuEbSg6hAMgx8Xl+HTyxoJ8C73Ikyk+z/+tYPURXAfMH+wSg2toiIZlGnsjKx2
+         cIQ6oSaD8QH+woubJilDCfaW1DSMpVgB0+6BeagE4TAkYD/s7BIU2dW5vI9xZk4oMKKZ
+         4fgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692865237; x=1693470037;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=4zGAuBw4gPHtRJdaOH14piD/nNNygF6IcHXj9bWHwdo=;
+        b=O13LSItA+GhRfp8W9kQgQURsulqOCGQWxzr8foTU4O8MjNBwYTdzy4/N1f+wZYfN1I
+         KCpTe+60tnYnK5sZEy5SZ0pn6gqhbp4qksI7UsjzxLW/d+gBDQoRTsGNFPjb2HcLbh4n
+         FoTRRDiauyxXGXxEYZKOjNmBknzxZXxXLkICj8s3A8Arc4fwS9z2IDnRX89HIoiFN//6
+         K24X2npVm0MrqVBbIS5WthjLNj2ekAv3Rd3QYsXDvPMaQ67NVjZ34puHRagqvwEiBLtr
+         VKv8QwT/DgKJg8kGf8rD6VMXi9U1RKHr/A4mCrVpP5nb/aZF02zQ2WC4RGeUrdOAGKKp
+         OztA==
+X-Gm-Message-State: AOJu0YzAuDXRRzmnABuzdLkY7ZthFIxergZnn0B4/lmXIw76S6uWt5cZ
+	wtbp6TIBdp/e1EU8zWgb/DsVcOmOtIzyRCUE0Nc=
+X-Google-Smtp-Source: AGHT+IHO5YzRyoB4+yIvpmh8GgGc8xjw1foenCzgCbg3kZnXszrVMNiVTnbEV/o34e2+ssZ9j+QXF4Ki9G3FEjVmOjw=
+X-Received: by 2002:a17:90b:1898:b0:26b:56fa:87d3 with SMTP id
+ mn24-20020a17090b189800b0026b56fa87d3mr11873307pjb.31.1692865237319; Thu, 24
+ Aug 2023 01:20:37 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <20230707092414.866760-1-zyytlz.wz@163.com> <8c8bd3ec-a5a4-32e4-45b5-ee16eeeac246@collabora.com>
+In-Reply-To: <8c8bd3ec-a5a4-32e4-45b5-ee16eeeac246@collabora.com>
+From: Zheng Hacker <hackerzheng666@gmail.com>
+Date: Thu, 24 Aug 2023 16:20:26 +0800
+Message-ID: <CAJedcCxPG1mKtgB7AcJSwaQB_qvODObwq3gz6eM_1w777b2PfQ@mail.gmail.com>
+Subject: Re: [RESEND PATCH v2] media: mtk-jpeg: Fix use after free bug due to
+ uncanceled work
+To: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Cc: Zheng Wang <zyytlz.wz@163.com>, Kyrie.Wu@mediatek.com, bin.liu@mediatek.com, 
+	mchehab@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Irui.Wang@mediatek.com, 
+	security@kernel.org, 1395428693sheep@gmail.com, alex000young@gmail.com, 
+	Collabora Kernel ML <kernel@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230823_204148_680668_04F29316 
-X-CRM114-Status: GOOD (  14.59  )
+X-CRM114-CacheID: sfid-20230824_012038_672804_9A9A9531 
+X-CRM114-Status: GOOD (  34.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,28 +93,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 23, 2023 at 01:47:15PM -0300, Jason Gunthorpe wrote:
-> This allows a driver to set a global static to an IDENTITY domain and
-> the core code will automatically use it whenever an IDENTITY domain
-> is requested.
-> 
-> By making it always available it means the IDENTITY can be used in error
-> handling paths to force the iommu driver into a known state. Devices
-> implementing global static identity domains should avoid failing their
-> attach_dev ops.
-> 
-> To make global static domains simpler allow drivers to omit their free
-> function and update the iommufd selftest.
-> 
-> Convert rockchip to use the new mechanism.
-> 
-> Tested-by: Steven Price <steven.price@arm.com>
-> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
-> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
-> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+Dmitry Osipenko <dmitry.osipenko@collabora.com> =E4=BA=8E2023=E5=B9=B48=E6=
+=9C=8823=E6=97=A5=E5=91=A8=E4=B8=89 02:51=E5=86=99=E9=81=93=EF=BC=9A
 
+>
+> Hello Zheng,
+>
+> On 7/7/23 12:24, Zheng Wang wrote:
+> > In mtk_jpeg_probe, &jpeg->job_timeout_work is bound with
+> > mtk_jpeg_job_timeout_work. Then mtk_jpeg_dec_device_run
+> > and mtk_jpeg_enc_device_run may be called to start the
+> > work.
+> > If we remove the module which will call mtk_jpeg_remove
+> > to make cleanup, there may be a unfinished work. The
+> > possible sequence is as follows, which will cause a
+> > typical UAF bug.
+> >
+> > Fix it by canceling the work before cleanup in the mtk_jpeg_remove
+> >
+> > CPU0                  CPU1
+> >
+> >                     |mtk_jpeg_job_timeout_work
+> > mtk_jpeg_remove     |
+> >   v4l2_m2m_release  |
+> >     kfree(m2m_dev); |
+> >                     |
+> >                     | v4l2_m2m_get_curr_priv
+> >                     |   m2m_dev->curr_ctx //use
+> > Fixes: b2f0d2724ba4 ("[media] vcodec: mediatek: Add Mediatek JPEG Decod=
+er Driver")
+> > Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
+> > ---
+> > - v2: use cancel_delayed_work_sync instead of cancel_delayed_work sugge=
+sted by Kyrie.
+> > ---
+> >  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 1 +
+> >  1 file changed, 1 insertion(+)
+> >
+> > diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/dri=
+vers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> > index 0051f372a66c..6069ecf420b0 100644
+> > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> > @@ -1816,6 +1816,7 @@ static void mtk_jpeg_remove(struct platform_devic=
+e *pdev)
+> >  {
+> >       struct mtk_jpeg_dev *jpeg =3D platform_get_drvdata(pdev);
+> >
+> > +     cancel_delayed_work_sync(&jpeg->job_timeout_work);
+> >       pm_runtime_disable(&pdev->dev);
+> >       video_unregister_device(jpeg->vdev);
+> >       v4l2_m2m_release(jpeg->m2m_dev);
+>
+> AFAICS, there is a fundamental problem here. The job_timeout_work uses
+> v4l2_m2m_get_curr_priv() and at the time when driver module is unloaded,
+> all the v4l contexts must be closed and released. Hence the
+> v4l2_m2m_get_curr_priv() shall return NULL and crash the kernel when
+> work is executed before cancel_delayed_work_sync().
+>
 
-Reviewed-by: Jerry Snitselaar <jsnitsel@redhat.com>
+Hi Dmitry,
 
+Thanks for your reply. I think you're right. As m2m_dev is freed in
+v4l2_m2m_release,
+the invoking in v4l2_m2m_get_curr_priv might cause either UAF or null
+pointer dereference
+bug. I am sure that context is closed when we invoke mtk_jpeg_remove.
+But I'm not sure if
+context is released when mtk_jpegdec_timeout_work running.
+
+> At the time when mtk_jpeg_remove() is invoked, there shall be no
+> job_timeout_work running in background because all jobs should be
+> completed before context is released. If you'll look at
+> v4l2_m2m_cancel_job(), you can see that it waits for the task completion
+> before closing context.
+
+Yes, so I think the better way is to put the cancel_delayed_work_sync
+invoking into
+v4l2_m2m_ctx_release function?
+
+>
+> You shouldn't be able to remove driver module while it has active/opened
+> v4l contexts. If you can do that, then this is yours bug that needs to
+> be fixed.
+>
+> In addition to this all, the job_timeout_work is initialized only for
+> the single-core JPEG device. I'd expect this patch should crash
+> multi-core JPEG devices.
+>
+
+I think that's true. As I'm not familiar with the code here. Could you
+please give me some advice about the patch?
+
+Best regards,
+Zheng
+
+> --
+> Best regards,
+> Dmitry
+>
 
