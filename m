@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D567C27C40
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C70C1C7113B
 	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 09:22:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lY3SKOBEe+Tm0td8q7cGGhbQ6WPRuOZQA4+UgG2HyFo=; b=N4Vk25wv833P/HKECpwZEc2vSl
-	rF/KECjDrUs6dzNxSmu9BHyTBrCj79g5MqM24wvUNkk1qzlrnhnSkBfLnfVHNMoPB1eAE8GS1+Fd6
-	OWzv0ik1jmWmGxzqAmNlLSZjCj4L1pxTTYapAZxVvm0Oh0J8KzYZyEnSLA9UDzV1S34fYylOKhTM+
-	F8Xa2OSikpkqe3OQwjiv9AWlrvpPRq7dVIZaf9x0E0vYf2zQzmljAoHT89+nzkrrvKQcaCp94bGtQ
-	99B94Q82fXhiNrF+jdeX+FjanRsV6NE3FB9h9+OrvxW48X6DYv9BMYFXY52JsniLMS2T6JZs/pqyr
-	vYxKhLPQ==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EeLAkZC0Uq6aJm1jI+obVigtd+Pzi4kupG4q6Vi4RUg=; b=D6qw1xhtR98qqP9QrNZhv+CeKp
+	tufxaujb6ZM3kL/wkdtEEJPzCtzG4bNfvzsbYtHRKrxMwnjKfAiZc18LQUu3KmPU3yZwaGQugb73O
+	2TjYHAXFpfN3UwD9LBJjBhRaVLP43ilHrR7LNwLQtf6I6IELQN8IMG4dOTIHkjVM4RC36f8KLIhJ2
+	jHL/FPZ0FmUXGtBeuvvHoFuCwid/SjHzkjw61EcJ78HKh0ckayrX9mF3s/imQi3JmR7WjcX/d6PnL
+	+rcnFl7oe9D/Ol9Ayiwh6BW+2DbVZfBnFgVWsKj1/HRT0rPN5Ay24wVx7BEJibCAv0vk0XYr6W1qb
+	ryMmtOiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ6Xa-002gJE-0x;
+	id 1qZ6Xa-002gJb-1x;
 	Thu, 24 Aug 2023 09:22:10 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZ6XD-002g40-20;
+	id 1qZ6XD-002g42-20;
 	Thu, 24 Aug 2023 09:21:51 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:672:c310:4c8a:3a97])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9541A6607258;
-	Thu, 24 Aug 2023 10:21:41 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2C6396607298;
+	Thu, 24 Aug 2023 10:21:43 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1692868902;
-	bh=97a+g3efIidtGcTZHHeZ+X2jVG7x/bgfTKTTmbRUcvY=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Orh/iAMx3/nUXWSytzs0WnKL/qlPvNmhlqtiScLvTQv/Ywb+RxROkkv5eebgqZ6mw
-	 Jh7r3H2IAZRGwuSQl3DmqBr9jpjZNihpnYpLuE2+gmVwOIpkWLTZu1aFLoz71P5nKV
-	 /im5/p1sMMnEiT3lwvyAC3Z8GGrXIkVJTTBsd+p5mw/5vEawfHenv66TvfBOoMjO7e
-	 zZhkqxgMxUy6NspJwLu8nJpOfXB2ZHJHKTSDRjeHi/3GQ7ZKdU+RQv0HP8E/WMw4OI
-	 whhReVWqe9ZOpf85AS9JBpM66odPQ699+EtZ6AgxGmDNF+JOE1/lUv9NX+zlQg+xHI
-	 WLJt+PEBxR8dQ==
+	s=mail; t=1692868903;
+	bh=GJNKi5NuuSLWK7PozA+X2l2tr8rdGL1VU7W/PWSM0Qg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=CbsU2h3lrlKgQ+EQRrW9BO2PmU4sBpRUUMKjJ5yDvZlXAe5751vX0SNbK0P8zClve
+	 PXQ1rFMhIqBHRIgEl/3yuwZhn2VpGXBSEyis6htorrAx/4kAB4e0ztKhYcW+XjABAx
+	 ZMo26KoTk+gY+6qI4bDf/srreA9r06uvOe+VY5xFpA5IVQ02/fLLbnt0e05vgrIL0u
+	 FRCvcUonoN1kqZQ+8d5fG8vYc925yp3mDXx5fhreZ1sGzzC/bCsV82839Llc0i/6jr
+	 Ow7M+XeWY/bNjU+h2n7qBpM+qUzx4m1Te0UphNfuZREUP9W/A9xePZqP1+5QBkVa7m
+	 lrb2MwIqm6hXw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,15 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v5 00/10] Add DELETE_BUF ioctl
-Date: Thu, 24 Aug 2023 11:21:23 +0200
-Message-Id: <20230824092133.39510-1-benjamin.gaignard@collabora.com>
+Subject: [PATCH v5 03/10] media: videobuf2: Be more flexible on the number of queue stored buffers
+Date: Thu, 24 Aug 2023 11:21:26 +0200
+Message-Id: <20230824092133.39510-4-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230824092133.39510-1-benjamin.gaignard@collabora.com>
+References: <20230824092133.39510-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230824_022147_970801_951050FF 
-X-CRM114-Status: GOOD (  15.98  )
+X-CRM114-CacheID: sfid-20230824_022147_983950_9CBDB0A3 
+X-CRM114-Status: GOOD (  16.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,101 +87,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Unlike when resolution change on keyframes, dynamic resolution change
-on inter frames doesn't allow to do a stream off/on sequence because
-it is need to keep all previous references alive to decode inter frames.
-This constraint have two main problems:
-- more memory consumption.
-- more buffers in use.
-To solve these issue this series introduce DELETE_BUFS ioctl and remove
-the 32 buffers limit per queue.
+Add 'max_allowed_buffers' field in vb2_queue struct to let drivers decide
+how many buffers could be stored in a queue.
+This request 'bufs' array to be allocated at queue init time and freed
+when releasing the queue.
+By default VB2_MAX_FRAME remains the limit.
 
-VP9 conformance tests using fluster give a score of 210/305.
-The 24 resize inter tests (vp90-2-21-resize_inter_* files) are ok
-but require to use postprocessor.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../media/common/videobuf2/videobuf2-core.c   | 25 +++++++++++++------
+ include/media/videobuf2-core.h                |  4 ++-
+ 2 files changed, 20 insertions(+), 9 deletions(-)
 
-Kernel branch is available here:
-https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v5
-
-GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
-change is here:
-https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
-
-changes in version 5
-- Rework offset cookie encoding pattern is n ow the first patch of the
-  serie.
-- Use static array instead of allocated one for postprocessor buffers.
-
-changes in version 4:
-- Stop using Xarray, instead let queues decide about their own maximum
-  number of buffer and allocate bufs array given that value.
-- Rework offset cookie encoding pattern.
-- Change DELETE_BUF to DELETE_BUFS because it now usable for
-  range of buffer to be symetrical of CREATE_BUFS.
-- Add fixes tags on couple of Verisilicon related patches.
-- Be smarter in Verisilicon postprocessor buffers management.
-- Rebase on top of v6.4
-
-changes in version 3:
-- Use Xarray API to store allocated video buffers.
-- No module parameter to limit the number of buffer per queue.
-- Use Xarray inside Verisilicon driver to store postprocessor buffers
-  and remove VB2_MAX_FRAME limit.
-- Allow Versilicon driver to change of resolution while streaming
-- Various fixes the Verisilicon VP9 code to improve fluster score.
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index 8aa13591b782..70e36389b704 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -411,7 +411,7 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
+  */
+ static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, int index)
+ {
+-	if (index < VB2_MAX_FRAME && !q->bufs[index]) {
++	if (index < q->max_allowed_buffers && !q->bufs[index]) {
+ 		q->bufs[index] = vb;
+ 		vb->index = index;
+ 		vb->vb2_queue = q;
+@@ -428,7 +428,7 @@ static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, int
+  */
+ static void vb2_queue_remove_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
+ {
+-	if (vb->index < VB2_MAX_FRAME) {
++	if (vb->index < q->max_allowed_buffers) {
+ 		q->bufs[vb->index] = NULL;
+ 		vb->vb2_queue = NULL;
+ 	}
+@@ -449,9 +449,9 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+ 	struct vb2_buffer *vb;
+ 	int ret;
  
-changes in version 2:
-- Use a dynamic array and not a list to keep trace of allocated buffers.
-  Not use IDR interface because it is marked as deprecated in kernel
-  documentation.
-- Add a module parameter to limit the number of buffer per queue.
-- Add DELETE_BUF ioctl and m2m helpers.
-
-Regards,
-Benjamin
+-	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
++	/* Ensure that q->num_buffers+num_buffers is below q->max_allowed_buffers */
+ 	num_buffers = min_t(unsigned int, num_buffers,
+-			    VB2_MAX_FRAME - q->num_buffers);
++			    q->max_allowed_buffers - q->num_buffers);
  
-Benjamin Gaignard (10):
-  media: videobuf2: Rework offset 'cookie' encoding pattern
-  media: videobuf2: Access vb2_queue bufs array through helper functions
-  media: videobuf2: Be more flexible on the number of queue stored
-    buffers
-  media: verisilicon: Refactor postprocessor to store more buffers
-  media: verisilicon: Store chroma and motion vectors offset
-  media: verisilicon: vp9: Use destination buffer height to compute
-    chroma offset
-  media: verisilicon: postproc: Fix down scale test
-  media: verisilicon: vp9: Allow to change resolution while streaming
-  media: v4l2: Add DELETE_BUFS ioctl
-  media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
-
- .../userspace-api/media/v4l/user-func.rst     |   1 +
- .../media/v4l/vidioc-delete-bufs.rst          |  73 +++++
- .../media/common/videobuf2/videobuf2-core.c   | 304 +++++++++++++-----
- .../media/common/videobuf2/videobuf2-v4l2.c   |  44 ++-
- drivers/media/platform/amphion/vpu_dbg.c      |  22 +-
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   6 +-
- .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |   2 +-
- drivers/media/platform/st/sti/hva/hva-v4l2.c  |   4 +
- drivers/media/platform/verisilicon/hantro.h   |   9 +-
- .../media/platform/verisilicon/hantro_drv.c   |   4 +-
- .../platform/verisilicon/hantro_g2_vp9_dec.c  |  10 +-
- .../media/platform/verisilicon/hantro_hw.h    |   4 +-
- .../platform/verisilicon/hantro_postproc.c    |  95 ++++--
- .../media/platform/verisilicon/hantro_v4l2.c  |  27 +-
- drivers/media/test-drivers/vim2m.c            |   1 +
- drivers/media/test-drivers/visl/visl-dec.c    |  28 +-
- drivers/media/v4l2-core/v4l2-dev.c            |   1 +
- drivers/media/v4l2-core/v4l2-ioctl.c          |  17 +
- drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 ++
- .../staging/media/atomisp/pci/atomisp_ioctl.c |   2 +-
- include/media/v4l2-ioctl.h                    |   4 +
- include/media/v4l2-mem2mem.h                  |  12 +
- include/media/videobuf2-core.h                |  13 +-
- include/media/videobuf2-v4l2.h                |  11 +
- include/uapi/linux/videodev2.h                |  17 +
- 25 files changed, 584 insertions(+), 147 deletions(-)
- create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
-
+ 	for (buffer = 0; buffer < num_buffers; ++buffer) {
+ 		/* Allocate vb2 buffer structures */
+@@ -852,9 +852,9 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	/*
+ 	 * Make sure the requested values and current defaults are sane.
+ 	 */
+-	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
++	WARN_ON(q->min_buffers_needed > q->max_allowed_buffers);
+ 	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
+-	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
++	num_buffers = min_t(unsigned int, num_buffers, q->max_allowed_buffers);
+ 	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
+ 	/*
+ 	 * Set this now to ensure that drivers see the correct q->memory value
+@@ -970,7 +970,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	bool no_previous_buffers = !q->num_buffers;
+ 	int ret;
+ 
+-	if (q->num_buffers == VB2_MAX_FRAME) {
++	if (q->num_buffers == q->max_allowed_buffers) {
+ 		dprintk(q, 1, "maximum number of buffers already allocated\n");
+ 		return -ENOBUFS;
+ 	}
+@@ -999,7 +999,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 			return -EINVAL;
+ 	}
+ 
+-	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
++	num_buffers = min(*count, q->max_allowed_buffers - q->num_buffers);
+ 
+ 	if (requested_planes && requested_sizes) {
+ 		num_planes = requested_planes;
+@@ -2541,6 +2541,14 @@ int vb2_core_queue_init(struct vb2_queue *q)
+ 
+ 	q->memory = VB2_MEMORY_UNKNOWN;
+ 
++	if (!q->max_allowed_buffers)
++		q->max_allowed_buffers = VB2_MAX_FRAME;
++
++	/* The maximum is limited by offset cookie encoding pattern */
++	q->max_allowed_buffers = min_t(unsigned int, q->max_allowed_buffers, MAX_BUFFERS);
++
++	q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
++
+ 	if (q->buf_struct_size == 0)
+ 		q->buf_struct_size = sizeof(struct vb2_buffer);
+ 
+@@ -2565,6 +2573,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
+ 	__vb2_queue_cancel(q);
+ 	mutex_lock(&q->mmap_lock);
+ 	__vb2_queue_free(q, q->num_buffers);
++	kfree(q->bufs);
+ 	mutex_unlock(&q->mmap_lock);
+ }
+ EXPORT_SYMBOL_GPL(vb2_core_queue_release);
+diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
+index 4b6a9d2ea372..ee9161b9fd64 100644
+--- a/include/media/videobuf2-core.h
++++ b/include/media/videobuf2-core.h
+@@ -558,6 +558,7 @@ struct vb2_buf_ops {
+  * @dma_dir:	DMA mapping direction.
+  * @bufs:	videobuf2 buffer structures
+  * @num_buffers: number of allocated/used buffers
++ * @max_allowed_buffers: upper limit of number of allocated/used buffers
+  * @queued_list: list of buffers currently queued from userspace
+  * @queued_count: number of buffers queued and ready for streaming.
+  * @owned_by_drv_count: number of buffers owned by the driver
+@@ -619,8 +620,9 @@ struct vb2_queue {
+ 	struct mutex			mmap_lock;
+ 	unsigned int			memory;
+ 	enum dma_data_direction		dma_dir;
+-	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
++	struct vb2_buffer		**bufs;
+ 	unsigned int			num_buffers;
++	unsigned int			max_allowed_buffers;
+ 
+ 	struct list_head		queued_list;
+ 	unsigned int			queued_count;
 -- 
 2.39.2
 
