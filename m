@@ -4,77 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6262C27C40
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 13:53:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F35EC6FA8F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Aug 2023 15:17:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ndFTKnv1Vx8og1gy2OlGsP3QfceChwU0Tg8pCYFj+MA=; b=dRwnQdqwpiWk1PsYBneE2SF4Rg
-	S39vMUxaD4SbNL0v4NyHjo04gloXwmvTtAaGoatM+/4G6BZSVPBcs2NZvg8seH4YR4roQLKgavKPO
-	woIv7DxpxFlvzo/VQ3awH8m7MW4kGCDayhHt2re74Dyzo58JAaJWtVOlJbCub9FF+28uTWfRCkRsS
-	QmJ4ZlUSFszeUwIYMi2Wr0sMwlM8NHQsmUSSLHiOlnxa4gmbC8Hz5/hE7iVg1JXF5Ae3UsbtpmWWW
-	Fe+g01Mo3Shg/A0J8CgP0agE2+jj+d94Vt9sIJl7y9CCs+rZUNSNpjhATB0syJaSduEps4orJj7xO
-	Q2tus5sg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XOnI1uxGv+A5Y0c0SW5CIw0u1ZKpGf7Ta0MMclyJBT4=; b=19gFMBlmpWI5IrrdDOF2jHmTn+
+	5Lz5EPIr6WK0//p9f/LiZ+Ce1I9uP5+zLHHXmazo5Q8HNnGuOqIQKBKp2R+qxfl6pSZEgJ+CXsvYc
+	Shln5De89lN3ogCJefJYIFiTSDsuNtQY8ZB/MQTnXybGS6bqZFtJ+mnd5LeyAfFKelh6Vaj/9CRUT
+	eWOls118GsX4Tzv2i2TudYeaGSngszi/HSFLsBe3XtX0vYIBUmMuhVRnA58TG8un+sEv0DZIROd9y
+	osTXky4bnnveDhM+QEJXo3gTB621q5qQdy2ANe/6mF5wUmwX/H4ZQ2Pq3beFVSd+VM6IvohUMWeTO
+	aXYUviXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZAly-003Boc-25;
-	Thu, 24 Aug 2023 13:53:18 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1qZC58-003LfG-2y;
+	Thu, 24 Aug 2023 15:17:10 +0000
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZAlv-003BoA-2J
+	id 1qZC54-003LdC-2k
 	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Aug 2023 13:53:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de;
- s=s31663417; t=1692885186; x=1693489986; i=lundril@gmx.de;
- bh=8Sx7IfXlBO0nta4oj0WEvvvCjn730eqgmmBBj0HjAFU=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
- b=BgzbE1huFHb321k8fNMvsJwKqJQDzncGEUxP0X/3tvxLRGmwgD2VL6acsZljG23fVH1yO7P
- Ck5i2IgFzDpqCKAldmRDBx/lengphmwfS4+zI+raBL9kbZwVayk1lwu5uVBvhkTAc9bV+0zQt
- KRAQ1iycZordIGbVDNf7R/TS7qlZXIROsBLjXCWZFBaKlgd1LblsBmP214U400N+5xqkQpBs5
- 93hbxwJ74kuPvLsS2fazoo5NUxx0NaaR47n/5jt6TjcWVPnmxk91CvpI9xnLSHPzubDHXCJPf
- 4kynPJ5pRaw81BtRM8Wl/b+pv/aN3Wnrt+vO4RAQzUFK5yBgnF5g==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from flatline.fritz.box ([82.135.64.125]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MCbIn-1qPW8Q3LzX-009kcv; Thu, 24
- Aug 2023 15:53:05 +0200
-From: Ingo Rohloff <lundril@gmx.de>
-To: Felix Fietkau <nbd@nbd.name>,
-	Ryder Lee <ryder.lee@mediatek.com>
-Cc: linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-pci@vger.kernel.org,
-	Ingo Rohloff <lundril@gmx.de>
-Subject: [PATCH] wifi: mt76: mt7921e: Support MT7992 IP in Xiaomi Redmibook 15 Pro (2023)
-Date: Thu, 24 Aug 2023 15:52:32 +0200
-Message-Id: <20230824135232.5000-1-lundril@gmx.de>
-X-Mailer: git-send-email 2.30.2
+	Thu, 24 Aug 2023 15:17:09 +0000
+Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-68a3ced3ec6so3917828b3a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 24 Aug 2023 08:16:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=broadcom.com; s=google; t=1692890219; x=1693495019;
+        h=in-reply-to:from:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=XOnI1uxGv+A5Y0c0SW5CIw0u1ZKpGf7Ta0MMclyJBT4=;
+        b=Nl7wD1c3wXNiOXBxZpcOgRiAqLdemHO5JFws8LFKh8Du2+iDZE05nifhEsfykuv9NJ
+         rlbP8YPT6jFyLJ2umuqBmLC3tBbKWZP8CdoULmI5br0ohnX380eWTOnlKwYo2xszlqNh
+         Cvark7Gmn95JshFlWz6fR73+I/Gw4kmPrh/9g=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692890219; x=1693495019;
+        h=in-reply-to:from:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XOnI1uxGv+A5Y0c0SW5CIw0u1ZKpGf7Ta0MMclyJBT4=;
+        b=gelHoTYLWR3q4QJCWTuagEcO6J0irxlNbiqXcxnQJ6LcYY0HE1QYupdvM7bPEcFDuC
+         W7v+kbYPxblGsbYD/VjnmUUwFt+TCVIyAvpP2bSnmaKZ34t6qt5eoeadqprCymNEKDEv
+         uaHO5zVrGQ9SrzleT9bMpR0v2OdTFp9UctEBVb23ZPQvzF0lcuUpYwTvIbGr5K3OI+01
+         w7n1GSn5WlHt4zKzrg2WVyqQjWq8SyFkEzCnibIMtXJfvKCrJOJCDrW6mmGR7ekfzlAF
+         WYpiSUI1BFGD+rnsLGV5hf1xqZ3UVwJ9nwbox/QsicD+335yaRI7RnI3FBgH0jFphclj
+         VakQ==
+X-Gm-Message-State: AOJu0YxVsnFlfKgsDBhQC1NQ6scNCXPZWIPUSo3aVz8p9tEskvsfgx96
+	I8MG0dLIrdxG7lWS3ECrDiU/wA==
+X-Google-Smtp-Source: AGHT+IHWD+IJ6SHtmSytHItm4n3pme/UFCVhe1Ydiq1H229vBi/c5qSM2mWdoh5w2nY5vU73BHdwVw==
+X-Received: by 2002:a05:6a20:8e01:b0:135:4527:efe4 with SMTP id y1-20020a056a208e0100b001354527efe4mr20898796pzj.10.1692890219164;
+        Thu, 24 Aug 2023 08:16:59 -0700 (PDT)
+Received: from [192.168.1.3] (ip72-194-116-95.oc.oc.cox.net. [72.194.116.95])
+        by smtp.gmail.com with ESMTPSA id y4-20020aa78544000000b006862b2a6b0dsm11535368pfn.15.2023.08.24.08.16.54
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 24 Aug 2023 08:16:58 -0700 (PDT)
+Message-ID: <bd0a1e56-be02-6c3e-374b-0610116d94aa@broadcom.com>
+Date: Thu, 24 Aug 2023 08:16:54 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:QM8feTFRc2YtYaaf45Kic69g5xazyHtFHQXhIYKZwIjryyNGbIp
- GJMrmIKTmIk8X6NbeyEUFzKLYDlZWfy4avhieGTh3iY6DNCEv1JO8FN8pb4O0Mbco1Eg8TJ
- AcNpbKgVtkTp8MvqMmJO6/pXiRCJxp64iWG+4TeRTEFJY7KaTjqiYwt9CMfLZy1k31kent1
- paL7IcSRRfMh2Ss01uXsQ==
-UI-OutboundReport: notjunk:1;M01:P0:9EdXq8fSVNM=;tiNFlbo02zsiCMrSiu4WV0MHlQN
- xb0vd4qbqxScz8EB5X3Ha5Q2fsfVIJtVibyZT5FAnVhv+yye9aHiF1LkEQFMQqfJwA9Hr901J
- TSSueyk27cEkbPE3OIs2LTUEJ5dddz1fGy6eQGNA57Jh3MZvkPaQn5ioUPGJ3I53RlLqwsZ7N
- uqluK46Z6eMeMXgAGzmA4t2KAWHzsiI0dyLQ0x+4scYjsAvn/0f6mml48A5vUhNg6qowegMVH
- cKGTh/R1yUvHjppht8DuCWXlvUiIEVAQuEGWToe6YtciaB4EQk+3jT0vGzDSWpX+UpR7439I3
- g3Lbs0vF6fWoFoKv2uLpQZTLB7xVfJt+Bdzu43XRL3MjLTzuDyUJ40krLeuqXhZ9lxzooFZOn
- c7wvMC6ZVSRQWmHAxSM/j35HioCF5BIMBEf10Q5qSRvC3MWLieS0z9EsJiDXvHUxdemkaJ5qm
- viN5lO1ASCs/vn4Hkdg59KcU/XpHPso+3N0hGr/UrBNz2RGbcm+rl38XKBmefIlicL/v5n8uW
- qCTThguBrf8SMtgSb9img2BNC4Lf65Nm6lu7+cZR8ElECMmfqjkBEqN3Va2Hn1jimW0jEHS8X
- iBCDTz9xJbaGU4dlZxbi7y4cSbWwVMnX0Ao2QvHKxcD0rU6o2B9qzGkY027+7ccnrK/DsNdPv
- +q9Cf7YSMeoFvRvU2vg4tkd3x+Ng7fd8eBgYyrFlK7VxSA8NJuNoYYYJ6OJf1s272s16lJ3Bh
- XU4SPtMvkiKEIdmodM4uMTkd7NbE1ws35fapnBpV7ZfGrjkmRvEI8Nyz5DI0Zzc8A11HyN3hq
- 75zTHfltgNgpBfY0ZuPxU0MGp31sfYMUkUABMme0PguTwM/qsUYL3+pv5GbycqAfNLbqSSHlV
- 8snU/XfP3HhBK8WuCQe+f9P5ArV7eBj/FRuZ1RZFSEXdtXI3Sp7IDV5KBmdCFrNQC2QJdf1ug
- ZA3Nzg86rRpOU2fyrWwItCAFLZw=
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH] thermal: Explicitly include correct DT includes
+To: Rob Herring <robh@kernel.org>, Guillaume La Roque
+ <glaroque@baylibre.com>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria
+ <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Markus Mayer <mmayer@broadcom.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konrad.dybcio@linaro.org>,
+ Thara Gopinath <thara.gopinath@gmail.com>,
+ =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund@ragnatech.se>,
+ Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Vasily Khoruzhick <anarsoul@gmail.com>, Yangtao Li <tiny.windzz@gmail.com>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20230714175008.4064592-1-robh@kernel.org>
+From: Florian Fainelli <florian.fainelli@broadcom.com>
+In-Reply-To: <20230714175008.4064592-1-robh@kernel.org>
+Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256;
+	boundary="0000000000002dbe5f0603acb880"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230824_065316_054574_28BB1065 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20230824_081706_901213_CB2A2A66 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,51 +122,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the Xiaomi Redmibook 15 Pro (2023) laptop I have got, a wifi chip is
-used, which according to its PCI Vendor ID is from "ITTIM Technology".
+--0000000000002dbe5f0603acb880
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-This chip works flawlessly with the mt7921e module.  The driver doesn't
-bind to this PCI device, because the Vendor ID from "ITTIM Technology" is
-not recognized.
 
-This patch adds the PCI Vendor ID from "ITTIM Technology" to the list of
-PCI Vendor IDs and lets the mt7921e driver bind to the mentioned wifi
-chip.
 
-Signed-off-by: Ingo Rohloff <lundril@gmx.de>
-=2D--
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 2 ++
- include/linux/pci_ids.h                         | 1 +
- 2 files changed, 3 insertions(+)
+On 7/14/2023 10:50 AM, Rob Herring wrote:
+> The DT of_device.h and of_platform.h date back to the separate
+> of_platform_bus_type before it as merged into the regular platform bus.
+> As part of that merge prepping Arm DT support 13 years ago, they
+> "temporarily" include each other. They also include platform_device.h
+> and of.h. As a result, there's a pretty much random mix of those include
+> files used throughout the tree. In order to detangle these headers and
+> replace the implicit includes with struct declarations, users need to
+> explicitly include the correct includes.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>   drivers/thermal/amlogic_thermal.c           | 2 --
+>   drivers/thermal/broadcom/bcm2711_thermal.c  | 2 +-
+>   drivers/thermal/broadcom/brcmstb_thermal.c  | 2 +-
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net=
-/wireless/mediatek/mt76/mt7921/pci.c
-index 95610a117d2f..ed5a220763ce 100644
-=2D-- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -17,6 +17,8 @@ static const struct pci_device_id mt7921_pci_device_tabl=
-e[] =3D {
- 		.driver_data =3D (kernel_ulong_t)MT7921_FIRMWARE_WM },
- 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7922),
- 		.driver_data =3D (kernel_ulong_t)MT7922_FIRMWARE_WM },
-+	{ PCI_DEVICE(PCI_VENDOR_ID_ITTIM, 0x7922),
-+		.driver_data =3D (kernel_ulong_t)MT7922_FIRMWARE_WM },
- 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0608),
- 		.driver_data =3D (kernel_ulong_t)MT7921_FIRMWARE_WM },
- 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0616),
-diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
-index 2dc75df1437f..c2d5c482cd7d 100644
-=2D-- a/include/linux/pci_ids.h
-+++ b/include/linux/pci_ids.h
-@@ -2126,6 +2126,7 @@
- #define PCI_VENDOR_ID_MYRICOM		0x14c1
+Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com> # broadcom
+-- 
+Florian
 
- #define PCI_VENDOR_ID_MEDIATEK		0x14c3
-+#define PCI_VENDOR_ID_ITTIM		0x0b48
- #define PCI_DEVICE_ID_MEDIATEK_7629	0x7629
+--0000000000002dbe5f0603acb880
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Description: S/MIME Cryptographic Signature
 
- #define PCI_VENDOR_ID_TITAN		0x14D2
-=2D-
-2.25.1
-
+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
+riBJ/K1AFUjRAjFhGV64l++td7dkmnq/X8ET75ti+w1s4FRpFqkD2m7pg5NxdsZphYIXAgMBAAGj
+QjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBSP8Et/qC5FJK5N
+UPpjmove4t0bvDANBgkqhkiG9w0BAQsFAAOCAQEAS0DbwFCq/sgM7/eWVEVJu5YACUGssxOGhigH
+M8pr5nS5ugAtrqQK0/Xx8Q+Kv3NnSoPHRHt44K9ubG8DKY4zOUXDjuS5V2yq/BKW7FPGLeQkbLmU
+Y/vcU2hnVj6DuM81IcPJaP7O2sJTqsyQiunwXUaMld16WCgaLx3ezQA3QY/tRG3XUyiXfvNnBB4V
+14qWtNPeTCekTBtzc3b0F5nCH3oO4y0IrQocLP88q1UOD5F+NuvDV0m+4S4tfGCLw0FREyOdzvcy
+a5QBqJnnLDMfOjsl0oZAzjsshnjJYS8Uuu7bVW/fhO4FCU29KNhyztNiUGUe65KXgzHZs7XKR1g/
+XzCCBVgwggRAoAMCAQICDBP8P9hKRVySg3Qv5DANBgkqhkiG9w0BAQsFADBbMQswCQYDVQQGEwJC
+RTEZMBcGA1UEChMQR2xvYmFsU2lnbiBudi1zYTExMC8GA1UEAxMoR2xvYmFsU2lnbiBHQ0MgUjMg
+UGVyc29uYWxTaWduIDIgQ0EgMjAyMDAeFw0yMjA5MTAxMjE4MTFaFw0yNTA5MTAxMjE4MTFaMIGW
+MQswCQYDVQQGEwJJTjESMBAGA1UECBMJS2FybmF0YWthMRIwEAYDVQQHEwlCYW5nYWxvcmUxFjAU
+BgNVBAoTDUJyb2FkY29tIEluYy4xGTAXBgNVBAMTEEZsb3JpYW4gRmFpbmVsbGkxLDAqBgkqhkiG
+9w0BCQEWHWZsb3JpYW4uZmFpbmVsbGlAYnJvYWRjb20uY29tMIIBIjANBgkqhkiG9w0BAQEFAAOC
+AQ8AMIIBCgKCAQEA+oi3jMmHltY4LMUy8Up5+1zjd1iSgUBXhwCJLj1GJQF+GwP8InemBbk5rjlC
+UwbQDeIlOfb8xGqHoQFGSW8p9V1XUw+cthISLkycex0AJ09ufePshLZygRLREU0H4ecNPMejxCte
+KdtB4COST4uhBkUCo9BSy1gkl8DJ8j/BQ1KNUx6oYe0CntRag+EnHv9TM9BeXBBLfmMRnWNhvOSk
+nSmRX0J3d9/G2A3FIC6WY2XnLW7eAZCQPa1Tz3n2B5BGOxwqhwKLGLNu2SRCPHwOdD6e0drURF7/
+Vax85/EqkVnFNlfxtZhS0ugx5gn2pta7bTdBm1IG4TX+A3B1G57rVwIDAQABo4IB3jCCAdowDgYD
+VR0PAQH/BAQDAgWgMIGjBggrBgEFBQcBAQSBljCBkzBOBggrBgEFBQcwAoZCaHR0cDovL3NlY3Vy
+ZS5nbG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyM3BlcnNvbmFsc2lnbjJjYTIwMjAuY3J0MEEG
+CCsGAQUFBzABhjVodHRwOi8vb2NzcC5nbG9iYWxzaWduLmNvbS9nc2djY3IzcGVyc29uYWxzaWdu
+MmNhMjAyMDBNBgNVHSAERjBEMEIGCisGAQQBoDIBKAowNDAyBggrBgEFBQcCARYmaHR0cHM6Ly93
+d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3NpdG9yeS8wCQYDVR0TBAIwADBJBgNVHR8EQjBAMD6gPKA6
+hjhodHRwOi8vY3JsLmdsb2JhbHNpZ24uY29tL2dzZ2NjcjNwZXJzb25hbHNpZ24yY2EyMDIwLmNy
+bDAoBgNVHREEITAfgR1mbG9yaWFuLmZhaW5lbGxpQGJyb2FkY29tLmNvbTATBgNVHSUEDDAKBggr
+BgEFBQcDBDAfBgNVHSMEGDAWgBSWM9HmWBdbNHWKgVZk1b5I3qGPzzAdBgNVHQ4EFgQUUwwfJ6/F
+KL0fRdVROal/Lp4lAF0wDQYJKoZIhvcNAQELBQADggEBAKBgfteDc1mChZjKBY4xAplC6uXGyBrZ
+kNGap1mHJ+JngGzZCz+dDiHRQKGpXLxkHX0BvEDZLW6LGOJ83ImrW38YMOo3ZYnCYNHA9qDOakiw
+2s1RH00JOkO5SkYdwCHj4DB9B7KEnLatJtD8MBorvt+QxTuSh4ze96Jz3kEIoHMvwGFkgObWblsc
+3/YcLBmCgaWpZ3Ksev1vJPr5n8riG3/N4on8gO5qinmmr9Y7vGeuf5dmZrYMbnb+yCBalkUmZQwY
+NxADYvcRBA0ySL6sZpj8BIIhWiXiuusuBmt2Mak2eEv0xDbovE6Z6hYyl/ZnRadbgK/ClgbY3w+O
+AfUXEZ0xggJtMIICaQIBATBrMFsxCzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52
+LXNhMTEwLwYDVQQDEyhHbG9iYWxTaWduIEdDQyBSMyBQZXJzb25hbFNpZ24gMiBDQSAyMDIwAgwT
+/D/YSkVckoN0L+QwDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcNAQkEMSIEIDAkara8lJPPBhCq
+t6v04LaDsVizwC4qkLKimmoSP16fMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcN
+AQkFMQ8XDTIzMDgyNDE1MTY1OVowaQYJKoZIhvcNAQkPMVwwWjALBglghkgBZQMEASowCwYJYIZI
+AWUDBAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG9w0BAQowCwYJKoZIhvcNAQEH
+MAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQBN41iIKZurmzTDDnuys23uH2al+WNIaYYH
+ZPi9ocbUCT/ikybgUePbne7VGwBRw8uCkvT27C584EqExUHb48XnsF5YmUcxSiS6P8Jum7Bm0PIN
+TrATKzhawVgJnjasjC6N+jOSvShJHUUPXo1E9v9j13ZFK2d1lLMoQLxNyOBbNwdFdBIsIM4rHfdq
+C5taTXmiv/fUtCRJietWBtCdWcc3I/FCPJwVKuXqvm+LMIx1mKGcbaAuM/S8C5ZtiPbm9jkEXkm1
+o8yCJMYpcdf6aQLxtEbLJuj9iZYDPf5WSXuWFx959hlBTJIm1ddKskMXcmTO8qGoGrVM1VIUurvo
+GCsT
+--0000000000002dbe5f0603acb880--
 
