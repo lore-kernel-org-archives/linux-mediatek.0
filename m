@@ -4,70 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8586C3DA66
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 15:43:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC6AFC3DA66
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 17:40:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kciCQvrkoUWCt4HcHnjs9NYS3EE+wJ/FPYu7QP0vRIE=; b=EO7l7xWIxKLFAiWr9DemeVKbRV
-	T27pM20TC7I/P+5j8bKTih3qWqcB6I8pCeZ5KVs64kvOwO8/u/YBS4x4JhaNi1aTQcdJ5HaHH3ldH
-	uXAbd/DXuzp3cWh9rlGglBjWnyCLWKrZ0oN4tFbFnkfDli3WfubYa9tJgLEgvWZWeO2yCXNCauf4T
-	nFX02hgCmhbri2fnWF+ecFtOFRPv1waOiJFnT46ULeMIqFywQFTNzSbQVO2jd+4yc2KbFaeGgk9cT
-	HcM2sT2iwJc9WAaFDeuGfQprKX3AfJMoX/QK6Tqa0N6nl3KOxMXkDuyXdsvFmDYsdqR+161PSgRK0
-	vSwwgTew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OimMWhjF3ieb++tVHK4fhFxIVzoG4uTQFZmSsIrjuv8=; b=kDHJvsHOzhNsMjaUmZ9LHOS6Dw
+	Hi8Xfvw3sJqhD6e+jNkAT+jjev+1Gx2ild/DuJJTH7DiAG77N+ZKNXOf+H7m8OEphIPSXYEGuELFL
+	H7xJJHnEjo+We7RbqafJfIaeWUPAtIpU5rsu5kjA8zjg8twPvF7WnoXHmEHYS7MLECbuAWcLGvOBe
+	UhCzzGKdh1WumSnEWL4IspgkSWtqIzHr9kSVODfwWag5lWwREowoPMB/YqbxhaBPzhmg4gGee32qm
+	1RymJZ4colhXkodY1fBllL0QVm+j87njFdkH2lHLVvaX6uk6uXSxBGQvn2sUFKoqOJznVUFzFHUtk
+	UOmQNICg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZYxz-005hTJ-2D;
-	Fri, 25 Aug 2023 15:43:19 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qZanL-005nd2-1B;
+	Fri, 25 Aug 2023 17:40:27 +0000
+Received: from mail-bn8nam04on20623.outbound.protection.outlook.com ([2a01:111:f400:7e8d::623] helo=NAM04-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZYxv-005hSj-0q;
-	Fri, 25 Aug 2023 15:43:17 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 78EA860D3D;
-	Fri, 25 Aug 2023 15:43:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7AEAAC433C7;
-	Fri, 25 Aug 2023 15:43:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1692978193;
-	bh=G9n/YPFGOVSkbEMJy6OZc/r3PTQEJOCu7MoRuHGRBqQ=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Y7KI8dqWWKtEC8q2IiKsLvTqqQ7GnFkrnEH23Hw+QAQlKTvGA01ZNoDwsn98W4mgE
-	 O2N+gXOxmgQ0WQVSkSYbszV9VMDWETufTkVAjQALTWyR2+EWmUEMT5rU1o5ycIodnW
-	 AAsU3VNB5eQF1b4OoJ3Tc1e+I699bsezD/ANKhYLOXBJspIYC02bQUx7AyUqIDA7Ow
-	 MY94ukBRbq9Ci1MQJS9GEza4eflcCyYrTp/g3/2nEXisyk8uv+qdAWJZO27u5fH13g
-	 qhS/TKQLxOuoQ2o3LnaI+NXxoqklWDcKPZnRTyPTNgi8N//f/Gxa/CyWRAijik+tdL
-	 Xsu9rmemZXONQ==
+	id 1qZanI-005ncF-13;
+	Fri, 25 Aug 2023 17:40:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=earOp9wCjbvXhNpxjZk6iiF1c5jKGxaHfnVf0WMl1z1Xaxeq27UJk8/RlIaGp0FYbWFN3iFZ0CPvBVTJBGB2SzYSP5AaGgHwpBCbpwtwR0Ep8I7xcg7b1iXrj/H8qFhJVOzdLT+YsigkHD5Sm9LMG6nWZyXNR7ck2Ht05IZVeTZ+z8ngPGO3iNzdIADnU54tTXThbLxcZoc8Qk6HaSYKYbjQ7IF2fN6JmM+Cwa3VZzcTJjhPBQJCJGAmRBWg9Dydgs+QWeQOcSDbBIykWrZ4DONfg+BIm37LRjwOBx7LB10RVBILNnPFEoMc2qcRRys5l9Ye3irQ5DeGzW5UBJw/nQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=OimMWhjF3ieb++tVHK4fhFxIVzoG4uTQFZmSsIrjuv8=;
+ b=P9hdq7UEBhwu9Va4C1XThgQhBmo8qzUkf2+BalVJ8QvMcy5Lu1kRfFWwlVCcic9/GflR5XCnAAaBlPvuSjZQ9A/pIwjrpr3wxK0UPtZBXWHUmyy6vU79fUWgJNyH7Fe90V3x6b9WghR3vXRoJkKhhnmF/rVh0/ZQAm8lBQYGDw7u6snPfdOc1HsQJbQIuJCyDlH9CnE9UA5DVRklrYDWPJdeOPV6Jv7q46rztsnE06x4FZxJetVWRhc45HDIAAUdzqYli9wiSy4JDzPNYg92P87m57uH7CoP/jqU3cKlh7116WL5avy3ROqEDcnbkZopSOJ0lg0MfcunjqKOA1Yxrw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=OimMWhjF3ieb++tVHK4fhFxIVzoG4uTQFZmSsIrjuv8=;
+ b=bOByqItZSNBSr5J9I12IpliLcN6gb8qorA3kBFiAdHzE7OmejI8GAaLgqMpisO9lg6S1gbz/Y1FwiB28/ezSKqAwapV8/t9zwSD1FkVfR/7p6ZUOk6r6wQEx6c6uj5aHQ00jjXMBiH8YVDn4ISH/5vDxNFfgTk9aRT1Wm6rzH1i+LUJfQc74+X56zsdS7ivUqxrCNpGJi9a7Wc0I1izxcrVoTMruHgHwQSOBEXlXU0C2HPAdDlC8S2B74Rem3rOwA3zkh5f7QU+ohyTKo68WtLu00gsJ/LXTJIUXKJhFQ/CbZOAdj7c8MJUHHKCOp8Me3MRvl7NBYo1dVlguWcnncA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by DM3PR12MB9326.namprd12.prod.outlook.com (2603:10b6:0:3d::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6699.30; Fri, 25 Aug
+ 2023 17:40:13 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6699.032; Fri, 25 Aug 2023
+ 17:40:13 +0000
+Date: Fri, 25 Aug 2023 14:40:10 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Jerry Snitselaar <jsnitsel@redhat.com>
+Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
+	linuxppc-dev@lists.ozlabs.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Lu Baolu <baolu.lu@linux.intel.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Steven Price <steven.price@arm.com>,
+	Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v7 02/24] iommu: Add IOMMU_DOMAIN_PLATFORM
+Message-ID: <ZOjneiqLzRRD7ulL@nvidia.com>
+References: <0-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+ <2-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+ <hbmfqpq2oyjjz3loccfbslpalzhlsyr2w3bpx6qasq23kyrfso@e6kry74ifgnt>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <hbmfqpq2oyjjz3loccfbslpalzhlsyr2w3bpx6qasq23kyrfso@e6kry74ifgnt>
+X-ClientProxiedBy: SJ0PR05CA0141.namprd05.prod.outlook.com
+ (2603:10b6:a03:33d::26) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-Date: Fri, 25 Aug 2023 17:42:59 +0200
-From: Michael Walle <mwalle@kernel.org>
-To: =?UTF-8?Q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Cc: angelogioacchino.delregno@collabora.com, airlied@gmail.com,
- amergnat@baylibre.com, chunkuang.hu@kernel.org, ck.hu@mediatek.com,
- daniel@ffwll.ch, dri-devel@lists.freedesktop.org, ehristev@collabora.com,
- kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, p.zabel@pengutronix.de, wenst@chromium.org
-Subject: Re: [PATCH v7 09/11] drm/mediatek: dp: Add support for embedded
- DisplayPort aux-bus
-In-Reply-To: <5b438dba-9b85-4448-bc89-08a11ddb822a@notapiano>
-References: <20230725073234.55892-10-angelogioacchino.delregno@collabora.com>
- <20230825120109.3132209-1-mwalle@kernel.org>
- <5b438dba-9b85-4448-bc89-08a11ddb822a@notapiano>
-Message-ID: <fc6c054941420ac2d016496ccbeecad4@kernel.org>
-X-Sender: mwalle@kernel.org
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|DM3PR12MB9326:EE_
+X-MS-Office365-Filtering-Correlation-Id: 58786a3e-aa3c-45af-dcc2-08dba59255eb
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: a8Gnigr2aF9SIPJCrxuBJK0DSHHSWMBbcxYk0WxAHH+TojN1Gvlky7nyxLoGUigqZx+wWQse5Eif5ixtjUTWxNw9v/ugMBXUFH6ND0qCuEcW2sc66uhLKr000hB29sEehLToAiTtbrDLvgB9LLezXQAJkbL5mcBuM27vGR8hpiHLc0xvDiuDHbQYSI7vflacHe8ThaM5nwDXzuvuF0v37H66N+VRIK/vsAfKSXD8lxYEn44ZLMkfG5cafZvhqjDh5TwZWJrX6YLR4j8eo1w97hRkW3uLun6CdwqPZWly8fBhvcdHwHzkbI2xhH6fh+6t6nn8Jgk1IslBiooHII9xrzoe7VFEzSmUP8snbrSDrDeCLm+nEbgrpy/ux0jCvar5lsqaaqL/ZsmLDMAi5esuLJ+YFl8gBWqM03xfVSmmvT/XRvlwmnLSeuW0/Dfve/gJKJG0JxK+TK9yvPInRO4lg/2ANi2TvXQ9b+ktVpDKTiK9GdEK3Se3Qwcj17nXmn3FoOwl7gEY2mV0uGvJFo0op67WrPjfNH0/1nNJDMDfxlPJRGy7ebPGUaVIVjiOr5zN
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(39860400002)(136003)(376002)(396003)(366004)(346002)(1800799009)(186009)(451199024)(5660300002)(83380400001)(86362001)(6512007)(6506007)(26005)(2616005)(6486002)(38100700002)(107886003)(36756003)(66946007)(478600001)(54906003)(4326008)(8936002)(6916009)(8676002)(66476007)(316002)(66556008)(41300700001)(7406005)(7416002)(2906002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?vvgV5ntNbJnFy5TerXzlekncoqxnviQO4r6DerMaR7/Xw8peRzERjkiAau8j?=
+ =?us-ascii?Q?YTRWOFswON+4fKllm1SrjUXZX4pLpQiXapVA3glR1/fM9N8Bj1qs4ffqBhZF?=
+ =?us-ascii?Q?XSwuk6COHMfBSoNhdw7hroan2o36kidxruhSGM28UFBsyWuy55LgWCOwPX9s?=
+ =?us-ascii?Q?BBOSbJhmmvE1NbFaSfZNsLzCzifVVKZRALPhkZCzZ6qOnJcjm9eQc+3A1oj9?=
+ =?us-ascii?Q?It52NOulwurqZfk23csGiIc3WYS2j3v9cHwU3QiNZeKRkab0bW1FucSMqdix?=
+ =?us-ascii?Q?m4Zmbg0GGSK9Nemgc24cZ1hNo46qrLpVVDep8FZxjdGf6VSXMhNV7Y/J3jy+?=
+ =?us-ascii?Q?t0hgqAp9Vlyp+nXc5OzPJpRymYwoNHD8RXhf13kaGDRnjlfZHb4nzAzZr4t/?=
+ =?us-ascii?Q?DhlcCY23vNG1SFcK5OkTVogVaTZgo7kS0dZhoBmXDwsHyfRxpLR0SsadzUTx?=
+ =?us-ascii?Q?7PVSKoMB9epwl9ji04a92GCaVxv1heeNbfUroQIrMyvPn5O9udlZYgb/pW8x?=
+ =?us-ascii?Q?pLHUV4daK2vjxfwRPldDcqlENxHVrqr9FoqRaGugEEHi0QQp7wqD/vfeooNh?=
+ =?us-ascii?Q?d6XrbBH5VDQKv22/hln8SQtf+SpAZE5APLoziCBPZ36ShGGmRY49X9g1axx4?=
+ =?us-ascii?Q?jP5RfcrqATYeFMvilpsdGZqVYZKU+cdHkJF5+T20kW9EPVoYA5jgi5Pa07Bx?=
+ =?us-ascii?Q?4GSxCVm2pDuffgCfh/AhO6RUke6ldQz/P5i4VM22WDrpXyb+lA0oLvsK+3U4?=
+ =?us-ascii?Q?T8i/9qMXqWfrBBdOV16xiOaSM0Q5odNsD9A8ufbUC6wAqwCiYjeZXd/E72ol?=
+ =?us-ascii?Q?Jnhn3TxxRQGeTosqkt0vaQlB9sqFQ3hPIyTHxG6RxHiIaqRTMWPhZ9rpXNQQ?=
+ =?us-ascii?Q?g7IgJjiu7byaYZj9M0VeTNCVLr/jMxgz8mg/KVTroZFQM/vAOcIA41pzQtei?=
+ =?us-ascii?Q?VDV+VEGmyTCCWwYBW3uYU6D8RV61C2Lv8MGFD9F/Dy2xSESbAKWkYhx1AD3J?=
+ =?us-ascii?Q?s2p3TQKoRpAOPHN6sOEReEi1BfCE78EeehELV/TdIVapsK96ovX/b7FCAPoY?=
+ =?us-ascii?Q?8OJVV0jevWjA0o84otiauvU0hOwsuxY02Lda3knBRrI/pbg1E/MV2uC0K95f?=
+ =?us-ascii?Q?Nk4A/jt1adEHhTvsEyNRoOgqVc7tlqQ2WeiDOheHJHJo+cPZ4yAbyOzwrA9/?=
+ =?us-ascii?Q?agi1uFJKwTzqUp7d1ACXHEzfdz0d7pnXhOon6p8qGMjwXHqjUF7xkNlTbFr+?=
+ =?us-ascii?Q?B+8/P53OdCSSRhwGvFg/zsLwnDpO14wHNsaJNwyGdCVDNShuv4/+rYLa6ouY?=
+ =?us-ascii?Q?2er0IWGnsD/PXHQSvYY8SYu0wRpmApig2zVHMVFtGiRx7lE/SBoqOPzJvuk3?=
+ =?us-ascii?Q?E0Q2Py+SENB8FMtyEFKrX4DzEZoTQEcN4ZBxMYyp4owAXD1222aCRO0cDaP/?=
+ =?us-ascii?Q?ZhDJ/4G6mdu9JakGiSYrFXVDQTNQMqW7BQEgDIySWAP8keEExA9/p1kxwW7M?=
+ =?us-ascii?Q?e/IoAeX2HuRg37EhGM+UiXcbLY9L1EXOueraZu/Jinq8K5h34zk+LqWcqnvs?=
+ =?us-ascii?Q?MD54E5k+9Lu2J+Rb5HHttaheDoy+0aXMw709c2md?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 58786a3e-aa3c-45af-dcc2-08dba59255eb
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Aug 2023 17:40:13.0741
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: c/lHqPfLm8ZdGGXUSmMC6bjlG6PP0TtcgCXnvFIc/GCrpMVM1mXDhZvZRzMfHio0
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM3PR12MB9326
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_084315_393422_0B7B0E54 
-X-CRM114-Status: GOOD (  37.04  )
+X-CRM114-CacheID: sfid-20230825_104024_389000_C516B541 
+X-CRM114-Status: GOOD (  14.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,208 +167,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
+On Thu, Aug 24, 2023 at 06:51:48PM -0700, Jerry Snitselaar wrote:
 
->> > For the eDP case we can support using aux-bus on MediaTek DP: this
->> > gives us the possibility to declare our panel as generic "panel-edp"
->> > which will automatically configure the timings and available modes
->> > via the EDID that we read from it.
->> >
->> > To do this, move the panel parsing at the end of the probe function
->> > so that the hardware is initialized beforehand and also initialize
->> > the DPTX AUX block and power both on as, when we populate the
->> > aux-bus, the panel driver will trigger an EDID read to perform
->> > panel detection.
->> >
->> > Last but not least, since now the AUX transfers can happen in the
->> > separated aux-bus, it was necessary to add an exclusion for the
->> > cable_plugged_in check in `mtk_dp_aux_transfer()` and the easiest
->> > way to do this is to simply ignore checking that when the bridge
->> > type is eDP.
->> 
->> This patch breaks my board based on the MT8195 which only has one
->> DisplayPort output port. I suspect it might also break the 
->> mt8195-cherry
->> board.
+> > +	/*
+> > +	 * Allow legacy drivers to specify the domain that will be the default
+> > +	 * domain. This should always be either an IDENTITY or PLATFORM domain.
+> > +	 * Do not use in new drivers.
+> > +	 */
 > 
-> Do you mean that your board does not have an internal display, only the 
-> one
-> output port? If so, why are you enabling the nodes for the internal 
-> display path
-> in your board specific DT?
+> Would it be worthwhile to mention this in iommu.h for the iommu_ops default_domain?
 
-Well, that depends. The board actually has an eDP socket, but because we
-are an OEM, there might be no display connected to it. (And I haven't
-tried it yet). It should probably go into an own device tree or overlay
-if it is used. I agree. But it looked like it was auto-detectable (it
-even has a HDP pin on the eDP socket, not sure about its use case..)
+I did this:
 
-But the real reason I've enabled it was because I'll get an kernel
-oops otherwise. I thought it might be some quirk that you'll need both,
-because eDP will register even if theres no display - as you've
-mentioned below.
+diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+index 11d47f9ac9b345..7fa53d28feca87 100644
+--- a/drivers/iommu/iommu.c
++++ b/drivers/iommu/iommu.c
+@@ -1757,8 +1757,8 @@ iommu_group_alloc_default_domain(struct iommu_group *group, int req_type)
+ 
+        /*
+         * Allow legacy drivers to specify the domain that will be the default
+-        * domain. This should always be either an IDENTITY or PLATFORM domain.
+-        * Do not use in new drivers.
++        * domain. This should always be either an IDENTITY/BLOCKED/PLATFORM
++        * domain. Do not use in new drivers.
+         */
+        if (ops->default_domain) {
+                if (req_type)
+diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+index 7e9d94a56f473e..6f9e0aacc4431a 100644
+--- a/include/linux/iommu.h
++++ b/include/linux/iommu.h
+@@ -267,6 +267,8 @@ struct iommu_iotlb_gather {
+  * @blocked_domain: An always available, always attachable blocking
+  *                  translation.
+  * @default_domain: If not NULL this will always be set as the default domain.
++ *                  This should be an IDENTITY/BLOCKED/PLATFORM domain.
++ *                  Do not use in new drivers.
+  */
+ struct iommu_ops {
+        bool (*capable)(struct device *dev, enum iommu_cap);
 
-Here's the splat:
-[    3.237064] mediatek-drm mediatek-drm.10.auto: bound 
-1c110000.vpp-merge (ops mtk_disp_merge_component_ops)
-[    3.238274] mediatek-drm mediatek-drm.8.auto: Not creating crtc 0 
-because component 8 is disabled or missing
-[    3.239504] mediatek-drm mediatek-drm.8.auto: Not creating crtc 0 
-because component 9 is disabled or missing
-[    3.240741] Unable to handle kernel NULL pointer dereference at 
-virtual address 00000000000004a0
-[    3.241841] Mem abort info:
-[    3.242192]   ESR = 0x0000000096000004
-[    3.242662]   EC = 0x25: DABT (current EL), IL = 32 bits
-[    3.243328]   SET = 0, FnV = 0
-[    3.243710]   EA = 0, S1PTW = 0
-[    3.244104]   FSC = 0x04: level 0 translation fault
-[    3.244717] Data abort info:
-[    3.245078]   ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
-[    3.245765]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
-[    3.246398]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
-[    3.247063] [00000000000004a0] user address but active_mm is swapper
-[    3.247860] Internal error: Oops: 0000000096000004 [#1] SMP
-[    3.248559] Modules linked in:
-[    3.248945] CPU: 4 PID: 11 Comm: kworker/u16:0 Not tainted 
-6.5.0-rc7-next-20230821+ #2225
-[    3.249970] Hardware name: Kontron 3.5"-SBC-i1200 (DT)
-[    3.250614] Workqueue: events_unbound deferred_probe_work_func
-[    3.251347] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS 
-BTYPE=--)
-[    3.252220] pc : mtk_drm_crtc_dma_dev_get+0x8/0x18
-[    3.252824] lr : mtk_drm_bind+0x458/0x558
-[    3.253326] sp : ffff800082b23a20
-[    3.253741] x29: ffff800082b23a20 x28: ffff000002c78880 x27: 
-ffff8000816466d0
-[    3.254635] x26: ffff000002c6f010 x25: 0000000000000003 x24: 
-0000000000000000
-[    3.255529] x23: ffff000002c78880 x22: 0000000000000002 x21: 
-0000000000000000
-[    3.256423] x20: ffff000006516800 x19: ffff000002c78880 x18: 
-ffffffffffffffff
-[    3.257317] x17: 6f63206573756163 x16: 6562203020637472 x15: 
-6320676e69746165
-[    3.258211] x14: 726320746f4e203a x13: 676e697373696d20 x12: 
-726f2064656c6261
-[    3.259106] x11: 7369642073692039 x10: ffff80008275c0c0 x9 : 
-ffff80008091ebf8
-[    3.260000] x8 : 00000000ffffefff x7 : ffff80008275c0c0 x6 : 
-80000000fffff000
-[    3.260895] x5 : 000000000000bff4 x4 : 0000000000000000 x3 : 
-ffff000006516ae0
-[    3.261789] x2 : ffff000006516ae0 x1 : 0000000000000000 x0 : 
-0000000000000000
-[    3.262684] Call trace:
-[    3.262991]  mtk_drm_crtc_dma_dev_get+0x8/0x18
-[    3.263549]  try_to_bring_up_aggregate_device+0x16c/0x1e0
-[    3.264227]  __component_add+0xac/0x180
-[    3.264708]  component_add+0x1c/0x30
-[    3.265158]  mtk_disp_rdma_probe+0x17c/0x270
-[    3.265695]  platform_probe+0x70/0xd0
-[    3.266155]  really_probe+0x150/0x2c0
-[    3.266615]  __driver_probe_device+0x80/0x140
-[    3.267162]  driver_probe_device+0x44/0x170
-[    3.267687]  __device_attach_driver+0xc0/0x148
-[    3.268245]  bus_for_each_drv+0x88/0xf0
-[    3.268727]  __device_attach+0xa4/0x198
-[    3.269208]  device_initial_probe+0x1c/0x30
-[    3.269732]  bus_probe_device+0xb4/0xc0
-[    3.270214]  deferred_probe_work_func+0x90/0xd0
-[    3.270783]  process_one_work+0x144/0x3a0
-[    3.271289]  worker_thread+0x2ac/0x4b8
-[    3.271761]  kthread+0xec/0xf8
-[    3.272145]  ret_from_fork+0x10/0x20
-[    3.272597] Code: 814f7858 ffff8000 aa1e03e9 d503201f (f9425000)
-[    3.273361] ---[ end trace 0000000000000000 ]---
-
-Here's the complete bootlog:
-https://pastebin.com/raw/SekMYBj4
-
-Any help is where to look is appreciated.
-
->> While the mediatek-dpi driver finds the DP port:
->> [    3.131645] mediatek-dpi 1c113000.dp-intf: Found bridge node: 
->> /soc/dp-tx@1c600000
->> 
->> The probing of the eDP is deferred:
->> [   13.289009] platform 1c015000.dp-intf: deferred probe pending
->> 
->> So I don't know why, but to make dp_intf1 work, it seems that dp_intf0
->> must be probed successfully. After this patch, the edp (which is
->> connected to the dp_intf1) probe will return with an -ENODEV and
->> the previous call to devm_drm_bridge_add() will be rolled back.
-> 
-> The MediaTek DRM driver uses the component framework, so it waits for 
-> all of its
-> components to register until it binds them all (which includes both 
-> intf0 and
-> intf1, unless they're disabled on the DT).
-
-Oh with "I don't know why, but to make dp_intf1 work.." I meant the 
-splat
-above. I figured that dpi won't probe if a dependency is still deferred 
-;)
-
--michael
-
-> It's true that before this patch no panel being found for edp-tx 
-> wouldn't
-> prevent it to probe, but it really should.
-> 
-> Thanks,
-> Nícolas
-> 
->> 
->> Before this patch, bridge_add() was called in any case (in the
->> error case with next_bridge = NULL) and the mediatek-dpi probed
->> like that:
->> 
->> [    3.121011] mediatek-dpi 1c015000.dp-intf: Found bridge node: 
->> /soc/edp-tx@1c500000
->> [    3.122111] mediatek-dpi 1c113000.dp-intf: Found bridge node: 
->> /soc/dp-tx@1c600000
->> 
->> Eventually resulting in a framebuffer device:
->> [    4.451081] mediatek-drm mediatek-drm.8.auto: [drm] fb0: 
->> mediatekdrmfb frame buffer device
->> 
->> 
->> NB, somehow this series broke the initial display output. I always 
->> have
->> to replug the DisplayPort to get some output. I'll dig deeper into 
->> that
->> later.
->> 
->> ..
->> 
->> > @@ -2519,21 +2553,14 @@ static int mtk_dp_probe(struct platform_device *pdev)
->> >  		return dev_err_probe(dev, mtk_dp->irq,
->> >  				     "failed to request dp irq resource\n");
->> >
->> > -	mtk_dp->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
->> > -	if (IS_ERR(mtk_dp->next_bridge) &&
->> > -	    PTR_ERR(mtk_dp->next_bridge) == -ENODEV)
->> > -		mtk_dp->next_bridge = NULL;
->> 
->> In my case, this branch was taken.
->> 
->> -michael
->> 
->> > -	else if (IS_ERR(mtk_dp->next_bridge))
->> > -		return dev_err_probe(dev, PTR_ERR(mtk_dp->next_bridge),
->> > -				     "Failed to get bridge\n");
->> > -
->> >  	ret = mtk_dp_dt_parse(mtk_dp, pdev);
->> >  	if (ret)
->> >  		return dev_err_probe(dev, ret, "Failed to parse dt\n");
->> >
->> > -	drm_dp_aux_init(&mtk_dp->aux);
->> >  	mtk_dp->aux.name = "aux_mtk_dp";
->> > +	mtk_dp->aux.dev = dev;
->> >  	mtk_dp->aux.transfer = mtk_dp_aux_transfer;
->> > +	drm_dp_aux_init(&mtk_dp->aux);
->> >
->> >  	spin_lock_init(&mtk_dp->irq_thread_lock);
->> >
+Thanks,
+Jason
 
