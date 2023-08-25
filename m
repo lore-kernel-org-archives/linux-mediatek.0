@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2524C71133
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 12:25:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FF70C71133
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 12:25:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F7t7iG41RSHrXO2GztWNRXWKe5JKLTYuKIlHOMjYHeM=; b=4jNV3A1DLT4UqgPxSb9LpazGzJ
-	/KpSiuQiEwbmDIlTHruWlVJLzjeDwKmdfuHXH1aoywZ+WhdcySshJiUi7kCZ4ztb9s6V78N4Nc9L4
-	7V29ufoX+5H5KFdTpA/0uKboIPfgHxqmqzdfRbaFoECMPg30vocAjDNwxWCd93P25UfKmx6lMZIc6
-	DBrUkD884x6ka1+6uvRkTXxsRkKW2R86VWahNoPa5FA+hhQLpsUOcAuFuw0l2fm1U1EuA7wZYraY1
-	aX377AqBj+UiyUyUvUXTyFtYv0Ssj5RUfElB2wFXb2Cy5WStIC89yHqToHN3+O0jgMyIPbJ+T7z0x
-	hpu91xoQ==;
+	bh=r/NGkb4PcsIkrJGYy7+TkE/DW+b4luO0srwKEa+xJWo=; b=izyA3OTQV9ZBGTccYYgDq8fqG9
+	iM5L5ZZH2oXKbcwpqmg1rdk9sXWDJ7Z3uhWWPgx+29NsNGBcF6+3E5ThBtjipmeoT2MBGrspWmhCE
+	5DJvhUX5gJpMy7FZ6IEU4Bv1znQJDpEIdm+YmnqObt/X4s6CTyJokK6twOWwJLJeBw8ndC783uA+Y
+	GBqqNaiki9ORtVsbLSC5aVfHTIHTrXrLBNoShj+IpvO2NRWG8Qvz4bTx/WvxoO5GJ/gLL5NES95Ll
+	dQHCwfdYewfg/Thj8FDoPr0uoiMIzGyHfQiHqpm319bqHgNMkoUw1ETkh2uKeR9j/esopIVseQGxz
+	jz0zBCzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZVsi-005NeS-1T;
-	Fri, 25 Aug 2023 12:25:40 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qZVss-005Nkl-04;
+	Fri, 25 Aug 2023 12:25:50 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZVsT-005NQ0-38;
-	Fri, 25 Aug 2023 12:25:27 +0000
+	id 1qZVsV-005NU5-30;
+	Fri, 25 Aug 2023 12:25:29 +0000
 Received: from localhost.localdomain (unknown [171.76.83.99])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0FE3A66003AF;
-	Fri, 25 Aug 2023 13:25:12 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0D081660728C;
+	Fri, 25 Aug 2023 13:25:19 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1692966319;
-	bh=TpGrWMGej0KBkC2cyx/cKNP7OiA71j36BN5VYiAV3VQ=;
+	s=mail; t=1692966326;
+	bh=NyIn73BQxUrufKyWq8BDAMtc8SZCd6gx2Lk9WFhK3Lc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lLD0NsYOtZxkf6mo7eBz2gg4lh/Hts/J+xwR0xidciO0+8t6vmsW6mU5cIWp0RorF
-	 uYA2DJ2b+S6KG+U2G011MxglW9/LR4+7ccKk4lh3PB2CABk4JjO4USHA+iqKAn2/Gp
-	 Ti7gBCddTdOeNo5uYyS8nnYqPguYXthsgD0UN19xFJqkJMd1fnvIRFCzUchjcydB1t
-	 eHeCpes/MnmqAp4bMjLCxLK+ZF+FCfEvcnWhxXV2E3c52uRnOPsJZI+cRLWVGsjR7A
-	 Wg+DISGx2Q8555JPHiV0I56CzPnwwbOAi+AQWZdq1kSCYYd1lRl+R2ZAxJPyF3ja4j
-	 nC8AITdtXb1iw==
+	b=F8QshP2U5DJiUF7YueJ5M3UMGb/xy1qVTBpLqtvCvmRHlJ9Sev0qybWHNGqqfkqLh
+	 C+I8ZNkkUyuEOMVh+3pbLiP4PdBVFVxDHfyqF4GBcoR8WdQPcDZo0cmrBruIBH9du9
+	 5oaQf5x3Sva4vXLBt1fp5qlFm7by3HfwXc5zJWK05PAUi+Mj9fHICeO1ZH6uEXiXaQ
+	 UqyC/9VxpCRwt88OxRoBNt3DJhGnRcTB0Qw6aay2ovu08IwdcyvPOUnGvntLwAtbMr
+	 WWp3wPbhPwA9WH3D4/7HMPIKnjAJWhdJFTs8TuF/F5GvTXGFzWiWDkVAK/9haRwGfb
+	 jn9JQhk1DSqxQ==
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: dri-devel@lists.freedesktop.org
 Cc: helen.koike@collabora.com,
@@ -74,17 +74,17 @@ Cc: helen.koike@collabora.com,
 	linux-mediatek@lists.infradead.org,
 	linux-amlogic@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 3/6] drm: ci: virtio: update ci variables
-Date: Fri, 25 Aug 2023 17:54:32 +0530
-Message-Id: <20230825122435.316272-4-vignesh.raman@collabora.com>
+Subject: [PATCH 4/6] drm: ci: Enable configs to fix mt8173 boot hang issue
+Date: Fri, 25 Aug 2023 17:54:33 +0530
+Message-Id: <20230825122435.316272-5-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230825122435.316272-1-vignesh.raman@collabora.com>
 References: <20230825122435.316272-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_052526_252406_8C030D94 
-X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-CacheID: sfid-20230825_052528_142534_2616A5DE 
+X-CRM114-Status: UNSURE (   7.56  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,34 +100,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update ci variables to fix the below error,
-ERROR - Igt error: malloc(): corrupted top size
-ERROR - Igt error: Received signal SIGABRT.
-ERROR - Igt error: Stack trace:
-ERROR - Igt error:  #0 [fatal_sig_handler+0x17b]
+Enable regulator
+Enable MT6397 RTC driver
 
 Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 ---
- drivers/gpu/drm/ci/test.yml | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/ci/arm64.config | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index 6473cddaa7a9..d85add39f425 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -316,8 +316,11 @@ virtio_gpu:none:
-   stage: virtio-gpu
-   variables:
-     CROSVM_GALLIUM_DRIVER: llvmpipe
--    DRIVER_NAME: virtio_gpu
-+    DRIVER_NAME: virtio
-     GPU_VERSION: none
-+    CROSVM_MEMORY: 12288
-+    CROSVM_CPU: $FDO_CI_CONCURRENT
-+    CROSVM_GPU_ARGS: "vulkan=true,gles=false,backend=virglrenderer,egl=true,surfaceless=true"
-   extends:
-     - .test-gl
-   tags:
+diff --git a/drivers/gpu/drm/ci/arm64.config b/drivers/gpu/drm/ci/arm64.config
+index 817e18ddfd4f..ea7a6cceff40 100644
+--- a/drivers/gpu/drm/ci/arm64.config
++++ b/drivers/gpu/drm/ci/arm64.config
+@@ -184,6 +184,8 @@ CONFIG_HW_RANDOM_MTK=y
+ CONFIG_MTK_DEVAPC=y
+ CONFIG_PWM_MTK_DISP=y
+ CONFIG_MTK_CMDQ=y
++CONFIG_REGULATOR_DA9211=y
++CONFIG_RTC_DRV_MT6397=y
+ 
+ # For nouveau.  Note that DRM must be a module so that it's loaded after NFS is up to provide the firmware.
+ CONFIG_ARCH_TEGRA=y
 -- 
 2.40.1
 
