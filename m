@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 908D1EE49AD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 12:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2524C71133
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 12:25:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dBA/kXspgla7jhykDrZlLMgABjD6ErmW6R+kJ9FlF2E=; b=mBrQdRm4fVQytBTUmaUytaSTCH
-	NNP02fQD6eX0diQdmgLLFgvomvaN3UL7k44DPLOZWCnjLysK3zP/xXw0Z7m1TqDchO6wvQXTA/XZe
-	aoP4VcBPEinrT5liHA2r56UsI7+2Nj7rtrPIATCoVkCBAFek4sLiEs4xKEP5CkBMGkWIQzRilfHAj
-	cPOYQrRz/5wTpq7hQVAeOe2qkuv3jTcotNiu65whEkhPanHTQNKlqgYwPm+YN3MAt7cL8CFFY+mNx
-	WXYCvPK2MX9SwfV3Dzv1HHFlBQVBdQMOgMzc6KUwl50ACLwAGJCSoe8/UyOTidXZ2mXQE3xlD/PIE
-	kSeYcMFQ==;
+	bh=F7t7iG41RSHrXO2GztWNRXWKe5JKLTYuKIlHOMjYHeM=; b=4jNV3A1DLT4UqgPxSb9LpazGzJ
+	/KpSiuQiEwbmDIlTHruWlVJLzjeDwKmdfuHXH1aoywZ+WhdcySshJiUi7kCZ4ztb9s6V78N4Nc9L4
+	7V29ufoX+5H5KFdTpA/0uKboIPfgHxqmqzdfRbaFoECMPg30vocAjDNwxWCd93P25UfKmx6lMZIc6
+	DBrUkD884x6ka1+6uvRkTXxsRkKW2R86VWahNoPa5FA+hhQLpsUOcAuFuw0l2fm1U1EuA7wZYraY1
+	aX377AqBj+UiyUyUvUXTyFtYv0Ssj5RUfElB2wFXb2Cy5WStIC89yHqToHN3+O0jgMyIPbJ+T7z0x
+	hpu91xoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZVsY-005NWM-0S;
-	Fri, 25 Aug 2023 12:25:30 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qZVsi-005NeS-1T;
+	Fri, 25 Aug 2023 12:25:40 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZVsH-005NMo-2W;
-	Fri, 25 Aug 2023 12:25:15 +0000
+	id 1qZVsT-005NQ0-38;
+	Fri, 25 Aug 2023 12:25:27 +0000
 Received: from localhost.localdomain (unknown [171.76.83.99])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1E7736607286;
-	Fri, 25 Aug 2023 13:25:05 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0FE3A66003AF;
+	Fri, 25 Aug 2023 13:25:12 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1692966312;
-	bh=REQjWp2zHtrfiDs99kq+h6FJkxnRTdlAsV7mFgtYf4s=;
+	s=mail; t=1692966319;
+	bh=TpGrWMGej0KBkC2cyx/cKNP7OiA71j36BN5VYiAV3VQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Yd4+NKJOxy5N8Tm6mcZMdl+mvuQ74D5UxsXwSCKscOHz9vuwz3b3bTwaPZ/VgcjXZ
-	 FJTMdnsF4mV7I0nLA1ldxV1fLEttVn6s8U6izBM+Bppx/D0l5EKx2mbX99n6e9L9PM
-	 yTY7YAYz2pbkKO4C1butaugpRlvHeuX4KWEq6G1JH7pvXlxG9LmxmfrK7ASb8knF70
-	 CWmoS+za8k2+l8HIq+TZZyve7Y3auOyZNZAT7Q9gLYNzqnqmb52Ol6+Sov0H2KVpqo
-	 1VodBSiEz+/VxgynTr87DE3CltOmDByr6/1uu93o1rOwgNxfB9LnKgGkc1IOUQnCCo
-	 AJSGaLdztKHig==
+	b=lLD0NsYOtZxkf6mo7eBz2gg4lh/Hts/J+xwR0xidciO0+8t6vmsW6mU5cIWp0RorF
+	 uYA2DJ2b+S6KG+U2G011MxglW9/LR4+7ccKk4lh3PB2CABk4JjO4USHA+iqKAn2/Gp
+	 Ti7gBCddTdOeNo5uYyS8nnYqPguYXthsgD0UN19xFJqkJMd1fnvIRFCzUchjcydB1t
+	 eHeCpes/MnmqAp4bMjLCxLK+ZF+FCfEvcnWhxXV2E3c52uRnOPsJZI+cRLWVGsjR7A
+	 Wg+DISGx2Q8555JPHiV0I56CzPnwwbOAi+AQWZdq1kSCYYd1lRl+R2ZAxJPyF3ja4j
+	 nC8AITdtXb1iw==
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: dri-devel@lists.freedesktop.org
 Cc: helen.koike@collabora.com,
@@ -74,17 +74,17 @@ Cc: helen.koike@collabora.com,
 	linux-mediatek@lists.infradead.org,
 	linux-amlogic@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 2/6] drm: ci: Force db410c to host mode
-Date: Fri, 25 Aug 2023 17:54:31 +0530
-Message-Id: <20230825122435.316272-3-vignesh.raman@collabora.com>
+Subject: [PATCH 3/6] drm: ci: virtio: update ci variables
+Date: Fri, 25 Aug 2023 17:54:32 +0530
+Message-Id: <20230825122435.316272-4-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230825122435.316272-1-vignesh.raman@collabora.com>
 References: <20230825122435.316272-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_052513_944972_EBFF7E39 
-X-CRM114-Status: UNSURE (   9.06  )
+X-CRM114-CacheID: sfid-20230825_052526_252406_8C030D94 
+X-CRM114-Status: UNSURE (   8.73  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,34 +100,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Force db410c to host mode to fix network issue which results in failure
-to mount root fs via NFS.
-See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b8c15c80a54dda510743cefd1c4b65b8
-
-Since this fix is not sent upstream, add it to build.sh script
-before building the kernel and dts. Better approach would be
-to use devicetree overlays.
+Update ci variables to fix the below error,
+ERROR - Igt error: malloc(): corrupted top size
+ERROR - Igt error: Received signal SIGABRT.
+ERROR - Igt error: Stack trace:
+ERROR - Igt error:  #0 [fatal_sig_handler+0x17b]
 
 Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 ---
- drivers/gpu/drm/ci/build.sh | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/gpu/drm/ci/test.yml | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
-index 7b014287a041..c39834bd6bd7 100644
---- a/drivers/gpu/drm/ci/build.sh
-+++ b/drivers/gpu/drm/ci/build.sh
-@@ -70,6 +70,10 @@ if [ -z "$CI_MERGE_REQUEST_PROJECT_PATH" ]; then
-     fi
- fi
- 
-+# Force db410c to host mode to fix network issue which results in failure to mount root fs via NFS.
-+# See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b8c15c80a54dda510743cefd1c4b65b8
-+sed -i '/&usb {/,/status = "okay";/s/status = "okay";/&\n\tdr_mode = "host";/' arch/arm64/boot/dts/qcom/apq8016-sbc.dts
-+
- for opt in $ENABLE_KCONFIGS; do
-   echo CONFIG_$opt=y >> drivers/gpu/drm/ci/${KERNEL_ARCH}.config
- done
+diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+index 6473cddaa7a9..d85add39f425 100644
+--- a/drivers/gpu/drm/ci/test.yml
++++ b/drivers/gpu/drm/ci/test.yml
+@@ -316,8 +316,11 @@ virtio_gpu:none:
+   stage: virtio-gpu
+   variables:
+     CROSVM_GALLIUM_DRIVER: llvmpipe
+-    DRIVER_NAME: virtio_gpu
++    DRIVER_NAME: virtio
+     GPU_VERSION: none
++    CROSVM_MEMORY: 12288
++    CROSVM_CPU: $FDO_CI_CONCURRENT
++    CROSVM_GPU_ARGS: "vulkan=true,gles=false,backend=virglrenderer,egl=true,surfaceless=true"
+   extends:
+     - .test-gl
+   tags:
 -- 
 2.40.1
 
