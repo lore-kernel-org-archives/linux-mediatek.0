@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04B65C71133
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 12:01:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD7DEC71133
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 12:24:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l/D321ZkzjYsaMmEcWZZY4lRT4qlt10fZ29fC/LfGt4=; b=BFjRWRhRb7ebqnlmkJBkqiFVck
-	s1NIviMg2Aw5TO7aJ/SEXuZs9j+yZprG9i8+Kp6L535xWzwguDtYzsG/F3K2CcyfMYKZQeXkc6r+v
-	Fr2zltN0Zv7Pf0/qZCplIEFyuvSqmdYDXyqHw+DJQxLtsLtCaqzzCrc4J0tGAR1JilMm17G7V2amB
-	B/4MS8hpoL5IdyDVsYgkPyKSaU7GNjL94hq6ajHibgRZ4xyXDrVQxz9JCAMi8wXf3pv0w8vDEvHWe
-	WoAbpDQAu/B0k8RUjsYIGzq4kkEe8xa9HoE65Jk/ofIuOderV7telacEiErVw4rscUOChn8EnbFEY
-	LQLRMMEw==;
+	bh=5AI4j/imUS1MUuQuGpKi9NalKkJwpNjUoHfF8ByAQng=; b=AWAg5D5UeElMIUYOFza7TVmFzj
+	WONrx7c6sWqPHRFVyAAIQGbCXLbjZ7fJ6jrVxDsMNkg4EJc/eSGbef+HqZ53CKqkJH0dlY8KvJyBA
+	LzuIVlwMALEPA1bi13PMV7bpn1360TfaE/O1s+DBHp0q5Ctd3k8U0j7ybqKMPFBxorKYOJgy+3PzG
+	4wB4VTSLfWFnBDPKkbkOkC5M0vuZZp6cNNqtr5fZobf4VUaB9yFcNdC6DwPvQI/7GCEsV6Z4MBmm2
+	fDZLUibz1ds9EeLo30jdX1ca4U2QjjLDTEUCsdGnTDTnRVwy019wjhUYw3IMSqOlGjWmZ7HGtBBQm
+	Th/no9yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZVVM-005KSe-2g;
-	Fri, 25 Aug 2023 12:01:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qZVr9-005NDi-20;
+	Fri, 25 Aug 2023 12:24:03 +0000
+Received: from mail-qv1-xf2d.google.com ([2607:f8b0:4864:20::f2d])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZVVI-005KRe-2F;
-	Fri, 25 Aug 2023 12:01:30 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C97166323D;
-	Fri, 25 Aug 2023 12:01:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 043B1C433C8;
-	Fri, 25 Aug 2023 12:01:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1692964886;
-	bh=DkaQY49NCfEp3URelzQqFMcnMc9cI/W/Kd4KxUDsdP8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kpxFzYXNwWgfxY8NNYJlMX4BJy36WR3HvNPFBufzFvuc+1G+3dkUXzrHL7ecq6mrA
-	 S+KFw5hGxzStAZDEnRnBk4WifvWMZuoZBBrcmgn/Dn9+zQa078bUaJyvGrejf9V6X5
-	 RWyFIhHXbppXCO/spDu7kvAEYcLk29nfQ88Rm6z74iJbixllna1t3ik3LHDEt+IONO
-	 iesMsfH9UMEvHZ6Z21UZ1aTtRRKDc85QPw8bHHYeUViA3BA3OwHDK67vDf5tgiYaUx
-	 0I7ShYr0Jd6zDxGifpdP/+pP3ynXQg+ReQY+kywslBe73Q49XNTLzNZqZDjulJNQ1w
-	 NBTKCDVjyc/KQ==
-From: Michael Walle <mwalle@kernel.org>
-To: angelogioacchino.delregno@collabora.com
-Cc: airlied@gmail.com,
-	amergnat@baylibre.com,
-	chunkuang.hu@kernel.org,
-	ck.hu@mediatek.com,
-	daniel@ffwll.ch,
-	dri-devel@lists.freedesktop.org,
-	ehristev@collabora.com,
-	kernel@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	nfraprado@collabora.com,
-	p.zabel@pengutronix.de,
-	wenst@chromium.org,
-	Michael Walle <mwalle@kernel.org>
-Subject: Re: [PATCH v7 09/11] drm/mediatek: dp: Add support for embedded DisplayPort aux-bus
-Date: Fri, 25 Aug 2023 14:01:09 +0200
-Message-Id: <20230825120109.3132209-1-mwalle@kernel.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230725073234.55892-10-angelogioacchino.delregno@collabora.com>
-References: <20230725073234.55892-10-angelogioacchino.delregno@collabora.com>
+	id 1qZVr5-005ND5-16;
+	Fri, 25 Aug 2023 12:24:00 +0000
+Received: by mail-qv1-xf2d.google.com with SMTP id 6a1803df08f44-64f444fe7a7so8989546d6.0;
+        Fri, 25 Aug 2023 05:23:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1692966237; x=1693571037;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5AI4j/imUS1MUuQuGpKi9NalKkJwpNjUoHfF8ByAQng=;
+        b=UdvTOpoxY/bhUnWcwMDoPK3kdZpyKVKrnioA961W9+oEUcjNgxrV5Tue0bv+v//qKs
+         DtTT4REBuL39Fb1rY2VvgwZqPWpBaEycuMWT47HyyU8xheDjANC+hJjSXkOexRPpeMsE
+         bYE11Fw4GrJPX1jpt0LVAb7i3hbt1HoMstnhvT4/2YYzb5ItJrp6L1eXl+d6u2ENnyeW
+         cN5pclyTlYuHMZD2ag9nQGV3lw5WrRxyO3uu3bE1XS+n/D/UKlb3yNjI9/T7SZoWyY9v
+         Oy7wMP/Cfn89YnHV9haKI8PJOlcxkEDy81a6qMXacVgbw4FiygZge8pLy3XfPd1WEp/M
+         SA0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692966237; x=1693571037;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=5AI4j/imUS1MUuQuGpKi9NalKkJwpNjUoHfF8ByAQng=;
+        b=YVm1qmO73N8+OTgP3JljDjH+GwvTO2TNtaeTY1SqPFaRT5JlwDr/wBbSp4IT83Pqln
+         eKw0ar3PffYPwBuBijt2ERMsr1APar5o66hs4j+WRWe02qv0Rdr916CqYbc4lqDHFJJ+
+         IVLaECisVv05slet+6u19iuH/SAesJqjmNHEvuw/FCF2kb6VR05+cRgYgBhp4ap3L3aT
+         drZb65djTeW+lDHZHRXhARuMwCMxu63WEl2vrIgF3bmm/iSSdty4svcknXCxP0c0jQ6B
+         I0KeL06VJfRg2elQ4+cduqFg+9xm9jR1xSJLWEu6H59uAy1/TymC6HYnqQSOpk55xr0j
+         0KVg==
+X-Gm-Message-State: AOJu0YwjWe+FRdEAUB8ksPGH/AYCxSK0tW7cr7vpPMpKgqQzLnrfeWws
+	iKhrLYC6rThq4NNXJ0uYA2mypYBsInAwSe9LbrY=
+X-Google-Smtp-Source: AGHT+IGtZ7hZKI6y2+C2LIuIKucinFYqd9TnTYNAMR9h9zLHBa9eEs/JQljbdDYs/MShD6tHQS1vpuVnBnneRKpm9jc=
+X-Received: by 2002:a0c:dc06:0:b0:64f:6625:48f4 with SMTP id
+ s6-20020a0cdc06000000b0064f662548f4mr7140539qvk.5.1692966237149; Fri, 25 Aug
+ 2023 05:23:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <c8c059ce-53a9-3627-8984-dff771dff1de@rock-chips.com> <20230825083918.24334-1-Sharp.Xia@mediatek.com>
+In-Reply-To: <20230825083918.24334-1-Sharp.Xia@mediatek.com>
+From: Wenchao Chen <wenchao.chen666@gmail.com>
+Date: Fri, 25 Aug 2023 20:23:45 +0800
+Message-ID: <CA+Da2qxaCJwZhn0C7VxZzx8TB1VDR_xa2P0cDXUaNA9=YzSJYg@mail.gmail.com>
+Subject: Re: [PATCH 1/1] mmc: Set optimal I/O size when mmc_setip_queue
+To: Sharp.Xia@mediatek.com
+Cc: shawn.lin@rock-chips.com, angelogioacchino.delregno@collabora.com, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, 
+	matthias.bgg@gmail.com, ulf.hansson@linaro.org, wsd_upstream@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_050129_347978_692497F2 
-X-CRM114-Status: GOOD (  23.85  )
+X-CRM114-CacheID: sfid-20230825_052359_385228_42205059 
+X-CRM114-Status: GOOD (  26.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,84 +89,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+On Fri, Aug 25, 2023 at 7:43=E2=80=AFPM <Sharp.Xia@mediatek.com> wrote:
+>
+> On Fri, 2023-08-25 at 16:11 +0800, Shawn Lin wrote:
+> >
+> >  Hi Sharp,
+> >
+> > On 2023/8/25 15:10, Sharp Xia (=E5=A4=8F=E5=AE=87=E5=BD=AC) wrote:
+> > > On Thu, 2023-08-24 at 12:55 +0200, Ulf Hansson wrote:
+> > >>
+> > >> External email : Please do not click links or open attachments
+> > until
+> > >> you have verified the sender or the content.
+> > >>   On Fri, 18 Aug 2023 at 04:45, <Sharp.Xia@mediatek.com> wrote:
+> > >>>
+> > >>> From: Sharp Xia <Sharp.Xia@mediatek.com>
+> > >>>
+> > >>> MMC does not set readahead and uses the default
+> > VM_READAHEAD_PAGES
+> > >>> resulting in slower reading speed.
+> > >>> Use the max_req_size reported by host driver to set the optimal
+> > >>> I/O size to improve performance.
+> > >>
+> > >> This seems reasonable to me. However, it would be nice if you
+> > could
+> > >> share some performance numbers too - comparing before and after
+> > >> $subject patch.
+> > >>
+> > >> Kind regards
+> > >> Uffe
+> > >>
+> > >>>
+> > >>> Signed-off-by: Sharp Xia <Sharp.Xia@mediatek.com>
+> > >>> ---
+> > >>>   drivers/mmc/core/queue.c | 1 +
+> > >>>   1 file changed, 1 insertion(+)
+> > >>>
+> > >>> diff --git a/drivers/mmc/core/queue.c b/drivers/mmc/core/queue.c
+> > >>> index b396e3900717..fc83c4917360 100644
+> > >>> --- a/drivers/mmc/core/queue.c
+> > >>> +++ b/drivers/mmc/core/queue.c
+> > >>> @@ -359,6 +359,7 @@ static void mmc_setup_queue(struct mmc_queue
+> > >> *mq, struct mmc_card *card)
+> > >>>                  blk_queue_bounce_limit(mq->queue,
+> > BLK_BOUNCE_HIGH);
+> > >>>          blk_queue_max_hw_sectors(mq->queue,
+> > >>>                  min(host->max_blk_count, host->max_req_size /
+> > >> 512));
+> > >>> +       blk_queue_io_opt(mq->queue, host->max_req_size);
+> > >>>          if (host->can_dma_map_merge)
+> > >>>                  WARN(!blk_queue_can_use_dma_map_merging(mq-
+> > >queue,
+> > >>>                                                          mmc_dev(
+> > hos
+> > >> t)),
+> > >>> --
+> > >>> 2.18.0
+> > >>>
+> > >
+> > > I test this patch on internal platform(kernel-5.15).
+> >
+> > I patched this one and the test shows me a stable 11% performance
+> > drop.
+> >
+> > Before:
+> > echo 3 > proc/sys/vm/drop_caches && dd if=3D/data/1GB.img of=3D/dev/nul=
+l
+> >
+> > 2048000+0 records in
+> > 2048000+0 records out
+> > 1048576000 bytes (0.9 G) copied, 3.912249 s, 256 M/s
+> >
+> > After:
+> > echo 3 > proc/sys/vm/drop_caches && dd if=3D/data/1GB.img of=3D/dev/nul=
+l
+> > 2048000+0 records in
+> > 2048000+0 records out
+> > 1048576000 bytes (0.9 G) copied, 4.436271 s, 225 M/s
+> >
+> > >
+> > > Before:
+> > > console:/ # echo 3 > /proc/sys/vm/drop_caches
+> > > console:/ # dd if=3D/mnt/media_rw/8031-130D/super.img of=3D/dev/null
+> > > 4485393+1 records in
+> > > 4485393+1 records out
+> > > 2296521564 bytes (2.1 G) copied, 37.124446 s, 59 M/s
+> > > console:/ # cat /sys/block/mmcblk0/queue/read_ahead_kb
+> > > 128
+> > >
+> > > After:
+> > > console:/ # echo 3 > /proc/sys/vm/drop_caches
+> > > console:/ # dd if=3D/mnt/media_rw/8031-130D/super.img of=3D/dev/null
+> > > 4485393+1 records in
+> > > 4485393+1 records out
+> > > 2296521564 bytes (2.1 G) copied, 28.956049 s, 76 M/s
+> > > console:/ # cat /sys/block/mmcblk0/queue/read_ahead_kb
+> > > 1024
+> > >
+> Hi Shawn,
+>
+> What is your readahead value before and after applying this patch?
+>
 
-> For the eDP case we can support using aux-bus on MediaTek DP: this
-> gives us the possibility to declare our panel as generic "panel-edp"
-> which will automatically configure the timings and available modes
-> via the EDID that we read from it.
-> 
-> To do this, move the panel parsing at the end of the probe function
-> so that the hardware is initialized beforehand and also initialize
-> the DPTX AUX block and power both on as, when we populate the
-> aux-bus, the panel driver will trigger an EDID read to perform
-> panel detection.
-> 
-> Last but not least, since now the AUX transfers can happen in the
-> separated aux-bus, it was necessary to add an exclusion for the
-> cable_plugged_in check in `mtk_dp_aux_transfer()` and the easiest
-> way to do this is to simply ignore checking that when the bridge
-> type is eDP.
-
-This patch breaks my board based on the MT8195 which only has one
-DisplayPort output port. I suspect it might also break the mt8195-cherry
-board.
-
-While the mediatek-dpi driver finds the DP port:
-[    3.131645] mediatek-dpi 1c113000.dp-intf: Found bridge node: /soc/dp-tx@1c600000
-
-The probing of the eDP is deferred:
-[   13.289009] platform 1c015000.dp-intf: deferred probe pending
-
-So I don't know why, but to make dp_intf1 work, it seems that dp_intf0
-must be probed successfully. After this patch, the edp (which is
-connected to the dp_intf1) probe will return with an -ENODEV and
-the previous call to devm_drm_bridge_add() will be rolled back.
-
-Before this patch, bridge_add() was called in any case (in the
-error case with next_bridge = NULL) and the mediatek-dpi probed
-like that:
-
-[    3.121011] mediatek-dpi 1c015000.dp-intf: Found bridge node: /soc/edp-tx@1c500000
-[    3.122111] mediatek-dpi 1c113000.dp-intf: Found bridge node: /soc/dp-tx@1c600000
-
-Eventually resulting in a framebuffer device:
-[    4.451081] mediatek-drm mediatek-drm.8.auto: [drm] fb0: mediatekdrmfb frame buffer device
-
-
-NB, somehow this series broke the initial display output. I always have
-to replug the DisplayPort to get some output. I'll dig deeper into that
-later.
-
-..
-
-> @@ -2519,21 +2553,14 @@ static int mtk_dp_probe(struct platform_device *pdev)
->  		return dev_err_probe(dev, mtk_dp->irq,
->  				     "failed to request dp irq resource\n");
->  
-> -	mtk_dp->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
-> -	if (IS_ERR(mtk_dp->next_bridge) &&
-> -	    PTR_ERR(mtk_dp->next_bridge) == -ENODEV)
-> -		mtk_dp->next_bridge = NULL;
-
-In my case, this branch was taken.
-
--michael
-
-> -	else if (IS_ERR(mtk_dp->next_bridge))
-> -		return dev_err_probe(dev, PTR_ERR(mtk_dp->next_bridge),
-> -				     "Failed to get bridge\n");
-> -
->  	ret = mtk_dp_dt_parse(mtk_dp, pdev);
->  	if (ret)
->  		return dev_err_probe(dev, ret, "Failed to parse dt\n");
->  
-> -	drm_dp_aux_init(&mtk_dp->aux);
->  	mtk_dp->aux.name = "aux_mtk_dp";
-> +	mtk_dp->aux.dev = dev;
->  	mtk_dp->aux.transfer = mtk_dp_aux_transfer;
-> +	drm_dp_aux_init(&mtk_dp->aux);
->  
->  	spin_lock_init(&mtk_dp->irq_thread_lock);
->  
+Hi Sharp
+Use "echo 1024 > sys/block/mmcblk0/queue/read_ahead_kb" instead of
+"blk_queue_io_opt(mq->queue, host->max_req_size);"=EF=BC=9F
 
