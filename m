@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C649BC3DA6F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 07:42:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53555C71133
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 07:43:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sU4/V6ndA5R7lvrGvDLIjLvlK6dyYIJGN/XjomZsBm8=; b=UwL3f0olTNpUZNuEjj2t5WDydO
-	OKllYpP0XwhEAXRXJrlZ0Cc51kCkp8BV/gIPBQ1J2B8sM2eLWWfi3b9e2GXVGI68pBRNCIswNN+KA
-	zO6LIuoBneZZa/5wS6ysGXHKz8+yOkvOW/UdT5uyMUXlgFDKzQUM9qmZXL4lAkuSSrdwUbj25P0CQ
-	4uLJ0eD+6I+8sWLbq10k9S1wuPZxLwBS3tEc4nd4TwuaPrOjUTRD1W0KIJ8winautNWaJOa8MNF1W
-	bcf/49nTrLqtJDg6Su7AyoVXLZ7NZcJb+9aGCw2kPQu/rrqhW1VbReaLjtJBKLVq9c7us5Hc3Udq9
-	unv3svjQ==;
+	bh=sU4/V6ndA5R7lvrGvDLIjLvlK6dyYIJGN/XjomZsBm8=; b=U16pXrrcwJ9wlimFspL28d5dBv
+	uyVelttIJxRPQY9lka/0VUW9NUsI8b7db42JLHlCyrgX2spXwJx127m+kxg0ULypFYaYXrXOMhZsq
+	wRTiw0uVLroQNmGPLiDW/SeEDyZE9AKlgKbmyr9sXSLzCT416WaAoj8RaivzgqsiK9+AE2LSOdR2F
+	9gGmOVm5VwrQ7yzG8ZD2cBSsZMNX4QRC4Fwtve9y5Vj9UqT/piLMjyeUxRLDAKQ/s4j0LL4VTu17p
+	jIh/yqbNS8v2fgI/dg/JBCBCEyZ9j5b6qzRDvMbdrYfNlMUr2bdJZ6DqxWqhZACbIw0PxcgBZV8o7
+	ElgSJVNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZRSv-004Yq7-0j;
-	Fri, 25 Aug 2023 07:42:45 +0000
+	id 1qZRU5-004Z0K-2s;
+	Fri, 25 Aug 2023 07:43:57 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZRSr-004YpY-35;
-	Fri, 25 Aug 2023 07:42:43 +0000
-X-UUID: f42ca712431a11ee83ed1395ce914268-20230825
+	id 1qZRU3-004YzS-1Y;
+	Fri, 25 Aug 2023 07:43:56 +0000
+X-UUID: 236bd28c431b11ee83ed1395ce914268-20230825
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
 	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sU4/V6ndA5R7lvrGvDLIjLvlK6dyYIJGN/XjomZsBm8=;
-	b=iHuxotYZaEKndvPVIOALXBfrOPCiYKuNU6N57Arg9zeoYavBHe1jq8d8AGZAxw4/eAYmlYlxk/BbhMslgQawjTfJwQesBN8H3MWMne+hsvwn+5+IDv3HWltCSEXRiGXoGRt0Fum3HQ1tUKJO+6IO94tQbEYebgEijJfLsgMzIgg=;
-X-CID-UNFAMILIAR: 1
+	b=We+D3KgVp1hooiQw9IIah1owpiZCfGeuFa2aVB3IUHZtUbZ+A0POr64tANBE7ySBR3Es+zPAlnXo7qTkNUgF8WNtVph5y9C1ucIRlfYQSdzZn5NGHAumgBoUxAv4OMmIlRFSbl5mJo0r9AmAPmulfE/SsMoo+IdJr9VdFTola3s=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:f359f1f4-203c-4969-9682-7a76f12f9191,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:54,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:54
-X-CID-INFO: VERSION:1.1.31,REQID:f359f1f4-203c-4969-9682-7a76f12f9191,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:54,FILE:0,BULK:0,RULE:Release_HamU,ACTION:
-	release,TS:54
-X-CID-META: VersionHash:0ad78a4,CLOUDID:ea26f0ee-9a6e-4c39-b73e-f2bc08ca3dc5,B
-	ulkID:230824185604G6OMGZAT,BulkQuantity:11,Recheck:0,SF:29|28|16|19|48|64|
+X-CID-O-INFO: VERSION:1.1.31,REQID:e0f01521-d84d-49d3-8307-cc4e1f9a154d,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:51,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:51
+X-CID-INFO: VERSION:1.1.31,REQID:e0f01521-d84d-49d3-8307-cc4e1f9a154d,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:51,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:51
+X-CID-META: VersionHash:0ad78a4,CLOUDID:e9c4bd1f-33fd-4aaa-bb43-d3fd68d9d5ae,B
+	ulkID:230824185604G6OMGZAT,BulkQuantity:17,Recheck:0,SF:29|28|17|19|48|64|
 	102,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,C
 	OL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_FSD,TF_CID_SPAM_OBB,TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,
-	TF_CID_SPAM_USA
-X-UUID: f42ca712431a11ee83ed1395ce914268-20230825
+	TF_CID_SPAM_FAS
+X-UUID: 236bd28c431b11ee83ed1395ce914268-20230825
 Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <sharp.xia@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1887386191; Fri, 25 Aug 2023 00:42:33 -0700
+	with ESMTP id 555836895; Fri, 25 Aug 2023 00:43:53 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 25 Aug 2023 15:42:31 +0800
+ 15.2.1118.26; Fri, 25 Aug 2023 15:43:50 +0800
 Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 25 Aug 2023 15:42:30 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 25 Aug 2023 15:43:50 +0800
 From: <Sharp.Xia@mediatek.com>
 To: <ulf.hansson@linaro.org>
 CC: <Sharp.Xia@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>, <linux-mmc@vger.kernel.org>,
-	<matthias.bgg@gmail.com>, <wsd_upstream@medaitek.com>
+	<matthias.bgg@gmail.com>, <wsd_upstream@mediatek.com>
 Subject: Re: [PATCH 1/1] mmc: Set optimal I/O size when mmc_setip_queue
-Date: Fri, 25 Aug 2023 15:25:36 +0800
-Message-ID: <20230825072536.23602-1-Sharp.Xia@mediatek.com>
+Date: Fri, 25 Aug 2023 15:26:56 +0800
+Message-ID: <20230825072656.23652-1-Sharp.Xia@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <CAPDyKFqN0K=2e4rijUBz=9LXVfhEVvDzNgqXTyTgvaPRK-PBNQ@mail.gmail.com>
 References: <CAPDyKFqN0K=2e4rijUBz=9LXVfhEVvDzNgqXTyTgvaPRK-PBNQ@mail.gmail.com>
@@ -74,7 +73,7 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_004242_047320_61C4B326 
+X-CRM114-CacheID: sfid-20230825_004355_610694_D6F2673D 
 X-CRM114-Status: GOOD (  23.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
