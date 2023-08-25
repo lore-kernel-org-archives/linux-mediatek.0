@@ -4,66 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4492C71133
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 10:28:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58AE2C3DA6F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 10:31:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WR5rJnMPFIZbEiu4b92VXv4anq8fAF3KLyv5xA8v0MY=; b=Iab4inewfHNWfzvMsXEp54aA7b
-	lUeVaAEE7VZdLqJUuBcBmSajxal01rH1HCqDSXsJLfX44RUyKXNgM70ZiQDMhChcu2B/1UEhqLEqD
-	+ANkeaGbSC5L/6Glm52LIn5dmLmJT2QDgU8nNzqrEQSYzdhl9G2pnwsShjtKya5yvq7QcuVdDEt+C
-	mU36oAOMpl4RpYeaelke8tyNsQ8GmpKWf62UmOh/VfX/KJujh8WvaimtHmR6X2tE8NNGJE1sFtuUI
-	kcUxXXU52Ahn7K954HRvKmH4+IhRh9vZoGizIz7VqJ7lMi2E1CQrXVZ7nNQyB/s0B5H0CvDEvlgl3
-	B9dv4tXQ==;
+	bh=MRyGJkSQP5e6iTSWWBikpucf2NSIjhtJ0+BjvJYvg3Q=; b=NBBLelGtn+eGNncQ7SFR9EDJYV
+	eX/dAPec7qEcT+Qtfr/LRBslTYomW9SeZsoN2djwNamiVYKd0eZ2bh5HFkz7zEnrWvuOE7pVJFxEN
+	bJ2v+SexsnciWgyklS1PlY/6B0GfGsA+2zswSI+7TrYgjy8QIU+PmtOtGg2Z/I+FfwGCY4hYVC6Hu
+	rQjBnk2u/V6QqmeXGoqjdKZku1T/RXgm62XiuNazV3iXeZnmWXBbCIsYrWqQonfh/yaDp+IQ2plQh
+	yUVP9m0Zgp/pfYEN84zzmRpeJpaJxNMnYhXZ6XtK+7cwP38RyGvyJRtVvXMOAe9QlC+PXOovDilRn
+	sFqJb9Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZU3Z-004orW-0a;
-	Fri, 25 Aug 2023 10:28:45 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qZU5w-004ozw-0W;
+	Fri, 25 Aug 2023 10:31:12 +0000
+Received: from mgamail.intel.com ([192.55.52.120])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZU3W-004oqz-0l;
-	Fri, 25 Aug 2023 10:28:43 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 26CE562FB9;
-	Fri, 25 Aug 2023 10:28:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1794C433C8;
-	Fri, 25 Aug 2023 10:28:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1692959320;
-	bh=WR5rJnMPFIZbEiu4b92VXv4anq8fAF3KLyv5xA8v0MY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lw9HMWnReyvbebZjrH+X9I3k21rtlkBbHd6UEGDrlEHZvQDizzeEYySgTxpa4CcEf
-	 SlHl/iGJw9lMPXeBNRSL/CKUPO3rKxYCwYghx9JbxpToYYdciemjH1k3GyyUARfYLV
-	 4Dr31J46FVIoi891flKwEG3sC36pPt8JV9dtEFlsgoUcOadPMKuk/AILxASCO7ipyq
-	 4nBP8VjTrUCt1h5KWYxOMfY/9RIfusu74+PaHgCzlfomG57cCExdNtYgRKun2fYm8I
-	 x0n6wT6qwxWdiEw3Cmk63PkyX1CZI/aUwPXaTEY62PryuK0rsEr91GMKfGV1cOAux/
-	 GwrXKrt1PeRzg==
-Date: Fri, 25 Aug 2023 11:28:36 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Trevor Wu <trevor.wu@mediatek.com>
-Cc: lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RESEND,v3 2/3] ASoC: mediatek: common: revise SOF common code
-Message-ID: <ZOiCVCJMaNX9Xhgy@finisterre.sirena.org.uk>
-References: <20230825024935.10878-1-trevor.wu@mediatek.com>
- <20230825024935.10878-3-trevor.wu@mediatek.com>
+	id 1qZU5r-004oz3-06;
+	Fri, 25 Aug 2023 10:31:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1692959466; x=1724495466;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=wVJ88ABD5p0H2+9hwW3zAACiH9v23ThhILL1RUf5G20=;
+  b=if/RvG2DLi4zIIvWWmNdsJD3NO3gYrHSKoY2YRcvvORyGgixB8gEssIy
+   nBA1vvzaOMdsE3Gpzou4YcLWL0oocaeObeekZmNTe0QQoYBhzQJL9RJEj
+   q46z259Tn89GBe92SOdPltsBVRwaln5/A9nWLGVY8bEb0mKsQeTeyplk9
+   WyKBOMaeRlTz82oeeXWWg89kGZX9wjJnabpRKgR2kUIuQEAcuhpA3Ag2E
+   OzleJMy2pL+1XR3l/OcMk31CJmaVvLqe3ePdiYjqkEjXmk03e6xXDp7b+
+   ITiRWa6FPBkAlKl6ujUqdDGm6hfWEW6MbrMjeTx0ooa0q0lWtGopq1m1p
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10812"; a="373554765"
+X-IronPort-AV: E=Sophos;i="6.02,195,1688454000"; 
+   d="scan'208";a="373554765"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Aug 2023 03:31:03 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10812"; a="687259081"
+X-IronPort-AV: E=Sophos;i="6.02,195,1688454000"; 
+   d="scan'208";a="687259081"
+Received: from lkp-server02.sh.intel.com (HELO daf8bb0a381d) ([10.239.97.151])
+  by orsmga003.jf.intel.com with ESMTP; 25 Aug 2023 03:30:50 -0700
+Received: from kbuild by daf8bb0a381d with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qZU5Y-0003Rw-15;
+	Fri, 25 Aug 2023 10:30:48 +0000
+Date: Fri, 25 Aug 2023 18:29:54 +0800
+From: kernel test robot <lkp@intel.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+	tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v5 10/10] media: v4l2: Add mem2mem helpers for
+ DELETE_BUFS ioctl
+Message-ID: <202308251828.fSyIXACx-lkp@intel.com>
+References: <20230824092133.39510-11-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qZGV3Md4Y3CzMmE6"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230825024935.10878-3-trevor.wu@mediatek.com>
-X-Cookie: Give him an evasive answer.
+In-Reply-To: <20230824092133.39510-11-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_032842_340832_B719597D 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20230825_033107_155207_0BE06AA0 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,32 +92,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Benjamin,
 
---qZGV3Md4Y3CzMmE6
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+kernel test robot noticed the following build errors:
 
-On Fri, Aug 25, 2023 at 10:49:34AM +0800, Trevor Wu wrote:
-> Originally, normal dai link fixup callback is overwritten by sof fixup
-> callback on mtk_sof_card_late_probe and it relies on the mapping defined
-> on struct sof_conn_stream.
+[auto build test ERROR on next-20230824]
+[also build test ERROR on v6.5-rc7]
+[cannot apply to linus/master v6.5-rc7 v6.5-rc6 v6.5-rc5]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Angelo?
+url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Rework-offset-cookie-encoding-pattern/20230824-172416
+base:   next-20230824
+patch link:    https://lore.kernel.org/r/20230824092133.39510-11-benjamin.gaignard%40collabora.com
+patch subject: [PATCH v5 10/10] media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
+config: alpha-randconfig-r005-20230825 (https://download.01.org/0day-ci/archive/20230825/202308251828.fSyIXACx-lkp@intel.com/config)
+compiler: alpha-linux-gcc (GCC) 13.2.0
+reproduce: (https://download.01.org/0day-ci/archive/20230825/202308251828.fSyIXACx-lkp@intel.com/reproduce)
 
---qZGV3Md4Y3CzMmE6
-Content-Type: application/pgp-signature; name="signature.asc"
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202308251828.fSyIXACx-lkp@intel.com/
 
------BEGIN PGP SIGNATURE-----
+All errors (new ones prefixed by >>):
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmToglMACgkQJNaLcl1U
-h9Dv3Qf+POxM9sVWwvYGhP7SaK28bRrbWzMUGisxBE2aZby/aauTn/kZqgsiks2R
-Etc8yDkOPbuDz/xyjvRda6ABgbQ7HYduuhcHxOmkfJMaAkRUtFG9kUJ0ILE2+lMV
-CBP+y2Qtn1Zqfp4Fr6Iqq055uAWv70LtGNCeMeWuDBh9Insy2HVGQ04sN0voOKzl
-x5rQNFFrriXLVejqXNaQiqON/h4XqKuSBX+4ev+rGORpy5fzSPamX/+ZnPqYtbeK
-zs0dBIRZF4EcqHWvq5nhJr7VxUg9ROUeTnoXvMYWEtJMK1JsTtM0b8pYmz/3JFxr
-bToxhRrTPnbUzLetGKrgYTRtpJEHaA==
-=bFHg
------END PGP SIGNATURE-----
+>> drivers/media/test-drivers/vim2m.c:963:10: error: 'const struct v4l2_ioctl_ops' has no member named 'vidioc_delete_buf'; did you mean 'vidioc_delete_bufs'?
+     963 |         .vidioc_delete_buf      = v4l2_m2m_ioctl_delete_buf,
+         |          ^~~~~~~~~~~~~~~~~
+         |          vidioc_delete_bufs
+>> drivers/media/test-drivers/vim2m.c:963:35: error: 'v4l2_m2m_ioctl_delete_buf' undeclared here (not in a function); did you mean 'v4l2_m2m_ioctl_delete_bufs'?
+     963 |         .vidioc_delete_buf      = v4l2_m2m_ioctl_delete_buf,
+         |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+         |                                   v4l2_m2m_ioctl_delete_bufs
 
---qZGV3Md4Y3CzMmE6--
+
+vim +963 drivers/media/test-drivers/vim2m.c
+
+   942	
+   943	static const struct v4l2_ioctl_ops vim2m_ioctl_ops = {
+   944		.vidioc_querycap	= vidioc_querycap,
+   945	
+   946		.vidioc_enum_fmt_vid_cap = vidioc_enum_fmt_vid_cap,
+   947		.vidioc_enum_framesizes = vidioc_enum_framesizes,
+   948		.vidioc_g_fmt_vid_cap	= vidioc_g_fmt_vid_cap,
+   949		.vidioc_try_fmt_vid_cap	= vidioc_try_fmt_vid_cap,
+   950		.vidioc_s_fmt_vid_cap	= vidioc_s_fmt_vid_cap,
+   951	
+   952		.vidioc_enum_fmt_vid_out = vidioc_enum_fmt_vid_out,
+   953		.vidioc_g_fmt_vid_out	= vidioc_g_fmt_vid_out,
+   954		.vidioc_try_fmt_vid_out	= vidioc_try_fmt_vid_out,
+   955		.vidioc_s_fmt_vid_out	= vidioc_s_fmt_vid_out,
+   956	
+   957		.vidioc_reqbufs		= v4l2_m2m_ioctl_reqbufs,
+   958		.vidioc_querybuf	= v4l2_m2m_ioctl_querybuf,
+   959		.vidioc_qbuf		= v4l2_m2m_ioctl_qbuf,
+   960		.vidioc_dqbuf		= v4l2_m2m_ioctl_dqbuf,
+   961		.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
+   962		.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
+ > 963		.vidioc_delete_buf	= v4l2_m2m_ioctl_delete_buf,
+   964		.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
+   965	
+   966		.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
+   967		.vidioc_streamoff	= v4l2_m2m_ioctl_streamoff,
+   968	
+   969		.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
+   970		.vidioc_unsubscribe_event = v4l2_event_unsubscribe,
+   971	};
+   972	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
