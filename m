@@ -4,70 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 891DBEE49A5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 20:36:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 798ABC3DA66
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 21:16:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qMlHNQAmrj84QLNJs9voGfOtpXGViYcYrlWjHeVT1rM=; b=MgjuhIwPovp2GJe+yQEtzO1HNE
-	2y5UldDJ4tM/L7teeeBqz3hdDDN44oApBiwVD4ZpxUPyZYB/KVZC1EQIYyT57kn3Gq74MkXMzqLkX
-	Oj1tIUgY/QiCKtXk1XQ7lXLzpU0ZNBRNLBeKLpUKQ0/TLB4+DYwyW+BreaPqWDWUDscWIjkVVBM+N
-	TsdQKM70UvG4yfl4/XIv30EzP+tMBEMxf+bmI1p4h1K2uA95hn1du67YvwDZnXFrD3waRPiQdIkWs
-	zJoc11FEgLNAqR5CeOA07qnXIkJHuVifkoV7ggjgq3ZzNAc6nnnZyQmesx4ztWR519XdKV/vE/1pV
-	uXKGdf4A==;
+	bh=RNGvpBuIiKL3Cl4QX+janawTefek15UWSwqXPvpbHmo=; b=ZENYg8zX+MmfU40K6R4YF4eoQY
+	+SGuvKWBy/oihxqGD8zn65JHE0VZEcrkxmWsvUTsRMXP5mCI78JU5fCqITDw1GPnxQBCDOP3ERBKS
+	h/zoIHLkhf+wRapbrjuoWPREAT8/0b3NedHVlTY3aR4CGs6goIDzEu/K++YXZijeCYCzJBV5uLP+7
+	VNFQLV51mxYPXgYeVl0+UHPgg9W37L1qboYx0Prz5OJpEwG2+QMcMXu/TRbwA5fPBGYWBqRcAo1n7
+	G9EmLygNzlj0T0Gi06ynTImjNYVtldeD5Y5EqrAMiax2aAu52ZTRiO0x9GT4EYSOZtNMUE1/21WYT
+	vdkVu0OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZdXZ-00605m-12;
-	Fri, 25 Aug 2023 20:36:21 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qZe9z-0062L4-0G;
+	Fri, 25 Aug 2023 21:16:03 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZdXV-00604j-1z;
-	Fri, 25 Aug 2023 20:36:19 +0000
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 87956660728A;
-	Fri, 25 Aug 2023 21:36:11 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1692995773;
-	bh=QjsO4cgMmum5UtA5z9YELYtMHr8uDnTg/88rwpYh80s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aK11sHXEA04PzQa+lTQCgvfbFwVZhN5HW5UjDV3lgwlaghtqK+phCi/j7lbEcADf4
-	 O+O1RboM0p8M3pIFp2QUu5mYPMv9XcYrv5PZa5aS21o3rw2eTwzax7VEAVsSJZBZF7
-	 YGgtPYo8uUSYlh8zQiF/8Dk8Q8thisRDbhaYwqzqc9N5Rdl9Gy+dWCov7iFHiMTxmw
-	 BiTXoU9ErDL3V44VATOVoU7czLKQAz09fu0I11dqoWB20tekNJsoZK8bVm/mzC6tMG
-	 hqy6CsLpyiMqkV83WCdmZnzVI5qwt0hvVx8ZeKTC85TONWDZVuBYjqs7xhDwFLLBlw
-	 gUtZvdn92OliA==
-Date: Fri, 25 Aug 2023 16:36:07 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Michael Walle <mwalle@kernel.org>
-Cc: angelogioacchino.delregno@collabora.com, airlied@gmail.com,
-	amergnat@baylibre.com, chunkuang.hu@kernel.org, ck.hu@mediatek.com,
-	daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
-	ehristev@collabora.com, kernel@collabora.com,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
-	p.zabel@pengutronix.de, wenst@chromium.org
-Subject: Re: [PATCH v7 09/11] drm/mediatek: dp: Add support for embedded
- DisplayPort aux-bus
-Message-ID: <00f65d49-497c-4ade-a2f3-7a5b7ad803b6@notapiano>
-References: <20230725073234.55892-10-angelogioacchino.delregno@collabora.com>
- <20230825120109.3132209-1-mwalle@kernel.org>
- <5b438dba-9b85-4448-bc89-08a11ddb822a@notapiano>
- <fc6c054941420ac2d016496ccbeecad4@kernel.org>
+	id 1qZe9v-0062JT-2b
+	for linux-mediatek@lists.infradead.org;
+	Fri, 25 Aug 2023 21:16:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1692998155;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=RNGvpBuIiKL3Cl4QX+janawTefek15UWSwqXPvpbHmo=;
+	b=RblqpsP5As6DNMM0DFb07ibechcPArr9ltecTkvAUIlZ2SoHL89vo1vrNVLOQTpCMey2+B
+	3x8OZLmHnEelev/irEXRtWpX8yMUns6R1e2FIu2i35egjzs8PE8jB72U9mCwSvYLg+DOHZ
+	W7St8O7vkY2lsfIoTg+aW2kYJ/5cNIQ=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-688-xgHcAKJeOyOfJpCl2uPQ8g-1; Fri, 25 Aug 2023 17:15:54 -0400
+X-MC-Unique: xgHcAKJeOyOfJpCl2uPQ8g-1
+Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-76d84238f37so142617085a.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Aug 2023 14:15:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692998154; x=1693602954;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RNGvpBuIiKL3Cl4QX+janawTefek15UWSwqXPvpbHmo=;
+        b=DsqfN1+0rj1F9mXDeOkQYaOPLQsv5HP+lLUR8t57fYzcKn/1skkshnJjTHIqNMhY01
+         hYijDpiOcGjprZ/i7V56M2CT7cyC/rFsC7m8phjlVojJSY0sNHdGqkN3M6yUXydxqZhq
+         cAYTOHYUwFlIJ0KpV8jo9XjVRE33fktJQ9evomdeR1/WfHPZS8Fp6Lm7DaDoubQC18bC
+         D90Oen07Cda9ViHeEYISTm4n7PR0IxSz3vLtd+2fSOXbycdOWk5O1OuKVHScT+nw/pHv
+         1hZEY/6v9Vnpmvg81jfmudE60MjjJWERrZDctgnjd5bosowqcOScp2oUr+7gOwhZjVcy
+         4NGA==
+X-Gm-Message-State: AOJu0YxpmNmnnD4SnEeoJjALKh5XVoKwGyO0HHQ63irJeeXI5iQOYBI4
+	Taw0P6PH9Yj7LeLeNQbSQxuLvL6eLwVu7v2WA22rj2pV4k12DQ6jxRW/gf32jqW35g+iZgNMVJ/
+	zLfBW6M1fyWiOeGQQJ8zbnrql4afrWKzR
+X-Received: by 2002:a05:622a:138c:b0:411:fc77:5863 with SMTP id o12-20020a05622a138c00b00411fc775863mr9742844qtk.34.1692998153923;
+        Fri, 25 Aug 2023 14:15:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFGkTdJ1PESb45xmKP1IyMr0VhacrVsFun4AHO5ghG+vkiiDrIbNOg/oEp2bfPugUDBb4fzHQ==
+X-Received: by 2002:a05:622a:138c:b0:411:fc77:5863 with SMTP id o12-20020a05622a138c00b00411fc775863mr9742803qtk.34.1692998153629;
+        Fri, 25 Aug 2023 14:15:53 -0700 (PDT)
+Received: from localhost (ip98-179-76-75.ph.ph.cox.net. [98.179.76.75])
+        by smtp.gmail.com with ESMTPSA id i3-20020ae9ee03000000b0076745f352adsm759948qkg.59.2023.08.25.14.15.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Aug 2023 14:15:53 -0700 (PDT)
+Date: Fri, 25 Aug 2023 14:15:51 -0700
+From: Jerry Snitselaar <jsnitsel@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Bjorn Andersson <andersson@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Christophe Leroy <christophe.leroy@csgroup.eu>, Gerald Schaefer <gerald.schaefer@linux.ibm.com>, 
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>, 
+	Kevin Tian <kevin.tian@intel.com>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+	Russell King <linux@armlinux.org.uk>, linuxppc-dev@lists.ozlabs.org, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
+	Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, 
+	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>, 
+	Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>, 
+	Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Lu Baolu <baolu.lu@linux.intel.com>, 
+	Dmitry Osipenko <digetx@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
+	Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle <schnelle@linux.ibm.com>, 
+	Steven Price <steven.price@arm.com>, Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v7 04/24] iommu: Add IOMMU_DOMAIN_PLATFORM for S390
+Message-ID: <qlgsyftnpb55wn6jcsdx27u3vnc66h5dmtcuelw4y5wgk3vorf@ctgykaa5wp7d>
+References: <0-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+ <4-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+In-Reply-To: <4-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <fc6c054941420ac2d016496ccbeecad4@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_133617_989648_1240FCC0 
-X-CRM114-Status: GOOD (  37.28  )
+X-CRM114-CacheID: sfid-20230825_141559_912205_5AF58320 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,189 +119,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 25, 2023 at 05:42:59PM +0200, Michael Walle wrote:
-> Hi Nicolas,
+On Wed, Aug 23, 2023 at 01:47:18PM -0300, Jason Gunthorpe wrote:
+> The PLATFORM domain will be set as the default domain and attached as
+> normal during probe. The driver will ignore the initial attach from a NULL
+> domain to the PLATFORM domain.
 > 
-> > > > For the eDP case we can support using aux-bus on MediaTek DP: this
-> > > > gives us the possibility to declare our panel as generic "panel-edp"
-> > > > which will automatically configure the timings and available modes
-> > > > via the EDID that we read from it.
-> > > >
-> > > > To do this, move the panel parsing at the end of the probe function
-> > > > so that the hardware is initialized beforehand and also initialize
-> > > > the DPTX AUX block and power both on as, when we populate the
-> > > > aux-bus, the panel driver will trigger an EDID read to perform
-> > > > panel detection.
-> > > >
-> > > > Last but not least, since now the AUX transfers can happen in the
-> > > > separated aux-bus, it was necessary to add an exclusion for the
-> > > > cable_plugged_in check in `mtk_dp_aux_transfer()` and the easiest
-> > > > way to do this is to simply ignore checking that when the bridge
-> > > > type is eDP.
-> > > 
-> > > This patch breaks my board based on the MT8195 which only has one
-> > > DisplayPort output port. I suspect it might also break the
-> > > mt8195-cherry
-> > > board.
-> > 
-> > Do you mean that your board does not have an internal display, only the
-> > one
-> > output port? If so, why are you enabling the nodes for the internal
-> > display path
-> > in your board specific DT?
+> After this, the PLATFORM domain's attach_dev will be called whenever we
+> detach from an UNMANAGED domain (eg for VFIO). This is the same time the
+> original design would have called op->detach_dev().
 > 
-> Well, that depends. The board actually has an eDP socket, but because we
-> are an OEM, there might be no display connected to it. (And I haven't
-> tried it yet). It should probably go into an own device tree or overlay
-> if it is used. I agree. But it looked like it was auto-detectable (it
-> even has a HDP pin on the eDP socket, not sure about its use case..)
-
-Right, given it has an HPD pin it should be possible to hotplug. Although
-hotplugging a panel to eDP doesn't seem common, so Angelo even removed HPD
-irq support for eDP in patch 11 of this series.
-
-The unit I have is a mt8195-cherry-tomato, a Chromebook, so I couldn't really
-test hotplugging the internal display.
-
+> This is temporary until the S390 dma-iommu.c conversion is merged.
 > 
-> But the real reason I've enabled it was because I'll get an kernel
-> oops otherwise. I thought it might be some quirk that you'll need both,
-> because eDP will register even if theres no display - as you've
-> mentioned below.
-> 
-> Here's the splat:
-> [    3.237064] mediatek-drm mediatek-drm.10.auto: bound 1c110000.vpp-merge
-> (ops mtk_disp_merge_component_ops)
-> [    3.238274] mediatek-drm mediatek-drm.8.auto: Not creating crtc 0 because
-> component 8 is disabled or missing
-> [    3.239504] mediatek-drm mediatek-drm.8.auto: Not creating crtc 0 because
-> component 9 is disabled or missing
-> [    3.240741] Unable to handle kernel NULL pointer dereference at virtual
-> address 00000000000004a0
-> [    3.241841] Mem abort info:
-> [    3.242192]   ESR = 0x0000000096000004
-> [    3.242662]   EC = 0x25: DABT (current EL), IL = 32 bits
-> [    3.243328]   SET = 0, FnV = 0
-> [    3.243710]   EA = 0, S1PTW = 0
-> [    3.244104]   FSC = 0x04: level 0 translation fault
-> [    3.244717] Data abort info:
-> [    3.245078]   ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
-> [    3.245765]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
-> [    3.246398]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
-> [    3.247063] [00000000000004a0] user address but active_mm is swapper
-> [    3.247860] Internal error: Oops: 0000000096000004 [#1] SMP
-> [    3.248559] Modules linked in:
-> [    3.248945] CPU: 4 PID: 11 Comm: kworker/u16:0 Not tainted
-> 6.5.0-rc7-next-20230821+ #2225
-> [    3.249970] Hardware name: Kontron 3.5"-SBC-i1200 (DT)
-> [    3.250614] Workqueue: events_unbound deferred_probe_work_func
-> [    3.251347] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS
-> BTYPE=--)
-> [    3.252220] pc : mtk_drm_crtc_dma_dev_get+0x8/0x18
-> [    3.252824] lr : mtk_drm_bind+0x458/0x558
-> [    3.253326] sp : ffff800082b23a20
-> [    3.253741] x29: ffff800082b23a20 x28: ffff000002c78880 x27:
-> ffff8000816466d0
-> [    3.254635] x26: ffff000002c6f010 x25: 0000000000000003 x24:
-> 0000000000000000
-> [    3.255529] x23: ffff000002c78880 x22: 0000000000000002 x21:
-> 0000000000000000
-> [    3.256423] x20: ffff000006516800 x19: ffff000002c78880 x18:
-> ffffffffffffffff
-> [    3.257317] x17: 6f63206573756163 x16: 6562203020637472 x15:
-> 6320676e69746165
-> [    3.258211] x14: 726320746f4e203a x13: 676e697373696d20 x12:
-> 726f2064656c6261
-> [    3.259106] x11: 7369642073692039 x10: ffff80008275c0c0 x9 :
-> ffff80008091ebf8
-> [    3.260000] x8 : 00000000ffffefff x7 : ffff80008275c0c0 x6 :
-> 80000000fffff000
-> [    3.260895] x5 : 000000000000bff4 x4 : 0000000000000000 x3 :
-> ffff000006516ae0
-> [    3.261789] x2 : ffff000006516ae0 x1 : 0000000000000000 x0 :
-> 0000000000000000
-> [    3.262684] Call trace:
-> [    3.262991]  mtk_drm_crtc_dma_dev_get+0x8/0x18
-> [    3.263549]  try_to_bring_up_aggregate_device+0x16c/0x1e0
-> [    3.264227]  __component_add+0xac/0x180
-> [    3.264708]  component_add+0x1c/0x30
-> [    3.265158]  mtk_disp_rdma_probe+0x17c/0x270
-> [    3.265695]  platform_probe+0x70/0xd0
-> [    3.266155]  really_probe+0x150/0x2c0
-> [    3.266615]  __driver_probe_device+0x80/0x140
-> [    3.267162]  driver_probe_device+0x44/0x170
-> [    3.267687]  __device_attach_driver+0xc0/0x148
-> [    3.268245]  bus_for_each_drv+0x88/0xf0
-> [    3.268727]  __device_attach+0xa4/0x198
-> [    3.269208]  device_initial_probe+0x1c/0x30
-> [    3.269732]  bus_probe_device+0xb4/0xc0
-> [    3.270214]  deferred_probe_work_func+0x90/0xd0
-> [    3.270783]  process_one_work+0x144/0x3a0
-> [    3.271289]  worker_thread+0x2ac/0x4b8
-> [    3.271761]  kthread+0xec/0xf8
-> [    3.272145]  ret_from_fork+0x10/0x20
-> [    3.272597] Code: 814f7858 ffff8000 aa1e03e9 d503201f (f9425000)
-> [    3.273361] ---[ end trace 0000000000000000 ]---
+> Tested-by: Heiko Stuebner <heiko@sntech.de>
+> Tested-by: Niklas Schnelle <schnelle@linux.ibm.com>
+> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 
-I tried reproducing this on mt8192-asurada-spherion and mt8195-cherry-tomato but
-wasn't able to. However, I did see another issue
+Reviewed-by: Jerry Snitselaar <jsnitsel@redhat.com>
 
-[    3.183314] mediatek-drm mediatek-drm.9.auto: Not creating crtc 0 because component 14 is disabled or missing
-[    3.199404] Bogus possible_crtcs: [ENCODER:31:TMDS-31] possible_crtcs=0x2 (full crtc mask=0x1)
-[    3.208081] WARNING: CPU: 6 PID: 68 at drivers/gpu/drm/drm_mode_config.c:626 drm_mode_config_validate+0x1c8/0x548
-[    3.224789] Modules linked in:
-[    3.227838] CPU: 6 PID: 68 Comm: kworker/u16:1 Not tainted 6.5.0-rc3-next-20230728+ #100
-[    3.235918] Hardware name: Google Spherion (rev0 - 3) (DT)
-[    3.241391] Workqueue: events_unbound deferred_probe_work_func
-[    3.247216] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-[    3.254167] pc : drm_mode_config_validate+0x1c8/0x548
-[    3.259209] lr : drm_mode_config_validate+0x1c8/0x548
-[    3.264250] sp : ffff8000804e3970
-[    3.267552] x29: ffff8000804e3980 x28: ffff4841827c1880 x27: 0000000000000001
-[    3.274677] x26: 0000000000000001 x25: ffff4841825f5ab0 x24: ffff4841825f5ab0
-[    3.281801] x23: ffff484182469880 x22: ffffa80dbfbdde28 x21: ffffa80dbfbddba8
-[    3.288925] x20: ffff4841825f5800 x19: ffff4841825f5aa8 x18: 0000000000000030
-[    3.296050] x17: 6628203278303d73 x16: 637472635f656c62 x15: 6973736f70205d31
-[    3.303174] x14: 332d53444d543a31 x13: 293178303d6b7361 x12: 6d2063747263206c
-[    3.310298] x11: 6c75662820327830 x10: 3d73637472635f65 x9 : ffffa80dbdd3805c
-[    3.317422] x8 : 455b203a73637472 x7 : 205d343034393931 x6 : ffffa80dbe6365d8
-[    3.324546] x5 : ffffa80dc0fcc48f x4 : ffffa80dc0049b40 x3 : 00000000ffffffff
-[    3.331671] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff4841809d5e80
-[    3.338796] Call trace:
-[    3.341232]  drm_mode_config_validate+0x1c8/0x548
-[    3.345924]  drm_dev_register+0x198/0x248
-[    3.345931]  mtk_drm_bind+0x2cc/0x590
-[    3.345936]  try_to_bring_up_aggregate_device+0x1f8/0x308
-[    3.345940]  __component_add+0xac/0x1a0
-[    3.345942]  component_add+0x1c/0x30
-[    3.345944]  mtk_dpi_probe+0x1c0/0x300
-[    3.358100]  platform_probe+0x70/0xe8
-[    3.358106]  really_probe+0x18c/0x3d8
-[    3.358108]  __driver_probe_device+0x84/0x180
-[    3.358109]  driver_probe_device+0x44/0x120
-[    3.358111]  __device_attach_driver+0xc4/0x168
-[    3.358113]  bus_for_each_drv+0x8c/0xf0
-[    3.367146]  __device_attach+0xb0/0x1e8
-[    3.367148]  device_initial_probe+0x1c/0x30
-[    3.367150]  bus_probe_device+0xb4/0xc0
-[    3.367153]  deferred_probe_work_func+0xa4/0x100
-[    3.367155]  process_one_work+0x1ec/0x480
-[    3.374543]  worker_thread+0x74/0x448
-[    3.374545]  kthread+0x120/0x130
-[    3.374548]  ret_from_fork+0x10/0x20
-
-The mtk-dpi driver populates its encoder's possible_crtcs from the result of
-mtk_drm_find_possible_crtc_by_comp(), and this function assumes the CRTC for the
-main path will always have ID 0, and the external path ID 1, but when the
-main path components are disabled, the external path CRTC becomes the one with
-ID 0.
-
-So we'd need to make that function return the crtc id dynamically based on
-whether the components for each path are enabled or not.
-
-With that function hacked to force the right crtc ID, I was able to have a
-working external DP, with the eDP pipeline disabled on both mt8192 and mt8195.
-
-Thanks,
-Nícolas
 
