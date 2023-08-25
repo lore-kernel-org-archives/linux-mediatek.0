@@ -4,97 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3364EC6787B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 18:08:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB606C3DA6F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 18:15:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iHLeDC1m8DLWKuV+osfpRI9zBnwrLabWLAMJV/ih81A=; b=eYuWDyKFflngAzC29mDAYDHq8V
-	MWA8FKKbMhR9oHo/gDyLRCQ1IxuinsdX7S3meOguTj2c4AsRi75ZbcAXkEx/H1jDBTreRD991JPq2
-	CKcWY+8HuXkmCWhCqSpXq71BHwm+8rMvzERMmbB0jSrfoaTeF00YwNqcXJey8fPbnsALMlJa3nLYq
-	6bHrwfwxuKAwv4i2wwvRK2lcn5Jh0qJYL/VOio9UUFgJ8lVBGwGSs5UQDs4QmptOigYug3859FaDA
-	2rXtzvp3baCT7URloPTJN7nfKOfrx57IdNp4mHxsBWIsyEz80HkuqrGt1CnELKRaPee/ewAzdrptK
-	kU0W4kIg==;
+	bh=Z/FGw8WTQcGNaVQqRBSGTtSHwW9E63Wb1NNcuS9eK8s=; b=YSgHHBBMdUKM0Y8WT1nhSgFgTZ
+	Bxd6zHT4WK+kI6v+WX7yW4BEk1FztrlycVWSxRzhkeiS9g17qxbgUFjBenwW7gxzwgB00PXiDF5Pr
+	I1JzKEtAtOykVPERyKEWBCrQIOGH8/U77ftlUkWWwMbwSnwGvYb8T2ZIN0hfRAEcD8spcAmAYTJ/x
+	SXm7xctwxzxZRXz9esyFayZvn6k0u1mtHwW8QLf8ejs/e9nMUqY5fV8DteG8dsbf8vRrb+qV2pzZq
+	rR81gflos5xKMDRUzWU2E24M/tIcYrOFPlIoYt3/UwmOgNQuFg2V6rIqqEd6ty9haa/+f2iwGJAgL
+	YcMMbYdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZbEZ-005q22-1m;
-	Fri, 25 Aug 2023 18:08:35 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1qZbLY-005qWO-1F;
+	Fri, 25 Aug 2023 18:15:48 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZbEW-005q1P-1t
-	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Aug 2023 18:08:34 +0000
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 37PCOFEh022806;
-	Fri, 25 Aug 2023 18:08:12 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=iHLeDC1m8DLWKuV+osfpRI9zBnwrLabWLAMJV/ih81A=;
- b=gOAPaNsuZfR1tgXelpsaNKjo4+bZwJppu5Ubb82WSkN5zV+bemkWxD0hVjM/+s9RYu0E
- /mWE8PqayRmwxY2TzwwNa2E16JKvRO9daBWPUXY9eHNlAeKwj63QD20HSVloMtJUJ8/G
- viRixrYunDknGj0JZEZM7eScrdRxLcxAWuYeWacl2N3e3f5ZuRYtDHNkEy1mX/azSc6w
- TD/6+pC83ZQNNNhA2pjtobwrNlAiuCOjcoNVu2TkW5bE1UEx32cZTlk2ktKVJHnqu6AK
- F+oloPMYZiKBZvHeM66xDjH4/6f3FQ3p41+ioYj5odhDtwPQdcw17sUgdJ++PRLxlRpx cQ== 
-Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3spmtxsjfe-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 25 Aug 2023 18:08:12 +0000
-Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
-	by NASANPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 37PI8BG9011710
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 25 Aug 2023 18:08:11 GMT
-Received: from [10.48.247.99] (10.49.16.6) by nasanex01a.na.qualcomm.com
- (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Fri, 25 Aug
- 2023 11:08:10 -0700
-Message-ID: <e94f5d18-ced0-458d-8e2c-b94a4196c442@quicinc.com>
-Date: Fri, 25 Aug 2023 11:08:09 -0700
+	id 1qZbLT-005qUV-0o;
+	Fri, 25 Aug 2023 18:15:45 +0000
+Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-5007c8308c3so1877847e87.0;
+        Fri, 25 Aug 2023 11:15:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1692987339; x=1693592139;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Z/FGw8WTQcGNaVQqRBSGTtSHwW9E63Wb1NNcuS9eK8s=;
+        b=OxzC34VYQ/lOuAIJBv07wp6fPeLehLOAi1mU0uJLZSHMKrmj+EwYKRbIIaTKzGM0OD
+         FELyHBv8icVGpooaDMH3pX56dJa2Wwqw0V1UOotJHLaAiAGC1WhZgkjwzjb+PigyH2OO
+         qFu/a5ucbI3kLN3Rx4zRSLPky+hrc1dteGIHl/xz3OLfM3wEhzCkuhFy8oZFBdcQUsIl
+         CetyjZ4N7p2FqAbZhzJxrFNfPtCayDJZ+fEtxSGfa3e621rdXxWjQR+5/+GD5oFVXLKu
+         NBQYlM4Z037DJO07cmUfuVuyUIkjCbxMv2CfK1LjPyWxZWSdiHITq0jJPn22qbsZ/miw
+         X1YQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692987339; x=1693592139;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Z/FGw8WTQcGNaVQqRBSGTtSHwW9E63Wb1NNcuS9eK8s=;
+        b=dOM+HwmnRG9ykjDyRDZkgY7CQTjnW67Y4HRA4cy+7RQOaOWqZbW04N0dA7wyJHYRzi
+         ikVsOCPaTCaH9028cmnfHPItDeKfybm5js46DiqCKqPPSuAswPnZtBjVjQbegE1mq9qG
+         kxH6Q1QOpe91DLiRQ8IqVOdMJ/jxZZr5bdRD8WUfThZQeRWYvgqU+g4Nu9P+k+9xosR/
+         Imeo8qWf8BPBXf2Qy/hjKEeKtWc4uurNEsLaExyDmvQyM1DT4yBxZ6haNZR0tH84R8rl
+         6wzbJYproAOUi0R3fftCffC1VFTKMBRSwhDZWFUFUq/vP9LMg99zRsOZkdBWuWJ7ZVjD
+         NnSA==
+X-Gm-Message-State: AOJu0YybMlF4eIy7uc5wtRYeBfJTPIpytofAvyulVEmIxlaqRaWbupem
+	MXQYVNodtVt6wqFW4DyLMWEBnLkUFeoaH2qB3lE=
+X-Google-Smtp-Source: AGHT+IHpRCVvS7diQdycBT5DGX0/HZUcX9oDLtQP3DT3UbV1oJ30vCnXpa+uG6GgEKk5nHZkYu+C35njfaJ8/ELaD5A=
+X-Received: by 2002:ac2:5f85:0:b0:500:9860:f8a with SMTP id
+ r5-20020ac25f85000000b0050098600f8amr5130105lfe.4.1692987338930; Fri, 25 Aug
+ 2023 11:15:38 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/6] wifi: mac80211: export ieee80211_tpt_led_trig_tx/rx
- for driver
-Content-Language: en-US
-To: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
-        Johannes Berg <johannes.berg@intel.com>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
-        Ryder Lee
-	<ryder.lee@mediatek.com>,
-        Shayne Chen <shayne.chen@mediatek.com>,
-        Evelyn Tsai
-	<evelyn.tsai@mediatek.com>,
-        Money Wang <money.wang@mediatek.com>,
-        Peter Chiu
-	<chui-hao.chiu@mediatek.com>,
-        Benjamin Lin <benjamin-jw.lin@mediatek.com>,
-        <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-References: <09f0cb7f314a08eddb77298411d965ad30a847bb.1692983967.git.yi-chia.hsieh@mediatek.com>
- <8d18b7ac7fc394c310c0f2730da9ee7e955a9860.1692983967.git.yi-chia.hsieh@mediatek.com>
-From: Jeff Johnson <quic_jjohnson@quicinc.com>
-In-Reply-To: <8d18b7ac7fc394c310c0f2730da9ee7e955a9860.1692983967.git.yi-chia.hsieh@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.49.16.6]
-X-ClientProxiedBy: nalasex01b.na.qualcomm.com (10.47.209.197) To
- nasanex01a.na.qualcomm.com (10.52.223.231)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: ksw7ild0_Q2i6DqlOvjdeIeQm3t1iOpM
-X-Proofpoint-GUID: ksw7ild0_Q2i6DqlOvjdeIeQm3t1iOpM
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-08-25_16,2023-08-25_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1011
- lowpriorityscore=0 malwarescore=0 spamscore=0 adultscore=0 mlxlogscore=999
- mlxscore=0 priorityscore=1501 suspectscore=0 bulkscore=0 impostorscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2308100000 definitions=main-2308250162
+References: <CAF6AEGsdR4XMQ73mwNEE-fntPFLbQrxmzdoWchjReoVXKexdVw@mail.gmail.com>
+ <3f08-64e8c380-3-f083520@11689262>
+In-Reply-To: <3f08-64e8c380-3-f083520@11689262>
+From: Rob Clark <robdclark@gmail.com>
+Date: Fri, 25 Aug 2023 11:15:26 -0700
+Message-ID: <CAF6AEGtzfEFpr610c8TdLAH_zEYEtXzt61ywQTcFbvCOj-G9-A@mail.gmail.com>
+Subject: Re: [PATCH 2/6] drm: ci: Force db410c to host mode
+To: Helen Mae Koike Fornazier <helen.koike@collabora.com>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>, 
+	Vignesh Raman <vignesh.raman@collabora.com>, dri-devel@lists.freedesktop.org, 
+	emma@anholt.net, linux-doc@vger.kernel.org, david.heidelberg@collabora.com, 
+	linux-amlogic@lists.infradead.org, jbrunet@baylibre.com, robdclark@google.com, 
+	corbet@lwn.net, khilman@baylibre.com, sergi.blanch.torne@collabora.com, 
+	gustavo.padovan@collabora.com, linux-rockchip@lists.infradead.org, 
+	daniels@collabora.com, martin.blumenstingl@googlemail.com, 
+	robclark@freedesktop.org, anholt@google.com, 
+	linux-mediatek@lists.infradead.org, mripard@kernel.org, 
+	matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, 
+	angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org, 
+	guilherme.gallo@collabora.com, linux-kernel@vger.kernel.org, 
+	tzimmermann@suse.de
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_110832_762565_6C2BB8EF 
-X-CRM114-Status: GOOD (  26.89  )
+X-CRM114-CacheID: sfid-20230825_111543_290091_D311C262 
+X-CRM114-Status: GOOD (  48.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,163 +99,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/25/2023 10:47 AM, Yi-Chia Hsieh wrote:
-> Whenever the H/W path is enabled and traffic is in the binding state,
-> mac80211 is not aware of the traffic. Consequently, the LED does not
-> blink for that reason.
-> 
-> The ieee80211_tpt_led_trig_tx/rx functions are exported for the driver
-> so that we can report the tx and rx bytes from the driver when
-> the H/W path is being used.
-> 
-> Signed-off-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-> ---
->   include/net/mac80211.h | 17 +++++++++++++++++
->   net/mac80211/led.c     | 18 ++++++++++++++++++
->   net/mac80211/led.h     | 18 ------------------
->   net/mac80211/rx.c      |  2 +-
->   net/mac80211/tx.c      |  4 ++--
->   5 files changed, 38 insertions(+), 21 deletions(-)
-> 
-> diff --git a/include/net/mac80211.h b/include/net/mac80211.h
-> index 3a8a2d2c58c3..53804822dc8d 100644
-> --- a/include/net/mac80211.h
-> +++ b/include/net/mac80211.h
-> @@ -4729,6 +4729,8 @@ __ieee80211_create_tpt_led_trigger(struct ieee80211_hw *hw,
->   				   unsigned int flags,
->   				   const struct ieee80211_tpt_blink *blink_table,
->   				   unsigned int blink_table_len);
-> +void __ieee80211_tpt_led_trig_tx(struct ieee80211_hw *hw, int bytes);
-> +void __ieee80211_tpt_led_trig_rx(struct ieee80211_hw *hw, int bytes);
+On Fri, Aug 25, 2023 at 8:06=E2=80=AFAM Helen Mae Koike Fornazier
+<helen.koike@collabora.com> wrote:
+>
+> On Friday, August 25, 2023 11:41 -03, Rob Clark <robdclark@gmail.com> wro=
+te:
+>
+> > On Fri, Aug 25, 2023 at 7:34=E2=80=AFAM Helen Mae Koike Fornazier
+> > <helen.koike@collabora.com> wrote:
+> > >
+> > > On Friday, August 25, 2023 11:30 -03, Rob Clark <robdclark@gmail.com>=
+ wrote:
+> > >
+> > > > On Fri, Aug 25, 2023 at 6:56=E2=80=AFAM Jani Nikula <jani.nikula@li=
+nux.intel.com> wrote:
+> > > > >
+> > > > > On Fri, 25 Aug 2023, Vignesh Raman <vignesh.raman@collabora.com> =
+wrote:
+> > > > > > Force db410c to host mode to fix network issue which results in=
+ failure
+> > > > > > to mount root fs via NFS.
+> > > > > > See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a6=
+29b8c15c80a54dda510743cefd1c4b65b8
+> > > > > >
+> > > > > > Since this fix is not sent upstream, add it to build.sh script
+> > > > > > before building the kernel and dts. Better approach would be
+> > > > > > to use devicetree overlays.
+> > > > > >
+> > > > > > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> > > > > > ---
+> > > > > >  drivers/gpu/drm/ci/build.sh | 4 ++++
+> > > > > >  1 file changed, 4 insertions(+)
+> > > > > >
+> > > > > > diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/b=
+uild.sh
+> > > > > > index 7b014287a041..c39834bd6bd7 100644
+> > > > > > --- a/drivers/gpu/drm/ci/build.sh
+> > > > > > +++ b/drivers/gpu/drm/ci/build.sh
+> > > > > > @@ -70,6 +70,10 @@ if [ -z "$CI_MERGE_REQUEST_PROJECT_PATH" ]; =
+then
+> > > > > >      fi
+> > > > > >  fi
+> > > > > >
+> > > > > > +# Force db410c to host mode to fix network issue which results=
+ in failure to mount root fs via NFS.
+> > > > > > +# See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb7=
+2a629b8c15c80a54dda510743cefd1c4b65b8
+> > > > > > +sed -i '/&usb {/,/status =3D "okay";/s/status =3D "okay";/&\n\=
+tdr_mode =3D "host";/' arch/arm64/boot/dts/qcom/apq8016-sbc.dts
+> > > > > > +
+> > > > >
+> > > > > It seems like a really bad idea to me to have the CI build modify=
+ the
+> > > > > source tree before building.
+> > > > >
+> > > > > The kernel being built will have a dirty git repo, and the localv=
+ersion
+> > > > > will have -dirty in it.
+> > > > >
+> > > > > I think it would be better to do out-of-tree builds and assume th=
+e
+> > > > > source is read-only.
+> > > >
+> > > > We have the ${target_branch}-external-fixes mechanism to merge
+> > > > necessary changes before building the kernel for CI.  Which is
+> > > > necessary for a couple of reasons:
+> > >
+> > > Should we create an official topic/drm-ci-external-fixes branch ?
+> >
+> > Hmm, maybe.. I guess as we expand this to more driver trees, and want
+> > to be able to re-run CI in the drm tree after merges to
+> > drm-next/drm-fixes, we maybe want to have central
+> > drm-next-external-fixes and drm-fixes-external-fixes.  I guess we can
+> > keep those based on drm-next and drm-fixes?  And if there would be
+> > conflicts because, say, ${driver}-next is behind drm-next, then
+> > ${driver}-next could be rebased on drm-next?
+> >
+>
+> tbh this is one of the reasons I would prefer in-code fixes instead of
+> commits on a -external-fixes branch, since it seems things start to becom=
+e
+> complex to manage all different trees for people executing ci tests
+> on different history points, but I don't oppose going for -external-fixes
+> either.
 
-suggest these should be in led.h since they are local to mac80211 and 
-should not be directly invoked by clients of mac80211
+If by in-code you mean in the same branch that we are running CI on, I
+think that will be difficult to do without having force-pushes later
+to remove the unrelated patch.
 
->   #endif
->   /**
->    * ieee80211_get_tx_led_name - get name of TX LED
-> @@ -4839,6 +4841,21 @@ ieee80211_create_tpt_led_trigger(struct ieee80211_hw *hw, unsigned int flags,
->   #endif
->   }
->   
-> +static inline void
-> +ieee80211_tpt_led_trig_tx(struct ieee80211_hw *hw, int bytes)
-> +{
-> +#ifdef CPTCFG_MAC80211_LEDS
+It doesn't happen every release, but sometimes there is an issue
+requiring a fix outside of drm, which really shouldn't land via
+drm-next.  In some cases even, we might need a temporary hack fix when
+a proper solution is still being worked out.  Since the kernel
+development is unlike mesa, where we have a single main branch and CI
+runs on every change entering that main branch, we are going to have
+to deal occasionally with breakage that comes in via another tree that
+isn't running CI.  But IME so far with msm-next-external-fixes, it
+hasn't been so bad.. I haven't even had to rebase it every kernel
+cycle.  (If the fix cherry-picked into -external-fixes from a previous
+release cycle already exists in msm-next then the merge of that commit
+is a no-op.)
 
-why isn't this using CONFIG_MAC80211_LEDS??
+BR,
+-R
 
-> +	__ieee80211_tpt_led_trig_tx(hw, bytes);
-> +#endif
-> +}
-> +
-> +static inline void
-> +ieee80211_tpt_led_trig_rx(struct ieee80211_hw *hw, int bytes)
-> +{
-> +#ifdef CPTCFG_MAC80211_LEDS
-> +	__ieee80211_tpt_led_trig_rx(hw, bytes);
-> +#endif
-> +}
->   /**
->    * ieee80211_unregister_hw - Unregister a hardware device
->    *
-> diff --git a/net/mac80211/led.c b/net/mac80211/led.c
-> index 2dc732147e85..af03a2ef5c6a 100644
-> --- a/net/mac80211/led.c
-> +++ b/net/mac80211/led.c
-> @@ -319,6 +319,24 @@ __ieee80211_create_tpt_led_trigger(struct ieee80211_hw *hw,
->   }
->   EXPORT_SYMBOL(__ieee80211_create_tpt_led_trigger);
->   
-> +void __ieee80211_tpt_led_trig_tx(struct ieee80211_hw *hw, int bytes)
-> +{
-> +	struct ieee80211_local *local = hw_to_local(hw);
-> +
-> +	if (atomic_read(&local->tpt_led_active))
-> +		local->tpt_led_trigger->tx_bytes += bytes;
-> +}
-> +EXPORT_SYMBOL(__ieee80211_tpt_led_trig_tx);
-> +
-> +void __ieee80211_tpt_led_trig_rx(struct ieee80211_hw *hw, int bytes)
-> +{
-> +	struct ieee80211_local *local = hw_to_local(hw);
-> +
-> +	if (atomic_read(&local->tpt_led_active))
-> +		local->tpt_led_trigger->rx_bytes += bytes;
-> +}
-> +EXPORT_SYMBOL(__ieee80211_tpt_led_trig_rx);
-> +
-
-why are you making these exported implementations instead of keeping 
-them as inline in led.h?
-
->   static void ieee80211_start_tpt_led_trig(struct ieee80211_local *local)
->   {
->   	struct tpt_led_trigger *tpt_trig = local->tpt_led_trigger;
-> diff --git a/net/mac80211/led.h b/net/mac80211/led.h
-> index d25f13346b82..98db4356d0de 100644
-> --- a/net/mac80211/led.h
-> +++ b/net/mac80211/led.h
-> @@ -66,21 +66,3 @@ static inline void ieee80211_mod_tpt_led_trig(struct ieee80211_local *local,
->   {
->   }
->   #endif
-> -
-> -static inline void
-> -ieee80211_tpt_led_trig_tx(struct ieee80211_local *local, int bytes)
-> -{
-> -#ifdef CONFIG_MAC80211_LEDS
-> -	if (atomic_read(&local->tpt_led_active))
-> -		local->tpt_led_trigger->tx_bytes += bytes;
-> -#endif
-> -}
-> -
-> -static inline void
-> -ieee80211_tpt_led_trig_rx(struct ieee80211_local *local, int bytes)
-> -{
-> -#ifdef CONFIG_MAC80211_LEDS
-> -	if (atomic_read(&local->tpt_led_active))
-> -		local->tpt_led_trigger->rx_bytes += bytes;
-> -#endif
-> -}
-> diff --git a/net/mac80211/rx.c b/net/mac80211/rx.c
-> index 4f707d2a160f..5747d7dac4d7 100644
-> --- a/net/mac80211/rx.c
-> +++ b/net/mac80211/rx.c
-> @@ -5375,7 +5375,7 @@ void ieee80211_rx_list(struct ieee80211_hw *hw, struct ieee80211_sta *pubsta,
->   	if (skb) {
->   		if ((status->flag & RX_FLAG_8023) ||
->   			ieee80211_is_data_present(hdr->frame_control))
-> -			ieee80211_tpt_led_trig_rx(local, skb->len);
-> +			ieee80211_tpt_led_trig_rx(&local->hw, skb->len);
-
-what is the rationale for changing the signature, especially given that 
-the first thing the implementations do is local = hw_to_local(hw)
-
->   
->   		if (status->flag & RX_FLAG_8023)
->   			__ieee80211_rx_handle_8023(hw, pubsta, skb, list);
-> diff --git a/net/mac80211/tx.c b/net/mac80211/tx.c
-> index 7fe7280e8437..234de8d3b8bb 100644
-> --- a/net/mac80211/tx.c
-> +++ b/net/mac80211/tx.c
-> @@ -4320,7 +4320,7 @@ void __ieee80211_subif_start_xmit(struct sk_buff *skb,
->   	len = 0;
->    out:
->   	if (len)
-> -		ieee80211_tpt_led_trig_tx(local, len);
-> +		ieee80211_tpt_led_trig_tx(&local->hw, len);
->   	rcu_read_unlock();
->   }
->   
-> @@ -4646,7 +4646,7 @@ static void ieee80211_8023_xmit(struct ieee80211_sub_if_data *sdata,
->   	sta->deflink.tx_stats.packets[queue] += skbs;
->   	sta->deflink.tx_stats.bytes[queue] += len;
->   
-> -	ieee80211_tpt_led_trig_tx(local, len);
-> +	ieee80211_tpt_led_trig_tx(&local->hw, len);
->   
->   	ieee80211_tx_8023(sdata, skb, sta, false);
->   
-
+> Regards,
+> Helen
+>
+> > BR,
+> > -R
+> >
+> > > Regards,
+> > > Helen
+> > >
+> > > >
+> > > > 1) patches like this which aren't appropriate upstream but necessar=
+y
+> > > > due to the CI lab setup
+> > > > 2) target branch if often based on an early -rc, and it isn't unhea=
+rd
+> > > > of to need some fix for some board or another which isn't appropria=
+te
+> > > > to land via drm-next
+> > > >
+> > > > We should use the -external-fixes branch mechanism for patches like=
+ this one.
+> > > >
+> > > > BR,
+> > > > -R
+> > > >
+> > > > > >  for opt in $ENABLE_KCONFIGS; do
+> > > > > >    echo CONFIG_$opt=3Dy >> drivers/gpu/drm/ci/${KERNEL_ARCH}.co=
+nfig
+> > > > > >  done
+> > > > >
+> > > > > Ditto for the config changes in the context here. Those are files=
+ in
+> > > > > git, don't change them.
+> > > > >
+> > > > > Shouldn't this use something like 'scripts/config --enable' or
+> > > > > 'scripts/config --disable' on the .config file to be used for bui=
+lding
+> > > > > instead?
+> > > > >
+> > > > >
+> > > > > BR,
+> > > > > Jani.
+> > > > >
+> > > > >
+> > > > > --
+> > > > > Jani Nikula, Intel Open Source Graphics Center
+> > >
+>
 
