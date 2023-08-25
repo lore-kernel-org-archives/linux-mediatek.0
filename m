@@ -4,93 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D11B6C6787B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 18:01:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3364EC6787B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 18:08:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4SFmUXAYsem7iTnU68RPaQTJXrNLKxTUlTSWUKYfwJY=; b=NChhg+mTnVTnE/dbnzTfQSUfDy
-	o4/Gsmv28rXiES+mLE+jmw34+o7JCJS4W5/TBzTcmkCx9k8v0MvwNv9ArbLLYrP+H7TSE8z4jSaSz
-	aG6RIxaVFGMPmu2o8q4lcnvF7744S6+ZJk/03S7+nr2PXodK1MuB9nRjNLohgG1n3JGAX84b+lmmO
-	wLayZwX99lKCGgoTY8ceft3TtgzJ2mvOhH9xyjHidyg0duZ54yjOlyagn8muTjyVP1irNU7A1O1jl
-	d/txnbZt6gCR9GfcXRdWqwZvDzxQnZUtfzAvuJ9T4qadP9aou1j6yxnSagkwACrq4Y2E91PowLKvi
-	45GC3nRA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iHLeDC1m8DLWKuV+osfpRI9zBnwrLabWLAMJV/ih81A=; b=eYuWDyKFflngAzC29mDAYDHq8V
+	MWA8FKKbMhR9oHo/gDyLRCQ1IxuinsdX7S3meOguTj2c4AsRi75ZbcAXkEx/H1jDBTreRD991JPq2
+	CKcWY+8HuXkmCWhCqSpXq71BHwm+8rMvzERMmbB0jSrfoaTeF00YwNqcXJey8fPbnsALMlJa3nLYq
+	6bHrwfwxuKAwv4i2wwvRK2lcn5Jh0qJYL/VOio9UUFgJ8lVBGwGSs5UQDs4QmptOigYug3859FaDA
+	2rXtzvp3baCT7URloPTJN7nfKOfrx57IdNp4mHxsBWIsyEz80HkuqrGt1CnELKRaPee/ewAzdrptK
+	kU0W4kIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZb88-005pTj-32;
-	Fri, 25 Aug 2023 18:01:56 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1qZbEZ-005q22-1m;
+	Fri, 25 Aug 2023 18:08:35 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZb84-005pSo-1Z;
-	Fri, 25 Aug 2023 18:01:54 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-5009d4a4897so1818797e87.0;
-        Fri, 25 Aug 2023 11:01:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1692986508; x=1693591308;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=4SFmUXAYsem7iTnU68RPaQTJXrNLKxTUlTSWUKYfwJY=;
-        b=eCx8WVfLLhKkDjYHE6LK5+wOPjcskGc2P+q8qCaMNCmGUkxVl2+Ou9LZVdTftBUBlK
-         WpXKnv14V+1pUS0PkvDNEJCBz0zJQikC5MCQbj7G84AF0CAbJnWIKSnSW4kANFO1pOtV
-         FrKHyo6IaRo6cvvrqZ0v9S3Qc76mA8gbqxXzLpiIsNWeFHqMgA4kZzEH8kQFq0kgZv8A
-         P7qYMVbflmKM6lhcX9sznJ9AoVE5qbJNDtqb7ZBarvTN2crUZSw8+MMZdltbTIVGFIje
-         1YzmEkg+K03iITsDY0VP7euhRoTy0IRUOcx1/Sh7StJvEm5yOeazBN/8ddHbzV3ggByZ
-         7e7A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692986508; x=1693591308;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=4SFmUXAYsem7iTnU68RPaQTJXrNLKxTUlTSWUKYfwJY=;
-        b=UlDwyD1JH1dgvpLD255qr5s6ETYKH8mCW/ymAJVF75ehdS8pPWYjQPVHaC/Ytm5Yxn
-         YAbm7NnTrqWagvR9Ow8+h9rD8hvW7imMWDHXIpWjfHxuLq7qU2Zycb17M2B9p17aWhMX
-         cPSQbbNmLrakjnqXrNJi4snsgHiXp82Uch/by9ulzczMr7/vj+K38FPTolRDPu0kHI5m
-         +dWZJdXx2hIgQj0sKimlHMpEf9ONMncCA12mWromB2CRSYxrQB0SnvjQ++PoxeMqTmcn
-         gvhDkabzbkkoABoby7IwWrN0oRd+HlK/xPjyEe9SmVwL/zjfBq9xMJkOndxN7vfVqQ4a
-         stEg==
-X-Gm-Message-State: AOJu0Yw9XHS9z2bDANzB4huKsxUehQlpIESkYuPlcJbggMCnc25xXWvR
-	TJ0TBwU+5OwQirHHFl1WZIk=
-X-Google-Smtp-Source: AGHT+IH0lcoByGdkGAuuyTRpzPSqRVfYxYDuaWbs9bJOeWJsrinCWk1P2nZBUgaVHYuB9th1ImqFzA==
-X-Received: by 2002:a05:6512:2303:b0:4fe:4e2c:8e52 with SMTP id o3-20020a056512230300b004fe4e2c8e52mr18884207lfu.42.1692986507967;
-        Fri, 25 Aug 2023 11:01:47 -0700 (PDT)
-Received: from mobilestation ([178.176.56.174])
-        by smtp.gmail.com with ESMTPSA id a9-20020ac25209000000b004fba077e654sm366283lfl.194.2023.08.25.11.01.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Aug 2023 11:01:47 -0700 (PDT)
-Date: Fri, 25 Aug 2023 21:01:44 +0300
-From: Serge Semin <fancer.lancer@gmail.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Li Zetao <lizetao1@huawei.com>, andrew@aj.id.au, 
-	angelogioacchino.delregno@collabora.com, avifishman70@gmail.com, bcm-kernel-feedback-list@broadcom.com, 
-	benjaminfair@google.com, broonie@kernel.org, chin-ting_kuo@aspeedtech.com, clg@kaod.org, 
-	conor.dooley@microchip.com, daire.mcnamara@microchip.com, florian.fainelli@broadcom.com, 
-	heiko@sntech.de, jbrunet@baylibre.com, joel@jms.id.au, khilman@baylibre.com, 
-	linus.walleij@linaro.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-spi@vger.kernel.org, 
-	martin.blumenstingl@googlemail.com, matthias.bgg@gmail.com, neil.armstrong@linaro.org, 
-	olteanv@gmail.com, openbmc@lists.ozlabs.org, rjui@broadcom.com, 
-	sbranden@broadcom.com, tali.perry1@gmail.com, tmaimon77@gmail.com, venture@google.com, 
-	yuenn@google.com
-Subject: Re: [PATCH -next v2 11/25] spi: dw-bt1: Use helper function
- devm_clk_get_enabled()
-Message-ID: <cgw2bpsh47p4vz3hectcwsz53dhmffpurufw2prxzg43ra2fpc@7xklvkozre6g>
-References: <20230822131237.1022815-1-lizetao1@huawei.com>
- <20230823133938.1359106-1-lizetao1@huawei.com>
- <20230823133938.1359106-12-lizetao1@huawei.com>
- <xxosi2ymo7otqyfbmjlubezzedqw6ulwwhdmbdjbto7yaqw673@q673weupq67y>
- <20230823181344.000026bd@Huawei.com>
+	id 1qZbEW-005q1P-1t
+	for linux-mediatek@lists.infradead.org;
+	Fri, 25 Aug 2023 18:08:34 +0000
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 37PCOFEh022806;
+	Fri, 25 Aug 2023 18:08:12 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=iHLeDC1m8DLWKuV+osfpRI9zBnwrLabWLAMJV/ih81A=;
+ b=gOAPaNsuZfR1tgXelpsaNKjo4+bZwJppu5Ubb82WSkN5zV+bemkWxD0hVjM/+s9RYu0E
+ /mWE8PqayRmwxY2TzwwNa2E16JKvRO9daBWPUXY9eHNlAeKwj63QD20HSVloMtJUJ8/G
+ viRixrYunDknGj0JZEZM7eScrdRxLcxAWuYeWacl2N3e3f5ZuRYtDHNkEy1mX/azSc6w
+ TD/6+pC83ZQNNNhA2pjtobwrNlAiuCOjcoNVu2TkW5bE1UEx32cZTlk2ktKVJHnqu6AK
+ F+oloPMYZiKBZvHeM66xDjH4/6f3FQ3p41+ioYj5odhDtwPQdcw17sUgdJ++PRLxlRpx cQ== 
+Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3spmtxsjfe-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 25 Aug 2023 18:08:12 +0000
+Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
+	by NASANPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 37PI8BG9011710
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 25 Aug 2023 18:08:11 GMT
+Received: from [10.48.247.99] (10.49.16.6) by nasanex01a.na.qualcomm.com
+ (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Fri, 25 Aug
+ 2023 11:08:10 -0700
+Message-ID: <e94f5d18-ced0-458d-8e2c-b94a4196c442@quicinc.com>
+Date: Fri, 25 Aug 2023 11:08:09 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230823181344.000026bd@Huawei.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 5/6] wifi: mac80211: export ieee80211_tpt_led_trig_tx/rx
+ for driver
+Content-Language: en-US
+To: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+        Johannes Berg <johannes.berg@intel.com>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+        Ryder Lee
+	<ryder.lee@mediatek.com>,
+        Shayne Chen <shayne.chen@mediatek.com>,
+        Evelyn Tsai
+	<evelyn.tsai@mediatek.com>,
+        Money Wang <money.wang@mediatek.com>,
+        Peter Chiu
+	<chui-hao.chiu@mediatek.com>,
+        Benjamin Lin <benjamin-jw.lin@mediatek.com>,
+        <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+References: <09f0cb7f314a08eddb77298411d965ad30a847bb.1692983967.git.yi-chia.hsieh@mediatek.com>
+ <8d18b7ac7fc394c310c0f2730da9ee7e955a9860.1692983967.git.yi-chia.hsieh@mediatek.com>
+From: Jeff Johnson <quic_jjohnson@quicinc.com>
+In-Reply-To: <8d18b7ac7fc394c310c0f2730da9ee7e955a9860.1692983967.git.yi-chia.hsieh@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.49.16.6]
+X-ClientProxiedBy: nalasex01b.na.qualcomm.com (10.47.209.197) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: ksw7ild0_Q2i6DqlOvjdeIeQm3t1iOpM
+X-Proofpoint-GUID: ksw7ild0_Q2i6DqlOvjdeIeQm3t1iOpM
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-08-25_16,2023-08-25_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1011
+ lowpriorityscore=0 malwarescore=0 spamscore=0 adultscore=0 mlxlogscore=999
+ mlxscore=0 priorityscore=1501 suspectscore=0 bulkscore=0 impostorscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2308100000 definitions=main-2308250162
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_110152_528440_0EB11F18 
-X-CRM114-Status: GOOD (  34.22  )
+X-CRM114-CacheID: sfid-20230825_110832_762565_6C2BB8EF 
+X-CRM114-Status: GOOD (  26.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,124 +109,163 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 23, 2023 at 06:13:44PM +0100, Jonathan Cameron wrote:
-> On Wed, 23 Aug 2023 17:35:35 +0300
-> Serge Semin <fancer.lancer@gmail.com> wrote:
+On 8/25/2023 10:47 AM, Yi-Chia Hsieh wrote:
+> Whenever the H/W path is enabled and traffic is in the binding state,
+> mac80211 is not aware of the traffic. Consequently, the LED does not
+> blink for that reason.
 > 
-> > On Wed, Aug 23, 2023 at 09:39:24PM +0800, Li Zetao wrote:
-> > > Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
-> > > and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
-> > > replaced by devm_clk_get_enabled() when driver enables (and possibly
-> > > prepares) the clocks for the whole lifetime of the device. Moreover, it is
-> > > no longer necessary to unprepare and disable the clocks explicitly.
-> > >   
-> > 
-> > > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > > Acked-by: Serge Semin <fancer.lancer@gmail.com>
-> > > Signed-off-by: Li Zetao <lizetao1@huawei.com>  
-> > 
-> > Just for the record, the tags order is normally supposed to reflect a
-> > patch route. Even though AFAICS it's explicitly defined for the Sob
-> > tags only (see Documentation/process/submitting-patches.rst), but
-> > almost all kernel developers apply that rule to all the tags. See the
-> > kernel git log as the brightest example. So your Sob tag should have
-> > been kept first, then either my Ab or Jonathan' Rb tags.
+> The ieee80211_tpt_led_trig_tx/rx functions are exported for the driver
+> so that we can report the tx and rx bytes from the driver when
+> the H/W path is being used.
 > 
+> Signed-off-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
+> ---
+>   include/net/mac80211.h | 17 +++++++++++++++++
+>   net/mac80211/led.c     | 18 ++++++++++++++++++
+>   net/mac80211/led.h     | 18 ------------------
+>   net/mac80211/rx.c      |  2 +-
+>   net/mac80211/tx.c      |  4 ++--
+>   5 files changed, 38 insertions(+), 21 deletions(-)
+> 
+> diff --git a/include/net/mac80211.h b/include/net/mac80211.h
+> index 3a8a2d2c58c3..53804822dc8d 100644
+> --- a/include/net/mac80211.h
+> +++ b/include/net/mac80211.h
+> @@ -4729,6 +4729,8 @@ __ieee80211_create_tpt_led_trigger(struct ieee80211_hw *hw,
+>   				   unsigned int flags,
+>   				   const struct ieee80211_tpt_blink *blink_table,
+>   				   unsigned int blink_table_len);
+> +void __ieee80211_tpt_led_trig_tx(struct ieee80211_hw *hw, int bytes);
+> +void __ieee80211_tpt_led_trig_rx(struct ieee80211_hw *hw, int bytes);
 
-> There have been far too many discussions about this over the years.
-> There is an argument (I'm not saying I agree with it) that tags given
-> on an earlier version than the one posted should be before the SoB of
-> the author on basis that the SoB is occurring later (as it's on the new
-> version).  That is a slightly stronger argument if there are changes
-> to the patch, but then things get inconsistent between patches with minor
-> changes and those without. *sigh*
-> 
-> So this pattern is fairly common if a bit weird in my view :)
+suggest these should be in led.h since they are local to mac80211 and 
+should not be directly invoked by clients of mac80211
 
-Ah, I didn't know it was a holy-warring topic.) My judgement was based
-on the vast majority of commits in the kernel git log and on my
-experience in the patches review. Anyway in order not to raise it
-again let's consider my comment as a general note with no obligation
-towards the patch author.)
+>   #endif
+>   /**
+>    * ieee80211_get_tx_led_name - get name of TX LED
+> @@ -4839,6 +4841,21 @@ ieee80211_create_tpt_led_trigger(struct ieee80211_hw *hw, unsigned int flags,
+>   #endif
+>   }
+>   
+> +static inline void
+> +ieee80211_tpt_led_trig_tx(struct ieee80211_hw *hw, int bytes)
+> +{
+> +#ifdef CPTCFG_MAC80211_LEDS
 
--Serge(y)
+why isn't this using CONFIG_MAC80211_LEDS??
 
-> 
-> Jonathan
-> 
-> > 
-> > -Serge(y)
-> > 
-> > > ---
-> > > v1 -> v2: None
-> > > 
-> > >  drivers/spi/spi-dw-bt1.c | 23 +++++------------------
-> > >  1 file changed, 5 insertions(+), 18 deletions(-)
-> > > 
-> > > diff --git a/drivers/spi/spi-dw-bt1.c b/drivers/spi/spi-dw-bt1.c
-> > > index 5e1c01822967..5391bcac305c 100644
-> > > --- a/drivers/spi/spi-dw-bt1.c
-> > > +++ b/drivers/spi/spi-dw-bt1.c
-> > > @@ -269,43 +269,32 @@ static int dw_spi_bt1_probe(struct platform_device *pdev)
-> > >  
-> > >  	dws->paddr = mem->start;
-> > >  
-> > > -	dwsbt1->clk = devm_clk_get(&pdev->dev, NULL);
-> > > +	dwsbt1->clk = devm_clk_get_enabled(&pdev->dev, NULL);
-> > >  	if (IS_ERR(dwsbt1->clk))
-> > >  		return PTR_ERR(dwsbt1->clk);
-> > >  
-> > > -	ret = clk_prepare_enable(dwsbt1->clk);
-> > > -	if (ret)
-> > > -		return ret;
-> > > -
-> > >  	dws->bus_num = pdev->id;
-> > >  	dws->reg_io_width = 4;
-> > >  	dws->max_freq = clk_get_rate(dwsbt1->clk);
-> > > -	if (!dws->max_freq) {
-> > > -		ret = -EINVAL;
-> > > -		goto err_disable_clk;
-> > > -	}
-> > > +	if (!dws->max_freq)
-> > > +		return -EINVAL;
-> > >  
-> > >  	init_func = device_get_match_data(&pdev->dev);
-> > >  	ret = init_func(pdev, dwsbt1);
-> > >  	if (ret)
-> > > -		goto err_disable_clk;
-> > > +		return ret;
-> > >  
-> > >  	pm_runtime_enable(&pdev->dev);
-> > >  
-> > >  	ret = dw_spi_add_host(&pdev->dev, dws);
-> > >  	if (ret) {
-> > >  		pm_runtime_disable(&pdev->dev);
-> > > -		goto err_disable_clk;
-> > > +		return ret;
-> > >  	}
-> > >  
-> > >  	platform_set_drvdata(pdev, dwsbt1);
-> > >  
-> > >  	return 0;
-> > > -
-> > > -err_disable_clk:
-> > > -	clk_disable_unprepare(dwsbt1->clk);
-> > > -
-> > > -	return ret;
-> > >  }
-> > >  
-> > >  static void dw_spi_bt1_remove(struct platform_device *pdev)
-> > > @@ -315,8 +304,6 @@ static void dw_spi_bt1_remove(struct platform_device *pdev)
-> > >  	dw_spi_remove_host(&dwsbt1->dws);
-> > >  
-> > >  	pm_runtime_disable(&pdev->dev);
-> > > -
-> > > -	clk_disable_unprepare(dwsbt1->clk);
-> > >  }
-> > >  
-> > >  static const struct of_device_id dw_spi_bt1_of_match[] = {
-> > > -- 
-> > > 2.34.1
-> > >   
-> 
+> +	__ieee80211_tpt_led_trig_tx(hw, bytes);
+> +#endif
+> +}
+> +
+> +static inline void
+> +ieee80211_tpt_led_trig_rx(struct ieee80211_hw *hw, int bytes)
+> +{
+> +#ifdef CPTCFG_MAC80211_LEDS
+> +	__ieee80211_tpt_led_trig_rx(hw, bytes);
+> +#endif
+> +}
+>   /**
+>    * ieee80211_unregister_hw - Unregister a hardware device
+>    *
+> diff --git a/net/mac80211/led.c b/net/mac80211/led.c
+> index 2dc732147e85..af03a2ef5c6a 100644
+> --- a/net/mac80211/led.c
+> +++ b/net/mac80211/led.c
+> @@ -319,6 +319,24 @@ __ieee80211_create_tpt_led_trigger(struct ieee80211_hw *hw,
+>   }
+>   EXPORT_SYMBOL(__ieee80211_create_tpt_led_trigger);
+>   
+> +void __ieee80211_tpt_led_trig_tx(struct ieee80211_hw *hw, int bytes)
+> +{
+> +	struct ieee80211_local *local = hw_to_local(hw);
+> +
+> +	if (atomic_read(&local->tpt_led_active))
+> +		local->tpt_led_trigger->tx_bytes += bytes;
+> +}
+> +EXPORT_SYMBOL(__ieee80211_tpt_led_trig_tx);
+> +
+> +void __ieee80211_tpt_led_trig_rx(struct ieee80211_hw *hw, int bytes)
+> +{
+> +	struct ieee80211_local *local = hw_to_local(hw);
+> +
+> +	if (atomic_read(&local->tpt_led_active))
+> +		local->tpt_led_trigger->rx_bytes += bytes;
+> +}
+> +EXPORT_SYMBOL(__ieee80211_tpt_led_trig_rx);
+> +
+
+why are you making these exported implementations instead of keeping 
+them as inline in led.h?
+
+>   static void ieee80211_start_tpt_led_trig(struct ieee80211_local *local)
+>   {
+>   	struct tpt_led_trigger *tpt_trig = local->tpt_led_trigger;
+> diff --git a/net/mac80211/led.h b/net/mac80211/led.h
+> index d25f13346b82..98db4356d0de 100644
+> --- a/net/mac80211/led.h
+> +++ b/net/mac80211/led.h
+> @@ -66,21 +66,3 @@ static inline void ieee80211_mod_tpt_led_trig(struct ieee80211_local *local,
+>   {
+>   }
+>   #endif
+> -
+> -static inline void
+> -ieee80211_tpt_led_trig_tx(struct ieee80211_local *local, int bytes)
+> -{
+> -#ifdef CONFIG_MAC80211_LEDS
+> -	if (atomic_read(&local->tpt_led_active))
+> -		local->tpt_led_trigger->tx_bytes += bytes;
+> -#endif
+> -}
+> -
+> -static inline void
+> -ieee80211_tpt_led_trig_rx(struct ieee80211_local *local, int bytes)
+> -{
+> -#ifdef CONFIG_MAC80211_LEDS
+> -	if (atomic_read(&local->tpt_led_active))
+> -		local->tpt_led_trigger->rx_bytes += bytes;
+> -#endif
+> -}
+> diff --git a/net/mac80211/rx.c b/net/mac80211/rx.c
+> index 4f707d2a160f..5747d7dac4d7 100644
+> --- a/net/mac80211/rx.c
+> +++ b/net/mac80211/rx.c
+> @@ -5375,7 +5375,7 @@ void ieee80211_rx_list(struct ieee80211_hw *hw, struct ieee80211_sta *pubsta,
+>   	if (skb) {
+>   		if ((status->flag & RX_FLAG_8023) ||
+>   			ieee80211_is_data_present(hdr->frame_control))
+> -			ieee80211_tpt_led_trig_rx(local, skb->len);
+> +			ieee80211_tpt_led_trig_rx(&local->hw, skb->len);
+
+what is the rationale for changing the signature, especially given that 
+the first thing the implementations do is local = hw_to_local(hw)
+
+>   
+>   		if (status->flag & RX_FLAG_8023)
+>   			__ieee80211_rx_handle_8023(hw, pubsta, skb, list);
+> diff --git a/net/mac80211/tx.c b/net/mac80211/tx.c
+> index 7fe7280e8437..234de8d3b8bb 100644
+> --- a/net/mac80211/tx.c
+> +++ b/net/mac80211/tx.c
+> @@ -4320,7 +4320,7 @@ void __ieee80211_subif_start_xmit(struct sk_buff *skb,
+>   	len = 0;
+>    out:
+>   	if (len)
+> -		ieee80211_tpt_led_trig_tx(local, len);
+> +		ieee80211_tpt_led_trig_tx(&local->hw, len);
+>   	rcu_read_unlock();
+>   }
+>   
+> @@ -4646,7 +4646,7 @@ static void ieee80211_8023_xmit(struct ieee80211_sub_if_data *sdata,
+>   	sta->deflink.tx_stats.packets[queue] += skbs;
+>   	sta->deflink.tx_stats.bytes[queue] += len;
+>   
+> -	ieee80211_tpt_led_trig_tx(local, len);
+> +	ieee80211_tpt_led_trig_tx(&local->hw, len);
+>   
+>   	ieee80211_tx_8023(sdata, skb, sta, false);
+>   
+
 
