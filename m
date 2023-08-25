@@ -4,75 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4323C6787B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 17:57:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D11B6C6787B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 18:01:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sMOXqtKXU4WEHY4aOx9vtuMXW7CWH+SmSHRf4ypQWR0=; b=cZV7MHoW9s6uQ4og9a00ceuTo8
-	Ix7MWCiUC01xAYdQb6EUdFyi8xuAzKKawCOExxNwlUobHUw67Lo1Cd6jXZ3MFI8BLv+r05SjYvm+8
-	b+4fjsfnNbjAY95MSLSrFa3+JHrDFWiNITclVOonA97TLs0WZYtQOBW/Bu+geeM4zDuDcfois34fK
-	Pfvxgry3HCDSR/nQ50rKzMdrjxVHGhtnkKAJ9K6nS0NP/blKi2iQjSaDdKKEplxB5oCkyFfkzYYjY
-	NBQGU74vP3rRR1wEz0Hf+FXRjVyVMjMczhmrXHOJ6WF5arvSLSZEFtZy9HucnXpxy010ewaw81vLT
-	7ADv04Mw==;
+	bh=4SFmUXAYsem7iTnU68RPaQTJXrNLKxTUlTSWUKYfwJY=; b=NChhg+mTnVTnE/dbnzTfQSUfDy
+	o4/Gsmv28rXiES+mLE+jmw34+o7JCJS4W5/TBzTcmkCx9k8v0MvwNv9ArbLLYrP+H7TSE8z4jSaSz
+	aG6RIxaVFGMPmu2o8q4lcnvF7744S6+ZJk/03S7+nr2PXodK1MuB9nRjNLohgG1n3JGAX84b+lmmO
+	wLayZwX99lKCGgoTY8ceft3TtgzJ2mvOhH9xyjHidyg0duZ54yjOlyagn8muTjyVP1irNU7A1O1jl
+	d/txnbZt6gCR9GfcXRdWqwZvDzxQnZUtfzAvuJ9T4qadP9aou1j6yxnSagkwACrq4Y2E91PowLKvi
+	45GC3nRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZb3w-005pFc-1J;
-	Fri, 25 Aug 2023 17:57:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qZb88-005pTj-32;
+	Fri, 25 Aug 2023 18:01:56 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZb3t-005pF5-2e
-	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Aug 2023 17:57:35 +0000
-X-UUID: da4db6dc437011ee83ed1395ce914268-20230825
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sMOXqtKXU4WEHY4aOx9vtuMXW7CWH+SmSHRf4ypQWR0=;
-	b=D9rXZnUM338Bbtw9CnXRRMTWXkv/jTVbOTR99GE4QNNfJYLmlyLe2GnAMZbk4KoVPpBAODAhPZrvlfA1H4fxCkExF1w9Pz8KpBhgpXQ96dt1F4fKWvVqBn7FNpKtjicnT9fMSH7NUbWCHReQXI3Qd/Bxx8+wqd78dzFFIrsFy1c=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:3454d6d4-95db-4099-aa68-d95fbeeae10f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:9e4b48c2-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: da4db6dc437011ee83ed1395ce914268-20230825
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yi-chia.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 492262266; Fri, 25 Aug 2023 10:57:27 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 26 Aug 2023 01:47:24 +0800
-Received: from mussdccf250.mussds.eus.mediatek.inc (10.73.250.250) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 26 Aug 2023 01:47:22 +0800
-From: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
-	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>, Peter Chiu
-	<chui-hao.chiu@mediatek.com>, Benjamin Lin <benjamin-jw.lin@mediatek.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-Subject: [PATCH 4/6] wifi: mt76: mt7996: remove periodic MPDU TXS request
-Date: Fri, 25 Aug 2023 10:47:06 -0700
-Message-ID: <894656c48c2fcee49a79b29fe7a24abca3e3403a.1692983967.git.yi-chia.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <09f0cb7f314a08eddb77298411d965ad30a847bb.1692983967.git.yi-chia.hsieh@mediatek.com>
-References: <09f0cb7f314a08eddb77298411d965ad30a847bb.1692983967.git.yi-chia.hsieh@mediatek.com>
+	id 1qZb84-005pSo-1Z;
+	Fri, 25 Aug 2023 18:01:54 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-5009d4a4897so1818797e87.0;
+        Fri, 25 Aug 2023 11:01:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1692986508; x=1693591308;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=4SFmUXAYsem7iTnU68RPaQTJXrNLKxTUlTSWUKYfwJY=;
+        b=eCx8WVfLLhKkDjYHE6LK5+wOPjcskGc2P+q8qCaMNCmGUkxVl2+Ou9LZVdTftBUBlK
+         WpXKnv14V+1pUS0PkvDNEJCBz0zJQikC5MCQbj7G84AF0CAbJnWIKSnSW4kANFO1pOtV
+         FrKHyo6IaRo6cvvrqZ0v9S3Qc76mA8gbqxXzLpiIsNWeFHqMgA4kZzEH8kQFq0kgZv8A
+         P7qYMVbflmKM6lhcX9sznJ9AoVE5qbJNDtqb7ZBarvTN2crUZSw8+MMZdltbTIVGFIje
+         1YzmEkg+K03iITsDY0VP7euhRoTy0IRUOcx1/Sh7StJvEm5yOeazBN/8ddHbzV3ggByZ
+         7e7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692986508; x=1693591308;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4SFmUXAYsem7iTnU68RPaQTJXrNLKxTUlTSWUKYfwJY=;
+        b=UlDwyD1JH1dgvpLD255qr5s6ETYKH8mCW/ymAJVF75ehdS8pPWYjQPVHaC/Ytm5Yxn
+         YAbm7NnTrqWagvR9Ow8+h9rD8hvW7imMWDHXIpWjfHxuLq7qU2Zycb17M2B9p17aWhMX
+         cPSQbbNmLrakjnqXrNJi4snsgHiXp82Uch/by9ulzczMr7/vj+K38FPTolRDPu0kHI5m
+         +dWZJdXx2hIgQj0sKimlHMpEf9ONMncCA12mWromB2CRSYxrQB0SnvjQ++PoxeMqTmcn
+         gvhDkabzbkkoABoby7IwWrN0oRd+HlK/xPjyEe9SmVwL/zjfBq9xMJkOndxN7vfVqQ4a
+         stEg==
+X-Gm-Message-State: AOJu0Yw9XHS9z2bDANzB4huKsxUehQlpIESkYuPlcJbggMCnc25xXWvR
+	TJ0TBwU+5OwQirHHFl1WZIk=
+X-Google-Smtp-Source: AGHT+IH0lcoByGdkGAuuyTRpzPSqRVfYxYDuaWbs9bJOeWJsrinCWk1P2nZBUgaVHYuB9th1ImqFzA==
+X-Received: by 2002:a05:6512:2303:b0:4fe:4e2c:8e52 with SMTP id o3-20020a056512230300b004fe4e2c8e52mr18884207lfu.42.1692986507967;
+        Fri, 25 Aug 2023 11:01:47 -0700 (PDT)
+Received: from mobilestation ([178.176.56.174])
+        by smtp.gmail.com with ESMTPSA id a9-20020ac25209000000b004fba077e654sm366283lfl.194.2023.08.25.11.01.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Aug 2023 11:01:47 -0700 (PDT)
+Date: Fri, 25 Aug 2023 21:01:44 +0300
+From: Serge Semin <fancer.lancer@gmail.com>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Li Zetao <lizetao1@huawei.com>, andrew@aj.id.au, 
+	angelogioacchino.delregno@collabora.com, avifishman70@gmail.com, bcm-kernel-feedback-list@broadcom.com, 
+	benjaminfair@google.com, broonie@kernel.org, chin-ting_kuo@aspeedtech.com, clg@kaod.org, 
+	conor.dooley@microchip.com, daire.mcnamara@microchip.com, florian.fainelli@broadcom.com, 
+	heiko@sntech.de, jbrunet@baylibre.com, joel@jms.id.au, khilman@baylibre.com, 
+	linus.walleij@linaro.org, linux-amlogic@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
+	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-spi@vger.kernel.org, 
+	martin.blumenstingl@googlemail.com, matthias.bgg@gmail.com, neil.armstrong@linaro.org, 
+	olteanv@gmail.com, openbmc@lists.ozlabs.org, rjui@broadcom.com, 
+	sbranden@broadcom.com, tali.perry1@gmail.com, tmaimon77@gmail.com, venture@google.com, 
+	yuenn@google.com
+Subject: Re: [PATCH -next v2 11/25] spi: dw-bt1: Use helper function
+ devm_clk_get_enabled()
+Message-ID: <cgw2bpsh47p4vz3hectcwsz53dhmffpurufw2prxzg43ra2fpc@7xklvkozre6g>
+References: <20230822131237.1022815-1-lizetao1@huawei.com>
+ <20230823133938.1359106-1-lizetao1@huawei.com>
+ <20230823133938.1359106-12-lizetao1@huawei.com>
+ <xxosi2ymo7otqyfbmjlubezzedqw6ulwwhdmbdjbto7yaqw673@q673weupq67y>
+ <20230823181344.000026bd@Huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230823181344.000026bd@Huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_105733_864250_A735221B 
-X-CRM114-Status: GOOD (  14.15  )
+X-CRM114-CacheID: sfid-20230825_110152_528440_0EB11F18 
+X-CRM114-Status: GOOD (  34.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,123 +105,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove periodic MPDU TXS request. Get TID and FrameType from SKB
-instead of TXWI, which is empty for Data Frame after MPDU TXS request
-is removed, hence prohibiting the establishment of TX BA session.
+On Wed, Aug 23, 2023 at 06:13:44PM +0100, Jonathan Cameron wrote:
+> On Wed, 23 Aug 2023 17:35:35 +0300
+> Serge Semin <fancer.lancer@gmail.com> wrote:
+> 
+> > On Wed, Aug 23, 2023 at 09:39:24PM +0800, Li Zetao wrote:
+> > > Since commit 7ef9651e9792 ("clk: Provide new devm_clk helpers for prepared
+> > > and enabled clocks"), devm_clk_get() and clk_prepare_enable() can now be
+> > > replaced by devm_clk_get_enabled() when driver enables (and possibly
+> > > prepares) the clocks for the whole lifetime of the device. Moreover, it is
+> > > no longer necessary to unprepare and disable the clocks explicitly.
+> > >   
+> > 
+> > > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > > Acked-by: Serge Semin <fancer.lancer@gmail.com>
+> > > Signed-off-by: Li Zetao <lizetao1@huawei.com>  
+> > 
+> > Just for the record, the tags order is normally supposed to reflect a
+> > patch route. Even though AFAICS it's explicitly defined for the Sob
+> > tags only (see Documentation/process/submitting-patches.rst), but
+> > almost all kernel developers apply that rule to all the tags. See the
+> > kernel git log as the brightest example. So your Sob tag should have
+> > been kept first, then either my Ab or Jonathan' Rb tags.
+> 
 
-Signed-off-by: Benjamin Lin <benjamin-jw.lin@mediatek.com>
-Signed-off-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7996/mac.c   | 38 ++++++++++---------
- .../net/wireless/mediatek/mt76/mt7996/main.c  |  1 -
- .../wireless/mediatek/mt76/mt7996/mt7996.h    |  1 -
- 3 files changed, 21 insertions(+), 19 deletions(-)
+> There have been far too many discussions about this over the years.
+> There is an argument (I'm not saying I agree with it) that tags given
+> on an earlier version than the one posted should be before the SoB of
+> the author on basis that the SoB is occurring later (as it's on the new
+> version).  That is a slightly stronger argument if there are changes
+> to the patch, but then things get inconsistent between patches with minor
+> changes and those without. *sigh*
+> 
+> So this pattern is fairly common if a bit weird in my view :)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index ef5d1192ef0e..383b55c8cca8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -948,15 +948,6 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- 	if (!wcid)
- 		wcid = &dev->mt76.global_wcid;
- 
--	if (sta) {
--		struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
--
--		if (time_after(jiffies, msta->jiffies + HZ / 4)) {
--			info->flags |= IEEE80211_TX_CTL_REQ_TX_STATUS;
--			msta->jiffies = jiffies;
--		}
--	}
--
- 	t = (struct mt76_txwi_cache *)(txwi + mdev->drv->txwi_size);
- 	t->skb = tx_info->skb;
- 
-@@ -1006,22 +997,35 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- }
- 
- static void
--mt7996_tx_check_aggr(struct ieee80211_sta *sta, __le32 *txwi)
-+mt7996_tx_check_aggr(struct ieee80211_sta *sta, struct sk_buff *skb)
- {
- 	struct mt7996_sta *msta;
-+	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
-+	bool is_8023 = info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
- 	u16 fc, tid;
--	u32 val;
- 
- 	if (!sta || !(sta->deflink.ht_cap.ht_supported || sta->deflink.he_cap.has_he))
- 		return;
- 
--	tid = le32_get_bits(txwi[1], MT_TXD1_TID);
-+	tid = skb->priority & IEEE80211_QOS_CTL_TID_MASK;
- 	if (tid >= 6) /* skip VO queue */
- 		return;
- 
--	val = le32_to_cpu(txwi[2]);
--	fc = FIELD_GET(MT_TXD2_FRAME_TYPE, val) << 2 |
--	     FIELD_GET(MT_TXD2_SUB_TYPE, val) << 4;
-+	if (is_8023) {
-+		fc = IEEE80211_FTYPE_DATA |
-+		     (sta->wme ? IEEE80211_STYPE_QOS_DATA : IEEE80211_STYPE_DATA);
-+	} else {
-+		/* No need to get precise TID for Action/Management Frame,
-+		 * since it will not meet the following Frame Control
-+		 * condition anyway.
-+		 */
-+
-+		struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
-+
-+		fc = le16_to_cpu(hdr->frame_control) &
-+		     (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE);
-+	}
-+
- 	if (unlikely(fc != (IEEE80211_FTYPE_DATA | IEEE80211_STYPE_QOS_DATA)))
- 		return;
- 
-@@ -1049,7 +1053,7 @@ mt7996_txwi_free(struct mt7996_dev *dev, struct mt76_txwi_cache *t,
- 		wcid_idx = wcid->idx;
- 
- 		if (likely(t->skb->protocol != cpu_to_be16(ETH_P_PAE)))
--			mt7996_tx_check_aggr(sta, txwi);
-+			mt7996_tx_check_aggr(sta, t->skb);
- 	} else {
- 		wcid_idx = le32_get_bits(txwi[1], MT_TXD1_WLAN_IDX);
- 	}
-@@ -1320,7 +1324,7 @@ static void mt7996_mac_add_txs(struct mt7996_dev *dev, void *data)
- 	wcidx = le32_get_bits(txs_data[2], MT_TXS2_MLD_ID);
- 	pid = le32_get_bits(txs_data[3], MT_TXS3_PID);
- 
--	if (pid < MT_PACKET_ID_WED)
-+	if (pid < MT_PACKET_ID_NO_SKB)
- 		return;
- 
- 	if (wcidx >= mt7996_wtbl_size(dev))
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 37128f7f6671..202c6083e8f0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -660,7 +660,6 @@ int mt7996_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	msta->wcid.idx = idx;
- 	msta->wcid.phy_idx = band_idx;
- 	msta->wcid.tx_info |= MT_WCID_TX_INFO_SET;
--	msta->jiffies = jiffies;
- 
- 	ewma_avg_signal_init(&msta->avg_ack_signal);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index cb67a2d4c6d4..e53cf6a3704c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -110,7 +110,6 @@ struct mt7996_sta {
- 	struct ewma_avg_signal avg_ack_signal;
- 
- 	unsigned long changed;
--	unsigned long jiffies;
- 
- 	struct mt76_connac_sta_key_conf bip;
- 
--- 
-2.39.0
+Ah, I didn't know it was a holy-warring topic.) My judgement was based
+on the vast majority of commits in the kernel git log and on my
+experience in the patches review. Anyway in order not to raise it
+again let's consider my comment as a general note with no obligation
+towards the patch author.)
 
+-Serge(y)
+
+> 
+> Jonathan
+> 
+> > 
+> > -Serge(y)
+> > 
+> > > ---
+> > > v1 -> v2: None
+> > > 
+> > >  drivers/spi/spi-dw-bt1.c | 23 +++++------------------
+> > >  1 file changed, 5 insertions(+), 18 deletions(-)
+> > > 
+> > > diff --git a/drivers/spi/spi-dw-bt1.c b/drivers/spi/spi-dw-bt1.c
+> > > index 5e1c01822967..5391bcac305c 100644
+> > > --- a/drivers/spi/spi-dw-bt1.c
+> > > +++ b/drivers/spi/spi-dw-bt1.c
+> > > @@ -269,43 +269,32 @@ static int dw_spi_bt1_probe(struct platform_device *pdev)
+> > >  
+> > >  	dws->paddr = mem->start;
+> > >  
+> > > -	dwsbt1->clk = devm_clk_get(&pdev->dev, NULL);
+> > > +	dwsbt1->clk = devm_clk_get_enabled(&pdev->dev, NULL);
+> > >  	if (IS_ERR(dwsbt1->clk))
+> > >  		return PTR_ERR(dwsbt1->clk);
+> > >  
+> > > -	ret = clk_prepare_enable(dwsbt1->clk);
+> > > -	if (ret)
+> > > -		return ret;
+> > > -
+> > >  	dws->bus_num = pdev->id;
+> > >  	dws->reg_io_width = 4;
+> > >  	dws->max_freq = clk_get_rate(dwsbt1->clk);
+> > > -	if (!dws->max_freq) {
+> > > -		ret = -EINVAL;
+> > > -		goto err_disable_clk;
+> > > -	}
+> > > +	if (!dws->max_freq)
+> > > +		return -EINVAL;
+> > >  
+> > >  	init_func = device_get_match_data(&pdev->dev);
+> > >  	ret = init_func(pdev, dwsbt1);
+> > >  	if (ret)
+> > > -		goto err_disable_clk;
+> > > +		return ret;
+> > >  
+> > >  	pm_runtime_enable(&pdev->dev);
+> > >  
+> > >  	ret = dw_spi_add_host(&pdev->dev, dws);
+> > >  	if (ret) {
+> > >  		pm_runtime_disable(&pdev->dev);
+> > > -		goto err_disable_clk;
+> > > +		return ret;
+> > >  	}
+> > >  
+> > >  	platform_set_drvdata(pdev, dwsbt1);
+> > >  
+> > >  	return 0;
+> > > -
+> > > -err_disable_clk:
+> > > -	clk_disable_unprepare(dwsbt1->clk);
+> > > -
+> > > -	return ret;
+> > >  }
+> > >  
+> > >  static void dw_spi_bt1_remove(struct platform_device *pdev)
+> > > @@ -315,8 +304,6 @@ static void dw_spi_bt1_remove(struct platform_device *pdev)
+> > >  	dw_spi_remove_host(&dwsbt1->dws);
+> > >  
+> > >  	pm_runtime_disable(&pdev->dev);
+> > > -
+> > > -	clk_disable_unprepare(dwsbt1->clk);
+> > >  }
+> > >  
+> > >  static const struct of_device_id dw_spi_bt1_of_match[] = {
+> > > -- 
+> > > 2.34.1
+> > >   
+> 
 
