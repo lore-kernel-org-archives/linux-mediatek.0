@@ -4,71 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A0A5C71133
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 14:27:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B966AC3DA66
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 14:30:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kz1XcnvmZcL7hMVZ4Qp9mCV+7aUd9WpCK7LfvT7kDSs=; b=qPvA7FIqi2gqfTCL0B0b1/YfNk
-	T0xSxpEM9e8a3O8rVK8cBpthLM4OrUaS5YTboOm9iVu6tTqZrU4W6OGzZdVTAKXKB7ud2E7ttfeIx
-	wy7ob8tSaR9Dd+qSxBF7TqRyhhLIqrf0uIV50b5mdOn6lYAHnAAL1qclJ3GKb4m3/2YLW5fU70Gq/
-	B3kbsvAcFvEaODg0nkm50GNWdznEbR6AH5hsBajPRy2+vxgqrNGiQOiJyrkauWw+EKMNs5Y3EagND
-	EOi4x4uafyu/b7XpwW0Lp68V0hm1ljojTLRzFCw2nDe8d5z77y8hSNF9wLDGiqxmrmUS1PKpe+hAW
-	ujDOzCmQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+TKRKdJyVPQnXrud/UFhZyJn/bFLsStYMULRC9lmJOg=; b=HTewYFiqVyJc8dhh3seaAYheGD
+	WpT4DJE4R4lKFi/GuFn3Uul48L6/ZdKyLBbXvrawskh8eLDl+ERrwd9vWMLnxjyqcS/Wd+04BR7iv
+	ilucqacai3/MhOarxhY4yRygyODVjt0EbG8GUsuBe45GTL7v0pen3ieP+9VKEbuYVYTKDpzfxTMo9
+	SQ4o4BIwmFj9Kwi6dIg+5+UiZ97XH9+NadMouFaJ5ZYxHOv6/VDC+2ce3WIVidGnl6WlrclfTn3M2
+	AygdGI8GQvPuOEOJSJCtPDFlWEfXLDE8XtKgaKvjqs/KK24YOEHX0ifrS78Ty46F4K+Gmypb3JZ7Y
+	QBKXcQuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZXmy-005b60-2I;
-	Fri, 25 Aug 2023 14:27:52 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qZXpb-005bV2-1W;
+	Fri, 25 Aug 2023 14:30:35 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZXmt-005b56-32;
-	Fri, 25 Aug 2023 14:27:49 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id CCB4E61B0D;
-	Fri, 25 Aug 2023 14:27:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD22AC433C7;
-	Fri, 25 Aug 2023 14:27:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1692973666;
-	bh=UksBdrJBzm/E55qDKqtkZMez6Zo0v+Z97iw2xCA3TEk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LyZP72FBnStze+r9BnWyPApB1h7vLsXBKgwj5SOM62pRh892THuUfVJmFjcSERomT
-	 UN2YBoMdNNbvaJGrPgGwj/Vw3PYx3amtGKZGeFHeU4Vpem/NFeFF7cH+YEazBTsx0T
-	 +CSPYYEMxo9j9g0eEvFJRMcu4EaFjRP5fkAGCD1a8Cy7q1dKyN1cPrpWYagRTOHfjk
-	 vBtgySlby3pkTX1E1zhiynTYIyxthE2T6nIwUZ6LElorgVPCr/89BkTNynwJ5IlzMx
-	 SAi2tjLW9N7ZtthyI733S0lREiTHCTRbSfxxXaax4/HWXYgaSie6M6emrXmt2VjGxI
-	 N7Zmo0VEOHb0A==
-Date: Fri, 25 Aug 2023 16:27:43 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Helen Mae Koike Fornazier <helen.koike@collabora.com>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>, 
-	Vignesh Raman <vignesh.raman@collabora.com>, dri-devel@lists.freedesktop.org, emma@anholt.net, 
-	linux-doc@vger.kernel.org, david.heidelberg@collabora.com, 
-	linux-amlogic@lists.infradead.org, jbrunet@baylibre.com, robdclark@google.com, corbet@lwn.net, 
-	khilman@baylibre.com, sergi.blanch.torne@collabora.com, gustavo.padovan@collabora.com, 
-	linux-rockchip@lists.infradead.org, daniels@collabora.com, martin.blumenstingl@googlemail.com, 
-	robclark@freedesktop.org, anholt@google.com, linux-mediatek@lists.infradead.org, 
-	matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, 
-	angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org, guilherme.gallo@collabora.com, 
-	linux-kernel@vger.kernel.org, tzimmermann@suse.de
-Subject: Re: [PATCH 2/6] drm: ci: Force db410c to host mode
-Message-ID: <5xlfrdnutrncqdyal36222ka7qkgbtrixm3cpjk6reb7xu6zwu@nyiowsjng5k6>
-References: <87pm3b2pkz.fsf@intel.com>
- <29c7-64e8b600-1-6afffd8@162524228>
+	id 1qZXpX-005bTd-35;
+	Fri, 25 Aug 2023 14:30:33 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-99bcc0adab4so125421566b.2;
+        Fri, 25 Aug 2023 07:30:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1692973829; x=1693578629;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+TKRKdJyVPQnXrud/UFhZyJn/bFLsStYMULRC9lmJOg=;
+        b=OQXrYSh/ZTaRcrWWA0vglXPp3TlsL1Ma7vpCxlFdwF1lEPdbMdGQ/tKMaMonLuwtO5
+         JABJFdxaAHTAHmpQ686SHGkxHl979MSfAFLV+3B5HIinjzcPUGnuPBGRlMn6pbEscsw4
+         b0PqksMuIqStaAEvnyVczSfPUB69oWqBDHLqH0RNamea7U8iC2tZ6nNFXK2HuYAt/32n
+         2kynjPi6lEJRwFgree9ATo/CaHaPlGM78Qu24dsK7wKNCKVFgt5H/HBeLRbk++6K2c1l
+         0MoGgedsO6+4cm5hC27BUve7gq5G1M1pu2ApSyFKqsJXzh2yWo+9u/FQYYSPKg4EXygz
+         Vhkg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692973829; x=1693578629;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=+TKRKdJyVPQnXrud/UFhZyJn/bFLsStYMULRC9lmJOg=;
+        b=JOeWGbWVf9Fs79I5NHT/azBNyK4bc2PM5HHta/tN5Rm00ptyS+TnBuNNABGld2dN+v
+         y6GEBBMVwxvotj4Jb4DTEs9Uu/lbG43jO4V/9DR6R/+aOknfdgs5bINjflNZ7LdMlwXy
+         wfx0onKNnHaXVkPpU2HAzPQ6K3njgNzu8Ut/UeBg63OGKoOiZx6KrVySHAdmkU9h4OyU
+         VsTpt6mXhsOq8vCi/dj2+KsJaXytKsfb8AiYRFc0qn0jER9/k8NLo80GLlyWKqrAyiIu
+         IBzcvBX9RohUL3KXw1lStQQCetDJrXMhv8CQSxGgsg+qt8Q5TNaU06mxH+Wc9Se7uiqF
+         Ukpg==
+X-Gm-Message-State: AOJu0YywpMicmWk4f6kks0udNFyTyFj0RvwabApP5RTEeTP7lY6YDjJY
+	cFaqVB2MG3A1fTTxaCETUwlLBdO4FSOjQSSAhUU=
+X-Google-Smtp-Source: AGHT+IEES/Rzsyvr1JvufABrAQWEAlPgt7MuBwIREScZLrLGFwNRoIXbaWrIdhd46oBepXht/zkQv0lQ0dAVqCGxlr0=
+X-Received: by 2002:a17:906:150:b0:9a1:d79a:418e with SMTP id
+ 16-20020a170906015000b009a1d79a418emr6028363ejh.40.1692973829204; Fri, 25 Aug
+ 2023 07:30:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uahdtp2khpso5z52"
-Content-Disposition: inline
-In-Reply-To: <29c7-64e8b600-1-6afffd8@162524228>
+References: <20230825122435.316272-1-vignesh.raman@collabora.com>
+ <20230825122435.316272-3-vignesh.raman@collabora.com> <87pm3b2pkz.fsf@intel.com>
+In-Reply-To: <87pm3b2pkz.fsf@intel.com>
+From: Rob Clark <robdclark@gmail.com>
+Date: Fri, 25 Aug 2023 07:30:17 -0700
+Message-ID: <CAF6AEGs4p0xXJjsNug45CFiP0n-5h7wpdy22YBryjrnWFROESg@mail.gmail.com>
+Subject: Re: [PATCH 2/6] drm: ci: Force db410c to host mode
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Cc: Vignesh Raman <vignesh.raman@collabora.com>, dri-devel@lists.freedesktop.org, 
+	emma@anholt.net, linux-doc@vger.kernel.org, david.heidelberg@collabora.com, 
+	linux-amlogic@lists.infradead.org, jbrunet@baylibre.com, robdclark@google.com, 
+	corbet@lwn.net, khilman@baylibre.com, sergi.blanch.torne@collabora.com, 
+	gustavo.padovan@collabora.com, linux-rockchip@lists.infradead.org, 
+	daniels@collabora.com, martin.blumenstingl@googlemail.com, 
+	robclark@freedesktop.org, helen.koike@collabora.com, anholt@google.com, 
+	linux-mediatek@lists.infradead.org, mripard@kernel.org, 
+	matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, 
+	angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org, 
+	guilherme.gallo@collabora.com, linux-kernel@vger.kernel.org, 
+	tzimmermann@suse.de
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_072748_081602_206B0074 
-X-CRM114-Status: GOOD (  29.39  )
+X-CRM114-CacheID: sfid-20230825_073032_003661_748DCC12 
+X-CRM114-Status: GOOD (  29.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,80 +98,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---uahdtp2khpso5z52
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi Helen,
-
-On Fri, Aug 25, 2023 at 03:09:04PM +0100, Helen Mae Koike Fornazier wrote:
-> Hi Jani, thanks for your comments
->=20
-> On Friday, August 25, 2023 10:56 -03, Jani Nikula <jani.nikula@linux.inte=
+On Fri, Aug 25, 2023 at 6:56=E2=80=AFAM Jani Nikula <jani.nikula@linux.inte=
 l.com> wrote:
->=20
-> > On Fri, 25 Aug 2023, Vignesh Raman <vignesh.raman@collabora.com> wrote:
-> > > Force db410c to host mode to fix network issue which results in failu=
-re
-> > > to mount root fs via NFS.
-> > > See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b8c1=
-5c80a54dda510743cefd1c4b65b8
-> > >
-> > > Since this fix is not sent upstream, add it to build.sh script
-> > > before building the kernel and dts. Better approach would be
-> > > to use devicetree overlays.
-> > >
-> > > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> > > ---
-> > >  drivers/gpu/drm/ci/build.sh | 4 ++++
-> > >  1 file changed, 4 insertions(+)
-> > >
-> > > diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
-> > > index 7b014287a041..c39834bd6bd7 100644
-> > > --- a/drivers/gpu/drm/ci/build.sh
-> > > +++ b/drivers/gpu/drm/ci/build.sh
-> > > @@ -70,6 +70,10 @@ if [ -z "$CI_MERGE_REQUEST_PROJECT_PATH" ]; then
-> > >      fi
-> > >  fi
-> > > =20
-> > > +# Force db410c to host mode to fix network issue which results in fa=
-ilure to mount root fs via NFS.
-> > > +# See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b=
-8c15c80a54dda510743cefd1c4b65b8
-> > > +sed -i '/&usb {/,/status =3D "okay";/s/status =3D "okay";/&\n\tdr_mo=
-de =3D "host";/' arch/arm64/boot/dts/qcom/apq8016-sbc.dts
-> > > +
-> >=20
-> > It seems like a really bad idea to me to have the CI build modify the
-> > source tree before building.
-> >=20
-> > The kernel being built will have a dirty git repo, and the localversion
-> > will have -dirty in it.
->=20
-> Is it bad?
->=20
-> The other option was to work with device tree overlays (but we still
-> need to spend some time to see how to fit it all together)
+>
+> On Fri, 25 Aug 2023, Vignesh Raman <vignesh.raman@collabora.com> wrote:
+> > Force db410c to host mode to fix network issue which results in failure
+> > to mount root fs via NFS.
+> > See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b8c15c=
+80a54dda510743cefd1c4b65b8
+> >
+> > Since this fix is not sent upstream, add it to build.sh script
+> > before building the kernel and dts. Better approach would be
+> > to use devicetree overlays.
+> >
+> > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> > ---
+> >  drivers/gpu/drm/ci/build.sh | 4 ++++
+> >  1 file changed, 4 insertions(+)
+> >
+> > diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
+> > index 7b014287a041..c39834bd6bd7 100644
+> > --- a/drivers/gpu/drm/ci/build.sh
+> > +++ b/drivers/gpu/drm/ci/build.sh
+> > @@ -70,6 +70,10 @@ if [ -z "$CI_MERGE_REQUEST_PROJECT_PATH" ]; then
+> >      fi
+> >  fi
+> >
+> > +# Force db410c to host mode to fix network issue which results in fail=
+ure to mount root fs via NFS.
+> > +# See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b8c=
+15c80a54dda510743cefd1c4b65b8
+> > +sed -i '/&usb {/,/status =3D "okay";/s/status =3D "okay";/&\n\tdr_mode=
+ =3D "host";/' arch/arm64/boot/dts/qcom/apq8016-sbc.dts
+> > +
+>
+> It seems like a really bad idea to me to have the CI build modify the
+> source tree before building.
+>
+> The kernel being built will have a dirty git repo, and the localversion
+> will have -dirty in it.
+>
+> I think it would be better to do out-of-tree builds and assume the
+> source is read-only.
 
-That would be much better. libfdt provides an fdtoverlay command to
-merge a base device tree with an overlay.
+We have the ${target_branch}-external-fixes mechanism to merge
+necessary changes before building the kernel for CI.  Which is
+necessary for a couple of reasons:
 
-Do that while setting up the DUT and you're done :)
+1) patches like this which aren't appropriate upstream but necessary
+due to the CI lab setup
+2) target branch if often based on an early -rc, and it isn't unheard
+of to need some fix for some board or another which isn't appropriate
+to land via drm-next
 
-Maxime
+We should use the -external-fixes branch mechanism for patches like this on=
+e.
 
---uahdtp2khpso5z52
-Content-Type: application/pgp-signature; name="signature.asc"
+BR,
+-R
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZOi6XwAKCRDj7w1vZxhR
-xSBKAQDfFOVdXMCZ/9a7sggeX0OzQ2xZtgSgfdTEVanD/QmKiAEAo93ffgaueCJa
-HBQKGvHTkvdsjLQGuuPJdVW683tzXAU=
-=kd8L
------END PGP SIGNATURE-----
-
---uahdtp2khpso5z52--
+> >  for opt in $ENABLE_KCONFIGS; do
+> >    echo CONFIG_$opt=3Dy >> drivers/gpu/drm/ci/${KERNEL_ARCH}.config
+> >  done
+>
+> Ditto for the config changes in the context here. Those are files in
+> git, don't change them.
+>
+> Shouldn't this use something like 'scripts/config --enable' or
+> 'scripts/config --disable' on the .config file to be used for building
+> instead?
+>
+>
+> BR,
+> Jani.
+>
+>
+> --
+> Jani Nikula, Intel Open Source Graphics Center
 
