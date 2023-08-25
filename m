@@ -4,107 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E433C88CB2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 01:52:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3726C6FA8F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 02:49:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DWLhpWKTuJ/+RpYHbnTOi50aZ6LnaGdh4R08Ifp1NrU=; b=45OfR4Y5XBL2Zpn+TFxFbnTywQ
-	axJ/KP5syXdzucmjnjpqdAOnK8rvgS48bubmQJpJuT2CiPw/+oxyJJGhK/YxoX5tYeD4TzG9Xe/zi
-	mY/HBnAun5QpRFwvGDydNwCKVe69sqEXYa2q2cvmFugG/koLaCYy519nqmAcoh37Mhl4ICT8ABoth
-	jW56Mv3DQdvg8K5Lf0IW3G9fW+8qTI8Avydmqv4c5Goli/5tGpvaUfqY+6CWfUxQ6telMxif7XbP7
-	gsh1kuNvPygkTCs2f/hNKlfJPi3bB/vF4ipfG5PGIicA9dvp6X5mdmUKakZNXqgSbmCw/uf98d2df
-	f28UWkzw==;
+	bh=FkR+gqGCuuesY9WOQbPQ2Y2ld+iDLFnZPn/SNaXxV5E=; b=ShE/G/2qo1279V0Op4iP9dVptL
+	Ml+LKJ0cc9+pev4KWFY8lA2udWM8XpY7yz9Q0yTg4MxR3tMa5OxS368R2CaHB1IeFxr7JhAihkasd
+	tRJBE6/uG1fI9OUNAe5hNovvKZdr2bRpAVRhWZwRQRnk2IjR37xrINSFV5KBbEr5t89COC5yul+7U
+	qNN90pybr/mFgoJWF7e/gOwAb3FUk4G1Y48NHL9g5MxGbizmXsTk1tO87Qyldnbl2fz5cDW0m07gS
+	nLrYlR8XBTYwqfkfTU+kZAmKbb18FNEmA8sPcp6MhrHIwJ5p8hcz3SahtSajGJ5g6ku8gJA6A5NoL
+	WblGj7sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZLzY-0045z0-25;
-	Fri, 25 Aug 2023 01:52:04 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1qZMtS-0049W8-28;
+	Fri, 25 Aug 2023 02:49:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZLzU-0045wh-1E
-	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Aug 2023 01:52:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1692928313;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=DWLhpWKTuJ/+RpYHbnTOi50aZ6LnaGdh4R08Ifp1NrU=;
-	b=NZzTFrC4getleKvRlBoMfp+11zChfIkoj52mFkAZkixS2XmxRBQghNxsrUIPP8KATYLWIt
-	/Vn7TaHyjEm03tHcqxX5Jh7ijKzJ0CxhiuCTOTbRPefxHfmuElm6bmGQkmpC80DqAg6+Qt
-	ngsjkexD42NCiUNgyICADsORr60gcR8=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-407-JGVt0EQEOAGGRDibYbAf-A-1; Thu, 24 Aug 2023 21:51:51 -0400
-X-MC-Unique: JGVt0EQEOAGGRDibYbAf-A-1
-Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-406afc93066so13863811cf.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 24 Aug 2023 18:51:51 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692928310; x=1693533110;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DWLhpWKTuJ/+RpYHbnTOi50aZ6LnaGdh4R08Ifp1NrU=;
-        b=l6+9GaoGoDusngGsTOVqVMtY8GBm0uC9319Y4zv6ZytQKy+wBFwDn80OurWQ+yr1P+
-         aS1B+uF5+Vn9KDuYqrZjD1ocML7aqzPr9x+mkJojBNHBCidMpHVBespuwedksPBtNtix
-         xxjLzjC0XwgxPlZsAwuoomExlvRMZ4Bt/E4/MAH7rWAJjzgCN5O+a8/aMRvLc8DiwKKs
-         d2dWRxRiYA9S9v6uOsad+aMdvGNe8E51L/VK2+wIYdYoe8ApH+FNKzfeE9ZyHlfwcRC7
-         XmxZEu7n/GdMhgvpXibJlpsZsRCOzNdvCoGEbcv3mZYu+swgqY+3sWioVNxYs5WE66yc
-         winw==
-X-Gm-Message-State: AOJu0YxNA0g+8LwZDqQ7TFb3XkrAMfzyEFiK1chGEii2wUOxhLWR6H7K
-	GNt2fHNxxMd+vOplziUS2gBNmcxDobvsaZ6P3vVN5TyyhbpAvDMXOKmxJbrPHUTMZP8PQwkWFHo
-	R5LQVfH1ExeuCWu5/BUqy2iDcbg4H3zRd
-X-Received: by 2002:ac8:59d6:0:b0:400:8613:5378 with SMTP id f22-20020ac859d6000000b0040086135378mr20752390qtf.20.1692928310738;
-        Thu, 24 Aug 2023 18:51:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHSb6TqK3YZra5FavtOfFBMuLIN1bj8qAZDBsTSTbyHb3Qk54OyKXOKpdirNK5+OZKcbYX2cg==
-X-Received: by 2002:ac8:59d6:0:b0:400:8613:5378 with SMTP id f22-20020ac859d6000000b0040086135378mr20752335qtf.20.1692928310369;
-        Thu, 24 Aug 2023 18:51:50 -0700 (PDT)
-Received: from localhost (ip98-179-76-75.ph.ph.cox.net. [98.179.76.75])
-        by smtp.gmail.com with ESMTPSA id i17-20020ac860d1000000b00405447ee5e8sm224859qtm.55.2023.08.24.18.51.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Aug 2023 18:51:49 -0700 (PDT)
-Date: Thu, 24 Aug 2023 18:51:48 -0700
-From: Jerry Snitselaar <jsnitsel@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Bjorn Andersson <andersson@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Christophe Leroy <christophe.leroy@csgroup.eu>, Gerald Schaefer <gerald.schaefer@linux.ibm.com>, 
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>, 
-	Kevin Tian <kevin.tian@intel.com>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
-	Russell King <linux@armlinux.org.uk>, linuxppc-dev@lists.ozlabs.org, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
-	Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, 
-	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>, 
-	Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>, 
-	Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Lu Baolu <baolu.lu@linux.intel.com>, 
-	Dmitry Osipenko <digetx@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
-	Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle <schnelle@linux.ibm.com>, 
-	Steven Price <steven.price@arm.com>, Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v7 02/24] iommu: Add IOMMU_DOMAIN_PLATFORM
-Message-ID: <hbmfqpq2oyjjz3loccfbslpalzhlsyr2w3bpx6qasq23kyrfso@e6kry74ifgnt>
-References: <0-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
- <2-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+	id 1qZMtP-0049Ug-1N;
+	Fri, 25 Aug 2023 02:49:48 +0000
+X-UUID: 08f67f0c42f211ee912e1518a6540028-20230824
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FkR+gqGCuuesY9WOQbPQ2Y2ld+iDLFnZPn/SNaXxV5E=;
+	b=rlkiXgRW/bLiUpog44+AkuH3giEEFEc91R+Ks2U6wSllmZZpFCqx+3i3+W31cjYrnT4NiI+nllAuDs3OvtsxD1FmpZVWN1KoBfP+CGodzIpKGCDvcxZ4voXkGjFXFgNPYgXQHHMxOZ/jzUE3nVp2pmr4LPYlYhkFhC/jbKJNyXY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:f738478b-0d8a-453b-8e52-422b05194c6e,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:70
+X-CID-INFO: VERSION:1.1.31,REQID:f738478b-0d8a-453b-8e52-422b05194c6e,IP:0,URL
+	:0,TC:0,Content:-25,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTI
+	ON:quarantine,TS:70
+X-CID-META: VersionHash:0ad78a4,CLOUDID:0cd32a13-4929-4845-9571-38c601e9c3c9,B
+	ulkID:230825104941705ZIRQ1,BulkQuantity:1,Recheck:0,SF:17|19|48|38|29|28,T
+	C:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_ASC,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,TF_CID_SPAM_SNR,
+	TF_CID_SPAM_SDM
+X-UUID: 08f67f0c42f211ee912e1518a6540028-20230824
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <trevor.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1823013196; Thu, 24 Aug 2023 19:49:39 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 25 Aug 2023 10:49:36 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 25 Aug 2023 10:49:36 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
+	<perex@perex.cz>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>
+Subject: [RESEND,v3 1/3] ASoC: mediatek: mt8188-mt6359: support dynamic pinctrl
+Date: Fri, 25 Aug 2023 10:49:33 +0800
+Message-ID: <20230825024935.10878-2-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230825024935.10878-1-trevor.wu@mediatek.com>
+References: <20230825024935.10878-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <2-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230824_185200_539550_D202C0C7 
-X-CRM114-Status: GOOD (  31.66  )
+X-CRM114-CacheID: sfid-20230824_194947_470034_64949395 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,142 +90,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 23, 2023 at 01:47:16PM -0300, Jason Gunthorpe wrote:
-> This is used when the iommu driver is taking control of the dma_ops,
-> currently only on S390 and power spapr. It is designed to preserve the
-> original ops->detach_dev() semantic that these S390 was built around.
-> 
-> Provide an opaque domain type and a 'default_domain' ops value that allows
-> the driver to trivially force any single domain as the default domain.
-> 
-> Update iommufd selftest to use this instead of set_platform_dma_ops
-> 
-> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  drivers/iommu/iommu.c            | 13 +++++++++++++
->  drivers/iommu/iommufd/selftest.c | 14 +++++---------
->  include/linux/iommu.h            |  6 ++++++
->  3 files changed, 24 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-> index 33bd1107090720..7cedb0640290c8 100644
-> --- a/drivers/iommu/iommu.c
-> +++ b/drivers/iommu/iommu.c
-> @@ -184,6 +184,8 @@ static const char *iommu_domain_type_str(unsigned int t)
->  	case IOMMU_DOMAIN_DMA:
->  	case IOMMU_DOMAIN_DMA_FQ:
->  		return "Translated";
-> +	case IOMMU_DOMAIN_PLATFORM:
-> +		return "Platform";
->  	default:
->  		return "Unknown";
->  	}
-> @@ -1752,6 +1754,17 @@ iommu_group_alloc_default_domain(struct iommu_group *group, int req_type)
->  
->  	lockdep_assert_held(&group->mutex);
->  
-> +	/*
-> +	 * Allow legacy drivers to specify the domain that will be the default
-> +	 * domain. This should always be either an IDENTITY or PLATFORM domain.
-> +	 * Do not use in new drivers.
-> +	 */
+To avoid power leakage, it is recommended to replace the default pinctrl
+state with dynamic pinctrl since certain audio pinmux functions can
+remain in a HIGH state even when audio is disabled. Linking pinctrl with
+DAPM using SND_SOC_DAPM_PINCTRL will ensure that audio pins remain in
+GPIO mode by default and only switch to an audio function when necessary.
 
-Would it be worthwhile to mention this in iommu.h for the iommu_ops default_domain?
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ sound/soc/mediatek/mt8188/mt8188-mt6359.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-> +	if (bus->iommu_ops->default_domain) {
-> +		if (req_type)
-> +			return ERR_PTR(-EINVAL);
-> +		return bus->iommu_ops->default_domain;
-> +	}
-> +
->  	if (req_type)
->  		return __iommu_group_alloc_default_domain(bus, group, req_type);
->  
-> diff --git a/drivers/iommu/iommufd/selftest.c b/drivers/iommu/iommufd/selftest.c
-> index d48a202a7c3b81..fb981ba97c4e87 100644
-> --- a/drivers/iommu/iommufd/selftest.c
-> +++ b/drivers/iommu/iommufd/selftest.c
-> @@ -281,14 +281,6 @@ static bool mock_domain_capable(struct device *dev, enum iommu_cap cap)
->  	return cap == IOMMU_CAP_CACHE_COHERENCY;
->  }
->  
-> -static void mock_domain_set_plaform_dma_ops(struct device *dev)
-> -{
-> -	/*
-> -	 * mock doesn't setup default domains because we can't hook into the
-> -	 * normal probe path
-> -	 */
-> -}
-> -
->  static struct iommu_device mock_iommu_device = {
->  };
->  
-> @@ -298,12 +290,16 @@ static struct iommu_device *mock_probe_device(struct device *dev)
->  }
->  
->  static const struct iommu_ops mock_ops = {
-> +	/*
-> +	 * IOMMU_DOMAIN_BLOCKED cannot be returned from def_domain_type()
-> +	 * because it is zero.
-> +	 */
-> +	.default_domain = &mock_blocking_domain,
->  	.owner = THIS_MODULE,
->  	.pgsize_bitmap = MOCK_IO_PAGE_SIZE,
->  	.hw_info = mock_domain_hw_info,
->  	.domain_alloc = mock_domain_alloc,
->  	.capable = mock_domain_capable,
-> -	.set_platform_dma_ops = mock_domain_set_plaform_dma_ops,
->  	.device_group = generic_device_group,
->  	.probe_device = mock_probe_device,
->  	.default_domain_ops =
-> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
-> index d0920b2a9f1c0e..48a18b6e07abff 100644
-> --- a/include/linux/iommu.h
-> +++ b/include/linux/iommu.h
-> @@ -64,6 +64,7 @@ struct iommu_domain_geometry {
->  #define __IOMMU_DOMAIN_DMA_FQ	(1U << 3)  /* DMA-API uses flush queue    */
->  
->  #define __IOMMU_DOMAIN_SVA	(1U << 4)  /* Shared process address space */
-> +#define __IOMMU_DOMAIN_PLATFORM	(1U << 5)
->  
->  #define IOMMU_DOMAIN_ALLOC_FLAGS ~__IOMMU_DOMAIN_DMA_FQ
->  /*
-> @@ -81,6 +82,8 @@ struct iommu_domain_geometry {
->   *				  invalidation.
->   *	IOMMU_DOMAIN_SVA	- DMA addresses are shared process addresses
->   *				  represented by mm_struct's.
-> + *	IOMMU_DOMAIN_PLATFORM	- Legacy domain for drivers that do their own
-> + *				  dma_api stuff. Do not use in new drivers.
->   */
->  #define IOMMU_DOMAIN_BLOCKED	(0U)
->  #define IOMMU_DOMAIN_IDENTITY	(__IOMMU_DOMAIN_PT)
-> @@ -91,6 +94,7 @@ struct iommu_domain_geometry {
->  				 __IOMMU_DOMAIN_DMA_API |	\
->  				 __IOMMU_DOMAIN_DMA_FQ)
->  #define IOMMU_DOMAIN_SVA	(__IOMMU_DOMAIN_SVA)
-> +#define IOMMU_DOMAIN_PLATFORM	(__IOMMU_DOMAIN_PLATFORM)
->  
->  struct iommu_domain {
->  	unsigned type;
-> @@ -262,6 +266,7 @@ struct iommu_iotlb_gather {
->   * @owner: Driver module providing these ops
->   * @identity_domain: An always available, always attachable identity
->   *                   translation.
-> + * @default_domain: If not NULL this will always be set as the default domain.
->   */
->  struct iommu_ops {
->  	bool (*capable)(struct device *dev, enum iommu_cap);
-> @@ -297,6 +302,7 @@ struct iommu_ops {
->  	unsigned long pgsize_bitmap;
->  	struct module *owner;
->  	struct iommu_domain *identity_domain;
-> +	struct iommu_domain *default_domain;
->  };
->  
->  /**
-> -- 
-> 2.41.0
-> 
+diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+index 7c9e08e6a4f5..e7ac2b6671d3 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
++++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
+@@ -246,6 +246,11 @@ static const struct snd_soc_dapm_widget mt8188_mt6359_widgets[] = {
+ 	SND_SOC_DAPM_MIC("Headset Mic", NULL),
+ 	SND_SOC_DAPM_SINK("HDMI"),
+ 	SND_SOC_DAPM_SINK("DP"),
++
++	/* dynamic pinctrl */
++	SND_SOC_DAPM_PINCTRL("ETDM_SPK_PIN", "aud_etdm_spk_on", "aud_etdm_spk_off"),
++	SND_SOC_DAPM_PINCTRL("ETDM_HP_PIN", "aud_etdm_hp_on", "aud_etdm_hp_off"),
++	SND_SOC_DAPM_PINCTRL("MTKAIF_PIN", "aud_mtkaif_on", "aud_mtkaif_off"),
+ };
+ 
+ static const struct snd_kcontrol_new mt8188_mt6359_controls[] = {
+@@ -267,6 +272,7 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+ 		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
+ 	struct snd_soc_component *cmpnt_codec =
+ 		asoc_rtd_to_codec(rtd, 0)->component;
++	struct snd_soc_dapm_widget *pin_w = NULL, *w;
+ 	struct mtk_base_afe *afe;
+ 	struct mt8188_afe_private *afe_priv;
+ 	struct mtkaif_param *param;
+@@ -306,6 +312,18 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+ 		return 0;
+ 	}
+ 
++	for_each_card_widgets(rtd->card, w) {
++		if (!strcmp(w->name, "MTKAIF_PIN")) {
++			pin_w = w;
++			break;
++		}
++	}
++
++	if (pin_w)
++		dapm_pinctrl_event(pin_w, NULL, SND_SOC_DAPM_PRE_PMU);
++	else
++		dev_dbg(afe->dev, "%s(), no pinmux widget, please check if default on\n", __func__);
++
+ 	pm_runtime_get_sync(afe->dev);
+ 	mt6359_mtkaif_calibration_enable(cmpnt_codec);
+ 
+@@ -403,6 +421,9 @@ static int mt8188_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
+ 	for (i = 0; i < MT8188_MTKAIF_MISO_NUM; i++)
+ 		param->mtkaif_phase_cycle[i] = mtkaif_phase_cycle[i];
+ 
++	if (pin_w)
++		dapm_pinctrl_event(pin_w, NULL, SND_SOC_DAPM_POST_PMD);
++
+ 	dev_dbg(afe->dev, "%s(), end, calibration ok %d\n",
+ 		__func__, param->mtkaif_calibration_ok);
+ 
+-- 
+2.18.0
 
 
