@@ -4,47 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A9F0C3DA66
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 15:06:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E670C3DA6F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Aug 2023 15:34:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Subject:Message-ID:MIME-Version:To:Cc:Date:Content-Type:In-Reply-To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=krbe/WzWAjej+DI0iSje27nwNUEQ89RbPcXR2sMoYlI=; b=zhLU75+g6175l8c8N1xn7k+jXB
-	fhqPtSbHP6zH9rdVrW79M22A2IBn1lqB4A+WrSG8myDSk7iF6nV21SclWmEHb13bEJHbQOHybZbSt
-	8PznfxCnZHlvfhWwa8TJLTpd1JvNCyw7UtD3YtmSbFwtjQhGd70tz0UpLL0xjAHDJYGaTE60ffszF
-	dIdaKo11AkTnJmV2SvyQHQH7T6wUo0oGwtLoiH2g2mCx423qxRPqKfT0h410TvhVwIX2VJzusg/52
-	QEuMwgV5W5KcYlWZKKDuR7gJ31IPaqadxnKwAO5RiFhPCfnfBMDvHGDZHbueeoYxPGJO4wBzQ7I8Y
-	fFmdeonQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0KMHJfVKqsnEpIYeqoJoT1KgaL3H+SDQE7CamuBjTL0=; b=FVNK50Kf7SSptzWYcdGx2OCs+F
+	zSOfwG/4RlkzVDcnRunjm1gZKYwXtEgfN6euT9EzzhfBXxmpU7ViDYrpRVKf/+LcLL4SlEqWtSPqT
+	Wu9DjbdP+dsrb/F8fXtOqS6plXJnt5nNtn6DsATXokefkveZbUq2Sj1Rz3AC4qGVro9qSj2wmFK0N
+	lVOTTS9u4hEk47n5hDfFBKAScRivC7zh5xqUPW4zr4SCn3kB06J9CQk1fuiXQFeW1kmzYidy4l2Ht
+	9Nhs1YcRKoQvLJIIUZa8YXqsQFZqIzMJbU/qdeCuKl4GRfTFWVHMjMLFv5w8rcnAYKPgr+Wuapguj
+	mR3cwiug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZYO4-005e4r-2A;
-	Fri, 25 Aug 2023 15:06:12 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qZYpP-005grL-1V;
+	Fri, 25 Aug 2023 15:34:27 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZYNy-005e3s-0c;
-	Fri, 25 Aug 2023 15:06:10 +0000
-Received: from hamburger.collabora.co.uk (hamburger.collabora.co.uk [IPv6:2a01:4f8:1c1c:f269::1])
-	by madras.collabora.co.uk (Postfix) with ESMTP id 6E9BA6607285;
-	Fri, 25 Aug 2023 16:06:01 +0100 (BST)
-From: "Helen Mae Koike Fornazier" <helen.koike@collabora.com>
-In-Reply-To: <CAF6AEGsdR4XMQ73mwNEE-fntPFLbQrxmzdoWchjReoVXKexdVw@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-X-Forward: 127.0.0.1
-Date: Fri, 25 Aug 2023 16:06:01 +0100
-Cc: "Jani Nikula" <jani.nikula@linux.intel.com>, "Vignesh Raman" <vignesh.raman@collabora.com>, dri-devel@lists.freedesktop.org, emma@anholt.net, linux-doc@vger.kernel.org, david.heidelberg@collabora.com, linux-amlogic@lists.infradead.org, jbrunet@baylibre.com, robdclark@google.com, corbet@lwn.net, khilman@baylibre.com, sergi.blanch.torne@collabora.com, gustavo.padovan@collabora.com, linux-rockchip@lists.infradead.org, daniels@collabora.com, martin.blumenstingl@googlemail.com, robclark@freedesktop.org, anholt@google.com, linux-mediatek@lists.infradead.org, mripard@kernel.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org, guilherme.gallo@collabora.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de
-To: "Rob Clark" <robdclark@gmail.com>
+	id 1qZYpL-005gqo-1t;
+	Fri, 25 Aug 2023 15:34:25 +0000
+Received: from [IPV6:2a01:e0a:120:3210:2dee:15f0:cfc3:3cd5] (unknown [IPv6:2a01:e0a:120:3210:2dee:15f0:cfc3:3cd5])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7FDCE660725E;
+	Fri, 25 Aug 2023 16:34:18 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1692977659;
+	bh=CBKe/NVdZbzitVrTSsyh2xKdG8S8gYJrAaysQDniztE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=YlnB7ll7pJGfXX++LNsPl6V43qmCwf0p3rjW0MUYZy5/x+id10SMY7HQFDJfPWJdp
+	 OVnwwh8BoN4p+r9sAnfjGIY1MQOe0SKxuI19lrf/bYnmoF/9IzNCDHDt/Vj9Jfa7Qn
+	 qUJvbG4tD3L2ZEHygCL+QAu5abf5nk1uGsfkbndYzxL2wN6BcyVXOdXp1xgMQYUGIq
+	 9rON2LnbBv8pQSc5rI7vUwVJu2gZX/J1BepAAvhxVN6fgZ/d3mdmS/Z9zVljRa/5gE
+	 al+qg8yGstW6qyTxtQ9oVOj0yqd0FqELCVx0k3+fTqAsH2R83FRcs/2Fae39CrVd6/
+	 1ZcrTqNEmmE8Q==
+Message-ID: <d4121940-e19f-8ed9-663b-01a4bbab0df1@collabora.com>
+Date: Fri, 25 Aug 2023 17:34:16 +0200
 MIME-Version: 1.0
-Message-ID: <3f08-64e8c380-3-f083520@11689262>
-Subject: =?utf-8?q?Re=3A?= [PATCH 2/6] =?utf-8?q?drm=3A?==?utf-8?q?_ci=3A?= Force 
- db410c to host mode
-User-Agent: SOGoMail 5.8.4
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v5 10/10] media: v4l2: Add mem2mem helpers for DELETE_BUFS
+ ioctl
+To: kernel test robot <lkp@intel.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+ nicolas.dufresne@collabora.com
+Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ kernel@collabora.com
+References: <20230824092133.39510-11-benjamin.gaignard@collabora.com>
+ <202308251828.fSyIXACx-lkp@intel.com>
+Content-Language: en-US
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <202308251828.fSyIXACx-lkp@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230825_080606_487261_8ED8F673 
-X-CRM114-Status: GOOD (  37.64  )
+X-CRM114-CacheID: sfid-20230825_083423_902055_27065944 
+X-CRM114-Status: GOOD (  14.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,135 +84,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Friday, August 25, 2023 11:41 -03, Rob Clark <robdclark@gmail.com> w=
-rote:
 
-> On Fri, Aug 25, 2023 at 7:34=E2=80=AFAM Helen Mae Koike Fornazier
-> <helen.koike@collabora.com> wrote:
-> >
-> > On Friday, August 25, 2023 11:30 -03, Rob Clark <robdclark@gmail.co=
-m> wrote:
-> >
-> > > On Fri, Aug 25, 2023 at 6:56=E2=80=AFAM Jani Nikula <jani.nikula@=
-linux.intel.com> wrote:
-> > > >
-> > > > On Fri, 25 Aug 2023, Vignesh Raman <vignesh.raman@collabora.com=
-> wrote:
-> > > > > Force db410c to host mode to fix network issue which results =
-in failure
-> > > > > to mount root fs via NFS.
-> > > > > See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72=
-a629b8c15c80a54dda510743cefd1c4b65b8
-> > > > >
-> > > > > Since this fix is not sent upstream, add it to build.sh scrip=
-t
-> > > > > before building the kernel and dts. Better approach would be
-> > > > > to use devicetree overlays.
-> > > > >
-> > > > > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> > > > > ---
-> > > > >  drivers/gpu/drm/ci/build.sh | 4 ++++
-> > > > >  1 file changed, 4 insertions(+)
-> > > > >
-> > > > > diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci=
-/build.sh
-> > > > > index 7b014287a041..c39834bd6bd7 100644
-> > > > > --- a/drivers/gpu/drm/ci/build.sh
-> > > > > +++ b/drivers/gpu/drm/ci/build.sh
-> > > > > @@ -70,6 +70,10 @@ if [ -z "$CI=5FMERGE=5FREQUEST=5FPROJECT=5F=
-PATH" ]; then
-> > > > >      fi
-> > > > >  fi
-> > > > >
-> > > > > +# Force db410c to host mode to fix network issue which resul=
-ts in failure to mount root fs via NFS.
-> > > > > +# See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/c=
-b72a629b8c15c80a54dda510743cefd1c4b65b8
-> > > > > +sed -i '/&usb {/,/status =3D "okay";/s/status =3D "okay";/&\=
-n\tdr=5Fmode =3D "host";/' arch/arm64/boot/dts/qcom/apq8016-sbc.dts
-> > > > > +
-> > > >
-> > > > It seems like a really bad idea to me to have the CI build modi=
-fy the
-> > > > source tree before building.
-> > > >
-> > > > The kernel being built will have a dirty git repo, and the loca=
-lversion
-> > > > will have -dirty in it.
-> > > >
-> > > > I think it would be better to do out-of-tree builds and assume =
-the
-> > > > source is read-only.
-> > >
-> > > We have the ${target=5Fbranch}-external-fixes mechanism to merge
-> > > necessary changes before building the kernel for CI.  Which is
-> > > necessary for a couple of reasons:
-> >
-> > Should we create an official topic/drm-ci-external-fixes branch ?
->=20
-> Hmm, maybe.. I guess as we expand this to more driver trees, and want
-> to be able to re-run CI in the drm tree after merges to
-> drm-next/drm-fixes, we maybe want to have central
-> drm-next-external-fixes and drm-fixes-external-fixes.  I guess we can
-> keep those based on drm-next and drm-fixes?  And if there would be
-> conflicts because, say, ${driver}-next is behind drm-next, then
-> ${driver}-next could be rebased on drm-next?
->=20
+Le 25/08/2023 à 12:29, kernel test robot a écrit :
+> Hi Benjamin,
 
-tbh this is one of the reasons I would prefer in-code fixes instead of
-commits on a -external-fixes branch, since it seems things start to bec=
-ome
-complex to manage all different trees for people executing ci tests
-on different history points, but I don't oppose going for -external-fix=
-es
-either.
+Damned I have forgot this configuration flag when rebasing my code after 
+holidays...
+
+It will be fixed for v6 but I will wait for more comments before send it.
 
 Regards,
-Helen
 
-> BR,
-> -R
->=20
-> > Regards,
-> > Helen
-> >
-> > >
-> > > 1) patches like this which aren't appropriate upstream but necess=
-ary
-> > > due to the CI lab setup
-> > > 2) target branch if often based on an early -rc, and it isn't unh=
-eard
-> > > of to need some fix for some board or another which isn't appropr=
-iate
-> > > to land via drm-next
-> > >
-> > > We should use the -external-fixes branch mechanism for patches li=
-ke this one.
-> > >
-> > > BR,
-> > > -R
-> > >
-> > > > >  for opt in $ENABLE=5FKCONFIGS; do
-> > > > >    echo CONFIG=5F$opt=3Dy >> drivers/gpu/drm/ci/${KERNEL=5FAR=
-CH}.config
-> > > > >  done
-> > > >
-> > > > Ditto for the config changes in the context here. Those are fil=
-es in
-> > > > git, don't change them.
-> > > >
-> > > > Shouldn't this use something like 'scripts/config --enable' or
-> > > > 'scripts/config --disable' on the .config file to be used for b=
-uilding
-> > > > instead?
-> > > >
-> > > >
-> > > > BR,
-> > > > Jani.
-> > > >
-> > > >
-> > > > --
-> > > > Jani Nikula, Intel Open Source Graphics Center
-> >
+Benjamin
 
+>
+> kernel test robot noticed the following build errors:
+>
+> [auto build test ERROR on next-20230824]
+> [also build test ERROR on v6.5-rc7]
+> [cannot apply to linus/master v6.5-rc7 v6.5-rc6 v6.5-rc5]
+> [If your patch is applied to the wrong git tree, kindly drop us a note.
+> And when submitting patch, we suggest to use '--base' as documented in
+> https://git-scm.com/docs/git-format-patch#_base_tree_information]
+>
+> url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Rework-offset-cookie-encoding-pattern/20230824-172416
+> base:   next-20230824
+> patch link:    https://lore.kernel.org/r/20230824092133.39510-11-benjamin.gaignard%40collabora.com
+> patch subject: [PATCH v5 10/10] media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
+> config: alpha-randconfig-r005-20230825 (https://download.01.org/0day-ci/archive/20230825/202308251828.fSyIXACx-lkp@intel.com/config)
+> compiler: alpha-linux-gcc (GCC) 13.2.0
+> reproduce: (https://download.01.org/0day-ci/archive/20230825/202308251828.fSyIXACx-lkp@intel.com/reproduce)
+>
+> If you fix the issue in a separate patch/commit (i.e. not just a new version of
+> the same patch/commit), kindly add following tags
+> | Reported-by: kernel test robot <lkp@intel.com>
+> | Closes: https://lore.kernel.org/oe-kbuild-all/202308251828.fSyIXACx-lkp@intel.com/
+>
+> All errors (new ones prefixed by >>):
+>
+>>> drivers/media/test-drivers/vim2m.c:963:10: error: 'const struct v4l2_ioctl_ops' has no member named 'vidioc_delete_buf'; did you mean 'vidioc_delete_bufs'?
+>       963 |         .vidioc_delete_buf      = v4l2_m2m_ioctl_delete_buf,
+>           |          ^~~~~~~~~~~~~~~~~
+>           |          vidioc_delete_bufs
+>>> drivers/media/test-drivers/vim2m.c:963:35: error: 'v4l2_m2m_ioctl_delete_buf' undeclared here (not in a function); did you mean 'v4l2_m2m_ioctl_delete_bufs'?
+>       963 |         .vidioc_delete_buf      = v4l2_m2m_ioctl_delete_buf,
+>           |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+>           |                                   v4l2_m2m_ioctl_delete_bufs
+>
+>
+> vim +963 drivers/media/test-drivers/vim2m.c
+>
+>     942	
+>     943	static const struct v4l2_ioctl_ops vim2m_ioctl_ops = {
+>     944		.vidioc_querycap	= vidioc_querycap,
+>     945	
+>     946		.vidioc_enum_fmt_vid_cap = vidioc_enum_fmt_vid_cap,
+>     947		.vidioc_enum_framesizes = vidioc_enum_framesizes,
+>     948		.vidioc_g_fmt_vid_cap	= vidioc_g_fmt_vid_cap,
+>     949		.vidioc_try_fmt_vid_cap	= vidioc_try_fmt_vid_cap,
+>     950		.vidioc_s_fmt_vid_cap	= vidioc_s_fmt_vid_cap,
+>     951	
+>     952		.vidioc_enum_fmt_vid_out = vidioc_enum_fmt_vid_out,
+>     953		.vidioc_g_fmt_vid_out	= vidioc_g_fmt_vid_out,
+>     954		.vidioc_try_fmt_vid_out	= vidioc_try_fmt_vid_out,
+>     955		.vidioc_s_fmt_vid_out	= vidioc_s_fmt_vid_out,
+>     956	
+>     957		.vidioc_reqbufs		= v4l2_m2m_ioctl_reqbufs,
+>     958		.vidioc_querybuf	= v4l2_m2m_ioctl_querybuf,
+>     959		.vidioc_qbuf		= v4l2_m2m_ioctl_qbuf,
+>     960		.vidioc_dqbuf		= v4l2_m2m_ioctl_dqbuf,
+>     961		.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
+>     962		.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
+>   > 963		.vidioc_delete_buf	= v4l2_m2m_ioctl_delete_buf,
+>     964		.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
+>     965	
+>     966		.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
+>     967		.vidioc_streamoff	= v4l2_m2m_ioctl_streamoff,
+>     968	
+>     969		.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
+>     970		.vidioc_unsubscribe_event = v4l2_event_unsubscribe,
+>     971	};
+>     972	
+>
 
