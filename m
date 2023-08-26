@@ -4,80 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FE83C83F15
-	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Aug 2023 17:12:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 636FFC83F11
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Aug 2023 20:03:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lW5JiU3OBo1fpU5FFkkuisIRL20Eimt0nkU4ubNxKCc=; b=BAdl8wVJ0ZNfoXSNRBi+Pyrkwg
-	0nPjeRxzzla2Ebr9Ot6nvfBtQHRx2kv5fxAn/UO3O2/4te1LfCVshbgRhb07SkDifEj6fkndLgtTi
-	4qg3kZ+7ZCNeDL8qxdFJmjaMxKM39eeqH/pA8skwO20sxoTdkn4UC8bCh21me5qdFlmaof25nz4Nr
-	XYNCEf+zq2TVwvvMcd1YxiBR9Y7wMvMzoll0IFpFGte8erf5nmM1+u2hjajJNlElSFB8ua8yrTA5O
-	2ZQyL137rKgKMLMa5GP/HPFQkkcBbG3AnC0DNPa2sRm62kJmcsMpMrQHyQQEeUgux40buw8USF+gb
-	yguZ6yyQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GQ5BzufGSL4UAkknPNuB0vM626B5JVA0fFM3l7o7k+w=; b=nNzppKBGjBIKpystPtbZ92or/S
+	BDjcdQDow1+8DNzeChfNnFnPzopfOtdLY8vhKHaaMT+uDa0f4qvxsQMk/SmkUxK2/bd7Fcf5r6vIo
+	4AQYwdoeR4v9gTmTJ6fCsnhGNI7FKAKWzIXYtxx1qQd8dBNvo9te8CffM4MN4vl0oLhpvc0iEIRA9
+	4BkMO4OtTNxxr3ZIkumeuDFCUfBcsgo0fpF+P/jIMI2wX+mgjr0sz0bAdr+lkOIr/yip9hon6Lbau
+	44NDBM8sfom4hPAtFXYrt8wY+Z3iFFikd3q3ABL5juqJKWg+vj8UAzzAWn/IRPWuTi7h5gJRE/cRz
+	POJ+psDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZwpN-0074y3-2K;
-	Sat, 26 Aug 2023 17:12:01 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qZzVH-007Bte-0r;
+	Sat, 26 Aug 2023 20:03:27 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZwpK-0074xa-2p;
-	Sat, 26 Aug 2023 17:11:59 +0000
-X-UUID: a4df493e443311ee83ed1395ce914268-20230826
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=lW5JiU3OBo1fpU5FFkkuisIRL20Eimt0nkU4ubNxKCc=;
-	b=XLidcVyErnKrwBnMcnBZ5X4A4asghx6tHcizZqkUI2tQ81nl87Ks8lTnOY62LS+bo4+SiuUgV4EgNNmRslWWK5Y+AfkH0Al4yEKvEpyvNvjozoIDUxXz4ezLG3dKLH96wIb+42CDskQ0lqnOr9E8eBIOBwVeYfHjpWzcX0eyZ3A=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:f15a0753-929b-4277-8f06-635ccc9bf0f1,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:51,FILE:0,BULK:28,RULE:Release_Ham,ACTIO
-	N:release,TS:79
-X-CID-INFO: VERSION:1.1.31,REQID:f15a0753-929b-4277-8f06-635ccc9bf0f1,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:51,FILE:0,BULK:28,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:79
-X-CID-META: VersionHash:0ad78a4,CLOUDID:3560c71f-33fd-4aaa-bb43-d3fd68d9d5ae,B
-	ulkID:230824185604G6OMGZAT,BulkQuantity:57,Recheck:0,SF:48|64|29|28|17|19|
-	102,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40|20,QS:nil,BEC:ni
-	l,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,TF_CID_SPAM_OBB,TF_CID_SPAM_FCD,
-	TF_CID_SPAM_SNR,TF_CID_SPAM_SDM,TF_CID_SPAM_ASC
-X-UUID: a4df493e443311ee83ed1395ce914268-20230826
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <sharp.xia@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 430543731; Sat, 26 Aug 2023 10:11:49 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sun, 27 Aug 2023 01:11:46 +0800
-Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sun, 27 Aug 2023 01:11:46 +0800
-From: <Sharp.Xia@mediatek.com>
-To: <wenchao.chen666@gmail.com>
-CC: <Sharp.Xia@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-mmc@vger.kernel.org>,
-	<matthias.bgg@gmail.com>, <shawn.lin@rock-chips.com>,
-	<ulf.hansson@linaro.org>, <wsd_upstream@mediatek.com>
-Subject: Re: [PATCH 1/1] mmc: Set optimal I/O size when mmc_setip_queue
-Date: Sun, 27 Aug 2023 00:54:54 +0800
-Message-ID: <20230826165454.1196-1-Sharp.Xia@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <CA+Da2qxaCJwZhn0C7VxZzx8TB1VDR_xa2P0cDXUaNA9=YzSJYg@mail.gmail.com>
-References: <CA+Da2qxaCJwZhn0C7VxZzx8TB1VDR_xa2P0cDXUaNA9=YzSJYg@mail.gmail.com>
+	id 1qZzVE-007BtA-1K
+	for linux-mediatek@lists.infradead.org;
+	Sat, 26 Aug 2023 20:03:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de;
+ s=s31663417; t=1693080194; x=1693684994; i=lundril@gmx.de;
+ bh=VKmid4DgGwdhkduyFFOwkjxOAZ+7/XvDyZOOaVvaafk=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=Z/Wz3DSv2iGqskTDMScoquO/B+5EmamBn4A3EA6zRRUOF61rXDTs+K1QLiXghL/Ym4NK467
+ m1FN/dRyaz42ZXRBDO/CD2R2l/wHQT6HepEC6i5BssEz+rRvPh+DtzM6CXdlbo2qHOksNu9Mh
+ lrPY8YwrcD6A75YBvfuX0h1TYXL04cXnMMTcVmDVImFe6dwImrMREgjOHr3+WjK3IlC6ZF55K
+ Ax8LKB6msoTwiE3APxdWiyCwnAW7Egpcnu1AITaGPpBQ+CAsWbK2s9usz/SWekZnTW3fSTYBS
+ BAuqCVSW+RjpdqidEMWyiA2P3OKRdPFjyZFIiVWKTcYCh37PPNFw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from flatline.fritz.box ([82.135.64.125]) by mail.gmx.net (mrgmx005
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MsYqv-1pgmJl1trX-00ty7C; Sat, 26
+ Aug 2023 22:03:14 +0200
+From: Ingo Rohloff <lundril@gmx.de>
+To: Felix Fietkau <nbd@nbd.name>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-pci@vger.kernel.org,
+	Ingo Rohloff <lundril@gmx.de>
+Subject: [PATCH v2] wifi: mt76: mt7921e: Support MT7992 IP in Xiaomi Redmibook 15 Pro (2023)
+Date: Sat, 26 Aug 2023 22:02:41 +0200
+Message-Id: <20230826200241.5077-1-lundril@gmx.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-MTK: N
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:6HXsIeaGdaVYxWnfks5S8gUzsa+W+nEDtWV4ESWV1Ns7HZie/7y
+ RpEWLjRSlhjQLc5jDfIKxqgEMvuSG9lJvR5qt4Ni9LpkmdEZ5WdiOSJmsTG4InPFt8bKcoh
+ peqjtoUPRk5c8g4WzVD6srTLsv8HlaWO/6r1Zc3xhu4vSmgrNTBQNF3S92ZxpchPMHTQ9dL
+ qheb1QOi0prZEbnhAR8xA==
+UI-OutboundReport: notjunk:1;M01:P0:d7mXSTQLF/U=;lEF8NTLf8pBeUbRM8C2BfCfesw7
+ iA5qu7oEgHBFpEIAztmJW7rDLG0+k00WMqzalLJXj3XLF7XbNPtv7l5qACmEKdsnWkOHTbUtZ
+ kieytIjW7kt58XPd2tA0HEzuUU4uicwgI61IE5VxJYFMrig+eNkafxJXfVEKoDfXE+g9e9lRz
+ 4ijDHkeHLFflhFJpKLHUXJ36knSC3MumOVftRAzlevkLTF5nSOcwYv1i9Ms5NUiwd6hH+kGXs
+ 2y5qWZ9pGI4nCmtA+mrYdCYqvFSimdDTDKZ7wMnSWwq678lzkNyt2QNGsb2qSrrppJwdKuYuv
+ ikmgarYDKhGb5qj40tHjzY0IJwzHeuUDylFXFktSUep0qv8wsb07iPSLzAA884Qwlwcjk1xwT
+ 7gLtfe0CZ2zQy57Y35uWv8PyKuITJGlLkgblnV+wd0wJC6mlfDEOKikkZkqryoNDi9f9Wxhld
+ I87xlld9iIyr5TFpQI5pd3w+M8b2OXTmhz/PbhxckdZhHWYBiOhgUPA5HiOysOR9t+b8BDzBE
+ vX4SiFxYPZi5eK9kf4PidaRtSWXxJca8F9sUGNhjEYjpapsXX9qoOXfc8FjiTVNtOwKtNlKIy
+ cGRjfMR4g1hXOp4k0pRSmgtDX9YwVhjs8sBf/kpEYTZSoE35o8lZltHIZCw3RVBvMmXG2mxyn
+ mOnlHGxvvvJ8QzSLd9K8LKU4XSk4ICBhTW5gUeVjcbKWUwaUCuVm/hIFoTgDZg2YLMlrLS4Q3
+ GFVKl5gyUL4EAqv+PECahvY3qge62ZQINLkdvMt2fsGsKUH+995H0ShRV2VPzxxjSV04eosLh
+ /YpxqsMDre0fopVx/m/jHvYA+AEqKOm3B7S8axuLoHqWlcNCGGr/MFwhEI/v1kuPQ1JUJZhrU
+ u31nSDfr92i4o2dPsOIUPPHCgvmAjzhuStVebgddWUkGinZSfle9WT6ivEem8+Of54pdrgDzW
+ 2PI0x080g1BKgXRJ7kpU78UX14M=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230826_101158_926289_9DD15B6D 
-X-CRM114-Status: UNSURE (   7.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230826_130324_755735_F7ABB95F 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,17 +89,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2023-08-25 at 20:23 +0800, Wenchao Chen wrote:
-> 
-> 
-> Hi Sharp
-> Use "echo 1024 > sys/block/mmcblk0/queue/read_ahead_kb" instead of
-> "blk_queue_io_opt(mq->queue, host->max_req_size);"？
+In the Xiaomi Redmibook 15 Pro (2023) laptop I have got, a wifi chip is
+used, which according to its PCI Vendor ID is from "ITTIM Technology".
 
-Hi Wenchao,
+This chip works flawlessly with the mt7921e module.  The driver doesn't
+bind to this PCI device, because the Vendor ID from "ITTIM Technology" is
+not recognized.
 
-User space does not know the max_req_size of each mmc host.
-And when the SD card is hot inserted,
-it is complicated for the user space to modify this value.
+This patch adds the PCI Vendor ID from "ITTIM Technology" to the list of
+PCI Vendor IDs and lets the mt7921e driver bind to the mentioned wifi
+chip.
+
+Signed-off-by: Ingo Rohloff <lundril@gmx.de>
+=2D--
+Changes in v2:
+As requested, move the definition of the PCI Vendor ID for
+ITTIM Technology to the (hopefully) right place in pci_ids.h
+=2D--
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 2 ++
+ include/linux/pci_ids.h                         | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net=
+/wireless/mediatek/mt76/mt7921/pci.c
+index 95610a117d2f..ed5a220763ce 100644
+=2D-- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -17,6 +17,8 @@ static const struct pci_device_id mt7921_pci_device_tabl=
+e[] =3D {
+ 		.driver_data =3D (kernel_ulong_t)MT7921_FIRMWARE_WM },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7922),
+ 		.driver_data =3D (kernel_ulong_t)MT7922_FIRMWARE_WM },
++	{ PCI_DEVICE(PCI_VENDOR_ID_ITTIM, 0x7922),
++		.driver_data =3D (kernel_ulong_t)MT7922_FIRMWARE_WM },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0608),
+ 		.driver_data =3D (kernel_ulong_t)MT7921_FIRMWARE_WM },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0616),
+diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+index 2dc75df1437f..6ae1803bcd2f 100644
+=2D-- a/include/linux/pci_ids.h
++++ b/include/linux/pci_ids.h
+@@ -180,6 +180,8 @@
+ #define PCI_DEVICE_ID_BERKOM_A4T		0xffa4
+ #define PCI_DEVICE_ID_BERKOM_SCITEL_QUADRO	0xffa8
+
++#define PCI_VENDOR_ID_ITTIM		0x0b48
++
+ #define PCI_VENDOR_ID_COMPAQ		0x0e11
+ #define PCI_DEVICE_ID_COMPAQ_TOKENRING	0x0508
+ #define PCI_DEVICE_ID_COMPAQ_TACHYON	0xa0fc
+=2D-
+2.30.2
 
 
