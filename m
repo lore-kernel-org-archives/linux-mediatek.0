@@ -4,77 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 636FFC83F11
-	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Aug 2023 20:03:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5A5CC83F15
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Aug 2023 20:45:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GQ5BzufGSL4UAkknPNuB0vM626B5JVA0fFM3l7o7k+w=; b=nNzppKBGjBIKpystPtbZ92or/S
-	BDjcdQDow1+8DNzeChfNnFnPzopfOtdLY8vhKHaaMT+uDa0f4qvxsQMk/SmkUxK2/bd7Fcf5r6vIo
-	4AQYwdoeR4v9gTmTJ6fCsnhGNI7FKAKWzIXYtxx1qQd8dBNvo9te8CffM4MN4vl0oLhpvc0iEIRA9
-	4BkMO4OtTNxxr3ZIkumeuDFCUfBcsgo0fpF+P/jIMI2wX+mgjr0sz0bAdr+lkOIr/yip9hon6Lbau
-	44NDBM8sfom4hPAtFXYrt8wY+Z3iFFikd3q3ABL5juqJKWg+vj8UAzzAWn/IRPWuTi7h5gJRE/cRz
-	POJ+psDg==;
+	bh=tSQl0qidGsKfBylr7BZSO7Stx54RSZyMoElMCxG7bng=; b=FwnmOF05aymiHMUHWVrwTUUfkS
+	hTw+1ONphEhj6de9Pp2/SmV6iT1lgeTdhOgnRRmMC0i395LvUYspnGrHoXQJTMUHvHN0u0/48Ka8h
+	OuMy6w72P8Jgf1fUQi1X+0lORuXsQwJWkue2xLfJMaRVUE4jsAla9f8orQagnPpvZd170pJedkqIK
+	PjOFWAxz1Jhg3Oxqi4YsHQXEStZDFluPnxVdPJyn2ajZS6kzzPnuipsekQViKYSR6LkoleHyNmcg9
+	nYS8/90ju89HAfO17VkUjrFOW9q2DQE9cLWPd3sy9HPn1BgDxR/9kCvdmblnwrGBbhBm9J4rd1Esn
+	LHksH7VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZzVH-007Bte-0r;
-	Sat, 26 Aug 2023 20:03:27 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1qa09Y-007Dn9-2e;
+	Sat, 26 Aug 2023 20:45:04 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qZzVE-007BtA-1K
-	for linux-mediatek@lists.infradead.org;
-	Sat, 26 Aug 2023 20:03:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de;
- s=s31663417; t=1693080194; x=1693684994; i=lundril@gmx.de;
- bh=VKmid4DgGwdhkduyFFOwkjxOAZ+7/XvDyZOOaVvaafk=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
- b=Z/Wz3DSv2iGqskTDMScoquO/B+5EmamBn4A3EA6zRRUOF61rXDTs+K1QLiXghL/Ym4NK467
- m1FN/dRyaz42ZXRBDO/CD2R2l/wHQT6HepEC6i5BssEz+rRvPh+DtzM6CXdlbo2qHOksNu9Mh
- lrPY8YwrcD6A75YBvfuX0h1TYXL04cXnMMTcVmDVImFe6dwImrMREgjOHr3+WjK3IlC6ZF55K
- Ax8LKB6msoTwiE3APxdWiyCwnAW7Egpcnu1AITaGPpBQ+CAsWbK2s9usz/SWekZnTW3fSTYBS
- BAuqCVSW+RjpdqidEMWyiA2P3OKRdPFjyZFIiVWKTcYCh37PPNFw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from flatline.fritz.box ([82.135.64.125]) by mail.gmx.net (mrgmx005
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MsYqv-1pgmJl1trX-00ty7C; Sat, 26
- Aug 2023 22:03:14 +0200
-From: Ingo Rohloff <lundril@gmx.de>
-To: Felix Fietkau <nbd@nbd.name>,
-	Ryder Lee <ryder.lee@mediatek.com>
-Cc: linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-pci@vger.kernel.org,
-	Ingo Rohloff <lundril@gmx.de>
-Subject: [PATCH v2] wifi: mt76: mt7921e: Support MT7992 IP in Xiaomi Redmibook 15 Pro (2023)
-Date: Sat, 26 Aug 2023 22:02:41 +0200
-Message-Id: <20230826200241.5077-1-lundril@gmx.de>
-X-Mailer: git-send-email 2.30.2
+	id 1qa09V-007DmS-25;
+	Sat, 26 Aug 2023 20:45:03 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1qa09K-0004GO-0C;
+	Sat, 26 Aug 2023 20:44:50 +0000
+Date: Sat, 26 Aug 2023 21:44:31 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] pinctrl: mediatek: mt7981: add additional uart groups
+Message-ID: <11db447f257231e08065989100311df57b7f1f1c.1693082594.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:6HXsIeaGdaVYxWnfks5S8gUzsa+W+nEDtWV4ESWV1Ns7HZie/7y
- RpEWLjRSlhjQLc5jDfIKxqgEMvuSG9lJvR5qt4Ni9LpkmdEZ5WdiOSJmsTG4InPFt8bKcoh
- peqjtoUPRk5c8g4WzVD6srTLsv8HlaWO/6r1Zc3xhu4vSmgrNTBQNF3S92ZxpchPMHTQ9dL
- qheb1QOi0prZEbnhAR8xA==
-UI-OutboundReport: notjunk:1;M01:P0:d7mXSTQLF/U=;lEF8NTLf8pBeUbRM8C2BfCfesw7
- iA5qu7oEgHBFpEIAztmJW7rDLG0+k00WMqzalLJXj3XLF7XbNPtv7l5qACmEKdsnWkOHTbUtZ
- kieytIjW7kt58XPd2tA0HEzuUU4uicwgI61IE5VxJYFMrig+eNkafxJXfVEKoDfXE+g9e9lRz
- 4ijDHkeHLFflhFJpKLHUXJ36knSC3MumOVftRAzlevkLTF5nSOcwYv1i9Ms5NUiwd6hH+kGXs
- 2y5qWZ9pGI4nCmtA+mrYdCYqvFSimdDTDKZ7wMnSWwq678lzkNyt2QNGsb2qSrrppJwdKuYuv
- ikmgarYDKhGb5qj40tHjzY0IJwzHeuUDylFXFktSUep0qv8wsb07iPSLzAA884Qwlwcjk1xwT
- 7gLtfe0CZ2zQy57Y35uWv8PyKuITJGlLkgblnV+wd0wJC6mlfDEOKikkZkqryoNDi9f9Wxhld
- I87xlld9iIyr5TFpQI5pd3w+M8b2OXTmhz/PbhxckdZhHWYBiOhgUPA5HiOysOR9t+b8BDzBE
- vX4SiFxYPZi5eK9kf4PidaRtSWXxJca8F9sUGNhjEYjpapsXX9qoOXfc8FjiTVNtOwKtNlKIy
- cGRjfMR4g1hXOp4k0pRSmgtDX9YwVhjs8sBf/kpEYTZSoE35o8lZltHIZCw3RVBvMmXG2mxyn
- mOnlHGxvvvJ8QzSLd9K8LKU4XSk4ICBhTW5gUeVjcbKWUwaUCuVm/hIFoTgDZg2YLMlrLS4Q3
- GFVKl5gyUL4EAqv+PECahvY3qge62ZQINLkdvMt2fsGsKUH+995H0ShRV2VPzxxjSV04eosLh
- /YpxqsMDre0fopVx/m/jHvYA+AEqKOm3B7S8axuLoHqWlcNCGGr/MFwhEI/v1kuPQ1JUJZhrU
- u31nSDfr92i4o2dPsOIUPPHCgvmAjzhuStVebgddWUkGinZSfle9WT6ivEem8+Of54pdrgDzW
- 2PI0x080g1BKgXRJ7kpU78UX14M=
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230826_130324_755735_F7ABB95F 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20230826_134501_688171_AD666EF6 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,56 +63,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the Xiaomi Redmibook 15 Pro (2023) laptop I have got, a wifi chip is
-used, which according to its PCI Vendor ID is from "ITTIM Technology".
+Add uart2_0_tx_rx (pin 4, 5) and uart1_2 (pins 9, 10) groups to the
+pinctrl driver for the MediaTek MT7981 SoC.
 
-This chip works flawlessly with the mt7921e module.  The driver doesn't
-bind to this PCI device, because the Vendor ID from "ITTIM Technology" is
-not recognized.
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/pinctrl/mediatek/pinctrl-mt7981.c | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
 
-This patch adds the PCI Vendor ID from "ITTIM Technology" to the list of
-PCI Vendor IDs and lets the mt7921e driver bind to the mentioned wifi
-chip.
-
-Signed-off-by: Ingo Rohloff <lundril@gmx.de>
-=2D--
-Changes in v2:
-As requested, move the definition of the PCI Vendor ID for
-ITTIM Technology to the (hopefully) right place in pci_ids.h
-=2D--
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 2 ++
- include/linux/pci_ids.h                         | 2 ++
- 2 files changed, 4 insertions(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net=
-/wireless/mediatek/mt76/mt7921/pci.c
-index 95610a117d2f..ed5a220763ce 100644
-=2D-- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -17,6 +17,8 @@ static const struct pci_device_id mt7921_pci_device_tabl=
-e[] =3D {
- 		.driver_data =3D (kernel_ulong_t)MT7921_FIRMWARE_WM },
- 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7922),
- 		.driver_data =3D (kernel_ulong_t)MT7922_FIRMWARE_WM },
-+	{ PCI_DEVICE(PCI_VENDOR_ID_ITTIM, 0x7922),
-+		.driver_data =3D (kernel_ulong_t)MT7922_FIRMWARE_WM },
- 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0608),
- 		.driver_data =3D (kernel_ulong_t)MT7921_FIRMWARE_WM },
- 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0616),
-diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
-index 2dc75df1437f..6ae1803bcd2f 100644
-=2D-- a/include/linux/pci_ids.h
-+++ b/include/linux/pci_ids.h
-@@ -180,6 +180,8 @@
- #define PCI_DEVICE_ID_BERKOM_A4T		0xffa4
- #define PCI_DEVICE_ID_BERKOM_SCITEL_QUADRO	0xffa8
-
-+#define PCI_VENDOR_ID_ITTIM		0x0b48
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7981.c b/drivers/pinctrl/mediatek/pinctrl-mt7981.c
+index 0fd2c0c451f95..7e59a44078590 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt7981.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt7981.c
+@@ -611,6 +611,9 @@ static int mt7981_wo0_jtag_1_funcs[] = { 5, 5, 5, 5, 5, };
+ static int mt7981_uart2_0_pins[] = { 4, 5, 6, 7, };
+ static int mt7981_uart2_0_funcs[] = { 3, 3, 3, 3, };
+ 
++static int mt7981_uart2_0_tx_rx_pins[] = { 4, 5, };
++static int mt7981_uart2_0_tx_rx_funcs[] = { 3, 3, };
 +
- #define PCI_VENDOR_ID_COMPAQ		0x0e11
- #define PCI_DEVICE_ID_COMPAQ_TOKENRING	0x0508
- #define PCI_DEVICE_ID_COMPAQ_TACHYON	0xa0fc
-=2D-
-2.30.2
-
+ /* GBE_LED0 */
+ static int mt7981_gbe_led0_pins[] = { 8, };
+ static int mt7981_gbe_led0_funcs[] = { 3, };
+@@ -731,6 +734,9 @@ static int mt7981_uart1_0_funcs[] = { 4, 4, 4, 4, };
+ static int mt7981_uart1_1_pins[] = { 26, 27, 28, 29, };
+ static int mt7981_uart1_1_funcs[] = { 2, 2, 2, 2, };
+ 
++static int mt7981_uart1_2_pins[] = { 9, 10, };
++static int mt7981_uart1_2_funcs[] = { 2, 2, };
++
+ /* UART2 */
+ static int mt7981_uart2_1_pins[] = { 22, 23, 24, 25, };
+ static int mt7981_uart2_1_funcs[] = { 3, 3, 3, 3, };
+@@ -805,6 +811,8 @@ static const struct group_desc mt7981_groups[] = {
+ 	PINCTRL_PIN_GROUP("wo0_jtag_0", mt7981_wo0_jtag_0),
+ 	/* @GPIO(4,7) WM_JTAG(3) */
+ 	PINCTRL_PIN_GROUP("uart2_0", mt7981_uart2_0),
++	/* @GPIO(4,5) WM_JTAG(4) */
++	PINCTRL_PIN_GROUP("uart2_0_tx_rx", mt7981_uart2_0_tx_rx),
+ 	/* @GPIO(8) GBE_LED0(3) */
+ 	PINCTRL_PIN_GROUP("gbe_led0", mt7981_gbe_led0),
+ 	/* @GPIO(4,6) PTA_EXT(4) */
+@@ -861,6 +869,8 @@ static const struct group_desc mt7981_groups[] = {
+ 	PINCTRL_PIN_GROUP("uart1_0", mt7981_uart1_0),
+ 	/* @GPIO(26,29): UART1(2) */
+ 	PINCTRL_PIN_GROUP("uart1_1", mt7981_uart1_1),
++	/* @GPIO(9,10): UART1(2) */
++	PINCTRL_PIN_GROUP("uart1_2", mt7981_uart1_2),
+ 	/* @GPIO(22,25): UART1(3) */
+ 	PINCTRL_PIN_GROUP("uart2_1", mt7981_uart2_1),
+ 	/* @GPIO(22,24) PTA_EXT(4) */
+@@ -922,9 +932,9 @@ static const struct group_desc mt7981_groups[] = {
+  */
+ static const char *mt7981_wa_aice_groups[] = { "wa_aice1", "wa_aice2", "wm_aice1_1",
+ 	"wa_aice3", "wm_aice1_2", };
+-static const char *mt7981_uart_groups[] = { "wm_uart_0", "uart2_0",
+-	"net_wo0_uart_txd_0", "net_wo0_uart_txd_1", "net_wo0_uart_txd_2",
+-	"uart1_0", "uart1_1", "uart2_1", "wm_aurt_1", "wm_aurt_2", "uart0", };
++static const char *mt7981_uart_groups[] = { "net_wo0_uart_txd_0", "net_wo0_uart_txd_1",
++	"net_wo0_uart_txd_2", "uart0", "uart1_0", "uart1_1", "uart1_2", "uart2_0",
++	"uart2_0_tx_rx", "uart2_1", "wm_uart_0", "wm_aurt_1", "wm_aurt_2", };
+ static const char *mt7981_dfd_groups[] = { "dfd", "dfd_ntrst", };
+ static const char *mt7981_wdt_groups[] = { "watchdog", "watchdog1", };
+ static const char *mt7981_pcie_groups[] = { "pcie_pereset", "pcie_clk", "pcie_wake", };
+-- 
+2.41.0
 
