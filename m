@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3F8FC83F01
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Aug 2023 16:09:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41FD5C83F10
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Aug 2023 17:04:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5swq+wc3T3uSi3pWlsLzAnTmVTT62yCLyu8H03yu0BU=; b=IUDfV7ZBBTau5gfKRPyy+/zdDF
-	PpIGESLClaqXspVF+HEg7IhOX0bYqX/b4ly9pf9MiECezRl3qW63B6IrupkPuKowxOJxL3yebYdua
-	YdlohaRx6/hv+KPWOAxLTVIAx/RD9M+wp3cq3m+gRepOyKL0iI/6332IlEU69krZ/yoCHhXPn+pVE
-	xUdNgmW57905nanIrtXLBhEHhAF6Q2kkcSJ6CDVZQ2b0X262JGwLwMiu2A9tL0UoW/igB6miQ7llK
-	a/AT3dsKGhNZrV/hnipNlvyiYHSKzWpg5u/LI8+sFRCKTtle9kAIzKlgzNVISfHzHUMMDa5dOOgIO
-	dD5jBBkQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8l6VgLx7LrTWqrQgJTFMffeBnSXinPioAldLhYaZ+8k=; b=yu8rLQgS1UKGTJaGA2dj5yu0Ur
+	kGA5PA7Be+eefew7bKXljXvHDC1778sPfHKPcovflv//gdFl1tI5rfFZjD6Z5ZX83x4mkXvIJR6Sq
+	/oGHNXfhz5JTfxiwRhrnK1/1pNxDzGzb0s5v/uQZ088xQHDab+t0fqy5GU54BNBCRooHVnG9dmAMM
+	YlBREI1BxFE2lreEDnNp5FUn7UjU9NxC7bUWRf6PXYaxGXtw68rfwIZx326/fbZ3UrhF/ibRP/WH+
+	/ggHe+L4Vn1c5XvQfbNc4g3EFd5OHfa7nQLLYHfVsMSq4VYaVSZuR5jtQTe09oVA2FrOniZMkqVqk
+	dR0KUOiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaIKW-008EiO-1Y;
-	Sun, 27 Aug 2023 16:09:36 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1qaJBo-008HMD-1a;
+	Sun, 27 Aug 2023 17:04:40 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaIKT-008Eho-2H;
-	Sun, 27 Aug 2023 16:09:35 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1qaIK7-0006yH-1d;
-	Sun, 27 Aug 2023 16:09:11 +0000
-Date: Sun, 27 Aug 2023 17:09:02 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Simon Horman <horms@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH RFC net-next v2] net: ethernet: mtk_eth_soc: add paths
- and SerDes modes for MT7988
-Message-ID: <ZOt1Hp7v1tKRNGgX@makrotopia.org>
-References: <8b05b606aa37cd30445b8a6d73caef1b0d0cfbfa.1692908556.git.daniel@makrotopia.org>
- <20230827153523.GS3523530@kernel.org>
+	id 1qaJBc-008HJi-1S;
+	Sun, 27 Aug 2023 17:04:29 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 09D3A617BB;
+	Sun, 27 Aug 2023 17:04:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB693C433C7;
+	Sun, 27 Aug 2023 17:04:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1693155866;
+	bh=6aXqca9aJ4SOiNqS7e42m4SxQgXNNrsBHkAKSCoOM3A=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=Gg6dc0aUjRGm0hGENBVNQ3XQJu2qTADqjEtmtHpoUJoO7PrmGwZhWVE5QaIV+Sjfu
+	 p0xnJuNJazau+JpRj5poHJVBN492ObPkmQ/D6foLyTEWRfkG1cds0V4pqHfzzuuOXu
+	 5X0GHUaptSVvdhiZsCs1tSakw8ri8dzLr9LeJANWpJsLkxT9I4EYE7ccv6a45q9fgZ
+	 9LL3Mrrpx8+jlQnxA200lVqE5BE1Uqw/SAGUIgkeX5XsvAhAj1PKV44PZhgokoYWu+
+	 ik+XGUf+507I1wCltENm+ekTRC1jgwDB4Tn4tVajkOtIfK2uQCgnQxNzrk7nUf/1/b
+	 1cxe9cKOH6dgA==
+Date: Sun, 27 Aug 2023 18:04:46 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Jinjie Ruan <ruanjinjie@huawei.com>
+Cc: <lars@metafoo.de>, <matthias.bgg@gmail.com>,
+ <angelogioacchino.delregno@collabora.com>, <linux-iio@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH -next 2/2] iio: adc: mt6577_auxadc: Simplify with device
+ managed function
+Message-ID: <20230827180446.7b6720eb@jic23-huawei>
+In-Reply-To: <20230826035402.3512033-3-ruanjinjie@huawei.com>
+References: <20230826035402.3512033-1-ruanjinjie@huawei.com>
+	<20230826035402.3512033-3-ruanjinjie@huawei.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230827153523.GS3523530@kernel.org>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230827_090933_742249_18F07239 
-X-CRM114-Status: GOOD (  27.19  )
+X-CRM114-CacheID: sfid-20230827_100428_595664_DA2BD8B1 
+X-CRM114-Status: GOOD (  30.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,125 +78,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Simon,
+On Sat, 26 Aug 2023 11:54:02 +0800
+Jinjie Ruan <ruanjinjie@huawei.com> wrote:
 
-thank you for reviewing!
+> Add a device managed hook, via devm_add_action_or_reset() and
+> mt6577_power_off(), to power off on device detach.
+> 
+> Replace iio_device_register() by devm_iio_device_register() and remove
+> the mt6577_auxadc_remove() function used to unregister the device and
+> power off the device.
+> 
+> Remove platform_set_drvdata() from the probe function, since
+> platform_get_drvdata() is not used anymore.
+> 
+> Remove mt6577_auxadc_mod_reg() call from the probe function error path.
+> 
+> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+> Suggested-by: Jonathan Cameron <jic23@kernel.org>
+> ---
+>  drivers/iio/adc/mt6577_auxadc.c | 40 +++++++++++++--------------------
+>  1 file changed, 15 insertions(+), 25 deletions(-)
+> 
+> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
+> index 935cf560e238..c8f7bfa59146 100644
+> --- a/drivers/iio/adc/mt6577_auxadc.c
+> +++ b/drivers/iio/adc/mt6577_auxadc.c
+> @@ -246,6 +246,14 @@ static int mt6577_auxadc_suspend(struct device *dev)
+>  	return 0;
+>  }
+>  
+> +static void mt6577_power_off(void *data)
+> +{
+> +	struct mt6577_auxadc_device *adc_dev = data;
+> +
+> +	mt6577_auxadc_mod_reg(adc_dev->reg_base + MT6577_AUXADC_MISC,
+> +			      0, MT6577_AUXADC_PDN_EN);
+> +}
+> +
+>  static int mt6577_auxadc_probe(struct platform_device *pdev)
+>  {
+>  	struct mt6577_auxadc_device *adc_dev;
+> @@ -286,31 +294,14 @@ static int mt6577_auxadc_probe(struct platform_device *pdev)
+>  			      MT6577_AUXADC_PDN_EN, 0);
+>  	mdelay(MT6577_AUXADC_POWER_READY_MS);
+>  
+> -	platform_set_drvdata(pdev, indio_dev);
+> -
+> -	ret = iio_device_register(indio_dev);
+> -	if (ret < 0) {
+> -		dev_err(&pdev->dev, "failed to register iio device\n");
+> -		goto err_power_off;
+> -	}
+> -
+> -	return 0;
+> +	ret = devm_add_action_or_reset(&pdev->dev, mt6577_power_off, adc_dev);
+> +	if (ret)
+> +		return dev_err_probe(&pdev->dev, ret,
+> +				     "Failed to add action to managed power off: %d\n", ret);
+The return code is already printed when dev_err_probe() formats the line, so I've
+dropped that last bit whilst applying.
 
-On Sun, Aug 27, 2023 at 05:35:23PM +0200, Simon Horman wrote:
-> On Thu, Aug 24, 2023 at 09:24:48PM +0100, Daniel Golle wrote:
-> > MT7988 comes with a built-in 2.5G PHY as well as SerDes lanes to
-> > connect external PHYs or transceivers in USXGMII, 10GBase-R, 5GBase-R,
-> > 2500Base-X, 1000Base-X and Cisco SGMII interface modes.
-> > 
-> > Implement support for configuring for the new paths to SerDes interfaces
-> > and the internal 2.5G PHY.
-> > 
-> > Add USXGMII PCS driver for 10GBase-R, 5GBase-R and USXGMII mode, and
-> > setup the new PHYA on MT7988 to access the also still existing old
-> > LynxI PCS for 1000Base-X, 2500Base-X and Cisco SGMII PCS interface
-> > modes.
-> > 
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> 
-> Hi Daniel,
-> 
-> some minor feedback from my side.
-> 
-> ...
-> 
-> > diff --git a/drivers/net/ethernet/mediatek/mtk_usxgmii.c b/drivers/net/ethernet/mediatek/mtk_usxgmii.c
-> 
-> ...
-> 
-> > +static int mtk_usxgmii_pcs_config(struct phylink_pcs *pcs, unsigned int neg_mode,
-> > +				  phy_interface_t interface,
-> > +				  const unsigned long *advertising,
-> > +				  bool permit_pause_to_mac)
-> > +{
-> > +	struct mtk_usxgmii_pcs *mpcs = pcs_to_mtk_usxgmii_pcs(pcs);
-> > +	struct mtk_eth *eth = mpcs->eth;
-> > +	struct regmap *pextp = eth->regmap_pextp[mpcs->id];
-> > +	unsigned int an_ctrl = 0, link_timer = 0, xfi_mode = 0, adapt_mode = 0;
-> > +	bool mode_changed = false;
-> > +
-> > +	if (!pextp)
-> > +		return -ENODEV;
-> > +
-> > +	if (interface == PHY_INTERFACE_MODE_USXGMII) {
-> > +		an_ctrl = FIELD_PREP(USXGMII_AN_SYNC_CNT, 0x1FF) |
-> > +			  (neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED) ?
-> > +			  USXGMII_AN_ENABLE : 0;
-> 
-> clang-16 W=1 suggests using parentheses here:
-> 
->  drivers/net/ethernet/mediatek/mtk_usxgmii.c:468:51: warning: operator '?:' has lower precedence than '|'; '|' will be evaluated first [-Wbitwise-conditional-parentheses]
->                            (neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED) ?
->                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
->  drivers/net/ethernet/mediatek/mtk_usxgmii.c:468:51: note: place parentheses around the '|' expression to silence this warning
->                            (neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED) ?
->                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
->  drivers/net/ethernet/mediatek/mtk_usxgmii.c:468:51: note: place parentheses around the '?:' expression to evaluate it first
->                            (neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED) ?
->                                                                         ^
->                            (
+The way these two patches were separated is a little odd as you ignore
+a few dev_err() cases in patch 1 because they don't make sense until patch 2.
+I think this would have made more sense with the two patches reversed.
 
-Yeah, I've seen that one coming up on patchwork as well, fixed it already in my
-local tree.
+Still that's a very small thing (and I might be wrong as I didn't try it ;)
+Applied to the togreg branch of iio.git and pushed out as testing for 0-day
+etc to play with this.  I'll be rebasing on rc1 and it won't hit linux-next
+until after that.
 
-> 
-> > +		link_timer = FIELD_PREP(USXGMII_LINK_TIMER_IDLE_DETECT, 0x7B) |
-> > +			     FIELD_PREP(USXGMII_LINK_TIMER_COMP_ACK_DETECT, 0x7B) |
-> > +			     FIELD_PREP(USXGMII_LINK_TIMER_AN_RESTART, 0x7B);
-> > +		xfi_mode = FIELD_PREP(USXGMII_XFI_RX_MODE, USXGMII_XFI_RX_MODE_10G) |
-> > +			   FIELD_PREP(USXGMII_XFI_TX_MODE, USXGMII_XFI_TX_MODE_10G);
-> 
-> ...
-> 
-> > +int mtk_usxgmii_init(struct mtk_eth *eth)
-> > +{
-> > +	struct device_node *r = eth->dev->of_node;
-> > +	struct device *dev = eth->dev;
-> > +	struct device_node *np;
-> > +	int i, ret;
-> > +
-> > +	for (i = 0; i < MTK_MAX_DEVS; i++) {
-> > +		np = of_parse_phandle(r, "mediatek,usxgmiisys", i);
-> > +		if (!np)
-> > +			break;
-> > +
-> > +		eth->usxgmii_pcs[i] = devm_kzalloc(dev, sizeof(*eth->usxgmii_pcs), GFP_KERNEL);
-> 
-> Smatch warns that only 8 bytes are allocated, whereas 64 are needed.
-> I think one more defference of the parameter to sizeof().
-> 
-> e.g.:
-> 
-> 		eth->usxgmii_pcs[i] = devm_kzalloc(dev,
-> 						   sizeof(*eth->usxgmii_pcs[i]),
-> 						   GFP_KERNEL);
+Thanks,
 
-Good catch, thank you! I will fix it.
+Jonathan
 
+>  
+> -err_power_off:
+> -	mt6577_auxadc_mod_reg(adc_dev->reg_base + MT6577_AUXADC_MISC,
+> -			      0, MT6577_AUXADC_PDN_EN);
+> -	return ret;
+> -}
+> -
+> -static int mt6577_auxadc_remove(struct platform_device *pdev)
+> -{
+> -	struct iio_dev *indio_dev = platform_get_drvdata(pdev);
+> -	struct mt6577_auxadc_device *adc_dev = iio_priv(indio_dev);
+> -
+> -	iio_device_unregister(indio_dev);
+> -
+> -	mt6577_auxadc_mod_reg(adc_dev->reg_base + MT6577_AUXADC_MISC,
+> -			      0, MT6577_AUXADC_PDN_EN);
+> +	ret = devm_iio_device_register(&pdev->dev, indio_dev);
+> +	if (ret < 0)
+> +		return dev_err_probe(&pdev->dev, ret, "failed to register iio device\n");
+>  
+>  	return 0;
+>  }
+> @@ -337,7 +328,6 @@ static struct platform_driver mt6577_auxadc_driver = {
+>  		.pm = pm_sleep_ptr(&mt6577_auxadc_pm_ops),
+>  	},
+>  	.probe	= mt6577_auxadc_probe,
+> -	.remove	= mt6577_auxadc_remove,
+>  };
+>  module_platform_driver(mt6577_auxadc_driver);
+>  
 
-> 
-> > +		if (!eth->usxgmii_pcs[i])
-> > +			return -ENOMEM;
-> > +
-> > +		eth->usxgmii_pcs[i]->id = i;
-> > +		eth->usxgmii_pcs[i]->eth = eth;
-> > +		eth->usxgmii_pcs[i]->regmap = syscon_node_to_regmap(np);
-> > +		if (IS_ERR(eth->usxgmii_pcs[i]->regmap))
-> > +			return PTR_ERR(eth->usxgmii_pcs[i]->regmap);
-> > +
-> > +		eth->usxgmii_pcs[i]->pcs.ops = &mtk_usxgmii_pcs_ops;
-> > +		eth->usxgmii_pcs[i]->pcs.poll = true;
-> > +		eth->usxgmii_pcs[i]->pcs.neg_mode = true;
-> > +		eth->usxgmii_pcs[i]->interface = PHY_INTERFACE_MODE_NA;
-> > +		eth->usxgmii_pcs[i]->neg_mode = -1;
-> > +
-> > +		of_node_put(np);
-> > +	}
-> 
-> ...
-> 
 
