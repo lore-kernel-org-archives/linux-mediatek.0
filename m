@@ -4,61 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88611C71153
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Aug 2023 19:47:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DC6CC83F12
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Aug 2023 19:56:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iaEK6NteFZOogFVzVYxoisWJpdSFnSuds70zo7ptBas=; b=zm45rI+lco/+qH
-	isgV+lO9vhUi6SHfEV7/u9f7w8sNcvuWP6EJ1fjxLCnFKk+BoHeMg5eP8DLtVfGtR1Q33d3jKf5tS
-	DUUZs4ffcAYo9c1jz1/+1/JSTfT9WKNVXKB+JdGMZUj4qIvzQRKSrd7OiexTN7MT0mdgrp0DMjAWP
-	u9h07JBrQ3gJXH9Vh8llq4vISJtFpnCWdlAkF7r2NsC5hWaoaw44mrj7MdN+OXDtW9BW7e1TmmgP+
-	0zKCqivoStytP1lo+JR1zGi91TNX0CmRKMFZwE2YmHy6G+w60du69NKEOL6M2Wof25yuXPiJ7ec3o
-	/9WrLleDwyn+gqlLyKyA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+aPLP5Dvqf88CiJMFQl9Auucq47ZaEdR+LnhUOVMwHI=; b=Dcjf8h97OWGQmKRYzpF3zzeN5/
+	Y3OAPh7aCyA+STCZV8TqMShK2ZqRO1acbxKx5541nBQIc/HDxkFtXE3691QAYEmxcXPdxopcxqeM+
+	3JVq34eXWUDhF8eKPpK25sAj5ToSXG32UHtefYa/PNRkfhUTRQ3uGzWChQsaOKDAa+UZeSatLtByh
+	wNcRWK6YKSAQJ8m9qy+s1v6JnZaB3Eok6Gt+ayStwWsLHnuH08+4CmKQj1yJ3N4cNlSpT34VOeZc0
+	UhYWd8sO5WGrHrPL9n2pMaNr8pdU/b4jbOeJF1p0OedyaxtFB3nLydll3/5J0USLTQ6y1/muWt1jx
+	CNlYljxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaiDF-00AB9j-25;
-	Mon, 28 Aug 2023 19:47:49 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qaiLm-00ABeF-0E;
+	Mon, 28 Aug 2023 19:56:38 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaiDC-00AB96-1M;
-	Mon, 28 Aug 2023 19:47:47 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B58376178F;
-	Mon, 28 Aug 2023 19:47:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66336C433C7;
-	Mon, 28 Aug 2023 19:47:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1693252065;
-	bh=C4Ir9bNWumGZzSRtNes2Jz5ys6JqBziIumxbHwsTdO4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=pt2TiriD50KKRwOmmP5NpsaQE/9Yosb+AWCBsHFkuvx1YnDtVcr5cC1cMTTps4Ug2
-	 sxYBUqkIdoEo3hg9uQnrdU3hoDPs9s6hRQsaXt8wIa2SWNyIYhXFz6TWN9rx+zFqwe
-	 rDOgPOSjJDW3u+aLPC30xtSXRzOa09okhBs/XxYAre2ExymejyBtKIiHl1lwst4jcJ
-	 vfKYGIOf6HwZ4G0d0AyMkJI+vkqQwMkRFqmeBzUGBiLihfMoL/fLKlK7Wn7myHZKRZ
-	 hno996IvnfHCxH8vK2twXukWv8fKEiA4R5PU29wnMwWM3/ZOPOU2hKk1uahpHBTfdV
-	 w40ubq/+KxytQ==
-Date: Mon, 28 Aug 2023 12:47:43 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH net-next] net: ethernet: mtk_eth_soc: add paths and
- SerDes modes for MT7988
-Message-ID: <20230828124743.4882a1a2@kernel.org>
-In-Reply-To: <e6bb7c95c93e7ae91de998d2fd32580db2ce05c3.1693183332.git.daniel@makrotopia.org>
-References: <e6bb7c95c93e7ae91de998d2fd32580db2ce05c3.1693183332.git.daniel@makrotopia.org>
+	id 1qaiLj-00ABct-0O
+	for linux-mediatek@lists.infradead.org;
+	Mon, 28 Aug 2023 19:56:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1693252592;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+aPLP5Dvqf88CiJMFQl9Auucq47ZaEdR+LnhUOVMwHI=;
+	b=F6eWE2XfSec0Gf/5CMCgTQkpFPmrbGAwyzJg2PfLzbTfAJ9TOOutp1kw8w/aVdJLXPJv8p
+	Aow5GyiUoW96lSj2GUazw5bL4FBboc/qvsrESVcd4qL8HUVO/gK8e5v9Xvl1J8i8rbvArz
+	IxYUTKOTxcCfKYojjdotUqLfCtEYofM=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-144-9tnn4YqzMneo7XcfXJWGYg-1; Mon, 28 Aug 2023 15:56:30 -0400
+X-MC-Unique: 9tnn4YqzMneo7XcfXJWGYg-1
+Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-64a5264b91eso38334716d6.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Aug 2023 12:56:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1693252590; x=1693857390;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+aPLP5Dvqf88CiJMFQl9Auucq47ZaEdR+LnhUOVMwHI=;
+        b=afoc9F+KgHzEpAkdiqkvWMmEBJ+EijQ5OT3OT1L65ppVJCwZr6kLTCvakVZ/fshisn
+         5FI2ymjsJln3RlRFi8hFKHrZ5FyQpwhDut2c8G/fjX/ZwUsb2n2t64eDPr7zV1OA2JPu
+         2ZmML3yiUN9C+7nBtOSUqERCeKXcOR1IKg3eemIxviEUJ7uKydocPv8FdhYoLlKosTA7
+         XS32zGJiQY79/P+nP2DQ3d1I8MKt0JNhiFsWi3qqWN90x4S8A+AKKfre6zo1ZOgVm7So
+         yZpM4PpAVWnrMFoEvI+lZ4fn+OmafLut1O8Jt8xIsRGTj43LmyfMQcPILaK1ia4A0QlH
+         Gmdw==
+X-Gm-Message-State: AOJu0YzBxtmt513RNpd6FqykYFN5ss+37BNc76cmcADwj4XkGrJttbEy
+	xzSW5WkYbwyFIiG5BqGb+vrUKaY+jKvr96EgoOr7b32orqOgvD6QW/QGbxWxAt7fPpPQ4aQZmJU
+	Nc89+OnZZfKMdID73Ep6zhw3SmxcyyWDE
+X-Received: by 2002:a05:622a:1b92:b0:403:fd62:ce75 with SMTP id bp18-20020a05622a1b9200b00403fd62ce75mr28216029qtb.5.1693252590284;
+        Mon, 28 Aug 2023 12:56:30 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGsYP9ZZ2CsJhUv0f/7ePOTXR8lCjq1Is30niybYFTHi0Enn8YltRs8yVE4tVH5Ow+UhbE98A==
+X-Received: by 2002:a05:622a:1b92:b0:403:fd62:ce75 with SMTP id bp18-20020a05622a1b9200b00403fd62ce75mr28215977qtb.5.1693252589954;
+        Mon, 28 Aug 2023 12:56:29 -0700 (PDT)
+Received: from localhost (ip98-179-76-75.ph.ph.cox.net. [98.179.76.75])
+        by smtp.gmail.com with ESMTPSA id d4-20020ac86144000000b0040ff25d8712sm2559692qtm.18.2023.08.28.12.56.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Aug 2023 12:56:29 -0700 (PDT)
+Date: Mon, 28 Aug 2023 12:56:28 -0700
+From: Jerry Snitselaar <jsnitsel@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Bjorn Andersson <andersson@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Christophe Leroy <christophe.leroy@csgroup.eu>, Gerald Schaefer <gerald.schaefer@linux.ibm.com>, 
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>, 
+	Kevin Tian <kevin.tian@intel.com>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+	Russell King <linux@armlinux.org.uk>, linuxppc-dev@lists.ozlabs.org, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
+	Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, 
+	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>, 
+	Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>, 
+	Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Lu Baolu <baolu.lu@linux.intel.com>, 
+	Dmitry Osipenko <digetx@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
+	Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle <schnelle@linux.ibm.com>, 
+	Steven Price <steven.price@arm.com>, Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v7 08/24] iommu: Reorganize
+ iommu_get_default_domain_type() to respect def_domain_type()
+Message-ID: <3pxd6d44iejlvlijiyd65ze3wfsvvjtgrvstwhgp423uwutrz6@dak5ytcxcspv>
+References: <0-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+ <8-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <8-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230828_124746_524876_56D2A6C3 
-X-CRM114-Status: UNSURE (   9.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230828_125635_244613_71F67780 
+X-CRM114-Status: GOOD (  18.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,27 +117,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>, Mark Lee <Mark-MC.Lee@mediatek.com>, Eric Dumazet <edumazet@google.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 28 Aug 2023 01:56:19 +0100 Daniel Golle wrote:
-> MT7988 comes with a built-in 2.5G TP PHY as well as SerDes lanes to
-> connect external PHYs or transceivers in USXGMII, 10GBase-R, 5GBase-R,
-> 2500Base-X, 1000Base-X and Cisco SGMII interface modes.
+On Wed, Aug 23, 2023 at 01:47:22PM -0300, Jason Gunthorpe wrote:
+> Except for dart (which forces IOMMU_DOMAIN_DMA) every driver returns 0 or
+> IDENTITY from ops->def_domain_type().
+> 
+> The drivers that return IDENTITY have some kind of good reason, typically
+> that quirky hardware really can't support anything other than IDENTITY.
+> 
+> Arrange things so that if the driver says it needs IDENTITY then
+> iommu_get_default_domain_type() either fails or returns IDENTITY.  It will
+> not ignore the driver's override to IDENTITY.
+> 
+> Split the function into two steps, reducing the group device list to the
+> driver's def_domain_type() and the untrusted flag.
+> 
+> Then compute the result based on those two reduced variables. Fully reject
+> combining untrusted with IDENTITY.
+> 
+> Remove the debugging print on the iommu_group_store_type() failure path,
+> userspace should not be able to trigger kernel prints.
+> 
+> This makes the next patch cleaner that wants to force IDENTITY always for
+> ARM_IOMMU because there is no support for DMA.
+> 
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>  drivers/iommu/iommu.c | 117 ++++++++++++++++++++++++++++--------------
+>  1 file changed, 79 insertions(+), 38 deletions(-)
+> 
 
-## Form letter - net-next-closed
-
-The merge window for v6.6 has begun and therefore net-next is closed
-for new drivers, features, code refactoring and optimizations.
-We are currently accepting bug fixes only.
-
-Please repost when net-next reopens after Sept 11th.
-
-RFC patches sent for review only are obviously welcome at any time.
-
-See: https://www.kernel.org/doc/html/next/process/maintainer-netdev.html#development-cycle
--- 
-pw-bot: defer
+Reviewed-by: Jerry Snitselaar <jsnitsel@redhat.com>
 
 
