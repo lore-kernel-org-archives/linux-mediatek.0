@@ -4,83 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DDBEC71153
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Aug 2023 09:59:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 092FFC71153
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Aug 2023 10:25:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ULLZemRhMxAbFZxKNtJLD9ABVZO2iMvHhuIqtLS4lLw=; b=OXmy4W2gO4bUOWKV7/r02EcPyN
-	NuY8pIMOGWfduFU1ay4zVq3rlRMsqOhWz7bmiGeUJkdgY+K9f4WCOD+y1tOcKSHGbe1hyvI90fKpw
-	bm0wf9ktIzVkWMk2rOG7P+jdTpaJ5ArA20zS+sDmwwidbfZoO8kNdMqZrKyebGIPgxEGQ/KeIyHHs
-	GxOptsuJAoJqioMRG0TG/DQyfFBWH9nh/myCVfUtZzSkqjgtLMW4LlY+QOTKVA8wjuXKKU139yy1B
-	iu8vIsckZDeIop0lzuFeFYY78FhrHsJ7cuS0JWOvna8PI4TqTkVWaRFznRKLT2OyTJixs/1CVwQpg
-	rkkgemZQ==;
+	bh=jRXDdDGfcw2VGrYOWIzRIFvqKbDeBV/O8IucKucUEhk=; b=RFr1oxq3mh3RjuQGAyIvyLaGQ+
+	+JlwNd2XYg9XYdWTjRAvVmuXVH1qhdKfQPs8amavKSd+jXPTssgfF3mWszadq8/W7ANEQRHXXGSHb
+	4EmqwoaHkQGheIqIcXtKAPzwT+VAjRh6TgSIBKmRhk02otvnMIcgMDXNRN7/RtDtB2EqtagcfmGwU
+	75OTzaGi2FJmrbNGSHsjDRkbS+VstNvztmVSZNpQ9rnihRmpSpbgUMw/v7r++TIhyWkwB17TxNa/Y
+	3ItT7Pru0GeToLJ1HljaSOB4YtVZ2homzB/X5dzxxgB4DVtjhHCzi1pGFKTN+T7HBj+0y2HsUnWJT
+	NBLvbkvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaZ24-009Gkw-0w;
-	Mon, 28 Aug 2023 09:59:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qaZR9-009Pai-1C;
+	Mon, 28 Aug 2023 10:25:35 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaZ21-009GkV-2g;
-	Mon, 28 Aug 2023 09:59:39 +0000
-X-UUID: 956fd3ea458911ee83ed1395ce914268-20230828
+	id 1qaZR6-009PXB-3B;
+	Mon, 28 Aug 2023 10:25:34 +0000
+X-UUID: 34ddfd14458d11ee912e1518a6540028-20230828
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=ULLZemRhMxAbFZxKNtJLD9ABVZO2iMvHhuIqtLS4lLw=;
-	b=E3cwQxcPYVQR8cxJIvlU+VpUcB694ACP19v5Ljx3qi0sp6iSYy1YI7K8D7Hre60Nk9XkrEUMf9QTmvcfnCJvDqkraZHOibfM+MfKesDDUjgkFpq8k17J046sfy45xq5vCLeSDLKvZQfCTETqk+JAf+7VEqCIuTgCAJJ3r3PoH6c=;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=jRXDdDGfcw2VGrYOWIzRIFvqKbDeBV/O8IucKucUEhk=;
+	b=K1YcmgA64iHvkZcGitOm1UcHqs7QSDmEObVDCBKZZ+Xar05GiRgEZzDeUQX9kYXG2+z3KFl8TnNxzwg3Sobcdm0ha2RQ5+kenMI3dKN7zZnIhh92cmZzbBr+ylWu+nkt5etHZ0ZZyxRCMl/L7HX7ZzDsSUt0gvtWjN/dbQVgvZ8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:d515ec0a-4c6c-4d9f-ba57-a11d44048640,IP:0,U
+X-CID-O-INFO: VERSION:1.1.31,REQID:d186aee1-faca-4d42-9790-8e8824d16e3d,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:94475bc2-1e57-4345-9d31-31ad9818b39f,B
+X-CID-META: VersionHash:0ad78a4,CLOUDID:5d2e4513-4929-4845-9571-38c601e9c3c9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 956fd3ea458911ee83ed1395ce914268-20230828
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 34ddfd14458d11ee912e1518a6540028-20230828
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 242636399; Mon, 28 Aug 2023 02:59:31 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+	with ESMTP id 1770603796; Mon, 28 Aug 2023 03:25:27 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 28 Aug 2023 17:59:28 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n2.mediatek.inc
+ 15.2.1118.26; Mon, 28 Aug 2023 18:25:24 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Mon, 28 Aug 2023 17:59:25 +0800
-Message-ID: <986d8056-3708-ed3d-1896-0fbc034ca53c@mediatek.com>
-Date: Mon, 28 Aug 2023 17:59:23 +0800
+ Transport; Mon, 28 Aug 2023 18:25:24 +0800
+Message-ID: <35d2fd6a-167b-8df8-aa61-b40aa7224e3c@mediatek.com>
+Date: Mon, 28 Aug 2023 18:25:22 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.1
-Subject: Re: [PATCH 3/4] arm64: dts: mediatek: mt6360: add PMIC MT6360 related
- nodes
+Subject: Re: [PATCH] spidev: add compatible string for MediaTek IoT (Genio)
+ boards
 Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-CC: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Fabien Parent
-	<fparent@baylibre.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Bear Wang <bear.wang@mediatek.com>,
-	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Chunfeng
- Yun <chunfeng.yun@mediatek.com>
-References: <20230825114623.16884-1-macpaul.lin@mediatek.com>
- <20230825114623.16884-3-macpaul.lin@mediatek.com>
- <CAGXv+5FTuY=ZHB3-2Woit5amRZ=RxByGMq=LQp-es8tWEhAQUA@mail.gmail.com>
+To: Michael Walle <mwalle@kernel.org>
+CC: <angelogioacchino.delregno@collabora.com>, <bear.wang@mediatek.com>,
+	<broonie@kernel.org>, <chunfeng.yun@mediatek.com>, <fparent@baylibre.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-spi@vger.kernel.org>,
+	<macpaul@gmail.com>, <matthias.bgg@gmail.com>, <pablo.sun@mediatek.com>
+References: <20230828080909.16610-1-macpaul.lin@mediatek.com>
+ <20230828093326.3255275-1-mwalle@kernel.org>
 From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <CAGXv+5FTuY=ZHB3-2Woit5amRZ=RxByGMq=LQp-es8tWEhAQUA@mail.gmail.com>
+In-Reply-To: <20230828093326.3255275-1-mwalle@kernel.org>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230828_025937_884339_3ACED098 
-X-CRM114-Status: GOOD (  25.36  )
+X-CRM114-CacheID: sfid-20230828_032533_035150_A8EEAF6B 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,156 +90,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On 8/28/23 12:36, Chen-Yu Tsai wrote:
+On 8/28/23 17:33, Michael Walle wrote:
 > 	
 > 
 > External email : Please do not click links or open attachments until you 
 > have verified the sender or the content.
 > 
-> On Fri, Aug 25, 2023 at 7:46 PM Macpaul Lin <macpaul.lin@mediatek.com> wrote:
->>
->> MT6360 is the secondary PMIC for MT8195.
->> It supports USB Type-C and PD functions.
->> Add MT6360 related common nodes which is used for MT8195 platform, includes
->>  - charger
->>  - ADC
->>  - LED
->>  - regulators
->>
+> 
+>> Add compatible string for MediaTek IoT (Genio) boards.
+> 
+> This has already be discussed [1] and was naked.
+> 
+> https://lore.kernel.org/lkml/20230118-mt8365-spi-support-v1-2-842a21e50494@baylibre.com/
+> 
+> -michael
+
+Thanks for the reminding, I'll check previous discussion thread.
+
+>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 >> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 >> ---
->>  arch/arm64/boot/dts/mediatek/mt6360.dtsi | 112 +++++++++++++++++++++++
-
-[snip..]
-
->> +       regulator {
->> +               compatible = "mediatek,mt6360-regulator";
->> +               LDO_VIN3-supply = <&mt6360_buck2>;
->> +
->> +               mt6360_buck1: buck1 {
->> +                       regulator-compatible = "BUCK1";
->> +                       regulator-name = "mt6360,buck1";
-> 
-> Normally there's no need to provide a default name. Any used regulator
-> should have been named to match the power rail name from the board's
-> schematics.
-> 
-
-I have 2 schematics on hand. One is mt8195-demo board and the other is 
-genio-1200-evk board. There are 2 PMIC used on these board
-with "the same" sub power rail name for "BUCK1~BUCK4". One is mt6315, 
-and the other is mt6360.
-
-I've also inspected other dtsi of the regulators, such as mt6357 and 
-mt6359. They have regulator nodes with named for their purpose. For the
-schematics of mt8195-demo and genio-1200-evk boards, there are no 
-explicit usage for "BUCK1~BUCK4" for both mt6135 and mt6360. In order to 
-specify the sub power rail for mt6360, MediaTek chooses name like 
-"mt6360,buck1" instead of simple name "buck1" for distinguish with 
-"buck1" of mt6351.
-
->> +                       regulator-min-microvolt = <300000>;
->> +                       regulator-max-microvolt = <1300000>;
-> 
-> These values correspond to the regulator's range. They make no sense as
-> regulator constraints. The min/max values are supposed to be the most
-> restrictive set of voltages of the regulator consumers. If what is fed
-> by this regulator can only take 0.7V ~ 1.1V, then it should save 0.7V
-> and 1.1V here. If the regulator is unused, then there are no constraints,
-> and these can be left out.
-> 
-> Just leave them out of the file.
-> 
-> Both comments apply to all the regulators.
-> 
-> ChenYu
-
-There are some common circuit design for these regulators like mt6359, 
-mt6360 and mt6315 used on many products. MediaTek put the most common 
-and expected default values in their dtsi. However, some changes still 
-need to be applied to derivative boards according to product's 
-requirements. The actual value be used will be applied in board's dts 
-file to override the default settings in dtsi.
-
-The regulator node "mt6360,ldo6" is not used by mt8195-demo and 
-genio-1200-evk. I'll remove it in the next version.
-Thanks for the review.
-
->> +                       regulator-allowed-modes = <MT6360_OPMODE_NORMAL
->> +                                                  MT6360_OPMODE_LP
->> +                                                  MT6360_OPMODE_ULP>;
->> +               };
->> +
->> +               mt6360_buck2: buck2 {
->> +                       regulator-compatible = "BUCK2";
->> +                       regulator-name = "mt6360,buck2";
->> +                       regulator-min-microvolt = <300000>;
->> +                       regulator-max-microvolt = <1300000>;
->> +                       regulator-allowed-modes = <MT6360_OPMODE_NORMAL
->> +                                                  MT6360_OPMODE_LP
->> +                                                  MT6360_OPMODE_ULP>;
->> +               };
->> +
->> +               mt6360_ldo1: ldo1 {
->> +                       regulator-compatible = "LDO1";
->> +                       regulator-name = "mt6360,ldo1";
->> +                       regulator-min-microvolt = <1200000>;
->> +                       regulator-max-microvolt = <3600000>;
->> +                       regulator-allowed-modes = <MT6360_OPMODE_NORMAL
->> +                                                  MT6360_OPMODE_LP>;
->> +               };
->> +
->> +               mt6360_ldo2: ldo2 {
->> +                       regulator-compatible = "LDO2";
->> +                       regulator-name = "mt6360,ldo2";
->> +                       regulator-min-microvolt = <1200000>;
->> +                       regulator-max-microvolt = <3600000>;
->> +                       regulator-allowed-modes = <MT6360_OPMODE_NORMAL
->> +                                                  MT6360_OPMODE_LP>;
->> +               };
->> +
->> +               mt6360_ldo3: ldo3 {
->> +                       regulator-compatible = "LDO3";
->> +                       regulator-name = "mt6360,ldo3";
->> +                       regulator-min-microvolt = <1200000>;
->> +                       regulator-max-microvolt = <3600000>;
->> +                       regulator-allowed-modes = <MT6360_OPMODE_NORMAL
->> +                                                  MT6360_OPMODE_LP>;
->> +               };
->> +
->> +               mt6360_ldo5: ldo5 {
->> +                       regulator-compatible = "LDO5";
->> +                       regulator-name = "mt6360,ldo5";
->> +                       regulator-min-microvolt = <2700000>;
->> +                       regulator-max-microvolt = <3600000>;
->> +                       regulator-allowed-modes = <MT6360_OPMODE_NORMAL
->> +                                                  MT6360_OPMODE_LP>;
->> +               };
->> +
->> +               mt6360_ldo6: ldo6 {
->> +                       regulator-compatible = "LDO6";
->> +                       regulator-name = "mt6360,ldo6";
->> +                       regulator-min-microvolt = <500000>;
->> +                       regulator-max-microvolt = <2100000>;
->> +                       regulator-allowed-modes = <MT6360_OPMODE_NORMAL
->> +                                                  MT6360_OPMODE_LP>;
->> +               };
->> +
->> +               mt6360_ldo7: ldo7 {
->> +                       regulator-compatible = "LDO7";
->> +                       regulator-name = "mt6360,ldo7";
->> +                       regulator-min-microvolt = <500000>;
->> +                       regulator-max-microvolt = <2100000>;
->> +                       regulator-allowed-modes = <MT6360_OPMODE_NORMAL
->> +                                                  MT6360_OPMODE_LP>;
->> +               };
->> +       };
->> +};
->> --
->> 2.18.0
+>>   drivers/spi/spidev.c | 2 ++
+>>   1 file changed, 2 insertions(+)
 >>
+>> diff --git a/drivers/spi/spidev.c b/drivers/spi/spidev.c
+>> index d13dc15cc191..9d7952dbbaa6 100644
+>> --- a/drivers/spi/spidev.c
+>> +++ b/drivers/spi/spidev.c
+>> @@ -714,6 +714,7 @@ static const struct spi_device_id spidev_spi_ids[] = {
+>>   	{ .name = "spi-authenta" },
+>>   	{ .name = "em3581" },
+>>   	{ .name = "si3210" },
+>> +	{ .name = "genio-board" },
+>>   	{},
+>>   };
+>>   MODULE_DEVICE_TABLE(spi, spidev_spi_ids);
+>> @@ -742,6 +743,7 @@ static const struct of_device_id spidev_dt_ids[] = {
+>>   	{ .compatible = "semtech,sx1301", .data = &spidev_of_check },
+>>   	{ .compatible = "silabs,em3581", .data = &spidev_of_check },
+>>   	{ .compatible = "silabs,si3210", .data = &spidev_of_check },
+>> +	{ .compatible = "mediatek,genio-board", .data = &spidev_of_check },
+>>   	{},
+>>   };
+>>   MODULE_DEVICE_TABLE(of, spidev_dt_ids);
+>> -- 
+>> 2.18.0
 
-Best regards,
-Macpaul Lin.
+Regards,
+Macpaul Lin
 
