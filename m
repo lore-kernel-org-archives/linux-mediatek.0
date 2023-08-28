@@ -4,71 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1E25C83F11
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Aug 2023 02:04:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91891C83F01
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Aug 2023 02:28:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:To:Subject:Cc:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XBu5JlOOh7gOc/W7S7ujfHc4mTCA8gighgaPPpAMcS0=; b=mVfVPJgyYMNXlcuFLX9dcQ2mkV
-	m8n61GVg/5fcInQviOKLiJHZltDI18lfyYPSFAYR5/WSEs9pu9B35iX/BSHWBHN9+zvxCywM9w3fG
-	bmH4B6UPCMgQpqtztZYj5mGZvXLp/COtvGMP0wYlwzY8kBDLmUslMzbEUtWTFrgE015FHUqUkHmLT
-	rw2EKiF/TWKawNXQfekckcwJluxt6ObN9XkpV40lW0vbagrhxUJYqH2vpwuy+IWMF78qfOWE19J8W
-	Mka5+hqWzk++cheVBIfymk8F7f6dkYWmTp2JeWrLZsxUWvDADyaYUgoE58Fl2RAm0QSry6QzH0VxO
-	anuP/1DQ==;
+	bh=aGQlGA42OfpEumVzukXZZfn8QZhOFGf5WCP9g2PH91s=; b=wwz435xq+rOMYaXpwJKbXzb15r
+	aZfWYxuh3kph9UvmJazJJHRxWL6ph9hBBI5l2oHQyh4EoAH8Wjv3PnH0kPjsTueF150+pFUdj9/z0
+	4ikRJR2aT6AWa64cXWiXtsG/cgTFtcK2+ec8C5+1sx2IUaQfT7fY9crFGD5L5DqxE2Y+e5gUzP8fp
+	tE3ls9Mc0CjaJMvy9ChD0f4LXAhD+b9L4vzURJiJyKvI9t3QUIdcqMnpgPDKMarMYk2T6b+9dbOn1
+	3mPnPumPyUtdbXP+TRaQWu2BHamikU4mk4csHT2Pg7mZWRV+N/S+AyRDcW116WyVIgaAAACt1Pumv
+	ScRlX6DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaRc5-008iHS-0c;
-	Mon, 28 Aug 2023 02:04:21 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qaRzS-008k5p-0R;
+	Mon, 28 Aug 2023 02:28:30 +0000
+Received: from mail-m11880.qiye.163.com ([115.236.118.80])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaRbx-008iGA-28;
-	Mon, 28 Aug 2023 02:04:17 +0000
-Received: from [192.168.2.140] (109-252-153-31.dynamic.spd-mgts.ru [109.252.153.31])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: dmitry.osipenko)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D444B6603102;
-	Mon, 28 Aug 2023 03:04:04 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1693188246;
-	bh=MdQMfqcGXQs/ECA9S10/I1u8YJnIw7F7oF5+4wksxLc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=K27UlQU54MNEWFjw4/pjdCvmw8V2jPGqr/EpQr3Hd+Xp8jK5ohJMz+n4u3Qc48Zoe
-	 mM3e3FH69TukH+BRwi9G9Mf4Mqrnk3iK4KENJwPGzT/Z3jyyJAWHxzAii9OkBoJhPu
-	 r0hiFq0RPtafLkeCHg6F+9GO6JZFH61NW+lt32f+q0PE0PG+jkkPm8/HABB3ozuwtA
-	 kJaTYzp0HxP2cdv3hIqFOPrDu6iJkDJgmPBe9xPNb+1zBL6KrRVSbhbqteWM5mlr3u
-	 ThOMGx0FsoaZN4F/Ooo3A0pnvisyoo5TdhenI4pMVO7k7uJs80xnHHn+mc36G+bYV2
-	 rpQAsCYMtsSNA==
-Message-ID: <54b14ebe-b51b-2744-328d-2adcdaaf6d0e@collabora.com>
-Date: Mon, 28 Aug 2023 05:04:02 +0300
+	id 1qaRzO-008k5G-2q;
+	Mon, 28 Aug 2023 02:28:28 +0000
+Received: from [172.16.12.69] (unknown [58.22.7.114])
+	by mail-m11880.qiye.163.com (Hmail) with ESMTPA id 5C8D620881;
+	Mon, 28 Aug 2023 10:27:34 +0800 (CST)
+Message-ID: <95e9525e-3101-4433-27e2-cd69f254af1c@rock-chips.com>
+Date: Mon, 28 Aug 2023 10:27:34 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [RESEND PATCH v2] media: mtk-jpeg: Fix use after free bug due to
- uncanceled work
-Content-Language: en-US
-To: Zheng Hacker <hackerzheng666@gmail.com>
-Cc: Zheng Wang <zyytlz.wz@163.com>, Kyrie.Wu@mediatek.com,
- bin.liu@mediatek.com, mchehab@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Irui.Wang@mediatek.com,
- security@kernel.org, 1395428693sheep@gmail.com, alex000young@gmail.com,
- Collabora Kernel ML <kernel@collabora.com>
-References: <20230707092414.866760-1-zyytlz.wz@163.com>
- <8c8bd3ec-a5a4-32e4-45b5-ee16eeeac246@collabora.com>
- <CAJedcCxPG1mKtgB7AcJSwaQB_qvODObwq3gz6eM_1w777b2PfQ@mail.gmail.com>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-In-Reply-To: <CAJedcCxPG1mKtgB7AcJSwaQB_qvODObwq3gz6eM_1w777b2PfQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.14.0
+Cc: shawn.lin@rock-chips.com, angelogioacchino.delregno@collabora.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org,
+ matthias.bgg@gmail.com, ulf.hansson@linaro.org, wsd_upstream@mediatek.com
+Subject: Re: [PATCH 1/1] mmc: Set optimal I/O size when mmc_setip_queue
+Content-Language: en-GB
+To: Sharp.Xia@mediatek.com
+References: <769a67cb-1b32-fd4f-b37e-e3ec4dab5eb9@rock-chips.com>
+ <20230826162635.617-1-Sharp.Xia@mediatek.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <20230826162635.617-1-Sharp.Xia@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0pISVZLSkkfGhoaQkxJTx5VEwETFh
+	oSFyQUDg9ZV1kYEgtZQVlOQ1VJSVVMVUpKT1lXWRYaDxIVHRRZQVlPS0hVSk1PSU5IVUpLS1VKQk
+	tLWQY+
+X-HM-Tid: 0a8a39f7c8492eb6kusn5c8d620881
+X-HM-MType: 1
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pj46HDo5HT1DDTMcDDY8Eioo
+	KU5PCwlVSlVKTUJISkNCTU5OS01PVTMWGhIXVQgTGgwVVRcSFTsJFBgQVhgTEgsIVRgUFkVZV1kS
+	C1lBWU5DVUlJVUxVSkpPWVdZCAFZQUhJTUk3Bg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230827_190414_039160_9B83FB4C 
-X-CRM114-Status: GOOD (  31.17  )
+X-CRM114-CacheID: sfid-20230827_192827_075209_C05EFEED 
+X-CRM114-Status: UNSURE (   9.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,112 +74,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/24/23 11:20, Zheng Hacker wrote:
-> Dmitry Osipenko <dmitry.osipenko@collabora.com> 于2023年8月23日周三 02:51写道：
+Hi Sharp
+
+On 2023/8/27 0:26, Sharp.Xia@mediatek.com wrote:
+> On Fri, 2023-08-25 at 17:17 +0800, Shawn Lin wrote:
+>>   	
+>>
+
+After more testing, most of my platforms which runs at HS400/HS200 mode 
+shows nearly no differences with the readahead ranging from 128 to 1024. 
+Yet just a board shows a performance drop now. Highly suspect it's eMMC
+chip depends. I would recommand leave it to the BSP guys to decide which
+readahead value is best for their usage.
+
 > 
->>
->> Hello Zheng,
->>
->> On 7/7/23 12:24, Zheng Wang wrote:
->>> In mtk_jpeg_probe, &jpeg->job_timeout_work is bound with
->>> mtk_jpeg_job_timeout_work. Then mtk_jpeg_dec_device_run
->>> and mtk_jpeg_enc_device_run may be called to start the
->>> work.
->>> If we remove the module which will call mtk_jpeg_remove
->>> to make cleanup, there may be a unfinished work. The
->>> possible sequence is as follows, which will cause a
->>> typical UAF bug.
->>>
->>> Fix it by canceling the work before cleanup in the mtk_jpeg_remove
->>>
->>> CPU0                  CPU1
->>>
->>>                     |mtk_jpeg_job_timeout_work
->>> mtk_jpeg_remove     |
->>>   v4l2_m2m_release  |
->>>     kfree(m2m_dev); |
->>>                     |
->>>                     | v4l2_m2m_get_curr_priv
->>>                     |   m2m_dev->curr_ctx //use
->>> Fixes: b2f0d2724ba4 ("[media] vcodec: mediatek: Add Mediatek JPEG Decoder Driver")
->>> Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
->>> ---
->>> - v2: use cancel_delayed_work_sync instead of cancel_delayed_work suggested by Kyrie.
->>> ---
->>>  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 1 +
->>>  1 file changed, 1 insertion(+)
->>>
->>> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
->>> index 0051f372a66c..6069ecf420b0 100644
->>> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
->>> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
->>> @@ -1816,6 +1816,7 @@ static void mtk_jpeg_remove(struct platform_device *pdev)
->>>  {
->>>       struct mtk_jpeg_dev *jpeg = platform_get_drvdata(pdev);
->>>
->>> +     cancel_delayed_work_sync(&jpeg->job_timeout_work);
->>>       pm_runtime_disable(&pdev->dev);
->>>       video_unregister_device(jpeg->vdev);
->>>       v4l2_m2m_release(jpeg->m2m_dev);
->>
->> AFAICS, there is a fundamental problem here. The job_timeout_work uses
->> v4l2_m2m_get_curr_priv() and at the time when driver module is unloaded,
->> all the v4l contexts must be closed and released. Hence the
->> v4l2_m2m_get_curr_priv() shall return NULL and crash the kernel when
->> work is executed before cancel_delayed_work_sync().
->>
+> I tested with RK3568 and sdhci-of-dwcmshc.c driver, the performance improved by 2~3%.
+>   
+> Before:
+> root@OpenWrt:/mnt/mmcblk0p3# time dd if=test.img of=/dev/null
+> 2097152+0 records in
+> 2097152+0 records out
+> real    0m 6.01s
+> user    0m 0.84s
+> sys     0m 2.89s
+> root@OpenWrt:/mnt/mmcblk0p3# cat /sys/block/mmcblk0/queue/read_ahead_kb
+> 128
+>   
+> After:
+> root@OpenWrt:/mnt/mmcblk0p3# echo 3 > /proc/sys/vm/drop_caches
+> root@OpenWrt:/mnt/mmcblk0p3# time dd if=test.img of=/dev/null
+> 2097152+0 records in
+> 2097152+0 records out
+> real    0m 5.86s
+> user    0m 1.04s
+> sys     0m 3.18s
+> root@OpenWrt:/mnt/mmcblk0p3# cat /sys/block/mmcblk0/queue/read_ahead_kb
+> 1024
+>   
+> root@OpenWrt:/sys/kernel/debug/mmc0# cat ios
+> clock:          200000000 Hz
+> actual clock:   200000000 Hz
+> vdd:            18 (3.0 ~ 3.1 V)
+> bus mode:       2 (push-pull)
+> chip select:    0 (don't care)
+> power mode:     2 (on)
+> bus width:      3 (8 bits)
+> timing spec:    9 (mmc HS200)
+> signal voltage: 1 (1.80 V)
+> driver type:    0 (driver type B)
 > 
-> Hi Dmitry,
-> 
-> Thanks for your reply. I think you're right. As m2m_dev is freed in
-> v4l2_m2m_release,
-> the invoking in v4l2_m2m_get_curr_priv might cause either UAF or null
-> pointer dereference
-> bug. I am sure that context is closed when we invoke mtk_jpeg_remove.
-> But I'm not sure if
-> context is released when mtk_jpegdec_timeout_work running.
-> 
->> At the time when mtk_jpeg_remove() is invoked, there shall be no
->> job_timeout_work running in background because all jobs should be
->> completed before context is released. If you'll look at
->> v4l2_m2m_cancel_job(), you can see that it waits for the task completion
->> before closing context.
-> 
-> Yes, so I think the better way is to put the cancel_delayed_work_sync
-> invoking into
-> v4l2_m2m_ctx_release function?
-
-The v4l2_m2m_ctx_release() already should wait for the job_timeout_work
-completion or for the interrupt fire. Apparently it doesn't work in
-yours case. You'll need to debug why v4l job or job_timeout_work is
-running after v4l2_m2m_ctx_release(), it shouldn't happen.
-
-The interrupt handler cancels job_timeout_work, you shouldn't need to
-flush the work.
-
-Technically, interrupt handler may race with job_timeout_work, but the
-timeout is set to 1 second and in practice should be difficult to
-trigger the race. The interrupt handler needs to be threaded, it should
-use cancel_delayed_work_sync() and check the return value of this function.
-
->>
->> You shouldn't be able to remove driver module while it has active/opened
->> v4l contexts. If you can do that, then this is yours bug that needs to
->> be fixed.
->>
->> In addition to this all, the job_timeout_work is initialized only for
->> the single-core JPEG device. I'd expect this patch should crash
->> multi-core JPEG devices.
->>
-> 
-> I think that's true. As I'm not familiar with the code here. Could you
-> please give me some advice about the patch?
-
-We'll need to understand why v4l2_m2m_ctx_release() doesn't work as
-expected before thinking about the patch.
-
--- 
-Best regards,
-Dmitry
-
 
