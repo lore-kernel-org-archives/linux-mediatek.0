@@ -4,82 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2AEBC83F11
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Aug 2023 10:52:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0464AC83F11
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Aug 2023 17:59:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=elLPoDp9bmkE4We94dz6eaKiXla0ksw3fzd5gyuWCCc=; b=MXiZgNowo8tcX/6BwK1wITiQLY
-	rIuVt1+ieEIoea6ixB6nA0IjkxHl8Vg9mjqSvyg2vDc8g1wKyN2QtS4I9LJo/sTiyGuJs9P53dFTs
-	LA2SezZ/Ml4++GF4qJdIfC+rV59umYAKgmEpLPQwVCGWeDEurSROZ3rIsHGYukNz9GhlGh+d64giw
-	791QdvV6Eaoqf5nHhL/78N7sxL4twc8cy0SIWA+ZoXRWQ2DhGD27mdAkpINytIgBXskynUB4FpEV+
-	+is2BlSlPrGzCFOHtMZj7zIaTq8XsYGFIR5wzFUgnQ/MR55EVbAeufcVecragYXhXK/6RdPZVQ8k2
-	QCHEQhhw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cZlJbdWaIR63MB6+cKGfIWNhhvdxDwDKbDPjEhuXlc8=; b=TAF3oDv/1ZcjoM4Aogd0PAN6FT
+	vSpdDy9jPKK5tXNojpO137OAgfu3kzl6K5XogS3yXxtzyepTnaoaNJj1HYLGBurP+EqRyeDGA+6RA
+	Bw3P7GqiSSXEzl/dqe2zDMcixGNqlZtZ2g4DyxujG6O6m6M6Nha/i6XA2o6/wPYluyadoqAcwiIHI
+	PBbhdyhxUYXjGzVt4fw+V0m8sJ9jffcEIbBdvFIIBssOGXD+RQcQmgTwFdvqDq2rFjeTy7asYJzeJ
+	GU6Tu/h230JBx18bCbx0z6rX9J/GDbGaDzuyipPbfqVREDt+kwAJTo4On50+6LeFfxqlrwjGVz9pU
+	oUTOQQTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaZqo-009Sp8-0S;
-	Mon, 28 Aug 2023 10:52:06 +0000
-Received: from mail-vk1-xa29.google.com ([2607:f8b0:4864:20::a29])
+	id 1qagWk-00A2ve-2j;
+	Mon, 28 Aug 2023 17:59:50 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaZqj-009Snb-1a
+	id 1qagWh-00A2ui-2g
 	for linux-mediatek@lists.infradead.org;
-	Mon, 28 Aug 2023 10:52:03 +0000
-Received: by mail-vk1-xa29.google.com with SMTP id 71dfb90a1353d-48d167f6cffso963374e0c.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Aug 2023 03:51:58 -0700 (PDT)
+	Mon, 28 Aug 2023 17:59:49 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-1bc8a2f71eeso20067395ad.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Aug 2023 10:59:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1693219917; x=1693824717;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=elLPoDp9bmkE4We94dz6eaKiXla0ksw3fzd5gyuWCCc=;
-        b=SdSV6oYdsFNGt3VJkcjb3T8M+WRpkMC27SB4trWP6t6WCuNgIf0IBzzcIwAzdzhOzb
-         lpbTZg3GcvnmJFA8dB0skK4Tul8jBDeYqK3mTZAT2jMOqI6Xs0zf/DLy6DyRkMn1OE05
-         s4UAMmwGB3pKve3g+iJoaxr4D7kaCHjh5cpFs=
+        d=linaro.org; s=google; t=1693245584; x=1693850384;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=cZlJbdWaIR63MB6+cKGfIWNhhvdxDwDKbDPjEhuXlc8=;
+        b=re2vWxTZsJngYqKRFCy6UaCblUfr8fKqPYK+fIVrV60MQdCGt7sP5+DUb8DKQP5DYD
+         oLbwVQ3qoS6hb2+KLIYFlDvt8th9hPvi8oo6wPIA4jTY79tQjLzHQrfbXqKZdxl8aDKU
+         bq8QoxGbQ4VMUb3+xnBM9SHB6UuUyNevVjww783ppAMD7vrvQqbFKzKvq+ZvsUxA9Gwc
+         uIjmhgU2pWeE7++1c6e6XDIDHzDckTTsjg1DKy/1i9TdstvFUKaet6jQw64VTRu+EvGf
+         JoXdp6xFNFTuM/kQJFl8wfzNtRLiopfOeys5dZCP4sFVp/eHP1mDh+wN7eHf35Rl71nl
+         oXDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693219917; x=1693824717;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=elLPoDp9bmkE4We94dz6eaKiXla0ksw3fzd5gyuWCCc=;
-        b=TItxoUFQEiZ/tBIQDv2i6a1Ii6OL7/0m8SCUcUkhZUGro1H8bapJEtcppHRjAUMaSj
-         Aa+980y+OfCui6bOjWsTfyyg4m8FpNuFv0vyiiPZ1hReq+M/1x+tk3xXt9r3rodKrKbn
-         zhsBMMncubSZF/Ryt2o1t+Z6IsXlbfnQg6WaoG6RYY0vfKnDFA/4MUp1h/hNW+negMDM
-         YbSlHHOPwp1SI+JJ3YJv86WSLTDccbT6f5BHU1o7eQ0/7z5sfSqEVvhy5XcLn4dDpPC1
-         GDL9BL+Pw8j/m+R5hM5nOWonDR7LSqBn52PFlyXvWe6+oVZZoLfW2HcsyJ/T3iLeK8uC
-         Hklw==
-X-Gm-Message-State: AOJu0YzeO991JGEwN+6sOkJ2YX17Y/b17qmQ0R4X6lX9yiaLu04VhfGe
-	mCXNPdF0IHShuqAxgVUnSAYkHWMBis5Jjvbv6Mj97A==
-X-Google-Smtp-Source: AGHT+IGR36/jVcdlzI9EHwegyXf6XR7oaier3VVqD/hv7csJfXZdl6/g5RXOQdrWkimON7lfWlQ1zKRYdtrfJiAE4jQ=
-X-Received: by 2002:a1f:4c81:0:b0:487:e8f1:a2bf with SMTP id
- z123-20020a1f4c81000000b00487e8f1a2bfmr19015896vka.15.1693219917389; Mon, 28
- Aug 2023 03:51:57 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1693245584; x=1693850384;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cZlJbdWaIR63MB6+cKGfIWNhhvdxDwDKbDPjEhuXlc8=;
+        b=Q1a1L/RO1Ra6xhP/FPnm5vjZkdW01ia7f5Bc+XllfYhp17kDZug+NHfrhlLqMU7YM8
+         kXEFmIDkXRvbTTFIdVADmHfoQtnGp2VuWQ4zsZ562Ye32u3VmDOEbmYe61PXtqaU0z5d
+         d8llFIAmv9knSEPK17cD9G5DyWsAS9z2jKavggy4I9weHqFFtSS0qh6fw4NLnKVqnGGn
+         RJxsGVn7MJoK+WcNSTpKqKHvMh+vp1khzfCCKmOE175Ak/WCWSfaS5KWM4lMvQc+KHL6
+         70apsi2N7Zx+ThHk07EUq+qbp3VUvDCSIFY3CA2xxwuEcUeaQDCNYJy0bTzxtayZbnlW
+         KnEA==
+X-Gm-Message-State: AOJu0YwSn365SNO8kL6KgKJwBmtKnFZdmeVnVOko1fcVQVqVJLqbHUSB
+	Ewr6N1Dtjc7UCZPsC2I55e4mZw==
+X-Google-Smtp-Source: AGHT+IHve46vr57tT4L0A+DoFQ2zYJAJtNF3aR+RJ/z+x45b5NMheAll5oulWOektSu43lHp5g9Nsg==
+X-Received: by 2002:a17:902:ef96:b0:1c0:bcbc:d5d with SMTP id iz22-20020a170902ef9600b001c0bcbc0d5dmr9540910plb.61.1693245584478;
+        Mon, 28 Aug 2023 10:59:44 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:3b:df05:c142:c2ef])
+        by smtp.gmail.com with ESMTPSA id jh12-20020a170903328c00b001bf5c12e9fesm7714881plb.125.2023.08.28.10.59.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Aug 2023 10:59:43 -0700 (PDT)
+Date: Mon, 28 Aug 2023 11:59:41 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v16 08/14] remoteproc: mediatek: Probe SCP cluster on
+ multi-core SCP
+Message-ID: <ZOzgja8mfNefRqP7@p14s>
+References: <20230728023959.12293-1-tinghan.shen@mediatek.com>
+ <20230728023959.12293-9-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-References: <20230825114623.16884-1-macpaul.lin@mediatek.com>
- <20230825114623.16884-3-macpaul.lin@mediatek.com> <CAGXv+5FTuY=ZHB3-2Woit5amRZ=RxByGMq=LQp-es8tWEhAQUA@mail.gmail.com>
- <986d8056-3708-ed3d-1896-0fbc034ca53c@mediatek.com>
-In-Reply-To: <986d8056-3708-ed3d-1896-0fbc034ca53c@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 28 Aug 2023 18:51:46 +0800
-Message-ID: <CAGXv+5E2kOOz59AMCvQv_as6SesDkt15b9uDOSZ_iJMytgf1gA@mail.gmail.com>
-Subject: Re: [PATCH 3/4] arm64: dts: mediatek: mt6360: add PMIC MT6360 related nodes
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Bear Wang <bear.wang@mediatek.com>, 
-	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230728023959.12293-9-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230828_035201_600268_F16E73B7 
-X-CRM114-Status: GOOD (  38.87  )
+X-CRM114-CacheID: sfid-20230828_105947_880828_11B9516A 
+X-CRM114-Status: GOOD (  32.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,218 +100,216 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 28, 2023 at 5:59=E2=80=AFPM Macpaul Lin <macpaul.lin@mediatek.c=
-om> wrote:
->
->
-> On 8/28/23 12:36, Chen-Yu Tsai wrote:
-> >
-> >
-> > External email : Please do not click links or open attachments until yo=
-u
-> > have verified the sender or the content.
-> >
-> > On Fri, Aug 25, 2023 at 7:46=E2=80=AFPM Macpaul Lin <macpaul.lin@mediat=
-ek.com> wrote:
-> >>
-> >> MT6360 is the secondary PMIC for MT8195.
-> >> It supports USB Type-C and PD functions.
-> >> Add MT6360 related common nodes which is used for MT8195 platform, inc=
-ludes
-> >>  - charger
-> >>  - ADC
-> >>  - LED
-> >>  - regulators
-> >>
-> >> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> >> ---
-> >>  arch/arm64/boot/dts/mediatek/mt6360.dtsi | 112 ++++++++++++++++++++++=
-+
->
-> [snip..]
->
-> >> +       regulator {
-> >> +               compatible =3D "mediatek,mt6360-regulator";
-> >> +               LDO_VIN3-supply =3D <&mt6360_buck2>;
-> >> +
-> >> +               mt6360_buck1: buck1 {
-> >> +                       regulator-compatible =3D "BUCK1";
-> >> +                       regulator-name =3D "mt6360,buck1";
-> >
-> > Normally there's no need to provide a default name. Any used regulator
-> > should have been named to match the power rail name from the board's
-> > schematics.
-> >
->
-> I have 2 schematics on hand. One is mt8195-demo board and the other is
-> genio-1200-evk board. There are 2 PMIC used on these board
-> with "the same" sub power rail name for "BUCK1~BUCK4". One is mt6315,
-> and the other is mt6360.
+Hi Tinghan,
 
-This is more of an board level integration thing. Regulator names are
-expected to be named after the actual power rail names. For example,
-take a look at Rock Pi 4 schematics [1], the power rail from BUCK1 of
-the RK808 PMIC is named "VDD_CENTER". And in the dts file [1] we can
-see the regulator is named that as well (albeit with some style changes).
+On Fri, Jul 28, 2023 at 10:39:53AM +0800, Tinghan Shen wrote:
+> The difference of single-core SCP and multi-core SCP device tree is
+> the presence of child device nodes described SCP cores. The SCP
+> driver populates the platform device and checks the child nodes
+> to identify whether it's a single-core SCP or a multi-core SCP.
+> 
+> Add the remoteproc instances of multi-core SCP to the SCP cluster list.
+> When the SCP driver is removed, it cleanup resources by walking
+> through the cluster list.
+> 
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/remoteproc/mtk_scp.c | 118 +++++++++++++++++++++++++++++++++--
+>  1 file changed, 113 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index d67dcabdab9e..d9242c3eb0d7 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -855,7 +855,8 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
+>  }
+>  
+>  static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
+> -				      struct mtk_scp_of_cluster *scp_cluster)
+> +				      struct mtk_scp_of_cluster *scp_cluster,
+> +				      const struct mtk_scp_of_data *of_data)
+>  {
+>  	struct device *dev = &pdev->dev;
+>  	struct device_node *np = dev->of_node;
+> @@ -878,7 +879,7 @@ static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
+>  	scp = rproc->priv;
+>  	scp->rproc = rproc;
+>  	scp->dev = dev;
+> -	scp->data = of_device_get_match_data(dev);
+> +	scp->data = of_data;
+>  	scp->cluster = scp_cluster;
+>  	platform_set_drvdata(pdev, scp);
+>  
+> @@ -951,15 +952,15 @@ static void scp_free(struct mtk_scp *scp)
+>  	mutex_destroy(&scp->send_lock);
+>  }
+>  
+> -static int scp_cluster_init(struct platform_device *pdev,
+> -			    struct mtk_scp_of_cluster *scp_cluster)
+> +static int scp_add_single_core(struct platform_device *pdev,
+> +			       struct mtk_scp_of_cluster *scp_cluster)
+>  {
+>  	struct device *dev = &pdev->dev;
+>  	struct list_head *scp_list = &scp_cluster->mtk_scp_list;
+>  	struct mtk_scp *scp;
+>  	int ret;
+>  
+> -	scp = scp_rproc_init(pdev, scp_cluster);
+> +	scp = scp_rproc_init(pdev, scp_cluster, of_device_get_match_data(dev));
+>  	if (IS_ERR(scp))
+>  		return PTR_ERR(scp);
+>  
+> @@ -975,6 +976,102 @@ static int scp_cluster_init(struct platform_device *pdev,
+>  	return 0;
+>  }
+>  
+> +static int scp_add_multi_core(struct platform_device *pdev,
+> +			      struct mtk_scp_of_cluster *scp_cluster)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *np = dev_of_node(dev);
+> +	struct platform_device *cpdev;
+> +	struct device_node *child;
+> +	struct list_head *scp_list = &scp_cluster->mtk_scp_list;
+> +	const struct mtk_scp_of_data **cluster_of_data;
+> +	struct mtk_scp *scp, *temp;
+> +	int core_id = 0;
+> +	int ret;
+> +
+> +	cluster_of_data = (const struct mtk_scp_of_data **)of_device_get_match_data(dev);
+> +
+> +	for_each_available_child_of_node(np, child) {
+> +		if (!cluster_of_data[core_id]) {
+> +			ret = -EINVAL;
+> +			dev_err(dev, "Not support core %d\n", core_id);
+> +			of_node_put(child);
+> +			goto init_fail;
+> +		}
+> +
+> +		cpdev = of_find_device_by_node(child);
+> +		if (!cpdev) {
+> +			ret = -ENODEV;
+> +			dev_err(dev, "Not found platform device for core %d\n", core_id);
+> +			of_node_put(child);
+> +			goto init_fail;
+> +		}
+> +
+> +		scp = scp_rproc_init(cpdev, scp_cluster, cluster_of_data[core_id]);
+> +		put_device(&cpdev->dev);
+> +		if (IS_ERR(scp)) {
+> +			ret = PTR_ERR(scp);
+> +			dev_err(dev, "Failed to initialize core %d rproc\n", core_id);
+> +			of_node_put(child);
+> +			goto init_fail;
+> +		}
+> +
+> +		ret = rproc_add(scp->rproc);
+> +		if (ret) {
+> +			dev_err(dev, "Failed to add rproc of core %d\n", core_id);
+> +			of_node_put(child);
+> +			scp_free(scp);
+> +			goto init_fail;
+> +		}
+> +
+> +		list_add_tail(&scp->elem, scp_list);
+> +		core_id++;
+> +	}
+> +
+> +	platform_set_drvdata(pdev, scp);
+> +
 
-Now if a project really chooses meaningless names like BUCKx or LDOy
-for their power rails, then so be it. However those are board level
-decisions. The names are there to help with integration debugging, so
-it makes sense to have names that match the power rail names in the
-schematics. Default names rarely make sense.
+Here we are setting the platform device for @pdev to the last @scp that was
+created, which is needed because (1) scp_rproc_init() is calling
+platform_set_drvdata() on the child platform devices and (2) we need a handle to
+the cluster list in scp_remove().
 
-[1] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/rockpi4_v13_sch_20181112.p=
-df
-[2] https://elixir.bootlin.com/linux/latest/source/arch/arm64/boot/dts/rock=
-chip/rk3399-rock-pi-4.dtsi#L267
+Please add a comment with the above just before calling platform_set_drvdata().
+Otherwise it will be very difficult for people not familiar with the driver to
+understand what is going on.
 
-> I've also inspected other dtsi of the regulators, such as mt6357 and
-> mt6359. They have regulator nodes with named for their purpose. For the
-> schematics of mt8195-demo and genio-1200-evk boards, there are no
-> explicit usage for "BUCK1~BUCK4" for both mt6135 and mt6360. In order to
-> specify the sub power rail for mt6360, MediaTek chooses name like
-> "mt6360,buck1" instead of simple name "buck1" for distinguish with
-> "buck1" of mt6351.
->
-> >> +                       regulator-min-microvolt =3D <300000>;
-> >> +                       regulator-max-microvolt =3D <1300000>;
-> >
-> > These values correspond to the regulator's range. They make no sense as
-> > regulator constraints. The min/max values are supposed to be the most
-> > restrictive set of voltages of the regulator consumers. If what is fed
-> > by this regulator can only take 0.7V ~ 1.1V, then it should save 0.7V
-> > and 1.1V here. If the regulator is unused, then there are no constraint=
-s,
-> > and these can be left out.
-> >
-> > Just leave them out of the file.
-> >
-> > Both comments apply to all the regulators.
-> >
-> > ChenYu
->
-> There are some common circuit design for these regulators like mt6359,
-> mt6360 and mt6315 used on many products. MediaTek put the most common
-> and expected default values in their dtsi. However, some changes still
-> need to be applied to derivative boards according to product's
-> requirements. The actual value be used will be applied in board's dts
-> file to override the default settings in dtsi.
+Otherwise I think we are done.
 
-The values here are definitely not some product's expected values.
-They are the full range of output voltages supported, as seen in the
-driver.
+Thanks,
+Mathieu
 
-The regulator binding says:
-
-    regulator-min-microvolt:
-      description: smallest voltage consumers may set
-
-    regulator-max-microvolt:
-      description: largest voltage consumers may set
-
-The constraints given in the regulator node are those of the consumers,
-not the PMIC regulator itself. As you mentioned, a board may need to
-adjust the range based on its design, i.e. what the board has connected
-to the regulator.
-
-So either something is connected, and the consumer's constraints are set
-by overriding the default in the board .dts file; or, nothing is connected
-and the constraints don't matter, as nothing is going to set the voltage
-or enable the regulator. So there's no reason to give a default. For
-unused regulator outputs, their device nodes don't even have to exist.
-
-I'm trying to get people to _not_ write default values, as they don't
-make any sense. The full voltage range is already implied by the
-compatible string.
-
-ChenYu
-
-> The regulator node "mt6360,ldo6" is not used by mt8195-demo and
-> genio-1200-evk. I'll remove it in the next version.
-> Thanks for the review.
->
-> >> +                       regulator-allowed-modes =3D <MT6360_OPMODE_NOR=
-MAL
-> >> +                                                  MT6360_OPMODE_LP
-> >> +                                                  MT6360_OPMODE_ULP>;
-> >> +               };
-> >> +
-> >> +               mt6360_buck2: buck2 {
-> >> +                       regulator-compatible =3D "BUCK2";
-> >> +                       regulator-name =3D "mt6360,buck2";
-> >> +                       regulator-min-microvolt =3D <300000>;
-> >> +                       regulator-max-microvolt =3D <1300000>;
-> >> +                       regulator-allowed-modes =3D <MT6360_OPMODE_NOR=
-MAL
-> >> +                                                  MT6360_OPMODE_LP
-> >> +                                                  MT6360_OPMODE_ULP>;
-> >> +               };
-> >> +
-> >> +               mt6360_ldo1: ldo1 {
-> >> +                       regulator-compatible =3D "LDO1";
-> >> +                       regulator-name =3D "mt6360,ldo1";
-> >> +                       regulator-min-microvolt =3D <1200000>;
-> >> +                       regulator-max-microvolt =3D <3600000>;
-> >> +                       regulator-allowed-modes =3D <MT6360_OPMODE_NOR=
-MAL
-> >> +                                                  MT6360_OPMODE_LP>;
-> >> +               };
-> >> +
-> >> +               mt6360_ldo2: ldo2 {
-> >> +                       regulator-compatible =3D "LDO2";
-> >> +                       regulator-name =3D "mt6360,ldo2";
-> >> +                       regulator-min-microvolt =3D <1200000>;
-> >> +                       regulator-max-microvolt =3D <3600000>;
-> >> +                       regulator-allowed-modes =3D <MT6360_OPMODE_NOR=
-MAL
-> >> +                                                  MT6360_OPMODE_LP>;
-> >> +               };
-> >> +
-> >> +               mt6360_ldo3: ldo3 {
-> >> +                       regulator-compatible =3D "LDO3";
-> >> +                       regulator-name =3D "mt6360,ldo3";
-> >> +                       regulator-min-microvolt =3D <1200000>;
-> >> +                       regulator-max-microvolt =3D <3600000>;
-> >> +                       regulator-allowed-modes =3D <MT6360_OPMODE_NOR=
-MAL
-> >> +                                                  MT6360_OPMODE_LP>;
-> >> +               };
-> >> +
-> >> +               mt6360_ldo5: ldo5 {
-> >> +                       regulator-compatible =3D "LDO5";
-> >> +                       regulator-name =3D "mt6360,ldo5";
-> >> +                       regulator-min-microvolt =3D <2700000>;
-> >> +                       regulator-max-microvolt =3D <3600000>;
-> >> +                       regulator-allowed-modes =3D <MT6360_OPMODE_NOR=
-MAL
-> >> +                                                  MT6360_OPMODE_LP>;
-> >> +               };
-> >> +
-> >> +               mt6360_ldo6: ldo6 {
-> >> +                       regulator-compatible =3D "LDO6";
-> >> +                       regulator-name =3D "mt6360,ldo6";
-> >> +                       regulator-min-microvolt =3D <500000>;
-> >> +                       regulator-max-microvolt =3D <2100000>;
-> >> +                       regulator-allowed-modes =3D <MT6360_OPMODE_NOR=
-MAL
-> >> +                                                  MT6360_OPMODE_LP>;
-> >> +               };
-> >> +
-> >> +               mt6360_ldo7: ldo7 {
-> >> +                       regulator-compatible =3D "LDO7";
-> >> +                       regulator-name =3D "mt6360,ldo7";
-> >> +                       regulator-min-microvolt =3D <500000>;
-> >> +                       regulator-max-microvolt =3D <2100000>;
-> >> +                       regulator-allowed-modes =3D <MT6360_OPMODE_NOR=
-MAL
-> >> +                                                  MT6360_OPMODE_LP>;
-> >> +               };
-> >> +       };
-> >> +};
-> >> --
-> >> 2.18.0
-> >>
->
-> Best regards,
-> Macpaul Lin.
+> +	return 0;
+> +
+> +init_fail:
+> +	list_for_each_entry_safe_reverse(scp, temp, scp_list, elem) {
+> +		list_del(&scp->elem);
+> +		rproc_del(scp->rproc);
+> +		scp_free(scp);
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +static int scp_is_single_core(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *np = dev_of_node(dev);
+> +	struct device_node *child;
+> +
+> +	child = of_get_next_available_child(np, NULL);
+> +	if (!child)
+> +		return dev_err_probe(dev, -ENODEV, "No child node\n");
+> +
+> +	of_node_put(child);
+> +	return of_node_name_eq(child, "cros-ec-rpmsg");
+> +}
+> +
+> +static int scp_cluster_init(struct platform_device *pdev, struct mtk_scp_of_cluster *scp_cluster)
+> +{
+> +	int ret;
+> +
+> +	ret = scp_is_single_core(pdev);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	if (ret)
+> +		ret = scp_add_single_core(pdev, scp_cluster);
+> +	else
+> +		ret = scp_add_multi_core(pdev, scp_cluster);
+> +
+> +	return ret;
+> +}
+> +
+>  static int scp_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> @@ -1007,6 +1104,10 @@ static int scp_probe(struct platform_device *pdev)
+>  
+>  	INIT_LIST_HEAD(&scp_cluster->mtk_scp_list);
+>  
+> +	ret = devm_of_platform_populate(dev);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to populate platform devices\n");
+> +
+>  	ret = scp_cluster_init(pdev, scp_cluster);
+>  	if (ret)
+>  		return ret;
+> @@ -1101,12 +1202,19 @@ static const struct mtk_scp_of_data mt8195_of_data_c1 = {
+>  	.host_to_scp_int_bit = MT8195_CORE1_HOST_IPC_INT_BIT,
+>  };
+>  
+> +static const struct mtk_scp_of_data *mt8195_of_data_cores[] = {
+> +	&mt8195_of_data,
+> +	&mt8195_of_data_c1,
+> +	NULL
+> +};
+> +
+>  static const struct of_device_id mtk_scp_of_match[] = {
+>  	{ .compatible = "mediatek,mt8183-scp", .data = &mt8183_of_data },
+>  	{ .compatible = "mediatek,mt8186-scp", .data = &mt8186_of_data },
+>  	{ .compatible = "mediatek,mt8188-scp", .data = &mt8188_of_data },
+>  	{ .compatible = "mediatek,mt8192-scp", .data = &mt8192_of_data },
+>  	{ .compatible = "mediatek,mt8195-scp", .data = &mt8195_of_data },
+> +	{ .compatible = "mediatek,mt8195-scp-dual", .data = &mt8195_of_data_cores },
+>  	{},
+>  };
+>  MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
+> -- 
+> 2.18.0
+> 
 
