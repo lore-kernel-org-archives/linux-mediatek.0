@@ -4,108 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DC6CC83F12
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Aug 2023 19:56:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADBC6C83F12
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Aug 2023 20:00:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+aPLP5Dvqf88CiJMFQl9Auucq47ZaEdR+LnhUOVMwHI=; b=Dcjf8h97OWGQmKRYzpF3zzeN5/
-	Y3OAPh7aCyA+STCZV8TqMShK2ZqRO1acbxKx5541nBQIc/HDxkFtXE3691QAYEmxcXPdxopcxqeM+
-	3JVq34eXWUDhF8eKPpK25sAj5ToSXG32UHtefYa/PNRkfhUTRQ3uGzWChQsaOKDAa+UZeSatLtByh
-	wNcRWK6YKSAQJ8m9qy+s1v6JnZaB3Eok6Gt+ayStwWsLHnuH08+4CmKQj1yJ3N4cNlSpT34VOeZc0
-	UhYWd8sO5WGrHrPL9n2pMaNr8pdU/b4jbOeJF1p0OedyaxtFB3nLydll3/5J0USLTQ6y1/muWt1jx
-	CNlYljxg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L02duF6SFy8RjJnLA6g76StEvl2HO8km/+3vH3DebCI=; b=DMaMGHgMh2uqKD2tKfh7PamZuj
+	xq1dwcfCIBA0Acbf7wK5Ct/YXBavWMiQsH9cBp3oapjsZ+E6pLonAFwueCO/nENgQ3xBLzMYS/3Gl
+	CfgJ0fdZQ8193e2Gge1scLTDa8lkHMamYQPxvdnh3YbZzzggoir+WjjXJOXTfoxRPum4Lxdm8v1V5
+	RWSe9vAFgJvHR1AzvrN5+CdzuSbIbtO50XItCfs1PrupHgGPVpQYBQ7AUPPr2euQydXI2bWFE1gic
+	1eb9yFS1WngeGc2QSGDbKmBWxzC00f3OQumAbrwps8eVZvD5SUn3oTYwbQ9yCFc1KKUkB7soDLhpg
+	MDO8QUEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaiLm-00ABeF-0E;
-	Mon, 28 Aug 2023 19:56:38 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1qaiPV-00ACP5-1u;
+	Mon, 28 Aug 2023 20:00:29 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qaiLj-00ABct-0O
-	for linux-mediatek@lists.infradead.org;
-	Mon, 28 Aug 2023 19:56:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1693252592;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+aPLP5Dvqf88CiJMFQl9Auucq47ZaEdR+LnhUOVMwHI=;
-	b=F6eWE2XfSec0Gf/5CMCgTQkpFPmrbGAwyzJg2PfLzbTfAJ9TOOutp1kw8w/aVdJLXPJv8p
-	Aow5GyiUoW96lSj2GUazw5bL4FBboc/qvsrESVcd4qL8HUVO/gK8e5v9Xvl1J8i8rbvArz
-	IxYUTKOTxcCfKYojjdotUqLfCtEYofM=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-144-9tnn4YqzMneo7XcfXJWGYg-1; Mon, 28 Aug 2023 15:56:30 -0400
-X-MC-Unique: 9tnn4YqzMneo7XcfXJWGYg-1
-Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-64a5264b91eso38334716d6.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Aug 2023 12:56:30 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693252590; x=1693857390;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=+aPLP5Dvqf88CiJMFQl9Auucq47ZaEdR+LnhUOVMwHI=;
-        b=afoc9F+KgHzEpAkdiqkvWMmEBJ+EijQ5OT3OT1L65ppVJCwZr6kLTCvakVZ/fshisn
-         5FI2ymjsJln3RlRFi8hFKHrZ5FyQpwhDut2c8G/fjX/ZwUsb2n2t64eDPr7zV1OA2JPu
-         2ZmML3yiUN9C+7nBtOSUqERCeKXcOR1IKg3eemIxviEUJ7uKydocPv8FdhYoLlKosTA7
-         XS32zGJiQY79/P+nP2DQ3d1I8MKt0JNhiFsWi3qqWN90x4S8A+AKKfre6zo1ZOgVm7So
-         yZpM4PpAVWnrMFoEvI+lZ4fn+OmafLut1O8Jt8xIsRGTj43LmyfMQcPILaK1ia4A0QlH
-         Gmdw==
-X-Gm-Message-State: AOJu0YzBxtmt513RNpd6FqykYFN5ss+37BNc76cmcADwj4XkGrJttbEy
-	xzSW5WkYbwyFIiG5BqGb+vrUKaY+jKvr96EgoOr7b32orqOgvD6QW/QGbxWxAt7fPpPQ4aQZmJU
-	Nc89+OnZZfKMdID73Ep6zhw3SmxcyyWDE
-X-Received: by 2002:a05:622a:1b92:b0:403:fd62:ce75 with SMTP id bp18-20020a05622a1b9200b00403fd62ce75mr28216029qtb.5.1693252590284;
-        Mon, 28 Aug 2023 12:56:30 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGsYP9ZZ2CsJhUv0f/7ePOTXR8lCjq1Is30niybYFTHi0Enn8YltRs8yVE4tVH5Ow+UhbE98A==
-X-Received: by 2002:a05:622a:1b92:b0:403:fd62:ce75 with SMTP id bp18-20020a05622a1b9200b00403fd62ce75mr28215977qtb.5.1693252589954;
-        Mon, 28 Aug 2023 12:56:29 -0700 (PDT)
-Received: from localhost (ip98-179-76-75.ph.ph.cox.net. [98.179.76.75])
-        by smtp.gmail.com with ESMTPSA id d4-20020ac86144000000b0040ff25d8712sm2559692qtm.18.2023.08.28.12.56.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Aug 2023 12:56:29 -0700 (PDT)
-Date: Mon, 28 Aug 2023 12:56:28 -0700
-From: Jerry Snitselaar <jsnitsel@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Andy Gross <agross@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Bjorn Andersson <andersson@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Christophe Leroy <christophe.leroy@csgroup.eu>, Gerald Schaefer <gerald.schaefer@linux.ibm.com>, 
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Joerg Roedel <joro@8bytes.org>, 
-	Kevin Tian <kevin.tian@intel.com>, Konrad Dybcio <konrad.dybcio@linaro.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
-	Russell King <linux@armlinux.org.uk>, linuxppc-dev@lists.ozlabs.org, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
-	Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, 
-	Orson Zhai <orsonzhai@gmail.com>, Rob Clark <robdclark@gmail.com>, 
-	Robin Murphy <robin.murphy@arm.com>, Samuel Holland <samuel@sholland.org>, 
-	Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Lu Baolu <baolu.lu@linux.intel.com>, 
-	Dmitry Osipenko <digetx@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
-	Nicolin Chen <nicolinc@nvidia.com>, Niklas Schnelle <schnelle@linux.ibm.com>, 
-	Steven Price <steven.price@arm.com>, Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v7 08/24] iommu: Reorganize
- iommu_get_default_domain_type() to respect def_domain_type()
-Message-ID: <3pxd6d44iejlvlijiyd65ze3wfsvvjtgrvstwhgp423uwutrz6@dak5ytcxcspv>
-References: <0-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
- <8-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
+	id 1qaiPS-00ACNu-2X;
+	Mon, 28 Aug 2023 20:00:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A8B40650E2;
+	Mon, 28 Aug 2023 20:00:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id A6BE7C433CB;
+	Mon, 28 Aug 2023 20:00:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1693252823;
+	bh=t/0EA6ZpRKGsKfKE0cId3rR1RxU96iAzwfiOXjNwhKY=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=sLu6b+wOEiJXRq5H7w1dng1+8KdD3nFqEGycifPNB3t5OWlQvzEC8Hyodp0xr8fD9
+	 aJ7wi1Wkqk5w7aErb0P4eFLMC8GT8PVfQOSWv1h2O5Tgm6PrhRjxJGqlnI++FLiGfy
+	 vxOeAKZGcWszjHf4ZE+y9fF8EWI0ShJoZ5z0VwLWvh49UAbrInvy3FZfGR626iaREq
+	 BpIKfy45Ez4ySH6KprHBpG1GY7n7sJJ6UcB0qTz8BA/LAEQ9ESJ+AunoumJ9km7rSR
+	 o4xAOji2ioDx6bsuTNOQTzqHLsxXS20+tmsExwLIpO3fCf8hp+LKwzbI+gLQAP7PTI
+	 o4xAnc3Jpn+Hw==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 8C2D4E21EDF;
+	Mon, 28 Aug 2023 20:00:23 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-In-Reply-To: <8-v7-de04a3217c48+15055-iommu_all_defdom_jgg@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: stmmac: clarify difference between "interface"
+ and "phy_interface"
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <169325282356.23387.6771304913662801847.git-patchwork-notify@kernel.org>
+Date: Mon, 28 Aug 2023 20:00:23 +0000
+References: <E1qZq83-005tts-6K@rmk-PC.armlinux.org.uk>
+In-Reply-To: <E1qZq83-005tts-6K@rmk-PC.armlinux.org.uk>
+To: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Cc: alexandre.torgue@foss.st.com, joabreu@synopsys.com, andrew@lunn.ch,
+ davem@davemloft.net, edumazet@google.com, chenfeiyang@loongson.cn,
+ hkallweit1@gmail.com, kuba@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, mcoquelin.stm32@gmail.com,
+ netdev@vger.kernel.org, pabeni@redhat.com, shawnguo@kernel.org,
+ s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
+ linux-imx@nxp.com, vz@mleia.com, kernel@esmil.dk, samin.guo@starfivetech.com,
+ wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230828_125635_244613_71F67780 
-X-CRM114-Status: GOOD (  18.41  )
+X-CRM114-CacheID: sfid-20230828_130026_879842_A19B76E4 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,35 +86,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 23, 2023 at 01:47:22PM -0300, Jason Gunthorpe wrote:
-> Except for dart (which forces IOMMU_DOMAIN_DMA) every driver returns 0 or
-> IDENTITY from ops->def_domain_type().
-> 
-> The drivers that return IDENTITY have some kind of good reason, typically
-> that quirky hardware really can't support anything other than IDENTITY.
-> 
-> Arrange things so that if the driver says it needs IDENTITY then
-> iommu_get_default_domain_type() either fails or returns IDENTITY.  It will
-> not ignore the driver's override to IDENTITY.
-> 
-> Split the function into two steps, reducing the group device list to the
-> driver's def_domain_type() and the untrusted flag.
-> 
-> Then compute the result based on those two reduced variables. Fully reject
-> combining untrusted with IDENTITY.
-> 
-> Remove the debugging print on the iommu_group_store_type() failure path,
-> userspace should not be able to trigger kernel prints.
-> 
-> This makes the next patch cleaner that wants to force IDENTITY always for
-> ARM_IOMMU because there is no support for DMA.
-> 
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  drivers/iommu/iommu.c | 117 ++++++++++++++++++++++++++++--------------
->  1 file changed, 79 insertions(+), 38 deletions(-)
-> 
+Hello:
 
-Reviewed-by: Jerry Snitselaar <jsnitsel@redhat.com>
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Sat, 26 Aug 2023 11:02:51 +0100 you wrote:
+> Clarify the difference between "interface" and "phy_interface" in
+> struct plat_stmmacenet_data, both by adding a comment, and also
+> renaming "interface" to be "mac_interface". The difference between
+> these are:
+> 
+>  MAC ----- optional PCS ----- SerDes ----- optional PHY ----- Media
+>        ^                               ^
+>  mac_interface                   phy_interface
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next] net: stmmac: clarify difference between "interface" and "phy_interface"
+    https://git.kernel.org/netdev/net-next/c/a014c35556b9
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
