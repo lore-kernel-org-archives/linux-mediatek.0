@@ -4,83 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28CCFC71153
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Aug 2023 15:40:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAB65C6FA8F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Aug 2023 16:00:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GmetZHvS7Ykm7s7gUa8oZ7Vxa6vQB5Jv9mxpO4GMzWc=; b=gKE2O1Tzl6WMUx6i3mlMe/BQ7B
-	6iTC2OQyFkA8DK9urhIQM1M2/ZXFCqil6fSPomska0rcViTrtL/pMtnSekInfk1SLL5EgvQYDkPQm
-	JZV+PrbwK17iwF7GKA5ha88Yh8VBTewysXqhzY59vVopjEkyu/G5DZd48qFLIrQqBAY50JP1lHzpH
-	NbgC267ofkLkz26+HwR3uR2ky+9lro5AUKwBPXmENe/C2Ig6vKl1skYDbCK/aq7yUt6jtlVZWLRS5
-	KkBkHX6HhqQY/Q685AMNOnz3Fm03PvS4oqH0ldY/GqdeQWYotnM4enuk2AF8QVuIZQsg8xiWmdsfa
-	w27C0WFQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ur0uBaFJROiz/T4GjGiYvHEod4CSHQKyFRKKRd3Se9s=; b=YmxBbDiIVulwjTdVenscWwt9vC
+	/60mxkW3RRs4mE8aMnwdibW0N5Oz0e7M0SqiQjIW8DdKT2wGfaT/VCaVeb/pq/V1wPtVv0nDt1iye
+	NxC254aG6OkLxKnSsuCC2xbrIVkacMRrcRtDP8PyS+NezseT/Xj1oUeMtVhrWntxBNR9uLtaP1WI8
+	OHlNjmzE2Fi8V8xSax98iaH6vQ7WRQ/Oiz3CCKX3zmD/iESDteU6/fLfG4mtldZEIxS4dMjslGYtT
+	3jHeJ9wJS212WA1V09/zYcN9rHD/VLVLu3Nsvdk3IB8EMV/MtucvG2zvHVtXhQXksAK7WrcjEChwO
+	LdyjpD8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb0oz-00Bna2-2K;
-	Tue, 29 Aug 2023 15:40:01 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb0ow-00BnYf-0u;
-	Tue, 29 Aug 2023 15:39:59 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 623062F4;
-	Tue, 29 Aug 2023 08:40:33 -0700 (PDT)
-Received: from [10.1.34.35] (010265703453.arm.com [10.1.34.35])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 4671B3F738;
-	Tue, 29 Aug 2023 08:39:47 -0700 (PDT)
-Message-ID: <f2a46201-d807-d7af-bf84-8c99b33cd916@arm.com>
-Date: Tue, 29 Aug 2023 16:39:42 +0100
+	id 1qb194-00Bp8m-1K;
+	Tue, 29 Aug 2023 16:00:46 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qb190-00Bp67-1B;
+	Tue, 29 Aug 2023 16:00:43 +0000
+Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5F4A56607236;
+	Tue, 29 Aug 2023 17:00:33 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1693324835;
+	bh=JCfP29V3g/z06V7q+2qRQmI7uI0SGWM3SW0Z6ZJgNl4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XMDriXCzwSEEe30YsG8nKNO4L66h3QBquvxvUS7YQbKvfTaF/v4utnOUazsTmr3WI
+	 lOuX4955i/ct+lSgyN8T28c+Uksuu7ZLqwdpKl1bddyet1Hd2ngafJSKOHfBs/Qzsz
+	 TjxkJd6B9rgqrVTItQ5VNlQT/pf67jTAw8pQt6SWSUUHnQgIWiptYtwDgayqVZFPb6
+	 lqf8AeL8rg7Bh5V3jiYG8JUBb0YRZslko9/bJ0H7G+m/686w+vB3vrHdx+otVlcdU6
+	 Dzis5e0zZSOPJQeM4KQrLXCSjMdbuP0p15LAsnNgpy4u36X9HWzboVHrqxbMhOiX4h
+	 FKQ5M19VLxWaw==
+Date: Tue, 29 Aug 2023 12:00:29 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Michael Walle <mwalle@kernel.org>
+Subject: Re: [PATCH 1/2] drm/mediathek: fix kernel oops if no crtc is found
+Message-ID: <16f85ad3-57f4-4cde-88fc-b9d0b763f9e2@notapiano>
+References: <20230829131941.3353439-1-mwalle@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Subject: Re: [PATCH v11 5/6] iommu/dma: Allow a single FQ in addition to
- per-CPU FQs
-Content-Language: en-GB
-To: Niklas Schnelle <schnelle@linux.ibm.com>, Joerg Roedel <joro@8bytes.org>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Will Deacon <will@kernel.org>,
- Wenjia Zhang <wenjia@linux.ibm.com>, Jason Gunthorpe <jgg@ziepe.ca>
-Cc: Gerd Bayer <gbayer@linux.ibm.com>, Julian Ruess <julianr@linux.ibm.com>,
- Pierre Morel <pmorel@linux.ibm.com>, Alexandra Winter
- <wintera@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Alexander Gordeev
- <agordeev@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>,
- Sven Schnelle <svens@linux.ibm.com>,
- Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
- Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>,
- David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Yong Wu <yong.wu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy
- <vdumpa@nvidia.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org, iommu@lists.linux.dev,
- asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-doc@vger.kernel.org
-References: <20230717-dma_iommu-v11-0-a7a0b83c355c@linux.ibm.com>
- <20230717-dma_iommu-v11-5-a7a0b83c355c@linux.ibm.com>
- <9a466109-01c5-96b0-bf03-304123f435ee@arm.com>
- <b46210ce00b46ce42b8487e5670cc56b4458031f.camel@linux.ibm.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <b46210ce00b46ce42b8487e5670cc56b4458031f.camel@linux.ibm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230829131941.3353439-1-mwalle@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230829_083958_436323_B8138759 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20230829_090042_551014_815E0E6F 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,37 +68,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Stu Hsieh <stu.hsieh@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, "Nancy . Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-08-23 15:21, Niklas Schnelle wrote:
-[...]
->>> +struct dma_iommu_options {
->>> +#define IOMMU_DMA_OPTS_PER_CPU_QUEUE	0L
->>
->> Nit: if the intent is to add more flags then that will no longer make
->> sense, and if not then we may as well just have a bool ;)
->>
->>> +#define IOMMU_DMA_OPTS_SINGLE_QUEUE	BIT(0)
+On Tue, Aug 29, 2023 at 03:19:40PM +0200, Michael Walle wrote:
+> drm_crtc_from_index(0) might return NULL if there are not CRTCs
+
+Typo: not -> no
+
+> registered at all which will lead to a kernel oops in
+> mtk_drm_crtc_dma_dev_get(). Add the missing return value check.
 > 
-> My thinking was that the above two options are mutually exclusive with
-> per-CPU encoded as BIT(0) unset and single queue as set. Then other
-> options could still use the other bits. It's true though that the below
-> use of IOMMU_DMA_OPTS_PER_CPU_QUEUE is a nop so maybe just drop that?
-> Or we could use an enum even if I don't forsee more than these 2 queue
-> types.
+> Fixes: 0d9eee9118b7 ("drm/mediatek: Add drm ovl_adaptor sub driver for MT8195")
+> Signed-off-by: Michael Walle <mwalle@kernel.org>
 
-My point was that the value 0 can only mean "all flags not set", so 
-while we can very much have the semantic of "single queue flag not set 
-means percpu queue", we cannot infer "0 means percpu queue" unless "all 
-flags" and "single queue flag" are the same thing. As soon as any 
-additional flag is defined, 0 then has a different meaning which may 
-well not even be a combination that's useful to put a specific name to.
+There's also a typo in the commit subject: mediathek -> mediatek. But
+regardless,
 
-I'd like to hope it's sufficiently obvious from the implementation that 
-the opposite of a single queue is multiple queues, since contextually 
-this is already all happening in distinct paths from the case of no queue.
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+(tested that the patch fixes the oops on mt8195-cherry-tomato when no display
+pipeline is available)
 
 Thanks,
-Robin.
+Nícolas
 
