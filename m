@@ -4,59 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAB65C6FA8F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Aug 2023 16:00:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58C71C83F14
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Aug 2023 17:04:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ur0uBaFJROiz/T4GjGiYvHEod4CSHQKyFRKKRd3Se9s=; b=YmxBbDiIVulwjTdVenscWwt9vC
-	/60mxkW3RRs4mE8aMnwdibW0N5Oz0e7M0SqiQjIW8DdKT2wGfaT/VCaVeb/pq/V1wPtVv0nDt1iye
-	NxC254aG6OkLxKnSsuCC2xbrIVkacMRrcRtDP8PyS+NezseT/Xj1oUeMtVhrWntxBNR9uLtaP1WI8
-	OHlNjmzE2Fi8V8xSax98iaH6vQ7WRQ/Oiz3CCKX3zmD/iESDteU6/fLfG4mtldZEIxS4dMjslGYtT
-	3jHeJ9wJS212WA1V09/zYcN9rHD/VLVLu3Nsvdk3IB8EMV/MtucvG2zvHVtXhQXksAK7WrcjEChwO
-	LdyjpD8Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2g0z4vCZFb+xWLqle7EKEHd+VDY8EWLsCC+AfA6tqOs=; b=nQKU01NHv8AupUm6550vNo36Mi
+	c4lZ0ZONgSGDzqjKXH9uOJFstVkfYH4oJ5FS8n62T3jcwfgTo+WYnYkbXx+x6wLNPC+OtOQtQZdNa
+	fo0JmGxQ9A0NvWLPfftVR1Oij7AzB66kO5Xe5AAGxANivJabcA+xVgeSoc3p0w/8tvvGpbMhdfgX+
+	9ILd2oLclKtd0q3EhC8fCZxD/6f1G5sa0Z6z5TziFH+SS3yoqzpdCfw6m/TcF9m6mCDVXdUq3tMJP
+	Iwevfmegwga7VXkskBvNfspJDpuaY6P7kHVtH+0obnp846MCszZ0Re0Vtgr2lF9u0wAGUgogl+p+z
+	KrlOlc6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb194-00Bp8m-1K;
-	Tue, 29 Aug 2023 16:00:46 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qb28r-00Bu6U-33;
+	Tue, 29 Aug 2023 17:04:37 +0000
+Received: from mail-pl1-f178.google.com ([209.85.214.178])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qb190-00Bp67-1B;
-	Tue, 29 Aug 2023 16:00:43 +0000
-Received: from notapiano (zone.collabora.co.uk [167.235.23.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5F4A56607236;
-	Tue, 29 Aug 2023 17:00:33 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1693324835;
-	bh=JCfP29V3g/z06V7q+2qRQmI7uI0SGWM3SW0Z6ZJgNl4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XMDriXCzwSEEe30YsG8nKNO4L66h3QBquvxvUS7YQbKvfTaF/v4utnOUazsTmr3WI
-	 lOuX4955i/ct+lSgyN8T28c+Uksuu7ZLqwdpKl1bddyet1Hd2ngafJSKOHfBs/Qzsz
-	 TjxkJd6B9rgqrVTItQ5VNlQT/pf67jTAw8pQt6SWSUUHnQgIWiptYtwDgayqVZFPb6
-	 lqf8AeL8rg7Bh5V3jiYG8JUBb0YRZslko9/bJ0H7G+m/686w+vB3vrHdx+otVlcdU6
-	 Dzis5e0zZSOPJQeM4KQrLXCSjMdbuP0p15LAsnNgpy4u36X9HWzboVHrqxbMhOiX4h
-	 FKQ5M19VLxWaw==
-Date: Tue, 29 Aug 2023 12:00:29 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Michael Walle <mwalle@kernel.org>
-Subject: Re: [PATCH 1/2] drm/mediathek: fix kernel oops if no crtc is found
-Message-ID: <16f85ad3-57f4-4cde-88fc-b9d0b763f9e2@notapiano>
-References: <20230829131941.3353439-1-mwalle@kernel.org>
+	id 1qb28p-00Bu4q-04
+	for linux-mediatek@lists.infradead.org;
+	Tue, 29 Aug 2023 17:04:36 +0000
+Received: by mail-pl1-f178.google.com with SMTP id d9443c01a7336-1bdc19b782aso29322295ad.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 29 Aug 2023 10:04:28 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1693328668; x=1693933468;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=2g0z4vCZFb+xWLqle7EKEHd+VDY8EWLsCC+AfA6tqOs=;
+        b=XPV46CERuyRAMaB1DRd36pd868TG1Bz6AqFOSbbX/B1gmoZXPdjNhlLLZn33kLwvqt
+         neXZOLxXU0vADNm0DxHzf+CNL/3S1UW5bUBjRrxrtVw591kTI+s+GH38IiT3kBKQ8wZP
+         F7t5GbDfq2rZqkYXXKEWdUSNgnfh9wGosZGn6SBPJeJr7GhDKU4k2YGCpwMcMy4/lXSy
+         fePnsoMZ3mw974XypR8t4JZj6IOjNgEEL7f6i6ivLxUIgprvLVliQuxOnc5qQcAxKnn6
+         Tp9Kkq1XtQ4KBeuhcAyZhTEftO2M+TZizIjxlunGf3FD72rzsIuhCRbNtV04/XaK1KL9
+         TijQ==
+X-Gm-Message-State: AOJu0Yz9iNyv2SJEYICsuqsP2SpMhyrCM8BLZpCQRTP/d8o+qIqVTvP/
+	WULltdMpYDiFMFzeGDEDEpQ=
+X-Google-Smtp-Source: AGHT+IHiJckEqm4LFnNq/w9OvpLfNZxILPMYlHefKaZGTyCwiwalEX9NdlsSYfbsRNeAcP+QUiKe6Q==
+X-Received: by 2002:a17:902:c945:b0:1b8:78e:7c1 with SMTP id i5-20020a170902c94500b001b8078e07c1mr31350884pla.51.1693328667919;
+        Tue, 29 Aug 2023 10:04:27 -0700 (PDT)
+Received: from [172.20.4.71] ([208.98.210.70])
+        by smtp.gmail.com with ESMTPSA id n10-20020a170902e54a00b001bf5e24b2a8sm9595806plf.174.2023.08.29.10.04.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 29 Aug 2023 10:04:27 -0700 (PDT)
+Message-ID: <468fb5a4-32d5-42a7-b00f-115044954125@acm.org>
+Date: Tue, 29 Aug 2023 10:04:26 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230829131941.3353439-1-mwalle@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 2/3] ufs: core: fix abnormal scale up after last cmd
+ finish
+Content-Language: en-US
+To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com
+References: <20230823092948.22734-1-peter.wang@mediatek.com>
+ <20230823092948.22734-3-peter.wang@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20230823092948.22734-3-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230829_090042_551014_815E0E6F 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20230829_100435_063285_F08C07C2 
+X-CRM114-Status: GOOD (  16.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,30 +85,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Stu Hsieh <stu.hsieh@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, "Nancy . Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 29, 2023 at 03:19:40PM +0200, Michael Walle wrote:
-> drm_crtc_from_index(0) might return NULL if there are not CRTCs
-
-Typo: not -> no
-
-> registered at all which will lead to a kernel oops in
-> mtk_drm_crtc_dma_dev_get(). Add the missing return value check.
+On 8/23/23 02:29, peter.wang@mediatek.com wrote:
+> From: Peter Wang <peter.wang@mediatek.com>
 > 
-> Fixes: 0d9eee9118b7 ("drm/mediatek: Add drm ovl_adaptor sub driver for MT8195")
-> Signed-off-by: Michael Walle <mwalle@kernel.org>
+> When ufshcd_clk_scaling_suspend_work(Thread A) running and new command
+> coming, ufshcd_clk_scaling_start_busy(Thread B) may get host_lock
+> after Thread A first time release host_lock. Then Thread A second time
+> get host_lock will set clk_scaling.window_start_t = 0 which scale up
+> clock abnormal next polling_ms time.
+> 
+> Below is racing step:
+> 1	hba->clk_scaling.suspend_work (Thread A)
+> 	ufshcd_clk_scaling_suspend_work
+> 2		spin_lock_irqsave(hba->host->host_lock, irq_flags);
+> 3		hba->clk_scaling.is_suspended = true;
+> 4		spin_unlock_irqrestore(hba->host->host_lock, irq_flags);
+> 		__ufshcd_suspend_clkscaling
+> 7			spin_lock_irqsave(hba->host->host_lock, flags);
+> 8			hba->clk_scaling.window_start_t = 0;
+> 9			spin_unlock_irqrestore(hba->host->host_lock, flags);
+> 
+> 	ufshcd_send_command (Thread B)
+> 		ufshcd_clk_scaling_start_busy
+> 5			spin_lock_irqsave(hba->host->host_lock, flags);
+> 			....
+> 6			spin_unlock_irqrestore(hba->host->host_lock, flags);
+> 
+> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+> ---
+>   drivers/ufs/core/ufshcd.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+> index e3672e55efae..017f32b3a789 100644
+> --- a/drivers/ufs/core/ufshcd.c
+> +++ b/drivers/ufs/core/ufshcd.c
+> @@ -1385,9 +1385,10 @@ static void ufshcd_clk_scaling_suspend_work(struct work_struct *work)
+>   		return;
+>   	}
+>   	hba->clk_scaling.is_suspended = true;
+> +	hba->clk_scaling.window_start_t = 0;
+>   	spin_unlock_irqrestore(hba->host->host_lock, irq_flags);
+>   
+> -	__ufshcd_suspend_clkscaling(hba);
+> +	devfreq_suspend_device(hba->devfreq);
+>   }
+>   
+>   static void ufshcd_clk_scaling_resume_work(struct work_struct *work)
 
-There's also a typo in the commit subject: mediathek -> mediatek. But
-regardless,
-
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-
-(tested that the patch fixes the oops on mt8195-cherry-tomato when no display
-pipeline is available)
+There is a second __ufshcd_suspend_clkscaling() call in the same source
+file. Please fix that call too.
 
 Thanks,
-Nícolas
+
+Bart.
 
