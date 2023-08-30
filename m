@@ -4,80 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03585C6FA8F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Aug 2023 11:36:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C481C83F14
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Aug 2023 11:38:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I46lugSFon7zMqsD/TgIXQzk4siDt3J+v9kCe5jxnAk=; b=Vx2TeOZR8KOJYW7C2YD0hRC0Ao
-	wJ8wEmBuW2uFVHaFj/eJv9UsnEHBauKftguPk1lS0UXUGcDspL5OMcra/15wSXZrb08eVNbWnL09Z
-	hjcUEUHUhPHy8TZrW6hx/LbVzc71mJIt9/6UI/fdgOTLpnEmR1H8bIC5jmPUXesbcdbbcVrSEftZ5
-	77t53AIQcJhhofUXi66y1k/5quEsoE7LpKKS/qxnb36eD0OWBfnBDoiUDF5OhfGBEY/X9O6HUiK57
-	Nhe3u4ivE1jgxBtDa/K18lx51WepijdewPvyHOSfJZcVVwkSpFY92em/dWuNBpjlYcyfOTBOQQ4TE
-	tg3NNWzw==;
+	bh=MoF83iLkulS3LKVSlz+GGx9zclXMZEQ7i+jWaTlrShk=; b=ojBhKdWYhI7E2tUCONVkB6LEuD
+	n+JYCLsI7a8O3hp0+I3FpXBaAy6c5eU6uWNm221sIQDRiforfLHe808dnHB11E9bFvQmsLhs8dzQ5
+	iH3i5EsjfabS72BSD2Rpdn9pDEtidRwU5cxhtiDV4BAfQWHwNKIuxwxWaTIDO6ax+TLPKjskKmLPj
+	mne3MFu20/vzpfoCWvQmrQOZaT2kKZOh2VTx7x4IYyklv+Gcxn7h+uA3e+qzVbLNKXioD+JeNwgS+
+	96BnYAF1CnJ0QpExpHvjWjiskm7FqOQ90FIVy0tMvefKs0ggqeIVMZgwzTLyGxwAJ6U0B/4GL9hDb
+	fThOdU5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbJUr-00DPBY-2f;
-	Wed, 30 Aug 2023 11:36:29 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qbJWQ-00DPNY-2r;
+	Wed, 30 Aug 2023 11:38:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbJUp-00DPAl-0X;
-	Wed, 30 Aug 2023 11:36:28 +0000
-X-UUID: 7126c43e472911ee912e1518a6540028-20230830
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=I46lugSFon7zMqsD/TgIXQzk4siDt3J+v9kCe5jxnAk=;
-	b=jKYMQ52XdiVol3AY/nIDO3KwLv2QZmA7YRwJFJEuUNKcNyUUQ7aEafOIvnwaWGoYP96N3+90HdD0tY68EaAn9rgm98hPRp8yI6rSaf0nA7ruwmMX+6ICZ9bXpgFGpuS0jOj1C8N11y/L4z12FGURA5NnPCvRARH9DHVrP/DRn2o=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:f76ddf91-b80f-4179-916b-6484c0e20792,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:188d1eef-9a6e-4c39-b73e-f2bc08ca3dc5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 7126c43e472911ee912e1518a6540028-20230830
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1041712461; Wed, 30 Aug 2023 04:36:21 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 30 Aug 2023 19:15:42 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 30 Aug 2023 19:15:42 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Alexandre Mergnat <amergnat@baylibre.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Fabien Parent
-	<fparent@baylibre.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH v2 4/4] arm64: dts: mediatek: mt8195-demo: simplify mt6360 nodes
-Date: Wed, 30 Aug 2023 19:15:32 +0800
-Message-ID: <20230830111532.9048-4-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230830111532.9048-1-macpaul.lin@mediatek.com>
-References: <20230825114623.16884-1-macpaul.lin@mediatek.com>
- <20230830111532.9048-1-macpaul.lin@mediatek.com>
+	id 1qbJWN-00DPME-0U;
+	Wed, 30 Aug 2023 11:38:04 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9A28C61972;
+	Wed, 30 Aug 2023 11:38:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83623C433C7;
+	Wed, 30 Aug 2023 11:38:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1693395482;
+	bh=3XQ7R+mQiCgel+4CVupUmCG8UGUYbU452w6fK1wZRrY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qPLsF6iRnbcm71F3V2P3osHte2tkWFXqi2ByncFvfN6aLsAiCdM44EfXavfq/Zsam
+	 lxli8eovc4mR/cCiKVUtp119vm2tCjMK133NdcS4aR07AjFo53P1+r8jBOPpBVqDii
+	 5eJMZh8XKaVfTkLTMXqKK7qjSGsEsFQEvoOTVgQ4cHaq8cbQTdeKZJTWtyPcEXYHxE
+	 93wqy9U4//qlvR0MgiiaVzeNRmNqPi1WZaqxVdMNr2o2axaJmBufnUEjTwsXuw6EP1
+	 WWKpdVG2FNPrKEZQHXOfkDbAQpvHfK1q1Fw+IY3O0Q7uzivGDwi1EPth38XaMaG14f
+	 v+VbU34HpjxWQ==
+Date: Wed, 30 Aug 2023 13:37:59 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Cc: Helen Koike <helen.koike@collabora.com>, 
+	dri-devel@lists.freedesktop.org, guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
+	david.heidelberg@collabora.com, daniels@collabora.com, emma@anholt.net, robclark@freedesktop.org, 
+	gustavo.padovan@collabora.com, robdclark@google.com, anholt@google.com, 
+	maarten.lankhorst@linux.intel.com, tzimmermann@suse.de, airlied@gmail.com, corbet@lwn.net, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	neil.armstrong@linaro.org, khilman@baylibre.com, jbrunet@baylibre.com, 
+	martin.blumenstingl@googlemail.com, heiko@sntech.de, linux-doc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
+Message-ID: <4rpsqk4tgrdcxtxtfoum6o4oyglwkirmkh3jj4y5tays2ivb5p@uwqdf3snshkv>
+References: <20230811171953.176431-1-helen.koike@collabora.com>
+ <ZOTFfhtzzWkrQ23Y@phenom.ffwll.local>
+ <zorvxwffshrsqx5cy76pe3gn52qrqav7qusz5acav2un2ydvwr@fwjd56qg2xve>
+ <87bkeo23vs.fsf@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="zherdrxsl3xlh5y6"
+Content-Disposition: inline
+In-Reply-To: <87bkeo23vs.fsf@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230830_043627_212522_6C3D81A1 
-X-CRM114-Status: GOOD (  13.85  )
+X-CRM114-CacheID: sfid-20230830_043803_273156_0FC98CAE 
+X-CRM114-Status: GOOD (  51.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,237 +86,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The dts file for the MediaTek MT8195 demo board has been refactored
-to improve the configuration of the MT6360 multi-function PMIC.
 
-The changes include:
- - Addition of the mt6360.dtsi include file, which contains the common
-   configuration of the MT6360 for all mt8195 boards.
- - Removal of the direct inclusion of the mt6360-regulator.h file.
- - Removal of the common configuration of the MT6360 PMIC since
-   the included mt6360.dtsi is used.
- - Add names according to the schematic of mt8195-demo board for
-   mt6360 nodes.
+--zherdrxsl3xlh5y6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 173 ++++++++-----------
- 1 file changed, 74 insertions(+), 99 deletions(-)
+On Wed, Aug 30, 2023 at 01:58:31PM +0300, Jani Nikula wrote:
+> On Wed, 30 Aug 2023, Maxime Ripard <mripard@kernel.org> wrote:
+> > On Tue, Aug 22, 2023 at 04:26:06PM +0200, Daniel Vetter wrote:
+> >> On Fri, Aug 11, 2023 at 02:19:53PM -0300, Helen Koike wrote:
+> >> > From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+> >> >=20
+> >> > Developers can easily execute several tests on different devices
+> >> > by just pushing their branch to their fork in a repository hosted
+> >> > on gitlab.freedesktop.org which has an infrastructure to run jobs
+> >> > in several runners and farms with different devices.
+> >> >=20
+> >> > There are also other automated tools that uprev dependencies,
+> >> > monitor the infra, and so on that are already used by the Mesa
+> >> > project, and we can reuse them too.
+> >> >=20
+> >> > Also, store expectations about what the DRM drivers are supposed
+> >> > to pass in the IGT test suite. By storing the test expectations
+> >> > along with the code, we can make sure both stay in sync with each
+> >> > other so we can know when a code change breaks those expectations.
+> >> >=20
+> >> > Also, include a configuration file that points to the out-of-tree
+> >> > CI scripts.
+> >> >=20
+> >> > This will allow all contributors to drm to reuse the infrastructure
+> >> > already in gitlab.freedesktop.org to test the driver on several
+> >> > generations of the hardware.
+> >> >=20
+> >> > Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+> >> > Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> >> > Acked-by: Daniel Stone <daniels@collabora.com>
+> >> > Acked-by: Rob Clark <robdclark@gmail.com>
+> >> > Tested-by: Rob Clark <robdclark@gmail.com>
+> >>=20
+> >> Ok I pushed this into a topic/drm-ci branch in drm.git and asked sfr to
+> >> include that branch in linux-next.
+> >>=20
+> >> But also I'd like to see a lot more acks here, we should be able to at
+> >> least pile up a bunch of (driver) maintainers from drm-misc in support=
+ of
+> >> this. Also maybe media, at least I've heard noises that they're maybe
+> >> interested too? Plus anyone else, the more the better.
+> >
+> > I'm not really convinced by that approach at all, and most of the issues
+> > I see are shown by the follow-up series here:
+>=20
+> I'm not fully convinced either, more like "let's see". In that narrow
+> sense, ack. I don't see harm in trying, if you're also open to backing
+> off in case it does not pan out.
+>=20
+> > https://lore.kernel.org/dri-devel/20230825122435.316272-1-vignesh.raman=
+@collabora.com/
+> >
+> >   * We hardcode a CI farm setup into the kernel
+> >
+> >   * We cannot trust that the code being run is actually the one being
+> >     pushed into gitlab
+> >
+> >   * IMO, and I know we disagree here, any IGT test we enable for a given
+> >     platform should work, period. Allowing failures and flaky tests just
+> >     sweeps whatever issue is there under the rug. If the test is at
+> >     fault, we should fix the test, if the driver / kernel is at fault,
+> >     then I certainly want to know about it.
+>=20
+> At least for display, where this also depends on peripheral hardware,
+> it's not an easy problem, really.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-index 8aea6f5d72b3..d082d679dbbe 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-@@ -11,7 +11,6 @@
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/input/input.h>
- #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
--#include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
- 
- / {
- 	model = "MediaTek MT8195 demo board";
-@@ -130,103 +129,9 @@
- 	mt6360: pmic@34 {
- 		compatible = "mediatek,mt6360";
- 		reg = <0x34>;
--		interrupt-controller;
-+		pinctrl-0 = <&mt6360_pins>;
-+		pinctrl-names = "default";
- 		interrupts-extended = <&pio 101 IRQ_TYPE_EDGE_FALLING>;
--		interrupt-names = "IRQB";
--
--		charger {
--			compatible = "mediatek,mt6360-chg";
--			richtek,vinovp-microvolt = <14500000>;
--
--			otg_vbus_regulator: usb-otg-vbus-regulator {
--				regulator-compatible = "usb-otg-vbus";
--				regulator-name = "usb-otg-vbus";
--				regulator-min-microvolt = <4425000>;
--				regulator-max-microvolt = <5825000>;
--			};
--		};
--
--		regulator {
--			compatible = "mediatek,mt6360-regulator";
--			LDO_VIN3-supply = <&mt6360_buck2>;
--
--			mt6360_buck1: buck1 {
--				regulator-compatible = "BUCK1";
--				regulator-name = "mt6360,buck1";
--				regulator-min-microvolt = <300000>;
--				regulator-max-microvolt = <1300000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP
--							   MT6360_OPMODE_ULP>;
--				regulator-always-on;
--			};
--
--			mt6360_buck2: buck2 {
--				regulator-compatible = "BUCK2";
--				regulator-name = "mt6360,buck2";
--				regulator-min-microvolt = <300000>;
--				regulator-max-microvolt = <1300000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP
--							   MT6360_OPMODE_ULP>;
--				regulator-always-on;
--			};
--
--			mt6360_ldo1: ldo1 {
--				regulator-compatible = "LDO1";
--				regulator-name = "mt6360,ldo1";
--				regulator-min-microvolt = <1200000>;
--				regulator-max-microvolt = <3600000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP>;
--			};
--
--			mt6360_ldo2: ldo2 {
--				regulator-compatible = "LDO2";
--				regulator-name = "mt6360,ldo2";
--				regulator-min-microvolt = <1200000>;
--				regulator-max-microvolt = <3600000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP>;
--			};
--
--			mt6360_ldo3: ldo3 {
--				regulator-compatible = "LDO3";
--				regulator-name = "mt6360,ldo3";
--				regulator-min-microvolt = <1200000>;
--				regulator-max-microvolt = <3600000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP>;
--			};
--
--			mt6360_ldo5: ldo5 {
--				regulator-compatible = "LDO5";
--				regulator-name = "mt6360,ldo5";
--				regulator-min-microvolt = <2700000>;
--				regulator-max-microvolt = <3600000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP>;
--			};
--
--			mt6360_ldo6: ldo6 {
--				regulator-compatible = "LDO6";
--				regulator-name = "mt6360,ldo6";
--				regulator-min-microvolt = <500000>;
--				regulator-max-microvolt = <2100000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP>;
--			};
--
--			mt6360_ldo7: ldo7 {
--				regulator-compatible = "LDO7";
--				regulator-name = "mt6360,ldo7";
--				regulator-min-microvolt = <500000>;
--				regulator-max-microvolt = <2100000>;
--				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
--							   MT6360_OPMODE_LP>;
--				regulator-always-on;
--			};
--		};
- 	};
- };
- 
-@@ -259,8 +164,8 @@
- 	cap-sd-highspeed;
- 	sd-uhs-sdr50;
- 	sd-uhs-sdr104;
--	vmmc-supply = <&mt6360_ldo5>;
--	vqmmc-supply = <&mt6360_ldo3>;
-+	vmmc-supply = <&mt6360_vmch_pmu_ldo5_reg>;
-+	vqmmc-supply = <&mt6360_vmc_pmu_ldo3_reg>;
- 	status = "okay";
- };
- 
-@@ -300,6 +205,67 @@
- 	regulator-always-on;
- };
- 
-+#include "mt6360.dtsi"
-+
-+&otg_vbus_regulator {
-+	regulator-name = "usb-otg-vbus";
-+	regulator-min-microvolt = <4425000>;
-+	regulator-max-microvolt = <5825000>;
-+};
-+
-+&mt6360_emi_vdd2_buck1_reg {
-+	regulator-name = "emi_vdd2";
-+	regulator-min-microvolt = <300000>;
-+	regulator-max-microvolt = <1300000>;
-+	regulator-always-on;
-+};
-+
-+&mt6360_emi_vddq_buck2_reg {
-+	regulator-name = "emi_vddq";
-+	regulator-min-microvolt = <300000>;
-+	regulator-max-microvolt = <1300000>;
-+	regulator-always-on;
-+};
-+
-+&mt6360_tp1_p3v0_ldo1_reg {
-+	regulator-name = "tp1_p3v0";
-+	regulator-min-microvolt = <3000000>;
-+	regulator-max-microvolt = <3000000>;
-+	regulator-always-on;
-+};
-+
-+&mt6360_panel1_p1v8_ldo2_reg {
-+	regulator-name = "panel1_p1v8";
-+	regulator-min-microvolt = <1800000>;
-+	regulator-max-microvolt = <1800000>;
-+};
-+
-+&mt6360_vmc_pmu_ldo3_reg {
-+	regulator-name = "vmc_pmu";
-+	regulator-min-microvolt = <1200000>;
-+	regulator-max-microvolt = <3600000>;
-+};
-+
-+&mt6360_vmch_pmu_ldo5_reg {
-+	regulator-name = "vmch_pmu";
-+	regulator-min-microvolt = <2700000>;
-+	regulator-max-microvolt = <3600000>;
-+};
-+
-+/* measure point on board */
-+&mt6360_ldo6_reg {
-+	regulator-name = "mt6360_ldo6";
-+	regulator-min-microvolt = <500000>;
-+	regulator-max-microvolt = <2100000>;
-+};
-+
-+&mt6360_emi_vmddr_en_ldo7_reg {
-+	regulator-name = "emi_vmddr_en";
-+	regulator-min-microvolt = <500000>;
-+	regulator-max-microvolt = <2100000>;
-+	regulator-always-on;
-+};
-+
- &pio {
- 	eth_default_pins: eth-default-pins {
- 		pins-txd {
-@@ -496,6 +462,15 @@
- 				 <PINMUX_GPIO103__FUNC_URXD1>;
- 		};
- 	};
-+
-+	mt6360_pins: mt6360-pins {
-+		pins {
-+			pinmux = <PINMUX_GPIO100__FUNC_GPIO100>,
-+				 <PINMUX_GPIO101__FUNC_GPIO101>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+	};
- };
- 
- 
--- 
-2.18.0
+Aside from the Chamelium tests, which tests actually rely on peripheral
+hardware? On EDID and hotplug, sure, but that can easily be set up from
+the userspace, or something like
 
+https://www.lindy-international.com/HDMI-2-0-EDID-Emulator.htm?websale8=3Dl=
+d0101.ld021102&pi=3D32115
+
+> How reliable do you need it to be? How many nines? Who is going to
+> debug the issues that need hundreds or thousands of runs to reproduce?
+> If a commit makes some test less reliable, how long is it going to
+> take to even see that or pinpoint that?
+
+I mean, that's also true for failures or success then. How many times do
+you need a test to run properly to qualify it as a meaningful test? How
+do you know that it's not a flaky test?
+
+Ultimately, it's about trust. If, for a given test that just failed, I
+can't be certain that it's because of the branch I just submitted, I
+will just ignore the tests results after a while.
+
+This is already what plagues kernelci, and we should do better.
+
+And I'm sorry, but if some part of the kernel or driver just isn't
+reliable, then we shouldn't claim it is (except for all the times it
+isn't). If no-one has the time to look into it, fine, but flagging it
+under a flaky test doesn't help anyone.
+
+Like, from that patch, how can I know what is the issue with
+kms_hdmi_inject@inject-4k or kms_addfb_basic@addfb25-bad-modifier on
+mt8173. I certainly can't. And neither of those have anything to do with
+peripheral hardware.
+
+Maxime
+
+--zherdrxsl3xlh5y6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZO8qFwAKCRDj7w1vZxhR
+xaeoAQCplynR4IBaAjXxwYEJBraRaDZg7/oKmyvbKaWv3yNoUwD/Zfv+1zH3hT2I
+spFN+hiweGxT/xn46f6giSypaSMdWQc=
+=6JkP
+-----END PGP SIGNATURE-----
+
+--zherdrxsl3xlh5y6--
 
