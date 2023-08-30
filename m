@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD68C83F15
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Aug 2023 19:40:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A3F7C83F01
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Aug 2023 19:41:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q7uxS6jFbfP3ewnHJ55rgEk1lcD4TZvwx/MvbvZ9/xs=; b=uQicq9d7fLDpbyg2Azz9gf8/jC
-	sS/rM2s2xZ1GT0fETTzY5mTIATAlGM1yxxxQL6kXYxXp/qBxK3gNYz0wEpEBWX6Tku5dHEhj9zaDl
-	EuLW/ZTx+gGvDDtk7PvLz9m9XOHN7LScZJoc7dX4dkklw0/RWQKtigjj4ii5NmZuQ2y72pzYJH81W
-	G7mSzRdqQP7NWwTEBFGOvgknCCP+AaGjuJiar3iAB+dxkUbkxsPT5bKkE00O/8f/77umE74VBAue5
-	ZtlHiHO71tWxSGYWS8wpV+mnRNhqOQogSLAyAY5p+8tqJNbp9P2Ex6LuQvvpn0i+Ln+Z7MKqSb+I6
-	jnoHHXwQ==;
+	bh=Pu+v5TcyzpQLtUTlfHhtPfmsTcuZLW0rXfwL8u5p7aU=; b=AlhySSLbxzj2eGtQpOARvD9iDf
+	LwCC5/k/o//AmggVdHJDsqUjndpOOswaCYvHJPNo8PytT+yjyZmm6jjQ+Ni3l/iDTxL9ngpszZlVW
+	L58bPvPIcnucogHybVNpLtONzGph+O61zsT6YtoPlLI/t7krKURt+HTDfdDV3bN4mRn2HXahMUCgT
+	qTnmSC0/po+lbJ5BvYWE/RKYTC5lpHq2O1Rk+sH8ont+5BfKHS/OROSN2gFloPxeH9OkaI65mur/6
+	cXxRHIBSLlSqSeBw1Y9B+AndMbExcfpsoXdmRvoBhtilv/+RRHjcHWUpUioHv7XsnYVSjWqPlGKj9
+	ijk8NXaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbR2r-00E4UC-2b;
-	Wed, 30 Aug 2023 19:40:05 +0000
-Received: from mail-ot1-f46.google.com ([209.85.210.46])
+	id 1qbR3z-00E4Xh-2w;
+	Wed, 30 Aug 2023 19:41:15 +0000
+Received: from mail-pf1-f169.google.com ([209.85.210.169])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbR2o-00E4TD-2o
+	id 1qbR3y-00E4XK-0w
 	for linux-mediatek@lists.infradead.org;
-	Wed, 30 Aug 2023 19:40:04 +0000
-Received: by mail-ot1-f46.google.com with SMTP id 46e09a7af769-6bd066b0fd4so119836a34.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Aug 2023 12:40:01 -0700 (PDT)
+	Wed, 30 Aug 2023 19:41:15 +0000
+Received: by mail-pf1-f169.google.com with SMTP id d2e1a72fcca58-68bed286169so32896b3a.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 30 Aug 2023 12:41:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693424401; x=1694029201;
+        d=1e100.net; s=20221208; t=1693424471; x=1694029271;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Q7uxS6jFbfP3ewnHJ55rgEk1lcD4TZvwx/MvbvZ9/xs=;
-        b=MpEtSeX7qTm+aECbIuf4TfPOK7yrGoRqIdBlYHRzXL4Ft96g46zqCW3wRvLLmDUhOC
-         VdRgJxgkIrux+yaM12+W5lcmkbJukKhbmEFJ+NPFis1KyPZv9K/pcKJyqvV4SuMfDcZZ
-         r0C2BXzidpsnPnBaKV93PAg/j7X3CuzoYIr4fQuqwajA461iFIIgP9O5perjZOiYZ4F9
-         nclhbrhsgycwYfK2JKmrNjXqxEanxn6AMkPkibMJp9CeV9DIkKRDEhCt7jQS2Za3kaPh
-         Bj247UeZBEE5DI9Nx67JF7aNNBgf5M4vKyXfhgyj59QCFX7X3LzZ/ssFcz49joKDriSk
-         G3nQ==
-X-Gm-Message-State: AOJu0Yyhi0QqEbYSNeXoPzklA0xG7EhNjjZXQEhpniu1AxGgFOotf+u6
-	iutzLPtXUH2TOA2nlkLiBTMicpf1ufs=
-X-Google-Smtp-Source: AGHT+IFzfrpd0+O4IZE90kBv0R8G1oWwBoCEhJ57vyOKcHcq8Wll43vHKGECUr55ZT76Ox9+eyURhQ==
-X-Received: by 2002:a05:6830:1dad:b0:6b8:8f20:4cbc with SMTP id z13-20020a0568301dad00b006b88f204cbcmr3250425oti.13.1693424400868;
-        Wed, 30 Aug 2023 12:40:00 -0700 (PDT)
+        bh=Pu+v5TcyzpQLtUTlfHhtPfmsTcuZLW0rXfwL8u5p7aU=;
+        b=TECZXIPdLOz/fjTmrAiVKFtW+0VepkqbQqlueUfNQwSOMqXfFEM1FR4uH+Qs2AYJKq
+         bE+PnHnZnaGuJWVRlJXVRTADciCZJy6fir3eltVUx7Mi7BcnBfbSVVD/U6ahDSs0h4S/
+         P5G1Y+KsUxpTAe5NIxM82fD5Xio/DfvyisIAfmXu0JpliG8PwbWpLkss7ecld+XxMc6V
+         DAhTzu9+QDe6qusKmsNfxRxV+whvHcbcr1zA0CX3hEWzPAvB3DENg0gUqfA8lIgZ650S
+         JUuIt6WcL+QS/a1Q4ulFQionjYTombkkiKU26r2KCvX/5hbBC3+R8r80BYGAFQNpcTBO
+         DDHw==
+X-Gm-Message-State: AOJu0YwbpYNXffO9YuBYHsCpmYtcriBguGBbiGcgZcxeaZcJIYcVrJN8
+	NJu8SMK3YQOowQv26wW6Blo=
+X-Google-Smtp-Source: AGHT+IFSVljawPLxfiOGWs3tuZoCeomEGtwAcIarN3V/KEUAA8oEDaI18lulp3iPv7mcjjE/JJk9cA==
+X-Received: by 2002:a05:6a20:4281:b0:14b:8023:33cb with SMTP id o1-20020a056a20428100b0014b802333cbmr4045233pzj.11.1693424470787;
+        Wed, 30 Aug 2023 12:41:10 -0700 (PDT)
 Received: from [172.20.4.71] ([208.98.210.70])
-        by smtp.gmail.com with ESMTPSA id i25-20020a633c59000000b0055bf13811f5sm10542568pgn.15.2023.08.30.12.39.59
+        by smtp.gmail.com with ESMTPSA id i25-20020a633c59000000b0055bf13811f5sm10542568pgn.15.2023.08.30.12.41.09
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 30 Aug 2023 12:40:00 -0700 (PDT)
-Message-ID: <e2e7ad5b-a588-4c2c-8335-97d8e6b87368@acm.org>
-Date: Wed, 30 Aug 2023 12:39:59 -0700
+        Wed, 30 Aug 2023 12:41:10 -0700 (PDT)
+Message-ID: <884c6a53-cdef-4a38-a2b0-a40d46cd9d88@acm.org>
+Date: Wed, 30 Aug 2023 12:41:09 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/3] ufs: core: only suspend clock scaling if scale
- down
+Subject: Re: [PATCH v1 3/3] ufs: core: fix abnormal scale up after scale down
 Content-Language: en-US
 To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
  linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
@@ -66,14 +65,14 @@ Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
  qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
  eddie.huang@mediatek.com, naomi.chu@mediatek.com
 References: <20230823092948.22734-1-peter.wang@mediatek.com>
- <20230823092948.22734-2-peter.wang@mediatek.com>
+ <20230823092948.22734-4-peter.wang@mediatek.com>
 From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20230823092948.22734-2-peter.wang@mediatek.com>
+In-Reply-To: <20230823092948.22734-4-peter.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230830_124002_924372_3EAC88BF 
-X-CRM114-Status: UNSURE (   5.52  )
+X-CRM114-CacheID: sfid-20230830_124114_351912_CB3685CB 
+X-CRM114-Status: UNSURE (   6.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,9 +89,12 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 8/23/23 02:29, peter.wang@mediatek.com wrote:
-> If clock scale up and suspend clock scaling, ufs will keep high
-> performance/power mode but no read/write requests on going.
-> It is logic wrong and have power concern.
+> When no active_reqs, devfreq_monitor(Thread A) will suspend clock scaling.
+> But it may have racing with clk_scaling.suspend_work(Thread B) and
+> actually not suspend clock scaling(requue after suspend).
+> Next time after polling_ms, devfreq_monitor read
+> clk_scaling.window_start_t = 0 then scale up clock abnormal.
 
 Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+
 
