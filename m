@@ -4,74 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C481C83F14
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Aug 2023 11:38:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40614C83F01
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Aug 2023 12:25:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MoF83iLkulS3LKVSlz+GGx9zclXMZEQ7i+jWaTlrShk=; b=ojBhKdWYhI7E2tUCONVkB6LEuD
-	n+JYCLsI7a8O3hp0+I3FpXBaAy6c5eU6uWNm221sIQDRiforfLHe808dnHB11E9bFvQmsLhs8dzQ5
-	iH3i5EsjfabS72BSD2Rpdn9pDEtidRwU5cxhtiDV4BAfQWHwNKIuxwxWaTIDO6ax+TLPKjskKmLPj
-	mne3MFu20/vzpfoCWvQmrQOZaT2kKZOh2VTx7x4IYyklv+Gcxn7h+uA3e+qzVbLNKXioD+JeNwgS+
-	96BnYAF1CnJ0QpExpHvjWjiskm7FqOQ90FIVy0tMvefKs0ggqeIVMZgwzTLyGxwAJ6U0B/4GL9hDb
-	fThOdU5A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PPzazxE4kU5k//9ZcNlYNg754/qN4kaoUkzlKxdqu3U=; b=Gl73Zw7yA9cTNLfbfg3TwWs8vP
+	XqILl4X8PluiU62L08/v6acY7+beWL2LuYDfLz3V55y8VPNmExlzuoMFpDouxTIaVcBUxLuESeKv5
+	7L2zoauo7pdFUatlIW8h/t/1s2Cr0BRJK+wa2ZQb0HB+RVAJhxVmUTZU7Oc5Vv+6nnLYeqLa9TlfW
+	3W6+kEO9GkdfcK5+TDZyt9F7pzCxrfXe47GnyZVrNqL47RE7NJOSnxc9c730f7q5gIXXjkUlCX9eu
+	utbaT2TOaI+MpB9gW65YWIMtEoWNhhUX/uRhWm50EQAJP6TBAFkML4t5YIRXjnZ3GTXKt2EHiJJEh
+	7G/SAq7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbJWQ-00DPNY-2r;
-	Wed, 30 Aug 2023 11:38:06 +0000
+	id 1qbKG8-00DT5n-0B;
+	Wed, 30 Aug 2023 12:25:20 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbJWN-00DPME-0U;
-	Wed, 30 Aug 2023 11:38:04 +0000
+	id 1qbKG4-00DT4T-0J;
+	Wed, 30 Aug 2023 12:25:18 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9A28C61972;
-	Wed, 30 Aug 2023 11:38:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83623C433C7;
-	Wed, 30 Aug 2023 11:38:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1693395482;
-	bh=3XQ7R+mQiCgel+4CVupUmCG8UGUYbU452w6fK1wZRrY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qPLsF6iRnbcm71F3V2P3osHte2tkWFXqi2ByncFvfN6aLsAiCdM44EfXavfq/Zsam
-	 lxli8eovc4mR/cCiKVUtp119vm2tCjMK133NdcS4aR07AjFo53P1+r8jBOPpBVqDii
-	 5eJMZh8XKaVfTkLTMXqKK7qjSGsEsFQEvoOTVgQ4cHaq8cbQTdeKZJTWtyPcEXYHxE
-	 93wqy9U4//qlvR0MgiiaVzeNRmNqPi1WZaqxVdMNr2o2axaJmBufnUEjTwsXuw6EP1
-	 WWKpdVG2FNPrKEZQHXOfkDbAQpvHfK1q1Fw+IY3O0Q7uzivGDwi1EPth38XaMaG14f
-	 v+VbU34HpjxWQ==
-Date: Wed, 30 Aug 2023 13:37:59 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Jani Nikula <jani.nikula@linux.intel.com>
-Cc: Helen Koike <helen.koike@collabora.com>, 
-	dri-devel@lists.freedesktop.org, guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
-	david.heidelberg@collabora.com, daniels@collabora.com, emma@anholt.net, robclark@freedesktop.org, 
-	gustavo.padovan@collabora.com, robdclark@google.com, anholt@google.com, 
-	maarten.lankhorst@linux.intel.com, tzimmermann@suse.de, airlied@gmail.com, corbet@lwn.net, 
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	neil.armstrong@linaro.org, khilman@baylibre.com, jbrunet@baylibre.com, 
-	martin.blumenstingl@googlemail.com, heiko@sntech.de, linux-doc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
-Message-ID: <4rpsqk4tgrdcxtxtfoum6o4oyglwkirmkh3jj4y5tays2ivb5p@uwqdf3snshkv>
-References: <20230811171953.176431-1-helen.koike@collabora.com>
- <ZOTFfhtzzWkrQ23Y@phenom.ffwll.local>
- <zorvxwffshrsqx5cy76pe3gn52qrqav7qusz5acav2un2ydvwr@fwjd56qg2xve>
- <87bkeo23vs.fsf@intel.com>
+	by dfw.source.kernel.org (Postfix) with ESMTPS id BBBA3623F0;
+	Wed, 30 Aug 2023 12:25:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0634BC433C8;
+	Wed, 30 Aug 2023 12:25:10 +0000 (UTC)
+Message-ID: <01c299f2-8118-5d86-e9b6-a459c1b6c467@xs4all.nl>
+Date: Wed, 30 Aug 2023 14:25:09 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="zherdrxsl3xlh5y6"
-Content-Disposition: inline
-In-Reply-To: <87bkeo23vs.fsf@intel.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v5 01/10] media: videobuf2: Rework offset 'cookie'
+ encoding pattern
+Content-Language: en-US, nl
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20230824092133.39510-1-benjamin.gaignard@collabora.com>
+ <20230824092133.39510-2-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20230824092133.39510-2-benjamin.gaignard@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230830_043803_273156_0FC98CAE 
-X-CRM114-Status: GOOD (  51.20  )
+X-CRM114-CacheID: sfid-20230830_052516_241448_C3E74057 
+X-CRM114-Status: GOOD (  30.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,122 +73,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 24/08/2023 11:21, Benjamin Gaignard wrote:
+> Change how offset 'cookie' field value is computed to make possible
+> to use more buffers (up to 0xffff).
+> With this encoding pattern we know the maximum number that a queue
+> could store so we can check ing at queue init time.
+> It also make easier and faster to find buffer and plane from using
+> the offset field.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+> v5:
+> - I haven't change DST_QUEUE_OFF_BASE definition because it used in
+>   v4l2-mem2mem and s5p_mfc driver with a shift.
+> 
+>  .../media/common/videobuf2/videobuf2-core.c   | 48 +++++++++----------
+>  1 file changed, 24 insertions(+), 24 deletions(-)
+> 
+> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+> index cf6727d9c81f..e06905533ef4 100644
+> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+> @@ -31,6 +31,10 @@
+>  
+>  #include <trace/events/vb2.h>
+>  
+> +#define PLANE_INDEX_SHIFT	3
+> +#define PLANE_INDEX_MASK	0x7
+> +#define MAX_BUFFERS		0xffff
 
---zherdrxsl3xlh5y6
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Very poor name, see below.
 
-On Wed, Aug 30, 2023 at 01:58:31PM +0300, Jani Nikula wrote:
-> On Wed, 30 Aug 2023, Maxime Ripard <mripard@kernel.org> wrote:
-> > On Tue, Aug 22, 2023 at 04:26:06PM +0200, Daniel Vetter wrote:
-> >> On Fri, Aug 11, 2023 at 02:19:53PM -0300, Helen Koike wrote:
-> >> > From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-> >> >=20
-> >> > Developers can easily execute several tests on different devices
-> >> > by just pushing their branch to their fork in a repository hosted
-> >> > on gitlab.freedesktop.org which has an infrastructure to run jobs
-> >> > in several runners and farms with different devices.
-> >> >=20
-> >> > There are also other automated tools that uprev dependencies,
-> >> > monitor the infra, and so on that are already used by the Mesa
-> >> > project, and we can reuse them too.
-> >> >=20
-> >> > Also, store expectations about what the DRM drivers are supposed
-> >> > to pass in the IGT test suite. By storing the test expectations
-> >> > along with the code, we can make sure both stay in sync with each
-> >> > other so we can know when a code change breaks those expectations.
-> >> >=20
-> >> > Also, include a configuration file that points to the out-of-tree
-> >> > CI scripts.
-> >> >=20
-> >> > This will allow all contributors to drm to reuse the infrastructure
-> >> > already in gitlab.freedesktop.org to test the driver on several
-> >> > generations of the hardware.
-> >> >=20
-> >> > Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-> >> > Signed-off-by: Helen Koike <helen.koike@collabora.com>
-> >> > Acked-by: Daniel Stone <daniels@collabora.com>
-> >> > Acked-by: Rob Clark <robdclark@gmail.com>
-> >> > Tested-by: Rob Clark <robdclark@gmail.com>
-> >>=20
-> >> Ok I pushed this into a topic/drm-ci branch in drm.git and asked sfr to
-> >> include that branch in linux-next.
-> >>=20
-> >> But also I'd like to see a lot more acks here, we should be able to at
-> >> least pile up a bunch of (driver) maintainers from drm-misc in support=
- of
-> >> this. Also maybe media, at least I've heard noises that they're maybe
-> >> interested too? Plus anyone else, the more the better.
-> >
-> > I'm not really convinced by that approach at all, and most of the issues
-> > I see are shown by the follow-up series here:
->=20
-> I'm not fully convinced either, more like "let's see". In that narrow
-> sense, ack. I don't see harm in trying, if you're also open to backing
-> off in case it does not pan out.
->=20
-> > https://lore.kernel.org/dri-devel/20230825122435.316272-1-vignesh.raman=
-@collabora.com/
-> >
-> >   * We hardcode a CI farm setup into the kernel
-> >
-> >   * We cannot trust that the code being run is actually the one being
-> >     pushed into gitlab
-> >
-> >   * IMO, and I know we disagree here, any IGT test we enable for a given
-> >     platform should work, period. Allowing failures and flaky tests just
-> >     sweeps whatever issue is there under the rug. If the test is at
-> >     fault, we should fix the test, if the driver / kernel is at fault,
-> >     then I certainly want to know about it.
->=20
-> At least for display, where this also depends on peripheral hardware,
-> it's not an easy problem, really.
+> +
+>  static int debug;
+>  module_param(debug, int, 0644);
+>  
+> @@ -358,21 +362,23 @@ static void __setup_offsets(struct vb2_buffer *vb)
+>  	unsigned int plane;
+>  	unsigned long off = 0;
+>  
+> -	if (vb->index) {
+> -		struct vb2_buffer *prev = q->bufs[vb->index - 1];
+> -		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
+> -
+> -		off = PAGE_ALIGN(p->m.offset + p->length);
+> -	}
+> +	/*
+> +	 * Offsets cookies value have the following constraints:
+> +	 * - a buffer could have up to 8 planes.
+> +	 * - v4l2 mem2mem use bit 30 to distinguish between source and destination buffers.
+> +	 * - must be page aligned
+> +	 * That led to this bit mapping:
+> +	 * |30                |29        15|14       12|11 0|
+> +	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
+> +	 * where there is 16 bits to store buffer index.
 
-Aside from the Chamelium tests, which tests actually rely on peripheral
-hardware? On EDID and hotplug, sure, but that can easily be set up from
-the userspace, or something like
+16 -> 15: there are 15 (not 16!) bits available for buffer indices. So the maximum
+number of buffers is 32768, given that the indices start at 0.
 
-https://www.lindy-international.com/HDMI-2-0-EDID-Emulator.htm?websale8=3Dl=
-d0101.ld021102&pi=3D32115
+> +	 */
+> +	off = vb->index << (PLANE_INDEX_SHIFT + PAGE_SHIFT);
+>  
+>  	for (plane = 0; plane < vb->num_planes; ++plane) {
+> -		vb->planes[plane].m.offset = off;
+> +		vb->planes[plane].m.offset = off + (plane << PAGE_SHIFT);
+>  
+>  		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
+>  				vb->index, plane, off);
+> -
+> -		off += vb->planes[plane].length;
+> -		off = PAGE_ALIGN(off);
+>  	}
+>  }
+>  
+> @@ -2209,21 +2215,15 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
+>  		return -EBUSY;
+>  	}
+>  
+> -	/*
+> -	 * Go over all buffers and their planes, comparing the given offset
+> -	 * with an offset assigned to each plane. If a match is found,
+> -	 * return its buffer and plane numbers.
+> -	 */
+> -	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+> -		vb = q->bufs[buffer];
+> +	/* Get buffer and plane from the offset */
+> +	buffer = (off >> (PLANE_INDEX_SHIFT + PAGE_SHIFT)) & MAX_BUFFERS;
 
-> How reliable do you need it to be? How many nines? Who is going to
-> debug the issues that need hundreds or thousands of runs to reproduce?
-> If a commit makes some test less reliable, how long is it going to
-> take to even see that or pinpoint that?
+Hmm, you use it as a mask. The name MAX_BUFFERS is really confusing.
+How about BUFFER_INDEX_MASK? That is consistent with PLANE_INDEX_MASK.
 
-I mean, that's also true for failures or success then. How many times do
-you need a test to run properly to qualify it as a meaningful test? How
-do you know that it's not a flaky test?
+> +	plane = (off >> PAGE_SHIFT) & PLANE_INDEX_MASK;
+>  
+> -		for (plane = 0; plane < vb->num_planes; ++plane) {
+> -			if (vb->planes[plane].m.offset == off) {
+> -				*_buffer = buffer;
+> -				*_plane = plane;
+> -				return 0;
+> -			}
+> -		}
+> +	vb = q->bufs[buffer];
+> +	if (vb->planes[plane].m.offset == off) {
+> +		*_buffer = buffer;
+> +		*_plane = plane;
+> +		return 0;
+>  	}
+>  
+>  	return -EINVAL;
 
-Ultimately, it's about trust. If, for a given test that just failed, I
-can't be certain that it's because of the branch I just submitted, I
-will just ignore the tests results after a while.
+Regards,
 
-This is already what plagues kernelci, and we should do better.
-
-And I'm sorry, but if some part of the kernel or driver just isn't
-reliable, then we shouldn't claim it is (except for all the times it
-isn't). If no-one has the time to look into it, fine, but flagging it
-under a flaky test doesn't help anyone.
-
-Like, from that patch, how can I know what is the issue with
-kms_hdmi_inject@inject-4k or kms_addfb_basic@addfb25-bad-modifier on
-mt8173. I certainly can't. And neither of those have anything to do with
-peripheral hardware.
-
-Maxime
-
---zherdrxsl3xlh5y6
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZO8qFwAKCRDj7w1vZxhR
-xaeoAQCplynR4IBaAjXxwYEJBraRaDZg7/oKmyvbKaWv3yNoUwD/Zfv+1zH3hT2I
-spFN+hiweGxT/xn46f6giSypaSMdWQc=
-=6JkP
------END PGP SIGNATURE-----
-
---zherdrxsl3xlh5y6--
+	Hans
 
