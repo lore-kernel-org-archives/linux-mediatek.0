@@ -4,79 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14692C6FA8F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Aug 2023 10:58:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 928CCC83F01
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Aug 2023 11:11:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:To:From:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iPM4b5gVBItxeoPBAZTDBOvMvaoM1Fp4iM2MYkFgV1g=; b=thUa0OZi0g/cgwr+FmtZjDeF9x
-	m48ePBbBg+LG02xncxSRqo1a7Jd4IGw5QI0e8TNlEHIcL6HnRwL4MB49cXTuStCcORoC/h6hJhC+K
-	s67Alo6bE/sMNdEIl0Z+j7maYdCY1fL31c2UpNF3r5QkJo48hlzuT/C0PvXxnOppiE8uITxGW1byd
-	1ILHc/fNGLnv9QW42+DiSMprt0eMHKGR0MkAhPJ4enNGuqBGoqAbr2OF7mbVbvVtyV7eCo3R4DyiI
-	Cf7Z6CFzkPe+HJD7h+FDtGVGfUSbOOdtjUJJqC6bhy2ZBXxTVRbGnTvLa7k0n/N+WORJZwI6L3Qh+
-	smiOF3zw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YhRvmurAP7YRVh7QRW6C3C4TvfzSRDnjtU87KinxIB8=; b=kG8QTIUR/FipZbYUidNJ8BoDKQ
+	La2EsE4+3/WAcUjww/YaV7cUH8PFpFc2FUSGJcXvI9kAAWrybC0Trx0jhcJJpcR7Rgb6vpQ7PCbrx
+	pEKwIFeP/yYUX2+pErsOY0+xYzzcHnwQMrnw70iSaBSrEKZ3AwDGpGwGkHZSw6YVFIxuu+MZuEmfI
+	SsJd8RHoGfuFlnSO+NKxAA0zOHngN8bikdKHu92iqkb0NV6u24oY2sn1coZlzaYX+wRsLcCGSNyOS
+	I8/y/XH3kqasCpgzSIKnZcWRF7JNqOH48IDp+GCLenxEn//TbaTCjjVFUIjYeT17fZdq1bKwmz/wj
+	JKqRKVdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbIuN-00DLr8-2p;
-	Wed, 30 Aug 2023 10:58:47 +0000
-Received: from mgamail.intel.com ([134.134.136.100])
+	id 1qbJ6I-00DMji-0v;
+	Wed, 30 Aug 2023 11:11:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbIuK-00DLqI-1H;
-	Wed, 30 Aug 2023 10:58:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1693393124; x=1724929124;
-  h=from:to:subject:in-reply-to:references:date:message-id:
-   mime-version;
-  bh=Ba+ap190nbT9y0MOHYUH6N6N/yy00EJmGs6/T//2stI=;
-  b=m5G7riCNW+dWhjsh30r/nNXoW4IvHPXskLdiw2ZAqGwgU3uPuMKKinrM
-   +opwz7YK2w3P1CSTB4YqaQA8q7/6HLmJ9O7bgt/GMCffTESA2DtTBprJc
-   /sapfr5Krz8ziAdRml+GIDJTNb+yEnpLWuvM4vKT4cfOYps8JAhLWF4nB
-   J5lOSg8vLP2wTV09ZxoPS1uYyG9RxDqHYyapO5+twnQIp16Vfyytu8hn6
-   6ZVYD10XYCsStMxLbD0Dsmu1Ggvml02KbdqZkf1RWeHjDHXh+k5TG6BsH
-   jE8yw4GcezfvtyljqB2VfBrFksOj2I13tRW2b/GeGBzXsWP3tpfrUQh3A
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10817"; a="441974432"
-X-IronPort-AV: E=Sophos;i="6.02,213,1688454000"; 
-   d="scan'208";a="441974432"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Aug 2023 03:58:41 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.01,202,1684825200"; 
-   d="scan'208";a="882711770"
-Received: from ziemtocx-mobl1.ger.corp.intel.com (HELO localhost) ([10.252.57.251])
-  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Aug 2023 03:58:39 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Maxime Ripard <mripard@kernel.org>, Helen Koike
- <helen.koike@collabora.com>, dri-devel@lists.freedesktop.org,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- david.heidelberg@collabora.com, daniels@collabora.com, emma@anholt.net,
- robclark@freedesktop.org, gustavo.padovan@collabora.com,
- robdclark@google.com, anholt@google.com,
- maarten.lankhorst@linux.intel.com, tzimmermann@suse.de, airlied@gmail.com,
- corbet@lwn.net, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org,
- khilman@baylibre.com, jbrunet@baylibre.com,
- martin.blumenstingl@googlemail.com, heiko@sntech.de,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
-In-Reply-To: <zorvxwffshrsqx5cy76pe3gn52qrqav7qusz5acav2un2ydvwr@fwjd56qg2xve>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20230811171953.176431-1-helen.koike@collabora.com>
- <ZOTFfhtzzWkrQ23Y@phenom.ffwll.local>
- <zorvxwffshrsqx5cy76pe3gn52qrqav7qusz5acav2un2ydvwr@fwjd56qg2xve>
-Date: Wed, 30 Aug 2023 13:58:31 +0300
-Message-ID: <87bkeo23vs.fsf@intel.com>
+	id 1qbJ6D-00DMjF-3C;
+	Wed, 30 Aug 2023 11:11:05 +0000
+X-UUID: e37b92fc472511ee83ed1395ce914268-20230830
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=YhRvmurAP7YRVh7QRW6C3C4TvfzSRDnjtU87KinxIB8=;
+	b=UFczTh9IxDNU/JIkAFMnxp4dm2/4uhugfMdt9KAcVbL4bS2Pf/c3QRe2Kf+3M7LODISSnkySnHbD5sNE+nVvAgzHnERBxZ6tPaXEuJEwExSH38u34YgfXzRmgaoxhbhsZJnch9vyP8yaCS8le8uRkIIpXLG6WC1NfLUFw27sYf4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:d0e0415a-40a0-4044-9b4f-29a1ceb06d55,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:0ad78a4,CLOUDID:5b8272c2-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: e37b92fc472511ee83ed1395ce914268-20230830
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 422362392; Wed, 30 Aug 2023 04:10:55 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 30 Aug 2023 19:10:52 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Wed, 30 Aug 2023 19:10:51 +0800
+Message-ID: <bfff8dc1-5f1c-1da8-488c-58e83cb1e651@mediatek.com>
+Date: Wed, 30 Aug 2023 19:10:48 +0800
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 3/4] arm64: dts: mediatek: mt6360: add PMIC MT6360 related
+ nodes
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>
+CC: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Fabien Parent
+	<fparent@baylibre.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Bear Wang <bear.wang@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Chunfeng
+ Yun <chunfeng.yun@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>
+References: <20230825114623.16884-1-macpaul.lin@mediatek.com>
+ <20230825114623.16884-3-macpaul.lin@mediatek.com>
+ <CAGXv+5FTuY=ZHB3-2Woit5amRZ=RxByGMq=LQp-es8tWEhAQUA@mail.gmail.com>
+ <986d8056-3708-ed3d-1896-0fbc034ca53c@mediatek.com>
+ <CAGXv+5E2kOOz59AMCvQv_as6SesDkt15b9uDOSZ_iJMytgf1gA@mail.gmail.com>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <CAGXv+5E2kOOz59AMCvQv_as6SesDkt15b9uDOSZ_iJMytgf1gA@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230830_035844_497619_11C77EF8 
-X-CRM114-Status: GOOD (  39.46  )
+X-CRM114-CacheID: sfid-20230830_041102_038880_D4FE7C53 
+X-CRM114-Status: GOOD (  40.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,101 +97,135 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 30 Aug 2023, Maxime Ripard <mripard@kernel.org> wrote:
-> On Tue, Aug 22, 2023 at 04:26:06PM +0200, Daniel Vetter wrote:
->> On Fri, Aug 11, 2023 at 02:19:53PM -0300, Helen Koike wrote:
->> > From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
->> > 
->> > Developers can easily execute several tests on different devices
->> > by just pushing their branch to their fork in a repository hosted
->> > on gitlab.freedesktop.org which has an infrastructure to run jobs
->> > in several runners and farms with different devices.
->> > 
->> > There are also other automated tools that uprev dependencies,
->> > monitor the infra, and so on that are already used by the Mesa
->> > project, and we can reuse them too.
->> > 
->> > Also, store expectations about what the DRM drivers are supposed
->> > to pass in the IGT test suite. By storing the test expectations
->> > along with the code, we can make sure both stay in sync with each
->> > other so we can know when a code change breaks those expectations.
->> > 
->> > Also, include a configuration file that points to the out-of-tree
->> > CI scripts.
->> > 
->> > This will allow all contributors to drm to reuse the infrastructure
->> > already in gitlab.freedesktop.org to test the driver on several
->> > generations of the hardware.
->> > 
->> > Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
->> > Signed-off-by: Helen Koike <helen.koike@collabora.com>
->> > Acked-by: Daniel Stone <daniels@collabora.com>
->> > Acked-by: Rob Clark <robdclark@gmail.com>
->> > Tested-by: Rob Clark <robdclark@gmail.com>
->> 
->> Ok I pushed this into a topic/drm-ci branch in drm.git and asked sfr to
->> include that branch in linux-next.
->> 
->> But also I'd like to see a lot more acks here, we should be able to at
->> least pile up a bunch of (driver) maintainers from drm-misc in support of
->> this. Also maybe media, at least I've heard noises that they're maybe
->> interested too? Plus anyone else, the more the better.
->
-> I'm not really convinced by that approach at all, and most of the issues
-> I see are shown by the follow-up series here:
 
-I'm not fully convinced either, more like "let's see". In that narrow
-sense, ack. I don't see harm in trying, if you're also open to backing
-off in case it does not pan out.
 
-> https://lore.kernel.org/dri-devel/20230825122435.316272-1-vignesh.raman@collabora.com/
->
->   * We hardcode a CI farm setup into the kernel
->
->   * We cannot trust that the code being run is actually the one being
->     pushed into gitlab
->
->   * IMO, and I know we disagree here, any IGT test we enable for a given
->     platform should work, period. Allowing failures and flaky tests just
->     sweeps whatever issue is there under the rug. If the test is at
->     fault, we should fix the test, if the driver / kernel is at fault,
->     then I certainly want to know about it.
+On 8/28/23 18:51, Chen-Yu Tsai wrote:
+> 	
+> 
+> External email : Please do not click links or open attachments until you 
+> have verified the sender or the content.
+> 
+> On Mon, Aug 28, 2023 at 5:59 PM Macpaul Lin <macpaul.lin@mediatek.com> wrote:
+>>
+>>
+>> On 8/28/23 12:36, Chen-Yu Tsai wrote:
+>> >
+>> >
+>> > External email : Please do not click links or open attachments until you
+>> > have verified the sender or the content.
+>> >
+>> > On Fri, Aug 25, 2023 at 7:46 PM Macpaul Lin <macpaul.lin@mediatek.com> wrote:
+>> >>
+>> >> MT6360 is the secondary PMIC for MT8195.
+>> >> It supports USB Type-C and PD functions.
+>> >> Add MT6360 related common nodes which is used for MT8195 platform, includes
+>> >>  - charger
+>> >>  - ADC
+>> >>  - LED
+>> >>  - regulators
+>> >>
+>> >> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+>> >> ---
+>> >>  arch/arm64/boot/dts/mediatek/mt6360.dtsi | 112 +++++++++++++++++++++++
+>>
+>> [snip..]
+>>
+>> >> +       regulator {
+>> >> +               compatible = "mediatek,mt6360-regulator";
+>> >> +               LDO_VIN3-supply = <&mt6360_buck2>;
+>> >> +
+>> >> +               mt6360_buck1: buck1 {
+>> >> +                       regulator-compatible = "BUCK1";
+>> >> +                       regulator-name = "mt6360,buck1";
+>> >
+>> > Normally there's no need to provide a default name. Any used regulator
+>> > should have been named to match the power rail name from the board's
+>> > schematics.
+>> >
+>>
+>> I have 2 schematics on hand. One is mt8195-demo board and the other is
+>> genio-1200-evk board. There are 2 PMIC used on these board
+>> with "the same" sub power rail name for "BUCK1~BUCK4". One is mt6315,
+>> and the other is mt6360.
+> 
+> This is more of an board level integration thing. Regulator names are
+> expected to be named after the actual power rail names. For example,
+> take a look at Rock Pi 4 schematics [1], the power rail from BUCK1 of
+> the RK808 PMIC is named "VDD_CENTER". And in the dts file [1] we can
+> see the regulator is named that as well (albeit with some style changes).
+> 
+> Now if a project really chooses meaningless names like BUCKx or LDOy
+> for their power rails, then so be it. However those are board level
+> decisions. The names are there to help with integration debugging, so
+> it makes sense to have names that match the power rail names in the
+> schematics. Default names rarely make sense.
+> 
+> [1]https://dl.radxa.com/rockpi4/docs/hw/rockpi4/rockpi4_v13_sch_20181112.pdf  <https://urldefense.com/v3/__https://dl.radxa.com/rockpi4/docs/hw/rockpi4/rockpi4_v13_sch_20181112.pdf__;!!CTRNKA9wMg0ARbw!g4T6kWfnETA38Kc_yc6dx6gYi7zzW2m6YU0ybNN5vbTWjK5SfapEQEQMrtxg8E9xRNdpJm678Rj3uLrWHeM$>
+> [2]https://elixir.bootlin.com/linux/latest/source/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi#L267  <https://urldefense.com/v3/__https://elixir.bootlin.com/linux/latest/source/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi*L267__;Iw!!CTRNKA9wMg0ARbw!g4T6kWfnETA38Kc_yc6dx6gYi7zzW2m6YU0ybNN5vbTWjK5SfapEQEQMrtxg8E9xRNdpJm678Rj3hdwm0VA$>
+> 
+>> I've also inspected other dtsi of the regulators, such as mt6357 and
+>> mt6359. They have regulator nodes with named for their purpose. For the
+>> schematics of mt8195-demo and genio-1200-evk boards, there are no
+>> explicit usage for "BUCK1~BUCK4" for both mt6135 and mt6360. In order to
+>> specify the sub power rail for mt6360, MediaTek chooses name like
+>> "mt6360,buck1" instead of simple name "buck1" for distinguish with
+>> "buck1" of mt6351.
+>>
+>> >> +                       regulator-min-microvolt = <300000>;
+>> >> +                       regulator-max-microvolt = <1300000>;
+>> >
+>> > These values correspond to the regulator's range. They make no sense as
+>> > regulator constraints. The min/max values are supposed to be the most
+>> > restrictive set of voltages of the regulator consumers. If what is fed
+>> > by this regulator can only take 0.7V ~ 1.1V, then it should save 0.7V
+>> > and 1.1V here. If the regulator is unused, then there are no constraints,
+>> > and these can be left out.
+>> >
+>> > Just leave them out of the file.
+>> >Alexandre Mergnat <amergnat@baylibre.com>
+>> > Both comments apply to all the regulators.
+>> >
+>> > ChenYu
+>>
+>> There are some common circuit design for these regulators like mt6359,
+>> mt6360 and mt6315 used on many products. MediaTek put the most common
+>> and expected default values in their dtsi. However, some changes still
+>> need to be applied to derivative boards according to product's
+>> requirements. The actual value be used will be applied in board's dts
+>> file to override the default settings in dtsi.
+> 
+> The values here are definitely not some product's expected values.
+> They are the full range of output voltages supported, as seen in the
+> driver.
+> 
+> The regulator binding says:
+> 
+>      regulator-min-microvolt:
+>        description: smallest voltage consumers may set
+> 
+>      regulator-max-microvolt:
+>        description: largest voltage consumers may set
+> 
+> The constraints given in the regulator node are those of the consumers,
+> not the PMIC regulator itself. As you mentioned, a board may need to
+> adjust the range based on its design, i.e. what the board has connected
+> to the regulator.
+> 
+> So either something is connected, and the consumer's constraints are set
+> by overriding the default in the board .dts file; or, nothing is connected
+> and the constraints don't matter, as nothing is going to set the voltage
+> or enable the regulator. So there's no reason to give a default. For
+> unused regulator outputs, their device nodes don't even have to exist.
+> 
+> I'm trying to get people to _not_ write default values, as they don't
+> make any sense. The full voltage range is already implied by the
+> compatible string.
+> 
+> ChenYu
 
-At least for display, where this also depends on peripheral hardware,
-it's not an easy problem, really. How reliable do you need it to be?
-How many nines? Who is going to debug the issues that need hundreds or
-thousands of runs to reproduce? If a commit makes some test less
-reliable, how long is it going to take to even see that or pinpoint
-that?
+Thanks for the explanation in detail.
+I'll update the patch v2 for these modification.
 
-It's a kind of cop out, but this is not filesystems. In many cases I
-think we might be able to make things more robust by failing faster and
-failing more, but the users probably want us to plunge forward despite
-some errors to try to get something on screen.
-
-(Come to think of it, perhaps we should classify tests based on whether
-external hardware plays a role.)
-
-So I'm not so concerned about the filter lists per se, but rather about
-having them in kernel.
-
-BR,
-Jani.
-
->
->   * This then leads to patches like this one:
->     https://lore.kernel.org/dri-devel/20230825122435.316272-6-vignesh.raman@collabora.com/
->
->     Which (and it's definitely not the author's fault) are just plain
->     unreadable, reproducable or auditable by anyone not heavily involved
->     in the CI farm operations and the platforms being tested.
->
-> That being said, I don't have anything better to suggest than what I
-> already did, and it looks like I'm alone in thinking that those are
-> problems, so feel free to add my ack if you want to.
->
-> Maxime
-
--- 
-Jani Nikula, Intel Open Source Graphics Center
+Best regards,
+Macpaul Lin
 
