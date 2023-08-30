@@ -4,74 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87C80C83F14
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Aug 2023 12:38:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0398AC83F01
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Aug 2023 12:51:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AWvQXGpiHRQf+kFSEUvTHSu75pX9oCjeaDF6wySaVIc=; b=fvHItO1j/+8udARza42PpvWsGD
-	xi97q7X1KEtKA+dHSiLHZYnCBSzgiQVbBkyWPZvRTwu6Nx5rWADF9kSoso/5TMsW2A7BVLSnyzXKQ
-	5gThbhrCYcUtM87k8mD1ifNtnQq5x9NUhTipSLKu1qCg9P7F6Utymxss7kFxkW5U/V3ia/wbNcvyb
-	DrY6bjqMEwfzzYy/c7dcYQxuB9/L598yTewSG6k2splzkcYak59SZ5O12QHdgEyXEjY+Pdsvcv5Iz
-	mLQiRccql5XADYzjZLw/jviTbXxCL/nzUIt5T0/EMvEQVyBYuGDoTVR160+2LY+e7mD+5f0EYHtZ/
-	Tn9821CQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DCAGBH1J83WMBU9mzJc+NqiVdAh0UiePL1+APKs/qbU=; b=W52vsST5hHxOEBnmWzQh6Wyf3R
+	gMeYxQKbumh9YD3ejhurOr+78fm1Ju126EqEUaNQrMD8fxSilQ4x1KNS/cNE4YemdESUqQnx266tJ
+	Q7+ep7k5uH6299XXWyVVDEQwHn+r1TRz0tg/4CBBPtlvsf8St/aHrLOVTY21rBJo5fKMWOxGBECCq
+	wXc4Ej2K4vVYIszH+TiTgCnwBbOjrzMOjNrAbosIGL1wg/d68U6Q4MQ6oXRaUVUwQ1HqwOZf8iiiX
+	rAfqUhAfvyY9qIDk0Ew35NzNVSE+KqOs2OqDTGBA5NL3qnjG8Qq2X8iwOWlZtXDRIsL2HT2EcNXda
+	CRv3fijg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbKSv-00DUQx-1R;
-	Wed, 30 Aug 2023 12:38:33 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qbKfe-00DVRl-2k;
+	Wed, 30 Aug 2023 12:51:42 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbKSr-00DUPm-19;
-	Wed, 30 Aug 2023 12:38:31 +0000
-X-UUID: 1d426338473211ee83ed1395ce914268-20230830
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=AWvQXGpiHRQf+kFSEUvTHSu75pX9oCjeaDF6wySaVIc=;
-	b=bgNEHIB7uEeJZjec76Prga0Cb/GrW8McVqSti515nQ2xoQqAEzo8ROmCgDB2kOdJqPL/OPzdSDOClC7jV18eCbWjsxZe0NExJDHjZcaZDz/UOMDwmGo2Kd8weTB9MMvSXzpyKiPqiN4y/X8/bN6U/tr0NmwgxaCtycNnKg8GqKQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:bea9d423-fb7b-436d-89cc-931328c51307,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:c90973c2-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 1d426338473211ee83ed1395ce914268-20230830
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 654261344; Wed, 30 Aug 2023 05:38:25 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 30 Aug 2023 20:28:23 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 30 Aug 2023 20:28:22 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman
-	<gregkh@linuxfoundation.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <linux-usb@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>
-Subject: [PATCH 1/2] usb: xhci-mtk: add a bandwidth budget table
-Date: Wed, 30 Aug 2023 20:28:19 +0800
-Message-ID: <20230830122820.18859-1-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1qbKfb-00DVQ7-3C;
+	Wed, 30 Aug 2023 12:51:41 +0000
+Received: from [IPV6:2a01:e0a:120:3210:3c80:2375:ed1d:19ee] (unknown [IPv6:2a01:e0a:120:3210:3c80:2375:ed1d:19ee])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 78F0A660722B;
+	Wed, 30 Aug 2023 13:51:32 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1693399892;
+	bh=ATFNlFErqZ0DT6q6oV6nUkS2hS/qdeMG0yqOrN3MSgk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=grBQL/Me/AQSKnGXDsM+f85KJNzEEFJDfQbBeuzCklPS0k9B0cmtilehE5zKRYu/t
+	 TtV/dyQfppH74lB05sAV/VsXWgaDexMHs1RPCOCcCNZ+wkVPBEIymWDEX96+OSBOvZ
+	 hcvl4UYaMfBYhNM1TzhmuweEvku6Ox/K8F+a+Y/mmO6tvueqjLpjoq+aE2OcT1m9Nh
+	 qeR4oxhg+yIrXzde+Z+KiMuxBZaSgAZ4XQRFzOzuntRs5PJ/DpzBObPWs1gTGFe/i5
+	 GqNZhQWD0fukRTvVQKnmo3zaxLeESSifUnsZr63gW6bt1RPa2UNzAUrnR3pwaYDVEi
+	 BQwFKwll1kpHw==
+Message-ID: <643a7811-60ff-6ac9-be3d-edcd9a0b95cc@collabora.com>
+Date: Wed, 30 Aug 2023 14:51:30 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v5 01/10] media: videobuf2: Rework offset 'cookie'
+ encoding pattern
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, kernel@collabora.com
+References: <20230824092133.39510-1-benjamin.gaignard@collabora.com>
+ <20230824092133.39510-2-benjamin.gaignard@collabora.com>
+ <01c299f2-8118-5d86-e9b6-a459c1b6c467@xs4all.nl>
+Content-Language: en-US
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <01c299f2-8118-5d86-e9b6-a459c1b6c467@xs4all.nl>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230830_053829_401045_F0893655 
-X-CRM114-Status: GOOD (  27.40  )
+X-CRM114-CacheID: sfid-20230830_055140_323378_4D22B50E 
+X-CRM114-Status: GOOD (  24.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,291 +83,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to estimate when fs/ls transactions appear on a downstream bus,
-the host must calculate a best case full-speed budget, use a table to
-track how many bytes occure in each microframe.
-This patch is prepared for introducing an improved bandwidth scheduling.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/host/xhci-mtk-sch.c | 113 +++++++++++++++++++++++---------
- drivers/usb/host/xhci-mtk.h     |   4 +-
- 2 files changed, 85 insertions(+), 32 deletions(-)
+Le 30/08/2023 à 14:25, Hans Verkuil a écrit :
+> On 24/08/2023 11:21, Benjamin Gaignard wrote:
+>> Change how offset 'cookie' field value is computed to make possible
+>> to use more buffers (up to 0xffff).
+>> With this encoding pattern we know the maximum number that a queue
+>> could store so we can check ing at queue init time.
+>> It also make easier and faster to find buffer and plane from using
+>> the offset field.
+>>
+>> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>> ---
+>> v5:
+>> - I haven't change DST_QUEUE_OFF_BASE definition because it used in
+>>    v4l2-mem2mem and s5p_mfc driver with a shift.
+>>
+>>   .../media/common/videobuf2/videobuf2-core.c   | 48 +++++++++----------
+>>   1 file changed, 24 insertions(+), 24 deletions(-)
+>>
+>> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+>> index cf6727d9c81f..e06905533ef4 100644
+>> --- a/drivers/media/common/videobuf2/videobuf2-core.c
+>> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
+>> @@ -31,6 +31,10 @@
+>>   
+>>   #include <trace/events/vb2.h>
+>>   
+>> +#define PLANE_INDEX_SHIFT	3
+>> +#define PLANE_INDEX_MASK	0x7
+>> +#define MAX_BUFFERS		0xffff
+> Very poor name, see below.
+>
+>> +
+>>   static int debug;
+>>   module_param(debug, int, 0644);
+>>   
+>> @@ -358,21 +362,23 @@ static void __setup_offsets(struct vb2_buffer *vb)
+>>   	unsigned int plane;
+>>   	unsigned long off = 0;
+>>   
+>> -	if (vb->index) {
+>> -		struct vb2_buffer *prev = q->bufs[vb->index - 1];
+>> -		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
+>> -
+>> -		off = PAGE_ALIGN(p->m.offset + p->length);
+>> -	}
+>> +	/*
+>> +	 * Offsets cookies value have the following constraints:
+>> +	 * - a buffer could have up to 8 planes.
+>> +	 * - v4l2 mem2mem use bit 30 to distinguish between source and destination buffers.
+>> +	 * - must be page aligned
+>> +	 * That led to this bit mapping:
+>> +	 * |30                |29        15|14       12|11 0|
+>> +	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
+>> +	 * where there is 16 bits to store buffer index.
+> 16 -> 15: there are 15 (not 16!) bits available for buffer indices. So the maximum
+> number of buffers is 32768, given that the indices start at 0.
+>
+>> +	 */
+>> +	off = vb->index << (PLANE_INDEX_SHIFT + PAGE_SHIFT);
+>>   
+>>   	for (plane = 0; plane < vb->num_planes; ++plane) {
+>> -		vb->planes[plane].m.offset = off;
+>> +		vb->planes[plane].m.offset = off + (plane << PAGE_SHIFT);
+>>   
+>>   		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
+>>   				vb->index, plane, off);
+>> -
+>> -		off += vb->planes[plane].length;
+>> -		off = PAGE_ALIGN(off);
+>>   	}
+>>   }
+>>   
+>> @@ -2209,21 +2215,15 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
+>>   		return -EBUSY;
+>>   	}
+>>   
+>> -	/*
+>> -	 * Go over all buffers and their planes, comparing the given offset
+>> -	 * with an offset assigned to each plane. If a match is found,
+>> -	 * return its buffer and plane numbers.
+>> -	 */
+>> -	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+>> -		vb = q->bufs[buffer];
+>> +	/* Get buffer and plane from the offset */
+>> +	buffer = (off >> (PLANE_INDEX_SHIFT + PAGE_SHIFT)) & MAX_BUFFERS;
+> Hmm, you use it as a mask. The name MAX_BUFFERS is really confusing.
+> How about BUFFER_INDEX_MASK? That is consistent with PLANE_INDEX_MASK.
 
-diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-index 579899eb24c1..93d962b159b4 100644
---- a/drivers/usb/host/xhci-mtk-sch.c
-+++ b/drivers/usb/host/xhci-mtk-sch.c
-@@ -19,6 +19,13 @@
- #define HS_BW_BOUNDARY	6144
- /* usb2 spec section11.18.1: at most 188 FS bytes per microframe */
- #define FS_PAYLOAD_MAX 188
-+/*
-+ * max number of microframes for split transfer, assume extra-cs budget is 0
-+ * for fs isoc in : 1 ss + 1 idle + 6 cs (roundup(1023/188))
-+ */
-+#define TT_MICROFRAMES_MAX	8
-+/* offset from SS for fs/ls isoc/intr ep (ss + idle) */
-+#define CS_OFFSET	2
- 
- #define DBG_BUF_EN	64
- 
-@@ -237,17 +244,26 @@ static void drop_tt(struct usb_device *udev)
- 
- static struct mu3h_sch_ep_info *
- create_sch_ep(struct xhci_hcd_mtk *mtk, struct usb_device *udev,
--	      struct usb_host_endpoint *ep)
-+	      struct usb_host_endpoint *ep, struct xhci_ep_ctx *ep_ctx)
- {
- 	struct mu3h_sch_ep_info *sch_ep;
- 	struct mu3h_sch_bw_info *bw_info;
- 	struct mu3h_sch_tt *tt = NULL;
-+	u32 len;
- 
- 	bw_info = get_bw_info(mtk, udev, ep);
- 	if (!bw_info)
- 		return ERR_PTR(-ENODEV);
- 
--	sch_ep = kzalloc(sizeof(*sch_ep), GFP_KERNEL);
-+	if (is_fs_or_ls(udev->speed))
-+		len = TT_MICROFRAMES_MAX;
-+	else if ((udev->speed >= USB_SPEED_SUPER) &&
-+		 usb_endpoint_xfer_isoc(&ep->desc))
-+		len = get_esit(ep_ctx);
-+	else
-+		len = 1;
-+
-+	sch_ep = kzalloc(struct_size(sch_ep, bw_budget_table, len), GFP_KERNEL);
- 	if (!sch_ep)
- 		return ERR_PTR(-ENOMEM);
- 
-@@ -279,7 +295,11 @@ static void setup_sch_info(struct xhci_ep_ctx *ep_ctx,
- 	u32 mult;
- 	u32 esit_pkts;
- 	u32 max_esit_payload;
-+	u32 bw_per_microframe;
-+	u32 *bwb_table;
-+	int i;
- 
-+	bwb_table = sch_ep->bw_budget_table;
- 	ep_type = CTX_TO_EP_TYPE(le32_to_cpu(ep_ctx->ep_info2));
- 	maxpkt = MAX_PACKET_DECODED(le32_to_cpu(ep_ctx->ep_info2));
- 	max_burst = CTX_TO_MAX_BURST(le32_to_cpu(ep_ctx->ep_info2));
-@@ -313,7 +333,7 @@ static void setup_sch_info(struct xhci_ep_ctx *ep_ctx,
- 		 * opportunities per microframe
- 		 */
- 		sch_ep->pkts = max_burst + 1;
--		sch_ep->bw_cost_per_microframe = maxpkt * sch_ep->pkts;
-+		bwb_table[0] = maxpkt * sch_ep->pkts;
- 	} else if (sch_ep->speed >= USB_SPEED_SUPER) {
- 		/* usb3_r1 spec section4.4.7 & 4.4.8 */
- 		sch_ep->cs_count = 0;
-@@ -330,6 +350,7 @@ static void setup_sch_info(struct xhci_ep_ctx *ep_ctx,
- 		if (ep_type == INT_IN_EP || ep_type == INT_OUT_EP) {
- 			sch_ep->pkts = esit_pkts;
- 			sch_ep->num_budget_microframes = 1;
-+			bwb_table[0] = maxpkt * sch_ep->pkts;
- 		}
- 
- 		if (ep_type == ISOC_IN_EP || ep_type == ISOC_OUT_EP) {
-@@ -346,18 +367,52 @@ static void setup_sch_info(struct xhci_ep_ctx *ep_ctx,
- 				DIV_ROUND_UP(esit_pkts, sch_ep->pkts);
- 
- 			sch_ep->repeat = !!(sch_ep->num_budget_microframes > 1);
-+			bw_per_microframe = maxpkt * sch_ep->pkts;
-+
-+			for (i = 0; i < sch_ep->num_budget_microframes - 1; i++)
-+				bwb_table[i] = bw_per_microframe;
-+
-+			/* last one <= bw_per_microframe */
-+			bwb_table[i] = maxpkt * esit_pkts - i * bw_per_microframe;
- 		}
--		sch_ep->bw_cost_per_microframe = maxpkt * sch_ep->pkts;
- 	} else if (is_fs_or_ls(sch_ep->speed)) {
- 		sch_ep->pkts = 1; /* at most one packet for each microframe */
- 
- 		/*
--		 * num_budget_microframes and cs_count will be updated when
-+		 * @cs_count will be updated to add extra-cs when
- 		 * check TT for INT_OUT_EP, ISOC/INT_IN_EP type
-+		 * @maxpkt <= 1023;
- 		 */
- 		sch_ep->cs_count = DIV_ROUND_UP(maxpkt, FS_PAYLOAD_MAX);
- 		sch_ep->num_budget_microframes = sch_ep->cs_count;
--		sch_ep->bw_cost_per_microframe = min_t(u32, maxpkt, FS_PAYLOAD_MAX);
-+
-+		/* init budget table */
-+		if (ep_type == ISOC_OUT_EP) {
-+			for (i = 0; i < sch_ep->cs_count - 1; i++)
-+				bwb_table[i] = FS_PAYLOAD_MAX;
-+
-+			bwb_table[i] = maxpkt - i * FS_PAYLOAD_MAX;
-+		} else if (ep_type == INT_OUT_EP) {
-+			/* only first one used (maxpkt <= 64), others zero */
-+			bwb_table[0] = maxpkt;
-+		} else { /* INT_IN_EP or ISOC_IN_EP */
-+			bwb_table[0] = 0; /* start split */
-+			bwb_table[1] = 0; /* idle */
-+			/*
-+			 * @cs_count will be updated according to cs position
-+			 * (add 1 or 2 extra-cs), but assume only first
-+			 * @num_budget_microframes elements will be used later,
-+			 * although in fact it does not (extra-cs budget many receive
-+			 * some data for IN ep);
-+			 * @cs_count is 1 for INT_IN_EP (maxpkt <= 64);
-+			 */
-+			for (i = 0; i < sch_ep->cs_count - 1; i++)
-+				bwb_table[i + CS_OFFSET] = FS_PAYLOAD_MAX;
-+
-+			bwb_table[i + CS_OFFSET] = maxpkt - i * FS_PAYLOAD_MAX;
-+			/* ss + idle */
-+			sch_ep->num_budget_microframes += CS_OFFSET;
-+		}
- 	}
- }
- 
-@@ -374,7 +429,7 @@ static u32 get_max_bw(struct mu3h_sch_bw_info *sch_bw,
- 
- 		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
- 			k = XHCI_MTK_BW_INDEX(base + j);
--			bw = sch_bw->bus_bw[k] + sch_ep->bw_cost_per_microframe;
-+			bw = sch_bw->bus_bw[k] + sch_ep->bw_budget_table[j];
- 			if (bw > max_bw)
- 				max_bw = bw;
- 		}
-@@ -385,16 +440,18 @@ static u32 get_max_bw(struct mu3h_sch_bw_info *sch_bw,
- static void update_bus_bw(struct mu3h_sch_bw_info *sch_bw,
- 	struct mu3h_sch_ep_info *sch_ep, bool used)
- {
--	int bw_updated;
- 	u32 base;
--	int i, j;
--
--	bw_updated = sch_ep->bw_cost_per_microframe * (used ? 1 : -1);
-+	int i, j, k;
- 
- 	for (i = 0; i < sch_ep->num_esit; i++) {
- 		base = sch_ep->offset + i * sch_ep->esit;
--		for (j = 0; j < sch_ep->num_budget_microframes; j++)
--			sch_bw->bus_bw[XHCI_MTK_BW_INDEX(base + j)] += bw_updated;
-+		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
-+			k = XHCI_MTK_BW_INDEX(base + j);
-+			if (used)
-+				sch_bw->bus_bw[k] += sch_ep->bw_budget_table[j];
-+			else
-+				sch_bw->bus_bw[k] -= sch_ep->bw_budget_table[j];
-+		}
- 	}
- }
- 
-@@ -414,7 +471,7 @@ static int check_fs_bus_bw(struct mu3h_sch_ep_info *sch_ep, int offset)
- 		 */
- 		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
- 			k = XHCI_MTK_BW_INDEX(base + j);
--			tmp = tt->fs_bus_bw[k] + sch_ep->bw_cost_per_microframe;
-+			tmp = tt->fs_bus_bw[k] + sch_ep->bw_budget_table[j];
- 			if (tmp > FS_PAYLOAD_MAX)
- 				return -ESCH_BW_OVERFLOW;
- 		}
-@@ -454,25 +511,18 @@ static int check_sch_tt(struct mu3h_sch_ep_info *sch_ep, u32 offset)
- 			return -ESCH_SS_Y6;
- 
- 		/* one uframe for ss + one uframe for idle */
--		start_cs = (start_ss + 2) % 8;
-+		start_cs = (start_ss + CS_OFFSET) % 8;
- 		last_cs = start_cs + cs_count - 1;
--
- 		if (last_cs > 7)
- 			return -ESCH_CS_OVERFLOW;
- 
-+		/* add extra-cs */
-+		cs_count += (last_cs == 7) ? 1 : 2;
- 		if (cs_count > 7)
- 			cs_count = 7; /* HW limit */
- 
- 		sch_ep->cs_count = cs_count;
--		/* ss, idle are ignored */
--		sch_ep->num_budget_microframes = cs_count;
- 
--		/*
--		 * if interval=1, maxp >752, num_budge_micoframe is larger
--		 * than sch_ep->esit, will overstep boundary
--		 */
--		if (sch_ep->num_budget_microframes > sch_ep->esit)
--			sch_ep->num_budget_microframes = sch_ep->esit;
- 	}
- 
- 	return check_fs_bus_bw(sch_ep, offset);
-@@ -481,17 +531,20 @@ static int check_sch_tt(struct mu3h_sch_ep_info *sch_ep, u32 offset)
- static void update_sch_tt(struct mu3h_sch_ep_info *sch_ep, bool used)
- {
- 	struct mu3h_sch_tt *tt = sch_ep->sch_tt;
--	int bw_updated;
- 	u32 base;
--	int i, j;
-+	int i, j, k;
- 
--	bw_updated = sch_ep->bw_cost_per_microframe * (used ? 1 : -1);
- 
- 	for (i = 0; i < sch_ep->num_esit; i++) {
- 		base = sch_ep->offset + i * sch_ep->esit;
- 
--		for (j = 0; j < sch_ep->num_budget_microframes; j++)
--			tt->fs_bus_bw[XHCI_MTK_BW_INDEX(base + j)] += bw_updated;
-+		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
-+			k = XHCI_MTK_BW_INDEX(base + j);
-+			if (used)
-+				tt->fs_bus_bw[k] += (u16)sch_ep->bw_budget_table[j];
-+			else
-+				tt->fs_bus_bw[k] -= (u16)sch_ep->bw_budget_table[j];
-+		}
- 	}
- 
- 	if (used)
-@@ -651,7 +704,7 @@ static int add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 
- 	xhci_dbg(xhci, "%s %s\n", __func__, decode_ep(ep, udev->speed));
- 
--	sch_ep = create_sch_ep(mtk, udev, ep);
-+	sch_ep = create_sch_ep(mtk, udev, ep, ep_ctx);
- 	if (IS_ERR_OR_NULL(sch_ep))
- 		return -ENOMEM;
- 
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index faaaf05e36ce..ef8af20b5e88 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -58,7 +58,6 @@ struct mu3h_sch_bw_info {
-  * @num_esit: number of @esit in a period
-  * @num_budget_microframes: number of continuous uframes
-  *		(@repeat==1) scheduled within the interval
-- * @bw_cost_per_microframe: bandwidth cost per microframe
-  * @hentry: hash table entry
-  * @endpoint: linked into bandwidth domain which it belongs to
-  * @tt_endpoint: linked into mu3h_sch_tt's list which it belongs to
-@@ -83,12 +82,12 @@ struct mu3h_sch_bw_info {
-  *		times; 1: distribute the (bMaxBurst+1)*(Mult+1) packets
-  *		according to @pkts and @repeat. normal mode is used by
-  *		default
-+ * @bw_budget_table: table to record bandwidth budget per microframe
-  */
- struct mu3h_sch_ep_info {
- 	u32 esit;
- 	u32 num_esit;
- 	u32 num_budget_microframes;
--	u32 bw_cost_per_microframe;
- 	struct list_head endpoint;
- 	struct hlist_node hentry;
- 	struct list_head tt_endpoint;
-@@ -108,6 +107,7 @@ struct mu3h_sch_ep_info {
- 	u32 pkts;
- 	u32 cs_count;
- 	u32 burst_mode;
-+	u32 bw_budget_table[];
- };
- 
- #define MU3C_U3_PORT_MAX 4
--- 
-2.18.0
+I will follow your advice and fix that in next version.
+I will until you have finish your review in this series before send it.
 
+Regards,
+Benjamin
+
+>
+>> +	plane = (off >> PAGE_SHIFT) & PLANE_INDEX_MASK;
+>>   
+>> -		for (plane = 0; plane < vb->num_planes; ++plane) {
+>> -			if (vb->planes[plane].m.offset == off) {
+>> -				*_buffer = buffer;
+>> -				*_plane = plane;
+>> -				return 0;
+>> -			}
+>> -		}
+>> +	vb = q->bufs[buffer];
+>> +	if (vb->planes[plane].m.offset == off) {
+>> +		*_buffer = buffer;
+>> +		*_plane = plane;
+>> +		return 0;
+>>   	}
+>>   
+>>   	return -EINVAL;
+> Regards,
+>
+> 	Hans
+>
 
