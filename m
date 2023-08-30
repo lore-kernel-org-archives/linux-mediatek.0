@@ -4,74 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67DEEC83F15
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Aug 2023 11:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D7D6C83F01
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Aug 2023 11:16:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/AQEHLa/Aly5DLb32igO9KBiEnGtH1dGOL5qR0wyj4E=; b=FIUDyShvV9hciDJQCHmvVlczaS
-	joRYCW9oro5zSVmuxECftqHo+2VbJvtc9DEb7lkD+j3imFjQHrLB0gj8vanDfNUNj8rWalDh+KjES
-	NUFUioV2kQjd2Auxiha/OSUsgjD+tojKX+J+bLDBegfnKfCYiI/r1S1YX5lwidG40u3gKrYZQY7tz
-	6EdGf8PNuIpxsiFt2hyxl/V9saaa5yTuOn7oTQaTLJeuy6jQCGNzaSWrwU8AWOLqfMzN9y2oSFcgr
-	5Fm0pUJfdSxx74coMutBQnIX8KPz57WdVMj8o00CMhVJmPBMz/5jujps64TZspaa3QYiP5Jb7Bxsv
-	Cne42vPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n+UbBF/3JQZviCPlK4rdr2SHoBvRwTsrx1RlcHa0xCM=; b=0ysUV/2KPNTNoKS3F7g+eLgMay
+	Pgcdlcj4RH5aoqHbOGzNxPOZwZD+yJ9FNtn+BpxGbGQoiArQ0dMJunT1X4cQcoX4wIf+sR0Z2fD24
+	97DNCp94gh0LVTzmr4KAPiGT8oyqli3rX+mjKfd/lfg+7K5dRawdXxa5dzeZ8yQ9Rj+9ooiwZqJyL
+	CBPeQbRJBnY3q0/ryzEoQJVLQ4GECJdMYmMxrH1hXtjvyCXkobN4kLLG5UEhJtlw25QjtfviVgD4N
+	znTb0h5V41lbtOPU132qxYVkmBSnw1lOAfhYHRKUiplNycVFsaFWtWECM6D3SLt5nldYZspzBaL0y
+	1St/Vm8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbJ6v-00DMo6-1B;
-	Wed, 30 Aug 2023 11:11:45 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qbJBO-00DN3z-1h;
+	Wed, 30 Aug 2023 11:16:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbJ6s-00DMmS-0N;
-	Wed, 30 Aug 2023 11:11:43 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 91C7362810;
-	Wed, 30 Aug 2023 11:11:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 231EFC433C8;
-	Wed, 30 Aug 2023 11:11:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1693393901;
-	bh=nR6xHB0OPWpcCVXuSRAMzthW2HNyxf0866+qn6RsY28=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=T00wI/D3mUZ5Hy+fNHHsyZ1OoaFWiEE3c2uEdk25JgoHeL2s6E3AmQC89hL0tqZlw
-	 DhU58ttbRkdisHUNDl2l92hvnuNDaR86ghAzu9PfG8FMxNnhQFgif/rwAvOZa5dr6H
-	 6p6m3dGGOrTsiSuh29o0ca8Bdt1y0pOjHW1NP3/mh8EeRnmjqY4C7cL3jKCuIZrxl6
-	 OB5xsRFJPR6SjAyrAD+1xC6Yai3sUt9vJl+VWBMZP7y0O+9pOzJr7ozF3rus/Z3cme
-	 1gpMkhJBt95o+V3zwkD6ppYwwQWI4oxyLHGn1pqv0qRBY76YDrHKSALtGpnFLNd4d9
-	 8ttlSW+BCtKsA==
+	id 1qbJBL-00DN3N-0F;
+	Wed, 30 Aug 2023 11:16:20 +0000
+X-UUID: a34a035c472611ee912e1518a6540028-20230830
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=n+UbBF/3JQZviCPlK4rdr2SHoBvRwTsrx1RlcHa0xCM=;
+	b=a1gkRO1Mfv7CrW9jZunZ2GHTC7NMUgNKY1ru6uXI7hRLfFp8DJ4cIb+mx8iX1KK5UTDtHILJ0464iqW+JrxBTE6fNfjnA3qVqqfJdH8hurl5kQwr0Tf4YId4La+QuoLxkI8EAEzyDQ3sizPLRAmwFWxHK/tBoqmRocv4yyeiIes=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:56eeb770-ea1a-4716-bc65-74c0dda48760,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:f46c1eef-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: a34a035c472611ee912e1518a6540028-20230830
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 150980690; Wed, 30 Aug 2023 04:16:16 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 30 Aug 2023 19:15:42 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 30 Aug 2023 19:15:42 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Alexandre Mergnat <amergnat@baylibre.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Fabien Parent
+	<fparent@baylibre.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH v2 3/4] arm64: dts: mediatek: mt6360: add PMIC MT6360 related nodes
+Date: Wed, 30 Aug 2023 19:15:31 +0800
+Message-ID: <20230830111532.9048-3-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230830111532.9048-1-macpaul.lin@mediatek.com>
+References: <20230825114623.16884-1-macpaul.lin@mediatek.com>
+ <20230830111532.9048-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-Date: Wed, 30 Aug 2023 13:11:35 +0200
-From: Michael Walle <mwalle@kernel.org>
-To: =?UTF-8?Q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Cc: angelogioacchino.delregno@collabora.com, airlied@gmail.com,
- amergnat@baylibre.com, chunkuang.hu@kernel.org, ck.hu@mediatek.com,
- daniel@ffwll.ch, dri-devel@lists.freedesktop.org, ehristev@collabora.com,
- kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, p.zabel@pengutronix.de, wenst@chromium.org
-Subject: Re: [PATCH v7 09/11] drm/mediatek: dp: Add support for embedded
- DisplayPort aux-bus
-In-Reply-To: <cce6f9c2-e0b6-47e4-ae1c-9a3d8a4e4b02@notapiano>
-References: <20230725073234.55892-10-angelogioacchino.delregno@collabora.com>
- <20230825120109.3132209-1-mwalle@kernel.org>
- <5b438dba-9b85-4448-bc89-08a11ddb822a@notapiano>
- <fc6c054941420ac2d016496ccbeecad4@kernel.org>
- <00f65d49-497c-4ade-a2f3-7a5b7ad803b6@notapiano>
- <18bfffdd7ce3bd7693c8362b28651b49@kernel.org>
- <cce6f9c2-e0b6-47e4-ae1c-9a3d8a4e4b02@notapiano>
-Message-ID: <7a3257dddac78c46408341253a3286f4@kernel.org>
-X-Sender: mwalle@kernel.org
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230830_041142_197923_00668D68 
-X-CRM114-Status: GOOD (  19.62  )
+X-CRM114-CacheID: sfid-20230830_041619_120974_D306522B 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,48 +92,118 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->> While digging through the code I realized that all the outputs and 
->> pipelines
->> are harcoded. Doh. For all the mediatek SoCs. Looks like major 
->> restriction
->> to
->> me. E.g. there is also DSI and HDMI output on the mt8195. I looked at 
->> the
->> downstream linux and there, the output is not part of the pipeline. 
->> Are you
->> aware of any work in that direction?
-> 
-> I'm not sure I get what output and pipelines are hardcoded that you're 
-> referring
-> to (besides the one in the mtk-dsi/dpi driver that you already sent the 
-> patch
-> fixing).
+MT6360 is the secondary PMIC for MT8195.
+It supports USB Type-C and PD functions.
+Add MT6360 related common nodes which is used for MT8195 platform, includes
+ - charger
+ - ADC
+ - LED
+ - regulators
 
-Have a look at [1]. That main path ends with the DP_INTF0 which is the
-eDP output. But from what I understand that path can also use the DSI
-output. But that is a pattern for all the paths in that file. Looks like
-all supported boards in the kernel will have the output type for a given
-SoC/path (or maybe the mt8195 is the first one which supports different
-output interfaces).
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt6360.dtsi | 85 ++++++++++++++++++++++++
+ 1 file changed, 85 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6360.dtsi
 
-If you have a look at the mediatek kernel instead [2], there the last
-part of the path is not fixed, but there is also a .conn_routes property
-by which you seem to be able to choose the actual output interface.
+Change for v2:
+ - Remove the following properties according to Chen-Yu Tsai's suggestion
+  - regulator-name
+  - regulator-min-microvolt
+  - regulator-max-microvolt
 
-I was just curious if you know of any development for that (or similar)
-in the kernel.
+diff --git a/arch/arm64/boot/dts/mediatek/mt6360.dtsi b/arch/arm64/boot/dts/mediatek/mt6360.dtsi
+new file mode 100644
+index 000000000000..a89fd43d0f1f
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt6360.dtsi
+@@ -0,0 +1,85 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright (C) 2023 MediaTek Inc.
++ */
++
++#include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
++
++&mt6360 {
++	interrupt-controller;
++	interrupt-parent = <&pio>;
++	interrupt-names = "IRQB";
++
++	charger {
++		compatible = "mediatek,mt6360-chg";
++		richtek,vinovp-microvolt = <14500000>;
++
++		otg_vbus_regulator: usb-otg-vbus-regulator {
++			regulator-compatible = "usb-otg-vbus";
++		};
++	};
++
++	adc {
++		compatible = "mediatek,mt6360-adc";
++		#io-channel-cells = <1>;
++	};
++
++	led {
++		compatible = "mediatek,mt6360-led";
++	};
++
++	regulator {
++		compatible = "mediatek,mt6360-regulator";
++		LDO_VIN3-supply = <&mt6360_emi_vddq_buck2_reg>;
++
++		mt6360_emi_vdd2_buck1_reg: buck1-emi-vdd2 {
++			regulator-compatible = "BUCK1";
++			regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++						   MT6360_OPMODE_LP
++						   MT6360_OPMODE_ULP>;
++		};
++
++		mt6360_emi_vddq_buck2_reg: buck2-emi-vddq {
++			regulator-compatible = "BUCK2";
++			regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++						   MT6360_OPMODE_LP
++						   MT6360_OPMODE_ULP>;
++		};
++
++		mt6360_tp1_p3v0_ldo1_reg: ldo1-tp1-p3v0 {
++			regulator-compatible = "LDO1";
++			regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++						   MT6360_OPMODE_LP>;
++		};
++
++		mt6360_panel1_p1v8_ldo2_reg: ldo2-panel1-p1v8 {
++			regulator-compatible = "LDO2";
++			regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++						   MT6360_OPMODE_LP>;
++		};
++
++		mt6360_vmc_pmu_ldo3_reg: ldo3-vmc-pmu {
++			regulator-compatible = "LDO3";
++			regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++						   MT6360_OPMODE_LP>;
++		};
++
++		mt6360_vmch_pmu_ldo5_reg: ldo5-vmch-pmu {
++			regulator-compatible = "LDO5";
++			regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++						   MT6360_OPMODE_LP>;
++		};
++
++		mt6360_ldo6_reg: ldo6-mt6360 {
++			regulator-compatible = "LDO6";
++			regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++						   MT6360_OPMODE_LP>;
++		};
++
++		mt6360_emi_vmddr_en_ldo7_reg: ldo7-emi-vmddr-en {
++			regulator-compatible = "LDO7";
++			regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++						   MT6360_OPMODE_LP>;
++		};
++	};
++};
+-- 
+2.18.0
 
--michael
-
-> And I'm not familiar with the DSI and HDMI output support on MT8195, so 
-> I can't
-> help with that.
-> 
-> Thanks,
-> Nícolas
-
-[1] 
-https://elixir.bootlin.com/linux/v6.5/source/drivers/gpu/drm/mediatek/mtk_drm_drv.c#L210
-[2] 
-https://gitlab.com/mediatek/aiot/bsp/linux/-/blob/mtk-v5.15-dev/drivers/gpu/drm/mediatek/mtk_drm_drv.c?ref_type=heads#L425
 
