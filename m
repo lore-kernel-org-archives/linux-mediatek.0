@@ -4,83 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A7CBC83F2B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Aug 2023 07:12:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0E5CC83F2B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Aug 2023 07:13:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ReysCIs7gq0oi5nUfD4Oni43aeEvSwKZl5a77+O+C1o=; b=DS/TrUpWf6r1ClObQc9Okuu3l1
-	N/81xTJk5EIhmeVazESlUSFZt7/aChmbW59QrPq9I0x3OkslF19CJT9FmmgrHoelakEyE42kbQIlx
-	ML7Pn5GvDPukdCrk5jbGzXKVDHm0rDJHrmQLAjCScxb/vMxEehxN1h8ExiC2BwMewQxFE2yWK25GW
-	CJ7Z9KFffWYfyeev9yacKtaJG8HeMLBAHwvWpBNHkqyC0/5QiK4Q4tIXliqrwQM/c8oAaNeiPDT0N
-	d26n4q20xGxdRhmZD7a+HCzuphYso/jroyW+7z1nF8UCXl9Q9ok74k2H+krb0Z1LpdYQgJAbfbCdR
-	wBa0XQ0Q==;
+	bh=D0uJEXICar/m6wRe8rgnaCoFUj0NDUfeIIguEQQrQtA=; b=ijnV39rNEHXB+gqSfaXOJNSM00
+	VnziG9FxcuOT4g07r0z1egbePvUbOb6MH4err12/IKjw35rZ5UNvuz1zY7bWGz6goSOU210LKPhGT
+	rNLsffjuipdWyPCjsi3gXu428VvlobON90Dw+1Csi76mXKS+lboJcfzStXFmAMkk11iqYVFsHLEBv
+	dAG0GV2l3aq6+rLwC7Q2ZTMIeHKWDpT614qVFQ2BjaN7BYh1uXc5C5gSg9ehjGd1f3llyEbhyRDM3
+	si8BwmNPtadR5STw+I4RVUj+xo4INbliKNs6sZ9YZcolBI5OPsO2YJy3SZOX3hpzaUsJmjSHWt8zm
+	FrLXTiCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbbr5-00Engl-0a;
-	Thu, 31 Aug 2023 07:12:39 +0000
-Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
+	id 1qbbs4-00Enqz-24;
+	Thu, 31 Aug 2023 07:13:40 +0000
+Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbbr1-00Enfm-3B
+	id 1qbbs0-00EnoN-18
 	for linux-mediatek@lists.infradead.org;
-	Thu, 31 Aug 2023 07:12:37 +0000
-Received: by mail-vs1-xe34.google.com with SMTP id ada2fe7eead31-44d3a5cd2f9so278495137.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 31 Aug 2023 00:12:34 -0700 (PDT)
+	Thu, 31 Aug 2023 07:13:38 +0000
+Received: by mail-io1-xd34.google.com with SMTP id ca18e2360f4ac-7928dc54896so19919739f.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 31 Aug 2023 00:13:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1693465953; x=1694070753; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1693466013; x=1694070813; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ReysCIs7gq0oi5nUfD4Oni43aeEvSwKZl5a77+O+C1o=;
-        b=TM/TEnG1bKjZMzzVO0I/z8ILjgW6/qBdwOAG6GQo6LOEgl0oOiDryedM+9RuC0Wo8U
-         Wm3uYYW8TMLXenQn/ZWK8Ma5AJktLjYIpwq6wwUKf5a2Hmm5ld9CaR4dHLTNluuQNZFM
-         Rq/6fDKPCoJqemg8nYx6Hoc2xUXPrMjZxzTTE=
+        bh=D0uJEXICar/m6wRe8rgnaCoFUj0NDUfeIIguEQQrQtA=;
+        b=lsT6uo9m8zFV3mVkwHsmX/7RVJ0VA9ptiZA6fZBr96pUjqBHnw9C3L73HbRYtzh/fG
+         l0nIca/+rEEKqadczorJCN0QswIB1fZt6Qbnhycwf0cJPsCasflLvkCd3/jXhm0Q7Pq0
+         c/Ixa1gNY31jRvT6z4GHCILoMapiqlDINZK+A=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693465953; x=1694070753;
+        d=1e100.net; s=20221208; t=1693466013; x=1694070813;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ReysCIs7gq0oi5nUfD4Oni43aeEvSwKZl5a77+O+C1o=;
-        b=UuH6J/5M4vNyCD3/aCARoerTGMUDglr4+BcztI/JvKenDc6TeElVO/j1O1vuy8/8Pp
-         /+n7gfPq3nnUq1XWt1hp7S2/aJCOkle1lKrCB83eS4TtpDK0Zp27GbiR9iK0ZbgIsyd2
-         gxmiDR0qym6E+DMWBS9sd8I8UCJ9kdK2n0UoX9ZPnsCMBDW2qT7RAg4kSHCRpgVUjupH
-         av0xbywpsFkFOXd8RRWPn2vvE50KRUH+qF+rInfYQsCgRqTNi5Gz6nZeHTed2Oc6Z4XB
-         1yKYIMJrGSW14j4KXrJm9JH5m+4yTsrXLt05Zkp0BM6ZlYyZ22D2bQqEOeuvAOkdTsB6
-         szRw==
-X-Gm-Message-State: AOJu0YyTXdqYCtgtkXA8X6ASk6rPmSfU910IcrE2f3OLyf7tnkjLYqzt
-	7hCNUT5yfE1k4BxSIi0012F5chzOLkM2Gy6reQe4yWQ9Mmm5Gzhh
-X-Google-Smtp-Source: AGHT+IEneBwezWd78+nn9jl49tfxl8BZvYZXgWguzLYuo4e9Q+XIEon8QDAlyMWu54MCqddD8Jskma2vLyFTYNb89kU=
-X-Received: by 2002:a67:cd11:0:b0:44e:dd14:24a4 with SMTP id
- u17-20020a67cd11000000b0044edd1424a4mr4319898vsl.29.1693465953651; Thu, 31
- Aug 2023 00:12:33 -0700 (PDT)
+        bh=D0uJEXICar/m6wRe8rgnaCoFUj0NDUfeIIguEQQrQtA=;
+        b=kez6UZvVCc9GaomJ/ua2PbCCqHCx9s1Q2P6jkeqOsiXh7vcO/BWWJFz6Cw2KYkaHWC
+         f3OMlcNQqRIWPipkQAyRf5+p5ghYPCO0bI4OhY/8psbd7WT7kmwxi8grLGv1z+mcxU/J
+         EHKdME0wF3hgXls2iksRyahzS1OUiqHTnuzQNamgfGBLV4sIzTB4nBY6u9JKSM/Qgtim
+         +1HQzUnyKy0m6E6QtXjCjgVGjAmHyt6yTiZ/miihccUZIu2GE0/2S2AcX7AoaHh849GJ
+         ve+i7ykFfMEa36ZSeXHN2BhXwPWS0M2RdZMDBcCttjIrTgdAZ8oY/59X1iIvDP1suEfW
+         UotQ==
+X-Gm-Message-State: AOJu0YzJ9jtx6RZIWj4Ty11hjO0GMUAKQtL7bZj7NyQL3K+6ICVb02Ah
+	6dAg4Da5Nlb/ZfblHfJmyJLD4BqJM1d/cJSUBj4=
+X-Google-Smtp-Source: AGHT+IFwLXVmTL9vymO14l0gwIlIpkJkq615yjMqi5HyiGCBvMiNIBHzIFHNetZD8QoJmY85Lgj5HQ==
+X-Received: by 2002:a6b:d213:0:b0:795:183b:1e3 with SMTP id q19-20020a6bd213000000b00795183b01e3mr4296511iob.6.1693466013745;
+        Thu, 31 Aug 2023 00:13:33 -0700 (PDT)
+Received: from mail-io1-f41.google.com (mail-io1-f41.google.com. [209.85.166.41])
+        by smtp.gmail.com with ESMTPSA id x20-20020a056602211400b007836e9ff198sm277650iox.55.2023.08.31.00.13.32
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 31 Aug 2023 00:13:32 -0700 (PDT)
+Received: by mail-io1-f41.google.com with SMTP id ca18e2360f4ac-794cd987ea6so19806239f.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 31 Aug 2023 00:13:32 -0700 (PDT)
+X-Received: by 2002:a05:6602:2768:b0:783:4f8d:4484 with SMTP id
+ l8-20020a056602276800b007834f8d4484mr4957838ioe.2.1693466011946; Thu, 31 Aug
+ 2023 00:13:31 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230725073234.55892-10-angelogioacchino.delregno@collabora.com>
- <20230825120109.3132209-1-mwalle@kernel.org> <5b438dba-9b85-4448-bc89-08a11ddb822a@notapiano>
- <fc6c054941420ac2d016496ccbeecad4@kernel.org> <00f65d49-497c-4ade-a2f3-7a5b7ad803b6@notapiano>
- <18bfffdd7ce3bd7693c8362b28651b49@kernel.org> <cce6f9c2-e0b6-47e4-ae1c-9a3d8a4e4b02@notapiano>
- <7a3257dddac78c46408341253a3286f4@kernel.org>
-In-Reply-To: <7a3257dddac78c46408341253a3286f4@kernel.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 31 Aug 2023 15:12:22 +0800
-Message-ID: <CAGXv+5E4nWSuZdHmRhgYDUG4WhYs5o+-ZQBh3pnd2T_fdf9Edg@mail.gmail.com>
-Subject: Re: [PATCH v7 09/11] drm/mediatek: dp: Add support for embedded
- DisplayPort aux-bus
-To: Michael Walle <mwalle@kernel.org>
-Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	angelogioacchino.delregno@collabora.com, airlied@gmail.com, 
-	amergnat@baylibre.com, chunkuang.hu@kernel.org, ck.hu@mediatek.com, 
-	daniel@ffwll.ch, dri-devel@lists.freedesktop.org, ehristev@collabora.com, 
-	kernel@collabora.com, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	matthias.bgg@gmail.com, p.zabel@pengutronix.de
+References: <20230822132646.9811-1-jason-jh.lin@mediatek.com>
+In-Reply-To: <20230822132646.9811-1-jason-jh.lin@mediatek.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Thu, 31 Aug 2023 16:12:55 +0900
+X-Gmail-Original-Message-ID: <CAC=S1njUVqt969Wv+dMc5wD3Uyu-2Cm4qCUwkp7kfeG_uBbpVw@mail.gmail.com>
+Message-ID: <CAC=S1njUVqt969Wv+dMc5wD3Uyu-2Cm4qCUwkp7kfeG_uBbpVw@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: Add spinlock for setting vblank event in atomic_begin
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Alexandre Mergnat <amergnat@baylibre.com>, Eugen Hristev <eugen.hristev@collabora.com>, 
+	Jason-ch Chen <jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, 
+	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, 
+	Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230831_001236_031546_B3ED7B4F 
-X-CRM114-Status: GOOD (  30.47  )
+X-CRM114-CacheID: sfid-20230831_001336_389289_DB3CF8C1 
+X-CRM114-Status: UNSURE (   7.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,61 +103,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 30, 2023 at 7:11=E2=80=AFPM Michael Walle <mwalle@kernel.org> w=
-rote:
+On Tue, Aug 22, 2023 at 10:27=E2=80=AFPM Jason-JH.Lin <jason-jh.lin@mediate=
+k.com> wrote:
 >
-> >> While digging through the code I realized that all the outputs and
-> >> pipelines
-> >> are harcoded. Doh. For all the mediatek SoCs. Looks like major
-> >> restriction
-> >> to
-> >> me. E.g. there is also DSI and HDMI output on the mt8195. I looked at
-> >> the
-> >> downstream linux and there, the output is not part of the pipeline.
-> >> Are you
-> >> aware of any work in that direction?
-> >
-> > I'm not sure I get what output and pipelines are hardcoded that you're
-> > referring
-> > to (besides the one in the mtk-dsi/dpi driver that you already sent the
-> > patch
-> > fixing).
+> Add spinlock protection to avoid race condition on vblank event
+> between mtk_drm_crtc_atomic_begin() and mtk_drm_finish_page_flip().
 >
-> Have a look at [1]. That main path ends with the DP_INTF0 which is the
-> eDP output. But from what I understand that path can also use the DSI
-> output. But that is a pattern for all the paths in that file. Looks like
-> all supported boards in the kernel will have the output type for a given
-> SoC/path (or maybe the mt8195 is the first one which supports different
-> output interfaces).
->
-> If you have a look at the mediatek kernel instead [2], there the last
-> part of the path is not fixed, but there is also a .conn_routes property
-> by which you seem to be able to choose the actual output interface.
->
-> I was just curious if you know of any development for that (or similar)
-> in the kernel.
+> Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT817=
+3.")
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 
-This is probably because support for this SoC began with Chromebooks,
-which have fixed and defined uses for the pipelines. I suspect that
-what you are working on is much more flexible.
-
-The driver should be made to allow dynamic selection of outputs, as
-is commonly seen with other drivers, but I don't know if that's on
-anyone's TODO list.
-
-ChenYu
-
-> > And I'm not familiar with the DSI and HDMI output support on MT8195, so
-> > I can't
-> > help with that.
-> >
-> > Thanks,
-> > N=C3=ADcolas
->
-> [1]
-> https://elixir.bootlin.com/linux/v6.5/source/drivers/gpu/drm/mediatek/mtk=
-_drm_drv.c#L210
-> [2]
-> https://gitlab.com/mediatek/aiot/bsp/linux/-/blob/mtk-v5.15-dev/drivers/g=
-pu/drm/mediatek/mtk_drm_drv.c?ref_type=3Dheads#L425
+Reviewed-by: Fei Shao <fshao@chromium.org>
 
