@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ED84CA0FE6
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 08:10:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A92F6CA0FE1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 08:10:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CxV19o0KC50J6ousdCuLaiAFSegaAoRHAMQOW5YpiiM=; b=sadcp7IHHqHIrF6ROeKIjYTKai
-	M2VjjWKYz0QJJBNDlVo+YPeCBJXrRWKdZJsInnGjpDVoRUqZ9ZHfeOJQRn1Z+g8XkeO9tJKSkDgIQ
-	UeIRle6Lztv0gSk3Gi6HpLujyW1J5kgfaKgt+RzR0cduNHpQ7OroOeTBefzDSANAQXM0a1e9QFzzI
-	3DXx2PFSajT1DECHRyXQHrwWhTWymGjkePM7sB+erZiy6Sn+sS3YvTSbqsqtEbGHjmH+EtpqGgpMf
-	USfVStCbjf3Zm1Wdc8cVJSoLVrcHdQBdAin8KgRrYNH1QwiLADO161CP494K2kvBf7woNZxE7dLJ6
-	7q/f6rJQ==;
+	bh=0v1sHSdRL6Qx9RsSEfvIFRQuGdYV7Ul8S2vCf20EzFw=; b=hRZuA1RnnHBW832JGkbAjvzwHk
+	SOvxMgJJluz1TN7z2cDvpspdGT7DMiuX7tTsE4QUiuD6slD8DflM+b3uWRTysGRP3Yur+emJgXkoM
+	XOiUaQq/Y1EI0VfIWdcqQmfYaaJ/TRWgSjyhoz47yTTIfRHp89JiJER65HAhLNNA88DcPih/Ly8pM
+	hl9rcRaiLlaYzTPmG3QNwXAiUZyunmqJT3ubzLXC9JIowTvPGaQoe+vVhuGjIcsofYCu5OrfLe22Z
+	SV4i9CDMhF4TtSzJNmaBMjEEucS0ZRUtDaGytvELjChAZT4qwD8E4+xMCc5EUsU/4D1WI796PhQDA
+	tOSnW4Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbzEE-00GeYG-1p;
-	Fri, 01 Sep 2023 08:10:06 +0000
+	id 1qbzEF-00GeZ3-1e;
+	Fri, 01 Sep 2023 08:10:07 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbzE8-00GeTk-0d;
+	id 1qbzE8-00GeTE-1Z;
 	Fri, 01 Sep 2023 08:10:02 +0000
-X-UUID: eee4dc82489e11ee86758d4a7c00f3a0-20230901
+X-UUID: ef5b8724489e11ee86758d4a7c00f3a0-20230901
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=CxV19o0KC50J6ousdCuLaiAFSegaAoRHAMQOW5YpiiM=;
-	b=XHr71t8ZjwxzT2fdOMY2vTfZNtfx6bq1oit5aXzYVdsWeVt3/w56RROC1+vZF7J8q7wbZK7QAk9s+konLu/m69BGsZkF9PTzyTlKkhXPO5h3NlBbU4eTSo3DbjnV+QgA0auZJtK+o7qOvOLyOy2u6hscDTNecjfBpJl2iUPjpvU=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=0v1sHSdRL6Qx9RsSEfvIFRQuGdYV7Ul8S2vCf20EzFw=;
+	b=shnGkAFfYpKU9pPDNDwSIAv89ojRSMSEqUpBsgvuLx4eRkmgCv4AFS71yitTgEX0APLbuboiUlAXjtJHwA0AuN3t2StSd9ErhbKgira6uBS7jqahJdlBBfZRyw4NwiCizQ+FH4e9oWLj/ZNq8YRBMNEx3P9Wup9DcN3LBtXp4iU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:a5db1c61-6a47-48c1-8ab1-fcc47314a30a,IP:0,U
+X-CID-O-INFO: VERSION:1.1.31,REQID:b0b70e5e-9e4a-44e5-bd3d-1ddb0be8c161,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:276433ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
+X-CID-META: VersionHash:0ad78a4,CLOUDID:30f90020-33fd-4aaa-bb43-d3fd68d9d5ae,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: eee4dc82489e11ee86758d4a7c00f3a0-20230901
+X-UUID: ef5b8724489e11ee86758d4a7c00f3a0-20230901
 Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 649740773; Fri, 01 Sep 2023 01:09:54 -0700
+	with ESMTP id 1339113257; Fri, 01 Sep 2023 01:09:55 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -64,9 +64,9 @@ CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v17 01/14] dt-bindings: remoteproc: mediatek: Improve the rpmsg subnode definition
-Date: Fri, 1 Sep 2023 16:09:22 +0800
-Message-ID: <20230901080935.14571-2-tinghan.shen@mediatek.com>
+Subject: [PATCH v17 02/14] arm64: dts: mediatek: Update the node name of SCP rpmsg subnode
+Date: Fri, 1 Sep 2023 16:09:23 +0800
+Message-ID: <20230901080935.14571-3-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230901080935.14571-1-tinghan.shen@mediatek.com>
 References: <20230901080935.14571-1-tinghan.shen@mediatek.com>
@@ -74,8 +74,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230901_011000_236440_0BFB7B43 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20230901_011000_524913_48CE91C8 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,72 +90,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Improve the definition of the rpmsg subnode by assigning a distinct
-node name and adding the definition source of node properties.
+Align the node name with the definition in SCP bindings.
 
 Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
- .../bindings/remoteproc/mtk,scp.yaml          | 31 +++++++++----------
- 1 file changed, 15 insertions(+), 16 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi   | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-index 895415772d1d..271081df0e46 100644
---- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-@@ -58,6 +58,18 @@ properties:
-   memory-region:
-     maxItems: 1
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index 6ce16a265e05..34076ba28fd0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -831,7 +831,7 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&scp_pins>;
  
-+  cros-ec-rpmsg:
-+    $ref: /schemas/mfd/google,cros-ec.yaml
-+    description:
-+      This subnode represents the rpmsg device. The properties
-+      of this node are defined by the individual bindings for
-+      the rpmsg devices.
-+
-+    required:
-+      - mediatek,rpmsg-name
-+
-+    unevaluatedProperties: false
-+
- required:
-   - compatible
-   - reg
-@@ -89,21 +101,7 @@ allOf:
-         reg-names:
-           maxItems: 2
+-	cros_ec {
++	cros-ec-rpmsg {
+ 		compatible = "google,cros-ec-rpmsg";
+ 		mediatek,rpmsg-name = "cros-ec-rpmsg";
+ 	};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+index 0e8b34117090..1bbc994bc109 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+@@ -1284,7 +1284,7 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&scp_pins>;
  
--additionalProperties:
--  type: object
--  description:
--    Subnodes of the SCP represent rpmsg devices. The names of the devices
--    are not important. The properties of these nodes are defined by the
--    individual bindings for the rpmsg devices.
--  properties:
--    mediatek,rpmsg-name:
--      $ref: /schemas/types.yaml#/definitions/string-array
--      description:
--        Contains the name for the rpmsg device. Used to match
--        the subnode to rpmsg device announced by SCP.
--
--  required:
--    - mediatek,rpmsg-name
-+additionalProperties: false
- 
- examples:
-   - |
-@@ -118,7 +116,8 @@ examples:
-         clocks = <&infracfg CLK_INFRA_SCPSYS>;
-         clock-names = "main";
- 
--        cros_ec {
-+        cros-ec-rpmsg {
-+            compatible = "google,cros-ec-rpmsg";
-             mediatek,rpmsg-name = "cros-ec-rpmsg";
-         };
-     };
+-	cros-ec {
++	cros-ec-rpmsg {
+ 		compatible = "google,cros-ec-rpmsg";
+ 		mediatek,rpmsg-name = "cros-ec-rpmsg";
+ 	};
 -- 
 2.18.0
 
