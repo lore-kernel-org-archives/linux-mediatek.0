@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AFDDCA0FE1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 06:32:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFF3FCA0FE8
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 06:34:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0XUv38wLx30xOs5huiHsTT0ncas+2Q+QbFHiMrHPa0Y=; b=f3yBBVASUhBHOszPdLYTY3sJJF
-	0fY9HrENY9/Z/aKvJBnb5uEYnmDGM4VyUzSJ2SM7zFl1vZ6zw3HS2/k5YpWIKqv2eE/TED3E2ekis
-	IGYqr6VQsucn03vv0WYIFPeyJVVqdrW0ZlSvo7SgpGDQLsUHHsLzwkCXffcse0opTUsfysg1UqjR/
-	KpTm8qog8qVC8vDAPT2i88WPFbijbe1zrh436LH6kKj9/hAXMmPqn41Lp81Q9Sd4DDlIEEbY2H9Mi
-	Km99kuIfdQxFLluAcoO+6hwtYb4O8ws6z4qJAURQ7FVwjZGoUxTR9VldWXIMB6UbVyhq904KNoUYS
-	3ZkOi3/w==;
+	bh=BTJIT/vT5SNltoS1SA1aF31p8dK4g6opJq5J6yEwTSI=; b=dLCy3an4hnSUPvTlTNO3BUyTq3
+	z9BDGSqZlWjn6SrFsxPTwzzss4hxLTHIC4fFDHb5/20C49HgCpFmuHVfKCc3khDN8L1rk70dl2xJN
+	636iwlcNDfXen0d6fL9OKgmnTyjg3VWCd1SeOH/2Tc0ClltzidL278JQ4EACTDOpW+rF0xZMLm6G6
+	ays1o5BNp0k/j041i7mnT6M/VbK7BxcgE2I08UaXIR4WOLyEWR+7iGb8/E9ELnc9UAz02SWCi3x93
+	Zfl+gVFYWliGAbL2o36y7ThMKM/ELEiNK++R25gpjBO2mytPEFdkXw5IrbJm0mTf++JxSUU1dUH0z
+	dJDeKGKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbxhM-00GXtm-2G;
-	Fri, 01 Sep 2023 06:32:04 +0000
-Received: from mailgw02.mediatek.com ([66.171.122.166])
+	id 1qbxjV-00GXzo-25;
+	Fri, 01 Sep 2023 06:34:17 +0000
+Received: from mailgw01.mediatek.com ([66.171.122.165])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbxhJ-00GXsv-0q
+	id 1qbxjT-00GXyy-0h
 	for linux-mediatek@lists.infradead.org;
-	Fri, 01 Sep 2023 06:32:03 +0000
-X-UUID: 3c2a10f6489111ee86758d4a7c00f3a0-20230831
+	Fri, 01 Sep 2023 06:34:16 +0000
+X-UUID: 8b536ea2489111ee9b7791016c24628a-20230831
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=0XUv38wLx30xOs5huiHsTT0ncas+2Q+QbFHiMrHPa0Y=;
-	b=sYUh/eKVRG2nWbbordu14D9Agm63CKYMZF9JlZvDrCrsyu5kF3nT0W1jm6AOPLiMiyqOiI9e5CizPfKcuHtC2Y8AsXkcsn4aETxdf+vegm9MWiB7u7gHc08W2Q1nLIDCKI23Zwnjp5mZdAaOXfB8jaN1E81I9T/8uXusoHn+f6I=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BTJIT/vT5SNltoS1SA1aF31p8dK4g6opJq5J6yEwTSI=;
+	b=MZ8FD5DW5mUYOSY8ulic9MfLkO21ikSTVYe0qEia+vNAFXC5VWPynLMEVsv7OFx8ZhFKXI9RNAPvh5UZkCw8r7Wliai0xwZeHM3r+q1aDpvvnLQt+oKvqSjH3C1H1wlOySQ4TbIzxeORHD2JSvpR05KnZOAqvE+YU+IYlJBtFZE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:eedb0bf4-76bd-4e42-a401-e6d7dd938f03,IP:0,U
+X-CID-O-INFO: VERSION:1.1.31,REQID:c26fd690-e6ed-4cfd-9de5-677efbddf983,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:827f86c2-1e57-4345-9d31-31ad9818b39f,B
+X-CID-META: VersionHash:0ad78a4,CLOUDID:521b7013-4929-4845-9571-38c601e9c3c9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 3c2a10f6489111ee86758d4a7c00f3a0-20230831
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 8b536ea2489111ee9b7791016c24628a-20230831
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yi-chia.hsieh@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 955147264; Thu, 31 Aug 2023 23:31:51 -0700
+	with ESMTP id 238157958; Thu, 31 Aug 2023 23:34:04 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 1 Sep 2023 14:30:45 +0800
+ 15.2.1118.26; Fri, 1 Sep 2023 14:32:17 +0800
 Received: from mussdccf250.mussds.eus.mediatek.inc (10.73.250.250) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 1 Sep 2023 14:30:28 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 1 Sep 2023 14:32:10 +0800
 From: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>
 CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
@@ -62,17 +62,17 @@ CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
 	<chui-hao.chiu@mediatek.com>, Benjamin Lin <benjamin-jw.lin@mediatek.com>,
 	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-Subject: [PATCH v2 2/4] wifi: mt76: mt7996: Add mcu commands for getting sta tx statistic
-Date: Thu, 31 Aug 2023 23:30:03 -0700
-Message-ID: <ef87bde6ef590ce39515a683e33313d1434b3064.1693549298.git.yi-chia.hsieh@mediatek.com>
+Subject: [PATCH v2 4/4] wifi: mt76: mt7996: remove periodic MPDU TXS request
+Date: Thu, 31 Aug 2023 23:30:05 -0700
+Message-ID: <b2af33d7c00a78c9abc81427b05fc2000b1a2a0c.1693549298.git.yi-chia.hsieh@mediatek.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <7554d0a64ff480f1a185f381a59799158fe8bf23.1693549298.git.yi-chia.hsieh@mediatek.com>
 References: <7554d0a64ff480f1a185f381a59799158fe8bf23.1693549298.git.yi-chia.hsieh@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230831_233201_311179_67441F52 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20230831_233415_266853_280AAB77 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,250 +87,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Per peer Tx/Rx statistic can only be obtained by querying WM when WED is
-on. This patch switches to periodic event reporting in the case of WED
-being enabled.
+From: Benjamin Lin <benjamin-jw.lin@mediatek.com>
 
+Remove periodic MPDU TXS request. Get TID and FrameType from SKB
+instead of TXWI, which is empty for Data Frame after MPDU TXS request
+is removed, hence prohibiting the establishment of TX BA session.
+
+Signed-off-by: Benjamin Lin <benjamin-jw.lin@mediatek.com>
 Signed-off-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
 ---
-v2: split series
+v2: split series and update author
 ---
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  | 15 ++++
- .../net/wireless/mediatek/mt76/mt7996/mac.c   |  5 ++
- .../net/wireless/mediatek/mt76/mt7996/main.c  | 15 ++++
- .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 68 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7996/mcu.h   | 26 +++++++
- .../wireless/mediatek/mt76/mt7996/mt7996.h    |  1 +
- 6 files changed, 130 insertions(+)
+ .../net/wireless/mediatek/mt76/mt7996/mac.c   | 38 ++++++++++---------
+ .../net/wireless/mediatek/mt76/mt7996/main.c  |  1 -
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    |  1 -
+ 3 files changed, 21 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index 4543e5bf0482..ef49ad0ffc35 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1011,6 +1011,8 @@ enum {
- 	MCU_UNI_EVENT_FW_LOG_2_HOST = 0x04,
- 	MCU_UNI_EVENT_IE_COUNTDOWN = 0x09,
- 	MCU_UNI_EVENT_RDD_REPORT = 0x11,
-+	MCU_UNI_EVENT_PER_STA_INFO = 0x6d,
-+	MCU_UNI_EVENT_ALL_STA_INFO = 0x6e,
- };
- 
- #define MCU_UNI_CMD_EVENT			BIT(1)
-@@ -1224,6 +1226,8 @@ enum {
- 	MCU_UNI_CMD_VOW = 0x37,
- 	MCU_UNI_CMD_RRO = 0x57,
- 	MCU_UNI_CMD_OFFCH_SCAN_CTRL = 0x58,
-+	MCU_UNI_CMD_PER_STA_INFO = 0x6d,
-+	MCU_UNI_CMD_ALL_STA_INFO = 0x6e,
- 	MCU_UNI_CMD_ASSERT_DUMP = 0x6f,
- };
- 
-@@ -1302,6 +1306,17 @@ enum {
- 	UNI_OFFLOAD_OFFLOAD_BMC_RPY_DETECT,
- };
- 
-+enum UNI_ALL_STA_INFO_TAG {
-+	UNI_ALL_STA_TX_RATE,
-+	UNI_ALL_STA_TX_STAT,
-+	UNI_ALL_STA_TXRX_ADM_STAT,
-+	UNI_ALL_STA_TXRX_AIR_TIME,
-+	UNI_ALL_STA_DATA_TX_RETRY_COUNT,
-+	UNI_ALL_STA_GI_MODE,
-+	UNI_ALL_STA_TXRX_MSDU_COUNT,
-+	UNI_ALL_STA_MAX_NUM
-+};
-+
- enum {
- 	MT_NIC_CAP_TX_RESOURCE,
- 	MT_NIC_CAP_TX_EFUSE_ADDR,
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index 0bdb5533847b..4e19d4f8c70b 100644
+index ef5d1192ef0e..383b55c8cca8 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -2202,6 +2202,11 @@ void mt7996_mac_work(struct work_struct *work)
- 		mphy->mac_work_count = 0;
+@@ -948,15 +948,6 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 	if (!wcid)
+ 		wcid = &dev->mt76.global_wcid;
  
- 		mt7996_mac_update_stats(phy);
+-	if (sta) {
+-		struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
+-
+-		if (time_after(jiffies, msta->jiffies + HZ / 4)) {
+-			info->flags |= IEEE80211_TX_CTL_REQ_TX_STATUS;
+-			msta->jiffies = jiffies;
+-		}
+-	}
+-
+ 	t = (struct mt76_txwi_cache *)(txwi + mdev->drv->txwi_size);
+ 	t->skb = tx_info->skb;
+ 
+@@ -1006,22 +997,35 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ }
+ 
+ static void
+-mt7996_tx_check_aggr(struct ieee80211_sta *sta, __le32 *txwi)
++mt7996_tx_check_aggr(struct ieee80211_sta *sta, struct sk_buff *skb)
+ {
+ 	struct mt7996_sta *msta;
++	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
++	bool is_8023 = info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
+ 	u16 fc, tid;
+-	u32 val;
+ 
+ 	if (!sta || !(sta->deflink.ht_cap.ht_supported || sta->deflink.he_cap.has_he))
+ 		return;
+ 
+-	tid = le32_get_bits(txwi[1], MT_TXD1_TID);
++	tid = skb->priority & IEEE80211_QOS_CTL_TID_MASK;
+ 	if (tid >= 6) /* skip VO queue */
+ 		return;
+ 
+-	val = le32_to_cpu(txwi[2]);
+-	fc = FIELD_GET(MT_TXD2_FRAME_TYPE, val) << 2 |
+-	     FIELD_GET(MT_TXD2_SUB_TYPE, val) << 4;
++	if (is_8023) {
++		fc = IEEE80211_FTYPE_DATA |
++		     (sta->wme ? IEEE80211_STYPE_QOS_DATA : IEEE80211_STYPE_DATA);
++	} else {
++		/* No need to get precise TID for Action/Management Frame,
++		 * since it will not meet the following Frame Control
++		 * condition anyway.
++		 */
 +
-+		if (mtk_wed_device_active(&phy->dev->mt76.mmio.wed)) {
-+			mt7996_mcu_get_all_sta_info(phy, UNI_ALL_STA_TXRX_ADM_STAT);
-+			mt7996_mcu_get_all_sta_info(phy, UNI_ALL_STA_TXRX_MSDU_COUNT);
-+		}
- 	}
++		struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
++
++		fc = le16_to_cpu(hdr->frame_control) &
++		     (IEEE80211_FCTL_FTYPE | IEEE80211_FCTL_STYPE);
++	}
++
+ 	if (unlikely(fc != (IEEE80211_FTYPE_DATA | IEEE80211_STYPE_QOS_DATA)))
+ 		return;
  
- 	mutex_unlock(&mphy->dev->mutex);
+@@ -1049,7 +1053,7 @@ mt7996_txwi_free(struct mt7996_dev *dev, struct mt76_txwi_cache *t,
+ 		wcid_idx = wcid->idx;
+ 
+ 		if (likely(t->skb->protocol != cpu_to_be16(ETH_P_PAE)))
+-			mt7996_tx_check_aggr(sta, txwi);
++			mt7996_tx_check_aggr(sta, t->skb);
+ 	} else {
+ 		wcid_idx = le32_get_bits(txwi[1], MT_TXD1_WLAN_IDX);
+ 	}
+@@ -1320,7 +1324,7 @@ static void mt7996_mac_add_txs(struct mt7996_dev *dev, void *data)
+ 	wcidx = le32_get_bits(txs_data[2], MT_TXS2_MLD_ID);
+ 	pid = le32_get_bits(txs_data[3], MT_TXS3_PID);
+ 
+-	if (pid < MT_PACKET_ID_WED)
++	if (pid < MT_PACKET_ID_NO_SKB)
+ 		return;
+ 
+ 	if (wcidx >= mt7996_wtbl_size(dev))
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 07c13fcc187a..37128f7f6671 100644
+index 37128f7f6671..202c6083e8f0 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -972,6 +972,7 @@ static void mt7996_sta_statistics(struct ieee80211_hw *hw,
- 				  struct ieee80211_sta *sta,
- 				  struct station_info *sinfo)
- {
-+	struct mt7996_phy *phy = mt7996_hw_phy(hw);
- 	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
- 	struct rate_info *txrate = &msta->wcid.rate;
+@@ -660,7 +660,6 @@ int mt7996_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	msta->wcid.idx = idx;
+ 	msta->wcid.phy_idx = band_idx;
+ 	msta->wcid.tx_info |= MT_WCID_TX_INFO_SET;
+-	msta->jiffies = jiffies;
  
-@@ -1003,6 +1004,20 @@ static void mt7996_sta_statistics(struct ieee80211_hw *hw,
+ 	ewma_avg_signal_init(&msta->avg_ack_signal);
  
- 	sinfo->avg_ack_signal = -(s8)ewma_avg_signal_read(&msta->avg_ack_signal);
- 	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_ACK_SIGNAL_AVG);
-+
-+	if (mtk_wed_device_active(&phy->dev->mt76.mmio.wed)) {
-+		sinfo->tx_bytes = msta->wcid.stats.tx_bytes;
-+		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_BYTES64);
-+
-+		sinfo->rx_bytes = msta->wcid.stats.rx_bytes;
-+		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_RX_BYTES64);
-+
-+		sinfo->tx_packets = msta->wcid.stats.tx_packets;
-+		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_PACKETS);
-+
-+		sinfo->rx_packets = msta->wcid.stats.rx_packets;
-+		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_RX_PACKETS);
-+	}
- }
- 
- static void mt7996_sta_rc_work(void *data, struct ieee80211_sta *sta)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 4a30db49ef33..923e6f006cee 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -447,6 +447,54 @@ mt7996_mcu_ie_countdown(struct mt7996_dev *dev, struct sk_buff *skb)
- 	}
- }
- 
-+static void
-+mt7996_mcu_rx_all_sta_info_event(struct mt7996_dev *dev, struct sk_buff *skb)
-+{
-+	struct mt7996_mcu_all_sta_info_event *res;
-+	u16 i;
-+
-+	skb_pull(skb, sizeof(struct mt7996_mcu_rxd));
-+
-+	res = (struct mt7996_mcu_all_sta_info_event *)skb->data;
-+
-+	for (i = 0; i < le16_to_cpu(res->sta_num); i++) {
-+		u8 ac;
-+		u16 wlan_idx;
-+		struct mt76_wcid *wcid;
-+
-+		switch (le16_to_cpu(res->tag)) {
-+		case UNI_ALL_STA_TXRX_ADM_STAT:
-+			wlan_idx = le16_to_cpu(res->adm_stat[i].wlan_idx);
-+			wcid = rcu_dereference(dev->mt76.wcid[wlan_idx]);
-+
-+			if (!wcid)
-+				break;
-+
-+			for (ac = 0; ac < IEEE80211_NUM_ACS; ac++) {
-+				wcid->stats.tx_bytes +=
-+					le32_to_cpu(res->adm_stat[i].tx_bytes[ac]);
-+				wcid->stats.rx_bytes +=
-+					le32_to_cpu(res->adm_stat[i].rx_bytes[ac]);
-+			}
-+			break;
-+		case UNI_ALL_STA_TXRX_MSDU_COUNT:
-+			wlan_idx = le16_to_cpu(res->msdu_cnt[i].wlan_idx);
-+			wcid = rcu_dereference(dev->mt76.wcid[wlan_idx]);
-+
-+			if (!wcid)
-+				break;
-+
-+			wcid->stats.tx_packets +=
-+				le32_to_cpu(res->msdu_cnt[i].tx_msdu_cnt);
-+			wcid->stats.rx_packets +=
-+				le32_to_cpu(res->msdu_cnt[i].rx_msdu_cnt);
-+			break;
-+		default:
-+			break;
-+		}
-+	}
-+}
-+
- static void
- mt7996_mcu_rx_ext_event(struct mt7996_dev *dev, struct sk_buff *skb)
- {
-@@ -491,6 +539,9 @@ mt7996_mcu_uni_rx_unsolicited_event(struct mt7996_dev *dev, struct sk_buff *skb)
- 	case MCU_UNI_EVENT_RDD_REPORT:
- 		mt7996_mcu_rx_radar_detected(dev, skb);
- 		break;
-+	case MCU_UNI_EVENT_ALL_STA_INFO:
-+		mt7996_mcu_rx_all_sta_info_event(dev, skb);
-+		break;
- 	default:
- 		break;
- 	}
-@@ -3786,3 +3837,20 @@ int mt7996_mcu_set_rro(struct mt7996_dev *dev, u16 tag, u8 val)
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_WM_UNI_CMD(RRO), &req,
- 				 sizeof(req), true);
- }
-+
-+int mt7996_mcu_get_all_sta_info(struct mt7996_phy *phy, u16 tag)
-+{
-+	struct mt7996_dev *dev = phy->dev;
-+	struct {
-+		u8 _rsv[4];
-+
-+		__le16 tag;
-+		__le16 len;
-+	} __packed req = {
-+		.tag = cpu_to_le16(tag),
-+		.len = cpu_to_le16(sizeof(req) - 4),
-+	};
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_WM_UNI_CMD(ALL_STA_INFO),
-+				 &req, sizeof(req), false);
-+}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-index 078f82858621..5aece2046a9d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-@@ -153,6 +153,32 @@ struct mt7996_mcu_mib {
- 	__le64 data;
- } __packed;
- 
-+struct mt7996_mcu_all_sta_info_event {
-+	u8 rsv[4];
-+	__le16 tag;
-+	__le16 len;
-+	u8 more;
-+	u8 rsv2;
-+	__le16 sta_num;
-+	u8 rsv3[2];
-+
-+	union {
-+		struct {
-+			__le16 wlan_idx;
-+			u8 rsv[2];
-+			__le32 tx_bytes[IEEE80211_NUM_ACS];
-+			__le32 rx_bytes[IEEE80211_NUM_ACS];
-+		} adm_stat[];
-+
-+		struct {
-+			__le16 wlan_idx;
-+			u8 rsv[2];
-+			__le32 tx_msdu_cnt;
-+			__le32 rx_msdu_cnt;
-+		} msdu_cnt[];
-+	};
-+} __packed;
-+
- enum mt7996_chan_mib_offs {
- 	UNI_MIB_OBSS_AIRTIME = 26,
- 	UNI_MIB_NON_WIFI_TIME = 27,
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index 7354e5cf8e67..cb67a2d4c6d4 100644
+index cb67a2d4c6d4..e53cf6a3704c 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -402,6 +402,7 @@ int mt7996_mcu_fw_dbg_ctrl(struct mt7996_dev *dev, u32 module, u8 level);
- int mt7996_mcu_trigger_assert(struct mt7996_dev *dev);
- void mt7996_mcu_rx_event(struct mt7996_dev *dev, struct sk_buff *skb);
- void mt7996_mcu_exit(struct mt7996_dev *dev);
-+int mt7996_mcu_get_all_sta_info(struct mt7996_phy *phy, u16 tag);
+@@ -110,7 +110,6 @@ struct mt7996_sta {
+ 	struct ewma_avg_signal avg_ack_signal;
  
- static inline u8 mt7996_max_interface_num(struct mt7996_dev *dev)
- {
+ 	unsigned long changed;
+-	unsigned long jiffies;
+ 
+ 	struct mt76_connac_sta_key_conf bip;
+ 
 -- 
 2.39.0
 
