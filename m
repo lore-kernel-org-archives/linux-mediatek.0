@@ -4,55 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99D46CA0FE1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 07:27:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B4F0CA0FE6
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 08:10:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=kIjOu9XgiejjBGgxALVhj8CipJIkLUKJc8BINq5SLgk=; b=BU6S2j/sYd5De8
-	XrWx7OlOWqfMsJFcJY4pK0A8LjOZD/wW3ogmt1i3ynQWGaG7K/myIpFWmBzDWC/cg1QAYaXiY35zU
-	S9HC5SMS0lp3xzaKmWuoYAsJtnS22tCLsNkLEP1aqJNHqP4s4/CWuRqX7L6LA1SioIJbKkKtb5Rv2
-	rHybZ3n3Hc8+3Z//0mTqBFlDeGyc4mS0zwBCh1OwZR1Te18Jljwm9Dq4ZekL4DJvLe4339huh6k68
-	TtvWCp67IIqdVictzcf9QiAgVOj2m8PG1U7ZccXClrYiS8Jhrg1RDrOIv2yK8ajnlTU6Pj7F41bpm
-	HyZGzHyKflh1cMzsgcmg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3pZFqE2y9D9PRaM6rQ4fkTK3Ruxj+t8ui38IWeqFk8Y=; b=nuDj1z5TyPjO/Bcmq5Qw/i2U66
+	jnymuwSW9gU9r616swShi26a++R7m0i0YJstq4HTQuzevCdgzqkfpUq5naGlok4styIKumSnfYt/p
+	o2T9n5ZS1LTf8pXdIAf/RowXJTzXgE+xofqnnyolry2Ir+rrS9g/95QYjBFcSYY91/yeLdb7ayOOr
+	htUy1mtzb89LBAPkX7XOOWDYbXsxzwI3VdFpvG1/1k443/Jl3mTrdICy+FDaOY6BVo0s7Q2jRuvGm
+	urPGz4RtCROwp6oIxtla6sY6JHdOTJlEV042U4phCSYUBLfG/rWWMnrzQOvsF3PcT77NNeUJutmcY
+	RBV/Y7uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbyZJ-00GbTZ-1C;
-	Fri, 01 Sep 2023 07:27:49 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1qbzEA-00GeVm-26;
+	Fri, 01 Sep 2023 08:10:02 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbyZE-00GbSS-2u;
-	Fri, 01 Sep 2023 07:27:46 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout1.routing.net (Postfix) with ESMTP id B59283FF3B;
-	Fri,  1 Sep 2023 07:27:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1693553261;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=kIjOu9XgiejjBGgxALVhj8CipJIkLUKJc8BINq5SLgk=;
-	b=jdy1+n1CvunsgfhGiX0wrC4o89x841J8EAsmKNy1Y23y8Jyp/C1sObUPbCpYyQRPndw5Ee
-	zXrtEtfjDE61ibn7N5hEJBwhVGkViQJC23wmLzX4dvizlN26smsxuRzdifyhEXkkZA4toq
-	B/fwRXHI0RHI1/Fxa0BP0fNhQIptlYg=
-Received: from frank-G5.. (fttx-pool-80.245.79.3.bambit.de [80.245.79.3])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 4B95D3601E7;
-	Fri,  1 Sep 2023 07:27:37 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v1] arm64: dts: mt7986: add overlay for SATA power socket on BPI-R3
-Date: Fri,  1 Sep 2023 09:27:30 +0200
-Message-Id: <20230901072730.13571-1-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
+	id 1qbzE7-00GeTB-1K;
+	Fri, 01 Sep 2023 08:10:00 +0000
+X-UUID: eedaac6c489e11ee9b7791016c24628a-20230901
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3pZFqE2y9D9PRaM6rQ4fkTK3Ruxj+t8ui38IWeqFk8Y=;
+	b=rGetyoU3vp3adHwgJ+y50HOwCwQI4VGF7H1bk8LalWKeAJniKi3sWRd7mq4nUsx+8dHWgqvFYJCBMTqEcKtApN2MEJ5AuRbQqQB8n5rIzr5zUhfHJjU6FDBckXyBzE3MLg/zlhxCX7+trfjDeObnLymYe7u9FcKoSyux83kVidY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:24889b01-51e8-4555-a1bc-ab39a9ae363a,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:0ad78a4,CLOUDID:12f90020-33fd-4aaa-bb43-d3fd68d9d5ae,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: eedaac6c489e11ee9b7791016c24628a-20230901
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 327242362; Fri, 01 Sep 2023 01:09:54 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 1 Sep 2023 16:09:52 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 1 Sep 2023 16:09:52 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tinghan
+ Shen <tinghan.shen@mediatek.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v17 06/14] remoteproc: mediatek: Revise SCP rproc initialization flow for multi-core SCP
+Date: Fri, 1 Sep 2023 16:09:27 +0800
+Message-ID: <20230901080935.14571-7-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230901080935.14571-1-tinghan.shen@mediatek.com>
+References: <20230901080935.14571-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mail-ID: 17c63c84-d582-4f38-896e-fd3131e7c05c
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230901_002745_099400_E871F454 
-X-CRM114-Status: GOOD (  13.77  )
+X-CRM114-CacheID: sfid-20230901_010959_494560_7F6F5A85 
+X-CRM114-Status: GOOD (  18.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,82 +87,118 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+This is the 2nd preliminary step for probing multi-core SCP.
+Initialization of configuration and L1TCM registers is extracted
+to only performed once on multi-core SCP. The rest of remoteproc
+initialization procedure is similar for both single and multi-core
+SCP and is applied to each core.
 
-Bananapi R3 has a Power socket entended for using external SATA drives.
-This Socket is off by default but can be switched with gpio 8.
-
-Add an overlay to activate it.
-
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/Makefile         |  1 +
- .../mt7986a-bananapi-bpi-r3-sata.dtso         | 39 +++++++++++++++++++
- 2 files changed, 40 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sata.dtso
+ drivers/remoteproc/mtk_scp.c | 63 ++++++++++++++++++++++--------------
+ 1 file changed, 39 insertions(+), 24 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index c99c3372a4b5..822d3e36d3df 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -13,6 +13,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtbo
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtbo
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sata.dtbo
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sata.dtso b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sata.dtso
-new file mode 100644
-index 000000000000..6ab06813412a
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3-sata.dtso
-@@ -0,0 +1,39 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2021 MediaTek Inc.
-+ * Author: Frank Wunderlich <frank-w@public-files.de>
-+ */
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index f88e60e4bc21..7a2ba1e1e95a 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -854,21 +854,17 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
+ 	}
+ }
+ 
+-static int scp_probe(struct platform_device *pdev)
++static int scp_rproc_init(struct platform_device *pdev,
++			  struct mtk_scp_of_cluster *scp_cluster)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev->of_node;
+ 	struct mtk_scp *scp;
+-	struct mtk_scp_of_cluster *scp_cluster;
+ 	struct rproc *rproc;
+ 	struct resource *res;
+ 	const char *fw_name = "scp.img";
+ 	int ret, i;
+ 
+-	scp_cluster = devm_kzalloc(dev, sizeof(*scp_cluster), GFP_KERNEL);
+-	if (!scp_cluster)
+-		return -ENOMEM;
+-
+ 	ret = rproc_of_parse_firmware(dev, 0, &fw_name);
+ 	if (ret < 0 && ret != -EINVAL)
+ 		return ret;
+@@ -893,24 +889,6 @@ static int scp_probe(struct platform_device *pdev)
+ 	scp->sram_size = resource_size(res);
+ 	scp->sram_phys = res->start;
+ 
+-	/* l1tcm is an optional memory region */
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
+-	scp->cluster->l1tcm_base = devm_ioremap_resource(dev, res);
+-	if (IS_ERR(scp->cluster->l1tcm_base)) {
+-		ret = PTR_ERR(scp->cluster->l1tcm_base);
+-		if (ret != -EINVAL) {
+-			return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
+-		}
+-	} else {
+-		scp->cluster->l1tcm_size = resource_size(res);
+-		scp->cluster->l1tcm_phys = res->start;
+-	}
+-
+-	scp->cluster->reg_base = devm_platform_ioremap_resource_byname(pdev, "cfg");
+-	if (IS_ERR(scp->cluster->reg_base))
+-		return dev_err_probe(dev, PTR_ERR(scp->cluster->reg_base),
+-				     "Failed to parse and map cfg memory\n");
+-
+ 	ret = scp->data->scp_clk_get(scp);
+ 	if (ret)
+ 		return ret;
+@@ -962,6 +940,43 @@ static int scp_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+ 
++static int scp_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct mtk_scp_of_cluster *scp_cluster;
++	struct resource *res;
++	int ret;
 +
-+/dts-v1/;
-+/plugin/;
++	scp_cluster = devm_kzalloc(dev, sizeof(*scp_cluster), GFP_KERNEL);
++	if (!scp_cluster)
++		return -ENOMEM;
 +
-+#include <dt-bindings/gpio/gpio.h>
++	scp_cluster->reg_base = devm_platform_ioremap_resource_byname(pdev, "cfg");
++	if (IS_ERR(scp_cluster->reg_base))
++		return dev_err_probe(dev, PTR_ERR(scp_cluster->reg_base),
++				     "Failed to parse and map cfg memory\n");
 +
-+/ {
-+	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
++	/* l1tcm is an optional memory region */
++	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
++	scp_cluster->l1tcm_base = devm_ioremap_resource(dev, res);
++	if (IS_ERR(scp_cluster->l1tcm_base)) {
++		ret = PTR_ERR(scp_cluster->l1tcm_base);
++		if (ret != -EINVAL)
++			return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
 +
-+	fragment@0 {
-+		target-path = "/";
-+		__overlay__ {
-+			reg_sata12v: regulator-sata12v {
-+				compatible = "regulator-fixed";
-+				regulator-name = "sata12v";
-+				regulator-min-microvolt = <12000000>;
-+				regulator-max-microvolt = <12000000>;
-+				gpio = <&pio 8 GPIO_ACTIVE_HIGH>;
-+				enable-active-high;
-+				regulator-always-on;
-+			};
++		scp_cluster->l1tcm_base = NULL;
++	} else {
++		scp_cluster->l1tcm_size = resource_size(res);
++		scp_cluster->l1tcm_phys = res->start;
++	}
 +
-+			reg_sata5v: regulator-sata5v {
-+				compatible = "regulator-fixed";
-+				regulator-name = "sata5v";
-+				regulator-min-microvolt = <5000000>;
-+				regulator-max-microvolt = <5000000>;
-+				regulator-always-on;
-+				vin-supply = <&reg_sata12v>;
-+			};
-+		};
-+	};
-+};
++	ret = scp_rproc_init(pdev, scp_cluster);
++	if (ret)
++		return ret;
 +
++	return 0;
++}
++
+ static void scp_remove(struct platform_device *pdev)
+ {
+ 	struct mtk_scp *scp = platform_get_drvdata(pdev);
 -- 
-2.34.1
+2.18.0
 
 
