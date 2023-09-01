@@ -4,73 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5012FCA0FE1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 13:46:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2E69CA0FE4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 15:01:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LPWvTvdH/u5vP31V3tuCjMmiN633JTsDFLDUVT2Acdk=; b=ze/fKv5atntZZpOxsDxA1C7eo6
-	xMaOBNSNJYJhP2bc571Dd01zVnIBHoS04ksmMVelldNISCLdwXMp5q1zEpssE9k55KPi0hZeO0zny
-	llvxbzmJcd/BfMv+EgwR2uW3sFvk47YnjKd/3IZBzDbaWOTzp4o8iihitQLiKRuWGIvZ2g0x/khsU
-	7P6oYZeY0BO+blYEXhSMbJPSKqH6HbgquOPp5/VRiF3xZGfYHeuMFFW3nZj2gQdEpwSXgrnmZzb87
-	Rwc5NFvNy+iz3SiVSssKGdMIKzvixQRSNCa7T39sBYmiW2TJFITS5SD3mgYDurIPYFlxLR/L/2/nJ
-	44ojpJLQ==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Lnevc20nRmP7PquEdhakfrPorTg+eX5G0icySYl0ICg=; b=ZJR7HAN22LhvwaXIX3MljSzkjz
+	xbm/eNkItXpjgex5949dAd9/l9HyuH0nIuM87z7A2HKwnpCxZ0cIgZotv0PG/T1Gclrgs3osmKnFm
+	Cf8FL4sHGoDLdIxYoiwp54nmeGW4hHsKOwAZsvz43ZPPG6zyvz5eZHOLlifE1E5s+LfIy8Eyd0CST
+	6oigyufoHRz/SVxOstDVmRZqAigwVuPxtpu1QEKxdlXlDiuWtSJ2/wh+DP7vrzGTmoNlsHGsI9iT8
+	V/SRmvK2NkPwUnSoQ+J2J6kKy2R2XSFRX6dvR6bB67R1fOKO+oLPyNh5L2Bb/0Jh70E2h6FZem2z8
+	Fa2q8nWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qc4TI-00HaWi-36;
-	Fri, 01 Sep 2023 13:46:01 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qc5du-0004BL-2G;
+	Fri, 01 Sep 2023 15:01:02 +0000
+Received: from mail-vk1-xa2f.google.com ([2607:f8b0:4864:20::a2f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qc3Vi-00HUFc-2p;
-	Fri, 01 Sep 2023 12:44:28 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4d01:31d2:de6b:d217])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0DFD866072B1;
-	Fri,  1 Sep 2023 13:44:25 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1693572265;
-	bh=6bKJsNQuCp9wrCZ4U5UGjs1WsKO8DWGQ1kTptdno01s=;
-	h=From:To:Cc:Subject:Date:From;
-	b=DU2PUm+bUaPZGUyfKuN/jnhmT0k+he2YbtxgGxSXT+C1SpjyFACkj8iNc9CmmFUn2
-	 FcwZv6YRo/o3p+CZfd06gUP421quk0dljMZospn8eZACuk4pHAeC34tdI9uqOttc3p
-	 psuN+SA2D32QnCIlO9zNFBb9shj5kFBCrZlw9zen0zultKSL0zH7I0ayOeTQqEvY28
-	 p9zh/qXsghO3D+eLq4oyfcDkRTXoPUT042FNE3102CaT+3H6RKIIa3f4iLiLL4O/OB
-	 cV/lucEZc1NqJkf7JVPibPZI1cdjt+dwwrREAie5y/X10bA5DrnOTcSsovSMxE8yYE
-	 jSfDcb8CC9S7A==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	tfiga@chromium.org,
-	m.szyprowski@samsung.com,
-	ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v6 00/18] Add DELETE_BUF ioctl
-Date: Fri,  1 Sep 2023 14:43:56 +0200
-Message-Id: <20230901124414.48497-1-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.39.2
+	id 1qc5dr-00049e-2H
+	for linux-mediatek@lists.infradead.org;
+	Fri, 01 Sep 2023 15:01:01 +0000
+Received: by mail-vk1-xa2f.google.com with SMTP id 71dfb90a1353d-48ff372840aso704888e0c.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 01 Sep 2023 08:00:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1693580457; x=1694185257; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Lnevc20nRmP7PquEdhakfrPorTg+eX5G0icySYl0ICg=;
+        b=GuB1OK/qy36vKKhc4Z37+VqtJw/ZV/PL+24kEP88oqw+hZz2QR4qHKBZ9pnoxJUvLS
+         WQ9iLAdX09yxsdWmv1gFK5FB/6/xxypJrCZtL5SQ7SUNA0JT6JGx1PGAyAiTheRL/hNG
+         gwgu42gEgesyUu5MzRVDs2Q9dCntKk8rm2QkE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1693580457; x=1694185257;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Lnevc20nRmP7PquEdhakfrPorTg+eX5G0icySYl0ICg=;
+        b=ZGvzkQpwc+2X48zt12BB69rzCEpku6dFO8siLPeR1VHFQDo4kwGgmkaMPj4bYJq4Ss
+         zT6Z9TVqE8trUUvkKS23GSd6YDVwBjoAQ7CYKuxbaNSi5piOo7v3h9tBdQhHA/iijYhX
+         kHzaACattktem6V0koKmyptZP3ghMiQbkKIIQizQ4MvNACdc2WPePTSzXOSYxOnj5f24
+         WMioY/4Y/DhqC6knKsJcjV6jpY2aTO+m2XSzK7o9MP1GM6/e7hdl79C/EFIJXCrAKP83
+         tmQixYrVxSE7Kv6gvzzwEzSlV8wB9WCeWDnS7Xd1jDBVCU0v/weNwOYrutdV06we73LO
+         srpg==
+X-Gm-Message-State: AOJu0YxIHFnQ0YGGPDEfoqA06rWVGEuP1BXcvyYiT1r6wQkPaE3jWL2U
+	Ld1Y5/GjEGxGizCJpI2GSkoCngK3r6W98BwnFQg/ig==
+X-Google-Smtp-Source: AGHT+IG+W/T5TeKymvtATZ1GHNxllQKC01DOQi4Q4SMcnuEycQsU5HjjfQBucfegSU4lOxNjd79MQXGybqZbwL/BL1I=
+X-Received: by 2002:a1f:ed81:0:b0:48d:1fcd:9760 with SMTP id
+ l123-20020a1fed81000000b0048d1fcd9760mr2743978vkh.10.1693580456779; Fri, 01
+ Sep 2023 08:00:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20230725073234.55892-10-angelogioacchino.delregno@collabora.com>
+ <20230825120109.3132209-1-mwalle@kernel.org> <5b438dba-9b85-4448-bc89-08a11ddb822a@notapiano>
+ <fc6c054941420ac2d016496ccbeecad4@kernel.org> <00f65d49-497c-4ade-a2f3-7a5b7ad803b6@notapiano>
+ <18bfffdd7ce3bd7693c8362b28651b49@kernel.org> <cce6f9c2-e0b6-47e4-ae1c-9a3d8a4e4b02@notapiano>
+ <7a3257dddac78c46408341253a3286f4@kernel.org> <CAGXv+5E4nWSuZdHmRhgYDUG4WhYs5o+-ZQBh3pnd2T_fdf9Edg@mail.gmail.com>
+ <d6031e00cda9ea1e30bb75b2ca97300f@kernel.org>
+In-Reply-To: <d6031e00cda9ea1e30bb75b2ca97300f@kernel.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 1 Sep 2023 23:00:45 +0800
+Message-ID: <CAGXv+5H_L+Zg66+nTaVGQ=yqcazMtKqG54eURtcjgA=q0VK2Eg@mail.gmail.com>
+Subject: Re: [PATCH v7 09/11] drm/mediatek: dp: Add support for embedded
+ DisplayPort aux-bus
+To: Michael Walle <mwalle@kernel.org>
+Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	angelogioacchino.delregno@collabora.com, airlied@gmail.com, 
+	amergnat@baylibre.com, chunkuang.hu@kernel.org, ck.hu@mediatek.com, 
+	daniel@ffwll.ch, dri-devel@lists.freedesktop.org, ehristev@collabora.com, 
+	kernel@collabora.com, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	matthias.bgg@gmail.com, p.zabel@pengutronix.de
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230901_054427_164627_0441A5DF 
-X-CRM114-Status: GOOD (  17.05  )
+X-CRM114-CacheID: sfid-20230901_080059_742981_4A25E22C 
+X-CRM114-Status: GOOD (  19.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,126 +96,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Unlike when resolution change on keyframes, dynamic resolution change
-on inter frames doesn't allow to do a stream off/on sequence because
-it is need to keep all previous references alive to decode inter frames.
-This constraint have two main problems:
-- more memory consumption.
-- more buffers in use.
-To solve these issue this series introduce DELETE_BUFS ioctl and remove
-the 32 buffers limit per queue.
+On Fri, Sep 1, 2023 at 6:00=E2=80=AFPM Michael Walle <mwalle@kernel.org> wr=
+ote:
+>
+> Hi,
+>
+> >> I was just curious if you know of any development for that (or
+> >> similar)
+> >> in the kernel.
+> >
+> > This is probably because support for this SoC began with Chromebooks,
+> > which have fixed and defined uses for the pipelines. I suspect that
+> > what you are working on is much more flexible.
+>
+> Yes. that is correct.
+>
+> > The driver should be made to allow dynamic selection of outputs, as
+> > is commonly seen with other drivers, but I don't know if that's on
+> > anyone's TODO list.
+>
+> Do you have any pointers where to look at?
 
-VP9 conformance tests using fluster give a score of 210/305.
-The 24 resize inter tests (vp90-2-21-resize_inter_* files) are ok
-but require to use postprocessor.
+There's a series [1] called "Add connector dynamic selection capability".
+Not sure if it does what you want though. I haven't looked into it.
 
-Kernel branch is available here:
-https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/remove_vb2_queue_limit_v6
+ChenYu
 
-GStreamer branch to use DELETE_BUF ioctl and testing dynamic resolution
-change is here:
-https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/commits/VP9_drc
-
-changes in version 6:
-- Get a patch per driver to use vb2_get_buffer() instead of directly access
-  to queue buffers array.
-- Add lock in vb2_core_delete_buf()
-- Use vb2_buffer instead of index
-- Fix various comments
-- Change buffer index name to BUFFER_INDEX_MASK
-- Stop spamming kernel log with unbalanced counters
-
-changes in version 5:
-- Rework offset cookie encoding pattern is n ow the first patch of the
-  serie.
-- Use static array instead of allocated one for postprocessor buffers.
-
-changes in version 4:
-- Stop using Xarray, instead let queues decide about their own maximum
-  number of buffer and allocate bufs array given that value.
-- Rework offset cookie encoding pattern.
-- Change DELETE_BUF to DELETE_BUFS because it now usable for
-  range of buffer to be symetrical of CREATE_BUFS.
-- Add fixes tags on couple of Verisilicon related patches.
-- Be smarter in Verisilicon postprocessor buffers management.
-- Rebase on top of v6.4
-
-changes in version 3:
-- Use Xarray API to store allocated video buffers.
-- No module parameter to limit the number of buffer per queue.
-- Use Xarray inside Verisilicon driver to store postprocessor buffers
-  and remove VB2_MAX_FRAME limit.
-- Allow Versilicon driver to change of resolution while streaming
-- Various fixes the Verisilicon VP9 code to improve fluster score.
- 
-changes in version 2:
-- Use a dynamic array and not a list to keep trace of allocated buffers.
-  Not use IDR interface because it is marked as deprecated in kernel
-  documentation.
-- Add a module parameter to limit the number of buffer per queue.
-- Add DELETE_BUF ioctl and m2m helpers.
-
-Regards,
-Benjamin
- 
-Benjamin Gaignard (18):
-  media: videobuf2: Rework offset 'cookie' encoding pattern
-  media: videobuf2: Stop spamming kernel log with all queue counter
-  media: videobuf2: Use vb2_buffer instead of index
-  media: amphion: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access
-    to buffers array
-  media: mediatek: vdec: Use vb2_get_buffer() instead of directly access
-    to buffers array
-  media: sti: hva: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: visl: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: atomisp: Use vb2_get_buffer() instead of directly access to
-    buffers array
-  media: videobuf2: Access vb2_queue bufs array through helper functions
-  media: videobuf2: Be more flexible on the number of queue stored
-    buffers
-  media: verisilicon: Refactor postprocessor to store more buffers
-  media: verisilicon: Store chroma and motion vectors offset
-  media: verisilicon: vp9: Use destination buffer height to compute
-    chroma offset
-  media: verisilicon: postproc: Fix down scale test
-  media: verisilicon: vp9: Allow to change resolution while streaming
-  media: v4l2: Add DELETE_BUFS ioctl
-  media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
-
- .../userspace-api/media/v4l/user-func.rst     |   1 +
- .../media/v4l/vidioc-delete-bufs.rst          |  73 ++++
- .../media/common/videobuf2/videobuf2-core.c   | 379 ++++++++++++------
- .../media/common/videobuf2/videobuf2-v4l2.c   |  99 ++++-
- drivers/media/dvb-core/dvb_vb2.c              |   6 +-
- drivers/media/platform/amphion/vpu_dbg.c      |  22 +-
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    |   6 +-
- .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |   2 +-
- drivers/media/platform/st/sti/hva/hva-v4l2.c  |   4 +
- drivers/media/platform/verisilicon/hantro.h   |   9 +-
- .../media/platform/verisilicon/hantro_drv.c   |   4 +-
- .../platform/verisilicon/hantro_g2_vp9_dec.c  |  10 +-
- .../media/platform/verisilicon/hantro_hw.h    |   4 +-
- .../platform/verisilicon/hantro_postproc.c    |  95 ++++-
- .../media/platform/verisilicon/hantro_v4l2.c  |  27 +-
- drivers/media/test-drivers/vim2m.c            |   1 +
- drivers/media/test-drivers/visl/visl-dec.c    |  28 +-
- drivers/media/v4l2-core/v4l2-dev.c            |   1 +
- drivers/media/v4l2-core/v4l2-ioctl.c          |  17 +
- drivers/media/v4l2-core/v4l2-mem2mem.c        |  20 +
- .../staging/media/atomisp/pci/atomisp_ioctl.c |   2 +-
- include/media/v4l2-ioctl.h                    |   4 +
- include/media/v4l2-mem2mem.h                  |  12 +
- include/media/videobuf2-core.h                |  29 +-
- include/media/videobuf2-v4l2.h                |  11 +
- include/uapi/linux/videodev2.h                |  16 +
- 26 files changed, 664 insertions(+), 218 deletions(-)
- create mode 100644 Documentation/userspace-api/media/v4l/vidioc-delete-bufs.rst
-
--- 
-2.39.2
-
+[1] https://lore.kernel.org/all/20230809181525.7561-1-jason-jh.lin@mediatek=
+.com/
 
