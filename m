@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F61CA0FF0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 08:10:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06365CA0FF7
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 08:10:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wPuDGEBFumJxQ1LSLtcOno7NpCZOFsoAqIEP9Zqw580=; b=BDcKQYtM3uyqII60JhGPw4qmAL
-	W8noq4bajonASSwcT66g5tNgp5BVyOF8ViyUoFi/N7LmL1mNMmTxYqcYx9Oa0+8XewvPNf9mDv5pV
-	SRozD3d23Ntc/qFYeSaT+aLZfR43DE6dG4ebY99i5E3Vc095UUvzrS97IxiMQPSzbzy/F5xtsTsBz
-	V3i9TO5CwhdDsyVPxvx1YkZ5y6G0a9pwFjt5MI2tRLMwFTTtRyhmtSOeCK8wfJc7CR+Gy217g008S
-	6Jhk7OhXhUNNdsvOWByXzORl6ZZcJCg5+rEeUS+WV2RUUd6mZyqxN6OpVbUl5fM8mI+P/BglRDHo5
-	tGz7NpqQ==;
+	bh=JinC7Bb2PVa8HrO1FW4navqRVoz1EFqkU53gUdtyeis=; b=bx2CsagIKPPOrQY0ehAATAWLC6
+	ukvBr4Qkq9UwuvkEmrGKgSuAmxgR/D4gzoZ6m7sZxHpFaT/iGpx+nbIpQ6cLcy3Cm2vOHMwtx0quX
+	jZ031A2xHgdvPPsGW5hzP6sHlED7NNHAXeVjjtfR0BXPglIPJyY7KloR9xIISepfWW+FDXBpd3J1H
+	mHewqVA2PlCGAFx4yQZO1tzMYL0W+MqlsDdC4puomJXj8a4ABaJ+zwhIaukpXPEHRW3iDwcAywoZJ
+	DCWXEqz8OI0p173pr/KEYiU5yfBNnYKdAp2J21ptNeP/jMCEEEVGD5wCfl67v0Bn8qUQ28LMCoOkp
+	urQK92TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbzEI-00Gebp-2b;
-	Fri, 01 Sep 2023 08:10:10 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qbzEL-00Geen-1v;
+	Fri, 01 Sep 2023 08:10:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbzE8-00GeUJ-1x;
-	Fri, 01 Sep 2023 08:10:03 +0000
-X-UUID: ef3bae54489e11ee9b7791016c24628a-20230901
+	id 1qbzEA-00GeVO-0n;
+	Fri, 01 Sep 2023 08:10:04 +0000
+X-UUID: f04a39e6489e11ee86758d4a7c00f3a0-20230901
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=wPuDGEBFumJxQ1LSLtcOno7NpCZOFsoAqIEP9Zqw580=;
-	b=QldtBshVC2VOqZpGhKIlLvzeVLJYfuXxbTKa5h0NXJ+AFhb0G7Rvj/MBHw8Mm4wXgl0xGfDyGCr8IVvN2lKvcCo8+wfti+KWK4KsVd+Yih6FMt6w4+/2tDcuFOx9AOnQe04GxF6cg4sto7UCKBx6WnZTk6MLSWm5VT2YdCgIYxM=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JinC7Bb2PVa8HrO1FW4navqRVoz1EFqkU53gUdtyeis=;
+	b=ngCLUNKBUjH2Pi6QFdb/duF/seALtDhkIiCM/545NcsuauDhuf2Lypsg69ACkg51tWq+WkZGmdbpkj4TS6nHNE4p/MekFIYNbJncqJJ7H50g0IeUloxD+c7Uo2giuRzoUSTbvmfH+POtkujy3PDUYjvhLdn8kz54Lj731XZbKFg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:72f94d9a-ca58-43db-8dbf-68cd3069cd77,IP:0,U
+X-CID-O-INFO: VERSION:1.1.31,REQID:04935352-f6cc-41f1-8df0-eaa287710a76,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:922d7113-4929-4845-9571-38c601e9c3c9,B
+X-CID-META: VersionHash:0ad78a4,CLOUDID:58f90020-33fd-4aaa-bb43-d3fd68d9d5ae,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: ef3bae54489e11ee9b7791016c24628a-20230901
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: f04a39e6489e11ee86758d4a7c00f3a0-20230901
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1833092606; Fri, 01 Sep 2023 01:09:55 -0700
+	with ESMTP id 1407530295; Fri, 01 Sep 2023 01:09:56 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 1 Sep 2023 16:09:52 +0800
+ 15.2.1118.26; Fri, 1 Sep 2023 16:09:53 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.1118.26 via Frontend Transport; Fri, 1 Sep 2023 16:09:52 +0800
@@ -64,9 +64,9 @@ CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v17 05/14] remoteproc: mediatek: Extract SCP common registers
-Date: Fri, 1 Sep 2023 16:09:26 +0800
-Message-ID: <20230901080935.14571-6-tinghan.shen@mediatek.com>
+Subject: [PATCH v17 09/14] remoteproc: mediatek: Remove dependency of MT8195 SCP L2TCM power control on dual-core SCP
+Date: Fri, 1 Sep 2023 16:09:30 +0800
+Message-ID: <20230901080935.14571-10-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230901080935.14571-1-tinghan.shen@mediatek.com>
 References: <20230901080935.14571-1-tinghan.shen@mediatek.com>
@@ -74,8 +74,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230901_011000_654969_B6F86D2D 
-X-CRM114-Status: GOOD (  17.27  )
+X-CRM114-CacheID: sfid-20230901_011002_398845_A16FA88D 
+X-CRM114-Status: GOOD (  18.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,456 +90,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is the 1st preliminary steps for probing multi-core SCP.
-The registers of config and l1tcm are common on single-core SCP
-and multi-core SCP. Extract these registers out to reduce duplicated
-fields in mtk_scp when multiple SCP instances are created.
+Previously, SCP core 0 controlled the power of L2TCM and dictated that
+SCP core 1 could only boot after SCP core 0. To address this constraint,
+extracted the power control flow of L2TCM and made it shared
+between both cores, enabling support for arbitrary boot order.
+
+The flow for controlling L2TCM power has been incorporated into the
+mt8195_scp_before_load() and mt8195_scp_stop() APIs, which are
+respectively invoked during the rproc->ops->start() and
+rproc->ops->stop() operations. These APIs effectively serve the same
+purpose as the rproc prepare()/unprepare() APIs."
 
 Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 ---
- drivers/remoteproc/mtk_common.h  |  13 ++-
- drivers/remoteproc/mtk_scp.c     | 164 ++++++++++++++++---------------
- drivers/remoteproc/mtk_scp_ipi.c |   4 +-
- 3 files changed, 96 insertions(+), 85 deletions(-)
+ drivers/remoteproc/mtk_common.h |  3 ++
+ drivers/remoteproc/mtk_scp.c    | 71 ++++++++++++++++++++++++++-------
+ 2 files changed, 59 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-index c0905aec3b4b..b04d71277c1f 100644
+index 1438159ae736..fea05bbba9aa 100644
 --- a/drivers/remoteproc/mtk_common.h
 +++ b/drivers/remoteproc/mtk_common.h
-@@ -100,17 +100,20 @@ struct mtk_scp_of_data {
- 	size_t ipi_buf_offset;
+@@ -106,6 +106,9 @@ struct mtk_scp_of_cluster {
+ 	size_t l1tcm_size;
+ 	phys_addr_t l1tcm_phys;
+ 	struct list_head mtk_scp_list;
++	/* Prevent concurrent operations of this structure and L2TCM power control. */
++	struct mutex cluster_lock;
++	u32 l2tcm_refcnt;
  };
  
-+struct mtk_scp_of_cluster {
-+	void __iomem *reg_base;
-+	void __iomem *l1tcm_base;
-+	size_t l1tcm_size;
-+	phys_addr_t l1tcm_phys;
-+};
-+
  struct mtk_scp {
- 	struct device *dev;
- 	struct rproc *rproc;
- 	struct clk *clk;
--	void __iomem *reg_base;
- 	void __iomem *sram_base;
- 	size_t sram_size;
- 	phys_addr_t sram_phys;
--	void __iomem *l1tcm_base;
--	size_t l1tcm_size;
--	phys_addr_t l1tcm_phys;
- 
- 	const struct mtk_scp_of_data *data;
- 
-@@ -128,6 +131,8 @@ struct mtk_scp {
- 	size_t dram_size;
- 
- 	struct rproc_subdev *rpmsg_subdev;
-+
-+	struct mtk_scp_of_cluster *cluster;
- };
- 
- /**
 diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 48e759c2d486..f88e60e4bc21 100644
+index 685e2c2bb6ee..59d9182a8d1e 100644
 --- a/drivers/remoteproc/mtk_scp.c
 +++ b/drivers/remoteproc/mtk_scp.c
-@@ -152,45 +152,45 @@ static void mt8183_scp_reset_assert(struct mtk_scp *scp)
- {
- 	u32 val;
- 
--	val = readl(scp->reg_base + MT8183_SW_RSTN);
-+	val = readl(scp->cluster->reg_base + MT8183_SW_RSTN);
- 	val &= ~MT8183_SW_RSTN_BIT;
--	writel(val, scp->reg_base + MT8183_SW_RSTN);
-+	writel(val, scp->cluster->reg_base + MT8183_SW_RSTN);
- }
- 
- static void mt8183_scp_reset_deassert(struct mtk_scp *scp)
- {
- 	u32 val;
- 
--	val = readl(scp->reg_base + MT8183_SW_RSTN);
-+	val = readl(scp->cluster->reg_base + MT8183_SW_RSTN);
- 	val |= MT8183_SW_RSTN_BIT;
--	writel(val, scp->reg_base + MT8183_SW_RSTN);
-+	writel(val, scp->cluster->reg_base + MT8183_SW_RSTN);
- }
- 
- static void mt8192_scp_reset_assert(struct mtk_scp *scp)
- {
--	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
-+	writel(1, scp->cluster->reg_base + MT8192_CORE0_SW_RSTN_SET);
- }
- 
- static void mt8192_scp_reset_deassert(struct mtk_scp *scp)
- {
--	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_CLR);
-+	writel(1, scp->cluster->reg_base + MT8192_CORE0_SW_RSTN_CLR);
- }
- 
- static void mt8195_scp_c1_reset_assert(struct mtk_scp *scp)
- {
--	writel(1, scp->reg_base + MT8195_CORE1_SW_RSTN_SET);
-+	writel(1, scp->cluster->reg_base + MT8195_CORE1_SW_RSTN_SET);
- }
- 
- static void mt8195_scp_c1_reset_deassert(struct mtk_scp *scp)
- {
--	writel(1, scp->reg_base + MT8195_CORE1_SW_RSTN_CLR);
-+	writel(1, scp->cluster->reg_base + MT8195_CORE1_SW_RSTN_CLR);
- }
- 
- static void mt8183_scp_irq_handler(struct mtk_scp *scp)
- {
- 	u32 scp_to_host;
- 
--	scp_to_host = readl(scp->reg_base + MT8183_SCP_TO_HOST);
-+	scp_to_host = readl(scp->cluster->reg_base + MT8183_SCP_TO_HOST);
- 	if (scp_to_host & MT8183_SCP_IPC_INT_BIT)
- 		scp_ipi_handler(scp);
- 	else
-@@ -198,14 +198,14 @@ static void mt8183_scp_irq_handler(struct mtk_scp *scp)
- 
- 	/* SCP won't send another interrupt until we set SCP_TO_HOST to 0. */
- 	writel(MT8183_SCP_IPC_INT_BIT | MT8183_SCP_WDT_INT_BIT,
--	       scp->reg_base + MT8183_SCP_TO_HOST);
-+	       scp->cluster->reg_base + MT8183_SCP_TO_HOST);
- }
- 
- static void mt8192_scp_irq_handler(struct mtk_scp *scp)
- {
- 	u32 scp_to_host;
- 
--	scp_to_host = readl(scp->reg_base + MT8192_SCP2APMCU_IPC_SET);
-+	scp_to_host = readl(scp->cluster->reg_base + MT8192_SCP2APMCU_IPC_SET);
- 
- 	if (scp_to_host & MT8192_SCP_IPC_INT_BIT) {
- 		scp_ipi_handler(scp);
-@@ -215,10 +215,10 @@ static void mt8192_scp_irq_handler(struct mtk_scp *scp)
- 		 * MT8192_SCP2APMCU_IPC.
- 		 */
- 		writel(MT8192_SCP_IPC_INT_BIT,
--		       scp->reg_base + MT8192_SCP2APMCU_IPC_CLR);
-+		       scp->cluster->reg_base + MT8192_SCP2APMCU_IPC_CLR);
- 	} else {
- 		scp_wdt_handler(scp, scp_to_host);
--		writel(1, scp->reg_base + MT8192_CORE0_WDT_IRQ);
-+		writel(1, scp->cluster->reg_base + MT8192_CORE0_WDT_IRQ);
- 	}
- }
- 
-@@ -226,12 +226,12 @@ static void mt8195_scp_c1_irq_handler(struct mtk_scp *scp)
- {
- 	u32 scp_to_host;
- 
--	scp_to_host = readl(scp->reg_base + MT8195_SSHUB2APMCU_IPC_SET);
-+	scp_to_host = readl(scp->cluster->reg_base + MT8195_SSHUB2APMCU_IPC_SET);
- 
- 	if (scp_to_host & MT8192_SCP_IPC_INT_BIT)
- 		scp_ipi_handler(scp);
- 
--	writel(scp_to_host, scp->reg_base + MT8195_SSHUB2APMCU_IPC_CLR);
-+	writel(scp_to_host, scp->cluster->reg_base + MT8195_SSHUB2APMCU_IPC_CLR);
- }
- 
- static irqreturn_t scp_irq_handler(int irq, void *priv)
-@@ -363,26 +363,26 @@ static int mt8195_scp_clk_get(struct mtk_scp *scp)
- static int mt8183_scp_before_load(struct mtk_scp *scp)
- {
- 	/* Clear SCP to host interrupt */
--	writel(MT8183_SCP_IPC_INT_BIT, scp->reg_base + MT8183_SCP_TO_HOST);
-+	writel(MT8183_SCP_IPC_INT_BIT, scp->cluster->reg_base + MT8183_SCP_TO_HOST);
- 
- 	/* Reset clocks before loading FW */
--	writel(0x0, scp->reg_base + MT8183_SCP_CLK_SW_SEL);
--	writel(0x0, scp->reg_base + MT8183_SCP_CLK_DIV_SEL);
-+	writel(0x0, scp->cluster->reg_base + MT8183_SCP_CLK_SW_SEL);
-+	writel(0x0, scp->cluster->reg_base + MT8183_SCP_CLK_DIV_SEL);
- 
- 	/* Initialize TCM before loading FW. */
--	writel(0x0, scp->reg_base + MT8183_SCP_L1_SRAM_PD);
--	writel(0x0, scp->reg_base + MT8183_SCP_TCM_TAIL_SRAM_PD);
-+	writel(0x0, scp->cluster->reg_base + MT8183_SCP_L1_SRAM_PD);
-+	writel(0x0, scp->cluster->reg_base + MT8183_SCP_TCM_TAIL_SRAM_PD);
- 
- 	/* Turn on the power of SCP's SRAM before using it. */
--	writel(0x0, scp->reg_base + MT8183_SCP_SRAM_PDN);
-+	writel(0x0, scp->cluster->reg_base + MT8183_SCP_SRAM_PDN);
- 
- 	/*
- 	 * Set I-cache and D-cache size before loading SCP FW.
- 	 * SCP SRAM logical address may change when cache size setting differs.
- 	 */
- 	writel(MT8183_SCP_CACHE_CON_WAYEN | MT8183_SCP_CACHESIZE_8KB,
--	       scp->reg_base + MT8183_SCP_CACHE_CON);
--	writel(MT8183_SCP_CACHESIZE_8KB, scp->reg_base + MT8183_SCP_DCACHE_CON);
-+	       scp->cluster->reg_base + MT8183_SCP_CACHE_CON);
-+	writel(MT8183_SCP_CACHESIZE_8KB, scp->cluster->reg_base + MT8183_SCP_DCACHE_CON);
- 
+@@ -454,19 +454,37 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
  	return 0;
  }
-@@ -408,28 +408,28 @@ static void scp_sram_power_off(void __iomem *addr, u32 reserved_mask)
- static int mt8186_scp_before_load(struct mtk_scp *scp)
+ 
+-static int mt8195_scp_before_load(struct mtk_scp *scp)
++static int mt8195_scp_l2tcm_on(struct mtk_scp *scp)
  {
- 	/* Clear SCP to host interrupt */
--	writel(MT8183_SCP_IPC_INT_BIT, scp->reg_base + MT8183_SCP_TO_HOST);
-+	writel(MT8183_SCP_IPC_INT_BIT, scp->cluster->reg_base + MT8183_SCP_TO_HOST);
+-	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
+-	writel(0xff, scp->cluster->reg_base + MT8192_SCP2SPM_IPC_CLR);
++	struct mtk_scp_of_cluster *scp_cluster = scp->cluster;
++
++	mutex_lock(&scp_cluster->cluster_lock);
++
++	if (scp_cluster->l2tcm_refcnt == 0) {
++		/* clear SPM interrupt, SCP2SPM_IPC_CLR */
++		writel(0xff, scp->cluster->reg_base + MT8192_SCP2SPM_IPC_CLR);
++
++		/* Power on L2TCM */
++		scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++		scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++		scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++		scp_sram_power_on(scp->cluster->reg_base + MT8192_L1TCM_SRAM_PDN,
++				  MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
++	}
++
++	scp_cluster->l2tcm_refcnt += 1;
  
- 	/* Reset clocks before loading FW */
--	writel(0x0, scp->reg_base + MT8183_SCP_CLK_SW_SEL);
--	writel(0x0, scp->reg_base + MT8183_SCP_CLK_DIV_SEL);
-+	writel(0x0, scp->cluster->reg_base + MT8183_SCP_CLK_SW_SEL);
-+	writel(0x0, scp->cluster->reg_base + MT8183_SCP_CLK_DIV_SEL);
++	mutex_unlock(&scp_cluster->cluster_lock);
++
++	return 0;
++}
++
++static int mt8195_scp_before_load(struct mtk_scp *scp)
++{
+ 	writel(1, scp->cluster->reg_base + MT8192_CORE0_SW_RSTN_SET);
  
- 	/* Turn on the power of SCP's SRAM before using it. Enable 1 block per time*/
--	scp_sram_power_on(scp->reg_base + MT8183_SCP_SRAM_PDN, 0);
-+	scp_sram_power_on(scp->cluster->reg_base + MT8183_SCP_SRAM_PDN, 0);
- 
- 	/* Initialize TCM before loading FW. */
--	writel(0x0, scp->reg_base + MT8183_SCP_L1_SRAM_PD);
--	writel(0x0, scp->reg_base + MT8183_SCP_TCM_TAIL_SRAM_PD);
--	writel(0x0, scp->reg_base + MT8186_SCP_L1_SRAM_PD_P1);
--	writel(0x0, scp->reg_base + MT8186_SCP_L1_SRAM_PD_p2);
-+	writel(0x0, scp->cluster->reg_base + MT8183_SCP_L1_SRAM_PD);
-+	writel(0x0, scp->cluster->reg_base + MT8183_SCP_TCM_TAIL_SRAM_PD);
-+	writel(0x0, scp->cluster->reg_base + MT8186_SCP_L1_SRAM_PD_P1);
-+	writel(0x0, scp->cluster->reg_base + MT8186_SCP_L1_SRAM_PD_p2);
- 
- 	/*
- 	 * Set I-cache and D-cache size before loading SCP FW.
- 	 * SCP SRAM logical address may change when cache size setting differs.
- 	 */
- 	writel(MT8183_SCP_CACHE_CON_WAYEN | MT8183_SCP_CACHESIZE_8KB,
--	       scp->reg_base + MT8183_SCP_CACHE_CON);
--	writel(MT8183_SCP_CACHESIZE_8KB, scp->reg_base + MT8183_SCP_DCACHE_CON);
-+	       scp->cluster->reg_base + MT8183_SCP_CACHE_CON);
-+	writel(MT8183_SCP_CACHESIZE_8KB, scp->cluster->reg_base + MT8183_SCP_DCACHE_CON);
- 
- 	return 0;
- }
-@@ -437,19 +437,19 @@ static int mt8186_scp_before_load(struct mtk_scp *scp)
- static int mt8192_scp_before_load(struct mtk_scp *scp)
- {
- 	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
--	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
-+	writel(0xff, scp->cluster->reg_base + MT8192_SCP2SPM_IPC_CLR);
- 
--	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
-+	writel(1, scp->cluster->reg_base + MT8192_CORE0_SW_RSTN_SET);
- 
- 	/* enable SRAM clock */
--	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
--	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
--	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
--	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
--	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
-+	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-+	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-+	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-+	scp_sram_power_on(scp->cluster->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
-+	scp_sram_power_on(scp->cluster->reg_base + MT8192_CPU0_SRAM_PD, 0);
+-	/* enable SRAM clock */
+-	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+-	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+-	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+-	scp_sram_power_on(scp->cluster->reg_base + MT8192_L1TCM_SRAM_PDN,
+-			  MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
++	mt8195_scp_l2tcm_on(scp);
++
+ 	scp_sram_power_on(scp->cluster->reg_base + MT8192_CPU0_SRAM_PD, 0);
  
  	/* enable MPU for all memory regions */
--	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
-+	writel(0xff, scp->cluster->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
- 
- 	return 0;
- }
-@@ -457,20 +457,20 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
- static int mt8195_scp_before_load(struct mtk_scp *scp)
- {
- 	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
--	writel(0xff, scp->reg_base + MT8192_SCP2SPM_IPC_CLR);
-+	writel(0xff, scp->cluster->reg_base + MT8192_SCP2SPM_IPC_CLR);
- 
--	writel(1, scp->reg_base + MT8192_CORE0_SW_RSTN_SET);
-+	writel(1, scp->cluster->reg_base + MT8192_CORE0_SW_RSTN_SET);
- 
- 	/* enable SRAM clock */
--	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
--	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
--	scp_sram_power_on(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
--	scp_sram_power_on(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
-+	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-+	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-+	scp_sram_power_on(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-+	scp_sram_power_on(scp->cluster->reg_base + MT8192_L1TCM_SRAM_PDN,
- 			  MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
--	scp_sram_power_on(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
-+	scp_sram_power_on(scp->cluster->reg_base + MT8192_CPU0_SRAM_PD, 0);
- 
- 	/* enable MPU for all memory regions */
--	writel(0xff, scp->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
-+	writel(0xff, scp->cluster->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
- 
- 	return 0;
- }
-@@ -479,10 +479,10 @@ static int mt8195_scp_c1_before_load(struct mtk_scp *scp)
+@@ -479,6 +497,8 @@ static int mt8195_scp_c1_before_load(struct mtk_scp *scp)
  {
  	scp->data->scp_reset_assert(scp);
  
--	scp_sram_power_on(scp->reg_base + MT8195_CPU1_SRAM_PD, 0);
-+	scp_sram_power_on(scp->cluster->reg_base + MT8195_CPU1_SRAM_PD, 0);
++	mt8195_scp_l2tcm_on(scp);
++
+ 	scp_sram_power_on(scp->cluster->reg_base + MT8195_CPU1_SRAM_PD, 0);
  
  	/* enable MPU for all memory regions */
--	writel(0xff, scp->reg_base + MT8195_CORE1_MEM_ATT_PREDEF);
-+	writel(0xff, scp->cluster->reg_base + MT8195_CORE1_MEM_ATT_PREDEF);
- 
- 	return 0;
- }
-@@ -601,11 +601,11 @@ static void *mt8192_scp_da_to_va(struct mtk_scp *scp, u64 da, size_t len)
- 	}
- 
- 	/* optional memory region */
--	if (scp->l1tcm_size &&
--	    da >= scp->l1tcm_phys &&
--	    (da + len) <= scp->l1tcm_phys + scp->l1tcm_size) {
--		offset = da - scp->l1tcm_phys;
--		return (void __force *)scp->l1tcm_base + offset;
-+	if (scp->cluster->l1tcm_size &&
-+	    da >= scp->cluster->l1tcm_phys &&
-+	    (da + len) <= scp->cluster->l1tcm_phys + scp->cluster->l1tcm_size) {
-+		offset = da - scp->cluster->l1tcm_phys;
-+		return (void __force *)scp->cluster->l1tcm_base + offset;
- 	}
- 
- 	/* optional memory region */
-@@ -629,43 +629,43 @@ static void *scp_da_to_va(struct rproc *rproc, u64 da, size_t len, bool *is_iome
- static void mt8183_scp_stop(struct mtk_scp *scp)
- {
- 	/* Disable SCP watchdog */
--	writel(0, scp->reg_base + MT8183_WDT_CFG);
-+	writel(0, scp->cluster->reg_base + MT8183_WDT_CFG);
+@@ -645,14 +665,31 @@ static void mt8192_scp_stop(struct mtk_scp *scp)
+ 	writel(0, scp->cluster->reg_base + MT8192_CORE0_WDT_CFG);
  }
  
- static void mt8192_scp_stop(struct mtk_scp *scp)
- {
- 	/* Disable SRAM clock */
--	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
--	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
--	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
--	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
--	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
-+	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-+	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-+	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-+	scp_sram_power_off(scp->cluster->reg_base + MT8192_L1TCM_SRAM_PDN, 0);
-+	scp_sram_power_off(scp->cluster->reg_base + MT8192_CPU0_SRAM_PD, 0);
- 
- 	/* Disable SCP watchdog */
--	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
-+	writel(0, scp->cluster->reg_base + MT8192_CORE0_WDT_CFG);
- }
- 
++static void mt8195_scp_l2tcm_off(struct mtk_scp *scp)
++{
++	struct mtk_scp_of_cluster *scp_cluster = scp->cluster;
++
++	mutex_lock(&scp_cluster->cluster_lock);
++
++	if (scp_cluster->l2tcm_refcnt > 0)
++		scp_cluster->l2tcm_refcnt -= 1;
++
++	if (scp_cluster->l2tcm_refcnt == 0) {
++		/* Power off L2TCM */
++		scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
++		scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
++		scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
++		scp_sram_power_off(scp->cluster->reg_base + MT8192_L1TCM_SRAM_PDN,
++				   MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
++	}
++
++	mutex_unlock(&scp_cluster->cluster_lock);
++}
++
  static void mt8195_scp_stop(struct mtk_scp *scp)
  {
- 	/* Disable SRAM clock */
--	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
--	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
--	scp_sram_power_off(scp->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
--	scp_sram_power_off(scp->reg_base + MT8192_L1TCM_SRAM_PDN,
-+	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
-+	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
-+	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
-+	scp_sram_power_off(scp->cluster->reg_base + MT8192_L1TCM_SRAM_PDN,
- 			   MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
--	scp_sram_power_off(scp->reg_base + MT8192_CPU0_SRAM_PD, 0);
-+	scp_sram_power_off(scp->cluster->reg_base + MT8192_CPU0_SRAM_PD, 0);
+-	/* Disable SRAM clock */
+-	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_0, 0);
+-	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_1, 0);
+-	scp_sram_power_off(scp->cluster->reg_base + MT8192_L2TCM_SRAM_PD_2, 0);
+-	scp_sram_power_off(scp->cluster->reg_base + MT8192_L1TCM_SRAM_PDN,
+-			   MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS);
++	mt8195_scp_l2tcm_off(scp);
++
+ 	scp_sram_power_off(scp->cluster->reg_base + MT8192_CPU0_SRAM_PD, 0);
  
  	/* Disable SCP watchdog */
--	writel(0, scp->reg_base + MT8192_CORE0_WDT_CFG);
-+	writel(0, scp->cluster->reg_base + MT8192_CORE0_WDT_CFG);
- }
+@@ -661,6 +698,8 @@ static void mt8195_scp_stop(struct mtk_scp *scp)
  
  static void mt8195_scp_c1_stop(struct mtk_scp *scp)
  {
- 	/* Power off CPU SRAM */
--	scp_sram_power_off(scp->reg_base + MT8195_CPU1_SRAM_PD, 0);
-+	scp_sram_power_off(scp->cluster->reg_base + MT8195_CPU1_SRAM_PD, 0);
- 
- 	/* Disable SCP watchdog */
--	writel(0, scp->reg_base + MT8195_CORE1_WDT_CFG);
-+	writel(0, scp->cluster->reg_base + MT8195_CORE1_WDT_CFG);
- }
- 
- static int scp_stop(struct rproc *rproc)
-@@ -859,11 +859,16 @@ static int scp_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct device_node *np = dev->of_node;
- 	struct mtk_scp *scp;
-+	struct mtk_scp_of_cluster *scp_cluster;
- 	struct rproc *rproc;
- 	struct resource *res;
- 	const char *fw_name = "scp.img";
- 	int ret, i;
- 
-+	scp_cluster = devm_kzalloc(dev, sizeof(*scp_cluster), GFP_KERNEL);
-+	if (!scp_cluster)
-+		return -ENOMEM;
++	mt8195_scp_l2tcm_off(scp);
 +
- 	ret = rproc_of_parse_firmware(dev, 0, &fw_name);
- 	if (ret < 0 && ret != -EINVAL)
- 		return ret;
-@@ -876,6 +881,7 @@ static int scp_probe(struct platform_device *pdev)
- 	scp->rproc = rproc;
- 	scp->dev = dev;
- 	scp->data = of_device_get_match_data(dev);
-+	scp->cluster = scp_cluster;
- 	platform_set_drvdata(pdev, scp);
+ 	/* Power off CPU SRAM */
+ 	scp_sram_power_off(scp->cluster->reg_base + MT8195_CPU1_SRAM_PD, 0);
  
- 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
-@@ -889,20 +895,20 @@ static int scp_probe(struct platform_device *pdev)
- 
- 	/* l1tcm is an optional memory region */
- 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "l1tcm");
--	scp->l1tcm_base = devm_ioremap_resource(dev, res);
--	if (IS_ERR(scp->l1tcm_base)) {
--		ret = PTR_ERR(scp->l1tcm_base);
-+	scp->cluster->l1tcm_base = devm_ioremap_resource(dev, res);
-+	if (IS_ERR(scp->cluster->l1tcm_base)) {
-+		ret = PTR_ERR(scp->cluster->l1tcm_base);
- 		if (ret != -EINVAL) {
- 			return dev_err_probe(dev, ret, "Failed to map l1tcm memory\n");
- 		}
- 	} else {
--		scp->l1tcm_size = resource_size(res);
--		scp->l1tcm_phys = res->start;
-+		scp->cluster->l1tcm_size = resource_size(res);
-+		scp->cluster->l1tcm_phys = res->start;
+@@ -1108,6 +1147,7 @@ static int scp_probe(struct platform_device *pdev)
  	}
  
--	scp->reg_base = devm_platform_ioremap_resource_byname(pdev, "cfg");
--	if (IS_ERR(scp->reg_base))
--		return dev_err_probe(dev, PTR_ERR(scp->reg_base),
-+	scp->cluster->reg_base = devm_platform_ioremap_resource_byname(pdev, "cfg");
-+	if (IS_ERR(scp->cluster->reg_base))
-+		return dev_err_probe(dev, PTR_ERR(scp->cluster->reg_base),
- 				     "Failed to parse and map cfg memory\n");
+ 	INIT_LIST_HEAD(&scp_cluster->mtk_scp_list);
++	mutex_init(&scp_cluster->cluster_lock);
  
- 	ret = scp->data->scp_clk_get(scp);
-diff --git a/drivers/remoteproc/mtk_scp_ipi.c b/drivers/remoteproc/mtk_scp_ipi.c
-index 9c7c17b9d181..cd0b60106ec2 100644
---- a/drivers/remoteproc/mtk_scp_ipi.c
-+++ b/drivers/remoteproc/mtk_scp_ipi.c
-@@ -177,7 +177,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
- 	mutex_lock(&scp->send_lock);
+ 	ret = devm_of_platform_populate(dev);
+ 	if (ret)
+@@ -1131,6 +1171,7 @@ static void scp_remove(struct platform_device *pdev)
+ 		rproc_del(scp->rproc);
+ 		scp_free(scp);
+ 	}
++	mutex_destroy(&scp_cluster->cluster_lock);
+ }
  
- 	 /* Wait until SCP receives the last command */
--	ret = readl_poll_timeout_atomic(scp->reg_base + scp->data->host_to_scp_reg,
-+	ret = readl_poll_timeout_atomic(scp->cluster->reg_base + scp->data->host_to_scp_reg,
- 					val, !val, 0, SCP_TIMEOUT_US);
- 	if (ret) {
- 		dev_err(scp->dev, "%s: IPI timeout!\n", __func__);
-@@ -192,7 +192,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
- 	scp->ipi_id_ack[id] = false;
- 	/* send the command to SCP */
- 	writel(scp->data->host_to_scp_int_bit,
--	       scp->reg_base + scp->data->host_to_scp_reg);
-+	       scp->cluster->reg_base + scp->data->host_to_scp_reg);
- 
- 	if (wait) {
- 		/* wait for SCP's ACK */
+ static const struct mtk_scp_of_data mt8183_of_data = {
 -- 
 2.18.0
 
