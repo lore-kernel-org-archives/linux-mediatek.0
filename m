@@ -4,73 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64658C83F10
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Aug 2023 15:28:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34452CA0FE2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 02:47:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BFkzrTl8Fp3ap4MMUuNu0PYGNFGOEtpCS+5EryEpuCA=; b=d2CkRlfUFxE/iln/GEwsnEVLZD
-	Ac/j59783OYTaJ9EQKUqQ4G/Mkxiv82GgalHu91Pb+9+r6ZKETKdCZFFY8f5sT6zzAx+fPyy11fr2
-	AE+pd/EeaDMnLOyMp6MP3lvAz2tpZNl6G5aqzY9Vz3Nnf+asOedj4Yw1S/uaQck8dfbLeDrEXZDO4
-	h1XjBweV7Q40Yxav7ToG2L6Nb7uZo6BuEAM4TFl7O8RtL50rOfd+aBHDSsAl+Yuef6ZbBvJi70xBe
-	BqzvfJlMmgfaHPqT8aYnJ2tdWlEFwVkozLExBWOJAtKDRSobbD7jD8/7aDNkLfDbY/avnLcTBNyl5
-	oo7VOGYA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YSSKrAlT9LqLa+EpCEjeqM9LEiQQgMdGWZFDD5qJ9IQ=; b=c2omQfs19e0boer6sqN+TNroWJ
+	PMI1rVVeOICMg3TBMqSU47KA4aOEvXZSb6tM9n1Bsj9E/vnOLBJy4s/Ks1lKhVoLbKIB7B6DgejSX
+	NrFc8C25+kQRiz4WEq8fHgk9p1xvlVOUl0P/aZtE1B44DDE9/OGq7Zx0fkc6yj9QKnWPnrUURwbaU
+	bDl5tqKU83J25xB7WHsMq/XUQBkqkXUnkDlleoM8TkhW7oifSPvFOQxvdddPI6kWOlqbAjQb9UCep
+	BU5o6zvVNiWy0l9lAMQ1RhaPTHFTy/OaJOvGBnXdPQZZHZB9smD3ImKA/TjmwNul8N4WW9wg3AIDJ
+	ueNasH+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbjaP-00FVLH-2Z;
-	Thu, 31 Aug 2023 15:27:57 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qbuC6-00GLhv-1q;
+	Fri, 01 Sep 2023 02:47:34 +0000
+Received: from smtp84.cstnet.cn ([159.226.251.84] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qbjaN-00FVKp-05;
-	Thu, 31 Aug 2023 15:27:56 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id A9928B82337;
-	Thu, 31 Aug 2023 15:27:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84665C433C7;
-	Thu, 31 Aug 2023 15:27:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1693495671;
-	bh=RChlf7sNnlla1bk8aQ9fJlAckK82BDukWAF14ibCRYw=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=FSVeVd9TdURBaRoL2h14T2qbLnhUCZvDYvH+tCXP9QkhsjWI0LcNbW4Mb/X1rsSTX
-	 OtsnwD6m/SJ2BavTtlnZDtRs+6Hr5MYPWG2rLuUPSrNw+H3TN/TF8Sre0VY+6WkfZB
-	 zcDiPQMJ5eYZJhkth1x/E6TgZSe7WITkRxEel+cCzvrW9hFtwdGsOVLghmcELZjfhx
-	 Rq0GC/Gta8iCVhNkxsz6lWT7lQFKdlKRbA/I74O6Vi8Vy/mFPorBGBeyGav4QYtczF
-	 3l1jH+urvcVRaqAfGj2lh1yPMSdnDUuur7Uvp3TziUsA5eFTeBfdzV02WgYhKUpCZk
-	 e+UDWP25AB16w==
-From: Kalle Valo <kvalo@kernel.org>
-To: Jinjie Ruan <ruanjinjie@huawei.com>
-Cc: <gregory.greenman@intel.com>,  <briannorris@chromium.org>,
-  <nbd@nbd.name>,  <lorenzo@kernel.org>,  <ryder.lee@mediatek.com>,
-  <shayne.chen@mediatek.com>,  <sean.wang@mediatek.com>,
-  <matthias.bgg@gmail.com>,  <angelogioacchino.delregno@collabora.com>,
-  <avraham.stern@intel.com>,  <johannes.berg@intel.com>,
-  <emmanuel.grumbach@intel.com>,  <trix@redhat.com>,
-  <dmantipov@yandex.ru>,  <christophe.jaillet@wanadoo.fr>,
-  <yangyang@marvell.com>,  <linville@tuxdriver.com>,
-  <rramesh@marvell.com>,  <akarwar@marvell.com>,  <nishants@marvell.com>,
-  <linux-wireless@vger.kernel.org>,
-  <linux-arm-kernel@lists.infradead.org>,
-  <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH net 0/3] wifi: Fix the NULL vs IS_ERR() bugs for
- debugfs_create_dir()
-References: <20230831141347.3166988-1-ruanjinjie@huawei.com>
-Date: Thu, 31 Aug 2023 18:27:44 +0300
-In-Reply-To: <20230831141347.3166988-1-ruanjinjie@huawei.com> (Jinjie Ruan's
-	message of "Thu, 31 Aug 2023 22:13:44 +0800")
-Message-ID: <87v8cvdyfj.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+	id 1qbuC0-00GLhC-30;
+	Fri, 01 Sep 2023 02:47:31 +0000
+Received: from 4d92782a4194.home.arpa (unknown [124.16.138.129])
+	by APP-05 (Coremail) with SMTP id zQCowAAHD1eoUPFkj_PaCA--.40644S2;
+	Fri, 01 Sep 2023 10:47:04 +0800 (CST)
+From: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	wenst@chromium.org,
+	msp@baylibre.com,
+	frank.li@vivo.com,
+	robh@kernel.org,
+	jamesjj.liao@mediatek.com,
+	shunli.wang@mediatek.com,
+	erin.lo@mediatek.com
+Cc: linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Jiasheng Jiang <jiasheng@iscas.ac.cn>
+Subject: [PATCH] clk: mediatek: clk-mt2701: Add check for mtk_alloc_clk_data
+Date: Fri,  1 Sep 2023 10:46:58 +0800
+Message-Id: <20230901024658.23405-1-jiasheng@iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: zQCowAAHD1eoUPFkj_PaCA--.40644S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7uF1xXFW3Aw4kuw4kWr4rKrg_yoW8AF1kpr
+	WkKF1YyFyUGw17Grs5Jr4DC3W5Aw10ga4UtFy3Zw1rZr13KrWUAF1F9a4vk3Z2yrWv9FyU
+	X3WY9w409FWDuFDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUvC14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
+	6r4UJwA2z4x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gc
+	CE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
+	2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJV
+	W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2
+	Y2ka0xkIwI1lc2xSY4AK67AK6r4UMxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r
+	1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CE
+	b7AF67AKxVW8ZVWrXwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0x
+	vE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAI
+	cVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2Kf
+	nxnUUI43ZEXa7VUbpwZ7UUUUU==
+X-Originating-IP: [124.16.138.129]
+X-CM-SenderInfo: pmld2xxhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230831_082755_238557_78CD400A 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20230831_194729_360559_BF2550D2 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,27 +88,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Jinjie Ruan <ruanjinjie@huawei.com> writes:
+Add the check for the return value of mtk_alloc_clk_data() in order to
+avoid NULL pointer dereference.
 
-> Since debugfs_create_dir() returns ERR_PTR and never return NULL, So use
-> IS_ERR() to check it instead of checking NULL.
->
-> Jinjie Ruan (3):
->   wifi: iwlwifi: mei: Fix the NULL vs IS_ERR() bug for
->     debugfs_create_dir()
->   mwifiex: debugfs: Fix the NULL vs IS_ERR() bug for
->     debugfs_create_dir()
->   wifi: mt76: Fix the NULL vs IS_ERR() bug for debugfs_create_dir()
->
->  drivers/net/wireless/intel/iwlwifi/mei/main.c  | 2 +-
->  drivers/net/wireless/marvell/mwifiex/debugfs.c | 2 +-
->  drivers/net/wireless/mediatek/mt76/debugfs.c   | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
+Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
+Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+---
+ drivers/clk/mediatek/clk-mt2701.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-Wireless patches go wireless-next tree, not net tree.
-
+diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
+index c81f3e33ce56..12d9560eb4ba 100644
+--- a/drivers/clk/mediatek/clk-mt2701.c
++++ b/drivers/clk/mediatek/clk-mt2701.c
+@@ -667,6 +667,8 @@ static int mtk_topckgen_init(struct platform_device *pdev)
+ 		return PTR_ERR(base);
+ 
+ 	clk_data = mtk_alloc_clk_data(CLK_TOP_NR);
++	if (!clk_data)
++		return -ENOMEM;
+ 
+ 	mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
+ 								clk_data);
+@@ -747,6 +749,8 @@ static void __init mtk_infrasys_init_early(struct device_node *node)
+ 
+ 	if (!infra_clk_data) {
+ 		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR);
++		if (!infra_clk_data)
++			return;
+ 
+ 		for (i = 0; i < CLK_INFRA_NR; i++)
+ 			infra_clk_data->hws[i] = ERR_PTR(-EPROBE_DEFER);
+@@ -774,6 +778,8 @@ static int mtk_infrasys_init(struct platform_device *pdev)
+ 
+ 	if (!infra_clk_data) {
+ 		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR);
++		if (!infra_clk_data)
++			return -ENOMEM;
+ 	} else {
+ 		for (i = 0; i < CLK_INFRA_NR; i++) {
+ 			if (infra_clk_data->hws[i] == ERR_PTR(-EPROBE_DEFER))
+@@ -890,6 +896,8 @@ static int mtk_pericfg_init(struct platform_device *pdev)
+ 		return PTR_ERR(base);
+ 
+ 	clk_data = mtk_alloc_clk_data(CLK_PERI_NR);
++	if (!clk_data)
++		return -ENOMEM;
+ 
+ 	mtk_clk_register_gates(&pdev->dev, node, peri_clks,
+ 			       ARRAY_SIZE(peri_clks), clk_data);
 -- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+2.25.1
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
