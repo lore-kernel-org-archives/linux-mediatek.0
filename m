@@ -4,248 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19C8ACA0FE8
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 22:34:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5E32CA0FF6
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 23:42:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1eYuwTA7OeB4ASURkfPAN4PLnPwpRtE66WFvFTrQhdA=; b=iTkLAosMOuqSNY1KaVtk9NKodm
-	YFN9bN0lgkn4pfj6gNY63Lx3UhQhNbMa9yka/Wagr74X3Ru4kGdmj5Wj6KSaXXm8Sih8/3wpV8cdd
-	7ggwA2PN8PnSxeoOrJMSVNKi/s12InYdWZQRFm7ovajAS+gbZCu1MtfmHLDd332nH960/VNP+3iRH
-	AwpjbG33N1DvX/daeiTxrVZ5636HgqSPjgYK9MeSgSsynbjMWDbibOtxmaP3D84uTU48ThMR0Iy2p
-	kDr+7SRKYO0qehPE/VIUqVkG8nhWu5esupzAl4W5Bgg48tJxeYAOFskDQRqC048tFlZC3bXL+r9e/
-	zrm1LLuw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=B9XoCDC9hhqnTfSWxv39xNaYsVGjr9sqIdwDF3cygwY=; b=r2OQNpjWWXQ2f6rvwNUSFQ4QEu
+	xIt4wSVZfjyaD06xqOMwgDuRK2gU83q7kUN9kD4F+m3q1+zUHfVIDEjWji1XMmWsNrEmOVCpw1Raq
+	PJ37Q/h0t/+7SXeNk+dXHtrCOq+QWVWyRfon3440engz9MEsoVbI7KpPAu+2wt/4q+JVGEiI0dQFr
+	KlqIe3hf28pufZxlAIv1WzdIFTvaZJOof6AcmLtAZjYKTiq8y6Si5vKAyIB6YT2LyQJfHTeoL1mvX
+	F6oNloY83QARK5Yg7lY2iJYdwBpCtWgAk5fUiR6G434+ZOVAgMUbh8cazN8mb67WqCYfMpEjGAC3O
+	fWpP3e3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qcCir-000SJs-13;
-	Fri, 01 Sep 2023 22:34:37 +0000
-Received: from mx0a-00230701.pphosted.com ([148.163.156.19])
+	id 1qcDma-000Vmf-0N;
+	Fri, 01 Sep 2023 23:42:32 +0000
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qcCin-000SJT-1y
+	id 1qcDmW-000Vl1-1e
 	for linux-mediatek@lists.infradead.org;
-	Fri, 01 Sep 2023 22:34:35 +0000
-Received: from pps.filterd (m0098571.ppops.net [127.0.0.1])
-	by mx0a-00230701.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 381FufjA004803;
-	Fri, 1 Sep 2023 15:33:44 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=synopsys.com; h=from : to : cc :
- subject : date : message-id : references : in-reply-to : content-type :
- content-id : content-transfer-encoding : mime-version; s=pfptdkimsnps;
- bh=1eYuwTA7OeB4ASURkfPAN4PLnPwpRtE66WFvFTrQhdA=;
- b=Y8iUJh6k7wE0hnnU59SytBG9yPn5oTSsMoZubo9N4omO72IbmoFuoRS4XcNAIyLAa5TY
- msjFzK4TcUCc5I7+DhzaYHqtacNVtmU2g8lIj8MNiMA4Y1APQ3za3UBPWsAtzi5g56Ie
- 7o6D8eo5C8hc+gpLZvOJ5+ByR+xWVrG5wy8gQ18RLLjiQ0fl/xKHarIBQ9kNkxIPbYm7
- BJdJ85r5P+xhw3SdXP5H4c0M247C7yLxYEKQ4qG/rageSkC6N4vUtg4Ic4t4QuR8KcgM
- Oahh3RJPmXNXBYe/QXkSuWdNPTPX1QYNdjHiEiCpt+GUnIXrXb6cNCwrFMITXekqqBry KQ== 
-Received: from smtprelay-out1.synopsys.com (smtprelay-out1.synopsys.com [149.117.87.133])
-	by mx0a-00230701.pphosted.com (PPS) with ESMTPS id 3sqgdmydce-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 01 Sep 2023 15:33:43 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=synopsys.com; s=mail;
-	t=1693607623; bh=1eYuwTA7OeB4ASURkfPAN4PLnPwpRtE66WFvFTrQhdA=;
-	h=From:To:CC:Subject:Date:References:In-Reply-To:From;
-	b=Xtlqoj0A0NUXCzzlK1dlXhu599wR+FkhjmdklGcQ7zK9eA1aPsX2gRd4bDLjZGtbI
-	 OtLSBukFCUxIXEC7TtTPMdLquBKrvAsGIMBgWwDExHb0KEQduGt9AidnQXRT8mpNwu
-	 DvraAlDv05illljWjPARaAkZRaj4FZt8Qfylp5VizkSL9HdlixrzciXpY+qELn87iv
-	 uC4HxstEh7tuvXJkXSIOqnvWcSdGwEih/iHdth90XIu2U3jxrEV22wPDjlbco8ZHoN
-	 fILbGGgKqbiEei8c5W8/QlrtBmGLMfwcpx3QnndvwCCp26ouglJNQArtpVGYaVx0AL
-	 QWNJmXnF+hxlA==
-Received: from mailhost.synopsys.com (badc-mailhost3.synopsys.com [10.192.0.81])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits)
-	 client-signature RSA-PSS (2048 bits))
-	(Client CN "mailhost.synopsys.com", Issuer "SNPSica2" (verified OK))
-	by smtprelay-out1.synopsys.com (Postfix) with ESMTPS id 080C54013C;
-	Fri,  1 Sep 2023 22:33:42 +0000 (UTC)
-Received: from o365relay-in.synopsys.com (us03-o365relay1.synopsys.com [10.4.161.137])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
-	(Client CN "o365relay-in.synopsys.com", Issuer "Entrust Certification Authority - L1K" (verified OK))
-	by mailhost.synopsys.com (Postfix) with ESMTPS id CA9EFA005C;
-	Fri,  1 Sep 2023 22:33:37 +0000 (UTC)
-Authentication-Results: o365relay-in.synopsys.com; dmarc=pass (p=reject dis=none) header.from=synopsys.com
-Authentication-Results: o365relay-in.synopsys.com; spf=pass smtp.mailfrom=synopsys.com
-Authentication-Results: o365relay-in.synopsys.com;
-	dkim=pass (1024-bit key; unprotected) header.d=synopsys.com header.i=@synopsys.com header.a=rsa-sha256 header.s=selector1 header.b=iVC8DdXc;
-	dkim-atps=neutral
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (mail-mw2nam10lp2109.outbound.protection.outlook.com [104.47.55.109])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(Client CN "mail.protection.outlook.com", Issuer "DigiCert Cloud Services CA-1" (verified OK))
-	by o365relay-in.synopsys.com (Postfix) with ESMTPS id CD2D340136;
-	Fri,  1 Sep 2023 22:33:33 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=X7QYoGk4UNU+qeZi1wbVekjFAzKvJKvKnGQUMM1pcwkmSlzD47P6vYyD7q/T6rScJtpcapJURBEeoXjHv/7ag6yM7FNxgoPx6iQdz04kCZRIkcvi3B+AfuPfZpaTVMbW1On4IAeQZK3TkwvkjpaOjRX0bzsHC+CbIeFFaoN0UOEROS5AH8ZbrkD3qvBBZhez09uQI1iSrox/PSiRhWuatgbpofLRaaTcdUv1LlHDyvYSUZhSkPwCqU711w0wgvDw7D4T9TYNHBuhbZ4QLmHiXPtq8v7Df+VTRGXR8Okii5RNuOWecAhZ5FhVzBDWES65NQh+l7t/lsUkQuu4DJRvcA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=1eYuwTA7OeB4ASURkfPAN4PLnPwpRtE66WFvFTrQhdA=;
- b=bdVBEEowqPxE+DbpaEDWPy66PAJbAjhj/5dxsDxPoGRYXZVByDUhoUjUyw2Pty0qBXaJJqMjmu0xJDSwx1/gDyCLXgi81Lsj3z8oRKjUHmRTvWTobBEPvwumm8q04ejdUt+RIz7TRcx0fUpIMc0ja3JK1zOHXWaZMAviW4P33l4RJhhxfcjc3tX2YbhliEegf4oNI4A6r98KhhpD6iZUP5MSVsORA9K3YV+0zTOecBog5w7DZbYpI3xQH0dZ9ptmkZuDaYe1Qwol137BHP1GJANS0CgJ4I24BB2UxDWJHASR55F7u9f0OYgaR4QHT4b1KEqCi1ezD21KKU+otkeUhA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=synopsys.com; dmarc=pass action=none header.from=synopsys.com;
- dkim=pass header.d=synopsys.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=synopsys.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1eYuwTA7OeB4ASURkfPAN4PLnPwpRtE66WFvFTrQhdA=;
- b=iVC8DdXca2ydEjkMnzNrv4gJHFqE1UBHMQ5VOTKfAndorJr33ld7RxTPbDud78EO+U4xr7aVU6wxsJkwEDgWlrsuU1pSQjGzw2C8G2xF7vtdz4CUweLvEi/bettVb1Nl1GKS9gQklbgewBnik75xOqr67d7DL9kguP7s3AnlsEE=
-Received: from BYAPR12MB4791.namprd12.prod.outlook.com (2603:10b6:a03:10a::12)
- by CH3PR12MB9281.namprd12.prod.outlook.com (2603:10b6:610:1c8::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6745.21; Fri, 1 Sep
- 2023 22:33:30 +0000
-Received: from BYAPR12MB4791.namprd12.prod.outlook.com
- ([fe80::548c:ae3:537f:ca2f]) by BYAPR12MB4791.namprd12.prod.outlook.com
- ([fe80::548c:ae3:537f:ca2f%5]) with mapi id 15.20.6745.026; Fri, 1 Sep 2023
- 22:33:30 +0000
-X-SNPS-Relay: synopsys.com
-From: Thinh Nguyen <Thinh.Nguyen@synopsys.com>
-To: Dingyan Li <18500469033@163.com>
-CC: "stern@rowland.harvard.edu" <stern@rowland.harvard.edu>,
-        "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
-        "mathias.nyman@intel.com" <mathias.nyman@intel.com>,
-        "pawell@cadence.com"
-	<pawell@cadence.com>,
-        "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>,
-        "brcm80211-dev-list.pdl@broadcom.com"
-	<brcm80211-dev-list.pdl@broadcom.com>,
-        "linux-usb@vger.kernel.org"
-	<linux-usb@vger.kernel.org>,
-        "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>,
-        "mina86@mina86.com" <mina86@mina86.com>,
-        "clemens@ladisch.de" <clemens@ladisch.de>,
-        "ruslan.bilovol@gmail.com"
-	<ruslan.bilovol@gmail.com>,
-        "bigeasy@linutronix.de" <bigeasy@linutronix.de>,
-        "treding@nvidia.com" <treding@nvidia.com>,
-        "oneukum@suse.com"
-	<oneukum@suse.com>,
-        "laurent.pinchart@ideasonboard.com"
-	<laurent.pinchart@ideasonboard.com>,
-        "nic_swsd@realtek.com"
-	<nic_swsd@realtek.com>,
-        "marcel@holtmann.org" <marcel@holtmann.org>
-Subject: Re: [PATCH v3] USB: Extend usb_device_speed with new value
- USB_SPEED_SUPER_PLUS_BY2
-Thread-Topic: [PATCH v3] USB: Extend usb_device_speed with new value
- USB_SPEED_SUPER_PLUS_BY2
-Thread-Index: AQHZ3O6p4C9LJ+zXF0SX853C6U2sm7AGjrwA
-Date: Fri, 1 Sep 2023 22:33:30 +0000
-Message-ID: <20230901223316.vbnf3zfjsxoogenb@synopsys.com>
-References: <20230901160532.6313-1-18500469033@163.com>
-In-Reply-To: <20230901160532.6313-1-18500469033@163.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BYAPR12MB4791:EE_|CH3PR12MB9281:EE_
-x-ms-office365-filtering-correlation-id: 59092d6b-48f5-4966-60c4-08dbab3b77c1
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: e0JxsSI5n6gysLJnIYdfy4ByZf9Vq2ECJnKDDcZ8cSj1HXm9cxrhkcWRSU7YMFjOpqusSy0ncnOoZw10foqliBtaxq8vw3w/yu5GFWLNw6egvqciJZzowdsnTfp/BI5jDFx+icfm4jGIyaF1Ibba5Hr6kZRP+nbzPtrgYwVvzk5aYi0Wdh0hVoewSc88p89WXDMBNRVu4Gu3Af9J55pFSrL9hxjvTmaUj/WhMZk+/IT5C+g8fjdm5/jDXDe3siRuYejFip3tXROcfakstjgjuNAzDLJO3WHGwShC2tFkx7VLRL/QvHedyNUjYUCgizDM9juGLRswTC5ZtSzOurZc2A1GSr5xRuCAy7D2wYs4LTuz1dr/cYDHCHUhAX98gP9zEzJd4YzVKuYfEVwlCJsm6jEXzX+5H75AgH4ktlHuI+I9kTwMyuMhiToPYXH5w0dn8kybXncrZzw9zhistyvnxkW0oWnpTAxXBOXydCvaR8CHRvmvtrsJHEbC5louEkGBLM04psjwTHgLs+fZe7Ii/H7oHD/5HLmfUygEZM6ykd3g9p5qEU7q0XwsT6sqZR5mr8sXJZnLjWDcvnQReNWBr2ptYTAVb4g10N5iICFQRbuGp0iLegMEj88YU+RJrRCe
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BYAPR12MB4791.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(396003)(136003)(346002)(366004)(376002)(39860400002)(186009)(1800799009)(451199024)(41300700001)(7416002)(122000001)(38100700002)(38070700005)(71200400001)(478600001)(86362001)(2616005)(83380400001)(26005)(1076003)(6512007)(6486002)(6506007)(66556008)(66946007)(76116006)(36756003)(6916009)(54906003)(316002)(64756008)(66446008)(66476007)(2906002)(4326008)(8676002)(8936002)(5660300002);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?am9vSTR0eDZ5aytEaHhTRWhIRjBvLzhadjdUYWhqTk5Dc0pqZDQyZXBUb3Ba?=
- =?utf-8?B?NWNsMCszNlVGdUxtSmNwbEVFeW9TZVN5bDNDQ3pJd1NBbnBFRm5rQUFFdUJO?=
- =?utf-8?B?WE1ZT01CMXBHZVNJbmtXaXhNQkxPcy9zYjRuSEhmeFZqT3I1Q1A0SDhRWVBm?=
- =?utf-8?B?TlpjcS9ZRHphalE0aTFWbmNzOWJHYmlCMU9oTDdvQlhqYmZRaU14RjQxMGl3?=
- =?utf-8?B?OG5rWjVvY01oazJvcDMzSlVlVnZLQjdKcDJmYWZCMFNrc2JpSWI2YWhlaTJs?=
- =?utf-8?B?L2ZxZEJ3c0FBNUgxS0xsenIreURCVC82aUtJWm05Z3BlTW5JWi93My9qY29O?=
- =?utf-8?B?TW5xN1R0YnIySHFkUXdobzhMVm5sNVZ1RWJQSEpjcGgyZm41SzJoWDRJa3NH?=
- =?utf-8?B?NFg0SnoxYXp6MC8zeTU2U1RNS1E3NmNKc2pNYnhtbzdxaFgyR1pJa2NtMkpl?=
- =?utf-8?B?VmhKT1IvVVNIdTU5SDFQdTFwNDRaUlFpYUxzQ09RMzZRcmZxeE1vZ0NRVW90?=
- =?utf-8?B?ZHZ0Z3lKKzc3bjBjTUJZNFBpbnMzUkJQN2dlSExZN3pnMDYraEtjYzV3cjVP?=
- =?utf-8?B?M1FsQUdMWlpibm1vQk1ZWVlBTld6MG5GMG9pTkEvdnFxRExQVlo3RFR3ZzJy?=
- =?utf-8?B?UnZlbFAzWDZ4T2VBeW1RalZxa2Nldkg3TlVMcDFKQUVVZXJlQlFLajRJVlky?=
- =?utf-8?B?SGRSUlFEOG1IM3htMmhuWFBheCtTS1VzOTFyUC9YbWVLQTZVcVhncGZGRThU?=
- =?utf-8?B?UzZ0V0FOYlF6OU5wbzZtR2VQemc5RElqZmtsUTB1L2tXa0h4RGFVTTRXdWJv?=
- =?utf-8?B?OHUzYVUzMEpVNlhWRU5veTNyWWVncUk0dFNQcDh4Z3F4YnZpT3BNT0I2NTls?=
- =?utf-8?B?WS95UGV1UVQwVC96Y21tMUFpSFJkTThBOVp3NGZ6SERvOGw1SXZ5NTl4RGtw?=
- =?utf-8?B?cnczZXJxc1NCN000N3duR0dBSU9Ydjh4b2NMZ3Biei9IWHJtSWt4N3FCaGhQ?=
- =?utf-8?B?WHMvbUtiSWRIRWJLUWpwT2RNVEx0Z2pVUFRMV2pWT3NJeFc5T1RaVUZOZG96?=
- =?utf-8?B?VFFwNVpPeEpJL29JMGFzNjIwOTdFMHNsMUltMTcvdWxOODlidW14aitsVE5K?=
- =?utf-8?B?RUdtUGJnenJSR3lsTFVrL2lqOTJPRXlxUHVPZENHeFdSenJ0aU1tb0NTYnpI?=
- =?utf-8?B?ZExQYktSZzFVSll2Z3lmRVJYajVWRk5teXdHa1JwOC9lTURWMjVDdjYzL1ZR?=
- =?utf-8?B?WnUrSXRkeXRUcHFhdWpXTDdxTGRxdXJ6eDRPMzQ0dFVxZE4rOWtJbS8yNmt0?=
- =?utf-8?B?Z2ZyKzhJNTVCNW8xRHFMRkg5S2JnK0dyVnV0cVZzRVpVeWRXZW9tRjlpdDVw?=
- =?utf-8?B?WDVaWDlEUURHWHdWMnhMd2NqZHhnaFd4MHR4NXJHeTU3aW80YXFoZmVUbU9p?=
- =?utf-8?B?L1pLa1cvRWc3dUxuTUxtYnRrZUp3UXhVamRCQnpKZWFDZVk3L3lady9zS3pk?=
- =?utf-8?B?OG9hNTNhck9yTGtoWTN2VnhNSXg0WmgxVENqTWFGOUwxV2N6ekVtT2R1eVNR?=
- =?utf-8?B?U0grdmxsQlVWTFhSNVV2c3hGWU04bG55T1V3MTF1dTVKc055ckNDSlJ6aXNk?=
- =?utf-8?B?QnVpM0xwUGE1bS9iQkFpdkVqMWhjVk9sOTBNc1czR3FrZmdDUUFFTWg0K2hy?=
- =?utf-8?B?b1FqdlJZTEJFUVRIUUM3TmJPMzhHZFlFVk1tUFhGR1Q4eDZxazlnWmlWNkU5?=
- =?utf-8?B?V1lUR3B2S0tLdUJ6TFBIbEJVVlNKZzB1bWN6QjUzMzJEOElHNmlQbUF3Q1BX?=
- =?utf-8?B?VGxSV2VkMHhGVmpXR3NPZ3FJSDc4VFcvVmNaT05DTFR2clluRWlybmRIb3hX?=
- =?utf-8?B?U2RrOGxDUzhIRkI1WlBwdHRud0p3ZWFmaGNwS1VVYmUrcmxrSTRReG04YnRv?=
- =?utf-8?B?bi9uMHRBT0NIemVjczhkdkdCRFVaT0VzNlJQLzMrVkRQenI1c0I0MmtZU0Vo?=
- =?utf-8?B?NWRMZGtRUmlvZ29ucmhhOVVXMXcvQWd5Nmx4QTFPam1zWWQwYnJaY0FKeGlw?=
- =?utf-8?B?Zld1alZ3bnZaN1V0cGgrYngyVkhFM2hPUVd3ZktWUkdPd0lHRWlub2JLWGZY?=
- =?utf-8?B?NWNDNTBVWGRHL1g3ZXpLWVVxTFNiZWNIb1U4dHhaY0QyVVV1TTY5MmNxSzFC?=
- =?utf-8?B?cFE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <0C0021AE0474234E8B93CD4414D72B46@namprd12.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	Fri, 01 Sep 2023 23:42:30 +0000
+Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-68a4bcf8a97so1906352b3a.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 01 Sep 2023 16:42:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1693611745; x=1694216545; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=B9XoCDC9hhqnTfSWxv39xNaYsVGjr9sqIdwDF3cygwY=;
+        b=GZrq/OMxKnvPB+pUJ4xUprW6ijGjGFrj9LFjxa2brjrnsDUxom3a1ajAoqOhLynnG3
+         cNYj0SnAW4RM6Vi+IGQES61h+GursIm17KWtzSxmQShvatf0cA1qXLHPxaZKSq7X/KoN
+         hrydshJM8Q4jXT/hhbluEnheeG/Y9J2jgT0Os=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1693611745; x=1694216545;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=B9XoCDC9hhqnTfSWxv39xNaYsVGjr9sqIdwDF3cygwY=;
+        b=KgKh/ogJBjkteBYxPNaZ0qCwmsE/NMfGXW8bfkdaDS3y6NzHFGKRIEhn3tvOuQtof+
+         XZhh+r7/OM7knoWoY21c2DvFqNcG9w5IhTM2X68nY6swgA8yS8/mozqZ8xTn9AJhQL5I
+         w4cEAbio69Z09NIzPaoYWCUP4U30ZMqmkQVUOAhiR94CJRon0lyTVuNnGNsaVcbh+HYk
+         hHmfXiaA0g+oLadxKNova0FN7xXoZT01riDxrOOgLVOmftpe2rrWOdOhObM8uPn9deMM
+         n70LYMxs3R/NNDyN6fZ+Ng1d2q1vsbkVGSr04IXrvTIeohRRFFs/gXr3q3gjJvGn9u2E
+         6Fww==
+X-Gm-Message-State: AOJu0YzY/NznGTxbWwHKIuCGhCGc5DCfl2YtdtCkRV+7QYhhnadojdyP
+	hONP3myniXczm84Ke1r0GbSg5Q==
+X-Google-Smtp-Source: AGHT+IF3gOcPwfPrD/s0fytOUG/vRSOI4D+jnCuIcvxglrqeHeLMaTT6rOOv/A4qBfa/r+8zKOWj4g==
+X-Received: by 2002:a05:6a00:1916:b0:68b:fb93:5b4e with SMTP id y22-20020a056a00191600b0068bfb935b4emr4542619pfi.26.1693611745505;
+        Fri, 01 Sep 2023 16:42:25 -0700 (PDT)
+Received: from tictac2.mtv.corp.google.com ([2620:15c:9d:2:8d94:1fc5:803c:41cc])
+        by smtp.gmail.com with ESMTPSA id o9-20020a639a09000000b0056c3a4a3ca5sm3326390pge.36.2023.09.01.16.42.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 01 Sep 2023 16:42:24 -0700 (PDT)
+From: Douglas Anderson <dianders@chromium.org>
+To: dri-devel@lists.freedesktop.org,
+	Maxime Ripard <mripard@kernel.org>
+Cc: Douglas Anderson <dianders@chromium.org>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Bokun.Zhang@amd.com,
+	Hawking.Zhang@amd.com,
+	James.Zhu@amd.com,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Victor.Zhao@amd.com,
+	Xinhui.Pan@amd.com,
+	YiPeng.Chai@amd.com,
+	abrodkin@synopsys.com,
+	airlied@gmail.com,
+	alexander.deucher@amd.com,
+	alim.akhtar@samsung.com,
+	amd-gfx@lists.freedesktop.org,
+	angelogioacchino.delregno@collabora.com,
+	anitha.chrisanthus@intel.com,
+	biju.das.jz@bp.renesas.com,
+	bskeggs@redhat.com,
+	christian.koenig@amd.com,
+	chunkuang.hu@kernel.org,
+	daniel@ffwll.ch,
+	edmund.j.dea@intel.com,
+	festevam@gmail.com,
+	geert+renesas@glider.be,
+	inki.dae@samsung.com,
+	jonathanh@nvidia.com,
+	kernel@pengutronix.de,
+	kherbst@redhat.com,
+	kieran.bingham+renesas@ideasonboard.com,
+	krzysztof.kozlowski@linaro.org,
+	kyungmin.park@samsung.com,
+	l.stach@pengutronix.de,
+	laurent.pinchart@ideasonboard.com,
+	laurentiu.palcu@oss.nxp.com,
+	le.ma@amd.com,
+	lijo.lazar@amd.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-imx@nxp.com,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-mips@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-tegra@vger.kernel.org,
+	linux@armlinux.org.uk,
+	liviu.dudau@arm.com,
+	lyude@redhat.com,
+	maarten.lankhorst@linux.intel.com,
+	mario.limonciello@amd.com,
+	matthias.bgg@gmail.com,
+	mdaenzer@redhat.com,
+	mperttunen@nvidia.com,
+	nouveau@lists.freedesktop.org,
+	orsonzhai@gmail.com,
+	p.zabel@pengutronix.de,
+	patrik.r.jakobsson@gmail.com,
+	paul@crapouillou.net,
+	rfoss@kernel.org,
+	robh@kernel.org,
+	sam@ravnborg.org,
+	shawnguo@kernel.org,
+	shiwu.zhang@amd.com,
+	srinivasan.shanmugam@amd.com,
+	steven.price@arm.com,
+	sw0312.kim@samsung.com,
+	thierry.reding@gmail.com,
+	tzimmermann@suse.de,
+	zhang.lyra@gmail.com
+Subject: [RFT PATCH 00/15] drm: non-drm-misc drivers call drm_atomic_helper_shutdown() at the right times
+Date: Fri,  1 Sep 2023 16:41:11 -0700
+Message-ID: <20230901234202.566951-1-dianders@chromium.org>
+X-Mailer: git-send-email 2.42.0.283.g2d96d420d3-goog
 MIME-Version: 1.0
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: =?utf-8?B?cU1VWlFPQnErQVZ4bm1taWlIbExkWVdTUzZGZDQxNUNCQTBpK202a1JLS2Ev?=
- =?utf-8?B?OE5URWRVL0p0RGV0R1VMVDhXZGp1ZEdqTVFVWjZEZVRLN2tBOFhHL25PSUNL?=
- =?utf-8?B?WThWcU9FdzFwQmNTRGx0UnhaL0FlZ0xuSytXeDZPOENySitxVlcrZWdRWk9Q?=
- =?utf-8?B?dU90QW1uRkRLNkpHT2tKbFJrNmsvZDd3SDNmZVNPWUhwSU96UU5qd0NaR21s?=
- =?utf-8?B?dlRZN0ZtV2tBeVAxcUJiY2lwdnVBb0xwVWd2YnhhV2xhVU5lRlFLNW1QZHRk?=
- =?utf-8?B?OUl6S0EydDkxVUF6NzIzZDNWa2Q0WU5keFBxOGkrNDlhc0FxSnBNWURsbmtM?=
- =?utf-8?B?VUx0UlIwejJMQmEraXExaGF5cFlPUWtFTTk1bnRhM2Y5cjE0R09QSG1FT2Rx?=
- =?utf-8?B?RFhzUmtqTEVJczBLdWNtZ3NrY2FVK3hSRXhPcEhrU2NjaU5qR0xvaWpYRVJM?=
- =?utf-8?B?MDREdFp0RUljN1NicTIyT3d6eHhHVC9wd2g2RGRXZ3ZDNTBnTkdOUXhJWk95?=
- =?utf-8?B?eW5DcE50Tm96Qy9JQmlQWGMwVndQRzhNMHBsK216d3ZPM1FqSG1zYlZtbVhk?=
- =?utf-8?B?QS9odHVuRDBJOU0vMVhwWk1idWhQTFNXTEhaaGFzbHZTb09TRm5VMWVlMUsy?=
- =?utf-8?B?YnVyRGVIY2NSaFBZQ2h5Ym8xeEZPblByYjNyR20vUHRXVVF1MVRoWHhnK014?=
- =?utf-8?B?UElJa3VCZTdrbVU0RHBSQ09tZzNRbVJUak9NaXNKYlZvLzVJR3pwMHVUbXFy?=
- =?utf-8?B?UEx1Z1VUUVkwWkk5UFZPd1N3NkhQMmpoZUFaL203RnhxWlNuL2o5eWx0RXUr?=
- =?utf-8?B?NHVDMC9Da1VjMk1IUGtjTENVVnpFa2lWaHRjbldURFVhWFgwZEdhbmZZemhQ?=
- =?utf-8?B?MXprRkVJU005K1RSYXRSQzhtcGVCY0ZkRjFQS3JacSt1ODZ3ZUM0ZWVaNWl4?=
- =?utf-8?B?TFVjaVNLN0NnSnpqS2FiQnFJcWIrU3h0K3FSK1N2UTduSUt2UFpmaVdjNXQ1?=
- =?utf-8?B?SlNtMnRJSEdiV2JPamoyVlNqeWJ5c1NCQzhXMGFKNGVsenpzSlJzR1AvUElB?=
- =?utf-8?B?eURGM0RML2xjbWhEcndHSU1NYm5mblRHUXhTYTRMQnlSbmNaR3Z6RGpIektR?=
- =?utf-8?B?aGd1YW5pYVhack5rWU40MkxibUhQREJtZm1QUTVJMDlGZVpIVW9TcEpqYmEv?=
- =?utf-8?B?ak1BbXp4ZG4yVTNmcmlhZGlORGU0dzltY054emkxcnJmVEJKeis3NWRtUXFK?=
- =?utf-8?B?d01ESHhKbjc2NkRlRjZFWFpKeEpyeGkxRDUrTDZoRFByZ1k4czNobWZDUTBK?=
- =?utf-8?B?UjdHbmtFTTFVb0tSbldxRXNmOHpLdmR0bXFwZytoVUpqTjY5aVhiYllDb25W?=
- =?utf-8?B?NktzblNBR2FpdldveElacDJIalAyU0F6VUdxVndiQURHMjQ4WVdtcXJVc1cr?=
- =?utf-8?B?SFpCcnBCTUxxZ0dJVkdpTzZ0NzJTZ1MvTGo4bUJKUy9qTlJqUjhJZzd6Z0lo?=
- =?utf-8?B?S3BPM2tnbEFBRk1uZVFUMjl3M21mR3VVNk9SYUVQSUVVQU4ySWUySUlHTXNY?=
- =?utf-8?B?bzNTMWp1Rm51ZDZnRTdSaEhyay9UYldFU1ROSUZmdy92ZEZUWDF0ZEJ5VURG?=
- =?utf-8?B?UytReFJvZE9DVlErb3hUR0txVkdqYTIrMHJaSkdQT1dUdWFnYngwRXlLVmJq?=
- =?utf-8?B?cEovdFNlRWo3RnZsZVcxdGFWZEJvOWU0V21NQ1REYTJwZFNoYXZkV1RXM2x1?=
- =?utf-8?B?NXptRXF1ZzlKS3g2QlZsNnRSWnBENlVPRmxpV2FtSm5oRGloZDZYZGovVWRE?=
- =?utf-8?Q?vhVFT7DcoYzHadDlnG2Oq9lvEQ9XwDPOkf/uk=3D?=
-X-OriginatorOrg: synopsys.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR12MB4791.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 59092d6b-48f5-4966-60c4-08dbab3b77c1
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Sep 2023 22:33:30.3512
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: c33c9f88-1eb7-4099-9700-16013fd9e8aa
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ZoiIGuYAI84JAmDZzJ5JSRFGxlwSn6cDoC4cNfagsAyarp/5W4RD8IpxzKEf2931VOBSZz472uLw433trDth1Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB9281
-X-Proofpoint-GUID: 33wO1fNm7tecgS4OBUAVUFLsOBQ7ZfYZ
-X-Proofpoint-ORIG-GUID: 33wO1fNm7tecgS4OBUAVUFLsOBQ7ZfYZ
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-09-01_19,2023-08-31_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_active_cloned_notspam policy=outbound_active_cloned score=0
- adultscore=0 mlxlogscore=465 impostorscore=0 bulkscore=0 spamscore=0
- clxscore=1011 priorityscore=1501 suspectscore=0 malwarescore=0 mlxscore=0
- phishscore=0 lowpriorityscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2308100000 definitions=main-2309010211
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230901_153433_701884_42E30934 
-X-CRM114-Status: GOOD (  15.14  )
+X-CRM114-CacheID: sfid-20230901_164228_552137_EAC89645 
+X-CRM114-Status: GOOD (  30.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -260,42 +152,140 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksDQoNClBsZWFzZSBDYyBtZSBmb3IgY2hhbmdlcyByZWxhdGVkIHRvIGR3YzMuDQoNCk9uIFNh
-dCwgU2VwIDAyLCAyMDIzLCBEaW5neWFuIExpIHdyb3RlOg0KPiBDdXJyZW50bHkgdGhlcmUgYXJl
-IHRoZXJlIG1ham9yIGdlbmVyYXRpb25zIHdoZW4gc3BlYWtpbmcgb2YNCj4gVVNCX1NQRUVEX1NV
-UEVSX1BMVVMgZGV2aWNlcy4gSG93ZXZlciwgdGhleSBhY3R1YWxseSBzdGFuZHMNCj4gZm9yIGRp
-ZmZlcmVudCBwaHlzaWNhbCBzcGVlZHMuIEdFTl8yeDIgbWVhbnMgMjBHYnBzLCB3aGlsZQ0KPiB0
-aGUgb3RoZXJzIG1lYW4gMTBHYnBzLiBTbyBpbiBvcmRlciB0byBjb25maXJtIDIwR2JwcywgYm90
-aA0KPiBzcGVlZCBhbmQgZ2VuZXJhdGlvbiBuZWVkIHRpIGJlIGNoZWNrZWQuIFRoaXMgY2F1c2Vz
-IGEgdHJvdWJsZQ0KPiBmb3IgaW9jdGwgVVNCREVWRlNfR0VUX1NQRUVEIHNpbmNlIGl0IGNhbiBv
-bmx5IHJldHVybiBzcGVlZA0KPiB2YWx1ZSB0byB1c2Vyc3BhY2UuDQo+IA0KPiBJbiBvcmRlciBu
-b3QgdG8gYWRkIGEgbmV3IGlvY3RsIHRvIGdldCBzc3AgZ2VuZXJhdGlvbiwgZXh0ZW5kaW5nDQo+
-IHVzYl9kZXZpY2Vfc3BlZWQgaXMgYSBnb29kIG9wdGlvbi4gVGhlIHNpZGUgZWZmZWN0IGlzIHRo
-YXQNCj4gVVNCX1NQRUVEX1NVUEVSX1BMVVMgaGFzIGJlZW4gdXNlZCBpbiBsb3RzIG9mIHBsYWNl
-cyBhbmQNCj4gaXQgYWxzbyB0YWtlcyBzb21lIGVmZm9ydCB0byBnbyB0aHJvdWdoIGFsbCBvZiB0
-aGVtIGFuZCBjaGVjaw0KPiB3aGV0aGVyIHRoZSBuZXcgc3BlZWQgc2hvdWxkIGJlIHVzZWQgdG9v
-Lg0KPiANCj4gQmVzaWRlcywgYXMgc3VnZ2VzdGVkIGJ5IEFsZW4sIHNzcF9yYXRlIGlzIG5vdCBh
-IHByb3BlciBuYW1lLA0KPiBjaGFuZ2UgaXQgdG8gc3NwX2dlbi4gQW5kIGNoYW5nZSBhbGwgZnVu
-Y3Rpb25zL3N0cnVjdCBmaWxlZHMNCj4gZW5kZWQgd2l0aCBzc3BfcmF0ZSB0byBzc3BfZ2VuLiBB
-bmQgdGhlcmUgaXMgYWxzbyBzb21lIGNvZGUNCj4gcmVmYWN0b3IgdG8gcmVkdWNlIGR1cGxpY2F0
-ZSBkZWZpbml0aW9uIG9mIHN0cmluZ3MgYW5kIGluY3JlYXNlDQo+IHRoZSB1dGlsaXphdGlvbiBv
-ZiBjb21tb25seSBkZWZpbmVkIHV0aWxpdGllcy4NCj4gDQo+IFNpZ25lZC1vZmYtYnk6IERpbmd5
-YW4gTGkgPDE4NTAwNDY5MDMzQDE2My5jb20+DQo+IC0tLQ0KDQpDYW4gd2Ugc3BlbGwgb3V0IHRo
-ZSB3aG9sZSB0aGluZyBpbnN0ZWFkIG9mIFVTQl9TUEVFRF9TVVBFUl9QTFVTX0JZMg0KKGllLiBV
-U0JfU1BFRURfU1VQRVJfUExVU19HRU5fMngyIGFzIHlvdSBpbnRlbmRlZCkgaW5zdGVhZCBvZiBq
-dXN0IHRoZQ0KbGFuZSBjb3VudC4NCg0KVGhlcmUgYXJlIFN1cGVyU3BlZWQgUGx1cyBnZW5lcmF0
-aW9uIF9hbmRfIGxhbmUgY291bnQuIFRoYXQncyB3aHkgSQ0KZGlkbid0IG5hbWUgInVzYl9zc3Bf
-Z2VuIiB0aGF0IG9ubHkgcmVmbGVjdHMgdGhlIGdlbmVyYXRpb24gYW5kIG5vdCB0aGUNCmxhbmUg
-Y291bnQuIEFsc28sIEkgZGlkbid0IGV4dGVuZCB1c2JfZGV2aWNlX3NwZWVkIGJlY2F1c2UgZ2Vu
-IFh4WSBhcmUNCmFsbCBhIHNpbmdsZSBzcGVlZDogU3VwZXJTcGVlZCBQbHVzLg0KDQpJZiB5b3Un
-cmUgcGxhbm5pbmcgdG8gZG8gaXQgdGhpcyB3YXksIHdoeSBub3QgYWRkIHRoZSBvdGhlciBzcGVl
-ZHMgKHN1Y2gNCmFzIGdlbiAxeDIpIHRvIHVzYl9kZXZpY2Vfc3BlZWQgZW51bSB0b28/IFRoZW4g
-d2UgY2FuIGRyb3AgdGhlDQp1c2Jfc3NwX3JhdGUgZW51bS4gSWYgd2UncmUgZ29pbmcgdG8gY2hl
-Y2sgbXVsdGlwbGUgZW51bSBmb3IgU3VwZXJTcGVlZA0KUGx1cywgd2UgcHJvYmFibHkgbmVlZCBh
-IHVzYl9kZXZpY2VfaXNfc3VwZXJzcGVlZF9wbHVzKCkgZnVuY3Rpb24uDQoNCk5vdyB3ZSBuZWVk
-IHRvIGF1ZGl0IGFsbCB0aGUgZ3JlYXRlci9sZXNzZXIgc3BlZWQgY2hlY2tzIHRoYXQgdXNlIDwg
-b3IgPg0KdG8gbWFrZSBzdXJlIHRoYXQgdGhleSBhcmUgdXNlZCBob3cgdGhleSB3ZXJlIGludGVu
-ZGVkIHRvLg0KDQpTaW5jZSB0aGVzZSBjaGFuZ2VzIGFyZSBub3Qgc2ltcGxlIGFuZCB3aWxsIHRv
-dWNoIG9uIG11bHRpcGxlIHBsYWNlcywNCnBsZWFzZSBzcGxpdCB0aGlzIHBhdGNoIG91dC4NCg0K
-VGhhbmtzLA0KVGhpbmg=
+
+NOTE: in order to avoid email sending limits on the cover letter, I've
+split this patch series in two. Patches that target drm-misc and ones
+that don't. The cover letter of the two is identical other than this note.
+
+This patch series came about after a _long_ discussion between me and
+Maxime Ripard in response to a different patch I sent out [1]. As part
+of that discussion, we realized that it would be good if DRM drivers
+consistently called drm_atomic_helper_shutdown() properly at shutdown
+and driver remove time as it's documented that they should do. The
+eventual goal of this would be to enable removing some hacky code from
+panel drivers where they had to hook into shutdown themselves because
+the DRM driver wasn't calling them.
+
+It turns out that quite a lot of drivers seemed to be missing
+drm_atomic_helper_shutdown() in one or both places that it was
+supposed to be. This patch series attempts to fix all the drivers that
+I was able to identify.
+
+NOTE: fixing this wasn't exactly cookie cutter. Each driver has its
+own unique way of setting itself up and tearing itself down. Some
+drivers also use the component model, which adds extra fun. I've made
+my best guess at solving this and I've run a bunch of compile tests
+(specifically, allmodconfig for amd64, arm64, and powerpc). That being
+said, these code changes are not totally trivial and I've done zero
+real testing on them. Making these patches was also a little mind
+numbing and I'm certain my eyes glazed over at several points when
+writing them. What I'm trying to say is to please double-check that I
+didn't do anything too silly, like cast your driver's drvdata to the
+wrong type. Even better, test these patches!
+
+I've organized this series like this:
+1. One patch for all simple cases of just needing a call at shutdown
+   time for drivers that go through drm-misc.
+2. A separate patch for "drm/vc4", even though it goes through
+   drm-misc, since I wanted to leave an extra note for that one.
+3. Patches for drivers that just needed a call at shutdown time for
+   drivers that _don't_ go through drm-misc.
+4. Patches for the few drivers that had the call at shutdown time but
+   lacked it at remove time.
+5. One patch for all simple cases of needing a call at shutdown and
+   remove (or unbind) time for drivers that go through drm-misc.
+6. A separate patch for "drm/hisilicon/kirin", even though it goes
+   through drm-misc, since I wanted to leave an extra note for that
+   one.
+7. Patches for drivers that needed a call at shutdown and remove (or
+   unbind) time for drivers that _don't_ go through drm-misc.
+
+I've labeled this patch series as RFT (request for testing) to help
+call attention to the fact that I didn't personally test any of these
+patches.
+
+If you're a maintainer of one of these drivers and you think that the
+patch for your driver looks fabulous, you've tested it, and you'd like
+to land it right away then please do. For non-drm-misc drivers there
+are no dependencies here. Some of the drm-misc drivers depend on the
+first patch, AKA ("drm/atomic-helper: drm_atomic_helper_shutdown(NULL)
+should be a noop"). I've tried to call this out but it also should be
+obvious once you know to look for it.
+
+I'd like to call out a few drivers that I _didn't_ fix in this series
+and why. If any of these drivers should be fixed then please yell.
+- DRM driers backed by usb_driver (like gud, gm12u320, udl): I didn't
+  add the call to drm_atomic_helper_shutdown() at shutdown time
+  because there's no ".shutdown" callback for them USB drivers. Given
+  that USB is hotpluggable, I'm assuming that they are robust against
+  this and the special shutdown callback isn't needed.
+- ofdrm and simpledrm: These didn't have drm_atomic_helper_shutdown()
+  in either shutdown or remove, but I didn't add it. I think that's OK
+  since they're sorta special and not really directly controlling
+  hardware power sequencing.
+- virtio, vkms, vmwgfx, xen: I believe these are all virtual (thus
+  they wouldn't directly drive a panel) and adding the shutdown
+  didn't look straightforward, so I skipped them.
+
+I've let each patch in the series get CCed straight from
+get_maintainer. That means not everyone will have received every patch
+but everyone should be on the cover letter. I know some people dislike
+this but when touching this many drivers there's not much
+choice. dri-devel and lkml have been CCed and lore/lei exist, so
+hopefully that's enough for folks. I'm happy to add people to the
+whole series for future posts.
+
+[1] https://lore.kernel.org/lkml/20230804140605.RFC.4.I930069a32baab6faf46d6b234f89613b5cec0f14@changeid
+
+
+Douglas Anderson (15):
+  drm/armada: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/imx/dcss: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/ingenic: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/kmb: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/mediatek: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/nouveau: Call drm_atomic_helper_shutdown() or equiv at shutdown
+    time
+  drm/tegra: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/arcpgu: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/amdgpu: Call drm_atomic_helper_shutdown() at shutdown time
+  drm/sprd: Call drm_atomic_helper_shutdown() at remove time
+  drm/exynos: Call drm_atomic_helper_shutdown() at shutdown/unbind time
+  drm/gma500: Call drm_helper_force_disable_all() at shutdown/remove
+    time
+  drm/imx/ipuv3: Call drm_atomic_helper_shutdown() at shutdown/unbind
+    time
+  drm/radeon: Call drm_helper_force_disable_all() at shutdown/remove
+    time
+  drm/renesas/shmobile: Call drm_helper_force_disable_all() at
+    shutdown/remove time
+
+ drivers/gpu/drm/amd/amdgpu/amdgpu.h           |  1 +
+ drivers/gpu/drm/amd/amdgpu/amdgpu_device.c    | 10 +++
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c       |  2 +
+ drivers/gpu/drm/armada/armada_drv.c           |  8 +++
+ drivers/gpu/drm/exynos/exynos_drm_drv.c       | 11 ++++
+ drivers/gpu/drm/gma500/psb_drv.c              |  8 +++
+ drivers/gpu/drm/imx/dcss/dcss-drv.c           |  8 +++
+ drivers/gpu/drm/imx/dcss/dcss-kms.c           |  7 ++
+ drivers/gpu/drm/imx/dcss/dcss-kms.h           |  1 +
+ drivers/gpu/drm/imx/ipuv3/imx-drm-core.c      | 11 ++++
+ drivers/gpu/drm/ingenic/ingenic-drm-drv.c     | 66 ++++++++++++-------
+ drivers/gpu/drm/kmb/kmb_drv.c                 |  6 ++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  9 +++
+ drivers/gpu/drm/nouveau/nouveau_display.c     |  9 +++
+ drivers/gpu/drm/nouveau/nouveau_display.h     |  1 +
+ drivers/gpu/drm/nouveau/nouveau_drm.c         | 13 ++++
+ drivers/gpu/drm/nouveau/nouveau_drv.h         |  1 +
+ drivers/gpu/drm/nouveau/nouveau_platform.c    |  6 ++
+ drivers/gpu/drm/radeon/radeon_drv.c           |  7 +-
+ .../gpu/drm/renesas/shmobile/shmob_drm_drv.c  | 10 +++
+ drivers/gpu/drm/sprd/sprd_drm.c               |  4 +-
+ drivers/gpu/drm/tegra/drm.c                   |  6 ++
+ drivers/gpu/drm/tiny/arcpgu.c                 |  6 ++
+ 23 files changed, 187 insertions(+), 24 deletions(-)
+
+-- 
+2.42.0.283.g2d96d420d3-goog
+
 
