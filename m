@@ -4,85 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EE17CA0FF9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Sep 2023 23:42:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DF79C001DB
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Sep 2023 23:49:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vomcb5R4YlkPi6yAEBTRSlkjqsgpX/8uar7hs/ep3QM=; b=oOooqsqZd3PnJu07IApOc8mym4
-	fYyaOJzH5wc5i44ip5tzsgJ06bcvyxPjRdG7+FlHt7am7ohOAwWIuYHHCOxylZXxLQjcB6CHl4ANj
-	hbsh2yTbTw0L0zbWbHkGeEQzTI1iRfAL32TeJz06jwy7AsLqD5xYE3RnI5WOg3DQubUpTpmPkmfeA
-	a2N7hsKBqVkDWSVOVpGvpJPtdrVSmRUNVyxtPieuKYB9xSpI1TfVuNLYB2TCawcPYnBSKNhW5Dsnb
-	Rdgs/AVdHSCcL+hn0MACCSDd9eFbD4SJgOvXxBbn5jTQiNJp6WsvUHZYxHyyf7Y90iEmQGSVw4Yrg
-	HSMxwVOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pzU6bhR27CiAM2LhdFwGGPpMyRf5NAYqgaiGsnveqC4=; b=DfsdpHJHtURvdQTaeqfmMu366R
+	hThlVka+6XdzbRUxV5d+TlfX6dJ1+qAOtuwKe9lEzY/DoBWDHNOXCyZCyAVD8sKN2Lr3yEc2ZgGIU
+	tuqH9ndirAcUZtWBk9McfpS1ql1qlc8pzXmqKmCKsrDLjiOo6hHYbQeVxWAPL1YWQYuD9X5n71kdO
+	D+91W7MLD9OqKahu1bvVjP0vAQJcNCbiCu9Y5MheLSKc+DiQNjvD3gOLsQQaC6QtuN1G/+UtprQCf
+	st1n/TGVrokNfwLsdfn6b+PnOmOF1M+pKrv+779s2JytTUmGxlIWFSjjpp/j6WvDRhNjTgGeGhTkP
+	xkNu9Mfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qcDmk-000Vrk-09;
-	Fri, 01 Sep 2023 23:42:42 +0000
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
+	id 1qcaNH-001uEb-2f;
+	Sat, 02 Sep 2023 23:49:55 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qcDmh-000Vpo-2Q
-	for linux-mediatek@lists.infradead.org;
-	Fri, 01 Sep 2023 23:42:41 +0000
-Received: by mail-oi1-x22c.google.com with SMTP id 5614622812f47-3a88ef953adso1721026b6e.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 01 Sep 2023 16:42:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1693611758; x=1694216558; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Vomcb5R4YlkPi6yAEBTRSlkjqsgpX/8uar7hs/ep3QM=;
-        b=JEEUbTxsfyb4ZZFNIRvigrE91xqcyKcWmlbIfBUGywkkSN5SVq/nw7NnnKI69gZNe4
-         jGDFP4/GRgVgGSDimEvSoOlCI2i0xehZjHRsYjtIDtaGIWUVdQDyKdQ+fGkRb4HkumpU
-         4AHRrcRMAUlU13WOosYwPX4KeAiOFA7dA5rz8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693611758; x=1694216558;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Vomcb5R4YlkPi6yAEBTRSlkjqsgpX/8uar7hs/ep3QM=;
-        b=hQBH0L877MzbK61mbOeUf4aeaKBNf8Lrag7ekLJjjnS3cdzr9aYSLCyaBFF8Tw6Kxo
-         4N8knmNDZfEWPP4lrAey5vHh81sdYc9WGcqLyh+0/T7CqELaj11XBlgMP/4Sj5nTzzeH
-         LT5xKaeYYJoxG3KCaFIMj9UB+R466bOqmFFGc6Qm1YZKmZIkJqPkNYkvIY2KwFLkyLIm
-         ySTE40WraVEIrUejbKVZavXuOcPyLhkJzH6YxHjKnMQAO04mE4OeRvfp1M8uy91AvsX1
-         9KYVLA9svFJ/tvfOk3fu+Jv8x5KBEyZkumsDPHwU3NZhlA+6YgRwVOD0Zcj6+97krSFV
-         gn5A==
-X-Gm-Message-State: AOJu0YwCAXvYQIhhdFdRopGvzr8/o00keoRLIZzmAbRy7r2iYBqaKqdL
-	auiEoDFZWM+HNPpgEswtcYDEZg==
-X-Google-Smtp-Source: AGHT+IH161FDJO4p2lz9ilVRETKBQ5UyI7NChHl4VMZC9iScfWTxID2/lUEJl6hXY/byI5CWz2ElFA==
-X-Received: by 2002:a05:6808:28e:b0:3a7:a299:1201 with SMTP id z14-20020a056808028e00b003a7a2991201mr4034449oic.23.1693611755813;
-        Fri, 01 Sep 2023 16:42:35 -0700 (PDT)
-Received: from tictac2.mtv.corp.google.com ([2620:15c:9d:2:8d94:1fc5:803c:41cc])
-        by smtp.gmail.com with ESMTPSA id o9-20020a639a09000000b0056c3a4a3ca5sm3326390pge.36.2023.09.01.16.42.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Sep 2023 16:42:35 -0700 (PDT)
-From: Douglas Anderson <dianders@chromium.org>
-To: dri-devel@lists.freedesktop.org,
-	Maxime Ripard <mripard@kernel.org>
-Cc: Douglas Anderson <dianders@chromium.org>,
-	airlied@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	chunkuang.hu@kernel.org,
-	daniel@ffwll.ch,
+	id 1qcaNE-001uEB-1B;
+	Sat, 02 Sep 2023 23:49:53 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A261E60A66;
+	Sat,  2 Sep 2023 23:49:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B78AC433C8;
+	Sat,  2 Sep 2023 23:49:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1693698587;
+	bh=WLEg/L2hnbjXRMoDJB1stlTmgT1yeFxRUJokuo7n30I=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FXDbWWilw3KNrXl/6piZouse9X1uKcko4VfRhRhqeBv1zyLyv2jT/ydm1ajUnEWqY
+	 D3tUy7Avam1IeaGbvliex9uUxtSFyUnWoDOvmRhA9TzT+OOT7DSUxJTjmzEQN4cFHD
+	 JuNnsxyhjOH5SvdPq+AyqW/MbVwRp9NMNgP4CnI9haiPQGZHJOw6T3iZBj9SmK/D23
+	 mOYWjVs45C6a3SonW/5TvSBj+kOv6W0jfAzDwyuc8KZ/tDfERGXtbD8LoHnO+fjcye
+	 +8v9Fo3IFvdR88okr98BoQhiqoGNq98tNYuxRRu8pKLx9JgEQsFvoT6FtomomOJiSm
+	 24puQNt/G1HpQ==
+Date: Sun, 3 Sep 2023 01:49:43 +0200
+From: Andi Shyti <andi.shyti@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Qii Wang <qii.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	p.zabel@pengutronix.de
-Subject: [RFT PATCH 05/15] drm/mediatek: Call drm_atomic_helper_shutdown() at shutdown time
-Date: Fri,  1 Sep 2023 16:41:16 -0700
-Message-ID: <20230901164111.RFT.5.I2b014f90afc4729b6ecc7b5ddd1f6dedcea4625b@changeid>
-X-Mailer: git-send-email 2.42.0.283.g2d96d420d3-goog
-In-Reply-To: <20230901234202.566951-1-dianders@chromium.org>
-References: <20230901234202.566951-1-dianders@chromium.org>
+	=?utf-8?B?6YOt5bCP5qGl?= <joe@gainstrong.cn>
+Subject: Re: [PATCH] i2c: mt65xx: allow optional pmic clock
+Message-ID: <20230902234943.sua22ocjjviq2ymj@zenone.zhora.eu>
+References: <3bf827929a44c17bfb1bf1000b143c02ce26a929.1693102324.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <3bf827929a44c17bfb1bf1000b143c02ce26a929.1693102324.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230901_164239_786425_413D8C87 
-X-CRM114-Status: GOOD (  19.04  )
+X-CRM114-CacheID: sfid-20230902_164952_471980_56603051 
+X-CRM114-Status: GOOD (  25.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,62 +78,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Based on grepping through the source code this driver appears to be
-missing a call to drm_atomic_helper_shutdown() at system shutdown
-time. Among other things, this means that if a panel is in use that it
-won't be cleanly powered off at system shutdown time.
+Hi Daniel,
 
-The fact that we should call drm_atomic_helper_shutdown() in the case
-of OS shutdown/restart comes straight out of the kernel doc "driver
-instance overview" in drm_drv.c.
+On Sun, Aug 27, 2023 at 03:13:30AM +0100, Daniel Golle wrote:
+> Using the I2C host controller on the MT7981 SoC requires 4 clocks to
+> be enabled. One of them, the pmic clk, is only enabled in case
+> 'mediatek,have-pmic' is also set which has other consequences which
+> are not desired in this case.
+> 
+> Allow defining a pmic clk even in case the 'mediatek,have-pmic' propterty
+> is not present and the bus is not used to connect to a pmic, but may
+> still require to enable the pmic clock.
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  drivers/i2c/busses/i2c-mt65xx.c | 12 ++++++++----
+>  1 file changed, 8 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index 1a9b5a068ef1b..a8b5719c33729 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -1442,15 +1442,19 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+>  	if (IS_ERR(i2c->clocks[I2C_MT65XX_CLK_ARB].clk))
+>  		return PTR_ERR(i2c->clocks[I2C_MT65XX_CLK_ARB].clk);
+>  
+> +	i2c->clocks[I2C_MT65XX_CLK_PMIC].clk = devm_clk_get_optional(&pdev->dev, "pmic");
+> +	if (IS_ERR(i2c->clocks[I2C_MT65XX_CLK_PMIC].clk)) {
+> +		dev_err(&pdev->dev, "cannot get pmic clock\n");
+> +		return PTR_ERR(i2c->clocks[I2C_MT65XX_CLK_PMIC].clk);
 
-This driver users the component model and shutdown happens in the base
-driver. The "drvdata" for this driver will always be valid if
-shutdown() is called and we know that if the "drm" pointer in our
-private data is non-NULL then we need to call
-drm_atomic_helper_shutdown(). Technically with a previous patch,
-("drm/atomic-helper: drm_atomic_helper_shutdown(NULL) should be a
-noop"), we don't actually need to check to see if our "drm" pointer is
-NULL before calling drm_atomic_helper_shutdown(). We'll leave the "if"
-test in, though, so that this patch can land without any
-dependencies. It could potentially be removed later.
+you could have used dev_err_probe() here, but on the other hand
+it would be inconsistent because it's not used anywhere in this
+driver... so that it looks good to me:
 
-Suggested-by: Maxime Ripard <mripard@kernel.org>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-This commit is only compile-time tested.
+Reviewed-by: Andi Shyti <andi.shyti@kernel.org> 
 
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 961715dd5b11..8b1c9c992ca8 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -921,6 +921,14 @@ static int mtk_drm_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static void mtk_drm_shutdown(struct platform_device *pdev)
-+{
-+	struct mtk_drm_private *private = platform_get_drvdata(pdev);
-+
-+	if (private->drm)
-+		drm_atomic_helper_shutdown(private->drm);
-+}
-+
- static int mtk_drm_sys_prepare(struct device *dev)
- {
- 	struct mtk_drm_private *private = dev_get_drvdata(dev);
-@@ -952,6 +960,7 @@ static const struct dev_pm_ops mtk_drm_pm_ops = {
- static struct platform_driver mtk_drm_platform_driver = {
- 	.probe	= mtk_drm_probe,
- 	.remove	= mtk_drm_remove,
-+	.shutdown = mtk_drm_shutdown,
- 	.driver	= {
- 		.name	= "mediatek-drm",
- 		.pm     = &mtk_drm_pm_ops,
--- 
-2.42.0.283.g2d96d420d3-goog
-
+Andi
 
