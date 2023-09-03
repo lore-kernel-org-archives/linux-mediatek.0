@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78F0DC83F33
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Sep 2023 03:02:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30953C88CB2
+	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Sep 2023 03:02:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rw3r9+g/WKHWW1wvTQcopBqUB/kdAIeJk9jWEWz0hME=; b=nmy8OY4qrhzfwk8NoB6kztg3nr
-	ApsnEWJmIVCS7kvFLCTxOzltndoouWht0yCQTsqYr96uVT4r6P12ZMFwm5syKbFy1NsKBeH0c+xlj
-	b4YNfm+kh6zigBvZq26kREe+prmZgBzzw79443yrH7b5m+OkO2t2T1x4bt/Oat5qSbD4CI2x4gPdN
-	jwW9pAhMdQr837GOL5KLe1yu6wIAeSk0ZOssL4EZED08z659TWDI7B9LHdJUKnbKQaYgJG71m1NCj
-	I7sqAa4pk3w7WWid6nW+zUx/K6yQZi9KT8yxEzqqlnU02MaoDE9vygpWNU/5ziDLnWng9x1KQ1urm
-	5U1JsKTg==;
+	bh=6cM4IStufA0BLNJ/UhR94eCNXVQgunVRIYKEJ0giS/g=; b=grfzHSWypZ7f1f3qD90y7SEB2H
+	E0ZDRB9b4wSvY3pKfYC/gjqK037jJOANMaV/UjHoinZ1EwE5dGkUoc/+7zn93j7hzNmnkbMUZS4vm
+	Paw8bTobLY1r054x8nEvMplG1GUVaQoVN1QBeSY+paUkd5hsmTYRMCq3bSvwgV8ndQ/vNFXHCst4Q
+	CoiX9qM1SLOsNRKsWv1cklJdNLonK01wdpNa2ftVoESJpeITU5EXTn10IXWgpQ8Wz1f/wjExalqNI
+	RNOPIND5EqmGfll6ZD0c4+LaRwch+rzdWhUaA6zFDgGrLFpJjZ3gxfi2A+3p0qz3VY/wHrRfzk6Vq
+	dLl1qsDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qcdNw-0021Oe-11;
-	Sun, 03 Sep 2023 03:02:48 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1qcdNy-0021Q0-0O;
+	Sun, 03 Sep 2023 03:02:50 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qcdNr-0021MN-1N;
-	Sun, 03 Sep 2023 03:02:45 +0000
-Received: from kwepemi500008.china.huawei.com (unknown [172.30.72.57])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Rdc346M7BzrS4M;
-	Sun,  3 Sep 2023 11:00:48 +0800 (CST)
+	id 1qcdNt-0021N1-2Y;
+	Sun, 03 Sep 2023 03:02:47 +0000
+Received: from kwepemi500008.china.huawei.com (unknown [172.30.72.53])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Rdc0y55tHzNmWG;
+	Sun,  3 Sep 2023 10:58:58 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Sun, 3 Sep
- 2023 11:02:32 +0800
+ 2023 11:02:36 +0800
 From: Jinjie Ruan <ruanjinjie@huawei.com>
 To: <gregory.greenman@intel.com>, <kvalo@kernel.org>,
 	<briannorris@chromium.org>, <nbd@nbd.name>, <lorenzo@kernel.org>,
@@ -46,9 +46,9 @@ To: <gregory.greenman@intel.com>, <kvalo@kernel.org>,
 	<linux-wireless@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [PATCH wireless-next v2 1/3] wifi: iwlwifi: mei: Drop unnecessary error check for debugfs_create_dir()
-Date: Sun, 3 Sep 2023 11:02:14 +0800
-Message-ID: <20230903030216.1509013-2-ruanjinjie@huawei.com>
+Subject: [PATCH wireless-next v2 3/3] wifi: mt76: Drop unnecessary error check for debugfs_create_dir()
+Date: Sun, 3 Sep 2023 11:02:16 +0800
+Message-ID: <20230903030216.1509013-4-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230903030216.1509013-1-ruanjinjie@huawei.com>
 References: <20230903030216.1509013-1-ruanjinjie@huawei.com>
@@ -60,8 +60,8 @@ X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  kwepemi500008.china.huawei.com (7.221.188.139)
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230902_200243_657239_95BE7E09 
-X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-CacheID: sfid-20230902_200246_022890_5F7D2433 
+X-CRM114-Status: UNSURE (   9.28  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,7 +86,7 @@ the creation of DebugFS nodes. The debugfs APIs have a IS_ERR() judge in
 start_creating() which can handle it gracefully. So these checks are
 unnecessary.
 
-Fixes: 4ea7da5fad43 ("iwlwifi: mei: add debugfs hooks")
+Fixes: 17f1de56df05 ("mt76: add common code shared between multiple chipsets")
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 Suggested-by: Russell King (Oracle) <linux@armlinux.org.uk>
 ---
@@ -94,23 +94,22 @@ v2:
 - Remove the err check instead of using IS_ERR to replace NULL check.
 - Update the commit message and title.
 ---
- drivers/net/wireless/intel/iwlwifi/mei/main.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/debugfs.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/net/wireless/intel/iwlwifi/mei/main.c b/drivers/net/wireless/intel/iwlwifi/mei/main.c
-index 1dd9106c6513..3e25c78a8d58 100644
---- a/drivers/net/wireless/intel/iwlwifi/mei/main.c
-+++ b/drivers/net/wireless/intel/iwlwifi/mei/main.c
-@@ -1894,9 +1894,6 @@ static void iwl_mei_dbgfs_register(struct iwl_mei *mei)
- {
- 	mei->dbgfs_dir = debugfs_create_dir(KBUILD_MODNAME, NULL);
+diff --git a/drivers/net/wireless/mediatek/mt76/debugfs.c b/drivers/net/wireless/mediatek/mt76/debugfs.c
+index 57fbcc83e074..ae83be572b94 100644
+--- a/drivers/net/wireless/mediatek/mt76/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/debugfs.c
+@@ -109,8 +109,6 @@ mt76_register_debugfs_fops(struct mt76_phy *phy,
+ 	struct dentry *dir;
  
--	if (!mei->dbgfs_dir)
--		return;
--
- 	debugfs_create_ulong("status", S_IRUSR,
- 			     mei->dbgfs_dir, &iwl_mei_status);
- 	debugfs_create_file("send_start_message", S_IWUSR, mei->dbgfs_dir,
+ 	dir = debugfs_create_dir("mt76", phy->hw->wiphy->debugfsdir);
+-	if (!dir)
+-		return NULL;
+ 
+ 	debugfs_create_u8("led_pin", 0600, dir, &phy->leds.pin);
+ 	debugfs_create_u32("regidx", 0600, dir, &dev->debugfs_reg);
 -- 
 2.34.1
 
