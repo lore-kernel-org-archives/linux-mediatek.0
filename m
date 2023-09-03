@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DF79C001DB
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 Sep 2023 23:49:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B212C83F3F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Sep 2023 03:02:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pzU6bhR27CiAM2LhdFwGGPpMyRf5NAYqgaiGsnveqC4=; b=DfsdpHJHtURvdQTaeqfmMu366R
-	hThlVka+6XdzbRUxV5d+TlfX6dJ1+qAOtuwKe9lEzY/DoBWDHNOXCyZCyAVD8sKN2Lr3yEc2ZgGIU
-	tuqH9ndirAcUZtWBk9McfpS1ql1qlc8pzXmqKmCKsrDLjiOo6hHYbQeVxWAPL1YWQYuD9X5n71kdO
-	D+91W7MLD9OqKahu1bvVjP0vAQJcNCbiCu9Y5MheLSKc+DiQNjvD3gOLsQQaC6QtuN1G/+UtprQCf
-	st1n/TGVrokNfwLsdfn6b+PnOmOF1M+pKrv+779s2JytTUmGxlIWFSjjpp/j6WvDRhNjTgGeGhTkP
-	xkNu9Mfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7u5DiSwg0fUIFvf6tzSUls9VYb2mL1xuTYP9dH+5zfQ=; b=LF7elhWwy96/ebVyCn+6184bvK
+	1EhUvkLj6ykv6F7wTKhAQ87hKUx3JrnGBmTPpYKNp8YXBIiJeZsQI9j3SJLfOYJ69/RV36Edulaje
+	+oqN3R2IerOSTC4zKzIPVU8AD8CalUY/kZHfEBea6jpnp9CHxHxfU6jJn90HwWtRfO4vfyr7K22Lk
+	56paxZdI6bqIbkcRkypqeto97BPQDWNMTY62g5bjvu5VIFavcX9+psIgK/HuNsAqQa/X00tKfSi3H
+	eUnVj3TP5zHdCshq9Ye8RX63yyHMbq3sfwAdv4uB9XCJCojo/FyefKxZMBDxT6TW8vmjKFTZcYcRL
+	yDtxQ2lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qcaNH-001uEb-2f;
-	Sat, 02 Sep 2023 23:49:55 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qcdNx-0021PM-0R;
+	Sun, 03 Sep 2023 03:02:49 +0000
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qcaNE-001uEB-1B;
-	Sat, 02 Sep 2023 23:49:53 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A261E60A66;
-	Sat,  2 Sep 2023 23:49:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B78AC433C8;
-	Sat,  2 Sep 2023 23:49:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1693698587;
-	bh=WLEg/L2hnbjXRMoDJB1stlTmgT1yeFxRUJokuo7n30I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FXDbWWilw3KNrXl/6piZouse9X1uKcko4VfRhRhqeBv1zyLyv2jT/ydm1ajUnEWqY
-	 D3tUy7Avam1IeaGbvliex9uUxtSFyUnWoDOvmRhA9TzT+OOT7DSUxJTjmzEQN4cFHD
-	 JuNnsxyhjOH5SvdPq+AyqW/MbVwRp9NMNgP4CnI9haiPQGZHJOw6T3iZBj9SmK/D23
-	 mOYWjVs45C6a3SonW/5TvSBj+kOv6W0jfAzDwyuc8KZ/tDfERGXtbD8LoHnO+fjcye
-	 +8v9Fo3IFvdR88okr98BoQhiqoGNq98tNYuxRRu8pKLx9JgEQsFvoT6FtomomOJiSm
-	 24puQNt/G1HpQ==
-Date: Sun, 3 Sep 2023 01:49:43 +0200
-From: Andi Shyti <andi.shyti@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Qii Wang <qii.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	=?utf-8?B?6YOt5bCP5qGl?= <joe@gainstrong.cn>
-Subject: Re: [PATCH] i2c: mt65xx: allow optional pmic clock
-Message-ID: <20230902234943.sua22ocjjviq2ymj@zenone.zhora.eu>
-References: <3bf827929a44c17bfb1bf1000b143c02ce26a929.1693102324.git.daniel@makrotopia.org>
+	id 1qcdNr-0021MK-1c;
+	Sun, 03 Sep 2023 03:02:46 +0000
+Received: from kwepemi500008.china.huawei.com (unknown [172.30.72.54])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Rdc0S3z3QztRrs;
+	Sun,  3 Sep 2023 10:58:32 +0800 (CST)
+Received: from huawei.com (10.90.53.73) by kwepemi500008.china.huawei.com
+ (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Sun, 3 Sep
+ 2023 11:02:27 +0800
+From: Jinjie Ruan <ruanjinjie@huawei.com>
+To: <gregory.greenman@intel.com>, <kvalo@kernel.org>,
+	<briannorris@chromium.org>, <nbd@nbd.name>, <lorenzo@kernel.org>,
+	<ryder.lee@mediatek.com>, <shayne.chen@mediatek.com>,
+	<sean.wang@mediatek.com>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <avraham.stern@intel.com>,
+	<johannes.berg@intel.com>, <emmanuel.grumbach@intel.com>, <trix@redhat.com>,
+	<dmantipov@yandex.ru>, <christophe.jaillet@wanadoo.fr>,
+	<yangyang@marvell.com>, <linville@tuxdriver.com>, <rramesh@marvell.com>,
+	<akarwar@marvell.com>, <nishants@marvell.com>,
+	<linux-wireless@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: <ruanjinjie@huawei.com>
+Subject: [PATCH wireless-next v2 0/3] wifi: Drop unnecessary error checks for debugfs_create_dir()
+Date: Sun, 3 Sep 2023 11:02:13 +0800
+Message-ID: <20230903030216.1509013-1-ruanjinjie@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <3bf827929a44c17bfb1bf1000b143c02ce26a929.1693102324.git.daniel@makrotopia.org>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.90.53.73]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230902_164952_471980_56603051 
-X-CRM114-Status: GOOD (  25.56  )
+X-CRM114-CacheID: sfid-20230902_200243_736154_917864CB 
+X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,41 +75,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+debugfs_create_dir() returns ERR_PTR and never returns NULL.
 
-On Sun, Aug 27, 2023 at 03:13:30AM +0100, Daniel Golle wrote:
-> Using the I2C host controller on the MT7981 SoC requires 4 clocks to
-> be enabled. One of them, the pmic clk, is only enabled in case
-> 'mediatek,have-pmic' is also set which has other consequences which
-> are not desired in this case.
-> 
-> Allow defining a pmic clk even in case the 'mediatek,have-pmic' propterty
-> is not present and the bus is not used to connect to a pmic, but may
-> still require to enable the pmic clock.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  drivers/i2c/busses/i2c-mt65xx.c | 12 ++++++++----
->  1 file changed, 8 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> index 1a9b5a068ef1b..a8b5719c33729 100644
-> --- a/drivers/i2c/busses/i2c-mt65xx.c
-> +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> @@ -1442,15 +1442,19 @@ static int mtk_i2c_probe(struct platform_device *pdev)
->  	if (IS_ERR(i2c->clocks[I2C_MT65XX_CLK_ARB].clk))
->  		return PTR_ERR(i2c->clocks[I2C_MT65XX_CLK_ARB].clk);
->  
-> +	i2c->clocks[I2C_MT65XX_CLK_PMIC].clk = devm_clk_get_optional(&pdev->dev, "pmic");
-> +	if (IS_ERR(i2c->clocks[I2C_MT65XX_CLK_PMIC].clk)) {
-> +		dev_err(&pdev->dev, "cannot get pmic clock\n");
-> +		return PTR_ERR(i2c->clocks[I2C_MT65XX_CLK_PMIC].clk);
+As Russell suggested, this patch set removes the error checking for
+debugfs_create_dir(). This is because the DebugFS kernel API is developed
+in a way that the caller can safely ignore the errors that occur during
+the creation of DebugFS nodes. The debugfs APIs have a IS_ERR() judge in
+start_creating() which can handle it gracefully. So these checks are
+unnecessary.
 
-you could have used dev_err_probe() here, but on the other hand
-it would be inconsistent because it's not used anywhere in this
-driver... so that it looks good to me:
+Changes in v2:
+- Update the subject prefix from net to wireless-next as suggested.
+- Remove the err check instead of using IS_ERR to replace NULL check.
+- Update the commit message and title.
 
-Reviewed-by: Andi Shyti <andi.shyti@kernel.org> 
+Jinjie Ruan (3):
+  wifi: iwlwifi: mei: Drop unnecessary error check for
+    debugfs_create_dir()
+  mwifiex: debugfs: Drop unnecessary error check for
+    debugfs_create_dir()
+  wifi: mt76: Drop unnecessary error check for debugfs_create_dir()
 
-Andi
+ drivers/net/wireless/intel/iwlwifi/mei/main.c  | 3 ---
+ drivers/net/wireless/marvell/mwifiex/debugfs.c | 3 ---
+ drivers/net/wireless/mediatek/mt76/debugfs.c   | 2 --
+ 3 files changed, 8 deletions(-)
+
+-- 
+2.34.1
+
 
