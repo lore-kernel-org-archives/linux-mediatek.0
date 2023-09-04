@@ -4,68 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B25F5C71153
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Sep 2023 08:34:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B363C83F2C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Sep 2023 09:21:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ccDZ28jO2WBbmXMXtrjbvjTbF9b+yUIzvjHodBodfac=; b=g4tRRybYiBuJN+OJyjf8qvMwOf
-	VPoHgelJ5KmaZSZBoIfd7YJdMk2bYwrXPYUo6OnFDgDT8U9NwnqklzFTB0M5LF8PK/HINoulJQAAa
-	tqlSVMRCjsB/TEgFH3RnDMYwDzx8VMyW1wKQ5fSlNa5+UHmDsrNKjTytb2bGiH2VGyDeG6jq7QE+G
-	YPIgXbK7pfns9J5cojBx8W8gkBbfeDjA8ZxBsuJKrZphcHz+J/FAfzq8XKlvi1ukvM8wQmTMPx9Cv
-	8FajdxVhi+Ib6YFSWY0CWuAJHMr7ObQahxCzHhpNk66qkdKF8z0I0QnKxQC2RJKPyqY9Pv+8Pqzj6
-	N+fMmQTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZIIUdF194+c8xCM8vrIQAaG0bWBWTzoK506Cd6POlW4=; b=XU84kLvefD6/1QcVJhpVmeB2oK
+	5oYlCTNovxvFtBjAM1aLZsmwoPZ1+OYYIE/o5VOaRCul5M1ziQ2I2XuX53QqJWHxvqyAzoXSElYw8
+	72GaSjgaN+I4sbTSVx9TUnY2IhP/aGn8XrhoXNxcLak1hL/12YZCrKcIivVEzEb85tMAUm1Mlzg/R
+	qA/vU6MZO91N4e8vDGpMnF0Hd2UzwymhxJYQWNiw/8NWpRW6fPEEpcf8kwmDAZMkBsK8s7+Hqg1oS
+	94o8Lv4nIxJonvj17sGZD9S2hKZSS52p8Ddw0c0SgW5xgzrTPG1/oRbflYR/13g60WO1CSNqQeMX8
+	w/iigORw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qd52t-003Zvp-2P;
-	Mon, 04 Sep 2023 08:34:55 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qd5lZ-003dOL-0S;
+	Mon, 04 Sep 2023 09:21:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qd52o-003Zv0-2a;
-	Mon, 04 Sep 2023 08:34:54 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7405D660727F;
-	Mon,  4 Sep 2023 09:34:47 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1693816488;
-	bh=95fRj8cpZa7uWjfFUAP1aAqIMJzKCDnQz0gfY4gwKkc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=khqvwN1Lr+jaHM9QrdEdIdn77+1NkegUGk6y97QZgGhkC3Kk8Nte2+Xlmy8z0OMT5
-	 /Dc/CAryTtk8bwJAdnR3eaK2MEywHJuR9ZsX5iGuhk5HxL0WyWzzNGGiBnIgDnflIN
-	 gwJPl98nqnkNNVCgSUEUYeGrV22sAzf11+yzJWaQjfNKu40+Re8/Q9IfkXkE5WAt1Q
-	 e6sslU1hpMxJD+1O1GUd66flJNWoqGIRzuzDGMZNMSzTsvjqW07RBj/3abKAXWAzmt
-	 Kf4gW4azpEkLjfU6D/03qhX5aGx855JD9wWMVfAGRg2lza6vk75KejsIqUS+ymgUx6
-	 2KsKZ+ptsgbeA==
-Message-ID: <40013c91-4941-1d03-1aa2-083bd6b44afa@collabora.com>
-Date: Mon, 4 Sep 2023 10:34:44 +0200
+	id 1qd5lW-003dNY-1P;
+	Mon, 04 Sep 2023 09:21:03 +0000
+X-UUID: 5931a8c44b0411ee86758d4a7c00f3a0-20230904
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ZIIUdF194+c8xCM8vrIQAaG0bWBWTzoK506Cd6POlW4=;
+	b=Op8lTp4I0/tXxamOy8dM78hn91z53Zta6Mn8eHmT+c/ZLYNWtHPge71oq2LkdA2GAJyK+1y/XUiULXB1DX8YyEZGnSZd9fp6s+s5C0gvL3xNhI+YQilME4fkWDkTuy9OIfWUwFslQW5tvZfm2SHq6gVvgCvtVoM6v5kUrMxdcBE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:9d9f4c11-fa5c-47ae-abd4-600fc1894f25,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:d6cf9dc2-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 5931a8c44b0411ee86758d4a7c00f3a0-20230904
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1210767806; Mon, 04 Sep 2023 02:20:54 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 4 Sep 2023 17:20:51 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 4 Sep 2023 17:20:51 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Macpaul Lin
+	<macpaul.lin@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>,
+	=?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>, Sean Wang
+	<sean.wang@mediatek.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH 1/2] dt-bindings: arm64: dts: mediatek: Add mt8395-evk board
+Date: Mon, 4 Sep 2023 17:20:42 +0800
+Message-ID: <20230904092043.5157-1-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [RESEND,v3 2/3] ASoC: mediatek: common: revise SOF common code
-To: Mark Brown <broonie@kernel.org>, Trevor Wu <trevor.wu@mediatek.com>
-Cc: lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz,
- matthias.bgg@gmail.com, alsa-devel@alsa-project.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20230825024935.10878-1-trevor.wu@mediatek.com>
- <20230825024935.10878-3-trevor.wu@mediatek.com>
- <ZOiCVCJMaNX9Xhgy@finisterre.sirena.org.uk>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <ZOiCVCJMaNX9Xhgy@finisterre.sirena.org.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230904_013451_026804_63637963 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230904_022102_475361_E4EF1724 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,18 +90,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/08/23 12:28, Mark Brown ha scritto:
-> On Fri, Aug 25, 2023 at 10:49:34AM +0800, Trevor Wu wrote:
->> Originally, normal dai link fixup callback is overwritten by sof fixup
->> callback on mtk_sof_card_late_probe and it relies on the mapping defined
->> on struct sof_conn_stream.
-> 
-> Angelo?
+Add bindings for the MediaTek mt8395-evk board.
+The mt8359-evk board is also named as "Genio 1200-EVK".
+MT8195 and MT8395 are the same family series SoC could share
+many of the peripheral drivers.
 
-Sorry Mark, Trevor, I was on vacation, far away from my workstation :-)
-Thanks for the ping on this one btw!
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index ae12b1cab9fb..685b461fda28 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -171,6 +171,7 @@ properties:
+           - enum:
+               - mediatek,mt8195-demo
+               - mediatek,mt8195-evb
++              - mediatek,mt8395-evk
+           - const: mediatek,mt8195
+       - description: Google Burnet (HP Chromebook x360 11MK G3 EE)
+         items:
+-- 
+2.18.0
 
-Cheers!
 
