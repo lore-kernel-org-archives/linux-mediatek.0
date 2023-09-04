@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 335B8C83F2C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Sep 2023 09:48:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55AE6C71153
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Sep 2023 09:50:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0epdMrGvIaocozD28WN92DhFdwnzjDxG6GkFKqitp5c=; b=d/Hc5z99FUM72BbtE9vFlke29n
-	a3mBbL5+jjac8z+uGZYPmQbYZpkF4t2hLK37aepcgv4m/YlRUja2uUtrjnxDqnWXylQ5jTgpxr+9y
-	xHzWqKXkSKxh0/+9thQKLfFC/BovnWyePjB9SLoscMKhyHiu3vDouFglGMe2qXmh82NjnboKQ28O8
-	hcMMifoxP5LK5o4obrIlcb8UwhzXCn7kzh3P2rDCm1GNbIKokoNe77N4Xh1jyzwHYrLonjSYzPXmO
-	/Ej84xJrmkl5E6Nd6thOPdvWUF30bIzOb9s5DCjTb0bPoczIh/f4dklChX1dqjzBBLalUo3yybPfg
-	fdNwSAPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pDcVkHt0PgOyyDOoExjE+TeYuugV9WTIUjuLd6MGDyg=; b=JlHtBnQM0fdTNReykt6rR1wiE4
+	40anALuvoX1wV4IQUHq0kTt7u75pCRXiIMjW3YceJ04v6ZkPZxPyraHbJ80L1s+A3dbdl+Mkl1lN/
+	ngLVyI2IkoWwI8dhcnloSwy43L54HVUt1PPOEl0Xk/rz+b3QnplInVqfAX9ZmpP9A8G1WwzQkv9sP
+	niXEX5khOw+CPxED3edVndQUKXaoOu+Cd8BBRKDq8YWa3leN776/M42u9hdvzf/ecSt6QdIXX6O6X
+	gkvM9LS/CnztHxGEo8ajEKT1kLDevVV8+tr/YyeprzfOq4kaszS/osAPNLj1DjctoYxFunsTpHw10
+	302PvJuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qd6Bl-003hYP-2a;
-	Mon, 04 Sep 2023 09:48:09 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1qd6EL-003hoT-15;
+	Mon, 04 Sep 2023 09:50:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qd6Bi-003hRs-2r
-	for linux-mediatek@lists.infradead.org;
-	Mon, 04 Sep 2023 09:48:08 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-9a5dff9d2d9so189019566b.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 04 Sep 2023 02:48:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1693820884; x=1694425684; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=0epdMrGvIaocozD28WN92DhFdwnzjDxG6GkFKqitp5c=;
-        b=h5tePqs69u7ZOan6x5yF2B4OScPzJRj+dq8SyrCpUUi9/6GlOxA1YxBj1DssKO7igZ
-         ql+/dqsq4W63RjAKniL/RDRSuu2tfHHZl5yLK32P2o0m9868WcAeKVXixrkr0bIIpti4
-         TZztd3mSaz144NgdcUJD5oauTOncg6+l8/Nu6+9nqUye4QfQTiWSxAWkALadv2teRN21
-         11T4osqfUBfph4w7ujnTmKyabaXJM5puOsUy3cJVEaqLBfOqczhBuyUVhvOhm2ldRe+y
-         RYJJ5gvhHw5H9+MycGCOvY8GOjwdTxD8h1xmevwqEFjLUCtQJJUzXmnUnxJeAPo7Nr/L
-         585Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693820884; x=1694425684;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0epdMrGvIaocozD28WN92DhFdwnzjDxG6GkFKqitp5c=;
-        b=CuPIoyi4ARRqI8dj+1N91ffIyAMtKv0e+J+Mmu+lx3pcRIfv1GXnhz9Oi3yH7KqCWD
-         8JjaKOZC5Qieu3cipaQMg5NPxEniFj2z4eKM4eA1T8HKxeJMuO2jvTtPzTCR45V7I+eY
-         SBM5TA5T4U1V/5MCKT20is5pDuCIieC//muaJH8m920YNqH9QUp+L9s8tVp72zF7WCtr
-         uj+sLNs/suoR95YIGgCV12lB59y3uAcxXPqZVKUUkgrRMyKTlQ0BV3dy+lCeRW1SF3vn
-         vQMOGoHhI7WXX728lnUJ5vYiD5gQIz6KnDDQVntramWa7fIVd9+RLSJ5KmxJTTHgora8
-         6tiA==
-X-Gm-Message-State: AOJu0YxzKCbnMonA8EpEg/lXATg012nm4PpZg7gqRM1dQri+qyKvpvQT
-	3j8d6AXRHvkUf7OohrrtCQTGvg==
-X-Google-Smtp-Source: AGHT+IHqDjTOUN8MmVWa39gr2DF/D9xBYWMBEA79M3UTLu7/Zx3QJrUK2Da+M+QFZ4HycCUSamyMuw==
-X-Received: by 2002:a17:907:9619:b0:99d:decd:3dde with SMTP id gb25-20020a170907961900b0099ddecd3ddemr8877234ejc.18.1693820883978;
-        Mon, 04 Sep 2023 02:48:03 -0700 (PDT)
-Received: from blmsp ([2001:4090:a245:8020:2b3e:29eb:352d:d92e])
-        by smtp.gmail.com with ESMTPSA id g20-20020a1709067c5400b00999bb1e01dfsm5867619ejp.52.2023.09.04.02.48.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Sep 2023 02:48:03 -0700 (PDT)
-Date: Mon, 4 Sep 2023 11:48:02 +0200
-From: Markus Schneider-Pargmann <msp@baylibre.com>
-To: Jiasheng Jiang <jiasheng@iscas.ac.cn>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, wenst@chromium.org,
-	frank.li@vivo.com, robh@kernel.org, jamesjj.liao@mediatek.com,
-	shunli.wang@mediatek.com, erin.lo@mediatek.com,
-	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] clk: mediatek: clk-mt2701: Add check for
- mtk_alloc_clk_data
-Message-ID: <20230904094802.6fasingt4m4yked3@blmsp>
-References: <20230901024658.23405-1-jiasheng@iscas.ac.cn>
+	id 1qd6EI-003hnt-1w;
+	Mon, 04 Sep 2023 09:50:47 +0000
+X-UUID: 82c6fa284b0811ee9b7791016c24628a-20230904
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=pDcVkHt0PgOyyDOoExjE+TeYuugV9WTIUjuLd6MGDyg=;
+	b=GxzsFXWXOCMWi9zBfbTxmpjGlIEVIEiwC1jgnV33zN5mhITHMwT+ReosEUxbq5ZLvxj9NYb2bdjabCqTEH1hjr4cGZ4n3jDbTtjrGk47GW6lVmblmtWiZtVy9+bMXwoVsZrYB+XuXnA+Wer/lYoIMX7zUBho1T2eSbO2z3tQA04=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:d0e4dca5-d898-4862-8294-ec52135daec2,IP:0,U
+	RL:0,TC:0,Content:3,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:3
+X-CID-META: VersionHash:0ad78a4,CLOUDID:f2179ec2-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 82c6fa284b0811ee9b7791016c24628a-20230904
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1651232833; Mon, 04 Sep 2023 02:50:42 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 4 Sep 2023 17:50:05 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Mon, 4 Sep 2023 17:50:03 +0800
+Message-ID: <00f0a1cf-6246-92e9-13b0-cf31bb292a94@mediatek.com>
+Date: Mon, 4 Sep 2023 17:50:01 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20230901024658.23405-1-jiasheng@iscas.ac.cn>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 1/2] dt-bindings: arm64: dts: mediatek: Add mt8395-evk
+ board
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Frank Wunderlich
+	<frank-w@public-files.de>, =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?=
+	<bero@baylibre.com>, Sean Wang <sean.wang@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>
+References: <20230904092043.5157-1-macpaul.lin@mediatek.com>
+ <e2e35d4d-7853-fccc-28c2-b8ecf309d6ec@linaro.org>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <e2e35d4d-7853-fccc-28c2-b8ecf309d6ec@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230904_024806_921449_4E91982E 
-X-CRM114-Status: GOOD (  18.70  )
+X-CRM114-CacheID: sfid-20230904_025046_653242_B6127C71 
+X-CRM114-Status: GOOD (  13.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,63 +95,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 01, 2023 at 10:46:58AM +0800, Jiasheng Jiang wrote:
-> Add the check for the return value of mtk_alloc_clk_data() in order to
-> avoid NULL pointer dereference.
-> 
-> Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
-> Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
 
-Reviewed-by: Markus Schneider-Pargmann <msp@baylibre.com>
 
-Best,
-Markus
+On 9/4/23 17:33, Krzysztof Kozlowski wrote:
+> 	
+> 
+> External email : Please do not click links or open attachments until you 
+> have verified the sender or the content.
+> 
+> On 04/09/2023 11:20, Macpaul Lin wrote:
+>> Add bindings for the MediaTek mt8395-evk board.
+>> The mt8359-evk board is also named as "Genio 1200-EVK".
+>> MT8195 and MT8395 are the same family series SoC could share
+> 
+> How can be the same and have different numbers? You sill need dedicated
+> compatible.
+> 
 
-> ---
->  drivers/clk/mediatek/clk-mt2701.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
+The SoCs mt8195 and mt8395 are designed for different market application 
+and physical characteristics, using different efuse values for 
+distinction. The booting flow and configurations are controllered by the 
+boot loaders, firmware, and TF-A. Therefore, the part numbers and 
+procurement channels are different. The detail information of these 
+efuse values is proprietary, so I cant disclose it futher. Hence the 
+most of peripheral drivers and base address are almost the same.
+
 > 
-> diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
-> index c81f3e33ce56..12d9560eb4ba 100644
-> --- a/drivers/clk/mediatek/clk-mt2701.c
-> +++ b/drivers/clk/mediatek/clk-mt2701.c
-> @@ -667,6 +667,8 @@ static int mtk_topckgen_init(struct platform_device *pdev)
->  		return PTR_ERR(base);
->  
->  	clk_data = mtk_alloc_clk_data(CLK_TOP_NR);
-> +	if (!clk_data)
-> +		return -ENOMEM;
->  
->  	mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
->  								clk_data);
-> @@ -747,6 +749,8 @@ static void __init mtk_infrasys_init_early(struct device_node *node)
->  
->  	if (!infra_clk_data) {
->  		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR);
-> +		if (!infra_clk_data)
-> +			return;
->  
->  		for (i = 0; i < CLK_INFRA_NR; i++)
->  			infra_clk_data->hws[i] = ERR_PTR(-EPROBE_DEFER);
-> @@ -774,6 +778,8 @@ static int mtk_infrasys_init(struct platform_device *pdev)
->  
->  	if (!infra_clk_data) {
->  		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR);
-> +		if (!infra_clk_data)
-> +			return -ENOMEM;
->  	} else {
->  		for (i = 0; i < CLK_INFRA_NR; i++) {
->  			if (infra_clk_data->hws[i] == ERR_PTR(-EPROBE_DEFER))
-> @@ -890,6 +896,8 @@ static int mtk_pericfg_init(struct platform_device *pdev)
->  		return PTR_ERR(base);
->  
->  	clk_data = mtk_alloc_clk_data(CLK_PERI_NR);
-> +	if (!clk_data)
-> +		return -ENOMEM;
->  
->  	mtk_clk_register_gates(&pdev->dev, node, peri_clks,
->  			       ARRAY_SIZE(peri_clks), clk_data);
-> -- 
-> 2.25.1
+> Best regards,
+> Krzysztof
 > 
+
+Best regards,
+Macpaul Lin
 
