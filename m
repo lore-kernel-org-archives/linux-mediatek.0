@@ -4,61 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EB4BC83F3F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Sep 2023 11:24:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6C7FC83F2C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Sep 2023 11:33:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EbEJS0vDRsP+ooXdFABpg1Tj5In9ZlETI3HIQ9lpy8M=; b=MYV4IXHcpGchM2tMC94O/3wcBD
-	+W7moqOBjGfj7TQD3K4nhkrESexscNx+wmADPOB7q/8/dQTiiqtRkf4hBWQUwyUS5CbB8P2zJbzeo
-	YT3Gc1iJyw0xbO05eGz7YiWPqcAUVstEBScp4vhzNaDycvxTnzsqn2xtOjbO/yX1ktkp63t8QmUqe
-	s23GGOvKTPQB7uX0Km3i9vQvjym9akwSbsCh2b9LMOdsqXWKjcwiBi+vKRYKKkzbOCb7rj37WSo0H
-	848gVSLB3hvTnf9ZM0rCUOlUvsAKoWg2ogbr7JOiWBSBZOUEoDq4qKKbnHSfsNhG8qIBJXI/LqkdL
-	G4mZZDHg==;
+	bh=Twi19Sc1cBUTP1CesU6QEEC/D9fjvN+joaQeLm6jFLo=; b=NFdtnbMtkVh2sMDm1GcuN+0nNH
+	7mwchw2pUiVSHCjWZRoaIZKrIjTrV4ae0gD/f9YKSBgv4DK1uEoGzsna0Mj/4CBuS3ZfZBRiw/9iF
+	ZVinW3rSBP7/mdJLkV3JN6Nmx5WXEw+MUUaZvsDHohJt4psc3tF4XXc2ItYC6yRTECW2KR2VzS4TE
+	c1+WCjxKUilVcr54WQI+nisvTPGeulCcX9p55lQPUgnd17xQxIbWmnwkBANEfhqccSWT9tpuiseuW
+	ZHcTBzBIx/fdrmtPA1bUp/3/fjJtIa0sovGsO/DzoG/VO2jBAUhBOpfsDE6yCtexc2t6hAGwvpoYa
+	JZP4WjBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qd7gt-003zt2-3C;
-	Mon, 04 Sep 2023 11:24:23 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qd7pp-0040e1-1h;
+	Mon, 04 Sep 2023 11:33:37 +0000
+Received: from relay3-d.mail.gandi.net ([217.70.183.195])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qd7gp-003zs6-0s;
-	Mon, 04 Sep 2023 11:24:21 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 128EEB80E04;
-	Mon,  4 Sep 2023 11:24:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7298FC433C7;
-	Mon,  4 Sep 2023 11:24:08 +0000 (UTC)
-Message-ID: <37e5e418-c38a-b863-ffdf-72ce300cf227@xs4all.nl>
-Date: Mon, 4 Sep 2023 13:24:04 +0200
+	id 1qd7pk-0040dR-2Y;
+	Mon, 04 Sep 2023 11:33:35 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id B02CB60007;
+	Mon,  4 Sep 2023 11:33:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1693827205;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Twi19Sc1cBUTP1CesU6QEEC/D9fjvN+joaQeLm6jFLo=;
+	b=EgGj5AuFFhhXL01UHfSA0vJjPVFEbgTK7E0E8dvZQBljrDa3QNjIhqpV8WMIh914SF+mD4
+	+rcnvTpL0hIP4GhqCZ7BmexaujQ3Eov91q/oyAzK61o8+Hb/xPmF23d+dxVBEVqlUFA/Ug
+	RR8XS597sCFfqd8qjgGiqv02jRTXO5BI7zWP3YA/i6f0sGAoHjeCoJ3uTZoQjc7qSykmGo
+	DGViOpn1dBHwEpvFKjDJ4R+KqS0z+4APq6obobJ5F25h24foVKQG7MBt80D9WtaYDiFNcd
+	J0Iny5jZhYO307pzF30CBEypQTMKdMobkqpdoc2xNOdxlu79J/5LDY95WXxI6A==
+Message-ID: <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
+Date: Mon, 4 Sep 2023 14:33:14 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v6 11/18] media: videobuf2: Be more flexible on the number
- of queue stored buffers
-Content-Language: en-US, nl
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, kernel@collabora.com
-References: <20230901124414.48497-1-benjamin.gaignard@collabora.com>
- <20230901124414.48497-12-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20230901124414.48497-12-benjamin.gaignard@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Woojung Huh <woojung.huh@microchip.com>,
+ UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+ Daniel Golle <daniel@makrotopia.org>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230812091708.34665-3-arinc.unal@arinc9.com>
+ <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <20230813112026.ohsx6srbt2staxma@skbuf>
+ <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
+ <20230813190157.4y3zoro53qsz43pe@skbuf>
+ <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
+ <20230814143601.mnpxtcm2zybnbvoh@skbuf>
+ <0cee0928-74c9-4048-8cd8-70bfbfafd9b2@arinc9.com>
+ <20230827121235.zog4c3ehu2cyd3jy@skbuf>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20230827121235.zog4c3ehu2cyd3jy@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230904_042419_631888_B3EFF595 
-X-CRM114-Status: GOOD (  27.04  )
+X-CRM114-CacheID: sfid-20230904_043333_135945_5E715C34 
+X-CRM114-Status: GOOD (  68.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,147 +96,277 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
+Hey Vladimir,
 
-On 01/09/2023 14:44, Benjamin Gaignard wrote:
-> Add 'max_allowed_buffers' field in vb2_queue struct to let drivers decide
-> how many buffers could be stored in a queue.
-> This request 'bufs' array to be allocated at queue init time and freed
-> when releasing the queue.
-> By default VB2_MAX_FRAME remains the limit.
+On 27.08.2023 15:12, Vladimir Oltean wrote:
+> Hi Arınç,
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  .../media/common/videobuf2/videobuf2-core.c   | 25 +++++++++++++------
->  include/media/videobuf2-core.h                |  4 ++-
->  2 files changed, 20 insertions(+), 9 deletions(-)
+> I am on vacation and I will just reply with some clarification aspects,
+> without having done any further research on the topic since my last reply.
 > 
+> On Sun, Aug 27, 2023 at 11:33:16AM +0300, Arınç ÜNAL wrote:
+>> Before I continue commenting, I'd like to state my understanding so we can
+>> make sure we're on the same page. If a driver doesn't use
+>> ds->slave_mii_bus, the switch it controls must not have any internal MDIO
+>> buses. Otherwise the PHYs on these buses couldn't function, and an improper
+>> driver like this would not be on the official Linux source code.
+> 
+> A DSA switch port, like any OF-based ethernet-controller which uses
+> phylink, will use one of the phy-handle, fixed-link or managed properties
+> to describe the interface connecting the MAC/MAC-side PCS to the PHY.
+> 
+> At its core, ds->slave_mii_bus is nothing more than a mechanism to make
+> sense of device trees where the above 3 phylink properties are not present.
+> 
+> It is completely false to say that if a driver doesn't have ds->slave_mii_bus,
+> it must not have an internal MDIO bus. Because you could still describe
+> that internal MDIO bus like below, without making any use of the sole property
+> that makes ds->slave_mii_bus useful from a dt-bindings perspective.
+> 
+> ethernet-switch {
+> 	ethernet-ports {
+> 		port@0 {
+> 			reg = <0>;
+> 			phy-handle = <&port0_phy>;
+> 			phy-mode = "internal";
+> 		};
+> 	};
+> 
+> 	mdio {
+> 		port0_phy: ethernet-phy@0 {
+> 			reg = <0>;
+> 		};
+> 	};
+> };
+> 
+> This is the more universal way of describing the port setup in an
+> OF-based way. There is also the DSA-specific (and old-style, before phylink)
+> way of describing the same thing, which relies on the non-OF-based
+> ds->slave_mii_bus, with bindings that look like this:
+> 
+> ethernet-switch {
+> 	ethernet-ports {
+> 		port@0 {
+> 			reg = <0>;
+> 		};
+> 	};
+> };
+> 
+> But, I would say that the first variant of the binding is preferable,
+> since it is more universal.
+> 
+> Not all switches that have an internal MDIO bus support the second
+> variant of the dt-binding (the ones that don't have ds->slave_mii_bus don't).
+> But, they support the same configuration through the first form.
 
-This patch breaks v4l2-compliance. I see lots of issues when running the
-test-media script in v4l-utils, contrib/test, among them memory leaks
-and use-after-free.
+Understood.
 
-I actually tested using virtme with the build scripts, but that in turn
-calls the test-media script in a qemu environment, and it is at the moment
-a bit tricky to set up, unless you run a debian 12 distro.
+> 
+> Furthermore, on the U-Boot mailing lists, I have been suggesting that
+> the DM_DSA driver for mv88e6xxx should not bother to support the second
+> version of the binding, since it is just more code to be added to handle
+> a case which can already be described with the more universal first binding.
 
-I will email the test logs directly to you since they are a bit large (>5000 lines).
+That makes sense.
 
-Regards,
+> 
+>> I've checked mscc,vsc7514-switch. What I see is, the architecture is an SoC
+>> with a switch component. Since the switch component is not designed to be a
+>> standalone IC, the MDIO bus of the SoC could just as well be used without
+>> the need to design an MDIO controller specific to the switch component, to
+>> manage the PHYs. So I see this switch as just another case of a switch
+>> without an internal MDIO bus.
+> 
+> Well, we need to clarify the semantics of an "internal" MDIO bus.
+> 
+> I would say most discrete chips with DSA switches have this SoC-style
+> architecture, with separate address spaces for the switching IP, MDIO
+> bus, GPIO controller, IRQ controllers, temperature sensors etc (see
+> "mscc,vsc7512-switch" which is like "mscc,vsc7514-switch", but it is
+> controlled over SPIO instead of MMIO). The dt-bindings of most DSA
+> switches may or may not reflect that discrete chip organization. Those
+> drivers and dt-bindings could be reimagined so that DSA is not the
+> top-level driver.
+> 
+> Yet, I would argue that it's wrong to say that because it isn't an OF
+> child of the switch, the MDIO bus of the VSC7514 is not internal in the
+> same way that the Realtek MDIO bus is internal. The switch ports are
+> connected to internal PHYs on this MDIO bus, and there aren't PHYs on
+> this MDIO bus that go to other MACs than the switch ports. So, the
+> VSC7514 MDIO bus could legally be called the internal MDIO bus of the
+> switch, even if there isn't a parent/child relationship between them.
 
-	Hans
+Good point, I had believed that the management interface of all of the PHYs
+being connected to the MDIO bus - which is not part of the switching IP
+address space - would be enough to classify the MDIO bus as non-internal.
 
+However, the architecture of separate address spaces for the switching IP
+and MDIO bus is used on any type of IC with the switching feature.
+Therefore, this characteristic cannot be used to distinguish whether an
+MDIO bus is of a switch.
 
+What we can refer to to classify an internal MDIO bus is by confirming the
+data interface of all PHYs on the MDIO bus is connected to the switch port
+MACs, as you have pointed out here.
 
-> diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-> index 15b583ce0c69..dc7f6b59d237 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-core.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-> @@ -411,7 +411,7 @@ static void init_buffer_cache_hints(struct vb2_queue *q, struct vb2_buffer *vb)
->   */
->  static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, unsigned int index)
->  {
-> -	if (index < VB2_MAX_FRAME && !q->bufs[index]) {
-> +	if (index < q->max_allowed_buffers && !q->bufs[index]) {
->  		q->bufs[index] = vb;
->  		vb->index = index;
->  		vb->vb2_queue = q;
-> @@ -428,7 +428,7 @@ static bool vb2_queue_add_buffer(struct vb2_queue *q, struct vb2_buffer *vb, uns
->   */
->  static void vb2_queue_remove_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
->  {
-> -	if (vb->index < VB2_MAX_FRAME) {
-> +	if (vb->index < q->max_allowed_buffers) {
->  		q->bufs[vb->index] = NULL;
->  		vb->vb2_queue = NULL;
->  	}
-> @@ -449,9 +449,9 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
->  	struct vb2_buffer *vb;
->  	int ret;
->  
-> -	/* Ensure that q->num_buffers+num_buffers is below VB2_MAX_FRAME */
-> +	/* Ensure that q->num_buffers+num_buffers is below q->max_allowed_buffers */
->  	num_buffers = min_t(unsigned int, num_buffers,
-> -			    VB2_MAX_FRAME - q->num_buffers);
-> +			    q->max_allowed_buffers - q->num_buffers);
->  
->  	for (buffer = 0; buffer < num_buffers; ++buffer) {
->  		/* Allocate vb2 buffer structures */
-> @@ -862,9 +862,9 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
->  	/*
->  	 * Make sure the requested values and current defaults are sane.
->  	 */
-> -	WARN_ON(q->min_buffers_needed > VB2_MAX_FRAME);
-> +	WARN_ON(q->min_buffers_needed > q->max_allowed_buffers);
->  	num_buffers = max_t(unsigned int, *count, q->min_buffers_needed);
-> -	num_buffers = min_t(unsigned int, num_buffers, VB2_MAX_FRAME);
-> +	num_buffers = min_t(unsigned int, num_buffers, q->max_allowed_buffers);
->  	memset(q->alloc_devs, 0, sizeof(q->alloc_devs));
->  	/*
->  	 * Set this now to ensure that drivers see the correct q->memory value
-> @@ -980,7 +980,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  	bool no_previous_buffers = !q->num_buffers;
->  	int ret;
->  
-> -	if (q->num_buffers == VB2_MAX_FRAME) {
-> +	if (q->num_buffers == q->max_allowed_buffers) {
->  		dprintk(q, 1, "maximum number of buffers already allocated\n");
->  		return -ENOBUFS;
->  	}
-> @@ -1009,7 +1009,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
->  			return -EINVAL;
->  	}
->  
-> -	num_buffers = min(*count, VB2_MAX_FRAME - q->num_buffers);
-> +	num_buffers = min(*count, q->max_allowed_buffers - q->num_buffers);
->  
->  	if (requested_planes && requested_sizes) {
->  		num_planes = requested_planes;
-> @@ -2519,6 +2519,14 @@ int vb2_core_queue_init(struct vb2_queue *q)
->  
->  	q->memory = VB2_MEMORY_UNKNOWN;
->  
-> +	if (!q->max_allowed_buffers)
-> +		q->max_allowed_buffers = VB2_MAX_FRAME;
-> +
-> +	/* The maximum is limited by offset cookie encoding pattern */
-> +	q->max_allowed_buffers = min_t(unsigned int, q->max_allowed_buffers, BUFFER_INDEX_MASK);
-> +
-> +	q->bufs = kcalloc(q->max_allowed_buffers, sizeof(*q->bufs), GFP_KERNEL);
-> +
->  	if (q->buf_struct_size == 0)
->  		q->buf_struct_size = sizeof(struct vb2_buffer);
->  
-> @@ -2543,6 +2551,7 @@ void vb2_core_queue_release(struct vb2_queue *q)
->  	__vb2_queue_cancel(q);
->  	mutex_lock(&q->mmap_lock);
->  	__vb2_queue_free(q, q->num_buffers);
-> +	kfree(q->bufs);
->  	mutex_unlock(&q->mmap_lock);
->  }
->  EXPORT_SYMBOL_GPL(vb2_core_queue_release);
-> diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-> index cd3ff1cd759d..97153c69583f 100644
-> --- a/include/media/videobuf2-core.h
-> +++ b/include/media/videobuf2-core.h
-> @@ -558,6 +558,7 @@ struct vb2_buf_ops {
->   * @dma_dir:	DMA mapping direction.
->   * @bufs:	videobuf2 buffer structures
->   * @num_buffers: number of allocated/used buffers
-> + * @max_allowed_buffers: upper limit of number of allocated/used buffers
->   * @queued_list: list of buffers currently queued from userspace
->   * @queued_count: number of buffers queued and ready for streaming.
->   * @owned_by_drv_count: number of buffers owned by the driver
-> @@ -619,8 +620,9 @@ struct vb2_queue {
->  	struct mutex			mmap_lock;
->  	unsigned int			memory;
->  	enum dma_data_direction		dma_dir;
-> -	struct vb2_buffer		*bufs[VB2_MAX_FRAME];
-> +	struct vb2_buffer		**bufs;
->  	unsigned int			num_buffers;
-> +	unsigned int			max_allowed_buffers;
->  
->  	struct list_head		queued_list;
->  	unsigned int			queued_count;
+Because the architecture of separate address spaces for the switching IP
+and MDIO bus is used on any type of IC with the switching feature, it can
+differ by driver how the MDIO bus is defined on the dt-bindings. So we
+can't make universal bindings of an internal MDIO bus of a switch that
+apply to every switch.
 
+So, the correct approach is to define things under the switch-specific
+schema which is affine to the driver, as you have already pointed out.
+Which schemas to define what will of course differ.
+
+> 
+> So, what I'm disagreeing with is your insistence to correlate your
+> problem with internal MDIO buses. The way in which the problem is
+> formulated dictates what problem gets solved, and the problem is not
+> correctly formulated here. It is purely about ds->slave_mii_bus and its
+> driver-defined OF presence/absence. It is a DSA-specific binding aspect
+> which not even all DSA switches inherit, let alone bindings outside DSA.
+
+Got it.
+
+> 
+>>> For switches in the second category, it all depends on the way in which
+>>> the driver finds the node for of_mdiobus_register().
+>>
+>> Ok, so some drivers require the mdio child node. Some require it and the
+>> compatible property with a certain string.
+>>
+>> MDIO controlled Realtek switches do not need the compatible property under
+>> the mdio child node. There're no compatible strings to make a distinction
+>> between the SMI and MDIO controlled switches so the best we can do is keep
+>> it the way it currently is. Define realtek,smi-mdio as a compatible string
+>> but keep the compatible property optional. I did state this on my reply to
+>> patch 3 but still received reviewed-bys regardless.
+> 
+> Yes, because.... [1]
+> 
+>>> Having identified all switches which make some sort of use of
+>>> ds->slave_mii_bus, the rule would sound like this:
+>>>
+>>> 1. If the schema is that of (need to replace this with compatible
+>>>      strings, I'm too lazy for that):
+>>>
+>>>      - ksz_switch_ops
+>>>      - mv88e6060_switch_ops
+>>>      - lan9303_switch_ops
+>>>      - rtl8365mb_switch_ops_mdio
+>>>      - b53_switch_ops
+>>>      - vsc73xx_ds_ops
+>>>      - mv88e6xxx
+>>>      - qca8k
+>>>
+>>>      and we have an "mdio" child, then phylink bindings are mandatory on user ports.
+>>>
+>>> 2. If the schema is that of gswip_mdio and we have a child node of "lantiq,xrx200-mdio",
+>>>      then phylink bindings are mandatory on user ports (I haven't checked,
+>>>      but it might be that the "lantiq,xrx200-mdio" child is mandatory, and
+>>>      in that case, this goes to category 4 below).
+>>>
+>>> 3. If the schema is that of realtek_smi_setup_mdio and we have a child node of
+>>>      "realtek,smi-mdio", then phylink bindings are mandatory on user ports
+>>>      (same comment about the child MDIO note maybe being mandatory).
+>>>
+>>> 4. If the switch didn't appear in the above set of rules, then phylink
+>>>      bindings are unconditionally mandatory on user ports.
+>>>
+>>> We don't care at all what the drivers that don't use ds->slave_mii_bus
+>>> do with the "mdio" child node. It doesn't change the fact that their
+>>> user ports can't have missing phylink bindings.
+>>
+>> I partially agree. I say, for the switches without an internal MDIO bus,
+>> invalidate the mdio child node, and enforce the phylink bindings on the
+>> user ports. Such as mscc,vsc7514-switch and nxp,sja1105x. For nxp,sja1110x,
+>> invalidate the mdio child node, and enforce the phylink bindings on the
+>> user ports if the mdios property is used.
+> 
+> Why "if the mdios property is used" and not "always"? :-/
+> 
+> To say it again: because the sja1105 driver does not use ds->slave_mii_bus,
+> it can make no sense of dt-bindings on user ports which lack phylink properties.
+> So they are *always* needed. The "mdios" property changes nothing in that regard.
+
+Got it.
+
+> 
+>>
+>> I'd like to add this before I conclude. The way I understand dt-bindings is
+>> that a binding does not have to translate to an action on the driver.
+>> Documenting bindings for the sole purpose of describing hardware is a valid
+>> case.
+> 
+> [1] ...this. The SMI-controlled and MDIO-controlled Realtek switches are
+> otherwise the same, right? So why would they have different dt-bindings?
+
+Honestly, I'm wondering the answer to this as well. For some reason, when
+probing the SMI controlled Realtek switches, instead of just letting
+dsa_switch_setup() populate ds->slave_mii_bus, on realtek_smi_setup_mdio()
+on realtek-smi.c:
+
+- priv->slave_mii_bus is allocated.
+- mdio_np = of_get_compatible_child(priv->dev->of_node, "realtek,smi-mdio");
+- priv->slave_mii_bus->dev.of_node = mdio_np;
+- ds->slave_mii_bus = priv->slave_mii_bus;
+
+> 
+>> For example, currently, the MT753X DSA subdriver won't, in any way,
+>> register the bus OF-based. Still, the mdio property for the switches which
+>> this driver controls can be documented because the internal mdio bus does
+>> exist on the hardware.
+> 
+> It can, but the whole point is: if ds->slave_mii_bus gains an OF presence,
+> then it loses its core functionality (that user ports can lack phylink
+> bindings). This is the entire essence of what this discussion should capture.
+
+Understood.
+
+> 
+>>
+>> So I'd like to keep the mdio property valid for the switches which their
+>> drivers can only register non-OF-based ds->slave_mii_bus.
+>>
+>> In conclusion, what to do:
+>>
+>> - Define "the mdio property" and "the enforcement of phylink bindings for
+>>    user ports if mdio property is used" on ethernet-switch.yaml.
+>>      - Invalidate the mdio property on the switches without an internal MDIO
+>>        bus.
+>> - Define "the enforcement of phylink bindings for user ports" on the
+>>    switches without an internal MDIO bus.
+>> - Require "the mdio property" for the switches which their driver requires
+>>    it to function.
+>> - Require "the mdio property" and "the compatible string of the mdio
+>>    property" for the switches which their driver requires them to function.
+>>
+>> There's no 1:1 switch to switch compatible string relation, as seen on
+>> Realtek switches so I'll have to figure that out as I go.
+>>
+>> I'm open to your comments to this mail but the gap between discussion and
+>> end result has widened a lot on this patch series so I'd like to first
+>> offload this conversation by preparing v2 with what I said here and discuss
+>> further there.
+> 
+> Honestly, from my side, a verbal comment in the dt-bindings document
+> would have been just fine, as long as it is truthful to the reality it
+> describes.
+> 
+> You wanted to over-complicate things with an actual schema validation,
+> and then hooking onto things that are unrelated with the phenomenon that
+> needs to be captured (like the "mdio" child node, without explicit
+> regard to whether it is the ds->slave_mii_bus or not).
+> 
+> It's not about internal MDIO buses in general, it's about whether those
+> internal MDIO buses are used in ds->slave_mii_bus, and their OF
+> presence/absence! That is absolutely driver-specific and I would only
+> expect a driver-specific way of enforcing it. I didn't say it's not
+> hard, and I didn't ask to enforce it, either.
+
+OK, I believe we're on the same page now, I will start working on properly
+enforcing this.
+
+Arınç
 
