@@ -4,80 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD561CA0FE9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 03:55:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C004CC83F2C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 04:16:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W4dyYXyL7RU5UnXE05o13Pbj4LUrckjq2hXc574i32Y=; b=2lJOcRmpeTmhKzAvTQkatpYIPX
-	OD6+b5iz1rx2EOW+MStxB4dIp0tfYRSCqrKwkAoPjInnYV+/+5wi9KQOMSv4zhsrMAwqQbZf8ePt8
-	mOC0ENwZqrgMyil/VJINb+Kah9Gj28WloiARDMDU2xH3VXPtJ4Ox1G59+uI9o2IrH2aBgIFz7K2ro
-	Vp+l2SxtUwPXV/PEzyQo2y+nLF9r5p9DnzSPvGc9OkcA2d6k/0X0nVGFxtTd+Sr4OAIwAUowq1Gqx
-	e3iaT8bo7uTJc/rP8b2aX4HlZFv1jpP/HWDaeKp32o+CMLTdZbDItBEcVsMtnYLbhl1vptwQXwWWD
-	JeUcubAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aeLpY9djXSpdgH4Ae7n5MB3zE0D3lzBJjJWuWYn4B9M=; b=A6yT7fZB3FBSch0uJp5bdD3diR
+	rD+58mWeBQUuYsZ+8J+2x/2oyx/RTD01RVQM2nT/1CNC/ZcXta2mv67nKGEg4TZEAM2LmHHzIEQ3M
+	jIDIAhR3vg5ZPEMrfO7r4cn80OOsNkPF4r1qw0cZ9CT2YIhW4EMbM7IsKilOavt95XbZxY2kgCRBX
+	5cprBqYX46dQb/r9fcHv5ccFh/+4aIvL2PzsD+MhlMGPSVxveyblO9o0Di+o7U7onoPULBSkkPtX/
+	ydCvlYndNVWXrzJDduse9HD5oL1efyYXbq5d96CKLyD22J0kp3SkfK0BTTtXb/emHUaecqulLctJ3
+	JYR9jkaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdNAU-005ByG-0p;
-	Tue, 05 Sep 2023 03:55:58 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qdNUP-005F5z-0A;
+	Tue, 05 Sep 2023 04:16:33 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdNAR-005Bxh-2s;
-	Tue, 05 Sep 2023 03:55:57 +0000
-X-UUID: 1b9b8da84ba011ee86758d4a7c00f3a0-20230904
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=W4dyYXyL7RU5UnXE05o13Pbj4LUrckjq2hXc574i32Y=;
-	b=E1ennS2vxLmzW9ikhXdckQCR08ks/om54edlauMWXT/Mc5m+r2HE+dNG3gLv9rPAB0k1M7itMYWEzWMP6ihbJj8xW1MR7c9kjvZHX7kl9cxeBcunXNtKaB43WPXOvWw5ObatrC4wu+O86PNyn/FPbF2nw0FZuOn4Zq/CFjIg558=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:81f3e190-dab1-4b3a-ac75-c4cac3b72270,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:441d51ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 1b9b8da84ba011ee86758d4a7c00f3a0-20230904
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1662943875; Mon, 04 Sep 2023 20:55:52 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 5 Sep 2023 11:45:16 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 5 Sep 2023 11:45:16 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Alexandre Mergnat <amergnat@baylibre.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Fabien Parent
-	<fparent@baylibre.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, <stable@vger.kernel.org>
-Subject: [PATCH v3 2/2] arm64: dts: mediatek: mt8195-demo: update and reorder reserved memory regions
-Date: Tue, 5 Sep 2023 11:45:11 +0800
-Message-ID: <20230905034511.11232-2-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230905034511.11232-1-macpaul.lin@mediatek.com>
-References: <20230825114623.16884-1-macpaul.lin@mediatek.com>
- <20230905034511.11232-1-macpaul.lin@mediatek.com>
+	id 1qdNUM-005F5T-1h;
+	Tue, 05 Sep 2023 04:16:31 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-26d5970cd28so1103258a91.2;
+        Mon, 04 Sep 2023 21:16:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1693887388; x=1694492188; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=aeLpY9djXSpdgH4Ae7n5MB3zE0D3lzBJjJWuWYn4B9M=;
+        b=nCCGEUCIQah4wgPS7v3XARnKmp1vTtxNjaOygzUpvy5XcLmT04oK6IOGmBQ8T1H94v
+         7Il3l0cKg4gTQJ4MN1WCC3fol75AjexuPmciJZ006c+OssAzRL4/QQmv8Kpb+1udNg3Y
+         Jz335UWBgD2rPlmvnt79WFw//bQF2oKkmY080VWjjLH+iRP2IRv+6EoqujOT8QwX+/JT
+         XLH15qosHAIrDrDPk2+PMqvoDy3MRiaKDcMINQkyVFHvbWilxhMoQci5S+Jjro915tiX
+         XqL50b4Thgbrfl307RULPRcw+Q3bwjBayM5Oejsk7t8DrnKPabnJwytQ8PhdITww+G8R
+         Qp9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1693887388; x=1694492188;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=aeLpY9djXSpdgH4Ae7n5MB3zE0D3lzBJjJWuWYn4B9M=;
+        b=PV0BHMWu+8qdR1vXtADre1eIDLQBOWeBVsn99Ti9FnAlb9sGjRXH7VB8mONr2wSdtp
+         8ODU4Ygj+llDqmPvpPvHcVlMwrWe6piYbjSGdsTIlef15+16McwTTwPocN1U7nQKkxax
+         e+T9QDbreGgY5aX3D5Bea/U97a6s06V35Z97bs5WBvCSzD11Kc49DMOEdLe3mK3R+ezz
+         tH2VVWzWzPazePvFvMDc00vbYyodK5WouPC6h3GgNs399tiyL3A8ypoAkFI4v2Ak5RNF
+         4QbJduPJ3vZx9g3qfjJ6tZn2SP2JhfJf6b7TwgGy1EqH1CA8cMMWYLqfrJnykZNa8iB2
+         uNFg==
+X-Gm-Message-State: AOJu0YwA2MUZqSpW4os6e8D7rZm5JvbVdHGZ4VMz7z70dHFQIJCj2HqU
+	gbYWhV8cmHKtWGmEa8Zcg48=
+X-Google-Smtp-Source: AGHT+IGHKwLSesdv+VTDY2ZVcovQ2Vrs0ifGMuVs4J32gJ4Kms/n3HDyIZqhULXtcu+bbYFqI4HShQ==
+X-Received: by 2002:a17:90a:788e:b0:26d:20ef:1d32 with SMTP id x14-20020a17090a788e00b0026d20ef1d32mr8899654pjk.38.1693887387618;
+        Mon, 04 Sep 2023 21:16:27 -0700 (PDT)
+Received: from localhost.localdomain ([2405:201:a40d:5ac2:3458:cc95:7315:1247])
+        by smtp.gmail.com with ESMTPSA id oj3-20020a17090b4d8300b002639c4f81cesm9719984pjb.3.2023.09.04.21.16.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Sep 2023 21:16:27 -0700 (PDT)
+From: Shubh <shubhisroking@gmail.com>
+To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>
+Cc: Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Shubh <shubhisroking@gmail.com>
+Subject: [PATCH] net: dsa: mt7530: refactor deprecated strncpy
+Date: Tue,  5 Sep 2023 09:46:14 +0530
+Message-ID: <20230905041614.14272-1-shubhisroking@gmail.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230904_205555_931777_4BBDE1F8 
-X-CRM114-Status: GOOD (  13.88  )
+X-CRM114-CacheID: sfid-20230904_211630_569941_8FEA880B 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,89 +103,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The dts file of the MediaTek MT8195 demo board has been updated to include
-new reserved memory regions.
-These reserved memory regions are:
- - SCP
- - VPU,
- - Sound DMA
- - APU.
+Prefer `strscpy_pad` to `strncpy`.
 
-These regions are defined with the "shared-dma-pool" compatible property.
-In addition, the existing reserved memory regions have been reordered by
-their addresses to improve readability and maintainability of the DTS
-file.
-
-Cc: stable@vger.kernel.org      # 6.1, 6.4, 6.5
-Fixes: e4a417520101 ("arm64: dts: mediatek: mt8195-demo: fix the memory size of node secmon")
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Signed-off-by: Shubh <shubhisroking@gmail.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 37 ++++++++++++++++----
- 1 file changed, 30 insertions(+), 7 deletions(-)
+ drivers/net/dsa/mt7530.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Changes for v2:
- - No change.
-
-Changes for v3:
- - Fix vpu_mem and apu_mem node according to the result of "make dtbs_check W=1"
- - Fix comment style to Linux for optee node.
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-index ff363ab925e9..5d635085fe3f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-@@ -56,13 +56,8 @@
- 		#size-cells = <2>;
- 		ranges;
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 035a34b50..ee19475ec 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -836,7 +836,7 @@ mt7530_get_strings(struct dsa_switch *ds, int port, u32 stringset,
+ 		return;
  
--		/* 2 MiB reserved for ARM Trusted Firmware (BL31) */
--		bl31_secmon_reserved: secmon@54600000 {
--			no-map;
--			reg = <0 0x54600000 0x0 0x200000>;
--		};
--
--		/* 12 MiB reserved for OP-TEE (BL32)
-+		/*
-+		 * 12 MiB reserved for OP-TEE (BL32)
- 		 * +-----------------------+ 0x43e0_0000
- 		 * |      SHMEM 2MiB       |
- 		 * +-----------------------+ 0x43c0_0000
-@@ -75,6 +70,34 @@
- 			no-map;
- 			reg = <0 0x43200000 0 0x00c00000>;
- 		};
-+
-+		scp_mem: memory@50000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x50000000 0 0x2900000>;
-+			no-map;
-+		};
-+
-+		vpu_mem: memory@53000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x53000000 0 0x1400000>; /* 20 MB */
-+		};
-+
-+		/* 2 MiB reserved for ARM Trusted Firmware (BL31) */
-+		bl31_secmon_mem: memory@54600000 {
-+			no-map;
-+			reg = <0 0x54600000 0x0 0x200000>;
-+		};
-+
-+		snd_dma_mem: memory@60000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x60000000 0 0x1100000>;
-+			no-map;
-+		};
-+
-+		apu_mem: memory@62000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x62000000 0 0x1400000>; /* 20 MB */
-+		};
- 	};
- };
+ 	for (i = 0; i < ARRAY_SIZE(mt7530_mib); i++)
+-		strncpy(data + i * ETH_GSTRING_LEN, mt7530_mib[i].name,
++		strscpy_pad(data + i * ETH_GSTRING_LEN, mt7530_mib[i].name,
+ 			ETH_GSTRING_LEN);
+ }
  
 -- 
-2.18.0
+2.42.0
 
 
