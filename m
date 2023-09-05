@@ -4,90 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE026C83F2C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 02:42:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C994C83F33
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 03:45:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nt6ay0ilUmrNIrakmOthvuLnYKcSlh/71zqVmBj/MNI=; b=VbB4VfjWbvCLocPoMukFTuVzg1
-	JtwcTr2PIYbxpDL3OCDKr6mwECJLdn8mfmhQ7wAgNJng27aP7fZKQwz9BnPvIw7Pnb7r0OKkCGVqb
-	sTtakw7E8+GqevW9CsdCndxVusX5Jc1Z2ApAO3/j2sZvhC1rxXfc+2OfZV/SQTIxI3feUq3y7qmRc
-	X3dVaKL+mDlKFBroLkngCR0O+BsiyDo5qufFzm9CyqWOKRZ86H6kVzCUV2Zm7qDJQDgNWHVp3hj3X
-	0+zSRzaV6pZnBKAp0mr7l/dTCe/gL48OcXGDBTMgtKOfMloOvcgpKo4/8jtUi/Jtqgn3UAYT6YPxm
-	djtEESFg==;
+	bh=81fQdPeNAnh17p0aY+2nDD83owMnZn/PSt5AlVJY8ZE=; b=i7zij5yJOustewUtexMSDHynh3
+	JuCU72K9tcEhsGuQ9LyfPOIq6zi2GgKYYu9JZyRAAxZSwYAznLsSGR6UjGyJ7SWMlVQ0EX1r3yCXl
+	mmndXpiZCQsVL/dsEyIKD9nkB4o+fM5aDQIBl3WG8LJCF/DYbBr8AhBUnf4+8L+0NaXiTUKIqe+vw
+	zRAH193VI7gFNsFSEXxXHU94eyJCbv72VUwsvs5xBKiktA8ku6YsFYwnhjg9JtuVSL9rnTRArtBqi
+	GPj8hATRgCTMHI2BfdLIFB7t35dfqGQG9MNRopJYllj9LdSqnkHDM7By4QVsre+8bysnmBpq5aClZ
+	8P/vCnOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdM1Y-0056tn-1j;
-	Tue, 05 Sep 2023 02:42:40 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1qdN0L-005B6j-0S;
+	Tue, 05 Sep 2023 03:45:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdM1T-0056sV-39;
-	Tue, 05 Sep 2023 02:42:37 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2bcd7a207f7so29922321fa.3;
-        Mon, 04 Sep 2023 19:42:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1693881751; x=1694486551; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Nt6ay0ilUmrNIrakmOthvuLnYKcSlh/71zqVmBj/MNI=;
-        b=MQZZn4ugJgNJEpkub8d52NSaT1k3b16hqt0for0abLkaBcKnLKV2YIoO7OmwxNWbff
-         fkbu/NTe5nlxXdk95ndRx1EUBYCw0CgXmY3+8X0OM1x75R2fkE7GnjGp7o/MpjjrOt8R
-         Hgz6xjlVrJJT4az7EnYFzkWuJfyOPNSnrCJ5f1nrAEujI9jv8hsMkwQSPxHrlWhXjdhA
-         TdHlxRg0tTne08cT2KGKb6zdUHdWH6htNbZheNc2Mtwh1wS3nlwv9oJTyxi/wDiYBNMp
-         /CtNFPfjDfxHIqTeXqL8vNjG2BkGBmgkPaKp0oFxoGZ+tpaPjJNVoGy+DqNrSDsn/6bG
-         izwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693881751; x=1694486551;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Nt6ay0ilUmrNIrakmOthvuLnYKcSlh/71zqVmBj/MNI=;
-        b=ZmAFpBiWjHwxkQG2jRvil47LiyJ4PFRNzMV1tTi093eTLvUcZYgqiWKq0ZVu2urXPo
-         a/aIAyVLEHmGSuhCuAyaN1wP8dHHjCsB2LiZlr0wKx7aH2WCcEXngHQnMWrE3HygAXAa
-         LzFIUB5sKOL9qc+Mp/BBiVZdlJ8lEt1jxgV6yZlxRHLieOU6qqdLAOYyr3FaodkZJcbO
-         6IFLS+/XpqvLImggBz69C0KA0moC0o0HCI31iOAZMp5CC0+4uzSK9Xhf3bMK7JCocCc0
-         AIOQqU9FW+wBGq3OKeD1bup9fTwFp/GN3C7g6A1EyDDJ5VLGy8lq4qSPTR5ZeOaxZGi9
-         bgjQ==
-X-Gm-Message-State: AOJu0Ywa9/JpGK72B1QYHqsMLPjV22WMRed54EBy/nq8dDaBFXEwfmsP
-	W0juo44nd0CRXqkxYYTlawniBRt96lVQclMAo5Y=
-X-Google-Smtp-Source: AGHT+IGDYEM/D+VjDs53lbJVDTyoT0Bkv7iXApFmItzvgobWbxVZW0eXbIPiwJUhubc08jbCg8gVCb4oxy8r4PLOtqU=
-X-Received: by 2002:a2e:980a:0:b0:2bd:1ea9:f0fc with SMTP id
- a10-20020a2e980a000000b002bd1ea9f0fcmr8939737ljj.21.1693881751359; Mon, 04
- Sep 2023 19:42:31 -0700 (PDT)
+	id 1qdN0H-005B5W-2i;
+	Tue, 05 Sep 2023 03:45:27 +0000
+X-UUID: a24634724b9e11ee86758d4a7c00f3a0-20230904
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=81fQdPeNAnh17p0aY+2nDD83owMnZn/PSt5AlVJY8ZE=;
+	b=Bzjmeq2eYB1JWyWppnIiya6O03N8MGjshjub4sjXjdub3Hsfck10KavavbYNxZj2ZF16e0zHgo7kx/MYNESjWK2+yKn0ZHt5Yz+cEFGM+McTNFGFkBAP9Xa1lKKtMRerXpEGpe6A6+4oNViAV+k/LG4O0kocr4lEHgNOLK35Op0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:c1aec7e9-a8aa-4d04-94da-a696a9afcbb7,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:a17a1e20-33fd-4aaa-bb43-d3fd68d9d5ae,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: a24634724b9e11ee86758d4a7c00f3a0-20230904
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1941248933; Mon, 04 Sep 2023 20:45:19 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 5 Sep 2023 11:45:16 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 5 Sep 2023 11:45:16 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Alexandre Mergnat <amergnat@baylibre.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Fabien Parent
+	<fparent@baylibre.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, <stable@vger.kernel.org>
+Subject: [PATCH v3 1/2] arm64: dts: mediatek: mt8195-demo: fix the memory size to 8GB
+Date: Tue, 5 Sep 2023 11:45:10 +0800
+Message-ID: <20230905034511.11232-1-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230825114623.16884-1-macpaul.lin@mediatek.com>
+References: <20230825114623.16884-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-References: <20230812091708.34665-3-arinc.unal@arinc9.com> <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
- <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com> <20230813112026.ohsx6srbt2staxma@skbuf>
- <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com> <20230813190157.4y3zoro53qsz43pe@skbuf>
- <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com> <20230814143601.mnpxtcm2zybnbvoh@skbuf>
- <0cee0928-74c9-4048-8cd8-70bfbfafd9b2@arinc9.com> <20230827121235.zog4c3ehu2cyd3jy@skbuf>
- <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
-In-Reply-To: <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
-From: Luiz Angelo Daros de Luca <luizluca@gmail.com>
-Date: Mon, 4 Sep 2023 23:42:19 -0300
-Message-ID: <CAJq09z6eghuHY+b2y-kGmjKnLiEEOABXGKhjnB-PxJ=-GtYD4w@mail.gmail.com>
-Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Vladimir Oltean <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Florian Fainelli <f.fainelli@gmail.com>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, 
-	Linus Walleij <linus.walleij@linaro.org>, =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>, 
-	Daniel Golle <daniel@makrotopia.org>, Landen Chao <Landen.Chao@mediatek.com>, 
-	DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, mithat.guner@xeront.com, 
-	erkin.bozoglu@xeront.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230904_194236_018338_50DED64C 
-X-CRM114-Status: GOOD (  18.25  )
+X-CRM114-CacheID: sfid-20230904_204525_898665_40C5A120 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,51 +91,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> > [1] ...this. The SMI-controlled and MDIO-controlled Realtek switches are
-> > otherwise the same, right? So why would they have different dt-bindings?
->
-> Honestly, I'm wondering the answer to this as well. For some reason, when
-> probing the SMI controlled Realtek switches, instead of just letting
-> dsa_switch_setup() populate ds->slave_mii_bus, on realtek_smi_setup_mdio()
-> on realtek-smi.c:
->
-> - priv->slave_mii_bus is allocated.
-> - mdio_np = of_get_compatible_child(priv->dev->of_node, "realtek,smi-mdio");
-> - priv->slave_mii_bus->dev.of_node = mdio_np;
-> - ds->slave_mii_bus = priv->slave_mii_bus;
+The onboard dram of mt8195-demo board is 8GB.
 
-I might be able to help here. The Realtek SMI version created a custom
-slave_mii driver because it was the only way to associate it with an
-MDIO DT node. And that DT node was required to specify the interrupts
-for each phy0.
-It would work without that mdio node, letting DSA setup handle the
-slave bus, but it would rely only on polling for port status.
+Cc: stable@vger.kernel.org      # 6.1, 6.4, 6.5
+Fixes: 6147314aeedc ("arm64: dts: mediatek: Add device-tree for MT8195 Demo board")
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-As we only have a single internal MDIO, the compatible string
-"realtek,smi-mdio" would not be necessary if the driver checks for a
-"mdio"-named child node. Maybe the code was just inspired by another
-DSA driver that uses more MDIO buses or external ones. The "mdio" name
-is suggested by docs since it was committed
-(https://www.kernel.org/doc/Documentation/devicetree/bindings/net/dsa/realtek-smi.txt).
-That name was also kept in the YAML translation
-(https://www.kernel.org/doc/Documentation/devicetree/bindings/net/dsa/realtek.yaml).
+Changes for v2:
+Changes for v3:
+ - No change.
 
-The Realtek MDIO driver was merged at the same release that included
-the change that allows dsa_switch_setup() to reference the "mdio"
-OF-node if present. That way, it could avoid creating a custom
-slave_mii_bus driver.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+index b2485ddfd33b..ff363ab925e9 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+@@ -48,7 +48,7 @@
+ 
+ 	memory@40000000 {
+ 		device_type = "memory";
+-		reg = <0 0x40000000 0 0x80000000>;
++		reg = <0 0x40000000 0x2 0x00000000>;
+ 	};
+ 
+ 	reserved-memory {
+-- 
+2.18.0
 
-I submitted a small series of patches to unify that behavior between
-those two drivers:
-
-https://lore.kernel.org/netdev/CAJq09z44SNGFkCi_BCpQ+3DuXhKfGVsMubRYE7AezJsGGOboVA@mail.gmail.com/
-(This is my answer to the series opening message to include the first
-paragraph ate by the editor)
-
-There was some discussion but not NAC, ACK or RFC. It would have
-dropped some lines of code. I can revive it if there is interest.
-
-Regards,
-
-Luiz
 
