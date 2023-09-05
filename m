@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1FACC83F2C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 07:46:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A7AACA0FE9
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 07:46:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FLcfhK1bxBxvs6Obq5jBen1Fjb+rMcNsFwJkIATMusw=; b=OxIWixNpS56/ilWB63r4dWDqAC
-	QbmUGl+py7q3qhf4yWYTowc2MK7zooKfN7/NTv2OR9bTQEmuTJfuHk8Oqz8qTBjcUNZJGlvQ6GfO9
-	lh7i8R+YypyV0pQtwPNryh77KawOcke8l6j7jXS4yIU9PkU/IRy0PXtq9SXGQb6dKVHrW4w3YkUSF
-	ywHX/wSTCWVI8mQBAq7FkP/bbORNZftV9wVr/C8UC+ERRMbZ7J3+X0VJqbE1aw4itayjqXosMspxx
-	bLc/6qbq6MqTBjqiDbDOsi1+tv2eO2kndTREmzaC5NNezilvfiagEkOLksAF2ugix4q+jyXrfvH3G
-	AFGrCK2g==;
+	bh=Srp12jZ2l/FJg5/koZs+VRDwTeBxd3uTZierhrBjiZs=; b=3R4Cit/GR6F0vNG1SxjvFu04eK
+	vU80fXMSyi5lLlRBH0oGtQfdb0NS9uAbv+LC5l1LJsxfiYLQdcKN0xa0exFwonbS2XY9HbErIDgs4
+	zkNOpWneeusUEaBY5ms3Qo43MaBMebRgXkjMV1EomfjYzOaH3IkFrhf1nSnjnLESykX+8cooewNXu
+	DjztGsXiIjuSLRcwBj68DUVNGfSJj2ORaGya0zxpyV+0s83gUrutB4hlX/+o4fQw9tLjlA0bbwqc7
+	UDWNKW9fmYmjponfv4aOs8+toWaUpnbP/IcOD85eLfvt8yj6pzlqlj2dDS0nntYHzs/ciI2CTp/+C
+	YpHeX3Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdQlp-005Sm6-2x;
-	Tue, 05 Sep 2023 07:46:45 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qdQlu-005SnK-0U;
+	Tue, 05 Sep 2023 07:46:50 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdQll-005Ski-1l;
-	Tue, 05 Sep 2023 07:46:42 +0000
+	id 1qdQlm-005Skk-2t;
+	Tue, 05 Sep 2023 07:46:44 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 983E16607033;
-	Tue,  5 Sep 2023 08:46:38 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id ED57A6607186;
+	Tue,  5 Sep 2023 08:46:39 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1693899999;
-	bh=N17nKRenuWrXQvbPYayfAXzToq+gFoZOFDOSSc7L+fM=;
+	s=mail; t=1693900000;
+	bh=LFndA3pFJkQjsY6+cZ6q8HLFNc/UGIg5dTqHJTKN0iQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Sb1KR0+Fo6COyGKeYr/5gd1FqmGuMYbX7f8E8C6XeU0YD74tUBePlMUpy2Bl1IY8Y
-	 49JUTMhcePcdIoLYWSDFduSN4CB0PjoIfI4TT0ynjsyKtutaajlyEm4pCRIlFq0fJA
-	 2edAoybmDatc71WsEzltFHixwenLSAoeepEcSzrqvsGxQde+ds8wwFJIvKzfBpF87z
-	 G61nHbWrxb/ixSYusLu604r8Og3Wq647miKIoW6aVjz2zzuYzpFRA8q8kYcNwvBFOW
-	 J6Q2SushZ8RJyTmNRtcFlYzFQNqVpvd92RGeiMv9MYA71Yp0z+hJnFwRipKXxHagH8
-	 5TCJ2KVFrxK8w==
-Message-ID: <43b990d9-7bf8-ed06-ccfd-69b2a6cb85e5@collabora.com>
-Date: Tue, 5 Sep 2023 09:46:36 +0200
+	b=Pew4fawfy9voOOmE19XJUCsMQ72+myxp521f+lJ63NOtBo2sDHhpw1WiD5ScDG/zs
+	 RAlBhLcc5u/n0z1qWxtO0VoIcOqn7qbGF8U9xyoitgRHwyVjjzHkWOiONElzrcYsKH
+	 r1ozDXtuQat1zTsISxfeQdHPMOtbQgB54w2iE3PJWSXrioA4TlAonrN3jWoVPw2Npd
+	 786Bt+/rd6ixLLF0SI1VMyTKVDzLFaCUKwu0QcysplvyIfPZ0Ru/Gl8H1mt3dm8w+b
+	 DuJGIS1wxbXv11+2/iI74HguOcmAWoM6lTlu/NTzulIIKuB3/vzlfKaoflVPz93Qnx
+	 Mru9XrTYYePrQ==
+Message-ID: <cb1fc499-3649-0f3b-f9c0-f5305b2310d7@collabora.com>
+Date: Tue, 5 Sep 2023 09:46:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH v17 06/14] remoteproc: mediatek: Revise SCP rproc
- initialization flow for multi-core SCP
-Content-Language: en-US
+Subject: Re: [PATCH v17 12/14] remoteproc: mediatek: Report watchdog crash to
+ all cores
 To: Tinghan Shen <tinghan.shen@mediatek.com>,
  Bjorn Andersson <andersson@kernel.org>,
  Mathieu Poirier <mathieu.poirier@linaro.org>,
@@ -62,14 +61,15 @@ Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20230901080935.14571-1-tinghan.shen@mediatek.com>
- <20230901080935.14571-7-tinghan.shen@mediatek.com>
+ <20230901080935.14571-13-tinghan.shen@mediatek.com>
+Content-Language: en-US
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230901080935.14571-7-tinghan.shen@mediatek.com>
+In-Reply-To: <20230901080935.14571-13-tinghan.shen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230905_004641_734702_3BBE8AF3 
-X-CRM114-Status: UNSURE (   9.28  )
+X-CRM114-CacheID: sfid-20230905_004643_065800_08684A4A 
+X-CRM114-Status: UNSURE (   7.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,14 +86,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 01/09/23 10:09, Tinghan Shen ha scritto:
-> This is the 2nd preliminary step for probing multi-core SCP.
-> Initialization of configuration and L1TCM registers is extracted
-> to only performed once on multi-core SCP. The rest of remoteproc
-> initialization procedure is similar for both single and multi-core
-> SCP and is applied to each core.
+> To ensure consistent behavior, the watchdog timeout handling of the
+> multi-core SCP should reset the whole SCP sub-system when watchdog
+> timeout. Triggering the rproc recovery flow on all instances will
+> ensure proper recovery of the SCP sub-system.
 > 
 > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
