@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A6EC83F3E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 14:23:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF081C83F3E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 14:24:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=r8m+Ysh7MzIJQJW0je35DqRSDl/nm2DaTMoSX9cJ1NA=; b=R5YLsvevqrt1tsTCGCcOIu39CY
-	iYD3k7WDb07QVnoMYX0QXVDmUk00gy1Y2PwFRJKbHzzhUZ4xrK+CC9nFMIrJQmz9Y0DG8hI0rzV8p
-	lI3hYFFJdy0EgzwW07iCHr+i1E+yAi1QbjLoQ64bdPOB/0gidMTzb3d0YmT4orFcRVO2MBuhn5q8T
-	5GWe21JGe+dtsJ9+JD3/1AmMXJUHH0vl6DLwUG4YycI/TgAlXRXlV+FMAYadNSL1k4UJ8J61AVAV3
-	bRyl70Y8FCoqfKBEtIN0pC0hfdyYFqV1wbO5FS8Uz9sZW7N6iJNYmg3np2vRE+zo37P1GlT88bKbY
-	wlNwSJdg==;
+	bh=zAwm/IYGf6NFCXp4FoAerIpc2O3P6mE2ikN67xCGKfM=; b=FDVguPifDiiLikNTPtgL0nt5VE
+	kQ1j5Anz85PGHBF4lgf3aNldPyS+4l32+5cd7kLASMh42uVocEC/KtMIctDoZmZOrYRvhAZ4Wwehf
+	AOrdvhnGWMLs9LWL8TLJMxStpUE6XVxgmy48JNI+5ssWGm9iMLqo9YFiNIQ9slqjCl33kn5XhotO+
+	izkL5WpHsh+lkqFUXfkmWHffgAm2uBOK6t73C7hLc0vgnCHMdxY2cnCrBWWKh7EQyY6Q+EXOJRSQ8
+	ljBfHzTsMaAOMYxu5nPD5lcU5e4k5feQIixEQR3mZyXhHOZUyWV7GLcyasEaiq6Q+rOFMqYUBlfek
+	EKDYYrBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdWxw-006A8Q-0e;
-	Tue, 05 Sep 2023 14:23:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qdWyp-006AIP-2J;
+	Tue, 05 Sep 2023 14:24:35 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdWxt-006A7U-0G;
-	Tue, 05 Sep 2023 14:23:38 +0000
-X-UUID: c94a23364bf711ee86758d4a7c00f3a0-20230905
+	id 1qdWyn-006AHH-1z;
+	Tue, 05 Sep 2023 14:24:35 +0000
+X-UUID: e9d2dc6a4bf711ee9b7791016c24628a-20230905
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=r8m+Ysh7MzIJQJW0je35DqRSDl/nm2DaTMoSX9cJ1NA=;
-	b=rWe9fIQmI7MOPgVE78rl+6d+/kUxS8it5DsKkjqQK8fE3HJtZVReUleyMI6E37dc9yrN5uBdZvj7lfza23sd1LshsLl7vLdcqrgShBrGjwQn3zggmE2ArQfQe00zxNYhcCHhPf90imA5wWpUMO69vXeOlGPInNMnxKN34Yg/zRQ=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zAwm/IYGf6NFCXp4FoAerIpc2O3P6mE2ikN67xCGKfM=;
+	b=NvQdIWQmpzHE0sOdolYcSFeeHZrWsU80pO3MgdJEz42TsBQ2UKfVnzRemqKfVXoSMVR3rISh2IonYOo1ty76HU3iu4CHecF3eIPAcEBHpEBOX5QSzSlTTt8jNzhk0heWWA0wfmTADZNcYG76IW+3NKn64W8B3KL569QzG88nazU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:a032238a-c046-4327-b2f8-a33c778544b5,IP:0,U
-	RL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-20
-X-CID-META: VersionHash:0ad78a4,CLOUDID:7ae9abc2-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
+X-CID-O-INFO: VERSION:1.1.31,REQID:aa2a9f3e-5d4b-4b00-a9a3-da6593543211,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:0ad78a4,CLOUDID:53382520-33fd-4aaa-bb43-d3fd68d9d5ae,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
 	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: c94a23364bf711ee86758d4a7c00f3a0-20230905
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: e9d2dc6a4bf711ee9b7791016c24628a-20230905
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <tze-nan.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1338159789; Tue, 05 Sep 2023 07:23:30 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+	with ESMTP id 1337031294; Tue, 05 Sep 2023 07:24:24 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 5 Sep 2023 22:12:53 +0800
+ 15.2.1118.26; Tue, 5 Sep 2023 22:23:47 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 5 Sep 2023 22:12:53 +0800
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 5 Sep 2023 22:23:47 +0800
 From: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
 To: <rostedt@goodmis.org>, <mhiramat@kernel.org>
 CC: <bobule.chang@mediatek.com>, <wsd_upstream@mediatek.com>,
 	<cheng-jui.wang@mediatek.com>, Tze-nan Wu <Tze-nan.Wu@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<linux-kernel@vger.kernel.org>, <linux-trace-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+	<stable@vger.kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <linux-kernel@vger.kernel.org>,
+	<linux-trace-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
 Subject: [PATCH] ring-buffer: Do not read at &event->array[0] if it across the page
-Date: Tue, 5 Sep 2023 22:12:45 +0800
-Message-ID: <20230905141245.26470-1-Tze-nan.Wu@mediatek.com>
+Date: Tue, 5 Sep 2023 22:23:15 +0800
+Message-ID: <20230905142319.32582-1-Tze-nan.Wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230905_072337_130330_41B725E1 
-X-CRM114-Status: GOOD (  17.53  )
+X-CRM114-CacheID: sfid-20230905_072433_661282_7A24B3CB 
+X-CRM114-Status: GOOD (  16.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,8 +134,11 @@ event->type will be interpret as 0x0, than the reader will try to get the
 length by accessing event->array[0], which is an invalid address:
     &event->array[0] = 0x71FFFF8111A18000
 
+Cc: stable@vger.kernel.org
 Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
 ---
+resend again due to forget cc stable@vger.kernel.org
+
 Following patch may not become a solution, it merely checks if the address
 to be accessed is valid or not within the rb_event_length before access.
 And not sure if there is any side-effect it can lead to.
