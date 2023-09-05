@@ -4,67 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5555BC83F33
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 09:01:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CD44C83F2C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 09:36:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ut2rSNj5yTfrFpECnkBxD5ulH0IKc1tIDJj/2vnujps=; b=Hfb7XC2QcPMgqL
-	BQIbLwAxHQ8tkp/8PD4Zcn+yglENeLxNrHuO5s8l9oN3ZhO3k/lpJ3nOeIglVtCpEb6tTmyXjoZcy
-	KFTMd9h9V1L98R6rM5dBjElY/QoPVRvc4SyU9Xd/yjBOwS0A70A72pCxyuaiKLX6I/X8/XZpPMRzC
-	qx2bQDb/4BDuUUAiCJ5bM4Qe/lHUnzQlKj1maousieFpaJQ7/9wpsQcWTQtDN3kcNHQhlGMPNnv6n
-	mgqQNRl6mgjBn9/ZA/e6CVaYfn55BvF80Jq+S5EcUsMUUDjxkcC79bGK3nUR7FuFnLrI/V5tH8V7G
-	kD1BNabp9DI7ITigdpkg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=D5y9G1z06Rxre4yQq8k6ge1/4b/I2XOmZS0cs0tPS4w=; b=YPeaJJgoZer+FWiswPlfWO2bS8
+	+DhJpuTTN7xotkYcICZeolU5Wiq0FN5Cpg3rC87ePmTVOGusr7oCQUw6Cjm+trhFyPjWB4PxpYco6
+	PzVh6rm009F3S9AOU/RiosEggDcPAg2WhOKA8wpneV7aOKJC09no9l6FYvz4Q+tjUJFjSYi3j4UXm
+	rsxECQO+L0gu3j71qrfywuR3j9lwmaxZ+1liXrUh3aSEYklkqeJ2uhCVqxWW5VBE8ItkIZpQLGcPr
+	w2BaMvQ6RExkAqtGjRT38zDkbLlgrcEs6SLodpXKNjfsBZvGPadQgTTFO/EGXcBgahUjGDe4QTcRS
+	n+P9B9hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdRwJ-005bOT-0d;
-	Tue, 05 Sep 2023 09:01:39 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qdSU9-005dG8-1U;
+	Tue, 05 Sep 2023 09:36:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdRwF-005bN5-1O;
-	Tue, 05 Sep 2023 09:01:37 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D8C7566056FC;
-	Tue,  5 Sep 2023 10:01:29 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1693904490;
-	bh=l2OPuoN0S34rozWzW5FLBGuPQ/HVeExL6jI/FMgrsFw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oJlHFuSx/Mbls9SEAuJdRoia704lXRQR4rorl9NOo6sPjt51NLBxdAs3eflHdPAsl
-	 zh6ABc93As7NKbJaDeSJunY1bbrrI7zb/ugDG3/8OgoH7rQhor+KPmKHjA4VDXMwJQ
-	 kNxDoRZtHOzHqdTN3ctJHc2ZZB9e0ZJVICKhFsz7BwzTp15frdv4yjtlC5OtIdb2iq
-	 0lmIIGncA+J4B0DAjvnagDqhQJhq7ybSqag7h8pBwO1PFXSwQfaIqUKwqhCJcreeb4
-	 efzNyJNL56u9bim40iOhOC4Ys9Lfl0H35JGx45c5WLY10yib+a/6PB20m9FQ70rImc
-	 7jvmfRTsv4+qg==
-Message-ID: <33c9d30f-e378-597d-c258-2b2009c10649@collabora.com>
-Date: Tue, 5 Sep 2023 11:01:27 +0200
+	id 1qdSU6-005dF1-0f;
+	Tue, 05 Sep 2023 09:36:36 +0000
+X-UUID: af47ad964bcf11ee86758d4a7c00f3a0-20230905
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=D5y9G1z06Rxre4yQq8k6ge1/4b/I2XOmZS0cs0tPS4w=;
+	b=JP8ejumWXkZ11w3SOnxRdDeLD2kiwg8vGjG6RhPczO8SNnTj9QZ8wfCHqo+K79joD8sa6AhRjYYzFc61RSQ4hERDej0eZ3X8fPvZ1w2DMf4gR3W58YEDGji8UiVqfE2nE/iD56QaCR3eqffzfukQykYQZggdaUDkuhZHXZ8/zOA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:a251e5bc-c9ef-4af3-85d6-a17ef4b1973c,IP:0,U
+	RL:0,TC:0,Content:3,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:3
+X-CID-META: VersionHash:0ad78a4,CLOUDID:dcd2a9c2-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: af47ad964bcf11ee86758d4a7c00f3a0-20230905
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 980002502; Tue, 05 Sep 2023 02:36:26 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 5 Sep 2023 17:36:23 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Tue, 5 Sep 2023 17:36:21 +0800
+Message-ID: <d5645707-bcb0-4d4b-1d94-d3cd17c042fb@mediatek.com>
+Date: Tue, 5 Sep 2023 17:36:19 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v4 2/2] drm/mediatek: dpi/dsi: fix possible_crtcs
- calculation
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 1/2] dt-bindings: arm64: dts: mediatek: Add mt8395-evk
+ board
 Content-Language: en-US
-To: Michael Walle <mwalle@kernel.org>,
- =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
-References: <20230905084922.3908121-1-mwalle@kernel.org>
- <20230905084922.3908121-2-mwalle@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230905084922.3908121-2-mwalle@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Frank Wunderlich
+	<frank-w@public-files.de>, =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?=
+	<bero@baylibre.com>, Sean Wang <sean.wang@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>
+References: <20230904092043.5157-1-macpaul.lin@mediatek.com>
+ <e2e35d4d-7853-fccc-28c2-b8ecf309d6ec@linaro.org>
+ <00f0a1cf-6246-92e9-13b0-cf31bb292a94@mediatek.com>
+ <97b82a16-8710-9430-35c8-673381aaa417@linaro.org>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <97b82a16-8710-9430-35c8-673381aaa417@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230905_020135_741299_252128D6 
-X-CRM114-Status: GOOD (  29.74  )
+X-CRM114-CacheID: sfid-20230905_023634_574727_4B0D9005 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,192 +94,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jitao Shi <jitao.shi@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, "Nancy . Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Stu Hsieh <stu.hsieh@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/09/23 10:49, Michael Walle ha scritto:
-> mtk_drm_find_possible_crtc_by_comp() assumed that the main path will
-> always have the CRTC with id 0, the ext id 1 and the third id 2. This
-> is only true if the paths are all available. But paths are optional (see
-> also comment in mtk_drm_kms_init()), e.g. the main path might not be
-> enabled or available at all. Then the CRTC IDs will shift one up, e.g.
-> ext will be 0 and the third path will be 1.
-> 
-> To fix that, dynamically calculate the IDs by the presence of the paths.
-> 
-> While at it, make the return code a signed one and return -ENOENT if no
-> path is found and handle the error in the callers.
-> 
-> Fixes: 5aa8e7647676 ("drm/mediatek: dpi/dsi: Change the getting possible_crtc way")
-> Suggested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> Signed-off-by: Michael Walle <mwalle@kernel.org>
-> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Perfect!
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> ---
-> v4:
->   - return -ENOENT if mtk_drm_find_possible_crtc_by_comp() doesn't find
->     any path
-> v3:
->   - use data instead of priv_n->data
->   - fixed typos
->   - collected Rb and Tb tags
-> v2:
->   - iterate over all_drm_private[] to get any vdosys
->   - new check if a path is available
-> ---
->   drivers/gpu/drm/mediatek/mtk_dpi.c          |  5 +-
->   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 75 ++++++++++++++++-----
->   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  3 +-
->   drivers/gpu/drm/mediatek/mtk_dsi.c          |  5 +-
->   4 files changed, 68 insertions(+), 20 deletions(-)
+On 9/4/23 20:11, Krzysztof Kozlowski wrote:
+> 	
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index 2f931e4e2b60..f9250f7ee706 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -796,7 +796,10 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
->   		return ret;
->   	}
->   
-> -	dpi->encoder.possible_crtcs = mtk_drm_find_possible_crtc_by_comp(drm_dev, dpi->dev);
-> +	ret = mtk_drm_find_possible_crtc_by_comp(drm_dev, dpi->dev);
-> +	if (ret < 0)
-> +		goto err_cleanup;
-> +	dpi->encoder.possible_crtcs = ret;
->   
->   	ret = drm_bridge_attach(&dpi->encoder, &dpi->bridge, NULL,
->   				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> index 771f4e173353..83ae75ecd858 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> @@ -507,6 +507,27 @@ static bool mtk_drm_find_comp_in_ddp(struct device *dev,
->   	return false;
->   }
->   
-> +static bool mtk_ddp_path_available(const unsigned int *path,
-> +				   unsigned int path_len,
-> +				   struct device_node **comp_node)
-> +{
-> +	unsigned int i;
-> +
-> +	if (!path)
-> +		return false;
-> +
-> +	for (i = 0U; i < path_len; i++) {
-> +		/* OVL_ADAPTOR doesn't have a device node */
-> +		if (path[i] == DDP_COMPONENT_DRM_OVL_ADAPTOR)
-> +			continue;
-> +
-> +		if (!comp_node[path[i]])
-> +			return false;
-> +	}
-> +
-> +	return true;
-> +}
-> +
->   int mtk_ddp_comp_get_id(struct device_node *node,
->   			enum mtk_ddp_comp_type comp_type)
->   {
-> @@ -522,25 +543,47 @@ int mtk_ddp_comp_get_id(struct device_node *node,
->   	return -EINVAL;
->   }
->   
-> -unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
-> -						struct device *dev)
-> +int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm, struct device *dev)
->   {
->   	struct mtk_drm_private *private = drm->dev_private;
-> -	unsigned int ret = 0;
-> -
-> -	if (mtk_drm_find_comp_in_ddp(dev, private->data->main_path, private->data->main_len,
-> -				     private->ddp_comp))
-> -		ret = BIT(0);
-> -	else if (mtk_drm_find_comp_in_ddp(dev, private->data->ext_path,
-> -					  private->data->ext_len, private->ddp_comp))
-> -		ret = BIT(1);
-> -	else if (mtk_drm_find_comp_in_ddp(dev, private->data->third_path,
-> -					  private->data->third_len, private->ddp_comp))
-> -		ret = BIT(2);
-> -	else
-> -		DRM_INFO("Failed to find comp in ddp table\n");
-> +	const struct mtk_mmsys_driver_data *data;
-> +	struct mtk_drm_private *priv_n;
-> +	int i = 0, j;
-> +
-> +	for (j = 0; j < private->data->mmsys_dev_num; j++) {
-> +		priv_n = private->all_drm_private[j];
-> +		data = priv_n->data;
-> +
-> +		if (mtk_ddp_path_available(data->main_path, data->main_len,
-> +					   priv_n->comp_node)) {
-> +			if (mtk_drm_find_comp_in_ddp(dev, data->main_path,
-> +						     data->main_len,
-> +						     priv_n->ddp_comp))
-> +				return BIT(i);
-> +			i++;
-> +		}
-> +
-> +		if (mtk_ddp_path_available(data->ext_path, data->ext_len,
-> +					   priv_n->comp_node)) {
-> +			if (mtk_drm_find_comp_in_ddp(dev, data->ext_path,
-> +						     data->ext_len,
-> +						     priv_n->ddp_comp))
-> +				return BIT(i);
-> +			i++;
-> +		}
-> +
-> +		if (mtk_ddp_path_available(data->third_path, data->third_len,
-> +					   priv_n->comp_node)) {
-> +			if (mtk_drm_find_comp_in_ddp(dev, data->third_path,
-> +						     data->third_len,
-> +						     priv_n->ddp_comp))
-> +				return BIT(i);
-> +			i++;
-> +		}
-> +	}
->   
-> -	return ret;
-> +	DRM_INFO("Failed to find comp in ddp table\n");
-> +	return -ENOENT;
->   }
->   
->   int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> index febcaeef16a1..6a95df72de0a 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> @@ -277,8 +277,7 @@ static inline bool mtk_ddp_comp_disconnect(struct mtk_ddp_comp *comp, struct dev
->   
->   int mtk_ddp_comp_get_id(struct device_node *node,
->   			enum mtk_ddp_comp_type comp_type);
-> -unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
-> -						struct device *dev);
-> +int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm, struct device *dev);
->   int mtk_ddp_comp_init(struct device_node *comp_node, struct mtk_ddp_comp *comp,
->   		      unsigned int comp_id);
->   enum mtk_ddp_comp_type mtk_ddp_comp_get_type(unsigned int comp_id);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index d8bfc2cce54d..d67e5c61a9b9 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -843,7 +843,10 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
->   		return ret;
->   	}
->   
-> -	dsi->encoder.possible_crtcs = mtk_drm_find_possible_crtc_by_comp(drm, dsi->host.dev);
-> +	ret = mtk_drm_find_possible_crtc_by_comp(drm, dsi->host.dev);
-> +	if (ret < 0)
-> +		goto err_cleanup_encoder;
-> +	dsi->encoder.possible_crtcs = ret;
->   
->   	ret = drm_bridge_attach(&dsi->encoder, &dsi->bridge, NULL,
->   				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
+> External email : Please do not click links or open attachments until you 
+> have verified the sender or the content.
+> 
+> On 04/09/2023 11:50, Macpaul Lin wrote:
+>> 
+>> 
+>> On 9/4/23 17:33, Krzysztof Kozlowski wrote:
+>>> 
+>>>
+>>> External email : Please do not click links or open attachments until you 
+>>> have verified the sender or the content.
+>>>
+>>> On 04/09/2023 11:20, Macpaul Lin wrote:
+>>>> Add bindings for the MediaTek mt8395-evk board.
+>>>> The mt8359-evk board is also named as "Genio 1200-EVK".
+>>>> MT8195 and MT8395 are the same family series SoC could share
+>>>
+>>> How can be the same and have different numbers? You sill need dedicated
+>>> compatible.
+>>>
+>> 
+>> The SoCs mt8195 and mt8395 are designed for different market application 
+>> and physical characteristics, using different efuse values for 
+>> distinction. The booting flow and configurations are controllered by the 
+>> boot loaders, firmware, and TF-A. Therefore, the part numbers and 
+>> procurement channels are different. The detail information of these 
+>> efuse values is proprietary, so I cant disclose it futher. Hence the 
+>> most of peripheral drivers and base address are almost the same.
+> 
+> 1. Drivers? So we talk about compatibility, not the same.
+> 2. "almost the same" is not the same. Follow the guidelines for writing
+> bindings.
+> 
 
+Thanks for the review.
+
+After internal confirmation and discussion, it can be confirmed that the 
+MT8195 and MT8395 are identical SoCs from to binding's perspective. 
+MediaTek hope the mt8395 boards could directly use mt8195.dtsi, without 
+the need to create a separate mt8395.dtsi to include mt8195.dtsi. 
+Therefore, we hope to fully adopt the bindings of mt8195. However, I 
+will submit a revised patch for compatible since they are different boards.
+
+If the reviewer still disagrees, then MediaTek will create a new binding 
+and use mt8395.dtsi to include mt8195.dtsi to apply the separate 
+bindings for differentiation.
+
+> Best regards,
+> Krzysztof
+> 
+> 
+
+Best regards,
+Macpaul Lin
 
