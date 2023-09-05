@@ -4,85 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CD44C83F2C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 09:36:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61607C83F3E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 09:57:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D5y9G1z06Rxre4yQq8k6ge1/4b/I2XOmZS0cs0tPS4w=; b=YPeaJJgoZer+FWiswPlfWO2bS8
-	+DhJpuTTN7xotkYcICZeolU5Wiq0FN5Cpg3rC87ePmTVOGusr7oCQUw6Cjm+trhFyPjWB4PxpYco6
-	PzVh6rm009F3S9AOU/RiosEggDcPAg2WhOKA8wpneV7aOKJC09no9l6FYvz4Q+tjUJFjSYi3j4UXm
-	rsxECQO+L0gu3j71qrfywuR3j9lwmaxZ+1liXrUh3aSEYklkqeJ2uhCVqxWW5VBE8ItkIZpQLGcPr
-	w2BaMvQ6RExkAqtGjRT38zDkbLlgrcEs6SLodpXKNjfsBZvGPadQgTTFO/EGXcBgahUjGDe4QTcRS
-	n+P9B9hA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AKHR62ul+UyAMBBLZNZLoFrH8efwjpri67YRyIEqGb8=; b=Ce8ApRzE9MWaB2gBSnJZcBRB7P
+	T0dd6EeQk9CGXtgAXzd2F04pzZd3lwouEI9UMZbSvb+siOArXLruHOZxW9r1rQKMW69MDMRDBBf7j
+	MzFfBLR8mD0XimQQS4yYz/0Wrzw/8BfhZrUq7ft2fmrSf6jkfoOT3AqqrlRzXee+wlsf0C1seO8BV
+	HD0grS3NUV0v30dJpjfwpS2YtP8z9sPtiq3M5V9HdZSTNViD/o/oqjCIa6K2eYE2wAMS5ecR/NtpM
+	zp6I8gvIrj35UVqgcdbGKbCh0y4TjkKBWmAPRdYqge8cKLCRjU/XpPpOdEFeSPMtKPMKmgCchu/kU
+	N6RdUqgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdSU9-005dG8-1U;
-	Tue, 05 Sep 2023 09:36:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qdSoa-005eoY-2c;
+	Tue, 05 Sep 2023 09:57:44 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdSU6-005dF1-0f;
-	Tue, 05 Sep 2023 09:36:36 +0000
-X-UUID: af47ad964bcf11ee86758d4a7c00f3a0-20230905
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=D5y9G1z06Rxre4yQq8k6ge1/4b/I2XOmZS0cs0tPS4w=;
-	b=JP8ejumWXkZ11w3SOnxRdDeLD2kiwg8vGjG6RhPczO8SNnTj9QZ8wfCHqo+K79joD8sa6AhRjYYzFc61RSQ4hERDej0eZ3X8fPvZ1w2DMf4gR3W58YEDGji8UiVqfE2nE/iD56QaCR3eqffzfukQykYQZggdaUDkuhZHXZ8/zOA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:a251e5bc-c9ef-4af3-85d6-a17ef4b1973c,IP:0,U
-	RL:0,TC:0,Content:3,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:3
-X-CID-META: VersionHash:0ad78a4,CLOUDID:dcd2a9c2-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: af47ad964bcf11ee86758d4a7c00f3a0-20230905
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 980002502; Tue, 05 Sep 2023 02:36:26 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 5 Sep 2023 17:36:23 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Tue, 5 Sep 2023 17:36:21 +0800
-Message-ID: <d5645707-bcb0-4d4b-1d94-d3cd17c042fb@mediatek.com>
-Date: Tue, 5 Sep 2023 17:36:19 +0800
+	id 1qdSoX-005en6-1R
+	for linux-mediatek@lists.infradead.org;
+	Tue, 05 Sep 2023 09:57:43 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-501bd6f7d11so901116e87.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 Sep 2023 02:57:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1693907857; x=1694512657; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=AKHR62ul+UyAMBBLZNZLoFrH8efwjpri67YRyIEqGb8=;
+        b=NV84KDbWDHSe8HObgrPerLkw6C/H5+eShMhNCUYD1xlFcWexbOep5dIbORNlGNEqZG
+         KfXQBb4fi9YtvlBmTvn1O3ihVcOK0phabzpdGKQ3tj1HkFFqRcge+83tTzg94ouW4N5f
+         xmKmjgqOUdnpm7V9bT7RgZEZHnlzDnrku7sEwgBVdvuxdEdrKnz+Pd0HdodnwFHo5T7e
+         ZBTob3d5m7BbAlmOCWm13yvjYXmFTaiRu3gSa+uMMHutS8vrt5abh5M0NoX4N6KEdGIg
+         aQqKQeF0O58kC4oRv33Ak/tSZLu6HZBwyQfevfZG8gKWgLfuoApOh/yp2c70nUu91WJY
+         ParQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1693907857; x=1694512657;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=AKHR62ul+UyAMBBLZNZLoFrH8efwjpri67YRyIEqGb8=;
+        b=RvKsPZaKJRNJIvO9QFACKfxZdngQZd56ruahCh1VeemeBhqhbKB9AykS/5Kf6+aI6v
+         sf2+Zfj1bqGJ4Rrc+O+TPZrX2uim8dsIy6mmQUANJqlSPh+SACFX5COThb21HpetnDcn
+         NazN3IYstxC8v8sJZAxKDzo8uwOT+OPuluuK0EMuypqRNhSlVTuiU27tdC5CoFIFZo08
+         P4VH8n6WRe2RTV5BhHTCjLq5D62cfyilZSDGgEH4Vmt9fLtS47/1dzMLPYl7hSWet5yv
+         iXJIcLo9W26QwNop0BFEwh6MveS6gQJ/2lkcleDyIOSsSzTV4TGpIc73itDzU3xpNurM
+         hvTw==
+X-Gm-Message-State: AOJu0YyLyOdM5kAYS9ulxnD+5HC1Xd/yGN1oxX650WNLiII7/G5ap8sW
+	xi+Du/U4zutvPyZYcDbkjgLCMw==
+X-Google-Smtp-Source: AGHT+IF/Krv9XoaHXmgTX6hA95PT3mrsyeECELy7hFWygISVfjLi7nO3m0A/foR0u3zSojYLTMDlFA==
+X-Received: by 2002:a19:8c09:0:b0:500:9d6c:913e with SMTP id o9-20020a198c09000000b005009d6c913emr7472258lfd.52.1693907857446;
+        Tue, 05 Sep 2023 02:57:37 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id o3-20020a5d4083000000b0031435731dfasm16913703wrp.35.2023.09.05.02.57.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 05 Sep 2023 02:57:37 -0700 (PDT)
+Date: Tue, 5 Sep 2023 12:57:34 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Ratheesh Kannoth <rkannoth@marvell.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, ast@kernel.org, daniel@iogearbox.net,
+	hawk@kernel.org, john.fastabend@gmail.com, jiawenwu@trustnetic.com,
+	mengyuanlou@net-swift.com, yang.lee@linux.alibaba.com,
+	error27@gmail.com, linyunsheng@huawei.com,
+	linux-hyperv@vger.kernel.org, kys@microsoft.com,
+	haiyangz@microsoft.com, wei.liu@kernel.org, decui@microsoft.com,
+	longli@microsoft.com, shradhagupta@linux.microsoft.com,
+	linux-hwmon@vger.kernel.org, michael.chan@broadcom.com,
+	richardcochran@gmail.com, jdelvare@suse.com, linux@roeck-us.net,
+	yisen.zhuang@huawei.com, salil.mehta@huawei.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, nbd@nbd.name, john@phrozen.org,
+	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	lorenzo@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, linux@armlinux.org.uk,
+	linux-rdma@vger.kernel.org, saeedm@nvidia.com, leon@kernel.org,
+	gerhard@engleder-embedded.com, maciej.fijalkowski@intel.com,
+	alexanderduyck@fb.com, wei.fang@nxp.com, shenwei.wang@nxp.com,
+	xiaoning.wang@nxp.com, linux-imx@nxp.com, lgirdwood@gmail.com,
+	broonie@kernel.org, jaswinder.singh@linaro.org,
+	ilias.apalodimas@linaro.org, UNGLinuxDriver@microchip.com,
+	horatiu.vultur@microchip.com, linux-omap@vger.kernel.org,
+	grygorii.strashko@ti.com, simon.horman@corigine.com,
+	vladimir.oltean@nxp.com, aleksander.lobakin@intel.com,
+	linux-stm32@st-md-mailman.stormreply.com,
+	alexandre.torgue@foss.st.com, joabreu@synopsys.com,
+	mcoquelin.stm32@gmail.com, p.zabel@pengutronix.de,
+	thomas.petazzoni@bootlin.com, mw@semihalf.com, sgoutham@marvell.com,
+	gakula@marvell.com, sbhatta@marvell.com, hkelam@marvell.com,
+	xen-devel@lists.xenproject.org, jgross@suse.com,
+	sstabellini@kernel.org, oleksandr_tyshchenko@epam.com,
+	linux-wireless@vger.kernel.org, ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com, kvalo@kernel.org, andrii@kernel.org,
+	martin.lau@linux.dev, song@kernel.org, yonghong.song@linux.dev,
+	kpsingh@kernel.org, sdf@google.com, haoluo@google.com,
+	jolsa@kernel.org
+Subject: Re: [PATCH v1 net] page_pool: Cap queue size to 32k.
+Message-ID: <75bcd331-9a62-486f-a15f-6aebf4d1838b@kadam.mountain>
+References: <20230814060411.2401817-1-rkannoth@marvell.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 1/2] dt-bindings: arm64: dts: mediatek: Add mt8395-evk
- board
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Frank Wunderlich
-	<frank-w@public-files.de>, =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?=
-	<bero@baylibre.com>, Sean Wang <sean.wang@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>
-References: <20230904092043.5157-1-macpaul.lin@mediatek.com>
- <e2e35d4d-7853-fccc-28c2-b8ecf309d6ec@linaro.org>
- <00f0a1cf-6246-92e9-13b0-cf31bb292a94@mediatek.com>
- <97b82a16-8710-9430-35c8-673381aaa417@linaro.org>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <97b82a16-8710-9430-35c8-673381aaa417@linaro.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230814060411.2401817-1-rkannoth@marvell.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230905_023634_574727_4B0D9005 
-X-CRM114-Status: GOOD (  17.50  )
+X-CRM114-CacheID: sfid-20230905_025741_481542_86ECC19B 
+X-CRM114-Status: GOOD (  14.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,63 +126,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Aug 14, 2023 at 11:34:11AM +0530, Ratheesh Kannoth wrote:
+> Clamp to 32k instead of returning error.
 
+What is the motivation here?  What is the real world impact for the
+users?
 
-On 9/4/23 20:11, Krzysztof Kozlowski wrote:
-> 	
 > 
-> External email : Please do not click links or open attachments until you 
-> have verified the sender or the content.
-> 
-> On 04/09/2023 11:50, Macpaul Lin wrote:
->> 
->> 
->> On 9/4/23 17:33, Krzysztof Kozlowski wrote:
->>> 
->>>
->>> External email : Please do not click links or open attachments until you 
->>> have verified the sender or the content.
->>>
->>> On 04/09/2023 11:20, Macpaul Lin wrote:
->>>> Add bindings for the MediaTek mt8395-evk board.
->>>> The mt8359-evk board is also named as "Genio 1200-EVK".
->>>> MT8195 and MT8395 are the same family series SoC could share
->>>
->>> How can be the same and have different numbers? You sill need dedicated
->>> compatible.
->>>
->> 
->> The SoCs mt8195 and mt8395 are designed for different market application 
->> and physical characteristics, using different efuse values for 
->> distinction. The booting flow and configurations are controllered by the 
->> boot loaders, firmware, and TF-A. Therefore, the part numbers and 
->> procurement channels are different. The detail information of these 
->> efuse values is proprietary, so I cant disclose it futher. Hence the 
->> most of peripheral drivers and base address are almost the same.
-> 
-> 1. Drivers? So we talk about compatibility, not the same.
-> 2. "almost the same" is not the same. Follow the guidelines for writing
-> bindings.
-> 
+> Please find discussion at
+> https://lore.kernel.org/lkml/
+> CY4PR1801MB1911E15D518A77535F6E51E2D308A@CY4PR1801MB1911.
+> namprd18.prod.outlook.com/T/
 
-Thanks for the review.
+Please don't break the URL up like this.  I think normally we would just
+write up a normal commit message and use the Link: tag.
 
-After internal confirmation and discussion, it can be confirmed that the 
-MT8195 and MT8395 are identical SoCs from to binding's perspective. 
-MediaTek hope the mt8395 boards could directly use mt8195.dtsi, without 
-the need to create a separate mt8395.dtsi to include mt8195.dtsi. 
-Therefore, we hope to fully adopt the bindings of mt8195. However, I 
-will submit a revised patch for compatible since they are different boards.
+Fixes: ff7d6b27f894 ("page_pool: refurbish version of page_pool code")
+Link: https://lore.kernel.org/lkml/CY4PR1801MB1911E15D518A77535F6E51E2D308A@CY4PR1801MB1911.namprd18.prod.outlook.com/
+Signed-off-by:
 
-If the reviewer still disagrees, then MediaTek will create a new binding 
-and use mt8395.dtsi to include mt8195.dtsi to apply the separate 
-bindings for differentiation.
+> @@ -171,9 +171,10 @@ static int page_pool_init(struct page_pool *pool,
+>  	if (pool->p.pool_size)
+>  		ring_qsize = pool->p.pool_size;
+>  
+> -	/* Sanity limit mem that can be pinned down */
+> +	/* Cap queue size to 32k */
+>  	if (ring_qsize > 32768)
+> -		return -E2BIG;
+> +		ring_qsize = 32768;
+> +
+>  
+>  	/* DMA direction is either DMA_FROM_DEVICE or DMA_BIDIRECTIONAL.
 
-> Best regards,
-> Krzysztof
-> 
-> 
+Don't introduce a blank line here.  Checkpatch will complain if you
+have to blank lines in a row.  It won't complain about the patch but it
+will complain if you apply the patch and then re-run checkpatch -f on
+the file.  (I didn't test this but it's wrong either way. :P).
 
-Best regards,
-Macpaul Lin
+regards,
+dan carpenter
+
 
