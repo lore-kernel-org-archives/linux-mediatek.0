@@ -4,74 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39E63C83F2C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 11:15:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B926BC83F3E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 11:42:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F6DB4fzWeAf3j9SnwYlYnbiO5N6Wp5DCb+iYWkGlIAc=; b=tVoIfmYuSoI6WYSBn+76dtFri/
-	7gjFbBkFfLzfGrGYcCv8GQXnAzKi/CNVAGkFEqKssJ9Cbk9DsskEZw1mupK4Kx9FE1LXzo6LtBAKm
-	/U+4MeFvc90Ec4bAVHbyM2GAXf+GYgGkMEAvz89rxPL8UJNrggR1Nr7ReZfIUwE87Wol0oPFtNzwn
-	GPzkcaRkKHRrc9D7v4CtokZEXjJmOV07rg3/SmVgw4u5P/LpzCv2Rayttvg8hO2PZ8DRt+q4jQHyN
-	1rsW+lvzNzchf4rSbgjC7ZlnqaTE1EzhFlLZ7WyW8+mWzoakgbKOCCHPWIRJa2mp3XoZ0XHTR81JM
-	maf5nRHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oejms6sjOw2f2tsDheiIr4GV637luTd+FS7VH/lO1uc=; b=tzuY3UOJaw25E4CNnw5zEBKX/y
+	Q87X991IHXST62HARIrGDoTlSY7Xao1J5MxGtl7fS0gosuEdLhsdREin9CovbVnw/v4l+nKWcZPkT
+	t05/E2uxlJx+cBoendZBgrVipsciVwwesFZIYSaqN2X/0kjtJiRacvt8r+SX01fhX2AnZv/JE83lk
+	1Ch2t6tVIllbdZshgHgp4/mGqzy38cHm8qdFc3zfvVRIooy2suhpXE/nDjfMKq7vVZioippeq426N
+	EXcA6pYLZexhEHNDYsdcBEPogv08VqzTqoKFZOfNAWaK6w1ipPoM5IQumLDw52tiP0TDmH1BCW59k
+	6x0SHvJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdU21-005tGV-30;
-	Tue, 05 Sep 2023 11:15:41 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qdURT-005vbp-37;
+	Tue, 05 Sep 2023 11:41:59 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdU1y-005tFj-2m;
-	Tue, 05 Sep 2023 11:15:40 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	id 1qdURQ-005vb9-1r
+	for linux-mediatek@lists.infradead.org;
+	Tue, 05 Sep 2023 11:41:58 +0000
+Received: from [192.168.1.23] (unknown [171.76.82.102])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4B41A60684;
-	Tue,  5 Sep 2023 11:15:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E67EC433C8;
-	Tue,  5 Sep 2023 11:15:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1693912536;
-	bh=tYMC5mFOHoZooyYp0v59p//CvAfTaT1mvVu1GIr5Tt8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=C/0oL7N6efQB3vgWR+OpkIVMYP7vH48x2YluuFC+9bJxeeJe7RxMoH6Rcf+TyvaLd
-	 zEIrjlSr58Ppjmz20zNCNM7v8Le9fMWLfcDFar0n50gZEt4JzuIE7VqF815sJUVNbX
-	 xbcpDBpL9lY1UO2nz5MMTyAe/FCHToKxefq6+pmacmq/aU4uVV67vvQ0UdmzTvFkQR
-	 1XD973O7hdwp/178CgCV/9gHFVLA3UPC/qrRrcW1uphdMbBFJV80dAuW1BmWR7Fuuo
-	 OIPxeXW+mqL+KlhqiaRUFDNlDQWUSuKPHM04NWBW+4kGjH8s3KT7sOS9FF5jXngUt/
-	 qPDpl+kdYWkVg==
-Date: Tue, 5 Sep 2023 13:15:26 +0200
-From: Simon Horman <horms@kernel.org>
-To: Shubh <shubhisroking@gmail.com>
-Cc: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] net: dsa: mt7530: refactor deprecated strncpy
-Message-ID: <20230905111526.GE2146@kernel.org>
-References: <20230905041614.14272-1-shubhisroking@gmail.com>
+	(Authenticated sender: vignesh)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id EBCCA66071FD;
+	Tue,  5 Sep 2023 12:41:48 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1693914113;
+	bh=Wdvv7kzQnQGD3G2x32niCSAkLAytXs7VXpn7J1J1VkM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=AW9E55wOUkgs71c5ftwkfCTT9m2IIE6VwkCCx2or0kc4A3xemZumoehIE8+q0uJUv
+	 +z1Ibrc02A78fJGFDqZYShdYrA2c1l80BkjZlxwhI8h4WjTuEZG/7zyhlJW1YNbadz
+	 fu3ifByxt982jgr8NiQLTkwp7YDt6eeyzmQcdPDmJNYBwqhM0Y/ejYakBToaiwWPVZ
+	 beL+KiLptHsoQRw9a5rt6Oqz8CrirmQ8dVizMW2okVJB0tGVxMIBxRXVixfzOqIUZD
+	 zEkwNlRzQYyRZD2CM48lUz281JepakgYMCSZ724OoW3YYJApAjIhWESDj/0LFL6ujx
+	 qeCsD+pufKtBg==
+Message-ID: <6be5f5d8-8940-c79b-4a01-3f3d73641e4e@collabora.com>
+Date: Tue, 5 Sep 2023 17:11:43 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230905041614.14272-1-shubhisroking@gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v2 2/7] drm: ci: Force db410c to host mode
+Content-Language: en-US
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Maxime Ripard <mripard@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, helen.koike@collabora.com,
+ guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
+ david.heidelberg@collabora.com, daniels@collabora.com,
+ gustavo.padovan@collabora.com, emma@anholt.net, robclark@freedesktop.org,
+ robdclark@google.com, anholt@google.com, robdclark@gmail.com,
+ airlied@gmail.com, daniel@ffwll.ch, jani.nikula@linux.intel.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ virtualization@lists.linux-foundation.org, linux-arm-msm@vger.kernel.org
+References: <20230904161516.66751-1-vignesh.raman@collabora.com>
+ <20230904161516.66751-3-vignesh.raman@collabora.com>
+ <CAA8EJpq_cmFQ6TGy1xELh3ButWKLfSkQcp5ix049s_iqKw6DvQ@mail.gmail.com>
+ <ueznsu2dlvq5zp3ls262fww54bnlqa3e2ssr6f65vrrionloms@ir2ywgeajj4w>
+ <2c812fe4-04ba-0243-5330-c7b7e695cff9@collabora.com>
+ <2jz6wurh6ejbaejwtb5r5gukjuw4zs7ujk5hbwfpsn26o6esqe@g2nnb2gjpnjp>
+ <CAA8EJpoGoopP64T1nm1ye1ukTwT=u+LYY1ubQG-9dQ-j41iHiA@mail.gmail.com>
+From: Vignesh Raman <vignesh.raman@collabora.com>
+In-Reply-To: <CAA8EJpoGoopP64T1nm1ye1ukTwT=u+LYY1ubQG-9dQ-j41iHiA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230905_041538_967181_6FC00EF6 
-X-CRM114-Status: GOOD (  18.85  )
+X-CRM114-CacheID: sfid-20230905_044156_909042_9D6608E8 
+X-CRM114-Status: GOOD (  20.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,53 +89,178 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 05, 2023 at 09:46:14AM +0530, Shubh wrote:
-> Prefer `strscpy_pad` to `strncpy`.
+Hi,
 
-I think this needs some justification.
-Why is strscpy_pad() preferred in this case?
+On 05/09/23 16:40, Dmitry Baryshkov wrote:
+> On Tue, 5 Sept 2023 at 14:00, Maxime Ripard <mripard@kernel.org> wrote:
+>>
+>> On Tue, Sep 05, 2023 at 03:39:33PM +0530, Vignesh Raman wrote:
+>>> Hi Dmitry, Maxime,
+>>>
+>>> On 05/09/23 14:13, Maxime Ripard wrote:
+>>>> Hi,
+>>>>
+>>>> On Mon, Sep 04, 2023 at 07:59:26PM +0300, Dmitry Baryshkov wrote:
+>>>>> On Mon, 4 Sept 2023 at 19:16, Vignesh Raman <vignesh.raman@collabora.com> wrote:
+>>>>>>
+>>>>>> Force db410c to host mode to fix network issue which results in failure
+>>>>>> to mount root fs via NFS.
+>>>>>> See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b8c15c80a54dda510743cefd1c4b65b8
+>>>>>>
+>>>>>> Use fdtoverlay command to merge base device tree with an overlay
+>>>>>> which contains the fix for USB controllers to work in host mode.
+>>>>>>
+>>>>>> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+>>>>>> ---
+>>>>>>
+>>>>>> v2:
+>>>>>>     - Use fdtoverlay command to merge overlay dtbo with the base dtb instead of modifying the kernel sources
+>>>>>>
+>>>>>> ---
+>>>>>>    drivers/gpu/drm/ci/build.sh                         |  5 +++++
+>>>>>>    .../gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts  | 13 +++++++++++++
+>>>>>>    2 files changed, 18 insertions(+)
+>>>>>>    create mode 100644 drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
+>>>>>>
+>>>>>> diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
+>>>>>> index 7b014287a041..92ffd98cd09e 100644
+>>>>>> --- a/drivers/gpu/drm/ci/build.sh
+>>>>>> +++ b/drivers/gpu/drm/ci/build.sh
+>>>>>> @@ -92,6 +92,11 @@ done
+>>>>>>
+>>>>>>    if [[ -n ${DEVICE_TREES} ]]; then
+>>>>>>        make dtbs
+>>>>>> +    if [[ -e arch/arm64/boot/dts/qcom/apq8016-sbc.dtb ]]; then
+>>>>>> +        dtc -@ -I dts -O dtb -o drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dtbo drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
+>>>>>> +        fdtoverlay -i arch/arm64/boot/dts/qcom/apq8016-sbc.dtb -o arch/arm64/boot/dts/qcom/apq8016-sbc-overlay.dtb drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dtbo
+>>>>>> +        mv arch/arm64/boot/dts/qcom/apq8016-sbc-overlay.dtb arch/arm64/boot/dts/qcom/apq8016-sbc.dtb
+>>>>>> +    fi
+>>>>>>        cp ${DEVICE_TREES} /lava-files/.
+>>>>>>    fi
+>>>>>>
+>>>>>> diff --git a/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts b/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
+>>>>>> new file mode 100644
+>>>>>> index 000000000000..57b7604f1c23
+>>>>>> --- /dev/null
+>>>>>> +++ b/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
+>>>>>> @@ -0,0 +1,13 @@
+>>>>>> +/dts-v1/;
+>>>>>> +/plugin/;
+>>>>>> +
+>>>>>> +/ {
+>>>>>> +    fragment@0 {
+>>>>>> +        target-path = "/soc@0";
+>>>>>> +        __overlay__ {
+>>>>>> +            usb@78d9000 {
+>>>>>> +                dr_mode = "host";
+>>>>>> +            };
+>>>>>> +        };
+>>>>>> +    };
+>>>>>> +};
+>>>>>> --
+>>>>>> 2.40.1
+>>>>>
+>>>>> Can we use normal dtso syntax here instead of defining fragments manually?
+>>>>
+>>>> What Dmitry is hinting about is to use the "Sugar Syntax". There a good documentation here:
+>>>> https://source.android.com/docs/core/architecture/dto/syntax
+>>>
+>>>
+>>> With the below DTO syntax,
+>>> /dts-v1/;
+>>> /plugin/;
+>>>
+>>> &usb {
+>>>    usb@78d9000 {
+>>>      dr_mode = "host";
+>>>    };
+>>> };
+>>>
+>>> Decoded dtbo file is,
+>>> /dts-v1/;
+>>>
+>>> / {
+>>>
+>>>        fragment@0 {
+>>>                target = <0xffffffff>;
+>>>
+>>>                __overlay__ {
+>>>
+>>>                        usb@78d9000 {
+>>>                                dr_mode = "host";
+>>>                        };
+>>>                };
+>>>        };
+>>>
+>>>        __fixups__ {
+>>>                usb = "/fragment@0:target:0";
+>>>        };
+>>> };
+>>>
+>>> With the previous fix using fragment we get,
+>>> / {
+>>>
+>>>        fragment@0 {
+>>>                target-path      = "/soc@0";
+>>>
+>>>                __overlay__ {
+>>>
+>>>                        usb@78d9000 {
+>>>                                dr_mode = "host";
+>>>                        };
+>>>                };
+>>>        };
+>>> };
+>>>
+>>> Decoded apq8016-sbc.dtb file with the fix (setting dr_mode to host) is,
+>>> /dts-v1/;
+>>> / {
+>>>        soc@0 {
+>>>                usb@78d9000 {
+>>>                        dr_mode = "host";
+>>>                };
+>>>        };
+>>> };
+>>>
+>>> How can set the target to "soc@0" using the DTO syntax?
+>>
+>> To strictly answer your question, that would be something like
+>>
+>> &{/soc@0} {
+>>          usb@78d9000 {
+>>                  dr_mode = "host";
+>>          };
+>> };
+>>
+>> You can simplify this further however by doing:
+>>
+>>
+>> &{/soc@0/usb@78d9000} {
+>>          dr_mode = "host";
+>> };
 
-Also, assuming this is not a bug-fix for 'net', then it is an enhancement,
-and should be targeted at net-next.
+The above works. Thanks.
 
-   Subject: [PATCH net-next] ...
-
-As it stands, net-next is closed:
-
-## Form letter - net-next-closed
-
-The merge window for v6.6 has begun and therefore net-next is closed
-for new drivers, features, code refactoring and optimizations.
-We are currently accepting bug fixes only.
-
-Please repost when net-next reopens after Sept 11th.
-
-RFC patches sent for review only are obviously welcome at any time.
-
-See: https://www.kernel.org/doc/html/next/process/maintainer-netdev.html#development-cycle
-
+>>
+>> Also, that node actually has a label ("usb"), defined here:
+>> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/qcom/msm8916.dtsi#n2322
+>>
+>> So you can end up with
+>>
+>> &usb {
+>>          dr_mode = "host";
+>> };
 > 
-> Signed-off-by: Shubh <shubhisroking@gmail.com>
-> ---
->  drivers/net/dsa/mt7530.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> ... which is the simplest and thus more robust one.
 > 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 035a34b50..ee19475ec 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -836,7 +836,7 @@ mt7530_get_strings(struct dsa_switch *ds, int port, u32 stringset,
->  		return;
->  
->  	for (i = 0; i < ARRAY_SIZE(mt7530_mib); i++)
-> -		strncpy(data + i * ETH_GSTRING_LEN, mt7530_mib[i].name,
-> +		strscpy_pad(data + i * ETH_GSTRING_LEN, mt7530_mib[i].name,
->  			ETH_GSTRING_LEN);
 
-The line above is no longer indented correctly.
+Should it be,
+&{/soc@0/usb} {
+	dr_mode = "host";
+};
 
->  }
+I will send a v3 version for this. Thank you.
 
---
-pw-bot: defer
+Regards,
+Vignesh
 
