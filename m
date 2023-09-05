@@ -4,72 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E13C1CA0FF3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 11:00:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A30BC83F2C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 11:00:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OWA7vLNOt5I2fjTmik42ZORw+Kjv5CDRYnP8tVjL/jk=; b=efvMKtizpMWmtHTk6smvOFZQKv
-	EpThjWNoprrF7ehYQkggaReB0io1GACCeFZvvwiRh8ueTQ9m8LVYkWz9huZHL+VQguXjUQdFH3QYU
-	NOkB80b4bXxv8jTyRHrEbf0wuzngXSXrX11yEf3Sqf1BTkaO+r9AEMV7GPtB8gwCmU7kQ8NJEfsV2
-	0O1vyZampnetiX6szrsZqP1hmNHQjeDpNfC8XcP8STdTwE/YsOBJuiGzOcDcqPXkkW/YP1U2tNOgy
-	Pdn5VQDxfhOhFOMoy8Wh9i9uBEQZ8uIgiEkN8aep5MA6VWYGEWaSW8R9gQ5H6TUl0V084dT6ebIB9
-	bjjh3Zbw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vYzf4PHEoghXFdMmCHAIIQGECn1QD3BWvIxyh4qMpVg=; b=BQJYWZdg7XMtSLyTCeUq3FCXP8
+	RVkl/v1PnviO7wWr8+d4VpeUzCofqv8V4q3oZK6NZwzIlJ2T/Tt7xyeiD7JY3vW58ZJ/DZSB9EtnN
+	khlptMBgNfFudap9GKB/n8595kxf/+W8n7Q14hjPbTloe4oT2ZhmGn/Joi68GeRewB1GU2G7jC7Zu
+	1lO0dB7CsKHfFDMGvdBkaysJzTIa0P/H1rGhbfSDXzGrWwAIVe3O1QyKtXjNlqEOdtZ67la3vvw4w
+	dhJP7GbZzOn2L4gLvVTejvhdQYU/VVJ5GJfpF9ksWlQmJtfh0x8fzOMLFvP4PWlZePjydjC7VakbX
+	GlVLez0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdTn6-005rnn-13;
-	Tue, 05 Sep 2023 11:00:16 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qdTnV-005rrU-2e;
+	Tue, 05 Sep 2023 11:00:41 +0000
+Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdTn3-005rmj-1E
-	for linux-mediatek@lists.infradead.org;
-	Tue, 05 Sep 2023 11:00:15 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5BBC660039;
-	Tue,  5 Sep 2023 11:00:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C47EC433C7;
-	Tue,  5 Sep 2023 11:00:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1693911611;
-	bh=Wfk1BuK7Xhfcrf4xZDmH9THWGITu0aqQKjO7PM3R1kk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=phwKNbWl+Q1EF5s4UKKO34pA7mX/nDJdHQO+AJCheMIBRtMD5JQ/mrDJbaWwZqs3c
-	 OlgUil3K0caYN+kKH4/TNBWGmbV2kkl3o7eFWeKQ8VnOAgvk9jnfA5uQoOb4Ujhojt
-	 AVeoAlnl2O1GW6Sb1Y7LBXJ8V/NvE46QuNAJpWARUPzn1BC7n/UQUWiEFFZ906Kb6A
-	 UEC4H0DIYMdyqaAy2822ULAeUcRUIpXaV0anrm6oUZjkLPGhgzTkR94a/EcI51Ywuk
-	 96CPMIfuyUguLsh+/hXEpWnUVQ+OyvtZ1Q8h3dZg95LvMMqOb4dLqu3aRY3CJwc1pR
-	 EVEL/1N7/nlhA==
-Date: Tue, 5 Sep 2023 13:00:09 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Vignesh Raman <vignesh.raman@collabora.com>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
-	dri-devel@lists.freedesktop.org, helen.koike@collabora.com, guilherme.gallo@collabora.com, 
-	sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com, daniels@collabora.com, 
-	gustavo.padovan@collabora.com, emma@anholt.net, robclark@freedesktop.org, robdclark@google.com, 
-	anholt@google.com, robdclark@gmail.com, airlied@gmail.com, daniel@ffwll.ch, 
-	jani.nikula@linux.intel.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	virtualization@lists.linux-foundation.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH v2 2/7] drm: ci: Force db410c to host mode
-Message-ID: <2jz6wurh6ejbaejwtb5r5gukjuw4zs7ujk5hbwfpsn26o6esqe@g2nnb2gjpnjp>
-References: <20230904161516.66751-1-vignesh.raman@collabora.com>
- <20230904161516.66751-3-vignesh.raman@collabora.com>
- <CAA8EJpq_cmFQ6TGy1xELh3ButWKLfSkQcp5ix049s_iqKw6DvQ@mail.gmail.com>
- <ueznsu2dlvq5zp3ls262fww54bnlqa3e2ssr6f65vrrionloms@ir2ywgeajj4w>
- <2c812fe4-04ba-0243-5330-c7b7e695cff9@collabora.com>
+	id 1qdTnS-005rqX-0B;
+	Tue, 05 Sep 2023 11:00:39 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id DC1F22000E;
+	Tue,  5 Sep 2023 11:00:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1693911633;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vYzf4PHEoghXFdMmCHAIIQGECn1QD3BWvIxyh4qMpVg=;
+	b=b4qq1/Q1XTOsh7nK+KHIVbBxbzwl/avkrWEXgKOU2B+Pj2K6R2wBhChiSGk4Zu6IuZM9QG
+	JCkh12kBuPNaYmUpT+Auid5rRkeOQZIJWiOGxBeuI4uoU6BARODxPVO3OT2dFqeQohREd9
+	2LoT+xQwnHIyxXD//Skg6vsAXfBsChtx+E1yd2x9EN4X14piSf8DElXn19XSXTMoSIC4S7
+	7DaQqiu/W03BQK8ZqYHsYbZ+uXdcK7+sjJbuEuAc9sNu62H96AGoUDMYHHiECZ6FVFGjIP
+	HarvB3RK0ZrrkTB5/8oQ5V2y6C56O44zgBf/2JCfP+E8RdfZwaFYtaPjAoVv9w==
+Message-ID: <03d3341b-be77-4b25-bec2-fcae91a549d3@arinc9.com>
+Date: Tue, 5 Sep 2023 14:00:21 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <2c812fe4-04ba-0243-5330-c7b7e695cff9@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
+To: Luiz Angelo Daros de Luca <luizluca@gmail.com>
+Cc: Vladimir Oltean <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Woojung Huh <woojung.huh@microchip.com>,
+ UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+ Daniel Golle <daniel@makrotopia.org>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230812091708.34665-3-arinc.unal@arinc9.com>
+ <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <20230813112026.ohsx6srbt2staxma@skbuf>
+ <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
+ <20230813190157.4y3zoro53qsz43pe@skbuf>
+ <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
+ <20230814143601.mnpxtcm2zybnbvoh@skbuf>
+ <0cee0928-74c9-4048-8cd8-70bfbfafd9b2@arinc9.com>
+ <20230827121235.zog4c3ehu2cyd3jy@skbuf>
+ <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
+ <CAJq09z6eghuHY+b2y-kGmjKnLiEEOABXGKhjnB-PxJ=-GtYD4w@mail.gmail.com>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <CAJq09z6eghuHY+b2y-kGmjKnLiEEOABXGKhjnB-PxJ=-GtYD4w@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230905_040013_508044_CB1E4183 
-X-CRM114-Status: GOOD (  30.33  )
+X-CRM114-CacheID: sfid-20230905_040038_378727_EF632711 
+X-CRM114-Status: GOOD (  23.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,176 +98,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 05, 2023 at 03:39:33PM +0530, Vignesh Raman wrote:
-> Hi Dmitry, Maxime,
->=20
-> On 05/09/23 14:13, Maxime Ripard wrote:
-> > Hi,
-> >=20
-> > On Mon, Sep 04, 2023 at 07:59:26PM +0300, Dmitry Baryshkov wrote:
-> > > On Mon, 4 Sept 2023 at 19:16, Vignesh Raman <vignesh.raman@collabora.=
-com> wrote:
-> > > >=20
-> > > > Force db410c to host mode to fix network issue which results in fai=
-lure
-> > > > to mount root fs via NFS.
-> > > > See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b8=
-c15c80a54dda510743cefd1c4b65b8
-> > > >=20
-> > > > Use fdtoverlay command to merge base device tree with an overlay
-> > > > which contains the fix for USB controllers to work in host mode.
-> > > >=20
-> > > > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> > > > ---
-> > > >=20
-> > > > v2:
-> > > >    - Use fdtoverlay command to merge overlay dtbo with the base dtb=
- instead of modifying the kernel sources
-> > > >=20
-> > > > ---
-> > > >   drivers/gpu/drm/ci/build.sh                         |  5 +++++
-> > > >   .../gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts  | 13 ++++++++=
-+++++
-> > > >   2 files changed, 18 insertions(+)
-> > > >   create mode 100644 drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-ove=
-rlay.dts
-> > > >=20
-> > > > diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build=
-=2Esh
-> > > > index 7b014287a041..92ffd98cd09e 100644
-> > > > --- a/drivers/gpu/drm/ci/build.sh
-> > > > +++ b/drivers/gpu/drm/ci/build.sh
-> > > > @@ -92,6 +92,11 @@ done
-> > > >=20
-> > > >   if [[ -n ${DEVICE_TREES} ]]; then
-> > > >       make dtbs
-> > > > +    if [[ -e arch/arm64/boot/dts/qcom/apq8016-sbc.dtb ]]; then
-> > > > +        dtc -@ -I dts -O dtb -o drivers/gpu/drm/ci/dt-overlays/apq=
-8016-sbc-overlay.dtbo drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
-> > > > +        fdtoverlay -i arch/arm64/boot/dts/qcom/apq8016-sbc.dtb -o =
-arch/arm64/boot/dts/qcom/apq8016-sbc-overlay.dtb drivers/gpu/drm/ci/dt-over=
-lays/apq8016-sbc-overlay.dtbo
-> > > > +        mv arch/arm64/boot/dts/qcom/apq8016-sbc-overlay.dtb arch/a=
-rm64/boot/dts/qcom/apq8016-sbc.dtb
-> > > > +    fi
-> > > >       cp ${DEVICE_TREES} /lava-files/.
-> > > >   fi
-> > > >=20
-> > > > diff --git a/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts=
- b/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
-> > > > new file mode 100644
-> > > > index 000000000000..57b7604f1c23
-> > > > --- /dev/null
-> > > > +++ b/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
-> > > > @@ -0,0 +1,13 @@
-> > > > +/dts-v1/;
-> > > > +/plugin/;
-> > > > +
-> > > > +/ {
-> > > > +    fragment@0 {
-> > > > +        target-path =3D "/soc@0";
-> > > > +        __overlay__ {
-> > > > +            usb@78d9000 {
-> > > > +                dr_mode =3D "host";
-> > > > +            };
-> > > > +        };
-> > > > +    };
-> > > > +};
-> > > > --
-> > > > 2.40.1
-> > >=20
-> > > Can we use normal dtso syntax here instead of defining fragments manu=
-ally?
-> >=20
-> > What Dmitry is hinting about is to use the "Sugar Syntax". There a good=
- documentation here:
-> > https://source.android.com/docs/core/architecture/dto/syntax
->=20
->=20
-> With the below DTO syntax,
-> /dts-v1/;
-> /plugin/;
->=20
-> &usb {
->   usb@78d9000 {
->     dr_mode =3D "host";
->   };
-> };
->=20
-> Decoded dtbo file is,
-> /dts-v1/;
->=20
-> / {
->=20
-> 	fragment@0 {
-> 		target =3D <0xffffffff>;
->=20
-> 		__overlay__ {
->=20
-> 			usb@78d9000 {
-> 				dr_mode =3D "host";
-> 			};
-> 		};
-> 	};
->=20
-> 	__fixups__ {
-> 		usb =3D "/fragment@0:target:0";
-> 	};
-> };
->=20
-> With the previous fix using fragment we get,
-> / {
->=20
-> 	fragment@0 {
-> 		target-path	 =3D "/soc@0";
->=20
-> 		__overlay__ {
->=20
-> 			usb@78d9000 {
-> 				dr_mode =3D "host";
-> 			};
-> 		};
-> 	};
-> };
->=20
-> Decoded apq8016-sbc.dtb file with the fix (setting dr_mode to host) is,
-> /dts-v1/;
-> / {=09
-> 	soc@0 {
-> 		usb@78d9000 {
-> 			dr_mode =3D "host";
-> 		};=09
-> 	};
-> };
->=20
-> How can set the target to "soc@0" using the DTO syntax?
+On 5.09.2023 05:42, Luiz Angelo Daros de Luca wrote:
+>>> [1] ...this. The SMI-controlled and MDIO-controlled Realtek switches are
+>>> otherwise the same, right? So why would they have different dt-bindings?
+>>
+>> Honestly, I'm wondering the answer to this as well. For some reason, when
+>> probing the SMI controlled Realtek switches, instead of just letting
+>> dsa_switch_setup() populate ds->slave_mii_bus, on realtek_smi_setup_mdio()
+>> on realtek-smi.c:
+>>
+>> - priv->slave_mii_bus is allocated.
+>> - mdio_np = of_get_compatible_child(priv->dev->of_node, "realtek,smi-mdio");
+>> - priv->slave_mii_bus->dev.of_node = mdio_np;
+>> - ds->slave_mii_bus = priv->slave_mii_bus;
+> 
+> I might be able to help here. The Realtek SMI version created a custom
+> slave_mii driver because it was the only way to associate it with an
+> MDIO DT node. And that DT node was required to specify the interrupts
+> for each phy0.
+> It would work without that mdio node, letting DSA setup handle the
+> slave bus, but it would rely only on polling for port status.
+> 
+> As we only have a single internal MDIO, the compatible string
+> "realtek,smi-mdio" would not be necessary if the driver checks for a
+> "mdio"-named child node. Maybe the code was just inspired by another
+> DSA driver that uses more MDIO buses or external ones. The "mdio" name
+> is suggested by docs since it was committed
+> (https://www.kernel.org/doc/Documentation/devicetree/bindings/net/dsa/realtek-smi.txt).
+> That name was also kept in the YAML translation
+> (https://www.kernel.org/doc/Documentation/devicetree/bindings/net/dsa/realtek.yaml).
+> 
+> The Realtek MDIO driver was merged at the same release that included
+> the change that allows dsa_switch_setup() to reference the "mdio"
+> OF-node if present. That way, it could avoid creating a custom
+> slave_mii_bus driver.
+> 
+> I submitted a small series of patches to unify that behavior between
+> those two drivers:
+> 
+> https://lore.kernel.org/netdev/CAJq09z44SNGFkCi_BCpQ+3DuXhKfGVsMubRYE7AezJsGGOboVA@mail.gmail.com/
+> (This is my answer to the series opening message to include the first
+> paragraph ate by the editor)
+> 
+> There was some discussion but not NAC, ACK or RFC. It would have
+> dropped some lines of code. I can revive it if there is interest.
 
-To strictly answer your question, that would be something like
+I'd like this to happen, thanks Luiz!
 
-&{/soc@0} {
-	usb@78d9000 {
-		dr_mode =3D "host";
-	};
-};
-
-You can simplify this further however by doing:
-
-
-&{/soc@0/usb@78d9000} {
-	dr_mode =3D "host";
-};
-
-Also, that node actually has a label ("usb"), defined here:
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arc=
-h/arm64/boot/dts/qcom/msm8916.dtsi#n2322
-
-So you can end up with
-
-&usb {
-	dr_mode =3D "host";
-};
-
-All of them should be equivalent to the one you had in your patch.
-
-Maxime
+Arınç
 
