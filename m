@@ -4,66 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A75B3C83F33
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 08:03:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BE0BC83F33
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 08:15:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oblUg8ssRNfaylIS0kjlU9RIpm5iSlQMbRvmqS+Tk8A=; b=X5fAl8HQgSpLge
-	OWYjYu2kMgE30DbfOEWpxesXJBYCexQLBocZeZusGxD4IYH8t5l8zjzX2cFcTB9lBXmtVeLUPrPiu
-	q6pqiuBOme8FXXfYJvXLXgwv8h4Cw0D82//WOSz3J0ivuTBqmsQyRPZ0ByO/uk7XlGZgq6KlkUXvH
-	0q9XDzkNrER1dIfnxaEUj4d8pJtYW1gk+MuFSYC4a414oVP5iJGjcaFs7H8AJTA09lq+LPTcehRT1
-	W1i9lPRorvirCXK9uRvFALM34pF+BN0jV/xtHgaXCHg+6GnHE2GiX8OhyG6x+uiChb24dA8G4fvE/
-	nDWWwHxzPDyuojImrZ1Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PdtLuvK5FoLWlrvycOTnaJ+HduNbx6ANjKzfliekyu4=; b=DUk1w02Gr8qO7dxbE20ZKOx7+t
+	u3fOs8ikCJz0G5G1oqW4ei22bW8y+SwCdIHySkQETY0x4S/FJsuWQ0sHkWskH2MX0uUiuc82LLuhT
+	9xzOVarcHNB4hfREwg7e8WP33+FIts+ft/+qCIMjIuestyKz9Uu/Ful35oOujYAhZaciFNvBk4Dil
+	i0DfMrfGZyUuPqRnIz+CDmtuoo4u+nRzEVPwYd3t82JBnkFeWz0E7qUu4Mv47Oabrd8YSGVfx4hfG
+	mbPytasJAxAZUl/2JgJBuiqrxcXmnd0lIoe4lfZDAklMOel0DhVlaT7n/DmwobBhVp8U5eV4JxBfe
+	5oP9SpAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdR1q-005UXB-1u;
-	Tue, 05 Sep 2023 08:03:18 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qdRE3-005VOe-0G;
+	Tue, 05 Sep 2023 08:15:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdR1m-005UWQ-37;
-	Tue, 05 Sep 2023 08:03:16 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D307B660716C;
-	Tue,  5 Sep 2023 09:03:12 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1693900993;
-	bh=ds0zLIqF4zHaiOeC7HqV5SxOUmkM7LOq32FcWWfWQTs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AlDblQi667rjIYA6FJV2mzSgLg+4xrfRl1ZNuOnlnIS4zfpfViTzPyJvRSQwrkcVu
-	 zjlXSX5c3Ep80HnoFh0XR2zyq3Fj/bgMrku2VemIW4I1cupd+pIj61I4auP98ZEAIS
-	 lt4XRE6EumQd960xed2+Kuupa6ikuZxYJH1XGefi4lmvqjK4C676/r1O+R4INI0FWy
-	 ltTrVNQsIFT2tpUnMwMwP4almUZMiJmSdezilqRASQW6xBTxDOfWtibrUU3MCC4eaY
-	 qVRhdzz13X/+QMWhGrNENeHsX2l6+KlumYlva5eWuiJM+Sd+DYqLtrQ2wIj+jQ9Zvi
-	 8l+GFdMdNs1mA==
-Message-ID: <02380e49-7848-c968-ef6a-bc64d87d6228@collabora.com>
-Date: Tue, 5 Sep 2023 10:03:10 +0200
+	id 1qdRE0-005VOB-10;
+	Tue, 05 Sep 2023 08:15:53 +0000
+X-UUID: 65deedaa4bc411ee86758d4a7c00f3a0-20230905
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=PdtLuvK5FoLWlrvycOTnaJ+HduNbx6ANjKzfliekyu4=;
+	b=svc1DzMHb8sp0cR91beGFmHizs82nCOdNG9OJtoZhNzxoYW2AEObx3ADd1vPYPnw4vqiGVCTy52EkuEFlCqBV9QfgHPAQAaYGW5F/+kzVq+dho+xUxAA5cJ6wfbt6TcN8SnrpyF/N/bF4IKahOVEcejLCM3790OKHLfr47aP5FA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:86959a9c-5f8d-4b1b-8475-98ba086737bc,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:82459213-4929-4845-9571-38c601e9c3c9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 65deedaa4bc411ee86758d4a7c00f3a0-20230905
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1650350464; Tue, 05 Sep 2023 01:15:38 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 5 Sep 2023 16:15:05 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Tue, 5 Sep 2023 16:15:03 +0800
+Message-ID: <6e39b4b1-42b5-515c-aca0-08374ee7634e@mediatek.com>
+Date: Tue, 5 Sep 2023 16:15:01 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v3 2/2] drm/mediatek: dpi/dsi: fix possible_crtcs
- calculation
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH v3 1/2] arm64: dts: mediatek: mt8195-demo: fix the memory
+ size to 8GB
 Content-Language: en-US
-To: Michael Walle <mwalle@kernel.org>
-References: <20230901174557.3617839-1-mwalle@kernel.org>
- <20230901174557.3617839-2-mwalle@kernel.org>
- <d7e6917d-7315-12d6-d7d4-dc7ea8c58dc9@collabora.com>
- <cf7d01700f5e5adf2f28b0376451143b@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <cf7d01700f5e5adf2f28b0376451143b@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Fabien
+ Parent <fparent@baylibre.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, <stable@vger.kernel.org>
+References: <20230825114623.16884-1-macpaul.lin@mediatek.com>
+ <20230905034511.11232-1-macpaul.lin@mediatek.com>
+ <4e0c1222-5211-5515-99f1-b44b25f8ecfe@collabora.com>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <4e0c1222-5211-5515-99f1-b44b25f8ecfe@collabora.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230905_010315_156201_A00B54AB 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230905_011552_383208_9A9FBDB8 
+X-CRM114-Status: GOOD (  19.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,22 +91,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>, Stu Hsieh <stu.hsieh@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, "Nancy . Lin" <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/09/23 09:58, Michael Walle ha scritto:
->> At this point, I think that it would be sane to change this function to
->> return a signed type, so that we can return -ENOENT if we couldn't find
->> any DDP path (so, if we couldn't find any possible crtc).
-> 
-> Fair enough, but should it be part of the fixes commit or a different one?
-> 
-> -michael
 
-I would say that this should be part of the Fixes commit: after all, you're
-fixing a case in which the possible_crtcs calculation *may fail*, so the
-error handling for this possible failure is, indeed, one part of the fix :-)
 
-Angelo
+On 9/5/23 16:00, AngeloGioacchino Del Regno wrote:
+> Il 05/09/23 05:45, Macpaul Lin ha scritto:
+>> The onboard dram of mt8195-demo board is 8GB.
+>>
+>> Cc: stable@vger.kernel.org      # 6.1, 6.4, 6.5
+>> Fixes: 6147314aeedc ("arm64: dts: mediatek: Add device-tree for MT8195 
+>> Demo board")
+>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> Changes for v2:
+>> Changes for v3:
+>>   - No change.
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts 
+>> b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+>> index b2485ddfd33b..ff363ab925e9 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+>> @@ -48,7 +48,7 @@
+>>       memory@40000000 {
+>>           device_type = "memory";
+>> -        reg = <0 0x40000000 0 0x80000000>;
+>> +        reg = <0 0x40000000 0x2 0x00000000>;
+> 
+> Shouldn't this get automatically filled in by the bootloader?
+> Usually, that's the case: if it is, then the right thing to do here
+> is to change this property to
+> 
+>          /* The bootloader will fill in the size */
+>          reg = <0x0 0x40000000 0x0 0x0>;
+> 
+> Regards,
+> Angelo
+> 
+
+Thanks for the review. However, this value seems depends on the boot 
+method. Take u-boot as the example, the total memory size which Linux 
+kernel get will be different via EBBR boot or fitImage boot.
+
+It the system is booted through EBBR, the memory size should be filled 
+by u-boot's UEFI variables, which is from u-boot's dts file. If the 
+system is booted from fitImage, the memory size should be filled by 
+kernel's dts file which is usually packed with fitImage. That's why we 
+still need this fix.
+
+>>       };
+>>       reserved-memory {
+> 
+> 
+
+Thanks.
+Macpaul Lin
 
