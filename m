@@ -4,82 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 420CAC83F2C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 16:09:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA047C83F3E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 16:39:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=011YIz/pEd2oeIVWGXWob/jhfHpF/G1Gx3Q+AweGoo8=; b=ZQ6F5vRnUG92Psj7jHUL9aglq0
-	/Nw7LrRcthURA3kMd0xKdfrjmDJPjm1KiyD21PL6LA17QcImRZ/C34alMOhzPocyYcJv4WzvMP+Ha
-	oEuBLk6aaF4WJzAWt2SRXcvNnTn2nF0VLPq9HeGNprK7Jq6RvvDRuAAhjWCwJg+T8ZhWax/ZAu+nh
-	jk5X3YXxAArVmcoHIaynNI4ZRZTOGX3spo+1/fDrPb2HFcmHgHJoanIf6Elz29GWBTz2pNNf271NE
-	zkW2sUruA84DAy+PD91aMlljSzE8u5pLtMIohauz8C/KNVqxvDGZwx2jYNwCGRQT1XNyJXuYcekkY
-	7Y/tZ24w==;
+	bh=hriYanhF6k5wxB9gLp9MBp1HCn2yhlUaA36ozBlN5eE=; b=UeAKOxN6nK4qfPgx8zrQklEslY
+	6GXNLlXMGwYLNoJuBTY0MoHMhckuL7c2G6w2APObTg7tJo3iE2eANzx95jOs0waqpvVVQ9hsGxf8L
+	t5PoYBfvR1PwCtrj5iU6zN0W8rjMT53XJcRmm1pMUxv8eqtHW5LKksO6mA0fV/VHwl0xIIv91T7Hy
+	KAH2Q3WZDdXR7ivyNEyyBKAy1o+FUt0LXfJsYXEjABs0SgIi8/dhCx9/bkc4ysk9Y5qb0qbXJHNpN
+	m/4ufnkb4E1uIiyXod74x/dtkH9ca0mq4w4ru19YHH3wxKT9PUen+ZjAy3NMJBvXeePFHJKt0el19
+	C8mW+aaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdYcR-006Jyr-2Z;
-	Tue, 05 Sep 2023 16:09:35 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdYcN-006JxY-1x;
-	Tue, 05 Sep 2023 16:09:33 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B6CB8106F;
-	Tue,  5 Sep 2023 09:10:04 -0700 (PDT)
-Received: from [10.1.36.15] (010265703453.arm.com [10.1.36.15])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 0AFCF3F64C;
-	Tue,  5 Sep 2023 09:09:19 -0700 (PDT)
-Message-ID: <e949a91f-88b3-681e-6e0e-d5d1e8922284@arm.com>
-Date: Tue, 5 Sep 2023 17:09:15 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v12 0/6] iommu/dma: s390 DMA API conversion and optimized
- IOTLB flushing
-Content-Language: en-GB
-To: Matthew Rosato <mjrosato@linux.ibm.com>,
- Niklas Schnelle <schnelle@linux.ibm.com>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
- Jason Gunthorpe <jgg@ziepe.ca>
-Cc: Gerd Bayer <gbayer@linux.ibm.com>, Julian Ruess <julianr@linux.ibm.com>,
- Pierre Morel <pmorel@linux.ibm.com>, Alexandra Winter
- <wintera@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Alexander Gordeev
- <agordeev@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>,
- Sven Schnelle <svens@linux.ibm.com>,
- Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
- Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>,
- David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konrad.dybcio@linaro.org>, Yong Wu <yong.wu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1qdZ5d-006NnV-1Y;
+	Tue, 05 Sep 2023 16:39:45 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qdZ5Z-006NlJ-2V;
+	Tue, 05 Sep 2023 16:39:43 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A29DC60A54;
+	Tue,  5 Sep 2023 16:39:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EACD7C433C7;
+	Tue,  5 Sep 2023 16:39:34 +0000 (UTC)
+Date: Tue, 5 Sep 2023 12:39:53 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+Cc: <mhiramat@kernel.org>, <bobule.chang@mediatek.com>,
+ <wsd_upstream@mediatek.com>, <cheng-jui.wang@mediatek.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Thierry Reding <thierry.reding@gmail.com>, Krishna Reddy
- <vdumpa@nvidia.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org, iommu@lists.linux.dev,
- asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-doc@vger.kernel.org
-References: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
- <240c26d3-b821-8410-3142-62e9a8656146@linux.ibm.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <240c26d3-b821-8410-3142-62e9a8656146@linux.ibm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <linux-kernel@vger.kernel.org>, <linux-trace-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] ring-buffer: Do not read at &event->array[0] if it
+ across the page
+Message-ID: <20230905123953.3c0b3d7a@gandalf.local.home>
+In-Reply-To: <20230905141245.26470-1-Tze-nan.Wu@mediatek.com>
+References: <20230905141245.26470-1-Tze-nan.Wu@mediatek.com>
+X-Mailer: Claws Mail 3.19.1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230905_090931_961788_A02F1E86 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20230905_093941_895430_5ED94734 
+X-CRM114-Status: GOOD (  31.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,28 +69,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2023-08-25 19:26, Matthew Rosato wrote:
-> On 8/25/23 6:11 AM, Niklas Schnelle wrote:
->> Hi All,
->>
->> This patch series converts s390's PCI support from its platform specific DMA
->> API implementation in arch/s390/pci/pci_dma.c to the common DMA IOMMU layer.
->> The conversion itself is done in patches 3-4 with patch 2 providing the final
->> necessary IOMMU driver improvement to handle s390's special IOTLB flush
->> out-of-resource indication in virtualized environments. The conversion
->> itself only touches the s390 IOMMU driver and s390 arch code moving over
->> remaining functions from the s390 DMA API implementation. No changes to
->> common code are necessary.
->>
-> 
-> I also picked up this latest version and ran various tests with ISM, mlx5 and some NVMe drives.  FWIW, I have been including versions of this series in my s390 dev environments for a number of months now and have also been building my s390 pci iommufd nested translation series on top of this, so it's seen quite a bit of testing from me at least.
-> 
-> So as far as I'm concerned anyway, this series is ready for -next (after the merge window).
+On Tue, 5 Sep 2023 22:12:45 +0800
+Tze-nan Wu <Tze-nan.Wu@mediatek.com> wrote:
 
-Agreed; I'll trust your reviews for the s390-specific parts, so indeed 
-it looks like this should have all it needs now and is ready for a nice 
-long soak in -next once Joerg opens the tree for 6.7 material.
+> While reading from the tracing/trace, the ftrace reader rarely encounters
+> a KASAN invalid access issue.
+> It is likely that the writer has disrupted the ring_buffer that the reader
+> is currently parsing. the kasan report is as below:
 
-Cheers,
-Robin.
+What kernel are you using? There's been recent fixes that handle the race
+between reading the last entry and the writer adding to it. This looks like
+you may have hit that bug.
+
+> 
+> [name:report&]BUG: KASAN: invalid-access in rb_iter_head_event+0x27c/0x3d0
+> [name:report&]Read of size 4 at addr 71ffff8111a18000 by task xxxx
+> [name:report_sw_tags&]Pointer tag: [71], memory tag: [0f]
+> [name:report&]
+> CPU: 2 PID: 380 Comm: xxxx
+> Call trace:
+> dump_backtrace+0x168/0x1b0
+> show_stack+0x2c/0x3c
+> dump_stack_lvl+0xa4/0xd4
+> print_report+0x268/0x9b0
+> kasan_report+0xdc/0x148
+> kasan_tag_mismatch+0x28/0x3c
+> __hwasan_tag_mismatch+0x2c/0x58
+> rb_event_length() [inline]
+> rb_iter_head_event+0x27c/0x3d0
+> ring_buffer_iter_peek+0x23c/0x6e0
+> __find_next_entry+0x1ac/0x3d8
+> s_next+0x1f0/0x310
+> seq_read_iter+0x4e8/0x77c
+> seq_read+0xf8/0x150
+> vfs_read+0x1a8/0x4cc
+> 
+> In some edge cases, ftrace reader could access to an invalid address,
+> specifically when reading 4 bytes beyond the end of the currently page.
+> While issue happened, the dump of rb_iter_head_event is shown as below:
+> 
+>     in function rb_iter_head_event:
+>           - iter->head = 0xFEC
+>           - iter->next_event = 0xFEC
+>           - commit = 0xFF0
+>           - read_stamp = 0x2955AC46DB0
+>           - page_stamp = 0x2955AC2439A
+>           - iter->head_page->page = 0x71FFFF8111A17000
+>           - iter->head_page->time_stamp = 0x2956A142267
+>           - iter->head_page->page->commit = 0xFF0
+>           - the content in iter->head_page->page
+>                 0x71FFFF8111A17FF0: 01010075 00002421 0A123B7C FFFFFFC0
+> 
+> In rb_iter_head_event, reader will call rb_event_length with argument
+> (struct ring_buffer_event *event = 0x71FFFF8111A17FFC).
+
+As the commit is considered the end of buffer, it should never read past
+that, which the above appears to be doing. That's why I think it hit that
+race.
+
+> Since the content data start at address 0x71FFFF8111A17FFC are 0xFFFFFFC0.
+> event->type will be interpret as 0x0, than the reader will try to get the
+> length by accessing event->array[0], which is an invalid address:
+>     &event->array[0] = 0x71FFFF8111A18000
+> 
+> Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+> ---
+> Following patch may not become a solution, it merely checks if the address
+> to be accessed is valid or not within the rb_event_length before access.
+> And not sure if there is any side-effect it can lead to.
+> 
+> I am curious about what a better solution for this issue would look like.
+> Should we address the problem from the writer or the reader?
+> 
+> Also I wonder if the cause of the issue is exactly as I suspected.
+> Any Suggestion will be appreciated.
+
+I guess this depends on if you have the fixes or not?
+
+> 
+> Test below can reproduce the issue in 2 hours on kernel-6.1.24:
+>     $cd /sys/kernel/tracing/
+>     # make the reader and writer race more through resize the buffer to 8kb
+>     $echo 8 > buffer_size_kn
+>     # enable all events
+>     $echo 1 > event/enable
+>     # enable trace
+>     $echo 1 > tracing_on
+>  
+>     # write and run a script that keep reading trace
+>     $./read_trace.sh
+> 
+>     ``` read_trace.sh
+>        while :
+>        do
+>            cat /sys/kernel/tracing/trace > /dev/null
+>        done
+> 
+>     ```
+
+Thanks, I'll look at that when I finish debugging the eventfs bug.
+
+-- Steve
 
