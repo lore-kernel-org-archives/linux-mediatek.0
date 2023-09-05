@@ -4,77 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCFFAC83F3E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 10:58:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E13C1CA0FF3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 11:00:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6C4sPv4wNMtLA4Jzp6hw1zzmzjhaBpEW7nE5UZodFU8=; b=WLsQ5opNShw6oNd/4F0tBWmf9N
-	zdmyVExG9ESV/6EFwGR38OeJp81FKwAPAcaSbT9JNlpII6oUrjmKIkdQZwbYQr5TywxVFlOlUdT85
-	RUNJvlcV++WMCOS/GwoqRhJiVU80ht0d++RS0fAHl8Gm3IgplzE66f86TWt9cgabIROwmU47N8TZM
-	qJQORMmUY30GCWpwDwScWuQAIjGfJfZX7EgTEFUDkWXaQ+h9ReGe8+4Pbrf/I5oiCzu5kEB15qa2w
-	FrytMJwMVRsYXBk8g7tBnuWYETtPNwxxh9VgOMeTuGPojAgojpB+e7D0McBe8+qDS4nLj0Vz7aibD
-	Yay7dqqQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OWA7vLNOt5I2fjTmik42ZORw+Kjv5CDRYnP8tVjL/jk=; b=efvMKtizpMWmtHTk6smvOFZQKv
+	EpThjWNoprrF7ehYQkggaReB0io1GACCeFZvvwiRh8ueTQ9m8LVYkWz9huZHL+VQguXjUQdFH3QYU
+	NOkB80b4bXxv8jTyRHrEbf0wuzngXSXrX11yEf3Sqf1BTkaO+r9AEMV7GPtB8gwCmU7kQ8NJEfsV2
+	0O1vyZampnetiX6szrsZqP1hmNHQjeDpNfC8XcP8STdTwE/YsOBJuiGzOcDcqPXkkW/YP1U2tNOgy
+	Pdn5VQDxfhOhFOMoy8Wh9i9uBEQZ8uIgiEkN8aep5MA6VWYGEWaSW8R9gQ5H6TUl0V084dT6ebIB9
+	bjjh3Zbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdTlh-005rey-0E;
-	Tue, 05 Sep 2023 10:58:49 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qdTn6-005rnn-13;
+	Tue, 05 Sep 2023 11:00:16 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdTld-005reR-0G;
-	Tue, 05 Sep 2023 10:58:46 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1qdTn3-005rmj-1E
+	for linux-mediatek@lists.infradead.org;
+	Tue, 05 Sep 2023 11:00:15 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 583A3660728C;
-	Tue,  5 Sep 2023 11:58:40 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1693911521;
-	bh=AWVZNq18PNoqeWFxoGKHOIFnvVBf8M/lxcWQmKKsNZY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YhMeneWjMwe+HasAhRS+NTtkEkoVqzpZ86/ipWJ1CbQitu1HcGcqIlrRsrhJgV+bP
-	 2HM/K7exvm6+f1bMF3sc493w/ZrZckRY3VlAv1Jl3jadxH5Mnb71jBeLbjUPhCW/pi
-	 5Az/Pi8/EPo/6H+e4sVh6dG/bYLStfbcjKtRUqE4C7E989nGolhoAGEg3Jgmfdntot
-	 /uV1qCCiW1U6zJO2TzrygDWqPKN32FguNSBqNd9GbzgXuLoWTw7rX3TE/rqii9fPe3
-	 SFKgJZIAPVou+pO0l/l471RqTAO76fAKMEr+3jdYJHcUEsTn0vwGhkCt92o6kTkEHT
-	 FhFqO4yrYU2aw==
-Message-ID: <bf8394c6-5460-8696-f46b-0c39927aaf84@collabora.com>
-Date: Tue, 5 Sep 2023 12:58:37 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 5BBC660039;
+	Tue,  5 Sep 2023 11:00:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C47EC433C7;
+	Tue,  5 Sep 2023 11:00:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1693911611;
+	bh=Wfk1BuK7Xhfcrf4xZDmH9THWGITu0aqQKjO7PM3R1kk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=phwKNbWl+Q1EF5s4UKKO34pA7mX/nDJdHQO+AJCheMIBRtMD5JQ/mrDJbaWwZqs3c
+	 OlgUil3K0caYN+kKH4/TNBWGmbV2kkl3o7eFWeKQ8VnOAgvk9jnfA5uQoOb4Ujhojt
+	 AVeoAlnl2O1GW6Sb1Y7LBXJ8V/NvE46QuNAJpWARUPzn1BC7n/UQUWiEFFZ906Kb6A
+	 UEC4H0DIYMdyqaAy2822ULAeUcRUIpXaV0anrm6oUZjkLPGhgzTkR94a/EcI51Ywuk
+	 96CPMIfuyUguLsh+/hXEpWnUVQ+OyvtZ1Q8h3dZg95LvMMqOb4dLqu3aRY3CJwc1pR
+	 EVEL/1N7/nlhA==
+Date: Tue, 5 Sep 2023 13:00:09 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
+	dri-devel@lists.freedesktop.org, helen.koike@collabora.com, guilherme.gallo@collabora.com, 
+	sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com, daniels@collabora.com, 
+	gustavo.padovan@collabora.com, emma@anholt.net, robclark@freedesktop.org, robdclark@google.com, 
+	anholt@google.com, robdclark@gmail.com, airlied@gmail.com, daniel@ffwll.ch, 
+	jani.nikula@linux.intel.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	virtualization@lists.linux-foundation.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH v2 2/7] drm: ci: Force db410c to host mode
+Message-ID: <2jz6wurh6ejbaejwtb5r5gukjuw4zs7ujk5hbwfpsn26o6esqe@g2nnb2gjpnjp>
+References: <20230904161516.66751-1-vignesh.raman@collabora.com>
+ <20230904161516.66751-3-vignesh.raman@collabora.com>
+ <CAA8EJpq_cmFQ6TGy1xELh3ButWKLfSkQcp5ix049s_iqKw6DvQ@mail.gmail.com>
+ <ueznsu2dlvq5zp3ls262fww54bnlqa3e2ssr6f65vrrionloms@ir2ywgeajj4w>
+ <2c812fe4-04ba-0243-5330-c7b7e695cff9@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 1/2] dt-bindings: arm64: dts: mediatek: Add mt8395-evk
- board
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Frank Wunderlich <frank-w@public-files.de>,
- =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>
-References: <20230904092043.5157-1-macpaul.lin@mediatek.com>
- <e2e35d4d-7853-fccc-28c2-b8ecf309d6ec@linaro.org>
- <00f0a1cf-6246-92e9-13b0-cf31bb292a94@mediatek.com>
- <97b82a16-8710-9430-35c8-673381aaa417@linaro.org>
- <d5645707-bcb0-4d4b-1d94-d3cd17c042fb@mediatek.com>
- <ddbc2681-bbda-88a1-643c-54fcabc9b83a@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <ddbc2681-bbda-88a1-643c-54fcabc9b83a@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <2c812fe4-04ba-0243-5330-c7b7e695cff9@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230905_035845_414450_5A093384 
-X-CRM114-Status: GOOD (  20.57  )
+X-CRM114-CacheID: sfid-20230905_040013_508044_CB1E4183 
+X-CRM114-Status: GOOD (  30.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,86 +84,176 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/09/23 12:36, Krzysztof Kozlowski ha scritto:
-> On 05/09/2023 11:36, Macpaul Lin wrote:
->>
->>
->> On 9/4/23 20:11, Krzysztof Kozlowski wrote:
->>> 	
->>>
->>> External email : Please do not click links or open attachments until you
->>> have verified the sender or the content.
->>>
->>> On 04/09/2023 11:50, Macpaul Lin wrote:
->>>>
->>>>
->>>> On 9/4/23 17:33, Krzysztof Kozlowski wrote:
->>>>>
->>>>>
->>>>> External email : Please do not click links or open attachments until you
->>>>> have verified the sender or the content.
->>>>>
->>>>> On 04/09/2023 11:20, Macpaul Lin wrote:
->>>>>> Add bindings for the MediaTek mt8395-evk board.
->>>>>> The mt8359-evk board is also named as "Genio 1200-EVK".
->>>>>> MT8195 and MT8395 are the same family series SoC could share
->>>>>
->>>>> How can be the same and have different numbers? You sill need dedicated
->>>>> compatible.
->>>>>
->>>>
->>>> The SoCs mt8195 and mt8395 are designed for different market application
->>>> and physical characteristics, using different efuse values for
->>>> distinction. The booting flow and configurations are controllered by the
->>>> boot loaders, firmware, and TF-A. Therefore, the part numbers and
->>>> procurement channels are different. The detail information of these
->>>> efuse values is proprietary, so I cant disclose it futher. Hence the
->>>> most of peripheral drivers and base address are almost the same.
->>>
->>> 1. Drivers? So we talk about compatibility, not the same.
->>> 2. "almost the same" is not the same. Follow the guidelines for writing
->>> bindings.
->>>
->>
->> Thanks for the review.
->>
->> After internal confirmation and discussion, it can be confirmed that the
->> MT8195 and MT8395 are identical SoCs from to binding's perspective.
-> 
-> I am sorry, but I really do not care what you internally discussed about
-> bindings. I do not think your internal review respect existing
-> guidelines. You talked about drivers, not "bindings perspective", so
-> your internal discussion is clearly discussing something else.
-> 
->> MediaTek hope the mt8395 boards could directly use mt8195.dtsi, without
->> the need to create a separate mt8395.dtsi to include mt8195.dtsi.
->> Therefore, we hope to fully adopt the bindings of mt8195. However, I
->> will submit a revised patch for compatible since they are different boards.
-> 
-> You can disagree but then I expect arguments from your side.
-> 
+On Tue, Sep 05, 2023 at 03:39:33PM +0530, Vignesh Raman wrote:
+> Hi Dmitry, Maxime,
+>=20
+> On 05/09/23 14:13, Maxime Ripard wrote:
+> > Hi,
+> >=20
+> > On Mon, Sep 04, 2023 at 07:59:26PM +0300, Dmitry Baryshkov wrote:
+> > > On Mon, 4 Sept 2023 at 19:16, Vignesh Raman <vignesh.raman@collabora.=
+com> wrote:
+> > > >=20
+> > > > Force db410c to host mode to fix network issue which results in fai=
+lure
+> > > > to mount root fs via NFS.
+> > > > See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b8=
+c15c80a54dda510743cefd1c4b65b8
+> > > >=20
+> > > > Use fdtoverlay command to merge base device tree with an overlay
+> > > > which contains the fix for USB controllers to work in host mode.
+> > > >=20
+> > > > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> > > > ---
+> > > >=20
+> > > > v2:
+> > > >    - Use fdtoverlay command to merge overlay dtbo with the base dtb=
+ instead of modifying the kernel sources
+> > > >=20
+> > > > ---
+> > > >   drivers/gpu/drm/ci/build.sh                         |  5 +++++
+> > > >   .../gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts  | 13 ++++++++=
++++++
+> > > >   2 files changed, 18 insertions(+)
+> > > >   create mode 100644 drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-ove=
+rlay.dts
+> > > >=20
+> > > > diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build=
+=2Esh
+> > > > index 7b014287a041..92ffd98cd09e 100644
+> > > > --- a/drivers/gpu/drm/ci/build.sh
+> > > > +++ b/drivers/gpu/drm/ci/build.sh
+> > > > @@ -92,6 +92,11 @@ done
+> > > >=20
+> > > >   if [[ -n ${DEVICE_TREES} ]]; then
+> > > >       make dtbs
+> > > > +    if [[ -e arch/arm64/boot/dts/qcom/apq8016-sbc.dtb ]]; then
+> > > > +        dtc -@ -I dts -O dtb -o drivers/gpu/drm/ci/dt-overlays/apq=
+8016-sbc-overlay.dtbo drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
+> > > > +        fdtoverlay -i arch/arm64/boot/dts/qcom/apq8016-sbc.dtb -o =
+arch/arm64/boot/dts/qcom/apq8016-sbc-overlay.dtb drivers/gpu/drm/ci/dt-over=
+lays/apq8016-sbc-overlay.dtbo
+> > > > +        mv arch/arm64/boot/dts/qcom/apq8016-sbc-overlay.dtb arch/a=
+rm64/boot/dts/qcom/apq8016-sbc.dtb
+> > > > +    fi
+> > > >       cp ${DEVICE_TREES} /lava-files/.
+> > > >   fi
+> > > >=20
+> > > > diff --git a/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts=
+ b/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
+> > > > new file mode 100644
+> > > > index 000000000000..57b7604f1c23
+> > > > --- /dev/null
+> > > > +++ b/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
+> > > > @@ -0,0 +1,13 @@
+> > > > +/dts-v1/;
+> > > > +/plugin/;
+> > > > +
+> > > > +/ {
+> > > > +    fragment@0 {
+> > > > +        target-path =3D "/soc@0";
+> > > > +        __overlay__ {
+> > > > +            usb@78d9000 {
+> > > > +                dr_mode =3D "host";
+> > > > +            };
+> > > > +        };
+> > > > +    };
+> > > > +};
+> > > > --
+> > > > 2.40.1
+> > >=20
+> > > Can we use normal dtso syntax here instead of defining fragments manu=
+ally?
+> >=20
+> > What Dmitry is hinting about is to use the "Sugar Syntax". There a good=
+ documentation here:
+> > https://source.android.com/docs/core/architecture/dto/syntax
+>=20
+>=20
+> With the below DTO syntax,
+> /dts-v1/;
+> /plugin/;
+>=20
+> &usb {
+>   usb@78d9000 {
+>     dr_mode =3D "host";
+>   };
+> };
+>=20
+> Decoded dtbo file is,
+> /dts-v1/;
+>=20
+> / {
+>=20
+> 	fragment@0 {
+> 		target =3D <0xffffffff>;
+>=20
+> 		__overlay__ {
+>=20
+> 			usb@78d9000 {
+> 				dr_mode =3D "host";
+> 			};
+> 		};
+> 	};
+>=20
+> 	__fixups__ {
+> 		usb =3D "/fragment@0:target:0";
+> 	};
+> };
+>=20
+> With the previous fix using fragment we get,
+> / {
+>=20
+> 	fragment@0 {
+> 		target-path	 =3D "/soc@0";
+>=20
+> 		__overlay__ {
+>=20
+> 			usb@78d9000 {
+> 				dr_mode =3D "host";
+> 			};
+> 		};
+> 	};
+> };
+>=20
+> Decoded apq8016-sbc.dtb file with the fix (setting dr_mode to host) is,
+> /dts-v1/;
+> / {=09
+> 	soc@0 {
+> 		usb@78d9000 {
+> 			dr_mode =3D "host";
+> 		};=09
+> 	};
+> };
+>=20
+> How can set the target to "soc@0" using the DTO syntax?
 
-In short - they're the same chip, as in, they behave the same on a *hardware*
-perspective; what changes is the bootchain (plus stricter security from TF-A)
-and allowable temperature ranges for operation, that's practically it...
+To strictly answer your question, that would be something like
 
-...so yes the compatible for the "new soc" must be documented, but that's
-practically just a revision, *not a new soc* at all.
+&{/soc@0} {
+	usb@78d9000 {
+		dr_mode =3D "host";
+	};
+};
 
-(though, I agree that seeing a different name as in 1 -> 3 can be totally
-confusing)
+You can simplify this further however by doing:
 
-The drivers difference that Macpaul hinted to are about drivers needing some
-SMC calls instead of direct MMIO manipulation, so, something like two bindings
-for something like two drivers will need to add a 8395 compatible; speaking of
-what we would have in a devicetree for this SoC, that'd be exactly 99% identical
-to mt8195.dtsi.
 
-Anyway, drivers are drivers, bindings describe hardware - and the hw is, again,
-the same...
+&{/soc@0/usb@78d9000} {
+	dr_mode =3D "host";
+};
 
-Hope that this makes things clearer! :-)
+Also, that node actually has a label ("usb"), defined here:
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arc=
+h/arm64/boot/dts/qcom/msm8916.dtsi#n2322
 
-Cheers,
-Angelo
+So you can end up with
+
+&usb {
+	dr_mode =3D "host";
+};
+
+All of them should be equivalent to the one you had in your patch.
+
+Maxime
 
