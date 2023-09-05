@@ -4,84 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1966DC83F3E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 11:11:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D81BAC83F2C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Sep 2023 11:11:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lFHibJcCTrHc7UsLYmrMGzSLKGIb6u3hELCj6ZH9vKM=; b=U3aOFts4WSIJW4BN5zPjBGSK4c
-	6PrnyfBLDjm5kV47xddCBG2++7ELv3R3vWXupOoYmK4C5lpkCWYuL3Ar5UNI6Vfu1hHYub+CyMm2W
-	y2A9z6fhFtc0V5Z4yj+gzZ2u3BGxOMRIOFd+6Q5L1lqSVAki+kHoaXK9SdcFEN78gqKIXUnWBSQ2i
-	e7YYFyzsDHcfzVsN/MtZly1zTx4O8jTkI2R9euAQRJ8YwqGG2j3HIUqysZA7Bp1FTOxgsHRdZA8wf
-	XznOInAurm7YSMX7UZrJH+dFT3CM1GVjtN4+5aJlaWFm353exIkb+lhqlFsdfRI4JQSx0FH929JXK
-	/IEItMSw==;
+	bh=5WLoQn7be1D72ekzhEmbPr89HcwylHXzc0OOTYnEBNg=; b=Af7Z31cE02JU6LmirLgqqClCaz
+	zegwC0HjbhKQTks1RLf33zXKk+rP2hjDvLOSrpoWWPgGKWJ6VdS1tw0sG4Xpet+ccwwj10WtC/Xo7
+	+4/EdEufTeNaDJwJ7sXWDf5ugcpV9A6ckYqzc5Y4gWZpwwKko7dxKGPO5f+3ut+tDwWx7IhbgX+My
+	D0SB+ajYYA+H8FkeXTkoN3o+zqhRrYS5lD5i1XoH3PDRcNPnNRRVBAo4Hi9E7PfWzj37WNbtFQlnf
+	1h0JUsgBkP4uNfXBDHgDi/Zr2ndF5JbYSut3MekFVth2jPc1l4CWvdB2AfWq9yVF3xxU6CSPwslk6
+	v753EhIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdTxV-005srq-04;
-	Tue, 05 Sep 2023 11:11:01 +0000
-Received: from mail-oo1-xc2f.google.com ([2607:f8b0:4864:20::c2f])
+	id 1qdTy6-005swS-2d;
+	Tue, 05 Sep 2023 11:11:38 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdTxS-005sqY-0r
-	for linux-mediatek@lists.infradead.org;
-	Tue, 05 Sep 2023 11:11:00 +0000
-Received: by mail-oo1-xc2f.google.com with SMTP id 006d021491bc7-5731fe1d2bfso1241526eaf.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 05 Sep 2023 04:10:56 -0700 (PDT)
+	id 1qdTy3-005svc-0B;
+	Tue, 05 Sep 2023 11:11:36 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-5008d16cc36so3950184e87.2;
+        Tue, 05 Sep 2023 04:11:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1693912255; x=1694517055; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=lFHibJcCTrHc7UsLYmrMGzSLKGIb6u3hELCj6ZH9vKM=;
-        b=Qu3qp805opLDHa6S8SygLBfaSGv/lThRypdyD2Q17LEkT+Yl61XXjSUczlZCVLbX2w
-         WdH6xMB1/1NHMg+qyKYn8OtMo/XutPSR4U/l8q1FGiUeVdavRnqASkcxrNk8xqIzzL6U
-         3sIPCAL5jRfasKaT4GXtJgNUm8HhK1wgnXgI7kHTZx7L0hah1dhRGUz2gc2tR9b3TAxm
-         ZgaGT0Z+J0a4Lyn/rM1/2uCFmfFoFSaXiHoy1YSKiwcvjx4CtjL7w1Gf4l+U1Akmk2SX
-         Eq5GZhPZj8uRa5Rt4Emd8F8FPb4Aw63KZdP4H5boU5gJeFImkafo2nov2mtORBYYCCEd
-         DWWg==
+        d=gmail.com; s=20221208; t=1693912291; x=1694517091; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=5WLoQn7be1D72ekzhEmbPr89HcwylHXzc0OOTYnEBNg=;
+        b=Hw7BgK1I4NKL8zgVFCQ0jYF8VmiJZ6IlyRyogooG8AcvK/cpQfOPKULRziSuWUybtV
+         NvaucY/HUVcWXFl2ibXYv0mB/v4E4UpO7AXyOP5b3mmn20qrJl0NbmNtyRCbU4txnW8r
+         Cq2EZLVSTiXmwLaRmjDbz/SNUM2pCTptk5EKodGu6EvziFJnvyxbOEHTcXO3R2ysdJdA
+         NSVjdMaZHCJokzqV9XO5VgCa4iwVHLy1cTmTI4WJhnGtGj0plKeeIrdzMqfCizmg5eDn
+         RJZKm2lbfE7WlcLPuSe6JTxm2BIWXgy7znnnEfUss1+ownqBwTBfUpBU320zBKFOrTif
+         2BZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693912255; x=1694517055;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=lFHibJcCTrHc7UsLYmrMGzSLKGIb6u3hELCj6ZH9vKM=;
-        b=RkPUz+gV/2xKloIBjJ1tXzwHbwvAXji/X7HqDMDutMzDvoWYMseq2yJ7n1qHM8ISPs
-         Acm3U+Q1FdGCIsZsdZLLVU0XqH0yPIIKfpEArrJWEw2AGycN5GgQ7ege7P+Eb4iB1B7r
-         e4/s3wAV602OPPw9XfU9yM5QijiEoPWNQIZ0Ug8BBEtpCRXYbZzkep7VA0LgZvKic4hW
-         nvEPFkUSbMD9mVGNlfuI33shzb3kBuns7aR+7tPOsNa3yepvYdRHnT5CMOPOsLwxYUCO
-         tKYNy9tz0Z2MgDTWMN35zS7eRyIYP+UQuTnUAkjPyG7i+qqDyliCE2dqBE1xzLyZIB86
-         QRTA==
-X-Gm-Message-State: AOJu0Yy1kJXL+v8oRedBmV0PzHu0bZY/kbdGO3u5uDCUizlz2okiq2cs
-	8dYp86g+ucPbVYnrbE7ZkJGsItlbuTXPmxgXIceIYg==
-X-Google-Smtp-Source: AGHT+IFo9xBi2/mp2LlaAKkJ92fJy9V9XtRAZ9XtjSlMoeM6e+JjrV7rskbJMCadKMIvoAvsNXEXvZjxBF6IQTrAKW0=
-X-Received: by 2002:a05:6358:63a4:b0:135:24ed:5106 with SMTP id
- k36-20020a05635863a400b0013524ed5106mr8346763rwh.9.1693912255339; Tue, 05 Sep
- 2023 04:10:55 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1693912291; x=1694517091;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5WLoQn7be1D72ekzhEmbPr89HcwylHXzc0OOTYnEBNg=;
+        b=g/NvPxDFVdnOaz3UlR/JCLsImXPFnJsnjH4au7qGdXetycC6+68BW3qoZgb+3MhVwe
+         MdxSp1qifnvDlftCcKtgnp53jZ+zQp9bzCUC76OYZJuQwlWkNZZSGMnQNTzgqkJpCNGH
+         QPKM/gQgxbN3hV5YervyZUCml0nUpOxBEEN8qpgXP1/0EJpHKiiuq6OKF35l4gWGEN4v
+         W086GS6OINh6ZvlqdeXzRyEvDT04UvXnHbV90n23t3PpOQZqabR5j0fITSH3KBPJo4Md
+         XODiYCJVmNHCAdMeNXiNM/rC6yo1I+kCekdw2dUu7f6mxFDvZi7tNgwFalVO1ro4Kiy+
+         yngA==
+X-Gm-Message-State: AOJu0YxU/tFHBfW8TioWVkhSsU5yZl86FanFogeENzU0J5ncx/t+j2oR
+	KWgqH4H13RedWS+36yaV1M4=
+X-Google-Smtp-Source: AGHT+IFZm+YJ8szZjnCXx4iZ0+YwTJu1WFmNIfkcFqME64Z4ABDlhajbiXLHXOiOLFRXmKQmrQl7dA==
+X-Received: by 2002:a05:6512:3990:b0:500:9734:b415 with SMTP id j16-20020a056512399000b005009734b415mr9696436lfu.30.1693912290677;
+        Tue, 05 Sep 2023 04:11:30 -0700 (PDT)
+Received: from skbuf ([188.26.57.165])
+        by smtp.gmail.com with ESMTPSA id l26-20020a056402125a00b00525c01f91b0sm6961365edw.42.2023.09.05.04.11.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 05 Sep 2023 04:11:30 -0700 (PDT)
+Date: Tue, 5 Sep 2023 14:11:27 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Luiz Angelo Daros de Luca <luizluca@gmail.com>
+Cc: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
+Message-ID: <20230905111127.hql3pjlrtqc7gybv@skbuf>
+References: <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <20230813112026.ohsx6srbt2staxma@skbuf>
+ <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
+ <20230813190157.4y3zoro53qsz43pe@skbuf>
+ <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
+ <20230814143601.mnpxtcm2zybnbvoh@skbuf>
+ <0cee0928-74c9-4048-8cd8-70bfbfafd9b2@arinc9.com>
+ <20230827121235.zog4c3ehu2cyd3jy@skbuf>
+ <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
+ <CAJq09z6eghuHY+b2y-kGmjKnLiEEOABXGKhjnB-PxJ=-GtYD4w@mail.gmail.com>
 MIME-Version: 1.0
-References: <20230904161516.66751-1-vignesh.raman@collabora.com>
- <20230904161516.66751-3-vignesh.raman@collabora.com> <CAA8EJpq_cmFQ6TGy1xELh3ButWKLfSkQcp5ix049s_iqKw6DvQ@mail.gmail.com>
- <ueznsu2dlvq5zp3ls262fww54bnlqa3e2ssr6f65vrrionloms@ir2ywgeajj4w>
- <2c812fe4-04ba-0243-5330-c7b7e695cff9@collabora.com> <2jz6wurh6ejbaejwtb5r5gukjuw4zs7ujk5hbwfpsn26o6esqe@g2nnb2gjpnjp>
-In-Reply-To: <2jz6wurh6ejbaejwtb5r5gukjuw4zs7ujk5hbwfpsn26o6esqe@g2nnb2gjpnjp>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Date: Tue, 5 Sep 2023 14:10:44 +0300
-Message-ID: <CAA8EJpoGoopP64T1nm1ye1ukTwT=u+LYY1ubQG-9dQ-j41iHiA@mail.gmail.com>
-Subject: Re: [PATCH v2 2/7] drm: ci: Force db410c to host mode
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Vignesh Raman <vignesh.raman@collabora.com>, dri-devel@lists.freedesktop.org, 
-	helen.koike@collabora.com, guilherme.gallo@collabora.com, 
-	sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com, 
-	daniels@collabora.com, gustavo.padovan@collabora.com, emma@anholt.net, 
-	robclark@freedesktop.org, robdclark@google.com, anholt@google.com, 
-	robdclark@gmail.com, airlied@gmail.com, daniel@ffwll.ch, 
-	jani.nikula@linux.intel.com, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, virtualization@lists.linux-foundation.org, 
-	linux-arm-msm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAJq09z6eghuHY+b2y-kGmjKnLiEEOABXGKhjnB-PxJ=-GtYD4w@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230905_041058_326662_070BDD1C 
-X-CRM114-Status: GOOD (  34.38  )
+X-CRM114-CacheID: sfid-20230905_041135_117174_EE530090 
+X-CRM114-Status: GOOD (  19.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,169 +119,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 5 Sept 2023 at 14:00, Maxime Ripard <mripard@kernel.org> wrote:
->
-> On Tue, Sep 05, 2023 at 03:39:33PM +0530, Vignesh Raman wrote:
-> > Hi Dmitry, Maxime,
+On Mon, Sep 04, 2023 at 11:42:19PM -0300, Luiz Angelo Daros de Luca wrote:
+> > > [1] ...this. The SMI-controlled and MDIO-controlled Realtek switches are
+> > > otherwise the same, right? So why would they have different dt-bindings?
 > >
-> > On 05/09/23 14:13, Maxime Ripard wrote:
-> > > Hi,
-> > >
-> > > On Mon, Sep 04, 2023 at 07:59:26PM +0300, Dmitry Baryshkov wrote:
-> > > > On Mon, 4 Sept 2023 at 19:16, Vignesh Raman <vignesh.raman@collabora.com> wrote:
-> > > > >
-> > > > > Force db410c to host mode to fix network issue which results in failure
-> > > > > to mount root fs via NFS.
-> > > > > See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b8c15c80a54dda510743cefd1c4b65b8
-> > > > >
-> > > > > Use fdtoverlay command to merge base device tree with an overlay
-> > > > > which contains the fix for USB controllers to work in host mode.
-> > > > >
-> > > > > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> > > > > ---
-> > > > >
-> > > > > v2:
-> > > > >    - Use fdtoverlay command to merge overlay dtbo with the base dtb instead of modifying the kernel sources
-> > > > >
-> > > > > ---
-> > > > >   drivers/gpu/drm/ci/build.sh                         |  5 +++++
-> > > > >   .../gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts  | 13 +++++++++++++
-> > > > >   2 files changed, 18 insertions(+)
-> > > > >   create mode 100644 drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
-> > > > >
-> > > > > diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
-> > > > > index 7b014287a041..92ffd98cd09e 100644
-> > > > > --- a/drivers/gpu/drm/ci/build.sh
-> > > > > +++ b/drivers/gpu/drm/ci/build.sh
-> > > > > @@ -92,6 +92,11 @@ done
-> > > > >
-> > > > >   if [[ -n ${DEVICE_TREES} ]]; then
-> > > > >       make dtbs
-> > > > > +    if [[ -e arch/arm64/boot/dts/qcom/apq8016-sbc.dtb ]]; then
-> > > > > +        dtc -@ -I dts -O dtb -o drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dtbo drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
-> > > > > +        fdtoverlay -i arch/arm64/boot/dts/qcom/apq8016-sbc.dtb -o arch/arm64/boot/dts/qcom/apq8016-sbc-overlay.dtb drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dtbo
-> > > > > +        mv arch/arm64/boot/dts/qcom/apq8016-sbc-overlay.dtb arch/arm64/boot/dts/qcom/apq8016-sbc.dtb
-> > > > > +    fi
-> > > > >       cp ${DEVICE_TREES} /lava-files/.
-> > > > >   fi
-> > > > >
-> > > > > diff --git a/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts b/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
-> > > > > new file mode 100644
-> > > > > index 000000000000..57b7604f1c23
-> > > > > --- /dev/null
-> > > > > +++ b/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
-> > > > > @@ -0,0 +1,13 @@
-> > > > > +/dts-v1/;
-> > > > > +/plugin/;
-> > > > > +
-> > > > > +/ {
-> > > > > +    fragment@0 {
-> > > > > +        target-path = "/soc@0";
-> > > > > +        __overlay__ {
-> > > > > +            usb@78d9000 {
-> > > > > +                dr_mode = "host";
-> > > > > +            };
-> > > > > +        };
-> > > > > +    };
-> > > > > +};
-> > > > > --
-> > > > > 2.40.1
-> > > >
-> > > > Can we use normal dtso syntax here instead of defining fragments manually?
-> > >
-> > > What Dmitry is hinting about is to use the "Sugar Syntax". There a good documentation here:
-> > > https://source.android.com/docs/core/architecture/dto/syntax
+> > Honestly, I'm wondering the answer to this as well. For some reason, when
+> > probing the SMI controlled Realtek switches, instead of just letting
+> > dsa_switch_setup() populate ds->slave_mii_bus, on realtek_smi_setup_mdio()
+> > on realtek-smi.c:
 > >
-> >
-> > With the below DTO syntax,
-> > /dts-v1/;
-> > /plugin/;
-> >
-> > &usb {
-> >   usb@78d9000 {
-> >     dr_mode = "host";
-> >   };
-> > };
-> >
-> > Decoded dtbo file is,
-> > /dts-v1/;
-> >
-> > / {
-> >
-> >       fragment@0 {
-> >               target = <0xffffffff>;
-> >
-> >               __overlay__ {
-> >
-> >                       usb@78d9000 {
-> >                               dr_mode = "host";
-> >                       };
-> >               };
-> >       };
-> >
-> >       __fixups__ {
-> >               usb = "/fragment@0:target:0";
-> >       };
-> > };
-> >
-> > With the previous fix using fragment we get,
-> > / {
-> >
-> >       fragment@0 {
-> >               target-path      = "/soc@0";
-> >
-> >               __overlay__ {
-> >
-> >                       usb@78d9000 {
-> >                               dr_mode = "host";
-> >                       };
-> >               };
-> >       };
-> > };
-> >
-> > Decoded apq8016-sbc.dtb file with the fix (setting dr_mode to host) is,
-> > /dts-v1/;
-> > / {
-> >       soc@0 {
-> >               usb@78d9000 {
-> >                       dr_mode = "host";
-> >               };
-> >       };
-> > };
-> >
-> > How can set the target to "soc@0" using the DTO syntax?
->
-> To strictly answer your question, that would be something like
->
-> &{/soc@0} {
->         usb@78d9000 {
->                 dr_mode = "host";
->         };
-> };
->
-> You can simplify this further however by doing:
->
->
-> &{/soc@0/usb@78d9000} {
->         dr_mode = "host";
-> };
->
-> Also, that node actually has a label ("usb"), defined here:
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/qcom/msm8916.dtsi#n2322
->
-> So you can end up with
->
-> &usb {
->         dr_mode = "host";
-> };
+> > - priv->slave_mii_bus is allocated.
+> > - mdio_np = of_get_compatible_child(priv->dev->of_node, "realtek,smi-mdio");
+> > - priv->slave_mii_bus->dev.of_node = mdio_np;
+> > - ds->slave_mii_bus = priv->slave_mii_bus;
+> 
+> I might be able to help here. The Realtek SMI version created a custom
+> slave_mii driver because it was the only way to associate it with an
+> MDIO DT node. And that DT node was required to specify the interrupts
+> for each phy0.
+> It would work without that mdio node, letting DSA setup handle the
+> slave bus, but it would rely only on polling for port status.
 
-... which is the simplest and thus more robust one.
-
-> All of them should be equivalent to the one you had in your patch.
->
-> Maxime
-
--- 
-With best wishes
-Dmitry
+It is possible to set up PHY IRQs even if the MDIO bus is not OF-based.
+I think that mv88e6xxx_g2_irq_mdio_setup() does that (sets bus->irq[]).
 
