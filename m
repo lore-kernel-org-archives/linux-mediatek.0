@@ -4,96 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB497EB8FB6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 10:20:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1B63EB8FA5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 10:48:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bq5VaCN58woKfHlu27g2JEDxXsqU8G37VcS/uYaOtG0=; b=N2lsCJ5Odnx/w49Nb2aBFj2pbv
-	J5/JjAn1bPHpgVmvBHS2FZWJL+/xh++jfjVZlLnhEmD8m4OXShRpworKcC+cBa+I4RTsF2ZBs3a0a
-	1Q7XWc6Fwk3zaC8rFSSp5RHvBbfGWbIrKBHysidXQJW0zwyOW5AeQROlWNIIzfSAzVZv7nFPIMFHs
-	YK17unBe9p69DCIQT1G86ipFvxn+7HZ/pS+VV/tSNar5gt+Qefv3+2qST7FtnBX4OCFWmQ3wEehrP
-	SbYVAfId1plIuIcPoQayojYXVFeIoVwofzM6HjvgDGEzJwm2SV7m2yioG3He0itxLarA8iVOskyO1
-	xFGGYGIw==;
+	bh=nwRBSBi12L1fmr8ExBKoba8GVY2Fgbu1EwIQp1FRucI=; b=AP1Vv8/111rXcj2oOw5vBEMtrV
+	RKVziRgKeGxfnjghc/RgV+FMdNXbAdTi7vG45ZqjlpF35Fh4EM3Ij7fA5JPY6O7nq6c1lbJVSxgSF
+	oRwyS14WyT2rph+t7zCbtHi0Gg3mQCwsC9GQvAOTZZb1Z1KaleFSQs4lOkyiXXqdLW8nACOnI5x2z
+	JHN+STjhOU4VKiFW5EwQy8hNZXFbf1Yq+4HQLkhbHkZt6gHaagHWMFz+YSu0LGejT6Ye7unNJuZOP
+	Y+VV4XFq1pH2LhPq0DG47KAnb6a33szxOwFsVI5Qt1huxUO8t04SqCkGzEKrfxhtgUVUYj1XiggrS
+	QGUhEAJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdpdu-0087Pc-2E;
-	Wed, 06 Sep 2023 10:20:14 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1qdq5I-008J6p-0t;
+	Wed, 06 Sep 2023 10:48:32 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdpds-0087OY-1y
-	for linux-mediatek@lists.infradead.org;
-	Wed, 06 Sep 2023 10:20:13 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-9a58dbd5daeso537995366b.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 06 Sep 2023 03:20:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1693995611; x=1694600411; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=bq5VaCN58woKfHlu27g2JEDxXsqU8G37VcS/uYaOtG0=;
-        b=BM+GxNBksMf3gjuy2qY/Rc1BgIoLeqzI9u1QuK8cRddYiNGy1AKSVWanDlOZl4pgTQ
-         4PGBYoSCgBocE9WHMf8XmxgKRF6olB9xBbXVf1M/Kv/bC5Apk1OmS//s45IvQ/VsOlpM
-         ON612vxSrMAMZ+OAOMw0V48OBxTlpx8AhNCZcwFSJUXwZhbEzjNzpwEJz9dgJTZDETDG
-         p04LeItKVHIF9K5+kCR/lVmhFHnYy5DMCKD3HWlLrYilRUOcK7ob7w4V9LmRqTOLvT4u
-         VKYu9u1dVhRr8pwy14e6th9mjIz50wQPoZXW+n1EjBx2bJOaRguiCHgD7JDj+LQ7yWKT
-         pD2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693995611; x=1694600411;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bq5VaCN58woKfHlu27g2JEDxXsqU8G37VcS/uYaOtG0=;
-        b=DYDM2TV1Lbgax9Jfcdh9FiPMF8MYFf1lBfsgII3ngqXx72qniKjdqwmKr4dzj+zVCr
-         MV2o2H1w/NEMA8CRieWfscQHQhXV3Y3bCLTeZDnfqWQP6s5Ts1IXt2csk0DUn90/SpAK
-         F4MF2d/FUzoD3BrE3MjMKCvKoLVSEfMaZJuGPu3jYKX9QuyF8H+1BcUe+pYB7MaAIFh8
-         adMd13JWv2J1SNp4eRjYL8tQnm7y548VURNNerzIa6OF6zLiOfWTjBIBWngA+1eHaryS
-         cCfghMrj59tzDVWtVA/JoHpZhIui9qfdNBJDuOFZjscKDjLYOs827+LiCxLRzrs8UMhi
-         IREA==
-X-Gm-Message-State: AOJu0YwMgYR+nFaqq7vpNRPkn3t7vdNN90WB2+myhiJ4/+mosq+fWTFB
-	KbYJ3sAjxUYh8m4P5H2Im9VAVA==
-X-Google-Smtp-Source: AGHT+IECInaTz8AGdtzkKqE3txhHtVT5HkkOVMm7zF06XwaR9R8LGP/zSAC3l08RLFTjiI82UIK5ew==
-X-Received: by 2002:a17:906:cd1:b0:9a2:232f:6f79 with SMTP id l17-20020a1709060cd100b009a2232f6f79mr1652416ejh.25.1693995610974;
-        Wed, 06 Sep 2023 03:20:10 -0700 (PDT)
-Received: from [192.168.0.22] (77-252-46-238.static.ip.netia.com.pl. [77.252.46.238])
-        by smtp.gmail.com with ESMTPSA id hb26-20020a170906b89a00b009931a3adf64sm8986930ejb.17.2023.09.06.03.20.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 06 Sep 2023 03:20:10 -0700 (PDT)
-Message-ID: <145f9a3e-af61-c62f-1752-2abb7663d7a3@linaro.org>
-Date: Wed, 6 Sep 2023 12:20:09 +0200
+	id 1qdq5D-008J1N-1v;
+	Wed, 06 Sep 2023 10:48:30 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C9FB36606E9D;
+	Wed,  6 Sep 2023 11:48:20 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1693997301;
+	bh=XFN7RJKmAs02Y3lJUL7X2wA7a13+qByhBe9Ak6fyjsI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KZvU5xvkVY+Am3g3z7blH+k9wJ9UKugJpI3wVqMYvkVx56dkY9NsMSVY8MVEJd9YC
+	 ubXtlbPMfkP3EpUMjNf6NFipY00Ug5zs3t2F05zfeQDVtjb2b73vUOFTU4M/go2+nd
+	 mSo0xxilNexrFbjVfsdw9JAT3dXIzW2fm4uOLkpLWXMbejPQJNYUiEm6tet6M+75AQ
+	 CHxv82KC+rdJg/TKuT22guqvJD1ODBr1ry8ntuCTSF2hHvZ8QBB4X3XdcUvHD57w6w
+	 lrrcrqmXt3Ds8tfvDJgjklNeKBZCFRFknYkHRbe0PY0Fwv6kIIgMS3THCMxSVx2SqV
+	 oWc1aXH9Vu+tg==
+Message-ID: <f343b6e2-6106-47eb-71cb-f391aff6cb7f@collabora.com>
+Date: Wed, 6 Sep 2023 12:48:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: add device-tree for Genio
- 1200 EVK board
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm64: dts: mediatek: add mt8395-evk
+ board
 Content-Language: en-US
-To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+To: Macpaul Lin <macpaul.lin@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Frank Wunderlich <frank-w@public-files.de>,
+ <matthias.bgg@gmail.com>, Frank Wunderlich <frank-w@public-files.de>,
  =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
  Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>, Ben Lok <ben.lok@mediatek.com>
+ Macpaul Lin <macpaul@gmail.com>
 References: <20230904092043.5157-1-macpaul.lin@mediatek.com>
  <20230906092527.18281-1-macpaul.lin@mediatek.com>
- <20230906092527.18281-2-macpaul.lin@mediatek.com>
- <2cb8069a-976b-0af4-a427-1e63ba4e7870@linaro.org>
- <951e34bc-dda3-f9d4-b251-7f0fd02052ee@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <951e34bc-dda3-f9d4-b251-7f0fd02052ee@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ <fbad941f-232b-9f56-5de3-98a16a8c4d89@linaro.org>
+ <c3ddf00c-235a-2d23-db60-c998a67a3fcd@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <c3ddf00c-235a-2d23-db60-c998a67a3fcd@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230906_032012_656464_B421359B 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20230906_034827_835159_87029A4C 
+X-CRM114-Status: GOOD (  19.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,27 +88,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/09/2023 12:15, Macpaul Lin wrote:
->>> +
->>> +wifi_3v3: wifi-3v3-regulator {
->>
->> This is a friendly reminder during the review process.
->>
->> It seems my previous comments were not fully addressed. Maybe my
->> feedback got lost between the quotes, maybe you just forgot to apply it.
->> Please go back to the previous discussion and either implement all
->> requested changes or keep discussing them.
+Il 06/09/23 11:53, Macpaul Lin ha scritto:
 > 
 > 
-> This keeps a format with -regulator is because I've found some other use 
-> cases. It seems "-regulator" or "regulator-" could be arbitrary. I'm not 
-> sure if it is a new guideline for regulator's node. If there is in the 
-> devicetree document, maybe I just missed it?
+> On 9/6/23 17:32, Krzysztof Kozlowski wrote:
+>>
+>>
+>> External email : Please do not click links or open attachments until you have 
+>> verified the sender or the content.
+>>
+>> On 06/09/2023 11:25, Macpaul Lin wrote:
+>>> 1. Add compatible for MT8395.
+>>> 2. Add bindings for the MediaTek mt8395-evk board, also known
+>>> as the "Genio 1200-EVK".
+>>>
+>>> The MT8195 and MT8395 belong to the same SoC family,
+>>> with only minor differences in their physical characteristics.
+>>> They utilize unique efuse values for differentiation.
+>>>
+>>> The booting process and configurations are managed by boot
+>>> loaders, firmware, and TF-A. Consequently, the part numbers
+>>> and procurement channels vary.
+>>>
+>>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+>>> ---
+>>>  Documentation/devicetree/bindings/arm/mediatek.yaml | 5 +++++
+>>>  1 file changed, 5 insertions(+)
+>>
+>> Do not attach (thread) your patchsets to some other threads (unrelated
+>> or older versions). This buries them deep in the mailbox and might
+>> interfere with applying entire sets.
+>>
+>>>
+>>> Changes for v2:
+>>>  - add more detail description for mt8395.
+>>>  - add bindings for mt8395, and mt8395-evk.
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml 
+>>> b/Documentation/devicetree/bindings/arm/mediatek.yaml
+>>> index ae12b1cab9fb..d7a20df640d7 100644
+>>> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+>>> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+>>> @@ -248,6 +248,11 @@ properties:
+>>>            - enum:
+>>>                - mediatek,mt8365-evk
+>>>            - const: mediatek,mt8365
+>>> +      - description: MediaTek Genio 1200 Boards (Genio 1200 EVK)
+>>> +        items:
+>>> +          - enum:
+>>> +              - mediatek,mt8395-evk
+>>> +          - const: mediatek,mt8395
+>>
+>>
+>> I don't understand. You said last time this is fully compatible with
+>> mt8195, so why it's not here?
+>>
+> 
+> Yes, mt8395 is fully compatible with mt8195.
+> 
+> But after reading Angelo's comment, we thought it is necessary to create a new 
+> compatible to avoid confusion for users.
+> https://lore.kernel.org/lkml/bf8394c6-5460-8696-f46b-0c39927aaf84@collabora.com/
+> 
+> Although they are fully compatible, developers cannot arbitrarily replace the chip 
+> on the board with another one. So separated bindings might be better.
 
-What is the point to name in the same DTS some of the regulators
-"regulator-foo" and some "foo-regulator"?
+Sorry you've misunderstood; I was trying to explain to Krzysztof that the two
+SoCs are fully compatible... my suggestion was in like with what you're trying to
+do as in I am agreeing with your first version, Macpaul, to inherit MT8195.
 
-Best regards,
-Krzysztof
+So,
+
+- enum
+     - mediatek,mt8395-evk
+- const: mediatek,mt8195
+- const: mediatek,mt8395
+
+> 
+>> Best regards,
+>> Krzysztof
+> 
+> Thanks
+> Macpaul Lin
+
+
 
 
