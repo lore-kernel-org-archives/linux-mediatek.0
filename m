@@ -4,83 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4DAEEB8FA5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 11:33:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC66AEB8FB7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 11:44:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=F4ZnpdubhyYmtydqMWzP1BxA67KulQROyAS5/n5ddvg=; b=29z4XvNWOTFvKdBIKcs5Gwde4T
-	MG421YsIbfr46FKckwaqyoHIZ83BuDSmFH1eGyUP73D5wqt6C6WDACYZ0qj+zmKZOJmK/SQwJrf7L
-	boxDhSkBXPjopRBGAosJrzk59wLgsgM0mBVLXxn/sgGFkQZw9UCUjVKA+k6oI4vwsbVzd9rtzbQt7
-	/dE637sATVa6Ncj0z+64vtl4abJE5iBM3acAeEGljSyDsIkjS6Q6GujfzGZ7FxrZ3IhqIV159EnO2
-	dJ6TOqMndbalBl7EqhSe5dCkscK/hgGEz6DzuKEK5CqR16BoRivqpaxwrCPeTsn0gQ4WOK5bAqjpT
-	EdCPc+Pw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pEqP5bXMZ7MwoDeABLVWtRbyr0rZfLpPa48ycC7J/Mk=; b=pDZgWUIY4E+Y2W+pzdqYB1m28d
+	6PDMER3b/MZ0MaLJoUPRGT8F0lSFA4NWuXCCAjUD0F3+XWG/FEpq61Dq0trEmRtD72xJnN+EpUBzp
+	dC+H0oM/IdJNsxCkirgcFNxOMcQBbxaKdJNZWOErJzNzqgKniGpwBafnKkoFPxLYfCG5ydo8XOw4A
+	zyhGByeXkjPj3cE8t+BCkIGjnpL0Urlwc//7vnzmOLK/USfaBwI7+Nu43g9iBaS12iC7b6UfLVfrb
+	4nKe8AwX5ftDHtRTlmvvuLd/EagwFOedA2YlcwpdBU3CayHxZKT/5tjQPiPpdx0PxmGEsEPV0GZHV
+	Drt3LJAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdqmd-008oAs-12;
-	Wed, 06 Sep 2023 11:33:19 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1qdqxc-008w2o-1L;
+	Wed, 06 Sep 2023 11:44:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdqmV-008o23-1h
-	for linux-mediatek@lists.infradead.org;
-	Wed, 06 Sep 2023 11:33:17 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-52bcd4db4c0so1822461a12.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 06 Sep 2023 04:33:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1693999989; x=1694604789; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=F4ZnpdubhyYmtydqMWzP1BxA67KulQROyAS5/n5ddvg=;
-        b=WZItfgKKW0UW0hIU+65zUdIRqRJSKfhFym7DtMQCIZTOCIGuuCtUdPKKeKwn9tuSo+
-         0ozyUG7qvfkeZ7yVDg3fCLoR9alB4SzUPo28OCvmXIT0MUNYT5+yVGcbjWAh75vc3RW0
-         KMIikbo2drKDiSMeXwWnSVWrbIeEiPIPFzKLbukN/r9AHNUjYNm/+Bi/mEgXas1+1XTF
-         NozQWc7jNC5wWSpeNuPofcUQ2RxueYPTomM41lNEj4HSV4n0xwDek6lGxzYUVErBK+kZ
-         61zsg0L1SHFmVlDB1VjjHL3cVMLxM4lLCDKLPDVcQsRpoEJFsvf81IPINh2gquYDLOef
-         cvIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693999989; x=1694604789;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=F4ZnpdubhyYmtydqMWzP1BxA67KulQROyAS5/n5ddvg=;
-        b=XRq3xLRvL+I3K63MngCNc8/Zx8SQ3Bh4GSB0AbFkLhTVpQxqaoGo56IGI0Nwyl9ZNK
-         dT9uIIqit/Kkg6Fd5Oc1cmVzFgty+e/1xIbEq/e/kglz8hoQRIYrq+6F405Q203E5i6p
-         QkBAs6Ceez+KePx5MGiG8YPTwGtR3UGTdQethptCSpO2UTsE5x26nJI1lxCml1WV09oy
-         86jPxVV0XDEw8h4DBWo9/AliU+ER1C5lqhlaHihirAGuRbbZ5nw47gjA4e39Cwi2f1zm
-         PsDR+JAc2PL/b2hcVjk8M9Wu1l2RyuHvriIOq6UpA1BHJtHnscz183NTYRHwUS7oI0oY
-         9Ycw==
-X-Gm-Message-State: AOJu0Yw7Vuht2uS4tA5d7wlXUquv48fX2bnMR2QRrS008/L1PczOW5nz
-	q3arhJoW00IkWmCgEmzl4YCY4Q==
-X-Google-Smtp-Source: AGHT+IHendEcILigzm+13T6wKgoeOTOCi5Gg0KhlfTRaErItptfzN10sryNjfJSw8Ig2bTdARTW8Fg==
-X-Received: by 2002:aa7:d351:0:b0:523:c36e:ec8b with SMTP id m17-20020aa7d351000000b00523c36eec8bmr2531498edr.9.1693999988721;
-        Wed, 06 Sep 2023 04:33:08 -0700 (PDT)
-Received: from krzk-bin.. (77-252-46-238.static.ip.netia.com.pl. [77.252.46.238])
-        by smtp.gmail.com with ESMTPSA id m6-20020a056402050600b0052a404e5929sm8157907edv.66.2023.09.06.04.33.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Sep 2023 04:33:08 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Stanley Chu <stanley.chu@mediatek.com>,
-	"James E.J. Bottomley" <jejb@linux.ibm.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-scsi@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH] scsi: ufs: do not look for unsupported vdd-hba-max-microamp
-Date: Wed,  6 Sep 2023 13:33:02 +0200
-Message-Id: <20230906113302.201888-1-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
+	id 1qdqxZ-008vxt-1G;
+	Wed, 06 Sep 2023 11:44:38 +0000
+X-UUID: bded44384caa11ee86758d4a7c00f3a0-20230906
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=pEqP5bXMZ7MwoDeABLVWtRbyr0rZfLpPa48ycC7J/Mk=;
+	b=FDED0UlkfuKP+MYIqC2SMhiGqNmn0nLPd1VDCVWOMUjDodaaQ7JjMuzhoAY0+DevFSQVtLsKGqBASwgkn5xsuI+ESvKHzE/YqKdceIN9ITFxKwi2AIm0bYlsYIOKjA2UinBnI05u6i5OTZY/qKJ0AvJKvW+U6Mj9MW6QkQwqIoU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:a293f95f-e48b-4576-aa0c-2b5c0b296587,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:0ad78a4,CLOUDID:fcc262ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: bded44384caa11ee86758d4a7c00f3a0-20230906
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 621025241; Wed, 06 Sep 2023 04:44:30 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 6 Sep 2023 19:44:28 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 6 Sep 2023 19:44:27 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Macpaul Lin
+	<macpaul.lin@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>,
+	=?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>, Sean Wang
+	<sean.wang@mediatek.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>
+Subject: [PATCH v3 1/2] dt-bindings: arm64: dts: mediatek: add mt8395-evk board
+Date: Wed, 6 Sep 2023 19:44:24 +0800
+Message-ID: <20230906114425.31187-1-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230906_043311_679799_2F9C2701 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20230906_044437_440911_40C07089 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,94 +90,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Bindings do not allow vdd-hba-max-microamp property and the driver does
-not use it (does not control load of vdd-hba supply).  Skip looking for
-this property to avoid misleading dmesg messages:
+1. Add compatible for MT8395.
+2. Add bindings for the MediaTek mt8395-evk board, also known
+as the "Genio 1200-EVK".
 
-  ufshcd-qcom 1d84000.ufs: ufshcd_populate_vreg: unable to find vdd-hba-max-microamp
+The MT8195 and MT8395 belong to the same SoC family,
+with only minor differences in their physical characteristics.
+They utilize unique efuse values for differentiation.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+The booting process and configurations are managed by boot
+loaders, firmware, and TF-A. Consequently, the part numbers
+and procurement channels vary.
+
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 ---
- drivers/ufs/host/ufs-mediatek.c  |  2 +-
- drivers/ufs/host/ufshcd-pltfrm.c | 15 ++++++++++-----
- drivers/ufs/host/ufshcd-pltfrm.h |  2 +-
- 3 files changed, 12 insertions(+), 7 deletions(-)
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 2383ecd88f1c..941f58744d08 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -806,7 +806,7 @@ static int ufs_mtk_vreg_fix_vcc(struct ufs_hba *hba)
- 		return 0;
- 	}
- 
--	err = ufshcd_populate_vreg(dev, vcc_name, &info->vcc);
-+	err = ufshcd_populate_vreg(dev, vcc_name, &info->vcc, false);
- 	if (err)
- 		return err;
- 
-diff --git a/drivers/ufs/host/ufshcd-pltfrm.c b/drivers/ufs/host/ufshcd-pltfrm.c
-index 797a4dfe45d9..61cf8b957da4 100644
---- a/drivers/ufs/host/ufshcd-pltfrm.c
-+++ b/drivers/ufs/host/ufshcd-pltfrm.c
-@@ -121,7 +121,7 @@ static bool phandle_exists(const struct device_node *np,
- 
- #define MAX_PROP_SIZE 32
- int ufshcd_populate_vreg(struct device *dev, const char *name,
--			 struct ufs_vreg **out_vreg)
-+			 struct ufs_vreg **out_vreg, bool skip_current)
- {
- 	char prop_name[MAX_PROP_SIZE];
- 	struct ufs_vreg *vreg = NULL;
-@@ -147,6 +147,11 @@ int ufshcd_populate_vreg(struct device *dev, const char *name,
- 	if (!vreg->name)
- 		return -ENOMEM;
- 
-+	if (skip_current) {
-+		vreg->max_uA = 0;
-+		goto out;
-+	}
-+
- 	snprintf(prop_name, MAX_PROP_SIZE, "%s-max-microamp", name);
- 	if (of_property_read_u32(np, prop_name, &vreg->max_uA)) {
- 		dev_info(dev, "%s: unable to find %s\n", __func__, prop_name);
-@@ -175,19 +180,19 @@ static int ufshcd_parse_regulator_info(struct ufs_hba *hba)
- 	struct device *dev = hba->dev;
- 	struct ufs_vreg_info *info = &hba->vreg_info;
- 
--	err = ufshcd_populate_vreg(dev, "vdd-hba", &info->vdd_hba);
-+	err = ufshcd_populate_vreg(dev, "vdd-hba", &info->vdd_hba, true);
- 	if (err)
- 		goto out;
- 
--	err = ufshcd_populate_vreg(dev, "vcc", &info->vcc);
-+	err = ufshcd_populate_vreg(dev, "vcc", &info->vcc, false);
- 	if (err)
- 		goto out;
- 
--	err = ufshcd_populate_vreg(dev, "vccq", &info->vccq);
-+	err = ufshcd_populate_vreg(dev, "vccq", &info->vccq, false);
- 	if (err)
- 		goto out;
- 
--	err = ufshcd_populate_vreg(dev, "vccq2", &info->vccq2);
-+	err = ufshcd_populate_vreg(dev, "vccq2", &info->vccq2, false);
- out:
- 	return err;
- }
-diff --git a/drivers/ufs/host/ufshcd-pltfrm.h b/drivers/ufs/host/ufshcd-pltfrm.h
-index 2df108f4ac13..a86a3ada4bef 100644
---- a/drivers/ufs/host/ufshcd-pltfrm.h
-+++ b/drivers/ufs/host/ufshcd-pltfrm.h
-@@ -32,6 +32,6 @@ void ufshcd_init_pwr_dev_param(struct ufs_dev_params *dev_param);
- int ufshcd_pltfrm_init(struct platform_device *pdev,
- 		       const struct ufs_hba_variant_ops *vops);
- int ufshcd_populate_vreg(struct device *dev, const char *name,
--			 struct ufs_vreg **out_vreg);
-+			 struct ufs_vreg **out_vreg, bool skip_current);
- 
- #endif /* UFSHCD_PLTFRM_H_ */
+Changes for v2:
+ - add more detail description for mt8395.
+ - add bindings for mt8395, and mt8395-evk.
+
+Changes for v3:
+ - add back bindings for mt8195 compatible.
+
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index ae12b1cab9fb..4e79c46cd9e2 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -248,6 +248,12 @@ properties:
+           - enum:
+               - mediatek,mt8365-evk
+           - const: mediatek,mt8365
++      - description: MediaTek Genio 1200 Boards (Genio 1200 EVK)
++        items:
++          - enum:
++              - mediatek,mt8395-evk
++          - const: mediatek,mt8395
++          - const: mediatek,mt8195
+       - items:
+           - enum:
+               - mediatek,mt8516-pumpkin
 -- 
-2.34.1
+2.18.0
 
 
