@@ -4,94 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39531EB8FB4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 09:34:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1A39EB8FB4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 09:35:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FFD2tKig988p+nyLWDkmgUfiyTgw/5tkGCahsn8FoGo=; b=bxaMGtNjLASspLgfx2nj7eWfaQ
-	2ueEti67Ie+/XOOIaO+GSpalb+MDCmCNr4GqhFIAW30eEceV9NuG4s48SPTnJCJpnAxxdieUOBjwy
-	0ujbqyJaWBNPhtjjwTj02RjQt2DSJuP8OrPPJxHVHYX3x9qiDYRTcaGqLSVYSaPKnTRvGRJiNZMoq
-	EfGSOKyoAItUrITwzjfkzpdFze2IDQQoV2KCZkS7LnIC5wyDSnZH8maStGFKsJR3h1nDijGXpJ1Vt
-	ewcbqMwxqWnpFzgvdR9pIu/6N0aNkPGsJylzmahusiyT0WWf9gaOLuIO2MVBJAWpI97bMBVAXwqqv
-	w7CeKJ7A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W8qs4Sc1Apj3xZ6D8+IDKkSs9z4i46l7Fo2S7xzGFGk=; b=btztNAOF/RqsMHfiOH8RyxI/aO
+	B/fR4aK21OLk+FmXd+VfEYXhJduI21WBTMKzruigbLTuWDkrIsNuebBE5Wsgmy7+Q1gwaUzxmXVaR
+	3zPv5vEb5Up5NJId6Eb6IzwyF4Q62Y668IONIwZkxVUh72Qc+A8DlwRPurVSDyYiq99HJc1mm4+Vl
+	8e5uPCjpupwokXXg0oSvvvo9g12vPSlBuPJOkdItboj4pf94VfmfzOza3/1soBCe+NyQLM09gG1AZ
+	2XXDZMID01lG54IK8OYKqdW3nCUO8scSZ4Iu3UxHuwtJrDo5XmKucSHDpp0ZSDtn4gAcgvESOH/OL
+	oIwpEdOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdovd-007wX3-2X;
-	Wed, 06 Sep 2023 09:34:29 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1qdowY-007wnS-2J;
+	Wed, 06 Sep 2023 09:35:26 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdova-007wV8-2i
-	for linux-mediatek@lists.infradead.org;
-	Wed, 06 Sep 2023 09:34:28 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-52c9be5e6f0so4600562a12.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 06 Sep 2023 02:34:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1693992864; x=1694597664; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=FFD2tKig988p+nyLWDkmgUfiyTgw/5tkGCahsn8FoGo=;
-        b=BtY68YbYKlVtN5KG7Ml9yzfyvGvq2QQ50YziZ49xhuOgDpPjBDWovj4EsUcVUQF+5k
-         qM1r/hzUiAAabmCgb0i+rjxtYmZ/7wcgS0WAulW3jjLOZgNwhkJZ0xn5n4h4O9uiND/g
-         hET9+XOcoJQKtGsfNTFu7monxV6A9DgDz6P+R4UKJ4XT1CpA6N9xqa4e8Zy9bmBurnp+
-         ck/8t5XghSrIuahEGBIlG6VkYaEOmgyMXaM5WDoekEIyeSlkXJj9FgQxnmdgrfYTlQnM
-         BqxY2PO3pO+5Ip4DVNF4NA9k1c5inpkDCzNeXOsu5vQEzn51fuN3bPkZL5roS0PHEKzY
-         nXTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693992864; x=1694597664;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=FFD2tKig988p+nyLWDkmgUfiyTgw/5tkGCahsn8FoGo=;
-        b=Vz8idbL0sTkQH4Awul7WlAylVq3tFvSNGLX0Gi3/sogRV7r0b//Up9YCLaLaxbK7TV
-         SHIHfXRDrM0WRGmYV0/bxJHFQyj+Pv3wdAapglNQIDRcSr000kdbgI4eMoef0eMM7u3S
-         bQs78wPBlG+YLRMyHu67cF1SyiadD9JEcHuH1pBk8FY83OC0TtrDp7I/gEebQdJt9oin
-         btTorCo1V5fPkhPBroU036vuckVb1FxtsdcuU1jFmj2X/ZKBXbNqrWb3bgQ1WL0dE4hc
-         BI8aCQxJ6nslyZ9H3h+Cf8YyEB/P1/iTHHItM5Ll/UvpjfZ4bflT8NuGHv8XzLG9uZdk
-         E96A==
-X-Gm-Message-State: AOJu0Yw5DFUmMYWDkcLY0ym9sb/8FBT6qfCm/qRM2lah+/sXSM4dNu5/
-	Wlxkts1J76HVIsews8WA+gz5lA==
-X-Google-Smtp-Source: AGHT+IH6q0YbahWp/ZkV/kLa2NyEia2qzHpTs1IMS+0oSP9G5r5jyvzt5JtP17ezqw/WAp681nsONw==
-X-Received: by 2002:a17:906:3017:b0:9a1:e1cf:6c6c with SMTP id 23-20020a170906301700b009a1e1cf6c6cmr1874832ejz.30.1693992864037;
-        Wed, 06 Sep 2023 02:34:24 -0700 (PDT)
-Received: from [192.168.0.22] (77-252-46-238.static.ip.netia.com.pl. [77.252.46.238])
-        by smtp.gmail.com with ESMTPSA id a6-20020a170906244600b0099cce6f7d50sm8872914ejb.64.2023.09.06.02.34.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 06 Sep 2023 02:34:23 -0700 (PDT)
-Message-ID: <2cb8069a-976b-0af4-a427-1e63ba4e7870@linaro.org>
-Date: Wed, 6 Sep 2023 11:34:22 +0200
+	id 1qdowV-007wki-01;
+	Wed, 06 Sep 2023 09:35:24 +0000
+Received: from pendragon.ideasonboard.com (ftip006315900.acc1.colindale.21cn-nte.bt.net [81.134.214.249])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8A714E45;
+	Wed,  6 Sep 2023 11:33:51 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1693992831;
+	bh=H4jLGHq4HFIPCWPR70vaeuMwMZnYsK+8uQ82mVTVoE0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=d1rk4qVrXBYjLglqF8U1UCEaMcZuzqxuVlEkZ313xpRI+sYsCITcSIi/SC2AYwI8C
+	 JLpEGnZbJVurkcgs1iBG+PBn1b/IRCahK8vEmzAR5hCz2u5PykIGk0c8rPhLFVl/R5
+	 9rn8dwPvosh0MOmoojOVUcpYj7xSdSiOQEo3WJks=
+Date: Wed, 6 Sep 2023 12:35:31 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 3/3] arm64: dts: mediatek: mt8365-pumpkin: Add overlays
+ for thp7312 cameras
+Message-ID: <20230906093531.GO7971@pendragon.ideasonboard.com>
+References: <20230905233118.183140-1-paul.elder@ideasonboard.com>
+ <20230905233118.183140-4-paul.elder@ideasonboard.com>
+ <502fc7b1-a32d-6901-3a45-d2aa0e0c3849@linaro.org>
+ <20230906083237.GL7971@pendragon.ideasonboard.com>
+ <a3ed9856-a87b-5cf6-26b5-ff2b19234a8a@linaro.org>
+ <20230906090058.GB17308@pendragon.ideasonboard.com>
+ <59e07c6a-6f1b-0cc7-dddc-96d2a4050843@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: add device-tree for Genio
- 1200 EVK board
-Content-Language: en-US
-To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>, Ben Lok <ben.lok@mediatek.com>
-References: <20230904092043.5157-1-macpaul.lin@mediatek.com>
- <20230906092527.18281-1-macpaul.lin@mediatek.com>
- <20230906092527.18281-2-macpaul.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230906092527.18281-2-macpaul.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <59e07c6a-6f1b-0cc7-dddc-96d2a4050843@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230906_023426_878626_70F4BCF4 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20230906_023523_211244_D5161992 
+X-CRM114-Status: GOOD (  46.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,67 +78,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/09/2023 11:25, Macpaul Lin wrote:
-> +	edp_panel_fixed_12v: regulator-1 {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "edp_backlight_12v";
-> +		regulator-min-microvolt = <12000000>;
-> +		regulator-max-microvolt = <12000000>;
-> +		enable-active-high;
-> +		gpio = <&pio 96 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&edp_panel_12v_en_pins>;
-> +	};
-> +
-> +	backlight_lcd0: backlight-lcd0 {
-> +		compatible = "pwm-backlight";
-> +		pwms = <&disp_pwm0 0 500000>;
-> +		enable-gpios = <&pio 47 GPIO_ACTIVE_HIGH>;
-> +		brightness-levels = <0 1023>;
-> +		num-interpolated-steps = <1023>;
-> +		default-brightness-level = <576>;
-> +	};
-> +
-> +	backlight_lcd1: backlight-lcd1 {
-> +		compatible = "pwm-backlight";
-> +		pwms = <&disp_pwm1 0 500000>;
-> +		enable-gpios = <&pio 46 GPIO_ACTIVE_HIGH>;
-> +		brightness-levels = <0 1023>;
-> +		num-interpolated-steps = <1023>;
-> +		default-brightness-level = <576>;
-> +	};
-> +
-> +	keys: gpio-keys {
-> +		compatible = "gpio-keys";
-> +
-> +		button-volume-up {
-> +			wakeup-source;
-> +			debounce-interval = <100>;
-> +			gpios = <&pio 106 GPIO_ACTIVE_LOW>;
-> +			label = "volume_up";
-> +			linux,code = <KEY_VOLUMEUP>;
-> +		};
-> +	};
-> +
-> +	can_clk: can-clk {
-> +		compatible = "fixed-clock";
-> +		#clock-cells = <0>;
-> +		clock-frequency = <20000000>;
-> +		clock-output-names = "can-clk";
-> +	};
-> +
-> +	wifi_3v3: wifi-3v3-regulator {
+On Wed, Sep 06, 2023 at 11:21:31AM +0200, Krzysztof Kozlowski wrote:
+> On 06/09/2023 11:00, Laurent Pinchart wrote:
+> >>> has a regulator@0. There are similar instances for clocks.
+> >>>
+> >>> I understand why it may not be a good idea, and how the root node is
+> >>> indeed not a bus. In some cases, those regulators and clocks are grouped
+> >>> in a regulators or clocks node that has a "simple-bus" compatible. I'm
+> >>> not sure if that's a good idea, but at least it should validate.
+> >>>
+> >>> What's the best practice for discrete board-level clocks and regulators
+> >>> in overlays ? How do we ensure that their node name will not conflict
+> >>> with the board to which the overlay is attached ?
+> >>
+> >> Top-level nodes (so under /) do not have unit addresses. If they have -
+> >> it's an error, because it is not a bus. Also, unit address requires reg.
+> >> No reg? No unit address. DTC reports this as warnings as well.
+> > 
+> > I agree with all that, but what's the recommended practice to add
+> > top-level clocks and regulators in overlays, in a way that avoids
+> > namespace clashes with the base board ?
+> 
+> Whether you use regulator@0 or regulator-0, you have the same chances of
+> clash.
 
-This is a friendly reminder during the review process.
+No disagreement there. My question is whether there's a recommended
+practice to avoid clashes, or if it's an unsolved problem that gets
+ignored for now because there's only 36h in a day and there are more
+urgent things to do.
 
-It seems my previous comments were not fully addressed. Maybe my
-feedback got lost between the quotes, maybe you just forgot to apply it.
-Please go back to the previous discussion and either implement all
-requested changes or keep discussing them.
+> >>>>> +		orientation = <0>;
+> >>>>> +		rotation = <0>;
+> >>>>> +
+> >>>>> +		thine,rx,data-lanes = <4 1 3 2>;
+> >>>>
+> >>>> NAK for this property.
+> >>>
+> >>> Please explain why. You commented very briefly in the bindings review,
+> >>> and it wasn't clear to me if you were happy or not with the property,
+> >>> and if not, why.
+> >>
+> >> Because it is duplicating endpoint. At least from the description.
+> > 
+> > The THP7312 is an external ISP. At the hardware level, it has an input
+> > side, with a CSI-2 receiver and an I2C master controller, and an output
+> > side, with a CSI-2 transmitter and an I2C slave controller. A raw camera
+> > sensor is connected on the input side, transmitting image data to the
+> > THP7312, and being controlled over I2C by the firmware running on the
+> > THP7312. From a Linux point of view, only the output side of the THP7312
+> > is visible, and the combination of the raw camera sensor and the THP7312
+> > acts as a smart camera sensor, producing YUV images.
+> 
+> None of this was explained in the device description or property field.
 
-Thank you.
+I agree this can be improved. Paul, can you expand the description to
+make it clearer in the next version ?
 
-Best regards,
-Krzysztof
+> I probably judged to fast but it just looked like duplicated property.
+> Then shouldn't it have two ports, even if camera side is not visible for
+> the Linux?
 
+I'm in two minds about this. On one hand, using ports means we can reuse
+standard properties, as well as helper code in the kernel, which is
+nice. On the other hand, it means we would also need to add a DT node
+to model the sensor, but the sensor isn't exposed to Linux, so we don't
+want that node to cause a device being instantiated.
+
+I think we'll need to add more properties related to the camera sensor
+in the future. Coupled with the fact that the THP7312 actually has two
+inputs to support two sensors at the same time (which neither the
+bindings nor the driver curently support, but that's fine, they can be
+added later), it would be nice to group all properties related to a
+particular THP7312 input in a node. I've given this a try for the AP1302
+(another external ISP) a while ago. The bindings have been posted in
+https://lore.kernel.org/linux-media/20211006113254.3470-2-anil.mamidala@xilinx.com/.
+It still doesn't connect the sensors to the ISP in DT, but it nicely
+groups all sensor-related properties together. Is this something that
+you would be happier with ?
+
+> > As there are two CSI-2 buses, the data lanes configuration needs to be
+> > specified for both sides. On the output side, connected to the SoC and
+> > visible to Linux, the bindings use a port node with an endpoint and the
+> > standard data-lanes property. On the input side, which is invisible to
+> > Linux, the bindings use the vendor-specific thine,rx,data-lanes
+> > property. Its semantics is identical to the standard data-lanes
+> > property, but it's not located in an endpoint as there's no port for the
+> > input side.
+> 
+> And how does the property support multiple sensors? What if they data
+> lanes are also different between each other?
+
+Ignoring for a moment that the THP7312 has two inputs, there would be no
+problem I think, as only one sensor is connected to the input. Different
+sensor models can be used on different boards, but only one at a time.
+
+To support the second input, we could add a thine,rx2,data-lanes
+property. It's not great, but not that bad either if it stopped there.
+However, if we later have to add additional sensor-related properties
+(such as regulators for instance), it could become ugly. Grouping
+sensor-related properties in child sensor nodes would be nicer I
+believe.
+
+-- 
+Regards,
+
+Laurent Pinchart
 
