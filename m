@@ -4,66 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1A39EB8FB4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 09:35:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2806EB8FAD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 09:45:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W8qs4Sc1Apj3xZ6D8+IDKkSs9z4i46l7Fo2S7xzGFGk=; b=btztNAOF/RqsMHfiOH8RyxI/aO
-	B/fR4aK21OLk+FmXd+VfEYXhJduI21WBTMKzruigbLTuWDkrIsNuebBE5Wsgmy7+Q1gwaUzxmXVaR
-	3zPv5vEb5Up5NJId6Eb6IzwyF4Q62Y668IONIwZkxVUh72Qc+A8DlwRPurVSDyYiq99HJc1mm4+Vl
-	8e5uPCjpupwokXXg0oSvvvo9g12vPSlBuPJOkdItboj4pf94VfmfzOza3/1soBCe+NyQLM09gG1AZ
-	2XXDZMID01lG54IK8OYKqdW3nCUO8scSZ4Iu3UxHuwtJrDo5XmKucSHDpp0ZSDtn4gAcgvESOH/OL
-	oIwpEdOQ==;
+	bh=erywlbgbx2VivDRdZnbfpPDMmWm4YSo2QYIu710IgjI=; b=kt51dafoRk2USObnuqY3Odw809
+	3xVS5pk+x4iRvbbaOiiUmtYlvsiYffoC8NjwS9mWshTWSPwbTCyzf43qpVHlTyepEGAKzhf33E/rh
+	qqUuQBhccHETyWSvrm05ouHE184uR5zQ/wgUqHJ6knJRX5GjIejtdH79cTD69qpEu/nqR3Wn6gn0Z
+	b6MxekfG8Qw3VIwWCLuAaVsGd+KEzBLgwLFdDnamZJ1wIWEAw/TWr6MXtg8PfS3W7Do4byREKbKuA
+	zOaGYByeuFgyodhp6JearzbFztfXnppQI3PpuZiiuCa1xWzYVMXrUdYdD3lCrw0+urWqZIINiee/b
+	z0Hxiwdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdowY-007wnS-2J;
-	Wed, 06 Sep 2023 09:35:26 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1qdp6d-007zQq-1O;
+	Wed, 06 Sep 2023 09:45:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdowV-007wki-01;
-	Wed, 06 Sep 2023 09:35:24 +0000
-Received: from pendragon.ideasonboard.com (ftip006315900.acc1.colindale.21cn-nte.bt.net [81.134.214.249])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8A714E45;
-	Wed,  6 Sep 2023 11:33:51 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1693992831;
-	bh=H4jLGHq4HFIPCWPR70vaeuMwMZnYsK+8uQ82mVTVoE0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=d1rk4qVrXBYjLglqF8U1UCEaMcZuzqxuVlEkZ313xpRI+sYsCITcSIi/SC2AYwI8C
-	 JLpEGnZbJVurkcgs1iBG+PBn1b/IRCahK8vEmzAR5hCz2u5PykIGk0c8rPhLFVl/R5
-	 9rn8dwPvosh0MOmoojOVUcpYj7xSdSiOQEo3WJks=
-Date: Wed, 6 Sep 2023 12:35:31 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 3/3] arm64: dts: mediatek: mt8365-pumpkin: Add overlays
- for thp7312 cameras
-Message-ID: <20230906093531.GO7971@pendragon.ideasonboard.com>
-References: <20230905233118.183140-1-paul.elder@ideasonboard.com>
- <20230905233118.183140-4-paul.elder@ideasonboard.com>
- <502fc7b1-a32d-6901-3a45-d2aa0e0c3849@linaro.org>
- <20230906083237.GL7971@pendragon.ideasonboard.com>
- <a3ed9856-a87b-5cf6-26b5-ff2b19234a8a@linaro.org>
- <20230906090058.GB17308@pendragon.ideasonboard.com>
- <59e07c6a-6f1b-0cc7-dddc-96d2a4050843@linaro.org>
+	id 1qdp6X-007zLz-0I;
+	Wed, 06 Sep 2023 09:45:47 +0000
+X-UUID: 20d8d5504c9a11ee86758d4a7c00f3a0-20230906
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=erywlbgbx2VivDRdZnbfpPDMmWm4YSo2QYIu710IgjI=;
+	b=TAjLa5gJVN/joaUNU54I2dSbQwnC0gUNguLS1J65M2LbZQ0RdLpDxGlJXQfHYJEk6sSWkIF4+YjojCPdl+t6bTDLiQtKVEAivas7pE/va2h0xgA0dnnyB6i/JelYdjLC09iNzfoJ61QxUVgdBDOFkWiR1UmIyJfCZfqXG32okTI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:c5235b7d-5ae7-4533-b769-65188155ce5a,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:0ad78a4,CLOUDID:cb8461ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 20d8d5504c9a11ee86758d4a7c00f3a0-20230906
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 966195357; Wed, 06 Sep 2023 02:45:35 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 6 Sep 2023 17:25:31 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 6 Sep 2023 17:25:31 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Macpaul Lin
+	<macpaul.lin@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>,
+	=?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?= <bero@baylibre.com>, Sean Wang
+	<sean.wang@mediatek.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, Ben Lok <ben.lok@mediatek.com>
+Subject: [PATCH v2 2/2] arm64: dts: mediatek: add device-tree for Genio 1200 EVK board
+Date: Wed, 6 Sep 2023 17:25:27 +0800
+Message-ID: <20230906092527.18281-2-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230906092527.18281-1-macpaul.lin@mediatek.com>
+References: <20230904092043.5157-1-macpaul.lin@mediatek.com>
+ <20230906092527.18281-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <59e07c6a-6f1b-0cc7-dddc-96d2a4050843@linaro.org>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230906_023523_211244_D5161992 
-X-CRM114-Status: GOOD (  46.37  )
+X-CRM114-CacheID: sfid-20230906_024545_146597_A36993A0 
+X-CRM114-Status: GOOD (  19.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,109 +93,979 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 06, 2023 at 11:21:31AM +0200, Krzysztof Kozlowski wrote:
-> On 06/09/2023 11:00, Laurent Pinchart wrote:
-> >>> has a regulator@0. There are similar instances for clocks.
-> >>>
-> >>> I understand why it may not be a good idea, and how the root node is
-> >>> indeed not a bus. In some cases, those regulators and clocks are grouped
-> >>> in a regulators or clocks node that has a "simple-bus" compatible. I'm
-> >>> not sure if that's a good idea, but at least it should validate.
-> >>>
-> >>> What's the best practice for discrete board-level clocks and regulators
-> >>> in overlays ? How do we ensure that their node name will not conflict
-> >>> with the board to which the overlay is attached ?
-> >>
-> >> Top-level nodes (so under /) do not have unit addresses. If they have -
-> >> it's an error, because it is not a bus. Also, unit address requires reg.
-> >> No reg? No unit address. DTC reports this as warnings as well.
-> > 
-> > I agree with all that, but what's the recommended practice to add
-> > top-level clocks and regulators in overlays, in a way that avoids
-> > namespace clashes with the base board ?
-> 
-> Whether you use regulator@0 or regulator-0, you have the same chances of
-> clash.
+Add basic device-tree for the Genio 1200 EVK board. The
+Demo board is made by MediaTek and has a MT8395 SoC (MT8195 family),
+associated with the MT6359 and MT6360 PMICs, and
+the MT7921 connectivity chip.
 
-No disagreement there. My question is whether there's a recommended
-practice to avoid clashes, or if it's an unsolved problem that gets
-ignored for now because there's only 36h in a day and there are more
-urgent things to do.
+The IOs available on that board are:
+* 1 USB Type-C connector with DP aux mode support
+* 2 USB Type-A connector with a USB hub
+* 1 micro-USB port for gadget or OTG support
+* 1 full size HDMI RX and 1 full size HDMI TX connector
+* 1 micro SD slot
+* 40 pins header
+* SPI interface header
+* 1 M.2 slot
+* 1 audio jack
+* 1 micro-USB port for serial debug
+* 2 connectors for DSI displays, 1 of the DSI panel is installed
+* 3 connectors for CSI cameras
+* 1 connector for a eDP panel
+* 1 MMC storage
+* 1 Touch Panel (installed DSI display)
+* 1 M.2 slot for 5G dongle
 
-> >>>>> +		orientation = <0>;
-> >>>>> +		rotation = <0>;
-> >>>>> +
-> >>>>> +		thine,rx,data-lanes = <4 1 3 2>;
-> >>>>
-> >>>> NAK for this property.
-> >>>
-> >>> Please explain why. You commented very briefly in the bindings review,
-> >>> and it wasn't clear to me if you were happy or not with the property,
-> >>> and if not, why.
-> >>
-> >> Because it is duplicating endpoint. At least from the description.
-> > 
-> > The THP7312 is an external ISP. At the hardware level, it has an input
-> > side, with a CSI-2 receiver and an I2C master controller, and an output
-> > side, with a CSI-2 transmitter and an I2C slave controller. A raw camera
-> > sensor is connected on the input side, transmitting image data to the
-> > THP7312, and being controlled over I2C by the firmware running on the
-> > THP7312. From a Linux point of view, only the output side of the THP7312
-> > is visible, and the combination of the raw camera sensor and the THP7312
-> > acts as a smart camera sensor, producing YUV images.
-> 
-> None of this was explained in the device description or property field.
+This commit adds basic support in order to be able to boot.
 
-I agree this can be improved. Paul, can you expand the description to
-make it clearer in the next version ?
+Signed-off-by: Ben Lok <ben.lok@mediatek.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+ .../boot/dts/mediatek/genio-1200-evk.dts      | 915 ++++++++++++++++++
+ 2 files changed, 916 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/genio-1200-evk.dts
 
-> I probably judged to fast but it just looked like duplicated property.
-> Then shouldn't it have two ports, even if camera side is not visible for
-> the Linux?
+Changes for v2:
+ - correct SOC binding to "mediatek,mt8395".
+ - Fix a Linux coding style comments for optee node.
+ - Fix wifi fixed 3.3v power's name as "wifi-3v3-regulator".
+ - Fix node name of mt6360 and mt6517 to generic dts name as "pmic".
+ - Remove unecessary blank line.
+ - Reording usb node as the order of "phy" then "host".
 
-I'm in two minds about this. On one hand, using ports means we can reuse
-standard properties, as well as helper code in the kernel, which is
-nice. On the other hand, it means we would also need to add a DT node
-to model the sensor, but the sensor isn't exposed to Linux, so we don't
-want that node to cause a device being instantiated.
-
-I think we'll need to add more properties related to the camera sensor
-in the future. Coupled with the fact that the THP7312 actually has two
-inputs to support two sensors at the same time (which neither the
-bindings nor the driver curently support, but that's fine, they can be
-added later), it would be nice to group all properties related to a
-particular THP7312 input in a node. I've given this a try for the AP1302
-(another external ISP) a while ago. The bindings have been posted in
-https://lore.kernel.org/linux-media/20211006113254.3470-2-anil.mamidala@xilinx.com/.
-It still doesn't connect the sensors to the ISP in DT, but it nicely
-groups all sensor-related properties together. Is this something that
-you would be happier with ?
-
-> > As there are two CSI-2 buses, the data lanes configuration needs to be
-> > specified for both sides. On the output side, connected to the SoC and
-> > visible to Linux, the bindings use a port node with an endpoint and the
-> > standard data-lanes property. On the input side, which is invisible to
-> > Linux, the bindings use the vendor-specific thine,rx,data-lanes
-> > property. Its semantics is identical to the standard data-lanes
-> > property, but it's not located in an endpoint as there's no port for the
-> > input side.
-> 
-> And how does the property support multiple sensors? What if they data
-> lanes are also different between each other?
-
-Ignoring for a moment that the THP7312 has two inputs, there would be no
-problem I think, as only one sensor is connected to the input. Different
-sensor models can be used on different boards, but only one at a time.
-
-To support the second input, we could add a thine,rx2,data-lanes
-property. It's not great, but not that bad either if it stopped there.
-However, if we later have to add additional sensor-related properties
-(such as regulators for instance), it could become ugly. Grouping
-sensor-related properties in child sensor nodes would be nicer I
-believe.
-
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index c99c3372a4b5..5bf29581f08b 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -1,4 +1,5 @@
+ # SPDX-License-Identifier: GPL-2.0
++dtb-$(CONFIG_ARCH_MEDIATEK) += genio-1200-evk.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6779-evb.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/genio-1200-evk.dts
+new file mode 100644
+index 000000000000..65f61a2a5613
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/genio-1200-evk.dts
+@@ -0,0 +1,915 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright (C) 2023 MediaTek Inc.
++ * Author: Ben Lok <ben.lok@mediatek.com>
++ *	   Macpaul Lin <macpaul.lin@mediatek.com>
++ */
++/dts-v1/;
++
++#include "mt8195.dtsi"
++#include "mt6359.dtsi"
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/input/input.h>
++#include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/pinctrl/mt8195-pinfunc.h>
++#include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
++#include <dt-bindings/spmi/spmi.h>
++#include <dt-bindings/usb/pd.h>
++
++/ {
++	model = "MediaTek Genio 1200 EVK-P1V2-EMMC";
++	compatible = "mediatek,mt8395-evk", "mediatek,mt8395";
++
++	aliases {
++		serial0 = &uart0;
++		ethernet0 = &eth;
++	};
++
++	chosen {
++		stdout-path = "serial0:921600n8";
++	};
++
++	firmware {
++		optee {
++			compatible = "linaro,optee-tz";
++			method = "smc";
++		};
++	};
++
++	memory@40000000 {
++		device_type = "memory";
++		reg = <0 0x40000000 0x2 0x00000000>;
++	};
++
++	reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++
++		/*
++		 * 12 MiB reserved for OP-TEE (BL32)
++		 * +-----------------------+ 0x43e0_0000
++		 * |      SHMEM 2MiB       |
++		 * +-----------------------+ 0x43c0_0000
++		 * |        | TA_RAM  8MiB |
++		 * + TZDRAM +--------------+ 0x4340_0000
++		 * |        | TEE_RAM 2MiB |
++		 * +-----------------------+ 0x4320_0000
++		 */
++		optee_reserved: optee@43200000 {
++			no-map;
++			reg = <0 0x43200000 0 0x00c00000>;
++		};
++
++		scp_mem: memory@50000000 {
++			compatible = "shared-dma-pool";
++			reg = <0 0x50000000 0 0x2900000>;
++			no-map;
++		};
++
++		vpu_mem: memory@53000000 {
++			compatible = "shared-dma-pool";
++			reg = <0 0x53000000 0 0x1400000>; /* 20 MB */
++		};
++
++		/* 2 MiB reserved for ARM Trusted Firmware (BL31) */
++		bl31_secmon_mem: memory@54600000 {
++			no-map;
++			reg = <0 0x54600000 0x0 0x200000>;
++		};
++
++		snd_dma_mem: memory@60000000 {
++			compatible = "shared-dma-pool";
++			reg = <0 0x60000000 0 0x1100000>;
++			no-map;
++		};
++
++		apu_mem: memory@62000000 {
++			compatible = "shared-dma-pool";
++			reg = <0 0x62000000 0 0x1400000>; /* 20 MB */
++		};
++	};
++
++	edp_panel_fixed_3v3: regulator-0 {
++		compatible = "regulator-fixed";
++		regulator-name = "edp_panel_3v3";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		enable-active-high;
++		gpio = <&pio 6 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&edp_panel_3v3_en_pins>;
++	};
++
++	edp_panel_fixed_12v: regulator-1 {
++		compatible = "regulator-fixed";
++		regulator-name = "edp_backlight_12v";
++		regulator-min-microvolt = <12000000>;
++		regulator-max-microvolt = <12000000>;
++		enable-active-high;
++		gpio = <&pio 96 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&edp_panel_12v_en_pins>;
++	};
++
++	backlight_lcd0: backlight-lcd0 {
++		compatible = "pwm-backlight";
++		pwms = <&disp_pwm0 0 500000>;
++		enable-gpios = <&pio 47 GPIO_ACTIVE_HIGH>;
++		brightness-levels = <0 1023>;
++		num-interpolated-steps = <1023>;
++		default-brightness-level = <576>;
++	};
++
++	backlight_lcd1: backlight-lcd1 {
++		compatible = "pwm-backlight";
++		pwms = <&disp_pwm1 0 500000>;
++		enable-gpios = <&pio 46 GPIO_ACTIVE_HIGH>;
++		brightness-levels = <0 1023>;
++		num-interpolated-steps = <1023>;
++		default-brightness-level = <576>;
++	};
++
++	keys: gpio-keys {
++		compatible = "gpio-keys";
++
++		button-volume-up {
++			wakeup-source;
++			debounce-interval = <100>;
++			gpios = <&pio 106 GPIO_ACTIVE_LOW>;
++			label = "volume_up";
++			linux,code = <KEY_VOLUMEUP>;
++		};
++	};
++
++	can_clk: can-clk {
++		compatible = "fixed-clock";
++		#clock-cells = <0>;
++		clock-frequency = <20000000>;
++		clock-output-names = "can-clk";
++	};
++
++	wifi_3v3: wifi-3v3-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "wifi_3v3";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		gpio = <&pio 135 GPIO_ACTIVE_HIGH>;
++		enable-active-high;
++		regulator-always-on;
++	};
++};
++
++&eth {
++	phy-mode ="rgmii-rxid";
++	phy-handle = <&eth_phy0>;
++	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
++	snps,reset-delays-us = <0 10000 10000>;
++	mediatek,tx-delay-ps = <2030>;
++	mediatek,mac-wol;
++	pinctrl-names = "default", "sleep";
++	pinctrl-0 = <&eth_default_pins>;
++	pinctrl-1 = <&eth_sleep_pins>;
++	status = "okay";
++
++	mdio {
++		compatible = "snps,dwmac-mdio";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		eth_phy0: eth-phy0@1 {
++			compatible = "ethernet-phy-id001c.c916";
++			reg = <0x1>;
++		};
++	};
++};
++
++&uart0 {
++	pinctrl-0 = <&uart0_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
++&uart1 {
++	pinctrl-0 = <&uart1_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
++&scp {
++	status = "okay";
++};
++
++&mmc0 {
++	status = "okay";
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc0_default_pins>;
++	pinctrl-1 = <&mmc0_uhs_pins>;
++	bus-width = <8>;
++	max-frequency = <200000000>;
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	mmc-hs400-1_8v;
++	cap-mmc-hw-reset;
++	no-sdio;
++	no-sd;
++	hs400-ds-delay = <0x14c11>;
++	vmmc-supply = <&mt6359_vemc_1_ldo_reg>;
++	vqmmc-supply = <&mt6359_vufs_ldo_reg>;
++	non-removable;
++};
++
++&mmc1 {
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc1_default_pins>;
++	pinctrl-1 = <&mmc1_uhs_pins>;
++	bus-width = <4>;
++	max-frequency = <200000000>;
++	cap-sd-highspeed;
++	sd-uhs-sdr50;
++	sd-uhs-sdr104;
++	no-mmc;
++	no-sdio;
++	vmmc-supply = <&mt6360_ldo5>;
++	vqmmc-supply = <&mt6360_ldo3>;
++	status = "okay";
++	non-removable;
++};
++
++
++&ufsphy {
++	status = "disabled";
++};
++
++&pmic {
++	interrupt-parent = <&pio>;
++	interrupts = <222 IRQ_TYPE_LEVEL_HIGH>;
++};
++
++&scp {
++	memory-region = <&scp_mem>;
++	status = "okay";
++};
++
++&i2c0 {
++	clock-frequency = <400000>;
++	pinctrl-0 = <&i2c0_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
++&i2c1 {
++	clock-frequency = <400000>;
++	pinctrl-0 = <&i2c1_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++
++	touchscreen@5d {
++		compatible = "goodix,gt9271";
++		reg = <0x5d>;
++		interrupt-parent = <&pio>;
++		interrupts = <132 IRQ_TYPE_EDGE_RISING>;
++		irq-gpios = <&pio 132 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&pio 133 GPIO_ACTIVE_HIGH>;
++		AVDD28-supply = <&mt6360_ldo1>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&touch_pins>;
++	};
++};
++
++&i2c2 {
++	clock-frequency = <400000>;
++	pinctrl-0 = <&i2c2_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
++&i2c6 {
++	clock-frequency = <400000>;
++	pinctrl-0 = <&i2c6_pins>;
++	pinctrl-names = "default";
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	mt6360: pmic@34 {
++		compatible = "mediatek,mt6360";
++		reg = <0x34>;
++		interrupts = <128 IRQ_TYPE_EDGE_FALLING>;
++		interrupt-names = "IRQB";
++		interrupt-controller;
++		#interrupt-cells = <1>;
++		pinctrl-0 = <&mt6360_pins>;
++
++		charger {
++			compatible = "mediatek,mt6360-chg";
++			richtek,vinovp-microvolt = <14500000>;
++
++			otg_vbus_regulator: usb-otg-vbus-regulator {
++				regulator-name = "usb-otg-vbus";
++				regulator-min-microvolt = <4425000>;
++				regulator-max-microvolt = <5825000>;
++			};
++		};
++
++		regulator {
++			compatible = "mediatek,mt6360-regulator";
++			LDO_VIN3-supply = <&mt6360_buck2>;
++
++			mt6360_buck1: buck1 {
++				regulator-name = "emi_vdd2";
++				regulator-min-microvolt = <300000>;
++				regulator-max-microvolt = <1300000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP
++							   MT6360_OPMODE_ULP>;
++				regulator-always-on;
++			};
++
++			mt6360_buck2: buck2 {
++				regulator-name = "emi_vddq";
++				regulator-min-microvolt = <300000>;
++				regulator-max-microvolt = <1300000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP
++							   MT6360_OPMODE_ULP>;
++				regulator-always-on;
++			};
++
++			mt6360_ldo1: ldo1 {
++				regulator-name = "tp1_p3v0";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++				regulator-always-on;
++			};
++
++			mt6360_ldo2: ldo2 {
++				regulator-name = "panel1_p1v8";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++
++			mt6360_ldo3: ldo3 {
++				regulator-name = "vmc_pmu";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++
++			mt6360_ldo5: ldo5 {
++				regulator-name = "vmch_pmu";
++				regulator-min-microvolt = <2700000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++
++			/* This is a measure point, which name is mt6360_ldo1 on schematic */
++			mt6360_ldo6: ldo6 {
++				regulator-name = "mt6360_ldo1";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <2100000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++
++			mt6360_ldo7: ldo7 {
++				regulator-name = "emi_vmddr_en";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <2100000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++				regulator-always-on;
++			};
++		};
++	};
++};
++
++&spi1 {
++	pinctrl-0 = <&spi1_pins>;
++	pinctrl-names = "default";
++	mediatek,pad-select = <0>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++	cs-gpios = <&pio 64 GPIO_ACTIVE_LOW>;
++
++	can0: can@0 {
++		compatible = "microchip,mcp2518fd";
++		reg = <0>;
++		clocks = <&can_clk>;
++		spi-max-frequency = <20000000>;
++		interrupts-extended = <&pio 16 IRQ_TYPE_LEVEL_LOW>;
++		vdd-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
++		xceiver-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
++	};
++};
++
++&spi2 {
++	pinctrl-0 = <&spi2_pins>;
++	pinctrl-names = "default";
++	mediatek,pad-select = <0>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++};
++
++&u3phy0 {
++	status = "okay";
++};
++
++&u3phy1 {
++	status = "okay";
++};
++
++&u3phy2 {
++	status = "okay";
++};
++
++&u3phy3 {
++	status = "okay";
++};
++
++&xhci0 {
++	status = "okay";
++};
++
++&xhci1 {
++	vusb33-supply = <&mt6359_vusb_ldo_reg>;
++	status = "okay";
++};
++
++&xhci2 {
++	vusb33-supply = <&mt6359_vusb_ldo_reg>;
++	status = "okay";
++};
++
++&xhci3 {
++	vusb33-supply = <&mt6359_vusb_ldo_reg>;
++	status = "okay";
++};
++
++&disp_pwm0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pwm0_default_pins>;
++	status = "okay";
++};
++
++
++&pio {
++	mmc0_default_pins: mmc0-default-pins {
++		pins-clk {
++			pinmux = <PINMUX_GPIO122__FUNC_MSDC0_CLK>;
++			drive-strength = <MTK_DRIVE_6mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
++				 <PINMUX_GPIO125__FUNC_MSDC0_DAT1>,
++				 <PINMUX_GPIO124__FUNC_MSDC0_DAT2>,
++				 <PINMUX_GPIO123__FUNC_MSDC0_DAT3>,
++				 <PINMUX_GPIO119__FUNC_MSDC0_DAT4>,
++				 <PINMUX_GPIO118__FUNC_MSDC0_DAT5>,
++				 <PINMUX_GPIO117__FUNC_MSDC0_DAT6>,
++				 <PINMUX_GPIO116__FUNC_MSDC0_DAT7>,
++				 <PINMUX_GPIO121__FUNC_MSDC0_CMD>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_6mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++
++		pins-rst {
++			pinmux = <PINMUX_GPIO120__FUNC_MSDC0_RSTB>;
++			drive-strength = <MTK_DRIVE_6mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++	};
++
++	mmc0_uhs_pins: mmc0-uhs-pins {
++		pins-clk {
++			pinmux = <PINMUX_GPIO122__FUNC_MSDC0_CLK>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
++				 <PINMUX_GPIO125__FUNC_MSDC0_DAT1>,
++				 <PINMUX_GPIO124__FUNC_MSDC0_DAT2>,
++				 <PINMUX_GPIO123__FUNC_MSDC0_DAT3>,
++				 <PINMUX_GPIO119__FUNC_MSDC0_DAT4>,
++				 <PINMUX_GPIO118__FUNC_MSDC0_DAT5>,
++				 <PINMUX_GPIO117__FUNC_MSDC0_DAT6>,
++				 <PINMUX_GPIO116__FUNC_MSDC0_DAT7>,
++				 <PINMUX_GPIO121__FUNC_MSDC0_CMD>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++
++		pins-ds {
++			pinmux = <PINMUX_GPIO127__FUNC_MSDC0_DSL>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins-rst {
++			pinmux = <PINMUX_GPIO120__FUNC_MSDC0_RSTB>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++	};
++
++	mmc1_default_pins: mmc1-default-pins {
++		pins-clk {
++			pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
++				 <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
++				 <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
++				 <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
++				 <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++	};
++
++	mmc1_uhs_pins: mmc1-uhs-pins {
++		pins-clk {
++			pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
++				 <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
++				 <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
++				 <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
++				 <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++	};
++
++	pwm0_default_pins: pwm0-default-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO97__FUNC_DISP_PWM0>;
++		};
++	};
++
++	audio_default_pins: audio-default-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO69__FUNC_AUD_CLK_MOSI>,
++				 <PINMUX_GPIO70__FUNC_AUD_SYNC_MOSI>,
++				 <PINMUX_GPIO71__FUNC_AUD_DAT_MOSI0>,
++				 <PINMUX_GPIO72__FUNC_AUD_DAT_MOSI1>,
++				 <PINMUX_GPIO73__FUNC_AUD_DAT_MISO0>,
++				 <PINMUX_GPIO74__FUNC_AUD_DAT_MISO1>,
++				 <PINMUX_GPIO75__FUNC_AUD_DAT_MISO2>,
++				 <PINMUX_GPIO61__FUNC_DMIC1_CLK>,
++				 <PINMUX_GPIO62__FUNC_DMIC1_DAT>,
++				 <PINMUX_GPIO65__FUNC_PCM_DO>,
++				 <PINMUX_GPIO66__FUNC_PCM_CLK>,
++				 <PINMUX_GPIO67__FUNC_PCM_DI>,
++				 <PINMUX_GPIO68__FUNC_PCM_SYNC>;
++		};
++	};
++
++	i2c0_pins: i2c0-pins {
++		pins {
++			pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
++				 <PINMUX_GPIO9__FUNC_SCL0>;
++			bias-pull-up = <MTK_PULL_SET_RSEL_111>;
++			drive-strength-microamp = <1000>;
++		};
++	};
++
++	i2c1_pins: i2c1-pins {
++		pins {
++			pinmux = <PINMUX_GPIO10__FUNC_SDA1>,
++				 <PINMUX_GPIO11__FUNC_SCL1>;
++			bias-pull-up = <MTK_PULL_SET_RSEL_111>;
++			drive-strength-microamp = <1000>;
++		};
++	};
++
++	i2c2_pins: i2c2-pins {
++		pins {
++			pinmux = <PINMUX_GPIO12__FUNC_SDA2>,
++				 <PINMUX_GPIO13__FUNC_SCL2>;
++			bias-pull-up = <MTK_PULL_SET_RSEL_111>;
++			drive-strength = <MTK_DRIVE_6mA>;
++		};
++	};
++
++	i2c6_pins: i2c6-pins {
++		pins {
++			pinmux = <PINMUX_GPIO25__FUNC_SDA6>,
++				 <PINMUX_GPIO26__FUNC_SCL6>;
++			bias-pull-up;
++		};
++	};
++
++	uart0_pins: uart0-pins {
++		pins {
++			pinmux = <PINMUX_GPIO98__FUNC_UTXD0>,
++				 <PINMUX_GPIO99__FUNC_URXD0>;
++		};
++	};
++
++	uart1_pins: uart1-pins {
++		pins {
++			pinmux = <PINMUX_GPIO102__FUNC_UTXD1>,
++				 <PINMUX_GPIO103__FUNC_URXD1>,
++				 <PINMUX_GPIO100__FUNC_URTS1>,
++				 <PINMUX_GPIO101__FUNC_UCTS1>;
++		};
++	};
++
++	spi1_pins: spi1-pins {
++		pins {
++			pinmux = <PINMUX_GPIO136__FUNC_SPIM1_CSB>,
++				 <PINMUX_GPIO137__FUNC_SPIM1_CLK>,
++				 <PINMUX_GPIO138__FUNC_SPIM1_MO>,
++				 <PINMUX_GPIO139__FUNC_SPIM1_MI>;
++			bias-disable;
++		};
++	};
++
++	spi2_pins: spi-pins {
++		pins {
++			pinmux = <PINMUX_GPIO140__FUNC_SPIM2_CSB>,
++				 <PINMUX_GPIO141__FUNC_SPIM2_CLK>,
++				 <PINMUX_GPIO142__FUNC_SPIM2_MO>,
++				 <PINMUX_GPIO143__FUNC_SPIM2_MI>;
++			bias-disable;
++		};
++	};
++
++	eth_default_pins: eth-default-pins {
++		pins-txd {
++			pinmux = <PINMUX_GPIO77__FUNC_GBE_TXD3>,
++				 <PINMUX_GPIO78__FUNC_GBE_TXD2>,
++				 <PINMUX_GPIO79__FUNC_GBE_TXD1>,
++				 <PINMUX_GPIO80__FUNC_GBE_TXD0>;
++			drive-strength = <MTK_DRIVE_8mA>;
++		};
++
++		pins-cc {
++			pinmux = <PINMUX_GPIO85__FUNC_GBE_TXC>,
++				 <PINMUX_GPIO88__FUNC_GBE_TXEN>,
++				 <PINMUX_GPIO87__FUNC_GBE_RXDV>,
++				 <PINMUX_GPIO86__FUNC_GBE_RXC>;
++			drive-strength = <MTK_DRIVE_8mA>;
++		};
++
++		pins-rxd {
++			pinmux = <PINMUX_GPIO81__FUNC_GBE_RXD3>,
++				 <PINMUX_GPIO82__FUNC_GBE_RXD2>,
++				 <PINMUX_GPIO83__FUNC_GBE_RXD1>,
++				 <PINMUX_GPIO84__FUNC_GBE_RXD0>;
++		};
++
++		pins-mdio {
++			pinmux = <PINMUX_GPIO89__FUNC_GBE_MDC>,
++				 <PINMUX_GPIO90__FUNC_GBE_MDIO>;
++			input-enable;
++		};
++
++		pins-power {
++			pinmux = <PINMUX_GPIO91__FUNC_GPIO91>,
++				 <PINMUX_GPIO92__FUNC_GPIO92>;
++			output-high;
++		};
++	};
++
++	eth_sleep_pins: eth-sleep-pins {
++		pins-txd {
++			pinmux = <PINMUX_GPIO77__FUNC_GPIO77>,
++				 <PINMUX_GPIO78__FUNC_GPIO78>,
++				 <PINMUX_GPIO79__FUNC_GPIO79>,
++				 <PINMUX_GPIO80__FUNC_GPIO80>;
++		};
++
++		pins-cc {
++			pinmux = <PINMUX_GPIO85__FUNC_GPIO85>,
++				 <PINMUX_GPIO88__FUNC_GPIO88>,
++				 <PINMUX_GPIO87__FUNC_GPIO87>,
++				 <PINMUX_GPIO86__FUNC_GPIO86>;
++		};
++
++		pins-rxd {
++			pinmux = <PINMUX_GPIO81__FUNC_GPIO81>,
++				 <PINMUX_GPIO82__FUNC_GPIO82>,
++				 <PINMUX_GPIO83__FUNC_GPIO83>,
++				 <PINMUX_GPIO84__FUNC_GPIO84>;
++		};
++
++		pins-mdio {
++			pinmux = <PINMUX_GPIO89__FUNC_GPIO89>,
++				 <PINMUX_GPIO90__FUNC_GPIO90>;
++			input-disable;
++			bias-disable;
++		};
++	};
++
++	pcie0_default_pins: pcie0-default-pins {
++		pins {
++			pinmux = <PINMUX_GPIO19__FUNC_WAKEN>,
++				 <PINMUX_GPIO20__FUNC_PERSTN>,
++				 <PINMUX_GPIO21__FUNC_CLKREQN>;
++			bias-pull-up;
++		};
++	};
++
++	pcie0_idle_pins: pcie0-idle-pins {
++		pins {
++			pinmux = <PINMUX_GPIO20__FUNC_GPIO20>;
++			bias-disable;
++			output-low;
++		};
++	};
++
++	pcie1_default_pins: pcie1-default-pins {
++		pins {
++			pinmux = <PINMUX_GPIO22__FUNC_PERSTN_1>,
++				 <PINMUX_GPIO23__FUNC_CLKREQN_1>,
++				 <PINMUX_GPIO24__FUNC_WAKEN_1>;
++			bias-pull-up;
++		};
++	};
++
++	edp_panel_12v_en_pins: edp-panel-12v-en-pins {
++		pins1 {
++			pinmux = <PINMUX_GPIO96__FUNC_GPIO96>;
++			output-high;
++		};
++	};
++
++	edp_panel_3v3_en_pins: edp-panel-3v3-en-pins {
++		pins1 {
++			pinmux = <PINMUX_GPIO6__FUNC_GPIO6>;
++			output-high;
++		};
++	};
++
++	disp_pwm1_default_pins: disp-pwm1-default-pins {
++		pins1 {
++			pinmux = <PINMUX_GPIO104__FUNC_DISP_PWM1>;
++		};
++	};
++
++	gpio_key_pins: gpio-keys-pins {
++		pins {
++			pinmux = <PINMUX_GPIO106__FUNC_GPIO106>;
++			bias-pull-up;
++			input-enable;
++		};
++	};
++
++	mt6360_pins: mt6360-pins {
++		pins {
++			pinmux = <PINMUX_GPIO17__FUNC_GPIO17>,
++				 <PINMUX_GPIO128__FUNC_GPIO128>;
++			input-enable;
++			bias-pull-up;
++		};
++	};
++
++	touch_pins: touch-pins {
++		pins-irq {
++			pinmux = <PINMUX_GPIO132__FUNC_GPIO132>;
++			input-enable;
++			bias-disable;
++		};
++
++		pins-reset {
++			pinmux = <PINMUX_GPIO133__FUNC_GPIO133>;
++			output-high;
++		};
++	};
++};
++
++&mt6359_vgpu11_buck_reg {
++	regulator-always-on;
++};
++
++&mt6359_vpu_buck_reg {
++	regulator-always-on;
++};
++
++&mt6359_vcore_buck_reg {
++	regulator-always-on;
++};
++
++&mt6359_vbbck_ldo_reg {
++	regulator-always-on;
++};
++
++&mt6359_vaud18_ldo_reg {
++	regulator-always-on;
++};
++
++&mt6359_vrf12_ldo_reg {
++	regulator-always-on;
++};
++
++&mt6359_vcn33_2_bt_ldo_reg {
++	regulator-min-microvolt = <3300000>;
++	regulator-max-microvolt = <3300000>;
++};
++
++/* DEBUG: to remove */
++&mt6359_vibr_ldo_reg {
++	regulator-always-on;
++};
++
++/* For USB Hub */
++&mt6359_vcamio_ldo_reg {
++	regulator-always-on;
++};
++
++&spmi {
++	#address-cells = <2>;
++	#size-cells = <0>;
++
++	mt6315_6: pmic@6 {
++		compatible = "mediatek,mt6315-regulator";
++		reg = <0x6 SPMI_USID>;
++
++		regulators {
++			mt6315_6_vbuck1: vbuck1 {
++				regulator-compatible = "vbuck1";
++				regulator-name = "Vbcpu";
++				regulator-min-microvolt = <300000>;
++				regulator-max-microvolt = <1193750>;
++				regulator-enable-ramp-delay = <256>;
++				regulator-allowed-modes = <0 1 2>;
++				regulator-always-on;
++			};
++		};
++	};
++
++	mt6315_7: pmic@7 {
++		compatible = "mediatek,mt6315-regulator";
++		reg = <0x7 SPMI_USID>;
++
++		regulators {
++			mt6315_7_vbuck1: vbuck1 {
++				regulator-compatible = "vbuck1";
++				regulator-name = "Vgpu";
++				regulator-min-microvolt = <300000>;
++				regulator-max-microvolt = <1193750>;
++				regulator-enable-ramp-delay = <256>;
++				regulator-allowed-modes = <0 1 2>;
++			};
++		};
++	};
++};
++
++&dmic_codec {
++	wakeup-delay-ms = <200>;
++};
++
++&mt6359codec {
++	mediatek,mic-type-0 = <1>; /* ACC */
++	mediatek,mic-type-1 = <3>; /* DCC */
++	mediatek,mic-type-2 = <1>; /* ACC */
++};
++
++&mfg0 {
++	domain-supply = <&mt6315_7_vbuck1>;
++};
++
++&pcie0 {
++	pinctrl-names = "default", "idle";
++	pinctrl-0 = <&pcie0_default_pins>;
++	pinctrl-1 = <&pcie0_idle_pins>;
++	status = "okay";
++};
++
++&pcie1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie1_default_pins>;
++	status = "disabled";
++};
++
++&u3phy1 {
++	status = "okay";
++};
++
++&pciephy {
++	status = "okay";
++};
 -- 
-Regards,
+2.18.0
 
-Laurent Pinchart
 
