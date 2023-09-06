@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 972D3EB8FA5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 09:22:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A931EB8FAD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 09:22:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fn+jXRrDrAEw7CfX+G9Zj1hLr/gSQRyi9u7mHipUA4E=; b=OfLv//3EdDEPCgVf5Ddnt3LcO+
-	6e61A373404d578H3NZz7JPqdYwx0urv24jbUGyXBYx7dhHEPb4OULLwYbGhMbwZd2sKgzAsz1yn3
-	2gQRyCmw3ySU4GI+hHd6FRMsPLTGJfzIgiX/zxEoC1xPULZozc8OcqxlhwZwrk6GWR45RDORqm6WF
-	aPcFgQlLZIWMel6iMslIZK8IJPOBTW9k8TqIfbEkg+wl9O8C/tCsZlDDzox5pwVGZf6ZxpzFYJAFZ
-	bSiybrG2+L6iJwj251FTe+nwV7r0tOeMVTNpGCfxf9g3n5WkHViGpnJqtyw87FbMvp5QBFdpmntCQ
-	COh67NUw==;
+	bh=4lxgSeotXhtluM5Y7Gic0yIlmVnTTGRsI6a6z+f7glM=; b=Tqs9HbHJqR4VYxG70KpdnkzTcQ
+	/B4Ddl+z7K4/M9RKktDUAeRWEswoIVigERISSVNspvG6UYLD0tamCK1P36ZzPX1BVudRMSqeuw9MS
+	ySvMIytgj9SvjB4Gmq1yzRqPBooihBOuo6iCs1zwU5CzrIvjcBaPJHq8RP/i0c2FW0WuNiaYlFZ/l
+	N+EO9jc+MjcHeBDE43wxXnEMc+psE50emGRsRt5uzq0ix7Vk8M7nGjk3Pxg2K7LjSkUznhaCcr3FJ
+	M/8TRvkPO5RiwwclO0WTt6sI2SXHetIsTjrNh65a/ZCD68PN2kplFo1HDGUr/lsmtWOvx5R5k4Hdt
+	oVuq8jAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdojx-007tlI-1o;
-	Wed, 06 Sep 2023 09:22:25 +0000
+	id 1qdok7-007tqm-10;
+	Wed, 06 Sep 2023 09:22:35 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdoju-007tjj-34;
-	Wed, 06 Sep 2023 09:22:23 +0000
+	id 1qdok5-007tpi-2C;
+	Wed, 06 Sep 2023 09:22:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=Fn+jXRrDrAEw7CfX+G9Zj1hLr/gSQRyi9u7mHipUA4E=; b=WB6AK/MwWCyQGYEDavMnE0Lgbx
-	q9F9FJdmkWBqCBroRzq6Iso4oCb1KwoCTFtCZv4qOcC+ztJEQfrSBmnYPZgS7LK56SLS78HheHWjF
-	OTxs2HViWJQ0kO1GePftt94+RofPsSTLdXkgWmpFKy3kNZfUdZtmr/vwyEowAsmMKP+yV4EIXssnq
-	lf49TVsteVkQ7FSW24gPAmcmDB7NbU+Um3HqslD+cbcVd3EezvGU5CXYx7Q3gJHGfaPQrE2qtfFKF
-	OM0c1ZiZxnWvSncnVAzSTuBKoFps9RCJseIbPriPwDAd9nOnn9N5088eoT+zmJwjtsBV3Ew9XGh8o
-	jsPM0N5Q==;
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
+	bh=4lxgSeotXhtluM5Y7Gic0yIlmVnTTGRsI6a6z+f7glM=; b=TlKThJehuHSlsqG40bs4lNVUxo
+	50xVLae8rd7HpiSBYOls7+ARuFLsXGv9IZSkVM4U8dxXpAKAnLdYnCzXkVrKrfYVvqTDXao4shmNL
+	w3SQkSgUq7xUjIX6Lw7RmWIVq9QHtAsXdVY+BWbqeH3WCn4wtniCTy7Z/yAdwBDrN+9gha/4cYpDL
+	z2RETUCqaXN4mFRGtVBaK8quW2hqT5f+rbvaZYj86jrAMNWBuTgQGnje0pEs0tWbfpQ6DANlcP8vC
+	+jNyjWt2RQVhy/7mQw64mRU74kxzdPjFGqTRF2Zkq3Mnii8J9Xqdz2TfcygtHDN20GYpybbzzI2I6
+	+DfYcvtQ==;
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
 	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdojm-0010l7-2Z;
-	Wed, 06 Sep 2023 09:22:21 +0000
-Received: by mail-pj1-x1042.google.com with SMTP id 98e67ed59e1d1-2736e602429so723430a91.0;
-        Wed, 06 Sep 2023 02:22:12 -0700 (PDT)
+	id 1qdok0-0010lh-0O;
+	Wed, 06 Sep 2023 09:22:32 +0000
+Received: by mail-io1-xd44.google.com with SMTP id ca18e2360f4ac-797ea09af91so4940239f.1;
+        Wed, 06 Sep 2023 02:22:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1693992131; x=1694596931; darn=lists.infradead.org;
+        d=gmail.com; s=20221208; t=1693992147; x=1694596947; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Fn+jXRrDrAEw7CfX+G9Zj1hLr/gSQRyi9u7mHipUA4E=;
-        b=CQVhO2ffxhfQPoWlY6vvOA/pEz3sX1l2I4gIahWPJSnAuzhS6LbJ3owpBpoUbUx2d4
-         DyMDsM9a8Um25PrpJyYE6Nq2C2Xs6KZeb6cWXx8RRIP9ggbYvpz9V1CWGszk/YOEmTt1
-         +GTpm/OqTDJaLWbPWIoAMzy0jzoWLWYYJt8zXWFUF2VmfxuEtcQ9W3F++u3IX/8jCz4W
-         dGLp5Mt/m2PE6f4CaF92vAk46BUaCONwQEQdxcZ7BkdxJE8dU3yGHQJvyHQnDwWTMB+E
-         EfNRzRANJdMBxdcqAzEBemfIWwWlQqBUqv4Kc6CSrnmIBECjxCSMHUMsPrGNFFTX58+h
-         Z+kw==
+        bh=4lxgSeotXhtluM5Y7Gic0yIlmVnTTGRsI6a6z+f7glM=;
+        b=c/6CU5CkqGhGV/y7trn+/q1p0Zz4i+lVVT9Tuik0u3d7gIArp5TWh753Ae0V1KVium
+         +vJpFLGcxV4sVFas+orsKjqcfHR1Z3jnUxxGx9JS0GNahIHA4wEE9KPJ9KC1IDhwpHPT
+         /wn/L0MAh7sF+D9+9eZNMGyIQEvYNQ3mFLalFVX+M654fifW/eTs02h6XK8TU+TsCCtz
+         sonr/wi9Dgs4OUMzei7yvAc04YQBAx8zVjPEsxlCCEWoTwprpRaKzwMoOa55K1wAfEgz
+         TDYZ6T/B9yDaH/KN8dEarDLoAbMZTLb5oGq8IrNaWE4QurKTo0yU/naoH2iEcXm4Y/sO
+         FMmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693992131; x=1694596931;
+        d=1e100.net; s=20221208; t=1693992147; x=1694596947;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Fn+jXRrDrAEw7CfX+G9Zj1hLr/gSQRyi9u7mHipUA4E=;
-        b=iubRjrX1OpWFOvNHTQkrqJj4F4rOC0daJ2zTK4pqySNbaxqED6JS37CHPRChk5lq6z
-         uaXossIDik/YLH2UPGKVGVWyXHCDlPPM+RkBpfP/bo6BeWQ4NIBCYUfOo5XnwvIZTwU0
-         UYpPkvY3ZXiwMK9C1Wf3av47Ywdc/LofknubQkEEf6wCvIXFLmHQi0r7jo2+iP8CoNNs
-         rxnBQF7xL0XeCJ8jhhqBPYO+4Q4fgZO8lTqBsgQEvUD/RGkhEyKnTokH/EaM9HK0peAI
-         Ga7pREejpFhFAtSiCFqqwTiyT3QnpN4s5crbN977GI4XF04TI9CV1tNjS2rN8Lk9/R1t
-         gRZw==
-X-Gm-Message-State: AOJu0YyB/q9tRZnTJ94s5I1BF5OM24luQNMyjalFE0+fHxBN493kxraG
-	lYL+vB3+o5YZUElNZRJVt3I=
-X-Google-Smtp-Source: AGHT+IFOd5uWXjG5sRVrnc1uN2B+x7New4jEPSE8eT/hxhjfSvF95rsX2Pmpq4DVWgFU4xsFEmIoJA==
-X-Received: by 2002:a17:90a:4dc7:b0:263:2312:60c2 with SMTP id r7-20020a17090a4dc700b00263231260c2mr13836784pjl.3.1693992130736;
-        Wed, 06 Sep 2023 02:22:10 -0700 (PDT)
+        bh=4lxgSeotXhtluM5Y7Gic0yIlmVnTTGRsI6a6z+f7glM=;
+        b=CAb2yyQLJIN2o5BESUfdlwovG4PsVs+UA4JUaxbPNmO0vYk6yM2VOqjyYEMZNh5gnd
+         pNLaBlYi20YhmcyZ66GtTAF0/nCEvsCvvCLteeOFTFRfMjgYVfVhxxI9C21fNcIaXBYg
+         gKj1vHmj4ILyLFdVZ9W14eQsUlKQiiac+yMPAs7Hyl1KaT59KiwT3NP/d4qk5LYCMNo0
+         5JAhFOPQ4o4Gfdgqgfz2c0pYcO50p8u6CN9PTcRmGZQIsMzH5GaitQNv4JNxfgRP8hJ6
+         Sjijy62C4gDMR1Vbw382t3Ervxz39hvSAFdeQni8+QPS+HyGMRxCfeaCmtumjBN7CTGy
+         X9vw==
+X-Gm-Message-State: AOJu0YznqsnJKIITl0ls1qjeXcRPVcQhaJf5FS+rnuFmVr9jVJt8dMJl
+	+TIFOloyfubVB5qktvy1LT8=
+X-Google-Smtp-Source: AGHT+IHgtjBcMfcAVv0cvr5pcx0KRu57NHijg05g6vWK0eh4cHfhCe88XtFsAw8hxKpJW3dkgMFv5g==
+X-Received: by 2002:a05:6e02:216c:b0:34f:3b12:799e with SMTP id s12-20020a056e02216c00b0034f3b12799emr284714ilv.0.1693992147534;
+        Wed, 06 Sep 2023 02:22:27 -0700 (PDT)
 Received: from hbh25y.mshome.net ([103.114.158.1])
-        by smtp.gmail.com with ESMTPSA id ft15-20020a17090b0f8f00b002684b837d88sm10679242pjb.14.2023.09.06.02.22.03
+        by smtp.gmail.com with ESMTPSA id ft15-20020a17090b0f8f00b002684b837d88sm10679242pjb.14.2023.09.06.02.22.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Sep 2023 02:22:10 -0700 (PDT)
+        Wed, 06 Sep 2023 02:22:26 -0700 (PDT)
 From: Hangyu Hua <hbh25y@gmail.com>
 To: justin.chen@broadcom.com,
 	florian.fainelli@broadcom.com,
@@ -99,17 +99,17 @@ Cc: bcm-kernel-feedback-list@broadcom.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Hangyu Hua <hbh25y@gmail.com>
-Subject: [PATCH 1/3] net: ethernet: bcmasp: fix possible OOB write in bcmasp_netfilt_get_all_active()
-Date: Wed,  6 Sep 2023 17:21:05 +0800
-Message-Id: <20230906092107.19063-2-hbh25y@gmail.com>
+Subject: [PATCH 3/3] net: ethernet: mtk_eth_soc: fix possible NULL pointer dereference in mtk_hwlro_get_fdir_all()
+Date: Wed,  6 Sep 2023 17:21:07 +0800
+Message-Id: <20230906092107.19063-4-hbh25y@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230906092107.19063-1-hbh25y@gmail.com>
 References: <20230906092107.19063-1-hbh25y@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230906_102218_246128_3C1425CA 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20230906_102229_927477_ACE592B0 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,28 +126,29 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 rule_locs is allocated in ethtool_get_rxnfc and the size is determined by
 rule_cnt from user space. So rule_cnt needs to be check before using
-rule_locs to avoid OOB writing or NULL pointer dereference.
+rule_locs to avoid NULL pointer dereference.
 
-Fixes: c5d511c49587 ("net: bcmasp: Add support for wake on net filters")
+Fixes: 7aab747e5563 ("net: ethernet: mediatek: add ethtool functions to configure RX flows of HW LRO")
 Signed-off-by: Hangyu Hua <hbh25y@gmail.com>
 ---
- drivers/net/ethernet/broadcom/asp2/bcmasp.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/net/ethernet/broadcom/asp2/bcmasp.c b/drivers/net/ethernet/broadcom/asp2/bcmasp.c
-index d63d321f3e7b..4df2ca871af8 100644
---- a/drivers/net/ethernet/broadcom/asp2/bcmasp.c
-+++ b/drivers/net/ethernet/broadcom/asp2/bcmasp.c
-@@ -535,6 +535,9 @@ void bcmasp_netfilt_get_all_active(struct bcmasp_intf *intf, u32 *rule_locs,
- 	int j = 0, i;
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 6ad42e3b488f..d91fc0483c50 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -2994,6 +2994,10 @@ static int mtk_hwlro_get_fdir_all(struct net_device *dev,
+ 	int i;
  
- 	for (i = 0; i < NUM_NET_FILTERS; i++) {
-+		if (j == *rule_cnt)
-+			break;
+ 	for (i = 0; i < MTK_MAX_LRO_IP_CNT; i++) {
++		if (cnt == cmd->rule_cnt) {
++			return -EMSGSIZE;
++		}
 +
- 		if (!priv->net_filters[i].claimed ||
- 		    priv->net_filters[i].port != intf->port)
- 			continue;
+ 		if (mac->hwlro_ip[i]) {
+ 			rule_locs[cnt] = i;
+ 			cnt++;
 -- 
 2.34.1
 
