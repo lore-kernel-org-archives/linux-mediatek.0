@@ -4,70 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D210FEB8FCD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 13:13:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2143CEE14C5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 18:07:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PpG6elLh923Lh88/1GUfZlEm1qbrHKYEDeuEl0q4q38=; b=ScuDdLT2HU0a9v6eVed5+lbrbj
-	OgZrdM4+LRA9Wa69H+qVOH27CBxMoGhI5EMxxLdo+z2Mw1gaZYbQChjPhy6+Utm1KH1TjX2lDj2E6
-	EvpnMlzPQXD/CJCQQH1LDD5EVOkwWhMSrsEzcow8HWOVupSWPwLTjSv+moteESiRt8BdooO2qMaZy
-	GPHAfUPwsCS9S1WBYTJJHFKe0SprJV6BAuzSWjv7Wlo26dEmexsB9W3S0cDMrZ6PtTKZ46WGmEbCy
-	opaxPoXdHtuR1Dwf0RNBZumunQmrtLbnJuskwckjDF6hkYtYXpm0gtb+4I9Z5RJOBhR0OxDWLES0O
-	ssnmw58Q==;
+	bh=LKlxMwUUPTxt5CEqWkiIRwix0QCPHH/Qrv+2DhWCGLc=; b=hrt8aWqtV6sGgOVIWVzE4OXM7v
+	o0FP9Nau7nWtugnCN40RwNRZFdw4UFxNnhwcC4WdP+XhFiRLOWjyhNptfft7LUuAxuI7ZiyR00uqJ
+	u7BOnrTpBKHan8nOjsgazJx4jYrKcNrWcEHCzkF4NNyCZrFNaUJPE04Ci3K2IfJJda4FnjYseGomm
+	J3jr3sM4XIPB6unmJkjqj3ojyqmhKxRRswRZFeui+EVRDV7ZE2mL6aO6U0VVXnZAyZmjx9CHR5grS
+	Z/iQlXNylpknZKaIWJ3/Xly8xylZJY4CERKN2a3qa5nUeZyX0ZCtpu/jfhxkTJGGxUNQbKyf86Yh9
+	gbFz25YQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdsLh-009vI1-11;
-	Wed, 06 Sep 2023 13:13:37 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qdww5-00AgMV-1D;
+	Wed, 06 Sep 2023 18:07:29 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdsLe-009vEO-0z
-	for linux-mediatek@lists.infradead.org;
-	Wed, 06 Sep 2023 13:13:36 +0000
+	id 1qdwvx-00AgL3-27;
+	Wed, 06 Sep 2023 18:07:28 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 7980ACE12CC;
-	Wed,  6 Sep 2023 13:13:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87082C433C7;
-	Wed,  6 Sep 2023 13:13:29 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0ECCD60FEB;
+	Wed,  6 Sep 2023 18:07:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4438FC433C7;
+	Wed,  6 Sep 2023 18:07:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694006009;
-	bh=VKGhfV962Z8xvMpDY+hCvX8KHsDqyXxexkSt2XfB5oo=;
+	s=k20201202; t=1694023639;
+	bh=LK/9RFwAWACpDVkJmUMLa4ZQcl1iT5eciMmgvqDRP+s=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=S1wdpkkSQpYB2xcICHi0GalW60c7Pm4k2+fuw7y3IWLiHxb0HqC8WecPfT+B+3TqK
-	 +/O2n44TmEjlaomg4pdUwLWpBunom9pu6g8fzMmRGia6auYAhFM6+Sy/iCaHqvKlqN
-	 4VIiYXqjF3B3I/269s+xmOhxTV8N2iE6pCSDwiguPTXNTBiSXHfZ9ikOEN/hxhPEeD
-	 A2T8xkHeHkveVaIJ+MBKtAjVWNNY/RGAprZvpS2un2iDOgHocNS7O/S2jSIW+SA3oa
-	 F2NadOrknxx+/14LxgdIuyQjYW+R7JFbydHwvzT8z55C7lceRsfQJle10bpCxe3ekz
-	 AM6/rWXx+OlzQ==
-Date: Wed, 6 Sep 2023 15:13:26 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Helen Koike <helen.koike@collabora.com>
-Cc: Vignesh Raman <vignesh.raman@collabora.com>, 
-	dri-devel@lists.freedesktop.org, guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
-	david.heidelberg@collabora.com, daniels@collabora.com, gustavo.padovan@collabora.com, 
-	emma@anholt.net, robclark@freedesktop.org, robdclark@google.com, 
-	anholt@google.com, robdclark@gmail.com, airlied@gmail.com, daniel@ffwll.ch, 
-	jani.nikula@linux.intel.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	virtualization@lists.linux-foundation.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH v2 2/7] drm: ci: Force db410c to host mode
-Message-ID: <czfx23mt73bpqtz6ljurrzfodesojnomna7yvv5e5vrl6pwlsj@shuguijvjzdn>
-References: <20230904161516.66751-1-vignesh.raman@collabora.com>
- <20230904161516.66751-3-vignesh.raman@collabora.com>
- <cb1b9fea-d74f-fc32-a771-79713cf15674@collabora.com>
+	b=KfJ6SGeyG/KrBP0dZuQ2sQn02bCkZJ+aM3V9f3+RZeEMWUjQHqk285OqMaVDaWaoi
+	 yqy6yyVu+LRLQmKbJ8g0LeMvVQWCFHWQsKfkrR5BWxUJSrPNvPf1TdVCFOoFZTkyzw
+	 dbvYxwRmTj15VMEidM58t1UQbkFrFx1OPft6GG6y9Phn68dO7pLyZGccuojTDjHOvI
+	 RvgbLnjk52ttRqS5AZjfBEDYoGBIedPuanlO8owmfxva7SgyMFNcvPuhkDjQbPZzrt
+	 WVC/QtBxOYPwXJCvHqpo2VQM5k2gQGfFrAseWzht+W5ZOaHYI8/98H0lNjApjNPOBY
+	 PW4FubQkVUrmw==
+Date: Wed, 6 Sep 2023 19:07:13 +0100
+From: Will Deacon <will@kernel.org>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+	John Hsu =?utf-8?B?KOioseawuOe/sCk=?= <John.Hsu@mediatek.com>,
+	"catalin.marinas@arm.com" <catalin.marinas@arm.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	Xiaobing Shi =?utf-8?B?KOWPsuWwj+WFtSk=?= <Xiaobing.Shi@mediatek.com>,
+	Chunhui Li =?utf-8?B?KOadjuaYpei+iSk=?= <chunhui.li@mediatek.com>,
+	"linux-mm@kvack.org" <linux-mm@kvack.org>,
+	Kuan-Ying Lee =?utf-8?B?KOadjuWGoOepjik=?= <Kuan-Ying.Lee@mediatek.com>,
+	Casper Li =?utf-8?B?KOadjuS4reamrik=?= <casper.li@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [BUG kernel-5.15] aarch64: __pi_strncmp() out-of-bound error
+Message-ID: <20230906180713.GA5021@willie-the-truck>
+References: <e9f30f7d5b7d72a3521da31ab2002b49a26f542e.camel@mediatek.com>
+ <ZNEOmRb2sYQlVYwj@FVFF77S0Q05N.cambridge.arm.com>
+ <729b1505-c466-8a71-6079-4b0d9f81731d@arm.com>
+ <20230810143118.GA5795@willie-the-truck>
+ <10095b14-c005-c791-7e3e-d6561dac4dec@arm.com>
+ <20230810160907.GA5951@willie-the-truck>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="tnansnqalun7wlmf"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cb1b9fea-d74f-fc32-a771-79713cf15674@collabora.com>
+In-Reply-To: <20230810160907.GA5951@willie-the-truck>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230906_061334_717133_75137CAC 
-X-CRM114-Status: GOOD (  25.31  )
+X-CRM114-CacheID: sfid-20230906_110726_675037_F7CCD9F8 
+X-CRM114-Status: GOOD (  29.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,99 +88,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Aug 10, 2023 at 05:09:07PM +0100, Will Deacon wrote:
+> On Thu, Aug 10, 2023 at 04:00:00PM +0100, Robin Murphy wrote:
+> > On 10/08/2023 3:31 pm, Will Deacon wrote:
+> > > On Thu, Aug 10, 2023 at 01:23:28PM +0100, Robin Murphy wrote:
+> > > > I'm not sure there's strictly a bug here. The C standard says:
+> > > > 
+> > > > "The strncmp function compares not more than n characters (characters that
+> > > > follow a null character are not compared) ..."
+> > > > 
+> > > > so although any characters between the first NULL and n must not be
+> > > > considered for the result of the comparison, there doesn't seem to be any
+> > > > explicit promise anywhere that they can't be *accessed*. AFAICT what happens
+> > > > here is in the request to compare at most 23 characters, it ends up in the
+> > > > do_misaligned case, loop_misaligned runs twice and finds no differences or
+> > > > NULLs in characters 0-7 and 8-15, so then done_loop loads characters 15-23
+> > > > to compare the last 7, and is tripped up by 22-23 not actually existing in
+> > > > src2. Possibly the original intent was that this case should have ended up
+> > > > in page_end_loop, and the condition for that was slightly off, but I'm not
+> > > > sure, and this code is obsolete now anyway.
+> > > 
+> > > The long backtrace above worries me, as it suggests that you can trigger
+> > > this from userspace. In that case I think it's a bug regardless of what
+> > > the C standard says.
+> > 
+> > Bleh, poor choice of words... obviously there is a bug overall, it just
+> > might arguably be in the caller's expectations rather than the strncmp()
+> > implementation itself. However I would concur that there's no way we're
+> > going over all ~3000 strncmp() callsites with the "well, actually" comb just
+> > for this. It was more to say I don't think it's worth digging much deeper
+> > into exactly why, and I agree the pragmatic thing to do is either rip it out
+> > or backport the newer MTE-safe implementation which should be more robust.
+> 
+> Heh, then we agree. I was worried you'd gone mad :)
 
---tnansnqalun7wlmf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+In the end I cherry-picked the newer implementation rather than fall back to
+the generic implementation:
 
-On Wed, Sep 06, 2023 at 09:55:40AM -0300, Helen Koike wrote:
-> Hi!
->=20
-> On 04/09/2023 13:15, Vignesh Raman wrote:
-> > Force db410c to host mode to fix network issue which results in failure
-> > to mount root fs via NFS.
-> > See https://gitlab.freedesktop.org/gfx-ci/linux/-/commit/cb72a629b8c15c=
-80a54dda510743cefd1c4b65b8
-> >=20
-> > Use fdtoverlay command to merge base device tree with an overlay
-> > which contains the fix for USB controllers to work in host mode.
-> >=20
-> > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> > ---
-> >=20
-> > v2:
-> >    - Use fdtoverlay command to merge overlay dtbo with the base dtb ins=
-tead of modifying the kernel sources
-> > ---
-> >   drivers/gpu/drm/ci/build.sh                         |  5 +++++
-> >   .../gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts  | 13 +++++++++++++
-> >   2 files changed, 18 insertions(+)
-> >   create mode 100644 drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay=
-=2Edts
-> >=20
-> > diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
-> > index 7b014287a041..92ffd98cd09e 100644
-> > --- a/drivers/gpu/drm/ci/build.sh
-> > +++ b/drivers/gpu/drm/ci/build.sh
-> > @@ -92,6 +92,11 @@ done
-> >   if [[ -n ${DEVICE_TREES} ]]; then
-> >       make dtbs
-> > +    if [[ -e arch/arm64/boot/dts/qcom/apq8016-sbc.dtb ]]; then
-> > +        dtc -@ -I dts -O dtb -o drivers/gpu/drm/ci/dt-overlays/apq8016=
--sbc-overlay.dtbo drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
-> > +        fdtoverlay -i arch/arm64/boot/dts/qcom/apq8016-sbc.dtb -o arch=
-/arm64/boot/dts/qcom/apq8016-sbc-overlay.dtb drivers/gpu/drm/ci/dt-overlays=
-/apq8016-sbc-overlay.dtbo
-> > +        mv arch/arm64/boot/dts/qcom/apq8016-sbc-overlay.dtb arch/arm64=
-/boot/dts/qcom/apq8016-sbc.dtb
-> > +    fi
-> >       cp ${DEVICE_TREES} /lava-files/.
-> >   fi
-> > diff --git a/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts b/d=
-rivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
-> > new file mode 100644
-> > index 000000000000..57b7604f1c23
-> > --- /dev/null
-> > +++ b/drivers/gpu/drm/ci/dt-overlays/apq8016-sbc-overlay.dts
-> > @@ -0,0 +1,13 @@
-> > +/dts-v1/;
-> > +/plugin/;
-> > +
-> > +/ {
-> > +    fragment@0 {
-> > +        target-path =3D "/soc@0";
-> > +        __overlay__ {
-> > +            usb@78d9000 {
-> > +                dr_mode =3D "host";
-> > +            };
-> > +        };
-> > +    };
-> > +};
->=20
->=20
-> Another thing that I was discussing with David and Vignesh, since we will
-> need this overlay spinets not only for drm-ci but also for mesa ci (and
-> every body who uses the farms), would it be interesting to move it to some
-> place more official? like dts folders? Or would that be against Linux
-> policy?
+https://lore.kernel.org/r/20230906180336.4973-1-will@kernel.org
 
-AFAIK, the policy was changed recently to allow overlays to be merged,
-see $(find arch/ -name *.dtso). So generally speaking, it should be ok
-to send it.
-
-Maxime
-
---tnansnqalun7wlmf
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZPh69gAKCRDj7w1vZxhR
-xZ0pAP9Tuuixtbr8xNkw8lkk+Su6S0hCQvafwExM+JpYFXjjHwEAsyn1VL2iZWe8
-e6DoUUOIu3PsMZrCl33lKhXhoorvcw0=
-=gEwQ
------END PGP SIGNATURE-----
-
---tnansnqalun7wlmf--
+Will
 
