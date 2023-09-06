@@ -4,95 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0005EB8FB6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 11:24:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B1C5EB8FB7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Sep 2023 11:30:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m1wAlvRs1s+iG2Zeq5bR+RPSk1Ov/XWzqSAXnvT9GRU=; b=Wk6eGFmImXnJ1vgnqcZCm8VFeS
-	CZGwaLlFsuNrZhMFt5IsaGXRC8QwUMm4LztwxDJmDy6xrk9a+4nvBA6rMcVy0W/hhhO6fbzVaMUcO
-	SOdlUHutdovWA+zrl/MoNsr2Oph5/Gu3T6ZmyGMXfz8ky+xJYil1iDzawIGKxqLDbcGgpFB7f6gQ0
-	cvNnCIpW1kvzXnPVhZbjmbzf2B5e/WUBTBEcGpC8PAVkVT98cDjnSQSjz8jv3yZvlyyBcjN8fHSt2
-	RTAZkmMJF0Nb6wu/gOeKe1amBiTsApIpX+5aXa02eT0M0kqUAX3w815eJiMmOcUupts2x0CXIRn4P
-	qF1jSbsQ==;
+	bh=EdlxO8xCKrQy/jRT0nkbbxVM9BFP+RkDY99mRvExc+k=; b=IYGWdxTm6fLF2GMbaVPtbp9dGT
+	IszhuOC75NdkS9M+P/DEL1VDbDcef7yeiXoTaCns92R3M5qvwX7riWCpvEo4UMELgv2FglGO2K5cX
+	IKv7IfQXwpixPtpIzBh6rAYJPDovoYgwNV/hDnrdq3GWau1FdR0GHmgLSmV+WD2czHc2BAnQbcu7x
+	oJhufp5h6Rn1YNGcq4L9j+SEEHA0NcgVQE46gNQlT//UuvHbxVA3U76oLIrfilb0WJ16e1L7CmhAx
+	IMUH/7oeHfhTpQF8qavdZ4VgW4Ey0mkUviH8unlvZfG5Z5rWhRfBGwAT+A7c38kRTHVEN/cFS1B6k
+	E1d2SJBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdqe5-008hLb-20;
-	Wed, 06 Sep 2023 11:24:29 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1qdqkL-008lxN-1O;
+	Wed, 06 Sep 2023 11:30:57 +0000
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qdqe3-008hI7-0i
-	for linux-mediatek@lists.infradead.org;
-	Wed, 06 Sep 2023 11:24:28 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-5230a22cfd1so5141915a12.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 06 Sep 2023 04:24:26 -0700 (PDT)
+	id 1qdoju-007tj4-0k;
+	Wed, 06 Sep 2023 09:22:24 +0000
+Received: by mail-pj1-x1043.google.com with SMTP id 98e67ed59e1d1-2736e602429so723447a91.0;
+        Wed, 06 Sep 2023 02:22:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1693999465; x=1694604265; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=m1wAlvRs1s+iG2Zeq5bR+RPSk1Ov/XWzqSAXnvT9GRU=;
-        b=VBWVhGCTwIjMPBsm+IsZpSQ3+InGZPm0evfSg13sABaT2LZa6NZIs2jw8F/o+szgfe
-         +Y40nUzQmwdWKcwOFFpqJFhrwaauwVssP/F1kzo+ICBdPRQyprthc1QH9Y5ejXN22r3z
-         4cUyZW7NtoCh4mVVxJGiPGoIiKYnEOmDzc483ecde0m24php68Hm9kUJI2e0KfrtavEb
-         ClOnuN+mdHNdzDcehgu/dU/0Dg+7bMUca4M85zFMNqBlVqYBmqSFpPDWmdrsE3q5DTW+
-         pb07YKVVh56dKXUAreE6S5VMX6VaxhKoH648QDCSW5wcg6Z9XBQ2CV8155I0tZXoyuMT
-         Zt1A==
+        d=gmail.com; s=20221208; t=1693992140; x=1694596940; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=EdlxO8xCKrQy/jRT0nkbbxVM9BFP+RkDY99mRvExc+k=;
+        b=HQf+NOfOMlnTojshiHX+IVZdOc/Fy2zGEaKybJ+e/iDF9nUlbR3jNd0UzFZjZJ6SxJ
+         ZvxfOD9QfUmtgrQw6DvKdqg5wp0hDKZLM8ksWcwLM5tr7eDrD3uWo2/KW6UjurhipcQK
+         0PcbC3VdpxR3G+FjOg+TwcJV74nk0PeNrR4GUDcDLUZiF+63cIXvLC5hHR/rjQJiAN6T
+         2JUvZc+JD5XTW32Wp3qgWP8Jwx3omUtikQmr4URIViQfgQ1I0nPx3vosPzu9czgKwST7
+         7BBK86f8Npl1qQ1XHvGZU7SO23FbX/ds2gmJu0VCMvfeFBV7SB9XZ79COcjlt8vnMpU3
+         barw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693999465; x=1694604265;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=m1wAlvRs1s+iG2Zeq5bR+RPSk1Ov/XWzqSAXnvT9GRU=;
-        b=Frw4UfDZHlQFmcjz1ojb0oT0JkVNGP6lYkelF6Qlx4pAefukKN/KHgHge2WkOYLESP
-         FDqZ/MduEJ4A/c9hL9OL9oEpWpFS/GX4vizPeSDvactxMPIpf/G+4FAMbn0Vlc03d3ug
-         EsbsIu32JiDhPNwdcRxm0wctGKXhntRuqA3Q6Vt4mikZTwWJ4orb+fggS18+05OGOeVm
-         jcrQugbIRSXL3J8UCuXDzhfFfCii/8hwnQxObofBtQ4wgSnQxo2UNw5QWMuuK1oOf3sr
-         V7NrNH7DfrD3gk18TccCRN5Bnft7J2vzqZiasA8/ca0IvnJ6Cn/jt50OFLGirXHdXfSl
-         vSvg==
-X-Gm-Message-State: AOJu0Ywgy4PL+s4PhioBqDH3A7oU6xpYygWYq2xDNTwWMMutuM9lYyj/
-	g1Y6hncVmo2SLx0zmhZu76kzsA==
-X-Google-Smtp-Source: AGHT+IF78fS9Eg7R0VlxkHPMQfbfw3JU8+PGZlkuhqY6CLgNB73N4t7Yp4iilxfshUiQOSytqEPEaQ==
-X-Received: by 2002:a17:907:a046:b0:9a1:d29c:6aa9 with SMTP id gz6-20020a170907a04600b009a1d29c6aa9mr1883605ejc.11.1693999464940;
-        Wed, 06 Sep 2023 04:24:24 -0700 (PDT)
-Received: from [192.168.0.22] (77-252-46-238.static.ip.netia.com.pl. [77.252.46.238])
-        by smtp.gmail.com with ESMTPSA id rp24-20020a170906d97800b009a5c98fd82asm8785839ejb.81.2023.09.06.04.24.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 06 Sep 2023 04:24:24 -0700 (PDT)
-Message-ID: <50f7fbdd-8592-7a47-b2d8-a1af8ed93b92@linaro.org>
-Date: Wed, 6 Sep 2023 13:24:23 +0200
+        d=1e100.net; s=20221208; t=1693992140; x=1694596940;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=EdlxO8xCKrQy/jRT0nkbbxVM9BFP+RkDY99mRvExc+k=;
+        b=BxscESKbG36GnNIWfct8sBLAGRVEK74YUvfQyVyLJN54c4goAQp6nELKkmn3JVmqax
+         EaxTFda7sFra80G+vbwm7vsZCz5ZrWHht+BQDA7ZVtvu5u/N0t9kYnfIvZzRY1eAEZmt
+         78ni99UIS5CbnNy7A2/xjwtk8XZBedklLM+SHm0abzu1IxS8IgitbGvcJHL/plC1t/Nt
+         7MjpePO0GokbHGEJlwRF5+7tJvj/JM4VZIdhj6RyttC3NLnwLpqEkBzC2eKOeRYOYh4d
+         PWVW15P1YS0RefIjq5S1SqaVcPJ5wX8g/x+RkVAvNvH3t074YMW0WhQ12oVUW+Vs+Z0I
+         yCzQ==
+X-Gm-Message-State: AOJu0YxcHitjN3yZgAbRrr9n2UUGZ2Yv4U8/IAvUMXal5IlTuMsjuY+3
+	aKwVor2o1QdgdrHDZE3iCl8=
+X-Google-Smtp-Source: AGHT+IHMiYlrF3Jj3YOcK6rVl4xLdU7DgmAA3OTs/hdRqP6Fw6ddEdyaYMDL7Qb3ChEK1pnU2kkrAQ==
+X-Received: by 2002:a17:90a:7564:b0:26d:414d:a98a with SMTP id q91-20020a17090a756400b0026d414da98amr13879578pjk.1.1693992139631;
+        Wed, 06 Sep 2023 02:22:19 -0700 (PDT)
+Received: from hbh25y.mshome.net ([103.114.158.1])
+        by smtp.gmail.com with ESMTPSA id ft15-20020a17090b0f8f00b002684b837d88sm10679242pjb.14.2023.09.06.02.22.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 06 Sep 2023 02:22:19 -0700 (PDT)
+From: Hangyu Hua <hbh25y@gmail.com>
+To: justin.chen@broadcom.com,
+	florian.fainelli@broadcom.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	mw@semihalf.com,
+	linux@armlinux.org.uk,
+	nbd@nbd.name,
+	john@phrozen.org,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	lorenzo@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	maxime.chevallier@bootlin.com,
+	nelson.chang@mediatek.com
+Cc: bcm-kernel-feedback-list@broadcom.com,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Hangyu Hua <hbh25y@gmail.com>
+Subject: [PATCH 2/3] net: ethernet: mvpp2_main: fix possible OOB write in mvpp2_ethtool_get_rxnfc()
+Date: Wed,  6 Sep 2023 17:21:06 +0800
+Message-Id: <20230906092107.19063-3-hbh25y@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230906092107.19063-1-hbh25y@gmail.com>
+References: <20230906092107.19063-1-hbh25y@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm64: dts: mediatek: add mt8395-evk
- board
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Frank Wunderlich <frank-w@public-files.de>,
- =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>
-References: <20230904092043.5157-1-macpaul.lin@mediatek.com>
- <20230906092527.18281-1-macpaul.lin@mediatek.com>
- <fbad941f-232b-9f56-5de3-98a16a8c4d89@linaro.org>
- <c3ddf00c-235a-2d23-db60-c998a67a3fcd@mediatek.com>
- <f343b6e2-6106-47eb-71cb-f391aff6cb7f@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <f343b6e2-6106-47eb-71cb-f391aff6cb7f@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230906_042427_256159_D9C3EFDA 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20230906_022222_297777_0609554F 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,30 +110,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/09/2023 12:48, AngeloGioacchino Del Regno wrote:
->> Yes, mt8395 is fully compatible with mt8195.
->>
->> But after reading Angelo's comment, we thought it is necessary to create a new 
->> compatible to avoid confusion for users.
->> https://lore.kernel.org/lkml/bf8394c6-5460-8696-f46b-0c39927aaf84@collabora.com/
->>
->> Although they are fully compatible, developers cannot arbitrarily replace the chip 
->> on the board with another one. So separated bindings might be better.
-> 
-> Sorry you've misunderstood; I was trying to explain to Krzysztof that the two
-> SoCs are fully compatible... my suggestion was in like with what you're trying to
-> do as in I am agreeing with your first version, Macpaul, to inherit MT8195.
-> 
-> So,
-> 
-> - enum
->      - mediatek,mt8395-evk
-> - const: mediatek,mt8195
-> - const: mediatek,mt8395
+rules is allocated in ethtool_get_rxnfc and the size is determined by
+rule_cnt from user space. So rule_cnt needs to be check before using
+rules to avoid OOB writing or NULL pointer dereference.
 
-The other way - mt8395 followed by mt8195 :)
+Fixes: 90b509b39ac9 ("net: mvpp2: cls: Add Classification offload support")
+Signed-off-by: Hangyu Hua <hbh25y@gmail.com>
+---
+ drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Best regards,
-Krzysztof
+diff --git a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+index eb74ccddb440..21c3f9b015c8 100644
+--- a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
++++ b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+@@ -5586,6 +5586,11 @@ static int mvpp2_ethtool_get_rxnfc(struct net_device *dev,
+ 		break;
+ 	case ETHTOOL_GRXCLSRLALL:
+ 		for (i = 0; i < MVPP2_N_RFS_ENTRIES_PER_FLOW; i++) {
++			if (loc == info->rule_cnt) {
++				ret = -EMSGSIZE;
++				break;
++			}
++
+ 			if (port->rfs_rules[i])
+ 				rules[loc++] = i;
+ 		}
+-- 
+2.34.1
 
 
