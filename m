@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21C57EC8748
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 16:54:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BC6EEC874B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 17:16:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YKDEA1Pg2HKfwQxmFwd9ymYRUMLbQQ72/nOsxIyNxLA=; b=zwv+ByCxy8QQlrpZNrX491VNM4
-	ryvPxygIODG2xH1FHASkVQC9Ge85VSKBUDhxokWAqMU6WTj0QfmbbhfjyLhCdEsgDPe2aw85wWIer
-	JiEf41pyojp5/dZrTZK2OKF+8qWasbuRGZyswXZq1IJJBhNDhjyUvE/2buwle3CfoJ1FHnr9uSAgM
-	WD/PkEn1MKyw3SM3q4WcrfV1L4bz1oinCE7HmJaNpumfo7R5OaqTaltRZ4bWBCTy2mxNZBrwBFZWW
-	g2qPdfRPC/v5ZK+cxAgQDkQ/y/FFMlzu7FknkVvfm9SGsc0G6Y7x3aVCrMg+4wfpxpiaw06cYlTtB
-	Bc5MAjlQ==;
+	bh=vdNu7014Ved9AVAE+fOlNEDZimWFsZWiP0VjxkqLyv8=; b=X9hwLR6oB0PCPN6aQrlbiWY4Oi
+	oqq49WD/1lLiaYWZYXbjpkffV9mUI5fDFFh3CApuh7klhQddu/Su7sfi8yadioosHvPG6NiRCRwFr
+	+0Xm4xYy5XwEg2fuRUaGyGyh/LNyaEAw0/xd+VHwHvE2sCxoY9tBYKX/YIwqgiC79M7EQ7KMhoW8n
+	GnLpnmPN/ZUDzauzjetS8LVNz2Y3fQYA0KWhhYrMjDwrGpLu0TlqMLv/dg1GEeUzLTHCZRo+H11Js
+	5XJ18Yg1jV6o52jnSev/+m11yK+zBYG7jDGstkdmU15+fZoKmheR3RQqns4H+icz5bfWAUfvefE7J
+	XPGF3ADQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeIH7-00CQZE-1S;
-	Thu, 07 Sep 2023 16:54:37 +0000
-Received: from mgamail.intel.com ([192.55.52.43])
+	id 1qeIcF-00CST1-0k;
+	Thu, 07 Sep 2023 17:16:27 +0000
+Received: from mgamail.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeIH4-00CQY8-09;
-	Thu, 07 Sep 2023 16:54:35 +0000
+	id 1qeIcB-00CSRz-36;
+	Thu, 07 Sep 2023 17:16:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1694105673; x=1725641673;
+  t=1694106983; x=1725642983;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=+iwrlHM9sEqkTS/xqbLYSOyW5pmPupLwx5GnE3Vj2HE=;
-  b=PvtweRgSR+Pdkuox3FF37i6RXsrFx3JbycS3RZvSpX5MOG/cltrpRbsN
-   uXde34DsbFB7Nxz6Bfnn36byfoyrB4uMk1DHp7/+lFcTGp3zOotxyP+kB
-   /RRmWqCyLZAJDHQhD7KV1yVISsW27D2+0nXtHA51yhsdBTlICmhBAUvns
-   XbfeQ66zO5nRRBpA5DALAnaWveayXcfr/tm24Kfoul/i1DM6PyHfbHJ8s
-   BsgNhkZ9xjoUGWtapaIGx0uORddEDLDPFoyV9muh+uoRu4U3JbGkcbeCi
-   qg5R3cyj7BdrFfsDAsvSwdTWq3oa8O4dZu+ZHZIGi0LMrBaVbhiVJRtEg
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10826"; a="463794481"
+  bh=+nV/A0KI51xC3F16W+WXs9hcXG9VgStb2/g8BOn2vYM=;
+  b=eVE1YZGyoh/z/kYrgXyXpNIjV0YLxNj+Hif+a44ty6PyShrd/rzbRJnu
+   piTt9nMiMYbn3g9PdNPU4otEBBFw0nKMpus8PD0h/VPgk0KkQpy9sWIrj
+   /AjWQfIVOnl65rrsam+scaaRq+4LvHfzAmPrcMl2+atFLqsd68zsswxri
+   0VymMDg0w319gMtbTE2vo3Hz6XQxx1a7NpxEkUvi9o5nFKgeGlmYxJjcl
+   h32aeM+oINR3La43evwMK0WbO99M8+xjH3OBuzc+7RmqDiw77ILmBPahH
+   9R5cghRCayCaHA+my/jMcVB6H6C7bv1pNqvI5Ors4EebXD9DUpNvPNtva
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10826"; a="357732879"
 X-IronPort-AV: E=Sophos;i="6.02,235,1688454000"; 
-   d="scan'208";a="463794481"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Sep 2023 09:54:21 -0700
+   d="scan'208";a="357732879"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Sep 2023 10:15:22 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10826"; a="691862512"
+X-IronPort-AV: E=McAfee;i="6600,9927,10826"; a="777151153"
 X-IronPort-AV: E=Sophos;i="6.02,235,1688454000"; 
-   d="scan'208";a="691862512"
+   d="scan'208";a="777151153"
 Received: from lkp-server01.sh.intel.com (HELO 59b3c6e06877) ([10.239.97.150])
-  by orsmga003.jf.intel.com with ESMTP; 07 Sep 2023 09:54:17 -0700
+  by orsmga001.jf.intel.com with ESMTP; 07 Sep 2023 10:15:17 -0700
 Received: from kbuild by 59b3c6e06877 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1qeIGk-0001P0-2T;
-	Thu, 07 Sep 2023 16:54:14 +0000
-Date: Fri, 8 Sep 2023 00:53:46 +0800
+	id 1qeIb5-0001QE-2C;
+	Thu, 07 Sep 2023 17:15:15 +0000
+Date: Fri, 8 Sep 2023 01:14:55 +0800
 From: kernel test robot <lkp@intel.com>
 To: Daniel Golle <daniel@makrotopia.org>, Dan Carpenter <error27@gmail.com>,
 	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
@@ -71,15 +71,15 @@ To: Daniel Golle <daniel@makrotopia.org>, Dan Carpenter <error27@gmail.com>,
 Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org
 Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: fix uninitialized
  variable
-Message-ID: <202309080027.e4rJ0o2x-lkp@intel.com>
+Message-ID: <202309080051.4UKDipfX-lkp@intel.com>
 References: <51d1ae238aecde07b2b4fe02cdab0dc87287cd96.1694099183.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <51d1ae238aecde07b2b4fe02cdab0dc87287cd96.1694099183.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230907_095434_094349_023809B6 
-X-CRM114-Status: GOOD (  12.42  )
+X-CRM114-CacheID: sfid-20230907_101624_020337_4D5E92E0 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,14 +104,14 @@ url:    https://github.com/intel-lab-lkp/linux/commits/Daniel-Golle/net-ethernet
 base:   net/main
 patch link:    https://lore.kernel.org/r/51d1ae238aecde07b2b4fe02cdab0dc87287cd96.1694099183.git.daniel%40makrotopia.org
 patch subject: [PATCH net] net: ethernet: mtk_eth_soc: fix uninitialized variable
-config: alpha-allyesconfig (https://download.01.org/0day-ci/archive/20230908/202309080027.e4rJ0o2x-lkp@intel.com/config)
-compiler: alpha-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230908/202309080027.e4rJ0o2x-lkp@intel.com/reproduce)
+config: parisc-allyesconfig (https://download.01.org/0day-ci/archive/20230908/202309080051.4UKDipfX-lkp@intel.com/config)
+compiler: hppa-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230908/202309080051.4UKDipfX-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202309080027.e4rJ0o2x-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202309080051.4UKDipfX-lkp@intel.com/
 
 All warnings (new ones prefixed by >>):
 
@@ -121,7 +121,7 @@ All warnings (new ones prefixed by >>):
                     from include/linux/of.h:14,
                     from drivers/net/ethernet/mediatek/mtk_eth_soc.c:9:
    drivers/net/ethernet/mediatek/mtk_eth_soc.c: In function 'mtk_poll_rx':
->> include/linux/stddef.h:8:14: warning: initialization of 'dma_addr_t' {aka 'long long unsigned int'} from 'void *' makes integer from pointer without a cast [-Wint-conversion]
+>> include/linux/stddef.h:8:14: warning: initialization of 'dma_addr_t' {aka 'unsigned int'} from 'void *' makes integer from pointer without a cast [-Wint-conversion]
        8 | #define NULL ((void *)0)
          |              ^
    drivers/net/ethernet/mediatek/mtk_eth_soc.c:2008:31: note: in expansion of macro 'NULL'
