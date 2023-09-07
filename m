@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74D49CA0FF6
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 10:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAFE8C83F17
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 10:49:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=umRr973DdsoLa5jDkaog91F7bpxbfAShnqk7S+7MxKs=; b=Le+0z7OVLXZh9mSG3eqmhJcmjy
-	lfmsKdGzvtcwZtnTli2+PbJOTk4bYK4iRhVZ45BLbmWQ3ndX9KduZrhXtM9A8R4rzj/g9h2A1TqJy
-	/X5WUxei8g20xwflC/DDmzP87OjqLq946h/nSNjqqVNH+OmI+2xhxa+/TxrIqIRdLOT8JOhyhAfLa
-	kAm/T6PnnaxAa/6+IYVhZvYOFq1ooNE0vpQABHmo9jd/YOvg0fgMZv9trS1fZmE4ZO1crROJjc3HN
-	mvNH+IuuMpsK0WWE283dpkxjI55qPh52U4bu09EYiwBV+XhfXkM/S4NsF2HgeemGN/Qarg+pFQyPw
-	x2cVNuHQ==;
+	bh=Hhfm5/iQ+YebgtcsVNWtZo6uJFJt9t2AJ4spMusVxjw=; b=JDKX9Sa6cWbQ5Xo29avGP7xtt/
+	TBCsLWkpZJoMfrcJh3fWeqyiLBmn5h8B/FtEN5+4RL/Z56m1rJC2Qvg0JwkEvNarZo8clDz/LYdhj
+	14jzJIFwxCVsbIczISaCDRFmk4zgCOHcTu5L/Cek8UsjjOm83Q+dGouikDxpX38Z0u7dgdHVWLoTQ
+	1LeNXGfIeSjeMJAHScuFhM/yXfzcfz/nXcAsm4u0DTWfOJOM+z8xN+pMNAmRNMHSt4S+vPdOOMREI
+	3LjBRdY6uLB3K6c2l2wWVgkq3c71iyIn1u66KOSadXOP8KmQVVkZ+3Z2SHjdeFPOKJ66t7YCQ25AV
+	uz5UdEnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeCX8-00BpAR-0X;
-	Thu, 07 Sep 2023 10:46:46 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qeCZd-00BqoZ-1j;
+	Thu, 07 Sep 2023 10:49:21 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeCX4-00Bp6Q-2d;
-	Thu, 07 Sep 2023 10:46:44 +0000
+	id 1qeCZZ-00BqkT-2H;
+	Thu, 07 Sep 2023 10:49:18 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 143D166072F8;
-	Thu,  7 Sep 2023 11:46:40 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C3BE066072FC;
+	Thu,  7 Sep 2023 11:49:13 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694083601;
-	bh=2hPXnQEkAUOISA9uLrJm8cZfdkF/pQpShzz3sVJQr08=;
+	s=mail; t=1694083754;
+	bh=OFLJjkH0n3nuvjKy5n4yw1ihmDQMqgkN8jJdfrUz49c=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XDbzvsjyiXngBH29KcKNLuh/kqUeM1vbRDtSOTKSb8Ajfk+NEDnHE2FEdK+RpCqkz
-	 zaaduzHlimmMz43g+AaZoJQrIvNr/marM4fQwLjCUNahOIrEZVt5rb372yO2//kPnE
-	 P85dh+CkEgQFsE+h8Ao8gq5s+Fg0gzV6P2ss6wOEFpuTVidEcXz6KAhuUkBhD9S438
-	 AyMxKvltsDGxrz9zHhg3MAWJaISGh+0U7NrqkDH5Qr4f21Oyd13CW8/vS8GLomA86/
-	 yAZq7D5ZPLyDvYSywyyUnGXga0Tv381OyDxBRiZt1iv4d5losFQBa+vpmPnJ0JYDar
-	 i1DnriQCy/jpA==
-Message-ID: <6da8136b-be1f-6867-b2af-c636877ef189@collabora.com>
-Date: Thu, 7 Sep 2023 12:46:37 +0200
+	b=PZUAyQIL3eLgRZ1dsWDYci/fuecgDE+LjOI4plnfUOCi9rOXqGJz/zsk/vlrgKsuf
+	 XvQ4AnOIR7T+VtEsgTIgTj0q2WWtUQ0nL3QGkg0EMZGLhviDz3OFgn6vVDjY5N5yg5
+	 sGvFnai2PknMLqVPU94uQKS5NGU71U4qw0YyKYs0sEOIF+7taVf5jo+ALoybRJYElc
+	 CKkvzDnbLWu8ZTOgbrvgzRBql0KM9+TpQ2V+2ubdK2+X4wD8o1MkX8aQFMDUSi67te
+	 l1LLbHMwz6o63UciiQZ9qMwEVgqEI8kloAqSc2xjxKeA7A5d6qAqWukik1R0zNCRQx
+	 asT6oy6p10otw==
+Message-ID: <ebf80e22-77c4-8f8d-6e98-e8b33949e6e1@collabora.com>
+Date: Thu, 7 Sep 2023 12:49:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH 4/6] drm: ci: Enable configs to fix mt8173 boot hang issue
+Subject: Re: [PATCH v17 05/14] remoteproc: mediatek: Extract SCP common
+ registers
 Content-Language: en-US
-To: Vignesh Raman <vignesh.raman@collabora.com>,
- dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: helen.koike@collabora.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com,
- daniels@collabora.com, emma@anholt.net, robclark@freedesktop.org,
- gustavo.padovan@collabora.com, robdclark@google.com, anholt@google.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- airlied@gmail.com, daniel@ffwll.ch, corbet@lwn.net,
- neil.armstrong@linaro.org, khilman@baylibre.com, jbrunet@baylibre.com,
- martin.blumenstingl@googlemail.com, heiko@sntech.de,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20230825122435.316272-1-vignesh.raman@collabora.com>
- <20230825122435.316272-5-vignesh.raman@collabora.com>
+To: Tinghan Shen <tinghan.shen@mediatek.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230901080935.14571-1-tinghan.shen@mediatek.com>
+ <20230901080935.14571-6-tinghan.shen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230825122435.316272-5-vignesh.raman@collabora.com>
+In-Reply-To: <20230901080935.14571-6-tinghan.shen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230907_034642_986542_ECE6A744 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20230907_034917_899348_548FCEEF 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,39 +85,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/08/23 14:24, Vignesh Raman ha scritto:
-> Enable regulator
-> Enable MT6397 RTC driver
+Il 01/09/23 10:09, Tinghan Shen ha scritto:
+> This is the 1st preliminary steps for probing multi-core SCP.
+> The registers of config and l1tcm are common on single-core SCP
+> and multi-core SCP. Extract these registers out to reduce duplicated
+> fields in mtk_scp when multiple SCP instances are created.
 > 
-> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> ---
->   drivers/gpu/drm/ci/arm64.config | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/ci/arm64.config b/drivers/gpu/drm/ci/arm64.config
-> index 817e18ddfd4f..ea7a6cceff40 100644
-> --- a/drivers/gpu/drm/ci/arm64.config
-> +++ b/drivers/gpu/drm/ci/arm64.config
-> @@ -184,6 +184,8 @@ CONFIG_HW_RANDOM_MTK=y
->   CONFIG_MTK_DEVAPC=y
->   CONFIG_PWM_MTK_DISP=y
->   CONFIG_MTK_CMDQ=y
-> +CONFIG_REGULATOR_DA9211=y
-> +CONFIG_RTC_DRV_MT6397=y
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 
-I wonder if it'd be a better idea to simply add those to the defconfig instead as
-
-CONFIG_REGULATOR_DA9211=m
-CONFIG_RTC_DRV_MT6397=m
-
-Any opinion on this? Matthias? Anyone else?
-
-Cheers,
-Angelo
-
->   
->   # For nouveau.  Note that DRM must be a module so that it's loaded after NFS is up to provide the firmware.
->   CONFIG_ARCH_TEGRA=y
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
