@@ -4,97 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF1C6EE14D0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 09:33:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83456EE14D3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 09:34:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m2TBjPhN9uyMHRdPdlZGBRjpz24WrszzRQ2gGkDyEa8=; b=C7vHqjCPit27y6SKF+4OAfDD4h
-	vJdsISJkfCy55fkgmsRLPi6sRiNKO6FXF8Ze0c6Ar4GTOYc9lrpbYWyj4Wk8CKO9xdTiKBpmxrMQ+
-	hhMpZ/Ic2BJulM1x0wRVn3HaIo38finytNMHYNxK0cf/+LJdsTbEUs7HH1ygMNvQUTob1517sxMU7
-	uwiMVsfpoVIeAM5mhTFgzr3GBQ27KqC6oXr2ngdnRBruRdr1sG1vRfPn+IS6SgJIsN6v7wfyJClNt
-	sLb3XJk5tkoN1fKClGbIdKpnLqDlkrB8HEOSveiEjVBgMNyp6KcXvQmguPUSDalPf3dAKZXZU24BN
-	7RWU57HA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NWpP+gu/L2WxJF6p68/qs6Cr3Esfaco+OUW1LjvcJSU=; b=kL4C6k3HECN9/213sESjrtujOC
+	2eVokhc+5YP5b7AI+MRhF4Dv83/NmhcrX7yODd8ylXD5QOb6FYvowdAyE4HQRRq0fBJ1RyHoE/7Cd
+	ur10/np6EjXSjK+XZo3ze2v1hfAvV3guHRSPmZ290mB2ZPOwYN37BM4Mso3Fs8BGnP3LptkvoLNEh
+	C4P3vcbLl9MYWhyUSsbu4X7ybgxZ416KP7JwFM+PKIaGWHOKpVtsNDO+xb4bGqOA9ucxYt4QD6bqT
+	qc7F3/7/SBunoYQW0vSrh9ZSWP5h/7eFvcIvQph3v7qMhrhJTIjmuynJMy2HWqSRv8PCkAkKSq/pU
+	ut6TIhPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeBOJ-00BgnW-15;
-	Thu, 07 Sep 2023 09:33:35 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1qeBPM-00BguD-1Y;
+	Thu, 07 Sep 2023 09:34:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeBOF-00Bgmb-2b
-	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Sep 2023 09:33:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1694079209;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=m2TBjPhN9uyMHRdPdlZGBRjpz24WrszzRQ2gGkDyEa8=;
-	b=bOYGZA3GP+VRZsoe1SQ3V0vfULd7zmDW2OUU4JPMzVNisGzJG+5byscgMn0J0aYDGSKv0h
-	1kpfOqG6jCyDJEmTeRYyXOhlFmiSd3OwfCQuIYrToiFK/Mt6AkSYCKtAVS7Nj7b9bF/gZF
-	lzmbrjrJPKl89bflDU3oUIf3WADv7xQ=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-36-W3HRCA6jOpO6xZRA_9wNUg-1; Thu, 07 Sep 2023 05:33:28 -0400
-X-MC-Unique: W3HRCA6jOpO6xZRA_9wNUg-1
-Received: by mail-ed1-f72.google.com with SMTP id 4fb4d7f45d1cf-5222c47ab80so127805a12.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 07 Sep 2023 02:33:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1694079207; x=1694684007;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=55eaXlRBQUU9N09Mwpc7awwH+wml0BVgfM2qq1emsMU=;
-        b=dAgwQZDaDwr3aSx6xp2PronxteVMrsnm/boMxGJGsmUpbkIWQvwhVnVxpMHhdGlt/6
-         Q4pdiHgf8HWxwAZ1kAatehsgjVFIGzUDLqNz32uVw+8FSlNzS7CAeB+bpJEbQxTODto+
-         mubwSEyxbzBJcc+AIlAfp3K0PLYJgZFGL1/2OKexHi907XITWg0IYqGUzDYmJ1HmcO83
-         CbJc+j0Xz4fLbnw/xCzMDjxn7s/SQzR/7UnKrSmEqa9km+XlBBMlfLRAx5UoyIeRk91X
-         mVQ0Fp48rdZcWPJuUC8tEl75PrNWS+ANnNVYdIjZsa0VHs1KClsSJT3Fhpnytrn7HMuC
-         a1Mg==
-X-Gm-Message-State: AOJu0YzLcvrmqWeOUuZqi3TMQNBGaDhaz79Lcc+wAojuZLnv+RqhytHE
-	0f45dPk/JAtAon/n+aOKdj+0M+Iriw6jal/nCB+LWH3UQ3yoenA0wGrj82Jy/ycmNtJ+6Eg+tye
-	bpTJsxYyA8IJvOv4UmEyM1WgG6HhtKRL/
-X-Received: by 2002:a05:6402:50cf:b0:523:f69:9a0d with SMTP id h15-20020a05640250cf00b005230f699a0dmr14508643edb.4.1694079207006;
-        Thu, 07 Sep 2023 02:33:27 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFmARKuVvbeJv/K5MH7+O9TdP72ANin2DJmSer2ZNOOqrgJvqT72yBewQCDz9oi34ZcnnXSiw==
-X-Received: by 2002:a05:6402:50cf:b0:523:f69:9a0d with SMTP id h15-20020a05640250cf00b005230f699a0dmr14508619edb.4.1694079206712;
-        Thu, 07 Sep 2023 02:33:26 -0700 (PDT)
-Received: from gerbillo.redhat.com (146-241-251-112.dyn.eolo.it. [146.241.251.112])
-        by smtp.gmail.com with ESMTPSA id k7-20020aa7c387000000b0052a19a75372sm9425264edq.90.2023.09.07.02.33.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Sep 2023 02:33:26 -0700 (PDT)
-Message-ID: <5c3360711cbfa8503402ed2e3c02b5b24a0f405f.camel@redhat.com>
-Subject: Re: [PATCH 3/3] net: ethernet: mtk_eth_soc: fix possible NULL
- pointer dereference in mtk_hwlro_get_fdir_all()
-From: Paolo Abeni <pabeni@redhat.com>
-To: Hangyu Hua <hbh25y@gmail.com>, justin.chen@broadcom.com, 
-	florian.fainelli@broadcom.com, davem@davemloft.net, edumazet@google.com, 
-	kuba@kernel.org, mw@semihalf.com, linux@armlinux.org.uk, nbd@nbd.name, 
-	john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, 
-	lorenzo@kernel.org, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, maxime.chevallier@bootlin.com, 
-	nelson.chang@mediatek.com
-Cc: bcm-kernel-feedback-list@broadcom.com, netdev@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Date: Thu, 07 Sep 2023 11:33:24 +0200
-In-Reply-To: <20230906092107.19063-4-hbh25y@gmail.com>
-References: <20230906092107.19063-1-hbh25y@gmail.com>
-	 <20230906092107.19063-4-hbh25y@gmail.com>
-User-Agent: Evolution 3.46.4 (3.46.4-1.fc37)
+	id 1qeBPJ-00BgtU-1k;
+	Thu, 07 Sep 2023 09:34:38 +0000
+X-UUID: bec723f84d6111ee86758d4a7c00f3a0-20230907
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=NWpP+gu/L2WxJF6p68/qs6Cr3Esfaco+OUW1LjvcJSU=;
+	b=cG0MWl+WIWjauuVGnVWnPmlH9awHb0YyEj3L4JrNaTRmXbqqihoVxvSDvIefsPMreSDkm7RqfIxPHVeG2af8qcgWU5mI3QVnreHkqSDewi34Oql/fsFwDgRTpRwmfTjUwhOSmdakkYleMPcXpFjpiQtpG1gvXZ55135QZOYKuJM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:feee9609-2086-4687-ad92-f00d3eba997e,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:3e9caa13-4929-4845-9571-38c601e9c3c9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: bec723f84d6111ee86758d4a7c00f3a0-20230907
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 211094723; Thu, 07 Sep 2023 02:34:30 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 7 Sep 2023 17:14:26 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 7 Sep 2023 17:14:26 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>, Jason-ch Chen
+	<jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Shawn Sung
+	<shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v5] drm/mediatek: Fix coverity issue with unintentional integer overflow
+Date: Thu, 7 Sep 2023 17:14:25 +0800
+Message-ID: <20230907091425.9526-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230907_023331_932999_A7382100 
-X-CRM114-Status: GOOD (  13.85  )
+X-CRM114-CacheID: sfid-20230907_023437_590330_07E7B069 
+X-CRM114-Status: GOOD (  13.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,36 +88,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2023-09-06 at 17:21 +0800, Hangyu Hua wrote:
-> rule_locs is allocated in ethtool_get_rxnfc and the size is determined by
-> rule_cnt from user space. So rule_cnt needs to be check before using
-> rule_locs to avoid NULL pointer dereference.
->=20
-> Fixes: 7aab747e5563 ("net: ethernet: mediatek: add ethtool functions to c=
-onfigure RX flows of HW LRO")
-> Signed-off-by: Hangyu Hua <hbh25y@gmail.com>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++++
->  1 file changed, 4 insertions(+)
->=20
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/et=
-hernet/mediatek/mtk_eth_soc.c
-> index 6ad42e3b488f..d91fc0483c50 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -2994,6 +2994,10 @@ static int mtk_hwlro_get_fdir_all(struct net_devic=
-e *dev,
->  =09int i;
-> =20
->  =09for (i =3D 0; i < MTK_MAX_LRO_IP_CNT; i++) {
-> +=09=09if (cnt =3D=3D cmd->rule_cnt) {
-> +=09=09=09return -EMSGSIZE;
-> +=09=09}
+1. Instead of multiplying 2 variable of different types. Change to
+assign a value of one variable and then multiply the other variable.
 
-Please drop the brackets above, they are not needed.
+2. Add a int variable for multiplier calculation instead of calculating
+different types multiplier with dma_addr_t variable directly.
 
-Thanks!
+Fixes: 1a64a7aff8da ("drm/mediatek: Fix cursor plane no update")
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+Change in v5:
+Add 'coverity issue' in title and code comments.
+---
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c   |  9 +++++-
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c | 39 ++++++++++++++++++------
+ 2 files changed, 38 insertions(+), 10 deletions(-)
 
-Paolo
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index 9f364df52478..f6632a0fe509 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -121,7 +121,14 @@ int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
+ 	int ret;
+ 
+ 	args->pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
+-	args->size = args->pitch * args->height;
++
++	/*
++	 * Multiply 2 variables of different types,
++	 * for example: args->size = args->spacing * args->height;
++	 * may cause coverity issue with unintentional overflow.
++	 */
++	args->size = args->pitch;
++	args->size *= args->height;
+ 
+ 	mtk_gem = mtk_drm_gem_create(dev, args->size, false);
+ 	if (IS_ERR(mtk_gem))
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+index db2f70ae060d..5acb03b7c6fe 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+@@ -141,6 +141,7 @@ static void mtk_plane_update_new_state(struct drm_plane_state *new_state,
+ 	dma_addr_t addr;
+ 	dma_addr_t hdr_addr = 0;
+ 	unsigned int hdr_pitch = 0;
++	int offset;
+ 
+ 	gem = fb->obj[0];
+ 	mtk_gem = to_mtk_gem_obj(gem);
+@@ -150,8 +151,15 @@ static void mtk_plane_update_new_state(struct drm_plane_state *new_state,
+ 	modifier = fb->modifier;
+ 
+ 	if (modifier == DRM_FORMAT_MOD_LINEAR) {
+-		addr += (new_state->src.x1 >> 16) * fb->format->cpp[0];
+-		addr += (new_state->src.y1 >> 16) * pitch;
++		/*
++		 * Using dma_addr_t variable to calculate with multiplier of different types,
++		 * for example: addr += (new_state->src.x1 >> 16) * fb->format->cpp[0];
++		 * may cause coverity issue with unintentional overflow.
++		 */
++		offset = (new_state->src.x1 >> 16) * fb->format->cpp[0];
++		addr += offset;
++		offset = (new_state->src.y1 >> 16) * pitch;
++		addr += offset;
+ 	} else {
+ 		int width_in_blocks = ALIGN(fb->width, AFBC_DATA_BLOCK_WIDTH)
+ 				      / AFBC_DATA_BLOCK_WIDTH;
+@@ -159,21 +167,34 @@ static void mtk_plane_update_new_state(struct drm_plane_state *new_state,
+ 				       / AFBC_DATA_BLOCK_HEIGHT;
+ 		int x_offset_in_blocks = (new_state->src.x1 >> 16) / AFBC_DATA_BLOCK_WIDTH;
+ 		int y_offset_in_blocks = (new_state->src.y1 >> 16) / AFBC_DATA_BLOCK_HEIGHT;
+-		int hdr_size;
++		int hdr_size, hdr_offset;
+ 
+ 		hdr_pitch = width_in_blocks * AFBC_HEADER_BLOCK_SIZE;
+ 		pitch = width_in_blocks * AFBC_DATA_BLOCK_WIDTH *
+ 			AFBC_DATA_BLOCK_HEIGHT * fb->format->cpp[0];
+ 
+ 		hdr_size = ALIGN(hdr_pitch * height_in_blocks, AFBC_HEADER_ALIGNMENT);
++		hdr_offset = hdr_pitch * y_offset_in_blocks +
++			AFBC_HEADER_BLOCK_SIZE * x_offset_in_blocks;
++
++		/*
++		 * Using dma_addr_t variable to calculate with multiplier of different types,
++		 * for example: addr += hdr_pitch * y_offset_in_blocks;
++		 * may cause coverity issue with unintentional overflow.
++		 */
++		hdr_addr = addr + hdr_offset;
+ 
+-		hdr_addr = addr + hdr_pitch * y_offset_in_blocks +
+-			   AFBC_HEADER_BLOCK_SIZE * x_offset_in_blocks;
+ 		/* The data plane is offset by 1 additional block. */
+-		addr = addr + hdr_size +
+-		       pitch * y_offset_in_blocks +
+-		       AFBC_DATA_BLOCK_WIDTH * AFBC_DATA_BLOCK_HEIGHT *
+-		       fb->format->cpp[0] * (x_offset_in_blocks + 1);
++		offset = pitch * y_offset_in_blocks +
++			 AFBC_DATA_BLOCK_WIDTH * AFBC_DATA_BLOCK_HEIGHT *
++			 fb->format->cpp[0] * (x_offset_in_blocks + 1);
++
++		/*
++		 * Using dma_addr_t variable to calculate with multiplier of different types,
++		 * for example: addr += pitch * y_offset_in_blocks;
++		 * may cause coverity issue with unintentional overflow.
++		 */
++		addr = addr + hdr_size + offset;
+ 	}
+ 
+ 	mtk_plane_state->pending.enable = true;
+-- 
+2.18.0
 
 
