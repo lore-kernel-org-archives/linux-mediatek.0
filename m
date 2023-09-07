@@ -4,77 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2273EC8724
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 13:27:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DAE9EC8734
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 14:55:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hJEKGvhmxp8R6c53ojV/bh0zFZPHPL5RolXP5Jg/CXY=; b=MookSm13Wjgd1Tc/oGWHd+VD0L
-	/FDwVQSk+l6m+TOcL7Zk5mAiftO6jfmbCRM/mVgXdVgIszW78LY/tuha9Qca2PXmbVdkRx6eW27je
-	zFXIIrcRGpAUxiyLtvuuFlncRykbXeOhiVTerRH9C0vGMv9CZVOfTgShSki81QxR0pSmRnKofw7+D
-	YgsI4JS9b/WzkM9cNhnzWBLoDX/zDfdLgajgEs0I2uK2hKwQAC9beiySspoKwtOphWzbpy8j8OybF
-	qMhFgHoyNpXL3L0c81pax38lL/mLDxkFTUzjOtyn9W0mWKDJK3uCQzGzY1k3FouNcUweIi09SAKrR
-	ju74Aeig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Xx0EGtB7JLClKUzrJMMtDKL6ZzDrvoV9OO5QPArz/Ao=; b=hgIYmC3UM/TCQx9Ck4wy7GJaaR
+	xbjaU1JLCMBDzGwvldx1tRr3eyVh5bQ0IAZxZ2MpS96AIWXvuTiilQXH5+7Z/oC4D9hSISW9pwADl
+	ityshhLd1T+JTT/trdYciRTKG1wtlZigiC8x/c2AgsRdKhTIZo1jKOQkEJWd0KQKMO1bumVrPk1de
+	/OGKoXgvf1B+sRfnn+eMaQ7E062yF0E3dSxgpgIaqenrEPmC1BqhPUhytGHW/eA/ONRlXOtNLOPt9
+	ubje9oxyJYaxC4q6BZv14dQkKeA3DiuO/PSHLDY0Dn9B2w6ggNgld1YYymuJDM2OM+1xuVHZbLkS+
+	aLM7QpEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeF2b-00C8ZE-1s;
-	Thu, 07 Sep 2023 13:27:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qeGPt-00CDrM-0N;
+	Thu, 07 Sep 2023 14:55:33 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeF2Z-00C8Ys-0G;
-	Thu, 07 Sep 2023 13:27:24 +0000
-X-UUID: 43de8a024d8211ee86758d4a7c00f3a0-20230907
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hJEKGvhmxp8R6c53ojV/bh0zFZPHPL5RolXP5Jg/CXY=;
-	b=Cn53C4OavqoNUN/EvJKfnpUTS+IgZn+jMqYpflh3U5ZK8mGrFezUWEZxRCHwdSY1Df5wUZbkiXApsnVAGgwkZTydFrlpbgaUy+ZwdldfVOOE0e3YFsoj5hFFb/DbYXrbhsqUcn5BZFls+A/Ze7JFXfubfrgYM1mucrrBBcY8tEU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:473e337b-3f50-45b7-8dbf-3deac3ef5083,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:0ad78a4,CLOUDID:eaf6c2c2-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 43de8a024d8211ee86758d4a7c00f3a0-20230907
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 712241373; Thu, 07 Sep 2023 06:27:17 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 7 Sep 2023 21:16:42 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 7 Sep 2023 21:16:42 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Macpaul Lin
-	<macpaul.lin@mediatek.com>, =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?=
-	<bero@baylibre.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>
-Subject: [PATCH v4 1/2] dt-bindings: arm64: dts: mediatek: add mt8395-evk board
-Date: Thu, 7 Sep 2023 21:16:29 +0800
-Message-ID: <20230907131630.28346-1-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1qeGPq-00CDqO-00;
+	Thu, 07 Sep 2023 14:55:31 +0000
+Received: from pyrite.rasen.tech (h175-177-042-159.catv02.itscom.jp [175.177.42.159])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7C3222C95;
+	Thu,  7 Sep 2023 16:53:52 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1694098437;
+	bh=lHaKbx1Xfgw1yJQrOyNYCdAzv2rEhDZkjawM5FDn3mc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=TFstDJL61psb+aRq+XQFLclvjHlm1nESJLDAqBpRLUQMarsW+92WdLaiPclkk5WUZ
+	 sdjXGFP4n7uuubKkK8W8K52JiTct7TtHiG+7m9yj05KXHUdx3YbCYKtngAGT5SVScw
+	 hsKtBsBjx2MyyAjnaYcMLO1nzHId6i7aDTl4Ta2o=
+Date: Thu, 7 Sep 2023 23:55:13 +0900
+From: Paul Elder <paul.elder@ideasonboard.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Kieran Bingham <kieran.bingham@ideasonboard.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	linux-media@vger.kernel.org,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 3/3] arm64: dts: mediatek: mt8365-pumpkin: Add overlays
+ for thp7312 cameras
+Message-ID: <ZPnkUVmDZYb0ysu0@pyrite.rasen.tech>
+References: <20230905233118.183140-1-paul.elder@ideasonboard.com>
+ <20230905233118.183140-4-paul.elder@ideasonboard.com>
+ <502fc7b1-a32d-6901-3a45-d2aa0e0c3849@linaro.org>
+ <20230906083237.GL7971@pendragon.ideasonboard.com>
+ <a3ed9856-a87b-5cf6-26b5-ff2b19234a8a@linaro.org>
+ <20230906090058.GB17308@pendragon.ideasonboard.com>
+ <59e07c6a-6f1b-0cc7-dddc-96d2a4050843@linaro.org>
+ <20230906093531.GO7971@pendragon.ideasonboard.com>
+ <169399810391.277971.691693692840899613@ping.linuxembedded.co.uk>
+ <20230906111429.GC17308@pendragon.ideasonboard.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230906111429.GC17308@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230907_062723_154539_5D5197B1 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20230907_075530_211552_AC1649F3 
+X-CRM114-Status: GOOD (  31.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,53 +83,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. Add compatible for MT8395.
-2. Add bindings for the MediaTek mt8395-evk board, also known
-as the "Genio 1200-EVK".
+On Wed, Sep 06, 2023 at 02:14:29PM +0300, Laurent Pinchart wrote:
+> On Wed, Sep 06, 2023 at 12:01:43PM +0100, Kieran Bingham wrote:
+> > Quoting Laurent Pinchart (2023-09-06 10:35:31)
+> > > On Wed, Sep 06, 2023 at 11:21:31AM +0200, Krzysztof Kozlowski wrote:
+> > > > On 06/09/2023 11:00, Laurent Pinchart wrote:
+> > > > >>> has a regulator@0. There are similar instances for clocks.
+> > > > >>>
+> > > > >>> I understand why it may not be a good idea, and how the root node is
+> > > > >>> indeed not a bus. In some cases, those regulators and clocks are grouped
+> > > > >>> in a regulators or clocks node that has a "simple-bus" compatible. I'm
+> > > > >>> not sure if that's a good idea, but at least it should validate.
+> > > > >>>
+> > > > >>> What's the best practice for discrete board-level clocks and regulators
+> > > > >>> in overlays ? How do we ensure that their node name will not conflict
+> > > > >>> with the board to which the overlay is attached ?
+> > > > >>
+> > > > >> Top-level nodes (so under /) do not have unit addresses. If they have -
+> > > > >> it's an error, because it is not a bus. Also, unit address requires reg.
+> > > > >> No reg? No unit address. DTC reports this as warnings as well.
+> > > > > 
+> > > > > I agree with all that, but what's the recommended practice to add
+> > > > > top-level clocks and regulators in overlays, in a way that avoids
+> > > > > namespace clashes with the base board ?
+> > > > 
+> > > > Whether you use regulator@0 or regulator-0, you have the same chances of
+> > > > clash.
+> > > 
+> > > No disagreement there. My question is whether there's a recommended
+> > > practice to avoid clashes, or if it's an unsolved problem that gets
+> > > ignored for now because there's only 36h in a day and there are more
+> > > urgent things to do.
+> > 
+> > Should an overlay add these items to a simple-bus specific to that
+> > overlay/device that is being supported?
+> > 
+> > That would 'namespace' the added fixed-clocks/fixed-regulators etc...
+> > 
+> > But maybe it's overengineering or mis-using the simple-bus.
+> 
+> You would still need to name the node that groups the regulators and
+> clocks in a way that wouldn't clash between multiple overlays and the
+> base board. It would be nice to have nodes that are "private" to an
+> overlay.
 
-The MT8195 and MT8395 belong to the same SoC family,
-with only minor differences in their physical characteristics.
-They utilize unique efuse values for differentiation.
+What's the best solution to this then :/
 
-The booting process and configurations are managed by boot
-loaders, firmware, and TF-A. Consequently, the part numbers
-and procurement channels vary.
 
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- Documentation/devicetree/bindings/arm/mediatek.yaml | 6 ++++++
- 1 file changed, 6 insertions(+)
+Paul
 
-Changes for v2:
- - add more detail description for mt8395.
- - add bindings for mt8395, and mt8395-evk.
-
-Changes for v3:
- - add back bindings for mt8195 compatible.
-
-Changes for v4:
- - No change, update Reviewed-by tag only. Thanks.
-
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index ae12b1cab9fb..2e8ad49c3479 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -248,6 +248,12 @@ properties:
-           - enum:
-               - mediatek,mt8365-evk
-           - const: mediatek,mt8365
-+      - description: MediaTek Genio 1200 Boards (Genio 1200 EVK)
-+        items:
-+          - enum:
-+              - mediatek,mt8395-evk
-+          - const: mediatek,mt8395
-+          - const: mediatek,mt8195
-       - items:
-           - enum:
-               - mediatek,mt8516-pumpkin
--- 
-2.18.0
-
+> 
+> > And the items are still not on a 'bus' with an address - they just exist
+> > on a presumably externally provided board....
 
