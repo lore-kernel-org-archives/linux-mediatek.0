@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14BBEEE14D4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 08:22:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B860EE14D3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 08:30:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B2Y8HVSPkqAdtMgd26YGHKP3VUz/mINdBfET5YjP83A=; b=3l4gy/1RrlCAwGw2ziwlirF1yn
-	VDpKXzfw0LjdB+ItrU3lGQF8AqypfC314f5KxAqeVnBye8SxDUf0XHO6LGl8uGbwk8w+Qf8O3LKx/
-	TpshlCkEHPKXbXPnTj8y8lfdHIMR25jvZ9iNYGEH8CjmN3nwiHcT7fmpIAlqZ3rQdmwQufVXeuvwO
-	iKiM0jG0KQFQyOQqRDEq09s7y5EDM6a6bD4MCrvA+ejKPxkTwVH1o6aToBiwZPAnn8SI+ZIGa1r+G
-	IKC4Zo39yLs/KxyYjDV0rshRmFy/y8PwPUf3i1tn/WeTb4UbcpC0xjFShBGuXmBGEmj24BuWORJQX
-	LjcQ2f0Q==;
+	bh=40Q52oR8Wtpzs5GSeHTErlcH6ivPbx6DwyAe/iaE0fQ=; b=tZcxg6awGZ7vnHnlcvLfZ0j32i
+	5zAIy2bRqYLSgE9dId6pFacXd5A62rvscy6oJkqwwKLJiFLr/HP4AYg6Hkx10LVZrw5BsoUgOJhps
+	rXTHcTnU49SKv7uhJowk0blDQ+ZI06SKfDnEAbIywDKEQnWwrZxlGEsV3Mp7d5v4/FRe0wAgKyscO
+	C+F8hCM1TTXXTtXgPxUOHAU4imHwpRhWN0YQ33+Ju1eOF2JlOqgDGW2GAIYulH6gWDiRb6lq56lFd
+	IUEtC8u/UpT7pzZOqI2qlZmNEpEmHRrx8U7Ht+zlRsXd8N05TzLC0oqM/Pf6hjPJnhVAuwaCOLl2+
+	IJkwYV3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeAHO-00Ba4Z-1y;
-	Thu, 07 Sep 2023 08:22:22 +0000
+	id 1qeAOv-00Bao6-2s;
+	Thu, 07 Sep 2023 08:30:09 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeAHJ-00Ba2X-1P;
-	Thu, 07 Sep 2023 08:22:19 +0000
+	id 1qeAOs-00Band-26;
+	Thu, 07 Sep 2023 08:30:08 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 95C2566072BE;
-	Thu,  7 Sep 2023 09:22:13 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D181E66072E3;
+	Thu,  7 Sep 2023 09:30:04 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694074934;
-	bh=0QQVv6jlMc3BXhzBHqUu8xLqyScvz33I/+GvzdQguMU=;
+	s=mail; t=1694075405;
+	bh=EdQ9ASI8+iF8t5u8HGmRUqDa9g/nGIlcPEp4NR/29MA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=g4NZCvLeUZCbl/IEdNcZBmNQtxVQUqWVm3hFjqIfmd1kifIQvSsgonlPl8Mu8TQyX
-	 3J2qi/yywlOtky+59zLO+SDWIWtxSrgC1TdHZxoGkz0F0v7ApBYtE+p6tmp9V/TAte
-	 nt3AmylDPwnKOh3YGg+yy+8wBLdMgTFvPxFb45EuV1zF+Ody5zNbBCCEFs2dePBbO/
-	 0fsInLcpoybezFl/JlTlaaO7PQCfXNvj/P34sXSLIajcRJoPTmMo/jm88fGsDhxmM2
-	 +d5HQ7CbZQV8b/vKC6W8L4HQcqWv85IJKEYp4LkWcR52h89R0uDVgfNW/w4w3JxqE7
-	 LA18ulLzj6Fyw==
-Message-ID: <21e6631e-a99c-0b09-feb4-23407465ea55@collabora.com>
-Date: Thu, 7 Sep 2023 10:22:10 +0200
+	b=Cfkdhopb2O4/2hTFhZZuemvDZx5NWOEZ/XtEtWECmev2t3Ss2FaIJXXLASntsQXFX
+	 gs/GQP6qP8CUdiGz+DdX/PpKOJ2OoTVPqq8lBysVuruhA68lkhBxNGHupKvbUDT6wD
+	 /2feRHQ0EJRHs49z+kigbY1kwR+KEJA43JM3dSueXYX+uBn7DYQMeVJb4VoUg8ifup
+	 7shMyDx2ny1PDi3Yoxh+GiFEUyvUB6HYDEZGcKfFTRpvI/UUN1nNI+v5+lcArOjSc+
+	 s0NkDt2WFsJQu4z0C2zz4u+/qF1wUPdz4BkFE+F39lCmwql+fg3jCeST2RmpQ8lU2h
+	 MromValbfAwAQ==
+Message-ID: <0470ab6d-7bf9-8c21-6e34-19b4f9023f10@collabora.com>
+Date: Thu, 7 Sep 2023 10:30:02 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH] iommu/mediatek: Fix share pgtable for iova over 4GB
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Laura Nao <laura.nao@collabora.com>
-References: <20230819081443.8333-1-yong.wu@mediatek.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt7622: fix memory node warning
+ check
 Content-Language: en-US
+To: Eugen Hristev <eugen.hristev@collabora.com>,
+ linux-mediatek@lists.infradead.org
+Cc: krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ matthias.bgg@gmail.com, kernel@collabora.com
+References: <20230814065042.4973-1-eugen.hristev@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230819081443.8333-1-yong.wu@mediatek.com>
+In-Reply-To: <20230814065042.4973-1-eugen.hristev@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230907_012217_638570_93EFBF64 
-X-CRM114-Status: GOOD (  20.17  )
+X-CRM114-CacheID: sfid-20230907_013006_865721_09D50DA7 
+X-CRM114-Status: GOOD (  15.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,65 +78,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/08/23 10:14, Yong Wu ha scritto:
-> In mt8192/mt8186, there is only one MM IOMMU that supports 16GB iova
-> space, which is shared by display, vcodec and camera. These two SoC use
-> one pgtable and have not the flag SHARE_PGTABLE, we should also keep
-> share pgtable for this case.
+Il 14/08/23 08:50, Eugen Hristev ha scritto:
+> dtbs_check throws a warning at the memory node:
+> Warning (unit_address_vs_reg): /memory: node has a reg or ranges property, but no unit name
 > 
-> In mtk_iommu_domain_finalise, MM IOMMU always share pgtable, thus remove
-> the flag SHARE_PGTABLE checking. Infra IOMMU always uses independent
-> pgtable.
+> fix by adding the address into the node name.
 > 
-> Fixes: cf69ef46dbd9 ("iommu/mediatek: Fix two IOMMU share pagetable issue")
-> Reported-by: Laura Nao <laura.nao@collabora.com>
-> Closes: https://lore.kernel.org/linux-iommu/20230818154156.314742-1-laura.nao@collabora.com/
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Fixes: 0b6286dd96c0 ("arm64: dts: mt7622: add bananapi BPI-R64 board")
+> Signed-off-by: Eugen Hristev <eugen.hristev@collabora.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-This is urgent. Fixes multiple machines.
-
 > ---
-> Base on next-20230818.
-> ---
->   drivers/iommu/mtk_iommu.c | 9 ++++-----
->   1 file changed, 4 insertions(+), 5 deletions(-)
+>   arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 2 +-
+>   arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts             | 2 +-
+>   2 files changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index b17d3e7288a7..b5fcba305d2a 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -262,7 +262,7 @@ struct mtk_iommu_data {
->   	struct device			*smicomm_dev;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> index e4605d23fdc8..8220a4fd6319 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> @@ -73,7 +73,7 @@ led-1 {
+>   		};
+>   	};
 >   
->   	struct mtk_iommu_bank_data	*bank;
-> -	struct mtk_iommu_domain		*share_dom; /* For 2 HWs share pgtable */
-> +	struct mtk_iommu_domain		*share_dom;
+> -	memory {
+> +	memory@40000000 {
+>   		reg = <0 0x40000000 0 0x40000000>;
+>   	};
 >   
->   	struct regmap			*pericfg;
->   	struct mutex			mutex; /* Protect m4u_group/m4u_dom above */
-> @@ -643,8 +643,8 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom,
->   	struct mtk_iommu_domain	*share_dom = data->share_dom;
->   	const struct mtk_iommu_iova_region *region;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+> index dad8e683aac5..c435984ca767 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+> @@ -55,7 +55,7 @@ key-wps {
+>   		};
+>   	};
 >   
-> -	/* Always use share domain in sharing pgtable case */
-> -	if (MTK_IOMMU_HAS_FLAG(data->plat_data, SHARE_PGTABLE) && share_dom) {
-> +	/* Share pgtable when 2 MM IOMMU share the pgtable or one IOMMU use multiple iova ranges */
-> +	if (share_dom) {
->   		dom->iop = share_dom->iop;
->   		dom->cfg = share_dom->cfg;
->   		dom->domain.pgsize_bitmap = share_dom->cfg.pgsize_bitmap;
-> @@ -677,8 +677,7 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom,
->   	/* Update our support page sizes bitmap */
->   	dom->domain.pgsize_bitmap = dom->cfg.pgsize_bitmap;
+> -	memory {
+> +	memory@40000000 {
+>   		reg = <0 0x40000000 0 0x20000000>;
+>   	};
 >   
-> -	if (MTK_IOMMU_HAS_FLAG(data->plat_data, SHARE_PGTABLE))
-> -		data->share_dom = dom;
-> +	data->share_dom = dom;
->   
->   update_iova_region:
->   	/* Update the iova region for this domain */
 
 
 
