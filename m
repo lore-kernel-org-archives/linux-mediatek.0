@@ -4,69 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D056CEE14DB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 10:43:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74D49CA0FF6
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 10:46:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tDSPxaEhken5fg7LKbFevEz8A6UJvXXgUCQld/d7ev0=; b=g+cgoLueNWxHHeCQdN5yF/t8CF
-	PNeYQU23JwKd933xhtVuLFGUEs9Mlf5puAvATx+DmIq1JSuQRhyFK8i6OIvT4eypZyibfF5wsUFZ7
-	ja1nruvcdW3M/3TE3MR+hdEydzUq8KYAggGwmY3UFhqnmWqC+tvJiqxe0bpCMw+OmLsWd+tYGQXkn
-	OnRTAmXb7zs+Q+/ybSXSq+awZLTvbbFN6xIi1LOdzHAdlUCg5ecWYTGf+B7zOMr4ZRSIG6GMJLLTg
-	VE17BoUqUfLFKmWUuGKUhSfz08BYeMJVMFbo7sfwbWz9gE9EEoXnqrccFbjuWWq9HU+Lnb7mrY+B7
-	rqxynyWg==;
+	bh=umRr973DdsoLa5jDkaog91F7bpxbfAShnqk7S+7MxKs=; b=Le+0z7OVLXZh9mSG3eqmhJcmjy
+	lfmsKdGzvtcwZtnTli2+PbJOTk4bYK4iRhVZ45BLbmWQ3ndX9KduZrhXtM9A8R4rzj/g9h2A1TqJy
+	/X5WUxei8g20xwflC/DDmzP87OjqLq946h/nSNjqqVNH+OmI+2xhxa+/TxrIqIRdLOT8JOhyhAfLa
+	kAm/T6PnnaxAa/6+IYVhZvYOFq1ooNE0vpQABHmo9jd/YOvg0fgMZv9trS1fZmE4ZO1crROJjc3HN
+	mvNH+IuuMpsK0WWE283dpkxjI55qPh52U4bu09EYiwBV+XhfXkM/S4NsF2HgeemGN/Qarg+pFQyPw
+	x2cVNuHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeCTs-00BnoE-2P;
-	Thu, 07 Sep 2023 10:43:24 +0000
+	id 1qeCX8-00BpAR-0X;
+	Thu, 07 Sep 2023 10:46:46 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeCTp-00Bnl2-1Z;
-	Thu, 07 Sep 2023 10:43:22 +0000
+	id 1qeCX4-00Bp6Q-2d;
+	Thu, 07 Sep 2023 10:46:44 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B2EEE66072BA;
-	Thu,  7 Sep 2023 11:43:14 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 143D166072F8;
+	Thu,  7 Sep 2023 11:46:40 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694083395;
-	bh=AtNfCg0ORcDFoK5Walc1Hu3UGCme85N5dgstHaeabAc=;
+	s=mail; t=1694083601;
+	bh=2hPXnQEkAUOISA9uLrJm8cZfdkF/pQpShzz3sVJQr08=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NejBNi91GDBi0Au8P24t4H4LZjQGG9Ryf1BpDJdsXgET3EkPKMCZFUG7BCYuxsp0A
-	 L5J666GBfK2HyOu6yTaz/Zdt9srJi+5RKfsPZV35jTt1DuIjOV5nERNjqPd61FOF9M
-	 1HiviQkDD472ch4zIdW+FtQekf0Fqf3SaP8d0MbPWgZ0QpNRuBKobGhS7xydNgFhgX
-	 uUE0F5MmxWTv8He1c0FXyZ6t8nMYMInIUVo0N72Mqo1KXMOA4MxZJJvh5lfKIFp7+p
-	 X7z5G8hFmmvlxMnVt4LcbxoOqjM8OW9eDq+vbWzlIYRdMbQnJ7STxw4HIqlaHsKBtK
-	 d2YAIXSKPE/tQ==
-Message-ID: <cd6eea67-df0f-08b1-61cd-57a3b4f9cf0d@collabora.com>
-Date: Thu, 7 Sep 2023 12:43:12 +0200
+	b=XDbzvsjyiXngBH29KcKNLuh/kqUeM1vbRDtSOTKSb8Ajfk+NEDnHE2FEdK+RpCqkz
+	 zaaduzHlimmMz43g+AaZoJQrIvNr/marM4fQwLjCUNahOIrEZVt5rb372yO2//kPnE
+	 P85dh+CkEgQFsE+h8Ao8gq5s+Fg0gzV6P2ss6wOEFpuTVidEcXz6KAhuUkBhD9S438
+	 AyMxKvltsDGxrz9zHhg3MAWJaISGh+0U7NrqkDH5Qr4f21Oyd13CW8/vS8GLomA86/
+	 yAZq7D5ZPLyDvYSywyyUnGXga0Tv381OyDxBRiZt1iv4d5losFQBa+vpmPnJ0JYDar
+	 i1DnriQCy/jpA==
+Message-ID: <6da8136b-be1f-6867-b2af-c636877ef189@collabora.com>
+Date: Thu, 7 Sep 2023 12:46:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH] power: supply: mt6370: Fix missing error code in
- mt6370_chg_toggle_cfo()
+Subject: Re: [PATCH 4/6] drm: ci: Enable configs to fix mt8173 boot hang issue
 Content-Language: en-US
-To: Harshit Mogalapalli <harshit.m.mogalapalli@oracle.com>,
- Sebastian Reichel <sre@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Andy Shevchenko <andy.shevchenko@gmail.com>,
- ChiaEn Wu <chiaen_wu@richtek.com>, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: dan.carpenter@linaro.org, kernel-janitors@vger.kernel.org,
- error27@gmail.com
-References: <20230906084815.2827930-1-harshit.m.mogalapalli@oracle.com>
+To: Vignesh Raman <vignesh.raman@collabora.com>,
+ dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: helen.koike@collabora.com, guilherme.gallo@collabora.com,
+ sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com,
+ daniels@collabora.com, emma@anholt.net, robclark@freedesktop.org,
+ gustavo.padovan@collabora.com, robdclark@google.com, anholt@google.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ airlied@gmail.com, daniel@ffwll.ch, corbet@lwn.net,
+ neil.armstrong@linaro.org, khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, heiko@sntech.de,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20230825122435.316272-1-vignesh.raman@collabora.com>
+ <20230825122435.316272-5-vignesh.raman@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230906084815.2827930-1-harshit.m.mogalapalli@oracle.com>
+In-Reply-To: <20230825122435.316272-5-vignesh.raman@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230907_034321_677672_4A609B7C 
-X-CRM114-Status: GOOD (  19.71  )
+X-CRM114-CacheID: sfid-20230907_034642_986542_ECE6A744 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,49 +86,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/09/23 10:48, Harshit Mogalapalli ha scritto:
-> When mt6370_chg_field_get() suceeds, ret is set to zero and returning
-> zero when flash led is still in strobe mode looks incorrect.
+Il 25/08/23 14:24, Vignesh Raman ha scritto:
+> Enable regulator
+> Enable MT6397 RTC driver
 > 
-> Fixes: 233cb8a47d65 ("power: supply: mt6370: Add MediaTek MT6370 charger driver")
-> Signed-off-by: Harshit Mogalapalli <harshit.m.mogalapalli@oracle.com>
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 > ---
-> This is based on static analysis with smatch, only compile tested.
-> ---
->   drivers/power/supply/mt6370-charger.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   drivers/gpu/drm/ci/arm64.config | 2 ++
+>   1 file changed, 2 insertions(+)
 > 
-> diff --git a/drivers/power/supply/mt6370-charger.c b/drivers/power/supply/mt6370-charger.c
-> index f27dae5043f5..a9641bd3d8cf 100644
-> --- a/drivers/power/supply/mt6370-charger.c
-> +++ b/drivers/power/supply/mt6370-charger.c
-> @@ -324,7 +324,7 @@ static int mt6370_chg_toggle_cfo(struct mt6370_priv *priv)
->   
->   	if (fl_strobe) {
->   		dev_err(priv->dev, "Flash led is still in strobe mode\n");
-> -		return ret;
-> +		return -EINVAL;
+> diff --git a/drivers/gpu/drm/ci/arm64.config b/drivers/gpu/drm/ci/arm64.config
+> index 817e18ddfd4f..ea7a6cceff40 100644
+> --- a/drivers/gpu/drm/ci/arm64.config
+> +++ b/drivers/gpu/drm/ci/arm64.config
+> @@ -184,6 +184,8 @@ CONFIG_HW_RANDOM_MTK=y
+>   CONFIG_MTK_DEVAPC=y
+>   CONFIG_PWM_MTK_DISP=y
+>   CONFIG_MTK_CMDQ=y
+> +CONFIG_REGULATOR_DA9211=y
+> +CONFIG_RTC_DRV_MT6397=y
 
-I think that returning 0 here was intentional, but I agree on a return ret
-here being both confusing and wrong.
+I wonder if it'd be a better idea to simply add those to the defconfig instead as
 
-That's how I get this logic:
+CONFIG_REGULATOR_DA9211=m
+CONFIG_RTC_DRV_MT6397=m
 
-The function is enabling strobe mode, but if the flash led is *already* in
-strobe mode, the function exits cleanly because there's nothing to do, as
-the enablement is already done.
+Any opinion on this? Matthias? Anyone else?
 
-Hence.... I believe that the right fix is not to return -EINVAL, but rather
-to change that to `return 0` instead.
-
-ChiaEn, can you please confirm, or deny my statement?
-
-Regards,
+Cheers,
 Angelo
 
->   	}
 >   
->   	/* cfo off */
+>   # For nouveau.  Note that DRM must be a module so that it's loaded after NFS is up to provide the firmware.
+>   CONFIG_ARCH_TEGRA=y
 
 
 
