@@ -4,64 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3148EB8FDE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 12:14:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A4B0EB8FB1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 12:15:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zEBBcJjt6f+bOPG8Fu0Z1CIwuONpBrPLNGsjFC8C1KQ=; b=k+lvUpMX4dxDNpG2r4YD+3Wx22
-	yfh1tuCMdgcEpsm7gFBkfo6Va9RmjRd6tVcQRTnpp/keXHSiYWQiyX9tXq3wunYKVCzeQZl/4xICk
-	F45zPZI3YagGcvevLLjaU/uzIRNOJlgJ9Y6HqBGW2Ilu9DLOYfDEj3C+NOrjEM1kOXAjZvNGob8rD
-	PkBjftxP0tfxq2NGdjM7xdZRuhPgabJup8o1FoXnBU7+DYxvOMXWpwzmxmoK0/J0GNxzrz8UvtudN
-	hDuG9USPRY2A2V35T/97bLH4zZiJAXiKvMEehRzNBohtVY9fiFDZhlJluKRBXNp5/x6t9XK6scI+5
-	o+dQRvSQ==;
+	bh=L9btLs3kp/UyKO/goUcP8rjI/40XSGa7AQ400lV7JwE=; b=PO/RNE3azxuecvKnomIHoyxC43
+	kJDZ818+26gd8Pdk395tyfKD6Gg/0XARNc1W2kTgswoU844pR3DSAtGVh9w7yZK06B1vZy4zExy+o
+	9omdVXroBLsCwaVxZzjw4cGAH+JE1F9lL6IuzHpyr9N01rFydp2t55F/CsR7Psra8j7GBsBFNiBJx
+	M3WPEBjkRXLuq2xSiPojUp9EHSn/ejnL2XGiq8oxqiYDoCT1BwBlfT6K1qR/Cdspr3C7Y1aaDj9Me
+	HFD/QteG4HEyPTmOIiwFFblyWB+y3JMnyDzlC0lXe2tY449DEOs/HtmI12mHhrJI1i0+dh+Y9WGg4
+	0nXMh3GQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeDtb-00C4GO-1n;
-	Thu, 07 Sep 2023 12:14:03 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qeDvE-00C4QC-37;
+	Thu, 07 Sep 2023 12:15:44 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeDtX-00C4Fk-1a;
-	Thu, 07 Sep 2023 12:14:01 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	id 1qeDvC-00C4Pc-1N;
+	Thu, 07 Sep 2023 12:15:43 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id A6789CE1924;
-	Thu,  7 Sep 2023 12:13:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C42ABC32783;
-	Thu,  7 Sep 2023 12:13:53 +0000 (UTC)
-Date: Thu, 7 Sep 2023 08:14:08 -0400
-From: Steven Rostedt <rostedt@goodmis.org>
-To: "Tze-nan Wu (=?UTF-8?B?5ZCz5r6k5Y2X?=)" <Tze-nan.Wu@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-trace-kernel@vger.kernel.org" <linux-trace-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "Cheng-Jui Wang (=?UTF-8?B?546L5q2j552/?=)" <Cheng-Jui.Wang@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>, "Bobule Chang (=?UTF-8?B?5by1?=
- =?UTF-8?B?5byY576p?=)" <bobule.chang@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "mhiramat@kernel.org"
- <mhiramat@kernel.org>, "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH] ring-buffer: Do not read at &event->array[0] if it
- across the page
-Message-ID: <20230907081408.6156b6f0@gandalf.local.home>
-In-Reply-To: <0944a5f3e10c0eba8b32e51fb941e0dd98ec086d.camel@mediatek.com>
-References: <20230905141245.26470-1-Tze-nan.Wu@mediatek.com>
-	<20230905123953.3c0b3d7a@gandalf.local.home>
-	<3a89d49ae0da6378de83bc68690cf6664d97cb24.camel@mediatek.com>
-	<0944a5f3e10c0eba8b32e51fb941e0dd98ec086d.camel@mediatek.com>
-X-Mailer: Claws Mail 3.19.1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7CC6B660730B;
+	Thu,  7 Sep 2023 13:15:40 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1694088941;
+	bh=Eqb5pNlHdN85VbMQrGQeQIo/DXWZRBobczKrVqHb3/Y=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JtObJKO3s+O0/WucsrR/DqY6YxlESM3EcxUaqBp8cBN9FgVYjtYutDVWp43Vw3GHy
+	 varInFrwfMfBPWUBDmFz6hCCvPdenkh1gILr0uQ2WCNssEQ+zX/nlRjDA447GV5YPk
+	 g5GxTEMxx8wkNsvnZifOsxFeh6b0XuZ/kTqRcXUklqlwVXc4mBeZnN+v4boeuAVa4j
+	 /6S+MtQ6xbgSZ96r/yA4jDNFmv+yc4lqor8d+QHIWAcffbuhR9Q/ggPmIeG2Yfpv6X
+	 VVXiRqJPlWq0IeqKOco9RHo0g0EeyGqw5fYyVGeAADVgexpqJGafloYqb8Pd+70O24
+	 m2gGeyZbLNavg==
+Message-ID: <addaf43f-1970-0566-cf5d-8e34a61a1952@collabora.com>
+Date: Thu, 7 Sep 2023 14:15:38 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH 07/15] drm/mediatek: Support alpha blending in VDOSYS1
+Content-Language: en-US
+To: Hsiao Chien Sung <shawn.sung@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Jason-JH Lin <jason-jh.lin@mediatek.com>
+References: <20230823151332.28811-1-shawn.sung@mediatek.com>
+ <20230823151332.28811-8-shawn.sung@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230823151332.28811-8-shawn.sung@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230907_051359_888454_507ADF8A 
-X-CRM114-Status: GOOD (  48.28  )
+X-CRM114-CacheID: sfid-20230907_051542_601036_E327D87F 
+X-CRM114-Status: GOOD (  15.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,183 +83,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 7 Sep 2023 10:10:57 +0000
-Tze-nan Wu (=E5=90=B3=E6=BE=A4=E5=8D=97) <Tze-nan.Wu@mediatek.com> wrote:
+Il 23/08/23 17:13, Hsiao Chien Sung ha scritto:
+> Support premultiply and coverage alpha blending modes.
+> 
+> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+> ---
+>   drivers/gpu/drm/mediatek/mtk_ethdr.c | 50 +++++++++++++++++++++-------
+>   1 file changed, 38 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
+> index 73dc4da3ba3b..3058c122a4c3 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_ethdr.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
+> @@ -5,6 +5,7 @@
+>   
+>   #include <drm/drm_fourcc.h>
+>   #include <drm/drm_framebuffer.h>
+> +#include <drm/drm_blend.h>
+>   #include <linux/clk.h>
+>   #include <linux/component.h>
+>   #include <linux/of_device.h>
+> @@ -35,6 +36,7 @@
+>   #define MIX_SRC_L0_EN				BIT(0)
+>   #define MIX_L_SRC_CON(n)		(0x28 + 0x18 * (n))
+>   #define NON_PREMULTI_SOURCE			(2 << 12)
+> +#define PREMULTI_SOURCE				(3 << 12)
+>   #define MIX_L_SRC_SIZE(n)		(0x30 + 0x18 * (n))
+>   #define MIX_L_SRC_OFFSET(n)		(0x34 + 0x18 * (n))
+>   #define MIX_FUNC_DCM0			0x120
+> @@ -50,9 +52,7 @@
+>   
+>   #define MIXER_INX_MODE_BYPASS			0
+>   #define MIXER_INX_MODE_EVEN_EXTEND		1
+> -#define DEFAULT_9BIT_ALPHA			0x100
+>   #define	MIXER_ALPHA_AEN				BIT(8)
+> -#define	MIXER_ALPHA				0xff
+>   #define ETHDR_CLK_NUM				13
+>   
+>   enum mtk_ethdr_comp_id {
+> @@ -153,33 +153,59 @@ void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
+>   	struct mtk_plane_pending_state *pending = &state->pending;
+>   	unsigned int offset = (pending->x & 1) << 31 | pending->y << 16 | pending->x;
+>   	unsigned int align_width = ALIGN_DOWN(pending->width, 2);
+> -	unsigned int alpha_con = 0;
+> +	unsigned int mix_con = NON_PREMULTI_SOURCE;
+> +	bool replace_src_a = false;
+> +
+> +	union format {
+> +		unsigned int raw;
+> +		char str[5];
 
-> > Same as my thought,
-> > since every time the reader try to access the address in next page,
-> > the below condition hold in rb_iter_head_event function:
-> >=20
-> >         if (iter->page_stamp !=3D iter_head_page->page->time_stamp ||
-> >                 commit > rb_page_commit(iter_head_page))
-> >                         goto reset;
-> >=20
-> > I observe the result by the debug patch provided below:
-> >=20
-> >         @@ -2378,6 +2378,19 @@ rb_iter_head_event(struct
-> > ring_buffer_iter *iter)
-> >                 commit =3D rb_page_commit(iter_head_page);
-> >                 smp_rmb();
-> >         +       if ((iter->head >=3D 0xFECUL) && commit =3D=3D 0xFF0UL)=
- {
-> >         +               pr_info("rbdbg: cpu =3D %d, event =3D 0x%lx,
-> > iter- =20
-> > > head =3D 0x%lx,\ =20
-> >=20
-> >         +                       commit =3D 0xFF0, type =3D 0x%x, ts =3D
-> > 0x%x,
-> > array addr =3D 0x%lx\n",\
-> >         +                       iter->cpu_buffer->cpu, (unsigned
-> > long)event, iter->head,\
-> >         +                       event->type_len, event->time_delta,
-> > (unsigned long)(&(event->array[0])));
-> >         +               mdelay(500);
-> >         +               pr_info("rbdbg2: cpu =3D %d, event =3D 0x%lx,
-> > iter- =20
-> > > head =3D 0x%lx,\ =20
-> >=20
-> >         +                       commit =3D 0xFF0, type =3D 0x%x, ts =3D
-> > 0x%x,
-> > array addr =3D 0x%lx\n",\
-> >         +                       iter->cpu_buffer->cpu, (unsigned
-> > long)event, iter->head,\
-> >         +                       event->type_len, event->time_delta,
-> > (unsigned long)(&(event->array[0])));
-> >         +               if (iter->page_stamp !=3D iter_head_page->page-=
- =20
-> > > time_stamp || commit > rb_page_commit(iter_head_page)) =20
-> >=20
-> >         +                       pr_info("rbdbg: writer corrupt
-> > reader\n");
-> >         +       }
-> >                 event =3D __rb_page_index(iter_head_page, iter->head);
-> >                 length =3D rb_event_length(event);
-> >=20
-> > Note that the mdelay(500) in the debug patch can reproduce the issue
-> > easier with same test in my environmnet,
-> > I am now able to reproduce the issue within 15 minutes if the debug
-> > patch on.
-> >  =20
->=20
-> The debug patch may give something similar to the below log just before
-> the invalid access happened, for me it looks like the padding event had
-> just corrupted by the writer before the reader invoke rb_event_length
-> function on it.
->=20
-> [  338.156772] cat: [name:ring_buffer&]rbdbg: cpu =3D 0, event =3D
-> 0x????????????dffc, iter->head =3D 0xfec, commit =3D 0xFF0, type =3D 0x1d=
-, ts
-> =3D 0x0, array addr =3D 0x????????????e000
-> [  338.656796] cat: [name:ring_buffer&]rbdbg2: cpu =3D 0, event =3D
-> 0x????????????dffc, iter->head =3D 0xfec, commit =3D 0xFF0, type =3D 0x0,=
- ts
-> =3D 0x0, array addr =3D 0x????????????e000
-> [  338.656803] cat: [name:ring_buffer&]rbdbg: writer corrupt reader
-> [  338.656810] cat:
-> [name:report&]=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D
-> [  338.656819] cat: [name:report&]BUG: KASAN: invalid-access in
-> rb_event_length
->=20
->=20
-> > > > Since the content data start at address 0x71FFFF8111A17FFC are =20
-> > >=20
-> > > 0xFFFFFFC0. =20
-> > > > event->type will be interpret as 0x0, than the reader will try to =
-=20
-> > >=20
-> > > get the =20
-> > > > length by accessing event->array[0], which is an invalid address:
-> > > >     &event->array[0] =3D 0x71FFFF8111A18000
-> > > >=20
-> > > > Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
-> > > > ---
-> > > > Following patch may not become a solution, it merely checks if
-> > > > the =20
-> > >=20
-> > > address =20
-> > > > to be accessed is valid or not within the rb_event_length before =20
-> > >=20
-> > > access. =20
-> > > > And not sure if there is any side-effect it can lead to.
-> > > >=20
-> > > > I am curious about what a better solution for this issue would
-> > > > look =20
-> > >=20
-> > > like. =20
-> > > > Should we address the problem from the writer or the reader?
-> > > >=20
-> > > > Also I wonder if the cause of the issue is exactly as I
-> > > > suspected.
-> > > > Any Suggestion will be appreciated. =20
-> > >=20
-> > > I guess this depends on if you have the fixes or not?
-> > >  =20
-> >=20
-> > yes, I could try to pick the patches that only included in mainline
-> > but
-> > not in kernel-6.1.52 for ring_buffer.c file,
-> > and do the same test to see if the issue is still reproducible.
-> >  =20
-> > > >=20
-> > > > Test below can reproduce the issue in 2 hours on kernel-6.1.24:
-> > > >     $cd /sys/kernel/tracing/
-> > > >     # make the reader and writer race more through resize the =20
-> > >=20
-> > > buffer to 8kb =20
-> > > >     $echo 8 > buffer_size_kn
-> > > >     # enable all events
-> > > >     $echo 1 > event/enable
-> > > >     # enable trace
-> > > >     $echo 1 > tracing_on
-> > > > =20
-> > > >     # write and run a script that keep reading trace
-> > > >     $./read_trace.sh
-> > > >=20
-> > > >     ``` read_trace.sh
-> > > >        while :
-> > > >        do
-> > > >            cat /sys/kernel/tracing/trace > /dev/null
-> > > >        done
-> > > >=20
-> > > >     ``` =20
-> > >=20
-> > > Thanks, I'll look at that when I finish debugging the eventfs bug.
-> > >=20
-> > > -- Steve =20
-> >=20
-> > Also thank for your reply,
-> >  =20
->=20
-> And the temporary fix patch in my first mail should have some modified
-> as shown below.
-> +               if (((unsigned long)event & 0xfffUL) >=3D PAGE_SIZE - 4)
->                                              ^^^^^^
->                                             PAGE_SIZE-1
-> +                       return -1;
+Can we please use fixed size variables?
 
+		u32 raw;
+		u8 str[5];
 
-Your email is getting really hard to read due to the line wrap formatting.
+> +	} format;
+>   
 
-Anyway, can you try this patch?
+Regards,
+Angelo
 
--- Steve
-
-diff --git a/kernel/trace/ring_buffer.c b/kernel/trace/ring_buffer.c
-index 72ccf75defd0..5b0653378089 100644
---- a/kernel/trace/ring_buffer.c
-+++ b/kernel/trace/ring_buffer.c
-@@ -2390,6 +2390,10 @@ rb_iter_head_event(struct ring_buffer_iter *iter)
- 	 */
- 	commit =3D rb_page_commit(iter_head_page);
- 	smp_rmb();
-+	/* An event needs to be at least 8 bytes in size */
-+	if (iter->head > commit - 8)
-+		goto reset;
-+
- 	event =3D __rb_page_index(iter_head_page, iter->head);
- 	length =3D rb_event_length(event);
-=20
 
