@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E620EC873A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 15:43:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 460C5EC873A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 15:44:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dwN5hhOuqhZ+tLwk+JorpaZXT9fScgicMoGtQIzSMz4=; b=Q0EEtt9RJkwHdIquzvdrIINa0H
-	IgNwwU9ApM1vB3kLNLZw09uge2tQjsTJ9Bqvb81zvULF7y9JoKDEQ4/5Uns+sj29BIAP4BIe31WlV
-	uZPw5OjkTc3H38JxZFGz1Buc0n1m/QjV5v4a4iNSOwSJw6Wpw3ljwmvtLeh9wn+0YKBrL8c1/GX5i
-	DKZSU3+QDiRsb7QQ5lSTgMFdkfBpSnTRSsjXXALeJHcbHFun5zNNC4xQA3mAuI83byi/yOPxhxpej
-	TVRdHZep8lLw5jsCClYS85H895cMXGv+TXfHeYpk2ra77GIarL+mbMTuGEdsMJVHAsAuyORuWxool
-	B2AAHExg==;
+	bh=dwN5hhOuqhZ+tLwk+JorpaZXT9fScgicMoGtQIzSMz4=; b=Gy5T9Is1wAWuZSN8+L439HOOqO
+	xvu/irp9eoJOwcSAT49NOVcIXtFhgz2ixx9S6QaADakV2vQxlkTg8cC3pHdjjtBWLQHgEpgtxi2Hs
+	7lXTYfKuCtCEe7fOxr3uORk6ga7Fw6tvqtEAzBchfVCNvz1/MMP7rVzijHSi790NbwOA1Xt1W7YBI
+	WVU8xiRZBn8cG41fhy4Ov2d4P9oerDofJty61zDO9MZvopWZ2dCmd8/ZsuAma7EkkqmE5wKFy8Xur
+	nr4zRmdzXh1B58qLyJN8dtWuySmAuGzesUAG7OMVNNjBKVcw37CjDRQiWyKzlY6T4kfpu/Tea8+Ip
+	y3y89JpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeHAh-00CJSx-2s;
-	Thu, 07 Sep 2023 15:43:55 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qeHAp-00CJVO-0n;
+	Thu, 07 Sep 2023 15:44:03 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeHAe-00CJRN-1V;
-	Thu, 07 Sep 2023 15:43:54 +0000
+	id 1qeHAm-00CJUI-10;
+	Thu, 07 Sep 2023 15:44:01 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 699DCCE18B7;
-	Thu,  7 Sep 2023 15:43:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7751DC4AF7A;
-	Thu,  7 Sep 2023 15:43:47 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id AF24360C13;
+	Thu,  7 Sep 2023 15:43:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDFDCC4AF7D;
+	Thu,  7 Sep 2023 15:43:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694101428;
+	s=k20201202; t=1694101439;
 	bh=LIsG/Rx/6J57d7MY7TqjzdpQe+H8ANtxeJkYiEbt5zk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Q9eF4YXz1bLP0bwhmzsN30QnwcBm0as1/9XNN8Q5M9RQyvzhfhh5JVEOMdqn7/1XY
-	 DnCpL+/2sONyWFT31BK090YJA/ED7tUj8teQuj33ytRq+iezxnwigHW//0pyFo7h3a
-	 Nr9lHWQxJ9MqMZpnzlS5pLhTlSM/m+r2v3gElloIHsCkwJQgIUY3kVQY3wy6cymgwE
-	 OsvqriRSQGSq+3ItiA5NJ05mnnbG9TCD7KID7CNT2QR0RbliTLagugVpOq61ep4bn4
-	 NO/XmaHlugY4TtakRGfi2l5t/dBc355y7gugosT8TQzmZIVzxzWxmQSyhZqwm848rs
-	 NYVAqdFG+Iu7A==
+	b=kgtMw334MLGu8ZoCCdYZuDGf0iMy7q7+R3QH4pBEHgic9Zuzuk8xmIorxmFEFHkWG
+	 vubfknu2hrzu82vFnQycsrD2lGq7JO+J/lhm1EvqOFg7FzVF8X8uyhAyniLzj17BNv
+	 xVxOz56tKbKwdnLbGIEXbJlZ6VSYD6Udx2jiMF2QMc3mXsb+ySHlRJSVqL9VyHpDgV
+	 Toa2VhH1KTbrCiWg5tL6vGGg6wvTqrBCIU+dehxxGFwWtj8kAOk/Pnwe/ZNZkbsRci
+	 8/lw+0COH6lb0MrczbEgk9GF+sKw5r8YQwSxLw5LToebg0mXCUwdi/0x5UDGtw/7xj
+	 21QSPr1IeDJlw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
 Cc: Will Shiu <Will.Shiu@mediatek.com>,
 	Jeff Layton <jlayton@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
+	chuck.lever@oracle.com,
 	viro@zeniv.linux.org.uk,
 	brauner@kernel.org,
-	chuck.lever@oracle.com,
 	matthias.bgg@gmail.com,
 	linux-fsdevel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.5 6/6] locks: fix KASAN: use-after-free in trace_event_raw_event_filelock_lock
-Date: Thu,  7 Sep 2023 11:43:37 -0400
-Message-Id: <20230907154338.3421582-6-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.4 5/5] locks: fix KASAN: use-after-free in trace_event_raw_event_filelock_lock
+Date: Thu,  7 Sep 2023 11:43:49 -0400
+Message-Id: <20230907154349.3421707-5-sashal@kernel.org>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230907154338.3421582-1-sashal@kernel.org>
-References: <20230907154338.3421582-1-sashal@kernel.org>
+In-Reply-To: <20230907154349.3421707-1-sashal@kernel.org>
+References: <20230907154349.3421707-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.5.2
+X-stable-base: Linux 6.4.15
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230907_084352_866095_981DDC92 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20230907_084400_434334_B308AA73 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
