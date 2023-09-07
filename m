@@ -4,82 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BC6EEC874B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 17:16:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDAD3EC875E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 23:32:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vdNu7014Ved9AVAE+fOlNEDZimWFsZWiP0VjxkqLyv8=; b=X9hwLR6oB0PCPN6aQrlbiWY4Oi
-	oqq49WD/1lLiaYWZYXbjpkffV9mUI5fDFFh3CApuh7klhQddu/Su7sfi8yadioosHvPG6NiRCRwFr
-	+0Xm4xYy5XwEg2fuRUaGyGyh/LNyaEAw0/xd+VHwHvE2sCxoY9tBYKX/YIwqgiC79M7EQ7KMhoW8n
-	GnLpnmPN/ZUDzauzjetS8LVNz2Y3fQYA0KWhhYrMjDwrGpLu0TlqMLv/dg1GEeUzLTHCZRo+H11Js
-	5XJ18Yg1jV6o52jnSev/+m11yK+zBYG7jDGstkdmU15+fZoKmheR3RQqns4H+icz5bfWAUfvefE7J
-	XPGF3ADQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9rcsNpbBeMmYdOrH0fdRc8XKB6/Epb7pPmL0hbsW2JA=; b=FE3x8wimGCqnSQgYpZ73vO7Moo
+	Yp7zzShvruMNWsi76NoTgemZUY/QZfM6DkNneAya4RXtNnBoWr4majwa0wuY6gPrZER0BUahkxdRO
+	DM8axiVYGyn+oSpD8AZSEJsQ3H6Vwu0Pu2wBIKVnyfwYZPESk1Hlusnx4HWb+Rk2wrRNUCxKyF4yf
+	AzvMhxUjXcexmNFkmG9Gzb4aDBjDy2W87IWXGWYXj/9peXU47YUjnPbSMAmfhb6vHXhdFgdjmrQdx
+	4lU1B1edeqVgc07byU4xG/V1H3Upp4dlOZNwV7UvoDqMzZx8b6aGuX+1own53sivNX4L33bmDj0hM
+	Hwfg5dXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeIcF-00CST1-0k;
-	Thu, 07 Sep 2023 17:16:27 +0000
-Received: from mgamail.intel.com ([192.55.52.151])
+	id 1qeOUY-00Co1O-1j;
+	Thu, 07 Sep 2023 23:32:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeIcB-00CSRz-36;
-	Thu, 07 Sep 2023 17:16:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1694106983; x=1725642983;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=+nV/A0KI51xC3F16W+WXs9hcXG9VgStb2/g8BOn2vYM=;
-  b=eVE1YZGyoh/z/kYrgXyXpNIjV0YLxNj+Hif+a44ty6PyShrd/rzbRJnu
-   piTt9nMiMYbn3g9PdNPU4otEBBFw0nKMpus8PD0h/VPgk0KkQpy9sWIrj
-   /AjWQfIVOnl65rrsam+scaaRq+4LvHfzAmPrcMl2+atFLqsd68zsswxri
-   0VymMDg0w319gMtbTE2vo3Hz6XQxx1a7NpxEkUvi9o5nFKgeGlmYxJjcl
-   h32aeM+oINR3La43evwMK0WbO99M8+xjH3OBuzc+7RmqDiw77ILmBPahH
-   9R5cghRCayCaHA+my/jMcVB6H6C7bv1pNqvI5Ors4EebXD9DUpNvPNtva
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10826"; a="357732879"
-X-IronPort-AV: E=Sophos;i="6.02,235,1688454000"; 
-   d="scan'208";a="357732879"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Sep 2023 10:15:22 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10826"; a="777151153"
-X-IronPort-AV: E=Sophos;i="6.02,235,1688454000"; 
-   d="scan'208";a="777151153"
-Received: from lkp-server01.sh.intel.com (HELO 59b3c6e06877) ([10.239.97.150])
-  by orsmga001.jf.intel.com with ESMTP; 07 Sep 2023 10:15:17 -0700
-Received: from kbuild by 59b3c6e06877 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1qeIb5-0001QE-2C;
-	Thu, 07 Sep 2023 17:15:15 +0000
-Date: Fri, 8 Sep 2023 01:14:55 +0800
-From: kernel test robot <lkp@intel.com>
-To: Daniel Golle <daniel@makrotopia.org>, Dan Carpenter <error27@gmail.com>,
-	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org
-Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: fix uninitialized
- variable
-Message-ID: <202309080051.4UKDipfX-lkp@intel.com>
-References: <51d1ae238aecde07b2b4fe02cdab0dc87287cd96.1694099183.git.daniel@makrotopia.org>
+	id 1qeOUV-00Co10-2w
+	for linux-mediatek@lists.infradead.org;
+	Thu, 07 Sep 2023 23:32:53 +0000
+X-UUID: d88d45184dd611ee86758d4a7c00f3a0-20230907
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=9rcsNpbBeMmYdOrH0fdRc8XKB6/Epb7pPmL0hbsW2JA=;
+	b=Zha8TSRY3VH8JnVw9u+0z1ssQQVmMvYmUgJDp/zpf4hJPkA2zZV1XBwD8GQgt6YcPg0j7nyGhJYevbyxW/nh2TUJfLiE1mpApEjBmSeqephWX40Khs7PnymyFZgnkiYP4UPXy1OuBzzAg7qbS9ci9xPCAv/J082n0T/+3jAu7U4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:f7762f33-cfc2-49a9-9583-a038d8a13345,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:a15aaf13-4929-4845-9571-38c601e9c3c9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: d88d45184dd611ee86758d4a7c00f3a0-20230907
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 80360470; Thu, 07 Sep 2023 16:32:44 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 8 Sep 2023 07:32:08 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 8 Sep 2023 07:32:08 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<Leon.Yen@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <robin.chiu@mediatek.com>,
+	<Eddie.Chen@mediatek.com>, <jsiuda@google.com>, <arowa@google.org>,
+	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
+	<abhishekpandit@google.com>, <shawnku@google.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] wifi: mt76: mt7921: fix the wrong rate selected in fw for the chanctx driver
+Date: Fri, 8 Sep 2023 07:32:07 +0800
+Message-ID: <4b2ee1382896dd7ff27ecbef6e1ad496edccd3ad.1694129223.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <51d1ae238aecde07b2b4fe02cdab0dc87287cd96.1694099183.git.daniel@makrotopia.org>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3092-8.6.1018-23728.005
+X-TM-AS-Result: No-10--1.614500-8.000000
+X-TMASE-MatchedRID: x6uIgBUWMEwmcsJib2IjaW3NvezwBrVmncKJki+ooR0OUs4CTUgKy49X
+	7Ioij9Lv15nUytvXrcwa7rkdR+2D46YofNn3TZqQtw+xHnsmQjNU3K6aV1ad7Zsoi2XrUn/Jn6K
+	dMrRsL14qtq5d3cxkNffvWahKfRU4FQm9UF7uFyRdS0hNkMonVSeW1fq+KmOGgjgarYenaZbHCP
+	n/QUOXkiD5+gO+AAWPvR8SMYiv5PDzBh4ndoetdro3/9IQaRpdF0aD5ljt43pMcHZD6gqu7wxMj
+	fifIXfowkvVoA11TwqeqD9WtJkSIw==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--1.614500-8.000000
+X-TMASE-Version: SMEX-14.0.0.3092-8.6.1018-23728.005
+X-TM-SNTS-SMTP: D8A335030467CFCF19C7B0C788FAA99AA899852EF5D11554A43B9033D9B4B5492000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230907_101624_020337_4D5E92E0 
-X-CRM114-Status: GOOD (  13.01  )
+X-CRM114-CacheID: sfid-20230907_163251_959177_20662CED 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,49 +99,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+From: Sean Wang <sean.wang@mediatek.com>
 
-kernel test robot noticed the following build warnings:
+The variable band should be determined by the ieee80211_chanctx_conf when
+the driver is a kind of chanctx one e.g mt7921 and mt7922 driver so we
+added the extension to mt76_connac2_mac_tx_rate_val and
+mt76_connac_get_he_phy_cap for the firmware can select the proper rate.
 
-[auto build test WARNING on net/main]
+Fixes: 41ac53c899bd ("wifi: mt76: mt7921: introduce chanctx support")
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Daniel-Golle/net-ethernet-mtk_eth_soc-fix-uninitialized-variable/20230907-234141
-base:   net/main
-patch link:    https://lore.kernel.org/r/51d1ae238aecde07b2b4fe02cdab0dc87287cd96.1694099183.git.daniel%40makrotopia.org
-patch subject: [PATCH net] net: ethernet: mtk_eth_soc: fix uninitialized variable
-config: parisc-allyesconfig (https://download.01.org/0day-ci/archive/20230908/202309080051.4UKDipfX-lkp@intel.com/config)
-compiler: hppa-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230908/202309080051.4UKDipfX-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202309080051.4UKDipfX-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   In file included from include/uapi/linux/posix_types.h:5,
-                    from include/uapi/linux/types.h:14,
-                    from include/linux/types.h:6,
-                    from include/linux/of.h:14,
-                    from drivers/net/ethernet/mediatek/mtk_eth_soc.c:9:
-   drivers/net/ethernet/mediatek/mtk_eth_soc.c: In function 'mtk_poll_rx':
->> include/linux/stddef.h:8:14: warning: initialization of 'dma_addr_t' {aka 'unsigned int'} from 'void *' makes integer from pointer without a cast [-Wint-conversion]
-       8 | #define NULL ((void *)0)
-         |              ^
-   drivers/net/ethernet/mediatek/mtk_eth_soc.c:2008:31: note: in expansion of macro 'NULL'
-    2008 |         dma_addr_t dma_addr = NULL;
-         |                               ^~~~
-
-
-vim +8 include/linux/stddef.h
-
-^1da177e4c3f41 Linus Torvalds   2005-04-16  6  
-^1da177e4c3f41 Linus Torvalds   2005-04-16  7  #undef NULL
-^1da177e4c3f41 Linus Torvalds   2005-04-16 @8  #define NULL ((void *)0)
-6e218287432472 Richard Knutsson 2006-09-30  9  
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 0f0a519f956f..8274a57e1f0f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -829,7 +829,9 @@ void mt76_connac_mcu_sta_tlv(struct mt76_phy *mphy, struct sk_buff *skb,
+ 			     struct ieee80211_vif *vif,
+ 			     u8 rcpi, u8 sta_state)
+ {
+-	struct cfg80211_chan_def *chandef = &mphy->chandef;
++	struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
++	struct cfg80211_chan_def *chandef = mvif->ctx ?
++					    &mvif->ctx->def : &mphy->chandef;
+ 	enum nl80211_band band = chandef->chan->band;
+ 	struct mt76_dev *dev = mphy->dev;
+ 	struct sta_rec_ra_info *ra_info;
+@@ -1369,7 +1371,10 @@ EXPORT_SYMBOL_GPL(mt76_connac_get_phy_mode_ext);
+ const struct ieee80211_sta_he_cap *
+ mt76_connac_get_he_phy_cap(struct mt76_phy *phy, struct ieee80211_vif *vif)
+ {
+-	enum nl80211_band band = phy->chandef.chan->band;
++	struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
++	struct cfg80211_chan_def *chandef = mvif->ctx ?
++					    &mvif->ctx->def : &phy->chandef;
++	enum nl80211_band band = chandef->chan->band;
+ 	struct ieee80211_supported_band *sband;
+ 
+ 	sband = phy->hw->wiphy->bands[band];
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.25.1
+
 
