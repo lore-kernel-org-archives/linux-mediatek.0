@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D530EE14D3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 09:03:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E1CCEE14D4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 09:06:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Sy3Z3DJSlc3e5ktATbgFNf0GmEMVoOPM89ZroshYARQ=; b=jOjasDSrqzPxIxUzCqdRlB5PAh
-	3foNLu0r/Q0Xg5Zj8is+MRhOsVFHICzCKOcKwEErjrxKfQAYkCiG7NJd4K+2812YOhq1RPVr6HN37
-	Zptw2gkIsxcrVyyI3A3E/ARYVvpdzDA7N+Ppa4ahLTZ55P+DYZUWmvr/IkTW9+tmktPeZiV0cqGJh
-	uz0zUEHjY7SDHcAJZhLkHlwReqRs2pQcx2ptATu43CCJ/m1jNIxE2L0yHDLcFKBWTWsgSP8Hw2jew
-	snklilmwWTgP/YOycS+eScvBRarmqySqogJnWZXpB+Ayou89YYoJkgbA/0ndI6YuE0BFycAojsZuj
-	6sAeW+xQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=z/g+hgXRtp/ui6wbc/vyVK4ZHuYy9aYfM4WFbm/bBi4=; b=ufElC597pS3F1lS1NCMlA8mAkC
+	YF+LF5DKXa15E3TNdD4tGv96F8wNF516jBp1y19N0S1fpqA9X62ZZtNYPlEV8M/tiiAA584XUs8GA
+	4fQQsT1JC5AZar1jH2I7mrL/HHCAhkgPEimDWe4l0vTC2eTQ3bwmElHHOgaF0BupsHXdgJOSP5Xuk
+	bKFFERBSDkSxG2t4DUDakgUJ2O3QgDUeIsf0xg79aIi3AucYHR/sNLZQjTVKewzREm/pbbBWTDtgb
+	3pwnUuq7Eyd9TQyIyiPEFHnzB8/KQTFzxjXd3VFGX959Y2779IXJoYBZEqIg1G/JTlqM/BJ21LYSO
+	YySwFIPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeAvA-00BdW9-1i;
-	Thu, 07 Sep 2023 09:03:28 +0000
+	id 1qeAxw-00BdlI-0C;
+	Thu, 07 Sep 2023 09:06:20 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeAv7-00BdVS-28;
-	Thu, 07 Sep 2023 09:03:26 +0000
+	id 1qeAxr-00Bdjr-1k;
+	Thu, 07 Sep 2023 09:06:17 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B4A5B66072EB;
-	Thu,  7 Sep 2023 10:03:20 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8769466072ED;
+	Thu,  7 Sep 2023 10:06:13 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694077401;
-	bh=cxgHzHn8tiosscM7rs1t8c0B3y0bEz5hVnyonEDHwcQ=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=Jg1VsCm9fyb2bJm+Y5M/Ced1kTka548X7IOgeXjgnnWl67hvNS821o1bKeDkQu2WE
-	 brIIQdtFGeGVK3M5Dk2Pt0NhVtC6msKiIq1jyReoAQwjBIrv6LCzEbihfwYz9k1HAx
-	 lt7VIocWeYNT+7l6SezTDlpFKPLmRiY2hU34cR5LpuhG8Z5WQ9nKgNRxZjSKh00rQc
-	 nxbnx1vT52hGtcgAsMgSHRT1pLGcl3sFQNawVJZ0+eE6IzDdtXHg2y2rw1mdhjLKki
-	 s+87GyXOpqw8UQ/DD43vAn4RnWAlEmY0twKQPoTAOgdIoP4l+3emRC86Bq3kD3AN72
-	 p3l9H8ciY53xA==
-Message-ID: <827ba3c8-198a-7d1d-4511-b7aa9710b27f@collabora.com>
-Date: Thu, 7 Sep 2023 11:03:17 +0200
+	s=mail; t=1694077574;
+	bh=faV2RqAEvL8VWjpK/yOwEuSo/mN8TrmiSzgmPKx+9yM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=fZSdzOn7RsosI0whfciCa1jkLbzobNQgzpFfqN64/WFaH0JVVvDSITRRVIEfU0cJL
+	 9G92DE9ZL2ENrm3vbx1QvZd4i1CDQL2FuXWddcPUL3Tqh0pjzLSwMkHx2wp7B4QUdQ
+	 q9PGdQgGkyyyX1Pl4543wCue7OOTDAwD5g72b0Ly6kMs0p+bnuU6+07ib7DHxNU5cx
+	 u4ZwxmJ0hWyaDQ8C8BclNi0tFr2oq07xr85X+lIXCQX1ZEOKfYScVlTmGYcg2MRiu6
+	 Wj0OIJV+sPLPeQ/pVqWigMMccyTCNRS+0EL92QjILR/PUc4OKJzNOD0NEDYdoLByDx
+	 2NecuKDEnsvzw==
+Message-ID: <73fd31ea-f869-db13-5069-f0f5267ba3d3@collabora.com>
+Date: Thu, 7 Sep 2023 11:06:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH] scsi: ufs: do not look for unsupported
- vdd-hba-max-microamp
+Subject: Re: [PATCH] clk: mediatek: clk-mt2701: Add check for
+ mtk_alloc_clk_data
 Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Stanley Chu <stanley.chu@mediatek.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-scsi@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20230906113302.201888-1-krzysztof.kozlowski@linaro.org>
+To: Jiasheng Jiang <jiasheng@iscas.ac.cn>, mturquette@baylibre.com,
+ sboyd@kernel.org, matthias.bgg@gmail.com, wenst@chromium.org,
+ msp@baylibre.com, frank.li@vivo.com, robh@kernel.org,
+ jamesjj.liao@mediatek.com, shunli.wang@mediatek.com, erin.lo@mediatek.com
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230901024658.23405-1-jiasheng@iscas.ac.cn>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230906113302.201888-1-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20230901024658.23405-1-jiasheng@iscas.ac.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230907_020325_895831_638F4107 
-X-CRM114-Status: UNSURE (   7.90  )
+X-CRM114-CacheID: sfid-20230907_020616_547427_7A206D98 
+X-CRM114-Status: UNSURE (   8.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,16 +80,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/09/23 13:33, Krzysztof Kozlowski ha scritto:
-> Bindings do not allow vdd-hba-max-microamp property and the driver does
-> not use it (does not control load of vdd-hba supply).  Skip looking for
-> this property to avoid misleading dmesg messages:
+Il 01/09/23 04:46, Jiasheng Jiang ha scritto:
+> Add the check for the return value of mtk_alloc_clk_data() in order to
+> avoid NULL pointer dereference.
 > 
->    ufshcd-qcom 1d84000.ufs: ufshcd_populate_vreg: unable to find vdd-hba-max-microamp
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-For MediaTek:
+> Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
+> Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
