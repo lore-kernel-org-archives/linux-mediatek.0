@@ -4,68 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FA40EE57ED
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 10:04:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61D6DEB8FD7
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 11:51:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HRFarK1KZpJ96kbVEhXldR+zESIEVld0ZeG4LbITq3k=; b=NxyrWEevleHzLZlruHfo1EYmFU
-	aAnk5jP6lIBKbR8jaA2POVPdJUPxcd3odMOrHWfhVKYdkp1tMQEpbZG84ekThavnc2wlf/oVfqxn7
-	GjmJ9XJOrjQPsUSgYfDk8OTkR4lBfXVyo+snv7xVZUwCz3qt7+i72AvBnfYGJ62aRC5q2BNGQ86xP
-	dz+O4SyBxVwL6IMowMujkKdsqVSECcBvjuIR10QDIwUgyeMK+VftvAYEyn26pSISAlaSRDm/bnd1A
-	nff/GfwKQ9k522IN/cUMGla99YP+zzYtnmRTZO5xtOOXbMVQc4PSvK88/8v8MNL3Cu6ZpPJrQwR5I
-	pKIJgYAA==;
+	bh=etW99NG5BvyY4SuRfU5lZu1cQhINWbdTi13Yac2QPgE=; b=f7Lz2ZyfpWZBWHuyHnX8Sr5Tba
+	x9KkeJVStmKfAGOcQfy2h8wxa00fVlZrQMvwSA6BROQtojPTrp2WXn2e06lvi/Cf/y3fzkfhLE1Gb
+	6L332hq4Lflas07iiY+yyn6kjJmX8wAUfdxE2JbEB27hvDZVcybLwBmYD69wWMK1fNlpidNhNLv1g
+	GxoPAhfkPvhLKNdlL2qj7va8jgLZIRn6SpA2fUeIV9s7jQ8iGH7ogUC6pA5qBXCnPgk84CxRdWYWh
+	+sFsSmzSj5YYCahxJnASuPegg0BU9joAZrFQUASg5GuV8GAih+OtlPn3XgVxsCREB5JnCJCbsL/cD
+	JDcrhXJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeYLt-00DRxS-2d;
-	Fri, 08 Sep 2023 10:04:37 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qea1g-00Di3v-35;
+	Fri, 08 Sep 2023 11:51:52 +0000
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeYLq-00DRwI-1j;
-	Fri, 08 Sep 2023 10:04:36 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4F7D76607258;
-	Fri,  8 Sep 2023 11:04:31 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694167472;
-	bh=PMJKkkg9Mq7q/ZTFu38eyhxdwKmjapZyHJI+geNR8i8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=IUG/kfx8gip88bw4DdX3nLfzNBnv2xviKRyZDrn+w4vbBqIIUgyBT7mOX42pt1yL3
-	 XWcCXO8BE5Fh7pukKJPESETYhGjpiGKgmXZUkDXyaoYTyTfJrruf80SSjaqk774DyC
-	 fc5vtFp782MLHA9XNnUq7ebce7N3fHoEaBB7EKGsxgX04iW9jRuDLGJ/eFLrO1DryO
-	 si3qe1M4FckQCQZp4tEB3d2H9EAkOzyu1EojSTrRu+LxF5qC80i6ltyXHmxQF6MKSJ
-	 3N34Rii9imqymq0GXH5NEjR0vk7WCiTwQ2IYnDP/ryqVKW3oZE0q1nMN9c1hdykTqS
-	 wTb2XAyFptyjA==
-Message-ID: <c46dc0ff-3713-917b-9640-27a4afdc0002@collabora.com>
-Date: Fri, 8 Sep 2023 12:04:29 +0200
+	id 1qea1d-00Di1O-0B
+	for linux-mediatek@lists.infradead.org;
+	Fri, 08 Sep 2023 11:51:50 +0000
+Received: by mail-io1-xd36.google.com with SMTP id ca18e2360f4ac-77ac14ff51bso72950139f.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 08 Sep 2023 04:51:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1694173899; x=1694778699; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=etW99NG5BvyY4SuRfU5lZu1cQhINWbdTi13Yac2QPgE=;
+        b=Oy7m+zK8HyEIsOHJaHZvLQP20WIpdTWv4a8QFxo/Re0WHdKcDak0cTztq3acZjvwRK
+         8gsYoa2RiD3GPJaIUUkfp0+c0sNneVAoGVd9GXByWp0tj9tRyB49OpZl2k2ymGNb3WsS
+         ujIx3CQFPJ9SbJvq+BT38bV5/SoRjUZzxvDTM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694173899; x=1694778699;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=etW99NG5BvyY4SuRfU5lZu1cQhINWbdTi13Yac2QPgE=;
+        b=Onxq5q4LIKUUKDHRPOcTS09pLTdBK1+YS2o7H0aV/OG7F0HOOon5gnp+AqTW1rIl0Q
+         lm+NEtoT7gDE+aEsvybvq6qcBMMYIPXDJHHrfCfyPWdgEWxu2K9cKwDsmK6Jxv1c71+j
+         dtyB/hKINFFYql+Pni81D5ebXkInf7WvYIM3cmWypWSLc+RHzFP00myw1Dkaex0VL4/R
+         sNbzHGNcizUU8/cWIsz2TuEk4ssbitSdE4NIfx1ZY+TUPktXxMCYFK7HCxhoMVVigb0g
+         qyKXPUMTFfssb3OIS2VVE2tEWikiMgMBcMeMGDm8zLmX3yotmIG+jOeBTFTzTGxQVjDr
+         l5WQ==
+X-Gm-Message-State: AOJu0YyP/z/6EGiLSweLUOrtyBob8QiX2884ObucCwAxk7s3MHhH2bAM
+	ZK1Sp6MC0GKk7dMOsFV5tdDvQ/9F1bI8F5aExo8=
+X-Google-Smtp-Source: AGHT+IFxUY5Qi8kssEV6MTOIp9pD3zfZznUa6DAqPcU56/VD1XM78ZL1z8Zn+OrIbsPWkc+YqmlHKw==
+X-Received: by 2002:a6b:5c0b:0:b0:790:a905:5fbf with SMTP id z11-20020a6b5c0b000000b00790a9055fbfmr2781666ioh.11.1694173899082;
+        Fri, 08 Sep 2023 04:51:39 -0700 (PDT)
+Received: from mail-io1-f45.google.com (mail-io1-f45.google.com. [209.85.166.45])
+        by smtp.gmail.com with ESMTPSA id z10-20020a6be00a000000b007862c74cec6sm456563iog.1.2023.09.08.04.51.38
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 08 Sep 2023 04:51:38 -0700 (PDT)
+Received: by mail-io1-f45.google.com with SMTP id ca18e2360f4ac-7951f0e02ecso73922339f.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 08 Sep 2023 04:51:38 -0700 (PDT)
+X-Received: by 2002:a6b:e60b:0:b0:791:280:839e with SMTP id
+ g11-20020a6be60b000000b007910280839emr2660662ioh.16.1694173898001; Fri, 08
+ Sep 2023 04:51:38 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v3] dt-bindings: phy: Add compatible for Mediatek MT8188
-Content-Language: en-US
-To: Shuijing Li <shuijing.li@mediatek.com>, chunfeng.yun@mediatek.com,
- vkoul@kernel.org, kishon@kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de
-Cc: linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, jitao.shi@mediatek.com
-References: <20230908075310.17825-1-shuijing.li@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230908075310.17825-1-shuijing.li@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20230901234202.566951-1-dianders@chromium.org> <20230901164111.RFT.5.I2b014f90afc4729b6ecc7b5ddd1f6dedcea4625b@changeid>
+In-Reply-To: <20230901164111.RFT.5.I2b014f90afc4729b6ecc7b5ddd1f6dedcea4625b@changeid>
+From: Fei Shao <fshao@chromium.org>
+Date: Fri, 8 Sep 2023 19:51:00 +0800
+X-Gmail-Original-Message-ID: <CAC=S1niYAC3PFQoAmwVc=1FcK29uu5sC9c1pGo-mku__y7eHcA@mail.gmail.com>
+Message-ID: <CAC=S1niYAC3PFQoAmwVc=1FcK29uu5sC9c1pGo-mku__y7eHcA@mail.gmail.com>
+Subject: Re: [RFT PATCH 05/15] drm/mediatek: Call drm_atomic_helper_shutdown()
+ at shutdown time
+To: Douglas Anderson <dianders@chromium.org>
+Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, airlied@gmail.com, 
+	angelogioacchino.delregno@collabora.com, chunkuang.hu@kernel.org, 
+	daniel@ffwll.ch, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	matthias.bgg@gmail.com, p.zabel@pengutronix.de
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230908_030434_700024_34DF7BF7 
-X-CRM114-Status: GOOD (  13.73  )
+X-CRM114-CacheID: sfid-20230908_045149_093495_EEA41C1F 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,47 +99,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/09/23 09:53, Shuijing Li ha scritto:
-> Add dt-binding documentation of dsi-phy for MediaTek MT8188 SoC.
-> 
-> Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
+Hi,
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Sat, Sep 2, 2023 at 7:42=E2=80=AFAM Douglas Anderson <dianders@chromium.=
+org> wrote:
+...<snip>
+> @@ -952,6 +960,7 @@ static const struct dev_pm_ops mtk_drm_pm_ops =3D {
+>  static struct platform_driver mtk_drm_platform_driver =3D {
+>         .probe  =3D mtk_drm_probe,
+>         .remove =3D mtk_drm_remove,
 
-> ---
-> Changes in v3:
-> After upstreaming the basic version of mt8188.dtsi, we will add the
-> following mipi node in mt8188.dtsi:
-> mipi_tx_config0: mipi_dphy0@11c80000 {
-> 			compatible = "mediatek,mt8188-mipi-tx",
-> 				     "mediatek,mt8183-mipi-tx";
-> 			reg = <0 0x11c80000 0 0x1000>;
-> 			clocks = <&clk26m>;
-> 			#clock-cells = <0>;
-> 			#phy-cells = <0>;
-> 			clock-output-names = "mipi_tx0_pll";
-> 			status = "disabled";
-> 		};
-> per suggestion from the previous thread:
-> https://lore.kernel.org/all/0a6d3d14-33f0-92d2-b42f-e4d336c8cd91@linaro.org/
-> Changes in v2:
-> Adjust mt8188 position.
-> ---
->   Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
-> index a63b20dfa4a5..6703689fcdbe 100644
-> --- a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
-> +++ b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
-> @@ -30,6 +30,7 @@ properties:
->             - const: mediatek,mt8173-mipi-tx
->         - items:
->             - enum:
-> +              - mediatek,mt8188-mipi-tx
->                 - mediatek,mt8365-mipi-tx
->             - const: mediatek,mt8183-mipi-tx
->         - const: mediatek,mt2701-mipi-tx
+I think this patch, and perhaps some others in this series, will have
+a trivial conflict to Uwe's work about the remove callback conversion
+e.g. [1], so you might want to rebase the series onto the latest
+linux-next.
+
+On the other hand, I tested this patch on MT8195 and MT8188
+Chromebooks and I don't see issues during boot / reboot, so
+
+Reviewed-by: Fei Shao <fshao@chromium.org>
+Tested-by: Fei Shao <fshao@chromium.org>
+
+[1]: https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git=
+/commit/?h=3Dmediatek-drm-next&id=3Db3af12a0b46888340e024ba8b231605bcf2d0ab=
+3
 
 
+
+> +       .shutdown =3D mtk_drm_shutdown,
+>         .driver =3D {
+>                 .name   =3D "mediatek-drm",
+>                 .pm     =3D &mtk_drm_pm_ops,
+> --
+> 2.42.0.283.g2d96d420d3-goog
+>
+>
 
