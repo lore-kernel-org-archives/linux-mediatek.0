@@ -4,72 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9834AEE57EC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 10:02:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FA40EE57ED
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 10:04:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iygYu9mPSsiBh6iVU0L8fGSvKfvn0LU4DjGst0clnKE=; b=jug/iT1+v5ej+HMZ928EHZZ3qm
-	LvEmkq9NDz/nB8dPovj6Fm1VFIstvJaR5z9Y7hurnERCC4oT3ljODwz7z4ZSNeszPPGd11MNyQSpM
-	G+87s0PPAB3gWgz+BrOA/Raop5yAC4Mvyfzoh7zjWXtnYcSrRldT/R6M7KA5rwYJq1YWiJDglTaqo
-	aOxFSPuTMUKG0hlH90b9v8S5gRJCM/yRMelSaWNfnGaDydzy5NoV6+Vumitx5yITI/x4JWmI0OobK
-	zvr1nDJBKo7jrKhx+/ix/gkGiagOSMOI6Xc4IhmBXHxvATFtW2hmm7uNLBjS/9cqz/bWM9TWncWyF
-	C1kqGwOA==;
+	bh=HRFarK1KZpJ96kbVEhXldR+zESIEVld0ZeG4LbITq3k=; b=NxyrWEevleHzLZlruHfo1EYmFU
+	aAnk5jP6lIBKbR8jaA2POVPdJUPxcd3odMOrHWfhVKYdkp1tMQEpbZG84ekThavnc2wlf/oVfqxn7
+	GjmJ9XJOrjQPsUSgYfDk8OTkR4lBfXVyo+snv7xVZUwCz3qt7+i72AvBnfYGJ62aRC5q2BNGQ86xP
+	dz+O4SyBxVwL6IMowMujkKdsqVSECcBvjuIR10QDIwUgyeMK+VftvAYEyn26pSISAlaSRDm/bnd1A
+	nff/GfwKQ9k522IN/cUMGla99YP+zzYtnmRTZO5xtOOXbMVQc4PSvK88/8v8MNL3Cu6ZpPJrQwR5I
+	pKIJgYAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeYJW-00DRX6-1V;
-	Fri, 08 Sep 2023 10:02:10 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qeYLt-00DRxS-2d;
+	Fri, 08 Sep 2023 10:04:37 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeYJR-00DRVh-2d;
-	Fri, 08 Sep 2023 10:02:07 +0000
+	id 1qeYLq-00DRwI-1j;
+	Fri, 08 Sep 2023 10:04:36 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3A5566607286;
-	Fri,  8 Sep 2023 11:02:01 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4F7D76607258;
+	Fri,  8 Sep 2023 11:04:31 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694167321;
-	bh=CJX6Es8XVyYycbnz90Chqf3r+Q8Nrk3dqnQg+Fy6VtE=;
+	s=mail; t=1694167472;
+	bh=PMJKkkg9Mq7q/ZTFu38eyhxdwKmjapZyHJI+geNR8i8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=a+htBuzs035plfZ7GT2pnM9VV2Pnz5NNYpc+o9kzZJSkdROU9a/nZRqxTiPCW4KeI
-	 8KpEEPJHlTxyYC8Ky6RnNG/ObZoJYITr+cLtxJA+4oPKuoKrXmh7tyLS2HVjOO1w3k
-	 +vdFJVoGhxG+4uGImhrmThl/OqhuVcIf3GALmitwL+wZNMBEzbcKKuDFg+8XqFmjeO
-	 ImMpWkSOV2usXSHq3IGF6n7ehNb30XuvquSdTQrk4BLuGAKycTLPGWwJ4kxP/RogZW
-	 bT5XrBHxGGt/ou/hEFsXYiBAhdX3wksZYaHyh5KqtMN2QHscOB5snXVUKgnimwiLyX
-	 aD1jiY4pIlT+g==
-Message-ID: <a13b0e48-103d-8e3d-6d40-994cbdca9b44@collabora.com>
-Date: Fri, 8 Sep 2023 12:01:58 +0200
+	b=IUG/kfx8gip88bw4DdX3nLfzNBnv2xviKRyZDrn+w4vbBqIIUgyBT7mOX42pt1yL3
+	 XWcCXO8BE5Fh7pukKJPESETYhGjpiGKgmXZUkDXyaoYTyTfJrruf80SSjaqk774DyC
+	 fc5vtFp782MLHA9XNnUq7ebce7N3fHoEaBB7EKGsxgX04iW9jRuDLGJ/eFLrO1DryO
+	 si3qe1M4FckQCQZp4tEB3d2H9EAkOzyu1EojSTrRu+LxF5qC80i6ltyXHmxQF6MKSJ
+	 3N34Rii9imqymq0GXH5NEjR0vk7WCiTwQ2IYnDP/ryqVKW3oZE0q1nMN9c1hdykTqS
+	 wTb2XAyFptyjA==
+Message-ID: <c46dc0ff-3713-917b-9640-27a4afdc0002@collabora.com>
+Date: Fri, 8 Sep 2023 12:04:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH] power: supply: mt6370: Fix missing error code in
- mt6370_chg_toggle_cfo()
-To: ChiaEn Wu <chiaen_wu@richtek.com>,
- Dan Carpenter <dan.carpenter@linaro.org>
-Cc: Harshit Mogalapalli <harshit.m.mogalapalli@oracle.com>,
- Sebastian Reichel <sre@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Andy Shevchenko <andy.shevchenko@gmail.com>,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel-janitors@vger.kernel.org, error27@gmail.com
-References: <20230906084815.2827930-1-harshit.m.mogalapalli@oracle.com>
- <cd6eea67-df0f-08b1-61cd-57a3b4f9cf0d@collabora.com>
- <1092ffb3-0238-4dc0-baf3-344a653fca3f@kadam.mountain>
- <20230908021913.GB3115@linuxcarl2.richtek.com>
+Subject: Re: [PATCH v3] dt-bindings: phy: Add compatible for Mediatek MT8188
 Content-Language: en-US
+To: Shuijing Li <shuijing.li@mediatek.com>, chunfeng.yun@mediatek.com,
+ vkoul@kernel.org, kishon@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de
+Cc: linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, jitao.shi@mediatek.com
+References: <20230908075310.17825-1-shuijing.li@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230908021913.GB3115@linuxcarl2.richtek.com>
+In-Reply-To: <20230908075310.17825-1-shuijing.li@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230908_030206_059362_0684402B 
-X-CRM114-Status: GOOD (  18.94  )
+X-CRM114-CacheID: sfid-20230908_030434_700024_34DF7BF7 
+X-CRM114-Status: GOOD (  13.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,48 +80,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/09/23 04:19, ChiaEn Wu ha scritto:
-> On Thu, Sep 07, 2023 at 02:08:17PM +0300, Dan Carpenter wrote:
+Il 08/09/23 09:53, Shuijing Li ha scritto:
+> Add dt-binding documentation of dsi-phy for MediaTek MT8188 SoC.
 > 
-> [...]
-> 
->>>> diff --git a/drivers/power/supply/mt6370-charger.c b/drivers/power/supply/mt6370-charger.c
->>>> index f27dae5043f5..a9641bd3d8cf 100644
->>>> --- a/drivers/power/supply/mt6370-charger.c
->>>> +++ b/drivers/power/supply/mt6370-charger.c
->>>> @@ -324,7 +324,7 @@ static int mt6370_chg_toggle_cfo(struct mt6370_priv *priv)
->>>>    	if (fl_strobe) {
->>>>    		dev_err(priv->dev, "Flash led is still in strobe mode\n");
->>>> -		return ret;
->>>> +		return -EINVAL;
->>>
->>> I think that returning 0 here was intentional, but I agree on a return ret
->>> here being both confusing and wrong.
->>
->> If it's a success path then probably we should remove the dev_err().
->>
-> 
-> Hi all,
-> Sorry for the late reply!
-> 
-> I agree with the first half of Angelo's statement, I did make the
-> mistake on this 'return ret'.
-> What I was trying to say is that you should not to toggle cfo function
-> when the FLED of MT6370 is still in "strobe mode".
-> 
-> Therefore, I think the change of Harshit's patch is correct.
-> It should be 'return -EINVAL' or 'return -EPERM' here.
-> 
-> Thanks!
-> 
-> 
-> Reviewed-by: ChiaEn Wu <chiaen_wu@richtek.com>
-> 
-> 
-> Best regards,
-> ChiaEn Wu
-
-Cool. In that case:
+> Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+> ---
+> Changes in v3:
+> After upstreaming the basic version of mt8188.dtsi, we will add the
+> following mipi node in mt8188.dtsi:
+> mipi_tx_config0: mipi_dphy0@11c80000 {
+> 			compatible = "mediatek,mt8188-mipi-tx",
+> 				     "mediatek,mt8183-mipi-tx";
+> 			reg = <0 0x11c80000 0 0x1000>;
+> 			clocks = <&clk26m>;
+> 			#clock-cells = <0>;
+> 			#phy-cells = <0>;
+> 			clock-output-names = "mipi_tx0_pll";
+> 			status = "disabled";
+> 		};
+> per suggestion from the previous thread:
+> https://lore.kernel.org/all/0a6d3d14-33f0-92d2-b42f-e4d336c8cd91@linaro.org/
+> Changes in v2:
+> Adjust mt8188 position.
+> ---
+>   Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
+> index a63b20dfa4a5..6703689fcdbe 100644
+> --- a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
+> @@ -30,6 +30,7 @@ properties:
+>             - const: mediatek,mt8173-mipi-tx
+>         - items:
+>             - enum:
+> +              - mediatek,mt8188-mipi-tx
+>                 - mediatek,mt8365-mipi-tx
+>             - const: mediatek,mt8183-mipi-tx
+>         - const: mediatek,mt2701-mipi-tx
+
+
 
