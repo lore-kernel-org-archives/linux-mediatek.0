@@ -4,79 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E0C2EE57C7
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 05:36:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68DF6EE57CA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 06:21:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RRoKsR2fM4VF4sGaN7H3QcJzcrKKGUcOPXot1HnmEvQ=; b=vJ3mGbjP//myr8TOfzTJH+P8pl
-	8B2fIzmXGMNtMWD7nsKX7mg/kM6qtmEZcXtPVHr0JjFLNRY2IJeCQgidZIrvORmGw7fDGj/jKDZvT
-	htP8jsGukz/LpNUJsjWvk0e5EtQ7KvxG0y+abnJ+ED3yq1b3NMcpsUbzrl3kVsJJ9/bFhB/dILDBw
-	xNs19e1t3kp/ooQYWpLnYsiWarW1punalVVTTnJusWMqimVkI0fTZj3xhm/sX3fxe76j/72W8lD+E
-	ZrvNT7OYs+H676djsj3Uzplnisfw3MrDtPWEqm99u4yj0Z4IwzXBK5DSc4EKdFDpEEsCLGVMGfu/o
-	0RoiE3wQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bZKTZfBK+A502bdB4x6E91XtGMQJaKt3JAZWmYT/Cyk=; b=a68vwtwqgEYK1SoeOe3DKcLQXb
+	zdu/+Sn+8fkO4QEu7pWhSU07qJqungBIrnfY5rKWyFMf++8SE9/bErsHA6ukEOtPtR1M2iOmRg+WO
+	fcGnCJyJGxGdHtY85jj+c3nQrvtuX97enBxJIQSDDr26a/1RnKSnjgaGfalBfUjUxwJO92LUrjjQA
+	Q6AeHfuhbYY96rNQkYBNLsB7qGgixWyiqCzLGfEUMGUYVwYgpkQRspN2e6lUkOvR1S3J8FKpPKs5c
+	s0kn8wCTG/2vFVBsYdsp3hbl7/rUPzpxnpyklgP6et6jh/srXKiSoqJ4JaXX93BDrXhu2PWKJZbun
+	1Nu4dzAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeUA6-00D6OD-1Z;
-	Fri, 08 Sep 2023 05:36:10 +0000
-Received: from mgamail.intel.com ([134.134.136.20])
+	id 1qeUrs-00D9qc-0k;
+	Fri, 08 Sep 2023 06:21:24 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeUA3-00D6Nk-1z
-	for linux-mediatek@lists.infradead.org;
-	Fri, 08 Sep 2023 05:36:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1694151367; x=1725687367;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=RorTQrQboReTQY01ayidMAcwqSmkqQs9BqJbd0Do9Lg=;
-  b=Lg1KWi78yOnmJcu8goyxDCRdRgOpnXgBIOp2yGtxctjje/YY01VAIEfa
-   7bOUSVvdSqgagkxxAi00yk41h2M0lJX45sLucF6JaVlgnECr+827t7s57
-   AWK2AYVL3sORV0FbM6DSAoL/VGHovy2GbRdi11jgdFZllHBu1SCNvv1xb
-   PGlW1liTOMu4LrMcOWqwxHkOV8Njmg+wWSPWQzIaQdC++eGAun+gISOmR
-   LGoeHMAispxaijNIQbEEm7LUWu18GaVtT0WpevFjWWm12wBWvZ/mBFscW
-   652aybH6YwL0bfxOR7yDYmE4WbLn3jTJghmdFDAvdeaB6RpWOPtux3l8J
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10826"; a="367827875"
-X-IronPort-AV: E=Sophos;i="6.02,236,1688454000"; 
-   d="scan'208";a="367827875"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Sep 2023 22:35:55 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10826"; a="885520782"
-X-IronPort-AV: E=Sophos;i="6.02,236,1688454000"; 
-   d="scan'208";a="885520782"
-Received: from lkp-server01.sh.intel.com (HELO 59b3c6e06877) ([10.239.97.150])
-  by fmsmga001.fm.intel.com with ESMTP; 07 Sep 2023 22:35:35 -0700
-Received: from kbuild by 59b3c6e06877 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1qeU9k-0001xV-2W;
-	Fri, 08 Sep 2023 05:35:48 +0000
-Date: Fri, 8 Sep 2023 13:35:10 +0800
-From: kernel test robot <lkp@intel.com>
-To: sean.wang@mediatek.com, nbd@nbd.name, lorenzo.bianconi@redhat.com
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	sean.wang@mediatek.com, Soul.Huang@mediatek.com,
-	Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com,
-	Deren.Wu@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com,
-	Eddie.Chen@mediatek.com, jsiuda@google.com, arowa@google.org,
-	frankgor@google.com, kuabhs@google.com, druth@google.com,
-	abhishekpandit@google.com, shawnku@google.com,
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] wifi: mt76: mt7921: fix the wrong rate selected in fw
- for the chanctx driver
-Message-ID: <202309081348.IepiSKwy-lkp@intel.com>
-References: <4b2ee1382896dd7ff27ecbef6e1ad496edccd3ad.1694129223.git.objelf@gmail.com>
+	id 1qeUrn-00D9q5-0O;
+	Fri, 08 Sep 2023 06:21:22 +0000
+Received: by mail-pl1-x642.google.com with SMTP id d9443c01a7336-1bf1876ef69so3929605ad.1;
+        Thu, 07 Sep 2023 23:21:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1694154077; x=1694758877; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=bZKTZfBK+A502bdB4x6E91XtGMQJaKt3JAZWmYT/Cyk=;
+        b=Om/B0LX0Ln1Bv/hsDP2g40+14IrNk7qcWcFCo+vSOBaSmSroiXGDcfnBO6WD51Qavg
+         DUE7Sh6hFy+9g0UjtCX9X3GPj0HnyrAbjClrUj8fGluxuARjMTYwtAC8c/4bwESii+wV
+         zrj7a18+AdAa8rYNE0L7ubwXaT2d12XlN/OiTbVrtYaLHTan11MtCyPziXwcnvl9LfLd
+         YkohqHwWiAfMc7hsZkNSDmCb5yF9LkXsNl1FHy9UH+9/+t1XhhID7g3/L1oyNYfSVKLE
+         Qfz3EPX/5jnCjcNTi0zIWFR6e3oeK/jwzuE3aqjXb0vuuvZXCWqDp/A2qNNpM9pRULkx
+         NgNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694154077; x=1694758877;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=bZKTZfBK+A502bdB4x6E91XtGMQJaKt3JAZWmYT/Cyk=;
+        b=s0sJJ2BqAN+Ezm67cArh6P8XldS8YuafGtg9khVC92vF4RZGvwHFWj/hqt3RMYhO2q
+         WyHHwwwQWUTr1kHWNnt78us7Cx3P+OnPpZRy44L/ddQw4/X/uk2zGS/ttFoiI8BN/3L0
+         ah2i3DJKfRWEkXXB7IW633kymr2XE7OgKx1frcTphnRXPaa/p3au7gT27maml6R4KTmS
+         2m9mAW4IUsqwR59+15w4GEjVZnXI64zawRIrEmWKW680ym35eR6HTg/cs4kUcb1254RL
+         TVWioZ6EN28wqyihbIeK6QBNPW0CFqN4sCN+JViD4e6p31yejb2dHZZbuotdB9iGEWcb
+         W5Zw==
+X-Gm-Message-State: AOJu0YzoopJsdvEm9gf8bZDtzZqCZh/E54SzuA41d35wdswmQuVuU7Lx
+	rakBteMpbP5SQdmTgAunpu8=
+X-Google-Smtp-Source: AGHT+IH5FFj2A0AMT8B2pjOk722yu7NFnd14Qmz4rc/had4vrkOUm7nQ3ZH8agE8XZ2zEOBykPYxRQ==
+X-Received: by 2002:a17:902:d508:b0:1c1:fbec:bc32 with SMTP id b8-20020a170902d50800b001c1fbecbc32mr1781145plg.6.1694154077596;
+        Thu, 07 Sep 2023 23:21:17 -0700 (PDT)
+Received: from hbh25y.mshome.net ([103.114.158.1])
+        by smtp.gmail.com with ESMTPSA id l7-20020a170902f68700b001b8c6890623sm768620plg.7.2023.09.07.23.21.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 07 Sep 2023 23:21:16 -0700 (PDT)
+From: Hangyu Hua <hbh25y@gmail.com>
+To: justin.chen@broadcom.com,
+	florian.fainelli@broadcom.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	mw@semihalf.com,
+	linux@armlinux.org.uk,
+	nbd@nbd.name,
+	john@phrozen.org,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	lorenzo@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	maxime.chevallier@bootlin.com,
+	nelson.chang@mediatek.com
+Cc: bcm-kernel-feedback-list@broadcom.com,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Hangyu Hua <hbh25y@gmail.com>
+Subject: [PATCH v2 0/3] Fix possible OOB write when using rule_buf
+Date: Fri,  8 Sep 2023 14:19:47 +0800
+Message-Id: <20230908061950.20287-1-hbh25y@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4b2ee1382896dd7ff27ecbef6e1ad496edccd3ad.1694129223.git.objelf@gmail.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230907_223607_730649_84B3965F 
-X-CRM114-Status: GOOD (  14.93  )
+X-CRM114-CacheID: sfid-20230907_232119_181717_24640979 
+X-CRM114-Status: UNSURE (   9.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,152 +108,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+ADD bounds checks in bcmasp_netfilt_get_all_active and 
+mvpp2_ethtool_get_rxnfc and mtk_hwlro_get_fdir_all when
+using rule_buf from ethtool_get_rxnfc.
 
-kernel test robot noticed the following build errors:
+v2:
+[PATCH v2 1/3]: use -EMSGSIZE instead of truncating the list sliently.
+[PATCH v2 3/3]: drop the brackets.
 
-[auto build test ERROR on linus/master]
-[also build test ERROR on v6.5 next-20230907]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Hangyu Hua (3):
+  net: ethernet: bcmasp: fix possible OOB write in
+    bcmasp_netfilt_get_all_active()
+  net: ethernet: mvpp2_main: fix possible OOB write in
+    mvpp2_ethtool_get_rxnfc()
+  net: ethernet: mtk_eth_soc: fix possible NULL pointer dereference in
+    mtk_hwlro_get_fdir_all()
 
-url:    https://github.com/intel-lab-lkp/linux/commits/sean-wang-mediatek-com/wifi-mt76-mt7921-fix-the-wrong-rate-selected-in-fw-for-the-chanctx-driver/20230908-073344
-base:   linus/master
-patch link:    https://lore.kernel.org/r/4b2ee1382896dd7ff27ecbef6e1ad496edccd3ad.1694129223.git.objelf%40gmail.com
-patch subject: [PATCH] wifi: mt76: mt7921: fix the wrong rate selected in fw for the chanctx driver
-config: i386-randconfig-016-20230908 (https://download.01.org/0day-ci/archive/20230908/202309081348.IepiSKwy-lkp@intel.com/config)
-compiler: clang version 16.0.4 (https://github.com/llvm/llvm-project.git ae42196bc493ffe877a7e3dff8be32035dea4d07)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230908/202309081348.IepiSKwy-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202309081348.IepiSKwy-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c:833:44: error: no member named 'ctx' in 'struct mt76_vif'
-           struct cfg80211_chan_def *chandef = mvif->ctx ?
-                                               ~~~~  ^
-   drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c:834:17: error: no member named 'ctx' in 'struct mt76_vif'
-                                               &mvif->ctx->def : &mphy->chandef;
-                                                ~~~~  ^
-   drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c:1375:44: error: no member named 'ctx' in 'struct mt76_vif'
-           struct cfg80211_chan_def *chandef = mvif->ctx ?
-                                               ~~~~  ^
-   drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c:1376:17: error: no member named 'ctx' in 'struct mt76_vif'
-                                               &mvif->ctx->def : &phy->chandef;
-                                                ~~~~  ^
-   4 errors generated.
-
-
-vim +833 drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-
-   826	
-   827	void mt76_connac_mcu_sta_tlv(struct mt76_phy *mphy, struct sk_buff *skb,
-   828				     struct ieee80211_sta *sta,
-   829				     struct ieee80211_vif *vif,
-   830				     u8 rcpi, u8 sta_state)
-   831	{
-   832		struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
- > 833		struct cfg80211_chan_def *chandef = mvif->ctx ?
-   834						    &mvif->ctx->def : &mphy->chandef;
-   835		enum nl80211_band band = chandef->chan->band;
-   836		struct mt76_dev *dev = mphy->dev;
-   837		struct sta_rec_ra_info *ra_info;
-   838		struct sta_rec_state *state;
-   839		struct sta_rec_phy *phy;
-   840		struct tlv *tlv;
-   841		u16 supp_rates;
-   842	
-   843		/* starec ht */
-   844		if (sta->deflink.ht_cap.ht_supported) {
-   845			struct sta_rec_ht *ht;
-   846	
-   847			tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_HT, sizeof(*ht));
-   848			ht = (struct sta_rec_ht *)tlv;
-   849			ht->ht_cap = cpu_to_le16(sta->deflink.ht_cap.cap);
-   850		}
-   851	
-   852		/* starec vht */
-   853		if (sta->deflink.vht_cap.vht_supported) {
-   854			struct sta_rec_vht *vht;
-   855			int len;
-   856	
-   857			len = is_mt7921(dev) ? sizeof(*vht) : sizeof(*vht) - 4;
-   858			tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_VHT, len);
-   859			vht = (struct sta_rec_vht *)tlv;
-   860			vht->vht_cap = cpu_to_le32(sta->deflink.vht_cap.cap);
-   861			vht->vht_rx_mcs_map = sta->deflink.vht_cap.vht_mcs.rx_mcs_map;
-   862			vht->vht_tx_mcs_map = sta->deflink.vht_cap.vht_mcs.tx_mcs_map;
-   863		}
-   864	
-   865		/* starec uapsd */
-   866		mt76_connac_mcu_sta_uapsd(skb, vif, sta);
-   867	
-   868		if (!is_mt7921(dev))
-   869			return;
-   870	
-   871		if (sta->deflink.ht_cap.ht_supported || sta->deflink.he_cap.has_he)
-   872			mt76_connac_mcu_sta_amsdu_tlv(skb, sta, vif);
-   873	
-   874		/* starec he */
-   875		if (sta->deflink.he_cap.has_he) {
-   876			mt76_connac_mcu_sta_he_tlv(skb, sta);
-   877			mt76_connac_mcu_sta_he_tlv_v2(skb, sta);
-   878			if (band == NL80211_BAND_6GHZ &&
-   879			    sta_state == MT76_STA_INFO_STATE_ASSOC) {
-   880				struct sta_rec_he_6g_capa *he_6g_capa;
-   881	
-   882				tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_HE_6G,
-   883							      sizeof(*he_6g_capa));
-   884				he_6g_capa = (struct sta_rec_he_6g_capa *)tlv;
-   885				he_6g_capa->capa = sta->deflink.he_6ghz_capa.capa;
-   886			}
-   887		}
-   888	
-   889		tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_PHY, sizeof(*phy));
-   890		phy = (struct sta_rec_phy *)tlv;
-   891		phy->phy_type = mt76_connac_get_phy_mode_v2(mphy, vif, band, sta);
-   892		phy->basic_rate = cpu_to_le16((u16)vif->bss_conf.basic_rates);
-   893		phy->rcpi = rcpi;
-   894		phy->ampdu = FIELD_PREP(IEEE80211_HT_AMPDU_PARM_FACTOR,
-   895					sta->deflink.ht_cap.ampdu_factor) |
-   896			     FIELD_PREP(IEEE80211_HT_AMPDU_PARM_DENSITY,
-   897					sta->deflink.ht_cap.ampdu_density);
-   898	
-   899		tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_RA, sizeof(*ra_info));
-   900		ra_info = (struct sta_rec_ra_info *)tlv;
-   901	
-   902		supp_rates = sta->deflink.supp_rates[band];
-   903		if (band == NL80211_BAND_2GHZ)
-   904			supp_rates = FIELD_PREP(RA_LEGACY_OFDM, supp_rates >> 4) |
-   905				     FIELD_PREP(RA_LEGACY_CCK, supp_rates & 0xf);
-   906		else
-   907			supp_rates = FIELD_PREP(RA_LEGACY_OFDM, supp_rates);
-   908	
-   909		ra_info->legacy = cpu_to_le16(supp_rates);
-   910	
-   911		if (sta->deflink.ht_cap.ht_supported)
-   912			memcpy(ra_info->rx_mcs_bitmask,
-   913			       sta->deflink.ht_cap.mcs.rx_mask,
-   914			       HT_MCS_MASK_NUM);
-   915	
-   916		tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_STATE, sizeof(*state));
-   917		state = (struct sta_rec_state *)tlv;
-   918		state->state = sta_state;
-   919	
-   920		if (sta->deflink.vht_cap.vht_supported) {
-   921			state->vht_opmode = sta->deflink.bandwidth;
-   922			state->vht_opmode |= (sta->deflink.rx_nss - 1) <<
-   923				IEEE80211_OPMODE_NOTIF_RX_NSS_SHIFT;
-   924		}
-   925	}
-   926	EXPORT_SYMBOL_GPL(mt76_connac_mcu_sta_tlv);
-   927	
+ drivers/net/ethernet/broadcom/asp2/bcmasp.c         | 9 +++++++--
+ drivers/net/ethernet/broadcom/asp2/bcmasp.h         | 4 ++--
+ drivers/net/ethernet/broadcom/asp2/bcmasp_ethtool.c | 2 +-
+ drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c     | 5 +++++
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c         | 3 +++
+ 5 files changed, 18 insertions(+), 5 deletions(-)
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.34.1
+
 
