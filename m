@@ -4,86 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1F0CEE7FE5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 12:27:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AA88EE7FED
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 13:29:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kxmYxmERfaHjIcR3GX44H1XW83N5R1EvDpk8rarq7DM=; b=r/UZy9DVTGrPM+QifUoQnRIXwv
-	9qrHke9RiJ6JPZNRUdVRn2u1LIeOfUl6Ba/xDwQ4TyQpUJ+w011ZPXoNJ4mh70uqityu5o/VTT3G5
-	l7ige4hI6tsRPD43wIE+FQmC4PtEABiN+CPrhkCWzB4xUyWmk/BuR73vvk3U1UG3UcmXYWDtO59ku
-	mSBwxD7naKFLnnW9pOxR9yRXEUXYcTGD8jay3264e5fJgiHOsNbdgVItXYr0uAhe/bojw89DfYnql
-	lX9GKLE9io/7vq7Qilxu1zoY+p8jw3GtpISnuW/3GtQoGr0wzZVoLzOxu1Jn3LVuA1j0/EmgGxxMI
-	WdD+YlQQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8fTqSPosGVFRSuNbuDzcDh8MPrifrDs8eg/tRpTv6/E=; b=AwMNkLsQzhaUUb
+	5LRIetevsRmk/swx6q2Z290nR8d7TXuQY/tOr78tJMq3S7IyncDh06gC9My28tzs5Q9Z9nmjv8YPI
+	LaW/JTvL/ZNHjojcQpx2Nyre8nIuPUJR5cKlG7P1gBvQSriJIaMYKrS8TLrT4787OzKZ7n3zNsqE0
+	yeURI/pp0j2ryWnV/i47QIImEi2GSAc6p9+e1DOtallQ4Ewsxe9jQ6uOR7uGPBw0ml6gwmZ5vG4cA
+	UhJuXP7NUq2pDZmK36XPdmgr1dg9TBA65/FGyNAJu5wh2+YcKCtu7cEx91h4J+ZYBfRhBzXICIGKi
+	OxMh9E64SmdA9Z/Gnr4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeaZt-00DlFp-1v;
-	Fri, 08 Sep 2023 12:27:13 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qebXv-00DqZU-0L;
+	Fri, 08 Sep 2023 13:29:15 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeaZp-00DlCc-0e;
-	Fri, 08 Sep 2023 12:27:11 +0000
-Received: from [172.22.36.47] (unknown [115.110.84.132])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: david.heidelberg)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3326E6607249;
-	Fri,  8 Sep 2023 13:26:56 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694176022;
-	bh=kxmYxmERfaHjIcR3GX44H1XW83N5R1EvDpk8rarq7DM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RLbKzevVNzRpoYpSOUweFFqV1PRi95V1QP0aZkLHgy9FMlPUBdaTU1jiX2HrmCWKV
-	 HIPqb9JG1zqG/qvy5nmv36psPYBdSJrfXMr869574pyE9z/e0vG5wo/dbANcMFNOaQ
-	 h47VoJSADABNfqonov5ftn/5ZzHoyKsMnMsty/sSwZz5Rlfsv9y3+6MN5Dru9XtWzG
-	 JiQUFm3HXBGAlpgYF5EIgH1ktK2F+/vc96f+OxXYEirTsKYMuVA75QJrhe93UGzDfh
-	 ebjPpaCyo5tUE/0KcdRVpA5t0+fG0WvXj1p2ux3FHP5ZfjvGAMQ9B4VgFjs77B/EpE
-	 12/KaIjUQUF+Q==
-Message-ID: <2dc6f9fa-06fb-44d8-97cb-6b5a983b7539@collabora.com>
-Date: Fri, 8 Sep 2023 17:56:36 +0530
+	id 1qebXp-00DqXH-34
+	for linux-mediatek@lists.infradead.org;
+	Fri, 08 Sep 2023 13:29:11 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-1bd9b4f8e0eso15421195ad.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 08 Sep 2023 06:29:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1694179748; x=1694784548; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=8fTqSPosGVFRSuNbuDzcDh8MPrifrDs8eg/tRpTv6/E=;
+        b=MCw9whvhDlFuJeDiCwQGR3whMxH7TGN3cJRSksw2pd1kfpnjL4TyhHQQpnr9Nhwp/d
+         giaDfbI/AhfQIVwRSUX8y6qXSXs3C+L/xcYcnf0qS4RsuMIFVZk6trnEKOnQ9dvRehqU
+         sT1ZPRKRulHKJxvfv0JvEdDv49v3Cr46zkMzk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694179748; x=1694784548;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8fTqSPosGVFRSuNbuDzcDh8MPrifrDs8eg/tRpTv6/E=;
+        b=BEYjW+aTszoiMO6b70GKFZwwOtT3n6fU6rGc5Tt131ITJJWxUpWDlyDScon8EUBLqm
+         Wh2jcO82jEP9k1MCGlAkWiLAYt1/oOcMvJOXKhRHFMJZkIjNOjxG52gvg9zTDn4GDaIP
+         GoNAbU9Ghr7SsfGuExhVYFzaPpNxLdv2jVz4MyCFOuP42O287Eb2LQbbRY3pLmJW5fMJ
+         F6ta8Xh6r6M7656KOUfG1Ruc3oFA1TY8zFj6LCEwKi5e87XtD4UrhOR4bAfm5LaROk/g
+         F3Ak6jeP+TEWAbd1GnWGKhllxqqnmMkSUop6Y6U5iECMTgTfxBuTFF3KfDL0VboE9XEs
+         gIKg==
+X-Gm-Message-State: AOJu0YyphcRnMRvZMFfy2hqIolWoGPtxvXM63Pb4lHazcL7WezPl3QYK
+	9pw3Mhjm0CAsmLboQbGVTVSsSg==
+X-Google-Smtp-Source: AGHT+IHWCBplIrjcCzuUpgb9NC4rnhznC4Bx+ZzE6bt7VuZlgtVVJg0EhVEiMWW50/fNxqh+vxaWSQ==
+X-Received: by 2002:a17:902:ce82:b0:1bd:c7e2:462 with SMTP id f2-20020a170902ce8200b001bdc7e20462mr3029639plg.11.1694179747803;
+        Fri, 08 Sep 2023 06:29:07 -0700 (PDT)
+Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:2f7e:9c4:ed14:b826])
+        by smtp.gmail.com with ESMTPSA id o12-20020a170902778c00b001bc6536051bsm1562560pll.184.2023.09.08.06.29.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 08 Sep 2023 06:29:07 -0700 (PDT)
+From: Fei Shao <fshao@chromium.org>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>
+Subject: [PATCH] media: mtk-jpegenc: Fix bug in JPEG encode quality selection
+Date: Fri,  8 Sep 2023 21:28:04 +0800
+Message-ID: <20230908132839.2034566-1-fshao@chromium.org>
+X-Mailer: git-send-email 2.42.0.283.g2d96d420d3-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/6] drm: ci: Enable configs to fix mt8173 boot hang issue
-To: Vignesh Raman <vignesh.raman@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: helen.koike@collabora.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, daniels@collabora.com, emma@anholt.net,
- robclark@freedesktop.org, gustavo.padovan@collabora.com,
- robdclark@google.com, anholt@google.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch,
- corbet@lwn.net, neil.armstrong@linaro.org, khilman@baylibre.com,
- jbrunet@baylibre.com, martin.blumenstingl@googlemail.com, heiko@sntech.de,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20230825122435.316272-1-vignesh.raman@collabora.com>
- <20230825122435.316272-5-vignesh.raman@collabora.com>
- <6da8136b-be1f-6867-b2af-c636877ef189@collabora.com>
- <ff99380a-cb0d-dc6c-0442-7aa60d14cec2@collabora.com>
-Content-Language: en-US
-From: David Heidelberg <david.heidelberg@collabora.com>
-Autocrypt: addr=david.heidelberg@collabora.com; keydata=
- xjMEYlvLOxYJKwYBBAHaRw8BAQdA5CoWEzz4igpwK4h6lK6ZformRk84+ymcfkGNPwqEeILN
- MURhdmlkIEhlaWRlbGJlcmcgPGRhdmlkLmhlaWRlbGJlcmdAY29sbGFib3JhLmNvbT7ClgQT
- FggAPhYhBEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsDBQkFo5qABQsJCAcCBhUKCQgL
- AgQWAgMBAh4BAheAAAoJEGn1Z4YcHsAU84kBAK5YqSWAOuIumAqgWvke6BEsaIGWGQzXSuKj
- er/TXuFuAQCwc9ITSVXWWTSpdFt2+4z7Wch8tIGlbIFcS9dCFddwCc44BGJbyzsSCisGAQQB
- l1UBBQEBB0AEk7jXEwDApGOwMH/X0UAPBH8Y3isjxhNMjpyRcnl2CwMBCAfCfgQYFggAJhYh
- BEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsMBQkFo5qAAAoJEGn1Z4YcHsAU0PEA/j0Y
- uAOKJCnnwrkf3ozPP0sutA5bojoARwcIaZKO/zvIAP9PwTC9DGLg+8LJm7m2Lyf0LxLA8FXD
- wueLHBdwHg6zAQ==
-In-Reply-To: <ff99380a-cb0d-dc6c-0442-7aa60d14cec2@collabora.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="------------QVbyyDjtHt2Y2bqlRUbNjGy2"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230908_052709_519892_F6B8D397 
-X-CRM114-Status: GOOD (  16.08  )
+X-CRM114-CacheID: sfid-20230908_062910_083058_1D0525B4 
+X-CRM114-Status: GOOD (  13.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,110 +81,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Bin Liu <bin.liu@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---------------QVbyyDjtHt2Y2bqlRUbNjGy2
-Content-Type: multipart/mixed; boundary="------------0SjgPXBdE0pfxmCy61iR0gjG";
- protected-headers="v1"
-From: David Heidelberg <david.heidelberg@collabora.com>
-To: Vignesh Raman <vignesh.raman@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: helen.koike@collabora.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, daniels@collabora.com, emma@anholt.net,
- robclark@freedesktop.org, gustavo.padovan@collabora.com,
- robdclark@google.com, anholt@google.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, daniel@ffwll.ch,
- corbet@lwn.net, neil.armstrong@linaro.org, khilman@baylibre.com,
- jbrunet@baylibre.com, martin.blumenstingl@googlemail.com, heiko@sntech.de,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
-Message-ID: <2dc6f9fa-06fb-44d8-97cb-6b5a983b7539@collabora.com>
-Subject: Re: [PATCH 4/6] drm: ci: Enable configs to fix mt8173 boot hang issue
-References: <20230825122435.316272-1-vignesh.raman@collabora.com>
- <20230825122435.316272-5-vignesh.raman@collabora.com>
- <6da8136b-be1f-6867-b2af-c636877ef189@collabora.com>
- <ff99380a-cb0d-dc6c-0442-7aa60d14cec2@collabora.com>
-In-Reply-To: <ff99380a-cb0d-dc6c-0442-7aa60d14cec2@collabora.com>
+The driver uses the upper-bound approach to decide the target JPEG
+encode quality, but there's a logic bug that if the desired quality is
+higher than what the driver can support, the driver falls back to using
+the worst quality.
 
---------------0SjgPXBdE0pfxmCy61iR0gjG
-Content-Type: multipart/mixed; boundary="------------yPjLj8M50Ol2VqN53k1e0e4X"
+Fix the bug by assuming using the best quality in the beginning, and
+with trivial refactor to avoid long lines.
 
---------------yPjLj8M50Ol2VqN53k1e0e4X
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
+Fixes: 45f13a57d813 ("media: platform: Add jpeg enc feature")
+Signed-off-by: Fei Shao <fshao@chromium.org>
+---
 
-T24gMDgvMDkvMjAyMyAxMzoyMywgVmlnbmVzaCBSYW1hbiB3cm90ZToNCg0KPiBIaSBBbmdl
-bG8sDQo+DQo+IE9uIDA3LzA5LzIzIDE2OjE2LCBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdu
-byB3cm90ZToNCj4+IElsIDI1LzA4LzIzIDE0OjI0LCBWaWduZXNoIFJhbWFuIGhhIHNjcml0
-dG86DQo+Pj4gRW5hYmxlIHJlZ3VsYXRvcg0KPj4+IEVuYWJsZSBNVDYzOTcgUlRDIGRyaXZl
-cg0KPj4+DQo+Pj4gU2lnbmVkLW9mZi1ieTogVmlnbmVzaCBSYW1hbiA8dmlnbmVzaC5yYW1h
-bkBjb2xsYWJvcmEuY29tPg0KPj4+IC0tLQ0KPj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9jaS9h
-cm02NC5jb25maWcgfCAyICsrDQo+Pj4gwqAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9u
-cygrKQ0KPj4+DQo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9jaS9hcm02NC5j
-b25maWcgDQo+Pj4gYi9kcml2ZXJzL2dwdS9kcm0vY2kvYXJtNjQuY29uZmlnDQo+Pj4gaW5k
-ZXggODE3ZTE4ZGRmZDRmLi5lYTdhNmNjZWZmNDAgMTAwNjQ0DQo+Pj4gLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL2NpL2FybTY0LmNvbmZpZw0KPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9j
-aS9hcm02NC5jb25maWcNCj4+PiBAQCAtMTg0LDYgKzE4NCw4IEBAIENPTkZJR19IV19SQU5E
-T01fTVRLPXkNCj4+PiDCoCBDT05GSUdfTVRLX0RFVkFQQz15DQo+Pj4gwqAgQ09ORklHX1BX
-TV9NVEtfRElTUD15DQo+Pj4gwqAgQ09ORklHX01US19DTURRPXkNCj4+PiArQ09ORklHX1JF
-R1VMQVRPUl9EQTkyMTE9eQ0KPj4+ICtDT05GSUdfUlRDX0RSVl9NVDYzOTc9eQ0KPj4NCj4+
-IEkgd29uZGVyIGlmIGl0J2QgYmUgYSBiZXR0ZXIgaWRlYSB0byBzaW1wbHkgYWRkIHRob3Nl
-IHRvIHRoZSANCj4+IGRlZmNvbmZpZyBpbnN0ZWFkIGFzDQo+Pg0KPj4gQ09ORklHX1JFR1VM
-QVRPUl9EQTkyMTE9bQ0KPj4gQ09ORklHX1JUQ19EUlZfTVQ2Mzk3PW0NCj4+DQo+PiBBbnkg
-b3BpbmlvbiBvbiB0aGlzPyBNYXR0aGlhcz8gQW55b25lIGVsc2U/DQo+DQo+IENPTkZJR19S
-VENfRFJWX01UNjM5Nz1tIGlzIGFscmVhZHkgcHJlc2VudCBpbiBkZWZjb25maWcuDQo+IFdl
-IGNhbiBhbHNvIGFkZCBDT05GSUdfUkVHVUxBVE9SX0RBOTIxMT1tIHRvIGRlZmNvbmZpZy4N
-Cg0KV2UgbmVlZCBhZGQgY29uZmlnIHNuaXBwZXQgb3ZlcnJpZGUgZm9yIENPTkZJR19SRUdV
-TEFUT1JfREE5MjExPXkgDQpiZWNhdXNlIG91ciBDSSBkb24ndCBoYXZlIGFueSBpbml0cmQg
-d2l0aCBtb2R1bGVzLCB3ZSBqdXN0IGltbWVkaWF0ZWx5IA0KY29udGludWUgYm9vdCBmcm9t
-IE5GUywgd2hlcmUgd2UgbG9hZCByZXN0IG9mIHRoZSBib290IG5vbi1lc3NlbnRpYWwgDQpt
-b2R1bGVzLg0KDQpGb3IgZ2VuZXJpYyBrZXJuZWwsIEkgYXNzdW1lIENPTkZJR19SRUdVTEFU
-T1JfREE5MjExPW0gc2hvdWxkIGJlIGFkZGVkLg0KDQpEYXZpZA0KDQo+DQo+IFJlZ2FyZHMs
-DQo+IFZpZ25lc2gNCg0KLS0gDQpEYXZpZCBIZWlkZWxiZXJnDQpDb25zdWx0YW50IFNvZnR3
-YXJlIEVuZ2luZWVyDQoNCkNvbGxhYm9yYSBMdGQuDQpQbGF0aW51bSBCdWlsZGluZywgU3Qg
-Sm9obidzIElubm92YXRpb24gUGFyaywgQ2FtYnJpZGdlIENCNCAwRFMsIFVLDQpSZWdpc3Rl
-cmVkIGluIEVuZ2xhbmQgJiBXYWxlcywgbm8uIDU1MTM3MTgNCg0K
---------------yPjLj8M50Ol2VqN53k1e0e4X
-Content-Type: application/pgp-keys; name="OpenPGP_0x69F567861C1EC014.asc"
-Content-Disposition: attachment; filename="OpenPGP_0x69F567861C1EC014.asc"
-Content-Description: OpenPGP public key
-Content-Transfer-Encoding: quoted-printable
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
------BEGIN PGP PUBLIC KEY BLOCK-----
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+index 2bbc48c7402c..f8fa3b841ccf 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+@@ -127,6 +127,7 @@ void mtk_jpeg_set_enc_params(struct mtk_jpeg_ctx *ctx,  void __iomem *base)
+ 	u32 img_stride;
+ 	u32 mem_stride;
+ 	u32 i, enc_quality;
++	u32 nr_enc_quality = ARRAY_SIZE(mtk_jpeg_enc_quality);
+ 
+ 	value = width << 16 | height;
+ 	writel(value, base + JPEG_ENC_IMG_SIZE);
+@@ -157,8 +158,8 @@ void mtk_jpeg_set_enc_params(struct mtk_jpeg_ctx *ctx,  void __iomem *base)
+ 	writel(img_stride, base + JPEG_ENC_IMG_STRIDE);
+ 	writel(mem_stride, base + JPEG_ENC_STRIDE);
+ 
+-	enc_quality = mtk_jpeg_enc_quality[0].hardware_value;
+-	for (i = 0; i < ARRAY_SIZE(mtk_jpeg_enc_quality); i++) {
++	enc_quality = mtk_jpeg_enc_quality[nr_enc_quality - 1].hardware_value;
++	for (i = 0; i < nr_enc_quality; i++) {
+ 		if (ctx->enc_quality <= mtk_jpeg_enc_quality[i].quality_param) {
+ 			enc_quality = mtk_jpeg_enc_quality[i].hardware_value;
+ 			break;
+-- 
+2.42.0.283.g2d96d420d3-goog
 
-xjMEYlvLOxYJKwYBBAHaRw8BAQdA5CoWEzz4igpwK4h6lK6ZformRk84+ymcfkGN
-PwqEeILNMURhdmlkIEhlaWRlbGJlcmcgPGRhdmlkLmhlaWRlbGJlcmdAY29sbGFi
-b3JhLmNvbT7ClgQTFggAPhYhBEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsD
-BQkFo5qABQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEGn1Z4YcHsAU84kBAK5Y
-qSWAOuIumAqgWvke6BEsaIGWGQzXSuKjer/TXuFuAQCwc9ITSVXWWTSpdFt2+4z7
-Wch8tIGlbIFcS9dCFddwCc44BGJbyzsSCisGAQQBl1UBBQEBB0AEk7jXEwDApGOw
-MH/X0UAPBH8Y3isjxhNMjpyRcnl2CwMBCAfCfgQYFggAJhYhBEo7kSl22BK0F1Np
-/mn1Z4YcHsAUBQJiW8s7AhsMBQkFo5qAAAoJEGn1Z4YcHsAU0PEA/j0YuAOKJCnn
-wrkf3ozPP0sutA5bojoARwcIaZKO/zvIAP9PwTC9DGLg+8LJm7m2Lyf0LxLA8FXD
-wueLHBdwHg6zAQ=3D=3D
-=3DOQS+
------END PGP PUBLIC KEY BLOCK-----
-
---------------yPjLj8M50Ol2VqN53k1e0e4X--
-
---------------0SjgPXBdE0pfxmCy61iR0gjG--
-
---------------QVbyyDjtHt2Y2bqlRUbNjGy2
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEARYIAB0WIQRKO5EpdtgStBdTaf5p9WeGHB7AFAUCZPsS/AAKCRBp9WeGHB7A
-FJMXAQDOC4fWl0gYmEvUPLQhSmJbWUme0uzP1yaP5MxtaDwvCwD7BgNQv9t8Yrp6
-kbFOXh1myrvVXSi5VYV9ry9kKAgaVQs=
-=LHU6
------END PGP SIGNATURE-----
-
---------------QVbyyDjtHt2Y2bqlRUbNjGy2--
 
