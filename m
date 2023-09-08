@@ -4,64 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECB25EEB571
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 20:52:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE6F9EEB56E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 21:32:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ai0FCheq1Y9+G4KSSTm0hzGJev3w/SK52/y2/6kswq8=; b=vj2sd+kdupe9i+KpBLOm++7oOC
-	MhUMcRANsbzxQHJvmb5QBAdKSwTDzGTytJ3lSzCzM+UfE4P+4Yk1KGoxXWczvJXwBNhSWxp740sGP
-	ffnq9mJSolrcos8vOndPd+G/O22tWWGC0KHKDlE1I+B1NpzQH8h5MIbpZl0/Sv5QkDIHKt5SHIAXp
-	VKEXSENUyhY9vFyUIn0MoTUzQX6q22GFH3UB3yNADvLp9YZWSDzv0abF/+D7l4gZnRs7dMXKzJnv2
-	MZ8NEu2t2fB0wb8RWZdt7LYwKJqp+RVX4AmEFiOFOUyye7M0Klq38Yg2hlEtOu6qe8p5cDZP5P9t8
-	ZJI6uE9w==;
+	bh=C+i6wwSf5PrmdMpv5R0q+XxOpMZWb1O1vbTh7W/T7iY=; b=UnBJJjluXbL19XCflS9Fd6/p6i
+	i/GZnuWuCk9fc0GNlwicXP2ygZnm4fozixIELr+f2Ot9d28Y6WfCymBA3cVfO1Fi4meUYEh3CkehU
+	zk1lBZYDoZYSMDAthYR91olREF30OCn0PrbQcDI6MP0SOi3c+uAbrtYM8rIgs9zb1M9+7WObxmtBO
+	xfpZLYilLv4sfa1nytLiK/VWVeXGvfuyDr0tTD1x4/ZiLJHOxd9z34KBECN1czBdq+KEz0nXcm1mA
+	PY2Rqh2m7DirO2l/Q/uBFHMheZO+ZOwQxFPZiqzz8RKviT2tNH/7RGFQ7n5/fqU+IWrax0asIcCn3
+	Jv7gD/dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeiSq-00ETkd-3C;
-	Fri, 08 Sep 2023 20:52:28 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qej5E-00EWAy-2x;
+	Fri, 08 Sep 2023 21:32:08 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeiSn-00ETjQ-2E;
-	Fri, 08 Sep 2023 20:52:27 +0000
+	id 1qej59-00EW7Q-0M;
+	Fri, 08 Sep 2023 21:32:05 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 3327361584;
-	Fri,  8 Sep 2023 20:52:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87A55C43215;
-	Fri,  8 Sep 2023 20:52:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694206344;
-	bh=TcTQRLCCJ2nI5kBt3Ur/VJ/CjA9qDNAGUbTVoXZ0FFc=;
+	by sin.source.kernel.org (Postfix) with ESMTPS id 71B72CE1C9D;
+	Fri,  8 Sep 2023 21:32:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F758C433C7;
+	Fri,  8 Sep 2023 21:31:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1694208718;
+	bh=jnZW3kJ1q2GcV2pxAvLRxz+0IUuoJxM+MtHeCLvaV3k=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KKMs3kuE0jyLhFFImDSGLnNruBWTdUeyW76xuzGn69ruwfKYI6GKbJOaYXOQYZxy0
-	 GBLo8zoKCuyc9etWI7P2hqXaoHe1OoTEI/nEhhLmdDq+x7kevRAmSflKjzGx6wKXVK
-	 1vmR4jvvx8ZXhKhG4REISHbNAa47cFya9GHyN5fIQRoUJUcmU+7Jmzbx4jzEQhETje
-	 tQStBQmAneqHovqRdKrc1FydK3HWBE2FJOZ4bLkJMBCt7W+ZWKEIOBuuAmrCH/FPYb
-	 VtvltK95RppdKCbSzGcb7/WprEJRCyAptgDoUFBra9H9TTDJQuiRcYKZ9nAe2QY9Td
-	 DUc2Fb76bENog==
-Received: (nullmailer pid 336501 invoked by uid 1000);
-	Fri, 08 Sep 2023 20:52:22 -0000
-Date: Fri, 8 Sep 2023 15:52:22 -0500
-From: Rob Herring <robh@kernel.org>
-To: Paul Elder <paul.elder@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 3/3] arm64: dts: mediatek: mt8365-pumpkin: Add overlays
- for thp7312 cameras
-Message-ID: <20230908205222.GA320762-robh@kernel.org>
-References: <20230905233118.183140-1-paul.elder@ideasonboard.com>
- <20230905233118.183140-4-paul.elder@ideasonboard.com>
+	b=rL/hXl1JmyCN2+NX3XFRjO3IBjzj3gm/vyTf/yQM/ms1fYHZLLheiBdkAscyPD4ig
+	 xEJBQ/sHZdVG/iM0p8OjYq7bcd79OWbtESi4cnpza8CsO0AlxstTVZg+crAliB0M+u
+	 sMtzHFoNhDRydKXF6ghbQDeG3lQZH7cQseD/hGy4=
+Date: Fri, 8 Sep 2023 22:31:55 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Alan Stern <stern@rowland.harvard.edu>
+Cc: Sasha Levin <sashal@kernel.org>, linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org, Kalle Valo <kvalo@kernel.org>,
+	quic_jjohnson@quicinc.com, nbd@nbd.name, lorenzo@kernel.org,
+	ryder.lee@mediatek.com, matthias.bgg@gmail.com, kuba@kernel.org,
+	srini.raju@purelifi.com, stf_xl@wp.pl, helmut.schaa@googlemail.com,
+	pkshih@realtek.com, corentin.chary@gmail.com, hdegoede@redhat.com,
+	markgross@kernel.org, johannes.berg@intel.com,
+	alexander@wetzel-home.de, error27@gmail.com,
+	szymon.heidrich@gmail.com, gustavoars@kernel.org, lynxis@fe80.eu,
+	daniel@makrotopia.org, arnd@arndb.de, shayne.chen@mediatek.com,
+	keescook@chromium.org, tglx@linutronix.de, pabeni@redhat.com,
+	rostedt@goodmis.org, jacob.e.keller@intel.com,
+	ath10k@lists.infradead.org, linux-wireless@vger.kernel.org,
+	ath11k@lists.infradead.org, ath12k@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	acpi4asus-user@lists.sourceforge.net,
+	platform-driver-x86@vger.kernel.org, linux-staging@lists.linux.dev
+Subject: Re: [PATCH AUTOSEL 6.5 43/45] Fix nomenclature for USB and PCI
+ wireless devices
+Message-ID: <2023090838-slurp-tilt-c7c4@gregkh>
+References: <20230908181327.3459042-1-sashal@kernel.org>
+ <20230908181327.3459042-43-sashal@kernel.org>
+ <0d2ddf90-2334-4d0c-9f63-018c150e06a9@rowland.harvard.edu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230905233118.183140-4-paul.elder@ideasonboard.com>
+In-Reply-To: <0d2ddf90-2334-4d0c-9f63-018c150e06a9@rowland.harvard.edu>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230908_135225_810007_F45A9B09 
-X-CRM114-Status: GOOD (  18.38  )
+X-CRM114-CacheID: sfid-20230908_143203_519861_1CF5A6F8 
+X-CRM114-Status: GOOD (  18.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,52 +89,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 06, 2023 at 08:31:18AM +0900, Paul Elder wrote:
-> Add overlays for the Pumpkin i350 to support THP7312 cameras.
+On Fri, Sep 08, 2023 at 03:12:26PM -0400, Alan Stern wrote:
+> On Fri, Sep 08, 2023 at 02:13:24PM -0400, Sasha Levin wrote:
+> > From: Alan Stern <stern@rowland.harvard.edu>
+> > 
+> > [ Upstream commit 5d7cf67f72ae34d38e090bdfa673da4aefe4048e ]
+> > 
+> > A mouse that uses a USB connection is called a "USB mouse" device (or
+> > "USB mouse" for short), not a "mouse USB" device.  By analogy, a WiFi
+> > adapter that connects to the host computer via USB is a "USB wireless"
+> > device, not a "wireless USB" device.  (The latter term more properly
+> > refers to a defunct Wireless USB specification, which described a
+> > technology for sending USB protocol messages over an ultra wideband
+> > radio link.)
+> > 
+> > Similarly for a WiFi adapter card that plugs into a PCIe slot: It is a
+> > "PCIe wireless" device, not a "wireless PCIe" device.
+> > 
+> > Rephrase the text in the kernel source where the word ordering is
+> > wrong.
+> > 
+> > Signed-off-by: Alan Stern <stern@rowland.harvard.edu>
+> > Reviewed-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > Signed-off-by: Kalle Valo <kvalo@kernel.org>
+> > Link: https://lore.kernel.org/r/57da7c80-0e48-41b5-8427-884a02648f55@rowland.harvard.edu
+> > Signed-off-by: Sasha Levin <sashal@kernel.org>
 > 
-> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> ---
->  arch/arm64/boot/dts/mediatek/Makefile         |  4 +
->  .../mt8365-pumpkin-common-thp7312.dtsi        | 23 ++++++
->  .../mt8365-pumpkin-csi0-thp7312-imx258.dtso   | 73 +++++++++++++++++++
->  .../mt8365-pumpkin-csi1-thp7312-imx258.dtso   | 73 +++++++++++++++++++
->  4 files changed, 173 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8365-pumpkin-common-thp7312.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8365-pumpkin-csi0-thp7312-imx258.dtso
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8365-pumpkin-csi1-thp7312-imx258.dtso
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index 20570bc40de8..ceaf24105001 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -56,4 +56,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8365-evk.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8365-pumpkin.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
->  
-> +mtk-mt8365-pumpkin-dtbs := mt8365-pumpkin.dtb mt8365-pumpkin-csi0-thp7312-imx258.dtbo
-> +mtk-mt8365-pumpkin-dtbs := mt8365-pumpkin.dtb mt8365-pumpkin-csi1-thp7312-imx258.dtbo
->  mtk-mt8365-pumpkin-dtbs := mt8365-pumpkin.dtb mt8365-pumpkin-ethernet-usb.dtbo
+> Is there any real reason to apply this commit to the -stable kernels?
+> I did not mark it that way when it was submitted, and it doesn't fix
+> any bugs.  In fact, aside from updating some module and device
+> description strings, all it does is change a bunch of comments.
+> 
+> Does that really fall under the -stable rules for acceptance?
 
-This has no effect. You are assigning the same variable 3 times. It 
-needs to be every overlay applied to its base is a *-dtbs variable and 
-then those are all added to 'dtb-y'. IOW, we don't allow overlays which 
-can't be applied at build time.
+Not really, this is just documentation, it should be dropped from the
+autosel queues.
 
-Assuming the overlays aren't mutually exclusive, you could do:
+thanks,
 
-mtk-mt8365-pumpkin-dtbs := mt8365-pumpkin.dtb mt8365-pumpkin-ethernet-usb.dtbo
-mtk-mt8365-pumpkin-dtbs += mt8365-pumpkin-csi0-thp7312-imx258.dtbo
-mtk-mt8365-pumpkin-dtbs += mt8365-pumpkin-csi1-thp7312-imx258.dtbo
-
-This works the same way as '-objs' variables to group .o files into a 
-module.
-
-> +
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mtk-mt8365-pumpkin.dtb
-
-Looks like mtk-mt8365-pumpkin.dtb failed to get built before. In any 
-case, that's a terrible name. What's the difference between 
-mt8365-pumpkin.dtb and mtk-mt8365-pumpkin.dtb? There's no clue.
-
-Rob
+greg k-h
 
