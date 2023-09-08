@@ -4,103 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12968EEB560
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 18:16:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AE2BEEB562
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 18:16:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6d6rnNoxGGn9IOcCQPNlR81MIPWErUTBatIQ4IFOG6A=; b=rV62GAyoza9k4jLvNj7tO0x4vF
-	OBwAqZ0LEDs/ymRQ+NgstoTN1WudUc5qaHNiHT7hnHvN4kyXCvoYFhrjV2wnDyiWcvo6K29k6VDH8
-	nJSsUH02yj6cYEqZqbnZ292GW9j850+Bj/AZgQ6zmQrHC+KCJ+tyuB/ZyyLOKiozF89NLp5qcptXz
-	3/UggX2BCi+ZcxmWP3yWqixn0bnUwcDi0IFifv5FowgG8ZqyJfJm7pYNZwTWtzVj29/K79mlwW/r2
-	8qTlgdajImvGih339EPmQWVd8ycbInkb8wJzGlpugpS+xPb9+pFPYsoMoXEkKr+cx9SqAmigMV4rB
-	vUk06XEw==;
+	bh=5Bvy/dBabVIUkhTPxxxTH7ij6s6T13CFFLdmiVDZ1gM=; b=XTXYAi8NVqdZL6SOyw8oyFPaaJ
+	IUyPrco/Y1aFG5oUWhgKJTLn0BhtvWT2mqoUjAr75Jds74kg6zJQ0KnfmOT7rwhiKu6esYJIHpSLx
+	H/BHvPGGJLDZ+PvyhcBj4KDGPNqGnyIeJTwYFXAUCmaSQD5gVOfff28i/VX9n2ZxXEsacR2aqCWcc
+	curEpjTa1lEaR+dK0CCcGHkd6onih2WgqefejuZKe+BuygYn//y8pACgm9nl8K8xiqz0h8+V3+Ua3
+	jgRcvVL8zxvSOUsje9JNLjr3muMY9cY1RCSzO4tG+WgPCjx2/q468He/5ADlR7n7hMeSd4r+LRjWV
+	b+RzADQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeg1P-00EFK7-35;
-	Fri, 08 Sep 2023 18:15:59 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qeg1m-00EFU5-1Z;
+	Fri, 08 Sep 2023 18:16:22 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeg1I-00EFGh-1H;
-	Fri, 08 Sep 2023 18:15:55 +0000
+	id 1qeg1j-00EFS3-02;
+	Fri, 08 Sep 2023 18:16:20 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id C9B50B8219D;
-	Fri,  8 Sep 2023 18:15:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19A84C433C9;
-	Fri,  8 Sep 2023 18:15:45 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 9F713B821BB;
+	Fri,  8 Sep 2023 18:16:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA928C43395;
+	Fri,  8 Sep 2023 18:16:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694196949;
-	bh=2pPysu3Wx4heb2VQmsEptnE69KELV8FxTQwHIrV536M=;
+	s=k20201202; t=1694196977;
+	bh=VDWwr2fmsHE/DSkU4U+g3Jy6guLZMB6mAI4l8yVfuUc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ntYZoyOpdiLv08QiCMoJp0YhrNVdRMSW4w4+KOLoR3k/F/CO0hIgs9rjtZdzWKDSe
-	 InyUCPUIyfwMnd6nSBFIFZqy/kWpb1pOLflW6v5fvLKd+cLmC8CU+JIbpR+zCJ5sA6
-	 BQPW/CkqSIPl7Pnt4gHwo77sosII1VtqUvcTPTV5A85PaOX1aP6wQ7QiWB/aIsLSvL
-	 4r8KikVk/3YzDkTxLXEVBGxSiiyi/vd1C7RJG7Xy8VVuJKwJStZZY+UVn0Q8aWL4CS
-	 DvdyHz6CgY4NnJVBnA4K5Km1c1ELXV0O32amcQCVPfJhCuHdzFVwOUXdIqHkPYsevp
-	 EmHUcuZLA+iDQ==
+	b=gdVFKSIzK3WaGa6PXh37Z659rScD3nDwzNY9UvLG9BbsHH5Csx8gic8ck/GKIOBPH
+	 bVDmHDLQM1HngzN+fNhMx3rwKkwvH+5Q0eGR18WAjVsnqS8gA/xDHgldymwUh+O4Fi
+	 6+/ELUrK7Dj42HIy6+KOh0dy3FD+TIlfPJ0pB9xMFYITAO7V+Y5a0BQ6yCe57ycW2m
+	 J4NawEu/sISvnrxpquPxPwNpTNPyAk5IBgtLurZwgAxF4Lp3yCsp/HCRiOJ8sWU/Of
+	 VDlvRUqqxrl3+wvCVrcl3oPluIBt8RSF2CZXB0/AqSxdCdsWUt7CLMwESyQCKjcXJK
+	 UaWyRdMZDcusA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Alan Stern <stern@rowland.harvard.edu>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Kalle Valo <kvalo@kernel.org>,
+Cc: Matt Whitlock <kernel@mattwhitlock.name>,
+	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
-	quic_jjohnson@quicinc.com,
-	nbd@nbd.name,
 	lorenzo@kernel.org,
 	ryder.lee@mediatek.com,
+	kvalo@kernel.org,
 	matthias.bgg@gmail.com,
-	kuba@kernel.org,
-	srini.raju@purelifi.com,
-	stf_xl@wp.pl,
-	helmut.schaa@googlemail.com,
-	pkshih@realtek.com,
-	corentin.chary@gmail.com,
-	hdegoede@redhat.com,
-	markgross@kernel.org,
-	johannes.berg@intel.com,
-	alexander@wetzel-home.de,
-	error27@gmail.com,
-	szymon.heidrich@gmail.com,
-	gustavoars@kernel.org,
-	lynxis@fe80.eu,
-	daniel@makrotopia.org,
-	arnd@arndb.de,
-	shayne.chen@mediatek.com,
-	keescook@chromium.org,
-	tglx@linutronix.de,
-	pabeni@redhat.com,
-	rostedt@goodmis.org,
-	jacob.e.keller@intel.com,
-	ath10k@lists.infradead.org,
+	deren.wu@mediatek.com,
+	sean.wang@mediatek.com,
 	linux-wireless@vger.kernel.org,
-	ath11k@lists.infradead.org,
-	ath12k@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	acpi4asus-user@lists.sourceforge.net,
-	platform-driver-x86@vger.kernel.org,
-	linux-staging@lists.linux.dev
-Subject: [PATCH AUTOSEL 6.5 43/45] Fix nomenclature for USB and PCI wireless devices
-Date: Fri,  8 Sep 2023 14:13:24 -0400
-Message-Id: <20230908181327.3459042-43-sashal@kernel.org>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.4 09/41] mt76: mt7921: don't assume adequate headroom for SDIO headers
+Date: Fri,  8 Sep 2023 14:15:23 -0400
+Message-Id: <20230908181555.3459640-9-sashal@kernel.org>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230908181327.3459042-1-sashal@kernel.org>
-References: <20230908181327.3459042-1-sashal@kernel.org>
+In-Reply-To: <20230908181555.3459640-1-sashal@kernel.org>
+References: <20230908181555.3459640-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.5.2
+X-stable-base: Linux 6.4.15
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230908_111552_732634_740FC699 
-X-CRM114-Status: GOOD (  19.45  )
+X-CRM114-CacheID: sfid-20230908_111619_316368_002E0730 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,466 +87,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alan Stern <stern@rowland.harvard.edu>
+From: Matt Whitlock <kernel@mattwhitlock.name>
 
-[ Upstream commit 5d7cf67f72ae34d38e090bdfa673da4aefe4048e ]
+[ Upstream commit 98c4d0abf5c478db1ad126ff0c187dbb84c0803c ]
 
-A mouse that uses a USB connection is called a "USB mouse" device (or
-"USB mouse" for short), not a "mouse USB" device.  By analogy, a WiFi
-adapter that connects to the host computer via USB is a "USB wireless"
-device, not a "wireless USB" device.  (The latter term more properly
-refers to a defunct Wireless USB specification, which described a
-technology for sending USB protocol messages over an ultra wideband
-radio link.)
+mt7921_usb_sdio_tx_prepare_skb() calls mt7921_usb_sdio_write_txwi() and
+mt7921_skb_add_usb_sdio_hdr(), both of which blindly assume that
+adequate headroom will be available in the passed skb. This assumption
+typically is satisfied when the skb was allocated in the net core for
+transmission via the mt7921 netdev (although even that is only an
+optimization and is not strictly guaranteed), but the assumption is
+sometimes not satisfied when the skb originated in the receive path of
+another netdev and was passed through to the mt7921, such as by the
+bridge layer. Blindly prepending bytes to an skb is always wrong.
 
-Similarly for a WiFi adapter card that plugs into a PCIe slot: It is a
-"PCIe wireless" device, not a "wireless PCIe" device.
+This commit introduces a call to skb_cow_head() before the call to
+mt7921_usb_sdio_write_txwi() in mt7921_usb_sdio_tx_prepare_skb() to
+ensure that at least MT_SDIO_TXD_SIZE + MT_SDIO_HDR_SIZE bytes can be
+pushed onto the skb.
 
-Rephrase the text in the kernel source where the word ordering is
-wrong.
+Without this fix, I can trivially cause kernel panics by bridging an
+MT7921AU-based USB 802.11ax interface with an Ethernet interface on an
+Intel Atom-based x86 system using its onboard RTL8169 PCI Ethernet
+adapter and also on an ARM-based Raspberry Pi 1 using its onboard
+SMSC9512 USB Ethernet adapter. Note that the panics do not occur in
+every system configuration, as they occur only if the receiving netdev
+leaves less headroom in its received skbs than the mt7921 needs for its
+SDIO headers.
 
-Signed-off-by: Alan Stern <stern@rowland.harvard.edu>
-Reviewed-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Kalle Valo <kvalo@kernel.org>
-Link: https://lore.kernel.org/r/57da7c80-0e48-41b5-8427-884a02648f55@rowland.harvard.edu
+Here is an example stack trace of this panic on Raspberry Pi OS Lite
+2023-02-21 running kernel 6.1.24+ [1]:
+
+ skb_panic from skb_push+0x44/0x48
+ skb_push from mt7921_usb_sdio_tx_prepare_skb+0xd4/0x190 [mt7921_common]
+ mt7921_usb_sdio_tx_prepare_skb [mt7921_common] from mt76u_tx_queue_skb+0x94/0x1d0 [mt76_usb]
+ mt76u_tx_queue_skb [mt76_usb] from __mt76_tx_queue_skb+0x4c/0xc8 [mt76]
+ __mt76_tx_queue_skb [mt76] from mt76_txq_schedule.part.0+0x13c/0x398 [mt76]
+ mt76_txq_schedule.part.0 [mt76] from mt76_txq_schedule_all+0x24/0x30 [mt76]
+ mt76_txq_schedule_all [mt76] from mt7921_tx_worker+0x58/0xf4 [mt7921_common]
+ mt7921_tx_worker [mt7921_common] from __mt76_worker_fn+0x9c/0xec [mt76]
+ __mt76_worker_fn [mt76] from kthread+0xbc/0xe0
+ kthread from ret_from_fork+0x14/0x34
+
+After this fix, bridging the mt7921 interface works fine on both of my
+previously problematic systems.
+
+[1] https://github.com/raspberrypi/firmware/tree/5c276f55a4b21345cd4d6200a504ee991851ff7a
+
+Link: https://github.com/openwrt/openwrt/issues/11796
+Signed-off-by: Matt Whitlock <kernel@mattwhitlock.name>
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/ath/ath10k/pci.c         |  2 +-
- drivers/net/wireless/ath/ath10k/usb.c         |  2 +-
- drivers/net/wireless/ath/ath11k/pci.c         |  2 +-
- drivers/net/wireless/ath/ath12k/pci.c         |  2 +-
- drivers/net/wireless/atmel/at76c50x-usb.c     |  8 ++--
- .../wireless/intersil/orinoco/orinoco_usb.c   | 12 ++---
- drivers/net/wireless/legacy/rndis_wlan.c      |  2 +-
- .../net/wireless/mediatek/mt76/mt7603/Kconfig |  2 +-
- .../net/wireless/mediatek/mt76/mt7615/Kconfig |  2 +-
- .../net/wireless/mediatek/mt76/mt76x0/Kconfig |  4 +-
- .../net/wireless/mediatek/mt76/mt76x2/Kconfig |  4 +-
- .../net/wireless/mediatek/mt76/mt7915/Kconfig |  2 +-
- .../net/wireless/mediatek/mt76/mt7996/Kconfig |  2 +-
- drivers/net/wireless/mediatek/mt7601u/Kconfig |  2 +-
- drivers/net/wireless/purelifi/plfxlc/Kconfig  |  2 +-
- drivers/net/wireless/ralink/rt2x00/Kconfig    |  2 +-
- drivers/net/wireless/realtek/rtw88/pci.c      |  2 +-
- drivers/net/wireless/realtek/rtw88/usb.c      |  2 +-
- drivers/net/wireless/realtek/rtw89/pci.c      |  2 +-
- drivers/net/wireless/zydas/zd1201.c           |  6 +--
- drivers/platform/x86/eeepc-laptop.c           |  2 +-
- drivers/staging/wlan-ng/prism2usb.c           | 48 +++++++++----------
- 22 files changed, 57 insertions(+), 57 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/net/wireless/ath/ath10k/pci.c b/drivers/net/wireless/ath/ath10k/pci.c
-index a7f44f6335fb8..3ef414b613bf3 100644
---- a/drivers/net/wireless/ath/ath10k/pci.c
-+++ b/drivers/net/wireless/ath/ath10k/pci.c
-@@ -3816,7 +3816,7 @@ static void __exit ath10k_pci_exit(void)
- module_exit(ath10k_pci_exit);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index 1675bf5204812..a671c601c5836 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -1180,6 +1180,10 @@ int mt7921_usb_sdio_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 	if (unlikely(tx_info->skb->len <= ETH_HLEN))
+ 		return -EINVAL;
  
- MODULE_AUTHOR("Qualcomm Atheros");
--MODULE_DESCRIPTION("Driver support for Qualcomm Atheros 802.11ac WLAN PCIe/AHB devices");
-+MODULE_DESCRIPTION("Driver support for Qualcomm Atheros PCIe/AHB 802.11ac WLAN devices");
- MODULE_LICENSE("Dual BSD/GPL");
++	err = skb_cow_head(skb, MT_SDIO_TXD_SIZE + MT_SDIO_HDR_SIZE);
++	if (err)
++		return err;
++
+ 	if (!wcid)
+ 		wcid = &dev->mt76.global_wcid;
  
- /* QCA988x 2.0 firmware files */
-diff --git a/drivers/net/wireless/ath/ath10k/usb.c b/drivers/net/wireless/ath/ath10k/usb.c
-index b0067af685b16..3c482baacec10 100644
---- a/drivers/net/wireless/ath/ath10k/usb.c
-+++ b/drivers/net/wireless/ath/ath10k/usb.c
-@@ -1126,5 +1126,5 @@ static struct usb_driver ath10k_usb_driver = {
- module_usb_driver(ath10k_usb_driver);
- 
- MODULE_AUTHOR("Atheros Communications, Inc.");
--MODULE_DESCRIPTION("Driver support for Qualcomm Atheros 802.11ac WLAN USB devices");
-+MODULE_DESCRIPTION("Driver support for Qualcomm Atheros USB 802.11ac WLAN devices");
- MODULE_LICENSE("Dual BSD/GPL");
-diff --git a/drivers/net/wireless/ath/ath11k/pci.c b/drivers/net/wireless/ath/ath11k/pci.c
-index 79e2cbe826384..bfa9d4c950f11 100644
---- a/drivers/net/wireless/ath/ath11k/pci.c
-+++ b/drivers/net/wireless/ath/ath11k/pci.c
-@@ -1034,7 +1034,7 @@ static void ath11k_pci_exit(void)
- 
- module_exit(ath11k_pci_exit);
- 
--MODULE_DESCRIPTION("Driver support for Qualcomm Technologies 802.11ax WLAN PCIe devices");
-+MODULE_DESCRIPTION("Driver support for Qualcomm Technologies PCIe 802.11ax WLAN devices");
- MODULE_LICENSE("Dual BSD/GPL");
- 
- /* firmware files */
-diff --git a/drivers/net/wireless/ath/ath12k/pci.c b/drivers/net/wireless/ath/ath12k/pci.c
-index 5990a55801f0a..bd689efa7daaf 100644
---- a/drivers/net/wireless/ath/ath12k/pci.c
-+++ b/drivers/net/wireless/ath/ath12k/pci.c
-@@ -1409,5 +1409,5 @@ static void ath12k_pci_exit(void)
- 
- module_exit(ath12k_pci_exit);
- 
--MODULE_DESCRIPTION("Driver support for Qualcomm Technologies 802.11be WLAN PCIe devices");
-+MODULE_DESCRIPTION("Driver support for Qualcomm Technologies PCIe 802.11be WLAN devices");
- MODULE_LICENSE("Dual BSD/GPL");
-diff --git a/drivers/net/wireless/atmel/at76c50x-usb.c b/drivers/net/wireless/atmel/at76c50x-usb.c
-index 009bca34ece30..447b51cff8f96 100644
---- a/drivers/net/wireless/atmel/at76c50x-usb.c
-+++ b/drivers/net/wireless/atmel/at76c50x-usb.c
-@@ -10,7 +10,7 @@
-  * Copyright (c) 2007 Kalle Valo <kalle.valo@iki.fi>
-  * Copyright (c) 2010 Sebastian Smolorz <sesmo@gmx.net>
-  *
-- * This file is part of the Berlios driver for WLAN USB devices based on the
-+ * This file is part of the Berlios driver for USB WLAN devices based on the
-  * Atmel AT76C503A/505/505A.
-  *
-  * Some iw_handler code was taken from airo.c, (C) 1999 Benjamin Reed
-@@ -143,7 +143,7 @@ static const struct usb_device_id dev_table[] = {
- 	{ USB_DEVICE(0x0cde, 0x0001), USB_DEVICE_DATA(BOARD_503_ISL3861) },
- 	/* Dynalink/Askey WLL013 (intersil) */
- 	{ USB_DEVICE(0x069a, 0x0320), USB_DEVICE_DATA(BOARD_503_ISL3861) },
--	/* EZ connect 11Mpbs Wireless USB Adapter SMC2662W v1 */
-+	/* EZ connect 11Mpbs USB Wireless Adapter SMC2662W v1 */
- 	{ USB_DEVICE(0x0d5c, 0xa001), USB_DEVICE_DATA(BOARD_503_ISL3861) },
- 	/* BenQ AWL300 */
- 	{ USB_DEVICE(0x04a5, 0x9000), USB_DEVICE_DATA(BOARD_503_ISL3861) },
-@@ -195,7 +195,7 @@ static const struct usb_device_id dev_table[] = {
- 	{ USB_DEVICE(0x04a5, 0x9001), USB_DEVICE_DATA(BOARD_503) },
- 	/* 3Com 3CRSHEW696 */
- 	{ USB_DEVICE(0x0506, 0x0a01), USB_DEVICE_DATA(BOARD_503) },
--	/* Siemens Santis ADSL WLAN USB adapter WLL 013 */
-+	/* Siemens Santis ADSL USB WLAN adapter WLL 013 */
- 	{ USB_DEVICE(0x0681, 0x001b), USB_DEVICE_DATA(BOARD_503) },
- 	/* Belkin F5D6050, version 2 */
- 	{ USB_DEVICE(0x050d, 0x0050), USB_DEVICE_DATA(BOARD_503) },
-@@ -238,7 +238,7 @@ static const struct usb_device_id dev_table[] = {
- 	{ USB_DEVICE(0x1915, 0x2233), USB_DEVICE_DATA(BOARD_505_2958) },
- 	/* Xterasys XN-2122B, IBlitzz BWU613B/BWU613SB */
- 	{ USB_DEVICE(0x12fd, 0x1001), USB_DEVICE_DATA(BOARD_505_2958) },
--	/* Corega WLAN USB Stick 11 */
-+	/* Corega USB WLAN Stick 11 */
- 	{ USB_DEVICE(0x07aa, 0x7613), USB_DEVICE_DATA(BOARD_505_2958) },
- 	/* Microstar MSI Box MS6978 */
- 	{ USB_DEVICE(0x0db0, 0x1020), USB_DEVICE_DATA(BOARD_505_2958) },
-diff --git a/drivers/net/wireless/intersil/orinoco/orinoco_usb.c b/drivers/net/wireless/intersil/orinoco/orinoco_usb.c
-index dd31929261ab9..866e0230df251 100644
---- a/drivers/net/wireless/intersil/orinoco/orinoco_usb.c
-+++ b/drivers/net/wireless/intersil/orinoco/orinoco_usb.c
-@@ -129,18 +129,18 @@ MODULE_FIRMWARE("orinoco_ezusb_fw");
- 
- #define USB_AVAYA8_VENDOR_ID     0x0D98
- #define USB_AVAYAE_VENDOR_ID     0x0D9E
--#define USB_AVAYA_WIRELESS_ID    0x0300 /* Avaya Wireless USB Card */
-+#define USB_AVAYA_WIRELESS_ID    0x0300 /* Avaya USB Wireless Card */
- 
- #define USB_AGERE_VENDOR_ID      0x0D4E /* Agere Systems */
--#define USB_AGERE_MODEL0801_ID   0x1000 /* Wireless USB Card Model 0801 */
--#define USB_AGERE_MODEL0802_ID   0x1001 /* Wireless USB Card Model 0802 */
--#define USB_AGERE_REBRANDED_ID   0x047A /* WLAN USB Card */
-+#define USB_AGERE_MODEL0801_ID   0x1000 /* USB Wireless Card Model 0801 */
-+#define USB_AGERE_MODEL0802_ID   0x1001 /* USB Wireless Card Model 0802 */
-+#define USB_AGERE_REBRANDED_ID   0x047A /* USB WLAN Card */
- 
- #define USB_ELSA_VENDOR_ID       0x05CC
- #define USB_ELSA_AIRLANCER_ID    0x3100 /* ELSA AirLancer USB-11 */
- 
- #define USB_LEGEND_VENDOR_ID     0x0E7C
--#define USB_LEGEND_JOYNET_ID     0x0300 /* Joynet WLAN USB Card */
-+#define USB_LEGEND_JOYNET_ID     0x0300 /* Joynet USB WLAN Card */
- 
- #define USB_SAMSUNG_VENDOR_ID    0x04E8
- #define USB_SAMSUNG_SEW2001U1_ID 0x5002 /* Samsung SEW-2001u Card */
-@@ -154,7 +154,7 @@ MODULE_FIRMWARE("orinoco_ezusb_fw");
- #define USB_FUJITSU_E1100_ID     0x1002 /* connect2AIR WLAN E-1100 USB */
- 
- #define USB_2WIRE_VENDOR_ID      0x1630
--#define USB_2WIRE_WIRELESS_ID    0xff81 /* 2Wire Wireless USB adapter */
-+#define USB_2WIRE_WIRELESS_ID    0xff81 /* 2Wire USB Wireless adapter */
- 
- 
- #define EZUSB_REQUEST_FW_TRANS		0xA0
-diff --git a/drivers/net/wireless/legacy/rndis_wlan.c b/drivers/net/wireless/legacy/rndis_wlan.c
-index 712038d46bdb3..e7fea7ded6d5c 100644
---- a/drivers/net/wireless/legacy/rndis_wlan.c
-+++ b/drivers/net/wireless/legacy/rndis_wlan.c
-@@ -1,6 +1,6 @@
- // SPDX-License-Identifier: GPL-2.0-or-later
- /*
-- * Driver for RNDIS based wireless USB devices.
-+ * Driver for RNDIS based USB wireless devices.
-  *
-  * Copyright (C) 2007 by Bjorge Dijkstra <bjd@jooz.net>
-  * Copyright (C) 2008-2009 by Jussi Kivilinna <jussi.kivilinna@iki.fi>
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7603/Kconfig
-index 6a0080f1d91c7..dd16acfd9735d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/Kconfig
-@@ -5,7 +5,7 @@ config MT7603E
- 	depends on MAC80211
- 	depends on PCI
- 	help
--	  This adds support for MT7603E wireless PCIe devices and the WLAN core
-+	  This adds support for MT7603E PCIe wireless devices and the WLAN core
- 	  on MT7628/MT7688 SoC devices. This family supports IEEE 802.11n 2x2
- 	  to 300Mbps PHY rate
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7615/Kconfig
-index 30fba36ff46bb..1ab1439143f41 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/Kconfig
-@@ -11,7 +11,7 @@ config MT7615E
- 	depends on MAC80211
- 	depends on PCI
- 	help
--	  This adds support for MT7615-based wireless PCIe devices,
-+	  This adds support for MT7615-based PCIe wireless devices,
- 	  which support concurrent dual-band operation at both 5GHz
- 	  and 2.4GHz, IEEE 802.11ac 4x4:4SS 1733Mbps PHY rate, wave2
- 	  MU-MIMO up to 4 users/group and 160MHz channels.
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/Kconfig b/drivers/net/wireless/mediatek/mt76/mt76x0/Kconfig
-index 7c88ed8b8f1e9..3ed888782a709 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/Kconfig
-@@ -10,7 +10,7 @@ config MT76x0U
- 	depends on MAC80211
- 	depends on USB
- 	help
--	  This adds support for MT7610U-based wireless USB 2.0 dongles,
-+	  This adds support for MT7610U-based USB 2.0 wireless dongles,
- 	  which comply with IEEE 802.11ac standards and support 1x1
- 	  433Mbps PHY rate.
- 
-@@ -22,7 +22,7 @@ config MT76x0E
- 	depends on MAC80211
- 	depends on PCI
- 	help
--	  This adds support for MT7610/MT7630-based wireless PCIe devices,
-+	  This adds support for MT7610/MT7630-based PCIe wireless devices,
- 	  which comply with IEEE 802.11ac standards and support 1x1
- 	  433Mbps PHY rate.
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/Kconfig b/drivers/net/wireless/mediatek/mt76/mt76x2/Kconfig
-index 5fd4973e32dfb..482a32b70ddfe 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2/Kconfig
-@@ -9,7 +9,7 @@ config MT76x2E
- 	depends on MAC80211
- 	depends on PCI
- 	help
--	  This adds support for MT7612/MT7602/MT7662-based wireless PCIe
-+	  This adds support for MT7612/MT7602/MT7662-based PCIe wireless
- 	  devices, which comply with IEEE 802.11ac standards and support
- 	  2SS to 866Mbit/s PHY rate.
- 
-@@ -22,7 +22,7 @@ config MT76x2U
- 	depends on MAC80211
- 	depends on USB
- 	help
--	  This adds support for MT7612U-based wireless USB 3.0 dongles,
-+	  This adds support for MT7612U-based USB 3.0 wireless dongles,
- 	  which comply with IEEE 802.11ac standards and support 2SS to
- 	  866Mbit/s PHY rate.
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7915/Kconfig
-index d710726d47bfd..3337cdfed0109 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/Kconfig
-@@ -7,7 +7,7 @@ config MT7915E
- 	depends on PCI
- 	select RELAY
- 	help
--	  This adds support for MT7915-based wireless PCIe devices,
-+	  This adds support for MT7915-based PCIe wireless devices,
- 	  which support concurrent dual-band operation at both 5GHz
- 	  and 2.4GHz IEEE 802.11ax 4x4:4SS 1024-QAM, 160MHz channels,
- 	  OFDMA, spatial reuse and dual carrier modulation.
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
-index 1afa2f662e473..bb44d4a5e2dc9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
-@@ -7,7 +7,7 @@ config MT7996E
- 	depends on MAC80211
- 	depends on PCI
- 	help
--	  This adds support for MT7996-based wireless PCIe devices,
-+	  This adds support for MT7996-based PCIe wireless devices,
- 	  which support concurrent tri-band operation at 6GHz, 5GHz,
- 	  and 2.4GHz IEEE 802.11be 4x4:4SS 4096-QAM, 320MHz channels.
- 
-diff --git a/drivers/net/wireless/mediatek/mt7601u/Kconfig b/drivers/net/wireless/mediatek/mt7601u/Kconfig
-index 4a8b962806707..4880fc053d9d3 100644
---- a/drivers/net/wireless/mediatek/mt7601u/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt7601u/Kconfig
-@@ -4,4 +4,4 @@ config MT7601U
- 	depends on MAC80211
- 	depends on USB
- 	help
--	  This adds support for MT7601U-based wireless USB dongles.
-+	  This adds support for MT7601U-based USB wireless dongles.
-diff --git a/drivers/net/wireless/purelifi/plfxlc/Kconfig b/drivers/net/wireless/purelifi/plfxlc/Kconfig
-index 4e0be27a5e0eb..dd5fca480d7ef 100644
---- a/drivers/net/wireless/purelifi/plfxlc/Kconfig
-+++ b/drivers/net/wireless/purelifi/plfxlc/Kconfig
-@@ -3,7 +3,7 @@ config PLFXLC
- 	tristate "pureLiFi X, XL, XC device support"
- 	depends on CFG80211 && MAC80211 && USB
- 	help
--	   This option adds support for pureLiFi LiFi wireless USB
-+	   This option adds support for pureLiFi LiFi USB wireless
- 	   adapters. The pureLiFi X, XL, XC USB devices are based on
- 	   802.11 OFDM PHY but uses light as the transmission medium.
- 	   The driver supports common 802.11 encryption/authentication
-diff --git a/drivers/net/wireless/ralink/rt2x00/Kconfig b/drivers/net/wireless/ralink/rt2x00/Kconfig
-index dcccc290a7f52..d1fd66d44a7ed 100644
---- a/drivers/net/wireless/ralink/rt2x00/Kconfig
-+++ b/drivers/net/wireless/ralink/rt2x00/Kconfig
-@@ -170,7 +170,7 @@ config RT2800USB_RT35XX
- config RT2800USB_RT3573
- 	bool "rt2800usb - Include support for rt3573 devices (EXPERIMENTAL)"
- 	help
--	  This enables support for RT3573 chipset based wireless USB devices
-+	  This enables support for RT3573 chipset based USB wireless devices
- 	  in the rt2800usb driver.
- 
- config RT2800USB_RT53XX
-diff --git a/drivers/net/wireless/realtek/rtw88/pci.c b/drivers/net/wireless/realtek/rtw88/pci.c
-index 44a8fff34cddf..2bfc0e822b8d0 100644
---- a/drivers/net/wireless/realtek/rtw88/pci.c
-+++ b/drivers/net/wireless/realtek/rtw88/pci.c
-@@ -1828,5 +1828,5 @@ void rtw_pci_shutdown(struct pci_dev *pdev)
- EXPORT_SYMBOL(rtw_pci_shutdown);
- 
- MODULE_AUTHOR("Realtek Corporation");
--MODULE_DESCRIPTION("Realtek 802.11ac wireless PCI driver");
-+MODULE_DESCRIPTION("Realtek PCI 802.11ac wireless driver");
- MODULE_LICENSE("Dual BSD/GPL");
-diff --git a/drivers/net/wireless/realtek/rtw88/usb.c b/drivers/net/wireless/realtek/rtw88/usb.c
-index 4a57efdba97bb..1f0625bfcee1c 100644
---- a/drivers/net/wireless/realtek/rtw88/usb.c
-+++ b/drivers/net/wireless/realtek/rtw88/usb.c
-@@ -927,5 +927,5 @@ void rtw_usb_disconnect(struct usb_interface *intf)
- EXPORT_SYMBOL(rtw_usb_disconnect);
- 
- MODULE_AUTHOR("Realtek Corporation");
--MODULE_DESCRIPTION("Realtek 802.11ac wireless USB driver");
-+MODULE_DESCRIPTION("Realtek USB 802.11ac wireless driver");
- MODULE_LICENSE("Dual BSD/GPL");
-diff --git a/drivers/net/wireless/realtek/rtw89/pci.c b/drivers/net/wireless/realtek/rtw89/pci.c
-index 9402f1a0caea8..3a4bfc44142b6 100644
---- a/drivers/net/wireless/realtek/rtw89/pci.c
-+++ b/drivers/net/wireless/realtek/rtw89/pci.c
-@@ -3939,5 +3939,5 @@ void rtw89_pci_remove(struct pci_dev *pdev)
- EXPORT_SYMBOL(rtw89_pci_remove);
- 
- MODULE_AUTHOR("Realtek Corporation");
--MODULE_DESCRIPTION("Realtek 802.11ax wireless PCI driver");
-+MODULE_DESCRIPTION("Realtek PCI 802.11ax wireless driver");
- MODULE_LICENSE("Dual BSD/GPL");
-diff --git a/drivers/net/wireless/zydas/zd1201.c b/drivers/net/wireless/zydas/zd1201.c
-index a85fe7e4c6d47..2814df1ecc78f 100644
---- a/drivers/net/wireless/zydas/zd1201.c
-+++ b/drivers/net/wireless/zydas/zd1201.c
-@@ -1,6 +1,6 @@
- // SPDX-License-Identifier: GPL-2.0-only
- /*
-- *	Driver for ZyDAS zd1201 based wireless USB devices.
-+ *	Driver for ZyDAS zd1201 based USB wireless devices.
-  *
-  *	Copyright (c) 2004, 2005 Jeroen Vreeken (pe1rxq@amsat.org)
-  *
-@@ -23,8 +23,8 @@
- #include "zd1201.h"
- 
- static const struct usb_device_id zd1201_table[] = {
--	{USB_DEVICE(0x0586, 0x3400)}, /* Peabird Wireless USB Adapter */
--	{USB_DEVICE(0x0ace, 0x1201)}, /* ZyDAS ZD1201 Wireless USB Adapter */
-+	{USB_DEVICE(0x0586, 0x3400)}, /* Peabird USB Wireless Adapter */
-+	{USB_DEVICE(0x0ace, 0x1201)}, /* ZyDAS ZD1201 USB Wireless Adapter */
- 	{USB_DEVICE(0x050d, 0x6051)}, /* Belkin F5D6051 usb  adapter */
- 	{USB_DEVICE(0x0db0, 0x6823)}, /* MSI UB11B usb  adapter */
- 	{USB_DEVICE(0x1044, 0x8004)}, /* Gigabyte GN-WLBZ101 */
-diff --git a/drivers/platform/x86/eeepc-laptop.c b/drivers/platform/x86/eeepc-laptop.c
-index 62b71e8e3567a..ff1b70269ccbf 100644
---- a/drivers/platform/x86/eeepc-laptop.c
-+++ b/drivers/platform/x86/eeepc-laptop.c
-@@ -1394,7 +1394,7 @@ static int eeepc_acpi_add(struct acpi_device *device)
- 	 * and machine-specific scripts find the fixed name convenient.  But
- 	 * It's also good for us to exclude multiple instances because both
- 	 * our hwmon and our wlan rfkill subdevice use global ACPI objects
--	 * (the EC and the wlan PCI slot respectively).
-+	 * (the EC and the PCI wlan slot respectively).
- 	 */
- 	result = eeepc_platform_init(eeepc);
- 	if (result)
-diff --git a/drivers/staging/wlan-ng/prism2usb.c b/drivers/staging/wlan-ng/prism2usb.c
-index 80e36d03c4e25..0e0ccef4871e9 100644
---- a/drivers/staging/wlan-ng/prism2usb.c
-+++ b/drivers/staging/wlan-ng/prism2usb.c
-@@ -11,45 +11,45 @@
- 
- static const struct usb_device_id usb_prism_tbl[] = {
- 	PRISM_DEV(0x04bb, 0x0922, "IOData AirPort WN-B11/USBS"),
--	PRISM_DEV(0x07aa, 0x0012, "Corega Wireless LAN USB Stick-11"),
--	PRISM_DEV(0x09aa, 0x3642, "Prism2.x 11Mbps WLAN USB Adapter"),
--	PRISM_DEV(0x1668, 0x0408, "Actiontec Prism2.5 11Mbps WLAN USB Adapter"),
--	PRISM_DEV(0x1668, 0x0421, "Actiontec Prism2.5 11Mbps WLAN USB Adapter"),
--	PRISM_DEV(0x1915, 0x2236, "Linksys WUSB11v3.0 11Mbps WLAN USB Adapter"),
--	PRISM_DEV(0x066b, 0x2212, "Linksys WUSB11v2.5 11Mbps WLAN USB Adapter"),
--	PRISM_DEV(0x066b, 0x2213, "Linksys WUSB12v1.1 11Mbps WLAN USB Adapter"),
-+	PRISM_DEV(0x07aa, 0x0012, "Corega USB Wireless LAN Stick-11"),
-+	PRISM_DEV(0x09aa, 0x3642, "Prism2.x 11Mbps USB WLAN Adapter"),
-+	PRISM_DEV(0x1668, 0x0408, "Actiontec Prism2.5 11Mbps USB WLAN Adapter"),
-+	PRISM_DEV(0x1668, 0x0421, "Actiontec Prism2.5 11Mbps USB WLAN Adapter"),
-+	PRISM_DEV(0x1915, 0x2236, "Linksys WUSB11v3.0 11Mbps USB WLAN Adapter"),
-+	PRISM_DEV(0x066b, 0x2212, "Linksys WUSB11v2.5 11Mbps USB WLAN Adapter"),
-+	PRISM_DEV(0x066b, 0x2213, "Linksys WUSB12v1.1 11Mbps USB WLAN Adapter"),
- 	PRISM_DEV(0x0411, 0x0016, "Melco WLI-USB-S11 11Mbps WLAN Adapter"),
--	PRISM_DEV(0x08de, 0x7a01, "PRISM25 IEEE 802.11 Mini USB Adapter"),
--	PRISM_DEV(0x8086, 0x1111, "Intel PRO/Wireless 2011B LAN USB Adapter"),
-+	PRISM_DEV(0x08de, 0x7a01, "PRISM25 USB IEEE 802.11 Mini Adapter"),
-+	PRISM_DEV(0x8086, 0x1111, "Intel PRO/Wireless 2011B USB LAN Adapter"),
- 	PRISM_DEV(0x0d8e, 0x7a01, "PRISM25 IEEE 802.11 Mini USB Adapter"),
--	PRISM_DEV(0x045e, 0x006e, "Microsoft MN510 Wireless USB Adapter"),
-+	PRISM_DEV(0x045e, 0x006e, "Microsoft MN510 USB Wireless Adapter"),
- 	PRISM_DEV(0x0967, 0x0204, "Acer Warplink USB Adapter"),
- 	PRISM_DEV(0x0cde, 0x0002, "Z-Com 725/726 Prism2.5 USB/USB Integrated"),
--	PRISM_DEV(0x0cde, 0x0005, "Z-Com Xl735 Wireless 802.11b USB Adapter"),
--	PRISM_DEV(0x413c, 0x8100, "Dell TrueMobile 1180 Wireless USB Adapter"),
--	PRISM_DEV(0x0b3b, 0x1601, "ALLNET 0193 11Mbps WLAN USB Adapter"),
--	PRISM_DEV(0x0b3b, 0x1602, "ZyXEL ZyAIR B200 Wireless USB Adapter"),
--	PRISM_DEV(0x0baf, 0x00eb, "USRobotics USR1120 Wireless USB Adapter"),
-+	PRISM_DEV(0x0cde, 0x0005, "Z-Com Xl735 USB Wireless 802.11b Adapter"),
-+	PRISM_DEV(0x413c, 0x8100, "Dell TrueMobile 1180 USB Wireless Adapter"),
-+	PRISM_DEV(0x0b3b, 0x1601, "ALLNET 0193 11Mbps USB WLAN Adapter"),
-+	PRISM_DEV(0x0b3b, 0x1602, "ZyXEL ZyAIR B200 USB Wireless Adapter"),
-+	PRISM_DEV(0x0baf, 0x00eb, "USRobotics USR1120 USB Wireless Adapter"),
- 	PRISM_DEV(0x0411, 0x0027, "Melco WLI-USB-KS11G 11Mbps WLAN Adapter"),
- 	PRISM_DEV(0x04f1, 0x3009, "JVC MP-XP7250 Builtin USB WLAN Adapter"),
- 	PRISM_DEV(0x0846, 0x4110, "NetGear MA111"),
- 	PRISM_DEV(0x03f3, 0x0020, "Adaptec AWN-8020 USB WLAN Adapter"),
--	PRISM_DEV(0x2821, 0x3300, "ASUS-WL140 / Hawking HighDB Wireless USB Adapter"),
--	PRISM_DEV(0x2001, 0x3700, "DWL-122 Wireless USB Adapter"),
--	PRISM_DEV(0x2001, 0x3702, "DWL-120 Rev F Wireless USB Adapter"),
-+	PRISM_DEV(0x2821, 0x3300, "ASUS-WL140 / Hawking HighDB USB Wireless Adapter"),
-+	PRISM_DEV(0x2001, 0x3700, "DWL-122 USB Wireless Adapter"),
-+	PRISM_DEV(0x2001, 0x3702, "DWL-120 Rev F USB Wireless Adapter"),
- 	PRISM_DEV(0x50c2, 0x4013, "Averatec USB WLAN Adapter"),
--	PRISM_DEV(0x2c02, 0x14ea, "Planex GW-US11H WLAN USB Adapter"),
--	PRISM_DEV(0x124a, 0x168b, "Airvast PRISM3 WLAN USB Adapter"),
-+	PRISM_DEV(0x2c02, 0x14ea, "Planex GW-US11H USB WLAN Adapter"),
-+	PRISM_DEV(0x124a, 0x168b, "Airvast PRISM3 USB WLAN Adapter"),
- 	PRISM_DEV(0x083a, 0x3503, "T-Sinus 111 USB WLAN Adapter"),
- 	PRISM_DEV(0x0411, 0x0044, "Melco WLI-USB-KB11 11Mbps WLAN Adapter"),
--	PRISM_DEV(0x1668, 0x6106, "ROPEX FreeLan 802.11b USB Adapter"),
--	PRISM_DEV(0x124a, 0x4017, "Pheenet WL-503IA 802.11b USB Adapter"),
-+	PRISM_DEV(0x1668, 0x6106, "ROPEX FreeLan USB 802.11b Adapter"),
-+	PRISM_DEV(0x124a, 0x4017, "Pheenet WL-503IA USB 802.11b Adapter"),
- 	PRISM_DEV(0x0bb2, 0x0302, "Ambit Microsystems Corp."),
--	PRISM_DEV(0x9016, 0x182d, "Sitecom WL-022 802.11b USB Adapter"),
-+	PRISM_DEV(0x9016, 0x182d, "Sitecom WL-022 USB 802.11b Adapter"),
- 	PRISM_DEV(0x0543, 0x0f01,
- 		  "ViewSonic Airsync USB Adapter 11Mbps (Prism2.5)"),
- 	PRISM_DEV(0x067c, 0x1022,
--		  "Siemens SpeedStream 1022 11Mbps WLAN USB Adapter"),
-+		  "Siemens SpeedStream 1022 11Mbps USB WLAN Adapter"),
- 	PRISM_DEV(0x049f, 0x0033,
- 		  "Compaq/Intel W100 PRO/Wireless 11Mbps multiport WLAN Adapter"),
- 	{ } /* terminator */
 -- 
 2.40.1
 
