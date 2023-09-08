@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AE2BEEB562
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 18:16:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E8D2EEB560
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 18:16:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5Bvy/dBabVIUkhTPxxxTH7ij6s6T13CFFLdmiVDZ1gM=; b=XTXYAi8NVqdZL6SOyw8oyFPaaJ
-	IUyPrco/Y1aFG5oUWhgKJTLn0BhtvWT2mqoUjAr75Jds74kg6zJQ0KnfmOT7rwhiKu6esYJIHpSLx
-	H/BHvPGGJLDZ+PvyhcBj4KDGPNqGnyIeJTwYFXAUCmaSQD5gVOfff28i/VX9n2ZxXEsacR2aqCWcc
-	curEpjTa1lEaR+dK0CCcGHkd6onih2WgqefejuZKe+BuygYn//y8pACgm9nl8K8xiqz0h8+V3+Ua3
-	jgRcvVL8zxvSOUsje9JNLjr3muMY9cY1RCSzO4tG+WgPCjx2/q468He/5ADlR7n7hMeSd4r+LRjWV
-	b+RzADQw==;
+	bh=5UPh3iLY+Rp4QeA19JuWEW2NS2EFZ9cjo4fkqTp2Ugg=; b=MOUqJCz1+RmsujRwfm0R3rJjA+
+	A5k8ipc5s6RAnFxhc4QVD3F+JHSflbGMQR+tQbuq138iqNe6UE+DVi2ttG2DTnahA4yN+RFnVIZ9v
+	deLeZt62CTMimwKlWFdKBS5EdFmIMQy2FxN8YCIvHvbY6NEgse0z6kgTe/noCB6vlRb8k/22zjfnr
+	0lpg2HH3WQRHRjD1qvcR3LQkA3GMbrgMTCbS7VTK1TLPsVvzYraV8C8UFiBUWjOMzbHTnAxXZIyxA
+	gVdaEKG4+C+4NLKqnXNe/AvZ2cTwKFZIJTVg95SNgvxQWGnTYisrWe8D5D9ghDfOglijXobSJkacC
+	hszk54YQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeg1m-00EFU5-1Z;
-	Fri, 08 Sep 2023 18:16:22 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qeg2G-00EFhp-0K;
+	Fri, 08 Sep 2023 18:16:52 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeg1j-00EFS3-02;
-	Fri, 08 Sep 2023 18:16:20 +0000
+	id 1qeg2C-00EFf3-1G;
+	Fri, 08 Sep 2023 18:16:50 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 9F713B821BB;
-	Fri,  8 Sep 2023 18:16:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA928C43395;
-	Fri,  8 Sep 2023 18:16:15 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTPS id 9DCEBCE1C4B;
+	Fri,  8 Sep 2023 18:16:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6361C32779;
+	Fri,  8 Sep 2023 18:16:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694196977;
-	bh=VDWwr2fmsHE/DSkU4U+g3Jy6guLZMB6mAI4l8yVfuUc=;
+	s=k20201202; t=1694197006;
+	bh=AWqIuq/KztpdBzs6ucjQPnFCSbIpSLgr39U/dMIQVuA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=gdVFKSIzK3WaGa6PXh37Z659rScD3nDwzNY9UvLG9BbsHH5Csx8gic8ck/GKIOBPH
-	 bVDmHDLQM1HngzN+fNhMx3rwKkwvH+5Q0eGR18WAjVsnqS8gA/xDHgldymwUh+O4Fi
-	 6+/ELUrK7Dj42HIy6+KOh0dy3FD+TIlfPJ0pB9xMFYITAO7V+Y5a0BQ6yCe57ycW2m
-	 J4NawEu/sISvnrxpquPxPwNpTNPyAk5IBgtLurZwgAxF4Lp3yCsp/HCRiOJ8sWU/Of
-	 VDlvRUqqxrl3+wvCVrcl3oPluIBt8RSF2CZXB0/AqSxdCdsWUt7CLMwESyQCKjcXJK
-	 UaWyRdMZDcusA==
+	b=Xf1WtbA8QDywqynmqzc0gGlXi90V5+XEmEz1/YrcNsAJAZ1YcYlEjOKg+zPN4/tkS
+	 AcNzRQiJpmOKSBNvKHVV/Jd0uPY10whiYyspkNc+DSJjka0bttmanqaHxbUCYPrza2
+	 e3j5zv1eJZKPc7vGJi4BOuRFuiabXahtBuzJsXNHK0JEVHonl5xptXqlejb3uy3Oiq
+	 ocJJFd34d5KS4JRVVvszD7CiMQrQJxFb333GZ27sJPG+QbwZVw/NYLKQBN79JWE4qo
+	 cSsAtI3aWsXguF/ZAo5trJ6Ldt+Cr072UexkWO43rFhHAPK9+L8bIG+pDCdBv+qF4A
+	 XIHqb2ZY4JEvA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Matt Whitlock <kernel@mattwhitlock.name>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: Chris Lu <chris.lu@mediatek.com>,
+	Luiz Augusto von Dentz <luiz.von.dentz@intel.com>,
 	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	kvalo@kernel.org,
+	marcel@holtmann.org,
+	johan.hedberg@gmail.com,
+	luiz.dentz@gmail.com,
 	matthias.bgg@gmail.com,
-	deren.wu@mediatek.com,
-	sean.wang@mediatek.com,
-	linux-wireless@vger.kernel.org,
+	linux-bluetooth@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.4 09/41] mt76: mt7921: don't assume adequate headroom for SDIO headers
-Date: Fri,  8 Sep 2023 14:15:23 -0400
-Message-Id: <20230908181555.3459640-9-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.4 19/41] Bluetooth: btusb: Add a new VID/PID 0489/e0f6 for MT7922
+Date: Fri,  8 Sep 2023 14:15:33 -0400
+Message-Id: <20230908181555.3459640-19-sashal@kernel.org>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230908181555.3459640-1-sashal@kernel.org>
 References: <20230908181555.3459640-1-sashal@kernel.org>
@@ -71,8 +69,8 @@ X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.4.15
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230908_111619_316368_002E0730 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20230908_111648_790798_003AE1D6 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,76 +85,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Matt Whitlock <kernel@mattwhitlock.name>
+From: Chris Lu <chris.lu@mediatek.com>
 
-[ Upstream commit 98c4d0abf5c478db1ad126ff0c187dbb84c0803c ]
+[ Upstream commit b6cfa1c29afb6d527652938b0eb8db17b194bddc ]
 
-mt7921_usb_sdio_tx_prepare_skb() calls mt7921_usb_sdio_write_txwi() and
-mt7921_skb_add_usb_sdio_hdr(), both of which blindly assume that
-adequate headroom will be available in the passed skb. This assumption
-typically is satisfied when the skb was allocated in the net core for
-transmission via the mt7921 netdev (although even that is only an
-optimization and is not strictly guaranteed), but the assumption is
-sometimes not satisfied when the skb originated in the receive path of
-another netdev and was passed through to the mt7921, such as by the
-bridge layer. Blindly prepending bytes to an skb is always wrong.
+Add VID/PID 0489/e0f6 for MediaTek MT7922 USB Bluetooth chip.
 
-This commit introduces a call to skb_cow_head() before the call to
-mt7921_usb_sdio_write_txwi() in mt7921_usb_sdio_tx_prepare_skb() to
-ensure that at least MT_SDIO_TXD_SIZE + MT_SDIO_HDR_SIZE bytes can be
-pushed onto the skb.
+The information in /sys/kernel/debug/usb/devices about the Bluetooth
+device is listed as the below.
 
-Without this fix, I can trivially cause kernel panics by bridging an
-MT7921AU-based USB 802.11ax interface with an Ethernet interface on an
-Intel Atom-based x86 system using its onboard RTL8169 PCI Ethernet
-adapter and also on an ARM-based Raspberry Pi 1 using its onboard
-SMSC9512 USB Ethernet adapter. Note that the panics do not occur in
-every system configuration, as they occur only if the receiving netdev
-leaves less headroom in its received skbs than the mt7921 needs for its
-SDIO headers.
+T:  Bus=01 Lev=01 Prnt=01 Port=04 Cnt=03 Dev#=  4 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=0489 ProdID=e0f6 Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
 
-Here is an example stack trace of this panic on Raspberry Pi OS Lite
-2023-02-21 running kernel 6.1.24+ [1]:
-
- skb_panic from skb_push+0x44/0x48
- skb_push from mt7921_usb_sdio_tx_prepare_skb+0xd4/0x190 [mt7921_common]
- mt7921_usb_sdio_tx_prepare_skb [mt7921_common] from mt76u_tx_queue_skb+0x94/0x1d0 [mt76_usb]
- mt76u_tx_queue_skb [mt76_usb] from __mt76_tx_queue_skb+0x4c/0xc8 [mt76]
- __mt76_tx_queue_skb [mt76] from mt76_txq_schedule.part.0+0x13c/0x398 [mt76]
- mt76_txq_schedule.part.0 [mt76] from mt76_txq_schedule_all+0x24/0x30 [mt76]
- mt76_txq_schedule_all [mt76] from mt7921_tx_worker+0x58/0xf4 [mt7921_common]
- mt7921_tx_worker [mt7921_common] from __mt76_worker_fn+0x9c/0xec [mt76]
- __mt76_worker_fn [mt76] from kthread+0xbc/0xe0
- kthread from ret_from_fork+0x14/0x34
-
-After this fix, bridging the mt7921 interface works fine on both of my
-previously problematic systems.
-
-[1] https://github.com/raspberrypi/firmware/tree/5c276f55a4b21345cd4d6200a504ee991851ff7a
-
-Link: https://github.com/openwrt/openwrt/issues/11796
-Signed-off-by: Matt Whitlock <kernel@mattwhitlock.name>
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Signed-off-by: Luiz Augusto von Dentz <luiz.von.dentz@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/bluetooth/btusb.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index 1675bf5204812..a671c601c5836 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -1180,6 +1180,10 @@ int mt7921_usb_sdio_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- 	if (unlikely(tx_info->skb->len <= ETH_HLEN))
- 		return -EINVAL;
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index df2e454e9ad46..968e2eeff21e9 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -631,6 +631,9 @@ static const struct usb_device_id blacklist_table[] = {
+ 	{ USB_DEVICE(0x0489, 0xe0f5), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH |
+ 						     BTUSB_VALID_LE_STATES },
++	{ USB_DEVICE(0x0489, 0xe0f6), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH |
++						     BTUSB_VALID_LE_STATES },
  
-+	err = skb_cow_head(skb, MT_SDIO_TXD_SIZE + MT_SDIO_HDR_SIZE);
-+	if (err)
-+		return err;
-+
- 	if (!wcid)
- 		wcid = &dev->mt76.global_wcid;
- 
+ 	/* Additional Realtek 8723AE Bluetooth devices */
+ 	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
 -- 
 2.40.1
 
