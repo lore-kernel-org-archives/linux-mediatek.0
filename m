@@ -4,76 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FDEBEEB56B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 19:31:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 488FBEEB566
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 19:33:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kBbD4gY3Pyrp6AuWv2HmA1CQHuhWFxiHrUFxI1B/rwU=; b=2WI02n8pIPJplRFGC8ZRZVAMCM
-	wMAeuS4J0LkcSdquHs5vHk+7Q2WS4acpFr5DeoC6Gm4e2EqBTYmuqu+1+R9B8zFbMgnH5p/alfcPd
-	YnFPTxEhBEjGSloYcvy/15549BLLma6QKgh0R24QcYYCogKhLxBnjgwV6400eSAM8WS+hBUjeVOtI
-	j1LTnA7dW8F+/PQ+80f4rFbzSe4EbdoAR8TZJyyKIJPxx1uaTK5jLC/UP7INyj2sBgVywWiZndrZD
-	szco05ZjZcfb7VR3jkujjQlHLgl51ISa4W0/F2vbUxdAwAyuK5HpvB/5dmtn6GPiU4movKdjc73U2
-	Mpp+eSJg==;
+	bh=Au5RjrPbQzn5VYQjKuEvjtdLtnEIUMnpeIhzx8yYOt8=; b=ND50P3bt8/8GdvPss5R92FKs6p
+	BGOBeHSBEGaZL8roI7kuRpR7XrvR+KBt955Qp8eZ7UBj8c7gAC0TsqKeqiwZT5fd6oEK+xNNontMm
+	A25EK5mEm8VmeAizwsxQy0JFfF1ic5Q9TxufgGRplFiN4CAD8xBpn30qhttdfibkJMGqN+cY1Vgay
+	M/BXagEcX3bgJiIac5FL30XJJ2lXw+4e/Ay4Zg74/UjcVetHrb+/JedKAx/hWKGORRWb/UtEBbNfm
+	0vE+6AeahV7eVohKUaCnteWdtVLqXO8LbxFZQtQcJiX8bkzh5prEDYWel2YAb90PwJ47T3WfH1X+g
+	gSEhSjMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qehCb-00EMLE-1B;
-	Fri, 08 Sep 2023 19:31:37 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qehE8-00EMqI-0y;
+	Fri, 08 Sep 2023 19:33:12 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qehCY-00EMIO-0E;
-	Fri, 08 Sep 2023 19:31:35 +0000
+	id 1qehE3-00EMoQ-2H;
+	Fri, 08 Sep 2023 19:33:09 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9958F6155D;
-	Fri,  8 Sep 2023 19:31:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9451C433C8;
-	Fri,  8 Sep 2023 19:31:31 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 098E3B821D4;
+	Fri,  8 Sep 2023 19:33:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E064C433C9;
+	Fri,  8 Sep 2023 19:33:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694201493;
-	bh=o9T6Uw/qtR+3CImr3chrMXNSOkwq+cSMpKWANrsOAJ4=;
+	s=k20201202; t=1694201584;
+	bh=LtluMiPiAvNOgrlFsorMjnATBMItZh1rE0cJ9Uf6TLc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=P/SwJ3iuSDcisoEy3c2JWLGwDghPaYaJrLcuc//bEHrOvO8bS+dhly4bsLgTCcBdJ
-	 Zhqbvpc+SS6Qqk9I9PoIFxeZ3B5E7Z2kv9liMOwOW2Da/FxLWmq9WSyCg2tMQlNXDi
-	 99sWiBB7YP30ykrqZZ5Vwk8TE5PbsOzoEd54UAlkRj7hfb1Ftamb9zeT9ofJjaNMcv
-	 fxtjB9Kt5BPjZ5LvsbOzUL6VmARzoTK8dJbFzj5RqYev12yJpbIjprZNa5nmLu2k5T
-	 rb7yIjoPT1MbYMhjmWH92n7+hXiCbOooS+QToZ5/kSszUhzStcJ0Ex1xCWNnN1tfBH
-	 t8CNfZvmJHTSQ==
+	b=Z0/VDig3T+E8aCLIqotHkOVBb8PLc4ew1h4J6YtiTQS3o2rLJywhCDEdd3gMafa+e
+	 fawsBhdv2gAm2JGlH9Dp/rmcO4M5i+rZp3z+muCOdDJJ2mpwkfy210tgPXW+zJv/IM
+	 bfiM9byhXdb/nwZHI3Wr8VhhQJQM1dNMgty9rUYp/iDtvb8PEhXdaCedm4ajxzugoy
+	 3wS7AMKMIieaQZdcqUhUqLe0QJ4p5ID8UJmutB44j/GeFKCJWojPGUoT6cnf0ElI1c
+	 7qK0grvyZt6o+uTW+H/ZOGf3SQT3t5po3t3podiSoioO6NVOUMzoMkQuHUiJcyD/4o
+	 34QKTWx03sqHQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	CK Hu <ck.hu@mediatek.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+Cc: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+	Rander Wang <rander.wang@intel.com>,
+	Daniel Baluta <daniel.baluta@nxp.com>,
+	Yaochun Hung <yc.hung@mediatek.com>,
+	Mark Brown <broonie@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
+	lgirdwood@gmail.com,
+	peter.ujfalusi@linux.intel.com,
+	yung-chuan.liao@linux.intel.com,
+	ranjani.sridharan@linux.intel.com,
+	perex@perex.cz,
+	tiwai@suse.com,
 	matthias.bgg@gmail.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.5 28/36] drm/mediatek: dp: Change logging to dev for mtk_dp_aux_transfer()
-Date: Fri,  8 Sep 2023 15:28:39 -0400
-Message-Id: <20230908192848.3462476-28-sashal@kernel.org>
+	sound-open-firmware@alsa-project.org,
+	alsa-devel@alsa-project.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.4 15/31] ASoC: SOF: topology: simplify code to prevent static analysis warnings
+Date: Fri,  8 Sep 2023 15:31:44 -0400
+Message-Id: <20230908193201.3462957-15-sashal@kernel.org>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230908192848.3462476-1-sashal@kernel.org>
-References: <20230908192848.3462476-1-sashal@kernel.org>
+In-Reply-To: <20230908193201.3462957-1-sashal@kernel.org>
+References: <20230908193201.3462957-1-sashal@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.5.2
+X-stable-base: Linux 6.4.15
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230908_123134_201280_A8D11F75 
-X-CRM114-Status: GOOD (  13.53  )
+X-CRM114-CacheID: sfid-20230908_123308_034134_C9B0969B 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,63 +93,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
 
-[ Upstream commit fd70e2019bfbcb0ed90c5e23839bf510ce6acf8f ]
+[ Upstream commit 55cb3dc271d81f1982c949a2ac483a6daf613b92 ]
 
-Change logging from drm_{err,info}() to dev_{err,info}() in functions
-mtk_dp_aux_transfer() and mtk_dp_aux_do_transfer(): this will be
-essential to avoid getting NULL pointer kernel panics if any kind
-of error happens during AUX transfers happening before the bridge
-is attached.
+make KCFLAGS='-fanalyzer' sound/soc/sof/intel/ reports a possible NULL
+pointer dereference.
 
-This may potentially start happening in a later commit implementing
-aux-bus support, as AUX transfers will be triggered from the panel
-driver (for EDID) before the mtk-dp bridge gets attached, and it's
-done in preparation for the same.
+sound/soc/sof/topology.c:1136:21: error: dereference of NULL ‘w’
+[CWE-476] [-Werror=analyzer-null-dereference]
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-Link: https://patchwork.kernel.org/project/dri-devel/patch/20230725073234.55892-4-angelogioacchino.delregno@collabora.com/
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+ 1136 |     strcmp(w->sname, rtd->dai_link->stream_name))
+
+The code is rather confusing and can be simplified to make static
+analysis happy. No functionality change.
+
+Signed-off-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Reviewed-by: Rander Wang <rander.wang@intel.com>
+Reviewed-by: Daniel Baluta <daniel.baluta@nxp.com>
+Reviewed-by: Yaochun Hung <yc.hung@mediatek.com>
+Link: https://lore.kernel.org/r/20230731213748.440285-4-pierre-louis.bossart@linux.intel.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ sound/soc/sof/topology.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 64eee77452c04..83de1338c4d5d 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -847,7 +847,7 @@ static int mtk_dp_aux_do_transfer(struct mtk_dp *mtk_dp, bool is_read, u8 cmd,
- 		u32 phy_status = mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3628) &
- 				 AUX_RX_PHY_STATE_AUX_TX_P0_MASK;
- 		if (phy_status != AUX_RX_PHY_STATE_AUX_TX_P0_RX_IDLE) {
--			drm_err(mtk_dp->drm_dev,
-+			dev_err(mtk_dp->dev,
- 				"AUX Rx Aux hang, need SW reset\n");
- 			return -EIO;
- 		}
-@@ -2057,7 +2057,7 @@ static ssize_t mtk_dp_aux_transfer(struct drm_dp_aux *mtk_aux,
- 		is_read = true;
- 		break;
- 	default:
--		drm_err(mtk_aux->drm_dev, "invalid aux cmd = %d\n",
-+		dev_err(mtk_dp->dev, "invalid aux cmd = %d\n",
- 			msg->request);
- 		ret = -EINVAL;
- 		goto err;
-@@ -2073,7 +2073,7 @@ static ssize_t mtk_dp_aux_transfer(struct drm_dp_aux *mtk_aux,
- 					     to_access, &msg->reply);
+diff --git a/sound/soc/sof/topology.c b/sound/soc/sof/topology.c
+index f160dc454b448..8e6f6148f0a07 100644
+--- a/sound/soc/sof/topology.c
++++ b/sound/soc/sof/topology.c
+@@ -1117,10 +1117,11 @@ static void sof_disconnect_dai_widget(struct snd_soc_component *scomp,
+ {
+ 	struct snd_soc_card *card = scomp->card;
+ 	struct snd_soc_pcm_runtime *rtd;
++	const char *sname = w->sname;
+ 	struct snd_soc_dai *cpu_dai;
+ 	int i, stream;
  
- 		if (ret) {
--			drm_info(mtk_dp->drm_dev,
-+			dev_info(mtk_dp->dev,
- 				 "Failed to do AUX transfer: %d\n", ret);
- 			goto err;
- 		}
+-	if (!w->sname)
++	if (!sname)
+ 		return;
+ 
+ 	if (w->id == snd_soc_dapm_dai_out)
+@@ -1133,7 +1134,7 @@ static void sof_disconnect_dai_widget(struct snd_soc_component *scomp,
+ 	list_for_each_entry(rtd, &card->rtd_list, list) {
+ 		/* does stream match DAI link ? */
+ 		if (!rtd->dai_link->stream_name ||
+-		    strcmp(w->sname, rtd->dai_link->stream_name))
++		    strcmp(sname, rtd->dai_link->stream_name))
+ 			continue;
+ 
+ 		for_each_rtd_cpu_dais(rtd, i, cpu_dai)
 -- 
 2.40.1
 
