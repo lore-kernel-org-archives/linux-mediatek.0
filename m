@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDAD3EC875E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Sep 2023 23:32:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52895EC875E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 02:03:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9rcsNpbBeMmYdOrH0fdRc8XKB6/Epb7pPmL0hbsW2JA=; b=FE3x8wimGCqnSQgYpZ73vO7Moo
-	Yp7zzShvruMNWsi76NoTgemZUY/QZfM6DkNneAya4RXtNnBoWr4majwa0wuY6gPrZER0BUahkxdRO
-	DM8axiVYGyn+oSpD8AZSEJsQ3H6Vwu0Pu2wBIKVnyfwYZPESk1Hlusnx4HWb+Rk2wrRNUCxKyF4yf
-	AzvMhxUjXcexmNFkmG9Gzb4aDBjDy2W87IWXGWYXj/9peXU47YUjnPbSMAmfhb6vHXhdFgdjmrQdx
-	4lU1B1edeqVgc07byU4xG/V1H3Upp4dlOZNwV7UvoDqMzZx8b6aGuX+1own53sivNX4L33bmDj0hM
-	Hwfg5dXw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9nCNK53rTjLnVysfgXoglxvrQ8+xq11LiIZcoNznmu8=; b=EEZpFPrK4NwyyEa5VtviJ8O1Hx
+	wYFWfyoNMUq+1GWjcbwH0qSlK6byKCUaSQrneReX/5XVZbpSs6oDR4CniS/vDMboBlNxxYTkddniB
+	cfMM0QbljBTTZeDa2+wladaFrB2L/oK5M0S8Ud++RA6VGYyf9kuQGYsSmxU0A9MW23tflKAqjKhdR
+	yfTPB0yFyU7tk4aU4yvv6FfP52Wkxt3/Cm7s1iSEZK1RVG/zzHjYJcHQ+oem21f1PrmPpdXfZJilx
+	ZKyA2wEmn+Dh9xOJPLZQjcrp8auGcczTKbhtOyzpaBP0cHBGNhH18V0xY15V4SkELYhxYObWICa5j
+	3vIQtK/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeOUY-00Co1O-1j;
-	Thu, 07 Sep 2023 23:32:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qeQpp-00Cv6Z-0w;
+	Fri, 08 Sep 2023 02:03:01 +0000
+Received: from mail-vk1-xa34.google.com ([2607:f8b0:4864:20::a34])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeOUV-00Co10-2w
+	id 1qeQpm-00Cv5i-2F
 	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Sep 2023 23:32:53 +0000
-X-UUID: d88d45184dd611ee86758d4a7c00f3a0-20230907
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=9rcsNpbBeMmYdOrH0fdRc8XKB6/Epb7pPmL0hbsW2JA=;
-	b=Zha8TSRY3VH8JnVw9u+0z1ssQQVmMvYmUgJDp/zpf4hJPkA2zZV1XBwD8GQgt6YcPg0j7nyGhJYevbyxW/nh2TUJfLiE1mpApEjBmSeqephWX40Khs7PnymyFZgnkiYP4UPXy1OuBzzAg7qbS9ci9xPCAv/J082n0T/+3jAu7U4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:f7762f33-cfc2-49a9-9583-a038d8a13345,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:a15aaf13-4929-4845-9571-38c601e9c3c9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: d88d45184dd611ee86758d4a7c00f3a0-20230907
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 80360470; Thu, 07 Sep 2023 16:32:44 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 8 Sep 2023 07:32:08 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 8 Sep 2023 07:32:08 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
-	<Leon.Yen@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <robin.chiu@mediatek.com>,
-	<Eddie.Chen@mediatek.com>, <jsiuda@google.com>, <arowa@google.org>,
-	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
-	<abhishekpandit@google.com>, <shawnku@google.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] wifi: mt76: mt7921: fix the wrong rate selected in fw for the chanctx driver
-Date: Fri, 8 Sep 2023 07:32:07 +0800
-Message-ID: <4b2ee1382896dd7ff27ecbef6e1ad496edccd3ad.1694129223.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+	Fri, 08 Sep 2023 02:03:00 +0000
+Received: by mail-vk1-xa34.google.com with SMTP id 71dfb90a1353d-490e78ae83bso567817e0c.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 Sep 2023 19:02:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1694138575; x=1694743375; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=9nCNK53rTjLnVysfgXoglxvrQ8+xq11LiIZcoNznmu8=;
+        b=Oq/zto3g1HV63Wlb7IpUwma1aj0enKWSkhm40kggBc64emSVVhKVBk/4RU6+xB9RzB
+         Vvnxry7+GunIcLkJTFFU01c5io+UoQaC6GKHLuIOYN9F/ga+SfyS+l/TR1+9hkpnStRD
+         jGeqVylmRsqh79oj33Keicfz2ZH6PvIelu2+k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694138575; x=1694743375;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=9nCNK53rTjLnVysfgXoglxvrQ8+xq11LiIZcoNznmu8=;
+        b=rgCGyNVNfv/ufHSBENnUroiwifZmpkfyBRzGqMen6bixtJQc0I7bimMUitBNYd0y5Z
+         wf7tha4mBe6JDVhtZgGQoIIeDMK1wge6awdNG/SUEr0uwYDQdmcHxzfzcL/5KqwLZKZI
+         O/Ig05NkDL2wEPdR13hVBGMf3k40PvhFAzODOFz8faRO3+48IhCYrqE97LZE8ED4yaeF
+         Q7CRam5Mmq56WjQDQ4GB7QAYTm3XmFnSK3X+ot3gWFGhXz5+HQN+/r+HZD0ukhXzCtAk
+         7iuwPg+xAw6YU9MDE1iR12nzTtEkABfPofdeFM7ciwwYkC5cAwFVoSBeYhPgQhKxgeqb
+         U1QA==
+X-Gm-Message-State: AOJu0Ywa58WHlHD5pdjnVbzG6zjDmQr0YvvLrSZXd1T1m/eVe3eO5KRT
+	QmCS6GDOsNmki9mZaWFeSPAEppNpPER41sGePhM=
+X-Google-Smtp-Source: AGHT+IFbgKPcQZDMvrMxX8/ndS2+WX2O5cyoEbSvGWHHtvMHbddcQzLuycblJdFSyfKQDS1ESOgbvw==
+X-Received: by 2002:a05:6122:2ab:b0:48f:c07e:433a with SMTP id 11-20020a05612202ab00b0048fc07e433amr1706775vkq.11.1694138574799;
+        Thu, 07 Sep 2023 19:02:54 -0700 (PDT)
+Received: from mail-ua1-f52.google.com (mail-ua1-f52.google.com. [209.85.222.52])
+        by smtp.gmail.com with ESMTPSA id d23-20020ac5c7b7000000b0048689462889sm179757vkn.46.2023.09.07.19.02.54
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 07 Sep 2023 19:02:54 -0700 (PDT)
+Received: by mail-ua1-f52.google.com with SMTP id a1e0cc1a2514c-7a7d7a3d975so337101241.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 Sep 2023 19:02:54 -0700 (PDT)
+X-Received: by 2002:a67:fc05:0:b0:44d:3bc0:f1ba with SMTP id
+ o5-20020a67fc05000000b0044d3bc0f1bamr1510797vsq.26.1694138574367; Thu, 07 Sep
+ 2023 19:02:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3092-8.6.1018-23728.005
-X-TM-AS-Result: No-10--1.614500-8.000000
-X-TMASE-MatchedRID: x6uIgBUWMEwmcsJib2IjaW3NvezwBrVmncKJki+ooR0OUs4CTUgKy49X
-	7Ioij9Lv15nUytvXrcwa7rkdR+2D46YofNn3TZqQtw+xHnsmQjNU3K6aV1ad7Zsoi2XrUn/Jn6K
-	dMrRsL14qtq5d3cxkNffvWahKfRU4FQm9UF7uFyRdS0hNkMonVSeW1fq+KmOGgjgarYenaZbHCP
-	n/QUOXkiD5+gO+AAWPvR8SMYiv5PDzBh4ndoetdro3/9IQaRpdF0aD5ljt43pMcHZD6gqu7wxMj
-	fifIXfowkvVoA11TwqeqD9WtJkSIw==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--1.614500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3092-8.6.1018-23728.005
-X-TM-SNTS-SMTP: D8A335030467CFCF19C7B0C788FAA99AA899852EF5D11554A43B9033D9B4B5492000:8
-X-MTK: N
+References: <4b2ee1382896dd7ff27ecbef6e1ad496edccd3ad.1694129223.git.objelf@gmail.com>
+In-Reply-To: <4b2ee1382896dd7ff27ecbef6e1ad496edccd3ad.1694129223.git.objelf@gmail.com>
+From: David Ruth <druth@chromium.org>
+Date: Thu, 7 Sep 2023 22:02:18 -0400
+X-Gmail-Original-Message-ID: <CAKHmtrSRoAWa9bErAdE9dRcFk37L=LZW7T5bpOpF9aC_REiw1w@mail.gmail.com>
+Message-ID: <CAKHmtrSRoAWa9bErAdE9dRcFk37L=LZW7T5bpOpF9aC_REiw1w@mail.gmail.com>
+Subject: Re: [PATCH] wifi: mt76: mt7921: fix the wrong rate selected in fw for
+ the chanctx driver
+To: sean.wang@mediatek.com
+Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com, 
+	Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, 
+	km.lin@mediatek.com, robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, 
+	jsiuda@google.com, arowa@google.org, frankgor@google.com, kuabhs@google.com, 
+	abhishekpandit@google.com, shawnku@google.com, linux-wireless@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230907_163251_959177_20662CED 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20230907_190258_814919_F96DEE1F 
+X-CRM114-Status: UNSURE (   6.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,47 +99,5 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
-
-The variable band should be determined by the ieee80211_chanctx_conf when
-the driver is a kind of chanctx one e.g mt7921 and mt7922 driver so we
-added the extension to mt76_connac2_mac_tx_rate_val and
-mt76_connac_get_he_phy_cap for the firmware can select the proper rate.
-
-Fixes: 41ac53c899bd ("wifi: mt76: mt7921: introduce chanctx support")
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 0f0a519f956f..8274a57e1f0f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -829,7 +829,9 @@ void mt76_connac_mcu_sta_tlv(struct mt76_phy *mphy, struct sk_buff *skb,
- 			     struct ieee80211_vif *vif,
- 			     u8 rcpi, u8 sta_state)
- {
--	struct cfg80211_chan_def *chandef = &mphy->chandef;
-+	struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
-+	struct cfg80211_chan_def *chandef = mvif->ctx ?
-+					    &mvif->ctx->def : &mphy->chandef;
- 	enum nl80211_band band = chandef->chan->band;
- 	struct mt76_dev *dev = mphy->dev;
- 	struct sta_rec_ra_info *ra_info;
-@@ -1369,7 +1371,10 @@ EXPORT_SYMBOL_GPL(mt76_connac_get_phy_mode_ext);
- const struct ieee80211_sta_he_cap *
- mt76_connac_get_he_phy_cap(struct mt76_phy *phy, struct ieee80211_vif *vif)
- {
--	enum nl80211_band band = phy->chandef.chan->band;
-+	struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
-+	struct cfg80211_chan_def *chandef = mvif->ctx ?
-+					    &mvif->ctx->def : &phy->chandef;
-+	enum nl80211_band band = chandef->chan->band;
- 	struct ieee80211_supported_band *sband;
- 
- 	sband = phy->hw->wiphy->bands[band];
--- 
-2.25.1
-
+Tested-by: David Ruth <druth@chromium.org>
 
