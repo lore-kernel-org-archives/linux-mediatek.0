@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E8D2EEB560
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 18:16:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 779A0EEB560
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Sep 2023 18:16:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5UPh3iLY+Rp4QeA19JuWEW2NS2EFZ9cjo4fkqTp2Ugg=; b=MOUqJCz1+RmsujRwfm0R3rJjA+
-	A5k8ipc5s6RAnFxhc4QVD3F+JHSflbGMQR+tQbuq138iqNe6UE+DVi2ttG2DTnahA4yN+RFnVIZ9v
-	deLeZt62CTMimwKlWFdKBS5EdFmIMQy2FxN8YCIvHvbY6NEgse0z6kgTe/noCB6vlRb8k/22zjfnr
-	0lpg2HH3WQRHRjD1qvcR3LQkA3GMbrgMTCbS7VTK1TLPsVvzYraV8C8UFiBUWjOMzbHTnAxXZIyxA
-	gVdaEKG4+C+4NLKqnXNe/AvZ2cTwKFZIJTVg95SNgvxQWGnTYisrWe8D5D9ghDfOglijXobSJkacC
-	hszk54YQ==;
+	bh=1Jwqev0wfP4EpPsADef3MVX0DYHKg8Y6/ZAQ1dLfSBE=; b=oNS73e/r0A2Tzt0c6SfvCt1pox
+	Xx4R9C7qhWn4ZvDFDIyQRVPZ3fSFHrAq0Smb0CWOsw9Q/OMoEROnsYe5kZSGP9dGNf31UP/KBaScP
+	lktcdvyUBtHtX/+3U8Z1qXPdwAqDqClkDRolXr1vKhhgkB8zxQO+c8ERHLj1tisBEyWmWpaQdrjO5
+	2B8Ss4A2WhQVjzrScKo+FMsX/EWzHnDTpQ7GIZ6yiHi7OzsWAB0zd10JMM18FBrLLCdQtZHQDbzth
+	klZBWsSQuHM1+2pF9pFRHIJgrx96KVMJK2FiBQYJzubOWCj8la6wtTMo+IdtPT3fbZRA7VdZeZaHS
+	YhreTCog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeg2G-00EFhp-0K;
-	Fri, 08 Sep 2023 18:16:52 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qeg2J-00EFjl-1R;
+	Fri, 08 Sep 2023 18:16:55 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qeg2C-00EFf3-1G;
-	Fri, 08 Sep 2023 18:16:50 +0000
+	id 1qeg2F-00EFgM-0K;
+	Fri, 08 Sep 2023 18:16:52 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 9DCEBCE1C4B;
-	Fri,  8 Sep 2023 18:16:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6361C32779;
-	Fri,  8 Sep 2023 18:16:44 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4B924614BF;
+	Fri,  8 Sep 2023 18:16:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7307AC4936D;
+	Fri,  8 Sep 2023 18:16:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694197006;
-	bh=AWqIuq/KztpdBzs6ucjQPnFCSbIpSLgr39U/dMIQVuA=;
+	s=k20201202; t=1694197009;
+	bh=iADdYgzZckzhLG+8JJZk4ujhs1u5AP7B3CY+7khu//k=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Xf1WtbA8QDywqynmqzc0gGlXi90V5+XEmEz1/YrcNsAJAZ1YcYlEjOKg+zPN4/tkS
-	 AcNzRQiJpmOKSBNvKHVV/Jd0uPY10whiYyspkNc+DSJjka0bttmanqaHxbUCYPrza2
-	 e3j5zv1eJZKPc7vGJi4BOuRFuiabXahtBuzJsXNHK0JEVHonl5xptXqlejb3uy3Oiq
-	 ocJJFd34d5KS4JRVVvszD7CiMQrQJxFb333GZ27sJPG+QbwZVw/NYLKQBN79JWE4qo
-	 cSsAtI3aWsXguF/ZAo5trJ6Ldt+Cr072UexkWO43rFhHAPK9+L8bIG+pDCdBv+qF4A
-	 XIHqb2ZY4JEvA==
+	b=T7IhaNYgsXKWY6/sXBkJ1zSuJHHkzFG4JAxeXHosZGp+R8HzYMR8JxiBJAfihxcfW
+	 qGBJO38ymFFdhqTArR43ZFqyqCcZagAOrDCGCrAGuot7jdJl6yWufRHbcsbL/S5T33
+	 OXKZI3V2I49eUTn65dvR8Ng0/vt3wiMUL2V721wZ6PnRUZKlPzuKIhRT/C0h4Z0yIS
+	 7aXqkQtcP0OC2A14nlZYr5QNI6XMrpgY3l5hp+3f4FXbtXqRWkrTjwEm2/Z/6Z/O96
+	 IevZpJsedRR19cbO6aNKEmb9/FOMgJ7U6dd6EZJu3fmxm8XU8aH0N8v3C0SZ2/1l2f
+	 r79Xbf6Da6wLQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -57,9 +57,9 @@ Cc: Chris Lu <chris.lu@mediatek.com>,
 	linux-bluetooth@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.4 19/41] Bluetooth: btusb: Add a new VID/PID 0489/e0f6 for MT7922
-Date: Fri,  8 Sep 2023 14:15:33 -0400
-Message-Id: <20230908181555.3459640-19-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.4 21/41] Bluetooth: btusb: Add new VID/PID 04ca/3804 for MT7922
+Date: Fri,  8 Sep 2023 14:15:35 -0400
+Message-Id: <20230908181555.3459640-21-sashal@kernel.org>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230908181555.3459640-1-sashal@kernel.org>
 References: <20230908181555.3459640-1-sashal@kernel.org>
@@ -69,8 +69,8 @@ X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.4.15
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230908_111648_790798_003AE1D6 
-X-CRM114-Status: GOOD (  11.84  )
+X-CRM114-CacheID: sfid-20230908_111651_219530_48130665 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,16 +87,16 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Chris Lu <chris.lu@mediatek.com>
 
-[ Upstream commit b6cfa1c29afb6d527652938b0eb8db17b194bddc ]
+[ Upstream commit 59be4be82bd3639cd9dbfb92df0f6263ab2c2e28 ]
 
-Add VID/PID 0489/e0f6 for MediaTek MT7922 USB Bluetooth chip.
+Add VID 04ca & PID 3804 for MediaTek MT7922 USB Bluetooth chip.
 
 The information in /sys/kernel/debug/usb/devices about the Bluetooth
 device is listed as the below.
 
-T:  Bus=01 Lev=01 Prnt=01 Port=04 Cnt=03 Dev#=  4 Spd=480  MxCh= 0
+T:  Bus=05 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
 D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=0489 ProdID=e0f6 Rev= 1.00
+P:  Vendor=04ca ProdID=3804 Rev= 1.00
 S:  Manufacturer=MediaTek Inc.
 S:  Product=Wireless_Device
 S:  SerialNumber=000000000
@@ -142,14 +142,14 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 3 insertions(+)
 
 diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index df2e454e9ad46..968e2eeff21e9 100644
+index b14a14364ca17..04c7c4b84e92c 100644
 --- a/drivers/bluetooth/btusb.c
 +++ b/drivers/bluetooth/btusb.c
-@@ -631,6 +631,9 @@ static const struct usb_device_id blacklist_table[] = {
- 	{ USB_DEVICE(0x0489, 0xe0f5), .driver_info = BTUSB_MEDIATEK |
+@@ -637,6 +637,9 @@ static const struct usb_device_id blacklist_table[] = {
+ 	{ USB_DEVICE(0x0489, 0xe102), .driver_info = BTUSB_MEDIATEK |
  						     BTUSB_WIDEBAND_SPEECH |
  						     BTUSB_VALID_LE_STATES },
-+	{ USB_DEVICE(0x0489, 0xe0f6), .driver_info = BTUSB_MEDIATEK |
++	{ USB_DEVICE(0x04ca, 0x3804), .driver_info = BTUSB_MEDIATEK |
 +						     BTUSB_WIDEBAND_SPEECH |
 +						     BTUSB_VALID_LE_STATES },
  
