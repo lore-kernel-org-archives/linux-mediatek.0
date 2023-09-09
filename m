@@ -4,86 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1362EE14C3
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Sep 2023 19:54:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A7A6EE14C3
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Sep 2023 20:17:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=99TF+vOwckQTt89fEYfiNSFkiXPmHqPMDu9g5QZJPvg=; b=aETK13q/VwFhunTTmbcG5q/Z0P
-	wVcMrE0UQhT7B6vHZaZWlPThYrGXUZQ+WSv3do/KMJJzSLX67sgmB8XZxrEdUzTxAhJ3/wRQLTDJE
-	PTw7i57UlWqyKlDtRH37SDrT7iqGxt+J8u+JM/luFuHF1YfU7wVYKUIXP9QEMJEBQloENxESIQlrh
-	mWn6xszelZ5pwJNtPu1sOPlZNkJZInwjpu5qhXOEJKkNt3ziEe+tEGXHTDUT5DQNMe7pccjmdrQeI
-	FcwY1sYpdKI0K7U6a03ISdNHP+iXIrN4KWkcHY7itU/ZbsEJUCnVfYfRTR1Jh+XAN0pjOaX5oxFEK
-	dPRzINfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YhC6K0gMeRrD1/JeZ045dfEa3H4vunv2V0WhUcWwUKc=; b=objMBZZvq2jRHzvdEL6O+jibH3
+	1uHFPK/Wrhd1emO3JRo09B925GIyxsrRC5nZx2GI93fPfUQBS6DGT+1AOP5HpoUgmjbyAeAVWS8mQ
+	vtHV9j57lsJnzDDpg4HLjpsNdaUEkWxqqoZXrm4gLL4Scc9Thpk9Ng8jg7YunWD42vEqf3ogWeEmG
+	wdbMQBO6Lsmnm1lvcTlrGRUuFbFZZngrV37lZwc2sWQnwcY4mHpw0/nLKvLISF5Us/YXI2JqFvt+B
+	CjNXju+DVq6stNfwKUkNflifMEu4SFNSyuxP6Byrj+YONUHU213RLa7HjEuVhtGxU1upH1DSC4ttW
+	/K4Vicew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qf420-00Fk3T-2x;
-	Sat, 09 Sep 2023 19:54:12 +0000
-Received: from relay1-d.mail.gandi.net ([217.70.183.193])
+	id 1qf4Oj-00Fks4-1H;
+	Sat, 09 Sep 2023 20:17:41 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qf41s-00Fk2x-0n;
-	Sat, 09 Sep 2023 19:54:07 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id E7615240004;
-	Sat,  9 Sep 2023 19:53:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1694289238;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=99TF+vOwckQTt89fEYfiNSFkiXPmHqPMDu9g5QZJPvg=;
-	b=nlTtXJl6ExikEslIoJ4Vn1I8BudB/egKEU9IA6LdEFYvmYp1LZWf44H0OR9xSoa5fVjADa
-	MdNZ6NuBebSoydqDSGXjjp6mFP0SMCSwWq69rcs8ubz+WVuZZlo9ws6MuhQQ/pFCUfkCwJ
-	u7zmZ8cpOAlUkXZFutzcqNTA2DVofSY6hYOAAnkIbG+b/wa8d1jNnYtR35BAc+hAHet7Nz
-	LULSQZZp90bfp7S/Yc9aaK+mJeUbnL8OlpjqptYyx3ctnW9Tv3in5zHS7wV0QTCIyWv93f
-	CR9E2NHjw8mwJsoVsiE/BfG5AHGnFOHqNjjAihmGU4q4134fgb+7v7BDGiIUlQ==
-Message-ID: <ec457f3d-8f28-4eb9-971e-0079e085cf0d@arinc9.com>
-Date: Sat, 9 Sep 2023 22:53:46 +0300
+	id 1qf4Og-00Fkox-21;
+	Sat, 09 Sep 2023 20:17:40 +0000
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 389KHEMY017573;
+	Sat, 9 Sep 2023 20:17:14 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type; s=qcppdkim1;
+ bh=YhC6K0gMeRrD1/JeZ045dfEa3H4vunv2V0WhUcWwUKc=;
+ b=QgKInVLLeM+8Yk03WRPzJsTbVevQDSySXMclZNVMC2pnRSNjZPm33pItIGzM1vG4eDnp
+ sJw1hY18ckLDrpIH50AjKVEvamVLMn+blV1tp/lnuvCsRw6M9wrsKyYjEPyQo/65Ju7j
+ H75balRhNmuGXdURl3MjTunnoRdxncGoLLCRBSWsoW4VMQIj1SBh4zT1dBpguqrHtJes
+ +nmR+/rMTmSr+JBSmuLBAOAm9+I+ekQ3Dndpwa1RxHvHBkMPAbAsJnZKiikz5V1xSIa3
+ qKj8zqhhcCDG05lVg0u5rmwC3pcwHxEViOk4B4xTwudgm3wd3LNkStfTTdb0RijVuSCM zg== 
+Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t0g1rgyyf-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Sat, 09 Sep 2023 20:17:13 +0000
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
+	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 389KHCLM014267
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Sat, 9 Sep 2023 20:17:12 GMT
+Received: from hu-mojha-hyd.qualcomm.com (10.80.80.8) by
+ nasanex01c.na.qualcomm.com (10.45.79.139) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.36; Sat, 9 Sep 2023 13:17:01 -0700
+From: Mukesh Ojha <quic_mojha@quicinc.com>
+To: <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
+        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
+        <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
+        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
+        <will@kernel.org>, <linus.walleij@linaro.org>,
+        <andy.shevchenko@gmail.com>, <vigneshr@ti.com>, <nm@ti.com>,
+        <matthias.bgg@gmail.com>, <kgene@kernel.org>,
+        <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
+        <quic_tsoni@quicinc.com>
+CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-msm@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
+        <linux-remoteproc@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+        <linux-mediatek@lists.infradead.org>,
+        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>,
+        <quic_mojha@quicinc.com>
+Subject: [PATCH v5 03/17] remoteproc: qcom_q6v5_pas: Use qcom_rproc_minidump()
+Date: Sun, 10 Sep 2023 01:46:04 +0530
+Message-ID: <1694290578-17733-4-git-send-email-quic_mojha@quicinc.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
+References: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Woojung Huh <woojung.huh@microchip.com>,
- UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
- Daniel Golle <daniel@makrotopia.org>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230812091708.34665-3-arinc.unal@arinc9.com>
- <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
- <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
- <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
- <20230813112026.ohsx6srbt2staxma@skbuf>
- <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
- <20230813190157.4y3zoro53qsz43pe@skbuf>
- <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
- <20230814143601.mnpxtcm2zybnbvoh@skbuf>
- <0cee0928-74c9-4048-8cd8-70bfbfafd9b2@arinc9.com>
- <20230827121235.zog4c3ehu2cyd3jy@skbuf>
- <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
- <87325ce9-595a-4dda-a6a1-b5927d25719b@arinc9.com>
-In-Reply-To: <87325ce9-595a-4dda-a6a1-b5927d25719b@arinc9.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: 4SMnR0pxCUSDU0trLO4rKWMHlL7ufbEb
+X-Proofpoint-ORIG-GUID: 4SMnR0pxCUSDU0trLO4rKWMHlL7ufbEb
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-09-09_19,2023-09-05_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 adultscore=0
+ malwarescore=0 suspectscore=0 mlxscore=0 lowpriorityscore=0 clxscore=1015
+ phishscore=0 spamscore=0 mlxlogscore=999 priorityscore=1501 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2308100000
+ definitions=main-2309090187
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230909_125404_573174_5F565AE0 
-X-CRM114-Status: GOOD (  45.56  )
+X-CRM114-CacheID: sfid-20230909_131738_792452_FA6961F2 
+X-CRM114-Status: GOOD (  17.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,334 +108,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9.09.2023 11:53, Arınç ÜNAL wrote:
-> On 4.09.2023 14:33, Arınç ÜNAL wrote:
->> Hey Vladimir,
->>
->> On 27.08.2023 15:12, Vladimir Oltean wrote:
->>> Hi Arınç,
->>>
->>> I am on vacation and I will just reply with some clarification aspects,
->>> without having done any further research on the topic since my last reply.
->>>
->>> On Sun, Aug 27, 2023 at 11:33:16AM +0300, Arınç ÜNAL wrote:
->>>> Before I continue commenting, I'd like to state my understanding so we can
->>>> make sure we're on the same page. If a driver doesn't use
->>>> ds->slave_mii_bus, the switch it controls must not have any internal MDIO
->>>> buses. Otherwise the PHYs on these buses couldn't function, and an improper
->>>> driver like this would not be on the official Linux source code.
->>>
->>> A DSA switch port, like any OF-based ethernet-controller which uses
->>> phylink, will use one of the phy-handle, fixed-link or managed properties
->>> to describe the interface connecting the MAC/MAC-side PCS to the PHY.
->>>
->>> At its core, ds->slave_mii_bus is nothing more than a mechanism to make
->>> sense of device trees where the above 3 phylink properties are not present.
->>>
->>> It is completely false to say that if a driver doesn't have ds->slave_mii_bus,
->>> it must not have an internal MDIO bus. Because you could still describe
->>> that internal MDIO bus like below, without making any use of the sole property
->>> that makes ds->slave_mii_bus useful from a dt-bindings perspective.
->>>
->>> ethernet-switch {
->>>     ethernet-ports {
->>>         port@0 {
->>>             reg = <0>;
->>>             phy-handle = <&port0_phy>;
->>>             phy-mode = "internal";
->>>         };
->>>     };
->>>
->>>     mdio {
->>>         port0_phy: ethernet-phy@0 {
->>>             reg = <0>;
->>>         };
->>>     };
->>> };
->>>
->>> This is the more universal way of describing the port setup in an
->>> OF-based way. There is also the DSA-specific (and old-style, before phylink)
->>> way of describing the same thing, which relies on the non-OF-based
->>> ds->slave_mii_bus, with bindings that look like this:
->>>
->>> ethernet-switch {
->>>     ethernet-ports {
->>>         port@0 {
->>>             reg = <0>;
->>>         };
->>>     };
->>> };
->>>
->>> But, I would say that the first variant of the binding is preferable,
->>> since it is more universal.
->>>
->>> Not all switches that have an internal MDIO bus support the second
->>> variant of the dt-binding (the ones that don't have ds->slave_mii_bus don't).
->>> But, they support the same configuration through the first form.
->>
->> Understood.
->>
->>>
->>> Furthermore, on the U-Boot mailing lists, I have been suggesting that
->>> the DM_DSA driver for mv88e6xxx should not bother to support the second
->>> version of the binding, since it is just more code to be added to handle
->>> a case which can already be described with the more universal first binding.
->>
->> That makes sense.
->>
->>>
->>>> I've checked mscc,vsc7514-switch. What I see is, the architecture is an SoC
->>>> with a switch component. Since the switch component is not designed to be a
->>>> standalone IC, the MDIO bus of the SoC could just as well be used without
->>>> the need to design an MDIO controller specific to the switch component, to
->>>> manage the PHYs. So I see this switch as just another case of a switch
->>>> without an internal MDIO bus.
->>>
->>> Well, we need to clarify the semantics of an "internal" MDIO bus.
->>>
->>> I would say most discrete chips with DSA switches have this SoC-style
->>> architecture, with separate address spaces for the switching IP, MDIO
->>> bus, GPIO controller, IRQ controllers, temperature sensors etc (see
->>> "mscc,vsc7512-switch" which is like "mscc,vsc7514-switch", but it is
->>> controlled over SPIO instead of MMIO). The dt-bindings of most DSA
->>> switches may or may not reflect that discrete chip organization. Those
->>> drivers and dt-bindings could be reimagined so that DSA is not the
->>> top-level driver.
->>>
->>> Yet, I would argue that it's wrong to say that because it isn't an OF
->>> child of the switch, the MDIO bus of the VSC7514 is not internal in the
->>> same way that the Realtek MDIO bus is internal. The switch ports are
->>> connected to internal PHYs on this MDIO bus, and there aren't PHYs on
->>> this MDIO bus that go to other MACs than the switch ports. So, the
->>> VSC7514 MDIO bus could legally be called the internal MDIO bus of the
->>> switch, even if there isn't a parent/child relationship between them.
->>
->> Good point, I had believed that the management interface of all of the PHYs
->> being connected to the MDIO bus - which is not part of the switching IP
->> address space - would be enough to classify the MDIO bus as non-internal.
->>
->> However, the architecture of separate address spaces for the switching IP
->> and MDIO bus is used on any type of IC with the switching feature.
->> Therefore, this characteristic cannot be used to distinguish whether an
->> MDIO bus is of a switch.
->>
->> What we can refer to to classify an internal MDIO bus is by confirming the
->> data interface of all PHYs on the MDIO bus is connected to the switch port
->> MACs, as you have pointed out here.
->>
->> Because the architecture of separate address spaces for the switching IP
->> and MDIO bus is used on any type of IC with the switching feature, it can
->> differ by driver how the MDIO bus is defined on the dt-bindings. So we
->> can't make universal bindings of an internal MDIO bus of a switch that
->> apply to every switch.
->>
->> So, the correct approach is to define things under the switch-specific
->> schema which is affine to the driver, as you have already pointed out.
->> Which schemas to define what will of course differ.
->>
->>>
->>> So, what I'm disagreeing with is your insistence to correlate your
->>> problem with internal MDIO buses. The way in which the problem is
->>> formulated dictates what problem gets solved, and the problem is not
->>> correctly formulated here. It is purely about ds->slave_mii_bus and its
->>> driver-defined OF presence/absence. It is a DSA-specific binding aspect
->>> which not even all DSA switches inherit, let alone bindings outside DSA.
->>
->> Got it.
->>
->>>
->>>>> For switches in the second category, it all depends on the way in which
->>>>> the driver finds the node for of_mdiobus_register().
->>>>
->>>> Ok, so some drivers require the mdio child node. Some require it and the
->>>> compatible property with a certain string.
->>>>
->>>> MDIO controlled Realtek switches do not need the compatible property under
->>>> the mdio child node. There're no compatible strings to make a distinction
->>>> between the SMI and MDIO controlled switches so the best we can do is keep
->>>> it the way it currently is. Define realtek,smi-mdio as a compatible string
->>>> but keep the compatible property optional. I did state this on my reply to
->>>> patch 3 but still received reviewed-bys regardless.
->>>
->>> Yes, because.... [1]
->>>
->>>>> Having identified all switches which make some sort of use of
->>>>> ds->slave_mii_bus, the rule would sound like this:
->>>>>
->>>>> 1. If the schema is that of (need to replace this with compatible
->>>>>      strings, I'm too lazy for that):
->>>>>
->>>>>      - ksz_switch_ops
->>>>>      - mv88e6060_switch_ops
->>>>>      - lan9303_switch_ops
->>>>>      - rtl8365mb_switch_ops_mdio
->>>>>      - b53_switch_ops
->>>>>      - vsc73xx_ds_ops
->>>>>      - mv88e6xxx
->>>>>      - qca8k
->>>>>
->>>>>      and we have an "mdio" child, then phylink bindings are mandatory on user ports.
->>>>>
->>>>> 2. If the schema is that of gswip_mdio and we have a child node of "lantiq,xrx200-mdio",
->>>>>      then phylink bindings are mandatory on user ports (I haven't checked,
->>>>>      but it might be that the "lantiq,xrx200-mdio" child is mandatory, and
->>>>>      in that case, this goes to category 4 below).
->>>>>
->>>>> 3. If the schema is that of realtek_smi_setup_mdio and we have a child node of
->>>>>      "realtek,smi-mdio", then phylink bindings are mandatory on user ports
->>>>>      (same comment about the child MDIO note maybe being mandatory).
->>>>>
->>>>> 4. If the switch didn't appear in the above set of rules, then phylink
->>>>>      bindings are unconditionally mandatory on user ports.
->>>>>
->>>>> We don't care at all what the drivers that don't use ds->slave_mii_bus
->>>>> do with the "mdio" child node. It doesn't change the fact that their
->>>>> user ports can't have missing phylink bindings.
->>>>
->>>> I partially agree. I say, for the switches without an internal MDIO bus,
->>>> invalidate the mdio child node, and enforce the phylink bindings on the
->>>> user ports. Such as mscc,vsc7514-switch and nxp,sja1105x. For nxp,sja1110x,
->>>> invalidate the mdio child node, and enforce the phylink bindings on the
->>>> user ports if the mdios property is used.
->>>
->>> Why "if the mdios property is used" and not "always"? :-/
->>>
->>> To say it again: because the sja1105 driver does not use ds->slave_mii_bus,
->>> it can make no sense of dt-bindings on user ports which lack phylink properties.
->>> So they are *always* needed. The "mdios" property changes nothing in that regard.
->>
->> Got it.
->>
->>>
->>>>
->>>> I'd like to add this before I conclude. The way I understand dt-bindings is
->>>> that a binding does not have to translate to an action on the driver.
->>>> Documenting bindings for the sole purpose of describing hardware is a valid
->>>> case.
->>>
->>> [1] ...this. The SMI-controlled and MDIO-controlled Realtek switches are
->>> otherwise the same, right? So why would they have different dt-bindings?
->>
->> Honestly, I'm wondering the answer to this as well. For some reason, when
->> probing the SMI controlled Realtek switches, instead of just letting
->> dsa_switch_setup() populate ds->slave_mii_bus, on realtek_smi_setup_mdio()
->> on realtek-smi.c:
->>
->> - priv->slave_mii_bus is allocated.
->> - mdio_np = of_get_compatible_child(priv->dev->of_node, "realtek,smi-mdio");
->> - priv->slave_mii_bus->dev.of_node = mdio_np;
->> - ds->slave_mii_bus = priv->slave_mii_bus;
->>
->>>
->>>> For example, currently, the MT753X DSA subdriver won't, in any way,
->>>> register the bus OF-based. Still, the mdio property for the switches which
->>>> this driver controls can be documented because the internal mdio bus does
->>>> exist on the hardware.
->>>
->>> It can, but the whole point is: if ds->slave_mii_bus gains an OF presence,
->>> then it loses its core functionality (that user ports can lack phylink
->>> bindings). This is the entire essence of what this discussion should capture.
->>
->> Understood.
->>
->>>
->>>>
->>>> So I'd like to keep the mdio property valid for the switches which their
->>>> drivers can only register non-OF-based ds->slave_mii_bus.
->>>>
->>>> In conclusion, what to do:
->>>>
->>>> - Define "the mdio property" and "the enforcement of phylink bindings for
->>>>    user ports if mdio property is used" on ethernet-switch.yaml.
->>>>      - Invalidate the mdio property on the switches without an internal MDIO
->>>>        bus.
->>>> - Define "the enforcement of phylink bindings for user ports" on the
->>>>    switches without an internal MDIO bus.
->>>> - Require "the mdio property" for the switches which their driver requires
->>>>    it to function.
->>>> - Require "the mdio property" and "the compatible string of the mdio
->>>>    property" for the switches which their driver requires them to function.
->>>>
->>>> There's no 1:1 switch to switch compatible string relation, as seen on
->>>> Realtek switches so I'll have to figure that out as I go.
->>>>
->>>> I'm open to your comments to this mail but the gap between discussion and
->>>> end result has widened a lot on this patch series so I'd like to first
->>>> offload this conversation by preparing v2 with what I said here and discuss
->>>> further there.
->>>
->>> Honestly, from my side, a verbal comment in the dt-bindings document
->>> would have been just fine, as long as it is truthful to the reality it
->>> describes.
->>>
->>> You wanted to over-complicate things with an actual schema validation,
->>> and then hooking onto things that are unrelated with the phenomenon that
->>> needs to be captured (like the "mdio" child node, without explicit
->>> regard to whether it is the ds->slave_mii_bus or not).
->>>
->>> It's not about internal MDIO buses in general, it's about whether those
->>> internal MDIO buses are used in ds->slave_mii_bus, and their OF
->>> presence/absence! That is absolutely driver-specific and I would only
->>> expect a driver-specific way of enforcing it. I didn't say it's not
->>> hard, and I didn't ask to enforce it, either.
->>
->> OK, I believe we're on the same page now, I will start working on properly
->> enforcing this.
-> 
-> I'm writing below as a mix of patch log and discussion.
-> 
-> Phylink bindings are required for ports that are controlled by OF-based
-> buses. DSA, like any other driver utilising the Linux MDIO infrastructure,
-> can register a bus. If I understand correctly, non-OF-based registration of
-> OpenFirmware MDIO buses is a feature specific to DSA which certain DSA
-> subdrivers make use of.
-> 
-> There's no way to distinguish which port is controlled by which driver's
-> MDIO bus on the bindings so we can't enforce phylink bindings for all user
-> ports as this would also enforce phylink bindings on user ports controlled
-> by a non-OF-based bus.
-> 
-> But we can know when DSA won't create a non-OF-based bus. That leaves us
-> with only OF-based buses in which case we can enforce phylink bindings for
-> all user ports. So we need to check each DSA subdriver to see when all
-> buses will be OF-based.
+Now, as all the minidump specific data structure is moved to
+minidump specific files and implementation wise qcom_rproc_minidump()
+and qcom_minidump() exactly same and the name qcom_rproc_minidump
+make more sense as it happen to collect the minidump for the
+remoteproc processors. So, let's use qcom_rproc_minidump() and
+we will be removing qcom_minidump() and minidump related stuff
+from driver/remoteproc/qcom_common.c .
 
-We also need to decide the phylink bindings for user ports.
+Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+---
+ drivers/remoteproc/Kconfig         | 1 +
+ drivers/remoteproc/qcom_q6v5_pas.c | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-Phylink bindings for CPU and DSA ports:
+diff --git a/drivers/remoteproc/Kconfig b/drivers/remoteproc/Kconfig
+index 48845dc8fa85..cea960749e2c 100644
+--- a/drivers/remoteproc/Kconfig
++++ b/drivers/remoteproc/Kconfig
+@@ -166,6 +166,7 @@ config QCOM_PIL_INFO
+ 
+ config QCOM_RPROC_COMMON
+ 	tristate
++	select QCOM_RPROC_MINIDUMP
+ 
+ config QCOM_Q6V5_COMMON
+ 	tristate
+diff --git a/drivers/remoteproc/qcom_q6v5_pas.c b/drivers/remoteproc/qcom_q6v5_pas.c
+index 3153d82037e7..f235daae84ff 100644
+--- a/drivers/remoteproc/qcom_q6v5_pas.c
++++ b/drivers/remoteproc/qcom_q6v5_pas.c
+@@ -24,6 +24,7 @@
+ #include <linux/soc/qcom/mdt_loader.h>
+ #include <linux/soc/qcom/smem.h>
+ #include <linux/soc/qcom/smem_state.h>
++#include <soc/qcom/qcom_minidump.h>
+ 
+ #include "qcom_common.h"
+ #include "qcom_pil_info.h"
+@@ -130,7 +131,7 @@ static void adsp_minidump(struct rproc *rproc)
+ 	if (rproc->dump_conf == RPROC_COREDUMP_DISABLED)
+ 		return;
+ 
+-	qcom_minidump(rproc, adsp->minidump_id, adsp_segment_dump);
++	qcom_rproc_minidump(rproc, adsp->minidump_id, adsp_segment_dump);
+ }
+ 
+ static int adsp_pds_enable(struct qcom_adsp *adsp, struct device **pds,
+-- 
+2.7.4
 
-allOf:
-   - required:
-       - phy-mode
-   - oneOf:
-       - required:
-           - fixed-link
-       - required:
-           - phy-handle
-       - required:
-           - managed
-
-On one of the mscc,ocelot.yaml examples, "phy-handle" and "managed" are
-defined on the same user port. Assuming the example is correct, we must
-allow more than 1 of these properties to be used at the same time for user
-ports.
-
-We need to at least allow "phy-handle" and "managed" to be used at the same
-time. Does "managed" also depend on "phy-handle"?
-
-For example:
-
-oneOf:
-   - required:
-       - fixed-link
-   - anyOf:
-       - required:
-           - phy-handle
-       - required:
-           - managed
-
-dependencies:
-   managed: [ phy-handle ]
-
-Arınç
 
