@@ -4,74 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1D04EEB57C
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Sep 2023 00:38:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947A0EEB57F
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Sep 2023 06:24:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=i+vdIi41NC/5jqFC8OuosB0ShYF3ReJBybMa87XYesU=; b=23Lcwqx8pqolBUjEW5rJGskihw
-	dCpNxE645wUqloXDrl4F+1tvHslOtWXBH9LGU3jVdAVs0XzITtdMBZX80FzzkR1+cZJ3HxpEmArYp
-	f1UrNPEnpOr+CXvc6CElQXw+0mA7p0yVXTg+37v0lUeRJcaDhEmKRdmfxgPhrUojcQHbfLdiMP0Bi
-	+NBr2YjaBotSCd5DCE1VwbEulnc8LHiw8sql3FYgBh6/4/4iEuMf5hkPgtBtxSwaYHjBRGoyKf5Pd
-	N3pMsQoT8CNF/EXoPevd+0+ff4GwjKAq431ine3dLpOOAp6NLobuWzlQxaWbS+K4WkgJ9xGe/yFDD
-	uBdZ8Jig==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u1J79G2gHB19xem1WbfDmsg7JRZlNKmKwN1OuiBpPFQ=; b=qIUJ/LnZiHdjBmQ1donyceod0A
+	fWhe8jGeSsiQogxCXGuepwo6n8cvwI6tzbErZRI7Tp0OsW2fB2T6msB797Y2HWqLcnHC3b+BzHrJA
+	NNn+gKJ+uqH7DXG+VgaptJQOZ+v2OdK7AHca+jDq4IBdvrmLtBoR2bA7CyjqtXN6k+phPbRFPYH4o
+	jWBeK8wrMQmOfk4r3M/BLu9A5gwDLhR9sNJfzTorMoFzL86Z3ftJbYbeQv1lLvH4Oi9/1LFN/5dRa
+	GK9+ZsZ8712lNw1SXAtYBmev8ial7GoTDVHCgXBfoUg7/kab/pc7wZbaw8UXz8NxFKpsVyDQ9J6/P
+	n8zNObWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qelzX-00EmnP-2q;
-	Sat, 09 Sep 2023 00:38:27 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qerO2-00F5wl-32;
+	Sat, 09 Sep 2023 06:24:06 +0000
+Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qelzU-00Emku-0D;
-	Sat, 09 Sep 2023 00:38:25 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 5FFD2CE1D3D;
-	Sat,  9 Sep 2023 00:38:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4309AC433CD;
-	Sat,  9 Sep 2023 00:38:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694219901;
-	bh=8Y9/Q46EDXsYGJ9s+d4vStc40jj5nKadX33sDIrDYM8=;
-	h=From:To:Cc:Subject:Date:From;
-	b=s7exa4SNWsAUMO0LjsoApVQndOuksmd9cvscDQXvb8h0WjXcnBgCl9/mRfhdzbLnH
-	 /PpCP6SsPprBZDyWrhjmddJTOLINSq2pa7WoyvvtjpErpLQlx6KI8dCf3blix5b7Ic
-	 82A1yS0zUK7tG2aimT3RHj03LVF3lTSX9vcfE4eE+uuXPr0IO7dF5Eeym/9XQRIH9F
-	 Vpd2OCq16zXD/RaH79EhD9H26hXgb0QiITa/tTgvFeNC9azDCUDuYwJaSGJ/e5YyLC
-	 +JOBdljilVt2jf5nHcYzle3VWEfZY5fh9gqHZ85gShUOF7QY3tmDFvM+cJ1EA4sX0v
-	 ncFelbNL1l6DQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Lu Hongfei <luhongfei@vivo.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Sasha Levin <sashal@kernel.org>,
-	mchehab@kernel.org,
-	matthias.bgg@gmail.com,
-	moudy.ho@mediatek.com,
-	krzysztof.kozlowski@linaro.org,
-	sunke32@huawei.com,
-	drv@mailo.com,
-	linux-media@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 01/24] media: mdp3: Fix resource leaks in of_find_device_by_node
-Date: Fri,  8 Sep 2023 20:37:53 -0400
-Message-Id: <20230909003818.3580081-1-sashal@kernel.org>
-X-Mailer: git-send-email 2.40.1
+	id 1qerNz-00F5vF-1K;
+	Sat, 09 Sep 2023 06:24:05 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id BFC7D1BF204;
+	Sat,  9 Sep 2023 06:23:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1694240636;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=u1J79G2gHB19xem1WbfDmsg7JRZlNKmKwN1OuiBpPFQ=;
+	b=gUTVg15eSAIqTlyoV6GvQ5Xfsm0JTJC7ByLx0Qp2Ip+Q4+72vDYnmx483BODHX9+AIu0Yx
+	tSwaInjnfjqM0OhV1C4by8j8wP+8AcBuL6j4B4p4LMUPVdKCTVjCw399KOI3x6XeO9OaEf
+	TOJqE1rmERhO1rp8c/lC9mQ7yPalrAmaaVIC6cWVM3Ow0mqDxiBY89vWNUnMZTR7F+bSvL
+	wh/DQ4XiaIgnFRY6h/AVC6EqJVtCANTuWKQ7vpEr7QJrhgoR2s36HhNZGbho+dhvbB/3Ju
+	pieHhES/P5tNXoWbPO4fXBsi8kB57DhUB2A7qLtuzBMdqeXRH/+E+qY6wxzdyw==
+Message-ID: <563ac27a-22f2-463e-b5c1-9df721842976@arinc9.com>
+Date: Sat, 9 Sep 2023 09:23:43 +0300
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.1.52
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Vladimir Oltean <olteanv@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Woojung Huh <woojung.huh@microchip.com>,
+ UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+ Daniel Golle <daniel@makrotopia.org>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
+ <20230812091708.34665-1-arinc.unal@arinc9.com>
+ <20230812091708.34665-3-arinc.unal@arinc9.com>
+ <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <20230813112026.ohsx6srbt2staxma@skbuf>
+ <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
+ <20230813190157.4y3zoro53qsz43pe@skbuf>
+ <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
+ <617c51cf-2c09-4865-ac60-96599db597e7@lunn.ch>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <617c51cf-2c09-4865-ac60-96599db597e7@lunn.ch>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230908_173824_282339_9CC46F54 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230908_232403_769929_22467FD9 
+X-CRM114-Status: GOOD (  15.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,39 +97,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lu Hongfei <luhongfei@vivo.com>
+Hi Andrew,
 
-[ Upstream commit 35ca8ce495366909b4c2e701d1356570dd40c4e2 ]
+On 14.08.2023 16:09, Andrew Lunn wrote:
+>> Ah okay. I didn't consider the switch architecture where the data interface
+>> of the PHY is connected to the switch, and the PHY management interface is
+>> connected to the mdio bus that the switch is connected to.
+> 
+> The generic Linux architecture for PHYs and binding them to a MAC via
+> a phandle allows the PHY to be on any MDIO bus anywhere. DSA has some
+> additional shortcuts to support 1:1 mapping if the switch has its own
+> MDIO bus, without describing it in DT, but this is just in addition to
+> the generic code.
+> 
+>> Not json-schema documentation, don't care about:
+>> - ar9331.txt
+>> - lan9303.txt
+>> - lantiq-gswip.txt
+>> - marvell.txt
+> 
+> The marvell switch can have up to 2 MDIO busses. If i remember
+> correctly, there is also one switch which has one MDIO bus per port.
 
-Use put_device to release the object get through of_find_device_by_node,
-avoiding resource leaks.
+I'm writing the json-schema for Marvell switches. I've checked a few
+devicetree source files on Linus's Linux tree, I only see two buses used at
+the most. The internal bus and another bus with
+marvell,mv88e6xxx-mdio-external. I've never seen a devicetree with
+marvell,mv88e6250 though. Could the switch that has one MDIO bus per port
+be this one? Also, is every bus of this switch a
+marvell,mv88e6xxx-mdio-external bus or, one internal bus and the remaining
+are marvell mv88e6xxx-mdio-external buses?
 
-Signed-off-by: Lu Hongfei <luhongfei@vivo.com>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-index 7bc05f42a23c1..9a3f46c1f6ba3 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-@@ -775,11 +775,13 @@ static int mdp_get_subsys_id(struct device *dev, struct device_node *node,
- 	ret = cmdq_dev_get_client_reg(&comp_pdev->dev, &cmdq_reg, index);
- 	if (ret != 0) {
- 		dev_err(&comp_pdev->dev, "cmdq_dev_get_subsys fail!\n");
-+		put_device(&comp_pdev->dev);
- 		return -EINVAL;
- 	}
- 
- 	comp->subsys_id = cmdq_reg.subsys;
- 	dev_dbg(&comp_pdev->dev, "subsys id=%d\n", cmdq_reg.subsys);
-+	put_device(&comp_pdev->dev);
- 
- 	return 0;
- }
--- 
-2.40.1
-
+Arınç
 
