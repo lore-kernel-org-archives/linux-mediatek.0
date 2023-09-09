@@ -4,85 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84FCBEEB57F
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Sep 2023 08:54:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 527AAEEB58C
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Sep 2023 13:29:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fPyUYQLyx47PeNlqKxT+aTtsZJ3iYspjlYlykygyiuc=; b=mnx3chuhivL6ieHPTObxQ/BAPQ
-	zFoopNn08MG0eUPSjVmMBxvMOriwe/mQg8SeywY9eZskvLS1Bk9BWnok8YhxoqlXjqRB/4ZPmXbid
-	cCXkkgIfPw51p+r3HyZZH8AIQHJb3J28mRSD5eBRpRi0qQdiqcWKBkp8CLf+vsxIwEEKFMIdVm0ND
-	gA5gibSxNAZuTtX2LMtYBxsdt4dps6x+JhYFRM8ct7TT5gKtEfEucqdJxMg5EyKkiEhZooV3Mm2tK
-	lA7wJm4zsO65duUHOkfujxuGqahq/ILSMRsm48CpwRvuZFQphP4lL6S3WD0I8mKRvSaguiyU6y1ho
-	JscLPJBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OY5eoBNUxNggwJaB8q6Af92M4CRwu3ueGfkV0Htdd84=; b=iu0VladUDtjiHZo9opB8Pl/Ph7
+	wOfAtY8qKJDuVcPE10Et5T/tu/g4QW9mUOLjz4PJQ35qjCFfA+iyWJII/H+Eo/wOZSaCWXLtip/oH
+	v3LuXHCVI0CRl5dovxVvpoBFXaCSllAoyctVx9ImR4uxzdsycpPGdnrzjNpnAS4tTDVBJefN6N/pb
+	b0eqXKjwVZujoZvPgSgu8zPqOWdPzyHqz7YUgotHCrPe/HiBmriX1eorF1t2ul1E5ARC20LxN7e/K
+	c7L1dZ05BST0ZypDVL+UiZUemQYuu309EEElQrndIu81Ikt2KYNa+yEhgxPdUazcuiF7OzsESD4Gs
+	/jm8DvvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qetjL-00FDiG-1B;
-	Sat, 09 Sep 2023 08:54:15 +0000
-Received: from relay9-d.mail.gandi.net ([217.70.183.199])
+	id 1qey1P-00FWhG-2D;
+	Sat, 09 Sep 2023 13:29:11 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qetjE-00FDhC-28;
-	Sat, 09 Sep 2023 08:54:12 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id B0410FF807;
-	Sat,  9 Sep 2023 08:53:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1694249642;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=fPyUYQLyx47PeNlqKxT+aTtsZJ3iYspjlYlykygyiuc=;
-	b=UQfz2ahW9ABaRafSgjFTQI5Zlk0Z/seB/LuZdIQ0ulfjMzR2l7vbbcP6CgW/T6vYMJ+jWs
-	mWVlMkW/SHw+10Hepe2cHMko76AAq2HF9qUGyn32ctuG4cr6XXXvqhDFRWGEIXA2B1436g
-	DRqgzi3Ymk9wnsTUH8gwNvYw27Y4Xv8JnOc44nrjDDQaYgKuxM2N7RbnvQdTw+mgRtXpon
-	cXWPfzS9U11E9MOHRlgyGFUFtwWlo5t1HaMySrr5ip6feXYsrMY+wM+eFL52Ki36NqC55z
-	n+3zcOcPQtPcvvYu5eaE918MLnvC6KaGC4np/lkeaC7SQb5dYyZ4oaTiiw6mXA==
-Message-ID: <87325ce9-595a-4dda-a6a1-b5927d25719b@arinc9.com>
-Date: Sat, 9 Sep 2023 11:53:50 +0300
+	id 1qey1L-00FWgk-0P;
+	Sat, 09 Sep 2023 13:29:10 +0000
+X-UUID: d2970a7e4f1411ee86758d4a7c00f3a0-20230909
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=OY5eoBNUxNggwJaB8q6Af92M4CRwu3ueGfkV0Htdd84=;
+	b=Ojzvi/DPtOnlpVeKMCPT8komfWASiTJHUHdH3laBZg8NAYOltg69ARff3jDe88sBC2OnzGAKif/N4p/LN9CssgHbplllZ0yqa58b6KhzffK5JGLFJ5bmZIWe33h1GqKGFbMz2Dz5JYon0sVKlAaLuNDwaiVsY7kqEiF9h7stgYI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:ffe37b59-cb48-49c9-a04b-6595c0a73d0c,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:0ad78a4,CLOUDID:b8e5bd13-4929-4845-9571-38c601e9c3c9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: d2970a7e4f1411ee86758d4a7c00f3a0-20230909
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 585262813; Sat, 09 Sep 2023 06:28:54 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sat, 9 Sep 2023 21:28:21 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Sat, 9 Sep 2023 21:28:21 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Macpaul Lin
+	<macpaul.lin@mediatek.com>, =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?=
+	<bero@baylibre.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, Ben Lok <ben.lok@mediatek.com>
+Subject: [PATCH v5 2/2] arm64: dts: mediatek: add device-tree for Genio 1200 EVK board
+Date: Sat, 9 Sep 2023 21:28:19 +0800
+Message-ID: <20230909132819.21626-2-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230909132819.21626-1-macpaul.lin@mediatek.com>
+References: <20230909132819.21626-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
-Content-Language: en-US
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Woojung Huh <woojung.huh@microchip.com>,
- UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
- Daniel Golle <daniel@makrotopia.org>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230812091708.34665-3-arinc.unal@arinc9.com>
- <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
- <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
- <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
- <20230813112026.ohsx6srbt2staxma@skbuf>
- <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
- <20230813190157.4y3zoro53qsz43pe@skbuf>
- <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
- <20230814143601.mnpxtcm2zybnbvoh@skbuf>
- <0cee0928-74c9-4048-8cd8-70bfbfafd9b2@arinc9.com>
- <20230827121235.zog4c3ehu2cyd3jy@skbuf>
- <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
-In-Reply-To: <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230909_015408_985678_CD47467E 
-X-CRM114-Status: GOOD (  57.85  )
+X-CRM114-CacheID: sfid-20230909_062907_216904_78975FB7 
+X-CRM114-Status: GOOD (  19.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,693 +91,981 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4.09.2023 14:33, Arınç ÜNAL wrote:
-> Hey Vladimir,
-> 
-> On 27.08.2023 15:12, Vladimir Oltean wrote:
->> Hi Arınç,
->>
->> I am on vacation and I will just reply with some clarification aspects,
->> without having done any further research on the topic since my last reply.
->>
->> On Sun, Aug 27, 2023 at 11:33:16AM +0300, Arınç ÜNAL wrote:
->>> Before I continue commenting, I'd like to state my understanding so we can
->>> make sure we're on the same page. If a driver doesn't use
->>> ds->slave_mii_bus, the switch it controls must not have any internal MDIO
->>> buses. Otherwise the PHYs on these buses couldn't function, and an improper
->>> driver like this would not be on the official Linux source code.
->>
->> A DSA switch port, like any OF-based ethernet-controller which uses
->> phylink, will use one of the phy-handle, fixed-link or managed properties
->> to describe the interface connecting the MAC/MAC-side PCS to the PHY.
->>
->> At its core, ds->slave_mii_bus is nothing more than a mechanism to make
->> sense of device trees where the above 3 phylink properties are not present.
->>
->> It is completely false to say that if a driver doesn't have ds->slave_mii_bus,
->> it must not have an internal MDIO bus. Because you could still describe
->> that internal MDIO bus like below, without making any use of the sole property
->> that makes ds->slave_mii_bus useful from a dt-bindings perspective.
->>
->> ethernet-switch {
->>     ethernet-ports {
->>         port@0 {
->>             reg = <0>;
->>             phy-handle = <&port0_phy>;
->>             phy-mode = "internal";
->>         };
->>     };
->>
->>     mdio {
->>         port0_phy: ethernet-phy@0 {
->>             reg = <0>;
->>         };
->>     };
->> };
->>
->> This is the more universal way of describing the port setup in an
->> OF-based way. There is also the DSA-specific (and old-style, before phylink)
->> way of describing the same thing, which relies on the non-OF-based
->> ds->slave_mii_bus, with bindings that look like this:
->>
->> ethernet-switch {
->>     ethernet-ports {
->>         port@0 {
->>             reg = <0>;
->>         };
->>     };
->> };
->>
->> But, I would say that the first variant of the binding is preferable,
->> since it is more universal.
->>
->> Not all switches that have an internal MDIO bus support the second
->> variant of the dt-binding (the ones that don't have ds->slave_mii_bus don't).
->> But, they support the same configuration through the first form.
-> 
-> Understood.
-> 
->>
->> Furthermore, on the U-Boot mailing lists, I have been suggesting that
->> the DM_DSA driver for mv88e6xxx should not bother to support the second
->> version of the binding, since it is just more code to be added to handle
->> a case which can already be described with the more universal first binding.
-> 
-> That makes sense.
-> 
->>
->>> I've checked mscc,vsc7514-switch. What I see is, the architecture is an SoC
->>> with a switch component. Since the switch component is not designed to be a
->>> standalone IC, the MDIO bus of the SoC could just as well be used without
->>> the need to design an MDIO controller specific to the switch component, to
->>> manage the PHYs. So I see this switch as just another case of a switch
->>> without an internal MDIO bus.
->>
->> Well, we need to clarify the semantics of an "internal" MDIO bus.
->>
->> I would say most discrete chips with DSA switches have this SoC-style
->> architecture, with separate address spaces for the switching IP, MDIO
->> bus, GPIO controller, IRQ controllers, temperature sensors etc (see
->> "mscc,vsc7512-switch" which is like "mscc,vsc7514-switch", but it is
->> controlled over SPIO instead of MMIO). The dt-bindings of most DSA
->> switches may or may not reflect that discrete chip organization. Those
->> drivers and dt-bindings could be reimagined so that DSA is not the
->> top-level driver.
->>
->> Yet, I would argue that it's wrong to say that because it isn't an OF
->> child of the switch, the MDIO bus of the VSC7514 is not internal in the
->> same way that the Realtek MDIO bus is internal. The switch ports are
->> connected to internal PHYs on this MDIO bus, and there aren't PHYs on
->> this MDIO bus that go to other MACs than the switch ports. So, the
->> VSC7514 MDIO bus could legally be called the internal MDIO bus of the
->> switch, even if there isn't a parent/child relationship between them.
-> 
-> Good point, I had believed that the management interface of all of the PHYs
-> being connected to the MDIO bus - which is not part of the switching IP
-> address space - would be enough to classify the MDIO bus as non-internal.
-> 
-> However, the architecture of separate address spaces for the switching IP
-> and MDIO bus is used on any type of IC with the switching feature.
-> Therefore, this characteristic cannot be used to distinguish whether an
-> MDIO bus is of a switch.
-> 
-> What we can refer to to classify an internal MDIO bus is by confirming the
-> data interface of all PHYs on the MDIO bus is connected to the switch port
-> MACs, as you have pointed out here.
-> 
-> Because the architecture of separate address spaces for the switching IP
-> and MDIO bus is used on any type of IC with the switching feature, it can
-> differ by driver how the MDIO bus is defined on the dt-bindings. So we
-> can't make universal bindings of an internal MDIO bus of a switch that
-> apply to every switch.
-> 
-> So, the correct approach is to define things under the switch-specific
-> schema which is affine to the driver, as you have already pointed out.
-> Which schemas to define what will of course differ.
-> 
->>
->> So, what I'm disagreeing with is your insistence to correlate your
->> problem with internal MDIO buses. The way in which the problem is
->> formulated dictates what problem gets solved, and the problem is not
->> correctly formulated here. It is purely about ds->slave_mii_bus and its
->> driver-defined OF presence/absence. It is a DSA-specific binding aspect
->> which not even all DSA switches inherit, let alone bindings outside DSA.
-> 
-> Got it.
-> 
->>
->>>> For switches in the second category, it all depends on the way in which
->>>> the driver finds the node for of_mdiobus_register().
->>>
->>> Ok, so some drivers require the mdio child node. Some require it and the
->>> compatible property with a certain string.
->>>
->>> MDIO controlled Realtek switches do not need the compatible property under
->>> the mdio child node. There're no compatible strings to make a distinction
->>> between the SMI and MDIO controlled switches so the best we can do is keep
->>> it the way it currently is. Define realtek,smi-mdio as a compatible string
->>> but keep the compatible property optional. I did state this on my reply to
->>> patch 3 but still received reviewed-bys regardless.
->>
->> Yes, because.... [1]
->>
->>>> Having identified all switches which make some sort of use of
->>>> ds->slave_mii_bus, the rule would sound like this:
->>>>
->>>> 1. If the schema is that of (need to replace this with compatible
->>>>      strings, I'm too lazy for that):
->>>>
->>>>      - ksz_switch_ops
->>>>      - mv88e6060_switch_ops
->>>>      - lan9303_switch_ops
->>>>      - rtl8365mb_switch_ops_mdio
->>>>      - b53_switch_ops
->>>>      - vsc73xx_ds_ops
->>>>      - mv88e6xxx
->>>>      - qca8k
->>>>
->>>>      and we have an "mdio" child, then phylink bindings are mandatory on user ports.
->>>>
->>>> 2. If the schema is that of gswip_mdio and we have a child node of "lantiq,xrx200-mdio",
->>>>      then phylink bindings are mandatory on user ports (I haven't checked,
->>>>      but it might be that the "lantiq,xrx200-mdio" child is mandatory, and
->>>>      in that case, this goes to category 4 below).
->>>>
->>>> 3. If the schema is that of realtek_smi_setup_mdio and we have a child node of
->>>>      "realtek,smi-mdio", then phylink bindings are mandatory on user ports
->>>>      (same comment about the child MDIO note maybe being mandatory).
->>>>
->>>> 4. If the switch didn't appear in the above set of rules, then phylink
->>>>      bindings are unconditionally mandatory on user ports.
->>>>
->>>> We don't care at all what the drivers that don't use ds->slave_mii_bus
->>>> do with the "mdio" child node. It doesn't change the fact that their
->>>> user ports can't have missing phylink bindings.
->>>
->>> I partially agree. I say, for the switches without an internal MDIO bus,
->>> invalidate the mdio child node, and enforce the phylink bindings on the
->>> user ports. Such as mscc,vsc7514-switch and nxp,sja1105x. For nxp,sja1110x,
->>> invalidate the mdio child node, and enforce the phylink bindings on the
->>> user ports if the mdios property is used.
->>
->> Why "if the mdios property is used" and not "always"? :-/
->>
->> To say it again: because the sja1105 driver does not use ds->slave_mii_bus,
->> it can make no sense of dt-bindings on user ports which lack phylink properties.
->> So they are *always* needed. The "mdios" property changes nothing in that regard.
-> 
-> Got it.
-> 
->>
->>>
->>> I'd like to add this before I conclude. The way I understand dt-bindings is
->>> that a binding does not have to translate to an action on the driver.
->>> Documenting bindings for the sole purpose of describing hardware is a valid
->>> case.
->>
->> [1] ...this. The SMI-controlled and MDIO-controlled Realtek switches are
->> otherwise the same, right? So why would they have different dt-bindings?
-> 
-> Honestly, I'm wondering the answer to this as well. For some reason, when
-> probing the SMI controlled Realtek switches, instead of just letting
-> dsa_switch_setup() populate ds->slave_mii_bus, on realtek_smi_setup_mdio()
-> on realtek-smi.c:
-> 
-> - priv->slave_mii_bus is allocated.
-> - mdio_np = of_get_compatible_child(priv->dev->of_node, "realtek,smi-mdio");
-> - priv->slave_mii_bus->dev.of_node = mdio_np;
-> - ds->slave_mii_bus = priv->slave_mii_bus;
-> 
->>
->>> For example, currently, the MT753X DSA subdriver won't, in any way,
->>> register the bus OF-based. Still, the mdio property for the switches which
->>> this driver controls can be documented because the internal mdio bus does
->>> exist on the hardware.
->>
->> It can, but the whole point is: if ds->slave_mii_bus gains an OF presence,
->> then it loses its core functionality (that user ports can lack phylink
->> bindings). This is the entire essence of what this discussion should capture.
-> 
-> Understood.
-> 
->>
->>>
->>> So I'd like to keep the mdio property valid for the switches which their
->>> drivers can only register non-OF-based ds->slave_mii_bus.
->>>
->>> In conclusion, what to do:
->>>
->>> - Define "the mdio property" and "the enforcement of phylink bindings for
->>>    user ports if mdio property is used" on ethernet-switch.yaml.
->>>      - Invalidate the mdio property on the switches without an internal MDIO
->>>        bus.
->>> - Define "the enforcement of phylink bindings for user ports" on the
->>>    switches without an internal MDIO bus.
->>> - Require "the mdio property" for the switches which their driver requires
->>>    it to function.
->>> - Require "the mdio property" and "the compatible string of the mdio
->>>    property" for the switches which their driver requires them to function.
->>>
->>> There's no 1:1 switch to switch compatible string relation, as seen on
->>> Realtek switches so I'll have to figure that out as I go.
->>>
->>> I'm open to your comments to this mail but the gap between discussion and
->>> end result has widened a lot on this patch series so I'd like to first
->>> offload this conversation by preparing v2 with what I said here and discuss
->>> further there.
->>
->> Honestly, from my side, a verbal comment in the dt-bindings document
->> would have been just fine, as long as it is truthful to the reality it
->> describes.
->>
->> You wanted to over-complicate things with an actual schema validation,
->> and then hooking onto things that are unrelated with the phenomenon that
->> needs to be captured (like the "mdio" child node, without explicit
->> regard to whether it is the ds->slave_mii_bus or not).
->>
->> It's not about internal MDIO buses in general, it's about whether those
->> internal MDIO buses are used in ds->slave_mii_bus, and their OF
->> presence/absence! That is absolutely driver-specific and I would only
->> expect a driver-specific way of enforcing it. I didn't say it's not
->> hard, and I didn't ask to enforce it, either.
-> 
-> OK, I believe we're on the same page now, I will start working on properly
-> enforcing this.
+Add basic device-tree for the Genio 1200-EVK board. This board
+is made by MediaTek and has a MT8395 SoC (MT8195 family),
+associated with the MT6359 and MT6360 PMICs, and
+the MT7921 connectivity chip.
 
-I'm writing below as a mix of patch log and discussion.
+The IOs available on that board are:
+* 1 USB Type-C connector with DP aux mode support
+* 2 USB Type-A connector with a USB hub
+* 1 micro-USB port for gadget or OTG support
+* 1 full size HDMI RX and 1 full size HDMI TX connector
+* 1 micro SD slot
+* 40 pins header
+* SPI interface header
+* 1 M.2 slot
+* 1 audio jack
+* 1 micro-USB port for serial debug
+* 2 connectors for DSI displays, 1 of the DSI panel is installed
+* 3 connectors for CSI cameras
+* 1 connector for a eDP panel
+* 1 MMC storage
+* 1 Touch Panel (installed DSI display)
+* 1 M.2 slot for 5G dongle
 
-Phylink bindings are required for ports that are controlled by OF-based
-buses. DSA, like any other driver utilising the Linux MDIO infrastructure,
-can register a bus. If I understand correctly, non-OF-based registration of
-OpenFirmware MDIO buses is a feature specific to DSA which certain DSA
-subdrivers make use of.
+This commit adds basic support in order to be able to boot.
 
-There's no way to distinguish which port is controlled by which driver's
-MDIO bus on the bindings so we can't enforce phylink bindings for all user
-ports as this would also enforce phylink bindings on user ports controlled
-by a non-OF-based bus.
-
-But we can know when DSA won't create a non-OF-based bus. That leaves us
-with only OF-based buses in which case we can enforce phylink bindings for
-all user ports. So we need to check each DSA subdriver to see when all
-buses will be OF-based.
-
-A DSA subdriver can either let the main DSA driver register the bus or it
-can register a bus or buses itself.
-
-The attributes of a DSA subdriver that lets the DSA driver register the
-bus:
-- ds->ops->phy_read() and ds->ops->phy_write() are present.
-- ds->slave_mii_bus is not populated by the DSA subdriver.
-- The bus is registered non-OF-based or OF-based. Registered OF-based if
-   "mdio" child node is defined.
-
-How each DSA subdriver behaves is documented below.
-
+Signed-off-by: Ben Lok <ben.lok@mediatek.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 ---
+ arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+ .../dts/mediatek/mt8395-genio-1200-evk.dts    | 901 ++++++++++++++++++
+ 2 files changed, 902 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+
+Changes for v2:
+ - correct SOC binding to "mediatek,mt8395".
+ - Fix a Linux coding style comments for optee node.
+ - Fix wifi fixed 3.3v power's node with "wifi-3v3-regulator".
+ - Fix node name of mt6360 and mt6517 to generic dts name as "pmic".
+ - Remove unecessary blank line.
+ - Reording usb node as the order of "phy" then "host".
+
+Changes for v3:
+ - Add back bindings for "mediatek,mt8195".
+ - Fix wifi fixed 3.3v power's node with "regulator-2"
+
+Changes for v4:
+ - Fix Makefile and dts file name with prefix "mt8395-".
+ - Re-order all nodes in mt8395-genio-1200-evk.dts by alphabetical order. 
+ - Remove unused "DEBUG" node.
+
+Changes for v5:
+ - Revise commit message for board's name.
+ - swap the order of nodes 'mt6359_vcamio_ldo_reg' and
+   'mt6359_vcn33_2_bt_ldo_reg' by alphabetical order.
+ - Reorder some gpio pins by alphabetical order.
+  - audio_default_pins, eth pins, and uart1 pins
+
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index c99c3372a4b5..10e640c6ae08 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -53,4 +53,5 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-cherry-tomato-r3.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-demo.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8365-evk.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-genio-1200-evk.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+new file mode 100644
+index 000000000000..5de2d102c577
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+@@ -0,0 +1,901 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright (C) 2023 MediaTek Inc.
++ * Author: Ben Lok <ben.lok@mediatek.com>
++ *	   Macpaul Lin <macpaul.lin@mediatek.com>
++ */
++/dts-v1/;
++
++#include "mt8195.dtsi"
++#include "mt6359.dtsi"
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/input/input.h>
++#include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/pinctrl/mt8195-pinfunc.h>
++#include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
++#include <dt-bindings/spmi/spmi.h>
++#include <dt-bindings/usb/pd.h>
++
++/ {
++	model = "MediaTek Genio 1200 EVK-P1V2-EMMC";
++	compatible = "mediatek,mt8395-evk", "mediatek,mt8395",
++		     "mediatek,mt8195";
++
++	aliases {
++		serial0 = &uart0;
++		ethernet0 = &eth;
++	};
++
++	chosen {
++		stdout-path = "serial0:921600n8";
++	};
++
++	firmware {
++		optee {
++			compatible = "linaro,optee-tz";
++			method = "smc";
++		};
++	};
++
++	memory@40000000 {
++		device_type = "memory";
++		reg = <0 0x40000000 0x2 0x00000000>;
++	};
++
++	reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++
++		/*
++		 * 12 MiB reserved for OP-TEE (BL32)
++		 * +-----------------------+ 0x43e0_0000
++		 * |      SHMEM 2MiB       |
++		 * +-----------------------+ 0x43c0_0000
++		 * |        | TA_RAM  8MiB |
++		 * + TZDRAM +--------------+ 0x4340_0000
++		 * |        | TEE_RAM 2MiB |
++		 * +-----------------------+ 0x4320_0000
++		 */
++		optee_reserved: optee@43200000 {
++			no-map;
++			reg = <0 0x43200000 0 0x00c00000>;
++		};
++
++		scp_mem: memory@50000000 {
++			compatible = "shared-dma-pool";
++			reg = <0 0x50000000 0 0x2900000>;
++			no-map;
++		};
++
++		vpu_mem: memory@53000000 {
++			compatible = "shared-dma-pool";
++			reg = <0 0x53000000 0 0x1400000>; /* 20 MB */
++		};
++
++		/* 2 MiB reserved for ARM Trusted Firmware (BL31) */
++		bl31_secmon_mem: memory@54600000 {
++			no-map;
++			reg = <0 0x54600000 0x0 0x200000>;
++		};
++
++		snd_dma_mem: memory@60000000 {
++			compatible = "shared-dma-pool";
++			reg = <0 0x60000000 0 0x1100000>;
++			no-map;
++		};
++
++		apu_mem: memory@62000000 {
++			compatible = "shared-dma-pool";
++			reg = <0 0x62000000 0 0x1400000>; /* 20 MB */
++		};
++	};
++
++	backlight_lcd0: backlight-lcd0 {
++		compatible = "pwm-backlight";
++		pwms = <&disp_pwm0 0 500000>;
++		enable-gpios = <&pio 47 GPIO_ACTIVE_HIGH>;
++		brightness-levels = <0 1023>;
++		num-interpolated-steps = <1023>;
++		default-brightness-level = <576>;
++	};
++
++	backlight_lcd1: backlight-lcd1 {
++		compatible = "pwm-backlight";
++		pwms = <&disp_pwm1 0 500000>;
++		enable-gpios = <&pio 46 GPIO_ACTIVE_HIGH>;
++		brightness-levels = <0 1023>;
++		num-interpolated-steps = <1023>;
++		default-brightness-level = <576>;
++	};
++
++	can_clk: can-clk {
++		compatible = "fixed-clock";
++		#clock-cells = <0>;
++		clock-frequency = <20000000>;
++		clock-output-names = "can-clk";
++	};
++
++	edp_panel_fixed_3v3: regulator-0 {
++		compatible = "regulator-fixed";
++		regulator-name = "edp_panel_3v3";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		enable-active-high;
++		gpio = <&pio 6 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&edp_panel_3v3_en_pins>;
++	};
++
++	edp_panel_fixed_12v: regulator-1 {
++		compatible = "regulator-fixed";
++		regulator-name = "edp_backlight_12v";
++		regulator-min-microvolt = <12000000>;
++		regulator-max-microvolt = <12000000>;
++		enable-active-high;
++		gpio = <&pio 96 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&edp_panel_12v_en_pins>;
++	};
++
++	keys: gpio-keys {
++		compatible = "gpio-keys";
++
++		button-volume-up {
++			wakeup-source;
++			debounce-interval = <100>;
++			gpios = <&pio 106 GPIO_ACTIVE_LOW>;
++			label = "volume_up";
++			linux,code = <KEY_VOLUMEUP>;
++		};
++	};
++
++	wifi_fixed_3v3: regulator-2 {
++		compatible = "regulator-fixed";
++		regulator-name = "wifi_3v3";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		gpio = <&pio 135 GPIO_ACTIVE_HIGH>;
++		enable-active-high;
++		regulator-always-on;
++	};
++};
++
++&disp_pwm0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pwm0_default_pins>;
++	status = "okay";
++};
++
++&dmic_codec {
++	wakeup-delay-ms = <200>;
++};
++
++&eth {
++	phy-mode ="rgmii-rxid";
++	phy-handle = <&eth_phy0>;
++	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
++	snps,reset-delays-us = <0 10000 10000>;
++	mediatek,tx-delay-ps = <2030>;
++	mediatek,mac-wol;
++	pinctrl-names = "default", "sleep";
++	pinctrl-0 = <&eth_default_pins>;
++	pinctrl-1 = <&eth_sleep_pins>;
++	status = "okay";
++
++	mdio {
++		compatible = "snps,dwmac-mdio";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		eth_phy0: eth-phy0@1 {
++			compatible = "ethernet-phy-id001c.c916";
++			reg = <0x1>;
++		};
++	};
++};
++
++&i2c0 {
++	clock-frequency = <400000>;
++	pinctrl-0 = <&i2c0_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
++&i2c1 {
++	clock-frequency = <400000>;
++	pinctrl-0 = <&i2c1_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++
++	touchscreen@5d {
++		compatible = "goodix,gt9271";
++		reg = <0x5d>;
++		interrupt-parent = <&pio>;
++		interrupts = <132 IRQ_TYPE_EDGE_RISING>;
++		irq-gpios = <&pio 132 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&pio 133 GPIO_ACTIVE_HIGH>;
++		AVDD28-supply = <&mt6360_ldo1>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&touch_pins>;
++	};
++};
++
++&i2c2 {
++	clock-frequency = <400000>;
++	pinctrl-0 = <&i2c2_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
++&i2c6 {
++	clock-frequency = <400000>;
++	pinctrl-0 = <&i2c6_pins>;
++	pinctrl-names = "default";
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	mt6360: pmic@34 {
++		compatible = "mediatek,mt6360";
++		reg = <0x34>;
++		interrupts = <128 IRQ_TYPE_EDGE_FALLING>;
++		interrupt-names = "IRQB";
++		interrupt-controller;
++		#interrupt-cells = <1>;
++		pinctrl-0 = <&mt6360_pins>;
++
++		charger {
++			compatible = "mediatek,mt6360-chg";
++			richtek,vinovp-microvolt = <14500000>;
++
++			otg_vbus_regulator: usb-otg-vbus-regulator {
++				regulator-name = "usb-otg-vbus";
++				regulator-min-microvolt = <4425000>;
++				regulator-max-microvolt = <5825000>;
++			};
++		};
++
++		regulator {
++			compatible = "mediatek,mt6360-regulator";
++			LDO_VIN3-supply = <&mt6360_buck2>;
++
++			mt6360_buck1: buck1 {
++				regulator-name = "emi_vdd2";
++				regulator-min-microvolt = <300000>;
++				regulator-max-microvolt = <1300000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP
++							   MT6360_OPMODE_ULP>;
++				regulator-always-on;
++			};
++
++			mt6360_buck2: buck2 {
++				regulator-name = "emi_vddq";
++				regulator-min-microvolt = <300000>;
++				regulator-max-microvolt = <1300000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP
++							   MT6360_OPMODE_ULP>;
++				regulator-always-on;
++			};
++
++			mt6360_ldo1: ldo1 {
++				regulator-name = "tp1_p3v0";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++				regulator-always-on;
++			};
++
++			mt6360_ldo2: ldo2 {
++				regulator-name = "panel1_p1v8";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++
++			mt6360_ldo3: ldo3 {
++				regulator-name = "vmc_pmu";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++
++			mt6360_ldo5: ldo5 {
++				regulator-name = "vmch_pmu";
++				regulator-min-microvolt = <2700000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++
++			/* This is a measure point, which name is mt6360_ldo1 on schematic */
++			mt6360_ldo6: ldo6 {
++				regulator-name = "mt6360_ldo1";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <2100000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++			};
++
++			mt6360_ldo7: ldo7 {
++				regulator-name = "emi_vmddr_en";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <2100000>;
++				regulator-allowed-modes = <MT6360_OPMODE_NORMAL
++							   MT6360_OPMODE_LP>;
++				regulator-always-on;
++			};
++		};
++	};
++};
++
++&mfg0 {
++	domain-supply = <&mt6315_7_vbuck1>;
++};
++
++&mmc0 {
++	status = "okay";
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc0_default_pins>;
++	pinctrl-1 = <&mmc0_uhs_pins>;
++	bus-width = <8>;
++	max-frequency = <200000000>;
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	mmc-hs400-1_8v;
++	cap-mmc-hw-reset;
++	no-sdio;
++	no-sd;
++	hs400-ds-delay = <0x14c11>;
++	vmmc-supply = <&mt6359_vemc_1_ldo_reg>;
++	vqmmc-supply = <&mt6359_vufs_ldo_reg>;
++	non-removable;
++};
++
++&mmc1 {
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc1_default_pins>;
++	pinctrl-1 = <&mmc1_uhs_pins>;
++	bus-width = <4>;
++	max-frequency = <200000000>;
++	cap-sd-highspeed;
++	sd-uhs-sdr50;
++	sd-uhs-sdr104;
++	no-mmc;
++	no-sdio;
++	vmmc-supply = <&mt6360_ldo5>;
++	vqmmc-supply = <&mt6360_ldo3>;
++	status = "okay";
++	non-removable;
++};
++
++&mt6359_vaud18_ldo_reg {
++	regulator-always-on;
++};
++
++&mt6359_vbbck_ldo_reg {
++	regulator-always-on;
++};
++
++/* For USB Hub */
++&mt6359_vcamio_ldo_reg {
++	regulator-always-on;
++};
++
++&mt6359_vcn33_2_bt_ldo_reg {
++	regulator-min-microvolt = <3300000>;
++	regulator-max-microvolt = <3300000>;
++};
++
++&mt6359_vcore_buck_reg {
++	regulator-always-on;
++};
++
++&mt6359_vgpu11_buck_reg {
++	regulator-always-on;
++};
++
++&mt6359_vpu_buck_reg {
++	regulator-always-on;
++};
++
++&mt6359_vrf12_ldo_reg {
++	regulator-always-on;
++};
++
++&mt6359codec {
++	mediatek,mic-type-0 = <1>; /* ACC */
++	mediatek,mic-type-1 = <3>; /* DCC */
++	mediatek,mic-type-2 = <1>; /* ACC */
++};
++
++&pcie0 {
++	pinctrl-names = "default", "idle";
++	pinctrl-0 = <&pcie0_default_pins>;
++	pinctrl-1 = <&pcie0_idle_pins>;
++	status = "okay";
++};
++
++&pcie1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie1_default_pins>;
++	status = "disabled";
++};
++
++&pciephy {
++	status = "okay";
++};
++
++&pio {
++	audio_default_pins: audio-default-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO61__FUNC_DMIC1_CLK>,
++				 <PINMUX_GPIO62__FUNC_DMIC1_DAT>,
++				 <PINMUX_GPIO65__FUNC_PCM_DO>,
++				 <PINMUX_GPIO66__FUNC_PCM_CLK>,
++				 <PINMUX_GPIO67__FUNC_PCM_DI>,
++				 <PINMUX_GPIO68__FUNC_PCM_SYNC>,
++				 <PINMUX_GPIO69__FUNC_AUD_CLK_MOSI>,
++				 <PINMUX_GPIO70__FUNC_AUD_SYNC_MOSI>,
++				 <PINMUX_GPIO71__FUNC_AUD_DAT_MOSI0>,
++				 <PINMUX_GPIO72__FUNC_AUD_DAT_MOSI1>,
++				 <PINMUX_GPIO73__FUNC_AUD_DAT_MISO0>,
++				 <PINMUX_GPIO74__FUNC_AUD_DAT_MISO1>,
++				 <PINMUX_GPIO75__FUNC_AUD_DAT_MISO2>;
++		};
++	};
++
++	disp_pwm1_default_pins: disp-pwm1-default-pins {
++		pins1 {
++			pinmux = <PINMUX_GPIO104__FUNC_DISP_PWM1>;
++		};
++	};
++
++	edp_panel_12v_en_pins: edp-panel-12v-en-pins {
++		pins1 {
++			pinmux = <PINMUX_GPIO96__FUNC_GPIO96>;
++			output-high;
++		};
++	};
++
++	edp_panel_3v3_en_pins: edp-panel-3v3-en-pins {
++		pins1 {
++			pinmux = <PINMUX_GPIO6__FUNC_GPIO6>;
++			output-high;
++		};
++	};
++
++	eth_default_pins: eth-default-pins {
++		pins-cc {
++			pinmux = <PINMUX_GPIO85__FUNC_GBE_TXC>,
++				 <PINMUX_GPIO86__FUNC_GBE_RXC>,
++				 <PINMUX_GPIO87__FUNC_GBE_RXDV>,
++				 <PINMUX_GPIO88__FUNC_GBE_TXEN>;
++			drive-strength = <MTK_DRIVE_8mA>;
++		};
++
++		pins-mdio {
++			pinmux = <PINMUX_GPIO89__FUNC_GBE_MDC>,
++				 <PINMUX_GPIO90__FUNC_GBE_MDIO>;
++			input-enable;
++		};
++
++		pins-power {
++			pinmux = <PINMUX_GPIO91__FUNC_GPIO91>,
++				 <PINMUX_GPIO92__FUNC_GPIO92>;
++			output-high;
++		};
++
++		pins-rxd {
++			pinmux = <PINMUX_GPIO81__FUNC_GBE_RXD3>,
++				 <PINMUX_GPIO82__FUNC_GBE_RXD2>,
++				 <PINMUX_GPIO83__FUNC_GBE_RXD1>,
++				 <PINMUX_GPIO84__FUNC_GBE_RXD0>;
++		};
++
++		pins-txd {
++			pinmux = <PINMUX_GPIO77__FUNC_GBE_TXD3>,
++				 <PINMUX_GPIO78__FUNC_GBE_TXD2>,
++				 <PINMUX_GPIO79__FUNC_GBE_TXD1>,
++				 <PINMUX_GPIO80__FUNC_GBE_TXD0>;
++			drive-strength = <MTK_DRIVE_8mA>;
++		};
++	};
++
++	eth_sleep_pins: eth-sleep-pins {
++		pins-cc {
++			pinmux = <PINMUX_GPIO85__FUNC_GPIO85>,
++				 <PINMUX_GPIO86__FUNC_GPIO86>,
++				 <PINMUX_GPIO87__FUNC_GPIO87>,
++				 <PINMUX_GPIO88__FUNC_GPIO88>;
++		};
++
++		pins-mdio {
++			pinmux = <PINMUX_GPIO89__FUNC_GPIO89>,
++				 <PINMUX_GPIO90__FUNC_GPIO90>;
++			input-disable;
++			bias-disable;
++		};
++
++		pins-rxd {
++			pinmux = <PINMUX_GPIO81__FUNC_GPIO81>,
++				 <PINMUX_GPIO82__FUNC_GPIO82>,
++				 <PINMUX_GPIO83__FUNC_GPIO83>,
++				 <PINMUX_GPIO84__FUNC_GPIO84>;
++		};
++
++		pins-txd {
++			pinmux = <PINMUX_GPIO77__FUNC_GPIO77>,
++				 <PINMUX_GPIO78__FUNC_GPIO78>,
++				 <PINMUX_GPIO79__FUNC_GPIO79>,
++				 <PINMUX_GPIO80__FUNC_GPIO80>;
++		};
++	};
++
++	gpio_key_pins: gpio-keys-pins {
++		pins {
++			pinmux = <PINMUX_GPIO106__FUNC_GPIO106>;
++			bias-pull-up;
++			input-enable;
++		};
++	};
++
++	i2c0_pins: i2c0-pins {
++		pins {
++			pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
++				 <PINMUX_GPIO9__FUNC_SCL0>;
++			bias-pull-up = <MTK_PULL_SET_RSEL_111>;
++			drive-strength-microamp = <1000>;
++		};
++	};
++
++	i2c1_pins: i2c1-pins {
++		pins {
++			pinmux = <PINMUX_GPIO10__FUNC_SDA1>,
++				 <PINMUX_GPIO11__FUNC_SCL1>;
++			bias-pull-up = <MTK_PULL_SET_RSEL_111>;
++			drive-strength-microamp = <1000>;
++		};
++	};
++
++	i2c2_pins: i2c2-pins {
++		pins {
++			pinmux = <PINMUX_GPIO12__FUNC_SDA2>,
++				 <PINMUX_GPIO13__FUNC_SCL2>;
++			bias-pull-up = <MTK_PULL_SET_RSEL_111>;
++			drive-strength = <MTK_DRIVE_6mA>;
++		};
++	};
++
++	i2c6_pins: i2c6-pins {
++		pins {
++			pinmux = <PINMUX_GPIO25__FUNC_SDA6>,
++				 <PINMUX_GPIO26__FUNC_SCL6>;
++			bias-pull-up;
++		};
++	};
++
++	mmc0_default_pins: mmc0-default-pins {
++		pins-clk {
++			pinmux = <PINMUX_GPIO122__FUNC_MSDC0_CLK>;
++			drive-strength = <MTK_DRIVE_6mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
++				 <PINMUX_GPIO125__FUNC_MSDC0_DAT1>,
++				 <PINMUX_GPIO124__FUNC_MSDC0_DAT2>,
++				 <PINMUX_GPIO123__FUNC_MSDC0_DAT3>,
++				 <PINMUX_GPIO119__FUNC_MSDC0_DAT4>,
++				 <PINMUX_GPIO118__FUNC_MSDC0_DAT5>,
++				 <PINMUX_GPIO117__FUNC_MSDC0_DAT6>,
++				 <PINMUX_GPIO116__FUNC_MSDC0_DAT7>,
++				 <PINMUX_GPIO121__FUNC_MSDC0_CMD>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_6mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++
++		pins-rst {
++			pinmux = <PINMUX_GPIO120__FUNC_MSDC0_RSTB>;
++			drive-strength = <MTK_DRIVE_6mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++	};
++
++	mmc0_uhs_pins: mmc0-uhs-pins {
++		pins-clk {
++			pinmux = <PINMUX_GPIO122__FUNC_MSDC0_CLK>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
++				 <PINMUX_GPIO125__FUNC_MSDC0_DAT1>,
++				 <PINMUX_GPIO124__FUNC_MSDC0_DAT2>,
++				 <PINMUX_GPIO123__FUNC_MSDC0_DAT3>,
++				 <PINMUX_GPIO119__FUNC_MSDC0_DAT4>,
++				 <PINMUX_GPIO118__FUNC_MSDC0_DAT5>,
++				 <PINMUX_GPIO117__FUNC_MSDC0_DAT6>,
++				 <PINMUX_GPIO116__FUNC_MSDC0_DAT7>,
++				 <PINMUX_GPIO121__FUNC_MSDC0_CMD>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++
++		pins-ds {
++			pinmux = <PINMUX_GPIO127__FUNC_MSDC0_DSL>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins-rst {
++			pinmux = <PINMUX_GPIO120__FUNC_MSDC0_RSTB>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++	};
++
++	mmc1_default_pins: mmc1-default-pins {
++		pins-clk {
++			pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
++				 <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
++				 <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
++				 <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
++				 <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++	};
++
++	mmc1_uhs_pins: mmc1-uhs-pins {
++		pins-clk {
++			pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++		};
++
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
++				 <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
++				 <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
++				 <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
++				 <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
++			input-enable;
++			drive-strength = <MTK_DRIVE_8mA>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++		};
++	};
++
++	mt6360_pins: mt6360-pins {
++		pins {
++			pinmux = <PINMUX_GPIO17__FUNC_GPIO17>,
++				 <PINMUX_GPIO128__FUNC_GPIO128>;
++			input-enable;
++			bias-pull-up;
++		};
++	};
++
++	pcie0_default_pins: pcie0-default-pins {
++		pins {
++			pinmux = <PINMUX_GPIO19__FUNC_WAKEN>,
++				 <PINMUX_GPIO20__FUNC_PERSTN>,
++				 <PINMUX_GPIO21__FUNC_CLKREQN>;
++			bias-pull-up;
++		};
++	};
++
++	pcie0_idle_pins: pcie0-idle-pins {
++		pins {
++			pinmux = <PINMUX_GPIO20__FUNC_GPIO20>;
++			bias-disable;
++			output-low;
++		};
++	};
++
++	pcie1_default_pins: pcie1-default-pins {
++		pins {
++			pinmux = <PINMUX_GPIO22__FUNC_PERSTN_1>,
++				 <PINMUX_GPIO23__FUNC_CLKREQN_1>,
++				 <PINMUX_GPIO24__FUNC_WAKEN_1>;
++			bias-pull-up;
++		};
++	};
++
++	pwm0_default_pins: pwm0-default-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO97__FUNC_DISP_PWM0>;
++		};
++	};
++
++	spi1_pins: spi1-pins {
++		pins {
++			pinmux = <PINMUX_GPIO136__FUNC_SPIM1_CSB>,
++				 <PINMUX_GPIO137__FUNC_SPIM1_CLK>,
++				 <PINMUX_GPIO138__FUNC_SPIM1_MO>,
++				 <PINMUX_GPIO139__FUNC_SPIM1_MI>;
++			bias-disable;
++		};
++	};
++
++	spi2_pins: spi-pins {
++		pins {
++			pinmux = <PINMUX_GPIO140__FUNC_SPIM2_CSB>,
++				 <PINMUX_GPIO141__FUNC_SPIM2_CLK>,
++				 <PINMUX_GPIO142__FUNC_SPIM2_MO>,
++				 <PINMUX_GPIO143__FUNC_SPIM2_MI>;
++			bias-disable;
++		};
++	};
++
++	touch_pins: touch-pins {
++		pins-irq {
++			pinmux = <PINMUX_GPIO132__FUNC_GPIO132>;
++			input-enable;
++			bias-disable;
++		};
++
++		pins-reset {
++			pinmux = <PINMUX_GPIO133__FUNC_GPIO133>;
++			output-high;
++		};
++	};
++
++	uart0_pins: uart0-pins {
++		pins {
++			pinmux = <PINMUX_GPIO98__FUNC_UTXD0>,
++				 <PINMUX_GPIO99__FUNC_URXD0>;
++		};
++	};
++
++	uart1_pins: uart1-pins {
++		pins {
++			pinmux = <PINMUX_GPIO100__FUNC_URTS1>,
++				 <PINMUX_GPIO101__FUNC_UCTS1>,
++				 <PINMUX_GPIO102__FUNC_UTXD1>,
++				 <PINMUX_GPIO103__FUNC_URXD1>;
++		};
++	};
++};
++
++&pmic {
++	interrupt-parent = <&pio>;
++	interrupts = <222 IRQ_TYPE_LEVEL_HIGH>;
++};
++
++&scp {
++	memory-region = <&scp_mem>;
++	status = "okay";
++};
++
++&spi1 {
++	pinctrl-0 = <&spi1_pins>;
++	pinctrl-names = "default";
++	mediatek,pad-select = <0>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++	cs-gpios = <&pio 64 GPIO_ACTIVE_LOW>;
++
++	can0: can@0 {
++		compatible = "microchip,mcp2518fd";
++		reg = <0>;
++		clocks = <&can_clk>;
++		spi-max-frequency = <20000000>;
++		interrupts-extended = <&pio 16 IRQ_TYPE_LEVEL_LOW>;
++		vdd-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
++		xceiver-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
++	};
++};
++
++&spi2 {
++	pinctrl-0 = <&spi2_pins>;
++	pinctrl-names = "default";
++	mediatek,pad-select = <0>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++};
++
++&u3phy0 {
++	status = "okay";
++};
++
++&u3phy1 {
++	status = "okay";
++};
++
++&u3phy2 {
++	status = "okay";
++};
++
++&u3phy3 {
++	status = "okay";
++};
++
++&uart0 {
++	pinctrl-0 = <&uart0_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
++&uart1 {
++	pinctrl-0 = <&uart1_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
++&ufsphy {
++	status = "disabled";
++};
++
++&spmi {
++	#address-cells = <2>;
++	#size-cells = <0>;
++
++	mt6315_6: pmic@6 {
++		compatible = "mediatek,mt6315-regulator";
++		reg = <0x6 SPMI_USID>;
++
++		regulators {
++			mt6315_6_vbuck1: vbuck1 {
++				regulator-compatible = "vbuck1";
++				regulator-name = "Vbcpu";
++				regulator-min-microvolt = <300000>;
++				regulator-max-microvolt = <1193750>;
++				regulator-enable-ramp-delay = <256>;
++				regulator-allowed-modes = <0 1 2>;
++				regulator-always-on;
++			};
++		};
++	};
++
++	mt6315_7: pmic@7 {
++		compatible = "mediatek,mt6315-regulator";
++		reg = <0x7 SPMI_USID>;
++
++		regulators {
++			mt6315_7_vbuck1: vbuck1 {
++				regulator-compatible = "vbuck1";
++				regulator-name = "Vgpu";
++				regulator-min-microvolt = <300000>;
++				regulator-max-microvolt = <1193750>;
++				regulator-enable-ramp-delay = <256>;
++				regulator-allowed-modes = <0 1 2>;
++			};
++		};
++	};
++};
++
++&xhci0 {
++	status = "okay";
++};
++
++&xhci1 {
++	vusb33-supply = <&mt6359_vusb_ldo_reg>;
++	status = "okay";
++};
++
++&xhci2 {
++	vusb33-supply = <&mt6359_vusb_ldo_reg>;
++	status = "okay";
++};
++
++&xhci3 {
++	vusb33-supply = <&mt6359_vusb_ldo_reg>;
++	status = "okay";
++};
+-- 
+2.18.0
 
-- mscc,vsc7514-switch.yaml
-   - mscc,vsc7514-switch
-   - mscc,vsc7512-switch
-
-drivers/net/ethernet/mscc/ocelot_vsc7514.c:
-- Not a DSA subdriver.
-- MDIO_MSCC_MIIM, a driver utilising the Linux MDIO infrastructure is used
-   to register a bus.
-
-drivers/net/dsa/ocelot/ocelot_ext.c:
-- The DSA subdriver won't let the DSA driver register the bus.
-   - No ds->ops->phy_read() or ds->ops->phy_write().
-- MDIO_MSCC_MIIM, a driver utilising the Linux MDIO infrastructure is used
-   to register a bus.
-
-What to do:
-- For mscc,vsc7514-switch, enforce phylink bindings for ports.
-- For mscc,vsc7512-switch, enforce phylink bindings for user ports.
-
----
-
-- renesas,rzn1-a5psw.yaml
-   - renesas,r9a06g032-a5psw, renesas,rzn1-a5psw
-
-drivers/net/dsa/rzn1_a5psw.c:
-- The DSA subdriver won't let the DSA driver register the bus.
-   - No ds->ops->phy_read() or ds->ops->phy_write().
-- Registers the bus OF-based only. Registers the bus when "mdio" child node
-   is defined.
-   -	mdio = of_get_child_by_name(dev->of_node, "mdio");
-     if (of_device_is_available(mdio))
-       ret = a5psw_probe_mdio(a5psw, mdio);
-
-What to do:
-- Document "mdio".
-- Enforce phylink bindings for user ports.
-
----
-
-- realtek.yaml
-   - realtek,rtl8365mb
-   - realtek,rtl8366rb
-
-drivers/net/dsa/realtek/realtek-smi.c:
-- The DSA subdriver won't let the DSA driver register the bus. Registers
-   the bus OF-based only. Registering the bus is mandatory. Registers the
-   bus when compatible string "realtek,smi-mdio" on a child node is defined.
-   - mdio_np = of_get_compatible_child(priv->dev->of_node, "realtek,smi-mdio");
-     if (!mdio_np)
-       return -ENODEV;
-     ds->slave_mii_bus = priv->slave_mii_bus;
-
-drivers/net/dsa/realtek/realtek-mdio.c:
-- The DSA subdriver lets the DSA driver register the bus.
-
-What to do:
-- Document "mdio".
-   - Require "mdio". (Can't do because it's not required for MDIO controlled
-     switches that share the compatible string with SMI controlled switches.
-     This is why I would like Luiz to unify the bus registeration process.)
-- Document compatible string "realtek,smi-mdio" on "mdio" child node.
-   - Require compatible. (Can't do because the same as above.)
-- Enforce phylink bindings for user ports. (Can't do because the same as
-   above.)
-   - Enforce phylink bindings for user ports if "mdio" is defined.
-
----
-
-- qca8k.yaml
-   - qca,qca8327
-   - qca,qca8328
-   - qca,qca8334
-   - qca,qca8337
-
-drivers/net/dsa/qca/qca8k-8xxx.c:
-- The DSA subdriver won't let the DSA driver register the bus.
-   - No ds->ops->phy_read() or ds->ops->phy_write().
-- Registers the bus non-OF-based or OF-based. Registers OF-based if "mdio"
-   child node is defined.
-   - mdio = of_get_child_by_name(priv->dev->of_node, "mdio");
-
-What to do:
-- Document "mdio".
-- Enforce phylink bindings for user ports if "mdio" is defined.
-
----
-
-- nxp,sja1105.yaml
-   - nxp,sja1105e
-   - nxp,sja1105t
-   - nxp,sja1105p
-   - nxp,sja1105q
-   - nxp,sja1105r
-   - nxp,sja1105s
-   - nxp,sja1110a
-   - nxp,sja1110b
-   - nxp,sja1110c
-   - nxp,sja1110d
-
-drivers/net/dsa/sja1105/sja1105_mdio.c:
-- The DSA subdriver won't let the DSA driver register the bus.
-   - No ds->ops->phy_read() or ds->ops->phy_write().
-- Registers multiple buses OF-based only. Registers the buses when "mdios"
-   child node and "nxp,sja1110-base-tx-mdio" and "nxp,sja1110-base-t1-mdio"
-   compatible strings per child node under "mdios" is defined.
-   - mdio_node = of_get_child_by_name(switch_node, "mdios");
-     if (!mdio_node)
-       return 0;
-   - np = of_get_compatible_child(mdio_node, "nxp,sja1110-base-tx-mdio");
-     if (!np)
-       return 0;
-   - np = of_get_compatible_child(mdio_node, "nxp,sja1110-base-t1-mdio");
-     if (!np)
-       return 0;
-
-What to do:
-- Document "mdios".
-   - Document child node pattern property under "mdios".
-     - Document "nxp,sja1110-base-tx-mdio" and "nxp,sja1110-base-t1-mdio"
-       compatible strings.
-- Enforce phylink bindings for user ports.
-
----
-
-- mscc,ocelot.yaml
-   - mscc,vsc9953-switch
-   - pci1957,eef0
-
-drivers/net/dsa/ocelot/seville_vsc9953.c:
-- The DSA subdriver won't let the DSA driver register the bus.
-   - No ds->ops->phy_read() or ds->ops->phy_write().
-- MDIO_MSCC_MIIM, a driver utilising the Linux MDIO infrastructure is used
-   to register a bus.
-
-drivers/net/dsa/ocelot/felix_vsc9959.c:
-- The DSA subdriver won't let the DSA driver register the bus.
-   - No ds->ops->phy_read() or ds->ops->phy_write().
-- FSL_ENETC_MDIO, a driver utilising the Linux MDIO infrastructure is used
-   to register a bus.
-
-What to do:
-- Enforce phylink bindings for user ports.
-
----
-
-- microchip,lan937x.yaml
-   - microchip,lan9370
-   - microchip,lan9371
-   - microchip,lan9372
-   - microchip,lan9373
-   - microchip,lan9374
-- microchip,ksz.yaml
-   - microchip,ksz8765
-   - microchip,ksz8794
-   - microchip,ksz8795
-   - microchip,ksz8863
-   - microchip,ksz8873
-   - microchip,ksz9477
-   - microchip,ksz9897
-   - microchip,ksz9896
-   - microchip,ksz9567
-   - microchip,ksz8565
-   - microchip,ksz9893
-   - microchip,ksz9563
-   - microchip,ksz8563
-
-drivers/net/dsa/microchip/ksz_common.c:
-- The DSA subdriver won't let the DSA driver register the bus when "mdio"
-   child node is defined. Registers the bus OF-based only. Registers the bus
-   when "mdio" child node is defined.
-   - mdio_np = of_get_child_by_name(dev->dev->of_node, "mdio");
-     if (!mdio_np)
-       return 0;
-     ds->slave_mii_bus = bus;
-
-What to do:
-- Document "mdio".
-- Enforce phylink bindings for user ports if "mdio" is defined.
-
----
-
-- hirschmann,hellcreek.yaml
-   - hirschmann,hellcreek-de1soc-r1
-
-drivers/net/dsa/hirschmann/hellcreek.c:
-- The DSA subdriver won't let the DSA driver register the bus.
-   - No ds->ops->phy_read() or ds->ops->phy_write().
-
-What to do:
-- Enforce phylink bindings for user ports.
-
----
-
-- mediatek,mt7530.yaml
-   - mediatek,mt7530
-   - mediatek,mt7531
-   - mediatek,mt7621
-   - mediatek,mt7988-switch
-
-drivers/net/dsa/mt7530.c:
-- The DSA subdriver won't let the DSA driver register the bus.
-   - No ds->ops->phy_read() or ds->ops->phy_write().
-- Registers the bus non-OF-based or OF-based. Registers OF-based if "mdio"
-   child node is defined. (This is after the patch for the MT7530 DSA
-   subdriver is applied.)
-
-What to do:
-- Document "mdio".
-- Enforce phylink bindings for user ports if "mdio" is defined.
-
----
-
-- brcm,sf2.yaml
-   - brcm,bcm4908-switch
-   - brcm,bcm7278-switch-v4.0
-   - brcm,bcm7278-switch-v4.8
-   - brcm,bcm7445-switch-v4.0
-
-drivers/net/dsa/bcm_sf2.c:
-- The DSA subdriver won't let the DSA driver register the bus.
-   - No ds->ops->phy_read() or ds->ops->phy_write().
-- Requires MDIO_BCM_UNIMAC, a driver utilising the Linux MDIO
-   infrastructure to register a bus.
-   - dn = of_find_compatible_node(NULL, NULL, "brcm,unimac-mdio");
-     priv->master_mii_bus = of_mdio_find_bus(dn);
-     if (!priv->master_mii_bus) {
-       of_node_put(dn);
-       return -EPROBE_DEFER;
-     }
-
-What to do:
-- Enforce phylink bindings for user ports.
-
----
-
-- brcm,b53.yaml
-   - brcm,bcm5325
-   - brcm,bcm53115
-   - brcm,bcm53125
-   - brcm,bcm53128
-   - brcm,bcm53134
-   - brcm,bcm5365
-   - brcm,bcm5395
-   - brcm,bcm5389
-   - brcm,bcm5397
-   - brcm,bcm5398
-   - brcm,bcm11360-srab, brcm,cygnus-srab
-   - brcm,bcm53010-srab, brcm,bcm5301x-srab
-   - brcm,bcm53011-srab, brcm,bcm5301x-srab
-   - brcm,bcm53012-srab, brcm,bcm5301x-srab
-   - brcm,bcm53018-srab, brcm,bcm5301x-srab
-   - brcm,bcm53019-srab, brcm,bcm5301x-srab
-   - brcm,bcm11404-srab, brcm,omega-srab
-   - brcm,bcm11407-srab, brcm,omega-srab
-   - brcm,bcm11409-srab, brcm,omega-srab
-   - brcm,bcm58310-srab, brcm,omega-srab
-   - brcm,bcm58311-srab, brcm,omega-srab
-   - brcm,bcm58313-srab, brcm,omega-srab
-   - brcm,bcm58522-srab, brcm,nsp-srab
-   - brcm,bcm58523-srab, brcm,nsp-srab
-   - brcm,bcm58525-srab, brcm,nsp-srab
-   - brcm,bcm58622-srab, brcm,nsp-srab
-   - brcm,bcm58623-srab, brcm,nsp-srab
-   - brcm,bcm58625-srab, brcm,nsp-srab
-   - brcm,bcm88312-srab, brcm,nsp-srab
-   - brcm,bcm3384-switch, brcm,bcm63xx-switch
-   - brcm,bcm6318-switch, brcm,bcm63xx-switch
-   - brcm,bcm6328-switch, brcm,bcm63xx-switch
-   - brcm,bcm6362-switch, brcm,bcm63xx-switch
-   - brcm,bcm6368-switch, brcm,bcm63xx-switch
-   - brcm,bcm63268-switch, brcm,bcm63xx-switch
-
-drivers/net/dsa/b53/b53_common.c:
-- The DSA subdriver lets the DSA driver register the bus.
-
-What to do:
-- Document "mdio".
-- Enforce phylink bindings for user ports if "mdio" is defined.
-
----
-
-- arrow,xrs700x.yaml
-   - arrow,xrs7003e
-   - arrow,xrs7003f
-   - arrow,xrs7004e
-   - arrow,xrs7004f
-
-drivers/net/dsa/xrs700x/xrs700x.c:
-- The DSA subdriver won't let the DSA driver register the bus.
-   - No ds->ops->phy_read() or ds->ops->phy_write().
-
-What to do:
-- Enforce phylink bindings for user ports.
-
----
-
-Text documents. I will handle these when I replace them with json-schema
-documents.
-
-- ar9331.txt
-   - qca,ar9331-switch
-
-drivers/net/dsa/qca/ar9331.c:
-- The DSA subdriver won't let the DSA driver register the bus.
-   - No ds->ops->phy_read() or ds->ops->phy_write().
-- Registers the bus OF-based only. Registering the bus is mandatory.
-   Registers the bus when "mdio" child node is defined.
-   - mnp = of_get_child_by_name(np, "mdio");
-     if (!mnp)
-       return -ENODEV;
-
-What to do:
-- Document "mdio".
-   - Require "mdio".
-- Enforce phylink bindings for user ports.
-
----
-
-- lan9303.txt
-   - smsc,lan9303-i2c
-   - smsc,lan9303-mdio
-
-drivers/net/dsa/lan9303-core.c:
-- The DSA subdriver lets the DSA driver register the bus.
-
-What to do:
-- Document "mdio".
-- Enforce phylink bindings for user ports if "mdio" is defined.
-
----
-
-- lantiq-gswip.txt
-   - lantiq,xrx200-gswip
-   - lantiq,xrx300-gswip
-   - lantiq,xrx330-gswip
-
-drivers/net/dsa/lantiq_gswip.c:
-- The DSA subdriver won't let the DSA driver register the bus.
-   - No ds->ops->phy_read() or ds->ops->phy_write().
-- Registers the bus OF-based only. Registers the bus when compatible string
-   "lantiq,xrx200-mdio" on a child node is defined.
-   - mdio_np = of_get_compatible_child(dev->of_node, "lantiq,xrx200-mdio");
-     if (mdio_np)
-       err = gswip_mdio(priv, mdio_np);
-
-What to do:
-- Document "mdio".
-- Document compatible string "realtek,smi-mdio" on "mdio" child node.
-   - Require compatible.
-- Enforce phylink bindings for user ports.
-
----
-
-- marvell.txt
-   - marvell,mv88e6085
-   - marvell,mv88e6190
-   - marvell,mv88e6250
-
-drivers/net/dsa/mv88e6xxx/chip.c:
-- The DSA subdriver won't let the DSA driver register the bus.
-   - ds->slave_mii_bus = mv88e6xxx_default_mdio_bus(chip);
-- Registers the bus non-OF-based or OF-based. Registers OF-based if "mdio"
-   child node is defined.
-
-What to do:
-- Document "mdio".
-- Enforce phylink bindings for user ports if "mdio" is defined.
-
----
-
-- vitesse,vsc73xx.txt
-   - vitesse,vsc7385
-   - vitesse,vsc7388
-   - vitesse,vsc7395
-   - vitesse,vsc7398
-
-drivers/net/dsa/vitesse-vsc73xx-core.c:
-- The DSA subdriver lets the DSA driver register the bus.
-
-What to do:
-- Document "mdio".
-- Enforce phylink bindings for user ports if "mdio" is defined.
-
-Arınç
 
