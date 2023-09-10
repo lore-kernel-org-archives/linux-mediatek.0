@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0BFBEE57CD
-	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Sep 2023 14:47:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCA86EE49A4
+	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Sep 2023 18:00:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=upj9gRFNw/+gQMsDIcqrH0UsVrNE0TGcbGvOH8q4EKU=; b=zINORbmmboudGKXbOaCPq25TWV
-	1n00jBGzS26CC2WouPiy5LM0TpCn0ynkq116sV5sN0cBabijhmanbd9Ab+p26hKRif9t7AEpGWMpM
-	s8db/jwytL5+8B+jx/2GvQe9usNbmsVI5jwpgH9gWMVY9xzXHmH0fj0UneqBYHjtdXwlz2zzXh1vv
-	Lfl4lAZ8b1tGCQqpKRkTqiMD8vZJrweKGktk2yxZ/Ba/pO4wjdqRpzlYBjmABqbzY8j1GzZ/fuxKK
-	Q8ewrjyjEz55ivw86/mMca6zo/ncbV+iWXSAhwNQsiEwlQnNe4zfjd1xLVBOu62O2YrcW39nnQ0f/
-	9poUl5iw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UDCAj2yppIFdywj5lD7BbXiNjTCKcAO2uX6tq2atsSU=; b=HIFex22lrT2bJgEw+oankb4CTg
+	4spW/6DzGXu8dCpS6P/LpnX+SQacUdESeruVlQbG8bv5bgTspL6tobM01OyF/RrjdioDHlvs1pDV3
+	5du89ogD+C4dSLdiOciWPxlFv6RUlYyDVXcZoi8EtC1qcywfsQitaRfA5JsmRr1L2ZTkES7RumVPa
+	4RNPAIjtB5bv73uuXVeWaNZclmMPTgmkBVXcfD/sISVh13BCc7WbeaNzg5Ozf+lPcJYwXEGnzFi9N
+	zEfrDtsOMHfLGRBiPq0A6/LhnoBo73ANwftk1n17qUVU6MCDZGoivs0DlxJVKjuU16WubCYvmpuUc
+	A61NAoBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfLix-00Gg5T-37;
-	Sun, 10 Sep 2023 14:47:43 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qfOjb-00GnnZ-0f;
+	Sun, 10 Sep 2023 18:00:35 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfLiu-00Gg4E-2P;
-	Sun, 10 Sep 2023 14:47:42 +0000
+	id 1qfOjS-00Gnld-2G;
+	Sun, 10 Sep 2023 18:00:28 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id B52EFCE0B68;
-	Sun, 10 Sep 2023 14:47:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EDCBAC433C7;
-	Sun, 10 Sep 2023 14:47:30 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 55F8FB80CA9;
+	Sun, 10 Sep 2023 18:00:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id D277FC433C8;
+	Sun, 10 Sep 2023 18:00:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694357254;
-	bh=NErVm+qMXZ/pqK2rnbYhPDdyFVVpqvEVZyCXf/EFVGY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ubxVCTCKav+V51WDKuTtO0EDuxSfsqy9sKFT5Af++H1Fh3Z9uIHtsZLcAFgogb2DW
-	 kLN62joKoSscCalyAHAP1XhN7GoOyat3h480sycZQEab/1X+UtB3OMRPlouXDt99ZN
-	 7MYBaeQpinURBCB7NUKIK7Wb3DjSxBSK+Sl0SxDkZUQeRxSJV3X9b17qZkqFP+xdn4
-	 0KQrhvL8fzq6mcEPAGZCkT+dwy+F/FxAA2a3/FqpTQ1SU0P0JGO8gB7iXPKcJS0L6b
-	 GYiMhnyyct6+GQ+oHPRMrxdM6YZ2kNDAtY4w6cPoFKpA2voqNJP7VcCSiBe8+Q0ISf
-	 Fy3sv/BaB1Bug==
-Date: Sun, 10 Sep 2023 16:47:28 +0200
-From: Simon Horman <horms@kernel.org>
-To: Hangyu Hua <hbh25y@gmail.com>
-Cc: justin.chen@broadcom.com, florian.fainelli@broadcom.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, mw@semihalf.com, linux@armlinux.org.uk,
-	nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com, lorenzo@kernel.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	maxime.chevallier@bootlin.com, nelson.chang@mediatek.com,
-	bcm-kernel-feedback-list@broadcom.com, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 3/3] net: ethernet: mtk_eth_soc: fix possible NULL
- pointer dereference in mtk_hwlro_get_fdir_all()
-Message-ID: <20230910144728.GF775887@kernel.org>
-References: <20230908061950.20287-1-hbh25y@gmail.com>
- <20230908061950.20287-4-hbh25y@gmail.com>
+	s=k20201202; t=1694368821;
+	bh=7pMVydPneVg3URKXwfaH+adzpHN2LLjVZsTSGuRN/Dc=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=WNCcNX0j78tRLBxMWD5xHUNdVWsV4X1c4GJprcT9133xluNlViXTJ+y1MbbMmvw4S
+	 9l6p0mwmq1ciXkoHmtsYyK8lFvb1p3EVodnEbrR25eIRn+6jRHWBjTxm2wzjyRS6Mh
+	 /jvEouU2JwW8Gm/EnKA/L+ncaZS7ANxE1SqxSdP9VAlRZQQbAQGSZNr44Pfjzomk2O
+	 YmugA3EJ+2/4ZTwGg7O1MhyTBgt+SEpxLAiqRaqU5NrZ9WSluxkkNsOvrlaLWdV7jR
+	 voEyBX1vKb3bWRjPhlJDd4v26hqNBBRPVghPsTewXgHu/u+K2aUEWjjrhAgY/J0FrG
+	 nZp7NWsEXqO2w==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id B8F74F1D6A8;
+	Sun, 10 Sep 2023 18:00:21 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230908061950.20287-4-hbh25y@gmail.com>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH 00/11] add missing of_node_put
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <169436882175.20878.16500068409286410519.git-patchwork-notify@kernel.org>
+Date: Sun, 10 Sep 2023 18:00:21 +0000
+References: <20230907095521.14053-1-Julia.Lawall@inria.fr>
+In-Reply-To: <20230907095521.14053-1-Julia.Lawall@inria.fr>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: alsa-devel@alsa-project.org, kernel-janitors@vger.kernel.org,
+ rui.zhang@intel.com, amitk@kernel.org, linux-pm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+ bcm-kernel-feedback-list@broadcom.com, linux-kernel@vger.kernel.org,
+ npiggin@gmail.com, christophe.leroy@csgroup.eu,
+ linuxppc-dev@lists.ozlabs.org, linux-mmc@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230910_074740_968923_C8B59EB6 
-X-CRM114-Status: UNSURE (   8.93  )
+X-CRM114-CacheID: sfid-20230910_110026_901109_30651591 
+X-CRM114-Status: UNSURE (   9.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,14 +83,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 08, 2023 at 02:19:50PM +0800, Hangyu Hua wrote:
-> rule_locs is allocated in ethtool_get_rxnfc and the size is determined by
-> rule_cnt from user space. So rule_cnt needs to be check before using
-> rule_locs to avoid NULL pointer dereference.
-> 
-> Fixes: 7aab747e5563 ("net: ethernet: mediatek: add ethtool functions to configure RX flows of HW LRO")
-> Signed-off-by: Hangyu Hua <hbh25y@gmail.com>
+Hello:
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+This patch was applied to netdev/net.git (main)
+by David S. Miller <davem@davemloft.net>:
+
+On Thu,  7 Sep 2023 11:55:10 +0200 you wrote:
+> Add of_node_put on a break out of an of_node loop.
+> 
+> ---
+> 
+>  arch/powerpc/kexec/file_load_64.c                    |    8 ++++++--
+>  arch/powerpc/platforms/powermac/low_i2c.c            |    4 +++-
+>  arch/powerpc/platforms/powermac/smp.c                |    4 +++-
+>  drivers/bus/arm-cci.c                                |    4 +++-
+>  drivers/genpd/ti/ti_sci_pm_domains.c                 |    8 ++++++--
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c      |    4 +++-
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c               |    4 +++-
+>  drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c |    1 +
+>  drivers/mmc/host/atmel-mci.c                         |    8 ++++++--
+>  drivers/net/ethernet/broadcom/asp2/bcmasp.c          |    1 +
+>  drivers/soc/dove/pmu.c                               |    5 ++++-
+>  drivers/thermal/thermal_of.c                         |    8 ++++++--
+>  sound/soc/sh/rcar/core.c                             |    1 +
+>  13 files changed, 46 insertions(+), 14 deletions(-)
+
+Here is the summary with links:
+  - [02/11] net: bcmasp: add missing of_node_put
+    https://git.kernel.org/netdev/net/c/e73d1ab6cd7e
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
