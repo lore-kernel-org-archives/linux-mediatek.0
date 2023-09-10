@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0119EE57CD
-	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Sep 2023 12:23:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C7A7EE14D8
+	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Sep 2023 12:24:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dtivxyAoLfOdIaql3lkH6mw4eV2VKkW5u2UcK5oSezE=; b=e4/YL0qTSlspa595jvgMYJhUtP
-	UC9z5mexAnLI/z3R8dG+0w5siImWN0HgyO8MYsElO6/fZfTY+krpAwuWm8rqWYGFoBH+34f3FkCTe
-	BiPvxMklczp0e6SG8jciUYbqWY1ae+bKukI4wrt4ebR2/4S9df+juDtPYbNYKLKTAAExxXxoymin9
-	iu59x5VkSK/tyrY3TNQLPq7n/Cpt1U6Kt6QG4oKWj5xUX2oxyZ9ywtcBkjBQOaKZQ28VtVPQfydvp
-	9fbIfCN7A6MuMeTdZrMrChybC+kLYRauN1yFAqLrGkp75wkV/WBRBziemW8qtZEJ+gdP0wBazWaEC
-	NdF6DaGQ==;
+	bh=HMpVJ454uPlZTvlRX4fWTyz2OmLzmxlOKMXBJfIqcVI=; b=FvwNxK0Ah8cuxMKkbN4r5WSmiU
+	Ss8V134zOrYxMU/OwO1rLHqkWXnGpWoT6fwWwGQ98UlG73F4H+yb5AXfudroyPw0YlbcFAMY/NNwz
+	CBaLfmJpd8wwe+4m3720Pnggse9tMv+A4sF6LPLML+D3D2kawtbXgZe3QaicavVEMhwMdyURQ3aM9
+	M723fpHk+HjJWRhA8UA4PeYiGtD/tVxOxDcJlaaGIFBD+i1/yD1BZ+c1/ZyvT/kUG1QBx47dtcof4
+	89hqSSt3y+WYl6jDmwXL4YXusrdyxmHaoyUaDSLFJ2S75YRorJ4lStBBzZG4bysuJvSAU9aYNSnn+
+	dm/Z9tfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfJTP-00GaM4-1K;
-	Sun, 10 Sep 2023 12:23:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qfJU0-00GaPi-0Z;
+	Sun, 10 Sep 2023 12:24:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfJTM-00GaLg-0D;
-	Sun, 10 Sep 2023 12:23:30 +0000
-X-UUID: d42292e44fd411ee86758d4a7c00f3a0-20230910
+	id 1qfJTx-00GaP5-1y;
+	Sun, 10 Sep 2023 12:24:06 +0000
+X-UUID: eaf2618e4fd411ee9b7791016c24628a-20230910
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=dtivxyAoLfOdIaql3lkH6mw4eV2VKkW5u2UcK5oSezE=;
-	b=n5lEap7Kidcc8CxprSigzlWcTplZ2YaWLAhJDZYWu7bO4ZEyD5s+QvUijJXn4SRJJdy7vjULwwQO3jtv98V1+XSDrTKlD5Rg6jnD+cb2XZP+KBRCvreDMv1fR68A0W6sSIwtYXC3tfiWRIUYc1j/jwkyyevFvMZrAyT/AzoZUrU=;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=HMpVJ454uPlZTvlRX4fWTyz2OmLzmxlOKMXBJfIqcVI=;
+	b=grh9xJMYeILidAvBCX8ml2n8w812XFqJoILbo92DSxyKBlQSQfGgIYAmF8m3YSnSxFOrhYEn8RDehIBxYxIHmNzJDczBA3yitQySPbCkTVGpkFBK3VNrEHLSJO9quiLoAxRE5Upu9r9D8OJ9Ne4eeklTUitOQZxT2KfK6bQRc0s=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:eb677e38-7de4-492d-82e2-a9c2c619c41c,IP:0,U
+X-CID-O-INFO: VERSION:1.1.31,REQID:86f302cd-2730-499c-8b2e-384c65619d97,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:d64585ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
+X-CID-META: VersionHash:0ad78a4,CLOUDID:85a5d9c2-1e57-4345-9d31-31ad9818b39f,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: d42292e44fd411ee86758d4a7c00f3a0-20230910
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: eaf2618e4fd411ee9b7791016c24628a-20230910
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 687826571; Sun, 10 Sep 2023 05:23:20 -0700
+	with ESMTP id 344387571; Sun, 10 Sep 2023 05:23:58 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sun, 10 Sep 2023 20:22:42 +0800
+ 15.2.1118.26; Sun, 10 Sep 2023 20:23:24 +0800
 Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Sun, 10 Sep 2023 20:22:40 +0800
-Message-ID: <3d5074ab-1348-1be8-0336-abb99a83a954@mediatek.com>
-Date: Sun, 10 Sep 2023 20:22:38 +0800
+ Transport; Sun, 10 Sep 2023 20:23:23 +0800
+Message-ID: <946ee1c5-77af-3ce0-83ba-2966fab70a5f@mediatek.com>
+Date: Sun, 10 Sep 2023 20:23:22 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.1
@@ -89,10 +89,10 @@ X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
 X-TMASE-Result: 10--12.220100-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 5986BE42600B57F0903C511FE565CBE65C01D1CA80E18139D9C6138905BF66CA2000:8
+X-TM-SNTS-SMTP: BEA4A4BF9BF76BEE6291E5F26C3C9287B66F30CD3BE3AC75CAF41FCF9EBAD52C2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230910_052328_126535_31749024 
-X-CRM114-Status: GOOD (  16.47  )
+X-CRM114-CacheID: sfid-20230910_052405_652808_4F29785B 
+X-CRM114-Status: GOOD (  15.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,7 +140,7 @@ The explanation is here. The version v4 and v5 are the same.
 For sending v5 is because "Patch v5 2/2" has been updated and these 2 
 patches were in the same patch set. I think to update the whole patch 
 set together with a single modified patch should be a usual operation.
-Did I missing anything?
+Did I miss anything?
 
 > Confusing. You just sent a patch changing the same hunk - adding
 > description, without any explanation.
