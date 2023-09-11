@@ -4,77 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F6B6EE7FF4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 12:39:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEA38EE7FF4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 12:51:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R9Bubcc7cmdDFLG9WteD5OYU4srO2bDqxu1Z3y8AK7Q=; b=oLdt9668RhQB8npxKUdtvutn9R
-	kBgOh/fyNHN4BaKw9BI8yui7InM/am/ohm3TpI3IvHb1+E8HdUb7Pzm2Ng1bZdrxqUKgSKTCyADxJ
-	SXevvK+NmqX83X96LstwWtzkVNvtFRQrWZvkcJ9lQwohUsDeHado9l+UsLUTy6s0GcKLy5XMnIYv/
-	8wn77GHoZ58P9oS3OBnziy5uuN2Ghar941EiCDCdcADm0zxnWT/P9SlZv6vh4r598CyfZz8v9fYZs
-	CA6AiL7aFnw4O9jr6gKOg3Dhi2rb2VGaYIggREnERUjH9iGw7dSzLIQNjC8NKWPK7Bng5srQQKAgR
-	8e/6dpww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9DJeaj3B139313EIsW2RLAfPQHEz2WLHa8uXitypr/w=; b=DaaJNmiMN6mZJe64HS7T+mWfyr
+	PWZe0Ahw55//Qypmxv7eHzhUpqhJB/oAAYyEyMCcbMtlpVLoUNvO5ZVynxBKVQu8nicCJ5vds0jgb
+	CehIVZ6/n/tCSE42v00Wb117xdLO1y8N5I9cORrGjqxtDXZ8F0yUF7Lq9mW7uYm97i+lM0mz0jeDt
+	NXjT1UIU+IX8zXDPHVxGLH7XiEr7k5vgnI5QSQLwXsbSHXWuZH/yqw5c6Jd9GiPjvqnquh2AwaNjs
+	6iUz+K+7q8MaBNMyyXUZCkAZx88b4Iiyc0CN8ARLcoBjyrdAXHTlI2s2F99IQscR2M+ISX/QFEh3Y
+	qTxt/I+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfgCC-000VBv-2r;
-	Mon, 11 Sep 2023 12:39:16 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qfgO6-000WCb-1G;
+	Mon, 11 Sep 2023 12:51:34 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfgC9-000VAi-28
-	for linux-mediatek@lists.infradead.org;
-	Mon, 11 Sep 2023 12:39:15 +0000
-Received: from [192.168.1.23] (unknown [171.76.82.102])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1qfgO2-000WBg-2U;
+	Mon, 11 Sep 2023 12:51:32 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7697366072FE;
-	Mon, 11 Sep 2023 13:39:01 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694435947;
-	bh=MvnxIayMmPEsq2MzqcxVyvlilHrYAvXUGbuaSX/LxBs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LZ1l9Qf8rixIpz+94pqn/E7NIehaqLf/Jh8WJCYZmTcCqgTQa2ONJuqnA67jpdhKT
-	 X21KmOmasjXROM25ITuqounnLMzzSCjVDiqgkRV15kt1le7Q9n+vNhRFom03J7M9Zl
-	 dez0ecWl/mjrXet7A1BYTCEJOzEqwiiN/nTjyI6asZvlUm/uQIxpTaiZ5ofEePomjR
-	 +WL4/ZD/aGiRPfDFYvuWIeQ60STYhgwtQo/TZTdpNn6vdUJmPVUoilr+Wjx/dnSWng
-	 vV844qIYFJT5iAViLP2AG/G58VNVknnvHlDgnJQ6FRYCESGBwRdR1iSZJqVm7+wFf/
-	 YTI7qV/10AamQ==
-Message-ID: <ca518c28-1375-9eaf-ffd4-bedf06810000@collabora.com>
-Date: Mon, 11 Sep 2023 18:08:57 +0530
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E577A6111F;
+	Mon, 11 Sep 2023 12:51:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3D13C433C7;
+	Mon, 11 Sep 2023 12:51:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1694436689;
+	bh=9DJeaj3B139313EIsW2RLAfPQHEz2WLHa8uXitypr/w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=pAr1OVlxK3PK3lgFjYkEFyAMnXJtexo8o2qubI2+kyk/WaVpal4z6T51Lq/q07Vm9
+	 CRciu4DEBqykxIj29fOzrGP2ezcZCuL0qKaiUZM7XUWqWk4qZzwJVPzN99+zrpRhKZ
+	 GjIXkoec18XEpFUKlkkTgbPsyICHBj3I8ndB65TzJ5hz74Kk87RG8+CaBu49nnxomD
+	 g+UsNIahsB2TsRons4G5PefjXM5rWE2ERYPYOIiIQ72vf+YkKfKgv83y/h5VTpv/U5
+	 z7904mm8BI1xnahWWiMHvrYWRxBhpBTuPvgciMTeL7AW5r8utuyzilNz8rmbMgldQM
+	 LenC8lkXUuHaQ==
+Date: Mon, 11 Sep 2023 14:51:26 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Michel =?utf-8?Q?D=C3=A4nzer?= <michel.daenzer@mailbox.org>
+Cc: Daniel Stone <daniels@collabora.com>, emma@anholt.net, 
+	linux-doc@vger.kernel.org, vignesh.raman@collabora.com, dri-devel@lists.freedesktop.org, 
+	alyssa@rosenzweig.io, jbrunet@baylibre.com, robdclark@google.com, corbet@lwn.net, 
+	khilman@baylibre.com, sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com, 
+	linux-rockchip@lists.infradead.org, tzimmermann@suse.de, martin.blumenstingl@googlemail.com, 
+	robclark@freedesktop.org, Helen Koike <helen.koike@collabora.com>, anholt@google.com, 
+	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org, 
+	gustavo.padovan@collabora.com, linux-arm-kernel@lists.infradead.org, 
+	angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org, guilherme.gallo@collabora.com, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
+Message-ID: <5ejq3hjpoy3gxft2jbmoa5m656usetuxcs7g3ezyyiitj67rav@r5jhdz27foat>
+References: <zorvxwffshrsqx5cy76pe3gn52qrqav7qusz5acav2un2ydvwr@fwjd56qg2xve>
+ <87bkeo23vs.fsf@intel.com>
+ <4rpsqk4tgrdcxtxtfoum6o4oyglwkirmkh3jj4y5tays2ivb5p@uwqdf3snshkv>
+ <25df6189-7b0a-b13d-e93d-c2a388fd45e3@collabora.com>
+ <zmq7pz7rtz6h765azg5kl2qgjd264yafctx4q474t5tqai57og@cajbcub4yuwr>
+ <5fdf9d29-3f8d-0ee0-027f-57ff3a5cecb8@collabora.com>
+ <CAKMK7uGg6n322UugJwErqF_Dvsbqceqae6SVWV3ZWEOR7x36rQ@mail.gmail.com>
+ <9a2b1ad8-4359-4f12-b4f9-c1de477bc440@collabora.com>
+ <mnjcsiqjqdnvbbkaaz5r4n42e56qsax667r7radzyagnmmfkip@dfi64z5deqzj>
+ <b7d96985-8489-efe2-db67-1f3108e26822@mailbox.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v3 2/9] arm64: dts: qcom: apq8016-sbc: Add overlay for usb
- host mode
-Content-Language: en-US
-To: Konrad Dybcio <konrad.dybcio@linaro.org>, dri-devel@lists.freedesktop.org
-Cc: helen.koike@collabora.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com,
- daniels@collabora.com, gustavo.padovan@collabora.com,
- angelogioacchino.delregno@collabora.com, emma@anholt.net,
- robclark@freedesktop.org, robdclark@google.com, anholt@google.com,
- robdclark@gmail.com, airlied@gmail.com, daniel@ffwll.ch,
- jani.nikula@linux.intel.com, mripard@kernel.org,
- dmitry.baryshkov@linaro.org, matthias.bgg@gmail.com, agross@kernel.org,
- andersson@kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- conor+dt@kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- virtualization@lists.linux-foundation.org, linux-arm-msm@vger.kernel.org
-References: <20230908152225.432139-1-vignesh.raman@collabora.com>
- <20230908152225.432139-3-vignesh.raman@collabora.com>
- <ca53e4cd-1c89-482d-9662-19926efb5b47@linaro.org>
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <ca53e4cd-1c89-482d-9662-19926efb5b47@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="5ilbap4gkrsqltiz"
+Content-Disposition: inline
+In-Reply-To: <b7d96985-8489-efe2-db67-1f3108e26822@mailbox.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_053913_826902_3E968D91 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20230911_055130_896943_300FA38C 
+X-CRM114-Status: GOOD (  68.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,36 +91,195 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Konrad,
 
-On 11/09/23 17:20, Konrad Dybcio wrote:
-> On 8.09.2023 17:22, Vignesh Raman wrote:
->> Due to the presence of the fastboot micro cable in the CI farm,
->> it causes the hardware to remain in gadget mode instead of host mode.
->> So it doesn't find the network, which results in failure to mount root
->> fs via NFS.
->>
->> Add an overlay dtso file that sets the dr_mode to host, allowing
->> the USB controllers to work in host mode. This dtso file will be used
->> in drm-ci, mesa-ci.
->>
->> Overlay DT file uses the sugar syntax [suggested by Dmitry Baryshkov and Maxime Ripard]
->>
->> Suggested-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
->> Suggested-by: Maxime Ripard <mripard@kernel.org>
->> Signed-off-by: Helen Koike <helen.koike@collabora.com>
->> Signed-off-by: David Heidelberg <david.heidelberg@collabora.com>
->> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
->> ---
-> For such a small change, maybe you can just use sed in your
-> scripts to alter this?
+--5ilbap4gkrsqltiz
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-This was the initial idea 
-https://patchwork.kernel.org/project/linux-mediatek/patch/20230825122435.316272-3-vignesh.raman@collabora.com/
+On Mon, Sep 11, 2023 at 02:13:43PM +0200, Michel D=E4nzer wrote:
+> On 9/11/23 11:34, Maxime Ripard wrote:
+> > On Thu, Sep 07, 2023 at 01:40:02PM +0200, Daniel Stone wrote:
+> >> Yeah, this is what our experience with Mesa (in particular) has taught=
+ us.
+> >>
+> >> Having 100% of the tests pass 100% of the time on 100% of the platform=
+s is a
+> >> great goal that everyone should aim for. But it will also never happen.
+> >>
+> >> Firstly, we're just not there yet today. Every single GPU-side DRM dri=
+ver
+> >> has userspace-triggerable faults which cause occasional errors in GL/V=
+ulkan
+> >> tests. Every single one. We deal with these in Mesa by retrying; if we
+> >> didn't retry, across the breadth of hardware we test, I'd expect 99% of
+> >> should-succeed merges to fail because of these intermittent bugs in th=
+e DRM
+> >> drivers.
+> >=20
+> > So the plan is only to ever test rendering devices? It should have been
+> > made clearer then.
+> >=20
+> >> We don't have the same figure for KMS - because we don't test it - but
+> >> I'd be willing to bet no driver is 100% if you run tests often enough.
+> >=20
+> > And I would still consider that a bug that we ought to fix, and
+> > certainly not something we should sweep under the rug. If half the tests
+> > are not running on a driver, then fine, they aren't. I'm not really
+> > against having failing tests, I'm against not flagging unreliable tests
+> > on a given hardware as failing tests.
+>=20
+> A flaky test will by definition give a "pass" result at least some of the=
+ time, which would be considered a failure by the CI if the test is marked =
+as failing.
+>=20
+>=20
+> >> Secondly, we will never be there. If we could pause for five years and=
+ sit
+> >> down making all the current usecases for all the current hardware on t=
+he
+> >> current kernel run perfectly, we'd probably get there. But we can't: t=
+here's
+> >> new hardware, new userspace, and hundreds of new kernel trees.
+> >=20
+> > Not with that attitude :)
+>=20
+> Attitude is not the issue, the complexity of the multiple systems
+> involved is.
 
-Since there was a review comment that CI should not make changes to the 
-source tree before building, we went with DT overlay.
+FTR, that was a meme/joke.
 
-Regards,
-Vignesh
+> > I'm not sure it's actually an argument, really. 10 years ago, we would
+> > never have been at "every GPU on the market has an open-source driver"
+> > here. 5 years ago, we would never have been at this-series-here. That
+> > didn't stop anyone making progress, everyone involved in that thread
+> > included.
+>=20
+> Even assuming perfection is achievable at all (which is very doubtful,
+> given the experience from the last few years of CI in Mesa and other
+> projects), if you demand perfection before even taking the first step,
+> it will never get off the ground.
+
+Perfection and scale from the get-go isn't reasonable, yes. Building a
+small, "perfect" (your words, not mine) system that you can later expand
+is doable. And that's very much a design choice.
+
+> > How are we even supposed to detect those failures in the first
+> > place if tests are flagged as unreliable?
+>=20
+> Based on experience with Mesa, only a relatively small minority of
+> tests should need to be marked as flaky / not run at all. The majority
+> of tests are reliable and can catch regressions even while some tests
+> are not yet.
+
+I understand and acknowledge that it worked with Mesa. That's great for
+Mesa. That still doesn't mean that it's the panacea and is for every
+project.
+
+> > No matter what we do here, what you describe will always happen. Like,
+> > if we do flag those tests as unreliable, what exactly prevents another
+> > issue to come on top undetected, and what will happen when we re-enable
+> > testing?
+>=20
+> Any issues affecting a test will need to be fixed before (re-)enabling
+> the test for CI.
+
+If that underlying issue is never fixed, at which point do we consider
+that it's a failure and should never be re-enabled? Who has that role?
+
+> > On top of that, you kind of hinted at that yourself, but what set of
+> > tests will pass is a property linked to a single commit. Having that
+> > list within the kernel already alters that: you'll need to merge a new
+> > branch, add a bunch of fixes and then change the test list state. You
+> > won't have the same tree you originally tested (and defined the test
+> > state list for).
+>=20
+> Ideally, the test state lists should be changed in the same commits
+> which affect the test results. It'll probably take a while yet to get
+> there for the kernel.
+>=20
+> > It might or might not be an issue for Linus' release, but I can
+> > definitely see the trouble already for stable releases where fixes will
+> > be backported, but the test state list certainly won't be updated.
+>=20
+> If the stable branch maintainers want to take advantage of CI for the
+> stable branches, they may need to hunt for corresponding state list
+> commits sometimes. They'll need to take that into account for their
+> decision.
+
+So we just expect the stable maintainers to track each and every patches
+involved in a test run, make sure that they are in a stable tree, and
+then update the test list? Without having consulted them at all?
+
+> >> By keeping those sets of expectations, we've been able to keep Mesa pr=
+etty
+> >> clear of regressions, whilst having a very clear set of things that sh=
+ould
+> >> be fixed to point to. It would be great if those set of things were ze=
+ro,
+> >> but it just isn't. Having that is far better than the two alternatives:
+> >> either not testing at all (obviously bad), or having the test always b=
+e red
+> >> so it's always ignored (might as well just not test).
+> >=20
+> > Isn't that what happens with flaky tests anyway?
+>=20
+> For a small minority of tests. Daniel was referring to whole test suites.
+>=20
+> > Even more so since we have 0 context when updating that list.
+>=20
+> The commit log can provide whatever context is needed.
+
+Sure, I've yet to see that though.
+
+There's in 6.6-rc1 around 240 reported flaky tests. None of them have
+any context. That new series hads a few dozens too, without any context
+either. And there's no mention about that being a plan, or a patch
+adding a new policy for all tests going forward.
+
+So I'm still fairly doubtful it will ever happen.
+
+> > I've asked a couple of times, I'll ask again. In that other series, on
+> > the MT8173, kms_hdmi_inject@inject-4k is setup as flaky (which is a KMS
+> > test btw).
+> >=20
+> > I'm a maintainer for that part of the kernel, I'd like to look into it,
+> > because it's seriously something that shouldn't fail, ever, the hardware
+> > isn't involved.
+> >=20
+> > How can I figure out now (or worse, let's say in a year) how to
+> > reproduce it? What kernel version was affected? With what board? After
+> > how many occurences?
+> >=20
+> > Basically, how can I see that the bug is indeed there (or got fixed
+> > since), and how to start fixing it?
+>=20
+> Many of those things should be documented in the commit log of the
+> state list change.
+>=20
+> How the CI works in general should be documented in some appropriate
+> place in tree.
+
+I think I'll stop the discussion there. It was merged anyway so I'm not
+quite sure why I was asked to give my feedback on this. Any concern I
+raised were met with a giant "it worked on Mesa" handwave or "someone
+will probably work on it at some point".
+
+And fine, guess I'm wrong.
+
+Thanks
+Maxime
+
+--5ilbap4gkrsqltiz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZP8NTgAKCRDj7w1vZxhR
+xUbwAP9xYajr1SxGqefYgkw1nJmhEpNrjvSqTUadaIowcFfU3QEAgaTNSIYR6g6D
+U5DBLLVerPzwDKnQS9sCtYt9xh2WWQ8=
+=4ACD
+-----END PGP SIGNATURE-----
+
+--5ilbap4gkrsqltiz--
 
