@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44295EE57DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 11:02:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7118EE57DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 11:02:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6D6uZQx0A7zu9HZThgkhNF6gppfDzg14ZGsi8FUaY4Q=; b=P/eaFeS07M6+iCR+DxFJWG69k2
-	peqGXb5nH6pz78yTr6GAP8O9NzGW98Pk4m1URLEurXonytAREAjFCfGsCHddTKyz8L4fP8e8e9haG
-	8HOjQzXpyvmQc9dY9JsetfUDIdjCWBIccVhiSH5npcBqPOaZOU+oqRiJLrdQBUrvLbiiMP9FbPwEF
-	AfB8uqybFdsDuYKQ+2pOGWsVe9uzp7M6tzuzBNnuKu5PkbEdYRjlQ+TnuXG2zSEIzqEto13PY3qG7
-	KqUkhtvZpIit66vGHbAOvzaji62VjGZaTeSfZWHqLuvDCRbYFDRS4b86Bj4U91RgFmm/U0lfYSvDW
-	IJmf6jqQ==;
+	bh=IeK6HQWOkE6erW/8t8XvbP/nXkU1GU8xBhJ8mesdBUw=; b=qt7/d0bPxt0xTFduVSizG6Bwiz
+	s927+IP7CBICUio5X0gz6CwWXMYaNgAfA2wauN6pCm41jR4lh0AfLiJIE/UuS8/vhsV4W+6rm7fas
+	HQ/sZaoSK5zm63+P6fJE+vqH/H/cjMQF+bfcAtH3WrCeW88dLCKPxBG3WGXr0Lh2q+MmYu4fFgymW
+	PHYSnMAhR9SyvgqqdLu9ldQm+BzqMFrlDZFyTJbAp2/UDSm6OCjSMRiULgQ99o9j0VhBnttruY5ah
+	ZHeLb0wyniXL+WtFKvWoZXm4ZRxc59fXC2w1fecIMe3gTIy3zMCd5du7h4BgcWDBROVb7oA/wqa3N
+	6Ve+ptzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfeg3-000LJe-0K;
-	Mon, 11 Sep 2023 11:01:59 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1qfegg-000LPp-1w;
+	Mon, 11 Sep 2023 11:02:38 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfefz-000LII-2r
+	id 1qfege-000LOb-1H
 	for linux-mediatek@lists.infradead.org;
-	Mon, 11 Sep 2023 11:01:57 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-5007616b756so7061728e87.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 11 Sep 2023 04:01:48 -0700 (PDT)
+	Mon, 11 Sep 2023 11:02:37 +0000
+Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-501bd6f7d11so6967932e87.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 11 Sep 2023 04:02:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1694430107; x=1695034907; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1694430152; x=1695034952; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=6D6uZQx0A7zu9HZThgkhNF6gppfDzg14ZGsi8FUaY4Q=;
-        b=NCHPU4vvyede3e1EfZr9Q+nNvS7UZ2DKEKa2DQzGTvFtbSBeMVFmYgKJgWzP6CzyVz
-         bMEvoffYrpnWYOZlY70g5oQbDdW89szCOzy1ecNPhvYeZY9UrQFDxWX3DB3qZCWcufr/
-         vGjvOO0fk4CpLZxzBsp9YbIu7xKBE5OTloqnxI1IqP3/iYXvV66xRBixyCEpH4wcbJZB
-         PFRfDETand/D6f0EgaUgLP3q80DNhULFHe0CksCME5aQomefg+E5dalTpSOe5Mki5LzF
-         zxEivrZv3sA8gwOFi3ow2sB0C4moNmVUj1rcj78W6PW/kRWYn1Uh70lvijaZvWFgGsq/
-         OYbw==
+        bh=IeK6HQWOkE6erW/8t8XvbP/nXkU1GU8xBhJ8mesdBUw=;
+        b=LpVY8uxtly3QNm9YPokJ2xn5x5kbeaXcxNBGZU3MWJIQRNfW7BidkA333dZjIGzmCv
+         QCNIhRiQvqdQM4D7JYZ9T+mRPYfesQBL/R1tlX1HRW76Kp2CQo2kLfITTkP0jMWOkrGc
+         oJQv/vBVAl2uosxUojPzOj7DCH/xuW6YFThoFmZtLy2mFX0PZUn4z59Aop2PYkp63xi/
+         3bN7oOrkX6hTTZ17h5nrQo8jBI5+E/EDVzshYhkqDDi+lvSlTn9KwzWt09XamVAprqCd
+         gY9zqCgRQhX3PzPO+AX6RpJD7b2fTXMbFfEk3EkzJSb7Pw6wWZ+jCm3jwk8MJGALjOrX
+         Uzxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694430107; x=1695034907;
+        d=1e100.net; s=20230601; t=1694430152; x=1695034952;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6D6uZQx0A7zu9HZThgkhNF6gppfDzg14ZGsi8FUaY4Q=;
-        b=geoeoav3DOmfWEShAoNOY9Lp97UQ/hBWXw159ngNqdH3CSW+7Q8nZC4dahmM0B6b5t
-         8YsShmHCJzAKvqhyTG9AilQbyj6MMnLGVfkF6rSN1p4SoHqga3GcPZ2uA9pXR/Tyul0n
-         gA/YAAjOkn3tQzKTDo4WspxH4Oj+SP2iPFQc1GEYRwJLqFcyNuy1SQ/bUtAjUdw3MkKq
-         6tuQg5kdJWZKy2Wm+WhqZmf3vbJ1rqHvEK6PTWTaGmul0CMQ0ArS236/XLgVwgrLzIrb
-         t0lGJp0dmqbfk+74IBeRgL8q8/MU5rnAEHwCPTJSpdudp9vMpiDdYLrCGBdGWBLL7DY/
-         nD3A==
-X-Gm-Message-State: AOJu0YxV6Y0cE+jMC6UqeJZeC8P8ySQe5heiFTRjPcSB2W9aptF0gnK4
-	kwDqj3zii6APU6IHzChMiMRPrQ==
-X-Google-Smtp-Source: AGHT+IGuUFRIM5BpeluBoo5NEliARLhu4KUj73ZJ5zv60HnO5TW4G54nipJsf0t1IIjq2gfhWbu1wg==
-X-Received: by 2002:a05:6512:3d1c:b0:4ff:8c9e:eb0d with SMTP id d28-20020a0565123d1c00b004ff8c9eeb0dmr9569849lfv.0.1694430107080;
-        Mon, 11 Sep 2023 04:01:47 -0700 (PDT)
+        bh=IeK6HQWOkE6erW/8t8XvbP/nXkU1GU8xBhJ8mesdBUw=;
+        b=Mt9DHLrijp1Zwg+J9V2WUiPibkuLCo8oSRyC7aaCqTmX1Q2kN1MGCKXlgnQWq9OLpp
+         kPJfNj6ZIyZKq03ca8TMwNGYVfrKEuKnvLuhFvBYiGgo7/94Bm6HSUVHt8L0BvSbDH1H
+         7VAV3NNvvYWuRro8F7y0nIC/W0kylCda3YRw16pwUA47I4R0iGoPW3izKyFMSzLGDQV7
+         Feyslt4i4IvhC0aW7YkEH3VXNg7s3DOU2lfextCbVmPuLC+5BoXcCTUlRGgHwaVNRm86
+         wvyJ+azWTYxJTZjm/dMxZemUBZFx/hJ5IcysHkcygYyJU/l6LgiLxuSAxHvzXdfuSQst
+         e/Lg==
+X-Gm-Message-State: AOJu0YyyixIDgx5uJI24MToH7HlD8O1mnUYJQgPc4p8gXBeA9U2FbvkC
+	9XmGrQ973K+4lioUWGdQ4Rg7xA==
+X-Google-Smtp-Source: AGHT+IEKKrXTCBCABNJdmP3x5+smqQBfXEnldaNpLWrHhAXFPqtMZ9mgYBI5HztaY0OQCZFgFLOtDg==
+X-Received: by 2002:ac2:5bc8:0:b0:4fe:15b5:a5f9 with SMTP id u8-20020ac25bc8000000b004fe15b5a5f9mr6933428lfn.54.1694430152499;
+        Mon, 11 Sep 2023 04:02:32 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.214.188])
-        by smtp.gmail.com with ESMTPSA id r16-20020a170906351000b0099bd86f9248sm5175514eja.63.2023.09.11.04.01.40
+        by smtp.gmail.com with ESMTPSA id pk24-20020a170906d7b800b0098d2d219649sm5250690ejb.174.2023.09.11.04.02.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 11 Sep 2023 04:01:43 -0700 (PDT)
-Message-ID: <3bb1e84f-3b65-0596-1b6b-6decb0ff53cc@linaro.org>
-Date: Mon, 11 Sep 2023 13:01:39 +0200
+        Mon, 11 Sep 2023 04:02:31 -0700 (PDT)
+Message-ID: <e833b9c1-23e3-f8ad-feec-000c053bd020@linaro.org>
+Date: Mon, 11 Sep 2023 13:02:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH v5 06/17] soc: qcom: Add Qualcomm APSS minidump kernel
- driver
+Subject: Re: [REBASE PATCH v5 01/17] docs: qcom: Add qualcomm minidump guide
 Content-Language: en-US
 To: Mukesh Ojha <quic_mojha@quicinc.com>, corbet@lwn.net, agross@kernel.org,
  andersson@kernel.org, konrad.dybcio@linaro.org, robh+dt@kernel.org,
@@ -83,15 +82,16 @@ Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-samsung-soc@vger.kernel.org, kernel@quicinc.com
-References: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
- <1694290578-17733-7-git-send-email-quic_mojha@quicinc.com>
+References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
+ <1694429639-21484-2-git-send-email-quic_mojha@quicinc.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <1694290578-17733-7-git-send-email-quic_mojha@quicinc.com>
+In-Reply-To: <1694429639-21484-2-git-send-email-quic_mojha@quicinc.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_040155_924874_5CDFB6E8 
-X-CRM114-Status: GOOD (  19.21  )
+X-CRM114-CacheID: sfid-20230911_040236_433360_20473231 
+X-CRM114-Status: UNSURE (   7.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,143 +106,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/09/2023 22:16, Mukesh Ojha wrote:
-> Minidump is a best effort mechanism to collect useful and predefined
-> data for first level of debugging on end user devices running on
-> Qualcomm SoCs. It is built on the premise that System on Chip (SoC)
-> or subsystem part of SoC crashes, due to a range of hardware and
-> software bugs. Hence, the ability to collect accurate data is only
-> a best-effort. The data collected could be invalid or corrupted,
-> data collection itself could fail, and so on.
+On 11/09/2023 12:53, Mukesh Ojha wrote:
+> Add the qualcomm minidump guide for the users which tries to cover
+> the dependency, API use and the way to test and collect minidump
+> on Qualcomm supported SoCs.
+> 
+> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+> ---
 
-...
-
-> +static int qcom_apss_md_table_init(struct minidump *md,
-> +				   struct minidump_subsystem *mdss_toc)
-> +{
-> +	struct minidump_ss_data *mdss_data;
-> +
-> +	mdss_data = devm_kzalloc(md->dev, sizeof(*mdss_data), GFP_KERNEL);
-> +	if (!mdss_data)
-> +		return -ENOMEM;
-> +
-> +	mdss_data->md_ss_toc = mdss_toc;
-> +	mdss_data->md_regions = devm_kcalloc(md->dev, MAX_NUM_ENTRIES,
-> +					     sizeof(struct minidump_region),
-> +					     GFP_KERNEL);
-> +	if (!mdss_data->md_regions)
-> +		return -ENOMEM;
-> +
-> +	mdss_toc = mdss_data->md_ss_toc;
-> +	mdss_toc->regions_baseptr = cpu_to_le64(virt_to_phys(mdss_data->md_regions));
-> +	mdss_toc->enabled = cpu_to_le32(MINIDUMP_SS_ENABLED);
-> +	mdss_toc->status = cpu_to_le32(1);
-> +	mdss_toc->region_count = cpu_to_le32(0);
-> +
-> +	/* Tell bootloader not to encrypt the regions of this subsystem */
-> +	mdss_toc->encryption_status = cpu_to_le32(MINIDUMP_SS_ENCR_DONE);
-> +	mdss_toc->encryption_required = cpu_to_le32(MINIDUMP_SS_ENCR_NOTREQ);
-> +
-> +	md->apss_data = mdss_data;
-> +
-> +	return 0;
-> +}
-> +
-> +static int qcom_apss_minidump_probe(struct platform_device *pdev)
-> +{
-> +	struct minidump_global_toc *mdgtoc;
-> +	struct minidump *md;
-> +	size_t size;
-> +	int ret;
-> +
-> +	md = devm_kzalloc(&pdev->dev, sizeof(struct minidump), GFP_KERNEL);
-
-sizeof(*)
-
-Didn't you get such comments already?
-
-
-> +	if (!md)
-> +		return -ENOMEM;
-> +
-> +	md->dev = &pdev->dev;
-> +	mdgtoc = qcom_smem_get(QCOM_SMEM_HOST_ANY, SBL_MINIDUMP_SMEM_ID, &size);
-> +	if (IS_ERR(mdgtoc)) {
-> +		ret = PTR_ERR(mdgtoc);
-> +		dev_err(md->dev, "Couldn't find minidump smem item: %d\n", ret);
-> +		return ret;
-
-The syntax is:
-return dev_err_probe
-
-> +	}
-> +
-> +	if (size < sizeof(*mdgtoc) || !mdgtoc->status) {
-> +		dev_err(md->dev, "minidump table is not initialized: %d\n", ret);
-
-ret is uninitialized here. Please use automated tools for checking your
-code:
-coccinelle, smatch and sparse
-
-> +		return -EINVAL;
-> +	}
-> +
-> +	mutex_init(&md->md_lock);
-> +	ret = qcom_apss_md_table_init(md, &mdgtoc->subsystems[MINIDUMP_APSS_DESC]);
-> +	if (ret) {
-> +		dev_err(md->dev, "apss minidump initialization failed: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	/* First entry would be ELF header */
-> +	ret = qcom_md_add_elfheader(md);
-> +	if (ret) {
-> +		dev_err(md->dev, "Failed to add elf header: %d\n", ret);
-> +		memset(md->apss_data->md_ss_toc, 0, sizeof(struct minidump_subsystem));
-
-Why do you need it?
-
-> +		return ret;
-> +	}
-> +
-> +	platform_set_drvdata(pdev, md);
-> +
-> +	return ret;
-> +}
-> +
-> +static int qcom_apss_minidump_remove(struct platform_device *pdev)
-> +{
-> +	struct minidump *md = platform_get_drvdata(pdev);
-> +	struct minidump_ss_data *mdss_data;
-> +
-> +	mdss_data = md->apss_data;
-> +	memset(mdss_data->md_ss_toc, cpu_to_le32(0), sizeof(struct minidump_subsystem));
-
-Why do you need it?
-
-> +	md = NULL;
-
-That's useless assignment.
-
-> +
-> +	return 0;
-> +}
-> +
-> +static struct platform_driver qcom_minidump_driver = {
-> +	.probe = qcom_apss_minidump_probe,
-> +	.remove = qcom_apss_minidump_remove,
-> +	.driver  = {
-> +		.name = "qcom-minidump-smem",
-> +	},
-> +};
-> +
-> +module_platform_driver(qcom_minidump_driver);
-> +
-> +MODULE_DESCRIPTION("Qualcomm APSS minidump driver");
-> +MODULE_LICENSE("GPL");
-> +MODULE_ALIAS("platform:qcom-minidump-smem");
-
-Add a proper ID table instead of re-inventing it with module aliases.
+Please let us review your previous patch before sending new versions or
+resends or rebases.
 
 Best regards,
 Krzysztof
