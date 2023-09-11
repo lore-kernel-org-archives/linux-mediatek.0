@@ -4,80 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB550EE57DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 14:47:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFECAEE57DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 15:07:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GajsJSo2epB55/QXlHa/vb50gsyMmkBm0dq/dBU22L0=; b=uwzbjfXW9SS+l1aPDT3eKmxWrm
-	LzMwYsI88PWJPJkjATLi8BX7gVBsF2Z4ECXI/WiZUSdXV3J+h3i1Ym/HplhqaasKbGk9N4gTv3r7N
-	2xn5iy1uQJl1gZgcENe0jDLknIy+ryx1gSBKDdvDbh/QlMwf/5+2Dg1y3OeMrT/TQEpdAnItduNvO
-	gBj97FcgqdK2n2hxmDqHzbLDE2emLtLdxb8e+HYkfLg/lwQEa+JyAPi6Ql5qUYmZWiFeAOdkV5Arp
-	O5DGqZLyMevImfhql4MTEaCHjcviGt/B7hlB2GkER0Q9FwuEmDQxV/46AzYcy67jYtE5Ez+p4XQZf
-	DLJzvR5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=M/smHuhk+GMwiaIFqSp0QnUyhRqMkvHvq61BOMETG3o=; b=WjDd8CPwu5nYIU62cigNzYt11j
+	AUDVGm3+b69iMXwLmOPtz3XygVwkbiczsJ5qtWbHq3j4yqg6l7YyMMwggiriR+6BIXIvSXnzRtH5r
+	HPUVEJaX7TqYDlDZi9a98OiZ3zoSo3W9pW+F2os69x342m7UwnyEml+e6gffCjxypkVWnwActHAS2
+	lIVeU/lqrHj5XHssqqO2ger8TAJLvJjn5CXpqG0WdcBupfbz6/9Vuj5q9nD2pNoypaE4wlEuDyr1v
+	wi3wAZt1Au83RtM3vQ3q6HcoN9ibI1/iqFbvOHZ2a5CkQ43Cs073jMSBPoeoWrmKe7eF7KPMkH9kn
+	qKhrxq+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfiBn-000klV-2L;
-	Mon, 11 Sep 2023 14:46:59 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qfiVz-000p3i-2m;
+	Mon, 11 Sep 2023 15:07:51 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfiBj-000kjE-2B;
-	Mon, 11 Sep 2023 14:46:57 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 4A552B80E5E;
-	Mon, 11 Sep 2023 14:46:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 73E72C433C8;
-	Mon, 11 Sep 2023 14:46:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694443613;
-	bh=GajsJSo2epB55/QXlHa/vb50gsyMmkBm0dq/dBU22L0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=p5mC1L6tFXnJ3XqZxh9lRAwUouQwGfHGue4LGkWDhnduL1VU6VZD3Tq60Xhm5Af+M
-	 w1sPRi8BL2meLINNTko9B91ikEGFc6P3AETxVrohj5BlgO2Yi3EuSjqTnynyKjxxCV
-	 6fL18lMOmQFgpsZqnVnOMfyDDgwXZ9iACQ8hKYR27JvtjdXQYYMmLZRUg1EsRhwHIo
-	 yKjnxS3BNYy0JX9PurDrL38poPpk7Ia7oP/Q1S6uoI1mFNZ+daJ6HVlg4ua/saJZ1V
-	 xSPw7Wjab/NW+2VYUGEA9g4ABOGf7eE/2OtvOPN3zDUzbnLoC/K+8FHbBSr8YzJqox
-	 hyWwCrhU//CNQ==
-Date: Mon, 11 Sep 2023 16:46:50 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Michel =?utf-8?Q?D=C3=A4nzer?= <michel.daenzer@mailbox.org>
-Cc: emma@anholt.net, linux-doc@vger.kernel.org, 
-	vignesh.raman@collabora.com, dri-devel@lists.freedesktop.org, alyssa@rosenzweig.io, 
-	jbrunet@baylibre.com, robdclark@google.com, corbet@lwn.net, khilman@baylibre.com, 
-	sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com, 
-	linux-rockchip@lists.infradead.org, Daniel Stone <daniels@collabora.com>, 
-	martin.blumenstingl@googlemail.com, robclark@freedesktop.org, 
-	Helen Koike <helen.koike@collabora.com>, anholt@google.com, linux-mediatek@lists.infradead.org, 
-	matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org, gustavo.padovan@collabora.com, 
-	linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, 
-	neil.armstrong@linaro.org, guilherme.gallo@collabora.com, linux-kernel@vger.kernel.org, 
-	tzimmermann@suse.de
-Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
-Message-ID: <os2wvkangif2nwewfbzkuyjm7njp4g3sqj5td3ogbhhjwsrbbd@3jpf6g5hd3z4>
-References: <4rpsqk4tgrdcxtxtfoum6o4oyglwkirmkh3jj4y5tays2ivb5p@uwqdf3snshkv>
- <25df6189-7b0a-b13d-e93d-c2a388fd45e3@collabora.com>
- <zmq7pz7rtz6h765azg5kl2qgjd264yafctx4q474t5tqai57og@cajbcub4yuwr>
- <5fdf9d29-3f8d-0ee0-027f-57ff3a5cecb8@collabora.com>
- <CAKMK7uGg6n322UugJwErqF_Dvsbqceqae6SVWV3ZWEOR7x36rQ@mail.gmail.com>
- <9a2b1ad8-4359-4f12-b4f9-c1de477bc440@collabora.com>
- <mnjcsiqjqdnvbbkaaz5r4n42e56qsax667r7radzyagnmmfkip@dfi64z5deqzj>
- <b7d96985-8489-efe2-db67-1f3108e26822@mailbox.org>
- <5ejq3hjpoy3gxft2jbmoa5m656usetuxcs7g3ezyyiitj67rav@r5jhdz27foat>
- <550454b8-2e2c-c947-92c5-37f0367661c2@mailbox.org>
+	id 1qfiVw-000p1k-0b;
+	Mon, 11 Sep 2023 15:07:50 +0000
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38BCSGRL031218;
+	Mon, 11 Sep 2023 15:07:25 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=M/smHuhk+GMwiaIFqSp0QnUyhRqMkvHvq61BOMETG3o=;
+ b=X2GbFT2FWpuGQ0iHfzHfjRxH2IelXDoaBDySPx5b09500+V4katOMSKlLPS0+5Z4asUv
+ nL7zWUnM5hrRiMVTyPqmbwQVzfNFlfIhljJEusTZe7monlVSqOxcckFW/V43vd1fJaAB
+ 3SLbocvICLOeCBGFpqzuGqMwzIQoyjZ7e4VacTx7/y7wZRBVPqwtSrzw/zPmCqJZ2fvi
+ 2TCiLFpQLfQbPOgj5ibnqRCM8qKx+4fK3pMYouzyvflZnpNLeKgVxZj1v7H4cVtGi9H+
+ ham2bZWDSqJTX5hipCXdJslEa8y+QoJzmUfKvpV0VONcWnoOXe0fcxYImvKRUaxRJHkZ qA== 
+Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t1yac8uuh-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 11 Sep 2023 15:07:25 +0000
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38BF7NvQ031544
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 11 Sep 2023 15:07:24 GMT
+Received: from [10.216.14.127] (10.80.80.8) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Mon, 11 Sep
+ 2023 08:07:09 -0700
+Message-ID: <9da888dc-401a-4cbb-b616-b4654fa79e35@quicinc.com>
+Date: Mon, 11 Sep 2023 20:37:03 +0530
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uuq5zmkty6dwz5s2"
-Content-Disposition: inline
-In-Reply-To: <550454b8-2e2c-c947-92c5-37f0367661c2@mailbox.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [REBASE PATCH v5 15/17] firmware: scm: Modify only the download
+ bits in TCSR register
+Content-Language: en-US
+To: Mukesh Ojha <quic_mojha@quicinc.com>, <corbet@lwn.net>,
+        <agross@kernel.org>, <andersson@kernel.org>,
+        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
+        <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
+        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
+        <will@kernel.org>, <linus.walleij@linaro.org>,
+        <andy.shevchenko@gmail.com>, <vigneshr@ti.com>, <nm@ti.com>,
+        <matthias.bgg@gmail.com>, <kgene@kernel.org>,
+        <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
+        <quic_tsoni@quicinc.com>
+CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-msm@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
+        <linux-remoteproc@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+        <linux-mediatek@lists.infradead.org>,
+        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>,
+        "Poovendhan
+ Selvaraj" <quic_poovendh@quicinc.com>
+References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
+ <1694429639-21484-16-git-send-email-quic_mojha@quicinc.com>
+From: Kathiravan Thirumoorthy <quic_kathirav@quicinc.com>
+In-Reply-To: <1694429639-21484-16-git-send-email-quic_mojha@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: ZDO2ULWUeou-4qYw_-dQxukWf0tQGiKd
+X-Proofpoint-GUID: ZDO2ULWUeou-4qYw_-dQxukWf0tQGiKd
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-09-11_10,2023-09-05_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 mlxscore=0
+ spamscore=0 mlxlogscore=999 priorityscore=1501 bulkscore=0 suspectscore=0
+ clxscore=1015 adultscore=0 malwarescore=0 lowpriorityscore=0 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2308100000
+ definitions=main-2309110138
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_074656_005412_E72CD99E 
-X-CRM114-Status: GOOD (  27.73  )
+X-CRM114-CacheID: sfid-20230911_080748_394615_20C2423D 
+X-CRM114-Status: GOOD (  21.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,83 +115,70 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---uuq5zmkty6dwz5s2
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Replying one more time, because I certainly don't want to create any
-hard feeling here.
-
-On Mon, Sep 11, 2023 at 03:30:55PM +0200, Michel D=E4nzer wrote:
-> >>>> By keeping those sets of expectations, we've been able to keep Mesa =
-pretty
-> >>>> clear of regressions, whilst having a very clear set of things that =
-should
-> >>>> be fixed to point to. It would be great if those set of things were =
-zero,
-> >>>> but it just isn't. Having that is far better than the two alternativ=
-es:
-> >>>> either not testing at all (obviously bad), or having the test always=
- be red
-> >>>> so it's always ignored (might as well just not test).
-> >>>
-> >>> Isn't that what happens with flaky tests anyway?
-> >>
-> >> For a small minority of tests. Daniel was referring to whole test suit=
-es.
-> >>
-> >>> Even more so since we have 0 context when updating that list.
-> >>
-> >> The commit log can provide whatever context is needed.
-> >=20
-> > Sure, I've yet to see that though.
-> >=20
-> > There's in 6.6-rc1 around 240 reported flaky tests. None of them have
-> > any context. That new series hads a few dozens too, without any context
-> > either. And there's no mention about that being a plan, or a patch
-> > adding a new policy for all tests going forward.
->=20
-> That does sound bad, would need to be raised in review.
+On 9/11/2023 4:23 PM, Mukesh Ojha wrote:
+> Crashdump collection is based on the DLOAD bit of TCSR register.
+> To retain other bits, we read the register and modify only the
+> DLOAD bit as the other bits have their own significance.
 >
-> > Any concern I raised were met with a giant "it worked on Mesa" handwave
->=20
-> Lessons learned from years of experience with big real-world CI
-> systems like this are hardly "handwaving".
+> Co-developed-by: Poovendhan Selvaraj <quic_poovendh@quicinc.com>
+> Signed-off-by: Poovendhan Selvaraj <quic_poovendh@quicinc.com>
+> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+> Tested-by: Kathiravan Thirumoorthy <quic_kathirav@quicinc.com> # IPQ9574 and IPQ5332
+> ---
+>   drivers/firmware/qcom_scm.c | 16 ++++++++++++++--
+>   1 file changed, 14 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/firmware/qcom_scm.c b/drivers/firmware/qcom_scm.c
+> index 321133f0950d..5cacae63ee2a 100644
+> --- a/drivers/firmware/qcom_scm.c
+> +++ b/drivers/firmware/qcom_scm.c
+> @@ -5,6 +5,8 @@
+>   #include <linux/platform_device.h>
+>   #include <linux/init.h>
+>   #include <linux/interrupt.h>
+> +#include <linux/bitfield.h>
+> +#include <linux/bits.h>
+>   #include <linux/completion.h>
+>   #include <linux/cpumask.h>
+>   #include <linux/export.h>
+> @@ -26,6 +28,14 @@
+>   static bool download_mode = IS_ENABLED(CONFIG_QCOM_SCM_DOWNLOAD_MODE_DEFAULT);
+>   module_param(download_mode, bool, 0);
+>   
+> +#define SCM_HAS_CORE_CLK	BIT(0)
+> +#define SCM_HAS_IFACE_CLK	BIT(1)
+> +#define SCM_HAS_BUS_CLK		BIT(2)
 
-Your (and others) experience certainly isn't. It is valuable, welcome,
-and very much appreciated.
 
-However, my questions and concerns being ignored time and time again
-about things like what is the process is going to be like, what is going
-to be tested, who is going to be maintaining that test list, how that
-interacts with stable, how we can possibly audit the flaky tests list,
-etc. have felt like they were being handwaived away.
+Is this intentional to add these macros back again?
 
-I'm not saying that because I disagree, I still do on some, but that's
-fine to some extent. However, most of these issues are not so much an
-infrastructure issue, but a community issue. And I don't even expect a
-perfect solution right now, unlike what you seem to think. But I do
-expect some kind of plan instead of just ignoring that problem.
 
-Like, I had to ask the MT8173 question 3 times in order to get an
-answer, and I'm still not sure what is going to be done to address that
-particular issue.
-
-So, I'm sorry, but I certainly feel like it here.
-
-Maxime
-
---uuq5zmkty6dwz5s2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCZP8oWgAKCRDj7w1vZxhR
-xeoaAQCel+s1l4ON0RwLsGGIhWRQkRm3rOPEl1s1oAgC7ibXSwEAp4V+2IAQRlWC
-JJT0CY046wasZ7fQ6QP2X7LhxQsGdgA=
-=uxXU
------END PGP SIGNATURE-----
-
---uuq5zmkty6dwz5s2--
+> +
+> +#define QCOM_DLOAD_MASK		GENMASK(5, 4)
+> +#define QCOM_DLOAD_FULLDUMP	0x1
+> +#define QCOM_DLOAD_NODUMP	0x0
+> +
+>   struct qcom_scm {
+>   	struct device *dev;
+>   	struct clk *core_clk;
+> @@ -440,6 +450,7 @@ static int __qcom_scm_set_dload_mode(struct device *dev, bool enable)
+>   
+>   static void qcom_scm_set_download_mode(bool enable)
+>   {
+> +	u32 val = enable ? QCOM_DLOAD_FULLDUMP : QCOM_DLOAD_NODUMP;
+>   	bool avail;
+>   	int ret = 0;
+>   
+> @@ -449,8 +460,9 @@ static void qcom_scm_set_download_mode(bool enable)
+>   	if (avail) {
+>   		ret = __qcom_scm_set_dload_mode(__scm->dev, enable);
+>   	} else if (__scm->dload_mode_addr) {
+> -		ret = qcom_scm_io_writel(__scm->dload_mode_addr,
+> -				enable ? QCOM_SCM_BOOT_SET_DLOAD_MODE : 0);
+> +		ret = qcom_scm_io_update_field(__scm->dload_mode_addr,
+> +					       QCOM_DLOAD_MASK,
+> +					       FIELD_PREP(QCOM_DLOAD_MASK, val));
+>   	} else {
+>   		dev_err(__scm->dev,
+>   			"No available mechanism for setting download mode\n");
 
