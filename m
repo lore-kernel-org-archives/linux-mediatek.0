@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6EC5EE7FF4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 10:56:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3225EE57DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 10:56:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4gOSVhCipTQhqe7KQujCKS59XbGovpmGhKA4BrqGRG4=; b=Xq5tzEXSI++cWm4Umlzj7hSS7Z
-	qu0RKtzqBauF0dA1lqKDUCw04VVaoOPtCevucjRusW5g84drd2a6IEq7xW8N7kVQclEtaWC+8gqem
-	DqDRE9TxABjqVPAUPFkaFgUJLh9ZLPYRz/KB5LszG5d8T4ZvbA0BzCcU3MUe6yUakxtdqJrX1z8zD
-	+3saEJpOuTJEjM4PIVJEig6zqD1UNH7yAqcv/bv1F6z2MLc/dyqlF5ub7QFfoiBM+TH5uTd6taElH
-	TOtLnhEbDacAv7VRJVNPaxkvoLM1jgQcULCERcFnek5P62VbD1jEtwf0PqHWFOzt1QVlh1AFyxpVH
-	/39yk1OQ==;
+	bh=NKMHFIzgNDvTMejnjOR6kwDOnmpfUj34ZTlTQsO29Hg=; b=VGJhdTLk9oEhTpv6W3jaFb4Qb7
+	L47TKldA6dBCsCIYNVc99MrSqPmTWR+Fm1IYNZR9xHXJZUxB7V4aXPQWjNbzsaTN05FA10vjEfqTS
+	Ehu3L/Jul1f7ft4h3Mj0082tTIay+bvNHBbHmviBkeKL8DwDK//ZJLLk82nrw1bmSU7tbdw96euEc
+	yiuMYTPaxuaWmdY4A0wzAHNRV2jS6cy9V14fADpVY5kD38KAKWiCKCJYdCXPlB0EYpz04eYW3OpzA
+	x52FstiJPpxPffLBhWgckucmXhbM6oBsp281GRakGcMWlQm5UsFBL70ZbSNAhGu6qE2mOnczML8V+
+	z9Q08x0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfeax-000JnE-1k;
-	Mon, 11 Sep 2023 10:56:43 +0000
+	id 1qfeaz-000Jor-2F;
+	Mon, 11 Sep 2023 10:56:45 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfeat-000JjT-15;
+	id 1qfeat-000JjF-0s;
 	Mon, 11 Sep 2023 10:56:41 +0000
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38BAmZOB029187;
-	Mon, 11 Sep 2023 10:56:13 GMT
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38B8eBlD007844;
+	Mon, 11 Sep 2023 10:56:14 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-type; s=qcppdkim1;
- bh=4gOSVhCipTQhqe7KQujCKS59XbGovpmGhKA4BrqGRG4=;
- b=EoobLeUT13AVt3PTwJqXJwFoFY711k/p9kBdt8sNyDx2SYQiL2+AlkP3xxwlsm4ADRKL
- +CzLEZHmHgE2tbzMTwJIg01wXHipHedMIRBYX64gw0cpiwnoQ0m8KJZ+30IWYBj7ls68
- O4B6FJ6tr5X16QUK15HuMSBPqsZyVw+PPXXXx6cjegZDhcGpXAU4QQc+yJDv9VxJVABk
- uHmq+CbUt6d/izNUgnDhZT4krttKpKCPF18dXXSMYOK9dEqV1UCY1RdxDgpFJh4tWW5v
- csaOh3NHadUqNs2Wdu7Rg2hP7Q3vXSKunSAhJqi/948dEUQt0c7M/c9lIo0ipGPJSY7i lQ== 
+ bh=NKMHFIzgNDvTMejnjOR6kwDOnmpfUj34ZTlTQsO29Hg=;
+ b=KoVO7sdBJS0she7hPmr4/t1yUhTGgxueqxfq0T1eZxgraPLGrp0cActMnGTzUDg99Jtk
+ BxnOLzKd3EVlQ2z03YbA8feoytur2YXujEFaTdZmoal0WVWbv52OH2LbKvp+AS8KZj7a
+ rpDrftwtIr4JdSfrBdxbqz9/izdj3rzMu1bCkLJgFi+CTrFbgawnwRLWxo4mOc9EPof/
+ qB3+SfFUntkO0IRr4Sa5Pb0c2SwbwKeSjkXgtlthAAUmTXcyXj2CYP4N/WDuWJ0djdSp
+ jsmUvadwxlrd/Mj1SqEYo1oH/iN/nhl8FfpJWyl8yc4peCIScbj3FacS+f2NkoA8z0Yk ZQ== 
 Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t0j0fkfm0-1
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t0hvyke07-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
 	Mon, 11 Sep 2023 10:56:13 +0000
 Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38BAuCVt006051
+	by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38BAuCVr006051
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Sep 2023 10:56:13 GMT
+	Mon, 11 Sep 2023 10:56:12 GMT
 Received: from hu-mojha-hyd.qualcomm.com (10.80.80.8) by
  nasanex01c.na.qualcomm.com (10.45.79.139) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.36; Mon, 11 Sep 2023 03:55:37 -0700
+ 15.2.1118.36; Mon, 11 Sep 2023 03:55:19 -0700
 From: Mukesh Ojha <quic_mojha@quicinc.com>
 To: <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
         <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
@@ -68,9 +68,9 @@ CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-mediatek@lists.infradead.org>,
         <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>,
         <quic_mojha@quicinc.com>
-Subject: [REBASE PATCH v5 10/17] pstore: Add pstore_region_defined() helper and export it
-Date: Mon, 11 Sep 2023 16:23:52 +0530
-Message-ID: <1694429639-21484-11-git-send-email-quic_mojha@quicinc.com>
+Subject: [REBASE PATCH v5 08/17] arm64: mm: Add dynamic ramoops region support through command line
+Date: Mon, 11 Sep 2023 16:23:50 +0530
+Message-ID: <1694429639-21484-9-git-send-email-quic_mojha@quicinc.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
 References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
@@ -81,19 +81,19 @@ X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
  nasanex01c.na.qualcomm.com (10.45.79.139)
 X-QCInternal: smtphost
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: XyQCjwjHOG0scL4SF1euCldLbQ6NjV_y
-X-Proofpoint-GUID: XyQCjwjHOG0scL4SF1euCldLbQ6NjV_y
+X-Proofpoint-ORIG-GUID: D7aQZe1nCAe-0oMdraPzGcnkv8bF0XPZ
+X-Proofpoint-GUID: D7aQZe1nCAe-0oMdraPzGcnkv8bF0XPZ
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
  definitions=2023-09-11_06,2023-09-05_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501 mlxscore=0
- malwarescore=0 clxscore=1015 impostorscore=0 mlxlogscore=999 bulkscore=0
- lowpriorityscore=0 adultscore=0 spamscore=0 phishscore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2308100000
- definitions=main-2309110099
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 bulkscore=0
+ clxscore=1015 mlxscore=0 malwarescore=0 impostorscore=0 adultscore=0
+ priorityscore=1501 mlxlogscore=999 spamscore=0 lowpriorityscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2308100000 definitions=main-2309110099
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_035639_376545_F41EEECB 
-X-CRM114-Status: GOOD (  21.58  )
+X-CRM114-CacheID: sfid-20230911_035639_311865_9B72D110 
+X-CRM114-Status: GOOD (  26.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,128 +108,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are users like Qualcomm minidump which is interested in
-knowing the pstore frontend addresses and sizes from the backend
-(ram) to be able to register it with firmware to finally collect
-them during crash for debugging.
+The reserved memory region for ramoops is assumed to be at a fixed
+and known location when read from the devicetree. This may not be
+required for something like Qualcomm's minidump which is interested
+in knowing addresses of ramoops region but it does not put hard
+requirement of address being fixed as most of it's SoC does not
+support warm reset and does not use pstorefs at all instead it has
+firmware way of collecting ramoops region if it gets to know the
+address and register it with apss minidump table which is sitting
+in shared memory region in DDR and firmware will have access to
+these table during reset and collects it on crash of SoC.
+
+So, add the support of reserving ramoops region to be dynamically
+allocated early during boot if it is request through command line
+via 'dyn_ramoops_size=' and fill up reserved resource structure and
+export the structure, so that it can be read by ramoops driver.
 
 Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
 ---
- fs/pstore/platform.c   | 15 +++++++++++++++
- fs/pstore/ram.c        | 42 ++++++++++++++++++++++++++++++++++++++++++
- include/linux/pstore.h |  6 ++++++
- 3 files changed, 63 insertions(+)
+ arch/arm64/mm/init.c       | 94 ++++++++++++++++++++++++++++++++++++++++++++++
+ include/linux/pstore_ram.h |  2 +
+ 2 files changed, 96 insertions(+)
 
-diff --git a/fs/pstore/platform.c b/fs/pstore/platform.c
-index e5bca9a004cc..fdac951059c1 100644
---- a/fs/pstore/platform.c
-+++ b/fs/pstore/platform.c
-@@ -139,6 +139,21 @@ enum pstore_type_id pstore_name_to_type(const char *name)
- }
- EXPORT_SYMBOL_GPL(pstore_name_to_type);
+diff --git a/arch/arm64/mm/init.c b/arch/arm64/mm/init.c
+index 8a0f8604348b..680c1ce18fbe 100644
+--- a/arch/arm64/mm/init.c
++++ b/arch/arm64/mm/init.c
+@@ -31,6 +31,7 @@
+ #include <linux/hugetlb.h>
+ #include <linux/acpi_iort.h>
+ #include <linux/kmemleak.h>
++#include <linux/pstore_ram.h>
  
-+int pstore_region_defined(struct pstore_record *record,
-+			  void **virt, phys_addr_t *phys,
-+			  size_t *size, unsigned int *max_dump_cnt)
-+{
-+	if (!psinfo)
-+		return -EINVAL;
-+
-+	record->psi = psinfo;
-+
-+	return psinfo->region_info ?
-+	       psinfo->region_info(record, virt, phys, size, max_dump_cnt) :
-+	       -EINVAL;
-+}
-+EXPORT_SYMBOL_GPL(pstore_region_defined);
-+
- static void pstore_timer_kick(void)
- {
- 	if (pstore_update_ms < 0)
-diff --git a/fs/pstore/ram.c b/fs/pstore/ram.c
-index ab551caa1d2a..62202f3ddf63 100644
---- a/fs/pstore/ram.c
-+++ b/fs/pstore/ram.c
-@@ -437,6 +437,47 @@ static int ramoops_pstore_erase(struct pstore_record *record)
- 	return 0;
- }
+ #include <asm/boot.h>
+ #include <asm/fixmap.h>
+@@ -100,6 +101,93 @@ phys_addr_t __ro_after_init arm64_dma_phys_limit;
+ #define ARM64_MEMSTART_ALIGN	(1UL << ARM64_MEMSTART_SHIFT)
+ #endif
  
-+static int ramoops_region_info(struct pstore_record *record,
-+			       void **virt, phys_addr_t *phys,
-+			       size_t *size, unsigned int *max_dump_cnt)
-+{
-+	struct ramoops_context *cxt = record->psi->data;
-+	struct persistent_ram_zone *prz;
++#define RAMOOPS_ADDR_HIGH_MAX		(PHYS_MASK + 1)
 +
-+	switch (record->type) {
-+	case PSTORE_TYPE_DMESG:
-+		if (record->id >= cxt->max_dump_cnt)
-+			return -EINVAL;
-+		prz = cxt->dprzs[record->id];
-+		*max_dump_cnt = cxt->max_dump_cnt;
-+		break;
-+	case PSTORE_TYPE_CONSOLE:
-+		if (!cxt->console_size)
-+			return -EINVAL;
-+		prz = cxt->cprz;
-+		break;
-+	case PSTORE_TYPE_FTRACE:
-+		if (record->id >= cxt->max_ftrace_cnt)
-+			return -EINVAL;
-+		prz = cxt->fprzs[record->id];
-+		*max_dump_cnt = cxt->max_ftrace_cnt;
-+		break;
-+	case PSTORE_TYPE_PMSG:
-+		if (!cxt->pmsg_size)
-+			return -EINVAL;
-+		prz = cxt->mprz;
-+		break;
-+	default:
-+		return -EINVAL;
++/* Location of the reserved area for the dynamic ramoops */
++struct resource dyn_ramoops_res = {
++	.name  = "ramoops",
++	.start = 0,
++	.end   = 0,
++	.flags = IORESOURCE_BUSY | IORESOURCE_SYSTEM_RAM,
++	.desc  = IORES_DESC_NONE,
++};
++EXPORT_SYMBOL(dyn_ramoops_res);
++
++static int __init parse_dynamic_ramoops(char *cmdline, unsigned long long *size)
++{
++	const char *name = "dyn_ramoops_size=";
++	char *p = NULL;
++	char *q = NULL;
++	char *tmp;
++
++	if (!cmdline)
++		return -ENOENT;
++
++	/* Check for "dyn_ramoops_size" and use the later if there are more */
++	p = strstr(cmdline, name);
++	while (p) {
++		q = p;
++		p = strchr(p, ' ');
++		if (!p)
++			break;
++
++		p = strstr(p + 1, name);
 +	}
 +
-+	*virt = prz->vaddr;
-+	*phys = prz->paddr;
-+	*size = prz->size;
++	if (!q) {
++		pr_err("ramoops: No entry found for %s\n", name);
++		return -ENOENT;
++	}
++
++	p = q + strlen(name);
++	*size = memparse(p, &tmp);
++	if (p == tmp) {
++		pr_err("ramoops: memory value expected\n");
++		return -EINVAL;
++	}
 +
 +	return 0;
 +}
 +
- static struct ramoops_context oops_cxt = {
- 	.pstore = {
- 		.owner	= THIS_MODULE,
-@@ -446,6 +487,7 @@ static struct ramoops_context oops_cxt = {
- 		.write	= ramoops_pstore_write,
- 		.write_user	= ramoops_pstore_write_user,
- 		.erase	= ramoops_pstore_erase,
-+		.region_info = ramoops_region_info,
- 	},
- };
++static int __init parse_dyn_ramoops_size_dummy(char *arg)
++{
++	return 0;
++}
++early_param("dyn_ramoops_size", parse_dyn_ramoops_size_dummy);
++
++/*
++ * reserve_dynamic_ramoops() - reserves memory for dynamic ramoops
++ *
++ * This enable dynamic reserve memory support for ramoops through
++ * command line.
++ */
++static void __init reserve_dynamic_ramoops(void)
++{
++	char *cmdline = boot_command_line;
++	unsigned long long ramoops_base;
++	unsigned long long ramoops_size;
++
++	if (!IS_ENABLED(CONFIG_PSTORE_RAM))
++		return;
++
++	if (parse_dynamic_ramoops(cmdline, &ramoops_size))
++		return;
++
++	ramoops_base = memblock_phys_alloc_range(ramoops_size, SMP_CACHE_BYTES,
++						 0, RAMOOPS_ADDR_HIGH_MAX);
++	if (!ramoops_base) {
++		pr_err("cannot allocate ramoops dynamic memory (size:0x%llx).\n",
++			ramoops_size);
++		return;
++	}
++
++	kmemleak_ignore_phys(ramoops_base);
++
++	dyn_ramoops_res.start = ramoops_base;
++	dyn_ramoops_res.end = ramoops_base + ramoops_size - 1;
++	insert_resource(&iomem_resource, &dyn_ramoops_res);
++}
++
+ static int __init reserve_crashkernel_low(unsigned long long low_size)
+ {
+ 	unsigned long long low_base;
+@@ -481,6 +569,12 @@ void __init bootmem_init(void)
+ 	 */
+ 	reserve_crashkernel();
  
-diff --git a/include/linux/pstore.h b/include/linux/pstore.h
-index 638507a3c8ff..a64d866e8711 100644
---- a/include/linux/pstore.h
-+++ b/include/linux/pstore.h
-@@ -199,6 +199,9 @@ struct pstore_info {
- 	int		(*write_user)(struct pstore_record *record,
- 				      const char __user *buf);
- 	int		(*erase)(struct pstore_record *record);
-+	int		(*region_info)(struct pstore_record *record,
-+				       void **virt, phys_addr_t *phys,
-+				       size_t *size, unsigned int *max_dump_cnt);
- };
++	/*
++	 * Reserving ramoops region resource dynamically in case it is
++	 * requested from command line.
++	 */
++	reserve_dynamic_ramoops();
++
+ 	memblock_dump_all();
+ }
  
- /* Supported frontends */
-@@ -230,6 +233,9 @@ struct pstore_ftrace_record {
- #define TS_CPU_SHIFT 8
- #define TS_CPU_MASK (BIT(TS_CPU_SHIFT) - 1)
+diff --git a/include/linux/pstore_ram.h b/include/linux/pstore_ram.h
+index 9d65ff94e216..07d700b7649d 100644
+--- a/include/linux/pstore_ram.h
++++ b/include/linux/pstore_ram.h
+@@ -10,6 +10,8 @@
  
-+int pstore_region_defined(struct pstore_record *record,
-+			  void **virt, phys_addr_t *phys,
-+			  size_t *size, unsigned int *max_dump_cnt);
- /*
-  * If CPU number can be stored in IP, store it there, otherwise store it in
-  * the time stamp. This means more timestamp resolution is available when
+ #include <linux/pstore.h>
+ 
++extern struct resource dyn_ramoops_res;
++
+ struct persistent_ram_ecc_info {
+ 	int block_size;
+ 	int ecc_size;
 -- 
 2.7.4
 
