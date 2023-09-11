@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 674A5EEB58C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 03:17:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A83FFEEB58F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 03:17:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JtH8H/mH3Uz7XL+BMa9kU6gPh56dxzN2XLCuY3hjHsw=; b=EuS1/zd9tYhOmK6bCl34ib7ISO
-	c0xlUtE0dfL3S1ix7Y0ebNw0NpG7U1Sfo0xmyYAl7HpWAiHscYVreaqF5tGVZKAcK79prjoWXphsX
-	zVLCEdoxOwvLPd/dA9QoUPHqbX5ElPDXLiQj6uM0GO03XD4vu4U5I+bgSZvaAhvN8L4zerJyDg1Fw
-	sy7TDED+w5LqYKlKBR+dTI9V/MtJKBqr6Uu1bx1ck3Xwv9L6WDz+TgrY5E2RVVwWYt27WpXYFf7eM
-	bvd7aGmDgnlm1TzxBAoh1DO6yyyVkVeKdnGkRWQ2n0D3msDuZSOWcVap6E5xqdBDgPNsK3bAgQ5wh
-	mWZxEBjg==;
+	bh=e3ahd3M0XcppL08N+KpDhIH1BYr1qRQbibyyNReplTw=; b=Rk21mD2XoNZwk+KSKSM35wfh+A
+	EBqOKgzl19f4WJitKei0km1CtpMYbEZjZ/CKucXPl7sC+QF5/msBAHcFnCff8TnL6pDgN9Dgh91kH
+	QrCdjUfPjBizgLzVKMNAA6KrxadsTY1ufDjXI5EbLGxwyH0mETCf+61zZMzrEQaiqJK9T12qRYp+u
+	bjoD8pH86ndNeH5BMc6h1Dzr+I16xizq7JXSDwKKzBa9hslDeFUoDP1x6BrBhgDdFCP03jjvYyxUI
+	O8zW1Rwsi2bWri/WECSiiodg4hmAy20IbD5wKNKEDDplg8p9HHPc3GysesDXvwDZ9Qb1FcGu8XLuE
+	sLHia46w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfXQa-00H9K2-0j;
-	Mon, 11 Sep 2023 03:17:32 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qfXQb-00H9LC-11;
+	Mon, 11 Sep 2023 03:17:33 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfXQO-00H97r-0H;
+	id 1qfXQO-00H95v-2O;
 	Mon, 11 Sep 2023 03:17:23 +0000
-X-UUID: b53b6bb2505111ee86758d4a7c00f3a0-20230910
+X-UUID: b4600c52505111ee9b7791016c24628a-20230910
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JtH8H/mH3Uz7XL+BMa9kU6gPh56dxzN2XLCuY3hjHsw=;
-	b=UiO6sfKF81bbDv0K5d1R/YFlok+xsKK4DefN2KnJxgdcvFlI6VYk/RHdeLkk72tyT/434rPTjLQCtFofEqG1KHTHaDpTTqV95NgVeFgcr9GVzWdsXQYaY5o4ay/DYnGO1fLRKkHzX9/zN22N01otbwm8GPyBBIbf1EdTmUCPt6Y=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=e3ahd3M0XcppL08N+KpDhIH1BYr1qRQbibyyNReplTw=;
+	b=o6iNGRasa5+u72hwf7ktnynf3mh/pkKFLFNOSUakcw6dAk89zRDitxoXCF8ksWT38VGBf3kHRzPAxBA1+ncWLIN8IXj8xljZBHEE4YTrJtlnxrGjVGGq0ENFl0+5XzUbbPWskJRsC9oApoA8YCZqvEMYWKyNqMzbjH/6M5hQHTk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:b861f496-cd9e-41d2-bb6b-031c8b0c3ef5,IP:0,U
-	RL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:20
-X-CID-META: VersionHash:0ad78a4,CLOUDID:14a9dec2-1e57-4345-9d31-31ad9818b39f,B
+X-CID-O-INFO: VERSION:1.1.31,REQID:c36f5e78-31e4-4673-a64d-b68e4bd39fd5,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:7f518aef-9a6e-4c39-b73e-f2bc08ca3dc5,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: b53b6bb2505111ee86758d4a7c00f3a0-20230910
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: b4600c52505111ee9b7791016c24628a-20230910
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2111863661; Sun, 10 Sep 2023 20:17:15 -0700
+	with ESMTP id 152673387; Sun, 10 Sep 2023 20:17:14 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Mon, 11 Sep 2023 11:16:39 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -63,32 +63,30 @@ CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Singo Chang
 	<singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Jason-JH Lin
 	<jason-jh.lin@mediatek.com>, Hsiao Chien Sung <shawn.sung@mediatek.com>
-Subject: [PATCH v6 04/20] dt-bindings: display: mediatek: padding: Add MT8188
-Date: Mon, 11 Sep 2023 11:16:14 +0800
-Message-ID: <20230911031630.12613-5-shawn.sung@mediatek.com>
+Subject: [PATCH v6 06/20] dt-bindings: reset: mt8188: Add VDOSYS reset control bits
+Date: Mon, 11 Sep 2023 11:16:16 +0800
+Message-ID: <20230911031630.12613-7-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230911031630.12613-1-shawn.sung@mediatek.com>
 References: <20230911031630.12613-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.027100-8.000000
-X-TMASE-MatchedRID: 9nkzMtsPLI7yZ92BnYqk5lz+axQLnAVB6SXuwUgGH0gIgSDinsA6bIpb
-	wG9fIuITLSHDQi/tZU9ZyJKwWJFJUwAwGIAo3Shb71Wx2uUbPLcT0Sn1/3AIbWHZ+cd7VyKXTo+
-	d5kYVw/ElbBPuTv/lL9eHLWzVm2BdhPc4FTJN6V5LxLYX2WS87+AAYRasBjMekR+/pTNS9t0o0E
-	qA13zQc0cN36UB4MN7MHwFGlhAi2EZjarFLqLUbBuZoNKc6pl+zKnr9zj6h3Hz9QBty8t029xBt
-	1UDX817nXOXTNRLXkt5pD5YlcDpcqtL0wBaA/G+DB+ErBr0bANimi8LvNfmr87EPIkVcg+OWaGV
-	MLZ5ERLi8zVgXoAltlPcOF1Vw1gmC24oEZ6SpSlsZUSYh+N/e3EQ32xyf6OWA2HUg8E47c0SeDq
-	BtFZYe4Lz5U2zu5EXXXPflUac0Yg=
+X-TM-AS-Result: No-10--2.230700-8.000000
+X-TMASE-MatchedRID: tiRXYRqWr+upk9YSiEd5ImNW0DAjL5p+Wot5Z16+u74IgSDinsA6bCzy
+	bVqWyY2NTAa7ihKVJtWAMuqetGVetocnrwAbVlNi3QfwsVk0UbsIoUKaF27lxW/EmO7579ImPdv
+	WDxcnsv62jQK4x7A0yTmv3WIKQz/Ji4gt2mJW428iCqrEag5df9amHb2LHHT+uE6Jn2QVH0KYe5
+	xoFcRssRdGg+ZY7eN6THB2Q+oKru8MTI34nyF36MJL1aANdU8Knqg/VrSZEiM=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.027100-8.000000
+X-TMASE-Result: 10--2.230700-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 5E7F621B658F2080561D6D01FAE0C98F6A3838974500ED543C70BB095789C21E2000:8
+X-TM-SNTS-SMTP: EE1B98C348D69B96984F80B884E25F39A483F0824BC4A02DF26A5BD0599ADFEA2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230910_201720_136511_9BA8959D 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20230910_201720_808361_EB1A6E95 
+X-CRM114-Status: UNSURE (   7.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,103 +101,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Padding is a new hardware module on MediaTek MT8188,
-add dt-bindings for it.
+Add MT8188 VDOSYS0 and VDOSYS1 reset control bits.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- .../display/mediatek/mediatek,padding.yaml    | 81 +++++++++++++++++++
- 1 file changed, 81 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
+ include/dt-bindings/reset/mt8188-resets.h | 75 +++++++++++++++++++++++
+ 1 file changed, 75 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
-new file mode 100644
-index 000000000000..db24801ebc48
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
-@@ -0,0 +1,81 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/mediatek/mediatek,padding.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/include/dt-bindings/reset/mt8188-resets.h b/include/dt-bindings/reset/mt8188-resets.h
+index ba9a5e9b8899..5a58c54e7d20 100644
+--- a/include/dt-bindings/reset/mt8188-resets.h
++++ b/include/dt-bindings/reset/mt8188-resets.h
+@@ -38,4 +38,79 @@
+ #define MT8188_INFRA_RST1_THERMAL_CTRL_RST         1
+ #define MT8188_INFRA_RST3_PTP_CTRL_RST             2
+ 
++#define MT8188_VDO0_RST_DISP_OVL0		0
++#define MT8188_VDO0_RST_FAKE_ENG0		1
++#define MT8188_VDO0_RST_DISP_CCORR0		2
++#define MT8188_VDO0_RST_DISP_MUTEX0		3
++#define MT8188_VDO0_RST_DISP_GAMMA0		4
++#define MT8188_VDO0_RST_DISP_DITHER0		5
++#define MT8188_VDO0_RST_DISP_WDMA0		6
++#define MT8188_VDO0_RST_DISP_RDMA0		7
++#define MT8188_VDO0_RST_DSI0			8
++#define MT8188_VDO0_RST_DSI1			9
++#define MT8188_VDO0_RST_DSC_WRAP0		10
++#define MT8188_VDO0_RST_VPP_MERGE0		11
++#define MT8188_VDO0_RST_DP_INTF0		12
++#define MT8188_VDO0_RST_DISP_AAL0		13
++#define MT8188_VDO0_RST_INLINEROT0		14
++#define MT8188_VDO0_RST_APB_BUS			15
++#define MT8188_VDO0_RST_DISP_COLOR0		16
++#define MT8188_VDO0_RST_MDP_WROT0		17
++#define MT8188_VDO0_RST_DISP_RSZ0		18
 +
-+title: MediaTek Display Padding
++#define MT8188_VDO1_RST_SMI_LARB2		0
++#define MT8188_VDO1_RST_SMI_LARB3		1
++#define MT8188_VDO1_RST_GALS			2
++#define MT8188_VDO1_RST_FAKE_ENG0		3
++#define MT8188_VDO1_RST_FAKE_ENG1		4
++#define MT8188_VDO1_RST_MDP_RDMA0		5
++#define MT8188_VDO1_RST_MDP_RDMA1		6
++#define MT8188_VDO1_RST_MDP_RDMA2		7
++#define MT8188_VDO1_RST_MDP_RDMA3		8
++#define MT8188_VDO1_RST_VPP_MERGE0		9
++#define MT8188_VDO1_RST_VPP_MERGE1		10
++#define MT8188_VDO1_RST_VPP_MERGE2		11
++#define MT8188_VDO1_RST_VPP_MERGE3		12
++#define MT8188_VDO1_RST_VPP_MERGE4		13
++#define MT8188_VDO1_RST_VPP2_TO_VDO1_DL_ASYNC	14
++#define MT8188_VDO1_RST_VPP3_TO_VDO1_DL_ASYNC	15
++#define MT8188_VDO1_RST_DISP_MUTEX		16
++#define MT8188_VDO1_RST_MDP_RDMA4		17
++#define MT8188_VDO1_RST_MDP_RDMA5		18
++#define MT8188_VDO1_RST_MDP_RDMA6		19
++#define MT8188_VDO1_RST_MDP_RDMA7		20
++#define MT8188_VDO1_RST_DP_INTF1_MMCK		21
++#define MT8188_VDO1_RST_DPI0_MM_CK		22
++#define MT8188_VDO1_RST_DPI1_MM_CK		23
++#define MT8188_VDO1_RST_MERGE0_DL_ASYNC		24
++#define MT8188_VDO1_RST_MERGE1_DL_ASYNC		25
++#define MT8188_VDO1_RST_MERGE2_DL_ASYNC		26
++#define MT8188_VDO1_RST_MERGE3_DL_ASYNC		27
++#define MT8188_VDO1_RST_MERGE4_DL_ASYNC		28
++#define MT8188_VDO1_RST_VDO0_DSC_TO_VDO1_DL_ASYNC	29
++#define MT8188_VDO1_RST_VDO0_MERGE_TO_VDO1_DL_ASYNC	30
++#define MT8188_VDO1_RST_PADDING0		31
++#define MT8188_VDO1_RST_PADDING1		32
++#define MT8188_VDO1_RST_PADDING2		33
++#define MT8188_VDO1_RST_PADDING3		34
++#define MT8188_VDO1_RST_PADDING4		35
++#define MT8188_VDO1_RST_PADDING5		36
++#define MT8188_VDO1_RST_PADDING6		37
++#define MT8188_VDO1_RST_PADDING7		38
++#define MT8188_VDO1_RST_DISP_RSZ0		39
++#define MT8188_VDO1_RST_DISP_RSZ1		40
++#define MT8188_VDO1_RST_DISP_RSZ2		41
++#define MT8188_VDO1_RST_DISP_RSZ3		42
++#define MT8188_VDO1_RST_HDR_VDO_FE0		43
++#define MT8188_VDO1_RST_HDR_GFX_FE0		44
++#define MT8188_VDO1_RST_HDR_VDO_BE		45
++#define MT8188_VDO1_RST_HDR_VDO_FE1		46
++#define MT8188_VDO1_RST_HDR_GFX_FE1		47
++#define MT8188_VDO1_RST_DISP_MIXER		48
++#define MT8188_VDO1_RST_HDR_VDO_FE0_DL_ASYNC	49
++#define MT8188_VDO1_RST_HDR_VDO_FE1_DL_ASYNC	50
++#define MT8188_VDO1_RST_HDR_GFX_FE0_DL_ASYNC	51
++#define MT8188_VDO1_RST_HDR_GFX_FE1_DL_ASYNC	52
++#define MT8188_VDO1_RST_HDR_VDO_BE_DL_ASYNC	53
 +
-+maintainers:
-+  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
-+  - Philipp Zabel <p.zabel@pengutronix.de>
-+
-+description:
-+  Padding provides ability to add pixels to width and height of a layer with
-+  specified colors. Due to hardware design, Mixer in VDOSYS1 requires
-+  width of a layer to be 2-pixel-align, or 4-pixel-align when ETHDR is enabled,
-+  we need Padding to deal with odd width.
-+  Please notice that even if the Padding is in bypass mode, settings in
-+  register must be cleared to 0, or undefined behaviors could happen.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt8188-padding
-+
-+  reg:
-+    maxItems: 1
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: RDMA Clock
-+
-+  mediatek,gce-client-reg:
-+    description:
-+      GCE (Global Command Engine) is a multi-core micro processor that helps
-+      its clients to execute commands without interrupting CPU. This property
-+      describes GCE client's information that is composed by 4 fields.
-+      1. Phandle of the GCE (there may be several GCE processors)
-+      2. Sub-system ID defined in the dt-binding like a user ID
-+         (Please refer to include/dt-bindings/gce/<chip>-gce.h)
-+      3. Offset from base address of the subsys you are at
-+      4. Size of the register the client needs
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    items:
-+      items:
-+        - description: Phandle of the GCE
-+        - description: Subsys ID defined in the dt-binding
-+        - description: Offset from base address of the subsys
-+        - description: Size of register
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - power-domains
-+  - clocks
-+  - mediatek,gce-client-reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/mediatek,mt8188-clk.h>
-+    #include <dt-bindings/power/mediatek,mt8188-power.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        padding0: padding@1c11d000 {
-+            compatible = "mediatek,mt8188-padding";
-+            reg = <0 0x1c11d000 0 0x1000>;
-+            clocks = <&vdosys1 CLK_VDO1_PADDING0>;
-+            power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS1>;
-+            mediatek,gce-client-reg = <&gce0 SUBSYS_1c11XXXX 0xd000 0x1000>;
-+        };
-+    };
+ #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8188 */
 -- 
 2.18.0
 
