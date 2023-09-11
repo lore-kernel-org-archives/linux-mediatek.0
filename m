@@ -4,96 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 138FDEE57DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 08:09:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC30DEE57DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 08:09:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EbUzjiy4o1vK6+eGTRCo3FmI8I3JuBmYotzF+QEDbUg=; b=ZGWGVyomcVW8vOjSFkmL73x3h+
-	RJ7w/7jt3cOZi2TI3VY48RKf64ZImnuSFcISPKCXjfd4YP7f/QHHFQT/MFrqzMs5R35PPs7Eza22O
-	dtTjA0uRthi+U8mSH4x030eV5CcAgbOetV1s0ViVb0xSIip02oQzsokAiy08Tj5fzeQt/45k1Lvgz
-	LHyPmEFAFscwCKT01nUcK53LFqJYvZVBOarlxUeNRcVPVVU24jpVVnuZrgPgDLm8CeM5uKBk6NOVv
-	WxXyX2x+e+LuvguMansWp9p82a28QjsKcreQuyCXhUloYhPj4Z/Q+dxOrGxsIAN0kGF9ZlUfzX6ji
-	G03RgbTw==;
+	bh=NafHp/BvvCHfVLzNlkB6vpZnRU8wG/dNPH0SUv4RKMc=; b=U9KCs2Wvzcxzgykn+Qb7bghcXW
+	XV6Xx76PccHNdw+l8eLij/9f/9hV1qkjdPRs71fEAxhxp+iYQQA4nd7VGt7a3Ao7U0/Pcmf76NMsP
+	YI0l5wrb2IxUDsqNlZhQ0cq2i9rCy3XOu7F+An1Z3FYCbmAcxEr2c0tdQecu3gJnKT8sVVeUbYsS6
+	DWT0LgCeCGuka27YkJ5vqkJuOezUql9FyDhsv8WxuTEpNxUJLKAM4gPjDGi+xQrK6Ow1GSEjhOmpp
+	EBnUNI12abIKt5f1Ary+Ui4vVRcls7OMwKM8xvgejuadwl9/6Z3TXD3tyRlBoqclGE5haRQkhP238
+	FOQyNcow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfbyw-00HVfq-38;
-	Mon, 11 Sep 2023 08:09:18 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1qfbzA-00HVho-23;
+	Mon, 11 Sep 2023 08:09:32 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfbyu-00HVe9-1v
-	for linux-mediatek@lists.infradead.org;
-	Mon, 11 Sep 2023 08:09:17 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-401da71b83cso47036615e9.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 11 Sep 2023 01:09:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1694419750; x=1695024550; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=EbUzjiy4o1vK6+eGTRCo3FmI8I3JuBmYotzF+QEDbUg=;
-        b=JscQM95JqPHe25TtGpe5F6lCgEoRVVaUQErljAKjNolstEexaH4kOqeqDwD/wktYxJ
-         6Tl0wIGB828KgEUfWkX19hCffV3/Joz3EAYSiF6HGUerhFLfooIBUhDWPQ6X/nlhIbCU
-         ty2HGa06/2q0flTbjxt/VMnLcKxcha4+HfJGmU2Gl6B/6s1MWjsgxHaAQRyD5EQWJpm3
-         Dd7wqozKiyp1vN97/6H+ylEPzs+V/V7TDayFeVs7sVDVg45FC5CH1B+gJeClbwN2Gy9D
-         eFPIjGIkemID6+JwksMVa9Jf+enMFzUAmd8A//vqKQSStMKU4hR4p1+HsPO2UDh30Cyd
-         2OqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694419750; x=1695024550;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=EbUzjiy4o1vK6+eGTRCo3FmI8I3JuBmYotzF+QEDbUg=;
-        b=KZJzHYUf3kdPmtImEnsU47fRjrl8oJA91zoXKBw3U/jwgYFcTR0HhjgbptWbZq5ste
-         l+T+bj6mwVSQsqKf3nAjzY/MAxbAQb4WYLCRAms5G3sVJg5iy7HFlGsOtc4YrOx2HupA
-         h6e9ZCP9xKQ6MZ71rxz+ZZL+fU5ojHXxfKfKPaoqRSFWo5QHZBd6vlt0zJc9+fA/ePug
-         6HQwSHVHLKUMVggm6JiEtkmtxofXsEjFsoasS5igi+lKaE8vMSvGky50SzTdFrHC8etn
-         elkx6A73Spx4vI5hyCsRJnwwKBxA57tqvO8mgMIDiEOxKMXp+lf6HsgBU76quudvI5Sr
-         Ct2A==
-X-Gm-Message-State: AOJu0YyDNi/EbAHZpuIVhSM81W8bSIrZ35g06fI+R7uQozyuMQUHg51u
-	blb8gunPEabDWm4ktUdsuoG8BA==
-X-Google-Smtp-Source: AGHT+IH17NjBNGmOzEesnEW9tcv/zDzsg0kaDQGZfVp6yr4OvabsTsarBsJUqtBSDTS43yE6uYtPtQ==
-X-Received: by 2002:a05:600c:b5a:b0:3fe:15f0:dfbc with SMTP id k26-20020a05600c0b5a00b003fe15f0dfbcmr7767575wmr.12.1694419750151;
-        Mon, 11 Sep 2023 01:09:10 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.214.188])
-        by smtp.gmail.com with ESMTPSA id w18-20020a5d6092000000b0031c52e81490sm9359869wrt.72.2023.09.11.01.09.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 11 Sep 2023 01:09:09 -0700 (PDT)
-Message-ID: <9476d20e-a0f2-e8cf-db4f-d07dda86bb28@linaro.org>
-Date: Mon, 11 Sep 2023 10:09:05 +0200
+	id 1qfbz8-00HVgn-0j;
+	Mon, 11 Sep 2023 08:09:31 +0000
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38B6F0J1005846;
+	Mon, 11 Sep 2023 08:09:10 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=NafHp/BvvCHfVLzNlkB6vpZnRU8wG/dNPH0SUv4RKMc=;
+ b=RYSdcuN1zvbYuD7PZh1FPAnDKdXicdzbOXbGncuHGKBrF8T2QqpuHwK69bch26o9xYMV
+ x3+fp4bbxXVm0qI5vShxqjZHTPXPE7cH+HVaH76TvNUk23a/811J3bves/ZZHsKnjFxY
+ Pnd5Cjd2WKua70h0zFpCZ62Vc5d+mJuv8lKzLckAi0tuHNISb5rT+lJR9RnoftEoxJ7U
+ 6zxo9pDO44UvD9QeWhI5SROpTGN/LQ/bIb36Fowbg8wR939Q7R+1HsfvRTrBM1wRj4Pn
+ B19YFrcxyuhiycmD9G8E5XveZqayDM8IumS0sh1l73ehOw2ctmFTmMPHghMj0PNn4ZCX IA== 
+Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t1u3yrdb5-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 11 Sep 2023 08:09:09 +0000
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38B898oW029198
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 11 Sep 2023 08:09:08 GMT
+Received: from [10.201.2.96] (10.80.80.8) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Mon, 11 Sep
+ 2023 01:08:56 -0700
+Message-ID: <9d9bba92-f92e-469a-b0a5-9ca24f5caaca@quicinc.com>
+Date: Mon, 11 Sep 2023 13:38:53 +0530
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v3 2/9] arm64: dts: qcom: apq8016-sbc: Add overlay for usb
- host mode
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 13/17] firmware: qcom_scm: provide a read-modify-write
+ function
 Content-Language: en-US
-To: Vignesh Raman <vignesh.raman@collabora.com>,
- dri-devel@lists.freedesktop.org
-Cc: helen.koike@collabora.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com,
- daniels@collabora.com, gustavo.padovan@collabora.com,
- angelogioacchino.delregno@collabora.com, emma@anholt.net,
- robclark@freedesktop.org, robdclark@google.com, anholt@google.com,
- robdclark@gmail.com, airlied@gmail.com, daniel@ffwll.ch,
- jani.nikula@linux.intel.com, mripard@kernel.org,
- dmitry.baryshkov@linaro.org, matthias.bgg@gmail.com, agross@kernel.org,
- andersson@kernel.org, konrad.dybcio@linaro.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- virtualization@lists.linux-foundation.org, linux-arm-msm@vger.kernel.org
-References: <20230908152225.432139-1-vignesh.raman@collabora.com>
- <20230908152225.432139-3-vignesh.raman@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230908152225.432139-3-vignesh.raman@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+To: Mukesh Ojha <quic_mojha@quicinc.com>, <corbet@lwn.net>,
+        <agross@kernel.org>, <andersson@kernel.org>,
+        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
+        <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
+        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
+        <will@kernel.org>, <linus.walleij@linaro.org>,
+        <andy.shevchenko@gmail.com>, <vigneshr@ti.com>, <nm@ti.com>,
+        <matthias.bgg@gmail.com>, <kgene@kernel.org>,
+        <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
+        <quic_tsoni@quicinc.com>
+CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-msm@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
+        <linux-remoteproc@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+        <linux-mediatek@lists.infradead.org>,
+        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
+References: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
+ <1694290578-17733-14-git-send-email-quic_mojha@quicinc.com>
+From: Kathiravan Thirumoorthy <quic_kathirav@quicinc.com>
+In-Reply-To: <1694290578-17733-14-git-send-email-quic_mojha@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: ailn9qzrzEVJ8ULDw95fXIURPgteFyWZ
+X-Proofpoint-ORIG-GUID: ailn9qzrzEVJ8ULDw95fXIURPgteFyWZ
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-09-11_05,2023-09-05_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 adultscore=0
+ clxscore=1015 phishscore=0 impostorscore=0 suspectscore=0 bulkscore=0
+ priorityscore=1501 mlxscore=0 mlxlogscore=912 malwarescore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2308100000 definitions=main-2309110073
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_010916_633653_2A383640 
-X-CRM114-Status: GOOD (  16.53  )
+X-CRM114-CacheID: sfid-20230911_010930_381147_EDA7E366 
+X-CRM114-Status: GOOD (  23.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,36 +112,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/09/2023 17:22, Vignesh Raman wrote:
-> Due to the presence of the fastboot micro cable in the CI farm,
-> it causes the hardware to remain in gadget mode instead of host mode.
-> So it doesn't find the network, which results in failure to mount root
-> fs via NFS.
-> 
-> Add an overlay dtso file that sets the dr_mode to host, allowing
-> the USB controllers to work in host mode. This dtso file will be used
-> in drm-ci, mesa-ci.
-> 
-> Overlay DT file uses the sugar syntax [suggested by Dmitry Baryshkov and Maxime Ripard]
-> 
-> Suggested-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-> Suggested-by: Maxime Ripard <mripard@kernel.org>
-> Signed-off-by: Helen Koike <helen.koike@collabora.com>
-> Signed-off-by: David Heidelberg <david.heidelberg@collabora.com>
-> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+
+On 9/10/2023 1:46 AM, Mukesh Ojha wrote:
+> It was realized by Srinivas K. that there is a need of
+> read-modify-write scm exported function so that it can
+> be used by multiple clients.
+>
+> Let's introduce qcom_scm_io_update_field() which masks
+> out the bits and write the passed value to that
+> bit-offset. Subsequent patch will use this function.
+>
+> Suggested-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
 > ---
-> 
-> v3:
->   - New patch in the series to add device tree overlay in arch/arm64/boot/dts/qcom
-> 
-> ---
->  arch/arm64/boot/dts/qcom/apq8016-sbc-usb-host.dtso | 8 ++++++++
->  1 file changed, 8 insertions(+)
 
-Split unrelated patches to separate patchsets. This has nothing to do
-with DRM CI system.
 
-Best regards,
-Krzysztof
+Validated this change on IPQ9574 and IPQ53332 and system is entering 
+into the download mode.
 
+Tested-by: Kathiravan Thirumoorthy <quic_kathirav@quicinc.com> # IP9574 
+and IPQ5332
+
+
+>   drivers/firmware/qcom_scm.c            | 20 ++++++++++++++++++++
+>   include/linux/firmware/qcom/qcom_scm.h |  2 ++
+>   2 files changed, 22 insertions(+)
+>
+> diff --git a/drivers/firmware/qcom_scm.c b/drivers/firmware/qcom_scm.c
+> index fde33acd46b7..5ea8fc4fd4e8 100644
+> --- a/drivers/firmware/qcom_scm.c
+> +++ b/drivers/firmware/qcom_scm.c
+> @@ -78,6 +78,7 @@ static const char * const qcom_scm_convention_names[] = {
+>   };
+>   
+>   static struct qcom_scm *__scm;
+> +static DEFINE_SPINLOCK(lock);
+>   
+>   static int qcom_scm_clk_enable(void)
+>   {
+> @@ -407,6 +408,25 @@ int qcom_scm_set_remote_state(u32 state, u32 id)
+>   }
+>   EXPORT_SYMBOL(qcom_scm_set_remote_state);
+>   
+> +int qcom_scm_io_update_field(phys_addr_t addr, unsigned int mask, unsigned int val)
+> +{
+> +	unsigned int old, new;
+> +	int ret;
+> +
+> +	spin_lock(&lock);
+> +	ret = qcom_scm_io_readl(addr, &old);
+> +	if (ret)
+> +		goto unlock;
+> +
+> +	new = (old & ~mask) | (val & mask);
+> +
+> +	ret = qcom_scm_io_writel(addr, new);
+> +unlock:
+> +	spin_unlock(&lock);
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(qcom_scm_io_update_field);
+> +
+>   static int __qcom_scm_set_dload_mode(struct device *dev, bool enable)
+>   {
+>   	struct qcom_scm_desc desc = {
+> diff --git a/include/linux/firmware/qcom/qcom_scm.h b/include/linux/firmware/qcom/qcom_scm.h
+> index 250ea4efb7cb..ca41e4eb33ad 100644
+> --- a/include/linux/firmware/qcom/qcom_scm.h
+> +++ b/include/linux/firmware/qcom/qcom_scm.h
+> @@ -84,6 +84,8 @@ extern bool qcom_scm_pas_supported(u32 peripheral);
+>   
+>   extern int qcom_scm_io_readl(phys_addr_t addr, unsigned int *val);
+>   extern int qcom_scm_io_writel(phys_addr_t addr, unsigned int val);
+> +extern int qcom_scm_io_update_field(phys_addr_t addr, unsigned int mask,
+> +				    unsigned int val);
+>   
+>   extern bool qcom_scm_restore_sec_cfg_available(void);
+>   extern int qcom_scm_restore_sec_cfg(u32 device_id, u32 spare);
 
