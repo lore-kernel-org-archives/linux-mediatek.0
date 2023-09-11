@@ -4,81 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64E17EE57DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 13:20:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBD1DEE57DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 13:31:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fAOGM298IySlZlLQaVmQ6okhMP2zNlsEo7LxJ5B61Ng=; b=oVLPV84eUeEQi0vuS1xo25UN/R
-	btpPVI6rARd5JPRmtS0B6om07soPTMC3lW3VacgLrsstb9W2qReJAJnpIipaEC4z3R1voKLYHHVlb
-	u6KslfaDL72h77ASbDHYL2WLSgv8nr0Zz4N0dx3ymVKuKrvrwczXHGlUKg9++3aEfpREBiwI9z5a3
-	GRyN5/zpULn+Z8/Ns0eSfVgqn/H+oCyBWAKtD2PXq6wbZApH4lwEekDzUFaZPqoyPzOOrTXzV5a8B
-	sjclmRCe4/ZRl1L5Ugn8ZwbueEXahrvpBJyGssjomUTLK2ah02c7yf0OSC00Q5f8dFhpu6/wY6fo/
-	ZMngTi3Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ssPtRhzagK/d9RC/A8i5dkXgGiUcU7PPGH+ptkQbYgk=; b=b0aH8HyZwbiv8XfS0tV+XZviHq
+	DuKt7Gyf/HoYAIYHab6VYfcr+UCHo8Cfn+O3M3I2M328/H0/YhkV3udvxsezPer1RoXH0VTgwnN+V
+	EYUArOd7JAVbzRBO4o+U64aQ3K96UiXAgAqvt3d4p6mtiC2/3NUC9mxl4MG9cDj479QG2dRqpnUHa
+	eZq1VTolDpmspnfIR4OCPxsH1GD47rN86iO/f3a3okrIilk6yuVOTmcD2ImdFPEJVrjAq0lb272G9
+	iIAOcC9MOM5IeRXvOMv/agaOEA/Ecy58/rfR/Ve54CqhoJrcqi9Ehvhk6xJBxaiyFHVw+t0VfWoD4
+	Poid/dmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfgpf-000axx-1M;
-	Mon, 11 Sep 2023 13:20:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qfh0Y-000bvR-2B;
+	Mon, 11 Sep 2023 13:31:18 +0000
+Received: from mout-p-101.mailbox.org ([80.241.56.151])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfgpc-000awp-2P;
-	Mon, 11 Sep 2023 13:20:02 +0000
-X-UUID: e780e3d250a511ee86758d4a7c00f3a0-20230911
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=fAOGM298IySlZlLQaVmQ6okhMP2zNlsEo7LxJ5B61Ng=;
-	b=A7ChhlRP1mWsvyOc7NAT0L7T/njzHBvLqHkuKN4o8380WQnbhEKkrKWdAY+foG++/idnJmUEOgkTInvCdumufUkZTXE2ZmVSxkN8GEb2mYYlXCL/ceHgRG4vBvWxHQ7IrxWqFGgLnN9/XuZRjcvIszvrELyPvIZs8D3DiVjNeuo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:8d9c01c3-6dd1-4883-86de-e89641984dc9,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:0ad78a4,CLOUDID:b28e90ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: e780e3d250a511ee86758d4a7c00f3a0-20230911
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1715400398; Mon, 11 Sep 2023 06:19:57 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 11 Sep 2023 20:59:52 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 20:59:51 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
-CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
- Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 14/14] media: medkatek: vcodec: support tee decoder
-Date: Mon, 11 Sep 2023 20:59:36 +0800
-Message-ID: <20230911125936.10648-15-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230911125936.10648-1-yunfei.dong@mediatek.com>
-References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
+	id 1qfh0T-000buP-0i;
+	Mon, 11 Sep 2023 13:31:16 +0000
+Received: from smtp1.mailbox.org (smtp1.mailbox.org [IPv6:2001:67c:2050:b231:465::1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mout-p-101.mailbox.org (Postfix) with ESMTPS id 4Rknfc2Jtlz9smc;
+	Mon, 11 Sep 2023 15:31:04 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
+	t=1694439064;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ssPtRhzagK/d9RC/A8i5dkXgGiUcU7PPGH+ptkQbYgk=;
+	b=yjg5muxkqrF115Eg74FhgWcpucBCqqIZVB6zpdeKqWgFPxSesDwfq9HHz5A2ewKkGtXMLk
+	SSPhlTQlT4kkBz66FCvKb+Osxf59CFHQ9CCcbQqiqWw+V60evAGbGKN0yFdQyxmCOnjqVz
+	z+veeOK1T2qRPmi7kNk6e7B3H6ecreFc+o2pwOV4jyDNfMmpeeOXLjf4FcFRDeZvoGJR1Y
+	kR7qHSp04oA/t1s6/zP6P4FD3/IaTZpAAykSq7IOYurkjj7ATUJaU+J9LCcF/eEf4VjqNc
+	psAFjEt3eRSeTkKCe8TpP/ZDxi5U3+oql7q/5zEIjt02gWa0hjyTCJ0LzdQLQA==
+Message-ID: <550454b8-2e2c-c947-92c5-37f0367661c2@mailbox.org>
+Date: Mon, 11 Sep 2023 15:30:55 +0200
 MIME-Version: 1.0
+Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
+To: Maxime Ripard <mripard@kernel.org>
+Cc: emma@anholt.net, linux-doc@vger.kernel.org, vignesh.raman@collabora.com,
+ dri-devel@lists.freedesktop.org, alyssa@rosenzweig.io, jbrunet@baylibre.com,
+ robdclark@google.com, corbet@lwn.net, khilman@baylibre.com,
+ sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com,
+ linux-rockchip@lists.infradead.org, Daniel Stone <daniels@collabora.com>,
+ martin.blumenstingl@googlemail.com, robclark@freedesktop.org,
+ Helen Koike <helen.koike@collabora.com>, anholt@google.com,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-amlogic@lists.infradead.org, gustavo.padovan@collabora.com,
+ linux-arm-kernel@lists.infradead.org,
+ angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org,
+ guilherme.gallo@collabora.com, linux-kernel@vger.kernel.org,
+ tzimmermann@suse.de
+References: <zorvxwffshrsqx5cy76pe3gn52qrqav7qusz5acav2un2ydvwr@fwjd56qg2xve>
+ <87bkeo23vs.fsf@intel.com>
+ <4rpsqk4tgrdcxtxtfoum6o4oyglwkirmkh3jj4y5tays2ivb5p@uwqdf3snshkv>
+ <25df6189-7b0a-b13d-e93d-c2a388fd45e3@collabora.com>
+ <zmq7pz7rtz6h765azg5kl2qgjd264yafctx4q474t5tqai57og@cajbcub4yuwr>
+ <5fdf9d29-3f8d-0ee0-027f-57ff3a5cecb8@collabora.com>
+ <CAKMK7uGg6n322UugJwErqF_Dvsbqceqae6SVWV3ZWEOR7x36rQ@mail.gmail.com>
+ <9a2b1ad8-4359-4f12-b4f9-c1de477bc440@collabora.com>
+ <mnjcsiqjqdnvbbkaaz5r4n42e56qsax667r7radzyagnmmfkip@dfi64z5deqzj>
+ <b7d96985-8489-efe2-db67-1f3108e26822@mailbox.org>
+ <5ejq3hjpoy3gxft2jbmoa5m656usetuxcs7g3ezyyiitj67rav@r5jhdz27foat>
+Content-Language: en-CA
+From: =?UTF-8?Q?Michel_D=c3=a4nzer?= <michel.daenzer@mailbox.org>
+In-Reply-To: <5ejq3hjpoy3gxft2jbmoa5m656usetuxcs7g3ezyyiitj67rav@r5jhdz27foat>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-MBO-RS-ID: 859e5b194a06fb7bf8b
+X-MBO-RS-META: 65ehrkuf6iokmf66d98o95pexrmxssjh
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_062000_883429_E5D89297 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20230911_063113_470622_E8D017DE 
+X-CRM114-Status: GOOD (  35.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,42 +97,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Initialize tee private data to support secure decoder.
-Release tee related information for each instance when decoder
-done.
+On 9/11/23 14:51, Maxime Ripard wrote:
+> On Mon, Sep 11, 2023 at 02:13:43PM +0200, Michel Dänzer wrote:
+>> On 9/11/23 11:34, Maxime Ripard wrote:
+>>> On Thu, Sep 07, 2023 at 01:40:02PM +0200, Daniel Stone wrote:
+>>>>
+>>>> Secondly, we will never be there. If we could pause for five years and sit
+>>>> down making all the current usecases for all the current hardware on the
+>>>> current kernel run perfectly, we'd probably get there. But we can't: there's
+>>>> new hardware, new userspace, and hundreds of new kernel trees.
+>>>
+>>> [...]
+>>> 
+>>> I'm not sure it's actually an argument, really. 10 years ago, we would
+>>> never have been at "every GPU on the market has an open-source driver"
+>>> here. 5 years ago, we would never have been at this-series-here. That
+>>> didn't stop anyone making progress, everyone involved in that thread
+>>> included.
+>>
+>> Even assuming perfection is achievable at all (which is very doubtful,
+>> given the experience from the last few years of CI in Mesa and other
+>> projects), if you demand perfection before even taking the first step,
+>> it will never get off the ground.
+> 
+> Perfection and scale from the get-go isn't reasonable, yes. Building a
+> small, "perfect" (your words, not mine) system that you can later expand
+> is doable.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+I mean "perfect" as in every single available test runs, is reliable and gates CI. Which seems to be what you're asking for. The only possible expansion of such a system would be adding new 100% reliable tests.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-index 64e006820f43..acb6d1f0392f 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-@@ -310,6 +310,9 @@ static int fops_vcodec_release(struct file *file)
- 	v4l2_fh_exit(&ctx->fh);
- 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
- 
-+	if (ctx->is_svp_mode)
-+		mtk_vcodec_dec_optee_release(dev->optee_private);
-+
- 	mtk_vcodec_dbgfs_remove(dev, ctx->id);
- 	list_del_init(&ctx->list);
- 	kfree(ctx);
-@@ -440,6 +443,11 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 	atomic_set(&dev->dec_active_cnt, 0);
- 	memset(dev->vdec_racing_info, 0, sizeof(dev->vdec_racing_info));
- 	mutex_init(&dev->dec_racing_info_mutex);
-+	ret = mtk_vcodec_dec_optee_private_init(dev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to init svp private.");
-+		goto err_reg_cont;
-+	}
- 
- 	ret = video_register_device(vfd_dec, VFL_TYPE_VIDEO, -1);
- 	if (ret) {
+What is being proposed here is an "imperfect" system which takes into account the reality that some tests are not 100% reliable, and can be improved gradually while already preventing some regressions from getting merged.
+
+
+>>> How are we even supposed to detect those failures in the first
+>>> place if tests are flagged as unreliable?
+>>
+>> Based on experience with Mesa, only a relatively small minority of
+>> tests should need to be marked as flaky / not run at all. The majority
+>> of tests are reliable and can catch regressions even while some tests
+>> are not yet.
+> 
+> I understand and acknowledge that it worked with Mesa. That's great for
+> Mesa. That still doesn't mean that it's the panacea and is for every
+> project.
+
+Not sure what you're referring to by panacea, or how it relates to "some tests can be useful even while others aren't yet".
+
+
+>>> No matter what we do here, what you describe will always happen. Like,
+>>> if we do flag those tests as unreliable, what exactly prevents another
+>>> issue to come on top undetected, and what will happen when we re-enable
+>>> testing?
+>>
+>> Any issues affecting a test will need to be fixed before (re-)enabling
+>> the test for CI.
+> 
+> If that underlying issue is never fixed, at which point do we consider
+> that it's a failure and should never be re-enabled? Who has that role?
+
+Not sure what you're asking. Anybody can (re-)enable a test in CI, they just need to make sure first that it is reliable. Until somebody does that work, it'll stay disabled in CI.
+
+
+>>> It might or might not be an issue for Linus' release, but I can
+>>> definitely see the trouble already for stable releases where fixes will
+>>> be backported, but the test state list certainly won't be updated.
+>>
+>> If the stable branch maintainers want to take advantage of CI for the
+>> stable branches, they may need to hunt for corresponding state list
+>> commits sometimes. They'll need to take that into account for their
+>> decision.
+> 
+> So we just expect the stable maintainers to track each and every patches
+> involved in a test run, make sure that they are in a stable tree, and
+> then update the test list? Without having consulted them at all?
+
+I don't expect them to do anything. See the If at the start of what I wrote.
+
+
+>>>> By keeping those sets of expectations, we've been able to keep Mesa pretty
+>>>> clear of regressions, whilst having a very clear set of things that should
+>>>> be fixed to point to. It would be great if those set of things were zero,
+>>>> but it just isn't. Having that is far better than the two alternatives:
+>>>> either not testing at all (obviously bad), or having the test always be red
+>>>> so it's always ignored (might as well just not test).
+>>>
+>>> Isn't that what happens with flaky tests anyway?
+>>
+>> For a small minority of tests. Daniel was referring to whole test suites.
+>>
+>>> Even more so since we have 0 context when updating that list.
+>>
+>> The commit log can provide whatever context is needed.
+> 
+> Sure, I've yet to see that though.
+> 
+> There's in 6.6-rc1 around 240 reported flaky tests. None of them have
+> any context. That new series hads a few dozens too, without any context
+> either. And there's no mention about that being a plan, or a patch
+> adding a new policy for all tests going forward.
+
+That does sound bad, would need to be raised in review.
+
+
+> Any concern I raised were met with a giant "it worked on Mesa" handwave
+
+Lessons learned from years of experience with big real-world CI systems like this are hardly "handwaving".
+
+
 -- 
-2.18.0
+Earthling Michel Dänzer            |                  https://redhat.com
+Libre software enthusiast          |         Mesa and Xwayland developer
 
 
