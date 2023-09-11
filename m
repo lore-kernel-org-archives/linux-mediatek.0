@@ -4,96 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CC20EE57DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 10:57:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AB59EE7FF4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 10:58:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9t/tuA65wT0eZs+b0FA+a9eyUdqc9XfGqsquufrPl3g=; b=mODiWWiAc31GMmMg+qOE0GCo7Z
-	gET0HdpBx8OicmoGWGh8FXzICupX3nS02KsLWxO6eneQtjVwSMbof+ex3Gptf9cW0q2lKep3c3OR8
-	zxllEJpov2BSwhhW/xpVHpeZvLvA7BIE2srpj9GlgwFtItogZBRcKisLmJZCBEFyp2yg8McItmAaR
-	TpQ+VKV8nElvIAiw8ljQHQT5hbLiPZmsvPgOBbFO4Cax28dfccN+4Ntn/jLvRferzir3ltILK/3tc
-	VpvXErkckyojm122oG5hENg5PFNRt+zuAQYTzMAZvDxWaCLKb/Q1/w+m6b0dPuAt1HdEUImFy4Z4z
-	08tOL6mQ==;
+	bh=dV1ULk3h2PAC7M9xriUdhpvtpgDPg2AW820hvs34doc=; b=c3FmPPNFXQ/ucgqLq9dWr+4w4D
+	iUiHuJwF+6MZcMFRqMgSEH/Qs/Q4q84TKO5dmzsU6oAO3fWGCJZ3SR9t81hZSgWgoo1GPjj1QANJR
+	s2EPge4j4czovhtnCXl32kEwGRWEIasfPEZenS+5SkTrXJsoNjlUmNU20uSUdbDR61l5SHpuZZsiK
+	jIy8IhRN7CGq80uPXjVARRKmaeNeEGMDCuoAXYHql7eLdsI2wQb6PSHaTKXoSZTCIn7nBzHnNlL9N
+	r0kpPxnSN0TDwtjQizPCD5IZMqJE8s72h4QMJ3P8cJTf9QK0zMdINIturZD0cEqeUHnPXshWV/J1X
+	/bE9YD/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfebU-000KEF-0t;
-	Mon, 11 Sep 2023 10:57:16 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1qfecN-000Khp-1D;
+	Mon, 11 Sep 2023 10:58:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfebQ-000KBA-0j;
-	Mon, 11 Sep 2023 10:57:14 +0000
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38B8OB3K008351;
-	Mon, 11 Sep 2023 10:56:48 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-type; s=qcppdkim1;
- bh=9t/tuA65wT0eZs+b0FA+a9eyUdqc9XfGqsquufrPl3g=;
- b=FWWZNxG+O2+uA+DwGV1qVHrjVMFmeh9kWdfvWVPwC2fPwRF2oHYHPjsKGQQQpZFy7b50
- f2CJw4ttx2YHBLGnARyuV+ha1qqkyGL9ZVds5YFP9/sIjMUUPirEw1C4ZEA1bXzKkWMm
- YZ03/7TxwQ+XUBueCNXzjm8SjpUFmVxTOmaieUwlcXRa+Co2F3IqPPbsOClf9F9G4Ii2
- nzJ0Xx5Twl+epOq78ic7rKAYyVahUp2B9fif08KVMV1S6Oz71rpNjZ1Tbf4XEPhWImHF
- HVm04C+ICiSQJJi2HbWKipeFq5epohRw0Yx+z9ST0Z2e0OvPe/e3pv+KpxJKGyQttRBf wQ== 
-Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t0edmkqaq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Sep 2023 10:56:48 +0000
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38BAuloX018357
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Sep 2023 10:56:47 GMT
-Received: from hu-mojha-hyd.qualcomm.com (10.80.80.8) by
- nasanex01c.na.qualcomm.com (10.45.79.139) with Microsoft SMTP Server
+	id 1qfecJ-000Kdm-1h;
+	Mon, 11 Sep 2023 10:58:10 +0000
+X-UUID: 108932c0509211ee9b7791016c24628a-20230911
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=dV1ULk3h2PAC7M9xriUdhpvtpgDPg2AW820hvs34doc=;
+	b=S/GkkHpTzQrm/Exri6GpseQrnSFvi0R37SlaY0qZSlNgQO8dvnRuNV9LH6RBOkD1CHvGnjtM8wCFmwQv4wiSo5uEsLi7c3E3FR3rJW0rSpyo2eDMPzVf/en5fwDLwRDZPAvBvfIn2Bt94SatWI/wLiriedaXnS4167mMnL4x06I=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:5a49f168-6bf0-4fbc-9bee-0d80aab6562f,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:0ad78a4,CLOUDID:9b45b3be-14cc-44ca-b657-2d2783296e72,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 108932c0509211ee9b7791016c24628a-20230911
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <shuijing.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1238947503; Mon, 11 Sep 2023 03:57:56 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.36; Mon, 11 Sep 2023 03:56:37 -0700
-From: Mukesh Ojha <quic_mojha@quicinc.com>
-To: <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
-        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
-        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
-        <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
-        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
-        <will@kernel.org>, <linus.walleij@linaro.org>,
-        <andy.shevchenko@gmail.com>, <vigneshr@ti.com>, <nm@ti.com>,
-        <matthias.bgg@gmail.com>, <kgene@kernel.org>,
-        <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
-        <quic_tsoni@quicinc.com>
-CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-arm-msm@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
-        <linux-remoteproc@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>,
-        <quic_mojha@quicinc.com>
-Subject: [REBASE PATCH v5 17/17] firmware: qcom_scm: Add multiple download mode support
-Date: Mon, 11 Sep 2023 16:23:59 +0530
-Message-ID: <1694429639-21484-18-git-send-email-quic_mojha@quicinc.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
-References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
+ 15.2.1118.26; Mon, 11 Sep 2023 18:57:21 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 18:57:21 +0800
+From: Shuijing Li <shuijing.li@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<daniel@ffwll.ch>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Shuijing Li
+	<shuijing.li@mediatek.com>
+Subject: [PATCH v3,2/3] drm/mediatek: dsi: Add dsi cmdq_ctl to send panel initial code
+Date: Mon, 11 Sep 2023 18:57:35 +0800
+Message-ID: <20230911105736.11752-3-shuijing.li@mediatek.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230911105736.11752-1-shuijing.li@mediatek.com>
+References: <20230911105736.11752-1-shuijing.li@mediatek.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: YujbjpjEHNqq676eggwCrMIBo858Mw88
-X-Proofpoint-GUID: YujbjpjEHNqq676eggwCrMIBo858Mw88
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-09-11_06,2023-09-05_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0 adultscore=0
- priorityscore=1501 mlxlogscore=999 malwarescore=0 spamscore=0
- impostorscore=0 lowpriorityscore=0 clxscore=1015 phishscore=0 mlxscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2308100000 definitions=main-2309110099
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--6.122000-8.000000
+X-TMASE-MatchedRID: iSQL5szRvdFk2k+SbNFHUlPjo7D4SFg4GK57kZ/2makUtdRZTmEaIXue
+	rPMb7lIQzQCEFcQpqph8aEYzFtfkc3Avdl/gU+kWsyNb+yeIRAoRvEpVd3vS1d9RlPzeVuQQVKk
+	hiFZhhSiFWYX2TPbDEr1Odlcux5HWHxPMjOKY7A+6vVBUUydJCsRB0bsfrpPIx1FPlNAAmcCS/Q
+	9GtJQAANHVCWPd6c/6iJvyhyuD9BErGewB/EQRgZ6oP1a0mRIj
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--6.122000-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 508B35AC456FF8BF641720E0336AA77CFBCC70327C133A4FEB77B0845E4B15852000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_035712_265427_65EFD79F 
-X-CRM114-Status: GOOD (  18.49  )
+X-CRM114-CacheID: sfid-20230911_035807_574704_9D33CC36 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,47 +101,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently, scm driver only supports full dump when download
-mode is selected. Add support to enable minidump as well as
-enable it along with fulldump.
+For mt8188, add dsi cmdq reg control to send long packets to panel
+initialization. MT8188 hardware has been changed to automatically
+set the cmdq_size value by default when sending long packets.
+In this patch, the cmdq_size value is set manually instead.
+Remain consistent with previous IC.
 
-Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
 ---
- drivers/firmware/qcom_scm.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+Changes in v3:
+reorder patch 2/3 and 3/3, and describe more about why mt8188 need this
+patch,
+per suggestion from the previous thread:
+https://lore.kernel.org/lkml/411ddbf95e2c2298b84899065691d478069ec273.camel@mediatek.com/
+Changes in v2:
+use mtk_dsi_mask(dsi, DSI_CMDQ_SIZE, CMDQ_SIZE_SEL, CMDQ_SIZE_SEL); directly,
+per suggestion from the previous thread:
+https://lore.kernel.org/lkml/015f4c60-ed77-9e1f-8a6b-cda6e4f6ac93@gmail.com/
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/firmware/qcom_scm.c b/drivers/firmware/qcom_scm.c
-index 4ecdb0d025a4..c70ab9afd3cb 100644
---- a/drivers/firmware/qcom_scm.c
-+++ b/drivers/firmware/qcom_scm.c
-@@ -34,6 +34,8 @@ static u32 download_mode;
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index d8bfc2cce54d..e83705394ada 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -86,6 +86,7 @@
  
- #define QCOM_DLOAD_MASK		GENMASK(5, 4)
- #define QCOM_DLOAD_FULLDUMP	0x1
-+#define QCOM_DLOAD_MINIDUMP	0x2
-+#define QCOM_DLOAD_BOTHDUMP	(QCOM_DLOAD_FULLDUMP | QCOM_DLOAD_MINIDUMP)
- #define QCOM_DLOAD_NODUMP	0x0
+ #define DSI_CMDQ_SIZE		0x60
+ #define CMDQ_SIZE			0x3f
++#define CMDQ_SIZE_SEL		BIT(15)
  
- struct qcom_scm {
-@@ -86,6 +88,8 @@ static const char * const qcom_scm_convention_names[] = {
- static const char * const download_mode_name[] = {
- 	[QCOM_DLOAD_NODUMP]	= "off",
- 	[QCOM_DLOAD_FULLDUMP]	= "full",
-+	[QCOM_DLOAD_MINIDUMP]	= "mini",
-+	[QCOM_DLOAD_BOTHDUMP]	= "full,mini",
+ #define DSI_HSTX_CKL_WC		0x64
+ 
+@@ -178,6 +179,7 @@ struct mtk_dsi_driver_data {
+ 	const u32 reg_cmdq_off;
+ 	bool has_shadow_ctl;
+ 	bool has_size_ctl;
++	bool cmdq_long_packet_ctl;
  };
  
- static struct qcom_scm *__scm;
-@@ -1470,7 +1474,7 @@ static const struct kernel_param_ops download_mode_param_ops = {
+ struct mtk_dsi {
+@@ -996,6 +998,8 @@ static void mtk_dsi_cmdq(struct mtk_dsi *dsi, const struct mipi_dsi_msg *msg)
  
- module_param_cb(download_mode, &download_mode_param_ops, NULL, 0644);
- MODULE_PARM_DESC(download_mode,
--		"download mode: off/full are acceptable values");
-+		"download mode: off/full/mini/full,mini are acceptable values");
+ 	mtk_dsi_mask(dsi, reg_cmdq_off, cmdq_mask, reg_val);
+ 	mtk_dsi_mask(dsi, DSI_CMDQ_SIZE, CMDQ_SIZE, cmdq_size);
++	if (dsi->driver_data->cmdq_long_packet_ctl)
++		mtk_dsi_mask(dsi, DSI_CMDQ_SIZE, CMDQ_SIZE_SEL, CMDQ_SIZE_SEL);
+ }
  
- static int qcom_scm_probe(struct platform_device *pdev)
- {
+ static ssize_t mtk_dsi_host_send_cmd(struct mtk_dsi *dsi,
 -- 
-2.7.4
+2.40.1
 
 
