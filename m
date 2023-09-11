@@ -4,88 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DEAAEE7FF4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 16:11:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37A49EE57DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 16:12:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+QeZPdiVCIBARaAlW5frnuN99j3rzp4a9OMhyKJX2M8=; b=zFwByvPISocZB0ErQfPm4WON1v
-	yV+HUedRarVFwtULW54+F5581M06mJJO2grnHIvM1fV/wXXw7DLFsGJ8Tpf9o1eEDfsuTeOYhP+mN
-	cD70xJhTvsfzIb83Sh1EXKrpTkOcbjfY9h/SFx9wItyDfkJlVpj7aiNNYWNXeTmHjLZYcvtE9bP+q
-	jfxEr2NFPKO8LiY9c6r8VoPExSImo1+21SoIsO93Lg+KAi4xVtmIMQ+ogkzqmwJpCmY24B5UY1c0E
-	xP/ndszgm3+Amea+Zl+Iw0j1y72Nn/loW2V1JTSCzpXzdHpQPNh1EyZs3urFFmoqe487vaf4OHh5V
-	GgEnpMZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2Fm3Bafxaxq7OSAQ9sLz+uyVn20YSYfcySqL/LZ4QTY=; b=i+XJypSI00+na/cJBohdLtnYLM
+	RdJCVA3Ok8LsoCbpgcOTliYFjrreFEDltGzybAB1+AZl4TlAVMptMNxUWZoCMZzZ/nBcNkkPt41jx
+	i3n3PyS+gj0Ypi2xbbtvgmhIt+L099SAOwxtSFUXKlWx59vWn3lHUnJEmqs0XUlcG6Hdn0OVjoclE
+	71EdQ2vteXoVgvad7IQvl+rfO/rmMS0LPiZu6kT/4ouSBboseyMPgdCCRwQDnqbuHwRM/w3cNC5J0
+	SdmAEMLOeoAWv4WiTb0KLeK2lKTydgDKALzrbFcLdUaroOlYZSVz9dYZ702LPsTjn4pc322kECNKX
+	THi2csNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfjVH-000ygS-2h;
-	Mon, 11 Sep 2023 16:11:11 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1qfjWS-000yo0-00;
+	Mon, 11 Sep 2023 16:12:24 +0000
+Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfjVF-000yf8-09
+	id 1qfjWP-000ymz-11
 	for linux-mediatek@lists.infradead.org;
-	Mon, 11 Sep 2023 16:11:10 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-502934c88b7so7332710e87.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 11 Sep 2023 09:11:06 -0700 (PDT)
+	Mon, 11 Sep 2023 16:12:23 +0000
+Received: by mail-qv1-xf30.google.com with SMTP id 6a1803df08f44-6491907dbc3so30601006d6.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 11 Sep 2023 09:12:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1694448662; x=1695053462; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=+QeZPdiVCIBARaAlW5frnuN99j3rzp4a9OMhyKJX2M8=;
-        b=GUtY/rK6BhR8DmqtmuBWtstCVA/Nj09bcBVHZ2g0u4vvpJ01O07QrJskgO8K+IoeON
-         7OY+pbdQQUhuGf53EvqcCzMC6ZKdiRaLoi+Xt0pDgWOuYgnlQ+LS5a1ENsmlXznCB3Sf
-         nVEY1aITahEVtvOfK+1k2t8JOyd3O3ivOW2II=
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1694448739; x=1695053539; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=2Fm3Bafxaxq7OSAQ9sLz+uyVn20YSYfcySqL/LZ4QTY=;
+        b=A3eMlArGQRmNNqJIfrEvySsGuTl7o+pLm3wy+hHpCR4c9kYxqFk7cLV6bY/CoczQGv
+         Fm2Rp9NrwR/2Da0m/L5Gf+XYsLJP3vJZ8J05PPr4FDAbQqbjFmVvAzrU5+lYVRbz8iIP
+         5njzhxrl7oQcMAwRLsfoOCwSQm69IX7y9jvVkkLvUjk4WOKMHd2ddlf1UhfVEoJ0nIyq
+         TbgjC5eVTcuwURTdidJoxNbeSAUvkhsi9GFk4RSjeC23n+28I+q/VlvIQ6xEAW0yTNX/
+         pWhsgP0g8AAlF6TEWkjBmb5ZpcyTbhGSBhtA33EPsmZca2S9CkKxJH7UCKOAk+n6S+xI
+         uBEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694448662; x=1695053462;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=+QeZPdiVCIBARaAlW5frnuN99j3rzp4a9OMhyKJX2M8=;
-        b=hLIbNpmnRWJgzPaxfHAacz9L7sEgm+QQT3dTlmBRirCkuaPu8XCH1BPXRsq/aTqXoV
-         aAhjxUQwm0OsP3NwlT1vn76slHBSZLasjSyoTZVwCl+BlnGznqSLQFWhrukRf2pwQmqk
-         DWbqReU371apZ1IC5fhkJknS+tow79Nl2/tEZZgp9n8CGA583SbRcYLmtZQ+gXua1yBt
-         ayKwh2y7PY3/g3wi60kaMb9jS1kNzKipVc6H6slZPEEL3dA1ueLF8iGpnm7/anTb2Dzf
-         LLo508+teim5YjzjcnPK++UQ9KuwtaKrwSnyRGURZN1l1iCkFMOKEupH2ubePbDZm4FJ
-         uv4w==
-X-Gm-Message-State: AOJu0Yz+OFt+fgMskXyz6eX0MsBQVVMtPuFnvXmF9Pyv9q4gz4S8WS9s
-	8Qat+2/W9aa7cVbbspMNHgfx9yNCQe5c9Kv9aEu6Pw==
-X-Google-Smtp-Source: AGHT+IFitij3Pl3MXW5qAy/2i+82MF50TSi4196GiLezn/haEu8BXRVQwamS82xBUz8pAxOqumQr4w==
-X-Received: by 2002:a19:2d58:0:b0:4f8:6abe:5249 with SMTP id t24-20020a192d58000000b004f86abe5249mr7125644lft.3.1694448662346;
-        Mon, 11 Sep 2023 09:11:02 -0700 (PDT)
-Received: from mail-ed1-f41.google.com (mail-ed1-f41.google.com. [209.85.208.41])
-        by smtp.gmail.com with ESMTPSA id o24-20020a1709062e9800b009a19701e7b5sm5553519eji.96.2023.09.11.09.11.00
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 11 Sep 2023 09:11:01 -0700 (PDT)
-Received: by mail-ed1-f41.google.com with SMTP id 4fb4d7f45d1cf-51e24210395so21204a12.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 11 Sep 2023 09:11:00 -0700 (PDT)
-X-Received: by 2002:a50:9faa:0:b0:525:573c:6444 with SMTP id
- c39-20020a509faa000000b00525573c6444mr340372edf.1.1694448660156; Mon, 11 Sep
- 2023 09:11:00 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230901234202.566951-1-dianders@chromium.org>
- <20230901164111.RFT.5.I2b014f90afc4729b6ecc7b5ddd1f6dedcea4625b@changeid> <CAC=S1niYAC3PFQoAmwVc=1FcK29uu5sC9c1pGo-mku__y7eHcA@mail.gmail.com>
-In-Reply-To: <CAC=S1niYAC3PFQoAmwVc=1FcK29uu5sC9c1pGo-mku__y7eHcA@mail.gmail.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Mon, 11 Sep 2023 09:10:44 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=VT8ZQkcLn4nsxCygC5SG16qYW5igFfwM762jEK42p12g@mail.gmail.com>
-Message-ID: <CAD=FV=VT8ZQkcLn4nsxCygC5SG16qYW5igFfwM762jEK42p12g@mail.gmail.com>
-Subject: Re: [RFT PATCH 05/15] drm/mediatek: Call drm_atomic_helper_shutdown()
- at shutdown time
-To: Fei Shao <fshao@chromium.org>
-Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, airlied@gmail.com, 
-	angelogioacchino.delregno@collabora.com, chunkuang.hu@kernel.org, 
-	daniel@ffwll.ch, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	matthias.bgg@gmail.com, p.zabel@pengutronix.de
+        d=1e100.net; s=20230601; t=1694448739; x=1695053539;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=2Fm3Bafxaxq7OSAQ9sLz+uyVn20YSYfcySqL/LZ4QTY=;
+        b=h3C028KN96dNJYXI+KqfjJFk4FAhXCs0K+9No7bDELeON8bamdkqF2EOEWJHLvovaK
+         xUlQCThLKwca5lOiYKJfxzfx4+ds1XMiY0ZEosmru/oC3dfSpfVzQEpmvDPY0ekpEGoS
+         taM474DNtY8MgVc4amEyCtrswGwZjYiiQmm5bwQPbcAmnzYyE4GAFAlvCsxgAoKwpMdo
+         sOdMCjIlBks7RRVl3G3NhNc6l4YpKITkPjM5c41nz9c10dtgyWjtz6ct3v+sJHI8Emvk
+         edZFVTXtMwpk9B5uIj051dHCNolXUZOuEwcW43r6HLouLu3gta2A47uSqmqi8Pt8AOMi
+         D+1w==
+X-Gm-Message-State: AOJu0YzgGIXLv6Y3p9MEgPH1G662Bh6IuRuaC/oU5pSiGJ16Eaktw5YJ
+	cxgOKc2WSQSvPbDV6O5VXqu0Ig==
+X-Google-Smtp-Source: AGHT+IHfJzEj3YN+IDLa6c5OoOh5gMCnU53CNkVDYUfVOD27Y4SNqPHEBMqIhlGup6+WHXcBbS4pwQ==
+X-Received: by 2002:a05:6214:12da:b0:64f:43b9:fe4c with SMTP id s26-20020a05621412da00b0064f43b9fe4cmr10140146qvv.47.1694448738736;
+        Mon, 11 Sep 2023 09:12:18 -0700 (PDT)
+Received: from nicolas-tpx395.localdomain ([2606:6d00:15:bae9::7a9])
+        by smtp.gmail.com with ESMTPSA id e12-20020a0ce3cc000000b0063d30c10f1esm3038666qvl.70.2023.09.11.09.12.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Sep 2023 09:12:18 -0700 (PDT)
+Message-ID: <827b859e3ff8176ef0b18c29bc17481b4105e368.camel@ndufresne.ca>
+Subject: Re: [PATCH 3/9] dma-heap: Provide accessors so that in-kernel
+ drivers can allocate dmabufs from specific heaps
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Sumit
+ Semwal <sumit.semwal@linaro.org>, christian.koenig@amd.com, Matthias
+ Brugger <matthias.bgg@gmail.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+ <conor+dt@kernel.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+  Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>,
+ tjmercier@google.com,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org,  linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org,  linaro-mm-sig@lists.linaro.org,
+ linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org,
+ jianjiao.zeng@mediatek.com,  kuohong.wang@mediatek.com
+Date: Mon, 11 Sep 2023 12:12:17 -0400
+In-Reply-To: <20230911023038.30649-4-yong.wu@mediatek.com>
+References: <20230911023038.30649-1-yong.wu@mediatek.com>
+	 <20230911023038.30649-4-yong.wu@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_091109_084071_EDB6B3FE 
-X-CRM114-Status: GOOD (  18.33  )
+X-CRM114-CacheID: sfid-20230911_091221_576315_1A41C259 
+X-CRM114-Status: GOOD (  34.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,44 +105,214 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi,
 
-On Fri, Sep 8, 2023 at 4:51=E2=80=AFAM Fei Shao <fshao@chromium.org> wrote:
->
-> Hi,
->
-> On Sat, Sep 2, 2023 at 7:42=E2=80=AFAM Douglas Anderson <dianders@chromiu=
-m.org> wrote:
-> ...<snip>
-> > @@ -952,6 +960,7 @@ static const struct dev_pm_ops mtk_drm_pm_ops =3D {
-> >  static struct platform_driver mtk_drm_platform_driver =3D {
-> >         .probe  =3D mtk_drm_probe,
-> >         .remove =3D mtk_drm_remove,
->
-> I think this patch, and perhaps some others in this series, will have
-> a trivial conflict to Uwe's work about the remove callback conversion
-> e.g. [1], so you might want to rebase the series onto the latest
-> linux-next.
->
-> On the other hand, I tested this patch on MT8195 and MT8188
-> Chromebooks and I don't see issues during boot / reboot, so
->
-> Reviewed-by: Fei Shao <fshao@chromium.org>
-> Tested-by: Fei Shao <fshao@chromium.org>
->
-> [1]: https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.g=
-it/commit/?h=3Dmediatek-drm-next&id=3Db3af12a0b46888340e024ba8b231605bcf2d0=
-ab3
+Le lundi 11 septembre 2023 =C3=A0 10:30 +0800, Yong Wu a =C3=A9crit=C2=A0:
+> From: John Stultz <jstultz@google.com>
+>=20
+> This allows drivers who don't want to create their own
+> DMA-BUF exporter to be able to allocate DMA-BUFs directly
+> from existing DMA-BUF Heaps.
+>=20
+> There is some concern that the premise of DMA-BUF heaps is
+> that userland knows better about what type of heap memory
+> is needed for a pipeline, so it would likely be best for
+> drivers to import and fill DMA-BUFs allocated by userland
+> instead of allocating one themselves, but this is still
+> up for debate.
 
-That makes sense. I had based this series on drm-misc-next which
-didn't have those, but now that a new -rc1 is out it then
-drm-misc-next should rebase shortly. I'll make sure that the next
-version includes Uwe's changes as much as possible.
 
-That being said, I also wouldn't object if the maintainer of this DRM
-driver wanted to resolve conflicts themselves and land the patch
-without me needing to resend. The conflict is trivial, there are no
-dependencies and no reason to land the series all at once, so landing
-this patch early would mean less spam for the maintainer since they
-would no longer get CCed on future versions. :-P Just sayin...
+Would be nice for the reviewers to provide the information about the user o=
+f
+this new in-kernel API. I noticed it because I was CCed, but strangely it d=
+idn't
+make it to the mailing list yet and its not clear in the cover what this is=
+ used
+with.=20
 
--Doug
+I can explain in my words though, my read is that this is used to allocate =
+both
+user visible and driver internal memory segments in MTK VCODEC driver.
+
+I'm somewhat concerned that DMABuf objects are used to abstract secure memo=
+ry
+allocation from tee. For framebuffers that are going to be exported and sha=
+red
+its probably fair use, but it seems that internal shared memory and codec
+specific reference buffers also endup with a dmabuf fd (often called a secu=
+re fd
+in the v4l2 patchset) for data that is not being shared, and requires a 1:1
+mapping to a tee handle anyway. Is that the design we'd like to follow ? Ca=
+n't
+we directly allocate from the tee, adding needed helper to make this as sim=
+ple
+as allocating from a HEAP ?
+
+Nicolas
+
+>=20
+> Signed-off-by: John Stultz <jstultz@google.com>
+> Signed-off-by: T.J. Mercier <tjmercier@google.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> [Yong: Fix the checkpatch alignment warning]
+> ---
+>  drivers/dma-buf/dma-heap.c | 60 ++++++++++++++++++++++++++++----------
+>  include/linux/dma-heap.h   | 25 ++++++++++++++++
+>  2 files changed, 69 insertions(+), 16 deletions(-)
+>=20
+> diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
+> index dcc0e38c61fa..908bb30dc864 100644
+> --- a/drivers/dma-buf/dma-heap.c
+> +++ b/drivers/dma-buf/dma-heap.c
+> @@ -53,12 +53,15 @@ static dev_t dma_heap_devt;
+>  static struct class *dma_heap_class;
+>  static DEFINE_XARRAY_ALLOC(dma_heap_minors);
+> =20
+> -static int dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
+> -				 unsigned int fd_flags,
+> -				 unsigned int heap_flags)
+> +struct dma_buf *dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
+> +				      unsigned int fd_flags,
+> +				      unsigned int heap_flags)
+>  {
+> -	struct dma_buf *dmabuf;
+> -	int fd;
+> +	if (fd_flags & ~DMA_HEAP_VALID_FD_FLAGS)
+> +		return ERR_PTR(-EINVAL);
+> +
+> +	if (heap_flags & ~DMA_HEAP_VALID_HEAP_FLAGS)
+> +		return ERR_PTR(-EINVAL);
+> =20
+>  	/*
+>  	 * Allocations from all heaps have to begin
+> @@ -66,9 +69,20 @@ static int dma_heap_buffer_alloc(struct dma_heap *heap=
+, size_t len,
+>  	 */
+>  	len =3D PAGE_ALIGN(len);
+>  	if (!len)
+> -		return -EINVAL;
+> +		return ERR_PTR(-EINVAL);
+> =20
+> -	dmabuf =3D heap->ops->allocate(heap, len, fd_flags, heap_flags);
+> +	return heap->ops->allocate(heap, len, fd_flags, heap_flags);
+> +}
+> +EXPORT_SYMBOL_GPL(dma_heap_buffer_alloc);
+> +
+> +static int dma_heap_bufferfd_alloc(struct dma_heap *heap, size_t len,
+> +				   unsigned int fd_flags,
+> +				   unsigned int heap_flags)
+> +{
+> +	struct dma_buf *dmabuf;
+> +	int fd;
+> +
+> +	dmabuf =3D dma_heap_buffer_alloc(heap, len, fd_flags, heap_flags);
+>  	if (IS_ERR(dmabuf))
+>  		return PTR_ERR(dmabuf);
+> =20
+> @@ -106,15 +120,9 @@ static long dma_heap_ioctl_allocate(struct file *fil=
+e, void *data)
+>  	if (heap_allocation->fd)
+>  		return -EINVAL;
+> =20
+> -	if (heap_allocation->fd_flags & ~DMA_HEAP_VALID_FD_FLAGS)
+> -		return -EINVAL;
+> -
+> -	if (heap_allocation->heap_flags & ~DMA_HEAP_VALID_HEAP_FLAGS)
+> -		return -EINVAL;
+> -
+> -	fd =3D dma_heap_buffer_alloc(heap, heap_allocation->len,
+> -				   heap_allocation->fd_flags,
+> -				   heap_allocation->heap_flags);
+> +	fd =3D dma_heap_bufferfd_alloc(heap, heap_allocation->len,
+> +				     heap_allocation->fd_flags,
+> +				     heap_allocation->heap_flags);
+>  	if (fd < 0)
+>  		return fd;
+> =20
+> @@ -205,6 +213,7 @@ const char *dma_heap_get_name(struct dma_heap *heap)
+>  {
+>  	return heap->name;
+>  }
+> +EXPORT_SYMBOL_GPL(dma_heap_get_name);
+> =20
+>  struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_inf=
+o)
+>  {
+> @@ -290,6 +299,24 @@ struct dma_heap *dma_heap_add(const struct dma_heap_=
+export_info *exp_info)
+>  	kfree(heap);
+>  	return err_ret;
+>  }
+> +EXPORT_SYMBOL_GPL(dma_heap_add);
+> +
+> +struct dma_heap *dma_heap_find(const char *name)
+> +{
+> +	struct dma_heap *h;
+> +
+> +	mutex_lock(&heap_list_lock);
+> +	list_for_each_entry(h, &heap_list, list) {
+> +		if (!strcmp(h->name, name)) {
+> +			kref_get(&h->refcount);
+> +			mutex_unlock(&heap_list_lock);
+> +			return h;
+> +		}
+> +	}
+> +	mutex_unlock(&heap_list_lock);
+> +	return NULL;
+> +}
+> +EXPORT_SYMBOL_GPL(dma_heap_find);
+> =20
+>  static void dma_heap_release(struct kref *ref)
+>  {
+> @@ -315,6 +342,7 @@ void dma_heap_put(struct dma_heap *h)
+>  	kref_put(&h->refcount, dma_heap_release);
+>  	mutex_unlock(&heap_list_lock);
+>  }
+> +EXPORT_SYMBOL_GPL(dma_heap_put);
+> =20
+>  static char *dma_heap_devnode(const struct device *dev, umode_t *mode)
+>  {
+> diff --git a/include/linux/dma-heap.h b/include/linux/dma-heap.h
+> index f3c678892c5c..59e70f6c7a60 100644
+> --- a/include/linux/dma-heap.h
+> +++ b/include/linux/dma-heap.h
+> @@ -64,10 +64,35 @@ const char *dma_heap_get_name(struct dma_heap *heap);
+>   */
+>  struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_inf=
+o);
+> =20
+> +/**
+> + * dma_heap_find - get the heap registered with the specified name
+> + * @name: Name of the DMA-Heap to find
+> + *
+> + * Returns:
+> + * The DMA-Heap with the provided name.
+> + *
+> + * NOTE: DMA-Heaps returned from this function MUST be released using
+> + * dma_heap_put() when the user is done to enable the heap to be unloade=
+d.
+> + */
+> +struct dma_heap *dma_heap_find(const char *name);
+> +
+>  /**
+>   * dma_heap_put - drops a reference to a dmabuf heap, potentially freein=
+g it
+>   * @heap: the heap whose reference count to decrement
+>   */
+>  void dma_heap_put(struct dma_heap *heap);
+> =20
+> +/**
+> + * dma_heap_buffer_alloc - Allocate dma-buf from a dma_heap
+> + * @heap:	DMA-Heap to allocate from
+> + * @len:	size to allocate in bytes
+> + * @fd_flags:	flags to set on returned dma-buf fd
+> + * @heap_flags: flags to pass to the dma heap
+> + *
+> + * This is for internal dma-buf allocations only. Free returned buffers =
+with dma_buf_put().
+> + */
+> +struct dma_buf *dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
+> +				      unsigned int fd_flags,
+> +				      unsigned int heap_flags);
+> +
+>  #endif /* _DMA_HEAPS_H */
+
 
