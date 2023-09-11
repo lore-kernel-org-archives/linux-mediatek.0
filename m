@@ -4,88 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64A89EEB57D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 12:08:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19CA9EE57DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 12:10:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zHf+NThOhs8TTk+3fFCnClKz7RDWswm3rzQpmAi2/ps=; b=iU1RDokedfcV6Z9SNu+qIslsiq
-	l3svsb03KL4GETTWTmUza4Tr7Fu87UC9pCoLVj+jHGuUZI04oSUUs1O3zcYLprc7sYKjkChVAUKhA
-	Klh0U2OuaQExZKVwyBcJgn8YPkleVinkOFnVJWTadpExjMVFI1uDJy7aqHTTEryjrO/kUZqcZ06uM
-	JPSkGULDDClKOh1xQY8JvBKi2FwLUwfakUW1UfmdfwwpBF+PLADn/QLpVeKpX91kMlN0qQCz6e0xV
-	g6Ly85/PLDmxHW4YCigM4MPVhVi73mhDzzb5G+Qj56N7rsPPPjA52clF309NBjiCcis1AycSu4Qxm
-	GpENUy5w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HGXHlyuW7tI3KkroRX3EwubPO1mf8HTAk2ndjhHoNFs=; b=h7eNHdIImXtCQ9GjuwXZC8ASfh
+	eIEfflaxaII2QalMV6zcCfQfZXgu5ci0Q4uuvUcTdgEJWHJcBBhaVZZlgqGpzvYL8WOy8cbXx7s9K
+	FaXPHl1oxkSH1qkaQuIDWtUDj/4nGLb9lD/eZeIAKpszEhyaqObB7QjbIyeGnP2b4J6uJ6lsby5dC
+	Oyg0gzCKGuwMZ2uOi2XGRQiHT0hE167Ev+FlOc/dYPFXh4Op7gAvDPRkkGLuv+OtzImnBNfLfn/xm
+	pkJ7gd99r9efXM2qW5Pxc7ZyY477sGgCkzTnwOdM3qOUlp//bvlucSmYig1GmXrQs05qh8UBS+Hmi
+	qZAemXkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qffiK-000Rud-1G;
-	Mon, 11 Sep 2023 12:08:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qffkZ-000SDK-02;
+	Mon, 11 Sep 2023 12:10:43 +0000
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qffiH-000RtT-0a;
-	Mon, 11 Sep 2023 12:08:22 +0000
-X-UUID: e5a43e88509b11ee9b7791016c24628a-20230911
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zHf+NThOhs8TTk+3fFCnClKz7RDWswm3rzQpmAi2/ps=;
-	b=YUiyfymIyZCnYV2cBAx/eUYNnClzp8Ikb31PrYuqY06A9AkaxZafdzlyaos1rk87YTzQ/RdZ3FUleaXLb/IM89oKc11tlxKB71iflCPTYy6yu14F0uFrCvmmnKQLuCbMN6aXiRCdpuwyWbQdWQGiFEA4k624BYcGFfD0x6n/2Uw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:c28d76ad-48fb-4065-8e2b-dad84615b177,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:461990ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: e5a43e88509b11ee9b7791016c24628a-20230911
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <shuijing.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1023337309; Mon, 11 Sep 2023 05:08:19 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 11 Sep 2023 20:07:44 +0800
-Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 20:07:43 +0800
-From: Shuijing Li <shuijing.li@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
-	<daniel@ffwll.ch>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Shuijing Li
-	<shuijing.li@mediatek.com>
-Subject: [PATCH v4,0/3] Add mt8188 compatiable for DSI cmd packet control
-Date: Mon, 11 Sep 2023 20:07:57 +0800
-Message-ID: <20230911120800.17369-1-shuijing.li@mediatek.com>
-X-Mailer: git-send-email 2.40.1
+	id 1qffkV-000SCl-1I;
+	Mon, 11 Sep 2023 12:10:40 +0000
+Received: from pps.filterd (m0353726.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38BBcf8k020281;
+	Mon, 11 Sep 2023 12:09:51 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=HGXHlyuW7tI3KkroRX3EwubPO1mf8HTAk2ndjhHoNFs=;
+ b=PWIIEP2lmDUfa1mp9pmw/oaZwzdtcpnlqzQ75hk9+FpJGvJYDU60r9trS5Z/VtLyDHft
+ 9WX+n5snuJJ5jbu5vUpOHlKrmCud7gkjCafXw2JlLlwDtpuM9LO25/9hM4ZNnK9/vKhf
+ l1qU1LZtGDxzxdwXmQxEa86eJVFAmwBgVfDVbQFx2Nm1Almhe4faCXCK8QzNT1ejl8yF
+ QR+nEvWye7K6HENvui0bkEIhPwedV8GX8xMoeAVJHxAzGF7xr7/nFp13TH8Xj3KOQHcr
+ h7xH4BM63pjFCbfz/lLveE+A3kojVUwJbk8xCa7Q1WSyEsQ7FXyRLhW42+3i3S8xCX16 Ug== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3t1wuq0aj0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 11 Sep 2023 12:09:50 +0000
+Received: from m0353726.ppops.net (m0353726.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 38BBedp6028128;
+	Mon, 11 Sep 2023 12:07:02 GMT
+Received: from ppma13.dal12v.mail.ibm.com (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3t1wuq08ya-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 11 Sep 2023 12:07:02 +0000
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+	by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 38BBOZ8H002318;
+	Mon, 11 Sep 2023 12:06:36 GMT
+Received: from smtprelay03.fra02v.mail.ibm.com ([9.218.2.224])
+	by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3t158jsvr1-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 11 Sep 2023 12:06:35 +0000
+Received: from smtpav03.fra02v.mail.ibm.com (smtpav03.fra02v.mail.ibm.com [10.20.54.102])
+	by smtprelay03.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 38BC6XqU66978064
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 11 Sep 2023 12:06:33 GMT
+Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id E64F02004B;
+	Mon, 11 Sep 2023 12:06:32 +0000 (GMT)
+Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 1D9F220043;
+	Mon, 11 Sep 2023 12:06:30 +0000 (GMT)
+Received: from [9.171.58.134] (unknown [9.171.58.134])
+	by smtpav03.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Mon, 11 Sep 2023 12:06:30 +0000 (GMT)
+Message-ID: <c5ac1459d2967c17e472d1c51d5017beb39e4714.camel@linux.ibm.com>
+Subject: Re: [PATCH v12 5/6] iommu/dma: Allow a single FQ in addition to
+ per-CPU FQs
+From: Niklas Schnelle <schnelle@linux.ibm.com>
+To: Joerg Roedel <joro@8bytes.org>, Matthew Rosato <mjrosato@linux.ibm.com>,
+        Will Deacon <will@kernel.org>, Wenjia Zhang <wenjia@linux.ibm.com>,
+        Robin
+ Murphy <robin.murphy@arm.com>, Jason Gunthorpe <jgg@ziepe.ca>
+Cc: Gerd Bayer <gbayer@linux.ibm.com>, Julian Ruess <julianr@linux.ibm.com>,
+        Pierre Morel <pmorel@linux.ibm.com>,
+        Alexandra Winter
+ <wintera@linux.ibm.com>,
+        Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik
+ <gor@linux.ibm.com>,
+        Alexander Gordeev <agordeev@linux.ibm.com>,
+        Christian
+ Borntraeger <borntraeger@linux.ibm.com>,
+        Sven Schnelle
+ <svens@linux.ibm.com>,
+        Suravee Suthikulpanit
+ <suravee.suthikulpanit@amd.com>,
+        Hector Martin <marcan@marcan.st>, Sven
+ Peter <sven@svenpeter.dev>,
+        Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+        David
+ Woodhouse <dwmw2@infradead.org>,
+        Lu Baolu <baolu.lu@linux.intel.com>, Andy
+ Gross <agross@kernel.org>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Konrad
+ Dybcio <konrad.dybcio@linaro.org>,
+        Yong Wu <yong.wu@mediatek.com>,
+        Matthias
+ Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+        Gerald Schaefer
+ <gerald.schaefer@linux.ibm.com>,
+        Orson Zhai <orsonzhai@gmail.com>,
+        Baolin
+ Wang <baolin.wang@linux.alibaba.com>,
+        Chunyan Zhang <zhang.lyra@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Thierry Reding
+ <thierry.reding@gmail.com>,
+        Krishna Reddy <vdumpa@nvidia.com>,
+        Jonathan
+ Hunter <jonathanh@nvidia.com>,
+        Jonathan Corbet <corbet@lwn.net>, linux-s390@vger.kernel.org,
+        netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+        iommu@lists.linux.dev, asahi@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+        linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org
+Date: Mon, 11 Sep 2023 14:06:29 +0200
+In-Reply-To: <20230825-dma_iommu-v12-5-4134455994a7@linux.ibm.com>
+References: <20230825-dma_iommu-v12-0-4134455994a7@linux.ibm.com>
+	 <20230825-dma_iommu-v12-5-4134455994a7@linux.ibm.com>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: 36tUcYWsI3-kwg7TjwTB82g2_ly-u1Zp
+X-Proofpoint-ORIG-GUID: CMa4t0Ot4oG8TuboxO12mxpMT2o-4HQO
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--5.997700-8.000000
-X-TMASE-MatchedRID: yvDAzrttxFXHCChNBbZThTvfsoCuAcP+h+w9Wz/xXDqIDxaki6CTmJgZ
-	2+o9ceX07wgYhNgOzKL/Z0qDAfk1Q6Gsq9dfniq5A9lly13c/gGeEP0DdJrulp2iHEDAUb20o8W
-	MkQWv6iUoTQl7wNH8Pg1fA1QHegDv3QfwsVk0UbtuRXh7bFKB7r+k1NFlulNIlZGidBa7H0aVZ3
-	zXfISSyJKTX6EwXfWI66XHIc5w+gc=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--5.997700-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 5CEDBA645C72677281071EC45D7C69839673C94A69C33ED544CCC4F0F1A94DF32000:8
-X-MTK: N
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-09-11_06,2023-09-05_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 spamscore=0
+ priorityscore=1501 clxscore=1011 impostorscore=0 suspectscore=0
+ adultscore=0 phishscore=0 bulkscore=0 malwarescore=0 mlxlogscore=957
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2308100000 definitions=main-2309110110
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_050821_221086_67FB6432 
-X-CRM114-Status: UNSURE (   7.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230911_051039_441613_8D1801C7 
+X-CRM114-Status: GOOD (  29.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,26 +161,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add dt-binding documentation of DSI for MediaTek MT8188 SoC.
-Because of the difference between SOC and DSI cmd packet control, for
-MT8188, it is necessary to increase the DSI_CMDQ_SIZE control when
-sending long packets to initialize the panel. Of course, this will not
-affect the sending of short packets.
+On Fri, 2023-08-25 at 12:11 +0200, Niklas Schnelle wrote:
+> In some virtualized environments, including s390 paged memory guests,
+> IOTLB flushes are used to update IOMMU shadow tables. Due to this, they
+> are much more expensive than in typical bare metal environments or
+> non-paged s390 guests. In addition they may parallelize poorly in
+> virtualized environments. This changes the trade off for flushing IOVAs
+> such that minimizing the number of IOTLB flushes trumps any benefit of
+> cheaper queuing operations or increased paralellism.
+>=20
+> In this scenario per-CPU flush queues pose several problems. Firstly
+> per-CPU memory is often quite limited prohibiting larger queues.
+> Secondly collecting IOVAs per-CPU but flushing via a global timeout
+> reduces the number of IOVAs flushed for each timeout especially on s390
+> where PCI interrupts may not be bound to a specific CPU.
+>=20
+> Let's introduce a single flush queue mode that reuses the same queue
+> logic but only allocates a single global queue. This mode is selected by
+> dma-iommu if a newly introduced .shadow_on_flush flag is set in struct
+> dev_iommu. As a first user the s390 IOMMU driver sets this flag during
+> probe_device. With the unchanged small FQ size and timeouts this setting
+> is worse than per-CPU queues but a follow up patch will make the FQ size
+> and timeout variable. Together this allows the common IOVA flushing code
+> to more closely resemble the global flush behavior used on s390's
+> previous internal DMA API implementation.
+>=20
+> Link: https://lore.kernel.org/all/9a466109-01c5-96b0-bf03-304123f435ee@ar=
+m.com/
+> Acked-by: Robin Murphy <robin.murphy@arm.com>
+> Reviewed-by: Matthew Rosato <mjrosato@linux.ibm.com> #s390
+> Signed-off-by: Niklas Schnelle <schnelle@linux.ibm.com>
+> ---
+>  drivers/iommu/dma-iommu.c  | 168 ++++++++++++++++++++++++++++++++++-----=
+------
+>  drivers/iommu/s390-iommu.c |   3 +
+>  include/linux/iommu.h      |   2 +
+>  3 files changed, 134 insertions(+), 39 deletions(-)
+>=20
+>=20
+---8<---
+>=20=20
+> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+> index 182cc4c71e62..c3687e066ed7 100644
+> --- a/include/linux/iommu.h
+> +++ b/include/linux/iommu.h
+> @@ -409,6 +409,7 @@ struct iommu_fault_param {
+>   * @priv:	 IOMMU Driver private data
+>   * @max_pasids:  number of PASIDs this device can consume
+>   * @attach_deferred: the dma domain attachment is deferred
+> + * @shadow_on_flush: IOTLB flushes are used to sync shadow tables
+>   *
+>   * TODO: migrate other per device data pointers under iommu_dev_data, e.=
+g.
+>   *	struct iommu_group	*iommu_group;
+> @@ -422,6 +423,7 @@ struct dev_iommu {
+>  	void				*priv;
+>  	u32				max_pasids;
+>  	u32				attach_deferred:1;
+> +	u32				shadow_on_flush:1;
 
-Base on the branch of linus/master v6.5.
+This causes a merge conflict with a48ce36e2786f ("iommu: Prevent
+RESV_DIRECT devices from blocking domains"), The resolution is trivial
+though in that shadow_on_flush:1 can just be added after (or before)
+require_direct:1. @Joro do you want me to sent a version with this
+resolution regardless or will you resolve this when applying?
 
-Shuijing Li (3):
-  dt-bindings: display: mediatek: dsi: Add compatible for MediaTek
-    MT8188
-  drm/mediatek: dsi: Add dsi cmdq_ctl to send panel initial code
-  drm/mediatek: Add mt8188 dsi compatible to mtk_dsi.c
-
- .../bindings/display/mediatek/mediatek,dsi.yaml   |  1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c            |  2 ++
- drivers/gpu/drm/mediatek/mtk_dsi.c                | 15 +++++++++++++++
- 3 files changed, 18 insertions(+)
-
--- 
-2.40.1
+>  };
+>=20=20
+>  int iommu_device_register(struct iommu_device *iommu,
+>=20
 
 
