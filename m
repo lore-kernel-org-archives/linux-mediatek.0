@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37376C71153
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 18:34:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FA23EE57DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 18:34:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E/Gp1HOJQpVt6kzdG1jbBjVVoqID2dO0BkBbfKI/SKo=; b=MzqtLiJ8F5s1Qv
-	IIFrTLlm09SMq38xnTqMem4shMJZA85u4cDYXJupbt5h3Cogf8ViKKTORYXwlVsLcrlftBbq7Pmzf
-	CRZn5fhvOMbS/1ToV8liNO6iuRQ1D3kB4o6UOb/gX0m4aUskHuqSu6p0fDs+xc5X3kIgmnhl5X/Pz
-	3fw2CJIcO8vKn1fgEycGR6KjPUuC1x1Gyr52mdaTmWcwMrQsBQaciZbxB4TAKqgIi12kqL9DOCDLR
-	leY5vI96uLh7a6NGtuvqbdK1RYpVCyug5s3SCD80Yq672SrpRZAaEGjAFuHvF08Nwz+yzfr97rf9a
-	J7QCSf8qzPQAHqaig50Q==;
+	List-Owner; bh=djECvGsElrduzfDnjcKHITIRetD7ZdhsfC7SD2s1HLY=; b=PUlL6+PNIOdDE9
+	YbttDMrqc2EQrKBmSnDNeNP9ONfCp5uzSIF6KJDfLL4YiwCFfnAf6vSuYk3Eld/MrSXYNUdTSDdPE
+	JbKYpg4UXgQcP9epNva0UliOTlmL4MOqai3/VWCexDN5q+zDQBZTFoRiD+8/KldAbwEMEkdDJQTA7
+	WTVSfaxSagvF8G2WlpJfIghPBmwe4EDROz6ou3mJjCwRg8h8ZujE/wDiuHiCojlaDDb2X1q3HlFeE
+	rSy51z/JzFkha+vM9C1Qp2f8Blna3/iraSxNkNw1qQP8agzSsqb6uVHjEEU1COaPuaFHcSym7aM3P
+	GtgPbJiWViroutkPHEDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfljm-0018Cs-0U;
-	Mon, 11 Sep 2023 18:34:18 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1qfljp-0018EB-1M;
+	Mon, 11 Sep 2023 18:34:21 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfljd-00189W-33;
+	id 1qfljd-00189U-2l;
 	Mon, 11 Sep 2023 18:34:12 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout3.routing.net (Postfix) with ESMTP id 8F86460546;
-	Mon, 11 Sep 2023 18:34:05 +0000 (UTC)
+	by mxout2.routing.net (Postfix) with ESMTP id BD9AE603FF;
+	Mon, 11 Sep 2023 18:34:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1694457245;
+	s=20200217; t=1694457244;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=E/Gp1HOJQpVt6kzdG1jbBjVVoqID2dO0BkBbfKI/SKo=;
-	b=T3GbUsbwnNVvUGY8yPZLniV/AUr8EG6aIW6ALp3mgTsJWef6nYUREpaG8EOemJtykiHkQ5
-	eTAS+00g8kHtMzUm+FHLwKOp/uKUm3tO1MDyJEZoSTxBFuRlLubzs8VwykqborcfnTnBc1
-	iSDMWmVoR0c/Z+OrRYdz9sCwYAJkhYs=
+	bh=djECvGsElrduzfDnjcKHITIRetD7ZdhsfC7SD2s1HLY=;
+	b=ITSEJaTrwiScKdYhKRjDhkzUrrWmEzTHf7X8fBaKQtsn97gob7SsOe9RUx4vgpfKcRrp8I
+	1KfbVWjKe/FB7rp3WHmGFv+uBI7u2bg6D6no7yhSCQGorMZl5TUCwcqirNXFUYsQ/9WwXe
+	0Tyuc9OxDlqmL2mGDRPkUoJGAXGu+V4=
 Received: from frank-G5.. (fttx-pool-217.61.151.158.bambit.de [217.61.151.158])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id A9F8636077E;
-	Mon, 11 Sep 2023 18:34:04 +0000 (UTC)
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id D55A8360182;
+	Mon, 11 Sep 2023 18:34:03 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org
-Subject: [RFC v1 3/3] thermal/drivers/mediatek/lvts_thermal: add mt7988 support
-Date: Mon, 11 Sep 2023 20:33:54 +0200
-Message-Id: <20230911183354.11487-4-linux@fw-web.de>
+Subject: [RFC v1 2/3] thermal/drivers/mediatek/lvts_thermal: make coeff configurable
+Date: Mon, 11 Sep 2023 20:33:53 +0200
+Message-Id: <20230911183354.11487-3-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230911183354.11487-1-linux@fw-web.de>
 References: <20230911183354.11487-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: a4e93b6f-45bb-4e0f-b9a9-b41ceba0b075
+X-Mail-ID: 4f2cf530-f0bc-4d35-b51f-24c4f5922d50
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_113410_124061_343A95EF 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20230911_113410_203724_D797BA4B 
+X-CRM114-Status: GOOD (  19.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,118 +73,203 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add Support for mediatek fologic 880/MT7988.
+The upcoming mt7988 has different temperature coefficients so we
+cannot use constants in the functions lvts_golden_temp_init,
+lvts_golden_temp_init and lvts_raw_to_temp anymore.
+
+Add a field in the lvts_ctrl pointing to the lvts_data which now
+contains the soc-specific temperature coefficents.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- drivers/thermal/mediatek/lvts_thermal.c | 73 +++++++++++++++++++++++++
- 1 file changed, 73 insertions(+)
+ drivers/thermal/mediatek/lvts_thermal.c | 56 ++++++++++++++++++-------
+ 1 file changed, 41 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index c1004b4da3b6..48b257a3c80e 100644
+index effd9b00a424..c1004b4da3b6 100644
 --- a/drivers/thermal/mediatek/lvts_thermal.c
 +++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -82,6 +82,8 @@
+@@ -80,8 +80,8 @@
+ #define LVTS_SENSOR_MAX				4
+ #define LVTS_GOLDEN_TEMP_MAX		62
  #define LVTS_GOLDEN_TEMP_DEFAULT	50
- #define LVTS_COEFF_A_MT8195			-250460
- #define LVTS_COEFF_B_MT8195			250460
-+#define LVTS_COEFF_A_MT7988			-204650
-+#define LVTS_COEFF_B_MT7988			204650
+-#define LVTS_COEFF_A				-250460
+-#define LVTS_COEFF_B				250460
++#define LVTS_COEFF_A_MT8195			-250460
++#define LVTS_COEFF_B_MT8195			250460
  
  #define LVTS_MSR_IMMEDIATE_MODE		0
  #define LVTS_MSR_FILTERED_MODE		1
-@@ -1272,6 +1274,67 @@ static int lvts_remove(struct platform_device *pdev)
+@@ -94,7 +94,7 @@
+ #define LVTS_MINIMUM_THRESHOLD		20000
+ 
+ static int golden_temp = LVTS_GOLDEN_TEMP_DEFAULT;
+-static int coeff_b = LVTS_COEFF_B;
++static int coeff_b;
+ 
+ struct lvts_sensor_data {
+ 	int dt_id;
+@@ -109,9 +109,15 @@ struct lvts_ctrl_data {
+ 	int mode;
+ };
+ 
++struct formula_coeff {
++	int a;
++	int b;
++};
++
+ struct lvts_data {
+ 	const struct lvts_ctrl_data *lvts_ctrl;
+ 	int num_lvts_ctrl;
++	struct formula_coeff coeff;
+ };
+ 
+ struct lvts_sensor {
+@@ -126,6 +132,7 @@ struct lvts_sensor {
+ 
+ struct lvts_ctrl {
+ 	struct lvts_sensor sensors[LVTS_SENSOR_MAX];
++	const struct lvts_data *lvts_data;
+ 	u32 calibration[LVTS_SENSOR_MAX];
+ 	u32 hw_tshut_raw_temp;
+ 	int num_lvts_sensor;
+@@ -247,21 +254,21 @@ static void lvts_debugfs_exit(struct lvts_domain *lvts_td) { }
+ 
+ #endif
+ 
+-static int lvts_raw_to_temp(u32 raw_temp)
++static int lvts_raw_to_temp(u32 raw_temp, struct formula_coeff coeff)
+ {
+ 	int temperature;
+ 
+-	temperature = ((s64)(raw_temp & 0xFFFF) * LVTS_COEFF_A) >> 14;
++	temperature = ((s64)(raw_temp & 0xFFFF) * coeff.a) >> 14;
+ 	temperature += coeff_b;
+ 
+ 	return temperature;
+ }
+ 
+-static u32 lvts_temp_to_raw(int temperature)
++static u32 lvts_temp_to_raw(int temperature, struct formula_coeff coeff)
+ {
+ 	u32 raw_temp = ((s64)(coeff_b - temperature)) << 14;
+ 
+-	raw_temp = div_s64(raw_temp, -LVTS_COEFF_A);
++	raw_temp = div_s64(raw_temp, -coeff.a);
+ 
+ 	return raw_temp;
+ }
+@@ -269,6 +276,9 @@ static u32 lvts_temp_to_raw(int temperature)
+ static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+ {
+ 	struct lvts_sensor *lvts_sensor = thermal_zone_device_priv(tz);
++	struct lvts_ctrl *lvts_ctrl = container_of(lvts_sensor, struct lvts_ctrl,
++						   sensors[lvts_sensor->id]);
++	const struct lvts_data *lvts_data = lvts_ctrl->lvts_data;
+ 	void __iomem *msr = lvts_sensor->msr;
+ 	u32 value;
+ 	int rc;
+@@ -301,7 +311,7 @@ static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+ 	if (rc)
+ 		return -EAGAIN;
+ 
+-	*temp = lvts_raw_to_temp(value & 0xFFFF);
++	*temp = lvts_raw_to_temp(value & 0xFFFF, lvts_data->coeff);
+ 
+ 	return 0;
+ }
+@@ -348,10 +358,13 @@ static bool lvts_should_update_thresh(struct lvts_ctrl *lvts_ctrl, int high)
+ static int lvts_set_trips(struct thermal_zone_device *tz, int low, int high)
+ {
+ 	struct lvts_sensor *lvts_sensor = thermal_zone_device_priv(tz);
+-	struct lvts_ctrl *lvts_ctrl = container_of(lvts_sensor, struct lvts_ctrl, sensors[lvts_sensor->id]);
++	struct lvts_ctrl *lvts_ctrl = container_of(lvts_sensor, struct lvts_ctrl,
++						   sensors[lvts_sensor->id]);
++	const struct lvts_data *lvts_data = lvts_ctrl->lvts_data;
+ 	void __iomem *base = lvts_sensor->base;
+-	u32 raw_low = lvts_temp_to_raw(low != -INT_MAX ? low : LVTS_MINIMUM_THRESHOLD);
+-	u32 raw_high = lvts_temp_to_raw(high);
++	u32 raw_low = lvts_temp_to_raw(low != -INT_MAX ? low : LVTS_MINIMUM_THRESHOLD,
++				       lvts_data->coeff);
++	u32 raw_high = lvts_temp_to_raw(high, lvts_data->coeff);
+ 	bool should_update_thresh;
+ 
+ 	lvts_sensor->low_thresh = low;
+@@ -692,7 +705,7 @@ static int lvts_calibration_read(struct device *dev, struct lvts_domain *lvts_td
  	return 0;
  }
  
-+/*
-+ * LVTS MT7988
-+ */
-+#define LVTS_HW_SHUTDOWN_MT7988	117000
-+//enum mt7988_lvts_domain { MT7988_AP_DOMAIN, MT7988_NUM_DOMAIN };
-+
-+enum mt7988_lvts_sensor_enum {
-+	MT7988_TS3_0,
-+	MT7988_TS3_1,
-+	MT7988_TS3_2,
-+	MT7988_TS3_3,
-+	MT7988_TS4_0,
-+	MT7988_TS4_1,
-+	MT7988_TS4_2,
-+	MT7988_TS4_3,
-+	MT7988_NUM_TS
-+};
-+
-+//Efuse base : 0x11f50000
-+//lvts offset in efuse : 0x918 (set in efuse dts node as calibration data)
-+//offsets:
-+//918 = LVTS_3_0_COUNT_R
-+//91C = LVTS_3_1_COUNT_R
-+//920 = LVTS_3_2_COUNT_R
-+//924 = LVTS_3_3_COUNT_R
-+//928 = LVTS_3_COUNT_RC
-+
-+//92C = LVTS_4_0_COUNT_R
-+//930 = LVTS_4_1_COUNT_R
-+//934 = LVTS_4_2_COUNT_R
-+//938 = LVTS_4_3_COUNT_R
-+//93C = LVTS_4_COUNT_RC
-+
-+static const struct lvts_ctrl_data mt7988_lvts_data_ctrl[] = {
-+	{
-+		.cal_offset = { 0x00, 0x04, 0x08, 0x0c }, //918,91C,920,924
-+		.lvts_sensor = {
-+			{ .dt_id = MT7988_TS3_0 },
-+			{ .dt_id = MT7988_TS3_1 },
-+			{ .dt_id = MT7988_TS3_2 },
-+			{ .dt_id = MT7988_TS3_3 }
-+		},
-+		.num_lvts_sensor = 4,
-+		.offset = 0x0,
-+		.hw_tshut_temp = LVTS_HW_SHUTDOWN_MT7988,
-+	},
-+	{
-+		.cal_offset = { 0x14, 0x18, 0x1c, 0x20 }, //92C,930,934,938
-+		.lvts_sensor = {
-+			{ .dt_id = MT7988_TS4_0},
-+			{ .dt_id = MT7988_TS4_1},
-+			{ .dt_id = MT7988_TS4_2},
-+			{ .dt_id = MT7988_TS4_3}
-+		},
-+		.num_lvts_sensor = 4,
-+		.offset = 0x100,
-+		.hw_tshut_temp = LVTS_HW_SHUTDOWN_MT7988,
-+	}
-+};
-+
-+//MT8195
- static const struct lvts_ctrl_data mt8195_lvts_mcu_data_ctrl[] = {
- 	{
- 		.cal_offset = { 0x04, 0x07 },
-@@ -1351,6 +1414,15 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_data_ctrl[] = {
- 	}
- };
+-static int lvts_golden_temp_init(struct device *dev, u32 *value)
++static int lvts_golden_temp_init(struct device *dev, u32 *value, struct formula_coeff coeff)
+ {
+ 	u32 gt;
  
-+static const struct lvts_data mt7988_lvts_data = {
-+	.lvts_ctrl	= mt7988_lvts_data_ctrl,
-+	.num_lvts_ctrl	= ARRAY_SIZE(mt7988_lvts_data_ctrl),
-+	.coeff = {
-+		.a = LVTS_COEFF_A_MT7988,
-+		.b = LVTS_COEFF_B_MT7988,
-+	},
-+};
+@@ -701,7 +714,7 @@ static int lvts_golden_temp_init(struct device *dev, u32 *value)
+ 	if (gt && gt < LVTS_GOLDEN_TEMP_MAX)
+ 		golden_temp = gt;
+ 
+-	coeff_b = golden_temp * 500 + LVTS_COEFF_B;
++	coeff_b = golden_temp * 500 + coeff.b;
+ 
+ 	return 0;
+ }
+@@ -724,7 +737,7 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
+ 	 * The golden temp information is contained in the first chunk
+ 	 * of efuse data.
+ 	 */
+-	ret = lvts_golden_temp_init(dev, (u32 *)lvts_td->calib);
++	ret = lvts_golden_temp_init(dev, (u32 *)lvts_td->calib, lvts_data->coeff);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -735,6 +748,7 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
+ 	for (i = 0; i < lvts_data->num_lvts_ctrl; i++) {
+ 
+ 		lvts_ctrl[i].base = lvts_td->base + lvts_data->lvts_ctrl[i].offset;
++		lvts_ctrl[i].lvts_data = lvts_data;
+ 
+ 		ret = lvts_sensor_init(dev, &lvts_ctrl[i],
+ 				       &lvts_data->lvts_ctrl[i]);
+@@ -758,7 +772,7 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
+ 		 * after initializing the calibration.
+ 		 */
+ 		lvts_ctrl[i].hw_tshut_raw_temp =
+-			lvts_temp_to_raw(lvts_data->lvts_ctrl[i].hw_tshut_temp);
++			lvts_temp_to_raw(lvts_data->lvts_ctrl[i].hw_tshut_temp, lvts_data->coeff);
+ 
+ 		lvts_ctrl[i].low_thresh = INT_MIN;
+ 		lvts_ctrl[i].high_thresh = INT_MIN;
+@@ -1223,6 +1237,8 @@ static int lvts_probe(struct platform_device *pdev)
+ 	if (irq < 0)
+ 		return irq;
+ 
++	coeff_b = lvts_data->coeff.b;
 +
+ 	ret = lvts_domain_init(dev, lvts_td, lvts_data);
+ 	if (ret)
+ 		return dev_err_probe(dev, ret, "Failed to initialize the lvts domain\n");
+@@ -1338,11 +1354,21 @@ static const struct lvts_ctrl_data mt8195_lvts_ap_data_ctrl[] = {
  static const struct lvts_data mt8195_lvts_mcu_data = {
  	.lvts_ctrl	= mt8195_lvts_mcu_data_ctrl,
  	.num_lvts_ctrl	= ARRAY_SIZE(mt8195_lvts_mcu_data_ctrl),
-@@ -1372,6 +1444,7 @@ static const struct lvts_data mt8195_lvts_ap_data = {
++
++	.coeff = {
++		.a = LVTS_COEFF_A_MT8195,
++		.b = LVTS_COEFF_B_MT8195,
++	},
+ };
+ 
+ static const struct lvts_data mt8195_lvts_ap_data = {
+ 	.lvts_ctrl	= mt8195_lvts_ap_data_ctrl,
+ 	.num_lvts_ctrl	= ARRAY_SIZE(mt8195_lvts_ap_data_ctrl),
++
++	.coeff = {
++		.a = LVTS_COEFF_A_MT8195,
++		.b = LVTS_COEFF_B_MT8195,
++	},
  };
  
  static const struct of_device_id lvts_of_match[] = {
-+	{ .compatible = "mediatek,mt7988-lvts", .data = &mt7988_lvts_data },
- 	{ .compatible = "mediatek,mt8195-lvts-mcu", .data = &mt8195_lvts_mcu_data },
- 	{ .compatible = "mediatek,mt8195-lvts-ap", .data = &mt8195_lvts_ap_data },
- 	{},
 -- 
 2.34.1
 
