@@ -4,71 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87FCEEEB580
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 07:30:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C99DEEB580
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 07:43:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g3UorbiQ7oQoLOGP9Vy6Qk5CHe9MvbFaiAnLuz6sKkc=; b=ssFKWxUwCvk7AguwqiaE4aMibW
-	yddwVXQyYzMeMpU4fwWN5L5GHJMSVdhMcOWOEsh1bqyuq7VykJUt6zOkQAoRROTNpJb1pg/BTaSaF
-	bo+cxPa2H43HPCpniO/Vql/NAnbmf6Qni9xxfy57NDNvCgTdOuU7bSWIzZ18AcJffRc7rGPwMlff0
-	oCq+k/MSprTNFUrL5YbAsG/9cKaOKzdqzZVSWd9RMLqu6tLEBXIito3uMWTi9SGzHWmK4kvUrD+LM
-	KcFBWTgP8OlnBVGAg+s/rTNgXc5f4RgLqsmBkzrRBK09Ze6bK5NUDpm1F3o9UvPU7T4Y16rD43M9D
-	kbMHIHdA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Dum0ZzdIzX75g8CGTmR32v++7pJ8YrqnJQNjcoVOBkE=; b=ljGOnDYkKGN+NMxuZeHJO1mFfs
+	DPk+WHXsO3aGbJHkoZtQ2qLcclsV5LyN7Aosvdl5YNUTrq60hsATzFvjLOxdWK/USjq25MAyLceub
+	H2RHqXdlPyyVgUm6Jo3/QFL//MTOw7L3T0vhWsLiW5IekBriiHVaLrcNUc8PDw2lk8BPl+dVvUpi4
+	jZwTFbcpez1kynlotG+WR5HMr0c5EzqYobHNbVaS8lnhoHUK2P3ivQbUekMZHekqKJFrozHUrBBa8
+	AxyKfCUkOerQtSEDikPWWrt9yeoTLngj+c3JYvWlOjG3elk3iLkw6Q66rDhFm2Td5f2fWdmMv7sfY
+	dq+60BJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfbNo-00HPrQ-0x;
-	Mon, 11 Sep 2023 07:30:56 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qfbZo-00HREP-2h;
+	Mon, 11 Sep 2023 07:43:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfbNk-00HPpg-2L;
-	Mon, 11 Sep 2023 07:30:54 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 07322CE0F87;
-	Mon, 11 Sep 2023 07:30:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 1BCA3C433CB;
-	Mon, 11 Sep 2023 07:30:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694417450;
-	bh=F/eFclIfgLF5FOW+UKQadQ3L0RVkLh2WomP2znmNaJU=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=agBSx1b5pRY8gRBVMkDFhXrwuIybXtjtk6RGZGXVFY7R/fiso+PDPq9+SnlkbooSw
-	 Mra3cFK+szkmxvErQw7Rlp6tXC77v1mUHnhxkPDQyP7N/4pK/wEedjl5br4ucNfmQW
-	 F+3GrVH4kb9M40T9cfqDPm2g9mj0Vx6kitZYYX2e7PoO9iYo47HDeseguOGky5C/U/
-	 TEJdzjWNxFo8otLAqJQP0bT5FOEVKlzneezGIQ1wwx4OP6AxYekAdljTrYyUlPQu5y
-	 rA1tE4rO2DnG9BnXMAD0XVT9vqKscSoA5lAsvHJWI1SU6CiEjQte9ehLt2UrSgY7aK
-	 4XC/a1PIuekZA==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id EBF86E1C282;
-	Mon, 11 Sep 2023 07:30:49 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1qfbZm-00HRCZ-21;
+	Mon, 11 Sep 2023 07:43:19 +0000
+X-UUID: dc95e348507611ee9b7791016c24628a-20230911
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Dum0ZzdIzX75g8CGTmR32v++7pJ8YrqnJQNjcoVOBkE=;
+	b=pyti6+94hfwEFMObe2jPFA9fDYdKIeoMV43biUeizCKmt6nxYk58vFYa7S3zHAFyzisG479zSFiJsWDbMCn1zU/vfkP3rI+dHTwDhsKoOmObwby49lHBj50ETOoggOkadNM7K5B2+hadXs9q/JwbRMjRAli7ykpq6EXcUid0Mi0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:c250311e-36a0-49d9-bf03-fd6c1a74e978,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:4424cb13-4929-4845-9571-38c601e9c3c9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: dc95e348507611ee9b7791016c24628a-20230911
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <shawn.sung@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 190545416; Mon, 11 Sep 2023 00:43:13 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 11 Sep 2023 15:42:44 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 15:42:44 +0800
+From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK
+ Hu <ck.hu@mediatek.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+CC: Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, "Nancy . Lin" <nancy.lin@mediatek.com>, "Jason-JH
+ . Lin" <jason-jh.lin@mediatek.com>, Hsiao Chien Sung
+	<shawn.sung@mediatek.com>
+Subject: [RESEND PATCH v6 05/20] dt-bindings: arm: mediatek: Add compatible for MT8188
+Date: Mon, 11 Sep 2023 15:42:18 +0800
+Message-ID: <20230911074233.31556-6-shawn.sung@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230911074233.31556-1-shawn.sung@mediatek.com>
+References: <20230911074233.31556-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2 0/3] Fix possible OOB write when using rule_buf
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169441744996.31104.2679100450916464813.git-patchwork-notify@kernel.org>
-Date: Mon, 11 Sep 2023 07:30:49 +0000
-References: <20230908061950.20287-1-hbh25y@gmail.com>
-In-Reply-To: <20230908061950.20287-1-hbh25y@gmail.com>
-To: Hangyu Hua <hbh25y@gmail.com>
-Cc: justin.chen@broadcom.com, florian.fainelli@broadcom.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- mw@semihalf.com, linux@armlinux.org.uk, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, lorenzo@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- maxime.chevallier@bootlin.com, nelson.chang@mediatek.com,
- bcm-kernel-feedback-list@broadcom.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_003052_947227_7434D7A2 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20230911_004318_664078_838AAC7F 
+X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,34 +96,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Add compatible name for MediaTek MT8188 VDOSYS1.
 
-This series was applied to netdev/net.git (main)
-by David S. Miller <davem@davemloft.net>:
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+---
+ .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml         | 1 +
+ 1 file changed, 1 insertion(+)
 
-On Fri,  8 Sep 2023 14:19:47 +0800 you wrote:
-> ADD bounds checks in bcmasp_netfilt_get_all_active and
-> mvpp2_ethtool_get_rxnfc and mtk_hwlro_get_fdir_all when
-> using rule_buf from ethtool_get_rxnfc.
-> 
-> v2:
-> [PATCH v2 1/3]: use -EMSGSIZE instead of truncating the list sliently.
-> [PATCH v2 3/3]: drop the brackets.
-> 
-> [...]
-
-Here is the summary with links:
-  - [v2,1/3] net: ethernet: bcmasp: fix possible OOB write in bcmasp_netfilt_get_all_active()
-    https://git.kernel.org/netdev/net/c/9b90aca97f6d
-  - [v2,2/3] net: ethernet: mvpp2_main: fix possible OOB write in mvpp2_ethtool_get_rxnfc()
-    https://git.kernel.org/netdev/net/c/51fe0a470543
-  - [v2,3/3] net: ethernet: mtk_eth_soc: fix possible NULL pointer dereference in mtk_hwlro_get_fdir_all()
-    https://git.kernel.org/netdev/net/c/e4c79810755f
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 536f5a5ebd24..642fa2e4736e 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -32,6 +32,7 @@ properties:
+               - mediatek,mt8183-mmsys
+               - mediatek,mt8186-mmsys
+               - mediatek,mt8188-vdosys0
++              - mediatek,mt8188-vdosys1
+               - mediatek,mt8192-mmsys
+               - mediatek,mt8195-vdosys1
+               - mediatek,mt8195-vppsys0
+--
+2.18.0
 
 
