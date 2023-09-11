@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59209EE57DF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6EC5EE7FF4
 	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 10:56:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VwP+Q3TJ0qt35pt6sa+rWuxsU0xvCE2mh+sXwEm+U/Y=; b=kDOEoboVBffSs/qJjXyMRaB9A1
-	E+8K2o/6JvRd6qJvDx5QJ5ICIJa8/BUZH0IhVeU+66RcNamO0LYIZBivo1JIxFyxspjHvuFaMJCuS
-	JZc7we17tVmtJMX0ycaeodqIpZgwcOir953zPJiVZDV3W0yKH2+NJEfsHBXbgR9v4t8dSFd4f2BEq
-	9qr3Y0fVUo948YoIXjMPgZ8Lgcqa05tnXKVwcdyPtwGkFW9GpBbguHYE0q/9HI+QU58Q3iMHBcik8
-	g34s4Eg5829Zx9GbMOIZ0UpBvJqsYzwYDGwlsyzuOsKeJrwP6EISAdb563kn28rTIbcAlQ0iX32mo
-	H92Atw0w==;
+	bh=4gOSVhCipTQhqe7KQujCKS59XbGovpmGhKA4BrqGRG4=; b=Xq5tzEXSI++cWm4Umlzj7hSS7Z
+	qu0RKtzqBauF0dA1lqKDUCw04VVaoOPtCevucjRusW5g84drd2a6IEq7xW8N7kVQclEtaWC+8gqem
+	DqDRE9TxABjqVPAUPFkaFgUJLh9ZLPYRz/KB5LszG5d8T4ZvbA0BzCcU3MUe6yUakxtdqJrX1z8zD
+	+3saEJpOuTJEjM4PIVJEig6zqD1UNH7yAqcv/bv1F6z2MLc/dyqlF5ub7QFfoiBM+TH5uTd6taElH
+	TOtLnhEbDacAv7VRJVNPaxkvoLM1jgQcULCERcFnek5P62VbD1jEtwf0PqHWFOzt1QVlh1AFyxpVH
+	/39yk1OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfeax-000Jn3-0X;
+	id 1qfeax-000JnE-1k;
 	Mon, 11 Sep 2023 10:56:43 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfeat-000JjE-0c;
-	Mon, 11 Sep 2023 10:56:40 +0000
+	id 1qfeat-000JjT-15;
+	Mon, 11 Sep 2023 10:56:41 +0000
 Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38B9gRRU024966;
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38BAmZOB029187;
 	Mon, 11 Sep 2023 10:56:13 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-type; s=qcppdkim1;
- bh=VwP+Q3TJ0qt35pt6sa+rWuxsU0xvCE2mh+sXwEm+U/Y=;
- b=UpRLauktl8IP2qD15ySzKV17N2oeaTj6ki+mulBAkWRnKM0R4Pdrd5YIFpqa+lK5c+qX
- uoUHXoPRfVKFP5D1F40URa9v4uRfjudFnSB7DXKge4xyrHudIeFcYHx8coxrLeqkgM7h
- NwXh0GGluYsvntg5wnLUB14ToKGZ93Q6T2Zs3ndB5XaOWUgRFWp0Fmf1ZWkI9YJCYiHQ
- 11+vSYLcqy9W34BkVe1HwtxMRMff+NVKym6Mc6l7scppmYHueuVoX2GUSVlX1mL9V2oz
- muZ/+WJC2Z/f8CbvSBg7AV2AFpVIcSabKBnhkyo1AYcOYIol5bh8wDvzpeb1agdNO9Me cw== 
+ bh=4gOSVhCipTQhqe7KQujCKS59XbGovpmGhKA4BrqGRG4=;
+ b=EoobLeUT13AVt3PTwJqXJwFoFY711k/p9kBdt8sNyDx2SYQiL2+AlkP3xxwlsm4ADRKL
+ +CzLEZHmHgE2tbzMTwJIg01wXHipHedMIRBYX64gw0cpiwnoQ0m8KJZ+30IWYBj7ls68
+ O4B6FJ6tr5X16QUK15HuMSBPqsZyVw+PPXXXx6cjegZDhcGpXAU4QQc+yJDv9VxJVABk
+ uHmq+CbUt6d/izNUgnDhZT4krttKpKCPF18dXXSMYOK9dEqV1UCY1RdxDgpFJh4tWW5v
+ csaOh3NHadUqNs2Wdu7Rg2hP7Q3vXSKunSAhJqi/948dEUQt0c7M/c9lIo0ipGPJSY7i lQ== 
 Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t0j0fkfkx-1
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t0j0fkfm0-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
 	Mon, 11 Sep 2023 10:56:13 +0000
 Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38BAuCVo006051
+	by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38BAuCVt006051
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Sep 2023 10:56:12 GMT
+	Mon, 11 Sep 2023 10:56:13 GMT
 Received: from hu-mojha-hyd.qualcomm.com (10.80.80.8) by
  nasanex01c.na.qualcomm.com (10.45.79.139) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.36; Mon, 11 Sep 2023 03:54:53 -0700
+ 15.2.1118.36; Mon, 11 Sep 2023 03:55:37 -0700
 From: Mukesh Ojha <quic_mojha@quicinc.com>
 To: <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
         <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
@@ -68,9 +68,9 @@ CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-mediatek@lists.infradead.org>,
         <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>,
         <quic_mojha@quicinc.com>
-Subject: [REBASE PATCH v5 05/17] init: export linux_banner data variable
-Date: Mon, 11 Sep 2023 16:23:47 +0530
-Message-ID: <1694429639-21484-6-git-send-email-quic_mojha@quicinc.com>
+Subject: [REBASE PATCH v5 10/17] pstore: Add pstore_region_defined() helper and export it
+Date: Mon, 11 Sep 2023 16:23:52 +0530
+Message-ID: <1694429639-21484-11-git-send-email-quic_mojha@quicinc.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
 References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
@@ -81,8 +81,8 @@ X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
  nasanex01c.na.qualcomm.com (10.45.79.139)
 X-QCInternal: smtphost
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: 4WpSAAikWRcnaatbg0nF3LvWQEQKlWS2
-X-Proofpoint-GUID: 4WpSAAikWRcnaatbg0nF3LvWQEQKlWS2
+X-Proofpoint-ORIG-GUID: XyQCjwjHOG0scL4SF1euCldLbQ6NjV_y
+X-Proofpoint-GUID: XyQCjwjHOG0scL4SF1euCldLbQ6NjV_y
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
  definitions=2023-09-11_06,2023-09-05_01,2023-05-22_02
@@ -92,8 +92,8 @@ X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorit
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2308100000
  definitions=main-2309110099
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_035639_234548_CC8F3ECB 
-X-CRM114-Status: GOOD (  17.47  )
+X-CRM114-CacheID: sfid-20230911_035639_376545_F41EEECB 
+X-CRM114-Status: GOOD (  21.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,48 +108,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some debug loadable module like minidump is interested in knowing
-the kernel version against which it is being build. Let's export
-linux_banner.
+There are users like Qualcomm minidump which is interested in
+knowing the pstore frontend addresses and sizes from the backend
+(ram) to be able to register it with firmware to finally collect
+them during crash for debugging.
 
 Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
 ---
- include/linux/init.h     | 3 +++
- init/version-timestamp.c | 3 +++
- 2 files changed, 6 insertions(+)
+ fs/pstore/platform.c   | 15 +++++++++++++++
+ fs/pstore/ram.c        | 42 ++++++++++++++++++++++++++++++++++++++++++
+ include/linux/pstore.h |  6 ++++++
+ 3 files changed, 63 insertions(+)
 
-diff --git a/include/linux/init.h b/include/linux/init.h
-index 29e75bbe7984..7c24d3ec0ff2 100644
---- a/include/linux/init.h
-+++ b/include/linux/init.h
-@@ -149,6 +149,9 @@ extern char *saved_command_line;
- extern unsigned int saved_command_line_len;
- extern unsigned int reset_devices;
+diff --git a/fs/pstore/platform.c b/fs/pstore/platform.c
+index e5bca9a004cc..fdac951059c1 100644
+--- a/fs/pstore/platform.c
++++ b/fs/pstore/platform.c
+@@ -139,6 +139,21 @@ enum pstore_type_id pstore_name_to_type(const char *name)
+ }
+ EXPORT_SYMBOL_GPL(pstore_name_to_type);
  
-+/* Defined in init/version-timestamp.c */
-+extern const char linux_banner[];
++int pstore_region_defined(struct pstore_record *record,
++			  void **virt, phys_addr_t *phys,
++			  size_t *size, unsigned int *max_dump_cnt)
++{
++	if (!psinfo)
++		return -EINVAL;
 +
- /* used by init/main.c */
- void setup_arch(char **);
- void prepare_namespace(void);
-diff --git a/init/version-timestamp.c b/init/version-timestamp.c
-index 043cbf80a766..a48f2c19e5d7 100644
---- a/init/version-timestamp.c
-+++ b/init/version-timestamp.c
-@@ -6,6 +6,7 @@
- #include <linux/refcount.h>
- #include <linux/uts.h>
- #include <linux/utsname.h>
-+#include <linux/init.h>
++	record->psi = psinfo;
++
++	return psinfo->region_info ?
++	       psinfo->region_info(record, virt, phys, size, max_dump_cnt) :
++	       -EINVAL;
++}
++EXPORT_SYMBOL_GPL(pstore_region_defined);
++
+ static void pstore_timer_kick(void)
+ {
+ 	if (pstore_update_ms < 0)
+diff --git a/fs/pstore/ram.c b/fs/pstore/ram.c
+index ab551caa1d2a..62202f3ddf63 100644
+--- a/fs/pstore/ram.c
++++ b/fs/pstore/ram.c
+@@ -437,6 +437,47 @@ static int ramoops_pstore_erase(struct pstore_record *record)
+ 	return 0;
+ }
  
- struct uts_namespace init_uts_ns = {
- 	.ns.count = REFCOUNT_INIT(2),
-@@ -28,3 +29,5 @@ struct uts_namespace init_uts_ns = {
- const char linux_banner[] =
- 	"Linux version " UTS_RELEASE " (" LINUX_COMPILE_BY "@"
- 	LINUX_COMPILE_HOST ") (" LINUX_COMPILER ") " UTS_VERSION "\n";
++static int ramoops_region_info(struct pstore_record *record,
++			       void **virt, phys_addr_t *phys,
++			       size_t *size, unsigned int *max_dump_cnt)
++{
++	struct ramoops_context *cxt = record->psi->data;
++	struct persistent_ram_zone *prz;
 +
-+EXPORT_SYMBOL_GPL(linux_banner);
++	switch (record->type) {
++	case PSTORE_TYPE_DMESG:
++		if (record->id >= cxt->max_dump_cnt)
++			return -EINVAL;
++		prz = cxt->dprzs[record->id];
++		*max_dump_cnt = cxt->max_dump_cnt;
++		break;
++	case PSTORE_TYPE_CONSOLE:
++		if (!cxt->console_size)
++			return -EINVAL;
++		prz = cxt->cprz;
++		break;
++	case PSTORE_TYPE_FTRACE:
++		if (record->id >= cxt->max_ftrace_cnt)
++			return -EINVAL;
++		prz = cxt->fprzs[record->id];
++		*max_dump_cnt = cxt->max_ftrace_cnt;
++		break;
++	case PSTORE_TYPE_PMSG:
++		if (!cxt->pmsg_size)
++			return -EINVAL;
++		prz = cxt->mprz;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	*virt = prz->vaddr;
++	*phys = prz->paddr;
++	*size = prz->size;
++
++	return 0;
++}
++
+ static struct ramoops_context oops_cxt = {
+ 	.pstore = {
+ 		.owner	= THIS_MODULE,
+@@ -446,6 +487,7 @@ static struct ramoops_context oops_cxt = {
+ 		.write	= ramoops_pstore_write,
+ 		.write_user	= ramoops_pstore_write_user,
+ 		.erase	= ramoops_pstore_erase,
++		.region_info = ramoops_region_info,
+ 	},
+ };
+ 
+diff --git a/include/linux/pstore.h b/include/linux/pstore.h
+index 638507a3c8ff..a64d866e8711 100644
+--- a/include/linux/pstore.h
++++ b/include/linux/pstore.h
+@@ -199,6 +199,9 @@ struct pstore_info {
+ 	int		(*write_user)(struct pstore_record *record,
+ 				      const char __user *buf);
+ 	int		(*erase)(struct pstore_record *record);
++	int		(*region_info)(struct pstore_record *record,
++				       void **virt, phys_addr_t *phys,
++				       size_t *size, unsigned int *max_dump_cnt);
+ };
+ 
+ /* Supported frontends */
+@@ -230,6 +233,9 @@ struct pstore_ftrace_record {
+ #define TS_CPU_SHIFT 8
+ #define TS_CPU_MASK (BIT(TS_CPU_SHIFT) - 1)
+ 
++int pstore_region_defined(struct pstore_record *record,
++			  void **virt, phys_addr_t *phys,
++			  size_t *size, unsigned int *max_dump_cnt);
+ /*
+  * If CPU number can be stored in IP, store it there, otherwise store it in
+  * the time stamp. This means more timestamp resolution is available when
 -- 
 2.7.4
 
