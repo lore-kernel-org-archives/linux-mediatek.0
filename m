@@ -4,94 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 354EDEE7FF4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 13:15:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DCA1EE57DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 13:19:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T2yRSNijSEry1q3t5KG0YspbSUTWaMB7q8b9zVPDgfQ=; b=VAt71MwqUQowanQvaA4sXfkRwj
-	ES4W7qm+NQ0lIidzvB0pd6z1gPpKfBeCwVgiOvPsnTgzGbJk9JoiVTx/4tRNNXNN0ibDlG7SkLZDn
-	aOTyqLrkHVZTQAPpDdi6ETPLTropOcIR6Gn+eQEIrE0zDhp8DbONKpqFe8M/x6/VPA6tbqToDhi9z
-	htYrXWE3AUvsAuS41BRy5kFCFGGoPyVeq0iPoJIrDStsZu7bFLYjldJLGVfqVS5gMLs7Cuq59QJ2H
-	vcDIM7ZFeScGZgPxNmrrwYurXeqGEfJ/bkF+scQKTwUyD2YcWmIQXZWVu6e40lT13v/S8bukvlZh7
-	mKtgFErw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=93tdu+eZZTWm52hzYA2GRKSowuDP7qkPC/Hw4lriyDw=; b=sQ2/7AJUy7MB82y+ebS2O4l0SW
+	JUE1JygEcgbBuT/G3EaY9SU9lDDy8Ac3KZhHP0M1LoFuO6cVaW6G3FC7jCkq6aFJ+z8Vww8OpSf4s
+	8hHBF8aqtLaMV6Iii9c58gc/NzYnt0zxkfoli1MY1VW7ksbYSpgnsVBWFqrilbYrPG47dqq+tJDXq
+	wLqfK+Y57qQKxbB73LK7uyQ0vbhznC1tl1QnPTS9eokYlKtaNeHkQvEOIiiqcaVLngY6q/0kqk6bY
+	TKk4D2yK+CNnJl4OQhNKdHjo9F3/K8RtLRaqxdaKNjq6rAoj9WjhsdBWGC+LlZJhOaXbpO/eSB2YX
+	4n4gJkOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfglC-000aGF-05;
-	Mon, 11 Sep 2023 13:15:26 +0000
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+	id 1qfgpV-000au6-1P;
+	Mon, 11 Sep 2023 13:19:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfgl7-000aEI-2r;
-	Mon, 11 Sep 2023 13:15:24 +0000
-Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-1c09673b006so28339425ad.1;
-        Mon, 11 Sep 2023 06:15:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1694438116; x=1695042916; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=T2yRSNijSEry1q3t5KG0YspbSUTWaMB7q8b9zVPDgfQ=;
-        b=jGRxSJDRcyEzEj/L3mg1py6DXupORctSVwn0wNuLuhHXmGRjT2uOcuSVEOvmODmtgf
-         6P7GBd09Kk0zApChuI8om7A4U99dAebKGY3EkUoB7wfg4kNgUs6Ma2bT60d1oFYkxkTB
-         26AxQ5fNMpo1pg3YSC07+L+pQxRUX8toQiA2bk7jB+VIy1EdXtBLMMeZzZDm1Z16VrHc
-         PBGNHBOByc/ZCSRlxBdY2csNvZeGWQGiFfqUO4CblTjTSeA6Z66P7Mrs1sq7M0ClwbgX
-         XTI4l41ZIEcT3aSse7iAYybD09DEEO+488M9q3jF9+mWFJhku09tdb11AUCbYVCi7Ymh
-         Jiow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694438116; x=1695042916;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=T2yRSNijSEry1q3t5KG0YspbSUTWaMB7q8b9zVPDgfQ=;
-        b=fM1lusag/bqGss9RfbscnYw0OBeCWUQicEb38cCKv5wjmb1j3AipfFJxJbaBy3lICp
-         jsfZYUhtG6RNQ+40JoCfoXoScWdpLG9slX4aTYzwr0jbrXrf5kS5Hklwdo+Kuqrxqajg
-         JnsNG2bN2wGjJpbBne7OA7K4xjzBfQt4K1YQlZfxO5HATBE0IOqFkYeqO1lIf0PIiiWK
-         EL+lOOMyPc1HQdlic4h8h24pzP+rkNs8UHSH7dacTLsxGA8yFFf10LWLEAX/iUF8ajS7
-         9W8b9LiDAGEyy711QxDv0yb2yUclLwB+V+SpO2qL/t2CGMITzIDoLJMtOt+zlvubu6UM
-         wjSA==
-X-Gm-Message-State: AOJu0YwV1O6eSHcPxgo+TyeLY+SCzvjy8l0hnqy2h767TOApDTEltYDP
-	COGNkiOwCU0Sm6AFg9sxX2o=
-X-Google-Smtp-Source: AGHT+IELjlMzUCNKicXbgrdGNOE2IUiNXf+0+gLijFTkFHG5fABBFoZEs1wFcY4YX7BmQrH9l7MLTA==
-X-Received: by 2002:a17:903:41c8:b0:1c0:c86a:5425 with SMTP id u8-20020a17090341c800b001c0c86a5425mr10229624ple.19.1694438116095;
-        Mon, 11 Sep 2023 06:15:16 -0700 (PDT)
-Received: from [192.168.0.106] ([103.124.138.83])
-        by smtp.gmail.com with ESMTPSA id c5-20020a170902d90500b001b9ecee459csm6372378plz.34.2023.09.11.06.14.59
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 11 Sep 2023 06:15:15 -0700 (PDT)
-Message-ID: <d3c32833-72c3-f10c-bdb1-52de90eb90c7@gmail.com>
-Date: Mon, 11 Sep 2023 20:14:55 +0700
+	id 1qfgpR-000aso-0r;
+	Mon, 11 Sep 2023 13:19:51 +0000
+X-UUID: df725ea050a511ee9b7791016c24628a-20230911
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=93tdu+eZZTWm52hzYA2GRKSowuDP7qkPC/Hw4lriyDw=;
+	b=j+H3ItB6+V/dD5Ds8QymT4AejPiadpR5Gzwa06/7flEyxTQ2ikklm+7o2ImC1BVQSPKhqSnt1A4+k6ZS7WD3h+ugtpeljjJyu2VAtvnZpll8mpEhAfxe5IWRE/SjOB/Cpii12vsE8oGr2Np7ajMhZf/9ZlN/dDAyipXOrXgnZdw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:610634c9-f5a3-4785-bc5c-4b69182e5125,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:0ad78a4,CLOUDID:9d62ce13-4929-4845-9571-38c601e9c3c9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: df725ea050a511ee9b7791016c24628a-20230911
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1490381959; Mon, 11 Sep 2023 06:19:44 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 11 Sep 2023 20:59:39 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 20:59:38 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
+CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, "Steve
+ Cho" <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH 01/14] media: mediatek: vcodec: add tee client interface to communiate with optee-os
+Date: Mon, 11 Sep 2023 20:59:23 +0800
+Message-ID: <20230911125936.10648-2-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230911125936.10648-1-yunfei.dong@mediatek.com>
+References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v5 00/17] Add Qualcomm Minidump kernel driver related
- support
-Content-Language: en-US
-To: Mukesh Ojha <quic_mojha@quicinc.com>, corbet@lwn.net, agross@kernel.org,
- andersson@kernel.org, konrad.dybcio@linaro.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- keescook@chromium.org, tony.luck@intel.com, gpiccoli@igalia.com,
- mathieu.poirier@linaro.org, catalin.marinas@arm.com, will@kernel.org,
- linus.walleij@linaro.org, andy.shevchenko@gmail.com, vigneshr@ti.com,
- nm@ti.com, matthias.bgg@gmail.com, kgene@kernel.org,
- alim.akhtar@samsung.com, bmasney@redhat.com, quic_tsoni@quicinc.com
-Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-hardening@vger.kernel.org,
- linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, kernel@quicinc.com
-References: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
- <ZP7VPfVtvbmB5aQf@debian.me>
- <c52e90e4-cab0-13b7-9658-1f730de6cf64@quicinc.com>
-From: Bagas Sanjaya <bagasdotme@gmail.com>
-In-Reply-To: <c52e90e4-cab0-13b7-9658-1f730de6cf64@quicinc.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--8.612000-8.000000
+X-TMASE-MatchedRID: ntcUjMSD1XvRhEyb9f1sjh+WEMjoO9WWWjWsWQUWzVr4JkeQZhmPNdGX
+	gQphHQmxjJWC0R+d7j5aXppQzvJl1TbGo3kv6hASd7Dt86/2u/gK3n1SHen81fFJXtgF4GFLPJ0
+	5UREtjOWcPcDHCp4L+uSWVqW5qzmOfdqC3iY1TXmxNxaTG4Ot0mrIsxonM52133Nl3elSfspZzb
+	jsrmn6moHFUwSg823MqiMtskOVALimKHzZ902akBuZoNKc6pl+2yk8ad/lrSAAIXlMppp3X9CS2
+	BLmZjx1C1zwB74enbsdx9muUZArPijrsCi9IZ/mqeBupNgLgYfySn2jEH/dZZsoi2XrUn/Jn6Kd
+	MrRsL14qtq5d3cxkNa6KQIvxVddMY6fB2/8TD8xifosmB1z/hATSu4aw46TfGfOoY5m/FJuXmU/
+	FzSSM1Q==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--8.612000-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: A9D0915633186C2EBE1323199A10708094953BCED3F3AD5BBA1A0BA8EE107E6A2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_061521_946886_16B002B6 
-X-CRM114-Status: GOOD (  34.36  )
+X-CRM114-CacheID: sfid-20230911_061949_430014_409E4D91 
+X-CRM114-Status: GOOD (  26.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,171 +107,304 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/09/2023 17:39, Mukesh Ojha wrote:
-> 
-> 
-> On 9/11/2023 2:22 PM, Bagas Sanjaya wrote:
->> On Sun, Sep 10, 2023 at 01:46:01AM +0530, Mukesh Ojha wrote:
->>> Hi All,
->>>
->>> This is to continuation from the conversation happened at v4
->>>
->>> https://lore.kernel.org/lkml/632c5b97-4a91-c3e8-1e6c-33d6c4f6454f@quicinc.com/
->>>
->>> https://lore.kernel.org/lkml/695133e6-105f-de2a-5559-555cea0a0462@quicinc.com/
->>>
->>> We have put abstract on LPC on this topic as well as initiated a mail thread
->>> with other SoC vendors but did not get much traction on it.
->>>
->>> https://lore.kernel.org/lkml/0199db00-1b1d-0c63-58ff-03efae02cb21@quicinc.com/
->>>
->>> We explored most of possiblity present in kernel to address this issue[1] but
->>> solution like kdump/fadump does not seems safe/secure/performant from our
->>> perspective.
->>>
->>> Hence, with this series we tried to make the minidump kernel driver, simple
->>> and tied with pstore frontends, so that it collects the present available
->>> frontends data like dmesg, ftrace, pmsg, ftrace., Also, we will be working
->>> towards enhancing generic pstore to capture more debug data which will be
->>> helpful for first hand of debugging that can benefit both other pstore users
->>> as well as us as minidump users.
->>>
->>> One of the proposal made here,
->>> https://lore.kernel.org/lkml/1683561060-2197-1-git-send-email-quic_mojha@quicinc.com/
->>>
->>> Looking forward for your comments.
->>>
->>> Thanks,
->>> Mukesh
->>>
->>> [1]
->>> Minidump is a best effort mechanism to collect useful and predefined data
->>> for first level of debugging on end user devices running on Qualcomm SoCs.
->>> It is built on the premise that System on Chip (SoC) or subsystem part of
->>> SoC crashes, due to a range of hardware and software bugs. Hence, the
->>> ability to collect accurate data is only a best-effort. The data collected
->>> could be invalid or corrupted, data collection itself could fail, and so on.
->>>
->>> Qualcomm devices in engineering mode provides a mechanism for generating
->>> full system ramdumps for post mortem debugging. But in some cases it's
->>> however not feasible to capture the entire content of RAM. The minidump
->>> mechanism provides the means for selecting which snippets should be
->>> included in the ramdump.
->>>
->>> The core of SMEM based minidump feature is part of Qualcomm's boot
->>> firmware code. It initializes shared memory (SMEM), which is a part of
->>> DDR and allocates a small section of SMEM to minidump table i.e also
->>> called global table of content (G-ToC). Each subsystem (APSS, ADSP, ...)
->>> has their own table of segments to be included in the minidump and all
->>> get their reference from G-ToC. Each segment/region has some details
->>> like name, physical address and it's size etc. and it could be anywhere
->>> scattered in the DDR.
->>>
->>> Existing upstream Qualcomm remoteproc driver[1] already supports SMEM
->>> based minidump feature for remoteproc instances like ADSP, MODEM, ...
->>> where predefined selective segments of subsystem region can be dumped
->>> as part of coredump collection which generates smaller size artifacts
->>> compared to complete coredump of subsystem on crash.
->>>
->>> [1]
->>> https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/drivers/remoteproc/qcom_common.c#n142
->>>
->>> In addition to managing and querying the APSS minidump description,
->>> the Linux driver maintains a ELF header in a segment. This segment
->>> gets updated with section/program header whenever a new entry gets
->>> registered.
->>>
->>> Changes in v5:
->>>   - On suggestion from Pavan.k, to have single function call for minidump collection
->>>     from remoteproc driver, separated the logic to have separate minidump file called
->>>     qcom_rproc_minidump.c and also renamed the function from qcom_minidump() to
->>>     qcom_rproc_minidump(); however, dropped his suggestion about rework on lazy deletion
->>>     during region unregister in this series, will pursue it in next series.
->>>
->>>   - To simplify the minidump driver, removed the complication for frontend and different
->>>     backend from Greg suggestion, will pursue this once main driver gets mainlined.
->>>
->>>   - Move the dynamic ramoops region allocation from Device tree approach to command line
->>>     approch with the introduction command line parsing and memblock reservation during
->>>     early boot up; Not added documentation about it yet, will add if it gets positive
->>>     response.
->>>
->>>   - Exporting linux banner from kernel to make minidump build also as module, however,
->>>     minidump is a debug module and should be kernel built to get most debug information
->>>     from kernel.
->>>
->>>   - Tried to address comments given on dload patch series.
->>>
->>> Changes in v4: https://lore.kernel.org/lkml/1687955688-20809-1-git-send-email-quic_mojha@quicinc.com/
->>>   - Redesigned the driver and divided the driver into front end and backend (smem) so
->>>     that any new backend can be attached easily to avoid code duplication.
->>>   - Patch reordering as per the driver and subsystem to easier review of the code.
->>>   - Removed minidump specific code from remoteproc to minidump smem based driver.
->>>   - Enabled the all the driver as modules.
->>>   - Address comments made on documentation and yaml and Device tree file [Krzysztof/Konrad]
->>>   - Address comments made qcom_pstore_minidump driver and given its Device tree
->>>     same set of properties as ramoops. [Luca/Kees]
->>>   - Added patch for MAINTAINER file.
->>>   - Include defconfig change as one patch as per [Krzysztof] suggestion.
->>>   - Tried to remove the redundant file scope variables from the module as per [Krzysztof] suggestion.
->>>   - Addressed comments made on dload mode patch v6 version
->>>     https://lore.kernel.org/lkml/1680076012-10785-1-git-send-email-quic_mojha@quicinc.com/
->>>
->>> Changes in v3: https://lore.kernel.org/lkml/1683133352-10046-1-git-send-email-quic_mojha@quicinc.com/
->>>   - Addressed most of the comments by Srini on v2 and refactored the minidump driver.
->>>      - Added platform device support
->>>      - Unregister region support.
->>>   - Added update region for clients.
->>>   - Added pending region support.
->>>   - Modified the documentation guide accordingly.
->>>   - Added qcom_pstore_ramdump client driver which happen to add ramoops platform
->>>     device and also registers ramoops region with minidump.
->>>   - Added download mode patch series with this minidump series.
->>>      https://lore.kernel.org/lkml/1680076012-10785-1-git-send-email-quic_mojha@quicinc.com/
->>>
->>> Changes in v2: https://lore.kernel.org/lkml/1679491817-2498-1-git-send-email-quic_mojha@quicinc.com/
->>>   - Addressed review comment made by [quic_tsoni/bmasney] to add documentation.
->>>   - Addressed comments made by [srinivas.kandagatla]
->>>   - Dropped pstore 6/6 from the last series, till i get conclusion to get pstore
->>>     region in minidump.
->>>   - Fixed issue reported by kernel test robot.
->>>
->>> Changes in v1: https://lore.kernel.org/lkml/1676978713-7394-1-git-send-email-quic_mojha@quicinc.com/
->>>
->>> Testing of the patches has been done on sm8450 target after enabling config like
->>> CONFIG_PSTORE_RAM and CONFIG_PSTORE_CONSOLE and once the device boots up.
->>>
->>>   echo mini > /sys/module/qcom_scm/parameters/download_mode
->>>
->>> Try crashing it via devmem2 0xf11c000(this is known to create xpu violation and
->>> and put the device in download mode) on command prompt.
->>>
->>> Default storage type is set to via USB, so minidump would be downloaded with the
->>> help of x86_64 machine (running PCAT tool) attached to Qualcomm device which has
->>> backed minidump boot firmware support.
->>>
->>> This will make the device go to download mode and collect the minidump on to the
->>> attached x86 machine running the Qualcomm PCAT tool(This comes as part Qualcomm
->>> package manager kit).
->>>
->>> After that we will see a bunch of predefined registered region as binary blobs files
->>> starts with md_* downloaded on the x86 machine on given location in PCAT tool from
->>> the target device, more about this can be found in qualcomm minidump guide patch.
->>>
->>
->> I tried to apply this series on top of 535a265d7f0dd50 (as suggested by
->> `b4 am -l -g`), but it conflicts on patch [04/17]. Please specify the
->> exact base commit or another series for which this series is based on.
-> 
-> Apologies !
-> I just realized, it was 6.5-rc7, but let me rebase version of the series;
-> 
-> Sorry, for all the reviewed done so far, i will definitely take care of them or reply.
-> 
+Open tee context to initialize the environment in order to communiate
+with optee-os, then open tee session as the communiation pipeline for
+lat and core to send data for hardware decode.
 
-OK, see you in v6!
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ .../platform/mediatek/vcodec/decoder/Makefile |   1 +
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   5 +
+ .../vcodec/decoder/mtk_vcodec_dec_optee.c     | 157 ++++++++++++++++++
+ .../vcodec/decoder/mtk_vcodec_dec_optee.h     |  73 ++++++++
+ 4 files changed, 236 insertions(+)
+ create mode 100644 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
+ create mode 100644 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
 
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/Makefile b/drivers/media/platform/mediatek/vcodec/decoder/Makefile
+index 904cd22def84..1624933dfd5e 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/Makefile
++++ b/drivers/media/platform/mediatek/vcodec/decoder/Makefile
+@@ -21,5 +21,6 @@ mtk-vcodec-dec-y := vdec/vdec_h264_if.o \
+ 		mtk_vcodec_dec_stateful.o \
+ 		mtk_vcodec_dec_stateless.o \
+ 		mtk_vcodec_dec_pm.o \
++		mtk_vcodec_dec_optee.o \
+ 
+ mtk-vcodec-dec-hw-y := mtk_vcodec_dec_hw.o
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+index 7e36b2c69b7d..061542c3852c 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+@@ -11,6 +11,7 @@
+ #include "../common/mtk_vcodec_dbgfs.h"
+ #include "../common/mtk_vcodec_fw_priv.h"
+ #include "../common/mtk_vcodec_util.h"
++#include "mtk_vcodec_dec_optee.h"
+ #include "vdec_msg_queue.h"
+ 
+ #define MTK_VCODEC_DEC_NAME	"mtk-vcodec-dec"
+@@ -249,6 +250,8 @@ struct mtk_vcodec_dec_ctx {
+  * @vdec_racing_info: record register value
+  * @dec_racing_info_mutex: mutex lock used for inner racing mode
+  * @dbgfs: debug log related information
++ *
++ * @tee_private: optee private data
+  */
+ struct mtk_vcodec_dec_dev {
+ 	struct v4l2_device v4l2_dev;
+@@ -289,6 +292,8 @@ struct mtk_vcodec_dec_dev {
+ 	/* Protects access to vdec_racing_info data */
+ 	struct mutex dec_racing_info_mutex;
+ 	struct mtk_vcodec_dbgfs dbgfs;
++
++	struct mtk_vdec_optee_private *optee_private;
+ };
+ 
+ static inline struct mtk_vcodec_dec_ctx *fh_to_dec_ctx(struct v4l2_fh *fh)
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
+new file mode 100644
+index 000000000000..3ee9039d2a5b
+--- /dev/null
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
+@@ -0,0 +1,157 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2023 MediaTek Inc.
++ * Author: Yunfei Dong <yunfei.dong@mediatek.com>
++ */
++
++#include "mtk_vcodec_dec_drv.h"
++#include "mtk_vcodec_dec_optee.h"
++
++/*
++ * Randomly generated, and must correspond to the GUID on the TA side.
++ */
++static const uuid_t mtk_vdec_lat_uuid =
++	UUID_INIT(0xBC50D971, 0xD4C9, 0x42C4,
++		  0x82, 0xCB, 0x34, 0x3F, 0xB7, 0xF3, 0x78, 0x90);
++
++static const uuid_t mtk_vdec_core_uuid =
++	UUID_INIT(0xBC50D971, 0xD4C9, 0x42C4,
++		  0x82, 0xCB, 0x34, 0x3F, 0xB7, 0xF3, 0x78, 0x91);
++
++/*
++ * Check whether this driver supports decoder TA in the TEE instance,
++ * represented by the params (ver/data) of this function.
++ */
++static int mtk_vcodec_dec_optee_match(struct tee_ioctl_version_data *ver_data, const void *not_used)
++{
++	if (ver_data->impl_id == TEE_IMPL_ID_OPTEE)
++		return 1;
++	else
++		return 0;
++}
++
++int mtk_vcodec_dec_optee_private_init(struct mtk_vcodec_dec_dev *vcodec_dev)
++{
++	vcodec_dev->optee_private = devm_kzalloc(&vcodec_dev->plat_dev->dev,
++						 sizeof(*vcodec_dev->optee_private),
++						 GFP_KERNEL);
++	if (!vcodec_dev->optee_private)
++		return -ENOMEM;
++
++	vcodec_dev->optee_private->vcodec_dev = vcodec_dev;
++
++	atomic_set(&vcodec_dev->optee_private->tee_active_cnt, 0);
++	mutex_init(&vcodec_dev->optee_private->tee_mutex);
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_private_init);
++
++static int mtk_vcodec_dec_optee_init_hw_info(struct mtk_vdec_optee_private *optee_private,
++					     enum mtk_vdec_hw_id hardware_index)
++{
++	struct tee_ioctl_open_session_arg session_arg;
++	struct mtk_vdec_optee_ca_info *ca_info;
++	int err = 0, session_func;
++
++	/* Open lat and core session with vdec TA. */
++	if (hardware_index == MTK_VDEC_LAT0) {
++		export_uuid(session_arg.uuid, &mtk_vdec_lat_uuid);
++		session_func = MTK_VDEC_OPTEE_TA_LAT_SUBMIT_COMMAND;
++		ca_info = &optee_private->lat_ca;
++	} else {
++		export_uuid(session_arg.uuid, &mtk_vdec_core_uuid);
++		session_func = MTK_VDEC_OPTEE_TA_CORE_SUBMIT_COMMAND;
++		ca_info = &optee_private->core_ca;
++	}
++
++	session_arg.clnt_login = TEE_IOCTL_LOGIN_PUBLIC;
++	session_arg.num_params = 0;
++
++	err = tee_client_open_session(optee_private->tee_vdec_ctx, &session_arg, NULL);
++	if (err < 0 || session_arg.ret != 0) {
++		pr_err(MTK_DBG_VCODEC_STR "open vdec tee session failed: hw_id(%d) err=%x.\n",
++		       hardware_index, session_arg.ret);
++		return -EINVAL;
++	}
++	ca_info->vdec_session_id = session_arg.session;
++	ca_info->hw_id = hardware_index;
++	ca_info->vdec_session_func = session_func;
++
++	pr_debug(MTK_DBG_VCODEC_STR "open vdec tee session: hw_id(%d) session_id=%x.\n",
++		 hardware_index, ca_info->vdec_session_id);
++
++	return err;
++}
++
++static void mtk_vcodec_dec_optee_deinit_hw_info(struct mtk_vdec_optee_private *optee_private,
++						enum mtk_vdec_hw_id hw_id)
++{
++	struct mtk_vdec_optee_ca_info *ca_info;
++
++	if (hw_id == MTK_VDEC_LAT0)
++		ca_info = &optee_private->lat_ca;
++	else
++		ca_info = &optee_private->core_ca;
++
++	tee_client_close_session(optee_private->tee_vdec_ctx, ca_info->vdec_session_id);
++}
++
++int mtk_vcodec_dec_optee_open(struct mtk_vdec_optee_private *optee_private)
++{
++	int err = 0;
++
++	mutex_lock(&optee_private->tee_mutex);
++	if (atomic_inc_return(&optee_private->tee_active_cnt) > 1) {
++		mutex_unlock(&optee_private->tee_mutex);
++		pr_debug(MTK_DBG_VCODEC_STR "already init vdec optee private data!\n");
++		return err;
++	}
++
++	/* Open context with TEE driver */
++	optee_private->tee_vdec_ctx = tee_client_open_context(NULL, mtk_vcodec_dec_optee_match,
++							      NULL, NULL);
++	if (IS_ERR(optee_private->tee_vdec_ctx)) {
++		pr_err(MTK_DBG_VCODEC_STR "optee vdec tee context failed.\n");
++		mutex_unlock(&optee_private->tee_mutex);
++		return -ENODEV;
++	}
++
++	err = mtk_vcodec_dec_optee_init_hw_info(optee_private, MTK_VDEC_LAT0);
++	if (err < 0)
++		goto err_lat_init;
++
++	if (IS_VDEC_LAT_ARCH(optee_private->vcodec_dev->vdec_pdata->hw_arch)) {
++		err = mtk_vcodec_dec_optee_init_hw_info(optee_private, MTK_VDEC_CORE);
++		if (err < 0)
++			goto err_core_init;
++	}
++
++	mutex_unlock(&optee_private->tee_mutex);
++	return 0;
++err_core_init:
++	mtk_vcodec_dec_optee_deinit_hw_info(optee_private, MTK_VDEC_LAT0);
++err_lat_init:
++	tee_client_close_context(optee_private->tee_vdec_ctx);
++
++	mutex_unlock(&optee_private->tee_mutex);
++	return err;
++}
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_open);
++
++void mtk_vcodec_dec_optee_release(struct mtk_vdec_optee_private *optee_private)
++{
++	mutex_lock(&optee_private->tee_mutex);
++	if (!atomic_dec_and_test(&optee_private->tee_active_cnt)) {
++		mutex_unlock(&optee_private->tee_mutex);
++		return;
++	}
++
++	mtk_vcodec_dec_optee_deinit_hw_info(optee_private, MTK_VDEC_LAT0);
++	if (IS_VDEC_LAT_ARCH(optee_private->vcodec_dev->vdec_pdata->hw_arch))
++		mtk_vcodec_dec_optee_deinit_hw_info(optee_private, MTK_VDEC_CORE);
++
++	tee_client_close_context(optee_private->tee_vdec_ctx);
++	mutex_unlock(&optee_private->tee_mutex);
++}
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_release);
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
+new file mode 100644
+index 000000000000..8b1dca49331e
+--- /dev/null
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
+@@ -0,0 +1,73 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2023 MediaTek Inc.
++ * Author: Yunfei Dong <yunfei.dong@mediatek.com>
++ */
++
++#ifndef _MTK_VCODEC_DEC_OPTEE_H_
++#define _MTK_VCODEC_DEC_OPTEE_H_
++
++#include <linux/tee_drv.h>
++#include <linux/uuid.h>
++
++#include "mtk_vcodec_dec_drv.h"
++
++/* The TA ID implemented in this TA */
++#define MTK_VDEC_OPTEE_TA_LAT_SUBMIT_COMMAND  (0x10)
++#define MTK_VDEC_OPTEE_TA_CORE_SUBMIT_COMMAND  (0x20)
++
++#define MTK_OPTEE_MAX_TEE_PARAMS 4
++
++/**
++ * struct mtk_vdec_optee_ca_info - ca related param
++ * @vdec_session_id:   optee TA session identifier.
++ * @hw_id:             hardware index.
++ * @vdec_session_func: trusted application function id used specific to the TA.
++ */
++struct mtk_vdec_optee_ca_info {
++	u32 vdec_session_id;
++	enum mtk_vdec_hw_id hw_id;
++	u32 vdec_session_func;
++};
++
++/**
++ * struct mtk_vdec_optee_private - optee private data
++ * @vcodec_dev:     pointer to the mtk_vcodec_dev of the device
++ * @tee_vdec_ctx:   decoder TEE context handler.
++ * @lat_ca:         lat hardware information used to communicate with TA.
++ * @core_ca:        core hardware information used to communicate with TA.
++ *
++ * @tee_active_cnt: used to mark whether need to init optee
++ * @tee_mutex:      mutex lock used for optee
++ */
++struct mtk_vdec_optee_private {
++	struct mtk_vcodec_dec_dev *vcodec_dev;
++	struct tee_context *tee_vdec_ctx;
++
++	struct mtk_vdec_optee_ca_info lat_ca;
++	struct mtk_vdec_optee_ca_info core_ca;
++
++	atomic_t tee_active_cnt;
++	/* mutext used to lock optee open and release information. */
++	struct mutex tee_mutex;
++};
++
++/**
++ * mtk_vcodec_dec_optee_open - setup the communication channels with TA.
++ * @optee_private: optee private context
++ */
++int mtk_vcodec_dec_optee_open(struct mtk_vdec_optee_private *optee_private);
++
++/**
++ * mtk_vcodec_dec_optee_private_init - init optee parameters.
++ * @vcodec_dev: pointer to the mtk_vcodec_dev of the device
++ */
++int mtk_vcodec_dec_optee_private_init(struct mtk_vcodec_dec_dev *vcodec_dev);
++
++/**
++ * mtk_vcodec_dec_optee_release - close the communication channels with TA.
++ * @optee_private: optee private context
++ */
++void mtk_vcodec_dec_optee_release(struct mtk_vdec_optee_private *optee_private);
++
++#endif /* _MTK_VCODEC_FW_OPTEE_H_ */
 -- 
-An old man doll... just what I always wanted! - Clara
+2.18.0
 
 
