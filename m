@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 608A5EE7FF4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 09:49:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E857EE57DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 09:49:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vyK3BidgXxixuZrAM9KK/EHXaa+kHXgf2/8oda8qsKE=; b=uYB38qpx7c1PGulc/edoksLV5v
-	5XTSJ80NJSWa1VZmd4EcROxC0f5RiDoPmm1oG+TlaFulZEBAWrjhj51fPHuOYc8OTW5xwA+Pg/ISl
-	HvWfn7/bsU3SqTk4FX4/fP2+xUthIWEaP1CIIsXQqwKdl4n0Cut9Ce/yb4jwWYurkbALuqtMFAfTp
-	OkZWKmj+FQqbYmy4H7/Tz4JxY9s11/SezVn8B3XooOo/Jarq9Pr578Ek907vpBERlnC6sK1RbXdV5
-	ddANRHbOJGX2aBl5u5NRll5obarPM+H6a/Zd/ILWbpzTYffAVe2EuPJXco7A70gpnmxsBoouMzNYB
-	H47u3YAw==;
+	bh=52mNZ5NlQdO30lUKqzJP0EsYifT5Awt2SM2gJLbTQfs=; b=1ormYUrtoMmTvhGVbWZCUYF2bQ
+	lRvVTOmQ32DDlQ942f3hoET3fE1tIjt0b7OKmUjQH4OX0aqvS1BE3jnalwuAdmiSK+krqOBySCF+R
+	k2xZQvRd3gV5IPtf/z/3fzp4dL9VJzaP638ezNOl9TNI62iItGriL4P4QNEysbbBX7KMSWdrlIdjr
+	zTIDEZ4isAalvWkdyu1FlfkF1cWJkMOA+ui2y9fjZC2K70fWA7mZyTYzhhkTGFnQIyRq33sMVdbRS
+	5YkrTXlsqjwbINkek5HKjR0Xaz+xhfnIkGmNzzpa7tRQELQvTX2FR4jpudW8m/g4Vy4KlFkAw8QpN
+	OdkIFQGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfdXr-0004C9-0z;
-	Mon, 11 Sep 2023 09:49:27 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1qfdYE-0004IL-0m;
+	Mon, 11 Sep 2023 09:49:50 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfdXo-00049q-0d
+	id 1qfdYB-0004Gg-0V
 	for linux-mediatek@lists.infradead.org;
-	Mon, 11 Sep 2023 09:49:25 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-99c93638322so904403266b.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 11 Sep 2023 02:49:20 -0700 (PDT)
+	Mon, 11 Sep 2023 09:49:48 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-31c8321c48fso3403716f8f.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 11 Sep 2023 02:49:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1694425759; x=1695030559; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+        d=linaro.org; s=google; t=1694425782; x=1695030582; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=vyK3BidgXxixuZrAM9KK/EHXaa+kHXgf2/8oda8qsKE=;
-        b=qo02eYbDbtAryEv+MaWKKz9m2EprCt09UEYvwonIlX4K38C8zwwnBU8e+8Q2df5WFZ
-         q3NA7A32rwPgOKTDLDvvNjT5DiOXhMnVi6pJNbMjROqClH0KaKc29CwjzCLQ2otnCW2R
-         W5UAnRMTo3DLC86hlIm/K3sWtwFYbEapJ+VP8NP81IDX6Xm1LviLv4q1BsdbdtehCoIL
-         JTioKd6jf2fUb28ZeoyIJCYynQUfPESg7K3+iL/aT93jNvKyFP51Or9vkKJxySPuXhkL
-         a5y+JPLElqSlbqQ3tir5ZiLJygKLAPnhCh3rBqyxSXoU7wu0AfpAkDs5tw3ueBVNAPOI
-         GuFQ==
+        bh=52mNZ5NlQdO30lUKqzJP0EsYifT5Awt2SM2gJLbTQfs=;
+        b=ONJX2pzxmGu71+CeBhRoyMRjk/EDYIzRnInDRyrZEk3tYZ26IDoD9GCAqSEixGqQup
+         1/tUyUK8gi7fPtsJWVOi3GK/ZF46OJIX41xmbkrafjp4E1F5Lmo6w3QNS/IN4sB/ptMO
+         HHS129XT1jsTvfcyPT8m6jHpNlzcpSguOmcPjc6JAtCRQ7RUhHcyTlhny2zQTTfiucbA
+         nz/jMqVAA9OvzDxuKtE92C39dKQyCN2rLYTWWX4XNyfTIGx5wsH2OPoEPUp6e5dsJYkE
+         wAN06RiY+MxDCr9Hh2amESjOjSpfhuHCDHjuqIUpkcYVFkh7cIcvEBE4wxOGdBdMEhCA
+         Qpxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694425759; x=1695030559;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+        d=1e100.net; s=20230601; t=1694425782; x=1695030582;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vyK3BidgXxixuZrAM9KK/EHXaa+kHXgf2/8oda8qsKE=;
-        b=fcQA/19nJ4NGlzJTl1O+XE8YRMjYoS6T1ksuM3y2ueKzuVIJG0fOuHf9Y0UqDStgKl
-         Q4GtkBXUrREvCDbU56A+b8Y5QA19Hs644cxYc4xSFRHOdteEhMKYbc9RheD+urt/Mi4f
-         9l4EI5JDgivC2DSShYIsG+HPagnaYQp90hKdVlZUsj5j7RO50PVNaBViodYif/aZwoK6
-         Jgr9UXJ2bXvvG3Ci6ZpSsd+i3nXy0x7a3/0hO4ntAT+tO0g25McrrFFkZiH45hZ4iWOL
-         /gE7G/2mwBM3DQCG0vp/xK/Ew4VrLepvX5UlukSypi6z4zM06kbQUrxS/HDXKXL8f3SS
-         5WwQ==
-X-Gm-Message-State: AOJu0YwwJH3+fkK7i6510GHLLMX9YjbOlSa9C2qKhsv7qz9JdZqOJoiR
-	y3l5Jesd1JksDp9Cme4zjev/ow==
-X-Google-Smtp-Source: AGHT+IF0eAg3rbqM0cYf1GKEx/klkn6QYNhBM5luwQhzQPxpsJHoR2ZDxfOVJVSwtzNPJyCgxfVVkg==
-X-Received: by 2002:a17:906:32c3:b0:9a1:b33a:e464 with SMTP id k3-20020a17090632c300b009a1b33ae464mr14227042ejk.31.1694425759428;
-        Mon, 11 Sep 2023 02:49:19 -0700 (PDT)
+        bh=52mNZ5NlQdO30lUKqzJP0EsYifT5Awt2SM2gJLbTQfs=;
+        b=c7V8EgT9QIq1aUaDopjn26WoMHDXUWXKKqabo5wbzSoKPd2MewdlyhYZVuNHS4QSlS
+         S7yyIZPF++ZxiRXjCjVtB0vWR4ENcZX1lj6mZdvOZs/lLXECWKb2LhNgUx0ruVtYY4vM
+         UM/8GbQN1BHyO2sWNQ+o95y4WGRx2+SiQbNmO0+t2qgcZUBxqzC4NlaOG/OfBsfKvYv1
+         vRo870Da/qNqkUFZgPti79anEfC8ERopA1TWdq3Qm8reUknHJ1Oog2YHQiGvDwpeKdXr
+         t6clAIJ3b9ATzsHZQ1TgG9KIjQnymb7qLV3/gN4Lmk7nD4cln0orgWkoHofwnfz0nC3V
+         UuwQ==
+X-Gm-Message-State: AOJu0YwlaIdzxrCfLBJSMtRSCaR+YGTjP5hVlGzNE9sOB1EPBxD8Bn5o
+	eOCBCKKIAcoBq18jemETsJn68Q==
+X-Google-Smtp-Source: AGHT+IGPQ0Wdf1DDEIFakB1U1w5I/QQ08GV9TuR4tNS2Sz0KeCGoCbjRcpYN6Mj1gI9j1EOMWwNYlw==
+X-Received: by 2002:adf:cf02:0:b0:30e:56b3:60fe with SMTP id o2-20020adfcf02000000b0030e56b360femr6104736wrj.4.1694425782666;
+        Mon, 11 Sep 2023 02:49:42 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.214.188])
-        by smtp.gmail.com with ESMTPSA id l15-20020a1709060e0f00b0099bcd1fa5b0sm5067137eji.192.2023.09.11.02.49.18
+        by smtp.gmail.com with ESMTPSA id z2-20020a5d4c82000000b0031aca6cc69csm9574308wrs.2.2023.09.11.02.49.41
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 11 Sep 2023 02:49:18 -0700 (PDT)
-Message-ID: <53cd72f7-5a8d-ee9e-4d8a-f5159cafb3e7@linaro.org>
-Date: Mon, 11 Sep 2023 11:49:17 +0200
+        Mon, 11 Sep 2023 02:49:42 -0700 (PDT)
+Message-ID: <9959a8b3-6fc7-6de2-fc2e-d5e8ebfefc34@linaro.org>
+Date: Mon, 11 Sep 2023 11:49:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH v2] dt-bindings: arm64: dts: mediatek: add description for
+Subject: Re: [PATCH] dt-bindings: arm64: dts: mediatek: add description for
  mt8365-evk board
 Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
@@ -80,14 +81,15 @@ To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
  Macpaul Lin <macpaul@gmail.com>
-References: <20230911081126.18463-1-macpaul.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230911081126.18463-1-macpaul.lin@mediatek.com>
+References: <20230910062852.15415-1-macpaul.lin@mediatek.com>
+ <f8864242-daa1-e72f-4759-aac3fa1bbcf2@linaro.org>
+In-Reply-To: <f8864242-daa1-e72f-4759-aac3fa1bbcf2@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_024924_233751_F4B3567E 
-X-CRM114-Status: GOOD (  19.39  )
+X-CRM114-CacheID: sfid-20230911_024947_197379_8084A20E 
+X-CRM114-Status: UNSURE (   8.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,49 +104,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/09/2023 10:11, Macpaul Lin wrote:
-> Fix the missing description for MediaTek mt8365-evk board.
+On 10/09/2023 11:09, Krzysztof Kozlowski wrote:
+> On 10/09/2023 08:28, Macpaul Lin wrote:
+>> Fix the missing description for Mediatek mt8365-evk board.
+>>
+>> Fixes: 4f5fc078ac6f ("dt-bindings: arm64: dts: mediatek: Add mt8365-evk board")
 > 
-> Fixes: 4f5fc078ac6f ("dt-bindings: arm64: dts: mediatek: Add mt8365-evk board")
+> There is no bug here. Drop.
 
-This is a friendly reminder during the review process.
-
-It seems my previous comments were not fully addressed. Maybe my
-feedback got lost between the quotes, maybe you just forgot to apply it.
-Please go back to the previous discussion and either implement all
-requested changes or keep discussing them.
-
-Thank you.
-
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> change for v2:
->  - rebase this patch to follow the v5 patch set of mt8395.
->   - depends on https://lore.kernel.org/lkml/20230909132819.21626-2-macpaul.lin@mediatek.com/T/
->  - Fix description as a single board.
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index 2e8ad49c3479..b163995e32d5 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -244,7 +244,8 @@ properties:
->            - enum:
->                - mediatek,mt8183-pumpkin
->            - const: mediatek,mt8183
-> -      - items:
-> +      - description: MediaTek Genio 350 Board (Genio 350 EVK)
-
-Drop, no need, redundant (copies the compatible) and your other entries
-do not have it.
-
-> +        items:
->            - enum:
-
-This is still confusing. Why do you have enum here with such description.
-
+So you decided to ignore this one?
 
 Best regards,
 Krzysztof
