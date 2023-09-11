@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54BB3C71153
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 02:52:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 834F0EE49A4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 02:52:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tMh5czTlXeLunU6sQyq8tkPZ3p5euo92ArNQwmCGL9o=; b=LAkQumtCEU3j3Ucbzg+FnIPbKI
-	GgMvqjeyaTg61Zm4i9wO4voKb+3tdzP1jZzCSjXFBha3Il/hka6BVnaX8DjXi3IqqE6z1+OTgIwiw
-	t8mlw3FLjdxIwvSNEC0tpR5pwvxjOXZvAhS0l+3n61Bucpwn2tqKScxHZI19a/PG25/vi7rFvelNV
-	il2TPM1qd9+IUhxbRrN2J8Fst9nwr4AqpOwJeh+DMFEvLEG7AKQ/TZ0SnBKXscI9gb3LnOH/zLuVa
-	Uy6c9WgjrkWwopwfWSR7nBvQuHfxBJGZ4w/15jn8YV/wHx2FU8CQL1k5U6/Ajcf792SskHgUub+uf
-	418MObtw==;
+	bh=k7eKKqiU9u1VTQEhbL4g+T+8Z/Im5zTAmaqVcrzlJog=; b=hWHKFtFyaJ0Cs0Lb+Xe8DOk9D3
+	FQEXPYSoMQ6zpG+7kmdfFOKp7bxvYA5griznCzu3INo9um0ZhdNBLVT681gq9WUlxoJayweh5yf8j
+	JB4WxCS6ZFarqmCO0wjkNruLBIlizE/DhoG8fJY1kmgQqC7b3OIfnjarqMUFmB8UsVguXUiBSqPHR
+	mtDxkw34tOW9Ifu5CKHuRH8vM71XkgPCQWSHb1pS85jYq4EdAi0Nhokk+Q3IdmNy0swhW8msSOCXY
+	4dCgzO5h3J1OBc4/v1oViIhoYqVwVU8zH7weVXdrMWAZHMCmDs9rw7NYQYZbZPJMpapAR9J3cKc2n
+	LQGVwscw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfX2C-00H7Xt-0n;
-	Mon, 11 Sep 2023 02:52:20 +0000
+	id 1qfX2e-00H7db-1X;
+	Mon, 11 Sep 2023 02:52:48 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfX28-00H7X1-3D;
-	Mon, 11 Sep 2023 02:52:18 +0000
-X-UUID: 35cee8fc504e11ee9b7791016c24628a-20230910
+	id 1qfX2a-00H7ca-3D;
+	Mon, 11 Sep 2023 02:52:46 +0000
+X-UUID: 45bda3c0504e11ee9b7791016c24628a-20230910
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tMh5czTlXeLunU6sQyq8tkPZ3p5euo92ArNQwmCGL9o=;
-	b=lIejvzNmqM53jcptvfpuIic/CQ08Mkqf+bk1n3aRFJGC5OEZamM+TQf+J6K0g236eFm44lJV8hxyQxQaC6nAc4x5U+nlaRVfETHw/jagUtTb0xeBLWQRqYU2g9t5FZgHRZt6pIvzqtgY4ty7ELmyQj38G7xt6gRCZf60zewosCc=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=k7eKKqiU9u1VTQEhbL4g+T+8Z/Im5zTAmaqVcrzlJog=;
+	b=oKAqoGGgHnTwU2Nrzr77Lv7TzaetUwm2zBYVB2mGQH8flZ/fZGDLB2cPKgwRMRTzdzgWxH2poaxG79v5uQ+IVM6mcX2FUiQzRvCQ1UbaPN7RiFQij01a502CP/yNilRPd3s/shqR3mVWpLZ9o4FqblhdHwlWX2yZpexGuDIZUqw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:aba550ef-e9b6-4cfc-ad41-dac3732451d6,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:0ad78a4,CLOUDID:1e51dec2-1e57-4345-9d31-31ad9818b39f,B
+X-CID-O-INFO: VERSION:1.1.31,REQID:527aa2f0-b95b-4bad-81f8-4e56ce0afb01,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:9a52dec2-1e57-4345-9d31-31ad9818b39f,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 35cee8fc504e11ee9b7791016c24628a-20230910
+X-UUID: 45bda3c0504e11ee9b7791016c24628a-20230910
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1881333990; Sun, 10 Sep 2023 19:52:13 -0700
+	with ESMTP id 907869259; Sun, 10 Sep 2023 19:52:40 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 11 Sep 2023 10:31:39 +0800
+ 15.2.1118.26; Mon, 11 Sep 2023 10:32:01 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 10:31:38 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 10:32:00 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>,
 	<christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>
@@ -65,20 +65,34 @@ CC: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
 	<linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
 	<linaro-mm-sig@lists.linaro.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, <jianjiao.zeng@mediatek.com>,
-	<kuohong.wang@mediatek.com>, Anan Sun <anan.sun@mediatek.com>
-Subject: [PATCH 6/9] dma-buf: heaps: mtk_sec_heap: Add tee service call for buffer allocating/freeing
-Date: Mon, 11 Sep 2023 10:30:35 +0800
-Message-ID: <20230911023038.30649-7-yong.wu@mediatek.com>
+	<kuohong.wang@mediatek.com>
+Subject: [PATCH 9/9] dma_buf: heaps: mtk_sec_heap: Add a new CMA heap
+Date: Mon, 11 Sep 2023 10:30:38 +0800
+Message-ID: <20230911023038.30649-10-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230911023038.30649-1-yong.wu@mediatek.com>
 References: <20230911023038.30649-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--7.150000-8.000000
+X-TMASE-MatchedRID: l/nE+SiO7Ibv9W9IPgV+ekKcYi5Qw/RVJNtuyL6mpIWgaf0+XUrNk6jp
+	YrigUiQ3RgA/t103tXOp3RVRr+fKXKawq2pdPD7UA9lly13c/gG94JvJnfFrHg6QlBHhBZuwYXo
+	6e6cMykyCrhXL3UcSds/8MSwnHgK56fubsV+A+k+yntSjDrb64SQwGQSJ46NmXCmcAC8DBrPrio
+	8O85DXBtuU0Ipyd28f+kFR4g8YiAE/eX/eRWk3RZA6S0SjvcYUmyqQJWNsukna+IH8mvgPVEttN
+	R/47hK8ALglGcpZqpxRomVnnmsja5e/bF1ays2S4RtSDjG+z7BzijlDBYeD/Jsoi2XrUn/Jn6Kd
+	MrRsL14qtq5d3cxkNTx61AcxE5RmHl89tzhQNcPdxB32r2oE1NRT50T+gtKLgL5DmE5InGnToZA
+	9tPKpDJ6oP1a0mRIj
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--7.150000-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: D012446BA56B603C0A9C42A245B2817DF015B66332AAB4883A6336DF0FC547C72000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230910_195217_038397_3D666640 
-X-CRM114-Status: GOOD (  15.21  )
+X-CRM114-CacheID: sfid-20230910_195245_046718_608C10DE 
+X-CRM114-Status: GOOD (  26.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,126 +107,239 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add TEE service call for secure memory allocating/freeing.
+Create a new mtk_svp_cma heap from the CMA reserved buffer.
 
-Signed-off-by: Anan Sun <anan.sun@mediatek.com>
+When the first allocating buffer, use cma_alloc to prepare whole the
+CMA range, then send its range to TEE to protect and manage.
+For the later allocating, we just adds the cma_used_size.
+
+When SVP done, cma_release will release the buffer, then kernel may
+reuse it.
+
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/dma-buf/heaps/mtk_secure_heap.c | 69 ++++++++++++++++++++++++-
- 1 file changed, 68 insertions(+), 1 deletion(-)
+ drivers/dma-buf/heaps/Kconfig           |   2 +-
+ drivers/dma-buf/heaps/mtk_secure_heap.c | 121 +++++++++++++++++++++++-
+ 2 files changed, 119 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/dma-buf/heaps/Kconfig b/drivers/dma-buf/heaps/Kconfig
+index 729c0cf3eb7c..e101f788ecbf 100644
+--- a/drivers/dma-buf/heaps/Kconfig
++++ b/drivers/dma-buf/heaps/Kconfig
+@@ -15,7 +15,7 @@ config DMABUF_HEAPS_CMA
+ 
+ config DMABUF_HEAPS_MTK_SECURE
+ 	bool "DMA-BUF MediaTek Secure Heap"
+-	depends on DMABUF_HEAPS && TEE
++	depends on DMABUF_HEAPS && TEE && CMA
+ 	help
+ 	  Choose this option to enable dma-buf MediaTek secure heap for Secure
+ 	  Video Path. This heap is backed by TEE client interfaces. If in
 diff --git a/drivers/dma-buf/heaps/mtk_secure_heap.c b/drivers/dma-buf/heaps/mtk_secure_heap.c
-index e3da33a3d083..14c2a16a7164 100644
+index daf6cf2121a1..3f568fe6b569 100644
 --- a/drivers/dma-buf/heaps/mtk_secure_heap.c
 +++ b/drivers/dma-buf/heaps/mtk_secure_heap.c
-@@ -17,6 +17,9 @@
- 
- #define MTK_TEE_PARAM_NUM		4
- 
-+#define TZCMD_MEM_SECURECM_UNREF	7
-+#define TZCMD_MEM_SECURECM_ZALLOC	15
-+
- /*
+@@ -4,11 +4,12 @@
+  *
+  * Copyright (C) 2023 MediaTek Inc.
+  */
+-
++#include <linux/cma.h>
+ #include <linux/dma-buf.h>
+ #include <linux/dma-heap.h>
+ #include <linux/err.h>
+ #include <linux/module.h>
++#include <linux/of_reserved_mem.h>
+ #include <linux/scatterlist.h>
+ #include <linux/slab.h>
+ #include <linux/tee_drv.h>
+@@ -25,9 +26,11 @@
   * MediaTek secure (chunk) memory type
   *
-@@ -29,6 +32,8 @@ enum kree_mem_type {
- struct mtk_secure_heap_buffer {
- 	struct dma_heap		*heap;
- 	size_t			size;
-+
-+	u32			sec_handle;
+  * @KREE_MEM_SEC_CM_TZ: static chunk memory carved out for trustzone.
++ * @KREE_MEM_SEC_CM_CMA: dynamic chunk memory carved out from CMA.
+  */
+ enum kree_mem_type {
+ 	KREE_MEM_SEC_CM_TZ = 1,
++	KREE_MEM_SEC_CM_CMA,
  };
  
- struct mtk_secure_heap {
-@@ -80,6 +85,63 @@ static int mtk_kree_secure_session_init(struct mtk_secure_heap *sec_heap)
+ struct mtk_secure_heap_buffer {
+@@ -42,6 +45,13 @@ struct mtk_secure_heap {
+ 	const enum kree_mem_type mem_type;
+ 	u32			 mem_session;
+ 	struct tee_context	*tee_ctx;
++
++	struct cma		*cma;
++	struct page		*cma_page;
++	unsigned long		cma_paddr;
++	unsigned long		cma_size;
++	unsigned long		cma_used_size;
++	struct mutex		lock; /* lock for cma_used_size */
+ };
+ 
+ struct mtk_secure_heap_attachment {
+@@ -90,6 +100,42 @@ static int mtk_kree_secure_session_init(struct mtk_secure_heap *sec_heap)
  	return ret;
  }
  
-+static int
-+mtk_sec_mem_tee_service_call(struct tee_context *tee_ctx, u32 session,
-+			     unsigned int command, struct tee_param *params)
++static int mtk_sec_mem_cma_allocate(struct mtk_secure_heap *sec_heap, size_t size)
 +{
-+	struct tee_ioctl_invoke_arg arg = {0};
-+	int ret;
++	/*
++	 * Allocate CMA only when allocating buffer for the first time, and just
++	 * increase cma_used_size at the other times.
++	 */
++	mutex_lock(&sec_heap->lock);
++	if (sec_heap->cma_used_size)
++		goto add_size;
 +
-+	arg.num_params = MTK_TEE_PARAM_NUM;
-+	arg.session = session;
-+	arg.func = command;
-+
-+	ret = tee_client_invoke_func(tee_ctx, &arg, params);
-+	if (ret < 0 || arg.ret) {
-+		pr_err("%s: cmd %d ret %d:%x.\n", __func__, command, ret, arg.ret);
-+		ret = -EOPNOTSUPP;
-+	}
-+	return ret;
-+}
-+
-+static int mtk_sec_mem_allocate(struct mtk_secure_heap *sec_heap,
-+				struct mtk_secure_heap_buffer *sec_buf)
-+{
-+	struct tee_param params[MTK_TEE_PARAM_NUM] = {0};
-+	u32 mem_session = sec_heap->mem_session;
-+	int ret;
-+
-+	params[0].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
-+	params[0].u.value.a = SZ_4K;			/* alignment */
-+	params[0].u.value.b = sec_heap->mem_type;	/* memory type */
-+	params[1].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
-+	params[1].u.value.a = sec_buf->size;
-+	params[2].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INOUT;
-+
-+	/* Always request zeroed buffer */
-+	ret = mtk_sec_mem_tee_service_call(sec_heap->tee_ctx, mem_session,
-+					   TZCMD_MEM_SECURECM_ZALLOC, params);
-+	if (ret)
++	mutex_unlock(&sec_heap->lock);
++	sec_heap->cma_page = cma_alloc(sec_heap->cma, sec_heap->cma_size >> PAGE_SHIFT,
++				       get_order(PAGE_SIZE), false);
++	if (!sec_heap->cma_page)
 +		return -ENOMEM;
 +
-+	sec_buf->sec_handle = params[2].u.value.a;
++	mutex_lock(&sec_heap->lock);
++add_size:
++	sec_heap->cma_used_size += size;
++	mutex_unlock(&sec_heap->lock);
++	return sec_heap->cma_used_size;
++}
++
++static void mtk_sec_mem_cma_free(struct mtk_secure_heap *sec_heap, size_t size)
++{
++	bool cma_is_empty;
++
++	mutex_lock(&sec_heap->lock);
++	sec_heap->cma_used_size -= size;
++	cma_is_empty = !sec_heap->cma_used_size;
++	mutex_unlock(&sec_heap->lock);
++
++	if (cma_is_empty)
++		cma_release(sec_heap->cma, sec_heap->cma_page, sec_heap->cma_size >> PAGE_SHIFT);
++}
++
+ static int
+ mtk_sec_mem_tee_service_call(struct tee_context *tee_ctx, u32 session,
+ 			     unsigned int command, struct tee_param *params)
+@@ -114,23 +160,47 @@ static int mtk_sec_mem_allocate(struct mtk_secure_heap *sec_heap,
+ {
+ 	struct tee_param params[MTK_TEE_PARAM_NUM] = {0};
+ 	u32 mem_session = sec_heap->mem_session;
++	bool cma_frst_alloc = false;
+ 	int ret;
+ 
++	if (sec_heap->cma) {
++		ret = mtk_sec_mem_cma_allocate(sec_heap, sec_buf->size);
++		if (ret < 0)
++			return ret;
++		/*
++		 * When CMA allocates for the first time, pass the CMA range to TEE
++		 * to protect it. It's the first allocating if the cma_used_size is equal
++		 * to this required buffer size.
++		 */
++		cma_frst_alloc = (ret == sec_buf->size);
++	}
++
+ 	params[0].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
+ 	params[0].u.value.a = SZ_4K;			/* alignment */
+ 	params[0].u.value.b = sec_heap->mem_type;	/* memory type */
+ 	params[1].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
+ 	params[1].u.value.a = sec_buf->size;
+ 	params[2].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INOUT;
++	if (sec_heap->cma && cma_frst_alloc) {
++		params[2].u.value.a = sec_heap->cma_paddr;
++		params[2].u.value.b = sec_heap->cma_size;
++	}
+ 
+ 	/* Always request zeroed buffer */
+ 	ret = mtk_sec_mem_tee_service_call(sec_heap->tee_ctx, mem_session,
+ 					   TZCMD_MEM_SECURECM_ZALLOC, params);
+-	if (ret)
+-		return -ENOMEM;
++	if (ret) {
++		ret = -ENOMEM;
++		goto free_cma;
++	}
+ 
+ 	sec_buf->sec_handle = params[2].u.value.a;
+ 	return 0;
++
++free_cma:
++	if (sec_heap->cma)
++		mtk_sec_mem_cma_free(sec_heap, sec_buf->size);
++	return ret;
+ }
+ 
+ static void mtk_sec_mem_release(struct mtk_secure_heap *sec_heap,
+@@ -145,6 +215,9 @@ static void mtk_sec_mem_release(struct mtk_secure_heap *sec_heap,
+ 
+ 	mtk_sec_mem_tee_service_call(sec_heap->tee_ctx, mem_session,
+ 				     TZCMD_MEM_SECURECM_UNREF, params);
++
++	if (sec_heap->cma)
++		mtk_sec_mem_cma_free(sec_heap, sec_buf->size);
+ }
+ 
+ static int mtk_sec_heap_attach(struct dma_buf *dmabuf, struct dma_buf_attachment *attachment)
+@@ -317,8 +390,41 @@ static struct mtk_secure_heap mtk_sec_heap[] = {
+ 		.name		= "mtk_svp",
+ 		.mem_type	= KREE_MEM_SEC_CM_TZ,
+ 	},
++	{
++		.name		= "mtk_svp_cma",
++		.mem_type	= KREE_MEM_SEC_CM_CMA,
++	},
+ };
+ 
++static int __init mtk_secure_cma_init(struct reserved_mem *rmem)
++{
++	struct mtk_secure_heap *sec_heap = NULL;
++	int ret, i;
++
++	for (i = 0; i < ARRAY_SIZE(mtk_sec_heap); i++) {
++		if (mtk_sec_heap[i].mem_type != KREE_MEM_SEC_CM_CMA)
++			continue;
++		sec_heap = &mtk_sec_heap[i];
++		break;
++	}
++	if (!sec_heap)
++		return -ENOENT;
++
++	ret = cma_init_reserved_mem(rmem->base, rmem->size, 0, sec_heap->name,
++				    &sec_heap->cma);
++	if (ret) {
++		pr_err("%s: %s set up CMA fail\n", __func__, rmem->name);
++		return ret;
++	}
++	sec_heap->cma_paddr = rmem->base;
++	sec_heap->cma_size = rmem->size;
++
 +	return 0;
 +}
 +
-+static void mtk_sec_mem_release(struct mtk_secure_heap *sec_heap,
-+				struct mtk_secure_heap_buffer *sec_buf)
-+{
-+	struct tee_param params[MTK_TEE_PARAM_NUM] = {0};
-+	u32 mem_session = sec_heap->mem_session;
++RESERVEDMEM_OF_DECLARE(mtk_secure_cma, "mediatek,secure_cma_chunkmem",
++		       mtk_secure_cma_init);
 +
-+	params[0].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_INPUT;
-+	params[0].u.value.a = sec_buf->sec_handle;
-+	params[1].attr = TEE_IOCTL_PARAM_ATTR_TYPE_VALUE_OUTPUT;
+ static int mtk_sec_heap_init(void)
+ {
+ 	struct mtk_secure_heap *sec_heap = mtk_sec_heap;
+@@ -331,6 +437,15 @@ static int mtk_sec_heap_init(void)
+ 		exp_info.ops = &mtk_sec_heap_ops;
+ 		exp_info.priv = (void *)sec_heap;
+ 
++		if (sec_heap->mem_type == KREE_MEM_SEC_CM_CMA) {
++			if (!sec_heap->cma) {
++				pr_err("CMA is not ready for %s.\n", sec_heap->name);
++				continue;
++			} else {
++				mutex_init(&sec_heap->lock);
++			}
++		}
 +
-+	mtk_sec_mem_tee_service_call(sec_heap->tee_ctx, mem_session,
-+				     TZCMD_MEM_SECURECM_UNREF, params);
-+}
-+
- static struct dma_buf *
- mtk_sec_heap_allocate(struct dma_heap *heap, size_t size,
- 		      unsigned long fd_flags, unsigned long heap_flags)
-@@ -107,6 +169,9 @@ mtk_sec_heap_allocate(struct dma_heap *heap, size_t size,
- 	sec_buf->size = size;
- 	sec_buf->heap = heap;
- 
-+	ret = mtk_sec_mem_allocate(sec_heap, sec_buf);
-+	if (ret)
-+		goto err_free_buf;
- 	exp_info.exp_name = dma_heap_get_name(heap);
- 	exp_info.size = sec_buf->size;
- 	exp_info.flags = fd_flags;
-@@ -115,11 +180,13 @@ mtk_sec_heap_allocate(struct dma_heap *heap, size_t size,
- 	dmabuf = dma_buf_export(&exp_info);
- 	if (IS_ERR(dmabuf)) {
- 		ret = PTR_ERR(dmabuf);
--		goto err_free_buf;
-+		goto err_free_sec_mem;
- 	}
- 
- 	return dmabuf;
- 
-+err_free_sec_mem:
-+	mtk_sec_mem_release(sec_heap, sec_buf);
- err_free_buf:
- 	kfree(sec_buf);
- 	return ERR_PTR(ret);
+ 		heap = dma_heap_add(&exp_info);
+ 		if (IS_ERR(heap))
+ 			return PTR_ERR(heap);
 -- 
 2.25.1
 
