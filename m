@@ -4,100 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7DFDEE57DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 08:17:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 379F0EE7FF4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 08:52:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bLtsrzjxUtfjRXBTdg7ryD78RZbIUqX7HT6UlqEs7uw=; b=AE0iU7PA2W+jxle1ZXAH7CMGuj
-	wAc2l1+BkIxK8E/WimONj0WLJ3nzzVQgxU2oIK3/RxhwfM2IR8W9kTKDj5ZGRj5ClaXg1OmDJN/WS
-	XkOSGEejhzrjBGoppeJDjRyDU7UV2UrMGuJ9n9Nq/30MHDvXSTN5URcJTf4+obsk8g16SfCD2/TNB
-	bYgPIZXR0ZP0huZDv+A3gRllUYRZq85MXuhZYH6QF2GKIeXCuUdDQUkMyxABA0COGjq+HM3OQZ5gK
-	vcZSxNan9VB5+NLG1fGTucrCOo35F1pm027vzgflGEK76Ltm67qG/IEHtEfQzoYtZIX1j4Y3jZd9y
-	1NFnQPPQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b6ojjoj528580DYzIEP6XgoOL7aePsN/TYuceJeg3YE=; b=TXF21O1gU5e3p4S2exHqS2RIUs
+	WYEgq2xVc/zMkakSwXNFcAD640LgpdfuSAoURzIFDs/RTXOmq/f67ILKneXIaxwk7BpBia7l2pfRr
+	+o4o5Uo+kPGkYsLRmgaH1Ym6dMJfgpA5StC0pF/k2/3szsexGQy318acUso4uexffg7EGCZK3vpyL
+	DBJjLJkwxCf0EQlzBwlFAoclT/LOODY2NncW6VjsGrgNboGr9l6+the/D6Dn/bLW/5/4sQ2tvqthp
+	LBL/3GBT2S28jP5odkID9RKXEDDTMyqZiodbJbN6T81Kw8eCx2OhrKMdMn95havBH/o7WXXDFnP8e
+	LKKfwsUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfc6o-00HWdY-2f;
-	Mon, 11 Sep 2023 08:17:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qfcee-00HZNd-2m;
+	Mon, 11 Sep 2023 08:52:24 +0000
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfc6m-00HWcW-1n;
-	Mon, 11 Sep 2023 08:17:25 +0000
-X-UUID: a17fc288507b11ee86758d4a7c00f3a0-20230911
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=bLtsrzjxUtfjRXBTdg7ryD78RZbIUqX7HT6UlqEs7uw=;
-	b=UebW4fkJT4sinEnIj28vlOHdnCLNyrqN35wRKpPbWXzbYjEk4X/G0Ig3TIfNRKKKW0AZ0SKzcd78MAGk483f1viXvf3r18sF9tu9Tpzd+J8UYuZ+q7xkijAZbmQPixncfzCEJ9CxIqOJNWrnIKrJmur3C0OF1ODuCZmqGT+gY10=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:42791457-1969-4a78-b1e0-b03ea0a35697,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:f493cb13-4929-4845-9571-38c601e9c3c9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: a17fc288507b11ee86758d4a7c00f3a0-20230911
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 94974329; Mon, 11 Sep 2023 01:17:21 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 11 Sep 2023 16:16:47 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Mon, 11 Sep 2023 16:16:45 +0800
-Message-ID: <e697a23e-e677-c97b-269a-a7a11d338d95@mediatek.com>
-Date: Mon, 11 Sep 2023 16:16:44 +0800
+	id 1qfceb-00HZMF-12;
+	Mon, 11 Sep 2023 08:52:23 +0000
+Received: by mail-pg1-x530.google.com with SMTP id 41be03b00d2f7-573d52030fbso2632283a12.0;
+        Mon, 11 Sep 2023 01:52:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1694422338; x=1695027138; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=b6ojjoj528580DYzIEP6XgoOL7aePsN/TYuceJeg3YE=;
+        b=QGDOtlnXaxTJPDRUsf4/LPZsUpLkz68WBy4xskzmMFvjHWBBUlyVvt3AobnUIvRZdx
+         os/5pDqdAXr974Olh6JdoOMR8darbyreOYLhllMguBvOnid+sjCU8QnKG1+/u/EHe/U7
+         ad8PvEauzCugRY3zj2KczAd47Xw/iXr8O7noFH8easoHDpFiWChMaIRSBBnsZjizmp2R
+         gFBUO/ZsdusPTTc0qTL7XgMmAaOpWR8YUXvM6wvFYRcwPlVkxnePOywcm4hpSb3UteFi
+         entZVZezxTRNN8ZXFFBfAe5OnuaG9vKWG1p19QD2SSQ+m0SuZMQ4fO3SGy8fpL/oCXb6
+         1vWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694422338; x=1695027138;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=b6ojjoj528580DYzIEP6XgoOL7aePsN/TYuceJeg3YE=;
+        b=WvBFeKILlg3xcv7h5pBrK+GlV7NAmK+1el3dGumHhZC/8Siapg34CqpYlZ4VvXSfko
+         b37fiG3rOsJbI/wewiIqQXQAxaj5Ty5C2VbQU1wRy45vtUhEK8EG+97EYi/5IAYrEwGN
+         xFNyp3qBlRpDTu/dU6oyF2Mp6cweH7TEaAonfUfBZST3YZefmhZu9gE/RM0IN7A694pU
+         673DAlw36GYvQRikT9MdgP75NLdjf8v1Jh0xYDLlnxT0Wdufc3Jv0bxe+Vezj6XDOB80
+         aitBvNz8yxzDcpv+i2roJ1VQ4vZyyJ5RI/k/p+5amqmRBWVm2XYgMZLw7Ly0vH78C5qa
+         e14w==
+X-Gm-Message-State: AOJu0YxusiHWlIBJLWMQYxJoO4TK4to4P+0C1KmkPLuXtmy1pZUNs44r
+	7TSPfUdfVHmUKa/ezFbAW7k=
+X-Google-Smtp-Source: AGHT+IGhmEWHLAYl0FOfBIxHzSVzPNiLLqpuyRPizVofbJudX36mjRJtfMF93gr9pzcoQUhJS9Y29Q==
+X-Received: by 2002:a05:6300:8005:b0:14b:f9e2:e16c with SMTP id an5-20020a056300800500b0014bf9e2e16cmr6459218pzc.62.1694422338167;
+        Mon, 11 Sep 2023 01:52:18 -0700 (PDT)
+Received: from debian.me ([103.124.138.83])
+        by smtp.gmail.com with ESMTPSA id 5-20020a170902e9c500b001bb04755212sm5853976plk.228.2023.09.11.01.52.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Sep 2023 01:52:17 -0700 (PDT)
+Received: by debian.me (Postfix, from userid 1000)
+	id D1703830618D; Mon, 11 Sep 2023 15:52:13 +0700 (WIB)
+Date: Mon, 11 Sep 2023 15:52:13 +0700
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+To: Mukesh Ojha <quic_mojha@quicinc.com>, <corbet@lwn.net>,
+	<agross@kernel.org>, <andersson@kernel.org>,
+	<konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
+	<keescook@chromium.org>, <tony.luck@intel.com>,
+	<gpiccoli@igalia.com>, <mathieu.poirier@linaro.org>,
+	<catalin.marinas@arm.com>, <will@kernel.org>,
+	<linus.walleij@linaro.org>, <andy.shevchenko@gmail.com>,
+	<vigneshr@ti.com>, <nm@ti.com>, <matthias.bgg@gmail.com>,
+	<kgene@kernel.org>, <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
+	<quic_tsoni@quicinc.com>
+Cc: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-msm@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
+	<linux-remoteproc@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<linux-gpio@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
+Subject: Re: [PATCH v5 00/17] Add Qualcomm Minidump kernel driver related
+ support
+Message-ID: <ZP7VPfVtvbmB5aQf@debian.me>
+References: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] dt-bindings: arm64: dts: mediatek: add description for
- mt8365-evk board
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-	=?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>
-References: <20230910062852.15415-1-macpaul.lin@mediatek.com>
- <f8864242-daa1-e72f-4759-aac3fa1bbcf2@linaro.org>
- <12bdd17a-98f4-5551-4253-229dc36f0c77@mediatek.com>
- <ef81697f-473e-898e-ec13-4dd255e2e3d7@linaro.org>
- <82a0ab25-a3cc-3e87-e379-9b15b3fbbf76@mediatek.com>
- <649e89c3-343a-c00c-ae89-329833b38981@linaro.org>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <649e89c3-343a-c00c-ae89-329833b38981@linaro.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--17.294500-8.000000
-X-TMASE-MatchedRID: +f/wAVSGjujsYbGmK/WYxia1MaKuob8PCJpCCsn6HCHBnyal/eRn3gzR
-	CsGHURLuwpcJm2NYlPAF6GY0Fb6yChLn4nGgmm6XPJAf1AuYU6BbVWMeHOeZaFc/CedjlcvkASS
-	25Kb4JAK/PxUCMpGeRFQXB1s+iArFOkjQDRo1OZRor4yxPAz7WQ2AVSpm3nkDATjAbArJUsiqHZ
-	Z4aC7fIyJtQogTap1vmw8gErCz5evsPLr8JwjnkLGj3LN0+Ey97yrmaqIg0yAwEhHW5KVAz2J+P
-	WmHAknxnlSM1mB4TLLOHyiFumtKQSnixsypv8PSFPowz8xfffSeimGtNywjtpsoi2XrUn/JyeMt
-	MD9QOgChMIDkR/KfwI2j49Ftap9EOwBXM346/+zxKm+NrlRaJHxJwMK8LeRQaDATuz7r6ZYNxer
-	6R4Ih84VxIm5v/HGf
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--17.294500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 6EEA80FCF1E52590F8061DE403ECC5A07550DF81B15E6C606221868D3A8DE3472000:8
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ypI1W5o4Aub9n7jF"
+Content-Disposition: inline
+In-Reply-To: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_011724_598505_9458805F 
-X-CRM114-Status: GOOD (  24.94  )
+X-CRM114-CacheID: sfid-20230911_015221_363609_1E19E753 
+X-CRM114-Status: GOOD (  45.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,89 +108,224 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
+--ypI1W5o4Aub9n7jF
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 9/11/23 15:06, Krzysztof Kozlowski wrote:
-> 	
-> 
-> External email : Please do not click links or open attachments until you 
-> have verified the sender or the content.
-> 
-> On 11/09/2023 08:34, Macpaul Lin wrote:
->> On 9/11/23 14:09, Krzysztof Kozlowski wrote:
->>> 
->>>
->>> External email : Please do not click links or open attachments until you 
->>> have verified the sender or the content.
->>>
->>> On 10/09/2023 14:07, Macpaul Lin wrote:
->>>>
->>>>
->>>> On 9/10/23 17:09, Krzysztof Kozlowski wrote:
->>>>>> +      - description: MediaTek Genio 350 Boards (Genio 350 EVK)
->>>>>
->>>>> That's a bit confusing. So all of the boards here will be Genio 350 EVK?
->>>>> I don't get what is the point of this description.
->>>>>
->>>>>
->>>>>> +        items:
->>>>>>            - enum:
->>>>>>                - mediatek,mt8365-evk
->>>>>>            - const: mediatek,mt8365
->>>>
->>>> Thes boards with compatible 'mediatek,mt8365-evk' is indeed used by
->>>
->>> Boards?
->> 
->> I'm not sure if there will be more hardware version released to market.
->> Current the p1v3 is the final version of mt8365-evk.
-> 
-> Then your code (enum) does not match description. The code is saying:
-> this is for multiple boards based on mt8365.
-> 
-> Your description is saying: this is only for 350 boards.
-> 
-> Now your email is saying: there is only one 350 board.
-> 
-> Three different versions. Sorry, I am confused.
-> 
+On Sun, Sep 10, 2023 at 01:46:01AM +0530, Mukesh Ojha wrote:
+> Hi All,
+>=20
+> This is to continuation from the conversation happened at v4
+>=20
+> https://lore.kernel.org/lkml/632c5b97-4a91-c3e8-1e6c-33d6c4f6454f@quicinc=
+=2Ecom/
+>=20
+> https://lore.kernel.org/lkml/695133e6-105f-de2a-5559-555cea0a0462@quicinc=
+=2Ecom/
+>=20
+> We have put abstract on LPC on this topic as well as initiated a mail thr=
+ead
+> with other SoC vendors but did not get much traction on it.
+>=20
+> https://lore.kernel.org/lkml/0199db00-1b1d-0c63-58ff-03efae02cb21@quicinc=
+=2Ecom/
+>=20
+> We explored most of possiblity present in kernel to address this issue[1]=
+ but
+> solution like kdump/fadump does not seems safe/secure/performant from our
+> perspective.
+>=20
+> Hence, with this series we tried to make the minidump kernel driver, simp=
+le
+> and tied with pstore frontends, so that it collects the present available
+> frontends data like dmesg, ftrace, pmsg, ftrace., Also, we will be working
+> towards enhancing generic pstore to capture more debug data which will be
+> helpful for first hand of debugging that can benefit both other pstore us=
+ers
+> as well as us as minidump users.
+>=20
+> One of the proposal made here,
+> https://lore.kernel.org/lkml/1683561060-2197-1-git-send-email-quic_mojha@=
+quicinc.com/
+>=20
+> Looking forward for your comments.
+>=20
+> Thanks,
+> Mukesh
+>=20
+> [1]
+> Minidump is a best effort mechanism to collect useful and predefined data
+> for first level of debugging on end user devices running on Qualcomm SoCs.
+> It is built on the premise that System on Chip (SoC) or subsystem part of
+> SoC crashes, due to a range of hardware and software bugs. Hence, the
+> ability to collect accurate data is only a best-effort. The data collected
+> could be invalid or corrupted, data collection itself could fail, and so =
+on.
+>=20
+> Qualcomm devices in engineering mode provides a mechanism for generating
+> full system ramdumps for post mortem debugging. But in some cases it's
+> however not feasible to capture the entire content of RAM. The minidump
+> mechanism provides the means for selecting which snippets should be
+> included in the ramdump.
+>=20
+> The core of SMEM based minidump feature is part of Qualcomm's boot
+> firmware code. It initializes shared memory (SMEM), which is a part of
+> DDR and allocates a small section of SMEM to minidump table i.e also
+> called global table of content (G-ToC). Each subsystem (APSS, ADSP, ...)
+> has their own table of segments to be included in the minidump and all
+> get their reference from G-ToC. Each segment/region has some details
+> like name, physical address and it's size etc. and it could be anywhere
+> scattered in the DDR.
+>=20
+> Existing upstream Qualcomm remoteproc driver[1] already supports SMEM
+> based minidump feature for remoteproc instances like ADSP, MODEM, ...
+> where predefined selective segments of subsystem region can be dumped
+> as part of coredump collection which generates smaller size artifacts
+> compared to complete coredump of subsystem on crash.
+>=20
+> [1]
+> https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/dri=
+vers/remoteproc/qcom_common.c#n142
+>=20
+> In addition to managing and querying the APSS minidump description,
+> the Linux driver maintains a ELF header in a segment. This segment
+> gets updated with section/program header whenever a new entry gets
+> registered.
+>=20
+> Changes in v5:
+>  - On suggestion from Pavan.k, to have single function call for minidump =
+collection
+>    from remoteproc driver, separated the logic to have separate minidump =
+file called
+>    qcom_rproc_minidump.c and also renamed the function from qcom_minidump=
+() to=20
+>    qcom_rproc_minidump(); however, dropped his suggestion about rework on=
+ lazy deletion
+>    during region unregister in this series, will pursue it in next series.
+>=20
+>  - To simplify the minidump driver, removed the complication for frontend=
+ and different
+>    backend from Greg suggestion, will pursue this once main driver gets m=
+ainlined.
+>=20
+>  - Move the dynamic ramoops region allocation from Device tree approach t=
+o command line
+>    approch with the introduction command line parsing and memblock reserv=
+ation during
+>    early boot up; Not added documentation about it yet, will add if it ge=
+ts positive
+>    response.
+>=20
+>  - Exporting linux banner from kernel to make minidump build also as modu=
+le, however,
+>    minidump is a debug module and should be kernel built to get most debu=
+g information
+>    from kernel.
+>=20
+>  - Tried to address comments given on dload patch series.=20
+>=20
+> Changes in v4: https://lore.kernel.org/lkml/1687955688-20809-1-git-send-e=
+mail-quic_mojha@quicinc.com/
+>  - Redesigned the driver and divided the driver into front end and backen=
+d (smem) so
+>    that any new backend can be attached easily to avoid code duplication.
+>  - Patch reordering as per the driver and subsystem to easier review of t=
+he code.
+>  - Removed minidump specific code from remoteproc to minidump smem based =
+driver.
+>  - Enabled the all the driver as modules.
+>  - Address comments made on documentation and yaml and Device tree file [=
+Krzysztof/Konrad]
+>  - Address comments made qcom_pstore_minidump driver and given its Device=
+ tree
+>    same set of properties as ramoops. [Luca/Kees]
+>  - Added patch for MAINTAINER file.
+>  - Include defconfig change as one patch as per [Krzysztof] suggestion.
+>  - Tried to remove the redundant file scope variables from the module as =
+per [Krzysztof] suggestion.
+>  - Addressed comments made on dload mode patch v6 version
+>    https://lore.kernel.org/lkml/1680076012-10785-1-git-send-email-quic_mo=
+jha@quicinc.com/
+>=20
+> Changes in v3: https://lore.kernel.org/lkml/1683133352-10046-1-git-send-e=
+mail-quic_mojha@quicinc.com/
+>  - Addressed most of the comments by Srini on v2 and refactored the minid=
+ump driver.
+>     - Added platform device support
+>     - Unregister region support.
+>  - Added update region for clients.
+>  - Added pending region support.
+>  - Modified the documentation guide accordingly.
+>  - Added qcom_pstore_ramdump client driver which happen to add ramoops pl=
+atform
+>    device and also registers ramoops region with minidump.
+>  - Added download mode patch series with this minidump series.
+>     https://lore.kernel.org/lkml/1680076012-10785-1-git-send-email-quic_m=
+ojha@quicinc.com/
+>=20
+> Changes in v2: https://lore.kernel.org/lkml/1679491817-2498-1-git-send-em=
+ail-quic_mojha@quicinc.com/
+>  - Addressed review comment made by [quic_tsoni/bmasney] to add documenta=
+tion.
+>  - Addressed comments made by [srinivas.kandagatla]
+>  - Dropped pstore 6/6 from the last series, till i get conclusion to get =
+pstore
+>    region in minidump.
+>  - Fixed issue reported by kernel test robot.
+>=20
+> Changes in v1: https://lore.kernel.org/lkml/1676978713-7394-1-git-send-em=
+ail-quic_mojha@quicinc.com/
+>=20
+> Testing of the patches has been done on sm8450 target after enabling conf=
+ig like
+> CONFIG_PSTORE_RAM and CONFIG_PSTORE_CONSOLE and once the device boots up.
+>=20
+>  echo mini > /sys/module/qcom_scm/parameters/download_mode
+>=20
+> Try crashing it via devmem2 0xf11c000(this is known to create xpu violati=
+on and
+> and put the device in download mode) on command prompt.
+>=20
+> Default storage type is set to via USB, so minidump would be downloaded w=
+ith the
+> help of x86_64 machine (running PCAT tool) attached to Qualcomm device wh=
+ich has
+> backed minidump boot firmware support.
+>=20
+> This will make the device go to download mode and collect the minidump on=
+ to the
+> attached x86 machine running the Qualcomm PCAT tool(This comes as part Qu=
+alcomm
+> package manager kit).
+>=20
+> After that we will see a bunch of predefined registered region as binary =
+blobs files
+> starts with md_* downloaded on the x86 machine on given location in PCAT =
+tool from
+> the target device, more about this can be found in qualcomm minidump guid=
+e patch.
+>=20
 
-Okay, this description has been modified to support single board.
-Since there is only one type of the hardware is available on the market.
+I tried to apply this series on top of 535a265d7f0dd50 (as suggested by
+`b4 am -l -g`), but it conflicts on patch [04/17]. Please specify the
+exact base commit or another series for which this series is based on.
 
->> 
->>>> Genio 350-EVK, which Baylibre helped to do upstream tasks. The only 
->>>> production version of hardware will be available on the market. The 
->>>> derived version of customer's hardware is not available yet.
->>>>
->>>> The separate patch for renaming mt8365-evk.dts file should be send next 
->>>> week for aligning the naming rules.
->>>
->>> So the description is not correct.
->>>
->>> Anyway, this patch does not make much sense to me considering nothing
->>> like this was merged. You just sent v5 doing the same!
->> 
->> 
->> Sorry I'm confused now.
->> These are independent patches.
->> This patch is for SOC mt83'6'5 and board mt8365-evk, which is not relate 
->> SOC mt83'9'5 and board mt8395-evk.
-> 
-> OK, I see my confusion. mt8365 and mt8395.
-> 
-> Still the description is not matching the code, at least to my limited
-> understanding of the description.
-> 
+Thanks.
 
-patch v2 of this change has been send and rebase with that v5 change.
-This will generate a different base line for the v2 patch for avoiding 
-confusion. :)
+--=20
+An old man doll... just what I always wanted! - Clara
 
+--ypI1W5o4Aub9n7jF
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> Best regards,
-> Krzysztof
-> 
+-----BEGIN PGP SIGNATURE-----
 
-Thanks
-Macpaul Lin
+iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZP7VOQAKCRD2uYlJVVFO
+o7CQAP9vjj875+yfOt9mTMP/2aP+Bk2gV8aoKpSZbVrr0OHt+wEAsUPrYs7dB28e
+9vo5VB+FpC5Y8n97acr+wNXUrD6klAk=
+=WCfb
+-----END PGP SIGNATURE-----
+
+--ypI1W5o4Aub9n7jF--
 
