@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7EE6EEB58C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 07:43:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D17BBEEB580
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 07:43:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WfmKWqVRCEg51fVBa36M3QTIap9rdh46pvZ/mooJ0KE=; b=OburLTjlOtoP5A/SyQZVRdAZC9
-	+DrKkQWctLc9gCTx5ptRIOhCWrORG3j5GaNrMTGWRunADLv339IIVUwJcHcjx/DrJL2ra3bwDL4Fh
-	FuskUTG4Kx4RAoM0hWQWmnBdk8XkSMe9I7QkJu1FELymZ4Vq3/mYS80ISTpmBRkLz+dzYha+ukHEW
-	2HyWuXQXOScTovHsBXpXtFbCCcGdit946XwPwRrtZcneUdEfdV4G65kIW9cTD3TiL6sKGHG8d1w3T
-	xBmusITKEh3wxq0NTSkLHYj3P/asSS9N8yc5UUoyzSw7xSVXPbC7tjgFFoNTF5F2gU2RXZCwim/oy
-	WNviumkg==;
+	bh=JtH8H/mH3Uz7XL+BMa9kU6gPh56dxzN2XLCuY3hjHsw=; b=g4eM0IkL/mAs/e4JkOZuFCZk0G
+	lzjCNGmeBoplGUuZckfoPrTbP9NrrWaegDM9d00PDkpG98n/ar4YZEc6QDtAoGDT+hXu3KYDFUTxe
+	iVyRKOjQwe1nT4e3unxrjP+qJ57lW785EebRLtFW7j54NtxrJjIk7lQ7JFJTygSCDxytGECenGqmL
+	iOjQ7wWWmSKYGtIN7n4ThfaB01wcXUhzXyw9c0bVOPWaM+Ki2+6xR8xmaY365pZq+0GkH7Jdd8Whq
+	o3k7zXThFvL0upzCA3HTREeCWRuzXD0Goy8nZgGuFwwvt5cs1SgO3Gw2sO+fI4FUkNfl5W/AdnvoJ
+	r1PBBUzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfba7-00HRW7-1x;
-	Mon, 11 Sep 2023 07:43:39 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qfba8-00HRXa-25;
+	Mon, 11 Sep 2023 07:43:40 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfbZw-00HRJg-1y;
-	Mon, 11 Sep 2023 07:43:31 +0000
-X-UUID: e181a1d0507611ee86758d4a7c00f3a0-20230911
+	id 1qfbZw-00HRK3-1T;
+	Mon, 11 Sep 2023 07:43:30 +0000
+X-UUID: e209b1a6507611ee9b7791016c24628a-20230911
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=WfmKWqVRCEg51fVBa36M3QTIap9rdh46pvZ/mooJ0KE=;
-	b=TOM3lbmVkA9bsuTfs1WO4m8XeaUIAJF5wT1HJJ1Wf5dhfEf05h0WGRIBPM33Wajwn/xnYNBvUk9GbhsdkvbB2G85j1bLMNyr6GkHrpJyjs3CeU5ti7zy7fzA4Hn0LoJ0rjys35D+OPXYilKEelvDWPa4Y0i9kPRnRnfjxGfWElw=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=JtH8H/mH3Uz7XL+BMa9kU6gPh56dxzN2XLCuY3hjHsw=;
+	b=KQyetJwpJj3zpY1Y0WZGvUptA3OGWiXZSRHm24uzLIB8sJJFAHzX3WAKO3ExQevzAHP6elcW3T2+UidtRNrqHnwndJtFSOBCsof4Pq7BoL42nTMwz+hoTFnTGwdW8RDiexjXK2yuMqXmZNqDDdFnzxYsZ50PSm/IhqmXE+boB94=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:0a8a176f-1d17-4712-a13b-273c19409803,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:eea8e1c2-1e57-4345-9d31-31ad9818b39f,B
+X-CID-O-INFO: VERSION:1.1.31,REQID:5ab4f893-05fa-4b26-896c-f76fdef92a61,IP:0,U
+	RL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:20
+X-CID-META: VersionHash:0ad78a4,CLOUDID:bd24cb13-4929-4845-9571-38c601e9c3c9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: e181a1d0507611ee86758d4a7c00f3a0-20230911
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: e209b1a6507611ee9b7791016c24628a-20230911
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 861144114; Mon, 11 Sep 2023 00:43:21 -0700
+	with ESMTP id 244678552; Mon, 11 Sep 2023 00:43:22 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 11 Sep 2023 15:42:46 +0800
+ 15.2.1118.26; Mon, 11 Sep 2023 15:42:44 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 15:42:46 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 15:42:44 +0800
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK
- Hu <ck.hu@mediatek.com>, Krzysztof Kozlowski
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
+ Hu" <ck.hu@mediatek.com>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
 CC: Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>,
@@ -69,18 +69,32 @@ CC: Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>,
 	<singo.chang@mediatek.com>, "Nancy . Lin" <nancy.lin@mediatek.com>, "Jason-JH
  . Lin" <jason-jh.lin@mediatek.com>, Hsiao Chien Sung
 	<shawn.sung@mediatek.com>
-Subject: [RESEND PATCH v6 18/20] drm/mediatek: Add Padding to OVL adaptor
-Date: Mon, 11 Sep 2023 15:42:31 +0800
-Message-ID: <20230911074233.31556-19-shawn.sung@mediatek.com>
+Subject: [RESEND PATCH v6 04/20] dt-bindings: display: mediatek: padding: Add MT8188
+Date: Mon, 11 Sep 2023 15:42:17 +0800
+Message-ID: <20230911074233.31556-5-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230911074233.31556-1-shawn.sung@mediatek.com>
 References: <20230911074233.31556-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--8.027100-8.000000
+X-TMASE-MatchedRID: 9nkzMtsPLI7yZ92BnYqk5lz+axQLnAVB6SXuwUgGH0gIgSDinsA6bIpb
+	wG9fIuITLSHDQi/tZU9ZyJKwWJFJUwAwGIAo3Shb71Wx2uUbPLcT0Sn1/3AIbWHZ+cd7VyKXTo+
+	d5kYVw/ElbBPuTv/lL9eHLWzVm2BdhPc4FTJN6V5LxLYX2WS87+AAYRasBjMekR+/pTNS9t0o0E
+	qA13zQc0cN36UB4MN7MHwFGlhAi2EZjarFLqLUbBuZoNKc6pl+zKnr9zj6h3Hz9QBty8t029xBt
+	1UDX817nXOXTNRLXkt5pD5YlcDpcqtL0wBaA/G+DB+ErBr0bANimi8LvNfmr87EPIkVcg+OWaGV
+	MLZ5ERLi8zVgXoAltlPcOF1Vw1gmC24oEZ6SpSlsZUSYh+N/e3EQ32xyf6OWA2HUg8E47c0SeDq
+	BtFZYe4Lz5U2zu5EXXXPflUac0Yg=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--8.027100-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: BDB281234B350FB61FD68CBD3D972366FF1F37D9FAB9A797339B86EB454632D52000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_004328_721559_12739D82 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20230911_004328_508372_B8D64CFA 
+X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,117 +109,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 Padding to OVL adaptor to probe the driver.
+Padding is a new hardware module on MediaTek MT8188,
+add dt-bindings for it.
 
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 33 +++++++++++++++++++
- 1 file changed, 33 insertions(+)
+ .../display/mediatek/mediatek,padding.yaml    | 81 +++++++++++++++++++
+ 1 file changed, 81 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-index 84133303a6ec..217c39af27bd 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
-@@ -30,6 +30,7 @@ enum mtk_ovl_adaptor_comp_type {
- 	OVL_ADAPTOR_TYPE_ETHDR,
- 	OVL_ADAPTOR_TYPE_MDP_RDMA,
- 	OVL_ADAPTOR_TYPE_MERGE,
-+	OVL_ADAPTOR_TYPE_PADDING,
- 	OVL_ADAPTOR_TYPE_NUM,
- };
-
-@@ -47,6 +48,14 @@ enum mtk_ovl_adaptor_comp_id {
- 	OVL_ADAPTOR_MERGE1,
- 	OVL_ADAPTOR_MERGE2,
- 	OVL_ADAPTOR_MERGE3,
-+	OVL_ADAPTOR_PADDING0,
-+	OVL_ADAPTOR_PADDING1,
-+	OVL_ADAPTOR_PADDING2,
-+	OVL_ADAPTOR_PADDING3,
-+	OVL_ADAPTOR_PADDING4,
-+	OVL_ADAPTOR_PADDING5,
-+	OVL_ADAPTOR_PADDING6,
-+	OVL_ADAPTOR_PADDING7,
- 	OVL_ADAPTOR_ID_MAX
- };
-
-@@ -67,6 +76,7 @@ static const char * const private_comp_stem[OVL_ADAPTOR_TYPE_NUM] = {
- 	[OVL_ADAPTOR_TYPE_ETHDR]	= "ethdr",
- 	[OVL_ADAPTOR_TYPE_MDP_RDMA]	= "vdo1-rdma",
- 	[OVL_ADAPTOR_TYPE_MERGE]	= "merge",
-+	[OVL_ADAPTOR_TYPE_PADDING]	= "padding",
- };
-
- static const struct mtk_ddp_comp_funcs _ethdr = {
-@@ -79,6 +89,11 @@ static const struct mtk_ddp_comp_funcs _merge = {
- 	.clk_disable = mtk_merge_clk_disable,
- };
-
-+static const struct mtk_ddp_comp_funcs _padding = {
-+	.clk_enable = mtk_padding_clk_enable,
-+	.clk_disable = mtk_padding_clk_disable,
-+};
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
+new file mode 100644
+index 000000000000..db24801ebc48
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
+@@ -0,0 +1,81 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,padding.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- static const struct mtk_ddp_comp_funcs _rdma = {
- 	.clk_enable = mtk_mdp_rdma_clk_enable,
- 	.clk_disable = mtk_mdp_rdma_clk_disable,
-@@ -98,6 +113,14 @@ static const struct ovl_adaptor_comp_match comp_matches[OVL_ADAPTOR_ID_MAX] = {
- 	[OVL_ADAPTOR_MERGE1] = { OVL_ADAPTOR_TYPE_MERGE, DDP_COMPONENT_MERGE2, 2, &_merge },
- 	[OVL_ADAPTOR_MERGE2] = { OVL_ADAPTOR_TYPE_MERGE, DDP_COMPONENT_MERGE3, 3, &_merge },
- 	[OVL_ADAPTOR_MERGE3] = { OVL_ADAPTOR_TYPE_MERGE, DDP_COMPONENT_MERGE4, 4, &_merge },
-+	[OVL_ADAPTOR_PADDING0] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING0, 0, &_padding },
-+	[OVL_ADAPTOR_PADDING1] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING1, 1, &_padding },
-+	[OVL_ADAPTOR_PADDING2] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING2, 2, &_padding },
-+	[OVL_ADAPTOR_PADDING3] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING3, 3, &_padding },
-+	[OVL_ADAPTOR_PADDING4] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING4, 4, &_padding },
-+	[OVL_ADAPTOR_PADDING5] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING5, 5, &_padding },
-+	[OVL_ADAPTOR_PADDING6] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING6, 6, &_padding },
-+	[OVL_ADAPTOR_PADDING7] = { OVL_ADAPTOR_TYPE_PADDING, DDP_COMPONENT_PADDING7, 7, &_padding },
- };
-
- void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
-@@ -109,6 +132,8 @@ void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
- 	struct mtk_mdp_rdma_cfg rdma_config = {0};
- 	struct device *rdma_l;
- 	struct device *rdma_r;
-+	struct device *padding_l;
-+	struct device *padding_r;
- 	struct device *merge;
- 	struct device *ethdr;
- 	const struct drm_format_info *fmt_info = drm_format_info(pending->format);
-@@ -125,6 +150,8 @@ void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
-
- 	rdma_l = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MDP_RDMA0 + 2 * idx];
- 	rdma_r = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MDP_RDMA0 + 2 * idx + 1];
-+	padding_l = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_PADDING0 + 2 * idx];
-+	padding_r = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_PADDING0 + 2 * idx + 1];
- 	merge = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MERGE0 + idx];
- 	ethdr = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0];
-
-@@ -160,10 +187,15 @@ void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
- 	rdma_config.color_encoding = pending->color_encoding;
- 	mtk_mdp_rdma_config(rdma_l, &rdma_config, cmdq_pkt);
-
-+	if (padding_l)
-+		mtk_padding_config(padding_l, cmdq_pkt);
++title: MediaTek Display Padding
 +
- 	if (use_dual_pipe) {
- 		rdma_config.x_left = l_w;
- 		rdma_config.width = r_w;
- 		mtk_mdp_rdma_config(rdma_r, &rdma_config, cmdq_pkt);
-+		if (padding_r)
-+			mtk_padding_config(padding_r, cmdq_pkt);
- 	}
-
- 	mtk_merge_start_cmdq(merge, cmdq_pkt);
-@@ -354,6 +386,7 @@ static int ovl_adaptor_comp_get_id(struct device *dev, struct device_node *node,
- }
-
- static const struct of_device_id mtk_ovl_adaptor_comp_dt_ids[] = {
-+	{ .compatible = "mediatek,mt8188-padding", .data = (void *)OVL_ADAPTOR_TYPE_PADDING },
- 	{ .compatible = "mediatek,mt8195-disp-ethdr", .data = (void *)OVL_ADAPTOR_TYPE_ETHDR },
- 	{ .compatible = "mediatek,mt8195-disp-merge", .data = (void *)OVL_ADAPTOR_TYPE_MERGE },
- 	{ .compatible = "mediatek,mt8195-vdo1-rdma", .data = (void *)OVL_ADAPTOR_TYPE_MDP_RDMA },
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description:
++  Padding provides ability to add pixels to width and height of a layer with
++  specified colors. Due to hardware design, Mixer in VDOSYS1 requires
++  width of a layer to be 2-pixel-align, or 4-pixel-align when ETHDR is enabled,
++  we need Padding to deal with odd width.
++  Please notice that even if the Padding is in bypass mode, settings in
++  register must be cleared to 0, or undefined behaviors could happen.
++
++properties:
++  compatible:
++    const: mediatek,mt8188-padding
++
++  reg:
++    maxItems: 1
++
++  power-domains:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: RDMA Clock
++
++  mediatek,gce-client-reg:
++    description:
++      GCE (Global Command Engine) is a multi-core micro processor that helps
++      its clients to execute commands without interrupting CPU. This property
++      describes GCE client's information that is composed by 4 fields.
++      1. Phandle of the GCE (there may be several GCE processors)
++      2. Sub-system ID defined in the dt-binding like a user ID
++         (Please refer to include/dt-bindings/gce/<chip>-gce.h)
++      3. Offset from base address of the subsys you are at
++      4. Size of the register the client needs
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: Phandle of the GCE
++        - description: Subsys ID defined in the dt-binding
++        - description: Offset from base address of the subsys
++        - description: Size of register
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - power-domains
++  - clocks
++  - mediatek,gce-client-reg
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/clock/mediatek,mt8188-clk.h>
++    #include <dt-bindings/power/mediatek,mt8188-power.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        padding0: padding@1c11d000 {
++            compatible = "mediatek,mt8188-padding";
++            reg = <0 0x1c11d000 0 0x1000>;
++            clocks = <&vdosys1 CLK_VDO1_PADDING0>;
++            power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS1>;
++            mediatek,gce-client-reg = <&gce0 SUBSYS_1c11XXXX 0xd000 0x1000>;
++        };
++    };
 --
 2.18.0
 
