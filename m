@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8ECAEE57DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 13:00:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B22AAEE7FF4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 13:00:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tKlHvN5/G1frDG7GgPVmMjQ8CSmun7vd2dASfS/alS8=; b=M0oKYC2AuJrvyxMZA1Z4anlSi0
-	OswBscJkFjgQczMK8ZD2Dm0ZIl2LVGBd8wVrhcydrtH4sWEvATMhr+gqrUSWSmU9OfKMXiO2oCPm4
-	8NE313RseDPUEslLdqZ7RPTndgLxzDFvM81fgp5AxtHx2hy4SGjy6cIMHDPDcBQkQO2gGQdviTWmB
-	/9r0zI9JwR29nJVNoPjCj55HVbCToo+NP9qVwB548V08Di4ErsXKlXBk/BjG2Mu5FzvWdtACfLUZh
-	1yGB57gDJjUfH8eujucKBAanL9acsWX/VZS0DdZuY+suhiIpj2MJVuX1xMdul47URDyQvdidaQsjn
-	mTvNxE7w==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=h5MlQeYSjp2j/LB9w519bAWy3e+QI9O2SLovvv9dKIs=; b=cGhc7kfQsfgTVWikGN1FOA0aPS
+	LSgCdXhGLQcOEMFR4su+JXaTa7LhBeIQ0HakNnFHQDAxGXhmpaS39A+A+VEe6NGw+029zbwFN2KQk
+	lLee/P9jEP1FhB09eIHN7hzsNNegLiQcuKjOhckd8x/LdmJH/nNje2PJ2Hpwz3SfQ3+BzUbkckm3n
+	ZksF437N2yYX1E0wnqeD1YbyHbFC4Ut6gFCYM1j5lswsjw2zy3vygukzXDnGri3UxkYoa720pIqTH
+	qe533oVxES6aiPE2WyCPISpjEhOOPpUz3aNxDp/spK083MV6LZbEVfwArvSEIZHndJbvlx3NzFJzs
+	5iWPqByg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfgWN-000Xmc-1y;
-	Mon, 11 Sep 2023 13:00:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qfgWX-000Xq8-2W;
+	Mon, 11 Sep 2023 13:00:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfgWK-000Xjy-0E;
-	Mon, 11 Sep 2023 13:00:05 +0000
-X-UUID: 194f6dfa50a311ee9b7791016c24628a-20230911
+	id 1qfgWV-000Xp3-0d;
+	Mon, 11 Sep 2023 13:00:16 +0000
+X-UUID: 251ec7b650a311ee86758d4a7c00f3a0-20230911
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tKlHvN5/G1frDG7GgPVmMjQ8CSmun7vd2dASfS/alS8=;
-	b=dk8fw5oO/YP3nRzbXwRHpyZ3/YKIqkP34FMaqSifFZVMoM2UYsEQWijB99WPXFPOxpWSwDmbYXRKjzEiiJcyP+SqatFks4xukSpwCyq1d6Z2sIM3mhcuZfyMo1UAcETMOgYVz8rQ8jqLaKvsyZo5x0AYOo3N4YDP0nyartiyolQ=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=h5MlQeYSjp2j/LB9w519bAWy3e+QI9O2SLovvv9dKIs=;
+	b=AbWCZ/B+EqhLS09j9YpCnGhj0+pTRo97qKwvdELJzy3d6N0DqxCc5EpwSjJDERwQy3idDh6CwwilG2/SpRozIKYM8kMFjSVgqpXzruB/47TxmFV1oOrXT6ddtp5NA8lNoQEe0UJrwFAGDxKLqGmVkP+x2bslxf2OB2KSji5zLVw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:877362ff-1d95-4812-8aa0-95f94abc278b,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:0ad78a4,CLOUDID:ad6b90ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
+X-CID-O-INFO: VERSION:1.1.31,REQID:85cf14e8-7447-4606-b0b0-50ff546ff34d,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:ea3fce13-4929-4845-9571-38c601e9c3c9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 194f6dfa50a311ee9b7791016c24628a-20230911
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-UUID: 251ec7b650a311ee86758d4a7c00f3a0-20230911
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 566905009; Mon, 11 Sep 2023 05:59:52 -0700
+	with ESMTP id 1029850961; Mon, 11 Sep 2023 06:00:12 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 11 Sep 2023 20:59:50 +0800
+ 15.2.1118.26; Mon, 11 Sep 2023 20:59:38 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 20:59:49 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 20:59:37 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
@@ -60,25 +60,35 @@ To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
 	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
 CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
- Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, "Steve
+ Cho" <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
 	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 12/14] media: medkatek: vcodec: set secure mode to decoder driver
-Date: Mon, 11 Sep 2023 20:59:34 +0800
-Message-ID: <20230911125936.10648-13-yunfei.dong@mediatek.com>
+Subject: [PATCH 00/14] add driver to support secure video decoder
+Date: Mon, 11 Sep 2023 20:59:22 +0800
+Message-ID: <20230911125936.10648-1-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230911125936.10648-1-yunfei.dong@mediatek.com>
-References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--8.569700-8.000000
+X-TMASE-MatchedRID: /kvX+BAyhRdLbaTfilVXfZqrexa4CbEQUAjrAJWsTe8KA2OoGAlTk54d
+	VMHTNaMULOOktaHND2iW4kxGbzOebKo77AcuQhw7o65WJt1k1O9YMtqMzbYRNmfYlY6RxyOvXA6
+	qLXqEbYuwDEIJD1Y7K9r7qQBGAlkIi8ICQO6ibxQVglQa/gMvfDFcf92WG8u/EvoxTu3fj1s3Bo
+	tHDlVWrHZmxDzqJ8rQkgebTBpa5lDwOTPseUY5HB+WEMjoO9WWfS0Ip2eEHnz3IzXlXlpamPoLR
+	4+zsDTtgUicvJ4MChmMp7Dr14nIYnrpZk2SoHtre7MWlND3CeQUtK2l9hQpvBM3tVf09E8l
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--8.569700-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: B9A27BB1E74839D8447AA282BB12001D619C9E13CF4D50EEB8FA142406C08CEE2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_060004_139005_60FE3BF0 
-X-CRM114-Status: GOOD (  14.43  )
+X-CRM114-CacheID: sfid-20230911_060015_249332_C6F79EE7 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,92 +103,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Setting secure mode flag to kernel when trying to play secure video,
-then decoder driver will initialize tee related interface to support
-svp.
+In order to support secure video decoder for mt8195/mt8188 h264 driver,
+need to use tee client interface to communicate with optee-os. Firstly,
+open tee context and tee session for each hardware.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Secondly, allocate two shared memory msg and vsi, msg used to send ipi to
+optee-os and get ack msg from optee-os, vsi used to store syntax for
+hardware decoder.
+
+Thirdly, adding two CID controls: V4L2_CID_MPEG_MTK_SET_SECURE_MODE and
+V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE, get secure handle used for user space
+to convert secure fd to secure handle, set secure mode used to tell decoder
+driver to initialize tee interface to decode secure video.
+
+Lastly, re-construct h264 driver to support secure video decoder.
+
+Patch 1~4  initialize tee related interface and parameters.
+Patch 5~6  allocate/free secure memory.
+Patch 7    map vsi for secure mode.
+Patch 8    support one plane capture buffer.
+Patch 9~10 re-construct h264 driver to support secure mode.
+patch 11   used to convert secure fd to secure handle.
+Patch 12   used to set secure decoder mode.
+Patch 13   disable interrupt.
+Patch 14   support tee decode
 ---
- .../vcodec/decoder/mtk_vcodec_dec_stateless.c     | 15 ++++++++++++++-
- drivers/media/v4l2-core/v4l2-ctrls-defs.c         |  5 +++++
- include/uapi/linux/v4l2-controls.h                |  1 +
- 3 files changed, 20 insertions(+), 1 deletion(-)
+Reference series:
+[1]: v1 of this series is submitted by Yong Wu.
+	message-id: 20230911023038.30649-1-yong.wu@mediatek.com
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-index d2b09ce9f1cf..a981178c25d9 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-@@ -535,6 +535,17 @@ static int mtk_vdec_s_ctrl(struct v4l2_ctrl *ctrl)
- 		ctrl->val = mtk_dma_contig_get_secure_handle(ctx, ctrl->val);
- 		mtk_v4l2_vdec_dbg(3, ctx, "get secure handle: %d => 0x%x", sec_fd, ctrl->val);
- 		break;
-+	case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:
-+		ctx->is_svp_mode = ctrl->val;
-+
-+		if (ctx->is_svp_mode) {
-+			ret = mtk_vcodec_dec_optee_open(ctx->dev->optee_private);
-+			if (ret)
-+				mtk_v4l2_vdec_err(ctx, "open secure mode failed.");
-+			else
-+				mtk_v4l2_vdec_dbg(3, ctx, "decoder in secure mode: %d", ctrl->val);
-+		}
-+		break;
- 	default:
- 		mtk_v4l2_vdec_dbg(3, ctx, "Not supported to set ctrl id: 0x%x\n", hdr_ctrl->id);
- 		return ret;
-@@ -573,7 +584,7 @@ static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx *ctx)
- 	unsigned int i;
- 	struct v4l2_ctrl *ctrl;
- 
--	v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 1);
-+	v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 2);
- 	if (ctx->ctrl_hdl.error) {
- 		mtk_v4l2_vdec_err(ctx, "v4l2_ctrl_handler_init failed\n");
- 		return ctx->ctrl_hdl.error;
-@@ -592,6 +603,8 @@ static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx *ctx)
- 
- 	ctrl = v4l2_ctrl_new_std(&ctx->ctrl_hdl, &mtk_vcodec_dec_ctrl_ops,
- 				 V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE, 0, 65535, 1, 0);
-+	ctrl = v4l2_ctrl_new_std(&ctx->ctrl_hdl, &mtk_vcodec_dec_ctrl_ops,
-+				 V4L2_CID_MPEG_MTK_SET_SECURE_MODE, 0, 65535, 1, 0);
- 
- 	v4l2_ctrl_handler_setup(&ctx->ctrl_hdl);
- 
-diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-index d8cf01f76aab..a507045a3f30 100644
---- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-+++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-@@ -1042,6 +1042,7 @@ const char *v4l2_ctrl_get_name(u32 id)
- 	case V4L2_CID_MPEG_VIDEO_REF_NUMBER_FOR_PFRAMES:	return "Reference Frames for a P-Frame";
- 	case V4L2_CID_MPEG_VIDEO_PREPEND_SPSPPS_TO_IDR:		return "Prepend SPS and PPS to IDR";
- 	case V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE:		return "MediaTek Decoder get secure handle";
-+	case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:			return "MediaTek Decoder set secure mode";
- 
- 	/* AV1 controls */
- 	case V4L2_CID_MPEG_VIDEO_AV1_PROFILE:			return "AV1 Profile";
-@@ -1442,6 +1443,10 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
- 		*type = V4L2_CTRL_TYPE_INTEGER;
- 		*flags |= V4L2_CTRL_FLAG_WRITE_ONLY;
- 		break;
-+	case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:
-+		*type = V4L2_CTRL_TYPE_INTEGER;
-+		*flags |= V4L2_CTRL_FLAG_WRITE_ONLY;
-+		break;
- 	case V4L2_CID_USER_CLASS:
- 	case V4L2_CID_CAMERA_CLASS:
- 	case V4L2_CID_CODEC_CLASS:
-diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-index 7b3694985366..88e90d943e38 100644
---- a/include/uapi/linux/v4l2-controls.h
-+++ b/include/uapi/linux/v4l2-controls.h
-@@ -957,6 +957,7 @@ enum v4l2_mpeg_mfc51_video_force_frame_type {
- /*  MPEG-class control IDs specific to the MediaTek Decoder driver as defined by V4L2 */
- #define V4L2_CID_MPEG_MTK_BASE			(V4L2_CTRL_CLASS_CODEC | 0x2000)
- #define V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE	(V4L2_CID_MPEG_MTK_BASE+8)
-+#define V4L2_CID_MPEG_MTK_SET_SECURE_MODE	(V4L2_CID_MPEG_MTK_BASE+9)
- 
- /*  Camera class control IDs */
- 
+Yunfei Dong (14):
+  media: mediatek: vcodec: add tee client interface to communiate with
+    optee-os
+  media: mediatek: vcodec: allocate tee share memory
+  media: mediatek: vcodec: send share memory data to optee
+  media: mediatek: vcodec: initialize msg and vsi information
+  media: mediatek: vcodec: using encoder's device to alloc/free memory
+  media: mediatek: vcodec: add interface to allocate/free secure memory
+  media: mediatek: vcodec: using shared memory as vsi address
+  media: medkatek: vcodec: support one plane capture buffer
+  media: medkatek: vcodec: re-construct h264 driver to support svp mode
+  media: medkatek: vcodec: remove parse nal_info in kernel
+  media: medkatek: vcodec: covert secure fd to secure handle
+  media: medkatek: vcodec: set secure mode to decoder driver
+  media: medkatek: vcodec: disable wait interrupt for svp mode
+  media: medkatek: vcodec: support tee decoder
+
+ .../media/platform/mediatek/vcodec/Kconfig    |   1 +
+ .../mediatek/vcodec/common/mtk_vcodec_util.c  | 177 ++++++++-
+ .../mediatek/vcodec/common/mtk_vcodec_util.h  |   3 +
+ .../platform/mediatek/vcodec/decoder/Makefile |   1 +
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  |  24 +-
+ .../vcodec/decoder/mtk_vcodec_dec_drv.c       |   9 +
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   7 +
+ .../vcodec/decoder/mtk_vcodec_dec_hw.c        |  34 +-
+ .../vcodec/decoder/mtk_vcodec_dec_optee.c     | 373 ++++++++++++++++++
+ .../vcodec/decoder/mtk_vcodec_dec_optee.h     | 156 ++++++++
+ .../vcodec/decoder/mtk_vcodec_dec_stateless.c |  80 +++-
+ .../decoder/vdec/vdec_h264_req_common.c       |  16 +-
+ .../decoder/vdec/vdec_h264_req_multi_if.c     | 334 +++++++++-------
+ .../mediatek/vcodec/decoder/vdec_drv_if.c     |   4 +-
+ .../mediatek/vcodec/decoder/vdec_msg_queue.c  |   9 +-
+ .../mediatek/vcodec/decoder/vdec_vpu_if.c     |  54 ++-
+ .../mediatek/vcodec/decoder/vdec_vpu_if.h     |   4 +
+ drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  10 +
+ include/uapi/linux/v4l2-controls.h            |   5 +
+ 19 files changed, 1110 insertions(+), 191 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
+ create mode 100644 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
+
 -- 
 2.18.0
 
