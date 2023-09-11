@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB569EEB57D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 02:31:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B64AC71153
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 02:31:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L6zWqvDk0Fsnt2Ma8JXPtwJh9E2ddprvdWAqFylWOEw=; b=tfkkDm0774RlcAOO77MZIXFPcP
-	zVuKZDlDgobebBhiEo/Inyz8ZRucG9Fle6rnM3wLl9sVXsIFYLOmf6ImIWXn2YuDzKGnBl4aa24+Y
-	GFBdafnXt999AZcsT6Nd+HWEVHh7Ox5MUbisU9Sf0EgF91fHVSGosC1+95VaRgyN0b00D9b74Gc75
-	g2DqLgQi+iEeNhpOrGw0lfw/QCqtCXVvxYzBNAte3RV25oSQEM0Cai3OX608Hk9FhtquC8a/f04hB
-	cidYC2d8RxiMPtGRxDjM3KfMtEeE8GEc164xt3UENGuVLXXPo5ew4wfHF5rU6m06tU2oRSucLpdzz
-	J/zHyu/A==;
+	bh=CUJ9ELlafUDabP9pJTFwquJ8GeCYxQW7Xz1vuQdcyBM=; b=KkCsD1gmQudApqtwHBY4JUS/XH
+	TtsCF9x4x4p9JBWEmYu0mHE6qIe1BhcgCact4EdBCPNDS3id6FaMJTUI0EatZLTDnvg/5iV04xsLt
+	fMYPxMkLBxsZAomf2V/s74vqZbgHCPNEqPiErenTFxnjdhtowte0bGLxs9rWqSY6O+aVffDwQVBX7
+	Ljt3MoC/JSNibf3HNexEs5jfn7nmHv1XLlhBDbCZ8EnVxwJk3C8J1bd86L+ahtFBn1ipwR09lx/JI
+	xcdyxDGX83ig55vhimlqJV4AMBfFzGqjrFHQjV39Q1+76XKnQJhl8w1B3WLWt1iZqq76XEo6ntG9O
+	FivBk3WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfWiE-00H61O-2Q;
-	Mon, 11 Sep 2023 02:31:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qfWiT-00H67j-1G;
+	Mon, 11 Sep 2023 02:31:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfWiA-00H5yw-2f;
-	Mon, 11 Sep 2023 02:31:40 +0000
-X-UUID: 537d39ce504b11ee9b7791016c24628a-20230910
+	id 1qfWiP-00H665-2Y;
+	Mon, 11 Sep 2023 02:31:55 +0000
+X-UUID: 5c0b8f32504b11ee86758d4a7c00f3a0-20230910
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=L6zWqvDk0Fsnt2Ma8JXPtwJh9E2ddprvdWAqFylWOEw=;
-	b=AjYGBkFukPEVdu366IDlNJ+YGppirqQmq2L0ezfIBzD9zxclvq99bnjTXO3QfkJur+6I9FlUeRhO13P98lcV7Eftgbtq/2t8Hs+o3WzC1ekj5520Kt9i0x/L5iGRl9tV/pgh50jFFT/S0CdsosOmG7UuFve1HabJXEzsoOSJvGo=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=CUJ9ELlafUDabP9pJTFwquJ8GeCYxQW7Xz1vuQdcyBM=;
+	b=JJruc5tsMWh8hFGlyl3tDD4r5uCARVVB9mQ67GdDTj5IA5UFGCaiqXz1N7TcKnRG8zvJbqHuYg3N9VDULiGze/Iqmdz+XDfjQzDt4XmWzahsvxBiYOcOTTVXF5IrhdXAcsUD/AibsvIvPJYereaoJ8kD0/DwYH5NZvXhAGAVRgA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:87d1a18f-4c9d-4ef7-bd08-f3fa23d46db9,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:0ad78a4,CLOUDID:6c5cadbe-14cc-44ca-b657-2d2783296e72,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-O-INFO: VERSION:1.1.31,REQID:bd3807ad-1710-4737-a5dd-6aa7e1d3247b,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:-50
+X-CID-META: VersionHash:0ad78a4,CLOUDID:aeb389ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:1,IP:nil,UR
+	L:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,D
+	KR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 537d39ce504b11ee9b7791016c24628a-20230910
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-UUID: 5c0b8f32504b11ee86758d4a7c00f3a0-20230910
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 629015960; Sun, 10 Sep 2023 19:31:34 -0700
+	with ESMTP id 2043250354; Sun, 10 Sep 2023 19:31:49 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 11 Sep 2023 10:31:31 +0800
+ 15.2.1118.26; Mon, 11 Sep 2023 10:31:13 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 10:31:30 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 10:31:12 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>,
 	<christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>
@@ -66,9 +66,9 @@ CC: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
 	<linaro-mm-sig@lists.linaro.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, <jianjiao.zeng@mediatek.com>,
 	<kuohong.wang@mediatek.com>
-Subject: [PATCH 5/9] dma-buf: heaps: mtk_sec_heap: Initialise tee session
-Date: Mon, 11 Sep 2023 10:30:34 +0800
-Message-ID: <20230911023038.30649-6-yong.wu@mediatek.com>
+Subject: [PATCH 3/9] dma-heap: Provide accessors so that in-kernel drivers can allocate dmabufs from specific heaps
+Date: Mon, 11 Sep 2023 10:30:32 +0800
+Message-ID: <20230911023038.30649-4-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230911023038.30649-1-yong.wu@mediatek.com>
 References: <20230911023038.30649-1-yong.wu@mediatek.com>
@@ -76,21 +76,22 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--5.016500-8.000000
-X-TMASE-MatchedRID: 0PAXRdLSM2zREKzvS64+ofSG/+sPtZVkuLwbhNl9B5WctWHPLT5FfVdL
-	ugvPA8FSTiQecD9aKoRSWg4YBc2bATeE3zHLyrsykDpLRKO9xhTt/okBLaEo+IVoIKH/TMNvQDz
-	RyendZRslFsCeg04xsFJVKV9HqTcMYhdzVnzdRn0ZXJLztZviXH0tCKdnhB589yM15V5aWpj6C0
-	ePs7A07RD7Pzr2apMzGKTftmZH3RdZ52F24lhYnZBNWIuzQwwp8KmSMO90LShDwZzxAYa4ncNrT
-	E0oNMe+
+X-TM-AS-Result: No-10--7.359800-8.000000
+X-TMASE-MatchedRID: YiCTc/DoVWftt0HEL3BUV4lD2T5imTkJ2qBSQHAh8pg0QmmUihPzrFJS
+	0b8z/9TB8AyWk2NFMNbijpjet3oGSJCoy9iDotiwNNHZMWDTEbe4UO5+xwKkcStjI02a+7m1q3c
+	ttlDobAxG26EiMHWORL4tP830vR4Ai8ICQO6ibxThG1IOMb7PsOWNJG9IamrcfmHrLgoJIlxnXT
+	ApdRZectbsbJMjcyybVDhg+HFzjttT4Q98GKrcb7E3FpMbg63SKx5ICGp/WtFLgo8+IIHbcNDvp
+	yUuLSMV+F1V82TD38h/OSL2yLHcRZH0YXYnbGozFEUknJ/kEl7dB/CxWTRRu4Gh9SYKzkjuUpXq
+	gxV1N6mhT243gu1N3ZrBizs+kLqF+9kKfC9LZkrreFgbzoDRQm39xATaiFQjftwZ3X11IV0=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--5.016500-8.000000
+X-TMASE-Result: 10--7.359800-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 4BF5F12A7380CC06BB42E9353EC5550318E6AC621E5F586C1684C714131CAF542000:8
+X-TM-SNTS-SMTP: E407940FB271E0BC0AEB9E656D12D42CD9BD2BF3E21ED0673D5E5E0724D604882000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230910_193138_866956_E23B1250 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20230910_193153_834603_85A2E882 
+X-CRM114-Status: GOOD (  21.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,105 +106,176 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The TEE probe later than dma-buf heap, and PROBE_DEDER doesn't work
-here since this is not a platform driver, therefore initialise the TEE
-context/session while we allocate the first secure buffer.
+From: John Stultz <jstultz@google.com>
 
+This allows drivers who don't want to create their own
+DMA-BUF exporter to be able to allocate DMA-BUFs directly
+from existing DMA-BUF Heaps.
+
+There is some concern that the premise of DMA-BUF heaps is
+that userland knows better about what type of heap memory
+is needed for a pipeline, so it would likely be best for
+drivers to import and fill DMA-BUFs allocated by userland
+instead of allocating one themselves, but this is still
+up for debate.
+
+Signed-off-by: John Stultz <jstultz@google.com>
+Signed-off-by: T.J. Mercier <tjmercier@google.com>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+[Yong: Fix the checkpatch alignment warning]
 ---
- drivers/dma-buf/heaps/mtk_secure_heap.c | 61 +++++++++++++++++++++++++
- 1 file changed, 61 insertions(+)
+ drivers/dma-buf/dma-heap.c | 60 ++++++++++++++++++++++++++++----------
+ include/linux/dma-heap.h   | 25 ++++++++++++++++
+ 2 files changed, 69 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/dma-buf/heaps/mtk_secure_heap.c b/drivers/dma-buf/heaps/mtk_secure_heap.c
-index bbf1c8dce23e..e3da33a3d083 100644
---- a/drivers/dma-buf/heaps/mtk_secure_heap.c
-+++ b/drivers/dma-buf/heaps/mtk_secure_heap.c
-@@ -10,6 +10,12 @@
- #include <linux/err.h>
- #include <linux/module.h>
- #include <linux/slab.h>
-+#include <linux/tee_drv.h>
-+#include <linux/uuid.h>
-+
-+#define TZ_TA_MEM_UUID		"4477588a-8476-11e2-ad15-e41f1390d676"
-+
-+#define MTK_TEE_PARAM_NUM		4
+diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
+index dcc0e38c61fa..908bb30dc864 100644
+--- a/drivers/dma-buf/dma-heap.c
++++ b/drivers/dma-buf/dma-heap.c
+@@ -53,12 +53,15 @@ static dev_t dma_heap_devt;
+ static struct class *dma_heap_class;
+ static DEFINE_XARRAY_ALLOC(dma_heap_minors);
  
- /*
-  * MediaTek secure (chunk) memory type
-@@ -28,17 +34,72 @@ struct mtk_secure_heap_buffer {
- struct mtk_secure_heap {
- 	const char		*name;
- 	const enum kree_mem_type mem_type;
-+	u32			 mem_session;
-+	struct tee_context	*tee_ctx;
- };
- 
-+static int mtk_optee_ctx_match(struct tee_ioctl_version_data *ver, const void *data)
-+{
-+	return ver->impl_id == TEE_IMPL_ID_OPTEE;
-+}
-+
-+static int mtk_kree_secure_session_init(struct mtk_secure_heap *sec_heap)
-+{
-+	struct tee_param t_param[MTK_TEE_PARAM_NUM] = {0};
-+	struct tee_ioctl_open_session_arg arg = {0};
-+	uuid_t ta_mem_uuid;
-+	int ret;
-+
-+	sec_heap->tee_ctx = tee_client_open_context(NULL, mtk_optee_ctx_match,
-+						    NULL, NULL);
-+	if (IS_ERR(sec_heap->tee_ctx)) {
-+		pr_err("%s: open context failed, ret=%ld\n", sec_heap->name,
-+		       PTR_ERR(sec_heap->tee_ctx));
-+		return -ENODEV;
-+	}
-+
-+	arg.num_params = MTK_TEE_PARAM_NUM;
-+	arg.clnt_login = TEE_IOCTL_LOGIN_PUBLIC;
-+	ret = uuid_parse(TZ_TA_MEM_UUID, &ta_mem_uuid);
-+	if (ret)
-+		goto close_context;
-+	memcpy(&arg.uuid, &ta_mem_uuid.b, sizeof(ta_mem_uuid));
-+
-+	ret = tee_client_open_session(sec_heap->tee_ctx, &arg, t_param);
-+	if (ret < 0 || arg.ret) {
-+		pr_err("%s: open session failed, ret=%d:%d\n",
-+		       sec_heap->name, ret, arg.ret);
-+		ret = -EINVAL;
-+		goto close_context;
-+	}
-+	sec_heap->mem_session = arg.session;
-+	return 0;
-+
-+close_context:
-+	tee_client_close_context(sec_heap->tee_ctx);
-+	return ret;
-+}
-+
- static struct dma_buf *
- mtk_sec_heap_allocate(struct dma_heap *heap, size_t size,
- 		      unsigned long fd_flags, unsigned long heap_flags)
+-static int dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
+-				 unsigned int fd_flags,
+-				 unsigned int heap_flags)
++struct dma_buf *dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
++				      unsigned int fd_flags,
++				      unsigned int heap_flags)
  {
-+	struct mtk_secure_heap *sec_heap = dma_heap_get_drvdata(heap);
- 	struct mtk_secure_heap_buffer *sec_buf;
- 	DEFINE_DMA_BUF_EXPORT_INFO(exp_info);
- 	struct dma_buf *dmabuf;
- 	int ret;
- 
-+	/*
-+	 * TEE probe may be late. Initialise the secure session in the first
-+	 * allocating secure buffer.
-+	 */
-+	if (!sec_heap->mem_session) {
-+		ret = mtk_kree_secure_session_init(sec_heap);
-+		if (ret)
-+			return ERR_PTR(ret);
-+	}
+-	struct dma_buf *dmabuf;
+-	int fd;
++	if (fd_flags & ~DMA_HEAP_VALID_FD_FLAGS)
++		return ERR_PTR(-EINVAL);
 +
- 	sec_buf = kzalloc(sizeof(*sec_buf), GFP_KERNEL);
- 	if (!sec_buf)
- 		return ERR_PTR(-ENOMEM);
++	if (heap_flags & ~DMA_HEAP_VALID_HEAP_FLAGS)
++		return ERR_PTR(-EINVAL);
+ 
+ 	/*
+ 	 * Allocations from all heaps have to begin
+@@ -66,9 +69,20 @@ static int dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
+ 	 */
+ 	len = PAGE_ALIGN(len);
+ 	if (!len)
+-		return -EINVAL;
++		return ERR_PTR(-EINVAL);
+ 
+-	dmabuf = heap->ops->allocate(heap, len, fd_flags, heap_flags);
++	return heap->ops->allocate(heap, len, fd_flags, heap_flags);
++}
++EXPORT_SYMBOL_GPL(dma_heap_buffer_alloc);
++
++static int dma_heap_bufferfd_alloc(struct dma_heap *heap, size_t len,
++				   unsigned int fd_flags,
++				   unsigned int heap_flags)
++{
++	struct dma_buf *dmabuf;
++	int fd;
++
++	dmabuf = dma_heap_buffer_alloc(heap, len, fd_flags, heap_flags);
+ 	if (IS_ERR(dmabuf))
+ 		return PTR_ERR(dmabuf);
+ 
+@@ -106,15 +120,9 @@ static long dma_heap_ioctl_allocate(struct file *file, void *data)
+ 	if (heap_allocation->fd)
+ 		return -EINVAL;
+ 
+-	if (heap_allocation->fd_flags & ~DMA_HEAP_VALID_FD_FLAGS)
+-		return -EINVAL;
+-
+-	if (heap_allocation->heap_flags & ~DMA_HEAP_VALID_HEAP_FLAGS)
+-		return -EINVAL;
+-
+-	fd = dma_heap_buffer_alloc(heap, heap_allocation->len,
+-				   heap_allocation->fd_flags,
+-				   heap_allocation->heap_flags);
++	fd = dma_heap_bufferfd_alloc(heap, heap_allocation->len,
++				     heap_allocation->fd_flags,
++				     heap_allocation->heap_flags);
+ 	if (fd < 0)
+ 		return fd;
+ 
+@@ -205,6 +213,7 @@ const char *dma_heap_get_name(struct dma_heap *heap)
+ {
+ 	return heap->name;
+ }
++EXPORT_SYMBOL_GPL(dma_heap_get_name);
+ 
+ struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info)
+ {
+@@ -290,6 +299,24 @@ struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info)
+ 	kfree(heap);
+ 	return err_ret;
+ }
++EXPORT_SYMBOL_GPL(dma_heap_add);
++
++struct dma_heap *dma_heap_find(const char *name)
++{
++	struct dma_heap *h;
++
++	mutex_lock(&heap_list_lock);
++	list_for_each_entry(h, &heap_list, list) {
++		if (!strcmp(h->name, name)) {
++			kref_get(&h->refcount);
++			mutex_unlock(&heap_list_lock);
++			return h;
++		}
++	}
++	mutex_unlock(&heap_list_lock);
++	return NULL;
++}
++EXPORT_SYMBOL_GPL(dma_heap_find);
+ 
+ static void dma_heap_release(struct kref *ref)
+ {
+@@ -315,6 +342,7 @@ void dma_heap_put(struct dma_heap *h)
+ 	kref_put(&h->refcount, dma_heap_release);
+ 	mutex_unlock(&heap_list_lock);
+ }
++EXPORT_SYMBOL_GPL(dma_heap_put);
+ 
+ static char *dma_heap_devnode(const struct device *dev, umode_t *mode)
+ {
+diff --git a/include/linux/dma-heap.h b/include/linux/dma-heap.h
+index f3c678892c5c..59e70f6c7a60 100644
+--- a/include/linux/dma-heap.h
++++ b/include/linux/dma-heap.h
+@@ -64,10 +64,35 @@ const char *dma_heap_get_name(struct dma_heap *heap);
+  */
+ struct dma_heap *dma_heap_add(const struct dma_heap_export_info *exp_info);
+ 
++/**
++ * dma_heap_find - get the heap registered with the specified name
++ * @name: Name of the DMA-Heap to find
++ *
++ * Returns:
++ * The DMA-Heap with the provided name.
++ *
++ * NOTE: DMA-Heaps returned from this function MUST be released using
++ * dma_heap_put() when the user is done to enable the heap to be unloaded.
++ */
++struct dma_heap *dma_heap_find(const char *name);
++
+ /**
+  * dma_heap_put - drops a reference to a dmabuf heap, potentially freeing it
+  * @heap: the heap whose reference count to decrement
+  */
+ void dma_heap_put(struct dma_heap *heap);
+ 
++/**
++ * dma_heap_buffer_alloc - Allocate dma-buf from a dma_heap
++ * @heap:	DMA-Heap to allocate from
++ * @len:	size to allocate in bytes
++ * @fd_flags:	flags to set on returned dma-buf fd
++ * @heap_flags: flags to pass to the dma heap
++ *
++ * This is for internal dma-buf allocations only. Free returned buffers with dma_buf_put().
++ */
++struct dma_buf *dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
++				      unsigned int fd_flags,
++				      unsigned int heap_flags);
++
+ #endif /* _DMA_HEAPS_H */
 -- 
 2.25.1
 
