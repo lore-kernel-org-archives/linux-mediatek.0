@@ -4,98 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 561A1EE7FF4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 11:59:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 066CBEEB57D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 12:07:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vF/LHhiyaQ/Ygf2PDXc1yA4c6J4ikymDlpeMYyiX818=; b=pU4GfbduW2CV6lllVqTn0xTkfr
-	0fbIN7ExEv+rGXLpiSiAZSUvY/rQWpdzCYH3AA2+xLsTWrnFJOGd+5vBFNtrAoywUMm3qaeLgkd1a
-	hXiWME8uFzZb3oSlgIhWrMRCXkoCtpHVTDzD/z+KzsCkTToreAuZax1aU/A6qYC1/LfKBIpGelfOM
-	h1vZxTascYWRRqTlf592Np1RmQvnIjiKakTLUhMi3WGP7QkvvAclR8AUbzAj9BvezqGwlfdV+Gfr2
-	B5umyVn7nM8EucS8iH+XU9C2061hAZsYOyeDlW8tWeI4AxYx05ZHDhx506llFSK+4jSIzuOjcC+pI
-	LOdoA2rA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WVs65ar96VYNwtMx+BagNf4gWVLlTPcw+3E5cFR/LY0=; b=aAsjf0dylWOkCthkYT2bWYrUlL
+	wzhJ9p148bcovaM86xzbvFECUgc5vEhH/o6fj3zx1oIOP5nVZ3fBCgWBSAxkUJjlJOZXqm9zWnnix
+	k467VaLX7Y4ap78VaHmUzbzTSbwV4XjNUrtssVhKuKCb52silhpahGThwoCygESBLmArzL/uiaRtm
+	1znTxO3mqv9giYFdR/YaD/IdRi+p5P7BZfDo5a5c8pKmthFJ+w+jcVfkA8qcuCaeV6kRDNIiLSbp4
+	2ZzNPUtQu2hl6dNTnsa+pEY21tCPk3lGFRh69OxLftopJvVEVCS5iisW9PjpQd1m3cFRwCxlu6WP7
+	BJFw43Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qffZs-000Qcq-0b;
-	Mon, 11 Sep 2023 11:59:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qffht-000Riy-2z;
+	Mon, 11 Sep 2023 12:07:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qffZp-000Qc8-23;
-	Mon, 11 Sep 2023 11:59:39 +0000
-X-UUID: acefb3b6509a11ee86758d4a7c00f3a0-20230911
+	id 1qffhq-000RhX-2C;
+	Mon, 11 Sep 2023 12:07:56 +0000
+X-UUID: d33b6276509b11ee9b7791016c24628a-20230911
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=vF/LHhiyaQ/Ygf2PDXc1yA4c6J4ikymDlpeMYyiX818=;
-	b=jhzpwdbGVwa56QddTSOZt394XRSWup91RmSNs4a+ycB0F6UmmHXpmoZtsCjpGugktLuEst7dWESf82DpekCDUYcO8uXycluIVPyTFdDSRhkPf7sAdGoJMv6e5qj2xfWAcXuhOIw+lXi6U//0wjj1v/GuCuPBuv3jlNMj9YcluVU=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=WVs65ar96VYNwtMx+BagNf4gWVLlTPcw+3E5cFR/LY0=;
+	b=M8NZKPazKUmM5AwxyKdEaOss6zqNI7tFs8Pe7p9FXDRucu/mKu/mz5aG9uAAyrqR++y3y0OUDTrdqdNUtLamfjCjhugmVSxVyFbB9/gpyzl9TKJxf7OCNd3IJCQS+gdPgITY4pVDfA4Lv4GCxGFCbcau2TgcYEzAToj07QIx748=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:76cc7659-1130-44be-a566-72ab189219f6,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:a760e4c2-1e57-4345-9d31-31ad9818b39f,B
+X-CID-O-INFO: VERSION:1.1.31,REQID:6bd3f6aa-0e57-4aa0-ae78-0e44d902c296,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:0ad78a4,CLOUDID:60ebcd13-4929-4845-9571-38c601e9c3c9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: acefb3b6509a11ee86758d4a7c00f3a0-20230911
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: d33b6276509b11ee9b7791016c24628a-20230911
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <shuijing.li@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 741858337; Mon, 11 Sep 2023 04:59:35 -0700
+	with ESMTP id 499370919; Mon, 11 Sep 2023 05:07:48 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 11 Sep 2023 19:59:30 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Mon, 11 Sep 2023 19:59:28 +0800
-Message-ID: <faa59811-9d60-6b38-e721-be9a8e8d4749@mediatek.com>
-Date: Mon, 11 Sep 2023 19:59:27 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v5 2/2] arm64: dts: mediatek: add device-tree for Genio
- 1200 EVK board
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
- Herring" <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	=?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
+ 15.2.1118.26; Mon, 11 Sep 2023 20:07:45 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 20:07:45 +0800
+From: Shuijing Li <shuijing.li@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<daniel@ffwll.ch>, <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, Ben Lok <ben.lok@mediatek.com>
-References: <20230909132819.21626-1-macpaul.lin@mediatek.com>
- <20230909132819.21626-2-macpaul.lin@mediatek.com>
- <8b9e863b-35f6-7b86-d4b7-cb01ddad0958@collabora.com>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <8b9e863b-35f6-7b86-d4b7-cb01ddad0958@collabora.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Shuijing Li
+	<shuijing.li@mediatek.com>
+Subject: [PATCH v4,3/3] drm/mediatek: Add mt8188 dsi compatible to mtk_dsi.c
+Date: Mon, 11 Sep 2023 20:08:00 +0800
+Message-ID: <20230911120800.17369-4-shuijing.li@mediatek.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230911120800.17369-1-shuijing.li@mediatek.com>
+References: <20230911120800.17369-1-shuijing.li@mediatek.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--12.921800-8.000000
-X-TMASE-MatchedRID: TmlY9+XBoTkNtKv7cnNXnSa1MaKuob8PofZV/2Xa0cLBs8kDsMW7w0/3
-	ZkXeY1OAsdosXJJWMVyclY59pSX0jBwWcp9rVIRcLTHwnYOikQ1aNaxZBRbNWtbgFKE16r97W+d
-	0idLjpprfVWjDTn5L1xeDGeXH145fAoOXEsKbzlPghWDeMRWA/fryhnjDLC0KGDmnGwgDlxLGcp
-	DUJnhRA0go1ASUm1da4o6Y3rd6BkgmNHlC7DQV5Zdc7I2df+mssuIso71Vk6LqqfQIVODNyAoek
-	tpGiVj3l9als/KTifs525mZtA9daeu+ayo0SmHNR+GtoiXVeDGAfODDLypXmoZOiKw+neP1xUDT
-	xL3vuSBLbMLc3nVqMrL0CwDGT5MlADAYgCjdKFt7sw7yO+Y9LBZO94uK1VSBe+xt+hmLFRO18YV
-	tm8LwaHSstMHqiEQNbvsV/zcs6JyRzjH2MoyVHmNW0DAjL5p+2aYdnwn7qHeo+b+yOP0oGDnVEi
-	ka+eVA14gnLq0QZ8e9TnZXLseR1r9ZdlL8eonaVnRXm1iHN1bEQdG7H66TyH4gKq42LRYkcbRYj
-	efM4PAMRUim5rD2quXWgaXW3M4eZ9ztmG/8l/h+3BndfXUhXQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--12.921800-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 70055BEF4DC6783F0A4FFAEA13A869A6AD1FA33E169017906BC046589DC3461B2000:8
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_045937_677679_63FA132D 
-X-CRM114-Status: GOOD (  21.10  )
+X-CRM114-CacheID: sfid-20230911_050754_725453_764EDE07 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,245 +90,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/11/23 17:09, AngeloGioacchino Del Regno wrote:
-> Il 09/09/23 15:28, Macpaul Lin ha scritto:
->> Add basic device-tree for the Genio 1200-EVK board. This board
->> is made by MediaTek and has a MT8395 SoC (MT8195 family),
->> associated with the MT6359 and MT6360 PMICs, and
->> the MT7921 connectivity chip.
->>
->> The IOs available on that board are:
->> * 1 USB Type-C connector with DP aux mode support
->> * 2 USB Type-A connector with a USB hub
->> * 1 micro-USB port for gadget or OTG support
->> * 1 full size HDMI RX and 1 full size HDMI TX connector
->> * 1 micro SD slot
->> * 40 pins header
->> * SPI interface header
->> * 1 M.2 slot
->> * 1 audio jack
->> * 1 micro-USB port for serial debug
->> * 2 connectors for DSI displays, 1 of the DSI panel is installed
->> * 3 connectors for CSI cameras
->> * 1 connector for a eDP panel
->> * 1 MMC storage
->> * 1 Touch Panel (installed DSI display)
->> * 1 M.2 slot for 5G dongle
->>
->> This commit adds basic support in order to be able to boot.
->>
->> Signed-off-by: Ben Lok <ben.lok@mediatek.com>
->> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
->> ---
->>   arch/arm64/boot/dts/mediatek/Makefile         |   1 +
->>   .../dts/mediatek/mt8395-genio-1200-evk.dts    | 901 ++++++++++++++++++
->>   2 files changed, 902 insertions(+)
->>   create mode 100644 
->> arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
->>
->> Changes for v2:
->>   - correct SOC binding to "mediatek,mt8395".
->>   - Fix a Linux coding style comments for optee node.
->>   - Fix wifi fixed 3.3v power's node with "wifi-3v3-regulator".
->>   - Fix node name of mt6360 and mt6517 to generic dts name as "pmic".
->>   - Remove unecessary blank line.
->>   - Reording usb node as the order of "phy" then "host".
->>
->> Changes for v3:
->>   - Add back bindings for "mediatek,mt8195".
->>   - Fix wifi fixed 3.3v power's node with "regulator-2"
->>
->> Changes for v4:
->>   - Fix Makefile and dts file name with prefix "mt8395-".
->>   - Re-order all nodes in mt8395-genio-1200-evk.dts by alphabetical 
->> order.
->>   - Remove unused "DEBUG" node.
->>
->> Changes for v5:
->>   - Revise commit message for board's name.
->>   - swap the order of nodes 'mt6359_vcamio_ldo_reg' and
->>     'mt6359_vcn33_2_bt_ldo_reg' by alphabetical order.
->>   - Reorder some gpio pins by alphabetical order.
->>    - audio_default_pins, eth pins, and uart1 pins
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/Makefile 
->> b/arch/arm64/boot/dts/mediatek/Makefile
->> index c99c3372a4b5..10e640c6ae08 100644
->> --- a/arch/arm64/boot/dts/mediatek/Makefile
->> +++ b/arch/arm64/boot/dts/mediatek/Makefile
->> @@ -53,4 +53,5 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += 
->> mt8195-cherry-tomato-r3.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-demo.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8365-evk.dtb
->> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-genio-1200-evk.dtb
->>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts 
->> b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
->> new file mode 100644
->> index 000000000000..5de2d102c577
->> --- /dev/null
->> +++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
->> @@ -0,0 +1,901 @@
->> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
->> +/*
->> + * Copyright (C) 2023 MediaTek Inc.
->> + * Author: Ben Lok <ben.lok@mediatek.com>
->> + *       Macpaul Lin <macpaul.lin@mediatek.com>
->> + */
->> +/dts-v1/;
->> +
->> +#include "mt8195.dtsi"
->> +#include "mt6359.dtsi"
->> +#include <dt-bindings/gpio/gpio.h>
->> +#include <dt-bindings/input/input.h>
->> +#include <dt-bindings/interrupt-controller/irq.h>
->> +#include <dt-bindings/pinctrl/mt8195-pinfunc.h>
->> +#include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
->> +#include <dt-bindings/spmi/spmi.h>
->> +#include <dt-bindings/usb/pd.h>
->> +
->> +/ {
->> +    model = "MediaTek Genio 1200 EVK-P1V2-EMMC";
->> +    compatible = "mediatek,mt8395-evk", "mediatek,mt8395",
->> +             "mediatek,mt8195";
->> +
-> 
-> 
-> ..snip..
-> 
->> +&spi1 {
->> +    pinctrl-0 = <&spi1_pins>;
->> +    pinctrl-names = "default";
->> +    mediatek,pad-select = <0>;
->> +    #address-cells = <1>;
->> +    #size-cells = <0>;
->> +    status = "okay";
->> +    cs-gpios = <&pio 64 GPIO_ACTIVE_LOW>;
->> +
->> +    can0: can@0 {
->> +        compatible = "microchip,mcp2518fd";
->> +        reg = <0>;
->> +        clocks = <&can_clk>;
->> +        spi-max-frequency = <20000000>;
->> +        interrupts-extended = <&pio 16 IRQ_TYPE_LEVEL_LOW>;
->> +        vdd-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
->> +        xceiver-supply = <&mt6359_vcn33_2_bt_ldo_reg>;
->> +    };
->> +};
->> +
->> +&spi2 {
->> +    pinctrl-0 = <&spi2_pins>;
->> +    pinctrl-names = "default";
->> +    mediatek,pad-select = <0>;
->> +    #address-cells = <1>;
->> +    #size-cells = <0>;
->> +    status = "okay";
->> +};
->> +
->> +&u3phy0 {
->> +    status = "okay";
->> +};
->> +
->> +&u3phy1 {
->> +    status = "okay";
->> +};
->> +
->> +&u3phy2 {
->> +    status = "okay";
->> +};
->> +
->> +&u3phy3 {
->> +    status = "okay";
->> +};
->> +
->> +&uart0 {
->> +    pinctrl-0 = <&uart0_pins>;
->> +    pinctrl-names = "default";
->> +    status = "okay";
->> +};
->> +
->> +&uart1 {
->> +    pinctrl-0 = <&uart1_pins>;
->> +    pinctrl-names = "default";
->> +    status = "okay";
->> +};
->> +
->> +&ufsphy {
->> +    status = "disabled";
->> +};
->> +
->> +&spmi {
-> 
-> spmi goes before u3phy0, after spi2.
-> 
-> after fixing:
-> Reviewed-by: AngeloGioacchino Del Regno 
-> <angelogioacchino.delregno@collabora.com>
-> 
+Add the compatible because there are different definitions for cmdq
+register bit control in mt8188.
 
-Sorry, this part is missing in patch v5.
-Now it is fixed in v6.
-Thanks!
+Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+Changes in v3:
+reorder patch 2/3 and 3/3,
+per suggestion from the previous thread:
+https://lore.kernel.org/lkml/338122485db025f6bfb8be550d426ca11698497c.camel@mediatek.com/
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
+ drivers/gpu/drm/mediatek/mtk_dsi.c     | 9 +++++++++
+ 2 files changed, 11 insertions(+)
 
->> +    #address-cells = <2>;
->> +    #size-cells = <0>;
->> +
->> +    mt6315_6: pmic@6 {
->> +        compatible = "mediatek,mt6315-regulator";
->> +        reg = <0x6 SPMI_USID>;
->> +
->> +        regulators {
->> +            mt6315_6_vbuck1: vbuck1 {
->> +                regulator-compatible = "vbuck1";
->> +                regulator-name = "Vbcpu";
->> +                regulator-min-microvolt = <300000>;
->> +                regulator-max-microvolt = <1193750>;
->> +                regulator-enable-ramp-delay = <256>;
->> +                regulator-allowed-modes = <0 1 2>;
->> +                regulator-always-on;
->> +            };
->> +        };
->> +    };
->> +
->> +    mt6315_7: pmic@7 {
->> +        compatible = "mediatek,mt6315-regulator";
->> +        reg = <0x7 SPMI_USID>;
->> +
->> +        regulators {
->> +            mt6315_7_vbuck1: vbuck1 {
->> +                regulator-compatible = "vbuck1";
->> +                regulator-name = "Vgpu";
->> +                regulator-min-microvolt = <300000>;
->> +                regulator-max-microvolt = <1193750>;
->> +                regulator-enable-ramp-delay = <256>;
->> +                regulator-allowed-modes = <0 1 2>;
->> +            };
->> +        };
->> +    };
->> +};
->> +
->> +&xhci0 {
->> +    status = "okay";
->> +};
->> +
->> +&xhci1 {
->> +    vusb33-supply = <&mt6359_vusb_ldo_reg>;
->> +    status = "okay";
->> +};
->> +
->> +&xhci2 {
->> +    vusb33-supply = <&mt6359_vusb_ldo_reg>;
->> +    status = "okay";
->> +};
->> +
->> +&xhci3 {
->> +    vusb33-supply = <&mt6359_vusb_ldo_reg>;
->> +    status = "okay";
->> +};
-> 
->
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 93552d76b6e7..034056d0f741 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -765,6 +765,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DSI },
+ 	{ .compatible = "mediatek,mt8186-dsi",
+ 	  .data = (void *)MTK_DSI },
++	{ .compatible = "mediatek,mt8188-dsi",
++	  .data = (void *)MTK_DSI },
+ 	{ }
+ };
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 623aa829ef6b..49bfc1dd11ae 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -1212,6 +1212,13 @@ static const struct mtk_dsi_driver_data mt8186_dsi_driver_data = {
+ 	.has_size_ctl = true,
+ };
+ 
++static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
++	.reg_cmdq_off = 0xd00,
++	.has_shadow_ctl = true,
++	.has_size_ctl = true,
++	.cmdq_long_packet_ctl = true,
++};
++
+ static const struct of_device_id mtk_dsi_of_match[] = {
+ 	{ .compatible = "mediatek,mt2701-dsi",
+ 	  .data = &mt2701_dsi_driver_data },
+@@ -1221,6 +1228,8 @@ static const struct of_device_id mtk_dsi_of_match[] = {
+ 	  .data = &mt8183_dsi_driver_data },
+ 	{ .compatible = "mediatek,mt8186-dsi",
+ 	  .data = &mt8186_dsi_driver_data },
++	{ .compatible = "mediatek,mt8188-dsi",
++	  .data = &mt8188_dsi_driver_data },
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, mtk_dsi_of_match);
+-- 
+2.40.1
 
-Best Regards,
-Macpaul Lin
 
