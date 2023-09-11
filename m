@@ -4,96 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0B02EE7FF4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 06:02:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E316DEE7FF4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 06:08:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RR5dflBIS+AjZvT9GMXk42NHZjPTycEkvcZES8b7aR8=; b=dU3Tjqe4ycpFFiW/aumolNsxNU
-	RWWNGbGPUJwmFjEc9Id3uDN4rEWQ6aukrqN1y/TWXOgh1yTng7wHeHhLWFRZP9W9IwDPVwLRq1Atw
-	szo0RtzzvA8wvFj8AKmDIywks7k/5PQqgn1ZDv79blgkcxUfcEWmRCXJfvFC9juFQi8oz6b4crigx
-	B/xbyGXAbWUpPf1C9OLl1GaKS9pcwDAyXrMpOUmI7zk7MU7Y/uJTUja7fhn1Yyw6dEXXHO3d8B6yo
-	C+zd5YWo+0cO7XJAolvuWgubJOq/GZvJoTrxgBiK5TOTyHTleBti8xaA8LxcUKtLgBGhDXiT+YQBx
-	tAY0UlIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=znV8c1nZy2khF5/iHvM02K3LRI4Usqz/zkO1WU9q06M=; b=Ax5rh8bM3YHWtLw1Y3fFT3eaWh
+	uYdgu3u+hZCDp75FWtARwLZCwBbuWzUhuqpdHWIG+cxD59ZOY0LdIi0DFvw+TOHd7K8O/WkCjEd+P
+	DK5qN//Kz4M2+vo7OffRN4STa//6lA+35g86Grx6qguLRqMlRFKzx5Mbg4lVDQ2XhJB1ccnjRgCaU
+	FJG/78ooPeTCZJtt8rKvAw71CTenPs+cwviHqTXq/4ZdllUjI6sr1a/xI0lyIlzmz5LqdmIk17rAl
+	4urNn2ikKQW7xpePllMstfNo4EFg4s/UbRnIocxjZdt1yOCSmTEl+b8olQZDojYmIeZqa95QdarTO
+	XHbm0Kfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfZzk-00HIKQ-18;
-	Mon, 11 Sep 2023 06:02:00 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1qfa5d-00HJ1V-2L;
+	Mon, 11 Sep 2023 06:08:05 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfZzh-00HIJm-1X;
-	Mon, 11 Sep 2023 06:01:58 +0000
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38B5e8Yt002248;
-	Mon, 11 Sep 2023 06:01:31 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
- cc : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=qcppdkim1; bh=RR5dflBIS+AjZvT9GMXk42NHZjPTycEkvcZES8b7aR8=;
- b=N+NsLtqFvZRHWyRg/h2XVaRehmpL94AQJXG/AjhjOHjvMn9a6Bc+s9nQ6NiD1lnz4hKo
- fQ8Vv/yTiSC54oq8pWcTrZ0FwVAniOCIjV9dhIYcwCY9xkPgtxFbJMJ5MDmAntSgoB5u
- X7ENsQDEry+P0F8K2jDmJPwq0Xy7WJlhN4/LrTDuuwQ1BN4TZvcdqwCecdW9ozy7ramT
- meSXsO3MCItDNHRfx41CnS19fFAQgMdLFyAX5UCOv+18yhHW3GeBlbJPYisuZsQuyn3r
- jvfudDKO126JFYBnDGWr5P8X7lLimOcH0T1eUrn3svDd5uTpOrajghuRormce2DHmXGY aA== 
-Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t0j0fjrv1-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Sep 2023 06:01:31 +0000
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38B61URt024641
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Sep 2023 06:01:30 GMT
-Received: from hu-pkondeti-hyd.qualcomm.com (10.80.80.8) by
- nalasex01a.na.qualcomm.com (10.47.209.196) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.36; Sun, 10 Sep 2023 23:01:18 -0700
-Date: Mon, 11 Sep 2023 11:31:15 +0530
-From: Pavan Kondeti <quic_pkondeti@quicinc.com>
-To: Mukesh Ojha <quic_mojha@quicinc.com>
-CC: <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
-        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
-        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
-        <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
-        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
-        <will@kernel.org>, <linus.walleij@linaro.org>,
-        <andy.shevchenko@gmail.com>, <vigneshr@ti.com>, <nm@ti.com>,
-        <matthias.bgg@gmail.com>, <kgene@kernel.org>,
-        <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
-        <quic_tsoni@quicinc.com>, <linux-doc@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-        <linux-hardening@vger.kernel.org>, <linux-remoteproc@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
-Subject: Re: [PATCH v5 11/17] qcom_minidump: Register ramoops region with
- minidump
-Message-ID: <3119f3f6-92a5-4db1-85cf-bd16e31ae5a0@quicinc.com>
-References: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
- <1694290578-17733-12-git-send-email-quic_mojha@quicinc.com>
+	id 1qfa5b-00HJ0M-00
+	for linux-mediatek@lists.infradead.org;
+	Mon, 11 Sep 2023 06:08:04 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-401f68602a8so44070625e9.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 10 Sep 2023 23:08:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1694412481; x=1695017281; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=znV8c1nZy2khF5/iHvM02K3LRI4Usqz/zkO1WU9q06M=;
+        b=BQtKAdRRzXj5dn+3p7m+FqjbynL7aFH0OdZQXoFnZl7RBbJVfymhwTPotzKEtyZuip
+         ccT3MB7HG/mU4fwvjCVfQu9P3fMinCokdtWLXhvA3y25Zz7/IUpmW/5tcHaQ2B8y4Mrt
+         YLUQ72QebcUGy5Ap/5UHdUkukoQd1dwYVZi5V5UL/VGxIU0DNkXnAbXiG+uGBSGukRO/
+         Nbx6QS5NhBoYOc7EzinhkyMKux4Ockhssk6AZKRvILNFyWcOSQOe+G73Fo3yGjDgeqAv
+         8o1nvtVeQHEUsDOVxLGUmAevrNKuYfWGdSvHT5VtXGGTgBT+IE1NZb/LSkcx3a7m3O/E
+         g+TQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694412481; x=1695017281;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=znV8c1nZy2khF5/iHvM02K3LRI4Usqz/zkO1WU9q06M=;
+        b=eN3O/wLiiMqO8aWOqwNu8UG1v5jZHct9WOB/CmYQarXt0unVQ81As3ICAf0u62LYvF
+         5C3TBoodTnp6OfSbxItY9WV+XjB8ZDXuMnNsGXT1Yn5wN3CO+ZlHyMNlmw2NSPykMr04
+         10/UxhJsOHkUcG3oMsSnv9hUm0D3sp/c/MPG0za0hJUo0F1K7UXwuHGg9JRtk8CVq4k8
+         bi8KMUs934oBV2UVHKlWA7PBBvaHxoYkRjg6FwT7yIbqyZCLFqorwXkoIxljTBvo8EGr
+         W7tfBpOiF9zoNfNZb20W5esbNHAqqQlAHZU479a+W19/h6A8nlFvzSA5A+3YRR4LJCf2
+         qozQ==
+X-Gm-Message-State: AOJu0Yz/fZYPl97D48AwBBT9h5aOjTFoPFyDPVRr6Mn8tCIzaCaMdekn
+	fWCvpm2Iwi/GdBpi+upDCWvKqw==
+X-Google-Smtp-Source: AGHT+IHMyTBUANYOv0uuLp74+1jLiLUu+Hfx5s3BwTAkzuzS/yebG+o7dj4lGFDQg2Xg4Mlst3xdFA==
+X-Received: by 2002:a05:600c:5128:b0:402:f501:447c with SMTP id o40-20020a05600c512800b00402f501447cmr7275655wms.0.1694412480731;
+        Sun, 10 Sep 2023 23:08:00 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.214.188])
+        by smtp.gmail.com with ESMTPSA id e6-20020a05600c218600b003fe1c332810sm12125267wme.33.2023.09.10.23.07.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 10 Sep 2023 23:07:59 -0700 (PDT)
+Message-ID: <fc4bd212-c112-0d42-e94c-c3ba569d2d32@linaro.org>
+Date: Mon, 11 Sep 2023 08:07:57 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <1694290578-17733-12-git-send-email-quic_mojha@quicinc.com>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: xBrk-Pn9mM0MxC_5RsdRbWjljej3GIpW
-X-Proofpoint-GUID: xBrk-Pn9mM0MxC_5RsdRbWjljej3GIpW
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-09-11_03,2023-09-05_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501 mlxscore=0
- malwarescore=0 clxscore=1015 impostorscore=0 mlxlogscore=618 bulkscore=0
- lowpriorityscore=0 adultscore=0 spamscore=0 phishscore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2308100000
- definitions=main-2309110054
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH v5 1/2] dt-bindings: arm64: dts: mediatek: add mt8395-evk
+ board
+To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+ Macpaul Lin <macpaul@gmail.com>
+References: <20230909132819.21626-1-macpaul.lin@mediatek.com>
+ <2318be3d-5687-8b6c-3669-1d2ae1c94d2c@linaro.org>
+ <946ee1c5-77af-3ce0-83ba-2966fab70a5f@mediatek.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <946ee1c5-77af-3ce0-83ba-2966fab70a5f@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230910_230157_523629_F404AD39 
-X-CRM114-Status: GOOD (  22.49  )
+X-CRM114-CacheID: sfid-20230910_230803_068864_A7299518 
+X-CRM114-Status: GOOD (  17.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,45 +104,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Sep 10, 2023 at 01:46:12AM +0530, Mukesh Ojha wrote:
-> Register all the pstore frontend with minidump, so that they can
-> be dumped as default Linux minidump region to be collected on
-> SoC where minidump is enabled.
+On 10/09/2023 14:23, Macpaul Lin wrote:
 > 
-> Helper functions is written in separate file and built along with
-> the minidump driver, since it is client of minidump and also call
-> it at appropriate place from minidump probe so that they always
-> get registered.
 > 
-> While at it also rename the out minidump module object name during
-> build as qcom_apss_minidump which basically depicts as Qualcomm
-> Application processor subsystem minidump.
+> On 9/10/23 18:56, Krzysztof Kozlowski wrote:
+>> 	
+>>
+>> External email : Please do nost click links or open attachments until you 
+>> have verified the sender or the content.
+>>
+>> On 09/09/2023 15:28, Macpaul Lin wrote:
+>>> 1. Add compatible for MT8395.
+>>> 2. Add bindings for the MediaTek mt8395-evk board, also known
+>>> as the "Genio 1200-EVK".
+>>>
+>>> The MT8195 and MT8395 belong to the same SoC family,
+>>> with only minor differences in their physical characteristics.
+>>> They utilize unique efuse values for differentiation.
+>>>
+>>> The booting process and configurations are managed by boot
+>>> loaders, firmware, and TF-A. Consequently, the part numbers
+>>> and procurement channels vary.
+>>>
+>>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+>>> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > 
-> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
-> ---
->  drivers/soc/qcom/Kconfig                 |  1 +
->  drivers/soc/qcom/Makefile                |  3 +-
->  drivers/soc/qcom/qcom_minidump.c         |  4 ++
->  drivers/soc/qcom/qcom_ramoops_minidump.c | 88 ++++++++++++++++++++++++++++++++
->  drivers/soc/qcom/qcom_ramoops_minidump.h | 10 ++++
->  5 files changed, 105 insertions(+), 1 deletion(-)
->  create mode 100644 drivers/soc/qcom/qcom_ramoops_minidump.c
->  create mode 100644 drivers/soc/qcom/qcom_ramoops_minidump.h
+> Changes for v4:
+> Changes for v5:
+>   - No change, update Reviewed-by tag only. Thanks.
 > 
-> diff --git a/drivers/soc/qcom/Kconfig b/drivers/soc/qcom/Kconfig
-> index 4b36d46807bc..b3977f1687d8 100644
-> --- a/drivers/soc/qcom/Kconfig
-> +++ b/drivers/soc/qcom/Kconfig
-> @@ -305,6 +305,7 @@ config QCOM_MINIDUMP
->  	tristate "QCOM APSS Minidump driver"
->  	depends on ARCH_QCOM || COMPILE_TEST
->  	depends on QCOM_SMEM
-> +	depends on PSTORE
+> The explanation is here. The version v4 and v5 are the same.
+> For sending v5 is because "Patch v5 2/2" has been updated and these 2 
+> patches were in the same patch set. I think to update the whole patch 
+> set together with a single modified patch should be a usual operation.
+> Did I miss anything?
 
-Can't we make QC minidump available without PSTORE? PSTORE is another
-cllient for minidump, so other clients can still use minidump right?
-Where is this hard dependency coming from?
+Yeah, like not top-posting.
 
-Thanks,
-Pavan
+Why do you change the same line in other patchset?
+
+> 
+>> Confusing. You just sent a patch changing the same hunk - adding
+>> description, without any explanation.
+>>
+> 
+> The marketing naming rule of MediaTek SOCs are usually confusing people. 
+> I guess the previous patch just confused you. Ha.
+
+?
+
+
+
+Best regards,
+Krzysztof
+
 
