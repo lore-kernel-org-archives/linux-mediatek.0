@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56247EE7FF4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7D35EEB580
 	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 13:00:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,47 +12,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tyC+IbJ4SMgk72K5uiKzHP3LRbDnrFAFs0RgRp9DUFQ=; b=jESiNSf8p91LY1c6ohBtEL2NTL
-	RcKShHupjxEKaD1B8//dzffzAiIRR5QwN8USRDBZGBtsy2KEUp88dwFyk90gVms78S4FwlEfjjiDZ
-	pgddPEnqsSQS1dqdoqheXMs/RcBUVI9Fc8B6urRAfo8znTwu4n0LqH7tJt4RIPt+9jrkcX4EMAnQR
-	5LxUY9RKcL8jd65QOK1i53rVyNd5hyjs1bfzVdLZ5ty96ZZzRcu+3fCxDt30ReheDMmv+koZt5T46
-	G+GS5bT7Ki5fkOgqCM1W0CTyWTUdKxA9ptZtZHO2T7SFGUwph6SVtslwnGP4XEIW5dm+XueWBE4uX
-	DPvM7JEA==;
+	bh=4JWFEuqz8qtYGSJpFhb36WSTg0b83rNqZObuJx15lCk=; b=A+S7wNOo84rDq5YD0ybvcCd0Rc
+	5rcswmRu2KUYEATPuVVFuTl2Chls9RJp1QfwL8lNK3nF+x9U9tFIYeVUQyiI2M1SzbhoPR/m2qd3h
+	Rj+Z/J289KlWP3/TyuY485Sb/i3PkZEso4jTzJJZGpHxuIS1az6lw9Ogkvpnt6gX4AvPHqOlaVyJg
+	HFCvEdEq6v59Hw1OxVrQEJU2RyXpjQPcphBxRg2Nz9xwtRVyiUUZmcjw6UTHt9Rdn5CsurbBxB0Vi
+	uY+9Gx5dpBpFOvqGbC9s5WRyYYz8LjBnqRduVnpFxXAOIE3tojNced6UyrcKoq/+pQ5Ok1ZOPS30R
+	B1RHL5JA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfgWo-000Y1l-34;
-	Mon, 11 Sep 2023 13:00:34 +0000
+	id 1qfgWp-000Y2A-0w;
+	Mon, 11 Sep 2023 13:00:35 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfgWh-000XuB-1b;
+	id 1qfgWh-000XvN-2N;
 	Mon, 11 Sep 2023 13:00:31 +0000
-X-UUID: 299f88de50a311ee86758d4a7c00f3a0-20230911
+X-UUID: 28bce9ca50a311ee86758d4a7c00f3a0-20230911
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tyC+IbJ4SMgk72K5uiKzHP3LRbDnrFAFs0RgRp9DUFQ=;
-	b=R3ZEYzYEr+yMKpG/mJUflStGw4Fqfoj4a6L5uhXeSfkF3KAEpvjuzSSeiZ9EVmR3WelNE/lo1nXqDHRzsXeCIT8B8PD1dwcRwOrJUUaaAZ+mtzDQF6VT755pzCYRSfxFauy0XuY3RKaqEfCrwgm9b7YGGqQEKD0mD2gU9wuWOlo=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=4JWFEuqz8qtYGSJpFhb36WSTg0b83rNqZObuJx15lCk=;
+	b=d+TWgGEi49KL+bv5cUmeopJP9ZyzAYA4cTbALmvjvch1B+ucRKbgN6h2WbWAIdynFH1/mWVyxgkSS277v20ZiAGwfOJSJ7I94XmsYg42+PTjJ4DA395lA7Razb6sAisifexyFeuh6QrrGhM8Z6f/9xiuiOfeVCjpaD3aLBxDdj8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:fd9fa950-0272-4f48-b374-abf18d4ee4a2,IP:0,U
+X-CID-O-INFO: VERSION:1.1.31,REQID:30781022-cbb0-4629-9fc6-1fc65b6b203f,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:e618b4be-14cc-44ca-b657-2d2783296e72,B
+X-CID-META: VersionHash:0ad78a4,CLOUDID:9e6c90ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 299f88de50a311ee86758d4a7c00f3a0-20230911
+X-UUID: 28bce9ca50a311ee86758d4a7c00f3a0-20230911
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1208633858; Mon, 11 Sep 2023 06:00:20 -0700
+	with ESMTP id 1174253951; Mon, 11 Sep 2023 06:00:18 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
  MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 11 Sep 2023 20:59:47 +0800
+ 15.2.1118.26; Mon, 11 Sep 2023 20:59:41 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 20:59:46 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 20:59:40 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<nfraprado@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
@@ -66,9 +66,9 @@ CC: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 09/14] media: medkatek: vcodec: re-construct h264 driver to support svp mode
-Date: Mon, 11 Sep 2023 20:59:31 +0800
-Message-ID: <20230911125936.10648-10-yunfei.dong@mediatek.com>
+Subject: [PATCH 03/14] media: mediatek: vcodec: send share memory data to optee
+Date: Mon, 11 Sep 2023 20:59:25 +0800
+Message-ID: <20230911125936.10648-4-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230911125936.10648-1-yunfei.dong@mediatek.com>
 References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
@@ -76,22 +76,21 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--11.822600-8.000000
-X-TMASE-MatchedRID: r1msRca0lp8XSulpnju2HwwfhKwa9GwD6Jlwb2gbuk6na6U74e0+qJkC
-	erFMaabiEcE+LOiKuIu00IswV/oVHJslyqXPRrNnSHCU59h5KrFYN1akkye0qJgWnaLDiGghOco
-	6p+CZZ/zwYKShJdlqCUioj2M+ndA7tRrZmY+hVK3il2r2x2PwtbmnDa2zGPi0+5+93dPb6/fCLK
-	ePGo1T5AS2A89iNQ91YWoRrUsXDYOXvKeHmOteH836paW7ZnFonIM/WutR2+G7FQAOys2pPcqN9
-	R1f3q8MnaDEbx5bY6a2qNGaLuHnvh8TzIzimOwPbdTuPa9VRGvEQdG7H66TyF82MXkEdQ77pHVj
-	bxSnQh4BojcwgiKKcxysl66eT9YNTEIM81sfLroYOwkRUfKhRA==
+X-TM-AS-Result: No-10--11.362300-8.000000
+X-TMASE-MatchedRID: Hhq/idUUseWQG6Uyrf0PKFVN8laWo90MTJDl9FKHbrk1LB46LFAAkotf
+	Mtu9FfbrPcGjGTU7TnemGallF1XuaEDn8NFEhJAcDB+ErBr0bAPAmOfzKotTohL6MU7t349b3vY
+	rsfFYjWsgY9Nu1Ql6APqPSFsdX1B029aHfVG01jzJ1E39jKDimArefVId6fzVng4VduaO4Wk7/K
+	pRfhl7HJ+A2XixGIT00kdqLoZ8YVUfE8yM4pjsDwtuKBGekqUpOlxBO2IcOBZd547Lxd1BZ6mqa
+	uGo4hT1z1AsEapbgMkr9/Px/7I2Mdr9/QDQ9iFc
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--11.822600-8.000000
+X-TMASE-Result: 10--11.362300-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 231D60F2B5242568BC181C34F262F97DFA097B83C6132127AFC6AF302D40AFB02000:8
+X-TM-SNTS-SMTP: 239BA06F8F436BAB47FE864C2C42A0CB915863E46DE17F3ACF737EB5D815FB002000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_060027_651806_EA74E0F9 
-X-CRM114-Status: GOOD (  19.52  )
+X-CRM114-CacheID: sfid-20230911_060027_907327_7B5AD9FB 
+X-CRM114-Status: GOOD (  16.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,402 +105,229 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Need secure buffer size to convert secure handle to secure
-pa in optee-os, re-construct the vsi struct to store each
-secure buffer size.
-
-Separate svp and normal wait interrupt condition for svp mode
-waiting hardware interrupt in optee-os.
+Setting msg and vsi information to shared buffer, then call tee invoke
+function to send it to optee-os.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../decoder/vdec/vdec_h264_req_multi_if.c     | 261 +++++++++++-------
- .../mediatek/vcodec/decoder/vdec_msg_queue.c  |   9 +-
- 2 files changed, 168 insertions(+), 102 deletions(-)
+ .../vcodec/decoder/mtk_vcodec_dec_optee.c     | 139 ++++++++++++++++++
+ .../vcodec/decoder/mtk_vcodec_dec_optee.h     |  51 +++++++
+ 2 files changed, 190 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-index 7017217022b1..fe63a745be87 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-@@ -60,14 +60,36 @@ struct vdec_h264_slice_lat_dec_param {
-  * @crc:		Used to check whether hardware's status is right
-  */
- struct vdec_h264_slice_info {
-+	u64 wdma_end_addr_offset;
- 	u16 nal_info;
- 	u16 timeout;
--	u32 bs_buf_size;
--	u64 bs_buf_addr;
--	u64 y_fb_dma;
--	u64 c_fb_dma;
- 	u64 vdec_fb_va;
- 	u32 crc[8];
-+	u32 reserved;
-+};
-+
-+/*
-+ * struct vdec_h264_slice_mem - memory address and size
-+ */
-+struct vdec_h264_slice_mem {
-+	union {
-+		u64 buf;
-+		u64 dma_addr;
-+	};
-+	union {
-+		size_t size;
-+		u64 dma_addr_end;
-+	};
-+};
-+
-+/**
-+ * struct vdec_h264_slice_fb - frame buffer for decoding
-+ * @y:  current y buffer address info
-+ * @c:  current c buffer address info
-+ */
-+struct vdec_h264_slice_fb {
-+	struct vdec_h264_slice_mem y;
-+	struct vdec_h264_slice_mem c;
- };
- 
- /**
-@@ -92,18 +114,16 @@ struct vdec_h264_slice_info {
-  */
- struct vdec_h264_slice_vsi {
- 	/* LAT dec addr */
--	u64 wdma_err_addr;
--	u64 wdma_start_addr;
--	u64 wdma_end_addr;
--	u64 slice_bc_start_addr;
--	u64 slice_bc_end_addr;
--	u64 row_info_start_addr;
--	u64 row_info_end_addr;
--	u64 trans_start;
--	u64 trans_end;
--	u64 wdma_end_addr_offset;
-+	struct vdec_h264_slice_mem bs;
-+	struct vdec_h264_slice_fb fb;
- 
--	u64 mv_buf_dma[H264_MAX_MV_NUM];
-+	struct vdec_h264_slice_mem ube;
-+	struct vdec_h264_slice_mem trans;
-+	struct vdec_h264_slice_mem row_info;
-+	struct vdec_h264_slice_mem err_map;
-+	struct vdec_h264_slice_mem slice_bc;
-+
-+	struct vdec_h264_slice_mem mv_buf_dma[H264_MAX_MV_NUM];
- 	struct vdec_h264_slice_info dec;
- 	struct vdec_h264_slice_lat_dec_param h264_slice_params;
- };
-@@ -392,6 +412,100 @@ static void vdec_h264_slice_get_crop_info(struct vdec_h264_slice_inst *inst,
- 		       cr->left, cr->top, cr->width, cr->height);
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
+index 806ca87c8de7..d16496003a39 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.c
+@@ -232,3 +232,142 @@ void mtk_vcodec_dec_optee_release(struct mtk_vdec_optee_private *optee_private)
+ 	mutex_unlock(&optee_private->tee_mutex);
  }
- 
-+static void vdec_h264_slice_setup_lat_buffer(struct vdec_h264_slice_inst *inst,
-+					     struct mtk_vcodec_mem *bs,
-+					     struct vdec_lat_buf *lat_buf)
+ EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_release);
++
++static int mtk_vcodec_dec_optee_fill_shm(struct tee_param *command_params,
++					 struct mtk_vdec_optee_shm_memref *shm_memref,
++					 struct mtk_vdec_optee_data_to_shm *data,
++					 int index)
 +{
-+	struct mtk_vcodec_mem *mem;
-+	int i;
-+
-+	inst->vsi->bs.dma_addr = (u64)bs->dma_addr;
-+	inst->vsi->bs.size = bs->size;
-+
-+	for (i = 0; i < H264_MAX_MV_NUM; i++) {
-+		mem = &inst->mv_buf[i];
-+		inst->vsi->mv_buf_dma[i].dma_addr = mem->dma_addr;
-+		inst->vsi->mv_buf_dma[i].size = mem->size;
-+	}
-+	inst->vsi->ube.dma_addr = lat_buf->ctx->msg_queue.wdma_addr.dma_addr;
-+	inst->vsi->ube.size = lat_buf->ctx->msg_queue.wdma_addr.size;
-+
-+	inst->vsi->row_info.dma_addr = 0;
-+	inst->vsi->row_info.size = 0;
-+
-+	inst->vsi->err_map.dma_addr = lat_buf->wdma_err_addr.dma_addr;
-+	inst->vsi->err_map.size = lat_buf->wdma_err_addr.size;
-+
-+	inst->vsi->slice_bc.dma_addr = lat_buf->slice_bc_addr.dma_addr;
-+	inst->vsi->slice_bc.size = lat_buf->slice_bc_addr.size;
-+
-+	inst->vsi->trans.dma_addr_end = inst->ctx->msg_queue.wdma_rptr_addr;
-+	inst->vsi->trans.dma_addr = inst->ctx->msg_queue.wdma_wptr_addr;
-+}
-+
-+static int vdec_h264_slice_setup_core_buffer(struct vdec_h264_slice_inst *inst,
-+					     struct vdec_h264_slice_share_info *share_info,
-+					     struct vdec_lat_buf *lat_buf)
-+{
-+	struct mtk_vcodec_mem *mem;
-+	struct mtk_vcodec_dec_ctx *ctx = inst->ctx;
-+	struct vb2_v4l2_buffer *vb2_v4l2;
-+	struct vdec_fb *fb;
-+	u64 y_fb_dma, c_fb_dma = 0;
-+	int i;
-+
-+	fb = ctx->dev->vdec_pdata->get_cap_buffer(ctx);
-+	if (!fb) {
-+		mtk_vdec_err(ctx, "fb buffer is NULL");
-+		return -EBUSY;
++	if (!data->msg_buf_size[index] || !data->msg_buf[index]) {
++		pr_err(MTK_DBG_VCODEC_STR "tee invalid buf param: %d.\n", index);
++		return -EINVAL;
 +	}
 +
-+	y_fb_dma = (u64)fb->base_y.dma_addr;
-+	if (!ctx->is_svp_mode) {
-+		if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 1)
-+			c_fb_dma =
-+				y_fb_dma + inst->ctx->picinfo.buf_w * inst->ctx->picinfo.buf_h;
-+		else
-+			c_fb_dma = (u64)fb->base_c.dma_addr;
++	*command_params = (struct tee_param) {
++		.attr = shm_memref->param_type,
++		.u.memref = {
++			.shm = shm_memref->msg_shm,
++			.size = data->msg_buf_size[index],
++			.shm_offs = 0,
++		},
++	};
++
++	if (!shm_memref->copy_to_ta) {
++		pr_debug(MTK_DBG_VCODEC_STR "share memref data: 0x%x param_type:%llu.\n",
++			 *((unsigned int *)shm_memref->msg_shm_ca_buf), shm_memref->param_type);
++		return 0;
 +	}
 +
-+	mtk_vdec_debug(ctx, "[h264-core] y/c addr = 0x%llx 0x%llx", y_fb_dma, c_fb_dma);
++	memset(shm_memref->msg_shm_ca_buf, 0, shm_memref->msg_shm_size);
++	memcpy(shm_memref->msg_shm_ca_buf, data->msg_buf[index], data->msg_buf_size[index]);
 +
-+	inst->vsi_core->fb.y.dma_addr = y_fb_dma;
-+	inst->vsi_core->fb.y.size = ctx->picinfo.fb_sz[0];
-+	inst->vsi_core->fb.c.dma_addr = c_fb_dma;
-+	inst->vsi_core->fb.c.size = ctx->picinfo.fb_sz[1];
-+
-+	inst->vsi_core->dec.vdec_fb_va = (unsigned long)fb;
-+	inst->vsi_core->dec.nal_info = share_info->nal_info;
-+
-+	inst->vsi_core->ube.dma_addr = lat_buf->ctx->msg_queue.wdma_addr.dma_addr;
-+	inst->vsi_core->ube.size = lat_buf->ctx->msg_queue.wdma_addr.size;
-+
-+	inst->vsi_core->err_map.dma_addr = lat_buf->wdma_err_addr.dma_addr;
-+	inst->vsi_core->err_map.size = lat_buf->wdma_err_addr.size;
-+
-+	inst->vsi_core->slice_bc.dma_addr = lat_buf->slice_bc_addr.dma_addr;
-+	inst->vsi_core->slice_bc.size = lat_buf->slice_bc_addr.size;
-+
-+	inst->vsi_core->row_info.dma_addr = 0;
-+	inst->vsi_core->row_info.size = 0;
-+
-+	inst->vsi_core->trans.dma_addr = share_info->trans_start;
-+	inst->vsi_core->trans.dma_addr_end = share_info->trans_end;
-+
-+	for (i = 0; i < H264_MAX_MV_NUM; i++) {
-+		mem = &inst->mv_buf[i];
-+		inst->vsi_core->mv_buf_dma[i].dma_addr = mem->dma_addr;
-+		inst->vsi_core->mv_buf_dma[i].size = mem->size;
-+	}
-+
-+	vb2_v4l2 = v4l2_m2m_next_dst_buf(ctx->m2m_ctx);
-+	v4l2_m2m_buf_copy_metadata(&lat_buf->ts_info, vb2_v4l2, true);
++	pr_debug(MTK_DBG_VCODEC_STR "share memref data => msg id:0x%x 0x%x param_type:%llu.\n",
++		 *((unsigned int *)data->msg_buf[index]),
++		 *((unsigned int *)shm_memref->msg_shm_ca_buf),
++		 shm_memref->param_type);
 +
 +	return 0;
 +}
 +
- static int vdec_h264_slice_init(struct mtk_vcodec_dec_ctx *ctx)
- {
- 	struct vdec_h264_slice_inst *inst;
-@@ -457,64 +571,22 @@ static void vdec_h264_slice_deinit(void *h_vdec)
- 
- static int vdec_h264_slice_core_decode(struct vdec_lat_buf *lat_buf)
- {
--	struct vdec_fb *fb;
--	u64 vdec_fb_va;
--	u64 y_fb_dma, c_fb_dma;
--	int err, timeout, i;
-+	int err, timeout;
- 	struct mtk_vcodec_dec_ctx *ctx = lat_buf->ctx;
- 	struct vdec_h264_slice_inst *inst = ctx->drv_handle;
--	struct vb2_v4l2_buffer *vb2_v4l2;
- 	struct vdec_h264_slice_share_info *share_info = lat_buf->private_data;
--	struct mtk_vcodec_mem *mem;
- 	struct vdec_vpu_inst *vpu = &inst->vpu;
- 
- 	mtk_vdec_debug(ctx, "[h264-core] vdec_h264 core decode");
- 	memcpy(&inst->vsi_core->h264_slice_params, &share_info->h264_slice_params,
- 	       sizeof(share_info->h264_slice_params));
- 
--	fb = ctx->dev->vdec_pdata->get_cap_buffer(ctx);
--	if (!fb) {
--		err = -EBUSY;
--		mtk_vdec_err(ctx, "fb buffer is NULL");
-+	err = vdec_h264_slice_setup_core_buffer(inst, share_info, lat_buf);
-+	if (err)
- 		goto vdec_dec_end;
--	}
--
--	vdec_fb_va = (unsigned long)fb;
--	y_fb_dma = (u64)fb->base_y.dma_addr;
--	if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 1)
--		c_fb_dma =
--			y_fb_dma + inst->ctx->picinfo.buf_w * inst->ctx->picinfo.buf_h;
--	else
--		c_fb_dma = (u64)fb->base_c.dma_addr;
--
--	mtk_vdec_debug(ctx, "[h264-core] y/c addr = 0x%llx 0x%llx", y_fb_dma, c_fb_dma);
--
--	inst->vsi_core->dec.y_fb_dma = y_fb_dma;
--	inst->vsi_core->dec.c_fb_dma = c_fb_dma;
--	inst->vsi_core->dec.vdec_fb_va = vdec_fb_va;
--	inst->vsi_core->dec.nal_info = share_info->nal_info;
--	inst->vsi_core->wdma_start_addr =
--		lat_buf->ctx->msg_queue.wdma_addr.dma_addr;
--	inst->vsi_core->wdma_end_addr =
--		lat_buf->ctx->msg_queue.wdma_addr.dma_addr +
--		lat_buf->ctx->msg_queue.wdma_addr.size;
--	inst->vsi_core->wdma_err_addr = lat_buf->wdma_err_addr.dma_addr;
--	inst->vsi_core->slice_bc_start_addr = lat_buf->slice_bc_addr.dma_addr;
--	inst->vsi_core->slice_bc_end_addr = lat_buf->slice_bc_addr.dma_addr +
--		lat_buf->slice_bc_addr.size;
--	inst->vsi_core->trans_start = share_info->trans_start;
--	inst->vsi_core->trans_end = share_info->trans_end;
--	for (i = 0; i < H264_MAX_MV_NUM; i++) {
--		mem = &inst->mv_buf[i];
--		inst->vsi_core->mv_buf_dma[i] = mem->dma_addr;
--	}
--
--	vb2_v4l2 = v4l2_m2m_next_dst_buf(ctx->m2m_ctx);
--	v4l2_m2m_buf_copy_metadata(&lat_buf->ts_info, vb2_v4l2, true);
- 
- 	vdec_h264_slice_fill_decode_reflist(inst, &inst->vsi_core->h264_slice_params,
- 					    share_info);
--
- 	err = vpu_dec_core(vpu);
- 	if (err) {
- 		mtk_vdec_err(ctx, "core decode err=%d", err);
-@@ -573,12 +645,11 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 	struct vdec_h264_slice_inst *inst = h_vdec;
- 	struct vdec_vpu_inst *vpu = &inst->vpu;
- 	struct mtk_video_dec_buf *src_buf_info;
--	int nal_start_idx, err, timeout = 0, i;
-+	int nal_start_idx, err, timeout = 0;
- 	unsigned int data[2];
- 	struct vdec_lat_buf *lat_buf;
- 	struct vdec_h264_slice_share_info *share_info;
- 	unsigned char *buf;
--	struct mtk_vcodec_mem *mem;
- 
- 	if (vdec_msg_queue_init(&inst->ctx->msg_queue, inst->ctx,
- 				vdec_h264_slice_core_decode,
-@@ -617,11 +688,9 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 	if (err)
- 		goto err_free_fb_out;
- 
--	vdec_h264_insert_startcode(inst->ctx->dev, buf, &bs->size,
--				   &share_info->h264_slice_params.pps);
--
--	inst->vsi->dec.bs_buf_addr = (uint64_t)bs->dma_addr;
--	inst->vsi->dec.bs_buf_size = bs->size;
-+	if (!inst->ctx->is_svp_mode)
-+		vdec_h264_insert_startcode(inst->ctx->dev, buf, &bs->size,
-+					   &share_info->h264_slice_params.pps);
- 
- 	*res_chg = inst->resolution_changed;
- 	if (inst->resolution_changed) {
-@@ -634,38 +703,27 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 		}
- 		inst->resolution_changed = false;
- 	}
--	for (i = 0; i < H264_MAX_MV_NUM; i++) {
--		mem = &inst->mv_buf[i];
--		inst->vsi->mv_buf_dma[i] = mem->dma_addr;
--	}
--	inst->vsi->wdma_start_addr = lat_buf->ctx->msg_queue.wdma_addr.dma_addr;
--	inst->vsi->wdma_end_addr = lat_buf->ctx->msg_queue.wdma_addr.dma_addr +
--		lat_buf->ctx->msg_queue.wdma_addr.size;
--	inst->vsi->wdma_err_addr = lat_buf->wdma_err_addr.dma_addr;
--	inst->vsi->slice_bc_start_addr = lat_buf->slice_bc_addr.dma_addr;
--	inst->vsi->slice_bc_end_addr = lat_buf->slice_bc_addr.dma_addr +
--		lat_buf->slice_bc_addr.size;
--
--	inst->vsi->trans_end = inst->ctx->msg_queue.wdma_rptr_addr;
--	inst->vsi->trans_start = inst->ctx->msg_queue.wdma_wptr_addr;
--	mtk_vdec_debug(inst->ctx, "lat:trans(0x%llx 0x%llx) err:0x%llx",
--		       inst->vsi->wdma_start_addr,
--		       inst->vsi->wdma_end_addr,
--		       inst->vsi->wdma_err_addr);
--
--	mtk_vdec_debug(inst->ctx, "slice(0x%llx 0x%llx) rprt((0x%llx 0x%llx))",
--		       inst->vsi->slice_bc_start_addr,
--		       inst->vsi->slice_bc_end_addr,
--		       inst->vsi->trans_start,
--		       inst->vsi->trans_end);
++void mtk_vcodec_dec_optee_set_data(struct mtk_vdec_optee_data_to_shm *data,
++				   void *buf, int buf_size,
++				   enum mtk_vdec_optee_data_index index)
++{
++	data->msg_buf[index] = buf;
++	data->msg_buf_size[index] = buf_size;
++}
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_set_data);
 +
-+	vdec_h264_slice_setup_lat_buffer(inst, bs, lat_buf);
-+	mtk_vdec_debug(inst->ctx, "lat:trans(0x%llx 0x%lx) err:0x%llx",
-+		       inst->vsi->ube.dma_addr, (unsigned long)inst->vsi->ube.size,
-+		       inst->vsi->err_map.dma_addr);
++int mtk_vcodec_dec_optee_invokd_cmd(struct mtk_vdec_optee_private *optee_private,
++				    enum mtk_vdec_hw_id hw_id,
++				    struct mtk_vdec_optee_data_to_shm *data)
++{
++	struct tee_ioctl_invoke_arg trans_args;
++	struct tee_param command_params[MTK_OPTEE_MAX_TEE_PARAMS];
++	struct mtk_vdec_optee_ca_info *ca_info;
++	struct mtk_vdec_optee_shm_memref *shm_memref;
++	int ret = 0, index;
 +
-+	mtk_vdec_debug(inst->ctx, "slice(0x%llx 0x%lx) rprt((0x%llx 0x%llx))",
-+		       inst->vsi->slice_bc.dma_addr, (unsigned long)inst->vsi->slice_bc.size,
-+		       inst->vsi->trans.dma_addr, inst->vsi->trans.dma_addr_end);
- 	err = vpu_dec_start(vpu, data, 2);
- 	if (err) {
- 		mtk_vdec_debug(inst->ctx, "lat decode err: %d", err);
- 		goto err_free_fb_out;
- 	}
- 
--	share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
--		inst->vsi->wdma_end_addr_offset;
-+	if (inst->ctx->is_svp_mode)
-+		share_info->trans_end = inst->vsi->dec.wdma_end_addr_offset;
++	if (hw_id == MTK_VDEC_LAT0)
++		ca_info = &optee_private->lat_ca;
 +	else
-+		share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
-+			inst->vsi->dec.wdma_end_addr_offset;
++		ca_info = &optee_private->core_ca;
 +
- 	share_info->trans_start = inst->ctx->msg_queue.wdma_wptr_addr;
- 	share_info->nal_info = inst->vsi->dec.nal_info;
- 
-@@ -691,8 +749,11 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 		return -EINVAL;
- 	}
- 
--	share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
--		inst->vsi->wdma_end_addr_offset;
-+	if (inst->ctx->is_svp_mode)
-+		share_info->trans_end = inst->vsi->dec.wdma_end_addr_offset;
-+	else
-+		share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
-+			inst->vsi->dec.wdma_end_addr_offset;
- 	vdec_msg_queue_update_ube_wptr(&lat_buf->ctx->msg_queue, share_info->trans_end);
- 
- 	if (!IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability)) {
-@@ -737,10 +798,10 @@ static int vdec_h264_slice_single_decode(void *h_vdec, struct mtk_vcodec_mem *bs
- 	mtk_vdec_debug(inst->ctx, "[h264-dec] [%d] y_dma=%llx c_dma=%llx",
- 		       inst->ctx->decoded_frame_cnt, y_fb_dma, c_fb_dma);
- 
--	inst->vsi_ctx.dec.bs_buf_addr = (u64)bs->dma_addr;
--	inst->vsi_ctx.dec.bs_buf_size = bs->size;
--	inst->vsi_ctx.dec.y_fb_dma = y_fb_dma;
--	inst->vsi_ctx.dec.c_fb_dma = c_fb_dma;
-+	inst->vsi_ctx.bs.dma_addr = (u64)bs->dma_addr;
-+	inst->vsi_ctx.bs.size = bs->size;
-+	inst->vsi_ctx.fb.y.dma_addr = y_fb_dma;
-+	inst->vsi_ctx.fb.c.dma_addr = c_fb_dma;
- 	inst->vsi_ctx.dec.vdec_fb_va = (u64)(uintptr_t)fb;
- 
- 	v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb,
-@@ -770,7 +831,7 @@ static int vdec_h264_slice_single_decode(void *h_vdec, struct mtk_vcodec_mem *bs
- 
- 		for (i = 0; i < H264_MAX_MV_NUM; i++) {
- 			mem = &inst->mv_buf[i];
--			inst->vsi_ctx.mv_buf_dma[i] = mem->dma_addr;
-+			inst->vsi_ctx.mv_buf_dma[i].dma_addr = mem->dma_addr;
- 		}
- 	}
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c
-index f283c4703dc6..1ee04d920279 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_msg_queue.c
-@@ -308,8 +308,13 @@ int vdec_msg_queue_init(struct vdec_msg_queue *msg_queue,
- 		msg_queue->wdma_addr.size = 0;
- 		return -ENOMEM;
- 	}
--	msg_queue->wdma_rptr_addr = msg_queue->wdma_addr.dma_addr;
--	msg_queue->wdma_wptr_addr = msg_queue->wdma_addr.dma_addr;
-+	if (ctx->is_svp_mode) {
-+		msg_queue->wdma_rptr_addr = 0;
-+		msg_queue->wdma_wptr_addr = 0;
-+	} else {
-+		msg_queue->wdma_rptr_addr = msg_queue->wdma_addr.dma_addr;
-+		msg_queue->wdma_wptr_addr = msg_queue->wdma_addr.dma_addr;
++	memset(&trans_args, 0, sizeof(trans_args));
++	memset(command_params, 0, sizeof(command_params));
++
++	trans_args = (struct tee_ioctl_invoke_arg) {
++		.func = ca_info->vdec_session_func,
++		.session = ca_info->vdec_session_id,
++		.num_params = MTK_OPTEE_MAX_TEE_PARAMS,
++	};
++
++	/* Fill msg command parameters */
++	for (index = 0; index < MTK_OPTEE_MAX_TEE_PARAMS; index++) {
++		shm_memref = &ca_info->shm_memref[index];
++
++		if (shm_memref->param_type == TEE_IOCTL_PARAM_ATTR_TYPE_NONE ||
++		    data->msg_buf_size[index] == 0)
++			continue;
++
++		pr_debug(MTK_DBG_VCODEC_STR "tee share memory data size: %d -> %d.\n",
++			 data->msg_buf_size[index], shm_memref->msg_shm_size);
++
++		if (data->msg_buf_size[index] > shm_memref->msg_shm_size) {
++			pr_err(MTK_DBG_VCODEC_STR "tee buf size big then shm size(%d -> %d).\n",
++			       data->msg_buf_size[index], shm_memref->msg_shm_size);
++			return -EINVAL;
++		}
++
++		ret = mtk_vcodec_dec_optee_fill_shm(&command_params[index], shm_memref,
++						    data, index);
++		if (ret)
++			return ret;
 +	}
++
++	ret = tee_client_invoke_func(optee_private->tee_vdec_ctx, &trans_args, command_params);
++	if (ret < 0 || trans_args.ret != 0) {
++		pr_err(MTK_DBG_VCODEC_STR "tee submit command fail: 0x%x 0x%x.\n",
++		       trans_args.ret, ret);
++		return (ret < 0) ? ret : trans_args.ret;
++	}
++
++	/* clear all attrs, set all command param to unused */
++	for (index = 0; index < MTK_OPTEE_MAX_TEE_PARAMS; index++) {
++		data->msg_buf[index] = NULL;
++		data->msg_buf_size[index] = 0;
++	}
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_optee_invokd_cmd);
++
++void *mtk_vcodec_dec_get_shm_buffer_va(struct mtk_vdec_optee_private *optee_private,
++				       enum mtk_vdec_hw_id hw_id,
++				       enum mtk_vdec_optee_data_index data_index)
++{
++	struct mtk_vdec_optee_ca_info *ca_info;
++
++	if (hw_id == MTK_VDEC_LAT0)
++		ca_info = &optee_private->lat_ca;
++	else
++		ca_info = &optee_private->core_ca;
++
++	return ca_info->shm_memref[data_index].msg_shm_ca_buf;
++}
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_get_shm_buffer_va);
++
++int mtk_vcodec_dec_get_shm_buffer_size(struct mtk_vdec_optee_private *optee_private,
++				       enum mtk_vdec_hw_id hw_id,
++				       enum mtk_vdec_optee_data_index data_index)
++{
++	struct mtk_vdec_optee_ca_info *ca_info;
++
++	if (hw_id == MTK_VDEC_LAT0)
++		ca_info = &optee_private->lat_ca;
++	else
++		ca_info = &optee_private->core_ca;
++
++	return ca_info->shm_memref[data_index].msg_shm_size;
++}
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_get_shm_buffer_size);
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
+index 79b4ec890655..3905db856376 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_optee.h
+@@ -62,6 +62,16 @@ enum mtk_vdec_optee_data_index {
+ 	OPTEE_MAX_INDEX,
+ };
  
- 	msg_queue->empty_lat_buf.ctx = ctx;
- 	msg_queue->empty_lat_buf.core_decode = NULL;
++/**
++ * struct mtk_vdec_optee_data_to_shm - shm data used for TA
++ * @msg_buf:     msg information to TA.
++ * @msg_buf_len: length of msg information.
++ */
++struct mtk_vdec_optee_data_to_shm {
++	void *msg_buf[MTK_OPTEE_MAX_TEE_PARAMS];
++	int msg_buf_size[MTK_OPTEE_MAX_TEE_PARAMS];
++};
++
+ /**
+  * struct mtk_vdec_optee_private - optee private data
+  * @vcodec_dev:     pointer to the mtk_vcodec_dev of the device
+@@ -102,4 +112,45 @@ int mtk_vcodec_dec_optee_private_init(struct mtk_vcodec_dec_dev *vcodec_dev);
+  */
+ void mtk_vcodec_dec_optee_release(struct mtk_vdec_optee_private *optee_private);
+ 
++/**
++ * mtk_vcodec_dec_optee_set_data - set buffer to share memref.
++ * @vcodec_dev: normal world data used to init optee share memory
++ * @buf: normal world buffer address
++ * @buf_size: buf size
++ * @data_index: indentify each share memory informaiton
++ */
++void mtk_vcodec_dec_optee_set_data(struct mtk_vdec_optee_data_to_shm *data,
++				   void *buf, int buf_size,
++				   enum mtk_vdec_optee_data_index data_index);
++
++/**
++ * mtk_vcodec_dec_optee_invokd_cmd - send share memory data to optee .
++ * @optee_private: optee private context
++ * @hw_id: hardware index
++ * @data: normal world data used to init optee share memory
++ */
++int mtk_vcodec_dec_optee_invokd_cmd(struct mtk_vdec_optee_private *optee_private,
++				    enum mtk_vdec_hw_id hw_id,
++				    struct mtk_vdec_optee_data_to_shm *data);
++
++/**
++ * mtk_vcodec_dec_get_shm_buffer_va - close the communication channels with TA.
++ * @optee_private: optee private context
++ * @hw_id:         hardware index
++ * @@data_index: indentify each share memory informaiton
++ */
++void *mtk_vcodec_dec_get_shm_buffer_va(struct mtk_vdec_optee_private *optee_private,
++				       enum mtk_vdec_hw_id hw_id,
++				       enum mtk_vdec_optee_data_index data_index);
++
++/**
++ * mtk_vcodec_dec_get_shm_buffer_size - close the communication channels with TA.
++ * @optee_private: optee private context
++ * @hw_id:         hardware index
++ * @@data_index: indentify each share memory informaiton
++ */
++int mtk_vcodec_dec_get_shm_buffer_size(struct mtk_vdec_optee_private *optee_private,
++				       enum mtk_vdec_hw_id hw_id,
++				       enum mtk_vdec_optee_data_index data_index);
++
+ #endif /* _MTK_VCODEC_FW_OPTEE_H_ */
 -- 
 2.18.0
 
