@@ -4,60 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23AD4EE57DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 08:12:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21829EE57DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 08:17:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:CC:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6rPP/oyLv+DfB2DvzWmhNfrkCcAKlx6hjXYBTO7KNhM=; b=yPiqQTAyMFvwHnNIjBz1smNMUs
-	nni09DRidB66GLe71bYpAas6D3PYqrGVB72nbqXaNCEUAe6pSA9cME4kjiBsa/cq+ukN7/yftNJo3
-	1BgYLa7EZ4uNJpd72+sBaVcDzACefJiNxssZ/HRVlcZ97qKFfxDVU+vSlBKDCLyjEG1pSPfN4g+3G
-	FtzhmLjWaRcUmvOT29E7nZP6MhicpPeGY0z+FwdgOeHvS+Cdn3khx/IWGlcxQo5UGL/HbjNToCS6P
-	s+x2N99ZBKq6QUbqSgHNqOEa8ctiiKsF7i92YTCZ/Wd6J52BlwvxTTUnd/vLIaY0LeILHSg/GG8ZD
-	d4QSYUSQ==;
+	bh=vd49uihco+SPsQfPVH/VVRtFAb/2at6I8TeWhJKhFv8=; b=JeMGTjo6alTzSDpG5aj5cd6uBv
+	s44I9f+QZqHfB2L7F5FHu3gNN4eyk06rGH3V69u9XI0DAiWT8vkna826dndEPWb7eXzlNbd0qlaY0
+	I8kkQUwsWC5b+1Ov/SKLT/iX628/ORT1xVLOKnA+VL8qyIWlXwaM0WVX9O/tUVJRuBSbzQUY6AqnH
+	LPM1zjuec1AIhb67TVbgMASn1MZen0dGrxX3NvtrENX8ZPJEy6ZesCiYUn3RhpFU4q4RMWCRTRcfK
+	xoRP6DVh8wzJUHSyvzoBNNtTNESDWU9F4W7mZDcy+QiTovTTjROAZPFyOgbjLOoazg7TTfkz4SIJs
+	Zpa0+22Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfc2K-00HWET-0T;
-	Mon, 11 Sep 2023 08:12:48 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1qfc6l-00HWcO-2w;
+	Mon, 11 Sep 2023 08:17:23 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfc2H-00HWE0-2P;
-	Mon, 11 Sep 2023 08:12:47 +0000
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38B7bWL8016890;
-	Mon, 11 Sep 2023 08:12:30 GMT
+	id 1qfc6i-00HWbg-30;
+	Mon, 11 Sep 2023 08:17:22 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38B5bFQp011277;
+	Mon, 11 Sep 2023 08:16:55 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : from : to : cc : references : in-reply-to :
+ mime-version : subject : to : cc : references : from : in-reply-to :
  content-type : content-transfer-encoding; s=qcppdkim1;
- bh=6rPP/oyLv+DfB2DvzWmhNfrkCcAKlx6hjXYBTO7KNhM=;
- b=hIc9QCuhz3e5PZMVDH9o73rY833f9J3ijuppLllKwgSocYgnK1Y3lTkHwYFrmfQk06/W
- A9bP/Lr6lZFa/xHl9ZIVw0y/FKyjSPMcasifN74BFnHlbfixPwOm3lKhefqGtemBN37u
- K9FK6l3chePj3+qlHkhJfuLLWXdRWnu6NwSGPTzBcNfaT9n75MvR04crY8rSuwIxtz66
- JpomuzIaQDXdMYnafyafzhws1QgpOk0aLIGENRZeMlMyyR+wz+/uXHu26pN4SYhBSMa+
- EJ8mm1Thtav2bmuMa4O25Nffdli2N+jT+XM33OsRd708MkEMIVfX3BF0ev7fqr0Hvu2I jQ== 
-Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t0ga6jtr5-1
+ bh=vd49uihco+SPsQfPVH/VVRtFAb/2at6I8TeWhJKhFv8=;
+ b=AYWSkM5Q/s/wucNIXiIS9TNkxtAPd2vpzozsS75c58wCvygZwFuqGPHKhF7CeNuFCdwG
+ tIOP09TNOGeWkh7f+4EyQB5uzMD/c7kEzmgYsG0qUTpWw8XYEoAOAdwciN1oqPXSy6px
+ B78WTWcbI1H824606dJQNyPUkAy4m/KS02V9lBxplCqEqGSLyt4/755mKQ2U4A3FHbTH
+ aRizdEAy+SpOC92Gtpzp6EQZQsGViAYHKHKciTQYpqPFgAjIWP+5ZgeSeJI7odv+kJqv
+ F1YbmTkSjiB1UaKWCQBCEbCX9g8X8fLVM9IrVYa6bMkQs2ymT/44ozNzfVWJh6OG8E+0 Og== 
+Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t0hvyk1dn-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Sep 2023 08:12:29 +0000
+	Mon, 11 Sep 2023 08:16:55 +0000
 Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38B8C78X027237
+	by NALASPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38B8Gr6H030203
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Sep 2023 08:12:08 GMT
+	Mon, 11 Sep 2023 08:16:54 GMT
 Received: from [10.201.2.96] (10.80.80.8) by nalasex01a.na.qualcomm.com
  (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Mon, 11 Sep
- 2023 01:11:56 -0700
-Message-ID: <32c6708d-a5a9-420e-bfb8-08ea11b3eb1e@quicinc.com>
-Date: Mon, 11 Sep 2023 13:41:56 +0530
+ 2023 01:16:42 -0700
+Message-ID: <2c12d4a7-f790-42e6-84dc-d93783b1b2d5@quicinc.com>
+Date: Mon, 11 Sep 2023 13:46:39 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 13/17] firmware: qcom_scm: provide a read-modify-write
- function
+Subject: Re: [PATCH v5 15/17] firmware: scm: Modify only the download bits in
+ TCSR register
 Content-Language: en-US
-From: Kathiravan Thirumoorthy <quic_kathirav@quicinc.com>
 To: Mukesh Ojha <quic_mojha@quicinc.com>, <corbet@lwn.net>,
         <agross@kernel.org>, <andersson@kernel.org>,
         <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
@@ -76,29 +75,29 @@ CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-mediatek@lists.infradead.org>,
         <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
 References: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
- <1694290578-17733-14-git-send-email-quic_mojha@quicinc.com>
- <9d9bba92-f92e-469a-b0a5-9ca24f5caaca@quicinc.com>
-In-Reply-To: <9d9bba92-f92e-469a-b0a5-9ca24f5caaca@quicinc.com>
+ <1694290578-17733-16-git-send-email-quic_mojha@quicinc.com>
+From: Kathiravan Thirumoorthy <quic_kathirav@quicinc.com>
+In-Reply-To: <1694290578-17733-16-git-send-email-quic_mojha@quicinc.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.80.80.8]
 X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
  nalasex01a.na.qualcomm.com (10.47.209.196)
 X-QCInternal: smtphost
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: PHohQQwa3uKW6oMZQgu4uMjAUIRy2Isi
-X-Proofpoint-ORIG-GUID: PHohQQwa3uKW6oMZQgu4uMjAUIRy2Isi
+X-Proofpoint-ORIG-GUID: 6qtM1FG44tF2q9BDqDrBGrPE85BHbk47
+X-Proofpoint-GUID: 6qtM1FG44tF2q9BDqDrBGrPE85BHbk47
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-09-11_05,2023-09-05_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0
- suspectscore=0 priorityscore=1501 adultscore=0 malwarescore=0 mlxscore=0
- mlxlogscore=999 clxscore=1015 spamscore=0 lowpriorityscore=0 bulkscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2308100000 definitions=main-2309110074
+ definitions=2023-09-11_06,2023-09-05_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 bulkscore=0
+ clxscore=1015 mlxscore=0 malwarescore=0 impostorscore=0 adultscore=0
+ priorityscore=1501 mlxlogscore=999 spamscore=0 lowpriorityscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2308100000 definitions=main-2309110075
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_011245_905229_80C7BCF9 
-X-CRM114-Status: GOOD (  20.50  )
+X-CRM114-CacheID: sfid-20230911_011720_978591_AB3DB220 
+X-CRM114-Status: GOOD (  22.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,92 +113,66 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On 9/11/2023 1:38 PM, Kathiravan Thirumoorthy wrote:
+On 9/10/2023 1:46 AM, Mukesh Ojha wrote:
+> Crashdump collection is based on the DLOAD bit of TCSR register.
+> To retain other bits, we read the register and modify only the
+> DLOAD bit as the other bits have their own significance.
 >
-> On 9/10/2023 1:46 AM, Mukesh Ojha wrote:
->> It was realized by Srinivas K. that there is a need of
->> read-modify-write scm exported function so that it can
->> be used by multiple clients.
->>
->> Let's introduce qcom_scm_io_update_field() which masks
->> out the bits and write the passed value to that
->> bit-offset. Subsequent patch will use this function.
->>
->> Suggested-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
->> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
->> ---
->
->
-> Validated this change on IPQ9574 and IPQ53332 and system is entering 
-> into the download mode.
->
-> Tested-by: Kathiravan Thirumoorthy <quic_kathirav@quicinc.com> # 
-> IP9574 and IPQ5332
+> Co-developed-by: Poovendhan Selvaraj <quic_poovendh@quicinc.com>
 
 
-Couple of typos. Apologize...
+Poovendhan's signed-off is also required. Please refer [1]
 
-Validated this change on IPQ9574 and IPQ5332 and system is entering into 
-the download mode.
-
-Tested-by: Kathiravan Thirumoorthy <quic_kathirav@quicinc.com> # IPQ9574 
-and IPQ5332
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/Documentation/process/submitting-patches.rst#n489
 
 
+> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+> ---
+>   drivers/firmware/qcom_scm.c | 12 ++++++++++--
+>   1 file changed, 10 insertions(+), 2 deletions(-)
 >
->
->>   drivers/firmware/qcom_scm.c            | 20 ++++++++++++++++++++
->>   include/linux/firmware/qcom/qcom_scm.h |  2 ++
->>   2 files changed, 22 insertions(+)
->>
->> diff --git a/drivers/firmware/qcom_scm.c b/drivers/firmware/qcom_scm.c
->> index fde33acd46b7..5ea8fc4fd4e8 100644
->> --- a/drivers/firmware/qcom_scm.c
->> +++ b/drivers/firmware/qcom_scm.c
->> @@ -78,6 +78,7 @@ static const char * const 
->> qcom_scm_convention_names[] = {
->>   };
->>     static struct qcom_scm *__scm;
->> +static DEFINE_SPINLOCK(lock);
->>     static int qcom_scm_clk_enable(void)
->>   {
->> @@ -407,6 +408,25 @@ int qcom_scm_set_remote_state(u32 state, u32 id)
->>   }
->>   EXPORT_SYMBOL(qcom_scm_set_remote_state);
->>   +int qcom_scm_io_update_field(phys_addr_t addr, unsigned int mask, 
->> unsigned int val)
->> +{
->> +    unsigned int old, new;
->> +    int ret;
->> +
->> +    spin_lock(&lock);
->> +    ret = qcom_scm_io_readl(addr, &old);
->> +    if (ret)
->> +        goto unlock;
->> +
->> +    new = (old & ~mask) | (val & mask);
->> +
->> +    ret = qcom_scm_io_writel(addr, new);
->> +unlock:
->> +    spin_unlock(&lock);
->> +    return ret;
->> +}
->> +EXPORT_SYMBOL_GPL(qcom_scm_io_update_field);
->> +
->>   static int __qcom_scm_set_dload_mode(struct device *dev, bool enable)
->>   {
->>       struct qcom_scm_desc desc = {
->> diff --git a/include/linux/firmware/qcom/qcom_scm.h 
->> b/include/linux/firmware/qcom/qcom_scm.h
->> index 250ea4efb7cb..ca41e4eb33ad 100644
->> --- a/include/linux/firmware/qcom/qcom_scm.h
->> +++ b/include/linux/firmware/qcom/qcom_scm.h
->> @@ -84,6 +84,8 @@ extern bool qcom_scm_pas_supported(u32 peripheral);
->>     extern int qcom_scm_io_readl(phys_addr_t addr, unsigned int *val);
->>   extern int qcom_scm_io_writel(phys_addr_t addr, unsigned int val);
->> +extern int qcom_scm_io_update_field(phys_addr_t addr, unsigned int 
->> mask,
->> +                    unsigned int val);
->>     extern bool qcom_scm_restore_sec_cfg_available(void);
->>   extern int qcom_scm_restore_sec_cfg(u32 device_id, u32 spare);
+> diff --git a/drivers/firmware/qcom_scm.c b/drivers/firmware/qcom_scm.c
+> index 5ea8fc4fd4e8..eda92f713019 100644
+> --- a/drivers/firmware/qcom_scm.c
+> +++ b/drivers/firmware/qcom_scm.c
+> @@ -5,6 +5,8 @@
+>   #include <linux/platform_device.h>
+>   #include <linux/init.h>
+>   #include <linux/interrupt.h>
+> +#include <linux/bitfield.h>
+> +#include <linux/bits.h>
+>   #include <linux/completion.h>
+>   #include <linux/cpumask.h>
+>   #include <linux/export.h>
+> @@ -30,6 +32,10 @@ module_param(download_mode, bool, 0);
+>   #define SCM_HAS_IFACE_CLK	BIT(1)
+>   #define SCM_HAS_BUS_CLK		BIT(2)
+>   
+> +#define QCOM_DLOAD_MASK		GENMASK(5, 4)
+> +#define QCOM_DLOAD_FULLDUMP	0x1
+> +#define QCOM_DLOAD_NODUMP	0x0
+> +
+>   struct qcom_scm {
+>   	struct device *dev;
+>   	struct clk *core_clk;
+> @@ -444,6 +450,7 @@ static int __qcom_scm_set_dload_mode(struct device *dev, bool enable)
+>   
+>   static void qcom_scm_set_download_mode(bool enable)
+>   {
+> +	u32 val = enable ? QCOM_DLOAD_FULLDUMP : QCOM_DLOAD_NODUMP;
+>   	bool avail;
+>   	int ret = 0;
+>   
+> @@ -453,8 +460,9 @@ static void qcom_scm_set_download_mode(bool enable)
+>   	if (avail) {
+>   		ret = __qcom_scm_set_dload_mode(__scm->dev, enable);
+>   	} else if (__scm->dload_mode_addr) {
+> -		ret = qcom_scm_io_writel(__scm->dload_mode_addr,
+> -				enable ? QCOM_SCM_BOOT_SET_DLOAD_MODE : 0);
+> +		ret = qcom_scm_io_update_field(__scm->dload_mode_addr,
+> +					       QCOM_DLOAD_MASK,
+> +					       FIELD_PREP(QCOM_DLOAD_MASK, val));
+>   	} else {
+>   		dev_err(__scm->dev,
+>   			"No available mechanism for setting download mode\n");
 
