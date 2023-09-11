@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D84C2EE57DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 11:09:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9099DEE57DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 11:09:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2r1pG42saIT1hQx+TELlhxvqJ0mmluvD/XCTWLDnio4=; b=jY+KqKK+KftFz0XhRFMDoS915y
-	22tubhiwVF0NTmzzeiiuIdX9vOJtf6odsknEDZuEFRWsEaRSqN/BJphZyHBKfbgy2cs9tx51+p/XT
-	BNakYu3Nx5MFmGKB4vwpVZh5aDwEBw3xKsIZT4Z93zzYhPdEbJtYjo8Sn72sagF/ONNkpjHzp469Q
-	4gr5IxVXw5ShQbl6Xy70cbde44QSj1U1KFXJs3Te+39vdEHIYJ62pG1sIaYS5FRiS2ZbNK3poyvSw
-	aMr6DkAWlPY9oLV49eVM/KeusXAGZKLHixHpDad+n2Zf/1XjdvF4FcUJBxBX34Y97vONzbgDki0pc
-	vMyU0QmQ==;
+	bh=ItV/PafZYbRtZG+3EH6sRu97i9Pet4QO+NBJ8/y2iuI=; b=l17X7jy7gp0dENIdrg5O/yTVze
+	DvH6Z5UCrtySepELfKMsh26ONpSE63VDFH02ilIXaSYXpMLYRmRnDPxI5pWgZpFHExwAyCqSeAipD
+	58b+isukKKbS8BVI6pnSbTOyOIOm3eW+E+NFya5yRTXZw1X8JTw9ukXR3paGZMTW77mkL5pNbLps3
+	uxCJ4mjJ0pUlXJrL1yqsUJkH0X67ewlJW2oJR9AGoOGZJMStFDMTWS6UBIT/Fs/ShgWv0o/TjE3A0
+	1MnURxk+DjDUGxwBgS9mL9AVr5bzhVru+rp6GEiZETkET8zYIFX5b7RdA1cut3CSakyEJUP10616z
+	JsCWOl7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfemq-000MCo-1H;
-	Mon, 11 Sep 2023 11:09:00 +0000
-Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
+	id 1qfenj-000MKU-1Q;
+	Mon, 11 Sep 2023 11:09:55 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfemn-000MBT-2W
+	id 1qfeng-000MJL-2I
 	for linux-mediatek@lists.infradead.org;
-	Mon, 11 Sep 2023 11:08:58 +0000
-Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-2bcb0b973a5so69270511fa.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 11 Sep 2023 04:08:54 -0700 (PDT)
+	Mon, 11 Sep 2023 11:09:53 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-2bf8b9c5ca0so15336761fa.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 11 Sep 2023 04:09:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1694430532; x=1695035332; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1694430590; x=1695035390; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=2r1pG42saIT1hQx+TELlhxvqJ0mmluvD/XCTWLDnio4=;
-        b=FMaVg8WC2L6tyLeuFed3m64jRaYip9ApwPr9Ee5DsV74CgYTqTngHQTrAYf7/4p0jk
-         FNusFyUlybrTvU9pXcaM33jy/NUtZqI5lEv5dEpXlsnQhe7y7cKBBBTrNk9hy8TiocQz
-         lNMZkEwUGZBe5DydN6m3lIyVdLxIaZw1PWBvAfkUiNX96jjcAYWSFneQ/ODbUi5tbwRA
-         oD3Oyf2HjqQGjG2Clt5hW+CSdr3/fDUxPMxSpL084bqXRQQ1rWsSHmmh7Jo8EAEVDteb
-         dWVqgVDlrd6rO9BbJNO8fXh8mupAcPh5AXZbX4CFIAbfXDz06ot+jer6pDBuCsZU66SB
-         NRlQ==
+        bh=ItV/PafZYbRtZG+3EH6sRu97i9Pet4QO+NBJ8/y2iuI=;
+        b=MLdohiH2A8DFgYsS/HaHHjbMVRoGsuUKjSl14PxzJegi/1QbaxSDOHO3L59OYwpWUj
+         /ZwvdxIfNRqj2qoORqqzkDwlaXlJ3jfsVQw4VsfUC8/zr0qNcHV7Qw+kJ6E0j8rjGzrf
+         I+JDQqP0at//YDY19J57yDOUAMAN5ygq1e+tc3YmkBDHBRr+2+FLC2OJGI85ijirU3Sc
+         epIDL8FfJE5EfpJIWVjeBAB6uELQoDXp00i4C+05l2Qbc3rsabX+bIx5DaCKLiS7IbKB
+         P1Crto4LcwUMYFWruz30B7p+rL1mO9WNXmwmprwLbNeNm1Vkf/iqrXi6zWxgVwUfLurw
+         iSCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694430533; x=1695035333;
+        d=1e100.net; s=20230601; t=1694430590; x=1695035390;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2r1pG42saIT1hQx+TELlhxvqJ0mmluvD/XCTWLDnio4=;
-        b=IdhlF/qj3KLjbkBFTjOjy6TcO8Je3h5rc2m2LU+BjPbHV8T1LX+/HN72m74mzjdvRs
-         3CmdtSXPk4/i2e0XvkV7wycGvc4sxhb8KoI8oa1TvcXYQjCThhhxTI5OiRZ4vC/BaNu5
-         62XBu4DJdhLxfEUTBNvxhvToq1pUXnrvJXPDwuUiJ+XiZ33i5xgCBrr+befWDWPg1YfV
-         e+KVdi1fCGGgSzQWUssJrZwxmeiJd/n0bntX1uTg24YcFIqIJL7KoHOlSQST9y6h5gzb
-         5Eow5Ns6kc4feZgF8BSv8pD7T++EB1NhhaLGCu8ACQrHvbg4fAz+Rlk+NX03Yz0tKMfc
-         GFQA==
-X-Gm-Message-State: AOJu0YyTNd73p0tJ1imfaNfkynsfJj511Mqt0t+JHbMQ4faCRQ6xpi6j
-	Rf8TpypLFJe/hZDEvhAALbFkvg==
-X-Google-Smtp-Source: AGHT+IFhJr6aCH0nOA8CkPBUhMy540nMaAY+Mvm7js3Wpv0+d0W8u8lZbEJt3lbAgLcQPiDqKMNL3g==
-X-Received: by 2002:a05:651c:1994:b0:2bf:789e:b5dd with SMTP id bx20-20020a05651c199400b002bf789eb5ddmr5800990ljb.53.1694430532675;
-        Mon, 11 Sep 2023 04:08:52 -0700 (PDT)
+        bh=ItV/PafZYbRtZG+3EH6sRu97i9Pet4QO+NBJ8/y2iuI=;
+        b=w26Oytv4glyqTKuUfEhgzjDNT8aU+jvrRFlXN+OvjWMu1kZ6Of1Dle7EPX4HZ4nmNE
+         SN3sea1T1Fb0sUQsSe29DDrl3nP/pjAul5vm4/Bb5A2etIq+DoOTsy4NUR4KpGqEnYAt
+         iuOqKphC4vQxa0LnHFnyDqK3Ueh3FSQp2A2qV2y9MiJxedrU401YSKZB6FwW+RKhYUYR
+         XBW8Nout5zi/2cAMN6OCZdVsW0MKdTTFQd/P83cYMJSs901oLuwukRA6I+9ZfPN3HPLw
+         3gNViNlfQZtQeOclkBOjJ7wc7pJc91K0I8yILjkH9cNGzj+PLFuh7Cs6MCdLs/lLiFQx
+         pq2w==
+X-Gm-Message-State: AOJu0YxnQb0Fajm0OufVcOchXt1o9lbL5RPLC/hkHJb14pPXDN+6l0v5
+	dJbn+W1/r5Hvo1aEbzly3VTwSw==
+X-Google-Smtp-Source: AGHT+IEA9FyfM8rXa+3k+u+doQWaGigDrU1zuRRVi1v3E2XELPt5LPr2HsZJRl0XxMdT23XFarwUrQ==
+X-Received: by 2002:a2e:8543:0:b0:2bd:180d:67b7 with SMTP id u3-20020a2e8543000000b002bd180d67b7mr6601812ljj.40.1694430589764;
+        Mon, 11 Sep 2023 04:09:49 -0700 (PDT)
 Received: from [192.168.1.20] ([178.197.214.188])
-        by smtp.gmail.com with ESMTPSA id si28-20020a170906cedc00b009786c8249d6sm5244877ejb.175.2023.09.11.04.08.49
+        by smtp.gmail.com with ESMTPSA id lw7-20020a170906bcc700b009a168ab6ee2sm5129780ejb.164.2023.09.11.04.09.46
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 11 Sep 2023 04:08:52 -0700 (PDT)
-Message-ID: <75466db4-3d19-33f6-b2de-db714186a96b@linaro.org>
-Date: Mon, 11 Sep 2023 13:08:48 +0200
+        Mon, 11 Sep 2023 04:09:48 -0700 (PDT)
+Message-ID: <0041a391-12ba-2e1b-0954-fbc0e00be631@linaro.org>
+Date: Mon, 11 Sep 2023 13:09:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH v5 07/17] soc: qcom: minidump: Add pending region
- registration
+Subject: Re: [PATCH v5 11/17] qcom_minidump: Register ramoops region with
+ minidump
 Content-Language: en-US
 To: Mukesh Ojha <quic_mojha@quicinc.com>, corbet@lwn.net, agross@kernel.org,
  andersson@kernel.org, konrad.dybcio@linaro.org, robh+dt@kernel.org,
@@ -84,15 +84,14 @@ Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-samsung-soc@vger.kernel.org, kernel@quicinc.com
 References: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
- <1694290578-17733-8-git-send-email-quic_mojha@quicinc.com>
+ <1694290578-17733-12-git-send-email-quic_mojha@quicinc.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <1694290578-17733-8-git-send-email-quic_mojha@quicinc.com>
+In-Reply-To: <1694290578-17733-12-git-send-email-quic_mojha@quicinc.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_040857_820709_0B8D150B 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230911_040952_749787_9507FA7E 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,24 +107,48 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 09/09/2023 22:16, Mukesh Ojha wrote:
->  static int qcom_apss_minidump_probe(struct platform_device *pdev)
->  {
->  	struct minidump_global_toc *mdgtoc;
-> @@ -571,7 +688,10 @@ static int qcom_apss_minidump_probe(struct platform_device *pdev)
->  		return ret;
->  	}
->  
-> +	mutex_lock(&md_plist.plock);
->  	platform_set_drvdata(pdev, md);
+> Register all the pstore frontend with minidump, so that they can
+> be dumped as default Linux minidump region to be collected on
+> SoC where minidump is enabled.
+> 
 
-Why this is locked?
+...
 
-> +	qcom_apss_register_pending_regions(md);
+> +
+> +	record.type = type;
+> +	record.id = 0;
+> +	max_dump_cnt = 0;
+> +	name = pstore_type_to_name(record.type);
+> +	do {
+> +		ret = pstore_region_defined(&record, &virt, &phys, &size, &max_dump_cnt);
+> +		if (ret < 0)
+> +			break;
+> +
+> +		mdr_list = devm_kzalloc(dev, sizeof(struct md_region_list), GFP_KERNEL);
 
-Why this one is locked? It seems ordering of your operations is not
-correct if you need to lock the providers probe().
+sizeof(*)
 
-> +	mutex_unlock(&md_plist.plock);
+Please fix it everywhere in your code.
+
+> +		if (!mdr_list)
+> +			return -ENOMEM;
+> +
+> +		md_region = &mdr_list->md_region;
+> +		scnprintf(md_region->name, sizeof(md_region->name) - 1, "K%s%llu", name, record.id);
+> +		md_region->virt_addr = virt;
+> +		md_region->phys_addr = phys;
+> +		md_region->size = size;
+> +		ret = qcom_minidump_region_register(md_region);
+> +		if (ret) {
+> +			pr_err("failed to register minidump region\n");
+> +			break;
+> +		}
+> +
+> +		list_add(&mdr_list->list, &ramoops_region_list);
+> +	} while (record.id < max_dump_cnt && ++record.id);
+> +
+> +	return ret;
+> +}
 
 
 Best regards,
