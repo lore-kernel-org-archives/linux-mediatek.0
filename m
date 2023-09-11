@@ -4,84 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2042EE7FF4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 08:09:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE4D0EE7FF4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 08:12:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8W/rAUiPcskFPX+ufYSNJ1mxz6QAHbHSoUfVwMrzPIo=; b=Hb47Pi+eniEg9yBuLuNh0ZABLU
-	YJXXFFMdUvJAmXfn00kbf+rC9wQvYp022mIxoqNdo1apa3yttmMmi9omZwCQAPQVowU8F1ZVTLpuE
-	Oojawe456UJAun66VJ0kvZSMqNr8zn6PMS3LL/FOq9ZmIG4yIH1nnrOQfKcRfRcKFkhhtCm4tGuY1
-	2+E0KafzK14Pp7ibjL2VNnoFZFiBlzu855svPxwnduziCB0mC1iN8br2Wr1VDfeAYilyQNzkIlAy9
-	VO05+qCPXbhpNRsqvGi9sPKTLSI2rUnN3e3E6rydYmBkgdezxGlpCoxXtc12o2UaTuHmhuEGXJ1ht
-	Nff4A6ZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LJRWy4EBcDX+2fQ69zfLKOyX3UcEFlR6a3yY/ct/VgI=; b=f+Mheb5Tq5oYNH19EOo9IcPRAU
+	ACcX8R5JMy3dVQY64MgcrzysSSqN2kIxfE1yjf8QvyC2dSU0NMbUnS61Q7UggyX6aFVjeh4XatMdn
+	LnHrQ5I/zL6yPlS9FwxIn3UxsLSRJUe8n8PaaqqTkrQVqwr7sE6UdbRecUJlZFeObSTZgZv/zl7ol
+	eaCjp7cvBpp5cXaOKnT/Z3eWTSiV20zfs2R2RlEeQ7rvygaLBto+chUrbM/Htnt0XYKKLNHexjHXp
+	UQ0L6N4+ofUX4O4AegYnzFlLzeecHALLClQUsDbTmpA9W5YWJErBMeZ08xtsbasUSQviE0mnxpGKN
+	HqSE8Atw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfbzM-00HVkg-2a;
-	Mon, 11 Sep 2023 08:09:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qfc1X-00HW4x-2s;
+	Mon, 11 Sep 2023 08:11:59 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfbzK-00HVjr-1I;
-	Mon, 11 Sep 2023 08:09:43 +0000
-X-UUID: 8b479e7e507a11ee9b7791016c24628a-20230911
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=8W/rAUiPcskFPX+ufYSNJ1mxz6QAHbHSoUfVwMrzPIo=;
-	b=eJlj6x1/st2by1U55DzLVayQXIksxFeDZqAfzYeFH+sPkEo9qg9B09Ma97Q5KV2DOmmhZlQxt9RMn+GreR8fjUXcxN4LnShsJOSYSus3waL2irTFxrOCDAJj8Mg4ohWtOV5uIbqFUXjIJw2O2rVfMIvM9mJBSkxci5FqAaufK2s=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:b9f0cf8a-623f-4819-a7a6-e20e2ffa56c9,IP:0,U
-	RL:0,TC:0,Content:29,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:29
-X-CID-META: VersionHash:0ad78a4,CLOUDID:f4ffe1c2-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 8b479e7e507a11ee9b7791016c24628a-20230911
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <chun-jen.tseng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1717777370; Mon, 11 Sep 2023 01:09:34 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 11 Sep 2023 16:09:31 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 11 Sep 2023 16:09:31 +0800
-From: Mark Tseng <chun-jen.tseng@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<chun-jen.tseng@mediatek.com>
-Subject: [PATCH] arm64: dts: mediatek: mt8186: change CCI OPP scaling mapping
-Date: Mon, 11 Sep 2023 16:09:27 +0800
-Message-ID: <20230911080927.17457-1-chun-jen.tseng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1qfc1V-00HW4Y-2D;
+	Mon, 11 Sep 2023 08:11:59 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38B6Kt4L029455;
+	Mon, 11 Sep 2023 08:11:30 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=LJRWy4EBcDX+2fQ69zfLKOyX3UcEFlR6a3yY/ct/VgI=;
+ b=pEeFkUVCpv2qEzwfidDZAx+0LELN0qLyQHGgwmeRAFInM5TB/wWAOMXpGagZMheugZgK
+ UCeRyBzoD6XKujNK89yflIxo6jsR95vB2Lt7K5O/OzDpMhcDYTKlq4QvsHPHxziq5YhG
+ 2at0lcMkm+kOtTVMfoC5sGuHqnIoKgsHgiWRUKi5Pw+2MtoHyPUM7zgYB4pmRbzcOC9B
+ QnzXOZbJ47glnhA/n9OPPjB/Bhfpq8jx+X2aelu0g0+uvuTCX0sVPTuQYOwgpj+on8dN
+ +Tg14HPjA6Cy91uGc0WBSZyto2fhNRb9nla3uo7PS36K7XBhp+qXXIkOS7hmnueqQeTA mw== 
+Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t1whx87qh-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 11 Sep 2023 08:11:29 +0000
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38B8BPhO007718
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 11 Sep 2023 08:11:25 GMT
+Received: from [10.201.2.96] (10.80.80.8) by nalasex01a.na.qualcomm.com
+ (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Mon, 11 Sep
+ 2023 01:11:13 -0700
+Message-ID: <9ab47979-e06f-475d-b1ea-239e3238b2d6@quicinc.com>
+Date: Mon, 11 Sep 2023 13:41:09 +0530
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--5.027300-8.000000
-X-TMASE-MatchedRID: /BnZajOwp9c77EsBOi8++riMC5wdwKqdMZm0+sEE9msZs8aIepa/RnTv
-	v/bTZRlo1rH4Rg0AOT2N6fDbnTu0nx8TzIzimOwPC24oEZ6SpSkj80Za3RRg8EzLGtcUyG9kVBW
-	ulG+2IksTqMpkTCkeGqC8ayqaa9oyZnYyx+3zDYE=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--5.027300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 76E66E642CD04C75C9B5E2BAFB56464D44FBF6D8AF957EEB7C525FFBCD04261C2000:8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 15/17] firmware: scm: Modify only the download bits in
+ TCSR register
+Content-Language: en-US
+To: Mukesh Ojha <quic_mojha@quicinc.com>, <corbet@lwn.net>,
+        <agross@kernel.org>, <andersson@kernel.org>,
+        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
+        <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
+        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
+        <will@kernel.org>, <linus.walleij@linaro.org>,
+        <andy.shevchenko@gmail.com>, <vigneshr@ti.com>, <nm@ti.com>,
+        <matthias.bgg@gmail.com>, <kgene@kernel.org>,
+        <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
+        <quic_tsoni@quicinc.com>
+CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-msm@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
+        <linux-remoteproc@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+        <linux-mediatek@lists.infradead.org>,
+        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
+References: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
+ <1694290578-17733-16-git-send-email-quic_mojha@quicinc.com>
+From: Kathiravan Thirumoorthy <quic_kathirav@quicinc.com>
+In-Reply-To: <1694290578-17733-16-git-send-email-quic_mojha@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: F8oJO76h15tpNbGss0yrj5eRmlvtP48O
+X-Proofpoint-ORIG-GUID: F8oJO76h15tpNbGss0yrj5eRmlvtP48O
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-09-11_06,2023-09-05_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 malwarescore=0
+ suspectscore=0 impostorscore=0 phishscore=0 adultscore=0 mlxlogscore=999
+ bulkscore=0 lowpriorityscore=0 spamscore=0 priorityscore=1501
+ clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2308100000 definitions=main-2309110074
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_010942_448358_B5DB2A40 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230911_011157_734838_553A493D 
+X-CRM114-Status: GOOD (  22.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,146 +112,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The original CCI OPP table minimum frequency 500Mhz is too low to cause
-system stall, So it need update to new version, 1.4G ~ 1.05G.
 
-Fixes: 32dfbc03fc26 ("arm64: dts: mediatek: mt8186: Add CCI node and CCI OPP table")
+On 9/10/2023 1:46 AM, Mukesh Ojha wrote:
+> Crashdump collection is based on the DLOAD bit of TCSR register.
+> To retain other bits, we read the register and modify only the
+> DLOAD bit as the other bits have their own significance.
+>
+> Co-developed-by: Poovendhan Selvaraj <quic_poovendh@quicinc.com>
+> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+> ---
 
-Signed-off-by: Mark Tseng <chun-jen.tseng@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 90 ++++++++++++------------
- 1 file changed, 45 insertions(+), 45 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index f04ae70c470a..b98832d032eb 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -39,79 +39,79 @@
- 		compatible = "operating-points-v2";
- 		opp-shared;
- 
--		cci_opp_0: opp-500000000 {
--			opp-hz = /bits/ 64 <500000000>;
--			opp-microvolt = <600000>;
-+		cci_opp_0: opp-1050000000 {
-+			opp-hz = /bits/ 64 <1050000000>;
-+			opp-microvolt = <843750>;
- 		};
- 
--		cci_opp_1: opp-560000000 {
--			opp-hz = /bits/ 64 <560000000>;
--			opp-microvolt = <675000>;
-+		cci_opp_1: opp-1073000000 {
-+			opp-hz = /bits/ 64 <1073000000>;
-+			opp-microvolt = <850000>;
- 		};
- 
--		cci_opp_2: opp-612000000 {
--			opp-hz = /bits/ 64 <612000000>;
--			opp-microvolt = <693750>;
-+		cci_opp_2: opp-1096000000 {
-+			opp-hz = /bits/ 64 <1096000000>;
-+			opp-microvolt = <856250>;
- 		};
- 
--		cci_opp_3: opp-682000000 {
--			opp-hz = /bits/ 64 <682000000>;
--			opp-microvolt = <718750>;
-+		cci_opp_3: opp-1120000000 {
-+			opp-hz = /bits/ 64 <1120000000>;
-+			opp-microvolt = <862500>;
- 		};
- 
--		cci_opp_4: opp-752000000 {
--			opp-hz = /bits/ 64 <752000000>;
--			opp-microvolt = <743750>;
-+		cci_opp_4: opp-1143000000 {
-+			opp-hz = /bits/ 64 <1143000000>;
-+			opp-microvolt = <881250>;
- 		};
- 
--		cci_opp_5: opp-822000000 {
--			opp-hz = /bits/ 64 <822000000>;
--			opp-microvolt = <768750>;
-+		cci_opp_5: opp-1166000000 {
-+			opp-hz = /bits/ 64 <1166000000>;
-+			opp-microvolt = <893750>;
- 		};
- 
--		cci_opp_6: opp-875000000 {
--			opp-hz = /bits/ 64 <875000000>;
--			opp-microvolt = <781250>;
-+		cci_opp_6: opp-1190000000 {
-+			opp-hz = /bits/ 64 <1190000000>;
-+			opp-microvolt = <906250>;
- 		};
- 
--		cci_opp_7: opp-927000000 {
--			opp-hz = /bits/ 64 <927000000>;
--			opp-microvolt = <800000>;
-+		cci_opp_7: opp-1213000000 {
-+			opp-hz = /bits/ 64 <1213000000>;
-+			opp-microvolt = <918750>;
- 		};
- 
--		cci_opp_8: opp-980000000 {
--			opp-hz = /bits/ 64 <980000000>;
--			opp-microvolt = <818750>;
-+		cci_opp_8: opp-1236000000 {
-+			opp-hz = /bits/ 64 <1236000000>;
-+			opp-microvolt = <937500>;
- 		};
- 
--		cci_opp_9: opp-1050000000 {
--			opp-hz = /bits/ 64 <1050000000>;
--			opp-microvolt = <843750>;
-+		cci_opp_9: opp-1260000000 {
-+			opp-hz = /bits/ 64 <1260000000>;
-+			opp-microvolt = <950000>;
- 		};
- 
--		cci_opp_10: opp-1120000000 {
--			opp-hz = /bits/ 64 <1120000000>;
--			opp-microvolt = <862500>;
-+		cci_opp_10: opp-1283000000 {
-+			opp-hz = /bits/ 64 <1283000000>;
-+			opp-microvolt = <962500>;
- 		};
- 
--		cci_opp_11: opp-1155000000 {
--			opp-hz = /bits/ 64 <1155000000>;
--			opp-microvolt = <887500>;
-+		cci_opp_11: opp-1306000000 {
-+			opp-hz = /bits/ 64 <1306000000>;
-+			opp-microvolt = <975000>;
- 		};
- 
--		cci_opp_12: opp-1190000000 {
--			opp-hz = /bits/ 64 <1190000000>;
--			opp-microvolt = <906250>;
-+		cci_opp_12: opp-1330000000 {
-+			opp-hz = /bits/ 64 <1330000000>;
-+			opp-microvolt = <993750>;
- 		};
- 
--		cci_opp_13: opp-1260000000 {
--			opp-hz = /bits/ 64 <1260000000>;
--			opp-microvolt = <950000>;
-+		cci_opp_13: opp-1353000000 {
-+			opp-hz = /bits/ 64 <1353000000>;
-+			opp-microvolt = <1006250>;
- 		};
- 
--		cci_opp_14: opp-1330000000 {
--			opp-hz = /bits/ 64 <1330000000>;
--			opp-microvolt = <993750>;
-+		cci_opp_14: opp-1376000000 {
-+			opp-hz = /bits/ 64 <1376000000>;
-+			opp-microvolt = <1018750>;
- 		};
- 
- 		cci_opp_15: opp-1400000000 {
--- 
-2.18.0
+This change doesn't cleanly apply on next-20230911. Please rebase it.
 
+Validated this change on IPQ9574 and IPQ5332 and system is entering into 
+the download mode.
+
+Tested-by: Kathiravan Thirumoorthy <quic_kathirav@quicinc.com> # IPQ9574 
+and IPQ5332
+
+
+>   drivers/firmware/qcom_scm.c | 12 ++++++++++--
+>   1 file changed, 10 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/firmware/qcom_scm.c b/drivers/firmware/qcom_scm.c
+> index 5ea8fc4fd4e8..eda92f713019 100644
+> --- a/drivers/firmware/qcom_scm.c
+> +++ b/drivers/firmware/qcom_scm.c
+> @@ -5,6 +5,8 @@
+>   #include <linux/platform_device.h>
+>   #include <linux/init.h>
+>   #include <linux/interrupt.h>
+> +#include <linux/bitfield.h>
+> +#include <linux/bits.h>
+>   #include <linux/completion.h>
+>   #include <linux/cpumask.h>
+>   #include <linux/export.h>
+> @@ -30,6 +32,10 @@ module_param(download_mode, bool, 0);
+>   #define SCM_HAS_IFACE_CLK	BIT(1)
+>   #define SCM_HAS_BUS_CLK		BIT(2)
+>   
+> +#define QCOM_DLOAD_MASK		GENMASK(5, 4)
+> +#define QCOM_DLOAD_FULLDUMP	0x1
+> +#define QCOM_DLOAD_NODUMP	0x0
+> +
+>   struct qcom_scm {
+>   	struct device *dev;
+>   	struct clk *core_clk;
+> @@ -444,6 +450,7 @@ static int __qcom_scm_set_dload_mode(struct device *dev, bool enable)
+>   
+>   static void qcom_scm_set_download_mode(bool enable)
+>   {
+> +	u32 val = enable ? QCOM_DLOAD_FULLDUMP : QCOM_DLOAD_NODUMP;
+>   	bool avail;
+>   	int ret = 0;
+>   
+> @@ -453,8 +460,9 @@ static void qcom_scm_set_download_mode(bool enable)
+>   	if (avail) {
+>   		ret = __qcom_scm_set_dload_mode(__scm->dev, enable);
+>   	} else if (__scm->dload_mode_addr) {
+> -		ret = qcom_scm_io_writel(__scm->dload_mode_addr,
+> -				enable ? QCOM_SCM_BOOT_SET_DLOAD_MODE : 0);
+> +		ret = qcom_scm_io_update_field(__scm->dload_mode_addr,
+> +					       QCOM_DLOAD_MASK,
+> +					       FIELD_PREP(QCOM_DLOAD_MASK, val));
+>   	} else {
+>   		dev_err(__scm->dev,
+>   			"No available mechanism for setting download mode\n");
 
