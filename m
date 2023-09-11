@@ -4,61 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05F62EE7FF4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 10:54:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54C7BEE7FF4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 10:55:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zGnItAZ5Y73mezR2PoXBSScT3FaAj2yQZBN9eCn9dGI=; b=PL1iDjjwTiqMxu+J6Uzh98gutp
-	GhPrgrcvZ/0VNpJ1jitwkaswnTXIK3Qva8SxZ6lXqlod5jPHMeVJKJnsIqjN+5dRnQuCgXvnrAXdp
-	mhJ7ha18lVq7ouYdEh8VigdeQHopSB8PJKZso9KKwsgOn94GTygBFwcZnzkuhpe810FDvRxGrD9XS
-	BRz4U+7mu27CsulQlMqQaRIglctnmAxcHNtOMr5UNONBjF435H9nzodyvso8PQhzo3Ds5rwGZtcF+
-	AD+9/ggElqANnYFhP1oT328/uuABzsZT59DfPXFEqMybSMfHZt5TSCb0odjfph3olj+dOb4KRUfRG
-	q6K2B4Ng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=49o9zucSKuGQ1AiOje8qadCYI8PAiPmeE9VJvkYewfc=; b=FbIaXUNB6fOxdIwpRZuAE9ACJJ
+	/S5UUzRGvZkH1nH9zELRpbhf/bi95etZP8TOL42DkQ4GBWoOSzTsVwQTcvEGdSRmnrKFXms0dPDmZ
+	+XDK6uN5KlKdfmgbsfiCCqqzWfvkN6v9JkGH3Q4tWmos1uHNWTgP0MDNceVJNSBESajB8BGb1C4Xi
+	4UVuqQlPR8CGuB6uC2MMJwDQr4nsXsCCtZipLN5nfWd4vvfKv3lsdBwcqNFn6A0uM/4vMLvivbzF/
+	lUJ7J845yBLdicTCtPP3CZ9rG2Q0MbxrbMKK+echefX/drrlVTusPzvjGKcQzhpTUXang0IMnFyxq
+	uYOV4VXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfeZ9-000JHl-0K;
-	Mon, 11 Sep 2023 10:54:51 +0000
+	id 1qfeZb-000JNX-0k;
+	Mon, 11 Sep 2023 10:55:19 +0000
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfeZ5-000JGe-2v;
-	Mon, 11 Sep 2023 10:54:49 +0000
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38B9gROX030546;
-	Mon, 11 Sep 2023 10:54:26 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=zGnItAZ5Y73mezR2PoXBSScT3FaAj2yQZBN9eCn9dGI=;
- b=TrQX8p7O3qTnIyzoqf8Ht7HvBmpZMckGWmJdM0AvxMQKWE+BR8zajcgelEOYg3AT3C9k
- odK7xicFvsfiqM/Jre7Lqp8jLKws4COrFo77ecGG+1F6Oh3jNHnNgtCQw7uJ+AMeFMrQ
- jU8LJGv5QzyL7dSgDueQ0XXuskiDlDqAJrkLb6dRbBtTM1DqXgAdyyH65HxHo4UVcQMX
- KLlVT6zmVVxLe7ihH/GE5yEw1EkAo4PGJTa8s2rc0ynPQdZp2LZf3iaRG64voxAmYzPH
- K7PBb44zySVdFd7TxKfpKDFvMqEu/nhwDEuNYUBFw0myjQNrZ/fkCVV7XE4YL5Gq9JDP uA== 
-Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t1xkjre8d-1
+	id 1qfeZZ-000JMB-0p;
+	Mon, 11 Sep 2023 10:55:18 +0000
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38B8NSYd004164;
+	Mon, 11 Sep 2023 10:55:02 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type; s=qcppdkim1;
+ bh=49o9zucSKuGQ1AiOje8qadCYI8PAiPmeE9VJvkYewfc=;
+ b=diCrvxhhkzSOrFnfwTOgd6nKzMkmwFG1QQTBt3tKxxxGFnHQRwuTEgiJhBn1faWxpjPF
+ p4UNpYQKUg4yCDuZAwCkC+xIRbCOn/C/PYjgEHRXl6USTjvtqBP3ZMFN2ubECA9g5JhK
+ ngviTPUtKeq7xmzbE5Ie3Etfr2jplXRDI5iEjDNHzKyITIEgyVnY79Ul7gyZISKoCfId
+ 7W4CMTHvD69MWk9kTq4OE9XGB/C7dI58G+nqB+gAC0BykspZ8SgwfViZawUt35wmulqs
+ nvYga555KR8UxvMqYAW2FqfNr/e0fiVdJ0tLgpprVSLREnAtcuZsm+NQC8hiGF6XjLRd 6Q== 
+Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t1yac8bnt-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Sep 2023 10:54:25 +0000
+	Mon, 11 Sep 2023 10:55:02 +0000
 Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38BArNJc014747
+	by NASANPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38BAt1uN032425
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Sep 2023 10:54:21 GMT
-Received: from [10.214.66.81] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Mon, 11 Sep
- 2023 03:51:47 -0700
-Message-ID: <35c9d1b1-0f48-b873-d703-c880f3b91422@quicinc.com>
-Date: Mon, 11 Sep 2023 16:21:44 +0530
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v5 09/17] pstore/ram: Use dynamic ramoops reserve resource
-Content-Language: en-US
-To: Pavan Kondeti <quic_pkondeti@quicinc.com>
-CC: <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
+	Mon, 11 Sep 2023 10:55:01 GMT
+Received: from hu-mojha-hyd.qualcomm.com (10.80.80.8) by
+ nasanex01c.na.qualcomm.com (10.45.79.139) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.36; Mon, 11 Sep 2023 03:54:36 -0700
+From: Mukesh Ojha <quic_mojha@quicinc.com>
+To: <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
         <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
         <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
         <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
@@ -67,37 +60,40 @@ CC: <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
         <andy.shevchenko@gmail.com>, <vigneshr@ti.com>, <nm@ti.com>,
         <matthias.bgg@gmail.com>, <kgene@kernel.org>,
         <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
-        <quic_tsoni@quicinc.com>, <linux-doc@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-        <linux-hardening@vger.kernel.org>, <linux-remoteproc@vger.kernel.org>,
+        <quic_tsoni@quicinc.com>
+CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-msm@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
+        <linux-remoteproc@vger.kernel.org>,
         <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
         <linux-mediatek@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
-References: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
- <1694290578-17733-10-git-send-email-quic_mojha@quicinc.com>
- <20425ace-3ef5-4eaf-8319-999bafa34a07@quicinc.com>
-From: Mukesh Ojha <quic_mojha@quicinc.com>
-In-Reply-To: <20425ace-3ef5-4eaf-8319-999bafa34a07@quicinc.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>,
+        <quic_mojha@quicinc.com>
+Subject: [REBASE PATCH v5 03/17] remoteproc: qcom_q6v5_pas: Use qcom_rproc_minidump()
+Date: Mon, 11 Sep 2023 16:23:45 +0530
+Message-ID: <1694429639-21484-4-git-send-email-quic_mojha@quicinc.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
+References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
+MIME-Version: 1.0
+Content-Type: text/plain
 X-Originating-IP: [10.80.80.8]
 X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
  nasanex01c.na.qualcomm.com (10.45.79.139)
 X-QCInternal: smtphost
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: Wi2REeSTnAgDa98w0pTipeomyJ0cJ4JQ
-X-Proofpoint-ORIG-GUID: Wi2REeSTnAgDa98w0pTipeomyJ0cJ4JQ
+X-Proofpoint-ORIG-GUID: wBFDccvzK8YbGiq6XWn6dnRXqce4h34I
+X-Proofpoint-GUID: wBFDccvzK8YbGiq6XWn6dnRXqce4h34I
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
  definitions=2023-09-11_06,2023-09-05_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015 impostorscore=0
- suspectscore=0 phishscore=0 spamscore=0 lowpriorityscore=0 bulkscore=0
- adultscore=0 malwarescore=0 mlxlogscore=999 mlxscore=0 priorityscore=1501
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 mlxscore=0
+ spamscore=0 mlxlogscore=999 priorityscore=1501 bulkscore=0 suspectscore=0
+ clxscore=1015 adultscore=0 malwarescore=0 lowpriorityscore=0 phishscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2308100000
  definitions=main-2309110099
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_035448_059828_0DE3297E 
-X-CRM114-Status: GOOD (  23.41  )
+X-CRM114-CacheID: sfid-20230911_035517_408561_2091EBA1 
+X-CRM114-Status: GOOD (  17.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,61 +108,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Now, as all the minidump specific data structure is moved to
+minidump specific files and implementation wise qcom_rproc_minidump()
+and qcom_minidump() exactly same and the name qcom_rproc_minidump
+make more sense as it happen to collect the minidump for the
+remoteproc processors. So, let's use qcom_rproc_minidump() and
+we will be removing qcom_minidump() and minidump related stuff
+from driver/remoteproc/qcom_common.c .
 
+Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+---
+ drivers/remoteproc/Kconfig         | 1 +
+ drivers/remoteproc/qcom_q6v5_pas.c | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-On 9/11/2023 11:03 AM, Pavan Kondeti wrote:
-> On Sun, Sep 10, 2023 at 01:46:10AM +0530, Mukesh Ojha wrote:
->> As dynamic ramoops command line parsing is now added, so
->> lets add the support in ramoops driver to get the resource
->> structure and add it during platform device registration.
->>
->> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
->> ---
->>   fs/pstore/ram.c | 10 +++++++---
->>   1 file changed, 7 insertions(+), 3 deletions(-)
->>
-> 
-> Documentation/admin-guide/ramoops.rst might need an update as well.
+diff --git a/drivers/remoteproc/Kconfig b/drivers/remoteproc/Kconfig
+index 48845dc8fa85..cea960749e2c 100644
+--- a/drivers/remoteproc/Kconfig
++++ b/drivers/remoteproc/Kconfig
+@@ -166,6 +166,7 @@ config QCOM_PIL_INFO
+ 
+ config QCOM_RPROC_COMMON
+ 	tristate
++	select QCOM_RPROC_MINIDUMP
+ 
+ config QCOM_Q6V5_COMMON
+ 	tristate
+diff --git a/drivers/remoteproc/qcom_q6v5_pas.c b/drivers/remoteproc/qcom_q6v5_pas.c
+index b5447dd2dd35..b0c766870524 100644
+--- a/drivers/remoteproc/qcom_q6v5_pas.c
++++ b/drivers/remoteproc/qcom_q6v5_pas.c
+@@ -25,6 +25,7 @@
+ #include <linux/soc/qcom/mdt_loader.h>
+ #include <linux/soc/qcom/smem.h>
+ #include <linux/soc/qcom/smem_state.h>
++#include <soc/qcom/qcom_minidump.h>
+ 
+ #include "qcom_common.h"
+ #include "qcom_pil_info.h"
+@@ -131,7 +132,7 @@ static void adsp_minidump(struct rproc *rproc)
+ 	if (rproc->dump_conf == RPROC_COREDUMP_DISABLED)
+ 		return;
+ 
+-	qcom_minidump(rproc, adsp->minidump_id, adsp_segment_dump);
++	qcom_rproc_minidump(rproc, adsp->minidump_id, adsp_segment_dump);
+ }
+ 
+ static int adsp_pds_enable(struct qcom_adsp *adsp, struct device **pds,
+-- 
+2.7.4
 
-I have said in the cover-letter under changes in v5, it is open for
-comment and not yet documented it yet.
-
-> 
->> diff --git a/fs/pstore/ram.c b/fs/pstore/ram.c
->> index 2f625e1fa8d8..e73fbbc1b5b5 100644
->> --- a/fs/pstore/ram.c
->> +++ b/fs/pstore/ram.c
->> @@ -913,13 +913,17 @@ static void __init ramoops_register_dummy(void)
->>   
->>   	/*
->>   	 * Prepare a dummy platform data structure to carry the module
->> -	 * parameters. If mem_size isn't set, then there are no module
->> -	 * parameters, and we can skip this.
->> +	 * parameters. If mem_size isn't set, check for dynamic ramoops
->> +	 * size and extract the information if it is set.
->>   	 */
->> -	if (!mem_size)
->> +	if (!mem_size && !dyn_ramoops_res.end)
->>   		return;
->>   
->>   	pr_info("using module parameters\n");
->> +	if (dyn_ramoops_res.end) {
->> +		mem_size = resource_size(&dyn_ramoops_res);
->> +		mem_address = dyn_ramoops_res.start;
->> +	}
->>   
->>   	memset(&pdata, 0, sizeof(pdata));
->>   	pdata.mem_size = mem_size;
-> 
-> You might want to add "arch_" prefix to dyn_ramoops resource so that it
-> would be clear that it is coming from arch code. This code needs to
-> guard against arch not supplying this.
-
-Sure, thanks for pointing this.
-Agree, if we finally decide to keep it in arch/arm64 .
-
--Mukesh
-> 
-> Thanks,
-> Pavan
 
