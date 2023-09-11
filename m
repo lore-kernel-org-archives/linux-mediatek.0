@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88595EE7FF4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 11:14:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E9FCEE57DF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 11:28:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZaWbUXKbArKaT/v6WUj84XJxG7G9d8SLqBNmAEfKuu4=; b=T0xSfQCOANJFFMYMsLKhERKOpt
-	5uqNKmkIXh4gbR+v4ZgbJusZrG12j2dQtuL48CqQ2yC9QGdn982KFhYbG3AQav+jDIFZwdpUtvrY8
-	H/YCOYchKnEboi7HtG5SSprgvB+fmJpxpl6skLRiCLFVqd66h1qEnz4MCExoyt4kxXGTqMgNnGjnC
-	4sqEZjjsYCVt0n/XERbAJYQYqMmiqtNGYrK8jo4qRlZ3xCACWIwJKpIE1wvgzX9v00KqUsHZVPDgJ
-	tOVB6xSalUR8FTnxLV5BmIv1UkzGLloXWxH4nKFaW57MTsCuJD5eASUE26H9UkP7kHcKL2v+LDvJ7
-	7G+RH9fQ==;
+	bh=KdzItYYvpLhk0RUpyByyeIWLhyBqC2CZWQ/5OZgtUDM=; b=kpskmO+79a/6yzXD4DZonoEdX6
+	XVDgPjgPjuz9GkaYC/K9gYr5GtsGxgzQQ9FqSZ6tUqAn9K8qrgqSTc0+2mYARok21Uy4U13ppjQNf
+	L7pi8Bqm3UQ+BbnC3zFaDvRAXwLlscH9AFDGHZC9yaaNbxgXhmIFc1q1rtpb/P71FQo5I+2hST2+z
+	Cth0IJ6XOflzC1YRKgb/v6oV2TcZHAPE3GOp29KwkSYZ/ulXpNUt5TC9Kq/UxokXhMDJkwtliz4ei
+	tyxafCpPZXTEvaF3XMJuifwpz/jqKEFxz/YYKZpmRMRe3t5wheiuEVrmhgJVTtZem3wAM56ZZWhIC
+	Tq52pvIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfesK-000MgU-1i;
-	Mon, 11 Sep 2023 11:14:40 +0000
+	id 1qff5y-000Nj9-2Q;
+	Mon, 11 Sep 2023 11:28:46 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfesH-000Mfw-13;
-	Mon, 11 Sep 2023 11:14:38 +0000
+	id 1qff5v-000NiZ-2U;
+	Mon, 11 Sep 2023 11:28:45 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0103366072FB;
-	Mon, 11 Sep 2023 12:14:34 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 655AC6600BB0;
+	Mon, 11 Sep 2023 12:28:41 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694430875;
-	bh=wCziWKBrYCLn+iQllKVDANcEQ7lNKBoWAymVUANwCco=;
+	s=mail; t=1694431722;
+	bh=VCO8hFhrrVLv5Zdp1yxb+bem6zXtstRZklPiz0+rgd4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SafZm5o+3vl+C1n72vNwCoE59yHGvzAv4GZYMCY2dItGKGNjoUT/kMolJ0AzxDvs5
-	 IV4MBnajK0v+Xv0Ihvttsz5UTUsInsIyqDlnxhJ/z0hfsKWsk5PVYPNQFIpxiIT7j7
-	 LG/J2GH54leijlCRY5QwmKYWRpNWCzrY6HNEniTYQO6/ZOw7wWBouz8Ukd9eRmtxtA
-	 GecTzamVoYEOk0RGABMREFtAOZD8/SMqEQA5Nuy90iBf9qdNVba8ivmywVNI/YMgHG
-	 Sx3wE4XbtQljCEeJ3OJFDdI3XsmQZZayKSyVopWccc7ksZmUbzQgDDqGHGGNIv1Tf/
-	 bTobRshmTPG/w==
-Message-ID: <5146679e-3ae8-edc7-69f9-c89ca1e7199b@collabora.com>
-Date: Mon, 11 Sep 2023 13:14:33 +0200
+	b=Uk2qcLfxmAsXKNnobr9UNWX4/Ixh2BMKHQizFVNm6y/5eJw/LNhXRmE076AoXbeb2
+	 KNz58L4dve0LM/UXPpGDrjBwXVKxXhvw5P51AwyLvh34KSGxD69kIsN7LM8j2PMSK5
+	 MCajBCmrgbPfeIyr+6ETuuxKdVDc5Z7o7JyCLuDorWYeeCLWNdzAWi9grFLIG2fc9K
+	 BUgSM7KUdFx0SzGwjsKUaFaGbVzCKVtCoevH40yqAHtKO4GrsosIXsrvaShGuwSdym
+	 M7iAZg7SgY7HvPozqZvAaTCiS6RG/8j8mlBLA469IM0D8cBMMH222+BFB49eTZC+kW
+	 wWrOP2B9rYW3A==
+Message-ID: <247d0b44-9359-2682-7e64-313eb1dd3e67@collabora.com>
+Date: Mon, 11 Sep 2023 13:28:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH v3,1/3] dt-bindings: display: mediatek: dsi: Add
- compatible for MediaTek MT8188
+Subject: Re: [RESEND PATCH v6 20/20] drm/mediatek: Set DPI input to 1T2P mode
 Content-Language: en-US
-To: Shuijing Li <shuijing.li@mediatek.com>, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, jitao.shi@mediatek.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
+To: Hsiao Chien Sung <shawn.sung@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-References: <20230911105736.11752-1-shuijing.li@mediatek.com>
- <20230911105736.11752-2-shuijing.li@mediatek.com>
+ Singo Chang <singo.chang@mediatek.com>, "Nancy . Lin"
+ <nancy.lin@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>
+References: <20230911074233.31556-1-shawn.sung@mediatek.com>
+ <20230911074233.31556-21-shawn.sung@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230911105736.11752-2-shuijing.li@mediatek.com>
+In-Reply-To: <20230911074233.31556-21-shawn.sung@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_041437_500962_66732A32 
-X-CRM114-Status: UNSURE (   6.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230911_042843_958640_ED5F57E0 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,15 +85,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/09/23 12:57, Shuijing Li ha scritto:
-> Add dt-binding documentation of dsi for MediaTek MT8188 SoC.
+Il 11/09/23 09:42, Hsiao Chien Sung ha scritto:
+> DPI input is in 1T2P mode on MT8195,
+> align the setting of MT8188 with it,
+> otherwise the screen will glitch.
 > 
-> Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+First of all, this commit needs a Fixes tag... but then, instead of getting a
+1:1 duplicate of mt8195_dpintf_conf you can, at this point, entirely remove
+mt8188_dpintf_conf and assign the 8195 one to the 8188 compatible: please do so.
 
+Thanks,
+Angelo
+
+> ---
+>   drivers/gpu/drm/mediatek/mtk_dpi.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index 2f931e4e2b60..c6ee21e275ba 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -963,7 +963,7 @@ static const struct mtk_dpi_conf mt8188_dpintf_conf = {
+>   	.output_fmts = mt8195_output_fmts,
+>   	.num_output_fmts = ARRAY_SIZE(mt8195_output_fmts),
+>   	.pixels_per_iter = 4,
+> -	.input_2pixel = false,
+> +	.input_2pixel = true,
+>   	.dimension_mask = DPINTF_HPW_MASK,
+>   	.hvsize_mask = DPINTF_HSIZE_MASK,
+>   	.channel_swap_shift = DPINTF_CH_SWAP,
+> --
+> 2.18.0
+> 
 
 
