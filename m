@@ -4,77 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AF81CA0EF5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 17:02:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F075EE3F0B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 18:09:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vRAiF2M35t3Fm1RfL1jFJ56QIK7x1hfc6+XjzpyfZN4=; b=SAVRSDkW7mgzTIBxd4MXqXYZ9M
-	lsOfCBXdJBPWUTqgU5GnkEOQ6PEBKZespcrGe67kDyDfKDux6YeGDCwbkG1JxdNZ+wWvsJfz6X60N
-	1QY6bRTW6e717Cq9vS2FHNk4UNZVB8y+5vjG9LgOMuMKCQTc+JbpmG5mxcJOj+FDlU96YLKMNZ0S9
-	jhoeaVICigjK5+ky/kK5yhSr9lcmNBZ7Ec6jyRBNPUD/PWdZ48CMKiHPGhCm9B6kgi8ZBMR1PR8PL
-	zSd+R0tRKK7LxKzbyRcBQMCimYd2F2r6pCzuFo0FfdXy7FqZ1ZtAaAoLflm2ljWp9BaHPU9pO5w10
-	KJS/2bAQ==;
+	bh=ebct1hV/RgqEi3G8NEb85BwUFcGmivlVqkSEYtB7E84=; b=wbBx0nui2yrRNAa4jKdxzsIYDr
+	zdAkmllxqBDCshu9GKBYtsQuWQd2uij5DUnqSkDSB3hShNVFGEhvlIyFEdHpSpSOB8ccTowU5d+AY
+	qq+EQw01CU88LbNnjccab+dTIrrnGCg5M+tVX7l/HnznjSWkCmri3/TJI4S2CdU9ghRIuX7lEDlJ9
+	JsYOFVKY77nBCOvsTPEoYRsgGKuzIyKrSyuXTnKRStzf52Zs/PHDmkrJ3PBSSilRDKAgbosWe0RRf
+	EjGNrQwDEQk21OpqHGBHGMmCtL7zdl8bFwsBq85IuTjXMB2hecKB5ClWCOIzQaRizSOwzEpUFJ7Sl
+	8rFor7Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg6m3-003shA-0R;
-	Tue, 12 Sep 2023 17:02:03 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qg7pW-003yE7-2y;
+	Tue, 12 Sep 2023 18:09:42 +0000
+Received: from relay3-d.mail.gandi.net ([217.70.183.195])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg6m0-003sgV-1T
-	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Sep 2023 17:02:01 +0000
-Received: from [192.168.0.106] (unknown [186.235.7.101])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: koike)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CFD3066072B4;
-	Tue, 12 Sep 2023 18:01:51 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694538119;
-	bh=sm5+is+zMEhHqe7EnrHHFL2UbWWzWkGkszkqR/V7AI0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LalD6Suk+Ksvjr+uEeVaKamf2/KVIIRDW+wLkOZj1Iu7g9MT2nSVHIFwGDcF6N5Ua
-	 P7EwJ6QhNOmhMxS0DOZfWAcY6sngRbfeRwdVyeS+TRPKOJAHu1svXPveHbTjiYDJlD
-	 0dXZ84byE0SmIZ9GyyIMXwKxDJ7nfxdh64VClNiDXQR1IHqO9RuuZkU0l4sA9L9dPE
-	 s1raH+ZGKw8GAXouxv3XUTfm/wHJS7YswMT0esnSAYoYBDgIxk5o6WDsaP9NtVu8E6
-	 Ur5FeEB/ctyIG8LYdtz84KMlh8ewDG0eW6P/AW7vpyO7ceojFdsFlEaS3szgs1CQc0
-	 miKMaoyVbaWmg==
-Message-ID: <c7b0b363-c3cf-248b-678a-11bbb6d4503d@collabora.com>
-Date: Tue, 12 Sep 2023 14:01:46 -0300
+	id 1qg7pT-003yCk-1z;
+	Tue, 12 Sep 2023 18:09:41 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id C195860003;
+	Tue, 12 Sep 2023 18:09:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1694542170;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ebct1hV/RgqEi3G8NEb85BwUFcGmivlVqkSEYtB7E84=;
+	b=bLDN1UcL4lDbDZC7UtcXdfNNI2aazGi4BK5dwc8jUl8hHQKfsBufLYWWkQ8XuEfvVfwEMX
+	JxeSJ5bxnE3LwxC+IUOaeimN504A2Mg+d2k9DIi5aUwuCFodceuQuPOogiVoXbDEJLdNn2
+	hF03LR1k8ZDfrm9y6zYqPCtOEG38s3cSN/bDXEMSdCvmNZb2rgwAKxQjRpu2XtGQC2JK89
+	7aYvdOK4tn/WwjD4X7Z8FU7QA4F7hRPo6I6tedcbjFu4N0EnP8pzW3WzMJ66F9p/Yh80jx
+	3cxayY4bfeZ6FEkpd9rQI85yxm4MS9L5Oqsi9HkyIHgqOkYJXnLfRi3ctWN+1Q==
+Message-ID: <c2eb0222-2503-4d55-80f7-80ec7122b6ba@arinc9.com>
+Date: Tue, 12 Sep 2023 21:09:07 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v3 9/9] drm: ci: Use scripts/config to enable/disable
- configs
-Content-Language: en-US
-To: Vignesh Raman <vignesh.raman@collabora.com>,
- dri-devel@lists.freedesktop.org
-Cc: guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- david.heidelberg@collabora.com, daniels@collabora.com,
- gustavo.padovan@collabora.com, angelogioacchino.delregno@collabora.com,
- emma@anholt.net, robclark@freedesktop.org, robdclark@google.com,
- anholt@google.com, robdclark@gmail.com, airlied@gmail.com, daniel@ffwll.ch,
- jani.nikula@linux.intel.com, mripard@kernel.org,
- dmitry.baryshkov@linaro.org, matthias.bgg@gmail.com, agross@kernel.org,
- andersson@kernel.org, konrad.dybcio@linaro.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+User-Agent: Mozilla Thunderbird
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Vladimir Oltean <olteanv@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Woojung Huh <woojung.huh@microchip.com>,
+ UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+ Daniel Golle <daniel@makrotopia.org>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- virtualization@lists.linux-foundation.org, linux-arm-msm@vger.kernel.org
-References: <20230908152225.432139-1-vignesh.raman@collabora.com>
- <20230908152225.432139-10-vignesh.raman@collabora.com>
-From: Helen Koike <helen.koike@collabora.com>
-In-Reply-To: <20230908152225.432139-10-vignesh.raman@collabora.com>
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <20230813112026.ohsx6srbt2staxma@skbuf>
+ <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
+ <20230813190157.4y3zoro53qsz43pe@skbuf>
+ <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
+ <20230814143601.mnpxtcm2zybnbvoh@skbuf>
+ <0cee0928-74c9-4048-8cd8-70bfbfafd9b2@arinc9.com>
+ <20230827121235.zog4c3ehu2cyd3jy@skbuf>
+ <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
+ <87325ce9-595a-4dda-a6a1-b5927d25719b@arinc9.com>
+ <71f7c475-e111-4e4b-9e8f-4c8a6bf6bc34@lunn.ch>
+Content-Language: en-US
+In-Reply-To: <71f7c475-e111-4e4b-9e8f-4c8a6bf6bc34@lunn.ch>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_100200_626057_0C1392F7 
-X-CRM114-Status: GOOD (  16.24  )
+X-CRM114-CacheID: sfid-20230912_110939_923409_925143BD 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,59 +97,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 10.09.2023 00:16, Andrew Lunn wrote:
+> Please trim the text when replying.
+> 
+> 
+>> I'm writing below as a mix of patch log and discussion.
+>>
+>> Phylink bindings are required for ports that are controlled by OF-based
+>> buses. DSA, like any other driver utilising the Linux MDIO infrastructure,
+>> can register a bus. If I understand correctly, non-OF-based registration of
+>> OpenFirmware MDIO buses is a feature specific to DSA which certain DSA
+>> subdrivers make use of.
+> 
+> This is not really DSA specific. Any MAC driver, or MDIO driver, can
+> call mdiobus_regsiter(), or of_mdiobus_register() and pass a NULL
+> pointer if there is no OF node available. It then requires that the
+> MAC driver uses an function like phy_find_first(), or knows via other
+> means what address the PHY uses on the bus. For DSA, that other means
+> is assuming a 1:1 mapping between port number and bus address.
 
+Understood. At least a phy-handle on the DSA user port for each PHY 
+controlled by non-DSA drivers is always needed correct? Otherwise DSA 
+wouldn't know which PHY to map the DSA switch port?
 
-On 08/09/2023 12:22, Vignesh Raman wrote:
-> Instead of modifying files in git to enable/disable
-> configs, use scripts/config on the .config file which
-> will be used for building the kernel.
-> 
-> Suggested-by: Jani Nikula <jani.nikula@intel.com>
-> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+And that means DSA requires OF-based buses to map the ports controlled 
+by non-DSA driver buses to PHYs?
 
-Acked-by: Helen Koike <helen.koike@collabora.com>
+I'm trying to understand if phylink bindings for DSA user ports that are 
+controlled by non-DSA driver buses are always necessary.
 
-> ---
-> 
-> v2:
->    - Added a new patch in the series to use scripts/config to enable/disable configs
-> 
-> v3:
->    - No changes
-> 
-> ---
->   drivers/gpu/drm/ci/build.sh | 14 +++++++-------
->   1 file changed, 7 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
-> index 092c195af242..093929a115de 100644
-> --- a/drivers/gpu/drm/ci/build.sh
-> +++ b/drivers/gpu/drm/ci/build.sh
-> @@ -70,19 +70,19 @@ if [ -z "$CI_MERGE_REQUEST_PROJECT_PATH" ]; then
->       fi
->   fi
->   
-> -for opt in $ENABLE_KCONFIGS; do
-> -  echo CONFIG_$opt=y >> drivers/gpu/drm/ci/${KERNEL_ARCH}.config
-> -done
-> -for opt in $DISABLE_KCONFIGS; do
-> -  echo CONFIG_$opt=n >> drivers/gpu/drm/ci/${KERNEL_ARCH}.config
-> -done
-> -
->   if [[ -n "${MERGE_FRAGMENT}" ]]; then
->       ./scripts/kconfig/merge_config.sh ${DEFCONFIG} drivers/gpu/drm/ci/${MERGE_FRAGMENT}
->   else
->       make `basename ${DEFCONFIG}`
->   fi
->   
-> +for opt in $ENABLE_KCONFIGS; do
-> +    ./scripts/config --enable CONFIG_$opt
-> +done
-> +for opt in $DISABLE_KCONFIGS; do
-> +    ./scripts/config --disable CONFIG_$opt
-> +done
-> +
->   make ${KERNEL_IMAGE_NAME}
->   
->   mkdir -p /lava-files/
+Would this also apply to MAC drivers that control switches?
+
+Arınç
 
