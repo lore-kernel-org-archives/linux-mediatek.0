@@ -4,89 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5478FCA0ECA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 12:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1314CA0ECA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 13:10:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kYU91k+Yt4At9Ky8Zo4xbD1ZbiophgceK/i0wy1hkcE=; b=ZZWD9UtwyrzCEYrzgkCNAyF2zs
-	eIl2Nu0Tix6nQHZeOtH1SjhgjYOBRNbvF59nfal/jg0ddqIzHnohmQn6BP8Tf4dNDyxcDTltr3ayg
-	ZgDXLTmap1pRXtAKjzJH2PWZCGNV8PWDyJgF/dPidy+OCLx0xazKO55k8cuwUpy1ivvYoSJLWIOP7
-	p8O/woAm4WdnrQbHdphwvVZ5uO6gEj3BiYmawSQ7OcBTHYeZdjS1s+vII700ipCfDPxj8xNhNdzvz
-	okUCdOHsOefMoM0+jbu6QrhHn8m/wemEGOfD1VXRAQ+e/dAiNfLtoST5qNA42kIlOZ1V1waBYaavA
-	zfppUF7w==;
+	bh=bkg4dOxircu0CypR4iVJaC4UA5MgleI1a7GPOXfeFc0=; b=TXWNsp6DxvfVWeFSbQ3S4mqTRl
+	wyeyfOxj3sQe028vJ0D0nGp8bClKPNCafQuqSk3aKdfAtjRR4f+4vFMqbWjU9FswYcVwCet0nN6BI
+	ta5Nu5IrQS2X1Z181dP+o4rgjJLgkzpHFNJHrs4absR9BEfqNcytk56t7fE9JQzaL1oLj/A+ZQScD
+	iXjlyKsggyyWujQF4mwb967tNq3A2uFGL3iVqvxJgHwAfuu3y5Yw0PTafoGEZYx2QTaCtzD4+TLJm
+	OjTmxPoz3SNeyXtkxKd4YmdGT8z6dXavjGQ470l58F5TcD7PzhRgFu0WQkwOKvlWdBuxrEM1R0wNh
+	l8VoYmTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg2xl-003N9k-0e;
-	Tue, 12 Sep 2023 12:57:53 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1qg39w-003OcD-1h;
+	Tue, 12 Sep 2023 13:10:28 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg2xj-003N8i-0P
+	id 1qg39r-003Oaj-2u
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Sep 2023 12:57:52 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-401da71b83cso63553075e9.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Sep 2023 05:57:48 -0700 (PDT)
+	Tue, 12 Sep 2023 13:10:26 +0000
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-52c9be5e6f0so6774089a12.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Sep 2023 06:10:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1694523467; x=1695128267; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1694524218; x=1695129018; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=kYU91k+Yt4At9Ky8Zo4xbD1ZbiophgceK/i0wy1hkcE=;
-        b=Hhehf8SnpZ5tVjKZmEInofuv8d1RBBcwFqnMg5RabqT4zPa6Q/R/ymr+3JHs6up73n
-         fgeIPNYkfJ0ortrZwTwmHZIJF060i8wq/KNcMREwIyhiOCkz+G0dOXjnzc1HBaS61uXh
-         uIQfPLPcSzKBbOKeaOm/lEzXweXj3aJowOs3Z7wI6LV9XQcvEjbwmN+8v03l1prc/VPM
-         bvlX3Ss2wKLIwZu6GM86p7WefeZVaE4UP2D+oMldnEfid/UT4KS7bYcASfrVUSJu8IGf
-         m3dWXA2cQwaWMDF409a6p38/G6o5R/++j2C+vl/Yt6Rlclk1WV2UW/QEEyPYEviA5Rw1
-         ZBng==
+        bh=bkg4dOxircu0CypR4iVJaC4UA5MgleI1a7GPOXfeFc0=;
+        b=0QRLmldXvwatktK+TnoeYgX0HeIHrB7tR+fUwnXFTAWIixOIwW2hDUprtuo4RHk6Xn
+         7KZPBt4h/kXl+YKxQAeAuGjrsy4+TADq2DIJ0JOhgIM+9HGYBEXxt7iaoy4/Pgi+LgO4
+         njzAqUdNEiOxDzYyGaz1VKdSHoSfZqRy8b1QrfdpwjypbI37ZMSqelVuv9ZUW0MxgPpb
+         IEuDTk7d8e32UkQxq+pEbwfaYU5fLAlLKpwD3nvAe1PnUmKdx6iAsh3oijf9/BZrTbnA
+         WMxxQDdyBnLbuACmOLUcHzeueJfnWEETgDmvrNIm2Avs4tpOebOApZwp8zZ3NXLrkc2f
+         IlHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694523467; x=1695128267;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1694524218; x=1695129018;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=kYU91k+Yt4At9Ky8Zo4xbD1ZbiophgceK/i0wy1hkcE=;
-        b=JKoNJ2QHx+BExHDHv2el5m0CHgMzhVMg9xaKbReFOMmwHE4+WgQ+NueHoeeYMrFUTl
-         QfV4nJY3hzcwVjuqzpB7z/rTcXV0ZtyDSbdk4jthGIUCEJ59wTUMSVBtPUej+xG3Vs3f
-         7awFwD+mE+uH/2ycH+jnjzDeXM1Zx4AGvVPxMIUmLEe32kPX23MbFNeFNU6CmepQgH/8
-         vdsofnGCmJN8GnNo3EpiP28ZO9nW5l7U5WjmD9Rcc088QXScZMi2ghHE1BPZ+0AScmjA
-         0vM7hNQAjE0Bjcz70EKSPItE59FVyjuUiEwLqzP1AFfR/RxWHd9JsmY0Q6EdQUte0gqa
-         vB5g==
-X-Gm-Message-State: AOJu0YxcRj2Puexk9ZSwDsSyKXExK6BqynzzZ2C+wVvqksCRizi07nca
-	veF0/K6J10eVMzib1GiuOMtTaA==
-X-Google-Smtp-Source: AGHT+IEvBC5cBojbboN1wVPdVG3nssSxtqehgHtA+QFGwbidSUE5Ft50iLURqhRnLWY9y/XYtYnlYA==
-X-Received: by 2002:a05:600c:228f:b0:401:d803:6246 with SMTP id 15-20020a05600c228f00b00401d8036246mr11053444wmf.2.1694523466766;
-        Tue, 12 Sep 2023 05:57:46 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:6333:6696:6b64:4890? ([2a05:6e02:1041:c10:6333:6696:6b64:4890])
-        by smtp.googlemail.com with ESMTPSA id t15-20020a7bc3cf000000b00402be2666bcsm16205152wmj.6.2023.09.12.05.57.45
+        bh=bkg4dOxircu0CypR4iVJaC4UA5MgleI1a7GPOXfeFc0=;
+        b=DDUxLOkHIbwrqQZ1CKzWoYyELeMsP1eSX4g03h3igF0alXHoCY0Ea6Ofr7FOevy+GK
+         IMuR5uqI9abANcOgg66yy1mJdbv0ZWcLtHWaMFZssPsOK6KswItSHOJPlMJ0lZ5fAjMv
+         C8jnD1kKSbSD8v9dthAYqfBc1dTI79t+SkAhnSSKRhnwZZGCEuIK17ONJOVwYuN11b9S
+         qjk1E4KpKXFQuc55XkuQBuiSEp+a4C+A+FDXdNvXxyjc47tp1JZvsTfylbkN9Opo4wEw
+         d0uAgFW3DlGYQCI+EA/A0w+3dhzTcpL/EUpT2em0zp8YBm+He0qkq6EpMX0B5HLrWdGH
+         a25w==
+X-Gm-Message-State: AOJu0YxaBfPIDfIp1aPArBptCRoPPhoBJBel6h68fRGACw6QJMNFmo8h
+	aXUIKLxdNxmO0opUVl4TXrzvuQ==
+X-Google-Smtp-Source: AGHT+IF9FtG/P/CA2bdUyaN9tNAyaXDTWKcSZgO8Knq6251cqFC3kMveGTT42yqBJk4qwEUbkIX6tg==
+X-Received: by 2002:a17:907:2cc9:b0:994:577:f9dd with SMTP id hg9-20020a1709072cc900b009940577f9ddmr9981438ejc.9.1694524218002;
+        Tue, 12 Sep 2023 06:10:18 -0700 (PDT)
+Received: from [192.168.1.172] ([93.5.22.158])
+        by smtp.gmail.com with ESMTPSA id v14-20020a170906338e00b00992b1c93279sm6758341eja.110.2023.09.12.06.10.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 12 Sep 2023 05:57:46 -0700 (PDT)
-Message-ID: <07a569b9-e691-64ea-dd65-3b49842af33d@linaro.org>
-Date: Tue, 12 Sep 2023 14:57:45 +0200
+        Tue, 12 Sep 2023 06:10:17 -0700 (PDT)
+Message-ID: <4c99c180-3b79-6aef-6ff2-d430e575957d@baylibre.com>
+Date: Tue, 12 Sep 2023 15:10:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: Aw: regression with 33140e668b10 thermal/drivers/mediatek:
- Control buffer enablement tweaks
+ Thunderbird/102.15.0
+Subject: Re: [RESEND PATCH] arm64: dts: mediatek: Fix "status" values
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>, soc@kernel.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+References: <20230804225813.12493-1-robh@kernel.org>
+ <f8759d51-f808-8082-ceaf-6c6dcaebe2d9@collabora.com>
 Content-Language: en-US
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Markus Schneider-Pargmann <msp@baylibre.com>,
- Fabien Parent <fparent@baylibre.com>,
- Amjad Ouled-Ameur <aouledameur@baylibre.com>,
- Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Alex Riabchenko <d3adme4t@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <trinity-6713557b-fe0a-4dae-84aa-1aa86f7619fa-1693473911557@3c-app-gmx-bs12>
- <trinity-f3e7d8e0-2e93-4e84-a489-3993c819d2c3-1693488871086@3c-app-gmx-bs12>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <trinity-f3e7d8e0-2e93-4e84-a489-3993c819d2c3-1693488871086@3c-app-gmx-bs12>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <f8759d51-f808-8082-ceaf-6c6dcaebe2d9@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_055751_167547_786C4003 
-X-CRM114-Status: GOOD (  16.15  )
+X-CRM114-CacheID: sfid-20230912_061023_939398_DEDAED77 
+X-CRM114-Status: GOOD (  21.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,45 +100,70 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-Hi Frank,
 
-thanks for reporting and investigating the issue.
-
-
-On 31/08/2023 15:34, Frank Wunderlich wrote:
-> Hi,
+On 12/09/2023 14:54, AngeloGioacchino Del Regno wrote:
+> Il 05/08/23 00:58, Rob Herring ha scritto:
+>> The defined value for "status" is "disabled", not "disable".
+>>
+>> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+>> Reviewed-by: AngeloGioacchino Del Regno 
+>> <angelogioacchino.delregno@collabora.com>
+>> Signed-off-by: Rob Herring <robh@kernel.org>
+>> ---
+>> Arnd, Please take this directly I guess. I think Mediatek maintainership
+>> needs some help. Maybe AngeloGioacchino should be co-maintainer as
+>> that's the only response I seem to be getting.
 > 
-> looked a bit deeper into it and it looks like i only need to add the fields in the mtk_thermal_data struct
+> Sorry but I've seen this message just now as I've been on holiday in 
+> August.
 > 
-> --- a/drivers/thermal/mediatek/auxadc_thermal.c
-> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
-> @@ -690,6 +690,9 @@ static const struct mtk_thermal_data mt7986_thermal_data = {
->          .adcpnp = mt7986_adcpnp,
->          .sensor_mux_values = mt7986_mux_values,
->          .version = MTK_THERMAL_V3,
-> +       .apmixed_buffer_ctl_reg = APMIXED_SYS_TS_CON1,
-> +       .apmixed_buffer_ctl_mask = GENMASK(31, 6) | BIT(3),
-> +       .apmixed_buffer_ctl_set = BIT(0),
->   };
+> Thing is, the MediaTek scene is starting to see more and more code, 
+> bringing
+> an obvious increase in the amount of reviews to be done and in the required
+> efforts to maintain the MTK bits - and we will possibly (hopefully) see 
+> even
+> more of that.
 > 
-> in my quick test the temprature can be read again and i'm near room temperature...i though it was a bit higher before, but as far as i understand the code, the values were fixed before and only made it configurable.
+> If Matthias needs/wants a co-maintainer for MediaTek I'm here and I will be
+> proud to become one.
 > 
-> if someone can confirm that i'm right, i can send official patch.
+> Cheers,
+> Angelo
+> 
 
-At the first glance, it seems the proposed change is correct and could 
-be proposed as a hot fix.
+I started reviewing MediaTek patches for some months now, so I'm still 
+new. From my PoV, I'm agree with Angelo when he say the amount of patch 
+is increasing. I support Angelo if he wants to become a co-maintainer 
+and continue to do my best to review patches. ;)
 
-However, the conditions with the version and the apmixed_buffer_ctl_reg 
-looks a bit fuzzy.
-
-Markus, can you revisit this part of code and consolidate the 
-configurable approach ?
+>>
+>> I think for future .dts patches I will not bother splitting them up by
+>> sub-arch because it's a pain to chase down the maintainers to apply
+>> stuff in a timely manner. /rant
+>>
+>>   arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts 
+>> b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+>> index e4605d23fdc8..86cedb0bf1a9 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+>> +++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+>> @@ -585,11 +585,11 @@ &pwrap {
+>>   };
+>>   &sata {
+>> -    status = "disable";
+>> +    status = "disabled";
+>>   };
+>>   &sata_phy {
+>> -    status = "disable";
+>> +    status = "disabled";
+>>   };
+>>   &spi0 {
+> 
+> 
 
 -- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
-
+Regards,
+Alexandre
 
