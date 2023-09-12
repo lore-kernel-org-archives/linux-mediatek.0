@@ -4,87 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C6B2CA0EC3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 08:24:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BB5ACA0ECF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 08:28:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JTDlvFYbsx79XjnXV/v1eS2oK868sA5+g3OCAFf6938=; b=p20h6B+3qKiGdYCEuCaH35HGgD
-	KfL0qCFppFxGt0WPRQjXQz/AZTS99VmGwtOTlB5ENGg/pdQeRhaZQS1l8xWP2e8jsq7K66yrhyq5m
-	h3WsQAL4FcfeBgIAcr9whSHclCNUgP+A+PcRRCpEE+SI1rOVziSgektzbiY2FQ7HpupRzYRkGfo3A
-	ENbplG9CZ4Eoeao26IHx4d9KIUNs5YoYEl5EIUg4zk8ticmB7ELUld2CF7zwQRkXlJ9G2HC5nXdg5
-	VEw8VYtRp7cXx8EFXYKEGjg2Pg/1VuGo9o7TCt0ozx+MgHXa8HuXd1VNesouDKc5/aBjImKJ12Mcl
-	gQtfZJLg==;
+	bh=VLzVKDkkOXZ4N+LBDosJ9GVpBHoDNwCkMSqFqUtTQYE=; b=CIVI0Su74l0F2O7PNYSIpCN4zu
+	HRdHqFTkQb1rR6qpsTEBCV9r4RxCScQVcnDnMuCxmGUF6aOO8V9iNnTumqp75qvQo3GsuSyLsUAjx
+	vd0GfLaw7gzMfJPX4CBXySOiTR/5XaWb3KbjfOhyGshUCs9cpjuu0q3QeNVCYRDJgWOj7XUCVtLZr
+	JFTBLxmqXsqqAVRmCHunBN0LryzDa+tYyPS5KU0cMJN29h0ZB/SP/yJI8gfJBJFhshUwOwoMUJyYU
+	Ij9i+SKLSiXT+y9TNmxeTIE4woSJbYdz0R/rpaOvXusUbXW4aaPuqYgmcMXFGguyN73xjyOCPmAlG
+	uoosU3xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfygq-002Z0h-1O;
-	Tue, 12 Sep 2023 08:24:08 +0000
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+	id 1qfylG-002ZXP-2x;
+	Tue, 12 Sep 2023 08:28:42 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfygo-002Z04-0p
+	id 1qfylD-002ZWP-3A
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Sep 2023 08:24:07 +0000
-Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-59b50b4556eso42188537b3.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Sep 2023 01:24:05 -0700 (PDT)
+	Tue, 12 Sep 2023 08:28:41 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-9a21b6d105cso678543066b.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Sep 2023 01:28:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1694507044; x=1695111844; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JTDlvFYbsx79XjnXV/v1eS2oK868sA5+g3OCAFf6938=;
-        b=t3CgMLHgvkwEDBJ3yXxTK8Ijd07ZE4yxA8kGZ8d2j6G9LJ8yNGGklWytxdvQYrTq46
-         YRFtFYD1gnWUWl3P9pL+KBm6CucPNY5elEJtsQwspNi5fXzbrkCQEPBAll5PTxH3Trro
-         AdXiWXzJIpundSl7QhDcgvTCFB5LYayi56LMxFgmbWYX/sFCBDTcseOlawvG8Dv9z4rp
-         w3IYVA1NnTPfWAQtG1Gf2raO0HxVSWhY2S1T/NMeyAHqVNsrb9oFRiOwt7KNFLREsvWe
-         zldd80g4ID2/+X3k9xIISA7ZmM+iyPISZLtqNr86jEN7Mys7frJcY1BNh7tDQzyGsBRZ
-         3egQ==
+        d=linaro.org; s=google; t=1694507318; x=1695112118; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=VLzVKDkkOXZ4N+LBDosJ9GVpBHoDNwCkMSqFqUtTQYE=;
+        b=KgYIWfOVez1E9ki8hekJD984LGRbRZDWpTpEg4BLtD9PzvkAwTPuNnrwzHdjM9gZY2
+         9Ye6RWTLX2TPHIXOPlYWaRt4C7kergGjGZhrLxz36vu2kwcdnninBX4JSy1oEZzXkywR
+         C/vSbKgB55X5KgRNNaDeIAYzqNXMQqkCb7x6CNTE+SVBAcPshOiMw0Yz7ZRcApgyMK3f
+         ra4CEKEPy0Q1KcRoBlyXAmh2Dy3ZRpxdEBICyLgc8JwK6aD65EknmtbkmJZRXo1CIE5k
+         +pXhqxcL8bXWpP3Bwz8PF/6O3V/aIqUV83fBrLoavgp6GUYHmMMsfBYlasAnaZCHf5jo
+         vOyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694507044; x=1695111844;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=JTDlvFYbsx79XjnXV/v1eS2oK868sA5+g3OCAFf6938=;
-        b=TNm5/EFsYVJ3G36JAzenESK26asKsbNmhXZ2IL4HrcRC0SIEf3GoOm6o7PbsaeyBnb
-         zrbasCKplgCRrGQ4WV4FZ4XDLZ4K6V2elWSkTp+i9BMaCv12SF2vowIxyNAi2yPNkCrL
-         mIMZze9wbc6A2r+C+o1vzY5m65vKCaN9BeNROTr0ew6A2XHT1HK1/7/ELJfbGNGyhpmO
-         22/1tWp4mLSkTqlpsglrh/KRt+97sZ5S4UMlORn8cvEAzmSx7w5Lc5YUWEkj3UVvEtcT
-         k+WBwy3/sDGt2ojCMC0lVjPMy3UjcXbS9FsyjZP16le63eCfcIvlNoo1zfiOV1If05sk
-         hyhQ==
-X-Gm-Message-State: AOJu0YxuIwxEK+7gV+76q6+7KPl+AOa9fcqrM6NeHDxicyxY9dOI4lYj
-	Gd2TEU+ey41Ori24G1WriNz8yxsR8PDknWTByvVrGQ==
-X-Google-Smtp-Source: AGHT+IFd+7FzVpzIXwF6eF0XM98eCqwGR8vQyKfh9Y2GKm2qYYnTSN7eR9A+5PvS2Qu/0xw3IHJQEnNJumvhS4CTpxY=
-X-Received: by 2002:a25:d4c6:0:b0:d7b:95ff:14f with SMTP id
- m189-20020a25d4c6000000b00d7b95ff014fmr13092370ybf.61.1694507044304; Tue, 12
- Sep 2023 01:24:04 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1694507318; x=1695112118;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=VLzVKDkkOXZ4N+LBDosJ9GVpBHoDNwCkMSqFqUtTQYE=;
+        b=e8ozw2Ok4ex3EOlZdvKxbQNDPaXwWWVjQm9i1MNdKspuFvj83YoGaLYYgOheLPPjb6
+         IINfy7NTcsBLl+iOBx9UY2VQdTHjGSW/pd9I+p8gHb8Pw1VguzlYyxMMsTBn0svz6+gH
+         ZJhmB0vgABMkiUX0yQdUtGtwbEKvVSd9UC6SdkYEfeTDI4xZddFt19qrehv7qWJJj4e8
+         hs6rgGniClbJftbddUrekufOZhUgHau32O5P7B+zEgC/4DynS8QxKLNsNql9ROCO8IVO
+         0VWoTTUXlArmZ4TTQ76Rt3bVRAP96eWqSDvle56cIz4OP7qNQ7ijtdHVPWGCNfhye9EK
+         ll7Q==
+X-Gm-Message-State: AOJu0Yy17D7FzMywsGI4OSqUDwsHOdfc/3pbVzQqJtiY0fngPQFP1zl0
+	6jgWu6gfqvlvPVNvrXj/eTBB7A==
+X-Google-Smtp-Source: AGHT+IHki0HI2dzDOWH07bBWQQqpwLHYoRHu3OffIZhdj/Y17PLOWS/fEeXHSa+TXIl8iuit84dkTA==
+X-Received: by 2002:a17:907:2ccb:b0:9a9:ee3d:48e3 with SMTP id hg11-20020a1709072ccb00b009a9ee3d48e3mr9692911ejc.12.1694507318462;
+        Tue, 12 Sep 2023 01:28:38 -0700 (PDT)
+Received: from [192.168.1.20] ([178.197.214.188])
+        by smtp.gmail.com with ESMTPSA id q18-20020a170906a09200b0099b8234a9fesm6507600ejy.1.2023.09.12.01.28.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 12 Sep 2023 01:28:37 -0700 (PDT)
+Message-ID: <c62a7ed8-d80a-3a82-040a-d4c74a71285a@linaro.org>
+Date: Tue, 12 Sep 2023 10:28:35 +0200
 MIME-Version: 1.0
-References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com> <1694429639-21484-15-git-send-email-quic_mojha@quicinc.com>
-In-Reply-To: <1694429639-21484-15-git-send-email-quic_mojha@quicinc.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 12 Sep 2023 10:23:53 +0200
-Message-ID: <CACRpkdYBH09emydQPaRUgEJuHdV0tk3=xeMXxD9UVP0GH2XZEw@mail.gmail.com>
-Subject: Re: [REBASE PATCH v5 14/17] pinctrl: qcom: Use qcom_scm_io_update_field()
-To: Mukesh Ojha <quic_mojha@quicinc.com>
-Cc: corbet@lwn.net, agross@kernel.org, andersson@kernel.org, 
-	konrad.dybcio@linaro.org, robh+dt@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, keescook@chromium.org, 
-	tony.luck@intel.com, gpiccoli@igalia.com, mathieu.poirier@linaro.org, 
-	catalin.marinas@arm.com, will@kernel.org, andy.shevchenko@gmail.com, 
-	vigneshr@ti.com, nm@ti.com, matthias.bgg@gmail.com, kgene@kernel.org, 
-	alim.akhtar@samsung.com, bmasney@redhat.com, quic_tsoni@quicinc.com, 
-	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-hardening@vger.kernel.org, 
-	linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, kernel@quicinc.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH 8/9] dt-bindings: reserved-memory: MediaTek: Add reserved
+ memory for SVP
+Content-Language: en-US
+To: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>
+Cc: "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "jstultz@google.com" <jstultz@google.com>,
+ "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>,
+ "christian.koenig@amd.com" <christian.koenig@amd.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?=
+ <Jianjiao.Zeng@mediatek.com>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ =?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?= <kuohong.wang@mediatek.com>,
+ "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+ "tjmercier@google.com" <tjmercier@google.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>
+References: <20230911023038.30649-1-yong.wu@mediatek.com>
+ <20230911023038.30649-9-yong.wu@mediatek.com>
+ <20230911154448.GA1279317-robh@kernel.org>
+ <c2f1df12cc2dc25b342029e49c6d3f120d380b47.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <c2f1df12cc2dc25b342029e49c6d3f120d380b47.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_012406_298398_FD969A55 
-X-CRM114-Status: UNSURE (   7.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230912_012840_059260_D5D975FC 
+X-CRM114-Status: GOOD (  25.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,17 +119,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 11, 2023 at 12:56=E2=80=AFPM Mukesh Ojha <quic_mojha@quicinc.co=
-m> wrote:
+On 12/09/2023 08:16, Yong Wu (吴勇) wrote:
+> Hi Rob,
+> 
+> Thanks for your review.
+> 
+> On Mon, 2023-09-11 at 10:44 -0500, Rob Herring wrote:
+>>  	 
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>  On Mon, Sep 11, 2023 at 10:30:37AM +0800, Yong Wu wrote:
+>>> This adds the binding for describing a CMA memory for MediaTek
+>> SVP(Secure
+>>> Video Path).
+>>
+>> CMA is a Linux thing. How is this related to CMA?
+> 
+>>>
+>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>>> ---
+>>>  .../mediatek,secure_cma_chunkmem.yaml         | 42
+>> +++++++++++++++++++
+>>>  1 file changed, 42 insertions(+)
+>>>  create mode 100644 Documentation/devicetree/bindings/reserved-
+>> memory/mediatek,secure_cma_chunkmem.yaml
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/reserved-
+>> memory/mediatek,secure_cma_chunkmem.yaml
+>> b/Documentation/devicetree/bindings/reserved-
+>> memory/mediatek,secure_cma_chunkmem.yaml
+>>> new file mode 100644
+>>> index 000000000000..cc10e00d35c4
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/reserved-
+>> memory/mediatek,secure_cma_chunkmem.yaml
+>>> @@ -0,0 +1,42 @@
+>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: 
+>> http://devicetree.org/schemas/reserved-memory/mediatek,secure_cma_chunkmem.yaml#
+>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>> +
+>>> +title: MediaTek Secure Video Path Reserved Memory
+>>
+>> What makes this specific to Mediatek? Secure video path is fairly 
+>> common, right?
+> 
+> Here we just reserve a buffer and would like to create a dma-buf secure
+> heap for SVP, then the secure engines(Vcodec and DRM) could prepare
+> secure buffer through it.
+>  
+> But the heap driver is pure SW driver, it is not platform device and
 
-> Use qcom_scm_io_update_field() exported function in
-> pinctrl-msm driver.
->
-> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+All drivers are pure SW.
 
-As long as the qcom maintainers agree on the rest of the patches:
-Acked-by: Linus Walleij <linus.walleij@linaro.org>
+> we don't have a corresponding HW unit for it. Thus I don't think I
+> could create a platform dtsi node and use "memory-region" pointer to
+> the region. I used RESERVEDMEM_OF_DECLARE currently(The code is in 
+> [9/9]). Sorry if this is not right.
 
-Yours,
-Linus Walleij
+If this is not for any hardware and you already understand this (since
+you cannot use other bindings) then you cannot have custom bindings for
+it either.
+
+> 
+> Then in our usage case, is there some similar method to do this? or
+> any other suggestion?
+
+Don't stuff software into DTS.
+
+Best regards,
+Krzysztof
+
 
