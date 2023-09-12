@@ -4,64 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88F05CA0EC3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Sep 2023 23:57:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E4C1CA0EC3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 00:40:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LEvBrU3HByKq7wInziSYC+D7v4AI+KrXU7eTsxH2UrE=; b=kykQUztwIzmTITkWxmChkIUsWr
-	druy50d/z7ltpCRPqOCezgLzWf3YvE+AhHfNw/kMeAJ5vs2SlSwx9Rw6ozraYbCufE5RLjklmVxD6
-	QTi9xXuBlVinWKScRFcfUI78J/aj/8hJ3/6ym49q406cp+dFUUhRZ6BjHmb3BWmakDglcBbRCToGX
-	plCF4qXczDqxvT9RvCeNTv/pwwFUwvgTxe/P/o+8zrNxUeFeMjlbVDpd55N6/up+zbD9PGMbtKNhx
-	R4XhqTSPonSEUxZJuqctsSNF/e9gmVQtfOtlWBDgF4l8zsFVBaijZ8wgI/LxICWxyxxSkVPqu1xFx
-	/Q7qU3pA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b+ZDvkvQfKietDBjdlhgqxs9r2mzT6RnU3pGyGd2BkA=; b=LqaGSbdG4Z6c0diDblp45lKNac
+	k/sYrVCBnMNqYfqIBozn74mV8DESiURN6kuq9vkq3FjgAZCp0caOBpXh3MOZwjoSGWrf60SRspDZq
+	0D5PBlpGDb8UScRShyEM/wquEys3XNdwzOdPfSQNjFM4ai0vEaZS+x1rLjvEJKYLH74Ki3k4y0zyG
+	5M4RJmXt3RqLdXHIxRRh5moCeYy1O+IuYXppZCFWfvqwVKEhrHIghAoYSaJQb+CZoJWXXtKQrVGCz
+	zvKY7D1JDi8o+rtE1n8+06VYGehsbpassS5cdgqL2VWyt3qNeyWoLHl8A792dqeb7p/s0iuPFTxit
+	1I/w3RdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfqmp-001doe-2l;
-	Mon, 11 Sep 2023 23:57:47 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qfrRr-001gX9-19;
+	Tue, 12 Sep 2023 00:40:11 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfqmm-001dnh-0g;
-	Mon, 11 Sep 2023 23:57:45 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B33CB614B3;
-	Mon, 11 Sep 2023 23:57:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9376C32779;
-	Mon, 11 Sep 2023 23:57:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694476662;
-	bh=DgTYRQBSoJwFvdOE21aqdGWssFdi96AaqXB7ox6Gvl8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=sCsbC+kBVOnYpheOEgpvIQenH7Rc5ejskACNLgOFadmXomrRduMQWUqt747gbZEYn
-	 DJWD9sn8SQpvwnUc5i4Er6yDrW0g/ekW5W/18qnu6473W9xqN8DJ27U0VgvRRvaoeb
-	 z/GXRQYMe8bwrZ2zkCFgV6g2pvNY3MluE9cr97p4/2BpIx4VQgRu9Q//+PChIVK7dU
-	 ewEQjQgO2jiYrE/FmbTpFfinrqanrbUgcneOk6iBk53977A06j109yuNWsG9ctKUdY
-	 +Hoet91nTSOyQ7Pq/zKpGAFXddjr3wD2u4CUurCxwTylM7HYRd/alkV9cAKR47ST8u
-	 SB7Rb7xiu+/rw==
-From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, 
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- Trevor Wu <trevor.wu@mediatek.com>
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20230825024935.10878-1-trevor.wu@mediatek.com>
-References: <20230825024935.10878-1-trevor.wu@mediatek.com>
-Subject: Re: [RESEND,v3 0/3] ASoC: mt8188-mt6359: add SOF support
-Message-Id: <169447666040.2387538.8880759925016184457.b4-ty@kernel.org>
-Date: Tue, 12 Sep 2023 00:57:40 +0100
+	id 1qfrRo-001gVb-1S;
+	Tue, 12 Sep 2023 00:40:09 +0000
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38C0KXkH031847;
+	Tue, 12 Sep 2023 00:39:38 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
+ cc : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=qcppdkim1; bh=b+ZDvkvQfKietDBjdlhgqxs9r2mzT6RnU3pGyGd2BkA=;
+ b=XSPS0PTtdcMZxd6ljmCdyxivBX0e0Llbz4hMM1uUnMpq90hn0OTRUTyBkH7/HydYrrMR
+ YTF2AgTo5PKj+DF6euX8I6G7AgrmyuaW8NKAGrMMwUxc74XFT4AbY2FuxNl2vxp9VN5c
+ msoAWjjKQXZlI3VkQa1SH2FEjUGweATifEvcE8WCBv8XicDrVmKdBNx5GyfBu2HYE1NW
+ U6/oISTtd8NH4lq5xcavPb/oA8VDWBlvoAoDFJ34Gp6ZF8uufpX/wv1K+4UKRvX8xEz/
+ nwSBYJebtY+chzhxl4AADpDlSnzat6fdpot3CKwZ8bMonFH8v69FJG0ExQwmaR7R9+6u Yg== 
+Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t29b0gggd-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 12 Sep 2023 00:39:37 +0000
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
+	by NALASPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38C0daBH012692
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 12 Sep 2023 00:39:36 GMT
+Received: from hu-pkondeti-hyd.qualcomm.com (10.80.80.8) by
+ nalasex01a.na.qualcomm.com (10.47.209.196) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.36; Mon, 11 Sep 2023 17:39:24 -0700
+Date: Tue, 12 Sep 2023 06:09:21 +0530
+From: Pavan Kondeti <quic_pkondeti@quicinc.com>
+To: Mukesh Ojha <quic_mojha@quicinc.com>
+CC: Pavan Kondeti <quic_pkondeti@quicinc.com>, <corbet@lwn.net>,
+        <agross@kernel.org>, <andersson@kernel.org>,
+        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
+        <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
+        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
+        <will@kernel.org>, <linus.walleij@linaro.org>,
+        <andy.shevchenko@gmail.com>, <vigneshr@ti.com>, <nm@ti.com>,
+        <matthias.bgg@gmail.com>, <kgene@kernel.org>,
+        <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
+        <quic_tsoni@quicinc.com>, <linux-doc@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+        <linux-hardening@vger.kernel.org>, <linux-remoteproc@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+        <linux-mediatek@lists.infradead.org>,
+        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
+Subject: Re: [PATCH v5 09/17] pstore/ram: Use dynamic ramoops reserve resource
+Message-ID: <d69a1822-0972-419a-ae8b-b6979733a18b@quicinc.com>
+References: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
+ <1694290578-17733-10-git-send-email-quic_mojha@quicinc.com>
+ <20425ace-3ef5-4eaf-8319-999bafa34a07@quicinc.com>
+ <35c9d1b1-0f48-b873-d703-c880f3b91422@quicinc.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13-dev-099c9
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <35c9d1b1-0f48-b873-d703-c880f3b91422@quicinc.com>
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: tfU2_hR73glnule_LYZ8-x9Z18vDoumI
+X-Proofpoint-ORIG-GUID: tfU2_hR73glnule_LYZ8-x9Z18vDoumI
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-09-11_19,2023-09-05_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 phishscore=0
+ adultscore=0 impostorscore=0 priorityscore=1501 mlxscore=0 mlxlogscore=719
+ lowpriorityscore=0 bulkscore=0 spamscore=0 suspectscore=0 clxscore=1015
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2308100000
+ definitions=main-2309120003
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230911_165744_292271_C02B030D 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20230911_174008_495775_603C2C8D 
+X-CRM114-Status: GOOD (  22.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,48 +110,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 25 Aug 2023 10:49:32 +0800, Trevor Wu wrote:
-> This series introduces dynamic pinctrl and adds support for the SOF on
-> the mt8188-mt6359 machine driver.
+On Mon, Sep 11, 2023 at 04:21:44PM +0530, Mukesh Ojha wrote:
 > 
-> Changes since v2:
->   - revise mtk_sof_check_tplg_be_dai_link_fixup().
 > 
-> Changes since v1:
->   - minor changes to incorporate the suggestions from the reviewer.
+> On 9/11/2023 11:03 AM, Pavan Kondeti wrote:
+> > On Sun, Sep 10, 2023 at 01:46:10AM +0530, Mukesh Ojha wrote:
+> > > As dynamic ramoops command line parsing is now added, so
+> > > lets add the support in ramoops driver to get the resource
+> > > structure and add it during platform device registration.
+> > > 
+> > > Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+> > > ---
+> > >   fs/pstore/ram.c | 10 +++++++---
+> > >   1 file changed, 7 insertions(+), 3 deletions(-)
+> > > 
+> > 
+> > Documentation/admin-guide/ramoops.rst might need an update as well.
 > 
-> [...]
+> I have said in the cover-letter under changes in v5, it is open for
+> comment and not yet documented it yet.
+> 
+Sure.
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/3] ASoC: mediatek: mt8188-mt6359: support dynamic pinctrl
-      commit: d601bb78f06b9e3cbb52e6b87b88add9920a11b6
-[2/3] ASoC: mediatek: common: revise SOF common code
-      commit: 4047b35c836ff9f8bf1f57c4ab871136899267e9
-[3/3] ASoC: mediatek: mt8188-mt6359: add SOF support
-      commit: 1bce95deab841ece9602f941e68c7b919fde303d
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+To easy on the reviewers, the under cut portion of a specific patch could be
+used to add footer notes like TODO/Testing etc. In this case, I was lazy to 
+read the loong cover letter posted in this series ;-)
 
 Thanks,
-Mark
-
+Pavan
 
