@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D977CA0EF8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 16:57:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABC6FCA0EF8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 17:01:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ACrvBDvBTo4I6m5T0VSG61KHXtQ1zZrQbGpWCeu383o=; b=WSRp/iT9S/fqP55kFGzyizFtvC
-	KApz+o1hIy4r3KQBiVLxtKyqMsyEwdKyAYhTSOYdwISw2PSJFDn2LhRMFClNj4s1iLGofIVONVy8O
-	F3sUXWxAjAyDG7JinlPUvzAyH3RU2DOAKtLkNY4smiDWN03dJsfRYFFx9TrSItj8aQ6IcQbXmBhtK
-	XZoz/liH8879LNIlkkEkZheb48ktxUwJfBxtWeZykEdIDtwaSZszCx2fXs7+gUfv3qp3b71g0qrGY
-	avtxcePKTYU0mPVwiGHKPA+7BQfHGSeuH+KYJ2+KhpbZb3edRbrJy9Dohzk6Js7jqGmO3DvTFJTEt
-	/+Rb8EYA==;
+	bh=AglBmOiWnP5rw38ELObOvSe/t6G8PuHkpmazY9f1D94=; b=qmv48m0dppKfSdrt+P2XPmNnQV
+	j160PYQv45ZVD8q0wFAidOVMPIhvOjXoAm3dX0p4QhQO2ffIb1zI/bAxI4aeinXBep7iuK5TRHKtW
+	pMvsG4h2bHciTNnDwXq2wxbVHDmufbLaUd4coo9O3tEaLBjhA8UMD4bz8QrxZ3X37kRlv/MXazYIt
+	iTn0TuypbefM/HxV/ilPVcuvsUFpMyzJZaa43Qiw9nAtrUPzcY4O7AnJdiQhMGLqAC/ZzmfCFkAHm
+	g7RmIJGOX4drKcmJq0hUpO2s9xrZcgidajQ+7cnZKSu4qS4krTmCqXSNKec7fe8pUmZALsm1PaLZf
+	V6FcTNBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg6hF-003sPD-0Y;
-	Tue, 12 Sep 2023 16:57:05 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qg6lf-003sbI-04;
+	Tue, 12 Sep 2023 17:01:39 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg6hC-003sOU-1t
+	id 1qg6lc-003sad-1b
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Sep 2023 16:57:03 +0000
+	Tue, 12 Sep 2023 17:01:37 +0000
 Received: from [192.168.0.106] (unknown [186.235.7.101])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: koike)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7AC1966071C9;
-	Tue, 12 Sep 2023 17:56:53 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E81EF66072B4;
+	Tue, 12 Sep 2023 18:01:26 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694537820;
-	bh=HBRi9Hhlgh4EDnkDLig1ZLdAN0tTXejvnyzq+J8F68E=;
+	s=mail; t=1694538094;
+	bh=XGlNAhRdPXO/CVxaBfaU+R1lxP9eWdQQ0iJwXNREACQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GTWXXG06C++Uo5WfJQzOUXkpnQStgPoetnWMMASam4EhpbXuwDH6Ku9xtwu0mpw1t
-	 f5J4/pqRt9bIrBL4y2H/6DsAw74oUyqYTUKEM3JCfXMpTDk1oF2J91qHXGBA5U7r0V
-	 9G0gugYAliu2T+QNNMeW/0+9ElxNLsNiKrBSWoo6iT5Q2N3s/qYYf2BDvH0pYLRRrb
-	 5v9pLr0FyIGScMIJjbei3sZ4YjVbuoKLmTJ8e1zjBZRuzG1yZrbdKK4l34lGEZuI90
-	 RWI8IlsOk1xk8FgN0eo3e27d4VrjdZfEsVhNVWtuHj77T9k0UY53s4E34RUqn1ZI9a
-	 3uVlsBT+spg8A==
-Message-ID: <3f1f1679-2d0a-d501-da9c-cb38088acef2@collabora.com>
-Date: Tue, 12 Sep 2023 13:56:49 -0300
+	b=Fd17yMXHTH20mN4mXh8JVEEB4d069PZL3cUp7KY2Rk1OCWI4cpH+3h6udTtvxjnCB
+	 RDKHlLk5tB5KshHXuffH2Ek5PMIDnkI013k5HJmVVkiDm13gFwkrMwoZD+VuW49O7G
+	 2XMLqu5RzCBPkW7puEW1CfDvp5KbsUPsy+D0uCmNv6O407oE4JpimvR5Ca1mrrsxgg
+	 4ZVl8lcOMeCVQMzba/hdCxkHWdqMf27r86V8VHKMkxs4UfMdLMI0V9GDmxii4kfgdc
+	 TjcL8hijrQZqbiEDpCZ55a580BupKPEQw8iCyoxfAfwgWwk8DYf6BpPmKua6B5BMGU
+	 MOK1oJuWVpSzA==
+Message-ID: <9d8a92ef-3442-2317-ada7-71d5e76573be@collabora.com>
+Date: Tue, 12 Sep 2023 14:01:22 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH v3 6/9] arm64: defconfig: Enable DA9211 regulator
+Subject: Re: [PATCH v3 8/9] drm: ci: Enable new jobs
 Content-Language: en-US
 To: Vignesh Raman <vignesh.raman@collabora.com>,
  dri-devel@lists.freedesktop.org
@@ -66,14 +66,14 @@ Cc: guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
  linux-mediatek@lists.infradead.org,
  virtualization@lists.linux-foundation.org, linux-arm-msm@vger.kernel.org
 References: <20230908152225.432139-1-vignesh.raman@collabora.com>
- <20230908152225.432139-7-vignesh.raman@collabora.com>
+ <20230908152225.432139-9-vignesh.raman@collabora.com>
 From: Helen Koike <helen.koike@collabora.com>
-In-Reply-To: <20230908152225.432139-7-vignesh.raman@collabora.com>
+In-Reply-To: <20230908152225.432139-9-vignesh.raman@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_095702_764022_BF265B14 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20230912_100136_682302_D5B4631F 
+X-CRM114-Status: GOOD (  15.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,47 +91,65 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 08/09/2023 12:22, Vignesh Raman wrote:
-> Mediatek mt8173 board fails to boot with DA9211 regulator disabled.
-> Enabling CONFIG_REGULATOR_DA9211=y in drm-ci fixes the issue.
+> Enable the following jobs, as the issues noted in the
+> TODO comments have been resolved. This will ensure that these jobs
+> are now included and executed as part of the CI/CD pipeline.
 > 
-> So enable it in the defconfig since kernel-ci also requires it.
-
-tbh, =m doesn't solve for mesa-ci (since we don't use an initrd, not 
-sure if it solves for kernel-ci.
-
+> msm:apq8016:
+> TODO: current issue: it is not fiding the NFS root. Fix and remove this rule.
 > 
-> Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.co
-In any case:
+> mediatek:mt8173:
+> TODO: current issue: device is hanging. Fix and remove this rule.
+> 
+> virtio_gpu:none:
+> TODO: current issue: malloc(): corrupted top size. Fix and remove this rule.
+> 
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 
 Acked-by: Helen Koike <helen.koike@collabora.com>
 
 > ---
 > 
+> v2:
+>    - Reworded the commit message
+> 
 > v3:
->    - New patch in the series to enable CONFIG_REGULATOR_DA9211 in defconfig
+>    - No changes
 > 
 > ---
->   arch/arm64/configs/defconfig | 1 +
->   1 file changed, 1 insertion(+)
+>   drivers/gpu/drm/ci/test.yml | 9 ---------
+>   1 file changed, 9 deletions(-)
 > 
-> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-> index a25d783dfb95..ef22b532b63a 100644
-> --- a/arch/arm64/configs/defconfig
-> +++ b/arch/arm64/configs/defconfig
-> @@ -711,6 +711,7 @@ CONFIG_REGULATOR_AXP20X=y
->   CONFIG_REGULATOR_BD718XX=y
->   CONFIG_REGULATOR_BD9571MWV=y
->   CONFIG_REGULATOR_CROS_EC=y
-> +CONFIG_REGULATOR_DA9211=m
-
-Question for the maintainers: would it be acceptable to make it a =y 
-instead of =m here ? Since this is something required for booting.
-
-Regards,
-Helen
-
->   CONFIG_REGULATOR_FAN53555=y
->   CONFIG_REGULATOR_GPIO=y
->   CONFIG_REGULATOR_HI6421V530=y
+> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+> index d85add39f425..1771af21e2d9 100644
+> --- a/drivers/gpu/drm/ci/test.yml
+> +++ b/drivers/gpu/drm/ci/test.yml
+> @@ -108,9 +108,6 @@ msm:apq8016:
+>       RUNNER_TAG: google-freedreno-db410c
+>     script:
+>       - ./install/bare-metal/fastboot.sh
+> -  rules:
+> -    # TODO: current issue: it is not fiding the NFS root. Fix and remove this rule.
+> -    - when: never
+>   
+>   msm:apq8096:
+>     extends:
+> @@ -273,9 +270,6 @@ mediatek:mt8173:
+>       DEVICE_TYPE: mt8173-elm-hana
+>       GPU_VERSION: mt8173
+>       RUNNER_TAG: mesa-ci-x86-64-lava-mt8173-elm-hana
+> -  rules:
+> -    # TODO: current issue: device is hanging. Fix and remove this rule.
+> -    - when: never
+>   
+>   mediatek:mt8183:
+>     extends:
+> @@ -333,6 +327,3 @@ virtio_gpu:none:
+>       - debian/x86_64_test-gl
+>       - testing:x86_64
+>       - igt:x86_64
+> -  rules:
+> -    # TODO: current issue: malloc(): corrupted top size. Fix and remove this rule.
+> -    - when: never
+> \ No newline at end of file
 
