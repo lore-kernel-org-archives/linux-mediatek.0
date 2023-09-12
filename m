@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1E35CA0ECA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 07:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F3B1CA0EC3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 07:58:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SNDLqLvoHMqiBSUEotpzc3MpBoxBww3NqzYfgHr9KjQ=; b=TQxsTNl67vRj10cGVSxcPCjWqJ
-	GtgHJyxqbR2r3Wf6pyIkvfZBZTaR+d0HcxgXrd6RBZabwoctwjqsO3M6VKNxUARXmnoyPSIel7feH
-	zGu9KPBFGEnPjhOzHM+uJ0fSw1YrhlZ3QYBb07mh6Rhi0id2NZVl09TexlyGzhZt2mO5kVOVMzPDH
-	jdMiWnuX09TK706jUUKRePXubwJFetvg/OmzP6u3Nc9sdt6LRmqTmMPJCLuPBhV+mOb1IqHDo5rC0
-	CozMAkBGC7QAWspVcZmp7FFBdP1r0HPPlrO7mTFcOZStz61TKuUNL5X9CL8kcIRK5RUYUaeydNChs
-	HlMbosQw==;
+	bh=RNTVy9AacJES7wW9DpJtDoveuOJt0uOZcybu2/uFRUw=; b=LPm+7ZGgWufjk05VyDZ5q4Xskk
+	Viw/pdwWgMXME+7lQGTLq9IDWqkwpd06JhicoQDs0EjMajbk0Z3HStCTbnPBlYuuL1hRkEbhtZwdz
+	ibwr2TVHkJNWSJD999E8r9Nok7SrFXDOFgIDtLQjjMt/nI+19VQS5AEjblnBlZQTZxGeqOT2V8C2s
+	uvprTfG0wQzQDJbU7iWQVWtdhrjnWGqroTywlNdCAmgMRkGx9n30Z8xxwRDvY1H0JN/h5HYoJ95fo
+	O7mkLmZRZuElaL1M5pbaayVYTbjvy7ddIy7wARoZTuEB3/1bzMsQjI7Xf3lzU9zcaN/Xsc+gF6Pdd
+	AXupoz6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfyIE-002ThO-0Z;
-	Tue, 12 Sep 2023 07:58:42 +0000
+	id 1qfyIF-002TiC-0n;
+	Tue, 12 Sep 2023 07:58:43 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfyHp-002TEX-0S;
+	id 1qfyHp-002TH6-0l;
 	Tue, 12 Sep 2023 07:58:20 +0000
-X-UUID: 1df8d270514211ee9b7791016c24628a-20230912
+X-UUID: 1e3759be514211ee9b7791016c24628a-20230912
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=SNDLqLvoHMqiBSUEotpzc3MpBoxBww3NqzYfgHr9KjQ=;
-	b=DlZVbUdQ3f82hMj8nvqYe7TBrYeJYUrb3/HqFvaWTAEpm6t5C32exXdLRqRUvJXUTgXLweuWZmWNEHe+6a2bt0nB1MYfodGh8Hjr7KsvUvHtWA1BW6qTeZ1bNPCifkUghHlLkhq8lTSDim1/GHyK2CaA4npb3lrdERS9Bpl3yxE=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RNTVy9AacJES7wW9DpJtDoveuOJt0uOZcybu2/uFRUw=;
+	b=d1plwFeitzGoujtOOacVwiXXDN98UjDO6xKoBNu0HXOL4e5/j7Qde88AfGG7LVb051dfSPxf6mRPbWv7vB06o2cwQaIzFIyxq6qAXBoup9r2RcMwKzWryAgnznK9sHY+54BXfLHz5+Uv0h39oAyOTXtLy3z+TlQ4kuivRhCeDvw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:10bc5d0b-ab03-489b-9586-75a048aa275b,IP:0,U
+X-CID-O-INFO: VERSION:1.1.31,REQID:c25bc8dc-32fe-4a9e-bfcd-93f6bd6a8faa,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:40fbbcbe-14cc-44ca-b657-2d2783296e72,B
+X-CID-META: VersionHash:0ad78a4,CLOUDID:005299ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
 	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 1df8d270514211ee9b7791016c24628a-20230912
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-UUID: 1e3759be514211ee9b7791016c24628a-20230912
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1516151356; Tue, 12 Sep 2023 00:58:10 -0700
+	with ESMTP id 1461383432; Tue, 12 Sep 2023 00:58:11 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 12 Sep 2023 15:58:07 +0800
+ 15.2.1118.26; Tue, 12 Sep 2023 15:58:08 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 12 Sep 2023 15:58:07 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 12 Sep 2023 15:58:08 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
 	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Daniel Vetter
@@ -63,34 +63,20 @@ To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
 CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, "Moudy
- Ho" <moudy.ho@mediatek.com>
-Subject: [PATCH v5 07/14] media: platform: mtk-mdp3: add checks for dummy components
-Date: Tue, 12 Sep 2023 15:57:58 +0800
-Message-ID: <20230912075805.11432-8-moudy.ho@mediatek.com>
+	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Moudy
+ Ho <moudy.ho@mediatek.com>
+Subject: [PATCH v5 12/14] media: platform: mtk-mdp3: add mt8195 shared memory configurations
+Date: Tue, 12 Sep 2023 15:58:03 +0800
+Message-ID: <20230912075805.11432-13-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230912075805.11432-1-moudy.ho@mediatek.com>
 References: <20230912075805.11432-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--3.209500-8.000000
-X-TMASE-MatchedRID: JEvwSAY096IBiF1BcicujnV895e/Bd2JO8xCfog1G6TfUZT83lbkEEUW
-	SNUeoUM2OlVEIoD9pteRYJdMgDxPlhgEuFFWa742kDpLRKO9xhSd2Wz0X3OaLd9zZd3pUn7Kymk
-	1r1I+qaIcmoARCcnOMqW6eUV6OTJzMeirnCrtHLqPYUYzX2Xjl3rMPEZwURsKwZASdDCGO/Mi5u
-	P1s5rsyywPVrR9OvwGsSK/BlKVGc3pRzKqh62z7GBLcedPqO9/gASAeD5aYgOTkqHUueNhpKPFj
-	JEFr+ol+3r/YeB8iANXKaQsz6vtVMprJP8FBOIaOogeZzniEGH++auRp1JPW7jbrPDDIZXDi6+l
-	/UEKS+V1PULpK1q9eBTqOm6EH3qjkQ5DKSpGRCRjURG97ep3af/EUAt3nzFXhrzWpOQ1oLJ0BNB
-	20+SxH7f8mJY57oZddJaBDYald1mHO0tVYDV4T0MMprcbiest
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.209500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 2A314663E769805967AD3ECFC4E4A454C7D4301D79E6D0A92E38DF3C5F52720A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_005817_206251_5F0F27C5 
-X-CRM114-Status: GOOD (  16.39  )
+X-CRM114-CacheID: sfid-20230912_005817_320095_EC0200AD 
+X-CRM114-Status: GOOD (  18.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,211 +91,340 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some components act as bridges only and do not require full configuration.
+The configuration of the MT8195 components in the shared memory
+is defined in the header file "mdp_sm_mt8195.h".
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- .../platform/mediatek/mdp3/mdp_cfg_data.c     |  8 +++
- .../platform/mediatek/mdp3/mtk-mdp3-cfg.h     |  1 +
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 58 ++++++++++++++++++-
- 3 files changed, 66 insertions(+), 1 deletion(-)
+ .../platform/mediatek/mdp3/mdp_sm_mt8195.h    | 283 ++++++++++++++++++
+ .../platform/mediatek/mdp3/mtk-img-ipi.h      |   4 +
+ 2 files changed, 287 insertions(+)
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_sm_mt8195.h
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-index 58792902abb5..b7efdafb1620 100644
---- a/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-+++ b/drivers/media/platform/mediatek/mdp3/mdp_cfg_data.c
-@@ -451,3 +451,11 @@ enum mtk_mdp_comp_id mdp_cfg_get_id_public(struct mdp_dev *mdp_dev, s32 inner_id
- err_public_id:
- 	return public_id;
- }
+diff --git a/drivers/media/platform/mediatek/mdp3/mdp_sm_mt8195.h b/drivers/media/platform/mediatek/mdp3/mdp_sm_mt8195.h
+new file mode 100644
+index 000000000000..b09f48222d24
+--- /dev/null
++++ b/drivers/media/platform/mediatek/mdp3/mdp_sm_mt8195.h
+@@ -0,0 +1,283 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2023 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
 +
-+bool mdp_cfg_comp_is_dummy(struct mdp_dev *mdp_dev, s32 inner_id)
-+{
-+	enum mtk_mdp_comp_id id = mdp_cfg_get_id_public(mdp_dev, inner_id);
-+	enum mdp_comp_type type = mdp_dev->mdp_data->comp_data[id].match.type;
++#ifndef __MDP_SM_MT8195_H__
++#define __MDP_SM_MT8195_H__
 +
-+	return (type == MDP_COMP_TYPE_DUMMY);
-+}
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
-index dee57cc4a954..dfffc72868e4 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cfg.h
-@@ -16,5 +16,6 @@ enum mtk_mdp_comp_id;
- 
- s32 mdp_cfg_get_id_inner(struct mdp_dev *mdp_dev, enum mtk_mdp_comp_id id);
- enum mtk_mdp_comp_id mdp_cfg_get_id_public(struct mdp_dev *mdp_dev, s32 id);
-+bool mdp_cfg_comp_is_dummy(struct mdp_dev *mdp_dev, s32 inner_id);
- 
- #endif  /* __MTK_MDP3_CFG_H__ */
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-index 6d04f72cf86f..6204173ecc5d 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-@@ -6,6 +6,7 @@
- 
- #include <linux/mailbox_controller.h>
- #include <linux/platform_device.h>
-+#include "mtk-mdp3-cfg.h"
- #include "mtk-mdp3-cmdq.h"
- #include "mtk-mdp3-comp.h"
- #include "mtk-mdp3-core.h"
-@@ -115,6 +116,12 @@ static int mdp_path_subfrm_require(const struct mdp_path *path,
- 
- 	/* Set mutex mod */
- 	for (index = 0; index < num_comp; index++) {
-+		s32 inner_id = MDP_COMP_NONE;
++#include "mtk-mdp3-type.h"
 +
-+		if (CFG_CHECK(MT8183, p_id))
-+			inner_id = CFG_GET(MT8183, path->config, components[index].type);
-+		if (mdp_cfg_comp_is_dummy(path->mdp_dev, inner_id))
-+			continue;
- 		ctx = &path->comps[index];
- 		if (is_output_disabled(p_id, ctx->param, count))
- 			continue;
-@@ -139,6 +146,7 @@ static int mdp_path_subfrm_run(const struct mdp_path *path,
- 	int index;
- 	u32 num_comp = 0;
- 	s32 event;
-+	s32 inner_id = MDP_COMP_NONE;
- 
- 	if (-1 == p->mutex_id) {
- 		dev_err(dev, "Incorrect mutex id");
-@@ -151,6 +159,10 @@ static int mdp_path_subfrm_run(const struct mdp_path *path,
- 	/* Wait WROT SRAM shared to DISP RDMA */
- 	/* Clear SOF event for each engine */
- 	for (index = 0; index < num_comp; index++) {
-+		if (CFG_CHECK(MT8183, p_id))
-+			inner_id = CFG_GET(MT8183, path->config, components[index].type);
-+		if (mdp_cfg_comp_is_dummy(path->mdp_dev, inner_id))
-+			continue;
- 		ctx = &path->comps[index];
- 		if (is_output_disabled(p_id, ctx->param, count))
- 			continue;
-@@ -165,6 +177,10 @@ static int mdp_path_subfrm_run(const struct mdp_path *path,
- 
- 	/* Wait SOF events and clear mutex modules (optional) */
- 	for (index = 0; index < num_comp; index++) {
-+		if (CFG_CHECK(MT8183, p_id))
-+			inner_id = CFG_GET(MT8183, path->config, components[index].type);
-+		if (mdp_cfg_comp_is_dummy(path->mdp_dev, inner_id))
-+			continue;
- 		ctx = &path->comps[index];
- 		if (is_output_disabled(p_id, ctx->param, count))
- 			continue;
-@@ -190,6 +206,12 @@ static int mdp_path_ctx_init(struct mdp_dev *mdp, struct mdp_path *path)
- 		return -EINVAL;
- 
- 	for (index = 0; index < num_comp; index++) {
-+		s32 inner_id = MDP_COMP_NONE;
++/*
++ * ISP-MDP generic output information
++ * MD5 of the target SCP prebuild:
++ *     a49ec487e458b5971880f1b63dc2a9d5
++ */
 +
-+		if (CFG_CHECK(MT8183, p_id))
-+			inner_id = CFG_GET(MT8183, path->config, components[index].type);
-+		if (mdp_cfg_comp_is_dummy(path->mdp_dev, inner_id))
-+			continue;
- 		if (CFG_CHECK(MT8183, p_id))
- 			param = (void *)CFG_ADDR(MT8183, path->config, components[index]);
- 		ret = mdp_comp_ctx_config(mdp, &path->comps[index],
-@@ -211,6 +233,7 @@ static int mdp_path_config_subfrm(struct mdp_cmdq_cmd *cmd,
- 	struct mdp_pipe_info pipe;
- 	int index, ret;
- 	u32 num_comp = 0;
-+	s32 inner_id = MDP_COMP_NONE;
- 
- 	if (CFG_CHECK(MT8183, p_id))
- 		num_comp = CFG_GET(MT8183, path->config, num_components);
-@@ -230,6 +253,10 @@ static int mdp_path_config_subfrm(struct mdp_cmdq_cmd *cmd,
- 	}
- 	/* Config sub-frame information */
- 	for (index = (num_comp - 1); index >= 0; index--) {
-+		if (CFG_CHECK(MT8183, p_id))
-+			inner_id = CFG_GET(MT8183, path->config, components[index].type);
-+		if (mdp_cfg_comp_is_dummy(path->mdp_dev, inner_id))
-+			continue;
- 		ctx = &path->comps[index];
- 		if (is_output_disabled(p_id, ctx->param, count))
- 			continue;
-@@ -243,6 +270,10 @@ static int mdp_path_config_subfrm(struct mdp_cmdq_cmd *cmd,
- 		return ret;
- 	/* Wait components done */
- 	for (index = 0; index < num_comp; index++) {
-+		if (CFG_CHECK(MT8183, p_id))
-+			inner_id = CFG_GET(MT8183, path->config, components[index].type);
-+		if (mdp_cfg_comp_is_dummy(path->mdp_dev, inner_id))
-+			continue;
- 		ctx = &path->comps[index];
- 		if (is_output_disabled(p_id, ctx->param, count))
- 			continue;
-@@ -252,6 +283,10 @@ static int mdp_path_config_subfrm(struct mdp_cmdq_cmd *cmd,
- 	}
- 	/* Advance to the next sub-frame */
- 	for (index = 0; index < num_comp; index++) {
-+		if (CFG_CHECK(MT8183, p_id))
-+			inner_id = CFG_GET(MT8183, path->config, components[index].type);
-+		if (mdp_cfg_comp_is_dummy(path->mdp_dev, inner_id))
-+			continue;
- 		ctx = &path->comps[index];
- 		ret = call_op(ctx, advance_subfrm, cmd, count);
- 		if (ret)
-@@ -275,6 +310,7 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mdp_cmdq_cmd *cmd,
- 	int index, count, ret;
- 	u32 num_comp = 0;
- 	u32 num_sub = 0;
-+	s32 inner_id = MDP_COMP_NONE;
- 
- 	if (CFG_CHECK(MT8183, p_id))
- 		num_comp = CFG_GET(MT8183, path->config, num_components);
-@@ -285,6 +321,10 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mdp_cmdq_cmd *cmd,
- 	/* Config path frame */
- 	/* Reset components */
- 	for (index = 0; index < num_comp; index++) {
-+		if (CFG_CHECK(MT8183, p_id))
-+			inner_id = CFG_GET(MT8183, path->config, components[index].type);
-+		if (mdp_cfg_comp_is_dummy(path->mdp_dev, inner_id))
-+			continue;
- 		ctx = &path->comps[index];
- 		ret = call_op(ctx, init_comp, cmd);
- 		if (ret)
-@@ -295,6 +335,11 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mdp_cmdq_cmd *cmd,
- 		const struct v4l2_rect *compose;
- 		u32 out = 0;
- 
-+		if (CFG_CHECK(MT8183, p_id))
-+			inner_id = CFG_GET(MT8183, path->config, components[index].type);
-+		if (mdp_cfg_comp_is_dummy(path->mdp_dev, inner_id))
-+			continue;
++#define IMG_MAX_SUBFRAMES_8195	20
 +
- 		if (CFG_CHECK(MT8183, p_id))
- 			out = CFG_COMP(MT8183, ctx->param, outputs[0]);
- 
-@@ -313,6 +358,10 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mdp_cmdq_cmd *cmd,
- 	}
- 	/* Post processing information */
- 	for (index = 0; index < num_comp; index++) {
-+		if (CFG_CHECK(MT8183, p_id))
-+			inner_id = CFG_GET(MT8183, path->config, components[index].type);
-+		if (mdp_cfg_comp_is_dummy(path->mdp_dev, inner_id))
-+			continue;
- 		ctx = &path->comps[index];
- 		ret = call_op(ctx, post_process, cmd);
- 		if (ret)
-@@ -515,9 +564,16 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 	}
- 	cmdq_pkt_finalize(&cmd->pkt);
- 
--	for (i = 0; i < num_comp; i++)
-+	for (i = 0; i < num_comp; i++) {
-+		s32 inner_id = MDP_COMP_NONE;
++struct img_comp_frame_8195 {
++	u32 output_disable;
++	u32 bypass;
++	u32 in_width;
++	u32 in_height;
++	u32 out_width;
++	u32 out_height;
++	struct img_crop crop;
++	u32 in_total_width;
++	u32 out_total_width;
++} __packed;
 +
-+		if (CFG_CHECK(MT8183, p_id))
-+			inner_id = CFG_GET(MT8183, path->config, components[i].type);
-+		if (mdp_cfg_comp_is_dummy(mdp, inner_id))
-+			continue;
- 		memcpy(&comps[i], path->comps[i].comp,
- 		       sizeof(struct mdp_comp));
-+	}
++struct img_comp_subfrm_8195 {
++	u32 tile_disable;
++	struct img_region in;
++	struct img_region out;
++	struct img_offset luma;
++	struct img_offset chroma;
++	s32 out_vertical; /* Output vertical index */
++	s32 out_horizontal; /* Output horizontal index */
++} __packed;
++
++struct mdp_rdma_subfrm_8195 {
++	u32 offset[IMG_MAX_PLANES];
++	u32 offset_0_p;
++	u32 src;
++	u32 clip;
++	u32 clip_ofst;
++	u32 in_tile_xleft;
++	u32 in_tile_ytop;
++} __packed;
++
++struct mdp_rdma_data_8195 {
++	u32 src_ctrl;
++	u32 comp_ctrl;
++	u32 control;
++	u32 iova[IMG_MAX_PLANES];
++	u32 iova_end[IMG_MAX_PLANES];
++	u32 mf_bkgd;
++	u32 mf_bkgd_in_pxl;
++	u32 sf_bkgd;
++	u32 ufo_dec_y;
++	u32 ufo_dec_c;
++	u32 transform;
++	u32 dmabuf_con0;
++	u32 ultra_th_high_con0;
++	u32 ultra_th_low_con0;
++	u32 dmabuf_con1;
++	u32 ultra_th_high_con1;
++	u32 ultra_th_low_con1;
++	u32 dmabuf_con2;
++	u32 ultra_th_high_con2;
++	u32 ultra_th_low_con2;
++	u32 dmabuf_con3;
++	struct mdp_rdma_subfrm_8195 subfrms[IMG_MAX_SUBFRAMES_8195];
++} __packed;
++
++struct mdp_fg_subfrm_8195 {
++	u32 info_0;
++	u32 info_1;
++} __packed;
++
++struct mdp_fg_data_8195 {
++	u32 ctrl_0;
++	u32 ck_en;
++	struct mdp_fg_subfrm_8195 subfrms[IMG_MAX_SUBFRAMES_8195];
++} __packed;
++
++struct mdp_hdr_subfrm_8195 {
++	u32 win_size;
++	u32 src;
++	u32 clip_ofst0;
++	u32 clip_ofst1;
++	u32 hist_ctrl_0;
++	u32 hist_ctrl_1;
++	u32 hdr_top;
++	u32 hist_addr;
++} __packed;
++
++struct mdp_hdr_data_8195 {
++	u32 top;
++	u32 relay;
++	struct mdp_hdr_subfrm_8195   subfrms[IMG_MAX_SUBFRAMES_8195];
++} __packed;
++
++struct mdp_aal_subfrm_8195 {
++	u32 src;
++	u32 clip;
++	u32 clip_ofst;
++} __packed;
++
++struct mdp_aal_data_8195 {
++	u32 cfg_main;
++	u32 cfg;
++	struct mdp_aal_subfrm_8195   subfrms[IMG_MAX_SUBFRAMES_8195];
++} __packed;
++
++struct mdp_rsz_subfrm_8195 {
++	u32 control2;
++	u32 src;
++	u32 clip;
++	u32 hdmirx_en;
++	u32 luma_h_int_ofst;
++	u32 luma_h_sub_ofst;
++	u32 luma_v_int_ofst;
++	u32 luma_v_sub_ofst;
++	u32 chroma_h_int_ofst;
++	u32 chroma_h_sub_ofst;
++	u32 rsz_switch;
++	u32 merge_cfg;
++} __packed;
++
++struct mdp_rsz_data_8195 {
++	u32 coeff_step_x;
++	u32 coeff_step_y;
++	u32 control1;
++	u32 control2;
++	u32 etc_control;
++	u32 prz_enable;
++	u32 ibse_softclip;
++	u32 tap_adapt;
++	u32 ibse_gaincontrol1;
++	u32 ibse_gaincontrol2;
++	u32 ibse_ylevel_1;
++	u32 ibse_ylevel_2;
++	u32 ibse_ylevel_3;
++	u32 ibse_ylevel_4;
++	u32 ibse_ylevel_5;
++	struct mdp_rsz_subfrm_8195 subfrms[IMG_MAX_SUBFRAMES_8195];
++} __packed;
++
++struct mdp_tdshp_subfrm_8195 {
++	u32 src;
++	u32 clip;
++	u32 clip_ofst;
++	u32 hist_cfg_0;
++	u32 hist_cfg_1;
++} __packed;
++
++struct mdp_tdshp_data_8195 {
++	u32 cfg;
++	struct mdp_tdshp_subfrm_8195 subfrms[IMG_MAX_SUBFRAMES_8195];
++} __packed;
++
++struct mdp_color_subfrm_8195 {
++	u32 in_hsize;
++	u32 in_vsize;
++} __packed;
++
++struct mdp_color_data_8195 {
++	u32 start;
++	struct mdp_color_subfrm_8195 subfrms[IMG_MAX_SUBFRAMES_8195];
++} __packed;
++
++struct mdp_ovl_subfrm_8195 {
++	u32 L0_src_size;
++	u32 roi_size;
++} __packed;
++
++struct mdp_ovl_data_8195 {
++	u32 L0_con;
++	u32 src_con;
++	struct mdp_ovl_subfrm_8195 subfrms[IMG_MAX_SUBFRAMES_8195];
++} __packed;
++
++struct mdp_pad_subfrm_8195 {
++	u32 pic_size;
++} __packed;
++
++struct mdp_pad_data_8195 {
++	struct mdp_pad_subfrm_8195 subfrms[IMG_MAX_SUBFRAMES_8195];
++} __packed;
++
++struct mdp_tcc_subfrm_8195 {
++	u32 pic_size;
++} __packed;
++
++struct mdp_tcc_data_8195 {
++	struct mdp_tcc_subfrm_8195 subfrms[IMG_MAX_SUBFRAMES_8195];
++} __packed;
++
++struct mdp_wrot_subfrm_8195 {
++	u32 offset[IMG_MAX_PLANES];
++	u32 src;
++	u32 clip;
++	u32 clip_ofst;
++	u32 main_buf;
++} __packed;
++
++struct mdp_wrot_data_8195 {
++	u32 iova[IMG_MAX_PLANES];
++	u32 control;
++	u32 stride[IMG_MAX_PLANES];
++	u32 mat_ctrl;
++	u32 fifo_test;
++	u32 filter;
++	u32 pre_ultra;
++	u32 framesize;
++	u32 afbc_yuvtrans;
++	u32 scan_10bit;
++	u32 pending_zero;
++	u32 bit_number;
++	u32 pvric;
++	u32 vpp02vpp1;
++	struct mdp_wrot_subfrm_8195 subfrms[IMG_MAX_SUBFRAMES_8195];
++} __packed;
++
++struct mdp_wdma_subfrm_8195 {
++	u32 offset[IMG_MAX_PLANES];
++	u32 src;
++	u32 clip;
++	u32 clip_ofst;
++} __packed;
++
++struct mdp_wdma_data_8195 {
++	u32 wdma_cfg;
++	u32 iova[IMG_MAX_PLANES];
++	u32 w_in_byte;
++	u32 uv_stride;
++	struct mdp_wdma_subfrm_8195 subfrms[IMG_MAX_SUBFRAMES_8195];
++} __packed;
++
++struct isp_data_8195 {
++	u64 dl_flags; /* 1 << (enum mdp_comp_type) */
++	u32 smxi_iova[4];
++	u32 cq_idx;
++	u32 cq_iova;
++	u32 tpipe_iova[IMG_MAX_SUBFRAMES_8195];
++} __packed;
++
++struct img_compparam_8195 {
++	u32 type; /* enum mdp_comp_id */
++	u32 id; /* engine alias_id */
++	u32 input;
++	u32 outputs[IMG_MAX_HW_OUTPUTS];
++	u32 num_outputs;
++	struct img_comp_frame_8195 frame;
++	struct img_comp_subfrm_8195 subfrms[IMG_MAX_SUBFRAMES_8195];
++	u32 num_subfrms;
++	union {
++		struct mdp_rdma_data_8195 rdma;
++		struct mdp_fg_data_8195 fg;
++		struct mdp_hdr_data_8195 hdr;
++		struct mdp_aal_data_8195 aal;
++		struct mdp_rsz_data_8195 rsz;
++		struct mdp_tdshp_data_8195 tdshp;
++		struct mdp_color_data_8195 color;
++		struct mdp_ovl_data_8195 ovl;
++		struct mdp_pad_data_8195 pad;
++		struct mdp_tcc_data_8195 tcc;
++		struct mdp_wrot_data_8195 wrot;
++		struct mdp_wdma_data_8195 wdma;
++		struct isp_data_8195 isp;
++	};
++} __packed;
++
++struct img_config_8195 {
++	struct img_compparam_8195 components[IMG_MAX_COMPONENTS];
++	u32 num_components;
++	struct img_mmsys_ctrl ctrls[IMG_MAX_SUBFRAMES_8195];
++	u32 num_subfrms;
++} __packed;
++
++#endif  /* __MDP_SM_MT8195_H__ */
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h b/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
+index 22b8b9a10ef7..f83ac408306e 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
++++ b/drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
+@@ -10,6 +10,7 @@
  
- 	mdp->cmdq_clt->client.rx_callback = mdp_handle_cmdq_callback;
- 	cmd->mdp = mdp;
+ #include <linux/err.h>
+ #include "mdp_sm_mt8183.h"
++#include "mdp_sm_mt8195.h"
+ #include "mtk-mdp3-type.h"
+ 
+ /* ISP-MDP generic input information */
+@@ -115,6 +116,7 @@ struct img_frameparam {
+ 
+ /* Platform config indicator */
+ #define MT8183 8183
++#define MT8195 8195
+ 
+ #define CFG_CHECK(plat, p_id) ((plat) == (p_id))
+ 
+@@ -137,12 +139,14 @@ struct img_frameparam {
+ struct img_config {
+ 	union {
+ 		struct img_config_8183 config_8183;
++		struct img_config_8195 config_8195;
+ 	};
+ } __packed;
+ 
+ struct img_compparam {
+ 	union {
+ 		struct img_compparam_8183 comp_8183;
++		struct img_compparam_8195 comp_8195;
+ 	};
+ } __packed;
+ 
 -- 
 2.18.0
 
