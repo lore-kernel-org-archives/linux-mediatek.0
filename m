@@ -4,107 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BB5ACA0ECF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 08:28:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 874ACCA0ECA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 08:34:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VLzVKDkkOXZ4N+LBDosJ9GVpBHoDNwCkMSqFqUtTQYE=; b=CIVI0Su74l0F2O7PNYSIpCN4zu
-	HRdHqFTkQb1rR6qpsTEBCV9r4RxCScQVcnDnMuCxmGUF6aOO8V9iNnTumqp75qvQo3GsuSyLsUAjx
-	vd0GfLaw7gzMfJPX4CBXySOiTR/5XaWb3KbjfOhyGshUCs9cpjuu0q3QeNVCYRDJgWOj7XUCVtLZr
-	JFTBLxmqXsqqAVRmCHunBN0LryzDa+tYyPS5KU0cMJN29h0ZB/SP/yJI8gfJBJFhshUwOwoMUJyYU
-	Ij9i+SKLSiXT+y9TNmxeTIE4woSJbYdz0R/rpaOvXusUbXW4aaPuqYgmcMXFGguyN73xjyOCPmAlG
-	uoosU3xg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+qsvhu+tedpf3yTZrlX4HmHQAfKSf/cV53E6IiVQx5c=; b=iodQoHDvoZb29RjrnFHcbHJNmY
+	+PXHb5zPsH8lH8qcgFjAzqOiIUFJRt1wjDxZSvcjkc4G8IRknW1/avBoc4tMQUtAI2FarOFOIFSDU
+	psybG+NVMU9d1N9a85581esJkKCxQXq1EAwVvqiTQhO2oz+0VgxFQqr7UdQmvG9AS5AXh/+JPHs7Z
+	26VzUPfBWg3iWSE2yRcR7dCIlPVIpaNBiOOz+raLsr5rfGarjiKU/b6YzXFYZSiuLZUubYLF76yK9
+	s9rAH9enmiy2UHLMipw4NbCLHXmcM1JA2nMZuiSEsoBUn70p2HE05uMxoPjvGf0YDfBF9ZOfn5tQi
+	z/Xfv2BQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfylG-002ZXP-2x;
-	Tue, 12 Sep 2023 08:28:42 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1qfyrI-002ahA-1W;
+	Tue, 12 Sep 2023 08:34:56 +0000
+Received: from szxga03-in.huawei.com ([45.249.212.189])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfylD-002ZWP-3A
-	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Sep 2023 08:28:41 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-9a21b6d105cso678543066b.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Sep 2023 01:28:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1694507318; x=1695112118; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=VLzVKDkkOXZ4N+LBDosJ9GVpBHoDNwCkMSqFqUtTQYE=;
-        b=KgYIWfOVez1E9ki8hekJD984LGRbRZDWpTpEg4BLtD9PzvkAwTPuNnrwzHdjM9gZY2
-         9Ye6RWTLX2TPHIXOPlYWaRt4C7kergGjGZhrLxz36vu2kwcdnninBX4JSy1oEZzXkywR
-         C/vSbKgB55X5KgRNNaDeIAYzqNXMQqkCb7x6CNTE+SVBAcPshOiMw0Yz7ZRcApgyMK3f
-         ra4CEKEPy0Q1KcRoBlyXAmh2Dy3ZRpxdEBICyLgc8JwK6aD65EknmtbkmJZRXo1CIE5k
-         +pXhqxcL8bXWpP3Bwz8PF/6O3V/aIqUV83fBrLoavgp6GUYHmMMsfBYlasAnaZCHf5jo
-         vOyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694507318; x=1695112118;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=VLzVKDkkOXZ4N+LBDosJ9GVpBHoDNwCkMSqFqUtTQYE=;
-        b=e8ozw2Ok4ex3EOlZdvKxbQNDPaXwWWVjQm9i1MNdKspuFvj83YoGaLYYgOheLPPjb6
-         IINfy7NTcsBLl+iOBx9UY2VQdTHjGSW/pd9I+p8gHb8Pw1VguzlYyxMMsTBn0svz6+gH
-         ZJhmB0vgABMkiUX0yQdUtGtwbEKvVSd9UC6SdkYEfeTDI4xZddFt19qrehv7qWJJj4e8
-         hs6rgGniClbJftbddUrekufOZhUgHau32O5P7B+zEgC/4DynS8QxKLNsNql9ROCO8IVO
-         0VWoTTUXlArmZ4TTQ76Rt3bVRAP96eWqSDvle56cIz4OP7qNQ7ijtdHVPWGCNfhye9EK
-         ll7Q==
-X-Gm-Message-State: AOJu0Yy17D7FzMywsGI4OSqUDwsHOdfc/3pbVzQqJtiY0fngPQFP1zl0
-	6jgWu6gfqvlvPVNvrXj/eTBB7A==
-X-Google-Smtp-Source: AGHT+IHki0HI2dzDOWH07bBWQQqpwLHYoRHu3OffIZhdj/Y17PLOWS/fEeXHSa+TXIl8iuit84dkTA==
-X-Received: by 2002:a17:907:2ccb:b0:9a9:ee3d:48e3 with SMTP id hg11-20020a1709072ccb00b009a9ee3d48e3mr9692911ejc.12.1694507318462;
-        Tue, 12 Sep 2023 01:28:38 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.214.188])
-        by smtp.gmail.com with ESMTPSA id q18-20020a170906a09200b0099b8234a9fesm6507600ejy.1.2023.09.12.01.28.36
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 12 Sep 2023 01:28:37 -0700 (PDT)
-Message-ID: <c62a7ed8-d80a-3a82-040a-d4c74a71285a@linaro.org>
-Date: Tue, 12 Sep 2023 10:28:35 +0200
+	id 1qfyrE-002adD-14;
+	Tue, 12 Sep 2023 08:34:54 +0000
+Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.54])
+	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4RlGyD5V9wzMlK5;
+	Tue, 12 Sep 2023 16:31:16 +0800 (CST)
+Received: from localhost.localdomain (10.69.192.56) by
+ dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.31; Tue, 12 Sep 2023 16:34:42 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Yunsheng Lin
+	<linyunsheng@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Alexei
+ Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
+ Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<bpf@vger.kernel.org>
+Subject: [PATCH net-next v8 0/6] introduce page_pool_alloc() related API
+Date: Tue, 12 Sep 2023 16:31:19 +0800
+Message-ID: <20230912083126.65484-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH 8/9] dt-bindings: reserved-memory: MediaTek: Add reserved
- memory for SVP
-Content-Language: en-US
-To: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>
-Cc: "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "jstultz@google.com" <jstultz@google.com>,
- "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>,
- "christian.koenig@amd.com" <christian.koenig@amd.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?=
- <Jianjiao.Zeng@mediatek.com>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- =?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?= <kuohong.wang@mediatek.com>,
- "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
- "tjmercier@google.com" <tjmercier@google.com>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>
-References: <20230911023038.30649-1-yong.wu@mediatek.com>
- <20230911023038.30649-9-yong.wu@mediatek.com>
- <20230911154448.GA1279317-robh@kernel.org>
- <c2f1df12cc2dc25b342029e49c6d3f120d380b47.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <c2f1df12cc2dc25b342029e49c6d3f120d380b47.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.69.192.56]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_012840_059260_D5D975FC 
-X-CRM114-Status: GOOD (  25.63  )
+X-CRM114-CacheID: sfid-20230912_013452_734271_2B0DB1A6 
+X-CRM114-Status: GOOD (  15.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,77 +70,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/09/2023 08:16, Yong Wu (吴勇) wrote:
-> Hi Rob,
-> 
-> Thanks for your review.
-> 
-> On Mon, 2023-09-11 at 10:44 -0500, Rob Herring wrote:
->>  	 
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>  On Mon, Sep 11, 2023 at 10:30:37AM +0800, Yong Wu wrote:
->>> This adds the binding for describing a CMA memory for MediaTek
->> SVP(Secure
->>> Video Path).
->>
->> CMA is a Linux thing. How is this related to CMA?
-> 
->>>
->>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->>> ---
->>>  .../mediatek,secure_cma_chunkmem.yaml         | 42
->> +++++++++++++++++++
->>>  1 file changed, 42 insertions(+)
->>>  create mode 100644 Documentation/devicetree/bindings/reserved-
->> memory/mediatek,secure_cma_chunkmem.yaml
->>>
->>> diff --git a/Documentation/devicetree/bindings/reserved-
->> memory/mediatek,secure_cma_chunkmem.yaml
->> b/Documentation/devicetree/bindings/reserved-
->> memory/mediatek,secure_cma_chunkmem.yaml
->>> new file mode 100644
->>> index 000000000000..cc10e00d35c4
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/reserved-
->> memory/mediatek,secure_cma_chunkmem.yaml
->>> @@ -0,0 +1,42 @@
->>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->>> +%YAML 1.2
->>> +---
->>> +$id: 
->> http://devicetree.org/schemas/reserved-memory/mediatek,secure_cma_chunkmem.yaml#
->>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>> +
->>> +title: MediaTek Secure Video Path Reserved Memory
->>
->> What makes this specific to Mediatek? Secure video path is fairly 
->> common, right?
-> 
-> Here we just reserve a buffer and would like to create a dma-buf secure
-> heap for SVP, then the secure engines(Vcodec and DRM) could prepare
-> secure buffer through it.
->  
-> But the heap driver is pure SW driver, it is not platform device and
+In [1] & [2] & [3], there are usecases for veth and virtio_net
+to use frag support in page pool to reduce memory usage, and it
+may request different frag size depending on the head/tail
+room space for xdp_frame/shinfo and mtu/packet size. When the
+requested frag size is large enough that a single page can not
+be split into more than one frag, using frag support only have
+performance penalty because of the extra frag count handling
+for frag support.
 
-All drivers are pure SW.
+So this patchset provides a page pool API for the driver to
+allocate memory with least memory utilization and performance
+penalty when it doesn't know the size of memory it need
+beforehand.
 
-> we don't have a corresponding HW unit for it. Thus I don't think I
-> could create a platform dtsi node and use "memory-region" pointer to
-> the region. I used RESERVEDMEM_OF_DECLARE currently(The code is in 
-> [9/9]). Sorry if this is not right.
+1. https://patchwork.kernel.org/project/netdevbpf/patch/d3ae6bd3537fbce379382ac6a42f67e22f27ece2.1683896626.git.lorenzo@kernel.org/
+2. https://patchwork.kernel.org/project/netdevbpf/patch/20230526054621.18371-3-liangchen.linux@gmail.com/
+3. https://github.com/alobakin/linux/tree/iavf-pp-frag
 
-If this is not for any hardware and you already understand this (since
-you cannot use other bindings) then you cannot have custom bindings for
-it either.
+V8: Store the dma addr on a shifted u32 instead of using
+    dma_addr_t explicitly for 32-bit arch with 64-bit DMA.
+    Update document according to discussion in v7.
 
-> 
-> Then in our usage case, is there some similar method to do this? or
-> any other suggestion?
+V7: Fix a compile error, a few typo and use kernel-doc syntax.
 
-Don't stuff software into DTS.
+V6: Add a PP_FLAG_PAGE_SPLIT_IN_DRIVER flag to fail the page_pool
+    creation for 32-bit arch with 64-bit DMA when driver tries to
+    do the page splitting itself, adjust the requested size to
+    include head/tail room in veth, and rebased on the latest
+    next-net.
 
-Best regards,
-Krzysztof
+v5 RFC: Add a new page_pool_cache_alloc() API, and other minor
+        change as discussed in v4. As there seems to be three
+        comsumers that might be made use of the new API, so
+        repost it as RFC and CC the relevant authors to see
+        if the new API fits their need.
+
+V4. Fix a typo and add a patch to update document about frag
+    API, PAGE_POOL_DMA_USE_PP_FRAG_COUNT is not renamed yet
+    as we may need a different thread to discuss that.
+
+V3: Incorporate changes from the disscusion with Alexander,
+    mostly the inline wraper, PAGE_POOL_DMA_USE_PP_FRAG_COUNT
+    change split to separate patch and comment change.
+V2: Add patch to remove PP_FLAG_PAGE_FRAG flags and mention
+    virtio_net usecase in the cover letter.
+V1: Drop RFC tag and page_pool_frag patch.
+
+Yunsheng Lin (6):
+  page_pool: frag API support for 32-bit arch with 64-bit DMA
+  page_pool: unify frag_count handling in page_pool_is_last_frag()
+  page_pool: remove PP_FLAG_PAGE_FRAG
+  page_pool: introduce page_pool[_cache]_alloc() API
+  page_pool: update document about frag API
+  net: veth: use newly added page pool API for veth with xdp
+
+ Documentation/networking/page_pool.rst        |   4 +-
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c     |   2 -
+ .../net/ethernet/hisilicon/hns3/hns3_enet.c   |   3 +-
+ .../marvell/octeontx2/nic/otx2_common.c       |   2 +-
+ .../net/ethernet/mellanox/mlx5/core/en_main.c |   2 +-
+ drivers/net/veth.c                            |  25 +-
+ drivers/net/wireless/mediatek/mt76/mac80211.c |   2 +-
+ include/linux/mm_types.h                      |  13 +-
+ include/net/page_pool/helpers.h               | 225 +++++++++++++++---
+ include/net/page_pool/types.h                 |   6 +-
+ net/core/page_pool.c                          |  31 ++-
+ net/core/skbuff.c                             |   2 +-
+ 12 files changed, 240 insertions(+), 77 deletions(-)
+
+-- 
+2.33.0
 
 
