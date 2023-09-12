@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47ADDCA0ECE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC59ACA0EC3
 	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 09:34:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,23 +12,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/XAoc3XtjdJMmFn0pFOSSS/o9wDWnCp9GTGg4IE63rA=; b=ncNrOVymCa9FFp2d4c1Z2tOWNd
-	mEC4nJOF9OUb8/Qjoq6MB2MLGZ6ejfrvj4LYWJQHuSTrALkYnvHxmj4y2U5IUz5Av0HCiffjLL7TT
-	sOETtyYHsc5MfWwBD2ryeHXHp2ilV47H+xeRTQuW+2ideJp0XKFZt3oJI45TboTpYmCwVxl7LsXVj
-	QHXnYq/KEYUQeL1qNIxqxIcoCvHwnh7Sw7lePRbPz9pcsaqV5zWudQjp3AxpocIbHozHGoTx/TzQt
-	Aa2Zo4LtW68MUjDfor3CIS5zzcBc/wrKy30NMIlGSENHi+QrpRLXUFCkyL8DX5S1IgpQJl9dUc748
-	WkdGumGA==;
+	bh=7nfHrNwxsf6pM72zJKjQ7URtJR3vxdQS+5Agqv2xtf0=; b=VVOVSVWloNsZv/oioEK9r9EUUW
+	yE76Qi+4nr9i4LyE5sZaN5pv55KB568zEK8GIyBvqrdeaRE6SVODg4/IKEmfdSvc4itz1REpwn01S
+	OpFProYHKO9w5ww4q6eFU45YZn5i0Ts2mKY0RqCan+oLyPlSk0+XpxvUSFnIGcJismwPqZ7Y5yIX9
+	4PMMC05ckc5xFbGxeQXucDvZD5VC7nwt7JXG9TKVOSfmIz5GWE7ZLk4rIDKT5RrZjJwkwKoQs+h0v
+	Wjhc2rvD0ndWbilTPwEKfCnHMHZ4vkGBxlNbhz/KEL9mhQSDEQ6MqqRfc+rYbVXnJBgjNJ+O7cB78
+	me5zKtkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfzn6-002l3b-0R;
+	id 1qfzn6-002l3u-1p;
 	Tue, 12 Sep 2023 09:34:40 +0000
 Received: from smtp84.cstnet.cn ([159.226.251.84] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfzmr-002kuc-0D;
+	id 1qfzmt-002kuY-0j;
 	Tue, 12 Sep 2023 09:34:29 +0000
 Received: from 4d92782a4194.home.arpa (unknown [124.16.138.129])
-	by APP-05 (Coremail) with SMTP id zQCowAB3kQiQMABlcnFXDA--.38735S4;
-	Tue, 12 Sep 2023 17:34:09 +0800 (CST)
+	by APP-05 (Coremail) with SMTP id zQCowAB3kQiQMABlcnFXDA--.38735S6;
+	Tue, 12 Sep 2023 17:34:11 +0800 (CST)
 From: Jiasheng Jiang <jiasheng@iscas.ac.cn>
 To: mturquette@baylibre.com,
 	sboyd@kernel.org,
@@ -54,37 +54,38 @@ Cc: linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Jiasheng Jiang <jiasheng@iscas.ac.cn>
-Subject: [PATCH 3/5] clk: mediatek: clk-mt6797: Add check for mtk_alloc_clk_data
-Date: Tue, 12 Sep 2023 17:34:05 +0800
-Message-Id: <20230912093407.21505-3-jiasheng@iscas.ac.cn>
+Subject: [PATCH 5/5] clk: mediatek: clk-mt7629: Add check for mtk_alloc_clk_data
+Date: Tue, 12 Sep 2023 17:34:07 +0800
+Message-Id: <20230912093407.21505-5-jiasheng@iscas.ac.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230912093407.21505-1-jiasheng@iscas.ac.cn>
 References: <20230912093407.21505-1-jiasheng@iscas.ac.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zQCowAB3kQiQMABlcnFXDA--.38735S4
-X-Coremail-Antispam: 1UD129KBjvJXoW7uF1xXFW3WF18trWrCFW7Arb_yoW8Gw4kpr
-	47GryYyFyUJw17GFs5Gw4jk3W5C3W0qay5Kay3ZwnYvr13GrW7CF1Yka4v9a1IyrWv9Fy8
-	Xw1q9w409r4DCFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUPC14x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2048vs2IY020E87I2jVAFwI0_Jryl82xGYIkIc2
-	x26xkF7I0E14v26ryj6s0DM28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8wA2z4x0
-	Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr0_Gr1UM2
-	8EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVW0oVCq3wAS
-	0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2
-	IY67AKxVWUGVWUXwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0
-	Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628vn2kIc2
-	xKxwCY02Avz4vE14v_GFWl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1l
-	x2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14
-	v26r4a6rW5MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_JFI_Gr1lIxAIcVC0I7IY
-	x2IY6xkF7I0E14v26F4j6r4UJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z2
-	80aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI
-	43ZEXa7VUbfb1UUUUUU==
+X-CM-TRANSID: zQCowAB3kQiQMABlcnFXDA--.38735S6
+X-Coremail-Antispam: 1UD129KBjvJXoW7uF1xXFW5Zw4xtryxuF1DAwb_yoW8Xr4kpr
+	ykKr1YyFyUKw47Gws5Jw4qk3W5Zw10ga4UtFy3Zw10qr1agrW7CFyFkas29an2yrWv9Fyj
+	qw1Y9w4xuFW7uFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUmF14x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2048vs2IY020E87I2jVAFwI0_JF0E3s1l82xGYI
+	kIc2x26xkF7I0E14v26ryj6s0DM28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8wA2
+	z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr1j6F
+	4UJwA2z4x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_GcCE
+	3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E2I
+	x0cI8IcVAFwI0_JrI_JrylYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJVW8
+	JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2Y2
+	ka0xkIwI1lc2xSY4AK67AK6r4fMxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j
+	6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7
+	AF67AKxVW8ZVWrXwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1I6r4UMIIF0xvE
+	2Ix0cI8IcVCY1x0267AKxVW8Jr0_Cr1UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42
+	IY6I8E87Iv67AKxVW8JVWxJwCI42IY6I8E87Iv6xkF7I0E14v26r4UJVWxJrUvcSsGvfC2
+	KfnxnUUI43ZEXa7VUbaLvtUUUUU==
 X-Originating-IP: [124.16.138.129]
 X-CM-SenderInfo: pmld2xxhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_023425_486409_86B8E3FC 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20230912_023427_650499_E6F840B7 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,43 +103,43 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Add the check for the return value of mtk_alloc_clk_data() in order to
 avoid NULL pointer dereference.
 
-Fixes: 96596aa06628 ("clk: mediatek: add clk support for MT6797")
+Fixes: 3b5e748615e7 ("clk: mediatek: add clock support for MT7629 SoC")
 Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
 ---
- drivers/clk/mediatek/clk-mt6797.c | 6 ++++++
+ drivers/clk/mediatek/clk-mt7629.c | 6 ++++++
  1 file changed, 6 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-mt6797.c b/drivers/clk/mediatek/clk-mt6797.c
-index 2ebd25f0ce71..f12d4e9ff0bb 100644
---- a/drivers/clk/mediatek/clk-mt6797.c
-+++ b/drivers/clk/mediatek/clk-mt6797.c
-@@ -390,6 +390,8 @@ static int mtk_topckgen_init(struct platform_device *pdev)
+diff --git a/drivers/clk/mediatek/clk-mt7629.c b/drivers/clk/mediatek/clk-mt7629.c
+index 2882107d0f24..b8a1f01bc974 100644
+--- a/drivers/clk/mediatek/clk-mt7629.c
++++ b/drivers/clk/mediatek/clk-mt7629.c
+@@ -555,6 +555,8 @@ static int mtk_topckgen_init(struct platform_device *pdev)
  		return PTR_ERR(base);
  
- 	clk_data = mtk_alloc_clk_data(CLK_TOP_NR);
+ 	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
 +	if (!clk_data)
 +		return -ENOMEM;
  
- 	mtk_clk_register_factors(top_fixed_divs, ARRAY_SIZE(top_fixed_divs),
- 				 clk_data);
-@@ -545,6 +547,8 @@ static void mtk_infrasys_init_early(struct device_node *node)
+ 	mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
+ 				    clk_data);
+@@ -579,6 +581,8 @@ static int mtk_infrasys_init(struct platform_device *pdev)
+ 	struct clk_hw_onecell_data *clk_data;
  
- 	if (!infra_clk_data) {
- 		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR);
-+		if (!infra_clk_data)
-+			return;
+ 	clk_data = mtk_alloc_clk_data(CLK_INFRA_NR_CLK);
++	if (!clk_data)
++		return -ENOMEM;
  
- 		for (i = 0; i < CLK_INFRA_NR; i++)
- 			infra_clk_data->hws[i] = ERR_PTR(-EPROBE_DEFER);
-@@ -570,6 +574,8 @@ static int mtk_infrasys_init(struct platform_device *pdev)
+ 	mtk_clk_register_gates(&pdev->dev, node, infra_clks,
+ 			       ARRAY_SIZE(infra_clks), clk_data);
+@@ -602,6 +606,8 @@ static int mtk_pericfg_init(struct platform_device *pdev)
+ 		return PTR_ERR(base);
  
- 	if (!infra_clk_data) {
- 		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR);
-+		if (!infra_clk_data)
-+			return -ENOMEM;
- 	} else {
- 		for (i = 0; i < CLK_INFRA_NR; i++) {
- 			if (infra_clk_data->hws[i] == ERR_PTR(-EPROBE_DEFER))
+ 	clk_data = mtk_alloc_clk_data(CLK_PERI_NR_CLK);
++	if (!clk_data)
++		return -ENOMEM;
+ 
+ 	mtk_clk_register_gates(&pdev->dev, node, peri_clks,
+ 			       ARRAY_SIZE(peri_clks), clk_data);
 -- 
 2.25.1
 
