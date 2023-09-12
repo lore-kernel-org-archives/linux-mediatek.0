@@ -4,89 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28E4DCA0ECA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 09:25:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C65EDCA0EC3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 09:27:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LiDUTfzrawFh1EWKsCkz9kjpZ7OgtmwnDfS5wYzBFpI=; b=P4UpixvjSF2BTlQrwDDsPaUP4q
-	qiu45p7SFJczoLCtmoXVcD8NHTI/KqyKbOCWKy9zqNptFmM+jPhmsMm06cNpOPW5EP6BrTJzH4/6Y
-	8AqZA+yeVBXcfbNhQG/hW2E+8l/9mavB3kQ93uSU2KP9dghnqqycNkJ+F8ZwgdxLj5N+kNvoVxsNP
-	haTO2qlbofHxOk5LPDSjtK+DF5U3thwCVkNCEXtx4Vbw8NhuZmcQrApGX/eHcKbV75rSf3F9jpWAQ
-	Ort5W1J0P+lZ3BOHkl8KuhTPgs8poFMJgjvQol54cwDFSdryeroA4bnxyg+ENnObpzjb4nxx9tH7J
-	S/F+gTCA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yq1i6kxCpYGQXgE2QPg1Ntx2QucXtY9xeX9NGkvmJw4=; b=QEqgjuHmbwmOCAIKzzCbK5o4UF
+	oKlBiIL1CzVOm2n8frZA/55yV/2IC4L8f6EIbLQ5K7EHDBGgiZAlwhsAcddp+0frazI5XX4Z3lNkI
+	vrhofYiyIODVVyoUUYU5DL9rQTNRq1td+KpT5BHHW1o81qjTK6PHRKcHHy4FUjiiC9ERwOUmoJaeE
+	fBHzbB5lzUJ77bXEUOfUQB4EkcMJCufYH+Z1+ZEuDAArPNguKLXai14JqgocJHLxxXj2QitYQrOT6
+	nEjPP2QkhrGw0dq3woLVekrp9dKImSDGG4bGuWXC8LhsDTjKzqJk/81I1/lgA5KoDrcITuzilSvca
+	hllD4FZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfzeH-002j2d-01;
-	Tue, 12 Sep 2023 09:25:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1qfzg7-002jRH-24;
+	Tue, 12 Sep 2023 09:27:27 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfzeE-002j1Q-02;
-	Tue, 12 Sep 2023 09:25:31 +0000
-X-UUID: 4d608a24514e11ee9b7791016c24628a-20230912
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=LiDUTfzrawFh1EWKsCkz9kjpZ7OgtmwnDfS5wYzBFpI=;
-	b=cQs1XLG8jLaW8Xjc2YhhfbAxieBQHf7LfyiXt6nPjnV7+xDmb76/5QbasGuUW0l5dIxix1xD+byCaQy36PA7snqRJB3jiAV10ppv9zo/36orYlod4uxqUCMMx250f8jgcqJi3ieD6fTdumlcvmREiyzsAhb54YgwnUK9uRNq5J8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:0b483e0c-c7c8-4f99-8a7f-ffca7deccf30,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:0ad78a4,CLOUDID:56659aef-9a6e-4c39-b73e-f2bc08ca3dc5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 4d608a24514e11ee9b7791016c24628a-20230912
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1029205242; Tue, 12 Sep 2023 02:25:24 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 12 Sep 2023 17:24:47 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 12 Sep 2023 17:24:47 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Macpaul Lin
-	<macpaul.lin@mediatek.com>, =?UTF-8?q?Bernhard=20Rosenkr=C3=A4nzer?=
-	<bero@baylibre.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>
-Subject: [PATCH v4 1/2] dt-bindings: arm64: dts: mediatek: mt8365-evk: update compatible
-Date: Tue, 12 Sep 2023 17:24:43 +0800
-Message-ID: <20230912092444.31635-1-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1qfzg4-002jOy-1p;
+	Tue, 12 Sep 2023 09:27:26 +0000
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38C8mJTK021572;
+	Tue, 12 Sep 2023 09:27:00 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=yq1i6kxCpYGQXgE2QPg1Ntx2QucXtY9xeX9NGkvmJw4=;
+ b=E6l6y7NVDVFV+AyNEFfQhJpkGzPN4EyPGuecW0B8Z+y0q9s7v3Lyhvn5CiknCP/6YygR
+ uj5WlB47haS2DXfoRLSp1Aq2b/+pvfvkcSboB5YJHsHca0SIThYnwDgyjieDXVg3WB/B
+ cr1IatOWuQRMo03LcSP2dUj7i9hnEWBfXITlUEj3Nl3FXMCxdGFzdE5ZIU8asbdxf++i
+ KNN8X+3vXCMCeDJuxja/UF4lHQht6xNOzMOk+PW1jzz/kgomv5zVvUFU82Wj51G/KQRw
+ 6TQWBah3o0Sm0ziRiPzv2raKL3zK3n+zQKAEG4fogTcaQ3TDbUoDcaDZSXX+tMfWpwbQ MQ== 
+Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t1xjmu0pk-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 12 Sep 2023 09:26:59 +0000
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
+	by NASANPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38C9QwF4013043
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 12 Sep 2023 09:26:58 GMT
+Received: from [10.214.66.81] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Tue, 12 Sep
+ 2023 02:26:46 -0700
+Message-ID: <0eeef9c4-14c0-8283-803b-4684854d4be6@quicinc.com>
+Date: Tue, 12 Sep 2023 14:56:44 +0530
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--3.873600-8.000000
-X-TMASE-MatchedRID: i01+YSiNUzMcqJwtUHLtOe0yyL51qL/R+KgiyLtJrSBh2fnHe1cilw2K
-	u+gP3kxise0eJxE/UVXuev+YFA//bWsV28ESZOe8A9lly13c/gFVbRdL8GjdzZsoi2XrUn/Jn6K
-	dMrRsL14qtq5d3cxkNZivyg6Bk2T/JSOWtCLDmch82R3XsjC3oQuz+bKasm9tJFbIY5p5bKPvVa
-	y2kO94Fmb4YhaEgKYKAz08CGQC6VFhCo0f/eBiT6Wn1XP+V4+Y82Gj2QC3yG0smXVK/H8eHzG7s
-	r7xobSAsPEFD+rZA81DDKa3G4nrLQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.873600-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 1275F8D9617010498F2A59E9806A8072146B814A40781A02B725653987DFD2632000:8
-X-MTK: N
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v5 06/17] soc: qcom: Add Qualcomm APSS minidump kernel
+ driver
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, <corbet@lwn.net>,
+        <agross@kernel.org>, <andersson@kernel.org>,
+        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
+        <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
+        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
+        <will@kernel.org>, <linus.walleij@linaro.org>,
+        <andy.shevchenko@gmail.com>, <vigneshr@ti.com>, <nm@ti.com>,
+        <matthias.bgg@gmail.com>, <kgene@kernel.org>,
+        <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
+        <quic_tsoni@quicinc.com>
+CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-msm@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
+        <linux-remoteproc@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+        <linux-mediatek@lists.infradead.org>,
+        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
+References: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
+ <1694290578-17733-7-git-send-email-quic_mojha@quicinc.com>
+ <3bb1e84f-3b65-0596-1b6b-6decb0ff53cc@linaro.org>
+From: Mukesh Ojha <quic_mojha@quicinc.com>
+In-Reply-To: <3bb1e84f-3b65-0596-1b6b-6decb0ff53cc@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: hH9AZtJuheitgf9wV6vo0p7NH8AT0oje
+X-Proofpoint-GUID: hH9AZtJuheitgf9wV6vo0p7NH8AT0oje
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-09-12_06,2023-09-05_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 mlxscore=0
+ phishscore=0 lowpriorityscore=0 suspectscore=0 mlxlogscore=999
+ malwarescore=0 adultscore=0 priorityscore=1501 clxscore=1015 bulkscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2308100000 definitions=main-2309120079
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_022530_050858_18BC267E 
-X-CRM114-Status: GOOD (  10.22  )
+X-CRM114-CacheID: sfid-20230912_022724_722355_A074C97C 
+X-CRM114-Status: GOOD (  24.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,43 +114,173 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update compatible of 'mediatek,mt8365-evk' from 'enum' to 'const'.
+Thanks for your time in reviewing this.
 
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
----
- Documentation/devicetree/bindings/arm/mediatek.yaml | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+On 9/11/2023 4:31 PM, Krzysztof Kozlowski wrote:
+> On 09/09/2023 22:16, Mukesh Ojha wrote:
+>> Minidump is a best effort mechanism to collect useful and predefined
+>> data for first level of debugging on end user devices running on
+>> Qualcomm SoCs. It is built on the premise that System on Chip (SoC)
+>> or subsystem part of SoC crashes, due to a range of hardware and
+>> software bugs. Hence, the ability to collect accurate data is only
+>> a best-effort. The data collected could be invalid or corrupted,
+>> data collection itself could fail, and so on.
+> 
+> ...
+> 
+>> +static int qcom_apss_md_table_init(struct minidump *md,
+>> +				   struct minidump_subsystem *mdss_toc)
+>> +{
+>> +	struct minidump_ss_data *mdss_data;
+>> +
+>> +	mdss_data = devm_kzalloc(md->dev, sizeof(*mdss_data), GFP_KERNEL);
+>> +	if (!mdss_data)
+>> +		return -ENOMEM;
+>> +
+>> +	mdss_data->md_ss_toc = mdss_toc;
+>> +	mdss_data->md_regions = devm_kcalloc(md->dev, MAX_NUM_ENTRIES,
+>> +					     sizeof(struct minidump_region),
+>> +					     GFP_KERNEL);
+>> +	if (!mdss_data->md_regions)
+>> +		return -ENOMEM;
+>> +
+>> +	mdss_toc = mdss_data->md_ss_toc;
+>> +	mdss_toc->regions_baseptr = cpu_to_le64(virt_to_phys(mdss_data->md_regions));
+>> +	mdss_toc->enabled = cpu_to_le32(MINIDUMP_SS_ENABLED);
+>> +	mdss_toc->status = cpu_to_le32(1);
+>> +	mdss_toc->region_count = cpu_to_le32(0);
+>> +
+>> +	/* Tell bootloader not to encrypt the regions of this subsystem */
+>> +	mdss_toc->encryption_status = cpu_to_le32(MINIDUMP_SS_ENCR_DONE);
+>> +	mdss_toc->encryption_required = cpu_to_le32(MINIDUMP_SS_ENCR_NOTREQ);
+>> +
+>> +	md->apss_data = mdss_data;
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static int qcom_apss_minidump_probe(struct platform_device *pdev)
+>> +{
+>> +	struct minidump_global_toc *mdgtoc;
+>> +	struct minidump *md;
+>> +	size_t size;
+>> +	int ret;
+>> +
+>> +	md = devm_kzalloc(&pdev->dev, sizeof(struct minidump), GFP_KERNEL);
+> 
+> sizeof(*)
+> 
+> Didn't you get such comments already?
 
-changes for v2:
- - rebase this patch to follow the v5 patch set of mt8395.
-  - depends on https://lore.kernel.org/lkml/20230909132819.21626-2-macpaul.lin@mediatek.com/T/
- - Fix description as a single board.
+Ok, will fix this, no i have not got such comments as of yet.
+Any reason of using this way?
 
-changes for v3:
- - rebase this patch to follow the v6 patch set of mt8395.
-  - depends on https://lore.kernel.org/lkml/20230911115717.26184-1-macpaul.lin@mediatek.com/T/
- - drop "Fixes:" tag in commit message.
- - drop platform description update for mt8365-evk (Genio 350-EVK).
+> 
+> 
+>> +	if (!md)
+>> +		return -ENOMEM;
+>> +
+>> +	md->dev = &pdev->dev;
+>> +	mdgtoc = qcom_smem_get(QCOM_SMEM_HOST_ANY, SBL_MINIDUMP_SMEM_ID, &size);
+>> +	if (IS_ERR(mdgtoc)) {
+>> +		ret = PTR_ERR(mdgtoc);
+>> +		dev_err(md->dev, "Couldn't find minidump smem item: %d\n", ret);
+>> +		return ret;
+> 
+> The syntax is:
+> return dev_err_probe
 
-changes for v4:
- - Replace "Fix" in commit message with "Update".
- - Fix 'make dtbs_check W=1' error for 'const: mediatek,mt8365-evk'
+ACK.
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 2e8ad49c3479..9031160ef41b 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -245,8 +245,7 @@ properties:
-               - mediatek,mt8183-pumpkin
-           - const: mediatek,mt8183
-       - items:
--          - enum:
--              - mediatek,mt8365-evk
-+          - const: mediatek,mt8365-evk
-           - const: mediatek,mt8365
-       - description: MediaTek Genio 1200 Boards (Genio 1200 EVK)
-         items:
--- 
-2.18.0
+> 
+>> +	}
+>> +
+>> +	if (size < sizeof(*mdgtoc) || !mdgtoc->status) {
+>> +		dev_err(md->dev, "minidump table is not initialized: %d\n", ret);
+> 
+> ret is uninitialized here. Please use automated tools for checking your
+> code:
+> coccinelle, smatch and sparse
 
+Thanks.
+
+> 
+>> +		return -EINVAL;
+>> +	}
+>> +
+>> +	mutex_init(&md->md_lock);
+>> +	ret = qcom_apss_md_table_init(md, &mdgtoc->subsystems[MINIDUMP_APSS_DESC]);
+>> +	if (ret) {
+>> +		dev_err(md->dev, "apss minidump initialization failed: %d\n", ret);
+>> +		return ret;
+>> +	}
+>> +
+>> +	/* First entry would be ELF header */
+>> +	ret = qcom_md_add_elfheader(md);
+>> +	if (ret) {
+>> +		dev_err(md->dev, "Failed to add elf header: %d\n", ret);
+>> +		memset(md->apss_data->md_ss_toc, 0, sizeof(struct minidump_subsystem));
+> 
+> Why do you need it?
+
+Earlier, i got comment about clearing the SS TOC(subsystem table of 
+content) which is shared with other SS and it will have stale values.
+
+> 
+>> +		return ret;
+>> +	}
+>> +
+>> +	platform_set_drvdata(pdev, md);
+>> +
+>> +	return ret;
+>> +}
+>> +
+>> +static int qcom_apss_minidump_remove(struct platform_device *pdev)
+>> +{
+>> +	struct minidump *md = platform_get_drvdata(pdev);
+>> +	struct minidump_ss_data *mdss_data;
+>> +
+>> +	mdss_data = md->apss_data;
+>> +	memset(mdss_data->md_ss_toc, cpu_to_le32(0), sizeof(struct minidump_subsystem));
+> 
+> Why do you need it?
+
+Same as above.
+
+> 
+>> +	md = NULL;
+> 
+> That's useless assignment.
+
+Ok.
+
+> 
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static struct platform_driver qcom_minidump_driver = {
+>> +	.probe = qcom_apss_minidump_probe,
+>> +	.remove = qcom_apss_minidump_remove,
+>> +	.driver  = {
+>> +		.name = "qcom-minidump-smem",
+>> +	},
+>> +};
+>> +
+>> +module_platform_driver(qcom_minidump_driver);
+>> +
+>> +MODULE_DESCRIPTION("Qualcomm APSS minidump driver");
+>> +MODULE_LICENSE("GPL");
+>> +MODULE_ALIAS("platform:qcom-minidump-smem");
+> 
+> Add a proper ID table instead of re-inventing it with module aliases.
+
+Ok.
+
+-Mukesh
+
+> 
+> Best regards,
+> Krzysztof
+> 
 
