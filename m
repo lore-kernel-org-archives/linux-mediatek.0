@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23CA5CA0EF3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 15:18:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0EBACA0EF4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 15:20:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4QhNF4I6rFrr9ApetBsmhHiPTfVj4BGjK00zfnYfCQc=; b=LdQMVi3aodn1aRNB193P8bdh/e
-	f/sQcR+TDKzPwUnpKcSskYoPJvorDLlxw1zmeo2ozhB//aQLI6FeyW21jB/eFiLg1QEdSZlaLAd8D
-	cfJfGpOzXXKm01S5uIipPzQ513FMEEVj9Av/E/tSCdfBsKGutjqtTrBkqudvjrGQyd5Sb0WX2Rsbg
-	f3M8sTWAotPZJE4TcBrVTWXEq5nwXesqN5u/Tyn3yOEJ8ftppyQjabF5qWKs6oRVa58PjcVvT13Vj
-	uzpkWsXU9ywtsm7XXDvKFQov4Gu5RbJAuCr9GswmPIHRFjuwKSdcJ1vqNRV5wb5E/Za4wsvdV9FwF
-	nuQ/tzJg==;
+	bh=INmosFMOnH6LGhageeoojetA7MuUIWKTL3iXH9RgJpU=; b=Dy/oUpnloCxD/zoqZrkT1KiJdm
+	9pj2UyBaPa+W6PDQLR5rnP651Ce5fwH5hqHThd4RRk2txdn2+J91KY9bOSHfSZDQ6OnoS/Dd63dpa
+	YPK7OZ328CEwKRR8Ud5jtyKzpRUZZUIpqkU6QrkOg0TVJTi9HHiL0b95lYuCFSQUIRUjrksBOBP/K
+	xx/IbNd93gnSpdc+L5gVrmMJgn5TDDU2lgV1w8fOK9otKdz3tn2PgylXQBg6jsrh+HuSJaVJq982H
+	ncppvPAsjU97lVImKFmNmZ2i1f2dWnGTcTufl8bd8WFO6734kGyOaBWVEASSXYRYFKB8ily4iTuVn
+	G77189Ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg59T-003hrV-03;
-	Tue, 12 Sep 2023 15:18:07 +0000
+	id 1qg5BL-003i1r-1Q;
+	Tue, 12 Sep 2023 15:20:03 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg59O-003hqY-2c;
-	Tue, 12 Sep 2023 15:18:04 +0000
+	id 1qg5BH-003i0d-1S;
+	Tue, 12 Sep 2023 15:20:01 +0000
 Received: from nicolas-tpx395.localdomain (unknown [IPv6:2606:6d00:15:bae9::7a9])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E5CF1660731E;
-	Tue, 12 Sep 2023 16:17:59 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 55785660731E;
+	Tue, 12 Sep 2023 16:19:56 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694531881;
-	bh=Hx1lpYS6F6d56eE0iklgSTbFgFAyo1rdh+QYd7bka3s=;
+	s=mail; t=1694531998;
+	bh=UZbCv99LRYKxLgbkqaaqejLJxYvEBsUqCHcB/QV621E=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=QjwEmmgwW6dU+ZMQqDaA/HiWw4ynMw2LgpaZuRPcohd4tA2tBjVsoOj99YbDOk1pK
-	 j+C939ll4Eisaj6gfj2VOD0PU6EbzFkSL9HyyX1MHKqF65CoXkhYPOlRazvPrgny0S
-	 wA0M9TGqS4M67URNwkk04V1vG4G27kmSPv0wDvCrYu4ymGKx5XB3TNdRD52P6DVqf/
-	 A7Y0qM7lzY3++ACYMR47Hnwq1BPmFFAoMYM3xU42kLUDKKovk8cwYQtfQiCHL/nlBy
-	 Wc9sW4ptmOa54lN7XgTpLpzDSswPaksbxqpTr7NWYnJgnLpDQKiinKxOq0M8PeGyKm
-	 ruayIiqsBGTng==
-Message-ID: <44b9c67df85414baafc3bdbcc3e39dd5f4cbdec6.camel@collabora.com>
-Subject: Re: [PATCH 11/14] media: medkatek: vcodec: covert secure fd to
- secure handle
+	b=ajxj/VPvnU1uOPa/+UcO+p+n0/XAeDpiX3jedUX8xezygJG6TGLVMJl1Qx9I6SX2J
+	 28mcAYh1jqVUmGlkFb3Q6Qo+/EkjNnULJgSJwTVZ2HAw4e5XXgEq+VzEPl1b9j88GF
+	 ulCWtYe2iCDu/TdRy+3Wk+H+pB5e9cA+UKBMiKMBDeukwPVGywcC+XWRNoLkkIN8ML
+	 pg/+LCs0pvknCwF3MilvnpWgCB7fugTkwAMTreyNNvsUBJpy/C19ukvg8qkbH++XHu
+	 PvVdtmGpFsZM86+5CZi8KLYdp8M7CK0sC3v0ycmKOCgIeefhTSkowDw9INsulbFzgm
+	 IWftApNPuXjGQ==
+Message-ID: <4c8c43775c3c691bdc3724b588fbeba6bee66347.camel@collabora.com>
+Subject: Re: [PATCH 12/14] media: medkatek: vcodec: set secure mode to
+ decoder driver
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: Yunfei Dong =?UTF-8?Q?=28=E8=91=A3=E4=BA=91=E9=A3=9E=29?=
  <Yunfei.Dong@mediatek.com>, "nhebert@chromium.org" <nhebert@chromium.org>, 
@@ -64,19 +64,19 @@ Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, "hsinyi@chromium.org"
  <hsinyi@chromium.org>,  "linux-arm-kernel@lists.infradead.org"
  <linux-arm-kernel@lists.infradead.org>
-Date: Tue, 12 Sep 2023 11:17:50 -0400
-In-Reply-To: <2c4fe325d8e541749a84ad30774129321e169151.camel@mediatek.com>
+Date: Tue, 12 Sep 2023 11:19:48 -0400
+In-Reply-To: <5c2ec70c8c346e27b7ddfef56df50bed06d26a5e.camel@mediatek.com>
 References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
-	 <20230911125936.10648-12-yunfei.dong@mediatek.com>
-	 <4867b91b3bbc9267982dd80ad79f3e73a7bab6fc.camel@collabora.com>
-	 <2c4fe325d8e541749a84ad30774129321e169151.camel@mediatek.com>
+	 <20230911125936.10648-13-yunfei.dong@mediatek.com>
+	 <1df3e79b84933dda0313d0d9719220dbc06c9022.camel@collabora.com>
+	 <5c2ec70c8c346e27b7ddfef56df50bed06d26a5e.camel@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_081803_110385_A8D6AB81 
-X-CRM114-Status: GOOD (  37.83  )
+X-CRM114-CacheID: sfid-20230912_081959_784697_5DECEA00 
+X-CRM114-Status: GOOD (  39.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,220 +91,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le mardi 12 septembre 2023 =C3=A0 01:55 +0000, Yunfei Dong (=E8=91=A3=E4=BA=
+Le mardi 12 septembre 2023 =C3=A0 01:48 +0000, Yunfei Dong (=E8=91=A3=E4=BA=
 =91=E9=A3=9E) a =C3=A9crit=C2=A0:
 > Hi Nicolas,
 >=20
 > Thanks for your advice.
-> On Mon, 2023-09-11 at 11:47 -0400, Nicolas Dufresne wrote:
+>=20
+> On Mon, 2023-09-11 at 11:54 -0400, Nicolas Dufresne wrote:
 > > Hi,
 > >=20
 > > Le lundi 11 septembre 2023 =C3=A0 20:59 +0800, Yunfei Dong a =C3=A9crit=
  :
-> > > User driver will fill or parse data in optee-os with secure handle,
-> > > need to covert secure fd to secure handle in kernel.
+> > > Setting secure mode flag to kernel when trying to play secure
+> > > video,
+> > > then decoder driver will initialize tee related interface to
+> > > support
+> > > svp.
 > >=20
-> > A major rework of the wording is needed in this patchset, to fix the
-> > obvious
-> > typos like covert->convert,=20
-> I will fix in next patch.
-> > but also to stop calling dmabuf allocated from
-> > secure heap, secure fd,=20
-> Could you please help to explain it detail?
-> Whether you meaning I can't
-> call dma_buf_get/dma_buf_attach functions directly?
-
-This is in regard to comments in the code. I'd suggest to use secure dmabuf=
- fd
-rather then just "secure fd", which is ambiguous.
-
->=20
-> > its not precise enough to understand what this patch is
-> > going to be about.
 > >=20
-> This patch is used to covert secure fd to secure handle.
-> User space will get a secure fd using dma interface to allocate secure
-> memory, but need to covert fd to handle in order to fill es
-> buffer(output queue) in optee-os. I will write the commit message
-> detail.
+> > This is not what the patch is doing, please rework. This patch is an
+> > vendor API
+> > addition introducing V4L2_CID_MPEG_MTK_SET_SECURE_MODE. I should not
+> > have to
+> > read your patch to understand this.
+> >=20
+> I don't know your meaning clearly. Whether I need to add one new patch
+> to add the definition of V4L2_CID_MPEG_MTK_SET_SECURE_MODE? Than the
+> driver calling it to set secure mode?
 
-When you say "secure fd", it gives readers the impression you have introduc=
-ed a
-new concept of memory object in the linux kernel. In fact, these are dmabuf
-object. My suggestion is to rework the accuracy of the naming and wording.
+I'm commenting next to your commit message. The commit message is saying
+something that does not represent what the patch is actually doing, please
+rewrite your commit message according to good practices.
 
 >=20
 > Best Regards,
 > Yunfei Dong
+>=20
 > > >=20
 > > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 > > > ---
-> > >  .../vcodec/decoder/mtk_vcodec_dec_drv.c       |  1 +
-> > >  .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 54
-> > > ++++++++++++++++++-
-> > >  drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  5 ++
-> > >  include/uapi/linux/v4l2-controls.h            |  4 ++
-> > >  4 files changed, 62 insertions(+), 2 deletions(-)
+> > >  .../vcodec/decoder/mtk_vcodec_dec_stateless.c     | 15
+> > > ++++++++++++++-
+> > >  drivers/media/v4l2-core/v4l2-ctrls-defs.c         |  5 +++++
+> > >  include/uapi/linux/v4l2-controls.h                |  1 +
+> > >  3 files changed, 20 insertions(+), 1 deletion(-)
 > > >=20
 > > > diff --git
-> > > a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv
-> > > .c
-> > > b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv
-> > > .c
-> > > index 0a89ce452ac3..64e006820f43 100644
-> > > ---
-> > > a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv
-> > > .c
-> > > +++
-> > > b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv
-> > > .c
-> > > @@ -571,3 +571,4 @@ module_platform_driver(mtk_vcodec_dec_driver);
-> > > =20
-> > >  MODULE_LICENSE("GPL v2");
-> > >  MODULE_DESCRIPTION("Mediatek video codec V4L2 decoder driver");
-> > > +MODULE_IMPORT_NS(DMA_BUF);
-> > > diff --git
 > > > a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta
 > > > teless.c
 > > > b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta
 > > > teless.c
-> > > index 2ea517883a86..d2b09ce9f1cf 100644
+> > > index d2b09ce9f1cf..a981178c25d9 100644
 > > > ---
 > > > a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta
 > > > teless.c
 > > > +++
 > > > b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta
 > > > teless.c
-> > > @@ -426,6 +426,46 @@ static int mtk_vcodec_get_pic_info(struct
-> > > mtk_vcodec_dec_ctx *ctx)
-> > >  	return ret;
-> > >  }
-> > > =20
-> > > +static int mtk_dma_contig_get_secure_handle(struct
-> > > mtk_vcodec_dec_ctx *ctx, int fd)
-> > > +{
-> > > +	int secure_handle =3D 0;
-> > > +	struct dma_buf *buf;
-> > > +	struct dma_buf_attachment *dba;
-> > > +	struct sg_table *sgt;
-> > > +	struct device *dev =3D &ctx->dev->plat_dev->dev;
-> > > +
-> > > +	buf =3D dma_buf_get(fd);
-> > > +	if (IS_ERR(buf)) {
-> > > +		mtk_v4l2_vdec_err(ctx, "dma_buf_get fail fd:%d", fd);
-> > > +		return 0;
-> > > +	}
-> > > +
-> > > +	dba =3D dma_buf_attach(buf, dev);
-> > > +	if (IS_ERR(dba)) {
-> > > +		mtk_v4l2_vdec_err(ctx, "dma_buf_attach fail fd:%d",
-> > > fd);
-> > > +		goto err_attach;
-> > > +	}
-> > > +
-> > > +	sgt =3D dma_buf_map_attachment(dba, DMA_BIDIRECTIONAL);
-> > > +	if (IS_ERR(sgt)) {
-> > > +		mtk_v4l2_vdec_err(ctx, "dma_buf_map_attachment fail
-> > > fd:%d", fd);
-> > > +		goto err_map;
-> > > +	}
-> > > +	secure_handle =3D sg_dma_address(sgt->sgl);
-> > > +
-> > > +	dma_buf_unmap_attachment(dba, sgt, DMA_BIDIRECTIONAL);
-> > > +	dma_buf_detach(buf, dba);
-> > > +	dma_buf_put(buf);
-> > > +
-> > > +	return secure_handle;
-> > > +err_map:
-> > > +	dma_buf_detach(buf, dba);
-> > > +err_attach:
-> > > +	dma_buf_put(buf);
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > >  static int mtk_vdec_s_ctrl(struct v4l2_ctrl *ctrl)
-> > >  {
-> > >  	struct mtk_vcodec_dec_ctx *ctx =3D ctrl_to_dec_ctx(ctrl);
-> > > @@ -436,7 +476,7 @@ static int mtk_vdec_s_ctrl(struct v4l2_ctrl
+> > > @@ -535,6 +535,17 @@ static int mtk_vdec_s_ctrl(struct v4l2_ctrl
 > > > *ctrl)
-> > >  	struct v4l2_ctrl *hdr_ctrl;
-> > >  	const struct mtk_vcodec_dec_pdata *dec_pdata =3D ctx->dev-
-> > > > vdec_pdata;
-> > >  	const struct mtk_video_fmt *fmt;
-> > > -	int i =3D 0, ret =3D 0;
-> > > +	int i =3D 0, ret =3D 0, sec_fd;
-> > > =20
-> > >  	hdr_ctrl =3D ctrl;
-> > >  	if (!hdr_ctrl || !hdr_ctrl->p_new.p)
-> > > @@ -489,6 +529,12 @@ static int mtk_vdec_s_ctrl(struct v4l2_ctrl
-> > > *ctrl)
-> > >  			return -EINVAL;
-> > >  		}
-> > >  		break;
-> > > +	case V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE:
-> > > +		sec_fd =3D ctrl->val;
-> > > +
-> > > +		ctrl->val =3D mtk_dma_contig_get_secure_handle(ctx, ctrl-
+> > >  		ctrl->val =3D mtk_dma_contig_get_secure_handle(ctx, ctrl-
 > > > > val);
-> > > +		mtk_v4l2_vdec_dbg(3, ctx, "get secure handle: %d =3D>
+> > >  		mtk_v4l2_vdec_dbg(3, ctx, "get secure handle: %d =3D>
 > > > 0x%x", sec_fd, ctrl->val);
+> > >  		break;
+> > > +	case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:
+> >=20
+> > Stepping back a little and focusing on the API, what makes your
+> > driver so
+> > special that it should be the only one having a "secure mode" ? We
+> > are touching
+> > in gap in the media pipeline in Linux, and this should come with
+> > consideration
+> > of the global API.
+> >=20
+> > Why is this API better then let's say Google Android one, were they
+> > expose 2
+> > device nodes in their fork of the MFC driver (a secure and a non
+> > secure one) ?
+> >=20
+> > regards,
+> > Nicolas
+> >=20
+> > p.s. you forgot to document your control in the RST doc, please do in
+> > following
+> > release.
+> >=20
+> > > +		ctx->is_svp_mode =3D ctrl->val;
+> > > +
+> > > +		if (ctx->is_svp_mode) {
+> > > +			ret =3D mtk_vcodec_dec_optee_open(ctx->dev-
+> > > > optee_private);
+> > > +			if (ret)
+> > > +				mtk_v4l2_vdec_err(ctx, "open secure
+> > > mode failed.");
+> > > +			else
+> > > +				mtk_v4l2_vdec_dbg(3, ctx, "decoder in
+> > > secure mode: %d", ctrl->val);
+> > > +		}
 > > > +		break;
 > > >  	default:
 > > >  		mtk_v4l2_vdec_dbg(3, ctx, "Not supported to set ctrl
 > > > id: 0x%x\n", hdr_ctrl->id);
 > > >  		return ret;
-> > > @@ -525,8 +571,9 @@ static const struct v4l2_ctrl_ops
-> > > mtk_vcodec_dec_ctrl_ops =3D {
-> > >  static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx
-> > > *ctx)
-> > >  {
+> > > @@ -573,7 +584,7 @@ static int mtk_vcodec_dec_ctrls_setup(struct
+> > > mtk_vcodec_dec_ctx *ctx)
 > > >  	unsigned int i;
-> > > +	struct v4l2_ctrl *ctrl;
+> > >  	struct v4l2_ctrl *ctrl;
 > > > =20
-> > > -	v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS);
-> > > +	v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 1);
+> > > -	v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 1);
+> > > +	v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 2);
 > > >  	if (ctx->ctrl_hdl.error) {
 > > >  		mtk_v4l2_vdec_err(ctx, "v4l2_ctrl_handler_init
 > > > failed\n");
 > > >  		return ctx->ctrl_hdl.error;
-> > > @@ -543,6 +590,9 @@ static int mtk_vcodec_dec_ctrls_setup(struct
+> > > @@ -592,6 +603,8 @@ static int mtk_vcodec_dec_ctrls_setup(struct
 > > > mtk_vcodec_dec_ctx *ctx)
-> > >  		}
-> > >  	}
 > > > =20
+> > >  	ctrl =3D v4l2_ctrl_new_std(&ctx->ctrl_hdl,
+> > > &mtk_vcodec_dec_ctrl_ops,
+> > >  				 V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE,
+> > > 0, 65535, 1, 0);
 > > > +	ctrl =3D v4l2_ctrl_new_std(&ctx->ctrl_hdl,
 > > > &mtk_vcodec_dec_ctrl_ops,
-> > > +				 V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE,
-> > > 0, 65535, 1, 0);
-> > > +
+> > > +				 V4L2_CID_MPEG_MTK_SET_SECURE_MODE, 0,
+> > > 65535, 1, 0);
+> > > =20
 > > >  	v4l2_ctrl_handler_setup(&ctx->ctrl_hdl);
 > > > =20
-> > >  	return 0;
 > > > diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
 > > > b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> > > index 8696eb1cdd61..d8cf01f76aab 100644
+> > > index d8cf01f76aab..a507045a3f30 100644
 > > > --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
 > > > +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> > > @@ -1041,6 +1041,7 @@ const char *v4l2_ctrl_get_name(u32 id)
-> > >  	case V4L2_CID_MPEG_VIDEO_HEVC_SIZE_OF_LENGTH_FIELD:	return
-> > > "HEVC Size of Length Field";
+> > > @@ -1042,6 +1042,7 @@ const char *v4l2_ctrl_get_name(u32 id)
 > > >  	case V4L2_CID_MPEG_VIDEO_REF_NUMBER_FOR_PFRAMES:	return
 > > > "Reference Frames for a P-Frame";
 > > >  	case V4L2_CID_MPEG_VIDEO_PREPEND_SPSPPS_TO_IDR:		ret
 > > > urn "Prepend SPS and PPS to IDR";
-> > > +	case V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE:		return
+> > >  	case V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE:		return
 > > > "MediaTek Decoder get secure handle";
+> > > +	case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:			ret
+> > > urn "MediaTek Decoder set secure mode";
 > > > =20
 > > >  	/* AV1 controls */
 > > >  	case V4L2_CID_MPEG_VIDEO_AV1_PROFILE:			ret
 > > > urn "AV1 Profile";
-> > > @@ -1437,6 +1438,10 @@ void v4l2_ctrl_fill(u32 id, const char
+> > > @@ -1442,6 +1443,10 @@ void v4l2_ctrl_fill(u32 id, const char
 > > > **name, enum v4l2_ctrl_type *type,
-> > >  	case V4L2_CID_MPEG_VIDEO_VPX_NUM_REF_FRAMES:
-> > >  		*type =3D V4L2_CTRL_TYPE_INTEGER_MENU;
+> > >  		*type =3D V4L2_CTRL_TYPE_INTEGER;
+> > >  		*flags |=3D V4L2_CTRL_FLAG_WRITE_ONLY;
 > > >  		break;
-> > > +	case V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE:
+> > > +	case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:
 > > > +		*type =3D V4L2_CTRL_TYPE_INTEGER;
 > > > +		*flags |=3D V4L2_CTRL_FLAG_WRITE_ONLY;
 > > > +		break;
@@ -313,26 +251,21 @@ object. My suggestion is to rework the accuracy of the naming and wording.
 > > >  	case V4L2_CID_CODEC_CLASS:
 > > > diff --git a/include/uapi/linux/v4l2-controls.h
 > > > b/include/uapi/linux/v4l2-controls.h
-> > > index c3604a0a3e30..7b3694985366 100644
+> > > index 7b3694985366..88e90d943e38 100644
 > > > --- a/include/uapi/linux/v4l2-controls.h
 > > > +++ b/include/uapi/linux/v4l2-controls.h
-> > > @@ -954,6 +954,10 @@ enum v4l2_mpeg_mfc51_video_force_frame_type {
-> > >  #define V4L2_CID_MPEG_MFC51_VIDEO_H264_ADAPTIVE_RC_STATIC	=09
-> > > (V4L2_CID_CODEC_MFC51_BASE+53)
-> > >  #define V4L2_CID_MPEG_MFC51_VIDEO_H264_NUM_REF_PIC_FOR_P	=09
-> > > (V4L2_CID_CODEC_MFC51_BASE+54)
-> > > =20
-> > > +/*  MPEG-class control IDs specific to the MediaTek Decoder driver
+> > > @@ -957,6 +957,7 @@ enum v4l2_mpeg_mfc51_video_force_frame_type {
+> > >  /*  MPEG-class control IDs specific to the MediaTek Decoder driver
 > > > as defined by V4L2 */
-> > > +#define V4L2_CID_MPEG_MTK_BASE			(V4L2_CTRL_CLAS
+> > >  #define V4L2_CID_MPEG_MTK_BASE			(V4L2_CTRL_CLAS
 > > > S_CODEC | 0x2000)
-> > > +#define V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE	(V4L2_CID_MPEG_
+> > >  #define V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE	(V4L2_CID_MPEG_
 > > > MTK_BASE+8)
-> > > +
+> > > +#define V4L2_CID_MPEG_MTK_SET_SECURE_MODE	(V4L2_CID_MPEG_MTK_BASE
+> > > +9)
+> > > =20
 > > >  /*  Camera class control IDs */
 > > > =20
-> > >  #define V4L2_CID_CAMERA_CLASS_BASE	(V4L2_CTRL_CLASS_CAMERA |
-> > > 0x900)
 > >=20
 > >=20
 
