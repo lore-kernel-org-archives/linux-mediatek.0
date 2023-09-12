@@ -4,86 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00D88CA0ECA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 10:03:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EBE4CA0ECF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 10:14:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AR2PId7d1YYlec/KSHhJ/Je5hHylpQP2AIsUVGBLYi4=; b=TSXWqqabjCcosLC0QP9o4INufW
-	ofXohDHz6fYj1BDZphiMXV8C3aN2gcmRYqRj7SX9y4/ew+YNVbsKpUirrsaGIQrme+wiSKBrZdj6Z
-	p0c4WuYdtbO50u1H95W47jryuf5UnOhJQQE0zkq6pHT8wC8lt5hZtyJ+mdLQ58jkSJE8wWqrzLk8u
-	4nMGWmodIoxOfN3AcQiUWE5b/GmycyBw9xELIuHDqg58VIHnlQNl+99iTU06BRI0QKLxTxuK7qLhm
-	W8IaiMADypGxEwgdiaYudD/kNOG6HEWf/OZ+M+X0YDNPz6kN2XkPbUIDwYpaglvJMyNE8N/H+UIPX
-	PwmJTJ6Q==;
+	bh=3F8D/kWHFHiPPeca3ZbIL6DzPLlWF/Zt3BHbtxQgodQ=; b=ozSJjwinyzH1euNDZe1SATudHB
+	Em71NZaRcluH+APrmagxvsvivrIbIDtYPYHz3/fSPqZvXUQwBVhnuqpX398AC0E/3rVZw0Ow5BujQ
+	rzT2fZ/rX8ZaVH7O6EZoOV/r+WpPvjFGk81+kJ9y/kKUgMxVEELeeL8GZnbLiuswSdGl/oW616u5M
+	tA/KZti8gjcg/uX3JgZxlpEBJWY/fJOD3kndjrpqCNdnc2K7CwwoGfzidakZIebA/JClCtMoYh5/4
+	Mq1TWOzJ6BMot0LULVblASY0LaMyNp5vmeTkoZP7Eb3++LUmP8/7y1/3uESsZeHliJF0kIwnoKFBs
+	J7KOmZGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg0Ek-002qq6-2O;
-	Tue, 12 Sep 2023 10:03:14 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg0Ef-002qnS-2J;
-	Tue, 12 Sep 2023 10:03:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=AR2PId7d1YYlec/KSHhJ/Je5hHylpQP2AIsUVGBLYi4=; b=MrNNVB4fq2iKS7tYgxu9vyx5U2
-	OYL2NWe10INHzhgx6I0UpaSCvkaiTaCHSSWam5idHwZHUclcJIq7v6erRtWdpBefSpKMxFcHrtLBH
-	tOLnfaYliWm9SubnGbgNENTo1ScT3O+87Ti5QdcYj8ZcZDPBd59RlBWNXhziEjmihQ4QBSzMPIy9W
-	G8OuCP8EJ/Bq66i6zAduoY9iAptjSvtufTtX05JoCO/fpj+/oblINA49rSZ54gHlUjGQTyBAcMAFH
-	lBWxnsy9BqKCfLB60DUZdpl0Q9i9+Ecg8TRZzBQualr9tttZiPU+dAX/mKhXF8ok/Le2pIbxMB1Ad
-	XLOUPqOw==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg0EU-00611W-0E;
-	Tue, 12 Sep 2023 10:03:08 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id ED0836607323;
-	Tue, 12 Sep 2023 11:02:56 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694512978;
-	bh=4xz6Szx2cylj0/jy1E9nlRbuyxqN2NyY/h3Y3/JNrd4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YN3r5AGSobwaP8QJ50wV4fViTzFF4D0sOKkXRMFHO4zOSHNEJqZzkziZ8qYJZvZJm
-	 5k8boUM7fjL6JCe3pYTBMTZ7/TAkjE9QnD4KINDv/AmlUTNI8n1R2ZboYsUCJCkUmq
-	 n4C8TkeTs07cc6Nqu1h83t1LoR7lbZTFMSM6rS7jVVjFN79Ekw3wFBwbzL7ztc6cM5
-	 q65aPqwaN1xbgNfQB1/w9EvmqBV0+zG57PsvFbJXU1DhJshiBSn5S6IBCOFn6ZBZa3
-	 jewSxUI+hvVTx8C+5uIiBu67SdCLg9NMLb+Z30Z8MI/vHDp7COfT+pAje2B9owSdPL
-	 r1xg0+3QULqkw==
-Message-ID: <cfbe3332-ca36-613a-7ba1-f0c17da5cbe9@collabora.com>
-Date: Tue, 12 Sep 2023 12:02:54 +0200
+	id 1qg0PU-002uey-1N;
+	Tue, 12 Sep 2023 10:14:20 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qg0PL-002uUm-2N;
+	Tue, 12 Sep 2023 10:14:17 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 54015C15;
+	Tue, 12 Sep 2023 03:14:44 -0700 (PDT)
+Received: from [10.1.196.40] (e121345-lin.cambridge.arm.com [10.1.196.40])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 3F3373F738;
+	Tue, 12 Sep 2023 03:14:04 -0700 (PDT)
+Message-ID: <95f9dd3b-1f33-4af5-8757-a97e8b9bb216@arm.com>
+Date: Tue, 12 Sep 2023 11:13:50 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH 2/5] clk: mediatek: clk-mt6779: Add check for
- mtk_alloc_clk_data
-Content-Language: en-US
-To: Jiasheng Jiang <jiasheng@iscas.ac.cn>, mturquette@baylibre.com,
- sboyd@kernel.org, matthias.bgg@gmail.com, wenst@chromium.org,
- msp@baylibre.com, amergnat@baylibre.com, frank.li@vivo.com, robh@kernel.org,
- owen.chen@mediatek.com, mars.cheng@mediatek.com, macpaul.lin@mediatek.com,
- cw00.choi@samsung.com, u.kleine-koenig@pengutronix.de,
- wendell.lin@mediatek.com, luca.ceresoli@bootlin.com,
- kevin-cw.chen@mediatek.com, ryder.lee@mediatek.com, wenzhen.yu@mediatek.com
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230912093407.21505-1-jiasheng@iscas.ac.cn>
- <20230912093407.21505-2-jiasheng@iscas.ac.cn>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230912093407.21505-2-jiasheng@iscas.ac.cn>
+Subject: Re: [PATCH 8/9] dt-bindings: reserved-memory: MediaTek: Add reserved
+ memory for SVP
+Content-Language: en-GB
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>
+Cc: "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "jstultz@google.com" <jstultz@google.com>,
+ "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>,
+ "christian.koenig@amd.com" <christian.koenig@amd.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?=
+ <Jianjiao.Zeng@mediatek.com>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ =?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?= <kuohong.wang@mediatek.com>,
+ "Brian.Starkey@arm.com" <Brian.Starkey@arm.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+ "tjmercier@google.com" <tjmercier@google.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>
+References: <20230911023038.30649-1-yong.wu@mediatek.com>
+ <20230911023038.30649-9-yong.wu@mediatek.com>
+ <20230911154448.GA1279317-robh@kernel.org>
+ <c2f1df12cc2dc25b342029e49c6d3f120d380b47.camel@mediatek.com>
+ <c62a7ed8-d80a-3a82-040a-d4c74a71285a@linaro.org>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <c62a7ed8-d80a-3a82-040a-d4c74a71285a@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_110259_759213_6F58D0B4 
-X-CRM114-Status: UNSURE (   8.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230912_031411_904504_FA6F54D9 
+X-CRM114-Status: GOOD (  25.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,14 +91,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/09/23 11:34, Jiasheng Jiang ha scritto:
-> Add the check for the return value of mtk_alloc_clk_data() in order to
-> avoid NULL pointer dereference.
+On 12/09/2023 9:28 am, Krzysztof Kozlowski wrote:
+> On 12/09/2023 08:16, Yong Wu (吴勇) wrote:
+>> Hi Rob,
+>>
+>> Thanks for your review.
+>>
+>> On Mon, 2023-09-11 at 10:44 -0500, Rob Herring wrote:
+>>>   	
+>>> External email : Please do not click links or open attachments until
+>>> you have verified the sender or the content.
+>>>   On Mon, Sep 11, 2023 at 10:30:37AM +0800, Yong Wu wrote:
+>>>> This adds the binding for describing a CMA memory for MediaTek
+>>> SVP(Secure
+>>>> Video Path).
+>>>
+>>> CMA is a Linux thing. How is this related to CMA?
+>>
+>>>>
+>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>>>> ---
+>>>>   .../mediatek,secure_cma_chunkmem.yaml         | 42
+>>> +++++++++++++++++++
+>>>>   1 file changed, 42 insertions(+)
+>>>>   create mode 100644 Documentation/devicetree/bindings/reserved-
+>>> memory/mediatek,secure_cma_chunkmem.yaml
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/reserved-
+>>> memory/mediatek,secure_cma_chunkmem.yaml
+>>> b/Documentation/devicetree/bindings/reserved-
+>>> memory/mediatek,secure_cma_chunkmem.yaml
+>>>> new file mode 100644
+>>>> index 000000000000..cc10e00d35c4
+>>>> --- /dev/null
+>>>> +++ b/Documentation/devicetree/bindings/reserved-
+>>> memory/mediatek,secure_cma_chunkmem.yaml
+>>>> @@ -0,0 +1,42 @@
+>>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>>>> +%YAML 1.2
+>>>> +---
+>>>> +$id:
+>>> http://devicetree.org/schemas/reserved-memory/mediatek,secure_cma_chunkmem.yaml#
+>>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>>> +
+>>>> +title: MediaTek Secure Video Path Reserved Memory
+>>>
+>>> What makes this specific to Mediatek? Secure video path is fairly
+>>> common, right?
+>>
+>> Here we just reserve a buffer and would like to create a dma-buf secure
+>> heap for SVP, then the secure engines(Vcodec and DRM) could prepare
+>> secure buffer through it.
+>>   
+>> But the heap driver is pure SW driver, it is not platform device and
 > 
-> Fixes: 710774e04861 ("clk: mediatek: Add MT6779 clock support")
-> Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+> All drivers are pure SW.
+> 
+>> we don't have a corresponding HW unit for it. Thus I don't think I
+>> could create a platform dtsi node and use "memory-region" pointer to
+>> the region. I used RESERVEDMEM_OF_DECLARE currently(The code is in
+>> [9/9]). Sorry if this is not right.
+> 
+> If this is not for any hardware and you already understand this (since
+> you cannot use other bindings) then you cannot have custom bindings for
+> it either.
+> 
+>>
+>> Then in our usage case, is there some similar method to do this? or
+>> any other suggestion?
+> 
+> Don't stuff software into DTS.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Aren't most reserved-memory bindings just software policy if you look at 
+it that way, though? IIUC this is a pool of memory that is visible and 
+available to the Non-Secure OS, but is fundamentally owned by the Secure 
+TEE, and pages that the TEE allocates from it will become physically 
+inaccessible to the OS. Thus the platform does impose constraints on how 
+the Non-Secure OS may use it, and per the rest of the reserved-memory 
+bindings, describing it as a "reusable" reservation seems entirely 
+appropriate. If anything that's *more* platform-related and so 
+DT-relevant than typical arbitrary reservations which just represent 
+"save some memory to dedicate to a particular driver" and don't actually 
+bear any relationship to firmware or hardware at all.
 
+However, the fact that Linux's implementation of how to reuse reserved 
+memory areas is called CMA is indeed still irrelevant and has no place 
+in the binding itself.
 
+Thanks,
+Robin.
 
