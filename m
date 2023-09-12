@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7A29CA0EF2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 16:23:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 675EACA0EEB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 16:50:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f7qTdsHjh7Aj5Hg/dnFyUCotlSV9Zzbk47wUe7yiHlQ=; b=pDUwVGP2paeUItGAcHhCrnKQmb
-	ytUOLQf0rGXS+aqFiP+FbFeScG1cdiJZbeCPh9A85OHJSXFzd+yMSyzanL0/SL4yD54IEE2pw/UJA
-	nuv8bLL28j8FBX1c5ZYcQ67gU0oE7mfjNQl4RwQ6U+3T/sGPu2rTNmwIg2dzYe4A+Vt5kpFffNgcQ
-	m6M0L25snz5T8St1QOJOSJKOE4uCZfxMkECFHwspdATWMq5tv/t97zqkHxkRi+lZIm08DC2VYnV0i
-	uZwuVzHeNt0zBnp9bCv/zExwM2LM7Cyt20kVGmFHjRNgiAny/+7wTT9d+oPIQEmo2j1/CsGn+Y3rg
-	gpIKU/Fw==;
+	bh=l/E9g36mfxlQrh/zLEYJemBB+UDXouQWppD/yp9EXVU=; b=YcoPB6HOCoMGSGQurxY8e/MOQt
+	Qe1q0e4ziq8V6Wu1x7xYmRX/GKM2f1y33D8l7YOvn7Oe0xmTudLXt+DbDcR3p+qDgeo9WqEo/lmEV
+	mf9X68oc8IDQyjEEBmpDNIF7r9O9a+3ZZLFTeV/5MrfgzQRwZ9stPAi1P2tDMUyvRW8M/rLa9xsuh
+	F/xlS5WlySqWYtpGOUxoM6DRlItqGpBSJhooaGhJjUuWHDU1K7QSUlsJjuj/aKTnk6KEJVF+n5bj1
+	dqQQT5pIFDD/IbCW4DJF/Q0ZSzV7CRg7r2fdKyE+1yEepvD64GvNwLfibtK2tBf5OhsHbSLX3eyR+
+	2po/0LKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg6BB-003p6a-1P;
-	Tue, 12 Sep 2023 16:23:57 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qg6al-003rrS-37;
+	Tue, 12 Sep 2023 16:50:23 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg6B8-003p4X-0K;
-	Tue, 12 Sep 2023 16:23:55 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	id 1qg6aj-003rqO-0P
+	for linux-mediatek@lists.infradead.org;
+	Tue, 12 Sep 2023 16:50:22 +0000
+Received: from [192.168.0.106] (unknown [186.235.7.101])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 0EE88B81EBE;
-	Tue, 12 Sep 2023 16:23:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DC37C433C7;
-	Tue, 12 Sep 2023 16:23:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
-	s=korg; t=1694535830;
-	bh=cM9usqpqAjvNAVl4RACKoLLLMEuBld91IwmymEvqjW4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=mWaTNNuVKpdDr3c1+zVME8cRWR0WIwZwcKSZtVf4Ow7eG3TiyoJpfXllu0c2auzbX
-	 IBadXeYFOy8PBUEHRLQ/9aBbg1F5ArAFwd2nmcDVuajIoRetRj37U2Ar5MUIfbdI66
-	 uEWrjLDz6hOsDQPaL28fnLBGF7+BRE67SUvy2Lxs=
-Date: Tue, 12 Sep 2023 09:23:49 -0700
-From: Andrew Morton <akpm@linux-foundation.org>
-To: Johannes Berg <johannes@sipsolutions.net>
-Cc: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>, Jan Kiszka
- <jan.kiszka@siemens.com>, Kieran Bingham <kbingham@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, chinwen.chang@mediatek.com,
- qun-wei.lin@mediatek.com, linux-mm@kvack.org,
- linux-modules@vger.kernel.org, casper.li@mediatek.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 1/8] scripts/gdb/symbols: add specific ko module load
- command
-Message-Id: <20230912092349.2ec5bf4e20bed10d27410076@linux-foundation.org>
-In-Reply-To: <c44b748307a074d0c250002cdcfe209b8cce93c9.camel@sipsolutions.net>
-References: <20230808083020.22254-1-Kuan-Ying.Lee@mediatek.com>
-	<20230808083020.22254-2-Kuan-Ying.Lee@mediatek.com>
-	<c44b748307a074d0c250002cdcfe209b8cce93c9.camel@sipsolutions.net>
-X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+	(Authenticated sender: koike)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 61A08660716C;
+	Tue, 12 Sep 2023 17:50:08 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1694537415;
+	bh=b3Pjb5sxufyfJz4YTfjIpaTwu6GqQK/gK7r+UI5k7ik=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=IC9XweikCd8wdErjDdbQJM9Njzz31wFTIAhGgOAzdnnoYQbU1AUs+Pa5veanwx2A0
+	 gLLM2cy4TlTjTQk7gPqHVr6yclTb2wKyv/uos04WCaDGVZDGRIkGwx5wseNTvXb5ta
+	 bvOUi9N3zM8Pn0T66BaMTWLsVvPk3gqqS5hoRlbWBnRoIJ4B4UHtVFQ2S8TUqo5NWC
+	 3gwc4F9mg1yp5NZ1QSLgG0WpgL7XqH0+4f2AWkODos/y7qgBvM/L51HdqtIydeqjP7
+	 r8Y/i0H2Ups3oRZm3knp/sGrKMJEf/RoyLdD4Ct38HA6vceS+yqCVNzuerEg0an/Db
+	 Dz8ha0wHIjCjg==
+Message-ID: <113c0ae6-d7f1-b4d5-dc1a-2264cc815644@collabora.com>
+Date: Tue, 12 Sep 2023 13:50:02 -0300
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH v3 1/9] drm: ci: igt_runner: Remove todo
+To: Vignesh Raman <vignesh.raman@collabora.com>,
+ dri-devel@lists.freedesktop.org
+Cc: guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
+ david.heidelberg@collabora.com, daniels@collabora.com,
+ gustavo.padovan@collabora.com, angelogioacchino.delregno@collabora.com,
+ emma@anholt.net, robclark@freedesktop.org, robdclark@google.com,
+ anholt@google.com, robdclark@gmail.com, airlied@gmail.com, daniel@ffwll.ch,
+ jani.nikula@linux.intel.com, mripard@kernel.org,
+ dmitry.baryshkov@linaro.org, matthias.bgg@gmail.com, agross@kernel.org,
+ andersson@kernel.org, konrad.dybcio@linaro.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ virtualization@lists.linux-foundation.org, linux-arm-msm@vger.kernel.org
+References: <20230908152225.432139-1-vignesh.raman@collabora.com>
+ <20230908152225.432139-2-vignesh.raman@collabora.com>
+Content-Language: en-US
+From: Helen Koike <helen.koike@collabora.com>
+In-Reply-To: <20230908152225.432139-2-vignesh.raman@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_092354_465385_7BE3D8D9 
-X-CRM114-Status: GOOD (  24.67  )
+X-CRM114-CacheID: sfid-20230912_095021_311104_4D8B788C 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,100 +88,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 12 Sep 2023 11:41:29 +0200 Johannes Berg <johannes@sipsolutions.net> wrote:
 
-> On Tue, 2023-08-08 at 16:30 +0800, Kuan-Ying Lee wrote:
-> > Add lx-symbols <ko_path> command to support add specific
-> > ko module.
+
+On 08/09/2023 12:22, Vignesh Raman wrote:
+> /sys/kernel/debug/dri/*/state exist for every atomic KMS driver.
+> We do not test non-atomic drivers, so remove the todo.
 > 
-> I'm not sure how this was supposed to work? It should have updated the
-> documentation, but more importantly, it shouldn't have broken the
-> documented usage of this command:
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+
+Acked-by: Helen Koike <helen.koike@collabora.com>
+
+> ---
 > 
->       The kernel (vmlinux) is taken from the current working directly. Modules (.ko)
->       are scanned recursively, starting in the same directory. Optionally, the module
->       search path can be extended by a space separated list of paths passed to the
->       lx-symbols command.
+> v2:
+>    - No changes
 > 
-> Note how that talks about a "space separated list of paths" for which
-> clearly a single path seems like it should be accepted?
+> v3:
+>    - No changes
+>    
+> ---
+>   drivers/gpu/drm/ci/igt_runner.sh | 1 -
+>   1 file changed, 1 deletion(-)
 > 
-> > @@ -138,6 +139,19 @@ lx-symbols command."""
-
-Thanks, I queued a revert.
-
-From: Andrew Morton <akpm@linux-foundation.org>
-Subject: revert "scripts/gdb/symbols: add specific ko module load command"
-Date: Tue Sep 12 09:19:10 AM PDT 2023
-
-Revert 11f956538c07 ("scripts/gdb/symbols: add specific ko module load
-command") due to breakage identified by Johannes Berg in [1].
-
-Fixes: 11f956538c07 ("scripts/gdb/symbols: add specific ko module load command")
-Reported-by: Johannes Berg <johannes@sipsolutions.net>
-Closes: https://lkml.kernel.org/r/c44b748307a074d0c250002cdcfe209b8cce93c9.camel@sipsolutions.net [1]
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chinwen Chang <chinwen.chang@mediatek.com>
-Cc: Jan Kiszka <jan.kiszka@siemens.com>
-Cc: Kieran Bingham <kbingham@kernel.org>
-Cc: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Qun-Wei Lin <qun-wei.lin@mediatek.com>
-Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
----
-
- scripts/gdb/linux/symbols.py |   23 ++---------------------
- 1 file changed, 2 insertions(+), 21 deletions(-)
-
---- a/scripts/gdb/linux/symbols.py~revert-scripts-gdb-symbols-add-specific-ko-module-load-command
-+++ a/scripts/gdb/linux/symbols.py
-@@ -111,12 +111,11 @@ lx-symbols command."""
-         return "{textaddr} {sections}".format(
-             textaddr=textaddr, sections="".join(args))
- 
--    def load_module_symbols(self, module, module_file=None):
-+    def load_module_symbols(self, module):
-         module_name = module['name'].string()
-         module_addr = str(module['mem'][constants.LX_MOD_TEXT]['base']).split()[0]
- 
--        if not module_file:
--            module_file = self._get_module_file(module_name)
-+        module_file = self._get_module_file(module_name)
-         if not module_file and not self.module_files_updated:
-             self._update_module_files()
-             module_file = self._get_module_file(module_name)
-@@ -139,19 +138,6 @@ lx-symbols command."""
-         else:
-             gdb.write("no module object found for '{0}'\n".format(module_name))
- 
--    def load_ko_symbols(self, mod_path):
--        self.loaded_modules = []
--        module_list = modules.module_list()
--
--        for module in module_list:
--            module_name = module['name'].string()
--            module_pattern = ".*/{0}\.ko(?:.debug)?$".format(
--                module_name.replace("_", r"[_\-]"))
--            if re.match(module_pattern, mod_path) and os.path.exists(mod_path):
--                self.load_module_symbols(module, mod_path)
--                return
--        raise gdb.GdbError("%s is not a valid .ko\n" % mod_path)
--
-     def load_all_symbols(self):
-         gdb.write("loading vmlinux\n")
- 
-@@ -190,11 +176,6 @@ lx-symbols command."""
-         self.module_files = []
-         self.module_files_updated = False
- 
--        argv = gdb.string_to_argv(arg)
--        if len(argv) == 1:
--            self.load_ko_symbols(argv[0])
--            return
--
-         self.load_all_symbols()
- 
-         if hasattr(gdb, 'Breakpoint'):
-_
-
+> diff --git a/drivers/gpu/drm/ci/igt_runner.sh b/drivers/gpu/drm/ci/igt_runner.sh
+> index 2bb759165063..5bf130ac57c9 100755
+> --- a/drivers/gpu/drm/ci/igt_runner.sh
+> +++ b/drivers/gpu/drm/ci/igt_runner.sh
+> @@ -15,7 +15,6 @@ cat /sys/kernel/debug/device_component/*
+>   '
+>   
+>   # Dump drm state to confirm that kernel was able to find a connected display:
+> -# TODO this path might not exist for all drivers.. maybe run modetest instead?
+>   set +e
+>   cat /sys/kernel/debug/dri/*/state
+>   set -e
 
