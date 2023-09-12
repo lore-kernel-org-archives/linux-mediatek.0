@@ -4,52 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 675EACA0EEB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 16:50:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9C38CA0EF7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 16:51:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l/E9g36mfxlQrh/zLEYJemBB+UDXouQWppD/yp9EXVU=; b=YcoPB6HOCoMGSGQurxY8e/MOQt
-	Qe1q0e4ziq8V6Wu1x7xYmRX/GKM2f1y33D8l7YOvn7Oe0xmTudLXt+DbDcR3p+qDgeo9WqEo/lmEV
-	mf9X68oc8IDQyjEEBmpDNIF7r9O9a+3ZZLFTeV/5MrfgzQRwZ9stPAi1P2tDMUyvRW8M/rLa9xsuh
-	F/xlS5WlySqWYtpGOUxoM6DRlItqGpBSJhooaGhJjUuWHDU1K7QSUlsJjuj/aKTnk6KEJVF+n5bj1
-	dqQQT5pIFDD/IbCW4DJF/Q0ZSzV7CRg7r2fdKyE+1yEepvD64GvNwLfibtK2tBf5OhsHbSLX3eyR+
-	2po/0LKw==;
+	bh=ZX0p9n258RKJw9Zil21PFrkzz1tXD1erpkGkR5L1YJ0=; b=q5qQmhYw35HZquE+37YQgKUm9b
+	quwuZpjrawLxhy65fWPNEbus4nWSjH38pZpFkTIgiAcbUMrO5Ur/XWQ4t0dj94C8rd1WQDpvz8gAK
+	ooRPdbz7YlXVM9EHckB/YY0f9/bne6o78y+n0EuGNRg0Ab/pwyI2qLXXgtcD9vBB9uN0CV1sj4TH8
+	8f7skmj1w45UUGA0igaqjnEG57888aF6sM8HMMbNxr2C7CIx76k+Z98ESYT8DyORXl1Vc4cM4J40X
+	C5CMjG2lQw56KKWA3MRecBLD1NQ95L9kaTlUFE+cjjz7mB8YVUXdYpINJO/ZkU9BnmrID7gmRG45s
+	D8Qa49PA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg6al-003rrS-37;
-	Tue, 12 Sep 2023 16:50:23 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qg6bf-003rxo-2J;
+	Tue, 12 Sep 2023 16:51:19 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qg6aj-003rqO-0P
+	id 1qg6bd-003rx7-2C
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Sep 2023 16:50:22 +0000
+	Tue, 12 Sep 2023 16:51:19 +0000
 Received: from [192.168.0.106] (unknown [186.235.7.101])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: koike)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 61A08660716C;
-	Tue, 12 Sep 2023 17:50:08 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4F096660716C;
+	Tue, 12 Sep 2023 17:51:07 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694537415;
-	bh=b3Pjb5sxufyfJz4YTfjIpaTwu6GqQK/gK7r+UI5k7ik=;
+	s=mail; t=1694537474;
+	bh=bANnTvmU8LwckEh4pqHcX7oSHDmyK0WOCRmfn4AuPWk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=IC9XweikCd8wdErjDdbQJM9Njzz31wFTIAhGgOAzdnnoYQbU1AUs+Pa5veanwx2A0
-	 gLLM2cy4TlTjTQk7gPqHVr6yclTb2wKyv/uos04WCaDGVZDGRIkGwx5wseNTvXb5ta
-	 bvOUi9N3zM8Pn0T66BaMTWLsVvPk3gqqS5hoRlbWBnRoIJ4B4UHtVFQ2S8TUqo5NWC
-	 3gwc4F9mg1yp5NZ1QSLgG0WpgL7XqH0+4f2AWkODos/y7qgBvM/L51HdqtIydeqjP7
-	 r8Y/i0H2Ups3oRZm3knp/sGrKMJEf/RoyLdD4Ct38HA6vceS+yqCVNzuerEg0an/Db
-	 Dz8ha0wHIjCjg==
-Message-ID: <113c0ae6-d7f1-b4d5-dc1a-2264cc815644@collabora.com>
-Date: Tue, 12 Sep 2023 13:50:02 -0300
+	b=lhzdj8NLbl2wa20LRvoYJ8oMHy7YBp3AyXB7cesPj9SMEQ4L78Xfs90FDTrtEDt60
+	 RCuPKZ20oIj6VpbDjL6+kNR0XI+JK7txftGWi23A0eTD7Y2IYn4PkKe8zDTYmvMtVV
+	 sigCGm9AgcPGDwU3ISYVyyn7ZjYFp2JzKdCOna16j7luKP90nyZ92NlS2Tycts+Ltu
+	 EF1L/myRy1l8RAIRojBpdrFnvTBKKEArJpoQg2lWrQoOMS6QerI8opigxODJ4wUTVH
+	 lw7f+EkO04mahk42+k2HxCar6QUbPRq8fRNEe9hE6JU9qZ8dP2g6toZmgR56B5VPri
+	 ZlfCnjb2fNZdg==
+Message-ID: <782c7762-4f83-c942-034e-4da463d82412@collabora.com>
+Date: Tue, 12 Sep 2023 13:51:03 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH v3 1/9] drm: ci: igt_runner: Remove todo
+Subject: Re: [PATCH v3 2/9] arm64: dts: qcom: apq8016-sbc: Add overlay for usb
+ host mode
+Content-Language: en-US
 To: Vignesh Raman <vignesh.raman@collabora.com>,
  dri-devel@lists.freedesktop.org
 Cc: guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
@@ -65,15 +67,14 @@ Cc: guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
  linux-mediatek@lists.infradead.org,
  virtualization@lists.linux-foundation.org, linux-arm-msm@vger.kernel.org
 References: <20230908152225.432139-1-vignesh.raman@collabora.com>
- <20230908152225.432139-2-vignesh.raman@collabora.com>
-Content-Language: en-US
+ <20230908152225.432139-3-vignesh.raman@collabora.com>
 From: Helen Koike <helen.koike@collabora.com>
-In-Reply-To: <20230908152225.432139-2-vignesh.raman@collabora.com>
+In-Reply-To: <20230908152225.432139-3-vignesh.raman@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_095021_311104_4D8B788C 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20230912_095117_843374_14847ACE 
+X-CRM114-Status: GOOD (  19.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,35 +92,47 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 08/09/2023 12:22, Vignesh Raman wrote:
-> /sys/kernel/debug/dri/*/state exist for every atomic KMS driver.
-> We do not test non-atomic drivers, so remove the todo.
+> Due to the presence of the fastboot micro cable in the CI farm,
+> it causes the hardware to remain in gadget mode instead of host mode.
+> So it doesn't find the network, which results in failure to mount root
+> fs via NFS.
 > 
+> Add an overlay dtso file that sets the dr_mode to host, allowing
+> the USB controllers to work in host mode. This dtso file will be used
+> in drm-ci, mesa-ci.
+> 
+> Overlay DT file uses the sugar syntax [suggested by Dmitry Baryshkov and Maxime Ripard]
+> 
+> Suggested-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+> Suggested-by: Maxime Ripard <mripard@kernel.org>
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> Signed-off-by: David Heidelberg <david.heidelberg@collabora.com>
 > Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 
 Acked-by: Helen Koike <helen.koike@collabora.com>
 
 > ---
 > 
-> v2:
->    - No changes
-> 
 > v3:
->    - No changes
->    
-> ---
->   drivers/gpu/drm/ci/igt_runner.sh | 1 -
->   1 file changed, 1 deletion(-)
+>    - New patch in the series to add device tree overlay in arch/arm64/boot/dts/qcom
 > 
-> diff --git a/drivers/gpu/drm/ci/igt_runner.sh b/drivers/gpu/drm/ci/igt_runner.sh
-> index 2bb759165063..5bf130ac57c9 100755
-> --- a/drivers/gpu/drm/ci/igt_runner.sh
-> +++ b/drivers/gpu/drm/ci/igt_runner.sh
-> @@ -15,7 +15,6 @@ cat /sys/kernel/debug/device_component/*
->   '
->   
->   # Dump drm state to confirm that kernel was able to find a connected display:
-> -# TODO this path might not exist for all drivers.. maybe run modetest instead?
->   set +e
->   cat /sys/kernel/debug/dri/*/state
->   set -e
+> ---
+>   arch/arm64/boot/dts/qcom/apq8016-sbc-usb-host.dtso | 8 ++++++++
+>   1 file changed, 8 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/qcom/apq8016-sbc-usb-host.dtso
+> 
+> diff --git a/arch/arm64/boot/dts/qcom/apq8016-sbc-usb-host.dtso b/arch/arm64/boot/dts/qcom/apq8016-sbc-usb-host.dtso
+> new file mode 100644
+> index 000000000000..a82c26b7eae8
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/qcom/apq8016-sbc-usb-host.dtso
+> @@ -0,0 +1,8 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +
+> +/dts-v1/;
+> +/plugin/;
+> +
+> +&usb {
+> +         dr_mode = "host";
+> +};
 
