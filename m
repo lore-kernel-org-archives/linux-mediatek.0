@@ -4,90 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F29ADCA0EC3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 08:08:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52B9FCA0EC3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 08:15:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4qZAQL11LZbXLvA1F+aakZmt21/i5A/PMcXmHMfBllE=; b=lBMM3RYqxHGVGdyd185pMmMVP8
-	kq5V/ZNbZu05Qdegg5WlDveW3YQsKxg4iIkpXbnjSV/wo/mJZdQ6qBf8ek3NPdwQdn9B8rRqrKj9u
-	Tbj2DuUMD4L7d7KRf5p44mVnK1inCh78fyk805OakDdzrrmzMwSAwgu/4ISABfZxfNVAeFJKf/8t/
-	971cHOZ5yC+26cYcPxfWXDJlYyno++GgyY3YCCVBp74tjJlOms4FOFKURrSCGOXjRI01/kwlc6Ho8
-	PuwdOz+icX/oNeNXzZeuYq9qSBnUvNJrodHNSTWy7SFA/BMcyN4R0jXdwyc6uoc3NbIfwP9n+iHDL
-	gv3YdrsQ==;
+	bh=mPjvwgGKzYXJmgcdw/T8wscG/mxuApXIWNIBn+/8PMI=; b=VdBj+zo2EYcCrYmQ3z73Yf8ARu
+	uTI9djYUwRdoiIygL3HO3AwChnPOSuwySOoxrdyC7TFVcSAv7h+znLugOPIR+rBNqQAahAEr5uZQN
+	CvzvSicVhundY/NmHZo2TH1qvNHoE6IChRPTOKyU20cPBLsZtypjUzBN+17r1oHmopzWmVzrhGqrQ
+	GTF4xup85cP/SRCSUXaSDQXRsRvDtbrzLDxzYxjmnlNqry4RJxUKwROzvqYCD+nXUG3iUaHf9QAeR
+	8DdOE9OFfr7nVQdyVP/tW48zNs3RxbHzuGt5JwWatRvXi6hocJhnOAbDycUcmjLNobe5Ol5ExHaZ5
+	UZC5JLqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfyRe-002WNM-2m;
-	Tue, 12 Sep 2023 08:08:26 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1qfyY9-002Xiz-0O;
+	Tue, 12 Sep 2023 08:15:09 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qfyRc-002WJG-2g
-	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Sep 2023 08:08:26 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-99bdcade7fbso664882766b.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Sep 2023 01:08:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1694506098; x=1695110898; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=4qZAQL11LZbXLvA1F+aakZmt21/i5A/PMcXmHMfBllE=;
-        b=WYOBqXdA+FJkAQWWUdv70nAOLZNvhlAc253Hl0eleSejP689rol3LKJDxC8PFkMn+z
-         oCz6lzDG3dO4sU7+hZI/6F+QjoDC9ZevVWVx+VcPPrGEznKOcrOYk/Kewm/paxKx3gu2
-         NzLfUbmMddCQsCQ7IejoN9hkqfNmvcsUGV819gA17cZQAcIBwCmgE+eBxL6obp6SEzj4
-         elR+hlVVa/ZErEm+o97KG0tGIYEWRJz6AFUUyMbeYKeTBpJOV/VX517YNVTs1yu9K3NS
-         zHgf0vRCigoV7j1aZfoZbay6l1YX3mA4yHwmRWjJMm6xYZRtofRuploRdO3h1VuL8lG5
-         SMGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694506098; x=1695110898;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4qZAQL11LZbXLvA1F+aakZmt21/i5A/PMcXmHMfBllE=;
-        b=FUed0QEB31SC+JydG1a1JNfPQi6iWo3qMoAfoB1j/SZeWUR9fmqDq1f92X/aUZ6N0F
-         cSQYM7Dgrz1cVYSQ2FEFhLt1javoLFXySfrHxYb7Cd6tqRyVG5ZJTUzTMX5fs4TiI0P4
-         OdEmMEsx2QSKG5dBNc+Wd5iV90N4TVZlvGFJyxTnt13I0Fp39NpSsJU55wTgwFJGEMUo
-         Qk6udTXjGwV/h37i/9NKpVkJz8EQA69rA1BTmvOMDVS6Ea6tPH7qhQ1WgMFZi5rQRKxy
-         sT0OSzxfGoGnigslGvIHN8uSD0EeV60wbr0citd5l2Sq51950I/bqS+HUERzUnfYXtX6
-         fkSQ==
-X-Gm-Message-State: AOJu0Yx3+55IuFbVqamT/tob1Ecxqwm6V3ZIuuVKvBcBoKX6jqhcciWb
-	WrkIlZG7X5SMT7aQ6+FTMCqkkA==
-X-Google-Smtp-Source: AGHT+IERPYwxvwxrtf7aXRvsNUYm+bKG63mo/Pw4/zuNJCPNP2RmbDeOAL+MxTrWlizGiTHGdWSVUg==
-X-Received: by 2002:a17:906:328b:b0:9a9:ff11:9c60 with SMTP id 11-20020a170906328b00b009a9ff119c60mr8680971ejw.48.1694506097766;
-        Tue, 12 Sep 2023 01:08:17 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.214.188])
-        by smtp.gmail.com with ESMTPSA id e7-20020a170906248700b0099364d9f0e6sm6416648ejb.117.2023.09.12.01.08.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 12 Sep 2023 01:08:17 -0700 (PDT)
-Message-ID: <22805138-e42a-cdd0-bc96-5281f0e2c586@linaro.org>
-Date: Tue, 12 Sep 2023 10:08:14 +0200
+	id 1qfyY5-002XfL-2z;
+	Tue, 12 Sep 2023 08:15:07 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 83F8F660731E;
+	Tue, 12 Sep 2023 09:15:03 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1694506504;
+	bh=iZoRX12C04P7aOw7C1x8buw/2JH8+XXGCyJ/mc0b3Gc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=diNgoIrI5h3R94O/uh+uA0OizYgI/fsvzQFKxbnJDvVHZguwPElw/+eTAcPJ5r4xL
+	 6XYPk5jnYF38CbdRVzdcPbh4rH97+laCL2JM+l0lwDbLSYUuhVPyMZZ5IhdXmIs+U+
+	 OM0hOw+xEZouAbQrwaGeA8joszsRc+QhSWPskb7jaA5D+nTA2/XmmqXqDyBiP6hWR1
+	 2N4+vfQm6xFHqSWHvB3R8Sk33iDfn/JynU2YeFop7Kxf0XRuVscYjOO4ATqjxGQW5F
+	 s/H4LCFwTyjKqiTumtvlzlYXf3wGp+FmzYQZaa+g8ntRG0rI0ub/SyJ4mkrjltfzOm
+	 rtWRLcA3e/RRA==
+Message-ID: <72d439f3-1ec4-d396-55e0-e1e52011c81f@collabora.com>
+Date: Tue, 12 Sep 2023 10:15:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH v3 1/2] dt-bindings: arm64: dts: mediatek: mt8365-evk:
- update compatible
-To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>
-References: <20230912072340.22862-1-macpaul.lin@mediatek.com>
+Subject: Re: [PATCH 04/14] media: mediatek: vcodec: initialize msg and vsi
+ information
 Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230912072340.22862-1-macpaul.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ =?UTF-8?Q?N=c3=adcolas_F_=2e_R_=2e_A_=2e_Prado?= <nfraprado@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
+ <20230911125936.10648-5-yunfei.dong@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230911125936.10648-5-yunfei.dong@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_010824_883903_D0959FCF 
-X-CRM114-Status: GOOD (  17.93  )
+X-CRM114-CacheID: sfid-20230912_011506_220940_6FE684BC 
+X-CRM114-Status: GOOD (  26.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,43 +86,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/09/2023 09:23, Macpaul Lin wrote:
-> Fix compatible of 'mediatek,mt8365-evk' from 'enum' to 'const'.
-
-What is there to fix? There is no bug... please describe why you are
-doing changes.
-
+Il 11/09/23 14:59, Yunfei Dong ha scritto:
+> Need to initialize msg and vsi information before sending to optee-os, then
+> calling optee invoke command to send the information to optee-os.
 > 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> For the optee communication interface is different with scp, using
+> flag to separate them.
+> 
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>   .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  2 +
+>   .../mediatek/vcodec/decoder/vdec_vpu_if.c     | 46 ++++++++++++++++---
+>   .../mediatek/vcodec/decoder/vdec_vpu_if.h     |  4 ++
+>   3 files changed, 46 insertions(+), 6 deletions(-)
 > 
-> change for v2:
->  - rebase this patch to follow the v5 patch set of mt8395.
->   - depends on https://lore.kernel.org/lkml/20230909132819.21626-2-macpaul.lin@mediatek.com/T/
->  - Fix description as a single board.
-> 
-> changes for v3:
->  - rebase this patch to follow the v6 patch set of mt8395.
->   - depends on https://lore.kernel.org/lkml/20230911115717.26184-1-macpaul.lin@mediatek.com/T/
->  - drop "Fixes:" tag in commit message.
->  - drop platform description update for mt8365-evk (Genio 350-EVK).
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index 2e8ad49c3479..bab4fa0e8199 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -245,7 +245,7 @@ properties:
->                - mediatek,mt8183-pumpkin
->            - const: mediatek,mt8183
->        - items:
-> -          - enum:
-> +          - const:
+> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+> index 061542c3852c..20e534151f69 100644
+> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+> @@ -165,6 +165,7 @@ struct mtk_vcodec_dec_pdata {
+>    * @vpu_inst: vpu instance pointer.
+>    *
+>    * @is_10bit_bitstream: set to true if it's 10bit bitstream
+> + * @is_svp_mode: secure video playback
+>    */
+>   struct mtk_vcodec_dec_ctx {
+>   	enum mtk_instance_type type;
+> @@ -210,6 +211,7 @@ struct mtk_vcodec_dec_ctx {
+>   	void *vpu_inst;
+>   
+>   	bool is_10bit_bitstream;
+> +	bool is_svp_mode;
 
-Obviously this was not tested... Please test before sending.
+This looks clearer:
 
-Best regards,
-Krzysztof
+@is_secure_playback: Secure Video Playback (SVP) mode
+
+bool is_secure_playback;
+
+>   };
+>   
+>   /**
+> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+> index 82e57ae983d5..c1a1bddf99d8 100644
+> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.c
+> @@ -148,7 +148,10 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+>   
+>   static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
+>   {
+> -	int err, id, msgid;
+> +	int err, id, hw_id, msgid;
+> +	struct mtk_vdec_optee_data_to_shm *optee_data;
+> +	void *ack_msg, *data_msg;
+> +	int data_size;
+
+	struct mtk_vdec_optee_data_to_shm *optee_data;
+	int data_size, id, hw_id, msgid;
+	void *ack_msg, *data_msg;
+	int err;
+
+>   
+>   	msgid = *(uint32_t *)msg;
+>   	mtk_vdec_debug(vpu->ctx, "id=%X", msgid);
+> @@ -158,16 +161,46 @@ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
+>   
+>   	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
+>   		if (msgid == AP_IPIMSG_DEC_CORE ||
+> -		    msgid == AP_IPIMSG_DEC_CORE_END)
+> +		    msgid == AP_IPIMSG_DEC_CORE_END) {
+> +			optee_data = &vpu->core_optee_info;
+>   			id = vpu->core_id;
+> -		else
+> +		} else {
+> +			optee_data = &vpu->lat_optee_info;
+>   			id = vpu->id;
+> +		}
+>   	} else {
+> +		optee_data = &vpu->lat_optee_info;
+>   		id = vpu->id;
+>   	}
+>   
+> -	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id, msg,
+> -				     len, 2000);
+> +	if (!vpu->ctx->is_svp_mode) {
+> +		err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id, msg, len, 2000);
+> +	} else {
+> +		hw_id = (id == SCP_IPI_VDEC_LAT) ? MTK_VDEC_LAT0 : MTK_VDEC_CORE;
+> +
+> +		mtk_vcodec_dec_optee_set_data(optee_data, msg, len, OPTEE_MSG_INDEX);
+> +
+> +		/* No need copy data(vsi) msg to share memory, set the buffer size to non zero
+> +		 * value.
+> +		 */
+
+/*
+  * There is no need to copy the data (VSI) message to shared memory,
+  * but we still need to set the buffer size to a non-zero value.
+  */
+
+> +		if (msgid == AP_IPIMSG_DEC_CORE || msgid == AP_IPIMSG_DEC_START) {
+> +			data_msg = mtk_vcodec_dec_get_shm_buffer_va(vpu->ctx->dev->optee_private,
+> +								    hw_id, OPTEE_DATA_INDEX);
+> +			data_size = mtk_vcodec_dec_get_shm_buffer_size(vpu->ctx->dev->optee_private,
+> +								       hw_id, OPTEE_DATA_INDEX);
+> +			mtk_vcodec_dec_optee_set_data(optee_data, data_msg, data_size,
+> +						      OPTEE_DATA_INDEX);
+> +		}
+> +
+> +		err = mtk_vcodec_dec_optee_invokd_cmd(vpu->ctx->dev->optee_private,
+> +						      hw_id, optee_data);
+> +		vpu->failure = err;
+> +
+> +		ack_msg = mtk_vcodec_dec_get_shm_buffer_va(vpu->ctx->dev->optee_private, hw_id,
+> +							   OPTEE_MSG_INDEX);
+> +		vpu_dec_ipi_handler(ack_msg, 0, vpu->ctx->dev);
+> +	}
+> +
+>   	if (err) {
+>   		mtk_vdec_err(vpu->ctx, "send fail vpu_id=%d msg_id=%X status=%d",
+>   			     id, msgid, err);
+> @@ -213,7 +246,8 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
+>   		return err;
+>   	}
+>   
+> -	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
+> +	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE &&
+> +	    !vpu->ctx->is_svp_mode) {
+
+Please add a comment explaining why no fw_ipi is necessary here for SVP.
+
+Regards,
+Angelo
+
+>   		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
+>   						 vpu->core_id, vpu->handler,
+>   						 "vdec", vpu->ctx->dev);
+> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
+> index fbb3f34a73f0..946e5abcc7d3 100644
+> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
+> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_vpu_if.h
+> @@ -28,6 +28,8 @@ struct mtk_vcodec_dec_ctx;
+>    * @codec_type     : use codec type to separate different codecs
+>    * @capture_type:	used capture type to separate different capture format
+>    * @fb_sz  : frame buffer size of each plane
+> + * @lat_optee_info  : used to send msg to optee shm buffer
+> + * @core_optee_info  : used to send msg to optee shm buffer
+>    */
+>   struct vdec_vpu_inst {
+>   	int id;
+> @@ -44,6 +46,8 @@ struct vdec_vpu_inst {
+>   	unsigned int codec_type;
+>   	unsigned int capture_type;
+>   	unsigned int fb_sz[2];
+> +	struct mtk_vdec_optee_data_to_shm lat_optee_info;
+> +	struct mtk_vdec_optee_data_to_shm core_optee_info;
+>   };
+>   
+>   /**
+
 
 
