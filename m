@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6C36CA5507
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 08:29:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FE6CCA5509
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 08:29:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vVZVDk0nVt9xPkuQ7kA0rk+skb+IlHVfGj8ZHv+S3fY=; b=IDgCFfN3MsNdZ+QswH7gcWeOuZ
-	D6N+y3XEd8i77QyYngG21/uJKM9DoJjev6m5qYTuLhhQsthda5k2n3FnbDq9QGC9K/NBIuPhLDfM/
-	Zl5FIg0QxQZk8IF/YsyeFQ7fappb01JfMB2B20I3peAcK22udT2MFDlu6liYTIiLQl+Mlfy7HJ/q4
-	oV6HnZRmCreE5xU4mp3YcsRNBOpFVZh06db2O3yxZB7XA5U3iiMz0lehQGjP3+ySrBUskL74SfGXM
-	9pypknh341kKykU577QlqsIa6RD6wKlVWTyuR/JqJbFsEXheS4g/floXHnIeqfVTQD0c5Ddcvbnj1
-	i120Sk3g==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LS+dPzs/esrRECMW0r4zvqkr3eodLloQmjRx4zag1qY=; b=sTGCvVuMWWgkWacVdv3yjlLshJ
+	v9TvIsrwsD++nNlkhLE8ENRe47v2h20K8biv77DrR2lw8eItL+RqrD3V4MVdH8ObYSnZqlfOywVt0
+	YY7yuxSTavdv1ojq4YJm5Ev3P2bOM2sGbmRCJKCuHpDfX/cEMvyoRZv9BKld8txrZOF5gs1YeDoRX
+	a1VCU4T7p8EUGrPmru/+Uei59LZkaLJirzqv8sNvCYXvXJ6Eev4bsEuMKNDccmmMsbkaekBTlHKxn
+	J7tT1EoIC7wSt8Ct9xDvpPtu/TYqzMzWZs4khDWyZ/GOKhYMdojQUnxcwPUuysIZNtA8NwAMQC2iV
+	3/LDkmfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgLFm-0056FN-1u;
-	Wed, 13 Sep 2023 08:29:42 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1qgLFq-0056Hj-2B;
+	Wed, 13 Sep 2023 08:29:46 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgLFj-0056Bi-1h
+	id 1qgLFk-0056BV-36
 	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Sep 2023 08:29:40 +0000
-Received: by mail-pg1-x532.google.com with SMTP id 41be03b00d2f7-573f8afe1d9so4902292a12.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 Sep 2023 01:29:35 -0700 (PDT)
+	Wed, 13 Sep 2023 08:29:42 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-68cbbff84f6so503933b3a.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 13 Sep 2023 01:29:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1694593775; x=1695198575; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vVZVDk0nVt9xPkuQ7kA0rk+skb+IlHVfGj8ZHv+S3fY=;
-        b=LZpwk7mNGonEg0mdhFNJBmdsWHMT0EfpYYBZPhYyHcd+nVDhLR3eJ4hLGjrrboEI9V
-         6E3iBLqcwyunBM8b7rJ+Gipp4VrUKiYDT1CaNEt+3kAxPtD2hI/pezhJ2hg1JH5tTVZ1
-         xSAcGfoS/dcfDTeR0vxxU5U99e5e572Ob4YFA=
+        d=chromium.org; s=google; t=1694593773; x=1695198573; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=LS+dPzs/esrRECMW0r4zvqkr3eodLloQmjRx4zag1qY=;
+        b=a+TlSX71a8GdzQ/RXOt6wNUw+HsxM0C2Bv0rEQcgP8+bmyOhALiPTTRlBTTDA4X87H
+         xkxGxubo6E8hbaHzHgL6GDUQ5DHT9EP+cZ0fBArU/FwPTbL9WLkydC63LMirxL1UHRK2
+         HHoUcijEn4N9gUv8ajVdpFBksadxXbHsAdo0M=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694593775; x=1695198575;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vVZVDk0nVt9xPkuQ7kA0rk+skb+IlHVfGj8ZHv+S3fY=;
-        b=VAMABJiwyEDWdeSVsy7Yb9wqCPhjY4CQ62ceILobkw4rhp789fXJSMTdaM+33VixaQ
-         2QK2Fd1fhZ7gROB9rW+9mFr2wqcB7vPWBvz+U+Q0/AO7HpsFqDuz0NXxGPhxPy19nWpT
-         jBSkc+tZjkN1nle7YVhVhyGqemHUMaOCxBNpK6Kniw3b74264NnzUws8abf3cZfENZqY
-         k3GyBPtPVs5cAc6nOnRFeOp1DIQFPgViv0KYQmfT1rrfM2TCyO++NLeTkykir0iSKZKl
-         nqUkr2NYNYm2YE3St0NY1yLWKLMyHN6+alp/+EQLBGCw2cgCseiwtInB+8BJh3jVNbOI
-         Ow/A==
-X-Gm-Message-State: AOJu0Yw8yXg05U9iXg8MUcAuS5XqkRwwOGkj7e5Zg0tl3UrmiaMr6W7a
-	+lXZF0rfs/4jUHaaOtf2+7ZBzw==
-X-Google-Smtp-Source: AGHT+IEF2Cbs43/GwH2qUvBaNCgggY8+SfaBpnPQY9+z0cUqRzQ1FP5ckChyMhczwlBC41km5t3GYA==
-X-Received: by 2002:a05:6a20:2444:b0:134:30a8:9df5 with SMTP id t4-20020a056a20244400b0013430a89df5mr2039361pzc.43.1694593775198;
-        Wed, 13 Sep 2023 01:29:35 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1694593773; x=1695198573;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=LS+dPzs/esrRECMW0r4zvqkr3eodLloQmjRx4zag1qY=;
+        b=sAnyBuehZ5l457J8x4CfUBOU1vf/IqHP8NfR9ARJOGo32ZXevO96kQsQmeuQBoTDpB
+         YQ16LioSu+QeeicaArmzrbpqFDkAOQ0v/wAjq8YsEnb5yVkUMMZuiIRUUHxwF4fDw0Xk
+         6wWpf6yeaYxTjoVNBUoa4EkHekmU6s1zuC+Q/YoNM0SR21nRmDwNZmh45uzyKv2pgEoO
+         i7HNnSFFmtDDW/jGEi0igDbXJvOZCR3ySBbaAwtniQQOWqMkjE9PK6SD0B5gnc9BOSEL
+         a9/PvwkuodN0CxLhZvn7gVAiIuJnSuACWihCGU5mBMMixIzVvkkon1yPDkOhdLVp/av4
+         ph/Q==
+X-Gm-Message-State: AOJu0YzrllaqBw51Ko1Jx4V2WCKiR6EvCLYzpPIH5MMCXuWoGKi7a1D7
+	c/u9xl4Ev1zIM7qZFKCqkTy6qg==
+X-Google-Smtp-Source: AGHT+IHbVPdTuFhGeeVxawUbl5Rb0U2ZDVoMhMmu0Yn9YrtDJoRoIvMf+QNC1WT0MA1dyWigw9x1yw==
+X-Received: by 2002:a05:6a20:9382:b0:153:4ea6:d12e with SMTP id x2-20020a056a20938200b001534ea6d12emr2727186pzh.17.1694593773090;
+        Wed, 13 Sep 2023 01:29:33 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:b24c:3be4:d952:d3b1])
-        by smtp.gmail.com with ESMTPSA id g6-20020aa78746000000b006901bd3a9e4sm418781pfo.104.2023.09.13.01.29.33
+        by smtp.gmail.com with ESMTPSA id g6-20020aa78746000000b006901bd3a9e4sm418781pfo.104.2023.09.13.01.29.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Sep 2023 01:29:34 -0700 (PDT)
+        Wed, 13 Sep 2023 01:29:32 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Lee Jones <lee@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
@@ -69,17 +68,15 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 1/3] regulator: mt6358: Fail probe on unknown chip ID
-Date: Wed, 13 Sep 2023 16:29:16 +0800
-Message-ID: <20230913082919.1631287-2-wenst@chromium.org>
+Subject: [PATCH v3 0/3] regulator: mt6358: Remove bogus regulators and improvements
+Date: Wed, 13 Sep 2023 16:29:15 +0800
+Message-ID: <20230913082919.1631287-1-wenst@chromium.org>
 X-Mailer: git-send-email 2.42.0.283.g2d96d420d3-goog
-In-Reply-To: <20230913082919.1631287-1-wenst@chromium.org>
-References: <20230913082919.1631287-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_012939_567604_112C4E46 
-X-CRM114-Status: GOOD (  16.94  )
+X-CRM114-CacheID: sfid-20230913_012941_023387_6043EF2A 
+X-CRM114-Status: GOOD (  16.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,53 +91,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT6358 and MT6366 PMICs, and likely many others from MediaTek, have
-a chip ID register, making the chip semi-discoverable.
+Hi,
 
-The driver currently supports two PMICs and expects to be probed on one
-or the other. It does not account for incorrect mfd driver entries or
-device trees. While these should not happen, if they do, it could be
-catastrophic for the device. The driver should be sure the hardware is
-what it expects.
+This is v3 of the remainder of the MT6358 regulator driver cleanup
+and improvement series. v1 can be found here [1]; v2 is here [2].
 
-Make the driver fail to probe if the chip ID presented is not a known
-one.
+Changes since v2:
+- Merged patches dropped
+- Fixed up pickable linear ranges' selector values
+- Collected tags
+- Patch adding missing regulator definitions squashed into patch using
+  the definitions; recommended by Krzysztof on my MT6366 series.
+- Remaining dts patch split out to be sent separately
 
-Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Fixes: f0e3c6261af1 ("regulator: mt6366: Add support for MT6366 regulator")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/regulator/mt6358-regulator.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+Changes since v1:
+- Merged patches dropped
+- Added patch to move VCN33 regulator status sync after ID check
+- Added patch to fix VCN33 sync fail error message
+- Added patch to add missing register definitions
 
-diff --git a/drivers/regulator/mt6358-regulator.c b/drivers/regulator/mt6358-regulator.c
-index 120c60d40ed4..935c7ad56c7e 100644
---- a/drivers/regulator/mt6358-regulator.c
-+++ b/drivers/regulator/mt6358-regulator.c
-@@ -682,12 +682,18 @@ static int mt6358_regulator_probe(struct platform_device *pdev)
- 	const struct mt6358_regulator_info *mt6358_info;
- 	int i, max_regulator, ret;
- 
--	if (mt6397->chip_id == MT6366_CHIP_ID) {
--		max_regulator = MT6366_MAX_REGULATOR;
--		mt6358_info = mt6366_regulators;
--	} else {
-+	switch (mt6397->chip_id) {
-+	case MT6358_CHIP_ID:
- 		max_regulator = MT6358_MAX_REGULATOR;
- 		mt6358_info = mt6358_regulators;
-+		break;
-+	case MT6366_CHIP_ID:
-+		max_regulator = MT6366_MAX_REGULATOR;
-+		mt6358_info = mt6366_regulators;
-+		break;
-+	default:
-+		dev_err(&pdev->dev, "unsupported chip ID: %d\n", mt6397->chip_id);
-+		return -EINVAL;
- 	}
- 
- 	ret = mt6358_sync_vcn33_setting(&pdev->dev);
+Various discrepancies were found while preparing to upstream MT8186
+device trees, which utilize the MT6366 PMIC, that is also covered by
+this driver.
+
+Patches 1~3 should go through the regulator tree, and patch 4 through
+the soc/mediatek tree.
+
+** Note: patch 2 needs an ack from Lee for the mfd header change.
+
+This v3 series can be seen as two parts. v1 had three parts, but one
+part was fully merged, and then v2 gained another cleanup. v3 drops
+the "fixing bogus regulators" part: driver changes are fully merged
+and device tree change will be sent separately.
+
+Part 1 - Robust chip ID checking (patch 1)
+
+Angelo suggested making the driver fail to probe if an unexpected chip
+ID was found. Patch 1 implements this.
+
+Part 2 - Output voltage fine tuning support (patches 2, 3)
+
+Many of the LDOs on these PMIC support an extra level of output voltage
+fine tuning. Most default to no offset, but a couple have a non-zero
+offset by default. Previously this was unaccounted for in the driver and
+device tree constraints. On the outputs with non-zero offset, this ends
+up becoming a discrepancy between the device tree and actual hardware.
+These two patches adds support for this second level of tuning, modeled
+as bunch of linear ranges. While it's unlikely we need this level of
+control, it's nice to be able to read back the accurate hardware
+settings.
+
+Please have a look.
+
+Thanks
+ChenYu
+
+[1] https://lore.kernel.org/linux-arm-kernel/20230609083009.2822259-1-wenst@chromium.org/
+[2] https://lore.kernel.org/linux-mediatek/20230721082903.2038975-1-wenst@chromium.org/
+
+Chen-Yu Tsai (3):
+  regulator: mt6358: Fail probe on unknown chip ID
+  regulator: mt6358: Add output voltage fine tuning to fixed regulators
+  regulator: mt6358: Add output voltage fine tuning to variable LDOs
+
+ drivers/regulator/mt6358-regulator.c | 304 ++++++++++++---------------
+ include/linux/mfd/mt6358/registers.h |   6 +
+ 2 files changed, 144 insertions(+), 166 deletions(-)
+
 -- 
 2.42.0.283.g2d96d420d3-goog
 
