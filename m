@@ -4,104 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F8CACA5500
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 07:10:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE75ACA5500
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 07:42:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qqRVKtn6/zyJ17CeKnTMdnuTgtPxVETYhHbBrmlREPw=; b=voDYGkxe3jJqTVskq1lVoQ4Dk0
-	pYuJYA4veA8G0bogRv1CnR88+hjf0r1g8uD9Ph15A18JDprMGTXxjgpbSojgSW4Xcd88Qb6DARY77
-	Kzt3EhbRDDFQ0/QkRZxDOsQ9+8hiVlPimj8PZnYbU/ccq6mHsZrmGerscsCqIWoeNVK/WSGn6AkNj
-	uIqdfzlV+co7wgmvCmkd1DepKm+i6dvyM7A0ySbObu4TriHu3TDFLuTH5hffNIjPd52sHH45YnhLM
-	MIvDup397kFr7QfvFp2bT4igIqPGQiBtlgK8p669VWSK07KN2czB32nJMMcU8k1zIa9z/socvdkPR
-	6TUUdypg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iqyPmr2+k/NZVSejvLbli04qwXaMrXe8lYcDTd578VI=; b=UOfM8+U9jtuSSHJYgH5LY7JtHl
+	lZNZWWTK/3YgfteYmcORiHjjcvmktX6kPL1lMg9iSbWurHqRGHJXzIdll+dqNy4voO44ni5oI2lPu
+	2xKSB6qGJXdJU45jdNW1qzz4nlRbhmTqTxq+PBdzyTZlfzhbH7FvEcOGx+VhhfG2lba5+cQT/+Bdx
+	d3M57BfMtCedqyWVB3l6o3fu8fD4pT/okBmLfN8zfTtc8e/S4SAJhM9aDkphIx1aotx+wy9lVezDS
+	fcLbqfnXXcAN3E4KSEU1pg6XNU0K1O0ReTDY9ua82S0EcIv+NLME4RhrJcKHPlijBcRYuRLTz47+F
+	xSg6TQkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgK0z-004twu-1t;
-	Wed, 13 Sep 2023 07:10:21 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1qgKWJ-004yBH-0k;
+	Wed, 13 Sep 2023 07:42:43 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgK0x-004twG-0G;
-	Wed, 13 Sep 2023 07:10:20 +0000
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38D6Ld4e032251;
-	Wed, 13 Sep 2023 07:10:02 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=qqRVKtn6/zyJ17CeKnTMdnuTgtPxVETYhHbBrmlREPw=;
- b=ghG+PRtO5O0X6vZ4Xh3f9VBp8PMbtP+X2XnBsyoSIejQ5qwoEjmEda6/oSz54D5DG3uN
- s1O3DpdB1bng3T6r1l5K6GC3o9e9z8S7IL+2JEaiEhSAoJ+8WjRQJigGmb521gO3I1+B
- IGv2AM/0tE15ueO7oTqybrCgW3N3kwvogrJ+gxe+QUjN7+ZXYwyBlG3BMXpKFmnIUOua
- nX/gwKLrMpXwhw0nMdtAUiwGwFnPOBzcpC1Vt6LOsHxVmOyNR5JSFLYXSwIz+ncgdYJu
- NymOt6ejVAMxMI8OSarMc0QY6NKnk+jlwdGVJ6OtiKkny3MaH69SSRhPHKUP4Y2y8pPH bQ== 
-Received: from nasanppmta02.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t2y8jrxe8-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 13 Sep 2023 07:10:01 +0000
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38D7A0vs000953
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 13 Sep 2023 07:10:00 GMT
-Received: from [10.214.66.81] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Wed, 13 Sep
- 2023 00:09:48 -0700
-Message-ID: <fe7d618d-ca22-0fd4-efc0-cad52cb984bc@quicinc.com>
-Date: Wed, 13 Sep 2023 12:39:45 +0530
+	id 1qgKWF-004y9p-1g;
+	Wed, 13 Sep 2023 07:42:40 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-52fe27898e9so370258a12.0;
+        Wed, 13 Sep 2023 00:42:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1694590955; x=1695195755; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=iqyPmr2+k/NZVSejvLbli04qwXaMrXe8lYcDTd578VI=;
+        b=DLzeSa1WOPYWbnAIQcj/wx9ui0anpDbpAPNF+sahBNEVEtfH63nx4x6aH8Zfi1Uq1x
+         /VpYGlmvTPaNLa3PQDcQ+KgjQmQnxDUW2sjHWew3o2NAT7K+LrQjf5IrYEdvOhFEgpQ8
+         VXi6lU6hY/WCapnAOFN02cOkPRh+L3lRJ6wNVd/ov5FfvVQMY+NG0VvQZJSYyRsEb44r
+         t5pKvGQQsoWVCP8JliA+K9xYB8jYsJuh4+pTOpxVFsux+lbAO7kRkeXogixVy0V3mnVf
+         52mwb+TpibJKGt3waCAyyevMYwc4X+qdojV0A5Zo2laSj8T93X4cF7JFxn8emfgmRN5/
+         8ZWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694590955; x=1695195755;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=iqyPmr2+k/NZVSejvLbli04qwXaMrXe8lYcDTd578VI=;
+        b=q8yuSGzHfB3b0e17WVsedVXLP83YPDH+ft8NfjDfuZnDAFCg7ydqU7/QWsqy/PTvHA
+         N+1FAF3YOvt3R9ylw2MRaZXGhF/IB4BoTk/Yu/oB5sFbw5xRpO3u9WIxngt6LHlq7BpC
+         WgWWerodDw24bDHsejra2VsQDmk4eri5bIUN3Z1gi9TPRw++FhZmC9lD1NPwheEb4oyZ
+         0/+C2zkVlPaBrsz/rkqSN0Mi2y9nh2XJd7d+sBjY4MnccTOzao3da3o6w/7ODB/5J1LM
+         e3UJUUmjf3Fm4HZdE9Df1lP4VHmZOAwsfbFo+TSf7Chln/P3rwgQdFICXQ/MkZDK545i
+         4wwA==
+X-Gm-Message-State: AOJu0YzPFOaZE4e1gLHelNIEAyuknyonD8krk/ZqAbXXd8lNNo0lqqku
+	sYv3jp9k1L3DyeUTDWd6ALk=
+X-Google-Smtp-Source: AGHT+IG9wMEyhBjSpRxfH9WcGpwpPQcuKOXyDTvt6JEficQoouj+74NmVu6JoToLxPGIgK4sRqX+TQ==
+X-Received: by 2002:a17:906:74c7:b0:9aa:1020:8c39 with SMTP id z7-20020a17090674c700b009aa10208c39mr1295768ejl.18.1694590954694;
+        Wed, 13 Sep 2023 00:42:34 -0700 (PDT)
+Received: from skbuf ([188.26.184.93])
+        by smtp.gmail.com with ESMTPSA id w5-20020a17090652c500b0099bd453357esm7874749ejn.41.2023.09.13.00.42.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 13 Sep 2023 00:42:34 -0700 (PDT)
+Date: Wed, 13 Sep 2023 10:42:31 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
+Message-ID: <20230913074231.5azwxqjuv2wp5nik@skbuf>
+References: <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
+ <20230814143601.mnpxtcm2zybnbvoh@skbuf>
+ <0cee0928-74c9-4048-8cd8-70bfbfafd9b2@arinc9.com>
+ <20230827121235.zog4c3ehu2cyd3jy@skbuf>
+ <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
+ <87325ce9-595a-4dda-a6a1-b5927d25719b@arinc9.com>
+ <20230911225126.rk23g3u3bzo3agby@skbuf>
+ <036c0763-f1b2-49ff-bc82-1ff16eec27ab@arinc9.com>
+ <20230912193450.h5s6miubag46z623@skbuf>
+ <6cec079e-991e-4222-a76d-d6156de0daca@arinc9.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v5 06/17] soc: qcom: Add Qualcomm APSS minidump kernel
- driver
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, <corbet@lwn.net>,
-        <agross@kernel.org>, <andersson@kernel.org>,
-        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
-        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
-        <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
-        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
-        <will@kernel.org>, <linus.walleij@linaro.org>,
-        <andy.shevchenko@gmail.com>, <vigneshr@ti.com>, <nm@ti.com>,
-        <matthias.bgg@gmail.com>, <kgene@kernel.org>,
-        <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
-        <quic_tsoni@quicinc.com>
-CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-arm-msm@vger.kernel.org>, <linux-hardening@vger.kernel.org>,
-        <linux-remoteproc@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
-References: <1694290578-17733-1-git-send-email-quic_mojha@quicinc.com>
- <1694290578-17733-7-git-send-email-quic_mojha@quicinc.com>
- <3bb1e84f-3b65-0596-1b6b-6decb0ff53cc@linaro.org>
- <0eeef9c4-14c0-8283-803b-4684854d4be6@quicinc.com>
- <94770fc6-7d72-8283-5858-786685620d5c@linaro.org>
-From: Mukesh Ojha <quic_mojha@quicinc.com>
-In-Reply-To: <94770fc6-7d72-8283-5858-786685620d5c@linaro.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: 0R0xqRb59Cba6lgs1UtXK0Q91VYNBJeX
-X-Proofpoint-GUID: 0R0xqRb59Cba6lgs1UtXK0Q91VYNBJeX
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-09-12_24,2023-09-05_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 bulkscore=0 phishscore=0
- impostorscore=0 spamscore=0 mlxlogscore=929 malwarescore=0
- priorityscore=1501 clxscore=1015 mlxscore=0 suspectscore=0
- lowpriorityscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2308100000 definitions=main-2309130059
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <6cec079e-991e-4222-a76d-d6156de0daca@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_001019_233578_E9FF75B6 
-X-CRM114-Status: GOOD (  17.05  )
+X-CRM114-CacheID: sfid-20230913_004239_581611_CE89B061 
+X-CRM114-Status: GOOD (  31.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,53 +119,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 9/12/2023 3:24 PM, Krzysztof Kozlowski wrote:
-> On 12/09/2023 11:26, Mukesh Ojha wrote:
->>>
->>>> +		return -EINVAL;
->>>> +	}
->>>> +
->>>> +	mutex_init(&md->md_lock);
->>>> +	ret = qcom_apss_md_table_init(md, &mdgtoc->subsystems[MINIDUMP_APSS_DESC]);
->>>> +	if (ret) {
->>>> +		dev_err(md->dev, "apss minidump initialization failed: %d\n", ret);
->>>> +		return ret;
->>>> +	}
->>>> +
->>>> +	/* First entry would be ELF header */
->>>> +	ret = qcom_md_add_elfheader(md);
->>>> +	if (ret) {
->>>> +		dev_err(md->dev, "Failed to add elf header: %d\n", ret);
->>>> +		memset(md->apss_data->md_ss_toc, 0, sizeof(struct minidump_subsystem));
->>>
->>> Why do you need it?
->>
->> Earlier, i got comment about clearing the SS TOC(subsystem table of
->> content) which is shared with other SS and it will have stale values.
+On Wed, Sep 13, 2023 at 08:52:37AM +0300, Arınç ÜNAL wrote:
+> On 12.09.2023 22:34, Vladimir Oltean wrote:
+> > On Tue, Sep 12, 2023 at 10:23:51PM +0300, Arınç ÜNAL wrote:
+> > > The phylink bindings for user ports I ended up making by looking up the
+> > > existing devicetrees are different than the phylink bindings for the shared
+> > > (CPU and DSA) ports currently enforced on all switches.
+> > > 
+> > > My phylink bindings for user ports:
+> > > 
+> > >              allOf:
+> > >                - anyOf:
+> > >                    - required: [ fixed-link ]
+> > >                    - required: [ phy-handle ]
+> > >                    - required: [ managed ]
+> > > 
+> > >                - if:
+> > >                    required: [ fixed-link ]
+> > >                  then:
+> > >                    not:
+> > >                      required: [ managed ]
+> > 
+> > Right, it should have been anyOf and not oneOf.. my mistake. It is a bug
+> > which should be fixed. It's the same phylink that gets used in both cases,
+> > user ports and shared ports :)
 > 
-> OK, but then the entire code is poorly readable. First, any cleanup of
-> qcom_apss_md_table_init() should be named similarly, e.g.
-> qcom_apss_md_table_clean() or qcom_apss_md_table_exit() or whatever
-> seems feasible.
+> One more thing, I don't recall phy-mode being required to be defined for
+> user ports as it will default to GMII. I don't believe this is the same
+> case for shared ports so phy-mode is required only for them?
 
-ACK on this.
+phy-mode is not strictly required, but I think there is a strong
+preference to set it. IIRC, when looking at the DSA device trees, there
+was no case where phy-mode would be absent on CPU/DSA ports if the other
+link properties were also present, so we required it too. There were no
+complaints in 1 year since dsa_shared_port_validate_of() is there. The
+requirement can be relaxed to just a warning and no error in the kernel,
+and the removal of "required" in the schema, if it helps making it
+common with user ports.
 
-> 
-> Second, shouldn't writing to shared memory be the last step? Step which
-> cannot fail and there is no cleanup afterwards (like
-> platform_set_drvdata)? I don't enjoy looking at this interface...
+I think that the fallback to PHY_INTERFACE_MODE_GMII applies only if
+there is a phy_device (phy-handle). But otherwise, I don't remember if
+the PHY_INTERFACE_MODE_NA passed to phylink_create() will persist at
+runtime, or cause an error somewhere.
 
-It can be done, if i shift adding elf header as first thing to first
-caller of qcom_minidump_region_register() but then i would have to 
-remove qcom_ramoops_minidump() from this probe in 11/17 patch.
+> > > The phylink bindings for shared ports enforced on all switches on
+> > > dsa-port.yaml:
+> > > 
+> > >    allOf:
+> > >      - required:
+> > >          - phy-mode
+> > >      - oneOf:
+> > >          - required:
+> > >              - fixed-link
+> > >          - required:
+> > >              - phy-handle
+> > >          - required:
+> > >              - managed
+> > > 
+> > > Here's what I understand:
+> > > 
+> > > - For switches in dsa_switches_apply_workarounds[]
+> > >    - Enforce the latter for shared ports.
+> > >    - Enforce the former for user ports.
+> > > 
+> > > - For switches not in dsa_switches_apply_workarounds[]
+> > >    - Enforce the former for all ports.
+> > 
+> > No, no. We enforce the dt-schema regardless of switch presence in
+> > dsa_switches_apply_workarounds[], to encourage users to fix device trees
+> > (those who run schema validation). The kernel workaround consists in
+> > doing something (skipping phylink) for the device trees where the schema
+> > warns on shared ports. But there should be a single sub-schema for
+> > validating phylink bindings, whatever port kind it is.
+> 
+> Hmm, like writing phylink.yaml and then referring to it under the port
+> pattern node? This could prevent a lot of repetition.
+> 
+> Arınç
 
--Mukesh
-> 
-> 
-> 
-> Best regards,
-> Krzysztof
-> 
+Yes, that would sound good.
 
