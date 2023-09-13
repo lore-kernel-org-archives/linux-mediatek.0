@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC07EEE3F29
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Sep 2023 20:38:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AF8DEE3F3F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 01:22:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=37HUITb6LdSZ+O2wnDjc/sxq8EMiDMZlcaSvkcGEQvw=; b=dR496HHwknZa/s
-	TJ0BOQQ9dc8K+1OgjLTk7e0kTMdGn0cGVG542oxB/K21LQ6mN/xfldToeq3UTcEOE19yik0Pd7OTl
-	nwQKkaotlqNSaEWHEcPb+EP09zspk1JbZPC6Y57rB4eWVk5dM6tW2s6ZuS9kmJcTIdBFMPY7Dkkzt
-	QlVM2IrMxVgSeFQnJJcrzNQIgcYNPctAJtUHGHSNikGLrpnr83ttUypJqBDuDoFaDfzLonMOEdJ3l
-	qQxKjPmHX167eQVROnvedpdDtWDBzRZlZWGBnotrcHJ+UihCGbsCBdMBL6YyE3IL1YYJlaBHim+al
-	V3ck1G8WfWJpBLxJt/Kw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6zXsjXXg4yAxPy7RTYj+3TPJv5GOPPfAy0rQXae3yUw=; b=LQ5jR3kJvhsSgO/xGenZcgUvAq
+	ovQhGNoJGotQJEwY2hIAEZEn8CE+ATB7GtdxkSsT+p5h2RFBg2dEEd6XvVQigTi4fEiNWnDWi+RyR
+	wK74+TREntBfL//8bJVZA84tvFGpBtyWZSu1nw2mkP/ZbCwvGUi77SSGxkAi9cbdCodkuqSXKYwK+
+	rnMfbG8iaYHG51IjvxUVcJrkHIpJTk2dOAqaaa0njjwtDLC4NLc8rKM5QAWPCPkCki6qDnr5q+ZkS
+	rh8WexP3EgqWa6197x3FBgaiNqlWf0k/Kp7+WIS7IgkqwIyX9lJx2uu7orAG4aQM3XK8x48e68/t0
+	8CiO+UmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgA9W-0045sk-32;
-	Tue, 12 Sep 2023 20:38:30 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1qgEa0-004Nxh-2Z;
+	Wed, 13 Sep 2023 01:22:08 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgA9T-0045rh-1m
-	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Sep 2023 20:38:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
- s=s31663417; t=1694551100; x=1695155900; i=frank-w@public-files.de;
- bh=3f5UiZlA8nKn8viAmwMIfvgTRl8FZPm5CRqjg7mq39I=;
- h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:Referenc
- es;
- b=D77qv+r8idb/u+/830Yzd5IvchdUUOZiqLkGJZ7QD30JGftj4btmrsqHRuP1kCBKoMbkVNc
- jxwzpZRQvG9CbLxHqg0xcoYty7nHXNoHBd8pi/+paJ69URfLJyOOTRSQMTeGbPjhKKpy2f0Ac
- sSLSF5IPItEG0bKwUxw1sr0L4pzSZE6ylJ9nR+Cpmr0nuzRo+rBLsadsqhiNy8n2609AeB2qQ
- E/elxEdH8y2x6gF96piblXd0sOd6d1AACcp3vtnrpL74b0oIeYotdFd9Y1C7JUum6cSThuuyt
- PAWCb7IRWjn6oCE1ij9zlE8tv75m8tnczcCARBDxs0mIreTlvWcQ==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [127.0.0.1] ([217.61.158.105]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1N0X8o-1rcGZr3NIq-00wV5O; Tue, 12
- Sep 2023 22:38:19 +0200
-Date: Tue, 12 Sep 2023 22:38:21 +0200
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Markus Schneider-Pargmann <msp@baylibre.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>
-CC: Fabien Parent <fparent@baylibre.com>,
- Amjad Ouled-Ameur <aouledameur@baylibre.com>,
- Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Alex Riabchenko <d3adme4t@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Subject: =?US-ASCII?Q?Re=3A_regression_with_33140e668b10_thermal/driv?= =?US-ASCII?Q?ers/mediatek=3A_Control_buffer_enablement_tweaks?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20230912134617.jwonuolt56nofifz@blmsp>
-References: <trinity-6713557b-fe0a-4dae-84aa-1aa86f7619fa-1693473911557@3c-app-gmx-bs12> <trinity-f3e7d8e0-2e93-4e84-a489-3993c819d2c3-1693488871086@3c-app-gmx-bs12> <07a569b9-e691-64ea-dd65-3b49842af33d@linaro.org> <20230912134617.jwonuolt56nofifz@blmsp>
-Message-ID: <B0B3775B-B8D1-4284-814F-4F41EC22F532@public-files.de>
+	id 1qgEZw-004NwV-32;
+	Wed, 13 Sep 2023 01:22:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=6zXsjXXg4yAxPy7RTYj+3TPJv5GOPPfAy0rQXae3yUw=; b=RK94NkYKrPO8rFX0Ykdbce0JCi
+	Sc3JDva8axrlw4H6CDU2Lrz/PVJCqC5kgEFFtz4QBUZTgOnP12qTIlxbel5EJK5ggAwi/X9hr3Z62
+	lWRhMeAFQhAf3c9gUZJC/PcFmTRrXKjiacyiUtqJQixe13gn9l2o8bIyIOhz2wjnDd7M=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1qgEZL-006Gpu-HU; Wed, 13 Sep 2023 03:21:27 +0200
+Date: Wed, 13 Sep 2023 03:21:27 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Vladimir Oltean <olteanv@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
+Message-ID: <c7eddf45-c259-47de-ac59-2569c09ed5f7@lunn.ch>
+References: <20230812091708.34665-3-arinc.unal@arinc9.com>
+ <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <20230813112026.ohsx6srbt2staxma@skbuf>
+ <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
+ <20230813190157.4y3zoro53qsz43pe@skbuf>
+ <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
+ <617c51cf-2c09-4865-ac60-96599db597e7@lunn.ch>
+ <563ac27a-22f2-463e-b5c1-9df721842976@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:fVM145ezhiwF/zqxfd8StOMbPCCiKOrRk4+H4gjtGd9CQfxUqUG
- XY7resjYBHZ+W/70zKN3x37/2g0wsK1vWPJhebH/OFSZNrcZxv1jt0zRMHK2SnC4VXaaZyz
- SItZHhGfBSV6xurIFj20GbMpv0CWg7Cbl2yuVj/bycPOw3nwYvaSGwwpXDsfPLc1YLrlKQN
- KMYrnyzbRzl4955oHINNQ==
-UI-OutboundReport: notjunk:1;M01:P0:VPrnAZmP0ik=;VULxiDso5UE0QCU2TeetDf3PdzQ
- tkpZWPGMVbtyqTXztpQsFJb7u+WpZDIpgzJ2M7AE78vWisERmtONJNiX7eJSeHEt7knn/UQ/s
- IvGW9SSBStGsuLgy8yhmUDO4qPCxrgJroWGUltJJbCcmzsMg/v2NdMjZltRBN/u1B7Gr5lCnK
- unpfU4IFqQhfa+5tPogjg41soATo//4d7q3fLotuE4/0l+f1OhwMAH8+mU8iB5e6tP6EyeJeV
- V+rPlc6K0NuNrkYsFHOuW8OvDdKD7e4RbTOCzSBEEJQjqUzEEZ4nSLSvToKVGrElde36iEWwz
- uDtlbNKkDrs5VUeF8X0dI7sC7ZbaSSRxKyTMSyp4SioTqx4xTe+D39dk1L5YsOymeBH4a1vXo
- QU/98YzRAeP/JBncwREPN7PQTJGd0pe5RP4UpuASKA1y288q/im6KiUa1oxXjKrLEAzZ/WvtR
- Y6TBSp3TQkE4cjYHikcXFMQgvzYs1h1F/Lvb6S5IF9LtBFqqcC0ZGdxhp6+r/sbTHlxUPpJp9
- YrU0aMhhB7sP1ZVD6VKbpxKX1K59xOJUQPCdPmNpxsrdxc0+Q5+N3gWkQ2htiHHz4/Rsz1xWG
- ekl4hO+zTpsax51MAqn/ghycG0SPm0y/E49dTNdPwY4T9LfC+fERiCukGjhtF3P96N4wmPkma
- WUAEeIHKUtmOgmhqkJKLYDn1SF+Xpv2vJZQNWcz2vBKZR+KSCRO2z3mxwGhH2EwkXYrvGewO6
- OIesC5UIMj17DdsLbBppQqZT5oAcXN3CFfYgSbqLlV9HHdQgVjHCzvvXQClr/6pkr8vwo0WYA
- jEmQVznHGU2TYlD8JwnkV3yIGGiHafMu+OhSbBuJKlW5JJnRVWj9bssW1bszFK1X5YA7Kl6/i
- PXQWVj9mQ7JQtG7AmzkMgOJYukoC+jjlJP4c6oB2ERRNhHzsXrhNXnh/4bWlCB1ibMMYIvoxN
- mdtlp181luHyp0qbnatRMokPcVU=
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <563ac27a-22f2-463e-b5c1-9df721842976@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_133827_976039_16C25DEA 
-X-CRM114-Status: GOOD (  18.84  )
+X-CRM114-CacheID: sfid-20230912_182204_981179_5658A781 
+X-CRM114-Status: GOOD (  16.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,86 +92,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 12=2E September 2023 15:46:17 MESZ schrieb Markus Schneider-Pargmann <ms=
-p@baylibre=2Ecom>:
->Hi Frank and Daniel,
->
->On Tue, Sep 12, 2023 at 02:57:45PM +0200, Daniel Lezcano wrote:
->>=20
->> Hi Frank,
->>=20
->> thanks for reporting and investigating the issue=2E
->>=20
->>=20
->> On 31/08/2023 15:34, Frank Wunderlich wrote:
->> > Hi,
->> >=20
->> > looked a bit deeper into it and it looks like i only need to add the =
-fields in the mtk_thermal_data struct
->> >=20
->> > --- a/drivers/thermal/mediatek/auxadc_thermal=2Ec
->> > +++ b/drivers/thermal/mediatek/auxadc_thermal=2Ec
->> > @@ -690,6 +690,9 @@ static const struct mtk_thermal_data mt7986_therm=
-al_data =3D {
->> >          =2Eadcpnp =3D mt7986_adcpnp,
->> >          =2Esensor_mux_values =3D mt7986_mux_values,
->> >          =2Eversion =3D MTK_THERMAL_V3,
->> > +       =2Eapmixed_buffer_ctl_reg =3D APMIXED_SYS_TS_CON1,
->> > +       =2Eapmixed_buffer_ctl_mask =3D GENMASK(31, 6) | BIT(3),
->> > +       =2Eapmixed_buffer_ctl_set =3D BIT(0),
->> >   };
->> >=20
->> > in my quick test the temprature can be read again and i'm near room t=
-emperature=2E=2E=2Ei though it was a bit higher before, but as far as i und=
-erstand the code, the values were fixed before and only made it configurabl=
-e=2E
->> >=20
->> > if someone can confirm that i'm right, i can send official patch=2E
->
->Sorry for the delay, this was in my inbox but somehow not on my todo
->list=2E
->
->The patch looks correct=2E I think I simply missed adding the fields for
->MTK_THERMAL_V3 chips=2E Sorry!
->
->>=20
->> At the first glance, it seems the proposed change is correct and could =
-be
->> proposed as a hot fix=2E
->>=20
->> However, the conditions with the version and the apmixed_buffer_ctl_reg
->> looks a bit fuzzy=2E
->>=20
->> Markus, can you revisit this part of code and consolidate the configura=
-ble
->> approach ?
->
->Yes, it indeed looks like I broke another condition there=2E I will give
->it another close look and send a fix=2E
->
->Best,
->Markus
+> > The marvell switch can have up to 2 MDIO busses. If i remember
+> > correctly, there is also one switch which has one MDIO bus per port.
+> 
+> I'm writing the json-schema for Marvell switches. I've checked a few
+> devicetree source files on Linus's Linux tree, I only see two buses used at
+> the most.
 
-Hi
+Sorry, i was ambiguous. Its not a Marvell switch which can have one
+MDIO bus per port. I don't remember which switch it is, and it might
+be a pure switchdev switch, not a DSA switch.
 
-I already sent the Patch below
+> The internal bus and another bus with
+> marvell,mv88e6xxx-mdio-external. I've never seen a devicetree with
+> marvell,mv88e6250 though. Could the switch that has one MDIO bus per port
+> be this one? Also, is every bus of this switch a
+> marvell,mv88e6xxx-mdio-external bus or, one internal bus and the remaining
+> are marvell mv88e6xxx-mdio-external buses?
 
-https://patchwork=2Ekernel=2Eorg/project/linux-mediatek/patch/202309071120=
-18=2E52811-1-linux@fw-web=2Ede/
+Only the 6390 family has two busses. It has an internal MDIO bus with
+the same register API as all the other switches. However, unlike the
+other families, it is not exposed on pins. And the 6390 has a second
+MDIO bus using a slight variant of the registers, which is connected
+to the outside world via pins. This second bus then has a compatible
+to separate it from the normal MDIO bus.
 
-If it is correct (handled the same way as mt7622 before) you have not to s=
-end a patch=2E
-
-But you should maybe check condition !=3DV2 is correct when loocking on v3=
-=2E
-
-https://git=2Ekernel=2Eorg/pub/scm/linux/kernel/git/torvalds/linux=2Egit/c=
-ommit/drivers/thermal/mediatek/auxadc_thermal=2Ec?id=3D33140e668b10200b7757=
-79f302b143b32e6ae7ca
-
-Regards Frank
+	Andrew
 
