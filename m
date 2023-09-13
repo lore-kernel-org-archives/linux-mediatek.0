@@ -4,82 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6097CCA5507
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 08:29:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0B06CA5509
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 08:30:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ef5OCfOkv8S2pr1WqDspyiJtRgwSD+1amDKVNYL+cmM=; b=0YW8Rrpw707Y5TP3kNQedhxKGC
-	8KRFFAO15qwwPOQf42PYDP9Aitw7jomA6VuNbVUxo7OBXElgBJ+dd1z+eqV1vsL6XiFGsV9rv7aY8
-	kCv+Stt3Um/woIkhw3Ns37V4Sd3fZsnmEsKSGoQA3srHeD+zkP+Zu215A9rFki6pyiwwD0+x6xo1R
-	uJf5iOqk3Zat9SdNSL9aOtrEC39pxh67oV2kJYz5hTN1qqEQVcpq7WjvoxYnjsL5a90JHE/YdhlJe
-	lKHH2/uiX/iJlymqYApBOmRfbfvwKzsMeC+xt/CfRj4ywqPMbAi1/yDVi9ycPqaeBz2VyJnbuaxov
-	DWfbKkxA==;
+	bh=26teksENA+dQQO6m1YUj6nkAa9mPqWw8dabp0DqJ9V8=; b=X4hGTkRtTa7cZAMXWNfzve1t2h
+	OiagN47G/9hkBwBuagaZ91TVLhw4PY6fLwFpnfSq4ftkQ+1IgJLQjHSv797HY3ackUnx60miwzEJs
+	2y2g5npq5s/G49PxWjCbQsWI8YhicRJMcDjwhxgLj9tRwmTgK7Y5xmY8pxfDxAIcUsrKX/v8XDsg1
+	WvxApIYT/m7gSq2dlPaqD4QaT8OKOkvd2G8KGHVzHAEUhghTA4B63BEBiREC8ewhEoRHZr4+ISPZf
+	qVf0tccLQBFXnN/H+6fHPMtH8NOkXHnIbHMA1xTTv36h167pWqb8k27FbWLOkpTKcLw+H8tDhLQij
+	aavlAjTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgLFv-0056Jk-0u;
-	Wed, 13 Sep 2023 08:29:51 +0000
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+	id 1qgLGz-0056ec-2w;
+	Wed, 13 Sep 2023 08:30:57 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgLFl-0056DI-1o
-	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Sep 2023 08:29:45 +0000
-Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-5778fe9d183so1923791a12.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 Sep 2023 01:29:40 -0700 (PDT)
+	id 1qgLGx-0056dB-1P;
+	Wed, 13 Sep 2023 08:30:57 +0000
+Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-2bfb17435e4so13787371fa.0;
+        Wed, 13 Sep 2023 01:30:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1694593779; x=1695198579; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ef5OCfOkv8S2pr1WqDspyiJtRgwSD+1amDKVNYL+cmM=;
-        b=b/Ac0UKu0yN2D4hK2wwG27TaOsUx1/7lv1SHRPjunp+BkOCt/ZoDb5fDMWBLA5EfVQ
-         3Sb7XlIgul6RTqVql4mZ28gls8cyyYkEnzxYEWwTCunuRyKZkrZrPyIdaSjbcVces8fY
-         Jhs3hQ4wDsUmbLzdLghyqX3EhDwBYJ8fA+EE4=
+        d=gmail.com; s=20221208; t=1694593851; x=1695198651; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=26teksENA+dQQO6m1YUj6nkAa9mPqWw8dabp0DqJ9V8=;
+        b=SeSpKup/qMWqVv70xz6zbf4NMPKiZPj541tlXcNPKrfnbX1911EvNL10KU6CnNClmh
+         7ppX5EK51IeHbH10AyOkEfmdhI+TylXE45kWjw99UA5baec3e/i+GLzPqPC3dTd8SiT6
+         LfPMyxCRaqgkFQ/pqx91Ios8HhIcvLshu9aDMSjjRAxn6zaDV/jsdFT8Jgch6dhLgdPp
+         magOs7dtlCndbAU0SMlVMn7vEmG5YJSKnobiHvWAf/TXNDaKIqSOHeNhxc7jLaPMbcoR
+         PQmIYzdOO0+LJVhhFBFvWTACELvgoPnijrXt8TpDkrhat8ypuVYvf44YFuiE6MDBvrfa
+         5hRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694593779; x=1695198579;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ef5OCfOkv8S2pr1WqDspyiJtRgwSD+1amDKVNYL+cmM=;
-        b=b14iJj+ySmNEq6QLwG/LJ+HaWa6T2oHryzf8x9pkZ3J6jjq866x+K4Ks5GZJIcnd/x
-         ddUMRJF62wtkmWQi0JzkwzR9xVEOL63QtQogmnGq6hBdjLd3vtK/9yU0KWFCHkG0Eshc
-         iQwafKg0NNKPcbKPh0n9GodVbeJb1o1WePiwzIltb+Xjv4sFoqS5TBavrBbqMLpH7zaR
-         RdJDxsbR/xy9FBONqRBhpMRpc4biEVYynlf2rdN9+Na7O2oZroMNMTuIz2myiuwEl9rV
-         arSZovGp9Mhnbe6MXrcQb45Y1HRTYmai8WzxMM1Zr+mPtujOib49skFU09qaoWbz8lrR
-         xauQ==
-X-Gm-Message-State: AOJu0YwuZl9E2/lwL2UkjSc7a0ZgHkfrUUI7Uv5iPm48Po4GDA4IIM9i
-	pCf1HWaz+t72Q/2w0okjA9LQVVTJ+RkMRWv7tcc=
-X-Google-Smtp-Source: AGHT+IHUGqrZdfW8Y35Nm54D33zR4iMwVCYGMzp4WoCBKc4josfo1/oalhs/oTUIdHbDyMvGOfhjWA==
-X-Received: by 2002:a05:6a20:9381:b0:13d:315f:26b7 with SMTP id x1-20020a056a20938100b0013d315f26b7mr2031045pzh.1.1694593779451;
-        Wed, 13 Sep 2023 01:29:39 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:b24c:3be4:d952:d3b1])
-        by smtp.gmail.com with ESMTPSA id g6-20020aa78746000000b006901bd3a9e4sm418781pfo.104.2023.09.13.01.29.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Sep 2023 01:29:39 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Lee Jones <lee@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Brown <broonie@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Zhiyong Tao <zhiyong.tao@mediatek.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 3/3] regulator: mt6358: Add output voltage fine tuning to variable LDOs
-Date: Wed, 13 Sep 2023 16:29:18 +0800
-Message-ID: <20230913082919.1631287-4-wenst@chromium.org>
-X-Mailer: git-send-email 2.42.0.283.g2d96d420d3-goog
-In-Reply-To: <20230913082919.1631287-1-wenst@chromium.org>
-References: <20230913082919.1631287-1-wenst@chromium.org>
+        d=1e100.net; s=20230601; t=1694593851; x=1695198651;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=26teksENA+dQQO6m1YUj6nkAa9mPqWw8dabp0DqJ9V8=;
+        b=aETIYXppMaXVTSSlFdx3dCvZzWcQZPUQsN54jPxacpMALAtaDC4xDX8FK0ysQ74ljZ
+         V9tj/k0xGfVUpY7iC32JC0BpDlCvMf2aTN4jmP6luh5jkt6l4o4+D87CG6e9jXAWHrQ5
+         S3oBuSXPYizQ/YwEJsUCloYsihReZOuKl5NEJa9pbrvsu+ZwIcEBADq6wK3mVmuhTgiK
+         64GWuPEeiTXYQyzSyK03Y0AJ228tNLVLSVroLOicZG6L3OxOyY1QTSPniwQ9b8KF55gN
+         PnWJhcNlK/p6r49bjr59tkWxspwAtVkjq3KKIpkft2USN2J0NejWPJlrK8qJv8z/uJNb
+         9OZQ==
+X-Gm-Message-State: AOJu0Yz3y3RyK4IZK4TZoZzwkIDzEw85ngRaMKPWpMxQ8wUNdFPb9O1n
+	srFWyLqJ2pA5suIHJbwnPWg=
+X-Google-Smtp-Source: AGHT+IH2/KxD8HRd+/8D+6uqgFhSyd8oI5b2Jvm/JVpo0uqkvk9+3wNdGqJvpbQmoSGuz0Cu9iLiSg==
+X-Received: by 2002:a2e:9f4e:0:b0:2bc:b75e:b88 with SMTP id v14-20020a2e9f4e000000b002bcb75e0b88mr2019335ljk.18.1694593850754;
+        Wed, 13 Sep 2023 01:30:50 -0700 (PDT)
+Received: from [10.254.108.106] (munvpn.amd.com. [165.204.72.6])
+        by smtp.gmail.com with ESMTPSA id m10-20020a7bcb8a000000b003fed7fa6c00sm1341375wmi.7.2023.09.13.01.30.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 13 Sep 2023 01:30:50 -0700 (PDT)
+Message-ID: <82b4b49a-1893-ea4d-3856-693a7824e939@gmail.com>
+Date: Wed, 13 Sep 2023 10:30:48 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH 3/9] dma-heap: Provide accessors so that in-kernel drivers
+ can allocate dmabufs from specific heaps
+Content-Language: en-US
+To: Nicolas Dufresne <nicolas@ndufresne.ca>,
+ =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
+ "jstultz@google.com" <jstultz@google.com>
+Cc: "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?SmlhbmppYW8gWmVuZyAo5pu+5YGl5aejKQ==?=
+ <Jianjiao.Zeng@mediatek.com>, =?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?=
+ <kuohong.wang@mediatek.com>, "Brian.Starkey@arm.com"
+ <Brian.Starkey@arm.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>,
+ "tjmercier@google.com" <tjmercier@google.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>
+References: <20230911023038.30649-1-yong.wu@mediatek.com>
+ <20230911023038.30649-4-yong.wu@mediatek.com>
+ <803846bc-fd1d-d2ec-2855-456af22c82f8@amd.com>
+ <CANDhNCrQyiFZ+8DnG0iyKBXC0H1698K1a9d2AxOq4whDsZBn+Q@mail.gmail.com>
+ <23e71d1f-08c1-3834-5b1f-2b5714c7bfaa@gmail.com>
+ <255ae6b9ac1b6bea9262069747824b8461475e70.camel@mediatek.com>
+ <95797f3d-65bf-1bd9-9e19-6de42605cfe3@gmail.com>
+ <8140975aa1f5c3cbdfa2e6f42aecebe3701f29da.camel@ndufresne.ca>
+From: =?UTF-8?Q?Christian_K=c3=b6nig?= <ckoenig.leichtzumerken@gmail.com>
+In-Reply-To: <8140975aa1f5c3cbdfa2e6f42aecebe3701f29da.camel@ndufresne.ca>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_012941_605545_34E8949F 
-X-CRM114-Status: GOOD (  16.23  )
+X-CRM114-CacheID: sfid-20230913_013055_478767_08898FA5 
+X-CRM114-Status: GOOD (  24.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,432 +121,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some of the LDO regulators in the MT6358/MT6366 have sparsely populated
-voltage tables, supported by custom get/set operators. While it works,
-it requires more code and an extra field to store the lookup table.
-These LDOs also have fine voltage calibration settings that can slightly
-boost the output voltage from 0 mV to 100 mV, in 10 mV increments.
+Am 12.09.23 um 16:58 schrieb Nicolas Dufresne:
+> Le mardi 12 septembre 2023 à 16:46 +0200, Christian König a écrit :
+>> Am 12.09.23 um 10:52 schrieb Yong Wu (吴勇):
+>>> [SNIP]
+>>>> But what we should try to avoid is that newly merged drivers provide
+>>>> both a driver specific UAPI and DMA-heaps. The justification that
+>>>> this
+>>>> makes it easier to transit userspace to the new UAPI doesn't really
+>>>> count.
+>>>>
+>>>> That would be adding UAPI already with a plan to deprecate it and
+>>>> that
+>>>> is most likely not helpful considering that UAPI must be supported
+>>>> forever as soon as it is upstream.
+>>> Sorry, I didn't understand this. I think we have not change the UAPI.
+>>> Which code are you referring to?
+>> Well, what do you need this for if not a new UAPI?
+>>
+>> My assumption here is that you need to export the DMA-heap allocation
+>> function so that you can server an UAPI in your new driver. Or what else
+>> is that good for?
+>>
+>> As far as I understand you try to upstream your new vcodec driver. So
+>> while this change here seems to be a good idea to clean up existing
+>> drivers it doesn't look like a good idea for a newly created driver.
+> MTK VCODEC has been upstream for quite some time now. The other patchset is
+> trying to add secure decoding/encoding support to that existing upstream driver.
+>
+> Regarding the uAPI, it seems that this addition to dmabuf heap internal API is
+> exactly the opposite. By making heaps available to drivers, modification to the
+> V4L2 uAPI is being reduced to adding "SECURE_MODE" + "SECURE_HEAP_ID" controls
+> (this is not debated yet has an approach). The heaps is being used internally in
+> replacement to every allocation, user visible or not.
 
-These combined could be modeled as a pickable set of linear ranges. The
-coarse voltage setting is modeled as the range selector, while each
-range has 11 selectors, starting from the range's base voltage, up to
-+100 mV, in 10mV increments.
+Thanks a lot for that explanation, I was really wondering what the use 
+case for this is if it's not to serve new UAPI.
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-Changes since v2:
-- selector values for all the linear ranges have been fixed.
-  I misinterpreted how the selector values for the pickable linear ranges
-  should be filled in.
+In this case I don't see any reason why we shouldn't do it. It's indeed 
+much cleaner.
 
-Angelo's reviewed-by has been dropped as a result of the change.
+Christian.
 
- drivers/regulator/mt6358-regulator.c | 275 +++++++++++----------------
- 1 file changed, 115 insertions(+), 160 deletions(-)
-
-diff --git a/drivers/regulator/mt6358-regulator.c b/drivers/regulator/mt6358-regulator.c
-index ecb2cd1eb34f..4a6ad0ccf03b 100644
---- a/drivers/regulator/mt6358-regulator.c
-+++ b/drivers/regulator/mt6358-regulator.c
-@@ -26,8 +26,6 @@ struct mt6358_regulator_info {
- 	struct regulator_desc desc;
- 	u32 status_reg;
- 	u32 qi;
--	const u32 *index_table;
--	unsigned int n_table;
- 	u32 da_vsel_reg;
- 	u32 da_vsel_mask;
- 	u32 modeset_reg;
-@@ -64,9 +62,7 @@ struct mt6358_regulator_info {
- 	.modeset_mask = BIT(_modeset_shift),	\
- }
- 
--#define MT6358_LDO(match, vreg, ldo_volt_table,	\
--	ldo_index_table, enreg, enbit, vosel,	\
--	vosel_mask)	\
-+#define MT6358_LDO(match, vreg, volt_ranges, enreg, enbit, vosel, vosel_mask) \
- [MT6358_ID_##vreg] = {	\
- 	.desc = {	\
- 		.name = #vreg,	\
-@@ -75,17 +71,19 @@ struct mt6358_regulator_info {
- 		.type = REGULATOR_VOLTAGE,	\
- 		.id = MT6358_ID_##vreg,	\
- 		.owner = THIS_MODULE,	\
--		.n_voltages = ARRAY_SIZE(ldo_volt_table),	\
--		.volt_table = ldo_volt_table,	\
--		.vsel_reg = vosel,	\
--		.vsel_mask = vosel_mask,	\
-+		.n_voltages = ARRAY_SIZE(volt_ranges##_ranges) * 11,	\
-+		.linear_ranges = volt_ranges##_ranges,		\
-+		.linear_range_selectors_bitfield = volt_ranges##_selectors,	\
-+		.n_linear_ranges = ARRAY_SIZE(volt_ranges##_ranges),	\
-+		.vsel_range_reg = vosel,	\
-+		.vsel_range_mask = vosel_mask,	\
-+		.vsel_reg = MT6358_##vreg##_ANA_CON0,	\
-+		.vsel_mask = GENMASK(3, 0),	\
- 		.enable_reg = enreg,	\
- 		.enable_mask = BIT(enbit),	\
- 	},	\
- 	.status_reg = MT6358_LDO_##vreg##_CON1,	\
- 	.qi = BIT(15),	\
--	.index_table = ldo_index_table,	\
--	.n_table = ARRAY_SIZE(ldo_index_table),	\
- }
- 
- #define MT6358_LDO1(match, vreg, min, max, step,	\
-@@ -163,9 +161,7 @@ struct mt6358_regulator_info {
- 	.modeset_mask = BIT(_modeset_shift),	\
- }
- 
--#define MT6366_LDO(match, vreg, ldo_volt_table,	\
--	ldo_index_table, enreg, enbit, vosel,	\
--	vosel_mask)	\
-+#define MT6366_LDO(match, vreg, volt_ranges, enreg, enbit, vosel, vosel_mask) \
- [MT6366_ID_##vreg] = {	\
- 	.desc = {	\
- 		.name = #vreg,	\
-@@ -174,17 +170,19 @@ struct mt6358_regulator_info {
- 		.type = REGULATOR_VOLTAGE,	\
- 		.id = MT6366_ID_##vreg,	\
- 		.owner = THIS_MODULE,	\
--		.n_voltages = ARRAY_SIZE(ldo_volt_table),	\
--		.volt_table = ldo_volt_table,	\
--		.vsel_reg = vosel,	\
--		.vsel_mask = vosel_mask,	\
-+		.n_voltages = ARRAY_SIZE(volt_ranges##_ranges) * 11,	\
-+		.linear_ranges = volt_ranges##_ranges,		\
-+		.linear_range_selectors_bitfield = volt_ranges##_selectors,	\
-+		.n_linear_ranges = ARRAY_SIZE(volt_ranges##_ranges),	\
-+		.vsel_range_reg = vosel,	\
-+		.vsel_range_mask = vosel_mask,	\
-+		.vsel_reg = MT6358_##vreg##_ANA_CON0,	\
-+		.vsel_mask = GENMASK(3, 0),	\
- 		.enable_reg = enreg,	\
- 		.enable_mask = BIT(enbit),	\
- 	},	\
- 	.status_reg = MT6358_LDO_##vreg##_CON1,	\
- 	.qi = BIT(15),	\
--	.index_table = ldo_index_table,	\
--	.n_table = ARRAY_SIZE(ldo_index_table),	\
- }
- 
- #define MT6366_LDO1(match, vreg, min, max, step,	\
-@@ -235,95 +233,95 @@ struct mt6358_regulator_info {
- }
- 
- 
--static const unsigned int vdram2_voltages[] = {
--	600000, 1800000,
--};
--
--static const unsigned int vsim_voltages[] = {
--	1700000, 1800000, 2700000, 3000000, 3100000,
--};
--
--static const unsigned int vibr_voltages[] = {
--	1200000, 1300000, 1500000, 1800000,
--	2000000, 2800000, 3000000, 3300000,
-+/* VDRAM2 voltage selector not shown in datasheet */
-+static const unsigned int vdram2_selectors[] = { 0, 12 };
-+static const struct linear_range vdram2_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(600000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(1800000, 0, 10, 10000),
- };
- 
--static const unsigned int vusb_voltages[] = {
--	3000000, 3100000,
-+static const unsigned int vsim_selectors[] = { 3, 4, 8, 11, 12 };
-+static const struct linear_range vsim_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(1700000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(1800000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(2700000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(3000000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(3100000, 0, 10, 10000),
- };
- 
--static const unsigned int vcamd_voltages[] = {
--	900000, 1000000, 1100000, 1200000,
--	1300000, 1500000, 1800000,
-+static const unsigned int vibr_selectors[] = { 0, 1, 2, 4, 5, 9, 11, 13 };
-+static const struct linear_range vibr_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(1200000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(1300000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(1500000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(1800000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(2000000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(2800000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(3000000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(3300000, 0, 10, 10000),
- };
- 
--static const unsigned int vefuse_voltages[] = {
--	1700000, 1800000, 1900000,
-+/* VUSB voltage selector not shown in datasheet */
-+static const unsigned int vusb_selectors[] = { 3, 4 };
-+static const struct linear_range vusb_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(3000000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(3100000, 0, 10, 10000),
- };
- 
--static const unsigned int vmch_vemc_voltages[] = {
--	2900000, 3000000, 3300000,
-+static const unsigned int vcamd_selectors[] = { 3, 4, 5, 6, 7, 9, 12 };
-+static const struct linear_range vcamd_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(900000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(1000000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(1100000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(1200000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(1300000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(1500000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(1800000, 0, 10, 10000),
- };
- 
--static const unsigned int vcama_voltages[] = {
--	1800000, 2500000, 2700000,
--	2800000, 2900000, 3000000,
-+static const unsigned int vefuse_selectors[] = { 11, 12, 13 };
-+static const struct linear_range vefuse_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(1700000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(1800000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(1900000, 0, 10, 10000),
- };
- 
--static const unsigned int vcn33_voltages[] = {
--	3300000, 3400000, 3500000,
-+static const unsigned int vmch_vemc_selectors[] = { 2, 3, 5 };
-+static const struct linear_range vmch_vemc_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(2900000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(3000000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(3300000, 0, 10, 10000),
- };
- 
--static const unsigned int vmc_voltages[] = {
--	1800000, 2900000, 3000000, 3300000,
-+static const unsigned int vcama_selectors[] = { 0, 7, 9, 10, 11, 12 };
-+static const struct linear_range vcama_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(1800000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(2500000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(2700000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(2800000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(2900000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(3000000, 0, 10, 10000),
- };
- 
--static const unsigned int vldo28_voltages[] = {
--	2800000, 3000000,
-+static const unsigned int vcn33_selectors[] = { 1, 2, 3 };
-+static const struct linear_range vcn33_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(3300000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(3400000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(3500000, 0, 10, 10000),
- };
- 
--static const u32 vdram2_idx[] = {
--	0, 12,
-+static const unsigned int vmc_selectors[] = { 4, 10, 11, 13 };
-+static const struct linear_range vmc_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(1800000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(2900000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(3000000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(3300000, 0, 10, 10000),
- };
- 
--static const u32 vsim_idx[] = {
--	3, 4, 8, 11, 12,
--};
--
--static const u32 vibr_idx[] = {
--	0, 1, 2, 4, 5, 9, 11, 13,
--};
--
--static const u32 vusb_idx[] = {
--	3, 4,
--};
--
--static const u32 vcamd_idx[] = {
--	3, 4, 5, 6, 7, 9, 12,
--};
--
--static const u32 vefuse_idx[] = {
--	11, 12, 13,
--};
--
--static const u32 vmch_vemc_idx[] = {
--	2, 3, 5,
--};
--
--static const u32 vcama_idx[] = {
--	0, 7, 9, 10, 11, 12,
--};
--
--static const u32 vcn33_idx[] = {
--	1, 2, 3,
--};
--
--static const u32 vmc_idx[] = {
--	4, 10, 11, 13,
--};
--
--static const u32 vldo28_idx[] = {
--	1, 3,
-+static const unsigned int vldo28_selectors[] = { 1, 3 };
-+static const struct linear_range vldo28_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(2800000, 0, 10, 10000),
-+	REGULATOR_LINEAR_RANGE(3000000, 0, 10, 10000),
- };
- 
- static unsigned int mt6358_map_mode(unsigned int mode)
-@@ -332,49 +330,6 @@ static unsigned int mt6358_map_mode(unsigned int mode)
- 		REGULATOR_MODE_NORMAL : REGULATOR_MODE_FAST;
- }
- 
--static int mt6358_set_voltage_sel(struct regulator_dev *rdev,
--				  unsigned int selector)
--{
--	const struct mt6358_regulator_info *info = to_regulator_info(rdev->desc);
--	int idx, ret;
--	const u32 *pvol;
--
--	pvol = info->index_table;
--
--	idx = pvol[selector];
--	idx <<= ffs(info->desc.vsel_mask) - 1;
--	ret = regmap_update_bits(rdev->regmap, info->desc.vsel_reg,
--				 info->desc.vsel_mask, idx);
--
--	return ret;
--}
--
--static int mt6358_get_voltage_sel(struct regulator_dev *rdev)
--{
--	const struct mt6358_regulator_info *info = to_regulator_info(rdev->desc);
--	int idx, ret;
--	u32 selector;
--	const u32 *pvol;
--
--	ret = regmap_read(rdev->regmap, info->desc.vsel_reg, &selector);
--	if (ret != 0) {
--		dev_info(&rdev->dev,
--			 "Failed to get mt6358 %s vsel reg: %d\n",
--			 info->desc.name, ret);
--		return ret;
--	}
--
--	selector = (selector & info->desc.vsel_mask) >>
--			(ffs(info->desc.vsel_mask) - 1);
--	pvol = info->index_table;
--	for (idx = 0; idx < info->desc.n_voltages; idx++) {
--		if (pvol[idx] == selector)
--			return idx;
--	}
--
--	return -EINVAL;
--}
--
- static int mt6358_get_buck_voltage_sel(struct regulator_dev *rdev)
- {
- 	const struct mt6358_regulator_info *info = to_regulator_info(rdev->desc);
-@@ -477,10 +432,10 @@ static const struct regulator_ops mt6358_volt_range_ops = {
- };
- 
- static const struct regulator_ops mt6358_volt_table_ops = {
--	.list_voltage = regulator_list_voltage_table,
--	.map_voltage = regulator_map_voltage_iterate,
--	.set_voltage_sel = mt6358_set_voltage_sel,
--	.get_voltage_sel = mt6358_get_voltage_sel,
-+	.list_voltage = regulator_list_voltage_pickable_linear_range,
-+	.map_voltage = regulator_map_voltage_pickable_linear_range,
-+	.set_voltage_sel = regulator_set_voltage_sel_pickable_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_pickable_regmap,
- 	.set_voltage_time_sel = regulator_set_voltage_time_sel,
- 	.enable = regulator_enable_regmap,
- 	.disable = regulator_disable_regmap,
-@@ -540,34 +495,34 @@ static const struct mt6358_regulator_info mt6358_regulators[] = {
- 	MT6358_REG_FIXED("ldo_vrf18", VRF18, MT6358_LDO_VRF18_CON0, 0, 1800000),
- 	MT6358_REG_FIXED("ldo_vaud28", VAUD28,
- 			 MT6358_LDO_VAUD28_CON0, 0, 2800000),
--	MT6358_LDO("ldo_vdram2", VDRAM2, vdram2_voltages, vdram2_idx,
-+	MT6358_LDO("ldo_vdram2", VDRAM2, vdram2,
- 		   MT6358_LDO_VDRAM2_CON0, 0, MT6358_LDO_VDRAM2_ELR0, 0xf),
--	MT6358_LDO("ldo_vsim1", VSIM1, vsim_voltages, vsim_idx,
-+	MT6358_LDO("ldo_vsim1", VSIM1, vsim,
- 		   MT6358_LDO_VSIM1_CON0, 0, MT6358_VSIM1_ANA_CON0, 0xf00),
--	MT6358_LDO("ldo_vibr", VIBR, vibr_voltages, vibr_idx,
-+	MT6358_LDO("ldo_vibr", VIBR, vibr,
- 		   MT6358_LDO_VIBR_CON0, 0, MT6358_VIBR_ANA_CON0, 0xf00),
--	MT6358_LDO("ldo_vusb", VUSB, vusb_voltages, vusb_idx,
-+	MT6358_LDO("ldo_vusb", VUSB, vusb,
- 		   MT6358_LDO_VUSB_CON0_0, 0, MT6358_VUSB_ANA_CON0, 0x700),
--	MT6358_LDO("ldo_vcamd", VCAMD, vcamd_voltages, vcamd_idx,
-+	MT6358_LDO("ldo_vcamd", VCAMD, vcamd,
- 		   MT6358_LDO_VCAMD_CON0, 0, MT6358_VCAMD_ANA_CON0, 0xf00),
--	MT6358_LDO("ldo_vefuse", VEFUSE, vefuse_voltages, vefuse_idx,
-+	MT6358_LDO("ldo_vefuse", VEFUSE, vefuse,
- 		   MT6358_LDO_VEFUSE_CON0, 0, MT6358_VEFUSE_ANA_CON0, 0xf00),
--	MT6358_LDO("ldo_vmch", VMCH, vmch_vemc_voltages, vmch_vemc_idx,
-+	MT6358_LDO("ldo_vmch", VMCH, vmch_vemc,
- 		   MT6358_LDO_VMCH_CON0, 0, MT6358_VMCH_ANA_CON0, 0x700),
--	MT6358_LDO("ldo_vcama1", VCAMA1, vcama_voltages, vcama_idx,
-+	MT6358_LDO("ldo_vcama1", VCAMA1, vcama,
- 		   MT6358_LDO_VCAMA1_CON0, 0, MT6358_VCAMA1_ANA_CON0, 0xf00),
--	MT6358_LDO("ldo_vemc", VEMC, vmch_vemc_voltages, vmch_vemc_idx,
-+	MT6358_LDO("ldo_vemc", VEMC, vmch_vemc,
- 		   MT6358_LDO_VEMC_CON0, 0, MT6358_VEMC_ANA_CON0, 0x700),
--	MT6358_LDO("ldo_vcn33", VCN33, vcn33_voltages, vcn33_idx,
-+	MT6358_LDO("ldo_vcn33", VCN33, vcn33,
- 		   MT6358_LDO_VCN33_CON0_0, 0, MT6358_VCN33_ANA_CON0, 0x300),
--	MT6358_LDO("ldo_vcama2", VCAMA2, vcama_voltages, vcama_idx,
-+	MT6358_LDO("ldo_vcama2", VCAMA2, vcama,
- 		   MT6358_LDO_VCAMA2_CON0, 0, MT6358_VCAMA2_ANA_CON0, 0xf00),
--	MT6358_LDO("ldo_vmc", VMC, vmc_voltages, vmc_idx,
-+	MT6358_LDO("ldo_vmc", VMC, vmc,
- 		   MT6358_LDO_VMC_CON0, 0, MT6358_VMC_ANA_CON0, 0xf00),
--	MT6358_LDO("ldo_vldo28", VLDO28, vldo28_voltages, vldo28_idx,
-+	MT6358_LDO("ldo_vldo28", VLDO28, vldo28,
- 		   MT6358_LDO_VLDO28_CON0_0, 0,
- 		   MT6358_VLDO28_ANA_CON0, 0x300),
--	MT6358_LDO("ldo_vsim2", VSIM2, vsim_voltages, vsim_idx,
-+	MT6358_LDO("ldo_vsim2", VSIM2, vsim,
- 		   MT6358_LDO_VSIM2_CON0, 0, MT6358_VSIM2_ANA_CON0, 0xf00),
- 	MT6358_LDO1("ldo_vsram_proc11", VSRAM_PROC11, 500000, 1293750, 6250,
- 		    MT6358_LDO_VSRAM_PROC11_DBG0, 0x7f00, MT6358_LDO_VSRAM_CON0, 0x7f),
-@@ -616,25 +571,25 @@ static const struct mt6358_regulator_info mt6366_regulators[] = {
- 	MT6366_REG_FIXED("ldo_vrf18", VRF18, MT6358_LDO_VRF18_CON0, 0, 1800000),
- 	MT6366_REG_FIXED("ldo_vaud28", VAUD28,
- 			 MT6358_LDO_VAUD28_CON0, 0, 2800000),
--	MT6366_LDO("ldo_vdram2", VDRAM2, vdram2_voltages, vdram2_idx,
-+	MT6366_LDO("ldo_vdram2", VDRAM2, vdram2,
- 		   MT6358_LDO_VDRAM2_CON0, 0, MT6358_LDO_VDRAM2_ELR0, 0x10),
--	MT6366_LDO("ldo_vsim1", VSIM1, vsim_voltages, vsim_idx,
-+	MT6366_LDO("ldo_vsim1", VSIM1, vsim,
- 		   MT6358_LDO_VSIM1_CON0, 0, MT6358_VSIM1_ANA_CON0, 0xf00),
--	MT6366_LDO("ldo_vibr", VIBR, vibr_voltages, vibr_idx,
-+	MT6366_LDO("ldo_vibr", VIBR, vibr,
- 		   MT6358_LDO_VIBR_CON0, 0, MT6358_VIBR_ANA_CON0, 0xf00),
--	MT6366_LDO("ldo_vusb", VUSB, vusb_voltages, vusb_idx,
-+	MT6366_LDO("ldo_vusb", VUSB, vusb,
- 		   MT6358_LDO_VUSB_CON0_0, 0, MT6358_VUSB_ANA_CON0, 0x700),
--	MT6366_LDO("ldo_vefuse", VEFUSE, vefuse_voltages, vefuse_idx,
-+	MT6366_LDO("ldo_vefuse", VEFUSE, vefuse,
- 		   MT6358_LDO_VEFUSE_CON0, 0, MT6358_VEFUSE_ANA_CON0, 0xf00),
--	MT6366_LDO("ldo_vmch", VMCH, vmch_vemc_voltages, vmch_vemc_idx,
-+	MT6366_LDO("ldo_vmch", VMCH, vmch_vemc,
- 		   MT6358_LDO_VMCH_CON0, 0, MT6358_VMCH_ANA_CON0, 0x700),
--	MT6366_LDO("ldo_vemc", VEMC, vmch_vemc_voltages, vmch_vemc_idx,
-+	MT6366_LDO("ldo_vemc", VEMC, vmch_vemc,
- 		   MT6358_LDO_VEMC_CON0, 0, MT6358_VEMC_ANA_CON0, 0x700),
--	MT6366_LDO("ldo_vcn33", VCN33, vcn33_voltages, vcn33_idx,
-+	MT6366_LDO("ldo_vcn33", VCN33, vcn33,
- 		   MT6358_LDO_VCN33_CON0_0, 0, MT6358_VCN33_ANA_CON0, 0x300),
--	MT6366_LDO("ldo_vmc", VMC, vmc_voltages, vmc_idx,
-+	MT6366_LDO("ldo_vmc", VMC, vmc,
- 		   MT6358_LDO_VMC_CON0, 0, MT6358_VMC_ANA_CON0, 0xf00),
--	MT6366_LDO("ldo_vsim2", VSIM2, vsim_voltages, vsim_idx,
-+	MT6366_LDO("ldo_vsim2", VSIM2, vsim,
- 		   MT6358_LDO_VSIM2_CON0, 0, MT6358_VSIM2_ANA_CON0, 0xf00),
- 	MT6366_LDO1("ldo_vsram_proc11", VSRAM_PROC11, 500000, 1293750, 6250,
- 		    MT6358_LDO_VSRAM_PROC11_DBG0, 0x7f00, MT6358_LDO_VSRAM_CON0, 0x7f),
--- 
-2.42.0.283.g2d96d420d3-goog
+>
+> Nicolas
+>
+>> Regards,
+>> Christian.
+>>
+>>>>> So I think this patch is a little confusing in this series, as I
+>>>> don't
+>>>>> see much of it actually being used here (though forgive me if I'm
+>>>>> missing it).
+>>>>>
+>>>>> Instead, It seems it get used in a separate patch series here:
+>>>>>      
+>>>> https://lore.kernel.org/all/20230911125936.10648-1-yunfei.dong@mediatek.com/
+>>>>
+>>>> Please try to avoid stuff like that it is really confusing and eats
+>>>> reviewers time.
+>>> My fault, I thought dma-buf and media belonged to the different tree,
+>>> so I send them separately. The cover letter just said "The consumers of
+>>> the new heap and new interface are our codecs and DRM, which will be
+>>> sent upstream soon", and there was no vcodec link at that time.
+>>>
+>>> In the next version, we will put the first three patches into the
+>>> vcodec patchset.
+>>>
+>>> Thanks.
+>>>
 
 
