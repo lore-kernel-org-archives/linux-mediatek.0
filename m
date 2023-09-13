@@ -4,91 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 295C0EEB596
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 06:42:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4214EEB59A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 07:03:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=luACkZMQYaAff8AQJIHA/Ls5QqC1rb9Wh8NKaWNzkDk=; b=jGs4a+Ueoa0aFYUhje60doOeB1
-	Axox5xOO9r2WHDy/d07GvZvEUYTHPz2/qbe6gzGghXblCrQwY+iqx79hse++dzLaRPTH/pjyYb0Wn
-	h34zYTw7reGnltBJtLo0BJlWNp5pT+KoR9GEmLpzAdYwp6rBM2UWI3OkNqnfNi5NEPwaQIx8C0rrQ
-	ds8y+FgCa53VhQDlc3s3mQgcPFGw1JNbMR3Zjk70x2Jq88R71TBwqRAmrZMtLcv9tW3nAbKsk1GQD
-	h2gBBwJ2hW6o48WJbp3CbdQ375Q61UCybrtVBW3gvXbhDBq+7A3jd8ofIe3B/QBpz3qPY3fKHiCkd
-	z1QVykpA==;
+	bh=ziSOaqQRIoG94oZGz0d5r0+7UOw/nEgZ32lMUgWge/E=; b=VqcxLDt3VLV+65m9o0ofXH6LAE
+	0cKplTBzl6a9MBkSi95RIdDDUq1+vzYK34wTCTrPhWOwHkDYNVc6hv4LhiZVKnuQcAXjzVU27YGAH
+	Gn681eOLQRUzWONWIAe+zdoSEXguRJ7vHnjp4Sf6hwseu20SwnMZu1R8YHfSDyi5WAu7l9BVRvLTO
+	o6dVxBdGFz2bToTKPXuCnblJRGq8eEG4tpLbHPx6SHbVQEoQPfyeuzOBbEeVbSZM5DTgv/gd1ZN4i
+	g4dDN54LLiY6hsApF8mRi4mWy7XY9n0GhDpSZXX6mEMnEUPMD6sFOJxGfCptOcORVXnfv0WSDXDh0
+	LZHGoDfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgJaO-004poh-0g;
-	Wed, 13 Sep 2023 06:42:52 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1qgJud-004suL-02;
+	Wed, 13 Sep 2023 07:03:47 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgJaJ-004pmE-1L
-	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Sep 2023 06:42:50 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-402d0eda361so75235485e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Sep 2023 23:42:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1694587365; x=1695192165; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=luACkZMQYaAff8AQJIHA/Ls5QqC1rb9Wh8NKaWNzkDk=;
-        b=t/XASGQbWce0t66xvV+c0kcnhlmtmmdGDokZr+3CXJhCSJKNICY/prR7hvBy0DHWmT
-         eXbir59sAJ7PUmvNoXeIR+RGz97X8DQBzdHnIrZ4HUIWfyuxUXTv0SawUprYge5pm4+S
-         GNiVyIqfaYwT2C9gADGfQVFHbtByngYJZ8i9d7yeuEX3qPObVujRsOuYYoR/yDAi682T
-         HCQVh3F/Abf8Cpqj5qHKr8TP9qO3KIfspSdmCv34lJeYAY/FJv38j+N9XLiiv4FVNRT3
-         NWYXxrZIqzok27BWGSTXYOPFJrJ775C/IpbRs0v4PF7C9mdp0K6CP/3FOmYCTdtxEbYF
-         r2Dw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694587365; x=1695192165;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=luACkZMQYaAff8AQJIHA/Ls5QqC1rb9Wh8NKaWNzkDk=;
-        b=vU4QcFRlSOlp8KnRpXRrbeIV1+0NXMfLv6b934sYDRHqW+jqXT5FTGz9VVeHOk21TO
-         mqu8DeNjz/tK3uKUMe6KqwQoMqzzMg3H9KNNLV8ScVPtEhtk/qfuL1Y6kxHmu5aRzlYG
-         8bt7eDEhYGTI3JMkHAvuzzcOriAC0BWFHU8IQh+xgeJYvhH64ShhG1Bd2u1KNuQlBqGi
-         g1PIyXZ4Tx0gXeMCeqEF03WACElPs7bYXKA++qf8dX1tcxejicw2yjFPD6Q8xf1jWbjW
-         k1DNvKUzaBv3o6O+bZHnTVgEa9NDaWLo7Pw+h+zCpJyHsHv8JGXIYP9cOv1ogrMUpNOn
-         wiWA==
-X-Gm-Message-State: AOJu0Yx2n3N+H8PQgO5oKfUkBbug68IWr3Kp4PuPP7xKAFa8YlAWErfH
-	0SYTdfE4jztSPl7a8QzX3iz1kw==
-X-Google-Smtp-Source: AGHT+IEAIxQH5qvSmuuETYLt+QKKyHAu3o6+POI2RoUl/25iI03HCsIv5WiySXLmuGaNLQvvl6o5UQ==
-X-Received: by 2002:a1c:7210:0:b0:401:cbf6:e5cc with SMTP id n16-20020a1c7210000000b00401cbf6e5ccmr1291026wmc.22.1694587365204;
-        Tue, 12 Sep 2023 23:42:45 -0700 (PDT)
-Received: from [192.168.1.20] ([178.197.214.188])
-        by smtp.gmail.com with ESMTPSA id l17-20020a7bc451000000b003fe29dc0ff2sm1043821wmi.21.2023.09.12.23.42.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 12 Sep 2023 23:42:44 -0700 (PDT)
-Message-ID: <be7d9ab7-9559-3f22-cc07-6fc3e018ef37@linaro.org>
-Date: Wed, 13 Sep 2023 08:42:42 +0200
+	id 1qgJuZ-004stf-1I;
+	Wed, 13 Sep 2023 07:03:45 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38D6q17L027482;
+	Wed, 13 Sep 2023 07:03:15 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=ziSOaqQRIoG94oZGz0d5r0+7UOw/nEgZ32lMUgWge/E=;
+ b=l1Mm2/Gor3UeT616Kj3wNqUh82gOg4TSYQDva8Q2a6CTViIYYdhbrzuC9UGrBUKAJK5Y
+ qA6fr3JCshsUCAimWB2n1/3f7Xyts2008/ruKvk8vzDL3jTayon0X3Kshvg9nTkmnT3h
+ UZkJoP5+qQul3Mt8O/yEsV7+4MJXxqsFF4PEHQaagoKuC48c3Z5aLcL5144Q/FBRZLXH
+ upRNzbXFML4EGc0RRDTN+btvDpCrnZo0Eu82M+/bRkmgeb3UJG321CJM/JL3bkPB6mYw
+ 7ssWkFHFxV9GlT7L+ClJPWVzRTAVqt4WX/L28bvHcvN05+W1SO7GklEcXUHB6YzBi64O 3Q== 
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t2y7ts0vg-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 13 Sep 2023 07:03:15 +0000
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
+	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38D73Eg8010732
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 13 Sep 2023 07:03:14 GMT
+Received: from [10.214.66.81] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Wed, 13 Sep
+ 2023 00:03:02 -0700
+Message-ID: <14bf3fca-f031-d000-6fd6-d82f4de9b255@quicinc.com>
+Date: Wed, 13 Sep 2023 12:32:54 +0530
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm64: dts: mediatek: add mt8390-evk
- board
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [REBASE PATCH v5 08/17] arm64: mm: Add dynamic ramoops region
+ support through command line
 Content-Language: en-US
-To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?Q?Bernhard_Rosenkr=c3=a4nzer?= <bero@baylibre.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>
-References: <20230913040449.29560-1-macpaul.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230913040449.29560-1-macpaul.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+To: Will Deacon <will@kernel.org>
+CC: <corbet@lwn.net>, <agross@kernel.org>, <andersson@kernel.org>,
+        <konrad.dybcio@linaro.org>, <robh+dt@kernel.org>,
+        <krzysztof.kozlowski+dt@linaro.org>, <conor+dt@kernel.org>,
+        <keescook@chromium.org>, <tony.luck@intel.com>, <gpiccoli@igalia.com>,
+        <mathieu.poirier@linaro.org>, <catalin.marinas@arm.com>,
+        <linus.walleij@linaro.org>, <andy.shevchenko@gmail.com>,
+        <vigneshr@ti.com>, <nm@ti.com>, <matthias.bgg@gmail.com>,
+        <kgene@kernel.org>, <alim.akhtar@samsung.com>, <bmasney@redhat.com>,
+        <quic_tsoni@quicinc.com>, <linux-doc@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
+        <linux-hardening@vger.kernel.org>, <linux-remoteproc@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+        <linux-mediatek@lists.infradead.org>,
+        <linux-samsung-soc@vger.kernel.org>, <kernel@quicinc.com>
+References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
+ <1694429639-21484-9-git-send-email-quic_mojha@quicinc.com>
+ <20230912101820.GA10884@willie-the-truck>
+From: Mukesh Ojha <quic_mojha@quicinc.com>
+In-Reply-To: <20230912101820.GA10884@willie-the-truck>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: GyAbQ0AdteB_VHS7rJh3KcbsPiZrwY1L
+X-Proofpoint-ORIG-GUID: GyAbQ0AdteB_VHS7rJh3KcbsPiZrwY1L
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-09-12_24,2023-09-05_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0
+ priorityscore=1501 lowpriorityscore=0 suspectscore=0 phishscore=0
+ adultscore=0 impostorscore=0 malwarescore=0 clxscore=1015 mlxlogscore=999
+ bulkscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2308100000 definitions=main-2309130058
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230912_234247_473488_58B0CBB5 
-X-CRM114-Status: UNSURE (   8.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230913_000343_480610_B163D34C 
+X-CRM114-Status: GOOD (  18.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,15 +112,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/09/2023 06:04, Macpaul Lin wrote:
-> 1. Add compatible for MT8390.
-> 2. Add bindings for the MediaTek mt8390-evk board, also known
-> as the "Genio 700-EVK".
+Thanks for the response.
+
+On 9/12/2023 3:48 PM, Will Deacon wrote:
+> On Mon, Sep 11, 2023 at 04:23:50PM +0530, Mukesh Ojha wrote:
+>> The reserved memory region for ramoops is assumed to be at a fixed
+>> and known location when read from the devicetree. This may not be
+>> required for something like Qualcomm's minidump which is interested
+>> in knowing addresses of ramoops region but it does not put hard
+>> requirement of address being fixed as most of it's SoC does not
+>> support warm reset and does not use pstorefs at all instead it has
+>> firmware way of collecting ramoops region if it gets to know the
+>> address and register it with apss minidump table which is sitting
+>> in shared memory region in DDR and firmware will have access to
+>> these table during reset and collects it on crash of SoC.
+>>
+>> So, add the support of reserving ramoops region to be dynamically
+>> allocated early during boot if it is request through command line
+>> via 'dyn_ramoops_size=' and fill up reserved resource structure and
+>> export the structure, so that it can be read by ramoops driver.
+>>
+>> Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
+>> ---
+>>   arch/arm64/mm/init.c       | 94 ++++++++++++++++++++++++++++++++++++++++++++++
 > 
+> Why does this need to be in the arch code? There's absolutely nothing
+> arm64-specific here.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Current clients of this cmdline would be only arm64, and that is the
+reason of putting this here.
 
-Best regards,
-Krzysztof
+I was checking the places where memblock_phys_alloc_range() gets called
+and found either it is arch/*/ and drivers/of/of_reserved_mem.c .
 
+Since, this is not related to device tree, did not find a proper place
+than this, i took the reference of this place from
+reserve_crashkernel(). Also, not sure how could it be of help to other
+non-arch64 users at this point.
+
+-Mukesh
+> 
+> Will
 
