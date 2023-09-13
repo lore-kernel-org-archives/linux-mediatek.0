@@ -4,66 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0D16EDEC55
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 14:01:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29DA9EDEC69
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 14:36:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qv91gXrc1AcPe+LcXrRw/xHfcEP2e6to/+ADc1Zwb1Q=; b=b5OsZ71Y9MW1jcf1fVEEVhmdx0
-	MDXsLq8Mp1yaRBA6GqFKEx0g45rIOOtoG1qsyiMqBYXYESNsEAG4Jdrv3hfCMSvh6cQ9rnXR5JN7A
-	BSg2lp29hzb8VOaK9zU+oeKjcz0Lcdk8Gy+nfe+Gsj1wEpR7/xzO+40e6r7S5rOtMpeSFCZP1hh9X
-	y8+fLV0cjv+VioiLm25ssR/Zcpm7ermRrgFYPUV9Yd3zZBlBvWM7CfPPRx5PcCdumPx+fG12/rnM1
-	1pK4lO2naKVO96iqx6ezQZZSLC06mEmEU399aOULFIf9Mhd7+0ANprXMIAJ5KOZGOoSTURPhguTcu
-	Woxc5Ozg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YiKtFd1DEgBHmf+gbOWd0NK9kcYiJm99R9uXUfWVKBs=; b=oKaanMtRNsNdYybs7jg9xnizI5
+	XiQrQ8TMcHOKGhKscjATFhUZEjthebGNoLCH1O8+aX7ttvC1nz3EXBzaE3Sz9/0q4twZyvlWFIuO3
+	0416jYmwECC/7DD6j1iRFFzxUHjfMnuDOlNuljKgU1V/z1mtVt7NtPcxlmK2jtnR8FZ9WkaADRvqu
+	34NwCqcBIIXPnW/ZaqK3y+mG3gTdeCtByHI8U863URgkCGyTUggXdo5uH7WTPNUoF2H0HNdLPEYht
+	Hx27mH3Rzw3O3ugINfCDeXyHKwRCY5KOK5Ij1P1LiVjbQTYepLg2VJdokUAg8Yi7K735a3L2wtsvU
+	CoLhqkqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgQQX-0064zl-0K;
-	Wed, 13 Sep 2023 14:01:09 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qgQyx-0067sv-08;
+	Wed, 13 Sep 2023 14:36:43 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgQQO-0064wS-2x;
-	Wed, 13 Sep 2023 14:01:06 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1qgQys-0067rt-0v;
+	Wed, 13 Sep 2023 14:36:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E9F4F66072F4;
-	Wed, 13 Sep 2023 15:00:55 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694613656;
-	bh=zNzJow6Gn0s5lcUUXuQqO24RP3fvno10hjXXk/5ytb8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FPqf764XjDlDRzXc/WCOeWXB4U20gfHRMvI6TON8Gs4r+ajqG8jZEPliH+tqp739t
-	 AmUQcmBxv0PLHPufVTN4dMA2v7XewK5vkxZVCr+ix7x4+i5ZncJUawBsS7tn/HGers
-	 vVY49DopN+HNZMAaFKAcCdOtkPE4V4fdDZeqHvich/1Im7yGbJDvqk+iMEcYfIsReA
-	 YN194QBwHPoVvBOly6accH+GGNaVgqYuulaEguwqNbzZ8vZXOZSJcPLOH7wioscrfg
-	 1A7iIE6WkdTHaztNlDDHj6XMCkRKzgqIaycBaVaEENST/L0swdLSW5Qn24x2a2JB62
-	 Op5YCsPMelVAA==
-Message-ID: <0fd097fd-9fdb-9001-cddb-7a396fde28bb@collabora.com>
-Date: Wed, 13 Sep 2023 16:00:53 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B82AE6198E;
+	Wed, 13 Sep 2023 14:36:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5ACA5C433C7;
+	Wed, 13 Sep 2023 14:36:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1694615797;
+	bh=l/HLN/NV+mFI79hNIP6t/1/MsWeZvJq9VBZFuP7L0SM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=aI/4Xcwr+/SuDZ5RkIVFKe9vn9OzdOumSxTas1jMNhT+/73O1+a0lXXTJBML0z3LU
+	 StRAQNvoVbDofRUBdveADi1CI+u4Yy9CSzbWb7bJHILn3duxC5skYh7TAWTQMg6JuZ
+	 CKVkcDM0YAIIEGVFsll5G9mqeKOl+gfSnuNjVqhGg9vN7LMEvGTOJEGCOLRPSv/Y6x
+	 IQ0arNn2a3ROxugi/vYgxqg/vJ88kF8HvkMdLzawcLJ21Vmn+1E5gKwIYuTz8jFmMu
+	 PpnrwSAE6hT8PmjI3unD7rnKGBRJGpqX4WAyZZFNtLoWCSzCtloCa7roZmHcudeAMN
+	 JleoCQvuhV7Nw==
+Date: Wed, 13 Sep 2023 15:36:32 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Bernhard =?iso-8859-1?Q?Rosenkr=E4nzer?= <bero@baylibre.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Bear Wang <bear.wang@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm64: dts: mediatek: add mt8390-evk
+ board
+Message-ID: <20230913-scoop-agnostic-66e65d426134@spud>
+References: <20230913040449.29560-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH] i2c: mt65xx: allow optional pmic clock
-Content-Language: en-US
-To: Daniel Golle <daniel@makrotopia.org>, Qii Wang <qii.wang@mediatek.com>,
- Andi Shyti <andi.shyti@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, linux-i2c@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: =?UTF-8?B?6YOt5bCP5qGl?= <joe@gainstrong.cn>
-References: <3bf827929a44c17bfb1bf1000b143c02ce26a929.1693102324.git.daniel@makrotopia.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <3bf827929a44c17bfb1bf1000b143c02ce26a929.1693102324.git.daniel@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="iUv/m+HGu/hljI90"
+Content-Disposition: inline
+In-Reply-To: <20230913040449.29560-1-macpaul.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_070101_123560_FB279543 
-X-CRM114-Status: GOOD (  25.35  )
+X-CRM114-CacheID: sfid-20230913_073638_568546_F60DFB5A 
+X-CRM114-Status: GOOD (  21.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,65 +84,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/08/23 04:13, Daniel Golle ha scritto:
-> Using the I2C host controller on the MT7981 SoC requires 4 clocks to
-> be enabled. One of them, the pmic clk, is only enabled in case
-> 'mediatek,have-pmic' is also set which has other consequences which
-> are not desired in this case.
-> 
-> Allow defining a pmic clk even in case the 'mediatek,have-pmic' propterty
-> is not present and the bus is not used to connect to a pmic, but may
-> still require to enable the pmic clock.
-> 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+
+--iUv/m+HGu/hljI90
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Yo,
+
+For $subject, the "dts: " can be dropped.
+
+On Wed, Sep 13, 2023 at 12:04:48PM +0800, Macpaul Lin wrote:
+> 1. Add compatible for MT8390.
+> 2. Add bindings for the MediaTek mt8390-evk board, also known
+> as the "Genio 700-EVK".
+>=20
+> The MT8390 and MT8188 belong to the same SoC family,
+> with only minor differences in their physical characteristics.
+> They utilize unique efuse values for differentiation.
+>=20
+> The booting process and configurations are managed by boot
+> loaders, firmware, and TF-A. Consequently, the part numbers
+> and procurement channels vary.
+>=20
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 > ---
->   drivers/i2c/busses/i2c-mt65xx.c | 12 ++++++++----
->   1 file changed, 8 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> index 1a9b5a068ef1b..a8b5719c33729 100644
-> --- a/drivers/i2c/busses/i2c-mt65xx.c
-> +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> @@ -1442,15 +1442,19 @@ static int mtk_i2c_probe(struct platform_device *pdev)
->   	if (IS_ERR(i2c->clocks[I2C_MT65XX_CLK_ARB].clk))
->   		return PTR_ERR(i2c->clocks[I2C_MT65XX_CLK_ARB].clk);
->   
-> +	i2c->clocks[I2C_MT65XX_CLK_PMIC].clk = devm_clk_get_optional(&pdev->dev, "pmic");
-> +	if (IS_ERR(i2c->clocks[I2C_MT65XX_CLK_PMIC].clk)) {
-> +		dev_err(&pdev->dev, "cannot get pmic clock\n");
-> +		return PTR_ERR(i2c->clocks[I2C_MT65XX_CLK_PMIC].clk);
-> +	}
-> +
->   	if (i2c->have_pmic) {
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+>=20
+> dependencies for v1:
+>  - This patch should be applied after the following patch set
+>   - mt8365's bindings
+>    - https://lore.kernel.org/linux-arm-kernel/20230912092444.31635-1-macp=
+aul.lin@mediatek.com/T/
+>   - mt8395's bindings: v6
+>    - https://lore.kernel.org/lkml/20230911115717.26184-1-macpaul.lin@medi=
+atek.com/T/
+>   - mt8188's bindings
+>    - https://lore.kernel.org/lkml/a4e1a80ebd19896410f50b0297e05dce06fb47c=
+c.camel@mediatek.com/T/
+>=20
+> Changess for v2:
+>  - drop description for multiple boards
+>  - update dependencies with the following patch sets
+>   - mt8395's bindings: v7
+>    - https://lore.kernel.org/linux-arm-kernel/20230913032057.3197-1-macpa=
+ul.lin@mediatek.com/T/ =20
+>=20
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
+ntation/devicetree/bindings/arm/mediatek.yaml
+> index 0248bb458180..3968d5934fa2 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -252,6 +252,11 @@ properties:
+>            - enum:
+>                - mediatek,mt8365-evk
+>            - const: mediatek,mt8365
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8390-evk
+> +          - const: mediatek,mt8390
+> +          - const: mediatek,mt8188
 
-...but you're not changing speed_clk if !i2c->have_pmic, I'm not sure that
-this will work correctly. Perhaps you wanted to also set speed_clk if the
-clock is present?
+This is prob a little unusual (at least I don't think I've seen a patch
+doing this so far), but the mediatek maintainers can do as they wish
+here I think.
 
-if (IS_ERR...) {
-	error handling
-} else if (clk is present)
-	speed_clk = I2C_MT65XX_CLK_PMIC;
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-if (have_pmic && !clk_is_present)
-	error
+Thanks,
+Conor.
 
-Regards,
-Angelo
+>        - items:
+>            - enum:
+>                - mediatek,mt8395-evk
+> --=20
+> 2.18.0
+>=20
 
-> -		i2c->clocks[I2C_MT65XX_CLK_PMIC].clk = devm_clk_get(&pdev->dev, "pmic");
-> -		if (IS_ERR(i2c->clocks[I2C_MT65XX_CLK_PMIC].clk)) {
-> +		if (!i2c->clocks[I2C_MT65XX_CLK_PMIC].clk) {
->   			dev_err(&pdev->dev, "cannot get pmic clock\n");
-> -			return PTR_ERR(i2c->clocks[I2C_MT65XX_CLK_PMIC].clk);
-> +			return -ENODEV;
->   		}
->   		speed_clk = I2C_MT65XX_CLK_PMIC;
->   	} else {
-> -		i2c->clocks[I2C_MT65XX_CLK_PMIC].clk = NULL;
->   		speed_clk = I2C_MT65XX_CLK_MAIN;
->   	}
->   
+--iUv/m+HGu/hljI90
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZQHI7wAKCRB4tDGHoIJi
+0ll7AQDZ+UG2u+qicKq6nOFt/uOuzVVJA4Fv1p7iu8KWnBvSIwD7B0k3SXfuHDhe
+2TnPbFUp4xoHPLJaJt4Oe/zhg3/Y/Ak=
+=ky4l
+-----END PGP SIGNATURE-----
+
+--iUv/m+HGu/hljI90--
 
