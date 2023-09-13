@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CBB7EE01F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 17:16:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9388CEE01F7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 17:40:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RhKIsFsd34fBp0CwfE7er6u3K4aATcIGK2ua6JrRq/A=; b=AtZxhVZSWG3OPmfmHBGN3MSiDs
-	FuPkWAFXNXsejKQv9zqufP+sRDo0/Oy1bySr9Sm1TYwHYe0b6XAepstxbgB78UO1U5r0jXPXDlNCM
-	0aGQJXrFDBcwPSQHlEWtEW5h0dNEBC1nBZ/YuvgHNx33oBiNQ4pppsPup6u3eZuOkxfpuV7HxonrB
-	mFECx0EZkcoPcPvd4Rd8FgwUE2OYwmhoGNOweCN1rnjeON43lp+gB3iA3Q36ILqk39PPgs0kNy2iU
-	xorO4WoLZ2UF2qmve6mmT/lYua3gZ/pekhQKlowW1HEWiA1yrTroZTnY9CjgHXMCfP0G9WPjRANJ/
-	lj3iMnVg==;
+	bh=xuSRe8AMo3sefaJJ/Xr/RuZL0I+EKxj2oq3kJBVQVHM=; b=PwVgddg3o2n8bSs/4Xi6hlQ+1i
+	1BRf8WxmZnkOnvIfeciEkPUYm+WHsFfL2DGli2H+/jomHOMeMm/MWL9roW4g5gJsBOzWCs9tdqaY0
+	0v9EOiI3j4t8DPaH/aU+5VyomixV/Q9eBXg9pVb3do0FdVU4lRAvBPy4lTEt3dC8T+om4PWTuqIzD
+	lKK4uhm2xGdfv+dwr0GOVM2UfJujYLeSkffgvhLUqqfzXwBJrdSjgRpKLF+ZdpDvPfFsSoU2Vby7E
+	VLiM1BqtxjapNfV+YIsiNXabFL9yclTsviNiiWlUtgNJeyZDflRuxRijbj1PnF5WIuPCj4+yvwCWf
+	cJxNVX4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgTTg-006Tzf-0o;
-	Wed, 13 Sep 2023 17:16:36 +0000
+	id 1qgTqj-006VGJ-34;
+	Wed, 13 Sep 2023 17:40:25 +0000
 Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgTTb-006TwX-1M;
-	Wed, 13 Sep 2023 17:16:33 +0000
+	id 1qgTqg-006VFe-2c;
+	Wed, 13 Sep 2023 17:40:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
- s=s31663417; t=1694625368; x=1695230168; i=frank-w@public-files.de;
- bh=evIc2gXoJPFBYukv7WELvB3ulJHwz+QjiapUGFaCmOQ=;
+ s=s31663417; t=1694626814; x=1695231614; i=frank-w@public-files.de;
+ bh=zlxr35DekYYPKmID3fS8P77AnLWSssDEYIMXwOZms20=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=SSjnPg+IFLizfekyy/pircdzxR3Twhwr2m0CCwpyZdyYx/sJOv11KGqOacaZmu8UB55XnkI4/9G
- v1BRsLfa9HLjMkv8VURKHN5IRLPa+Cpik7HNFJYaX+SMt7m/pOEjD5lhP1oURrPfajvXypo5MtDoO
- DhzPPkHtXglikbZbYIcgy2K+Brscu5x5KUr1PdsBJ//5QBgGJtwrHveB5aCtq/2kG0T0kq0+9zz9+
- JQQ5FD8lDn+2AuxZSpQ+n2Xzab/zoj/8BrpZwjIxYbZHDHX5UBUFjzY5T7LFy6haSEfPKp+3SoZ1o
- Y4rDwl9Up+dOX0DNe9RqULPSSscJ2kF215vg==
+ b=Q0PeXcRWOySREMcb/6Z+gZ8FgvAwd0hC2cV41KZ5t/g5rTnEqTg5N5GIwNozsEwzQJtIKvSvmMv
+ YbSd9dazCc4jq+Wbf3KFtpqlXAshQhWlJ+wj7RsFD7hrVUCiQFZcTrhiNQKMcgS81Ng/Rna00Lc+X
+ Kgu+fe438+94siO+NOZ76LLlmrmWvga3hhsex19E/LymD6adecaFqhEbO7cHkjkKGA37VLtOJij4r
+ 2J6UEv3fjcpYMMzPfvNBNukC+PykreWjJXgcEBM+9oHZkqtO6CRP3h/0Yhjc0VrNbBPviVzTLn9dA
+ oiB0PNZLDyWg6rFYXLg2roUS1PbPdv3qWKqg==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
 Received: from [80.245.75.211] ([80.245.75.211]) by web-mail.gmx.net
  (3c-app-gmx-bs38.server.lan [172.19.170.90]) (via HTTP); Wed, 13 Sep 2023
- 19:16:08 +0200
+ 19:40:14 +0200
 MIME-Version: 1.0
-Message-ID: <trinity-fc0082c7-cf37-4458-ac72-3c5774702f5d-1694625368681@3c-app-gmx-bs38>
+Message-ID: <trinity-fc45afb4-bb5a-42f0-aa8d-94a5189cd1f2-1694626814181@3c-app-gmx-bs38>
 From: Frank Wunderlich <frank-w@public-files.de>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
@@ -52,42 +52,40 @@ Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
  linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Daniel
  Golle <daniel@makrotopia.org>
-Subject: Aw: Re: [RFC v1 3/3] thermal/drivers/mediatek/lvts_thermal: add
- mt7988 support
+Subject: Aw: Re: [RFC v1 2/3] thermal/drivers/mediatek/lvts_thermal: make
+ coeff configurable
 Content-Type: text/plain; charset=UTF-8
-Date: Wed, 13 Sep 2023 19:16:08 +0200
+Date: Wed, 13 Sep 2023 19:40:14 +0200
 Importance: normal
 Sensitivity: Normal
-In-Reply-To: <f13a6648-cd21-a166-6e56-431ac7ee5dec@collabora.com>
+In-Reply-To: <99ef1b62-0676-a912-20fb-c04c427c4d01@collabora.com>
 References: <20230911183354.11487-1-linux@fw-web.de>
- <20230911183354.11487-4-linux@fw-web.de>
- <8949cbfa-acae-d6ac-e5fb-f238a29630bc@collabora.com>
- <465DDC1C-D687-47A7-966C-73FB42CFC5DD@public-files.de>
- <f13a6648-cd21-a166-6e56-431ac7ee5dec@collabora.com>
-Content-Transfer-Encoding: quoted-printable
+ <20230911183354.11487-3-linux@fw-web.de>
+ <99ef1b62-0676-a912-20fb-c04c427c4d01@collabora.com>
 X-UI-Message-Type: mail
 X-Priority: 3
-X-Provags-ID: V03:K1:XCCcgpHsS2Y3wu5iIC4BkTuhmHlxQgIRWvP5zTvcyL1FtYTHhHptUaVXa179NRMZF8jHN
- eQoXpU3YyBLrwiJg7iKH2kg+ax7eOvBMXKT1VfADC8ujkPV7q91ADnPy4I7CagKtDFjGUOsAV8Ni
- qolgsKY1DiMt9W6TKwmLkh8DlzlETQCqo+eQbmZ/3RT62YItMKtOB3sdLz09yYrwGl/ayHVXQq41
- z0dA8YqaTO/2t843H/kT6NHsIzTgWd6x8h08F3P6dXqktNNVa/5EuqWGAlsFJ7sTycEsNpSGvjUA
- 2A=
-UI-OutboundReport: notjunk:1;M01:P0:K5B52bMxsgA=;gJlo/Z2YmpnclOFV0Py4vULSfeh
- 28t1YYyg1Uv9aA/EI++3uUcLX7WmKSIfJ+CntnkY4EqDwGAEt/riyea2/KqOUfzeyr9hjbe4K
- YJ6CBd19uMmPa+Q90Y5HZXhVSu0PQOvmIVm44BxgjD10b88VjZz7Vz5lGM7aFhEvPPJdGQzCe
- n0scd80+iqF0x07JDFW7gOQoE/Uuwtz9o2PEQcRxBh+kCS7444QSqxc7OfgtUM9umjJf0Gajt
- zsyTCBdM7YFBaPfiCM9xSVvG/tOw7Pn9CQIhyPNqN95FXrrREuJ91qxBkiChIRLke42I5AlNQ
- xCVQFKO4uAggxjpKq1dLCSxSsOVL6LXJZpxlvse/EaRGlAr76BW41WJzQYjRVGCrJoISDWghh
- GpW3InL08BoPSOH6Dii3bSiuzKr5Os6BMROo0oCIXIAE28F5XMVrHWuAYdRwFOZ6qkmDAIM/U
- nv9B4tBhvijFfJQG1FMur4ukrfvnt9luTanyl+MSjIzYXS/XTOuC5McLh65PbpqNePGHfaIaq
- i64Vyc9ecWdOcNqIevLf7ZldEy9mE2gMCwUAIgqWfqbbt5xkZVr4eI1L3s9EPQSNdA2cYHU7G
- uJb5s+QYPd3Yd1uzI5QwnZ52EpiHxvAXTwNt1UfWtEuFfoic/YN4wsGtbGJ+wCzvM0sNlcvTV
- SqwQGeFr4XIGeSEIesJR+kEB5Lrx0pg26m4gTulnpY2dVz75ZYwZ7tR6mDynVOubXwrcGMqOJ
- auwDhK4QffTgwDyxC6+4g7sZWZR5pzW+Kc3mssAzjuu2Xk2FBhDvola8VvqzdQ+ElYS+4dagk
- HQX4lyhuRLm47jFmqUez/nrw3T8aeglply38ddak7xk+E=
+X-Provags-ID: V03:K1:3/YlO/7vNs/7eVdt8xMtZurWYj2SOKr4oZqwwIOQcEwolVs53E0xbvvW53R7JXikSl5qB
+ zgDI8nMnUunmMp1fL6QEosnxadKTzFB9eZGdTUsBCEloTTF3a6TTRcWGSPlfF9KdjH+O4/JZ/ULX
+ Sh4BtDEOwLKP5qp+muZZh/24KQc7USQ22B4VocnqoYZd2K2wEIl717lt714weBGGbIKW2ShYN8mP
+ at4xmILYUDHseyeI/d0XbnU5PKkMwF+qtq0sc9i/4jBhw9sRDZn9PHkBZf13/SWSrw1Dis8Ybovr
+ xw=
+UI-OutboundReport: notjunk:1;M01:P0:tIYAfuq7yh4=;kca3ih3XJyHLM3ljjH9RlY19OHp
+ tWJG3tBhSmB4WnIzzIlreZs4zIPHFjN7wRRwwOyyCO1c9848ccpNHpKyz3DZVIOIIg0Gu87tK
+ tOxGu24DkyYbpUgnoR+oKljcXo7de0f5hBVXVo3+HIaYsMsU3Fw8VGh5vnFeDcJEWnlBCTMwz
+ V7uP+/5XdTZSTkvq+aIH9BqjMrFotb8bBh2YucI09cX5QKlAMWfzgoipm/6qwzT8ksIAIZEkz
+ U9svAnE/jFBPhgYi5+Hy21+QgIBJPykGY5xghRUIql8SC0Xf97sUzlwU2bM+mBQwCEMxMJpe4
+ FJX8M1Fu1RnsnMFEaY2gZwhC46VfMW9GHzqvnZzIjI3yONSOs5OX8/2i1DMBukim8UIKSTxMC
+ 7ObGnONrLF4IIZ3tnOsGUDdTgN3dpM+1/tYSsUsCf1DS3Ww3Eqcyv0GhIeLV/uU7aGZstpIKy
+ kmimgRgGOVeAI38az1Sb2wHo6tEue4yPz08Al2yuB/23ausSYul4EcM08AC6cRQwrSxjGsoUk
+ 5ltWfGWqPiQo8uU32aW6k0NevGjxNbzzAonXF9UEEQmkmZLgE9B62FQ9hHutgyWrILPEOcFaH
+ IpBgfW3u2+AqUucOXGe9L0KGewH6msxxTs4gzC3Fb0ghKWmWaWp5ZvhOh+CTUfSE2IgPhx+Aw
+ YXpR4zMDvUdpyORwSv+41q7YuJ1H1UmBjP+oQDtODl+veNKdL+nqV4HC85LIrQ+8q0xyFMWLa
+ Ewa40XuA3JUDmzgMOT83ziAhnyjkvY1P8SQOWNY9UFpTBDBpLDxfCzgqPI6buXeykmpCk5SkP
+ MJBOu+QcBARHc2PCE2fn1pKjyC5lEbZY3EvKGVIRStY5o=
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_101631_768577_857595A6 
-X-CRM114-Status: GOOD (  47.64  )
+X-CRM114-CacheID: sfid-20230913_104023_158576_C935DC74 
+X-CRM114-Status: GOOD (  26.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,219 +100,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-> Gesendet: Mittwoch, 13=2E September 2023 um 13:43 Uhr
-> Von: "AngeloGioacchino Del Regno" <angelogioacchino=2Edelregno@collabora=
-=2Ecom>
-> An: frank-w@public-files=2Ede, "Frank Wunderlich" <linux@fw-web=2Ede>, l=
-inux-mediatek@lists=2Einfradead=2Eorg
-> Il 13/09/23 12:52, Frank Wunderlich ha scritto:
-> > Am 13=2E September 2023 10:16:51 MESZ schrieb AngeloGioacchino Del Reg=
-no <angelogioacchino=2Edelregno@collabora=2Ecom>:
-> > Hi angelo,
-> >=20
-> > thanks for first look
-> >=20
-> >> Il 11/09/23 20:33, Frank Wunderlich ha scritto:
-> >>> From: Frank Wunderlich <frank-w@public-files=2Ede>
-> >>>
-> >>> Add Support for mediatek fologic 880/MT7988=2E
-> >>>
-> >>> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
-> >>> ---
-> >>>    drivers/thermal/mediatek/lvts_thermal=2Ec | 73 ++++++++++++++++++=
-+++++++
-> >>>    1 file changed, 73 insertions(+)
-> >>>
-> >>> diff --git a/drivers/thermal/mediatek/lvts_thermal=2Ec b/drivers/the=
-rmal/mediatek/lvts_thermal=2Ec
-> >>> index c1004b4da3b6=2E=2E48b257a3c80e 100644
-> >>> --- a/drivers/thermal/mediatek/lvts_thermal=2Ec
-> >>> +++ b/drivers/thermal/mediatek/lvts_thermal=2Ec
-> >>> @@ -82,6 +82,8 @@
-> >>>    #define LVTS_GOLDEN_TEMP_DEFAULT	50
-> >>>    #define LVTS_COEFF_A_MT8195			-250460
-> >>>    #define LVTS_COEFF_B_MT8195			250460
-> >>> +#define LVTS_COEFF_A_MT7988			-204650
-> >>> +#define LVTS_COEFF_B_MT7988			204650
-> >>>      #define LVTS_MSR_IMMEDIATE_MODE		0
-> >>>    #define LVTS_MSR_FILTERED_MODE		1
-> >>> @@ -1272,6 +1274,67 @@ static int lvts_remove(struct platform_device=
- *pdev)
-> >>>    	return 0;
-> >>>    }
-> >>>    +/*
-> >>> + * LVTS MT7988
-> >>> + */
-> >>> +#define LVTS_HW_SHUTDOWN_MT7988	117000
-> >>
-> >> Are you sure that this chip's Tj is >117=C2=B0C ?!
-> >>
-> >> Looks a bit high=2E=2E=2E if it is exactly 117=C2=B0C, I would sugges=
-t cutting earlier,
-> >> either at 110 (safe side) or 115: after all, this is a life-saver fea=
-ture and
-> >> the chip is actually never meant to *constantly* work at 110=C2=B0C (=
-as it would
-> >> degrade fast and say goodbye earlier than "planned")=2E
-> >=20
-> > I took values from SDK
-> >=20
-> > https://git01=2Emediatek=2Ecom/plugins/gitiles/openwrt/feeds/mtk-openw=
-rt-feeds/+/refs/heads/master/target/linux/mediatek/files-5=2E4/drivers/ther=
-mal/mediatek/soc_temp_lvts=2Ec#1483
-> >=20
->=20
-> That kernel also defines 117=C2=B0C for MT8195, which leaves me a bit du=
-bious=2E
->=20
-> For safety, I would recommend using the same 105=C2=B0C hw shutdown temp=
-erature
-> for 7988 as well: after all if you think about it, reaching that kind of
-> temperature means that there's a real problem (fan stopped working and/o=
-r
-> heatsink detached) that needs attention=2E
+Hi
 
-ack, will change to same value and put the define on top, abve the mt8195
+> Gesendet: Mittwoch, 13. September 2023 um 10:03 Uhr
+> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.c=
+om>
+> Il 11/09/23 20:33, Frank Wunderlich ha scritto:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> >
+> > The upcoming mt7988 has different temperature coefficients so we
+> > cannot use constants in the functions lvts_golden_temp_init,
+> > lvts_golden_temp_init and lvts_raw_to_temp anymore.
+> >
+> > Add a field in the lvts_ctrl pointing to the lvts_data which now
+> > contains the soc-specific temperature coefficents.
+> >
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > ---
+> >   drivers/thermal/mediatek/lvts_thermal.c | 56 ++++++++++++++++++-----=
+--
+> >   1 file changed, 41 insertions(+), 15 deletions(-)
+> >
+> > diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal=
+/mediatek/lvts_thermal.c
+> > index effd9b00a424..c1004b4da3b6 100644
+> > --- a/drivers/thermal/mediatek/lvts_thermal.c
+> > +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> > @@ -80,8 +80,8 @@
+> >   #define LVTS_SENSOR_MAX				4
+> >   #define LVTS_GOLDEN_TEMP_MAX		62
+> >   #define LVTS_GOLDEN_TEMP_DEFAULT	50
+> > -#define LVTS_COEFF_A				-250460
+> > -#define LVTS_COEFF_B				250460
+> > +#define LVTS_COEFF_A_MT8195			-250460
+> > +#define LVTS_COEFF_B_MT8195			250460
+> >
+> >   #define LVTS_MSR_IMMEDIATE_MODE		0
+> >   #define LVTS_MSR_FILTERED_MODE		1
+> > @@ -94,7 +94,7 @@
+> >   #define LVTS_MINIMUM_THRESHOLD		20000
+> >
+> >   static int golden_temp =3D LVTS_GOLDEN_TEMP_DEFAULT;
+> > -static int coeff_b =3D LVTS_COEFF_B;
+> > +static int coeff_b;
+>
+> This could be renamed to `golden_temp_offset`
+>
+> >
+> >   struct lvts_sensor_data {
+> >   	int dt_id;
+> > @@ -109,9 +109,15 @@ struct lvts_ctrl_data {
+> >   	int mode;
+> >   };
+> >
+> > +struct formula_coeff {
+> > +	int a;
+> > +	int b;
+> > +};
+> > +
+> >   struct lvts_data {
+> >   	const struct lvts_ctrl_data *lvts_ctrl;
+> >   	int num_lvts_ctrl;
+> > +	struct formula_coeff coeff;
+>
+> You can just add the coefficients here directly... and while at it you c=
+an
+> also make it self explanatory, because the "A" coefficient is a factor w=
+hile
+> the "B" coefficient is just an offset.
+>
+> 	int temp_factor; <--- coeff_a
+> 	int temp_offset; <--- coeff_b
 
-> This is because you'll have trip points in devicetree that should thrott=
-le
-> the CPU in case it reaches at least a dangerously high temperature (read=
-:
-> a temperature outside the recommended continuous operation range), bring=
-ing
-> the temperatures down because of the throttling action; I would imagine
-> throttling the CPU a bit down at 80=C2=B0C, then a bit more at 90=C2=B0C=
- - but then,
-> if the temps won't drop like that, there's clearly a HW-related issue th=
-at
-> must be addressed (like the fan/heatsink scenario that I just described)=
-=2E
->=20
-> Though, take this as an advice; I'll respect whichever decision you'll t=
-ake=2E
->=20
-> >>> +//enum mt7988_lvts_domain { MT7988_AP_DOMAIN, MT7988_NUM_DOMAIN };
-> >>> +
-> >>> +enum mt7988_lvts_sensor_enum {
-> >>> +	MT7988_TS3_0,
-> >>> +	MT7988_TS3_1,
-> >>> +	MT7988_TS3_2,
-> >>> +	MT7988_TS3_3,
-> >>> +	MT7988_TS4_0,
-> >>> +	MT7988_TS4_1,
-> >>> +	MT7988_TS4_2,
-> >>> +	MT7988_TS4_3,
-> >>> +	MT7988_NUM_TS
-> >>> +};
-> >=20
-> >> This enumeration should be definitions in bindings (mediatek,lvts-the=
-rmal=2Eh)=2E
-> >>
-> >> Besides, the LVTS is about internal temperatures, so those TS3_x and =
-4_x can
-> >> be renamed like what was done for MT8192 and MT8195: this is because =
-you will
-> >> never see TS3_2 being CPU2 on a board and CPU4 on another, being thos=
-e - again -
-> >> internal to the SoC, hence unchangeable=2E
-> >=20
-> > Right these sensors are internally only and i took naming from sdk to =
-avoid confusion=2E And i have not more information about these internal sen=
-sors (special meaning),but their values are packed together to get the resu=
-lting (average) temperature=2E
-> >=20
-> >> Another reason is that you'll anyway have to refer to those sensors i=
-n the
-> >> devicetree to configure thermal trips and such, so=2E=2E=2E :-)
-> >=20
-> > In device tree it will look like this:
-> >=20
-> > https://github=2Ecom/frank-w/BPI-Router-Linux/blob/6=2E5-lvts/arch/arm=
-64/boot/dts/mediatek/mt7988a=2Edtsi#L771
-> >=20
-> > Daniel has also defined thermal trips there,but these are untested atm=
-=2E I only verified temperature itself i get from sysfs as far as i can (st=
-art at ~40=C2=B0C and reaching ~70 while running)=2E
-> >=20
->=20
-> Check how it's done in mt8192=2Edtsi and mt8195=2Edtsi: we're using the =
-definitions
-> from the bindings for thermal zones=2E
-> At least for consistency (apart from other even more valid consideration=
-s), that's
-> how it should be done: please do it like that=2E
->=20
-> Besides, I think that you can definitely guess what `TS` is CPU related:=
- checking
-> the driver and devicetree from the downstream kernel that you provided, =
-what I
-> understand is:
->=20
-> 1=2E Your naming TS3,4 corresponds to TS2,3 downstream (so it's wrong?)
-> 2=2E Downstream TS2 is related to the CPU cores, so it should be
->     - TS2_0 - CPU0
->     - TS2_1 - CPU1
->     - TS2_2 - CPU2
->     - TS2_3 - CPU3
+makes sense...imho very good idea.
+originally i took the naming based on the Constants which maybe should be =
+changed too?
 
-i took the names from efuse names (which are listed as comment above), had=
- 2/3 before=2E
-need to ask mtk here=2E same for the second controller and if it is really=
- a "lvts-ap"=2E
+> >   };
+> >
+> >   struct lvts_sensor {
+> > @@ -126,6 +132,7 @@ struct lvts_sensor {
+> >
+> >   struct lvts_ctrl {
+> >   	struct lvts_sensor sensors[LVTS_SENSOR_MAX];
+> > +	const struct lvts_data *lvts_data;
+> >   	u32 calibration[LVTS_SENSOR_MAX];
+> >   	u32 hw_tshut_raw_temp;
+> >   	int num_lvts_sensor;
+> > @@ -247,21 +254,21 @@ static void lvts_debugfs_exit(struct lvts_domain=
+ *lvts_td) { }
+> >
+> >   #endif
+> >
+> > -static int lvts_raw_to_temp(u32 raw_temp)
+> > +static int lvts_raw_to_temp(u32 raw_temp, struct formula_coeff coeff)
+> >   {
+> >   	int temperature;
+> >
+> > -	temperature =3D ((s64)(raw_temp & 0xFFFF) * LVTS_COEFF_A) >> 14;
+> > +	temperature =3D ((s64)(raw_temp & 0xFFFF) * coeff.a) >> 14;
+>
+> so that this also becomes more readable:
+>
+> static int lvts_raw_to_temp(u32 raw_temp, int temp_factor)
+> {
+> 	int temperature;
+>
+> 	temperature =3D ((s64)(raw_temp & 0xFFFF) * temp_factor) >> 14;
+> 	temperature +=3D golden_temp_offset;
+>
+> 	return temperature;
+> }
+>
+> where temp_factor is lvts_data.temp_factor, and golden_temp_offset is a
+> rename of `static int coeff_b`.
 
-> The other set of thermal sensors seem to be completely unused, so we can=
-not guess
-> just by looking at the code=2E Since you have the hardware, you may be a=
-ble to take
-> a position about what they are by checking what sensor heats up for each=
- "action"
-> (could be ethernet controller or infra or whatever else); if in doubt, j=
-ust leave
-> them out, but add a comment saying that there are more sensors and say w=
-here, so
-> that if anyone finds what they're for, it'll be easy to add them=2E
->=20
-> In any case, adding thermal sensors that you don't know about is meaning=
-less, as
-> the sense of all this is:
->   - Monitoring temperatures of the hardware
->   - Taking action to prevent temperature overrun
-> but if you don't know what you're reading, you can't interpret temperatu=
-res for
-> something unknown, hence you can't as well take action to prevent overru=
-ns, as
-> you won't know what's the maximum temperature for "unknown thing" :-)
+right and passing an int (instead of struct) is easier and more readable t=
+oo.
 
-yes i have only the downstream kernel and some additional information like=
- interupt
-number and the efuse offsets for calibration=2E And for the 8 sensors i ge=
-t this information:
-
-"8 sensors are distributed across the whole soc in order to get the correc=
-t average temperature=2E
-chip designer didn=E2=80=99t disclose more detailed info to us=2E"
-
-so i thought all 8 sensors are taken into account with both controllers to=
- calculate 1
-resulting temperature=2E In downstream i saw also only 1 controller in dts=
- and i have
-only 1 interrupt=2E
-
-https://git01=2Emediatek=2Ecom/plugins/gitiles/openwrt/feeds/mtk-openwrt-f=
-eeds/+/refs/heads/master/target/linux/mediatek/files-5=2E4/arch/arm64/boot/=
-dts/mediatek/mt7988=2Edtsi#579
-
-and the compatible for both (mt7988 and mt8195) are without "ap" there, so=
- i took the same=2E
-
-Where have you seen the mt7988-AP ?
-
-i have only seen 1 sensor which should be the SOC itself and this chip has=
- metal surface
-which makes it hard to get real temperature (infrared thermometer gives wr=
-ong temp)=2E
-
-> Regards,
+> Cheers,
 > Angelo
+>
+>
 
