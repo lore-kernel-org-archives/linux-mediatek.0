@@ -4,63 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69511CA5500
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 07:49:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53528CA5500
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 07:55:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FnF9lqTwCU6l+dTQN1+0dRwDfngNYcq1FPZsi5JpM+M=; b=zQe2NwSISuKW4t
-	2TKMqkkkmSMf+7QU+ODACkgV8f6Kb/srl/Y0lq+ieK/5W/eXFmTdRztANk6RIeOdn4E49WDLsnD2B
-	3vxhb1TRyowsC4QUsjsuYZ+OSthkGPTKEHVxCk1ozmj2dITNq/QuBAKmDHGo5m+DhBarcaTjyZqN+
-	71cTP3IRClBFccJI+vhB2IfaCh+4MIueMkp4qu/Lk6KDki1bPqW3HdHht4FhJ0gXm+vC+iRyb2Lgz
-	t3cpXh1BoPRxBXfi15zNSm/sm2WYJjiTEzq6hRrzL38pyW0yNArqUCCaHC+6J/yoSHTWIKhHxhnC2
-	cdToHGEG9xlTVgtiOL4g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eVi9HWsbyhPpxRlpwWkXgfmiV8lk8qQbW6adbUERlyM=; b=MaBUa9CEE/ZE5GcWZFILN24nt2
+	nPFhZDs4M/8vGKV9+GJNrzTXBSuS0lOjsWHZmu+8Yab7Eyqk4ATMurJXdJhDDWBroMZghXH7AkIz6
+	RhvDoFwiIiUQTkrOwSWjwFPOjLuRji6gY7GSBBP7jf8U5w/zbYY1AVsm0dlCZhhn4FTk5sA/ZBXOz
+	MX0+gbTmJ8owd3KhEDvTcE+o6ogK+BFvUL8kAYaF0NcnNnKVU2kaqVQDa1ll/VVLaH5CLRJayXFZN
+	x587RTOn+hgqunaY9YxI26uV+t10RzJBzv3sjSpXCtMR8MOeauzU/gRte+iIK2ft47vHApoXPcK0R
+	jqdxVuJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgKce-004zA6-1X;
-	Wed, 13 Sep 2023 07:49:16 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qgKiC-004zpt-0p;
+	Wed, 13 Sep 2023 07:55:00 +0000
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgKcb-004z8q-0p;
-	Wed, 13 Sep 2023 07:49:14 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 31DC26607319;
-	Wed, 13 Sep 2023 08:49:10 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694591350;
-	bh=O9CO6wpscQ25gSXId4JSpQF3dW+cZrAGglKuHmq0w8k=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DUxO7fNLz9nzGjZFSrbleJZ3aZ1M9wGDs5FruQWelZUIqm9QzVtGjOrsS3aKb1Kys
-	 OU+mz5kS52QwTZ7H4ykQRNqn5WZFhPS1xuNHgMnYKaO+as4K6eKUjWr3PZVdk2pRsi
-	 6XKF35tyWHerWlJcW27H0QgbbP8CBd9rQG+JNcBL27zqwOpWiiUC0YWn3pZ9jtQd/p
-	 hbCSfrTj9EfX7HvFaKcbvvpSj0+eJQod+cWjXEv3uZvyjf2jk+I0oWu++4QSuWVjjK
-	 ZTGipyXoQjHxWG/zV8HBI+5q45rRdI+a4TlwWFrpWVJOAvsSCbPRO+vJzaZGqqaDp8
-	 PQD9+1o/iWk1w==
-Message-ID: <e93aa8a6-e088-2864-6ffa-050b211be21f@collabora.com>
-Date: Wed, 13 Sep 2023 09:49:08 +0200
+	id 1qgKi9-004zoy-13
+	for linux-mediatek@lists.infradead.org;
+	Wed, 13 Sep 2023 07:54:58 +0000
+Received: by mail-io1-xd36.google.com with SMTP id ca18e2360f4ac-79834a7a5d8so61077739f.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 13 Sep 2023 00:54:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1694591695; x=1695196495; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=eVi9HWsbyhPpxRlpwWkXgfmiV8lk8qQbW6adbUERlyM=;
+        b=DFFlvZ00z4boSSd3uaQEt6lyw3KmXO3NhBrtWzT8BCzAD3NtabS9MXjIZPC/oNKR2y
+         OdkUcV0D5d+RoPKajDXqFfsmIvq89DghqarxXMWoaiW9mZTe5NGptp2S5a9LBzJk79ow
+         7N1FMQEZHsbuqBTpVLYrVPxWrDahit7D4xKa8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694591695; x=1695196495;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=eVi9HWsbyhPpxRlpwWkXgfmiV8lk8qQbW6adbUERlyM=;
+        b=hbaAzZ3HnZzYWRcUokDXJbD7v5H4ps/H2Oh9EVaso4ldIRVhGhIPu14wDoASSHu56f
+         mOharOL6T3L4EzXBX6Bw76ZpxEYDJsn8IaueUxgBmBg5liPVVp4Bb7iU6qeasqJgghDv
+         ZY6HxAHJCtvu5s/nNWWQVOW0YsbEBkgMYokBr7WW1WC/QW1RZYJj3Tt7u/n7pU4pG+Gx
+         fTesVZ+NiNteXOAMUv5A6XfwwQ+RSdUtXaKsw+Oa3Wjd2d0DXXNZ5yjixmu0dgs4wt+g
+         a9ZtiI1edcDVgZImICG7aAOsvvm1X/AM0smIerTXCweiVhj6/MFzSAw/bOPFl//IzFnZ
+         ioJg==
+X-Gm-Message-State: AOJu0YwEnPAdSgSl7UxMGG1NyG9rsbPvxCxjlSBhMDm/7W+fZI06yLrA
+	R4W0Wc8ZKGCCzVOw9+fXXjTVlCLM4pGPaOzIuXQ=
+X-Google-Smtp-Source: AGHT+IHLvcwPLDpicyN7ri4Uf4OxYdG+gZ5U43s3EeUd4Gfl9ucW8YSgOUxhjOZBY9M38WkzhVrwKw==
+X-Received: by 2002:a5e:dd46:0:b0:786:f47b:c063 with SMTP id u6-20020a5edd46000000b00786f47bc063mr2036670iop.21.1694591695357;
+        Wed, 13 Sep 2023 00:54:55 -0700 (PDT)
+Received: from mail-io1-f49.google.com (mail-io1-f49.google.com. [209.85.166.49])
+        by smtp.gmail.com with ESMTPSA id u9-20020a5ec009000000b00791e6ae3aa4sm3364602iol.23.2023.09.13.00.54.55
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 13 Sep 2023 00:54:55 -0700 (PDT)
+Received: by mail-io1-f49.google.com with SMTP id ca18e2360f4ac-792726d3aeeso221153739f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 13 Sep 2023 00:54:55 -0700 (PDT)
+X-Received: by 2002:a05:6602:3281:b0:786:7100:72de with SMTP id
+ d1-20020a056602328100b00786710072demr2263328ioz.16.1694591694827; Wed, 13 Sep
+ 2023 00:54:54 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [RFC v1 1/3] dt-bindings: thermal: mediatek: add mt7988
- compatible
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-References: <20230911183354.11487-1-linux@fw-web.de>
- <20230911183354.11487-2-linux@fw-web.de>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230911183354.11487-2-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20230822132646.9811-1-jason-jh.lin@mediatek.com> <CAC=S1njUVqt969Wv+dMc5wD3Uyu-2Cm4qCUwkp7kfeG_uBbpVw@mail.gmail.com>
+In-Reply-To: <CAC=S1njUVqt969Wv+dMc5wD3Uyu-2Cm4qCUwkp7kfeG_uBbpVw@mail.gmail.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Wed, 13 Sep 2023 15:54:18 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nhhAevMct0SoipCRpVmHmMGEuvu2yKmkjuVVUpeZxZ5ug@mail.gmail.com>
+Message-ID: <CAC=S1nhhAevMct0SoipCRpVmHmMGEuvu2yKmkjuVVUpeZxZ5ug@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: Add spinlock for setting vblank event in atomic_begin
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Alexandre Mergnat <amergnat@baylibre.com>, Eugen Hristev <eugen.hristev@collabora.com>, 
+	Jason-ch Chen <jason-ch.chen@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, 
+	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, 
+	Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_004913_439109_20110D50 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20230913_005457_414469_1AFB2CEB 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,34 +99,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>, "Rafael J. Wysocki" <rafael@kernel.org>, linux-pm@vger.kernel.org, Amit Kucheria <amitk@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Daniel Golle <daniel@makrotopia.org>, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/09/23 20:33, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Add compatible string for mt7988.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->   .../devicetree/bindings/thermal/mediatek,lvts-thermal.yaml       | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-> index fe9ae4c425c0..49effe561963 100644
-> --- a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-> +++ b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-> @@ -18,6 +18,7 @@ description: |
->   properties:
->     compatible:
->       enum:
-> +      - mediatek,mt7988-lvts
+On Thu, Aug 31, 2023 at 3:12=E2=80=AFPM Fei Shao <fshao@chromium.org> wrote=
+:
+>
+> On Tue, Aug 22, 2023 at 10:27=E2=80=AFPM Jason-JH.Lin <jason-jh.lin@media=
+tek.com> wrote:
+> >
+> > Add spinlock protection to avoid race condition on vblank event
+> > between mtk_drm_crtc_atomic_begin() and mtk_drm_finish_page_flip().
+> >
+> > Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8=
+173.")
+> > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+>
+> Reviewed-by: Fei Shao <fshao@chromium.org>
 
-Are you sure that MT7988 has only one LVTS controller, and that it is global?
+Also, I verified that this fixes a real world system hang issue on the
+MT8195 Chromebook.
 
->         - mediatek,mt8192-lvts-ap
->         - mediatek,mt8192-lvts-mcu
->         - mediatek,mt8195-lvts-ap
-
+Tested-by: Fei Shao <fshao@chromium.org>
 
