@@ -4,95 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E920EDEC7E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 16:00:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CBB7EE01F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 17:16:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EQBLv7nFccJn5zoRcB5FmmGXNiMfTDOB0wvhQT662Yk=; b=nhPhTaaiA6cVzKuLql0wuSXsYi
-	dRsGHVDjvuWHnNpinAIYKcWBJwr+v8GvhqJtitDe9NX8wlkLu4Y+1Es2fUjZBDhVQr1KCYLfhh8sC
-	m3eVDexRYGAyVyOe2c6AkF340LfB+dkUuN6o1eKAKqOF7X48S8WsJKSUvTGCfYJjpGI0QuMFpRhuN
-	JNj777l++Buw8gGyxaTk9wIHEJl4u9l1QINz5a1epuE909iu530GYKuXfj7Xker4tF4A8Pmg9unEk
-	anFuwL1p7V+mA/m3tU5xdnE/OZR6CFLIQSJxBmDAHbywfXCd9s9eaBrYa33P0Rzq6g3NW83GkNtLj
-	g4eI9FNw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RhKIsFsd34fBp0CwfE7er6u3K4aATcIGK2ua6JrRq/A=; b=AtZxhVZSWG3OPmfmHBGN3MSiDs
+	FuPkWAFXNXsejKQv9zqufP+sRDo0/Oy1bySr9Sm1TYwHYe0b6XAepstxbgB78UO1U5r0jXPXDlNCM
+	0aGQJXrFDBcwPSQHlEWtEW5h0dNEBC1nBZ/YuvgHNx33oBiNQ4pppsPup6u3eZuOkxfpuV7HxonrB
+	mFECx0EZkcoPcPvd4Rd8FgwUE2OYwmhoGNOweCN1rnjeON43lp+gB3iA3Q36ILqk39PPgs0kNy2iU
+	xorO4WoLZ2UF2qmve6mmT/lYua3gZ/pekhQKlowW1HEWiA1yrTroZTnY9CjgHXMCfP0G9WPjRANJ/
+	lj3iMnVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgSHZ-006Hzj-2o;
-	Wed, 13 Sep 2023 16:00:01 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1qgTTg-006Tzf-0o;
+	Wed, 13 Sep 2023 17:16:36 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgSHR-006HyT-0l;
-	Wed, 13 Sep 2023 15:59:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=EQBLv7nFccJn5zoRcB5FmmGXNiMfTDOB0wvhQT662Yk=; b=wa8tUgwCXx/5nwWXkjpYZeCr7+
-	2rXQpHQGk+0OgzNyLR6Ki9dRQ/aOpRdz4jG9h5CvmTM8npAtvujTfUKvcAerqumAxTDc2ZJtvmmyR
-	U4QicgJgTaXJmPsmFZ4ppAsFpRhoH+WBm0mwO82SlT8IpoHdwAuRX/0+JGtXiPvc67tKB6Muktv/N
-	hfdp5y3C0chBGp0UhvB3I1nbpy3ADiazuIYyXICdKa8Fra+vDznxuY/rb5ps7XQpujoY6QM1Gvs21
-	H/37pPtOrT0Brj1+/VscA74+LE4G6hfe7rybZcbo1VM335EBV9mMZomeiTKWt9RQx5mj6dbxkWYAq
-	Wa4k7+Aw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:51146)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1qgSGx-0002ix-1q;
-	Wed, 13 Sep 2023 16:59:23 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1qgSGt-0003rK-4Z; Wed, 13 Sep 2023 16:59:19 +0100
-Date: Wed, 13 Sep 2023 16:59:19 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
-Message-ID: <ZQHcV5DUfcCYkkTi@shell.armlinux.org.uk>
-References: <20230814143601.mnpxtcm2zybnbvoh@skbuf>
- <0cee0928-74c9-4048-8cd8-70bfbfafd9b2@arinc9.com>
- <20230827121235.zog4c3ehu2cyd3jy@skbuf>
- <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
- <87325ce9-595a-4dda-a6a1-b5927d25719b@arinc9.com>
- <20230911225126.rk23g3u3bzo3agby@skbuf>
- <036c0763-f1b2-49ff-bc82-1ff16eec27ab@arinc9.com>
- <20230912193450.h5s6miubag46z623@skbuf>
- <6cec079e-991e-4222-a76d-d6156de0daca@arinc9.com>
- <20230913074231.5azwxqjuv2wp5nik@skbuf>
+	id 1qgTTb-006TwX-1M;
+	Wed, 13 Sep 2023 17:16:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+ s=s31663417; t=1694625368; x=1695230168; i=frank-w@public-files.de;
+ bh=evIc2gXoJPFBYukv7WELvB3ulJHwz+QjiapUGFaCmOQ=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=SSjnPg+IFLizfekyy/pircdzxR3Twhwr2m0CCwpyZdyYx/sJOv11KGqOacaZmu8UB55XnkI4/9G
+ v1BRsLfa9HLjMkv8VURKHN5IRLPa+Cpik7HNFJYaX+SMt7m/pOEjD5lhP1oURrPfajvXypo5MtDoO
+ DhzPPkHtXglikbZbYIcgy2K+Brscu5x5KUr1PdsBJ//5QBgGJtwrHveB5aCtq/2kG0T0kq0+9zz9+
+ JQQ5FD8lDn+2AuxZSpQ+n2Xzab/zoj/8BrpZwjIxYbZHDHX5UBUFjzY5T7LFy6haSEfPKp+3SoZ1o
+ Y4rDwl9Up+dOX0DNe9RqULPSSscJ2kF215vg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [80.245.75.211] ([80.245.75.211]) by web-mail.gmx.net
+ (3c-app-gmx-bs38.server.lan [172.19.170.90]) (via HTTP); Wed, 13 Sep 2023
+ 19:16:08 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230913074231.5azwxqjuv2wp5nik@skbuf>
+Message-ID: <trinity-fc0082c7-cf37-4458-ac72-3c5774702f5d-1694625368681@3c-app-gmx-bs38>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
+ <daniel.lezcano@linaro.org>, Amit Kucheria <amitk@kernel.org>, Zhang Rui
+ <rui.zhang@intel.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Daniel
+ Golle <daniel@makrotopia.org>
+Subject: Aw: Re: [RFC v1 3/3] thermal/drivers/mediatek/lvts_thermal: add
+ mt7988 support
+Content-Type: text/plain; charset=UTF-8
+Date: Wed, 13 Sep 2023 19:16:08 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <f13a6648-cd21-a166-6e56-431ac7ee5dec@collabora.com>
+References: <20230911183354.11487-1-linux@fw-web.de>
+ <20230911183354.11487-4-linux@fw-web.de>
+ <8949cbfa-acae-d6ac-e5fb-f238a29630bc@collabora.com>
+ <465DDC1C-D687-47A7-966C-73FB42CFC5DD@public-files.de>
+ <f13a6648-cd21-a166-6e56-431ac7ee5dec@collabora.com>
+Content-Transfer-Encoding: quoted-printable
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:XCCcgpHsS2Y3wu5iIC4BkTuhmHlxQgIRWvP5zTvcyL1FtYTHhHptUaVXa179NRMZF8jHN
+ eQoXpU3YyBLrwiJg7iKH2kg+ax7eOvBMXKT1VfADC8ujkPV7q91ADnPy4I7CagKtDFjGUOsAV8Ni
+ qolgsKY1DiMt9W6TKwmLkh8DlzlETQCqo+eQbmZ/3RT62YItMKtOB3sdLz09yYrwGl/ayHVXQq41
+ z0dA8YqaTO/2t843H/kT6NHsIzTgWd6x8h08F3P6dXqktNNVa/5EuqWGAlsFJ7sTycEsNpSGvjUA
+ 2A=
+UI-OutboundReport: notjunk:1;M01:P0:K5B52bMxsgA=;gJlo/Z2YmpnclOFV0Py4vULSfeh
+ 28t1YYyg1Uv9aA/EI++3uUcLX7WmKSIfJ+CntnkY4EqDwGAEt/riyea2/KqOUfzeyr9hjbe4K
+ YJ6CBd19uMmPa+Q90Y5HZXhVSu0PQOvmIVm44BxgjD10b88VjZz7Vz5lGM7aFhEvPPJdGQzCe
+ n0scd80+iqF0x07JDFW7gOQoE/Uuwtz9o2PEQcRxBh+kCS7444QSqxc7OfgtUM9umjJf0Gajt
+ zsyTCBdM7YFBaPfiCM9xSVvG/tOw7Pn9CQIhyPNqN95FXrrREuJ91qxBkiChIRLke42I5AlNQ
+ xCVQFKO4uAggxjpKq1dLCSxSsOVL6LXJZpxlvse/EaRGlAr76BW41WJzQYjRVGCrJoISDWghh
+ GpW3InL08BoPSOH6Dii3bSiuzKr5Os6BMROo0oCIXIAE28F5XMVrHWuAYdRwFOZ6qkmDAIM/U
+ nv9B4tBhvijFfJQG1FMur4ukrfvnt9luTanyl+MSjIzYXS/XTOuC5McLh65PbpqNePGHfaIaq
+ i64Vyc9ecWdOcNqIevLf7ZldEy9mE2gMCwUAIgqWfqbbt5xkZVr4eI1L3s9EPQSNdA2cYHU7G
+ uJb5s+QYPd3Yd1uzI5QwnZ52EpiHxvAXTwNt1UfWtEuFfoic/YN4wsGtbGJ+wCzvM0sNlcvTV
+ SqwQGeFr4XIGeSEIesJR+kEB5Lrx0pg26m4gTulnpY2dVz75ZYwZ7tR6mDynVOubXwrcGMqOJ
+ auwDhK4QffTgwDyxC6+4g7sZWZR5pzW+Kc3mssAzjuu2Xk2FBhDvola8VvqzdQ+ElYS+4dagk
+ HQX4lyhuRLm47jFmqUez/nrw3T8aeglply38ddak7xk+E=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_085953_299989_D30F0D87 
-X-CRM114-Status: GOOD (  26.82  )
+X-CRM114-CacheID: sfid-20230913_101631_768577_857595A6 
+X-CRM114-Status: GOOD (  47.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,53 +102,219 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 13, 2023 at 10:42:31AM +0300, Vladimir Oltean wrote:
-> On Wed, Sep 13, 2023 at 08:52:37AM +0300, Arınç ÜNAL wrote:
-> > On 12.09.2023 22:34, Vladimir Oltean wrote:
-> > > On Tue, Sep 12, 2023 at 10:23:51PM +0300, Arınç ÜNAL wrote:
-> > > > The phylink bindings for user ports I ended up making by looking up the
-> > > > existing devicetrees are different than the phylink bindings for the shared
-> > > > (CPU and DSA) ports currently enforced on all switches.
-> > > > 
-> > > > My phylink bindings for user ports:
-> > > > 
-> > > >              allOf:
-> > > >                - anyOf:
-> > > >                    - required: [ fixed-link ]
-> > > >                    - required: [ phy-handle ]
-> > > >                    - required: [ managed ]
-> > > > 
-> > > >                - if:
-> > > >                    required: [ fixed-link ]
-> > > >                  then:
-> > > >                    not:
-> > > >                      required: [ managed ]
-> > > 
-> > > Right, it should have been anyOf and not oneOf.. my mistake. It is a bug
-> > > which should be fixed. It's the same phylink that gets used in both cases,
-> > > user ports and shared ports :)
-> > 
-> > One more thing, I don't recall phy-mode being required to be defined for
-> > user ports as it will default to GMII. I don't believe this is the same
-> > case for shared ports so phy-mode is required only for them?
-> 
-> phy-mode is not strictly required, but I think there is a strong
-> preference to set it. IIRC, when looking at the DSA device trees, there
-> was no case where phy-mode would be absent on CPU/DSA ports if the other
-> link properties were also present, so we required it too. There were no
-> complaints in 1 year since dsa_shared_port_validate_of() is there. The
-> requirement can be relaxed to just a warning and no error in the kernel,
-> and the removal of "required" in the schema, if it helps making it
-> common with user ports.
+Hi,
+> Gesendet: Mittwoch, 13=2E September 2023 um 13:43 Uhr
+> Von: "AngeloGioacchino Del Regno" <angelogioacchino=2Edelregno@collabora=
+=2Ecom>
+> An: frank-w@public-files=2Ede, "Frank Wunderlich" <linux@fw-web=2Ede>, l=
+inux-mediatek@lists=2Einfradead=2Eorg
+> Il 13/09/23 12:52, Frank Wunderlich ha scritto:
+> > Am 13=2E September 2023 10:16:51 MESZ schrieb AngeloGioacchino Del Reg=
+no <angelogioacchino=2Edelregno@collabora=2Ecom>:
+> > Hi angelo,
+> >=20
+> > thanks for first look
+> >=20
+> >> Il 11/09/23 20:33, Frank Wunderlich ha scritto:
+> >>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+> >>>
+> >>> Add Support for mediatek fologic 880/MT7988=2E
+> >>>
+> >>> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
+> >>> ---
+> >>>    drivers/thermal/mediatek/lvts_thermal=2Ec | 73 ++++++++++++++++++=
++++++++
+> >>>    1 file changed, 73 insertions(+)
+> >>>
+> >>> diff --git a/drivers/thermal/mediatek/lvts_thermal=2Ec b/drivers/the=
+rmal/mediatek/lvts_thermal=2Ec
+> >>> index c1004b4da3b6=2E=2E48b257a3c80e 100644
+> >>> --- a/drivers/thermal/mediatek/lvts_thermal=2Ec
+> >>> +++ b/drivers/thermal/mediatek/lvts_thermal=2Ec
+> >>> @@ -82,6 +82,8 @@
+> >>>    #define LVTS_GOLDEN_TEMP_DEFAULT	50
+> >>>    #define LVTS_COEFF_A_MT8195			-250460
+> >>>    #define LVTS_COEFF_B_MT8195			250460
+> >>> +#define LVTS_COEFF_A_MT7988			-204650
+> >>> +#define LVTS_COEFF_B_MT7988			204650
+> >>>      #define LVTS_MSR_IMMEDIATE_MODE		0
+> >>>    #define LVTS_MSR_FILTERED_MODE		1
+> >>> @@ -1272,6 +1274,67 @@ static int lvts_remove(struct platform_device=
+ *pdev)
+> >>>    	return 0;
+> >>>    }
+> >>>    +/*
+> >>> + * LVTS MT7988
+> >>> + */
+> >>> +#define LVTS_HW_SHUTDOWN_MT7988	117000
+> >>
+> >> Are you sure that this chip's Tj is >117=C2=B0C ?!
+> >>
+> >> Looks a bit high=2E=2E=2E if it is exactly 117=C2=B0C, I would sugges=
+t cutting earlier,
+> >> either at 110 (safe side) or 115: after all, this is a life-saver fea=
+ture and
+> >> the chip is actually never meant to *constantly* work at 110=C2=B0C (=
+as it would
+> >> degrade fast and say goodbye earlier than "planned")=2E
+> >=20
+> > I took values from SDK
+> >=20
+> > https://git01=2Emediatek=2Ecom/plugins/gitiles/openwrt/feeds/mtk-openw=
+rt-feeds/+/refs/heads/master/target/linux/mediatek/files-5=2E4/drivers/ther=
+mal/mediatek/soc_temp_lvts=2Ec#1483
+> >=20
+>=20
+> That kernel also defines 117=C2=B0C for MT8195, which leaves me a bit du=
+bious=2E
+>=20
+> For safety, I would recommend using the same 105=C2=B0C hw shutdown temp=
+erature
+> for 7988 as well: after all if you think about it, reaching that kind of
+> temperature means that there's a real problem (fan stopped working and/o=
+r
+> heatsink detached) that needs attention=2E
 
-However, phylink pretty much requires phy-mode to be specified to be
-something sane for shared ports, so I wouldn't be in favour of relaxing
-the checkinng in dsa_shared_port_validate_of()... not unless you're
-now going to accept the approach I originally proposed to have DSA
-drivers tell the core (and thus phylink) what phy-mode and other link
-parameters should be used when they are missing from DT.
+ack, will change to same value and put the define on top, abve the mt8195
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+> This is because you'll have trip points in devicetree that should thrott=
+le
+> the CPU in case it reaches at least a dangerously high temperature (read=
+:
+> a temperature outside the recommended continuous operation range), bring=
+ing
+> the temperatures down because of the throttling action; I would imagine
+> throttling the CPU a bit down at 80=C2=B0C, then a bit more at 90=C2=B0C=
+ - but then,
+> if the temps won't drop like that, there's clearly a HW-related issue th=
+at
+> must be addressed (like the fan/heatsink scenario that I just described)=
+=2E
+>=20
+> Though, take this as an advice; I'll respect whichever decision you'll t=
+ake=2E
+>=20
+> >>> +//enum mt7988_lvts_domain { MT7988_AP_DOMAIN, MT7988_NUM_DOMAIN };
+> >>> +
+> >>> +enum mt7988_lvts_sensor_enum {
+> >>> +	MT7988_TS3_0,
+> >>> +	MT7988_TS3_1,
+> >>> +	MT7988_TS3_2,
+> >>> +	MT7988_TS3_3,
+> >>> +	MT7988_TS4_0,
+> >>> +	MT7988_TS4_1,
+> >>> +	MT7988_TS4_2,
+> >>> +	MT7988_TS4_3,
+> >>> +	MT7988_NUM_TS
+> >>> +};
+> >=20
+> >> This enumeration should be definitions in bindings (mediatek,lvts-the=
+rmal=2Eh)=2E
+> >>
+> >> Besides, the LVTS is about internal temperatures, so those TS3_x and =
+4_x can
+> >> be renamed like what was done for MT8192 and MT8195: this is because =
+you will
+> >> never see TS3_2 being CPU2 on a board and CPU4 on another, being thos=
+e - again -
+> >> internal to the SoC, hence unchangeable=2E
+> >=20
+> > Right these sensors are internally only and i took naming from sdk to =
+avoid confusion=2E And i have not more information about these internal sen=
+sors (special meaning),but their values are packed together to get the resu=
+lting (average) temperature=2E
+> >=20
+> >> Another reason is that you'll anyway have to refer to those sensors i=
+n the
+> >> devicetree to configure thermal trips and such, so=2E=2E=2E :-)
+> >=20
+> > In device tree it will look like this:
+> >=20
+> > https://github=2Ecom/frank-w/BPI-Router-Linux/blob/6=2E5-lvts/arch/arm=
+64/boot/dts/mediatek/mt7988a=2Edtsi#L771
+> >=20
+> > Daniel has also defined thermal trips there,but these are untested atm=
+=2E I only verified temperature itself i get from sysfs as far as i can (st=
+art at ~40=C2=B0C and reaching ~70 while running)=2E
+> >=20
+>=20
+> Check how it's done in mt8192=2Edtsi and mt8195=2Edtsi: we're using the =
+definitions
+> from the bindings for thermal zones=2E
+> At least for consistency (apart from other even more valid consideration=
+s), that's
+> how it should be done: please do it like that=2E
+>=20
+> Besides, I think that you can definitely guess what `TS` is CPU related:=
+ checking
+> the driver and devicetree from the downstream kernel that you provided, =
+what I
+> understand is:
+>=20
+> 1=2E Your naming TS3,4 corresponds to TS2,3 downstream (so it's wrong?)
+> 2=2E Downstream TS2 is related to the CPU cores, so it should be
+>     - TS2_0 - CPU0
+>     - TS2_1 - CPU1
+>     - TS2_2 - CPU2
+>     - TS2_3 - CPU3
+
+i took the names from efuse names (which are listed as comment above), had=
+ 2/3 before=2E
+need to ask mtk here=2E same for the second controller and if it is really=
+ a "lvts-ap"=2E
+
+> The other set of thermal sensors seem to be completely unused, so we can=
+not guess
+> just by looking at the code=2E Since you have the hardware, you may be a=
+ble to take
+> a position about what they are by checking what sensor heats up for each=
+ "action"
+> (could be ethernet controller or infra or whatever else); if in doubt, j=
+ust leave
+> them out, but add a comment saying that there are more sensors and say w=
+here, so
+> that if anyone finds what they're for, it'll be easy to add them=2E
+>=20
+> In any case, adding thermal sensors that you don't know about is meaning=
+less, as
+> the sense of all this is:
+>   - Monitoring temperatures of the hardware
+>   - Taking action to prevent temperature overrun
+> but if you don't know what you're reading, you can't interpret temperatu=
+res for
+> something unknown, hence you can't as well take action to prevent overru=
+ns, as
+> you won't know what's the maximum temperature for "unknown thing" :-)
+
+yes i have only the downstream kernel and some additional information like=
+ interupt
+number and the efuse offsets for calibration=2E And for the 8 sensors i ge=
+t this information:
+
+"8 sensors are distributed across the whole soc in order to get the correc=
+t average temperature=2E
+chip designer didn=E2=80=99t disclose more detailed info to us=2E"
+
+so i thought all 8 sensors are taken into account with both controllers to=
+ calculate 1
+resulting temperature=2E In downstream i saw also only 1 controller in dts=
+ and i have
+only 1 interrupt=2E
+
+https://git01=2Emediatek=2Ecom/plugins/gitiles/openwrt/feeds/mtk-openwrt-f=
+eeds/+/refs/heads/master/target/linux/mediatek/files-5=2E4/arch/arm64/boot/=
+dts/mediatek/mt7988=2Edtsi#579
+
+and the compatible for both (mt7988 and mt8195) are without "ap" there, so=
+ i took the same=2E
+
+Where have you seen the mt7988-AP ?
+
+i have only seen 1 sensor which should be the SOC itself and this chip has=
+ metal surface
+which makes it hard to get real temperature (infrared thermometer gives wr=
+ong temp)=2E
+
+> Regards,
+> Angelo
 
