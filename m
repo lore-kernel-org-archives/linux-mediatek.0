@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C053CEE0211
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 23:24:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3065AEE021A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 23:30:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=McEVX1hx5k8f+NcqiKTD/lVS9HGO2QYi1j8mbG944+c=; b=45uC//riyTjR3nxBS7LdIB2OQt
-	a0RttNI/3oGQv/3TfBi8411yD0qpxIjTFd/jwkFi5bqeC1JvX+ArfSV5RSM5EXG8Fll1OuUWZgL9Q
-	QslbzllgfWHBi8Iz9j13NnVZgGBocdENaM86C/OOD3c1z8zaj6GSV8ZFmCfS7IdGceeAxiH9fP97W
-	xRul/IShzxlD583ThtSUiad0By0S7ITdYX7clUTX5MrD1aENtmjQQULF79kXoh2MZfQYES3HlR1So
-	M4T+w8z4ZuTcM9Kf7YsratiykdI6SrPMRNFJvOfvvkHHMxfoWGxqOJYtNtqjSNvMfEfgdNxehbGQE
-	cmLvkeew==;
+	bh=D8BEuyRIkqA0kbODSrFEJ9LM8ANlZ5MuwmNVEnUG8nE=; b=0RlE7uYiwDiexv7JnSullODDVG
+	Sz3m2pNTAEChavlL9g18vuyXVqpvwzDx1xwV9hcvbS/hHdXowXNqCgFJLjjrKnXJfdbglMkJmnGUP
+	ec+UjF6YEnmvkHtMb4vpXWacMDJcuxJaGnT4mpAxNxLpJY2Qax9HDXaXOLoP2kltG/K5Bd8v+/3fs
+	Q2EJ7sljxjVodJuAAWuDyt8vKQzi4Xi9+/rUZFSIfoKkdUQhhvsR5wsif84ZASAXfuxPjm1ncel6L
+	EcD6mL98AXM+J5eua/8tbpwQuODUEulAqhDZDtlvbF7Tr9JM7Z93LOxDc6rmAvRE/39aeERVaLnIx
+	ae7jTxVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgZDO-006sbM-2b;
-	Wed, 13 Sep 2023 23:24:10 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1qgZJD-006syY-0E;
+	Wed, 13 Sep 2023 23:30:11 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgZDL-006sa4-20
+	id 1qgZJ9-006sxF-2I
 	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Sep 2023 23:24:09 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-1c1e128135aso2774325ad.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 Sep 2023 16:24:04 -0700 (PDT)
+	Wed, 13 Sep 2023 23:30:09 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-1c328b53aeaso2720825ad.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 13 Sep 2023 16:30:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1694647444; x=1695252244; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1694647806; x=1695252606; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=McEVX1hx5k8f+NcqiKTD/lVS9HGO2QYi1j8mbG944+c=;
-        b=NEMFNu6Qa0X8HHahzlHAQJBYbDXoEkm+ci3BI3Pw/uKKwyEU+gMniejefqACXAH7PG
-         p8REu3D2Bedt/E7x6B8kBw2vKvfJPw073klw1B9bdw1Xu5qEzmn0kp04g5dMpwkt9Vup
-         RLHuMKxXnZYmqF1BkDbNB75i18WYCfQYYr7LY=
+        bh=D8BEuyRIkqA0kbODSrFEJ9LM8ANlZ5MuwmNVEnUG8nE=;
+        b=OmHaWV4r/WN8sWtKcYuKW5yyroWMiGo56AZGGr79E9D/aYLHRHnAp5ns0WnrT572VN
+         /qOSczN7uIvnNRCAZ8idAXB4S7HM0ElvfR51L1o6UsQ1UAYwo9KurPcSCUKrsTpyqtpD
+         9pAEXvoWpG1ppbpDMPEQx1QI6F8Cef1+eJAAg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694647444; x=1695252244;
+        d=1e100.net; s=20230601; t=1694647806; x=1695252606;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=McEVX1hx5k8f+NcqiKTD/lVS9HGO2QYi1j8mbG944+c=;
-        b=w1g4l7A/20SSlKgfje35SzF5HN2L/jyCvlvzPmP0TR8N+Bf83ulswxL9hQEDcPHhfU
-         077zrU8+PkiiVsSxX0tPr2Y6K3UAoIBqYeuPKA9UxbTxPzqlsq9NEEeJ/OlI5BemWUvD
-         65w0wXFNjN1cKyOGqzlSIurAnmMipF+Exy57Fpl1cZNKKiVXZQX8GVn9S9vAfnnpRg7r
-         +BZ51pTDEI2JQnadFzqzRZs/d4St7OADdJqQH17+b49amR5+DxlSjLkm+mr34pDai0MX
-         AbaCuqWF0ubdiKw799pbAoDafFClTDuLgwUc7gWmWz1kHUq8DIWc1miqx6+ZTOZziaQH
-         Hp6Q==
-X-Gm-Message-State: AOJu0YzIv0RRdaK7iGNDahrRiOoVOJucZTVivVrx8/7LT+mZ93CL37UQ
-	KMkeYVrxPQTY+IV45oPZVBwUGQ==
-X-Google-Smtp-Source: AGHT+IEhoRu0Lao0AX88usO4EFB8BidZ06eLDfk+p1OxG1nODfcmpktTieCBSCEMoiWnY1czPMaLqw==
-X-Received: by 2002:a17:902:d2c4:b0:1c0:d575:d28 with SMTP id n4-20020a170902d2c400b001c0d5750d28mr4287074plc.50.1694647444198;
-        Wed, 13 Sep 2023 16:24:04 -0700 (PDT)
+        bh=D8BEuyRIkqA0kbODSrFEJ9LM8ANlZ5MuwmNVEnUG8nE=;
+        b=MJZO5aOf2odOwNhR50IPwKfXP2RHzz70jyY33detsGgj/vhyy9bYcu6Z98kjhXr16C
+         xGwq5CIqnT88DJhruJZDK/4InR5zKQvxyiSb4LZU1jT7rL7nhJME5OS7/b6zU4tHDKWU
+         tIRTkMiWUGQXwXJToIUoINWCgZb53R6WtEHW/BlM+Zm8UUz/syQ7bwpfwjZk+DOuEN5O
+         U8PjXNxcfkIW/Uumonx9JQguqdWAOMQzg+5ISvOuS/QU3G/Xg20eJCI6vdOl7AFYNqwP
+         3IClaLkY6xQjuS9bQkeMOFleftb948nZ+OEM4YAHGWD1XWIYpY5wneOB/X5/e5SiunQI
+         TPgw==
+X-Gm-Message-State: AOJu0YwhPa9RvFaHX2stA2WUccjC/ZCKtuMx2rIXdqmbCEPnOe2F2LTV
+	+6yTRbqnpfTYPZknS+pKFmZHuQ==
+X-Google-Smtp-Source: AGHT+IG6+9IB6uFxWZM3GIOXMU3BPqs4EX0RKLfedlqEvbvt0BgIgu7ki0WNkT/tohlFIibQd5bGSA==
+X-Received: by 2002:a17:902:db11:b0:1bc:9651:57c6 with SMTP id m17-20020a170902db1100b001bc965157c6mr5121186plx.57.1694647806167;
+        Wed, 13 Sep 2023 16:30:06 -0700 (PDT)
 Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net. [198.0.35.241])
-        by smtp.gmail.com with ESMTPSA id j21-20020a170902c3d500b001bb8895848bsm163538plj.71.2023.09.13.16.24.03
+        by smtp.gmail.com with ESMTPSA id u15-20020a170902e5cf00b001b3bf8001a9sm167730plf.48.2023.09.13.16.30.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Sep 2023 16:24:03 -0700 (PDT)
-Date: Wed, 13 Sep 2023 16:24:02 -0700
+        Wed, 13 Sep 2023 16:30:05 -0700 (PDT)
+Date: Wed, 13 Sep 2023 16:30:04 -0700
 From: Kees Cook <keescook@chromium.org>
 To: Mukesh Ojha <quic_mojha@quicinc.com>
 Cc: corbet@lwn.net, agross@kernel.org, andersson@kernel.org,
@@ -76,18 +76,18 @@ Cc: corbet@lwn.net, agross@kernel.org, andersson@kernel.org,
 	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-samsung-soc@vger.kernel.org, kernel@quicinc.com
-Subject: Re: [REBASE PATCH v5 10/17] pstore: Add pstore_region_defined()
- helper and export it
-Message-ID: <202309131620.34EB0F6972@keescook>
+Subject: Re: [REBASE PATCH v5 11/17] qcom_minidump: Register ramoops region
+ with minidump
+Message-ID: <202309131624.0371D7E@keescook>
 References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
- <1694429639-21484-11-git-send-email-quic_mojha@quicinc.com>
+ <1694429639-21484-12-git-send-email-quic_mojha@quicinc.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1694429639-21484-11-git-send-email-quic_mojha@quicinc.com>
+In-Reply-To: <1694429639-21484-12-git-send-email-quic_mojha@quicinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_162407_663140_B072F5A1 
-X-CRM114-Status: GOOD (  21.78  )
+X-CRM114-CacheID: sfid-20230913_163007_750305_5F6BDC00 
+X-CRM114-Status: GOOD (  29.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,77 +102,155 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 11, 2023 at 04:23:52PM +0530, Mukesh Ojha wrote:
-> There are users like Qualcomm minidump which is interested in
-> knowing the pstore frontend addresses and sizes from the backend
-> (ram) to be able to register it with firmware to finally collect
-> them during crash for debugging.
+On Mon, Sep 11, 2023 at 04:23:53PM +0530, Mukesh Ojha wrote:
+> Register all the pstore frontend with minidump, so that they can
+> be dumped as default Linux minidump region to be collected on
+> SoC where minidump is enabled.
+> 
+> Helper functions is written in separate file and built along with
+> the minidump driver, since it is client of minidump and also call
+> it at appropriate place from minidump probe so that they always
+> get registered.
+> 
+> While at it also rename the out minidump module object name during
+> build as qcom_apss_minidump which basically depicts as Qualcomm
+> Application processor subsystem minidump.
 > 
 > Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
 > ---
->  fs/pstore/platform.c   | 15 +++++++++++++++
->  fs/pstore/ram.c        | 42 ++++++++++++++++++++++++++++++++++++++++++
->  include/linux/pstore.h |  6 ++++++
->  3 files changed, 63 insertions(+)
+>  drivers/soc/qcom/Kconfig                 |  1 +
+>  drivers/soc/qcom/Makefile                |  3 +-
+>  drivers/soc/qcom/qcom_minidump.c         |  4 ++
+>  drivers/soc/qcom/qcom_ramoops_minidump.c | 88 ++++++++++++++++++++++++++++++++
+>  drivers/soc/qcom/qcom_ramoops_minidump.h | 10 ++++
+>  5 files changed, 105 insertions(+), 1 deletion(-)
+>  create mode 100644 drivers/soc/qcom/qcom_ramoops_minidump.c
+>  create mode 100644 drivers/soc/qcom/qcom_ramoops_minidump.h
 > 
-> diff --git a/fs/pstore/platform.c b/fs/pstore/platform.c
-> index e5bca9a004cc..fdac951059c1 100644
-> --- a/fs/pstore/platform.c
-> +++ b/fs/pstore/platform.c
-> @@ -139,6 +139,21 @@ enum pstore_type_id pstore_name_to_type(const char *name)
->  }
->  EXPORT_SYMBOL_GPL(pstore_name_to_type);
+> diff --git a/drivers/soc/qcom/Kconfig b/drivers/soc/qcom/Kconfig
+> index 0ac7afc2c67d..9f1a1e128fef 100644
+> --- a/drivers/soc/qcom/Kconfig
+> +++ b/drivers/soc/qcom/Kconfig
+> @@ -306,6 +306,7 @@ config QCOM_MINIDUMP
+>  	tristate "QCOM APSS Minidump driver"
+>  	depends on ARCH_QCOM || COMPILE_TEST
+>  	depends on QCOM_SMEM
+> +	depends on PSTORE
+>  	help
+>  	  This config enables linux core infrastructure for Application
+>  	  processor subsystem (APSS) minidump collection i.e, it enables
+> diff --git a/drivers/soc/qcom/Makefile b/drivers/soc/qcom/Makefile
+> index 4b5f72f78d3c..69df41aba7a9 100644
+> --- a/drivers/soc/qcom/Makefile
+> +++ b/drivers/soc/qcom/Makefile
+> @@ -33,4 +33,5 @@ obj-$(CONFIG_QCOM_ICC_BWMON)	+= icc-bwmon.o
+>  qcom_ice-objs			+= ice.o
+>  obj-$(CONFIG_QCOM_INLINE_CRYPTO_ENGINE)	+= qcom_ice.o
+>  obj-$(CONFIG_QCOM_RPROC_MINIDUMP)	+= qcom_rproc_minidump.o
+> -obj-$(CONFIG_QCOM_MINIDUMP)		+= qcom_minidump.o
+> +obj-$(CONFIG_QCOM_MINIDUMP)		+= qcom_apss_minidump.o
+> +qcom_apss_minidump-objs			+= qcom_minidump.o qcom_ramoops_minidump.o
+> diff --git a/drivers/soc/qcom/qcom_minidump.c b/drivers/soc/qcom/qcom_minidump.c
+> index 4ce36f154e89..7930a80b9100 100644
+> --- a/drivers/soc/qcom/qcom_minidump.c
+> +++ b/drivers/soc/qcom/qcom_minidump.c
+> @@ -23,6 +23,7 @@
+>  #include <soc/qcom/qcom_minidump.h>
 >  
-> +int pstore_region_defined(struct pstore_record *record,
-> +			  void **virt, phys_addr_t *phys,
-> +			  size_t *size, unsigned int *max_dump_cnt)
+>  #include "qcom_minidump_internal.h"
+> +#include "qcom_ramoops_minidump.h"
+>  
+>  /**
+>   * struct minidump_ss_data - Minidump subsystem private data
+> @@ -688,6 +689,8 @@ static int qcom_apss_minidump_probe(struct platform_device *pdev)
+>  		return ret;
+>  	}
+>  
+> +	qcom_ramoops_minidump_register(md->dev);
+> +
+>  	mutex_lock(&md_plist.plock);
+>  	platform_set_drvdata(pdev, md);
+>  	qcom_apss_register_pending_regions(md);
+> @@ -701,6 +704,7 @@ static int qcom_apss_minidump_remove(struct platform_device *pdev)
+>  	struct minidump *md = platform_get_drvdata(pdev);
+>  	struct minidump_ss_data *mdss_data;
+>  
+> +	qcom_ramoops_minidump_unregister();
+>  	mdss_data = md->apss_data;
+>  	memset(mdss_data->md_ss_toc, cpu_to_le32(0), sizeof(struct minidump_subsystem));
+>  	md = NULL;
+> diff --git a/drivers/soc/qcom/qcom_ramoops_minidump.c b/drivers/soc/qcom/qcom_ramoops_minidump.c
+> new file mode 100644
+> index 000000000000..eb97310e3858
+> --- /dev/null
+> +++ b/drivers/soc/qcom/qcom_ramoops_minidump.c
+> @@ -0,0 +1,88 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+> + */
+> +
+> +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+> +
+> +#include <linux/device.h>
+> +#include <linux/kernel.h>
+> +#include <linux/module.h>
+> +#include <linux/pstore.h>
+> +#include <linux/slab.h>
+> +#include <soc/qcom/qcom_minidump.h>
+> +
+> +#include "qcom_ramoops_minidump.h"
+> +
+> +static LIST_HEAD(ramoops_region_list);
+> +
+> +struct md_region_list {
+> +	struct qcom_minidump_region md_region;
+> +	struct list_head list;
+> +};
+> +
+> +static int qcom_ramoops_region_register(struct device *dev, int type)
 > +{
-> +	if (!psinfo)
-> +		return -EINVAL;
+> +	struct qcom_minidump_region *md_region;
+> +	struct md_region_list *mdr_list;
+> +	struct pstore_record record;
+> +	unsigned int max_dump_cnt;
+> +	phys_addr_t phys;
+> +	const char *name;
+> +	void *virt;
+> +	size_t size;
+> +	int ret;
 > +
-> +	record->psi = psinfo;
+> +	record.type = type;
+> +	record.id = 0;
+> +	max_dump_cnt = 0;
+> +	name = pstore_type_to_name(record.type);
+> +	do {
+> +		ret = pstore_region_defined(&record, &virt, &phys, &size, &max_dump_cnt);
 
-Uh, this makes no sense to me. If this is a real pstore_record, you
-cannot just assign psi here.
+I really don't want this happening: you're building your own pstore_record
+(which has a common initializer that isn't used here) and manually
+scraping the ramoops regions.
 
-> +
-> +	return psinfo->region_info ?
-> +	       psinfo->region_info(record, virt, phys, size, max_dump_cnt) :
-> +	       -EINVAL;
+It looks to me like you just want a way to talk all the records in
+pstore and then export their location to minidump. The record walker
+needs to be in the pstore core, and likely should be shared with
+fs/pstore/inode.c which does the same thing.
 
-Common code style for this kind of thing is usually like this:
+Then, in this code, you can just do something like:
 
-	if (!psinfo->region_info)
-		return -EINVAL;
+	for (record = pstore_get_record(NULL); record; record = pstore_get_record(record)) {
+		if (ramoops_get_record_details(record, &virt, &phys) < 0)
+			continue
+		...
+		md_region->virt_addr = virt;
+		md_region->phys_addr = phys;
+		md_region->size = record->size;
 
-	return psinfo->region_info(...)
+		ret = qcom_minidump_region_register(md_region);
+		...
+	}
 
-> +}
-> +EXPORT_SYMBOL_GPL(pstore_region_defined);
-> +
->  static void pstore_timer_kick(void)
->  {
->  	if (pstore_update_ms < 0)
-> diff --git a/fs/pstore/ram.c b/fs/pstore/ram.c
-> index ab551caa1d2a..62202f3ddf63 100644
-> --- a/fs/pstore/ram.c
-> +++ b/fs/pstore/ram.c
-> @@ -437,6 +437,47 @@ static int ramoops_pstore_erase(struct pstore_record *record)
->  	return 0;
->  }
->  
-> +static int ramoops_region_info(struct pstore_record *record,
-> +			       void **virt, phys_addr_t *phys,
-> +			       size_t *size, unsigned int *max_dump_cnt)
-
-But there's a larger problem here -- "virt", "phys" and likely
-"max_dump_cnt" are aspects _specific to the ram backend_. This can't be
-a generic pstore interface.
-
-I'm not opposed to it being exposed only from ramoops, though.
-
-But I think you'll want a pstore generic way to iterate over the
-records...
+Probably some way to check the backend is ramoops is needed too.
 
 -- 
 Kees Cook
