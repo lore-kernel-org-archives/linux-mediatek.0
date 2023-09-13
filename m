@@ -4,83 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A22E5EDEC4D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 13:36:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8F0EEEB59D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 13:44:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q360DGLPslm+3L2kBMp+qoLp/Dds0nxRU+KlA9Aqw9Y=; b=w6pHGbrQOvG3ZXRyq/pHlOpVK+
-	TxWq8G7kTKvkGkGDjbj4FvhySOuvjgr0S/4EDaCW75EBD0MBptkeba3V8y/WZYinq4iWOjBI+Ns4c
-	G0bvuQbtQ50TefrndaspjBR8dLztrXpctl6pc66Ce3DSq50uN5acETT3nXOjtuAfyu+TLuF8RK3IS
-	6IMmkms7Gs36ZA2bQXXDrr80si9l7rC+9kWlMY0RAmfOCElqXCSLgwXfDFq8fpTDOkgsV3yMXv9Om
-	N8nuCpiEYwGutTtKBleeNfKez1yuWrtEKExz/81bT1rBPmhMHqqBN37EGOg/RhcoJ4Ut0kAuOccCK
-	vFP0KvKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MkX3ucDsFIkmcvtH8Fk0dj+TXSDnts8NcoUAfdOzkug=; b=1jUMgS6lasl+urkc3llt3fcysL
+	IOwK/km+jtlc/KZkbXBYAvQ65xwts2Livf69Qx/xQuIb1BS5ss73q2YGAreyErbxgZw7r5N6QiNmH
+	gaA7rI/qbgLHJC2iZES+Q1UY7KXwqWALQjmDz2XAtFOdNuW/S9J1gisnJfu+mXMuO1lrvF4pq/0K8
+	DBHrB5TvY2uvGUYWn+9I6JLABxFoQtpSY1Hz3QByBYAUsM/8v7k5EifqquPxpVss6poajiyRsoP81
+	h/H9jiMMt7Rhxg3bPi87pzOsmlnJtLMUsCkcPnrfny2Lyfbio0nU4b87GxuWaha4apjw2nSZspzYs
+	VRuVO0/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgQ2E-005zoC-0H;
-	Wed, 13 Sep 2023 13:36:02 +0000
-Received: from mgamail.intel.com ([192.55.52.93])
+	id 1qgQAC-0060SG-1R;
+	Wed, 13 Sep 2023 13:44:16 +0000
+Received: from mail-mw2nam12on2062c.outbound.protection.outlook.com ([2a01:111:f400:fe5a::62c] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgQ29-005zmm-2b;
-	Wed, 13 Sep 2023 13:35:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1694612157; x=1726148157;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=pj/V2UP2unub0wz1wILtsfcstjsxnGVCuZljE+FR6is=;
-  b=LKRe3s4qM8ObX708zto/AAczwZLDk8VxuF978K82tYEbv0denjQM+7dG
-   wFo/M+Wm6gmA8Mh1OTz/5y9+BuC/cK/BZ95oOeoLAqQqTynfKHx0uTYnk
-   Z+mNJ3FrD0MheI+fp3tFirvYAivkNLAY2MzXMAgsR23F3YSAWjRwTrHwx
-   cltjvvdQZG6bHTrNVBSkHdwtQ6fCVwBf1oRYVlaPtMknEavCuCG8YKP1A
-   Fg/TddagIiHM6eNBPsamLNLkKIqT1cK4WpAUlXC9H8llV3eYhGvFw6Ys/
-   KBKDJRdwGDUzaxLC6MdOmd4RORXPsJXhNTaiXvuiHAtOh6n0g9M0ic3zt
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10832"; a="375993254"
-X-IronPort-AV: E=Sophos;i="6.02,143,1688454000"; 
-   d="scan'208";a="375993254"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Sep 2023 06:35:54 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10832"; a="859269609"
-X-IronPort-AV: E=Sophos;i="6.02,143,1688454000"; 
-   d="scan'208";a="859269609"
-Received: from lkp-server02.sh.intel.com (HELO 9ef86b2655e5) ([10.239.97.151])
-  by fmsmga002.fm.intel.com with ESMTP; 13 Sep 2023 06:35:50 -0700
-Received: from kbuild by 9ef86b2655e5 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1qgQ1z-00006X-2b;
-	Wed, 13 Sep 2023 13:35:47 +0000
-Date: Wed, 13 Sep 2023 21:35:04 +0800
-From: kernel test robot <lkp@intel.com>
-To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
-	Sumit Semwal <sumit.semwal@linaro.org>, christian.koenig@amd.com,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: oe-kbuild-all@lists.linux.dev, Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Brian Starkey <Brian.Starkey@arm.com>,
-	John Stultz <jstultz@google.com>, tjmercier@google.com,
+	id 1qgQA7-0060Nh-1c;
+	Wed, 13 Sep 2023 13:44:13 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=f9+Brr4p7xirlTSCnYgUFEkWMkpGkNr7bgLTJz/iS0IfchvCotkYvcZpCO7qZqssK0Mw3V5tZQoOA9NpInB4VMhRi99rPFcZ11FGRyEwB9ca5SjBwBF1v8Cb89o6toZMBm9XjOTFjEaoa1KTycNGtLTXRdNyZ3i+ailUusg50oXHm8z29RD8lRMNkBrBL5YQkUdUfdZoioSpvtfRgJyGpJEoaM1oB+z6Y5i3R5pw0GV1+jwgdtcxvGkKyCYeRq9wlM+wNu47JBtPbAuPpSrou4HTC5FJjX2pry0DIDpTaboHPyGDHNt3s3+ryGG7ls4jPKJOwRVWzbOgL0wJ6LlIog==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=MkX3ucDsFIkmcvtH8Fk0dj+TXSDnts8NcoUAfdOzkug=;
+ b=em32qs03ZmP5SnHZBNbXN9Sv8foxulA/G4UFzdHUK64QjR2c94Z9nGKEl2403EqddWKiWUg8+vlEKTrMSJcZ1U7Fh9Ys5sa476+1M4wq6SUgVFHLSXx7ML4GOcNEowYgSl+ClJIhAfhzGro/CtgdUGxY+TNWbrieiuB9JBhK9wpdGC63h4uj0JcueidaVAODeqyEdBef3NW+u3f7zkAKYAZhHAMS+sMoRru25iNGYswrRAm1ZOtTLP/p4QOmP+zJpt4srFKBexzaqFiPwg5MeobTHIqrltUJ70gh2ywZS0dCA2wTLJJoBNxAMstiRT0VCzGzRdHV4wt0TrrA/MVhag==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=MkX3ucDsFIkmcvtH8Fk0dj+TXSDnts8NcoUAfdOzkug=;
+ b=RaUCQ/Fdl6O6lWequZNLj0GC94rzKvLUlc6I5+C7oU/6rZiQhyvRRErLRL+zTgK7UP4LLZAab46jMIYEV0mN59qIyJrddTMTyGOumfwOlSEBPNp8AXx7dadSeKMNB95h/16FF7xieRtyMBQEVqBF3i9YL6ZeQTA4xylYmpoZ1sTgI5e8nMC9QAfPeytLtTrewSwyTDhHX8/hqsHQqx1tRoyAcbTFuNe4Fa5lx4006XPdZM3+lHw5s2BPTI6x8822LNp75Jh2Lh/CWbldOLKjM0DNMVXdGJ7wTE2AXMkJLWW2XES8bWqqtMf+vipY+rYiCH74ZCtYBN4h46IESHljSQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by BL1PR12MB5096.namprd12.prod.outlook.com (2603:10b6:208:316::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6768.40; Wed, 13 Sep
+ 2023 13:43:59 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::faf:4cd0:ae27:1073]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::faf:4cd0:ae27:1073%6]) with mapi id 15.20.6768.036; Wed, 13 Sep 2023
+ 13:43:59 +0000
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Andy Gross <agross@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Bjorn Andersson <andersson@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Yong Wu <yong.wu@mediatek.com>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Joerg Roedel <joro@8bytes.org>,
+	Kevin Tian <kevin.tian@intel.com>,
+	Konrad Dybcio <konrad.dybcio@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, jianjiao.zeng@mediatek.com,
-	kuohong.wang@mediatek.com
-Subject: Re: [PATCH 5/9] dma-buf: heaps: mtk_sec_heap: Initialise tee session
-Message-ID: <202309132148.UABRshAB-lkp@intel.com>
-References: <20230911023038.30649-6-yong.wu@mediatek.com>
+	linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
+	linuxppc-dev@lists.ozlabs.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Rob Clark <robdclark@gmail.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Krishna Reddy <vdumpa@nvidia.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Jerry Snitselaar <jsnitsel@redhat.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Nicolin Chen <nicolinc@nvidia.com>,
+	Niklas Schnelle <schnelle@linux.ibm.com>,
+	Steven Price <steven.price@arm.com>,
+	Thierry Reding <treding@nvidia.com>
+Subject: [PATCH v8 03/24] powerpc/iommu: Setup a default domain and remove set_platform_dma_ops
+Date: Wed, 13 Sep 2023 10:43:36 -0300
+Message-ID: <3-v8-81230027b2fa+9d-iommu_all_defdom_jgg@nvidia.com>
+In-Reply-To: <0-v8-81230027b2fa+9d-iommu_all_defdom_jgg@nvidia.com>
+References: 
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: MN2PR20CA0033.namprd20.prod.outlook.com
+ (2603:10b6:208:e8::46) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230911023038.30649-6-yong.wu@mediatek.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|BL1PR12MB5096:EE_
+X-MS-Office365-Filtering-Correlation-Id: 397049e5-2842-4690-c5ca-08dbb45f7b24
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: qf4ttNUntYFdg6DNQ4R+xXMNl0EGerJS6LXZo0exuVdPbgFo8N9EdAJ2E5k89gi8l2tJoQWxjQWJR3vypI2eRbRlcV/53g0d2XbOghVTUVEbOq88t5PUXFCtMLOPWzDVJ8cBQGPWlUImUtWWCrvbpGIZGq3/f4YEwyvUXQJZyo4FG0bIa8dHs7PjV8+57LEFpWLAe0vB3hE/15XJV12C0Vp8USQ+3TiHIlR0w2rJx7mo4646ZvPJwwtZelidnuDKi76KCysfhTw1xDT+wATFeXIYVEPC2c+xFKIcP9dm4gssrannbwf5PNlVNjHU9mg0l1RVvL7wUKBj480FYfynq3CXJzFRMtvlkULopnJUO3YymoAeQ1+cKZ2fNvZ3DthG5oNFbFxydDm6XTY76/IbHuKN2sy/JmGgV7qInxs1qOR9ymtyoILnB9plSPbo9TMxiGGKgc5b8GJaDTfbtAtv9TLgrwxa5u2w6vFXAUlFNIGY53uLEfigULXqr3gACvd4vBkoeaIVFYkuch9NuQm9Y25ljDgLAIJKVgqZN+tm9a7MWBWND+OYLRqleuUcmzwfCEBpywDFHpo5KdIDEQLd7dpXNoIokcrPAoWvEVV+FAC5J8V+D+fplT9qXBdNxN/U
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV2PR12MB5869.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(366004)(376002)(346002)(39860400002)(396003)(136003)(1800799009)(451199024)(186009)(26005)(8936002)(8676002)(4326008)(6666004)(921005)(38100700002)(2616005)(107886003)(478600001)(5660300002)(66556008)(54906003)(66946007)(110136005)(41300700001)(6506007)(6486002)(6512007)(316002)(66476007)(83380400001)(7406005)(7416002)(2906002)(86362001)(36756003)(4216001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?FPoV+eLxV4gj2aBvLNJa1P7fx0H9lNEkNvIYGmvLNlxulELBeoPcgc8zY5S1?=
+ =?us-ascii?Q?R8CgKZDJScAKcwR98umBKcgKefswcgyNrqKQcajJqwudcMC5XNUoW4eaTKhA?=
+ =?us-ascii?Q?Idc70QK3B0H+3xqI3VNBgSU4OqUrStAnZeBc7UoGchpiBOyK83nmDsKA39u5?=
+ =?us-ascii?Q?XzgXWLqQE9uY4tMsigyCR8scd30SlqAEFtwZRBkq4yRGAispVLwNFlCLbfvQ?=
+ =?us-ascii?Q?/zaSiyflQfqMLFG2ga2PCu9T74e9o0wjYIxYDXwj1UuMBAtILEo9rwGtqrQu?=
+ =?us-ascii?Q?7bsDC+m7Nepm8zuV7Jabug/UzHc5zMy8iXTVPkKQ1kWElw9kLRq4rFo3InY/?=
+ =?us-ascii?Q?efcwVFGxYMBgkgpf++RIzJmXhGi0oHKKT+oqv+3tikAJRtwbj9rgMXaSsmad?=
+ =?us-ascii?Q?5HDOF4b/yXlMK/9tQN0Vdg8ZFNN0M3qQ21Ewqj1Q6WU7nic/+5+zFd5Du+4O?=
+ =?us-ascii?Q?rKRnPDVwz3P/tXFFpqU2XyR8LQg270evdGRjGysVpk57/NO0pUN9y8knyCJl?=
+ =?us-ascii?Q?mIKUxdh/E69cQbrEGGx0DTNcqaiQHdo+JoHwSVfE8t26ZUViK7xUECW14fWM?=
+ =?us-ascii?Q?9kc9Px840iV3t+Z1quu3wjDN3DEpyn3EcK6oWgLiHgFww75AY6/CyVi8dpWk?=
+ =?us-ascii?Q?qJbe0TuyGzj+zYHQPimNt8aqcmWsEf9ZhFps3RXGM0uuEXTsa77V/i2aKXWP?=
+ =?us-ascii?Q?jYh3bZ4O50O1Xr8251TVnl61AwryAyTJq98faX1JAVxalRSHOOgFQseyBIr3?=
+ =?us-ascii?Q?FJ8yzw/2GdKYTwGf5HbyNIP+TGPNYOpgI3gnfGCNB6BRr9nQDtAsl8Onq3/A?=
+ =?us-ascii?Q?w2hF40r4vRSDY+xAXSFJwRlTAX9R2S/dO2/NrmaDwkzH6oQe4AUlqfZxEmZL?=
+ =?us-ascii?Q?9qdeL4QctyLJ2WHo2o4WVy680NjMpGTV/xXbkJrHu7xCI2LZeSC2ZnCVkXEM?=
+ =?us-ascii?Q?weaA/v5G3eu3h82hEOMM62Y6KApz8lZnMwZw5rx4kDJkfF/ADXguOzdhbd/P?=
+ =?us-ascii?Q?UoXdeidm1/gv/GkQm5mlAX67CIrrqoADU3f4/tRDqWSN/I8eZk3SXW59lDlX?=
+ =?us-ascii?Q?xHSalUn0yYhYfQlJkbvDlTcuV8+ruE9e2uFSEcRnsPEKzCe+mJnUKFP/8LJ/?=
+ =?us-ascii?Q?GhYh8C2B6UCmdFcf7SDLrLfhuxMskDcDIUt5qjX2M4/KJFUmgdJujkeKm0yO?=
+ =?us-ascii?Q?OfQxmIYhkU8auijwjH5p8/+aE8btYjMnUFRbA7GBXTbm3wPmqGjR294Os0Jj?=
+ =?us-ascii?Q?tujuEJpQkbJed9TRy3zsqbuxI9aIbviDtS4b5knFRUzLO/n+cGIsXzANxCqh?=
+ =?us-ascii?Q?82qkQ/MDIhEuYdOzC2la9vuhnwP5QY/Srp1wC4xZlTXqDRJ0r36YJ3z3gOGs?=
+ =?us-ascii?Q?ULQ1BseLNDhUAeY7VLfzu6WpnKwwOmj4R3KSI2T4IQ3PIHaAkAGgClcIkX7a?=
+ =?us-ascii?Q?Ekt1m+w9WQDYfnS8ZLP8hn3WV7qhtX73s2v7sJ+jlcIdCAiNSCbD5xRgbpfi?=
+ =?us-ascii?Q?wOVOoYuETcO/TCVBJ0Okoz09bLm5bxnQBbdWb49LeUIGxR6qd4XLtA3jBWwh?=
+ =?us-ascii?Q?Zgg3Iw0+fTxHjnF1IJALg+Xee86Ie+XBc7v9f1IH?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 397049e5-2842-4690-c5ca-08dbb45f7b24
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Sep 2023 13:43:58.6875
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: brf+Tvpcwy/RBkgi+SggHRnM4Cqx3u+7fP24bVg0tyq8fb1bmqEMILfNHyxQfOGx
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5096
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_063557_910406_5BBF0861 
-X-CRM114-Status: GOOD (  14.00  )
+X-CRM114-CacheID: sfid-20230913_064411_547369_7B8DD27E 
+X-CRM114-Status: GOOD (  14.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,39 +175,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yong,
+POWER is using the set_platform_dma_ops() callback to hook up its private
+dma_ops, but this is buired under some indirection and is weirdly
+happening for a BLOCKED domain as well.
 
-kernel test robot noticed the following build errors:
+For better documentation create a PLATFORM domain to manage the dma_ops,
+since that is what it is for, and make the BLOCKED domain an alias for
+it. BLOCKED is required for VFIO.
 
-[auto build test ERROR on drm-misc/drm-misc-next]
-[also build test ERROR on robh/for-next linus/master v6.6-rc1 next-20230912]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Also removes the leaky allocation of the BLOCKED domain by using a global
+static.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Yong-Wu/dma-buf-heaps-Deduplicate-docs-and-adopt-common-format/20230911-103308
-base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
-patch link:    https://lore.kernel.org/r/20230911023038.30649-6-yong.wu%40mediatek.com
-patch subject: [PATCH 5/9] dma-buf: heaps: mtk_sec_heap: Initialise tee session
-config: loongarch-allmodconfig (https://download.01.org/0day-ci/archive/20230913/202309132148.UABRshAB-lkp@intel.com/config)
-compiler: loongarch64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230913/202309132148.UABRshAB-lkp@intel.com/reproduce)
+Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+Reviewed-by: Jerry Snitselaar <jsnitsel@redhat.com>
+Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+---
+ arch/powerpc/kernel/iommu.c | 38 +++++++++++++++++--------------------
+ 1 file changed, 17 insertions(+), 21 deletions(-)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202309132148.UABRshAB-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   loongarch64-linux-ld: drivers/dma-buf/heaps/mtk_secure_heap.o: in function `mtk_kree_secure_session_init':
->> mtk_secure_heap.c:(.text+0x130): undefined reference to `tee_client_open_context'
-   loongarch64-linux-ld: drivers/dma-buf/heaps/mtk_secure_heap.o: in function `.L10':
->> mtk_secure_heap.c:(.text+0x19c): undefined reference to `tee_client_open_session'
-   loongarch64-linux-ld: drivers/dma-buf/heaps/mtk_secure_heap.o: in function `.L12':
->> mtk_secure_heap.c:(.text+0x1dc): undefined reference to `tee_client_close_context'
-
+diff --git a/arch/powerpc/kernel/iommu.c b/arch/powerpc/kernel/iommu.c
+index 14251bc5219eba..d6ad3fde85a212 100644
+--- a/arch/powerpc/kernel/iommu.c
++++ b/arch/powerpc/kernel/iommu.c
+@@ -1280,7 +1280,7 @@ struct iommu_table_group_ops spapr_tce_table_group_ops = {
+ /*
+  * A simple iommu_ops to allow less cruft in generic VFIO code.
+  */
+-static int spapr_tce_blocking_iommu_attach_dev(struct iommu_domain *dom,
++static int spapr_tce_platform_iommu_attach_dev(struct iommu_domain *dom,
+ 					       struct device *dev)
+ {
+ 	struct iommu_group *grp = iommu_group_get(dev);
+@@ -1297,17 +1297,22 @@ static int spapr_tce_blocking_iommu_attach_dev(struct iommu_domain *dom,
+ 	return ret;
+ }
+ 
+-static void spapr_tce_blocking_iommu_set_platform_dma(struct device *dev)
+-{
+-	struct iommu_group *grp = iommu_group_get(dev);
+-	struct iommu_table_group *table_group;
++static const struct iommu_domain_ops spapr_tce_platform_domain_ops = {
++	.attach_dev = spapr_tce_platform_iommu_attach_dev,
++};
+ 
+-	table_group = iommu_group_get_iommudata(grp);
+-	table_group->ops->release_ownership(table_group);
+-}
++static struct iommu_domain spapr_tce_platform_domain = {
++	.type = IOMMU_DOMAIN_PLATFORM,
++	.ops = &spapr_tce_platform_domain_ops,
++};
+ 
+-static const struct iommu_domain_ops spapr_tce_blocking_domain_ops = {
+-	.attach_dev = spapr_tce_blocking_iommu_attach_dev,
++static struct iommu_domain spapr_tce_blocked_domain = {
++	.type = IOMMU_DOMAIN_BLOCKED,
++	/*
++	 * FIXME: SPAPR mixes blocked and platform behaviors, the blocked domain
++	 * also sets the dma_api ops
++	 */
++	.ops = &spapr_tce_platform_domain_ops,
+ };
+ 
+ static bool spapr_tce_iommu_capable(struct device *dev, enum iommu_cap cap)
+@@ -1324,18 +1329,9 @@ static bool spapr_tce_iommu_capable(struct device *dev, enum iommu_cap cap)
+ 
+ static struct iommu_domain *spapr_tce_iommu_domain_alloc(unsigned int type)
+ {
+-	struct iommu_domain *dom;
+-
+ 	if (type != IOMMU_DOMAIN_BLOCKED)
+ 		return NULL;
+-
+-	dom = kzalloc(sizeof(*dom), GFP_KERNEL);
+-	if (!dom)
+-		return NULL;
+-
+-	dom->ops = &spapr_tce_blocking_domain_ops;
+-
+-	return dom;
++	return &spapr_tce_blocked_domain;
+ }
+ 
+ static struct iommu_device *spapr_tce_iommu_probe_device(struct device *dev)
+@@ -1371,12 +1367,12 @@ static struct iommu_group *spapr_tce_iommu_device_group(struct device *dev)
+ }
+ 
+ static const struct iommu_ops spapr_tce_iommu_ops = {
++	.default_domain = &spapr_tce_platform_domain,
+ 	.capable = spapr_tce_iommu_capable,
+ 	.domain_alloc = spapr_tce_iommu_domain_alloc,
+ 	.probe_device = spapr_tce_iommu_probe_device,
+ 	.release_device = spapr_tce_iommu_release_device,
+ 	.device_group = spapr_tce_iommu_device_group,
+-	.set_platform_dma_ops = spapr_tce_blocking_iommu_set_platform_dma,
+ };
+ 
+ static struct attribute *spapr_tce_iommu_attrs[] = {
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.42.0
+
 
