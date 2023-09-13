@@ -4,78 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B62BCA5510
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 08:49:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60827CA5511
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 08:56:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M6OWBjAU1cxgbQTAWQU05/QpiwZ7u1WWxVUcWDMnlOc=; b=08pyy/+8FKrhXTpFj+QY2VkWzc
-	XMqdejiX6ERZiIq0se2/6nlpAqsdi/rl0WSfkWUPlnNSTrXtJyseqd9linzYCnh735NQDl6LiaR+p
-	JZOOc8jU7Upo1VYPMhJGFaLvWeI53Wb5QB1mAPFPzmCaJrV9WH4znOHnXR8/NuinZv0D+zzm/mqDT
-	bzqS8c6akCVidBrQUmi+BVZv6dCdLQ1vi/KHtHZbu04P0Au8nJBm/aZ7XChx8A7f4ntZbkDP6ioXf
-	0JEb33vVtgfndOaFzJwZKq66+vLU5YAUrh1UmMSFUx7bjeeo39rqHSVlzGwWnPFGcD1aV3blGO70d
-	2bW0FtKw==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NvABGxrwjJi8zw8bx3iv5y02rhYVq31nX92vN9mp+NQ=; b=wAMKk87eAIa6KtK0GqG6vhdtFx
+	XZ2Pnq9Iw2CakaKiGyI72GJTwBZXUpN1BylNO53o0ssLAmQGlA7NN9upeiPfO3VRxYhnY8Qj14eIs
+	oZVA0m7nNMymtDTmmtTNDgWZQmjXJVLZJ7SIBucNdK7oQFU34g8nnq4Nei0lSCO1t2Vhd4pQAFkTA
+	/x+jN7nTiG4ozg9eehw+gsKYhpuXn78XxJC8CmCRNVFetgQC7T2VmfU7B0R8MpTN/B65YsMDv523A
+	/YzBx0Wu2IafSDuWB2BxNUFI4jwIvoJrPObeXL3HrViitzwnf5aKGY8vBojNZNqXciY3DP+zyyk42
+	ZyKRNyJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgLZO-005BeW-0v;
-	Wed, 13 Sep 2023 08:49:58 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1qgLfp-005D80-1c;
+	Wed, 13 Sep 2023 08:56:37 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgLZL-005Bb7-2o
-	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Sep 2023 08:49:57 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-50078e52537so11115773e87.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 Sep 2023 01:49:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1694594986; x=1695199786; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=M6OWBjAU1cxgbQTAWQU05/QpiwZ7u1WWxVUcWDMnlOc=;
-        b=h/bd9vZdyfRPzzjLkFB+ICjntEHabFj8qkxgX/swTSUGNyH55NuLRz4g414Rnir4Cl
-         El3NEhcf3JZI9SsMPwB50307IRXKhtXEVBRD92WSEY6nJ7mMhitfvNmxQz47tzaGLeRQ
-         IyxOyybCEx1KssacoNDEKANj8PUiNdkyq7iqI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694594986; x=1695199786;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=M6OWBjAU1cxgbQTAWQU05/QpiwZ7u1WWxVUcWDMnlOc=;
-        b=fr0w5qbXSXFPyfmCs2ItgurF6cHAElKPRQkTFUuVEwLARvzoWk96FXhKe31QnUVDJ5
-         cUdYW8rpHt1m5tvSIxSzp0WHRFCjemcfeqafoEbeUi1ODya9oz+ncC3nZT6HY5TMAtbw
-         VxFeBRxOTS0AgOojqQUa9CGH8VS2GJmaiFqMIgAx2ZpFJjBSzJXcboi4GuYEEeV7ket8
-         WlyHEplAntqXaeZaFED7cexj7TzgCO6AE+qd8EQOiGNZANoHc422+dVB8eT/YXdXft2R
-         9oIGLjLYnbu/ij6lQ0fHkpeo+VSWaYBsVOKGvis+wzVAdL4cNuiXZVi2ZLOJY4tW+dJl
-         V2QA==
-X-Gm-Message-State: AOJu0Yxg/HKHAaTM59l8S1JIwkFMn0/BcNPQ5iK5xdNS6I3n2EpvH7Ue
-	YUNj78WUy00f96ts/xH+PzSy9mQdRFqQgBqx1WT+/A==
-X-Google-Smtp-Source: AGHT+IF326eu3RL07fH01eFNOizyYWT0naK68BbkFy0V0EwYECudUIkcOek+Rh5jKTj4V8DX9iBXAl4EHd5E1HbBXZE=
-X-Received: by 2002:a05:6512:32aa:b0:500:94c3:8e3b with SMTP id
- q10-20020a05651232aa00b0050094c38e3bmr1304740lfe.57.1694594986120; Wed, 13
- Sep 2023 01:49:46 -0700 (PDT)
+	id 1qgLfl-005D5j-1I;
+	Wed, 13 Sep 2023 08:56:34 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B7764660732C;
+	Wed, 13 Sep 2023 09:56:29 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1694595390;
+	bh=nqOTtfwX7rRj9GC8sr2U/6FJNTLSLN8f0d2I07koGF8=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=n6z/R42AhHSVBEMMVnpq0HkyEmRYjwYH1r++RCb+Z6eM6IvfahC/Mhwn+Wp0X+rSZ
+	 l82NoT1THmC3L8eZVSjEEYXNolZN5xmI+Co157my/fQ1/dpJ8nbSYWLMO9wLeTr7KU
+	 KtOrUxL7VCc8F5W3V7F6z7AUFTzrYxn1r3an4klqmVy0MG2R6Vlcc7gdzFZKujIYnL
+	 FP4oaww6t4o3gffwZ8T8WVFKSwda92f7ftblWG07MpUT+Z8n8XK+YxBFTHTloPBHV5
+	 d/7MrFgx48pX2DXkdco+a7fgxfb6ElHkNOWyPIUlNSUUn8cNjJh3rczIs4cPdSB5YY
+	 td++vPQOwA4nA==
+Message-ID: <09603bb9-59df-a6a4-fda0-c47fa3941659@collabora.com>
+Date: Wed, 13 Sep 2023 10:56:28 +0200
 MIME-Version: 1.0
-References: <20230804225813.12493-1-robh@kernel.org> <f8759d51-f808-8082-ceaf-6c6dcaebe2d9@collabora.com>
- <4c99c180-3b79-6aef-6ff2-d430e575957d@baylibre.com>
-In-Reply-To: <4c99c180-3b79-6aef-6ff2-d430e575957d@baylibre.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 13 Sep 2023 16:49:34 +0800
-Message-ID: <CAGXv+5FWhEab_wHs9+Q3begEBXCVrE4fK1S3sntDuRRE9iGFpg@mail.gmail.com>
-Subject: Re: [RESEND PATCH] arm64: dts: mediatek: Fix "status" values
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
-	soc@kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, 
-	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH -next 2/2] iio: adc: mt6577_auxadc: Simplify with device
+ managed function
+Content-Language: en-US
+To: Jinjie Ruan <ruanjinjie@huawei.com>, jic23@kernel.org, lars@metafoo.de,
+ matthias.bgg@gmail.com, linux-iio@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230826035402.3512033-1-ruanjinjie@huawei.com>
+ <20230826035402.3512033-3-ruanjinjie@huawei.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230826035402.3512033-3-ruanjinjie@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_014955_937300_04282A67 
-X-CRM114-Status: GOOD (  27.88  )
+X-CRM114-CacheID: sfid-20230913_015633_594170_C2BF8C0E 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,84 +77,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 12, 2023 at 9:10=E2=80=AFPM Alexandre Mergnat <amergnat@baylibr=
-e.com> wrote:
->
->
->
-> On 12/09/2023 14:54, AngeloGioacchino Del Regno wrote:
-> > Il 05/08/23 00:58, Rob Herring ha scritto:
-> >> The defined value for "status" is "disabled", not "disable".
-> >>
-> >> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-> >> Reviewed-by: AngeloGioacchino Del Regno
-> >> <angelogioacchino.delregno@collabora.com>
-> >> Signed-off-by: Rob Herring <robh@kernel.org>
-> >> ---
-> >> Arnd, Please take this directly I guess. I think Mediatek maintainersh=
-ip
-> >> needs some help. Maybe AngeloGioacchino should be co-maintainer as
-> >> that's the only response I seem to be getting.
-> >
-> > Sorry but I've seen this message just now as I've been on holiday in
-> > August.
-> >
-> > Thing is, the MediaTek scene is starting to see more and more code,
-> > bringing
-> > an obvious increase in the amount of reviews to be done and in the requ=
-ired
-> > efforts to maintain the MTK bits - and we will possibly (hopefully) see
-> > even
-> > more of that.
-> >
-> > If Matthias needs/wants a co-maintainer for MediaTek I'm here and I wil=
-l be
-> > proud to become one.
-> >
-> > Cheers,
-> > Angelo
-> >
->
-> I started reviewing MediaTek patches for some months now, so I'm still
-> new. From my PoV, I'm agree with Angelo when he say the amount of patch
-> is increasing. I support Angelo if he wants to become a co-maintainer
-> and continue to do my best to review patches. ;)
+Il 26/08/23 05:54, Jinjie Ruan ha scritto:
+> Add a device managed hook, via devm_add_action_or_reset() and
+> mt6577_power_off(), to power off on device detach.
+> 
+> Replace iio_device_register() by devm_iio_device_register() and remove
+> the mt6577_auxadc_remove() function used to unregister the device and
+> power off the device.
+> 
+> Remove platform_set_drvdata() from the probe function, since
+> platform_get_drvdata() is not used anymore.
+> 
+> Remove mt6577_auxadc_mod_reg() call from the probe function error path.
+> 
+> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+> Suggested-by: Jonathan Cameron <jic23@kernel.org>
 
-I might not have enough time to do a lot of reviews, but if help is needed
-for administrative tasks like queueing patches and sending pull requests,
-that's something I can do.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-ChenYu
 
-> >>
-> >> I think for future .dts patches I will not bother splitting them up by
-> >> sub-arch because it's a pain to chase down the maintainers to apply
-> >> stuff in a timely manner. /rant
-> >>
-> >>   arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 4 ++--
-> >>   1 file changed, 2 insertions(+), 2 deletions(-)
-> >>
-> >> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-> >> b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-> >> index e4605d23fdc8..86cedb0bf1a9 100644
-> >> --- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-> >> +++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-> >> @@ -585,11 +585,11 @@ &pwrap {
-> >>   };
-> >>   &sata {
-> >> -    status =3D "disable";
-> >> +    status =3D "disabled";
-> >>   };
-> >>   &sata_phy {
-> >> -    status =3D "disable";
-> >> +    status =3D "disabled";
-> >>   };
-> >>   &spi0 {
-> >
-> >
->
-> --
-> Regards,
-> Alexandre
->
 
