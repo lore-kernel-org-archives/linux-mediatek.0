@@ -4,78 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29E9ACA5534
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 10:26:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3401CA5534
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 10:52:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OKbWHqhFxyGpgvtMoZyfS8As4URyEu0jfpQVpIZMkgw=; b=jlEYI0bECVESoxIH5mBg7dezWp
-	OGA2bEjPCb+DozvFlWdkzgqVktu7iOA9XuP9l8fW4NF+dm+CmJRz1s2gv4X/5xedsoXnYRpaWdLWH
-	JmJkSz4xQgPyLGynnaUYs5TfblkgDSYxhR8ldT9hvW4fD86g6yPRM4gtFnqE/5IDRrYL6ox6EZPxC
-	fomRuveCDKCyn2Bc06xRCL/K2Qjr1l3gvFtQe5twxdvsH1NnG4g4sAXJe5sD0ZsC+IRfhL67eglKD
-	FjDqgzeMssshgjTXXElFbv5hFLbYkV3MOU5U5PiCUIktgsbWZ5OSmVgVKM9GYNYV0gK7sMJeSwtJO
-	zmP2f/VA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Evwx5slVkrExgcBZjZIC+JDhMXTt2DpVcA3KuNA8XVo=; b=4UiMsmZ7MMIYXb
+	0bNxBCyaUAs6Nv8JcYhcgBhA4Thmatc33eYDO8Z39b5cRebh7Yed7UnDYx7s8pPrmak4+Agp9J1UW
+	gi4rlfEv6mxfHS6bjOZIxXyiDcgO2UWC+jxCUFbneOX0NEw5eoTMgJbtjufqIb4uUILbwyeil/ySk
+	rWy4blLe90pQFa1sL/W35mPlADD2s5p/GIkVRqiqJqgtce/bcuPkaoRdXiK18CfiYNOjcl/JvX66r
+	QnM1yIj+iVpg+Mdr4hEkfeXKkbxPiKyP8KrGRIqo6U2r8muM3ARVadwbvh2/Ny1aBkCsk38jxQfbr
+	a/u1z0la9Ypv4i9cyrYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgN4M-005Rqo-0o;
-	Wed, 13 Sep 2023 10:26:02 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1qgNUH-005fMt-2v;
+	Wed, 13 Sep 2023 10:52:49 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgN4I-005RnE-37;
-	Wed, 13 Sep 2023 10:26:00 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id D8831B82303;
-	Wed, 13 Sep 2023 10:25:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 040C1C433C8;
-	Wed, 13 Sep 2023 10:25:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694600755;
-	bh=4k2IeW5H9cEqbLtJFKkr6gJFeGtpZv+ntg6InyehTu4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MsMiX7Bq3wu/ubrt9go4Zl2qtpZZZdKThoIZMlsHjdv+fHu2fusSjJfXcdrTL0+1h
-	 7c1jVIQcD03WR5z9RerPkcDNylNLW5Wq3XcKZ5bQYWy1wXrd9cTvRWfIPl3MwXFskV
-	 XPH3kH0v1uj9MuRwolV+w+vLF0LjVfOEoRv4JRCNrGQpP+Jxjf6cG7TlggmqUuLepJ
-	 Vat7PzDJUQrphDZ733Kkrcn9wU4VLMBBeNki+N7/G53aZI9TMUHiPzXSVDuhsMMjz9
-	 Dmy5ALThLPMKpNRjZyQfJhkygiiY63lqSxswU6AkAvbbdNCesDQtNF2bRM3DaEuEmo
-	 sHH75LxTD4r6w==
-Date: Wed, 13 Sep 2023 11:25:46 +0100
-From: Will Deacon <will@kernel.org>
-To: Mukesh Ojha <quic_mojha@quicinc.com>
-Cc: corbet@lwn.net, agross@kernel.org, andersson@kernel.org,
-	konrad.dybcio@linaro.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
-	keescook@chromium.org, tony.luck@intel.com, gpiccoli@igalia.com,
-	mathieu.poirier@linaro.org, catalin.marinas@arm.com,
-	linus.walleij@linaro.org, andy.shevchenko@gmail.com,
-	vigneshr@ti.com, nm@ti.com, matthias.bgg@gmail.com,
-	kgene@kernel.org, alim.akhtar@samsung.com, bmasney@redhat.com,
-	quic_tsoni@quicinc.com, linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-	linux-hardening@vger.kernel.org, linux-remoteproc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, kernel@quicinc.com
-Subject: Re: [REBASE PATCH v5 08/17] arm64: mm: Add dynamic ramoops region
- support through command line
-Message-ID: <20230913102545.GA12021@willie-the-truck>
-References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
- <1694429639-21484-9-git-send-email-quic_mojha@quicinc.com>
- <20230912101820.GA10884@willie-the-truck>
- <14bf3fca-f031-d000-6fd6-d82f4de9b255@quicinc.com>
+	id 1qgNUD-005fLD-1Y;
+	Wed, 13 Sep 2023 10:52:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
+ s=s31663417; t=1694602352; x=1695207152; i=frank-w@public-files.de;
+ bh=Ww1mJyzDjTYs1kiuvu9JwKCRtrZkVm5UBxhogIXBc+M=;
+ h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:References;
+ b=WzdF8yJrs/LmwLwvwWapUB5NaH2xWmUy1M52B/iNsaeD2q5zcV6zNOmfnWhsVA1ZA9RlAlZ3JYQ
+ z3F8QKOdLg7+i2Oo/Lk+sINpLPdCr4uCUGyyOR+n3cY18+of9adykfchPn5yfUSf+NJHvLZOmjIiU
+ Z0TACC3mfNYUleKdA6GKZYjG46WWGdRC8j1DZC82jiQZmB45PUvxwx8DgXFixqsGziK/te8UdiDqC
+ VMU+5dnr7TAX+/9mobCR5+c3b7idtGiLKkqQB17AySXSyIxayUfwaHAFjwQZA+qoeF9IJMzbdH9ID
+ M3I+7TKUWVfdBbiHkiEDyGBXfAyVW2aNe/MQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [IPv6:::1] ([80.187.70.211]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MTRMs-1rABOd48E8-00ThSc; Wed, 13
+ Sep 2023 12:52:32 +0200
+Date: Wed, 13 Sep 2023 12:52:29 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
+CC: "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria <amitk@kernel.org>,
+ Zhang Rui <rui.zhang@intel.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>
+Subject: =?US-ASCII?Q?Re=3A_=5BRFC_v1_3/3=5D_thermal/drivers/medi?= =?US-ASCII?Q?atek/lvts=5Fthermal=3A_add_mt7988_support?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <8949cbfa-acae-d6ac-e5fb-f238a29630bc@collabora.com>
+References: <20230911183354.11487-1-linux@fw-web.de> <20230911183354.11487-4-linux@fw-web.de> <8949cbfa-acae-d6ac-e5fb-f238a29630bc@collabora.com>
+Message-ID: <465DDC1C-D687-47A7-966C-73FB42CFC5DD@public-files.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <14bf3fca-f031-d000-6fd6-d82f4de9b255@quicinc.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:L7b7/3vlJqiK9clXTp9802DVzVqAZMwttJN+9iGUAhZZHaV6OSy
+ 7BUGp6yda4GZj2iMqEKvvkANIvXYPg/3GXzBV4HlsNsolYPL9Rt+Oj6QpV34eHcokVbGPVR
+ WkdkNpi4XJqLdEg1Ji4nt5Usejxyel6vID/utZYR07ZfN46yVCcudjvckPDbrHrclPP7OMh
+ 0q7BYXIqsNYn1T8+ATojg==
+UI-OutboundReport: notjunk:1;M01:P0:j6FRPAxwTHg=;WJHkeOXGVVFss1sYZOexXfgn3f5
+ bo9Opg/eegbc+RzJsn5Bx1hdWmURIo/tgZ2w6It2i9uY8xP3iBOdcAOMnb0nU02Jpa3z07FQ2
+ WeuZ1w7JTNLPOrT9CN0nwxB+EtwFPrOEUjp6/OQLpSzXKDf5E0bZOYTIKidz4/lSmrFXjfzrF
+ dqUTFnN/QeXAftgepoPE8fOZ1A3B8CsFeRcqkNSoJLR9mj7dmM78fWJJeuui2L1lZaCZn7Hb+
+ LMYg7kr9n0KI2vRAQarI55AoP3RK2ESXg63sJz5369S/H0wUfG64/MwK+XoYOMYH82k1IohtL
+ EPvVR/PdmWR5oHk5H2lvCTFaFRwHmHUse7CxvPPvrng3qTi+hkTiCa7HXibsJaffQ/SM61E0g
+ rkl6Bao9Rvc1V3EKX0fNRixJ3BdgIkQ5GyTDKDua+WC49Rd4HKf452DrEfnpVqQU/yGzHQGuX
+ qo2RiYyqj6F+2m/avrVmCBhJTPhFpz2ifFIIqH4sgkJdSzEAmG2RFzylDXM0D/u9eu7aOpB9d
+ 1RkNE2tkrQlLpmLOwSc48B++qgbsyK/otMXVFSS+GH9Ne2Cj8MIuV8l2ESCrt0o37AJagjemr
+ iVzfeEjoTu+ivR6fC6rC/S2AV6VU9gP5DP3zn/iIgPfwo7UjjOi2Y80fg2V/62dYkQCKDTArL
+ VQL2c59QDvJX3j+euvbk5cYzYs9TPMaWNI2wCkpWkjLQLTJPVsutO+GoslLf+EC1Zg6ed06vc
+ 0KJ5/91BKp2yfsFSDkFfxSS2fodeTuuvtJ9t0EY9+MzIqC++K2LtLFtgAb0xQfNum/Irf+qED
+ kWt0lMBnzGRWZR3MmPK5/jBFFWVXcNYNdUhL0dU+3EKJRh+NoyAFN31OTQnmZbEPow8m7sgVF
+ j+Vu+qMdSAapjxtMfdnoLevEfA51qh40yzN30iOKo0Oz918eRi1KlXdyrNeNHQM0/pu4wvb+m
+ K/TaaQ==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_032559_325811_3D18ECEE 
-X-CRM114-Status: GOOD (  23.56  )
+X-CRM114-CacheID: sfid-20230913_035245_828606_6F9BC60E 
+X-CRM114-Status: GOOD (  15.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,43 +93,110 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 13, 2023 at 12:32:54PM +0530, Mukesh Ojha wrote:
-> Thanks for the response.
-> 
-> On 9/12/2023 3:48 PM, Will Deacon wrote:
-> > On Mon, Sep 11, 2023 at 04:23:50PM +0530, Mukesh Ojha wrote:
-> > > The reserved memory region for ramoops is assumed to be at a fixed
-> > > and known location when read from the devicetree. This may not be
-> > > required for something like Qualcomm's minidump which is interested
-> > > in knowing addresses of ramoops region but it does not put hard
-> > > requirement of address being fixed as most of it's SoC does not
-> > > support warm reset and does not use pstorefs at all instead it has
-> > > firmware way of collecting ramoops region if it gets to know the
-> > > address and register it with apss minidump table which is sitting
-> > > in shared memory region in DDR and firmware will have access to
-> > > these table during reset and collects it on crash of SoC.
-> > > 
-> > > So, add the support of reserving ramoops region to be dynamically
-> > > allocated early during boot if it is request through command line
-> > > via 'dyn_ramoops_size=' and fill up reserved resource structure and
-> > > export the structure, so that it can be read by ramoops driver.
-> > > 
-> > > Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
-> > > ---
-> > >   arch/arm64/mm/init.c       | 94 ++++++++++++++++++++++++++++++++++++++++++++++
-> > 
-> > Why does this need to be in the arch code? There's absolutely nothing
-> > arm64-specific here.
-> 
-> Current clients of this cmdline would be only arm64, and that is the
-> reason of putting this here.
+Am 13=2E September 2023 10:16:51 MESZ schrieb AngeloGioacchino Del Regno <a=
+ngelogioacchino=2Edelregno@collabora=2Ecom>:
+Hi angelo,
 
-I don't think that's a strong enough justification, tbh. We should at
-least be able to compile this for other architectures using TEST_COMPILE
-and so somewhere under drivers/ makes more sense to me.
+thanks for first look
 
-Will
+>Il 11/09/23 20:33, Frank Wunderlich ha scritto:
+>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>=20
+>> Add Support for mediatek fologic 880/MT7988=2E
+>>=20
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
+>> ---
+>>   drivers/thermal/mediatek/lvts_thermal=2Ec | 73 ++++++++++++++++++++++=
++++
+>>   1 file changed, 73 insertions(+)
+>>=20
+>> diff --git a/drivers/thermal/mediatek/lvts_thermal=2Ec b/drivers/therma=
+l/mediatek/lvts_thermal=2Ec
+>> index c1004b4da3b6=2E=2E48b257a3c80e 100644
+>> --- a/drivers/thermal/mediatek/lvts_thermal=2Ec
+>> +++ b/drivers/thermal/mediatek/lvts_thermal=2Ec
+>> @@ -82,6 +82,8 @@
+>>   #define LVTS_GOLDEN_TEMP_DEFAULT	50
+>>   #define LVTS_COEFF_A_MT8195			-250460
+>>   #define LVTS_COEFF_B_MT8195			250460
+>> +#define LVTS_COEFF_A_MT7988			-204650
+>> +#define LVTS_COEFF_B_MT7988			204650
+>>     #define LVTS_MSR_IMMEDIATE_MODE		0
+>>   #define LVTS_MSR_FILTERED_MODE		1
+>> @@ -1272,6 +1274,67 @@ static int lvts_remove(struct platform_device *p=
+dev)
+>>   	return 0;
+>>   }
+>>   +/*
+>> + * LVTS MT7988
+>> + */
+>> +#define LVTS_HW_SHUTDOWN_MT7988	117000
+>
+>Are you sure that this chip's Tj is >117=C2=B0C ?!
+>
+>Looks a bit high=2E=2E=2E if it is exactly 117=C2=B0C, I would suggest cu=
+tting earlier,
+>either at 110 (safe side) or 115: after all, this is a life-saver feature=
+ and
+>the chip is actually never meant to *constantly* work at 110=C2=B0C (as i=
+t would
+>degrade fast and say goodbye earlier than "planned")=2E
+
+I took values from SDK
+
+https://git01=2Emediatek=2Ecom/plugins/gitiles/openwrt/feeds/mtk-openwrt-f=
+eeds/+/refs/heads/master/target/linux/mediatek/files-5=2E4/drivers/thermal/=
+mediatek/soc_temp_lvts=2Ec#1483
+
+>> +//enum mt7988_lvts_domain { MT7988_AP_DOMAIN, MT7988_NUM_DOMAIN };
+>> +
+>> +enum mt7988_lvts_sensor_enum {
+>> +	MT7988_TS3_0,
+>> +	MT7988_TS3_1,
+>> +	MT7988_TS3_2,
+>> +	MT7988_TS3_3,
+>> +	MT7988_TS4_0,
+>> +	MT7988_TS4_1,
+>> +	MT7988_TS4_2,
+>> +	MT7988_TS4_3,
+>> +	MT7988_NUM_TS
+>> +};
+
+>This enumeration should be definitions in bindings (mediatek,lvts-thermal=
+=2Eh)=2E
+>
+>Besides, the LVTS is about internal temperatures, so those TS3_x and 4_x =
+can
+>be renamed like what was done for MT8192 and MT8195: this is because you =
+will
+>never see TS3_2 being CPU2 on a board and CPU4 on another, being those - =
+again -
+>internal to the SoC, hence unchangeable=2E
+
+Right these sensors are internally only and i took naming from sdk to avoi=
+d confusion=2E And i have not more information about these internal sensors=
+ (special meaning),but their values are packed together to get the resultin=
+g (average) temperature=2E
+
+>Another reason is that you'll anyway have to refer to those sensors in th=
+e
+>devicetree to configure thermal trips and such, so=2E=2E=2E :-)
+
+In device tree it will look like this:
+
+https://github=2Ecom/frank-w/BPI-Router-Linux/blob/6=2E5-lvts/arch/arm64/b=
+oot/dts/mediatek/mt7988a=2Edtsi#L771
+
+Daniel has also defined thermal trips there,but these are untested atm=2E =
+I only verified temperature itself i get from sysfs as far as i can (start =
+at ~40=C2=B0C and reaching ~70 while running)=2E
+
+>Regards,
+>Angelo
+
+regards Frank
 
