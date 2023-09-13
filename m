@@ -4,75 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7426EEDEC47
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 11:44:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F840EDEC49
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 12:44:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ibyZ5LJzB/pb6BwD3l40RfUor4LBH1wlTEIRku+Sfuw=; b=c/PBYugj25fAr/LdsZjwpM3+Ni
-	2s9NngzyW4T891qhHQ868x8Lv3SNsKjc+YUnKFp2n14njNIpR+yP1S+ZxY69Bhe1Ni4PkxjDRtr4H
-	n3fvrVlHu/NpzxbmycQF4NVeiZytrE3/bVFXldf1+R0iD+T9F8+2H3s8GyRs69feaDB7wcXY5gCbF
-	jBPQ0ckLfaST2S+p5+KD+deZboKANB0yxaSxArG0kXOQmpiBcdjc4pmjcB8yYsYt4IWtMa0D/GqsP
-	WS43CwhWFMZA3+BL4q7aFFzC/xFEViq3yRTaiuMTQh72wPYEUqSc3sNJJFe+Mcqzv2TLJbUTkdOy/
-	uEByx7eg==;
+	bh=jOWHnup71AUlA2pdfGiWMAnf7L7N7R7hXAeXu+YYNpk=; b=k3pvfofmH9R02Mymw6KACmj6lx
+	JGFiRN3l0jjkvAzzcZoZGJQGGGyjKxinIPWWAymZIt99dwFMmb14oOUaF8cpEroNcR4W/iTo1IFuD
+	zNC5YU6+2AImnJ22kuWHJappOFRn4ABlDPEHPrVhY1IxmpETAaOjfbMrF9flWjVhTB7kJTTvEDJYg
+	3UjF3Db3oQ9pNugBzdmYHorIvPbRtDX1A83EqTDVL9kOqsiwIJ/zSliG6BaLso+BUmoE9gU9muTr4
+	/ATvnRtOVKBAKIKGbC2ZjnyXMncpgYNUQ1bqDKvRwdHcxq2cgIqyOG5Ku3b/yFoX4FDGNRwk+umDV
+	4QngwQKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgOHq-005lm9-1Q;
-	Wed, 13 Sep 2023 11:44:02 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qgPEI-005tNU-0d;
+	Wed, 13 Sep 2023 12:44:26 +0000
+Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgOHm-005ll2-0D;
-	Wed, 13 Sep 2023 11:44:00 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AE873660733E;
-	Wed, 13 Sep 2023 12:43:55 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694605436;
-	bh=rJbG4m613P7qZGZ7uqt8izGJD3tSdXSLnNutOtXNuWs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ORMUwgS2B3hoimYVbdUOKJqBVEH4GpvH6354MjoGlyb1nIxiwdh76Z1bHMBHCZHhE
-	 gJM0wLw4mvf80N0ATzZoRb063pKYtM5V+SisHSjZ6/lh8W/98BBT2QGinDJXG4iddQ
-	 +kP9Y5O9EFlBqKEaaw3kmPPzO8vcDqhu5vLjIx3Zc/YyApq8xIdiH1gAv59MW6DfQz
-	 7f37oC1Zo+nh4PH0WJ6OyJJ40ejgySOTwx75PCxf2AsF3O5xkoU0Xyvw+Fams+27Y+
-	 d49E3yiEG0ad1jlmikDFuPZhSYHfFcF6P7hhg8oW/eWeFjRr1PEOC6yyuT/q2furYO
-	 fZAQGZkalpOOg==
-Message-ID: <f13a6648-cd21-a166-6e56-431ac7ee5dec@collabora.com>
-Date: Wed, 13 Sep 2023 13:43:53 +0200
+	id 1qgPED-005tLo-2A;
+	Wed, 13 Sep 2023 12:44:24 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 7668420008;
+	Wed, 13 Sep 2023 12:44:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1694609055;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=jOWHnup71AUlA2pdfGiWMAnf7L7N7R7hXAeXu+YYNpk=;
+	b=LoVXclUT4ag/ho/8wurTwZ89GnA2gA+DpO1lpnb6s8GY4d5cD124trIxlVkUZ0egL/1LET
+	sXeP8RWQPMYk/chORC/sv4Wo/pTkSwLQUV7+yC2nVNfv07CDYikZ6HIYPVjf8s35jtl3zn
+	c4OeEWb0mOT9DVwFgbTo/TYSTiivS9zgKA0tinbGJ506oJ1h3h+HIpKN/VpWExKOv0t1De
+	tzcfmiKZmJ3+a8IxyEtWNStEeyu9mNjCqWhZNVCMnU3gv8MrjqqcWgcr1i0azI/R7ecWH6
+	lHOIK0FYfDcTMHMPamOLZRJmJ+lR7xLMRcOJcpw/QH/hAKpcxgy+nxSgiqc66g==
+Message-ID: <f891b3b6-0cab-4aa3-beee-b20f45a3ce57@arinc9.com>
+Date: Wed, 13 Sep 2023 15:44:03 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [RFC v1 3/3] thermal/drivers/mediatek/lvts_thermal: add mt7988
- support
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
 Content-Language: en-US
-To: frank-w@public-files.de, Frank Wunderlich <linux@fw-web.de>,
- linux-mediatek@lists.infradead.org
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria
- <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Vladimir Oltean <olteanv@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
+ Conor Dooley <conor+dt@kernel.org>, Woojung Huh <woojung.huh@microchip.com>,
+ UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+ Daniel Golle <daniel@makrotopia.org>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>
-References: <20230911183354.11487-1-linux@fw-web.de>
- <20230911183354.11487-4-linux@fw-web.de>
- <8949cbfa-acae-d6ac-e5fb-f238a29630bc@collabora.com>
- <465DDC1C-D687-47A7-966C-73FB42CFC5DD@public-files.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <465DDC1C-D687-47A7-966C-73FB42CFC5DD@public-files.de>
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230812091708.34665-3-arinc.unal@arinc9.com>
+ <abc44324-454c-4524-b05e-fe989755ea47@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <47b61929-5c2d-4906-b153-2046a94858c8@arinc9.com>
+ <20230813112026.ohsx6srbt2staxma@skbuf>
+ <8a8e14f1-0493-4298-a2cc-6e7ae7929334@arinc9.com>
+ <20230813190157.4y3zoro53qsz43pe@skbuf>
+ <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
+ <617c51cf-2c09-4865-ac60-96599db597e7@lunn.ch>
+ <563ac27a-22f2-463e-b5c1-9df721842976@arinc9.com>
+ <c7eddf45-c259-47de-ac59-2569c09ed5f7@lunn.ch>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <c7eddf45-c259-47de-ac59-2569c09ed5f7@lunn.ch>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_044358_374488_4905FFC3 
-X-CRM114-Status: GOOD (  32.19  )
+X-CRM114-CacheID: sfid-20230913_054422_022528_06CDFB18 
+X-CRM114-Status: GOOD (  16.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,136 +97,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/09/23 12:52, Frank Wunderlich ha scritto:
-> Am 13. September 2023 10:16:51 MESZ schrieb AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>:
-> Hi angelo,
-> 
-> thanks for first look
-> 
->> Il 11/09/23 20:33, Frank Wunderlich ha scritto:
->>> From: Frank Wunderlich <frank-w@public-files.de>
->>>
->>> Add Support for mediatek fologic 880/MT7988.
->>>
->>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->>> ---
->>>    drivers/thermal/mediatek/lvts_thermal.c | 73 +++++++++++++++++++++++++
->>>    1 file changed, 73 insertions(+)
->>>
->>> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
->>> index c1004b4da3b6..48b257a3c80e 100644
->>> --- a/drivers/thermal/mediatek/lvts_thermal.c
->>> +++ b/drivers/thermal/mediatek/lvts_thermal.c
->>> @@ -82,6 +82,8 @@
->>>    #define LVTS_GOLDEN_TEMP_DEFAULT	50
->>>    #define LVTS_COEFF_A_MT8195			-250460
->>>    #define LVTS_COEFF_B_MT8195			250460
->>> +#define LVTS_COEFF_A_MT7988			-204650
->>> +#define LVTS_COEFF_B_MT7988			204650
->>>      #define LVTS_MSR_IMMEDIATE_MODE		0
->>>    #define LVTS_MSR_FILTERED_MODE		1
->>> @@ -1272,6 +1274,67 @@ static int lvts_remove(struct platform_device *pdev)
->>>    	return 0;
->>>    }
->>>    +/*
->>> + * LVTS MT7988
->>> + */
->>> +#define LVTS_HW_SHUTDOWN_MT7988	117000
+On 13.09.2023 04:21, Andrew Lunn wrote:
+>>> The marvell switch can have up to 2 MDIO busses. If i remember
+>>> correctly, there is also one switch which has one MDIO bus per port.
 >>
->> Are you sure that this chip's Tj is >117°C ?!
->>
->> Looks a bit high... if it is exactly 117°C, I would suggest cutting earlier,
->> either at 110 (safe side) or 115: after all, this is a life-saver feature and
->> the chip is actually never meant to *constantly* work at 110°C (as it would
->> degrade fast and say goodbye earlier than "planned").
+>> I'm writing the json-schema for Marvell switches. I've checked a few
+>> devicetree source files on Linus's Linux tree, I only see two buses used at
+>> the most.
 > 
-> I took values from SDK
+> Sorry, i was ambiguous. Its not a Marvell switch which can have one
+> MDIO bus per port. I don't remember which switch it is, and it might
+> be a pure switchdev switch, not a DSA switch.
 > 
-> https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/target/linux/mediatek/files-5.4/drivers/thermal/mediatek/soc_temp_lvts.c#1483
+>> The internal bus and another bus with
+>> marvell,mv88e6xxx-mdio-external. I've never seen a devicetree with
+>> marvell,mv88e6250 though. Could the switch that has one MDIO bus per port
+>> be this one? Also, is every bus of this switch a
+>> marvell,mv88e6xxx-mdio-external bus or, one internal bus and the remaining
+>> are marvell mv88e6xxx-mdio-external buses?
 > 
+> Only the 6390 family has two busses. It has an internal MDIO bus with
+> the same register API as all the other switches. However, unlike the
+> other families, it is not exposed on pins. And the 6390 has a second
+> MDIO bus using a slight variant of the registers, which is connected
+> to the outside world via pins. This second bus then has a compatible
+> to separate it from the normal MDIO bus.
 
-That kernel also defines 117°C for MT8195, which leaves me a bit dubious.
+OK, I will disallow the external mdio bus for the compatible strings other
+than marvell,mv88e6190.
 
-For safety, I would recommend using the same 105°C hw shutdown temperature
-for 7988 as well: after all if you think about it, reaching that kind of
-temperature means that there's a real problem (fan stopped working and/or
-heatsink detached) that needs attention.
-
-This is because you'll have trip points in devicetree that should throttle
-the CPU in case it reaches at least a dangerously high temperature (read:
-a temperature outside the recommended continuous operation range), bringing
-the temperatures down because of the throttling action; I would imagine
-throttling the CPU a bit down at 80°C, then a bit more at 90°C - but then,
-if the temps won't drop like that, there's clearly a HW-related issue that
-must be addressed (like the fan/heatsink scenario that I just described).
-
-Though, take this as an advice; I'll respect whichever decision you'll take.
-
->>> +//enum mt7988_lvts_domain { MT7988_AP_DOMAIN, MT7988_NUM_DOMAIN };
->>> +
->>> +enum mt7988_lvts_sensor_enum {
->>> +	MT7988_TS3_0,
->>> +	MT7988_TS3_1,
->>> +	MT7988_TS3_2,
->>> +	MT7988_TS3_3,
->>> +	MT7988_TS4_0,
->>> +	MT7988_TS4_1,
->>> +	MT7988_TS4_2,
->>> +	MT7988_TS4_3,
->>> +	MT7988_NUM_TS
->>> +};
-> 
->> This enumeration should be definitions in bindings (mediatek,lvts-thermal.h).
->>
->> Besides, the LVTS is about internal temperatures, so those TS3_x and 4_x can
->> be renamed like what was done for MT8192 and MT8195: this is because you will
->> never see TS3_2 being CPU2 on a board and CPU4 on another, being those - again -
->> internal to the SoC, hence unchangeable.
-> 
-> Right these sensors are internally only and i took naming from sdk to avoid confusion. And i have not more information about these internal sensors (special meaning),but their values are packed together to get the resulting (average) temperature.
-> 
->> Another reason is that you'll anyway have to refer to those sensors in the
->> devicetree to configure thermal trips and such, so... :-)
-> 
-> In device tree it will look like this:
-> 
-> https://github.com/frank-w/BPI-Router-Linux/blob/6.5-lvts/arch/arm64/boot/dts/mediatek/mt7988a.dtsi#L771
-> 
-> Daniel has also defined thermal trips there,but these are untested atm. I only verified temperature itself i get from sysfs as far as i can (start at ~40°C and reaching ~70 while running).
-> 
-
-Check how it's done in mt8192.dtsi and mt8195.dtsi: we're using the definitions
-from the bindings for thermal zones.
-At least for consistency (apart from other even more valid considerations), that's
-how it should be done: please do it like that.
-
-Besides, I think that you can definitely guess what `TS` is CPU related: checking
-the driver and devicetree from the downstream kernel that you provided, what I
-understand is:
-
-1. Your naming TS3,4 corresponds to TS2,3 downstream (so it's wrong?)
-2. Downstream TS2 is related to the CPU cores, so it should be
-    - TS2_0 - CPU0
-    - TS2_1 - CPU1
-    - TS2_2 - CPU2
-    - TS2_3 - CPU3
-
-The other set of thermal sensors seem to be completely unused, so we cannot guess
-just by looking at the code. Since you have the hardware, you may be able to take
-a position about what they are by checking what sensor heats up for each "action"
-(could be ethernet controller or infra or whatever else); if in doubt, just leave
-them out, but add a comment saying that there are more sensors and say where, so
-that if anyone finds what they're for, it'll be easy to add them.
-
-In any case, adding thermal sensors that you don't know about is meaningless, as
-the sense of all this is:
-  - Monitoring temperatures of the hardware
-  - Taking action to prevent temperature overrun
-but if you don't know what you're reading, you can't interpret temperatures for
-something unknown, hence you can't as well take action to prevent overruns, as
-you won't know what's the maximum temperature for "unknown thing" :-)
-
-Regards,
-Angelo
-
+Arınç
 
