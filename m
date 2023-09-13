@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CD49CA5538
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 10:58:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9967CA5538
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 10:59:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QP7vtOC0vMZKgfNCyDIjqRQrFRGEZWWujRbWl7LO1Ak=; b=yCz0ss5QPNqhy8
-	59K+/L0tlyBvq86/w6cKyfFVFDg/JjNNRFN8gKpJ1AaF72gPOWMAL8ihBhxBycsx5FdsyHHoLVM0e
-	o/HfDzxwDZ8KpdsOSGCVv6vRYZxWJ2Yvs631UJGBhY3+JnFYUhyXjYGsoiUz/Z2isCltnZAmvZ75o
-	vwhHUMzrWy+etryZN5BTdI+McQOmaU7XWUP2RmrZgPx1QH6kFpZN4PcvbKVnKin5k5gZMDnynyVcH
-	qrFVE1CqqYRG82X1W8mq6IXunD+Kg5FzLFSqGD+vQpZVTmy8i3Vgf5sTa5gFnLQBh9JzodoUiRPBA
-	enfzrApvL8PrfdhSXByQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZHnJz9vPwCp13/wn71DlKTfF+k8HW1F+qyIl9mxelT0=; b=RtQoB9IIZFbxrhVQkpvWMxDGlE
+	6xFiPQBeAzW2jkre2ES5hC4oUP3PD+UJK0x8AgNYphza1z2fNj8t2ozF0FMf1AIlTzE9vglPMak4F
+	ncBDwIgHrUfQbz9nPJj5CpawujYqSC+fj6JYu3yUB2Kj8CNCmLNJjFH0I50o5BUM4MngFvI5W1/V9
+	NCTGvcfbQazWBQ6ieGle1K3ZdDiJXU9dKLwPYq8hxMu0VurG2Oqk4bYcjX+F4gL69I8T7h/uGn5Zf
+	ouynF6B+tnosink0/YX8fzqf7VD+BRTBDZh1+pmxKn8XfXzSMIeNs7DQtg7vnp085Aej+W2dziurw
+	mKFL02OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgNZb-005gFm-1R;
-	Wed, 13 Sep 2023 10:58:19 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1qgNb4-005gZK-2a;
+	Wed, 13 Sep 2023 10:59:50 +0000
+Received: from relay3-d.mail.gandi.net ([2001:4b98:dc4:8::223])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgNZY-005gEb-1E;
-	Wed, 13 Sep 2023 10:58:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=public-files.de;
- s=s31663417; t=1694602670; x=1695207470; i=frank-w@public-files.de;
- bh=bSRWYaYQ0khyb6xbfkDColhDf9wdyfkxTjFUBDhB3C4=;
- h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:References;
- b=kMj0WG93os91VqkJU2ZgN71rmrw+I+EN7OBB1AxApdXbwalZ3gj4GbrwkC5/hVKAQpBamSBPwud
- NqxPr5a/ChM0hruGyfPyGplRjzlOfj3Bn80fT78fA+TUR5k5sr9ket+416S2Qlr9bGStxRatk1fwO
- eGiRYwmGNtEJfSyRj3RrMz1twKPhIagzfddkFGLm8hF30vaF1zDvmbQS9DjwwOeeT9zqxfUhCvdmv
- 8TWqhGmuEIZ30Y4YLwoAol+4QAwuXxuUr/rRD04vUWo+i3lHSSjUEQinsWRKhoka/c3f5EeuxYPtM
- vcWnSK81qvaotXaxFyqVSYwus5KdIpoyr7aQ==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [IPv6:::1] ([80.187.70.211]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MeU4y-1rGXCE0hSG-00aYwA; Wed, 13
- Sep 2023 12:57:50 +0200
-Date: Wed, 13 Sep 2023 12:57:47 +0200
-From: Frank Wunderlich <frank-w@public-files.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-CC: "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria <amitk@kernel.org>,
- Zhang Rui <rui.zhang@intel.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>
-Subject: =?US-ASCII?Q?Re=3A_=5BRFC_v1_1/3=5D_dt-bindings=3A_therm?= =?US-ASCII?Q?al=3A_mediatek=3A_add_mt7988_compatible?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <e93aa8a6-e088-2864-6ffa-050b211be21f@collabora.com>
-References: <20230911183354.11487-1-linux@fw-web.de> <20230911183354.11487-2-linux@fw-web.de> <e93aa8a6-e088-2864-6ffa-050b211be21f@collabora.com>
-Message-ID: <DEAA91BC-C55C-4AAC-BA35-0060A01D289E@public-files.de>
+	id 1qgNb0-005gXp-10;
+	Wed, 13 Sep 2023 10:59:48 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id A857F60007;
+	Wed, 13 Sep 2023 10:59:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1694602782;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ZHnJz9vPwCp13/wn71DlKTfF+k8HW1F+qyIl9mxelT0=;
+	b=Pms5pXHS1wOzcaFjC50TNt2mweEv8a15tD8rol45QzcNoY1yhfrMHHh0DTtDSyvZO9xFHC
+	86E4NTgkKKt6UD+4Yy0MVNcgVfR8sPSUjz7iJ8xEhREfI6jaW8eiN2o8DqySlq7f//dIV3
+	hxZ4HjJO7v2D3TGhoViNFUCH16HGHZ4pBocm0rK/Tb51hpYmjQjkxT8Rtvz3E5Y/X52nSo
+	v40h9cDMhyhGvjwn8D8bILflPQcjiQaz8uJwDCZN+UF4QWOu3C9DrZ2sj6n9Zyv/PbF0x0
+	mHLutTjK9GvGr19DG5FDalQBnq/WhHGAtLwljmh/4rC2szWzPFGrr7Gbbyt17g==
+Message-ID: <89c9b84c-574c-4071-9524-9207597a3f0a@arinc9.com>
+Date: Wed, 13 Sep 2023 13:59:17 +0300
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:P3Bh59IR0CZ+4cakEyrw+P8/vHsqffl806aZ4VhOX0cOdTGRGJ8
- spofiiLodYt/JAblmpTgCBDGE+BwcmzqlODYe9Y2276ak1tbsORhJ7kfWrnMfb6lZRRDbJO
- 8dD/Vk37X354hAjlgKpa677prg7duYc5YHnbLKNVSn+NnjhW16qcwNdf7s6MDuFu+yZLM2I
- PHdFri8VrzomudolhiWMg==
-UI-OutboundReport: notjunk:1;M01:P0:aEbIlY82UE8=;NjT7OolnkBBpoK4W44sx0TBsn0U
- V6fZPe6XnhR4SxuCxft1CP1vLnyhcJ08n9zHnyVtaWhrUHWrguG2IRj1Y3GfEcbtx88lFvMAO
- Jmgz19HYbXY6xTSvnjlodxoTD4aDjr1moe0jj6x2pBfpzgKkn7tt59icsdivwx7QivGSC/94J
- cG6dS8py6W9E4tNWcs+ZHsZnB6N3b6wwdI6LEscRGmGqweiDdVNZx/KiL8jC3N6EFxNCYz25h
- gFl89/Hn7v/Yd/c2lWyI/z0k6DuQ2GUwPD3LiFMSbSLou6hi9bFp3iw8L9qBz3xIM/o+qL52S
- ciF8XkenfUK86MeMKyNomVIdd86twS0tg4xZAXvzLyJ2rB2jZI62pRej8galWPSWVDvNvtEsK
- e5jByNS9KTsss1FYUy+q7/vUPfne8qcYwtRhCqJQj1eMxG/t5dSNfIw2CSBpi1YgPfeUq9eD9
- YwSZY2rX4GF2+X0WNh5NrwfA1MtE1nLBBv+myUf6ywqZgcji8LEALioureEEwwgjPZ6J11SEA
- iN736wEBhJy7ikN8+iyEDswW5zUAAacwA6vGaXW74lCYQEdu+XQD5pj4/dKy8gDqDQiIxoGDy
- meNgg1ZIGzxwSroSDhpqS1AW6NCXdgB6u0AtSGeGrk0aT5dMFn2cmjx2jQq94cPlnH/fbhTuH
- y1eNztntFcEO0FE+VG3tVtb+QssuMR8LLy3SLv4BgrcnzWqSiflxuIutrkND0TdqhHuZPh8gM
- XslhVpOsjdXUw937zuQcxQf3jXBSRK1XWA33cgtGMHvdCIoSK7NS6G0mVCoiPyG+l2HE11thr
- WPwT6qvGyIid2cjdYFdxff5bCRr1D8D5JKcD7v3/T9MnnDOC2XCB+UGg4yMJvsgxQx1id3UHO
- m6heoQzrAINKGtA4WbekOqTctmCDLijoLRDmj1X3NqAFVMaYsLVL8kN2veEOvTFMl4K0mcX+k
- kv7dbnS+AiFLvgv8xyWrvgVxcAM=
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
+Content-Language: en-US
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Woojung Huh <woojung.huh@microchip.com>,
+ UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+ Daniel Golle <daniel@makrotopia.org>, Landen Chao
+ <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mithat.guner@xeront.com, erkin.bozoglu@xeront.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <f5f468c1-b5a2-4336-b1d9-fd82da95b21d@arinc9.com>
+ <20230814143601.mnpxtcm2zybnbvoh@skbuf>
+ <0cee0928-74c9-4048-8cd8-70bfbfafd9b2@arinc9.com>
+ <20230827121235.zog4c3ehu2cyd3jy@skbuf>
+ <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
+ <87325ce9-595a-4dda-a6a1-b5927d25719b@arinc9.com>
+ <20230911225126.rk23g3u3bzo3agby@skbuf>
+ <036c0763-f1b2-49ff-bc82-1ff16eec27ab@arinc9.com>
+ <20230912193450.h5s6miubag46z623@skbuf>
+ <6cec079e-991e-4222-a76d-d6156de0daca@arinc9.com>
+ <20230913074231.5azwxqjuv2wp5nik@skbuf>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20230913074231.5azwxqjuv2wp5nik@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_035816_705078_8F05F349 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20230913_035946_753005_1417D127 
+X-CRM114-Status: GOOD (  28.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,48 +93,150 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 13=2E September 2023 09:49:08 MESZ schrieb AngeloGioacchino Del Regno <a=
-ngelogioacchino=2Edelregno@collabora=2Ecom>:
->Il 11/09/23 20:33, Frank Wunderlich ha scritto:
->> From: Frank Wunderlich <frank-w@public-files=2Ede>
->>=20
->> Add compatible string for mt7988=2E
->>=20
->> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
->> ---
->>   =2E=2E=2E/devicetree/bindings/thermal/mediatek,lvts-thermal=2Eyaml   =
-    | 1 +
->>   1 file changed, 1 insertion(+)
->>=20
->> diff --git a/Documentation/devicetree/bindings/thermal/mediatek,lvts-th=
-ermal=2Eyaml b/Documentation/devicetree/bindings/thermal/mediatek,lvts-ther=
-mal=2Eyaml
->> index fe9ae4c425c0=2E=2E49effe561963 100644
->> --- a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal=
-=2Eyaml
->> +++ b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal=
-=2Eyaml
->> @@ -18,6 +18,7 @@ description: |
->>   properties:
->>     compatible:
->>       enum:
->> +      - mediatek,mt7988-lvts
->
->Are you sure that MT7988 has only one LVTS controller, and that it is glo=
-bal?
+On 13.09.2023 10:42, Vladimir Oltean wrote:
+> On Wed, Sep 13, 2023 at 08:52:37AM +0300, Arınç ÜNAL wrote:
+>> On 12.09.2023 22:34, Vladimir Oltean wrote:
+>>> Right, it should have been anyOf and not oneOf.. my mistake. It is a bug
+>>> which should be fixed. It's the same phylink that gets used in both cases,
+>>> user ports and shared ports :)
+>>
+>> One more thing, I don't recall phy-mode being required to be defined for
+>> user ports as it will default to GMII. I don't believe this is the same
+>> case for shared ports so phy-mode is required only for them?
+> 
+> phy-mode is not strictly required, but I think there is a strong
+> preference to set it. IIRC, when looking at the DSA device trees, there
+> was no case where phy-mode would be absent on CPU/DSA ports if the other
+> link properties were also present, so we required it too. There were no
+> complaints in 1 year since dsa_shared_port_validate_of() is there. The
+> requirement can be relaxed to just a warning and no error in the kernel,
+> and the removal of "required" in the schema, if it helps making it
+> common with user ports.
 
-Based on the information i have it is only 1 lvts device (dts node) with 2=
- internal controllers=2E Do i need to define it in different way?
+I'd say no need as it doesn't make it complicated that much. See below.
 
->>         - mediatek,mt8192-lvts-ap
->>         - mediatek,mt8192-lvts-mcu
->>         - mediatek,mt8195-lvts-ap
->
+> 
+> I think that the fallback to PHY_INTERFACE_MODE_GMII applies only if
+> there is a phy_device (phy-handle). But otherwise, I don't remember if
+> the PHY_INTERFACE_MODE_NA passed to phylink_create() will persist at
+> runtime, or cause an error somewhere.
+> 
+>>>> The phylink bindings for shared ports enforced on all switches on
+>>>> dsa-port.yaml:
+>>>>
+>>>>     allOf:
+>>>>       - required:
+>>>>           - phy-mode
+>>>>       - oneOf:
+>>>>           - required:
+>>>>               - fixed-link
+>>>>           - required:
+>>>>               - phy-handle
+>>>>           - required:
+>>>>               - managed
+>>>>
+>>>> Here's what I understand:
+>>>>
+>>>> - For switches in dsa_switches_apply_workarounds[]
+>>>>     - Enforce the latter for shared ports.
+>>>>     - Enforce the former for user ports.
+>>>>
+>>>> - For switches not in dsa_switches_apply_workarounds[]
+>>>>     - Enforce the former for all ports.
+>>>
+>>> No, no. We enforce the dt-schema regardless of switch presence in
+>>> dsa_switches_apply_workarounds[], to encourage users to fix device trees
+>>> (those who run schema validation). The kernel workaround consists in
+>>> doing something (skipping phylink) for the device trees where the schema
+>>> warns on shared ports. But there should be a single sub-schema for
+>>> validating phylink bindings, whatever port kind it is.
+>>
+>> Hmm, like writing phylink.yaml and then referring to it under the port
+>> pattern node? This could prevent a lot of repetition.
+>>
+>> Arınç
+> 
+> Yes, that would sound good.
 
+If I understand correctly, these phylink rules are for switch ports. The
+fixed-link, phy-handle, and managed properties are described on
+ethernet-controller.yaml so I thought it would make sense to define the
+rules there and refer to them where they're needed.
 
-regards Frank
+Example:
+
+diff --git a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
+index 480120469953..7279ab31aea7 100644
+--- a/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/dsa-port.yaml
+@@ -65,16 +65,8 @@ if:
+      - required: [ ethernet ]
+      - required: [ link ]
+  then:
+-  allOf:
+-    - required:
+-        - phy-mode
+-    - oneOf:
+-        - required:
+-            - fixed-link
+-        - required:
+-            - phy-handle
+-        - required:
+-            - managed
++  $ref: /schemas/net/ethernet-controller.yaml#/$defs/phylink-switch
++  required: [ phy-mode ]
+  
+  additionalProperties: true
+  
+diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+index e532c6b795f4..742aaf1a5ef2 100644
+--- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+@@ -179,6 +179,15 @@ required:
+    - compatible
+    - reg
+  
++if:
++  required: [ mdio ]
++then:
++  patternProperties:
++    "^(ethernet-)?ports$":
++      patternProperties:
++        "^(ethernet-)?port@[0-9]+$":
++          $ref: /schemas/net/ethernet-controller.yaml#/$defs/phylink-switch
++
+  $defs:
+    mt7530-dsa-port:
+      patternProperties:
+diff --git a/Documentation/devicetree/bindings/net/ethernet-controller.yaml b/Documentation/devicetree/bindings/net/ethernet-controller.yaml
+index 9f6a5ccbcefe..d7256f33d946 100644
+--- a/Documentation/devicetree/bindings/net/ethernet-controller.yaml
++++ b/Documentation/devicetree/bindings/net/ethernet-controller.yaml
+@@ -284,6 +284,21 @@ allOf:
+              controllers that have configurable TX internal delays. If this
+              property is present then the MAC applies the TX delay.
+  
++$defs:
++  phylink-switch:
++    description: phylink bindings for switch ports
++    allOf:
++      - anyOf:
++          - required: [ fixed-link ]
++          - required: [ phy-handle ]
++          - required: [ managed ]
++
++      - if:
++          required: [ fixed-link ]
++        then:
++          not:
++            required: [ managed ]
++
+  additionalProperties: true
+  
+  ...
+
+Arınç
 
