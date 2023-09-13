@@ -4,63 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA967CA550A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 08:35:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73017CA5508
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 08:35:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hqU1RJ1WXE7C4umw9vF83cEtO7a8YH9G1bytA7ixHHU=; b=DMN7tEy9sWkXB2
-	Sc4kTsEnytduJG/XGqSVaxKmvdT9GrQ+EF7omEvPaCkYckpotsPnCyo6O+reuQhMgGE4GTZNa0KNN
-	b3mZiOgTb8C6Rtqtm2VoZ7OZANecVTjgt5T9v5zseZmCc5kTzSWrOyo6Fj2XLc/MeE/eoqBkqMkqz
-	P/wvbBzo/seCa1tHTbJGjPEBMAa+4JbsHebxAJkudnMRYLnjeF4bifrVLkMWeMU7hPReToMN05ixg
-	R40IPY4wkSx9vetlIClfvRg5xyhqed6KHKK8LO1w6zoWNQhaHGP/qoPPqb9lCMSRUyYHF5S3ny7QV
-	HbXkh63EBKvKWHai000g==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vzZ6MgD3pf8m+rx1Xv6RC5XGWASwhi1UIBmWgNbxJHM=; b=bzc9wfX6NdCDr8qJwIYxPsY4kq
+	zC/s0ZMxUApZ4CM2px6woQQGsE2vGoIx2ljGHfVD0aZ5T/R8tbGcbCc4di26mC+QACRcJqISif/7X
+	ilu+1QIZzIughw6jWZ5TDun6kgY0nK9AilHk/h2fQfvyc/alH5TR6TMg/YVVi4I4g8tvVjvqmnNK5
+	ZjQxGIFXXm8ERF66scF5BcOHLmJVfqXYzk/1d22NjH+TivN9Z/JE8B1rBzC0d4MF8WjZW6tiIqwru
+	RioH0UkNo6WcpL6WtrByA4Mj+Hnbz4v62z48Rpq4S66NeTHI3+Av5IW1023vitc/AJ3maca9CU5hW
+	6WZGRnkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgLL4-0057EI-1d;
-	Wed, 13 Sep 2023 08:35:10 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qgLLV-0057MV-1q;
+	Wed, 13 Sep 2023 08:35:37 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgLL0-0057DD-1Z;
-	Wed, 13 Sep 2023 08:35:07 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5251D660732B;
-	Wed, 13 Sep 2023 09:35:04 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694594105;
-	bh=b1+U2pGflwc/V1Z4xgUhLMPjPG7gNXIcxF/u4aJVNLw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HIt2c3/+tufCzvGPr6PR1hR57aag53jqn1I5ql+1dQscZQAyXpGYCsLgTUuEJ9nDM
-	 yVYqUD7YtKlFfXn4vrkeKKBSVsgPsGsX2jxEIU+NoxwY38Q5I98qWrbYqxROUcm4MM
-	 pCp0Q1vqc8ICoTFYzmUCNJu9IsglY8B9QQv6zSJGZyHqL+tmhHqZiUovsu+hIyd5kJ
-	 cJEPdxyhYZyIgZIBg2qU5Qn/Htrv9I8OKECZr+psUWMXjqjoCY/6dCG4KJyjKGgmqg
-	 Jbtq0fjIVYDIa5SKatpvytljZluz9rXCE9vswZWrb5018EtXV/vCsQ5dFoUiPaaEjS
-	 SNPvtrFk6Hykg==
-Message-ID: <5a4a0d12-d16a-0836-f6c5-6e6c2f3a9097@collabora.com>
-Date: Wed, 13 Sep 2023 10:35:01 +0200
+	id 1qgLLR-0057KL-2F
+	for linux-mediatek@lists.infradead.org;
+	Wed, 13 Sep 2023 08:35:36 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-9aa0495f9cfso148127166b.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 13 Sep 2023 01:35:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1694594132; x=1695198932; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=vzZ6MgD3pf8m+rx1Xv6RC5XGWASwhi1UIBmWgNbxJHM=;
+        b=tBDA8IS7xSehHID2i62GvbpQ6Q0pwj5Vase24FObQE568j3Y28yHnvowsOTJkUNUb0
+         3ZVsCLTI7w93bTooW+ONRZhzOMf5UfakOJA48QVm3rBj/c1ifB3qm9BHskRTaX9tH3sI
+         cY6VsesOyRcMOp1/Zd6mj+whI9/2uzZBtP75TbWSLCme6dcyV6rt4rDOI9tdxdaY6yd5
+         NxvVO90rAH7eUSnaqUrc+QHtV2+mhljrMWgPo7j5ykCrunMnfOi+atAAJso8SVedbY/Z
+         whMVbRo2WQQwRKK0iJIiUDkLsMeIHzbk6SOZrqFpshtB5DJO4T4GzFyfKRAYTUkyCIM7
+         NvVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694594132; x=1695198932;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=vzZ6MgD3pf8m+rx1Xv6RC5XGWASwhi1UIBmWgNbxJHM=;
+        b=L6DodnHaXGmswXFZlwEN56ybzbLLj4D7d/8aItonx+Ypo8OmCrZs++cSxI2X2cBNnM
+         xPuG+84RRln0vwzAim6FWQ/dYCY47nh+cf6PGgveX09mpDPqtbHdqhAjRui/KdDx4Vu+
+         vWisc2nUHyJQafti6VHZnGYKrbkE/RqwreuSFRXMfUt3L4X6ablXwf3Ps2reyJrSJa8i
+         x4dfayAo9MMvPogE169IUssdyV3JsH1POh5bZbsjXaVjE+7S4IlwB3NEV3vZns8uB80A
+         9vVi7B9y7/oaWpxKP52TprDF4xWdA6XJFhR3rK7H38eaFhrbT/Mw4bR3k33u203tQEPd
+         Y1ow==
+X-Gm-Message-State: AOJu0YyaFyrXcXzFY2e9u3rGzFvSgJhKHD3HdfJzTHNqCh+5XQaozeDk
+	8Nx4ct3VCqftasKa9A5e2U25qg==
+X-Google-Smtp-Source: AGHT+IGZ4W6oHcVWa6n5e3HT26skU4k3V7FAnm2BWzLS+1RwRT1pMvQIlK0HWxcVOFIXwB+8acOF1Q==
+X-Received: by 2002:a17:906:c112:b0:9a4:11a3:c32b with SMTP id do18-20020a170906c11200b009a411a3c32bmr7346391ejc.29.1694594132177;
+        Wed, 13 Sep 2023 01:35:32 -0700 (PDT)
+Received: from blmsp ([2001:4091:a246:82a0:6611:d59a:8ba3:9a66])
+        by smtp.gmail.com with ESMTPSA id lz5-20020a170906fb0500b0098e78ff1a87sm7990464ejb.120.2023.09.13.01.35.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 13 Sep 2023 01:35:30 -0700 (PDT)
+Date: Wed, 13 Sep 2023 10:35:29 +0200
+From: Markus Schneider-Pargmann <msp@baylibre.com>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [PATCH] thermal/drivers/mediatek: Fix control buffer enablement
+ on MT7896
+Message-ID: <20230913083529.3bgjl6rvfmixgjnd@blmsp>
+References: <20230907112018.52811-1-linux@fw-web.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH] drm/mediatek: Add spinlock for setting vblank event in
- atomic_begin
-Content-Language: en-US
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-References: <20230822132646.9811-1-jason-jh.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230822132646.9811-1-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20230907112018.52811-1-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_013506_675511_C27CB3F0 
-X-CRM114-Status: GOOD (  17.47  )
+X-CRM114-CacheID: sfid-20230913_013533_955804_6D838868 
+X-CRM114-Status: GOOD (  17.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,64 +86,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Mergnat <amergnat@baylibre.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, Eugen Hristev <eugen.hristev@collabora.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, Jason-ch Chen <jason-ch.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Johnson Wang <johnson.wang@mediatek.com>, dri-devel@lists.freedesktop.org, Shawn Sung <shawn.sung@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, "Rafael J. Wysocki" <rafael@kernel.org>, linux-pm@vger.kernel.org, Amit Kucheria <amitk@kernel.org>, Daniel Golle <daniel@makrotopia.org>, stable@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/08/23 15:26, Jason-JH.Lin ha scritto:
-> Add spinlock protection to avoid race condition on vblank event
-> between mtk_drm_crtc_atomic_begin() and mtk_drm_finish_page_flip().
+On Thu, Sep 07, 2023 at 01:20:18PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
+> Reading thermal sensor on mt7986 devices returns invalid temperature:
+> 
+> bpi-r3 ~ # cat /sys/class/thermal/thermal_zone0/temp
+>  -274000
+> 
+> Fix this by adding missing members in mtk_thermal_data struct which were
+> used in mtk_thermal_turn_on_buffer after commit 33140e668b10.
+> 
+> Cc: stable@vger.kernel.org
+> Fixes: 33140e668b10 ("thermal/drivers/mediatek: Control buffer enablement tweaks")
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
-Hello Jason,
+Reviewed-by: Markus Schneider-Pargmann <msp@baylibre.com>
 
-Can you please provide more information about this race condition?
-(check below)
+Thanks for fixing!
 
-> Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Best,
+Markus
+
 > ---
->   drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 5 +++++
->   1 file changed, 5 insertions(+)
+>  drivers/thermal/mediatek/auxadc_thermal.c | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index d40142842f85..128a672fe3c9 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -746,6 +746,9 @@ static void mtk_drm_crtc_atomic_begin(struct drm_crtc *crtc,
->   									  crtc);
->   	struct mtk_crtc_state *mtk_crtc_state = to_mtk_crtc_state(crtc_state);
->   	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-> +	unsigned long flags;
-> +
-> +	spin_lock_irqsave(&crtc->dev->event_lock, flags);
->   
->   	if (mtk_crtc->event && mtk_crtc_state->base.event)
->   		DRM_ERROR("new event while there is still a pending event\n");
-> @@ -756,6 +759,8 @@ static void mtk_drm_crtc_atomic_begin(struct drm_crtc *crtc,
-
-...because my suspect is that what creates the race condition in this function is
-the unlocked *assignment* to mtk_crtc->event, not the rest.
-
-If I'm right, you don't need to unconditionally spinlock at the beginning of this
-function hence ever-so-slightly improving performance compared to this version.
-
-Can you please try this one and check if this *also* solves the issue?
-
-	if (mtk_crtc_state->base.event) {
-		mtk_crtc_state->base.event->pipe = drm_crtc_index(crtc);
-		WARN_ON(drm_crtc_vblank_get(crtc) != 0);
-
-		spin_lock_irqsave(&crtc->dev->event_lock, flags);
-		mtk_crtc->event = mtk_crtc_state->base.event;
-		spin_lock_irqrestore(&crtc->dev->event_lock, flags);
-
-		mtk_crtc_state->base.event = NULL;
-	}
-
-P.S.: I'd try that myself, but I can't seem to reproduce the issue.
-
-Regards,
-Angelo
-
+> diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
+> index 843214d30bd8..967b9a1aead4 100644
+> --- a/drivers/thermal/mediatek/auxadc_thermal.c
+> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
+> @@ -690,6 +690,9 @@ static const struct mtk_thermal_data mt7986_thermal_data = {
+>  	.adcpnp = mt7986_adcpnp,
+>  	.sensor_mux_values = mt7986_mux_values,
+>  	.version = MTK_THERMAL_V3,
+> +	.apmixed_buffer_ctl_reg = APMIXED_SYS_TS_CON1,
+> +	.apmixed_buffer_ctl_mask = GENMASK(31, 6) | BIT(3),
+> +	.apmixed_buffer_ctl_set = BIT(0),
+>  };
+>  
+>  static bool mtk_thermal_temp_is_valid(int temp)
+> -- 
+> 2.34.1
+> 
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
