@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA955EEAA42
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:36:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 608F9EEAA44
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:36:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iF40VzfJHaLHw/QV9mjH0hddCA238p/DMOjmbmNhpV4=; b=o1szvXBCIIxQFKYM9LhmqqkWZf
-	c9332s/czSrqL43ADVC4sUnPK+mZbtsjsXyyYppL3Nnm+YefUY2/mbICPWLV3bVhijWOWKzJYVWSM
-	SxUOnXydU7/BISa/5R5PHSxPoMmgUpQpU+C6JyhyRinMVYLSlZEyNMH4TQLv8KzanuEHPFnI+hhGt
-	TzjLkXCwR4uT84oYntS+19K12e6Ov1vcYLM0HPTxgjE9J9MaX3OaU6PVjY/L9nfmBc/uT7Y64nvvc
-	ypVZ6Z4tdO1jbc7ZOoI2JY5TWtMNFmO1x1aV3AgYcNxawciODyXRmL/A5nPx8qI7pwx1GiJr53O+K
-	pwBEBCWw==;
+	bh=qzNrOqHsDWVtu/+m5mo+jpifKlOXBV0CR6JVjceXOZQ=; b=3CEN7I5EZhpw1Bzm+MFYNqninV
+	oS+to2+BYixyoBMTVZGtTY0GbgiZKHaSvc69K8OxGlbWyY63r9inlHYmalXr8Aet7WfBa9ZE8U17w
+	wHrJjIWi7uyToSyAFV43VpOpm77uzU3juQLhv/JYqZ8bp3jb40ecabn9duLhqvXM/v+qw/mtmo++W
+	aHaEveSa/MA1CA1UzYMMhyLs1IIZPX3Fqli3kJmfIzWTjCsvAooF0m7rAIqI62zve/SfI3ytECDHo
+	+r5LVx08gS5U4a7NOjqwHRgsRD0UUYkY0Jyrp8Jc78XiI0PqVAi5P6jHSUjVPPz90Voy3vhPghJP0
+	8fdwF8Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmWR-008VKY-1F;
-	Thu, 14 Sep 2023 13:36:43 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qgmWZ-008VV9-2Y;
+	Thu, 14 Sep 2023 13:36:51 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmTg-008SQg-0P;
-	Thu, 14 Sep 2023 13:33:55 +0000
+	id 1qgmTk-008SWn-0H;
+	Thu, 14 Sep 2023 13:33:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=qzNrOqHsDWVtu/+m5mo+jpifKlOXBV0CR6JVjceXOZQ=; b=F7o32BK5krxiZ8tGrnzSXFmdi+
+	jal01GbN0O0ctQjb2gj1qaLaQTWtACrkAITc8WN27B1Isf1IylSmzux6uxaipSsN+zgP4pxGbdJdb
+	ZKmgpxyU1iHhpeH2Sp03A/Ezl+NNXDCK1gz42zff2Gi154g3b6Ufih7Z6m4Ru56kl7WR2Zbr6DxU3
+	vOPEIE05i1oT2r/7EHVsBRl4Vg4CX0MBT2kh0aJ4vLq62el+AiCB7e9v0/aDwcQDD8xgPqfkCbZWB
+	w5lCFNBI88/IGjwApMJA5URIQRLWO2uN/0kvwQChNrprSIcUKtdPqCeE8SojuSk6xdCn/VLZcOJCE
+	/OB3N1Hw==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qgmTd-007uhz-17;
+	Thu, 14 Sep 2023 13:33:54 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:36f2:37bd:ccbb:373f])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EE0286607386;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 672906607358;
 	Thu, 14 Sep 2023 14:33:49 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694698430;
-	bh=nAdhAei2sfdOufKeuwN9pMJSVWrRttlIbrMwNBf4Ulw=;
+	s=mail; t=1694698429;
+	bh=JMZx2uxA26BNI9i9E6OsCtWtCLTgVI42g2rsSFOFa8g=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BKySdgRiV7Rtv6yJBJSbPB3yWzTqU/dLrmop5DiHyTqbnHXKZ3Tg+pWc/oZH5NB03
-	 4cq3NUgpucVFv92GlIAYxlt0CsP3l67r560U7Ws3ABm/5CV5ki23B+yNIf0k7HTCcJ
-	 lfzapOsPKTpHyARGYeWjiJ+EHPgyVI5JZjBOWuoqYGvQG+RyPRCVd4DEK/I3hmPmSM
-	 SCOEOf3SF/77PLkooMe/nAQpF5MLr8Rl1sB1cuFsy7A0/X85XFqXQxaQvq87mjNMkD
-	 NmgouqIMcypWfglS42aF5dizH3pIOOCi8Otbr1Y4Lu9dcg+jn/WVlo8wk1WoEPn0MK
-	 CXLySE6DAVLUg==
+	b=KMc3c3PZVLGDx78559nwmGzDHbm4s0tkKoSi47P9LzcBhzTYs2YRA165nqs1fGqzq
+	 dfHzyavdk5PrKZDz/P2YvJW2CbDp5+8+mH7Pe4hZIjuWkqhOQJc/iQ/zRjJSzDReHv
+	 IfIxknHFPLUfmDJtf85EWqFbXHsRdsIJgBwwkYEfwSNRxXdjgMgq3PjyXLqPzqAXKE
+	 d7qmMSO4fTKRZaKIDf7HX2MOVR/SongSzbQfe2J+lblpTnefsrmk0RdeTMzIkw/MTf
+	 op1DvFfCc246LfgbpGRiMzRHGUSDnbmbS5pR8WLXWHpLb8n91Q0P/jBheuzQVjjEXl
+	 zEc5T1pYE8gVA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +76,18 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 36/49] media: test-drivers: Stop direct calls to queue num_buffers field
-Date: Thu, 14 Sep 2023 15:33:10 +0200
-Message-Id: <20230914133323.198857-37-benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 35/49] media: verisilicon: Stop direct calls to queue num_buffers field
+Date: Thu, 14 Sep 2023 15:33:09 +0200
+Message-Id: <20230914133323.198857-36-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_063352_453670_A0D812D3 
-X-CRM114-Status: GOOD (  13.22  )
+X-CRM114-CacheID: sfid-20230914_143351_225358_109DEFF5 
+X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,198 +106,21 @@ Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/test-drivers/visl/visl-dec.c         | 4 ++--
- drivers/media/test-drivers/vivid/vivid-meta-cap.c  | 5 +++--
- drivers/media/test-drivers/vivid/vivid-meta-out.c  | 5 +++--
- drivers/media/test-drivers/vivid/vivid-touch-cap.c | 5 +++--
- drivers/media/test-drivers/vivid/vivid-vbi-cap.c   | 5 +++--
- drivers/media/test-drivers/vivid/vivid-vbi-out.c   | 5 +++--
- drivers/media/test-drivers/vivid/vivid-vid-cap.c   | 5 +++--
- drivers/media/test-drivers/vivid/vivid-vid-out.c   | 5 +++--
- 8 files changed, 23 insertions(+), 16 deletions(-)
+ drivers/media/platform/verisilicon/hantro_postproc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/test-drivers/visl/visl-dec.c b/drivers/media/test-drivers/visl/visl-dec.c
-index ba20ea998d19..81da5dcf890a 100644
---- a/drivers/media/test-drivers/visl/visl-dec.c
-+++ b/drivers/media/test-drivers/visl/visl-dec.c
-@@ -287,7 +287,7 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
- 	frame_dprintk(ctx->dev, run->dst->sequence, "%s\n", buf);
- 
- 	len = 0;
--	for (i = 0; i < out_q->num_buffers; i++) {
-+	for (i = 0; i < out_q->max_allowed_buffers; i++) {
- 		char entry[] = "index: %u, state: %s, request_fd: %d, ";
- 		u32 old_len = len;
- 		struct vb2_buffer *vb2;
-@@ -347,7 +347,7 @@ static void visl_tpg_fill(struct visl_ctx *ctx, struct visl_run *run)
- 	frame_dprintk(ctx->dev, run->dst->sequence, "%s\n", buf);
- 
- 	len = 0;
--	for (i = 0; i < cap_q->num_buffers; i++) {
-+	for (i = 0; i < cap_q->max_allowed_buffers; i++) {
- 		u32 old_len = len;
- 		struct vb2_buffer *vb2;
- 		char *q_status;
-diff --git a/drivers/media/test-drivers/vivid/vivid-meta-cap.c b/drivers/media/test-drivers/vivid/vivid-meta-cap.c
-index 780f96860a6d..646b1c6a936f 100644
---- a/drivers/media/test-drivers/vivid/vivid-meta-cap.c
-+++ b/drivers/media/test-drivers/vivid/vivid-meta-cap.c
-@@ -18,6 +18,7 @@ static int meta_cap_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
- 				struct device *alloc_devs[])
+diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
+index 77d8ecfbe12f..a242eedf9cf5 100644
+--- a/drivers/media/platform/verisilicon/hantro_postproc.c
++++ b/drivers/media/platform/verisilicon/hantro_postproc.c
+@@ -250,7 +250,7 @@ int hantro_postproc_init(struct hantro_ctx *ctx)
  {
- 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	unsigned int size =  sizeof(struct vivid_uvc_meta_buf);
- 
- 	if (!vivid_is_webcam(dev))
-@@ -30,8 +31,8 @@ static int meta_cap_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
- 		sizes[0] = size;
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 
- 	*nplanes = 1;
- 	return 0;
-diff --git a/drivers/media/test-drivers/vivid/vivid-meta-out.c b/drivers/media/test-drivers/vivid/vivid-meta-out.c
-index 95835b52b58f..4a569a6e58be 100644
---- a/drivers/media/test-drivers/vivid/vivid-meta-out.c
-+++ b/drivers/media/test-drivers/vivid/vivid-meta-out.c
-@@ -18,6 +18,7 @@ static int meta_out_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
- 				struct device *alloc_devs[])
- {
- 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	unsigned int size =  sizeof(struct vivid_meta_out_buf);
- 
- 	if (!vivid_is_webcam(dev))
-@@ -30,8 +31,8 @@ static int meta_out_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
- 		sizes[0] = size;
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 
- 	*nplanes = 1;
- 	return 0;
-diff --git a/drivers/media/test-drivers/vivid/vivid-touch-cap.c b/drivers/media/test-drivers/vivid/vivid-touch-cap.c
-index c7f6e23df51e..4b3c6ea0afde 100644
---- a/drivers/media/test-drivers/vivid/vivid-touch-cap.c
-+++ b/drivers/media/test-drivers/vivid/vivid-touch-cap.c
-@@ -13,6 +13,7 @@ static int touch_cap_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
- 				 struct device *alloc_devs[])
- {
- 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	struct v4l2_pix_format *f = &dev->tch_format;
- 	unsigned int size = f->sizeimage;
- 
-@@ -23,8 +24,8 @@ static int touch_cap_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers,
- 		sizes[0] = size;
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 
- 	*nplanes = 1;
- 	return 0;
-diff --git a/drivers/media/test-drivers/vivid/vivid-vbi-cap.c b/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
-index b65b02eeeb97..fcd7f40385e9 100644
---- a/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
-+++ b/drivers/media/test-drivers/vivid/vivid-vbi-cap.c
-@@ -124,6 +124,7 @@ static int vbi_cap_queue_setup(struct vb2_queue *vq,
- 		       unsigned sizes[], struct device *alloc_devs[])
- {
- 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	bool is_60hz = dev->std_cap[dev->input] & V4L2_STD_525_60;
- 	unsigned size = vq->type == V4L2_BUF_TYPE_SLICED_VBI_CAPTURE ?
- 		36 * sizeof(struct v4l2_sliced_vbi_data) :
-@@ -134,8 +135,8 @@ static int vbi_cap_queue_setup(struct vb2_queue *vq,
- 
- 	sizes[0] = size;
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 
- 	*nplanes = 1;
- 	return 0;
-diff --git a/drivers/media/test-drivers/vivid/vivid-vbi-out.c b/drivers/media/test-drivers/vivid/vivid-vbi-out.c
-index cd56476902a2..8f0da5d88bcc 100644
---- a/drivers/media/test-drivers/vivid/vivid-vbi-out.c
-+++ b/drivers/media/test-drivers/vivid/vivid-vbi-out.c
-@@ -20,6 +20,7 @@ static int vbi_out_queue_setup(struct vb2_queue *vq,
- 		       unsigned sizes[], struct device *alloc_devs[])
- {
- 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	bool is_60hz = dev->std_out & V4L2_STD_525_60;
- 	unsigned size = vq->type == V4L2_BUF_TYPE_SLICED_VBI_OUTPUT ?
- 		36 * sizeof(struct v4l2_sliced_vbi_data) :
-@@ -30,8 +31,8 @@ static int vbi_out_queue_setup(struct vb2_queue *vq,
- 
- 	sizes[0] = size;
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 
- 	*nplanes = 1;
- 	return 0;
-diff --git a/drivers/media/test-drivers/vivid/vivid-vid-cap.c b/drivers/media/test-drivers/vivid/vivid-vid-cap.c
-index 3a06df35a2d7..0cc7602b9fb2 100644
---- a/drivers/media/test-drivers/vivid/vivid-vid-cap.c
-+++ b/drivers/media/test-drivers/vivid/vivid-vid-cap.c
-@@ -77,6 +77,7 @@ static int vid_cap_queue_setup(struct vb2_queue *vq,
- 		       unsigned sizes[], struct device *alloc_devs[])
- {
- 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	unsigned buffers = tpg_g_buffers(&dev->tpg);
- 	unsigned h = dev->fmt_cap_rect.height;
- 	unsigned p;
-@@ -117,8 +118,8 @@ static int vid_cap_queue_setup(struct vb2_queue *vq,
- 					dev->fmt_cap->data_offset[p];
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 
- 	*nplanes = buffers;
- 
-diff --git a/drivers/media/test-drivers/vivid/vivid-vid-out.c b/drivers/media/test-drivers/vivid/vivid-vid-out.c
-index 184a6df2c29f..25578f55a060 100644
---- a/drivers/media/test-drivers/vivid/vivid-vid-out.c
-+++ b/drivers/media/test-drivers/vivid/vivid-vid-out.c
-@@ -25,6 +25,7 @@ static int vid_out_queue_setup(struct vb2_queue *vq,
- 		       unsigned sizes[], struct device *alloc_devs[])
- {
- 	struct vivid_dev *dev = vb2_get_drv_priv(vq);
-+	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
- 	const struct vivid_fmt *vfmt = dev->fmt_out;
- 	unsigned planes = vfmt->buffers;
- 	unsigned h = dev->fmt_out_rect.height;
-@@ -73,8 +74,8 @@ static int vid_out_queue_setup(struct vb2_queue *vq,
- 				       vfmt->data_offset[p] : size;
- 	}
- 
--	if (vq->num_buffers + *nbuffers < 2)
--		*nbuffers = 2 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 2)
-+		*nbuffers = 2 - q_num_bufs;
- 
- 	*nplanes = planes;
+ 	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
+ 	struct vb2_queue *cap_queue = &m2m_ctx->cap_q_ctx.q;
+-	unsigned int num_buffers = cap_queue->num_buffers;
++	unsigned int num_buffers = vb2_get_num_buffers(cap_queue);
+ 	unsigned int i;
+ 	int ret;
  
 -- 
 2.39.2
