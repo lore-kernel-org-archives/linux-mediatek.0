@@ -4,78 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 178D7CA553E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:13:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 778A8CA553E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:18:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AaRGJ1kf12rVln3LsRgrnbnCAaf0LvAvi5fzIfjrvRg=; b=BF4QzsOmX1UBRTdUu2c5ZWOMwG
-	d/sYw6mFQDxFqdGhCM0CoMZDVVPEi9lzW7bhOYvHK0X2YbiVz0O5bOQL7PUH++JliJQlg6wnV5xwI
-	x7vslZquKOVgrXkkrSRQ+q/DwMZAX7kllDgvUZl+LDr5Um7hemc4KPsgJGBzzukVfB3B9byP/W7zd
-	HA6T7Dcn4zCFdTDYC3qQYbRhNnd7kDX8c/rYmdh+ru5lGHSvthQJV+yPGEnziEyjXnwf6Bjn30vbg
-	/RaJnA/78eXH8N6wCaCnfAxNR336yV934wXyC/BmaRNGCylbzyF9ZiRhkr1jX7adyi2SpO/AUC0HC
-	3nFIrhlw==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WlQQcn9MPKx+64xAULLndYkvVhnLtgYqC3iihah1W6k=; b=GLWG1Vd5wiaYBmCnfKKY8UKJRG
+	OUYyUdDrJHJOyoh8MiAdbjomB7egW3BkP9ho4oSt3YYtBUB5w2NLZCvIwZQRyZnYmRbNz7ac9x3eO
+	h0aBdV6j7sXl/g8Q1bjD74ynwnqfM/fm2N/YuJH1v0DUZ02Sb/U8jniIJMrxITuaq1AWVMrCFqc8O
+	dK/iOc0UTPByxf5r2/TP5sa0edFYO6XSiK/WUJZv/j0XtkqUlrq6A8tQAksiqRTdxoQPdyu3rva+K
+	vh+3hjsfpGORxRdRSD/FrqfZklIgNXfgaWfZRGJlBlqkTwUL5xmseoBlz1s+4WCqmZOmDmZVKP4OJ
+	yB9URvqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmA6-008QRm-0D;
-	Thu, 14 Sep 2023 13:13:38 +0000
-Received: from mgamail.intel.com ([192.55.52.93])
+	id 1qgmEx-008Qzp-1d;
+	Thu, 14 Sep 2023 13:18:39 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmA2-008QP1-36;
-	Thu, 14 Sep 2023 13:13:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1694697214; x=1726233214;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=7XDGJ0Ht6oXKb4r3a9CM/U+PgCZCGhp2zPWfhO1jsQk=;
-  b=hkpGEvvV0Kwo8RSREyw2sbxxW0FEeOH6xXy47O7113Kw89d+sDQEDXmX
-   EcQoV96UePqO7OzDFiwAjHfoU1jVsaFoLJawTr4h1S1ArPbWBbFiYujdg
-   G5iMglBfyv8uXhtuerSzhqWix/H7Whzk+2+xknUkZT4bwIrJZeJ0f8bDD
-   +fr4XFM/W+wjuDEEGa9fCW5FaA0acKbuIFBFCxfoRKgKP4nMeaijqIHkd
-   OiQx1sPWzRPNwVa21t7P0dVC0zsmLuKEXIYvNDkfq06hiJiFc+23caFiT
-   MlBuZqDu2OVML6b8DQr7ezer5MnEtqGhmYQv4rbiZfpWfy9cO8S23LC3D
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10833"; a="376281304"
-X-IronPort-AV: E=Sophos;i="6.02,146,1688454000"; 
-   d="scan'208";a="376281304"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Sep 2023 06:11:07 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10833"; a="887801992"
-X-IronPort-AV: E=Sophos;i="6.02,146,1688454000"; 
-   d="scan'208";a="887801992"
-Received: from jnikula-mobl4.fi.intel.com (HELO localhost) ([10.237.66.162])
-  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Sep 2023 06:10:31 -0700
-From: Jani Nikula <jani.nikula@intel.com>
-To: dri-devel@lists.freedesktop.org
-Cc: jani.nikula@intel.com,
-	Markus Schneider-Pargmann <msp@baylibre.com>,
-	Guillaume Ranquet <granquet@baylibre.com>,
-	Bo-Chen Chen <rex-bc.chen@mediatek.com>,
-	CK Hu <ck.hu@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	stable@vger.kernel.org
-Subject: [PATCH] drm/mediatek/dp: fix memory leak on ->get_edid callback error path
-Date: Thu, 14 Sep 2023 16:10:58 +0300
-Message-Id: <20230914131058.2472260-1-jani.nikula@intel.com>
-X-Mailer: git-send-email 2.39.2
+	id 1qgmEu-008Qz5-2G;
+	Thu, 14 Sep 2023 13:18:38 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B7A2E660734B;
+	Thu, 14 Sep 2023 14:18:30 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1694697511;
+	bh=QLmIOvyMYsAHwE/swB9g81iNqJ/lVTegnNyDspfyz+g=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=VCs+qGRYLlMKOSjV+9fS140xdhCFeaqPjV3BKdWXlFqvXe7dC6joaklTBoTlSvIM6
+	 KCx+ce8lmOWb25unXHIJ6l0a8n5+/Ut426yH6aaY0x0w0SfuJW0BqXoCDV5v4Yuruw
+	 1h/HV5XOzXXwVE6n/nH5cGfYAZlt6/UH1ycjfQijScPSjLrl5Ug0+q759+XZMA7jty
+	 e+VJng58d/asb4lTza4+FCYDQxMinCXxvDiCPw428DFK9wA4gejvjyMy3uWBopzBT2
+	 cov8zHvsAdN9vciHLkpUu+DEfKCQQ4hdb2EnY76yhiuzeIRbZxJoZWuOMwPSQaINmy
+	 nqz9SaeF1FUqw==
+Message-ID: <982d201a-bcf2-f856-00e7-8807ca5a006a@collabora.com>
+Date: Thu, 14 Sep 2023 15:18:28 +0200
 MIME-Version: 1.0
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH 13/15] drm/mediatek: Add missing plane settings when async
+ update
+Content-Language: en-US
+To: =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
+ =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20230823151332.28811-1-shawn.sung@mediatek.com>
+ <20230823151332.28811-14-shawn.sung@mediatek.com>
+ <d43e0d7b-1e93-f9ae-df3f-cbf8a3381a70@collabora.com>
+ <e1f07420c9d7abf26cf9ce111c063224001ba561.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <e1f07420c9d7abf26cf9ce111c063224001ba561.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_061335_007059_79DC2384 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20230914_061836_894547_D7EC6FDD 
+X-CRM114-Status: GOOD (  15.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,45 +92,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Setting new_edid to NULL leaks the buffer.
+Il 11/09/23 15:45, Shawn Sung (宋孝謙) ha scritto:
+> Hi Angelo,
+> 
+> On Thu, 2023-09-07 at 14:33 +0200, AngeloGioacchino Del Regno wrote:
+>> Il 23/08/23 17:13, Hsiao Chien Sung ha scritto:
+>>> Fix an issue that plane coordinate was not saved when
+>>> calling async update.
+>>>
+>>> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+>>
+>>   From what I understand, this is a fix for an issue that was present
+>> before
+>> your newly introduced code.
+>>
+>> This means that you want to add a Fixes tag, and that you should also
+>> send
+>> this commit separately from the IGT series. Please do that.
+> 
+> Got it, will add a fix tag in the next version. But since without this
+> patch, IGT will fail at some test cases, could we still send them in
+> the same series so IGT can pass out-of-the-box?
+> 
 
-Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
-Cc: Markus Schneider-Pargmann <msp@baylibre.com>
-Cc: Guillaume Ranquet <granquet@baylibre.com>
-Cc: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-Cc: CK Hu <ck.hu@mediatek.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: dri-devel@lists.freedesktop.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: <stable@vger.kernel.org> # v6.1+
-Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+Fixes are applied before new features, so if you send this patch outside
+of the IGT series, this will most likely be applied *before* that series.
 
----
+When the IGT series will be applied, this patch will already be present,
+so, please send this one separately.
 
-UNTESTED
----
- drivers/gpu/drm/mediatek/mtk_dp.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 2cb47f663756..8fc6eff68e30 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -2049,6 +2049,7 @@ static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
- 	 */
- 	if (mtk_dp_parse_capabilities(mtk_dp)) {
- 		drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
-+		kfree(new_edid);
- 		new_edid = NULL;
- 	}
- 
--- 
-2.39.2
+Regards,
+Angelo
 
 
