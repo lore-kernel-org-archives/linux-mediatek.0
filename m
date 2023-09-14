@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 458C2EEAA4F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 14:39:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DA13EEAA4F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 14:39:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eKiMtHp7MR6m3ksr69jc6vj5HbQoEJHz/XrTv5cNpl0=; b=Nz8VdOD+HziQiU34Y+OW3IpuNc
-	4bcDw7YBJE76U6OvvJJBmK7h/+MH5hnDMsT+529g3OShkAlAQkDsdbtbAiIbAP042z5FjqFbcrIn0
-	jtRjyC9tI6EQnOQX7ur1mRKjted8Qrw8V+YUEF1W7h4wJljaFD/r1URGxp0sGkT5vKTzl7S8+vRrN
-	djKoMSO9T/0dSWUHKlKVz0rNw3mNbtM9hpXQd4k2qMRPsiUpGInPCqjNHC6M/vNvtB+xl5hU0tWvM
-	SVPuIrmQ/shIwKuVT1bNMQjSpZAbMPqcafUqCNx65HV/o4Sp6Yjzx6CrednYLOBXGB/e22RjxLNrx
-	ITr/tuLw==;
+	bh=oXGZxMwhZWTw9RpNS/HAHuZ8JZRTDtDRBCtSru2d9KA=; b=xa16KUWITcFoP2iLDP8WK6vgP4
+	sukGkNRK1xnMLV/OaircqF9DOrp4IC1U03C9NZnOO6iccVM8bM599XsEClmbs0kb9utOCG4j5SiFb
+	+PAsQAR0KnCP1hVdF8eBYJ5pMR21eD363euzz4tktEcZYEvH219Sp7aSLHvrHwOsCgdoOmvA4vDEE
+	dU138NgU/DBevHtrgxhYA19aD22wLaIuW2VSHPRvIX15tZnLoy6P1xMUTm+PnrV2Nx+g5bRmtoock
+	xDvlVxMsFDPDF01+pOUDXSf22T/6fcfMs8d+8BnfEeNIvCRnAYbz4HY5yrzcFH9/8+GTPbzU0jJ05
+	goigEAWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgnVJ-008ejz-16;
-	Thu, 14 Sep 2023 14:39:37 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qgnVO-008em6-1G;
+	Thu, 14 Sep 2023 14:39:42 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgnVF-008eho-2G
+	id 1qgnVM-008el9-0A
 	for linux-mediatek@lists.infradead.org;
-	Thu, 14 Sep 2023 14:39:35 +0000
+	Thu, 14 Sep 2023 14:39:41 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 17726CE2635;
-	Thu, 14 Sep 2023 14:39:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4B07C433CB;
-	Thu, 14 Sep 2023 14:39:29 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 52A9761DCC;
+	Thu, 14 Sep 2023 14:39:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC44DC433C8;
+	Thu, 14 Sep 2023 14:39:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694702370;
-	bh=gXQWsZnC/K4vRGdHADEZFnyLphroni4lZ4MEK3xmE5Q=;
+	s=k20201202; t=1694702378;
+	bh=NuGvozSv9WccAC4JHs7SvmzDslrfdkBPTRpl9vmfPbQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Jve63uts2x9V6DGU+PaObUFChZrUIEcUeedN7mWPYgE/CmoxOVMSvF7mlmd9K7w9r
-	 uvl6ocICuXB0+0MsIu/jCrqEoNHs/Nao3vM9ChHyAQV6fy1IA2STzKKkHxRY3KcI/k
-	 1BwLEbwykYLxHVu3UnC3kUJ5vL5CcBnOfSI5Fr/ceuVX/Iks8ZIOZjp+6raBmzSfRr
-	 MVCxzi9iKBzhr7sVAqM1UKr19rfd1HHj3AwtXZa7jW9IRpmS5kgU3Aw8Pq92GeXBDw
-	 gYYiQj+a8X0Ayf+HwohIdJtELi8lLflkuw3LDUnDL+2kCr594pcIvAbaPD16GsIoUK
-	 TMidQUInwI4ug==
+	b=XP/5j5UGQQIJMpHxUgBLukt0K67oVVXI9Tk1OgNH7LivXba9HAtQARD4VhfbvpzHP
+	 P7+oJ0VKWOhl4zljq4U3styg8PcE8T5fiK99iQpgZ7QitUK9B3D2rw8Iq8FCHIaoBK
+	 gewwfmLXfcWTDnJsoPt7M+Witqti9GaQV8R2u5qftw4nPpo7AHvM8X3qtUy4PNbt9u
+	 wHrqsMmcxCQ4IYCXoBQiKbRDvljiqH7cwMSeWtolzOCapZvDpOXwAcRmHY7cBrSS8g
+	 hkL/FLHa4k0p0F8OkFnXADaydGoVgwTy/ltnAbtokr4bj8SUiDGVs2TpjY3SNw35uC
+	 ZfAq8tLVQwqLw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: lorenzo.bianconi@redhat.com,
@@ -62,17 +62,17 @@ Cc: lorenzo.bianconi@redhat.com,
 	robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	devicetree@vger.kernel.org
-Subject: [PATCH net-next 06/15] net: ethernet: mtk_wed: rename mtk_rxbm_desc in mtk_wed_bm_desc
-Date: Thu, 14 Sep 2023 16:38:11 +0200
-Message-ID: <1b05e610e5c8582ddaa0c5f71e6e6e6016d50cb9.1694701767.git.lorenzo@kernel.org>
+Subject: [PATCH net-next 08/15] net: ethernet: mtk_wed: move mem_region array out of mtk_wed_mcu_load_firmware
+Date: Thu, 14 Sep 2023 16:38:13 +0200
+Message-ID: <0b85368e324422b99cd29d4c1dad2e93bb7ad660.1694701767.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <cover.1694701767.git.lorenzo@kernel.org>
 References: <cover.1694701767.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_073934_079101_1C0F7759 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20230914_073940_175835_CC4B46BA 
+X-CRM114-Status: GOOD (  13.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,73 +87,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rename mtk_rxbm_desc structure in mtk_wed_bm_desc since it will be used
-even on tx side by MT7988 SoC.
+Remove mtk_wed_wo_memory_region boot structure in mtk_wed_wo.
+This is a preliminary patch to introduce WED support for MT7988 SoC.
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/mediatek/mtk_wed.c          | 4 ++--
- drivers/net/wireless/mediatek/mt76/mt7915/mmio.c | 2 +-
- include/linux/soc/mediatek/mtk_wed.h             | 4 ++--
- 3 files changed, 5 insertions(+), 5 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_wed_mcu.c | 37 ++++++++++-----------
+ drivers/net/ethernet/mediatek/mtk_wed_wo.h  |  1 -
+ 2 files changed, 18 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index 100546c63e5a..8880b018ffca 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -422,7 +422,7 @@ mtk_wed_free_tx_buffer(struct mtk_wed_device *dev)
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+index 4e48905ac70d..cc54fbd7380a 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+@@ -16,14 +16,30 @@
+ #include "mtk_wed_wo.h"
+ #include "mtk_wed.h"
+ 
++static struct mtk_wed_wo_memory_region mem_region[] = {
++	[MTK_WED_WO_REGION_EMI] = {
++		.name = "wo-emi",
++	},
++	[MTK_WED_WO_REGION_ILM] = {
++		.name = "wo-ilm",
++	},
++	[MTK_WED_WO_REGION_DATA] = {
++		.name = "wo-data",
++		.shared = true,
++	},
++	[MTK_WED_WO_REGION_BOOT] = {
++		.name = "wo-boot",
++	},
++};
++
+ static u32 wo_r32(struct mtk_wed_wo *wo, u32 reg)
+ {
+-	return readl(wo->boot.addr + reg);
++	return readl(mem_region[MTK_WED_WO_REGION_BOOT].addr + reg);
+ }
+ 
+ static void wo_w32(struct mtk_wed_wo *wo, u32 reg, u32 val)
+ {
+-	writel(val, wo->boot.addr + reg);
++	writel(val, mem_region[MTK_WED_WO_REGION_BOOT].addr + reg);
+ }
+ 
+ static struct sk_buff *
+@@ -294,18 +310,6 @@ mtk_wed_mcu_run_firmware(struct mtk_wed_wo *wo, const struct firmware *fw,
  static int
- mtk_wed_rx_buffer_alloc(struct mtk_wed_device *dev)
+ mtk_wed_mcu_load_firmware(struct mtk_wed_wo *wo)
  {
--	struct mtk_rxbm_desc *desc;
-+	struct mtk_wed_bm_desc *desc;
- 	dma_addr_t desc_phys;
+-	static struct mtk_wed_wo_memory_region mem_region[] = {
+-		[MTK_WED_WO_REGION_EMI] = {
+-			.name = "wo-emi",
+-		},
+-		[MTK_WED_WO_REGION_ILM] = {
+-			.name = "wo-ilm",
+-		},
+-		[MTK_WED_WO_REGION_DATA] = {
+-			.name = "wo-data",
+-			.shared = true,
+-		},
+-	};
+ 	const struct mtk_wed_fw_trailer *trailer;
+ 	const struct firmware *fw;
+ 	const char *fw_name;
+@@ -319,11 +323,6 @@ mtk_wed_mcu_load_firmware(struct mtk_wed_wo *wo)
+ 			return ret;
+ 	}
  
- 	dev->rx_buf_ring.size = dev->wlan.rx_nbuf;
-@@ -442,7 +442,7 @@ mtk_wed_rx_buffer_alloc(struct mtk_wed_device *dev)
- static void
- mtk_wed_free_rx_buffer(struct mtk_wed_device *dev)
- {
--	struct mtk_rxbm_desc *desc = dev->rx_buf_ring.desc;
-+	struct mtk_wed_bm_desc *desc = dev->rx_buf_ring.desc;
+-	wo->boot.name = "wo-boot";
+-	ret = mtk_wed_get_memory_region(wo, &wo->boot);
+-	if (ret)
+-		return ret;
+-
+ 	/* set dummy cr */
+ 	wed_w32(wo->hw->wed_dev, MTK_WED_SCR0 + 4 * MTK_WED_DUMMY_CR_FWDL,
+ 		wo->hw->index + 1);
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.h b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
+index 7a1a2a28f1ac..8ed81761bf10 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_wo.h
++++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.h
+@@ -228,7 +228,6 @@ struct mtk_wed_wo_queue {
  
- 	if (!desc)
- 		return;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-index fc7ace638ce8..e7d8e03f826f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-@@ -591,7 +591,7 @@ static void mt7915_mmio_wed_release_rx_buf(struct mtk_wed_device *wed)
+ struct mtk_wed_wo {
+ 	struct mtk_wed_hw *hw;
+-	struct mtk_wed_wo_memory_region boot;
  
- static u32 mt7915_mmio_wed_init_rx_buf(struct mtk_wed_device *wed, int size)
- {
--	struct mtk_rxbm_desc *desc = wed->rx_buf_ring.desc;
-+	struct mtk_wed_bm_desc *desc = wed->rx_buf_ring.desc;
- 	struct mt76_txwi_cache *t = NULL;
- 	struct mt7915_dev *dev;
- 	struct mt76_queue *q;
-diff --git a/include/linux/soc/mediatek/mtk_wed.h b/include/linux/soc/mediatek/mtk_wed.h
-index b2b28180dff7..c6512c216b27 100644
---- a/include/linux/soc/mediatek/mtk_wed.h
-+++ b/include/linux/soc/mediatek/mtk_wed.h
-@@ -45,7 +45,7 @@ enum mtk_wed_wo_cmd {
- 	MTK_WED_WO_CMD_WED_END
- };
- 
--struct mtk_rxbm_desc {
-+struct mtk_wed_bm_desc {
- 	__le32 buf0;
- 	__le32 token;
- } __packed __aligned(4);
-@@ -104,7 +104,7 @@ struct mtk_wed_device {
- 
- 	struct {
- 		int size;
--		struct mtk_rxbm_desc *desc;
-+		struct mtk_wed_bm_desc *desc;
- 		dma_addr_t desc_phys;
- 	} rx_buf_ring;
- 
+ 	struct mtk_wed_wo_queue q_tx;
+ 	struct mtk_wed_wo_queue q_rx;
 -- 
 2.41.0
 
