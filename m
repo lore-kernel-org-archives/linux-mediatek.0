@@ -4,66 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F5EEEAA62
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 18:29:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB1D5EEAA65
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 18:39:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6eRAg4BOSXhzdaCM4oFAMYBsORYMTL2ICOv9GCq6ZaA=; b=dqOLAyTKG3o/qjAvayBiDG9Aio
-	KK6tUBpZ1O15AF507gCILY0zzXDgahPAZOykYNOncrMPlhYV5RL7PB9O9SbICCyvwfQcE0F+8+FJe
-	M/cTpI5tmVrFwVOaLY/MrocdodF63OMFHmSdbEP4PefRPG5R/mAeg59LylcWNFo/CwHd3gGVojY8c
-	6tnNjtzzMADQPIwdjJbMpPiKbz0X6x4PpJoIecvOnPLAzBn5YAA+ZAtR+5KUrTHyONJsk9Sv4TWA7
-	DSqS7nx7S0UAdnAmWwxrdsQ0a6eox1CgYcYS+mcSMoYSmT5gF3KWIXdWCDMIm7XRtckjBhEaXzW/a
-	paDM3o2w==;
+	bh=0zxTlKID9c7YEvuORrPXl2fVFncXh/KVCV6b0hRF+M0=; b=TeKHoXlWs/e5vWAT8E9aEylc+T
+	6RPQ83cgra4xVW5Lr5nEJhzqMYsF4CfvFbA7Lz1TmUxPnugLNdaLShgVvjg5FixXazgYPQZnBKfHT
+	5eYHqRNkIa96V9d8bK1iulYqqJQHdJ6KwrF7Kf2k9aSls4NLYtjHhH9/b+kO+DtCLoPnjzIrJDk13
+	Qm32VNtjeXbEFDJMHBw5PRlNKDeXewsBoMyPSDIf7L7Aj4HzWyq1NltTHM1jorDQ83SoHjS1PEDGm
+	jxwuqRwxJRXms0SvJcM0tdVb3xytcCkav1Dtc5skAwTZJxhKHHbvMw4XtvAErhnD7dp7GssHRMdpK
+	HZKc1TAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgr5e-0094GI-09;
-	Thu, 14 Sep 2023 18:29:22 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qgrEy-0094rQ-1l;
+	Thu, 14 Sep 2023 18:39:00 +0000
+Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgr5a-0094FC-2H;
-	Thu, 14 Sep 2023 18:29:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E656861DB4;
-	Thu, 14 Sep 2023 18:29:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9921C433C8;
-	Thu, 14 Sep 2023 18:29:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
-	s=korg; t=1694716156;
-	bh=8yfZbzZKag5d7bxNrUSr/lpYoM54Vk26Cn0YqHlXOnU=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=k8uDcAI3/N9nu9z6RNGz7MTQI7GnzEOueZNNkHePh6pbgMV5izoqp8ZBNnpewTVDZ
-	 5nvRul9SEPLd+PWL0RLNb1YrboFFPW6PuJ8F8mgIEvVrvrX7W1It5tTUonSluB3mxt
-	 jHwMGpGX+T7d1JMb+p5mJWINZt/wPMJqJZ+42mSo=
-Date: Thu, 14 Sep 2023 11:29:15 -0700
-From: Andrew Morton <akpm@linux-foundation.org>
-To: Haibo Li <haibo.li@mediatek.com>
-Cc: <linux-kernel@vger.kernel.org>, <xiaoming.yu@mediatek.com>, Andrey
- Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>,
- Andrey Konovalov <andreyknvl@gmail.com>, Dmitry Vyukov
- <dvyukov@google.com>, Vincenzo Frascino <vincenzo.frascino@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, <kasan-dev@googlegroups.com>,
- <linux-mm@kvack.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] kasan:fix access invalid shadow address when input is
- illegal
-Message-Id: <20230914112915.81f55863c0450195b4ed604a@linux-foundation.org>
-In-Reply-To: <20230914080833.50026-1-haibo.li@mediatek.com>
-References: <20230914080833.50026-1-haibo.li@mediatek.com>
-X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+	id 1qgrEt-0094k5-0c;
+	Thu, 14 Sep 2023 18:38:56 +0000
+From: John Ogness <john.ogness@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1694716723;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0zxTlKID9c7YEvuORrPXl2fVFncXh/KVCV6b0hRF+M0=;
+	b=wpI9YdYscyP7QCk0acGuia//P2qYFkbm3gJQZYYqS49wM9ejXs+pjzQLph+Uzx69MOiUXl
+	Dzd44jCbMLmFITkggEvIkAm9kK8h3TJ3NQYg+psnX8uBb8BKhZfFkfyBh2Wdw2kgXvorv9
+	eN+z9CFui2CBPIgGQZOQQF36x8utOP0y0fQJb3RGGFp+NBRyRz1c5xTbr38vbYxcOwYfRv
+	QvucfHJ04RIkd0cer+j9B5cOhisDGPDz1KoBqFmjWrEcCcdOuAoLnYILixUcoY6Ny0O5C1
+	STlb6yGp3sbH9XbXZlR/i1R5QsvZxuS4ujVvU8GkDtrto5lcoxGddR9baDlKIQ==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1694716723;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0zxTlKID9c7YEvuORrPXl2fVFncXh/KVCV6b0hRF+M0=;
+	b=3/nKE7xyHHA/3Sq2eQiSXccT5Z8HqEfiZ5GXPISOZOKMiLIeYRqscjaIjC5bCGvNvAVBW5
+	tSThvy+KQFyPJZCA==
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Jiri Slaby <jirislaby@kernel.org>,
+	linux-serial@vger.kernel.org,
+	Petr Mladek <pmladek@suse.com>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	linux-kernel@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Tony Lindgren <tony@atomide.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH tty v1 11/74] serial: 8250_mtk: Use port lock wrappers
+Date: Thu, 14 Sep 2023 20:43:28 +0206
+Message-Id: <20230914183831.587273-12-john.ogness@linutronix.de>
+In-Reply-To: <20230914183831.587273-1-john.ogness@linutronix.de>
+References: <20230914183831.587273-1-john.ogness@linutronix.de>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_112918_830897_786A7A46 
-X-CRM114-Status: GOOD (  20.53  )
+X-CRM114-CacheID: sfid-20230914_113855_400742_CDD5EDD0 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,62 +84,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 14 Sep 2023 16:08:33 +0800 Haibo Li <haibo.li@mediatek.com> wrote:
+From: Thomas Gleixner <tglx@linutronix.de>
 
-> when the input address is illegal,the corresponding shadow address
-> from kasan_mem_to_shadow may have no mapping in mmu table.
-> Access such shadow address causes kernel oops.
-> Here is a sample about oops on arm64(VA 39bit) with KASAN_SW_TAGS on:
-> 
-> [ffffffb80aaaaaaa] pgd=000000005d3ce003, p4d=000000005d3ce003,
->     pud=000000005d3ce003, pmd=0000000000000000
-> Internal error: Oops: 0000000096000006 [#1] PREEMPT SMP
-> Modules linked in:
-> CPU: 3 PID: 100 Comm: sh Not tainted 6.6.0-rc1-dirty #43
-> Hardware name: linux,dummy-virt (DT)
-> pstate: 80000005 (Nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> pc : __hwasan_load8_noabort+0x5c/0x90
-> lr : do_ib_ob+0xf4/0x110
-> ffffffb80aaaaaaa is the shadow address for efffff80aaaaaaaa.
-> The problem is reading invalid shadow in kasan_check_range.
-> 
-> The generic kasan also has similar oops.
-> 
-> To fix it,check shadow address by reading it with no fault.
-> 
-> After this patch,KASAN is able to report invalid memory access
-> for this case.
-> 
+When a serial port is used for kernel console output, then all
+modifications to the UART registers which are done from other contexts,
+e.g. getty, termios, are interference points for the kernel console.
 
-Thanks.
+So far this has been ignored and the printk output is based on the
+principle of hope. The rework of the console infrastructure which aims to
+support threaded and atomic consoles, requires to mark sections which
+modify the UART registers as unsafe. This allows the atomic write function
+to make informed decisions and eventually to restore operational state. It
+also allows to prevent the regular UART code from modifying UART registers
+while printk output is in progress.
 
-> --- a/mm/kasan/kasan.h
-> +++ b/mm/kasan/kasan.h
-> @@ -304,8 +304,17 @@ static __always_inline bool addr_has_metadata(const void *addr)
->  #ifdef __HAVE_ARCH_SHADOW_MAP
->  	return (kasan_mem_to_shadow((void *)addr) != NULL);
->  #else
-> -	return (kasan_reset_tag(addr) >=
-> -		kasan_shadow_to_mem((void *)KASAN_SHADOW_START));
-> +	u8 *shadow, shadow_val;
-> +
-> +	if (kasan_reset_tag(addr) <
-> +		kasan_shadow_to_mem((void *)KASAN_SHADOW_START))
-> +		return false;
-> +	/* use read with nofault to check whether the shadow is accessible */
-> +	shadow = kasan_mem_to_shadow((void *)addr);
-> +	__get_kernel_nofault(&shadow_val, shadow, u8, fault);
-> +	return true;
-> +fault:
-> +	return false;
->  #endif
->  }
+All modifications of UART registers are guarded by the UART port lock,
+which provides an obvious synchronization point with the console
+infrastructure.
 
-Are we able to identify a Fixes: target for this? 
-9d7b7dd946924de43021f57a8bee122ff0744d93 ("kasan: split out
-print_report from __kasan_report") altered the code but I expect the
-bug was present before that commit.
+To avoid adding this functionality to all UART drivers, wrap the
+spin_[un]lock*() invocations for uart_port::lock into helper functions
+which just contain the spin_[un]lock*() invocations for now. In a
+subsequent step these helpers will gain the console synchronization
+mechanisms.
 
-Seems this bug has been there for over a year.  Can you suggest why it
-has been discovered after such a lengthy time?
+Converted with coccinelle. No functional change.
+
+Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+---
+ drivers/tty/serial/8250/8250_mtk.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+index 74da5676ce67..23457daae8a1 100644
+--- a/drivers/tty/serial/8250/8250_mtk.c
++++ b/drivers/tty/serial/8250/8250_mtk.c
+@@ -102,7 +102,7 @@ static void mtk8250_dma_rx_complete(void *param)
+ 	if (data->rx_status == DMA_RX_SHUTDOWN)
+ 		return;
+ 
+-	spin_lock_irqsave(&up->port.lock, flags);
++	uart_port_lock_irqsave(&up->port, &flags);
+ 
+ 	dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
+ 	total = dma->rx_size - state.residue;
+@@ -128,7 +128,7 @@ static void mtk8250_dma_rx_complete(void *param)
+ 
+ 	mtk8250_rx_dma(up);
+ 
+-	spin_unlock_irqrestore(&up->port.lock, flags);
++	uart_port_unlock_irqrestore(&up->port, flags);
+ }
+ 
+ static void mtk8250_rx_dma(struct uart_8250_port *up)
+@@ -368,7 +368,7 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
+ 	 * Ok, we're now changing the port state.  Do it with
+ 	 * interrupts disabled.
+ 	 */
+-	spin_lock_irqsave(&port->lock, flags);
++	uart_port_lock_irqsave(port, &flags);
+ 
+ 	/*
+ 	 * Update the per-port timeout.
+@@ -416,7 +416,7 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
+ 	if (uart_console(port))
+ 		up->port.cons->cflag = termios->c_cflag;
+ 
+-	spin_unlock_irqrestore(&port->lock, flags);
++	uart_port_unlock_irqrestore(port, flags);
+ 	/* Don't rewrite B0 */
+ 	if (tty_termios_baud_rate(termios))
+ 		tty_termios_encode_baud_rate(termios, baud, baud);
+-- 
+2.39.2
+
 
