@@ -4,66 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90E66EDE99F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 10:14:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60C9FEDE9A1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 10:19:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DuHdrsReza7zQnRFPfpd+FWY5a0V60zYnv5/CMUaRjA=; b=2c+XwRSuwDeFUTBv47ldBPTnso
-	3MygeTP+l/h/Kf6FJTUP3TFD8mZZ/iS+JVNOSNa0QwfUZVnixNpUg1j3k6UMKLtQrK05X4ZCWAnGP
-	1km4zU1Zp4vcTU/yZncjUIWmjl0XrMaMv3lT+h7OrCUipt3SE1MVYOR29NofBWk0nYZbtkmmQx9p1
-	/gKRur50JUm3s0vW4KEDqdZWBCrnf7xvzCK/o42y3/pMwUi9GBzv/nVdWtrV4sznPZGtCaqnWq8k3
-	NTBSk2Ua/eU7XCt9/5MaA6uCxFK7Ub5klESeQxkNokLiT3eONuQYPyXeKsffufCBZ5VI8KMytU2AM
-	a9iythlw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jO965HeKo6dJlfYRh72MFUfyYDoEuNkyT+sUGPOr6Ak=; b=mLnG5yLSsKUlgDDWbwGAIG0AZO
+	9gMY/lSu+EHm2HN10sotJrrSzV+pw+1eKTdL5QbPbcIve8PT7/aGiQCezqCLLLtbJNtDAYOXzRhYN
+	3I1L//UuwedQEqTc8MGuABrnGFg09N/A9BqSxROXVM8OEoBOHfxhdMARTFNiEuKmAvkXRinEkYMZn
+	UB85elsGfXkiOIMbwPdfhmoDb1hlzVYKwbakH+5o596JdLKrM0O8sK7e5q6vMONcZxKDsxZz8nuen
+	8drEdNs1mRX6mPFGcBx6whb8se2Nuq2AqWNSL7CRJ9jdpf7399+prl+AmVzdNKSjZqBkioET5dU/7
+	Wie3F3yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgjMS-007xDq-1o;
-	Thu, 14 Sep 2023 10:14:12 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qgjRD-007yBe-1F;
+	Thu, 14 Sep 2023 10:19:07 +0000
+Received: from mgamail.intel.com ([134.134.136.126])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgjMP-007xCO-09;
-	Thu, 14 Sep 2023 10:14:10 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5EA6166072FF;
-	Thu, 14 Sep 2023 11:14:05 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694686445;
-	bh=OFvsdCQ1KzQj5G85fRFDOIGP6wxoxx66ab2XPVsGYNo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=O5eUS/j1EBqT+GT8lG7w3gmWCXNr2WoXzTo1g6W1TgY2sSvzHB3bBi3TJdiAlBan4
-	 +WjXI2p4inBo+YqHFBQc/e86tTAYh+SSrDojVvTurYT4QYCNbcIp9RCBLdplp3BO4f
-	 0oQTHfsVeS3RffWfG5UPpm1qh6asxrLn4fw7I8NLK7YDoPsZa5ce501l6C4R/+OD1N
-	 n9z15xKyg7cdpENK/KbCGPyTsMgitMdqV8MarY+8xbWePdNJSK1QtS9PpGjVi3YfwM
-	 cZezC6cCVVTomAhDjI6+L+evhMvinI0oqdQxpDTHyq7BG2S0L0Mm/3Qb5mbUcn9Hvc
-	 vo8IGJqCve3/g==
-Message-ID: <712ab5f3-eb61-f7e5-fc67-c6c175beaac0@collabora.com>
-Date: Thu, 14 Sep 2023 12:14:03 +0200
+	id 1qgjRA-007yAU-02;
+	Thu, 14 Sep 2023 10:19:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1694686743; x=1726222743;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=O1LLvMPKGNc5ZFEUOpVx7SNJUHBbUo3ACKo6XHAjDn8=;
+  b=YhtEHe0H9Am871U0BLW6PIkwxC9RaTUKojP2lhFvOhoP1uN+cf3iRhG6
+   Mlm3KGiqbVAaWcE1yptiwN82CKY3Ut3l0TagzZdKDiCTzHpnoBxIilbOr
+   Q/oCU8JsUOMBGXGUBvGT4wcqbZNLY7ip+4opBPP7YemJiZ9onuSzTjsEm
+   X0ahhgwZEokZWN838NFXbnKRWxWzIDEIXSC9obI4zWnJjvSGnv55H6yco
+   vUSI/eChs1zZ6FpG+9XUdaIkeK++2psoh2gPfu+5FeDPTYhpIvhFmJtq1
+   eO3SZMCF6fLCtiLhQK3cGoxUCDOP6LzYgWT5vs47300cs63L/BOgVapLp
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10832"; a="363949202"
+X-IronPort-AV: E=Sophos;i="6.02,145,1688454000"; 
+   d="scan'208";a="363949202"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Sep 2023 03:18:49 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10832"; a="773840738"
+X-IronPort-AV: E=Sophos;i="6.02,145,1688454000"; 
+   d="scan'208";a="773840738"
+Received: from lkp-server02.sh.intel.com (HELO 9ef86b2655e5) ([10.239.97.151])
+  by orsmga008.jf.intel.com with ESMTP; 14 Sep 2023 03:18:44 -0700
+Received: from kbuild by 9ef86b2655e5 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qgjQo-0001Tp-0F;
+	Thu, 14 Sep 2023 10:18:42 +0000
+Date: Thu, 14 Sep 2023 18:18:03 +0800
+From: kernel test robot <lkp@intel.com>
+To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+	Sumit Semwal <sumit.semwal@linaro.org>, christian.koenig@amd.com,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: oe-kbuild-all@lists.linux.dev, Anan Sun <anan.sun@mediatek.com>,
+	devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+	jianjiao.zeng@mediatek.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, tjmercier@google.com,
+	linaro-mm-sig@lists.linaro.org, John Stultz <jstultz@google.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+	Yong Wu <yong.wu@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH 6/9] dma-buf: heaps: mtk_sec_heap: Add tee service call
+ for buffer allocating/freeing
+Message-ID: <202309141707.zdT0yuMT-lkp@intel.com>
+References: <20230911023038.30649-7-yong.wu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH 1/2] usb: xhci-mtk: add a bandwidth budget table
-Content-Language: en-US
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20230830122820.18859-1-chunfeng.yun@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20230830122820.18859-1-chunfeng.yun@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230911023038.30649-7-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_031409_234945_B1A9A34A 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20230914_031904_115559_AE0C6E9E 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,26 +96,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/08/23 14:28, Chunfeng Yun ha scritto:
-> In order to estimate when fs/ls transactions appear on a downstream bus,
-> the host must calculate a best case full-speed budget, use a table to
-> track how many bytes occure in each microframe.
-> This patch is prepared for introducing an improved bandwidth scheduling.
-> 
+Hi Yong,
 
-Hello Chunfeng,
+kernel test robot noticed the following build errors:
 
-it would be helpful if you add a cover letter with some test results for
-the BW improvements that you're seeing here.
+[auto build test ERROR on drm-misc/drm-misc-next]
+[also build test ERROR on robh/for-next linus/master v6.6-rc1 next-20230914]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Thanks,
-Angelo
+url:    https://github.com/intel-lab-lkp/linux/commits/Yong-Wu/dma-buf-heaps-Deduplicate-docs-and-adopt-common-format/20230911-103308
+base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
+patch link:    https://lore.kernel.org/r/20230911023038.30649-7-yong.wu%40mediatek.com
+patch subject: [PATCH 6/9] dma-buf: heaps: mtk_sec_heap: Add tee service call for buffer allocating/freeing
+config: loongarch-allmodconfig (https://download.01.org/0day-ci/archive/20230914/202309141707.zdT0yuMT-lkp@intel.com/config)
+compiler: loongarch64-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230914/202309141707.zdT0yuMT-lkp@intel.com/reproduce)
 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->   drivers/usb/host/xhci-mtk-sch.c | 113 +++++++++++++++++++++++---------
->   drivers/usb/host/xhci-mtk.h     |   4 +-
->   2 files changed, 85 insertions(+), 32 deletions(-)
-> 
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202309141707.zdT0yuMT-lkp@intel.com/
 
+All errors (new ones prefixed by >>):
+
+   loongarch64-linux-ld: drivers/dma-buf/heaps/mtk_secure_heap.o: in function `mtk_kree_secure_session_init':
+   mtk_secure_heap.c:(.text+0x130): undefined reference to `tee_client_open_context'
+   loongarch64-linux-ld: drivers/dma-buf/heaps/mtk_secure_heap.o: in function `.L10':
+   mtk_secure_heap.c:(.text+0x19c): undefined reference to `tee_client_open_session'
+   loongarch64-linux-ld: drivers/dma-buf/heaps/mtk_secure_heap.o: in function `.L12':
+   mtk_secure_heap.c:(.text+0x1dc): undefined reference to `tee_client_close_context'
+   loongarch64-linux-ld: drivers/dma-buf/heaps/mtk_secure_heap.o: in function `mtk_sec_mem_tee_service_call.constprop.0':
+>> mtk_secure_heap.c:(.text+0x274): undefined reference to `tee_client_invoke_func'
+   loongarch64-linux-ld: drivers/dma-buf/heaps/mtk_secure_heap.o: in function `mtk_sec_mem_release.isra.0':
+   mtk_secure_heap.c:(.text+0x464): undefined reference to `tee_client_invoke_func'
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
