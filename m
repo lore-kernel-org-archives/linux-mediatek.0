@@ -4,91 +4,177 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4349EE0219
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Sep 2023 23:42:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB562EE0212
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 01:05:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	In-Reply-To:Date:References:Message-ID:From:Subject:Cc:To:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qhJToYTNQgE0Hp2zNwcVoJ6UineNQbf397W3Yx/XnQM=; b=uPo+JH0CvAvSiWBaLz9GUtvaRs
-	RXAuTP+COXXP104BuAct3WsoW24XERHYmiytey+LwldlSxG/71MEE85ZGKdwNHCaecNTLx2U/4q1W
-	cqPW573PWvzILEMmvTqVj8SoQQS4AqR6pXx56uJKo8qmqOYkYqvyOnRWzL8epF17Iq1c/3/KXi1ZS
-	/GGaOcSL1TEG0dqyiMrqjTmhE/aR+0TXcUVucESKT85iH4zwSTO0HGoHVa2zRdAlUSdJBkX7V0SpR
-	8JWKLeHZNlPG5b/j+VkDwoYvHpfLfKOzPH8cOBDNCAslIN5AjPBo0c8FDcG/mpSoX8DYlljku9EPU
-	PjNSifsg==;
+	bh=LXWoWbNTlNkgI1PHk3r3CFIAprCaWxDk7l5PvjV5BRE=; b=wbk5j3A4SwqX37kKZkt4K9RkZk
+	RxaBat/ms6Jxkq1KHfkF/QXbvTB7JtdcdI1enWWlBO95xduHRSE51FWXMy8aZkDMZiWYlW0etlGSR
+	qd8k3RWJ9/mnj6F3DENYlSbLbheROlgKntg/mvf0hBg2hm7uAzq90iG5bxaoSTGP0a6M7I2GNUnt2
+	rRD92/QMjv3H4BwaYa0WdzsZf0AEu+0WcV7tKN0BGVpkSHO/dQxVk7ivb8RaS83J6hFVeOl9v9C+/
+	4u9CgsOeQJ73seEb4jZhRz6u1dzV9AmiGScGlX9AK1a3Tc224UK9AfkbtbDYLvEzNKbSlehcDpPTv
+	9p+NFRZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgZUr-006uQi-2R;
-	Wed, 13 Sep 2023 23:42:13 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+	id 1qganY-006yUc-0d;
+	Thu, 14 Sep 2023 01:05:36 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgZUo-006uP0-1s
-	for linux-mediatek@lists.infradead.org;
-	Wed, 13 Sep 2023 23:42:12 +0000
-Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-68fc1bbc94eso263465b3a.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 Sep 2023 16:42:09 -0700 (PDT)
+	id 1qganV-006yUF-0e;
+	Thu, 14 Sep 2023 01:05:34 +0000
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38E0bFId013601;
+	Thu, 14 Sep 2023 01:05:22 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=to : cc : subject :
+ from : message-id : references : date : in-reply-to : content-type :
+ mime-version; s=corp-2023-03-30;
+ bh=LXWoWbNTlNkgI1PHk3r3CFIAprCaWxDk7l5PvjV5BRE=;
+ b=AoVk/ur9dmWFliESwJKunOvlJGotSgLfVccrLtye8U+JHt1OkXrt9aQcTSW+NWppkbU6
+ nzqMbALunub4rcTQRu/63aWWCvJHf1TSgIm7gsomZisiXCJeu/t0srUkDXSbcuCd6p3w
+ zyIJiNRbAa8dPYNKr/SdJGesqV7qOjVnH+PWTbcSd9Ks+q9uqp14WxwdMDMT3YqpCeZW
+ vz8lKP6c1z+DdaPG8eoL5Ljv9z15xuoCpf6WA1UZVdDjqFUQ0qruKV4Ly4juq10q4YyI
+ K6JI2vFAraVJ31KdcE/ktNSLkgn0aR0SO/EerShI1sAo6AcY2v/nVM5DMWJs+6Q+fft/ nQ== 
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3t2y7kkgm1-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 14 Sep 2023 01:05:22 +0000
+Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 38E0A6Ir033008;
+	Thu, 14 Sep 2023 01:05:21 GMT
+Received: from nam11-bn8-obe.outbound.protection.outlook.com (mail-bn8nam11lp2168.outbound.protection.outlook.com [104.47.58.168])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 3t0wkh9yfr-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 14 Sep 2023 01:05:21 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=SnbM6Av3rERnu78DLly48NwwWQL6q0eSyBjF07zC7CcoeRuRQumJXqg1kdaEb5yhJo1IhlPcj0o3wheLujcmZnrYsyEW6a75xz7hxWBHeXXEBgigOUqP3Zv/GQ4ht3Ed76gg+7YDVyODiG57qWd1CJz4AWji437N8Oh3Yb7HceyAYkFVnZZku5lp+3aXUCNh15UdCQ0EUNvOCvEDwIfX4LWnOJLv3UeGOnFwnogJPtPi/SSCA/QZ5IWsuTy9trDnu99V+XvbvUo7cReg3c6Bz8arL9lw/3G5FHcLT9/0xszvLdXiPls7akMbJdkrgZ9j8kIbFQa7QBB/nYiToM3GWg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=LXWoWbNTlNkgI1PHk3r3CFIAprCaWxDk7l5PvjV5BRE=;
+ b=E7uHIf4ROzw/DGEuF363obAAV+4EqKEddVAkh2a90BGHQbRdLYiTCIjf+VfFG4CtbRwobU/xrKuGr5EBy+w4t/2VZM2MWnDFnYrd8AGw6iAuOk2bXaZni1clUvDwTgNdcfMorwHZ0cwX5tkO3QqloA5EeaFkcTbjuz/6NSzk1Ml7E3MtL7aEpk7ogAEypf6TQ/QQXGPhCY3/TuyPqcoCmmgTW7R8ZeHSAts9bjnEy8YLwGuQCGgknik6PM1qRCPxGnenj7hBT7mQDYLC1JoYEEahpaMFdmp06pCxKsIw+LrlwySAR3xVmXmGZfXGvNoXzermAabXM8DVKNx3knFVIQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1694648529; x=1695253329; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=qhJToYTNQgE0Hp2zNwcVoJ6UineNQbf397W3Yx/XnQM=;
-        b=O7Iez2+z4fO9OAhFRKjjpJnMVG8wVLHfZ5v4WPKGCiqSNNmEXjk6eHPM1TaW3KXLQB
-         lqcj5EnSt0h7JMJr1meVf19/ZbJHv6UM1fJ7L3l7BaHqu1HbQr8RJjaEVZTqkT3HdvN2
-         SOlUDuP0IqQ2zI3b02dVL3ysPyJHqUQJWymSM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694648529; x=1695253329;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qhJToYTNQgE0Hp2zNwcVoJ6UineNQbf397W3Yx/XnQM=;
-        b=PP3qK2upSx5aqS02Y6EgtNVBfonfeR/YBO8P991JhGma6eh/JaAFpBOSrNiHg1/PGe
-         D6k5MXA2gSMXYs8jeMIIkzAyqbGnNrJG3kQmg5j2DfezMKBVlsInaIOI43givLbUqVap
-         CK67dIh6Q3u6IjlFeVVarTA7hiESiYAR+H8tANYgXyrLsWrWCw2qnShVXkwASWP5hqrh
-         As/Ml6zPTgL3ybOZSWeUrnJhEKA2jo2DqpNQKNckgQwN1imVWoFh/kN8YUc92qM9zk9/
-         MW9jCXbsHTgaDV/rV9gfpE+N1q4L0bfMzJLJ1Rms2UOGEtiyy210Y459RwvXPTkKQuJl
-         2Vpg==
-X-Gm-Message-State: AOJu0YyT8EJIXrl1a3h55kPlImFsXvmWJV0BxIgyyIznjpiwJrDbXKy5
-	+qSdAIxqKmFx7mmItH3pen/++w==
-X-Google-Smtp-Source: AGHT+IEb+U0u0xKyw5shUYDu9+LXf06vqwRCVkTois8kAxcLarz4lxMuR+oS1Pa4m67fU85hFGCeBQ==
-X-Received: by 2002:a05:6a20:4403:b0:14c:512c:60d9 with SMTP id ce3-20020a056a20440300b0014c512c60d9mr4576906pzb.27.1694648529242;
-        Wed, 13 Sep 2023 16:42:09 -0700 (PDT)
-Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net. [198.0.35.241])
-        by smtp.gmail.com with ESMTPSA id j12-20020a170902c3cc00b001b9e9edbf43sm169157plj.171.2023.09.13.16.42.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Sep 2023 16:42:08 -0700 (PDT)
-Date: Wed, 13 Sep 2023 16:42:07 -0700
-From: Kees Cook <keescook@chromium.org>
-To: Mukesh Ojha <quic_mojha@quicinc.com>
-Cc: corbet@lwn.net, agross@kernel.org, andersson@kernel.org,
-	konrad.dybcio@linaro.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
-	tony.luck@intel.com, gpiccoli@igalia.com,
-	mathieu.poirier@linaro.org, catalin.marinas@arm.com,
-	will@kernel.org, linus.walleij@linaro.org,
-	andy.shevchenko@gmail.com, vigneshr@ti.com, nm@ti.com,
-	matthias.bgg@gmail.com, kgene@kernel.org, alim.akhtar@samsung.com,
-	bmasney@redhat.com, quic_tsoni@quicinc.com,
-	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-hardening@vger.kernel.org,
-	linux-remoteproc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, kernel@quicinc.com
-Subject: Re: [REBASE PATCH v5 11/17] qcom_minidump: Register ramoops region
- with minidump
-Message-ID: <202309131632.736914C0A3@keescook>
-References: <1694429639-21484-1-git-send-email-quic_mojha@quicinc.com>
- <1694429639-21484-12-git-send-email-quic_mojha@quicinc.com>
- <202309131624.0371D7E@keescook>
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=LXWoWbNTlNkgI1PHk3r3CFIAprCaWxDk7l5PvjV5BRE=;
+ b=toO9dUTNNgdTgFy/iAhndsHwmI5TLDe5jH36TmooLqCkhpFhX27lR1z/C386AWVEX9FhAvSXBdatxXeTw/v2NVod/eINfUb0xOHB/i0lAQVGjZoa/wO2H3O0SGsig1KRrfTMJlo/JLKGEBMm7DXMgqET27xRydodza7x/dXXbnc=
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com (2603:10b6:510:3d::12)
+ by BY5PR10MB4244.namprd10.prod.outlook.com (2603:10b6:a03:207::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6768.33; Thu, 14 Sep
+ 2023 01:05:19 +0000
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::59f3:b30d:a592:36be]) by PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::59f3:b30d:a592:36be%7]) with mapi id 15.20.6792.019; Thu, 14 Sep 2023
+ 01:05:19 +0000
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Stanley Chu <stanley.chu@mediatek.com>,
+        "James E.J. Bottomley"
+ <jejb@linux.ibm.com>,
+        "Martin K. Petersen" <martin.petersen@oracle.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+        linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] scsi: ufs: do not look for unsupported
+ vdd-hba-max-microamp
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Organization: Oracle Corporation
+Message-ID: <yq134zhfttp.fsf@ca-mkp.ca.oracle.com>
+References: <20230906113302.201888-1-krzysztof.kozlowski@linaro.org>
+Date: Wed, 13 Sep 2023 21:05:17 -0400
+In-Reply-To: <20230906113302.201888-1-krzysztof.kozlowski@linaro.org>
+	(Krzysztof Kozlowski's message of "Wed, 6 Sep 2023 13:33:02 +0200")
+Content-Type: text/plain
+X-ClientProxiedBy: SA0PR11CA0093.namprd11.prod.outlook.com
+ (2603:10b6:806:d1::8) To PH0PR10MB4759.namprd10.prod.outlook.com
+ (2603:10b6:510:3d::12)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <202309131624.0371D7E@keescook>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR10MB4759:EE_|BY5PR10MB4244:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5f813683-c111-48c5-e6fe-08dbb4beaa27
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: IJezNXeNlCQClhSZXzjJ7yPpO1rHmXZVpreFZza3F790BnEaQO1Iemyr87Jil60Wuck5dauQN48fA7t8rTbQZ+gmh3OEQhDz5rYtHIw2mzPHhe8xhw4gYW3jeQg1CmBczyLCzV53bw8jwJdhdlWlfrFGjUr7ZJdJnuHBO58DFpSYqiEJEaVKI9ll2S3EaEB5Dtzzb3K7RcBllhANNJslGZONetXuYmA7Tsr6kQgI+afFxPqI3ssYmvJoEIdeq0/eguWpiVsXnXiV+i2qMp9zeY0qNgKpQ8ZRI1S6QwLeSM3I0XhlajtG5DnwfGBcCn2haDzWs8MX6yql60ymbuwA6ucWXLI1zOJkMyziaiIikoM+6FAx/BOtT1zCa7zBInJBt3VyiuKnyMSV6CqGG29iHcJwUcNsVS4LTWnfG+wBVGNZmdnyiQj2dIAre1zQtSM4Kw8eBJ2Kr97cBDQ5GIOOe3RITv9+UmgCjQK/1HVXhFNyomPJCdXfVlFUofu9gfKUqfoN97IJOn1tDTVPVhS+MhoLZ4Mm4whaa6yaro4r0TCJUlLLftVyhJkgpA+xen0E
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR10MB4759.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230031)(396003)(366004)(376002)(136003)(39860400002)(346002)(1800799009)(451199024)(186009)(316002)(6486002)(36916002)(6506007)(38100700002)(86362001)(558084003)(2906002)(26005)(6512007)(478600001)(54906003)(4326008)(8936002)(8676002)(5660300002)(83380400001)(6916009)(41300700001)(66556008)(66946007)(66476007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?8XwkLDiSW9HQmoxTJSYTiqzFA3byGuFFh4XqDkFnUVgtCrswg+152kfQIdYA?=
+ =?us-ascii?Q?Ha/uYbFLiR22WphiAv9bfuDOwtLCH0Oqe4nK5eQ122gjYKDEkSiO54q5yap2?=
+ =?us-ascii?Q?T049eo2M0sMSvAPlEGbhnkwUfES048eyn1t2jRKsoQfDnHuJt9WQ/csvid0p?=
+ =?us-ascii?Q?1LBbpuqi0b2PL8+gTgMrDH+w6puJBd7cVxJiE/sjHahyCkOxFLDgOwJWrfBG?=
+ =?us-ascii?Q?pQ9z4zUKbR6sePzvZ4HTHHf4gyRxd1WwlvY3l7UmhQtGeGRSQP/kcLQWhTN6?=
+ =?us-ascii?Q?v4fKoIoXXENdL51q11xByWGs7FjRFXWES2Kcd1m8NfonXlan1P8dTOxaiYnH?=
+ =?us-ascii?Q?y9Qg0YFDErH4bBM/YyL6sep+Hg4+WSMknUu7AlLQ/vq6PK32GyMZIILy8PLx?=
+ =?us-ascii?Q?IznHqPlL4+O0yhf6cl2ZGx75ExjNSkWkxSVmxT1ap7dbKZgjkBc0m9XTqNWK?=
+ =?us-ascii?Q?P3xTogfjfR6TeHnpUB3RkGsc4DT/puhnb+lJUMQGSw8Rgp4391c5fP9Hvdpn?=
+ =?us-ascii?Q?k6cIWaPyuljX1pj93Skcx8Nk+e4Av5j7qxLqSKqzruSGg4+FvFTUqvNXq7g0?=
+ =?us-ascii?Q?187at0ZCrMY/nuWxH5qA3cyFyjOYTH6lxtndm8Zoc9dcA5hVZwMLzYZARxTB?=
+ =?us-ascii?Q?Ds8hYZbdupYHdA2vk3ZLYh2eWGl1fHlOnSU20NFa6LCoV9lCDryBPC/8sgff?=
+ =?us-ascii?Q?JDL0D6x64NugCdnGoUKaIRXzSApWRPlJgnF+Yc7v5atPCTHLzCcU1R6AELUq?=
+ =?us-ascii?Q?pgazr7jOK2sbplw6InT2Y6xgHkqt6x3Tf9h13YrmdMnZJdOU9IuaNzywASS6?=
+ =?us-ascii?Q?2ZauG69FQEy8o1HSMYv1dwf/0+g8ZWVPbvs0dRsDG8xI8tRmjlgr0J/MOBMR?=
+ =?us-ascii?Q?kX0iJcixRoy3xOEj+fazUNYHo9eCI5sqiSqM9FrPsobmixT3LcOxz29R5k9K?=
+ =?us-ascii?Q?qGyZBb8yglDnrV0qVVbR3228ElJo7iDvn9Uprd26kKrL+A5g+dAvIpCXv3y7?=
+ =?us-ascii?Q?4yazQPaXGzxfMZ7MpNxRFatnQLcynTftv1dzN5j/aPQIhWuykaDgmYG1daQi?=
+ =?us-ascii?Q?kBwMoS7jt/C2xw1Wa3NJHq6FR1icjYxkCSVtuPRL0feExGLzsAhpDy80R/AN?=
+ =?us-ascii?Q?o5174SmEBYoLzDcr9kkt1tdTbEkcMe3nqlHcibWMaWQ/bv6GisYTDGhCQPXG?=
+ =?us-ascii?Q?OzKZuakpnnMNYF5XqwTSaqjS+SjDOP96JIIB1+9wRwX0wm3Wc1iKeG3SJ5WD?=
+ =?us-ascii?Q?O5lJrOR22kMLmOZiEhWo7Xm2E2oD/qflTy4Bbs69J3RZ/t70AHVyg06hqvO5?=
+ =?us-ascii?Q?MWy5bMNZwN7YI7L5PigdY9K+6y6h5ppoKqSuHpVLvxo5zqujRcQEaJHd3guI?=
+ =?us-ascii?Q?I0i+hKN5pciNQhaaEDdmgOoT4uUjwWDy7MHueDR1ayXAHubKDiyQeBpmzzBM?=
+ =?us-ascii?Q?lha+Z3fzx+NxKznwUUj1BD/2bCl1cekFG5EvNy1WIDjA5F0fJd0Re/P6wNkb?=
+ =?us-ascii?Q?sPW63MNzbyswWoEg7QPEIlxd2+rjWnnLIppMoRjyKGt9WWVsZCyNb1XRJFsq?=
+ =?us-ascii?Q?3aN76vfifAEIxORnnBKPtBehP2wVheHJExBH04Ojxrcb8wrM5OC0j/6qPNe3?=
+ =?us-ascii?Q?ag=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: =?us-ascii?Q?lt4HfevweWUmkZA6n9F48FHTO3fF467GbpV+bjJt0DqN0yWP6M/UOAAjk6QM?=
+ =?us-ascii?Q?YXnls4InkuwlMlTIyXQ7+gUCd310RDt3rEUI6PJJ+z210XxdWSNpIwXE2djA?=
+ =?us-ascii?Q?Bc4nOHHKu/4PFQkMvI5V2q4p6ZwXOJEPLmIysQULtn3TuhfxirVuPGM1V3/2?=
+ =?us-ascii?Q?LZ+Adgx93myIL2yge/Sf9bf524CPbG7NbBPGnGoNZvwxQ2aiUQxi17QGzflF?=
+ =?us-ascii?Q?yBCESj8i9AS9vPEfjNlZOk0HWbDvwdrkWSmPau7va1tZk+C6ZIBH28PSFGaI?=
+ =?us-ascii?Q?b5Z21uarmyeMPLbR/EQ1VzOQ5/dHnHdtykVq0HJ8IjWWkq8ODW/zSrSNwfSI?=
+ =?us-ascii?Q?bz4+f4MsSeiuCw8ufVo4gjjfVWo8/65Jw8aRVCtW9nAYG3uyUYzxD03NmNWr?=
+ =?us-ascii?Q?1KsDCSPUMyUYJ+LHAiQ6LNmGqt8l9ycHY+iIV/kRSXiCO3MSEOiyqS7QCRIA?=
+ =?us-ascii?Q?JnFdsr+Dxm6HvM1bFGJamFbPHWQXKaQ1HWOwNuGLx/HkccO78wT99XunQbJn?=
+ =?us-ascii?Q?Zsint/z98G2skR9EG5Cct0AEo2ox1R+ywnVkQYmHDCl7+5eIfv/ffPgzdKwd?=
+ =?us-ascii?Q?OUhnJOrWc+4aZGJVpDLVYxcYM0lgIvsDwzBVsVXN96IxYA/nMqFDahkZOEY9?=
+ =?us-ascii?Q?PgL9w0WRP4vOqCOPF2fNJhYtVlt2yNH3eygkf5idBmmBnzKJOH5vGN4agJQx?=
+ =?us-ascii?Q?97N7AbTW47WZu6opUhKIu0Et7sTnC4lDXG+qZG6nZJPT/qXK0uWKHbUUHhsS?=
+ =?us-ascii?Q?8rp7+2muOPe5pWWUUzD5lOVPLIP6PvQ//+spQHWe3HFScOSNSKFQL4YYiJd+?=
+ =?us-ascii?Q?x6mwUTEBVA7UPuzXZgL9hziCoW+cD3Yz8IBk15yP4WSjfXeKAB/CSOvWKjPu?=
+ =?us-ascii?Q?BAfDve8FATAc+3wB0s/Pth1NfgdJcvE+9LSvuvZGN4o7MtRyMap8TsqmPl3I?=
+ =?us-ascii?Q?SkrkxWBE/wr764EQUb4aqnq+/xV1FRLbwp6qpE5V+7c=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5f813683-c111-48c5-e6fe-08dbb4beaa27
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4759.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Sep 2023 01:05:19.5822
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: plrFeQswnUQ3v8rM1zh1/G3ft3kMf3YMoyqcADqCi8apqtNKUE/2OsY9Kp0K63V2zR8jHpvY9+aWBTpztq7lxzJJZr9am+NyYFs7M+YM9v8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR10MB4244
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-09-13_19,2023-09-13_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 adultscore=0 phishscore=0
+ spamscore=0 mlxlogscore=824 bulkscore=0 suspectscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2308100000
+ definitions=main-2309140008
+X-Proofpoint-GUID: peoPo_-FOTo-N4eYvkU0NGB_YKI9_h21
+X-Proofpoint-ORIG-GUID: peoPo_-FOTo-N4eYvkU0NGB_YKI9_h21
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230913_164210_637840_C4CA4947 
-X-CRM114-Status: GOOD (  38.19  )
+X-CRM114-CacheID: sfid-20230913_180533_247979_62212CE3 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,172 +189,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 13, 2023 at 04:30:04PM -0700, Kees Cook wrote:
-> On Mon, Sep 11, 2023 at 04:23:53PM +0530, Mukesh Ojha wrote:
-> > Register all the pstore frontend with minidump, so that they can
-> > be dumped as default Linux minidump region to be collected on
-> > SoC where minidump is enabled.
-> > 
-> > Helper functions is written in separate file and built along with
-> > the minidump driver, since it is client of minidump and also call
-> > it at appropriate place from minidump probe so that they always
-> > get registered.
-> > 
-> > While at it also rename the out minidump module object name during
-> > build as qcom_apss_minidump which basically depicts as Qualcomm
-> > Application processor subsystem minidump.
-> > 
-> > Signed-off-by: Mukesh Ojha <quic_mojha@quicinc.com>
-> > ---
-> >  drivers/soc/qcom/Kconfig                 |  1 +
-> >  drivers/soc/qcom/Makefile                |  3 +-
-> >  drivers/soc/qcom/qcom_minidump.c         |  4 ++
-> >  drivers/soc/qcom/qcom_ramoops_minidump.c | 88 ++++++++++++++++++++++++++++++++
-> >  drivers/soc/qcom/qcom_ramoops_minidump.h | 10 ++++
-> >  5 files changed, 105 insertions(+), 1 deletion(-)
-> >  create mode 100644 drivers/soc/qcom/qcom_ramoops_minidump.c
-> >  create mode 100644 drivers/soc/qcom/qcom_ramoops_minidump.h
-> > 
-> > diff --git a/drivers/soc/qcom/Kconfig b/drivers/soc/qcom/Kconfig
-> > index 0ac7afc2c67d..9f1a1e128fef 100644
-> > --- a/drivers/soc/qcom/Kconfig
-> > +++ b/drivers/soc/qcom/Kconfig
-> > @@ -306,6 +306,7 @@ config QCOM_MINIDUMP
-> >  	tristate "QCOM APSS Minidump driver"
-> >  	depends on ARCH_QCOM || COMPILE_TEST
-> >  	depends on QCOM_SMEM
-> > +	depends on PSTORE
-> >  	help
-> >  	  This config enables linux core infrastructure for Application
-> >  	  processor subsystem (APSS) minidump collection i.e, it enables
-> > diff --git a/drivers/soc/qcom/Makefile b/drivers/soc/qcom/Makefile
-> > index 4b5f72f78d3c..69df41aba7a9 100644
-> > --- a/drivers/soc/qcom/Makefile
-> > +++ b/drivers/soc/qcom/Makefile
-> > @@ -33,4 +33,5 @@ obj-$(CONFIG_QCOM_ICC_BWMON)	+= icc-bwmon.o
-> >  qcom_ice-objs			+= ice.o
-> >  obj-$(CONFIG_QCOM_INLINE_CRYPTO_ENGINE)	+= qcom_ice.o
-> >  obj-$(CONFIG_QCOM_RPROC_MINIDUMP)	+= qcom_rproc_minidump.o
-> > -obj-$(CONFIG_QCOM_MINIDUMP)		+= qcom_minidump.o
-> > +obj-$(CONFIG_QCOM_MINIDUMP)		+= qcom_apss_minidump.o
-> > +qcom_apss_minidump-objs			+= qcom_minidump.o qcom_ramoops_minidump.o
-> > diff --git a/drivers/soc/qcom/qcom_minidump.c b/drivers/soc/qcom/qcom_minidump.c
-> > index 4ce36f154e89..7930a80b9100 100644
-> > --- a/drivers/soc/qcom/qcom_minidump.c
-> > +++ b/drivers/soc/qcom/qcom_minidump.c
-> > @@ -23,6 +23,7 @@
-> >  #include <soc/qcom/qcom_minidump.h>
-> >  
-> >  #include "qcom_minidump_internal.h"
-> > +#include "qcom_ramoops_minidump.h"
-> >  
-> >  /**
-> >   * struct minidump_ss_data - Minidump subsystem private data
-> > @@ -688,6 +689,8 @@ static int qcom_apss_minidump_probe(struct platform_device *pdev)
-> >  		return ret;
-> >  	}
-> >  
-> > +	qcom_ramoops_minidump_register(md->dev);
-> > +
-> >  	mutex_lock(&md_plist.plock);
-> >  	platform_set_drvdata(pdev, md);
-> >  	qcom_apss_register_pending_regions(md);
-> > @@ -701,6 +704,7 @@ static int qcom_apss_minidump_remove(struct platform_device *pdev)
-> >  	struct minidump *md = platform_get_drvdata(pdev);
-> >  	struct minidump_ss_data *mdss_data;
-> >  
-> > +	qcom_ramoops_minidump_unregister();
-> >  	mdss_data = md->apss_data;
-> >  	memset(mdss_data->md_ss_toc, cpu_to_le32(0), sizeof(struct minidump_subsystem));
-> >  	md = NULL;
-> > diff --git a/drivers/soc/qcom/qcom_ramoops_minidump.c b/drivers/soc/qcom/qcom_ramoops_minidump.c
-> > new file mode 100644
-> > index 000000000000..eb97310e3858
-> > --- /dev/null
-> > +++ b/drivers/soc/qcom/qcom_ramoops_minidump.c
-> > @@ -0,0 +1,88 @@
-> > +// SPDX-License-Identifier: GPL-2.0-only
-> > +/*
-> > + * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
-> > + */
-> > +
-> > +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
-> > +
-> > +#include <linux/device.h>
-> > +#include <linux/kernel.h>
-> > +#include <linux/module.h>
-> > +#include <linux/pstore.h>
-> > +#include <linux/slab.h>
-> > +#include <soc/qcom/qcom_minidump.h>
-> > +
-> > +#include "qcom_ramoops_minidump.h"
-> > +
-> > +static LIST_HEAD(ramoops_region_list);
-> > +
-> > +struct md_region_list {
-> > +	struct qcom_minidump_region md_region;
-> > +	struct list_head list;
-> > +};
-> > +
-> > +static int qcom_ramoops_region_register(struct device *dev, int type)
-> > +{
-> > +	struct qcom_minidump_region *md_region;
-> > +	struct md_region_list *mdr_list;
-> > +	struct pstore_record record;
-> > +	unsigned int max_dump_cnt;
-> > +	phys_addr_t phys;
-> > +	const char *name;
-> > +	void *virt;
-> > +	size_t size;
-> > +	int ret;
-> > +
-> > +	record.type = type;
-> > +	record.id = 0;
-> > +	max_dump_cnt = 0;
-> > +	name = pstore_type_to_name(record.type);
-> > +	do {
-> > +		ret = pstore_region_defined(&record, &virt, &phys, &size, &max_dump_cnt);
-> 
-> I really don't want this happening: you're building your own pstore_record
-> (which has a common initializer that isn't used here) and manually
-> scraping the ramoops regions.
-> 
-> It looks to me like you just want a way to talk all the records in
-> pstore and then export their location to minidump. The record walker
-> needs to be in the pstore core, and likely should be shared with
-> fs/pstore/inode.c which does the same thing.
-> 
-> Then, in this code, you can just do something like:
-> 
-> 	for (record = pstore_get_record(NULL); record; record = pstore_get_record(record)) {
 
-I just took another look at how records are stored, and I think the best
-API here is going to be something like registering a callback so that
-pstore can call into minidump for each record. (i.e. it can do this when
-reading the records into the pstore filesystem);
+Krzysztof,
 
-	pstore_register_record_watcher(minidump_pstore_record)
+> Bindings do not allow vdd-hba-max-microamp property and the driver
+> does not use it (does not control load of vdd-hba supply). Skip
+> looking for this property to avoid misleading dmesg messages:
 
-Then pstore can make the calls if one is registered, in the middle of
-pstore_mkfile(), with all the correct locks held, etc:
-
-	if (psi->record_watcher)
-		psi->record_watcher(record);
-
-And then minidump_pstore_record() can do this part:
-
-
-> 		if (ramoops_get_record_details(record, &virt, &phys) < 0)
-> 			continue
-> 		...
-> 		md_region->virt_addr = virt;
-> 		md_region->phys_addr = phys;
-> 		md_region->size = record->size;
-> 
-> 		ret = qcom_minidump_region_register(md_region);
-
--Kees
+Applied to 6.7/scsi-staging, thanks!
 
 -- 
-Kees Cook
+Martin K. Petersen	Oracle Linux Engineering
 
