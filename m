@@ -4,80 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C6DFEEAA5D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 17:47:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64D76EEAA5F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 18:06:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J3P8BZDl5uXhLdi7mCkkSTzXwn0E2WaaQT91SGIepdI=; b=XO+rGm5FgoxFOV4+ffuQjEQXoD
-	dnliMzSmLFeE3U++lYUksQQZ5CY2FLSTyfsHSYxXs1sGE+rnRmB02sKTs8Umm/IUdskyhmJ4AwAY3
-	qv8Pzq7S2EilRbEPJCehWmHhgekGcTHp4guR214IUlIsQnywcDP0297e0DGNsK/Gt9DpiYeGZYshE
-	sQTet9sQiHRLtSOukJoVQL0OE07obDXPVIWdSQxqmSvrDh3LGFifc76lbLCDbLLWTvyopYpfW8gg/
-	+RHcbsvQm9IXRX6vNlEe32kxXo0Eu8+r0e50dj80gzpLJo8HOMLoOeLCg3av2TjwpyG0aKhnBCQAs
-	gyU49rCw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1D+/SKBfP3op3rJcuUd1QTL4SUDL0Vl8hzAaaiQ05QA=; b=Ws0hvfomBYduqJgQ5HtXrB6gUH
+	8D9zsF9OVybfb1WBLR378Rx0UWHRrjK+EErWnc9/jl1xJkuUv3NsSySXmm4oAxcOLsgF72FdKAgRm
+	1tWN9YcH+nxK0vg+ITSAhTzyhV7D/IBtmtKmOMNH08rRL9DhCkcqKpY8DjIl4I2SvsD1+CECRNHHv
+	+RPfQswovvFupX/vk87UYtVt2v8ConOFeWIQtvW8fK8DN3gZ7liIZBO13inZ+TEFhdJFXm/Ag7k83
+	0VDT+z0mvV8/LaCixCQBrd50SV0HIMNz2j2arkBTrxZeJY2ZR055r4JDFH4Ts5cIqZM4OxOKtRhev
+	gOn47DKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgqQp-0090yv-17;
-	Thu, 14 Sep 2023 17:47:11 +0000
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+	id 1qgqjo-0092FK-11;
+	Thu, 14 Sep 2023 18:06:48 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgqQm-0090xi-08;
-	Thu, 14 Sep 2023 17:47:09 +0000
-Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-573d52030fbso1042702a12.0;
-        Thu, 14 Sep 2023 10:47:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1694713621; x=1695318421; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=J3P8BZDl5uXhLdi7mCkkSTzXwn0E2WaaQT91SGIepdI=;
-        b=NxlljxNe9eyMUJlTx+16JPtgWVjP0cwdfXVmZFEnNNp/8C8YLWp/hyhBBzHoPbqcHq
-         A9gYPLPzMggMctGoJqqI8wbp6DUTdHzq8gVLVZ3/GXvvQrfdcpkrJlrmpumCh3NmOlma
-         L3nLGH1vaIBEOWn+G/Xhnuf7YC4aPyvn3YLG/hNaRi2cex8za0e0usKIZYHfe+ZQt+Iq
-         tYAegzTcx2KStIw/Y9+FRbKfeYDCKAmZY5VXy/6o9XD89WjzugHbRX0eiQsBFy+riNaZ
-         rrdNLCCzIgfxQyVUsdC7VpDjX6RfJduDdcb1xXpH0b7+W85BcZhmb0ej90DjGpa9QvE4
-         RG+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694713621; x=1695318421;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=J3P8BZDl5uXhLdi7mCkkSTzXwn0E2WaaQT91SGIepdI=;
-        b=sU39wEF7UDPr7KIX2mH2r/2hrcArSk2GHKKGIIQgVk4hyt+lwTco47XFlGa26EgARL
-         Rl5XeqsxE6WNkC0n/AKAHpFOUGyLQEgRXhy+TzLtJomBNI/VF5wafg5i3W1FRvY6LE34
-         ayIPY8AIduH9s1VxufjuMRg1d4LvtxSeNX1gU9gqylwr7LAP3gdutkhc4CIDBJqtqmt+
-         yj6ch+Ql7KhHr2QZ+VO2bbrctJK/6gC/rhzKS7YIsJN5FmkKCA6zHNMcQRXFAuHCrFB4
-         Jjp//d2vyKbJAL1OaRnQekoH02PoNUe9mpr8KKIdMgx3V5CH2ekKUnSXeklL2A8H7nBL
-         WFDw==
-X-Gm-Message-State: AOJu0YxfuJja3P06W/8c/5JcwJy2qSbQ8lqKj0Xlr9p97e3ogK2nTeLH
-	LuN3WZdgo+fV0g5fKT1JPcGXECkfDjVb1oP5xnjFqPag/bg=
-X-Google-Smtp-Source: AGHT+IGPp/DAIdRihdOyWbn7a+/dY0934SRhirtwacdlLAZjTTKnNrCTNn7WivJjY3pfaJKBk1H17/lGSRWMortnyyU=
-X-Received: by 2002:a17:90b:1d87:b0:268:5bed:708e with SMTP id
- pf7-20020a17090b1d8700b002685bed708emr5548210pjb.24.1694713621533; Thu, 14
- Sep 2023 10:47:01 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230914080833.50026-1-haibo.li@mediatek.com>
-In-Reply-To: <20230914080833.50026-1-haibo.li@mediatek.com>
-From: Andrey Konovalov <andreyknvl@gmail.com>
-Date: Thu, 14 Sep 2023 19:46:50 +0200
-Message-ID: <CA+fCnZeHNoccoiUy11pmCG9LWHAxyB+6C7+GTc3ixj8iBnbi0w@mail.gmail.com>
-Subject: Re: [PATCH] kasan:fix access invalid shadow address when input is illegal
-To: Haibo Li <haibo.li@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, xiaoming.yu@mediatek.com, 
-	Andrey Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>, 
-	Dmitry Vyukov <dvyukov@google.com>, Vincenzo Frascino <vincenzo.frascino@arm.com>, 
-	Andrew Morton <akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kasan-dev@googlegroups.com, 
-	linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, 
+	id 1qgqjk-0092E2-0e;
+	Thu, 14 Sep 2023 18:06:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=1D+/SKBfP3op3rJcuUd1QTL4SUDL0Vl8hzAaaiQ05QA=; b=oTYBk4M3u15uWEFrkJeYaNABsn
+	4SlrZEZ1WnSQ6iG5PsCCW3OJcnRQyRWFERG17cyeloVk5IZXV+W/7YYeXQzx4KLSISJ9v3icL+OYB
+	ULoRZVOzaE1vCBOoF9wm99Stm87Hb5xK5og7jL9hsdNB1MODNk8YvCx0j9axxvSa3h/nn5VEkMwtp
+	oNDPSNNrTBqjlTF2OW2i192v8m99oW3sTtYOPO6hAXvrVjwcgEvkqTlqGwTBpbsoSlZOjV3QWoiQk
+	T4V953zJY/gikz2sIL7gNZw+9+bgQgbDng7TT3aeobFMRTgKNC0p3avg1A+R6U9nU9oRqssDa1RTc
+	06RbnWZw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:50940)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1qgqjI-0004fs-10;
+	Thu, 14 Sep 2023 19:06:16 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1qgqjC-0004z2-Sn; Thu, 14 Sep 2023 19:06:10 +0100
+Date: Thu, 14 Sep 2023 19:06:10 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
+Message-ID: <ZQNLkiAt4jOjojRf@shell.armlinux.org.uk>
+References: <0cee0928-74c9-4048-8cd8-70bfbfafd9b2@arinc9.com>
+ <20230827121235.zog4c3ehu2cyd3jy@skbuf>
+ <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
+ <87325ce9-595a-4dda-a6a1-b5927d25719b@arinc9.com>
+ <20230911225126.rk23g3u3bzo3agby@skbuf>
+ <036c0763-f1b2-49ff-bc82-1ff16eec27ab@arinc9.com>
+ <20230912193450.h5s6miubag46z623@skbuf>
+ <6cec079e-991e-4222-a76d-d6156de0daca@arinc9.com>
+ <20230913074231.5azwxqjuv2wp5nik@skbuf>
+ <ZQHcV5DUfcCYkkTi@shell.armlinux.org.uk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ZQHcV5DUfcCYkkTi@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_104708_079097_367D083F 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20230914_110644_236730_F87659BE 
+X-CRM114-Status: GOOD (  33.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,42 +107,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 14, 2023 at 10:08=E2=80=AFAM 'Haibo Li' via kasan-dev
-<kasan-dev@googlegroups.com> wrote:
->
-> when the input address is illegal,the corresponding shadow address
-> from kasan_mem_to_shadow may have no mapping in mmu table.
-> Access such shadow address causes kernel oops.
-> Here is a sample about oops on arm64(VA 39bit) with KASAN_SW_TAGS on:
->
-> [ffffffb80aaaaaaa] pgd=3D000000005d3ce003, p4d=3D000000005d3ce003,
->     pud=3D000000005d3ce003, pmd=3D0000000000000000
-> Internal error: Oops: 0000000096000006 [#1] PREEMPT SMP
-> Modules linked in:
-> CPU: 3 PID: 100 Comm: sh Not tainted 6.6.0-rc1-dirty #43
-> Hardware name: linux,dummy-virt (DT)
-> pstate: 80000005 (Nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=3D--)
-> pc : __hwasan_load8_noabort+0x5c/0x90
-> lr : do_ib_ob+0xf4/0x110
-> ffffffb80aaaaaaa is the shadow address for efffff80aaaaaaaa.
-> The problem is reading invalid shadow in kasan_check_range.
->
-> The generic kasan also has similar oops.
->
-> To fix it,check shadow address by reading it with no fault.
->
-> After this patch,KASAN is able to report invalid memory access
-> for this case.
+On Wed, Sep 13, 2023 at 04:59:19PM +0100, Russell King (Oracle) wrote:
+> On Wed, Sep 13, 2023 at 10:42:31AM +0300, Vladimir Oltean wrote:
+> > On Wed, Sep 13, 2023 at 08:52:37AM +0300, Arınç ÜNAL wrote:
+> > > On 12.09.2023 22:34, Vladimir Oltean wrote:
+> > > > On Tue, Sep 12, 2023 at 10:23:51PM +0300, Arınç ÜNAL wrote:
+> > > > > The phylink bindings for user ports I ended up making by looking up the
+> > > > > existing devicetrees are different than the phylink bindings for the shared
+> > > > > (CPU and DSA) ports currently enforced on all switches.
+> > > > > 
+> > > > > My phylink bindings for user ports:
+> > > > > 
+> > > > >              allOf:
+> > > > >                - anyOf:
+> > > > >                    - required: [ fixed-link ]
+> > > > >                    - required: [ phy-handle ]
+> > > > >                    - required: [ managed ]
+> > > > > 
+> > > > >                - if:
+> > > > >                    required: [ fixed-link ]
+> > > > >                  then:
+> > > > >                    not:
+> > > > >                      required: [ managed ]
+> > > > 
+> > > > Right, it should have been anyOf and not oneOf.. my mistake. It is a bug
+> > > > which should be fixed. It's the same phylink that gets used in both cases,
+> > > > user ports and shared ports :)
+> > > 
+> > > One more thing, I don't recall phy-mode being required to be defined for
+> > > user ports as it will default to GMII. I don't believe this is the same
+> > > case for shared ports so phy-mode is required only for them?
+> > 
+> > phy-mode is not strictly required, but I think there is a strong
+> > preference to set it. IIRC, when looking at the DSA device trees, there
+> > was no case where phy-mode would be absent on CPU/DSA ports if the other
+> > link properties were also present, so we required it too. There were no
+> > complaints in 1 year since dsa_shared_port_validate_of() is there. The
+> > requirement can be relaxed to just a warning and no error in the kernel,
+> > and the removal of "required" in the schema, if it helps making it
+> > common with user ports.
+> 
+> However, phylink pretty much requires phy-mode to be specified to be
+> something sane for shared ports, so I wouldn't be in favour of relaxing
+> the checkinng in dsa_shared_port_validate_of()... not unless you're
+> now going to accept the approach I originally proposed to have DSA
+> drivers tell the core (and thus phylink) what phy-mode and other link
+> parameters should be used when they are missing from DT.
 
-Hi Haibo,
+You mean the approach that I picked up using software nodes that got
+thrown out by the software node people? That approach that I picked
+up from you and tried to get merged?
 
-I thought this should be covered by the kasan_non_canonical_hook
-handler, which prints some additional information about how the GPF
-could be caused by accessing shadow memory.
+No, that's not going to happen, and it's not a question of whether
+_I_ am going to accept that approach or not. So don't throw that
+back on me, please.
 
-Does it not work in your case? It might be that we need to add
-kasan_non_canonical_hook to some other arm64 internal fault handler
-functions then.
+If this is something that we want to solve, we need to stop being so
+devisive (your language above is so) and try to come up with a
+solution that is acceptable to everyone... the swnode approach
+doesn't seem to be it.
 
-Thanks!
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
