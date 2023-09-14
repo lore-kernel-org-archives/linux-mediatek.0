@@ -4,88 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3829DEEAA42
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:37:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCF11EEAA41
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:38:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c65cPWzb/rGUIDWBxTTNQVYghy/Q4FEJyDB3E6oc0aI=; b=1yYl+fnK554ZU32ONG2JS4b+pg
-	1ZBXKdLzWH5kzVPlxcEQbT+yzjUu7Y0YilVWOEDw2zNSiIbftA+NaZcsWl0m2/hnTtNEMcXDXxHM/
-	aywEjXZSIxmZFAgOEvZ+K5/x4AskUdDseKyynGF8R82nsULy42ZNxsP4w9uqViUtclVOJjjeZUCfi
-	M0UOogMWBx8rVtnFYL3UlDhd1PcfaT57XxzEkqgDzSQeuFMmocaZhOhAnizOxV8QjxsFTI/KCrc8W
-	CZwnmFRXWKiw1Q9mi5n1Ivb1G41NAyCivRIxoKIBlPiTJ9qqKz747lQGEBFAVlm2vQB2O/yhm8Y4Z
-	ZlJ1spSg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:MIME-Version:In-Reply-To:References:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cmkM3eTScVXDHH0jlpqEzGVs0jKDHtYdRBTAlD8i+NE=; b=HdBsQtSKPQsM8T0HBaKZLk13se
+	vYl7SRNv7v+Ggq09+sjka7uEGDv9yHmno13AsGx0Y6ynITTyF8lnjRTwGUvDsN2nAok5oBz4l9zMd
+	Lsm4zn7CFENPJy5epeL667zvjjTMSnsoHdLJ9DHwVlQh8oeMWSAMhlt76IOZmKVJy/2135DxNgWAl
+	mCL0U929NpKngX2yl4Ngda6oJ3LJclC06nxV4voOihpYWiirwBzM904OOdatGhUaEIX2cbSe0AF99
+	OjPpdxT/bKlP8SYoV3w1zbcoPa33pmV1D8/fJXwt0hPiVQg0Pyw3C3YvbtzH++uMiXTajwZuHUEmS
+	q0261qvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmX9-008WBC-1P;
-	Thu, 14 Sep 2023 13:37:27 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1qgmYV-008X4a-2m;
+	Thu, 14 Sep 2023 13:38:51 +0000
+Received: from mail-oa1-x33.google.com ([2001:4860:4864:20::33])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmTr-008Sfz-0Q;
-	Thu, 14 Sep 2023 13:34:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=c65cPWzb/rGUIDWBxTTNQVYghy/Q4FEJyDB3E6oc0aI=; b=PMUi521kqIC9RFKYZU0bBH8sfg
-	TsysYktThLof8e5RBa5Rc4wWfAzJKWfFepq0DZAveLzQpSEl+Nv/gnwWe+Wc6WOYVXCI4CS877XWE
-	NNi5RlRRtgKHDM5OFl3fthEiiiQHA81gME473jZ6yV8KMcKRTP5A6KlWpuL5prJTm0AWUD8TfG3Jm
-	Q2QkRoHeYfQ1HPmI7UM2Fj9umy//qTY/8qvjcBUDoUmV3BeF0iFQaFNbmMXafTO8LaUHYP+beN1Gj
-	ITN4Wmz37VhEdoO2WrkbfX1CGYT1l0LvlP4/kzs10/boO/GoXTLpVozDWkg9SRci/7Ih9cC+/IUap
-	pAOcfr8w==;
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1qgmTm-003BHv-WC; Thu, 14 Sep 2023 13:34:01 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:36f2:37bd:ccbb:373f])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 30B6D660739D;
-	Thu, 14 Sep 2023 14:33:56 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694698436;
-	bh=pnW19QGFHas/i7g4P9JRpTYH72fRU9HVTUZzFWqPek8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=S/frdpA8eHkZ0lhsb6OXaBYpSmudN8EVRpzSoC5DCuaFoMu4vkWO3UO30WMap3lhx
-	 vlEIkg5EeJSc9xDMj78nC6kh+Bz3nHL3yjq0zCFAGiBEZSiSNP45IPDu39o7jbFWKh
-	 cCgy2t7vPOG96yTnB8sFbtJZs+HBoXtBq2XHU6/yEz0YtWDZnf39nwO2K/3kivxSSO
-	 W0TsANhosjjYHQ4+UyY2ytP1yKW71yRysB6IyV2TI7rvP9ilbajOUDDPXC1h+wv7Az
-	 /yDh4VvFsUr5vS8fSpUdwarVm7GMvygsYN+4kstLKwMLqxL7wgiy4sxp3XCr5p7tLo
-	 XFnuUK7BmSP5Q==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	tfiga@chromium.org,
-	m.szyprowski@samsung.com,
-	ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 48/49] media: v4l2: Add mem2mem helpers for DELETE_BUFS ioctl
-Date: Thu, 14 Sep 2023 15:33:22 +0200
-Message-Id: <20230914133323.198857-49-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
-References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
+	id 1qgmYQ-008X2I-2w
+	for linux-mediatek@lists.infradead.org;
+	Thu, 14 Sep 2023 13:38:50 +0000
+Received: by mail-oa1-x33.google.com with SMTP id 586e51a60fabf-1c504386374so543692fac.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 14 Sep 2023 06:38:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1694698724; x=1695303524; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
+         :user-agent:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=cmkM3eTScVXDHH0jlpqEzGVs0jKDHtYdRBTAlD8i+NE=;
+        b=yuKdMOatLHJnm5jhr3w3+ESy2zkGB6/pjgSEqr5Zdir8UxYqpkSqQXiY/V5i6YMuwA
+         Y6lR559xhewsUxwW8zxmmh3le5wKb6tVYQ5lWJF92L0mdE9fqgPoAWf2MwwCtysWE+ZU
+         C6aXc7yTp49x4wYx3TqhL0UyRLI57elEpi1LXSJtY6XsOFUslCN1V/I+5fKai4J41sEE
+         lF1N+De+6Rsj+TYXiVv9mMVj5zN85ONp2dLTv7ilYMsCN7KlRt0bg71OZ7BrCk1pvcxD
+         HldD7i6SOk/oHa7aL/Mv1T0SffFcvEGuMFVnUqj5EF/6jKgEn5wT7JWeDrqRdPMzOwGI
+         7KtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694698724; x=1695303524;
+        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
+         :user-agent:from:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cmkM3eTScVXDHH0jlpqEzGVs0jKDHtYdRBTAlD8i+NE=;
+        b=xBg4v2VgxxN7PeBnnaumvlnSVdKdzpiD9vbebz72ai180ZZbE+0z3Cd9kZyUQ6IHz9
+         T+DdgfTzJepfMdGcXoua/j/HMaVCu1TUyO/GUutm4J44JpfRegVCiqmWWKNaCI9Ybkjl
+         OvZolVo7FmBy8Imls0XSxo+VKXAHQyjET+Cf+zCZJwucDHqyKxHKhipZXRzh7fCI5bRh
+         ojNWNiOaBdjEFN4MShB6gpznbiEKV8kMxF4U+KRLLVIt+qNRsHu2cpkDVhcDHJBFg5YE
+         kOE/LJ8GdElR7PdGatd8WqSwrEbFuWn5u6cFKMuIc2gHN49VvDxY79ByBte/ismmNbsB
+         Wzxw==
+X-Gm-Message-State: AOJu0YwDF8TAP891wnSCOxSjPPesEfSxS2sRetoNPn1mVK+a1vwd0zUY
+	7dbZMvD6uh7useazX7cdmcfC/5BycNu9PB0hzbfhNg==
+X-Google-Smtp-Source: AGHT+IFh7Yh89j5toiLrapBEM+lFJrnPKMRKQDggX4YR83wnaK2tnE/8N6Y+YLTaga5Qlr9XmuCrRhn8q0u0c8VABfw=
+X-Received: by 2002:a05:6870:b69d:b0:1d5:b0b9:f6f1 with SMTP id
+ cy29-20020a056870b69d00b001d5b0b9f6f1mr6386214oab.8.1694698724531; Thu, 14
+ Sep 2023 06:38:44 -0700 (PDT)
+Received: from 753933720722 named unknown by gmailapi.google.com with
+ HTTPREST; Thu, 14 Sep 2023 13:38:43 +0000
+From: Guillaume Ranquet <granquet@baylibre.com>
+User-Agent: meli 0.7.3
+References: <20230914131058.2472260-1-jani.nikula@intel.com>
+In-Reply-To: <20230914131058.2472260-1-jani.nikula@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Date: Thu, 14 Sep 2023 13:38:43 +0000
+Message-ID: <CABnWg9sy_u5+TRvuRXEN8FB8BGdSadYimUQ-R6=PYEKZn2RZRw@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek/dp: fix memory leak on ->get_edid callback
+ error path
+To: Jani Nikula <jani.nikula@intel.com>, dri-devel@lists.freedesktop.org
+Cc: Markus Schneider-Pargmann <msp@baylibre.com>, Guillaume Ranquet <granquet@baylibre.com>, 
+	Bo-Chen Chen <rex-bc.chen@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_143359_189203_B45E8612 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20230914_063847_152001_237D4B6B 
+X-CRM114-Status: UNSURE (   6.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,109 +96,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Create v4l2-mem2mem helpers for VIDIOC_DELETE_BUFS ioctl.
+On Thu, 14 Sep 2023 15:10, Jani Nikula <jani.nikula@intel.com> wrote:
+>Setting new_edid to NULL leaks the buffer.
+>
+>Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
+>Cc: Markus Schneider-Pargmann <msp@baylibre.com>
+>Cc: Guillaume Ranquet <granquet@baylibre.com>
+>Cc: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+>Cc: CK Hu <ck.hu@mediatek.com>
+>Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+>Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+>Cc: Philipp Zabel <p.zabel@pengutronix.de>
+>Cc: Matthias Brugger <matthias.bgg@gmail.com>
+>Cc: dri-devel@lists.freedesktop.org
+>Cc: linux-mediatek@lists.infradead.org
+>Cc: linux-kernel@vger.kernel.org
+>Cc: linux-arm-kernel@lists.infradead.org
+>Cc: <stable@vger.kernel.org> # v6.1+
+>Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+>
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- .../media/platform/verisilicon/hantro_v4l2.c  |  1 +
- drivers/media/test-drivers/vim2m.c            |  1 +
- drivers/media/v4l2-core/v4l2-mem2mem.c        | 20 +++++++++++++++++++
- include/media/v4l2-mem2mem.h                  | 12 +++++++++++
- 4 files changed, 34 insertions(+)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 27a1e77cca38..0fd1c2fc78c8 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -756,6 +756,7 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
- 	.vidioc_dqbuf = v4l2_m2m_ioctl_dqbuf,
- 	.vidioc_prepare_buf = v4l2_m2m_ioctl_prepare_buf,
- 	.vidioc_create_bufs = v4l2_m2m_ioctl_create_bufs,
-+	.vidioc_delete_bufs = v4l2_m2m_ioctl_delete_bufs,
- 	.vidioc_expbuf = v4l2_m2m_ioctl_expbuf,
- 
- 	.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
-diff --git a/drivers/media/test-drivers/vim2m.c b/drivers/media/test-drivers/vim2m.c
-index 3e3b424b4860..10bd8c92e340 100644
---- a/drivers/media/test-drivers/vim2m.c
-+++ b/drivers/media/test-drivers/vim2m.c
-@@ -960,6 +960,7 @@ static const struct v4l2_ioctl_ops vim2m_ioctl_ops = {
- 	.vidioc_dqbuf		= v4l2_m2m_ioctl_dqbuf,
- 	.vidioc_prepare_buf	= v4l2_m2m_ioctl_prepare_buf,
- 	.vidioc_create_bufs	= v4l2_m2m_ioctl_create_bufs,
-+	.vidioc_delete_bufs	= v4l2_m2m_ioctl_delete_bufs,
- 	.vidioc_expbuf		= v4l2_m2m_ioctl_expbuf,
- 
- 	.vidioc_streamon	= v4l2_m2m_ioctl_streamon,
-diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
-index 0cc30397fbad..d1d59943680f 100644
---- a/drivers/media/v4l2-core/v4l2-mem2mem.c
-+++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
-@@ -831,6 +831,17 @@ int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- }
- EXPORT_SYMBOL_GPL(v4l2_m2m_prepare_buf);
- 
-+int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
-+			 struct v4l2_delete_buffers *d)
-+{
-+	struct vb2_queue *vq;
-+
-+	vq = v4l2_m2m_get_vq(m2m_ctx, d->type);
-+
-+	return vb2_delete_bufs(vq, d);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_m2m_delete_bufs);
-+
- int v4l2_m2m_create_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- 			 struct v4l2_create_buffers *create)
- {
-@@ -1377,6 +1388,15 @@ int v4l2_m2m_ioctl_create_bufs(struct file *file, void *priv,
- }
- EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_create_bufs);
- 
-+int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
-+			       struct v4l2_delete_buffers *d)
-+{
-+	struct v4l2_fh *fh = file->private_data;
-+
-+	return v4l2_m2m_delete_bufs(file, fh->m2m_ctx, d);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_m2m_ioctl_delete_bufs);
-+
- int v4l2_m2m_ioctl_querybuf(struct file *file, void *priv,
- 				struct v4l2_buffer *buf)
- {
-diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
-index d6c8eb2b5201..161f85c42dc8 100644
---- a/include/media/v4l2-mem2mem.h
-+++ b/include/media/v4l2-mem2mem.h
-@@ -381,6 +381,16 @@ int v4l2_m2m_dqbuf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- int v4l2_m2m_prepare_buf(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
- 			 struct v4l2_buffer *buf);
- 
-+/**
-+ * v4l2_m2m_delete_bufs() - delete buffers from the queue
-+ *
-+ * @file: pointer to struct &file
-+ * @m2m_ctx: m2m context assigned to the instance given by struct &v4l2_m2m_ctx
-+ * @d: pointer to struct &v4l2_delete_buffers
-+ */
-+int v4l2_m2m_delete_bufs(struct file *file, struct v4l2_m2m_ctx *m2m_ctx,
-+			 struct v4l2_delete_buffers *d);
-+
- /**
-  * v4l2_m2m_create_bufs() - create a source or destination buffer, depending
-  * on the type
-@@ -860,6 +870,8 @@ int v4l2_m2m_ioctl_reqbufs(struct file *file, void *priv,
- 				struct v4l2_requestbuffers *rb);
- int v4l2_m2m_ioctl_create_bufs(struct file *file, void *fh,
- 				struct v4l2_create_buffers *create);
-+int v4l2_m2m_ioctl_delete_bufs(struct file *file, void *priv,
-+			       struct v4l2_delete_buffers *d);
- int v4l2_m2m_ioctl_querybuf(struct file *file, void *fh,
- 				struct v4l2_buffer *buf);
- int v4l2_m2m_ioctl_expbuf(struct file *file, void *fh,
--- 
-2.39.2
-
+Reviewed-by: Guillaume Ranquet <granquet@baylibre.com>
+>---
+>
+>UNTESTED
+>---
+> drivers/gpu/drm/mediatek/mtk_dp.c | 1 +
+> 1 file changed, 1 insertion(+)
+>
+>diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+>index 2cb47f663756..8fc6eff68e30 100644
+>--- a/drivers/gpu/drm/mediatek/mtk_dp.c
+>+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+>@@ -2049,6 +2049,7 @@ static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
+> 	 */
+> 	if (mtk_dp_parse_capabilities(mtk_dp)) {
+> 		drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
+>+		kfree(new_edid);
+> 		new_edid = NULL;
+> 	}
+>
+>--
+>2.39.2
+>
 
