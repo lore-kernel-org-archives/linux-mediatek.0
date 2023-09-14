@@ -4,80 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 778A8CA553E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:18:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C1C9EE020C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:33:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WlQQcn9MPKx+64xAULLndYkvVhnLtgYqC3iihah1W6k=; b=GLWG1Vd5wiaYBmCnfKKY8UKJRG
-	OUYyUdDrJHJOyoh8MiAdbjomB7egW3BkP9ho4oSt3YYtBUB5w2NLZCvIwZQRyZnYmRbNz7ac9x3eO
-	h0aBdV6j7sXl/g8Q1bjD74ynwnqfM/fm2N/YuJH1v0DUZ02Sb/U8jniIJMrxITuaq1AWVMrCFqc8O
-	dK/iOc0UTPByxf5r2/TP5sa0edFYO6XSiK/WUJZv/j0XtkqUlrq6A8tQAksiqRTdxoQPdyu3rva+K
-	vh+3hjsfpGORxRdRSD/FrqfZklIgNXfgaWfZRGJlBlqkTwUL5xmseoBlz1s+4WCqmZOmDmZVKP4OJ
-	yB9URvqA==;
+	bh=1be88CI2RuhWrOGMD26vIYNo9it5Gul2OJz2q+CAvS4=; b=cTPweMeOS88+qPRrZhdbEtmfg0
+	aJTH6LnNw7z8HWXorYJgI0chU3L4WPUkrFVOslJnsLBgztcNLobYC1jdNLRIquK2C4R0M513Ncf0g
+	R4jex05fg+L2vPVtbQH19XssJODMJ3Mc8gmplWPWG7R/zqyzFieAuSPSvfP3ys4DpkYJJgIdgKstr
+	mh2cLrIBNRwje4IXf9pWqimVi/7leGEGVPFUks4UOZUCT1gZBiVm5jLObANGjDYbX6hqSuxbbaHBD
+	uLjK9uLssR319sSZmY/ZfwP1nOrLyQM1z4Wa3bSWhXmQCG2Wb3dHiAAqp09KlHw2zQCpcTfXqAuU6
+	6j3fPy4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmEx-008Qzp-1d;
-	Thu, 14 Sep 2023 13:18:39 +0000
+	id 1qgmTU-008SDP-1A;
+	Thu, 14 Sep 2023 13:33:40 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmEu-008Qz5-2G;
-	Thu, 14 Sep 2023 13:18:38 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1qgmTP-008S6v-02;
+	Thu, 14 Sep 2023 13:33:36 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:36f2:37bd:ccbb:373f])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B7A2E660734B;
-	Thu, 14 Sep 2023 14:18:30 +0100 (BST)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9993F660734C;
+	Thu, 14 Sep 2023 14:33:31 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694697511;
-	bh=QLmIOvyMYsAHwE/swB9g81iNqJ/lVTegnNyDspfyz+g=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VCs+qGRYLlMKOSjV+9fS140xdhCFeaqPjV3BKdWXlFqvXe7dC6joaklTBoTlSvIM6
-	 KCx+ce8lmOWb25unXHIJ6l0a8n5+/Ut426yH6aaY0x0w0SfuJW0BqXoCDV5v4Yuruw
-	 1h/HV5XOzXXwVE6n/nH5cGfYAZlt6/UH1ycjfQijScPSjLrl5Ug0+q759+XZMA7jty
-	 e+VJng58d/asb4lTza4+FCYDQxMinCXxvDiCPw428DFK9wA4gejvjyMy3uWBopzBT2
-	 cov8zHvsAdN9vciHLkpUu+DEfKCQQ4hdb2EnY76yhiuzeIRbZxJoZWuOMwPSQaINmy
-	 nqz9SaeF1FUqw==
-Message-ID: <982d201a-bcf2-f856-00e7-8807ca5a006a@collabora.com>
-Date: Thu, 14 Sep 2023 15:18:28 +0200
+	s=mail; t=1694698412;
+	bh=+eRsvnpNumq6bQf88LlWZR7Lny7uqYBNBiPKeHOjtOs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=aSyp7ffubuNGkWb5eWQFg+eXWjYVUNooVpYC/nK0PtWo3aDnYbC4wrVxLTimb72Tl
+	 YbjeDlDt10JlG0HL7pr1oRCiK5NXQf2LB6EYt1cAcqy1aYaCMKKWuaGa9B09B8wC0n
+	 zC+GhyPII95M+/TAA6VoBiJBDJhvETgIcvFwYXQ4DhyLgimlxBiavxHHJdbNh/FI6o
+	 PGGJDDdUf7+2YpCCUyLTqDuzQ/Kt+vBVpVfffjdxGcdDMvCTTOncE6jLOjUlc22BjI
+	 JlW6oiKwMcXQkSGNZwDvqIT6T3pkCnleWWYex4bCEEZnLgJ83XhWmUJZwjqkMOHzdB
+	 5/zbTa0w3ffwA==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 01/49] media: videobuf2: Rework offset 'cookie' encoding pattern
+Date: Thu, 14 Sep 2023 15:32:35 +0200
+Message-Id: <20230914133323.198857-2-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
+References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH 13/15] drm/mediatek: Add missing plane settings when async
- update
-Content-Language: en-US
-To: =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "daniel@ffwll.ch" <daniel@ffwll.ch>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
- =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-References: <20230823151332.28811-1-shawn.sung@mediatek.com>
- <20230823151332.28811-14-shawn.sung@mediatek.com>
- <d43e0d7b-1e93-f9ae-df3f-cbf8a3381a70@collabora.com>
- <e1f07420c9d7abf26cf9ce111c063224001ba561.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <e1f07420c9d7abf26cf9ce111c063224001ba561.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_061836_894547_D7EC6FDD 
-X-CRM114-Status: GOOD (  15.25  )
+X-CRM114-CacheID: sfid-20230914_063335_181434_43815888 
+X-CRM114-Status: GOOD (  17.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,36 +87,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/09/23 15:45, Shawn Sung (宋孝謙) ha scritto:
-> Hi Angelo,
-> 
-> On Thu, 2023-09-07 at 14:33 +0200, AngeloGioacchino Del Regno wrote:
->> Il 23/08/23 17:13, Hsiao Chien Sung ha scritto:
->>> Fix an issue that plane coordinate was not saved when
->>> calling async update.
->>>
->>> Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
->>
->>   From what I understand, this is a fix for an issue that was present
->> before
->> your newly introduced code.
->>
->> This means that you want to add a Fixes tag, and that you should also
->> send
->> this commit separately from the IGT series. Please do that.
-> 
-> Got it, will add a fix tag in the next version. But since without this
-> patch, IGT will fail at some test cases, could we still send them in
-> the same series so IGT can pass out-of-the-box?
-> 
+Change how offset 'cookie' field value is computed to make possible
+to use more buffers (up to 0x7fff)
+With this encoding pattern we know the maximum number that a queue
+could store so we can check ing at queue init time.
+It also make easier and faster to find buffer and plane from using
+the offset field.
 
-Fixes are applied before new features, so if you send this patch outside
-of the IGT series, this will most likely be applied *before* that series.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../media/common/videobuf2/videobuf2-core.c   | 48 +++++++++----------
+ 1 file changed, 24 insertions(+), 24 deletions(-)
 
-When the IGT series will be applied, this patch will already be present,
-so, please send this one separately.
-
-Regards,
-Angelo
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index cf6727d9c81f..cf3b9f5b69b7 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -31,6 +31,10 @@
+ 
+ #include <trace/events/vb2.h>
+ 
++#define PLANE_INDEX_SHIFT	(PAGE_SHIFT + 3)
++#define PLANE_INDEX_MASK	0x7
++#define BUFFER_INDEX_MASK	0x7fff
++
+ static int debug;
+ module_param(debug, int, 0644);
+ 
+@@ -358,21 +362,23 @@ static void __setup_offsets(struct vb2_buffer *vb)
+ 	unsigned int plane;
+ 	unsigned long off = 0;
+ 
+-	if (vb->index) {
+-		struct vb2_buffer *prev = q->bufs[vb->index - 1];
+-		struct vb2_plane *p = &prev->planes[prev->num_planes - 1];
+-
+-		off = PAGE_ALIGN(p->m.offset + p->length);
+-	}
++	/*
++	 * Offsets cookies value have the following constraints:
++	 * - a buffer could have up to 8 planes.
++	 * - v4l2 mem2mem use bit 30 to distinguish between source and destination buffers.
++	 * - must be page aligned
++	 * That led to this bit mapping:
++	 * |30                |29        15|14       12|11 0|
++	 * |DST_QUEUE_OFF_BASE|buffer index|plane index| 0  |
++	 * where there is 15 bits to store buffer index.
++	 */
++	off = vb->index << (PLANE_INDEX_SHIFT);
+ 
+ 	for (plane = 0; plane < vb->num_planes; ++plane) {
+-		vb->planes[plane].m.offset = off;
++		vb->planes[plane].m.offset = off + (plane << PAGE_SHIFT);
+ 
+ 		dprintk(q, 3, "buffer %d, plane %d offset 0x%08lx\n",
+ 				vb->index, plane, off);
+-
+-		off += vb->planes[plane].length;
+-		off = PAGE_ALIGN(off);
+ 	}
+ }
+ 
+@@ -2209,21 +2215,15 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
+ 		return -EBUSY;
+ 	}
+ 
+-	/*
+-	 * Go over all buffers and their planes, comparing the given offset
+-	 * with an offset assigned to each plane. If a match is found,
+-	 * return its buffer and plane numbers.
+-	 */
+-	for (buffer = 0; buffer < q->num_buffers; ++buffer) {
+-		vb = q->bufs[buffer];
++	/* Get buffer and plane from the offset */
++	buffer = (off >> PLANE_INDEX_SHIFT) & BUFFER_INDEX_MASK;
++	plane = (off >> PAGE_SHIFT) & PLANE_INDEX_MASK;
+ 
+-		for (plane = 0; plane < vb->num_planes; ++plane) {
+-			if (vb->planes[plane].m.offset == off) {
+-				*_buffer = buffer;
+-				*_plane = plane;
+-				return 0;
+-			}
+-		}
++	vb = q->bufs[buffer];
++	if (vb->planes[plane].m.offset == off) {
++		*_buffer = buffer;
++		*_plane = plane;
++		return 0;
+ 	}
+ 
+ 	return -EINVAL;
+-- 
+2.39.2
 
 
