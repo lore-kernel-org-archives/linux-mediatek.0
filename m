@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7792EEAA4F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 14:45:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F39EEEAA4E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 14:45:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mp1KeUwXEPeyi7FaB/qpZlqFp0j0IcgZ40cl1bA/YGw=; b=AasKDlqezoMaXkcFSnyBhLwbw7
-	s8BorV/yAf1zML+VUHOBiFpQYOnfu28hBbUP7LS1JXhZB0UTX+DNUUP6HMoLg3CGrrjyDmL0b/W9A
-	iRHgWcqglJi4v29n9eSwYzAs8UKiMCg8ZiGi9ZDvfeHjSp8XBZPJJafrWTylS3OSQOEPwg0aSG5Wg
-	CzJ9h+9Htu7FJo5rgxpoq5jHFZ14wqnlwN9nEKqA8cWk1tUZPL85ISr42ZoSUOyt2yCu/IeufzGAt
-	q/I+Ie+sgv+jzUdVEdQmbvur9Zoh06X4pDxTyep03eylPVDexdAWDuquQUXAbshoO4aVG+oh2JLYC
-	JVVTDUXQ==;
+	bh=aDL5gETzUiP0VzZZCijO3U9Zzi9a1aLBhnH2wBWpEGU=; b=gFPA/nAWl6/MiEaED6/MfSztpr
+	EkQTuO3PUK3awnCK8JMpVV0jZhYztcPfLUHAMpI0WdR2UYuVzthbyh9T8uHdNUO4eDbyaLgZl203v
+	GMRzK17v7riuVIMpKsgjD9ZZNU/zWT6LOwtIYsS+2a5gTidFjbaPGMIEPJ3A6Mk85xaaZ9hm1vY5I
+	/5//bTzn0cRnfTAuGA6VthlqcHmHiZ41i16vSkgCj6KgLUTq7nAiZ7/EY3Rvg+aXNitzi5QNa9SDv
+	kNoYAERFriSO5umWIZ4T3+0/4vCuwV3JqTtkCLwE5uK/eY14tBcbVKu14mi9TdgNmaVKGTn7SKzV4
+	7nvFal0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgnbP-008fhJ-1J;
-	Thu, 14 Sep 2023 14:45:55 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qgnbS-008fjH-2A;
+	Thu, 14 Sep 2023 14:45:58 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmTP-008S71-0q;
-	Thu, 14 Sep 2023 13:33:36 +0000
+	id 1qgmTc-008SMk-1Y;
+	Thu, 14 Sep 2023 13:33:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=aDL5gETzUiP0VzZZCijO3U9Zzi9a1aLBhnH2wBWpEGU=; b=AlNeiJHAl/tZITVlDcCJ6bds1D
+	KfVlt3O3C7pryouU1zWYYJS+wubEo6epStksar0vJu5J4OVC5ROuvu8gIf0zOWiRfQs6yoaSESDaA
+	hFkFnL6dycACDEHV/rd4hMUSLVO7SrURFsf7sXYWANp2b7gW97DgQKJT8lO++BPRkjvDeVu4xNZZv
+	n0odZW/TABu6/38O+MGyLoGufAOCcfbxAX9B7uD2FA9y8izllXcELwcyLUqij7kd8M0QoOWwam6SY
+	5N0mph3RwhQidclFwN4uAikqtHS0u5F+OKUn0Lp6R/sMcBo66AjfFrtOUFg4BWKDjfmyR7LqlZkvy
+	yNCfc5wA==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qgmTT-007ueU-1c;
+	Thu, 14 Sep 2023 13:33:45 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:36f2:37bd:ccbb:373f])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4FC55660734F;
-	Thu, 14 Sep 2023 14:33:33 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5CA61660735F;
+	Thu, 14 Sep 2023 14:33:36 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694698413;
-	bh=swS7yYiqBxggjIra2XX2pXDY4PPq3f683TK0rKa6DhQ=;
+	s=mail; t=1694698416;
+	bh=EMKVWITArl2PHuWHDFd/NcTii9pr6T7GjKNa1Tuop1w=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=S3NYcmVUT/668LAIWTgK5i5tWEyxhjosr4VuCzSWSR89CBBmduMkbxehmFdODUu3Y
-	 vbNJ31v+IzyyZCmKcT/yK8z3b7BnZDDbzFcORQsFgOqx+3moz3mV2otVE3TWQk9Nh8
-	 qFPkSkNm/ESDmsHnQE9TY6kfW1FmnoCtZmtnmals7qGlc9w1aGYFISc9YrpwJgD0UC
-	 eBfF2oYlnxdM+IRU9H3zCnA88N7Fq4Pu4AUytP24NYNtXFT8bDNROKnG/X5lTZm4+X
-	 hZCKFFCjPXH6+Vu7biaWGiWFit336I5sw2dijDy4GWQAAspAHn4+X/3xozOO1hK1CA
-	 FxxL0BQuqv/Cg==
+	b=DVXFgKrI+9K9uGdzuWfxGGsdYSnRQ1qbifrJfbEj3lrerimhXlTOVIKOuytIYx9PY
+	 AGH4nx1RPdSG0xAoFtGwFp/vFwSe8exbn71U3AjzndwVDCrzX5giNylwLQ4RMjTW5T
+	 PyyKs0MeCmERkiq41Lq7GEA3lT39e7DuLctysxcv0dR6PprXIdeszX71vJKACjcI+Q
+	 ww5pHWo3brb6QfsFIYrdeRUDjBn+DQE/Kyj425uIVxyYm8Pu84BlmvpcBGeudvQS6u
+	 nVlkxaG7dp3/wfTZMSuyqyJlwH1tBwJIwFWfQIAQa+1UkmCKWmzmJF6gCIIugr8YuP
+	 zQuwJMAEIwnbA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +76,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 04/49] media: amphion: Use vb2_get_buffer() instead of directly access to buffers array
-Date: Thu, 14 Sep 2023 15:32:38 +0200
-Message-Id: <20230914133323.198857-5-benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 10/49] media: dvb-core: Use vb2_get_buffer() instead of directly access to buffers array
+Date: Thu, 14 Sep 2023 15:32:44 +0200
+Message-Id: <20230914133323.198857-11-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_063335_422029_09C3563A 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20230914_143341_384205_FB192E9D 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,55 +109,48 @@ a valid pointer so check the return value of all of them.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/amphion/vpu_dbg.c | 22 ++++++++++++++++++----
- 1 file changed, 18 insertions(+), 4 deletions(-)
+ drivers/media/dvb-core/dvb_vb2.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/media/platform/amphion/vpu_dbg.c b/drivers/media/platform/amphion/vpu_dbg.c
-index 982c2c777484..a462d6fe4ea9 100644
---- a/drivers/media/platform/amphion/vpu_dbg.c
-+++ b/drivers/media/platform/amphion/vpu_dbg.c
-@@ -140,11 +140,18 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
+diff --git a/drivers/media/dvb-core/dvb_vb2.c b/drivers/media/dvb-core/dvb_vb2.c
+index b322ef179f05..3a966fdf814c 100644
+--- a/drivers/media/dvb-core/dvb_vb2.c
++++ b/drivers/media/dvb-core/dvb_vb2.c
+@@ -355,12 +355,13 @@ int dvb_vb2_reqbufs(struct dvb_vb2_ctx *ctx, struct dmx_requestbuffers *req)
+ int dvb_vb2_querybuf(struct dvb_vb2_ctx *ctx, struct dmx_buffer *b)
+ {
+ 	struct vb2_queue *q = &ctx->vb_q;
++	struct vb2_buffer *vb2 = vb2_get_buffer(q, b->index);
  
- 	vq = v4l2_m2m_get_src_vq(inst->fh.m2m_ctx);
- 	for (i = 0; i < vq->num_buffers; i++) {
--		struct vb2_buffer *vb = vq->bufs[i];
--		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-+		struct vb2_buffer *vb;
-+		struct vb2_v4l2_buffer *vbuf;
-+
-+		vb = vb2_get_buffer(vq, i);
-+		if (!vb)
-+			continue;
+-	if (b->index >= q->num_buffers) {
+-		dprintk(1, "[%s] buffer index out of range\n", ctx->name);
++	if (!vb2) {
++		dprintk(1, "[%s] invalid buffer index\n", ctx->name);
+ 		return -EINVAL;
+ 	}
+-	vb2_core_querybuf(&ctx->vb_q, q->bufs[b->index], b);
++	vb2_core_querybuf(&ctx->vb_q, vb2, b);
+ 	dprintk(3, "[%s] index=%d\n", ctx->name, b->index);
+ 	return 0;
+ }
+@@ -385,13 +386,14 @@ int dvb_vb2_expbuf(struct dvb_vb2_ctx *ctx, struct dmx_exportbuffer *exp)
+ int dvb_vb2_qbuf(struct dvb_vb2_ctx *ctx, struct dmx_buffer *b)
+ {
+ 	struct vb2_queue *q = &ctx->vb_q;
++	struct vb2_buffer *vb2 = vb2_get_buffer(q, b->index);
+ 	int ret;
  
- 		if (vb->state == VB2_BUF_STATE_DEQUEUED)
- 			continue;
-+
-+		vbuf = to_vb2_v4l2_buffer(vb);
-+
- 		num = scnprintf(str, sizeof(str),
- 				"output [%2d] state = %10s, %8s\n",
- 				i, vb2_stat_name[vb->state],
-@@ -155,11 +162,18 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
- 
- 	vq = v4l2_m2m_get_dst_vq(inst->fh.m2m_ctx);
- 	for (i = 0; i < vq->num_buffers; i++) {
--		struct vb2_buffer *vb = vq->bufs[i];
--		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-+		struct vb2_buffer *vb;
-+		struct vb2_v4l2_buffer *vbuf;
-+
-+		vb = vb2_get_buffer(vq, i);
-+		if (!vb)
-+			continue;
- 
- 		if (vb->state == VB2_BUF_STATE_DEQUEUED)
- 			continue;
-+
-+		vbuf = to_vb2_v4l2_buffer(vb);
-+
- 		num = scnprintf(str, sizeof(str),
- 				"capture[%2d] state = %10s, %8s\n",
- 				i, vb2_stat_name[vb->state],
+-	if (b->index >= q->num_buffers) {
+-		dprintk(1, "[%s] buffer index out of range\n", ctx->name);
++	if (!vb2) {
++		dprintk(1, "[%s] invalid buffer index\n", ctx->name);
+ 		return -EINVAL;
+ 	}
+-	ret = vb2_core_qbuf(&ctx->vb_q, q->bufs[b->index], b, NULL);
++	ret = vb2_core_qbuf(&ctx->vb_q, vb2, b, NULL);
+ 	if (ret) {
+ 		dprintk(1, "[%s] index=%d errno=%d\n", ctx->name,
+ 			b->index, ret);
 -- 
 2.39.2
 
