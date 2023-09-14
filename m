@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFBF6EEAA50
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 14:45:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EAC3EEAA51
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 14:45:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dG1xQHzBYO0D2Wnlfgy6WTZEoZ5dFqbTqZzReNJkJqQ=; b=JRNAlJs2DXCU/qW9nbFrWITIQJ
-	5iRhEnpO7QQjj2IXFEusc9cIgZYKApxMoDeuYqJ2uYCJ1m739j3H7WLfOOyn06cLH3BPTOJWo3jz8
-	4qLzJatvtJ2zuRI/KP/zbnKwyMkFH6ulyPJJaOU+owm1gVbbY5YsF48HOgp+3TGnKs12nz28f2qYu
-	SpUiieTyAl0sWTPMYLSSc9rKA80DUTRqq4q3gxBBXXl98SyGiXnG/qLYS3UYM+/6lvjWRjHMRRIJl
-	t76HmEteg56ykxabvb7MX+grSGHi1aTevq1LLmth70DxaThRGPKSvi6N+dqV2kjRisAgLjLnv16i4
-	1GpS5S6g==;
+	bh=cW3CZ4EMZFdcIArMc1UZzyl1xzRDswQCZFSYn76zF9Y=; b=lvdxp8zb/4Usfol8dtvo5QZnJB
+	KSrLibbucMK4WYpd5G8jBpcE2U08e2aRvw+5qxjBFXnnQanbBjB4dC9MPcQpbSBc+WVDmQZpFHyLv
+	jSiI7DSbw6ZnvlyTN4YcEdin3x6I4TJO5dofjPzewpr4utCqTJMv5ebyh+gwP9Qn2lRg9V8vFdrgZ
+	PS+MuDQmVHcV+UfyxsoP/cy4hNO2miVIssmPuecFO7Jkz8w7HHK6711XZU3uFigEMvuUqVJlXkZYd
+	KxsCQLAsBi8yfM45fvBQ+7UZrtyJfgyYgKIC1Pb4hfo7gBz6CtIEkh9grvilurjWEQihP3YXdzhF5
+	BXwxp4kQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgnbS-008fjA-1P;
+	id 1qgnbS-008fjS-35;
 	Thu, 14 Sep 2023 14:45:58 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmTP-008S70-0p;
-	Thu, 14 Sep 2023 13:33:39 +0000
+	id 1qgmTX-008SGb-0e;
+	Thu, 14 Sep 2023 13:33:48 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:36f2:37bd:ccbb:373f])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A6F05660734E;
-	Thu, 14 Sep 2023 14:33:32 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8B135660734C;
+	Thu, 14 Sep 2023 14:33:41 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694698413;
-	bh=EpFgbhDUnMMeXI9r0f9hD84Y41WHjCMZ64TZX2CDeks=;
+	s=mail; t=1694698421;
+	bh=7x867ZfqHQqhXPyNmSFRaDH8opre7DuC4FUIzZAO/WQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KMvgCnejrmDNkJvdeZxF2yAQx3hIW6x1pFeAj8+xE7tFRADQp8vr2DKbamuYzuMvH
-	 F1AeLzLydtRhrlGV4H6bJsX1j/LVA6YxUwFWwmi+tk6GdVTfFid16tXEvIGfDJFYor
-	 bYGa5B6uG7rb4/WZGJTWYMYjJD4h36HbYVLe4q1GU/yO2iyHf44d/jgPN6nsyoJEfs
-	 MRB8nIH/fsYj/QoilB826O5VhAhBRViUvgTsPtDwG8S+5WBjEJqW5MY0/QeN4vjF+s
-	 rMGr2F+66lqhhmUR0qMb2td+yJJJ6t1oSBgzfhrsmYclOJVeNzePagFKbnFPvmGHSI
-	 YnYAH1nhH+xPA==
+	b=GdQnQbJuWVL1ew4PeNCcLGkhPZK9/H2LQMr1qPcDacu9i/3VHU1wCWs21j/GHeMiy
+	 /30zHx5qfcqxNwmwU93gGkXcsNu8SljEr+ayUCh9VS4e7msEX1iD0+awolPLJc1cRZ
+	 Sn7jFb8xJG5/zaOsZ3oXNEFyd7dha/uMCUWU3YGVhTp71S1Vi3Qgsu/XVkWMwT6OyW
+	 33luLO0aUPEzgoLPs74rFGBwKVe+a5/WnN5iBPLpUZMPqSRNuOcuNqAmCKsTfgdRtj
+	 XOmapZYKN4t8XDc9rv04HC3J8R03b9D1Y7vLBoBc26FBqJxwOWpKx7ikhuMeefi8z7
+	 K0C+uhIblKgpA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 03/49] media: videobuf2: Use vb2_buffer instead of index
-Date: Thu, 14 Sep 2023 15:32:37 +0200
-Message-Id: <20230914133323.198857-4-benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 20/49] media: core: Rework how create_buf index returned value is computed
+Date: Thu, 14 Sep 2023 15:32:54 +0200
+Message-Id: <20230914133323.198857-21-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_063335_577388_77A7BABA 
-X-CRM114-Status: GOOD (  18.42  )
+X-CRM114-CacheID: sfid-20230914_063343_521916_BA2BF96B 
+X-CRM114-Status: GOOD (  16.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,348 +87,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Directly use vb2_buffer pointer instead of index inside queue array.
+When DELETE_BUFS will be introduced holes could created in bufs array.
+To be able to reuse these unused indices reworking how create->index
+is set is mandatory.
+Let __vb2_queue_alloc() decide which first index is correct and
+forward this to the caller.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../media/common/videobuf2/videobuf2-core.c   | 40 ++++++-------------
- .../media/common/videobuf2/videobuf2-v4l2.c   | 30 ++++++++++++--
- drivers/media/dvb-core/dvb_vb2.c              |  6 +--
- include/media/videobuf2-core.h                | 16 ++++----
- 4 files changed, 49 insertions(+), 43 deletions(-)
+ .../media/common/videobuf2/videobuf2-core.c   | 24 +++++++++++++------
+ .../media/common/videobuf2/videobuf2-v4l2.c   | 17 +++++++------
+ include/media/videobuf2-core.h                |  4 +++-
+ 3 files changed, 30 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
-index bedd827c0d9a..5f31b99e3f03 100644
+index 70b6b8f8c390..a4c2fae8705d 100644
 --- a/drivers/media/common/videobuf2/videobuf2-core.c
 +++ b/drivers/media/common/videobuf2/videobuf2-core.c
-@@ -649,9 +649,9 @@ static bool __buffers_in_use(struct vb2_queue *q)
- 	return false;
- }
- 
--void vb2_core_querybuf(struct vb2_queue *q, unsigned int index, void *pb)
-+void vb2_core_querybuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb)
+@@ -443,15 +443,24 @@ static void vb2_queue_remove_buffer(struct vb2_queue *q, struct vb2_buffer *vb)
+  */
+ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+ 			     unsigned int num_buffers, unsigned int num_planes,
+-			     const unsigned plane_sizes[VB2_MAX_PLANES])
++			     const unsigned plane_sizes[VB2_MAX_PLANES],
++			     unsigned int *first)
  {
--	call_void_bufop(q, fill_user_buffer, q->bufs[index], pb);
-+	call_void_bufop(q, fill_user_buffer, vb, pb);
- }
- EXPORT_SYMBOL_GPL(vb2_core_querybuf);
- 
-@@ -1485,9 +1485,6 @@ static void vb2_req_unprepare(struct media_request_object *obj)
- 	WARN_ON(!vb->req_obj.req);
- }
- 
--int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb,
--		  struct media_request *req);
--
- static void vb2_req_queue(struct media_request_object *obj)
- {
- 	struct vb2_buffer *vb = container_of(obj, struct vb2_buffer, req_obj);
-@@ -1502,7 +1499,7 @@ static void vb2_req_queue(struct media_request_object *obj)
- 	 * set. We just ignore that, and expect this will be caught the
- 	 * next time vb2_req_prepare() is called.
- 	 */
--	err = vb2_core_qbuf(vb->vb2_queue, vb->index, NULL, NULL);
-+	err = vb2_core_qbuf(vb->vb2_queue, vb, NULL, NULL);
- 	WARN_ON_ONCE(err && err != -EIO);
- 	mutex_unlock(vb->vb2_queue->lock);
- }
-@@ -1557,12 +1554,10 @@ unsigned int vb2_request_buffer_cnt(struct media_request *req)
- }
- EXPORT_SYMBOL_GPL(vb2_request_buffer_cnt);
- 
--int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb)
-+int vb2_core_prepare_buf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb)
- {
--	struct vb2_buffer *vb;
+ 	unsigned int buffer, plane;
+ 	struct vb2_buffer *vb;
++	unsigned long first_index;
  	int ret;
  
--	vb = q->bufs[index];
- 	if (vb->state != VB2_BUF_STATE_DEQUEUED) {
- 		dprintk(q, 1, "invalid buffer state %s\n",
- 			vb2_state_name(vb->state));
-@@ -1649,10 +1644,9 @@ static int vb2_start_streaming(struct vb2_queue *q)
- 	return ret;
- }
+ 	/* Ensure that q->num_buffers+num_buffers is below q->max_allowed_buffers */
+ 	num_buffers = min_t(unsigned int, num_buffers,
+-			    q->max_allowed_buffers - q->num_buffers);
++			    q->max_allowed_buffers - vb2_get_num_buffers(q));
++
++	first_index = vb2_get_num_buffers(q);
++
++	if (first_index >= q->max_allowed_buffers)
++		return 0;
++
++	*first = first_index;
  
--int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb,
-+int vb2_core_qbuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb,
- 		  struct media_request *req)
- {
--	struct vb2_buffer *vb;
- 	enum vb2_buffer_state orig_state;
- 	int ret;
+ 	for (buffer = 0; buffer < num_buffers; ++buffer) {
+ 		/* Allocate vb2 buffer structures */
+@@ -472,7 +481,7 @@ static int __vb2_queue_alloc(struct vb2_queue *q, enum vb2_memory memory,
+ 		}
+ 		call_void_bufop(q, init_buffer, vb);
  
-@@ -1661,8 +1655,6 @@ int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb,
- 		return -EIO;
- 	}
- 
--	vb = q->bufs[index];
--
- 	if (!req && vb->state != VB2_BUF_STATE_IN_REQUEST &&
- 	    q->requires_requests) {
- 		dprintk(q, 1, "qbuf requires a request\n");
-@@ -2239,9 +2231,8 @@ static int __find_plane_by_offset(struct vb2_queue *q, unsigned long off,
- }
- 
- int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
--		unsigned int index, unsigned int plane, unsigned int flags)
-+		    struct vb2_buffer *vb, unsigned int plane, unsigned int flags)
- {
--	struct vb2_buffer *vb = NULL;
- 	struct vb2_plane *vb_plane;
- 	int ret;
- 	struct dma_buf *dbuf;
-@@ -2266,13 +2257,6 @@ int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
- 		return -EINVAL;
- 	}
- 
--	if (index >= q->num_buffers) {
--		dprintk(q, 1, "buffer index out of range\n");
--		return -EINVAL;
--	}
--
--	vb = q->bufs[index];
--
- 	if (plane >= vb->num_planes) {
- 		dprintk(q, 1, "buffer plane out of range\n");
- 		return -EINVAL;
-@@ -2291,20 +2275,20 @@ int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
- 			      flags & O_ACCMODE);
- 	if (IS_ERR_OR_NULL(dbuf)) {
- 		dprintk(q, 1, "failed to export buffer %d, plane %d\n",
--			index, plane);
-+			vb->index, plane);
- 		return -EINVAL;
- 	}
- 
- 	ret = dma_buf_fd(dbuf, flags & ~O_ACCMODE);
- 	if (ret < 0) {
- 		dprintk(q, 3, "buffer %d, plane %d failed to export (%d)\n",
--			index, plane, ret);
-+			vb->index, plane, ret);
- 		dma_buf_put(dbuf);
- 		return ret;
- 	}
- 
- 	dprintk(q, 3, "buffer %d, plane %d exported as %d descriptor\n",
--		index, plane, ret);
-+		vb->index, plane, ret);
- 	*fd = ret;
- 
- 	return 0;
-@@ -2713,7 +2697,7 @@ static int __vb2_init_fileio(struct vb2_queue *q, int read)
- 		 * Queue all buffers.
- 		 */
- 		for (i = 0; i < q->num_buffers; i++) {
--			ret = vb2_core_qbuf(q, i, NULL, NULL);
-+			ret = vb2_core_qbuf(q, q->bufs[i], NULL, NULL);
- 			if (ret)
- 				goto err_reqbufs;
- 			fileio->bufs[i].queued = 1;
-@@ -2898,7 +2882,7 @@ static size_t __vb2_perform_fileio(struct vb2_queue *q, char __user *data, size_
- 
- 		if (copy_timestamp)
- 			b->timestamp = ktime_get_ns();
--		ret = vb2_core_qbuf(q, index, NULL, NULL);
-+		ret = vb2_core_qbuf(q, b, NULL, NULL);
- 		dprintk(q, 5, "vb2_dbuf result: %d\n", ret);
- 		if (ret)
- 			return ret;
-@@ -3001,7 +2985,7 @@ static int vb2_thread(void *data)
- 		if (copy_timestamp)
- 			vb->timestamp = ktime_get_ns();
- 		if (!threadio->stop)
--			ret = vb2_core_qbuf(q, vb->index, NULL, NULL);
-+			ret = vb2_core_qbuf(q, vb, NULL, NULL);
- 		call_void_qop(q, wait_prepare, q);
- 		if (ret || threadio->stop)
+-		if (!vb2_queue_add_buffer(q, vb, q->num_buffers + buffer)) {
++		if (!vb2_queue_add_buffer(q, vb, first_index++)) {
+ 			dprintk(q, 1, "failed adding buffer %d to queue\n", buffer);
+ 			kfree(vb);
  			break;
+@@ -832,7 +841,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 	unsigned int q_num_bufs = vb2_get_num_buffers(q);
+ 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+ 	bool non_coherent_mem = flags & V4L2_MEMORY_FLAG_NON_COHERENT;
+-	unsigned int i;
++	unsigned int i, first;
+ 	int ret = 0;
+ 
+ 	if (q->streaming) {
+@@ -919,7 +928,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ 
+ 	/* Finally, allocate buffers and video memory */
+ 	allocated_buffers =
+-		__vb2_queue_alloc(q, memory, num_buffers, num_planes, plane_sizes);
++		__vb2_queue_alloc(q, memory, num_buffers, num_planes, plane_sizes, &first);
+ 	if (allocated_buffers == 0) {
+ 		dprintk(q, 1, "memory allocation failed\n");
+ 		ret = -ENOMEM;
+@@ -993,7 +1002,8 @@ EXPORT_SYMBOL_GPL(vb2_core_reqbufs);
+ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 			 unsigned int flags, unsigned int *count,
+ 			 unsigned int requested_planes,
+-			 const unsigned int requested_sizes[])
++			 const unsigned int requested_sizes[],
++			 unsigned int *first)
+ {
+ 	unsigned int num_planes = 0, num_buffers, allocated_buffers;
+ 	unsigned plane_sizes[VB2_MAX_PLANES] = { };
+@@ -1055,7 +1065,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 
+ 	/* Finally, allocate buffers and video memory */
+ 	allocated_buffers = __vb2_queue_alloc(q, memory, num_buffers,
+-				num_planes, plane_sizes);
++				num_planes, plane_sizes, first);
+ 	if (allocated_buffers == 0) {
+ 		dprintk(q, 1, "memory allocation failed\n");
+ 		ret = -ENOMEM;
 diff --git a/drivers/media/common/videobuf2/videobuf2-v4l2.c b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-index c7a54d82a55e..697c8a9f98cd 100644
+index 3eb707abc26b..a88abcea2921 100644
 --- a/drivers/media/common/videobuf2/videobuf2-v4l2.c
 +++ b/drivers/media/common/videobuf2/videobuf2-v4l2.c
-@@ -667,7 +667,7 @@ int vb2_querybuf(struct vb2_queue *q, struct v4l2_buffer *b)
- 	vb = q->bufs[b->index];
- 	ret = __verify_planes_array(vb, b);
- 	if (!ret)
--		vb2_core_querybuf(q, b->index, b);
-+		vb2_core_querybuf(q, vb, b);
- 	return ret;
- }
- EXPORT_SYMBOL(vb2_querybuf);
-@@ -723,6 +723,7 @@ EXPORT_SYMBOL_GPL(vb2_reqbufs);
- int vb2_prepare_buf(struct vb2_queue *q, struct media_device *mdev,
- 		    struct v4l2_buffer *b)
- {
-+	struct vb2_buffer *vb;
- 	int ret;
+@@ -762,7 +762,6 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
  
- 	if (vb2_fileio_is_active(q)) {
-@@ -733,9 +734,15 @@ int vb2_prepare_buf(struct vb2_queue *q, struct media_device *mdev,
- 	if (b->flags & V4L2_BUF_FLAG_REQUEST_FD)
- 		return -EINVAL;
+ 	fill_buf_caps(q, &create->capabilities);
+ 	validate_memory_flags(q, create->memory, &create->flags);
+-	create->index = q->num_buffers;
+ 	if (create->count == 0)
+ 		return ret != -EBUSY ? ret : 0;
  
-+	if (b->index >= q->num_buffers) {
-+		dprintk(q, 1, "buffer index out of range\n");
-+		return -EINVAL;
-+	}
-+	vb = q->bufs[b->index];
+@@ -804,11 +803,16 @@ int vb2_create_bufs(struct vb2_queue *q, struct v4l2_create_buffers *create)
+ 	for (i = 0; i < requested_planes; i++)
+ 		if (requested_sizes[i] == 0)
+ 			return -EINVAL;
+-	return ret ? ret : vb2_core_create_bufs(q, create->memory,
+-						create->flags,
+-						&create->count,
+-						requested_planes,
+-						requested_sizes);
++	if (ret)
++		return ret;
 +
- 	ret = vb2_queue_or_prepare_buf(q, mdev, b, true, NULL);
- 
--	return ret ? ret : vb2_core_prepare_buf(q, b->index, b);
-+	return ret ? ret : vb2_core_prepare_buf(q, vb, b);
++	ret = vb2_core_create_bufs(q, create->memory,
++				   create->flags,
++				   &create->count,
++				   requested_planes,
++				   requested_sizes,
++				   &create->index);
++	return ret;
  }
- EXPORT_SYMBOL_GPL(vb2_prepare_buf);
+ EXPORT_SYMBOL_GPL(vb2_create_bufs);
  
-@@ -803,6 +810,7 @@ int vb2_qbuf(struct vb2_queue *q, struct media_device *mdev,
- 	     struct v4l2_buffer *b)
- {
- 	struct media_request *req = NULL;
-+	struct vb2_buffer *vb;
- 	int ret;
+@@ -1036,7 +1040,6 @@ int vb2_ioctl_create_bufs(struct file *file, void *priv,
+ 	int res = vb2_verify_memory_type(vdev->queue, p->memory,
+ 			p->format.type);
  
- 	if (vb2_fileio_is_active(q)) {
-@@ -810,10 +818,16 @@ int vb2_qbuf(struct vb2_queue *q, struct media_device *mdev,
- 		return -EBUSY;
- 	}
- 
-+	if (b->index >= q->num_buffers) {
-+		dprintk(q, 1, "buffer index out of range\n");
-+		return -EINVAL;
-+	}
-+	vb = q->bufs[b->index];
-+
- 	ret = vb2_queue_or_prepare_buf(q, mdev, b, false, &req);
- 	if (ret)
- 		return ret;
--	ret = vb2_core_qbuf(q, b->index, b, req);
-+	ret = vb2_core_qbuf(q, vb, b, req);
- 	if (req)
- 		media_request_put(req);
- 	return ret;
-@@ -873,7 +887,15 @@ EXPORT_SYMBOL_GPL(vb2_streamoff);
- 
- int vb2_expbuf(struct vb2_queue *q, struct v4l2_exportbuffer *eb)
- {
--	return vb2_core_expbuf(q, &eb->fd, eb->type, eb->index,
-+	struct vb2_buffer *vb;
-+
-+	if (eb->index >= q->num_buffers) {
-+		dprintk(q, 1, "buffer index out of range\n");
-+		return -EINVAL;
-+	}
-+	vb = q->bufs[eb->index];
-+
-+	return vb2_core_expbuf(q, &eb->fd, eb->type, vb,
- 				eb->plane, eb->flags);
- }
- EXPORT_SYMBOL_GPL(vb2_expbuf);
-diff --git a/drivers/media/dvb-core/dvb_vb2.c b/drivers/media/dvb-core/dvb_vb2.c
-index 909df82fed33..b322ef179f05 100644
---- a/drivers/media/dvb-core/dvb_vb2.c
-+++ b/drivers/media/dvb-core/dvb_vb2.c
-@@ -360,7 +360,7 @@ int dvb_vb2_querybuf(struct dvb_vb2_ctx *ctx, struct dmx_buffer *b)
- 		dprintk(1, "[%s] buffer index out of range\n", ctx->name);
- 		return -EINVAL;
- 	}
--	vb2_core_querybuf(&ctx->vb_q, b->index, b);
-+	vb2_core_querybuf(&ctx->vb_q, q->bufs[b->index], b);
- 	dprintk(3, "[%s] index=%d\n", ctx->name, b->index);
- 	return 0;
- }
-@@ -370,7 +370,7 @@ int dvb_vb2_expbuf(struct dvb_vb2_ctx *ctx, struct dmx_exportbuffer *exp)
- 	struct vb2_queue *q = &ctx->vb_q;
- 	int ret;
- 
--	ret = vb2_core_expbuf(&ctx->vb_q, &exp->fd, q->type, exp->index,
-+	ret = vb2_core_expbuf(&ctx->vb_q, &exp->fd, q->type, q->bufs[exp->index],
- 			      0, exp->flags);
- 	if (ret) {
- 		dprintk(1, "[%s] index=%d errno=%d\n", ctx->name,
-@@ -391,7 +391,7 @@ int dvb_vb2_qbuf(struct dvb_vb2_ctx *ctx, struct dmx_buffer *b)
- 		dprintk(1, "[%s] buffer index out of range\n", ctx->name);
- 		return -EINVAL;
- 	}
--	ret = vb2_core_qbuf(&ctx->vb_q, b->index, b, NULL);
-+	ret = vb2_core_qbuf(&ctx->vb_q, q->bufs[b->index], b, NULL);
- 	if (ret) {
- 		dprintk(1, "[%s] index=%d errno=%d\n", ctx->name,
- 			b->index, ret);
+-	p->index = vdev->queue->num_buffers;
+ 	fill_buf_caps(vdev->queue, &p->capabilities);
+ 	validate_memory_flags(vdev->queue, p->memory, &p->flags);
+ 	/*
 diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index 4b6a9d2ea372..cd3ff1cd759d 100644
+index 1ecaf4b5a76f..19c93d8eb7c8 100644
 --- a/include/media/videobuf2-core.h
 +++ b/include/media/videobuf2-core.h
-@@ -747,7 +747,7 @@ int vb2_wait_for_all_buffers(struct vb2_queue *q);
- /**
-  * vb2_core_querybuf() - query video buffer information.
-  * @q:		pointer to &struct vb2_queue with videobuf2 queue.
-- * @index:	id number of the buffer.
-+ * @vb:		pointer to struct &vb2_buffer.
-  * @pb:		buffer struct passed from userspace.
+@@ -803,6 +803,7 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+  * @count: requested buffer count.
+  * @requested_planes: number of planes requested.
+  * @requested_sizes: array with the size of the planes.
++ * @first: index of the first created buffer
   *
-  * Videobuf2 core helper to implement VIDIOC_QUERYBUF() operation. It is called
-@@ -759,7 +759,7 @@ int vb2_wait_for_all_buffers(struct vb2_queue *q);
-  *
-  * Return: returns zero on success; an error code otherwise.
-  */
--void vb2_core_querybuf(struct vb2_queue *q, unsigned int index, void *pb);
-+void vb2_core_querybuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb);
+  * Videobuf2 core helper to implement VIDIOC_CREATE_BUFS() operation. It is
+  * called internally by VB2 by an API-specific handler, like
+@@ -819,7 +820,8 @@ int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory,
+ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
+ 			 unsigned int flags, unsigned int *count,
+ 			 unsigned int requested_planes,
+-			 const unsigned int requested_sizes[]);
++			 const unsigned int requested_sizes[],
++			 unsigned int *first);
  
  /**
-  * vb2_core_reqbufs() - Initiate streaming.
-@@ -823,7 +823,7 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
   * vb2_core_prepare_buf() - Pass ownership of a buffer from userspace
-  *			to the kernel.
-  * @q:		pointer to &struct vb2_queue with videobuf2 queue.
-- * @index:	id number of the buffer.
-+ * @vb:		pointer to struct &vb2_buffer.
-  * @pb:		buffer structure passed from userspace to
-  *		&v4l2_ioctl_ops->vidioc_prepare_buf handler in driver.
-  *
-@@ -839,13 +839,13 @@ int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory,
-  *
-  * Return: returns zero on success; an error code otherwise.
-  */
--int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb);
-+int vb2_core_prepare_buf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb);
- 
- /**
-  * vb2_core_qbuf() - Queue a buffer from userspace
-  *
-  * @q:		pointer to &struct vb2_queue with videobuf2 queue.
-- * @index:	id number of the buffer
-+ * @vb:		pointer to struct &vb2_buffer.
-  * @pb:		buffer structure passed from userspace to
-  *		v4l2_ioctl_ops->vidioc_qbuf handler in driver
-  * @req:	pointer to &struct media_request, may be NULL.
-@@ -867,7 +867,7 @@ int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb);
-  *
-  * Return: returns zero on success; an error code otherwise.
-  */
--int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb,
-+int vb2_core_qbuf(struct vb2_queue *q, struct vb2_buffer *vb, void *pb,
- 		  struct media_request *req);
- 
- /**
-@@ -931,7 +931,7 @@ int vb2_core_streamoff(struct vb2_queue *q, unsigned int type);
-  * @fd:		pointer to the file descriptor associated with DMABUF
-  *		(set by driver).
-  * @type:	buffer type.
-- * @index:	id number of the buffer.
-+ * @vb:		pointer to struct &vb2_buffer.
-  * @plane:	index of the plane to be exported, 0 for single plane queues
-  * @flags:	file flags for newly created file, as defined at
-  *		include/uapi/asm-generic/fcntl.h.
-@@ -945,7 +945,7 @@ int vb2_core_streamoff(struct vb2_queue *q, unsigned int type);
-  * Return: returns zero on success; an error code otherwise.
-  */
- int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type,
--		unsigned int index, unsigned int plane, unsigned int flags);
-+		    struct vb2_buffer *vb, unsigned int plane, unsigned int flags);
- 
- /**
-  * vb2_core_queue_init() - initialize a videobuf2 queue
 -- 
 2.39.2
 
