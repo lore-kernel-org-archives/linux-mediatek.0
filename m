@@ -4,48 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9373EEAA62
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 19:01:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5113EEAA66
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 19:23:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uPoHy6xMx79JXLx3aYSnd1hh+M84OV18KEDmjW9muFU=; b=AaoNEG+JrMx/Id8QOw8Mjiv0/F
-	pfOEKUaNVCwU//poqjj9tczLY1EBqjaTPLIjGC8OVIvr278/uLWO9tph4U/wfwFvk/xIcW92v8wX/
-	R+U+pzXYSa2z2xo5VE+trx3683RWSYoY1Uy4CNElmTB6cQZI9RtZgjpSssCk+mTYyXRalpzesunwS
-	j49tUgZuKCgY1CcpMSc2xeJeH89lDh6R/rVEULCAFZBzaYO6K6sNOiS1Z2fI7DA7eyyTu9zqPKD/K
-	DN3rl/O3weXbtjslUoGtxjkhvvh/UXduy0L48yOocTKorWA9Gqb3bUKyKanO+I1LHQ0BY8o/FdU+X
-	a9qvaujw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CjPS8aN2uAutoiuWUC/O0wHduIo9w3aFFbYbDgotjWg=; b=nuGLPMIYlfVy7jYlziO1Nv9YST
+	8spZ5mkHv2/06IiaRIFP/h91BZf/f3fXzdT/vxed45tcJUZMOtyxEF/PnndJT1K0haNKzi5SSN9D2
+	w3K0ptOcU4d9A6eQZju/A/2GKkRlr3s3HE19mybrut0WXHaMWiQDFmQW10maJBBQnENnisswCk3/j
+	0s5BVU12VH4W5FwEsd4FBG7yJ2jioLKbqEN3iPMSHuXdAplOU0oNntuC0/UXXhu9IBM4rAmcpGs9c
+	MF6RNKbq+0NdqmwMv9ESLYRiZE/YBiBh4l12kFFcCok8Rjst8X8N0LVLQu/BGKaXmV+4OJ/O1o9kW
+	vx0QDreQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgraU-0097tk-16;
-	Thu, 14 Sep 2023 19:01:14 +0000
-Received: from angie.orcam.me.uk ([78.133.224.34])
-	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgraP-0097qS-30;
-	Thu, 14 Sep 2023 19:01:11 +0000
-Received: by angie.orcam.me.uk (Postfix, from userid 500)
-	id AF2EC92009C; Thu, 14 Sep 2023 21:01:01 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by angie.orcam.me.uk (Postfix) with ESMTP id A78F392009B;
-	Thu, 14 Sep 2023 20:01:01 +0100 (BST)
-Date: Thu, 14 Sep 2023 20:01:01 +0100 (BST)
-From: "Maciej W. Rozycki" <macro@orcam.me.uk>
-To: John Ogness <john.ogness@linutronix.de>
-cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, linux-serial@vger.kernel.org, Petr Mladek <pmladek@suse.com>, Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org, Tobias Klauser <tklauser@distanz.ch>, Thierry Reding <treding@nvidia.com>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, Al Cooper <alcooperx@gmail.com>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Tony Lindgren <tony@atomide.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, Florian Fainelli <f.fainelli@gmail.com>, Andrew Davis <afd@ti.com>, Matthew Howell <matthew.howell@sealevel.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, Johan Hovold <johan@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, linux-mediatek@lists.infradead.org, Lukas Wunner <lukas@wunner.de>, Matthias Schiffer <matthias.schiffer@ew.tq-group.com>, Arnd Bergmann <arnd@arndb.de>, Kumaravel Thiagarajan <kumaravel.thiagarajan@microchip.com>, Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>, Russell King <linux@armlinux.org.uk>, Hongyu Xie <xiehongyu1@kylinos.cn>, Jiamei Xie <jiamei.xie@arm.com>, Rob Herring <robh@kernel.org>, delisun <delisun@pateo.com.cn>, Lino Sanfilippo <l.sanfilippo@kunbus.com>, Yangtao Li <frank.li@vivo.com>, Vineet Gupta <vgupta@kernel.org>, linux-snps-arc@lists.infradead.org, Richard Genoud <richard.genoud@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Arend van Spriel <arend.vanspriel@broadcom.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Baruch Siach <baruch@tkos.co.il>, Sherry Sun <sherry.sun@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Sergey Organov <sorganov@gmail.com>, Tom Rix <trix@redhat.com>, Marek Vasut <marex@denx.de>, Karol Gugala <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, Gabriel Somlo <gsomlo@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Dmitry Rokosov <ddrokosov@sberdevices.ru>, Lucas Tanure <tanure@linux.com>, linux-amlogic@lists.infradead.org, Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, linux-arm-msm@vger.kernel.org, =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, linux-actions@lists.infradead.org, Xiongfeng Wang <wangxiongfeng2@huawei.com>, Yuan Can <yuancan@huawei.com>, Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, linuxppc-dev@lists.ozlabs.org, linux-unisoc@lists.infradead.org, Kevin Cernekee <cernekee@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, linux-samsung-soc@vger.kernel.org, Lukas Bulwahn <lukas.bulwahn@gmail.com>, Lech Perczak <lech.perczak@camlingroup.com>, Hugo Villeneuve <hvilleneuve@dimonoff.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Isaac True <isaac.true@canonical.com>, Laxman Dewangan <ldewangan@nvidia.com>, Thierry Reding <thierry.reding@gmail.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org, Biju Das <biju.das.jz@bp.renesas.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>, Nick Hu <nick.hu@sifive.com>, Ruan Jinjie <ruanjinjie@huawei.com>, Samuel Holland <samuel.holland@sifive.com>, linux-riscv@lists.infradead.org, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Patrice Chotard <patrice.chotard@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Valentin Caron <valentin.caron@foss.st.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, linux-stm32@st-md-mailman.stormreply.com, "David S. Miller" <davem@davemloft.net>, sparclinux@vger.kernel.org, Hammer Hsieh <hammerh0314@gmail.com>, Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>, Mukesh Ojha <quic_mojha@quicinc.com>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, Michal Simek <michal.simek@amd.com>
-Subject: Re: [PATCH tty v1 00/74] serial: wrappers for uart port lock
-In-Reply-To: <20230914183831.587273-1-john.ogness@linutronix.de>
-Message-ID: <alpine.DEB.2.21.2309141959100.57368@angie.orcam.me.uk>
-References: <20230914183831.587273-1-john.ogness@linutronix.de>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+	id 1qgrw7-0099qx-1f;
+	Thu, 14 Sep 2023 19:23:35 +0000
+Received: from mgamail.intel.com ([192.55.52.136])
+	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qgrw4-0099qK-0E;
+	Thu, 14 Sep 2023 19:23:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1694719411; x=1726255411;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=bQ/m3C0Cjlp+qkmxV3qd9rgQFU2S555pRWmcCkVMVIg=;
+  b=fPKDaBUqVs6t6gkxsdNzf6U1OQPwcK7x0o7EVvBzKpIPQkyCoSzcFrRf
+   rrHLh14Bhq+j+MtsbpXMOlp2FaCQIUS3n27s/s+Tnjx/lPTJLAemUpHm8
+   yXrGgtadzYmHlA0H+oDEB2t5vfHMeV0FoHClsMG2ty3Y+eCaDmIBVKO2A
+   chVJSdnv5Mkz3hr2zaNYC1DLz67CijNqd7+qN0y4OZOGlPRFXzHwV27CF
+   oOMdrfimiT7FM2nIxCJGAe+sHo3misaPXzo1c6CdP+Jgk3Av9zsr6iP13
+   RVOdrdCknTgEj8cYtZMfoxFMbSxOXMbzdKL3ai77KjxsSvB3Ewzqco0jy
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10833"; a="358467333"
+X-IronPort-AV: E=Sophos;i="6.02,146,1688454000"; 
+   d="scan'208";a="358467333"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Sep 2023 12:23:30 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10833"; a="738016982"
+X-IronPort-AV: E=Sophos;i="6.02,146,1688454000"; 
+   d="scan'208";a="738016982"
+Received: from black.fi.intel.com ([10.237.72.28])
+  by orsmga007.jf.intel.com with ESMTP; 14 Sep 2023 12:23:26 -0700
+Received: by black.fi.intel.com (Postfix, from userid 1003)
+	id 99460204; Thu, 14 Sep 2023 22:23:25 +0300 (EEST)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	kernel test robot <lkp@intel.com>
+Subject: [PATCH v2 1/1] PCI: mediatek: Correct type for virt_to_phys()
+Date: Thu, 14 Sep 2023 22:23:24 +0300
+Message-Id: <20230914192324.672997-1-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.40.0.1.gaa8946217a0b
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_120110_160726_32F3FB0A 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20230914_122332_141346_C10FC9BF 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,12 +91,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 14 Sep 2023, John Ogness wrote:
+virt_to_phys() takes a regular pointer, while driver supplies __iomem
+annotated one. Force type to void to make sparse happy, otherwise
 
-> Patches 2-74 switch all uart port locking call sites to use the new
-> wrappers. These patches were automatically generated using coccinelle.
+   pcie-mediatek.c:400:40: sparse:     expected void volatile *address
+   pcie-mediatek.c:400:40: sparse:     got void [noderef] __iomem *
 
- Hmm, no need to do this for drivers/tty/serial/zs.c?
+   pcie-mediatek.c:523:44: sparse:     expected void volatile *address
+   pcie-mediatek.c:523:44: sparse:     got void [noderef] __iomem *
 
-  Maciej
+Reported-by: Huacai Chen <chenhuacai@kernel.org>
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202309072237.9zxMv4MZ-lkp@intel.com/
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/pci/controller/pcie-mediatek.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 66a8f73296fc..5e795afd1cee 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -397,7 +397,7 @@ static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+ 	phys_addr_t addr;
+ 
+ 	/* MT2712/MT7622 only support 32-bit MSI addresses */
+-	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
++	addr = virt_to_phys((__force void *)port->base + PCIE_MSI_VECTOR);
+ 	msg->address_hi = 0;
+ 	msg->address_lo = lower_32_bits(addr);
+ 
+@@ -520,7 +520,7 @@ static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
+ 	u32 val;
+ 	phys_addr_t msg_addr;
+ 
+-	msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
++	msg_addr = virt_to_phys((__force void *)port->base + PCIE_MSI_VECTOR);
+ 	val = lower_32_bits(msg_addr);
+ 	writel(val, port->base + PCIE_IMSI_ADDR);
+ 
+-- 
+2.40.0.1.gaa8946217a0b
+
 
