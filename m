@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0913EEAA4E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 14:40:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7792EEAA4F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 14:45:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iw+gk7q3KdDrEFpfKAVU2pj/lRqRo+UXqe4olXFJMEQ=; b=YdWHnYIYBjkipcqdl1CmFsgRps
-	tSYL6kFqUhmH7NxFMk/UoKvlGy5MwWVyhxva75qdi1GWNjJG/R93l4pFBcjee7YbYHWSHi1XLPPD9
-	x/pc/nq4IomL/dXzsKpN08zoHNf4U6z9/IROLMyNUYlKqRGDqG0q3cmizNsHlCARB3qDGjUpdEL1S
-	wpESombVGlPYwPHthD7VkMFC3qFeV69/pGHz3MQmGENuug4EI44K7uvQaiii62PtZ8GAaHUA9pZfB
-	Xk5QrFfkYspCUXpdJtMcBCfZ+nnhJVcgWOzWYsfJFbX80PvjuCQso7Pl+b+YgEAHb46VEnMNPniZk
-	Lx2BaU8Q==;
+	bh=mp1KeUwXEPeyi7FaB/qpZlqFp0j0IcgZ40cl1bA/YGw=; b=AasKDlqezoMaXkcFSnyBhLwbw7
+	s8BorV/yAf1zML+VUHOBiFpQYOnfu28hBbUP7LS1JXhZB0UTX+DNUUP6HMoLg3CGrrjyDmL0b/W9A
+	iRHgWcqglJi4v29n9eSwYzAs8UKiMCg8ZiGi9ZDvfeHjSp8XBZPJJafrWTylS3OSQOEPwg0aSG5Wg
+	CzJ9h+9Htu7FJo5rgxpoq5jHFZ14wqnlwN9nEKqA8cWk1tUZPL85ISr42ZoSUOyt2yCu/IeufzGAt
+	q/I+Ie+sgv+jzUdVEdQmbvur9Zoh06X4pDxTyep03eylPVDexdAWDuquQUXAbshoO4aVG+oh2JLYC
+	JVVTDUXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgnVs-008ez3-25;
-	Thu, 14 Sep 2023 14:40:12 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1qgnbP-008fhJ-1J;
+	Thu, 14 Sep 2023 14:45:55 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgnVp-008exf-22
-	for linux-mediatek@lists.infradead.org;
-	Thu, 14 Sep 2023 14:40:12 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	id 1qgmTP-008S71-0q;
+	Thu, 14 Sep 2023 13:33:36 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:36f2:37bd:ccbb:373f])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id BA111CE2485;
-	Thu, 14 Sep 2023 14:40:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 658D6C433B8;
-	Thu, 14 Sep 2023 14:40:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694702405;
-	bh=uFy0yaIXeuU1WIHiqXjw8Vi32xgRKC9435bq8I2+iF0=;
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4FC55660734F;
+	Thu, 14 Sep 2023 14:33:33 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1694698413;
+	bh=swS7yYiqBxggjIra2XX2pXDY4PPq3f683TK0rKa6DhQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=SXIcBOlrAXldRWLG6CkqIVCX4GvN14veWYaBfKe8QpwQbpCu54yffxtvNlL1V2iYA
-	 JOu7CuVlqxLF9vHZFcHDZ/b9Vhg1WWjBOYJlgkZFtj8i+p/+J4MjCZO69/g9TWcwyH
-	 CvF1pNmQpBaZvgnc8f19Z2goLMpGq7tLhkRTcvXObuSavC8Qvss+HlmjUqj7F3gtPw
-	 qyfRdzJBIvkmdoaDtsjTUtx01w+t72yA1I1vkg9yZm/+LpUxovdeCr0LpTBIKfbTp8
-	 aXijRLsNk8/0kdTibOuMdgLneCvv3o2ZjU1vQivZx9VQyJvj4j8VqfUgCovKuLFM0p
-	 8FFlr4EZeVPpw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: netdev@vger.kernel.org
-Cc: lorenzo.bianconi@redhat.com,
-	nbd@nbd.name,
-	john@phrozen.org,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	daniel@makrotopia.org,
+	b=S3NYcmVUT/668LAIWTgK5i5tWEyxhjosr4VuCzSWSR89CBBmduMkbxehmFdODUu3Y
+	 vbNJ31v+IzyyZCmKcT/yK8z3b7BnZDDbzFcORQsFgOqx+3moz3mV2otVE3TWQk9Nh8
+	 qFPkSkNm/ESDmsHnQE9TY6kfW1FmnoCtZmtnmals7qGlc9w1aGYFISc9YrpwJgD0UC
+	 eBfF2oYlnxdM+IRU9H3zCnA88N7Fq4Pu4AUytP24NYNtXFT8bDNROKnG/X5lTZm4+X
+	 hZCKFFCjPXH6+Vu7biaWGiWFit336I5sw2dijDy4GWQAAspAHn4+X/3xozOO1hK1CA
+	 FxxL0BQuqv/Cg==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	tfiga@chromium.org,
+	m.szyprowski@samsung.com,
+	ming.qian@nxp.com,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	hverkuil-cisco@xs4all.nl,
+	nicolas.dufresne@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	sujuan.chen@mediatek.com,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH net-next 15/15] net: ethernet: mtk_wed: debugfs: add WED 3.0 debugfs entries
-Date: Thu, 14 Sep 2023 16:38:20 +0200
-Message-ID: <a387f20ea6032dd74165cdd830f7b945f9e093c7.1694701767.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <cover.1694701767.git.lorenzo@kernel.org>
-References: <cover.1694701767.git.lorenzo@kernel.org>
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 04/49] media: amphion: Use vb2_get_buffer() instead of directly access to buffers array
+Date: Thu, 14 Sep 2023 15:32:38 +0200
+Message-Id: <20230914133323.198857-5-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
+References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_074010_025198_E6A1CA22 
-X-CRM114-Status: GOOD (  11.80  )
+X-CRM114-CacheID: sfid-20230914_063335_422029_09C3563A 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,439 +87,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sujuan Chen <sujuan.chen@mediatek.com>
+Use vb2_get_buffer() instead of directly access to vb2_buffer buffer array.
+This could allow to change the type bufs[] field of vb2_buffer structure if
+needed.
+After each call to vb2_get_buffer() we need to be sure that we get
+a valid pointer so check the return value of all of them.
 
-Introduce WED3.0 debugfs entries useful for debugging.
-
-Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../net/ethernet/mediatek/mtk_wed_debugfs.c   | 371 +++++++++++++++++-
- 1 file changed, 369 insertions(+), 2 deletions(-)
+ drivers/media/platform/amphion/vpu_dbg.c | 22 ++++++++++++++++++----
+ 1 file changed, 18 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c b/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
-index 8999d0c743f3..781c691473e1 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_debugfs.c
-@@ -11,6 +11,7 @@ struct reg_dump {
- 	u16 offset;
- 	u8 type;
- 	u8 base;
-+	u32 mask;
- };
+diff --git a/drivers/media/platform/amphion/vpu_dbg.c b/drivers/media/platform/amphion/vpu_dbg.c
+index 982c2c777484..a462d6fe4ea9 100644
+--- a/drivers/media/platform/amphion/vpu_dbg.c
++++ b/drivers/media/platform/amphion/vpu_dbg.c
+@@ -140,11 +140,18 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
  
- enum {
-@@ -25,6 +26,8 @@ enum {
+ 	vq = v4l2_m2m_get_src_vq(inst->fh.m2m_ctx);
+ 	for (i = 0; i < vq->num_buffers; i++) {
+-		struct vb2_buffer *vb = vq->bufs[i];
+-		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
++		struct vb2_buffer *vb;
++		struct vb2_v4l2_buffer *vbuf;
++
++		vb = vb2_get_buffer(vq, i);
++		if (!vb)
++			continue;
  
- #define DUMP_STR(_str) { _str, 0, DUMP_TYPE_STRING }
- #define DUMP_REG(_reg, ...) { #_reg, MTK_##_reg, __VA_ARGS__ }
-+#define DUMP_REG_MASK(_reg, _mask)	\
-+	{ #_mask, MTK_##_reg, DUMP_TYPE_WED, 0, MTK_##_mask }
- #define DUMP_RING(_prefix, _base, ...)				\
- 	{ _prefix " BASE", _base, __VA_ARGS__ },		\
- 	{ _prefix " CNT",  _base + 0x4, __VA_ARGS__ },	\
-@@ -32,6 +35,7 @@ enum {
- 	{ _prefix " DIDX", _base + 0xc, __VA_ARGS__ }
+ 		if (vb->state == VB2_BUF_STATE_DEQUEUED)
+ 			continue;
++
++		vbuf = to_vb2_v4l2_buffer(vb);
++
+ 		num = scnprintf(str, sizeof(str),
+ 				"output [%2d] state = %10s, %8s\n",
+ 				i, vb2_stat_name[vb->state],
+@@ -155,11 +162,18 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
  
- #define DUMP_WED(_reg) DUMP_REG(_reg, DUMP_TYPE_WED)
-+#define DUMP_WED_MASK(_reg, _mask) DUMP_REG_MASK(_reg, _mask)
- #define DUMP_WED_RING(_base) DUMP_RING(#_base, MTK_##_base, DUMP_TYPE_WED)
+ 	vq = v4l2_m2m_get_dst_vq(inst->fh.m2m_ctx);
+ 	for (i = 0; i < vq->num_buffers; i++) {
+-		struct vb2_buffer *vb = vq->bufs[i];
+-		struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
++		struct vb2_buffer *vb;
++		struct vb2_v4l2_buffer *vbuf;
++
++		vb = vb2_get_buffer(vq, i);
++		if (!vb)
++			continue;
  
- #define DUMP_WDMA(_reg) DUMP_REG(_reg, DUMP_TYPE_WDMA)
-@@ -212,18 +216,372 @@ wed_rxinfo_show(struct seq_file *s, void *data)
- 		DUMP_WED(WED_RTQM_Q2B_MIB),
- 		DUMP_WED(WED_RTQM_PFDBK_MIB),
- 	};
-+	static const struct reg_dump regs_wed_v3[] = {
-+		DUMP_STR("WED RX RRO DATA"),
-+		DUMP_WED_RING(WED_RRO_RX_D_RX(0)),
-+		DUMP_WED_RING(WED_RRO_RX_D_RX(1)),
+ 		if (vb->state == VB2_BUF_STATE_DEQUEUED)
+ 			continue;
 +
-+		DUMP_STR("WED RX MSDU PAGE"),
-+		DUMP_WED_RING(WED_RRO_MSDU_PG_CTRL0(0)),
-+		DUMP_WED_RING(WED_RRO_MSDU_PG_CTRL0(1)),
-+		DUMP_WED_RING(WED_RRO_MSDU_PG_CTRL0(2)),
++		vbuf = to_vb2_v4l2_buffer(vb);
 +
-+		DUMP_STR("WED RX IND CMD"),
-+		DUMP_WED(WED_IND_CMD_RX_CTRL1),
-+		DUMP_WED_MASK(WED_IND_CMD_RX_CTRL2, WED_IND_CMD_MAX_CNT),
-+		DUMP_WED_MASK(WED_IND_CMD_RX_CTRL0, WED_IND_CMD_PROC_IDX),
-+		DUMP_WED_MASK(RRO_IND_CMD_SIGNATURE, RRO_IND_CMD_DMA_IDX),
-+		DUMP_WED_MASK(WED_IND_CMD_RX_CTRL0, WED_IND_CMD_MAGIC_CNT),
-+		DUMP_WED_MASK(RRO_IND_CMD_SIGNATURE, RRO_IND_CMD_MAGIC_CNT),
-+		DUMP_WED_MASK(WED_IND_CMD_RX_CTRL0,
-+			      WED_IND_CMD_PREFETCH_FREE_CNT),
-+		DUMP_WED_MASK(WED_RRO_CFG1, WED_RRO_CFG1_PARTICL_SE_ID),
-+
-+		DUMP_STR("WED ADDR ELEM"),
-+		DUMP_WED(WED_ADDR_ELEM_CFG0),
-+		DUMP_WED_MASK(WED_ADDR_ELEM_CFG1,
-+			      WED_ADDR_ELEM_PREFETCH_FREE_CNT),
-+
-+		DUMP_STR("WED Route QM"),
-+		DUMP_WED(WED_RTQM_ENQ_I2Q_DMAD_CNT),
-+		DUMP_WED(WED_RTQM_ENQ_I2N_DMAD_CNT),
-+		DUMP_WED(WED_RTQM_ENQ_I2Q_PKT_CNT),
-+		DUMP_WED(WED_RTQM_ENQ_I2N_PKT_CNT),
-+		DUMP_WED(WED_RTQM_ENQ_USED_ENTRY_CNT),
-+		DUMP_WED(WED_RTQM_ENQ_ERR_CNT),
-+
-+		DUMP_WED(WED_RTQM_DEQ_DMAD_CNT),
-+		DUMP_WED(WED_RTQM_DEQ_Q2I_DMAD_CNT),
-+		DUMP_WED(WED_RTQM_DEQ_PKT_CNT),
-+		DUMP_WED(WED_RTQM_DEQ_Q2I_PKT_CNT),
-+		DUMP_WED(WED_RTQM_DEQ_USED_PFDBK_CNT),
-+		DUMP_WED(WED_RTQM_DEQ_ERR_CNT),
-+	};
- 	struct mtk_wed_hw *hw = s->private;
- 	struct mtk_wed_device *dev = hw->wed_dev;
- 
- 	if (dev) {
- 		dump_wed_regs(s, dev, regs_common, ARRAY_SIZE(regs_common));
--		dump_wed_regs(s, dev, regs_wed_v2, ARRAY_SIZE(regs_wed_v2));
-+		if (mtk_wed_is_v2(hw))
-+			dump_wed_regs(s, dev,
-+				      regs_wed_v2, ARRAY_SIZE(regs_wed_v2));
-+		else
-+			dump_wed_regs(s, dev,
-+				      regs_wed_v3, ARRAY_SIZE(regs_wed_v3));
- 	}
- 
- 	return 0;
- }
- DEFINE_SHOW_ATTRIBUTE(wed_rxinfo);
- 
-+static int
-+wed_amsdu_show(struct seq_file *s, void *data)
-+{
-+	static const struct reg_dump regs[] = {
-+		DUMP_STR("WED AMDSU INFO"),
-+		DUMP_WED(WED_MON_AMSDU_FIFO_DMAD),
-+
-+		DUMP_STR("WED AMDSU ENG0 INFO"),
-+		DUMP_WED(WED_MON_AMSDU_ENG_DMAD(0)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QFPL(0)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENI(0)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENO(0)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_MERG(0)),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(0),
-+			      WED_AMSDU_ENG_MAX_PL_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(0),
-+			      WED_AMSDU_ENG_MAX_QGPP_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(0),
-+			      WED_AMSDU_ENG_CUR_ENTRY),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(0),
-+			      WED_AMSDU_ENG_MAX_BUF_MERGED),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(0),
-+			      WED_AMSDU_ENG_MAX_MSDU_MERGED),
-+
-+		DUMP_STR("WED AMDSU ENG1 INFO"),
-+		DUMP_WED(WED_MON_AMSDU_ENG_DMAD(1)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QFPL(1)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENI(1)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENO(1)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_MERG(1)),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(1),
-+			      WED_AMSDU_ENG_MAX_PL_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(1),
-+			      WED_AMSDU_ENG_MAX_QGPP_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(1),
-+			      WED_AMSDU_ENG_CUR_ENTRY),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(2),
-+			      WED_AMSDU_ENG_MAX_BUF_MERGED),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(2),
-+			      WED_AMSDU_ENG_MAX_MSDU_MERGED),
-+
-+		DUMP_STR("WED AMDSU ENG2 INFO"),
-+		DUMP_WED(WED_MON_AMSDU_ENG_DMAD(2)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QFPL(2)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENI(2)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENO(2)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_MERG(2)),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(2),
-+			      WED_AMSDU_ENG_MAX_PL_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(2),
-+			      WED_AMSDU_ENG_MAX_QGPP_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(2),
-+			      WED_AMSDU_ENG_CUR_ENTRY),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(2),
-+			      WED_AMSDU_ENG_MAX_BUF_MERGED),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(2),
-+			      WED_AMSDU_ENG_MAX_MSDU_MERGED),
-+
-+		DUMP_STR("WED AMDSU ENG3 INFO"),
-+		DUMP_WED(WED_MON_AMSDU_ENG_DMAD(3)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QFPL(3)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENI(3)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENO(3)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_MERG(3)),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(3),
-+			      WED_AMSDU_ENG_MAX_PL_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(3),
-+			      WED_AMSDU_ENG_MAX_QGPP_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(3),
-+			      WED_AMSDU_ENG_CUR_ENTRY),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(3),
-+			      WED_AMSDU_ENG_MAX_BUF_MERGED),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(3),
-+			      WED_AMSDU_ENG_MAX_MSDU_MERGED),
-+
-+		DUMP_STR("WED AMDSU ENG4 INFO"),
-+		DUMP_WED(WED_MON_AMSDU_ENG_DMAD(4)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QFPL(4)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENI(4)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENO(4)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_MERG(4)),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(4),
-+			      WED_AMSDU_ENG_MAX_PL_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(4),
-+			      WED_AMSDU_ENG_MAX_QGPP_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(4),
-+			      WED_AMSDU_ENG_CUR_ENTRY),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(4),
-+			      WED_AMSDU_ENG_MAX_BUF_MERGED),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(4),
-+			      WED_AMSDU_ENG_MAX_MSDU_MERGED),
-+
-+		DUMP_STR("WED AMDSU ENG5 INFO"),
-+		DUMP_WED(WED_MON_AMSDU_ENG_DMAD(5)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QFPL(5)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENI(5)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENO(5)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_MERG(5)),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(5),
-+			      WED_AMSDU_ENG_MAX_PL_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(5),
-+			      WED_AMSDU_ENG_MAX_QGPP_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(5),
-+			      WED_AMSDU_ENG_CUR_ENTRY),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(5),
-+			      WED_AMSDU_ENG_MAX_BUF_MERGED),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(5),
-+			      WED_AMSDU_ENG_MAX_MSDU_MERGED),
-+
-+		DUMP_STR("WED AMDSU ENG6 INFO"),
-+		DUMP_WED(WED_MON_AMSDU_ENG_DMAD(6)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QFPL(6)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENI(6)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENO(6)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_MERG(6)),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(6),
-+			      WED_AMSDU_ENG_MAX_PL_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(6),
-+			      WED_AMSDU_ENG_MAX_QGPP_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(6),
-+			      WED_AMSDU_ENG_CUR_ENTRY),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(6),
-+			      WED_AMSDU_ENG_MAX_BUF_MERGED),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(6),
-+			      WED_AMSDU_ENG_MAX_MSDU_MERGED),
-+
-+		DUMP_STR("WED AMDSU ENG7 INFO"),
-+		DUMP_WED(WED_MON_AMSDU_ENG_DMAD(7)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QFPL(7)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENI(7)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENO(7)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_MERG(7)),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(7),
-+			      WED_AMSDU_ENG_MAX_PL_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(7),
-+			      WED_AMSDU_ENG_MAX_QGPP_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(7),
-+			      WED_AMSDU_ENG_CUR_ENTRY),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(7),
-+			      WED_AMSDU_ENG_MAX_BUF_MERGED),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(4),
-+			      WED_AMSDU_ENG_MAX_MSDU_MERGED),
-+
-+		DUMP_STR("WED AMDSU ENG8 INFO"),
-+		DUMP_WED(WED_MON_AMSDU_ENG_DMAD(8)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QFPL(8)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENI(8)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_QENO(8)),
-+		DUMP_WED(WED_MON_AMSDU_ENG_MERG(8)),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(8),
-+			      WED_AMSDU_ENG_MAX_PL_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT8(8),
-+			      WED_AMSDU_ENG_MAX_QGPP_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(8),
-+			      WED_AMSDU_ENG_CUR_ENTRY),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(8),
-+			      WED_AMSDU_ENG_MAX_BUF_MERGED),
-+		DUMP_WED_MASK(WED_MON_AMSDU_ENG_CNT9(8),
-+			      WED_AMSDU_ENG_MAX_MSDU_MERGED),
-+
-+		DUMP_STR("WED QMEM INFO"),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_CNT(0), WED_AMSDU_QMEM_FQ_CNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_CNT(0), WED_AMSDU_QMEM_SP_QCNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_CNT(1), WED_AMSDU_QMEM_TID0_QCNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_CNT(1), WED_AMSDU_QMEM_TID1_QCNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_CNT(2), WED_AMSDU_QMEM_TID2_QCNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_CNT(2), WED_AMSDU_QMEM_TID3_QCNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_CNT(3), WED_AMSDU_QMEM_TID4_QCNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_CNT(3), WED_AMSDU_QMEM_TID5_QCNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_CNT(4), WED_AMSDU_QMEM_TID6_QCNT),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_CNT(4), WED_AMSDU_QMEM_TID7_QCNT),
-+
-+		DUMP_STR("WED QMEM HEAD INFO"),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(0), WED_AMSDU_QMEM_FQ_HEAD),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(0), WED_AMSDU_QMEM_SP_QHEAD),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(1), WED_AMSDU_QMEM_TID0_QHEAD),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(1), WED_AMSDU_QMEM_TID1_QHEAD),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(2), WED_AMSDU_QMEM_TID2_QHEAD),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(2), WED_AMSDU_QMEM_TID3_QHEAD),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(3), WED_AMSDU_QMEM_TID4_QHEAD),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(3), WED_AMSDU_QMEM_TID5_QHEAD),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(4), WED_AMSDU_QMEM_TID6_QHEAD),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(4), WED_AMSDU_QMEM_TID7_QHEAD),
-+
-+		DUMP_STR("WED QMEM TAIL INFO"),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(5), WED_AMSDU_QMEM_FQ_TAIL),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(5), WED_AMSDU_QMEM_SP_QTAIL),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(6), WED_AMSDU_QMEM_TID0_QTAIL),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(6), WED_AMSDU_QMEM_TID1_QTAIL),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(7), WED_AMSDU_QMEM_TID2_QTAIL),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(7), WED_AMSDU_QMEM_TID3_QTAIL),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(8), WED_AMSDU_QMEM_TID4_QTAIL),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(8), WED_AMSDU_QMEM_TID5_QTAIL),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(9), WED_AMSDU_QMEM_TID6_QTAIL),
-+		DUMP_WED_MASK(WED_MON_AMSDU_QMEM_PTR(9), WED_AMSDU_QMEM_TID7_QTAIL),
-+
-+		DUMP_STR("WED HIFTXD MSDU INFO"),
-+		DUMP_WED(WED_MON_AMSDU_HIFTXD_FETCH_MSDU(1)),
-+		DUMP_WED(WED_MON_AMSDU_HIFTXD_FETCH_MSDU(2)),
-+		DUMP_WED(WED_MON_AMSDU_HIFTXD_FETCH_MSDU(3)),
-+		DUMP_WED(WED_MON_AMSDU_HIFTXD_FETCH_MSDU(4)),
-+		DUMP_WED(WED_MON_AMSDU_HIFTXD_FETCH_MSDU(5)),
-+		DUMP_WED(WED_MON_AMSDU_HIFTXD_FETCH_MSDU(6)),
-+		DUMP_WED(WED_MON_AMSDU_HIFTXD_FETCH_MSDU(7)),
-+		DUMP_WED(WED_MON_AMSDU_HIFTXD_FETCH_MSDU(8)),
-+		DUMP_WED(WED_MON_AMSDU_HIFTXD_FETCH_MSDU(9)),
-+		DUMP_WED(WED_MON_AMSDU_HIFTXD_FETCH_MSDU(10)),
-+		DUMP_WED(WED_MON_AMSDU_HIFTXD_FETCH_MSDU(11)),
-+		DUMP_WED(WED_MON_AMSDU_HIFTXD_FETCH_MSDU(12)),
-+		DUMP_WED(WED_MON_AMSDU_HIFTXD_FETCH_MSDU(13)),
-+	};
-+	struct mtk_wed_hw *hw = s->private;
-+	struct mtk_wed_device *dev = hw->wed_dev;
-+
-+	if (dev)
-+		dump_wed_regs(s, dev, regs, ARRAY_SIZE(regs));
-+
-+	return 0;
-+}
-+DEFINE_SHOW_ATTRIBUTE(wed_amsdu);
-+
-+static int
-+wed_rtqm_show(struct seq_file *s, void *data)
-+{
-+	static const struct reg_dump regs[] = {
-+		DUMP_STR("WED Route QM IGRS0(N2H + Recycle)"),
-+		DUMP_WED(WED_RTQM_IGRS0_I2HW_DMAD_CNT),
-+		DUMP_WED(WED_RTQM_IGRS0_I2H_DMAD_CNT(0)),
-+		DUMP_WED(WED_RTQM_IGRS0_I2H_DMAD_CNT(1)),
-+		DUMP_WED(WED_RTQM_IGRS0_I2HW_PKT_CNT),
-+		DUMP_WED(WED_RTQM_IGRS0_I2H_PKT_CNT(0)),
-+		DUMP_WED(WED_RTQM_IGRS0_I2H_PKT_CNT(0)),
-+		DUMP_WED(WED_RTQM_IGRS0_FDROP_CNT),
-+
-+		DUMP_STR("WED Route QM IGRS1(Legacy)"),
-+		DUMP_WED(WED_RTQM_IGRS1_I2HW_DMAD_CNT),
-+		DUMP_WED(WED_RTQM_IGRS1_I2H_DMAD_CNT(0)),
-+		DUMP_WED(WED_RTQM_IGRS1_I2H_DMAD_CNT(1)),
-+		DUMP_WED(WED_RTQM_IGRS1_I2HW_PKT_CNT),
-+		DUMP_WED(WED_RTQM_IGRS1_I2H_PKT_CNT(0)),
-+		DUMP_WED(WED_RTQM_IGRS1_I2H_PKT_CNT(1)),
-+		DUMP_WED(WED_RTQM_IGRS1_FDROP_CNT),
-+
-+		DUMP_STR("WED Route QM IGRS2(RRO3.0)"),
-+		DUMP_WED(WED_RTQM_IGRS2_I2HW_DMAD_CNT),
-+		DUMP_WED(WED_RTQM_IGRS2_I2H_DMAD_CNT(0)),
-+		DUMP_WED(WED_RTQM_IGRS2_I2H_DMAD_CNT(1)),
-+		DUMP_WED(WED_RTQM_IGRS2_I2HW_PKT_CNT),
-+		DUMP_WED(WED_RTQM_IGRS2_I2H_PKT_CNT(0)),
-+		DUMP_WED(WED_RTQM_IGRS2_I2H_PKT_CNT(1)),
-+		DUMP_WED(WED_RTQM_IGRS2_FDROP_CNT),
-+
-+		DUMP_STR("WED Route QM IGRS3(DEBUG)"),
-+		DUMP_WED(WED_RTQM_IGRS2_I2HW_DMAD_CNT),
-+		DUMP_WED(WED_RTQM_IGRS3_I2H_DMAD_CNT(0)),
-+		DUMP_WED(WED_RTQM_IGRS3_I2H_DMAD_CNT(1)),
-+		DUMP_WED(WED_RTQM_IGRS3_I2HW_PKT_CNT),
-+		DUMP_WED(WED_RTQM_IGRS3_I2H_PKT_CNT(0)),
-+		DUMP_WED(WED_RTQM_IGRS3_I2H_PKT_CNT(1)),
-+		DUMP_WED(WED_RTQM_IGRS3_FDROP_CNT),
-+	};
-+	struct mtk_wed_hw *hw = s->private;
-+	struct mtk_wed_device *dev = hw->wed_dev;
-+
-+	if (dev)
-+		dump_wed_regs(s, dev, regs, ARRAY_SIZE(regs));
-+
-+	return 0;
-+}
-+DEFINE_SHOW_ATTRIBUTE(wed_rtqm);
-+
-+static int
-+wed_rro_show(struct seq_file *s, void *data)
-+{
-+	static const struct reg_dump regs[] = {
-+		DUMP_STR("RRO/IND CMD CNT"),
-+		DUMP_WED(WED_RX_IND_CMD_CNT(1)),
-+		DUMP_WED(WED_RX_IND_CMD_CNT(2)),
-+		DUMP_WED(WED_RX_IND_CMD_CNT(3)),
-+		DUMP_WED(WED_RX_IND_CMD_CNT(4)),
-+		DUMP_WED(WED_RX_IND_CMD_CNT(5)),
-+		DUMP_WED(WED_RX_IND_CMD_CNT(6)),
-+		DUMP_WED(WED_RX_IND_CMD_CNT(7)),
-+		DUMP_WED(WED_RX_IND_CMD_CNT(8)),
-+		DUMP_WED_MASK(WED_RX_IND_CMD_CNT(9),
-+			      WED_IND_CMD_MAGIC_CNT_FAIL_CNT),
-+
-+		DUMP_WED(WED_RX_ADDR_ELEM_CNT(0)),
-+		DUMP_WED_MASK(WED_RX_ADDR_ELEM_CNT(1),
-+			      WED_ADDR_ELEM_SIG_FAIL_CNT),
-+		DUMP_WED(WED_RX_MSDU_PG_CNT(1)),
-+		DUMP_WED(WED_RX_MSDU_PG_CNT(2)),
-+		DUMP_WED(WED_RX_MSDU_PG_CNT(3)),
-+		DUMP_WED(WED_RX_MSDU_PG_CNT(4)),
-+		DUMP_WED(WED_RX_MSDU_PG_CNT(5)),
-+		DUMP_WED_MASK(WED_RX_PN_CHK_CNT,
-+			      WED_PN_CHK_FAIL_CNT),
-+	};
-+	struct mtk_wed_hw *hw = s->private;
-+	struct mtk_wed_device *dev = hw->wed_dev;
-+
-+	if (dev)
-+		dump_wed_regs(s, dev, regs, ARRAY_SIZE(regs));
-+
-+	return 0;
-+}
-+DEFINE_SHOW_ATTRIBUTE(wed_rro);
-+
- static int
- mtk_wed_reg_set(void *data, u64 val)
- {
-@@ -264,7 +622,16 @@ void mtk_wed_hw_add_debugfs(struct mtk_wed_hw *hw)
- 	debugfs_create_u32("regidx", 0600, dir, &hw->debugfs_reg);
- 	debugfs_create_file_unsafe("regval", 0600, dir, hw, &fops_regval);
- 	debugfs_create_file_unsafe("txinfo", 0400, dir, hw, &wed_txinfo_fops);
--	if (!mtk_wed_is_v1(hw))
-+	if (!mtk_wed_is_v1(hw)) {
- 		debugfs_create_file_unsafe("rxinfo", 0400, dir, hw,
- 					   &wed_rxinfo_fops);
-+		if (mtk_wed_is_v3_or_greater(hw)) {
-+			debugfs_create_file_unsafe("amsdu", 0400, dir, hw,
-+						   &wed_amsdu_fops);
-+			debugfs_create_file_unsafe("rtqm", 0400, dir, hw,
-+						   &wed_rtqm_fops);
-+			debugfs_create_file_unsafe("rro", 0400, dir, hw,
-+						   &wed_rro_fops);
-+		}
-+	}
- }
+ 		num = scnprintf(str, sizeof(str),
+ 				"capture[%2d] state = %10s, %8s\n",
+ 				i, vb2_stat_name[vb->state],
 -- 
-2.41.0
+2.39.2
 
 
