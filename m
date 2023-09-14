@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07884EEAA43
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F330DEEAA45
 	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:36:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FQ5F4xfO7mIkMqtItWWZDGjXEjnB/2LPnEMxgf06HOQ=; b=Jjj7UmmHwToiSlN7n6yJwzdP4W
-	Nl/iRHCB05sQ5WcnR0UA95ifcJOLR5hkAmQd6e/Y1Erkqx8loUs2bMxR4qPUES50PT+lLI8+ckxwC
-	An1koy8ECuZk26P4+9erE/gEegLxt2eNJeVjLfj4VG7WV8tCFW4wcl8AHe0gpd5BTl+I4YW+133B4
-	pN+1I6RoFrwp+ci66Ej7BkdQEA+5Z9icTDbOh1Oh3QaGVWkLmBwUVqf9EeJiTNsBxymZpAxUzmSzF
-	AdK1z3qGbg+jIi/Kx9HJOH9SCbGqyRF7HfssOqKCUr+ARincFJ+2dvzyiwoiaioraSnmKUQVmgy6C
-	I4I6TwKg==;
+	bh=1HzoHUvVGp9ghcj+K/m/xcGH6bZqCgEuhp8DTUadv54=; b=pk4ayWBMVMX5JimQ1nUTMFlEyX
+	nA92Ku2zBu2mbbELD6UXcEPZMcBb73kqRCh4ABUhk1wHmdYtfZ2Hc2akARYbUoYrq3xxaqKVJjwjZ
+	kAOP1c8WbjFGspCKlpOnd0cdn91ogxgM8U/Z3tnZr1pflqZHphRszAPMm61XB30gBU0la1salwHlw
+	W0T788+PxKrIatQhZXZhH5VuibMJNCEG3cOsvJuEGrpE0orcoWfK23vJKSwUfqhsOGjTHv6XhtSYZ
+	CSxkk7U+EgkR/Q+bfI6EBKnTsq2KKnkl7Z/si7qXropbmV/e852H+nzVh7iTK02uyKVhB0JCDxRX9
+	+6vqZ+KQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmVw-008Unl-2i;
-	Thu, 14 Sep 2023 13:36:12 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qgmVy-008UpS-1f;
+	Thu, 14 Sep 2023 13:36:14 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmTb-008SLO-1D;
+	id 1qgmTb-008SLG-0d;
 	Thu, 14 Sep 2023 13:33:50 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:36f2:37bd:ccbb:373f])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BADF56607354;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3C6BB6607352;
 	Thu, 14 Sep 2023 14:33:45 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694698426;
-	bh=r/+dARFgLlqIYPCNsTNg9ylalWpmLzdptnRKI8OWLEk=;
+	s=mail; t=1694698425;
+	bh=tAy3PWxSfQVkJIZXcTG5de+gZEZpPM2JZfwPqhWBibI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YvjvRTk2FQuuuUs3HNGiHLDrwCbLyrYMWAL9JKval+qun6XwuAj6wgBBBfYt4IfYc
-	 xbmXCiUoxGZ4dVyag8AP0dCKYveSLx8N/9qEJjjg7/AK+32irfARE5BXXCdaPQ8C5q
-	 eGm/YqgIEkTHpr2n7umROLKbceFmejEHZwmhe+YMQAbkP64MrVDmu7NcqXZqiiff9W
-	 gVkhsgGZ27DQpJjT0kvrPuk/Hz8Gqd2Apyrf407pV8PK+uLskqE/XxU8YrO4ActwJl
-	 Rgku5Vrd3E+aZf9DjbXETUSohr6bM123BAC87DsXQcitdM/BcaI8PjCHJvYVe/Z4+1
-	 7FpdiNtI5tZ0w==
+	b=nEP/V+iuUOYi2MTo66Frdk0Pt2cXkpb1dzgT0U/dICA49ehjlCHAL7XpJzJMUcER/
+	 rRD9qTOr7d8zx9+87VOeV47F+p2+Mh2xAp0QYnU2P6Tzjxz3HzCKIn8IXhs3MD6u8A
+	 Zk8FuXkREfZYyZBGgnIIjQg9hggy1s4IobL5sPVr8VY05PSd4HLGewUJ+T7iMvh56+
+	 AUyiqobkuW3713EX0SXbTziy7FZpI4k5OEEweycYS4kJIlLscF6xv+oab1j0J7Mxt6
+	 9/7+O8+4LiS34ChguqJkCN8U4ZIvLGTr39lzr/c7vFNv9JAXTi4XVxUaSH4ezG3uaP
+	 7pXpfUBhFGyhg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 28/49] media: amphion: Stop direct calls to queue num_buffers field
-Date: Thu, 14 Sep 2023 15:33:02 +0200
-Message-Id: <20230914133323.198857-29-benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 27/49] media: pci: tw686x: Stop direct calls to queue num_buffers field
+Date: Thu, 14 Sep 2023 15:33:01 +0200
+Message-Id: <20230914133323.198857-28-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_063347_578613_891DFA6B 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20230914_063347_468070_52B7A5E5 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,72 +91,32 @@ Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/amphion/vpu_dbg.c  | 8 ++++----
- drivers/media/platform/amphion/vpu_v4l2.c | 4 ++--
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ drivers/media/pci/tw686x/tw686x-video.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/amphion/vpu_dbg.c b/drivers/media/platform/amphion/vpu_dbg.c
-index a462d6fe4ea9..61530ef92ff0 100644
---- a/drivers/media/platform/amphion/vpu_dbg.c
-+++ b/drivers/media/platform/amphion/vpu_dbg.c
-@@ -87,7 +87,7 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
- 	num = scnprintf(str, sizeof(str),
- 			"output (%2d, %2d): fmt = %c%c%c%c %d x %d, %d;",
- 			vb2_is_streaming(vq),
--			vq->num_buffers,
-+			vb2_get_num_buffers(vq),
- 			inst->out_format.pixfmt,
- 			inst->out_format.pixfmt >> 8,
- 			inst->out_format.pixfmt >> 16,
-@@ -111,7 +111,7 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
- 	num = scnprintf(str, sizeof(str),
- 			"capture(%2d, %2d): fmt = %c%c%c%c %d x %d, %d;",
- 			vb2_is_streaming(vq),
--			vq->num_buffers,
-+			vb2_get_num_buffers(vq),
- 			inst->cap_format.pixfmt,
- 			inst->cap_format.pixfmt >> 8,
- 			inst->cap_format.pixfmt >> 16,
-@@ -139,7 +139,7 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
- 		return 0;
+diff --git a/drivers/media/pci/tw686x/tw686x-video.c b/drivers/media/pci/tw686x/tw686x-video.c
+index 3ebf7a2c95f0..6bc6d143d18c 100644
+--- a/drivers/media/pci/tw686x/tw686x-video.c
++++ b/drivers/media/pci/tw686x/tw686x-video.c
+@@ -423,6 +423,7 @@ static int tw686x_queue_setup(struct vb2_queue *vq,
+ 			      unsigned int sizes[], struct device *alloc_devs[])
+ {
+ 	struct tw686x_video_channel *vc = vb2_get_drv_priv(vq);
++	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+ 	unsigned int szimage =
+ 		(vc->width * vc->height * vc->format->depth) >> 3;
  
- 	vq = v4l2_m2m_get_src_vq(inst->fh.m2m_ctx);
--	for (i = 0; i < vq->num_buffers; i++) {
-+	for (i = 0; i < vq->max_allowed_buffers; i++) {
- 		struct vb2_buffer *vb;
- 		struct vb2_v4l2_buffer *vbuf;
+@@ -430,8 +431,8 @@ static int tw686x_queue_setup(struct vb2_queue *vq,
+ 	 * Let's request at least three buffers: two for the
+ 	 * DMA engine and one for userspace.
+ 	 */
+-	if (vq->num_buffers + *nbuffers < 3)
+-		*nbuffers = 3 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 3)
++		*nbuffers = 3 - q_num_bufs;
  
-@@ -161,7 +161,7 @@ static int vpu_dbg_instance(struct seq_file *s, void *data)
- 	}
- 
- 	vq = v4l2_m2m_get_dst_vq(inst->fh.m2m_ctx);
--	for (i = 0; i < vq->num_buffers; i++) {
-+	for (i = 0; i < vq->max_allowed_buffers; i++) {
- 		struct vb2_buffer *vb;
- 		struct vb2_v4l2_buffer *vbuf;
- 
-diff --git a/drivers/media/platform/amphion/vpu_v4l2.c b/drivers/media/platform/amphion/vpu_v4l2.c
-index 0f6e4c666440..87afb4a18d5d 100644
---- a/drivers/media/platform/amphion/vpu_v4l2.c
-+++ b/drivers/media/platform/amphion/vpu_v4l2.c
-@@ -439,7 +439,7 @@ int vpu_get_num_buffers(struct vpu_inst *inst, u32 type)
- 	else
- 		q = v4l2_m2m_get_dst_vq(inst->fh.m2m_ctx);
- 
--	return q->num_buffers;
-+	return vb2_get_num_buffers(q);
- }
- 
- static void vpu_m2m_device_run(void *priv)
-@@ -587,7 +587,7 @@ static int vpu_vb2_start_streaming(struct vb2_queue *q, unsigned int count)
- 		  fmt->sizeimage[0], fmt->bytesperline[0],
- 		  fmt->sizeimage[1], fmt->bytesperline[1],
- 		  fmt->sizeimage[2], fmt->bytesperline[2],
--		  q->num_buffers);
-+		  vb2_get_num_buffers(q));
- 	vb2_clear_last_buffer_dequeued(q);
- 	ret = call_vop(inst, start, q->type);
- 	if (ret)
+ 	if (*nplanes) {
+ 		if (*nplanes != 1 || sizes[0] < szimage)
 -- 
 2.39.2
 
