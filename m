@@ -4,84 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCF11EEAA41
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:38:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C59A1EEAA40
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 14:19:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:MIME-Version:In-Reply-To:References:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cmkM3eTScVXDHH0jlpqEzGVs0jKDHtYdRBTAlD8i+NE=; b=HdBsQtSKPQsM8T0HBaKZLk13se
-	vYl7SRNv7v+Ggq09+sjka7uEGDv9yHmno13AsGx0Y6ynITTyF8lnjRTwGUvDsN2nAok5oBz4l9zMd
-	Lsm4zn7CFENPJy5epeL667zvjjTMSnsoHdLJ9DHwVlQh8oeMWSAMhlt76IOZmKVJy/2135DxNgWAl
-	mCL0U929NpKngX2yl4Ngda6oJ3LJclC06nxV4voOihpYWiirwBzM904OOdatGhUaEIX2cbSe0AF99
-	OjPpdxT/bKlP8SYoV3w1zbcoPa33pmV1D8/fJXwt0hPiVQg0Pyw3C3YvbtzH++uMiXTajwZuHUEmS
-	q0261qvw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=t8hAk2En56LpGtPctvmC6Wob92V7gAK7a2LxFE0hvHA=; b=zacddJOe7khDKAkAAzm2WEG9/Y
+	4tBqdzHGUA8kqYcns4CxH9juHZLfIl5FD21+X6XOVN3PIHv/AYDgpIteFn36XiAJ3irFjqJh0vlT1
+	d5PrBH6NRt3VVhdSFXc3eDrAHOat/9PGQXGxd0sNtONylHrePt6QLQ+0uTyfCBFGOLYijgM20kRls
+	zaLiS+1rjqH5BvqqbJQhgF0p9LTW39PBnqNPvSOdRHhEcsmUkMasYAG/h4wmQKnmmi6CwX9bMqiBf
+	+H2YZM6rATntOM+5kA6IQHAQU7UtJvRVKpSNaTFpXr0hOFpjaXNxcEBT9DAxkCzfAIHL0q0AT5WQ2
+	H4fRUZ4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmYV-008X4a-2m;
-	Thu, 14 Sep 2023 13:38:51 +0000
-Received: from mail-oa1-x33.google.com ([2001:4860:4864:20::33])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmYQ-008X2I-2w
-	for linux-mediatek@lists.infradead.org;
-	Thu, 14 Sep 2023 13:38:50 +0000
-Received: by mail-oa1-x33.google.com with SMTP id 586e51a60fabf-1c504386374so543692fac.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Sep 2023 06:38:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1694698724; x=1695303524; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
-         :user-agent:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=cmkM3eTScVXDHH0jlpqEzGVs0jKDHtYdRBTAlD8i+NE=;
-        b=yuKdMOatLHJnm5jhr3w3+ESy2zkGB6/pjgSEqr5Zdir8UxYqpkSqQXiY/V5i6YMuwA
-         Y6lR559xhewsUxwW8zxmmh3le5wKb6tVYQ5lWJF92L0mdE9fqgPoAWf2MwwCtysWE+ZU
-         C6aXc7yTp49x4wYx3TqhL0UyRLI57elEpi1LXSJtY6XsOFUslCN1V/I+5fKai4J41sEE
-         lF1N+De+6Rsj+TYXiVv9mMVj5zN85ONp2dLTv7ilYMsCN7KlRt0bg71OZ7BrCk1pvcxD
-         HldD7i6SOk/oHa7aL/Mv1T0SffFcvEGuMFVnUqj5EF/6jKgEn5wT7JWeDrqRdPMzOwGI
-         7KtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694698724; x=1695303524;
-        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
-         :user-agent:from:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cmkM3eTScVXDHH0jlpqEzGVs0jKDHtYdRBTAlD8i+NE=;
-        b=xBg4v2VgxxN7PeBnnaumvlnSVdKdzpiD9vbebz72ai180ZZbE+0z3Cd9kZyUQ6IHz9
-         T+DdgfTzJepfMdGcXoua/j/HMaVCu1TUyO/GUutm4J44JpfRegVCiqmWWKNaCI9Ybkjl
-         OvZolVo7FmBy8Imls0XSxo+VKXAHQyjET+Cf+zCZJwucDHqyKxHKhipZXRzh7fCI5bRh
-         ojNWNiOaBdjEFN4MShB6gpznbiEKV8kMxF4U+KRLLVIt+qNRsHu2cpkDVhcDHJBFg5YE
-         kOE/LJ8GdElR7PdGatd8WqSwrEbFuWn5u6cFKMuIc2gHN49VvDxY79ByBte/ismmNbsB
-         Wzxw==
-X-Gm-Message-State: AOJu0YwDF8TAP891wnSCOxSjPPesEfSxS2sRetoNPn1mVK+a1vwd0zUY
-	7dbZMvD6uh7useazX7cdmcfC/5BycNu9PB0hzbfhNg==
-X-Google-Smtp-Source: AGHT+IFh7Yh89j5toiLrapBEM+lFJrnPKMRKQDggX4YR83wnaK2tnE/8N6Y+YLTaga5Qlr9XmuCrRhn8q0u0c8VABfw=
-X-Received: by 2002:a05:6870:b69d:b0:1d5:b0b9:f6f1 with SMTP id
- cy29-20020a056870b69d00b001d5b0b9f6f1mr6386214oab.8.1694698724531; Thu, 14
- Sep 2023 06:38:44 -0700 (PDT)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Thu, 14 Sep 2023 13:38:43 +0000
-From: Guillaume Ranquet <granquet@baylibre.com>
-User-Agent: meli 0.7.3
-References: <20230914131058.2472260-1-jani.nikula@intel.com>
-In-Reply-To: <20230914131058.2472260-1-jani.nikula@intel.com>
+	id 1qgnC1-008cHO-1T;
+	Thu, 14 Sep 2023 14:19:41 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qgnBw-008cF8-33;
+	Thu, 14 Sep 2023 14:19:39 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 85A341FB;
+	Thu, 14 Sep 2023 07:20:06 -0700 (PDT)
+Received: from [10.57.93.68] (unknown [10.57.93.68])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 591303F738;
+	Thu, 14 Sep 2023 07:19:27 -0700 (PDT)
+Message-ID: <9595ad86-ecdc-e613-1b34-113b8c3123cd@arm.com>
+Date: Thu, 14 Sep 2023 15:19:20 +0100
 MIME-Version: 1.0
-Date: Thu, 14 Sep 2023 13:38:43 +0000
-Message-ID: <CABnWg9sy_u5+TRvuRXEN8FB8BGdSadYimUQ-R6=PYEKZn2RZRw@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek/dp: fix memory leak on ->get_edid callback
- error path
-To: Jani Nikula <jani.nikula@intel.com>, dri-devel@lists.freedesktop.org
-Cc: Markus Schneider-Pargmann <msp@baylibre.com>, Guillaume Ranquet <granquet@baylibre.com>, 
-	Bo-Chen Chen <rex-bc.chen@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Dmitry Osipenko <dmitry.osipenko@collabora.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH 2/3] iommu: mediatek: Add support of unmanaged iommu
+ domain
+Content-Language: en-GB
+To: Alexandre Bailon <abailon@baylibre.com>,
+ =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
+ "joro@8bytes.org" <joro@8bytes.org>, "will@kernel.org" <will@kernel.org>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "iommu@lists.linux.dev" <iommu@lists.linux.dev>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+References: <20230130102722.133271-1-abailon@baylibre.com>
+ <20230130102722.133271-3-abailon@baylibre.com>
+ <741920ba-8637-5e28-695c-699b46351590@arm.com>
+ <f126c61f-6373-d6c5-59c8-24dea9d9d168@baylibre.com>
+ <0e9f677b-846d-809d-9bc3-30906f703fda@arm.com>
+ <21fef8eb-6482-fd8c-118a-c4d9da4cfbaf@baylibre.com>
+ <2b8e19488386b5ca523f010b8ded750a4213f84e.camel@mediatek.com>
+ <68673ccd-d136-075e-6704-7d1558388784@baylibre.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <68673ccd-d136-075e-6704-7d1558388784@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_063847_152001_237D4B6B 
-X-CRM114-Status: UNSURE (   6.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230914_071937_076988_18ED0146 
+X-CRM114-Status: GOOD (  34.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,48 +82,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 14 Sep 2023 15:10, Jani Nikula <jani.nikula@intel.com> wrote:
->Setting new_edid to NULL leaks the buffer.
->
->Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
->Cc: Markus Schneider-Pargmann <msp@baylibre.com>
->Cc: Guillaume Ranquet <granquet@baylibre.com>
->Cc: Bo-Chen Chen <rex-bc.chen@mediatek.com>
->Cc: CK Hu <ck.hu@mediatek.com>
->Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
->Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
->Cc: Philipp Zabel <p.zabel@pengutronix.de>
->Cc: Matthias Brugger <matthias.bgg@gmail.com>
->Cc: dri-devel@lists.freedesktop.org
->Cc: linux-mediatek@lists.infradead.org
->Cc: linux-kernel@vger.kernel.org
->Cc: linux-arm-kernel@lists.infradead.org
->Cc: <stable@vger.kernel.org> # v6.1+
->Signed-off-by: Jani Nikula <jani.nikula@intel.com>
->
+On 2023-09-14 09:07, Alexandre Bailon wrote:
+> Hi,
+> 
+> Sorry for long delay before the response.
+> 
+> On 2/14/23 06:48, Yong Wu (吴勇) wrote:
+>> On Tue, 2023-01-31 at 16:31 +0100, Alexandre Bailon wrote:
+>>>
+>>> On 1/31/23 15:15, Robin Murphy wrote:
+>>>> On 31/01/2023 1:08 pm, Alexandre Bailon wrote:
+>>>>> Hi Robin
+>>>>>
+>>>>> On 1/30/23 13:04, Robin Murphy wrote:
+>>>>>> On 2023-01-30 10:27, Alexandre Bailon wrote:
+>>>>>>> Currently, the driver can allocate an unmanaged iommu domain.
+>>>>>>> But, this only works for SoC having multiple bank or multiple
+>>>>>>> iova
+>>>>>>> region.
+>>>>>>
+>>>>>> That is for good reason - there is only a single pagetable per
+>>>>>> bank,
+>>>>>> so if there are multiple devices assigned to a single bank,
+>>>>>> they
+>>>>>> cannot possibly be attached to different domains at the same
+>>>>>> time.
+>>>>>> Hence why the banks are modelled as groups.
+>>>>>
+>>>>> I understand.
+>>>>> I am trying to upstream a remoteproc driver but the remote
+>>>>> processor is
+>>>>> behind the iommu.
+>>>>> remoteproc can manage the iommu but it requires an unmanaged
+>>>>> domain.
+>>>>> I tried a couple of things but this cause code duplication,
+>>>>> implies many hacks and not always reliable.
+>>>>> Do you have any suggestion ?
+>>>>
+>>>> If there are other active devices behind the same IOMMU, and the
+>>>> remoteproc device cannot be isolated into its own bank using the
+>>>> existing IOMMU driver logic, then the remoteproc driver cannot
+>>>> manage
+>>>> the IOMMU directly, and must just use the regular DMA API. There's
+>>>> no
+>>>> way around it; you can't have two different parts of the kernel
+>>>> both
+>>>> thinking they have exclusive control of a single IOMMU address
+>>>> space at
+>>>> the same time. Similarly, remoteproc also cannot take explicit
+>>>> control
+>>>> of a multi-device group if it's not actually in control of the
+>>>> other
+>>>> devices, since their drivers will not be expecting the DMA address
+>>>> space
+>>>> to suddenly change underfoot - that's why iommu_attach_device() has
+>>>> the
+>>>> check which you presumably ran into.
+>>>
+>>> Unfortunately, we can't just use the regular DMA API.
+>>> Basically, the firmware use static addresses (and the remote core is
+>>> only supposed to access addresses between 0x60000000 and 0x70000000).
+>>> When we use DMA API, we get a random address that doesn't match what
+>>> the
+>>> firmware would expect.
+>>> remoteproc use directly the iommu API to map physical address to the
+>>> static address expected by the firmware when DMA API can't be use.
+>>
+>> If this master can only support this special address, We could handle
+>> it inside this driver.
+>>
+>> Could you help try to add these two patches [3/11] and [4/11]?
+>>
+>> [3/11]
+>> https://patchwork.kernel.org/project/linux-mediatek/patch/20230214031114.926-4-yong.wu@mediatek.com/
+>> [4/11]
+>> https://patchwork.kernel.org/project/linux-mediatek/patch/20230214031114.926-5-yong.wu@mediatek.com/
+>>
+>>
+>> and, then add the logical for mt8365(I see the APU is larb0 port10/11
+>> in the binding):
+>> --------------------------------
+>>
+>> +#define MT8365_REGION_NR        2
+>> +
+>> +static const struct mtk_iommu_iova_region
+>> mt8365_multi_rgn[MT8365_REGION_NR] = {
+>> +    { .iova_base = 0x0,        .size = SZ_4G},           /* 0 ~
+>> 4G. */
+>> +    { .iova_base = 0x60000000,    .size = SZ_256M},      /* APU
+>> */
+>> +};
+>> +
+>>
+>> xxxxxxxxxxx
+>>
+>> +static const unsigned int
+>> mt8365_larb_region_msk[MT8365_REGION_NR][MTK_LARB_NR_MAX] = {
+>> +    [0] = {~(u32)(BIT(10) | BIT(11)), ~0, ~0, ~0, ~0, ~0},
+>> +    [1] = {[0] = BIT(10) | BIT(11)},
+>> +};
+>> +
+>>   static const struct mtk_iommu_plat_data mt8365_data = {
+>>       .m4u_plat    = M4U_MT8365,
+>>       .flags        = RESET_AXI | INT_ID_PORT_WIDTH_6,
+>>       .inv_sel_reg    = REG_MMU_INV_SEL_GEN1,
+>>       .banks_num    = 1,
+>>       .banks_enable    = {true},
+>> -    .iova_region    = single_domain,
+>> -    .iova_region_nr    = ARRAY_SIZE(single_domain),
+>> +    .iova_region    = mt8365_multi_rgn,
+>> +    .iova_region_nr    = ARRAY_SIZE(mt8365_multi_rgn),
+>> +    .iova_region_larb_msk = mt8365_larb_region_msk,
+>>       .larbid_remap    = {{0}, {1}, {2}, {3}, {4}, {5}}, /* Linear
+>> mapping. */
+>>   };
+>> --------------------------------
+>>
+>> After that, If we call DMA API with the device whose dtsi has
+>> M4U_PORT_APU_READ/M4U_PORT_APU_WRITE. The iova should be located at
+>> that special address. Sorry, I have no board to test.
+>>
+> 
+> I have not yet tested the patches but it will only address one part of 
+> the problem.
+> Using your patches, I could allocate some shared memory using DMA API 
+> but the main issue still remain.
+> The firmware is not relocatable at all. So, once the firmware is built, 
+> it is expected to be loaded at a specific address.
+> Remoteproc framework support this use case. Using the resource table, 
+> the firmware expose to remoteproc what device address is expect and 
+> remoteproc manually call iommu_map to satisfy this requirement.
+> Using DMA_API, I could allocate the memory to load the firmware but I 
+> could not be sure that the DMA address will be the one expected by 
+> firmware.
 
-Reviewed-by: Guillaume Ranquet <granquet@baylibre.com>
->---
->
->UNTESTED
->---
-> drivers/gpu/drm/mediatek/mtk_dp.c | 1 +
-> 1 file changed, 1 insertion(+)
->
->diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
->index 2cb47f663756..8fc6eff68e30 100644
->--- a/drivers/gpu/drm/mediatek/mtk_dp.c
->+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
->@@ -2049,6 +2049,7 @@ static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
-> 	 */
-> 	if (mtk_dp_parse_capabilities(mtk_dp)) {
-> 		drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
->+		kfree(new_edid);
-> 		new_edid = NULL;
-> 	}
->
->--
->2.39.2
->
+I think the solution to this is now to use the new DT binding to require 
+an IOMMU identity mapping of the firmware region[1], such that it's all 
+taken care of for you.
+
+Thanks,
+Robin.
+
+[1] https://git.kernel.org/torvalds/c/af0d81357cc5
 
