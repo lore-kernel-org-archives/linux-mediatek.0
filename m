@@ -4,95 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0897EEAA5F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 18:07:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F5EEEAA62
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 18:29:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DVM5Y9GchlYycYoe4MGIo5Kf5CTVmd8xy8ZARREdE/8=; b=2WFc6x9hrImQf0yOCPLniz4V3W
-	qqSrxEtyVXHnt9xlgTBpCCLVonSE0Tt41ijc2x9GiCIuHbEApB2S54GRVPhiUY+JSIFzIlqlqbXu8
-	zhb0iuHeTjDQNgf5uVLrxKamSg84CpLxgIBVGa/dH8M7inCMQm4BBrBu7OZp1SAbQmc2UeNaK/i9y
-	A43w4M1lDVnnuwPiYe/6yRimWvkipPv4DZmfYOZr47+y0BrR9WKZ6W/tcWOkyCcrZ4Cq1+TWjBCc/
-	98GvVkKscad0C0RzCzbna2NMOtStLk9RsdLaD9PYGPo/42N5MySOtE42uT5sT6wsc7VYjCs4/MInl
-	eTtiqBfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6eRAg4BOSXhzdaCM4oFAMYBsORYMTL2ICOv9GCq6ZaA=; b=dqOLAyTKG3o/qjAvayBiDG9Aio
+	KK6tUBpZ1O15AF507gCILY0zzXDgahPAZOykYNOncrMPlhYV5RL7PB9O9SbICCyvwfQcE0F+8+FJe
+	M/cTpI5tmVrFwVOaLY/MrocdodF63OMFHmSdbEP4PefRPG5R/mAeg59LylcWNFo/CwHd3gGVojY8c
+	6tnNjtzzMADQPIwdjJbMpPiKbz0X6x4PpJoIecvOnPLAzBn5YAA+ZAtR+5KUrTHyONJsk9Sv4TWA7
+	DSqS7nx7S0UAdnAmWwxrdsQ0a6eox1CgYcYS+mcSMoYSmT5gF3KWIXdWCDMIm7XRtckjBhEaXzW/a
+	paDM3o2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgqkU-0092Pm-2A;
-	Thu, 14 Sep 2023 18:07:30 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1qgr5e-0094GI-09;
+	Thu, 14 Sep 2023 18:29:22 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgqkQ-0092ON-2H;
-	Thu, 14 Sep 2023 18:07:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=DVM5Y9GchlYycYoe4MGIo5Kf5CTVmd8xy8ZARREdE/8=; b=SAh4R3lRHvnhPlZeNIxjJdVqBc
-	Mk0AoHkAFXaS6l/17Qv/R8L3TzYN2RnNSLENcMR0QLpY9x27DT37TD3jO3c7mn2QectFuXNDTe5K6
-	XzIJ5v5FqOSKTDgxd5VIyYaWnTLtpZQC7Jhmw4ifTjfeRktttX4bQLJ4ayglE8n4PNFkZ7AB5Wlac
-	zcxe9nw33PhorsMEfgbsPlm1x3F2nLP8YzXK3Xkec7jx0Jn0lPINXCgGnKbjbsxsNaReIGFA+a1iP
-	CjtgY8S6DqsN7dVpdnOSMyY6fPpjxrFdahQTcMJyWy85fyeGU27thT/Hwr8GI8hGyoh53EmBS++x9
-	m1mZKXvA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33982)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1qgqkD-0004gP-2T;
-	Thu, 14 Sep 2023 19:07:13 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1qgqkD-0004zA-Ty; Thu, 14 Sep 2023 19:07:13 +0100
-Date: Thu, 14 Sep 2023 19:07:13 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
-Message-ID: <ZQNL0Vy3kMbWlNFl@shell.armlinux.org.uk>
-References: <20230827121235.zog4c3ehu2cyd3jy@skbuf>
- <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
- <87325ce9-595a-4dda-a6a1-b5927d25719b@arinc9.com>
- <20230911225126.rk23g3u3bzo3agby@skbuf>
- <036c0763-f1b2-49ff-bc82-1ff16eec27ab@arinc9.com>
- <20230912193450.h5s6miubag46z623@skbuf>
- <6cec079e-991e-4222-a76d-d6156de0daca@arinc9.com>
- <20230913074231.5azwxqjuv2wp5nik@skbuf>
- <ZQHcV5DUfcCYkkTi@shell.armlinux.org.uk>
- <ZQNLkiAt4jOjojRf@shell.armlinux.org.uk>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZQNLkiAt4jOjojRf@shell.armlinux.org.uk>
+	id 1qgr5a-0094FC-2H;
+	Thu, 14 Sep 2023 18:29:20 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E656861DB4;
+	Thu, 14 Sep 2023 18:29:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9921C433C8;
+	Thu, 14 Sep 2023 18:29:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
+	s=korg; t=1694716156;
+	bh=8yfZbzZKag5d7bxNrUSr/lpYoM54Vk26Cn0YqHlXOnU=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=k8uDcAI3/N9nu9z6RNGz7MTQI7GnzEOueZNNkHePh6pbgMV5izoqp8ZBNnpewTVDZ
+	 5nvRul9SEPLd+PWL0RLNb1YrboFFPW6PuJ8F8mgIEvVrvrX7W1It5tTUonSluB3mxt
+	 jHwMGpGX+T7d1JMb+p5mJWINZt/wPMJqJZ+42mSo=
+Date: Thu, 14 Sep 2023 11:29:15 -0700
+From: Andrew Morton <akpm@linux-foundation.org>
+To: Haibo Li <haibo.li@mediatek.com>
+Cc: <linux-kernel@vger.kernel.org>, <xiaoming.yu@mediatek.com>, Andrey
+ Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>,
+ Andrey Konovalov <andreyknvl@gmail.com>, Dmitry Vyukov
+ <dvyukov@google.com>, Vincenzo Frascino <vincenzo.frascino@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, <kasan-dev@googlegroups.com>,
+ <linux-mm@kvack.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] kasan:fix access invalid shadow address when input is
+ illegal
+Message-Id: <20230914112915.81f55863c0450195b4ed604a@linux-foundation.org>
+In-Reply-To: <20230914080833.50026-1-haibo.li@mediatek.com>
+References: <20230914080833.50026-1-haibo.li@mediatek.com>
+X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_110726_753632_4ECFA150 
-X-CRM114-Status: GOOD (  37.62  )
+X-CRM114-CacheID: sfid-20230914_112918_830897_786A7A46 
+X-CRM114-Status: GOOD (  20.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,70 +78,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 14, 2023 at 07:06:11PM +0100, Russell King (Oracle) wrote:
-> On Wed, Sep 13, 2023 at 04:59:19PM +0100, Russell King (Oracle) wrote:
-> > On Wed, Sep 13, 2023 at 10:42:31AM +0300, Vladimir Oltean wrote:
-> > > On Wed, Sep 13, 2023 at 08:52:37AM +0300, Arınç ÜNAL wrote:
-> > > > On 12.09.2023 22:34, Vladimir Oltean wrote:
-> > > > > On Tue, Sep 12, 2023 at 10:23:51PM +0300, Arınç ÜNAL wrote:
-> > > > > > The phylink bindings for user ports I ended up making by looking up the
-> > > > > > existing devicetrees are different than the phylink bindings for the shared
-> > > > > > (CPU and DSA) ports currently enforced on all switches.
-> > > > > > 
-> > > > > > My phylink bindings for user ports:
-> > > > > > 
-> > > > > >              allOf:
-> > > > > >                - anyOf:
-> > > > > >                    - required: [ fixed-link ]
-> > > > > >                    - required: [ phy-handle ]
-> > > > > >                    - required: [ managed ]
-> > > > > > 
-> > > > > >                - if:
-> > > > > >                    required: [ fixed-link ]
-> > > > > >                  then:
-> > > > > >                    not:
-> > > > > >                      required: [ managed ]
-> > > > > 
-> > > > > Right, it should have been anyOf and not oneOf.. my mistake. It is a bug
-> > > > > which should be fixed. It's the same phylink that gets used in both cases,
-> > > > > user ports and shared ports :)
-> > > > 
-> > > > One more thing, I don't recall phy-mode being required to be defined for
-> > > > user ports as it will default to GMII. I don't believe this is the same
-> > > > case for shared ports so phy-mode is required only for them?
-> > > 
-> > > phy-mode is not strictly required, but I think there is a strong
-> > > preference to set it. IIRC, when looking at the DSA device trees, there
-> > > was no case where phy-mode would be absent on CPU/DSA ports if the other
-> > > link properties were also present, so we required it too. There were no
-> > > complaints in 1 year since dsa_shared_port_validate_of() is there. The
-> > > requirement can be relaxed to just a warning and no error in the kernel,
-> > > and the removal of "required" in the schema, if it helps making it
-> > > common with user ports.
-> > 
-> > However, phylink pretty much requires phy-mode to be specified to be
-> > something sane for shared ports, so I wouldn't be in favour of relaxing
-> > the checkinng in dsa_shared_port_validate_of()... not unless you're
-> > now going to accept the approach I originally proposed to have DSA
-> > drivers tell the core (and thus phylink) what phy-mode and other link
-> > parameters should be used when they are missing from DT.
-> 
-> You mean the approach that I picked up using software nodes that got
-> thrown out by the software node people? That approach that I picked
-> up from you and tried to get merged?
-> 
-> No, that's not going to happen, and it's not a question of whether
-> _I_ am going to accept that approach or not. So don't throw that
-> back on me, please.
-> 
-> If this is something that we want to solve, we need to stop being so
-> devisive (your language above is so) and try to come up with a
-> solution that is acceptable to everyone... the swnode approach
-> doesn't seem to be it.
+On Thu, 14 Sep 2023 16:08:33 +0800 Haibo Li <haibo.li@mediatek.com> wrote:
 
-Oh dear. I must be going mad!
+> when the input address is illegal,the corresponding shadow address
+> from kasan_mem_to_shadow may have no mapping in mmu table.
+> Access such shadow address causes kernel oops.
+> Here is a sample about oops on arm64(VA 39bit) with KASAN_SW_TAGS on:
+> 
+> [ffffffb80aaaaaaa] pgd=000000005d3ce003, p4d=000000005d3ce003,
+>     pud=000000005d3ce003, pmd=0000000000000000
+> Internal error: Oops: 0000000096000006 [#1] PREEMPT SMP
+> Modules linked in:
+> CPU: 3 PID: 100 Comm: sh Not tainted 6.6.0-rc1-dirty #43
+> Hardware name: linux,dummy-virt (DT)
+> pstate: 80000005 (Nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> pc : __hwasan_load8_noabort+0x5c/0x90
+> lr : do_ib_ob+0xf4/0x110
+> ffffffb80aaaaaaa is the shadow address for efffff80aaaaaaaa.
+> The problem is reading invalid shadow in kasan_check_range.
+> 
+> The generic kasan also has similar oops.
+> 
+> To fix it,check shadow address by reading it with no fault.
+> 
+> After this patch,KASAN is able to report invalid memory access
+> for this case.
+> 
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+Thanks.
+
+> --- a/mm/kasan/kasan.h
+> +++ b/mm/kasan/kasan.h
+> @@ -304,8 +304,17 @@ static __always_inline bool addr_has_metadata(const void *addr)
+>  #ifdef __HAVE_ARCH_SHADOW_MAP
+>  	return (kasan_mem_to_shadow((void *)addr) != NULL);
+>  #else
+> -	return (kasan_reset_tag(addr) >=
+> -		kasan_shadow_to_mem((void *)KASAN_SHADOW_START));
+> +	u8 *shadow, shadow_val;
+> +
+> +	if (kasan_reset_tag(addr) <
+> +		kasan_shadow_to_mem((void *)KASAN_SHADOW_START))
+> +		return false;
+> +	/* use read with nofault to check whether the shadow is accessible */
+> +	shadow = kasan_mem_to_shadow((void *)addr);
+> +	__get_kernel_nofault(&shadow_val, shadow, u8, fault);
+> +	return true;
+> +fault:
+> +	return false;
+>  #endif
+>  }
+
+Are we able to identify a Fixes: target for this? 
+9d7b7dd946924de43021f57a8bee122ff0744d93 ("kasan: split out
+print_report from __kasan_report") altered the code but I expect the
+bug was present before that commit.
+
+Seems this bug has been there for over a year.  Can you suggest why it
+has been discovered after such a lengthy time?
 
