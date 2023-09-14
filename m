@@ -4,76 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71BB9EDE990
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 08:09:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 695DAEDE990
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 08:54:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mlOEeXuSL3Jd9KWoAGMasqY7uUX1ru96a24IVEsPgXk=; b=d6aJPx8X3ZhPtTy15K98qM9TeW
-	bqDkhkQDIQtezM3g6qFx0VA59F9n7gws6nDc7Lp2n6RzE5JLueKtAWGsEpYnkEEk1Q70WZJDZkRBL
-	CMHmuB8ntI3fg6wGMOHlsKq2vHf5+xcOvoo10KKW0IT5nOVGa2IQvstvpE1MmJ21B1PRltz8k3RGP
-	U4k/g/ao72ilTRnHJC9Gi9UdCexcoM52qn6q4V50xu5YDkcFKQe0/U+Glp/8C8jIzDoc6g1YToadY
-	pGAwBLfln0fEdc/pwWV1mARufLJOHmIaP1xbaRDV4cH+buvmgKOqBuEjPFJiMA9HHUDNZ0ZEdRZLa
-	yd2PIpNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bQYud/KKKiBauk1Wa3Dx6EW7ck9JtGVTsZ1vqq+q9N0=; b=N7aNwQiTtWISezMsWgx1BI1rr7
+	ICadIRTcqBJw7TsmEHr1nTY/1pa58q98rnTVgPu5ch/Kt00AOyLM6fn32Stavt+aXZNgA7tzaQR5p
+	JMH0rFVJ3pmHCRrvKxHUD2w+c0Y/IFGsus/4XJypCeErlvy1mAjxOB6ciSPFdYvvFhYVl8VJqoLQg
+	Nolef3FXbU1X1i+S58Qm2e9AHd8LZmzs3NetkVfOqExIoj9JRxlxckOl444qN+5PkPT0HMTj9t1rm
+	HnkQaHnblwqKX1RW982gJe/leV3v/Ybfc0lYNuyMGsRpYmH3m33pUl3BkHr+jxv1HaA0sRVG58mWL
+	HFTc9h2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qghPN-007f5a-0w;
-	Thu, 14 Sep 2023 08:09:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qgi7c-007l94-0K;
+	Thu, 14 Sep 2023 08:54:48 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qghPK-007f2K-10;
-	Thu, 14 Sep 2023 08:09:03 +0000
-X-UUID: f1efcb1c52d511ee86758d4a7c00f3a0-20230914
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=mlOEeXuSL3Jd9KWoAGMasqY7uUX1ru96a24IVEsPgXk=;
-	b=nbN5kH2ZHeBSmRDbusxGl/9eZ7H7OM8VxEjN4Ceca7hkyiE0CFGeQkeuunWg5eIxbwkPkmeufwzTexRgUinXlwQ7jnxFzPWvyYuJLwqC/Lu3A8Lec/y8ZBCSLi0HkNR5XSRzUt5nmpMC2GJwBAABc2a32vq8tNsraXzIPxgHiVg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:d9c1bb89-a0b9-41d5-abb9-5a5aca5353d4,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:ab31ee13-4929-4845-9571-38c601e9c3c9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: f1efcb1c52d511ee86758d4a7c00f3a0-20230914
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <haibo.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 805472291; Thu, 14 Sep 2023 01:08:53 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 14 Sep 2023 16:08:35 +0800
-Received: from mszsdtlt101.gcn.mediatek.inc (10.16.4.141) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 14 Sep 2023 16:08:34 +0800
-From: Haibo Li <haibo.li@mediatek.com>
-To: <linux-kernel@vger.kernel.org>
-CC: <xiaoming.yu@mediatek.com>, Andrey Ryabinin <ryabinin.a.a@gmail.com>,
-	Alexander Potapenko <glider@google.com>, Andrey Konovalov
-	<andreyknvl@gmail.com>, Dmitry Vyukov <dvyukov@google.com>, Vincenzo Frascino
-	<vincenzo.frascino@arm.com>, Andrew Morton <akpm@linux-foundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <kasan-dev@googlegroups.com>,
-	<linux-mm@kvack.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Haibo Li <haibo.li@mediatek.com>
-Subject: [PATCH] kasan:fix access invalid shadow address when input is illegal
-Date: Thu, 14 Sep 2023 16:08:33 +0800
-Message-ID: <20230914080833.50026-1-haibo.li@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1qgi7Z-007l7j-1y;
+	Thu, 14 Sep 2023 08:54:47 +0000
+Received: from localhost.localdomain (unknown [171.76.82.102])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2F74E6607344;
+	Thu, 14 Sep 2023 09:54:36 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1694681680;
+	bh=98i3LIp6vF6jp4ARL3aS2C6+JqUEnLhYgqrDUQrpz/k=;
+	h=From:To:Cc:Subject:Date:From;
+	b=b0+Z9s5S8ZPs1PfbL9xabGkwGj1RBldiXHA4acs5PaG3nSdo3YU89Vpz0OOcqU7LI
+	 4qXuwxIWPD0xLs7hLpj0xDVuegBClk7LkKZJATW94Jjlepj8JUEuVFLEjrjKiGa+0b
+	 ewjACR7YGLLJSz0nMdevMHKY5EffQLlfso3DJNYTSuNbNpJTeSLkEB4iFib8XExIUu
+	 qOq9qvGHsC4ndt9JcK0JcjWG36LrzCkAu07xStQmVgQDb4Tye7Hs5cNXWkJPn7vOG6
+	 fNvPsPs21a1wFbZpCzJkfhjv7RTaNpe7Zr5IS6xQlZ1uTa6PUh6G483hTv69abIa+J
+	 yCwUNIrn7a6YQ==
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: helen.koike@collabora.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch
+Cc: david.heidelberg@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	guilherme.gallo@collabora.com,
+	daniels@collabora.com,
+	gustavo.padovan@collabora.com,
+	emma@anholt.net,
+	robdclark@gmail.com,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	virtualization@lists.linux-foundation.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org
+Subject: [PATCH v4 0/7] drm: ci: fixes
+Date: Thu, 14 Sep 2023 14:24:19 +0530
+Message-Id: <20230914085426.883255-1-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_010902_373086_54F3D7B6 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20230914_015445_797686_83085F75 
+X-CRM114-Status: GOOD (  14.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,60 +83,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-when the input address is illegal,the corresponding shadow address
-from kasan_mem_to_shadow may have no mapping in mmu table.
-Access such shadow address causes kernel oops.
-Here is a sample about oops on arm64(VA 39bit) with KASAN_SW_TAGS on:
+The patch series contains improvements, enabling new ci jobs which
+enables testing for Mediatek MT8173, Qualcomm APQ 8016 and VirtIO GPU,
+fixing issues with the ci jobs and updating the expectation files.
+This series is intended for drm branch drm-next.
 
-[ffffffb80aaaaaaa] pgd=000000005d3ce003, p4d=000000005d3ce003,
-    pud=000000005d3ce003, pmd=0000000000000000
-Internal error: Oops: 0000000096000006 [#1] PREEMPT SMP
-Modules linked in:
-CPU: 3 PID: 100 Comm: sh Not tainted 6.6.0-rc1-dirty #43
-Hardware name: linux,dummy-virt (DT)
-pstate: 80000005 (Nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-pc : __hwasan_load8_noabort+0x5c/0x90
-lr : do_ib_ob+0xf4/0x110
-ffffffb80aaaaaaa is the shadow address for efffff80aaaaaaaa.
-The problem is reading invalid shadow in kasan_check_range.
+v2:
+  - Use fdtoverlay command to merge overlay dtbo with the base dtb instead of modifying the kernel sources
+  - Reworded the commit message for enabling jobs
+  - Added a new patch in the series to use scripts/config to enable/disable configs
 
-The generic kasan also has similar oops.
+v3:
+  - New patch in the series to add device tree overlay in arch/arm64/boot/dts/qcom
+  - drm-ci scripts to use device tree overlay from arch/arm64/boot/dts/qcom and compile base device tree with overlay support
+  - New patch in the series to enable CONFIG_REGULATOR_DA9211 in defconfig
+  - Remove CONFIG_RTC_DRV_MT6397=y as it is already enabled in defconfig
 
-To fix it,check shadow address by reading it with no fault.
+v4:
+  - Drop 'enable CONFIG_REGULATOR_DA9211 in defconfig' patch as it is sent upstream as a seperate patch
+  - Use apq8016-sbc-usb-host.dtb which allows the USB controllers to work in host mode.
+    This patch depends on https://lore.kernel.org/lkml/20230911161518.650726-1-vignesh.raman@collabora.com/
 
-After this patch,KASAN is able to report invalid memory access
-for this case.
+Vignesh Raman (7):
+  drm: ci: igt_runner: Remove todo
+  drm: ci: Force db410c to host mode
+  drm: ci: virtio: Update ci variables
+  drm: ci: Enable regulator
+  drm: ci: Update xfails
+  drm: ci: Enable new jobs
+  drm: ci: Use scripts/config to enable/disable configs
 
-Signed-off-by: Haibo Li <haibo.li@mediatek.com>
----
- mm/kasan/kasan.h | 13 +++++++++++--
- 1 file changed, 11 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/ci/arm64.config                  |  1 +
+ drivers/gpu/drm/ci/build.sh                      | 16 ++++++++--------
+ drivers/gpu/drm/ci/igt_runner.sh                 |  1 -
+ drivers/gpu/drm/ci/test.yml                      | 16 +++++-----------
+ .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt    |  1 -
+ drivers/gpu/drm/ci/xfails/i915-cml-fails.txt     |  1 -
+ drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt    |  2 ++
+ drivers/gpu/drm/ci/xfails/i915-glk-flakes.txt    |  1 +
+ .../gpu/drm/ci/xfails/mediatek-mt8173-fails.txt  |  2 --
+ .../gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt | 16 ++++++++++++++++
+ drivers/gpu/drm/ci/xfails/msm-apq8016-flakes.txt |  2 ++
+ .../gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt |  1 +
+ .../gpu/drm/ci/xfails/rockchip-rk3399-fails.txt  |  4 ++--
+ .../gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt |  3 +++
+ 14 files changed, 41 insertions(+), 26 deletions(-)
 
-diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-index f70e3d7a602e..bd30f35e18b2 100644
---- a/mm/kasan/kasan.h
-+++ b/mm/kasan/kasan.h
-@@ -304,8 +304,17 @@ static __always_inline bool addr_has_metadata(const void *addr)
- #ifdef __HAVE_ARCH_SHADOW_MAP
- 	return (kasan_mem_to_shadow((void *)addr) != NULL);
- #else
--	return (kasan_reset_tag(addr) >=
--		kasan_shadow_to_mem((void *)KASAN_SHADOW_START));
-+	u8 *shadow, shadow_val;
-+
-+	if (kasan_reset_tag(addr) <
-+		kasan_shadow_to_mem((void *)KASAN_SHADOW_START))
-+		return false;
-+	/* use read with nofault to check whether the shadow is accessible */
-+	shadow = kasan_mem_to_shadow((void *)addr);
-+	__get_kernel_nofault(&shadow_val, shadow, u8, fault);
-+	return true;
-+fault:
-+	return false;
- #endif
- }
- 
 -- 
-2.25.1
+2.40.1
 
 
