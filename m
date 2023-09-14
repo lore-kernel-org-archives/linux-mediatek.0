@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5B23EEAA42
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:34:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 753D4EEAA46
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:34:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oBL/HMfLMgRXgAfT5u02bM2jjV/dQdfSyWlpf+BZYVc=; b=hwBodadwUcC9Z4sxdFomndBsyr
-	TCoGTclr/boghITPcBiNq+VkM/JjHhh/BZ34IvFL3zoAtR3cNtd0j4lGRDU8MBy3yCVio+NJ68gDB
-	kStkZUdi8DgMqTNe2mOXizFNBIFE3G9oRX3PFW82cEtYXx5qZWZCeHlq3lUzQBgc9oY4BxC54japz
-	/gulCTQhK0jR65HVp04yiYOI+ZdTpwyF+x7qCm6amO7Z3jLRIOjyY1Z8Bg7SOiMyCMuJSZgHEUkqP
-	iCegUZ0sXgqW4rzMDzGCwpREjimK3rIm7PtjDK44KCGjSHOuPp1W4qReJ1vIOEAMUoylXbDxJnjsU
-	UV6PyJKA==;
+	bh=GhnSqOiSmfX2a0e2tL7vBTe/pZHQ5iui/RY1FADwjgE=; b=OnFG0ZzEv/RHzv7fYnkkj3kW5k
+	e0+Pi7qBGt1rDEbtxdJonJb8Jw4irBNoMu/ghNfqLxPk5P6Ae1giVFclbe/BrQoi/qAsch6IY4aZI
+	6AEb+qApOXxK9rbjwuP4gXw49bLsjjHZMPFoA9+ydHBCUr2z9yKnKJhwKeqCQtetQS7VkCFWdTUMP
+	363d63TiajiDPC9QyxOLEQ0LQ7SCvNgcrUz6a6nrvWMoyCPFqjaJ7OVEpP2oZFu1v5e1PBgYqYOgg
+	+/5PsB6e7hq1Asz2jqf9UTc2jp3OGUuNNcgffhHMhKuOvmujxDRGbz1Eoo/KfH/Ncj2jn2/CAB138
+	D/Lasd0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmTv-008Sld-14;
-	Thu, 14 Sep 2023 13:34:07 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qgmTx-008Snu-1F;
+	Thu, 14 Sep 2023 13:34:09 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmTR-008S8z-22;
+	id 1qgmTR-008S98-2n;
 	Thu, 14 Sep 2023 13:33:39 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:36f2:37bd:ccbb:373f])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CEC4E6607352;
-	Thu, 14 Sep 2023 14:33:33 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D61D56607355;
+	Thu, 14 Sep 2023 14:33:34 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694698414;
-	bh=xgQ59ci0u36Sg6Kfk6W/knjQu2QF8jMpnRAVGSPYz3E=;
+	s=mail; t=1694698415;
+	bh=iZqd1w+9hJa+OQD7BuHGMyLxr+up+MZt6k1cr275d/4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=fXFkwMr58pl3kD2w2eazXiEVaY7bh84f8fTUEWWcFm6cCqDY+NSc7hG1r0DeF6miz
-	 pHYzFvsDbkSYNCm/xiCiJRXzC97mFpmyvwa+L3PQp1WMW4KKJT83cfXK8G6UkMSaby
-	 A3nqQvqr0PzdYG6SsQDnF41oZRMoCbi0V915JyNVzNlQnZC5BVNSQlsoC6bQNvlVxA
-	 EftWfHSXVZ65cL2KxeGPnd8D/GyqyRKpJX1C/gBZKZ5idmeIclqHJz/7hrnVe51qAv
-	 KZvlJl/GS7fEeC6aOAooDYoaXzCNDEgPJFrVufQy43TwseFRQuERNAuut8dukGwG9i
-	 qs9CFTrFBSAqg==
+	b=YBKyrFSx5bL9zrE3+6VE9UoNa6a/2EJcx9kGRCOy32Z7Tk5r/DL0ScHoaO+15m5om
+	 N3rNbLa3LJTej/+SCRGhoNXiyiU1YiLJslsY4DKCRXNkTxrLLplPbTqmchMGtMDRxR
+	 q6ZVBm+UXjnzSvx1PsV5VMB9+xq0i012Mxl3b9jb39a2e0KQ+p+OrJ7Q9uCl8zBFJW
+	 9alTy9FMYas1CjZb3DLQJ06R+SLjPCU12THGyJl5MqIYAfXmnkO+8u3Hj2acXQzbHV
+	 fco8OlfKWtLh+L+nT+ohqLGOQQfdwRAd0HxvgnREI6AwPfGBVum0a8mvtL2WH6UG/1
+	 PlZooX4ru6Xvg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 05/49] media: mediatek: jpeg: Use vb2_get_buffer() instead of directly access to buffers array
-Date: Thu, 14 Sep 2023 15:32:39 +0200
-Message-Id: <20230914133323.198857-6-benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 07/49] media: sti: hva: Use vb2_get_buffer() instead of directly access to buffers array
+Date: Thu, 14 Sep 2023 15:32:41 +0200
+Message-Id: <20230914133323.198857-8-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_063337_809410_6FCF12EC 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20230914_063338_065131_C12D7E2E 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,29 +95,24 @@ a valid pointer so check the return value of all of them.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/media/platform/st/sti/hva/hva-v4l2.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 7194f88edc0f..73a063b1569b 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -598,12 +598,11 @@ static int mtk_jpeg_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
- 		goto end;
+diff --git a/drivers/media/platform/st/sti/hva/hva-v4l2.c b/drivers/media/platform/st/sti/hva/hva-v4l2.c
+index 3a848ca32a0e..326be09bdb55 100644
+--- a/drivers/media/platform/st/sti/hva/hva-v4l2.c
++++ b/drivers/media/platform/st/sti/hva/hva-v4l2.c
+@@ -577,6 +577,10 @@ static int hva_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
+ 		}
  
- 	vq = v4l2_m2m_get_vq(fh->m2m_ctx, buf->type);
--	if (buf->index >= vq->num_buffers) {
--		dev_err(ctx->jpeg->dev, "buffer index out of range\n");
-+	vb = vb2_get_buffer(vq, buf->index);
-+	if (!vb) {
-+		dev_err(ctx->jpeg->dev, "buffer not found\n");
- 		return -EINVAL;
+ 		vb2_buf = vb2_get_buffer(vq, buf->index);
++		if (!vb2_buf) {
++			dev_dbg(dev, "%s buffer index %d not found\n", ctx->name, buf->index);
++			return -EINVAL;
++		}
+ 		stream = to_hva_stream(to_vb2_v4l2_buffer(vb2_buf));
+ 		stream->bytesused = buf->bytesused;
  	}
--
--	vb = vq->bufs[buf->index];
- 	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(vb);
- 	jpeg_src_buf->bs_size = buf->m.planes[0].bytesused;
- 
 -- 
 2.39.2
 
