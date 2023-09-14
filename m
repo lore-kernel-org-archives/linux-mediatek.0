@@ -4,82 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6114DEDE9A7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 11:17:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2C6AEDE9AD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 12:11:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mRH6OrUr+z0cZQpLuLGyuJMctqYD163Kr9u2QpwLYcY=; b=MGyaiMQEbbhKIV4I68/Y80mT48
-	cvETuhJinfr7Wps9TSkiFUQllSCD3QstDDpN4j9cmGTNRc81P5bPlumyQ4pYJ9sNe1RKKQn8kByvn
-	pfYSFWMMo4+RDkGBv0hqIa8WTYr4j2d55JAu2fLtpOi1VpOjq6+kZr5t66k9k6uvsADhKFv6DP12R
-	a/iqvtpBgXBCKYqfEjZFfBps6KtqfLOwNef2umW53OZ2tChxeQvDizHqoT+tJhsQXRyFsnJWU/PqY
-	5lgC9SPWBeTw1gQfLmnWGM150UQmEhzTda+67iIi2Ba2STlLOGUpv0XKeBevxgCfpi/OtLDRUj5KT
-	lnnodtVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7J7GD2rJpRodzTyvQUOEl10XrSH/1mr5sIgAgvizokI=; b=B23dvy8KSrrPn3Vqw4+TkVTMDT
+	AE3gW0ZEN3hRE2rsUtzLmaglMfUaD1XARhTDWG4G2W4hQzoR4H8xR79JG+N4oqqERWNJ7M2IlDToy
+	t9C35mWZso8cSSIBXNQ3EFrM2sVk++0tpnJ2E0avdEHNrqQew61vCR3TXh+2Gy2oa9NxU4KWR7MXP
+	5gMbVdGMZcv6IdCNP1bnd4UjDq+lM6H92V99rpEtQ2ltj4/gcIWCFpiIccqMmOC/5BGBnrVy+KXdM
+	O3FoRqM/wZzT3FekIXyefYifGjYB1ufae9iBZybgKUsqCgTq8Ey7NAKhZTi5ViOMLzTjawLpiQc64
+	U4Xb1NDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgkM3-008DQH-1Y;
-	Thu, 14 Sep 2023 11:17:51 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1qglBt-008IwR-2E;
+	Thu, 14 Sep 2023 12:11:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgkM0-008DOH-0n
-	for linux-mediatek@lists.infradead.org;
-	Thu, 14 Sep 2023 11:17:49 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-502defbb0c3so1450476e87.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Sep 2023 04:17:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1694690267; x=1695295067; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=mRH6OrUr+z0cZQpLuLGyuJMctqYD163Kr9u2QpwLYcY=;
-        b=salKO42jEG4qRyJMNUxBsVAwvOaxV8rcS3JSOeBrcuAUL9juVnf0SsQ0M5+UVGCVPO
-         smp4NYhnmf8RwzUDDKUhxMSbfXTKFGB1CO307gvpH0c3eA6TdADyMQLbnwq2BN3nE++7
-         HryTO06HuFZoXuTioEydt5r0q5JXz3kziIgjrYeXSzZYXvS6eeJoghospwfmKONCaf6x
-         2LgaMW6dK3K+GvSll89Jf7b+inKRolgPk6DM7/RZcvAapp2F7GRtxQ7qGNPXChHI3swb
-         OCetn2UUa1EC9wsOLkywfQ5SHmBsZoBTisjdd4BVCNmlr3+ewr/AmbmnPp6Nn4vvl8TM
-         7IIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694690267; x=1695295067;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=mRH6OrUr+z0cZQpLuLGyuJMctqYD163Kr9u2QpwLYcY=;
-        b=aAkoLu9FEKbzX2MTCYFmueTYkRfAPzngtKX88XOC9yEs+iLlkHeIhoMHifdh2oCll6
-         wJSEA1jwj9OFmX1O07tMAfALOZLj78AbyNKjA4g99Vv/ssgzThl31Qbe1i7mb2H0LZHY
-         k3+vIHJUzDqvS+/UyLhjjAD2ZoCqMadzBy/YhXNR96ogo31/mLC3mnxNPmw1mPyYy0u9
-         LDB//omqdp5PWPXHYILGDVaWSVUv4zkbBxazzlrxthoqvwbhyfrb18Ha6wVPCYDgYnLc
-         Za8wyUXYocxPcVeifGxhigacDlSl6Ild/LLBKC4Iax16WR1VQpNH8atII0lPw5frv6gI
-         UHUw==
-X-Gm-Message-State: AOJu0Yw2aN69AC5VqAg1Dl9VMi4cl7zkMMt/s3qGtsE5x7K9Ev75quFn
-	YC9xQs7k2D14lrYjMGRHHtTH6w==
-X-Google-Smtp-Source: AGHT+IG+zvfdRoCHg863MO1oc+o242dOyN3OArQ0YkCJDQaEF6fm8SXbA4YZWUC5fkXlYy9dpmXDxA==
-X-Received: by 2002:a19:4316:0:b0:4f8:5cde:a44f with SMTP id q22-20020a194316000000b004f85cdea44fmr4020739lfa.10.1694690266851;
-        Thu, 14 Sep 2023 04:17:46 -0700 (PDT)
-Received: from uffe-tuxpro14.. (h-94-254-63-18.NA.cust.bahnhof.se. [94.254.63.18])
-        by smtp.gmail.com with ESMTPSA id q12-20020ac2510c000000b0050092263a20sm236630lfb.6.2023.09.14.04.17.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 14 Sep 2023 04:17:46 -0700 (PDT)
-From: Ulf Hansson <ulf.hansson@linaro.org>
-To: Arnd Bergmann <arnd@arndb.de>,
-	Olof Johansson <olof@lixom.net>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>,
-	linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 07/17] pmdomain: mediatek: Move Kconfig options to the pmdomain subsystem
-Date: Thu, 14 Sep 2023 13:17:44 +0200
-Message-Id: <20230914111744.586593-1-ulf.hansson@linaro.org>
-X-Mailer: git-send-email 2.34.1
+	id 1qglBp-008IvE-37;
+	Thu, 14 Sep 2023 12:11:24 +0000
+X-UUID: cd985fd252f711ee86758d4a7c00f3a0-20230914
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=7J7GD2rJpRodzTyvQUOEl10XrSH/1mr5sIgAgvizokI=;
+	b=A8dIJSHdep1QNZ4DLWgAmwwf2aqU9Uu8LLvwF3pGUXmyDoi+hVlsGuQm8wm5JAIa8kS/T21I2pcRBdTEsZ8gwD9HUmlp8KfNFILY7QO2C+EsJjO19PbPJ3+iwBC81riETGuJrlYgGETgjR0bDuBTgsCK4VyQKgh+4c2On3Pqogo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:b14179ed-a127-4cbc-adfa-8ee9e06c297f,IP:0,U
+	RL:0,TC:0,Content:30,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:30
+X-CID-META: VersionHash:0ad78a4,CLOUDID:19c0b2ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: cd985fd252f711ee86758d4a7c00f3a0-20230914
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chun-jen.tseng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1515019038; Thu, 14 Sep 2023 05:11:15 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 14 Sep 2023 20:10:38 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 14 Sep 2023 20:10:38 +0800
+From: Mark Tseng <chun-jen.tseng@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<chun-jen.tseng@mediatek.com>
+Subject: [PATCH v2 1/1] arm64: dts: mediatek: mt8186: Increase CCI frequency
+Date: Thu, 14 Sep 2023 20:10:35 +0800
+Message-ID: <20230914121035.17320-2-chun-jen.tseng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230914121035.17320-1-chun-jen.tseng@mediatek.com>
+References: <20230914121035.17320-1-chun-jen.tseng@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--2.167600-8.000000
+X-TMASE-MatchedRID: Zel3CUePV2j/fXSbEtZs/DvfsoCuAcP+An4P7FuKVFCyD8qnkE3ipL51
+	zIfS792k09NQNrxIpFZ6v97VXslRaa+/EguYor8cFEUknJ/kEl7dB/CxWTRRu+rAZ8KTspSz4uA
+	5FNdU//N7OSBMCCNnVs1bUp6r4MDAWQS/Gs8AJC6r5oK9Wx6kkn6xK/W/SHj8ZAupowockPot4O
+	eZu1Ug0Gm8SaS5j+RbF0aD5ljt43pMcHZD6gqu7wxMjfifIXfowkvVoA11Twp+3BndfXUhXQ==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--2.167600-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: EF85E8C8A12336A2F2F1AA4B7BB0B5F525AEB258EDE195636DD3920A884264262000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_041748_284264_8E457B5C 
-X-CRM114-Status: GOOD (  14.54  )
+X-CRM114-CacheID: sfid-20230914_051122_016790_45FB1D6C 
+X-CRM114-Status: UNSURE (   9.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,101 +99,147 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Kconfig options belongs closer to the corresponding implementations,
-hence let's move them from the soc subsystem to the pmdomain subsystem.
+The original CCI OPP table's lowest frequency 500 MHz is too low and causes
+system stalls. Increase the frequency range to 1.05 GHz ~ 1.4 GHz and adjust
+the OPPs accordingly.
 
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: <linux-mediatek@lists.infradead.org>
-Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+Fixes: 32dfbc03fc26 ("arm64: dts: mediatek: mt8186: Add CCI node and CCI OPP table")
+
+Signed-off-by: Mark Tseng <chun-jen.tseng@mediatek.com>
 ---
- drivers/pmdomain/Kconfig          |  1 +
- drivers/pmdomain/mediatek/Kconfig | 29 +++++++++++++++++++++++++++++
- drivers/soc/mediatek/Kconfig      | 23 -----------------------
- 3 files changed, 30 insertions(+), 23 deletions(-)
- create mode 100644 drivers/pmdomain/mediatek/Kconfig
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 90 ++++++++++++------------
+ 1 file changed, 45 insertions(+), 45 deletions(-)
 
-diff --git a/drivers/pmdomain/Kconfig b/drivers/pmdomain/Kconfig
-index 8a02523b62ce..5929f2d31588 100644
---- a/drivers/pmdomain/Kconfig
-+++ b/drivers/pmdomain/Kconfig
-@@ -6,5 +6,6 @@ source "drivers/pmdomain/amlogic/Kconfig"
- source "drivers/pmdomain/apple/Kconfig"
- source "drivers/pmdomain/bcm/Kconfig"
- source "drivers/pmdomain/imx/Kconfig"
-+source "drivers/pmdomain/mediatek/Kconfig"
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+index f04ae70c470a..b98832d032eb 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -39,79 +39,79 @@
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
  
- endmenu
-diff --git a/drivers/pmdomain/mediatek/Kconfig b/drivers/pmdomain/mediatek/Kconfig
-new file mode 100644
-index 000000000000..184011b51615
---- /dev/null
-+++ b/drivers/pmdomain/mediatek/Kconfig
-@@ -0,0 +1,29 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+
-+menu "MediaTek Power Domains"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+
-+config MTK_SCPSYS
-+	bool "MediaTek SCPSYS Support"
-+	default ARCH_MEDIATEK
-+	depends on OF
-+	select REGMAP
-+	select MTK_INFRACFG
-+	select PM_GENERIC_DOMAINS if PM
-+	help
-+	  Say yes here to add support for the MediaTek SCPSYS power domain
-+	  driver.
-+
-+config MTK_SCPSYS_PM_DOMAINS
-+	bool "MediaTek SCPSYS generic power domain"
-+	default ARCH_MEDIATEK
-+	depends on PM
-+	select PM_GENERIC_DOMAINS
-+	select REGMAP
-+	help
-+	  Say y here to enable power domain support.
-+	  In order to meet high performance and low power requirements, the System
-+	  Control Processor System (SCPSYS) has several power management related
-+	  tasks in the system.
-+
-+endmenu
-diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-index a88cf04fc803..0810b5b0c688 100644
---- a/drivers/soc/mediatek/Kconfig
-+++ b/drivers/soc/mediatek/Kconfig
-@@ -49,29 +49,6 @@ config MTK_REGULATOR_COUPLER
- 	default ARCH_MEDIATEK
- 	depends on REGULATOR
+-		cci_opp_0: opp-500000000 {
+-			opp-hz = /bits/ 64 <500000000>;
+-			opp-microvolt = <600000>;
++		cci_opp_0: opp-1050000000 {
++			opp-hz = /bits/ 64 <1050000000>;
++			opp-microvolt = <843750>;
+ 		};
  
--config MTK_SCPSYS
--	bool "MediaTek SCPSYS Support"
--	default ARCH_MEDIATEK
--	depends on OF
--	select REGMAP
--	select MTK_INFRACFG
--	select PM_GENERIC_DOMAINS if PM
--	help
--	  Say yes here to add support for the MediaTek SCPSYS power domain
--	  driver.
--
--config MTK_SCPSYS_PM_DOMAINS
--	bool "MediaTek SCPSYS generic power domain"
--	default ARCH_MEDIATEK
--	depends on PM
--	select PM_GENERIC_DOMAINS
--	select REGMAP
--	help
--	  Say y here to enable power domain support.
--	  In order to meet high performance and low power requirements, the System
--	  Control Processor System (SCPSYS) has several power management related
--	  tasks in the system.
--
- config MTK_MMSYS
- 	tristate "MediaTek MMSYS Support"
- 	default ARCH_MEDIATEK
+-		cci_opp_1: opp-560000000 {
+-			opp-hz = /bits/ 64 <560000000>;
+-			opp-microvolt = <675000>;
++		cci_opp_1: opp-1073000000 {
++			opp-hz = /bits/ 64 <1073000000>;
++			opp-microvolt = <850000>;
+ 		};
+ 
+-		cci_opp_2: opp-612000000 {
+-			opp-hz = /bits/ 64 <612000000>;
+-			opp-microvolt = <693750>;
++		cci_opp_2: opp-1096000000 {
++			opp-hz = /bits/ 64 <1096000000>;
++			opp-microvolt = <856250>;
+ 		};
+ 
+-		cci_opp_3: opp-682000000 {
+-			opp-hz = /bits/ 64 <682000000>;
+-			opp-microvolt = <718750>;
++		cci_opp_3: opp-1120000000 {
++			opp-hz = /bits/ 64 <1120000000>;
++			opp-microvolt = <862500>;
+ 		};
+ 
+-		cci_opp_4: opp-752000000 {
+-			opp-hz = /bits/ 64 <752000000>;
+-			opp-microvolt = <743750>;
++		cci_opp_4: opp-1143000000 {
++			opp-hz = /bits/ 64 <1143000000>;
++			opp-microvolt = <881250>;
+ 		};
+ 
+-		cci_opp_5: opp-822000000 {
+-			opp-hz = /bits/ 64 <822000000>;
+-			opp-microvolt = <768750>;
++		cci_opp_5: opp-1166000000 {
++			opp-hz = /bits/ 64 <1166000000>;
++			opp-microvolt = <893750>;
+ 		};
+ 
+-		cci_opp_6: opp-875000000 {
+-			opp-hz = /bits/ 64 <875000000>;
+-			opp-microvolt = <781250>;
++		cci_opp_6: opp-1190000000 {
++			opp-hz = /bits/ 64 <1190000000>;
++			opp-microvolt = <906250>;
+ 		};
+ 
+-		cci_opp_7: opp-927000000 {
+-			opp-hz = /bits/ 64 <927000000>;
+-			opp-microvolt = <800000>;
++		cci_opp_7: opp-1213000000 {
++			opp-hz = /bits/ 64 <1213000000>;
++			opp-microvolt = <918750>;
+ 		};
+ 
+-		cci_opp_8: opp-980000000 {
+-			opp-hz = /bits/ 64 <980000000>;
+-			opp-microvolt = <818750>;
++		cci_opp_8: opp-1236000000 {
++			opp-hz = /bits/ 64 <1236000000>;
++			opp-microvolt = <937500>;
+ 		};
+ 
+-		cci_opp_9: opp-1050000000 {
+-			opp-hz = /bits/ 64 <1050000000>;
+-			opp-microvolt = <843750>;
++		cci_opp_9: opp-1260000000 {
++			opp-hz = /bits/ 64 <1260000000>;
++			opp-microvolt = <950000>;
+ 		};
+ 
+-		cci_opp_10: opp-1120000000 {
+-			opp-hz = /bits/ 64 <1120000000>;
+-			opp-microvolt = <862500>;
++		cci_opp_10: opp-1283000000 {
++			opp-hz = /bits/ 64 <1283000000>;
++			opp-microvolt = <962500>;
+ 		};
+ 
+-		cci_opp_11: opp-1155000000 {
+-			opp-hz = /bits/ 64 <1155000000>;
+-			opp-microvolt = <887500>;
++		cci_opp_11: opp-1306000000 {
++			opp-hz = /bits/ 64 <1306000000>;
++			opp-microvolt = <975000>;
+ 		};
+ 
+-		cci_opp_12: opp-1190000000 {
+-			opp-hz = /bits/ 64 <1190000000>;
+-			opp-microvolt = <906250>;
++		cci_opp_12: opp-1330000000 {
++			opp-hz = /bits/ 64 <1330000000>;
++			opp-microvolt = <993750>;
+ 		};
+ 
+-		cci_opp_13: opp-1260000000 {
+-			opp-hz = /bits/ 64 <1260000000>;
+-			opp-microvolt = <950000>;
++		cci_opp_13: opp-1353000000 {
++			opp-hz = /bits/ 64 <1353000000>;
++			opp-microvolt = <1006250>;
+ 		};
+ 
+-		cci_opp_14: opp-1330000000 {
+-			opp-hz = /bits/ 64 <1330000000>;
+-			opp-microvolt = <993750>;
++		cci_opp_14: opp-1376000000 {
++			opp-hz = /bits/ 64 <1376000000>;
++			opp-microvolt = <1018750>;
+ 		};
+ 
+ 		cci_opp_15: opp-1400000000 {
 -- 
-2.34.1
+2.18.0
 
 
