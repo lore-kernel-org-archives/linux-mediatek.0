@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DF30EEAA41
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:35:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F819EEAA40
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Sep 2023 13:35:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sY9RP+fPDz1MSqs1Rmax9/Eu2YBR7RvRLW2qBjv36o8=; b=doMS1fZxaUHbuqrQPZjfCmGLFB
-	RZq8DHdGxrD/O5efyn25Avwt0nT4AGYuUap3y438zV55TisuGjKZ85RNx3kJyZTL5RS3IKooTR3Lj
-	jUfCKOWc7Qx7x2I/gNnuUXoSVrwPwU9XEu6Kh6PDUWt1Kl+iVnAgoqVzD3sdcKZIYdWj1ehTRal14
-	nwDOAXLyqfuUXVahgxHw+kw2HNqQtuG3VbNTUZKP5foXUo9ReejVuiSSwcCpMzTvpPAm7FoojEK1X
-	jcNIjW7q4t6kZ1gfjNVUG9DRcYrNeLKVzDz4CadezVxeyUsgSyPpswgiaCZmmAnLjyFpYCo7eZSYb
-	lEDlppqQ==;
+	bh=S3HpcoTOv+qfBg+xfI1cbb4POrBPGZsbIU6W8kNHClY=; b=iBjYnetWoumJEnfubsOIeJDePO
+	OnpGPqVzZYSWo1kdOhMp7I44X2GbCpenj4V7y79V8A0dPKvqiFSOvZLzFqk/HIGpB4+cR0NDddKt8
+	A2ucmFFtJsVyvy2PKtGlFsQvmdxBg1jzvidYVAuWSxKO2tVhK8MLxlHaMIBE7x5kdiEiS1jHphnkz
+	kvTjqEigYXYPQKXo7g6br7zAuGaFOkKVSkKW8kwYmU5ZqzQAGQCg4JG8547XI+p4rEw5rRu3phDFc
+	jRW/bKMFf90MQHE0evWowe5F2I7OJ9/xP7a+x5yO1xw0NAHOe27W0ys5xe34/2xwm/fUxSp8qpBko
+	CcCsvWoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmVC-008U7e-1i;
-	Thu, 14 Sep 2023 13:35:26 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1qgmVI-008UDa-0X;
+	Thu, 14 Sep 2023 13:35:32 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgmTX-008SGz-2X;
-	Thu, 14 Sep 2023 13:33:48 +0000
+	id 1qgmTd-008SNQ-0I;
+	Thu, 14 Sep 2023 13:33:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=S3HpcoTOv+qfBg+xfI1cbb4POrBPGZsbIU6W8kNHClY=; b=WEbvueqa5osUqD/tnnf1FmQOsh
+	L6NygodMulgHdlqWR3xAPZc6TokhudTGzexatdefc0d34oNhq/Xd5dIX/1QTX/9UVFjGwE3b4VgvD
+	dqN4nBmf6C3quhXliHuQux4qerc0NXC3IM4/le9EJgew5M9seMpct/71XBwpBAujBavabEfC5MqNE
+	iwK1vf3ZhcOzUnkWj9wK/aFyUy+DaNv91kZ/6iOg+A36BzA2WqRcs06TTY22hqZsh7WBl/bkOKsaF
+	f2h8902ZVtpi+7fZo7GLHGbqTdfzRA5OY68zmr99+H7a9o9DyB8yIS1EjqCwmAW+fo5RQUEMWQxVk
+	NlWcTBlQ==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by desiato.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
+	id 1qgmTX-007ug4-1G;
+	Thu, 14 Sep 2023 13:33:47 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:36f2:37bd:ccbb:373f])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 16B99660734D;
-	Thu, 14 Sep 2023 14:33:42 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2BA32660734E;
+	Thu, 14 Sep 2023 14:33:43 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694698422;
-	bh=aeJc8Jxcb8/QbECmV25qK+8LTdH51/KXmWUpXuI4BR8=;
+	s=mail; t=1694698423;
+	bh=336tMZ/RUJb+ZhMa2C9VNJt3Yyz+CPMiBOLJjWSuFw8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lkLIjEy2vX3bpMH3buUT4cdpI7iRafMZckCzgDYWsix0SUPgu3Jc8uxt7LyFI/4FN
-	 zpki5QpXi/wJpp4RUvpkfSVJu5j5QMl9lueRCWkn/VlXfac6kiOCt7yUj64gPTODZT
-	 wLnIU5q+RBlJRH1uQh6RLh72Vm8WEFetXbdxsvY8gvnFTTU5bOJtuptiAXMpAD0/ru
-	 /wCR2yEG4NgHtL1iG2hqtlUo2K8JiZWp44XQ1+u1dnWMSHHAqdXA1LWFaD77pz9f7r
-	 gvMSAwli3PdGl/6EYHWc2QbbHdDP6st86TBiJddI7gFfvzgLJuG4osJSS8ICQPqXUU
-	 3sQ+c6hN6G+BA==
+	b=BRJKAYVXwhZNav2giBo3pXHUXbWZNnNn/esMnZZ2OStWYOMBWFldVyUj23jt/lmcx
+	 e5OD6YiVeO6dogFLYdEpRVfL68cYZxjBf4UunxHYT6Z5OMFEi40sl/LW8uJfsn4pQa
+	 9i9CW0zfd+Gmr263fTeoi8z1PNRz9Hcznee662yWyritIFcleHr60lxGjsQlLryRwv
+	 SBrXXl7CjYX+FbLzW4/TIYhye/FRpmihwZDDAQIDEGvTa2IRfYFGDN7TiwordjsM3W
+	 HuQJKfcJPxkLlrUjPVoaVLdP0l660gp2RixoKoKgPlK2y0i/dPy6kDQB3aoq0v2Vih
+	 8+dDET6Tb9gug==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	tfiga@chromium.org,
@@ -62,17 +76,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 21/49] media: dvb: Stop direct calls to queue num_buffers field
-Date: Thu, 14 Sep 2023 15:32:55 +0200
-Message-Id: <20230914133323.198857-22-benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 23/49] media: pci: cx18: Stop direct calls to queue num_buffers field
+Date: Thu, 14 Sep 2023 15:32:57 +0200
+Message-Id: <20230914133323.198857-24-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 References: <20230914133323.198857-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_063343_978749_19F72209 
-X-CRM114-Status: GOOD (  11.37  )
+X-CRM114-CacheID: sfid-20230914_143345_803904_492F3755 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,42 +105,32 @@ Use vb2_get_num_buffers() to avoid using queue num_buffer field directly.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/dvb-core/dvb_vb2.c          | 1 -
- drivers/media/dvb-frontends/rtl2832_sdr.c | 5 +++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/media/pci/cx18/cx18-streams.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/dvb-core/dvb_vb2.c b/drivers/media/dvb-core/dvb_vb2.c
-index 3a966fdf814c..a731b755a0b9 100644
---- a/drivers/media/dvb-core/dvb_vb2.c
-+++ b/drivers/media/dvb-core/dvb_vb2.c
-@@ -177,7 +177,6 @@ int dvb_vb2_init(struct dvb_vb2_ctx *ctx, const char *name, int nonblocking)
- 	q->ops = &dvb_vb2_qops;
- 	q->mem_ops = &vb2_vmalloc_memops;
- 	q->buf_ops = &dvb_vb2_buf_ops;
--	q->num_buffers = 0;
- 	ret = vb2_core_queue_init(q);
- 	if (ret) {
- 		ctx->state = DVB_VB2_STATE_NONE;
-diff --git a/drivers/media/dvb-frontends/rtl2832_sdr.c b/drivers/media/dvb-frontends/rtl2832_sdr.c
-index 02c619e51641..023db6e793f8 100644
---- a/drivers/media/dvb-frontends/rtl2832_sdr.c
-+++ b/drivers/media/dvb-frontends/rtl2832_sdr.c
-@@ -439,12 +439,13 @@ static int rtl2832_sdr_queue_setup(struct vb2_queue *vq,
+diff --git a/drivers/media/pci/cx18/cx18-streams.c b/drivers/media/pci/cx18/cx18-streams.c
+index 597472754c4c..a7a7e006b3be 100644
+--- a/drivers/media/pci/cx18/cx18-streams.c
++++ b/drivers/media/pci/cx18/cx18-streams.c
+@@ -105,6 +105,7 @@ static int cx18_queue_setup(struct vb2_queue *vq,
+ 			    unsigned int sizes[], struct device *alloc_devs[])
  {
- 	struct rtl2832_sdr_dev *dev = vb2_get_drv_priv(vq);
- 	struct platform_device *pdev = dev->pdev;
+ 	struct cx18_stream *s = vb2_get_drv_priv(vq);
 +	unsigned int q_num_bufs = vb2_get_num_buffers(vq);
+ 	struct cx18 *cx = s->cx;
+ 	unsigned int szimage;
  
- 	dev_dbg(&pdev->dev, "nbuffers=%d\n", *nbuffers);
+@@ -121,8 +122,8 @@ static int cx18_queue_setup(struct vb2_queue *vq,
+ 	 * Let's request at least three buffers: two for the
+ 	 * DMA engine and one for userspace.
+ 	 */
+-	if (vq->num_buffers + *nbuffers < 3)
+-		*nbuffers = 3 - vq->num_buffers;
++	if (q_num_bufs + *nbuffers < 3)
++		*nbuffers = 3 - q_num_bufs;
  
- 	/* Need at least 8 buffers */
--	if (vq->num_buffers + *nbuffers < 8)
--		*nbuffers = 8 - vq->num_buffers;
-+	if (q_num_bufs + *nbuffers < 8)
-+		*nbuffers = 8 - q_num_bufs;
- 	*nplanes = 1;
- 	sizes[0] = PAGE_ALIGN(dev->buffersize);
- 	dev_dbg(&pdev->dev, "nbuffers=%d sizes[0]=%d\n", *nbuffers, sizes[0]);
+ 	if (*nplanes) {
+ 		if (*nplanes != 1 || sizes[0] < szimage)
 -- 
 2.39.2
 
