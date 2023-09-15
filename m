@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05B36EE6447
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 09:13:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40218EE6447
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 09:20:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z67768QYgOzLMHQXfSOQOgBwrjzA8arAbTjrhXUChLU=; b=qABQS8jhb9Gu1yzcYPibldJVOQ
-	lEY1PkJgzpr8vKJrfnAIjzJT05+QxD8kIYDZfrLa2lKwfGKhIdGR2zuUacGlpimUVb7fuYCLyrpIg
-	IuYPT2s4AadwZxAmjl82x7ATW9XwYH2/vfUaZzeVh5gW14G58haPr7dIubSaoPnuIpzUpSAnks438
-	Jlgs6y+HNmPmRDzM+6pZ17KYj3bVZHYD/4G8MvIUG0ibiaOprFsKnOEo32KjnL37klU+siF+WrmnH
-	fT3erIVahpSMmttOMep2SDqLGTEqvLlgwFXIkYS7bGi7ef8sS7sEMumUV6bvKXThU3gRPsYWPODFg
-	dEKpXpQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q95MQlxn5vqDEyYDKA+0tu1PD7oEdjeUZuea/OmIIKY=; b=HHpebKcl4bZN36RehL4BtomsL2
+	hR3j/P8rokQ+oYX8q40Tn+ZccOM5Lsj+IV0r1F38Uju7+4QCvno39aUq3IDeWUnCYvWsUuSusv2/r
+	CBThEJ3QB+qYKgxVjRkeVugHpN6MwxVp5vrxyGPqGN6hB4CLI35xStdkTq+tYXVR8vtwjADnfOk1o
+	ghtW0xVcXi8WQRQowcTPG76TS8xNJlqiCRu/SNzAX6l+dBLZG+0+ik2wumaoKJv3wTMZM0opVeslh
+	kgqpKDPmhwudtZxnZhTiXbsd7ZyKBLyf9G4irVoFT7FvgnCshTJmvmYF5H3HKwRIwgMUOLTFELM/M
+	Ir+/B2bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qh4tX-00AEZm-3A;
-	Fri, 15 Sep 2023 09:13:47 +0000
-Received: from mgamail.intel.com ([192.55.52.120])
+	id 1qh50T-00AFLW-0n;
+	Fri, 15 Sep 2023 09:20:57 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qh4tT-00AEYX-0n;
-	Fri, 15 Sep 2023 09:13:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1694769223; x=1726305223;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=mry5V7nr5xa9zDtsfeoNxabJToApg0Wq8K46aPBD860=;
-  b=K2aHuLgvaqRj0lpduW9Mx6B9mAX1LEv2kVgWLDQCAN960LP9xJ2hv0H9
-   JJmGx10iUoBgi1WEcu/kx1r9Qq8nJEuxqPPbws/qhcksmfKagtNpPYU2w
-   q3LpPiPg75MbKJyzq158qscu2st3ZR2bluMdu/C0sJTPNRvNoT7vc32I8
-   ihL4wSOKdmyucrcxFa3Krf0jLi7jzj/rlW4J2y7TD83jgUTyJZc4BGabm
-   hs9X8OIwmpRSOuPyQSmNWZwGwVV7Szs0oda+DBhVFDd+qot6HFS8BdTi1
-   FIrvRhXuQe2zuyt5CxyEsiOb6BduYzYlV7XkRAkOjLx522ChgzxTuXdHz
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10833"; a="378120581"
-X-IronPort-AV: E=Sophos;i="6.02,148,1688454000"; 
-   d="scan'208";a="378120581"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Sep 2023 02:13:33 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10833"; a="918589081"
-X-IronPort-AV: E=Sophos;i="6.02,148,1688454000"; 
-   d="scan'208";a="918589081"
-Received: from srdoo-mobl1.ger.corp.intel.com ([10.252.38.99])
-  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Sep 2023 02:13:03 -0700
-Date: Fri, 15 Sep 2023 12:12:58 +0300 (EEST)
-From: =?ISO-8859-15?Q?Ilpo_J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>
-To: John Ogness <john.ogness@linutronix.de>
-cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, linux-serial <linux-serial@vger.kernel.org>, Petr Mladek <pmladek@suse.com>, Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>, Tobias Klauser <tklauser@distanz.ch>, Thierry Reding <treding@nvidia.com>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, Al Cooper <alcooperx@gmail.com>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Tony Lindgren <tony@atomide.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, =?ISO-8859-15?Q?Ilpo_J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>, Florian Fainelli <f.fainelli@gmail.com>, Andrew Davis <afd@ti.com>, Matthew Howell <matthew.howell@sealevel.com>, =?ISO-8859-15?Q?Uwe_Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>, Johan Hovold <johan@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, linux-mediatek@lists.infradead.org, Lukas Wunner <lukas@wunner.de>, Matthias Schiffer <matthias.schiffer@ew.tq-group.com>, Arnd Bergmann <arnd@arndb.de>, Kumaravel Thiagarajan <kumaravel.thiagarajan@microchip.com>, Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>, Russell King <linux@armlinux.org.uk>, "Maciej W. Rozycki" <macro@orcam.me.uk>, Hongyu Xie <xiehongyu1@kylinos.cn>, Jiamei Xie <jiamei.xie@arm.com>, Rob Herring <robh@kernel.org>, delisun <delisun@pateo.com.cn>, Lino Sanfilippo <l.sanfilippo@kunbus.com>, Yangtao Li <frank.li@vivo.com>, Vineet Gupta <vgupta@kernel.org>, linux-snps-arc@lists.infradead.org, Richard Genoud <richard.genoud@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Arend van Spriel <arend.vanspriel@broadcom.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Baruch Siach <baruch@tkos.co.il>, Sherry Sun <sherry.sun@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Sergey Organov <sorganov@gmail.com>, Tom Rix <trix@redhat.com>, Marek Vasut <marex@denx.de>, Karol Gugala <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, Gabriel Somlo <gsomlo@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Dmitry Rokosov <ddrokosov@sberdevices.ru>, Lucas Tanure <tanure@linux.com>, linux-amlogic@lists.infradead.org, Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, linux-arm-msm@vger.kernel.org, =?ISO-8859-15?Q?Pali_Roh=E1r?= <pali@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, linux-actions@lists.infradead.org, Xiongfeng Wang <wangxiongfeng2@huawei.com>, Yuan Can <yuancan@huawei.com>, Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, linuxppc-dev@lists.ozlabs.org, linux-unisoc@lists.infradead.org, Kevin Cernekee <cernekee@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, linux-samsung-soc@vger.kernel.org, Lukas Bulwahn <lukas.bulwahn@gmail.com>, Lech Perczak <lech.perczak@camlingroup.com>, Hugo Villeneuve <hvilleneuve@dimonoff.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Isaac True <isaac.true@canonical.com>, Laxman Dewangan <ldewangan@nvidia.com>, 
- Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org, Biju Das <biju.das.jz@bp.renesas.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>, Nick Hu <nick.hu@sifive.com>, Ruan Jinjie <ruanjinjie@huawei.com>, Samuel Holland <samuel.holland@sifive.com>, linux-riscv@lists.infradead.org, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Patrice Chotard <patrice.chotard@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Valentin Caron <valentin.caron@foss.st.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, linux-stm32@st-md-mailman.stormreply.com, "David S. Miller" <davem@davemloft.net>, sparclinux@vger.kernel.org, Hammer Hsieh <hammerh0314@gmail.com>, Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>, Mukesh Ojha <quic_mojha@quicinc.com>, =?ISO-8859-15?Q?Jonathan_Neusch=E4fer?= <j.neuschaefer@gmx.net>, Michal Simek <michal.simek@amd.com>
-Subject: Re: [PATCH tty v1 00/74] serial: wrappers for uart port lock
-In-Reply-To: <20230914183831.587273-1-john.ogness@linutronix.de>
-Message-ID: <1446dc6-5ab0-629-45c8-3b7d8c76367d@linux.intel.com>
-References: <20230914183831.587273-1-john.ogness@linutronix.de>
+	id 1qh50P-00AFKe-2g;
+	Fri, 15 Sep 2023 09:20:55 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C605666072F9;
+	Fri, 15 Sep 2023 10:20:51 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1694769652;
+	bh=4IgrSSEYd+jVIiU7JcF5y2Ow9YKQzmTU7HYlnL8vZDo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=k5mrsOZYjmk5g1JGGHwrN17c+/Dz4Jy7ll1I7zKWOG2PqEX3qlAqMW2qfliJkzgrK
+	 f35cev5i5xVfSKAPxvR8ZWsFPrVDNikqWv/x7z7MicQaZrwc0VkSpHHMsXboxtlRJ1
+	 M8NqGicKBpUBiXNwAnw/cqco+bKA1VEAKzRM2aO0l8019CiPDtrdWpfuphxVS5dGJ5
+	 i5e0XgOhCC9JYwKgq/vaSyxGvfFOdyhsumxmjUWFpeBmN1HzCCCOg5qVl20NLmtGLd
+	 xtLbGJbT+dcMbTBFbxY4rrjyGpUZHgfUBJGIF5doX3/HCW7rskGafrjPyzLQJmEaSF
+	 J+U/LmdSvZKCA==
+Message-ID: <a6ae9a08-d295-8c1a-840a-84a1b447421b@collabora.com>
+Date: Fri, 15 Sep 2023 11:20:49 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH v1 2/2] soc: mediatek: svs: add support for mt8188
+Content-Language: en-US
+To: Mark Tseng <chun-jen.tseng@mediatek.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Roger Lu <roger.lu@mediatek.com>,
+ Kevin Hilman <khilman@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20230915075003.1552-1-chun-jen.tseng@mediatek.com>
+ <20230915075003.1552-3-chun-jen.tseng@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20230915075003.1552-3-chun-jen.tseng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230915_021343_330722_A1FC01C9 
-X-CRM114-Status: GOOD (  27.21  )
+X-CRM114-CacheID: sfid-20230915_022054_187803_E76E553E 
+X-CRM114-Status: GOOD (  29.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,214 +81,189 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 14 Sep 2023, John Ogness wrote:
+Il 15/09/23 09:50, Mark Tseng ha scritto:
+> MT8188 svs gpu uses 2-line high bank and low bank to optimize the
+> voltage of opp table for higher and lower frequency respectively.
+> 
+> Signed-off-by: Mark Tseng <chun-jen.tseng@mediatek.com>
+> ---
+>   drivers/soc/mediatek/mtk-svs.c | 177 ++++++++++++++++++++++++++++++++-
+>   1 file changed, 172 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+> index 3a2f97cd5272..fafc72df99ee 100644
+> --- a/drivers/soc/mediatek/mtk-svs.c
+> +++ b/drivers/soc/mediatek/mtk-svs.c
+> @@ -407,6 +407,7 @@ struct svs_platform_data {
+>    * @dcbdet: svs efuse data
+>    * @dcmdet: svs efuse data
+>    * @turn_pt: 2-line turn point tells which opp_volt calculated by high/low bank
+> + * @vbin_turn_pt: voltage bin turn point helps know which svsb_volt should be overridden
+>    * @type: bank type to represent it is 2-line (high/low) bank or 1-line bank
+>    *
+>    * Svs bank will generate suitalbe voltages by below general math equation
+> @@ -469,6 +470,7 @@ struct svs_bank {
+>   	u32 dcbdet;
+>   	u32 dcmdet;
+>   	u32 turn_pt;
+> +	u32 vbin_turn_pt;
+>   	u32 type;
+>   };
+>   
+> @@ -751,11 +753,12 @@ static int svs_status_debug_show(struct seq_file *m, void *v)
+>   
+>   	ret = thermal_zone_get_temp(svsb->tzd, &tzone_temp);
+>   	if (ret)
+> -		seq_printf(m, "%s: temperature ignore, turn_pt = %u\n",
+> -			   svsb->name, svsb->turn_pt);
+> +		seq_printf(m, "%s: temperature ignore, vbin_turn_pt = %u, turn_pt = %u\n",
+> +			   svsb->name, svsb->vbin_turn_pt, svsb->turn_pt);
+>   	else
+> -		seq_printf(m, "%s: temperature = %d, turn_pt = %u\n",
+> -			   svsb->name, tzone_temp, svsb->turn_pt);
+> +		seq_printf(m, "%s: temperature = %d, vbin_turn_pt = %u, turn_pt = %u\n",
+> +			   svsb->name, tzone_temp, svsb->vbin_turn_pt,
+> +			   svsb->turn_pt);
+>   
+>   	for (i = 0; i < svsb->opp_count; i++) {
+>   		opp = dev_pm_opp_find_freq_exact(svsb->opp_dev,
+> @@ -952,6 +955,29 @@ static void svs_get_bank_volts_v3(struct svs_platform *svsp)
+>   	for (i = opp_start; i < opp_stop; i++)
+>   		if (svsb->volt_flags & SVSB_REMOVE_DVTFIXED_VOLT)
+>   			svsb->volt[i] -= svsb->dvt_fixed;
+> +
+> +	/* For voltage bin support */
+> +	if (svsb->opp_dfreq[0] > svsb->freq_base) {
+> +		svsb->volt[0] = svs_opp_volt_to_bank_volt(svsb->opp_dvolt[0],
+> +							  svsb->volt_step,
+> +							  svsb->volt_base);
+> +
+> +		/* Find voltage bin turn point */
+> +		for (i = 0; i < svsb->opp_count; i++) {
+> +			if (svsb->opp_dfreq[i] <= svsb->freq_base) {
+> +				svsb->vbin_turn_pt = i;
+> +				break;
+> +			}
+> +		}
+> +
+> +		/* Override svs bank voltages */
+> +		for (i = 1; i < svsb->vbin_turn_pt; i++)
+> +			svsb->volt[i] = interpolate(svsb->freq_pct[0],
+> +						    svsb->freq_pct[svsb->vbin_turn_pt],
+> +						    svsb->volt[0],
+> +						    svsb->volt[svsb->vbin_turn_pt],
+> +						    svsb->freq_pct[i]);
+> +	}
 
-> When a serial port is used for kernel console output, then all
-> modifications to the UART registers which are done from other contexts,
-> e.g. getty, termios, are interference points for the kernel console.
-> 
-> So far this has been ignored and the printk output is based on the
-> principle of hope. The rework of the console infrastructure which aims to
-> support threaded and atomic consoles, requires to mark sections which
-> modify the UART registers as unsafe. This allows the atomic write function
-> to make informed decisions and eventually to restore operational state. It
-> also allows to prevent the regular UART code from modifying UART registers
-> while printk output is in progress.
+This looks like being a new feature that applies to more than just MT8188?
+Goes into a different commit.
 
-Hi John,
+>   }
+>   
+>   static void svs_set_bank_freq_pct_v3(struct svs_platform *svsp)
+> @@ -1808,6 +1834,80 @@ static bool svs_mt8192_efuse_parsing(struct svs_platform *svsp)
+>   	return true;
+>   }
+>   
+> +static bool svs_mt8188_efuse_parsing(struct svs_platform *svsp)
+> +{
+> +	struct svs_bank *svsb;
+> +	struct nvmem_cell *cell;
+> +	u32 idx, i, golden_temp;
+> +
+> +	for (i = 0; i < svsp->efuse_max; i++)
+> +		if (svsp->efuse[i])
+> +			dev_info(svsp->dev, "M_HW_RES%d: 0x%08x\n",
+> +				 i, svsp->efuse[i]);
+> +
+> +	if (!svsp->efuse[5]) {
+> +		dev_notice(svsp->dev, "svs_efuse[5] = 0x0?\n");
+> +		return false;
+> +	}
+> +
+> +	/* Svs efuse parsing */
+> +	for (idx = 0; idx < svsp->bank_max; idx++) {
+> +		svsb = &svsp->banks[idx];
+> +
+> +		if (svsb->type == SVSB_LOW) {
+> +			svsb->mtdes = svsp->efuse[5] & GENMASK(7, 0);
+> +			svsb->bdes = (svsp->efuse[5] >> 16) & GENMASK(7, 0);
+> +			svsb->mdes = (svsp->efuse[5] >> 24) & GENMASK(7, 0);
+> +			svsb->dcbdet = (svsp->efuse[15] >> 16) & GENMASK(7, 0);
+> +			svsb->dcmdet = (svsp->efuse[15] >> 24) & GENMASK(7, 0);
+> +		} else if (svsb->type == SVSB_HIGH) {
+> +			svsb->mtdes = svsp->efuse[4] & GENMASK(7, 0);
+> +			svsb->bdes = (svsp->efuse[4] >> 16) & GENMASK(7, 0);
+> +			svsb->mdes = (svsp->efuse[4] >> 24) & GENMASK(7, 0);
+> +			svsb->dcbdet = svsp->efuse[14] & GENMASK(7, 0);
+> +			svsb->dcmdet = (svsp->efuse[14] >> 8) & GENMASK(7, 0);
+> +		}
+> +
+> +		svsb->vmax += svsb->dvt_fixed;
+> +	}
 
-Would this also be useful to enable printing to console while under port's 
-lock (by postponing the output until the lock is released)?
+The only change between mt8192, 8195 and 8188 is this for loop; can we please
+commonize the rest of the function?
 
-E.g., 8250_dw.c has had this commented out since the dawn on time:
-        /*
-         * FIXME: this deadlocks if port->lock is already held
-         * dev_err(p->dev, "Couldn't set LCR to %d\n", value);
-         */
+> +
+> +	/* Thermal efuse parsing */
+> +	cell = nvmem_cell_get(svsp->dev, "t-calibration-data");
+> +	if (IS_ERR_OR_NULL(cell)) {
+> +		dev_err(svsp->dev, "no \"t-calibration-data\"? %ld\n",
+> +			PTR_ERR(cell));
+> +		return false;
+> +	}
+> +
+> +	svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
+> +	if (IS_ERR(svsp->tefuse)) {
+> +		dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
+> +			PTR_ERR(svsp->tefuse));
+> +		nvmem_cell_put(cell);
+> +		return false;
+> +	}
+> +
+> +	svsp->tefuse_max /= sizeof(u32);
+> +	nvmem_cell_put(cell);
+> +
+> +	for (i = 0; i < svsp->tefuse_max; i++)
+> +		if (svsp->tefuse[i] != 0)
+> +			break;
+> +
+> +	if (i == svsp->tefuse_max)
+> +		golden_temp = 50; /* All thermal efuse data are 0 */
+> +	else
+> +		golden_temp = (svsp->tefuse[0] & GENMASK(31, 24)) >> 24;
+> +
+> +	for (idx = 0; idx < svsp->bank_max; idx++) {
+> +		svsb = &svsp->banks[idx];
+> +		svsb->mts = 500;
+> +		svsb->bts = (((500 * golden_temp + 250460) / 1000) - 25) * 4;
+> +	}
+> +
+> +	return true;
+> +}
+> +
+>   static bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
+>   {
+>   	struct svs_bank *svsb;
+> @@ -2052,7 +2152,7 @@ static int svs_mt8192_platform_probe(struct svs_platform *svsp)
+>   		return dev_err_probe(svsp->dev, PTR_ERR(svsp->rst),
+>   				     "cannot get svs reset control\n");
+>   
+> -	dev = svs_add_device_link(svsp, "lvts");
+> +	dev = svs_add_device_link(svsp, "thermal-sensor");
 
--- 
- i.
+This is a fix that must go in a different commit with a Fixes tag.
 
+>   	if (IS_ERR(dev))
+>   		return dev_err_probe(svsp->dev, PTR_ERR(dev),
+>   				     "failed to get lvts device\n");
+> @@ -2173,6 +2273,61 @@ static struct svs_bank svs_mt8192_banks[] = {
+>   	},
+>   };
+>   
 
-> All modifications of UART registers are guarded by the UART port lock,
-> which provides an obvious synchronization point with the console
-> infrastructure.
-> 
-> Provide and use wrapper functions for spin_[un]lock*(port->lock)
-> invocations so that the console mechanics can be applied later on at a
-> single place and does not require to copy the same logic all over the
-> drivers.
-> 
-> Patch 1 adds the wrapper functions.
-> 
-> Patches 2-74 switch all uart port locking call sites to use the new
-> wrappers. These patches were automatically generated using coccinelle.
-> The 2 used coccinelle scripts are included below and executed as
-> follows:
-> 
-> $ spatch --sp-file uartlock-1.cocci $FILE
-> $ spatch --sp-file uartlock-2.cocci --recursive-includes $FILE
-> 
-> This series brings no functional change.
-> 
-> Patches 2-74 contain identical commit message bodies. Feel free to
-> fold them into a single commit if that seems more reasonable.
-> 
-> Thomas Gleixner (74):
->   serial: core: Provide port lock wrappers
->   serial: core: Use lock wrappers
->   serial: 21285: Use port lock wrappers
->   serial: 8250_aspeed_vuart: Use port lock wrappers
->   serial: 8250_bcm7271: Use port lock wrappers
->   serial: 8250: Use port lock wrappers
->   serial: 8250_dma: Use port lock wrappers
->   serial: 8250_dw: Use port lock wrappers
->   serial: 8250_exar: Use port lock wrappers
->   serial: 8250_fsl: Use port lock wrappers
->   serial: 8250_mtk: Use port lock wrappers
->   serial: 8250_omap: Use port lock wrappers
->   serial: 8250_pci1xxxx: Use port lock wrappers
->   serial: altera_jtaguart: Use port lock wrappers
->   serial: altera_uart: Use port lock wrappers
->   serial: amba-pl010: Use port lock wrappers
->   serial: amba-pl011: Use port lock wrappers
->   serial: apb: Use port lock wrappers
->   serial: ar933x: Use port lock wrappers
->   serial: arc_uart: Use port lock wrappers
->   serial: atmel: Use port lock wrappers
->   serial: bcm63xx-uart: Use port lock wrappers
->   serial: cpm_uart: Use port lock wrappers
->   serial: digicolor: Use port lock wrappers
->   serial: dz: Use port lock wrappers
->   serial: linflexuart: Use port lock wrappers
->   serial: fsl_lpuart: Use port lock wrappers
->   serial: icom: Use port lock wrappers
->   serial: imx: Use port lock wrappers
->   serial: ip22zilog: Use port lock wrappers
->   serial: jsm: Use port lock wrappers
->   serial: liteuart: Use port lock wrappers
->   serial: lpc32xx_hs: Use port lock wrappers
->   serial: ma35d1: Use port lock wrappers
->   serial: mcf: Use port lock wrappers
->   serial: men_z135_uart: Use port lock wrappers
->   serial: meson: Use port lock wrappers
->   serial: milbeaut_usio: Use port lock wrappers
->   serial: mpc52xx: Use port lock wrappers
->   serial: mps2-uart: Use port lock wrappers
->   serial: msm: Use port lock wrappers
->   serial: mvebu-uart: Use port lock wrappers
->   serial: omap: Use port lock wrappers
->   serial: owl: Use port lock wrappers
->   serial: pch: Use port lock wrappers
->   serial: pic32: Use port lock wrappers
->   serial: pmac_zilog: Use port lock wrappers
->   serial: pxa: Use port lock wrappers
->   serial: qcom-geni: Use port lock wrappers
->   serial: rda: Use port lock wrappers
->   serial: rp2: Use port lock wrappers
->   serial: sa1100: Use port lock wrappers
->   serial: samsung_tty: Use port lock wrappers
->   serial: sb1250-duart: Use port lock wrappers
->   serial: sc16is7xx: Use port lock wrappers
->   serial: tegra: Use port lock wrappers
->   serial: core: Use port lock wrappers
->   serial: mctrl_gpio: Use port lock wrappers
->   serial: txx9: Use port lock wrappers
->   serial: sh-sci: Use port lock wrappers
->   serial: sifive: Use port lock wrappers
->   serial: sprd: Use port lock wrappers
->   serial: st-asc: Use port lock wrappers
->   serial: stm32: Use port lock wrappers
->   serial: sunhv: Use port lock wrappers
->   serial: sunplus-uart: Use port lock wrappers
->   serial: sunsab: Use port lock wrappers
->   serial: sunsu: Use port lock wrappers
->   serial: sunzilog: Use port lock wrappers
->   serial: timbuart: Use port lock wrappers
->   serial: uartlite: Use port lock wrappers
->   serial: ucc_uart: Use port lock wrappers
->   serial: vt8500: Use port lock wrappers
->   serial: xilinx_uartps: Use port lock wrappers
-> 
->  drivers/tty/serial/21285.c                  |   8 +-
->  drivers/tty/serial/8250/8250_aspeed_vuart.c |   6 +-
->  drivers/tty/serial/8250/8250_bcm7271.c      |  28 +++---
->  drivers/tty/serial/8250/8250_core.c         |  12 +--
->  drivers/tty/serial/8250/8250_dma.c          |   8 +-
->  drivers/tty/serial/8250/8250_dw.c           |   8 +-
->  drivers/tty/serial/8250/8250_exar.c         |   4 +-
->  drivers/tty/serial/8250/8250_fsl.c          |   6 +-
->  drivers/tty/serial/8250/8250_mtk.c          |   8 +-
->  drivers/tty/serial/8250/8250_omap.c         |  52 +++++-----
->  drivers/tty/serial/8250/8250_pci1xxxx.c     |   8 +-
->  drivers/tty/serial/8250/8250_port.c         | 100 ++++++++++----------
->  drivers/tty/serial/altera_jtaguart.c        |  28 +++---
->  drivers/tty/serial/altera_uart.c            |  20 ++--
->  drivers/tty/serial/amba-pl010.c             |  20 ++--
->  drivers/tty/serial/amba-pl011.c             |  72 +++++++-------
->  drivers/tty/serial/apbuart.c                |   8 +-
->  drivers/tty/serial/ar933x_uart.c            |  26 ++---
->  drivers/tty/serial/arc_uart.c               |  16 ++--
->  drivers/tty/serial/atmel_serial.c           |  24 ++---
->  drivers/tty/serial/bcm63xx_uart.c           |  22 ++---
->  drivers/tty/serial/cpm_uart.c               |   8 +-
->  drivers/tty/serial/digicolor-usart.c        |  18 ++--
->  drivers/tty/serial/dz.c                     |  32 +++----
->  drivers/tty/serial/fsl_linflexuart.c        |  26 ++---
->  drivers/tty/serial/fsl_lpuart.c             |  88 ++++++++---------
->  drivers/tty/serial/icom.c                   |  26 ++---
->  drivers/tty/serial/imx.c                    |  84 ++++++++--------
->  drivers/tty/serial/ip22zilog.c              |  36 +++----
->  drivers/tty/serial/jsm/jsm_neo.c            |   4 +-
->  drivers/tty/serial/jsm/jsm_tty.c            |  16 ++--
->  drivers/tty/serial/liteuart.c               |  20 ++--
->  drivers/tty/serial/lpc32xx_hs.c             |  26 ++---
->  drivers/tty/serial/ma35d1_serial.c          |  22 ++---
->  drivers/tty/serial/mcf.c                    |  20 ++--
->  drivers/tty/serial/men_z135_uart.c          |   8 +-
->  drivers/tty/serial/meson_uart.c             |  30 +++---
->  drivers/tty/serial/milbeaut_usio.c          |  16 ++--
->  drivers/tty/serial/mpc52xx_uart.c           |  12 +--
->  drivers/tty/serial/mps2-uart.c              |  16 ++--
->  drivers/tty/serial/msm_serial.c             |  38 ++++----
->  drivers/tty/serial/mvebu-uart.c             |  18 ++--
->  drivers/tty/serial/omap-serial.c            |  38 ++++----
->  drivers/tty/serial/owl-uart.c               |  26 ++---
->  drivers/tty/serial/pch_uart.c               |  10 +-
->  drivers/tty/serial/pic32_uart.c             |  20 ++--
->  drivers/tty/serial/pmac_zilog.c             |  52 +++++-----
->  drivers/tty/serial/pxa.c                    |  30 +++---
->  drivers/tty/serial/qcom_geni_serial.c       |   8 +-
->  drivers/tty/serial/rda-uart.c               |  34 +++----
->  drivers/tty/serial/rp2.c                    |  20 ++--
->  drivers/tty/serial/sa1100.c                 |  20 ++--
->  drivers/tty/serial/samsung_tty.c            |  50 +++++-----
->  drivers/tty/serial/sb1250-duart.c           |  12 +--
->  drivers/tty/serial/sc16is7xx.c              |  40 ++++----
->  drivers/tty/serial/serial-tegra.c           |  32 +++----
->  drivers/tty/serial/serial_core.c            |  88 ++++++++---------
->  drivers/tty/serial/serial_mctrl_gpio.c      |   4 +-
->  drivers/tty/serial/serial_port.c            |   4 +-
->  drivers/tty/serial/serial_txx9.c            |  26 ++---
->  drivers/tty/serial/sh-sci.c                 |  68 ++++++-------
->  drivers/tty/serial/sifive.c                 |  16 ++--
->  drivers/tty/serial/sprd_serial.c            |  30 +++---
->  drivers/tty/serial/st-asc.c                 |  18 ++--
->  drivers/tty/serial/stm32-usart.c            |  38 ++++----
->  drivers/tty/serial/sunhv.c                  |  28 +++---
->  drivers/tty/serial/sunplus-uart.c           |  26 ++---
->  drivers/tty/serial/sunsab.c                 |  34 +++----
->  drivers/tty/serial/sunsu.c                  |  46 ++++-----
->  drivers/tty/serial/sunzilog.c               |  42 ++++----
->  drivers/tty/serial/timbuart.c               |   8 +-
->  drivers/tty/serial/uartlite.c               |  18 ++--
->  drivers/tty/serial/ucc_uart.c               |   4 +-
->  drivers/tty/serial/vt8500_serial.c          |   8 +-
->  drivers/tty/serial/xilinx_uartps.c          |  56 +++++------
->  include/linux/serial_core.h                 |  91 ++++++++++++++++--
->  76 files changed, 1086 insertions(+), 1007 deletions(-)
-> 
-> 
-> base-commit: 0bb80ecc33a8fb5a682236443c1e740d5c917d1d
-> 
+Regards,
+Angelo
+
 
