@@ -4,82 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05F98EED61A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 17:04:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59560EED61A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 17:23:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LlAvjtLPcGmDg4A7voaF5Wo0HxRPXZyKmdzluEIsWow=; b=3RGfjS8E/qAIUwOAhj/0yLuBp+
-	3O8C35cA5nsplirzmtTYLnJ3RWmE0++F4cPDRjYeNBxdoYxPqKjHuB8zvrN1k8XOfC8v6E8FGy6pZ
-	DEribIcm+ItR68BGalxOlVXaDlRXHryRmrllJPqmgWkTtBc4xSCsJcPe+f5yeSkWVfuNXxwDP6tJc
-	oqGNstDW7jzWUQIEzCkQk3IWvqbESvyeBRF1pGXjDgAtA6vpZIpjCM47c4foAUikcWXXmyXxqlvI9
-	NtGV8LPsMYBdVCDbG+wJz498BHfp2u8Ir6YcWs6+RSGNfjc3gpwI3+SoZ1YSoqtlEcFY8Zy/Wlf5Z
-	/JctlD8w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=E4MOPKD0DcFEhD0XeOi62cBHXESMxU1TcXFWDpR7ras=; b=PGlUrqUHT3KiR1rvqYA+hjbYYE
+	H/5oOJCDPedUuo8bb4wIqsYkWLMeQCyX/8uXYKAm89/OLrSIn0ldCOJ/aGp47noT/MjiZfOpy2jSD
+	5F+OB3OM0hmfVtrJQcYQnK60YLn8p0EExaSHjy39JaCWDu9Yvtk0WBjpn+dB7U+/zA2p4P9I6wOqb
+	4lFCROFDF0KUQRjtg/S5MNUWn6JPU9NruHdu3HZoo9mGfp9EA6uuAzftJQ3MqxjyVKht1IemUxg+N
+	aiQ1zVmjVDu49k77EZkInenIxmhBwW1ZydGeCjHYrto2VeWGPZdaHdy1ZAtyiexg4U9YaNXDDe2m0
+	cFV7RK8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhCFI-00B6az-2m;
-	Fri, 15 Sep 2023 17:04:44 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
-	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhCFG-00B6ZT-16
-	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Sep 2023 17:04:43 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4009fdc224dso1215e9.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 15 Sep 2023 10:04:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1694797479; x=1695402279; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=LlAvjtLPcGmDg4A7voaF5Wo0HxRPXZyKmdzluEIsWow=;
-        b=U1ACa62mq0hmRqk0fXAHEkUFOHk2BcXPA9YNwbuenQaSl0Jq+cUdjuIvHxRIeTS69g
-         VGAJTKjAY1i5rI/iWanVZQ4naT+M4UPfXMHC8tgcElrlJRAT/vXleRSOO2iHFEUjjRjn
-         pnciVzdiyiUkGsFV12TWqpoGA/XLdCHhHNQshNgeOxIhJuWRaJ0lxvjvIft3/kraZLnQ
-         e7WKoU8QEFgh8Q5APBcZzVodCfXa8ZmUHLxsUUMzZh07HGBglDaT01UIwpZFzSkkSNPe
-         /HdNJENZ+Ad6kr9hTHlDbGK34R26HFnXF/y4XvJTeU09rlvBEeNWqlPLrknH9CvH6nB7
-         OQCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694797479; x=1695402279;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=LlAvjtLPcGmDg4A7voaF5Wo0HxRPXZyKmdzluEIsWow=;
-        b=MpXVXzjfKRvLYgRwQFCDwVczSx5/QW2iT59mEgdssiGU01mxl4VNpclG3zpzAExBOk
-         j/ZAhpypr7qLgD1z4K/4y2Svs1pls0H8s6pSU1YbcyBR0XzSYIY+1+X8sHiwAmpTXupp
-         pyI1LH+hjD8MYqPIkT7SPMdLSM3fsfV2gOddG3825HzYZczFnHRoB2u6kQZV8+S4TFeV
-         AnHIOFlAukg0oarZR9R3w+Z+WfvDAT9mtNDUfH9XbSpVeC1fiirnLovjYVeC7TgbAQNX
-         +/uTAKMUBnXSoaTtWqERHwJwvJpwIRsX2uWbn1RJuuFe4EFEk/O/IMyLUyV7K9QdVB/C
-         qL7g==
-X-Gm-Message-State: AOJu0Yz1LCdtXhaUZ2ZaeL8FDzbf9RUjzsTzy+pvLKbDxYq36g5TQEUI
-	yRwHNXi1VAMMRIodL35OuXtCjAN1bMSu+78C9UJ7jg==
-X-Google-Smtp-Source: AGHT+IEonzgZqc+V81TNYkvowwdDOWM/CYqm2sY+5KYoHV7zxqDLiUjikh2qIP4geMp2o3XvkFv+g/ec00ROIhSqgW8=
-X-Received: by 2002:a05:600c:1e07:b0:3f6:f4b:d4a6 with SMTP id
- ay7-20020a05600c1e0700b003f60f4bd4a6mr2391wmb.7.1694797479400; Fri, 15 Sep
- 2023 10:04:39 -0700 (PDT)
+	id 1qhCXr-00B8A0-0o;
+	Fri, 15 Sep 2023 17:23:55 +0000
+Received: from angie.orcam.me.uk ([78.133.224.34])
+	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
+	id 1qhCXm-00B893-0K;
+	Fri, 15 Sep 2023 17:23:52 +0000
+Received: by angie.orcam.me.uk (Postfix, from userid 500)
+	id 09EFA92009D; Fri, 15 Sep 2023 19:23:45 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+	by angie.orcam.me.uk (Postfix) with ESMTP id 03E9292009C;
+	Fri, 15 Sep 2023 18:23:44 +0100 (BST)
+Date: Fri, 15 Sep 2023 18:23:44 +0100 (BST)
+From: "Maciej W. Rozycki" <macro@orcam.me.uk>
+To: Thomas Gleixner <tglx@linutronix.de>
+cc: John Ogness <john.ogness@linutronix.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, linux-serial@vger.kernel.org, Petr Mladek <pmladek@suse.com>, linux-kernel@vger.kernel.org, Tobias Klauser <tklauser@distanz.ch>, Thierry Reding <treding@nvidia.com>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, Al Cooper <alcooperx@gmail.com>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Tony Lindgren <tony@atomide.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, Florian Fainelli <f.fainelli@gmail.com>, Andrew Davis <afd@ti.com>, Matthew Howell <matthew.howell@sealevel.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, Johan Hovold <johan@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, linux-mediatek@lists.infradead.org, Lukas Wunner <lukas@wunner.de>, Matthias Schiffer <matthias.schiffer@ew.tq-group.com>, Arnd Bergmann <arnd@arndb.de>, Kumaravel Thiagarajan <kumaravel.thiagarajan@microchip.com>, Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>, Russell King <linux@armlinux.org.uk>, Hongyu Xie <xiehongyu1@kylinos.cn>, Jiamei Xie <jiamei.xie@arm.com>, Rob Herring <robh@kernel.org>, delisun <delisun@pateo.com.cn>, Lino Sanfilippo <l.sanfilippo@kunbus.com>, Yangtao Li <frank.li@vivo.com>, Vineet Gupta <vgupta@kernel.org>, linux-snps-arc@lists.infradead.org, Richard Genoud <richard.genoud@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Arend van Spriel <arend.vanspriel@broadcom.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Baruch Siach <baruch@tkos.co.il>, Sherry Sun <sherry.sun@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Sergey Organov <sorganov@gmail.com>, Tom Rix <trix@redhat.com>, Marek Vasut <marex@denx.de>, Karol Gugala <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, Gabriel Somlo <gsomlo@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Dmitry Rokosov <ddrokosov@sberdevices.ru>, Lucas Tanure <tanure@linux.com>, linux-amlogic@lists.infradead.org, Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, linux-arm-msm@vger.kernel.org, =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, linux-actions@lists.infradead.org, Xiongfeng Wang <wangxiongfeng2@huawei.com>, Yuan Can <yuancan@huawei.com>, Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, linuxppc-dev@lists.ozlabs.org, linux-unisoc@lists.infradead.org, Kevin Cernekee <cernekee@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, linux-samsung-soc@vger.kernel.org, Lukas Bulwahn <lukas.bulwahn@gmail.com>, Lech Perczak <lech.perczak@camlingroup.com>, Hugo Villeneuve <hvilleneuve@dimonoff.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Isaac True <isaac.true@canonical.com>, Laxman Dewangan <ldewangan@nvidia.com>, Thierry Reding <thierry.reding@gmail.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org, Biju Das <biju.das.jz@bp.renesas.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>, Nick Hu <nick.hu@sifive.com>, Ruan Jinjie <ruanjinjie@huawei.com>, Samuel Holland <samuel.holland@sifive.com>, linux-riscv@lists.infradead.org, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Patrice Chotard <patrice.chotard@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Valentin Caron <valentin.caron@foss.st.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, linux-stm32@st-md-mailman.stormreply.com, "David S. Miller" <davem@davemloft.net>, sparclinux@vger.kernel.org, Hammer Hsieh <hammerh0314@gmail.com>, Timur Tabi <timur@kernel.org>, Mukesh Ojha <quic_mojha@quicinc.com>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, Michal Simek <michal.simek@amd.com>
+Subject: Re: [PATCH tty v1 00/74] serial: wrappers for uart port lock
+In-Reply-To: <87il8b1w3l.ffs@tglx>
+Message-ID: <alpine.DEB.2.21.2309151739290.57368@angie.orcam.me.uk>
+References: <20230914183831.587273-1-john.ogness@linutronix.de> <alpine.DEB.2.21.2309141959100.57368@angie.orcam.me.uk> <87il8b1w3l.ffs@tglx>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-References: <CA+fCnZePgv=V65t4FtJvcyKvhM6yA3amTbPnwc5Ft5YdzpeeRg@mail.gmail.com>
- <20230915024559.32806-1-haibo.li@mediatek.com> <CA+fCnZfuaovc4fk6Z+p1haLk7iemgtpF522sej3oWYARhBYYUQ@mail.gmail.com>
-In-Reply-To: <CA+fCnZfuaovc4fk6Z+p1haLk7iemgtpF522sej3oWYARhBYYUQ@mail.gmail.com>
-From: Jann Horn <jannh@google.com>
-Date: Fri, 15 Sep 2023 19:04:00 +0200
-Message-ID: <CAG48ez3GSubTFA8+hw=YDZoVHC79JVwNi+xFTQt9ssy_+O1aaw@mail.gmail.com>
-Subject: Re: [PATCH] kasan:fix access invalid shadow address when input is illegal
-To: Andrey Konovalov <andreyknvl@gmail.com>
-Cc: Haibo Li <haibo.li@mediatek.com>, akpm@linux-foundation.org, 
-	angelogioacchino.delregno@collabora.com, dvyukov@google.com, 
-	glider@google.com, kasan-dev@googlegroups.com, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-mm@kvack.org, mark.rutland@arm.com, 
-	matthias.bgg@gmail.com, ryabinin.a.a@gmail.com, vincenzo.frascino@arm.com, 
-	xiaoming.yu@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230915_100442_376801_127FB74D 
-X-CRM114-Status: GOOD (  17.43  )
+X-CRM114-CacheID: sfid-20230915_102350_309259_5856C425 
+X-CRM114-Status: GOOD (  21.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,30 +60,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 15, 2023 at 6:51=E2=80=AFPM Andrey Konovalov <andreyknvl@gmail.=
-com> wrote:
-> On Fri, Sep 15, 2023 at 4:46=E2=80=AFAM 'Haibo Li' via kasan-dev
-> <kasan-dev@googlegroups.com> wrote:
-> >
-> > The patch checks each shadow address,so it introduces extra overhead.
->
-> Ack. Could still be fine, depends on the overhead.
->
-> But if the message printed by kasan_non_canonical_hook is good enough
-> for your use case, I would rather stick to that.
->
-> > Now kasan_non_canonical_hook only works for CONFIG_KASAN_INLINE.
-> >
-> > And CONFIG_KASAN_OUTLINE is set in my case.
-> >
-> > Is it possible to make kasan_non_canonical_hook works for both
-> > INLINE and OUTLINE by simply remove the "#ifdef CONFIG_KASAN_INLINE"?
->
-> Yes, it should just work if you remove the ifdefs in mm/kasan/report.c
-> and in include/linux/kasan.h.
->
-> Jann, do you have any objections to enabling kasan_non_canonical_hook
-> for the outline mode too?
+On Fri, 15 Sep 2023, Thomas Gleixner wrote:
 
-No objections from me.
+> >> Patches 2-74 switch all uart port locking call sites to use the new
+> >> wrappers. These patches were automatically generated using coccinelle.
+> >
+> >  Hmm, no need to do this for drivers/tty/serial/zs.c?
+> 
+> zs.c does not use port lock at all. It has like a couple of other
+> drivers a local homebrewn spinlock.
+
+ Ah, right, that's because there are registers shared between two ports 
+within one SCC, so the spinlock has to be shared as well.
+
+ This also indicates that dz.c is wrong and shouldn't be using a per-port 
+spinlock as the DZ has a shared register set between all the four ports 
+(it's a serial line multiplexer rather than a set discrete ports; up to 8 
+lines are architecturally supported, though we don't have support in Linux 
+for systems having those), e.g. there's only one 16-bit receiver buffer 
+register for all the four ports, supplying the 8-bit character received 
+along with the receive status and the number of the line this data arrived 
+on, and similarly there's only one transmit data register, which supplies 
+data to the next enabled line whose transmit buffer needs servicing, and 
+the chip routes the data itself.  Therefore the driver ought to use a 
+shared spinlock too.
+
+ I guess it wasn't noticed so far because DZ devices aren't that common 
+(and my usual test machine is currently broken too, pending an SRAM chip 
+replacement, hopefully in the next few weeks) and then hardly ever more 
+than one serial line has been used at a time with these devices.  It looks 
+like the first issue for me to look into once the machine has been fixed.
+
+ Maybe dz.c shouldn't be touched by this series then?  (Though obviously 
+both drivers will have to be eventually adapted for the ultimate console 
+rework.)
+
+ Thanks for your input, as it turns out it has had an unexpected outcome.
+
+  Maciej
 
