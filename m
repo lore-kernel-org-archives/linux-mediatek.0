@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E7F3EED61A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 16:51:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9B0AEED619
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 16:53:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C9N4U7m1ENfkMXf6AuPL4MT6Lni4JryuzWdzOGtlKI8=; b=4rUoHUm9QMySWb4CG+aBlX55jq
-	oMFhVzBXvtsZw1aGzIupci1MV3ZCWmF7+FrfHc8p2mlfVWynBl2NVZ8Nmj4zFH8OkhgXhXhxS1LSc
-	b2Pbj3o4TKGlahlkeek7C8dPwQv2yDMcjnuUBcTjiwO1J98WMHCJMIgx1UsHkO5FdHwj0qr3yRW7L
-	qmqBIK0rnJXSZ3ElQALf4+2lOYsNuEL77TOHsnURFojxNrGi+5afiDdpa69+H/a80rFx80JHTdGX6
-	YUGKn/EGk6vOVpyvvn8zhgxu0JP/0GAHdcCre87GNj444YIJTcKU4eF2+SS+YRy7Qpou4VHvvQPkn
-	X2kaWa2Q==;
+	bh=OpolqE+SEAVwVFTY41H2JAWAfBtJPW7sGVhV9bEg07M=; b=0EoIt6hlwb1qacf0R2aYNnhn6t
+	WTCGUg253sz0fwaxWsRAAEHzdTaVxQx5V4u7efcGCny5dik3MlMT928/WCJ03M4+VxGvly+Cv2REf
+	snAmBx9/mMwvEYtHB/rZTwDLTetoIASpvfwtg21wysEd8DXEx19wXctL07RDWPWMfpuX5ITg4OYgc
+	3zMsHyEsx/L5jQ/MSb5ApAlk+q2AVQRAya93YcSpjqH/tOOidWKk5zobcs3dhdZ7m5GG336RyEYyu
+	gGV477RqUblVyoSkO63peT8VrsJ8+1Us1YjAs5Ic2NaBYpa/Bmhz7oSRb/2AxqBBLzakzmescJ0ws
+	WMS8txOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhC23-00B4zg-20;
-	Fri, 15 Sep 2023 16:51:03 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1qhC4k-00B5Aq-2v;
+	Fri, 15 Sep 2023 16:53:50 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhC20-00B4yp-2k;
-	Fri, 15 Sep 2023 16:51:02 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-274b45fa7a2so174718a91.0;
-        Fri, 15 Sep 2023 09:51:00 -0700 (PDT)
+	id 1qhC4i-00B59i-13;
+	Fri, 15 Sep 2023 16:53:49 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-1bf7423ef3eso20042075ad.3;
+        Fri, 15 Sep 2023 09:53:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1694796659; x=1695401459; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1694796825; x=1695401625; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=C9N4U7m1ENfkMXf6AuPL4MT6Lni4JryuzWdzOGtlKI8=;
-        b=ay5KeaP42ltBYMDU+prw3fOEpfIVGRVBO43zkMvb+TPFvGMcbP7eCuVncFWk5N84cs
-         RvP5AEaxBhSsNgnYZTvftMEcc+K8Z9NT6JQZolcFZqqUopkZzl6u370GgP/dm6Wb/69G
-         M92+qoBtHFR4scAhi56hqMsMivjSAqBdOXvNBgr/KmfIl0v/nCYWsXX1Y1Z1rPNOCdZl
-         hNMyuKgoVBv7B+NHnOKvhoOlNzp/ARZf9mB1ew96kuoTC+3rqEGlETZ9+m8X89MP2V2+
-         IB46w9u19iuo+8pBr1zBG+kwcM9N4ohH5Dkp4NIsgbltGQOUnFKICBYdBGuVd3gtP3OM
-         Q6ZA==
+        bh=OpolqE+SEAVwVFTY41H2JAWAfBtJPW7sGVhV9bEg07M=;
+        b=ffeb+DABOr4a9nbOajBsKW4Pmh9raU3xkDKOVcZZMz21kFUrOOdNnwxtFo1RhF2sbb
+         dVi0XjNiSGvVBQH1Brta0RFVQRxa/ExJNmAZrCTnoPN3fUlqGGmWJ9aBSAUwe8pjGH4/
+         dCcioOIIrjxcDpS5O+1F1A8MkerUffG+P0K639dwn/tIdPr82dq2pJBYyPxJoTNNUxVT
+         gTgtCw1YxZ6xq6y261RWsfIH+YSpPOWHq4h48HLT0Hf+EATQjam1KauEnO9kX9nOOmiW
+         nb/nR2p6fvbLOqWUbx/okuxjjxYA3iBh6qHhpDO93XaCYAnFqM7XiLq5AIbaL/BEfEGI
+         7p5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694796659; x=1695401459;
+        d=1e100.net; s=20230601; t=1694796825; x=1695401625;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=C9N4U7m1ENfkMXf6AuPL4MT6Lni4JryuzWdzOGtlKI8=;
-        b=Ca4Dpw5CSWo9BbMUDjCAHDvlSuf8tDy1XscJfFel4lCJMWe+GDOL+utQygGSQxsWMN
-         2HjrCmYSY2sdtQgR6/Su22+3RRoOcn8cwRMES4chUazgiOU/knALnT4UD1qSRIDGQR+6
-         3xe65A1bncGCpGWomif/AHKQRONBtm1rYc8X6BDY1+RRHgdAnEUklszyLhmahTT3Q/m4
-         mcFAvxInqUZtgrwIEqLdZiPdVLU3vQide/fgWJ9Zh7yfgrLPTsgdbOSiUq5Imo4EsiSF
-         E/NMyUDq7AP2Uxtq1cZHdW8+dV0qy8maWpNP8t7e92WrXVe0jSVDoZA4F0S6CdgiK8wO
-         6TTQ==
-X-Gm-Message-State: AOJu0Yz9iUGSO3g2HDb4GkmoyJCG28bzvCQ7c00P04Si+MMVcli+NV5J
-	mSGp2w+D5CJ6BcBby0mFpWwlJ71zeX6qXmcJ01A=
-X-Google-Smtp-Source: AGHT+IGbqKZHfQYVZyeiRIfx3Rau8VcK1iGF77tUw+uQyQtNqnu5UagzuHOH8rpnQb8Ka+6MLiQbWH8tpwggqtgwVnk=
-X-Received: by 2002:a17:90a:f312:b0:273:e42b:34c1 with SMTP id
- ca18-20020a17090af31200b00273e42b34c1mr1902942pjb.42.1694796659560; Fri, 15
- Sep 2023 09:50:59 -0700 (PDT)
+        bh=OpolqE+SEAVwVFTY41H2JAWAfBtJPW7sGVhV9bEg07M=;
+        b=lkuCTaMyRXSTW0OSQlRoTcGdtoUFbP2tqQqk8KFwf/KagH410FBqm0YjnHft0tScp+
+         ZDS9O2Z8eMxAu0f08M4MEq3/wU2K8aNMh5dLrYUZZtHAjQMocNAuBsUNycJQJUzyeaID
+         2OOMMmLfbw5H9Yr7VTgq49jRldur2nQGl/jMEqiSo8fSxWp++RlvSvj51LzEmzEhcKwE
+         HqAnW4HUtHzvcX2h/lkiq/gxqUOZNac3wEacO1LNkFKxn1wk33tsTHAcXeEYrwZtHsz0
+         UdWaSySDJn/mtJUoE8JpUfd2926YDn2AoKAvCWu/hYDZGJIqYTloLS9TuNEmiI7L/SCV
+         Epmg==
+X-Gm-Message-State: AOJu0YxoqPMr1SYOH3zUfLOacnGE49IJ8LbMHMG6P957gbpr1LuUQsvv
+	nz5dnzGab0fBds4T4kPxEUTzhsU7dnSRrqo0AUM=
+X-Google-Smtp-Source: AGHT+IHdg5qFvGAFmPjYLsoqHgR9aVE+mxhLvc6aKZLyM2Lf8HzCOCEXGWDSsjgJmyQBolmCaP2cdGU4Fzy9TenO3Dw=
+X-Received: by 2002:a17:903:1109:b0:1c3:bbad:9b7c with SMTP id
+ n9-20020a170903110900b001c3bbad9b7cmr2546503plh.31.1694796825027; Fri, 15 Sep
+ 2023 09:53:45 -0700 (PDT)
 MIME-Version: 1.0
-References: <CA+fCnZePgv=V65t4FtJvcyKvhM6yA3amTbPnwc5Ft5YdzpeeRg@mail.gmail.com>
- <20230915024559.32806-1-haibo.li@mediatek.com>
-In-Reply-To: <20230915024559.32806-1-haibo.li@mediatek.com>
+References: <20230915024559.32806-1-haibo.li@mediatek.com> <20230915094004.113104-1-haibo.li@mediatek.com>
+In-Reply-To: <20230915094004.113104-1-haibo.li@mediatek.com>
 From: Andrey Konovalov <andreyknvl@gmail.com>
-Date: Fri, 15 Sep 2023 18:50:48 +0200
-Message-ID: <CA+fCnZfuaovc4fk6Z+p1haLk7iemgtpF522sej3oWYARhBYYUQ@mail.gmail.com>
+Date: Fri, 15 Sep 2023 18:53:34 +0200
+Message-ID: <CA+fCnZd0FkKNf1ZQxbXWvNM8NAt=ML+yXu5n4VgLOmhFf9TPfQ@mail.gmail.com>
 Subject: Re: [PATCH] kasan:fix access invalid shadow address when input is illegal
-To: Haibo Li <haibo.li@mediatek.com>, jannh@google.com
+To: Haibo Li <haibo.li@mediatek.com>
 Cc: akpm@linux-foundation.org, angelogioacchino.delregno@collabora.com, 
-	dvyukov@google.com, glider@google.com, kasan-dev@googlegroups.com, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-mm@kvack.org, mark.rutland@arm.com, 
-	matthias.bgg@gmail.com, ryabinin.a.a@gmail.com, vincenzo.frascino@arm.com, 
-	xiaoming.yu@mediatek.com
+	dvyukov@google.com, glider@google.com, jannh@google.com, 
+	kasan-dev@googlegroups.com, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-mm@kvack.org, mark.rutland@arm.com, matthias.bgg@gmail.com, 
+	ryabinin.a.a@gmail.com, vincenzo.frascino@arm.com, xiaoming.yu@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230915_095100_896020_705A12E3 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20230915_095348_386188_38E157D4 
+X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,29 +92,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 15, 2023 at 4:46=E2=80=AFAM 'Haibo Li' via kasan-dev
+On Fri, Sep 15, 2023 at 11:40=E2=80=AFAM 'Haibo Li' via kasan-dev
 <kasan-dev@googlegroups.com> wrote:
 >
-> The patch checks each shadow address,so it introduces extra overhead.
-
-Ack. Could still be fine, depends on the overhead.
-
-But if the message printed by kasan_non_canonical_hook is good enough
-for your use case, I would rather stick to that.
-
-> Now kasan_non_canonical_hook only works for CONFIG_KASAN_INLINE.
+> I checked inline mode just now.kasan_non_canonical_hook can print
+> something like below:
 >
-> And CONFIG_KASAN_OUTLINE is set in my case.
+> Unable to handle kernel paging request at virtual address ffffffb80aaaaaa=
+a
+> KASAN: maybe wild-memory-access in range [0xffffff80aaaaaaa0-0xffffff80aa=
+aaaaaf]
 >
-> Is it possible to make kasan_non_canonical_hook works for both
-> INLINE and OUTLINE by simply remove the "#ifdef CONFIG_KASAN_INLINE"?
+> When addr < KASAN_SHADOW_OFFSET meets,the original addr_has_metadata shou=
+ld return false
+> and trigger kasan_report in kasan_check_range.
 
-Yes, it should just work if you remove the ifdefs in mm/kasan/report.c
-and in include/linux/kasan.h.
+It should, but I don't think it always does. But if it works for you,
+let's leave it at that. I'll double check why it failed for me later.
 
-Jann, do you have any objections to enabling kasan_non_canonical_hook
-for the outline mode too?
-
-> Since kasan_non_canonical_hook is only used after kernel fault,it
-> is better if there is no limit.
+Thanks!
 
