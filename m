@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83BB3EEAA7A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 00:48:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B92DEDE98B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 01:51:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/X9bZZQPVcCIm/bqKX6X03kbb5QxfOxT/UH+w+t4ywI=; b=wYoJVs+Ur8nUTLFIxpGh79gp0+
-	XdQBQ9OinnUSVYJekJ0GWjswRrXXciVavRlKTQ5Ai6+4g9+Y1CY+2tSzXEl2RMeRSPv6THEJhqIBt
-	2VVwRmL9/9i1Ue+Ifa/TNsjEjAGRAVDPeSlQmlKU/cmUopTyUaXgIpSECMogt5JOiTQcIg1QsMWd5
-	9YyEfJV+FhC3VUYBbY25hFQX7Mb1AX3yQzx6lnccpRMgmk0yzYicBaBq2FNsTfFeYY6jbM8KtBY7t
-	mib2bFhamyNWwPKUaMRKgHtPGFSHnGcqtC/CaKgw3nx9mlR7bI7Ng6x72i6rr67vrZcZIF07Tr/JS
-	ULuPFniQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qqLoBm8H6ZiMRz1kerNsf8O/I1x2KB0Fau5qTkJBuRw=; b=jR5B6fc6/bc+DvITyjfPX4xM2W
+	O/SXh85YRrL5k+sj/svQ4X5ona8D3BALbNn2NNuKj4+moUTuO+ZoIlEX1o5uaUIq+tU+jt6hi89hv
+	Oz//WW75VbnCg2iSYV2/TkVH6SGPdZb/0SoESul1cZsDQ1cVs7VuN0XCxGoFsZxGFtsZ3rXShXFxa
+	v6AHmbZ00XJkvEcDfv5lEYfenxvrnshgqcyd0UOZK8Qi55lUlWwUf9J91Pozb8jnsgqoR77LLPMS7
+	c1eMQoradK59xdWK7caMPDL2bL036/xTOKpbdlE5ozzZI2WkJK97so8y8H+Ip9W3Pnasf3lZgYwO1
+	8bRh0uYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgx0I-009WFc-2X;
-	Fri, 15 Sep 2023 00:48:14 +0000
-Received: from mgamail.intel.com ([192.55.52.88])
+	id 1qgxzs-009ZY5-1C;
+	Fri, 15 Sep 2023 01:51:52 +0000
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgx0F-009WEm-0I;
-	Fri, 15 Sep 2023 00:48:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1694738891; x=1726274891;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=0/Y8tr6+72dx/dGIQEQzCuenUy3CT3AAuLaoi6w6Aa4=;
-  b=jYcTL0PdCMO/j7Xh4EBa8kbXh96AbvWr830w3Gadq9+/Yhx5UNLLteG6
-   4k3RvPSmNGsQyfogKXDsZnK5uNeZ7SE0g/bM8JottQskagtYGgvebXWF9
-   Yi1aH46rNB4e6qifFUk10dzK0YOYh8lEe/Nm/BFg6+T5bd5zkBW8YpX6r
-   5KvOmdCRJl+9Pj51bCY1lihAsSzBpX/uUsIlycL1mzChzzjdrZj4y+sNH
-   PEx0QcrsnIcQ3HKFP1eg1H5YUAcNo8uZdU7ddLS+pd9igAIFzaQyH2ls4
-   37Sp5dPFiXxszVWWJsL7UGZ+UIdQCowWhKGf2PP++Xi8GQL2XZdHXkEi0
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10833"; a="410063858"
-X-IronPort-AV: E=Sophos;i="6.02,147,1688454000"; 
-   d="scan'208";a="410063858"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
-  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Sep 2023 17:48:10 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10833"; a="859950717"
-X-IronPort-AV: E=Sophos;i="6.02,147,1688454000"; 
-   d="scan'208";a="859950717"
-Received: from lkp-server02.sh.intel.com (HELO 9ef86b2655e5) ([10.239.97.151])
-  by fmsmga002.fm.intel.com with ESMTP; 14 Sep 2023 17:48:06 -0700
-Received: from kbuild by 9ef86b2655e5 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1qgx07-0002Dx-2Z;
-	Fri, 15 Sep 2023 00:48:03 +0000
-Date: Fri, 15 Sep 2023 08:47:42 +0800
-From: kernel test robot <lkp@intel.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
-	tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
-	ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
-	nicolas.dufresne@collabora.com
-Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH v7 45/49] media: core: Add bitmap manage bufs array
- entries
-Message-ID: <202309150835.kxjWQyEU-lkp@intel.com>
-References: <20230914133323.198857-46-benjamin.gaignard@collabora.com>
+	id 1qgxzp-009ZXG-0x;
+	Fri, 15 Sep 2023 01:51:50 +0000
+Received: by mail-pj1-x1031.google.com with SMTP id 98e67ed59e1d1-274972a4cb6so272541a91.1;
+        Thu, 14 Sep 2023 18:51:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1694742708; x=1695347508; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qqLoBm8H6ZiMRz1kerNsf8O/I1x2KB0Fau5qTkJBuRw=;
+        b=b74fL1njdomYMeTK/DEKwM/2LZ2Qp22i3kppdoMoejwzKTY4egoLKkZ+YAmgTmG/Xl
+         OSb2E7NMkKg1CXWWGobSOigEK3D24vW+Tqz+M3NuiubHTt39hHW6d3K1PLiu7pZEcLPz
+         TGZXOhAvuYGGGaQ8qHaAYamRLRVPzwH/DE/+wLMb7DL3fbtS6S2pl7JUj7cSJMR+xVBp
+         BfGnNCRGa83oJwIJbVhYf0F9Ax9ec/xziRsG81QsmI/NDE0H1OAx83mZ0rQOpyXA7Hp+
+         bF1Srhci5TqJN0gZWqyRcjfsxZY4X4Z5t/4qxVKPJqxyI9K/cs+h7j/LnwhMeXpQFBIp
+         Z9Qg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694742708; x=1695347508;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=qqLoBm8H6ZiMRz1kerNsf8O/I1x2KB0Fau5qTkJBuRw=;
+        b=RQJVv+Y5BAzQdDATdbqufP9v8wP4r2o57wvC1uZM0BlS7giTU7hCdk4qMTAuDpVYS8
+         ZyBoKKHJ3ynJm31gx67UYH+5aU2YfiwTFRFEFSrhP2vvFBuJjnFMih7k9dSdj9vK7C9T
+         VPc0LqgltdP/OCWPYrxtHQOqau5G6ZXEWnWnhwNZ3D/uII191BAY8TwvGBBtV1jdeRNe
+         HF5dIL8bTRVkToJRUUoca2H3pLobb/g6YJjRAmPJ57YMVre0M5bGnAy700zqzmaqs1xG
+         4Q0/420aL4K8CYDY2KtJS3zWi5ZRBThRRnmGKvZD/1y8nfcSQdnML8bZKVkqbtd3i+Ym
+         SgFg==
+X-Gm-Message-State: AOJu0YzYXgEL6vVKN36eAAlxudNS1d2AkvGeEEV+3v+NAHm/6dl0YLj6
+	EbGI6tzNpgn5Nuv7DAG3u4EusDoJvHQ/952hEmM=
+X-Google-Smtp-Source: AGHT+IHypl50ozXbVNpyt6MCHdaoxCaRqBl2NAiMm+S4Y/6YOO7S8XoNh0lYeLcNgC9idrJZOsUI38MTb7wkV8Iedjg=
+X-Received: by 2002:a17:90b:a49:b0:268:60d9:92cc with SMTP id
+ gw9-20020a17090b0a4900b0026860d992ccmr210845pjb.43.1694742708242; Thu, 14 Sep
+ 2023 18:51:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230914133323.198857-46-benjamin.gaignard@collabora.com>
+References: <20230914080833.50026-1-haibo.li@mediatek.com> <20230914112915.81f55863c0450195b4ed604a@linux-foundation.org>
+ <CA+fCnZemM-jJxX+=2W162NJkUC6aZXNJiVLa-=ia=L3CmE8ZTQ@mail.gmail.com> <CAG48ez0aenPmr=d35UGa4_BiCwYU1-JHhD_2ygThvjOEXEM7bQ@mail.gmail.com>
+In-Reply-To: <CAG48ez0aenPmr=d35UGa4_BiCwYU1-JHhD_2ygThvjOEXEM7bQ@mail.gmail.com>
+From: Andrey Konovalov <andreyknvl@gmail.com>
+Date: Fri, 15 Sep 2023 03:51:37 +0200
+Message-ID: <CA+fCnZePgv=V65t4FtJvcyKvhM6yA3amTbPnwc5Ft5YdzpeeRg@mail.gmail.com>
+Subject: Re: [PATCH] kasan:fix access invalid shadow address when input is illegal
+To: Jann Horn <jannh@google.com>, Haibo Li <haibo.li@mediatek.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>, linux-kernel@vger.kernel.org, 
+	xiaoming.yu@mediatek.com, Andrey Ryabinin <ryabinin.a.a@gmail.com>, 
+	Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, 
+	Vincenzo Frascino <vincenzo.frascino@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kasan-dev@googlegroups.com, 
+	linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_174811_161360_1C838E14 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20230914_185149_340269_56B3E5C1 
+X-CRM114-Status: GOOD (  21.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,88 +93,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
+On Thu, Sep 14, 2023 at 10:41=E2=80=AFPM Jann Horn <jannh@google.com> wrote=
+:
+>
+> > Accessing unmapped memory with KASAN always led to a crash when
+> > checking shadow memory. This was reported/discussed before. To improve
+> > crash reporting for this case, Jann added kasan_non_canonical_hook and
+> > Mark integrated it into arm64. But AFAIU, for some reason, it stopped
+> > working.
+> >
+> > Instead of this patch, we need to figure out why
+> > kasan_non_canonical_hook stopped working and fix it.
+> >
+> > This approach taken by this patch won't work for shadow checks added
+> > by compiler instrumentation. It only covers explicitly checked
+> > accesses, such as via memcpy, etc.
+>
+> FWIW, AFAICS kasan_non_canonical_hook() currently only does anything
+> under CONFIG_KASAN_INLINE;
 
-kernel test robot noticed the following build errors:
+Ah, right. I was thinking about the inline mode, but the patch refers
+to the issue with the outline mode.
 
-[auto build test ERROR on linus/master]
-[also build test ERROR on v6.6-rc1]
-[cannot apply to next-20230914]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+However, I just checked kasan_non_canonical_hook for SW_TAGS with the
+inline mode: it does not work when accessing 0x42ffffb80aaaaaaa, the
+addr < KASAN_SHADOW_OFFSET check fails. It appears there's something
+unusual about how instrumentation calculates the shadow address. I
+didn't investigate further yet.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Rework-offset-cookie-encoding-pattern/20230914-221757
-base:   linus/master
-patch link:    https://lore.kernel.org/r/20230914133323.198857-46-benjamin.gaignard%40collabora.com
-patch subject: [PATCH v7 45/49] media: core: Add bitmap manage bufs array entries
-config: sparc-allyesconfig (https://download.01.org/0day-ci/archive/20230915/202309150835.kxjWQyEU-lkp@intel.com/config)
-compiler: sparc64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230915/202309150835.kxjWQyEU-lkp@intel.com/reproduce)
+> I think the idea when I added that was that
+> it assumes that when KASAN checks an access in out-of-line
+> instrumentation or a slowpath, it will do the required checks to avoid
+> this kind of fault?
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202309150835.kxjWQyEU-lkp@intel.com/
+Ah, no, KASAN doesn't do it.
 
-All errors (new ones prefixed by >>):
+However, I suppose we could add what the original patch proposes for
+the outline mode. For the inline mode, it seems to be pointless, as
+most access checks happen though the compiler inserted code anyway.
 
-   samples/v4l/v4l2-pci-skeleton.c: In function 'queue_setup':
->> samples/v4l/v4l2-pci-skeleton.c:170:15: error: 'struct vb2_queue' has no member named 'num_buffers'
-     170 |         if (vq->num_buffers + *nbuffers < 3)
-         |               ^~
-   samples/v4l/v4l2-pci-skeleton.c:171:35: error: 'struct vb2_queue' has no member named 'num_buffers'
-     171 |                 *nbuffers = 3 - vq->num_buffers;
-         |                                   ^~
---
-   drivers/input/touchscreen/sur40.c: In function 'sur40_queue_setup':
->> drivers/input/touchscreen/sur40.c:851:14: error: 'struct vb2_queue' has no member named 'num_buffers'
-     851 |         if (q->num_buffers + *nbuffers < 3)
-         |              ^~
-   drivers/input/touchscreen/sur40.c:852:34: error: 'struct vb2_queue' has no member named 'num_buffers'
-     852 |                 *nbuffers = 3 - q->num_buffers;
-         |                                  ^~
+I also wonder how much slowdown this patch will introduce.
 
+Haibo, could you check how much slower the kernel becomes with your
+patch? If possible, with all GENERIC/SW_TAGS and INLINE/OUTLINE
+combinations.
 
-vim +170 samples/v4l/v4l2-pci-skeleton.c
-
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  145  
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  146  /*
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  147   * Setup the constraints of the queue: besides setting the number of planes
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  148   * per buffer and the size and allocation context of each plane, it also
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  149   * checks if sufficient buffers have been allocated. Usually 3 is a good
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  150   * minimum number: many DMA engines need a minimum of 2 buffers in the
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  151   * queue and you need to have another available for userspace processing.
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  152   */
-df9ecb0cad14b9 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2015-10-28  153  static int queue_setup(struct vb2_queue *vq,
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  154  		       unsigned int *nbuffers, unsigned int *nplanes,
-36c0f8b32c4bd4 samples/v4l/v4l2-pci-skeleton.c               Hans Verkuil 2016-04-15  155  		       unsigned int sizes[], struct device *alloc_devs[])
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  156  {
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  157  	struct skeleton *skel = vb2_get_drv_priv(vq);
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  158  
-5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  159  	skel->field = skel->format.field;
-5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  160  	if (skel->field == V4L2_FIELD_ALTERNATE) {
-5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  161  		/*
-5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  162  		 * You cannot use read() with FIELD_ALTERNATE since the field
-5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  163  		 * information (TOP/BOTTOM) cannot be passed back to the user.
-5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  164  		 */
-3130a28a1568b1 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-23  165  		if (vb2_fileio_is_active(vq))
-5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  166  			return -EINVAL;
-5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  167  		skel->field = V4L2_FIELD_TOP;
-5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  168  	}
-5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  169  
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14 @170  	if (vq->num_buffers + *nbuffers < 3)
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  171  		*nbuffers = 3 - vq->num_buffers;
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  172  
-df9ecb0cad14b9 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2015-10-28  173  	if (*nplanes)
-df9ecb0cad14b9 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2015-10-28  174  		return sizes[0] < skel->format.sizeimage ? -EINVAL : 0;
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  175  	*nplanes = 1;
-df9ecb0cad14b9 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2015-10-28  176  	sizes[0] = skel->format.sizeimage;
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  177  	return 0;
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  178  }
-926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  179  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+If the slowdown is large, we can just make kasan_non_canonical_hook
+work for both modes (and fix it for SW_TAGS).
 
