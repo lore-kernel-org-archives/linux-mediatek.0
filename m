@@ -4,79 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 853CEEE3F01
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 05:28:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C790EE6432
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 07:50:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xn9oFhHLAknaWRf3uArqHTLA9prBJhnE4LW7Dd164uA=; b=lljTpxOdxqIe8zaPllNmpq1Uk3
-	KBdEbgDzUcrJ0mfdAvHcb7H1UHfIKoj2SNky2s7Y8C7yArcOVxHYSGa42O5tq+NMqwbuWSY2kDx8f
-	LsowOjYHRHNwa0h9rdt5ZleemeOwdY1LAQUdSN0gLZjMcjYowYKnotAPLYmDikRN6HWuDGibEf+w2
-	UP6W9T4iv95TCq0fbYZasmdzvQODp/csCUlzC5mWj1yoqbfov44tlQnoK/MhdCaoElKpSSiXkQQvY
-	Y70+x5D/VsI2UlRuJH+9G6ozkNgtdhEs+S5QLob/NJcJmZFXf7q3WJSLhfJOXr7Q9HIbDIeh5iEGt
-	WkZhcxhA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FwLQoAelQv12EwvGN3/4j+laqXSBsUWUFXrkTjKI7Zw=; b=IEgFEFqcQTGSjkNHr+GA5WBMHl
+	tHYu/h1Y7Yg3Ui3nTu9g2OKX3YzxCevPCY7E13IKKXPz9x+LMFQHdWuMmV+w3d0l1F2lTuMWlrGx5
+	Enr5jF0qgT9UqJHKnz1o0nItvjBPMZGUKfg3zOcsyN3nwk1/l8Upir291IYe2TaXKzYQ1jsWAeCuL
+	nOn5XwAOcnElNlypwEBoMFtGFhHYlMoX0t/aEDHeUmnTfbx1VqmWaBzmbQg79Tv1GmiOgxfYfUuVA
+	d5jseGOSlU/dG4lHQP2grV9W3t9G7p4ucL85dE4GPki4Ltec847aU6Js0UriCJ/j/X53P0/ysNjEy
+	LiNYW3Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qh1NN-009nUK-2D;
-	Fri, 15 Sep 2023 05:28:21 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1qh3bA-00A57w-2d;
+	Fri, 15 Sep 2023 07:50:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qh1NK-009nT5-2D
-	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Sep 2023 05:28:19 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-501be2d45e0so2960938e87.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Sep 2023 22:28:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1694755696; x=1695360496; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xn9oFhHLAknaWRf3uArqHTLA9prBJhnE4LW7Dd164uA=;
-        b=l9smrCGhxf8JT+3QZ9w4nsHYdviRbcG4fTbMFcmZoYz6JeNkL3BbhWB92w+TL5UvZL
-         wYRoVYVNQsC3iDHsl2IEsxMjFvAslTc//DNtIyFEl0u5qWJRS1EIX4/bLghDm3eDASjY
-         PZ5tHiAp3MplyUL8JXWGSgrp480emkRqw7Sy8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694755696; x=1695360496;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xn9oFhHLAknaWRf3uArqHTLA9prBJhnE4LW7Dd164uA=;
-        b=sfWeEwqKVkty3v+/0r417lxBiKk7jgiYC/P/73T7AogMoOHp7/qr2+3OTaasngdFy5
-         6Q0UA8tBkUVwAH0gMhuyZv8Xe/T4JKi6ciEMp4J8e5Y5OfR5NlsKUgWJVlgec3M0Dn+m
-         4Tg/PNO17jEHEo0E+hSR6o7lBeRNAniyud0G94DoUCbd8LXfNARoBFcXH0JeDo43W+IM
-         APd65df60nNwGJ3E4vQFUKNwN7qQSdTfx/np4KjYxfG4F6xO0wL1Hhoxh/gDIxq+ZthY
-         Ojod1C0bzZ3qsk0nJEQNnNiNliUmrQ/T85U/qqnfgGj+GSVynarlgBCFWhh+4znzbrHZ
-         apzQ==
-X-Gm-Message-State: AOJu0YwTsuzNeP8SV/lTLzmvpj357Ak/dFBGyS8K0ZYqCynthskcBUSL
-	syyZRxVY2w4lUQLeaIDPJ6+IU64SKMMty+OgmXg9tA==
-X-Google-Smtp-Source: AGHT+IHBF/LZiSOCHbF9PK/ZZsZw9DLkRfLiviBg8ZInp/Df/pEH0sQClGR3SSNslHwvIhnE/oLD3Fo+uCtKqC7O+9w=
-X-Received: by 2002:a05:6512:48c9:b0:502:d639:22ed with SMTP id
- er9-20020a05651248c900b00502d63922edmr518597lfb.48.1694755696091; Thu, 14 Sep
- 2023 22:28:16 -0700 (PDT)
+	id 1qh3b7-00A56r-2t;
+	Fri, 15 Sep 2023 07:50:43 +0000
+X-UUID: 8cbd6b60539c11ee9b7791016c24628a-20230915
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=FwLQoAelQv12EwvGN3/4j+laqXSBsUWUFXrkTjKI7Zw=;
+	b=izgtt7Yw2r/r+LuP7rPbV1YhtbzTAURaB/i18EL3sDreGyJonXLCQGTQc0e4+xFzlaIHC2HSnSzm6cdhb8g+yhKX2Nycd0vwZ6hJYNV3dtFQ2cqh42NkkB2RnNBcaCcCxKf/68QPciekOISCPz+DD3nBiwncyeAMstikSyPRHw8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:e77f3b0d-6007-4ec2-b5e6-8f635d6d52a1,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:c4abbbef-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 8cbd6b60539c11ee9b7791016c24628a-20230915
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <chun-jen.tseng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1602875426; Fri, 15 Sep 2023 00:50:33 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 15 Sep 2023 15:50:04 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 15 Sep 2023 15:50:04 +0800
+From: Mark Tseng <chun-jen.tseng@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Roger Lu <roger.lu@mediatek.com>,
+	Kevin Hilman <khilman@kernel.org>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<chun-jen.tseng@mediatek.com>
+Subject: [PATCH v1 0/2] soc: mediatek: svs: add support for mt8188
+Date: Fri, 15 Sep 2023 15:50:01 +0800
+Message-ID: <20230915075003.1552-1-chun-jen.tseng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20230914131058.2472260-1-jani.nikula@intel.com> <20230914155317.2511876-1-jani.nikula@intel.com>
-In-Reply-To: <20230914155317.2511876-1-jani.nikula@intel.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 15 Sep 2023 13:28:04 +0800
-Message-ID: <CAGXv+5GJxEobJKKWuc_UN+Gf_z8g6eb6KWTz-L+RqtyLYKK3Jg@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek/dp: fix memory leak on ->get_edid callback
- audio detection
-To: Jani Nikula <jani.nikula@intel.com>
-Cc: dri-devel@lists.freedesktop.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Guillaume Ranquet <granquet@baylibre.com>, linux-kernel@vger.kernel.org, 
-	stable@vger.kernel.org, Markus Schneider-Pargmann <msp@baylibre.com>, 
-	Bo-Chen Chen <rex-bc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, 
-	Dmitry Osipenko <dmitry.osipenko@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	linux-arm-kernel@lists.infradead.org, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_222818_720899_8488C500 
-X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-CacheID: sfid-20230915_005041_937085_4E4EFB4D 
+X-CRM114-Status: UNSURE (   8.10  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,27 +87,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 14, 2023 at 11:53=E2=80=AFPM Jani Nikula <jani.nikula@intel.com=
-> wrote:
->
-> The sads returned by drm_edid_to_sad() needs to be freed.
->
-> Fixes: e71a8ebbe086 ("drm/mediatek: dp: Audio support for MT8195")
-> Cc: Guillaume Ranquet <granquet@baylibre.com>
-> Cc: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: dri-devel@lists.freedesktop.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: <stable@vger.kernel.org> # v6.1+
-> Signed-off-by: Jani Nikula <jani.nikula@intel.com>
 
-Looks correct to me.
+This series supports MT8188 Smart Voltage Scaling (SVS) hardware which
+used as optimization of opp voltage table for gpu dvfs driver.
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Mark Tseng (2):
+  dt-bindings: soc: mediatek: add mt8188 svs dt-bindings
+  soc: mediatek: svs: add support for mt8188
+
+ .../bindings/soc/mediatek/mtk-svs.yaml        |   1 +
+ drivers/soc/mediatek/mtk-svs.c                | 177 +++++++++++++++++-
+ 2 files changed, 173 insertions(+), 5 deletions(-)
+
+-- 
+2.18.0
+
 
