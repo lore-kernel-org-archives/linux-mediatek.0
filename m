@@ -4,70 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79B49EED618
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 16:29:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E7F3EED61A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 16:51:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8dRz/nFByru5ZN1IrkNOxZIq4ru/dlSqtenwCMTzYW0=; b=0w++O+vFU9z028jXZprIksrk/W
-	Swe3StXD8ZTPwFT7Yknjiejl4JpmizMOs6SxAn9sPlB8m96gpm2/AbgBjHHSc28M97+8cH3DQMKkD
-	PV5BhO4DBGn5IGKUJjF+8zleFbTRLdA01YOC7CrqDsEYNo9zhYveBcR6IIe9AkDV5OfFaTuithpWp
-	erYJ8vyV2YRbnqY4He7xVpMhHNKeufiu/GmdglibQoPzUY75NcL9pbBA8MbziF8Pxfi0wzhNmvL45
-	GDe61suIc8dTMIF7q3N2KzR2W6W1RSDyac7Fg/uekfSqzqcpKaTg4YFTUlnEN5ZV1czDn+AHD6dRh
-	Jz/U+dkQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C9N4U7m1ENfkMXf6AuPL4MT6Lni4JryuzWdzOGtlKI8=; b=4rUoHUm9QMySWb4CG+aBlX55jq
+	oMFhVzBXvtsZw1aGzIupci1MV3ZCWmF7+FrfHc8p2mlfVWynBl2NVZ8Nmj4zFH8OkhgXhXhxS1LSc
+	b2Pbj3o4TKGlahlkeek7C8dPwQv2yDMcjnuUBcTjiwO1J98WMHCJMIgx1UsHkO5FdHwj0qr3yRW7L
+	qmqBIK0rnJXSZ3ElQALf4+2lOYsNuEL77TOHsnURFojxNrGi+5afiDdpa69+H/a80rFx80JHTdGX6
+	YUGKn/EGk6vOVpyvvn8zhgxu0JP/0GAHdcCre87GNj444YIJTcKU4eF2+SS+YRy7Qpou4VHvvQPkn
+	X2kaWa2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhBgf-00B3RD-1t;
-	Fri, 15 Sep 2023 16:28:57 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qhC23-00B4zg-20;
+	Fri, 15 Sep 2023 16:51:03 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhBgc-00B3Qr-2K
-	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Sep 2023 16:28:55 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 66BF16210F;
-	Fri, 15 Sep 2023 16:28:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B929C433C8;
-	Fri, 15 Sep 2023 16:28:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694795332;
-	bh=xFP4xP9LgYUNQYWlHLEw+gHE48/2qAyc2EfESi3YoiI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ONYvrKPbd80wQteDgGA4/C/inRBfN9eLEkTU51VoXcnrs4QWl1IRU7FQOEp/FL9kT
-	 DDIRkzvi9g06a8WNelzs4R/OZlsX5jDMIkw4kX80Wa2/vkR5+Awuq8XIADoqzamYaW
-	 5k6K6uPdYabwSUxl2ZJREpYDAEGIw+oCxriQKyweKmzoAld0wh3+4GtUGB22UtwHMc
-	 YdmwhlPGcsvXWAxbBi3TsTc0FhnODy1d7cHx52xbmLwN+1wxbMZjnT+l62d2VqxjiC
-	 anMmFZfFL9QCgoG4XHGROHf6NS0TsPlRlKNXw8ZnFlf8Vf0gdH8Wt3IFMAokM+jdjX
-	 txiefVRftqsiw==
-Date: Fri, 15 Sep 2023 18:28:48 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: netdev@vger.kernel.org, lorenzo.bianconi@redhat.com, nbd@nbd.name,
-	john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, daniel@makrotopia.org,
-	linux-mediatek@lists.infradead.org, sujuan.chen@mediatek.com,
-	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next 10/15] net: ethernet: mtk_wed: introduce WED
- support for MT7988
-Message-ID: <ZQSGQH5n78e0wpz7@lore-desk>
-References: <cover.1694701767.git.lorenzo@kernel.org>
- <330efa9f15a6da8a8e7596d3a942f3e893730e12.1694701767.git.lorenzo@kernel.org>
- <20230915145548.GA3704791-robh@kernel.org>
+	id 1qhC20-00B4yp-2k;
+	Fri, 15 Sep 2023 16:51:02 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-274b45fa7a2so174718a91.0;
+        Fri, 15 Sep 2023 09:51:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1694796659; x=1695401459; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=C9N4U7m1ENfkMXf6AuPL4MT6Lni4JryuzWdzOGtlKI8=;
+        b=ay5KeaP42ltBYMDU+prw3fOEpfIVGRVBO43zkMvb+TPFvGMcbP7eCuVncFWk5N84cs
+         RvP5AEaxBhSsNgnYZTvftMEcc+K8Z9NT6JQZolcFZqqUopkZzl6u370GgP/dm6Wb/69G
+         M92+qoBtHFR4scAhi56hqMsMivjSAqBdOXvNBgr/KmfIl0v/nCYWsXX1Y1Z1rPNOCdZl
+         hNMyuKgoVBv7B+NHnOKvhoOlNzp/ARZf9mB1ew96kuoTC+3rqEGlETZ9+m8X89MP2V2+
+         IB46w9u19iuo+8pBr1zBG+kwcM9N4ohH5Dkp4NIsgbltGQOUnFKICBYdBGuVd3gtP3OM
+         Q6ZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694796659; x=1695401459;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=C9N4U7m1ENfkMXf6AuPL4MT6Lni4JryuzWdzOGtlKI8=;
+        b=Ca4Dpw5CSWo9BbMUDjCAHDvlSuf8tDy1XscJfFel4lCJMWe+GDOL+utQygGSQxsWMN
+         2HjrCmYSY2sdtQgR6/Su22+3RRoOcn8cwRMES4chUazgiOU/knALnT4UD1qSRIDGQR+6
+         3xe65A1bncGCpGWomif/AHKQRONBtm1rYc8X6BDY1+RRHgdAnEUklszyLhmahTT3Q/m4
+         mcFAvxInqUZtgrwIEqLdZiPdVLU3vQide/fgWJ9Zh7yfgrLPTsgdbOSiUq5Imo4EsiSF
+         E/NMyUDq7AP2Uxtq1cZHdW8+dV0qy8maWpNP8t7e92WrXVe0jSVDoZA4F0S6CdgiK8wO
+         6TTQ==
+X-Gm-Message-State: AOJu0Yz9iUGSO3g2HDb4GkmoyJCG28bzvCQ7c00P04Si+MMVcli+NV5J
+	mSGp2w+D5CJ6BcBby0mFpWwlJ71zeX6qXmcJ01A=
+X-Google-Smtp-Source: AGHT+IGbqKZHfQYVZyeiRIfx3Rau8VcK1iGF77tUw+uQyQtNqnu5UagzuHOH8rpnQb8Ka+6MLiQbWH8tpwggqtgwVnk=
+X-Received: by 2002:a17:90a:f312:b0:273:e42b:34c1 with SMTP id
+ ca18-20020a17090af31200b00273e42b34c1mr1902942pjb.42.1694796659560; Fri, 15
+ Sep 2023 09:50:59 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Yyt0PgioCXTYT4h4"
-Content-Disposition: inline
-In-Reply-To: <20230915145548.GA3704791-robh@kernel.org>
+References: <CA+fCnZePgv=V65t4FtJvcyKvhM6yA3amTbPnwc5Ft5YdzpeeRg@mail.gmail.com>
+ <20230915024559.32806-1-haibo.li@mediatek.com>
+In-Reply-To: <20230915024559.32806-1-haibo.li@mediatek.com>
+From: Andrey Konovalov <andreyknvl@gmail.com>
+Date: Fri, 15 Sep 2023 18:50:48 +0200
+Message-ID: <CA+fCnZfuaovc4fk6Z+p1haLk7iemgtpF522sej3oWYARhBYYUQ@mail.gmail.com>
+Subject: Re: [PATCH] kasan:fix access invalid shadow address when input is illegal
+To: Haibo Li <haibo.li@mediatek.com>, jannh@google.com
+Cc: akpm@linux-foundation.org, angelogioacchino.delregno@collabora.com, 
+	dvyukov@google.com, glider@google.com, kasan-dev@googlegroups.com, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-mm@kvack.org, mark.rutland@arm.com, 
+	matthias.bgg@gmail.com, ryabinin.a.a@gmail.com, vincenzo.frascino@arm.com, 
+	xiaoming.yu@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230915_092854_822830_29B566B2 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20230915_095100_896020_705A12E3 
+X-CRM114-Status: GOOD (  13.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,45 +92,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Sep 15, 2023 at 4:46=E2=80=AFAM 'Haibo Li' via kasan-dev
+<kasan-dev@googlegroups.com> wrote:
+>
+> The patch checks each shadow address,so it introduces extra overhead.
 
---Yyt0PgioCXTYT4h4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Ack. Could still be fine, depends on the overhead.
 
-> On Thu, Sep 14, 2023 at 04:38:15PM +0200, Lorenzo Bianconi wrote:
-> > From: Sujuan Chen <sujuan.chen@mediatek.com>
-> >=20
-> > Similar to MT7986 and MT7622, enable Wireless Ethernet Ditpatcher for
-[...]
-> > -	ring_size =3D dev->wlan.nbuf & ~(MTK_WED_BUF_PER_PAGE - 1);
-> > -	n_pages =3D ring_size / MTK_WED_BUF_PER_PAGE;
-> > +	if (!mtk_wed_is_v3_or_greater(dev->hw)) {
-> > +		dev->tx_buf_ring.desc_size =3D sizeof(struct mtk_wdma_desc);
->=20
-> Instead of checking the version or using of_device_is_compatible() in=20
-> other places why don't you define driver match data for all this static=
-=20
-> data.
+But if the message printed by kasan_non_canonical_hook is good enough
+for your use case, I would rather stick to that.
 
-ack, I will look into it.
+> Now kasan_non_canonical_hook only works for CONFIG_KASAN_INLINE.
+>
+> And CONFIG_KASAN_OUTLINE is set in my case.
+>
+> Is it possible to make kasan_non_canonical_hook works for both
+> INLINE and OUTLINE by simply remove the "#ifdef CONFIG_KASAN_INLINE"?
 
-Regards,
-Lorenzo
+Yes, it should just work if you remove the ifdefs in mm/kasan/report.c
+and in include/linux/kasan.h.
 
->=20
-> Rob
+Jann, do you have any objections to enabling kasan_non_canonical_hook
+for the outline mode too?
 
---Yyt0PgioCXTYT4h4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZQSGQAAKCRA6cBh0uS2t
-rJXiAQCakzUT0GOnyU0/R38SoArHgoeIBl5bxY1xtoxwJOUMgwD/b+t/uUG8UFJk
-rErIrPODkOdRCFq961CiUNRTVAzv+w0=
-=SpFW
------END PGP SIGNATURE-----
-
---Yyt0PgioCXTYT4h4--
+> Since kasan_non_canonical_hook is only used after kernel fault,it
+> is better if there is no limit.
 
