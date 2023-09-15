@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5734BEED60B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 15:27:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77141EED615
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 15:46:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gEKcGfOdbb/ypCFeWjMTerPJybqZBvAl/dHd3Jy2NTQ=; b=jlZ4+USHTgye6saZaAJcIqoFri
-	XfOOFi1PXrH40yMzk70fxT4Lg++0fT6bzw5NHCdQxlAeOOwQjvpI4ik3l1bvovkvBIe6FwUgoU1lU
-	dCscftha53iBZYdLtpWloPrfxXbISM2FJLovChzxczDPP51MEJXNNHeadQX05RhCIuF3lVIzay4br
-	OrCZa8UBclJuLDuHH/SHFTVh3jwSBOyX0TqNJlsJW4L2KPKTltzbaNNkBloTjGWcSKfnMsr2ZfXv3
-	ipShdIqT3aoesG9jhxhw7PY9CBrcUPzEIJMTF7wmqk2HBC+da5V0k5h/PlGf60N6hMe3fOm+VOsDJ
-	523eylnA==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DFB1ce/CaeRxMkY2IQnRopnHe2UahnGT279P4kFvN6w=; b=zIUHoVHEjlre7qweSSl4rgdbCV
+	gnnYu0e5U+QIl2h6CoQUK0qkC5NF4esbc3uovW4bJLDSw5nyh/dVCpr0ceCmaFJoUZEVTRhJSy/8J
+	o4NYRUq9dfxWsMYE1sWR4zhfO2/EltfaIE/oNH8Ked89NG/EOKeC0aN6L5HCysy6OgNisiIIqkw0S
+	eoKmzBSzakd4ZZegfcNpzQq4DWk7aAvJ6jourM/3sb9N35M8vtNhUcsi5bGF0FsvHI2MwXdo2pRVQ
+	fOIqv/vjhNWylPXTSjUtt+AOVe8hbeTSIp9NGpI4Vq7ox4i9R7GF9vX6z7JUUb06WUfVugx+3AD9R
+	77XKlrUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhAir-00Az45-0l;
-	Fri, 15 Sep 2023 15:27:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qhB1T-00B0sx-0a;
+	Fri, 15 Sep 2023 15:46:23 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhAio-00Az3S-24;
-	Fri, 15 Sep 2023 15:27:08 +0000
-X-UUID: 516f1f1e53dc11ee86758d4a7c00f3a0-20230915
+	id 1qhB1Q-00B0sV-1F;
+	Fri, 15 Sep 2023 15:46:21 +0000
+X-UUID: 01f3a03853df11ee9b7791016c24628a-20230915
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=gEKcGfOdbb/ypCFeWjMTerPJybqZBvAl/dHd3Jy2NTQ=;
-	b=IKacZjHqLF2RYa5DVWiUprUMOkA2SPjskE5sRpKzbYoVOOuOHFmJOkmjMO5GBjGAXIiW2PAILqpm5H2s1RaGjYtUQquXsET5MyhRYYopNT+6tYATLTlERzZa5pU4pukD5+OQeHF+U+XjSFowxfeuJlYIthst77CMWew5DRNnk5U=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=DFB1ce/CaeRxMkY2IQnRopnHe2UahnGT279P4kFvN6w=;
+	b=d/pv0mp0VW4HE8JObo7qMlBHvo2tyTPCFyuuRzYAcfnozpXW8wN/EdmMdM+olI8XDrITpvkU/LfGM8n4yKCCkw+m9SV6fZY+2G6j1Fm7N3fHijO6ApsCbStEPXLTNbo2YYBzzsoYwlHjUfPWH1dumm74sIo/ltpo/VpzV6N5LRI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:a32a444d-fbc6-4bdd-be82-0310f9267a77,IP:0,U
-	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:9328e3be-14cc-44ca-b657-2d2783296e72,B
+X-CID-O-INFO: VERSION:1.1.31,REQID:ea746603-a50f-4068-b335-9fef298965d8,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:0ad78a4,CLOUDID:2afe13c3-1e57-4345-9d31-31ad9818b39f,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 516f1f1e53dc11ee86758d4a7c00f3a0-20230915
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 01f3a03853df11ee9b7791016c24628a-20230915
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <william-tw.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 520023450; Fri, 15 Sep 2023 08:27:01 -0700
+	with ESMTP id 1873689373; Fri, 15 Sep 2023 08:46:17 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 15 Sep 2023 23:26:26 +0800
+ 15.2.1118.26; Fri, 15 Sep 2023 23:26:11 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 15 Sep 2023 23:26:26 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 15 Sep 2023 23:26:11 +0800
 From: William-tw Lin <william-tw.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
@@ -62,30 +62,27 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	William-tw Lin <william-tw.lin@mediatek.com>
-Subject: [PATCH v2 3/3] dt-bindings: hwinfo: Add mtk-socinfo driver
-Date: Fri, 15 Sep 2023 23:26:07 +0800
-Message-ID: <20230915152607.18116-4-william-tw.lin@mediatek.com>
+Subject: [PATCH v2 0/3] mtk-socinfo driver implementation
+Date: Fri, 15 Sep 2023 23:26:04 +0800
+Message-ID: <20230915152607.18116-1-william-tw.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230915152607.18116-1-william-tw.lin@mediatek.com>
-References: <20230915152607.18116-1-william-tw.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--1.957100-8.000000
-X-TMASE-MatchedRID: v6XyZOeCJ6AQKuI1NEGZQXew7fOv9rv4/oVxXwNIskffUZT83lbkEEd0
-	Rzx07LDVnD3AxwqeC/rkllaluas5jhhzK7qAlTSLGVyS87Wb4lxh59nsX2QuC9zOQo7mTgA+B/o
-	dLTuYYLIlCUygZetDZEw3m0nPdhDkQF24kZp9Ww+eAiCmPx4NwJuJ+Pb8n/VxLzP5snaeb1Qqtq
-	5d3cxkNRqXnrxrKCOXNyXiktngl2+lBw28bqWvBSjlogU60mUGrOK2X7HwMosh2LyHk3j0fbb1y
-	JyFMGW7fTAUk3BtRD0d/NlE8oyWLLgVDf+0/00JF0aD5ljt43pMcHZD6gqu7wxMjfifIXfowkvV
-	oA11Twp+3BndfXUhXQ==
+X-TM-AS-Result: No-10-0.910800-8.000000
+X-TMASE-MatchedRID: 7LejLvGCNgAsZYGCajmr7M+QmA3DfdSbTCv58Zx9SJpUjspoiX02Fyuk
+	s9vcKhsTldfHsj3+ZpTaSHwlOL1r6kttpN+KVVd9A9lly13c/gF/aDoolm3GXTUsHjosUACSR3R
+	HPHTssNVZfh5NyMNmxIAy6p60ZV62fJ5/bZ6npdjKayT/BQTiGoCxaPcRWGBYaz1jwFb6Hi1LRI
+	6qNRdnldwlh41JmumFJaD3/dLreAh7VtbENfMiUYgD8vh/Ci8nh465MwdO/NcyPT6YOUMfw6/XF
+	oPK0hZ9dATQdtPksR+3/JiWOe6GXXSWgQ2GpXdZ9D6bLBJM9NtDDKa3G4nrLQ==
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--1.957100-8.000000
+X-TMASE-Result: 10-0.910800-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 4F5FBE3B3D86B8BE0E3CEF07A5A469906665476C1D1E64B6B9808915176020262000:8
+X-TM-SNTS-SMTP: D8F24BC104B54FDB57C56364F1072AABD6E1812F6E7F2E8267B43BBD45A354932000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230915_082706_681274_3809065D 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20230915_084620_451097_95E3E4C2 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,71 +97,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-dt-binding documentation for mtk-socinfo driver.
-mtk-socinfo driver provides SoC-related information.
-Such information includes manufacturer information, SoC name,
-SoC segment name, and SoC marketing name.
+This purpose of the patches is for soc-related information retrival.
+Such information includes manufacturer information, SoC name, SoC 
+segment name, and SoC marketing name.
 
-Signed-off-by: William-tw Lin <william-tw.lin@mediatek.com>
----
- .../bindings/hwinfo/mtk-socinfo.yaml          | 48 +++++++++++++++++++
- 1 file changed, 48 insertions(+)
+Based on tag: next-20230915, linux-next/master
+
+Changes in v2:
+- Remove mtk-socinfo.h
+- Consolidate different compatibles into mediatek,socinfo
+- Move socinfo node out of MMIO bus
+- Move mtk-socinfo.yaml to hwinfo
+- Fix reviewer's comments
+
+William-tw Lin (3):
+  arm64: dts: Add node for chip info driver
+  soc: mediatek: mtk-socinfo: Add driver for getting chip information
+  dt-bindings: hwinfo: Add mtk-socinfo driver
+
+ .../bindings/hwinfo/mtk-socinfo.yaml          |  48 +++++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  15 ++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  15 ++
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi      |  10 ++
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi      |  14 ++
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      |   9 +
+ drivers/soc/mediatek/Kconfig                  |   9 +
+ drivers/soc/mediatek/Makefile                 |   1 +
+ drivers/soc/mediatek/mtk-socinfo.c            | 166 ++++++++++++++++++
+ 9 files changed, 287 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
+ create mode 100644 drivers/soc/mediatek/mtk-socinfo.c
 
-diff --git a/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml b/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
-new file mode 100644
-index 000000000000..74f03f1dc404
---- /dev/null
-+++ b/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
-@@ -0,0 +1,48 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/hwinfo/mtk-socinfo.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek SoC ChipID
-+
-+maintainers:
-+  - William Lin <william-tw.lin@mediatek.com>
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+  - Kevin Hilman <khilman@kernel.org>
-+  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+
-+description:
-+  MediaTek SoCs store various product information in eFuses, including
-+  Chip ID and Revision fields, usable to identify the manufacturer,
-+  SoC version, plus segment and marketing names.
-+
-+properties:
-+  compatible:
-+    const: mediatek,socinfo
-+
-+  nvmem-cells:
-+    maxItems: 2
-+    description: Phandle to nvmem cells containing SoC identification data
-+
-+  nvmem-cell-names:
-+    minItems: 1
-+    items:
-+      - const: socinfo-data1
-+      - const: socinfo-data2
-+
-+required:
-+  - compatible
-+  - nvmem-cells
-+  - nvmem-cell-names
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+        socinfo {
-+            compatible = "mediatek,socinfo";
-+            nvmem-cells = <&socinfo_data1>, <&socinfo_data2>;
-+            nvmem-cell-names = "socinfo-data1", "socinfo-data2";
-+        };
-+
 -- 
 2.18.0
 
