@@ -4,104 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61CC0CD37A7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 20:11:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01E24CD37A9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 20:32:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6rGCQZXOZFob52Gnc+msXzDi2Oa5SKWBAnf/TmWNgRE=; b=ELW/7V7cBRWddCTps482Qxeaka
-	wBhKj6sTvaSaIMEd+Xg8GCCCTw23Rumk+J5zEJ55gcOEdXeK139KlBwBOmribGYYA/O5vT0eU1zyd
-	uuzRftoo4jQm8vvhgQgLtb9gXa8Yj6IBJv0qIWs1HpThwsN2HlYDhxSl5Do4Akjh2ygSyK/5lNneJ
-	k5wX/TTFwXDWT0e6RssgFBSsKNCSclMYlawEBYppZrlmC2YE3vt2amKV/p6dEOsjWc5Z1rXDlIXuU
-	Mk7KrrHgXp2qvS2rioyPk7N+oevrTpMC6a9iidICMOG1zToYU8fH7aksDLwOzGCZruf7CDXlujWLa
-	xno3Ta9w==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wABwCDb0dMxmvkzrv9cJSGwLJCvJu2+BGHLCoCFf7l4=; b=iRlxZjoSgCr1DeW3/75NxG7zJC
+	1phhmhWHJTSCIl2KX3hydl/3HsNvgT4pX7moSyNqaPsXeOpIcn5OMXixRkGkiJAWDaOQv2DJk7muE
+	jOFPB84KhQ0llfvZQ9x/T7exB/Sqnwe1Iqhq26H7Vi8nOUIuGZgVqTs6XcsSkAbk23nisvCOTLF36
+	X5hTC2FL0TsCNhvh2wnjFwjIZH1k3/gehIgM8kiWw3EiV9dZkqeX1sFV7s4rlQfL8KeKXgZsy/i5R
+	C4UaA8mUl19PyMqMCzrpMusZYD+mUWqyl8fm4UTSu9WR7TYbUzyrwlJKeY2VvOX2N4Z1KMpzgycsl
+	zODDx5gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhF9X-00BISF-1I;
-	Fri, 15 Sep 2023 20:10:59 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1qhFUk-00BKni-07;
+	Fri, 15 Sep 2023 20:32:54 +0000
+Received: from omta36.uswest2.a.cloudfilter.net ([35.89.44.35])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhF9U-00BIRG-2V
+	id 1qhFUg-00BKln-04
 	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Sep 2023 20:10:58 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-1c337aeefbdso23554425ad.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 15 Sep 2023 13:10:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1694808654; x=1695413454; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=6rGCQZXOZFob52Gnc+msXzDi2Oa5SKWBAnf/TmWNgRE=;
-        b=DyT7ujUKutTWTjUDr0Fwwmo+CdA+ebGXHyWFngo/KXITIwB3KxxUXSuObZM640tH8b
-         MC1vOA1K438kr9wUbhPr+zQnbDXsG37eERe6DhZQtGwKQp0YkaJLN0H4Hd9ZgQqqViNd
-         OyvkuzKq2OUvOONJmJl60yHc/Eg8ypj+/DS9M=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694808654; x=1695413454;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=6rGCQZXOZFob52Gnc+msXzDi2Oa5SKWBAnf/TmWNgRE=;
-        b=JlaVqgSX1DAOkFQlPrRjy6VH3+fPkbBSOOnNvDKnERhcfLIPn0fhcaCfPpVuvvCxqr
-         AuY+txaiTMw7gbGHykKRVa97tqgGTHDom/3yu4i+dkMBHUw6rSlMe6JzrWxLq4gUpOiE
-         oo901W1z1JRH+U0ff8t9ojptMATIDaM2S6870hBhTkVau3uF5rWXrDw/Mw9Eu16XKgop
-         GGBmhZshPVLPAXqqRfj0LOL8eHyROsV4SiqMflqUm2U4AI9+ZUvSrhNfgidPDiwu89sS
-         zzd5O1ry0UaVUNIr9g0RIE9d6u7l2mgBAZZYAlxuuSU19lZVBEzIT82+B88MGWI1uTO7
-         Y3fA==
-X-Gm-Message-State: AOJu0YwoMHE0precNvMMztWHFhRbo4DRp5bFL1qZ8yFEvodwLno/XyPg
-	PAh/naCIeXfimgadPP1ILAmYcA==
-X-Google-Smtp-Source: AGHT+IEs5lOaR2Ta2Mws1l9cp/mRyT2P58L6rAu8X1p1avpmZi1GYS+ZtJEyDjHT8joJnRpmAmtC5A==
-X-Received: by 2002:a17:903:22cc:b0:1c4:13f:9dd3 with SMTP id y12-20020a17090322cc00b001c4013f9dd3mr3457711plg.62.1694808654451;
-        Fri, 15 Sep 2023 13:10:54 -0700 (PDT)
-Received: from www.outflux.net (198-0-35-241-static.hfc.comcastbusiness.net. [198.0.35.241])
-        by smtp.gmail.com with ESMTPSA id b3-20020a170903228300b001bdca6456b9sm3904606plh.17.2023.09.15.13.10.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Sep 2023 13:10:53 -0700 (PDT)
-From: Kees Cook <keescook@chromium.org>
-To: Pavel Machek <pavel@ucw.cz>
-Cc: Kees Cook <keescook@chromium.org>,
-	Lee Jones <lee@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Alice Chen <alice_chen@richtek.com>,
-	Jacek Anaszewski <jacek.anaszewski@gmail.com>,
-	ChiYuan Huang <cy_huang@richtek.com>,
-	ChiaEn Wu <chiaen_wu@richtek.com>,
-	kernel test robot <lkp@intel.com>,
-	linux-leds@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <ndesaulniers@google.com>,
-	Tom Rix <trix@redhat.com>,
-	linux-kernel@vger.kernel.org,
-	llvm@lists.linux.dev,
-	linux-hardening@vger.kernel.org
-Subject: [PATCH] leds: mt6370: Annotate struct mt6370_priv with __counted_by
-Date: Fri, 15 Sep 2023 13:10:52 -0700
-Message-Id: <20230915201051.never.429-kees@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	Fri, 15 Sep 2023 20:32:51 +0000
+Received: from eig-obgw-5001a.ext.cloudfilter.net ([10.0.29.139])
+	by cmsmtp with ESMTP
+	id hAJnqKl5UEoVshFUSqHroM; Fri, 15 Sep 2023 20:32:36 +0000
+Received: from gator4166.hostgator.com ([108.167.133.22])
+	by cmsmtp with ESMTPS
+	id hFURq9lw4qs1vhFURqTyjS; Fri, 15 Sep 2023 20:32:35 +0000
+X-Authority-Analysis: v=2.4 cv=OO40YAWB c=1 sm=1 tr=0 ts=6504bf63
+ a=1YbLdUo/zbTtOZ3uB5T3HA==:117 a=WzbPXH4gqzPVN0x6HrNMNA==:17
+ a=OWjo9vPv0XrRhIrVQ50Ab3nP57M=:19 a=dLZJa+xiwSxG16/P+YVxDGlgEgI=:19
+ a=IkcTkHD0fZMA:10 a=zNV7Rl7Rt7sA:10 a=wYkD_t78qR0A:10 a=NEAV23lmAAAA:8
+ a=VwQbUJbxAAAA:8 a=mpaa-ttXAAAA:8 a=pGLkceISAAAA:8 a=QX4gbG5DAAAA:8
+ a=JfrnYn6hAAAA:8 a=cm27Pg_UAAAA:8 a=HvF037n1xESchLcPDVoA:9 a=QEXdDO2ut3YA:10
+ a=AjGcO6oz07-iQ99wixmX:22 a=6heAxKwa5pAsJatQ0mat:22 a=AbAUZ8qAyYyZVLSsDulk:22
+ a=1CNFftbPRP8L7MoqJWF3:22 a=xmb-EsYY8bH0VWELuYED:22
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=wABwCDb0dMxmvkzrv9cJSGwLJCvJu2+BGHLCoCFf7l4=; b=FhXotnDCnkoswCDdhWdbmVgtwF
+	lV9MVwHov2SKTYN+E2yViUEm0Bofr6mOVDT0jvE7AolG6hWla2fkY1upHAAoduTNjIwodYbA+RNUV
+	XsLmdfPR0oJwConQS+2hgiPL1zQl2yPjVmQbUxhOH0cJocMjAhpTV/DhFBoPBadgMPptil+wgKKyP
+	Nu6PbeOCf6oylC/sbMnC8rD6+hGJbBCwOISlzIrSRMJ+aMi3m6Cz12ePmCSw7bqaRtAsAKAHzMsJN
+	2TDU34DNdwtKOj+Q1FJ/VIf2MlcbXSH/ARIxQudkzuA+vUujeI5l/F/6Vu7IV+wzO/047qJXRuSPx
+	9QKPSXBw==;
+Received: from 187-162-21-192.static.axtel.net ([187.162.21.192]:40496 helo=[192.168.15.8])
+	by gator4166.hostgator.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <gustavo@embeddedor.com>)
+	id 1qhFUO-002OQb-0M;
+	Fri, 15 Sep 2023 15:32:32 -0500
+Message-ID: <1e5cfed9-7c4d-273c-2f72-180aeba2abf9@embeddedor.com>
+Date: Fri, 15 Sep 2023 14:33:19 -0600
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2257; i=keescook@chromium.org;
- h=from:subject:message-id; bh=coE/iSzW/9UhtjCTK3P8Gz63+gP8L3K/+tYQMkvh0is=;
- b=owEBbQKS/ZANAwAKAYly9N/cbcAmAcsmYgBlBLpMEabFyu4iy+cSm/IiRf1sxT9B50iyRXrIa
- 1U8Y2+HfRSJAjMEAAEKAB0WIQSlw/aPIp3WD3I+bhOJcvTf3G3AJgUCZQS6TAAKCRCJcvTf3G3A
- JqR9D/kB+HRM4Ne/WaOq10KenW2vk7P75UuXI5Jub8jHjnyyum8tphcbeG+hgOsmtv/58Whcs70
- n0FswYXFTWoWh7E7chImCAqAjk7e1w+p6hX+cDqRx/p2Ye36TpSe4GRFESmTs8qvf5jJeqpkgI7
- a13SXZalZVypMYSHWpxC8SnLbdfRnZjwc+aii8s7cwTxD6SRB6is0+q91VfuFeZzBX24z77AGtT
- VkXo6fdWWZV4GIWD12a0kzcul+7Uxpa0aB4DQ1NOFLjA9WrHyRhwrGmDGbHuswn5kFM4IayZzui
- Pkis6fT1iFeKKO6RdYKDGUtYbEP4mvXOVQ2/XMUodrY2c9x/oA+KosAoPSrir673KWOOHofAHD3
- 5AL8W5EzhbS3BnTwYJX669gI82yKLDX+IEX7CodlJVrK33ZNmVF31puCUqzL462U7tMxWPmnlBb
- OftVJhzzw7hfxwndI7LoXe8OevLuAy2DYbWh389xPIoLPh7X0BZR4xHqgMTHEypF08hh0q5lNlx
- +EZ03lTN7zwMfA/0RUG9XOexK+kmOhS8Y9Qj4aw45BxhvPHhRJw8XETmXO26Rc/+RRfL1+KH/o7
- Mqw0xayOuPh650DTC2CZv0a+PoHnaYkOm1kaE4tFx0OX9R1VTMeJD8TmvF8+r4Il478NvyQxABt
- BcXYqKz l4fOiO5g==
-X-Developer-Key: i=keescook@chromium.org; a=openpgp; fpr=A5C3F68F229DD60F723E6E138972F4DFDC6DC026
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH] wifi: mt76: Annotate struct mt76_rx_tid with __counted_by
+Content-Language: en-US
+To: Kees Cook <keescook@chromium.org>, Felix Fietkau <nbd@nbd.name>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
+ <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <ndesaulniers@google.com>, Tom Rix <trix@redhat.com>,
+ linux-kernel@vger.kernel.org, llvm@lists.linux.dev,
+ linux-hardening@vger.kernel.org
+References: <20230915200612.never.786-kees@kernel.org>
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+In-Reply-To: <20230915200612.never.786-kees@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - embeddedor.com
+X-BWhitelist: no
+X-Source-IP: 187.162.21.192
+X-Source-L: No
+X-Exim-ID: 1qhFUO-002OQb-0M
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: 187-162-21-192.static.axtel.net ([192.168.15.8]) [187.162.21.192]:40496
+X-Source-Auth: gustavo@embeddedor.com
+X-Email-Count: 160
+X-Org: HG=hgshared;ORG=hostgator;
+X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
+X-Local-Domain: yes
+X-CMAE-Envelope: MS4xfDv3DdmPnQpUDKTLCo/KWt6H+uQJHnRb6R9sW57HjciMxgBlU8AQZKrz+YTSuQQxImxOnuif1AklkKQAvAnXn9nptK4blP4IEHTTSnFQrTLqXaNRi5gx
+ lmbZEVL3iH0BSSl/PijxAgpZeqDcmqpztW+7rVCG9S1c7aTc5RQTLwnZ86JDwztQUNfQLeAc2VKcn8PRkW161hkdCY5Z64EU/E5SoPTRQlPZraiZMSNdIME7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230915_131056_813491_614E347A 
-X-CRM114-Status: GOOD (  13.78  )
+X-CRM114-CacheID: sfid-20230915_133250_127950_D32222F0 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,61 +119,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prepare for the coming implementation by GCC and Clang of the __counted_by
-attribute. Flexible array members annotated with __counted_by can have
-their accesses bounds-checked at run-time checking via CONFIG_UBSAN_BOUNDS
-(for array indexing) and CONFIG_FORTIFY_SOURCE (for strcpy/memcpy-family
-functions).
 
-As found with Coccinelle[1], add __counted_by for struct mt6370_priv.
 
-[1] https://github.com/kees/kernel-tools/blob/trunk/coccinelle/examples/counted_by.cocci
+On 9/15/23 14:06, Kees Cook wrote:
+> Prepare for the coming implementation by GCC and Clang of the __counted_by
+> attribute. Flexible array members annotated with __counted_by can have
+> their accesses bounds-checked at run-time checking via CONFIG_UBSAN_BOUNDS
+> (for array indexing) and CONFIG_FORTIFY_SOURCE (for strcpy/memcpy-family
+> functions).
+> 
+> As found with Coccinelle[1], add __counted_by for struct mt76_rx_tid.
+> 
+> [1] https://github.com/kees/kernel-tools/blob/trunk/coccinelle/examples/counted_by.cocci
+> 
+> Cc: Felix Fietkau <nbd@nbd.name>
+> Cc: Lorenzo Bianconi <lorenzo@kernel.org>
+> Cc: Ryder Lee <ryder.lee@mediatek.com>
+> Cc: Shayne Chen <shayne.chen@mediatek.com>
+> Cc: Sean Wang <sean.wang@mediatek.com>
+> Cc: Kalle Valo <kvalo@kernel.org>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Cc: linux-wireless@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+> Signed-off-by: Kees Cook <keescook@chromium.org>
 
-Cc: Pavel Machek <pavel@ucw.cz>
-Cc: Lee Jones <lee@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Alice Chen <alice_chen@richtek.com>
-Cc: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-Cc: ChiYuan Huang <cy_huang@richtek.com>
-Cc: ChiaEn Wu <chiaen_wu@richtek.com>
-Cc: kernel test robot <lkp@intel.com>
-Cc: linux-leds@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Signed-off-by: Kees Cook <keescook@chromium.org>
----
- drivers/leds/flash/leds-mt6370-flash.c | 2 +-
- drivers/leds/rgb/leds-mt6370-rgb.c     | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Reviewed-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 
-diff --git a/drivers/leds/flash/leds-mt6370-flash.c b/drivers/leds/flash/leds-mt6370-flash.c
-index 931067c8a75f..912d9d622320 100644
---- a/drivers/leds/flash/leds-mt6370-flash.c
-+++ b/drivers/leds/flash/leds-mt6370-flash.c
-@@ -81,7 +81,7 @@ struct mt6370_priv {
- 	unsigned int fled_torch_used;
- 	unsigned int leds_active;
- 	unsigned int leds_count;
--	struct mt6370_led leds[];
-+	struct mt6370_led leds[] __counted_by(leds_count);
- };
- 
- static int mt6370_torch_brightness_set(struct led_classdev *lcdev, enum led_brightness level)
-diff --git a/drivers/leds/rgb/leds-mt6370-rgb.c b/drivers/leds/rgb/leds-mt6370-rgb.c
-index bb62431efe83..448d0da11848 100644
---- a/drivers/leds/rgb/leds-mt6370-rgb.c
-+++ b/drivers/leds/rgb/leds-mt6370-rgb.c
-@@ -153,7 +153,7 @@ struct mt6370_priv {
- 	const struct mt6370_pdata *pdata;
- 	unsigned int leds_count;
- 	unsigned int leds_active;
--	struct mt6370_led leds[];
-+	struct mt6370_led leds[] __counted_by(leds_count);
- };
- 
- static const struct reg_field common_reg_fields[F_MAX_FIELDS] = {
+Thanks
 -- 
-2.34.1
+Gustavo
 
+> ---
+>   drivers/net/wireless/mediatek/mt76/mt76.h | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+> index e8757865a3d0..03ef617b1527 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+> @@ -376,7 +376,7 @@ struct mt76_rx_tid {
+>   
+>   	u8 started:1, stopped:1, timer_pending:1;
+>   
+> -	struct sk_buff *reorder_buf[];
+> +	struct sk_buff *reorder_buf[] __counted_by(size);
+>   };
+>   
+>   #define MT_TX_CB_DMA_DONE		BIT(0)
 
