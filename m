@@ -4,69 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3130AEE644A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 09:02:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05B36EE6447
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 09:13:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=toF6qZTra/B5Z0kwFgelNB6BSL6z+IGw9D3BScS60/Y=; b=uBF0av62wxbfwsBne9lqp/ECMn
-	icRuquoQA+7DrqVulW6nzMxuHVudkCIJp5refdPtts/5nRncZIZOH+R4AJKaRq/RrZbZHxUii9r1q
-	ueYxc+ulxZU/2z38kfnkkm0puydfXr3e34j28H5omk1HUOc2g7mWsQD9pxchgy1mRM1vXPJl9Ff0t
-	nqYwFEVgpkxsj5f7AAEIlJsXnZXn8d89MaPygTzOWZUsSeG+8BNquPMnoA04jv2DbIBhvcThzUB/Z
-	D6RGZOQ2/0duZqdC9rg6UdSb7l1aqpd/E6ydQW2I5QsKcWXdg9Mrg3cIhtsXgnPbXBOu8smRzpuDR
-	6azzUgqw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Z67768QYgOzLMHQXfSOQOgBwrjzA8arAbTjrhXUChLU=; b=qABQS8jhb9Gu1yzcYPibldJVOQ
+	lEY1PkJgzpr8vKJrfnAIjzJT05+QxD8kIYDZfrLa2lKwfGKhIdGR2zuUacGlpimUVb7fuYCLyrpIg
+	IuYPT2s4AadwZxAmjl82x7ATW9XwYH2/vfUaZzeVh5gW14G58haPr7dIubSaoPnuIpzUpSAnks438
+	Jlgs6y+HNmPmRDzM+6pZ17KYj3bVZHYD/4G8MvIUG0ibiaOprFsKnOEo32KjnL37klU+siF+WrmnH
+	fT3erIVahpSMmttOMep2SDqLGTEqvLlgwFXIkYS7bGi7ef8sS7sEMumUV6bvKXThU3gRPsYWPODFg
+	dEKpXpQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qh4id-00ADNV-12;
-	Fri, 15 Sep 2023 09:02:31 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qh4tX-00AEZm-3A;
+	Fri, 15 Sep 2023 09:13:47 +0000
+Received: from mgamail.intel.com ([192.55.52.120])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qh4iZ-00ADMu-1c;
-	Fri, 15 Sep 2023 09:02:28 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8301E66072BB;
-	Fri, 15 Sep 2023 10:02:25 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1694768546;
-	bh=SETywAy77nay+2dj9q5+6oCiUOOHaWMn0eTNWs9LtXw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=L9gnLm0qbJiGA9oC9AGXDP1uhEorCm8fVLop7GIWlAHmBPZzB0TS07CvAkdJS1YEA
-	 QjBTqSAnmfYRfweLfY8g8dveRtX5VuHl7c3MLhwBDX5cofBS+uJLJG5b02ftcLVNio
-	 322MfICu9U/deVTlVdJJEIfGFOAA3iQsxo9xkLpmiQrzAls2rq2cz7NmmeSpJ0fHTb
-	 0Vv9Pzm9RmW6Wj6dk9LOOC5CluO3xOY5YfNmRGx7A9g0OmO+lWpKNxSf6ASBl4w8WV
-	 VvxfdWS+bgaCipcUUxqdua2YgEsmUKRFU5IaopqmecFya7JF1/O5t+k65hg4Cd9Quf
-	 uRzdbQjcb4IHQ==
-Message-ID: <9b0dde15-12e3-713e-a2f9-9b2534691476@collabora.com>
-Date: Fri, 15 Sep 2023 11:02:22 +0200
+	id 1qh4tT-00AEYX-0n;
+	Fri, 15 Sep 2023 09:13:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1694769223; x=1726305223;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=mry5V7nr5xa9zDtsfeoNxabJToApg0Wq8K46aPBD860=;
+  b=K2aHuLgvaqRj0lpduW9Mx6B9mAX1LEv2kVgWLDQCAN960LP9xJ2hv0H9
+   JJmGx10iUoBgi1WEcu/kx1r9Qq8nJEuxqPPbws/qhcksmfKagtNpPYU2w
+   q3LpPiPg75MbKJyzq158qscu2st3ZR2bluMdu/C0sJTPNRvNoT7vc32I8
+   ihL4wSOKdmyucrcxFa3Krf0jLi7jzj/rlW4J2y7TD83jgUTyJZc4BGabm
+   hs9X8OIwmpRSOuPyQSmNWZwGwVV7Szs0oda+DBhVFDd+qot6HFS8BdTi1
+   FIrvRhXuQe2zuyt5CxyEsiOb6BduYzYlV7XkRAkOjLx522ChgzxTuXdHz
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10833"; a="378120581"
+X-IronPort-AV: E=Sophos;i="6.02,148,1688454000"; 
+   d="scan'208";a="378120581"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Sep 2023 02:13:33 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10833"; a="918589081"
+X-IronPort-AV: E=Sophos;i="6.02,148,1688454000"; 
+   d="scan'208";a="918589081"
+Received: from srdoo-mobl1.ger.corp.intel.com ([10.252.38.99])
+  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Sep 2023 02:13:03 -0700
+Date: Fri, 15 Sep 2023 12:12:58 +0300 (EEST)
+From: =?ISO-8859-15?Q?Ilpo_J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>
+To: John Ogness <john.ogness@linutronix.de>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, linux-serial <linux-serial@vger.kernel.org>, Petr Mladek <pmladek@suse.com>, Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>, Tobias Klauser <tklauser@distanz.ch>, Thierry Reding <treding@nvidia.com>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, Al Cooper <alcooperx@gmail.com>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Tony Lindgren <tony@atomide.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, =?ISO-8859-15?Q?Ilpo_J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>, Florian Fainelli <f.fainelli@gmail.com>, Andrew Davis <afd@ti.com>, Matthew Howell <matthew.howell@sealevel.com>, =?ISO-8859-15?Q?Uwe_Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>, Johan Hovold <johan@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, linux-mediatek@lists.infradead.org, Lukas Wunner <lukas@wunner.de>, Matthias Schiffer <matthias.schiffer@ew.tq-group.com>, Arnd Bergmann <arnd@arndb.de>, Kumaravel Thiagarajan <kumaravel.thiagarajan@microchip.com>, Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>, Russell King <linux@armlinux.org.uk>, "Maciej W. Rozycki" <macro@orcam.me.uk>, Hongyu Xie <xiehongyu1@kylinos.cn>, Jiamei Xie <jiamei.xie@arm.com>, Rob Herring <robh@kernel.org>, delisun <delisun@pateo.com.cn>, Lino Sanfilippo <l.sanfilippo@kunbus.com>, Yangtao Li <frank.li@vivo.com>, Vineet Gupta <vgupta@kernel.org>, linux-snps-arc@lists.infradead.org, Richard Genoud <richard.genoud@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Arend van Spriel <arend.vanspriel@broadcom.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Baruch Siach <baruch@tkos.co.il>, Sherry Sun <sherry.sun@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Sergey Organov <sorganov@gmail.com>, Tom Rix <trix@redhat.com>, Marek Vasut <marex@denx.de>, Karol Gugala <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, Gabriel Somlo <gsomlo@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Dmitry Rokosov <ddrokosov@sberdevices.ru>, Lucas Tanure <tanure@linux.com>, linux-amlogic@lists.infradead.org, Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, linux-arm-msm@vger.kernel.org, =?ISO-8859-15?Q?Pali_Roh=E1r?= <pali@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, =?ISO-8859-15?Q?Andreas_F=E4rber?= <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, linux-actions@lists.infradead.org, Xiongfeng Wang <wangxiongfeng2@huawei.com>, Yuan Can <yuancan@huawei.com>, Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, linuxppc-dev@lists.ozlabs.org, linux-unisoc@lists.infradead.org, Kevin Cernekee <cernekee@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, linux-samsung-soc@vger.kernel.org, Lukas Bulwahn <lukas.bulwahn@gmail.com>, Lech Perczak <lech.perczak@camlingroup.com>, Hugo Villeneuve <hvilleneuve@dimonoff.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Isaac True <isaac.true@canonical.com>, Laxman Dewangan <ldewangan@nvidia.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org, Biju Das <biju.das.jz@bp.renesas.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>, Nick Hu <nick.hu@sifive.com>, Ruan Jinjie <ruanjinjie@huawei.com>, Samuel Holland <samuel.holland@sifive.com>, linux-riscv@lists.infradead.org, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Patrice Chotard <patrice.chotard@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Valentin Caron <valentin.caron@foss.st.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, linux-stm32@st-md-mailman.stormreply.com, "David S. Miller" <davem@davemloft.net>, sparclinux@vger.kernel.org, Hammer Hsieh <hammerh0314@gmail.com>, Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>, Mukesh Ojha <quic_mojha@quicinc.com>, =?ISO-8859-15?Q?Jonathan_Neusch=E4fer?= <j.neuschaefer@gmx.net>, Michal Simek <michal.simek@amd.com>
+Subject: Re: [PATCH tty v1 00/74] serial: wrappers for uart port lock
+In-Reply-To: <20230914183831.587273-1-john.ogness@linutronix.de>
+Message-ID: <1446dc6-5ab0-629-45c8-3b7d8c76367d@linux.intel.com>
+References: <20230914183831.587273-1-john.ogness@linutronix.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH] drm/mediatek: dsi: Fix EOTp generation
-Content-Language: en-US
-To: Michael Walle <mwalle@kernel.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- Jitao Shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20230915075756.263591-1-mwalle@kernel.org>
- <0a184b35-133b-483c-d475-01120fbdc2ca@collabora.com>
- <eb1f4f78be9b2da3ae2d54ec9417f2f7@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <eb1f4f78be9b2da3ae2d54ec9417f2f7@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230915_020227_671765_5192B808 
-X-CRM114-Status: GOOD (  11.18  )
+X-CRM114-CacheID: sfid-20230915_021343_330722_A1FC01C9 
+X-CRM114-Status: GOOD (  27.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,37 +78,214 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/09/23 11:01, Michael Walle ha scritto:
-> Hi,
-> 
-> Am 2023-09-15 10:58, schrieb AngeloGioacchino Del Regno:
->> Il 15/09/23 09:57, Michael Walle ha scritto:
->>> The commit c87d1c4b5b9a ("drm/mediatek: dsi: Use symbolized register
->>> definition") inverted the logic of the control bit. Maybe it was because
->>> of the bad naming which was fixed in commit 0f3b68b66a6d ("drm/dsi: Add
->>> _NO_ to MIPI_DSI_* flags disabling features"). In any case, the logic
->>> wrong and there will be no EOTp on the DSI link by default. Fix it.
->>>
->>> Fixes: c87d1c4b5b9a ("drm/mediatek: dsi: Use symbolized register definition")
->>> Signed-off-by: Michael Walle <mwalle@kernel.org>
->>
->> Hello Michael,
->> your commit is missing a small piece! :-)
->>
->> Besides, I've already sent a fix for what you're trying to do here:
->> https://lore.kernel.org/linux-arm-kernel/07c93d61-c5fd-f074-abb2-73fdaa81fd65@collabora.com/T/
-> 
-> Ahh thanks, didn't noticed this. If not already applied, I'll send
-> a Tested-by: later.
-> 
+On Thu, 14 Sep 2023, John Ogness wrote:
 
-No worries, it happens.
-
-Cheers,
-Angelo
-
-> Please disregard this patch then.
+> When a serial port is used for kernel console output, then all
+> modifications to the UART registers which are done from other contexts,
+> e.g. getty, termios, are interference points for the kernel console.
 > 
-> -michael
+> So far this has been ignored and the printk output is based on the
+> principle of hope. The rework of the console infrastructure which aims to
+> support threaded and atomic consoles, requires to mark sections which
+> modify the UART registers as unsafe. This allows the atomic write function
+> to make informed decisions and eventually to restore operational state. It
+> also allows to prevent the regular UART code from modifying UART registers
+> while printk output is in progress.
 
+Hi John,
+
+Would this also be useful to enable printing to console while under port's 
+lock (by postponing the output until the lock is released)?
+
+E.g., 8250_dw.c has had this commented out since the dawn on time:
+        /*
+         * FIXME: this deadlocks if port->lock is already held
+         * dev_err(p->dev, "Couldn't set LCR to %d\n", value);
+         */
+
+-- 
+ i.
+
+
+> All modifications of UART registers are guarded by the UART port lock,
+> which provides an obvious synchronization point with the console
+> infrastructure.
+> 
+> Provide and use wrapper functions for spin_[un]lock*(port->lock)
+> invocations so that the console mechanics can be applied later on at a
+> single place and does not require to copy the same logic all over the
+> drivers.
+> 
+> Patch 1 adds the wrapper functions.
+> 
+> Patches 2-74 switch all uart port locking call sites to use the new
+> wrappers. These patches were automatically generated using coccinelle.
+> The 2 used coccinelle scripts are included below and executed as
+> follows:
+> 
+> $ spatch --sp-file uartlock-1.cocci $FILE
+> $ spatch --sp-file uartlock-2.cocci --recursive-includes $FILE
+> 
+> This series brings no functional change.
+> 
+> Patches 2-74 contain identical commit message bodies. Feel free to
+> fold them into a single commit if that seems more reasonable.
+> 
+> Thomas Gleixner (74):
+>   serial: core: Provide port lock wrappers
+>   serial: core: Use lock wrappers
+>   serial: 21285: Use port lock wrappers
+>   serial: 8250_aspeed_vuart: Use port lock wrappers
+>   serial: 8250_bcm7271: Use port lock wrappers
+>   serial: 8250: Use port lock wrappers
+>   serial: 8250_dma: Use port lock wrappers
+>   serial: 8250_dw: Use port lock wrappers
+>   serial: 8250_exar: Use port lock wrappers
+>   serial: 8250_fsl: Use port lock wrappers
+>   serial: 8250_mtk: Use port lock wrappers
+>   serial: 8250_omap: Use port lock wrappers
+>   serial: 8250_pci1xxxx: Use port lock wrappers
+>   serial: altera_jtaguart: Use port lock wrappers
+>   serial: altera_uart: Use port lock wrappers
+>   serial: amba-pl010: Use port lock wrappers
+>   serial: amba-pl011: Use port lock wrappers
+>   serial: apb: Use port lock wrappers
+>   serial: ar933x: Use port lock wrappers
+>   serial: arc_uart: Use port lock wrappers
+>   serial: atmel: Use port lock wrappers
+>   serial: bcm63xx-uart: Use port lock wrappers
+>   serial: cpm_uart: Use port lock wrappers
+>   serial: digicolor: Use port lock wrappers
+>   serial: dz: Use port lock wrappers
+>   serial: linflexuart: Use port lock wrappers
+>   serial: fsl_lpuart: Use port lock wrappers
+>   serial: icom: Use port lock wrappers
+>   serial: imx: Use port lock wrappers
+>   serial: ip22zilog: Use port lock wrappers
+>   serial: jsm: Use port lock wrappers
+>   serial: liteuart: Use port lock wrappers
+>   serial: lpc32xx_hs: Use port lock wrappers
+>   serial: ma35d1: Use port lock wrappers
+>   serial: mcf: Use port lock wrappers
+>   serial: men_z135_uart: Use port lock wrappers
+>   serial: meson: Use port lock wrappers
+>   serial: milbeaut_usio: Use port lock wrappers
+>   serial: mpc52xx: Use port lock wrappers
+>   serial: mps2-uart: Use port lock wrappers
+>   serial: msm: Use port lock wrappers
+>   serial: mvebu-uart: Use port lock wrappers
+>   serial: omap: Use port lock wrappers
+>   serial: owl: Use port lock wrappers
+>   serial: pch: Use port lock wrappers
+>   serial: pic32: Use port lock wrappers
+>   serial: pmac_zilog: Use port lock wrappers
+>   serial: pxa: Use port lock wrappers
+>   serial: qcom-geni: Use port lock wrappers
+>   serial: rda: Use port lock wrappers
+>   serial: rp2: Use port lock wrappers
+>   serial: sa1100: Use port lock wrappers
+>   serial: samsung_tty: Use port lock wrappers
+>   serial: sb1250-duart: Use port lock wrappers
+>   serial: sc16is7xx: Use port lock wrappers
+>   serial: tegra: Use port lock wrappers
+>   serial: core: Use port lock wrappers
+>   serial: mctrl_gpio: Use port lock wrappers
+>   serial: txx9: Use port lock wrappers
+>   serial: sh-sci: Use port lock wrappers
+>   serial: sifive: Use port lock wrappers
+>   serial: sprd: Use port lock wrappers
+>   serial: st-asc: Use port lock wrappers
+>   serial: stm32: Use port lock wrappers
+>   serial: sunhv: Use port lock wrappers
+>   serial: sunplus-uart: Use port lock wrappers
+>   serial: sunsab: Use port lock wrappers
+>   serial: sunsu: Use port lock wrappers
+>   serial: sunzilog: Use port lock wrappers
+>   serial: timbuart: Use port lock wrappers
+>   serial: uartlite: Use port lock wrappers
+>   serial: ucc_uart: Use port lock wrappers
+>   serial: vt8500: Use port lock wrappers
+>   serial: xilinx_uartps: Use port lock wrappers
+> 
+>  drivers/tty/serial/21285.c                  |   8 +-
+>  drivers/tty/serial/8250/8250_aspeed_vuart.c |   6 +-
+>  drivers/tty/serial/8250/8250_bcm7271.c      |  28 +++---
+>  drivers/tty/serial/8250/8250_core.c         |  12 +--
+>  drivers/tty/serial/8250/8250_dma.c          |   8 +-
+>  drivers/tty/serial/8250/8250_dw.c           |   8 +-
+>  drivers/tty/serial/8250/8250_exar.c         |   4 +-
+>  drivers/tty/serial/8250/8250_fsl.c          |   6 +-
+>  drivers/tty/serial/8250/8250_mtk.c          |   8 +-
+>  drivers/tty/serial/8250/8250_omap.c         |  52 +++++-----
+>  drivers/tty/serial/8250/8250_pci1xxxx.c     |   8 +-
+>  drivers/tty/serial/8250/8250_port.c         | 100 ++++++++++----------
+>  drivers/tty/serial/altera_jtaguart.c        |  28 +++---
+>  drivers/tty/serial/altera_uart.c            |  20 ++--
+>  drivers/tty/serial/amba-pl010.c             |  20 ++--
+>  drivers/tty/serial/amba-pl011.c             |  72 +++++++-------
+>  drivers/tty/serial/apbuart.c                |   8 +-
+>  drivers/tty/serial/ar933x_uart.c            |  26 ++---
+>  drivers/tty/serial/arc_uart.c               |  16 ++--
+>  drivers/tty/serial/atmel_serial.c           |  24 ++---
+>  drivers/tty/serial/bcm63xx_uart.c           |  22 ++---
+>  drivers/tty/serial/cpm_uart.c               |   8 +-
+>  drivers/tty/serial/digicolor-usart.c        |  18 ++--
+>  drivers/tty/serial/dz.c                     |  32 +++----
+>  drivers/tty/serial/fsl_linflexuart.c        |  26 ++---
+>  drivers/tty/serial/fsl_lpuart.c             |  88 ++++++++---------
+>  drivers/tty/serial/icom.c                   |  26 ++---
+>  drivers/tty/serial/imx.c                    |  84 ++++++++--------
+>  drivers/tty/serial/ip22zilog.c              |  36 +++----
+>  drivers/tty/serial/jsm/jsm_neo.c            |   4 +-
+>  drivers/tty/serial/jsm/jsm_tty.c            |  16 ++--
+>  drivers/tty/serial/liteuart.c               |  20 ++--
+>  drivers/tty/serial/lpc32xx_hs.c             |  26 ++---
+>  drivers/tty/serial/ma35d1_serial.c          |  22 ++---
+>  drivers/tty/serial/mcf.c                    |  20 ++--
+>  drivers/tty/serial/men_z135_uart.c          |   8 +-
+>  drivers/tty/serial/meson_uart.c             |  30 +++---
+>  drivers/tty/serial/milbeaut_usio.c          |  16 ++--
+>  drivers/tty/serial/mpc52xx_uart.c           |  12 +--
+>  drivers/tty/serial/mps2-uart.c              |  16 ++--
+>  drivers/tty/serial/msm_serial.c             |  38 ++++----
+>  drivers/tty/serial/mvebu-uart.c             |  18 ++--
+>  drivers/tty/serial/omap-serial.c            |  38 ++++----
+>  drivers/tty/serial/owl-uart.c               |  26 ++---
+>  drivers/tty/serial/pch_uart.c               |  10 +-
+>  drivers/tty/serial/pic32_uart.c             |  20 ++--
+>  drivers/tty/serial/pmac_zilog.c             |  52 +++++-----
+>  drivers/tty/serial/pxa.c                    |  30 +++---
+>  drivers/tty/serial/qcom_geni_serial.c       |   8 +-
+>  drivers/tty/serial/rda-uart.c               |  34 +++----
+>  drivers/tty/serial/rp2.c                    |  20 ++--
+>  drivers/tty/serial/sa1100.c                 |  20 ++--
+>  drivers/tty/serial/samsung_tty.c            |  50 +++++-----
+>  drivers/tty/serial/sb1250-duart.c           |  12 +--
+>  drivers/tty/serial/sc16is7xx.c              |  40 ++++----
+>  drivers/tty/serial/serial-tegra.c           |  32 +++----
+>  drivers/tty/serial/serial_core.c            |  88 ++++++++---------
+>  drivers/tty/serial/serial_mctrl_gpio.c      |   4 +-
+>  drivers/tty/serial/serial_port.c            |   4 +-
+>  drivers/tty/serial/serial_txx9.c            |  26 ++---
+>  drivers/tty/serial/sh-sci.c                 |  68 ++++++-------
+>  drivers/tty/serial/sifive.c                 |  16 ++--
+>  drivers/tty/serial/sprd_serial.c            |  30 +++---
+>  drivers/tty/serial/st-asc.c                 |  18 ++--
+>  drivers/tty/serial/stm32-usart.c            |  38 ++++----
+>  drivers/tty/serial/sunhv.c                  |  28 +++---
+>  drivers/tty/serial/sunplus-uart.c           |  26 ++---
+>  drivers/tty/serial/sunsab.c                 |  34 +++----
+>  drivers/tty/serial/sunsu.c                  |  46 ++++-----
+>  drivers/tty/serial/sunzilog.c               |  42 ++++----
+>  drivers/tty/serial/timbuart.c               |   8 +-
+>  drivers/tty/serial/uartlite.c               |  18 ++--
+>  drivers/tty/serial/ucc_uart.c               |   4 +-
+>  drivers/tty/serial/vt8500_serial.c          |   8 +-
+>  drivers/tty/serial/xilinx_uartps.c          |  56 +++++------
+>  include/linux/serial_core.h                 |  91 ++++++++++++++++--
+>  76 files changed, 1086 insertions(+), 1007 deletions(-)
+> 
+> 
+> base-commit: 0bb80ecc33a8fb5a682236443c1e740d5c917d1d
+> 
 
