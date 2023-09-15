@@ -4,81 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B92DEDE98B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 01:51:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B9D3EEAA42
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 03:06:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qqLoBm8H6ZiMRz1kerNsf8O/I1x2KB0Fau5qTkJBuRw=; b=jR5B6fc6/bc+DvITyjfPX4xM2W
-	O/SXh85YRrL5k+sj/svQ4X5ona8D3BALbNn2NNuKj4+moUTuO+ZoIlEX1o5uaUIq+tU+jt6hi89hv
-	Oz//WW75VbnCg2iSYV2/TkVH6SGPdZb/0SoESul1cZsDQ1cVs7VuN0XCxGoFsZxGFtsZ3rXShXFxa
-	v6AHmbZ00XJkvEcDfv5lEYfenxvrnshgqcyd0UOZK8Qi55lUlWwUf9J91Pozb8jnsgqoR77LLPMS7
-	c1eMQoradK59xdWK7caMPDL2bL036/xTOKpbdlE5ozzZI2WkJK97so8y8H+Ip9W3Pnasf3lZgYwO1
-	8bRh0uYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RK7ek7Jr01ODZjowTcUOfcKbHQxnH1wn+srDfh3q4PM=; b=TyEolAx7vKrKstWxIgwbV/BS7J
+	KRNzFiTzJYpYD2CdIFN1s1f/Z5e+oApnWi1vPSyTw7e5IwD4fYdUxpREI9HD4FcMVM6rtNJd4s/Wi
+	vybA4cN91FCnu01CdRRPxLC9r2XOIUu4t2OdKn82erBDwhxFhYcSadQU/w2xAtyfRAlMvDdCbhjaw
+	cqzT3SCZdnMNEjbxqn+X/UubpX9ABaWjAQS+4SZyBQiMIskatwrWdz99Wl5CgQ1XZU4eahfrfhSVX
+	iuJJo5+qXl8+jPktLJ80bPsf7kytBdjtTn3lMH4qwAIxcMq9Jtp169wL4SoCi4k4YbrGGRPQp9AwD
+	Iike2Q8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgxzs-009ZY5-1C;
-	Fri, 15 Sep 2023 01:51:52 +0000
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+	id 1qgzAQ-009eYs-0L;
+	Fri, 15 Sep 2023 03:06:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qgxzp-009ZXG-0x;
-	Fri, 15 Sep 2023 01:51:50 +0000
-Received: by mail-pj1-x1031.google.com with SMTP id 98e67ed59e1d1-274972a4cb6so272541a91.1;
-        Thu, 14 Sep 2023 18:51:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1694742708; x=1695347508; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qqLoBm8H6ZiMRz1kerNsf8O/I1x2KB0Fau5qTkJBuRw=;
-        b=b74fL1njdomYMeTK/DEKwM/2LZ2Qp22i3kppdoMoejwzKTY4egoLKkZ+YAmgTmG/Xl
-         OSb2E7NMkKg1CXWWGobSOigEK3D24vW+Tqz+M3NuiubHTt39hHW6d3K1PLiu7pZEcLPz
-         TGZXOhAvuYGGGaQ8qHaAYamRLRVPzwH/DE/+wLMb7DL3fbtS6S2pl7JUj7cSJMR+xVBp
-         BfGnNCRGa83oJwIJbVhYf0F9Ax9ec/xziRsG81QsmI/NDE0H1OAx83mZ0rQOpyXA7Hp+
-         bF1Srhci5TqJN0gZWqyRcjfsxZY4X4Z5t/4qxVKPJqxyI9K/cs+h7j/LnwhMeXpQFBIp
-         Z9Qg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694742708; x=1695347508;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=qqLoBm8H6ZiMRz1kerNsf8O/I1x2KB0Fau5qTkJBuRw=;
-        b=RQJVv+Y5BAzQdDATdbqufP9v8wP4r2o57wvC1uZM0BlS7giTU7hCdk4qMTAuDpVYS8
-         ZyBoKKHJ3ynJm31gx67UYH+5aU2YfiwTFRFEFSrhP2vvFBuJjnFMih7k9dSdj9vK7C9T
-         VPc0LqgltdP/OCWPYrxtHQOqau5G6ZXEWnWnhwNZ3D/uII191BAY8TwvGBBtV1jdeRNe
-         HF5dIL8bTRVkToJRUUoca2H3pLobb/g6YJjRAmPJ57YMVre0M5bGnAy700zqzmaqs1xG
-         4Q0/420aL4K8CYDY2KtJS3zWi5ZRBThRRnmGKvZD/1y8nfcSQdnML8bZKVkqbtd3i+Ym
-         SgFg==
-X-Gm-Message-State: AOJu0YzYXgEL6vVKN36eAAlxudNS1d2AkvGeEEV+3v+NAHm/6dl0YLj6
-	EbGI6tzNpgn5Nuv7DAG3u4EusDoJvHQ/952hEmM=
-X-Google-Smtp-Source: AGHT+IHypl50ozXbVNpyt6MCHdaoxCaRqBl2NAiMm+S4Y/6YOO7S8XoNh0lYeLcNgC9idrJZOsUI38MTb7wkV8Iedjg=
-X-Received: by 2002:a17:90b:a49:b0:268:60d9:92cc with SMTP id
- gw9-20020a17090b0a4900b0026860d992ccmr210845pjb.43.1694742708242; Thu, 14 Sep
- 2023 18:51:48 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230914080833.50026-1-haibo.li@mediatek.com> <20230914112915.81f55863c0450195b4ed604a@linux-foundation.org>
- <CA+fCnZemM-jJxX+=2W162NJkUC6aZXNJiVLa-=ia=L3CmE8ZTQ@mail.gmail.com> <CAG48ez0aenPmr=d35UGa4_BiCwYU1-JHhD_2ygThvjOEXEM7bQ@mail.gmail.com>
-In-Reply-To: <CAG48ez0aenPmr=d35UGa4_BiCwYU1-JHhD_2ygThvjOEXEM7bQ@mail.gmail.com>
-From: Andrey Konovalov <andreyknvl@gmail.com>
-Date: Fri, 15 Sep 2023 03:51:37 +0200
-Message-ID: <CA+fCnZePgv=V65t4FtJvcyKvhM6yA3amTbPnwc5Ft5YdzpeeRg@mail.gmail.com>
+	id 1qgzAM-009eXX-14;
+	Fri, 15 Sep 2023 03:06:47 +0000
+X-UUID: e1f2927c537411ee9b7791016c24628a-20230914
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RK7ek7Jr01ODZjowTcUOfcKbHQxnH1wn+srDfh3q4PM=;
+	b=LGetPjaMUK0joxLxCjbDO9u8IWPp7eotdlQVUpeS6d7kStozRklNHH8QXwvWv6+gcKMvfal1nv/F5nAi1Z1SYdeHN4NcIgcFgNZ5yis6es304PvYb0LAYp/2qDQgtle7KnTuFgbNdAraSG+iXvlE9qe4VDm/FjCdoxw8Z8y1kwg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:ad008adb-2cb6-44bd-a45a-f96cf5ae7b84,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:0a91b8ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:817|102,TC:nil,Content:0|-5,EDM:-3,I
+	P:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 1,FCT|NGT
+X-CID-BAS: 1,FCT|NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: e1f2927c537411ee9b7791016c24628a-20230914
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <haibo.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1469157894; Thu, 14 Sep 2023 20:06:36 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.194) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 15 Sep 2023 10:46:00 +0800
+Received: from mszsdtlt101.gcn.mediatek.inc (10.16.4.141) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 15 Sep 2023 10:46:00 +0800
+From: Haibo Li <haibo.li@mediatek.com>
+To: <andreyknvl@gmail.com>
+CC: <akpm@linux-foundation.org>, <angelogioacchino.delregno@collabora.com>,
+	<dvyukov@google.com>, <glider@google.com>, <haibo.li@mediatek.com>,
+	<jannh@google.com>, <kasan-dev@googlegroups.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-mm@kvack.org>,
+	<mark.rutland@arm.com>, <matthias.bgg@gmail.com>, <ryabinin.a.a@gmail.com>,
+	<vincenzo.frascino@arm.com>, <xiaoming.yu@mediatek.com>
 Subject: Re: [PATCH] kasan:fix access invalid shadow address when input is illegal
-To: Jann Horn <jannh@google.com>, Haibo Li <haibo.li@mediatek.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>, linux-kernel@vger.kernel.org, 
-	xiaoming.yu@mediatek.com, Andrey Ryabinin <ryabinin.a.a@gmail.com>, 
-	Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, 
-	Vincenzo Frascino <vincenzo.frascino@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kasan-dev@googlegroups.com, 
-	linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>
-Content-Type: text/plain; charset="UTF-8"
+Date: Fri, 15 Sep 2023 10:45:59 +0800
+Message-ID: <20230915024559.32806-1-haibo.li@mediatek.com>
+X-Mailer: git-send-email 2.34.3
+In-Reply-To: <CA+fCnZePgv=V65t4FtJvcyKvhM6yA3amTbPnwc5Ft5YdzpeeRg@mail.gmail.com>
+References: <CA+fCnZePgv=V65t4FtJvcyKvhM6yA3amTbPnwc5Ft5YdzpeeRg@mail.gmail.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--26.184700-8.000000
+X-TMASE-MatchedRID: +f/wAVSGjug4HKI/yaqRmya1MaKuob8PfjJOgArMOCaCsBeCv8CM/aaZ
+	f1+j//eOkOti/7QqGXUh5AyXWmAqpmu2g5s6p8lPW7gz/Gbgpl6hi9MC6OBOwruqk4cq52pzvb4
+	+3z1qe65wj5BBW++UfCbtuknoGANVmGpYaWdk09LhqJ6oLOc8QW3eqxoVjgMEzsQ8iRVyD44DsB
+	KNVu8yHSHQK8Uc9fmXaqMgKdVUqQ9sGQsY/Fc7u6XD9CBSVyH8WPJn4UmMuVLJYIv7y0tu9u69j
+	M3AtKAfmapKR6Enamd1VhrfJVJ6xDfVJKfK+bRO2x93SnoxhVeeimGtNywjtslk/SMg0CpQo8WM
+	kQWv6iVkvICuNJteaI2j49Ftap9EkGUtrowrXLg=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--26.184700-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 31D8B882395646096EE4B3E748433B78DBB106D4F0ADFA8A05354A6A0A2C39E52000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_185149_340269_56B3E5C1 
-X-CRM114-Status: GOOD (  21.13  )
+X-CRM114-CacheID: sfid-20230914_200646_384261_0670400C 
+X-CRM114-Status: GOOD (  24.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,51 +102,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 14, 2023 at 10:41=E2=80=AFPM Jann Horn <jannh@google.com> wrote=
-:
->
-> > Accessing unmapped memory with KASAN always led to a crash when
-> > checking shadow memory. This was reported/discussed before. To improve
-> > crash reporting for this case, Jann added kasan_non_canonical_hook and
-> > Mark integrated it into arm64. But AFAIU, for some reason, it stopped
-> > working.
-> >
-> > Instead of this patch, we need to figure out why
-> > kasan_non_canonical_hook stopped working and fix it.
-> >
-> > This approach taken by this patch won't work for shadow checks added
-> > by compiler instrumentation. It only covers explicitly checked
-> > accesses, such as via memcpy, etc.
->
-> FWIW, AFAICS kasan_non_canonical_hook() currently only does anything
-> under CONFIG_KASAN_INLINE;
-
-Ah, right. I was thinking about the inline mode, but the patch refers
-to the issue with the outline mode.
-
-However, I just checked kasan_non_canonical_hook for SW_TAGS with the
-inline mode: it does not work when accessing 0x42ffffb80aaaaaaa, the
-addr < KASAN_SHADOW_OFFSET check fails. It appears there's something
-unusual about how instrumentation calculates the shadow address. I
-didn't investigate further yet.
-
-> I think the idea when I added that was that
-> it assumes that when KASAN checks an access in out-of-line
-> instrumentation or a slowpath, it will do the required checks to avoid
-> this kind of fault?
-
-Ah, no, KASAN doesn't do it.
-
-However, I suppose we could add what the original patch proposes for
-the outline mode. For the inline mode, it seems to be pointless, as
-most access checks happen though the compiler inserted code anyway.
-
-I also wonder how much slowdown this patch will introduce.
-
-Haibo, could you check how much slower the kernel becomes with your
-patch? If possible, with all GENERIC/SW_TAGS and INLINE/OUTLINE
-combinations.
-
-If the slowdown is large, we can just make kasan_non_canonical_hook
-work for both modes (and fix it for SW_TAGS).
+> On Thu, Sep 14, 2023 at 10:41=E2=80=AFPM Jann Horn <jannh@google.com> wro=
+te:=0D
+> >=0D
+> > > Accessing unmapped memory with KASAN always led to a crash when=0D
+> > > checking shadow memory. This was reported/discussed before. To improv=
+e=0D
+> > > crash reporting for this case, Jann added kasan_non_canonical_hook an=
+d=0D
+> > > Mark integrated it into arm64. But AFAIU, for some reason, it stopped=
+=0D
+> > > working.=0D
+> > >=0D
+> > > Instead of this patch, we need to figure out why=0D
+> > > kasan_non_canonical_hook stopped working and fix it.=0D
+> > >=0D
+> > > This approach taken by this patch won't work for shadow checks added=
+=0D
+> > > by compiler instrumentation. It only covers explicitly checked=0D
+> > > accesses, such as via memcpy, etc.=0D
+> >=0D
+> > FWIW, AFAICS kasan_non_canonical_hook() currently only does anything=0D
+> > under CONFIG_KASAN_INLINE;=0D
+> =0D
+> Ah, right. I was thinking about the inline mode, but the patch refers=0D
+> to the issue with the outline mode.=0D
+> =0D
+> However, I just checked kasan_non_canonical_hook for SW_TAGS with the=0D
+> inline mode: it does not work when accessing 0x42ffffb80aaaaaaa, the=0D
+> addr < KASAN_SHADOW_OFFSET check fails. It appears there's something=0D
+> unusual about how instrumentation calculates the shadow address. I=0D
+> didn't investigate further yet.=0D
+> =0D
+> > I think the idea when I added that was that=0D
+> > it assumes that when KASAN checks an access in out-of-line=0D
+> > instrumentation or a slowpath, it will do the required checks to avoid=
+=0D
+> > this kind of fault?=0D
+> =0D
+> Ah, no, KASAN doesn't do it.=0D
+> =0D
+> However, I suppose we could add what the original patch proposes for=0D
+> the outline mode. For the inline mode, it seems to be pointless, as=0D
+> most access checks happen though the compiler inserted code anyway.=0D
+> =0D
+> I also wonder how much slowdown this patch will introduce.=0D
+> =0D
+> Haibo, could you check how much slower the kernel becomes with your=0D
+> patch? If possible, with all GENERIC/SW_TAGS and INLINE/OUTLINE=0D
+> combinations.=0D
+> =0D
+> If the slowdown is large, we can just make kasan_non_canonical_hook=0D
+> work for both modes (and fix it for SW_TAGS).=0D
+=0D
+Thanks.=0D
+The patch checks each shadow address,so it introduces extra overhead.=0D
+Now kasan_non_canonical_hook only works for CONFIG_KASAN_INLINE.=0D
+And CONFIG_KASAN_OUTLINE is set in my case.=0D
+Is it possible to make kasan_non_canonical_hook works for both =0D
+INLINE and OUTLINE by simply remove the "#ifdef CONFIG_KASAN_INLINE"?=0D
+Since kasan_non_canonical_hook is only used after kernel fault,it =0D
+is better if there is no limit.=0D
+=0D
 
