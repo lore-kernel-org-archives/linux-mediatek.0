@@ -4,90 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BC25EED600
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 15:09:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2730BEED613
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 15:26:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VYR6ep7rDCBduLCC6ALZ438i46Wvlrmilzt/WzHCta4=; b=IJtbY/aT/YZx3u+/ud+Dm0SctS
-	G/AD5zyrTa5DPIWUTEahONvtg+u1VoE+IgpFXeIPYssEdGKRUrPVNw1fBMvrCQB1FU30kMH0aBao6
-	LGWSc+q9qF0DPVyVADWYWaxHtuyLttVe6HnkZXJvyGYEhJJs8gZQqf8u0zTJ0RHMbv47wI4nibcbR
-	zyPDhuzoKcHYIvk7fqYEYtf2BqT/+LDEQeOXWIoZ7R32c6YsVKUwsUGSPAhl++xng464cXgIApa7X
-	6IwhjH3alDNl11IwRuveoCt5jU7RN+lv2bECY4Fd0kXu5qyxkoelCtUzKYqYB4Xz0MazmTxSh2skX
-	fxG1itnA==;
+	bh=ayjTBw9SUMzwI9y+pFFSZ5QeOsb/Yitc7WAaF4WzbUE=; b=YeTtTFuV+miNdJnHiXob1AyYFY
+	++ojKj5Ui+TH3kN6/jUuHVNS3OoSqy/Mhov0/0Aiqv2yKNriyCJ+tn5dem0O5F9js8FdiTi4NXaWV
+	8eOZutbaBID1IN1FIAxl7/pfnxnKfas9feEj5pn2lma59vfk9ghmTCNSlo0CfhqGUtacUyTlaosIw
+	1gPWxfL+GZGTW0JpteVC0aS35wLhRO3y/972ETTswIDUehobheD8OywK8X5KxKyFZl9hjXE/lRH6E
+	HgXymtnZAFgYKcPai6+4lg+zG+4BbvoPPU+mWdbr9r3r3cs+8AY52vkLRhD9GISCsYXuVZzXmRqRm
+	jcXIGS3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhARM-00Awir-1h;
-	Fri, 15 Sep 2023 15:09:04 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1qhAiL-00Aytg-0M;
+	Fri, 15 Sep 2023 15:26:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhARG-00AwgM-2h
-	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Sep 2023 15:09:02 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-9adb9fa7200so418983566b.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 15 Sep 2023 08:08:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar-org.20230601.gappssmtp.com; s=20230601; t=1694790535; x=1695395335; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=VYR6ep7rDCBduLCC6ALZ438i46Wvlrmilzt/WzHCta4=;
-        b=h1/gZowTCMRaf+vW6XZYRFH6jvh+pDPGW+SbCCfvNsQp4YSdOK2/eXwP3P94aZ6qeJ
-         /ZOa6sxnrIJ8nBbrx0nVQz3I8CrqW5Emp0Gc/VhirI13gikgOAFeJ4GzyppTApyeiobX
-         EXwxrVfk1G9Bt6vLraLJc56+vrEv83Ilk02/9G+0WvyNoIrIncMCgvHcOA8ux9JsgFrr
-         68jmQM0+bAMndVd+UJlLHjGCO8gkuikUnL/vpiAeNRVbui38JDi3hUFsPZSo4m4Y834Y
-         4L3E8+S6Aiu0rvSOPOX5xqbQcuo8/4QgILzgTymD3EIY4rrEkAp0ftXlN2pMek5MLWyL
-         /bLA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694790535; x=1695395335;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=VYR6ep7rDCBduLCC6ALZ438i46Wvlrmilzt/WzHCta4=;
-        b=MUh8E7QVa7I0FPdYFRmDD5tzFAXP3YD3tVVYPEnD5lIZAvI0C6CZrm7t4fOKEVSPCh
-         8CvgVO+VlrGJiHmxwKAll9D3Ol72aPBDmf62SaibYWws+MCo1mWz8UGIbrr2xG1eRRhl
-         SdU05dzb1X1L9UtYEmGCzdZo09s1Qz1OtUkhlkYvBJ3qy62aoSIqj8NJI6Qn8QqQsKWQ
-         F376L8bQOOd8LwDGrr6WanSqFy0QSbb6ZnLaknlhfy31UD1amSv0KOLdUF8OhMMgSoLD
-         e5BhgaD2KK/MOkyoLm49a/P/SuVbhenwwbh702a8ZkPcjcJbG+Wx225Oro/wg9Euw6OT
-         Uknw==
-X-Gm-Message-State: AOJu0YwFz4L7tv/chPVoeT4rzKa/88R1OJwGOHIsk6SDTgLzY0Nc85W+
-	J0/jMReqmNIHf89j9P5x8WHDRbFejVJ+ahAjGPOTUA==
-X-Google-Smtp-Source: AGHT+IEEHNihECXlS9m2KxMTthStG6cUD6LJ/Hd8lIz/DRYEz/AvRC/0+Anai8PcEGa/vlcPrsf7QjRzAeDT/NZHgLw=
-X-Received: by 2002:a17:907:1c8b:b0:9a9:f6e7:43fe with SMTP id
- nb11-20020a1709071c8b00b009a9f6e743femr7782839ejc.24.1694790534612; Fri, 15
- Sep 2023 08:08:54 -0700 (PDT)
+	id 1qhAiI-00Ayrb-2f;
+	Fri, 15 Sep 2023 15:26:36 +0000
+X-UUID: 3b624ca053dc11ee86758d4a7c00f3a0-20230915
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ayjTBw9SUMzwI9y+pFFSZ5QeOsb/Yitc7WAaF4WzbUE=;
+	b=UMso3/9/wC+EddZeWeCRad/A2f8xRO+4u9OJU7lCff39OWaqFk7c82c2X/HIYCZ74fhhDtXeeuG9ZNChTVFQNy0CXHdjheqvyd48rpmQZhZWINgTSGOAy8KjCDIcVd390lgHGMN/lQRIJfZMIxzseM1TCOlUxmaMdkDJRhdV9Mw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:8064a3bb-dcd4-478d-8cc4-8c4c4bafd5c4,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:d55afd13-4929-4845-9571-38c601e9c3c9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 3b624ca053dc11ee86758d4a7c00f3a0-20230915
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <william-tw.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 603547621; Fri, 15 Sep 2023 08:26:24 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 15 Sep 2023 23:26:21 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 15 Sep 2023 23:26:21 +0800
+From: William-tw Lin <william-tw.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Kevin Hilman <khilman@kernel.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	William-tw Lin <william-tw.lin@mediatek.com>
+Subject: [PATCH v2 1/3] arm64: dts: Add node for chip info driver
+Date: Fri, 15 Sep 2023 23:26:05 +0800
+Message-ID: <20230915152607.18116-2-william-tw.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20230915152607.18116-1-william-tw.lin@mediatek.com>
+References: <20230915152607.18116-1-william-tw.lin@mediatek.com>
 MIME-Version: 1.0
-References: <zmq7pz7rtz6h765azg5kl2qgjd264yafctx4q474t5tqai57og@cajbcub4yuwr>
- <5fdf9d29-3f8d-0ee0-027f-57ff3a5cecb8@collabora.com> <CAKMK7uGg6n322UugJwErqF_Dvsbqceqae6SVWV3ZWEOR7x36rQ@mail.gmail.com>
- <9a2b1ad8-4359-4f12-b4f9-c1de477bc440@collabora.com> <mnjcsiqjqdnvbbkaaz5r4n42e56qsax667r7radzyagnmmfkip@dfi64z5deqzj>
- <b7d96985-8489-efe2-db67-1f3108e26822@mailbox.org> <5ejq3hjpoy3gxft2jbmoa5m656usetuxcs7g3ezyyiitj67rav@r5jhdz27foat>
- <550454b8-2e2c-c947-92c5-37f0367661c2@mailbox.org> <os2wvkangif2nwewfbzkuyjm7njp4g3sqj5td3ogbhhjwsrbbd@3jpf6g5hd3z4>
- <CAPj87rP1sw49Z0HdPhUa-=kDp166RqiuhC9rL+Ef9hpwPD5+JA@mail.gmail.com> <krhnfc4os5nqwi3iixgxwads3jbcgtdcvn7ygxpvd62uaejvsk@mx6tmser7jti>
-In-Reply-To: <krhnfc4os5nqwi3iixgxwads3jbcgtdcvn7ygxpvd62uaejvsk@mx6tmser7jti>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Fri, 15 Sep 2023 16:08:42 +0100
-Message-ID: <CAPj87rPbJ1V1-R7WMTHkDat2A4nwSd61Df9mdGH2PR=ZzxaU=Q@mail.gmail.com>
-Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
-To: Maxime Ripard <mripard@kernel.org>
-Cc: =?UTF-8?Q?Michel_D=C3=A4nzer?= <michel.daenzer@mailbox.org>, 
-	emma@anholt.net, linux-doc@vger.kernel.org, vignesh.raman@collabora.com, 
-	dri-devel@lists.freedesktop.org, alyssa@rosenzweig.io, jbrunet@baylibre.com, 
-	robdclark@google.com, corbet@lwn.net, khilman@baylibre.com, 
-	sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com, 
-	linux-rockchip@lists.infradead.org, Daniel Stone <daniels@collabora.com>, 
-	martin.blumenstingl@googlemail.com, robclark@freedesktop.org, 
-	Helen Koike <helen.koike@collabora.com>, anholt@google.com, 
-	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, 
-	linux-amlogic@lists.infradead.org, gustavo.padovan@collabora.com, 
-	linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, 
-	neil.armstrong@linaro.org, guilherme.gallo@collabora.com, 
-	linux-kernel@vger.kernel.org, tzimmermann@suse.de
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--5.485700-8.000000
+X-TMASE-MatchedRID: cAwOsowI+VJbbwmb1mOeyx+WEMjoO9WWTJDl9FKHbrkUtdRZTmEaId3Z
+	0ElDaJ9X4vM1YF6AJbbCCfuIMF6xLcK21zBg2KlfD12T7q2dIUsyhzfPOvCngZwAmEUTn8WLHvE
+	+nnZyoJ4qoAEUxaAvfg==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--5.485700-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: EBC19D5A9B5547D23D75391669BDC015A5C50DADB4553DE91B5ECEF8B5B584312000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230915_080858_880807_A067FBA0 
-X-CRM114-Status: GOOD (  67.76  )
+X-CRM114-CacheID: sfid-20230915_082634_877951_FE6141FC 
+X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,189 +98,162 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey,
+Add dts node for socinfo retrieval for the following projects:
+MT8173, MT8183, MT8186, MT8192, MT8195
 
-On Thu, 14 Sept 2023 at 10:54, Maxime Ripard <mripard@kernel.org> wrote:
-> On Tue, Sep 12, 2023 at 02:16:41PM +0100, Daniel Stone wrote:
-> > Hopefully less mangled formatting this time: turns out Thunderbird +
-> > plain text is utterly unreadable, so that's one less MUA that is
-> > actually usable to send email to kernel lists without getting shouted
-> > at.
->
-> Sorry if it felt that way, it definitely wasn't my intention to shout at
-> you. Email is indeed kind of a pain to deal with, and I wanted to keep
-> the discussion going.
+Signed-off-by: William-tw Lin <william-tw.lin@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 15 +++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 15 +++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 10 ++++++++++
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 14 ++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi |  9 +++++++++
+ 5 files changed, 63 insertions(+)
 
-My bad - I didn't mean you _at all_. I was thinking of other, much
-less pleasant, kernel maintainers, and the ongoing struggle of
-attempting to actually send well-formatted email to kernel lists in
-2023.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index c47d7d900f28..8cac18ed7833 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -590,6 +590,15 @@
+ 			reg = <0 0x10206000 0 0x1000>;
+ 			#address-cells = <1>;
+ 			#size-cells = <1>;
++
++			socinfo_data1: socinfo-data1 {
++				reg = <0x040 0x4>;
++			};
++
++			socinfo_data2: socinfo-data2 {
++				reg = <0x044 0x4>;
++			};
++
+ 			thermal_calibration: calib@528 {
+ 				reg = <0x528 0xc>;
+ 			};
+@@ -1520,4 +1529,10 @@
+ 			power-domains = <&spm MT8173_POWER_DOMAIN_VENC_LT>;
+ 		};
+ 	};
++
++	socinfo {
++		compatible = "mediatek,socinfo";
++		nvmem-cells = <&socinfo_data1 &socinfo_data2>;
++		nvmem-cell-names = "socinfo-data1", "socinfo-data2";
++	};
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 5169779d01df..b17af0edb198 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1706,6 +1706,15 @@
+ 			reg = <0 0x11f10000 0 0x1000>;
+ 			#address-cells = <1>;
+ 			#size-cells = <1>;
++
++			socinfo_data1: socinfo-data1 {
++				reg = <0x04C 0x4>;
++			};
++
++			socinfo_data2: socinfo-data2 {
++				reg = <0x060 0x4>;
++			};
++
+ 			thermal_calibration: calib@180 {
+ 				reg = <0x180 0xc>;
+ 			};
+@@ -2105,4 +2114,10 @@
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_CAM>;
+ 		};
+ 	};
++
++	socinfo {
++		compatible = "mediatek,socinfo";
++		nvmem-cells = <&socinfo_data1 &socinfo_data2>;
++		nvmem-cell-names = "socinfo-data1", "socinfo-data2";
++	};
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+index f04ae70c470a..860559d239a0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -1660,6 +1660,10 @@
+ 				reg = <0x59c 0x4>;
+ 				bits = <0 3>;
+ 			};
++
++			socinfo_data1: socinfo-data1 {
++				reg = <0x7a0 0x4>;
++			};
+ 		};
+ 
+ 		mipi_tx0: dsi-phy@11cc0000 {
+@@ -2083,4 +2087,10 @@
+ 			power-domains = <&spm MT8186_POWER_DOMAIN_IPE>;
+ 		};
+ 	};
++
++	socinfo {
++		compatible = "mediatek,socinfo";
++		nvmem-cells = <&socinfo_data1>;
++		nvmem-cell-names = "socinfo-data1";
++	};
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 5e94cb4aeb44..3e1315da3b56 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -1122,6 +1122,14 @@
+ 			#address-cells = <1>;
+ 			#size-cells = <1>;
+ 
++			socinfo_data1: socinfo-data1 {
++				reg = <0x044 0x4>;
++			};
++
++			socinfo_data2: socinfo-data2 {
++				reg = <0x050 0x4>;
++			};
++
+ 			lvts_e_data1: data1@1c0 {
+ 				reg = <0x1c0 0x58>;
+ 			};
+@@ -1901,4 +1909,10 @@
+ 			power-domains = <&spm MT8192_POWER_DOMAIN_MDP>;
+ 		};
+ 	};
++
++	socinfo {
++		compatible = "mediatek,socinfo";
++		nvmem-cells = <&socinfo_data1 &socinfo_data2>;
++		nvmem-cell-names = "socinfo-data1", "socinfo-data2";
++	};
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 48b72b3645e1..17c4805d7963 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1683,6 +1683,9 @@
+ 			lvts_efuse_data2: lvts2-calib@1d0 {
+ 				reg = <0x1d0 0x38>;
+ 			};
++			socinfo_data1: socinfo-data1 {
++				reg = <0x7a0 0x4>;
++			};
+ 		};
+ 
+ 		u3phy2: t-phy@11c40000 {
+@@ -3519,4 +3522,10 @@
+ 			};
+ 		};
+ 	};
++
++	socinfo {
++		compatible = "mediatek,socinfo";
++		nvmem-cells = <&socinfo_data1>;
++		nvmem-cell-names = "socinfo-data1";
++	};
+ };
+-- 
+2.18.0
 
-> > I don't quite see the same picture from your side though. For example,
-> > my reading of what you've said is that flaky tests are utterly
-> > unacceptable, as are partial runs, and we shouldn't pretend otherwise.
-> > With your concrete example (which is really helpful, so thanks), what
-> > happens to the MT8173 hdmi-inject test? Do we skip all MT8173 testing
-> > until it's perfect, or does MT8173 testing always fail because that
-> > test does?
->
-> It's not clear to me why that test is even running in the first place?
-> There's been some confusion on my side here about what we're going to
-> test with this. You've mentioned Mesa and GPUs before, but that's a KMS
-> test so there must be more to it.
->
-> Either way, it's a relevant test so I guess why not. It turns out that
-> the test is indeed flaky, I guess we could add it to the flaky tests
-> list.
->
-> BUT
->
-> I want to have every opportunity to fix whatever that failure is.
-
-Agreed so far!
-
-> So:
->
->   - Is the test broken? If so, we should report it to IGT dev and remove
->     it from the test suite.
->   - If not, is that test failure have been reported to the driver author?
->   - If no answer/fix, we can add it to the flaky tests list, but do we
->     have some way to reproduce the test failure?
->
-> The last part is especially critical. Looking at the list itself, I have
-> no idea what board, kernel version, configuration, or what the failure
-> rate was. Assuming I spend some time looking at the infra to find the
-> board and configuration, how many times do I have to run the tests to
-> expect to reproduce the failure (and thus consider it fixed if it
-> doesn't occur anymore).
->
-> Like, with that board and test, if my first 100 runs of the test work
-> fine, is it reasonable for me to consider it fixed, or is it only
-> supposed to happen once every 1000 runs?
->
-> So, ideally, having some (mandatory) metadata in the test lists with a
-> link to the bug report, the board (DT name?) it happened with, the
-> version and configuration it was first seen with, and an approximation
-> of the failure rate for every flaky test list.
->
-> I understand that it's probably difficult to get that after the fact on
-> the tests that were already merged, but I'd really like to get that
-> enforced for every new test going forward.
->
-> That should hopefully get us in a much better position to fix some of
-> those tests issues. And failing that, I can't see how that's
-> sustainable.
-
-OK yeah, and we're still agreed here. That is definitely the standard
-we should be aiming for.  It is there for some - see
-drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt, but should be
-there for the rest, it's true. (The specific board/DT it was observed
-on can be easily retconned because we only run on one specific board
-type per driver, again to make things more predictable; we could go
-back and retrospectively add those in a header comment?)
-
-For flakes, it can be hard to pin them down, because, well, they're
-flaky. Usually when we add things in Mesa (sorry to keep coming back
-to Mesa - it's not to say that it's the objective best thing that
-everything should follow, only that it's the thing we have the most
-experience with that we know works well), we do a manual bisect and
-try to pin the blame on a specific merge request which looks like the
-most likely culprit. If nothing obvious jumps out, we just note when
-it was first observed and provide some sample job logs. But yeah, it
-should be more verbose.
-
-FWIW, the reason it wasn't done here - not to say that it shouldn't
-have been done better, but here we are - is that we just hammered a
-load of test runs, vacuumed up the results with a script, and that's
-what generated those files. Given the number of tests and devices, it
-was hard to narrow each down individually, but yeah, it is something
-which really wants further analysis and drilling into. It's a good
-to-do, and I agree it should be the standard going forward.
-
-> And Mesa does show what I'm talking about:
->
-> $ find -name *-flakes.txt | xargs git diff --stat  e58a10af640ba58b6001f5c5ad750b782547da76
-> [...]
->
-> In the history of Mesa, there's never been a single test removed from a
-> flaky test list.
-
-As Rob says, that's definitely wrong. But there is a good point in
-there: how do you know a test isn't flaky anymore? 100 runs is a
-reasonable benchmark, but 1000 is ideal. At a 1% failure rate, with 20
-devices, that's just too many spurious false-fails to have a usable
-workflow.
-
-We do have some tools to make stress testing easier, but those need to
-be better documented. We'll fix that. The tools we have which also
-pull out the metadata etc also need documenting - right now they
-aren't because they're under _extremely_ heavy development, but they
-can be further enhanced to e.g. pull out the igt results automatically
-and point very clearly to the cause. Also on the to-do.
-
-> > Only maintainers can actually fix the drivers (or the tests tbf). But
-> > doing the testing does let us be really clear to everyone what the
-> > actual state is, and that way people can make informed decisions too.
-> > And the only way we're going to drive the test rate down is by the
-> > subsystem maintainers enforcing it.
->
-> Just FYI, I'm not on the other side of the fence there, I'd really like
-> to have some kind of validation. I talked about it at XDC some years
-> ago, and discussed it several people at length over the years. So I'm
-> definitely not in the CI-is-bad camp.
->
-> > Does that make sense on where I'm (and I think a lot of others are)
-> > coming from?
->
-> That makes sense from your perspective, but it's not clear to me how you
-> can expect maintainers to own the tests if they were never involved in
-> the process.
->
-> They are not in Cc of the flaky tests patches, they are not reported
-> that the bug is failing, how can they own that process if we never
-> reached out and involved them?
->
-> We're all overworked, you can't expect them to just look at the flaky
-> test list every now and then and figure it out.
-
-Absolutely. We got acks (or at least not-nacks) from the driver
-developers, but yeah, they should absolutely be part of the loop for
-those updates. I don't think we can necessarily block on them though.
-Say we add vc4 KMS tests, then after a backmerge we start to see a
-bunch of flakes on it, but you're sitting on a beach for a couple of
-weeks. If we wait for you to get back, see it, and merge it, then
-that's two weeks of people submitting Rockchip driver changes and
-getting told that their changes failed CI. That's exactly what we want
-to avoid, because it erodes confidence and usefulness of CI when
-people expect failures and ignore them by default.
-
-So I would say that it's reasonable for expectations to be updated
-according to what actually happens in practice, but also to make sure
-that the maintainers are explicitly informed and kept in the loop, and
-not just surprised when they look at the lists and see a bunch of
-stuff happened without their knowledge.
-
-Again there's much more to be done on the tooling here. Part of it is
-CLI tools and automation, part of it is dashboards and
-easily-digestible reporting, and then there's integration with things
-like KernelCI. KCI(DB) is actually quite high up on the list, but
-we're mostly waiting until a lot of the KCI rework happens so we can
-actually properly integrate with the new system.
-
-Right now a lot of the tooling we have is pretty involved - for
-example, we do have ci-collate as a Python library which can inspect a
-number of pipelines, pull out detailed status and logs, etc, but it
-mostly needs to be used as a library with bespoke scripts, rather than
-a ready-made tool. Work on that is ongoing to make it way more clear
-and accessible though.
-
-So I think it sounds like we're on the same page and going exactly in
-the same direction, just that this is a starting point rather than the
-desired end state. And the main point is that having a set of
-xfails/flakes parachuted in with little to no context is trying to get
-an MVP bootstrapped, rather than how we expect things to go in future.
-Does that sound about right?
-
-Cheers,
-Daniel
 
