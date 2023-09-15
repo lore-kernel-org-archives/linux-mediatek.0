@@ -4,109 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE729EE6457
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 12:18:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B0DCEE645D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 13:03:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ymd4KNlOZU8aSyQl8RdaNXFFLMRuv3B/W9dK3PdwrAc=; b=gOiQZy31QJJe7HS8uKdhTsFTbg
-	K0WvciaQhI1k4d6Gc4DW31J3l8izCePHxW55QFaNnQpc3LOfm5PJ8hxmpHVaL1oaBLnund3aBO4qU
-	P/izE10WHLcd3Uhi2l5zfGmhi2MYfbSRPS5RScNp/epPPu3jpsuSBPAAQI6L2mGiT+C9Joew9Mumy
-	1HlrFW8I8TNirlClRuRfinOnTYtz0WB/LSklokT0Xe0w+9uRXrr25tJKuElY4uWWzF2E4MroQxhdf
-	Ir6XINRgz3DziONo7JrqdPgY5THdMoXxwhbrggcKTwuALn47BxrB5+VhcMoueWrD5Z5HF15AJcG+I
-	JER6Uhsg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QS2Jtgre0Aw76TCy2Nr6f4try9+b9PtZe0vPKWZCoU8=; b=dPpJ4r59vd+dCSQQ9XelOw14WU
+	N7vz7ZjqlC864qqgDC5PIghXRKJ8TX7odF4OGU9fOjt6v7KubNFwyvuOwT0RmxqK2k3pi9ava0Bln
+	TuhY8obSwrf7p3Lvyo+WIurQ6TfIdtKpmLhk0pYgBmEzG2TVZ5EOFRzdwVVTT5wbpwNcaPpxpaRw3
+	SqrdjonYzwn65pzVLYLsqW0U1BTyp/ksUPoTlfsNrc5JG8JzkQFV8ZYhSkZQVwE5dJjTWrwvbSXVr
+	IOOUnWBDhzJ+mzND47SLpM/DlJxT7iqVd+VJowwc5lPcOZOD7as+tFsLuzj8lmG2DIRh/+3a/cSgM
+	eplev9tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qh7mT-00Ai7d-00;
-	Fri, 15 Sep 2023 12:18:41 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1qh8TQ-00AlmS-1c;
+	Fri, 15 Sep 2023 13:03:04 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qh7mP-00Ai6M-2c;
-	Fri, 15 Sep 2023 12:18:39 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-9a21b6d105cso256261466b.3;
-        Fri, 15 Sep 2023 05:18:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1694780314; x=1695385114; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=Ymd4KNlOZU8aSyQl8RdaNXFFLMRuv3B/W9dK3PdwrAc=;
-        b=FOP0YKvFw+QXnMswDlwV+gamU/SEnOyslXMgU/5s1M5INU4w47Ep+Ur76J9lUWTH3G
-         AaG//kH+y2u+kcrYRP47XQO8uHkFHKRN1PxCh0pSBKyFOBmNibEaYtvpQn1NNonx4zpm
-         aPo8454SrMPyNCXjTN63HfPJpR6z4kfAo+skWjtDfwPTEFMkgnqJLXgrkgl6CfgTYnrW
-         qB1CXcs7Rw9p4wdIsXvH2zNbmD2ZMbb1QBGyMfijUi9JiQZtnpTWQz90t4CFbNGpum3a
-         KgXYgAsK6JKiC1KvlDawXMehxAg+FS5lsKX5xwDEKUts/al/XGPuhEoJ3QAg1sww18kS
-         zx8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694780314; x=1695385114;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Ymd4KNlOZU8aSyQl8RdaNXFFLMRuv3B/W9dK3PdwrAc=;
-        b=EvcH9NoxiLkrBQqqjDAB9i96T3oBUtZCfnHWEyFKm0ypTgGdFvDd9/USkqAlCSHBPm
-         1LUrr1t86+FxoZlpu+HYC8qvR1Lvi3wRZ+aBGiVg7JND5wG4FNXou/C7tQ5GLKUBsZVr
-         99gk2Glwy3MAzWyeoB6xQZafbw2R74lJ1wlAHuYEI6I2y2OJ/hpiy0dTg3Wu9yS/OJKt
-         1K4m3Xk6cPUc23AvBGHQYgTD9zavUaqDNOLsKpKnrf3QdYTm6k6LQ2M3H5xsK0ePhChc
-         LWc9BngpvDrZk3WDIKR57KrWSmgFo+rDgrLer9ggq1graT3syslPHjY4XgHY49ghXhCU
-         o3RQ==
-X-Gm-Message-State: AOJu0Yxl7iI9nPiK6Wl/zG3gxBjouhpCN0ZilMOofAmCl7pRmzqNZ+UP
-	Sf3hGOrJPpCzOjbEXb6C3Kk=
-X-Google-Smtp-Source: AGHT+IGIM8mfUCVD2aaq64c6QqJ77AiQF4lLWq19si18HJ2jdi75s8K70DPYuygwVCGIEpJnXsYbrA==
-X-Received: by 2002:a17:906:535d:b0:9a1:fb4c:3b65 with SMTP id j29-20020a170906535d00b009a1fb4c3b65mr1141593ejo.14.1694780313700;
-        Fri, 15 Sep 2023 05:18:33 -0700 (PDT)
-Received: from skbuf ([188.26.56.202])
-        by smtp.gmail.com with ESMTPSA id x7-20020a170906134700b009a0955a7ad0sm2335355ejb.128.2023.09.15.05.18.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Sep 2023 05:18:33 -0700 (PDT)
-Date: Fri, 15 Sep 2023 15:18:30 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/4] dt-bindings: net: dsa: document internal MDIO bus
-Message-ID: <20230915121830.tmzuxthup7rzewhv@skbuf>
-References: <676d1a2b-6ffa-4aff-8bed-a749c373f5b3@arinc9.com>
- <87325ce9-595a-4dda-a6a1-b5927d25719b@arinc9.com>
- <20230911225126.rk23g3u3bzo3agby@skbuf>
- <036c0763-f1b2-49ff-bc82-1ff16eec27ab@arinc9.com>
- <20230912193450.h5s6miubag46z623@skbuf>
- <6cec079e-991e-4222-a76d-d6156de0daca@arinc9.com>
- <20230913074231.5azwxqjuv2wp5nik@skbuf>
- <ZQHcV5DUfcCYkkTi@shell.armlinux.org.uk>
- <ZQNLkiAt4jOjojRf@shell.armlinux.org.uk>
- <ZQNL0Vy3kMbWlNFl@shell.armlinux.org.uk>
+	id 1qh8TM-00AllH-1Y;
+	Fri, 15 Sep 2023 13:03:02 +0000
+Received: from [IPV6:2a01:e0a:120:3210:7735:5996:cf40:bca6] (unknown [IPv6:2a01:e0a:120:3210:7735:5996:cf40:bca6])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1D60B66072ED;
+	Fri, 15 Sep 2023 14:02:56 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1694782976;
+	bh=p3dIJk432sgjwEaG99pDgDD1HBalYst4ezbAkgYJyz4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=jqb6/GyVg5IuUKgGjzBkcnNg1wXFDJFiSi6o2rQe5WYoXkRfqvzt8Zinleucikwy+
+	 hRA2+5AaN16cDBPUxAABqKfK854lwKRdJYLH8RyKWUWiXqEzYHGLPF9Ys9CeeeBeLt
+	 P5ikdtNdI08HzbDRZarbCfotl/dnWAQV31r2PuTklWR/YoAVfZUlHMP4VIrQXpyl1e
+	 nK+EOUaUt0FpTB3XBAIdy3He2cwufeUhtmXD+wwrne81yOtRh+7LA8r6ziwG6U/0tg
+	 5kKbsqRIMxeBTLzXkSWnJ9ADpe9KeV6QS8W7ybOhnSMEcatthVpy6JUQDM/efEajFH
+	 JtGFEwcByqq1A==
+Message-ID: <b048719a-9397-7490-0651-7c1470ef61e0@collabora.com>
+Date: Fri, 15 Sep 2023 15:02:53 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v7 45/49] media: core: Add bitmap manage bufs array
+ entries
+Content-Language: en-US
+To: kernel test robot <lkp@intel.com>, mchehab@kernel.org,
+ tfiga@chromium.org, m.szyprowski@samsung.com, ming.qian@nxp.com,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
+ nicolas.dufresne@collabora.com
+Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ kernel@collabora.com
+References: <20230914133323.198857-46-benjamin.gaignard@collabora.com>
+ <202309150835.kxjWQyEU-lkp@intel.com>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <202309150835.kxjWQyEU-lkp@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZQNL0Vy3kMbWlNFl@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230915_051837_853078_BD9A43D2 
-X-CRM114-Status: GOOD (  44.60  )
+X-CRM114-CacheID: sfid-20230915_060300_824387_E4BAD552 
+X-CRM114-Status: GOOD (  17.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,71 +84,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Russell,
 
-On Thu, Sep 14, 2023 at 07:07:13PM +0100, Russell King (Oracle) wrote:
-> On Thu, Sep 14, 2023 at 07:06:11PM +0100, Russell King (Oracle) wrote:
-> > On Wed, Sep 13, 2023 at 04:59:19PM +0100, Russell King (Oracle) wrote:
-> > > On Wed, Sep 13, 2023 at 10:42:31AM +0300, Vladimir Oltean wrote:
-> > > > On Wed, Sep 13, 2023 at 08:52:37AM +0300, Arınç ÜNAL wrote:
-> > > > > One more thing, I don't recall phy-mode being required to be defined for
-> > > > > user ports as it will default to GMII. I don't believe this is the same
-> > > > > case for shared ports so phy-mode is required only for them?
-> > > > 
-> > > > phy-mode is not strictly required, but I think there is a strong
-> > > > preference to set it. IIRC, when looking at the DSA device trees, there
-> > > > was no case where phy-mode would be absent on CPU/DSA ports if the other
-> > > > link properties were also present, so we required it too. There were no
-> > > > complaints in 1 year since dsa_shared_port_validate_of() is there. The
-> > > > requirement can be relaxed to just a warning and no error in the kernel,
-> > > > and the removal of "required" in the schema, if it helps making it
-> > > > common with user ports.
-> > > 
-> > > However, phylink pretty much requires phy-mode to be specified to be
-> > > something sane for shared ports, so I wouldn't be in favour of relaxing
-> > > the checkinng in dsa_shared_port_validate_of()... not unless you're
-> > > now going to accept the approach I originally proposed to have DSA
-> > > drivers tell the core (and thus phylink) what phy-mode and other link
-> > > parameters should be used when they are missing from DT.
-> > 
-> > You mean the approach that I picked up using software nodes that got
-> > thrown out by the software node people? That approach that I picked
-> > up from you and tried to get merged?
-> > 
-> > No, that's not going to happen, and it's not a question of whether
-> > _I_ am going to accept that approach or not. So don't throw that
-> > back on me, please.
-> > 
-> > If this is something that we want to solve, we need to stop being so
-> > devisive (your language above is so) and try to come up with a
-> > solution that is acceptable to everyone... the swnode approach
-> > doesn't seem to be it.
-> 
-> Oh dear. I must be going mad!
+Le 15/09/2023 à 02:47, kernel test robot a écrit :
+> Hi Benjamin,
+>
+> kernel test robot noticed the following build errors:
+>
+> [auto build test ERROR on linus/master]
+> [also build test ERROR on v6.6-rc1]
+> [cannot apply to next-20230914]
+> [If your patch is applied to the wrong git tree, kindly drop us a note.
+> And when submitting patch, we suggest to use '--base' as documented in
+> https://git-scm.com/docs/git-format-patch#_base_tree_information]
+>
+> url:    https://github.com/intel-lab-lkp/linux/commits/Benjamin-Gaignard/media-videobuf2-Rework-offset-cookie-encoding-pattern/20230914-221757
+> base:   linus/master
+> patch link:    https://lore.kernel.org/r/20230914133323.198857-46-benjamin.gaignard%40collabora.com
+> patch subject: [PATCH v7 45/49] media: core: Add bitmap manage bufs array entries
+> config: sparc-allyesconfig (https://download.01.org/0day-ci/archive/20230915/202309150835.kxjWQyEU-lkp@intel.com/config)
+> compiler: sparc64-linux-gcc (GCC) 13.2.0
+> reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230915/202309150835.kxjWQyEU-lkp@intel.com/reproduce)
+>
+> If you fix the issue in a separate patch/commit (i.e. not just a new version of
+> the same patch/commit), kindly add following tags
+> | Reported-by: kernel test robot <lkp@intel.com>
+> | Closes: https://lore.kernel.org/oe-kbuild-all/202309150835.kxjWQyEU-lkp@intel.com/
+>
+> All errors (new ones prefixed by >>):
+>
+>     samples/v4l/v4l2-pci-skeleton.c: In function 'queue_setup':
+>>> samples/v4l/v4l2-pci-skeleton.c:170:15: error: 'struct vb2_queue' has no member named 'num_buffers'
+>       170 |         if (vq->num_buffers + *nbuffers < 3)
+>           |               ^~
+>     samples/v4l/v4l2-pci-skeleton.c:171:35: error: 'struct vb2_queue' has no member named 'num_buffers'
+>       171 |                 *nbuffers = 3 - vq->num_buffers;
+>           |                                   ^~
+> --
+>     drivers/input/touchscreen/sur40.c: In function 'sur40_queue_setup':
+>>> drivers/input/touchscreen/sur40.c:851:14: error: 'struct vb2_queue' has no member named 'num_buffers'
+>       851 |         if (q->num_buffers + *nbuffers < 3)
+>           |              ^~
+>     drivers/input/touchscreen/sur40.c:852:34: error: 'struct vb2_queue' has no member named 'num_buffers'
+>       852 |                 *nbuffers = 3 - q->num_buffers;
+>           |                                  ^~
+>
+>
+> vim +170 samples/v4l/v4l2-pci-skeleton.c
 
-So first things first: I am not advocating for making phy-mode fully
-optional in the sense that you say (if absent, then write non-OF code
-through which DSA infers the phy-mode from drivers). I'm happy with the
-current form of the code.
+v4l2 drivers outside drivers/media or drivers/staging/media direct directories.
+I have miss them. I will fix that in v8.
 
-I was just trying to add some nuance to this bizarre aspect signalled by
-Arınç - phy-mode is not required for user ports, presumably because when
-it is absent, user ports will default to GMII. That isn't an intrinsic
-feature of user ports, but rather of having a phydev, and so, because
-DSA/CPU ports can also have a phydev, logically it means that phy-mode
-can also be omitted in that particular case, with the same result.
+Regards,
+Benjamin
 
-Our missing_phy_mode check from dsa_shared_port_validate_of() is theoretically
-more restrictive than it needs to be, because it artificially prohibits
-that behavior, and it results in an inexplicable difference in the phylink
-dt-bindings for user vs shared ports. So that's where my relaxation
-proposal came from: we could make missing_phy_mode non-fatal, and that
-would permit the configurations which can work to work, and the ones
-which can't work will fail elsewhere. Just like for the user ports.
-
-Where I wasn't absolutely clear is that I don't want Arınç to change any
-of that. Right now, on DSA shared ports, phy-mode is required and on user
-ports it isn't. The difference is a bit strange (arbitrary considering
-the example above) and should maybe be settled at some point in the
-future, but for now, the dt-bindings should document it like that.
+>
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  145
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  146  /*
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  147   * Setup the constraints of the queue: besides setting the number of planes
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  148   * per buffer and the size and allocation context of each plane, it also
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  149   * checks if sufficient buffers have been allocated. Usually 3 is a good
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  150   * minimum number: many DMA engines need a minimum of 2 buffers in the
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  151   * queue and you need to have another available for userspace processing.
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  152   */
+> df9ecb0cad14b9 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2015-10-28  153  static int queue_setup(struct vb2_queue *vq,
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  154  		       unsigned int *nbuffers, unsigned int *nplanes,
+> 36c0f8b32c4bd4 samples/v4l/v4l2-pci-skeleton.c               Hans Verkuil 2016-04-15  155  		       unsigned int sizes[], struct device *alloc_devs[])
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  156  {
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  157  	struct skeleton *skel = vb2_get_drv_priv(vq);
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  158
+> 5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  159  	skel->field = skel->format.field;
+> 5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  160  	if (skel->field == V4L2_FIELD_ALTERNATE) {
+> 5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  161  		/*
+> 5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  162  		 * You cannot use read() with FIELD_ALTERNATE since the field
+> 5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  163  		 * information (TOP/BOTTOM) cannot be passed back to the user.
+> 5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  164  		 */
+> 3130a28a1568b1 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-23  165  		if (vb2_fileio_is_active(vq))
+> 5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  166  			return -EINVAL;
+> 5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  167  		skel->field = V4L2_FIELD_TOP;
+> 5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  168  	}
+> 5f26f2501b8119 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-04-11  169
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14 @170  	if (vq->num_buffers + *nbuffers < 3)
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  171  		*nbuffers = 3 - vq->num_buffers;
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  172
+> df9ecb0cad14b9 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2015-10-28  173  	if (*nplanes)
+> df9ecb0cad14b9 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2015-10-28  174  		return sizes[0] < skel->format.sizeimage ? -EINVAL : 0;
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  175  	*nplanes = 1;
+> df9ecb0cad14b9 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2015-10-28  176  	sizes[0] = skel->format.sizeimage;
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  177  	return 0;
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  178  }
+> 926977e0ae7556 Documentation/video4linux/v4l2-pci-skeleton.c Hans Verkuil 2014-03-14  179
+>
 
