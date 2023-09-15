@@ -4,77 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF1D5EE021A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 04:07:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 853CEEE3F01
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 05:28:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qzmi/iJpKjOZhxEQBLno/kngFnqZ7SNTMdomSBt3AV4=; b=J/p8RgHnpNNjjHZXWILX66IXwe
-	S0Yptskj4DJGh4gIF5jaEIaVKONvGpNgZUOtvcjfYby8/v7QQV1BWDN0RBiA+zmmKV7+Z0AEU3+t3
-	2IYRvdU0MG+rBtFMZYGT5jPZoB6orkWgJiUVtkdzDlA9yEZ+nc+CX5KUHuhSHCp1AwBAxD7DMkjWX
-	0+k6RlcyLSgftwWL/32csbQt4Sj8MW6DR9GfNCYSwvRBjVPTXxX+RDc4AGysNYrPybD6WcbTWdUUa
-	iwaDAB7C2rDLAiBH1uYgRNKk468YcHCZcBxy/7VH+YsqydIiYaLwSt29gtVLhJ/n9O8Cxu/GHYP87
-	WGPmsFeA==;
+	bh=xn9oFhHLAknaWRf3uArqHTLA9prBJhnE4LW7Dd164uA=; b=lljTpxOdxqIe8zaPllNmpq1Uk3
+	KBdEbgDzUcrJ0mfdAvHcb7H1UHfIKoj2SNky2s7Y8C7yArcOVxHYSGa42O5tq+NMqwbuWSY2kDx8f
+	LsowOjYHRHNwa0h9rdt5ZleemeOwdY1LAQUdSN0gLZjMcjYowYKnotAPLYmDikRN6HWuDGibEf+w2
+	UP6W9T4iv95TCq0fbYZasmdzvQODp/csCUlzC5mWj1yoqbfov44tlQnoK/MhdCaoElKpSSiXkQQvY
+	Y70+x5D/VsI2UlRuJH+9G6ozkNgtdhEs+S5QLob/NJcJmZFXf7q3WJSLhfJOXr7Q9HIbDIeh5iEGt
+	WkZhcxhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qh06x-009iYr-3B;
-	Fri, 15 Sep 2023 04:07:19 +0000
+	id 1qh1NN-009nUK-2D;
+	Fri, 15 Sep 2023 05:28:21 +0000
 Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qh06v-009iX7-0X
+	id 1qh1NK-009nT5-2D
 	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Sep 2023 04:07:18 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-50098cc8967so2737729e87.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Sep 2023 21:07:13 -0700 (PDT)
+	Fri, 15 Sep 2023 05:28:19 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-501be2d45e0so2960938e87.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 14 Sep 2023 22:28:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1694750832; x=1695355632; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1694755696; x=1695360496; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Qzmi/iJpKjOZhxEQBLno/kngFnqZ7SNTMdomSBt3AV4=;
-        b=l7SzUfCcBE8HmWaeEFTrca/TYqMbywgkSnYyhiDbcLQw/U+o/xSpIn6dV9/uukq0UB
-         nUGl06hVTjtpMcMQUNNWm42QFWZyE1NufzNhOc+dkRSJY8vyxXkIiN0c/BvbVAvZt8Ds
-         1oyc6B0AZ+AtbEO8FkysKKjYDd7oCGWD2mISs=
+        bh=xn9oFhHLAknaWRf3uArqHTLA9prBJhnE4LW7Dd164uA=;
+        b=l9smrCGhxf8JT+3QZ9w4nsHYdviRbcG4fTbMFcmZoYz6JeNkL3BbhWB92w+TL5UvZL
+         wYRoVYVNQsC3iDHsl2IEsxMjFvAslTc//DNtIyFEl0u5qWJRS1EIX4/bLghDm3eDASjY
+         PZ5tHiAp3MplyUL8JXWGSgrp480emkRqw7Sy8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694750832; x=1695355632;
+        d=1e100.net; s=20230601; t=1694755696; x=1695360496;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Qzmi/iJpKjOZhxEQBLno/kngFnqZ7SNTMdomSBt3AV4=;
-        b=GnPIFBgqf7na2RwZUInbznBRpT4XYsMrRpEmt9+u6qCtcFgZL3o+zwWD7DfA7sR+nw
-         99KYeOMhlRW5IhSNNRbHwuqyPRGuB8QFJG1LDkvLjr4QuSXne0Y+jXeNeItbjU9HCwzM
-         bQhwBq0mZb1mpseLGPhi2qMm6Gs0B8qB3D0H+X5SdQpMdmmFHTdhD/xbiOtK/lPZxTop
-         TL5AF2OM49VZAJBUfuo0GIfhmZUXXTiEV+K1sNr8CxsexTCWYpLcqQJazouLiTeG3D2Y
-         bv3xXVU0JN/MEekmIZnDbDUURBJ9V7Kxt0p4DYmbnMHxuuHDHcChcRbIAuIHlAYPBVRh
-         XSpQ==
-X-Gm-Message-State: AOJu0YwwnMYFDP4Rl/EU87l7+NMARqHedH+sUMi4kYwJrwQw2zSf5LL+
-	MEzAJTxkcBt/zWzEWQBoEQg2A3mRIMVbl2uIzHr1Sw==
-X-Google-Smtp-Source: AGHT+IHPS3hgvoT9h4h71M5dq9RHUqZPZ6160DtqEMhD9LLdIbTTMUMfxv9+Y4dc7C1UVI025fGTudkIedQkt3zqhIw=
-X-Received: by 2002:a05:6512:3d05:b0:4fe:8c4:44fb with SMTP id
- d5-20020a0565123d0500b004fe08c444fbmr532868lfv.38.1694750832139; Thu, 14 Sep
- 2023 21:07:12 -0700 (PDT)
+        bh=xn9oFhHLAknaWRf3uArqHTLA9prBJhnE4LW7Dd164uA=;
+        b=sfWeEwqKVkty3v+/0r417lxBiKk7jgiYC/P/73T7AogMoOHp7/qr2+3OTaasngdFy5
+         6Q0UA8tBkUVwAH0gMhuyZv8Xe/T4JKi6ciEMp4J8e5Y5OfR5NlsKUgWJVlgec3M0Dn+m
+         4Tg/PNO17jEHEo0E+hSR6o7lBeRNAniyud0G94DoUCbd8LXfNARoBFcXH0JeDo43W+IM
+         APd65df60nNwGJ3E4vQFUKNwN7qQSdTfx/np4KjYxfG4F6xO0wL1Hhoxh/gDIxq+ZthY
+         Ojod1C0bzZ3qsk0nJEQNnNiNliUmrQ/T85U/qqnfgGj+GSVynarlgBCFWhh+4znzbrHZ
+         apzQ==
+X-Gm-Message-State: AOJu0YwTsuzNeP8SV/lTLzmvpj357Ak/dFBGyS8K0ZYqCynthskcBUSL
+	syyZRxVY2w4lUQLeaIDPJ6+IU64SKMMty+OgmXg9tA==
+X-Google-Smtp-Source: AGHT+IHBF/LZiSOCHbF9PK/ZZsZw9DLkRfLiviBg8ZInp/Df/pEH0sQClGR3SSNslHwvIhnE/oLD3Fo+uCtKqC7O+9w=
+X-Received: by 2002:a05:6512:48c9:b0:502:d639:22ed with SMTP id
+ er9-20020a05651248c900b00502d63922edmr518597lfb.48.1694755696091; Thu, 14 Sep
+ 2023 22:28:16 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230914183831.587273-1-john.ogness@linutronix.de> <20230914183831.587273-12-john.ogness@linutronix.de>
-In-Reply-To: <20230914183831.587273-12-john.ogness@linutronix.de>
+References: <20230914131058.2472260-1-jani.nikula@intel.com> <20230914155317.2511876-1-jani.nikula@intel.com>
+In-Reply-To: <20230914155317.2511876-1-jani.nikula@intel.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 15 Sep 2023 12:07:00 +0800
-Message-ID: <CAGXv+5FNSBm170z-XffkfcfQaAw4XXH3NEkonKE2s4x8ewz7WQ@mail.gmail.com>
-Subject: Re: [PATCH tty v1 11/74] serial: 8250_mtk: Use port lock wrappers
-To: John Ogness <john.ogness@linutronix.de>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
-	linux-serial@vger.kernel.org, Petr Mladek <pmladek@suse.com>, 
-	Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tony Lindgren <tony@atomide.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Date: Fri, 15 Sep 2023 13:28:04 +0800
+Message-ID: <CAGXv+5GJxEobJKKWuc_UN+Gf_z8g6eb6KWTz-L+RqtyLYKK3Jg@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek/dp: fix memory leak on ->get_edid callback
+ audio detection
+To: Jani Nikula <jani.nikula@intel.com>
+Cc: dri-devel@lists.freedesktop.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Guillaume Ranquet <granquet@baylibre.com>, linux-kernel@vger.kernel.org, 
+	stable@vger.kernel.org, Markus Schneider-Pargmann <msp@baylibre.com>, 
+	Bo-Chen Chen <rex-bc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, 
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	linux-arm-kernel@lists.infradead.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230914_210717_203904_15340D06 
-X-CRM114-Status: GOOD (  17.68  )
+X-CRM114-CacheID: sfid-20230914_222818_720899_8488C500 
+X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,41 +92,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 15, 2023 at 2:38=E2=80=AFAM John Ogness <john.ogness@linutronix=
-.de> wrote:
+On Thu, Sep 14, 2023 at 11:53=E2=80=AFPM Jani Nikula <jani.nikula@intel.com=
+> wrote:
 >
-> From: Thomas Gleixner <tglx@linutronix.de>
+> The sads returned by drm_edid_to_sad() needs to be freed.
 >
-> When a serial port is used for kernel console output, then all
-> modifications to the UART registers which are done from other contexts,
-> e.g. getty, termios, are interference points for the kernel console.
->
-> So far this has been ignored and the printk output is based on the
-> principle of hope. The rework of the console infrastructure which aims to
-> support threaded and atomic consoles, requires to mark sections which
-> modify the UART registers as unsafe. This allows the atomic write functio=
-n
-> to make informed decisions and eventually to restore operational state. I=
-t
-> also allows to prevent the regular UART code from modifying UART register=
-s
-> while printk output is in progress.
->
-> All modifications of UART registers are guarded by the UART port lock,
-> which provides an obvious synchronization point with the console
-> infrastructure.
->
-> To avoid adding this functionality to all UART drivers, wrap the
-> spin_[un]lock*() invocations for uart_port::lock into helper functions
-> which just contain the spin_[un]lock*() invocations for now. In a
-> subsequent step these helpers will gain the console synchronization
-> mechanisms.
->
-> Converted with coccinelle. No functional change.
->
-> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+> Fixes: e71a8ebbe086 ("drm/mediatek: dp: Audio support for MT8195")
+> Cc: Guillaume Ranquet <granquet@baylibre.com>
+> Cc: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Cc: Philipp Zabel <p.zabel@pengutronix.de>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: dri-devel@lists.freedesktop.org
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: <stable@vger.kernel.org> # v6.1+
+> Signed-off-by: Jani Nikula <jani.nikula@intel.com>
 
-Replacements look correct.
+Looks correct to me.
 
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
