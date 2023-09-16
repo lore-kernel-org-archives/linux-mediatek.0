@@ -4,109 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82EFDCD37AC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Sep 2023 20:48:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90A9FCD37B5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 08:10:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+yXEUbam3ZE5YDXyhgQVpOQnERY8L95N3GOx4Xs5rzU=; b=u/8KOrUkAeWVnjBBYR3t2CukTG
-	z6AT5qTarGzr18+36Q1r+ktGQ0XcjwizQmng5CRY1cgAzStfk30QBzUqexydgPcu8fKgG8MLJnJ/U
-	6mKHxBlkx2v2WMIE8wYa7uMFPznbnu1T9/PbO6mvOZjsIw/YU63KR+6R/eSrEoaCBaEmlIdhkAHPM
-	T059nL7od9YorgzEibFLXqLz71aXgpzRZBKpMiXYKq7ISZb3sk7ftvMJjjbGywy4E+SSW3G9F5g1O
-	PCxqng1EgUdzgQ2UJUGQaEo1AYrvd+85RI4nwfhbcDfk04n0k6wkjmChvODCUMGLAyypsY8djdU1e
-	M5madAyQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UfU1z4Iq7/AusFegjy9u/gqMdvERrJhC9VfwNmfviEQ=; b=Eg+VKj2u6T5olfgDJPIswqxB4Z
+	e1l5w/dMzJAX64iwrNWeGwyw+yHwg85gdmeu6uJkt4PKMcS2Brm5U6Ia6TigNLu7CZ1hfoRYBf+kw
+	5Nq4/b2aY8sCNQUhC5/HOTX4mIQOIlYP0+9g3JkxU6dYJ+sTgt/PQ0JiuVDRD+xE6EeSaWQPXuZeq
+	l6oC9otQw4R8in+ee9efIz4Dyi2PwDQPBbfn9CoGRXwbbQAjQqPVxXLPmfM2BLQgCiKOu5kHTmoXB
+	1vmsQvmDaKmJw2NE2HqvwNi7fN84VVGxzBzgSJtiAt3K+w2amgaHcNRxv9qVt4KzGAJ+tqeRCiG98
+	XTy8TnFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhFjO-00BLuk-0Y;
-	Fri, 15 Sep 2023 20:48:02 +0000
-Received: from omta34.uswest2.a.cloudfilter.net ([35.89.44.33])
+	id 1qhQNz-00C8bS-2y;
+	Sat, 16 Sep 2023 08:10:39 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhFiI-00BLoF-0N
-	for linux-mediatek@lists.infradead.org;
-	Fri, 15 Sep 2023 20:47:11 +0000
-Received: from eig-obgw-6008a.ext.cloudfilter.net ([10.0.30.227])
-	by cmsmtp with ESMTP
-	id hALzq8dmIOzKlhFiGqIGcJ; Fri, 15 Sep 2023 20:46:52 +0000
-Received: from gator4166.hostgator.com ([108.167.133.22])
-	by cmsmtp with ESMTPS
-	id hFiGqzjt2tHuqhFiGqc9s2; Fri, 15 Sep 2023 20:46:52 +0000
-X-Authority-Analysis: v=2.4 cv=OcCLszfY c=1 sm=1 tr=0 ts=6504c2bc
- a=1YbLdUo/zbTtOZ3uB5T3HA==:117 a=WzbPXH4gqzPVN0x6HrNMNA==:17
- a=OWjo9vPv0XrRhIrVQ50Ab3nP57M=:19 a=dLZJa+xiwSxG16/P+YVxDGlgEgI=:19
- a=IkcTkHD0fZMA:10 a=zNV7Rl7Rt7sA:10 a=wYkD_t78qR0A:10 a=NEAV23lmAAAA:8
- a=VwQbUJbxAAAA:8 a=pGLkceISAAAA:8 a=QX4gbG5DAAAA:8 a=l0hiEBf7AAAA:8
- a=QyXUC8HyAAAA:8 a=JfrnYn6hAAAA:8 a=cm27Pg_UAAAA:8 a=qjWHau5h7Oqj65Zv8QkA:9
- a=QEXdDO2ut3YA:10 a=AjGcO6oz07-iQ99wixmX:22 a=AbAUZ8qAyYyZVLSsDulk:22
- a=ynCB8LqupOr-u-Kv-6Up:22 a=1CNFftbPRP8L7MoqJWF3:22 a=xmb-EsYY8bH0VWELuYED:22
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=+yXEUbam3ZE5YDXyhgQVpOQnERY8L95N3GOx4Xs5rzU=; b=mR3cT3YE+Pnbwo/mWQ0ePc2YJc
-	q7K30d4QGhIqvgClLrXAP42qg+9wNZ53ynuemEw473MEYOUGam9x92GCK7n5ee5sI4cM46O2wRAs5
-	9qNnY5hYX3d0o96cf1pMUAO1/KLKROtStuDzRAo0yVUvoOGMp/9GulfP6QotP02eRLgJ2E1EZK9Wj
-	UeaSUnVXnesC5O/G/modRkZYr1gnM2zBDG07ynjLtQeGVaZMLIQs9q2rCJPQbE/IW8Duei5LTPXTB
-	hsync8r48EFd7UWnMrkR0UkMjTJhOFf/Xm/e73FtEyodpdKtD+RkD66ppSGZCGdTD8uPGxHXe3KHd
-	7egr4hnQ==;
-Received: from 187-162-21-192.static.axtel.net ([187.162.21.192]:38348 helo=[192.168.15.8])
-	by gator4166.hostgator.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96)
-	(envelope-from <gustavo@embeddedor.com>)
-	id 1qhFiD-002bKA-1Z;
-	Fri, 15 Sep 2023 15:46:49 -0500
-Message-ID: <f6421279-e2a6-8ad5-cc46-0b292eb1223d@embeddedor.com>
-Date: Fri, 15 Sep 2023 14:47:44 -0600
+	id 1qhQNv-00C8aq-1V;
+	Sat, 16 Sep 2023 08:10:37 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 8F278608C0;
+	Sat, 16 Sep 2023 08:10:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9AE5EC433C8;
+	Sat, 16 Sep 2023 08:10:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1694851830;
+	bh=Vn2DREJrAn8aRUxiz3WQryX63T4UuS6DU0+Ekb7wTm4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=n/BOcYygBC0G4RcSGiatuCr/r8q4kLlIb9Oibd9j78tGln5AE7VUXlKzUGv3oZoNe
+	 yZkB2iu0/WGky4eM/U3qo0reTujDlH0LCjfJd6NKB1BztVhzQc/jTLP9JhYsCVNGB5
+	 xc4hpPrN4FPCFKfdktUEMdT46R/j6pjWt9Eisaw4JQOs3thUJmzZQY3nrgKSEzYShd
+	 AGDnPuV4q97Ka6oajzo+OnYG8rEjS/kKyl1ZvnR/ff6K7djRnbTC01GhRabGmls9I2
+	 ST6JK+dDTWDbGe6jr2DkerJrghE3QC2l+ErthmzjWKTak7ZhGHgAr479NyhLAZFLR8
+	 QctLBFjj0spCQ==
+From: Jisheng Zhang <jszhang@kernel.org>
+To: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Jose Abreu <joabreu@synopsys.com>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Samin Guo <samin.guo@starfivetech.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: netdev@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next v2 00/22] convert to devm_stmmac_probe_config_dt
+Date: Sat, 16 Sep 2023 15:58:06 +0800
+Message-Id: <20230916075829.1560-1-jszhang@kernel.org>
+X-Mailer: git-send-email 2.40.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH] leds: mt6370: Annotate struct mt6370_priv with
- __counted_by
-Content-Language: en-US
-To: Kees Cook <keescook@chromium.org>, Pavel Machek <pavel@ucw.cz>
-Cc: Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Alice Chen <alice_chen@richtek.com>,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- ChiYuan Huang <cy_huang@richtek.com>, ChiaEn Wu <chiaen_wu@richtek.com>,
- kernel test robot <lkp@intel.com>, linux-leds@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Nathan Chancellor <nathan@kernel.org>,
- Nick Desaulniers <ndesaulniers@google.com>, Tom Rix <trix@redhat.com>,
- linux-kernel@vger.kernel.org, llvm@lists.linux.dev,
- linux-hardening@vger.kernel.org
-References: <20230915201051.never.429-kees@kernel.org>
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-In-Reply-To: <20230915201051.never.429-kees@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - embeddedor.com
-X-BWhitelist: no
-X-Source-IP: 187.162.21.192
-X-Source-L: No
-X-Exim-ID: 1qhFiD-002bKA-1Z
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: 187-162-21-192.static.axtel.net ([192.168.15.8]) [187.162.21.192]:38348
-X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 256
-X-Org: HG=hgshared;ORG=hostgator;
-X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
-X-Local-Domain: yes
-X-CMAE-Envelope: MS4xfDv9lU+YUYKNkKn3L872kjwumzCr33ssamPTeo2KwnmFUuGjg3e6tL8iCPM9uupVqruInxI9lBb2ZPKK2nqnX+6TsKUjzs/YhAMj2x0KMS8riyzZHc0D
- RYneVIQtmrizF6whJ0MW3NoVKHzY3RbwzqR+bmDrVxzz7ePuAVjg3v/RLy7MkeyW5kiTqJZm3IYzGWp5zEhphTjtOi8PAGwE/vkunn5CL/KSrm9QNLv0oikc
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230915_134658_981586_A1866D14 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20230916_011035_610959_222F792A 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,68 +104,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Russell pointed out there's a new devm_stmmac_probe_config_dt()
+helper now when reviewing my starfive gmac error handling patch[1].
+After greping the code, this nice helper was introduced by Bartosz in
+[2], I think it's time to convert all dwmac users to this helper and
+finally complete the TODO in [2] "but once all users of the old
+stmmac_pltfr_remove() are converted to the devres helper, it will be
+renamed back to stmmac_pltfr_remove() and the no_dt function removed."
 
+Link: https://lore.kernel.org/netdev/ZOtWmedBsa6wQQ6+@shell.armlinux.org.uk/ [1]
+Link: https://lore.kernel.org/all/20230623100417.93592-1-brgl@bgdev.pl/  [2]
 
-On 9/15/23 14:10, Kees Cook wrote:
-> Prepare for the coming implementation by GCC and Clang of the __counted_by
-> attribute. Flexible array members annotated with __counted_by can have
-> their accesses bounds-checked at run-time checking via CONFIG_UBSAN_BOUNDS
-> (for array indexing) and CONFIG_FORTIFY_SOURCE (for strcpy/memcpy-family
-> functions).
-> 
-> As found with Coccinelle[1], add __counted_by for struct mt6370_priv.
-> 
-> [1] https://github.com/kees/kernel-tools/blob/trunk/coccinelle/examples/counted_by.cocci
-> 
-> Cc: Pavel Machek <pavel@ucw.cz>
-> Cc: Lee Jones <lee@kernel.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Cc: Alice Chen <alice_chen@richtek.com>
-> Cc: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-> Cc: ChiYuan Huang <cy_huang@richtek.com>
-> Cc: ChiaEn Wu <chiaen_wu@richtek.com>
-> Cc: kernel test robot <lkp@intel.com>
-> Cc: linux-leds@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> Signed-off-by: Kees Cook <keescook@chromium.org>
+Since v1:
+ - rebase on new net-next
+ - add make stmmac_{probe|remove}_config_dt static as suggested by Russell.
 
-Reviewed-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+Jisheng Zhang (23):
+  net: stmmac: dwmac-anarion: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-dwc-qos-eth: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-generic: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-generic: use devm_stmmac_pltfr_probe()
+  net: stmmac: dwmac-imx: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-ingenic: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-intel-plat: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-ipq806x: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-lpc18xx: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-mediatek: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-meson: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-meson8b: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-rk: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-socfpga: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-starfive: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-sti: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-stm32: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-sun8i: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-sunxi: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-tegra: use devm_stmmac_probe_config_dt()
+  net: stmmac: dwmac-visconti: use devm_stmmac_probe_config_dt()
+  net: stmmac: rename stmmac_pltfr_remove_no_dt to stmmac_pltfr_remove
+  net: stmmac: make stmmac_{probe|remove}_config_dt static
 
-Thanks
+ .../ethernet/stmicro/stmmac/dwmac-anarion.c   | 10 +--
+ .../stmicro/stmmac/dwmac-dwc-qos-eth.c        | 15 +---
+ .../ethernet/stmicro/stmmac/dwmac-generic.c   | 15 +---
+ .../net/ethernet/stmicro/stmmac/dwmac-imx.c   | 13 ++--
+ .../ethernet/stmicro/stmmac/dwmac-ingenic.c   | 33 +++------
+ .../stmicro/stmmac/dwmac-intel-plat.c         | 25 +++----
+ .../ethernet/stmicro/stmmac/dwmac-ipq806x.c   | 27 +++----
+ .../ethernet/stmicro/stmmac/dwmac-lpc18xx.c   | 19 ++---
+ .../ethernet/stmicro/stmmac/dwmac-mediatek.c  |  6 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-meson.c | 25 ++-----
+ .../ethernet/stmicro/stmmac/dwmac-meson8b.c   | 53 +++++---------
+ .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 14 ++--
+ .../ethernet/stmicro/stmmac/dwmac-socfpga.c   | 16 ++---
+ .../ethernet/stmicro/stmmac/dwmac-starfive.c  | 10 +--
+ .../net/ethernet/stmicro/stmmac/dwmac-sti.c   | 14 ++--
+ .../net/ethernet/stmicro/stmmac/dwmac-stm32.c | 17 ++---
+ .../net/ethernet/stmicro/stmmac/dwmac-sun8i.c |  6 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-sunxi.c | 23 +++---
+ .../net/ethernet/stmicro/stmmac/dwmac-tegra.c | 10 ++-
+ .../ethernet/stmicro/stmmac/dwmac-visconti.c  | 18 ++---
+ .../ethernet/stmicro/stmmac/stmmac_platform.c | 70 ++++++-------------
+ .../ethernet/stmicro/stmmac/stmmac_platform.h |  5 --
+ 22 files changed, 127 insertions(+), 317 deletions(-)
+
 -- 
-Gustavo
+2.40.1
 
-> ---
->   drivers/leds/flash/leds-mt6370-flash.c | 2 +-
->   drivers/leds/rgb/leds-mt6370-rgb.c     | 2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/leds/flash/leds-mt6370-flash.c b/drivers/leds/flash/leds-mt6370-flash.c
-> index 931067c8a75f..912d9d622320 100644
-> --- a/drivers/leds/flash/leds-mt6370-flash.c
-> +++ b/drivers/leds/flash/leds-mt6370-flash.c
-> @@ -81,7 +81,7 @@ struct mt6370_priv {
->   	unsigned int fled_torch_used;
->   	unsigned int leds_active;
->   	unsigned int leds_count;
-> -	struct mt6370_led leds[];
-> +	struct mt6370_led leds[] __counted_by(leds_count);
->   };
->   
->   static int mt6370_torch_brightness_set(struct led_classdev *lcdev, enum led_brightness level)
-> diff --git a/drivers/leds/rgb/leds-mt6370-rgb.c b/drivers/leds/rgb/leds-mt6370-rgb.c
-> index bb62431efe83..448d0da11848 100644
-> --- a/drivers/leds/rgb/leds-mt6370-rgb.c
-> +++ b/drivers/leds/rgb/leds-mt6370-rgb.c
-> @@ -153,7 +153,7 @@ struct mt6370_priv {
->   	const struct mt6370_pdata *pdata;
->   	unsigned int leds_count;
->   	unsigned int leds_active;
-> -	struct mt6370_led leds[];
-> +	struct mt6370_led leds[] __counted_by(leds_count);
->   };
->   
->   static const struct reg_field common_reg_fields[F_MAX_FIELDS] = {
 
