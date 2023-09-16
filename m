@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB193CD37B7
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 11:10:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE354CD37BB
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 11:11:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BgK1RR7PvoKyZDk0Jc59OCF7MxiLvtGydv7ioUqbT0Y=; b=3ckxZ9Go+j6vanovbNCkvg+yje
-	cB7RZeTAFvTgx9kcr+I9InmOKpFVoVk2KTjper9Be3+mlbMv49LQgZlcfBaieztwiGmcKFe/g4a+z
-	cArOJ3tFSZlXztjAq4BuFoIvRGBUS8qMMwHthER3GO0XnJfI2cXpWVVPQK8ZzhjgOm6KPRH2dol9U
-	zTuaOLTslFOEA+H5CuOZHvvNL3okzeDWznylgTAcACBSdtrrUBBRniD2wSIyaywOqsBYf3C5b+kO4
-	SoMyaXCQjC1KHGQojnawKTF2DI2lixmDM08teDPXrxuWiI2C1cTd46R4uhSCx/kdGfsKzgCFc5wuy
-	jVqCjTxg==;
+	bh=4p0NlFBH4xgH4kzo+ZWXDnGHN/kVaqsbVlpwtx8tToU=; b=s6mrgW+kDE7E9gZNrETo1NfESt
+	06QFXPszzKv4c1dcs4vkpmgEUrDdoL6MDay6Amxk1lEADbuB1o6U/yAhP045yQ0LwUzcA2C9EzgaA
+	2+WQQJC6MzuIlBHU6pY8XcJYlUcrEjDuCjTWrZuH/iWrupPku0x9Rd8rhLyXgeNE5IOio/b2M7HQ2
+	Ub/HfFQQyQtfS16rz7ct8ArEMdx8/B1CCfXDDQh/AElmym+GGqPwI38sWJMRWB8puaMbRp2q20bJN
+	TRHbf02aYwHmO3CwXWDyw3tSq706NIfsjw7+lT9TLMu1Qea6z4jQjg4/fpkBqVRC5wRQmlOXfCDb+
+	AvyBb6oQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhTC4-00CRdt-2Z;
-	Sat, 16 Sep 2023 11:10:32 +0000
-Received: from relay1-d.mail.gandi.net ([217.70.183.193])
+	id 1qhTCY-00CRiY-1y;
+	Sat, 16 Sep 2023 11:11:02 +0000
+Received: from relay1-d.mail.gandi.net ([2001:4b98:dc4:8::221])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhTC1-00CRdO-2N;
-	Sat, 16 Sep 2023 11:10:31 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 91CB3240003;
-	Sat, 16 Sep 2023 11:10:09 +0000 (UTC)
+	id 1qhTCU-00CRgu-1g;
+	Sat, 16 Sep 2023 11:11:00 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id A131B240005;
+	Sat, 16 Sep 2023 11:10:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1694862628;
+	t=1694862655;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=BgK1RR7PvoKyZDk0Jc59OCF7MxiLvtGydv7ioUqbT0Y=;
-	b=jfHvHtuc+xqfSbVdGtke/CXe36aT3ln5BhveQlDrHTC4bUBcwnisulq7Nq5WitSm3y/Zro
-	v8JuJhLWLr+P6UfJQfQBfkcldkNix/BAG7b5INH2Zo461XHQKOBuaLe6MPW8EfCvMimDe6
-	esnrB0UDXQ23P3rmQZgIXkzecBbPtSgH+S/RokQbhJMm0/w4dI3Mqws6oIHcRuVm6z64UW
-	kV1yltovhTPM93EnMDIBCf7n7vc0phIBwojsrPUnl76AEqrFIKhc1bte9p5fs+MkZjpUVY
-	Lk084pAvydhldmDOQkS9YGPo7O/vNcPTmYi5hOvW9iFD/bqArjKLiqclwu8EJg==
+	bh=4p0NlFBH4xgH4kzo+ZWXDnGHN/kVaqsbVlpwtx8tToU=;
+	b=GE4iVrg/VE60T4umjJ4+5PcY1uIjtRw3gTxSOWhjhMl1LwG2XNoSjEFnOZ0dZOadfELSFU
+	pOfLfwbcAltSQTZaKj/bT32T4K4uc/NY2+crFKO7ljS9at1cQKOmC5F1Bb6IFA/P3kEMY0
+	BgK/+953ow3X4WlpMSs4ZvNx/64Q6nPf3zfLGyEffzzkgUxlZ4/GI27HNd8U88/1PGNiM2
+	OFLtIXplJbGO72zyIhGV7N5r61QYKwIcVmZwppFqtgp4obfTpB5BnHlSB5jq4Q+nPWYVQm
+	44ZADQdPQEC1SMG+DcZ9V/9ZgjksBqHUUa3TmdTAxTBP0pey/1KlshitGGnVeg==
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -102,9 +102,9 @@ Cc: Woojung Huh <Woojung.Huh@microchip.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-renesas-soc@vger.kernel.org
-Subject: [PATCH net-next v2 03/10] dt-bindings: net: dsa: realtek: fix MDIO bus child node restrictions
-Date: Sat, 16 Sep 2023 14:08:55 +0300
-Message-Id: <20230916110902.234273-4-arinc.unal@arinc9.com>
+Subject: [PATCH net-next v2 04/10] dt-bindings: net: dsa: nxp,sja1105: improve MDIO bus bindings
+Date: Sat, 16 Sep 2023 14:08:56 +0300
+Message-Id: <20230916110902.234273-5-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230916110902.234273-1-arinc.unal@arinc9.com>
 References: <20230916110902.234273-1-arinc.unal@arinc9.com>
@@ -113,8 +113,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230916_041030_045621_BCE4F7BB 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20230916_041058_851679_0EC5F896 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,64 +129,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MDIO controlled Realtek switches (distinguished by the reg property
-being used) are allowed to have their MDIO bus registered OF-based. Allow
-the mdio property for them.
+The SJA1110 switch uses the mdios property for its two MDIO buses. Instead
+of a pattern, define two mdio nodes. This ensures the same compatible
+string won't be used twice. The address and size cell definitions can also
+be removed now that the reg property has become unnecessary.
 
-Only the SMI controlled Realtek switches require the compatible property of
-the mdio child node. Require it for them and disallow it for the MDIO controlled
-ones.
-
-Remove the unnecessary if:then:not:required rule and comments.
+Move the comment to the description of mdios, mdio0, and mdio1 properties.
+Disallow the mdios property for SJA1105. Require at least one of the MDIO
+buses to be defined to prevent empty mdios child node.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- .../devicetree/bindings/net/dsa/realtek.yaml  | 20 ++++++++-----------
- 1 file changed, 8 insertions(+), 12 deletions(-)
+ .../bindings/net/dsa/nxp,sja1105.yaml         | 49 ++++++++++---------
+ 1 file changed, 26 insertions(+), 23 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/realtek.yaml b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-index cfd69c2604ea..7eb025df0df8 100644
---- a/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-@@ -109,18 +109,19 @@ if:
+diff --git a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
+index 4d5f5cc6d031..3f3c4ecc6442 100644
+--- a/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/nxp,sja1105.yaml
+@@ -35,42 +35,44 @@ properties:
+   spi-cpha: true
+   spi-cpol: true
  
- then:
-   $ref: /schemas/spi/spi-peripheral-props.yaml#
--  not:
--    required:
--      - mdc-gpios
--      - mdio-gpios
--      - mdio
+-  # Optional container node for the 2 internal MDIO buses of the SJA1110
+-  # (one for the internal 100base-T1 PHYs and the other for the single
+-  # 100base-TX PHY). The "reg" property does not have physical significance.
+-  # The PHY addresses to port correspondence is as follows: for 100base-T1,
+-  # port 5 has PHY 1, port 6 has PHY 2 etc, while for 100base-TX, port 1 has
+-  # PHY 1.
+   mdios:
++    description:
++      The optional container node for the two MDIO buses of the SJA1110.
+     type: object
+ 
+     properties:
+-      '#address-cells':
+-        const: 1
+-      '#size-cells':
+-        const: 0
 -
-   properties:
-     mdc-gpios: false
-     mdio-gpios: false
--    mdio: false
-+    mdio:
-+      properties:
-+        compatible: false
+-    patternProperties:
+-      "^mdio@[0-1]$":
++      mdio0:
++        description:
++          The node for the bus controlling the 100base-T1 PHYs of the SJA1110
++          switch. PHY address to port correspondence is port 5 has PHY 1, port 6
++          has PHY 2, etc.
+         $ref: /schemas/net/mdio.yaml#
+         unevaluatedProperties: false
  
- else:
-+  properties:
-+    mdio:
-+      required:
-+        - compatible
+         properties:
+           compatible:
+-            oneOf:
+-              - enum:
+-                  - nxp,sja1110-base-t1-mdio
+-                  - nxp,sja1110-base-tx-mdio
++            const: nxp,sja1110-base-t1-mdio
 +
-   required:
-     - mdc-gpios
-     - mdio-gpios
-@@ -130,11 +131,6 @@ else:
- required:
-   - compatible
++        required:
++          - compatible
  
--    #  - mdc-gpios
--    #  - mdio-gpios
--    #  - reset-gpios
--    #  - mdio
--
- unevaluatedProperties: false
+-          reg:
+-            oneOf:
+-              - enum:
+-                  - 0
+-                  - 1
++      mdio1:
++        description:
++          The node for the bus controlling the 100base-TX PHY of the SJA1110
++          switch. PHY address to port correspondence is port 1 has PHY 1.
++        $ref: /schemas/net/mdio.yaml#
++        unevaluatedProperties: false
++
++        properties:
++          compatible:
++            const: nxp,sja1110-base-tx-mdio
  
- examples:
+         required:
+           - compatible
+-          - reg
++
++    anyOf:
++      - required: [ mdio0 ]
++      - required: [ mdio1 ]
+ 
+ patternProperties:
+   "^(ethernet-)?ports$":
+@@ -124,6 +126,7 @@ allOf:
+     then:
+       properties:
+         spi-cpol: false
++        mdios: false
+       required:
+         - spi-cpha
+     else:
 -- 
 2.39.2
 
