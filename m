@@ -4,117 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A358DCD37B7
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 11:14:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D328CD37BB
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 11:33:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HAZCgeoh9KUduxxc51sEyaD/Ww3GnyAUx/PFLTVQyPc=; b=aFN+jC5pC4BgwN3j+hRSnGt1/f
-	KOfgPzYrrEoRtRm5gl2vHRPNA4CrjkM8QocHPBwLmdkjcqzBpJ43a2eJ6C8hvxsYkrHnuy9wRCHbX
-	fq9UuaA6EVMBBer5RtGbUvWqNACjYWHQLY0t1QwH3edd6ksl55MGhFsHcelrngSKmJlHbre0+zFFO
-	Y6a7Z0qMJTy5NbxqxEeR392zwuHc4fHeqeKjR93IAkFgeBcEyWQxA2/spmMHgY4enxvnilK8Qq+hd
-	pekGjXFl+NVIm/rGJhzvb74kyH3NtX4IJskF/4OmFAFUKaYS9IoMhzyYNL4cGNd5nDtMcUbtKgLiz
-	jKL03mDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hMzPQ8aaLRD7k9X0lpqUQAXHbIrWQDq6gdiavUcBGAY=; b=XWs9DFKY+4ierD5cR+co2tV0KM
+	fHl6aQv2G6Qzdi4DWbHEtW64ZSh4K8JrQNN1NnYRHng4ECMkeg6IWjGTRoq4fLGcNb6Aot15Roupv
+	eDG/s2+rY3nuT4Ie0HSMiEYqgDG48WO5QUgwViJLSOo67NaoQenHbt4yV2EEyYCCfebPNvjNOpB0p
+	De++EKVdNJ7mC/nnsk9zjRfUSoVwvCMoawoe9D1W1AtC/VoHtQkQzNilwq2nw60rXJiM63e+yfo/z
+	OJPUxcIjcmG1/sMWry4xUhxfl7wD/owOosIP3Dyotm54dpAcjFeFjFLy9EJKWBcRvvOnUKSoWZh7D
+	5Tc0KCkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhTFZ-00CS7e-1U;
-	Sat, 16 Sep 2023 11:14:09 +0000
-Received: from relay1-d.mail.gandi.net ([217.70.183.193])
+	id 1qhTYj-00CSs6-3A;
+	Sat, 16 Sep 2023 11:33:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhTFV-00CS6l-0v;
-	Sat, 16 Sep 2023 11:14:07 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 89478240005;
-	Sat, 16 Sep 2023 11:13:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1694862843;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=HAZCgeoh9KUduxxc51sEyaD/Ww3GnyAUx/PFLTVQyPc=;
-	b=hKK2Wuk79GoaUo/hY/fuO5GNEsYpXvHQTmZHzkmUu1psjYgV5XTyUjTmWeR3yNV65L4Ghz
-	kQB0p3rthYgY0/1iJ1iTHdBtt3XqWLfmGTwb2cQTywTU4YqVAi5uQYhbNk7NK/b0s7wch5
-	o3R6bt5DMAyUXaAkMcviVr7aHL8KquFNdxeplIiYsZKYMMVXrxtHkocr3elHkU4mPcuJqK
-	21vBYwU+gVEk/OLBULj3WcOF61OeP3y7yC+8z+plp1vHHwnnZbaTiVNcvxSGNrMqFtf+FM
-	p6uiuukzlQvtFjbmaBTjXA7kM9QiyQdGrD7nVsUCHlmLE9UgQKwalLOkDla9Pw==
-From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-To: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	George McCollister <george.mccollister@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Linus Walleij <linus.walleij@linaro.org>,
-	=?UTF-8?q?Alvin=20=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	=?UTF-8?q?Cl=C3=A9ment=20L=C3=A9ger?= <clement.leger@bootlin.com>,
-	Marcin Wojtas <mw@semihalf.com>,
-	"Russell King (Oracle)" <linux@armlinux.org.uk>,
-	Lars Povlsen <lars.povlsen@microchip.com>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Marek Vasut <marex@denx.de>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	John Crispin <john@phrozen.org>,
-	Madalin Bucur <madalin.bucur@nxp.com>,
-	Ioana Ciornei <ioana.ciornei@nxp.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Felix Fietkau <nbd@nbd.name>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	Oleksij Rempel <linux@rempel-privat.de>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Grygorii Strashko <grygorii.strashko@ti.com>,
-	Sekhar Nori <nsekhar@ti.com>,
-	Shyam Pandey <radhey.shyam.pandey@xilinx.com>
-Cc: Woojung Huh <Woojung.Huh@microchip.com>,
-	Steen Hegelund <steen.hegelund@microchip.com>,
-	mithat.guner@xeront.com,
-	erkin.bozoglu@xeront.com,
-	netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org
-Subject: [PATCH net-next v2 10/10] dt-bindings: net: marvell-armada-370-neta: convert to json-schema
-Date: Sat, 16 Sep 2023 14:09:02 +0300
-Message-Id: <20230916110902.234273-11-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230916110902.234273-1-arinc.unal@arinc9.com>
-References: <20230916110902.234273-1-arinc.unal@arinc9.com>
+	id 1qhTYi-00CSre-0M;
+	Sat, 16 Sep 2023 11:33:57 +0000
+X-UUID: e6928f10548411ee86758d4a7c00f3a0-20230916
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hMzPQ8aaLRD7k9X0lpqUQAXHbIrWQDq6gdiavUcBGAY=;
+	b=j3V/bVvvikNFGVMxAv6SU6tQ9RIIGDsXuM+StWQsWwc3ZbqmsWZ13D7LdUsQMKg3tQw5vVVDctXh7nHaszOPh0rPgDm+fd20iHMofz8Z36GFq/DAo99nNP9uHcdr6Q4N6sRZmpK5Yz44lE7Oh0sLOKsG1w8cBVLKYoqmN4nL5L4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.31,REQID:e12c4b12-526b-4274-80ff-c9202dc96e6f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:0ad78a4,CLOUDID:d5bac4ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: e6928f10548411ee86758d4a7c00f3a0-20230916
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <bo.ye@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1142261434; Sat, 16 Sep 2023 04:33:47 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sat, 16 Sep 2023 19:33:44 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Sat, 16 Sep 2023 19:33:43 +0800
+From: Bo Ye <bo.ye@mediatek.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
+	<daniel.lezcano@linaro.org>, Amit Kucheria <amitk@kernel.org>, Zhang Rui
+	<rui.zhang@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <yugang.wang@mediatek.com>, <yongdong.zhang@mediatek.com>,
+	<browse.zhang@mediatek.com>, Bo Ye <bo.ye@mediatek.com>,
+	<linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] Subject: thermal: Fix potential race condition in suspend/resume
+Date: Sat, 16 Sep 2023 19:33:26 +0800
+Message-ID: <20230916113327.85693-1-bo.ye@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.682700-8.000000
+X-TMASE-MatchedRID: 53RBOU84eqlniBBtNEnVPdsfxZpQv2qMFAr+wPWe7jEmu2XKsBcW8Rwb
+	B+iCKX6CIpXyAy0omPBsNi0cjuzvUperG0eDQRp7Bu2zRCSrLjYrHkgIan9a0YrVCk5dmxbq3qM
+	rf/AypQVwZC1i9Jj6zoeduB0bUkzgz7wL+9mPXSV1e7Xbb6Im2kyQ5fRSh265GNAPebYwJ/uta8
+	DXVXWIqYJi3vP75Z5QBFQhScLIoJe6zsztxuMjKKwxbZnudyr7vJ9Xvh5CmT6bKItl61J/yfJvo
+	cwUrWp7MFRQ7RYz5mULbigRnpKlKTpcQTtiHDgWg4zVeOPsni4XPwbj6LWT34wDFrwDUXDgxGGc
+	duInXkiBFbtJie1T3EMMprcbiest
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.682700-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 24FFF8FE059C8449768942D227F29DF4D6B35F708D3BEFDA6387961263ED06362000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230916_041405_592273_9C615571 
-X-CRM114-Status: GOOD (  22.93  )
+X-CRM114-CacheID: sfid-20230916_043356_157303_8C35C267 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,182 +98,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the document for Marvell Armada 370 / Armada XP / Armada 3700
-Ethernet Controller (NETA) to json-schema.
+From: "yugang.wang" <yugang.wang@mediatek.com>
 
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Body:
+This patch fixes a race condition during system resume. It occurs if
+the system is exiting a suspend state and a user is trying to
+register/unregister a thermal zone concurrently. The root cause is
+that both actions access the `thermal_tz_list`.
+
+In detail:
+
+1. At PM_POST_SUSPEND during the resume, the system reads all thermal
+   zones in `thermal_tz_list`, then resets and updates their
+   temperatures.
+2. When registering/unregistering a thermal zone, the
+   `thermal_tz_list` gets manipulated.
+
+These two actions might occur concurrently, causing a race condition.
+To solve this issue, we introduce a mutex lock to protect
+`thermal_tz_list` from being modified while it's being read and
+updated during the resume from suspend.
+
+Kernel oops excerpt related to this fix:
+
+[ 5201.869845] [T316822] pc: [0xffffffeb7d4876f0] mutex_lock+0x34/0x170
+[ 5201.869856] [T316822] lr: [0xffffffeb7ca98a84] thermal_pm_notify+0xd4/0x26c
+[... cut for brevity ...]
+[ 5201.871061] [T316822]  suspend_prepare+0x150/0x470
+[ 5201.871067] [T316822]  enter_state+0x84/0x6f4
+[ 5201.871076] [T316822]  state_store+0x15c/0x1e8
+
+Change-Id: Ifdbdecba17093f91eab7e36ce04b46d311ca6568
+Signed-off-by: yugang.wang <yugang.wang@mediatek.com>
+Signed-off-by: Bo Ye <bo.ye@mediatek.com>
 ---
- .../bindings/net/marvell-armada-370-neta.txt  |  50 ---------
- .../bindings/net/marvell-armada-370-neta.yaml | 102 ++++++++++++++++++
- 2 files changed, 102 insertions(+), 50 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/net/marvell-armada-370-neta.txt
- create mode 100644 Documentation/devicetree/bindings/net/marvell-armada-370-neta.yaml
+ drivers/thermal/thermal_core.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/marvell-armada-370-neta.txt b/Documentation/devicetree/bindings/net/marvell-armada-370-neta.txt
-deleted file mode 100644
-index 2bf31572b08d..000000000000
---- a/Documentation/devicetree/bindings/net/marvell-armada-370-neta.txt
-+++ /dev/null
-@@ -1,50 +0,0 @@
--* Marvell Armada 370 / Armada XP / Armada 3700 Ethernet Controller (NETA)
--
--Required properties:
--- compatible: could be one of the following:
--	"marvell,armada-370-neta"
--	"marvell,armada-xp-neta"
--	"marvell,armada-3700-neta"
--	"marvell,armada-ac5-neta"
--- reg: address and length of the register set for the device.
--- interrupts: interrupt for the device
--- phy: See ethernet.txt file in the same directory.
--- phy-mode: See ethernet.txt file in the same directory
--- clocks: List of clocks for this device. At least one clock is
--  mandatory for the core clock. If several clocks are given, then the
--  clock-names property must be used to identify them.
--
--Optional properties:
--- tx-csum-limit: maximum mtu supported by port that allow TX checksum.
--  Value is presented in bytes. If not used, by default 1600B is set for
--  "marvell,armada-370-neta" and 9800B for others.
--- clock-names: List of names corresponding to clocks property; shall be
--  "core" for core clock and "bus" for the optional bus clock.
--- phys: comphy for the ethernet port, see ../phy/phy-bindings.txt
--
--Optional properties (valid only for Armada XP/38x):
--
--- buffer-manager: a phandle to a buffer manager node. Please refer to
--  Documentation/devicetree/bindings/net/marvell-neta-bm.txt
--- bm,pool-long: ID of a pool, that will accept all packets of a size
--  higher than 'short' pool's threshold (if set) and up to MTU value.
--  Obligatory, when the port is supposed to use hardware
--  buffer management.
--- bm,pool-short: ID of a pool, that will be used for accepting
--  packets of a size lower than given threshold. If not set, the port
--  will use a single 'long' pool for all packets, as defined above.
--
--Example:
--
--ethernet@70000 {
--	compatible = "marvell,armada-370-neta";
--	reg = <0x70000 0x2500>;
--	interrupts = <8>;
--	clocks = <&gate_clk 4>;
--	tx-csum-limit = <9800>
--	phy = <&phy0>;
--	phy-mode = "rgmii-id";
--	buffer-manager = <&bm>;
--	bm,pool-long = <0>;
--	bm,pool-short = <1>;
--};
-diff --git a/Documentation/devicetree/bindings/net/marvell-armada-370-neta.yaml b/Documentation/devicetree/bindings/net/marvell-armada-370-neta.yaml
-new file mode 100644
-index 000000000000..9283ab74cdb2
---- /dev/null
-+++ b/Documentation/devicetree/bindings/net/marvell-armada-370-neta.yaml
-@@ -0,0 +1,102 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/net/marvell-armada-370-neta.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Marvell Armada 370 / Armada XP / Armada 3700 Ethernet Controller (NETA)
-+
-+allOf:
-+  - $ref: ethernet-controller.yaml#
-+  - $ref: ethernet-controller.yaml#/$defs/phylink
-+
-+maintainers:
-+  - Arınç ÜNAL <arinc.unal@arinc9.com>
-+
-+properties:
-+  compatible:
-+    enum:
-+      - marvell,armada-370-neta
-+      - marvell,armada-xp-neta
-+      - marvell,armada-3700-neta
-+      - marvell,armada-ac5-neta
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    description:
-+      List of clocks for this device. At least one clock is mandatory for the
-+      core clock. If several clocks are given, then the clock-names property
-+      must be used to identify them.
-+
-+  tx-csum-limit:
-+    description:
-+      Maximum mtu supported by port that allow TX checksum. Value is presented
-+      in bytes. If not used, by default 1600B is set for
-+      "marvell,armada-370-neta" and 9800B for others.
-+
-+  clock-names:
-+    description:
-+      List of names corresponding to clocks property; shall be "core" for core
-+      clock and "bus" for the optional bus clock.
-+
-+  phys:
-+    description:
-+      comphy for the ethernet port, see ../phy/phy-bindings.txt.
-+
-+if:
-+  properties:
-+    compatible:
-+      enum:
-+        - marvell,armada-370-neta
-+        - marvell,armada-xp-neta
-+then:
-+  properties:
-+    buffer-manager:
-+      description:
-+        A phandle to a buffer manager node. Please refer to
-+        Documentation/devicetree/bindings/net/marvell-neta-bm.txt.
-+
-+    bm,pool-long:
-+      description:
-+        ID of a pool, that will accept all packets of a size higher than 'short'
-+        pool's threshold (if set) and up to MTU value. Obligatory, when the port
-+        is supposed to use hardware buffer management.
-+
-+    bm,pool-short:
-+      description:
-+        ID of a pool, that will be used for accepting packets of a size lower
-+        than given threshold. If not set, the port will use a single 'long' pool
-+        for all packets, as defined above.
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - phy-mode
-+  - clocks
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    ethernet@70000 {
-+        compatible = "marvell,armada-370-neta";
-+        reg = <0x70000 0x2500>;
-+        interrupts = <8>;
-+        clocks = <&gate_clk 4>;
-+        tx-csum-limit = <9800>;
-+        phy-mode = "rgmii-id";
-+        buffer-manager = <&bm>;
-+        bm,pool-long = <0>;
-+        bm,pool-short = <1>;
-+
-+        fixed-link {
-+            speed = <1000>;
-+            full-duplex;
-+        };
-+    };
+diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
+index 8717a3343512..a7a18ed57b6d 100644
+--- a/drivers/thermal/thermal_core.c
++++ b/drivers/thermal/thermal_core.c
+@@ -1529,12 +1529,14 @@ static int thermal_pm_notify(struct notifier_block *nb,
+ 	case PM_POST_HIBERNATION:
+ 	case PM_POST_RESTORE:
+ 	case PM_POST_SUSPEND:
++		mutex_lock(&thermal_list_lock);
+ 		atomic_set(&in_suspend, 0);
+ 		list_for_each_entry(tz, &thermal_tz_list, node) {
+ 			thermal_zone_device_init(tz);
+ 			thermal_zone_device_update(tz,
+ 						   THERMAL_EVENT_UNSPECIFIED);
+ 		}
++		mutex_unlock(&thermal_list_lock);
+ 		break;
+ 	default:
+ 		break;
 -- 
-2.39.2
+2.17.0
 
 
