@@ -4,86 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D328CD37BB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 11:33:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECE94CD37BB
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 14:06:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hMzPQ8aaLRD7k9X0lpqUQAXHbIrWQDq6gdiavUcBGAY=; b=XWs9DFKY+4ierD5cR+co2tV0KM
-	fHl6aQv2G6Qzdi4DWbHEtW64ZSh4K8JrQNN1NnYRHng4ECMkeg6IWjGTRoq4fLGcNb6Aot15Roupv
-	eDG/s2+rY3nuT4Ie0HSMiEYqgDG48WO5QUgwViJLSOo67NaoQenHbt4yV2EEyYCCfebPNvjNOpB0p
-	De++EKVdNJ7mC/nnsk9zjRfUSoVwvCMoawoe9D1W1AtC/VoHtQkQzNilwq2nw60rXJiM63e+yfo/z
-	OJPUxcIjcmG1/sMWry4xUhxfl7wD/owOosIP3Dyotm54dpAcjFeFjFLy9EJKWBcRvvOnUKSoWZh7D
-	5Tc0KCkg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gyJXrV2FBaJt5av+urMDvCRwP7rvah/NV7MA4qmSXFg=; b=RtPMYh4NU18D6bmUxi4JGxep4h
+	zo3pbYrlNJaOPJXGEJYnt1ZZsIZIZifXg162147kvtns02xyqKNI52rNzhFeLcud/xYQBUwLPxOBR
+	QxszvTWIDPeWiWysZf7iR4UrR4pfFIvFRjjsI6HN/EXC+nFT83IywEDx1Wu+eFSWF4nVPwe6q94YP
+	m6Fz4ukm4ARWzTqxBhljZSDePw8VBtmQAv4ztlMTcsoXtKLVtCiy8n0CNz01KWRtEq0el9bCZlYV6
+	CxXEUiTcOfmi4SGbB3PeDEBQ7mNI9rNt4YXmcF/2mg6zLU8KLdium6C1TU873UfB/3eOt7VXp3ldr
+	LzU9SPIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhTYj-00CSs6-3A;
-	Sat, 16 Sep 2023 11:33:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qhVw2-00CYtP-0q;
+	Sat, 16 Sep 2023 14:06:10 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhTYi-00CSre-0M;
-	Sat, 16 Sep 2023 11:33:57 +0000
-X-UUID: e6928f10548411ee86758d4a7c00f3a0-20230916
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hMzPQ8aaLRD7k9X0lpqUQAXHbIrWQDq6gdiavUcBGAY=;
-	b=j3V/bVvvikNFGVMxAv6SU6tQ9RIIGDsXuM+StWQsWwc3ZbqmsWZ13D7LdUsQMKg3tQw5vVVDctXh7nHaszOPh0rPgDm+fd20iHMofz8Z36GFq/DAo99nNP9uHcdr6Q4N6sRZmpK5Yz44lE7Oh0sLOKsG1w8cBVLKYoqmN4nL5L4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:e12c4b12-526b-4274-80ff-c9202dc96e6f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:d5bac4ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
-	NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: e6928f10548411ee86758d4a7c00f3a0-20230916
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <bo.ye@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1142261434; Sat, 16 Sep 2023 04:33:47 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 16 Sep 2023 19:33:44 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 16 Sep 2023 19:33:43 +0800
-From: Bo Ye <bo.ye@mediatek.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
-	<daniel.lezcano@linaro.org>, Amit Kucheria <amitk@kernel.org>, Zhang Rui
-	<rui.zhang@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <yugang.wang@mediatek.com>, <yongdong.zhang@mediatek.com>,
-	<browse.zhang@mediatek.com>, Bo Ye <bo.ye@mediatek.com>,
-	<linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] Subject: thermal: Fix potential race condition in suspend/resume
-Date: Sat, 16 Sep 2023 19:33:26 +0800
-Message-ID: <20230916113327.85693-1-bo.ye@mediatek.com>
-X-Mailer: git-send-email 2.17.0
+	id 1qhVvz-00CYsy-00;
+	Sat, 16 Sep 2023 14:06:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=gyJXrV2FBaJt5av+urMDvCRwP7rvah/NV7MA4qmSXFg=; b=u9f5w5Fn8ttIDhKg1E3O8+bt5e
+	Wurr44B24wGxlE/Sdq5Woyxu8FbDDcx8uxsC48IwsfOvw1o8zY2WFK4qMXbd8/dxV8EPT28Ste7Vc
+	qtpRHSHHvWZIA2cBax8dfMesckkr/Z8BPJq7r9r5gJv5kKRlZ0Mw5MOjKf3gdxKR6Gxc=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1qhVvB-006dhI-Ev; Sat, 16 Sep 2023 16:05:17 +0200
+Date: Sat, 16 Sep 2023 16:05:17 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	George McCollister <george.mccollister@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	=?iso-8859-1?Q?Cl=E9ment_L=E9ger?= <clement.leger@bootlin.com>,
+	Marcin Wojtas <mw@semihalf.com>,
+	"Russell King (Oracle)" <linux@armlinux.org.uk>,
+	Lars Povlsen <lars.povlsen@microchip.com>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Marek Vasut <marex@denx.de>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	John Crispin <john@phrozen.org>,
+	Madalin Bucur <madalin.bucur@nxp.com>,
+	Ioana Ciornei <ioana.ciornei@nxp.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Oleksij Rempel <linux@rempel-privat.de>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Jose Abreu <joabreu@synopsys.com>,
+	Grygorii Strashko <grygorii.strashko@ti.com>,
+	Sekhar Nori <nsekhar@ti.com>,
+	Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+	mithat.guner@xeront.com, erkin.bozoglu@xeront.com,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH net-next v2 08/10] dt-bindings: net: dsa: marvell:
+ convert to json-schema
+Message-ID: <63cc4c3c-5cac-4d54-99be-7f05e98406ba@lunn.ch>
+References: <20230916110902.234273-1-arinc.unal@arinc9.com>
+ <20230916110902.234273-9-arinc.unal@arinc9.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.682700-8.000000
-X-TMASE-MatchedRID: 53RBOU84eqlniBBtNEnVPdsfxZpQv2qMFAr+wPWe7jEmu2XKsBcW8Rwb
-	B+iCKX6CIpXyAy0omPBsNi0cjuzvUperG0eDQRp7Bu2zRCSrLjYrHkgIan9a0YrVCk5dmxbq3qM
-	rf/AypQVwZC1i9Jj6zoeduB0bUkzgz7wL+9mPXSV1e7Xbb6Im2kyQ5fRSh265GNAPebYwJ/uta8
-	DXVXWIqYJi3vP75Z5QBFQhScLIoJe6zsztxuMjKKwxbZnudyr7vJ9Xvh5CmT6bKItl61J/yfJvo
-	cwUrWp7MFRQ7RYz5mULbigRnpKlKTpcQTtiHDgWg4zVeOPsni4XPwbj6LWT34wDFrwDUXDgxGGc
-	duInXkiBFbtJie1T3EMMprcbiest
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.682700-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 24FFF8FE059C8449768942D227F29DF4D6B35F708D3BEFDA6387961263ED06362000:8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230916110902.234273-9-arinc.unal@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230916_043356_157303_8C35C267 
-X-CRM114-Status: GOOD (  11.37  )
+X-CRM114-CacheID: sfid-20230916_070607_045409_3DE1B4EA 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,63 +118,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "yugang.wang" <yugang.wang@mediatek.com>
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - description: |
+> +          Switch has base address 0x10. Use with models:
+> +          6085, 6095, 6097, 6123, 6131, 6141, 6161, 6165, 6171, 6172, 6175,
+> +          6176, 6185, 6240, 6320, 6321, 6341, 6350, 6351, 6352
+> +        const: marvell,mv88e6085
 
-Body:
-This patch fixes a race condition during system resume. It occurs if
-the system is exiting a suspend state and a user is trying to
-register/unregister a thermal zone concurrently. The root cause is
-that both actions access the `thermal_tz_list`.
+The .txt file contained:
 
-In detail:
+    The compatibility string is used only to find an identification
+    register, which is at a different MDIO base address in different
+    switch families.
 
-1. At PM_POST_SUSPEND during the resume, the system reads all thermal
-   zones in `thermal_tz_list`, then resets and updates their
-   temperatures.
-2. When registering/unregistering a thermal zone, the
-   `thermal_tz_list` gets manipulated.
+Please keep this text. There has been a lot of confusion in the past,
+lots of circular arguments etc, and it is way too late to do anything
+different. So i want to make it clear what the compatible is used for,
+juts to find the ID registers, nothing more.
 
-These two actions might occur concurrently, causing a race condition.
-To solve this issue, we introduce a mutex lock to protect
-`thermal_tz_list` from being modified while it's being read and
-updated during the resume from suspend.
+> +
+> +      - description: |
+> +          Switch has base address 0x00. Use with models:
+> +          6190, 6190X, 6191, 6290, 6361, 6390, 6390X
 
-Kernel oops excerpt related to this fix:
+The .txt file is missing the 6191X and 6393X, which belong here. If
+you need to respin, please could you add them here.
 
-[ 5201.869845] [T316822] pc: [0xffffffeb7d4876f0] mutex_lock+0x34/0x170
-[ 5201.869856] [T316822] lr: [0xffffffeb7ca98a84] thermal_pm_notify+0xd4/0x26c
-[... cut for brevity ...]
-[ 5201.871061] [T316822]  suspend_prepare+0x150/0x470
-[ 5201.871067] [T316822]  enter_state+0x84/0x6f4
-[ 5201.871076] [T316822]  state_store+0x15c/0x1e8
-
-Change-Id: Ifdbdecba17093f91eab7e36ce04b46d311ca6568
-Signed-off-by: yugang.wang <yugang.wang@mediatek.com>
-Signed-off-by: Bo Ye <bo.ye@mediatek.com>
----
- drivers/thermal/thermal_core.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
-index 8717a3343512..a7a18ed57b6d 100644
---- a/drivers/thermal/thermal_core.c
-+++ b/drivers/thermal/thermal_core.c
-@@ -1529,12 +1529,14 @@ static int thermal_pm_notify(struct notifier_block *nb,
- 	case PM_POST_HIBERNATION:
- 	case PM_POST_RESTORE:
- 	case PM_POST_SUSPEND:
-+		mutex_lock(&thermal_list_lock);
- 		atomic_set(&in_suspend, 0);
- 		list_for_each_entry(tz, &thermal_tz_list, node) {
- 			thermal_zone_device_init(tz);
- 			thermal_zone_device_update(tz,
- 						   THERMAL_EVENT_UNSPECIFIED);
- 		}
-+		mutex_unlock(&thermal_list_lock);
- 		break;
- 	default:
- 		break;
--- 
-2.17.0
-
+	Andrew
 
