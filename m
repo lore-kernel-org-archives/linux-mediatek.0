@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C69E2CD37B7
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 11:09:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59A64CD37B7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 11:10:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lscCcidsJMMOQkHcl8eCmBbaHAYgbiEltqPqbGnvzb8=; b=W1OmDxMpDOFawQ5F1nw/xAw+Uf
-	avyDfn9ABAECngsdMYvyFaWOlyCzLGobLhIKtK+jvCQf9kY8MqAithGBMKDY69/TbIza2BT7xwCci
-	UtpnDBKscs1L/NpxheRjtW1PNU9z09L1xAL6nVrgXqiaS+FABEHmuF12+zP5rMAAGGPVOV1UBFsYg
-	MBnF05IxzzIt3cK1sarIdjCXfRhsUjSwzX21hGhqSrZg0ji5tKTO1KiLqWshqas62Xsd8sRvEec9j
-	8VShXjjNBVRE1OcaxAMbK1lFhSpYXc2+Mt93ANfx2UAiO+9P5uO9OL9jdMLckAY2oG2ZJ6xMqHluT
-	O6SMq78w==;
+	bh=bCVsSCUqr94fHC72W488TJM9Q7uBl3U9XOpO5b6zFkI=; b=N21kOFAcsR5mxfeXpjSSkYloc4
+	XJB7oZJLmuWZDDl7J5M54XUs8EccHp6yPBBVrPmfTZqpPCvJqzohgOO4F6j4iRwMnyXojNUFdHWAv
+	QaBGOGbMKBn3TdBQk6d09QdJhzC+i/B53sUdIYmCIsN1/jFgE9hH0CGQQOFk3aLoT3BAu6tChqpjB
+	0OEU5zSd+WTOPl23UmE4HZtEFcvBoLw2DYJ+Q9wX3EE3HNzeF000fMD1T6gt3w1JshwpOCM16SHqa
+	SoKMHln1+GDD1QQ2DdhVhemaNXARK5pQfrwDPUcNdQK+p4vvrxMpzcpq0KY9B2VON/Wt1TGlM8Orc
+	htQ1ktEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhTBS-00CRX0-2B;
-	Sat, 16 Sep 2023 11:09:54 +0000
+	id 1qhTBn-00CRau-0w;
+	Sat, 16 Sep 2023 11:10:15 +0000
 Received: from relay1-d.mail.gandi.net ([217.70.183.193])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhTBO-00CRVu-2n;
-	Sat, 16 Sep 2023 11:09:52 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 73E3E240003;
-	Sat, 16 Sep 2023 11:09:30 +0000 (UTC)
+	id 1qhTBi-00CRa5-2E;
+	Sat, 16 Sep 2023 11:10:12 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id C6EE8240004;
+	Sat, 16 Sep 2023 11:09:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1694862589;
+	t=1694862609;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=lscCcidsJMMOQkHcl8eCmBbaHAYgbiEltqPqbGnvzb8=;
-	b=VdvydhjubqnTb7zMzlmvDb1AyuPlHiJU1Pmq977kdg2rTcKM8lqKF5FamXN2RD0kuYAIKy
-	N8Ya1bJkDpYePX037ZX6DqzRS0aKK2BR1qZd/1rKahuc1ZE1+DtjF2ml8+DyuBdJko/L41
-	uVMRjFxnMGH+z0aMGnqqBl5aZtHgnocmV81BBECvLyncbHRVPeGz6eTvI95chAwCXQdidJ
-	S32jFRpQiAwE/WbqdYKdR+VXecLnoA4IslS+9AACuM+g+hehqFq9qshqXUr5pYUhcDGqXJ
-	a4fsb0r7UVYdHD6LyPImW+59xuH2V1lIYn95YPoIeElxjf65EAGYpMe3WTuxug==
+	bh=bCVsSCUqr94fHC72W488TJM9Q7uBl3U9XOpO5b6zFkI=;
+	b=HFsOWmhU1AcmLExDDgGw+IVR7jUbH2dKOYbsQSzyL2/Y3HtO7H7t2hWrEwTraBnNLF4Hmd
+	2wzXQfuG7cx4+RvoIVZhkyP+aeXXfN7BObZ+w6LTHTSTFxSbHSrbKHPzWN5tPE8TM2pjZ2
+	5B1Hm1Ud+TRTYf16+hrsWr7H2DJn0AUeMfLqf8nGWVsGuak+TQeE12kxIcBCofOtG3lBti
+	fEZjgT02/ye1we3qf17VcgXSc2jHSC9TwLnI0cn4RK4BOmqFNUc7rEX0NyZZs6D3LzKXNa
+	ex0TJsVceQFcxXb2dkoH1PrA/YI1y1xZ8Erzqp1WhvnGaQJCYh4uJ4UdoYU42Q==
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -92,7 +92,8 @@ To: "David S. Miller" <davem@davemloft.net>,
 	Grygorii Strashko <grygorii.strashko@ti.com>,
 	Sekhar Nori <nsekhar@ti.com>,
 	Shyam Pandey <radhey.shyam.pandey@xilinx.com>
-Cc: David Bauer <mail@david-bauer.net>,
+Cc: Florian Fainelli <florian.fainelli@broadcom.com>,
+	Rob Herring <robh@kernel.org>,
 	Woojung Huh <Woojung.Huh@microchip.com>,
 	Steen Hegelund <steen.hegelund@microchip.com>,
 	mithat.guner@xeront.com,
@@ -103,9 +104,9 @@ Cc: David Bauer <mail@david-bauer.net>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-renesas-soc@vger.kernel.org
-Subject: [PATCH net-next v2 01/10] net: dsa: mt7530: register OF node for internal MDIO bus
-Date: Sat, 16 Sep 2023 14:08:53 +0300
-Message-Id: <20230916110902.234273-2-arinc.unal@arinc9.com>
+Subject: [PATCH net-next v2 02/10] dt-bindings: net: dsa: microchip,lan937x: add missing ethernet on example
+Date: Sat, 16 Sep 2023 14:08:54 +0300
+Message-Id: <20230916110902.234273-3-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230916110902.234273-1-arinc.unal@arinc9.com>
 References: <20230916110902.234273-1-arinc.unal@arinc9.com>
@@ -114,8 +115,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230916_040951_176148_DFCCB331 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20230916_041011_031281_DE5EB575 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,50 +131,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: David Bauer <mail@david-bauer.net>
+The port@5 node on the example is supposed to be used as a CPU port. Add
+the missing ethernet property and remove the label property. Remove the MAC
+bindings on the example as they cannot be validated.
 
-The MT753x switches provide a switch-internal MDIO bus for the embedded
-PHYs.
-
-Register a OF sub-node on the switch OF-node for this internal MDIO bus.
-This allows to configure the embedded PHYs using device-tree.
-
-Signed-off-by: David Bauer <mail@david-bauer.net>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
- drivers/net/dsa/mt7530.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ .../bindings/net/dsa/microchip,lan937x.yaml          | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 035a34b50f31..7db9af7b9658 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2156,10 +2156,13 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
- {
- 	struct dsa_switch *ds = priv->ds;
- 	struct device *dev = priv->dev;
-+	struct device_node *np, *mnp;
- 	struct mii_bus *bus;
- 	static int idx;
- 	int ret;
+diff --git a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
+index 8d7e878b84dc..d187034fb31a 100644
+--- a/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/microchip,lan937x.yaml
+@@ -68,16 +68,6 @@ examples:
+   - |
+     #include <dt-bindings/gpio/gpio.h>
  
-+	np = priv->dev->of_node;
-+
- 	bus = devm_mdiobus_alloc(dev);
- 	if (!bus)
- 		return -ENOMEM;
-@@ -2178,7 +2181,9 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
- 	if (priv->irq)
- 		mt7530_setup_mdio_irq(priv);
+-    macb0 {
+-            #address-cells = <1>;
+-            #size-cells = <0>;
+-
+-            fixed-link {
+-                    speed = <1000>;
+-                    full-duplex;
+-            };
+-    };
+-
+     spi {
+             #address-cells = <1>;
+             #size-cells = <0>;
+@@ -134,10 +124,10 @@ examples:
  
--	ret = devm_mdiobus_register(dev, bus);
-+	mnp = of_get_child_by_name(np, "mdio");
-+	ret = devm_of_mdiobus_register(dev, bus, mnp);
-+	of_node_put(mnp);
- 	if (ret) {
- 		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
- 		if (priv->irq)
+                             port@5 {
+                                     reg = <5>;
+-                                    label = "lan7";
+                                     phy-mode = "rgmii";
+                                     tx-internal-delay-ps = <2000>;
+                                     rx-internal-delay-ps = <2000>;
++                                    ethernet = <&macb1>;
+ 
+                                     fixed-link {
+                                             speed = <1000>;
 -- 
 2.39.2
 
