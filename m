@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E704CCD37B7
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 08:12:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19566CD37B7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 08:12:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+V2zt1Fq/mIsCRLrslLMxOJaDJjzmBiZLDl5kNRhkLk=; b=cFfW06YAzT+pgPUqJrmkZ+moFw
-	b6mhDjKvSgdH0CQXPJ41PRf+8YCwsICp3wNopwu+N95y5o6nidVOUOOZoixw2mwVVlMa8Y3Jh3KGj
-	syztVoSt+Jo/aGYQvQGlLcOXte4YsJcEttJ7WCyQeD2m2/fk0XvI7lXqv79LKWX/6Fa3ZdD8RhFIq
-	1pb79IUkBmW02gT57PMGLaefdxsqQKjQyWLTBzfOBx1m5CVkPlpdbuyOmAQULeorwLFMWUNBSw11E
-	GOgIsNE027sM1kuiINlf8Qo0KnmP3Dga/xSTPt5gtNcOC+Q1wviA7Ncmrwn6ZqDDupxwxHrS4Vg2M
-	cyAU1UQA==;
+	bh=mTQ8EZUBSwtsi+L+RbJPEuu7z7WDUNwtSUIesbYcj5c=; b=H7RvWOityyPoo0czrl/fasCRoA
+	2pKCrpP+mFj/dpPXGk3EYoIMsdrM99btfrBHO53OtjOSyVWoLZ9OSGCS2nLz8jiJzuOXp2qhx8SXm
+	rLlScTQ9wBHDG8HeELV7dG8DPa9p40M31iNaSV1RkNkbKAItP/5pNbTuRA/QWN0oaCyqmqsdyHGDB
+	lygQsLdpNG4sfiBT5unLF7M+3kEledGr4c+Llxek5Kcpi8t6VK+7GuNzgEF3qeOZwFY6isP/zmYxy
+	rhb+/QgTrarIWmYRYxRuUDjRz0V/GLX/4tPHSm4shbSGeXoVSDBSlA/pGIMtq2pCv2LFRwKo1XIsH
+	CfquZH+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhQPo-00C9t9-24;
-	Sat, 16 Sep 2023 08:12:32 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1qhQPu-00C9zH-3D;
+	Sat, 16 Sep 2023 08:12:39 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhQPi-00C9nP-14;
-	Sat, 16 Sep 2023 08:12:27 +0000
+	id 1qhQPq-00C9tz-11;
+	Sat, 16 Sep 2023 08:12:35 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id CD33960AAF;
+	by ams.source.kernel.org (Postfix) with ESMTPS id E6162B80AC2;
+	Sat, 16 Sep 2023 08:12:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8FA1DC433CA;
 	Sat, 16 Sep 2023 08:12:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1809C433CD;
-	Sat, 16 Sep 2023 08:12:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694851945;
-	bh=pwxVh7O0mYqw2Ljn4tWnXFw2NWOIpp5wpRx6GKnF3MQ=;
+	s=k20201202; t=1694851951;
+	bh=DVz+nB8IvJqLf9Cq3iqAIJu8nG0D+BltvLR73sQ0FZY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=e6vmNeEho7f/29mMl9USm28gLe72oRfimQLLra+JREzOWdEWz0f35mgbt/MgdYtFO
-	 Zd1v0PDZXM5KOtc/FNL4PS8ei18B8nJwEZmlOJq11PTOBmRx+uzs9VLKIrFtLFKm9v
-	 FhEKtwgvyPZWlWDe1uBvI4ZHPFqRgZsaEJP+PjAjDHN1ImOSkRhGI9WRq2Drq1atGO
-	 bAhpkGvPVToy+Eu/yge2gYmKZK8raCy2/9sTkeo7u+NBuiA5vanKaW6BfbsdrMoUdf
-	 hTKqjioGt1lcO5RT2Vlp1cL/b6Oave+4yEo7zgI+rvo7XSx0bpYaKmfIobqnufuDb+
-	 fvOfSI3MhcitQ==
+	b=tqQi4l3gKamyFboFFuqRRarjM3pBQv0SYmxFUubNe9E/38XV8jubhV32c8CSdulmn
+	 3S/2f0zO0l5A8dA7JivgOlqsGxrv+gdxZTWoFAg7d4fDLDOXGc4Jhhj/9fOJnvWh/y
+	 /3n7V1gEdN/DxJusPP3eDX+CmhRodrFxEMiGJFVKWNgYXv1HJ7stuAS2Nj7l9+0lGr
+	 C22lw/Taeh7UDWv9/jJj5YIr4LOIMhNte5sgbFz0qylskwGx1rQ2Wm9RcYiEHibBxW
+	 OpGj6j9VMQaJcPyltsfUeUCGnc6WnXZliKPi9dxgEViwNl8mQhEJUVw8KOXSHbVd6z
+	 IhQYOdnmBIiTA==
 From: Jisheng Zhang <jszhang@kernel.org>
 To: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
@@ -80,17 +80,17 @@ Cc: netdev@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v2 16/23] net: stmmac: dwmac-sti: use devm_stmmac_probe_config_dt()
-Date: Sat, 16 Sep 2023 15:58:22 +0800
-Message-Id: <20230916075829.1560-17-jszhang@kernel.org>
+Subject: [PATCH net-next v2 17/23] net: stmmac: dwmac-stm32: use devm_stmmac_probe_config_dt()
+Date: Sat, 16 Sep 2023 15:58:23 +0800
+Message-Id: <20230916075829.1560-18-jszhang@kernel.org>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230916075829.1560-1-jszhang@kernel.org>
 References: <20230916075829.1560-1-jszhang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230916_011226_467637_B86075D0 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20230916_011234_652007_A502DD84 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,14 +110,14 @@ variant of stmmac_probe_config_dt().
 
 Signed-off-by: Jisheng Zhang <jszhang@kernel.org>
 ---
- drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c | 14 +++++---------
- 1 file changed, 5 insertions(+), 9 deletions(-)
+ .../net/ethernet/stmicro/stmmac/dwmac-stm32.c   | 17 ++++++-----------
+ 1 file changed, 6 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c
-index 0d653bbb931b..4445cddc4cbe 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c
-@@ -273,20 +273,18 @@ static int sti_dwmac_probe(struct platform_device *pdev)
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-stm32.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-stm32.c
+index 26ea8c687881..ab4324ed46da 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-stm32.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-stm32.c
+@@ -370,21 +370,18 @@ static int stm32_dwmac_probe(struct platform_device *pdev)
  	if (ret)
  		return ret;
  
@@ -134,27 +134,36 @@ index 0d653bbb931b..4445cddc4cbe 100644
 +	if (!dwmac)
 +		return -ENOMEM;
  
- 	ret = sti_dwmac_parse_data(dwmac, pdev);
+ 	data = of_device_get_match_data(&pdev->dev);
+ 	if (!data) {
+ 		dev_err(&pdev->dev, "no of match data provided\n");
+-		ret = -EINVAL;
+-		goto err_remove_config_dt;
++		return -EINVAL;
+ 	}
+ 
+ 	dwmac->ops = data;
+@@ -393,14 +390,14 @@ static int stm32_dwmac_probe(struct platform_device *pdev)
+ 	ret = stm32_dwmac_parse_data(dwmac, &pdev->dev);
  	if (ret) {
  		dev_err(&pdev->dev, "Unable to parse OF data\n");
 -		goto err_remove_config_dt;
 +		return ret;
  	}
  
- 	dwmac->fix_retime_src = data->fix_retime_src;
-@@ -296,7 +294,7 @@ static int sti_dwmac_probe(struct platform_device *pdev)
+ 	plat_dat->bsp_priv = dwmac;
  
- 	ret = clk_prepare_enable(dwmac->clk);
+ 	ret = stm32_dwmac_init(plat_dat);
  	if (ret)
 -		goto err_remove_config_dt;
 +		return ret;
  
- 	ret = sti_dwmac_set_mode(dwmac);
+ 	ret = stmmac_dvr_probe(&pdev->dev, plat_dat, &stmmac_res);
  	if (ret)
-@@ -310,8 +308,6 @@ static int sti_dwmac_probe(struct platform_device *pdev)
+@@ -410,8 +407,6 @@ static int stm32_dwmac_probe(struct platform_device *pdev)
  
- disable_clk:
- 	clk_disable_unprepare(dwmac->clk);
+ err_clk_disable:
+ 	stm32_dwmac_clk_disable(dwmac);
 -err_remove_config_dt:
 -	stmmac_remove_config_dt(pdev, plat_dat);
  
