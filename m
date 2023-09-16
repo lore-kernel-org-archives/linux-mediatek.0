@@ -4,102 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2BCDCD37BF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 16:16:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4EDEC2BA12
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 18:01:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3gR3DLgOcVXEyCHmeRvHW5kTpbx/Ml5B4FTcTxP2j0o=; b=ICL82HwB9yXiDugkGIxS7pwpos
-	+v0JFzrwUHHSDOg9fAfwxB/OCd449GH9y0rq9yF5L+VEvE0esOZBrQySAheO49NCcDU9VhQRmCuw/
-	/gPPfJMIdSLrV6Yf+a1IBwYePHBLLOMtmJJWPP+n/OlaOp5+Z83u9EkKBFyse9y1YRfh2FA8SRJOi
-	OR23RsCiUCTE7I/KRx0Yhhz2wx/yBPsTbMThPOEMAmwfcKxuU6hdcLISMJHzJvg3fJTQNTcRNFpK+
-	MX7LSUTpatiVkjpc4xSlNhK4kU49YmmZW7oobn/sLXfDfXpBY01ms0DFdnqDJr8ca2a4OXHY8O5Yw
-	/HeYZZeQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ymta2rqrz8LB1Xk3TDqYarTMtP/Ki8uPxcIdKwlblKk=; b=MJU3/QLsf53LzD+xl4DLGCsD4X
+	XUaUbZIJdVqJo5qz8bNsgtyWS0PlQA04mphyCQwBiL3zBMwBO8ncL4ZfXBTv4u124WZvoNLuomjLY
+	S0qjJghaEXH9PvmXiaKMKccYwJ/FNHhP7zae3vxL4ajSD/oW2FKfLhH/ruPRN762gDwpDiQ2mXlge
+	c4x4S8sDZXEcqR5eJy9AqfFLhixCjxU70fCkPVmRsyZBh78Z7zO2X3Si5zt0EPrJY6UUzH9kmJuw5
+	piM3ZZj8tVkmqlSz/iU+UL1wwethTZ53xGoJ94WDazcZNLq4TSb3IQjN7b+ayLZjvFK1S/kSlVP8V
+	9iXazXrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhXxq-00CeIJ-0T;
-	Sat, 16 Sep 2023 16:16:10 +0000
-Received: from relay7-d.mail.gandi.net ([217.70.183.200])
+	id 1qhZbM-00Chw4-08;
+	Sat, 16 Sep 2023 18:01:04 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhXxl-00CeHw-1v;
-	Sat, 16 Sep 2023 16:16:07 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id A761F20004;
-	Sat, 16 Sep 2023 16:15:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1694880962;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=3gR3DLgOcVXEyCHmeRvHW5kTpbx/Ml5B4FTcTxP2j0o=;
-	b=dlTg8bzB+GMfQwAkNn10piDT3xlzayexaJtzerTcgHGpGMs/JAhpZPkaM8RoNcP//TSyqN
-	3qqwDwy34P2RQiy3Kz8V9s5uw9bjz86onvrpaijDpXuq/oH81lB+2Yme5oZAxFBj7pTtCX
-	oM2LDmFmQum3aFrwsNN4fZtg9PUMRqx6PwUFU7uvrKAlbbFMOzjF3Dqm9MQ+BO6pxYcOMh
-	ifohoX73vuoVQ12QX1Ql7G1QHgmUvNpWCS/+P+cwSVNJ19TSSVrCnNe1mXIr/9LntGG2p8
-	3yC5m9V4cZIzMAHQGVFJEoeGGAnb+x1HyLflkFe7W4wgbaNMfGzsecHWLd0tfg==
-Message-ID: <e0a925bb-d4f1-44a1-8fe3-e1a59c4a7476@arinc9.com>
-Date: Sat, 16 Sep 2023 19:15:02 +0300
+	id 1qhZbH-00ChvA-2c;
+	Sat, 16 Sep 2023 18:01:01 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 5E72660FB5;
+	Sat, 16 Sep 2023 18:00:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 076E2C433C9;
+	Sat, 16 Sep 2023 18:00:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1694887257;
+	bh=ul1iN8HpVZcfnlmUiMzJEP8GTsDZxDc39Cq6k3T7vkc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=pHz20afM1LmCRNkebPbf9s29aMmZW9a1MsveNhR4ElECGZYt4y2ot32wMfQ7DJmxP
+	 RyS6b7DTnRdVTRs9xunu9kmc8J73btGNDhqOxJWFJktx9OAZvUCB9FGs4gjbtgZrPx
+	 B3wphUdaYiVBRC6NQ8M+g12EzyZ5DO/keHftyoNAyhsPqFoHqGxQaXveEMPH0j2o75
+	 AAB1Gfb57lEPdMTXkZmsnIIJW0dr9+umSUntZiDeLqHRtBvHYtcaCGrtG+2ay5rRXI
+	 iU/aku6rsWuNM/eGXnQUAgjYC5cKKLg+LEI19vlpW7x0zZOOzJSSEoAFgySxbJqxui
+	 rC9PNTUnwBqyA==
+Date: Sat, 16 Sep 2023 20:00:51 +0200
+From: Simon Horman <horms@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev,
+	ndesaulniers@google.com, nathan@kernel.org, trix@redhat.com
+Subject: Re: [PATCH net-next] net: ethernet: mtk_eth_soc: add paths and
+ SerDes modes for MT7988
+Message-ID: <20230916180051.GH1125562@kernel.org>
+References: <675b5abd8b40a71c177e9e4e4c92d2d6b1413b9b.1694527316.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v2 10/10] dt-bindings: net:
- marvell-armada-370-neta: convert to json-schema
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>
-Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
- Sean Wang <sean.wang@mediatek.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Woojung Huh <Woojung.Huh@microchip.com>, John Crispin <john@phrozen.org>,
- linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>,
- Felix Fietkau <nbd@nbd.name>, Oleksij Rempel <linux@rempel-privat.de>,
- Shyam Pandey <radhey.shyam.pandey@xilinx.com>, Andrew Lunn <andrew@lunn.ch>,
- Steen Hegelund <steen.hegelund@microchip.com>, linux-kernel@vger.kernel.org,
- =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
- Daniel Machon <daniel.machon@microchip.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- UNGLinuxDriver@microchip.com, Linus Walleij <linus.walleij@linaro.org>,
- Eric Dumazet <edumazet@google.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Marcin Wojtas <mw@semihalf.com>, Giuseppe Cavallaro
- <peppe.cavallaro@st.com>, "David S. Miller" <davem@davemloft.net>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Maxime Chevallier <maxime.chevallier@bootlin.com>,
- Vladimir Oltean <olteanv@gmail.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Daniel Golle
- <daniel@makrotopia.org>, Horatiu Vultur <horatiu.vultur@microchip.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- linux-arm-kernel@lists.infradead.org, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh+dt@kernel.org>,
- Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
- Marek Vasut <marex@denx.de>, Claudiu Manoil <claudiu.manoil@nxp.com>,
- Sekhar Nori <nsekhar@ti.com>, Lars Povlsen <lars.povlsen@microchip.com>,
- Kurt Kanzenbach <kurt@linutronix.de>, Jose Abreu <joabreu@synopsys.com>,
- Madalin Bucur <madalin.bucur@nxp.com>, netdev@vger.kernel.org,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Magnus Damm <magnus.damm@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- mithat.guner@xeront.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Ioana Ciornei <ioana.ciornei@nxp.com>, devicetree@vger.kernel.org,
- Conor Dooley <conor+dt@kernel.org>,
- George McCollister <george.mccollister@gmail.com>, erkin.bozoglu@xeront.com,
- linux-renesas-soc@vger.kernel.org
-References: <20230916110902.234273-1-arinc.unal@arinc9.com>
- <20230916110902.234273-11-arinc.unal@arinc9.com>
- <169487631064.1637966.13545721653989465162.robh@kernel.org>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <169487631064.1637966.13545721653989465162.robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <675b5abd8b40a71c177e9e4e4c92d2d6b1413b9b.1694527316.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230916_091605_930496_012C318A 
-X-CRM114-Status: UNSURE (   8.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230916_110059_938650_00EEA247 
+X-CRM114-Status: GOOD (  36.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,23 +85,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16.09.2023 17:58, Rob Herring wrote:
-> My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-> on your patch (DT_CHECKER_FLAGS is new in v5.13):
+On Tue, Sep 12, 2023 at 03:54:40PM +0100, Daniel Golle wrote:
+> MT7988 comes with a built-in 2.5G PHY as well as SerDes lanes to
+> connect external PHYs or transceivers in USXGMII, 10GBase-R, 5GBase-R,
+> 2500Base-X, 1000Base-X and Cisco SGMII interface modes.
 > 
-> yamllint warnings/errors:
+> Implement support for configuring for the new paths to SerDes interfaces
+> and the internal 2.5G PHY.
 > 
-> dtschema/dtc warnings/errors:
-> /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/net/marvell-armada-370-neta.yaml:
-> Unresolvable JSON pointer: '$defs/phylink'
+> Add USXGMII PCS driver for 10GBase-R, 5GBase-R and USXGMII mode, and
+> setup the new PHYA on MT7988 to access the also still existing old
+> LynxI PCS for 1000Base-X, 2500Base-X and Cisco SGMII interface modes.
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+> Changes since RFC v2:
+>  * read PCS_RX_STATUS0 register to avoid bogus link-up
+>    (recommended by mtk devs)
+>  * use parenthese to fix evaluation order
+>    (Simon Horman reported clang warning)
+>  * fix allocation size of usxgmii_pcs
+>    (Simon Horman reported Smatch warning)
+>  * always set USXGMII_AN_ENABLE bit in USXGMII mode
+>    (it's what the vendor driver does and USXGMII doesn't seem to work
+>     at all otherwise, we may need to manually set rate matching registers
+>     if we don't use AN, but this isn't implemented at this point)
+> 
+> Changes since initial RFC:
+>  * set missing neg_mode = true for usxgmii pcs
+>  * use phylink_decode_usxgmii_word instead of open coding
+> 
+>  drivers/net/ethernet/mediatek/Kconfig        |  16 +
+>  drivers/net/ethernet/mediatek/Makefile       |   1 +
+>  drivers/net/ethernet/mediatek/mtk_eth_path.c | 123 +++-
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c  | 182 ++++-
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h  | 232 +++++-
+>  drivers/net/ethernet/mediatek/mtk_usxgmii.c  | 702 +++++++++++++++++++
+>  6 files changed, 1225 insertions(+), 31 deletions(-)
+>  create mode 100644 drivers/net/ethernet/mediatek/mtk_usxgmii.c
+> 
+> diff --git a/drivers/net/ethernet/mediatek/Kconfig b/drivers/net/ethernet/mediatek/Kconfig
+> index da0db417ab690..b942b4622d146 100644
+> --- a/drivers/net/ethernet/mediatek/Kconfig
+> +++ b/drivers/net/ethernet/mediatek/Kconfig
+> @@ -25,6 +25,22 @@ config NET_MEDIATEK_SOC
+>  	  This driver supports the gigabit ethernet MACs in the
+>  	  MediaTek SoC family.
+>  
+> +config NET_MEDIATEK_SOC_USXGMII
+> +	bool "Support USXGMII SerDes on MT7988"
+> +	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
+> +	def_bool NET_MEDIATEK_SOC != n
+> +	help
+> +	  Include support for 10GE SerDes which can be found on MT7988.
+> +	  If this kernel should run on SoCs with 10 GBit/s Ethernet you
+> +	  will need to select this option to use GMAC2 and GMAC3 with
+> +	  external PHYs, SFP(+) cages in 10GBase-R, 5GBase-R or USXGMII
+> +	  interface modes.
+> +
+> +	  Note that as the 2500Base-X/1000Base-X/Cisco SGMII SerDes PCS
+> +	  unit (MediaTek LynxI) in MT7988 is connected via the new 10GE
+> +	  SerDes, you will also need to select this option in case you
+> +	  want to use any of those SerDes modes.
+> +
+>  config NET_MEDIATEK_STAR_EMAC
+>  	tristate "MediaTek STAR Ethernet MAC support"
+>  	select PHYLIB
 
-Not surprising as this is added with a previous patch in this series.
+...
 
-> doc reference errors (make refcheckdocs):
-> Warning: Documentation/devicetree/bindings/net/marvell-neta-bm.txt references a file that doesn't exist: Documentation/devicetree/bindings/net/marvell-armada-370-neta.txt
-> Documentation/devicetree/bindings/net/marvell-neta-bm.txt: Documentation/devicetree/bindings/net/marvell-armada-370-neta.txt
+> diff --git a/drivers/net/ethernet/mediatek/mtk_usxgmii.c b/drivers/net/ethernet/mediatek/mtk_usxgmii.c
 
-Will address.
+...
 
-Arınç
+> +static void mtk_usxgmii_pcs_get_state(struct phylink_pcs *pcs,
+> +				      struct phylink_link_state *state)
+> +{
+> +	struct mtk_usxgmii_pcs *mpcs = pcs_to_mtk_usxgmii_pcs(pcs);
+> +	struct mtk_eth *eth = mpcs->eth;
+> +	struct mtk_mac *mac = eth->mac[mtk_xgmii2mac_id(eth, mpcs->id)];
+> +	u32 val = 0;
+> +
+> +	regmap_read(mpcs->regmap, RG_PCS_AN_CTRL0, &val);
+> +	if (FIELD_GET(USXGMII_AN_ENABLE, val)) {
+> +		/* Refresh LPA by inverting LPA_LATCH */
+> +		regmap_read(mpcs->regmap, RG_PCS_AN_STS0, &val);
+> +		regmap_update_bits(mpcs->regmap, RG_PCS_AN_STS0,
+> +				   USXGMII_LPA_LATCH,
+> +				   !(val & USXGMII_LPA_LATCH));
+> +
+> +		regmap_read(mpcs->regmap, RG_PCS_AN_STS0, &val);
+> +
+> +		phylink_decode_usxgmii_word(state, FIELD_GET(USXGMII_PCS_AN_WORD,
+> +							     val));
+> +
+> +		state->interface = mpcs->interface;
+> +	} else {
+> +		val = mtk_r32(mac->hw, MTK_XGMAC_STS(mac->id));
+> +
+> +		if (mac->id == MTK_GMAC2_ID)
+> +			val >>= 16;
+> +
+> +		switch (FIELD_GET(MTK_USXGMII_PCS_MODE, val)) {
+> +		case 0:
+> +			state->speed = SPEED_10000;
+> +			break;
+> +		case 1:
+> +			state->speed = SPEED_5000;
+> +			break;
+> +		case 2:
+> +			state->speed = SPEED_2500;
+> +			break;
+> +		case 3:
+> +			state->speed = SPEED_1000;
+> +			break;
+> +		}
+> +
+> +		state->interface = mpcs->interface;
+> +		state->link = FIELD_GET(MTK_USXGMII_PCS_LINK, val);
+> +		state->duplex = DUPLEX_FULL;
+> +	}
+> +
+> +	/* Refresh USXGMII link status by toggling RG_PCS_RX_STATUS_UPDATE */
+> +	regmap_set_bits(mpcs->regmap, RG_PCS_RX_STATUS0, RG_PCS_RX_STATUS_UPDATE);
+> +	ndelay(1020);
+> +	regmap_clear_bits(mpcs->regmap, RG_PCS_RX_STATUS0, RG_PCS_RX_STATUS_UPDATE);
+> +	ndelay(1020);
+> +
+> +	/* Read USXGMII link status */
+> +	regmap_read(mpcs->regmap, RG_PCS_RX_STATUS0, &val);
+> +	state->link = state->link && FIELD_GET(RG_PCS_RX_LINK_STATUS, val);
+> +
+> +	/* Continuously repeat re-configuration sequence until link comes up */
+> +	if (!state->link)
+> +		mtk_usxgmii_pcs_config(pcs, mpcs->neg_mode,
+> +				       state->interface, NULL, false);
+> +}
+
+Hi Daniel,
+
+I feel that I'm missing something obvious, but with this patch applied,
+when building with allmodconfig for both x86_64 and arm64 the build fails
+reporting that RG_PCS_RX_STATUS0, RG_PCS_RX_STATUS_UPDATE and
+RG_PCS_RX_LINK_STATUS are undefined.
+
+...
 
