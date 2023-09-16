@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53AAECD37B7
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 11:09:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C69E2CD37B7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 11:09:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=CLnt81HC2PDi8+eg097J5b0q3LjbSM2hFWX7ICGCp5g=; b=GQKVN8eDM1xFAsO4eiq38Jw8lP
-	jClpOMnZT74swPl+GToFoxcLm+eTl/5N+vuQ9DaI5HnuquhMfNjMqi/sGQM8x31ef5slvlj5QOtku
-	zq8psONTsYbiJ/XOKZNTRw8kaqzhCNqKrJkfXqxYIDsD3lL6IsOzE+GUHn2sSRRt1+tV+YSVSsDXh
-	PwZnn2ab906LvGPM734fMTjr9RViXb18yLdTkFpDrA/xYj7NmGr7UHhLJCb9WDZ4RADEi/ek1hyPY
-	rsKzxSVHdp+5yl0i72cOseROVLnSS0fan8/dGgkVV1lCLBvRZGDoqJ4J3WjOSMDWtPrHNmqZld1op
-	dwZa97jQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lscCcidsJMMOQkHcl8eCmBbaHAYgbiEltqPqbGnvzb8=; b=W1OmDxMpDOFawQ5F1nw/xAw+Uf
+	avyDfn9ABAECngsdMYvyFaWOlyCzLGobLhIKtK+jvCQf9kY8MqAithGBMKDY69/TbIza2BT7xwCci
+	UtpnDBKscs1L/NpxheRjtW1PNU9z09L1xAL6nVrgXqiaS+FABEHmuF12+zP5rMAAGGPVOV1UBFsYg
+	MBnF05IxzzIt3cK1sarIdjCXfRhsUjSwzX21hGhqSrZg0ji5tKTO1KiLqWshqas62Xsd8sRvEec9j
+	8VShXjjNBVRE1OcaxAMbK1lFhSpYXc2+Mt93ANfx2UAiO+9P5uO9OL9jdMLckAY2oG2ZJ6xMqHluT
+	O6SMq78w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhTBG-00CRUM-30;
-	Sat, 16 Sep 2023 11:09:42 +0000
+	id 1qhTBS-00CRX0-2B;
+	Sat, 16 Sep 2023 11:09:54 +0000
 Received: from relay1-d.mail.gandi.net ([217.70.183.193])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhTBC-00CRSi-1U;
-	Sat, 16 Sep 2023 11:09:40 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 563A6240002;
-	Sat, 16 Sep 2023 11:09:07 +0000 (UTC)
+	id 1qhTBO-00CRVu-2n;
+	Sat, 16 Sep 2023 11:09:52 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 73E3E240003;
+	Sat, 16 Sep 2023 11:09:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1694862570;
+	t=1694862589;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=CLnt81HC2PDi8+eg097J5b0q3LjbSM2hFWX7ICGCp5g=;
-	b=SivAsr92jUS2r0D2NuCC/Bjn/qkCXjinijlFQKJE8l4HdVRs2nX5x9qJC/rV/xc5w1WPyo
-	LSAm0IcgnIiv/+lpVRPws2MMxkAtbwAcvYX7sL1pKBJMHExKnLRYmMXwDjwhOXY6hxbpHQ
-	DjJ/V+d5/Dv29SXYRMJHsBOklcA2MVm8LHIQ8YC2GRAo9tcHoWSFVTKc9tP0fuIevUbwWH
-	QNgAw5TIo+pETaj4Y9aa6UJBCf2xDfZTpNeCMp6TuU7etbvdZPGsKdcZDSX2ynFbjuLim0
-	i63MG9ODlAa6pGVyT8kJELfj03IJuqB/2aO1Hrb9yvU8a+hEndME6rWnKUcHBw==
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=lscCcidsJMMOQkHcl8eCmBbaHAYgbiEltqPqbGnvzb8=;
+	b=VdvydhjubqnTb7zMzlmvDb1AyuPlHiJU1Pmq977kdg2rTcKM8lqKF5FamXN2RD0kuYAIKy
+	N8Ya1bJkDpYePX037ZX6DqzRS0aKK2BR1qZd/1rKahuc1ZE1+DtjF2ml8+DyuBdJko/L41
+	uVMRjFxnMGH+z0aMGnqqBl5aZtHgnocmV81BBECvLyncbHRVPeGz6eTvI95chAwCXQdidJ
+	S32jFRpQiAwE/WbqdYKdR+VXecLnoA4IslS+9AACuM+g+hehqFq9qshqXUr5pYUhcDGqXJ
+	a4fsb0r7UVYdHD6LyPImW+59xuH2V1lIYn95YPoIeElxjf65EAGYpMe3WTuxug==
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -91,7 +92,8 @@ To: "David S. Miller" <davem@davemloft.net>,
 	Grygorii Strashko <grygorii.strashko@ti.com>,
 	Sekhar Nori <nsekhar@ti.com>,
 	Shyam Pandey <radhey.shyam.pandey@xilinx.com>
-Cc: Woojung Huh <Woojung.Huh@microchip.com>,
+Cc: David Bauer <mail@david-bauer.net>,
+	Woojung Huh <Woojung.Huh@microchip.com>,
 	Steen Hegelund <steen.hegelund@microchip.com>,
 	mithat.guner@xeront.com,
 	erkin.bozoglu@xeront.com,
@@ -101,18 +103,19 @@ Cc: Woojung Huh <Woojung.Huh@microchip.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-renesas-soc@vger.kernel.org
-Subject: [PATCH net-next v2 00/10] define and enforce phylink bindings
-Date: Sat, 16 Sep 2023 14:08:52 +0300
-Message-Id: <20230916110902.234273-1-arinc.unal@arinc9.com>
+Subject: [PATCH net-next v2 01/10] net: dsa: mt7530: register OF node for internal MDIO bus
+Date: Sat, 16 Sep 2023 14:08:53 +0300
+Message-Id: <20230916110902.234273-2-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230916110902.234273-1-arinc.unal@arinc9.com>
+References: <20230916110902.234273-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230916_040938_805173_DF1452B3 
-X-CRM114-Status: UNSURE (   8.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230916_040951_176148_DFCCB331 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,27 +130,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello there.
+From: David Bauer <mail@david-bauer.net>
 
-This patch series defines phylink bindings and enforces them for the
-ethernet controllers that need them.
+The MT753x switches provide a switch-internal MDIO bus for the embedded
+PHYs.
 
-Some schemas had to be changed to properly enforce phylink bindings for all
-of the affected ethernet controllers. Some of the documents of these
-ethernet controllers were non json-schema, which had to be converted.
+Register a OF sub-node on the switch OF-node for this internal MDIO bus.
+This allows to configure the embedded PHYs using device-tree.
 
-I will convert the remaining documents to json-schema while this patch
-series receives reviews.
+Signed-off-by: David Bauer <mail@david-bauer.net>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+ drivers/net/dsa/mt7530.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-Cheers.
-Arınç
-
-v2:
-After many discussions on v1, the concept of the patch series changed a lot
-to document the changes from v1.
-
-Link to v1:
-https://lore.kernel.org/netdev/20230812091708.34665-1-arinc.unal@arinc9.com/
-
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 035a34b50f31..7db9af7b9658 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2156,10 +2156,13 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+ {
+ 	struct dsa_switch *ds = priv->ds;
+ 	struct device *dev = priv->dev;
++	struct device_node *np, *mnp;
+ 	struct mii_bus *bus;
+ 	static int idx;
+ 	int ret;
+ 
++	np = priv->dev->of_node;
++
+ 	bus = devm_mdiobus_alloc(dev);
+ 	if (!bus)
+ 		return -ENOMEM;
+@@ -2178,7 +2181,9 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+ 	if (priv->irq)
+ 		mt7530_setup_mdio_irq(priv);
+ 
+-	ret = devm_mdiobus_register(dev, bus);
++	mnp = of_get_child_by_name(np, "mdio");
++	ret = devm_of_mdiobus_register(dev, bus, mnp);
++	of_node_put(mnp);
+ 	if (ret) {
+ 		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
+ 		if (priv->irq)
+-- 
+2.39.2
 
 
