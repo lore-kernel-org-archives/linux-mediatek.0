@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCDABCD37B6
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 08:13:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E143CD37B5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 08:13:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ir7K2TgyDMN2JNrFe1z8evNf2YIGoOpWJRSFUqqcp6s=; b=wxYHN9Uh1SLfqoykKckgmjAHqk
-	KYUxolvRk/caRoe5eQR7fclOIN+jRxpTyJ6JSmYoubFBa7dMDpsLzoea7DtodJX5++XDUaqIHca2q
-	kiGX/aRv1gL5VgmoKspo7KzcJY0S3jlEdOE1ZOZJVjOiMURjsN+PZ2hvc0CWN5Pf8/OFgVflCUTWr
-	KJJrHN89qJOeokSSUf/Yo2q83frGdP2i6HOvKjSB7+86EcWimn+MjSRrIctkUmXp3xtGleKFAi1+E
-	E9ZpvMvCd+xqH6vB9A7cnev4bR1DFk//NsBlywV6s891ua9aGtnHlIzUPMIc49G/OWLWmDpMfXfuS
-	jvLc3xMA==;
+	bh=AoJHwVzKjAVPl2SiDG/Wm5eJZC+r+q1+0e1eR8JW8Tw=; b=0OBmRl5rexU4sFOCaltyImYkDo
+	PxL3LfYt6otMlhwHNLd1R/q5xVGcQhsUA7i9Oc3QZxGIU3wcg2NmVJoRkr9TXTcABvhCNjJ8bN4+5
+	DDalTUmkZywVCPkpkHqLjNDYghU2VlYmX4djSbQ6lTc9SvYz6GP7PTiZRyeWmyHSzHi3M6dU1XfMN
+	YKKkX6X5xi0aLVRtusYC0Tpz/4Hp6MD91ZZEWP2Gz2abCp5dfJwuyDAZKUIPSQiOBRgErnaaauI/J
+	36Eux6s6LRUV/G6Yf8EUjFP6JrWfxgQHLkafnLOTwMUgViOOGUaVU5VAZoREdsRHk47PE7mhWTE3B
+	in0451zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhQQG-00CAG0-26;
-	Sat, 16 Sep 2023 08:13:00 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1qhQQO-00CANE-1h;
+	Sat, 16 Sep 2023 08:13:08 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhQQC-00CACF-1v;
-	Sat, 16 Sep 2023 08:12:58 +0000
+	id 1qhQQJ-00CAHu-2l;
+	Sat, 16 Sep 2023 08:13:05 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A9F5260AEB;
+	by sin.source.kernel.org (Postfix) with ESMTPS id 31D7FCE1D31;
+	Sat, 16 Sep 2023 08:13:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5CF32C433CC;
 	Sat, 16 Sep 2023 08:12:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 733EAC433CB;
-	Sat, 16 Sep 2023 08:12:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1694851973;
-	bh=KSe7NuuTmvNFUfkVlgyIp0m+TWXLJzpYZqE/n8ra5Ws=;
+	s=k20201202; t=1694851980;
+	bh=Vn4X1L24g5YyN7wIK/5umFerdTWl1xsiC5BXRJlo0ZA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=rnDqtul2beGLFRSZ/OiQBcgCaJeOxva6GCnQCtR2em+MPpVlkpcK/TGM7Hvmdr0S6
-	 JnJ4RxRcSwV/5iPCEPMGQSTXMLMNagH2FY5rkJ+j0/ApgIio2H5vVhaiJ2MgNz798r
-	 u12j/JAJM498uaSEzRXKfcL995+xhFZy7998UZPYjTPCdJI38pIJuYY1VYhlm7+Ufb
-	 MLZhYLL2igKv3/oCrQMmW6DJt/vcuUBJqQ+m4lsMocN3quCJCSjPgE3j+1SwahqyBq
-	 Lu4NyCu4pVmEl+TsMNh5e+kT+7xx4jMP2MhAYKAu6nEW+6xFvM/V3ByDPG1zS/dMf3
-	 cM97RocNCB/0w==
+	b=O9HcqfTQBB5HNBS5CaxsZ9ATh339mrairARWQy/+9ekCD43XOyoPlsXz+SMZjx7k9
+	 ocb+OAj3EzdtjZn/KPBJhVsDwXga1309k6T+xbV2vZdZRhiu3xPJs7ZVNXOs3L0ICA
+	 n/k1kTPyhSXQc1gAJP6+YD0ZoGYie/fuAfxkL4tKF4m169q5/rYDUwtgr/7B7a5bLH
+	 pEdVVqmKbWEW4H+pvTRL9UlOIpcy+S9MoQWNZCA+j3au9cSPs7KVQsE47dNIvRJKCF
+	 huSA+CNTG+zuFTMKrei+TGDDMd1mgTOZRcF7dmfkbtotuHtMPQe9J9xX0udXRt/V9H
+	 snKFQjeUi+UvQ==
 From: Jisheng Zhang <jszhang@kernel.org>
 To: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
@@ -80,17 +80,17 @@ Cc: netdev@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v2 20/23] net: stmmac: dwmac-tegra: use devm_stmmac_probe_config_dt()
-Date: Sat, 16 Sep 2023 15:58:26 +0800
-Message-Id: <20230916075829.1560-21-jszhang@kernel.org>
+Subject: [PATCH net-next v2 21/23] net: stmmac: dwmac-visconti: use devm_stmmac_probe_config_dt()
+Date: Sat, 16 Sep 2023 15:58:27 +0800
+Message-Id: <20230916075829.1560-22-jszhang@kernel.org>
 X-Mailer: git-send-email 2.40.0
 In-Reply-To: <20230916075829.1560-1-jszhang@kernel.org>
 References: <20230916075829.1560-1-jszhang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230916_011256_728526_0C2D4ABA 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20230916_011304_256850_61AD9F20 
+X-CRM114-Status: GOOD (  13.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,63 +113,65 @@ stmmac_pltfr_remove_no_dt().
 
 Signed-off-by: Jisheng Zhang <jszhang@kernel.org>
 ---
- drivers/net/ethernet/stmicro/stmmac/dwmac-tegra.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
+ .../ethernet/stmicro/stmmac/dwmac-visconti.c  | 19 +++++--------------
+ 1 file changed, 5 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-tegra.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-tegra.c
-index e0f3cbd36852..7e512c0762ea 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-tegra.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-tegra.c
-@@ -284,7 +284,7 @@ static int tegra_mgbe_probe(struct platform_device *pdev)
- 	if (err < 0)
- 		goto disable_clks;
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-visconti.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-visconti.c
+index 22d113fb8e09..45f5d66a11c2 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-visconti.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-visconti.c
+@@ -220,15 +220,13 @@ static int visconti_eth_dwmac_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
  
--	plat = stmmac_probe_config_dt(pdev, res.mac);
-+	plat = devm_stmmac_probe_config_dt(pdev, res.mac);
- 	if (IS_ERR(plat)) {
- 		err = PTR_ERR(plat);
- 		goto disable_clks;
-@@ -303,7 +303,7 @@ static int tegra_mgbe_probe(struct platform_device *pdev)
- 						   GFP_KERNEL);
- 		if (!plat->mdio_bus_data) {
- 			err = -ENOMEM;
--			goto remove;
-+			goto disable_clks;
- 		}
- 	}
+-	plat_dat = stmmac_probe_config_dt(pdev, stmmac_res.mac);
++	plat_dat = devm_stmmac_probe_config_dt(pdev, stmmac_res.mac);
+ 	if (IS_ERR(plat_dat))
+ 		return PTR_ERR(plat_dat);
  
-@@ -321,7 +321,7 @@ static int tegra_mgbe_probe(struct platform_device *pdev)
- 				 500, 500 * 2000);
- 	if (err < 0) {
- 		dev_err(mgbe->dev, "timeout waiting for TX lane to become enabled\n");
--		goto remove;
-+		goto disable_clks;
- 	}
+ 	dwmac = devm_kzalloc(&pdev->dev, sizeof(*dwmac), GFP_KERNEL);
+-	if (!dwmac) {
+-		ret = -ENOMEM;
+-		goto remove_config;
+-	}
++	if (!dwmac)
++		return -ENOMEM;
  
- 	plat->serdes_powerup = mgbe_uphy_lane_bringup_serdes_up;
-@@ -342,12 +342,10 @@ static int tegra_mgbe_probe(struct platform_device *pdev)
+ 	spin_lock_init(&dwmac->lock);
+ 	dwmac->reg = stmmac_res.addr;
+@@ -238,7 +236,7 @@ static int visconti_eth_dwmac_probe(struct platform_device *pdev)
  
- 	err = stmmac_dvr_probe(&pdev->dev, plat, &res);
- 	if (err < 0)
--		goto remove;
-+		goto disable_clks;
+ 	ret = visconti_eth_clock_probe(pdev, plat_dat);
+ 	if (ret)
+-		goto remove_config;
++		return ret;
  
- 	return 0;
+ 	visconti_eth_init_hw(pdev, plat_dat);
  
--remove:
--	stmmac_remove_config_dt(pdev, plat);
- disable_clks:
- 	clk_bulk_disable_unprepare(ARRAY_SIZE(mgbe_clks), mgbe->clks);
+@@ -252,22 +250,15 @@ static int visconti_eth_dwmac_probe(struct platform_device *pdev)
  
-@@ -360,7 +358,7 @@ static void tegra_mgbe_remove(struct platform_device *pdev)
+ remove:
+ 	visconti_eth_clock_remove(pdev);
+-remove_config:
+-	stmmac_remove_config_dt(pdev, plat_dat);
  
- 	clk_bulk_disable_unprepare(ARRAY_SIZE(mgbe_clks), mgbe->clks);
- 
--	stmmac_pltfr_remove(pdev);
-+	stmmac_pltfr_remove_no_dt(pdev);
+ 	return ret;
  }
  
- static const struct of_device_id tegra_mgbe_match[] = {
+ static void visconti_eth_dwmac_remove(struct platform_device *pdev)
+ {
+-	struct net_device *ndev = platform_get_drvdata(pdev);
+-	struct stmmac_priv *priv = netdev_priv(ndev);
+-
+-	stmmac_pltfr_remove(pdev);
++	stmmac_pltfr_remove_no_dt(pdev);
+ 
+ 	visconti_eth_clock_remove(pdev);
+-
+-	stmmac_remove_config_dt(pdev, priv->plat);
+ }
+ 
+ static const struct of_device_id visconti_eth_dwmac_match[] = {
 -- 
 2.40.1
 
