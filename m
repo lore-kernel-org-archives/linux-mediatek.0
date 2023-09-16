@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CC06CD37BB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 11:13:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A358DCD37B7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 11:14:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PDRE70R3lGz5ezhDBmTyzAtvLuORLg4w0dd0nsfORgc=; b=phdDZGXgZcPOom0c0FvZDkPd+T
-	jVtDmbrrNl6KtC2A3y7eCLekll6sZ/Gd/gkL+b8rbwSd5rI4yWQcFrKWMIR224rcN4ErAwmw1xtCe
-	WHl9KTJxqnofEAN9FVsC765ZYaWQSytRe83E/+mU6f9tGyp60fWuc5UJFEeVErdLmBj8y9Xs3h0DJ
-	5LRVJ2AWqpyPo/UaOXdvHB4xTP6m/vjZOmEheMRblEucYEuZUciCdK/HEp0LoftY+eSE+GDEbmG7G
-	eyhH9ew91ddxp5N8MzL8PkANi4m8ksuC7k+yhu9uTwNIKh9aOnACZXL1DnAmwHNV/ZW8MRICMuRMi
-	qpmCcmjA==;
+	bh=HAZCgeoh9KUduxxc51sEyaD/Ww3GnyAUx/PFLTVQyPc=; b=aFN+jC5pC4BgwN3j+hRSnGt1/f
+	KOfgPzYrrEoRtRm5gl2vHRPNA4CrjkM8QocHPBwLmdkjcqzBpJ43a2eJ6C8hvxsYkrHnuy9wRCHbX
+	fq9UuaA6EVMBBer5RtGbUvWqNACjYWHQLY0t1QwH3edd6ksl55MGhFsHcelrngSKmJlHbre0+zFFO
+	Y6a7Z0qMJTy5NbxqxEeR392zwuHc4fHeqeKjR93IAkFgeBcEyWQxA2/spmMHgY4enxvnilK8Qq+hd
+	pekGjXFl+NVIm/rGJhzvb74kyH3NtX4IJskF/4OmFAFUKaYS9IoMhzyYNL4cGNd5nDtMcUbtKgLiz
+	jKL03mDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhTFG-00CS4x-33;
-	Sat, 16 Sep 2023 11:13:50 +0000
+	id 1qhTFZ-00CS7e-1U;
+	Sat, 16 Sep 2023 11:14:09 +0000
 Received: from relay1-d.mail.gandi.net ([217.70.183.193])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhTFC-00CS4I-22;
-	Sat, 16 Sep 2023 11:13:48 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id A4B67240004;
-	Sat, 16 Sep 2023 11:13:26 +0000 (UTC)
+	id 1qhTFV-00CS6l-0v;
+	Sat, 16 Sep 2023 11:14:07 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 89478240005;
+	Sat, 16 Sep 2023 11:13:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1694862825;
+	t=1694862843;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=PDRE70R3lGz5ezhDBmTyzAtvLuORLg4w0dd0nsfORgc=;
-	b=Neaf6SAGL7XVuZ5i4UaYHEGAe9v3D5Al2VGQf2Q38vACYLlG1sm2cRx5W3Rh0XMh8REHma
-	f/frjptNDm5AijdY9O1S8i7IlT99bnn2y1dKH0Wt13Dj81J/6uZqd2NDYmNQsKSgOHb4b+
-	i1JN+vAayRvuB1vRJamwKLfUB6BYDx9XKvggqxhWFn7pfTbJ2F6uo+nlJp7F8Wz3zhtOO+
-	3lS8G3atb6Th+AoBgRcGre1ZtuupEFaTQhQtlA9FcXFugFt3jfG99ujrthbkPmKNtlGhxj
-	OE7Zr6czr5evQ71Q84QOEXsNBGF242x4vaBtV24ikCLdenRtlq2zDfmjndAy6Q==
+	bh=HAZCgeoh9KUduxxc51sEyaD/Ww3GnyAUx/PFLTVQyPc=;
+	b=hKK2Wuk79GoaUo/hY/fuO5GNEsYpXvHQTmZHzkmUu1psjYgV5XTyUjTmWeR3yNV65L4Ghz
+	kQB0p3rthYgY0/1iJ1iTHdBtt3XqWLfmGTwb2cQTywTU4YqVAi5uQYhbNk7NK/b0s7wch5
+	o3R6bt5DMAyUXaAkMcviVr7aHL8KquFNdxeplIiYsZKYMMVXrxtHkocr3elHkU4mPcuJqK
+	21vBYwU+gVEk/OLBULj3WcOF61OeP3y7yC+8z+plp1vHHwnnZbaTiVNcvxSGNrMqFtf+FM
+	p6uiuukzlQvtFjbmaBTjXA7kM9QiyQdGrD7nVsUCHlmLE9UgQKwalLOkDla9Pw==
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -102,9 +102,9 @@ Cc: Woojung Huh <Woojung.Huh@microchip.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-renesas-soc@vger.kernel.org
-Subject: [PATCH net-next v2 09/10] MAINTAINERS: update MARVELL 88E6XXX ETHERNET SWITCH document file name
-Date: Sat, 16 Sep 2023 14:09:01 +0300
-Message-Id: <20230916110902.234273-10-arinc.unal@arinc9.com>
+Subject: [PATCH net-next v2 10/10] dt-bindings: net: marvell-armada-370-neta: convert to json-schema
+Date: Sat, 16 Sep 2023 14:09:02 +0300
+Message-Id: <20230916110902.234273-11-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230916110902.234273-1-arinc.unal@arinc9.com>
 References: <20230916110902.234273-1-arinc.unal@arinc9.com>
@@ -113,8 +113,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230916_041346_946953_DDF38303 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20230916_041405_592273_9C615571 
+X-CRM114-Status: GOOD (  22.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,27 +129,181 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The dt-bindings document was converted to json-schema. Update the file
-name.
+Convert the document for Marvell Armada 370 / Armada XP / Armada 3700
+Ethernet Controller (NETA) to json-schema.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../bindings/net/marvell-armada-370-neta.txt  |  50 ---------
+ .../bindings/net/marvell-armada-370-neta.yaml | 102 ++++++++++++++++++
+ 2 files changed, 102 insertions(+), 50 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/net/marvell-armada-370-neta.txt
+ create mode 100644 Documentation/devicetree/bindings/net/marvell-armada-370-neta.yaml
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 612d6d1dbf36..5d4e6b578c04 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -12564,7 +12564,7 @@ MARVELL 88E6XXX ETHERNET SWITCH FABRIC DRIVER
- M:	Andrew Lunn <andrew@lunn.ch>
- L:	netdev@vger.kernel.org
- S:	Maintained
--F:	Documentation/devicetree/bindings/net/dsa/marvell.txt
-+F:	Documentation/devicetree/bindings/net/dsa/marvell.yaml
- F:	Documentation/networking/devlink/mv88e6xxx.rst
- F:	drivers/net/dsa/mv88e6xxx/
- F:	include/linux/dsa/mv88e6xxx.h
+diff --git a/Documentation/devicetree/bindings/net/marvell-armada-370-neta.txt b/Documentation/devicetree/bindings/net/marvell-armada-370-neta.txt
+deleted file mode 100644
+index 2bf31572b08d..000000000000
+--- a/Documentation/devicetree/bindings/net/marvell-armada-370-neta.txt
++++ /dev/null
+@@ -1,50 +0,0 @@
+-* Marvell Armada 370 / Armada XP / Armada 3700 Ethernet Controller (NETA)
+-
+-Required properties:
+-- compatible: could be one of the following:
+-	"marvell,armada-370-neta"
+-	"marvell,armada-xp-neta"
+-	"marvell,armada-3700-neta"
+-	"marvell,armada-ac5-neta"
+-- reg: address and length of the register set for the device.
+-- interrupts: interrupt for the device
+-- phy: See ethernet.txt file in the same directory.
+-- phy-mode: See ethernet.txt file in the same directory
+-- clocks: List of clocks for this device. At least one clock is
+-  mandatory for the core clock. If several clocks are given, then the
+-  clock-names property must be used to identify them.
+-
+-Optional properties:
+-- tx-csum-limit: maximum mtu supported by port that allow TX checksum.
+-  Value is presented in bytes. If not used, by default 1600B is set for
+-  "marvell,armada-370-neta" and 9800B for others.
+-- clock-names: List of names corresponding to clocks property; shall be
+-  "core" for core clock and "bus" for the optional bus clock.
+-- phys: comphy for the ethernet port, see ../phy/phy-bindings.txt
+-
+-Optional properties (valid only for Armada XP/38x):
+-
+-- buffer-manager: a phandle to a buffer manager node. Please refer to
+-  Documentation/devicetree/bindings/net/marvell-neta-bm.txt
+-- bm,pool-long: ID of a pool, that will accept all packets of a size
+-  higher than 'short' pool's threshold (if set) and up to MTU value.
+-  Obligatory, when the port is supposed to use hardware
+-  buffer management.
+-- bm,pool-short: ID of a pool, that will be used for accepting
+-  packets of a size lower than given threshold. If not set, the port
+-  will use a single 'long' pool for all packets, as defined above.
+-
+-Example:
+-
+-ethernet@70000 {
+-	compatible = "marvell,armada-370-neta";
+-	reg = <0x70000 0x2500>;
+-	interrupts = <8>;
+-	clocks = <&gate_clk 4>;
+-	tx-csum-limit = <9800>
+-	phy = <&phy0>;
+-	phy-mode = "rgmii-id";
+-	buffer-manager = <&bm>;
+-	bm,pool-long = <0>;
+-	bm,pool-short = <1>;
+-};
+diff --git a/Documentation/devicetree/bindings/net/marvell-armada-370-neta.yaml b/Documentation/devicetree/bindings/net/marvell-armada-370-neta.yaml
+new file mode 100644
+index 000000000000..9283ab74cdb2
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/marvell-armada-370-neta.yaml
+@@ -0,0 +1,102 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/net/marvell-armada-370-neta.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Marvell Armada 370 / Armada XP / Armada 3700 Ethernet Controller (NETA)
++
++allOf:
++  - $ref: ethernet-controller.yaml#
++  - $ref: ethernet-controller.yaml#/$defs/phylink
++
++maintainers:
++  - Arınç ÜNAL <arinc.unal@arinc9.com>
++
++properties:
++  compatible:
++    enum:
++      - marvell,armada-370-neta
++      - marvell,armada-xp-neta
++      - marvell,armada-3700-neta
++      - marvell,armada-ac5-neta
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    description:
++      List of clocks for this device. At least one clock is mandatory for the
++      core clock. If several clocks are given, then the clock-names property
++      must be used to identify them.
++
++  tx-csum-limit:
++    description:
++      Maximum mtu supported by port that allow TX checksum. Value is presented
++      in bytes. If not used, by default 1600B is set for
++      "marvell,armada-370-neta" and 9800B for others.
++
++  clock-names:
++    description:
++      List of names corresponding to clocks property; shall be "core" for core
++      clock and "bus" for the optional bus clock.
++
++  phys:
++    description:
++      comphy for the ethernet port, see ../phy/phy-bindings.txt.
++
++if:
++  properties:
++    compatible:
++      enum:
++        - marvell,armada-370-neta
++        - marvell,armada-xp-neta
++then:
++  properties:
++    buffer-manager:
++      description:
++        A phandle to a buffer manager node. Please refer to
++        Documentation/devicetree/bindings/net/marvell-neta-bm.txt.
++
++    bm,pool-long:
++      description:
++        ID of a pool, that will accept all packets of a size higher than 'short'
++        pool's threshold (if set) and up to MTU value. Obligatory, when the port
++        is supposed to use hardware buffer management.
++
++    bm,pool-short:
++      description:
++        ID of a pool, that will be used for accepting packets of a size lower
++        than given threshold. If not set, the port will use a single 'long' pool
++        for all packets, as defined above.
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - phy-mode
++  - clocks
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    ethernet@70000 {
++        compatible = "marvell,armada-370-neta";
++        reg = <0x70000 0x2500>;
++        interrupts = <8>;
++        clocks = <&gate_clk 4>;
++        tx-csum-limit = <9800>;
++        phy-mode = "rgmii-id";
++        buffer-manager = <&bm>;
++        bm,pool-long = <0>;
++        bm,pool-short = <1>;
++
++        fixed-link {
++            speed = <1000>;
++            full-duplex;
++        };
++    };
 -- 
 2.39.2
 
