@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C33ECD37BC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 15:31:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C55FBCD37BD
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Sep 2023 15:45:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nNzjBvEdjVLIfZXjhwvUmOo9cBIhI+ah064hJXymrS0=; b=gbrrvfM2wegCu4isMASbTz+dzI
-	fGssQ5eOL+v50PigNDFXQhtZO58mxsol1jPlz0nuYAkuho0etkD09unrSOUV4jZ6LgOQCvS8vHmKw
-	NGvNTmLYRhFMXTgbPH0ySsLZdyb02DIbFsirs1KgJvubpZiUvwLO3d9aCrQqpM/U9XHBUqcb1Fm4H
-	Zo7EYq9G6KGz+nnQvTgLstEf0us2yRefQ+3ErV9pxMetl8osfOmLK/DWbjWziXWdqB2mVMQv/ABeK
-	T3+j+eC7cthgIBUaJ7TDf4zs+C22/NzUik3iLEtgZFvCnEznMiw4jwOQ3P48I2NU3s+3C6Au+/eq+
-	GCfe70gA==;
+	bh=iKU7mLoYHSbaWsMW5qLWUohutwbcss/sFfhr1eqSfbo=; b=oWk7NS8+EmVRn+8Bm/p581r+0E
+	Kw87JhT4OITVHz/cDI1SUO3P3QvGXmjKKAEZj+m9J6UwKQcCnI0blQTB4O5V45uWqLg1VuPrtmpEa
+	+Exvy8EpTfVuQ5pN69JOAyYvlDcflNx1SLMqoX/dWfEYc9B+EbUBNmylcw8E6CnNpuD+USViPmpWF
+	p8/m2XXPKwKqHkxNL0AprJK4WvoADtC/AYQ7fA3PBYjMXpti5KMhlo1gdRJtaCcCNKYH7NG9rvlkl
+	QKB46F2/OvbXOCu/MwBvb2hIoakWStHcpgHBGwjeLKHA5IlOGHcFow6oA0sNB8XIp0UVp2u99a0+p
+	pU9ogaoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhXGA-00Cc0f-3A;
-	Sat, 16 Sep 2023 15:31:02 +0000
+	id 1qhXU6-00CcUt-0O;
+	Sat, 16 Sep 2023 15:45:26 +0000
 Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhXG6-00CbzM-0n;
-	Sat, 16 Sep 2023 15:31:00 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id CC3C8C0003;
-	Sat, 16 Sep 2023 15:30:36 +0000 (UTC)
+	id 1qhXU2-00CcUN-08;
+	Sat, 16 Sep 2023 15:45:23 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 6E4D4C0005;
+	Sat, 16 Sep 2023 15:45:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1694878253;
+	t=1694879117;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=nNzjBvEdjVLIfZXjhwvUmOo9cBIhI+ah064hJXymrS0=;
-	b=XelGTaolNJmnpe83jTCntCcgiRnplsFx18gQ0m1m920W/83H3auR3EqLSI29RuovlUfm/V
-	VwKTF44wM+z8mX1yxBPlUy14aUVq5oF9z+FGwpth5iH2NG8/DfzKlic+7vllRWI5Zg+ero
-	kGwOXqeK+ESrcQZrc4ONd+vpmap76/mCBOAbGgRN0ErUa5phiJwZfxOMi/dN+JpZITb9ek
-	66cPtW8p4GO5AEIRc9S4XJbtKZJOL86pCEOa8y3LTZ3a3FxgK1JJ85CLvmFy0AQ5KBpM9M
-	vP9EUgcK9IdByP5RO2vJ3Y8XWnnQ7yKZcD/Rtytzt7vSoY5yKkhmTLZuL1BEaQ==
-Message-ID: <abc22fea-893f-4f5b-822c-e69cd32788a1@arinc9.com>
-Date: Sat, 16 Sep 2023 18:30:31 +0300
+	bh=iKU7mLoYHSbaWsMW5qLWUohutwbcss/sFfhr1eqSfbo=;
+	b=GdJ7GMxBovtaJXuVJXQeL9F/8c1Kp3OBFjkusnp7zOgmYE5Om+W7T1Kts5XEXwqrEJK+R3
+	wVxarI+WeNgCskgQ17tWw2BKiQm1U1Pvy0rx4D5gzRZLr4RUagXZ5BCogf1EY6wV2kRZ/h
+	Os6yN9ypLrIYsYm1J5/NN81aU8rj+/rleRLewB0CgMXnmRGii52lZkTnASS3T0ZXZDi7N1
+	Vd8eH+3qXfk3+qiJ2bcvuYqmljaFYuxK2ZNXz8Kel+nAz2UX+yywxWa1e0ugDrUWb9Nnc+
+	Vs/8jFHtM1PVBgoVys1nB/LJTk6s1urgwMunlKZ+vBKdKNFQ44Jw+aPrFwGODQ==
+Message-ID: <ae50cb7f-3110-4627-867e-32598056859d@arinc9.com>
+Date: Sat, 16 Sep 2023 18:44:59 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v2 05/10] dt-bindings: net: dsa: define MDIO bus
- child node
+Subject: Re: [PATCH net-next v2 08/10] dt-bindings: net: dsa: marvell: convert
+ to json-schema
 Content-Language: en-US
 To: Andrew Lunn <andrew@lunn.ch>
 Cc: "David S. Miller" <davem@davemloft.net>,
@@ -93,16 +93,16 @@ Cc: "David S. Miller" <davem@davemloft.net>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-renesas-soc@vger.kernel.org
 References: <20230916110902.234273-1-arinc.unal@arinc9.com>
- <20230916110902.234273-6-arinc.unal@arinc9.com>
- <445beba8-2499-44a3-9c36-b9ec761121fb@lunn.ch>
+ <20230916110902.234273-9-arinc.unal@arinc9.com>
+ <63cc4c3c-5cac-4d54-99be-7f05e98406ba@lunn.ch>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <445beba8-2499-44a3-9c36-b9ec761121fb@lunn.ch>
+In-Reply-To: <63cc4c3c-5cac-4d54-99be-7f05e98406ba@lunn.ch>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230916_083058_588585_C3D979AE 
-X-CRM114-Status: GOOD (  13.67  )
+X-CRM114-CacheID: sfid-20230916_084522_390883_FA12F05E 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,35 +117,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16.09.2023 17:11, Andrew Lunn wrote:
-> On Sat, Sep 16, 2023 at 02:08:57PM +0300, Arınç ÜNAL wrote:
->> Some DSA subdrivers register the MDIO bus of the switch they control. Or
->> let the DSA driver register the MDIO bus. The node for these buses are
->> either required or optional, depending on the subdriver. Document this on
->> all of the affected DSA switch schemas.
->>
->> The attributes of a DSA subdriver that lets the DSA driver register the
->> bus:
->> - ds->ops->phy_read() and ds->ops->phy_write() are present.
->> - ds->slave_mii_bus is not populated by the DSA subdriver.
->> - The bus is registered non-OF-based or OF-based. Registered OF-based if
->>    "mdio" child node is defined.
->>
->> The affected DSA switch schemas are documented below.
->>
->> - brcm,b53.yaml
->>
->> drivers/net/dsa/b53/b53_common.c:
->> - The DSA subdriver lets the DSA driver register the bus.
->>
->> ---
+On 16.09.2023 17:05, Andrew Lunn wrote:
+>> +properties:
+>> +  compatible:
+>> +    oneOf:
+>> +      - description: |
+>> +          Switch has base address 0x10. Use with models:
+>> +          6085, 6095, 6097, 6123, 6131, 6141, 6161, 6165, 6171, 6172, 6175,
+>> +          6176, 6185, 6240, 6320, 6321, 6341, 6350, 6351, 6352
+>> +        const: marvell,mv88e6085
 > 
-> git uses --- to separate the commit message from additional comments
-> for the reviewers. Anything after the --- will not be merged. Is that
-> your intention?
+> The .txt file contained:
+> 
+>      The compatibility string is used only to find an identification
+>      register, which is at a different MDIO base address in different
+>      switch families.
+> 
+> Please keep this text. There has been a lot of confusion in the past,
+> lots of circular arguments etc, and it is way too late to do anything
+> different. So i want to make it clear what the compatible is used for,
+> juts to find the ID registers, nothing more.
 
-No, they're vital information. I'll find something better to separate them,
-thanks.
+Will do.
+
+> 
+>> +
+>> +      - description: |
+>> +          Switch has base address 0x00. Use with models:
+>> +          6190, 6190X, 6191, 6290, 6361, 6390, 6390X
+> 
+> The .txt file is missing the 6191X and 6393X, which belong here. If
+> you need to respin, please could you add them here.
+
+Will do.
 
 Arınç
 
