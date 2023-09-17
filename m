@@ -4,89 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28544CD37B4
-	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Sep 2023 08:31:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E66FACD37B4
+	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Sep 2023 08:47:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=drDjgL0hgos/meU0CMqnv5ge6VNpucOKs27UgCJcW4o=; b=sjZS9JpV9yY9uvB9j+lfAG9I2L
-	Z6XSBPZJr+jh3ZB45hKME1zwR+0f6hnxREfeRWJ/o47JxKwfW/O94mbGL+uxazaJoaRl9SURwFUmd
-	E2BJ2C2q5mu0I0ijJ4PeG3HtMckxjSIkAYnylwuAegT4UMpkE2s3MBVdcTNO0xY/fk1o5uGnw9ua1
-	dHExfDsLRIiJWqZ6padskCR6Ja01BVKiObARaJEKeao1weN532KhHRqlr6R5kI9fJCDdX2tABqCh5
-	wioNDbHi4mdOfcAfsbHN9pjl750xkYQfwMwuP1RyXIAUeUcfZo1i9R5L3OHQZvGERydKh3VykVqAi
-	RUyYY7Ig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rFnC+VR90Z2xP85Go83R6mG2nCXgsirwiGM8cS112sw=; b=1TV8YvsWwdqivtu1gI2lxDl7mn
+	Rw9+0tIhv9Yy3M80ylZgUKj6AxNJEVaRDTA/LXQRYvzbNuKuCusWkGLDR126xaax62/rg0iaPfgHR
+	1OtCyBgdZlbFT/Bf7+ApSL1EiOiFaee0VR2tXKwmvwvAjv/aIejXFY30JidgwPSy6XQe6hf401GVg
+	ay24nd9xZ7++LNzoOSuGDEwArcNz4TPbVxngiCl9dx8wSPFe2NpPBWgUiST+jKWyqj4YYz/bfT7hU
+	aNLcfrfy7N65fNNab3moQiHtBFn3NshmJRWtWnHsTPrzYrw/rkW4aRmA0tvNpB3InSqMwECZkNoDZ
+	JtxN65SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhnBk-00DKGf-37;
-	Sun, 17 Sep 2023 08:31:32 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1qhnRL-00DLCl-0Z;
+	Sun, 17 Sep 2023 08:47:39 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhnBh-00DKFs-2C
+	id 1qhnRJ-00DLCQ-0A
 	for linux-mediatek@lists.infradead.org;
-	Sun, 17 Sep 2023 08:31:30 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-501bd6f7d11so5792504e87.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 17 Sep 2023 01:31:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1694939487; x=1695544287; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=drDjgL0hgos/meU0CMqnv5ge6VNpucOKs27UgCJcW4o=;
-        b=Dh6vW4uSRC68m3TUMrzYLrV+j47Lhnz1bYZp+cNifmqJUufXRddP2Fp+KcxmYfi0Dj
-         MKDUr8yqnbZAE2NgtFIx7/I5ey6Xd/1iviqBXBx/RqQmHNYdzIkxjzvBdYRnJz1D7z9W
-         lEgSb6dPKSFwAI/oLcNe8nFGvMLpLSl3Ty/QN7kTP9raA3TKoMb/ivtE10ERgy32y/Kl
-         59wMh0SDqrEaYxe9SuLDwdPQy89V7ja4nHikVD8kCCpFD5BEatWNlMrZ36Q2TFxd8y2G
-         DNMfm7dKS7X9UHGkFrvPym/OIX42K99GibjjJZGKherwRUXwoJUzA5maHYtZi+v/rmVb
-         E+fQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694939487; x=1695544287;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=drDjgL0hgos/meU0CMqnv5ge6VNpucOKs27UgCJcW4o=;
-        b=MCKEcbldwJ5FOWKy1RoXHZLd2Kh74W+opqy3sKhtc0n2XlWQ+O6tBND88TPRBn2y+t
-         g+iZuMgKnQAozouDvm9hu09gR6cgU63ZATQk+FZKQUfzLxq5cVzAAyGFZu7CGDdHYQPH
-         vD6ObxwXgnlDJlZwwbIqSto+kGsGVSkb7ZLyXPIrANBfvsGzjNBg00oa7AhIsZ4IW80M
-         CEFC6U3aLbg9TEwj1OH/qDH38iEFAxtPrXiQZnr81KcO0UFYM7tEOFzh5DRleQx7m0iO
-         vYf6EL84+/3jbHJ7aUwRt7eKBWxleOEZJg7iY/SzGpFWF9RB2CBNhtPivxGJjDPvirkE
-         B2gg==
-X-Gm-Message-State: AOJu0YzPpswbG65EJSG/ngL9JEG+qPteaVwbagW/xp2iBdOb/DjBYKcg
-	YSY3mxiO2o9DHdvSOKooia6ovg==
-X-Google-Smtp-Source: AGHT+IHFmHHrwMXcnFf/9Ysu9VlD73MTmqu/TrOJBBdfu+3YjbX5GvgssgHy0T7TnBmG+oi1KuCbqw==
-X-Received: by 2002:ac2:54a5:0:b0:4fd:d08c:fa3e with SMTP id w5-20020ac254a5000000b004fdd08cfa3emr4659614lfk.42.1694939487357;
-        Sun, 17 Sep 2023 01:31:27 -0700 (PDT)
-Received: from [192.168.1.77] (150-140-187-31.ftth.glasoperator.nl. [31.187.140.150])
-        by smtp.gmail.com with ESMTPSA id i8-20020a0564020f0800b005309eb7544fsm2672737eda.45.2023.09.17.01.31.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 17 Sep 2023 01:31:26 -0700 (PDT)
-Message-ID: <3dbff750-c430-04a7-1c53-f2e327e54f2e@linaro.org>
-Date: Sun, 17 Sep 2023 10:31:26 +0200
+	Sun, 17 Sep 2023 08:47:38 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 58A9760ACD;
+	Sun, 17 Sep 2023 08:47:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61959C433C7;
+	Sun, 17 Sep 2023 08:47:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1694940454;
+	bh=l+Sr+3wtCBb7xzBSEztJcEqZ8CXJywYnYrDfeKgva0g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FKlcyKI2kpWpgmNiueo4a26VAntMReflY2KPdNKBUoBv1OPJC6yo+TgJ/eYj1XNI8
+	 YqWY7bQg8BuZ3eDnrfXfmIKcf36zE3/mU1QJDRa+G3zh0HnHqus3I/jAXZ6GcIZOWV
+	 aacSttw4rLx/isPT7EN2NHNV4Bf2fIPH1KBMpkKuDkOk3ANTrlaBwkD8Or9uJsSG+y
+	 LhmswnwVU6GJF2EXmjH0oIHPZWt+YiMwY34fc3sbjRWV0rxk3bK1wjdbs7hknE8LQ5
+	 M1jBaGONdVNuOp0BlkXjkR8ws/A3YY3WWwdzpG2k855dT/l0o77y+ytD38Dpl2I6M9
+	 4P2jSGmXhCBYA==
+Date: Sun, 17 Sep 2023 10:47:28 +0200
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: netdev@vger.kernel.org, lorenzo.bianconi@redhat.com, nbd@nbd.name,
+	john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, daniel@makrotopia.org,
+	linux-mediatek@lists.infradead.org, sujuan.chen@mediatek.com,
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH net-next 13/15] net: ethernet: mtk_wed: introduce hw_rro
+ support for MT7988
+Message-ID: <20230917084728.GI1125562@kernel.org>
+References: <cover.1694701767.git.lorenzo@kernel.org>
+ <da27f7333fa31808ceae581d9bef5030c6072f33.1694701767.git.lorenzo@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH v2 0/3] mtk-socinfo driver implementation
-Content-Language: en-US
-To: William-tw Lin <william-tw.lin@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Kevin Hilman <khilman@kernel.org>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20230915152607.18116-1-william-tw.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20230915152607.18116-1-william-tw.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <da27f7333fa31808ceae581d9bef5030c6072f33.1694701767.git.lorenzo@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230917_013129_732160_E58C3E65 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20230917_014737_198365_80A1BFFB 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,25 +81,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15/09/2023 17:26, William-tw Lin wrote:
-> This purpose of the patches is for soc-related information retrival.
-> Such information includes manufacturer information, SoC name, SoC 
-> segment name, and SoC marketing name.
+On Thu, Sep 14, 2023 at 04:38:18PM +0200, Lorenzo Bianconi wrote:
+> From: Sujuan Chen <sujuan.chen@mediatek.com>
 > 
-> Based on tag: next-20230915, linux-next/master
+> MT7988 SoC support 802.11 receive reordering offload in hw while
+> MT7986 SoC implements it through the firmware running on the mcu.
 > 
-> Changes in v2:
-> - Remove mtk-socinfo.h
-> - Consolidate different compatibles into mediatek,socinfo
-> - Move socinfo node out of MMIO bus
-> - Move mtk-socinfo.yaml to hwinfo
-> - Fix reviewer's comments
+> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
 
-This is way to vague, especially that you did not fix them. You need to
-list all of them. Then we will nicely see what you ignored.
+...
 
+Hi Lorenzo,
 
-Best regards,
-Krzysztof
+some minor feedback from my side.
 
+> @@ -565,6 +565,73 @@ mtk_wed_free_tx_buffer(struct mtk_wed_device *dev)
+>  	kfree(page_list);
+>  }
+>  
+> +static int
+> +mtk_wed_hwrro_buffer_alloc(struct mtk_wed_device *dev)
+> +{
+> +	int n_pages = MTK_WED_RX_PG_BM_CNT / MTK_WED_RX_BUF_PER_PAGE;
+> +	struct mtk_wed_buf *page_list;
+> +	struct mtk_wed_bm_desc *desc;
+> +	dma_addr_t desc_phys;
+> +	int i, page_idx = 0;
+> +
+> +	if (!dev->wlan.hw_rro)
+> +		return 0;
+> +
+> +	page_list = kcalloc(n_pages, sizeof(*page_list), GFP_KERNEL);
+> +	if (!page_list)
+> +		return -ENOMEM;
+> +
+> +	dev->hw_rro.size = dev->wlan.rx_nbuf & ~(MTK_WED_BUF_PER_PAGE - 1);
+> +	dev->hw_rro.pages = page_list;
+> +	desc = dma_alloc_coherent(dev->hw->dev,
+> +				  dev->wlan.rx_nbuf * sizeof(*desc),
+> +				  &desc_phys, GFP_KERNEL);
+> +	if (!desc)
+> +		return -ENOMEM;
+> +
+> +	dev->hw_rro.desc = desc;
+> +	dev->hw_rro.desc_phys = desc_phys;
+> +
+> +	for (i = 0; i < MTK_WED_RX_PG_BM_CNT; i += MTK_WED_RX_BUF_PER_PAGE) {
+> +		dma_addr_t page_phys, buf_phys;
+> +		struct page *page;
+> +		void *buf;
+> +		int s;
+> +
+> +		page = __dev_alloc_page(GFP_KERNEL);
+> +		if (!page)
+> +			return -ENOMEM;
+> +
+> +		page_phys = dma_map_page(dev->hw->dev, page, 0, PAGE_SIZE,
+> +					 DMA_BIDIRECTIONAL);
+> +		if (dma_mapping_error(dev->hw->dev, page_phys)) {
+> +			__free_page(page);
+> +			return -ENOMEM;
+> +		}
+> +
+> +		page_list[page_idx].p = page;
+> +		page_list[page_idx++].phy_addr = page_phys;
+> +		dma_sync_single_for_cpu(dev->hw->dev, page_phys, PAGE_SIZE,
+> +					DMA_BIDIRECTIONAL);
+> +
+> +		buf = page_to_virt(page);
+> +		buf_phys = page_phys;
+> +
+> +		for (s = 0; s < MTK_WED_RX_BUF_PER_PAGE; s++) {
+> +			desc->buf0 = cpu_to_le32(buf_phys);
+> +			desc++;
+> +
+> +			buf += MTK_WED_PAGE_BUF_SIZE;
+
+clang-16 W=1 warns that buf is set but otherwise unused in this function.
+
+> +			buf_phys += MTK_WED_PAGE_BUF_SIZE;
+> +		}
+> +
+> +		dma_sync_single_for_device(dev->hw->dev, page_phys, PAGE_SIZE,
+> +					   DMA_BIDIRECTIONAL);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>  static int
+>  mtk_wed_rx_buffer_alloc(struct mtk_wed_device *dev)
+>  {
+
+...
 
