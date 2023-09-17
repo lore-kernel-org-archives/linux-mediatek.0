@@ -4,73 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A06C2CD13CF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Sep 2023 16:30:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8020ECD13CF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Sep 2023 22:26:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HzNM+NPfJ5CDr5hTobSDl1+YnN2TJtED/tkotJW0Ydg=; b=GeAUtxZcXm6niTk/5GkRUtROEw
-	GII+hMjfRWu8a9p6LHnqSRJgBA4XcMwjbj3JPr4egcl9ukc5EATdzgmV+ka/XuN4wuqkr4bIQhpBh
-	xoue5A2M/S2b7ftvmZCYDr7wXL4Pm8yoi88RMi6q15yMlKk3GZvfBJq/qXNxtnIVsTweih3zRg9WA
-	0NVHz0mFt27uVhrVZlB75fYLOsB2xs3HVJwXX1SxcLZIUB8BYXRT39q9nEF+vvgCVyc9ERsf4wa5n
-	PGFrxV7urFfgp4CQdLyk+7HvRUmjlhXOff+OTJ22UPszrpMomLlh6v8gXBLzUZXGDyE5WYuZ12Azh
-	RPT6S6dQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:Mime-Version:References:In-Reply-To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=I9MD/frOYatXvnTs5iG7mBs2PH8/IlXgMFq6W02dlmo=; b=1lHYANi7A4htR4bXDoVS+EXiQd
+	ToJD75QBE0xsf5/5gJTlFkDS9ZiXqv/jjhpTP3iEZHk2pUaqvmUibki/g2ZLZ5w3T0S5lKhtq/jcC
+	dOa5ItMCkdDrpUrqPHvkX8T8n/PQpZ3ivejSxO9BYuLeBQvoqPNXthXlGYEAKabs0Y0XU7rDXY1IT
+	vrt4PUSLzsAq4mM8gEU2KcMkeDQ1+PXDko+KOTPIn3itY77esDiAo3TqAoTH9M/MSUAbmBWaLFQQZ
+	pEEJdiM/OdUpFgvxTY750fm0Rz9W4+hgoGkoY9QcQsPk6hoxYQKtmQUkaS0e1yeNDS84nZe/VLRrW
+	ILgTdyNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhuf1-00Douo-1O;
-	Sun, 17 Sep 2023 16:30:15 +0000
-Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
+	id 1qi0DL-00E47S-39;
+	Sun, 17 Sep 2023 22:26:04 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qhuex-00Dou6-1y;
-	Sun, 17 Sep 2023 16:30:13 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id A6BEAFF809;
-	Sun, 17 Sep 2023 16:29:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1694968209;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=HzNM+NPfJ5CDr5hTobSDl1+YnN2TJtED/tkotJW0Ydg=;
-	b=NtbKG7FFhvBrf/tNHIlYz/nCRJmUGzH/VPSVuqbS+jQwh0NTv5diQfbNoVS9Za4paxzpMl
-	bNV4el4FuS4ai6rl+bvdyy3MQYBgds/MSOxulYa4Ni7e2v/49dJSFbBkKJlRnfaTPwumPv
-	gRYdnSz4vCwpsrQIO7SI4wRdrZCqu82tKFuehH4OoVu9SlN03H9KkclXd0wkqCg9laZlPD
-	T8BJXhgNynFSTXGGwDwSQ3dC3JO/mvloFEQkQqu87amjLs7+PPy9q+UzqjnRnb4tbDjU49
-	D/jmc/gm+BmuPObu5rvDMuhbN/3/DjSqYCjjsqH+JExxCY6bWqtneJ9dsnwS/Q==
-From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1qi0DH-00E45i-0v
+	for linux-mediatek@lists.infradead.org;
+	Sun, 17 Sep 2023 22:26:02 +0000
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id ACD4F3F314
+	for <linux-mediatek@lists.infradead.org>; Sun, 17 Sep 2023 22:25:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+	s=20210705; t=1694989556;
+	bh=I9MD/frOYatXvnTs5iG7mBs2PH8/IlXgMFq6W02dlmo=;
+	h=From:In-Reply-To:References:Mime-Version:Date:Message-ID:Subject:
+	 To:Cc:Content-Type;
+	b=NmQRKRhi0LohoPlWsC0Tzix0+bVD7BtHqObbtgxvQ/+GycprG3wYcIoMLZqE8AiqF
+	 k5oIzFDC0M+zXmVKJWGViVC+ZbXccz+sQRfqlMvdMRGxfWXdaP0Fnntn7DSfyDO1o6
+	 kqziQ/bOoIBUcT8160q880Hhkv07Dzz4A/pEicwM7CzSajWc2c5jZ9XL3znRlpk+LS
+	 U4Fwf/Ua60DpxiL0kyS1OmwQyA2r0/LoSPa1QKIP2TMa2dNm371Pia9Bohv/JrKTKu
+	 o38QfEE+s1bYz57xAULK0IN0heugS3zHgR2H8Nsi/LwLzSbkHkIIz9SizYX5aIebp2
+	 de38Fzd7zSxTw==
+Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-412eee4b64cso47692851cf.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 17 Sep 2023 15:25:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694989555; x=1695594355;
+        h=cc:to:subject:message-id:date:mime-version:references:in-reply-to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=I9MD/frOYatXvnTs5iG7mBs2PH8/IlXgMFq6W02dlmo=;
+        b=pqjyeodqor6b0a4Olb9dq/jr22qN7TAs/7EHmxWJtjqoTkgcYpxU/PeJKSkjdy/wxg
+         eXgJ13+99waQWi0+F0IYTKS0OfLTn6bK8vXMRqjCfTeDHesuyNALzCI+brjOR+UffXTV
+         I40yUJAn25ZMJUJnJadaG0gFKtQ5kzIA1idpqgg/W720UACevlK7fk+fZFcdShvBPaqY
+         XDi1SEZWm042cCJu8/ey31ApOoJPBr5TPE3431C53hSWp7Wvd05Oyha4TvS9ltNZ6cPc
+         be0RLNC5mdj8uitX5dXMqnFP5sjtVvwASr1OhyoLSLN8zd0ACYML+CL/W3HrNsn62Ni1
+         QYcA==
+X-Gm-Message-State: AOJu0YxRUAajidUGR6z+C/YZcurw07HXKhCNIjOHumPGoVT8Zk2qZv2P
+	j9CVJWUg1CsddORTtikC3On2ibR4RWYWJN9/vYk8HId7EWiGv1Spz+JcqdUoxAybP7vzqM1FCKQ
+	+BzJ8N1jQ4LmwsvCNqHNdMKJLThaI/wVazPp8ehoBAK3ivkxoGzd+Z0xunHRqcRz0mw==
+X-Received: by 2002:ac8:7f91:0:b0:416:db70:2653 with SMTP id z17-20020ac87f91000000b00416db702653mr8876096qtj.38.1694989555289;
+        Sun, 17 Sep 2023 15:25:55 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFezqxmfqtGhS2FxPCsYpubnTNK6tACbhkhYR/40Y08aycFwHOLWJhOoCYZSF3ud4i1i0EL+r/CXjLeOYzof7Y=
+X-Received: by 2002:ac8:7f91:0:b0:416:db70:2653 with SMTP id
+ z17-20020ac87f91000000b00416db702653mr8876059qtj.38.1694989554976; Sun, 17
+ Sep 2023 15:25:54 -0700 (PDT)
+Received: from 348282803490 named unknown by gmailapi.google.com with
+ HTTPREST; Sun, 17 Sep 2023 15:25:54 -0700
+From: Emil Renner Berthing <emil.renner.berthing@canonical.com>
+In-Reply-To: <20230916075829.1560-1-jszhang@kernel.org>
+References: <20230916075829.1560-1-jszhang@kernel.org>
+Mime-Version: 1.0
+Date: Sun, 17 Sep 2023 15:25:54 -0700
+Message-ID: <CAJM55Z-_yq3DrOC2KxQf8j5y_iDD7ejEReP4XajUz74iVp02LQ@mail.gmail.com>
+Subject: Re: [PATCH net-next v2 00/22] convert to devm_stmmac_probe_config_dt
+To: Jisheng Zhang <jszhang@kernel.org>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, 
+	"David S . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+	Vladimir Zapolskiy <vz@mleia.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Emil Renner Berthing <kernel@esmil.dk>, 
+	Samin Guo <samin.guo@starfivetech.com>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Thierry Reding <thierry.reding@gmail.com>, 
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, Russell King <linux@armlinux.org.uk>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: mithat.guner@xeront.com,
-	erkin.bozoglu@xeront.com,
-	linux-mediatek@lists.infradead.org,
-	linux-mips@vger.kernel.org,
-	linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 2/2] dt-bindings: pinctrl: mtmips: document pins of groups
-Date: Sun, 17 Sep 2023 19:28:37 +0300
-Message-Id: <20230917162837.277405-2-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230917162837.277405-1-arinc.unal@arinc9.com>
-References: <20230917162837.277405-1-arinc.unal@arinc9.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Cc: netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230917_093011_938949_F800C3EF 
-X-CRM114-Status: UNSURE (   9.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230917_152559_477474_D5EFD916 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,269 +113,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the pins of each group on the MediaTek MTMIPS SoC pin controllers.
+Jisheng Zhang wrote:
+> Russell pointed out there's a new devm_stmmac_probe_config_dt()
+> helper now when reviewing my starfive gmac error handling patch[1].
+> After greping the code, this nice helper was introduced by Bartosz in
+> [2], I think it's time to convert all dwmac users to this helper and
+> finally complete the TODO in [2] "but once all users of the old
+> stmmac_pltfr_remove() are converted to the devres helper, it will be
+> renamed back to stmmac_pltfr_remove() and the no_dt function removed."
 
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- .../pinctrl/mediatek,mt7620-pinctrl.yaml      | 22 ++++++++++++-
- .../pinctrl/mediatek,mt7621-pinctrl.yaml      | 18 +++++++++-
- .../pinctrl/mediatek,mt76x8-pinctrl.yaml      | 33 ++++++++++++++++++-
- .../pinctrl/ralink,rt2880-pinctrl.yaml        | 17 +++++++++-
- .../pinctrl/ralink,rt305x-pinctrl.yaml        | 16 ++++++++-
- .../pinctrl/ralink,rt3352-pinctrl.yaml        | 17 +++++++++-
- .../pinctrl/ralink,rt3883-pinctrl.yaml        | 16 ++++++++-
- .../pinctrl/ralink,rt5350-pinctrl.yaml        | 13 +++++++-
- 8 files changed, 144 insertions(+), 8 deletions(-)
+Thanks for doing this.
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
-index 221adcef6e14..eb9d9d2bd90f 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7620-pinctrl.yaml
-@@ -44,8 +44,28 @@ patternProperties:
-                    wdt refclk, wdt rst, wled]
- 
-           groups:
--            description:
-+            description: |
-               An array of strings. Each string contains the name of a group.
-+
-+              group             pins
-+              ------------------------------------------------------------------
-+              "i2c"             1, 2
-+              "spi"             3, 4, 5, 6
-+              "uartf"           7, 8, 9, 10, 11, 12, 13, 14
-+              "uartlite"        15, 16
-+              "wdt"             17
-+              "pa"              18, 19, 20, 21
-+              "mdio"            22, 23
-+              "rgmii1"          24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35
-+              "pcie"            36
-+              "spi refclk"      37, 38, 39
-+              "ephy"            40, 41, 42, 43, 44
-+              "nd_sd"           45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56,
-+                                57, 58, 59
-+
-+              "rgmii2"          60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71
-+              "wled"            72
-+
-             maxItems: 1
- 
-         required:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7621-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7621-pinctrl.yaml
-index 5e29332c794b..71d1ef203d38 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7621-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7621-pinctrl.yaml
-@@ -43,8 +43,24 @@ patternProperties:
-                    uart1, uart2, uart3, wdt refclk, wdt rst]
- 
-           groups:
--            description:
-+            description: |
-               An array of strings. Each string contains the name of a group.
-+
-+              group             pins
-+              ------------------------------------------------------------------
-+              "uart1"           1, 2
-+              "i2c"             3, 4
-+              "uart3"           5, 6, 7, 8
-+              "uart2"           9, 10, 11, 12
-+              "jtag"            13, 14, 15, 16, 17
-+              "wdt"             18
-+              "pcie"            19
-+              "mdio"            20, 21
-+              "rgmii2"          22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33
-+              "spi"             34, 35, 36, 37, 38, 39, 40
-+              "sdhci"           41, 42, 43, 44, 45, 46, 47, 48
-+              "rgmii1"          49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60
-+
-             maxItems: 1
- 
-         required:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml
-index fef7728a5220..3831c04fa37c 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt76x8-pinctrl.yaml
-@@ -46,8 +46,39 @@ patternProperties:
-                    wled_an, wled_kn, -]
- 
-           groups:
--            description:
-+            description: |
-               An array of strings. Each string contains the name of a group.
-+
-+              group             pins
-+              ------------------------------------------------------------------
-+              "i2s"             0, 1, 2, 3
-+              "i2c"             4, 5
-+              "spi cs1"         6
-+              "spi"             7, 8, 9, 10
-+              "gpio"            11
-+              "uart0"           12, 13
-+              "spis"            14, 15, 16, 17
-+              "pwm0"            18
-+              "pwm1"            19
-+              "uart2"           20, 21
-+              "sdmode"          22, 23, 24, 25, 26, 27, 28, 29
-+              "p4led_kn"        30
-+              "p3led_kn"        31
-+              "p2led_kn"        32
-+              "p1led_kn"        33
-+              "p0led_kn"        34
-+              "wled_kn"         35
-+              "perst"           36
-+              "refclk"          37
-+              "wdt"             38
-+              "p4led_an"        39
-+              "p3led_an"        40
-+              "p2led_an"        41
-+              "p1led_an"        42
-+              "p0led_an"        43
-+              "wled_an"         44
-+              "uart1"           45, 46
-+
-             maxItems: 1
- 
-         required:
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,rt2880-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,rt2880-pinctrl.yaml
-index 71bc961b856e..b1a6a6236737 100644
---- a/Documentation/devicetree/bindings/pinctrl/ralink,rt2880-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,rt2880-pinctrl.yaml
-@@ -41,8 +41,23 @@ patternProperties:
-             enum: [gpio, i2c, spi, uartlite, jtag, mdio, sdram, pci]
- 
-           groups:
--            description:
-+            description: |
-               An array of strings. Each string contains the name of a group.
-+
-+              group             pins
-+              ------------------------------------------------------------------
-+              "i2c"             1, 2
-+              "spi"             3, 4, 5, 6
-+              "uartlite"        7, 8, 9, 10, 11, 12, 13, 14
-+              "jtag"            17, 18, 19, 20, 21
-+              "mdio"            22, 23
-+              "sdram"           24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
-+                                36, 37, 38, 39
-+
-+              "pci"             40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
-+                                52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63,
-+                                64, 65, 66, 67, 68, 69, 70, 71
-+
-             maxItems: 1
- 
-         required:
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml
-index bde19a00af80..214fb17d6b82 100644
---- a/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,rt305x-pinctrl.yaml
-@@ -43,8 +43,22 @@ patternProperties:
-                    uartlite]
- 
-           groups:
--            description:
-+            description: |
-               An array of strings. Each string contains the name of a group.
-+
-+              group             pins
-+              ------------------------------------------------------------------
-+              "i2c"             1, 2
-+              "spi"             3, 4, 5, 6
-+              "uartf"           7, 8, 9, 10, 11, 12, 13, 14
-+              "uartlite"        15, 16
-+              "jtag"            17, 18, 19, 20, 21
-+              "mdio"            22, 23
-+              "sdram"           24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
-+                                36, 37, 38, 39
-+
-+              "rgmii"           40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51
-+
-             maxItems: 1
- 
-         required:
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,rt3352-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,rt3352-pinctrl.yaml
-index f87038cadfc8..65f04d85e9fc 100644
---- a/Documentation/devicetree/bindings/pinctrl/ralink,rt3352-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,rt3352-pinctrl.yaml
-@@ -43,8 +43,23 @@ patternProperties:
-                    uartf, uartlite, wdg_cs1]
- 
-           groups:
--            description:
-+            description: |
-               An array of strings. Each string contains the name of a group.
-+
-+              group             pins
-+              ------------------------------------------------------------------
-+              "i2c"             1, 2
-+              "spi"             3, 4, 5, 6
-+              "uartf"           7, 8, 9, 10, 11, 12, 13, 14
-+              "uartlite"        15, 16
-+              "jtag"            17, 18, 19, 20, 21
-+              "mdio"            22, 23
-+              "rgmii"           24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35
-+              "lna"             36, 37
-+              "pa"              38, 39
-+              "led"             40, 41, 42, 43, 44
-+              "spi_cs1"         45
-+
-             maxItems: 1
- 
-         required:
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,rt3883-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,rt3883-pinctrl.yaml
-index 3a13a69f7752..61beb78b9d1c 100644
---- a/Documentation/devicetree/bindings/pinctrl/ralink,rt3883-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,rt3883-pinctrl.yaml
-@@ -43,8 +43,22 @@ patternProperties:
-                    pcm gpio, pcm i2s, pcm uartf, spi, uartf, uartlite]
- 
-           groups:
--            description:
-+            description: |
-               An array of strings. Each string contains the name of a group.
-+
-+              group             pins
-+              ------------------------------------------------------------------
-+              "i2c"             1, 2
-+              "spi"             3, 4, 5, 6
-+              "uartf"           7, 8, 9, 10, 11, 12, 13, 14
-+              "uartlite"        15, 16
-+              "jtag"            17, 18, 19, 20, 21
-+              "mdio"            22, 23
-+              "lna a"           32, 33, 34
-+              "lna g"           35, 36, 37
-+              "ge1"             72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83
-+              "ge2"             84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95
-+
-             maxItems: 1
- 
-         required:
-diff --git a/Documentation/devicetree/bindings/pinctrl/ralink,rt5350-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/ralink,rt5350-pinctrl.yaml
-index 1231f442afbc..49025783247e 100644
---- a/Documentation/devicetree/bindings/pinctrl/ralink,rt5350-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/ralink,rt5350-pinctrl.yaml
-@@ -43,8 +43,19 @@ patternProperties:
-                    wdg_cs1]
- 
-           groups:
--            description:
-+            description: |
-               An array of strings. Each string contains the name of a group.
-+
-+              group             pins
-+              ------------------------------------------------------------------
-+              "i2c"             1, 2
-+              "spi"             3, 4, 5, 6
-+              "uartf"           7, 8, 9, 10, 11, 12, 13, 14
-+              "uartlite"        15, 16
-+              "jtag"            17, 18, 19, 20, 21
-+              "led"             22, 23, 24, 25, 26
-+              "spi_cs1"         27
-+
-             maxItems: 1
- 
-         required:
--- 
-2.39.2
+Reviewed-by: Emil Renner Berthing <emil.renner.berthing@canonical.com>
 
+>
+> Link: https://lore.kernel.org/netdev/ZOtWmedBsa6wQQ6+@shell.armlinux.org.uk/ [1]
+> Link: https://lore.kernel.org/all/20230623100417.93592-1-brgl@bgdev.pl/  [2]
+>
+> Since v1:
+>  - rebase on new net-next
+>  - add make stmmac_{probe|remove}_config_dt static as suggested by Russell.
+>
+> Jisheng Zhang (23):
+>   net: stmmac: dwmac-anarion: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-dwc-qos-eth: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-generic: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-generic: use devm_stmmac_pltfr_probe()
+>   net: stmmac: dwmac-imx: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-ingenic: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-intel-plat: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-ipq806x: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-lpc18xx: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-mediatek: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-meson: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-meson8b: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-rk: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-socfpga: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-starfive: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-sti: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-stm32: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-sun8i: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-sunxi: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-tegra: use devm_stmmac_probe_config_dt()
+>   net: stmmac: dwmac-visconti: use devm_stmmac_probe_config_dt()
+>   net: stmmac: rename stmmac_pltfr_remove_no_dt to stmmac_pltfr_remove
+>   net: stmmac: make stmmac_{probe|remove}_config_dt static
+>
+>  .../ethernet/stmicro/stmmac/dwmac-anarion.c   | 10 +--
+>  .../stmicro/stmmac/dwmac-dwc-qos-eth.c        | 15 +---
+>  .../ethernet/stmicro/stmmac/dwmac-generic.c   | 15 +---
+>  .../net/ethernet/stmicro/stmmac/dwmac-imx.c   | 13 ++--
+>  .../ethernet/stmicro/stmmac/dwmac-ingenic.c   | 33 +++------
+>  .../stmicro/stmmac/dwmac-intel-plat.c         | 25 +++----
+>  .../ethernet/stmicro/stmmac/dwmac-ipq806x.c   | 27 +++----
+>  .../ethernet/stmicro/stmmac/dwmac-lpc18xx.c   | 19 ++---
+>  .../ethernet/stmicro/stmmac/dwmac-mediatek.c  |  6 +-
+>  .../net/ethernet/stmicro/stmmac/dwmac-meson.c | 25 ++-----
+>  .../ethernet/stmicro/stmmac/dwmac-meson8b.c   | 53 +++++---------
+>  .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 14 ++--
+>  .../ethernet/stmicro/stmmac/dwmac-socfpga.c   | 16 ++---
+>  .../ethernet/stmicro/stmmac/dwmac-starfive.c  | 10 +--
+>  .../net/ethernet/stmicro/stmmac/dwmac-sti.c   | 14 ++--
+>  .../net/ethernet/stmicro/stmmac/dwmac-stm32.c | 17 ++---
+>  .../net/ethernet/stmicro/stmmac/dwmac-sun8i.c |  6 +-
+>  .../net/ethernet/stmicro/stmmac/dwmac-sunxi.c | 23 +++---
+>  .../net/ethernet/stmicro/stmmac/dwmac-tegra.c | 10 ++-
+>  .../ethernet/stmicro/stmmac/dwmac-visconti.c  | 18 ++---
+>  .../ethernet/stmicro/stmmac/stmmac_platform.c | 70 ++++++-------------
+>  .../ethernet/stmicro/stmmac/stmmac_platform.h |  5 --
+>  22 files changed, 127 insertions(+), 317 deletions(-)
+>
+> --
+> 2.40.1
 
