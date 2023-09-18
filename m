@@ -4,64 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B324BC46CA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 20:30:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B88C46CA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 20:43:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ml2kkY1d1Oa1BMFOcizFrXpw8UPU0TUZTsxm0nPwMA8=; b=IFxpYwKOaXxxwjei8T0TDyiEjP
-	Ka2XgN7ospeh9Wc461NwZcBn/ITOMc8x4nZG8FZc0DSZ1VMXC2Gqwxs1QjYPfAXMDWfbAvv/cgk3G
-	JzVCHX4SNoUy9OYaJyxcUpnfaXpZDXAMfpub44rLQR8+ZyNMSZFZIaApGQaZPmXeD227mMYAKFD0l
-	gwx/sGVBBdIXNRskABPErOvzlUWkHUEdH+uFMSewjKU8gyvZ4KM2U86/mcHwuKFXLTU6Ot/wUuMgp
-	0FCR7lkxseSgquPb+u81kUjj3+X1FnZHbYbd4i0z3ySl/a3ge1WwP19yIl3GuIXpZjAG7w3/hRuxj
-	qyiyFwDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=prUoWshYm4303TfWOkfo8neQM903ddorlLULum/4BBk=; b=kyf8B04/TFMMKMgoCgE3cHdE1e
+	37hMHtjLXLHRzk9VlKzOiaj4OSAHZcFWZ1vsj4KIeCCNeiuS83ycc16zjHYPND2dxBwHj65Nr+BQM
+	+UiG9zQqMzrZzV5cKCoyI63IrU3n2abiXWmwyq9MdMljqHmDCRZqq4c4kjQFjRuJJXK4nywUI48OJ
+	SzCs2cnursnb1XGHRrtq5JPvgmRZ23rlD/5OcWbDRI43GY7zzxfXFsPc3roVdBBXu/xDlH/DNZ5XE
+	xMwbZpIC/1NpF6or2aiQjaD/TXHJ/EuoXuFqqrymgSYRYiO3r5O/j72s8uEJ80NEe4tchREtTRNRU
+	jW7MVNpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiKtJ-00GHj8-28;
-	Mon, 18 Sep 2023 20:30:45 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qiL5K-00GImI-2u;
+	Mon, 18 Sep 2023 20:43:10 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiKtG-00GHho-2U;
-	Mon, 18 Sep 2023 20:30:44 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 4458CB810E2;
-	Mon, 18 Sep 2023 20:30:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2C1CC433C8;
-	Mon, 18 Sep 2023 20:30:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695069039;
-	bh=DprrhIgDzelvIyTWIr8SzEXHEnNRh4jr4L7DY+L6emo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VJlG/awENwdxcwFxJlc1MwJX/+v8YirCPiKNbHUqYoI+WJYdYGzrFuwaEnwhPGEzm
-	 uDdDiWxLHbqUFiaI7vJgUVzqgWy048P7VX2iQ9s6YhYd0N5HzuH/AHo/+CyUcMFI95
-	 GQymhqgdw9mXMdTK5n+6Jq7WunLJocXlxyBs3Mtv1VLggfn9nvHpj7rhHLi25Sy3S6
-	 SNRajqFCrNxC0RrXgaF9vw7SALDJ7DnKkJgzKr7cnznuMFbA46ME41Xxxn1jVvgyKu
-	 jeD8UvDWPtdAj5+NnHnUvcit5++VQCOpTiROFa5ayQHCBeuGtHZbrk9hmVU0p6g9T/
-	 iv7lM11J5EcUQ==
-Received: (nullmailer pid 1723759 invoked by uid 1000);
-	Mon, 18 Sep 2023 20:30:36 -0000
-Date: Mon, 18 Sep 2023 15:30:36 -0500
-From: Rob Herring <robh@kernel.org>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: netdev@vger.kernel.org, erkin.bozoglu@xeront.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, mithat.guner@xeront.com, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Conor Dooley <conor+dt@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau <nbd@nbd.name>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: Re: [PATCH net-next 1/2] dt-bindings: net: mediatek,net: remove
- reference on top level schema
-Message-ID: <169506903453.1723676.13767276753325939381.robh@kernel.org>
-References: <20230917124723.143202-1-arinc.unal@arinc9.com>
+	id 1qiL5F-00GIj0-0i
+	for linux-mediatek@lists.infradead.org;
+	Mon, 18 Sep 2023 20:43:06 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qiL4t-0007Eg-HR; Mon, 18 Sep 2023 22:42:43 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qiL4s-007IjM-4n; Mon, 18 Sep 2023 22:42:42 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1qiL4r-002mp9-RM; Mon, 18 Sep 2023 22:42:41 +0200
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>
+Cc: Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org,
+	kernel@pengutronix.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next 30/54] net: ethernet: mediatek: Convert to platform remove callback returning void
+Date: Mon, 18 Sep 2023 22:42:02 +0200
+Message-Id: <20230918204227.1316886-31-u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230918204227.1316886-1-u.kleine-koenig@pengutronix.de>
+References: <20230918204227.1316886-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1895; i=u.kleine-koenig@pengutronix.de; h=from:subject; bh=AvaTDxdQu+sSod8LGo5VRPUDkkzhLSeTrMhxZUFWye8=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBlCLYGP/0AFpWOpiq6rGiRQFjRSdpNBlaKi3gR9 POZibWbs2mJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZQi2BgAKCRCPgPtYfRL+ Tg8CB/0fB24+L8Lq5DGXdIqr31KwnvzrT7m/hpMVWYxD3KmhPdWbRiOaHvPiEIH3WUZKnW0DjbC VXcsXXT049E0VQ/mqskHKOe2rZV3bSruklBceCTRalVH/SloZ2aUBNcatykBOEiaBVmv+3cETRY VjiCyU6vmMS9SqdboYEQIBW0cYYDzfAEVCN5xtFn9bBLlXq92NqvqdUl76GK3vjf+wnNLmZI+2p IzJaUqbYsRMWNYqjuCAW20WrqxzcS2wWrIPbHaUTpYVkgQ1MG1h2ZgehjP46hokP9t6NJXpsDQq fDazgq1AJnrfA4jQ14AaadvNhfja7L2KMW5u5sfymdJDIIO6
+X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230917124723.143202-1-arinc.unal@arinc9.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_133042_943606_CC4BEB39 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20230918_134305_259097_D64CED7C 
+X-CRM114-Status: GOOD (  16.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,18 +88,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The .remove() callback for a platform driver returns an int which makes
+many driver authors wrongly assume it's possible to do error handling by
+returning an error code. However the value returned is ignored (apart
+from emitting a warning) and this typically results in resource leaks.
+To improve here there is a quest to make the remove callback return
+void. In the first step of this quest all drivers are converted to
+.remove_new() which already returns void. Eventually after all drivers
+are converted, .remove_new() is renamed to .remove().
 
-On Sun, 17 Sep 2023 15:47:22 +0300, Arınç ÜNAL wrote:
-> The top level schema does not represent an ethernet controller, the
-> subschema defining the MAC nodes does. Remove the reference to
-> ethernet-controller.yaml on the top level schema.
-> 
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> ---
->  Documentation/devicetree/bindings/net/mediatek,net.yaml | 1 -
->  1 file changed, 1 deletion(-)
-> 
+Trivially convert this driver from always returning zero in the remove
+callback to the void returning variant.
 
-Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 3cffd1bd3067..4ac8d7cd97ae 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -5002,7 +5002,7 @@ static int mtk_probe(struct platform_device *pdev)
+ 	return err;
+ }
+ 
+-static int mtk_remove(struct platform_device *pdev)
++static void mtk_remove(struct platform_device *pdev)
+ {
+ 	struct mtk_eth *eth = platform_get_drvdata(pdev);
+ 	struct mtk_mac *mac;
+@@ -5024,8 +5024,6 @@ static int mtk_remove(struct platform_device *pdev)
+ 	netif_napi_del(&eth->rx_napi);
+ 	mtk_cleanup(eth);
+ 	mtk_mdio_cleanup(eth);
+-
+-	return 0;
+ }
+ 
+ static const struct mtk_soc_data mt2701_data = {
+@@ -5226,7 +5224,7 @@ MODULE_DEVICE_TABLE(of, of_mtk_match);
+ 
+ static struct platform_driver mtk_driver = {
+ 	.probe = mtk_probe,
+-	.remove = mtk_remove,
++	.remove_new = mtk_remove,
+ 	.driver = {
+ 		.name = "mtk_soc_eth",
+ 		.of_match_table = of_mtk_match,
+-- 
+2.40.1
 
 
