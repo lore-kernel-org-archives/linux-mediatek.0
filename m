@@ -4,91 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C779C46CA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 11:59:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56540C46CA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 12:18:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Mx+1LEKjG08mHXdWiW0HFl/U3LRaOvUzyjCNt5ITLZc=; b=W2jLzgUOZgfgv/isLFE02DjT0Y
-	8dcOewQUMX/Cvwq6jQ93gb3/yGHrqCgteT00tZnl7Xb3hT6LGIo0HM+AL5aVxTNucENJH3j31wBCS
-	bk1JRmQrmOE/ym25RA8gRYQ8JYeyvskGsKf1iK3G4osq3W4A+fIt4H1dQ3sJLr/eCC0xwAUAkgGYt
-	wfIipipeB7hxdS388ROm1oz+UBEiENH+p0qYkr6e6q3BjkFA+7RAz337vdZSR37CBHdZ8i5HlYOSC
-	2+ESVsR9wu+ym6EWMVvhP7pikIit2MzscNDArbYkPaUCNdOmers+ihsU+oK5tVL9YxyqZeCxvWpE3
-	eMls+czA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AoTscAzA2IOlF+4tCMMXwlKX11WpufxA3De2ZMmihJ4=; b=F9/N7TZljQewizher8LQSXZGU1
+	Rjx2iURO7ntx6Ze1Nu5NndTxfnFtklCxjh1tSAPqti0wy3ohHk/c3tlRCPL2rx8lgh0Vs/Zwr4OII
+	dGprZe8rStecvqT6Zu3IrYfDU75Z8f2HTc1zC1Zn4UW0KmyEBWdvj82cQDC4xleLCnyrZP/u4VZj8
+	wCNqr8s4kZ6V5mq7WmF2mVJsunbuUsYCu9i0ObXswVN0ttXMcgmBB5OTeWifwJ755cE6crJOH3XHA
+	sObCh9ls9eV8jJTYpOaYMYgUph0ERPHIP7T7lPJ+2rX/kBHa8rM8go+3E8Zquy8yNwwrrrxt8Et7z
+	EUCaf70g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiCua-00FNIZ-3D;
-	Mon, 18 Sep 2023 11:59:33 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1qiDCX-00FPKX-2A;
+	Mon, 18 Sep 2023 12:18:05 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiCuY-00FNFv-0W
+	id 1qiDCU-00FPJo-2b
 	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Sep 2023 11:59:31 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-9ada6b0649fso590058866b.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 Sep 2023 04:59:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695038366; x=1695643166; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Mx+1LEKjG08mHXdWiW0HFl/U3LRaOvUzyjCNt5ITLZc=;
-        b=c9lVzMu609WWFHI9Dx/HzUi4jLUqox+g5CR7MBYzpRQcXmQy/5vHNRTGbfGiuUP264
-         8ZBZf7peus6zxu5TATagHajOmoi8LYLvLr0gBgXV7YfGkdHH3vDyrH1bHfWn3NAYA7p/
-         YHTF1GfUqs5yYaG9ARsN/k7lFBKl0UBe8LFnOGS2uGmhv8Jr1l7RQuv+KX7cjLDeVvoS
-         12yaKbFZT6er65anfOItnYyePRJ3AyY5e8ErpKX/bsF6WvCcZYIYYDvZQVxwmrZzAPLY
-         oaLLu7PKqglsg4upAL5muQSKCEJs+nfg5Nm4AkEdHnMudrmwxkorB/JwHK2hge465dmU
-         ADJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695038366; x=1695643166;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Mx+1LEKjG08mHXdWiW0HFl/U3LRaOvUzyjCNt5ITLZc=;
-        b=UqgToqyZfxQ/9lIJw4Du+XpN7IEJ+Fz0pQ8Wnqje0PhsCUsuc0p830kgZAp8s7P/zi
-         JeaMmkJG/xtqUknJ+TtnAMYgrx1UX6J/N21iyR+Rs2z25wq5noUn/4JI7Jm+uABGsl0A
-         R3bQ5elLQ9pX14ZD99lumK93dKtO2AvvxT49unFReo20YrZiRlAlXxgBi2WXvq4Vhz/t
-         S40f09yRa0HFb8bYRmOVfGjm8oJ9oMJJ7Ml/64hmKMNTwUHPGwk8TetIemmYwRG0r7BY
-         yBFL+eoY8iZnGdBqA/E2duusgkMjobmdUG4qfXujtg4y87hnNGeUm/EsRulsAong5n0O
-         nzsQ==
-X-Gm-Message-State: AOJu0YwZKtfwaKiMvoZNthFKGypBcqPDgD90ktVry24pyYE15DKoGJMw
-	ZXQUgk7c0DYAcnNQoQHAWulxFg==
-X-Google-Smtp-Source: AGHT+IEQU5aP9n0ZpbF9FIWm05VurFH/Lgko0yhluHa5UJmuOfDQoNjoIOALZWR4TY4wUZ0dcYYJAQ==
-X-Received: by 2002:a17:906:5188:b0:9a1:db97:62a1 with SMTP id y8-20020a170906518800b009a1db9762a1mr7333228ejk.46.1695038366283;
-        Mon, 18 Sep 2023 04:59:26 -0700 (PDT)
-Received: from [172.25.80.114] ([217.67.225.27])
-        by smtp.gmail.com with ESMTPSA id j9-20020a170906410900b0099cc3c7ace2sm6466812ejk.140.2023.09.18.04.59.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 18 Sep 2023 04:59:25 -0700 (PDT)
-Message-ID: <fad9eb3c-49f9-5ece-b51a-aaff4d8888ad@linaro.org>
-Date: Mon, 18 Sep 2023 13:59:24 +0200
+	Mon, 18 Sep 2023 12:18:04 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0548461168;
+	Mon, 18 Sep 2023 12:18:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1522FC433C8;
+	Mon, 18 Sep 2023 12:18:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695039481;
+	bh=m9DbiuYGQsroUWLQblr7CsaQDo+/wfuOspyhyKz0qyI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ixfkDgtCQsm1qsYVqsBxRnfw76vgvheO6lwjFgfn6yxbF1012FTJgSRtZNnZm9HtZ
+	 4m5ZtvRHN9RGP1wKU7Hn1MXf24+TdVfzsIjeOTMTEExl9Fa0vOXItABeWuxQ9u24mi
+	 agRFmL0GEnQFdbR/pseV8rfJPLy+NoUqV6ssEfWZKA3cFDIHctiWLHv7lhuJeJnFQE
+	 FHIrFg4UOzp52+93c1JZGyVcgGxybgyuDCxzAZ/BliNVDAGeVu/Cvs1P3l4Ws+snKi
+	 7j3hgHBSMatEGojj76inqNh04Xdsb+CgGVApVD6JS7+aPytlTNtmhPjNFSyYcmbkeZ
+	 dEtHAChXA7kxQ==
+Date: Mon, 18 Sep 2023 14:17:58 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org, lorenzo.bianconi@redhat.com, nbd@nbd.name,
+	john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, linux-mediatek@lists.infradead.org,
+	sujuan.chen@mediatek.com, horms@kernel.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 net-next 09/17] net: ethernet: mtk_wed: fix
+ EXT_INT_STATUS_RX_FBUF definitions for MT7986 SoC
+Message-ID: <ZQg/9ku0S+g5WF0O@lore-desk>
+References: <cover.1695032290.git.lorenzo@kernel.org>
+ <ebde071cc3cc9c35b00366c41912ee2f25e5282d.1695032291.git.lorenzo@kernel.org>
+ <ZQg2AxAIxkadOiIr@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v2 3/3] dt-bindings: hwinfo: Add mtk-socinfo driver
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- William-tw Lin <william-tw.lin@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Kevin Hilman <khilman@kernel.org>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20230915152607.18116-1-william-tw.lin@mediatek.com>
- <20230915152607.18116-4-william-tw.lin@mediatek.com>
- <3e7bc476-ffc7-fb07-8e64-246427da736c@linaro.org>
- <9acc8d99-e3db-3df8-4051-21d95450b28d@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <9acc8d99-e3db-3df8-4051-21d95450b28d@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="3XwjkoR69/2cL2MM"
+Content-Disposition: inline
+In-Reply-To: <ZQg2AxAIxkadOiIr@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_045930_196576_BA829464 
-X-CRM114-Status: GOOD (  20.53  )
+X-CRM114-CacheID: sfid-20230918_051802_934881_1FFAFDB5 
+X-CRM114-Status: GOOD (  21.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,89 +82,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18/09/2023 10:47, AngeloGioacchino Del Regno wrote:
-> Il 17/09/23 10:26, Krzysztof Kozlowski ha scritto:
->> On 15/09/2023 17:26, William-tw Lin wrote:
->>> dt-binding documentation for mtk-socinfo driver.
->>
->> Here and in subject, drop driver and instead descrbe hardware.
->>
->>> mtk-socinfo driver provides SoC-related information.
->>> Such information includes manufacturer information, SoC name,
->>> SoC segment name, and SoC marketing name.
->>>
->>> Signed-off-by: William-tw Lin <william-tw.lin@mediatek.com>
->>> ---
->>>   .../bindings/hwinfo/mtk-socinfo.yaml          | 48 +++++++++++++++++++
->>>   1 file changed, 48 insertions(+)
->>>   create mode 100644 Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
->>>
->>> diff --git a/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml b/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
->>> new file mode 100644
->>> index 000000000000..74f03f1dc404
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
->>
->> Nothing improved.
->>
->> This is a friendly reminder during the review process.
->>
->> It seems my previous comments were not fully addressed. Maybe my
->> feedback got lost between the quotes, maybe you just forgot to apply it.
->> Please go back to the previous discussion and either implement all
->> requested changes or keep discussing them.
->>
->> Thank you.
->>
->>> @@ -0,0 +1,48 @@
->>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->>> +%YAML 1.2
->>> +---
->>> +$id: http://devicetree.org/schemas/hwinfo/mtk-socinfo.yaml#
->>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>> +
->>> +title: MediaTek SoC ChipID
->>> +
->>> +maintainers:
->>> +  - William Lin <william-tw.lin@mediatek.com>
->>> +  - Matthias Brugger <matthias.bgg@gmail.com>
->>> +  - Kevin Hilman <khilman@kernel.org>
->>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> +
->>> +description:
->>> +  MediaTek SoCs store various product information in eFuses, including
->>> +  Chip ID and Revision fields, usable to identify the manufacturer,
->>> +  SoC version, plus segment and marketing names.
->>> +
->>> +properties:
->>> +  compatible:
->>> +    const: mediatek,socinfo
->>
->> What happened to compatibles? No, this is just wrong and no explained.
->> You ignored other comments as well. Really, that's not the way to go.
->>
-> 
-> Practically, having different compatibles for each SoC is not needed, as
-> the only thing that changes between SoCs is the eFuse(s) that you read to
-> get the information - and that's all.
 
+--3XwjkoR69/2cL2MM
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-And how do you guarantee that no future SoC will have any difference?
-How can you even predict it?
+> On Mon, Sep 18, 2023 at 12:29:11PM +0200, Lorenzo Bianconi wrote:
+> > Fix MTK_WED_EXT_INT_STATUS_RX_FBUF_LO_TH and
+> > MTK_WED_EXT_INT_STATUS_RX_FBUF_HI_TH definitions for MT7986 (MT7986 is
+> > the only SoC to use them).
+>=20
+> Afaik this applies also to MT7981 which is very similar to MT7986.
 
-> 
-> So ... we either use this driver with devicetree, giving it the right eFuses
+ack, fine. Can you please test it out when you have some free cycles?
+I do not have a MT7981 device for testing.
 
-I am talking about bindings, no driver.
+Regards,
+Lorenzo
 
-> to read from, or we duplicate the mtk-efuse driver, or we statically assign
-> the eFuses in the driver itself and we set compatibles like
-> "mediatek,mt8195-socinfo" to select that... ideas?
+>=20
+> >=20
+> > Fixes: de84a090d99a ("net: ethernet: mtk_eth_wed: add wed support for m=
+t7986 chipset")
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > ---
+> >  drivers/net/ethernet/mediatek/mtk_wed_regs.h | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >=20
+> > diff --git a/drivers/net/ethernet/mediatek/mtk_wed_regs.h b/drivers/net=
+/ethernet/mediatek/mtk_wed_regs.h
+> > index 47ea69feb3b2..f87ab9b8a590 100644
+> > --- a/drivers/net/ethernet/mediatek/mtk_wed_regs.h
+> > +++ b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
+> > @@ -64,8 +64,8 @@ struct mtk_wdma_desc {
+> >  #define MTK_WED_EXT_INT_STATUS_TKID_TITO_INVALID	BIT(4)
+> >  #define MTK_WED_EXT_INT_STATUS_TX_FBUF_LO_TH		BIT(8)
+> >  #define MTK_WED_EXT_INT_STATUS_TX_FBUF_HI_TH		BIT(9)
+> > -#define MTK_WED_EXT_INT_STATUS_RX_FBUF_LO_TH		BIT(12)
+> > -#define MTK_WED_EXT_INT_STATUS_RX_FBUF_HI_TH		BIT(13)
+> > +#define MTK_WED_EXT_INT_STATUS_RX_FBUF_LO_TH		BIT(10) /* wed v2 */
+> > +#define MTK_WED_EXT_INT_STATUS_RX_FBUF_HI_TH		BIT(11) /* wed v2 */
+> >  #define MTK_WED_EXT_INT_STATUS_RX_DRV_R_RESP_ERR	BIT(16)
+> >  #define MTK_WED_EXT_INT_STATUS_RX_DRV_W_RESP_ERR	BIT(17)
+> >  #define MTK_WED_EXT_INT_STATUS_RX_DRV_COHERENT		BIT(18)
+> > --=20
+> > 2.41.0
+> >=20
+> >=20
 
-Device specific compatibles followed by fallback, just like for every
-other review coming from me.
+--3XwjkoR69/2cL2MM
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Best regards,
-Krzysztof
+-----BEGIN PGP SIGNATURE-----
 
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZQg/9QAKCRA6cBh0uS2t
+rMYuAPwLlBwabmv9CBuoMVQSW6yos/0jwMwqx2hC30mstqMXugD/SkmJjYrTRWsA
+7Wg219Zkui+ubUI3KZoNdXylN5X8FAw=
+=C28k
+-----END PGP SIGNATURE-----
+
+--3XwjkoR69/2cL2MM--
 
