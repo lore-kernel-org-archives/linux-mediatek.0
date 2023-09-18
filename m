@@ -4,57 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05FDECD37B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 07:49:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B015CCD37B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 07:54:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ay9z8iCgn/QbbcXOHhzU2eHu2INYQIkvsbpXhE3QZ/c=; b=WMbLVZ4572H7eX
-	8ZqhB3YGUfObhQjJq0lzDT54FjFsyLS05YWNLkPgUj4DiF4er4Wg6wS1HqFwoLhjQRTrpKzGxdoUH
-	AvRhYVUT3ijQNvOeZWg9e15yVPsyNNAfQqhGg4ghd2XdRHGpoCkl0qDTTdQnRqDdLXxOQ061DRGnr
-	ft7CrqColmhipaEKqg4E7xSWfFTkExahehu8eitrZ/v1CUK7Z1Xe6sxV32LMJMrM7V0gXnPgWDKbr
-	4lviN2tysUbd2H32SHJBNavuDrMsQLPFL9QXHMufA8m3b1jnTrYAHGErP8zb5R8YZXkmihzY2FpGO
-	u0bqLucTXHsVr3jp9XDg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Zj37pbgTvY4CEdHfGjO1xzlgwLH88SbfVMtsq7SGniA=; b=tOORv6hzMJUIdtqLAIvc5anayU
+	DQW3OwoWs6X3Cc2TPxNJaR5JhnfoYBpOY4UEvuuByQut2Z3H0SoOBqC4AKPATiX3kIuUrb2xMnnbg
+	gKuV3Yzp9ovVfou/VbWlF+o/IXCUNo7BAm9Nagbq+wSpy12oiD4x5ginMk26z7lLNSEVv3LcOt+Lv
+	+nl+1WxB0V18ECsKjFLKEDYdjU3rqGlrRwLNAwW9BavTacOqPImtKnIvZp7BoD74TOt6p4Uh5Z2iI
+	L3o/NzndorMmoHVM86r3xlu9Nz6HgXvENuiuRVQXUT/6/HRFVgMowO9wIj7SxMsqyqEecOuYNoXGs
+	Ag5SG03w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qi911-00EmHB-2y;
-	Mon, 18 Sep 2023 07:49:55 +0000
-Received: from relay8-d.mail.gandi.net ([217.70.183.201])
+	id 1qi95T-00Emx3-11;
+	Mon, 18 Sep 2023 07:54:31 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qi90y-00EmGJ-2H;
-	Mon, 18 Sep 2023 07:49:54 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 604401BF203;
-	Mon, 18 Sep 2023 07:49:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
-	t=1695023390;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=ay9z8iCgn/QbbcXOHhzU2eHu2INYQIkvsbpXhE3QZ/c=;
-	b=eg7QVZ51CDJsCQNwbIDmlAyAOx6jXVk4bEaLQZ2OGn5oknpL2Dn6JZ6BVJurC35IsCncRZ
-	PEpjRdWqhKPNzJRmQVOH6z+W7OZ0SNF21p8VoVAOepcZ+KdMpzV/ASMt++au0CiOgBk1oo
-	xaJdDqwC9bZz2ZcdBUfaXs7yIJmffOZC6wSj0VQLIHz02KbiwviVGSJ3wPVmZwfi3cmtzl
-	wb8ToQaq8kAIWfI3XgOqUV+4P3gJVZ9MH+jOoCR0AmHZovO2X+6blnqcOzQOKR6kiaCNqP
-	nehlSUg6SDnOvGCL3UUwbDnyyosAiEfRqkO84VYTmSE6kWXihPs/kur32ipC3w==
-From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH] arm64: dts: {mt7622,mt7986}: add port@5 as CPU port
-Date: Mon, 18 Sep 2023 10:49:38 +0300
-Message-Id: <20230918074938.79796-1-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.39.2
+	id 1qi95Q-00EmuE-1W
+	for linux-mediatek@lists.infradead.org;
+	Mon, 18 Sep 2023 07:54:29 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by sin.source.kernel.org (Postfix) with ESMTPS id 7157ACE0CE0;
+	Mon, 18 Sep 2023 07:54:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A7D4C433CC;
+	Mon, 18 Sep 2023 07:54:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695023664;
+	bh=a3re9QgHeOZBxzT5bdJ5U4VTTN31mPT7AHtXRfmJaV4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=moI/Gs7NvfV40COVsr1CU7NanXM6KqQR3MYY9K5GVkVb1+7T+hybfkstskwBIKfQE
+	 oV0LzvIFSYuXEu/HGaAWJ6ruv2R4UqUtv/T++NgGCaJYD2PDmzhBbZQ+5lZ7GMV6qg
+	 UNxAGuUREXkd6NYrP19SDx5Kmtlgiqv5+DeT+p0Re4kvuHLcTqluLEFtgvUQK8yUmH
+	 pWSR4J5+GP66QMRcpaP7SJVi5DBw003QHNmweanr1xdT1m/6JyO1CY41vEMzJWlOcn
+	 5fpyG2aJhe8H2kF4KAR7jZuszQL9FsaT1H7j0eLvHlnE0c+OCEaQDC6mlmY/CK4fQl
+	 9w0iq/MLGVv4w==
+Date: Mon, 18 Sep 2023 09:54:20 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Simon Horman <horms@kernel.org>
+Cc: netdev@vger.kernel.org, lorenzo.bianconi@redhat.com, nbd@nbd.name,
+	john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, daniel@makrotopia.org,
+	linux-mediatek@lists.infradead.org, sujuan.chen@mediatek.com,
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH net-next 13/15] net: ethernet: mtk_wed: introduce hw_rro
+ support for MT7988
+Message-ID: <ZQgCLIUUbX51eV+R@lore-desk>
+References: <cover.1694701767.git.lorenzo@kernel.org>
+ <da27f7333fa31808ceae581d9bef5030c6072f33.1694701767.git.lorenzo@kernel.org>
+ <20230917084728.GI1125562@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: arinc.unal@arinc9.com
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="STv4kEpNkY3aM+1s"
+Content-Disposition: inline
+In-Reply-To: <20230917084728.GI1125562@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_004953_019373_67B5B10D 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20230918_005428_699101_6D103764 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,173 +80,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, mithat.guner@xeront.com, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, erkin.bozoglu@xeront.com, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Banana Pi BPI-R64, MediaTek MT7622 RFB1 board, MediaTek MT7986b RFB, and
-MediaTek MT7986a RFB, port 5 of the MT7531 switch is connected to the
-second MAC of the SoC as a CPU port. Add the port and set up the second MAC
-on the bindings.
 
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  | 12 ++++++++++
- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts  | 24 +++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts  | 24 +++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts  | 24 +++++++++++++++++++
- 4 files changed, 84 insertions(+)
+--STv4kEpNkY3aM+1s
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-index 86cedb0bf1a9..f2cc95d4a343 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-@@ -186,6 +186,18 @@ port@4 {
- 					label = "lan3";
- 				};
- 
-+				port@5 {
-+					reg = <5>;
-+					ethernet = <&gmac1>;
-+					phy-mode = "rgmii";
-+
-+					fixed-link {
-+						speed = <1000>;
-+						full-duplex;
-+						pause;
-+					};
-+				};
-+
- 				port@6 {
- 					reg = <6>;
- 					label = "cpu";
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-index dad8e683aac5..018912964b32 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-@@ -117,6 +117,18 @@ fixed-link {
- 		};
- 	};
- 
-+	gmac1: mac@1 {
-+		compatible = "mediatek,eth-mac";
-+		reg = <1>;
-+		phy-mode = "rgmii";
-+
-+		fixed-link {
-+			speed = <1000>;
-+			full-duplex;
-+			pause;
-+		};
-+	};
-+
- 	mdio-bus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-@@ -155,6 +167,18 @@ port@4 {
- 					label = "wan";
- 				};
- 
-+				port@5 {
-+					reg = <5>;
-+					ethernet = <&gmac1>;
-+					phy-mode = "rgmii";
-+
-+					fixed-link {
-+						speed = <1000>;
-+						full-duplex;
-+						pause;
-+					};
-+				};
-+
- 				port@6 {
- 					reg = <6>;
- 					label = "cpu";
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-index 3ef371ca254e..3aba067f56b6 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-@@ -65,6 +65,18 @@ fixed-link {
- 		};
- 	};
- 
-+	gmac1: mac@1 {
-+		compatible = "mediatek,eth-mac";
-+		reg = <1>;
-+		phy-mode = "rgmii";
-+
-+		fixed-link {
-+			speed = <1000>;
-+			full-duplex;
-+			pause;
-+		};
-+	};
-+
- 	mdio: mdio-bus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-@@ -287,6 +299,18 @@ port@4 {
- 			label = "lan4";
- 		};
- 
-+		port@5 {
-+			reg = <5>;
-+			ethernet = <&gmac1>;
-+			phy-mode = "rgmii";
-+
-+			fixed-link {
-+				speed = <1000>;
-+				full-duplex;
-+				pause;
-+			};
-+		};
-+
- 		port@6 {
- 			reg = <6>;
- 			label = "cpu";
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-index dde190442e38..89ca852a9854 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-@@ -45,6 +45,18 @@ fixed-link {
- 		};
- 	};
- 
-+	gmac1: mac@1 {
-+		compatible = "mediatek,eth-mac";
-+		reg = <1>;
-+		phy-mode = "rgmii";
-+
-+		fixed-link {
-+			speed = <1000>;
-+			full-duplex;
-+			pause;
-+		};
-+	};
-+
- 	mdio: mdio-bus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-@@ -83,6 +95,18 @@ port@4 {
- 					label = "lan4";
- 				};
- 
-+				port@5 {
-+					reg = <5>;
-+					ethernet = <&gmac1>;
-+					phy-mode = "rgmii";
-+
-+					fixed-link {
-+						speed = <1000>;
-+						full-duplex;
-+						pause;
-+					};
-+				};
-+
- 				port@6 {
- 					reg = <6>;
- 					label = "cpu";
--- 
-2.39.2
+[...]
+> > +
+> > +			buf +=3D MTK_WED_PAGE_BUF_SIZE;
+>=20
+> clang-16 W=3D1 warns that buf is set but otherwise unused in this functio=
+n.
 
+Hi Simon,
+
+ack, I will fix it.
+
+Regards,
+Lorenzo
+
+>=20
+> > +			buf_phys +=3D MTK_WED_PAGE_BUF_SIZE;
+> > +		}
+> > +
+> > +		dma_sync_single_for_device(dev->hw->dev, page_phys, PAGE_SIZE,
+> > +					   DMA_BIDIRECTIONAL);
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> >  static int
+> >  mtk_wed_rx_buffer_alloc(struct mtk_wed_device *dev)
+> >  {
+>=20
+> ...
+
+--STv4kEpNkY3aM+1s
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZQgCLAAKCRA6cBh0uS2t
+rHLJAP9dn/+SX9tYlfHutMyHQJiV8Khmb/l/EFGbcIin4O+DtgD+LdGGInL4edXQ
+VyKXBVc/lNBPzFUkLxDoUHUzmSJ4Cgw=
+=B0aa
+-----END PGP SIGNATURE-----
+
+--STv4kEpNkY3aM+1s--
 
