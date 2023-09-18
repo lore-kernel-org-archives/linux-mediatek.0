@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0447C46CA1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD12ACD37B0
 	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 09:31:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,79 +12,80 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MngREa3tzTztuZpub6LB7rywTQ1g699xg/PwMcMxFuM=; b=p6ARoydUf5Ix46H8Qm5Cfhs3oT
-	1Ry+kTW8pmvSDSB+hQ4QaDaB/vus+CQijCSzPAskzeFBQnIKZG1ti4Dq+qslysH1DPeLY0A8Zn1t/
-	kRlYZ1S+Y/jT/GZgmNqNAtM9n26IGZUX2XXBjJ1kGmTewv2g7umIXoL6BXK5yIPIIpdvY44sv3Jd6
-	G7Nuy8LKG0s987lwzblaKWIdzSA9zmx4imqa4WAHkk0oUy7875fhlTpf8q483jVvNeaqZShVW9k9U
-	nhWG3QKcD/tcSFsKYhQYS8N/1WPQRCjdDUeVZZxr4mvfKZDTSt5Z2R9sMpQgSDYpGRvonX4DCVkEZ
-	roFtCqVQ==;
+	bh=e4zdmFQ9Wr13YCwqefvQiNvOdu51i6Uu7ceP5wR7ONI=; b=ZfCejTyEfVL3zDdIFZcKr2lQSU
+	u4Gn50dq6ASpYZPi6UEsRQko1Qw9clp32AqfpSfKTq/58AiOHOsXTYSrSa9szPmbcfEB2kv5YQx2E
+	73gAzz/HOcFrMy7i+TkKX9bUh8I887HbLS34M8zhN2g0ZK2os4psW4DHq3xYAvtS8KjLVyBCPDzi2
+	ZAhS1edMMiv+UhYQRS6kr3ov8fVpAnN9XbAnbM5If88e1AUAucWRd57dbx9DrbvJxpoo2oiXiMPox
+	HhxRtzmpo9BQ1J7ho/SwTXcKdLOtEF6ZflgYz0uTI/ibxIOg7NWF4Gh9Iz9wvFh9ufhqnvQ4eQ6y9
+	PRWzf1rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiAbU-00ExAe-1o;
+	id 1qiAbU-00ExAv-2n;
 	Mon, 18 Sep 2023 09:31:40 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiAbN-00Ex7L-0V
+	id 1qiAbN-00Ex6j-18
 	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Sep 2023 09:31:34 +0000
-X-UUID: 23bc949e560611ee86758d4a7c00f3a0-20230918
+	Mon, 18 Sep 2023 09:31:35 +0000
+X-UUID: 2470b190560611ee86758d4a7c00f3a0-20230918
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=MngREa3tzTztuZpub6LB7rywTQ1g699xg/PwMcMxFuM=;
-	b=hWpt9eOukeogWWXAzgf28oVUP5hksEYcoYQOd9yUAxuyj6yEdnWnsurrdxFqHq93CDJQ+XoPqiWYvIq7vyB8hZP7DAQ/0Ed67ym7XFtuK56+SxJURPMjGGsy3t5bHXvANs18NMX2P5pNYRuQ62XaRqXyTN1x+KjC2PLhD55n8wA=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=e4zdmFQ9Wr13YCwqefvQiNvOdu51i6Uu7ceP5wR7ONI=;
+	b=Jfb7UJS8kXEKwQDp0vQlRYxqe+J2Nx/lFKOdSst/m2p0Z53i6mZDLTaUlKrcL5r2cjFSKe1Zsye01CPfgjUgx4OZuM22klAQHSK958+bUXHH3z6PV+dfifAZ32I2E/acnah4g54OLCsf1PevmV5KKODqAoPQRsaP6yYWxOAxS88=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:fcc3d620-5b49-4dbe-8889-88c776265c6b,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:0ad78a4,CLOUDID:80e927c3-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-O-INFO: VERSION:1.1.31,REQID:4b14a379-57fe-48a0-ba22-0144ecd60114,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-30
+X-CID-META: VersionHash:0ad78a4,CLOUDID:6786d3ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,D
+	KR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 23bc949e560611ee86758d4a7c00f3a0-20230918
+X-UUID: 2470b190560611ee86758d4a7c00f3a0-20230918
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <deren.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1556487397; Mon, 18 Sep 2023 02:31:26 -0700
+	with ESMTP id 1383189683; Mon, 18 Sep 2023 02:31:27 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 18 Sep 2023 17:31:22 +0800
+ 15.2.1118.26; Mon, 18 Sep 2023 17:31:24 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 18 Sep 2023 17:31:22 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 18 Sep 2023 17:31:24 +0800
 From: Deren Wu <deren.wu@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
 CC: Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
 	Shayne Chen <shayne.chen@mediatek.com>, linux-wireless
 	<linux-wireless@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH v3 04/17] wifi: mt76: mt7925: add regs.h
-Date: Mon, 18 Sep 2023 17:30:57 +0800
-Message-ID: <ede0ac68424ad68f1c1a507a23bf6b839dd0f8cc.1695024367.git.deren.wu@mediatek.com>
+Subject: [PATCH v3 12/17] wifi: mt76: mt7925: add pci_mac.c
+Date: Mon, 18 Sep 2023 17:31:05 +0800
+Message-ID: <27db39cc4f7ee3cd8316e510e75c38012014032c.1695024367.git.deren.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <cover.1695024367.git.deren.wu@mediatek.com>
 References: <cover.1695024367.git.deren.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--3.304100-8.000000
-X-TMASE-MatchedRID: GeU+O38vgBfKRSR886eK0gPZZctd3P4BX5TqQagR07e7qpOHKudqcwaT
-	alM8C773iXrI0wCok22YXHAnjMx3mbQDrl6zjfI2j5hLPCX3ZdNHpLRuWW8PzGGVufr+eY4v0O+
-	nJS4tIxVITWyLnOMoqdbXmuHFRooXAWDNA+xV8d6eAiCmPx4NwGmRqNBHmBveovSVS26nOBcqtq
-	5d3cxkNRqXnrxrKCOXw6o82VNWnmSaCKZ+eC1FWSi8LXVMDypk8t5wk9Dx9DgfxWwjEIjvHsxnk
-	KiGDpz726KuBJeyZc5PcgUSEE6NWGlbholHGrPfF0aD5ljt43pMcHZD6gqu7wxMjfifIXfowkvV
-	oA11Twp+3BndfXUhXQ==
+X-TM-AS-Result: No-10--1.114000-8.000000
+X-TMASE-MatchedRID: vV20CH+NLrHKRSR886eK0gPZZctd3P4BWjWsWQUWzVpnnK6mXN72m34U
+	OBQdfZJqjr9xEy4zBBUTAC2dkFyvhZG3xUgZJlVXDB+ErBr0bAMxmbT6wQT2a3yKcwQTdriq7/J
+	GRZ8PgCdR7eH8LHez4UdHJ1YGcijZZ28ZQS4q9Jye7UdJp0QINbMdrMS8e/bxgGab06uiYeHV2E
+	8xA5DQivrXUyTHdO2aUVb4NCvWkdXJ1LL8b7Eekr50lYduDghOfS0Ip2eEHnz3IzXlXlpamPoLR
+	4+zsDTttrrTuahHzlHYCZQYfzqvWpp92irkztXhYxGZHsuWJKaKgzUpIuFX+ZOopWxGBpUEw1KT
+	gFV+7MSA4WzDZUVsdw+4aG2JSLORlgJkjvTwthVJmt82E/eyBQGH0CAFIQWsmb5gmylW+PbGS+s
+	eVPx64j6Qrn3xh/cy
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.304100-8.000000
+X-TMASE-Result: 10--1.114000-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 3EBE35F4B93E864E00114D96149BC358B7755DD730A21EC62AB5ACBC9F5916DF2000:8
+X-TM-SNTS-SMTP: A998B4C9FA12D9851D1D06FBDDD82447373A3B24AF5EB094A911A5E23091806A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_023133_197841_F018B9A4 
-X-CRM114-Status: GOOD (  11.14  )
+X-CRM114-CacheID: sfid-20230918_023133_397482_4EA326E3 
+X-CRM114-Status: GOOD (  14.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,108 +107,164 @@ Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7925/regs.h  | 92 +++++++++++++++++++
- 1 file changed, 92 insertions(+)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/regs.h
+ .../wireless/mediatek/mt76/mt7925/pci_mac.c   | 148 ++++++++++++++++++
+ 1 file changed, 148 insertions(+)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/regs.h b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
 new file mode 100644
-index 000000000000..985794a40c1a
+index 000000000000..9fca887977d2
 --- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-@@ -0,0 +1,92 @@
-+/* SPDX-License-Identifier: ISC */
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
+@@ -0,0 +1,148 @@
++// SPDX-License-Identifier: ISC
 +/* Copyright (C) 2023 MediaTek Inc. */
 +
-+#ifndef __MT7925_REGS_H
-+#define __MT7925_REGS_H
++#include "mt7925.h"
++#include "../dma.h"
++#include "mac.h"
 +
-+#include "../mt792x_regs.h"
++int mt7925e_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
++			   enum mt76_txq_id qid, struct mt76_wcid *wcid,
++			   struct ieee80211_sta *sta,
++			   struct mt76_tx_info *tx_info)
++{
++	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
++	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(tx_info->skb);
++	struct ieee80211_key_conf *key = info->control.hw_key;
++	struct mt76_connac_hw_txp *txp;
++	struct mt76_txwi_cache *t;
++	int id, pid;
++	u8 *txwi = (u8 *)txwi_ptr;
 +
-+#define MT_MDP_BASE			0x820cc800
-+#define MT_MDP(ofs)			(MT_MDP_BASE + (ofs))
++	if (unlikely(tx_info->skb->len <= ETH_HLEN))
++		return -EINVAL;
 +
-+#define MT_MDP_DCR0			MT_MDP(0x000)
-+#define MT_MDP_DCR0_DAMSDU_EN		BIT(15)
-+#define MT_MDP_DCR0_RX_HDR_TRANS_EN	BIT(19)
++	if (!wcid)
++		wcid = &dev->mt76.global_wcid;
 +
-+#define MT_MDP_DCR1			MT_MDP(0x004)
-+#define MT_MDP_DCR1_MAX_RX_LEN		GENMASK(15, 3)
++	t = (struct mt76_txwi_cache *)(txwi + mdev->drv->txwi_size);
++	t->skb = tx_info->skb;
 +
-+#define MT_MDP_BNRCFR0(_band)		MT_MDP(0x090 + ((_band) << 8))
-+#define MT_MDP_RCFR0_MCU_RX_MGMT	GENMASK(5, 4)
-+#define MT_MDP_RCFR0_MCU_RX_CTL_NON_BAR	GENMASK(7, 6)
-+#define MT_MDP_RCFR0_MCU_RX_CTL_BAR	GENMASK(9, 8)
++	id = mt76_token_consume(mdev, &t);
++	if (id < 0)
++		return id;
 +
-+#define MT_MDP_BNRCFR1(_band)		MT_MDP(0x094 + ((_band) << 8))
-+#define MT_MDP_RCFR1_MCU_RX_BYPASS	GENMASK(23, 22)
-+#define MT_MDP_RCFR1_RX_DROPPED_UCAST	GENMASK(28, 27)
-+#define MT_MDP_RCFR1_RX_DROPPED_MCAST	GENMASK(30, 29)
-+#define MT_MDP_TO_HIF			0
-+#define MT_MDP_TO_WM			1
++	if (sta) {
++		struct mt792x_sta *msta = (struct mt792x_sta *)sta->drv_priv;
 +
-+#define MT_WFDMA0_HOST_INT_ENA		MT_WFDMA0(0x228)
-+#define MT_WFDMA0_HOST_INT_DIS		MT_WFDMA0(0x22c)
-+#define HOST_RX_DONE_INT_ENA4		BIT(12)
-+#define HOST_RX_DONE_INT_ENA5		BIT(13)
-+#define HOST_RX_DONE_INT_ENA6		BIT(14)
-+#define HOST_RX_DONE_INT_ENA7		BIT(15)
-+#define HOST_RX_DONE_INT_ENA8		BIT(16)
-+#define HOST_RX_DONE_INT_ENA9		BIT(17)
-+#define HOST_RX_DONE_INT_ENA10		BIT(18)
-+#define HOST_RX_DONE_INT_ENA11		BIT(19)
-+#define HOST_TX_DONE_INT_ENA15		BIT(25)
-+#define HOST_TX_DONE_INT_ENA16		BIT(26)
-+#define HOST_TX_DONE_INT_ENA17		BIT(27)
++		if (time_after(jiffies, msta->last_txs + HZ / 4)) {
++			info->flags |= IEEE80211_TX_CTL_REQ_TX_STATUS;
++			msta->last_txs = jiffies;
++		}
++	}
 +
-+/* WFDMA interrupt */
-+#define MT_INT_RX_DONE_DATA		HOST_RX_DONE_INT_ENA2
-+#define MT_INT_RX_DONE_WM		HOST_RX_DONE_INT_ENA0
-+#define MT_INT_RX_DONE_WM2		HOST_RX_DONE_INT_ENA1
-+#define MT_INT_RX_DONE_ALL		(MT_INT_RX_DONE_DATA | \
-+					 MT_INT_RX_DONE_WM | \
-+					 MT_INT_RX_DONE_WM2)
++	pid = mt76_tx_status_skb_add(mdev, wcid, tx_info->skb);
++	mt7925_mac_write_txwi(mdev, txwi_ptr, tx_info->skb, wcid, key,
++			      pid, qid, 0);
 +
-+#define MT_INT_TX_DONE_MCU_WM		(HOST_TX_DONE_INT_ENA15 | \
-+					 HOST_TX_DONE_INT_ENA17)
++	txp = (struct mt76_connac_hw_txp *)(txwi + MT_TXD_SIZE);
++	memset(txp, 0, sizeof(struct mt76_connac_hw_txp));
++	mt76_connac_write_hw_txp(mdev, tx_info, txp, id);
 +
-+#define MT_INT_TX_DONE_FWDL		HOST_TX_DONE_INT_ENA16
-+#define MT_INT_TX_DONE_BAND0		HOST_TX_DONE_INT_ENA0
++	tx_info->skb = NULL;
 +
-+#define MT_INT_TX_DONE_MCU		(MT_INT_TX_DONE_MCU_WM |	\
-+					 MT_INT_TX_DONE_FWDL)
-+#define MT_INT_TX_DONE_ALL		(MT_INT_TX_DONE_MCU_WM |	\
-+					 MT_INT_TX_DONE_BAND0 |	\
-+					GENMASK(18, 4))
++	return 0;
++}
 +
-+#define MT_RX_DATA_RING_BASE		MT_WFDMA0(0x500)
++void mt7925_tx_token_put(struct mt792x_dev *dev)
++{
++	struct mt76_txwi_cache *txwi;
++	int id;
 +
-+#define MT_INFRA_CFG_BASE		0xd1000
-+#define MT_INFRA(ofs)			(MT_INFRA_CFG_BASE + (ofs))
++	spin_lock_bh(&dev->mt76.token_lock);
++	idr_for_each_entry(&dev->mt76.token, txwi, id) {
++		mt7925_txwi_free(dev, txwi, NULL, false, NULL);
++		dev->mt76.token_count--;
++	}
++	spin_unlock_bh(&dev->mt76.token_lock);
++	idr_destroy(&dev->mt76.token);
++}
 +
-+#define MT_HIF_REMAP_L1			0x155024
-+#define MT_HIF_REMAP_L1_MASK		GENMASK(31, 16)
-+#define MT_HIF_REMAP_L1_OFFSET		GENMASK(15, 0)
-+#define MT_HIF_REMAP_L1_BASE		GENMASK(31, 16)
-+#define MT_HIF_REMAP_BASE_L1		0x130000
++int mt7925e_mac_reset(struct mt792x_dev *dev)
++{
++	const struct mt792x_irq_map *irq_map = dev->irq_map;
++	int i, err;
 +
-+#define MT_HIF_REMAP_L2			0x0120
-+#if IS_ENABLED(CONFIG_MT76_DEV)
-+#define MT_HIF_REMAP_BASE_L2		(0x7c500000 - (0x7c000000 - 0x18000000))
-+#else
-+#define MT_HIF_REMAP_BASE_L2		0x18500000
-+#endif
++	mt792xe_mcu_drv_pmctrl(dev);
 +
-+#define MT_WFSYS_SW_RST_B		0x7c000140
++	mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
 +
-+#define MT_WTBLON_TOP_WDUCR		MT_WTBLON_TOP(0x370)
-+#define MT_WTBLON_TOP_WDUCR_GROUP	GENMASK(4, 0)
++	mt76_wr(dev, dev->irq_map->host_irq_enable, 0);
++	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0x0);
 +
-+#define MT_WTBL_UPDATE			MT_WTBLON_TOP(0x380)
-+#define MT_WTBL_UPDATE_WLAN_IDX		GENMASK(11, 0)
-+#define MT_WTBL_UPDATE_ADM_COUNT_CLEAR	BIT(14)
++	set_bit(MT76_RESET, &dev->mphy.state);
++	set_bit(MT76_MCU_RESET, &dev->mphy.state);
++	wake_up(&dev->mt76.mcu.wait);
++	skb_queue_purge(&dev->mt76.mcu.res_q);
 +
-+#endif
++	mt76_txq_schedule_all(&dev->mphy);
++
++	mt76_worker_disable(&dev->mt76.tx_worker);
++	if (irq_map->rx.data_complete_mask)
++		napi_disable(&dev->mt76.napi[MT_RXQ_MAIN]);
++	if (irq_map->rx.wm_complete_mask)
++		napi_disable(&dev->mt76.napi[MT_RXQ_MCU]);
++	if (irq_map->rx.wm2_complete_mask)
++		napi_disable(&dev->mt76.napi[MT_RXQ_MCU_WA]);
++	if (irq_map->tx.all_complete_mask)
++		napi_disable(&dev->mt76.tx_napi);
++
++	mt7925_tx_token_put(dev);
++	idr_init(&dev->mt76.token);
++
++	mt792x_wpdma_reset(dev, true);
++
++	local_bh_disable();
++	mt76_for_each_q_rx(&dev->mt76, i) {
++		napi_enable(&dev->mt76.napi[i]);
++		napi_schedule(&dev->mt76.napi[i]);
++	}
++	napi_enable(&dev->mt76.tx_napi);
++	napi_schedule(&dev->mt76.tx_napi);
++	local_bh_enable();
++
++	dev->fw_assert = false;
++	clear_bit(MT76_MCU_RESET, &dev->mphy.state);
++
++	mt76_wr(dev, dev->irq_map->host_irq_enable,
++		dev->irq_map->tx.all_complete_mask |
++		MT_INT_RX_DONE_ALL | MT_INT_MCU_CMD);
++	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
++
++	err = mt792xe_mcu_fw_pmctrl(dev);
++	if (err)
++		return err;
++
++	err = __mt792xe_mcu_drv_pmctrl(dev);
++	if (err)
++		goto out;
++
++	err = mt7925_run_firmware(dev);
++	if (err)
++		goto out;
++
++	err = mt7925_mcu_set_eeprom(dev);
++	if (err)
++		goto out;
++
++	err = mt7925_mac_init(dev);
++	if (err)
++		goto out;
++
++	err = __mt7925_start(&dev->phy);
++out:
++	clear_bit(MT76_RESET, &dev->mphy.state);
++
++	mt76_worker_enable(&dev->mt76.tx_worker);
++
++	return err;
++}
 -- 
 2.18.0
 
