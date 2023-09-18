@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 859F2CD37B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 10:30:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B6D3CD37B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 10:30:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oRc+KukiTZSYs7yeDqy01HDwmZw6d0jiUY7WgouJyiw=; b=bwltwQHUjaMLNZiOziMzvjJbUM
-	UrVY+pNoLrAN+YS5QKkAygGSd52kSjGJDF97CplZCmR+bjgrNpC7amngEgJ7N73j8/52BLqSk14g+
-	WUWEG3DCR/UFe4tgunH8Uy83t6SQHgMUuIdoUvFLSi2IooWqg8eHC/WNe68sXvDfDrnctbYxXGkTc
-	lj6gjKGTXnPn++KYjmHE2qSlNaojZaJ1eOUKJ+YpIL1hZsMqMGZyGSHqR3K53cr5p4DWMxYQ2FwR7
-	HIZQtqfHyevVZX0SaVMKSlMYapAQpJ6+LncrN2Q/1GebCYZfcxw5oQWuMFiWgZFCrBAxXFicP7DBZ
-	+6qMrL8w==;
+	bh=07LWpgfQhs4YWp+fFk0vDNhKXQE0NPzaBPw1lSucWzQ=; b=W4xIdyroFNuZBYvR4hyILEtyuP
+	4i8Pl5m+7sa9XTReTSDh6q84wj/HbGcI1NamXEfLFPK8adOZRLMsQAVtLIqjWzjdDui2irkzwp0fN
+	+cq8h1RL+4QS1X/slBIYL9u2+iQbEGAEEN0sfocg9mClYVcRCw+KMcJSrD01GIUYyUHgLLPRCSEjU
+	NiiY5c4hU/4q2MoEaNhkeB8+KXRTNd15TLg9MB/e+a2vMbu97p0Klsu+BHMeYARY97IqXwW/PzY/D
+	ogndMfHTKzVXM2uMbp0goj7/UEHFhYJpTyTqqvI4GTPFz0Js1KUCk0ZGWo6pvRDPVQ9O7tnCaUl2R
+	ZiWaTSDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiBWX-00F8H2-1Z;
-	Mon, 18 Sep 2023 10:30:37 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1qiBWd-00F8Li-0C;
+	Mon, 18 Sep 2023 10:30:43 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiBWT-00F8Co-1m
+	id 1qiBWa-00F8Ig-07
 	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Sep 2023 10:30:35 +0000
+	Mon, 18 Sep 2023 10:30:41 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 2D6B9B80B4E;
-	Mon, 18 Sep 2023 10:30:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D1FBC433C7;
-	Mon, 18 Sep 2023 10:30:31 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6D4C860DFB;
+	Mon, 18 Sep 2023 10:30:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE463C433C9;
+	Mon, 18 Sep 2023 10:30:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695033031;
-	bh=ffCd2VEC1GPMGZ9Vk37dImPu0FNNQi+6tk57Xkt+BoY=;
+	s=k20201202; t=1695033039;
+	bh=QL4jpAkpk7t0C/5aBzEHHqQxp4y9HEFkn3UAfaCe8Js=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=VDxORH2wnW/HOUPfSR+c16g4CeQqLTV+UWF7cViqG20DQd57QFrQWKqJYs2WasrmV
-	 qoDIOg2lTbY8TE6XiD2C9rDnpYreJsq/0fBX9vJFuM1N1d3FTuxatvtXdxP6SYpjHS
-	 If2o0vhR5Nj6dI3YdEI4aoxI3bLT2iQr/Nc411u6eUkSBWp3r2jNg7cFeBCe33H9Jd
-	 V/aQOiXATwexs5vFzFmjnz3Su6Xs2bOGXPUGKFGFZvPf+WMADv2HGxVaiiu3mKpeJ1
-	 6ZpZTxwS+z6Tf+7+j4/8cC5bfIlfFWqLb1SQXBQhtCzSjbBiKVq+HPo7VNkeNuZssa
-	 23Oeqg+h1muvA==
+	b=Upe/6t1Q4QCfXt8qrfK8uMqPXPLVfAXaNak4hs1mUG36SQOjsD9wdZAdJkRKaK3MP
+	 ndizjfizb59O5GsaLdZXw0x3LjpIeZvFaCa+2v49kzEvOrrQ1BXRrp587o8wmNY6In
+	 VeQ8JArkFfTsx2fgE4EHOJ0UoGQaY4iUyZJk8mwrhzX03MGc/tJBAqBp68Rd5hzNri
+	 jQ7ro86PpvKAASvTBI10JERZi68PgpoYqXK8+gU9oqHo2UpQOs8G0/bPllQpb/yZhB
+	 noJlegA7wP1kOem94ObodsyQ8n2lpDNeI0FKHngbebxrKe2f2ChU1ow3+l1WBYaIBR
+	 0l4L3RzIRtweA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: lorenzo.bianconi@redhat.com,
@@ -63,17 +63,17 @@ Cc: lorenzo.bianconi@redhat.com,
 	robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
 	devicetree@vger.kernel.org
-Subject: [PATCH v2 net-next 10/17] net: ethernet: mtk_wed: add mtk_wed_soc_data structure
-Date: Mon, 18 Sep 2023 12:29:12 +0200
-Message-ID: <8516913a28d4b2bb6092a1b60412aa44b219331d.1695032291.git.lorenzo@kernel.org>
+Subject: [PATCH v2 net-next 12/17] net: ethernet: mtk_wed: refactor mtk_wed_check_wfdma_rx_fill routine
+Date: Mon, 18 Sep 2023 12:29:14 +0200
+Message-ID: <67af87aaf109fc167b34d97ce1fbe98ac10fb5c9.1695032291.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <cover.1695032290.git.lorenzo@kernel.org>
 References: <cover.1695032290.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_033033_878459_092CB960 
-X-CRM114-Status: GOOD (  14.19  )
+X-CRM114-CacheID: sfid-20230918_033040_168991_50B7788E 
+X-CRM114-Status: GOOD (  13.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,228 +88,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce mtk_wed_soc_data utility structure to contain per-SoC
-definitions.
+Refactor mtk_wed_check_wfdma_rx_fill() in order to be reused adding HW
+receive offload support for MT7988 SoC.
 
+Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/mediatek/mtk_wed.c      | 66 ++++++++++++--------
- drivers/net/ethernet/mediatek/mtk_wed.h      | 11 ++++
- drivers/net/ethernet/mediatek/mtk_wed_regs.h |  6 --
- 3 files changed, 51 insertions(+), 32 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_wed.c | 44 +++++++++++++++----------
+ 1 file changed, 27 insertions(+), 17 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index 592e497984e3..c2ff2d6405f6 100644
+index b6ca12686beb..18cbf028f6ed 100644
 --- a/drivers/net/ethernet/mediatek/mtk_wed.c
 +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -49,6 +49,26 @@ struct mtk_wed_flow_block_priv {
- 	struct net_device *dev;
- };
+@@ -586,22 +586,15 @@ mtk_wed_set_512_support(struct mtk_wed_device *dev, bool enable)
+ 	}
+ }
  
-+static const struct mtk_wed_soc_data mt7622_data = {
-+	.regmap = {
-+		.tx_bm_tkid		= 0x088,
-+		.wpdma_rx_ring0		= 0x770,
-+		.reset_idx_tx_mask	= GENMASK(3, 0),
-+		.reset_idx_rx_mask	= GENMASK(17, 16),
-+	},
-+	.wdma_desc_size = sizeof(struct mtk_wdma_desc),
-+};
-+
-+static const struct mtk_wed_soc_data mt7986_data = {
-+	.regmap = {
-+		.tx_bm_tkid		= 0x0c8,
-+		.wpdma_rx_ring0		= 0x770,
-+		.reset_idx_tx_mask	= GENMASK(1, 0),
-+		.reset_idx_rx_mask	= GENMASK(7, 6),
-+	},
-+	.wdma_desc_size = 2 * sizeof(struct mtk_wdma_desc),
-+};
-+
- static void
- wed_m32(struct mtk_wed_device *dev, u32 reg, u32 mask, u32 val)
+-#define MTK_WFMDA_RX_DMA_EN	BIT(2)
+-static void
+-mtk_wed_check_wfdma_rx_fill(struct mtk_wed_device *dev, int idx)
++static int
++mtk_wed_check_wfdma_rx_fill(struct mtk_wed_device *dev,
++			    struct mtk_wed_ring *ring)
  {
-@@ -747,7 +767,7 @@ mtk_wed_set_wpdma(struct mtk_wed_device *dev)
- 		return;
+-	u32 val;
+ 	int i;
  
- 	wed_w32(dev, MTK_WED_WPDMA_RX_GLO_CFG, dev->wlan.wpdma_rx_glo);
--	wed_w32(dev, MTK_WED_WPDMA_RX_RING, dev->wlan.wpdma_rx);
-+	wed_w32(dev, dev->hw->soc->regmap.wpdma_rx_ring0, dev->wlan.wpdma_rx);
+-	if (!(dev->rx_ring[idx].flags & MTK_WED_RING_CONFIGURED))
+-		return; /* queue is not configured by mt76 */
+-
+ 	for (i = 0; i < 3; i++) {
+-		u32 cur_idx;
++		u32 cur_idx = readl(ring->wpdma + MTK_WED_RING_OFS_CPU_IDX);
+ 
+-		cur_idx = wed_r32(dev,
+-				  MTK_WED_WPDMA_RING_RX_DATA(idx) +
+-				  MTK_WED_RING_OFS_CPU_IDX);
+ 		if (cur_idx == MTK_WED_RX_RING_SIZE - 1)
+ 			break;
+ 
+@@ -610,12 +603,10 @@ mtk_wed_check_wfdma_rx_fill(struct mtk_wed_device *dev, int idx)
+ 
+ 	if (i == 3) {
+ 		dev_err(dev->hw->dev, "rx dma enable failed\n");
+-		return;
++		return -ETIMEDOUT;
+ 	}
+ 
+-	val = wifi_r32(dev, dev->wlan.wpdma_rx_glo - dev->wlan.phy_base) |
+-	      MTK_WFMDA_RX_DMA_EN;
+-	wifi_w32(dev, dev->wlan.wpdma_rx_glo - dev->wlan.phy_base, val);
++	return 0;
  }
  
  static void
-@@ -941,22 +961,10 @@ mtk_wed_hw_init(struct mtk_wed_device *dev)
- 	wed_w32(dev, MTK_WED_TX_BM_BUF_LEN, MTK_WED_PKT_SIZE);
+@@ -1546,6 +1537,7 @@ mtk_wed_configure_irq(struct mtk_wed_device *dev, u32 irq_mask)
+ 	wed_w32(dev, MTK_WED_INT_MASK, irq_mask);
+ }
  
- 	if (mtk_wed_is_v1(dev->hw)) {
--		wed_w32(dev, MTK_WED_TX_BM_TKID,
--			FIELD_PREP(MTK_WED_TX_BM_TKID_START,
--				   dev->wlan.token_start) |
--			FIELD_PREP(MTK_WED_TX_BM_TKID_END,
--				   dev->wlan.token_start +
--				   dev->wlan.nbuf - 1));
- 		wed_w32(dev, MTK_WED_TX_BM_DYN_THR,
- 			FIELD_PREP(MTK_WED_TX_BM_DYN_THR_LO, 1) |
- 			MTK_WED_TX_BM_DYN_THR_HI);
- 	} else {
--		wed_w32(dev, MTK_WED_TX_BM_TKID_V2,
--			FIELD_PREP(MTK_WED_TX_BM_TKID_START,
--				   dev->wlan.token_start) |
--			FIELD_PREP(MTK_WED_TX_BM_TKID_END,
--				   dev->wlan.token_start +
--				   dev->wlan.nbuf - 1));
- 		wed_w32(dev, MTK_WED_TX_BM_DYN_THR,
- 			FIELD_PREP(MTK_WED_TX_BM_DYN_THR_LO_V2, 0) |
- 			MTK_WED_TX_BM_DYN_THR_HI_V2);
-@@ -971,6 +979,11 @@ mtk_wed_hw_init(struct mtk_wed_device *dev)
- 			MTK_WED_TX_TKID_DYN_THR_HI);
- 	}
- 
-+	wed_w32(dev, dev->hw->soc->regmap.tx_bm_tkid,
-+		FIELD_PREP(MTK_WED_TX_BM_TKID_START, dev->wlan.token_start) |
-+		FIELD_PREP(MTK_WED_TX_BM_TKID_END,
-+			   dev->wlan.token_start + dev->wlan.nbuf - 1));
-+
- 	mtk_wed_reset(dev, MTK_WED_RESET_TX_BM);
- 
- 	if (mtk_wed_is_v1(dev->hw)) {
-@@ -1105,13 +1118,8 @@ mtk_wed_rx_reset(struct mtk_wed_device *dev)
- 	if (ret) {
- 		mtk_wed_reset(dev, MTK_WED_RESET_WED_RX_DMA);
- 	} else {
--		struct mtk_eth *eth = dev->hw->eth;
--
--		if (mtk_is_netsys_v2_or_greater(eth))
--			wed_set(dev, MTK_WED_RESET_IDX,
--				MTK_WED_RESET_IDX_RX_V2);
--		else
--			wed_set(dev, MTK_WED_RESET_IDX, MTK_WED_RESET_IDX_RX);
-+		wed_set(dev, MTK_WED_RESET_IDX,
-+			dev->hw->soc->regmap.reset_idx_rx_mask);
- 		wed_w32(dev, MTK_WED_RESET_IDX, 0);
- 	}
- 
-@@ -1164,7 +1172,8 @@ mtk_wed_reset_dma(struct mtk_wed_device *dev)
- 	if (busy) {
- 		mtk_wed_reset(dev, MTK_WED_RESET_WED_TX_DMA);
- 	} else {
--		wed_w32(dev, MTK_WED_RESET_IDX, MTK_WED_RESET_IDX_TX);
-+		wed_w32(dev, MTK_WED_RESET_IDX,
-+			dev->hw->soc->regmap.reset_idx_tx_mask);
- 		wed_w32(dev, MTK_WED_RESET_IDX, 0);
- 	}
- 
-@@ -1256,7 +1265,6 @@ static int
- mtk_wed_wdma_rx_ring_setup(struct mtk_wed_device *dev, int idx, int size,
- 			   bool reset)
++#define MTK_WFMDA_RX_DMA_EN	BIT(2)
+ static void
+ mtk_wed_dma_enable(struct mtk_wed_device *dev)
  {
--	u32 desc_size = sizeof(struct mtk_wdma_desc) * dev->hw->version;
- 	struct mtk_wed_ring *wdma;
- 
- 	if (idx >= ARRAY_SIZE(dev->rx_wdma))
-@@ -1264,7 +1272,7 @@ mtk_wed_wdma_rx_ring_setup(struct mtk_wed_device *dev, int idx, int size,
- 
- 	wdma = &dev->rx_wdma[idx];
- 	if (!reset && mtk_wed_ring_alloc(dev, wdma, MTK_WED_WDMA_RING_SIZE,
--					 desc_size, true))
-+					 dev->hw->soc->wdma_desc_size, true))
- 		return -ENOMEM;
- 
- 	wdma_w32(dev, MTK_WDMA_RING_RX(idx) + MTK_WED_RING_OFS_BASE,
-@@ -1285,7 +1293,6 @@ static int
- mtk_wed_wdma_tx_ring_setup(struct mtk_wed_device *dev, int idx, int size,
- 			   bool reset)
- {
--	u32 desc_size = sizeof(struct mtk_wdma_desc) * dev->hw->version;
- 	struct mtk_wed_ring *wdma;
- 
- 	if (idx >= ARRAY_SIZE(dev->tx_wdma))
-@@ -1293,7 +1300,7 @@ mtk_wed_wdma_tx_ring_setup(struct mtk_wed_device *dev, int idx, int size,
- 
- 	wdma = &dev->tx_wdma[idx];
- 	if (!reset && mtk_wed_ring_alloc(dev, wdma, MTK_WED_WDMA_RING_SIZE,
--					 desc_size, true))
-+					 dev->hw->soc->wdma_desc_size, true))
- 		return -ENOMEM;
- 
- 	wdma_w32(dev, MTK_WDMA_RING_TX(idx) + MTK_WED_RING_OFS_BASE,
-@@ -1932,7 +1939,12 @@ void mtk_wed_add_hw(struct device_node *np, struct mtk_eth *eth,
- 	hw->irq = irq;
- 	hw->version = eth->soc->version;
- 
--	if (mtk_wed_is_v1(hw)) {
-+	switch (hw->version) {
-+	case 2:
-+		hw->soc = &mt7986_data;
-+		break;
-+	default:
-+	case 1:
- 		hw->mirror = syscon_regmap_lookup_by_phandle(eth_np,
- 				"mediatek,pcie-mirror");
- 		hw->hifsys = syscon_regmap_lookup_by_phandle(eth_np,
-@@ -1946,6 +1958,8 @@ void mtk_wed_add_hw(struct device_node *np, struct mtk_eth *eth,
- 			regmap_write(hw->mirror, 0, 0);
- 			regmap_write(hw->mirror, 4, 0);
- 		}
-+		hw->soc = &mt7622_data;
-+		break;
+@@ -1633,8 +1625,26 @@ mtk_wed_dma_enable(struct mtk_wed_device *dev)
+ 		wdma_set(dev, MTK_WDMA_WRBK_TX_CFG, MTK_WDMA_WRBK_TX_CFG_WRBK_EN);
  	}
  
- 	mtk_wed_hw_add_debugfs(hw);
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.h b/drivers/net/ethernet/mediatek/mtk_wed.h
-index 6f5db891a6b9..afaf5a46fbb3 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.h
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.h
-@@ -12,7 +12,18 @@
- struct mtk_eth;
- struct mtk_wed_wo;
- 
-+struct mtk_wed_soc_data {
-+	struct {
-+		u32 tx_bm_tkid;
-+		u32 wpdma_rx_ring0;
-+		u32 reset_idx_tx_mask;
-+		u32 reset_idx_rx_mask;
-+	} regmap;
-+	u32 wdma_desc_size;
-+};
+-	for (i = 0; i < MTK_WED_RX_QUEUES; i++)
+-		mtk_wed_check_wfdma_rx_fill(dev, i);
++	for (i = 0; i < MTK_WED_RX_QUEUES; i++) {
++		struct mtk_wed_ring *ring = &dev->rx_ring[i];
++		u32 val;
 +
- struct mtk_wed_hw {
-+	const struct mtk_wed_soc_data *soc;
- 	struct device_node *node;
- 	struct mtk_eth *eth;
- 	struct regmap *regs;
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_regs.h b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
-index f87ab9b8a590..2253f4eb5bc1 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_regs.h
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
-@@ -100,8 +100,6 @@ struct mtk_wdma_desc {
++		if (!(ring->flags & MTK_WED_RING_CONFIGURED))
++			continue; /* queue is not configured by mt76 */
++
++		if (mtk_wed_check_wfdma_rx_fill(dev, ring)) {
++			dev_err(dev->hw->dev,
++				"rx_ring(%d) dma enable failed\n", i);
++			continue;
++		}
++
++		val = wifi_r32(dev,
++			       dev->wlan.wpdma_rx_glo -
++			       dev->wlan.phy_base) | MTK_WFMDA_RX_DMA_EN;
++		wifi_w32(dev,
++			 dev->wlan.wpdma_rx_glo - dev->wlan.phy_base,
++			 val);
++	}
+ }
  
- #define MTK_WED_TX_BM_BASE				0x084
- 
--#define MTK_WED_TX_BM_TKID				0x088
--#define MTK_WED_TX_BM_TKID_V2				0x0c8
- #define MTK_WED_TX_BM_TKID_START			GENMASK(15, 0)
- #define MTK_WED_TX_BM_TKID_END				GENMASK(31, 16)
- 
-@@ -160,9 +158,6 @@ struct mtk_wdma_desc {
- #define MTK_WED_GLO_CFG_RX_2B_OFFSET			BIT(31)
- 
- #define MTK_WED_RESET_IDX				0x20c
--#define MTK_WED_RESET_IDX_TX				GENMASK(3, 0)
--#define MTK_WED_RESET_IDX_RX				GENMASK(17, 16)
--#define MTK_WED_RESET_IDX_RX_V2				GENMASK(7, 6)
- #define MTK_WED_RESET_WPDMA_IDX_RX			GENMASK(31, 30)
- 
- #define MTK_WED_TX_MIB(_n)				(0x2a0 + (_n) * 4)
-@@ -286,7 +281,6 @@ struct mtk_wdma_desc {
- #define MTK_WED_WPDMA_RX_D_RST_DRV_IDX			GENMASK(25, 24)
- 
- #define MTK_WED_WPDMA_RX_GLO_CFG			0x76c
--#define MTK_WED_WPDMA_RX_RING				0x770
- 
- #define MTK_WED_WPDMA_RX_D_MIB(_n)			(0x774 + (_n) * 4)
- #define MTK_WED_WPDMA_RX_D_PROCESSED_MIB(_n)		(0x784 + (_n) * 4)
+ static void
 -- 
 2.41.0
 
