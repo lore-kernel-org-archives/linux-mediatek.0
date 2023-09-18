@@ -4,94 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A488CD37B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 19:47:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 331D4C46CA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 19:47:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3GMjth0uk4svVwUdt3+lP+YAoEP9JG5oh8mw/tamzSY=; b=fw4dcx6jE/k5sC1HqFL0WH8fEx
-	W4r25TbHXWRTWw98S74/g8LDnACX1RGH8PfqpQ3hSiAc58s4TL5I/M+CKk11KE2X81RyLjbieJS2U
-	gvU53R00F+yjl/qVM20IoiEQ00HyatwjbykQyW9kKUE5uro7K1ovzCsLEeA523xOfczdsdvt+J+En
-	J3w/8rzbob1WZckpXtwEGe1fPeSqK2I/37+02mXkuH4rxzBipvZAyNoaVZMGrKIuOi0ZU7iCDS8Fm
-	4IsPOhf26Gtyk2cGgJDkR00Brb0vKsO60eJ/Ec1o930wZhRnbMDX8AxjGOr8OqEZN2XTRzakBLrI2
-	Mr+115YQ==;
+	bh=WLcGiQEezdWrjtYgrxKgWygx5Yq4eba7P0TRjhkzEZ8=; b=M8mZRl9jhKX3xXXUByIjgsmua0
+	iKiHR62dnYt3n8cjV+CWBG7L83aYpfMGibfbWn3IHYolVC8l2yZ7RtFriQAmzhNRnU5RZU1mX3Sxw
+	QL16OV8HeZcJXY0q7FvK5Wc6ITfZwmOrepO8ncBG0tMXGBkrdydIeH+87+IlV+CnjFc8LAOB+pxIo
+	R6iTzdkmtRt5gzLMz3g0TANLHu+teC4dXO4gUktELU9ucG6l/b0Gu1TdEEBuTFhfBzRzIIj3CfQeB
+	yCCCLcFAylDhljxMJ0D3m0zaD5kYWMbHnkrkQI/PgT5ipdY4S3CTk1ZQBIyMHwW0i0oeRI/WtbHnh
+	0abNDcqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiKDM-00GDGC-0Z;
-	Mon, 18 Sep 2023 19:47:24 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1qiKDr-00GDNM-0F;
+	Mon, 18 Sep 2023 19:47:55 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiKDF-00GDFQ-0j;
-	Mon, 18 Sep 2023 19:47:22 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-500bbe3ef0eso5792733e87.1;
-        Mon, 18 Sep 2023 12:47:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1695066434; x=1695671234; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=3GMjth0uk4svVwUdt3+lP+YAoEP9JG5oh8mw/tamzSY=;
-        b=ULtLdbxzNZp5Ig/xR+9kmt3hTGw/5I5ObMPIAuhIpGWAhtcs9wvfaujWYn+j0Di3L0
-         RwLCA2LK4KUgIQzXPv3Mhg78wpcJqNBKJUFns8K56vN9dL4FQaR4oRVc8bpMcxA/EXJK
-         m88iJlLNbPQEhNElqbZb4vLZlX0UnLyUbxl1oj9rRjvPFQtvevBk3IT15tcqzK8k5+3Z
-         mU7MvkbZQ2Ic15eEFz+Dd+pFYRr1YuihWpYM8pGRIoSE4ktGI/DBxA9AmVi8Q9fo+449
-         Eqmb99kW633nEdnyP67wTmdyyQ+Ztk/jLQCVKA/hMaNWHJW51Wmr/HsZgIulk9GpPp4k
-         YjRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695066434; x=1695671234;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3GMjth0uk4svVwUdt3+lP+YAoEP9JG5oh8mw/tamzSY=;
-        b=nlwaPJCZlsmCTLocjXaGhPPC0UEo9EzLG/ognZNnBA4hPtbyWVm1PaHmzBS5ww1Khl
-         g53iIfNUULrLcaa7ytuwAjIUPjEBFd6xQDVTOnK4akuqleMbnTggvbWovSkx8zQ8hx8i
-         YHzbFEiJ64bgah9Etm1NXSqyJ5JYpukwL2FfvsaOpFCn/IxHEw9SF8CLPheI1Ry/7hNN
-         UlGEH3Zq1gB3kZEj7mxNck7wlfYlMx6c9FS5XoCqYn4/r3jTr9+hg9ECewDkKaE+wx4G
-         iE8IldGoA+HQItQkCpcfqBIw0OlEpvViBPPW1JXhRRDwHgje7iPy8oq2kJQJr9mYK8DF
-         lFgA==
-X-Gm-Message-State: AOJu0YyHJRj1edvZMWWJSxUH+ncqMffVapT2OsbjHDIuelQqFu5xQ4fc
-	yrksT8WVwBxk+s203vP9R/s=
-X-Google-Smtp-Source: AGHT+IFU7njRlBwGSq66q3hzfwk/hZvM8S7fmF9CZN+KqPY2x8ju4hdMyo/0KMTFfnBSlUsJW2or3w==
-X-Received: by 2002:a05:6512:2256:b0:503:636:68e1 with SMTP id i22-20020a056512225600b00503063668e1mr275797lfu.20.1695066433864;
-        Mon, 18 Sep 2023 12:47:13 -0700 (PDT)
-Received: from mobilestation ([178.176.81.244])
-        by smtp.gmail.com with ESMTPSA id z3-20020a19f703000000b0050084e55bd8sm1926434lfe.138.2023.09.18.12.47.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Sep 2023 12:47:13 -0700 (PDT)
-Date: Mon, 18 Sep 2023 22:47:07 +0300
-From: Serge Semin <fancer.lancer@gmail.com>
-To: Jisheng Zhang <jszhang@kernel.org>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, 
-	"David S . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Emil Renner Berthing <kernel@esmil.dk>, 
-	Samin Guo <samin.guo@starfivetech.com>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Thierry Reding <thierry.reding@gmail.com>, Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
-	Russell King <linux@armlinux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v2 07/23] net: stmmac: dwmac-intel-plat: use
- devm_stmmac_probe_config_dt()
-Message-ID: <5x3xddynxi4mcf5zpac5q3kjabpq7iui6kdynasvgwp3ekzkc6@va2bm4fnh4fo>
-References: <20230916075829.1560-1-jszhang@kernel.org>
- <20230916075829.1560-8-jszhang@kernel.org>
+	id 1qiKDm-00GDLf-1v;
+	Mon, 18 Sep 2023 19:47:52 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by sin.source.kernel.org (Postfix) with ESMTPS id BA215CE0B19;
+	Mon, 18 Sep 2023 19:47:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D85BBC433C9;
+	Mon, 18 Sep 2023 19:47:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695066467;
+	bh=ewvdOKMJiJkXoXzc+h132xxTW89f9qi+QEhmHjAqHsY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RfTEKuAy8jLjjuWXkRdfn/hGnmvYFUCfWoPOiIQ/XZYIGIGYuZR7PNwQ+UbGSSYcU
+	 kXH2kUhNHsCrhF/ymroD3V808e5Q+hss4Zmj8l/Rxs3W+/2FR9yFHM+UVuFp4pbVW4
+	 UAjvVQU/1IGvwK+wRMFt3TgDu7Und3b6+6MKi7nlzIeQKexugEhJZiwyTPZ5ow65XW
+	 zJSOL7gIZ1ub5Gch+g7PHZ8+fNUxcyoqs57G9F6LBfyf++GKeoH04jQBtPuDlcA7a4
+	 ohvadedFu6yUU5onAzhDYDcXmAVXjSFwGWXQrlEXnaL6Bshpcoyfd0Z6GCN7g/tzRm
+	 U77lQjwzOq1vQ==
+Received: (nullmailer pid 1577852 invoked by uid 1000);
+	Mon, 18 Sep 2023 19:47:44 -0000
+Date: Mon, 18 Sep 2023 14:47:44 -0500
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, William-tw Lin <william-tw.lin@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Kevin Hilman <khilman@kernel.org>, Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 3/3] dt-bindings: hwinfo: Add mtk-socinfo driver
+Message-ID: <20230918194744.GA1572413-robh@kernel.org>
+References: <20230915152607.18116-1-william-tw.lin@mediatek.com>
+ <20230915152607.18116-4-william-tw.lin@mediatek.com>
+ <3e7bc476-ffc7-fb07-8e64-246427da736c@linaro.org>
+ <9acc8d99-e3db-3df8-4051-21d95450b28d@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230916075829.1560-8-jszhang@kernel.org>
+In-Reply-To: <9acc8d99-e3db-3df8-4051-21d95450b28d@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_124717_287058_0493D01C 
-X-CRM114-Status: GOOD (  23.64  )
+X-CRM114-CacheID: sfid-20230918_124750_999165_66C0CBFE 
+X-CRM114-Status: GOOD (  30.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,111 +77,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Sep 16, 2023 at 03:58:13PM +0800, Jisheng Zhang wrote:
-> Simplify the driver's probe() function by using the devres
-> variant of stmmac_probe_config_dt().
+On Mon, Sep 18, 2023 at 10:47:53AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 17/09/23 10:26, Krzysztof Kozlowski ha scritto:
+> > On 15/09/2023 17:26, William-tw Lin wrote:
+> > > dt-binding documentation for mtk-socinfo driver.
+> > 
+> > Here and in subject, drop driver and instead descrbe hardware.
+> > 
+> > > mtk-socinfo driver provides SoC-related information.
+> > > Such information includes manufacturer information, SoC name,
+> > > SoC segment name, and SoC marketing name.
+> > > 
+> > > Signed-off-by: William-tw Lin <william-tw.lin@mediatek.com>
+> > > ---
+> > >   .../bindings/hwinfo/mtk-socinfo.yaml          | 48 +++++++++++++++++++
+> > >   1 file changed, 48 insertions(+)
+> > >   create mode 100644 Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml b/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
+> > > new file mode 100644
+> > > index 000000000000..74f03f1dc404
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
+> > 
+> > Nothing improved.
+> > 
+> > This is a friendly reminder during the review process.
+> > 
+> > It seems my previous comments were not fully addressed. Maybe my
+> > feedback got lost between the quotes, maybe you just forgot to apply it.
+> > Please go back to the previous discussion and either implement all
+> > requested changes or keep discussing them.
+> > 
+> > Thank you.
+> > 
+> > > @@ -0,0 +1,48 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: http://devicetree.org/schemas/hwinfo/mtk-socinfo.yaml#
+> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > +
+> > > +title: MediaTek SoC ChipID
+> > > +
+> > > +maintainers:
+> > > +  - William Lin <william-tw.lin@mediatek.com>
+> > > +  - Matthias Brugger <matthias.bgg@gmail.com>
+> > > +  - Kevin Hilman <khilman@kernel.org>
+> > > +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > > +
+> > > +description:
+> > > +  MediaTek SoCs store various product information in eFuses, including
+> > > +  Chip ID and Revision fields, usable to identify the manufacturer,
+> > > +  SoC version, plus segment and marketing names.
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    const: mediatek,socinfo
+> > 
+> > What happened to compatibles? No, this is just wrong and no explained.
+> > You ignored other comments as well. Really, that's not the way to go.
+> > 
 > 
-> The calling of stmmac_pltfr_remove() now needs to be switched to
-> stmmac_pltfr_remove_no_dt().
+> Practically, having different compatibles for each SoC is not needed, as
+> the only thing that changes between SoCs is the eFuse(s) that you read to
+> get the information - and that's all.
 > 
-> Signed-off-by: Jisheng Zhang <jszhang@kernel.org>
-> ---
->  .../stmicro/stmmac/dwmac-intel-plat.c         | 27 +++++++------------
->  1 file changed, 9 insertions(+), 18 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-intel-plat.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-intel-plat.c
-> index d352a14f9d48..d1aec2ca2b42 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-intel-plat.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-intel-plat.c
-> @@ -85,17 +85,15 @@ static int intel_eth_plat_probe(struct platform_device *pdev)
->  	if (ret)
->  		return ret;
->  
-> -	plat_dat = stmmac_probe_config_dt(pdev, stmmac_res.mac);
-> +	plat_dat = devm_stmmac_probe_config_dt(pdev, stmmac_res.mac);
->  	if (IS_ERR(plat_dat)) {
->  		dev_err(&pdev->dev, "dt configuration failed\n");
->  		return PTR_ERR(plat_dat);
->  	}
->  
->  	dwmac = devm_kzalloc(&pdev->dev, sizeof(*dwmac), GFP_KERNEL);
-> -	if (!dwmac) {
-> -		ret = -ENOMEM;
-> -		goto err_remove_config_dt;
-> -	}
-> +	if (!dwmac)
-> +		return -ENOMEM;
->  
->  	dwmac->dev = &pdev->dev;
->  	dwmac->tx_clk = NULL;
-> @@ -110,10 +108,8 @@ static int intel_eth_plat_probe(struct platform_device *pdev)
->  		/* Enable TX clock */
->  		if (dwmac->data->tx_clk_en) {
->  			dwmac->tx_clk = devm_clk_get(&pdev->dev, "tx_clk");
-> -			if (IS_ERR(dwmac->tx_clk)) {
-> -				ret = PTR_ERR(dwmac->tx_clk);
-> -				goto err_remove_config_dt;
-> -			}
-> +			if (IS_ERR(dwmac->tx_clk))
-> +				return PTR_ERR(dwmac->tx_clk);
->  
->  			clk_prepare_enable(dwmac->tx_clk);
->  
-> @@ -126,7 +122,7 @@ static int intel_eth_plat_probe(struct platform_device *pdev)
->  				if (ret) {
->  					dev_err(&pdev->dev,
->  						"Failed to set tx_clk\n");
-> -					goto err_remove_config_dt;
-> +					return ret;
->  				}
->  			}
->  		}
-> @@ -140,7 +136,7 @@ static int intel_eth_plat_probe(struct platform_device *pdev)
->  			if (ret) {
->  				dev_err(&pdev->dev,
->  					"Failed to set clk_ptp_ref\n");
-> -				goto err_remove_config_dt;
-> +				return ret;
->  			}
->  		}
->  	}
-> @@ -158,22 +154,17 @@ static int intel_eth_plat_probe(struct platform_device *pdev)
->  	ret = stmmac_dvr_probe(&pdev->dev, plat_dat, &stmmac_res);
->  	if (ret) {
+> So ... we either use this driver with devicetree, giving it the right eFuses
+> to read from, or we duplicate the mtk-efuse driver, or we statically assign
+> the eFuses in the driver itself and we set compatibles like
+> "mediatek,mt8195-socinfo" to select that... ideas?
 
->  		clk_disable_unprepare(dwmac->tx_clk);
-> -		goto err_remove_config_dt;
-> +		return ret;
+So this one is just a virtual device to instantiate a driver and there 
+is no socinfo hw block? If so, that's definitely a NAK. Either 
+instantiate your socinfo driver from the efuse driver or register as a 
+socinfo provider in it.
 
-Just a general note IMO it's better for maintainability to have the
-clean-up-on-error block than reverting the previous changes in the if
-body. Thus should you add new functions call before the block in
-subject you won't need to add duplicated cleanup functions calls, but
-just add new reverting method invocation to the cleanup-on-error path.
-
--Serge(y)
-
->  	}
->  
->  	return 0;
-> -
-> -err_remove_config_dt:
-> -	stmmac_remove_config_dt(pdev, plat_dat);
-> -
-> -	return ret;
->  }
->  
->  static void intel_eth_plat_remove(struct platform_device *pdev)
->  {
->  	struct intel_dwmac *dwmac = get_stmmac_bsp_priv(&pdev->dev);
->  
-> -	stmmac_pltfr_remove(pdev);
-> +	stmmac_pltfr_remove_no_dt(pdev);
->  	clk_disable_unprepare(dwmac->tx_clk);
->  }
->  
-> -- 
-> 2.40.1
-> 
-> 
+Rob
 
