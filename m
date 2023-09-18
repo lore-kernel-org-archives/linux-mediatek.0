@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A91CCD37B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 08:43:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C957C46CA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 08:43:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2FmL+tmhWGFQcrwwwy2xFlnk4sPriKRNmcjNvLKxuIk=; b=Ikb5Jp+rRBOAWr6gWyUNhGfAIB
-	5EityaVMDJVSjW1MrURNxMBm1ibr1zwgNmXWvifhmIb0jpqAj7j/UuXkdPE+fnv2d40exgZyF6yMf
-	qHJLM5V1zSwQqfypVXYvI/rhoYx69+hbtVyqeD6jSlaslB4k0w60E135JPRq84uvnXd60iWYmRZt7
-	eX3GlUBMmB5ZNLjRGUhZv3KS9IXVo6pFvZtVUX68QotmFvzM5yqex4t4d9CbikTqcBXQ27n8Ew8Du
-	mXMvF4NuWUYA9n5GuWgTQvQs8DOn1O9oL9eYFSsoiP+lIkjytQfN+5vDbbnXy/8yVofM/ZWEGMlyc
-	9nC92/WQ==;
+	bh=1zOwWFeG5NGBnZYWyrLagHyH+cMh1aLIgKpN5K4YYzs=; b=UBCojOoX8nhPV3bdA7lfUwUOz3
+	avOa99IkjkDht96i3nINY3ysrnbsbxW/VV2N5xyKMkYuspr0qMXLrUEhdagzNAyTW5EIbAvxGm0lt
+	MdmLFZ8HWFcHLoXOBAyX16dTqlgc+VQ1iYt2oPYAChOmUsGLhvl193QFw5uJ3UAhJ2RcPh85JBZ1Y
+	DhK4NJrdxn6xgLMJZM44682tQuj2KyK3I3RfTAsypjPyqHsSYK2pMvQN640whJHZbBAE6jYFBBuOM
+	R7DpVA0+hZRnn2uNDVTXoaY2kTiJ6kJQtc3QwaDR2SuMDlcVRtI295AoJTieVMNR3ljzKcuLOjJKR
+	4mdffRVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qi9qS-00Eryk-0H;
-	Mon, 18 Sep 2023 08:43:04 +0000
+	id 1qi9qb-00Es3f-0n;
+	Mon, 18 Sep 2023 08:43:13 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qi9qE-00Ernw-0U;
-	Mon, 18 Sep 2023 08:42:51 +0000
-X-UUID: 56ba5e0055ff11ee86758d4a7c00f3a0-20230918
+	id 1qi9qF-00EroU-1n;
+	Mon, 18 Sep 2023 08:42:53 +0000
+X-UUID: 586e33ca55ff11ee86758d4a7c00f3a0-20230918
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=2FmL+tmhWGFQcrwwwy2xFlnk4sPriKRNmcjNvLKxuIk=;
-	b=XtYHvi6LM/Qr2+ikCHEEYsK6og1hX+Hqv4AFlPQaYAoR1s/jWiWUSAYwR1HCMSxSPs4CBm5LREBexF8lkT/TvQnJX+QgYTVZUvQ+qxKsW3pekKrOwnreTOILIGzl/y/DiAn5FBPZhSN5Zoiicr1P+JV0g+kAfn0EexjYiHeAwfQ=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1zOwWFeG5NGBnZYWyrLagHyH+cMh1aLIgKpN5K4YYzs=;
+	b=EquVFZf3kBVP4fs0wTKFSKqaT1+Ru5TQk3OZN0A2Wq/HjSPn4Kt/8i61fVURmzk7vZ8imGrAi+fIeehj733+dvMcFgLix87n+hCbdloKm/RJBDng2ZMytiLft38EPeq9RpThrVLN/+ceIBdXHxfK/QOS/VIgpI7HGe+axVAUAgg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:47cdf304-97fc-4169-9750-a33d1fd9affc,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:f694f6be-14cc-44ca-b657-2d2783296e72,B
+X-CID-O-INFO: VERSION:1.1.31,REQID:56bf6606-b721-476e-bf63-fdbc81607dc8,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:0ad78a4,CLOUDID:abcb1014-4929-4845-9571-38c601e9c3c9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 56ba5e0055ff11ee86758d4a7c00f3a0-20230918
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 586e33ca55ff11ee86758d4a7c00f3a0-20230918
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <shawn.sung@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1265218021; Mon, 18 Sep 2023 01:42:45 -0700
+	with ESMTP id 1088358724; Mon, 18 Sep 2023 01:42:48 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 18 Sep 2023 16:42:11 +0800
+ 15.2.1118.26; Mon, 18 Sep 2023 16:42:12 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 18 Sep 2023 16:42:11 +0800
+ 15.2.1118.26 via Frontend Transport; Mon, 18 Sep 2023 16:42:12 +0800
 From: Hsiao Chien Sung <shawn.sung@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Matthias Brugger
@@ -63,30 +63,30 @@ CC: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>,
 	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, Hsiao Chien Sung
 	<shawn.sung@mediatek.com>
-Subject: [PATCH v2 06/11] drm/mediatek: Support alpha blending in display driver
-Date: Mon, 18 Sep 2023 16:42:02 +0800
-Message-ID: <20230918084207.23604-7-shawn.sung@mediatek.com>
+Subject: [PATCH v2 11/11] drm/mediatek: Support CRC in VDOSYS1
+Date: Mon, 18 Sep 2023 16:42:07 +0800
+Message-ID: <20230918084207.23604-12-shawn.sung@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230918084207.23604-1-shawn.sung@mediatek.com>
 References: <20230918084207.23604-1-shawn.sung@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--9.435800-8.000000
-X-TMASE-MatchedRID: 61l6kdP/ldn2fv0LTPfvM6MVgdN9w+TCWjWsWQUWzVr/evmlVf9xZkN+
-	V6ZFLcNd6rlI+AD5R5wSqo3ZUfrHh25/NyTKlG69DB+ErBr0bAOuiRuR9mCautchlMhSt6FeQHf
-	bKe/4YJLlpBcKhHrskTLaKLaWub4PHxPMjOKY7A8LbigRnpKlKSPzRlrdFGDwU+2vIzDCyqmf+Q
-	y/rKrINsCo2Oi+tjk+FpltkTCMnT3Dhj6t95pUrg==
+X-TM-AS-Result: No-10--7.538200-8.000000
+X-TMASE-MatchedRID: bHUmO6Ydv7rXldNKzKPlvawxbZnudyr73FYvKmZiVnOCsBeCv8CM/a9q
+	iUd5V6DYAak79SdgQsDW9RHvDZKnVSUtdpGicV4RA9lly13c/gEraL2mh8ZVK35h6y4KCSJcjse
+	1+4fQ7uvLqCJZs0VuwGSLax1QSEcDqH7dGVt6/4kOSj4RiINDEZKLNrbpy/A0DZjzHLL3eRahBi
+	oZvW2mjSxzuGmAt8MyuPAycf9X/Euns5Q49D70/XV7tdtvoibaGEfoClqBl86bKItl61J/yZ+in
+	TK0bC9eKrauXd3MZDVjsiBcbMhSNLkWSzA8xpNrThYReVz0uCphQolsfFVqEvfiLzqKam7O
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--9.435800-8.000000
+X-TMASE-Result: 10--7.538200-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 428F88119AF2C6E762C3F1B230F9FA71349FB6689841C1FBE17B295B794B9CE12000:8
+X-TM-SNTS-SMTP: BDB18C1E7868CACE935102C79273B68ACFF6A43E4A6E96C97603EF594E8EE2522000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_014250_227508_1D6529B2 
-X-CRM114-Status: UNSURE (   9.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230918_014251_626875_AAAAF687 
+X-CRM114-Status: GOOD (  18.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,44 +101,244 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support alpha blending by adding correct blend mode and
-alpha property in plane initialization.
+We choose Mixer as CRC generator in VDOSYS1 since
+its frame done event will trigger vblanks, we can know
+when is safe to retrieve CRC of the frame.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In VDOSYS1, there's no image procession after Mixer,
+unlike OVL in VDOSYS0, Mixer's CRC will include all the
+effects that are applied to the frame.
+
 Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_plane.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  3 +
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 21 ++++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  3 +
+ drivers/gpu/drm/mediatek/mtk_ethdr.c          | 73 +++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_ethdr.h          |  5 ++
+ 5 files changed, 105 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index db2f70ae060d..f87cf56fb846 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -301,6 +301,9 @@ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
- 		   size_t num_formats)
- {
- 	int err;
-+	u32 blend_mode = BIT(DRM_MODE_BLEND_PIXEL_NONE) |
-+			 BIT(DRM_MODE_BLEND_PREMULTI)   |
-+			 BIT(DRM_MODE_BLEND_COVERAGE);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index 3e2f8084913c..ac8468917a2e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -129,6 +129,9 @@ unsigned int mtk_ovl_adaptor_layer_nr(struct device *dev);
+ struct device *mtk_ovl_adaptor_dma_dev_get(struct device *dev);
+ const u32 *mtk_ovl_adaptor_get_formats(struct device *dev);
+ size_t mtk_ovl_adaptor_get_num_formats(struct device *dev);
++size_t mtk_ovl_adaptor_crc_cnt(struct device *dev);
++u32 *mtk_ovl_adaptor_crc_entry(struct device *dev);
++void mtk_ovl_adaptor_crc_read(struct device *dev);
  
- 	if (!formats || !num_formats) {
- 		DRM_ERROR("no formats for plane\n");
-@@ -323,6 +326,14 @@ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
- 			DRM_INFO("Create rotation property failed\n");
+ void mtk_rdma_bypass_shadow(struct device *dev);
+ int mtk_rdma_clk_enable(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+index 6bf6367853fb..8fe706ccee72 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+@@ -160,6 +160,27 @@ void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
+ 	mtk_ethdr_layer_config(ethdr, idx, state, cmdq_pkt);
+ }
+ 
++size_t mtk_ovl_adaptor_crc_cnt(struct device *dev)
++{
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++
++	return mtk_ethdr_crc_cnt(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
++}
++
++u32 *mtk_ovl_adaptor_crc_entry(struct device *dev)
++{
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++
++	return mtk_ethdr_crc_entry(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
++}
++
++void mtk_ovl_adaptor_crc_read(struct device *dev)
++{
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++
++	mtk_ethdr_crc_read(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
++}
++
+ void mtk_ovl_adaptor_config(struct device *dev, unsigned int w,
+ 			    unsigned int h, unsigned int vrefresh,
+ 			    unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index b8b3884dfa63..7dfb37ae2c80 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -400,6 +400,9 @@ static const struct mtk_ddp_comp_funcs ddp_ovl_adaptor = {
+ 	.clk_enable = mtk_ovl_adaptor_clk_enable,
+ 	.clk_disable = mtk_ovl_adaptor_clk_disable,
+ 	.config = mtk_ovl_adaptor_config,
++	.crc_cnt = mtk_ovl_adaptor_crc_cnt,
++	.crc_entry = mtk_ovl_adaptor_crc_entry,
++	.crc_read = mtk_ovl_adaptor_crc_read,
+ 	.start = mtk_ovl_adaptor_start,
+ 	.stop = mtk_ovl_adaptor_stop,
+ 	.layer_nr = mtk_ovl_adaptor_layer_nr,
+diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
+index a41b3950e081..693b9a438a3d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ethdr.c
++++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
+@@ -24,6 +24,9 @@
+ #define MIX_FME_CPL_INTEN			BIT(1)
+ #define MIX_INTSTA			0x8
+ #define MIX_EN				0xc
++#define MIX_TRIG			0x10
++#define MIX_TRIG_CRC_EN				BIT(8)
++#define MIX_TRIG_CRC_RST			BIT(9)
+ #define MIX_RST				0x14
+ #define MIX_ROI_SIZE			0x18
+ #define MIX_DATAPATH_CON		0x1c
+@@ -39,6 +42,11 @@
+ #define PREMULTI_SOURCE				(3 << 12)
+ #define MIX_L_SRC_SIZE(n)		(0x30 + 0x18 * (n))
+ #define MIX_L_SRC_OFFSET(n)		(0x34 + 0x18 * (n))
++
++/* CRC register offsets for odd and even lines */
++#define MIX_CRC_ODD			0x110
++#define MIX_CRC_EVEN			0x114
++
+ #define MIX_FUNC_DCM0			0x120
+ #define MIX_FUNC_DCM1			0x124
+ #define MIX_FUNC_DCM_ENABLE			0xffffffff
+@@ -74,6 +82,17 @@ struct mtk_ethdr_comp {
+ 	struct cmdq_client_reg	cmdq_base;
+ };
+ 
++/**
++ * struct mtk_ethdr - ethdr driver data
++ * @ethdr_comp: components of ethdr(mixer)
++ * @ethdr_clk: clocks of ethdr components
++ * @mmsys_dev: mmsys device that ethdr binds to
++ * @vblank_cb: callback function when vblank irq occurs
++ * @vblank_cb_data: data fo vblank callback
++ * @irq: irq that triggers irq handler
++ * @reset_ctl: reset control of ethdr
++ * @crc: crc information
++ */
+ struct mtk_ethdr {
+ 	struct mtk_ethdr_comp	ethdr_comp[ETHDR_ID_MAX];
+ 	struct clk_bulk_data	ethdr_clk[ETHDR_CLK_NUM];
+@@ -82,6 +101,7 @@ struct mtk_ethdr {
+ 	void			*vblank_cb_data;
+ 	int			irq;
+ 	struct reset_control	*reset_ctl;
++	struct mtk_drm_crc	crc;
+ };
+ 
+ static const char * const ethdr_clk_str[] = {
+@@ -100,6 +120,32 @@ static const char * const ethdr_clk_str[] = {
+ 	"vdo_be_async",
+ };
+ 
++static const u32 ethdr_crc_ofs[] = {
++	MIX_CRC_ODD,
++	MIX_CRC_EVEN,
++};
++
++size_t mtk_ethdr_crc_cnt(struct device *dev)
++{
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++
++	return priv->crc.cnt;
++}
++
++u32 *mtk_ethdr_crc_entry(struct device *dev)
++{
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++
++	return priv->crc.va;
++}
++
++void mtk_ethdr_crc_read(struct device *dev)
++{
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++
++	mtk_drm_crc_read(&priv->crc, priv->ethdr_comp[ETHDR_MIXER].regs);
++}
++
+ void mtk_ethdr_register_vblank_cb(struct device *dev,
+ 				  void (*vblank_cb)(void *),
+ 				  void *vblank_cb_data)
+@@ -267,6 +313,13 @@ void mtk_ethdr_start(struct device *dev)
+ 	struct mtk_ethdr_comp *mixer = &priv->ethdr_comp[ETHDR_MIXER];
+ 
+ 	writel(1, mixer->regs + MIX_EN);
++
++	if (priv->crc.cnt) {
++		writel(MIX_TRIG_CRC_EN, mixer->regs + MIX_TRIG);
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++		mtk_drm_crc_cmdq_start(&priv->crc);
++#endif
++	}
+ }
+ 
+ void mtk_ethdr_stop(struct device *dev)
+@@ -274,6 +327,9 @@ void mtk_ethdr_stop(struct device *dev)
+ 	struct mtk_ethdr *priv = dev_get_drvdata(dev);
+ 	struct mtk_ethdr_comp *mixer = &priv->ethdr_comp[ETHDR_MIXER];
+ 
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	mtk_drm_crc_cmdq_stop(&priv->crc);
++#endif
+ 	writel(0, mixer->regs + MIX_EN);
+ 	writel(1, mixer->regs + MIX_RST);
+ 	reset_control_reset(priv->reset_ctl);
+@@ -328,6 +384,10 @@ static int mtk_ethdr_probe(struct platform_device *pdev)
+ 	if (!priv)
+ 		return -ENOMEM;
+ 
++	mtk_drm_crc_init(&priv->crc,
++			 ethdr_crc_ofs, ARRAY_SIZE(ethdr_crc_ofs),
++			 MIX_TRIG, MIX_TRIG_CRC_RST);
++
+ 	for (i = 0; i < ETHDR_ID_MAX; i++) {
+ 		priv->ethdr_comp[i].dev = dev;
+ 		priv->ethdr_comp[i].regs = of_iomap(dev->of_node, i);
+@@ -336,6 +396,16 @@ static int mtk_ethdr_probe(struct platform_device *pdev)
+ 					      &priv->ethdr_comp[i].cmdq_base, i);
+ 		if (ret)
+ 			dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
++
++		if (i == ETHDR_MIXER) {
++			if (of_property_read_u32_index(dev->of_node,
++						       "mediatek,gce-events", i,
++						       &priv->crc.cmdq_event)) {
++				dev_warn(dev, "failed to get gce-events for crc\n");
++			}
++			priv->crc.cmdq_reg = &priv->ethdr_comp[i].cmdq_base;
++			mtk_drm_crc_cmdq_create(dev, &priv->crc);
++		}
+ #endif
+ 		dev_dbg(dev, "[DRM]regs:0x%p, node:%d\n", priv->ethdr_comp[i].regs, i);
  	}
+@@ -376,6 +446,9 @@ static int mtk_ethdr_probe(struct platform_device *pdev)
  
-+	err = drm_plane_create_alpha_property(plane);
-+	if (err)
-+		DRM_ERROR("failed to create property: alpha\n");
+ static int mtk_ethdr_remove(struct platform_device *pdev)
+ {
++	struct mtk_ethdr *priv = dev_get_drvdata(&pdev->dev);
 +
-+	err = drm_plane_create_blend_mode_property(plane, blend_mode);
-+	if (err)
-+		DRM_ERROR("failed to create property: blend_mode\n");
-+
- 	drm_plane_helper_add(plane, &mtk_plane_helper_funcs);
- 
++	mtk_drm_crc_destroy(&priv->crc);
+ 	component_del(&pdev->dev, &mtk_ethdr_component_ops);
  	return 0;
+ }
+diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.h b/drivers/gpu/drm/mediatek/mtk_ethdr.h
+index 81af9edea3f7..d17d7256bd12 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ethdr.h
++++ b/drivers/gpu/drm/mediatek/mtk_ethdr.h
+@@ -22,4 +22,9 @@ void mtk_ethdr_register_vblank_cb(struct device *dev,
+ void mtk_ethdr_unregister_vblank_cb(struct device *dev);
+ void mtk_ethdr_enable_vblank(struct device *dev);
+ void mtk_ethdr_disable_vblank(struct device *dev);
++
++size_t mtk_ethdr_crc_cnt(struct device *dev);
++u32 *mtk_ethdr_crc_entry(struct device *dev);
++void mtk_ethdr_crc_read(struct device *dev);
++
+ #endif
 -- 
 2.18.0
 
