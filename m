@@ -4,90 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50B52CD37B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 10:15:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8004CD37B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 10:22:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FlPiBPfzITX9DL6CLizuq7axBo1alK0pRSm4MYPYv3g=; b=QE7IBp9b3/+xVTb9XP3+xdtm1b
-	vG0rIO+mwKC08hkEocHPrQL7fuiLqZbLB5cB13HO3KI3JeSH15sP+GlQrYMKTPBgf0Rf2EF2YKXnn
-	eOnOonnAeZ1Xl7gB8GRaL9XxEYTtIvQsxs34a5lAltbVW0fTcjvNBo/jUWM6m8EN8e4YLeu1dwPtT
-	gImX2H8fYYGAQ8q0yEEIxZq4i10ZzxNkjJZjq5AdVDFxG0uoDWBLcR6V7j18osCYHHWChz/sHQ6Zh
-	480Z8lkdaxnjKHe7tyQowEbcL+FiClhYUO3P8pWRnfuA0khXzmqUVWcSa3M75pb9JvB24IWwxQlaL
-	VVV5d//Q==;
+	bh=iX6Za3zyMvqmXctAk0a5Iwv/WZyf9mXODoigV6qCMRo=; b=vKgKBFPVH/aGkf2yUYR6tJVUqb
+	Yvs4dvxLjaf+5hqHPsn2vU8GbXMuHWeVNgpcH3B7DWWmYTebOqqSDkajCYKAO4mV7tiQ1Pl5/BmQi
+	ddFuDFH+2dKI282V6wHwZb/lOgqcBW8Dlj+imgqUnAMQYjRoLBKX/JIgjNmvCHyuVqTvsPT0JjnWp
+	orGpIpOXq4uZ0KeTFIR7qHEOwe9ZV2fNBckymCZHl+Uc1rgo8e4jsa3ekAm5CFmNH8bKR9eSuyaH9
+	hkFZxxLjQwtk71jSeZA2j9jz+qxE1/Dvpp2DdcrUMnWa0bktUdGyi4QNCT0/tAXw1ULANVk3HaY68
+	6GYMv9NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiBHb-00F32z-1e;
-	Mon, 18 Sep 2023 10:15:11 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1qiBOd-00F3wl-1W;
+	Mon, 18 Sep 2023 10:22:27 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiBHY-00F31a-04
+	id 1qiBOa-00F3s9-34
 	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Sep 2023 10:15:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=FlPiBPfzITX9DL6CLizuq7axBo1alK0pRSm4MYPYv3g=; b=Pn6cVnHJi0SpybljT7FfkA7/09
-	w3of3jRwPEDPwFXs9kpiEK9KP41TzKbTTXZLZ5FmzIVKg0Fcb77dvmoQx+mYgAa+ftBo+z1ioOPMX
-	PGscbWl6FdgVon7eXMf0lXRCXkS2Vdxlfx3kWMJd1cdu5qUvuOcsAr7ulZc3PxYzVbBI=;
-Received: from p54ae986d.dip0.t-ipconnect.de ([84.174.152.109] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.94.2)
-	(envelope-from <nbd@nbd.name>)
-	id 1qiBHG-003vhL-Tc; Mon, 18 Sep 2023 12:14:50 +0200
-Message-ID: <c00c641b-f5b3-4bca-8d41-4e048b09a794@nbd.name>
-Date: Mon, 18 Sep 2023 12:14:50 +0200
+	Mon, 18 Sep 2023 10:22:26 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-2b703a0453fso72504311fa.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 18 Sep 2023 03:22:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1695032533; x=1695637333; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=iX6Za3zyMvqmXctAk0a5Iwv/WZyf9mXODoigV6qCMRo=;
+        b=OFAJdT3RbO/srioYYoLuUyDYzgZ/fITeRlhHsHFf7BDa74lRZqmXpj22+6KAI2HJAG
+         ur3VNnBBH+4NAL3e3UCDkrWoq6b4ODeQL032R8isA1lp6c7oDahTlYSBdQxAFUNKeR39
+         NdFxKLOqX9zKJlFSsdfvqXq5kYMbr/Bu9ntFE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695032533; x=1695637333;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=iX6Za3zyMvqmXctAk0a5Iwv/WZyf9mXODoigV6qCMRo=;
+        b=bPL6O15bQhey1poaabXga9FSwHxt1/8drZMxh4OxQ356tKhGcRhWI0T2j/m2mGHt/w
+         mGZq/ChPsre6Szua26fuX+0Wxd3YH+YSguA40yrtQ8v6r+h01XUWrcWYMuj7KO/sGDpc
+         SY+hdA0YI27zTuhW2OiARmYvDFUF7/mQlV8wJtDnlE/m+JL+LtT/iY17tsUlqo9uNz3z
+         BdZDSD9MTZ0YCwlpgYjHFRZuA88z1ShEuhPYdy2j8aLbwBp9vokuym4r42XowNlMehD5
+         +Mu/GVipm8996igwXrkxMXZ+uDgEyIWhfA+gIrweHdhVosw9bAjtPbNZd+nqDVCvM+7s
+         tI5Q==
+X-Gm-Message-State: AOJu0Yx3dakkyUx6aKG6eHluGiHBG5+WqnhXl830wTO/b6xhdV53V4Yu
+	hicOxpSKkv+9Tk2TKkURqr5Yhge0siFXee/Op4q5WQ==
+X-Google-Smtp-Source: AGHT+IGrOZ01cn2qw0qI6mUsa0BPS8suIqLpCLQSaooT4447KAkiTjntIXrQMcMfujDWXRNpeNDPG7ExNaXoGbZJW2E=
+X-Received: by 2002:a05:6512:1115:b0:4fb:9f93:365f with SMTP id
+ l21-20020a056512111500b004fb9f93365fmr8180795lfg.38.1695032532962; Mon, 18
+ Sep 2023 03:22:12 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/4] wifi: mt76: mt7996: Add mcu commands for getting
- sta tx statistic
-Content-Language: en-US
-To: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>,
- Johannes Berg <johannes.berg@intel.com>
-Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, Money Wang
- <money.wang@mediatek.com>, Peter Chiu <chui-hao.chiu@mediatek.com>,
- Benjamin Lin <benjamin-jw.lin@mediatek.com>, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <7554d0a64ff480f1a185f381a59799158fe8bf23.1693549298.git.yi-chia.hsieh@mediatek.com>
- <ef87bde6ef590ce39515a683e33313d1434b3064.1693549298.git.yi-chia.hsieh@mediatek.com>
-From: Felix Fietkau <nbd@nbd.name>
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <ef87bde6ef590ce39515a683e33313d1434b3064.1693549298.git.yi-chia.hsieh@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20230822084520.564937-1-wenst@chromium.org> <20230822084520.564937-3-wenst@chromium.org>
+ <7f743fba-6cba-cce0-d499-0a9d95e3b026@collabora.com>
+In-Reply-To: <7f743fba-6cba-cce0-d499-0a9d95e3b026@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 18 Sep 2023 18:22:01 +0800
+Message-ID: <CAGXv+5FgGtpY697e9-Dnk=1Ro0dM7C6qmtdXkWHb5EtocU+t_w@mail.gmail.com>
+Subject: Re: [PATCH v2 02/11] mfd: mt6358: Add registers for MT6366 specific regulators
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Zhiyong Tao <zhiyong.tao@mediatek.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_031508_142882_BD607C54 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20230918_032224_993208_21CCC03A 
+X-CRM114-Status: GOOD (  23.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,60 +90,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01.09.23 08:30, Yi-Chia Hsieh wrote:
-> Per peer Tx/Rx statistic can only be obtained by querying WM when WED is
-> on. This patch switches to periodic event reporting in the case of WED
-> being enabled.
-> 
-> Signed-off-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-> ---
-> v2: split series
-> ---
->   .../wireless/mediatek/mt76/mt76_connac_mcu.h  | 15 ++++
->   .../net/wireless/mediatek/mt76/mt7996/mac.c   |  5 ++
->   .../net/wireless/mediatek/mt76/mt7996/main.c  | 15 ++++
->   .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 68 +++++++++++++++++++
->   .../net/wireless/mediatek/mt76/mt7996/mcu.h   | 26 +++++++
->   .../wireless/mediatek/mt76/mt7996/mt7996.h    |  1 +
->   6 files changed, 130 insertions(+)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-> index 078f82858621..5aece2046a9d 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-> @@ -153,6 +153,32 @@ struct mt7996_mcu_mib {
->   	__le64 data;
->   } __packed;
->   
-> +struct mt7996_mcu_all_sta_info_event {
-> +	u8 rsv[4];
-> +	__le16 tag;
-> +	__le16 len;
-> +	u8 more;
-> +	u8 rsv2;
-> +	__le16 sta_num;
-> +	u8 rsv3[2];
-> +
-> +	union {
-> +		struct {
-> +			__le16 wlan_idx;
-> +			u8 rsv[2];
-> +			__le32 tx_bytes[IEEE80211_NUM_ACS];
-> +			__le32 rx_bytes[IEEE80211_NUM_ACS];
-> +		} adm_stat[];
-> +
-> +		struct {
-> +			__le16 wlan_idx;
-> +			u8 rsv[2];
-> +			__le32 tx_msdu_cnt;
-> +			__le32 rx_msdu_cnt;
-> +		} msdu_cnt[];
-> +	};
-> +} __packed;
-With this, I'm getting compiler errors like this one:
+On Fri, Sep 15, 2023 at 4:55=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 22/08/23 10:45, Chen-Yu Tsai ha scritto:
+> > The MT6366 PMIC, compared to the MT6358, does away with the VCAM*
+> > regulators. Two regulators VM18 and VMDDR reuse their register space.
+> > There's also a VSRAM type regulator VSRAM_CORE thats' split between
+> > the VCAM* register space and other parts.
+> >
+> > Add register address macros for these MT6366 specific regulators.
+> >
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+>
+> For ease of applying to MFD, I think it's ok to have the header changes s=
+plit
+> from the actual user; so:
 
-      mcu.h:171:19: error: flexible array member in union
+Actually that doesn't help, because this is a compile time dependency.
+Merging this through the MFD tree and the rest through the regulator
+tree would mean either creating an immutable branch, or Lee giving an
+ack for this patch to go through the regulator tree. We would be doing
+the latter if we squashed the patches together anyway. I think squashing
+them does make sense.
 
+ChenYu
 
-- Felix
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+>
+> Cheers!
+>
+> > ---
+> >   include/linux/mfd/mt6358/registers.h | 17 +++++++++++++++++
+> >   1 file changed, 17 insertions(+)
+> >
+> > diff --git a/include/linux/mfd/mt6358/registers.h b/include/linux/mfd/m=
+t6358/registers.h
+> > index 5ea2590be710..d83e87298ac4 100644
+> > --- a/include/linux/mfd/mt6358/registers.h
+> > +++ b/include/linux/mfd/mt6358/registers.h
+> > @@ -294,4 +294,21 @@
+> >   #define MT6358_AUD_TOP_INT_CON0               0x2228
+> >   #define MT6358_AUD_TOP_INT_STATUS0            0x2234
+> >
+> > +/*
+> > + * MT6366 has no VCAM*, but has other regulators in its place. The nam=
+es
+> > + * keep the MT6358 prefix for ease of use in the regulator driver.
+> > + */
+> > +#define MT6358_LDO_VSRAM_CON5                 0x1bf8
+> > +#define MT6358_LDO_VM18_CON0                  MT6358_LDO_VCAMA1_CON0
+> > +#define MT6358_LDO_VM18_CON1                  MT6358_LDO_VCAMA1_CON1
+> > +#define MT6358_LDO_VM18_CON2                  MT6358_LDO_VCAMA1_CON2
+> > +#define MT6358_LDO_VMDDR_CON0                 MT6358_LDO_VCAMA2_CON0
+> > +#define MT6358_LDO_VMDDR_CON1                 MT6358_LDO_VCAMA2_CON1
+> > +#define MT6358_LDO_VMDDR_CON2                 MT6358_LDO_VCAMA2_CON2
+> > +#define MT6358_LDO_VSRAM_CORE_CON0            MT6358_LDO_VCAMD_CON0
+> > +#define MT6358_LDO_VSRAM_CORE_DBG0            0x1cb6
+> > +#define MT6358_LDO_VSRAM_CORE_DBG1            0x1cb8
+> > +#define MT6358_VM18_ANA_CON0                  MT6358_VCAMA1_ANA_CON0
+> > +#define MT6358_VMDDR_ANA_CON0                 MT6358_VCAMD_ANA_CON0
+> > +
+> >   #endif /* __MFD_MT6358_REGISTERS_H__ */
+>
 
