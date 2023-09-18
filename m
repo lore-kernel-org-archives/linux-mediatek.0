@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C630C46CA1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA22DCD13D3
 	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 09:31:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PQDxa2zx1X81lzl1+vipiYWxKX40ZvcKKak1KSbRfVo=; b=3fYCfQyEhWyCf09HfeIU06wll7
-	51Fqxrklane/mgl6pI6i1AcuNap/t1Cnj2J+BW1UlUiXA0YsWYHrvzdk37uuWTLTkmziPn/VubnwQ
-	gbvr+iG+Sa2pCwswhDs2eyQ3Y5kQlS0ge6T5E5qPfP//vfCSrZDNWPmycNcH5EY5ehBDlctKxBVCN
-	az5I9+vELS3iR+F9Wup+VsIZOYqHS0+fKSXxV2LPObjTdNcU/QnMAgREfOniiPwnuCNYeEOWKjFo1
-	jshIEBbdKS0dRkNaPbXTDmJwbb0GHjOAk4PRPdIqAbyDPZM2S7z8QtbilSnr+HXkY+qb3q7xxfy/L
-	CDFyxyfg==;
+	bh=Ba6S9adPAWLGYboYX2BbN2qsBvx/vGtpZBCMQpt/U9Y=; b=nOKctifRFkRgnBjUVkeEaJDoby
+	2ZUjPi5vTqGQ/ZkqcLBcxzg7j4Cjwa7+ZYMHoySo3McVY+KXkWqbvcPQTr4HnQJ14FwcdDoCw2+S7
+	dS1tt0FJe5ojubkN1LOg2kZkwaNSEK7iP7+yfzkvxOj/lkNXUeRSLWeUBhAsJCCi+ZxQt/CNS+4kD
+	pRVvkj5MPGpu549pnQ/kyaha8QujFx2z/K3MN4T1mduyDqhvMgYl4brrXY/JxWfikVENo2aSsGzOa
+	9roF9ufmLYXOgDb3KiN3Qlsxw1G78Y2wGpVfRZlY29RO6Hl+1HlX4G/9x42GLGozTgpuFvP1EbN+F
+	L2sIVlKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiAbO-00Ex8Y-31;
-	Mon, 18 Sep 2023 09:31:34 +0000
+	id 1qiAbP-00Ex95-2U;
+	Mon, 18 Sep 2023 09:31:35 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiAbL-00Ex6J-0X
+	id 1qiAbM-00Ex6J-1F
 	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Sep 2023 09:31:32 +0000
-X-UUID: 24532288560611ee86758d4a7c00f3a0-20230918
+	Mon, 18 Sep 2023 09:31:33 +0000
+X-UUID: 2416930e560611ee86758d4a7c00f3a0-20230918
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=PQDxa2zx1X81lzl1+vipiYWxKX40ZvcKKak1KSbRfVo=;
-	b=RULqwFAwM5w2NaWm5U+odNomwqEe8Vwfx5bfGFvM+laRr4izF2dz51XORP3789YG+rLgNbaS8cUTLImq3/fQhnQjYh59Q1T4Q9pzifPNWs5rcyWGOgcgxy1hUc5FlvfdfZKXJQmTy9jIUXHgPL9YjQ7+J0YsieRci4W8NDQcnrw=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Ba6S9adPAWLGYboYX2BbN2qsBvx/vGtpZBCMQpt/U9Y=;
+	b=YJd9qE4TLL+GLzsyPE0bJPoPQIMACJjqSQUoQ+22FCJuDvfaA9v3j3VWOUoT56P+q+02jTs8byHfXqjyGxDV9tYmNSqkqfhSDgJkvMcZ54e0SFI5iacq0w6ea1Jfy9CUopH/2perTB+JCfUP1c2065pcENVJCksMVgh3Rpk3SWM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:5694969b-1e2f-4cb4-bf15-a87a006f36e5,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:0ad78a4,CLOUDID:d35f1114-4929-4845-9571-38c601e9c3c9,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-O-INFO: VERSION:1.1.31,REQID:671d5b7f-bee2-4d0c-8996-91b316682594,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:-55
+X-CID-META: VersionHash:0ad78a4,CLOUDID:82e927c3-1e57-4345-9d31-31ad9818b39f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,D
+	KR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 24532288560611ee86758d4a7c00f3a0-20230918
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+X-UUID: 2416930e560611ee86758d4a7c00f3a0-20230918
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <deren.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 749230738; Mon, 18 Sep 2023 02:31:27 -0700
+	with ESMTP id 691558411; Mon, 18 Sep 2023 02:31:27 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Mon, 18 Sep 2023 17:31:24 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -60,19 +60,29 @@ CC: Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
 	Shayne Chen <shayne.chen@mediatek.com>, linux-wireless
 	<linux-wireless@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH v3 16/17] wifi: mt76: add mt7925 to Makefile
-Date: Mon, 18 Sep 2023 17:31:09 +0800
-Message-ID: <8237297d3377e1683b5410a0aa5f6f462ab0bf09.1695024367.git.deren.wu@mediatek.com>
+Subject: [PATCH v3 11/17] wifi: mt76: mt7925: add pci_mcu.c
+Date: Mon, 18 Sep 2023 17:31:04 +0800
+Message-ID: <d43cd353ad08d110bb743c9c15d97515748540ea.1695024367.git.deren.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <cover.1695024367.git.deren.wu@mediatek.com>
 References: <cover.1695024367.git.deren.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--5.646400-8.000000
+X-TMASE-MatchedRID: 59Hu41dzmXTKRSR886eK0gPZZctd3P4BWjWsWQUWzVpnnK6mXN72m1Ue
+	MbrYurbIadgG7kzTAhS5ujAticPZ9fm9WstcRwZxuZH4LSX2+NUfOdo4H355iGe6/ylXAzNJo8W
+	MkQWv6iXBcIE78YqRWvcUt5lc1lLgoGRyAacnhaYq25BLAOYym3oGIxpTutRJqX5VCcpSMWDStc
+	hC7WBwun7cGd19dSFd
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--5.646400-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: BA96A0D478CB532F709BE148BF38A30852CF4E66BAEC5270ECE38AC42A77AB682000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_023131_218153_80C01B61 
-X-CRM114-Status: UNSURE (   8.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20230918_023132_425441_12B13048 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,18 +104,69 @@ Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/Makefile | 1 +
- 1 file changed, 1 insertion(+)
+ .../wireless/mediatek/mt76/mt7925/pci_mcu.c   | 53 +++++++++++++++++++
+ 1 file changed, 53 insertions(+)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/pci_mcu.c
 
-diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
-index 85c4799be954..d6575fe18c6b 100644
---- a/drivers/net/wireless/mediatek/mt76/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/Makefile
-@@ -44,3 +44,4 @@ obj-$(CONFIG_MT7615_COMMON) += mt7615/
- obj-$(CONFIG_MT7915E) += mt7915/
- obj-$(CONFIG_MT7921_COMMON) += mt7921/
- obj-$(CONFIG_MT7996E) += mt7996/
-+obj-$(CONFIG_MT7925_COMMON) += mt7925/
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mcu.c
+new file mode 100644
+index 000000000000..f95bc5dcd830
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mcu.c
+@@ -0,0 +1,53 @@
++// SPDX-License-Identifier: ISC
++/* Copyright (C) 2023 MediaTek Inc. */
++
++#include "mt7925.h"
++#include "mcu.h"
++
++static int
++mt7925_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
++			int cmd, int *seq)
++{
++	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
++	enum mt76_mcuq_id txq = MT_MCUQ_WM;
++	int ret;
++
++	ret = mt7925_mcu_fill_message(mdev, skb, cmd, seq);
++	if (ret)
++		return ret;
++
++	mdev->mcu.timeout = 3 * HZ;
++
++	if (cmd == MCU_CMD(FW_SCATTER))
++		txq = MT_MCUQ_FWDL;
++
++	return mt76_tx_queue_skb_raw(dev, mdev->q_mcu[txq], skb, 0);
++}
++
++int mt7925e_mcu_init(struct mt792x_dev *dev)
++{
++	static const struct mt76_mcu_ops mt7925_mcu_ops = {
++		.headroom = sizeof(struct mt76_connac2_mcu_txd),
++		.mcu_skb_send_msg = mt7925_mcu_send_message,
++		.mcu_parse_response = mt7925_mcu_parse_response,
++	};
++	int err;
++
++	dev->mt76.mcu_ops = &mt7925_mcu_ops;
++
++	err = mt792xe_mcu_fw_pmctrl(dev);
++	if (err)
++		return err;
++
++	err = __mt792xe_mcu_drv_pmctrl(dev);
++	if (err)
++		return err;
++
++	mt76_rmw_field(dev, MT_PCIE_MAC_PM, MT_PCIE_MAC_PM_L0S_DIS, 1);
++
++	err = mt7925_run_firmware(dev);
++
++	mt76_queue_tx_cleanup(dev, dev->mt76.q_mcu[MT_MCUQ_FWDL], false);
++
++	return err;
++}
 -- 
 2.18.0
 
