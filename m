@@ -4,89 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA9E1C46CA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 08:13:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84C69C46CA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 08:23:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kqnvu8e5BxdxEQxTzumthghfrEuZ7r4SRpLOXCrpQuo=; b=eOZ6S429j7zltIXJ9U2Mrwo06q
-	13Kk0PKoNu89j5/KvBQk+3V05ll1vEXuDRCMMC62wQDOXhqo0qxFirhuGtvv5ys/XWmnuLK6YAdtP
-	NWMdVq4YL7MJMV1Dbi4v4944lmuy3HWZOvOjI4lKxg80HZUNOewZm43wc7TFP2d541KsKvVG6X5yY
-	QE4n0mgNNYftAgAtjWN9qqTElDuvx1bAJ3LQ/l9D/rjj3EFOPqzamRGboz3a4pKEnKNAOO1sJeRaI
-	5iFMBAcYnAQ/VBH8gVe2jrp66UyhfIT7KcuXhmcLtewh4ltCpNgZde3w37KXZ8zBo7pdHUgqjD4Mf
-	Y7CfGfxw==;
+	bh=vbS9QPc1Pl8aynK4QW1lmF6vjAQ0ZTxsQY3l4MyK258=; b=hCNgTWSg6kSADzrEoA9j+Sj+Te
+	2fhmw9wFKRUlRoNVrElqZHgnIuYOuXeXiiEbS34Xms6tIb5nE0Bt8cRYfVvizJl/SjQ/lMu/g2rF3
+	8bPjP49ly8eIBWwV/fYaoiR6Efp/3aYXYBMVIfMYnzv5pp5xpKmWXkqKs/j3zS3LBVk65eJ+FSweH
+	imX6HlbTrAPdy8rhVqK5a6vEaRr2L0RpLJxL3swLA3vBrAVYcdMKHamFPL+77yMv3Td/JpaX8J86v
+	9Sp901fJ+zqnwD3cTnbcvrZtK5+vGVZR3Cqca5IwBEC2TlUaVn9fQJhJtR5lYg6Sdii+efzQbV61X
+	nos9P2VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qi9NR-00Ep0C-2b;
-	Mon, 18 Sep 2023 08:13:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qi9Xq-00Eq0J-0O;
+	Mon, 18 Sep 2023 08:23:50 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qi9NN-00EoxL-30;
-	Mon, 18 Sep 2023 08:13:03 +0000
-X-UUID: 2b760ce855fb11ee86758d4a7c00f3a0-20230918
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=kqnvu8e5BxdxEQxTzumthghfrEuZ7r4SRpLOXCrpQuo=;
-	b=afTrg5B8iZFmMfi+TL9Chc4sBpKokhlcMESjDopFTRL3jur8nGfpd9c9J98vFp2z1ef+1mCNvnkNkMhmeu41xqGoLXFinfKyoBXRVgvRp9dlMuo4ymrmN4vPekM4ywU8iIw9M+4uW3YUvN7eybpr+bTyvuhGXe8nq7NMcMaC29w=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:cfe193b3-374b-4b2c-a900-378ce0aaf95a,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:0ad78a4,CLOUDID:3938f6be-14cc-44ca-b657-2d2783296e72,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:817|102,TC:nil,Content:0|-5,EDM:-3,I
-	P:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 1,FCT|NGT
-X-CID-BAS: 1,FCT|NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 2b760ce855fb11ee86758d4a7c00f3a0-20230918
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <haibo.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1787645198; Mon, 18 Sep 2023 01:12:54 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 18 Sep 2023 16:12:51 +0800
-Received: from mszsdtlt102.gcn.mediatek.inc (10.16.4.142) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 18 Sep 2023 16:12:51 +0800
-From: Haibo Li <haibo.li@mediatek.com>
-To: <jannh@google.com>
-CC: <akpm@linux-foundation.org>, <andreyknvl@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <dvyukov@google.com>,
-	<glider@google.com>, <haibo.li@mediatek.com>, <kasan-dev@googlegroups.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-mm@kvack.org>,
-	<mark.rutland@arm.com>, <matthias.bgg@gmail.com>, <ryabinin.a.a@gmail.com>,
-	<vincenzo.frascino@arm.com>, <xiaoming.yu@mediatek.com>
-Subject: Re: [PATCH] kasan:fix access invalid shadow address when input is illegal
-Date: Mon, 18 Sep 2023 16:12:50 +0800
-Message-ID: <20230918081250.143237-1-haibo.li@mediatek.com>
-X-Mailer: git-send-email 2.34.3
-In-Reply-To: <CAG48ez3GSubTFA8+hw=YDZoVHC79JVwNi+xFTQt9ssy_+O1aaw@mail.gmail.com>
-References: <CAG48ez3GSubTFA8+hw=YDZoVHC79JVwNi+xFTQt9ssy_+O1aaw@mail.gmail.com>
+	id 1qi9Xl-00Epym-0O;
+	Mon, 18 Sep 2023 08:23:46 +0000
+From: John Ogness <john.ogness@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1695025421;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vbS9QPc1Pl8aynK4QW1lmF6vjAQ0ZTxsQY3l4MyK258=;
+	b=I/zxI14CZHZrII9ihm3trQ7fyyqM9MBHlADU5jK/WCz0qmJ7qdh/gVp7MrHnT76kGCn2OS
+	thbrjm+5/p0AUL3k3y0Me+t3WXGfgewtHVa3jLT3mQIW+uh19uaZJo4dDuuzTnKNH9gxbv
+	YqECxqsZmXE12Rs6n3pfqikyRNI02rXD922Wk1RsqzmyFP2Q/TQ0JlDB7tNnIb53lXVkEi
+	CufhfKqHdPXTBi4P4Wa/XMaoZh4D9DvciGhluoUsXp5UvHxZKk2LWwPbB1vTfE61jrJ00V
+	Ogro8L9qiUNaoDXe+9b8RHsC1EhXb9nWyWvagEl9+oWqRYTCu3Dz/+VCPP0L6A==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1695025421;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vbS9QPc1Pl8aynK4QW1lmF6vjAQ0ZTxsQY3l4MyK258=;
+	b=ZRHDOxKys82eUfF3vL0yjr3X8TEhFmzqT0RH/vdzReXsYMA0wfYIhUsDDRhUJ++sGu6dag
+	f4crLl8OAPE2xoBw==
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Jiri Slaby <jirislaby@kernel.org>, linux-serial@vger.kernel.org, Petr Mladek <pmladek@suse.com>, Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org, Tobias Klauser <tklauser@distanz.ch>, Thierry Reding <treding@nvidia.com>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, Al Cooper <alcooperx@gmail.com>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Tony Lindgren <tony@atomide.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Ilpo =?utf-8?Q?J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, Florian Fainelli <f.fainelli@gmail.com>, Andrew Davis <afd@ti.com>, Matthew Howell <matthew.howell@sealevel.com>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, Johan Hovold <johan@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, linux-mediatek@lists.infradead.org, Lukas Wunner <lukas@wunner.de>, Matthias Schiffer <matthias.schiffer@ew.tq-group.com>, Arnd Bergmann <arnd@arndb.de>, Kumaravel Thiagarajan <kumaravel.thiagarajan@microchip.com>, Tharun Kumar P <tharunkumar.pasumarthi@microchip.com>, Russell King <linux@armlinux.org.uk>, "Maciej W. Rozycki" <macro@orcam.me.uk>, Hongyu Xie <xiehongyu1@kylinos.cn>, Jiamei Xie <jiamei.xie@arm.com>, Rob Herring <robh@kernel.org>, delisun <delisun@pateo.com.cn>, Lino Sanfilippo <l.sanfilippo@kunbus.com>, Yangtao Li <frank.li@vivo.com>, Vineet Gupta <vgupta@kernel.org>, linux-snps-arc@lists.infradead.org, Richard Genoud <richard.genoud@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Arend van Spriel <arend.vanspriel@broadcom.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Baruch Siach <baruch@tkos.co.il>, Sherry Sun <sherry.sun@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Sergey Organov <sorganov@gmail.com>, Tom Rix <trix@redhat.com>, Marek Vasut <marex@denx.de>, Karol Gugala <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, Gabriel Somlo <gsomlo@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Dmitry Rokosov <ddrokosov@sberdevices.ru>, Lucas Tanure <tanure@linux.com>, linux-amlogic@lists.infradead.org, Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konrad.dybcio@linaro.org>, linux-arm-msm@vger.kernel.org, Pali =?utf-8?Q?Roh=C3=A1r?= <pali@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, linux-actions@lists.infradead.org, Xiongfeng Wang <wangxiongfeng2@huawei.com>, Yuan Can <yuancan@huawei.com>, Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, linuxppc-dev@lists.ozlabs.org, linux-unisoc@lists.infradead.org, Kevin Cernekee <cernekee@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, linux-samsung-soc@vger.kernel.org, Lukas Bulwahn <lukas.bulwahn@gmail.com>, Lech Perczak <lech.perczak@camlingroup.com>, Hugo Villeneuve <hvilleneuve@dimonoff.com>, Andy Shevchenko <andy.shevchenko@gmail.com>, Isaac True <isaac.true@canonical.com>, Laxman Dewangan <ldewangan@nvidia.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ linux-tegra@vger.kernel.org, Biju Das <biju.das.jz@bp.renesas.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>, Nick Hu <nick.hu@sifive.com>, Ruan Jinjie <ruanjinjie@huawei.com>, Samuel Holland <samuel.holland@sifive.com>, linux-riscv@lists.infradead.org, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Patrice Chotard <patrice.chotard@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Valentin Caron <valentin.caron@foss.st.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, linux-stm32@st-md-mailman.stormreply.com, "David S. Miller" <davem@davemloft.net>, sparclinux@vger.kernel.org, Hammer Hsieh <hammerh0314@gmail.com>, Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>, Mukesh Ojha <quic_mojha@quicinc.com>, Jonathan =?utf-8?Q?Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, Michal Simek <michal.simek@amd.com>
+Subject: Re: [PATCH tty v1 00/74] serial: wrappers for uart port lock
+In-Reply-To: <20230914183831.587273-1-john.ogness@linutronix.de>
+References: <20230914183831.587273-1-john.ogness@linutronix.de>
+Date: Mon, 18 Sep 2023 10:29:30 +0206
+Message-ID: <87y1h3lwjh.fsf@jogness.linutronix.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--15.802200-8.000000
-X-TMASE-MatchedRID: HXSqh3WYKfs4HKI/yaqRmya1MaKuob8PfjJOgArMOCZb6PBUqmq+Uq7d
-	jM7nXzpjKDVpUrn+OoQmNpzri1sed7Ud2R7XKvn3dAg4yd14qARUXmZR3qwgxiS30GKAkBxWqjK
-	1cw/inhPUdOHHz4uZ2bNVqZo4wx+HlOGdJawUY9voGS5BmR0KUThaxI2If9ReK7S6qybDnxlvKp
-	xZPgVlFySl042qLBGShRAr0eCrd7QLd3u89FoqUbiMC5wdwKqdvtVce6w5+K/US7RV+C9GRaPFj
-	JEFr+olwXCBO/GKkVqOhzOa6g8KrZRMZUCEHkRt
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--15.802200-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 526554D9131F0E7FF150090659C59FFAFE008B7EB75342DF66FB39481924F4332000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_011301_977914_1FC93322 
-X-CRM114-Status: GOOD (  21.46  )
+X-CRM114-CacheID: sfid-20230918_012345_465348_E110B52B 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,48 +74,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> On Fri, Sep 15, 2023 at 6:51 PM Andrey Konovalov <andreyknvl@gmail.com> wrote:
-> > On Fri, Sep 15, 2023 at 4:46 AM 'Haibo Li' via kasan-dev
-> > <kasan-dev@googlegroups.com> wrote:
-> > >
-> > > The patch checks each shadow address,so it introduces extra overhead.
-> >
-> > Ack. Could still be fine, depends on the overhead.
-> >
-> > But if the message printed by kasan_non_canonical_hook is good enough
-> > for your use case, I would rather stick to that.
-If we check shadow address before invalid access,
-we get below message before oops:
-"
-BUG: KASAN: invalid-access in do_ib_ob+0xf4/0x110
-Read of size 8 at addr caffff80aaaaaaaa by task sh/100
-"
+On 2023-09-14, John Ogness <john.ogness@linutronix.de> wrote:
+> Provide and use wrapper functions for spin_[un]lock*(port->lock)
+> invocations so that the console mechanics can be applied later on at a
+> single place and does not require to copy the same logic all over the
+> drivers.
 
-We get below message while using kasan_non_canonical_hook:
-"
-Unable to handle kernel paging request at virtual address ffffff80aaaaaaaa
-KASAN: maybe wild-memory-access in range [0xfffffc0aaaaaaaa0-0xfffffc0aaaaaaaaf]
-"
+For the full 74-patch series:
 
-Both indicate the original accessed address which causes oops.
+Signed-off-by: John Ogness <john.ogness@linutronix.de>
 
-> >
-> > > Now kasan_non_canonical_hook only works for CONFIG_KASAN_INLINE.
-> > >
-> > > And CONFIG_KASAN_OUTLINE is set in my case.
-> > >
-> > > Is it possible to make kasan_non_canonical_hook works for both
-> > > INLINE and OUTLINE by simply remove the "#ifdef CONFIG_KASAN_INLINE"?
-> >
-> > Yes, it should just work if you remove the ifdefs in mm/kasan/report.c
-> > and in include/linux/kasan.h.
-> >
-> > Jann, do you have any objections to enabling kasan_non_canonical_hook
-> > for the outline mode too?
->
-> No objections from me.
+Sorry that my SoB was missing from the initial posting.
 
-Thanks.
-Shall I send a new patch to fix this problem by using kasan_non_canonical_hook
-
+John Ogness
 
