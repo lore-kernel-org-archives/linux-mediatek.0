@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73D9DCD37B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 20:52:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 181DBCD37B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 20:57:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bK3tn5dFdIkaJdHv4A/3xeAMl/PHN2x+YLc9iStXbls=; b=ENWAH7jDE8A0gTi2oa0MR+91kw
-	5yeSEhS3MfrAkjqgTPA8ZB+lWNiDy0kbk3ns6oqbzOlp8+brdpNX2s5+1ILEmE1c4EpSZVYCe1cZJ
-	GF7atRhNFlUlEaZsNGJ9eNezmMdex9TI2g35VMbgz8U3K2HI1lQETjHeA5LWNHlM4V1O47d1RsCTS
-	oiyE2VsmK8AeOigwGWcqjdnb7JHtF9eCdgayKutIrw4jtPYkYTFQD6lFPu2U7Ml+q2IhplseRWZU6
-	U33gDhDB3zH8NWiyoLVrITEwmMZjPnJ2L4+ndutik/i8DhOYSOzbbIqqW9sLsuuRU/GpWFeE/IEYV
-	/BA5cPdg==;
+	bh=F1RdBqIbW8vq9GeM6+PAZNvRaybVzqVrlabhZaFD0ps=; b=J/0N+sPAkc8o5vhw4v66e1fc18
+	MdDsSnG31ALQrd7ksH8FRto/veUF9OFD5QzVBymFgPxTwRkNZt2qAOYahXNR1SU0scqsZYnOIpAtl
+	Z3xX5nf3i/kfS3q01CidbvQ+qwVNJCG3+Bd/jsYZhj2JgdnLItKsgQajZuPVVqsJsNqY+wphg+CvB
+	0NPfedNocxRM9qU2dnBrNrWMVAJyw2JlCLZ2QgXSvLP9brdVrJrsliYBZFB7JMfuQ8CBwO+r1vVyN
+	8Ob8V/e9spvn5Wt/VNf2GOQVmOGeW5FGacTc8ubcgNdP4rUKKnCNtj4zKKun+tKJDVH95zJsmfyV2
+	29V+YQVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiLE8-00GKDG-15;
-	Mon, 18 Sep 2023 20:52:16 +0000
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+	id 1qiLJT-00GLC4-2t;
+	Mon, 18 Sep 2023 20:57:47 +0000
+Received: from mail-il1-x12e.google.com ([2607:f8b0:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiLE5-00GKBP-1d;
-	Mon, 18 Sep 2023 20:52:14 +0000
-Received: by mail-pg1-x530.google.com with SMTP id 41be03b00d2f7-57767b2058cso2835986a12.1;
-        Mon, 18 Sep 2023 13:52:11 -0700 (PDT)
+	id 1qiLJQ-00GLAu-1K
+	for linux-mediatek@lists.infradead.org;
+	Mon, 18 Sep 2023 20:57:46 +0000
+Received: by mail-il1-x12e.google.com with SMTP id e9e14a558f8ab-34fa117f92bso10625ab.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 18 Sep 2023 13:57:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1695070331; x=1695675131; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=bK3tn5dFdIkaJdHv4A/3xeAMl/PHN2x+YLc9iStXbls=;
-        b=VFesS+9uGXf0aapjzX/V9RIR3L3gtsCwAGJ4Eap8F2XBdrBXtPBzyXGS5loIQCMVsw
-         ZAkyNxzPPW4SiZCwFsI7rPVPVx1sTeahcd9d0NynhAIvmFyYweT2OsnPFYh836jxXgdA
-         Jq48/rS6/4+x1JWhQK2I3Xo5l+xPKPVIPFvWaA2hv4h7xMHtPvC+sVksBqAuCNXKUDkG
-         CNlGSPs5V06hUhTkPVUnQsWBzmF6DwWezpMpFHCbCEJZZQ4Uy9KpW52t73yN+btl0iXh
-         68OHpkwmryJa1sVztvFdBbGNLiXC2gZFMTG9BeezvE9fjp+cObV67Kn/tNP2lygzcT1j
-         nQtA==
+        d=google.com; s=20230601; t=1695070659; x=1695675459; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=F1RdBqIbW8vq9GeM6+PAZNvRaybVzqVrlabhZaFD0ps=;
+        b=ssGJRzT+g133NHPnBuKT3Yd2W1jXX9c9a/ratxuSeUV9pfVMYKViL1FrmGgc1GXqV5
+         bdAzn/8fpNriXL/3vz0CdeNK+NEmSGVnRWABAG9E/Atqz2K0JyQ8j9F9T5qFQ8rV/ViD
+         wFICB8kA3iooaHnHWrDxdNO2y620B5bJrLqtB7W4A5y4SCD5ONNNaAjzlMlBSpmPyukb
+         x35KAMsO7+Q324+BiYrcd0yXroMK0ftgy4Oj77mUVVfZtqjpwyf8cNgDGO/pv+631N+m
+         wMqJAhosN0cnOJ1GYvmhB447Cc++KRW3EzwUiGupG8ZOqt3KkrtfQ5npMYu7l8MW59IR
+         QK8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695070331; x=1695675131;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bK3tn5dFdIkaJdHv4A/3xeAMl/PHN2x+YLc9iStXbls=;
-        b=RvVL4THtPFtXRw1AgTsrTBfFppxknLXud3fxWyKs6stSR5wuuaxCqo54/pCEF/I4P+
-         jfOOIIaBZy4ug4ThhtNVMVJkeIZzZ7TTp1rFUcDuFCJwJWJJLxT0/g4xPeUptogy/Io0
-         XWhi0zFrSlFUYJxx97mS1r+BRzXZoNs0WHOJJJaULQLOfxTyXs1gouIzkirExzaPR7Ed
-         vp7iIHE+ft98iORhQZt3vutg3vaRB8JaA4QgV5NmMheTIBvT2wrf0oxIOE1C3e8ssJ/O
-         BMpUZKk/P6GY7wcSck6kyWHQW9CPxA4L/B73jZaeA6ly5dQyqi8BjMdqnRwt4wfX+KGr
-         0TQw==
-X-Gm-Message-State: AOJu0YykOO+vGRPJXThs+YY3KcR5Ou9mw7O0Rq5u32I/bk/BUhWM6OYS
-	KRDyLrG3sfbiNqnJ16N+LNk=
-X-Google-Smtp-Source: AGHT+IEo2yCf5AWI7d+G8dWQj5LP+lBu3onyLV5mFtDWvWdgvWG9iXl6vIXk0M1pcf6BZHzv8t7FyA==
-X-Received: by 2002:a17:90a:648f:b0:274:b4ce:7049 with SMTP id h15-20020a17090a648f00b00274b4ce7049mr6036409pjj.34.1695070330675;
-        Mon, 18 Sep 2023 13:52:10 -0700 (PDT)
-Received: from [10.67.49.139] ([192.19.223.252])
-        by smtp.googlemail.com with ESMTPSA id 8-20020a17090a1a4800b0026b45fb4443sm1775789pjl.4.2023.09.18.13.52.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 18 Sep 2023 13:52:10 -0700 (PDT)
-Message-ID: <351666ed-2095-cc67-07cc-3f0994368b7e@gmail.com>
-Date: Mon, 18 Sep 2023 13:52:08 -0700
+        d=1e100.net; s=20230601; t=1695070659; x=1695675459;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=F1RdBqIbW8vq9GeM6+PAZNvRaybVzqVrlabhZaFD0ps=;
+        b=msdTQdwh5pZRFrFOxXWy9CwX4JZ8Ob4cC6Szxavl0yJPjT/hlFV3R3u99gEq4pd7bE
+         60VRcPCb9POlfj9ZxVcqRwUdyYfHeCul1N+BY4bRxYZsFNF5PIx+AFPxWcuGOUqLRTPB
+         QuCJ/WqFHAGAyAIUnXp6aH56kuGA/8BrsU+QdDJxhbPNPRja9jJFEjNX+mXfFmYloALg
+         n1AL2Ipw7R+mkRJIIlvWezQiL5rp3gDD+9Y/Qyt4Z6GJzMVzh9gzej4il58Yc8FUC+tO
+         LYTnB9iGppuAqgl4eMAkG5BQQ1YX09sbCLWWAWdpwQWyDudkFt1AvqQK8OTJURLa0DDg
+         tQUQ==
+X-Gm-Message-State: AOJu0YyXRCa3hX4RCEVSdAtFYmkc/ctaJ8hu7V0Szcbk0FLeJdDkATKZ
+	6W6hjsAMW5PlpWa+k2Y6ACDvP/TBOZV/9iRmPoad
+X-Google-Smtp-Source: AGHT+IGCOA3HmyvGW9XUB4kw7oHDtJYcvoG5SswMRmA0rqPxgJMy9wc1ZYs4tkpHPQrp9vNY5BUoJxRSRr8Wc18+CJs=
+X-Received: by 2002:a05:6e02:214a:b0:348:d358:467c with SMTP id
+ d10-20020a056e02214a00b00348d358467cmr70014ilv.2.1695070658691; Mon, 18 Sep
+ 2023 13:57:38 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH net-next 5/9] net: dsa: mt7530: Convert to platform remove
- callback returning void
-Content-Language: en-US
-To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Daniel Golle <daniel@makrotopia.org>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, kernel@pengutronix.de,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230918191916.1299418-1-u.kleine-koenig@pengutronix.de>
- <20230918191916.1299418-6-u.kleine-koenig@pengutronix.de>
-From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <20230918191916.1299418-6-u.kleine-koenig@pengutronix.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20230911125936.10648-1-yunfei.dong@mediatek.com>
+ <20230911125936.10648-13-yunfei.dong@mediatek.com> <1df3e79b84933dda0313d0d9719220dbc06c9022.camel@collabora.com>
+ <d4cedcb0-32ed-495d-a8cd-a635d5105824@xs4all.nl> <5307203d79c0d90cc742a315bb161fa796b9960f.camel@mediatek.com>
+ <bafc37e8-96e8-41c0-b805-c6477f0d7c4a@xs4all.nl>
+In-Reply-To: <bafc37e8-96e8-41c0-b805-c6477f0d7c4a@xs4all.nl>
+From: Jeffrey Kardatzke <jkardatzke@google.com>
+Date: Mon, 18 Sep 2023 13:57:24 -0700
+Message-ID: <CA+ddPcN6EaFERC60_Z_-ZmWzqyUEwxiDCZwt_U6Y-gpaAu76tA@mail.gmail.com>
+Subject: Re: [PATCH 12/14] media: medkatek: vcodec: set secure mode to decoder driver
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>, 
+	"nhebert@chromium.org" <nhebert@chromium.org>, 
+	"benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>, 
+	"nfraprado@collabora.com" <nfraprado@collabora.com>, 
+	"angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
+	"nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"frkoenig@chromium.org" <frkoenig@chromium.org>, "stevecho@chromium.org" <stevecho@chromium.org>, 
+	"wenst@chromium.org" <wenst@chromium.org>, 
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "daniel@ffwll.ch" <daniel@ffwll.ch>, 
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
+	"hsinyi@chromium.org" <hsinyi@chromium.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_135213_548275_8A968B52 
-X-CRM114-Status: GOOD (  14.02  )
+X-CRM114-CacheID: sfid-20230918_135744_468330_C5799C8C 
+X-CRM114-Status: GOOD (  62.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,23 +104,305 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/18/23 12:19, Uwe Kleine-König wrote:
-> The .remove() callback for a platform driver returns an int which makes
-> many driver authors wrongly assume it's possible to do error handling by
-> returning an error code. However the value returned is ignored (apart
-> from emitting a warning) and this typically results in resource leaks.
-> To improve here there is a quest to make the remove callback return
-> void. In the first step of this quest all drivers are converted to
-> .remove_new() which already returns void. Eventually after all drivers
-> are converted, .remove_new() is renamed to .remove().
-> 
-> Trivially convert this driver from always returning zero in the remove
-> callback to the void returning variant.
-> 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
+On Fri, Sep 15, 2023 at 1:56=E2=80=AFAM Hans Verkuil <hverkuil-cisco@xs4all=
+.nl> wrote:
+>
+> On 15/09/2023 10:25, Yunfei Dong (=E8=91=A3=E4=BA=91=E9=A3=9E) wrote:
+> > Hi Hans & Nicolas,
+> >
+> > Thanks for your advice.
+> >
+> > On Tue, 2023-09-12 at 11:30 +0200, Hans Verkuil wrote:
+> >>
+> >> External email : Please do not click links or open attachments until
+> >> you have verified the sender or the content.
+> >>  Hi,
+> >>
+> >> On 9/11/23 17:54, Nicolas Dufresne wrote:
+> >>> Hi,
+> >>>
+> >>> Le lundi 11 septembre 2023 =C3=A0 20:59 +0800, Yunfei Dong a =C3=A9cr=
+it :
+> >>>> Setting secure mode flag to kernel when trying to play secure
+> >>
+> >> video,
+> >>>> then decoder driver will initialize tee related interface to
+> >>
+> >> support
+> >>>> svp.
+> >>>
+> >>>
+> >>> This is not what the patch is doing, please rework. This patch is
+> >>
+> >> an vendor API
+> >>> addition introducing V4L2_CID_MPEG_MTK_SET_SECURE_MODE. I should
+> >>
+> >> not have to
+> >>> read your patch to understand this.
+> >>>
+> >>>>
+> >>>> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> >>>> ---
+> >>>>  .../vcodec/decoder/mtk_vcodec_dec_stateless.c     | 15
+> >>
+> >> ++++++++++++++-
+> >>>>  drivers/media/v4l2-core/v4l2-ctrls-defs.c         |  5 +++++
+> >>>>  include/uapi/linux/v4l2-controls.h                |  1 +
+> >>>>  3 files changed, 20 insertions(+), 1 deletion(-)
+> >>>>
+> >>>> diff --git
+> >>
+> >> a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_state
+> >> less.c
+> >> b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_state
+> >> less.c
+> >>>> index d2b09ce9f1cf..a981178c25d9 100644
+> >>>> ---
+> >>
+> >> a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_state
+> >> less.c
+> >>>> +++
+> >>
+> >> b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_state
+> >> less.c
+> >>>> @@ -535,6 +535,17 @@ static int mtk_vdec_s_ctrl(struct v4l2_ctrl
+> >>
+> >> *ctrl)
+> >>>>  ctrl->val =3D mtk_dma_contig_get_secure_handle(ctx, ctrl->val);
+> >>>>  mtk_v4l2_vdec_dbg(3, ctx, "get secure handle: %d =3D> 0x%x",
+> >>
+> >> sec_fd, ctrl->val);
+> >>>>  break;
+> >>>> +case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:
+> >>>
+> >>> Stepping back a little and focusing on the API, what makes your
+> >>
+> >> driver so
+> >>> special that it should be the only one having a "secure mode" ? We
+> >>
+> >> are touching
+> >>> in gap in the media pipeline in Linux, and this should come with
+> >>
+> >> consideration
+> >>> of the global API.
+> >>>
+> >>> Why is this API better then let's say Google Android one, were they
+> >>
+> >> expose 2
+> >>> device nodes in their fork of the MFC driver (a secure and a non
+> >>
+> >> secure one) ?
+> >>
+> >> Perhaps it is a good idea to first post an RFC with an uAPI proposal
+> >> on how to
+> >> handle secure video. I suspect this isn't mediatek specific, other
+> >> SoCs with
+> >> tee support could use this as well.
+> >>
+> >> As Nicolas said, it's long known to be a gap in our media support, so
+> >> it is
+> >> really great that you started work on this, but you need to look at
+> >> this from
+> >> a more generic point-of-view, and not mediatek-specific.
+> >>
+> >
+> > Whether your have any advice about how to do a more generic driver to
+> > handle secure video playback?
+> >
+> > There are several kind of buffer: output queue buffer/capture queue
+> > buffer/working buffer.
+> >
+> > output and capture queue buffer: user space will call tee related
+> > interface to allocate secure handle. Will convert to secure handle with
+> > v4l2 framework, then send secure handle to optee-os.
+> >
+> > working buffer: calling dma_heap and dma_buf to get secure memory
+> > handle, then covert secure iova in optee-os.
+> >
+> > Using the same kernel driver for svp and non-svp playback, just the
+> > buffer type are different. Normal is iova and secure is secure handle.
+> >
+> > User driver will tell the kernel driver with CID control whether the
+> > current playback is svp or non-svp.
+>
+> My understanding is that when you switch to secure mode, the driver makes
+> some optee calls to set everything up. And userspace needs a way convert =
+a
+> dmabuf fd to a 'secure handle', which appears to be the DMA address of th=
+e
+> buffer. Who uses that handle?
 
-Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
--- 
-Florian
+The only user space usage for getting the 'secure handle' from an fd
+is when that memory is written to. This is done when the TEE decrypts
+the video contents. User space sends the encrypted video + 'secure
+handle' to the TEE, and the TEE decrypts the contents to the memory
+associated with the 'secure handle'. Then the 'secure handle' is
+passed into the TEE again with the v4l2 driver to use as the source
+for video decoding (but w/ v4l2, user space is passing in fds).
 
+>
+> In any case, using a control to switch to secure mode and using a control
+> to convert a dmabuf fd to a secure handle seems a poor choice to me.
+>
+> I was wondering if it wouldn't be better to create a new V4L2_MEMORY_ typ=
+e,
+> e.g. V4L2_MEMORY_DMABUF_SECURE (or perhaps _DMABUF_OPTEE). That ensures t=
+hat
+> once you create buffers for the first time, the driver can switch into se=
+cure
+> mode, and until all buffers are released again you know that the driver w=
+ill
+> stay in secure mode.
+
+Why do you think the control for setting secure mode is a poor choice?
+There's various places in the driver code where functionality changes
+based on being secure/non-secure mode, so this is very much a 'global'
+setting for the driver. It could be inferred based off a new memory
+type for the queues...which then sets that flag in the driver; but
+that seems like it would be more fragile and would require checking
+for incompatible output/capture memory types. I'm not against another
+way of doing this; but didn't see why you think the proposed method is
+a poor choice.
+
+>
+> For converting the dmabuf fd into a secure handle: a new ioctl similar to
+> VIDIOC_EXPBUF might be more suited for that.
+
+I actually think the best way for converting the dmabuf fd into a
+secure handle would be another ioctl in the dma-heap driver...since
+that's where the memory is actually allocated from. But this really
+depends on upstream maintainers and what they are comfortable with.
+
+>
+> Note that I am the first to admit that I have no experience with secure
+> video pipelines or optee-os, so I am looking at this purely from an uAPI
+> perspective.
+>
+> Regards,
+>
+>         Hans
+>
+> >
+> > Best Regards,
+> > Yunfei Dong
+> >> Regards,
+> >>
+> >> Hans
+> >>
+> >>>
+> >>> regards,
+> >>> Nicolas
+> >>>
+> >>> p.s. you forgot to document your control in the RST doc, please do
+> >>
+> >> in following
+> >>> release.
+> >>>
+> >>>> +ctx->is_svp_mode =3D ctrl->val;
+> >>>> +
+> >>>> +if (ctx->is_svp_mode) {
+> >>>> +ret =3D mtk_vcodec_dec_optee_open(ctx->dev->optee_private);
+> >>>> +if (ret)
+> >>>> +mtk_v4l2_vdec_err(ctx, "open secure mode failed.");
+> >>>> +else
+> >>>> +mtk_v4l2_vdec_dbg(3, ctx, "decoder in secure mode: %d", ctrl-
+> >>>
+> >>> val);
+> >>>> +}
+> >>>> +break;
+> >>>>  default:
+> >>>>  mtk_v4l2_vdec_dbg(3, ctx, "Not supported to set ctrl id:
+> >>>> 0x%x\n",
+> >>
+> >> hdr_ctrl->id);
+> >>>>  return ret;
+> >>>> @@ -573,7 +584,7 @@ static int mtk_vcodec_dec_ctrls_setup(struct
+> >>
+> >> mtk_vcodec_dec_ctx *ctx)
+> >>>>  unsigned int i;
+> >>>>  struct v4l2_ctrl *ctrl;
+> >>>>
+> >>>> -v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 1);
+> >>>> +v4l2_ctrl_handler_init(&ctx->ctrl_hdl, NUM_CTRLS + 2);
+> >>>>  if (ctx->ctrl_hdl.error) {
+> >>>>  mtk_v4l2_vdec_err(ctx, "v4l2_ctrl_handler_init failed\n");
+> >>>>  return ctx->ctrl_hdl.error;
+> >>>> @@ -592,6 +603,8 @@ static int mtk_vcodec_dec_ctrls_setup(struct
+> >>
+> >> mtk_vcodec_dec_ctx *ctx)
+> >>>>
+> >>>>  ctrl =3D v4l2_ctrl_new_std(&ctx->ctrl_hdl,
+> >>
+> >> &mtk_vcodec_dec_ctrl_ops,
+> >>>>   V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE, 0, 65535, 1, 0);
+> >>>> +ctrl =3D v4l2_ctrl_new_std(&ctx->ctrl_hdl,
+> >>
+> >> &mtk_vcodec_dec_ctrl_ops,
+> >>>> + V4L2_CID_MPEG_MTK_SET_SECURE_MODE, 0, 65535, 1, 0);
+> >>>>
+> >>>>  v4l2_ctrl_handler_setup(&ctx->ctrl_hdl);
+> >>>>
+> >>>> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+> >>
+> >> b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+> >>>> index d8cf01f76aab..a507045a3f30 100644
+> >>>> --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+> >>>> +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+> >>>> @@ -1042,6 +1042,7 @@ const char *v4l2_ctrl_get_name(u32 id)
+> >>>>  case V4L2_CID_MPEG_VIDEO_REF_NUMBER_FOR_PFRAMES:return
+> >>>> "Reference
+> >>
+> >> Frames for a P-Frame";
+> >>>>  case V4L2_CID_MPEG_VIDEO_PREPEND_SPSPPS_TO_IDR:return "Prepend
+> >>
+> >> SPS and PPS to IDR";
+> >>>>  case V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE:return "MediaTek
+> >>>> Decoder
+> >>
+> >> get secure handle";
+> >>>> +case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:return "MediaTek Decoder
+> >>
+> >> set secure mode";
+> >>>>
+> >>>>  /* AV1 controls */
+> >>>>  case V4L2_CID_MPEG_VIDEO_AV1_PROFILE:return "AV1 Profile";
+> >>>> @@ -1442,6 +1443,10 @@ void v4l2_ctrl_fill(u32 id, const char
+> >>
+> >> **name, enum v4l2_ctrl_type *type,
+> >>>>  *type =3D V4L2_CTRL_TYPE_INTEGER;
+> >>>>  *flags |=3D V4L2_CTRL_FLAG_WRITE_ONLY;
+> >>>>  break;
+> >>>> +case V4L2_CID_MPEG_MTK_SET_SECURE_MODE:
+> >>>> +*type =3D V4L2_CTRL_TYPE_INTEGER;
+> >>>> +*flags |=3D V4L2_CTRL_FLAG_WRITE_ONLY;
+> >>>> +break;
+> >>>>  case V4L2_CID_USER_CLASS:
+> >>>>  case V4L2_CID_CAMERA_CLASS:
+> >>>>  case V4L2_CID_CODEC_CLASS:
+> >>>> diff --git a/include/uapi/linux/v4l2-controls.h
+> >>
+> >> b/include/uapi/linux/v4l2-controls.h
+> >>>> index 7b3694985366..88e90d943e38 100644
+> >>>> --- a/include/uapi/linux/v4l2-controls.h
+> >>>> +++ b/include/uapi/linux/v4l2-controls.h
+> >>>> @@ -957,6 +957,7 @@ enum v4l2_mpeg_mfc51_video_force_frame_type {
+> >>>>  /*  MPEG-class control IDs specific to the MediaTek Decoder
+> >>
+> >> driver as defined by V4L2 */
+> >>>>  #define V4L2_CID_MPEG_MTK_BASE(V4L2_CTRL_CLASS_CODEC | 0x2000)
+> >>>>  #define
+> >>
+> >> V4L2_CID_MPEG_MTK_GET_SECURE_HANDLE(V4L2_CID_MPEG_MTK_BASE+8)
+> >>>> +#define
+> >>
+> >> V4L2_CID_MPEG_MTK_SET_SECURE_MODE(V4L2_CID_MPEG_MTK_BASE+9)
+> >>>>
+> >>>>  /*  Camera class control IDs */
+> >>>>
+>
+>
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
