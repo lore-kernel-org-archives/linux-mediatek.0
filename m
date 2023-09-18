@@ -4,71 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B015CCD37B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 07:54:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3359C46CA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 07:59:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zj37pbgTvY4CEdHfGjO1xzlgwLH88SbfVMtsq7SGniA=; b=tOORv6hzMJUIdtqLAIvc5anayU
-	DQW3OwoWs6X3Cc2TPxNJaR5JhnfoYBpOY4UEvuuByQut2Z3H0SoOBqC4AKPATiX3kIuUrb2xMnnbg
-	gKuV3Yzp9ovVfou/VbWlF+o/IXCUNo7BAm9Nagbq+wSpy12oiD4x5ginMk26z7lLNSEVv3LcOt+Lv
-	+nl+1WxB0V18ECsKjFLKEDYdjU3rqGlrRwLNAwW9BavTacOqPImtKnIvZp7BoD74TOt6p4Uh5Z2iI
-	L3o/NzndorMmoHVM86r3xlu9Nz6HgXvENuiuRVQXUT/6/HRFVgMowO9wIj7SxMsqyqEecOuYNoXGs
-	Ag5SG03w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=A60OSmANdEj1qdlQAPPS0Wy4M2HCzCwvUt3i18ClpfU=; b=r31Ya4DuaN5/39MlpvfuKA2gc+
+	KwxjeKSqimS1QTxGlghAR78jSgMg2uA73CKaMgx4eR4OC0RkzeO1X2eRzcmVlZENo+Y7zsAsp6ZMC
+	0U+c9yJX4uLSgKhsOmJBEjPNVB94iplG0aT683P4pa3oHbY6tL6ZmVyfEcMBxspKbj40s7a0P3eyn
+	6lvu1vgmi2YjwYPP4rbjMVuEPqz5dJg897QWgYUsMMHMW8aGOKmOE3GUbiYXMsS29yzETd/KKvsq6
+	q9APpzzV+NU6FgjlaB6CSn3gGxymWr38PxzO1hGA32phaAaBGmMKJobBYIetZ7wlUyTzO6Gag9gPQ
+	IT84kSJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qi95T-00Emx3-11;
-	Mon, 18 Sep 2023 07:54:31 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1qi9AQ-00EnOr-0Y;
+	Mon, 18 Sep 2023 07:59:38 +0000
+Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qi95Q-00EmuE-1W
-	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Sep 2023 07:54:29 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 7157ACE0CE0;
-	Mon, 18 Sep 2023 07:54:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A7D4C433CC;
-	Mon, 18 Sep 2023 07:54:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695023664;
-	bh=a3re9QgHeOZBxzT5bdJ5U4VTTN31mPT7AHtXRfmJaV4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=moI/Gs7NvfV40COVsr1CU7NanXM6KqQR3MYY9K5GVkVb1+7T+hybfkstskwBIKfQE
-	 oV0LzvIFSYuXEu/HGaAWJ6ruv2R4UqUtv/T++NgGCaJYD2PDmzhBbZQ+5lZ7GMV6qg
-	 UNxAGuUREXkd6NYrP19SDx5Kmtlgiqv5+DeT+p0Re4kvuHLcTqluLEFtgvUQK8yUmH
-	 pWSR4J5+GP66QMRcpaP7SJVi5DBw003QHNmweanr1xdT1m/6JyO1CY41vEMzJWlOcn
-	 5fpyG2aJhe8H2kF4KAR7jZuszQL9FsaT1H7j0eLvHlnE0c+OCEaQDC6mlmY/CK4fQl
-	 9w0iq/MLGVv4w==
-Date: Mon, 18 Sep 2023 09:54:20 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Simon Horman <horms@kernel.org>
-Cc: netdev@vger.kernel.org, lorenzo.bianconi@redhat.com, nbd@nbd.name,
-	john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, daniel@makrotopia.org,
-	linux-mediatek@lists.infradead.org, sujuan.chen@mediatek.com,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next 13/15] net: ethernet: mtk_wed: introduce hw_rro
- support for MT7988
-Message-ID: <ZQgCLIUUbX51eV+R@lore-desk>
-References: <cover.1694701767.git.lorenzo@kernel.org>
- <da27f7333fa31808ceae581d9bef5030c6072f33.1694701767.git.lorenzo@kernel.org>
- <20230917084728.GI1125562@kernel.org>
+	id 1qi9AM-00EnNz-2t;
+	Mon, 18 Sep 2023 07:59:36 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 7888E20003;
+	Mon, 18 Sep 2023 07:59:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com; s=gm1;
+	t=1695023968;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=A60OSmANdEj1qdlQAPPS0Wy4M2HCzCwvUt3i18ClpfU=;
+	b=WoNKxA2JwenWUdbj4rcD0ooJY/T0jemtRMr1pLi0jbUxp0obE6v/QGaZ25JniMN8dnv4Bm
+	yKcjINMmqKJ0R9bR9UmSie4I1NGz/xvHmzSlvuNVkceS5+O5SlgPkVybsiYVI55mc58NTF
+	A8Td2/fNDiMsSUDfbpDoJ9YHNvXrL6AQGw5JcTuVZ29A/cu+djArUiUBi5I3GRRyX4kBIH
+	VlvaJb1k4aZxm7fOEDAoix1KashvQGL+qDZuaH+KaXN+4TAxtK6oJqIrY+7Bmy9lt/wNm8
+	q8AKShrI4Za+QHqbX5sHPuQitldi3hXGADn/9e5XS7nTvv2jI2SYcmJtb13sVg==
+From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+To: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mips@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] mips: dts: ralink: mt7621: rename to GnuBee GB-PC1 and GnuBee GB-PC2
+Date: Mon, 18 Sep 2023 10:59:15 +0300
+Message-Id: <20230918075915.87029-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="STv4kEpNkY3aM+1s"
-Content-Disposition: inline
-In-Reply-To: <20230917084728.GI1125562@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_005428_699101_6D103764 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20230918_005935_083877_560EDF48 
+X-CRM114-Status: GOOD (  10.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,53 +78,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Rename GB-PC1 to GnuBee GB-PC1, and GB-PC2 to GnuBee GB-PC2 to include
+brand and model name.
 
---STv4kEpNkY3aM+1s
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+---
+ arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts | 2 +-
+ arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-[...]
-> > +
-> > +			buf +=3D MTK_WED_PAGE_BUF_SIZE;
->=20
-> clang-16 W=3D1 warns that buf is set but otherwise unused in this functio=
-n.
+diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
+index 129b6710b699..f9c262cc2e96 100644
+--- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
++++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
+@@ -8,7 +8,7 @@
+ 
+ / {
+ 	compatible = "gnubee,gb-pc1", "mediatek,mt7621-soc";
+-	model = "GB-PC1";
++	model = "GnuBee GB-PC1";
+ 
+ 	memory@0 {
+ 		device_type = "memory";
+diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
+index f810cd10f4f4..b281e13f22ed 100644
+--- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
++++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
+@@ -8,7 +8,7 @@
+ 
+ / {
+ 	compatible = "gnubee,gb-pc2", "mediatek,mt7621-soc";
+-	model = "GB-PC2";
++	model = "GnuBee GB-PC2";
+ 
+ 	memory@0 {
+ 		device_type = "memory";
+-- 
+2.39.2
 
-Hi Simon,
-
-ack, I will fix it.
-
-Regards,
-Lorenzo
-
->=20
-> > +			buf_phys +=3D MTK_WED_PAGE_BUF_SIZE;
-> > +		}
-> > +
-> > +		dma_sync_single_for_device(dev->hw->dev, page_phys, PAGE_SIZE,
-> > +					   DMA_BIDIRECTIONAL);
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> >  static int
-> >  mtk_wed_rx_buffer_alloc(struct mtk_wed_device *dev)
-> >  {
->=20
-> ...
-
---STv4kEpNkY3aM+1s
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZQgCLAAKCRA6cBh0uS2t
-rHLJAP9dn/+SX9tYlfHutMyHQJiV8Khmb/l/EFGbcIin4O+DtgD+LdGGInL4edXQ
-VyKXBVc/lNBPzFUkLxDoUHUzmSJ4Cgw=
-=B0aa
------END PGP SIGNATURE-----
-
---STv4kEpNkY3aM+1s--
 
