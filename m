@@ -4,90 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1607FC46CA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 08:43:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEBEBCD37B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 08:48:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jEarBmJax9GgjlJYeMZIJu2uxv9egCgOzSwzTZYwoY4=; b=IjRK3l76Z4kN30jaPKlJch0GQt
-	Bf3jIIwg4kBiPm5NE8Mxb3otX6owu4may5fexcDgqYPOZ3v+xqaemUk7p03bn72Q6/Fsa88OuWeeb
-	0wah9/A7gCUbLS39BITgpcJD/LQp290x7X1eSF7J0YDc8yiEcMwT84UJFQgG/mWCTRFDtffuemMor
-	Oucu6gBCKOtCoTeiP11vwcE4+01YslIM1xeX7tyiZR4X9xjw6AohMrAQkKPpi69VJRB7GggTt115h
-	/GJHF6kKfyJcGDxagzfX2UjnXIReBaIjKbnWGKsRr94/n9fgtt6hOYfOzCHZLaNpwRUqPOOqgeMhh
-	vWa88Rlw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fKPac6zE+fNhvn7oLgB9Jx+SWpnwgIlv4ZYdieivis4=; b=ZM7CGWuzq9dr3GDvxGdFXaOGY8
+	a7F/ftrTe7trWBWYnaT722k5wTgOLxR/CBBx/ZsjvBxFOJ6Lw3KOTtuQTDWarm8f/iu7F/8Ih2tK5
+	FoEZFYZoNihQs32xztm/uF5RXdno8EEGHKagMAfS6eYoniVQtR/HXjYFhZafi30ly8rpa3TA0H7gZ
+	ZkhtrNQ4Rn/jeUzzULu015pIrOv+PKVEOuvRYf3iaGS8xRkme6uItdwDInzzpDHbKjAWQHCztdsbW
+	I2aHcgoG4wtTNaDKTlsUveYqQ7IzJiTDTC3CgzJnN2hCgvDM/0AyKyeHA+hU3aUKFvW9J2WtoeRFG
+	2mIIVbbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qi9qg-00Es75-2Z;
-	Mon, 18 Sep 2023 08:43:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1qi9vG-00EsjS-2W;
+	Mon, 18 Sep 2023 08:48:02 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qi9qF-00Ernw-1z;
-	Mon, 18 Sep 2023 08:42:54 +0000
-X-UUID: 57cf001655ff11ee86758d4a7c00f3a0-20230918
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=jEarBmJax9GgjlJYeMZIJu2uxv9egCgOzSwzTZYwoY4=;
-	b=j1GYkzTDQsi2BALG5hL0svk2pB8tQ+n8zyzy0N1AO2/Z+KJLibeBUfOoFVtT8ceyJoX+Zey2BJ8oCOgLAQwASkjBrm3ypJd3CRQ0zUAAjkKsmhadG5AlvGBivxdbOhddf7oPD5wnjdvC6qGsytB8s2e4qMQFDKKfTsv42X8QXMc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:9cd30d4f-e3b8-4946-bbd2-45f021c15b1e,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:0ad78a4,CLOUDID:b35527c3-1e57-4345-9d31-31ad9818b39f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
-	DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 57cf001655ff11ee86758d4a7c00f3a0-20230918
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <shawn.sung@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 211375091; Mon, 18 Sep 2023 01:42:47 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 18 Sep 2023 16:42:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 18 Sep 2023 16:42:11 +0800
-From: Hsiao Chien Sung <shawn.sung@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>,
-	"Philipp Zabel" <p.zabel@pengutronix.de>, Chen-Yu Tsai <wenst@chromium.org>,
-	CK Hu <ck.hu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, Hsiao Chien Sung
-	<shawn.sung@mediatek.com>
-Subject: [PATCH v2 07/11] drm/mediatek: Support alpha blending in VDOSYS0
-Date: Mon, 18 Sep 2023 16:42:03 +0800
-Message-ID: <20230918084207.23604-8-shawn.sung@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20230918084207.23604-1-shawn.sung@mediatek.com>
-References: <20230918084207.23604-1-shawn.sung@mediatek.com>
+	id 1qi9vB-00EsiF-13;
+	Mon, 18 Sep 2023 08:48:00 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4750366071A0;
+	Mon, 18 Sep 2023 09:47:55 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1695026875;
+	bh=PQUHws8Z1w+TcF0jCRyePlr50AeNkNWESN1De6xP8dY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cLEYwxEiW2Z8laabejsz3E+oq39RdP0AVM6njg/u5/bbU+4eLVyrUT9RPaweN01CA
+	 Pb7vMLBcp/lm5f0rhZ9kNADin2MewwuuMpDZmRNTmIca4b720JCsbPI3d5D0mRNZan
+	 AUGUyZn00oQmQe2i6Dt/ppeU3eu50jjq4klAD85PWwu4+cW5vSg+wK7KVgxQilm+uf
+	 LzZ5927BaNwAdV4r6hQbNEB7VtyiSadwF4YHvvS9UL7XElzBhPjD76fa9m50MS9+oA
+	 m4tnB2kBGJD/gpspLH8tKOQ5kidqMxVSmaT40X4bhX0zD1RqI+QA3CtKz8KkDGDPz3
+	 ggIPipT5GMKcA==
+Message-ID: <9acc8d99-e3db-3df8-4051-21d95450b28d@collabora.com>
+Date: Mon, 18 Sep 2023 10:47:53 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--11.236600-8.000000
-X-TMASE-MatchedRID: GlUfE5FNQQz2fv0LTPfvM5JAa1C/+FcuEbxKVXd70tWU8ftiyKjZrRsY
-	DextMHGuGJd2qe6nWQsaTIVsbS1pG+F/B1jEjV+6y7TSWcbz49b/lBG+uXYJkNchlMhSt6FexEs
-	GD8geUL38aLTyW2a3YkhxRggzEU3FMH15eekLeUiHZXNSWjgdU4ED+PNzPecBRQ0dAChl/lz8/L
-	2o6LnOlxWt9a3ryuo3lHJpPX3ZHleyRDt3x3st943NgkEqAN0RpwnFZnn+VHwHBp+1KU23QYFaK
-	sEtPT2WFm9c8s2OWMvrSFeO0C8F5I9oUcx9VMLgFEUknJ/kEl7dB/CxWTRRu25FeHtsUoHuPmT0
-	js3FXVC5lpKwiuLw5JGumwfIFp5jAUfAWyyQaUW+68HqACCvKA==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--11.236600-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 1E132E282DFC25ECB4481593C22B7D42C381A2DE4C4CA4532EE3B8CB85B606702000:8
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH v2 3/3] dt-bindings: hwinfo: Add mtk-socinfo driver
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ William-tw Lin <william-tw.lin@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Kevin Hilman <khilman@kernel.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20230915152607.18116-1-william-tw.lin@mediatek.com>
+ <20230915152607.18116-4-william-tw.lin@mediatek.com>
+ <3e7bc476-ffc7-fb07-8e64-246427da736c@linaro.org>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <3e7bc476-ffc7-fb07-8e64-246427da736c@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_014251_713234_6C4B065C 
-X-CRM114-Status: GOOD (  19.99  )
+X-CRM114-CacheID: sfid-20230918_014757_500680_71C04A95 
+X-CRM114-Status: GOOD (  21.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,338 +83,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support premultiply and coverage alpha blending modes.
+Il 17/09/23 10:26, Krzysztof Kozlowski ha scritto:
+> On 15/09/2023 17:26, William-tw Lin wrote:
+>> dt-binding documentation for mtk-socinfo driver.
+> 
+> Here and in subject, drop driver and instead descrbe hardware.
+> 
+>> mtk-socinfo driver provides SoC-related information.
+>> Such information includes manufacturer information, SoC name,
+>> SoC segment name, and SoC marketing name.
+>>
+>> Signed-off-by: William-tw Lin <william-tw.lin@mediatek.com>
+>> ---
+>>   .../bindings/hwinfo/mtk-socinfo.yaml          | 48 +++++++++++++++++++
+>>   1 file changed, 48 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
+>>
+>> diff --git a/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml b/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
+>> new file mode 100644
+>> index 000000000000..74f03f1dc404
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/hwinfo/mtk-socinfo.yaml
+> 
+> Nothing improved.
+> 
+> This is a friendly reminder during the review process.
+> 
+> It seems my previous comments were not fully addressed. Maybe my
+> feedback got lost between the quotes, maybe you just forgot to apply it.
+> Please go back to the previous discussion and either implement all
+> requested changes or keep discussing them.
+> 
+> Thank you.
+> 
+>> @@ -0,0 +1,48 @@
+>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/hwinfo/mtk-socinfo.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: MediaTek SoC ChipID
+>> +
+>> +maintainers:
+>> +  - William Lin <william-tw.lin@mediatek.com>
+>> +  - Matthias Brugger <matthias.bgg@gmail.com>
+>> +  - Kevin Hilman <khilman@kernel.org>
+>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> +
+>> +description:
+>> +  MediaTek SoCs store various product information in eFuses, including
+>> +  Chip ID and Revision fields, usable to identify the manufacturer,
+>> +  SoC version, plus segment and marketing names.
+>> +
+>> +properties:
+>> +  compatible:
+>> +    const: mediatek,socinfo
+> 
+> What happened to compatibles? No, this is just wrong and no explained.
+> You ignored other comments as well. Really, that's not the way to go.
+> 
 
-Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 202 +++++++++++++++++++++---
- 1 file changed, 178 insertions(+), 24 deletions(-)
+Practically, having different compatibles for each SoC is not needed, as
+the only thing that changes between SoCs is the eFuse(s) that you read to
+get the information - and that's all.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 2bffe4245466..8c58b204992e 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -30,6 +30,7 @@
- #define OVL_LAYER_SMI_ID_EN				BIT(0)
- #define OVL_BGCLR_SEL_IN				BIT(2)
- #define OVL_LAYER_AFBC_EN(n)				BIT(4+n)
-+#define OVL_OUTPUT_CLAMP				BIT(26)
- #define DISP_REG_OVL_ROI_BGCLR			0x0028
- #define DISP_REG_OVL_SRC_CON			0x002c
- #define DISP_REG_OVL_CON(n)			(0x0030 + 0x20 * (n))
-@@ -38,10 +39,28 @@
- #define DISP_REG_OVL_PITCH_MSB(n)		(0x0040 + 0x20 * (n))
- #define OVL_PITCH_MSB_2ND_SUBBUF			BIT(16)
- #define DISP_REG_OVL_PITCH(n)			(0x0044 + 0x20 * (n))
-+#define OVL_CONST_BLEND					BIT(28)
- #define DISP_REG_OVL_RDMA_CTRL(n)		(0x00c0 + 0x20 * (n))
- #define DISP_REG_OVL_RDMA_GMC(n)		(0x00c8 + 0x20 * (n))
- #define DISP_REG_OVL_ADDR_MT2701		0x0040
- #define DISP_REG_OVL_CLRFMT_EXT			0x02D0
-+#define DISP_REG_OVL_CLRFMT_EXT1		0x02D8
-+#define OVL_CLRFMT_EXT1_CSC_EN(n)			(1 << (((n) * 4) + 1))
-+#define DISP_REG_OVL_Y2R_PARA_R0(n)		(0x0134 + 0x28 * (n))
-+#define OVL_Y2R_PARA_C_CF_RMY				(GENMASK(14, 0))
-+#define DISP_REG_OVL_Y2R_PARA_G0(n)		(0x013c + 0x28 * (n))
-+#define OVL_Y2R_PARA_C_CF_GMU				(GENMASK(30, 16))
-+#define DISP_REG_OVL_Y2R_PARA_B1(n)		(0x0148 + 0x28 * (n))
-+#define OVL_Y2R_PARA_C_CF_BMV				(GENMASK(14, 0))
-+#define DISP_REG_OVL_Y2R_PARA_YUV_A_0(n)	(0x014c + 0x28 * (n))
-+#define OVL_Y2R_PARA_C_CF_YA				(GENMASK(10, 0))
-+#define OVL_Y2R_PARA_C_CF_UA				(GENMASK(26, 16))
-+#define DISP_REG_OVL_Y2R_PARA_YUV_A_1(n)	(0x0150 + 0x28 * (n))
-+#define OVL_Y2R_PARA_C_CF_VA				(GENMASK(10, 0))
-+#define DISP_REG_OVL_Y2R_PRE_ADD2(n)		(0x0154 + 0x28 * (n))
-+#define DISP_REG_OVL_R2R_R0(n)			(0x0500 + 0x40 * (n))
-+#define DISP_REG_OVL_R2R_G1(n)			(0x0510 + 0x40 * (n))
-+#define DISP_REG_OVL_R2R_B2(n)			(0x0520 + 0x40 * (n))
- #define DISP_REG_OVL_ADDR_MT8173		0x0f40
- #define DISP_REG_OVL_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n))
- #define DISP_REG_OVL_HDR_ADDR(ovl, n)		((ovl)->data->addr + 0x20 * (n) + 0x04)
-@@ -51,13 +70,19 @@
- #define GMC_THRESHOLD_HIGH	((1 << GMC_THRESHOLD_BITS) / 4)
- #define GMC_THRESHOLD_LOW	((1 << GMC_THRESHOLD_BITS) / 8)
- 
--#define OVL_CON_BYTE_SWAP	BIT(24)
--#define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
--#define OVL_CON_CLRFMT_RGB	(1 << 12)
--#define OVL_CON_CLRFMT_RGBA8888	(2 << 12)
--#define OVL_CON_CLRFMT_ARGB8888	(3 << 12)
--#define OVL_CON_CLRFMT_UYVY	(4 << 12)
--#define OVL_CON_CLRFMT_YUYV	(5 << 12)
-+#define OVL_CON_CLRFMT_MAN		BIT(23)
-+#define OVL_CON_BYTE_SWAP		BIT(24)
-+#define OVL_CON_RGB_SWAP		BIT(25)
-+#define OVL_CON_MTX_AUTO_DIS		BIT(26)
-+#define OVL_CON_MTX_EN			BIT(27)
-+#define OVL_CON_CLRFMT_RGB		(1 << 12)
-+#define OVL_CON_CLRFMT_RGBA8888		(2 << 12)
-+#define OVL_CON_CLRFMT_ARGB8888		(3 << 12)
-+#define OVL_CON_CLRFMT_PARGB8888	(OVL_CON_CLRFMT_ARGB8888 | OVL_CON_CLRFMT_MAN)
-+#define OVL_CON_CLRFMT_UYVY		(4 << 12)
-+#define OVL_CON_CLRFMT_YUYV		(5 << 12)
-+#define OVL_CON_MTX_YUV_TO_RGB		(6 << 16)
-+#define OVL_CON_MTX_PROGRAMMABLE	(8 << 16)
- #define OVL_CON_CLRFMT_RGB565(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
- 					0 : OVL_CON_CLRFMT_RGB)
- #define OVL_CON_CLRFMT_RGB888(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
-@@ -71,6 +96,22 @@
- #define	OVL_CON_VIRT_FLIP	BIT(9)
- #define	OVL_CON_HORZ_FLIP	BIT(10)
- 
-+static inline bool is_10bit_rgb(u32 fmt)
-+{
-+	switch (fmt) {
-+	case DRM_FORMAT_XRGB2101010:
-+	case DRM_FORMAT_ARGB2101010:
-+	case DRM_FORMAT_RGBX1010102:
-+	case DRM_FORMAT_RGBA1010102:
-+	case DRM_FORMAT_XBGR2101010:
-+	case DRM_FORMAT_ABGR2101010:
-+	case DRM_FORMAT_BGRX1010102:
-+	case DRM_FORMAT_BGRA1010102:
-+		return true;
-+	}
-+	return false;
-+}
-+
- static const u32 mt8173_formats[] = {
- 	DRM_FORMAT_XRGB8888,
- 	DRM_FORMAT_ARGB8888,
-@@ -88,12 +129,20 @@ static const u32 mt8173_formats[] = {
- static const u32 mt8195_formats[] = {
- 	DRM_FORMAT_XRGB8888,
- 	DRM_FORMAT_ARGB8888,
-+	DRM_FORMAT_XRGB2101010,
- 	DRM_FORMAT_ARGB2101010,
- 	DRM_FORMAT_BGRX8888,
- 	DRM_FORMAT_BGRA8888,
-+	DRM_FORMAT_BGRX1010102,
- 	DRM_FORMAT_BGRA1010102,
- 	DRM_FORMAT_ABGR8888,
- 	DRM_FORMAT_XBGR8888,
-+	DRM_FORMAT_XBGR2101010,
-+	DRM_FORMAT_ABGR2101010,
-+	DRM_FORMAT_RGBX8888,
-+	DRM_FORMAT_RGBA8888,
-+	DRM_FORMAT_RGBX1010102,
-+	DRM_FORMAT_RGBA1010102,
- 	DRM_FORMAT_RGB888,
- 	DRM_FORMAT_BGR888,
- 	DRM_FORMAT_RGB565,
-@@ -207,14 +256,19 @@ void mtk_ovl_clk_disable(struct device *dev)
- void mtk_ovl_start(struct device *dev)
- {
- 	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
-+	unsigned int reg = readl(ovl->regs + DISP_REG_OVL_DATAPATH_CON);
- 
--	if (ovl->data->smi_id_en) {
--		unsigned int reg;
-+	if (ovl->data->smi_id_en)
-+		reg |= OVL_LAYER_SMI_ID_EN;
- 
--		reg = readl(ovl->regs + DISP_REG_OVL_DATAPATH_CON);
--		reg = reg | OVL_LAYER_SMI_ID_EN;
--		writel_relaxed(reg, ovl->regs + DISP_REG_OVL_DATAPATH_CON);
--	}
-+	/*
-+	 * clamp output to 10 bits per channel
-+	 * overflow and underflow usually happens when doing Y2R conversion
-+	 * this bit should be always enable to avoid this kind of situation
-+	 */
-+	reg |= OVL_OUTPUT_CLAMP;
-+
-+	writel_relaxed(reg, ovl->regs + DISP_REG_OVL_DATAPATH_CON);
- 	writel_relaxed(0x1, ovl->regs + DISP_REG_OVL_EN);
- }
- 
-@@ -253,9 +307,7 @@ static void mtk_ovl_set_bit_depth(struct device *dev, int idx, u32 format,
- 	reg = readl(ovl->regs + DISP_REG_OVL_CLRFMT_EXT);
- 	reg &= ~OVL_CON_CLRFMT_BIT_DEPTH_MASK(idx);
- 
--	if (format == DRM_FORMAT_RGBA1010102 ||
--	    format == DRM_FORMAT_BGRA1010102 ||
--	    format == DRM_FORMAT_ARGB2101010)
-+	if (is_10bit_rgb(format))
- 		bit_depth = OVL_CON_CLRFMT_10_BIT;
- 
- 	reg |= OVL_CON_CLRFMT_BIT_DEPTH(bit_depth, idx);
-@@ -273,7 +325,8 @@ void mtk_ovl_config(struct device *dev, unsigned int w,
- 	if (w != 0 && h != 0)
- 		mtk_ddp_write_relaxed(cmdq_pkt, h << 16 | w, &ovl->cmdq_reg, ovl->regs,
- 				      DISP_REG_OVL_ROI_SIZE);
--	mtk_ddp_write_relaxed(cmdq_pkt, 0x0, &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_ROI_BGCLR);
-+	mtk_ddp_write_relaxed(cmdq_pkt, 0xff000000, &ovl->cmdq_reg, ovl->regs,
-+			      DISP_REG_OVL_ROI_BGCLR);
- 
- 	mtk_ddp_write(cmdq_pkt, 0x1, &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_RST);
- 	mtk_ddp_write(cmdq_pkt, 0x0, &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_RST);
-@@ -356,7 +409,8 @@ void mtk_ovl_layer_off(struct device *dev, unsigned int idx,
- 		      DISP_REG_OVL_RDMA_CTRL(idx));
- }
- 
--static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
-+static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt,
-+				    unsigned int blend_mode)
- {
- 	/* The return value in switch "MEM_MODE_INPUT_FORMAT_XXX"
- 	 * is defined in mediatek HW data sheet.
-@@ -375,17 +429,37 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
- 		return OVL_CON_CLRFMT_RGB888(ovl) | OVL_CON_BYTE_SWAP;
- 	case DRM_FORMAT_RGBX8888:
- 	case DRM_FORMAT_RGBA8888:
-+		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
-+		       OVL_CON_CLRFMT_ARGB8888 :
-+		       OVL_CON_CLRFMT_PARGB8888;
-+	case DRM_FORMAT_RGBX1010102:
-+	case DRM_FORMAT_RGBA1010102:
- 		return OVL_CON_CLRFMT_ARGB8888;
- 	case DRM_FORMAT_BGRX8888:
- 	case DRM_FORMAT_BGRA8888:
-+		return OVL_CON_BYTE_SWAP |
-+		       (blend_mode == DRM_MODE_BLEND_COVERAGE ?
-+		       OVL_CON_CLRFMT_ARGB8888 :
-+		       OVL_CON_CLRFMT_PARGB8888);
-+	case DRM_FORMAT_BGRX1010102:
- 	case DRM_FORMAT_BGRA1010102:
- 		return OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP;
- 	case DRM_FORMAT_XRGB8888:
- 	case DRM_FORMAT_ARGB8888:
-+		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
-+		       OVL_CON_CLRFMT_RGBA8888 :
-+		       OVL_CON_CLRFMT_PARGB8888;
-+	case DRM_FORMAT_XRGB2101010:
- 	case DRM_FORMAT_ARGB2101010:
- 		return OVL_CON_CLRFMT_RGBA8888;
- 	case DRM_FORMAT_XBGR8888:
- 	case DRM_FORMAT_ABGR8888:
-+		return OVL_CON_RGB_SWAP |
-+		       (blend_mode == DRM_MODE_BLEND_COVERAGE ?
-+		       OVL_CON_CLRFMT_RGBA8888 :
-+		       OVL_CON_CLRFMT_PARGB8888);
-+	case DRM_FORMAT_XBGR2101010:
-+	case DRM_FORMAT_ABGR2101010:
- 		return OVL_CON_CLRFMT_RGBA8888 | OVL_CON_BYTE_SWAP;
- 	case DRM_FORMAT_UYVY:
- 		return OVL_CON_CLRFMT_UYVY | OVL_CON_MTX_YUV_TO_RGB;
-@@ -407,6 +481,8 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 	unsigned int fmt = pending->format;
- 	unsigned int offset = (pending->y << 16) | pending->x;
- 	unsigned int src_size = (pending->height << 16) | pending->width;
-+	unsigned int blend_mode = state->base.pixel_blend_mode;
-+	unsigned int ignore_pixel_alpha = 0;
- 	unsigned int con;
- 	bool is_afbc = pending->modifier != DRM_FORMAT_MOD_LINEAR;
- 	union overlay_pitch {
-@@ -419,14 +495,92 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 
- 	overlay_pitch.pitch = pitch;
- 
--	if (!pending->enable) {
-+	if (!pending->enable || !pending->width || !pending->height) {
- 		mtk_ovl_layer_off(dev, idx, cmdq_pkt);
- 		return;
- 	}
- 
--	con = ovl_fmt_convert(ovl, fmt);
--	if (state->base.fb && state->base.fb->format->has_alpha)
--		con |= OVL_CON_AEN | OVL_CON_ALPHA;
-+	con = ovl_fmt_convert(ovl, fmt, blend_mode);
-+	if (state->base.fb) {
-+		con |= OVL_CON_AEN;
-+		con |= state->base.alpha & 0xff;
-+	}
-+
-+	if (blend_mode == DRM_MODE_BLEND_PIXEL_NONE ||
-+	    (state->base.fb && !state->base.fb->format->has_alpha))
-+		ignore_pixel_alpha = OVL_CONST_BLEND;
-+
-+	/* need to do Y2R and R2R to reduce 10bit data to 8bit for CRC calculation */
-+	if (ovl->data->supports_clrfmt_ext) {
-+		u32 y2r_coef = 0, y2r_offset = 0, r2r_coef = 0, csc_en = 0;
-+
-+		if (is_10bit_rgb(fmt)) {
-+			con |= OVL_CON_MTX_AUTO_DIS | OVL_CON_MTX_EN | OVL_CON_MTX_PROGRAMMABLE;
-+
-+			/*
-+			 * Y2R coef setting
-+			 * bit 13 is 2^1, bit 12 is 2^0, bit 11 is 2^-1,
-+			 * bit 10 is 2^-2 = 0.25
-+			 */
-+			y2r_coef = BIT(10);
-+
-+			/* -1 in 10bit */
-+			y2r_offset = GENMASK(10, 0) - 1;
-+
-+			/*
-+			 * R2R coef setting
-+			 * bit 19 is 2^1, bit 18 is 2^0, bit 17 is 2^-1,
-+			 * bit 20 is 2^2 = 4
-+			 */
-+			r2r_coef = BIT(20);
-+
-+			/* CSC_EN is for R2R */
-+			csc_en = OVL_CLRFMT_EXT1_CSC_EN(idx);
-+
-+			/*
-+			 * 1. YUV input data - 1 and shift right for 2 bits to remove it
-+			 * [R']   [0.25    0    0]   [Y in - 1]
-+			 * [G'] = [   0 0.25    0] * [U in - 1]
-+			 * [B']   [   0    0 0.25]   [V in - 1]
-+			 *
-+			 * 2. shift left for 2 bit letting the last 2 bits become 0
-+			 * [R out]   [ 4  0  0]   [R']
-+			 * [G out] = [ 0  4  0] * [G']
-+			 * [B out]   [ 0  0  4]   [B']
-+			 */
-+		}
-+
-+		mtk_ddp_write_mask(cmdq_pkt, y2r_coef,
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_Y2R_PARA_R0(idx),
-+				   OVL_Y2R_PARA_C_CF_RMY);
-+		mtk_ddp_write_mask(cmdq_pkt, (y2r_coef << 16),
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_Y2R_PARA_G0(idx),
-+				   OVL_Y2R_PARA_C_CF_GMU);
-+		mtk_ddp_write_mask(cmdq_pkt, y2r_coef,
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_Y2R_PARA_B1(idx),
-+				   OVL_Y2R_PARA_C_CF_BMV);
-+
-+		mtk_ddp_write_mask(cmdq_pkt, y2r_offset,
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_Y2R_PARA_YUV_A_0(idx),
-+				   OVL_Y2R_PARA_C_CF_YA);
-+		mtk_ddp_write_mask(cmdq_pkt, (y2r_offset << 16),
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_Y2R_PARA_YUV_A_0(idx),
-+				   OVL_Y2R_PARA_C_CF_UA);
-+		mtk_ddp_write_mask(cmdq_pkt, y2r_offset,
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_Y2R_PARA_YUV_A_1(idx),
-+				   OVL_Y2R_PARA_C_CF_VA);
-+
-+		mtk_ddp_write_relaxed(cmdq_pkt, r2r_coef,
-+				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_R2R_R0(idx));
-+		mtk_ddp_write_relaxed(cmdq_pkt, r2r_coef,
-+				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_R2R_G1(idx));
-+		mtk_ddp_write_relaxed(cmdq_pkt, r2r_coef,
-+				      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_R2R_B2(idx));
-+
-+		mtk_ddp_write_mask(cmdq_pkt, csc_en,
-+				   &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_CLRFMT_EXT1,
-+				   OVL_CLRFMT_EXT1_CSC_EN(idx));
-+	}
- 
- 	if (pending->rotation & DRM_MODE_REFLECT_Y) {
- 		con |= OVL_CON_VIRT_FLIP;
-@@ -443,8 +597,8 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 
- 	mtk_ddp_write_relaxed(cmdq_pkt, con, &ovl->cmdq_reg, ovl->regs,
- 			      DISP_REG_OVL_CON(idx));
--	mtk_ddp_write_relaxed(cmdq_pkt, overlay_pitch.split_pitch.lsb, &ovl->cmdq_reg, ovl->regs,
--			      DISP_REG_OVL_PITCH(idx));
-+	mtk_ddp_write_relaxed(cmdq_pkt, overlay_pitch.split_pitch.lsb | ignore_pixel_alpha,
-+			      &ovl->cmdq_reg, ovl->regs, DISP_REG_OVL_PITCH(idx));
- 	mtk_ddp_write_relaxed(cmdq_pkt, src_size, &ovl->cmdq_reg, ovl->regs,
- 			      DISP_REG_OVL_SRC_SIZE(idx));
- 	mtk_ddp_write_relaxed(cmdq_pkt, offset, &ovl->cmdq_reg, ovl->regs,
--- 
-2.18.0
+So ... we either use this driver with devicetree, giving it the right eFuses
+to read from, or we duplicate the mtk-efuse driver, or we statically assign
+the eFuses in the driver itself and we set compatibles like
+"mediatek,mt8195-socinfo" to select that... ideas?
+
+Cheers,
+Angelo
+
+> NAK
+> 
+> Best regards,
+> Krzysztof
+> 
 
 
