@@ -4,56 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47F8CC46CA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 11:39:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4341C46CA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 11:50:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8SejUHs1W9gaUoknAn3M3RzZT0Eh1o5Bdsrp5OrtOIU=; b=aTejF0kxhaYBsUMWawpBjH16vo
-	xElfB3HE/hliCWsd+W1vnpbFL7nW2gxeCs7nZpkqbE/pH03sDwwewjrvwKwN2+tErAgCtvO8h8e+X
-	q/qq4RwXm39Z5oUJxijrNibQLiHbIhjcRc3+G5uJpYuEw+879nBc25WkUHwMrOEa/eL8kwkZoSFQj
-	mFPD6HRqbqrejAJT7YVBFhSalMKuDxtlu7ZxP6xS/S8Tuj6XyZQWA7kR2ouVsho69dW/J+bD5xWdl
-	LXwnMZ2lrSl6R5w/Pla5iadE1dqnZHZ6ymZj8/ebb3F2uKnrC+48fsNT1E72nKhuVsyQN/gQZfPf2
-	FYqVD3Jg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SwLG6PugHl4eC21BPc5GkdrbwZ38PLDUGzkbfsZcSnw=; b=jy2vq8QLSEC9vbXgxwJglpX+Mt
+	An8vsaAwyF1LbENSATAoAN5fLCx4166aYDiPQQ0RAwId9LXTMd306xtsxb/I/2UqkfWjLnd/S9O6f
+	xi9Sr7qqOVCR6f/FTtjsqHIs6lU2nbyVcpaAAPkwEPDWU1Q01hShSmSFWlGsk2urZChIDF5oP8prm
+	yLtcD0ka/o6853YfsHsEEkepH7kUwSUs+dcG6K6cOICLpHW+/Ke6xO+9IcLTJCmT50j+D7uN1FSAf
+	8iYBjNgiT+35D/bbZk/IWj03GZbU2DxEcAi+SYB6hls8F0E9BsKugwy+2mFLUtH7R0fcMhA+djMD9
+	ajI9D6YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiCbB-00FL7g-2h;
-	Mon, 18 Sep 2023 11:39:29 +0000
-Received: from pidgin.makrotopia.org ([185.142.180.65])
+	id 1qiCm0-00FLxy-0r;
+	Mon, 18 Sep 2023 11:50:40 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiCb8-00FL6S-3C
-	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Sep 2023 11:39:28 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1qiCad-0008GJ-2g;
-	Mon, 18 Sep 2023 11:38:55 +0000
-Date: Mon, 18 Sep 2023 12:35:31 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, lorenzo.bianconi@redhat.com, nbd@nbd.name,
-	john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, linux-mediatek@lists.infradead.org,
-	sujuan.chen@mediatek.com, horms@kernel.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 net-next 09/17] net: ethernet: mtk_wed: fix
- EXT_INT_STATUS_RX_FBUF definitions for MT7986 SoC
-Message-ID: <ZQg2AxAIxkadOiIr@makrotopia.org>
-References: <cover.1695032290.git.lorenzo@kernel.org>
- <ebde071cc3cc9c35b00366c41912ee2f25e5282d.1695032291.git.lorenzo@kernel.org>
+	id 1qiClt-00FLwX-16;
+	Mon, 18 Sep 2023 11:50:35 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 46CD0B80DE3;
+	Mon, 18 Sep 2023 11:50:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id CAD37C433C7;
+	Mon, 18 Sep 2023 11:50:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695037829;
+	bh=oT5snbuM6TfIDJhxJsWR/PSxNRbw+iiiuFc7Xp3a8+I=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=uZ7FGpqOOOW4QGMAG4E31OhORIcesAUkf7+AMd+dsPzh46DiEGuFjAIIhigCjpVJL
+	 DwbZLMUVDePIq6nrbjOfTbzXtettFFgIyY2rnnqxkUb/zAQgp+ndayV41JWxb1zLMo
+	 AbI3ombnz9obEikffx68Z0fVqGGNkZQKYCDV1P39O8JxfbAfmD/97IyEGrtWpqGfsP
+	 5sR9Uc4vWEZJBRM/S+0t5Q8N7s9KRKP6pCpKx6h60qwQV1CKH3ulLO4OQM8TnaNqdb
+	 K5zs590+yp6+YrY9ggF3Ph/91j0zolaKDFIYLi5JTOTbhB+mIXrp/jkzKzlYTTCB0Q
+	 EXB1uzYcbpgnw==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id B4871E11F41;
+	Mon, 18 Sep 2023 11:50:29 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ebde071cc3cc9c35b00366c41912ee2f25e5282d.1695032291.git.lorenzo@kernel.org>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v2 00/22] convert to devm_stmmac_probe_config_dt
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <169503782973.2272.13506822186977436052.git-patchwork-notify@kernel.org>
+Date: Mon, 18 Sep 2023 11:50:29 +0000
+References: <20230916075829.1560-1-jszhang@kernel.org>
+In-Reply-To: <20230916075829.1560-1-jszhang@kernel.org>
+To: Jisheng Zhang <jszhang@kernel.org>
+Cc: peppe.cavallaro@st.com, alexandre.torgue@foss.st.com,
+ joabreu@synopsys.com, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, mcoquelin.stm32@gmail.com,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, vz@mleia.com,
+ neil.armstrong@linaro.org, khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, kernel@esmil.dk,
+ samin.guo@starfivetech.com, wens@csie.org, jernej.skrabec@gmail.com,
+ samuel@sholland.org, thierry.reding@gmail.com,
+ nobuhiro1.iwamatsu@toshiba.co.jp, linux@armlinux.org.uk,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_043927_025631_9FBE3373 
-X-CRM114-Status: GOOD (  14.82  )
+X-CRM114-CacheID: sfid-20230918_045033_688884_AF970329 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,37 +89,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 18, 2023 at 12:29:11PM +0200, Lorenzo Bianconi wrote:
-> Fix MTK_WED_EXT_INT_STATUS_RX_FBUF_LO_TH and
-> MTK_WED_EXT_INT_STATUS_RX_FBUF_HI_TH definitions for MT7986 (MT7986 is
-> the only SoC to use them).
+Hello:
 
-Afaik this applies also to MT7981 which is very similar to MT7986.
+This series was applied to netdev/net-next.git (main)
+by David S. Miller <davem@davemloft.net>:
 
+On Sat, 16 Sep 2023 15:58:06 +0800 you wrote:
+> Russell pointed out there's a new devm_stmmac_probe_config_dt()
+> helper now when reviewing my starfive gmac error handling patch[1].
+> After greping the code, this nice helper was introduced by Bartosz in
+> [2], I think it's time to convert all dwmac users to this helper and
+> finally complete the TODO in [2] "but once all users of the old
+> stmmac_pltfr_remove() are converted to the devres helper, it will be
+> renamed back to stmmac_pltfr_remove() and the no_dt function removed."
 > 
-> Fixes: de84a090d99a ("net: ethernet: mtk_eth_wed: add wed support for mt7986 chipset")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/mediatek/mtk_wed_regs.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed_regs.h b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
-> index 47ea69feb3b2..f87ab9b8a590 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_wed_regs.h
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
-> @@ -64,8 +64,8 @@ struct mtk_wdma_desc {
->  #define MTK_WED_EXT_INT_STATUS_TKID_TITO_INVALID	BIT(4)
->  #define MTK_WED_EXT_INT_STATUS_TX_FBUF_LO_TH		BIT(8)
->  #define MTK_WED_EXT_INT_STATUS_TX_FBUF_HI_TH		BIT(9)
-> -#define MTK_WED_EXT_INT_STATUS_RX_FBUF_LO_TH		BIT(12)
-> -#define MTK_WED_EXT_INT_STATUS_RX_FBUF_HI_TH		BIT(13)
-> +#define MTK_WED_EXT_INT_STATUS_RX_FBUF_LO_TH		BIT(10) /* wed v2 */
-> +#define MTK_WED_EXT_INT_STATUS_RX_FBUF_HI_TH		BIT(11) /* wed v2 */
->  #define MTK_WED_EXT_INT_STATUS_RX_DRV_R_RESP_ERR	BIT(16)
->  #define MTK_WED_EXT_INT_STATUS_RX_DRV_W_RESP_ERR	BIT(17)
->  #define MTK_WED_EXT_INT_STATUS_RX_DRV_COHERENT		BIT(18)
-> -- 
-> 2.41.0
-> 
-> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,v2,01/23] net: stmmac: dwmac-anarion: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/6f799fd9dda7
+  - [net-next,v2,02/23] net: stmmac: dwmac-dwc-qos-eth: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/0485825dd6a8
+  - [net-next,v2,03/23] net: stmmac: dwmac-generic: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/d53b19d2a1a8
+  - [net-next,v2,04/23] net: stmmac: dwmac-generic: use devm_stmmac_pltfr_probe()
+    https://git.kernel.org/netdev/net-next/c/14ec0fc582c5
+  - [net-next,v2,05/23] net: stmmac: dwmac-imx: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/115c9248b19b
+  - [net-next,v2,06/23] net: stmmac: dwmac-ingenic: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/6bb53b2abf30
+  - [net-next,v2,07/23] net: stmmac: dwmac-intel-plat: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/abea8fd5e801
+  - [net-next,v2,08/23] net: stmmac: dwmac-ipq806x: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/72ab86c27d4e
+  - [net-next,v2,09/23] net: stmmac: dwmac-lpc18xx: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/d30c08a3b001
+  - [net-next,v2,10/23] net: stmmac: dwmac-mediatek: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/d7209c056a49
+  - [net-next,v2,11/23] net: stmmac: dwmac-meson: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/780b63ae208e
+  - [net-next,v2,12/23] net: stmmac: dwmac-meson8b: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/551022d680ec
+  - [net-next,v2,13/23] net: stmmac: dwmac-rk: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/8eee20e10d6f
+  - [net-next,v2,14/23] net: stmmac: dwmac-socfpga: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/9086d3f2b560
+  - [net-next,v2,15/23] net: stmmac: dwmac-starfive: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/6d6c11937359
+  - [net-next,v2,16/23] net: stmmac: dwmac-sti: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/c9445e0bd729
+  - [net-next,v2,17/23] net: stmmac: dwmac-stm32: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/373845154618
+  - [net-next,v2,18/23] net: stmmac: dwmac-sun8i: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/9bdf6909877c
+  - [net-next,v2,19/23] net: stmmac: dwmac-sunxi: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/291595337626
+  - [net-next,v2,20/23] net: stmmac: dwmac-tegra: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/acf73ccff08e
+  - [net-next,v2,21/23] net: stmmac: dwmac-visconti: use devm_stmmac_probe_config_dt()
+    https://git.kernel.org/netdev/net-next/c/d336a117b593
+  - [net-next,v2,22/23] net: stmmac: rename stmmac_pltfr_remove_no_dt to stmmac_pltfr_remove
+    https://git.kernel.org/netdev/net-next/c/2c9fc838067b
+  - [net-next,v2,23/23] net: stmmac: make stmmac_{probe|remove}_config_dt static
+    https://git.kernel.org/netdev/net-next/c/b2504f649bda
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
