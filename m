@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5AA9CD37B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 19:22:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 558C7C46CA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 19:22:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FlA/ayL7itBhryN5xYs8D2vtk2TIpgalbJj33r8hXbg=; b=2GH0HB874NI7TGygLAAKUBRuMl
-	y2weioPwYK8U0UnV9O2++cJN+KLa3xyT2yxZeAnJhF9XPIFJ6sSDyuRLWApvvY3EgGQcaLQRvpeho
-	Lya2VsxuoLSygiFXYFZx/XD/Z6dFCyYaJxOX+kspjIt2vb6gNjU58pjEmSsmIKCyD5viG+CG72QoL
-	CBOqZd8FiZNmej9ApG+IlEDbuD5nSjomOoWmAYzVBenH4NNrm2tuYAstpl0oKLRYErSL1jkB220Hk
-	SPlCP66tSPdi8Vz1iPdz97HNDGSc6wN8DMw4kXvwqyEvlqdvpUwgpIj2v22TZdywjFH1xZDiMEDdH
-	QbCsUjIw==;
+	bh=AA6HVejvp6awQg2Gak+WLVNYgMCN9kZXJeFcHSpn1pg=; b=eMFN2X3qLpjvitistLR/pfBTYf
+	TBFzRK/kEaM6dk2NgreGIuFWvV67DDxLmDB0MuDZ5jdhOKMfI/659tTWRVSSCa2GhLFfY0f5Hz6t6
+	hjJwBMO9Y2/0YQ4GRcf+mLrmvv/kKPTbFfekK50CnRJP3PI67joDWl4xkK+ThPPG7JCkComZ+iScd
+	blKY0jBYpR3uV/wUd367qeGEloIhz1n1QXGeaf0jJJknGYG5TGqWY7mu1bbodUzzXSXEX6gCgEWmN
+	IlUa21EPJEP1wu38QasuEzsd+t41y05epjLEuxcaGYZYCPpSMXQssuLsj2XCjNkb7aJe1REXnRzSc
+	KPmS8u9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiJpB-00GAOg-1h;
-	Mon, 18 Sep 2023 19:22:25 +0000
+	id 1qiJpM-00GAXM-2e;
+	Mon, 18 Sep 2023 19:22:36 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiJp3-00GAHg-2k;
+	id 1qiJp3-00GAGS-0B;
 	Mon, 18 Sep 2023 19:22:19 +0000
-X-UUID: aaf6d3fa565811ee9b7791016c24628a-20230918
+X-UUID: aa58cbe2565811ee9b7791016c24628a-20230918
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FlA/ayL7itBhryN5xYs8D2vtk2TIpgalbJj33r8hXbg=;
-	b=o+kcjJYUURzmcnA0ZW4tIpGsUzohXB/tfvhR2xyiWX29jiW4vLWz/odeUHG8OFBOKap1DnHsDGM4HHmC6RfmwUBxzaSlNy+YsYzIE1tFtZyS3Gooh9dumUzZdxcdf1ABiaml25/grwEosyYuSmyDBgXCAcQ0IHb025Z0lobqkN8=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=AA6HVejvp6awQg2Gak+WLVNYgMCN9kZXJeFcHSpn1pg=;
+	b=UjuJAZnubSKjPRkABlZbxC8bLxZbt3JuBVyz4it1V4ZLNW0+Vn4oZ2lYjJH/JIMcvl6kOF4+QcMVzQ5JnEt7hXvIzbgfrY3YkmRx7402GZt/gz96och22+ymM8QcM0Mi7gKNBbdVv3qTC1Rfsk/pTURZwYXxUZ+BFVTLwS8qvD4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.31,REQID:3edd58de-a4ee-4f31-b0f3-7d976613035c,IP:0,U
-	RL:0,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:100
-X-CID-META: VersionHash:0ad78a4,CLOUDID:3a33d7ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:801|102,TC:nil,Content:3,EDM:-3,IP:n
-	il,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR
-	:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-O-INFO: VERSION:1.1.31,REQID:2245fe00-5be8-4da3-9be6-f7be0c240c01,IP:0,U
+	RL:0,TC:0,Content:38,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:38
+X-CID-META: VersionHash:0ad78a4,CLOUDID:2933d7ef-9a6e-4c39-b73e-f2bc08ca3dc5,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:3,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,
+	DKR:0,DKP:0,BRR:0,BRE:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: aaf6d3fa565811ee9b7791016c24628a-20230918
+X-UUID: aa58cbe2565811ee9b7791016c24628a-20230918
 Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 569067983; Mon, 18 Sep 2023 12:22:12 -0700
+	with ESMTP id 829643286; Mon, 18 Sep 2023 12:22:11 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 19 Sep 2023 03:22:07 +0800
+ 15.2.1118.26; Tue, 19 Sep 2023 03:22:06 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 19 Sep 2023 03:22:07 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 19 Sep 2023 03:22:06 +0800
 From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 To: Jassi Brar <jassisinghbrar@gmail.com>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>,
@@ -68,29 +68,29 @@ CC: Conor Dooley <conor+dt@kernel.org>, Jason-ch Chen
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<dri-devel@lists.freedesktop.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 06/15] mailbox: mediatek: Add cmdq_mbox_stop to disable GCE thread
-Date: Tue, 19 Sep 2023 03:21:55 +0800
-Message-ID: <20230918192204.32263-7-jason-jh.lin@mediatek.com>
+Subject: [PATCH 01/15] dt-bindings: mailbox: Add property for CMDQ secure driver
+Date: Tue, 19 Sep 2023 03:21:50 +0800
+Message-ID: <20230918192204.32263-2-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20230918192204.32263-1-jason-jh.lin@mediatek.com>
 References: <20230918192204.32263-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--1.988300-8.000000
-X-TMASE-MatchedRID: uVuWzlu52RkiDrsceLMV4Q5KPhGIg0MRkKAa/khZ3iTFJnEpmt9OExFx
-	R5JQAS6O09NQNrxIpFYBtjkcfRMmqTWBtSWZ+bE6ngIgpj8eDcAZ1CdBJOsoY8RB0bsfrpPIcSq
-	bxBgG0w6ujTD8QgIK1kQ6fjiZXZogD+jiC1oMBt0eayzllU2Q/1TJDW/3g1sVmnNXN2Yg01ZCSb
-	LlGtGkW7KHfI39uPZVtH1PlKbdBAd5lSmbrC6fdtr/To2FgNrjDLMIOOVTHz12N6Rg5qIpOg==
+X-TM-AS-Result: No-10--10.597900-8.000000
+X-TMASE-MatchedRID: iSQL5szRvdEXSulpnju2H6wxbZnudyr7ELbqrOgWzyfOxDyJFXIPjpM5
+	rPAxB6p1j6kCfX0Edc5fvtuIsaf1ZSpMHNWH39YQXSKcwPTzq/J5y+Nu7/EOOgv/nTOPQovs3k1
+	HMnSDPkfLqCJZs0VuwMJTJNWmePeVNyl1nd9CIt0URSScn+QSXt0H8LFZNFG7bkV4e2xSge4egJ
+	CKnUjm4eHgAk/GRGDANamVZCBGTM1A7arqKflzisWFcyN1Agmm
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--1.988300-8.000000
+X-TMASE-Result: 10--10.597900-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 27B40605C2A0C3207783487520CC4AA9778409CD16F2F742F472B934C2B6A9CD2000:8
+X-TM-SNTS-SMTP: 7A111DE7BC234BF0F37F0DC80E0B29F8EB7F0415BBC63A13F4559B242582EBAC2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_122217_891866_5AC1D168 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20230918_122217_097883_28273A22 
+X-CRM114-Status: GOOD (  13.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,46 +105,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add cmdq_mbox_stop to disable GCE thread.
+Add mboxes to define a GCE loopping thread as a secure irq handler.
+Add mediatek,event to define a GCE software event siganl as a secure
+irq.
 
-To support the error handling or the stop flow of the GCE loopping
-thread, lopping thread user can call cmdq_mbox_stop to disable the
-GCE HW thread.
+These 2 properties are required for CMDQ secure driver.
 
 Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 ---
- drivers/mailbox/mtk-cmdq-mailbox.c       | 6 ++++++
- include/linux/mailbox/mtk-cmdq-mailbox.h | 1 +
- 2 files changed, 7 insertions(+)
+ .../mailbox/mediatek,gce-mailbox.yaml         | 30 +++++++++++++++----
+ 1 file changed, 24 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 4d62b07c1411..8bd39fecbf00 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -469,6 +469,12 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
- 	spin_unlock_irqrestore(&thread->chan->lock, flags);
- }
+diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+index cef9d7601398..5c9aebe83d2d 100644
+--- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
++++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+@@ -49,6 +49,21 @@ properties:
+     items:
+       - const: gce
  
-+void cmdq_mbox_stop(struct mbox_chan *chan)
-+{
-+	cmdq_mbox_shutdown(chan);
-+}
-+EXPORT_SYMBOL(cmdq_mbox_stop);
++  mboxes:
++    description:
++      A mailbox channel used as a secure irq handler in normal world.
++      Using mailbox to communicate with GCE to setup looping thread,
++      it should have this property and a phandle, mailbox specifiers.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
 +
- static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
- {
- 	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
-diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-index a8f0070c7aa9..f3e577335acb 100644
---- a/include/linux/mailbox/mtk-cmdq-mailbox.h
-+++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-@@ -79,5 +79,6 @@ struct cmdq_pkt {
- };
++  mediatek,gce-events:
++    description:
++      The event id which is mapping to a software event signal to gce.
++      It is used as a secure irq for every secure gce threads.
++      The event id is defined in the gce header
++      include/dt-bindings/mailbox/mediatek,<chip>-gce.h of each chips.
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++
+ required:
+   - compatible
+   - "#mbox-cells"
+@@ -71,20 +86,23 @@ additionalProperties: false
  
- u8 cmdq_get_shift_pa(struct mbox_chan *chan);
-+void cmdq_mbox_stop(struct mbox_chan *chan);
+ examples:
+   - |
+-    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/clock/mediatek,mt8188-clk.h>
+     #include <dt-bindings/interrupt-controller/arm-gic.h>
+     #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/mailbox/mediatek,mt8188-gce.h>
  
- #endif /* __MTK_CMDQ_MAILBOX_H__ */
+     soc {
+         #address-cells = <2>;
+         #size-cells = <2>;
+ 
+-        gce: mailbox@10212000 {
+-            compatible = "mediatek,mt8173-gce";
+-            reg = <0 0x10212000 0 0x1000>;
+-            interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_LOW>;
++        gce0: mailbox@10320000 {
++            compatible = "mediatek,mt8188-gce";
++            reg = <0 0x10320000 0 0x4000>;
++            interrupts = <GIC_SPI 226 IRQ_TYPE_LEVEL_HIGH 0>;
+             #mbox-cells = <2>;
+-            clocks = <&infracfg CLK_INFRA_GCE>;
++            clocks = <&infracfg_ao CLK_INFRA_AO_GCE>;
+             clock-names = "gce";
++            mboxes = <&gce0 15 CMDQ_THR_PRIO_1>;
++            mediatek,gce-events = <CMDQ_SYNC_TOKEN_SECURE_THR_EOF>;
+         };
+     };
 -- 
 2.18.0
 
