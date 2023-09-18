@@ -4,85 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06B79CD37B0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 21:35:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 105C9C46CA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Sep 2023 22:26:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U07TY/+gxhHrGTwIMRHZisoCT3AzjDZGe26bLnr18u8=; b=cu6I71FALi2BVurI5pXiZjrU3B
-	u2BR2zwiu9cn1QbtDGeHg2k4XNKjdR1WYrIqQVAkRZJg98jniNQW0h/UD4jgQR/2DUpY82CBjNk5y
-	hurCQ8/movn2s70Dpy7ZT63wn6GJHlSyi+HujWsd3Mg1wJC5kCbRwl/diULn4OrhNXdp7SpnBVsuB
-	65aMMFtLkNKP8fjdC4HDjsev5Fa1SoFfpGmQcVveZS13znnly+cuKKAEU90d5RlGN1UxbH1O9D6iS
-	VfAFM/KStb9tmx5noaWrZSMnTmfgh+3Cj0OHIGCZlbukrWFThntbtYXDWLpL+PgbhuywKe3zPb4c8
-	J/+ToUIw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=en2tF9VelHIj+TkvKeo+ZmnM8j5icWjtj14byNflA1o=; b=Gth37Tt+x5Vl6qRvwFGUFGz6yv
+	MOQGfb+BaWSDx/CiRv5jIfJy1EZNIMq9nrBE2hISwYDxQDd83aEYlx51q1d6LlXCi1HZ0fjLHffUv
+	qtmBANbKYzHi8EbMJa3a5TuBVd4LNsDteVoiUwaVeWtZBRacHk8WSRP48mz0QZhKLve4xgMx506LO
+	4ZbFXkIXgm8+sI++BqaVAwW7UqtBEJ2ODF4PzoMZotDTb7nuTQrB/1emhEujHncSwx6QM6REEYDKV
+	0W8GRgJPKREPr0BbUkMU7ShdAeYvEic7QB/cOI447q1a/aC1JuSLGQnyK9JDS3f1pn1GXwjjkW2pb
+	rbMayVQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiLu4-00GOjp-1h;
-	Mon, 18 Sep 2023 21:35:36 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1qiMha-00GRgB-2B;
+	Mon, 18 Sep 2023 22:26:46 +0000
+Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.96 #2 (Red Hat Linux))
-	id 1qiLu0-00GOiC-2K;
-	Mon, 18 Sep 2023 21:35:34 +0000
-Received: from [192.168.68.123] (unknown [177.98.21.184])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: koike)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 580396607090;
-	Mon, 18 Sep 2023 22:35:19 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1695072927;
-	bh=uL/s4lrQG1BldZTY5WhYBFCF/fK1Gq+sWguhl3ilTEU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=m9Q4n/uk0t3flfSgStzt1GoFobmWwy+YbLNElc7e2AUBosVGpuTP/ZfYWRfyYjTD6
-	 aMQx7KTSkDZuzAOy2ECS+1HULO518OTeyxDy8D/DQO5SiftVVYgMQ9pdTkH/rqAnsO
-	 SIUzW82OoNGBNYCBmA8FG2ab/P5SVTiz4CdKWkwHklbaQzQBSXoT2de5ljTovc7396
-	 UHHXCGSApMn86QYW/miJuuuTmGEbEKqfDVFyyjP8CMkZEd21FLYNrypqIFdv6RA6Rk
-	 r5eESOEOfxfKShx2rNKWrQGH8JqTO81/lczFeG9Ae1ocygaQ4TipHDPkv0xR8p1Gh1
-	 2MtpFBfHCx5uw==
-Message-ID: <8c5d6bf2-f034-c702-5e99-6daea6d56443@collabora.com>
-Date: Mon, 18 Sep 2023 18:35:13 -0300
+	id 1qiMhX-00GRev-0h;
+	Mon, 18 Sep 2023 22:26:44 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1qiMhA-0002wG-1F;
+	Mon, 18 Sep 2023 22:26:20 +0000
+Date: Mon, 18 Sep 2023 23:26:01 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next v2 0/2] net: ethernet: mtk_eth_soc: add paths and
+ SerDes modes
+Message-ID: <cover.1695058909.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v11] drm: Add initial ci/ subdirectory
-Content-Language: en-US
-To: Daniel Stone <daniel@fooishbar.org>, Maxime Ripard <mripard@kernel.org>
-Cc: emma@anholt.net, linux-doc@vger.kernel.org, vignesh.raman@collabora.com,
- dri-devel@lists.freedesktop.org, alyssa@rosenzweig.io, jbrunet@baylibre.com,
- robdclark@google.com, corbet@lwn.net, khilman@baylibre.com,
- sergi.blanch.torne@collabora.com, david.heidelberg@collabora.com,
- linux-rockchip@lists.infradead.org, Daniel Stone <daniels@collabora.com>,
- martin.blumenstingl@googlemail.com, robclark@freedesktop.org,
- anholt@google.com, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org,
- gustavo.padovan@collabora.com, linux-arm-kernel@lists.infradead.org,
- angelogioacchino.delregno@collabora.com, neil.armstrong@linaro.org,
- guilherme.gallo@collabora.com, =?UTF-8?Q?Michel_D=c3=a4nzer?=
- <michel.daenzer@mailbox.org>, linux-kernel@vger.kernel.org,
- tzimmermann@suse.de
-References: <zmq7pz7rtz6h765azg5kl2qgjd264yafctx4q474t5tqai57og@cajbcub4yuwr>
- <5fdf9d29-3f8d-0ee0-027f-57ff3a5cecb8@collabora.com>
- <CAKMK7uGg6n322UugJwErqF_Dvsbqceqae6SVWV3ZWEOR7x36rQ@mail.gmail.com>
- <9a2b1ad8-4359-4f12-b4f9-c1de477bc440@collabora.com>
- <mnjcsiqjqdnvbbkaaz5r4n42e56qsax667r7radzyagnmmfkip@dfi64z5deqzj>
- <b7d96985-8489-efe2-db67-1f3108e26822@mailbox.org>
- <5ejq3hjpoy3gxft2jbmoa5m656usetuxcs7g3ezyyiitj67rav@r5jhdz27foat>
- <550454b8-2e2c-c947-92c5-37f0367661c2@mailbox.org>
- <os2wvkangif2nwewfbzkuyjm7njp4g3sqj5td3ogbhhjwsrbbd@3jpf6g5hd3z4>
- <CAPj87rP1sw49Z0HdPhUa-=kDp166RqiuhC9rL+Ef9hpwPD5+JA@mail.gmail.com>
- <krhnfc4os5nqwi3iixgxwads3jbcgtdcvn7ygxpvd62uaejvsk@mx6tmser7jti>
- <CAPj87rPbJ1V1-R7WMTHkDat2A4nwSd61Df9mdGH2PR=ZzxaU=Q@mail.gmail.com>
-From: Helen Koike <helen.koike@collabora.com>
-In-Reply-To: <CAPj87rPbJ1V1-R7WMTHkDat2A4nwSd61Df9mdGH2PR=ZzxaU=Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20230918_143533_065247_CEFA8A67 
-X-CRM114-Status: GOOD (  76.20  )
+X-CRM114-CacheID: sfid-20230918_152643_257326_3ED84FA7 
+X-CRM114-Status: GOOD (  16.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,216 +72,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The series brings support for SerDes interface modes up to 10 Gb/s for
+the MediaTek MT7988 SoC.
 
+As the Ethernet driver now requires a few more phandles in device tree
+referencing various other parts of the SoC also add corresponding
+dt-binding changes.
 
-On 15/09/2023 12:08, Daniel Stone wrote:
-> Hey,
-> 
-> On Thu, 14 Sept 2023 at 10:54, Maxime Ripard <mripard@kernel.org> wrote:
->> On Tue, Sep 12, 2023 at 02:16:41PM +0100, Daniel Stone wrote:
->>> Hopefully less mangled formatting this time: turns out Thunderbird +
->>> plain text is utterly unreadable, so that's one less MUA that is
->>> actually usable to send email to kernel lists without getting shouted
->>> at.
->>
->> Sorry if it felt that way, it definitely wasn't my intention to shout at
->> you. Email is indeed kind of a pain to deal with, and I wanted to keep
->> the discussion going.
-> 
-> My bad - I didn't mean you _at all_. I was thinking of other, much
-> less pleasant, kernel maintainers, and the ongoing struggle of
-> attempting to actually send well-formatted email to kernel lists in
-> 2023.
-> 
->>> I don't quite see the same picture from your side though. For example,
->>> my reading of what you've said is that flaky tests are utterly
->>> unacceptable, as are partial runs, and we shouldn't pretend otherwise.
->>> With your concrete example (which is really helpful, so thanks), what
->>> happens to the MT8173 hdmi-inject test? Do we skip all MT8173 testing
->>> until it's perfect, or does MT8173 testing always fail because that
->>> test does?
->>
->> It's not clear to me why that test is even running in the first place?
->> There's been some confusion on my side here about what we're going to
->> test with this. You've mentioned Mesa and GPUs before, but that's a KMS
->> test so there must be more to it.
->>
->> Either way, it's a relevant test so I guess why not. It turns out that
->> the test is indeed flaky, I guess we could add it to the flaky tests
->> list.
->>
->> BUT
->>
->> I want to have every opportunity to fix whatever that failure is.
-> 
-> Agreed so far!
-> 
->> So:
->>
->>    - Is the test broken? If so, we should report it to IGT dev and remove
->>      it from the test suite.
->>    - If not, is that test failure have been reported to the driver author?
->>    - If no answer/fix, we can add it to the flaky tests list, but do we
->>      have some way to reproduce the test failure?
->>
->> The last part is especially critical. Looking at the list itself, I have
->> no idea what board, kernel version, configuration, or what the failure
->> rate was. Assuming I spend some time looking at the infra to find the
->> board and configuration, how many times do I have to run the tests to
->> expect to reproduce the failure (and thus consider it fixed if it
->> doesn't occur anymore).
->>
->> Like, with that board and test, if my first 100 runs of the test work
->> fine, is it reasonable for me to consider it fixed, or is it only
->> supposed to happen once every 1000 runs?
+It may be argued that instead of referencing those units as syscon and
+access them as regmap one may want to implement propper clk or reset
+drivers. However, only a single register write is require to the
+otherwise completely undocumented pextp_pll unit which will not make a
+nice clk driver...
 
-I wonder if this should be an overall policy or just let the maintainer 
-to decide.
+The toprgu/watchdog reset controller is used to synchronously
+assert/deassert multiple resets as the same time which is not
+supported by Linux reset controller API which always asserts/deasserts
+resets sequentially. It is not known whether asserting/deasserting
+pextp, sgmii, xfi and usxgii resets simultanously is stricly required
+for the hardware to work reliably, however, it's what the vendor
+implementation is doing as well and there are no other drivers needing
+to access the toprgu reset controller.
 
-In any case these stress tests must be run from time to time to verify 
-if flakes are still flakes. We could do it automatically but we need to 
-evaluate how to do it properly so it doesn't overload the infra.
+This series has been tested with the MT7988 reference board as well as
+pre-mass-production BananaPi BPi-R4 board also featuring MT7988.
+Various SFP(+) modules have been successfully tested on both boards and
+also the on-board AQR133 10GE PHY found on the MT7988 reference board
+works nicely.
 
->>
->> So, ideally, having some (mandatory) metadata in the test lists with a
->> link to the bug report, the board (DT name?) it happened with, the
->> version and configuration it was first seen with, and an approximation
->> of the failure rate for every flaky test list.
->>
->> I understand that it's probably difficult to get that after the fact on
->> the tests that were already merged, but I'd really like to get that
->> enforced for every new test going forward.
->>
->> That should hopefully get us in a much better position to fix some of
->> those tests issues. And failing that, I can't see how that's
->> sustainable.
-> 
-> OK yeah, and we're still agreed here. That is definitely the standard
-> we should be aiming for.  It is there for some - see
-> drivers/gpu/drm/ci/xfails/rockchip-rk3288-skips.txt, but should be
-> there for the rest, it's true. (The specific board/DT it was observed
-> on can be easily retconned because we only run on one specific board
-> type per driver, again to make things more predictable; we could go
-> back and retrospectively add those in a header comment?)
-> 
-> For flakes, it can be hard to pin them down, because, well, they're
-> flaky. Usually when we add things in Mesa (sorry to keep coming back
-> to Mesa - it's not to say that it's the objective best thing that
-> everything should follow, only that it's the thing we have the most
-> experience with that we know works well), we do a manual bisect and
-> try to pin the blame on a specific merge request which looks like the
-> most likely culprit. If nothing obvious jumps out, we just note when
-> it was first observed and provide some sample job logs. But yeah, it
-> should be more verbose.
-> 
-> FWIW, the reason it wasn't done here - not to say that it shouldn't
-> have been done better, but here we are - is that we just hammered a
-> load of test runs, vacuumed up the results with a script, and that's
-> what generated those files. Given the number of tests and devices, it
-> was hard to narrow each down individually, but yeah, it is something
-> which really wants further analysis and drilling into. It's a good
-> to-do, and I agree it should be the standard going forward.
+To make sure no existing older SoCs have been broken run-time tests
+have also been carried out on various MT7981, MT7986, MT7622 and
+MT7623 boards. The patch is also present in OpenWrt for some months
+now already and hence supposedly hundreds of users also on older
+MT7621 systems should have tested it while I didn't hear about any
+complaints so far.
 
-Yes, during development I was just worried about to get a pipeline that 
-would succeed most of the time (otherwise people would start ignoring 
-when it fails), so they just got run a couple of times and a script 
-filled the flakes list.
-For me the idea was "let's get a starting point" first, but yeah, we 
-need to improve how we deal with it from now on.
+For the interfaces modes covered by the existing LynxI PCS driver
+(Cisco SGMII, 1000Base-X, 2500Base-X) to work on MT7988 this series
+depends on commit 90308679c297f ("net: pcs: lynxi: implement pcs_disable op").
 
-> 
->> And Mesa does show what I'm talking about:
->>
->> $ find -name *-flakes.txt | xargs git diff --stat  e58a10af640ba58b6001f5c5ad750b782547da76
->> [...]
->>
->> In the history of Mesa, there's never been a single test removed from a
->> flaky test list.
-> 
-> As Rob says, that's definitely wrong. But there is a good point in
-> there: how do you know a test isn't flaky anymore? 100 runs is a
-> reasonable benchmark, but 1000 is ideal. At a 1% failure rate, with 20
-> devices, that's just too many spurious false-fails to have a usable
-> workflow.
-> 
-> We do have some tools to make stress testing easier, but those need to
-> be better documented. We'll fix that. The tools we have which also
-> pull out the metadata etc also need documenting - right now they
-> aren't because they're under _extremely_ heavy development, but they
-> can be further enhanced to e.g. pull out the igt results automatically
-> and point very clearly to the cause. Also on the to-do.
-> 
->>> Only maintainers can actually fix the drivers (or the tests tbf). But
->>> doing the testing does let us be really clear to everyone what the
->>> actual state is, and that way people can make informed decisions too.
->>> And the only way we're going to drive the test rate down is by the
->>> subsystem maintainers enforcing it.
->>
->> Just FYI, I'm not on the other side of the fence there, I'd really like
->> to have some kind of validation. I talked about it at XDC some years
->> ago, and discussed it several people at length over the years. So I'm
->> definitely not in the CI-is-bad camp.
->>
->>> Does that make sense on where I'm (and I think a lot of others are)
->>> coming from?
->>
->> That makes sense from your perspective, but it's not clear to me how you
->> can expect maintainers to own the tests if they were never involved in
->> the process.
->>
->> They are not in Cc of the flaky tests patches, they are not reported
->> that the bug is failing, how can they own that process if we never
->> reached out and involved them?
->>
->> We're all overworked, you can't expect them to just look at the flaky
->> test list every now and then and figure it out.
-> 
-> Absolutely. We got acks (or at least not-nacks) from the driver
-> developers, but yeah, they should absolutely be part of the loop for
-> those updates. I don't think we can necessarily block on them though.
-> Say we add vc4 KMS tests, then after a backmerge we start to see a
-> bunch of flakes on it, but you're sitting on a beach for a couple of
-> weeks. If we wait for you to get back, see it, and merge it, then
-> that's two weeks of people submitting Rockchip driver changes and
-> getting told that their changes failed CI. That's exactly what we want
-> to avoid, because it erodes confidence and usefulness of CI when
-> people expect failures and ignore them by default.
-> 
-> So I would say that it's reasonable for expectations to be updated
-> according to what actually happens in practice, but also to make sure
-> that the maintainers are explicitly informed and kept in the loop, and
-> not just surprised when they look at the lists and see a bunch of
-> stuff happened without their knowledge.
+Changes since v1:
+ * add missing macro defines (v1 didn't build for that reason)
+ * add dt-bindings changes
 
-I was thinking in adding entries in MAINTAINERS file pointing to each 
-flake/skip/fails list file to their maintainers, so get_maintainers.pl 
-can return the right thing.
+Daniel Golle (2):
+  dt-bindings: net: mediatek,net: add phandles for SerDes on MT7988
+  net: ethernet: mtk_eth_soc: add paths and SerDes modes for MT7988
 
-> 
-> Again there's much more to be done on the tooling here. Part of it is
-> CLI tools and automation, part of it is dashboards and
-> easily-digestible reporting, and then there's integration with things
-> like KernelCI. KCI(DB) is actually quite high up on the list, but
-> we're mostly waiting until a lot of the KCI rework happens so we can
-> actually properly integrate with the new system.
-> 
-> Right now a lot of the tooling we have is pretty involved - for
-> example, we do have ci-collate as a Python library which can inspect a
-> number of pipelines, pull out detailed status and logs, etc, but it
-> mostly needs to be used as a library with bespoke scripts, rather than
-> a ready-made tool. Work on that is ongoing to make it way more clear
-> and accessible though.
-> 
-> So I think it sounds like we're on the same page and going exactly in
-> the same direction, just that this is a starting point rather than the
-> desired end state. And the main point is that having a set of
-> xfails/flakes parachuted in with little to no context is trying to get
-> an MVP bootstrapped, rather than how we expect things to go in future.
-> Does that sound about right?
-> 
-> Cheers,
-> Daniel
+ .../devicetree/bindings/net/mediatek,net.yaml |  28 +
+ drivers/net/ethernet/mediatek/Kconfig         |  16 +
+ drivers/net/ethernet/mediatek/Makefile        |   1 +
+ drivers/net/ethernet/mediatek/mtk_eth_path.c  | 123 ++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 182 ++++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 237 +++++-
+ drivers/net/ethernet/mediatek/mtk_usxgmii.c   | 698 ++++++++++++++++++
+ 7 files changed, 1254 insertions(+), 31 deletions(-)
+ create mode 100644 drivers/net/ethernet/mediatek/mtk_usxgmii.c
 
-Regards,
-Helen
+-- 
+2.42.0
 
